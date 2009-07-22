@@ -1,0 +1,26 @@
+== About ==
+
+Maps is an extension that provides the ability to display coordinate data, using multiple
+mapping services, including Google Maps, OpenLayers and Yahoo Maps, and allows users to
+geocode addresses. It can be used together with Semantic Maps, which adds semantic
+capabilities to the mapping services, but can also be used without it on non-semantic
+wiki's. Both Maps and Semantic Maps are based on Semantic Google Maps and Semantic Layers,
+and are meant to replace those extensions. Maps contains all functionality of Google
+Geocoder, and so also replaces this extension.
+
+Notes on installing Maps are found in the file INSTALL.
+
+== Contributors ==
+
+If you have bug reports or requests, please add them to the Talk page [0]. You can also
+send them to Jeroen De Dauw, jeroendedauw -at- gmail.com, and Yaron Koren, at yaron57 -at-
+gmail.com.
+
+[0] http://www.mediawiki.org/w/index.php?title=Extension_talk:Maps
+
+== Credits to other projects ==
+
+* OpenLayers
+This extension includes code from the OpenLayers application. OpenLayers is an
+open-source product released under a BSD-style license
+(http://svn.openlayers.org/trunk/openlayers/license.txt)
