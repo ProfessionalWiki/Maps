@@ -1,0 +1,14 @@
+== About ==
+
+Semantic Maps is an extension that adds semantic capabilities to the Maps extension,
+and therefore provides the ability to add, view and edit coordinate data stored through
+the Semantic MediaWiki extension, using multiple mapping services. These include Google
+Maps, Open Layers and Yahoo Maps. Semantic Maps and Maps are based on Semantic Google
+Maps and Semantic Layers, and are meant to replace these extensions. For this extension
+to work, you need to have both Semantic MediaWiki and Maps installed.
+
+Notes on installing Semantic Maps are found in the file INSTALL.
+
+== Contributors ==
+
+http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Contributing_to_the_project

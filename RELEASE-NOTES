@@ -1,0 +1,6 @@
+For a documentation of all features, see http://www.mediawiki.org/wiki/Extension:Semantic_Maps
+
+== Semantic Maps 0.1 ==
+(2009-07-1)
+
+* Initial release, featuring both result formats and form inputs for Google Maps (+ Google Earth), Yahoo! Maps and OpenLayers
