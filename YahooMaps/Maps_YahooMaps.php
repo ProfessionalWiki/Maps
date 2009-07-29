@@ -29,32 +29,6 @@ class MapsYahooMaps extends MapsBaseMap {
 	}
 	
 	/**
-	 * Returns the Yahoo Map Control type for the provided a general map control
-	 * type. When no match is found, the provided control name will be used.
-	 */
-	public static function getExtraMapControls($controls, $yahooMapsOnThisPage) {
-		global $egMapsYMapControls;
-		
-		$extraMapControls = '';
-		$panAdded = false; $zoomAdded = false;
-		
-		if (count($controls) < 1) $controls = $egMapsYMapControls; // In case no controls are provided, use the default
-		
-		foreach ($controls as $control) { // Loop through the controls, and add the JS needed to add them
-			switch (strtolower($control)) {
-				case 'pan' : 
-					if (!$panAdded) {$extraMapControls .= "yahoo_$yahooMapsOnThisPage.addPanControl(); "; $panAdded = true; }
-					break;				
-				case 'zoom' : 
-					if (!$zoomAdded) {$extraMapControls .= "yahoo_$yahooMapsOnThisPage.addZoomLong(); "; $zoomAdded = true; }
-					break;
-			}
-		}
-		
-		return $extraMapControls;
-	}
-	
-	/**
 	 * Build up a csv string with the controls, to be outputted as a JS array
 	 *
 	 * @param unknown_type $controls
@@ -72,67 +46,61 @@ class MapsYahooMaps extends MapsBaseMap {
 	 */
 	public static function addYMapDependencies(&$output) {
 		global $wgJsMimeType;
-		global $egYahooMapsKey, $egMapsIncludePath;
-		$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey'></script>
-		<script type='$wgJsMimeType' src='$egMapsIncludePath/YahooMaps/YahooMapFunctions.js'></script>";
-	}
-
-	public static function displayMap(&$parser, $map) {
-		global $egYahooMapsOnThisPage, $egMapsYahooMapsZoom;
+		global $egYahooMapsKey, $egMapsIncludePath, $egYahooMapsOnThisPage;
 		
-		$params = MapsMapper::setDefaultParValues($map, true);
-		
-		// Go through the array with map parameters and create new variables
-		// with the name of the key and value of the item.
-		foreach($params as $paramName => $paramValue) {
-			if (empty(${$paramName})) ${$paramName} = $paramValue;
-		}	
-
-		if (strlen($zoom) < 1) $zoom = $egMapsYahooMapsZoom;		
-		
-		$output = '';
-
 		if (empty($egYahooMapsOnThisPage)) {
 			$egYahooMapsOnThisPage = 0;
-			MapsYahooMaps::addYMapDependencies($output);	
+			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey'></script>
+			<script type='$wgJsMimeType' src='$egMapsIncludePath/YahooMaps/YahooMapFunctions.js'></script>";
 		}
+	}
+
+	/**
+	 * @see MapsBaseMap::setFormInputSettings()
+	 *
+	 */	
+	protected function setMapSettings() {
+		global $egMapsYahooMapsZoom;
 		
+		$this->elementNamePrefix = 'map_yahoo';
+		$this->defaultZoom = $egMapsYahooMapsZoom;
+	}
+	
+	/**
+	 * @see MapsBaseMap::doMapServiceLoad()
+	 *
+	 */		
+	protected function doMapServiceLoad() {
+		global $egYahooMapsOnThisPage;
+		
+		MapsYahooMaps::addYMapDependencies($this->output);	
 		$egYahooMapsOnThisPage++;
 		
-		$type = MapsYahooMaps::getYMapType($type);
-		$extraMapControls = MapsYahooMaps::getExtraMapControls($controls, $egYahooMapsOnThisPage);
-
-		// Disbale the scroll wheel zoom when autozoom is set to off
-		switch($autozoom) {
-			case 'no' : case 'off' : 
-				$disbaleKeyControlCode = "yahoo_$egYahooMapsOnThisPage.disableKeyControls();";
-				break;
-			default:
-				$disbaleKeyControlCode = '';
-				break;
-		}
+		$this->elementNr = $egYahooMapsOnThisPage;
+	}	
+	
+	/**
+	 * @see MapsBaseMap::addSpecificMapHTML()
+	 *
+	 */		
+	public function addSpecificMapHTML() {
+		global $wgJsMimeType;
 		
-		$coordinates = str_replace('″', '"', $coordinates);
-		$coordinates = str_replace('′', "'", $coordinates);
-
-		list($lat, $lon) = MapsUtils::getLatLon($coordinates);
-
-		$width = $width . 'px';
-		$height = $height . 'px';
-
-		$output .=<<<END
-		<div id="map-yahoo-$egYahooMapsOnThisPage" style="width: $width; height: $height;"></div>  
+		$this->type = self::getYMapType($this->type);
+		$this->controls = self::createControlsString($this->controls);
 		
-		<script type="text/javascript">/*<![CDATA[*/
-		var yahoo_location_$egYahooMapsOnThisPage = new YGeoPoint($lat, $lon); 
-		var yahoo_$egYahooMapsOnThisPage = new YMap(document.getElementById('map-yahoo-$egYahooMapsOnThisPage'));  
-		yahoo_$egYahooMapsOnThisPage.addTypeControl();  
-		$extraMapControls  yahoo_$egYahooMapsOnThisPage.setMapType($type); $disbaleKeyControlCode
-		yahoo_$egYahooMapsOnThisPage.addOverlay(createYMarker(yahoo_location_$egYahooMapsOnThisPage, '', '')); 
-		yahoo_$egYahooMapsOnThisPage.drawZoomAndCenter(yahoo_location_$egYahooMapsOnThisPage, $zoom); /*]]>*/</script>
+		MapsUtils::makePxValue($this->width);
+		MapsUtils::makePxValue($this->height);
+
+		$this->output .= <<<END
+		<div id="$this->mapName" style="width: $this->width; height: $this->height;"></div>  
+		
+		<script type="$wgJsMimeType">/*<![CDATA[*/
+		addLoadEvent(
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->controls], $this->autozoom, [getYMarkerData($this->marker_lat, $this->marker_lon, '$this->title', '$this->label', '')])
+		);
+			/*]]>*/</script>
 END;
-
-		return $output;
 	}
 
 }

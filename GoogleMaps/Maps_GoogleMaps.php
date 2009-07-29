@@ -38,7 +38,7 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		$keyz = array_keys(MapsGoogleMaps::$mapTypes);
 		$defaultKey = $earthEnabled ? 0 : 1;
 		$keyName = array_key_exists($type, MapsGoogleMaps::$mapTypes) ? $type : $keyz[ "$defaultKey" ];
-		return MapsGoogleMaps::$mapTypes[ $keyName ];
+		return self::$mapTypes[ $keyName ];
 	}
 	
 	/**
@@ -59,89 +59,87 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	 */
 	public static function addGMapDependencies(&$output) {
 		global $wgJsMimeType, $wgLang;
-		global $egGoogleMapsKey, $egMapsIncludePath;
-		$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
-			<script type='$wgJsMimeType' src='$egMapsIncludePath/GoogleMaps/GoogleMapFunctions.js'></script>";
-	}
-
-	/**
-	 * Build up the HTML for a Google Map with the provided properties and return it.
-	 */
-	public static function displayMap(&$parser, $map) {
-		global $egGoogleMapsKey, $egGoogleMapsOnThisPage, $egMapsGoogleMapsZoom;
-		global $wgLang, $wgJsMimeType;
-
-		$params = MapsMapper::setDefaultParValues($map, true);
-		
-		// Go through the array with map parameters and create new variables
-		// with the name of the key and value of the item.
-		foreach($params as $paramName => $paramValue) {
-			if (empty(${$paramName})) ${$paramName} = $paramValue;
-		}
-		
-		if (strlen($zoom) < 1) $zoom = $egMapsGoogleMapsZoom;
-		
-		$output = '';
+		global $egGoogleMapsKey, $egMapsIncludePath, $egGoogleMapsOnThisPage;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
+			
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies($output);
-		}
-		$egGoogleMapsOnThisPage++;
-		
-		switch($earth) {
-			case 'on' : case 'yes' :
-				$earthCode = "map.addMapType(G_SATELLITE_3D_MAP);";
-				break;
-			default : 
-				$earthCode = '';
-				break;
-		}			
-		
-		$type = MapsGoogleMaps::getGMapType($type, strlen($earthCode) > 0);
-		$control = MapsGoogleMaps::getGControlType($controls);
-		
-		// Enable the scroll wheel zoom when autozoom is not set to off
-		switch($autozoom) {
-			case 'no' : case 'off' : 
-				$autozoomCode = '';
-				break;
-			default:
-				$autozoomCode = 'map.enableScrollWheelZoom();';
-				break;
-		}	
-		
-		$coordinates = str_replace('″', '"', $coordinates);
-		$coordinates = str_replace('′', "'", $coordinates);
-
-		list($lat, $lon) = MapsUtils::getLatLon($coordinates);
-		
-		$output .=<<<END
-
-<div id="map-google-$egGoogleMapsOnThisPage" class="$class" style="$style" ></div>
-<script type="text/javascript">
-/*<![CDATA[*/
-addLoadEvent(
-	function() {
-		if (GBrowserIsCompatible()) {
-			var map = new GMap2(document.getElementById("map-google-{$egGoogleMapsOnThisPage}"), {size: new GSize('$width', '$height')});
-			$autozoomCode $earthCode map.addControl(new {$control}());
-			map.addControl(new GMapTypeControl());
-			var point = new GLatLng({$lat}, {$lon});
-			map.setCenter(point, {$zoom}, {$type});
-			var marker = new GMarker(point);
-			map.addOverlay(marker);
+			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
+			<script type='$wgJsMimeType' src='$egMapsIncludePath/GoogleMaps/GoogleMapFunctions.js'></script>";
 		}
 	}
+	
+	/**
+	 * Returns a boolean representing if the earth map type should be showed or not,
+	 * when provided the the wiki code value.
+	 *
+	 * @param string $earthValue
+	 * @return boolean Indicates wether the earth type should be enabled.
+	 */
+	public static function getEarthValue($earthValue) {
+		$trueValues = array('on', 'yes');
+		return in_array($earthValue, $trueValues);		
+	}
+	
+	/**
+	 * Returns the JS version (true/false as string) of the provided earth parameter.
+	 *
+	 * @param boolean $enableEarth
+	 * @return string
+	 */
+	public static function getJSEarthValue($enableEarth) {		
+		return $enableEarth ? 'true' : 'false';
+	}	
+
+	/**
+	 * @see MapsBaseMap::setFormInputSettings()
+	 *
+	 */	
+	protected function setMapSettings() {
+		global $egMapsGoogleMapsZoom;
+		
+		$this->elementNamePrefix = 'map_google';
+		$this->defaultZoom = $egMapsGoogleMapsZoom;
+	}
+	
+	/**
+	 * @see MapsBaseMap::doMapServiceLoad()
+	 *
+	 */		
+	protected function doMapServiceLoad() {
+		global $egGoogleMapsOnThisPage;
+		
+		self::addGMapDependencies($this->output);
+		$egGoogleMapsOnThisPage++;
+		
+		$this->elementNr = $egGoogleMapsOnThisPage;
+	}
+	
+	/**
+	 * @see MapsBaseMap::addSpecificMapHTML()
+	 *
+	 */	
+	public function addSpecificMapHTML() {
+		global $wgJsMimeType;
+		
+		$enableEarth = self::getEarthValue($this->earth);
+		$this->earth = self::getJSEarthValue($enableEarth);
+		
+		$this->type = self::getGMapType($this->type, $enableEarth);
+		$control = self::getGControlType($this->controls);	
+			
+		$this->output .=<<<END
+
+<div id="$this->mapName" class="$this->class" style="$this->style" ></div>
+<script type="$wgJsMimeType"> /*<![CDATA[*/
+addLoadEvent(
+	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, new $control(), $this->autozoom, $this->earth, [getGMarkerData($this->marker_lat, $this->marker_lon, '$this->title', '$this->label', '')])
 );
-/*]]>*/
-</script>
+/*]]>*/ </script>
 
 END;
 
-	return $output;
 	}
-
-
+	
 }
 

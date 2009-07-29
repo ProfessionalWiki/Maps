@@ -26,7 +26,6 @@ class MapsOpenLayers extends MapsBaseMap {
 	 * @param unknown_type $includePath The path to the extension directory
 	 */
 	public static function loadDependencyWhenNeeded(&$output, $layer) {
-		global $loadedBing, $loadedYahoo, $loadedOL, $loadedOSM;
 		global $wgJsMimeType;
 		global $egGoogleMapsOnThisPage, $egMapsIncludePath;
 		
@@ -38,16 +37,16 @@ class MapsOpenLayers extends MapsBaseMap {
 					}
 				break;
 			case 'bing' : case 'virtual-earth' :
-				if (!$loadedBing) { $output .= "<script src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>\n"; $loadedBing = true; }
+				if (!self::$loadedBing) { $output .= "<script src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>\n"; self::$loadedBing = true; }
 				break;
 			case 'yahoo' : case 'yahoo-maps' :
-				if (!$loadedYahoo) { $output .= "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>\n"; $loadedYahoo = true; }
+				if (!self::$loadedYahoo) { $output .= "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>\n"; self::$loadedYahoo = true; }
 				break;
 			case 'openlayers' : case 'open-layers' :
-				if (!$loadedOL) { $output .= "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>\n"; $loadedOL = true; }
+				if (!self::$loadedOL) { $output .= "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>\n"; self::$loadedOL = true; }
 				break;
 			case 'osm' : case 'openstreetmap' :
-				if (!$loadedOSM) { $output .= "<script type='$wgJsMimeType' src='$egMapsIncludePath/OpenLayers/OSM/OpenStreetMap.js'></script>\n"; $loadedOSM = true; }
+				if (!self::$loadedOSM) { $output .= "<script type='$wgJsMimeType' src='$egMapsIncludePath/OpenLayers/OSM/OpenStreetMap.js'></script>\n"; self::$loadedOSM = true; }
 				break;													
 		}		
 	}
@@ -104,40 +103,50 @@ class MapsOpenLayers extends MapsBaseMap {
 		return MapsMapper::createControlsString($controls, $egMapsOLControls);
 	}		
 	
-	public static function displayMap(&$parser, $map) {
-		global $egOpenLayersOnThisPage, $egMapsOpenLayersZoom;
-		global $wgJsMimeType;
+	/**
+	 * @see MapsBaseMap::setFormInputSettings()
+	 *
+	 */	
+	protected function setMapSettings() {
+		global $egMapsOpenLayersZoom;
 		
-		$params = MapsMapper::setDefaultParValues($map, true);
+		$this->elementNamePrefix = 'open_layer';
+		$this->defaultZoom = $egMapsOpenLayersZoom;
+	}
+	
+	/**
+	 * @see MapsBaseMap::doMapServiceLoad()
+	 *
+	 */		
+	protected function doMapServiceLoad() {
+		global $egOpenLayersOnThisPage;
 		
-		// Go through the array with map parameters and create new variables
-		// with the name of the key and value of the item.
-		foreach($params as $paramName => $paramValue) {
-			if (empty(${$paramName})) ${$paramName} = $paramValue;
-		}		
-		
-		if (strlen($zoom) < 1) $zoom = $egMapsOpenLayersZoom;
-		
-		$output = '';
-		
-		MapsOpenLayers::addOLDependencies($output);
+		self::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;
 		
-		$controlItems = MapsOpenLayers::createControlsString($controls);
+		$this->elementNr = $egOpenLayersOnThisPage;
+	}	
+	
+	/**
+	 * @see MapsBaseMap::addSpecificMapHTML()
+	 *
+	 */	
+	public function addSpecificMapHTML() {
+		global $wgJsMimeType;
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($output, $layers);
-
-		$coordinates = str_replace('″', '"', $coordinates);
-		$coordinates = str_replace('′', "'", $coordinates);
-
-		list($lat, $lon) = MapsUtils::getLatLon($coordinates);
-
-		$width = $width . 'px';
-		$height = $height . 'px';		
+		$controlItems = MapsOpenLayers::createControlsString($this->controls);
 		
-		$output .="<div id='openlayer_$egOpenLayersOnThisPage' style='width: $width; height: $height; background-color: #cccccc;'></div><script type='$wgJsMimeType'>initOpenLayer('openlayer_$egOpenLayersOnThisPage', $lon, $lat, $zoom, [$layerItems], [$controlItems],[getOLMarkerData($lon, $lat, '', '')]);</script>";
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
 
-        return $output;
+		MapsUtils::makePxValue($this->width);
+		MapsUtils::makePxValue($this->height);
+		
+		$this->output .="<div id='$this->mapName' style='width: $this->width; height: $this->height; background-color: #cccccc;'></div>
+		<script type='$wgJsMimeType'> /*<![CDATA[*/
+			addLoadEvent(
+				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[getOLMarkerData($this->marker_lon, $this->marker_lat, '$this->title', '$this->label')])
+			);
+		/*]]>*/ </script>";
 	}
 
 }

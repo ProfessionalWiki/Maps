@@ -40,14 +40,34 @@ function createGMarker(point, title, label, icon) {
 }
 
 /**
+ * Returns GMap2 object with the provided properties and markers.
+ */
+function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, control, scrollWheelZoom, earthEnabled, markers) {
+	var map;
+	
+	if (GBrowserIsCompatible()) {
+		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), new GLatLng(lat, lon), zoom, type, control, scrollWheelZoom, earthEnabled);
+	
+		for (i in markers) {
+			var marker = markers[i];
+			map.addOverlay(createGMarker(marker.point, marker.title, marker.label, marker.icon));
+		}
+	}
+	
+	return map;
+}
+
+/**
  * Returns GMap2 object with the provided properties.
  */
 function createGoogleMap(mapElement, size, center, zoom, type, control, scrollWheelZoom, earthEnabled) {
 	var map = new GMap2(mapElement, {size: size});
 	
 	if (earthEnabled) map.addMapType(G_SATELLITE_3D_MAP);
+	map.addMapType(type);
 	
-	map.setCenter(center, zoom, type);
+	map.setMapType(type);
+	map.setCenter(center, zoom);
 	map.addControl(new GMapTypeControl());
 	
 	if (typeof(control) != 'undefined') map.addControl(control);
@@ -104,7 +124,7 @@ function showGAddress(address, mapName, outputElementName, notFoundFormat) {
 				window.alert(address + ' ' + notFoundFormat);
 			} else {
 				map.clearOverlays();
-				map.setCenter(point, 14);
+				map.setCenter(point);
 				var marker = new GMarker(point);
 				map.addOverlay(marker);
 				document.getElementById(outputElementName).value = convertLatToDMS(point.y) + ', ' + convertLngToDMS(point.x);
@@ -113,3 +133,7 @@ function showGAddress(address, mapName, outputElementName, notFoundFormat) {
 	);
 
 }
+ 
+ function getGMarkerData(lat, lon, title, label, icon) {
+		return {point: new GLatLng(lat, lon), title: title, label: label, icon: icon};
+	}

@@ -15,10 +15,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-class MapsGoogleGeocoder {
-
-	function callGeocoder($address) {
-		global $GeocoderCache, $egGoogleMapsKey;
+final class MapsGoogleGeocoder extends MapsBaseGeocoder {
+	
+	/**
+	 * @see MapsBaseGeocoder::geocode()
+	 *
+	 * @param unknown_type $address
+	 */
+	public static function geocode($address) {
+		global $egGoogleMapsKey;
 
 		// In case the google maps api key is not set, return false
 		if (empty($egGoogleMapsKey)) return false;
@@ -39,7 +44,6 @@ class MapsGoogleGeocoder {
 		}
 		else { // When the request fails, return false
 			return false;
-		}
+		}		
 	}
-
 }

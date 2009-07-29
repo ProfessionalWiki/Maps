@@ -18,136 +18,59 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-class MapsGeocoder {
+final class MapsGeocoder {
+	// TODO: some refactoring: the arrays containing the result should be generalized - currently only logical for the Google Geocoder service
 
-	private static $GeocoderCache = array();
+	private static $mEnableCache = true;
+	private static $mGeocoderCache = array();
 
-	public static function renderGeocoder(&$parser, $address) {
-		$params = func_get_args();
-		array_shift($params); # first one is parser - we don't need it
-		array_shift($params); # second one is address
-
-		$params_hash = array();
-	
-		foreach ($params as $param) {
-	                $pair = explode('=', $param, 2);
-	
-	                if (count($pair) == 2)
-	                {
-				$key = trim($pair[0]);
-				$val = trim($pair[1]);
-	
-				$params_hash[$key] = $val;
-	                }
-			else
-			{
-				$params_hash[$param] = true;
-			}
-	        }
-	
-		$geovalues = MapsGeocoder::callGeocoder($address);
-	
-		if (!$geovalues)
-		{
-			return '';
-		}
-	
-		return $geovalues[2].', '.$geovalues[3];
+	public static function renderGeocoder(&$parser, $address, $service = '', $mappingService = '') {
+		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
+		return $geovalues ? $geovalues[2].', '.$geovalues[3] : '';
 	}
 
-
-
-	public static function renderGeocoderLat(&$parser, $address) {
-		$params = func_get_args();
-		array_shift($params); # first one is parser - we don't need it
-		array_shift($params); # second one is address
-
-		$params_hash = array();
-	
-	        foreach ($params as $param)
-	        {
-	                $pair = explode('=', $param, 2);
-	
-	                if (count($pair) == 2)
-	                {
-				$key = trim($pair[0]);
-				$val = trim($pair[1]);
-	
-				$params_hash[$key] = $val;
-	                }
-			else
-			{
-				$params_hash[$param] = true;
-			}
-	        }
-	
-		$geovalues = MapsGeocoder::callGeocoder($address);
-	
-		if (!$geovalues)
-		{
-			return '';
-		}
-	
-		return $geovalues[2];
+	public static function renderGeocoderLat(&$parser, $address, $service = '') {
+		$geovalues = MapsGeocoder::geocode($address, $service);
+		return $geovalues ? $geovalues[2] : '';
 	}
 
-
-
-	public static function renderGeocoderLng(&$parser, $address) {
-		$params = func_get_args();
-		array_shift($params); # first one is parser - we don't need it
-		array_shift($params); # second one is address
-	
-		$params_hash = array();
-	
-		foreach ($params as $param)
-	       {
-	               $pair = explode('=', $param, 2);
-	
-	               if (count($pair) == 2)
-	               {
-				$key = trim($pair[0]);
-				$val = trim($pair[1]);
-	
-				$params_hash[$key] = $val;
-			}
-			else
-			{
-				$params_hash[$param] = true;
-			}
-		}
-	
-		$geovalues = MapsGeocoder::callGeocoder($address);
-	
-		if (!$geovalues)
-		{
-			return '';
-		}
-	
-		return $geovalues[3];
+	public static function renderGeocoderLng(&$parser, $address, $service = '') {
+		$geovalues = MapsGeocoder::geocode($address, $service);
+		return $geovalues ? $geovalues[3] : '';
 	}
 
-	private static function callGeocoder($address, $service = 'google') {
-		MapsGeocoder::$GeocoderCache;
-	
-		// If the adress is already in the cache, return the coordinates
-		if (isset(MapsGeocoder::$GeocoderCache[$address])) return MapsGeocoder::$GeocoderCache[$address];
+	/**
+	 * Geocode an address with the provided geocoding service
+	 *
+	 * @param unknown_type $address
+	 * @param unknown_type $service
+	 * @return unknown
+	 */
+	private static function geocode($address, $service, $mappingService) {
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		
+		// If the adress is already in the cache and the cache is enabled, return the coordinates
+		if (self::$mEnableCache && array_key_exists($address, MapsGeocoder::$mGeocoderCache)) {
+			return self::$mGeocoderCache[$address];
+		}
+		
+		$service = self::getValidGeoService($service, $mappingService);
 
 		// If not, use the selected geocoding service to geocode the provided adress
-		switch($service) {
-			case '':
-				MapsGeocoder::addAutoloadClassIfNeeded('', '');
-				$coordinates = '';
+		switch(strtolower($service)) {
+			case 'yahoo':
+				self::addAutoloadClassIfNeeded('MapsYahooGeocoder', 'Maps_YahooGeocoder.php');
+				$coordinates = MapsYahooGeocoder::geocode($address);
 				break;
 			default:
-				MapsGeocoder::addAutoloadClassIfNeeded('MapsGoogleGeocoder', 'Maps_GoogleGeocoder.php');
-				$coordinates = MapsGoogleGeocoder::callGeocoder($address);
+				self::addAutoloadClassIfNeeded('MapsGoogleGeocoder', 'Maps_GoogleGeocoder.php');
+				$coordinates = MapsGoogleGeocoder::geocode($address);
 				break;
 		}
 
-		if ($coordinates) {
-			// Add the obtained coordinates to the cache when there is a result
-			MapsGeocoder::$GeocoderCache[$address] = $coordinates;
+		// Add the obtained coordinates to the cache when there is a result and the cache is enabled
+		if (self::$mEnableCache && isset($coordinates)) {
+			MapsGeocoder::$mGeocoderCache[$address] = $coordinates;
 		}
 
 		return $coordinates;
@@ -157,6 +80,37 @@ class MapsGeocoder {
 		global $wgAutoloadClasses, $egMapsIP;
 		if (!array_key_exists($className, $wgAutoloadClasses)) $wgAutoloadClasses[$className] = $egMapsIP . '/Geocoders/' . $fileName;
 	}
+	
+	/**
+	 * Make sure that the geo service is one of the available
+	 *
+	 * @param unknown_type $service
+	 * @return unknown
+	 */
+	private static function getValidGeoService($service, $mappingService) {
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		
+		if (strlen($service) < 1) {
+			
+			switch ($mappingService) {
+				case 'googlemaps' :
+					$service = 'google';
+					break;
+				case 'yahoomaps' :
+					$service = 'yahoo';					
+					break;	
+				default :
+					$service = $egMapsDefaultGeoService;
+					break;
+			}
+			
+		}
+		else {
+			if(!in_array($service, $egMapsAvailableGeoServices)) $service = $egMapsDefaultGeoService;
+		}
+
+		return $service;
+	}	
 }
 
 

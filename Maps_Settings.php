@@ -4,6 +4,7 @@
  * File defining the settings for the Maps extension
  * More info can be found at http://www.mediawiki.org/wiki/Extension:Maps#Settings
  *
+ *                          NOTICE:
  * Changing one of these settings can be done by copieng or cutting it, 
  * and placing it in LocalSettings.php, AFTER the inclusion of Maps.
  *
@@ -21,23 +22,35 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Your Google Maps API key. Required for displaying Google Maps, and using the Google Geocoder services.
 # Haven't got an API key yet? Get it here: http://code.google.com/apis/maps/signup.html
-$egGoogleMapsKey = ""; 
+if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ""; 
 
 # Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
 # Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
-$egYahooMapsKey = ""; 
+if (empty($egYahooMapsKey)) $egYahooMapsKey = ""; 
 
 
 
 # Map services configuration
 
-# Array of String. Array containing all the services that will be made available to the user.
+# Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
 $egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers');
 
 # String. The default mapping service, which will be used when no service is provided by the user.
 # This service needs to be enabled, if not, the first one from the available services will be taken.
 $egMapsDefaultService = 'googlemaps';
+
+
+
+# Geocoding services configuration
+
+# Array of String. Array containing all the geocoding services that will be made available to the user.
+# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
+$egMapsAvailableGeoServices = array('google', 'yahoo');
+
+# String. The default geocoding service, which will be used when no service is provided by the user.
+# This service needs to be enabled, if not, the first one from the available services will be taken.
+$egMapsDefaultGeoService = 'google';
 
 
 

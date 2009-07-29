@@ -24,7 +24,7 @@ final class MapsMapper {
 	 * @return unknown
 	 */
 	public static function setDefaultParValues(array $params, $strict) {
-		global $egMapsMapCoordinates, $egMapsMapZoom, $egMapsMapWidth, $egMapsMapHeight, $egMapsEnableAutozoom, $egMapsEnableEarth;
+		global $egMapsMapCoordinates, $egMapsMapWidth, $egMapsMapHeight, $egMapsEnableAutozoom, $egMapsEnableEarth;
 		
 		$map = array(
 			'service' => '',
@@ -40,6 +40,8 @@ final class MapsMapper {
 			'class' => 'pmap',
 			'layers' => array(),	
 			'baselayer' => '',
+			'title' => '',
+			'label' => '',
 			'style' => ''	
 			);
 		
@@ -50,8 +52,8 @@ final class MapsMapper {
 		// Alias for centre
 		if(array_key_exists('center', $params)) $map['centre'] = $params['center'];
 		
-		MapsMapper::enforceArrayValues($map['controls']);
-		MapsMapper::enforceArrayValues($map['layers']);
+		self::enforceArrayValues($map['controls']);
+		self::enforceArrayValues($map['layers']);
 		
 		return $map;
 	}
@@ -70,17 +72,15 @@ final class MapsMapper {
 	}			
 	
 	/**
-	 * Sets the default map properties and then builds up the HTML depending
-	 * on the chosen map service and the provided map properties.
+	 * Sets the default map properties, gets the map HTML depending 
+	 * on the provided service, and then returns it.
 	 *
 	 * @param unknown_type $parser
 	 * @return unknown
 	 */
 	public static function displayPointRender(&$parser) {
-		global $egMapsDefaultService, $egMapsAvailableServices;
-		
 		$params = func_get_args();
-		array_shift( $params ); // we already know the $parser ...
+		array_shift( $params ); // We already know the $parser ...
 		
 		if (is_array($params[0])) $params = $params[0];
 				
@@ -98,41 +98,111 @@ final class MapsMapper {
 			}
 		}
 		
-		$map = MapsMapper::setDefaultParValues($map, true);
+		$map = self::setDefaultParValues($map, true);
 
-		// Call the function according to the map service to get the HTML output
-		if(!in_array($map['service'], $egMapsAvailableServices)) $map['service'] = $egMapsDefaultService;
+		$map['service'] = self::getValidService($map['service']);
 
+		
 		switch($map['service']) {
-			case 'openlayers' : case 'layers' : 
-				$output = MapsOpenLayers::displayMap($parser, $map);
+			case 'openlayers' :
+				$mapClass = new MapsOpenLayers();
 				break;
-			case 'yahoomaps' : case 'yahoo' : 
-				$output = MapsYahooMaps::displayMap($parser, $map);
+			case 'yahoomaps' : 
+				$mapClass = new MapsYahooMaps();
 				break;	
 			default:
-				$output = MapsGoogleMaps::displayMap($parser, $map);
+				$mapClass = new MapsGoogleMaps();
 				break;
 		}
 
+		// Call the function according to the map service to get the HTML output
+		$output = $mapClass->displayMap($parser, $map);
+		
 		// Return the result
 		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 
+	/**
+	 * Turns the address parameter into coordinates, then lets 
+	 * @see MapsMapper::displayPointRender() do the work and returns it.
+	 *
+	 * @param unknown_type $parser
+	 * @return unknown
+	 */
 	public static function displayAddressRender(&$parser) {		
+		// TODO: refactor to reduce redundancy and improve performance
+		global $egMapsDefaultService;
+		
 		$params = func_get_args();
 		array_shift( $params ); // we already know the $parser ...
 		
 		for ($i = 0; $i < count($params); $i++) {
 			$split = split('=', $params[$i]);
+			if (strtolower(trim($split[0])) == 'service' && count($split) > 1) {
+				$service = trim($split[1]);
+				//echo "<!-- ||| $service -->";
+			}
+		}
+
+		
+		$service = isset($service) ? MapsMapper::getValidService($service) : $egMapsDefaultService;
+		
+		$geoservice = '';
+		
+		for ($i = 0; $i < count($params); $i++) {
+			$split = split('=', $params[$i]);
+			if (strtolower(trim($split[0])) == 'geoservice' && count($split) > 1) {
+				$geoservice = trim($split[1]);
+			}
+		}	
+		
+		for ($i = 0; $i < count($params); $i++) {
+			$split = split('=', $params[$i]);
 			if (strtolower(trim($split[0])) == 'address' && count($split) > 1) {
-				$params[$i] = 'coordinates=' . MapsGeocoder::renderGeocoder($parser, trim($split[1]));
+				$params[$i] = 'coordinates=' . MapsGeocoder::renderGeocoder($parser, trim($split[1]), $geoservice, $service);
 			}
 			if (count($split) == 1) { // Default parameter (without name)
-				$params[$i] = 'coordinates=' . MapsGeocoder::renderGeocoder($parser, trim($split[0]));
+				$params[$i] = 'coordinates=' . MapsGeocoder::renderGeocoder($parser, trim($split[0]), $geoservice, $service);
 			}
 		}
 		
-		return MapsMapper::displayPointRender($parser, $params);
+		return self::displayPointRender($parser, $params);
+	}
+	
+	/**
+	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
+	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
+	 *
+	 * @param unknown_type $service
+	 * @return unknown
+	 */
+	public static function getValidService($service) {
+		global $egMapsAvailableServices, $egMapsDefaultService;
+		
+		$service = self::getMainServiceName($service);
+		if(!in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;
+		
+		return $service;
+	}
+	
+	/**
+	 * Checks if the service name is an allias for an actual service,
+	 * and changes it into the main service name if this is the case.
+	 *
+	 * @param unknown_type $service
+	 * @return unknown
+	 */
+	public static function getMainServiceName($service) {
+		global $egMapsServices;
+		
+		if (!array_key_exists($service, $egMapsServices)) {
+			foreach ($egMapsServices as $serviceName => $aliasList) {
+				if (in_array($service, $aliasList)) {
+					 $service = $serviceName;
+				}
+			}
+		}
+		
+		return $service;
 	}
 }

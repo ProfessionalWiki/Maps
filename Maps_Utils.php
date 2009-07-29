@@ -83,6 +83,14 @@ class MapsUtils {
 			return $decimal . "° E";
 		}
 	}
-
+	
+	/**
+	 * Add 'px' to a provided width/heigt value
+	 *
+	 * @param unknown_type $value
+	 */
+	public static function makePxValue(&$value) {
+		if (substr($value, strlen($value) - 2) != 'px') $value .= 'px';
+	}
 
 }

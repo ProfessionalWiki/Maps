@@ -9,46 +9,53 @@
   
 
 /**
+ * Get a valid control name (with excat lower and upper case letters),
+ * or return false when the control is not allowed.
+ */
+function getValidControlName(control) {
+	var OLControls = ['ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan', 
+	                  'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
+	                  'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
+	                  'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
+	                  'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'Permalink',
+	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split', 
+	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
+	                  'ZoomToMaxExtent'];
+	
+	for (i in OLControls) {
+		if (control == OLControls[i].toLowerCase()) {
+			return OLControls[i];
+		}
+	}
+	
+	return false;
+}
+
+/**
  * Create and initialize an OpenLayers map. 
  * The resulting map is returned by the function but no further handling is required in most cases.
  */
 function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data){
 	// Create a new OpenLayers map without any controls on it
-	var map = new OpenLayers.Map( mapName, {controls: []} );
+	var mapOptions = 	{ /*
+						projection: new OpenLayers.Projection("EPSG:900913"), 
+						displayProjection: new OpenLayers.Projection("EPSG:900913"),
+						units: "m",
+						*/
+						controls: []
+						}
+
+	var map = new OpenLayers.Map(mapName, mapOptions);
 	
 	// Add the controls
 	for (i in controls) {
 		
-		// TODO: simply eval the given control name. Would scratch the switch, allow all OL controls, but would be more error prone.
+		// If a string is provided, find the correct name for the control, and use eval to create the object itself
 		if (typeof controls[i] == 'string') {
-			switch(controls[i]) {
-				case 'layerswitcher' :
-					map.addControl( new OpenLayers.Control.LayerSwitcher() ); // Layer switch control
-					break;
-				case 'mouseposition' :
-					map.addControl( new OpenLayers.Control.MousePosition() ); // Coordinates at lower right corner
-					break;	
-				case 'navigation' :
-					map.addControl( new OpenLayers.Control.Navigation() ); // Mouse wheel zoom & map drag abilities
-					break;	
-				case 'panzoom' :
-					map.addControl( new OpenLayers.Control.PanZoom() ); // Pan control + short zoom
-					break;					
-				case 'panzoombar' :
-					map.addControl( new OpenLayers.Control.PanZoomBar() ); // Pan control + long (vertical) zoom
-					break;	
-				case 'permalink' :
-					map.addControl( new OpenLayers.Control.Permalink() ); // Adds permalink (with coordniates, zoom and layers encoded)
-					break;	
-				case 'scaleline' :
-					map.addControl( new OpenLayers.Control.ScaleLine() ); // Cale indication at lower left corner
-					break;
-				case 'overviewmap' :
-					map.addControl( new OpenLayers.Control.OverviewMap() ); // Minimap at lower right corner
-					break;	
-				case 'keyboarddefaults' :
-					map.addControl( new OpenLayers.Control.KeyboardDefaults() ); // Map movement with arrow keys
-					break;																							
+			control = getValidControlName(controls[i]);
+			
+			if (control) {
+				eval(' map.addControl( new OpenLayers.Control.' + control + '() ); ')
 			}
 		}
 		else {
@@ -76,27 +83,28 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 		var newLayer = null;
 		
 		// TODO: allow adding of custom layers somehow
+		// TODO: layer name alliasing system? php or js based?
 		switch(mapTypes[i]) {
 			case 'google' : case 'google-normal' : case 'google-satellite' : case 'google-hybrid' : case 'google-physical' :
 				if (googleAPILoaded) {
 					switch(mapTypes[i]) {
 						case 'google-normal' :
-							if (!usedNor){ newLayer = new OpenLayers.Layer.Google( 'Google Maps' ); usedNor = true; }
+							if (!usedNor){ newLayer = new OpenLayers.Layer.Google( 'Google Maps' /*, {sphericalMercator:true} */ ); usedNor = true; }
 							break;
 						case 'google-satellite' :
-							if (!usedSat){ newLayer = new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP }); usedSat = true; }
+							if (!usedSat){ newLayer = new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */}); usedSat = true; }
 							break;		
 						case 'google-hybrid' :
-							if (!usedHyb){ newLayer = new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP }); usedHyb = true; } 
+							if (!usedHyb){ newLayer = new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */}); usedHyb = true; } 
 							break;
 						case 'google-physical' :
-							if (!usedPhy){ newLayer = new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP }); usedPhy = true; }
+							if (!usedPhy){ newLayer = new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */}); usedPhy = true; }
 							break;						
 						case 'google' :
-							if (!usedNor){ map.addLayer(new OpenLayers.Layer.Google( 'Google Maps' )); usedNor = true; }
-							if (!usedSat){ map.addLayer(new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP })); usedSat = true; }
-							if (!usedHyb){ map.addLayer(new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP })); usedHyb = true; } 
-							if (!usedPhy){ map.addLayer(new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP })); usedPhy = true; }
+							if (!usedNor){ map.addLayer(new OpenLayers.Layer.Google( 'Google Maps' /*, {sphericalMercator:true} */)); usedNor = true; }
+							if (!usedSat){ map.addLayer(new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */})); usedSat = true; }
+							if (!usedHyb){ map.addLayer(new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */})); usedHyb = true; } 
+							if (!usedPhy){ map.addLayer(new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */})); usedPhy = true; }
 							break;	
 					}
 				}
@@ -105,21 +113,29 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 				}
 				break;
 			case 'bing' : case 'virtual-earth' :
-				if (!usedBing){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Virtual Earth'); usedBing = true; }
+				if (!usedBing){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Virtual Earth' /* , {sphericalMercator:true} */); usedBing = true; }
 				break;
 			case 'yahoo' : case 'yahoo-maps' :
-				if (!usedYahoo){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps'); usedYahoo = true; }
+				if (!usedYahoo){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps' /*, {sphericalMercator:true} */); usedYahoo = true; }
 				break;
 			case 'openlayers' : case 'open-layers' :
 				if (!usedOLWMS){ newLayer = new OpenLayers.Layer.WMS( 'OpenLayers WMS', 'http://labs.metacarta.com/wms/vmap0', {layers: 'basic'} ); usedOLWMS = true; }
 				break;		
 			case 'nasa' :
-				if (!usedNasa){ newLayer = new OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",  {layers: "landsat7"} ); usedNasa = true; }
+				if (!usedNasa){ newLayer = new OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",  {layers: "landsat7" /*, sphericalMercator:true */} ); usedNasa = true; }
 				break;	
-			// FIXME: this will cause the OL API to mess itself up - unknown reason	
-			//case 'osm' : case 'openstreetmap' :
-			//	if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.Mapnik("Open Street Map", { displayOutsideMaxExtent: true, wrapDateLine: true} ); usedOSM = true; }
-			//	break;						
+			// FIXME: this will cause the OL API to mess itself up - other coordinate system?
+			/*
+			case 'osm' : case 'openstreetmap' :
+				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.Osmarender("Open Street Map"); usedOSM = true; }
+				break;	
+			case 'osm-nik' : case 'osm-mapnik' :
+				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"); usedOSM = true; }
+				break;	
+			case 'osm-cycle' : case 'osm-cyclemap' :
+				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.CycleMap("Cycle Map"); usedOSM = true; }
+				break;		
+			*/			
 		}
 		
 		if (newLayer != null) {
@@ -127,7 +143,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 			
 			/*
 			if (isDefaultBaseLayer) {
-				// FIXME: This messed up the layer for some reason
+				// FIXME: This messes up the layer for some reason
 				// Probably fixed by adding this code to an onload event (problem that other layer gets loaded first?) 
 				map.setBaseLayer(newLayer);
 				isDefaultBaseLayer = false;
@@ -137,29 +153,6 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 		
 
 	}	
-		
-	
-	/*
-	
-   var mapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik", {
-      displayOutsideMaxExtent: true,
-      wrapDateLine: true
-   });
-   map.addLayer(mapnik);
-
-   var osmarender = new OpenLayers.Layer.OSM.Osmarender("Osmarender", {
-      displayOutsideMaxExtent: true,
-      wrapDateLine: true
-   });
-   map.addLayer(osmarender);
-
-   var cyclemap = new OpenLayers.Layer.OSM.CycleMap("Cycle Map", {
-      displayOutsideMaxExtent: true,
-      wrapDateLine: true
-   });
-   map.addLayer(cyclemap);
-	
-	*/
 	
 	// Layer to hold the markers
 	var markerLayer = new OpenLayers.Layer.Markers('Markers');
@@ -176,7 +169,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	
 	for (i in marker_data) {
 		if (bounds != null) bounds.extend(marker_data[i].lonlat); // Extend the bounds when no center is set
-		markerLayer.addMarker(getOLMarker(markerLayer, marker_data[i])); // Create and add the marker
+		markerLayer.addMarker(getOLMarker(markerLayer, marker_data[i], map.getProjectionObject())); // Create and add the marker
 	}
 		
 	if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center
@@ -186,9 +179,11 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	return map;
 }
 
-
 	
-function getOLMarker(markerLayer, markerData) {
+	
+function getOLMarker(markerLayer, markerData, projectionObject) {
+	//markerData.lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")); 
+	
 	var marker = new OpenLayers.Marker(markerData.lonlat);
 	
 	if (markerData.title.length + markerData.label.length > 0 ) {
@@ -218,7 +213,12 @@ function getOLMarker(markerLayer, markerData) {
 	
 
 function getOLMarkerData(lon, lat, title, label) {
-	return {lonlat: new OpenLayers.LonLat(lon, lat), title: title, label: label};
+	lonLat = new OpenLayers.LonLat(lon, lat)
+	//lonLat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")); 
+	return {
+		lonlat: lonLat,
+		title: title,
+		label: label};
 }
 
 
@@ -229,58 +229,55 @@ function setOLPopupType(minWidth, minHeight) {
 /**
  * This function holds spesific functionallity for the Open Layers form input of Semantic Maps
  * TODO: Refactor as much code as possible to non specific functions
- * TODO: Centralize geocoding functionallity, and use that code instead of local GG
  */
 function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls) {
-	if (GBrowserIsCompatible()) {
-		var markers = Array();
+	var markers = Array();
 
-		// Show a starting marker only if marker coordinates are provided
-		if (marker_lat != null && marker_lon != null) {
-			markers.push(getOLMarkerData(marker_lon, marker_lat, '', ''));
-		}		
-		
-		// Click event handler for updating the location of the marker
-		// TODO/FIXME: This will probably cause problems when used for multiple maps on one page.
-	     OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
-	         defaultHandlerOptions: {
-	             'single': true,
-	             'double': false,
-	             'pixelTolerance': 0,
-	             'stopSingle': false,
-	             'stopDouble': false
-	         },
+	// Show a starting marker only if marker coordinates are provided
+	if (marker_lat != null && marker_lon != null) {
+		markers.push(getOLMarkerData(marker_lon, marker_lat, '', ''));
+	}		
+	
+	// Click event handler for updating the location of the marker
+	// TODO/FIXME: This will probably cause problems when used for multiple maps on one page.
+     OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
+         defaultHandlerOptions: {
+             'single': true,
+             'double': false,
+             'pixelTolerance': 0,
+             'stopSingle': false,
+             'stopDouble': false
+         },
 
-	         initialize: function(options) {
-	             this.handlerOptions = OpenLayers.Util.extend(
-	                 {}, this.defaultHandlerOptions
-	             );
-	             OpenLayers.Control.prototype.initialize.apply(
-	                 this, arguments
-	             ); 
-	             this.handler = new OpenLayers.Handler.Click(
-	                 this, {
-	                     'click': this.trigger
-	                 }, this.handlerOptions
-	             );
-	         }, 
+         initialize: function(options) {
+             this.handlerOptions = OpenLayers.Util.extend(
+                 {}, this.defaultHandlerOptions
+             );
+             OpenLayers.Control.prototype.initialize.apply(
+                 this, arguments
+             ); 
+             this.handler = new OpenLayers.Handler.Click(
+                 this, {
+                     'click': this.trigger
+                 }, this.handlerOptions
+             );
+         }, 
 
-	         trigger: function(e) {
-	             replaceMarker(mapName, map.getLonLatFromViewPortPx(e.xy));
-	             document.getElementById(locationFieldName).value = convertLatToDMS(map.getLonLatFromViewPortPx(e.xy).lat)+', '+convertLngToDMS(map.getLonLatFromViewPortPx(e.xy).lon);
-	         }
+         trigger: function(e) {
+             replaceMarker(mapName, map.getLonLatFromViewPortPx(e.xy));
+             document.getElementById(locationFieldName).value = convertLatToDMS(map.getLonLatFromViewPortPx(e.xy).lat)+', '+convertLngToDMS(map.getLonLatFromViewPortPx(e.xy).lon);
+         }
 
-	     });
-	     
-		var clickHanler = new OpenLayers.Control.Click();
-	     controls.push(clickHanler);
-	     
-	     var map = initOpenLayer(mapName, lon, lat, zoom, layers, controls, markers);
-		
-		// Make the map variable available for other functions
-		if (!window.OLMaps) window.OLMaps = new Object;
-		eval("window.OLMaps." + mapName + " = map;"); 
-	}	
+     });
+     
+	var clickHanler = new OpenLayers.Control.Click();
+     controls.push(clickHanler);
+     
+     var map = initOpenLayer(mapName, lon, lat, zoom, layers, controls, markers);
+	
+	// Make the map variable available for other functions
+	if (!window.OLMaps) window.OLMaps = new Object;
+	eval("window.OLMaps." + mapName + " = map;"); 
 }
 
 
@@ -320,7 +317,7 @@ function replaceMarker(mapName, newLocation) {
 	var markerLayer = map.getLayer('markerLayer');
 	
 	removeMarkers(markerLayer);
-	markerLayer.addMarker(getOLMarker(markerLayer, getOLMarkerData(newLocation.lon, newLocation.lat, '', '')));
+	markerLayer.addMarker(getOLMarker(markerLayer, getOLMarkerData(newLocation.lon, newLocation.lat, '', ''), map.getProjectionObject()));
 	
 	map.panTo(newLocation);
 }

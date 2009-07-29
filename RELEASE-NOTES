@@ -1,6 +1,42 @@
 For a documentation of all features, see http://www.mediawiki.org/wiki/Extension:Maps
 
-== Maps 0.1 ==
+==Maps change log==
+This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Maps.
+
+===Maps 0.2===
+(2009-07-29)
+
+====New features====
+
+* Backwards compatibility by using the $wgGoogleMapsKey when this one is set and $egGoogleMapsKey isn't.
+
+* Hook for [[Extension:Admin_Links|Admin Links]]
+
+* A true aliasing system for service names
+
+* Centre parameter, that will allow you to set a custom map centre (different from the place where the marker will be put)
+
+* Popups for the markers: title and label parameters to determine the pop-up contents
+
+* Change the OpenLayers control handling. Make it accept all (36) OL controls by using eval() instead of a switch statement in the JS.
+
+* 'physical' in the map type control of Google Maps maps when this map type is set
+
+* Yahoo! geocoder (for parser functions)
+
+====Refactoring====
+
+* Refactor MapsBaseMap and all it's child classes. This will vastly increase code centralization and decrease redundant logic and definitions.
+
+* Major rewrite of the Google Maps and Yahoo! Maps code. The parser function classes should only print a call to a JS function with all needed parameters, which then does all the logic and creates the map.
+
+====Bug fixes====
+
+* Issue causing aliases for service names getting turned into the default service since they are not in the allowed services list
+
+* Remove redundant parts of the OL library
+
+===Maps 0.1=== 
 (2009-07-20)
 
 * Initial release, featuring Google Maps (+ Google Earth), Yahoo! Maps and OpenLayers mapping services
