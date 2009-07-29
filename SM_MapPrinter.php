@@ -16,6 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 abstract class SMMapPrinter extends SMWResultPrinter {
+	// TODO: make class and child's more OOP, in a way similair to class MapsBaseMap in Maps
 
 	protected $m_locations = array();
 	

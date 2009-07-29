@@ -18,45 +18,67 @@ if( !defined( 'MEDIAWIKI' ) ) {
 final class SMGoogleMapsFormInput extends SMFormInput {
 
 	/**
-	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
-	 * the form to handle coordinate data.
+	 * @see SMFormInput::setFormInputSettings()
+	 *
 	 */
-	public static function formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
-		global $wgJsMimeType;
-		global $egGoogleMapsOnThisPage, $egMapsGoogleMapsZoom;		
+	protected function setFormInputSettings() {
+		global $egMapsGoogleMapsZoom;
 		
-		SMGoogleMapsFormInput::$coordinates = $coordinates;
-			
+		$this->elementNamePrefix = 'map_google';
+		$this->showAddresFunction = 'showGAddress';	
+
+		$this->earthZoom = 1;
+		$this->defaultZoom = $egMapsGoogleMapsZoom;
+	}
+	
+
+	/**
+	 * @see SMFormInput::doMapServiceLoad()
+	 *
+	 */
+	protected function doMapServiceLoad() {
+		global $egGoogleMapsOnThisPage;
+
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies(SMGoogleMapsFormInput::$formOutput);
-		}
-		$egGoogleMapsOnThisPage++;		
-		
-		parent::formInputHTML('map_google', $egGoogleMapsOnThisPage, $input_name, $is_mandatory, $is_disabled, $field_args, 'showGAddress');
-		
-		
-		if (empty(SMGoogleMapsFormInput::$coordinates)) {
-			SMGoogleMapsFormInput::$zoom = 1;
-		} else if (strlen(SMGoogleMapsFormInput::$zoom) < 1) {
-			 SMGoogleMapsFormInput::$zoom = $egMapsGoogleMapsZoom;
+			MapsGoogleMaps::addGMapDependencies($this->formOutput);
 		}
 		
-		$enableEarth = SMGoogleMapsFormInput::$mapProperties['earth'] == 'on' || SMGoogleMapsFormInput::$mapProperties['earth'] == 'yes';
+		$egGoogleMapsOnThisPage++;	
+		
+		$this->elementNr = $egGoogleMapsOnThisPage;
+	}
+	
+	/**
+	 * @see SMFormInput::addSpecificFormInputHTML()
+	 *
+	 */
+	protected function addSpecificFormInputHTML() {
+		global $wgJsMimeType;
+		
+		$enableEarth = $this->mapProperties['earth'] == 'on' || $this->mapProperties['earth'] == 'yes';
 		$earth = $enableEarth ? 'true' : 'false';
 		
-		SMGoogleMapsFormInput::$type = MapsGoogleMaps::getGMapType(SMGoogleMapsFormInput::$type, $enableEarth);
-		$control = MapsGoogleMaps::getGControlType(SMGoogleMapsFormInput::$controls);		
+		$this->type = MapsGoogleMaps::getGMapType($this->type, $enableEarth);
+		$control = MapsGoogleMaps::getGControlType($this->controls);		
 		
-		SMGoogleMapsFormInput::$formOutput .= "
-		<div id='".SMGoogleMapsFormInput::$mapName."' class='".SMGoogleMapsFormInput::$class."'></div>
+		$this->formOutput .= "
+		<div id='".$this->mapName."' class='".$this->class."'></div>
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addLoadEvent(makeFormInputGoogleMap('".SMGoogleMapsFormInput::$mapName."', '".SMGoogleMapsFormInput::$coordsFieldName."', ".SMGoogleMapsFormInput::$width.", ".SMGoogleMapsFormInput::$height.", ".SMGoogleMapsFormInput::$centre_lat.", ".SMGoogleMapsFormInput::$centre_lon.", ".SMGoogleMapsFormInput::$zoom.", ".SMGoogleMapsFormInput::$marker_lat.", ".SMGoogleMapsFormInput::$marker_lon.", ".SMGoogleMapsFormInput::$type.", new $control(), ".SMGoogleMapsFormInput::$autozoom.", $earth));
+		addLoadEvent(makeFormInputGoogleMap('".$this->mapName."', '".$this->coordsFieldName."', ".$this->width.", ".$this->height.", ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", ".$this->type.", new $control(), ".$this->autozoom.", $earth));
 		window.unload = GUnload;
 		/*]]>*/</script>";
-
-		return array(SMGoogleMapsFormInput::$formOutput, '');
 	}
+	
+	/**
+	 * @see SMFormInput::manageGeocoding()
+	 *
+	 */
+	protected function manageGeocoding() {
+		global $egGoogleMapsKey;
+		$this->enableGeocoding = strlen(trim($egGoogleMapsKey)) > 0;
+		if ($this->enableGeocoding) MapsGoogleMaps::addGMapDependencies($this->formOutput);		
+	}	
 	
 }

@@ -18,6 +18,8 @@ final class SMMapper extends SMMapPrinter {
 	protected function getResultText($res, $outputmode) {
 		global $egMapsDefaultService;
 		
+		// TODO: allow service parameter to override the default
+		
 		switch ($egMapsDefaultService) {
 			case 'openlayers' : case 'layers' : 
 				$output = SMOpenLayers::getResultText($res, $outputmode);

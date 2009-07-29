@@ -13,12 +13,39 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class SMYahooMaps extends SMMapPrinter {
+	// TODO: create a class instead of a code horror :D
 
 	public function getName() {
 		wfLoadExtensionMessages('SemanticMaps');
 		return wfMsg('sm_yahoomaps_printername');
 	}
 
+	/**
+	 * Returns the Yahoo Map Control type for the provided a general map control
+	 * type. When no match is found, the provided control name will be used.
+	 */
+	public static function getExtraMapControls($controls, $yahooMapsOnThisPage) {
+		global $egMapsYMapControls;
+		
+		$extraMapControls = '';
+		$panAdded = false; $zoomAdded = false;
+		
+		if (count($controls) < 1) $controls = $egMapsYMapControls; // In case no controls are provided, use the default
+		
+		foreach ($controls as $control) { // Loop through the controls, and add the JS needed to add them
+			switch (strtolower($control)) {
+				case 'pan' : 
+					if (!$panAdded) {$extraMapControls .= "yahoo_$yahooMapsOnThisPage.addPanControl(); "; $panAdded = true; }
+					break;				
+				case 'zoom' : 
+					if (!$zoomAdded) {$extraMapControls .= "yahoo_$yahooMapsOnThisPage.addZoomLong(); "; $zoomAdded = true; }
+					break;
+			}
+		}
+		
+		return $extraMapControls;
+	}	
+	
 	protected function getResultText($res, $outputmode) {
 		parent::getResultText($res, $outputmode);
 		
@@ -43,7 +70,7 @@ final class SMYahooMaps extends SMMapPrinter {
 		
 		// Get the Yahoo Maps names for the control and map types
 		$type = MapsYahooMaps::getYMapType($type);
-		$extraMapControls = MapsYahooMaps::getExtraMapControls($controls, $egYahooMapsOnThisPage);
+		$extraMapControls = self::getExtraMapControls($controls, $egYahooMapsOnThisPage);
 		
 		$map_text = "";
 		
@@ -81,7 +108,7 @@ final class SMYahooMaps extends SMMapPrinter {
 					list($lat, $lon, $title, $label, $icon) = $location;
 					$title = str_replace("'", "\'", $title);
 					$label = str_replace("'", "\'", $label);
-					$map_text .= "yahoo_$egYahooMapsOnThisPage.addMarker(createYMarker(new YGeoPoint($lat, $lon), '$title', '$label'));";
+					$map_text .= "yahoo_$egYahooMapsOnThisPage.addOverlay(createYMarker(new YGeoPoint($lat, $lon), '$title', '$label'));";
 				}
 				
 				$map_text .= "	yahoo_$egYahooMapsOnThisPage.drawZoomAndCenter(new YGeoPoint($centre_lat, $centre_lon), $zoom);";

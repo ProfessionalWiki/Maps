@@ -14,12 +14,14 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.1');
+define('SM_VERSION', '0.2');
 
 $smgScriptPath = $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP = $IP . '/extensions/SemanticMaps';
 
 $wgExtensionFunctions[] = 'smfSetup';
+
+$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
 
 $wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
 
@@ -29,11 +31,12 @@ $wgAutoloadClasses['SMMapper'] = $smgIP . '/SM_Mapper.php';
 $wgAutoloadClasses['SMFormInput'] = $smgIP . '/SM_FormInput.php';
 
 function smfSetup() {
-	global $wgExtensionCredits, $egMapsServices, $wgParser, $wgExtensionCredits;
+	global $wgExtensionCredits, $egMapsServices, $egMapsMainServices, $wgParser, $wgExtensionCredits;
 
-	foreach($egMapsServices as $fn) smfInitFormat($fn);
-	$services_list = implode(', ', $egMapsServices);
+	foreach($egMapsMainServices as $service) smfInitFormat($service);
 
+	$services_list = implode(', ', $egMapsMainServices);
+	
 	wfLoadExtensionMessages( 'SemanticMaps' );
 	
 	$wgExtensionCredits['other'][]= array(
@@ -44,56 +47,50 @@ function smfSetup() {
 		'description' => wfMsg('semanticmaps_desc') . $services_list
 	);
 
-	// Add the map services that have form input type hooks to Semantic Forms if it is installed
-	global $sfgFormPrinter;
-	if ($sfgFormPrinter) {
-		$sfgFormPrinter->setInputTypeHook('map', 'selectFormInputHTML', array());
-		
-		$sfgFormPrinter->setInputTypeHook('googlemap', array('SMGoogleMapsFormInput', 'formInputHTML'), array());
-		$sfgFormPrinter->setInputTypeHook('googlemaps', array('SMGoogleMapsFormInput', 'formInputHTML'), array());
-		$sfgFormPrinter->setInputTypeHook('google', array('SMGoogleMapsFormInput', 'formInputHTML'), array());		
-		
-		$sfgFormPrinter->setInputTypeHook('yahoomap', array('SMYahooMapsFormInput', 'formInputHTML'), array());
-		$sfgFormPrinter->setInputTypeHook('yahoomaps', array('SMYahooMapsFormInput', 'formInputHTML'), array());
-		$sfgFormPrinter->setInputTypeHook('yahoo', array('SMYahooMapsFormInput', 'formInputHTML'), array());
-		
-		$sfgFormPrinter->setInputTypeHook('openlayer', array('SMOpenLayersFormInput', 'formInputHTML'), array());
-		$sfgFormPrinter->setInputTypeHook('openlayers', array('SMOpenLayersFormInput', 'formInputHTML'), array());
-		$sfgFormPrinter->setInputTypeHook('layers', array('SMOpenLayersFormInput', 'formInputHTML'), array());
-	}
+	smfInitializeService('map', 'SMMapper');
+	
+	smfInitializeServiceAliases('googlemaps', 'SMGoogleMaps');
+	smfInitializeServiceAliases('yahoomaps', 'SMYahooMaps');
+	smfInitializeServiceAliases('openlayers', 'SMOpenLayers');
+}
 
+/**
+ * Apply smfInitializeService() to a service and all it's aliases.
+ *
+ * @param unknown_type $mainServiceName
+ * @param unknown_type $queryPrinter
+ */
+function smfInitializeServiceAliases($mainServiceName, $queryPrinter) {
+	global $egMapsServices;
+	
+	smfInitializeService($mainServiceName, $queryPrinter, $mainServiceName);
+	foreach ($egMapsServices[$mainServiceName] as $alias) smfInitializeService($alias, $queryPrinter, $mainServiceName);
+}
+
+/**
+ * Add the service name as result format for the provided query printer, 
+ * and set a hook for it's form input.
+ *
+ * @param unknown_type $service
+ * @param unknown_type $queryPrinter
+ * @param unknown_type $mainName
+ */
+function smfInitializeService($service, $queryPrinter, $mainName = '') {
+	global $smwgResultFormats, $sfgFormPrinter;
+	
 	// Check if $smwgResultFormats, a global variable introduced in SMW 1.2.2, is set
-	global $smwgResultFormats;
+	// and add the query printer to the result format.
 	if (isset($smwgResultFormats)) {
-		$smwgResultFormats['map'] = 'SMMapper';
-		
-		$smwgResultFormats['googlemap'] = 'SMGoogleMaps';
-		$smwgResultFormats['googlemaps'] = 'SMGoogleMaps';
-		$smwgResultFormats['google'] = 'SMGoogleMaps';
-		
-		$smwgResultFormats['openlayer'] = 'SMOpenLayers';
-		$smwgResultFormats['openlayers'] = 'SMOpenLayers';
-		$smwgResultFormats['layers'] = 'SMOpenLayers';
-		
-		$smwgResultFormats['yahoomap'] = 'SMYahooMaps';
-		$smwgResultFormats['yahoomaps'] = 'SMYahooMaps';
-		$smwgResultFormats['yahoo'] = 'SMYahooMaps';
+		$smwgResultFormats[$service] = $queryPrinter;
 	}
 	else {
-		SMWQueryProcessor::$formats['map'] = 'SMMapper';
-		
-		SMWQueryProcessor::$formats['googlemap'] = 'SMGoogleMaps';
-		SMWQueryProcessor::$formats['googlemaps'] = 'SMGoogleMaps';
-		SMWQueryProcessor::$formats['google'] = 'SMGoogleMaps';
-		
-		SMWQueryProcessor::$formats['openlayer'] = 'SMOpenLayers';
-		SMWQueryProcessor::$formats['openlayers'] = 'SMOpenLayers';
-		SMWQueryProcessor::$formats['layers'] = 'SMOpenLayers';
-		
-		SMWQueryProcessor::$formats['yahoomap'] = 'SMYahooMaps';
-		SMWQueryProcessor::$formats['yahoomaps'] = 'SMYahooMaps';
-		SMWQueryProcessor::$formats['yahoo'] = 'SMYahooMaps';
+		SMWQueryProcessor::$formats[$service] = $queryPrinter;
 	}
+	
+	// Add the form input hook for the service
+	$field_args = array();
+	if (strlen($mainName) > 0) $field_args['service_name'] = $mainName;
+	$sfgFormPrinter->setInputTypeHook($service, 'smfSelectFormInputHTML', $field_args);
 }
 
 /**
@@ -135,27 +132,30 @@ function smfInitFormat( $format ) {
  * @param unknown_type $field_args
  * @return unknown
  */
-function selectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
+function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
 	global $egMapsAvailableServices, $egMapsDefaultService;
 	
-	// If the provided service is not one of the allowed ones, use the default
-	if(!in_array($field_args['service'], $egMapsAvailableServices)) $field_args['service'] = $egMapsDefaultService;
+	// If service_name is set, use this value, and ignore any given service parameters
+	// This will prevent ..input type=googlemaps|service=yahoo.. from shwoing up a Yahoo! Maps map
+	if (array_key_exists('service_name', $field_args)) $field_args['service'] = $field_args['service_name'];
+		
+	$field_args['service'] = MapsMapper::getValidService($field_args['service']);
 	
-	// Get the form input HTML from the hook corresponding with the provided service
+	// Create an instace of 
 	switch ($field_args['service']) {
-		case 'openlayers' : case 'layers' : 
-			$output = SMOpenLayersFormInput::formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);
+		case 'googlemaps' :
+			$formInput = new SMGoogleMapsFormInput();
+			break;			
+		case 'openlayers' :
+			$formInput = new SMOpenLayersFormInput();
 			break;
-		case 'yahoomaps' : case 'yahoo' : 
-			$output = SMYahooMapsFormInput::formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);
-			break;	
-		default:
-			$output = SMGoogleMapsFormInput::formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);
+		case 'yahoomaps' :
+			$formInput = new SMYahooMapsFormInput();
 			break;				
 	}
 	
-	return $output;
-			
+	// Get and return the form input HTML from the hook corresponding with the provided service
+	return $formInput->formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);		
 }
 
 function smfGetDynamicInput($id, $value, $args='') {
@@ -163,5 +163,18 @@ function smfGetDynamicInput($id, $value, $args='') {
 	return '<input id="'.$id.'" '.$args.' value="'.$value.'" onfocus="if (this.value==\''.$value.'\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\''.$value.'\';}" />';
 }
 
-
+/**
+ * Adds a link to Admin Links page
+ */
+function smfAddToAdminLinks(&$admin_links_tree) {
+    $displaying_data_section = $admin_links_tree->getSection(wfMsg('smw_adminlinks_displayingdata'));
+    // Escape if SMW hasn't added links
+    if (is_null($displaying_data_section))
+        return true;
+    $smw_docu_row = $displaying_data_section->getRow('smw');
+    wfLoadExtensionMessages('SemanticMaps');
+    $sm_docu_label = wfMsg('adminlinks_documentation', wfMsg('semanticmaps_name'));
+    $smw_docu_row->addItem(AlItem::newFromExternalLink("http://www.mediawiki.org/wiki/Extension:Semantic_Maps", $sm_docu_label));
+    return true;
+}
 

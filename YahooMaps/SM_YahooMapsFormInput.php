@@ -1,7 +1,5 @@
 <?php
 
-if (!defined('MEDIAWIKI')) die();
-
 /**
 * Form input hook that adds an Yahoo! Maps map format to Semantic Forms
  *
@@ -11,52 +9,73 @@ if (!defined('MEDIAWIKI')) die();
  * @author Jeroen De Dauw
  */
 
-final class SMYahooMapsFormInput extends SMFormInput {
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
 
-	/*
-	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
-	 * the form to handle coordinate data.
+final class SMYahooMapsFormInput extends SMFormInput {
+	
+	/**
+	 * @see SMFormInput::setFormInputSettings()
+	 *
 	 */
-	public static function formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
-		global $wgJsMimeType;
-		global $egYahooMapsOnThisPage, $egGoogleMapsOnThisPage, $egMapsYahooMapsZoom;		
+	protected function setFormInputSettings() {
+		global $egMapsYahooMapsZoom;
 		
-		SMYahooMapsFormInput::$coordinates = $coordinates;
-			
-		if (empty($egGoogleMapsOnThisPage)) {
-			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies(SMYahooMapsFormInput::$formOutput);
-		}		
+		$this->elementNamePrefix = 'map_yahoo';
+		$this->showAddresFunction = 'showYAddress';		
+
+		$this->earthZoom = 17;
+		$this->defaultZoom = $egMapsYahooMapsZoom;			
+	}	
+	
+	/**
+	 * @see SMFormInput::doMapServiceLoad()
+	 *
+	 */
+	protected function doMapServiceLoad() {
+		global $egYahooMapsOnThisPage;
 		
 		if (empty($egYahooMapsOnThisPage)) {
 			$egYahooMapsOnThisPage = 0;
-			MapsYahooMaps::addYMapDependencies(SMYahooMapsFormInput::$formOutput);
+			MapsYahooMaps::addYMapDependencies($this->formOutput);
 		}
-		$egYahooMapsOnThisPage++;		
+		$egYahooMapsOnThisPage++;			
 		
-		parent::formInputHTML('map_yahoo', $egYahooMapsOnThisPage, $input_name, $is_mandatory, $is_disabled, $field_args, 'showYAddress');
+		$this->elementNr = $egYahooMapsOnThisPage;
+	}	
+	
+	/**
+	 * @see SMFormInput::addSpecificFormInputHTML()
+	 *
+	 */
+	protected function addSpecificFormInputHTML() {
+		global $wgJsMimeType;
 		
-		if (empty(SMYahooMapsFormInput::$coordinates)) {
-			SMYahooMapsFormInput::$zoom = 17;
-		} else if (strlen(SMYahooMapsFormInput::$zoom) < 1) {
-			 SMYahooMapsFormInput::$zoom = $egMapsYahooMapsZoom;
-		}		
+		$type = MapsYahooMaps::getYMapType($this->type);
 		
-		$type = MapsYahooMaps::getYMapType(SMYahooMapsFormInput::$type);
+		$controlItems = MapsYahooMaps::createControlsString($this->controls);		
 		
-		$controlItems = MapsYahooMaps::createControlsString(SMGoogleMapsFormInput::$controls);		
+		$width = $this->width . 'px';
+		$height = $this->height . 'px';		
 		
-		$width = SMYahooMapsFormInput::$width . 'px';
-		$height = SMYahooMapsFormInput::$height . 'px';		
-		
-		SMYahooMapsFormInput::$formOutput .="
-		<div id='".SMYahooMapsFormInput::$mapName."' style='width: $width; height: $height;'></div>  
+		$this->formOutput .="
+		<div id='".$this->mapName."' style='width: $width; height: $height;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addLoadEvent(makeFormInputYahooMap('".SMYahooMapsFormInput::$mapName."', '".SMYahooMapsFormInput::$coordsFieldName."', ".SMYahooMapsFormInput::$centre_lat.", ".SMYahooMapsFormInput::$centre_lon.", ".SMYahooMapsFormInput::$zoom.", ".SMYahooMapsFormInput::$marker_lat.", ".SMYahooMapsFormInput::$marker_lon.", $type, [$controlItems], ".SMYahooMapsFormInput::$autozoom."));
-		/*]]>*/</script>";
-
-		return array(SMGoogleMapsFormInput::$formOutput, '');		
+		addLoadEvent(makeFormInputYahooMap('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", $type, [$controlItems], ".$this->autozoom."));
+		/*]]>*/</script>";		
 	}
+	
+	/**
+	 * @see SMFormInput::manageGeocoding()
+	 *
+	 */
+	protected function manageGeocoding() {
+		global $egYahooMapsKey;
+		$this->enableGeocoding = strlen(trim($egYahooMapsKey)) > 0;
+		if ($this->enableGeocoding) MapsYahooMaps::addYMapDependencies($this->formOutput);			
+	}
+
 	
 }

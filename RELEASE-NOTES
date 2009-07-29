@@ -1,6 +1,24 @@
 For a documentation of all features, see http://www.mediawiki.org/wiki/Extension:Semantic_Maps
 
-== Semantic Maps 0.1 ==
-(2009-07-1)
+==Semantic Maps change log==
+This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Semantic Maps.
+
+===Semantic Maps 0.2===
+(2009-07-29)
+
+====New functionality====
+
+* Hook for [[Extension:Admin_Links|Admin Links]]
+
+* Multi geocoder integration with form inputs
+
+* Yahoo! Geocoder (for form inputs)
+
+====Refactoring====
+
+* Restructure the Form Input classes
+
+===Semantic Maps 0.1=== 
+(2009-07-21)
 
 * Initial release, featuring both result formats and form inputs for Google Maps (+ Google Earth), Yahoo! Maps and OpenLayers

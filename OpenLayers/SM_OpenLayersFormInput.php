@@ -1,7 +1,5 @@
 <?php
 
-if (!defined('MEDIAWIKI')) die();
-
 /**
  * Form input hook that adds an Open Layers map format to Semantic Forms
  *
@@ -11,49 +9,67 @@ if (!defined('MEDIAWIKI')) die();
  * @author Jeroen De Dauw
  */
 
-final class SMOpenLayersFormInput extends SMFormInput {
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
 
-	/*
-	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
-	 * the form to handle coordinate data.
+final class SMOpenLayersFormInput extends SMFormInput {
+	
+	/**
+	 * @see SMFormInput::setFormInputSettings()
+	 *
 	 */
-	public static function formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
+	protected function setFormInputSettings() {
+		global $egMapsOpenLayersZoom;
+		
+		$this->elementNamePrefix = 'open_layer';
+		$this->showAddresFunction = 'showOLAddress';	
+
+		$this->earthZoom = 1;
+		$this->defaultZoom = $egMapsOpenLayersZoom;		
+	}	
+	
+	/**
+	 * @see SMFormInput::doMapServiceLoad()
+	 *
+	 */
+	protected function doMapServiceLoad() {
+		global $egOpenLayersOnThisPage;
+		
+		MapsOpenLayers::addOLDependencies($this->formOutput);
+		$egOpenLayersOnThisPage++;	
+
+		$this->elementNr = $egOpenLayersOnThisPage;
+	}	
+	
+	/**
+	 * @see SMFormInput::addSpecificFormInputHTML()
+	 *
+	 */
+	protected function addSpecificFormInputHTML() {
 		global $wgJsMimeType;
-		global $egOpenLayersOnThisPage, $egGoogleMapsOnThisPage, $egMapsOpenLayersZoom;		
 		
-		SMOpenLayersFormInput::$coordinates = $coordinates;
-			
-		MapsOpenLayers::addOLDependencies(SMOpenLayersFormInput::$formOutput);
-		$egOpenLayersOnThisPage++;
+		$controlItems = MapsOpenLayers::createControlsString($this->controls);
 		
-		if (empty($egGoogleMapsOnThisPage)) {
-			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies(SMYahooMapsFormInput::$formOutput);
-		}			
-			
-		parent::formInputHTML('open_layer', $egOpenLayersOnThisPage, $input_name, $is_mandatory, $is_disabled, $field_args, 'showOLAddress');
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->formOutput, $this->mapProperties['layers']);	
 		
-		if (empty(SMOpenLayersFormInput::$coordinates)) {
-			SMOpenLayersFormInput::$zoom = 1;
-		} else if (strlen(SMOpenLayersFormInput::$zoom) < 1) {
-			 SMOpenLayersFormInput::$zoom = $egMapsOpenLayersZoom;
-		}
+		$width = $this->width . 'px';
+		$height = $this->height . 'px';			
 		
-		$controlItems = MapsOpenLayers::createControlsString(SMOpenLayersFormInput::$controls);
-		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies(SMOpenLayersFormInput::$formOutput, SMOpenLayersFormInput::$mapProperties['layers']);	
-		
-		$width = SMOpenLayersFormInput::$width . 'px';
-		$height = SMOpenLayersFormInput::$height . 'px';			
-		
-		SMOpenLayersFormInput::$formOutput .="
-		<div id='".SMOpenLayersFormInput::$mapName."' style='width: $width; height: $height; background-color: #cccccc;'></div>  
+		$this->formOutput .="
+		<div id='".$this->mapName."' style='width: $width; height: $height; background-color: #cccccc;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addLoadEvent(makeFormInputOpenLayer('".SMOpenLayersFormInput::$mapName."', '".SMOpenLayersFormInput::$coordsFieldName."', ".SMOpenLayersFormInput::$centre_lat.", ".SMOpenLayersFormInput::$centre_lon.", ".SMOpenLayersFormInput::$zoom.", ".SMOpenLayersFormInput::$marker_lat.", ".SMOpenLayersFormInput::$marker_lon.", [$layerItems], [$controlItems]));
-		/*]]>*/</script>";	
-		
-		return array(SMOpenLayersFormInput::$formOutput, '');
+		addLoadEvent(makeFormInputOpenLayer('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", [$layerItems], [$controlItems]));
+		/*]]>*/</script>";			
 	}
-
+	
+	/**
+	 * @see SMFormInput::manageGeocoding()
+	 *
+	 */
+	protected function manageGeocoding() {	
+		$this->enableGeocoding = false;
+	}
+	
 }
