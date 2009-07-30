@@ -42,7 +42,7 @@ $wgAutoloadClasses['MapsBaseGeocoder'] = $egMapsIP . '/Maps_BaseGeocoder.php';
 // Each array item represents a service: the key is the main service name (used in switch statements),
 // and the array values are the aliases for the main name (so can also be used as service=alias).
 $egMapsServices = array('googlemaps' => array('google', 'googlemap', 'gmap', 'gmaps'), 
-						'openlayers' => array('layers', 'openlayer', 'ol'),
+						'openlayers' => array('layers', 'openlayer'),
 						'yahoomaps'	 => array('yahoo', 'yahoomap', 'ymap', 'ymaps')
 						);
 
