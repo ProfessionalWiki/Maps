@@ -68,11 +68,13 @@ function efMapsSetup() {
 	wfLoadExtensionMessages( 'Maps' );
 	
 	$wgExtensionCredits['parserhook'][] = array(
+		'path' => __FILE__,
 		'name' => wfMsg('maps_name'),
 		'version' => Maps_VERSION,
 		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]", "Robert Buzink", "Matt Williamson", "[http://www.sergeychernyshev.com Sergey Chernyshev]"),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
-		'description' =>  wfMsg('maps_desc') . $services_list
+		'description' =>  wfMsg( 'maps_desc', $services_list ),
+		'descriptionmsg' => 'maps_desc',
 	);
 
 	efMapsAddParserHooks();
