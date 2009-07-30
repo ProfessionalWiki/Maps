@@ -50,13 +50,13 @@ $messages['arz'] = array(
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
 
-/** Belarusian (Taraškievica orthography) (Белару�ка� (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
-	'semanticmaps_enteraddresshere' => 'Ув�дзіце тут адра�',
+	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
 );
 
 /** Breton (Brezhoneg)
@@ -144,8 +144,8 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'semanticmaps_lookupcoordinates' => 'חיפוש קו�ורדינטות',
-	'semanticmaps_enteraddresshere' => 'כתבו כתובת כ�ן',
+	'semanticmaps_lookupcoordinates' => 'חיפוש קואורדינטות',
+	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -169,15 +169,15 @@ $messages['ia'] = array(
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'semanticmaps_lookupcoordinates' => '座標を調�る',
-	'semanticmaps_enteraddresshere' => 'アドレスを���入力���',
+	'semanticmaps_lookupcoordinates' => '座標を調べる',
+	'semanticmaps_enteraddresshere' => 'アドレスをここに入力します',
 );
 
-/** Khmer (ភាសា�្មែរ)
+/** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
 $messages['km'] = array(
-	'semanticmaps_lookupcoordinates' => 'ក្រឡ�ក​មើល​កូអរដោន�',
+	'semanticmaps_lookupcoordinates' => 'ក្រឡេក​មើល​កូអរដោនេ',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -266,15 +266,15 @@ $messages['roa-tara'] = array(
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
 );
 
-/** Russian (Ру��кий)
+/** Russian (Русский)
  * @author Eugene Mednikov
  */
 $messages['ru'] = array(
-	'semanticmaps_lookupcoordinates' => '�айти координаты',
-	'semanticmaps_enteraddresshere'  => 'Введите адре�',
+	'semanticmaps_lookupcoordinates' => 'Найти координаты',
+	'semanticmaps_enteraddresshere'  => 'Введите адрес',
 );
 
-/** Slovak (Sloven�ina)
+/** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
@@ -303,7 +303,7 @@ $messages['tl'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'semanticmaps_lookupcoordinates' => 'Tra t�a độ',
+	'semanticmaps_lookupcoordinates' => 'Tra tọa độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
 );
 
@@ -318,10 +318,10 @@ $messages['vo'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
-	'semanticmaps_lookupcoordinates' => '查找�标',
+	'semanticmaps_lookupcoordinates' => '查找坐标',
 );
 
-/** Traditional Chinese (‪中文(�體)‬)
+/** Traditional Chinese (‪中文(繁體)‬)
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
