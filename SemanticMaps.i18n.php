@@ -16,18 +16,14 @@ $messages = array();
  */
 
 $messages['en'] = array(
-	'semanticmaps_name'              	=> 'Semantic Maps',
-	'semanticmaps_desc'              	=> 'Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension. Available map services: ',
-
-	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',
-	'semanticmaps_enteraddresshere'  	=> 'Enter address here',
-	'semanticmaps_notfound' 			=> 'not found',
-
-	'sm_googlemaps_printername' 		=> 'Google Maps',
-
-	'sm_yahoomaps_printername'			=> 'Yahoo! Maps',		
-
-	'sm_openlayers_printername'			=> 'OpenLayers',
+	'semanticmaps_name' => 'Semantic Maps',
+	'semanticmaps_desc' => 'Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension. Available map services: $1',
+	'semanticmaps_lookupcoordinates' => 'Look up coordinates',
+	'semanticmaps_enteraddresshere' => 'Enter address here',
+	'semanticmaps_notfound' => 'not found',
+	'sm_googlemaps_printername' => 'Google Maps',
+	'sm_yahoomaps_printername' => 'Yahoo! Maps',		
+	'sm_openlayers_printername' => 'OpenLayers',
 );
 
 /** Afrikaans (Afrikaans)
@@ -35,7 +31,6 @@ $messages['en'] = array(
  */
 $messages['af'] = array(
 	'semanticmaps_lookupcoordinates' => 'Soek koördinate op',
-	'semanticgooglemaps-desc' => 'Laat gebruikers toe om Google Maps by wiki bladsye te voeg op grond van gestruktureerde gegewens',
 );
 
 /** Arabic (العربية)
@@ -55,13 +50,13 @@ $messages['arz'] = array(
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
 
-/** Belarusian (Taraškievica orthography) (Белару�ка� (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (Белару�ка� (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
-	'semanticmaps_enteraddresshere' => 'Ув�дзіце тут адра�',
+	'semanticmaps_enteraddresshere' => 'Ув�дзіце тут адра�',
 );
 
 /** Breton (Brezhoneg)
@@ -149,8 +144,8 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'semanticmaps_lookupcoordinates' => 'חיפוש קו�ורדינטות',
-	'semanticmaps_enteraddresshere' => 'כתבו כתובת כ�ן',
+	'semanticmaps_lookupcoordinates' => 'חיפוש קו�ורדינטות',
+	'semanticmaps_enteraddresshere' => 'כתבו כתובת כ�ן',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -174,15 +169,15 @@ $messages['ia'] = array(
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'semanticmaps_lookupcoordinates' => '座標を調�る',
-	'semanticmaps_enteraddresshere' => 'アドレスを���入力���',
+	'semanticmaps_lookupcoordinates' => '座標を調�る',
+	'semanticmaps_enteraddresshere' => 'アドレスを���入力���',
 );
 
-/** Khmer (ភាសា�្មែរ)
+/** Khmer (ភាសា�្មែរ)
  * @author Thearith
  */
 $messages['km'] = array(
-	'semanticmaps_lookupcoordinates' => 'ក្រឡ�ក​មើល​កូអរដោន�',
+	'semanticmaps_lookupcoordinates' => 'ក្រឡ�ក​មើល​កូអរដោន�',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -206,11 +201,10 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'semanticmaps_desc'              	=> 'Bied de mogelijkheid om locatie gegevens die zijn opgeslagen met behulp van de Semantic MediaWiki uitbreiding te bekijken en aan te passen. Beschikbare mapping services: ',
-
-	'semanticmaps_lookupcoordinates'	=> 'Coördinaten opzoeken',
-	'semanticmaps_enteraddresshere'		=> 'Voer hier het adres in',
-	'semanticmaps_notfound' 			=> 'niet gevonden',
+	'semanticmaps_desc' => 'Bied de mogelijkheid om locatie gegevens die zijn opgeslagen met behulp van de Semantic MediaWiki uitbreiding te bekijken en aan te passen. Beschikbare mapping services: $1',
+	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
+	'semanticmaps_enteraddresshere' => 'Voer hier het adres in',
+	'semanticmaps_notfound' => 'niet gevonden',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -272,15 +266,15 @@ $messages['roa-tara'] = array(
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
 );
 
-/** Russian (Ру��кий)
+/** Russian (Ру��кий)
  * @author Eugene Mednikov
  */
 $messages['ru'] = array(
-	'semanticmaps_lookupcoordinates' => '�айти координаты',
-	'semanticmaps_enteraddresshere'  => 'Введите адре�',
+	'semanticmaps_lookupcoordinates' => '�айти координаты',
+	'semanticmaps_enteraddresshere'  => 'Введите адре�',
 );
 
-/** Slovak (Sloven�ina)
+/** Slovak (Sloven�ina)
  * @author Helix84
  */
 $messages['sk'] = array(
@@ -309,7 +303,7 @@ $messages['tl'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'semanticmaps_lookupcoordinates' => 'Tra t�a độ',
+	'semanticmaps_lookupcoordinates' => 'Tra t�a độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
 );
 
@@ -324,10 +318,10 @@ $messages['vo'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
-	'semanticmaps_lookupcoordinates' => '查找�标',
+	'semanticmaps_lookupcoordinates' => '查找�标',
 );
 
-/** Traditional Chinese (‪中文(�體)‬)
+/** Traditional Chinese (‪中文(�體)‬)
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(

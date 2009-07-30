@@ -40,11 +40,13 @@ function smfSetup() {
 	wfLoadExtensionMessages( 'SemanticMaps' );
 	
 	$wgExtensionCredits['other'][]= array(
+		'path' => __FILE__,
 		'name' => wfMsg('semanticmaps_name'),
 		'version' => SM_VERSION,
 		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "Yaron Koren", "Robert Buzink"),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
-		'description' => wfMsg('semanticmaps_desc') . $services_list
+		'description' => wfMsg( 'semanticmaps_desc', $services_list ),
+		'descriptionmsg' => 'semanticmaps_desc',
 	);
 
 	smfInitializeService('map', 'SMMapper');
