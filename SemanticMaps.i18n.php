@@ -26,6 +26,18 @@ $messages['en'] = array(
 	'sm_openlayers_printername' => 'OpenLayers',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'semanticmaps_desc' => '{{desc}}
+
+* $1: a list of available map services',
+	'sm_googlemaps_printername' => '{{optional}}',
+	'sm_yahoomaps_printername' => '{{optional}}',
+	'sm_openlayers_printername' => '{{optional}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -55,8 +67,11 @@ $messages['arz'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'semanticmaps_name' => 'Сэмантычныя мапы',
+	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki. Даступныя сэрвісы мапаў: $1',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
+	'semanticmaps_notfound' => 'ня знойдзена',
 );
 
 /** Breton (Brezhoneg)
@@ -71,8 +86,10 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'semanticmaps_desc' => 'Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja. Dostupne usluge mapa: $1',
 	'semanticmaps_lookupcoordinates' => 'Nađi koordinate',
 	'semanticmaps_enteraddresshere' => 'Unesite adresu ovdje',
+	'semanticmaps_notfound' => 'nije pronađeno',
 );
 
 /** German (Deutsch)
@@ -88,8 +105,10 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'semanticmaps_desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś. K dispoziciji stojece kórtowe słužby: $1',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami póglědaś',
 	'semanticmaps_enteraddresshere' => 'Zapódaj how adresu',
+	'semanticmaps_notfound' => 'njenamakany',
 );
 
 /** Esperanto (Esperanto)
@@ -127,8 +146,10 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki. Servizos de mapa dispoñibles: $1',
 	'semanticmaps_lookupcoordinates' => 'Ver as coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza o enderezo aquí',
+	'semanticmaps_notfound' => 'non se atopou',
 );
 
 /** Swiss German (Alemannisch)
@@ -152,8 +173,10 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. K dispoziciji stejace kartowe słužby: $1',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami hladać',
 	'semanticmaps_enteraddresshere' => 'Zapodaj tu adresu',
+	'semanticmaps_notfound' => 'njenamakany',
 );
 
 /** Interlingua (Interlingua)
@@ -164,13 +187,25 @@ $messages['ia'] = array(
 	'semanticmaps_enteraddresshere' => 'Entra adresse hic',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'semanticmaps_desc' => 'Memampukan penampilan dan penyuntingan data koordinat yang disimpan melalui pengaya MediaWiki Semantic. Layanan peta yang tersedia: $1',
+	'semanticmaps_lookupcoordinates' => 'Cari koordinat',
+	'semanticmaps_enteraddresshere' => 'Masukkan alamat di sini',
+	'semanticmaps_notfound' => 'tidak ditemukan',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
+	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する。次の地図サービスに対応します：$1',
 	'semanticmaps_lookupcoordinates' => '座標を調べる',
-	'semanticmaps_enteraddresshere' => 'アドレスをここに入力します',
+	'semanticmaps_enteraddresshere' => '住所をここに入力します',
+	'semanticmaps_notfound' => '見つかりません',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -184,8 +219,10 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'semanticmaps_desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di per Semantesch Mediawiki faßjehallde woodte. Deenste för Kaate ham_mer di heh: $1',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nohkike',
 	'semanticmaps_enteraddresshere' => 'Donn hee de Address enjäve',
+	'semanticmaps_notfound' => 'nit jefonge',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -262,24 +299,31 @@ $messages['pt-br'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'semanticmaps_desc' => "Dè l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi. Disponibbile le servizie de mappe: $1",
 	'semanticmaps_lookupcoordinates' => 'Ingroce le coordinate',
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
+	'semanticmaps_notfound' => 'no acchiate',
 );
 
 /** Russian (Русский)
  * @author Eugene Mednikov
+ * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'semanticmaps_desc' => 'Предоставляет возможность просмотра и редактирования данных о координатах, хранящихся посредством расширения Semantic MediaWiki. Доступные службы карт: $1',
 	'semanticmaps_lookupcoordinates' => 'Найти координаты',
-	'semanticmaps_enteraddresshere'  => 'Введите адрес',
+	'semanticmaps_enteraddresshere' => 'Введите адрес',
+	'semanticmaps_notfound' => 'не найдено',
 );
 
 /** Slovak (Slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
+	'semanticmaps_desc' => 'Poskytuje schopnosť zobrazovať a upravovať údaje súradníc uložené prostredníctvom rozšírenia Semantic MediaWiki. Dostupné mapové služby: $1',
 	'semanticmaps_lookupcoordinates' => 'Vyhľadať súradnice',
 	'semanticmaps_enteraddresshere' => 'Sem zadajte emailovú adresu',
+	'semanticmaps_notfound' => 'nenájdené',
 );
 
 /** Swedish (Svenska)
