@@ -46,7 +46,7 @@ function smfSetup() {
 		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "Yaron Koren", "Robert Buzink"),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsg( 'semanticmaps_desc', $services_list ),
-		'descriptionmsg' => 'semanticmaps_desc',
+		'descriptionmsg' => array( 'semanticmaps_desc', $services_list ),
 	);
 
 	smfInitializeService('map', 'SMMapper');
