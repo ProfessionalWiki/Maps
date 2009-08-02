@@ -50,6 +50,13 @@ $messages['dsb'] = array(
 	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. K dispoziciji stojece kórtowe słužby: $1',
 );
 
+/** French (Français)
+ * @author IAlex
+ */
+$messages['fr'] = array(
+	'maps_desc' => "Permet d'afficher des coordonnées dans des cartes, ainsi que des adresse géocode. Services de cartographie disponibles : $1",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -85,9 +92,23 @@ $messages['ksh'] = array(
 	'maps_desc' => 'Määt et müjjelesch, Koodinaate en Landkaate aanzezeije, un Addräße en Koodinaate op de Ääd ömzerääschne. He di Deenste för Landkaat ham_mer ze beede: $1',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping servicer: $1",
+);
+
 /** Dutch (Nederlands) */
 $messages['nl'] = array(
 	'maps_desc' => 'Bied de mogelijkheid om locatie gegevens weer te geven op mappen en het omzetten van addressen naar coordinaten. Provides the ability to display coordinate data in maps, and geocode addresses. Beschikbare mapping services: $1',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'maps_desc' => 'Umożliwia wyświetlanie współrzędnych na mapach oraz adresów geograficznych. Dostępne serwisy mapowe: $1',
 );
 
 /** Tarandíne (Tarandíne)
