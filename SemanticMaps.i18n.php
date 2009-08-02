@@ -136,10 +136,13 @@ $messages['eu'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author IAlex
  */
 $messages['fr'] = array(
+	'semanticmaps_desc' => "Permet de voir et modifier les données de coordonnées stockées à travers l'extension Semantic MediaWiki. Services de cartes disponibles : $1",
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
+	'semanticmaps_notfound' => 'pas trouvé',
 );
 
 /** Galician (Galego)
@@ -231,6 +234,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticmaps_enteraddresshere' => 'Adress hei aginn',
+	'semanticmaps_notfound' => 'net fonnt',
 );
 
 /** Dutch (Nederlands)
@@ -324,6 +328,14 @@ $messages['sk'] = array(
 	'semanticmaps_lookupcoordinates' => 'Vyhľadať súradnice',
 	'semanticmaps_enteraddresshere' => 'Sem zadajte emailovú adresu',
 	'semanticmaps_notfound' => 'nenájdené',
+);
+
+/** Serbian Cyrillic ekavian (ћирилица)
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
+	'semanticmaps_notfound' => 'није нађено',
 );
 
 /** Swedish (Svenska)
