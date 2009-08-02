@@ -45,13 +45,10 @@ function createGMarker(point, title, label, icon) {
 function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, control, scrollWheelZoom, earthEnabled, markers) {
 	var map;
 	
-	if (GBrowserIsCompatible()) {
-		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), new GLatLng(lat, lon), zoom, type, control, scrollWheelZoom, earthEnabled);
+	var centre = (lat != null && lon != null) ? new GLatLng(lat, lon) : null;
 	
-		for (i in markers) {
-			var marker = markers[i];
-			map.addOverlay(createGMarker(marker.point, marker.title, marker.label, marker.icon));
-		}
+	if (GBrowserIsCompatible()) {
+		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, control, scrollWheelZoom, earthEnabled, markers);
 	}
 	
 	return map;
@@ -60,14 +57,29 @@ function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, contr
 /**
  * Returns GMap2 object with the provided properties.
  */
-function createGoogleMap(mapElement, size, center, zoom, type, control, scrollWheelZoom, earthEnabled) {
+function createGoogleMap(mapElement, size, centre, zoom, type, control, scrollWheelZoom, earthEnabled, markers) {
 	var map = new GMap2(mapElement, {size: size});
 	
 	if (earthEnabled) map.addMapType(G_SATELLITE_3D_MAP);
 	map.addMapType(type);
 	
 	map.setMapType(type);
-	map.setCenter(center, zoom);
+	
+	var bounds = ((zoom == null || centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
+
+	for (i in markers) {
+		var marker = markers[i];
+		map.addOverlay(createGMarker(marker.point, marker.title, marker.label, marker.icon));
+		if (bounds != null) bounds.extend(marker.point);
+	}
+	
+	if (bounds != null) {
+		map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
+	}
+
+	if (centre != null) map.setCenter(centre);
+	if (zoom != null) map.setZoom(zoom);
+	
 	map.addControl(new GMapTypeControl());
 	
 	if (typeof(control) != 'undefined') map.addControl(control);

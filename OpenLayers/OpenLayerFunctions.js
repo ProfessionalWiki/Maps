@@ -164,7 +164,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	var bounds = null;
 	
 	if (marker_data.length > 1 && (!centerIsSet || zoom == null)) {
-		var bounds = new OpenLayers.Bounds();
+		bounds = new OpenLayers.Bounds();
 	}
 	
 	for (i in marker_data) {

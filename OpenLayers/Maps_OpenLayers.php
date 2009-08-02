@@ -134,14 +134,13 @@ class MapsOpenLayers extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsOpenLayers::createControlsString($this->controls);
-		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
+		$controlItems = self::createControlsString($this->controls);
+		$layerItems = self::createLayersStringAndLoadDependencies($this->output, $this->layers);
 
 		MapsUtils::makePxValue($this->width);
 		MapsUtils::makePxValue($this->height);
 		
-		$this->output .="<div id='$this->mapName' style='width: $this->width; height: $this->height; background-color: #cccccc;'></div>
+		$this->output .= "<div id='$this->mapName' style='width: $this->width; height: $this->height; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
 			addLoadEvent(
 				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[getOLMarkerData($this->marker_lon, $this->marker_lat, '$this->title', '$this->label')])

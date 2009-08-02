@@ -77,7 +77,7 @@ class MapsYahooMaps extends MapsBaseMap {
 	protected function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMaps::addYMapDependencies($this->output);	
+		self::addYMapDependencies($this->output);	
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
