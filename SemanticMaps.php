@@ -41,9 +41,9 @@ $egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayers', 'file' =>
 $egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'OpenLayers/SM_OpenLayersFormInput.php');
 
 function smfSetup() {
-	global $wgExtensionCredits, $egMapsMainServices, $egMapsServices;
+	global $wgExtensionCredits, $egMapsServices;
 
-	$services_list = implode(', ', $egMapsMainServices);
+	$services_list = implode(', ', array_keys($egMapsServices));
 	
 	wfLoadExtensionMessages( 'SemanticMaps' );
 	
@@ -64,9 +64,14 @@ function smfSetup() {
 		$hasQP = array_key_exists('qp', $serviceData);
 		$hasFI = array_key_exists('fi', $serviceData);
 		
+		// If the service has no QP and no FI, skipt it and continue with the next one.
+		if (!$hasQP && !$hasFI) continue;
+		
+		// Add the result format and form input type for the service name when needed.
 		if ($hasQP) smfInitFormat($serviceName, $serviceData['qp']);
 		if ($hasFI) smfInitFormHook($serviceName, $serviceData['fi']);
 		
+		// Loop through the service alliases, and add them as result formats and form input types when needed.
 		foreach ($serviceData['aliases'] as $alias) {
 			if ($hasQP) smfInitFormat($alias, $serviceData['qp']);
 			if ($hasFI) smfInitFormHook($alias, $serviceData['fi'], $serviceName);
@@ -124,28 +129,24 @@ function smfInitFormat($format, $qp) {
  * @return unknown
  */
 function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
+	global $egMapsServices;
+	
 	// If service_name is set, use this value, and ignore any given service parameters
 	// This will prevent ..input type=googlemaps|service=yahoo.. from shwoing up a Yahoo! Maps map
 	if (array_key_exists('service_name', $field_args)) $field_args['service'] = $field_args['service_name'];
 		
 	$field_args['service'] = MapsMapper::getValidService($field_args['service']);
 	
-	// TODO: get class from hook system afetr check if fi is available
-	// Create an instace of 
-	switch ($field_args['service']) {
-		case 'googlemaps' :
-			$formInput = new SMGoogleMapsFormInput();
-			break;			
-		case 'openlayers' :
-			$formInput = new SMOpenLayersFormInput();
-			break;
-		case 'yahoomaps' :
-			$formInput = new SMYahooMapsFormInput();
-			break;				
+	if (array_key_exists('fi', $egMapsServices[$field_args['service']])) {
+		$formInput = new $egMapsServices[$field_args['service']]['fi']['class']();
+		
+		// Get and return the form input HTML from the hook corresponding with the provided service
+		return $formInput->formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);	
+	}
+	else {
+		return "<b>ERROR: Form input for ".$field_args['service']." not found</b>";
 	}
 	
-	// Get and return the form input HTML from the hook corresponding with the provided service
-	return $formInput->formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);		
 }
 
 function smfGetDynamicInput($id, $value, $args='') {
