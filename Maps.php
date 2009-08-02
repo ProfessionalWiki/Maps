@@ -56,7 +56,7 @@ $egMapsServices['yahoomaps'] = array('aliases' => array('yahoo', 'yahoomap', 'ym
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgOut;	
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsMainServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices;
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices;
 
 	efMapsValidateGoogleMapsKey();
 	
@@ -64,9 +64,7 @@ function efMapsSetup() {
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
 	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : $egMapsAvailableGeoServices[0];
 	
-	$egMapsMainServices = array_keys($egMapsServices);
-	
-	$services_list = implode(', ', $egMapsMainServices);
+	$services_list = implode(', ', array_keys($egMapsServices));
 
 	wfLoadExtensionMessages( 'Maps' );
 	
