@@ -8,6 +8,10 @@
  * @author Jeroen De Dauw
  */
 
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 class MapsYahooMaps extends MapsBaseMap {
 
 	// http://developer.yahoo.com/maps/ajax

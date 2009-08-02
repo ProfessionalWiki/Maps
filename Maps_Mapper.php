@@ -196,8 +196,8 @@ final class MapsMapper {
 		global $egMapsServices;
 		
 		if (!array_key_exists($service, $egMapsServices)) {
-			foreach ($egMapsServices as $serviceName => $aliasList) {
-				if (in_array($service, $aliasList)) {
+			foreach ($egMapsServices as $serviceName => $serviceInfo) {
+				if (in_array($service, $serviceInfo['aliases'])) {
 					 $service = $serviceName;
 				}
 			}

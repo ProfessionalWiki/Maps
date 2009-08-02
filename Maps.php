@@ -14,11 +14,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.2');
+define('Maps_VERSION', '0.3');
 
 $egMapsScriptPath = $wgScriptPath . '/extensions/Maps';
 $egMapsIP = $IP . '/extensions/Maps';
-$egMapsIncludePath = 'http://' . $_SERVER["HTTP_HOST"] . $egMapsScriptPath;
+$egMapsIncludePath = $wgServer . $egMapsScriptPath;
 
 // Include the settings file
 require_once($egMapsIP . '/Maps_Settings.php');
@@ -37,20 +37,25 @@ $wgAutoloadClasses['MapsUtils'] = $egMapsIP . '/Maps_Utils.php';
 $wgAutoloadClasses['MapsGeocoder'] = $egMapsIP . '/Maps_Geocoder.php';
 $wgAutoloadClasses['MapsBaseGeocoder'] = $egMapsIP . '/Maps_BaseGeocoder.php';
 
+// Add the services
+$wgAutoloadClasses['MapsGoogleMaps'] = $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php';
+$wgAutoloadClasses['MapsYahooMaps'] = $egMapsIP . '/YahooMaps/Maps_YahooMaps.php';
+$wgAutoloadClasses['MapsOpenLayers'] = $egMapsIP . '/OpenLayers/Maps_OpenLayers.php';
+
 // Array containing all map services made available by Maps.
 // This does not reflect the enabled mapping services, see $egMapsAvailableServices in Maps_Settings.php for this.
 // Each array item represents a service: the key is the main service name (used in switch statements),
 // and the array values are the aliases for the main name (so can also be used as service=alias).
-$egMapsServices = array('googlemaps' => array('google', 'googlemap', 'gmap', 'gmaps'), 
-						'openlayers' => array('layers', 'openlayer'),
-						'yahoomaps'	 => array('yahoo', 'yahoomap', 'ymap', 'ymaps')
-						);
-
+$egMapsServices = array();
+$egMapsServices['googlemaps'] = array('aliases' => array('google', 'googlemap', 'gmap', 'gmaps'));
+$egMapsServices['openlayers'] = array('aliases' => array('layers', 'openlayer'));
+$egMapsServices['yahoomaps'] = array('aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps'));
+						
 /**
  * Initialization function for the Maps extension
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgExtensionCredits, $wgOut;	
+	global $wgExtensionCredits, $wgOut;	
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsMainServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices;
 
 	efMapsValidateGoogleMapsKey();
@@ -60,8 +65,6 @@ function efMapsSetup() {
 	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : $egMapsAvailableGeoServices[0];
 	
 	$egMapsMainServices = array_keys($egMapsServices);
-	
-	foreach($egMapsMainServices as $service) efMapsInitFormat($service);
 	
 	$services_list = implode(', ', $egMapsMainServices);
 
@@ -74,7 +77,7 @@ function efMapsSetup() {
 		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]", "Robert Buzink", "Matt Williamson", "[http://www.sergeychernyshev.com Sergey Chernyshev]"),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
 		'description' =>  wfMsg( 'maps_desc', $services_list ),
-		'descriptionmsg' => array( 'maps_desc', $services_list ),
+		'descriptionmsg' => wfMsg( 'maps_desc', $services_list ),
 	);
 
 	efMapsAddParserHooks();
@@ -108,33 +111,6 @@ function efMapsValidateGoogleMapsKey() {
 	global $egGoogleMapsKey, $wgGoogleMapsKey;
 	
 	if (strlen($egGoogleMapsKey) < 1 && isset($wgGoogleMapsKey)) $egGoogleMapsKey = $wgGoogleMapsKey;
-}
-
-/**
- * Initializes the result format depending on the map service
- */
-function efMapsInitFormat( $format ) {
-	global $wgAutoloadClasses, $egMapsIP;
-
-	switch ($format) {
-		case 'googlemaps':
-			$class = 'MapsGoogleMaps';
-			$file = $egMapsIP . '/GoogleMaps/Maps_GoogleMaps';
-		break;
-		case 'openlayers':
-			$class = 'MapsOpenLayers';
-			$file = $egMapsIP . '/OpenLayers/Maps_OpenLayers';
-		break;
-		case 'yahoomaps':
-			$class = 'MapsYahooMaps';
-			$file = $egMapsIP . '/YahooMaps/Maps_YahooMaps';
-		break;
-	}
-
-	if (isset($class) && isset($file)) {
-		$wgAutoloadClasses[$class] = $file . '.php';
-	}
-
 }
 
 /**
