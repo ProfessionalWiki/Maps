@@ -40,6 +40,10 @@ $egMapsServices['yahoomaps']['fi'] = array('class' => 'SMYahooMapsFormInput', 'f
 $egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayers', 'file' => 'OpenLayers/SM_OpenLayers.php');
 $egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'OpenLayers/SM_OpenLayersFormInput.php');
 
+/**
+ * Initialization function for the Semantic Maps extension
+ *
+ */
 function smfSetup() {
 	global $wgExtensionCredits, $egMapsServices;
 
@@ -81,25 +85,6 @@ function smfSetup() {
 }
 
 /**
- * Adds a mapping service's form hook
- *
- * @param unknown_type $service
- * @param unknown_type $mainName
- */
-function smfInitFormHook($service, $fi = null, $mainName = '') {
-	global $wgAutoloadClasses, $sfgFormPrinter, $smgIP;
-
-	if (isset($fi)) {
-		if (! array_key_exists($fi['class'], $wgAutoloadClasses)) $wgAutoloadClasses[$fi['class']] = $smgIP . '/' . $fi['file'];
-	}
-	
-	// Add the form input hook for the service
-	$field_args = array();
-	if (strlen($mainName) > 0) $field_args['service_name'] = $mainName;
-	$sfgFormPrinter->setInputTypeHook($service, 'smfSelectFormInputHTML', $field_args);
-}
-
-/**
  * Add the result format for a mapping service or alias
  *
  * @param unknown_type $format
@@ -116,6 +101,26 @@ function smfInitFormat($format, $qp) {
 	else {
 		SMWQueryProcessor::$formats[$format] = $qp['class'];
 	}	
+}
+
+/**
+ * Adds a mapping service's form hook
+ *
+ * @param unknown_type $service
+ * @param unknown_type $fi
+ * @param unknown_type $mainName
+ */
+function smfInitFormHook($service, $fi = null, $mainName = '') {
+	global $wgAutoloadClasses, $sfgFormPrinter, $smgIP;
+
+	if (isset($fi)) {
+		if (! array_key_exists($fi['class'], $wgAutoloadClasses)) $wgAutoloadClasses[$fi['class']] = $smgIP . '/' . $fi['file'];
+	}
+	
+	// Add the form input hook for the service
+	$field_args = array();
+	if (strlen($mainName) > 0) $field_args['service_name'] = $mainName;
+	$sfgFormPrinter->setInputTypeHook($service, 'smfSelectFormInputHTML', $field_args);
 }
 
 /**

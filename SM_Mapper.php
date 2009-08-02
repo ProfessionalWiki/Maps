@@ -13,26 +13,19 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-final class SMMapper extends SMMapPrinter {
+final class SMMapper extends SMWResultPrinter {
 	
 	protected function getResultText($res, $outputmode) {
-		global $egMapsDefaultService;
+		global $egMapsDefaultService, $egMapsServices;
 		
 		// TODO: allow service parameter to override the default
+		if ($this->mFormat == 'map') $this->mFormat = $egMapsDefaultService;
 		
-		switch ($egMapsDefaultService) {
-			case 'openlayers' : case 'layers' : 
-				$output = SMOpenLayers::getResultText($res, $outputmode);
-				break;
-			case 'yahoomaps' : case 'yahoo' : 
-				$output = SMYahooMaps::getResultText($res, $outputmode);
-				break;	
-			default:
-				$output = SMGoogleMaps::getResultText($res, $outputmode);
-				break;
-		}
+		$service = MapsMapper::getValidService($this->mFormat); 
 		
-		return $output;
+		$queryPrinter = new $egMapsServices[$service]['qp']['class']();
+		
+		return $queryPrinter->getResultText($res, $outputmode);
 	}
 	
 }
