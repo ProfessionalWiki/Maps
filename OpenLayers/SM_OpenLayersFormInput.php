@@ -16,10 +16,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 final class SMOpenLayersFormInput extends SMFormInput {
 	
 	/**
-	 * @see SMFormInput::setFormInputSettings()
+	 * @see MapsMapFeature::setMapSettings()
 	 *
 	 */
-	protected function setFormInputSettings() {
+	protected function setMapSettings() {
 		global $egMapsOpenLayersZoom;
 		
 		$this->elementNamePrefix = 'open_layer';
@@ -30,33 +30,33 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	}	
 	
 	/**
-	 * @see SMFormInput::doMapServiceLoad()
+	 * @see MapsMapFeature::doMapServiceLoad()
 	 *
 	 */
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies($this->formOutput);
+		MapsOpenLayers::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;	
 
 		$this->elementNr = $egOpenLayersOnThisPage;
 	}	
 	
 	/**
-	 * @see SMFormInput::addSpecificFormInputHTML()
+	 * @see MapsMapFeature::addSpecificMapHTML()
 	 *
 	 */
-	protected function addSpecificFormInputHTML() {
+	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
 		$controlItems = MapsOpenLayers::createControlsString($this->controls);
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->formOutput, $this->layers);	
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
 		
 		$width = $this->width . 'px';
 		$height = $this->height . 'px';			
 		
-		$this->formOutput .="
+		$this->output .="
 		<div id='".$this->mapName."' style='width: $width; height: $height; background-color: #cccccc;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/

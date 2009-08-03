@@ -16,7 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 abstract class SMFormInput extends MapsMapFeature {
 
 	/**
-	 * Detrmine if geocoding will be enabled and load the required dependencies.
+	 * Determine if geocoding will be enabled and load the required dependencies.
 	 */	
 	protected abstract function manageGeocoding();
 	
@@ -31,6 +31,8 @@ abstract class SMFormInput extends MapsMapFeature {
 	
 	private $startingCoords ='';
 	
+	private $coordinates;
+	
 	/**
 	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
 	 * the form to handle coordinate data.
@@ -42,7 +44,7 @@ abstract class SMFormInput extends MapsMapFeature {
 		
 		$this->manageGeocoding();
 		
-		$this->setFormInputSettings();
+		$this->setMapSettings();
 		
 		$this->doMapServiceLoad();
 
@@ -61,7 +63,7 @@ abstract class SMFormInput extends MapsMapFeature {
 		$this->infoFieldName = $this->elementNamePrefix.'_info_'.$this->elementNr;			
 
 		// Create the non specific form HTML
-		$this->formOutput .= "
+		$this->output .= "
 		<input id='".$this->coordsFieldName."' name='$input_name' type='text' value='$this->startingCoords' size='40' tabindex='$sfgTabIndex'>
 		<span id='".$this->infoFieldName."' class='error_message'></span>";
 		
@@ -75,16 +77,16 @@ abstract class SMFormInput extends MapsMapFeature {
 			$not_found_text = wfMsg('semanticmaps_notfound');				
 			
 			$adress_field = smfGetDynamicInput($this->geocodeFieldName, $enter_address_here_text, 'size="30" name="geocode" style="color: #707070" tabindex="'.$sfgTabIndex.'"');
-			$this->formOutput .= "
+			$this->output .= "
 			<p>
 				$adress_field
 				<input type='submit' onClick=\"$this->showAddresFunction(document.forms['createbox'].$this->geocodeFieldName.value, '$this->mapName', '$this->coordsFieldName', '$not_found_text'); return false\" value='$lookup_coordinates_text' />
 			</p>";
 		}
 		
-		$this->addSpecificFormInputHTML();
+		$this->addSpecificMapHTML();
 		
-		return array($this->formOutput, '');
+		return array($this->output, '');
 	}
 	
 	/**

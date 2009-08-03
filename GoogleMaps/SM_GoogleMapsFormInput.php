@@ -18,10 +18,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 final class SMGoogleMapsFormInput extends SMFormInput {
 
 	/**
-	 * @see SMFormInput::setFormInputSettings()
+	 * @see MapsMapFeature::setMapSettings()
 	 *
 	 */
-	protected function setFormInputSettings() {
+	protected function setMapSettings() {
 		global $egMapsGoogleMapsZoom;
 		
 		$this->elementNamePrefix = 'map_google';
@@ -33,7 +33,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	
 
 	/**
-	 * @see SMFormInput::doMapServiceLoad()
+	 * @see MapsMapFeature::doMapServiceLoad()
 	 *
 	 */
 	protected function doMapServiceLoad() {
@@ -41,7 +41,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies($this->formOutput);
+			MapsGoogleMaps::addGMapDependencies($this->output);
 		}
 		
 		$egGoogleMapsOnThisPage++;	
@@ -50,10 +50,10 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	}
 	
 	/**
-	 * @see SMFormInput::addSpecificFormInputHTML()
+	 * @see MapsMapFeature::addSpecificFormInputHTML()
 	 *
 	 */
-	protected function addSpecificFormInputHTML() {
+	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
 		$enableEarth = $this-earth == 'on' || $this->earth == 'yes';
@@ -62,7 +62,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		$this->type = MapsGoogleMaps::getGMapType($this->type, $enableEarth);
 		$control = MapsGoogleMaps::getGControlType($this->controls);		
 		
-		$this->formOutput .= "
+		$this->output .= "
 		<div id='".$this->mapName."' class='".$this->class."'></div>
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
@@ -78,7 +78,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function manageGeocoding() {
 		global $egGoogleMapsKey;
 		$this->enableGeocoding = strlen(trim($egGoogleMapsKey)) > 0;
-		if ($this->enableGeocoding) MapsGoogleMaps::addGMapDependencies($this->formOutput);		
+		if ($this->enableGeocoding) MapsGoogleMaps::addGMapDependencies($this->output);		
 	}	
 	
 }
