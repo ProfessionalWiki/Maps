@@ -64,6 +64,13 @@ $messages['gl'] = array(
 	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados. Servizos de mapeamento dispoñibles: $1',
 );
 
+/** Hebrew (עברית)
+ * @author YaronSh
+ */
+$messages['he'] = array(
+	'maps_desc' => 'אספקת היכולת להצגת נתוני קואורדינטות במפות וכתובות geocode. שירותי המיפוי הזמינים: $1',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -102,6 +109,13 @@ $messages['lb'] = array(
 /** Dutch (Nederlands) */
 $messages['nl'] = array(
 	'maps_desc' => 'Bied de mogelijkheid om locatie gegevens weer te geven op mappen en het omzetten van addressen naar coordinaten. Provides the ability to display coordinate data in maps, and geocode addresses. Beschikbare mapping services: $1',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'maps_desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocòde. Servicis de cartografia disponibles : $1",
 );
 
 /** Polish (Polski)
