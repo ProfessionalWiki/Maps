@@ -31,6 +31,7 @@ $wgHooks['LanguageGetMagic'][] = 'efMapsFunctionMagic';
 $wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
 
 // Autoload the general classes
+$wgAutoloadClasses['MapsMapFeature'] = $egMapsIP . '/Maps_MapFeature.php';
 $wgAutoloadClasses['MapsBaseMap'] = $egMapsIP . '/Maps_BaseMap.php';
 $wgAutoloadClasses['MapsMapper'] = $egMapsIP . '/Maps_Mapper.php';
 $wgAutoloadClasses['MapsUtils'] = $egMapsIP . '/Maps_Utils.php';

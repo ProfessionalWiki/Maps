@@ -13,41 +13,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-abstract class MapsBaseMap {
-	
-	/**
-	 * Set the map service specific element name and the javascript function handling the displaying of an address
-	 *
-	 */
-	protected abstract function setMapSettings();
-	
-	/**
-	 * Map service spesific map count and loading of dependencies
-	 *
-	 */	
-	protected abstract function doMapServiceLoad();
-	
-	/**
-	 * Adds the HTML specific to the mapping service to the output
-	 *
-	 */	
-	protected abstract function addSpecificMapHTML();
-	
-	protected $params;
-	
-	protected $defaultZoom;
-	protected $elementNr;
-	protected $elementNamePrefix;
-	
-	protected $mapName;
-	
-	protected $marker_lat;
-	protected $marker_lon;
-	protected $centre_lat;
-	protected $centre_lon;
-	
-	protected $output = '';
-	
+abstract class MapsBaseMap extends MapsMapFeature {
+		
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
@@ -60,9 +27,9 @@ abstract class MapsBaseMap {
 		$this->setMapSettings();
 		$this->doMapServiceLoad();
 
-		$this->mapName = $this->elementNamePrefix.'_'.$this->elementNr;
+		$this->setMapName();
 		
-		$this->manageMapProperties($map);
+		$this->manageMapProperties($map, 'MapsBaseMap');
 		
 		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off') ? 'false' : 'true';	
 		
@@ -76,22 +43,7 @@ abstract class MapsBaseMap {
 		return $this->output;		
 	}
 	
-	/**
-	 * Sets the map properties as class fields.
-	 *
-	 * @param unknown_type $map
-	 */
-	private function manageMapProperties($map) {
-		$this->params = MapsMapper::setDefaultParValues($map, true);
-		
-		// Go through the array with map parameters and create new variables
-		// with the name of the key and value of the item if they don't exist on class level yet.
-		foreach($this->params as $paramName => $paramValue) {
-			if (!property_exists('MapsBaseMap', $paramName)) {
-				$this->{$paramName} = $paramValue;
-			}
-		}		
-	}
+
 	
 	/**
 	 * Sets the zoom level to the provided value, or when not set, to the default.
