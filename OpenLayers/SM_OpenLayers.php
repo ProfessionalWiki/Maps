@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A query printer for maps using the Open Layers API
  *
@@ -18,72 +19,62 @@ final class SMOpenLayers extends SMMapPrinter {
 		wfLoadExtensionMessages('SemanticMaps');
 		return wfMsg('sm_openlayers_printername');
 	}
+	
+	/**
+	 * @see SMMapPrinter::setQueryPrinterSettings()
+	 *
+	 */
+	protected function setQueryPrinterSettings() {
+		global $egMapsOpenLayersZoom;
+		
+		$this->elementNamePrefix = 'open_layer';
+		$this->defaultZoom = $egMapsOpenLayersZoom;		
+	}	
 
-	protected function getResultText($res, $outputmode) {
-		parent::getResultText($res, $outputmode);
+	/**
+	 * @see SMMapPrinter::doMapServiceLoad()
+	 *
+	 */
+	protected function doMapServiceLoad() {
+		global $egOpenLayersOnThisPage;
 		
-		// Go through the array with map parameters and create new variables
-		// with the name of the key and value of the item.
-		foreach($this->m_params as $paramName => $paramValue) {
-			if (empty(${$paramName})) ${$paramName} = $paramValue;
-		}
-		
-		global $egOpenLayersOnThisPage, $egMapsOpenLayersZoom;
-		global $wgJsMimeType;
-		
-		$result = "";
-		
-		MapsOpenLayers::addOLDependencies($result);
+		MapsOpenLayers::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;
 		
-		$controlItems = MapsOpenLayers::createControlsString($controls);
+		$this->elementNr = $egOpenLayersOnThisPage;		
+	}
+	
+	/**
+	 * @see SMMapPrinter::addSpecificMapHTML()
+	 *
+	 */
+	protected function addSpecificMapHTML() {
+		global $wgJsMimeType;
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($result, $layers);
-		
-		$markerItems = '';
-		
-		if (count($this->m_locations) > 0) {
+		$controlItems = MapsOpenLayers::createControlsString($this->controls);
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
 
-			foreach ($this->m_locations as $i => $location) {
-				// Create a string containing the marker JS 
-				list($lat, $lon, $title, $label, $icon) = $location;
-				$title = str_replace("'", "\'", $title);
-				$label = str_replace("'", "\'", $label);
-				$markerItems .= "getOLMarkerData($lon, $lat, '$title', '$label'),";
-			}
+		MapsUtils::makePxValue($this->width);
+		MapsUtils::makePxValue($this->height);
 			
-			$markerItems = rtrim($markerItems, ',');
-		}	
+		$markerItems = array();
 		
-		if (strlen($zoom) < 1) {
-			if (count($this->m_locations) > 1) {
-				$zoom = 'null';
-			}
-			else {
-				$zoom = $egMapsOpenLayersZoom;
-			}
+		foreach ($this->m_locations as $location) {
+			// Create a string containing the marker JS 
+			list($lat, $lon, $title, $label, $icon) = $location;
+			$title = str_replace("'", "\'", $title);
+			$label = str_replace("'", "\'", $label);
+			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label')";
 		}
 		
-		if (strlen($centre) > 0) {
-			list($centre_lat, $centre_lon) = MapsUtils::getLatLon($centre);
-		}
-		else {
-			$centre_lat = 'null';
-			$centre_lon = 'null';
-		}
-
-		$width = $width . 'px';
-		$height = $height . 'px';	
-			
-		$result .= "
-		<div id='openlayer_$egOpenLayersOnThisPage' style='width: $width; height: $height; background-color: #cccccc;'></div>
-		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		initOpenLayer('openlayer_$egOpenLayersOnThisPage', $centre_lon, $centre_lat, $zoom, [$layerItems], [$controlItems],[$markerItems]);
-		/*]]>*/</script>";
+		$markersString = implode(',', $markerItems);		
 		
-		return array($result, 'noparse' => 'true', 'isHTML' => 'true');
+		$this->output .= "<div id='$this->mapName' style='width: $this->width; height: $this->height; background-color: #cccccc;'></div>
+		<script type='$wgJsMimeType'> /*<![CDATA[*/
+			addLoadEvent(
+				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems], [$markersString])
+			);
+		/*]]>*/ </script>";		
 	}
 
-
 }
-
