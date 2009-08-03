@@ -51,7 +51,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		
 		$controlItems = MapsOpenLayers::createControlsString($this->controls);
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->formOutput, $this->mapProperties['layers']);	
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->formOutput, $this->layers);	
 		
 		$width = $this->width . 'px';
 		$height = $this->height . 'px';			

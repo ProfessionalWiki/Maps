@@ -56,7 +56,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function addSpecificFormInputHTML() {
 		global $wgJsMimeType;
 		
-		$enableEarth = $this->mapProperties['earth'] == 'on' || $this->mapProperties['earth'] == 'yes';
+		$enableEarth = $this-earth == 'on' || $this->earth == 'yes';
 		$earth = $enableEarth ? 'true' : 'false';
 		
 		$this->type = MapsGoogleMaps::getGMapType($this->type, $enableEarth);

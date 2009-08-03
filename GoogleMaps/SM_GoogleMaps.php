@@ -15,8 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class SMGoogleMaps extends SMMapPrinter {
-	// TODO: only js that should be printed is a claa to a js function that does all the work
-
+	
 	public function getName() {
 		wfLoadExtensionMessages('SemanticMaps');
 		return wfMsg('sm_googlemaps_printername');

@@ -13,7 +13,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class SMYahooMaps extends SMMapPrinter {
-	// TODO: create a class instead of a code horror :D
 
 	public function getName() {
 		wfLoadExtensionMessages('SemanticMaps');

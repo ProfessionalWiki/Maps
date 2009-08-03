@@ -13,58 +13,18 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-abstract class SMFormInput {
-	// TODO: make class weakly typed, like MapsBaseMap in Maps
-	
-	/**
-	 * Set the map service specific element name and the javascript function handling the displaying of an address
-	 */
-	protected abstract function setFormInputSettings();
-	
-	/**
-	 * Map service spesific map count and loading of dependencies
-	 */
-	protected abstract function doMapServiceLoad();
-	
-	/**
-	 * Adds the HTML specific to the mapping service to the output
-	 */
-	protected abstract function addSpecificFormInputHTML();
-	
+abstract class SMFormInput extends MapsMapFeature {
+
 	/**
 	 * Detrmine if geocoding will be enabled and load the required dependencies.
 	 */	
 	protected abstract function manageGeocoding();
 	
-	protected $formOutput = '';
-	
-	protected $coordinates;	
-	protected $width;
-	protected $height;
-	protected $zoom;
-	protected $controls;
-	protected $type;
-	protected $autozoom;
-	protected $centre;
-	protected $class;
-	
-	protected $mapName;
-	protected $geocodeFieldName;
-	protected $coordsFieldName;
-	protected $infoFieldName;
-	
-	protected $mapProperties = array();
-	
 	protected $marker_lat;
 	protected $marker_lon;
-	protected $centre_lat;
-	protected $centre_lon;
-	
-	protected $defaultZoom;
+
 	protected $earthZoom;
 	
-	protected $elementNr;
-	protected $elementNamePrefix;
 	protected $showAddresFunction;
 	
 	protected $enableGeocoding = false;
@@ -86,7 +46,7 @@ abstract class SMFormInput {
 		
 		$this->doMapServiceLoad();
 
-		$this->manageMapProperties($field_args);
+		$this->manageMapProperties($field_args, 'SMFormInput');
 
 		$this->setCoordinates();
 		$this->setCentre();	
@@ -95,7 +55,7 @@ abstract class SMFormInput {
 		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off' ? 'false' : 'true');		
 		
 		// Create html element names
-		$this->mapName = $this->elementNamePrefix.'_'.$this->elementNr;
+		$this->setMapName();
 		$this->geocodeFieldName = $this->elementNamePrefix.'_geocode_'.$this->elementNr;
 		$this->coordsFieldName = $this->elementNamePrefix.'_coords_'.$this->elementNr;
 		$this->infoFieldName = $this->elementNamePrefix.'_info_'.$this->elementNr;			
@@ -125,28 +85,6 @@ abstract class SMFormInput {
 		$this->addSpecificFormInputHTML();
 		
 		return array($this->formOutput, '');
-	}
-	
-	/**
-	 * Sets both the common map properties to their defaults or the provided values
-	 * and adds non common properties to the $mapProperties field.
-	 *
-	 * @param unknown_type $mapProperties
-	 */
-	private function manageMapProperties($mapProperties) {
-		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, true);
-
-		foreach($mapProperties as $paramName => $paramValue) {
-			if (property_exists('SMFormInput', $paramName) && $paramName != 'coordinates') {
-				// If the field exists at class level, set the value
-				$this->{$paramName} = $paramValue; 
-			}
-			else {
-				// If the field does not exists at class level (so represents a mapping service specific parameter),
-				// add the value to the $mapProperties field.
-				$this->mapProperties[$paramName] = $paramValue; 
-			}
-		}		
 	}
 	
 	/**
