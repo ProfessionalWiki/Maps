@@ -24,9 +24,9 @@ final class SMYahooMaps extends SMMapPrinter {
 	 *
 	 */
 	protected function setQueryPrinterSettings() {
-		global $egMapsYahooMapsZoom;
+		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
 		
-		$this->elementNamePrefix = 'map_yahoo';
+		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->defaultZoom = $egMapsYahooMapsZoom;		
 	}
 	

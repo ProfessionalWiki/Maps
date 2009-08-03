@@ -20,9 +20,9 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	 *
 	 */
 	protected function setMapSettings() {
-		global $egMapsYahooMapsZoom;
+		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
 		
-		$this->elementNamePrefix = 'map_yahoo';
+		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->showAddresFunction = 'showYAddress';		
 
 		$this->earthZoom = 17;

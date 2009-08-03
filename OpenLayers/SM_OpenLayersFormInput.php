@@ -20,9 +20,9 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	 *
 	 */
 	protected function setMapSettings() {
-		global $egMapsOpenLayersZoom;
+		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
-		$this->elementNamePrefix = 'open_layer';
+		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->showAddresFunction = 'showOLAddress';	
 
 		$this->earthZoom = 1;

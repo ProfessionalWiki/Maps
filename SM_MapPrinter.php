@@ -45,9 +45,14 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	protected $output = '';
 	
+	protected $mapFeature;
+	
 	/**
-	 * 
+	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
+	 * @param unknown_type $res
+	 * @param unknown_type $outputmode
+	 * @return unknown
 	 */
 	public final function getResultText($res, $outputmode) {
 		$this->formatResultData($res, $outputmode);

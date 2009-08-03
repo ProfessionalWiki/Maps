@@ -25,9 +25,9 @@ final class SMOpenLayers extends SMMapPrinter {
 	 *
 	 */
 	protected function setQueryPrinterSettings() {
-		global $egMapsOpenLayersZoom;
+		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
-		$this->elementNamePrefix = 'open_layer';
+		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->defaultZoom = $egMapsOpenLayersZoom;		
 	}	
 

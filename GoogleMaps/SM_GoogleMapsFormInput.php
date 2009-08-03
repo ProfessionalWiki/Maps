@@ -22,9 +22,9 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 *
 	 */
 	protected function setMapSettings() {
-		global $egMapsGoogleMapsZoom;
+		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
 		
-		$this->elementNamePrefix = 'map_google';
+		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->showAddresFunction = 'showGAddress';	
 
 		$this->earthZoom = 1;

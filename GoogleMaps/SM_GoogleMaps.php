@@ -26,9 +26,9 @@ final class SMGoogleMaps extends SMMapPrinter {
 	 *
 	 */
 	protected function setQueryPrinterSettings() {
-		global $egMapsGoogleMapsZoom;
+		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
 		
-		$this->elementNamePrefix = 'map_google';
+		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 	}	
