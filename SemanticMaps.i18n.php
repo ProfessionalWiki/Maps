@@ -269,8 +269,10 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
+	'semanticmaps_desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. Servicis de mapas disponibles : $1",
 	'semanticmaps_lookupcoordinates' => 'Estimar las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Picatz aicí l’adreça',
+	'semanticmaps_notfound' => 'pas trobat',
 );
 
 /** Polish (Polski)
