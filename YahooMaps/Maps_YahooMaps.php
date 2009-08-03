@@ -64,9 +64,9 @@ class MapsYahooMaps extends MapsBaseMap {
 	 *
 	 */	
 	protected function setMapSettings() {
-		global $egMapsYahooMapsZoom;
+		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
 		
-		$this->elementNamePrefix = 'map_yahoo';
+		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->defaultZoom = $egMapsYahooMapsZoom;
 	}
 	

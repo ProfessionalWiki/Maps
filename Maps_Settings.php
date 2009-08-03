@@ -97,4 +97,9 @@ $egMapsOLControls = array('layerswitcher', 'mouseposition', 'panzoombar', 'scale
 # Available values: google, bing, yahoo, openlayers, nasa
 $egMapsOLLayers = array('openlayers');
 
+# String(s). The map name prefixes for each service. They can not be identical.
+$egMapsGoogleMapsPrefix = 'map_google';
+$egMapsYahooMapsPrefix = 'map_yahoo';
+$egMapsOpenLayersPrefix = 'open_layer';
+
 

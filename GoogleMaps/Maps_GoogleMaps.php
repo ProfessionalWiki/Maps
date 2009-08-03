@@ -96,9 +96,9 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	 *
 	 */	
 	protected function setMapSettings() {
-		global $egMapsGoogleMapsZoom;
+		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
 		
-		$this->elementNamePrefix = 'map_google';
+		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 	}
 	
