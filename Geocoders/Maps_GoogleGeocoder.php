@@ -40,7 +40,10 @@ final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 			// If the status is not 200, return false
 			if ($values[0] !== '200') return false;
 
-			return $values;
+			return array(
+						'lat' => $values[2],
+						'lon' => $values[3]
+						);
 		}
 		else { // When the request fails, return false
 			return false;

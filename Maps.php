@@ -38,26 +38,31 @@ $wgAutoloadClasses['MapsUtils'] = $egMapsIP . '/Maps_Utils.php';
 $wgAutoloadClasses['MapsGeocoder'] = $egMapsIP . '/Maps_Geocoder.php';
 $wgAutoloadClasses['MapsBaseGeocoder'] = $egMapsIP . '/Maps_BaseGeocoder.php';
 
-// Add the services
-$wgAutoloadClasses['MapsGoogleMaps'] = $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php';
-$wgAutoloadClasses['MapsYahooMaps'] = $egMapsIP . '/YahooMaps/Maps_YahooMaps.php';
-$wgAutoloadClasses['MapsOpenLayers'] = $egMapsIP . '/OpenLayers/Maps_OpenLayers.php';
-
 // Array containing all map services made available by Maps.
 // This does not reflect the enabled mapping services, see $egMapsAvailableServices in Maps_Settings.php for this.
 // Each array item represents a service: the key is the main service name (used in switch statements),
 // and the array values are the aliases for the main name (so can also be used as service=alias).
 $egMapsServices = array();
-$egMapsServices['googlemaps'] = array('aliases' => array('google', 'googlemap', 'gmap', 'gmaps'));
-$egMapsServices['openlayers'] = array('aliases' => array('layers', 'openlayer'));
-$egMapsServices['yahoomaps'] = array('aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps'));
+
+$egMapsServices['googlemaps'] = array(
+									'pf' => array('class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true),
+									'aliases' => array('google', 'googlemap', 'gmap', 'gmaps')
+									);
+$egMapsServices['openlayers'] = array(
+									'pf' => array('class' => 'MapsOpenLayers', 'file' => 'OpenLayers/Maps_OpenLayers.php', 'local' => true),
+									'aliases' => array('layers', 'openlayer')
+									);
+$egMapsServices['yahoomaps'] = array(
+									'pf' => array('class' => 'MapsYahooMaps', 'file' => 'YahooMaps/Maps_YahooMaps.php', 'local' => true),
+									'aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps')
+									);
 						
 /**
  * Initialization function for the Maps extension
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgOut;	
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices;
+	global $wgExtensionCredits, $wgOut, $wgAutoloadClasses;	
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP;
 
 	efMapsValidateGoogleMapsKey();
 	
@@ -82,6 +87,11 @@ function efMapsSetup() {
 	efMapsAddParserHooks();
 	
 	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
+	
+	foreach ($egMapsServices as  $serviceData) {
+		$file = $serviceData['pf']['local'] ? $egMapsIP . '/' . $serviceData['pf']['file'] : $serviceData['pf']['file'];
+		$wgAutoloadClasses[$serviceData['pf']['class']] = $file;
+	}
 }
 
 /**

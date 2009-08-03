@@ -20,23 +20,23 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class MapsGeocoder {
 	// TODO: some refactoring: the arrays containing the result should be generalized - currently only logical for the Google Geocoder service
-
+	
 	private static $mEnableCache = true;
 	private static $mGeocoderCache = array();
 
 	public static function renderGeocoder(&$parser, $address, $service = '', $mappingService = '') {
 		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
-		return $geovalues ? $geovalues[2].', '.$geovalues[3] : '';
+		return $geovalues ? $geovalues['lat'].', '.$geovalues['lon'] : '';
 	}
 
-	public static function renderGeocoderLat(&$parser, $address, $service = '') {
-		$geovalues = MapsGeocoder::geocode($address, $service);
-		return $geovalues ? $geovalues[2] : '';
+	public static function renderGeocoderLat(&$parser, $address, $service = '', $mappingService = '') {
+		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
+		return $geovalues ? $geovalues['lat'] : '';
 	}
 
-	public static function renderGeocoderLng(&$parser, $address, $service = '') {
-		$geovalues = MapsGeocoder::geocode($address, $service);
-		return $geovalues ? $geovalues[3] : '';
+	public static function renderGeocoderLng(&$parser, $address, $service = '', $mappingService = '') {
+		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
+		return $geovalues ? $geovalues['lon'] : '';
 	}
 
 	/**
@@ -92,6 +92,8 @@ final class MapsGeocoder {
 		
 		if (strlen($service) < 1) {
 			
+			// Set the default geocoding services.
+			// Note that googlemaps and yahoomaps are excetions to the general rule due to licencing.
 			switch ($mappingService) {
 				case 'googlemaps' :
 					$service = 'google';

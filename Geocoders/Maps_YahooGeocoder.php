@@ -28,7 +28,6 @@ final class MapsYahooGeocoder extends MapsBaseGeocoder {
 		if (empty($egYahooMapsKey)) return false;
 
 		// Create the request url
-		
 		$requestURL = "http://where.yahooapis.com/v1/places.q('".urlencode($address)."')?appid=".urlencode($egYahooMapsKey)."&format=xml"; 
 
 		if ($handle = fopen($requestURL, "r")) {
@@ -41,7 +40,10 @@ final class MapsYahooGeocoder extends MapsBaseGeocoder {
 			// In case one of the values is not found, return false
 			if (!$lon || !$lat) return false;
 
-			return array(false, false, $lat, $lon);
+			return array(
+						'lat' => $lat,
+						'lon' => $lon
+						);
 		}
 		else { // When the request fails, return false
 			return false;

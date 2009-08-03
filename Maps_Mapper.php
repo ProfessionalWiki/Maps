@@ -115,6 +115,8 @@ final class MapsMapper {
 				break;
 		}
 
+		$mapClass = new $egMapsServices[$map['service']]['qp']['class']();
+		
 		// Call the function according to the map service to get the HTML output
 		$output = $mapClass->displayMap($parser, $map);
 		
@@ -134,13 +136,12 @@ final class MapsMapper {
 		global $egMapsDefaultService;
 		
 		$params = func_get_args();
-		array_shift( $params ); // we already know the $parser ...
+		array_shift( $params ); // We already know the $parser ...
 		
 		for ($i = 0; $i < count($params); $i++) {
 			$split = split('=', $params[$i]);
 			if (strtolower(trim($split[0])) == 'service' && count($split) > 1) {
 				$service = trim($split[1]);
-				//echo "<!-- ||| $service -->";
 			}
 		}
 
