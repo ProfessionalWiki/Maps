@@ -3,7 +3,7 @@
 /**
  * A query printer for maps using the Open Layers API
  *
- * @file SM_OpenLayers.php
+ * @file SM_OpenLayers.php 
  * @ingroup SemanticMaps
  *
  * @author Jeroen De Dauw
