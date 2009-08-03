@@ -31,14 +31,14 @@ $wgAutoloadClasses['SMMapper'] = $smgIP . '/SM_Mapper.php';
 $wgAutoloadClasses['SMFormInput'] = $smgIP . '/SM_FormInput.php';
 
 // Add the services
-$egMapsServices['googlemaps']['qp'] = array('class' => 'SMGoogleMaps', 'file' => 'GoogleMaps/SM_GoogleMaps.php');
-$egMapsServices['googlemaps']['fi'] = array('class' => 'SMGoogleMapsFormInput', 'file' => 'GoogleMaps/SM_GoogleMapsFormInput.php');
+$egMapsServices['googlemaps']['qp'] = array('class' => 'SMGoogleMaps', 'file' => 'GoogleMaps/SM_GoogleMaps.php', 'local' => true);
+$egMapsServices['googlemaps']['fi'] = array('class' => 'SMGoogleMapsFormInput', 'file' => 'GoogleMaps/SM_GoogleMapsFormInput.php', 'local' => true);
 
-$egMapsServices['yahoomaps']['qp'] = array('class' => 'SMYahooMaps', 'file' => 'YahooMaps/SM_YahooMaps.php');
-$egMapsServices['yahoomaps']['fi'] = array('class' => 'SMYahooMapsFormInput', 'file' => 'YahooMaps/SM_YahooMapsFormInput.php');
+$egMapsServices['yahoomaps']['qp'] = array('class' => 'SMYahooMaps', 'file' => 'YahooMaps/SM_YahooMaps.php', 'local' => true);
+$egMapsServices['yahoomaps']['fi'] = array('class' => 'SMYahooMapsFormInput', 'file' => 'YahooMaps/SM_YahooMapsFormInput.php', 'local' => true);
 
-$egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayers', 'file' => 'OpenLayers/SM_OpenLayers.php');
-$egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'OpenLayers/SM_OpenLayersFormInput.php');
+$egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayers', 'file' => 'OpenLayers/SM_OpenLayers.php', 'local' => true);
+$egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'OpenLayers/SM_OpenLayersFormInput.php', 'local' => true);
 
 /**
  * Initialization function for the Semantic Maps extension
@@ -93,7 +93,10 @@ function smfSetup() {
 function smfInitFormat($format, $qp) {
 	global $wgAutoloadClasses, $smwgResultFormats, $smgIP;
 	
-	if (! array_key_exists($qp['class'], $wgAutoloadClasses)) $wgAutoloadClasses[$qp['class']] = $smgIP . '/' . $qp['file'];
+	if (! array_key_exists($qp['class'], $wgAutoloadClasses)) {
+		$file = $qp['local'] ? $smgIP . '/' . $qp['file'] : $qp['file'];
+		$wgAutoloadClasses[$qp['class']] = $file;
+	}
 	
 	if (isset($smwgResultFormats)) {
 		$smwgResultFormats[$format] = $qp['class'];
@@ -114,7 +117,10 @@ function smfInitFormHook($service, $fi = null, $mainName = '') {
 	global $wgAutoloadClasses, $sfgFormPrinter, $smgIP;
 
 	if (isset($fi)) {
-		if (! array_key_exists($fi['class'], $wgAutoloadClasses)) $wgAutoloadClasses[$fi['class']] = $smgIP . '/' . $fi['file'];
+		if (! array_key_exists($fi['class'], $wgAutoloadClasses)) {
+			$file = $fi['local'] ? $smgIP . '/' . $fi['file'] : $fi['file'];
+			$wgAutoloadClasses[$fi['class']] = $file;
+		}
 	}
 	
 	// Add the form input hook for the service
