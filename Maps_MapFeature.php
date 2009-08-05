@@ -32,10 +32,10 @@ abstract class MapsMapFeature {
 	 *
 	 */	
 	protected abstract function addSpecificMapHTML();
-
-	protected $defaultParams = array();
 	
-	protected $serviceName;
+	public $serviceName;
+	
+	protected $defaultParams = array();
 	
 	protected $defaultZoom;
 	

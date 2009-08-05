@@ -13,6 +13,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsGoogleMaps extends MapsBaseMap {
+	
+	const SERVICE_NAME = 'googlemaps';
+	
+	public $serviceName = self::SERVICE_NAME;
 
 	// http://code.google.com/apis/maps/documentation/introduction.html#MapTypes
 	private static $mapTypes = array(
@@ -33,6 +37,10 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 
 	 * for the provided a general map type. When no match is found, the first 
 	 * possible Google Map type will be returned as default.
+	 *
+	 * @param string $type
+	 * @param boolean $earthEnabled
+	 * @return string
 	 */
 	public static function getGMapType($type, $earthEnabled = false) {
 		global $egMapsGoogleMapsType;
@@ -48,11 +56,29 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	 * Returns the Google Map Control type (defined in MapsGoogleMaps::$controlClasses) 
 	 * for the provided a general map control type. When no match is found, the provided
 	 * control name will be used.
+	 *
+	 * @param array $controls
+	 * @return string
 	 */
-	public static function getGControlType($controls) {
+	public static function getGControlType(array $controls) {
 		global $egMapsGMapControl;
 		$control = count($controls) > 0 ? $controls[0] : $egMapsGMapControl;
 		return array_key_exists($control, MapsGoogleMaps::$controlClasses) ? MapsGoogleMaps::$controlClasses[$control] : $control; 
+	}
+	
+	/**
+	 * Retuns an array holding the default parameters and their values.
+	 *
+	 * @return array
+	 */
+	public static function getDefaultParams() {
+		return array
+			(
+			'type' => '',
+			'class' => 'pmap',
+			'autozoom' => '',
+			'earth' => ''
+			); 		
 	}
 	
 	/**
@@ -73,6 +99,16 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	}
 	
 	/**
+	 * Retuns a boolean as string, true if $autozoom is on or yes.
+	 *
+	 * @param string $autozoom
+	 * @return string
+	 */
+	public static function getAutozoomJSValue($autozoom) {
+		return MapsMapper::getJSBoolValue(in_array($autozoom, array('on', 'yes')));
+	}
+	
+	/**
 	 * Returns a boolean representing if the earth map type should be showed or not,
 	 * when provided the the wiki code value.
 	 *
@@ -83,16 +119,6 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		$trueValues = array('on', 'yes');
 		return in_array($earthValue, $trueValues);		
 	}
-	
-	/**
-	 * Returns the JS version (true/false as string) of the provided earth parameter.
-	 *
-	 * @param boolean $enableEarth
-	 * @return string
-	 */
-	public static function getJSEarthValue($enableEarth) {		
-		return $enableEarth ? 'true' : 'false';
-	}	
 
 	/**
 	 * @see MapsBaseMap::setFormInputSettings()
@@ -103,16 +129,6 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
-		
-		$this->serviceName = 'googlemaps';
-		
-		$this->defaultParams = array
-			(
-			'type' => '',
-			'class' => 'pmap',
-			'autozoom' => '',
-			'earth' => ''
-			); 
 	}
 	
 	/**
@@ -136,19 +152,20 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		global $wgJsMimeType;
 		
 		$enableEarth = self::getEarthValue($this->earth);
-		$this->earth = self::getJSEarthValue($enableEarth);
+		$this->earth = MapsMapper::getJSBoolValue($enableEarth);
 		
 		$this->type = self::getGMapType($this->type, $enableEarth);
 		$control = self::getGControlType($this->controls);	
 		
-		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off') ? 'false' : 'true';	
+		$this->autozoom = self::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();		
 		
+		// TODO: Refactor up
 		foreach ($this->markerData as $markerData) {
 			$lat = $markerData['lat'];
 			$lon = $markerData['lon'];
-			$markerItems[] = "getGMarkerData($lat, $lon, '$this->title', '$this->label')";
+			$markerItems[] = "getGMarkerData($lat, $lon, '$this->title', '$this->label', '')";
 		}		
 		
 		$markersString = implode(',', $markerItems);	

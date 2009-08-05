@@ -38,10 +38,7 @@ $wgAutoloadClasses['MapsUtils'] = $egMapsIP . '/Maps_Utils.php';
 $wgAutoloadClasses['MapsGeocoder'] = $egMapsIP . '/Maps_Geocoder.php';
 $wgAutoloadClasses['MapsBaseGeocoder'] = $egMapsIP . '/Maps_BaseGeocoder.php';
 
-// Array containing all map services made available by Maps.
-// This does not reflect the enabled mapping services, see $egMapsAvailableServices in Maps_Settings.php for this.
-// Each array item represents a service: the key is the main service name (used in switch statements),
-// and the array values are the aliases for the main name (so can also be used as service=alias).
+// TODO: document
 $egMapsServices = array();
 
 $egMapsServices['googlemaps'] = array(

@@ -25,17 +25,21 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * @param unknown_type $map
 	 * @return unknown
 	 */
-	public final function displayMap(&$parser, $map) {
+	public final function displayMap(&$parser, $map) {		
+		$this->defaultParams = $this->getDefaultParams();
+		
 		$this->setMapSettings();
+		
 		$this->doMapServiceLoad();
 
 		$this->setMapName();
 		
 		$this->manageMapProperties($map, 'MapsBaseMap');
 		
+		$this->setCoordinates();		
+		
 		$this->setZoom();
 		
-		$this->setCoordinates();
 		$this->setCentre();
 		
 		$this->addSpecificMapHTML();
@@ -44,11 +48,20 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	}
 	
 	/**
-	 * Sets the zoom level to the provided value, or when not set, to the default.
+	 * Sets the zoom level to the provided value. When no zoom is provided, set
+	 * it to the default when there is only one location, or the best fitting soom when
+	 * there are multiple locations.
 	 *
 	 */
 	private function setZoom() {
-		if (strlen($this->zoom) < 1) $this->zoom = $this->defaultZoom;	
+		if (strlen($this->zoom) < 1) {
+			if (count($this->markerData) > 1) {
+		        $this->zoom = 'null';
+		    }
+		    else {
+		        $this->zoom = $this->defaultZoom;
+		    }
+		}				
 	}	
 	
 	/**

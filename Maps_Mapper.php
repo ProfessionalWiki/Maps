@@ -43,15 +43,15 @@ final class MapsMapper {
 	 * @param array $serviceDefaults Array with the default parameters and their values for the used mapping service.
 	 * @param boolean $strict If set to false, values which a key that does not
 	 * exist in the $map array will be retained.
-	 * @return unknown
+	 * @return array
 	 */
 	public static function setDefaultParValues(array $params, array $serviceDefaults, $strict = true) {
-		global $egMapsMapLat, $egMapsMapLon, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultZoom, $egMapsDefaultService;
+		global $egMapsMapLat, $egMapsMapLon, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
 		
         $mapDefaults = array(
             'service' => $egMapsDefaultService,
             'coordinates' => "$egMapsMapLat, $egMapsMapLon",
-        	'zoom' => $egMapsDefaultZoom,
+        	'zoom' => '',
         	'centre' => '',
             'width' => $egMapsMapWidth,
             'height' => $egMapsMapHeight,  
@@ -73,11 +73,11 @@ final class MapsMapper {
 	 * Returns a valid version of the provided parameter array. Paramaters that are not allowed will
 	 * be ignored, and alias parameter names will be changed to main parameter names, using getMainParamName().
 	 *
-	 * @param unknown_type $params
-	 * @param unknown_type $serviceParameters
-	 * @return unknown
+	 * @param array $params
+	 * @param array $serviceParameters
+	 * @return array
 	 */
-	public static function getValidParams($params, $serviceParameters) {
+	public static function getValidParams(array $params, array $serviceParameters) {
 		$validParams = array();
 		
 		$allowedParms = array_merge(self::$mainParams, $serviceParameters);
@@ -109,11 +109,21 @@ final class MapsMapper {
 	}
 	
 	/**
+	 * Returns the JS version (true/false as string) of the provided boolean parameter.
+	 *
+	 * @param boolean $bool
+	 * @return string
+	 */
+	public static function getJSBoolValue($bool) {		
+		return $bool ? 'true' : 'false';
+	}	
+	
+	/**
 	 * Turns the provided values into an array by splitting it on comma's if
 	 * it's not an array yet.
 	 *
 	 * @param unknown_type $values
-	 * @param unknown_type $delimeter
+	 * @param string $delimeter
 	 */
 	public static function enforceArrayValues(&$values, $delimeter = ',') {
 		if (!is_array($values)) $values = split($delimeter, $values); // If not an array yet, split the values
@@ -126,7 +136,7 @@ final class MapsMapper {
 	 *
 	 * @param array $items
 	 * @param array $defaultItems
-	 * @return unknown
+	 * @return string
 	 */
 	public static function createJSItemsString(array $items, array $defaultItems) {
 		if (count($items) < 1) $items = $defaultItems;
@@ -138,7 +148,7 @@ final class MapsMapper {
 	 * on the provided service, and then returns it.
 	 *
 	 * @param unknown_type $parser
-	 * @return unknown
+	 * @return array
 	 */
 	public static function displayPointRender(&$parser) {
 		global $egMapsServices;
@@ -184,7 +194,10 @@ final class MapsMapper {
 	 * @param unknown_type $parser
 	 */
 	public static function displayPointsRender(&$parser) {
-		return self::displayPointRender(func_get_args());
+		$params = func_get_args();
+		array_shift( $params ); // We already know the $parser ...
+		
+		return self::displayPointRender($parser, $params);
 	}
 	
 	/**
@@ -192,7 +205,7 @@ final class MapsMapper {
 	 * @see MapsMapper::displayPointRender() do the work and returns it.
 	 *
 	 * @param unknown_type $parser
-	 * @return unknown
+	 * @return array
 	 */
 	public static function displayAddressRender(&$parser) {		
 		global $egMapsDefaultService;
@@ -259,8 +272,8 @@ final class MapsMapper {
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
 	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
 	 *
-	 * @param unknown_type $service
-	 * @return unknown
+	 * @param string $service
+	 * @return string
 	 */
 	public static function getValidService($service) {
 		global $egMapsAvailableServices, $egMapsDefaultService;
@@ -275,8 +288,8 @@ final class MapsMapper {
 	 * Checks if the service name is an alias for an actual service,
 	 * and changes it into the main service name if this is the case.
 	 *
-	 * @param unknown_type $service
-	 * @return unknown
+	 * @param string $service
+	 * @return string
 	 */
 	public static function getMainServiceName($service) {
 		global $egMapsServices;

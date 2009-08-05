@@ -13,6 +13,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class MapsOpenLayers extends MapsBaseMap {
+	
+	const SERVICE_NAME = 'openlayers';
+	
+	public $serviceName = self::SERVICE_NAME;	
+	
 	private static $loadedBing = false; 
 	private static $loadedYahoo = false;
 	private static $loadedOL = false;
@@ -21,9 +26,8 @@ class MapsOpenLayers extends MapsBaseMap {
 	/**
 	 * Load the dependencies of a layer if they are not loaded yet
 	 *
-	 * @param unknown_type $output The output to which the html to load the dependencies needs to be added
-	 * @param unknown_type $layer The layer to check (and load the dependencies for
-	 * @param unknown_type $includePath The path to the extension directory
+	 * @param string $output The output to which the html to load the dependencies needs to be added
+	 * @param string $layer The layer to check (and load the dependencies for
 	 */
 	public static function loadDependencyWhenNeeded(&$output, $layer) {
 		global $wgJsMimeType;
@@ -37,7 +41,7 @@ class MapsOpenLayers extends MapsBaseMap {
 					}
 				break;
 			case 'bing' : case 'virtual-earth' :
-				if (!self::$loadedBing) { $output .= "<script src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>\n"; self::$loadedBing = true; }
+				if (!self::$loadedBing) { $output .= "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>\n"; self::$loadedBing = true; }
 				break;
 			case 'yahoo' : case 'yahoo-maps' :
 				if (!self::$loadedYahoo) { $output .= "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>\n"; self::$loadedYahoo = true; }
@@ -52,9 +56,22 @@ class MapsOpenLayers extends MapsBaseMap {
 	}
 	
 	/**
+	 * Retuns an array holding the default parameters and their values.
+	 *
+	 * @return array
+	 */
+	public static function getDefaultParams() {
+		return array
+			(
+			'layers' => array(),
+			'baselayer' => ''
+			); 		
+	}		
+	
+	/**
 	 * If this is the first open layers map on the page, load the API, styles and extra JS functions
 	 * 
-	 * @param unknown_type $output
+	 * @param string $output
 	 */
 	public static function addOLDependencies(&$output) {
 		global $wgJsMimeType;
@@ -73,11 +90,11 @@ class MapsOpenLayers extends MapsBaseMap {
 	/**
 	 * Build up a csv string with the layers, to be outputted as a JS array
 	 *
-	 * @param unknown_type $output
-	 * @param unknown_type $layers
+	 * @param string $output
+	 * @param array $layers
 	 * @return csv string
 	 */
-	public static function createLayersStringAndLoadDependencies(&$output, $layers) {
+	public static function createLayersStringAndLoadDependencies(&$output, array $layers) {
 		global $egMapsOLLayers;
 		
 		if (count($layers) < 1) $layers = $egMapsOLLayers;
@@ -86,7 +103,7 @@ class MapsOpenLayers extends MapsBaseMap {
 		foreach ($layers as $layer) {
 			$layer = strtolower($layer);
 			$layerItems .= "'$layer'" . ',';
-			MapsOpenLayers::loadDependencyWhenNeeded($output, $layer);
+			self::loadDependencyWhenNeeded($output, $layer);
 		}
 		
 		return rtrim($layerItems, ',');		
@@ -95,10 +112,10 @@ class MapsOpenLayers extends MapsBaseMap {
 	/**
 	 * Build up a csv string with the controls, to be outputted as a JS array
 	 *
-	 * @param unknown_type $controls
+	 * @param array $controls
 	 * @return csv string
 	 */
-	public static function createControlsString($controls) {
+	public static function createControlsString(array $controls) {
 		global $egMapsOLControls;
 		return MapsMapper::createJSItemsString($controls, $egMapsOLControls);
 	}		
@@ -112,14 +129,6 @@ class MapsOpenLayers extends MapsBaseMap {
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->defaultZoom = $egMapsOpenLayersZoom;
-		
-		$this->serviceName = 'openlayers';
-		
-		$this->defaultParams = array
-			(
-			'layers' => array(),
-			'baselayer' => ''
-			); 		
 	}
 	
 	/**
@@ -152,6 +161,7 @@ class MapsOpenLayers extends MapsBaseMap {
 		
 		$markerItems = array();		
 		
+		// TODO: Refactor up
 		foreach ($this->markerData as $markerData) {
 			$lat = $markerData['lat'];
 			$lon = $markerData['lon'];

@@ -70,9 +70,6 @@ $egMapsMapHeight = 350;
 $egMapsMapLat = '1';
 $egMapsMapLon = '1';
 
-# Integer. The default zoom of a map. This value will only be used when the user does not provide one.
-$egMapsDefaultZoom = 10; # Will be used when the default for a service is not provided
-
 
 
 
