@@ -65,10 +65,11 @@ $messages['gl'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'maps_desc' => 'אספקת היכולת להצגת נתוני קואורדינטות במפות וכתובות geocode. שירותי המיפוי הזמינים: $1',
+	'maps_desc' => 'הוספת היכולת להצגת נתוני קואורדינטות במפות וכתובות geocode. שירותי המיפוי הזמינים: $1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
