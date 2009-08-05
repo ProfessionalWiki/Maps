@@ -27,9 +27,8 @@ class MapsYahooMaps extends MapsBaseMap {
 	 * Google Map type will be returned as default.
 	 */
 	public static function getYMapType($type) {
-		$keyz = array_keys(MapsYahooMaps::$mapTypes);
-		$keyName = array_key_exists($type, MapsYahooMaps::$mapTypes) ? $type : $keyz[0];
-		return MapsYahooMaps::$mapTypes[ $keyName ];
+		if (! array_key_exists($type, MapsYahooMaps::$mapTypes)) $type = $egMapsYahooMapsType;
+		return MapsYahooMaps::$mapTypes[ $type ];
 	}
 	
 	/**
@@ -40,7 +39,7 @@ class MapsYahooMaps extends MapsBaseMap {
 	 */
 	public static function createControlsString($controls) {
 		global $egMapsYMapControls;
-		return MapsMapper::createControlsString($controls, $egMapsYMapControls);
+		return MapsMapper::createJSItemsString($controls, $egMapsYMapControls);
 	}		
 
 	/**
@@ -68,6 +67,14 @@ class MapsYahooMaps extends MapsBaseMap {
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->defaultZoom = $egMapsYahooMapsZoom;
+		
+		$this->serviceName = 'yahoomaps';
+		
+		$this->defaultParams = array
+			(
+			'type' => '',
+			'autozoom' => '',
+			); 		
 	}
 	
 	/**
@@ -96,12 +103,24 @@ class MapsYahooMaps extends MapsBaseMap {
 		MapsUtils::makePxValue($this->width);
 		MapsUtils::makePxValue($this->height);
 
+		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off') ? 'false' : 'true';	
+		
+		$markerItems = array();		
+		
+		foreach ($this->markerData as $markerData) {
+			$lat = $markerData['lat'];
+			$lon = $markerData['lon'];
+			$markerItems[] = "getYMarkerData($lat, $lon, '$this->title', '$this->label', '')";
+		}		
+		
+		$markersString = implode(',', $markerItems);			
+		
 		$this->output .= <<<END
 		<div id="$this->mapName" style="width: $this->width; height: $this->height;"></div>  
 		
 		<script type="$wgJsMimeType">/*<![CDATA[*/
 		addLoadEvent(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->controls], $this->autozoom, [getYMarkerData($this->marker_lat, $this->marker_lon, '$this->title', '$this->label', '')])
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->controls], $this->autozoom, [$markersString])
 		);
 			/*]]>*/</script>
 END;

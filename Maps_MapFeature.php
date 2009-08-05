@@ -33,7 +33,12 @@ abstract class MapsMapFeature {
 	 */	
 	protected abstract function addSpecificMapHTML();
 
+	protected $defaultParams = array();
+	
+	protected $serviceName;
+	
 	protected $defaultZoom;
+	
 	protected $elementNr;
 	protected $elementNamePrefix;
 	
@@ -50,7 +55,10 @@ abstract class MapsMapFeature {
 	 * @param unknown_type $map
 	 */
 	protected function manageMapProperties($mapProperties, $className) {
-		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, true);
+		global $egMapsServices;
+		
+		$mapProperties = MapsMapper::getValidParams($mapProperties, $egMapsServices[$this->serviceName]['parameters']);
+		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, $this->defaultParams);
 		
 		// Go through the array with map parameters and create new variables
 		// with the name of the key and value of the item if they don't exist on class level yet.
@@ -58,7 +66,9 @@ abstract class MapsMapFeature {
 			if (!property_exists($className, $paramName)) {
 				$this->{$paramName} = $paramValue;
 			}
-		}		
+		}
+
+		MapsMapper::enforceArrayValues($this->controls);
 	}	
 	
 	/**

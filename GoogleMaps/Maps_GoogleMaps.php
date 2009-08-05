@@ -16,11 +16,11 @@ final class MapsGoogleMaps extends MapsBaseMap {
 
 	// http://code.google.com/apis/maps/documentation/introduction.html#MapTypes
 	private static $mapTypes = array(
-					'earth' => 'G_SATELLITE_3D_MAP',
 					'normal' => 'G_NORMAL_MAP',
 					'satellite' => 'G_SATELLITE_MAP',
 					'hybrid' => 'G_HYBRID_MAP',
 					'physical' => 'G_PHYSICAL_MAP',
+					'earth' => 'G_SATELLITE_3D_MAP',	
 					);
 
 	// http://code.google.com/apis/maps/documentation/controls.html#Controls_overview
@@ -35,10 +35,13 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	 * possible Google Map type will be returned as default.
 	 */
 	public static function getGMapType($type, $earthEnabled = false) {
-		$keyz = array_keys(MapsGoogleMaps::$mapTypes);
-		$defaultKey = $earthEnabled ? 0 : 1;
-		$keyName = array_key_exists($type, MapsGoogleMaps::$mapTypes) ? $type : $keyz[ "$defaultKey" ];
-		return self::$mapTypes[ $keyName ];
+		global $egMapsGoogleMapsType;
+		
+		if (! array_key_exists($type, MapsGoogleMaps::$mapTypes)) {
+			$type = $earthEnabled ? "earth" : $egMapsGoogleMapsType;;
+		}
+		
+		return self::$mapTypes[ $type ];
 	}
 	
 	/**
@@ -100,6 +103,16 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
+		
+		$this->serviceName = 'googlemaps';
+		
+		$this->defaultParams = array
+			(
+			'type' => '',
+			'class' => 'pmap',
+			'autozoom' => '',
+			'earth' => ''
+			); 
 	}
 	
 	/**
@@ -127,13 +140,25 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		
 		$this->type = self::getGMapType($this->type, $enableEarth);
 		$control = self::getGControlType($this->controls);	
-			
+		
+		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off') ? 'false' : 'true';	
+		
+		$markerItems = array();		
+		
+		foreach ($this->markerData as $markerData) {
+			$lat = $markerData['lat'];
+			$lon = $markerData['lon'];
+			$markerItems[] = "getGMarkerData($lat, $lon, '$this->title', '$this->label')";
+		}		
+		
+		$markersString = implode(',', $markerItems);	
+		
 		$this->output .=<<<END
 
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addLoadEvent(
-	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, new $control(), $this->autozoom, $this->earth, [getGMarkerData($this->marker_lat, $this->marker_lon, '$this->title', '$this->label', '')])
+	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, new $control(), $this->autozoom, $this->earth, [$markersString])
 );
 /*]]>*/ </script>
 

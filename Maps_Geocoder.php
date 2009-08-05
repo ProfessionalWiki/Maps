@@ -24,7 +24,7 @@ final class MapsGeocoder {
 	private static $mEnableCache = true;
 	private static $mGeocoderCache = array();
 
-	public static function renderGeocoder(&$parser, $address, $service = '', $mappingService = '') {
+	public static function renderGeocoder($parser, $address, $service = '', $mappingService = '') {
 		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
 		return $geovalues ? $geovalues['lat'].', '.$geovalues['lon'] : '';
 	}

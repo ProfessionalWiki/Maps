@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 abstract class MapsBaseMap extends MapsMapFeature {
 		
+	protected $markerData = array();
+	
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
@@ -31,8 +33,6 @@ abstract class MapsBaseMap extends MapsMapFeature {
 		
 		$this->manageMapProperties($map, 'MapsBaseMap');
 		
-		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off') ? 'false' : 'true';	
-		
 		$this->setZoom();
 		
 		$this->setCoordinates();
@@ -42,8 +42,6 @@ abstract class MapsBaseMap extends MapsMapFeature {
 
 		return $this->output;		
 	}
-	
-
 	
 	/**
 	 * Sets the zoom level to the provided value, or when not set, to the default.
@@ -57,10 +55,12 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * Sets the $marler_lon and $marler_lat fields.
 	 *
 	 */
-	private function setCoordinates() {
-		$this->coordinates = str_replace('″', '"', $this->coordinates);
-		$this->coordinates = str_replace('′', "'", $this->coordinates);		
-		list($this->marker_lat, $this->marker_lon) = MapsUtils::getLatLon($this->coordinates);
+	private function setCoordinates() {		
+		foreach($this->coordinates as $coordinates) {
+			$coordinates = str_replace('″', '"', $coordinates);
+			$coordinates = str_replace('′', "'", $coordinates);
+			$this->markerData[] = MapsUtils::getLatLon($coordinates);
+		}
 	}
 	
 	/**
@@ -70,11 +70,24 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 */
 	private function setCentre() {
 		if (empty($this->centre)) {
-			$this->centre_lat = $this->marker_lat;
-			$this->centre_lon = $this->marker_lon;
+			if (count($this->markerData) == 1) {
+				$this->centre_lat = $this->markerData[0]['lat'];
+				$this->centre_lon = $this->markerData[0]['lon'];
+			}
+			elseif (count($this->markerData) > 1) {
+				// TODO
+				die("// TODO: calculate centre and zoom (with SGM code?)"); 
+			}
+			else {
+				global $egMapsMapLat, $egMapsMapLon;
+				$this->centre_lat = $egMapsMapLat;
+				$this->centre_lon = $egMapsMapLon;
+			}
 		}
 		else {
-			list($this->centre_lat, $this->centre_lon) = MapsUtils::getLatLon($this->centre);
+			$centre = MapsUtils::getLatLon($this->centre);
+			$this->centre_lat = $centre['lat'];
+			$this->centre_lon = $centre['lon'];
 		}		
 	}	
 	

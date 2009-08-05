@@ -100,7 +100,7 @@ class MapsOpenLayers extends MapsBaseMap {
 	 */
 	public static function createControlsString($controls) {
 		global $egMapsOLControls;
-		return MapsMapper::createControlsString($controls, $egMapsOLControls);
+		return MapsMapper::createJSItemsString($controls, $egMapsOLControls);
 	}		
 	
 	/**
@@ -112,6 +112,14 @@ class MapsOpenLayers extends MapsBaseMap {
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->defaultZoom = $egMapsOpenLayersZoom;
+		
+		$this->serviceName = 'openlayers';
+		
+		$this->defaultParams = array
+			(
+			'layers' => array(),
+			'baselayer' => ''
+			); 		
 	}
 	
 	/**
@@ -135,15 +143,27 @@ class MapsOpenLayers extends MapsBaseMap {
 		global $wgJsMimeType;
 		
 		$controlItems = self::createControlsString($this->controls);
+		
+		MapsMapper::enforceArrayValues($this->layers);
 		$layerItems = self::createLayersStringAndLoadDependencies($this->output, $this->layers);
 
 		MapsUtils::makePxValue($this->width);
 		MapsUtils::makePxValue($this->height);
 		
+		$markerItems = array();		
+		
+		foreach ($this->markerData as $markerData) {
+			$lat = $markerData['lat'];
+			$lon = $markerData['lon'];
+			$markerItems[] = "getOLMarkerData($lon, $lat, '$this->title', '$this->label')";
+		}		
+		
+		$markersString = implode(',', $markerItems);		
+		
 		$this->output .= "<div id='$this->mapName' style='width: $this->width; height: $this->height; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
 			addLoadEvent(
-				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[getOLMarkerData($this->marker_lon, $this->marker_lat, '$this->title', '$this->label')])
+				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[$markersString])
 			);
 		/*]]>*/ </script>";
 	}

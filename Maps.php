@@ -46,15 +46,31 @@ $egMapsServices = array();
 
 $egMapsServices['googlemaps'] = array(
 									'pf' => array('class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true),
-									'aliases' => array('google', 'googlemap', 'gmap', 'gmaps')
+									'aliases' => array('google', 'googlemap', 'gmap', 'gmaps'),
+									'parameters' => array(
+											'type' => array('map-type', 'map type'),
+											'earth' => array(),
+											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom'),
+											'class' => array()
+											)
 									);
+									
 $egMapsServices['openlayers'] = array(
 									'pf' => array('class' => 'MapsOpenLayers', 'file' => 'OpenLayers/Maps_OpenLayers.php', 'local' => true),
-									'aliases' => array('layers', 'openlayer')
+									'aliases' => array('layers', 'openlayer'),
+									'parameters' => array(
+											'layers' => array(),
+											'baselayer' => array()
+											)
 									);
+									
 $egMapsServices['yahoomaps'] = array(
 									'pf' => array('class' => 'MapsYahooMaps', 'file' => 'YahooMaps/Maps_YahooMaps.php', 'local' => true),
-									'aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps')
+									'aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps'),
+									'parameters' => array(
+											'type' => array('map-type'),
+											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom')
+											)
 									);
 						
 /**
@@ -100,16 +116,34 @@ function efMapsSetup() {
 function efMapsAddParserHooks() {
 	global $wgParser;
 	
-	// A hook to enable the '#display_point' parser function
+	// A hooks to enable the '#display_point' and '#display_points' parser functions
 	$wgParser->setFunctionHook( 'display_point', array('MapsMapper', 'displayPointRender' ));
+	$wgParser->setFunctionHook( 'display_points', array('MapsMapper', 'displayPointsRender' ));
 
-	// A hook to enable the '#display_adress' parser function
+	// A hooks to enable the '#display_adress' and '#display_adresses' parser functions
 	$wgParser->setFunctionHook( 'display_address', array('MapsMapper', 'displayAddressRender' ));
+	$wgParser->setFunctionHook( 'display_addresses', array('MapsMapper', 'displayAddressesRender' ));
 
 	// A hook to enable the geocoder parser functions
 	$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder' ));
 	$wgParser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat' ));
 	$wgParser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng' ));
+}
+
+/**
+ * Adds the magic words for the parser functions
+ */
+function efMapsFunctionMagic( &$magicWords, $langCode ) {
+	$magicWords['display_point'] = array( 0, 'display_point' );
+	$magicWords['display_points'] = array( 0, 'display_points' );
+	$magicWords['display_address'] = array( 0, 'display_address' );
+	$magicWords['display_addresses'] = array( 0, 'display_addresses' );
+
+	$magicWords['geocode'] = array( 0, 'geocode' );
+	$magicWords['geocodelat']	= array ( 0, 'geocodelat' );
+	$magicWords['geocodelng']	= array ( 0, 'geocodelng' );
+	
+	return true; // Unless we return true, other parser functions won't get loaded
 }
 
 /**
@@ -120,20 +154,6 @@ function efMapsValidateGoogleMapsKey() {
 	global $egGoogleMapsKey, $wgGoogleMapsKey;
 	
 	if (strlen($egGoogleMapsKey) < 1 && isset($wgGoogleMapsKey)) $egGoogleMapsKey = $wgGoogleMapsKey;
-}
-
-/**
- * Adds the magic words for the parser functions
- */
-function efMapsFunctionMagic( &$magicWords, $langCode ) {
-	$magicWords['display_point'] = array( 0, 'display_point' );
-	$magicWords['display_address'] = array( 0, 'display_address' );
-
-	$magicWords['geocode'] = array( 0, 'geocode' );
-	$magicWords['geocodelat']	= array ( 0, 'geocodelat' );
-	$magicWords['geocodelng']	= array ( 0, 'geocodelng' );
-	
-	return true; // Unless we return true, other parser functions won't get loaded
 }
 
 /**
