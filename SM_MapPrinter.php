@@ -32,6 +32,10 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	protected abstract function addSpecificMapHTML();
 	
+	public $serviceName;	
+	
+	protected $defaultParams = array();	
+	
 	protected $m_locations = array();
 	
 	protected $defaultZoom;
@@ -57,15 +61,13 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	public final function getResultText($res, $outputmode) {
 		$this->formatResultData($res, $outputmode);
 		
-		$this->manageMapProperties();	
-		
 		$this->setQueryPrinterSettings();
+		
+		$this->manageMapProperties($this->m_params, 'SMMapPrinter');
 		
 		$this->doMapServiceLoad();
 
-		$this->mapName = $this->elementNamePrefix.'_'.$this->elementNr;
-		
-		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off') ? 'false' : 'true';	
+		$this->setMapName();
 		
 		$this->setZoom();
 		
@@ -166,16 +168,21 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		return $icon;
 	}
 	
-	private function manageMapProperties() {
-		$this->m_params = MapsMapper::setDefaultParValues($this->m_params, true);
+	private function manageMapProperties($mapProperties, $className) {
+		global $egMapsServices;
+		
+		$mapProperties = MapsMapper::getValidParams($mapProperties, $egMapsServices[$this->serviceName]['parameters']);
+		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, $this->defaultParams);
 		
 		// Go through the array with map parameters and create new variables
 		// with the name of the key and value of the item if they don't exist on class level yet.
-		foreach($this->m_params as $paramName => $paramValue) {
-			if (!property_exists('SMMapPrinter', $paramName)) {
+		foreach($mapProperties as $paramName => $paramValue) {
+			if (!property_exists($className, $paramName)) {
 				$this->{$paramName} = $paramValue;
 			}
 		}
+
+		MapsMapper::enforceArrayValues($this->controls);
 	}	
 	
 	/**
@@ -206,6 +213,14 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$this->centre_lat = 'null';
 			$this->centre_lon = 'null';
 		}		
+	}	
+	
+	/**
+	 * Sets the $mapName field, using the $elementNamePrefix and $elementNr.
+	 *
+	 */
+	protected function setMapName() {
+		$this->mapName = $this->elementNamePrefix.'_'.$this->elementNr;
 	}	
 	
 }

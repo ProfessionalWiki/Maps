@@ -16,6 +16,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMaps extends SMMapPrinter {
 	
+	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
+	
 	public function getName() {
 		wfLoadExtensionMessages('SemanticMaps');
 		return wfMsg('sm_googlemaps_printername');
@@ -31,6 +33,8 @@ final class SMGoogleMaps extends SMMapPrinter {
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
+		
+		$this->defaultParams = MapsGoogleMaps::getDefaultParams();
 	}	
 	
 	/**
@@ -58,12 +62,14 @@ final class SMGoogleMaps extends SMMapPrinter {
 		global $wgJsMimeType;
 				
 		$enableEarth = MapsGoogleMaps::getEarthValue($this->earth);
-		$this->earth = MapsGoogleMaps::getJSEarthValue($enableEarth);
+		$this->earth = MapsMapper::getJSBoolValue($enableEarth);
 		
 		// Get the Google Maps names for the control and map types
 		$this->type = MapsGoogleMaps::getGMapType($this->type, $enableEarth);
 		$control = MapsGoogleMaps::getGControlType($this->controls);
 
+		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
+		
 		$markerItems = array();
 		
 		foreach ($this->m_locations as $location) {
@@ -71,7 +77,7 @@ final class SMGoogleMaps extends SMMapPrinter {
 			list($lat, $lon, $title, $label, $icon) = $location;
 			$title = str_replace("'", "\'", $title);
 			$label = str_replace("'", "\'", $label);
-			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label')";
+			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '')";
 		}
 		
 		$markersString = implode(',', $markerItems);		

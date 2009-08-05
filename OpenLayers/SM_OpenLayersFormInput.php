@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersFormInput extends SMFormInput {
 	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
+	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
 	 *
@@ -26,7 +28,9 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		$this->showAddresFunction = 'showOLAddress';	
 
 		$this->earthZoom = 1;
-		$this->defaultZoom = $egMapsOpenLayersZoom;		
+
+		$this->defaultParams = MapsOpenLayers::getDefaultParams();
+        $this->defaultZoom = $egMapsOpenLayersZoom;			
 	}	
 	
 	/**

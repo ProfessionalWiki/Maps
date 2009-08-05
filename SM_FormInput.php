@@ -90,18 +90,15 @@ abstract class SMFormInput extends MapsMapFeature {
 	}
 	
 	/**
-	 * Sets the zoom so the whole map is visible in case there is no maker yet,
-	 * and sets it to the default when there is a marker but no zoom parameter.
-	 *
-	 * @param unknown_type $defaultZoom The mapping service's default zoom level
-	 * @param unknown_type $earthZoom The mapping service's earth-level zoom (on which the complete map is visible)
+     * Sets the zoom so the whole map is visible in case there is no maker yet,
+     * and sets it to the default when there is a marker but no zoom parameter.
 	 */
 	private function setZoom() {
-		if (empty($this->coordinates)) {
-			$this->zoom = $this->earthZoom;
-		} else if (strlen($this->zoom) < 1) {
-			 $this->zoom = $this->defaultZoom;
-		}		
+        if (empty($this->coordinates)) {
+            $this->zoom = $this->earthZoom;
+        } else if (strlen($this->zoom) < 1) {
+             $this->zoom = $this->defaultZoom;
+        } 
 	}
 	
 	/**

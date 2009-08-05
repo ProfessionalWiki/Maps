@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayers extends SMMapPrinter {
 
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
+	
 	public function getName() {
 		wfLoadExtensionMessages('SemanticMaps');
 		return wfMsg('sm_openlayers_printername');
@@ -29,6 +31,8 @@ final class SMOpenLayers extends SMMapPrinter {
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->defaultZoom = $egMapsOpenLayersZoom;		
+		
+		$this->defaultParams = MapsOpenLayers::getDefaultParams();
 	}	
 
 	/**
@@ -52,6 +56,8 @@ final class SMOpenLayers extends SMMapPrinter {
 		global $wgJsMimeType;
 		
 		$controlItems = MapsOpenLayers::createControlsString($this->controls);
+		
+		MapsMapper::enforceArrayValues($this->layers);
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
 
 		MapsUtils::makePxValue($this->width);

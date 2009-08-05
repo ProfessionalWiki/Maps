@@ -14,6 +14,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMaps extends SMMapPrinter {
 
+	public $serviceName = MapsYahooMaps::SERVICE_NAME;
+	
 	public function getName() {
 		wfLoadExtensionMessages('SemanticMaps');
 		return wfMsg('sm_yahoomaps_printername');
@@ -41,6 +43,8 @@ final class SMYahooMaps extends SMMapPrinter {
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;		
+		
+		$this->defaultParams = MapsYahooMaps::getDefaultParams();
 	}
 	
 	/**
@@ -55,6 +59,8 @@ final class SMYahooMaps extends SMMapPrinter {
 		
 		MapsUtils::makePxValue($this->width);
 		MapsUtils::makePxValue($this->height);		
+		
+		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();
 		

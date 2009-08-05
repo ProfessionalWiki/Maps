@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMapsFormInput extends SMFormInput {
 	
+	public $serviceName = MapsYahooMaps::SERVICE_NAME;	
+	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
 	 *
@@ -25,8 +27,10 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->showAddresFunction = 'showYAddress';		
 
-		$this->earthZoom = 17;
-		$this->defaultZoom = $egMapsYahooMapsZoom;			
+		$this->earthZoom = 17;	
+
+		$this->defaultParams = MapsYahooMaps::getDefaultParams();
+        $this->defaultZoom = $egMapsYahooMapsZoom;		
 	}	
 	
 	/**

@@ -17,6 +17,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsFormInput extends SMFormInput {
 
+	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
+	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
 	 *
@@ -28,7 +30,9 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		$this->showAddresFunction = 'showGAddress';	
 
 		$this->earthZoom = 1;
-		$this->defaultZoom = $egMapsGoogleMapsZoom;
+		
+		$this->defaultParams = MapsGoogleMaps::getDefaultParams();
+        $this->defaultZoom = $egMapsGoogleMapsZoom;		
 	}
 	
 
