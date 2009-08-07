@@ -79,6 +79,13 @@ $messages['hsb'] = array(
 	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić. K dispoziciji stejace kartowe słužby: $1',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken. Elérhető térképszolgáltatások: $1',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  */
