@@ -32,7 +32,7 @@ final class SMOpenLayers extends SMMapPrinter {
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->defaultZoom = $egMapsOpenLayersZoom;		
 		
-		$this->defaultParams = MapsOpenLayers::getDefaultParams();
+		$this->defaultParams = MapsOpenLayersUtils::getDefaultParams();
 	}	
 
 	/**
@@ -42,7 +42,7 @@ final class SMOpenLayers extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies($this->output);
+		MapsOpenLayersUtils::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;		
@@ -55,10 +55,10 @@ final class SMOpenLayers extends SMMapPrinter {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsOpenLayers::createControlsString($this->controls);
+		$controlItems = MapsOpenLayersUtils::createControlsString($this->controls);
 		
 		MapsMapper::enforceArrayValues($this->layers);
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
+		$layerItems = MapsOpenLayersUtils::createLayersStringAndLoadDependencies($this->output, $this->layers);
 
 		MapsUtils::makePxValue($this->width);
 		MapsUtils::makePxValue($this->height);

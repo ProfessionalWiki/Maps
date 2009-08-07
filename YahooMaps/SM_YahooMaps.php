@@ -39,12 +39,12 @@ final class SMYahooMaps extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMaps::addYMapDependencies($this->output);	
+		MapsYahooMapsUtils::addYMapDependencies($this->output);	
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;		
 		
-		$this->defaultParams = MapsYahooMaps::getDefaultParams();
+		$this->defaultParams = MapsYahooMapsUtils::getDefaultParams();
 	}
 	
 	/**
@@ -54,13 +54,13 @@ final class SMYahooMaps extends SMMapPrinter {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = MapsYahooMaps::getYMapType($this->type);
-		$this->controls = MapsYahooMaps::createControlsString($this->controls);
+		$this->type = MapsYahooMapsUtils::getYMapType($this->type);
+		$this->controls = MapsYahooMapsUtils::createControlsString($this->controls);
 		
 		MapsUtils::makePxValue($this->width);
 		MapsUtils::makePxValue($this->height);		
 		
-		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsYahooMapsUtils::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();
 		

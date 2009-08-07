@@ -34,7 +34,7 @@ final class SMGoogleMaps extends SMMapPrinter {
 
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
-		$this->defaultParams = MapsGoogleMaps::getDefaultParams();
+		$this->defaultParams = MapsGoogleMapsUtils::getDefaultParams();
 	}	
 	
 	/**
@@ -46,7 +46,7 @@ final class SMGoogleMaps extends SMMapPrinter {
 
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies($this->output);
+			MapsGoogleMapsUtils::addGMapDependencies($this->output);
 		}
 		
 		$egGoogleMapsOnThisPage++;	
@@ -61,14 +61,14 @@ final class SMGoogleMaps extends SMMapPrinter {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 				
-		$enableEarth = MapsGoogleMaps::getEarthValue($this->earth);
+		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
 		$this->earth = MapsMapper::getJSBoolValue($enableEarth);
 		
 		// Get the Google Maps names for the control and map types
-		$this->type = MapsGoogleMaps::getGMapType($this->type, $enableEarth);
-		$control = MapsGoogleMaps::getGControlType($this->controls);
+		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, $enableEarth);
+		$control = MapsGoogleMapsUtils::getGControlType($this->controls);
 
-		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();
 		

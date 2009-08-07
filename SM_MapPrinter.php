@@ -207,9 +207,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	private function setCentre() {
 		if (strlen($this->centre) > 0) {
+			// If a centre value is set, use it.
 			list($this->centre_lat, $this->centre_lon) = MapsUtils::getLatLon($this->centre);
 		}
 		else {
+			// If centre is not set, set the values to null, to be auto determined by the JS of the mapping API.			
 			$this->centre_lat = 'null';
 			$this->centre_lon = 'null';
 		}		

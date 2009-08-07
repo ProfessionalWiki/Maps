@@ -29,7 +29,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 
 		$this->earthZoom = 17;	
 
-		$this->defaultParams = MapsYahooMaps::getDefaultParams();
+		$this->defaultParams = MapsYahooMapsUtils::getDefaultParams();
         $this->defaultZoom = $egMapsYahooMapsZoom;		
 	}	
 	
@@ -42,7 +42,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		
 		if (empty($egYahooMapsOnThisPage)) {
 			$egYahooMapsOnThisPage = 0;
-			MapsYahooMaps::addYMapDependencies($this->output);
+			MapsYahooMapsUtils::addYMapDependencies($this->output);
 		}
 		$egYahooMapsOnThisPage++;			
 		
@@ -56,15 +56,15 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$type = MapsYahooMaps::getYMapType($this->type);
+		$type = MapsYahooMapsUtils::getYMapType($this->type);
 		
-		$controlItems = MapsYahooMaps::createControlsString($this->controls);		
+		$controlItems = MapsYahooMapsUtils::createControlsString($this->controls);		
 		
-		$width = $this->width . 'px';
-		$height = $this->height . 'px';		
+		MapsUtils::makePxValue($this->width);
+		MapsUtils::makePxValue($this->height);	
 		
 		$this->output .="
-		<div id='".$this->mapName."' style='width: $width; height: $height;'></div>  
+		<div id='".$this->mapName."' style='width: $this->width; height: $this->height;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addLoadEvent(makeFormInputYahooMap('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", $type, [$controlItems], ".$this->autozoom."));

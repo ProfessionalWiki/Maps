@@ -29,7 +29,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 
 		$this->earthZoom = 1;
 
-		$this->defaultParams = MapsOpenLayers::getDefaultParams();
+		$this->defaultParams = MapsOpenLayersUtils::getDefaultParams();
         $this->defaultZoom = $egMapsOpenLayersZoom;			
 	}	
 	
@@ -40,7 +40,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies($this->output);
+		MapsOpenLayersUtils::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;	
 
 		$this->elementNr = $egOpenLayersOnThisPage;
@@ -53,9 +53,9 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsOpenLayers::createControlsString($this->controls);
+		$controlItems = MapsOpenLayersUtils::createControlsString($this->controls);
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
+		$layerItems = MapsOpenLayersUtils::createLayersStringAndLoadDependencies($this->output, $this->layers);	
 		
 		$width = $this->width . 'px';
 		$height = $this->height . 'px';			

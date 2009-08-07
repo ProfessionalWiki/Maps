@@ -31,7 +31,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 
 		$this->earthZoom = 1;
 		
-		$this->defaultParams = MapsGoogleMaps::getDefaultParams();
+		$this->defaultParams = MapsGoogleMapsUtils::getDefaultParams();
         $this->defaultZoom = $egMapsGoogleMapsZoom;		
 	}
 	
@@ -45,7 +45,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies($this->output);
+			MapsGoogleMapsUtils::addGMapDependencies($this->output);
 		}
 		
 		$egGoogleMapsOnThisPage++;	
@@ -63,8 +63,8 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		$enableEarth = $this-earth == 'on' || $this->earth == 'yes';
 		$earth = $enableEarth ? 'true' : 'false';
 		
-		$this->type = MapsGoogleMaps::getGMapType($this->type, $enableEarth);
-		$control = MapsGoogleMaps::getGControlType($this->controls);		
+		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, $enableEarth);
+		$control = MapsGoogleMapsUtils::getGControlType($this->controls);		
 		
 		$this->output .= "
 		<div id='".$this->mapName."' class='".$this->class."'></div>
