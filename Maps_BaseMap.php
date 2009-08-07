@@ -14,7 +14,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 abstract class MapsBaseMap extends MapsMapFeature {
-		
+	
+	// TODO: move this abstract function to a new MApsBaseMapUtils file?
+	//protected abstract static function getDefaultParams();
+	
 	protected $markerData = array();
 	
 	/**
@@ -26,8 +29,6 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * @return unknown
 	 */
 	public final function displayMap(&$parser, $map) {		
-		$this->defaultParams = $this->getDefaultParams();
-		
 		$this->setMapSettings();
 		
 		$this->doMapServiceLoad();
@@ -84,20 +85,25 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	private function setCentre() {
 		if (empty($this->centre)) {
 			if (count($this->markerData) == 1) {
+				// If centre is not set and there is exactelly one marker, use it's coordinates.
 				$this->centre_lat = $this->markerData[0]['lat'];
 				$this->centre_lon = $this->markerData[0]['lon'];
 			}
 			elseif (count($this->markerData) > 1) {
-				// TODO
-				die("// TODO: calculate centre and zoom (with SGM code?)"); 
+				// If centre is not set and there are multiple markers, set the values to null,
+				// to be auto determined by the JS of the mapping API.
+				$this->centre_lat = 'null';
+				$this->centre_lon = 'null';
 			}
 			else {
+				// If centre is not set and there are no markers, use the default latitude and longitutde.
 				global $egMapsMapLat, $egMapsMapLon;
 				$this->centre_lat = $egMapsMapLat;
 				$this->centre_lon = $egMapsMapLon;
 			}
 		}
 		else {
+			// If a centre value is set, use it.
 			$centre = MapsUtils::getLatLon($this->centre);
 			$this->centre_lat = $centre['lat'];
 			$this->centre_lon = $centre['lon'];

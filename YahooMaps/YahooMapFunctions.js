@@ -31,31 +31,43 @@ function createYMarker(geoPoint, title, label){
 /**
  * Returns YMap object with the provided properties and markers.
  */
-function initializeYahooMap(mapName, lat, lon, zoom, type, controls, scrollWheelZoom, markers) {
+function initializeYahooMap(mapName, lat, lon, zoom, type, types, controls, scrollWheelZoom, markers) {
 	 var centre = (lon != null && lat != null) ? new YGeoPoint(lat, lon) : null;
-	 return createYahooMap(document.getElementById(mapName), centre, zoom, type, controls, scrollWheelZoom, markers);
+	 return createYahooMap(document.getElementById(mapName), centre, zoom, type, types, controls, scrollWheelZoom, markers);
 }
 
 /**
  * Returns YMap object with the provided properties.
  */
-function createYahooMap(mapElement, centre, zoom, type, controls, scrollWheelZoom, markers) {
-	var map = new YMap(mapElement); 
+function createYahooMap(mapElement, centre, zoom, type, types controls, scrollWheelZoom, markers) {
+	var typesContainType = false;
+
+	for (var i = 0; i < types.length; i++) {
+		if (types[i] == type) typesContainType = true;
+	}
 	
-	map.addTypeControl();
+	if (! typesContainType) types.push(type);	 
+	 
+	var map = new YMap(mapElement, type); 
 	
 	for (i in controls){
 		switch (controls[i]) {
+			case 'type' :
+				map.addTypeControl(types);
+				break;		
 			case 'pan' :
 				map.addPanControl();
 				break;
 			case 'zoom' : 
 				map.addZoomLong();
-				break;
+				break;				
+			case 'short' : 
+				map.addZoomShort();				
+				break;				
 		}
 	}
 	
-	map.setMapType(type);
+	map.setMapType();
 	
 	if (!scrollWheelZoom) map.disableKeyControls();
 	

@@ -1,7 +1,8 @@
 <?php
 
 /**
- * A class that holds static helper functions for Semantic Maps
+ * A class that holds static helper functions for common functionality that is map-spesific.
+ * Non spesific functions are located in @see MapsParserFunctions
  *
  * @file Maps_Utils.php
  * @ingroup Maps
@@ -15,7 +16,7 @@ if (! defined ( 'MEDIAWIKI' )) {
 	die ( 'Not an entry point.' );
 }
 
-class MapsUtils {
+class MapsUtils {	
 	
 	public static function getLatLon($coordinates) {
 		$coordinates = preg_split ( "/,/", $coordinates );

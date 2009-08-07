@@ -11,8 +11,8 @@
 
 
 /**
- * Returns GMarker object on the provided location.
- * It will show a popup baloon with title and label when clicked, if either of these is set.
+ * Returns GMarker object on the provided location. It will show a popup baloon
+ * with title and label when clicked, if either of these is set.
  */
 function createGMarker(point, title, label, icon) {
 	var marker;
@@ -42,31 +42,38 @@ function createGMarker(point, title, label, icon) {
 /**
  * Returns GMap2 object with the provided properties and markers.
  */
-function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, control, scrollWheelZoom, earthEnabled, markers) {
+function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types, control, scrollWheelZoom, earthEnabled, markers) {
 	var map;
 	
 	var centre = (lat != null && lon != null) ? new GLatLng(lat, lon) : null;
 	
 	if (GBrowserIsCompatible()) {
-		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, control, scrollWheelZoom, earthEnabled, markers);
+		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, types, control, scrollWheelZoom, earthEnabled, markers);
 	}
-	
+		
 	return map;
 }
 
 /**
  * Returns GMap2 object with the provided properties.
  */
-function createGoogleMap(mapElement, size, centre, zoom, type, control, scrollWheelZoom, earthEnabled, markers) {
-	var map = new GMap2(mapElement, {size: size});
+function createGoogleMap(mapElement, size, centre, zoom, type, types, control, scrollWheelZoom, earthEnabled, markers) {
+	var typesContainType = false;
+
+	for (var i = 0; i < types.length; i++) {
+		if (types[i] == type) typesContainType = true;
+	}
 	
-	if (earthEnabled) map.addMapType(G_SATELLITE_3D_MAP);
-	map.addMapType(type);
+	if (! typesContainType) types.push(type);
+	
+	// TODO: Change labels of the moon/mars map types?
+	
+	var map = new GMap2(mapElement, {size: size, mapTypes: types});
 	
 	map.setMapType(type);
 	
 	var bounds = ((zoom == null || centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
-
+	
 	for (i in markers) {
 		var marker = markers[i];
 		map.addOverlay(createGMarker(marker.point, marker.title, marker.label, marker.icon));
@@ -76,7 +83,7 @@ function createGoogleMap(mapElement, size, centre, zoom, type, control, scrollWh
 	if (bounds != null) {
 		map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
 	}
-
+	
 	if (centre != null) map.setCenter(centre);
 	if (zoom != null) map.setZoom(zoom);
 	
@@ -84,6 +91,8 @@ function createGoogleMap(mapElement, size, centre, zoom, type, control, scrollWh
 	
 	if (typeof(control) != 'undefined') map.addControl(control);
 	if (scrollWheelZoom) map.enableScrollWheelZoom();
+	
+	map.enableContinuousZoom();
 	
 	return map;
 }

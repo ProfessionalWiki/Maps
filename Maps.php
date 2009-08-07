@@ -34,6 +34,7 @@ $wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
 $wgAutoloadClasses['MapsMapFeature'] = $egMapsIP . '/Maps_MapFeature.php';
 $wgAutoloadClasses['MapsBaseMap'] = $egMapsIP . '/Maps_BaseMap.php';
 $wgAutoloadClasses['MapsMapper'] = $egMapsIP . '/Maps_Mapper.php';
+$wgAutoloadClasses['MapsParserFunctions'] = $egMapsIP . '/Maps_ParserFunctions.php';
 $wgAutoloadClasses['MapsUtils'] = $egMapsIP . '/Maps_Utils.php';
 $wgAutoloadClasses['MapsGeocoder'] = $egMapsIP . '/Maps_Geocoder.php';
 $wgAutoloadClasses['MapsBaseGeocoder'] = $egMapsIP . '/Maps_BaseGeocoder.php';
@@ -43,17 +44,25 @@ $egMapsServices = array();
 
 $egMapsServices['googlemaps'] = array(
 									'pf' => array('class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true),
+									'classes' => array(
+											array('class' => 'MapsGoogleMapsUtils', 'file' => 'GoogleMaps/Maps_GoogleMapsUtils.php', 'local' => true)
+											),
 									'aliases' => array('google', 'googlemap', 'gmap', 'gmaps'),
 									'parameters' => array(
 											'type' => array('map-type', 'map type'),
+											'types' => array('map-types', 'map types'),
 											'earth' => array(),
 											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom'),
-											'class' => array()
+											'class' => array(),
+											'style' => array()										
 											)
 									);
 									
 $egMapsServices['openlayers'] = array(
 									'pf' => array('class' => 'MapsOpenLayers', 'file' => 'OpenLayers/Maps_OpenLayers.php', 'local' => true),
+									'classes' => array(
+											array('class' => 'MapsOpenLayersUtils', 'file' => 'OpenLayers/Maps_OpenLayersUtils.php', 'local' => true)
+											),
 									'aliases' => array('layers', 'openlayer'),
 									'parameters' => array(
 											'layers' => array(),
@@ -63,9 +72,13 @@ $egMapsServices['openlayers'] = array(
 									
 $egMapsServices['yahoomaps'] = array(
 									'pf' => array('class' => 'MapsYahooMaps', 'file' => 'YahooMaps/Maps_YahooMaps.php', 'local' => true),
+									'classes' => array(
+											array('class' => 'MapsYahooMapsUtils', 'file' => 'YahooMaps/Maps_YahooMapsUtils.php', 'local' => true)
+											),
 									'aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps'),
 									'parameters' => array(
 											'type' => array('map-type'),
+											'types' => array('map-types', 'map types'),
 											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom')
 											)
 									);
@@ -104,6 +117,11 @@ function efMapsSetup() {
 	foreach ($egMapsServices as  $serviceData) {
 		$file = $serviceData['pf']['local'] ? $egMapsIP . '/' . $serviceData['pf']['file'] : $serviceData['pf']['file'];
 		$wgAutoloadClasses[$serviceData['pf']['class']] = $file;
+		
+		foreach($serviceData['classes'] as $class) {
+			$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $class['file'];
+			$wgAutoloadClasses[$class['class']] = $file;
+		}
 	}
 }
 
@@ -114,12 +132,12 @@ function efMapsAddParserHooks() {
 	global $wgParser;
 	
 	// A hooks to enable the '#display_point' and '#display_points' parser functions
-	$wgParser->setFunctionHook( 'display_point', array('MapsMapper', 'displayPointRender' ));
-	$wgParser->setFunctionHook( 'display_points', array('MapsMapper', 'displayPointsRender' ));
+	$wgParser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender' ));
+	$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender' ));
 
 	// A hooks to enable the '#display_adress' and '#display_adresses' parser functions
-	$wgParser->setFunctionHook( 'display_address', array('MapsMapper', 'displayAddressRender' ));
-	$wgParser->setFunctionHook( 'display_addresses', array('MapsMapper', 'displayAddressesRender' ));
+	$wgParser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender' ));
+	$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender' ));
 
 	// A hook to enable the geocoder parser functions
 	$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder' ));

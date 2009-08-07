@@ -1,6 +1,7 @@
 <?php
+
 /**
- * A class that holds static helper functions for Yahoo! Maps
+ * Class for handling the Maps parser functions with Yahoo! Maps
  *
  * @file Maps_YahooMaps.php
  * @ingroup Maps
@@ -18,83 +19,14 @@ class MapsYahooMaps extends MapsBaseMap {
 	
 	public $serviceName = self::SERVICE_NAME;		
 	
-	// http://developer.yahoo.com/maps/ajax
-	private static $mapTypes = array(
-					'normal' => 'YAHOO_MAP_REG',
-					'satellite' => 'YAHOO_MAP_SAT',
-					'hybrid' => 'YAHOO_MAP_HYB'
-					);				
-	
-	/**
-	 * Returns the Yahoo Map type (defined in MapsYahooMaps::$mapTypes) 
-	 * for the provided a general map type. When no match is found, the first 
-	 * Google Map type will be returned as default.
-	 *
-	 * @param string $type
-	 * @return string
-	 */
-	public static function getYMapType($type) {
-		global $egMapsYahooMapsType;
-		if (! array_key_exists($type, MapsYahooMaps::$mapTypes)) $type = $egMapsYahooMapsType;
-		return MapsYahooMaps::$mapTypes[ $type ];
-	}
-	
-	/**
-	 * Build up a csv string with the controls, to be outputted as a JS array
-	 *
-	 * @param array $controls
-	 * @return csv string
-	 */
-	public static function createControlsString(array $controls) {
-		global $egMapsYMapControls;
-		return MapsMapper::createJSItemsString($controls, $egMapsYMapControls);
-	}	
-
-	/**
-	 * Retuns an array holding the default parameters and their values.
-	 *
-	 * @return array
-	 */
-	public static function getDefaultParams() {
-		return array
-			(
-			'type' => '',
-			'autozoom' => '',
-			); 		
-	}	
-
-	/**
-	 * Add references to the Yahoo! Maps API and required JS file to the provided output 
-	 *
-	 * @param string $output
-	 */
-	public static function addYMapDependencies(&$output) {
-		global $wgJsMimeType;
-		global $egYahooMapsKey, $egMapsIncludePath, $egYahooMapsOnThisPage;
-		
-		if (empty($egYahooMapsOnThisPage)) {
-			$egYahooMapsOnThisPage = 0;
-			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey'></script>
-			<script type='$wgJsMimeType' src='$egMapsIncludePath/YahooMaps/YahooMapFunctions.js'></script>";
-		}
-	}
-
-	/**
-	 * Retuns a boolean as string, true if $autozoom is on or yes.
-	 *
-	 * @param string $autozoom
-	 * @return string
-	 */
-	public static function getAutozoomJSValue($autozoom) {
-		return MapsMapper::getJSBoolValue(in_array($autozoom, array('on', 'yes')));
-	}	
-	
 	/**
 	 * @see MapsBaseMap::setFormInputSettings()
 	 *
 	 */	
 	protected function setMapSettings() {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
+		
+		$this->defaultParams = MapsYahooMapsUtils::getDefaultParams();
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->defaultZoom = $egMapsYahooMapsZoom;
@@ -107,7 +39,7 @@ class MapsYahooMaps extends MapsBaseMap {
 	protected function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		self::addYMapDependencies($this->output);	
+		MapsYahooMapsUtils::addYMapDependencies($this->output);	
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
@@ -120,13 +52,13 @@ class MapsYahooMaps extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = self::getYMapType($this->type);
-		$this->controls = self::createControlsString($this->controls);
+		$this->type = MapsYahooMapsUtils::getYMapType($this->type);
+		$this->controls = MapsYahooMapsUtils::createControlsString($this->controls);
 		
 		MapsUtils::makePxValue($this->width);
 		MapsUtils::makePxValue($this->height);
 
-		$this->autozoom = self::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsYahooMapsUtils::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();		
 		

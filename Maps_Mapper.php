@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A class that holds handlers for the mapping parser functions
+ * A class that holds static helper functions for common functionality that is not map-spesific.
  *
  * @file Maps_Mapper.php
  * @ingroup Maps
@@ -47,7 +47,7 @@ final class MapsMapper {
 	 */
 	public static function setDefaultParValues(array $params, array $serviceDefaults, $strict = true) {
 		global $egMapsMapLat, $egMapsMapLon, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
-		
+
         $mapDefaults = array(
             'service' => $egMapsDefaultService,
             'coordinates' => "$egMapsMapLat, $egMapsMapLon",
@@ -67,45 +67,6 @@ final class MapsMapper {
 		}
 		
 		return $map;
-	}
-	
-	/**
-	 * Returns a valid version of the provided parameter array. Paramaters that are not allowed will
-	 * be ignored, and alias parameter names will be changed to main parameter names, using getMainParamName().
-	 *
-	 * @param array $params
-	 * @param array $serviceParameters
-	 * @return array
-	 */
-	public static function getValidParams(array $params, array $serviceParameters) {
-		$validParams = array();
-		
-		$allowedParms = array_merge(self::$mainParams, $serviceParameters);
-		
-		foreach($params as $paramName => $paramValue) {
-			$paramName = self::getMainParamName($paramName, $allowedParms);
-			if(array_key_exists($paramName, $allowedParms)) $validParams[$paramName] = $paramValue;
-		}
-		
-		return $validParams;		
-	}
-	
-	/**
-	 * Checks if the patameter name is an alias for an actual parameter,
-	 * and changes it into the main paremeter name if this is the case.
-	 *
-	 * @param string $paramName
-	 * @param array $allowedParms
-	 * @return string
-	 */
-	private static function getMainParamName($paramName, array $allowedParms) {
-		if (!array_key_exists($paramName, $allowedParms)) {
-			foreach ($allowedParms as $name => $aliases) {
-				if (in_array($paramName, $aliases)) $paramName = $name;
-			}
-		}
-		
-		return $paramName;
 	}
 	
 	/**
@@ -136,138 +97,60 @@ final class MapsMapper {
 	 *
 	 * @param array $items
 	 * @param array $defaultItems
+	 * @param boolean $asStrings
 	 * @return string
 	 */
-	public static function createJSItemsString(array $items, array $defaultItems) {
-		if (count($items) < 1) $items = $defaultItems;
-		return "'" . strtolower(implode("','", $items)) . "'";
-	}			
+	public static function createJSItemsString(array $items, array $defaultItems = null, $asStrings = true, $toLower = true) {
+		if (count($items) < 1 && isset($defaultItems)) $items = $defaultItems;
+		$itemString = $asStrings ? "'" . implode("','", $items) . "'" : implode(",", $items);
+		if ($toLower) $itemString = strtolower($itemString);
+		return $itemString;
+	}		
 	
 	/**
-	 * Sets the default map properties, gets the map HTML depending 
-	 * on the provided service, and then returns it.
+	 * Returns a valid version of the provided parameter array. Paramaters that are not allowed will
+	 * be ignored, and alias parameter names will be changed to main parameter names, using getMainParamName().
 	 *
-	 * @param unknown_type $parser
+	 * @param array $paramz
+	 * @param array $serviceParameters
 	 * @return array
 	 */
-	public static function displayPointRender(&$parser) {
-		global $egMapsServices;
+	public static function getValidParams(array $paramz, array $serviceParameters) {
+		$validParams = array();
 		
-		$params = func_get_args();
-		array_shift( $params ); // We already know the $parser ...
+		$allowedParms = array_merge(self::$mainParams, $serviceParameters);
 		
-		if (is_array($params[0])) $params = $params[0];
-				
-		$map = array();
-		
-		foreach($params as $param) {
-			$split = split('=', $param);
-			if (count($split) == 2) {
-				$paramName = strtolower(trim($split[0]));
-				$paramValue = trim($split[1]);
-				$map[$paramName] = $paramValue;
-			}
-			if (count($split) == 1) { // Default parameter (without name)
-				$map['coordinates'] = trim($split[0]);
-			}
+		foreach($paramz as $paramName => $paramValue) {		
+			//echo "$paramName ->into-> ";
+			$paramName = self::getMainParamName($paramName, $allowedParms);
+			//echo "$paramName ,withval, "; var_dump($paramValue); echo " <br />\n";
+			if(array_key_exists($paramName, $allowedParms)) $validParams[$paramName] = $paramValue;
 		}
 		
-		$map['coordinates'] = explode(';', $map['coordinates']);
-		
-		$map['service'] = self::getValidService($map['service']);
-		
-		$map = self::setDefaultParValues($map,  $egMapsServices[$map['service']]['parameters'], true);
-
-		$mapClass = new $egMapsServices[$map['service']]['pf']['class']();
-		
-		// Call the function according to the map service to get the HTML output
-		$output = $mapClass->displayMap($parser, $map);
-		
-		// Return the result
-		return array( $output, 'noparse' => true, 'isHTML' => true );
-	}
-
-	/**
-	 * Sets the default map properties, gets the map HTML depending 
-	 * on the provided service, and then returns it.
-	 *
-	 * @param unknown_type $parser
-	 */
-	public static function displayPointsRender(&$parser) {
-		$params = func_get_args();
-		array_shift( $params ); // We already know the $parser ...
-		
-		return self::displayPointRender($parser, $params);
+		return $validParams;		
 	}
 	
 	/**
-	 * Turns the address parameter into coordinates, then lets 
-	 * @see MapsMapper::displayPointRender() do the work and returns it.
+	 * Checks if the patameter name is an alias for an actual parameter,
+	 * and changes it into the main paremeter name if this is the case.
 	 *
-	 * @param unknown_type $parser
-	 * @return array
+	 * @param string $paramName
+	 * @param array $allowedParms
+	 * @return string
 	 */
-	public static function displayAddressRender(&$parser) {		
-		global $egMapsDefaultService;
-		
-		$params = func_get_args();
-		array_shift( $params ); // We already know the $parser ...
-		
-		self::changeAddressToCoords($params);
-		
-		return self::displayPointRender($parser, $params);
-	}
-	
-	/**
-	 * Turns the address parameter into coordinates, then lets 
-	 * @see MapsMapper::displayPointRender() do the work and returns it.
-	 *
-	 * @param unknown_type $parser
-	 */
-	public static function displayAddressesRender(&$parser) {	
-		return self::displayAddressRender(func_get_args());
-	}
-	
-	/**
-	 * Changes the values of the address or addresses parameter into coordinates
-	 * in the provided array.
-	 *
-	 * @param array $params
-	 */
-	private static function changeAddressToCoords(&$params) {
-		global $egMapsDefaultService;
-
-		for ($i = 0; $i < count($params); $i++) {
-			$split = split('=', $params[$i]);
-			if (strtolower(trim($split[0])) == 'service' && count($split) > 1) {
-				$service = trim($split[1]);
+	private static function getMainParamName($paramName, array $allowedParms) {
+		//echo "$paramName -> ";
+		if (!array_key_exists($paramName, $allowedParms)) {
+			foreach ($allowedParms as $name => $aliases) {
+				if (in_array($paramName, $aliases)) {
+					$paramName = $name;
+				}
 			}
-			else if (strtolower(trim($split[0])) == 'geoservice' && count($split) > 1) {
-				$geoservice = trim($split[1]);
-			}			
 		}
-
-		$service = isset($service) ? MapsMapper::getValidService($service) : $egMapsDefaultService;
-		$geoservice = isset($geoservice) ? $geoservice : '';
+		//echo "$paramName<br />";
+		return $paramName;
+	}		
 		
-		for ($i = 0; $i < count($params); $i++) {
-			$split = split('=', $params[$i]);
-			if (((strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1) || count($split) == 1) {
-				$address_srting = count($split) == 1 ? $split[0] : $split[1];
-				
-				$addresses = explode(';', $address_srting);
-				
-				$coordinates = array();
-				
-				foreach($addresses as $address) {
-					$coordinates[] = MapsGeocoder::renderGeocoder(null, trim($address), $geoservice, $service);
-				}				
-				
-				$params[$i] = 'coordinates=' . implode(';', $coordinates);
-			}
-		}		
-	}
-	
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
 	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().

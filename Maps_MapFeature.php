@@ -60,6 +60,8 @@ abstract class MapsMapFeature {
 		$mapProperties = MapsMapper::getValidParams($mapProperties, $egMapsServices[$this->serviceName]['parameters']);
 		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, $this->defaultParams);
 		
+		$mapProperties['coordinates'] = explode(';', $mapProperties['coordinates']);
+		
 		// Go through the array with map parameters and create new variables
 		// with the name of the key and value of the item if they don't exist on class level yet.
 		foreach($mapProperties as $paramName => $paramValue) {
@@ -67,7 +69,7 @@ abstract class MapsMapFeature {
 				$this->{$paramName} = $paramValue;
 			}
 		}
-
+		
 		MapsMapper::enforceArrayValues($this->controls);
 	}	
 	

@@ -81,6 +81,9 @@ $egMapsMapLon = '1';
 # String. The Google Maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsGoogleMapsPrefix = 'map_google';
 
+# Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
+$egMapsGoogleMapsTypes = array('normal', 'satellite', 'hybrid', 'physical');
+
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsZoom = 14;
 
@@ -105,6 +108,9 @@ $egMapsGoogleMapsType = 'normal';
 
 # String. The Yahoo maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsYahooMapsPrefix = 'map_yahoo';
+
+# Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
+$egMapsYahooMapsTypes = array('normal', 'satellite', 'hybrid');
 
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
 $egMapsYahooMapsZoom = 4;
