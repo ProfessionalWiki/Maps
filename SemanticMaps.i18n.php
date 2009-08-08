@@ -78,8 +78,10 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki. Servijoù kartennoù hegerz : $1',
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
+	'semanticmaps_notfound' => "N'eo ket bet kavet",
 );
 
 /** Bosnian (Bosanski)
@@ -97,8 +99,10 @@ $messages['bs'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
+	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit, zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden. Unterstützte Kartendienste: $1',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticmaps_enteraddresshere' => 'Adresse hier eingeben',
+	'semanticmaps_notfound' => 'nicht gefunden',
 );
 
 /** Lower Sorbian (Dolnoserbski)
