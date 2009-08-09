@@ -42,13 +42,13 @@ function createGMarker(point, title, label, icon) {
 /**
  * Returns GMap2 object with the provided properties and markers.
  */
-function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types, control, scrollWheelZoom, markers) {
+function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types, controls, scrollWheelZoom, markers) {
 	var map;
 	
 	var centre = (lat != null && lon != null) ? new GLatLng(lat, lon) : null;
 	
 	if (GBrowserIsCompatible()) {
-		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, types, control, scrollWheelZoom, markers);
+		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, types, controls, scrollWheelZoom, markers);
 	}
 		
 	return map;
@@ -57,9 +57,10 @@ function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types
 /**
  * Returns GMap2 object with the provided properties.
  */
-function createGoogleMap(mapElement, size, centre, zoom, type, types, control, scrollWheelZoom, markers) {
+function createGoogleMap(mapElement, size, centre, zoom, type, types, controls, scrollWheelZoom, markers) {
 	var typesContainType = false;
 
+	// TODO: Change labels of the moon/mars map types?
 	for (var i = 0; i < types.length; i++) {
 		if (types[i] == type) typesContainType = true;
 	}
@@ -67,12 +68,46 @@ function createGoogleMap(mapElement, size, centre, zoom, type, types, control, s
 	if (! typesContainType) {
 		types.push(type);
 	}
-	
-	// TODO: Change labels of the moon/mars map types?
-	
+
 	var map = new GMap2(mapElement, {size: size, mapTypes: types});
 	
-	map.setMapType(type);
+	map.setMapType(type);	
+	
+	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
+	for (i in controls){
+		switch (controls[i]) {
+			case 'large' : 
+				map.addControl(new GLargeMapControl3D());
+				break;
+			case 'small' : 
+				map.addControl(new GSmallZoomControl3D());
+				break;
+			case 'large-original' : 
+				map.addControl(new GLargeMapControl());
+				break;
+			case 'small-original' : 
+				map.addControl(new GSmallMapControl());
+				break;
+			case 'zoom' : 
+				map.addControl(new GSmallZoomControl());
+				break;
+			case 'type' : 
+				map.addControl(new GMapTypeControl());
+				break;		
+			case 'type-menu' : 
+				map.addControl(new GMenuMapTypeControl());
+				break;
+			case 'overview' : case 'overview-map' : 
+				map.addControl(new GOverviewMapControl());
+				break;					
+			case 'scale' : 
+				map.addControl(new GScaleControl());
+				break;
+			case 'nav-label' : case 'nav' : 
+				map.addControl(new GNavLabelControl());
+				break;	
+		}
+	}	
 	
 	var bounds = ((zoom == null || centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
 	
@@ -89,9 +124,6 @@ function createGoogleMap(mapElement, size, centre, zoom, type, types, control, s
 	if (centre != null) map.setCenter(centre);
 	if (zoom != null) map.setZoom(zoom);
 	
-	map.addControl(new GMapTypeControl());
-	
-	if (typeof(control) != 'undefined') map.addControl(control);
 	if (scrollWheelZoom) map.enableScrollWheelZoom();
 	
 	map.enableContinuousZoom();

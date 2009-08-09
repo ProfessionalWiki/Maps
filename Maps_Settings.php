@@ -99,8 +99,12 @@ $egMapsGoogleAutozoom = true;
 $egMapsEnableEarth = false;
 
 # String. The default control for Google Maps. This value will only be used when the user does not provide one.
-# Available short values: large, small. Other values: http://code.google.com/apis/maps/documentation/controls.html#Controls_overview
-$egMapsGMapControl = 'large';
+# Available short values: large, small. Other values: 
+$egMapsGMapControl = '';
+
+# Array of String. The default controls for Google Maps. This value will only be used when the user does not provide one.
+# Available values: large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label
+$egMapsGMapControls = array('large', 'scale', 'type');
 
 
 

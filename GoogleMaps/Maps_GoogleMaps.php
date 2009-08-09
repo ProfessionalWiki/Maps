@@ -55,7 +55,8 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
 		
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
-		$control = MapsGoogleMapsUtils::getGControlType($this->controls);	
+		
+		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);	
 		
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
@@ -82,7 +83,7 @@ final class MapsGoogleMaps extends MapsBaseMap {
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addLoadEvent(
-	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], new $control(), $this->autozoom, [$markersString])
+	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString])
 );
 /*]]>*/ </script>
 

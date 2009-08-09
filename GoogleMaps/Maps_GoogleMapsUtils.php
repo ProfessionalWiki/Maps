@@ -85,18 +85,15 @@ final class MapsGoogleMapsUtils {
 	}
 	
 	/**
-	 * Returns the Google Map Control type (defined in MapsGoogleMaps::$controlClasses) 
-	 * for the provided a general map control type. When no match is found, the provided
-	 * control name will be used.
+	 * Build up a csv string with the controls, to be outputted as a JS array
 	 *
 	 * @param array $controls
-	 * @return string
+	 * @return csv string
 	 */
-	public static function getGControlType(array $controls) {
-		global $egMapsGMapControl;
-		$control = count($controls) > 0 ? $controls[0] : $egMapsGMapControl;
-		return array_key_exists($control, self::$controlClasses) ? self::$controlClasses[$control] : $control; 
-	}
+	public static function createControlsString(array $controls) {
+		global $egMapsGMapControls;
+		return MapsMapper::createJSItemsString($controls, $egMapsGMapControls);
+	}		
 	
 	/**
 	 * Retuns an array holding the default parameters and their values.
