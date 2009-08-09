@@ -137,6 +137,13 @@ $messages['eu'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordenatuak bilatu',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'semanticmaps_notfound' => 'ei löytynyt',
+);
+
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
@@ -301,8 +308,10 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
+	'semanticmaps_desc' => 'Provê a possibilidade de ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. Serviços de mapeamento disponíveis: $1',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
+	'semanticmaps_notfound' => 'Não encontrado',
 );
 
 /** Tarandíne (Tarandíne)
