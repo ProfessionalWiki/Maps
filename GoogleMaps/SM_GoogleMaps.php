@@ -66,7 +66,7 @@ final class SMGoogleMaps extends SMMapPrinter {
 		// Get the Google Maps names for the control and map types
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
 		
-		$control = MapsGoogleMapsUtils::getGControlType($this->controls);
+		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);
 
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
@@ -90,7 +90,7 @@ final class SMGoogleMaps extends SMMapPrinter {
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addLoadEvent(
-	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], new $control(), $this->autozoom, [$markersString])
+	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString])
 );
 /*]]>*/ </script>
 

@@ -66,7 +66,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
 		
-		$control = MapsGoogleMapsUtils::getGControlType($this->controls);		
+		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);		
 		
 		$this->types = explode(",", $this->types);
 		
@@ -76,7 +76,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		<div id='".$this->mapName."' class='".$this->class."'></div>
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addLoadEvent(makeFormInputGoogleMap('$this->mapName', '$this->coordsFieldName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->marker_lat, $this->marker_lon, $this->type, [$typesString], new $control(), $this->autozoom));
+		addLoadEvent(makeFormInputGoogleMap('$this->mapName', '$this->coordsFieldName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->marker_lat, $this->marker_lon, $this->type, [$typesString], [$this->controls], $this->autozoom));
 		window.unload = GUnload;
 		/*]]>*/</script>";
 	}
