@@ -52,7 +52,8 @@ class MapsYahooMaps extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = MapsYahooMapsUtils::getYMapType($this->type);
+		$this->type = MapsYahooMapsUtils::getYMapType($this->type, true);
+		
 		$this->controls = MapsYahooMapsUtils::createControlsString($this->controls);
 		
 		MapsUtils::makePxValue($this->width);
@@ -65,18 +66,22 @@ class MapsYahooMaps extends MapsBaseMap {
 		// TODO: Refactor up
 		foreach ($this->markerData as $markerData) {
 			$lat = $markerData['lat'];
-			$lon = $markerData['lon'];
+			$lon = $markerData['lon'];			
 			$markerItems[] = "getYMarkerData($lat, $lon, '$this->title', '$this->label', '')";
 		}		
 		
-		$markersString = implode(',', $markerItems);			
+		$markersString = implode(',', $markerItems);
+
+		$this->types = explode(",", $this->types);
+		
+		$typesString = MapsYahooMapsUtils::createTypesString($this->types);		
 		
 		$this->output .= <<<END
 		<div id="$this->mapName" style="width: $this->width; height: $this->height;"></div>  
 		
 		<script type="$wgJsMimeType">/*<![CDATA[*/
 		addLoadEvent(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->controls], $this->autozoom, [$markersString])
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString])
 		);
 			/*]]>*/</script>
 END;

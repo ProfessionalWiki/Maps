@@ -42,13 +42,13 @@ function createGMarker(point, title, label, icon) {
 /**
  * Returns GMap2 object with the provided properties and markers.
  */
-function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types, control, scrollWheelZoom, earthEnabled, markers) {
+function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types, control, scrollWheelZoom, markers) {
 	var map;
 	
 	var centre = (lat != null && lon != null) ? new GLatLng(lat, lon) : null;
 	
 	if (GBrowserIsCompatible()) {
-		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, types, control, scrollWheelZoom, earthEnabled, markers);
+		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, types, control, scrollWheelZoom, markers);
 	}
 		
 	return map;
@@ -57,14 +57,16 @@ function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types
 /**
  * Returns GMap2 object with the provided properties.
  */
-function createGoogleMap(mapElement, size, centre, zoom, type, types, control, scrollWheelZoom, earthEnabled, markers) {
+function createGoogleMap(mapElement, size, centre, zoom, type, types, control, scrollWheelZoom, markers) {
 	var typesContainType = false;
 
 	for (var i = 0; i < types.length; i++) {
 		if (types[i] == type) typesContainType = true;
 	}
 	
-	if (! typesContainType) types.push(type);
+	if (! typesContainType) {
+		types.push(type);
+	}
 	
 	// TODO: Change labels of the moon/mars map types?
 	
@@ -155,6 +157,6 @@ function showGAddress(address, mapName, outputElementName, notFoundFormat) {
 
 }
  
- function getGMarkerData(lat, lon, title, label, icon) {
+function getGMarkerData(lat, lon, title, label, icon) {
 		return {point: new GLatLng(lat, lon), title: title, label: label, icon: icon};
-	}
+}

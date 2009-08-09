@@ -60,21 +60,28 @@ final class MapsGoogleMapsUtils {
 	
 	/**
 	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 
-	 * for the provided a general map type. When no match is found, the
-	 * default map type will be returned.
+	 * for the provided a general map type. When no match is found, false
+	 * will be returned.
 	 *
 	 * @param string $type
-	 * @param boolean $earthEnabled
-	 * @return string
+	 * @param boolean $restoreAsDefault
+	 * @return string or false
 	 */
-	public static function getGMapType($type, $earthEnabled = false) {
+	public static function getGMapType($type, $restoreAsDefault = false) {
 		global $egMapsGoogleMapsType;
+		$typeIsValid = array_key_exists($type, self::$mapTypes);
 		
-		if (! array_key_exists($type, self::$mapTypes)) {
-			$type = $earthEnabled ? "earth" : $egMapsGoogleMapsType;
+		if ($typeIsValid) {
+			return self::$mapTypes[ $type ];
 		}
-		
-		return self::$mapTypes[ $type ];
+		else {
+			if ($restoreAsDefault) {
+				return self::$mapTypes[ $egMapsGoogleMapsType ]; 
+			}
+			else {
+				return false;
+			}
+		}
 	}
 	
 	/**
@@ -97,12 +104,13 @@ final class MapsGoogleMapsUtils {
 	 * @return array
 	 */
 	public static function getDefaultParams() {
+		global $egMapsGoogleAutozoom;
 		return array
 			(
 			'type' => '',
 			'types' => array(),			
 			'class' => 'pmap',
-			'autozoom' => '',
+			'autozoom' => $egMapsGoogleAutozoom ? 'on' : 'off',
 			'earth' => '',
 			'style' => ''			
 			); 		
@@ -140,12 +148,39 @@ final class MapsGoogleMapsUtils {
 	 * when provided the the wiki code value.
 	 *
 	 * @param string $earthValue
+	 * @param boolean $adaptDefault When not set to false, the default map type will be changed to earth when earth is enabled
 	 * @return boolean Indicates wether the earth type should be enabled.
 	 */
-	public static function getEarthValue($earthValue) {
+	public static function getEarthValue($earthValue, $adaptDefault = true) {
 		$trueValues = array('on', 'yes');
-		return in_array($earthValue, $trueValues);		
+		$enabled = in_array($earthValue, $trueValues);
+		
+		if ($enabled && $adaptDefault) {
+			global $egMapsGoogleMapsType;
+			$egMapsGoogleMapsType = 'G_SATELLITE_3D_MAP';
+		}
+		
+		return $enabled;		
 	}
 	
+	/**
+	 * Returns a JS items string with the provided types. The earth type will
+	 * be added to it when it's not present and $enableEarth is true. If there are
+	 * no types, the default will be used.
+	 *
+	 * @param array $types
+	 * @param boolean $enableEarth
+	 * @return string
+	 */
+	public function createTypesString(array &$types, $enableEarth) {	
+		global $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid;
+		
+		$types = MapsMapper::getValidTypes($types, $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid, array(__CLASS__, 'getGMapType'));
+		
+		// This is to ensure backwards compatibility with 0.1 and 0.2.
+		if ($enableEarth && ! in_array('G_SATELLITE_3D_MAP', $types)) $types[] = 'G_SATELLITE_3D_MAP';	
+			
+		return MapsMapper::createJSItemsString($types, null, false, false);
+	}
 	
 }

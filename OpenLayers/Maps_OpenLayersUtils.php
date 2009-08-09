@@ -34,7 +34,7 @@ final class MapsOpenLayersUtils {
 			case 'google' : case 'google-normal' : case 'google-sattelite' : case 'google-hybrid' : case 'google-physical' :
 				if (empty($egGoogleMapsOnThisPage)) {
 					$egGoogleMapsOnThisPage = 0;
-					self::addGMapDependencies($output);
+					MapsGoogleMapsUtils::addGMapDependencies($output);
 					}
 				break;
 			case 'bing' : case 'virtual-earth' :

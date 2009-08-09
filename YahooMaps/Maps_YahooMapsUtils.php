@@ -33,12 +33,17 @@ final class MapsYahooMapsUtils {
 	 * Google Map type will be returned as default.
 	 *
 	 * @param string $type
-	 * @return string
+	 * @param boolean $restoreAsDefault
+	 * @return string or false
 	 */
-	public static function getYMapType($type) {
+	public static function getYMapType($type, $restoreAsDefault = false) {
 		global $egMapsYahooMapsType;
-		if (! array_key_exists($type, self::$mapTypes)) $type = $egMapsYahooMapsType;
-		return self::$mapTypes[ $type ];
+		
+		$typeIsValid = array_key_exists($type, self::$mapTypes);
+		
+		if (!$typeIsValid && $restoreAsDefault) $type = $egMapsYahooMapsType;
+		
+		return $typeIsValid || $restoreAsDefault ? self::$mapTypes[ $type ] : false;	
 	}
 	
 	/**
@@ -58,10 +63,12 @@ final class MapsYahooMapsUtils {
 	 * @return array
 	 */
 	public static function getDefaultParams() {
+		global $egMapsYahooAutozoom;
 		return array
 			(
 			'type' => '',
-			'autozoom' => '',
+			'types' => array(),				
+			'autozoom' => $egMapsYahooAutozoom ? 'on' : 'off',
 			); 		
 	}	
 
@@ -90,6 +97,22 @@ final class MapsYahooMapsUtils {
 	public static function getAutozoomJSValue($autozoom) {
 		return MapsMapper::getJSBoolValue(in_array($autozoom, array('on', 'yes')));
 	}	
+
+	/**
+	 * Returns a JS items string with the provided types. The earth type will
+	 * be added to it when it's not present and $enableEarth is true. If there are
+	 * no types, the default will be used.
+	 *
+	 * @param array $types
+	 * @param boolean $enableEarth
+	 * @return string
+	 */
+	public function createTypesString(array &$types) {	
+		global $egMapsYahooMapsTypes, $egMapsYahooMapTypesValid;
 		
+		$types = MapsMapper::getValidTypes($types, $egMapsYahooMapsTypes, $egMapsYahooMapTypesValid, array(__CLASS__, 'getYMapType'));
+			
+		return MapsMapper::createJSItemsString($types, null, false, false);
+	}	
 	
 }

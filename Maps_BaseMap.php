@@ -43,6 +43,8 @@ abstract class MapsBaseMap extends MapsMapFeature {
 		
 		$this->setCentre();
 		
+		$this->doEscaping();
+		
 		$this->addSpecificMapHTML();
 
 		return $this->output;		
@@ -109,5 +111,14 @@ abstract class MapsBaseMap extends MapsMapFeature {
 			$this->centre_lon = $centre['lon'];
 		}		
 	}	
+	
+	/**
+	 * Ascapte the title and label
+	 *
+	 */
+	private function doEscaping() {
+		$this->title = str_replace("'", "\'", $this->title);
+		$this->label = str_replace("'", "\'", $this->label);		
+	}
 	
 }

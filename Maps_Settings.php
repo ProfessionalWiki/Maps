@@ -84,6 +84,9 @@ $egMapsGoogleMapsPrefix = 'map_google';
 # Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsTypes = array('normal', 'satellite', 'hybrid', 'physical');
 
+# String. The default map type. This value will only be used when the user does not provide one.
+$egMapsGoogleMapsType = 'normal';
+
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsZoom = 14;
 
@@ -99,9 +102,6 @@ $egMapsEnableEarth = false;
 # Available short values: large, small. Other values: http://code.google.com/apis/maps/documentation/controls.html#Controls_overview
 $egMapsGMapControl = 'large';
 
-# String. The default map type. This value will only be used when the user does not provide one.
-$egMapsGoogleMapsType = 'normal';
-
 
 
 # Yahoo maps
@@ -112,6 +112,9 @@ $egMapsYahooMapsPrefix = 'map_yahoo';
 # Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
 $egMapsYahooMapsTypes = array('normal', 'satellite', 'hybrid');
 
+# String. The default map type. This value will only be used when the user does not provide one.
+$egMapsYahooMapsType = 'normal';
+
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
 $egMapsYahooMapsZoom = 4;
 
@@ -120,11 +123,8 @@ $egMapsYahooMapsZoom = 4;
 $egMapsYahooAutozoom = true;
 
 # Array of String. The default controls for Yahoo! Maps. This value will only be used when the user does not provide one.
-# Available values: pan, zoom
-$egMapsYMapControls = array('pan', 'zoom');
-
-# String. The default map type. This value will only be used when the user does not provide one.
-$egMapsYahooMapsType = 'normal';
+# Available values: type, pan, zoom, zoom-short
+$egMapsYMapControls = array('type', 'pan', 'zoom');
 
 
 

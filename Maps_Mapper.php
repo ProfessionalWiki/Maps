@@ -187,4 +187,39 @@ final class MapsMapper {
 		
 		return $service;
 	}
+	
+	public static function getValidTypes($types, &$defaults, &$defaultsAreValid, $validationFunction) {
+		$validTypes = array();
+		
+		// Ensure every type is valid and uses the relevant map API's name.
+		for($i = 0 ; $i < count($types); $i++) {
+			// TODO: make copatible with php version that not support notation?
+			$type = call_user_func($validationFunction, $types[$i]);
+			if ($type) $validTypes[] = $type; 
+		}
+		
+		$types = $validTypes;			
+		
+		// If there are no valid types, add the default ones.
+		if (count($types) < 1) {
+			$validTypes = array();
+			
+			// If the default ones have not been checked,
+			// ensure every type is valid and uses the relevant map API's name.
+			if (empty($defaultsAreValid)) {
+				for($i = 0 ; $i < count($defaults); $i++) {
+					// TODO: make copatible with php version that not support notation?
+					$type = call_user_func($validationFunction, $defaults[$i]);
+					if ($type) $validTypes[] = $type; 
+				}
+				
+				$defaults = $validTypes;
+				$defaultsAreValid = true;
+			}
+			
+			$types = $defaults;
+		}
+
+		return $types;
+	}
 }

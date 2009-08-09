@@ -39,7 +39,7 @@ function initializeYahooMap(mapName, lat, lon, zoom, type, types, controls, scro
 /**
  * Returns YMap object with the provided properties.
  */
-function createYahooMap(mapElement, centre, zoom, type, types controls, scrollWheelZoom, markers) {
+function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollWheelZoom, markers) {
 	var typesContainType = false;
 
 	for (var i = 0; i < types.length; i++) {
@@ -61,13 +61,13 @@ function createYahooMap(mapElement, centre, zoom, type, types controls, scrollWh
 			case 'zoom' : 
 				map.addZoomLong();
 				break;				
-			case 'short' : 
+			case 'zoom-short' : 
 				map.addZoomShort();				
 				break;				
 		}
 	}
 	
-	map.setMapType();
+	map.setMapType(type);
 	
 	if (!scrollWheelZoom) map.disableKeyControls();
 	

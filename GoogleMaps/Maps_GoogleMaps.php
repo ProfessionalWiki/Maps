@@ -51,12 +51,10 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	 */	
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
-		global $egMapsGoogleMapsTypes;
 		
 		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
-		$this->earth = MapsMapper::getJSBoolValue($enableEarth);
 		
-		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, $enableEarth);
+		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
 		$control = MapsGoogleMapsUtils::getGControlType($this->controls);	
 		
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
@@ -64,6 +62,7 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		$markerItems = array();		
 		
 		// TODO: Refactor up
+		// TODO: Escaping
 		foreach ($this->markerData as $markerData) {
 			$lat = $markerData['lat'];
 			$lon = $markerData['lon'];
@@ -74,23 +73,14 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		
 		$this->types = explode(",", $this->types);
 		
-		if (count($this->types) < 1) $this->types = $egMapsGoogleMapsTypes;		
-		
-		for($i = 0 ; $i < count($this->types); $i++) {
-			$this->types[$i] = MapsGoogleMapsUtils::getGMapType($this->types[$i], $enableEarth);
-		}
-		
-		// This is to ensure backwards compatibility with 0.1 and 0.2.
-		if ($enableEarth && ! in_array('G_SATELLITE_3D_MAP', $this->types)) $this->types[] = 'G_SATELLITE_3D_MAP';
-		
-		$typesString = MapsMapper::createJSItemsString($this->types, null, false, false);
+		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);
 		
 		$this->output .=<<<END
 
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addLoadEvent(
-	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], new $control(), $this->autozoom, $this->earth, [$markersString])
+	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], new $control(), $this->autozoom, [$markersString])
 );
 /*]]>*/ </script>
 
