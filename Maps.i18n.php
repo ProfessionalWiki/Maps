@@ -36,6 +36,13 @@ $messages['be-tarask'] = array(
 	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў. Даступныя геаграфічныя сэрвісы: $1',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù. Servijoù kartennaouiñ hegerz : $1",
+);
+
 /** Bosnian (Bosanski)
  * @author CERminator
  */
@@ -133,6 +140,20 @@ $messages['pl'] = array(
 	'maps_desc' => 'Umożliwia wyświetlanie współrzędnych na mapach oraz adresów geograficznych. Dostępne serwisy mapowe: $1',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode. Sërvissi ëd mapatura disponìbil: $1",
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Eduardo.mps
+ */
+$messages['pt-br'] = array(
+	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. Serviços de mapeamento disponíveis: $1',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -152,5 +173,12 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'maps_desc' => 'Poskytuje možnosť zobrazovať údaje súradníc na mapách a tvoriť geografické adresy lokalít. Dostupné mapovacie služby: $1',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ, và địa chỉ mã địa lý. Các dịch vụ bản đồ hiện có: $1',
 );
 
