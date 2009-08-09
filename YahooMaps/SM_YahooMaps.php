@@ -29,7 +29,10 @@ final class SMYahooMaps extends SMMapPrinter {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
-		$this->defaultZoom = $egMapsYahooMapsZoom;		
+		
+		$this->defaultZoom = $egMapsYahooMapsZoom;	
+
+		$this->defaultParams = MapsYahooMapsUtils::getDefaultParams();
 	}
 	
 	/**
@@ -43,8 +46,6 @@ final class SMYahooMaps extends SMMapPrinter {
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;		
-		
-		$this->defaultParams = MapsYahooMapsUtils::getDefaultParams();
 	}
 	
 	/**
@@ -54,7 +55,7 @@ final class SMYahooMaps extends SMMapPrinter {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = MapsYahooMapsUtils::getYMapType($this->type);
+		$this->type = MapsYahooMapsUtils::getYMapType($this->type, true);
 		$this->controls = MapsYahooMapsUtils::createControlsString($this->controls);
 		
 		MapsUtils::makePxValue($this->width);
@@ -72,14 +73,18 @@ final class SMYahooMaps extends SMMapPrinter {
 			$markerItems[] = "getYMarkerData($lat, $lon, '$title', '$label', '')";
 		}
 		
-		$markersString = implode(',', $markerItems);		
+		$markersString = implode(',', $markerItems);
+
+		$this->types = explode(",", $this->types);
+		
+		$typesString = MapsYahooMapsUtils::createTypesString($this->types);			
 		
 		$this->output .= "
 		<div id='$this->mapName' style='width: $this->width; height: $this->height;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addLoadEvent(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->controls], $this->autozoom, [$markersString])
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString])
 		);
 			/*]]>*/</script>";		
 

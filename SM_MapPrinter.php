@@ -63,7 +63,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$this->setQueryPrinterSettings();
 		
-		$this->manageMapProperties($this->m_params, 'SMMapPrinter');
+		$this->manageMapProperties($this->m_params);
 		
 		$this->doMapServiceLoad();
 
@@ -168,26 +168,28 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		return $icon;
 	}
 	
-	private function manageMapProperties($mapProperties, $className) {
+	private function manageMapProperties($mapProperties) {
 		global $egMapsServices;
 		
 		$mapProperties = MapsMapper::getValidParams($mapProperties, $egMapsServices[$this->serviceName]['parameters']);
 		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, $this->defaultParams);
 		
+		if (isset($this->serviceName)) $mapProperties['service'] = $this->serviceName;
+		
 		// Go through the array with map parameters and create new variables
 		// with the name of the key and value of the item if they don't exist on class level yet.
 		foreach($mapProperties as $paramName => $paramValue) {
-			if (!property_exists($className, $paramName)) {
+			if (!property_exists(__CLASS__, $paramName)) {
 				$this->{$paramName} = $paramValue;
 			}
 		}
-
+		
 		MapsMapper::enforceArrayValues($this->controls);
 	}	
 	
 	/**
 	 * Sets the zoom level to the provided value, or when not set, to the default.
-	 *
+	 *r
 	 */
 	private function setZoom() {
 		if (strlen($this->zoom) < 1) {

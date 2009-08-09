@@ -62,10 +62,10 @@ final class SMGoogleMaps extends SMMapPrinter {
 		global $wgJsMimeType;
 				
 		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
-		$this->earth = MapsMapper::getJSBoolValue($enableEarth);
 		
 		// Get the Google Maps names for the control and map types
-		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, $enableEarth);
+		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
+		
 		$control = MapsGoogleMapsUtils::getGControlType($this->controls);
 
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
@@ -82,11 +82,15 @@ final class SMGoogleMaps extends SMMapPrinter {
 		
 		$markersString = implode(',', $markerItems);		
 		
+		$this->types = explode(",", $this->types);
+		
+		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);		
+		
 		$this->output .= <<<END
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addLoadEvent(
-	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, new $control(), $this->autozoom, $this->earth, [$markersString])
+	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], new $control(), $this->autozoom, [$markersString])
 );
 /*]]>*/ </script>
 

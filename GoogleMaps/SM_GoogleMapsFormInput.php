@@ -60,17 +60,21 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$enableEarth = $this-earth == 'on' || $this->earth == 'yes';
-		$earth = $enableEarth ? 'true' : 'false';
+		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
 		
-		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, $enableEarth);
+		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
+		
 		$control = MapsGoogleMapsUtils::getGControlType($this->controls);		
+		
+		$this->types = explode(",", $this->types);
+		
+		$typesString = MapsMapper::createTypesString($this->types, $enableEarth);
 		
 		$this->output .= "
 		<div id='".$this->mapName."' class='".$this->class."'></div>
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addLoadEvent(makeFormInputGoogleMap('".$this->mapName."', '".$this->coordsFieldName."', ".$this->width.", ".$this->height.", ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", ".$this->type.", new $control(), ".$this->autozoom.", $earth));
+		addLoadEvent(makeFormInputGoogleMap('$this->mapName', '$this->coordsFieldName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->marker_lat, $this->marker_lon, $this->type, [$typesString], new $control(), $this->autozoom));
 		window.unload = GUnload;
 		/*]]>*/</script>";
 	}
