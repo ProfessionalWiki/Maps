@@ -17,7 +17,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'semanticmaps_name' => 'Semantic Maps',
-	'semanticmaps_desc' => 'Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension. Available map services: $1',
+	'semanticmaps_desc' => "Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension. Available map services: $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Demo's]",
 	'semanticmaps_lookupcoordinates' => 'Look up coordinates',
 	'semanticmaps_enteraddresshere' => 'Enter address here',
 	'semanticmaps_notfound' => 'not found',
