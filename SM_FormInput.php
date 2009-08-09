@@ -38,6 +38,7 @@ abstract class SMFormInput extends MapsMapFeature {
 	 * the form to handle coordinate data.
 	 */
 	public final function formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
+		// TODO: Use function args for sf stuffz
 		global $sfgTabIndex;
 		
 		$this->coordinates = $coordinates;
@@ -48,13 +49,11 @@ abstract class SMFormInput extends MapsMapFeature {
 		
 		$this->doMapServiceLoad();
 
-		$this->manageMapProperties($field_args, 'SMFormInput');
+		$this->manageMapProperties($field_args, __CLASS__);
 
 		$this->setCoordinates();
 		$this->setCentre();	
-		$this->setZoom();
-		
-		$this->autozoom = ($this->autozoom == 'no' || $this->autozoom == 'off' ? 'false' : 'true');		
+		$this->setZoom();	
 		
 		// Create html element names
 		$this->setMapName();
@@ -112,7 +111,9 @@ abstract class SMFormInput extends MapsMapFeature {
 			$this->marker_lon = 'null';
 		}
 		else {
-			list($this->marker_lat, $this->marker_lon) = MapsUtils::getLatLon($this->coordinates);
+			$marker = MapsUtils::getLatLon($this->coordinates);
+			$this->marker_lat = $marker['lat'];
+			$this->marker_lon = $marker['lon'];			
 			$this->startingCoords =  MapsUtils::latDecimal2Degree($this->marker_lat) . ', ' . MapsUtils::lonDecimal2Degree($this->marker_lon);
 		}
 	}
@@ -134,7 +135,9 @@ abstract class SMFormInput extends MapsMapFeature {
 			}
 		}
 		else {
-			list($this->centre_lat, $this->centre_lon) = MapsUtils::getLatLon($this->centre);
+			$centre = MapsUtils::getLatLon($this->centre);
+			$this->centre_lat = $centre['lat'];
+			$this->centre_lon = $centre['lon'];			
 		}		
 	}
 }

@@ -62,13 +62,15 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
 		
+		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
+		
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
 		
 		$control = MapsGoogleMapsUtils::getGControlType($this->controls);		
 		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsMapper::createTypesString($this->types, $enableEarth);
+		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);
 		
 		$this->output .= "
 		<div id='".$this->mapName."' class='".$this->class."'></div>
@@ -86,7 +88,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function manageGeocoding() {
 		global $egGoogleMapsKey;
 		$this->enableGeocoding = strlen(trim($egGoogleMapsKey)) > 0;
-		if ($this->enableGeocoding) MapsGoogleMaps::addGMapDependencies($this->output);		
+		if ($this->enableGeocoding) MapsGoogleMapsUtils::addGMapDependencies($this->output);		
 	}	
 	
 }

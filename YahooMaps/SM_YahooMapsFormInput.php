@@ -58,6 +58,8 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		
 		$type = MapsYahooMapsUtils::getYMapType($this->type);
 		
+		$this->autozoom = MapsYahooMapsUtils::getAutozoomJSValue($this->autozoom);
+		
 		$controlItems = MapsYahooMapsUtils::createControlsString($this->controls);		
 		
 		MapsUtils::makePxValue($this->width);
@@ -78,7 +80,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	protected function manageGeocoding() {
 		global $egYahooMapsKey;
 		$this->enableGeocoding = strlen(trim($egYahooMapsKey)) > 0;
-		if ($this->enableGeocoding) MapsYahooMaps::addYMapDependencies($this->output);			
+		if ($this->enableGeocoding) MapsYahooMapsUtils::addYMapDependencies($this->output);			
 	}
 
 	
