@@ -66,7 +66,9 @@ class MapsOpenLayers extends MapsBaseMap {
 		foreach ($this->markerData as $markerData) {
 			$lat = $markerData['lat'];
 			$lon = $markerData['lon'];
-			$markerItems[] = "getOLMarkerData($lon, $lat, '$this->title', '$this->label')";
+			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
+			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;			
+			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label')";
 		}		
 		
 		$markersString = implode(',', $markerItems);		

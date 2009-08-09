@@ -45,6 +45,7 @@ final class MapsParserFunctions {
 			}
 		}
 		
+		if (! array_key_exists('service', $map)) $map['service'] = '';
 		$map['service'] = MapsMapper::getValidService($map['service']);				
 		
 		$mapClass = new $egMapsServices[$map['service']]['pf']['class']();
@@ -134,10 +135,13 @@ final class MapsParserFunctions {
 				$coordinates = array();
 				
 				foreach($addresses as $address) {
-					$coordinates[] = MapsGeocoder::renderGeocoder(null, trim($address), $geoservice, $service);
+					$args = explode('~', $address);
+					$args[0] =  MapsGeocoder::renderGeocoder(null, trim($args[0]), $geoservice, $service);
+					$coordinates[] = implode('~', $args);
 				}				
 				
 				$params[$i] = 'coordinates=' . implode(';', $coordinates);
+
 			}
 		}		
 	}

@@ -66,7 +66,9 @@ final class MapsGoogleMaps extends MapsBaseMap {
 		foreach ($this->markerData as $markerData) {
 			$lat = $markerData['lat'];
 			$lon = $markerData['lon'];
-			$markerItems[] = "getGMarkerData($lat, $lon, '$this->title', '$this->label', '')";
+			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
+			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;
+			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '')";
 		}		
 		
 		$markersString = implode(',', $markerItems);	

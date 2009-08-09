@@ -35,7 +35,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 
 		$this->setMapName();
 		
-		$this->manageMapProperties($map, 'MapsBaseMap');
+		$this->manageMapProperties($map, __CLASS__);
 		
 		$this->setCoordinates();		
 		
@@ -71,11 +71,26 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * Sets the $marler_lon and $marler_lat fields.
 	 *
 	 */
-	private function setCoordinates() {		
+	private function setCoordinates() {
+		$this->coordinates = explode(';', $this->coordinates);
+		
 		foreach($this->coordinates as $coordinates) {
-			$coordinates = str_replace('″', '"', $coordinates);
-			$coordinates = str_replace('′', "'", $coordinates);
-			$this->markerData[] = MapsUtils::getLatLon($coordinates);
+			$args = explode('~', $coordinates);
+			
+			$args[0] = str_replace('″', '"', $args[0]);
+			$args[0] = str_replace('′', "'", $args[0]);			
+			
+			$markerData = MapsUtils::getLatLon($args[0]);
+			
+			if (count($args) > 1) {
+				$markerData['title'] = $args[1];
+				
+				if (count($args) > 2) {
+					$markerData['label'] = $args[2];
+				}
+			}
+
+			$this->markerData[] = $markerData;
 		}
 	}
 	

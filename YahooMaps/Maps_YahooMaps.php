@@ -66,8 +66,10 @@ class MapsYahooMaps extends MapsBaseMap {
 		// TODO: Refactor up
 		foreach ($this->markerData as $markerData) {
 			$lat = $markerData['lat'];
-			$lon = $markerData['lon'];			
-			$markerItems[] = "getYMarkerData($lat, $lon, '$this->title', '$this->label', '')";
+			$lon = $markerData['lon'];	
+			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
+			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;
+			$markerItems[] = "getYMarkerData($lat, $lon, '$title', '$label', '')";
 		}		
 		
 		$markersString = implode(',', $markerItems);

@@ -50,8 +50,12 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 	 
 	var map = new YMap(mapElement, type); 
 	
+	map.removeZoomScale();
+	
 	for (i in controls){
 		switch (controls[i]) {
+			case 'scale' : 
+				map.addZoomScale();
 			case 'type' :
 				map.addTypeControl(types);
 				break;		
@@ -60,10 +64,10 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 				break;
 			case 'zoom' : 
 				map.addZoomLong();
-				break;				
+				break;		
 			case 'zoom-short' : 
 				map.addZoomShort();				
-				break;				
+				break;
 		}
 	}
 	

@@ -67,7 +67,7 @@ final class MapsYahooMapsUtils {
 		return array
 			(
 			'type' => '',
-			'types' => array(),				
+			'types' => '',				
 			'autozoom' => $egMapsYahooAutozoom ? 'on' : 'off',
 			); 		
 	}	

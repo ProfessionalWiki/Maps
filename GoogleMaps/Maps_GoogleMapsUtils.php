@@ -108,7 +108,7 @@ final class MapsGoogleMapsUtils {
 		return array
 			(
 			'type' => '',
-			'types' => array(),			
+			'types' => '',			
 			'class' => 'pmap',
 			'autozoom' => $egMapsGoogleAutozoom ? 'on' : 'off',
 			'earth' => '',
