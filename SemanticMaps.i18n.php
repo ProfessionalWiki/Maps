@@ -48,10 +48,13 @@ $messages['af'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author OsamaK
  */
 $messages['ar'] = array(
+	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد Semantic MediaWiki. خدمات الخرائط المتوفرة: $1',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
+	'semanticmaps_notfound' => 'لم يوجد',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -69,7 +72,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'semanticmaps_name' => 'Сэмантычныя мапы',
-	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki. Даступныя сэрвісы мапаў: $1',
+	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps дэманстрацыя]). Даступныя сэрвісы мапаў: $1',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
 	'semanticmaps_notfound' => 'ня знойдзена',
@@ -79,7 +82,7 @@ $messages['be-tarask'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki. Servijoù kartennoù hegerz : $1',
+	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servijoù kartennoù hegerz : $1',
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
@@ -97,10 +100,12 @@ $messages['bs'] = array(
 
 /** German (Deutsch)
  * @author DaSch
+ * @author Pill
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit, zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden. Unterstützte Kartendienste: $1',
+	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden ([http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]).
+Unterstützte Kartendienste: $1.',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticmaps_enteraddresshere' => 'Adresse hier eingeben',
 	'semanticmaps_notfound' => 'nicht gefunden',
@@ -110,7 +115,8 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'semanticmaps_desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś. K dispoziciji stojece kórtowe słužby: $1',
+	'semanticmaps_desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+K dispoziciji stojece kórtowe słužby: $1.',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami póglědaś',
 	'semanticmaps_enteraddresshere' => 'Zapódaj how adresu',
 	'semanticmaps_notfound' => 'njenamakany',
@@ -151,7 +157,7 @@ $messages['fi'] = array(
  * @author IAlex
  */
 $messages['fr'] = array(
-	'semanticmaps_desc' => "Permet de voir et modifier les données de coordonnées stockées à travers l'extension Semantic MediaWiki. Services de cartes disponibles : $1",
+	'semanticmaps_desc' => "Permet de voir et modifier les données de coordonnées stockées à travers l'extension Semantic MediaWiki. Services de cartes disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Démo]",
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
 	'semanticmaps_notfound' => 'pas trouvé',
@@ -171,8 +177,10 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'semanticmaps_desc' => 'Ergänzt e Megligkeit zum Aaluege un Bearbeite vu Koordinate, wu im Ramme vu dr Erwyterig „Semantisch MediaWiki“ gspycheret wore sin. Unterstitzti Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticmaps_enteraddresshere' => 'Doo Adräss yygee',
+	'semanticmaps_notfound' => 'nit gfunde',
 );
 
 /** Hebrew (עברית)
@@ -188,7 +196,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. K dispoziciji stejace kartowe słužby: $1',
+	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). K dispoziciji stejace kartowe słužby: $1',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami hladać',
 	'semanticmaps_enteraddresshere' => 'Zapodaj tu adresu',
 	'semanticmaps_notfound' => 'njenamakany',
@@ -212,12 +220,22 @@ $messages['id'] = array(
 	'semanticmaps_notfound' => 'tidak ditemukan',
 );
 
+/** Italian (Italiano)
+ * @author Darth Kule
+ */
+$messages['it'] = array(
+	'semanticmaps_desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki. Servizi di mappe disponibili: $1",
+	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
+	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
+	'semanticmaps_notfound' => 'non trovato',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する。次の地図サービスに対応します：$1',
+	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する（[http://wiki.bn2vs.com/wiki/Semantic_Maps 実演]）。次の地図サービスに対応します：$1',
 	'semanticmaps_lookupcoordinates' => '座標を調べる',
 	'semanticmaps_enteraddresshere' => '住所をここに入力します',
 	'semanticmaps_notfound' => '見つかりません',
@@ -254,7 +272,8 @@ $messages['lb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'semanticmaps_desc' => 'Bied de mogelijkheid om locatie gegevens die zijn opgeslagen met behulp van de Semantic MediaWiki uitbreiding te bekijken en aan te passen. Beschikbare mapping services: $1',
+	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Beschikbare kaartdiensten: $1',
 	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
 	'semanticmaps_enteraddresshere' => 'Voer hier het adres in',
 	'semanticmaps_notfound' => 'niet gevonden',
@@ -281,7 +300,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'semanticmaps_desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. Servicis de mapas disponibles : $1",
+	'semanticmaps_desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. Servicis de mapas disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentacion]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]",
 	'semanticmaps_lookupcoordinates' => 'Estimar las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Picatz aicí l’adreça',
 	'semanticmaps_notfound' => 'pas trobat',
@@ -315,6 +334,13 @@ $messages['pt-br'] = array(
 	'semanticmaps_notfound' => 'Não encontrado',
 );
 
+/** Romanian (Română)
+ * @author Firilacroco
+ */
+$messages['ro'] = array(
+	'semanticmaps_notfound' => 'nu a fost găsit',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -327,10 +353,12 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Eugene Mednikov
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'semanticmaps_desc' => 'Предоставляет возможность просмотра и редактирования данных о координатах, хранящихся посредством расширения Semantic MediaWiki. Доступные службы карт: $1',
+	'semanticmaps_desc' => 'Предоставляет возможность просмотра и редактирования данных о координатах, хранящихся посредством расширения Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps демонстрация]).
+Доступные службы карт: $1',
 	'semanticmaps_lookupcoordinates' => 'Найти координаты',
 	'semanticmaps_enteraddresshere' => 'Введите адрес',
 	'semanticmaps_notfound' => 'не найдено',
@@ -352,6 +380,14 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 	'semanticmaps_notfound' => 'није нађено',
+);
+
+/** latinica (latinica)
+ * @author Michaello
+ */
+$messages['sr-el'] = array(
+	'semanticmaps_enteraddresshere' => 'Unesi adresu ovde',
+	'semanticmaps_notfound' => 'nije nađeno',
 );
 
 /** Swedish (Svenska)
