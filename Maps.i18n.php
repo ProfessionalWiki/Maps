@@ -16,7 +16,10 @@ $messages = array();
  */
 $messages['en'] = array(
 	'maps_name' => 'Maps',
-	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses. Available mapping services: $1. [http://www.mediawiki.org/wiki/Extension:Maps Documentation]. [http://wiki.bn2vs.com/wiki/Maps Demo's]",
+	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses.
+Available mapping services: $1.
+[http://www.mediawiki.org/wiki/Extension:Maps Documentation].
+[http://wiki.bn2vs.com/wiki/Maps Demos]",
 );
 
 /** Message documentation (Message documentation)
