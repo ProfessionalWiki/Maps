@@ -30,18 +30,23 @@ $messages['qqq'] = array(
 * $1: a list of available map services',
 );
 
+/** Arabic (العربية) */
+$messages['ar'] = array(
+	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي. خدمات الخرائط المتوفرة: $1',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
 $messages['be-tarask'] = array(
-	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў. Даступныя геаграфічныя сэрвісы: $1',
+	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
 );
 
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
-	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù. Servijoù kartennaouiñ hegerz : $1",
+	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
 );
 
 /** Bosnian (Bosanski)
@@ -55,14 +60,15 @@ $messages['bs'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. K dispoziciji stojece kórtowe słužby: $1',
+	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://wiki.bn2vs.com/wiki/Maps demo]).
+K dispoziciji stojece kórtowe słužby: $1',
 );
 
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
-	'maps_desc' => "Permet d'afficher des coordonnées dans des cartes, ainsi que des adresse géocode. Services de cartographie disponibles : $1",
+	'maps_desc' => "Permet d'afficher des coordonnées dans des cartes, ainsi que des adresse géocode. Services de cartographie disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Maps Documentation]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
 );
 
 /** Galician (Galego)
@@ -70,6 +76,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados. Servizos de mapeamento dispoñibles: $1',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'maps_desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Maps Demo]',
 );
 
 /** Hebrew (עברית)
@@ -84,7 +97,8 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić. K dispoziciji stejace kartowe słužby: $1',
+	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić ([http://wiki.bn2vs.com/wiki/Maps demo]). 
+K dispoziciji stejace kartowe słužby: $1',
 );
 
 /** Hungarian (Magyar)
@@ -105,7 +119,7 @@ $messages['id'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する。次の地図サービスに対応します：$1',
+	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する（[http://wiki.bn2vs.com/wiki/Maps 実演]）。次の地図サービスに対応します：$1',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -119,12 +133,15 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping servicer: $1",
+	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
 );
 
-/** Dutch (Nederlands) */
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
-	'maps_desc' => 'Bied de mogelijkheid om locatie gegevens weer te geven op mappen en het omzetten van addressen naar coordinaten. Provides the ability to display coordinate data in maps, and geocode addresses. Beschikbare mapping services: $1',
+	'maps_desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Beschikbare kaartdiensten: $1',
 );
 
 /** Occitan (Occitan)
@@ -163,10 +180,12 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Lockal
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps_desc' => 'Обеспечивает возможность отображения координатных данных на картах геокодирование адресов. Доступные картографические службы: $1',
+	'maps_desc' => 'Обеспечивает возможность отображения координатных данных на картах и геокодирование адресов ([http://wiki.bn2vs.com/wiki/Maps демонстрация]).
+Доступные картографические службы: $1',
 );
 
 /** Slovak (Slovenčina)
