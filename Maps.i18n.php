@@ -37,9 +37,10 @@ $messages['ar'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
+	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў. Даступныя геаграфічныя сэрвісы: $1',
 );
 
 /** Breton (Brezhoneg)
@@ -66,9 +67,12 @@ K dispoziciji stojece kórtowe słužby: $1',
 
 /** French (Français)
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'maps_desc' => "Permet d'afficher des coordonnées dans des cartes, ainsi que des adresse géocode. Services de cartographie disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Maps Documentation]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
+	'maps_name' => 'Cartes',
+	'maps_desc' => 'Permet d’afficher des coordonnées dans des cartes, ainsi que des adresses géocodées ([http://www.mediawiki.org/wiki/Extension:Maps documentation], [http://wiki.bn2vs.com/wiki/Maps démonstration]).
+Services de cartographie disponibles : $1',
 );
 
 /** Galician (Galego)
@@ -112,7 +116,8 @@ $messages['hu'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
-	'maps_desc' => "Memampukan tampilan data koordinat pada peta, dan alamat ''geocode''. Layanan pemetaan yang tersedia: $1",
+	'maps_desc' => "Memampukan tampilan data koordinat pada peta, dan alamat ''geocode'' ([http://wiki.bn2vs.com/wiki/Maps demo]). 
+Layanan pemetaan yang tersedia: $1",
 );
 
 /** Japanese (日本語)
@@ -148,7 +153,9 @@ Beschikbare kaartdiensten: $1',
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'maps_desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocòde. Servicis de cartografia disponibles : $1",
+	'maps_desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocodadas
+([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://wiki.bn2vs.com/wiki/Maps demonstracion]). 
+Servicis de cartografia disponibles : $1",
 );
 
 /** Polish (Polski)
@@ -169,7 +176,8 @@ $messages['pms'] = array(
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
-	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. Serviços de mapeamento disponíveis: $1',
+	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
+Serviços de mapeamento disponíveis: $1',
 );
 
 /** Tarandíne (Tarandíne)
