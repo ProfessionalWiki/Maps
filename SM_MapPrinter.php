@@ -56,7 +56,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 *
 	 * @param unknown_type $res
 	 * @param unknown_type $outputmode
-	 * @return unknown
+	 * @return array
 	 */
 	public final function getResultText($res, $outputmode) {
 		$this->formatResultData($res, $outputmode);
@@ -65,15 +65,18 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$this->manageMapProperties($this->m_params);
 		
-		$this->doMapServiceLoad();
-
-		$this->setMapName();
-		
-		$this->setZoom();
-		
-		$this->setCentre();		
-		
-		$this->addSpecificMapHTML();
+		// Only create a map when there is at least one result.
+		if (count($this->m_locations) > 0) {
+			$this->doMapServiceLoad();
+	
+			$this->setMapName();
+			
+			$this->setZoom();
+			
+			$this->setCentre();		
+			
+			$this->addSpecificMapHTML();			
+		}
 		
 		return array($this->output, 'noparse' => 'true', 'isHTML' => 'true');
 	}

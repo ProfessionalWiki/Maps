@@ -10,6 +10,15 @@
  * @author Jeroen De Dauw
  */
 
+/**
+ * This documenation group collects source code files belonging to Semantic Maps.
+ *
+ * Please do not use this group name for other code. If you have an extension to 
+ * Semantic Maps, please use your own group defenition.
+ * 
+ * @defgroup SemanticMaps Semantic Maps
+ */
+
 if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }

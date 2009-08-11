@@ -57,9 +57,10 @@ abstract class SMFormInput extends MapsMapFeature {
 		
 		// Create html element names
 		$this->setMapName();
-		$this->geocodeFieldName = $this->elementNamePrefix.'_geocode_'.$this->elementNr;
-		$this->coordsFieldName = $this->elementNamePrefix.'_coords_'.$this->elementNr;
-		$this->infoFieldName = $this->elementNamePrefix.'_info_'.$this->elementNr;			
+		$this->mapName .= '_'.$sfgTabIndex;
+		$this->geocodeFieldName = $this->elementNamePrefix.'_geocode_'.$this->elementNr.'_'.$sfgTabIndex;
+		$this->coordsFieldName = $this->elementNamePrefix.'_coords_'.$this->elementNr.'_'.$sfgTabIndex;
+		$this->infoFieldName = $this->elementNamePrefix.'_info_'.$this->elementNr.'_'.$sfgTabIndex;			
 
 		// Create the non specific form HTML
 		$this->output .= "
