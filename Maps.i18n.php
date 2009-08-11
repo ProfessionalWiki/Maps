@@ -44,7 +44,7 @@ $messages['ar'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў. Даступныя геаграфічныя сэрвісы: $1',
+	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
 );
 
 /** Breton (Brezhoneg)
@@ -184,11 +184,18 @@ $messages['pt-br'] = array(
 Serviços de mapeamento disponíveis: $1',
 );
 
+/** Romanian (Română)
+ * @author KlaudiuMihaila
+ */
+$messages['ro'] = array(
+	'maps_coordinates_missing' => 'Nici o coordonată oferită pentru hartă.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps_desc' => "Dè l'abbilità a fà vedè le coordinate jndr'à le mappe e le indirizze geocodificate. Disponibbile le servizie de mappe: $1",
+	'maps_desc' => "Dè l'abbilità a fà vedè le coordinate jndr'à le mappe e le indirizze geocodificate ([http://wiki.bn2vs.com/wiki/Maps demo]). Disponibbile le servizie de mappe: $1",
 );
 
 /** Russian (Русский)
