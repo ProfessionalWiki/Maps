@@ -70,7 +70,9 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	
 	// Variables to prevent double adding of a base layer
 	var usedNor = false; var usedSat = false; var usedHyb = false; var usedPhy = false;  // Google types
-	var usedBing = false; var usedYahoo = false; var usedOLWMS = false; var usedNasa = false; var usedOSM = false;
+	var usedBingNor = false; var usedBingHyb = false; var usedBingSat = false; // Bing types
+	var usedYahooNor = false; var usedYahooHyb = false; var usedYahooSat = false; // Yahoo types
+	var usedOLWMS = false; var usedNasa = false; var usedOSM = false;
 	var isDefaultBaseLayer = false;
 
 	// Add the base layers
@@ -113,11 +115,30 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 				}
 				break;
 			case 'bing' : case 'virtual-earth' :
-				if (!usedBing){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Virtual Earth' /* , {sphericalMercator:true} */); usedBing = true; }
+				if (!usedBingNor){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Maps'  , {type: VEMapStyle.Shaded} ); usedBingNor = true; }
+				if (!usedBingSat){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} ); usedBingSat = true; }					
+				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} ); usedBingHyb = true; }
 				break;
-			case 'yahoo' : case 'yahoo-maps' :
-				if (!usedYahoo){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps' /*, {sphericalMercator:true} */); usedYahoo = true; }
+			case 'bing-normal' :
+				if (!usedBingNor){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Maps'  , {type: VEMapStyle.Shaded} ); usedBingNor = true; }
+			case 'bing-satellite' :
+				if (!usedBingSat){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} ); usedBingSat = true; }					
+			case 'bing-hybrid' :			
+				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} ); usedBingHyb = true; }			
+			case 'yahoo' :
+				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps' ); usedYahooNor = true; }
+				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_SAT} ); usedYahooSat = true; }
+				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_HYB} ); usedYahooHyb = true; }
 				break;
+			case 'yahoo-normal' :
+				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps' ); usedYahooNor = true; }
+				break;	
+			case 'yahoo-satellite' :
+				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_SAT} ); usedYahooSat = true; }
+				break;	
+			case 'yahoo-hybrid' :
+				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_HYB} ); usedYahooHyb = true; }
+				break;					
 			case 'openlayers' : case 'open-layers' :
 				if (!usedOLWMS){ newLayer = new OpenLayers.Layer.WMS( 'OpenLayers WMS', 'http://labs.metacarta.com/wms/vmap0', {layers: 'basic'} ); usedOLWMS = true; }
 				break;		

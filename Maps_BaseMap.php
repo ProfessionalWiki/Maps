@@ -68,7 +68,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	}	
 	
 	/**
-	 * Sets the $marler_lon and $marler_lat fields.
+	 * Fills the $markerData array with the locations and their meta data.
 	 *
 	 */
 	private function setCoordinates() {
@@ -87,6 +87,10 @@ abstract class MapsBaseMap extends MapsMapFeature {
 				
 				if (count($args) > 2) {
 					$markerData['label'] = $args[2];
+					
+					if (count($args) > 3) {
+						$markerData['icon'] = $args[3];
+					}					
 				}
 			}
 
