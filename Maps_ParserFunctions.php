@@ -16,21 +16,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class MapsParserFunctions {
 
-	/**
-	 * Sets the default map properties, gets the map HTML depending 
-	 * on the provided service, and then returns it.
-	 *
-	 * @param unknown_type $parser
-	 * @return array
-	 */
-	public static function displayPointRender(&$parser) {
+	private static function getMapHtml(array $params, array $coordFails = array()) {
 		global $egMapsServices;
 		
-		$params = func_get_args();
-		array_shift( $params ); // We already know the $parser ...
-		
-		if (is_array($params[0])) $params = $params[0];
-				
 		$map = array();
 		
 		foreach($params as $param) {
@@ -40,23 +28,51 @@ final class MapsParserFunctions {
 				$paramValue = trim($split[1]);
 				$map[$paramName] = $paramValue;
 			}
-			if (count($split) == 1) { // Default parameter (without name)
+			else if (count($split) == 1) { // Default parameter (without name)
 				$map['coordinates'] = trim($split[0]);
 			}
 		}
 		
-		if (! array_key_exists('service', $map)) $map['service'] = '';
-		$map['service'] = MapsMapper::getValidService($map['service']);				
+		$coords = MapsMapper::getParamValue('coordinates', $map);
 		
-		$mapClass = new $egMapsServices[$map['service']]['pf']['class']();
-		
-		// Call the function according to the map service to get the HTML output
-		$output = $mapClass->displayMap($parser, $map);
+		if ($coords) {
+			if (! MapsMapper::paramIsPresent('service', $map)) $map['service'] = '';
+			$map['service'] = MapsMapper::getValidService($map['service']);				
+	
+			$mapClass = new $egMapsServices[$map['service']]['pf']['class']();
+	
+			// Call the function according to the map service to get the HTML output
+			$output = $mapClass->displayMap($map);	
+			
+			if (count($coordFails) > 0) {
+				$output .= '<i>'.wfMsg( 'maps_geocoding_failed_for', implode(',', $coordFails) ).'</i>';
+			}
+		}
+		elseif (trim($coords) == "" && count($coordFails) > 0) {
+			$output = '<i>'.wfMsg( 'maps_geocoding_failed' ).'</i>';
+		}
+		else {
+			$output = '<i>'.wfMsg( 'maps_coordinates_missing' ).'</i>';
+		}
 		
 		// Return the result
-		return array( $output, 'noparse' => true, 'isHTML' => true );
+		return array( $output, 'noparse' => true, 'isHTML' => true );		
 	}
 
+	/**
+	 * Sets the default map properties, gets the map HTML depending 
+	 * on the provided service, and then returns it.
+	 *
+	 * @param unknown_type $parser
+	 * @return array
+	 */
+	public static function displayPointRender(&$parser) {		
+		$params = func_get_args();
+		array_shift( $params ); // We already know the $parser ...
+				
+		return self::getMapHtml($params);
+	}
+	
 	/**
 	 * Sets the default map properties, gets the map HTML depending 
 	 * on the provided service, and then returns it.
@@ -67,14 +83,12 @@ final class MapsParserFunctions {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 		
-		if (is_array($params[0])) $params = $params[0];
-		
-		return self::displayPointRender($parser, $params);
+		return self::getMapHtml($params);
 	}
 	
 	/**
-	 * Turns the address parameter into coordinates, then lets 
-	 * @see MapsMapper::displayPointRender() do the work and returns it.
+	 * Turns the address parameter into coordinates, then calls
+	 * getMapHtml() and returns it's result. 
 	 *
 	 * @param unknown_type $parser
 	 * @return array
@@ -83,14 +97,14 @@ final class MapsParserFunctions {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 		
-		self::changeAddressToCoords($params);
+		$fails = self::changeAddressToCoords($params);
 		
-		return self::displayPointRender($parser, $params);
+		return self::getMapHtml($params, $fails);
 	}
 	
 	/**
-	 * Turns the address parameter into coordinates, then lets 
-	 * @see MapsMapper::displayPointRender() do the work and returns it.
+	 * Turns the address parameter into coordinates, then calls
+	 * getMapHtml() and returns it's result. 
 	 *
 	 * @param unknown_type $parser
 	 */
@@ -98,23 +112,26 @@ final class MapsParserFunctions {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 		
-		self::changeAddressToCoords($params);
+		$fails = self::changeAddressToCoords($params);
 		
-		return self::displayPointsRender($parser, $params);
+		return self::getMapHtml($params, $fails);
 	}
 	
 	/**
 	 * Changes the values of the address or addresses parameter into coordinates
-	 * in the provided array.
+	 * in the provided array. Returns an array containing the addresses that
+	 * could not be geocoded.
 	 *
 	 * @param array $params
 	 */
 	private static function changeAddressToCoords(&$params) {
 		global $egMapsDefaultService;
 
+		$fails = array();
+		
 		for ($i = 0; $i < count($params); $i++) {
 			$split = split('=', $params[$i]);
-			if (strtolower(trim($split[0])) == 'service' && count($split) > 1) {
+			if (MapsMapper::inParamAliases(strtolower(trim($split[0])), 'service') && count($split) > 1) {
 				$service = trim($split[1]);
 			}
 			else if (strtolower(trim($split[0])) == 'geoservice' && count($split) > 1) {
@@ -136,14 +153,23 @@ final class MapsParserFunctions {
 				
 				foreach($addresses as $address) {
 					$args = explode('~', $address);
-					$args[0] =  MapsGeocoder::renderGeocoder(null, trim($args[0]), $geoservice, $service);
-					$coordinates[] = implode('~', $args);
+					$coords =  MapsGeocoder::geocodeToString(trim($args[0]), $geoservice, $service);
+					
+					if ($coords) {
+						$args[0] = $coords;
+						$coordinates[] = implode('~', $args);
+					}
+					else {
+						$fails[] = $args[0];
+					}
 				}				
 				
 				$params[$i] = 'coordinates=' . implode(';', $coordinates);
 
 			}
-		}		
+		}
+
+		return $fails;
 	}
 
 }

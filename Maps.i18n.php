@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Internationalization file for the Maps extension
@@ -18,6 +18,10 @@ $messages['en'] = array(
 	'maps_name' => 'Maps',
 	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Available mapping services: $1",
+
+	'maps_coordinates_missing' => 'No coordinates provided for the map.',
+	'maps_geocoding_failed' => 'Geocoding of the provided addresses failed. The map can not be displayed.',
+	'maps_geocoding_failed_for' => 'Geocoding of some of the provided addresses failed, causing these to be omitted from the map. Omitted results: $1',
 );
 
 /** Message documentation (Message documentation)

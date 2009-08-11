@@ -10,6 +10,15 @@
  * @author Jeroen De Dauw
  */
 
+/**
+ * This documenation group collects source code files belonging to Maps.
+ *
+ * Please do not use this group name for other code. If you have an extension to 
+ * Maps, please use your own group defenition.
+ * 
+ * @defgroup Maps Maps
+ */
+
 if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
@@ -132,17 +141,17 @@ function efMapsAddParserHooks() {
 	global $wgParser;
 	
 	// A hooks to enable the '#display_point' and '#display_points' parser functions
-	$wgParser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender' ));
-	$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender' ));
+	$wgParser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender') );
+	$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender') );
 
 	// A hooks to enable the '#display_adress' and '#display_adresses' parser functions
-	$wgParser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender' ));
-	$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender' ));
+	$wgParser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender') );
+	$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender') );
 
 	// A hook to enable the geocoder parser functions
-	$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder' ));
-	$wgParser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat' ));
-	$wgParser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng' ));
+	$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder') );
+	$wgParser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat') );
+	$wgParser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng') );
 }
 
 /**

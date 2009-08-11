@@ -24,7 +24,7 @@ final class MapsMapper {
 	private static $mainParams = array
 			(
 			'service' => array(),
-			'coordinates' => array('coords', 'location'),
+			'coordinates' => array('coords', 'location', 'locations'),
 			'zoom' => array(),
 			'centre' => array('center'),
 			'width' => array(),
@@ -34,6 +34,71 @@ final class MapsMapper {
 			'title' => array()				
 			);
 	
+	/**
+	 * Gets if a provided name is present in the aliases array of a parameter
+	 * name in the $mainParams array.
+	 *
+	 * @param string $name
+	 * @param string $mainParamName
+	 * @param string $compareMainName
+	 * @return boolean
+	 */
+	public static function inParamAliases($name, $mainParamName, $compareMainName = true) {
+		$equals = $compareMainName && $mainParamName = $name;
+		
+		if (array_key_exists($mainParamName, self::$mainParams)) {
+			$equals = $equals || in_array($name, self::$mainParams[$mainParamName]);
+		}
+		
+		return $equals;
+	}
+	
+	/**
+	 * Gets if a parameter is present as key in the $stack. Also checks for
+	 * the presence of aliases in the $mainParams array unless specified not to.
+	 *
+	 * @param string $paramName
+	 * @param array $stack
+	 * @param boolean $checkForAliases
+	 * @return boolean
+	 */		
+	public static function paramIsPresent($paramName, array $stack, $checkForAliases = true) {
+		$isPresent = array_key_exists($paramName, $stack);
+		
+		if ($checkForAliases) {
+			foreach(self::$mainParams[$paramName] as $alias) {
+				if (array_key_exists($alias, $stack)) $isPresent = true;
+			}
+		}
+		
+		return $isPresent;
+	}			
+	
+	/**
+	 * Returns the value of a parameter represented as key in the $stack.
+	 * Also checks for the presence of aliases in the $mainParams array
+	 * and returns the value of the alies unless specified not to. When
+	 * no array key name match is found, false will be returned.
+	 *
+	 * @param string $paramName
+	 * @param array $stack
+	 * @param boolean $checkForAliases
+	 * @return the parameter value or false
+	 */
+	public static function getParamValue($paramName, array $stack, $checkForAliases = true) {
+		$paramValue = false;
+		
+		if (array_key_exists($paramName, $stack)) $paramValue = $stack[$paramName];
+		
+		if ($checkForAliases) {
+			foreach(self::$mainParams[$paramName] as $alias) {
+				if (array_key_exists($alias, $stack)) $paramValue = $stack[$alias];
+			}
+		}
+		
+		return $paramValue;		
+	}
+			
 	/**
 	 * Sets the default map properties and returns the new array.
 	 * This function also ensures all the properties are present, even when being empty,
@@ -115,16 +180,14 @@ final class MapsMapper {
 	 * @param array $serviceParameters
 	 * @return array
 	 */
-	public static function getValidParams(array $paramz, array $serviceParameters) {
+	public static function getValidParams(array $paramz, array $serviceParameters, $strict = true) {
 		$validParams = array();
 		
 		$allowedParms = array_merge(self::$mainParams, $serviceParameters);
 		
 		foreach($paramz as $paramName => $paramValue) {		
-			//echo "$paramName ->into-> ";
 			$paramName = self::getMainParamName($paramName, $allowedParms);
-			//echo "$paramName ,withval, "; var_dump($paramValue); echo " <br />\n";
-			if(array_key_exists($paramName, $allowedParms)) $validParams[$paramName] = $paramValue;
+			if(array_key_exists($paramName, $allowedParms) || !$strict) $validParams[$paramName] = $paramValue;
 		}
 		
 		return $validParams;		
@@ -139,7 +202,6 @@ final class MapsMapper {
 	 * @return string
 	 */
 	private static function getMainParamName($paramName, array $allowedParms) {
-		//echo "$paramName -> ";
 		if (!array_key_exists($paramName, $allowedParms)) {
 			foreach ($allowedParms as $name => $aliases) {
 				if (in_array($paramName, $aliases)) {
@@ -147,7 +209,6 @@ final class MapsMapper {
 				}
 			}
 		}
-		//echo "$paramName<br />";
 		return $paramName;
 	}		
 		
@@ -162,7 +223,7 @@ final class MapsMapper {
 		global $egMapsAvailableServices, $egMapsDefaultService;
 		
 		$service = self::getMainServiceName($service);
-		if(!in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;
+		if(! in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;
 		
 		return $service;
 	}
@@ -177,7 +238,7 @@ final class MapsMapper {
 	public static function getMainServiceName($service) {
 		global $egMapsServices;
 		
-		if (!array_key_exists($service, $egMapsServices)) {
+		if (! array_key_exists($service, $egMapsServices)) {
 			foreach ($egMapsServices as $serviceName => $serviceInfo) {
 				if (in_array($service, $serviceInfo['aliases'])) {
 					 $service = $serviceName;
@@ -188,13 +249,22 @@ final class MapsMapper {
 		return $service;
 	}
 	
-	public static function getValidTypes($types, &$defaults, &$defaultsAreValid, $validationFunction) {
+	/**
+	 * Returns a valid version of the types.
+	 *
+	 * @param array $types
+	 * @param array $defaults
+	 * @param boolean $defaultsAreValid
+	 * @param function $validationFunction
+	 * @return array
+	 */
+	public static function getValidTypes(array $types, array &$defaults, &$defaultsAreValid, $validationFunction) {
 		$validTypes = array();
+		$phpAtLeast523 = MapsMapper::phpVersionIsEqualOrBigger('5.2.3');
 		
 		// Ensure every type is valid and uses the relevant map API's name.
 		for($i = 0 ; $i < count($types); $i++) {
-			// TODO: make copatible with php version that not support notation?
-			$type = call_user_func($validationFunction, $types[$i]);
+			$type = call_user_func($validationFunction, $phpAtLeast523 ? $types[$i] : array($types[$i]));
 			if ($type) $validTypes[] = $type; 
 		}
 		
@@ -208,8 +278,7 @@ final class MapsMapper {
 			// ensure every type is valid and uses the relevant map API's name.
 			if (empty($defaultsAreValid)) {
 				for($i = 0 ; $i < count($defaults); $i++) {
-					// TODO: make copatible with php version that not support notation?
-					$type = call_user_func($validationFunction, $defaults[$i]);
+					$type = call_user_func($validationFunction, $phpAtLeast523 ? $defaults[$i] : array($defaults[$i]));
 					if ($type) $validTypes[] = $type; 
 				}
 				
@@ -221,5 +290,27 @@ final class MapsMapper {
 		}
 
 		return $types;
+	}
+	
+	/**
+	 * Returns if the current php version is equal of bigger then the provided one.
+	 *
+	 * @param string $requiredVersion
+	 * @return boolean
+	 */
+	private static function phpVersionIsEqualOrBigger($requiredVersion) {
+		// TODO: Ensure this works, and does not cause errors for some versions.
+		$currentVersion = phpversion();
+
+		for($i = 0; $i < 3; $i++) {
+			if ($currentVersion[$i] < $requiredVersion[$i]) {
+				return false; 
+			}
+			else if($currentVersion[$i] > $requiredVersion[$i]) {
+				return true;
+			} 
+		}
+		
+		return true;
 	}
 }

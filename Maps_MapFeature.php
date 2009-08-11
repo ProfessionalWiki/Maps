@@ -63,7 +63,7 @@ abstract class MapsMapFeature {
 		// Go through the array with map parameters and create new variables
 		// with the name of the key and value of the item if they don't exist on class level yet.
 		foreach($mapProperties as $paramName => $paramValue) {
-			if (!property_exists($className, $paramName)) {
+			if (! property_exists($className, $paramName)) {
 				$this->{$paramName} = $paramValue;
 			}
 		}

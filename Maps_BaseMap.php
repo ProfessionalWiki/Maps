@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 abstract class MapsBaseMap extends MapsMapFeature {
 	
-	// TODO: move this abstract function to a new MApsBaseMapUtils file?
+	// TODO: move this abstract function to a new MapsBaseMapUtils file?
 	//protected abstract static function getDefaultParams();
 	
 	protected $markerData = array();
@@ -28,7 +28,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * @param unknown_type $map
 	 * @return unknown
 	 */
-	public final function displayMap(&$parser, $map) {		
+	public final function displayMap($map) {		
 		$this->setMapSettings();
 		
 		$this->doMapServiceLoad();
@@ -72,7 +72,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 *
 	 */
 	private function setCoordinates() {
-		$this->coordinates = explode(';', $this->coordinates);
+		$this->coordinates = explode(';', $this->coordinates);		
 		
 		foreach($this->coordinates as $coordinates) {
 			$args = explode('~', $coordinates);

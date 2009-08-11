@@ -19,32 +19,89 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsGeocoder {
-	// TODO: some refactoring: the arrays containing the result should be generalized - currently only logical for the Google Geocoder service
-	
+
+	/**
+	 * Holds if geocoded data should be cached or not.
+	 *
+	 * @var boolean
+	 */
 	private static $mEnableCache = true;
+	
+	/**
+	 * The geocoder cache, holding geocoded data when enabled.
+	 *
+	 * @var array
+	 */
 	private static $mGeocoderCache = array();
 
+	/**
+	 * Handler for the geocode parser function. Returns the latitude and longitude
+	 * for the provided address, or an empty string, when the geocoding fails.
+	 *
+	 * @param unknown_type $parser
+	 * @param string $address The address to geocode.
+	 * @param string $service Optional. The geocoding service to use.
+	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
+	 * @return string
+	 */
 	public static function renderGeocoder($parser, $address, $service = '', $mappingService = '') {
 		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
 		return $geovalues ? $geovalues['lat'].', '.$geovalues['lon'] : '';
 	}
 
+	/**
+	 * Handler for the geocode parser function. Returns the latitude
+	 * for the provided address, or an empty string, when the geocoding fails.
+	 *
+	 * @param unknown_type $parser
+	 * @param string $address The address to geocode.
+	 * @param string $service Optional. The geocoding service to use.
+	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
+	 * @return string
+	 */	
 	public static function renderGeocoderLat(&$parser, $address, $service = '', $mappingService = '') {
 		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
 		return $geovalues ? $geovalues['lat'] : '';
 	}
-
+	
+	/**
+	 * Handler for the geocode parser function. Returns the longitude
+	 * for the provided address, or an empty string, when the geocoding fails.
+	 *
+	 * @param unknown_type $parser
+	 * @param string $address The address to geocode.
+	 * @param string $service Optional. The geocoding service to use.
+	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
+	 * @return string
+	 */	
 	public static function renderGeocoderLng(&$parser, $address, $service = '', $mappingService = '') {
 		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
 		return $geovalues ? $geovalues['lon'] : '';
 	}
+	
+	/**
+	 * Geocodes an address with the provided geocoding service and returns the result 
+	 * as a string with the optionally provided format, or false when the geocoding failed.
+	 * 
+	 * @param string $address
+	 * @param string $service
+	 * @param string $mappingService
+	 * @param string $format
+	 * @return formatted coordinate string or false
+	 */
+	public static function geocodeToString($address, $service = '', $mappingService = '', $format = '%1$s, %2$s') {
+		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
+		return $geovalues ? sprintf($format, $geovalues['lat'], $geovalues['lon']) : false;
+	}
 
 	/**
-	 * Geocode an address with the provided geocoding service
+	 * Geocodes an address with the provided geocoding service and returns the result 
+	 * as an array, or false when the geocoding failed.
 	 *
-	 * @param unknown_type $address
-	 * @param unknown_type $service
-	 * @return unknown
+	 * @param string $address
+	 * @param string $service
+	 * @param string $mappingService
+	 * @return array with coordinates or false
 	 */
 	private static function geocode($address, $service, $mappingService) {
 		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
@@ -54,8 +111,10 @@ final class MapsGeocoder {
 			return self::$mGeocoderCache[$address];
 		}
 		
+		$coordinates = false;
+		
 		$service = self::getValidGeoService($service, $mappingService);
-
+		
 		// If not, use the selected geocoding service to geocode the provided adress
 		switch(strtolower($service)) {
 			case 'yahoo':
@@ -69,23 +128,31 @@ final class MapsGeocoder {
 		}
 
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled
-		if (self::$mEnableCache && isset($coordinates)) {
+		if (self::$mEnableCache && $coordinates) {
 			MapsGeocoder::$mGeocoderCache[$address] = $coordinates;
 		}
 
 		return $coordinates;
 	}
 
+	/**
+	 * Add a geocoder class to the $wgAutoloadClasses array when it's not present yet.
+	 *
+	 * @param string $className
+	 * @param string $fileName
+	 */
 	private static function addAutoloadClassIfNeeded($className, $fileName) {
 		global $wgAutoloadClasses, $egMapsIP;
 		if (!array_key_exists($className, $wgAutoloadClasses)) $wgAutoloadClasses[$className] = $egMapsIP . '/Geocoders/' . $fileName;
 	}
 	
 	/**
-	 * Make sure that the geo service is one of the available
+	 * Makes sure that the geo service is one of the available ones.
+	 * Also enforces licencing restrictions when no geocoding service is explicitly provided.
 	 *
-	 * @param unknown_type $service
-	 * @return unknown
+	 * @param string $service
+	 * @param string $mappingService
+	 * @return string
 	 */
 	private static function getValidGeoService($service, $mappingService) {
 		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
