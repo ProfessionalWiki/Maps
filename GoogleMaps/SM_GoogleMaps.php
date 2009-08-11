@@ -77,7 +77,7 @@ final class SMGoogleMaps extends SMMapPrinter {
 			list($lat, $lon, $title, $label, $icon) = $location;
 			$title = str_replace("'", "\'", $title);
 			$label = str_replace("'", "\'", $label);
-			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '')";
+			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		
 		$markersString = implode(',', $markerItems);		
