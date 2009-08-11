@@ -354,7 +354,8 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'semanticmaps_desc' => "Dè l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi. Disponibbile le servizie de mappe: $1",
+	'semanticmaps_desc' => "Dè l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Disponibbile le servizie de mappe: $1",
 	'semanticmaps_lookupcoordinates' => 'Ingroce le coordinate',
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
 	'semanticmaps_notfound' => 'no acchiate',
