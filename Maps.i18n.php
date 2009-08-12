@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * Internationalization file for the Maps extension
