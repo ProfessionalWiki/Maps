@@ -20,8 +20,10 @@ $messages['en'] = array(
 Available mapping services: $1",
 
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
-	'maps_geocoding_failed' => 'The following address(es) could not be geocoded: $1. The map cannot be displayed.',
-	'maps_geocoding_failed_for' => 'The following address(es) could not be geocoded and have been omitted from the map: $1',
+	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.
+The map cannot be displayed.',
+	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
+$1',
 );
 
 /** Message documentation (Message documentation)

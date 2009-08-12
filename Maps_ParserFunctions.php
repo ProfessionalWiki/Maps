@@ -45,11 +45,11 @@ final class MapsParserFunctions {
 			$output = $mapClass->displayMap($map);	
 			
 			if (count($coordFails) > 0) {
-				$output .= '<i>'.wfMsg( 'maps_geocoding_failed_for', implode(',', $coordFails) ).'</i>';
+				$output .= '<i>' . wfMsgExt( 'maps_geocoding_failed_for', array( 'parsemag' ), implode( ',', $coordFails ), count( $coordFails ) ) . '</i>';
 			}
 		}
 		elseif (trim($coords) == "" && count($coordFails) > 0) {
-			$output = '<i>'.wfMsg( 'maps_geocoding_failed', implode(',', $coordFails) ).'</i>';
+			$output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), implode(',', $coordFails), count( $coordFails ) ) . '</i>';
 		}
 		else {
 			$output = '<i>'.wfMsg( 'maps_coordinates_missing' ).'</i>';
