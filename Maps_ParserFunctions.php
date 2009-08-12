@@ -49,7 +49,7 @@ final class MapsParserFunctions {
 			}
 		}
 		elseif (trim($coords) == "" && count($coordFails) > 0) {
-			$output = '<i>'.wfMsg( 'maps_geocoding_failed' ).'</i>';
+			$output = '<i>'.wfMsg( 'maps_geocoding_failed', implode(',', $coordFails) ).'</i>';
 		}
 		else {
 			$output = '<i>'.wfMsg( 'maps_coordinates_missing' ).'</i>';
