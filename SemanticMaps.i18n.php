@@ -126,6 +126,8 @@ K dispoziciji stojece kórtowe słužby: $1.',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'semanticmaps_lookupcoordinates' => 'Επιθεώρηση συντεταγμένων',
+	'semanticmaps_enteraddresshere' => 'Εισαγωγή διεύθυνσης εδώ',
 	'semanticmaps_notfound' => 'δεν βρέθηκε',
 );
 
@@ -378,7 +380,8 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'semanticmaps_desc' => 'Poskytuje schopnosť zobrazovať a upravovať údaje súradníc uložené prostredníctvom rozšírenia Semantic MediaWiki. Dostupné mapové služby: $1',
+	'semanticmaps_desc' => 'Poskytuje schopnosť zobrazovať a upravovať údaje súradníc uložené prostredníctvom rozšírenia Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Dostupné mapové služby: $1',
 	'semanticmaps_lookupcoordinates' => 'Vyhľadať súradnice',
 	'semanticmaps_enteraddresshere' => 'Sem zadajte emailovú adresu',
 	'semanticmaps_notfound' => 'nenájdené',
