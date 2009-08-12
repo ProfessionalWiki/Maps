@@ -7,44 +7,26 @@
   * @author Jeroen De Dauw
   */
   
-
 /**
- * Get a valid control name (with excat lower and upper case letters),
- * or return false when the control is not allowed.
- */
-function getValidControlName(control) {
-	var OLControls = ['ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan', 
-	                  'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
-	                  'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
-	                  'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
-	                  'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'Permalink',
-	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split', 
-	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
-	                  'ZoomToMaxExtent'];
-	
-	for (i in OLControls) {
-		if (control == OLControls[i].toLowerCase()) {
-			return OLControls[i];
-		}
-	}
-	
-	return false;
-}
-
-/**
- * Create and initialize an OpenLayers map. 
+ * Creates and initializes an OpenLayers map. 
  * The resulting map is returned by the function but no further handling is required in most cases.
  */
 function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data){
-	// Create a new OpenLayers map without any controls on it
-	var mapOptions = 	{ /*
-						projection: new OpenLayers.Projection("EPSG:900913"), 
-						displayProjection: new OpenLayers.Projection("EPSG:900913"),
-						units: "m",
-						*/
+
+	// Create a new OpenLayers map with without any controls on it
+	var mapOptions = 	{ 
+			            projection: new OpenLayers.Projection("EPSG:900913"),
+			            displayProjection: new OpenLayers.Projection("EPSG:4326"),
+			            units: "m",
+			            numZoomLevels: 18,
+			            maxResolution: 156543.0339,
+			            maxExtent: new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34), 
 						controls: []
 						}
 
+
+
+	
 	var map = new OpenLayers.Map(mapName, mapOptions);
 	
 	// Add the controls
@@ -65,115 +47,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 		
 	}
 	
-	// Variables for whowing an error when the Google Maps API is not loaded
-	var googleAPILoaded = typeof(G_NORMAL_MAP) != 'undefined'; var shownApiError = false;
-	
-	// Variables to prevent double adding of a base layer
-	var usedNor = false; var usedSat = false; var usedHyb = false; var usedPhy = false;  // Google types
-	var usedBingNor = false; var usedBingHyb = false; var usedBingSat = false; // Bing types
-	var usedYahooNor = false; var usedYahooHyb = false; var usedYahooSat = false; // Yahoo types
-	var usedOLWMS = false; var usedNasa = false; var usedOSM = false;
-	var isDefaultBaseLayer = false;
-
-	// Add the base layers
-	for (i in mapTypes) {
-		//if (mapTypes[i].substring(0, 1) == '+') {
-		//	mapTypes[i] = mapTypes[i].substring(1);
-		//	isDefaultBaseLayer = true;
-		//}
-		
-		var newLayer = null;
-		
-		// TODO: allow adding of custom layers somehow
-		// TODO: layer name alliasing system? php or js based?
-		switch(mapTypes[i]) {
-			case 'google' : case 'google-normal' : case 'google-satellite' : case 'google-hybrid' : case 'google-physical' :
-				if (googleAPILoaded) {
-					switch(mapTypes[i]) {
-						case 'google-normal' :
-							if (!usedNor){ newLayer = new OpenLayers.Layer.Google( 'Google Maps' /*, {sphericalMercator:true} */ ); usedNor = true; }
-							break;
-						case 'google-satellite' :
-							if (!usedSat){ newLayer = new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */}); usedSat = true; }
-							break;		
-						case 'google-hybrid' :
-							if (!usedHyb){ newLayer = new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */}); usedHyb = true; } 
-							break;
-						case 'google-physical' :
-							if (!usedPhy){ newLayer = new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */}); usedPhy = true; }
-							break;						
-						case 'google' :
-							if (!usedNor){ map.addLayer(new OpenLayers.Layer.Google( 'Google Maps' /*, {sphericalMercator:true} */)); usedNor = true; }
-							if (!usedSat){ map.addLayer(new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */})); usedSat = true; }
-							if (!usedHyb){ map.addLayer(new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */})); usedHyb = true; } 
-							if (!usedPhy){ map.addLayer(new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */})); usedPhy = true; }
-							break;	
-					}
-				}
-				else {
-					if (!shownApiError) { window.alert('Please enter your Google Maps API key to use the Google Maps layers'); shownApiError = true; }
-				}
-				break;
-			case 'bing' : case 'virtual-earth' :
-				if (!usedBingNor){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Maps'  , {type: VEMapStyle.Shaded} ); usedBingNor = true; }
-				if (!usedBingSat){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} ); usedBingSat = true; }					
-				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} ); usedBingHyb = true; }
-				break;
-			case 'bing-normal' :
-				if (!usedBingNor){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Maps'  , {type: VEMapStyle.Shaded} ); usedBingNor = true; }
-			case 'bing-satellite' :
-				if (!usedBingSat){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} ); usedBingSat = true; }					
-			case 'bing-hybrid' :			
-				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} ); usedBingHyb = true; }			
-			case 'yahoo' :
-				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps' ); usedYahooNor = true; }
-				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_SAT} ); usedYahooSat = true; }
-				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_HYB} ); usedYahooHyb = true; }
-				break;
-			case 'yahoo-normal' :
-				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps' ); usedYahooNor = true; }
-				break;	
-			case 'yahoo-satellite' :
-				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_SAT} ); usedYahooSat = true; }
-				break;	
-			case 'yahoo-hybrid' :
-				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Maps', {'type': YAHOO_MAP_HYB} ); usedYahooHyb = true; }
-				break;					
-			case 'openlayers' : case 'open-layers' :
-				if (!usedOLWMS){ newLayer = new OpenLayers.Layer.WMS( 'OpenLayers WMS', 'http://labs.metacarta.com/wms/vmap0', {layers: 'basic'} ); usedOLWMS = true; }
-				break;		
-			case 'nasa' :
-				if (!usedNasa){ newLayer = new OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",  {layers: "landsat7" /*, sphericalMercator:true */} ); usedNasa = true; }
-				break;	
-			// FIXME: this will cause the OL API to mess itself up - other coordinate system?
-			/*
-			case 'osm' : case 'openstreetmap' :
-				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.Osmarender("Open Street Map"); usedOSM = true; }
-				break;	
-			case 'osm-nik' : case 'osm-mapnik' :
-				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"); usedOSM = true; }
-				break;	
-			case 'osm-cycle' : case 'osm-cyclemap' :
-				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.CycleMap("Cycle Map"); usedOSM = true; }
-				break;		
-			*/			
-		}
-		
-		if (newLayer != null) {
-			map.addLayer(newLayer);
-			
-			/*
-			if (isDefaultBaseLayer) {
-				// FIXME: This messes up the layer for some reason
-				// Probably fixed by adding this code to an onload event (problem that other layer gets loaded first?) 
-				map.setBaseLayer(newLayer);
-				isDefaultBaseLayer = false;
-			}
-			*/
-		}
-		
-
-	}	
+	addMapBaseLayers(map, mapTypes);
 	
 	// Layer to hold the markers
 	var markerLayer = new OpenLayers.Layer.Markers('Markers');
@@ -200,7 +74,153 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	return map;
 }
 
+/**
+ * Gets a valid control name (with excat lower and upper case letters),
+ * or returns false when the control is not allowed.
+ */
+function getValidControlName(control) {
+	var OLControls = ['ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan', 
+	                  'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
+	                  'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
+	                  'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
+	                  'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'Permalink',
+	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split', 
+	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
+	                  'ZoomToMaxExtent'];
 	
+	for (i in OLControls) {
+		if (control == OLControls[i].toLowerCase()) {
+			return OLControls[i];
+		}
+	}
+	
+	return false;
+}
+
+/**
+ * Adds all map type base layers to a map, and returns it.
+ */
+function addMapBaseLayers(map, mapTypes) {
+	// Variables for whowing an error when the Google Maps API is not loaded
+	var googleAPILoaded = typeof(G_NORMAL_MAP) != 'undefined';
+	var shownApiError = false;
+	
+	// Variables to prevent double adding of a base layer
+	var usedNor = false; var usedSat = false; var usedHyb = false; var usedPhy = false;  // Google types
+	var usedBingNor = false; var usedBingHyb = false; var usedBingSat = false; // Bing types
+	var usedYahooNor = false; var usedYahooHyb = false; var usedYahooSat = false; // Yahoo types
+	var usedOLWMS = false; var usedNasa = false; var usedOSM = false;
+	var isDefaultBaseLayer = false;
+
+	// Add the base layers
+	for (i in mapTypes) {
+		//if (mapTypes[i].substring(0, 1) == '+') {
+		//	mapTypes[i] = mapTypes[i].substring(1);
+		//	isDefaultBaseLayer = true;
+		//}
+		
+		var newLayer = null;
+		
+		// TODO: allow adding of custom layers somehow
+		// TODO: layer name alliasing system? php or js based?
+		switch(mapTypes[i]) {
+			case 'google' : case 'google-normal' : case 'google-satellite' : case 'google-hybrid' : case 'google-physical' :
+				if (googleAPILoaded) {
+					switch(mapTypes[i]) {
+						case 'google-normal' :
+							if (!usedNor){ newLayer = new OpenLayers.Layer.Google( 'Google Streets' /*, {sphericalMercator:true} */ ); usedNor = true; }
+							break;
+						case 'google-satellite' :
+							if (!usedSat){ newLayer = new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */}); usedSat = true; }
+							break;		
+						case 'google-hybrid' :
+							if (!usedHyb){ newLayer = new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */}); usedHyb = true; } 
+							break;
+						case 'google-physical' :
+							if (!usedPhy){ newLayer = new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */}); usedPhy = true; }
+							break;						
+						case 'google' :
+							if (!usedNor){ map.addLayer(new OpenLayers.Layer.Google( 'Google Streets' /*, {sphericalMercator:true} */)); usedNor = true; }
+							if (!usedSat){ map.addLayer(new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */})); usedSat = true; }
+							if (!usedHyb){ map.addLayer(new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */})); usedHyb = true; } 
+							if (!usedPhy){ map.addLayer(new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */})); usedPhy = true; }
+							break;	
+					}
+				}
+				else {
+					if (!shownApiError) { window.alert('Please enter your Google Maps API key to use the Google Maps layers'); shownApiError = true; }
+				}
+				break;
+			case 'bing' : case 'virtual-earth' :
+				if (!usedBingNor){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Streets'  , {type: VEMapStyle.Shaded} )); usedBingNor = true; }
+				if (!usedBingSat){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} )); usedBingSat = true; }					
+				if (!usedBingHyb){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} )); usedBingHyb = true; }
+				break;
+			case 'bing-normal' :
+				if (!usedBingNor){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Streets'  , {type: VEMapStyle.Shaded} ); usedBingNor = true; }
+			case 'bing-satellite' :
+				if (!usedBingSat){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} ); usedBingSat = true; }					
+			case 'bing-hybrid' :			
+				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} ); usedBingHyb = true; }			
+			case 'yahoo' :
+				if (!usedYahooNor){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Streets' )); usedYahooNor = true; }
+				if (!usedYahooSat){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT} )); usedYahooSat = true; }
+				if (!usedYahooHyb){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB} )); usedYahooHyb = true; }
+				break;
+			case 'yahoo-normal' :
+				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Streets' ); usedYahooNor = true; }
+				break;	
+			case 'yahoo-satellite' :
+				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT} ); usedYahooSat = true; }
+				break;	
+			case 'yahoo-hybrid' :
+				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB} ); usedYahooHyb = true; }
+				break;					
+			case 'openlayers' : case 'open-layers' :
+				if (!usedOLWMS){ newLayer = new OpenLayers.Layer.WMS( 'OpenLayers WMS', 'http://labs.metacarta.com/wms/vmap0', {layers: 'basic'} ); usedOLWMS = true; }
+				break;		
+			case 'nasa' :
+				if (!usedNasa){ newLayer = new OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",  {layers: "landsat7" /*, sphericalMercator:true */} ); usedNasa = true; }
+				break;	
+			// FIXME: this will cause the OL API to mess itself up - other coordinate system?
+
+			case 'osm' : case 'openstreetmap' :
+				window.alert('osm');
+				if (!usedOSM){             newLayer = new OpenLayers.Layer.TMS(
+		                "OpenStreetMap (Mapnik)",
+		                "http://tile.openstreetmap.org/",
+		                {
+		                    type: 'png', getURL: osm_getTileURL,
+		                    displayOutsideMaxExtent: true,
+		                    attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
+		                }
+		            );
+ usedOSM = true; }
+				break;	
+			case 'osm-nik' : case 'osm-mapnik' :
+				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"); usedOSM = true; }
+				break;	
+			case 'osm-cycle' : case 'osm-cyclemap' :
+				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.CycleMap("Cycle Map"); usedOSM = true; }
+				break;		
+		
+		}
+		
+		if (newLayer != null) {
+			map.addLayer(newLayer);
+			
+			/*
+			if (isDefaultBaseLayer) {
+				// FIXME: This messes up the layer for some reason
+				// Probably fixed by adding this code to an onload event (problem that other layer gets loaded first?) 
+				map.setBaseLayer(newLayer);
+				isDefaultBaseLayer = false;
+			}
+			*/
+		}
+	}	
+	return map;
+}
 	
 function getOLMarker(markerLayer, markerData, projectionObject) {
 	//markerData.lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")); 
@@ -243,7 +263,9 @@ function getOLMarkerData(lon, lat, title, label) {
 }
 
 
-function setOLPopupType(minWidth, minHeight) {
+function initOLSettings(minWidth, minHeight) {
+    OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+    OpenLayers.Util.onImageLoadErrorColor = "transparent";
 	OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {'autoSize': true, 'minSize': new OpenLayers.Size(minWidth, minHeight)});
 }
 

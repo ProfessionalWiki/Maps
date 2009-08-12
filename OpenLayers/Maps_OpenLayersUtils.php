@@ -80,7 +80,7 @@ final class MapsOpenLayersUtils {
 			$output .="<link rel='stylesheet' href='$egMapsIncludePath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsIncludePath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
 			<script type='$wgJsMimeType' src='$egMapsIncludePath/OpenLayers/OpenLayerFunctions.js'></script>
-			<script type='$wgJsMimeType'>setOLPopupType(200, 100);</script>\n";
+			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
 		}		
 	}
 		
