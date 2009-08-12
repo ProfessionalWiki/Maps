@@ -27,6 +27,7 @@ $1',
 );
 
 /** Message documentation (Message documentation)
+ * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
@@ -34,6 +35,8 @@ $messages['qqq'] = array(
 	'maps_desc' => '{{desc}}
 
 * $1: a list of available map services',
+	'maps_geocoding_failed_for' => '* $1 is a list
+* $2 is the number of list items for PLURAL use.',
 );
 
 /** Arabic (العربية) */
@@ -70,11 +73,12 @@ $messages['dsb'] = array(
 	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://wiki.bn2vs.com/wiki/Maps demo]).
 K dispoziciji stojece kórtowe słužby: $1',
 	'maps_coordinates_missing' => 'Za kórtu njejsu koordinaty pódane.',
-	'maps_geocoding_failed' => 'Geokoděrowanje {{PLURAL:$1|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było: $1. Kórta njedajo se zwobrazniś.',
-	'maps_geocoding_failed_for' => 'Geokoděrowanje {{PLURAL:$1|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było a togodla toś te adrese wuwóstajaju se na kórśe: $1',
+	'maps_geocoding_failed' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było: $1. Kórta njedajo se zwobrazniś.',
+	'maps_geocoding_failed_for' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było a togodla toś {{PLURAL:$2|ta adresa wuwóstaja|tej adresy wuwóstajotej|te adrese wuwóstajaju|te adresy wuwóstajaju}} se na kórśe: $1',
 );
 
 /** French (Français)
+ * @author Crochet.david
  * @author IAlex
  * @author Verdy p
  */
@@ -83,8 +87,9 @@ $messages['fr'] = array(
 	'maps_desc' => 'Permet d’afficher des coordonnées dans des cartes, ainsi que des adresses géocodées ([http://wiki.bn2vs.com/wiki/Maps démonstration]).
 Services de cartographie disponibles : $1',
 	'maps_coordinates_missing' => "Aucune coordonnée n'a été fournie pour le plan.",
-	'maps_geocoding_failed' => "Les adresses suivantes n'ont pas pu être géocodées : $1. Le plan ne peut pas être affiché.",
-	'maps_geocoding_failed_for' => "Les adresses suivantes n'ont pas pu être géocodées et ne sont pas affichées sur le plan : $1",
+	'maps_geocoding_failed' => "{{PLURAL:$2|L′adresse suivante n'as pu être géocodée|Les adresses suivantes n'ont pas pu être géocodées}} : $1.
+Le plan ne peut pas être affiché.",
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|L′adresse suivante n’as pu être géocodée|Les adresses suivantes n’ont pas pu être géocodées}} et {{PLURAL:$2|n’est pas affichée|ne sont pas affichées}} sur le plan : $1',
 );
 
 /** Galician (Galego)
@@ -100,8 +105,8 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'maps_desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Maps Demo]',
 	'maps_coordinates_missing' => 'S git kei Koordinate fir die Charte.',
-	'maps_geocoding_failed' => 'Die Adräss(e) hän nit chenne georeferänziert wäre: $1. D Charte cha nit aazeigt wäre.',
-	'maps_geocoding_failed_for' => 'Die Adräss(e) hän nit chenne georeferänziert wäre un sin us dr Charte uusegnuu wore: $1',
+	'maps_geocoding_failed' => 'Die {{PLURAL:$2|Adräss het|Adräss hän}} nit chenne georeferänziert wäre: $1. D Charte cha nit aazeigt wäre.',
+	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|Adräss het|Adrässe hän}} nit chenne georeferänziert wäre un {{PLURAL:$2|isch|sin}} us dr Charte uusegnuu wore: $1',
 );
 
 /** Hebrew (עברית)
@@ -119,8 +124,8 @@ $messages['hsb'] = array(
 	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić ([http://wiki.bn2vs.com/wiki/Maps demo]). 
 K dispoziciji stejace kartowe słužby: $1',
 	'maps_coordinates_missing' => 'Za kartu njejsu koordinaty podate.',
-	'maps_geocoding_failed' => 'Geokodowanje {{PLURAL:$1|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno: $1. Karta njeda so zwobraznić.',
-	'maps_geocoding_failed_for' => 'Geokodowanje {{PLURAL:$1|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno a tute adresy so na karće wuwostajeja: $1',
+	'maps_geocoding_failed' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno: $1. Karta njeda so zwobraznić.',
+	'maps_geocoding_failed_for' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno a {{PLURAL:$2|tuta adresa|tutej adresy|tute adresy|tute adresy}} so na karće {{PLURAL:$2|wuwostaja|wuwostajetej|wuwostajeja|wuwostajeja}}: $1',
 );
 
 /** Hungarian (Magyar)
@@ -139,13 +144,14 @@ Layanan pemetaan yang tersedia: $1",
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する（[http://wiki.bn2vs.com/wiki/Maps 実演]）。次の地図サービスに対応します：$1',
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
-	'maps_geocoding_failed' => '指定された住所の座標への変換に失敗しました。地図を表示できません。',
-	'maps_geocoding_failed_for' => '指定されたいくつかの住所の座標への変換に失敗したため、それらを地図から除外して表示します。除外した結果: $1',
+	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
+	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -154,7 +160,7 @@ $messages['ja'] = array(
 $messages['ksh'] = array(
 	'maps_desc' => 'Määt et müjjelesch, Koodinaate en Landkaate aanzezeije, un Addräße en Koodinaate op de Ääd ömzerääschne. (E [http://wiki.bn2vs.com/wiki/Maps Beispöll]). He di Deenste för Landkaat(e) ham_mer ze beede: $1',
 	'maps_coordinates_missing' => 'Mer han kein Koodinaate för di Kaat.',
-	'maps_geocoding_failed' => 'De Koodinaate om Jlobus för di aanjejovve Adräße wohre Kappes. Di Kaat künne mer su nit aanzeije.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Di Koodinaat|De Koodinaate|Kein Koodinaat}} om Jlobus för di {{PLURAL:$2|aanjejovve Adräß wohr|aanjejovve Adräße wohre|kein aanjejovve Adräß wohr}} Kappes: $1. Di Kaat künne mer su nit aanzeije.',
 	'maps_geocoding_failed_for' => 'De Koodinaate om Jlobus för {{PLURAL:$2|ein|paa|kein}} vun dä aanjejovve Adräße {{PLURAL:$2|es|wohre|Fähler!}} Kappes. Di {{PLURAL:$2|es|sin|Fähler!}} dröm nit op dä Kaat. De fottjelohße {{PLURAL:$2|es|sin|Fähler!}}: $1',
 );
 
