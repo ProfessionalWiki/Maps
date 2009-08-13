@@ -134,11 +134,10 @@ function createGoogleMap(mapElement, size, centre, zoom, type, types, controls, 
 /**
  * This function holds spesific functionallity for the Google Maps form input of Semantic Maps
  * TODO: Refactor as much code as possible to non specific functions
- * TODO: Centralize geocoding functionallity, and use that code instead of local GG
  */
-function makeFormInputGoogleMap(mapName, locationFieldName, width, height, lat, lon, zoom, marker_lat, marker_lon, type, control, scrollWheelZoom, earthEnabled) {
-	if (GBrowserIsCompatible()) { // TODO: This function should probably be used after the loading of the G Maps API
-		var map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), new GLatLng(lat, lon), zoom, type, control, scrollWheelZoom, earthEnabled);
+function makeFormInputGoogleMap(mapName, locationFieldName, width, height, lat, lon, zoom, type, types, controls, scrollWheelZoom, marker_lat, marker_lon) {
+	 if (GBrowserIsCompatible()) { // TODO: This function should probably be used after the loading of the G Maps API
+		var map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), new GLatLng(lat, lon), zoom, type, types, controls, scrollWheelZoom, [getGMarkerData(marker_lat, marker_lon, '', '', '')]);
 
 		// Show a starting marker only if marker coordinates are provided
 		if (marker_lat != null && marker_lon != null) {
@@ -149,7 +148,7 @@ function makeFormInputGoogleMap(mapName, locationFieldName, width, height, lat, 
 		GEvent.addListener(map, "click",
 			function(overlay, point) {
 				if (overlay) {
-					map.removeOverlay (overlay);
+					map.removeOverlay(overlay);
 				} else {
 					map.clearOverlays();
 					document.getElementById(locationFieldName).value = convertLatToDMS(point.y)+', '+convertLngToDMS(point.x);
@@ -179,7 +178,7 @@ function showGAddress(address, mapName, outputElementName, notFoundFormat) {
 				window.alert(address + ' ' + notFoundFormat);
 			} else {
 				map.clearOverlays();
-				map.setCenter(point);
+				map.setCenter(point, 14);
 				var marker = new GMarker(point);
 				map.addOverlay(marker);
 				document.getElementById(outputElementName).value = convertLatToDMS(point.y) + ', ' + convertLngToDMS(point.x);
