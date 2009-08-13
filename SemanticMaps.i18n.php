@@ -98,6 +98,13 @@ $messages['bs'] = array(
 	'semanticmaps_notfound' => 'nije pronađeno',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'semanticmaps_notfound' => "no s'ha trobat",
+);
+
 /** German (Deutsch)
  * @author DaSch
  * @author Pill
@@ -275,6 +282,17 @@ $messages['lb'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticmaps_enteraddresshere' => 'Adress hei aginn',
 	'semanticmaps_notfound' => 'net fonnt',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку проширувањето Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps демо]).
+Картографски служби на располагање: $1',
+	'semanticmaps_lookupcoordinates' => 'Побарај координати',
+	'semanticmaps_enteraddresshere' => 'Внесете адреса тука',
+	'semanticmaps_notfound' => 'не е најдено ништо',
 );
 
 /** Dutch (Nederlands)
