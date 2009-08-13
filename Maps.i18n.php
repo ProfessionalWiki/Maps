@@ -73,6 +73,13 @@ $messages['ca'] = array(
 	'maps_coordinates_missing' => "No s'han proporcionat coordenades pel mapa.",
 );
 
+/** German (Deutsch)
+ * @author Imre
+ */
+$messages['de'] = array(
+	'maps_coordinates_missing' => 'Es wurden keine Koordinaten für die Karte angegeben.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -128,6 +135,7 @@ $messages['he'] = array(
  * @author Suradnik13
  */
 $messages['hr'] = array(
+	'maps_desc' => 'Pruža mogućnost prikaza podataka o koordinatama na kartama, te geokodiranih adresa ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostupne usluge kartiranja: $1',
 	'maps_coordinates_missing' => 'Za kartu nisu dostupne koordinate.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Sljedeća adresa ne može biti geokodirana|Sljedeće adrese ne mogu biti geokodirane}}: $1.
 Karta ne može biti prikazana.',
