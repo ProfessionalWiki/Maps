@@ -24,9 +24,6 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 						controls: []
 						}
 
-
-
-	
 	var map = new OpenLayers.Map(mapName, mapOptions);
 	
 	// Add the controls
@@ -63,12 +60,19 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	}
 	
 	for (i in marker_data) {
+		marker_data[i].lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
 		if (bounds != null) bounds.extend(marker_data[i].lonlat); // Extend the bounds when no center is set
 		markerLayer.addMarker(getOLMarker(markerLayer, marker_data[i], map.getProjectionObject())); // Create and add the marker
 	}
 		
 	if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center
-	if (centerIsSet) map.setCenter(new OpenLayers.LonLat(lon, lat)); // When the center is provided, set it
+	
+	if (centerIsSet) { // When the center is provided, set it
+		var centre = new OpenLayers.LonLat(lon, lat);
+		centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+		map.setCenter(centre); 
+	}
+	
 	if (zoom != null) map.zoomTo(zoom); // When the zoom is provided, set it
 	
 	return map;
@@ -109,7 +113,10 @@ function addMapBaseLayers(map, mapTypes) {
 	var usedNor = false; var usedSat = false; var usedHyb = false; var usedPhy = false;  // Google types
 	var usedBingNor = false; var usedBingHyb = false; var usedBingSat = false; // Bing types
 	var usedYahooNor = false; var usedYahooHyb = false; var usedYahooSat = false; // Yahoo types
-	var usedOLWMS = false; var usedNasa = false; var usedOSM = false;
+	var usedOLWMS = false; // OL types
+	var usedOSMnik = false; var usedOSMcycle = false; var usedOSMarender = false; // OSM types
+	var usedNasa = false; // Others
+	
 	var isDefaultBaseLayer = false;
 
 	// Add the base layers
@@ -128,22 +135,22 @@ function addMapBaseLayers(map, mapTypes) {
 				if (googleAPILoaded) {
 					switch(mapTypes[i]) {
 						case 'google-normal' :
-							if (!usedNor){ newLayer = new OpenLayers.Layer.Google( 'Google Streets' /*, {sphericalMercator:true} */ ); usedNor = true; }
+							if (!usedNor){ newLayer = new OpenLayers.Layer.Google( 'Google Streets', {'sphericalMercator':true} ); usedNor = true; }
 							break;
 						case 'google-satellite' :
-							if (!usedSat){ newLayer = new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */}); usedSat = true; }
+							if (!usedSat){ newLayer = new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP , 'sphericalMercator':true}); usedSat = true; }
 							break;		
 						case 'google-hybrid' :
-							if (!usedHyb){ newLayer = new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */}); usedHyb = true; } 
+							if (!usedHyb){ newLayer = new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP , 'sphericalMercator':true}); usedHyb = true; } 
 							break;
 						case 'google-physical' :
-							if (!usedPhy){ newLayer = new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */}); usedPhy = true; }
+							if (!usedPhy){ newLayer = new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP , 'sphericalMercator':true}); usedPhy = true; }
 							break;						
 						case 'google' :
-							if (!usedNor){ map.addLayer(new OpenLayers.Layer.Google( 'Google Streets' /*, {sphericalMercator:true} */)); usedNor = true; }
-							if (!usedSat){ map.addLayer(new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP /*, sphericalMercator:true */})); usedSat = true; }
-							if (!usedHyb){ map.addLayer(new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP /*, sphericalMercator:true */})); usedHyb = true; } 
-							if (!usedPhy){ map.addLayer(new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP /*, sphericalMercator:true */})); usedPhy = true; }
+							if (!usedNor){ map.addLayer(new OpenLayers.Layer.Google( 'Google Streets' , {'sphericalMercator':true})); usedNor = true; }
+							if (!usedSat){ map.addLayer(new OpenLayers.Layer.Google( 'Google Satellite' , {type: G_SATELLITE_MAP , 'sphericalMercator':true})); usedSat = true; }
+							if (!usedHyb){ map.addLayer(new OpenLayers.Layer.Google( 'Google Hybrid' , {type: G_HYBRID_MAP , 'sphericalMercator':true})); usedHyb = true; } 
+							if (!usedPhy){ map.addLayer(new OpenLayers.Layer.Google( 'Google Physical' , {type: G_PHYSICAL_MAP , 'sphericalMercator':true})); usedPhy = true; }
 							break;	
 					}
 				}
@@ -152,58 +159,50 @@ function addMapBaseLayers(map, mapTypes) {
 				}
 				break;
 			case 'bing' : case 'virtual-earth' :
-				if (!usedBingNor){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Streets'  , {type: VEMapStyle.Shaded} )); usedBingNor = true; }
-				if (!usedBingSat){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} )); usedBingSat = true; }					
-				if (!usedBingHyb){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} )); usedBingHyb = true; }
+				if (!usedBingNor){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Streets'  , {type: VEMapStyle.Shaded, 'sphericalMercator':true} )); usedBingNor = true; }
+				if (!usedBingSat){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial, 'sphericalMercator':true} )); usedBingSat = true; }					
+				if (!usedBingHyb){ map.addLayer(new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid, 'sphericalMercator':true} )); usedBingHyb = true; }
 				break;
 			case 'bing-normal' :
-				if (!usedBingNor){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Streets'  , {type: VEMapStyle.Shaded} ); usedBingNor = true; }
+				if (!usedBingNor){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Streets'  , {type: VEMapStyle.Shaded, 'sphericalMercator':true} ); usedBingNor = true; }
 			case 'bing-satellite' :
-				if (!usedBingSat){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial} ); usedBingSat = true; }					
+				if (!usedBingSat){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Satellite'  , {type: VEMapStyle.Aerial, 'sphericalMercator':true} ); usedBingSat = true; }					
 			case 'bing-hybrid' :			
-				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid} ); usedBingHyb = true; }			
+				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid, 'sphericalMercator':true} ); usedBingHyb = true; }			
 			case 'yahoo' :
-				if (!usedYahooNor){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Streets' )); usedYahooNor = true; }
-				if (!usedYahooSat){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT} )); usedYahooSat = true; }
-				if (!usedYahooHyb){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB} )); usedYahooHyb = true; }
+				if (!usedYahooNor){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Streets' ), {'sphericalMercator':true}); usedYahooNor = true; }
+				if (!usedYahooSat){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT, 'sphericalMercator':true} )); usedYahooSat = true; }
+				if (!usedYahooHyb){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB, 'sphericalMercator':true} )); usedYahooHyb = true; }
 				break;
 			case 'yahoo-normal' :
-				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Streets' ); usedYahooNor = true; }
+				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Streets', {'sphericalMercator':true} ); usedYahooNor = true; }
 				break;	
 			case 'yahoo-satellite' :
-				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT} ); usedYahooSat = true; }
+				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT, 'sphericalMercator':true} ); usedYahooSat = true; }
 				break;	
 			case 'yahoo-hybrid' :
-				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB} ); usedYahooHyb = true; }
+				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB, 'sphericalMercator':true} ); usedYahooHyb = true; }
 				break;					
 			case 'openlayers' : case 'open-layers' :
-				if (!usedOLWMS){ newLayer = new OpenLayers.Layer.WMS( 'OpenLayers WMS', 'http://labs.metacarta.com/wms/vmap0', {layers: 'basic'} ); usedOLWMS = true; }
+				if (!usedOLWMS){ newLayer = new OpenLayers.Layer.WMS( 'OpenLayers WMS', 'http://labs.metacarta.com/wms/vmap0', {layers: 'basic', 'sphericalMercator':true} ); usedOLWMS = true; }
 				break;		
 			case 'nasa' :
-				if (!usedNasa){ newLayer = new OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",  {layers: "landsat7" /*, sphericalMercator:true */} ); usedNasa = true; }
+				if (!usedNasa){ newLayer = new OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",  {layers: "landsat7", 'sphericalMercator':true} ); usedNasa = true; }
 				break;	
-			// FIXME: this will cause the OL API to mess itself up - other coordinate system?
-
 			case 'osm' : case 'openstreetmap' :
-				window.alert('osm');
-				if (!usedOSM){             newLayer = new OpenLayers.Layer.TMS(
-		                "OpenStreetMap (Mapnik)",
-		                "http://tile.openstreetmap.org/",
-		                {
-		                    type: 'png', getURL: osm_getTileURL,
-		                    displayOutsideMaxExtent: true,
-		                    attribution: '<a href="http://www.openstreetmap.org/">OpenStreetMap</a>'
-		                }
-		            );
- usedOSM = true; }
+				if (!usedOSMarender){ map.addLayer(new OpenLayers.Layer.OSM.Osmarender("OSM arender")); usedOSMarender = true; }
+				if (!usedOSMnik){ map.addLayer(new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"), {'sphericalMercator':true}); usedOSMnik = true; }
+				if (!usedOSMcycle){ map.addLayer(new OpenLayers.Layer.OSM.CycleMap("Cycle Map"), {'sphericalMercator':true}); usedOSMcycle = true; }
 				break;	
+			case 'osmarender' : 
+				if (!usedOSMarender){ newLayer = new OpenLayers.Layer.OSM.Osmarender("OSM arender"); usedOSMarender = true; }
+				break;					
 			case 'osm-nik' : case 'osm-mapnik' :
-				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"); usedOSM = true; }
+				if (!usedOSMnik){ newLayer = new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"); usedOSMnik = true; }
 				break;	
 			case 'osm-cycle' : case 'osm-cyclemap' :
-				if (!usedOSM){ newLayer = new OpenLayers.Layer.OSM.CycleMap("Cycle Map"); usedOSM = true; }
+				if (!usedOSMcycle){ newLayer = new OpenLayers.Layer.OSM.CycleMap("Cycle Map"); usedOSMcycle = true; }
 				break;		
-		
 		}
 		
 		if (newLayer != null) {
@@ -255,7 +254,6 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 
 function getOLMarkerData(lon, lat, title, label) {
 	lonLat = new OpenLayers.LonLat(lon, lat)
-	//lonLat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")); 
 	return {
 		lonlat: lonLat,
 		title: title,
@@ -282,7 +280,7 @@ function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, mark
 	}		
 	
 	// Click event handler for updating the location of the marker
-	// TODO/FIXME: This will probably cause problems when used for multiple maps on one page.
+	// TODO / FIXME: This will probably cause problems when used for multiple maps on one page.
      OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
          defaultHandlerOptions: {
              'single': true,
