@@ -66,6 +66,13 @@ $messages['bs'] = array(
 	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa. Dostupne usluge mapa: $1',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'maps_coordinates_missing' => "No s'han proporcionat coordenades pel mapa.",
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -115,6 +122,17 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'maps_desc' => 'הוספת היכולת להצגת נתוני קואורדינטות במפות וכתובות geocode. שירותי המיפוי הזמינים: $1',
+);
+
+/** Croatian (Hrvatski)
+ * @author Suradnik13
+ */
+$messages['hr'] = array(
+	'maps_coordinates_missing' => 'Za kartu nisu dostupne koordinate.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Sljedeća adresa ne može biti geokodirana|Sljedeće adrese ne mogu biti geokodirane}}: $1.
+Karta ne može biti prikazana.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Sljedeća adresa ne može biti geokodirana|Sljedeće adrese ne mogu biti geokodirane}} i {{PLURAL:$2|izostavljena je|izostavljene su}} iz karte:
+$1',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -192,8 +210,9 @@ $messages['oc'] = array(
 ([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://wiki.bn2vs.com/wiki/Maps demonstracion]). 
 Servicis de cartografia disponibles : $1",
 	'maps_coordinates_missing' => 'Cap de coordenada es pas estada provesida pel plan.',
-	'maps_geocoding_failed' => 'Las adreças seguentas an pas pogut èsser geoencodadas : $1. Lo plan pòt pas èsser afichat.',
-	'maps_geocoding_failed_for' => 'Las adreças seguentas an pas pogut èsser geoencodadas e son pas afichadas sul plan : $1',
+	'maps_geocoding_failed' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} : $1.
+Lo plan pòt pas èsser afichat.",
+	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} e {{PLURAL:$2|es pas afichada|son pas afichadas}} sul plan : $1",
 );
 
 /** Polish (Polski)
