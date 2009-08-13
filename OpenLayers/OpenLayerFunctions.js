@@ -225,9 +225,9 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 	var marker;
 	
 	if (markerData.icon != '') {
-		var iconSize = new OpenLayers.Size(10,17);
-		var iconOffset = new OpenLayers.Pixel(-(iconSize.w/2), -iconSize.h);
-		marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerData.icon, iconSize, iconOffset));
+		//var iconSize = new OpenLayers.Size(10,17);
+		//var iconOffset = new OpenLayers.Pixel(-(iconSize.w/2), -iconSize.h);
+		marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerData.icon)); // , iconSize, iconOffset
 	} else {
 		marker = new OpenLayers.Marker(markerData.lonlat);
 	}
