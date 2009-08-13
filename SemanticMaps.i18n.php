@@ -147,10 +147,12 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  */
 $messages['es'] = array(
 	'semanticmaps_lookupcoordinates' => 'Busque las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Ingresar dirección aquí',
+	'semanticmaps_notfound' => 'no encontrado',
 );
 
 /** Basque (Euskara)
