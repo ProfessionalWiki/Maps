@@ -68,9 +68,11 @@ final class SMYahooMaps extends SMMapPrinter {
 		foreach ($this->m_locations as $location) {
 			// Create a string containing the marker JS 
 			list($lat, $lon, $title, $label, $icon) = $location;
+			
 			$title = str_replace("'", "\'", $title);
 			$label = str_replace("'", "\'", $label);
-			$markerItems[] = "getYMarkerData($lat, $lon, '$title', '$label', '')";
+			
+			$markerItems[] = "getYMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		
 		$markersString = implode(',', $markerItems);
