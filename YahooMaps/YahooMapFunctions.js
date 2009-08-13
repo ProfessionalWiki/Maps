@@ -12,8 +12,14 @@
  * Returns YMarker object on the provided location.
  * It will show a popup baloon with title and label when clicked, if either of these is set.
  */
-function createYMarker(geoPoint, title, label){
-	var newMarker= new YMarker(geoPoint);
+function createYMarker(geoPoint, title, label, icon){
+	var newMarker;
+	
+	if (icon != '') {
+		newMarker = new YMarker(geoPoint,  new YImage(icon));
+	} else {
+		newMarker = new YMarker(geoPoint);
+	}	
 	
 	if ((title + label).length > 0) {
 		var bothTxtAreSet = title.length > 0 && label.length > 0;
@@ -79,7 +85,7 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 	
 	for (i in markers) {
 		var marker = markers[i];
-		map.addOverlay(createYMarker(marker.point, marker.title, marker.label));
+		map.addOverlay(createYMarker(marker.point, marker.title, marker.label, marker.icon));
 		if (map_locations != null) map_locations.push(marker.point);
 	}
 

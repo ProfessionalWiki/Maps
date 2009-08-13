@@ -22,7 +22,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 			            maxResolution: 156543.0339,
 			            maxExtent: new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34), 
 						controls: []
-						}
+						};
 
 	var map = new OpenLayers.Map(mapName, mapOptions);
 	
@@ -34,7 +34,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 			control = getValidControlName(controls[i]);
 			
 			if (control) {
-				eval(' map.addControl( new OpenLayers.Control.' + control + '() ); ')
+				eval(' map.addControl( new OpenLayers.Control.' + control + '() ); ');
 			}
 		}
 		else {
@@ -222,9 +222,15 @@ function addMapBaseLayers(map, mapTypes) {
 }
 	
 function getOLMarker(markerLayer, markerData, projectionObject) {
-	//markerData.lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913")); 
+	var marker;
 	
-	var marker = new OpenLayers.Marker(markerData.lonlat);
+	if (markerData.icon != '') {
+		var iconSize = new OpenLayers.Size(10,17);
+		var iconOffset = new OpenLayers.Pixel(-(iconSize.w/2), -iconSize.h);
+		marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerData.icon, iconSize, iconOffset));
+	} else {
+		marker = new OpenLayers.Marker(markerData.lonlat);
+	}
 	
 	if (markerData.title.length + markerData.label.length > 0 ) {
 		
@@ -252,12 +258,14 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 }
 	
 
-function getOLMarkerData(lon, lat, title, label) {
-	lonLat = new OpenLayers.LonLat(lon, lat)
+function getOLMarkerData(lon, lat, title, label, icon) {
+	lonLat = new OpenLayers.LonLat(lon, lat);
 	return {
 		lonlat: lonLat,
 		title: title,
-		label: label};
+		label: label,
+		icon: icon
+		};
 }
 
 
@@ -336,7 +344,7 @@ function showOLAddress(address, mapName, outputElementName, notFoundFormat) {
 			if (!point) {
 				window.alert(address + ' ' + notFoundFormat);
 			} else {
-				var loc = new OpenLayers.LonLat(point.x, point.y)
+				var loc = new OpenLayers.LonLat(point.x, point.y);
 				
 				replaceMarker(mapName, loc);
 				document.getElementById(outputElementName).value = convertLatToDMS(point.y) + ', ' + convertLngToDMS(point.x);
@@ -370,7 +378,7 @@ function replaceMarker(mapName, newLocation) {
  * @return
  */
 function removeMarkers(markerLayer) {
-	var markerCollection = markerLayer.markers
+	var markerCollection = markerLayer.markers;
 	
 	for (i in markerCollection) {
 		markerLayer.removeMarker(markerCollection[i]);
