@@ -52,12 +52,6 @@ final class MapsGoogleMapsUtils {
 					'G_MARS_INFRARED_MAP' => 'G_MARS_INFRARED_MAP',	
 					);
 
-	// http://code.google.com/apis/maps/documentation/controls.html#Controls_overview
-	private static $controlClasses = array(
-					'large' => 'GLargeMapControl3D',
-					'small' => 'GSmallZoomControl3D',
-					);
-	
 	/**
 	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 
 	 * for the provided a general map type. When no match is found, false

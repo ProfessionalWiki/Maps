@@ -1,5 +1,5 @@
 <?php
-
+ 
 /**
  * A class that holds handlers for the mapping parser functions.
  * Spesific functions are located in @see MapsUtils

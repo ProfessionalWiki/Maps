@@ -170,18 +170,18 @@ function addMapBaseLayers(map, mapTypes) {
 			case 'bing-hybrid' :			
 				if (!usedBingHyb){ newLayer = new OpenLayers.Layer.VirtualEarth( 'Bing Hybrid'  , {type: VEMapStyle.Hybrid, 'sphericalMercator':true} ); usedBingHyb = true; }			
 			case 'yahoo' :
-				if (!usedYahooNor){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Streets' ), {'sphericalMercator':true}); usedYahooNor = true; }
-				if (!usedYahooSat){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT, 'sphericalMercator':true} )); usedYahooSat = true; }
-				if (!usedYahooHyb){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB, 'sphericalMercator':true} )); usedYahooHyb = true; }
+				if (!usedYahooNor){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo! Streets' ), {'sphericalMercator':true}); usedYahooNor = true; }
+				if (!usedYahooSat){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo! Satellite', {'type': YAHOO_MAP_SAT, 'sphericalMercator':true} )); usedYahooSat = true; }
+				if (!usedYahooHyb){ map.addLayer(new OpenLayers.Layer.Yahoo( 'Yahoo! Hybrid', {'type': YAHOO_MAP_HYB, 'sphericalMercator':true} )); usedYahooHyb = true; }
 				break;
 			case 'yahoo-normal' :
-				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Streets', {'sphericalMercator':true} ); usedYahooNor = true; }
+				if (!usedYahooNor){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo! Streets', {'sphericalMercator':true} ); usedYahooNor = true; }
 				break;	
 			case 'yahoo-satellite' :
-				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Satellite', {'type': YAHOO_MAP_SAT, 'sphericalMercator':true} ); usedYahooSat = true; }
+				if (!usedYahooSat){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo! Satellite', {'type': YAHOO_MAP_SAT, 'sphericalMercator':true} ); usedYahooSat = true; }
 				break;	
 			case 'yahoo-hybrid' :
-				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo Hybrid', {'type': YAHOO_MAP_HYB, 'sphericalMercator':true} ); usedYahooHyb = true; }
+				if (!usedYahooHyb){ newLayer = new OpenLayers.Layer.Yahoo( 'Yahoo! Hybrid', {'type': YAHOO_MAP_HYB, 'sphericalMercator':true} ); usedYahooHyb = true; }
 				break;					
 			case 'openlayers' : case 'open-layers' :
 				if (!usedOLWMS){ newLayer = new OpenLayers.Layer.WMS( 'OpenLayers WMS', 'http://labs.metacarta.com/wms/vmap0', {layers: 'basic', 'sphericalMercator':true} ); usedOLWMS = true; }
@@ -192,7 +192,7 @@ function addMapBaseLayers(map, mapTypes) {
 			case 'osm' : case 'openstreetmap' :
 				if (!usedOSMarender){ map.addLayer(new OpenLayers.Layer.OSM.Osmarender("OSM arender")); usedOSMarender = true; }
 				if (!usedOSMnik){ map.addLayer(new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"), {'sphericalMercator':true}); usedOSMnik = true; }
-				if (!usedOSMcycle){ map.addLayer(new OpenLayers.Layer.OSM.CycleMap("Cycle Map"), {'sphericalMercator':true}); usedOSMcycle = true; }
+				if (!usedOSMcycle){ map.addLayer(new OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map"), {'sphericalMercator':true}); usedOSMcycle = true; }
 				break;	
 			case 'osmarender' : 
 				if (!usedOSMarender){ newLayer = new OpenLayers.Layer.OSM.Osmarender("OSM arender"); usedOSMarender = true; }
@@ -201,7 +201,7 @@ function addMapBaseLayers(map, mapTypes) {
 				if (!usedOSMnik){ newLayer = new OpenLayers.Layer.OSM.Mapnik("OSM Mapnik"); usedOSMnik = true; }
 				break;	
 			case 'osm-cycle' : case 'osm-cyclemap' :
-				if (!usedOSMcycle){ newLayer = new OpenLayers.Layer.OSM.CycleMap("Cycle Map"); usedOSMcycle = true; }
+				if (!usedOSMcycle){ newLayer = new OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map"); usedOSMcycle = true; }
 				break;		
 		}
 		

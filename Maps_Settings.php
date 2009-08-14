@@ -66,7 +66,7 @@ $egMapsDefaultGeoService = 'google';
 $egMapsMapWidth = 600;
 $egMapsMapHeight = 350;
 
-# String. The default coordinates of the marker. This value will only be used when the user does not provide one.
+# Strings. The default coordinates of the marker. This value will only be used when the user does not provide one.
 $egMapsMapLat = '1';
 $egMapsMapLon = '1';
 
@@ -81,26 +81,18 @@ $egMapsMapLon = '1';
 # String. The Google Maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsGoogleMapsPrefix = 'map_google';
 
+# Integer. The default zoom of a map. This value will only be used when the user does not provide one.
+$egMapsGoogleMapsZoom = 14;
+
 # Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsTypes = array('normal', 'satellite', 'hybrid', 'physical');
 
 # String. The default map type. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsType = 'normal';
 
-# Integer. The default zoom of a map. This value will only be used when the user does not provide one.
-$egMapsGoogleMapsZoom = 14;
-
 # Boolean. The default value for enabling or disabling the autozoom of a map.
 # This value will only be used when the user does not provide one.
 $egMapsGoogleAutozoom = true;
-
-# Boolean. The default value for enabling or disabling the earth map type for Google Maps.
-# This value will only be used when the user does not provide one.
-$egMapsEnableEarth = false;
-
-# String. The default control for Google Maps. This value will only be used when the user does not provide one.
-# Available short values: large, small. Other values: 
-$egMapsGMapControl = '';
 
 # Array of String. The default controls for Google Maps. This value will only be used when the user does not provide one.
 # Available values: large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label
@@ -110,7 +102,7 @@ $egMapsGMapControls = array('large', 'scale', 'type');
 
 # Yahoo maps
 
-# String. The Yahoo maps map name prefix. It can not be identical to the one of another mapping service.
+# String. The Yahoo! maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsYahooMapsPrefix = 'map_yahoo';
 
 # Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
@@ -148,9 +140,3 @@ $egMapsOLControls = array('layerswitcher', 'mouseposition', 'panzoombar', 'scale
 # Array of String. The default layers for Open Layers. This value will only be used when the user does not provide one.
 # Available values: google, bing, yahoo, openlayers, nasa
 $egMapsOLLayers = array('openlayers');
-
-
-
-
-
-
