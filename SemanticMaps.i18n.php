@@ -243,7 +243,7 @@ Layanan peta yang tersedia: $1',
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'semanticmaps_desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki. Servizi di mappe disponibili: $1",
+	'semanticmaps_desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servizi di mappe disponibili: $1",
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
 	'semanticmaps_notfound' => 'non trovato',
