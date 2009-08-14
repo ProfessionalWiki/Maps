@@ -6,7 +6,7 @@
  *
  * @file Maps.php
  * @ingroup Maps
- *
+ * 
  * @author Jeroen De Dauw
  */
 
