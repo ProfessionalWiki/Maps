@@ -3,6 +3,33 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 ==Semantic Maps change log==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Semantic Maps.
 
+===Semantic Maps 0.3===
+(2009-08-14)
+
+====New functionality====
+
+* Yahoo! Maps and OpenLayers now handle the "icon=" parameter that can come from Semantic Compound Queries, as Google Maps already did.
+
+====Refactoring====
+
+* Restructured the Query Printer classes (JavaScript based logic).
+
+* Made form input classes weakly typed, so they fully work with the new aliasing system.
+
+* Integrated the new hook system of Maps.
+
+* Made the form input class inherit from MapsMapFeature.
+
+====Bug fixes====
+
+* Mapping formats get added only once, as opossed to multiple times in version 0.2.2.
+
+* Added "elementNamePrefix" to the map names and fields of form inputs to prevent JavaScript errors.
+
+* When a query returns no results, nothing will be displayed, instead of an empty map.
+
+* The Google Maps form input now zooms in correctly when a user looks up an address.
+
 ===Semantic Maps 0.2===
 (2009-07-29)
 
