@@ -7,7 +7,7 @@
  * @file SemanticMaps.php
  * @ingroup SemanticMaps
  *
- * @author Jeroen De Dauw
+ * @author Jeroen De Dauw 
  */
 
 /**
@@ -155,12 +155,16 @@ function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_di
 	// service parameters
 	// This will prevent ..input type=googlemaps|service=yahoo.. from
 	// showing up as a Yahoo! Maps map
-	if (array_key_exists('service_name', $field_args))
+	if (array_key_exists('service_name', $field_args)) {
 		$service_name = $field_args['service_name'];
-	elseif (array_key_exists('service', $field_args))
+	}
+	elseif (array_key_exists('service', $field_args)) {
 		$service_name = $field_args['service'];
-	else
+	}
+	else{
 		$service_name = null;
+	}
+	
 	$service_name = MapsMapper::getValidService($service_name);
 	
 	if (array_key_exists('fi', $egMapsServices[$service_name])) {
