@@ -151,14 +151,20 @@ function smfInitFormHook($service, $fi = null, $mainName = '') {
 function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
 	global $egMapsServices;
 	
-	// If service_name is set, use this value, and ignore any given service parameters
-	// This will prevent ..input type=googlemaps|service=yahoo.. from shwoing up a Yahoo! Maps map
-	if (array_key_exists('service_name', $field_args)) $field_args['service'] = $field_args['service_name'];
-		
-	$field_args['service'] = MapsMapper::getValidService($field_args['service']);
+	// If service_name is set, use this value, and ignore any given
+	// service parameters
+	// This will prevent ..input type=googlemaps|service=yahoo.. from
+	// showing up as a Yahoo! Maps map
+	if (array_key_exists('service_name', $field_args))
+		$service_name = $field_args['service_name'];
+	elseif (array_key_exists('service', $field_args))
+		$service_name = $field_args['service'];
+	else
+		$service_name = null;
+	$service_name = MapsMapper::getValidService($service_name);
 	
-	if (array_key_exists('fi', $egMapsServices[$field_args['service']])) {
-		$formInput = new $egMapsServices[$field_args['service']]['fi']['class']();
+	if (array_key_exists('fi', $egMapsServices[$service_name])) {
+		$formInput = new $egMapsServices[$service_name]['fi']['class']();
 		
 		// Get and return the form input HTML from the hook corresponding with the provided service
 		return $formInput->formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);	
