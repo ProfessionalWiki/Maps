@@ -3,6 +3,57 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 ==Maps change log==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Maps.
 
+===Maps 0.3===
+(2009-08-14)
+
+Changes in 0.3 discussed on the authors blog:
+
+* [http://blog.bn2vs.com/2009/08/13/final-changes-for-maps-and-sm-0-3/ Final changes for Maps and SM 0.3]
+
+* [http://blog.bn2vs.com/2009/08/07/new-features-in-maps-and-sm-0-3/ New features in Maps and SM 0.3]
+
+* [http://blog.bn2vs.com/2009/08/05/structural-changes-for-maps-and-sm-0-3/ Structural changes for Maps and SM 0.3]
+ 
+====New features====
+
+* Multi location parser functions. Two completely new parser functions have been added that allow the displaying of multiple points on a map.
+
+* Configurable map type controls. Users can now configure the map type controls of Google maps and Yahoo! maps maps. They can set the available map types, and the order they want them to be displayed in the map type control.
+
+* Property names now have aliases. This means you can add several alternative ways to name the same parameter, for instance, you can make so that ‘auto zoom’ and ‘auto-zoom’ will do excellently the same as the main parameter ‘autozoom’. This is particularly handy for parameters such as ‘centre’ (British spelling) and ‘center’ (American spelling).
+
+* Added Google Maps moon, Mars and sky support.
+
+* Controls on both Yahoo! Maps and Google Maps map can now be configured by the user with the controls parameter. Yahoo! Maps maps already have this option for a limited set of controls since version 0.2, but the amount of available controls has now been expanded to what the Yahoo! Maps API offers. For Google Maps the change is significantly larger, since a lot of new controls can now be added. These included an overview map, a scale line, a drop down menu for map types, an automated reverse geocoding location determiner and more.
+
+* Added the ability to specify separate title, label and icon values for each marker in the display_points and display_addresses parser functions.
+
+* Added user friendly notices for when geocoding of an address fails.
+
+* A whole list of OpenLayers base layers have been added. These include the satellite, street and hybrid views for Yahoo! Maps and Bing Maps, but also finally the OpenStreetMap layers.
+
+====Refactoring====
+
+* Created hook system for the mapping services. All hard-coded references to mapping services in the core code have been removed. A service is now added by one multi dimensional array in Maps.php (note that this can also be done in the initialization file of another extension!), which holds the name of the parser functions class and it’s location, the aliases for the service name (feature added in 0.2), and their allowed specific parameters and their aliases. This architecture allows other people to create their own mapping extension using the Maps (and Semantic Maps) ‘API’.
+
+* Created a class that bundles common functionality from MapsBaseMap and SMFormInput.
+
+* Rewrote parts of the geocoder base class. 
+
+* Added separated handling for default parameter for each mapping service.
+
+* Changed the requests in the geocoder classes to CURL requests to avoid security issues.
+
+* Moved common, parser function specific, functions and variables from MapsMapper to a new MapsParserFunctions class.
+
+* Moved common code within the mapping services out of the parser function class to a new utility classes.
+
+====Bug fixes====
+
+* Extension description is not showing up in 0.2.1 & 0.2.2.
+
+* Bing maps (for open layers) is not working
+
 ===Maps 0.2===
 (2009-07-29)
 
