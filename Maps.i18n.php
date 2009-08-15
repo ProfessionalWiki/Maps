@@ -312,8 +312,8 @@ $messages['vi'] = array(
  */
 $messages['31337'] = array(
 	'maps_name' => 'M495',
-	'maps_desc' => "P20\/|d35 7#3 48|1|7`/ 70 d|5914`/ [002d|^/473 d474 |^/ m495, 4^/d 630[0d3 4dd235535 ([http://wiki.bn2vs.com/wiki/Maps [)3m0]).
-@\/4|14813 m499|^/6 532\/|[35: $1",
+	'maps_desc' => 'P20\/|d35 7#3 48|1|7`/ 70 d|5914`/ [002d|^/473 d474 |^/ m495, 4^/d 630[0d3 4dd235535 ([http://wiki.bn2vs.com/wiki/Maps [)3m0]).
+@\/4|14813 m499|^/6 532\/|[35: $1',
 
 	'maps_coordinates_missing' => 'N0 [002d|^/4735 920\/|d3d -702 7#3 m49.',
 	'maps_geocoding_failed' => 'T#3 -70110w|^/6 {{PLURAL:$2|4dd2355|4dd235535}} [0u1d ^/07 83 630[0d3d: $1.
@@ -331,8 +331,8 @@ $messages['lols'] = array(
 Avhailuable mapzor zervicez: $1",
 
 	'maps_coordinates_missing' => 'I can has choordinatez for meh map?',
-	'maps_geocoding_failed' => 'Whalid {{PLURAL:$2|addrezz|addrezzez}}, ur doin it wron: $1.
+	'maps_geocoding_failed' => 'O noez! Whalid {{PLURAL:$2|addrezz|addrezzez}}, ur doin it wron: $1.
 Yr map haz a fail.',
-	'maps_geocoding_failed_for' => 'Whalid {{PLURAL:$2|addrezz|addrezzez}}, ur doin it wron! They has been left from ur mapz - srihously:
+	'maps_geocoding_failed_for' => 'O noez! Whalid {{PLURAL:$2|addrezz|addrezzez}}, ur doin it wron! They has been left from ur mapz - srihously:
 $1',
 );
