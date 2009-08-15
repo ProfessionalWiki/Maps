@@ -68,7 +68,8 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa. Dostupne usluge mapa: $1',
+	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Dostupne usluge mapa: $1',
 );
 
 /** Catalan (Català)
@@ -212,6 +213,19 @@ $messages['lb'] = array(
 	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'maps_desc' => 'Дава можност за приказ на координатни податоци во картите, и геокодирање на адреси ([http://wiki.bn2vs.com/wiki/Maps демо]).
+Картографски служби на располагање: $1',
+	'maps_coordinates_missing' => 'Нема координати за картата.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Следнава адреса не можеше да се геокодира|Следниве адреси не можеа да се геокодираат}}: $1.
+Картата не може да се прикаже.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следнава адреса|Следниве адреси}} не можеа да се геокодираат и затоа {{PLURAL:$2|е испуштена|се испуштени}} од картата:
+$1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -242,7 +256,7 @@ Lo plan pòt pas èsser afichat.",
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'maps_desc' => 'Umożliwia wyświetlanie współrzędnych na mapach oraz adresów geograficznych. Dostępne serwisy mapowe: $1',
+	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostępne serwisy mapowe: $1',
 );
 
 /** Piedmontese (Piemontèis)
@@ -305,3 +319,4 @@ Dostupné mapovacie služby: $1',
 $messages['vi'] = array(
 	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ, và địa chỉ mã địa lý. Các dịch vụ bản đồ hiện có: $1',
 );
+

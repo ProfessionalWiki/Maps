@@ -12,6 +12,14 @@ $magicWords['en'] = array(
 	'geocodelng'        => array( 0, 'geocodelng' ),
 );
 
+$magicWords['ar'] = array(
+	'display_point'       => array( '0', 'نقطة_العرض', 'display_point' ),
+	'display_points'      => array( '0', 'نقاط_العرض', 'display_points' ),
+	'display_address'     => array( '0', 'عنوان_العرض', 'display_address' ),
+	'display_addresses'   => array( '0', 'عناوين_العرض', 'display_addresses' ),
+	'geocode'             => array( '0', 'كود_جغرافي', 'geocode' ),
+);
+
 $magicWords['nl'] = array(
 	'display_point'       => array( '0', 'punt_weergeven', 'display_point' ),
 	'display_points'      => array( '0', 'punten_weergeven', 'display_points' ),
