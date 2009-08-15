@@ -305,34 +305,3 @@ Dostupné mapovacie služby: $1',
 $messages['vi'] = array(
 	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ, và địa chỉ mã địa lý. Các dịch vụ bản đồ hiện có: $1',
 );
-
-/** Leet (31337)
- * @author Jeroen De Dauw
- * Translated with binary-converter.com
- */
-$messages['31337'] = array(
-	'maps_name' => 'M495',
-	'maps_desc' => 'P20\/|d35 7#3 48|1|7`/ 70 d|5914`/ [002d|^/473 d474 |^/ m495, 4^/d 630[0d3 4dd235535 ([http://wiki.bn2vs.com/wiki/Maps [)3m0]).
-@\/4|14813 m499|^/6 532\/|[35: $1',
-
-	'maps_coordinates_missing' => 'N0 [002d|^/4735 920\/|d3d -702 7#3 m49.',
-	'maps_geocoding_failed' => 'T#3 -70110w|^/6 {{PLURAL:$2|4dd2355|4dd235535}} [0u1d ^/07 83 630[0d3d: $1.
-T#3 m49 [4^/^/07 83 d|5914`/3d.',
-	'maps_geocoding_failed_for' => '<nowiki>T#3 -70110w|^/6 {{PLURAL:$2|4dd2355|4dd235535}} [0u1d ^/07 83 630[0d3d 4^/d {{PLURAL:$2|#45|#4\/3}} 833^/ 0m|773d -720m 7#3 m49:</nowiki>
-$1',
-);
-
-/** Lolspeak
- * @author Jeroen De Dauw
- */
-$messages['lols'] = array(
-	'maps_name' => 'Mapz',
-	'maps_desc' => "Providez da ability to display choordinate data in ur mapz, and canz gheocode ur addrezez ([http://wiki.bn2vs.com/wiki/Maps iz tru - u can has a look]).
-Avhailuable mapzor zervicez: $1",
-
-	'maps_coordinates_missing' => 'I can has choordinatez for meh map?',
-	'maps_geocoding_failed' => 'O noez! Whalid {{PLURAL:$2|addrezz|addrezzez}}, ur doin it wron: $1.
-Yr map haz a fail.',
-	'maps_geocoding_failed_for' => 'O noez! Whalid {{PLURAL:$2|addrezz|addrezzez}}, ur doin it wron! They has been left from ur mapz - srihously:
-$1',
-);
