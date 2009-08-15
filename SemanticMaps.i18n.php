@@ -344,6 +344,7 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
+	'semanticmaps_notfound' => 'nie odnaleziono',
 );
 
 /** Portuguese (Português)
