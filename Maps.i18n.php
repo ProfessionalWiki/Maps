@@ -231,7 +231,7 @@ $1',
  */
 $messages['nl'] = array(
 	'maps_desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Beschikbare kaartdiensten: $1',
+Beschikbare {{PLURAL:$2|kaartdienst|kaartdiensten}}: $1',
 	'maps_coordinates_missing' => 'Er zijn geen coördinaten opgegeven voor de kaart.',
 	'maps_geocoding_failed' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk: $1
 De kaart kan niet worden weergegeven.',
@@ -257,6 +257,10 @@ Lo plan pòt pas èsser afichat.",
  */
 $messages['pl'] = array(
 	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostępne serwisy mapowe: $1',
+	'maps_coordinates_missing' => 'Brak współrzędnych dla mapy.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Następującego adresu nie można odnaleźć na mapie|Następujących adresów nie można odnaleźć na mapie:}} $1.
+Mapa nie może zostać wyświetlona.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Następujący adres został pominięty, ponieważ nie można go odnaleźć na mapie|Następujące adresy zostały pominięte, ponieważ nie można ich odnaleźć na mapie:}} $1.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -311,6 +315,16 @@ Dostupné mapovacie služby: $1',
 	'maps_coordinates_missing' => 'Neboli poskytnuté žiadne súradnice.',
 	'maps_geocoding_failed' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}}: $1.',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
+);
+
+/** Swedish (Svenska)
+ * @author Fluff
+ */
+$messages['sv'] = array(
+	'maps_coordinates_missing' => 'Inga koordinater angivna för kartan.',
+	'maps_geocoding_failed' => 'Följande {{PLURAL:$2|adress|adresser}} kunde inte geokodas: $1.
+Kartan kan inte visas.',
+	'maps_geocoding_failed_for' => 'Följande {{PLURAL:$2|adress|adresser}}kunde inte geokodas och {{PLURAL:$2|har|har}} uteslutits från kartan: $1',
 );
 
 /** Vietnamese (Tiếng Việt)
