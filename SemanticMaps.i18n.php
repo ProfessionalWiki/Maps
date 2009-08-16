@@ -303,7 +303,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Beschikbare kaartdiensten: $1',
+Beschikbare {{PLURAL:$2|kaartdienst|kaartdiensten}}: $1',
 	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
 	'semanticmaps_enteraddresshere' => 'Voer hier het adres in',
 	'semanticmaps_notfound' => 'niet gevonden',
@@ -342,6 +342,8 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Dostępne serwisy mapowe: $1',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
 	'semanticmaps_notfound' => 'nie odnaleziono',
