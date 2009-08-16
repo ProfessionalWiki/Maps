@@ -17,7 +17,7 @@ $messages = array();
 $messages['en'] = array(
 	'maps_name' => 'Maps',
 	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
-Available mapping services: $1",
+Available mapping {{PLURAL:$2|service|services}}: $1",
 
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
 	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.
