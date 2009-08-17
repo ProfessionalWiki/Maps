@@ -20,7 +20,7 @@ final class MapsGoogleMaps extends MapsBaseMap {
 	public $serviceName = self::SERVICE_NAME;
 
 	/**
-	 * @see MapsBaseMap::setFormInputSettings()
+	 * @see MapsBaseMap::setMapSettings()
 	 *
 	 */	
 	protected function setMapSettings() {

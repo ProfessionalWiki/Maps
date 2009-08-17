@@ -22,7 +22,7 @@ abstract class MapsMapFeature {
 	protected abstract function setMapSettings();
 	
 	/**
-	 * Map service spesific map count and loading of dependencies
+	 * Map service specific map count and loading of dependencies
 	 *
 	 */	
 	protected abstract function doMapServiceLoad();

@@ -219,10 +219,20 @@ final class MapsMapper {
 	 * @param string $service
 	 * @return string
 	 */
-	public static function getValidService($service) {
-		global $egMapsAvailableServices, $egMapsDefaultService;
+	public static function getValidService($service, $feature = '') {
+		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
 		
 		$service = self::getMainServiceName($service);
+		
+		if ($feature != '') {
+			$shouldChange = ! array_key_exists($service, $egMapsServices);
+			if (! $shouldChange) $shouldChange = ! array_key_exists($feature, $egMapsServices[$service]);
+			
+			if ($shouldChange) {
+				$service = array_key_exists($feature, $egMapsDefaultServices) ? $egMapsDefaultServices[$feature] : $egMapsDefaultService;
+			}
+		}
+		
 		if(! in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;
 		
 		return $service;

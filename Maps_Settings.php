@@ -33,14 +33,21 @@ if (empty($egYahooMapsKey)) $egYahooMapsKey = "";
 
 
 # Map services configuration
+# Note: You can not use aliases in the setting. Use the main service names.
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
 $egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers');
 
-# String. The default mapping service, which will be used when no service is provided by the user.
+# String. The default mapping service, which will be used when no default service is prsent in the
+# $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
 # This service needs to be enabled, if not, the first one from the available services will be taken.
 $egMapsDefaultService = 'googlemaps';
+
+# Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
+# Each service needs to be enabled, if not, the first one from the available services will be taken.
+# Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
+$egMapsDefaultServices = array('pf' => 'openlayers', 'qp' => 'yahoomaps', 'fi' => 'yahoomaps');
 
 
 

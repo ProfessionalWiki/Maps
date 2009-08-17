@@ -37,7 +37,7 @@ final class MapsParserFunctions {
 		
 		if ($coords) {
 			if (! MapsMapper::paramIsPresent('service', $map)) $map['service'] = '';
-			$map['service'] = MapsMapper::getValidService($map['service']);				
+			$map['service'] = MapsMapper::getValidService($map['service'], 'pf');				
 	
 			$mapClass = new $egMapsServices[$map['service']]['pf']['class']();
 	
@@ -139,7 +139,7 @@ final class MapsParserFunctions {
 			}			
 		}
 
-		$service = isset($service) ? MapsMapper::getValidService($service) : $egMapsDefaultService;
+		$service = isset($service) ? MapsMapper::getValidService($service, 'pf') : $egMapsDefaultService;
 		$geoservice = isset($geoservice) ? $geoservice : '';
 		
 		for ($i = 0; $i < count($params); $i++) {

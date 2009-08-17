@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.3');
+define('Maps_VERSION', '0.3.1');
 
 $egMapsScriptPath = $wgScriptPath . '/extensions/Maps';
 $egMapsIP = $IP . '/extensions/Maps';
@@ -49,7 +49,10 @@ $wgAutoloadClasses['MapsGeocoder'] = $egMapsIP . '/Maps_Geocoder.php';
 $wgAutoloadClasses['MapsBaseGeocoder'] = $egMapsIP . '/Maps_BaseGeocoder.php';
 
 // TODO: document
-$egMapsServices = array();
+// TODO: create checks to see what components are avalable for every 
+//		 service to be used in available lists and setting of default service of each component
+// TODO: create feature hook system?
+if (empty($egMapsServices)) $egMapsServices = array();
 
 $egMapsServices['googlemaps'] = array(
 									'pf' => array('class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true),
@@ -91,12 +94,12 @@ $egMapsServices['yahoomaps'] = array(
 											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom')
 											)
 									);
-						
+
 /**
  * Initialization function for the Maps extension
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgOut, $wgAutoloadClasses;	
+	global $wgExtensionCredits, $wgOut, $wgAutoloadClasses, $IP;	
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP;
 
 	efMapsValidateGoogleMapsKey();
@@ -125,13 +128,18 @@ function efMapsSetup() {
 	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
 	
 	foreach ($egMapsServices as  $serviceData) {
-		$file = $serviceData['pf']['local'] ? $egMapsIP . '/' . $serviceData['pf']['file'] : $serviceData['pf']['file'];
-		$wgAutoloadClasses[$serviceData['pf']['class']] = $file;
-		
-		foreach($serviceData['classes'] as $class) {
-			$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $class['file'];
-			$wgAutoloadClasses[$class['class']] = $file;
+		if (array_key_exists('pf', $serviceData)) {
+			$file = $serviceData['pf']['local'] ? $egMapsIP . '/' . $serviceData['pf']['file'] : $IP . '/extensions/' . $serviceData['pf']['file'];
+			$wgAutoloadClasses[$serviceData['pf']['class']] = $file;			
 		}
+		
+		if (array_key_exists('classes', $serviceData)) {
+			foreach($serviceData['classes'] as $class) {
+				$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
+				$wgAutoloadClasses[$class['class']] = $file;
+			}
+		}
+		
 	}
 }
 
