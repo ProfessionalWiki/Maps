@@ -116,8 +116,8 @@ function efMapsSetup() {
 		'version' => Maps_VERSION,
 		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]", "Robert Buzink", "Matt Williamson", "[http://www.sergeychernyshev.com Sergey Chernyshev]"),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
-		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list, $service_count ),
-		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list, $service_count ),
+		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list, $services_count ),
+		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list, $services_count ),
 	);
 
 	efMapsAddParserHooks();
