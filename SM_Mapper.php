@@ -13,19 +13,31 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-final class SMMapper extends SMWResultPrinter {
+final class SMMapper {
 	
-	protected function getResultText($res, $outputmode) {
-		global $egMapsDefaultService, $egMapsServices;
+	private $queryPrinter;
+	
+	public function __construct($format, $inline) {	
+		global $egMapsDefaultServices, $egMapsServices;	
 		
 		// TODO: allow service parameter to override the default
-		if ($this->mFormat == 'map') $this->mFormat = $egMapsDefaultService;
+		if ($format == 'map') $format = $egMapsDefaultServices['qp'];
 		
-		$service = MapsMapper::getValidService($this->mFormat); 
+		$service = MapsMapper::getValidService($format, 'qp'); 
 		
-		$queryPrinter = new $egMapsServices[$service]['qp']['class']();
-		
-		return $queryPrinter->getResultText($res, $outputmode);
+		$this->queryPrinter = new $egMapsServices[$service]['qp']['class']($format, $inline);
+	}	
+	
+	public function getQueryMode($context) {
+		return $this->queryPrinter->getQueryMode($context);
+	}	
+	
+	public function getResult($results, $params, $outputmode) {
+		return  $this->queryPrinter->getResult($results, $params, $outputmode);
+	}
+	
+	protected function getResultText($res, $outputmode) {
+		return $this->queryPrinter->getResultText($res, $outputmode);
 	}
 	
 }

@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.3');
+define('SM_VERSION', '0.3.1');
 
 $smgScriptPath = $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP = $IP . '/extensions/SemanticMaps';
@@ -72,7 +72,7 @@ function smfSetup() {
 	);
 
 	smfInitFormHook('map');
-	smfInitFormat('map', array('class' => 'SMMapper', 'file' => 'SM_Mapper.php'));
+	smfInitFormat('map', array('class' => 'SMMapper', 'file' => 'SM_Mapper.php', 'local' => true));
 	
 	foreach($egMapsServices as $serviceName => $serviceData) {
 		$hasQP = array_key_exists('qp', $serviceData);
@@ -97,10 +97,10 @@ function smfSetup() {
 /**
  * Add the result format for a mapping service or alias
  *
- * @param unknown_type $format
- * @param unknown_type $qp
+ * @param string $format
+ * @param array $qp
  */
-function smfInitFormat($format, $qp) {
+function smfInitFormat($format, array $qp) {
 	global $wgAutoloadClasses, $smwgResultFormats, $smgIP;
 	
 	if (! array_key_exists($qp['class'], $wgAutoloadClasses)) {
@@ -119,11 +119,11 @@ function smfInitFormat($format, $qp) {
 /**
  * Adds a mapping service's form hook
  *
- * @param unknown_type $service
- * @param unknown_type $fi
- * @param unknown_type $mainName
+ * @param string $service
+ * @param array $fi
+ * @param strig $mainName
  */
-function smfInitFormHook($service, $fi = null, $mainName = '') {
+function smfInitFormHook($service, array $fi = null, $mainName = '') {
 	global $wgAutoloadClasses, $sfgFormPrinter, $smgIP;
 
 	if (isset($fi)) {
@@ -146,10 +146,10 @@ function smfInitFormHook($service, $fi = null, $mainName = '') {
  * @param unknown_type $input_name
  * @param unknown_type $is_mandatory
  * @param unknown_type $is_disabled
- * @param unknown_type $field_args
+ * @param array $field_args
  * @return unknown
  */
-function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
+function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, array $field_args) {
 	global $egMapsServices;
 	
 	// If service_name is set, use this value, and ignore any given
@@ -166,7 +166,7 @@ function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_di
 		$service_name = null;
 	}
 	
-	$service_name = MapsMapper::getValidService($service_name);
+	$service_name = MapsMapper::getValidService($service_name, 'fi');
 	
 	if (array_key_exists('fi', $egMapsServices[$service_name])) {
 		$formInput = new $egMapsServices[$service_name]['fi']['class']();
@@ -180,6 +180,15 @@ function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_di
 	
 }
 
+/**
+ * Returns html for an html input field with a default value that will automatically dissapear when
+ * the user clicks in it, and reappers when the focus on the field is lost and it's still empty.
+ *
+ * @param string $id
+ * @param string $value
+ * @param string $args
+ * @return html
+ */
 function smfGetDynamicInput($id, $value, $args='') {
 	// By De Dauw Jeroen - November 2008 - http://code.bn2vs.com/viewtopic.php?t=120
 	return '<input id="'.$id.'" '.$args.' value="'.$value.'" onfocus="if (this.value==\''.$value.'\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\''.$value.'\';}" />';

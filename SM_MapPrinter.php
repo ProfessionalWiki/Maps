@@ -192,7 +192,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	/**
 	 * Sets the zoom level to the provided value, or when not set, to the default.
-	 *r
+	 *
 	 */
 	private function setZoom() {
 		if (strlen($this->zoom) < 1) {
