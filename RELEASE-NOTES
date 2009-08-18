@@ -3,7 +3,20 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 ==Maps change log==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Maps.
 
-===Maps 0.3===
+===Maps 0.3.1===
+(2009-08-18)
+
+====Refactoring====
+
+* Added check to see if the classes array is present in a mapping service info array.
+
+* Added check to see if a mapping service has handling for parser functions. In 0.3, Maps assumed it had, preventing the adding of mapping services that only have a form input or/and query printer.
+
+* The getValidService function now holds into account that not every service has support for both parser functions, query printers and form inputs.
+
+====Bug fixes====
+
+* Added path to extension directory to non local class item in a service's info array, since adding the path is impossible in the declaration.===Maps 0.3===
 (2009-08-14)
 
 Changes in 0.3 discussed on the authors blog:
