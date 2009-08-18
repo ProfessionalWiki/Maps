@@ -3,6 +3,13 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 ==Semantic Maps change log==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Semantic Maps.
 
+===Semantic Maps 0.3.1===
+(2009-08-18)
+
+====Bug fixes====
+
+* Fixed script design flaw that caused errors when using the 'map' format in a query.
+
 ===Semantic Maps 0.3===
 (2009-08-14)
 

@@ -213,13 +213,20 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	private function setCentre() {
 		if (strlen($this->centre) > 0) {
 			// If a centre value is set, use it.
-			list($this->centre_lat, $this->centre_lon) = MapsUtils::getLatLon($this->centre);
+			$centre = MapsUtils::getLatLon($this->centre);
+			$this->centre_lat = $centre['lat'];
+			$this->centre_lon = $centre['lon'];
 		}
-		else {
-			// If centre is not set, set the values to null, to be auto determined by the JS of the mapping API.			
+		elseif (count($this->m_locations) > 1) {
+			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
 			$this->centre_lat = 'null';
 			$this->centre_lon = 'null';
-		}		
+		}	
+		else {
+			// If centre is not set and there is exactelly one marker, use it's coordinates.			
+			$this->centre_lat = $this->m_locations[0][0];
+			$this->centre_lon = $this->m_locations[0][1];
+		}				
 	}	
 	
 	/**
