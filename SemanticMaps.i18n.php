@@ -18,7 +18,7 @@ $messages = array();
 $messages['en'] = array(
 	'semanticmaps_name' => 'Semantic Maps',
 	'semanticmaps_desc' => "Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Available map {{PLURAL:$2|service|services}}: $1",
+Available map services: $1",
 	'semanticmaps_lookupcoordinates' => 'Look up coordinates',
 	'semanticmaps_enteraddresshere' => 'Enter address here',
 	'semanticmaps_notfound' => 'not found',
@@ -93,7 +93,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'semanticmaps_desc' => 'Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-{{PLURAL:$2|Dostupna usluga|Dostupne usluge}} mapa: $1',
+Dostupne usluge mapa: $1',
 	'semanticmaps_lookupcoordinates' => 'Nađi koordinate',
 	'semanticmaps_enteraddresshere' => 'Unesite adresu ovdje',
 	'semanticmaps_notfound' => 'nije pronađeno',
@@ -304,7 +304,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Beschikbare {{PLURAL:$2|kaartdienst|kaartdiensten}}: $1',
+Beschikbare kaartdiensten: $1',
 	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
 	'semanticmaps_enteraddresshere' => 'Voer hier het adres in',
 	'semanticmaps_notfound' => 'niet gevonden',

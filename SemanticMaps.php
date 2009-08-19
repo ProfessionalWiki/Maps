@@ -57,7 +57,6 @@ function smfSetup() {
 	global $wgExtensionCredits, $egMapsServices;
 
 	$services_list = implode(', ', array_keys($egMapsServices));
-	$services_count = count( $egMapsServices );
 	
 	wfLoadExtensionMessages( 'SemanticMaps' );
 	
@@ -67,8 +66,8 @@ function smfSetup() {
 		'version' => SM_VERSION,
 		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "Yaron Koren", "Robert Buzink"),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
-		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list, $services_count ),
-		'descriptionmsg' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list, $services_count ),
+		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
+		'descriptionmsg' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
 
 	smfInitFormHook('map');
