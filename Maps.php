@@ -109,7 +109,6 @@ function efMapsSetup() {
 	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : $egMapsAvailableGeoServices[0];
 	
 	$services_list = implode(', ', array_keys($egMapsServices));
-	$services_count = count( $egMapsServices );
 
 	wfLoadExtensionMessages( 'Maps' );
 	
@@ -119,8 +118,8 @@ function efMapsSetup() {
 		'version' => Maps_VERSION,
 		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]", "Robert Buzink", "Matt Williamson", "[http://www.sergeychernyshev.com Sergey Chernyshev]"),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
-		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list, $services_count ),
-		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list, $services_count ),
+		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
+		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 	);
 
 	efMapsAddParserHooks();
