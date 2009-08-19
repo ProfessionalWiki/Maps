@@ -99,12 +99,13 @@ K dispoziciji stojece kórtowe słužby: $1',
 
 /** Finnish (Suomi)
  * @author Cimon Avaro
+ * @author Crt
  */
 $messages['fi'] = array(
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
 Karttaa ei voida näyttää.',
-	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|on jätetty|ovat jätetty}} kartalta: $1',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|on|ovat}} jätetty kartalta: $1',
 );
 
 /** French (Français)
@@ -211,6 +212,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
+	'maps_coordinates_missing' => "Et goufe keng Koordinate fir d'Kaart uginn.",
 );
 
 /** Macedonian (Македонски)
@@ -276,6 +278,11 @@ $messages['pms'] = array(
 $messages['pt-br'] = array(
 	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
 Serviços de mapeamento disponíveis: $1',
+	'maps_coordinates_missing' => 'Nenhuma coordenada fornecida para o mapa',
+	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado|geocodificados}}: $1.
+O mapa não pode ser exibido.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado e foi omitido|geocodificados e foram omitidos}} do mapa:
+$1',
 );
 
 /** Romanian (Română)
