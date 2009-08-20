@@ -27,6 +27,10 @@ final class SMMapper {
 		
 		$this->queryPrinter = new $egMapsServices[$service]['qp']['class']($format, $inline);
 	}	
+
+	public function getName() {
+		return 'map'; // TODO: translate this
+	}
 	
 	public function getQueryMode($context) {
 		return $this->queryPrinter->getQueryMode($context);
