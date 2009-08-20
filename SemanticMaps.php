@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.3.2');
+define('SM_VERSION', '0.3.3');
 
 $smgScriptPath = $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP = $IP . '/extensions/SemanticMaps';

@@ -29,7 +29,7 @@ final class SMMapper {
 	}	
 
 	public function getName() {
-		return 'map'; // TODO: translate this
+		return $this->queryPrinter->getName();
 	}
 	
 	public function getQueryMode($context) {

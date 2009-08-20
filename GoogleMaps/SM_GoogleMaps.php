@@ -73,7 +73,6 @@ final class SMGoogleMaps extends SMMapPrinter {
 		$markerItems = array();
 		
 		foreach ($this->m_locations as $location) {
-			// Create a string containing the marker JS 
 			list($lat, $lon, $title, $label, $icon) = $location;
 			
 			$title = str_replace("'", "\'", $title);
@@ -82,6 +81,7 @@ final class SMGoogleMaps extends SMMapPrinter {
 			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		
+		// Create a string containing the marker JS 
 		$markersString = implode(',', $markerItems);		
 		
 		$this->types = explode(",", $this->types);
