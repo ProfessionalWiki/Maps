@@ -137,7 +137,7 @@ $egMapsYMapControls = array('type', 'pan', 'zoom');
 $egMapsOpenLayersPrefix = 'open_layer';
 
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
-$egMapsOpenLayersZoom = 10;
+$egMapsOpenLayersZoom = 13;
 
 # Array of String. The default controls for Open Layers. This value will only be used when the user does not provide one.
 # Available values: layerswitcher, mouseposition, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
