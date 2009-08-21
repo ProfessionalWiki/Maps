@@ -29,3 +29,13 @@ $magicWords['nl'] = array(
 	'geocodelat'          => array( '0', 'breedtegeocoderen', 'geocodelat' ),
 	'geocodelng'          => array( '0', 'lengtegeocoderen', 'geocodelng' ),
 );
+
+$magicWords['ru'] = array(
+	'display_point'       => array( '0', 'показать_точку', 'display_point' ),
+	'display_points'      => array( '0', 'показать_точки', 'display_points' ),
+	'display_address'     => array( '0', 'показать_адрес', 'display_address' ),
+	'display_addresses'   => array( '0', 'показать_адреса', 'display_addresses' ),
+	'geocode'             => array( '0', 'геокод', 'geocode' ),
+	'geocodelat'          => array( '0', 'геокодшир', 'geocodelat' ),
+	'geocodelng'          => array( '0', 'геокоддол', 'geocodelng' ),
+);
