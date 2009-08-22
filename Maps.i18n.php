@@ -269,7 +269,11 @@ Mapa nie może zostać wyświetlona.',
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode. Sërvissi ëd mapatura disponìbil: $1",
+	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Sërvissi ëd mapatura disponìbil: $1",
+	'maps_coordinates_missing' => 'Pa gnun-e coordinà dàite për la mapa.',
+	'maps_geocoding_failed' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peulo pa esse sota geocode: $1.
+La mapa a peul pa esse visualisà.",
+	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peula pa esse sota geocode e a {{PLURAL:$2|l'é pa stàita|son pa stàite}}  butà ant la mapa: $1",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
