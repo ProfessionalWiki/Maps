@@ -31,17 +31,7 @@ final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 		// Create the request url
 		$requestURL = 'http://maps.google.com/maps/geo?q='.urlencode($address).'&output=csv&key='.urlencode($egGoogleMapsKey);
 
-		//Set up a CURL request, telling it not to spit back headers, and to throw out a user agent.
-		$ch = curl_init();
-		
-		curl_setopt($ch, CURLOPT_URL, $requestURL);
-		curl_setopt($ch, CURLOPT_HEADER, 0); //Change this to a 1 to return headers
-		curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER["HTTP_USER_AGENT"]);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		 
-		$result = curl_exec($ch);
-		curl_close($ch);
+		$result = self::GetCurlResponse($requestURL);
 		
 		//Check the Google Geocoder API Response code to ensure success
 		if (substr($result, 0, 3) == "200") {
