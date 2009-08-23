@@ -233,7 +233,7 @@ $1',
  */
 $messages['nl'] = array(
 	'maps_desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Beschikbare kaartdiensten: $1',
+Beschikbare {{PLURAL:$2|kaartdienst|kaartdiensten}}: $1',
 	'maps_coordinates_missing' => 'Er zijn geen coördinaten opgegeven voor de kaart.',
 	'maps_geocoding_failed' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk: $1
 De kaart kan niet worden weergegeven.',
@@ -336,6 +336,15 @@ $messages['sv'] = array(
 	'maps_geocoding_failed' => 'Följande {{PLURAL:$2|adress|adresser}} kunde inte geokodas: $1.
 Kartan kan inte visas.',
 	'maps_geocoding_failed_for' => 'Följande {{PLURAL:$2|adress|adresser}}kunde inte geokodas och {{PLURAL:$2|har|har}} uteslutits från kartan: $1',
+);
+
+/** Thai (ไทย)
+ * @author Woraponboonkerd
+ */
+$messages['th'] = array(
+	'maps_desc' => 'ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://wiki.bn2vs.com/wiki/Maps demo]).
+<br />บริการแผนที่ที่มีอยู่: $1',
+	'maps_coordinates_missing' => 'ไม่ได้กำหนดพิกัดของแผนที่มาให้',
 );
 
 /** Vietnamese (Tiếng Việt)
