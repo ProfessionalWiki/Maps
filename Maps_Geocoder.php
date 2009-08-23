@@ -117,13 +117,17 @@ final class MapsGeocoder {
 		
 		// If not, use the selected geocoding service to geocode the provided adress
 		switch(strtolower($service)) {
+			case 'google':			
+				self::addAutoloadClassIfNeeded('MapsGoogleGeocoder', 'Maps_GoogleGeocoder.php');
+				$coordinates = MapsGoogleGeocoder::geocode($address);
+				break;			
 			case 'yahoo':
 				self::addAutoloadClassIfNeeded('MapsYahooGeocoder', 'Maps_YahooGeocoder.php');
 				$coordinates = MapsYahooGeocoder::geocode($address);
 				break;
-			default:
-				self::addAutoloadClassIfNeeded('MapsGoogleGeocoder', 'Maps_GoogleGeocoder.php');
-				$coordinates = MapsGoogleGeocoder::geocode($address);
+			case 'geonames':
+				self::addAutoloadClassIfNeeded('MapsGeonamesGeocoder', 'Maps_GeonamesGeocoder.php');
+				$coordinates = MapsGeonamesGeocoder::geocode($address);
 				break;
 		}
 

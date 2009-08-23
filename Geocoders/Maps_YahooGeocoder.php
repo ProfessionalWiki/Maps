@@ -19,7 +19,7 @@ final class MapsYahooGeocoder extends MapsBaseGeocoder {
 	/**
 	 * @see MapsBaseGeocoder::geocode()
 	 *
-	 * @param unknown_type $address
+	 * @param string $address
 	 */
 	public static function geocode($address) {
 		global $egYahooMapsKey;
@@ -53,19 +53,5 @@ final class MapsYahooGeocoder extends MapsBaseGeocoder {
 					'lon' => $lon
 					);	
 	}	
-	
-	/**
-	 * Gets the contents of the first XML tag with the provided name,
-	 * returns false when no matching element is found.
-	 *
-	 * @param string $xml
-	 * @param string $tagName
-	 * @return unknown
-	 */
-	private static function getXmlElementValue($xml, $tagName) {
-		$match = array();
-		preg_match("/<$tagName>(.*?)<\/$tagName>/", $xml, $match);
-		return count($match) > 1 ? $match[1] : false;
-	}
 	
 }

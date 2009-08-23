@@ -44,12 +44,12 @@ final class MapsMapper {
 	 * @return boolean
 	 */
 	public static function inParamAliases($name, $mainParamName, $compareMainName = true) {
-		$equals = $compareMainName && $mainParamName = $name;
-		
+		$equals = $compareMainName && $mainParamName == $name;
+
 		if (array_key_exists($mainParamName, self::$mainParams)) {
 			$equals = $equals || in_array($name, self::$mainParams[$mainParamName]);
 		}
-		
+
 		return $equals;
 	}
 	

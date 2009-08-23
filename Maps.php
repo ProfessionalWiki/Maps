@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.3.2');
+define('Maps_VERSION', '0.3.3');
 
 $egMapsScriptPath = $wgScriptPath . '/extensions/Maps';
 $egMapsIP = $IP . '/extensions/Maps';

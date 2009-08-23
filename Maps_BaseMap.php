@@ -43,6 +43,8 @@ abstract class MapsBaseMap extends MapsMapFeature {
 		
 		$this->setCentre();
 		
+		$this->doParsing();
+		
 		$this->doEscaping();
 		
 		$this->addSpecificMapHTML();
@@ -130,6 +132,20 @@ abstract class MapsBaseMap extends MapsMapFeature {
 			$this->centre_lon = $centre['lon'];
 		}		
 	}	
+	
+	private function DoParsing() {
+		global $wgOut, $wgParser, $wgTitle;
+
+		// TODO: parse the wiki text
+		
+		/*
+		$parsedTitle = $wgParser->parse($this->title, $wgTitle, new ParserOptions());
+		$this->title = $parsedTitle->GetText();
+		
+		$parsedLabel = $wgParser->parse($this->label, $wgTitle, new ParserOptions());
+		$this->label = $parsedLabel->GetText();
+		*/
+	}
 	
 	/**
 	 * Ascapte the title and label

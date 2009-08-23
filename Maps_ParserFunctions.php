@@ -140,6 +140,7 @@ final class MapsParserFunctions {
 		}
 
 		$service = isset($service) ? MapsMapper::getValidService($service, 'pf') : $egMapsDefaultService;
+
 		$geoservice = isset($geoservice) ? $geoservice : '';
 		
 		for ($i = 0; $i < count($params); $i++) {

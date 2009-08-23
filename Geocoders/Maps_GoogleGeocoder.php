@@ -20,7 +20,7 @@ final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 	/**
 	 * @see MapsBaseGeocoder::geocode()
 	 *
-	 * @param unknown_type $address
+	 * @param string $address
 	 */
 	public static function geocode($address) {
 		global $egGoogleMapsKey;
