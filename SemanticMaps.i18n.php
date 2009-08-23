@@ -350,6 +350,17 @@ Dostępne serwisy mapowe: $1',
 	'semanticmaps_notfound' => 'nie odnaleziono',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'semanticmaps_desc' => 'A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con le estension Semantic mediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Sërvissi ëd mapa disponìbij: $1',
+	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
+	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
+	'semanticmaps_notfound' => 'pa trovà',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */
