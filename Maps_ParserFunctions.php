@@ -16,11 +16,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class MapsParserFunctions {
 
-	private static function getMapHtml(array $params, array $coordFails = array()) {
+	private static function getMapHtml(&$parser, array $params, array $coordFails = array()) {
 		global $egMapsServices;
 		
 		$map = array();
 		
+		// Go through all parameters, split their names and values, and put them in the $map array.
 		foreach($params as $param) {
 			$split = split('=', $param);
 			if (count($split) == 2) {
@@ -42,7 +43,7 @@ final class MapsParserFunctions {
 			$mapClass = new $egMapsServices[$map['service']]['pf']['class']();
 	
 			// Call the function according to the map service to get the HTML output
-			$output = $mapClass->displayMap($map);	
+			$output = $mapClass->displayMap($parser, $map);	
 			
 			if (count($coordFails) > 0) {
 				$output .= '<i>' . wfMsgExt( 'maps_geocoding_failed_for', array( 'parsemag' ), implode( ',', $coordFails ), count( $coordFails ) ) . '</i>';
@@ -70,7 +71,7 @@ final class MapsParserFunctions {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 				
-		return self::getMapHtml($params);
+		return self::getMapHtml($parser, $params);
 	}
 	
 	/**
@@ -83,7 +84,7 @@ final class MapsParserFunctions {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 		
-		return self::getMapHtml($params);
+		return self::getMapHtml($parser, $params);
 	}
 	
 	/**
@@ -99,7 +100,7 @@ final class MapsParserFunctions {
 		
 		$fails = self::changeAddressToCoords($params);
 		
-		return self::getMapHtml($params, $fails);
+		return self::getMapHtml($parser, $params, $fails);
 	}
 	
 	/**
@@ -114,7 +115,7 @@ final class MapsParserFunctions {
 		
 		$fails = self::changeAddressToCoords($params);
 		
-		return self::getMapHtml($params, $fails);
+		return self::getMapHtml($parser, $params, $fails);
 	}
 	
 	/**

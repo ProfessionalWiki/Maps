@@ -18,6 +18,12 @@ if (! defined ( 'MEDIAWIKI' )) {
 
 class MapsUtils {	
 	
+	/*
+	 * Returns an array containing the latitude (lat) and longitude (lon)
+	 * of the provided coordinate string.
+	 * 
+	 * @param string $coordinates
+	 */
 	public static function getLatLon($coordinates) {
 		$coordinates = preg_split ( "/,/", $coordinates );
 		if (count ( $coordinates ) == 2) {

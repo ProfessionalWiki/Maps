@@ -25,10 +25,10 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
 	 * @param unknown_type $parser
-	 * @param unknown_type $map
-	 * @return unknown
+	 * @param array $map
+	 * @return html
 	 */
-	public final function displayMap($map) {		
+	public final function displayMap(&$parser, array $map) {		
 		$this->setMapSettings();
 		
 		$this->doMapServiceLoad();
@@ -43,7 +43,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 		
 		$this->setCentre();
 		
-		$this->doParsing();
+		$this->doParsing($parser);
 		
 		$this->doEscaping();
 		
@@ -133,22 +133,18 @@ abstract class MapsBaseMap extends MapsMapFeature {
 		}		
 	}	
 	
-	private function DoParsing() {
-		global $wgOut, $wgParser, $wgTitle;
-
-		// TODO: parse the wiki text
-		
-		/*
-		$parsedTitle = $wgParser->parse($this->title, $wgTitle, new ParserOptions());
-		$this->title = $parsedTitle->GetText();
-		
-		$parsedLabel = $wgParser->parse($this->label, $wgTitle, new ParserOptions());
-		$this->label = $parsedLabel->GetText();
-		*/
+	/**
+	 * Parse the wiki text in the title and label values.
+	 * 
+	 * @param $parser
+	 */
+	private function DoParsing(&$parser) {
+		$this->title = $parser->recursiveTagParse( $this->title );
+		$this->label = $parser->recursiveTagParse( $this->label );
 	}
 	
 	/**
-	 * Ascapte the title and label
+	 * Escape the title and label text
 	 *
 	 */
 	private function doEscaping() {
