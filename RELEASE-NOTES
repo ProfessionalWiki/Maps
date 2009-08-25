@@ -3,6 +3,15 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 ==Semantic Maps change log==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Semantic Maps.
 
+===Semantic Maps 0.3.2===
+(2009-08-18)
+
+====Bug fixes====
+
+* Fixed logic error that caused maps to have a wrong centre and zoom when a query only returned one result.
+
+* Fixed an issue with the centre parameter in queries. In some cases it would not be processed correctly and cause PHP notices.
+
 ===Semantic Maps 0.3.1===
 (2009-08-18)
 
