@@ -186,7 +186,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki. Servizos de mapa dispoñibles: $1',
+	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demostración]).
+Servizos de mapa dispoñibles: $1',
 	'semanticmaps_lookupcoordinates' => 'Ver as coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza o enderezo aquí',
 	'semanticmaps_notfound' => 'non se atopou',
