@@ -70,6 +70,11 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Dostupne usluge mapa: $1',
+	'maps_coordinates_missing' => 'Za mapu nisu navedene koordinate.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Slijedeća adresa nije mogla biti geokodirana|Slijedeće adrese nisu mogle biti geokodirane}}: $1.
+Mapa se ne može prikazati.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Slijedeća adresa nije|Slijedeće adrese nisu}} mogle biti geokodiranje i {{PLURAL:$2|izostavljena je|izostavljene su}} iz mape:
+$1',
 );
 
 /** Catalan (Català)
@@ -127,7 +132,12 @@ Le plan ne peut pas être affiché.",
  * @author Toliño
  */
 $messages['gl'] = array(
-	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados. Servizos de mapeamento dispoñibles: $1',
+	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://wiki.bn2vs.com/wiki/Maps demostración]).
+Servizos de mapeamento dispoñibles: $1',
+	'maps_coordinates_missing' => 'Non se proporcionou ningunha coordenada para o mapa.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}}: $1.
+O mapa non se pode mostrar.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}} e {{PLURAL:$2|omitiuse|omitíronse}} no mapa: $1.',
 );
 
 /** Swiss German (Alemannisch)
