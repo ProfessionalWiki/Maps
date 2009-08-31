@@ -190,10 +190,15 @@ $messages['hu'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'maps_desc' => "Memampukan tampilan data koordinat pada peta, dan alamat ''geocode'' ([http://wiki.bn2vs.com/wiki/Maps demo]). 
 Layanan pemetaan yang tersedia: $1",
+	'maps_coordinates_missing' => 'Tidak koordinat yang disediakan bagi peta.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode: $1. 
+Peta tidak dapat ditampilkan.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode dan  {{PLURAL:$2|telah|telah}} dihilangkan dari peta: $1',
 );
 
 /** Japanese (日本語)
