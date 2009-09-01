@@ -226,8 +226,12 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'semanticmaps_desc' => 'Permitte vider e modificar datos de coordinatas immagazinate per le extension Semantic MediaWiki
+([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Servicios de cartas disponibile: $1',
 	'semanticmaps_lookupcoordinates' => 'Cercar coordinatas',
 	'semanticmaps_enteraddresshere' => 'Entra adresse hic',
+	'semanticmaps_notfound' => 'non trovate',
 );
 
 /** Indonesian (Bahasa Indonesia)
