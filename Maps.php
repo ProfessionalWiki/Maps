@@ -23,16 +23,21 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.3.3');
+define('Maps_VERSION', '0.3.4');
 
-$egMapsScriptPath = $wgScriptPath . '/extensions/Maps';
-$egMapsIP = $IP . '/extensions/Maps';
-$egMapsIncludePath = $wgServer . $egMapsScriptPath;
+$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
+$egMapsIP 			= $IP . '/extensions/Maps';
+$egMapsIncludePath 	= $wgServer . $egMapsScriptPath;
 
 // Include the settings file
 require_once($egMapsIP . '/Maps_Settings.php');
 
-$wgExtensionFunctions[] = 'efMapsSetup';
+// Add the extensions initializing function
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'efMapsSetup';
+} else {
+	$wgExtensionFunctions[] = 'efMapsSetup'; // Legacy support
+}
 
 $wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
 
@@ -40,18 +45,14 @@ $wgHooks['LanguageGetMagic'][] = 'efMapsFunctionMagic';
 $wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
 
 // Autoload the general classes
-$wgAutoloadClasses['MapsMapFeature'] = $egMapsIP . '/Maps_MapFeature.php';
-$wgAutoloadClasses['MapsBaseMap'] = $egMapsIP . '/Maps_BaseMap.php';
-$wgAutoloadClasses['MapsMapper'] = $egMapsIP . '/Maps_Mapper.php';
-$wgAutoloadClasses['MapsParserFunctions'] = $egMapsIP . '/Maps_ParserFunctions.php';
-$wgAutoloadClasses['MapsUtils'] = $egMapsIP . '/Maps_Utils.php';
-$wgAutoloadClasses['MapsGeocoder'] = $egMapsIP . '/Maps_Geocoder.php';
-$wgAutoloadClasses['MapsBaseGeocoder'] = $egMapsIP . '/Maps_BaseGeocoder.php';
+$wgAutoloadClasses['MapsMapFeature'] 		= $egMapsIP . '/Maps_MapFeature.php';
+$wgAutoloadClasses['MapsBaseMap'] 			= $egMapsIP . '/Maps_BaseMap.php';
+$wgAutoloadClasses['MapsMapper'] 			= $egMapsIP . '/Maps_Mapper.php';
+$wgAutoloadClasses['MapsParserFunctions'] 	= $egMapsIP . '/Maps_ParserFunctions.php';
+$wgAutoloadClasses['MapsUtils'] 			= $egMapsIP . '/Maps_Utils.php';
+$wgAutoloadClasses['MapsGeocoder'] 			= $egMapsIP . '/Maps_Geocoder.php';
+$wgAutoloadClasses['MapsBaseGeocoder'] 		= $egMapsIP . '/Maps_BaseGeocoder.php';
 
-// TODO: document
-// TODO: create checks to see what components are avalable for every 
-//		 service to be used in available lists and setting of default service of each component
-// TODO: create feature hook system?
 if (empty($egMapsServices)) $egMapsServices = array();
 
 $egMapsServices['googlemaps'] = array(
@@ -108,15 +109,18 @@ function efMapsSetup() {
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
 	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : $egMapsAvailableGeoServices[0];
 	
-	$services_list = implode(', ', array_keys($egMapsServices));
-
 	wfLoadExtensionMessages( 'Maps' );
+	
+	// Creation of a list of internationalized service names
+	$services = array();
+	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
+	$services_list = implode(', ', $services);
 	
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,
 		'name' => wfMsg('maps_name'),
 		'version' => Maps_VERSION,
-		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]", "Robert Buzink", "Matt Williamson", "[http://www.sergeychernyshev.com Sergey Chernyshev]"),
+		'author' => array('[http://bn2vs.com Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'Robert Buzink', 'Matt Williamson', '[http://www.sergeychernyshev.com Sergey Chernyshev]'),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
 		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
@@ -140,6 +144,8 @@ function efMapsSetup() {
 		}
 		
 	}
+	
+	return true;
 }
 
 /**
@@ -200,7 +206,7 @@ function efMapsAddToAdminLinks(&$admin_links_tree) {
     $smw_docu_row = $displaying_data_section->getRow('smw');
     wfLoadExtensionMessages('Maps');
     $maps_docu_label = wfMsg('adminlinks_documentation', wfMsg('maps_name'));
-    $smw_docu_row->addItem(AlItem::newFromExternalLink("http://www.mediawiki.org/wiki/Extension:Maps", $maps_docu_label));
+    $smw_docu_row->addItem(AlItem::newFromExternalLink('http://www.mediawiki.org/wiki/Extension:Maps', $maps_docu_label));
     return true;
 }
 

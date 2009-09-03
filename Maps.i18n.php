@@ -24,6 +24,10 @@ Available mapping services: $1",
 The map cannot be displayed.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
+
+	'maps_googlemaps' => 'Google Maps',
+	'maps_yahoomaps' => 'Yahoo! Maps',
+	'maps_openlayers' => 'OpenLayers',
 );
 
 /** Message documentation (Message documentation)

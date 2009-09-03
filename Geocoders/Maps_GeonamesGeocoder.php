@@ -23,12 +23,12 @@ final class MapsGeonamesGeocoder extends MapsBaseGeocoder {
 	 */
 	public static function geocode($address) {
 		// Create the request url
-		$requestURL = "http://ws.geonames.org/search?q=". urlencode($address) ."&maxRows=1&style=SHORT"; 
+		$requestURL = 'http://ws.geonames.org/search?q='. urlencode($address) .'&maxRows=1&style=SHORT'; 
 		 
-		$result = self::GetCurlResponse($requestURL);
+		$result = self::GetResponse($requestURL);
 	
-		$lon = self::getXmlElementValue($result, "lng");
-		$lat = self::getXmlElementValue($result, "lat");
+		$lon = self::getXmlElementValue($result, 'lng');
+		$lat = self::getXmlElementValue($result, 'lat');
 
 		// In case one of the values is not found, return false
 		if (!$lon || !$lat) return false;

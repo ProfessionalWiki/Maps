@@ -110,7 +110,7 @@ final class MapsGoogleMapsUtils {
 	/**
 	 * Add references to the Google Maps API and required JS file to the provided output 
 	 *
-	 * @param unknown_type $output
+	 * @param string $output
 	 */
 	public static function addGMapDependencies(&$output) {
 		global $wgJsMimeType, $wgLang;

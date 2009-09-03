@@ -167,7 +167,7 @@ final class MapsMapper {
 	 */
 	public static function createJSItemsString(array $items, array $defaultItems = null, $asStrings = true, $toLower = true) {
 		if (count($items) < 1 && isset($defaultItems)) $items = $defaultItems;
-		$itemString = $asStrings ? "'" . implode("','", $items) . "'" : implode(",", $items);
+		$itemString = $asStrings ? "'" . implode("','", $items) . "'" : implode(',', $items);
 		if ($toLower) $itemString = strtolower($itemString);
 		return $itemString;
 	}		

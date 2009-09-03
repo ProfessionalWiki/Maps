@@ -22,11 +22,22 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Your Google Maps API key. Required for displaying Google Maps, and using the Google Geocoder services.
 # Haven't got an API key yet? Get it here: http://code.google.com/apis/maps/signup.html
-if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ""; 
+if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ''; 
 
 # Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
 # Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
-if (empty($egYahooMapsKey)) $egYahooMapsKey = ""; 
+if (empty($egYahooMapsKey)) $egYahooMapsKey = ''; 
+
+
+
+
+
+# Map features configuration
+# (named) Array of String. This array contains the available features for Maps.
+# The array element name contains an abbriviation, used for code references,
+# and in the service data arrays, the value is the human readible version for displaying purpouses.
+if (empty($egMapsAvailableFeatures)) $egMapsAvailableFeatures = array();
+$egMapsAvailableFeatures['pf'] = 'Parser Function';
 
 
 
