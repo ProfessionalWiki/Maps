@@ -29,6 +29,9 @@ $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
 $smgIncludePath = $wgServer . $smgScriptPath;
 
+// Include the settings file
+require_once($smgIP . '/SM_Settings.php');
+
 // Add the extensions initializing function
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
 	$wgHooks['ParserFirstCallInit'][] = 'smfSetup';
@@ -60,12 +63,12 @@ $egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 
  *
  */
 function smfSetup() {
-	global $wgExtensionCredits, $egMapsServices;
+	global $wgExtensionCredits, $wgLang, $egMapsServices, $sfgFormPrinter;
 	
 	// Creation of a list of internationalized service names
 	$services = array();
 	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
-	$services_list = implode(', ', $services);	
+	$services_list = $wgLang->listToText($services);	
 	
 	wfLoadExtensionMessages( 'SemanticMaps' );
 	

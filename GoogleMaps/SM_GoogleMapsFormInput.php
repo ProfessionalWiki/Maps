@@ -38,17 +38,16 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
 	 *
-	 * @param string $output
 	 */
-	protected function addFormDependencies(&$output) {
+	protected function addFormDependencies() {
 		global $wgJsMimeType;
 		global $smgIncludePath, $smgGoogleFormsOnThisPage;
 		
-		MapsGoogleMapsUtils::addGMapDependencies($output);
+		MapsGoogleMapsUtils::addGMapDependencies($this->output);
 		
 		if (empty($smgGoogleFormsOnThisPage)) {
 			$smgGoogleFormsOnThisPage = 0;
-			$output .= "<script type='$wgJsMimeType' src='$smgIncludePath/GoogleMaps/SM_GoogleMapFunctions.js'></script>";
+			$this->output .= "<script type='$wgJsMimeType' src='$smgIncludePath/GoogleMaps/SM_GoogleMapsFunctions.js'></script>";
 		}
 	}
 	
@@ -59,7 +58,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage, $smgGoogleFormsOnThisPage;
 		
-		self::addFormDependencies($this->output);
+		self::addFormDependencies();
 		
 		$egGoogleMapsOnThisPage++;
 		$smgGoogleFormsOnThisPage++;	
