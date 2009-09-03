@@ -117,7 +117,6 @@ final class MapsGoogleMapsUtils {
 		global $egGoogleMapsKey, $egMapsIncludePath, $egGoogleMapsOnThisPage;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
-			
 			$egGoogleMapsOnThisPage = 0;
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
 			<script type='$wgJsMimeType' src='$egMapsIncludePath/GoogleMaps/GoogleMapFunctions.js'></script>";

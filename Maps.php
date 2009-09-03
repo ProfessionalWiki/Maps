@@ -100,7 +100,7 @@ $egMapsServices['yahoomaps'] = array(
  * Initialization function for the Maps extension
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgOut, $wgAutoloadClasses, $IP;	
+	global $wgExtensionCredits, $wgOut, $wgLang, $wgAutoloadClasses, $IP;	
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP;
 
 	efMapsValidateGoogleMapsKey();
@@ -114,7 +114,7 @@ function efMapsSetup() {
 	// Creation of a list of internationalized service names
 	$services = array();
 	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
-	$services_list = implode(', ', $services);
+	$services_list = $wgLang->listToText($services);
 	
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,
