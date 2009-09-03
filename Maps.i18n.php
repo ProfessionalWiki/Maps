@@ -66,6 +66,11 @@ $1',
  */
 $messages['br'] = array(
 	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
+	'maps_coordinates_missing' => "N'eus bet spisaet daveenn ebet evit ar gartenn.",
+	'maps_geocoding_failed' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul : $1.
+N'haller ket diskwel ar gartenn.",
+	'maps_geocoding_failed_for' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul, setu {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn : 
+$1",
 );
 
 /** Bosnian (Bosanski)
