@@ -20,6 +20,11 @@ abstract class SMFormInput extends MapsMapFeature {
 	 */	
 	protected abstract function manageGeocoding();
 	
+	/**
+	 * Ensures all dependencies for the used map are loaded, and increases that map service's count
+	 */
+	protected abstract function addFormDependencies();
+	
 	protected $marker_lat;
 	protected $marker_lon;
 
@@ -71,7 +76,7 @@ abstract class SMFormInput extends MapsMapFeature {
 			$sfgTabIndex++;
 			
 			// Retrieve language values
-			wfLoadExtensionMessages( 'SemanticMaps' );
+			// wfLoadExtensionMessages( 'SemanticMaps' ); // TODO: remove?
 			$enter_address_here_text = wfMsg('semanticmaps_enteraddresshere');
 			$lookup_coordinates_text = wfMsg('semanticmaps_lookupcoordinates');	
 			$not_found_text = wfMsg('semanticmaps_notfound');				

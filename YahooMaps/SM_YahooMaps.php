@@ -16,11 +16,6 @@ final class SMYahooMaps extends SMMapPrinter {
 
 	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
-	public function getName() {
-		wfLoadExtensionMessages('SemanticMaps');
-		return wfMsg('sm_yahoomaps_printername');
-	}
-	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 *

@@ -34,14 +34,33 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	}	
 	
 	/**
+	 * @see MapsMapFeature::addFormDependencies()
+	 * 
+	 * @param string $output	  
+	 */
+	protected function addFormDependencies(&$output) {
+		global $wgJsMimeType;
+		global $smgIncludePath, $smgOLFormsOnThisPage;
+		
+		MapsOpenLayersUtils::addOLDependencies($output);
+		
+		if (empty($smgOLFormsOnThisPage)) {
+			$smgOLFormsOnThisPage = 0;
+			$output .= "<script type='$wgJsMimeType' src='$smgIncludePath/OpenLayers/SM_OpenLayersFunctions.js'></script>";
+		}
+	}	
+	
+	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
 	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egOpenLayersOnThisPage;
+		global $egOpenLayersOnThisPage, $smgOLFormsOnThisPage;
 		
-		MapsOpenLayersUtils::addOLDependencies($this->output);
+		self::addFormDependencies($this->output);
+		
 		$egOpenLayersOnThisPage++;	
+		$smgOLFormsOnThisPage++;
 
 		$this->elementNr = $egOpenLayersOnThisPage;
 	}	

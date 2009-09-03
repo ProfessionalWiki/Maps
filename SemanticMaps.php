@@ -23,21 +23,27 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.3.3');
+define('SM_VERSION', '0.3.4');
 
-$smgScriptPath = $wgScriptPath . '/extensions/SemanticMaps';
-$smgIP = $IP . '/extensions/SemanticMaps';
+$smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
+$smgIP 			= $IP . '/extensions/SemanticMaps';
+$smgIncludePath = $wgServer . $smgScriptPath;
 
-$wgExtensionFunctions[] = 'smfSetup';
+// Add the extensions initializing function
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'smfSetup';
+} else {
+	$wgExtensionFunctions[] = 'smfSetup'; // Legacy support
+}
 
 $wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
 
 $wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
 
 // Autoload the general classes
-$wgAutoloadClasses['SMMapPrinter'] = $smgIP . '/SM_MapPrinter.php';
-$wgAutoloadClasses['SMMapper'] = $smgIP . '/SM_Mapper.php';
-$wgAutoloadClasses['SMFormInput'] = $smgIP . '/SM_FormInput.php';
+$wgAutoloadClasses['SMMapPrinter'] 	= $smgIP . '/SM_MapPrinter.php';
+$wgAutoloadClasses['SMMapper'] 		= $smgIP . '/SM_Mapper.php';
+$wgAutoloadClasses['SMFormInput'] 	= $smgIP . '/SM_FormInput.php';
 
 // Add the services
 $egMapsServices['googlemaps']['qp'] = array('class' => 'SMGoogleMaps', 'file' => 'GoogleMaps/SM_GoogleMaps.php', 'local' => true);
@@ -55,8 +61,11 @@ $egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 
  */
 function smfSetup() {
 	global $wgExtensionCredits, $egMapsServices;
-
-	$services_list = implode(', ', array_keys($egMapsServices));
+	
+	// Creation of a list of internationalized service names
+	$services = array();
+	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
+	$services_list = implode(', ', $services);	
 	
 	wfLoadExtensionMessages( 'SemanticMaps' );
 	
@@ -64,18 +73,18 @@ function smfSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg('semanticmaps_name'),
 		'version' => SM_VERSION,
-		'author' => array("[http://bn2vs.com Jeroen De Dauw]", "Yaron Koren", "Robert Buzink"),
+		'author' => array('[http://bn2vs.com Jeroen De Dauw]', 'Yaron Koren', 'Robert Buzink'),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
 
-	smfInitFormHook('map');
+	if (isset($sfgFormPrinter)) smfInitFormHook('map');
 	smfInitFormat('map', array('class' => 'SMMapper', 'file' => 'SM_Mapper.php', 'local' => true));
 	
 	foreach($egMapsServices as $serviceName => $serviceData) {
 		$hasQP = array_key_exists('qp', $serviceData);
-		$hasFI = array_key_exists('fi', $serviceData);
+		$hasFI = array_key_exists('fi', $serviceData) && isset($sfgFormPrinter);
 		
 		// If the service has no QP and no FI, skipt it and continue with the next one.
 		if (!$hasQP && !$hasFI) continue;
@@ -91,6 +100,7 @@ function smfSetup() {
 		}
 	}
 	
+	return true;	
 }
 
 /**
@@ -167,15 +177,10 @@ function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_di
 	
 	$service_name = MapsMapper::getValidService($service_name, 'fi');
 	
-	if (array_key_exists('fi', $egMapsServices[$service_name])) {
-		$formInput = new $egMapsServices[$service_name]['fi']['class']();
-		
-		// Get and return the form input HTML from the hook corresponding with the provided service
-		return $formInput->formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);	
-	}
-	else {
-		return "<b>ERROR: Form input for ".$field_args['service']." not found</b>";
-	}
+	$formInput = new $egMapsServices[$service_name]['fi']['class']();
+	
+	// Get and return the form input HTML from the hook corresponding with the provided service
+	return $formInput->formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args);
 	
 }
 

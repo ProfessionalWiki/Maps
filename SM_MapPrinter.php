@@ -109,6 +109,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$lat = '';
 		$lon = '';		
 		
+		$coords = array();
+		
 		// Loop throught all fields of the record
 		foreach ($row as $i => $field) {
 			$pr = $field->getPrintRequest();
@@ -120,19 +122,27 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				}
 				
 				if ($object->getTypeID() != '_geo' && $i != 0) {
-					$text .= $pr->getHTMLText($skin) . ": " . $object->getLongText($outputmode, $skin) . "<br />";
+					$text .= $pr->getHTMLText($skin) . ': ' . $object->getLongText($outputmode, $skin) . '<br />';
 				}
 		
 				if ($pr->getMode() == SMWPrintRequest::PRINT_PROP && $pr->getTypeID() == '_geo') {
-					list($lat,$lon) = explode(',', $object->getXSDValue());
+					$coords[] = explode(',', $object->getXSDValue());
 				}
 			}
 		}
 		
-		if (strlen($lat) > 0 && strlen($lon)  > 0) {
-			$icon = $this->getLocationIcon($row);
-			$this->m_locations[] = array($lat, $lon, $title, $text, $icon);
+		foreach ($coords as $coord) {
+			if (count($coord) == 2) {
+				list($lat, $lon) = $coord;
+				
+				if (strlen($lat) > 0 && strlen($lon) > 0) {
+					$icon = $this->getLocationIcon($row);
+					$this->m_locations[] = array($lat, $lon, $title, $text, $icon);
+				}
+				
+			}
 		}
+		
 	}
 	
 	/**
@@ -236,5 +246,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected function setMapName() {
 		$this->mapName = $this->elementNamePrefix.'_'.$this->elementNr;
 	}	
+	
+	public final function getName() {
+		return wfMsg('maps_' . $this->serviceName);
+	}
 	
 }

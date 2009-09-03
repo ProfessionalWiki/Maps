@@ -17,11 +17,6 @@ final class SMOpenLayers extends SMMapPrinter {
 
 	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
 	
-	public function getName() {
-		wfLoadExtensionMessages('SemanticMaps');
-		return wfMsg('sm_openlayers_printername');
-	}
-	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 *

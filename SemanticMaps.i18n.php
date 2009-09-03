@@ -22,21 +22,13 @@ Available map services: $1",
 	'semanticmaps_lookupcoordinates' => 'Look up coordinates',
 	'semanticmaps_enteraddresshere' => 'Enter address here',
 	'semanticmaps_notfound' => 'not found',
-	'sm_googlemaps_printername' => 'Google Maps',
-	'sm_yahoomaps_printername' => 'Yahoo! Maps',		
-	'sm_openlayers_printername' => 'OpenLayers',
 );
 
 /** Message documentation (Message documentation)
  * @author Raymond
  */
 $messages['qqq'] = array(
-	'semanticmaps_desc' => '{{desc}}
-
-* $1: a list of available map services',
-	'sm_googlemaps_printername' => '{{optional}}',
-	'sm_yahoomaps_printername' => '{{optional}}',
-	'sm_openlayers_printername' => '{{optional}}',
+	'semanticmaps_desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

@@ -35,20 +35,34 @@ final class SMGoogleMapsFormInput extends SMFormInput {
         $this->defaultZoom = $egMapsGoogleMapsZoom;		
 	}
 	
-
+	/**
+	 * @see MapsMapFeature::addFormDependencies()
+	 *
+	 * @param string $output
+	 */
+	protected function addFormDependencies(&$output) {
+		global $wgJsMimeType;
+		global $smgIncludePath, $smgGoogleFormsOnThisPage;
+		
+		MapsGoogleMapsUtils::addGMapDependencies($output);
+		
+		if (empty($smgGoogleFormsOnThisPage)) {
+			$smgGoogleFormsOnThisPage = 0;
+			$output .= "<script type='$wgJsMimeType' src='$smgIncludePath/GoogleMaps/SM_GoogleMapFunctions.js'></script>";
+		}
+	}
+	
 	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
 	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage;
-
-		if (empty($egGoogleMapsOnThisPage)) {
-			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMapsUtils::addGMapDependencies($this->output);
-		}
+		global $egGoogleMapsOnThisPage, $smgGoogleFormsOnThisPage;
 		
-		$egGoogleMapsOnThisPage++;	
+		self::addFormDependencies($this->output);
+		
+		$egGoogleMapsOnThisPage++;
+		$smgGoogleFormsOnThisPage++;	
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
 	}

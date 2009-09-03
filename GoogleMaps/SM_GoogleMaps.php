@@ -18,11 +18,6 @@ final class SMGoogleMaps extends SMMapPrinter {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
-	public function getName() {
-		wfLoadExtensionMessages('SemanticMaps');
-		return wfMsg('sm_googlemaps_printername');
-	}
-	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 *

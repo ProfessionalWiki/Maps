@@ -34,17 +34,33 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	}	
 	
 	/**
+	 * @see MapsMapFeature::addFormDependencies()
+	 * 
+	 * @param string $output	  
+	 */
+	protected function addFormDependencies(&$output) {
+		global $wgJsMimeType;
+		global $smgIncludePath, $smgYahooFormsOnThisPage;
+		
+		MapsYahooMapsUtils::addYMapDependencies($output);
+		
+		if (empty($smgYahooFormsOnThisPage)) {
+			$smgYahooFormsOnThisPage = 0;
+			$output .= "<script type='$wgJsMimeType' src='$smgIncludePath/YahooMaps/SM_YahooMapsFunctions.js'></script>";
+		}
+	}		
+	
+	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
 	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage;
+		global $egYahooMapsOnThisPage, $smgYahooFormsOnThisPage;
 		
-		if (empty($egYahooMapsOnThisPage)) {
-			$egYahooMapsOnThisPage = 0;
-			MapsYahooMapsUtils::addYMapDependencies($this->output);
-		}
-		$egYahooMapsOnThisPage++;			
+		self::addFormDependencies($this->output);
+		
+		$egYahooMapsOnThisPage++;
+		$smgYahooFormsOnThisPage++;			
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
 	}	
