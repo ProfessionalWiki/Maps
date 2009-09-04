@@ -263,6 +263,9 @@ Beschikbare kaartdiensten: $1',
 De kaart kan niet worden weergegeven.',
 	'maps_geocoding_failed_for' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk en {{PLURAL:$2|dit is|deze zijn}} weggelaten uit de kaart:
 $1',
+	'maps_googlemaps' => 'Google Maps',
+	'maps_yahoomaps' => 'Yahoo! Maps',
+	'maps_openlayers' => 'OpenLayers',
 );
 
 /** Occitan (Occitan)
