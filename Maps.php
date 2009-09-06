@@ -33,10 +33,11 @@ $egMapsIncludePath 	= $wgServer . $egMapsScriptPath;
 require_once($egMapsIP . '/Maps_Settings.php');
 
 // Add the extensions initializing function
-$wgHooks['ParserFirstCallInit'][] = 'efMapsAddParserHooks';
-
-// General setup
-$wgExtensionFunctions[] = 'efMapsSetup';
+if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
+	$wgHooks['ParserFirstCallInit'][] = 'efMapsSetup';
+} else {
+	$wgExtensionFunctions[] = 'efMapsSetup'; // Legacy support
+}
 
 $wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
 
@@ -124,6 +125,8 @@ function efMapsSetup() {
 		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 	);
+
+	efMapsAddParserHooks();
 	
 	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
 	
@@ -148,19 +151,21 @@ function efMapsSetup() {
 /**
  * Adds the parser function hooks
  */
-function efMapsAddParserHooks( &$parser ) {
+function efMapsAddParserHooks() {
+	global $wgParser;
+	
 	// A hooks to enable the '#display_point' and '#display_points' parser functions
-	$parser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender') );
-	$parser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender') );
+	$wgParser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender') );
+	$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender') );
 
 	// A hooks to enable the '#display_adress' and '#display_adresses' parser functions
-	$parser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender') );
-	$parser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender') );
+	$wgParser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender') );
+	$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender') );
 
 	// A hook to enable the geocoder parser functions
-	$parser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder') );
-	$parser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat') );
-	$parser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng') );
+	$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder') );
+	$wgParser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat') );
+	$wgParser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng') );
 }
 
 /**
