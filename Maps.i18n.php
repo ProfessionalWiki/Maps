@@ -194,7 +194,9 @@ K dispoziciji stejace kartowe słužby: $1',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken. Elérhető térképszolgáltatások: $1',
+	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://wiki.bn2vs.com/wiki/Maps demó]). Elérhető térképszolgáltatások: $1',
+	'maps_geocoding_failed' => 'A következő {{PLURAL:$2|cím|címek}} nem geokódolhatók: $1.
+A térképet nem lehet megjeleníteni.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -215,7 +217,7 @@ Peta tidak dapat ditampilkan.',
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する（[http://wiki.bn2vs.com/wiki/Maps 実演]）。次の地図サービスに対応します：$1',
+	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する([http://wiki.bn2vs.com/wiki/Maps 実演])。次の地図サービスに対応します：$1',
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
 	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
