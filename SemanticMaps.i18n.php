@@ -202,6 +202,7 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'semanticmaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
+	'semanticmaps_notfound' => 'לא נמצאה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
