@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class MapsOpenLayersUtils {
 	
+	const SERVICE_NAME = 'openlayers';	
+	
 	private static $loadedBing = false; 
 	private static $loadedYahoo = false;
 	private static $loadedOL = false;

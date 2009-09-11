@@ -52,7 +52,6 @@ abstract class MapsMapFeature {
 	/**
 	 * Sets the map properties as class fields.
 	 *
-	 * @param unknown_type $map
 	 */
 	protected function manageMapProperties($mapProperties, $className) {
 		global $egMapsServices;

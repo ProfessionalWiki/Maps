@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class MapsGoogleMapsUtils {
 	
+	const SERVICE_NAME = 'googlemaps';
+	
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
 	// TODO: Add a true alliasing system? Might be overkill.
 	private static $mapTypes = array(

@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class MapsYahooMapsUtils {
 	
+	const SERVICE_NAME = 'yahoomaps';
+	
 	// http://developer.yahoo.com/maps/ajax
 	private static $mapTypes = array(
 					'normal' => 'YAHOO_MAP_REG',

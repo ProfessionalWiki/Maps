@@ -37,7 +37,13 @@ if (empty($egYahooMapsKey)) $egYahooMapsKey = '';
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
 if (empty($egMapsAvailableFeatures)) $egMapsAvailableFeatures = array();
-$egMapsAvailableFeatures['pf'] = 'Parser Function';
+
+$egMapsAvailableFeatures['pf'] = array(
+							'name' => 'Parser Function',
+							'class' => 'MapsParserFunctions',
+							'file' => 'ParserFunctions/Maps_ParserFunctions.php',
+							'local' => true
+							);
 
 
 
