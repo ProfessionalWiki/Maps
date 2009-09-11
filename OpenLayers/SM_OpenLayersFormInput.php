@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersFormInput extends SMFormInput {
 	
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayersUtils::SERVICE_NAME;	
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()

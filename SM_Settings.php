@@ -2,7 +2,7 @@
 
 /**
  * File defining the settings for the Semantic Maps extension
- * More info can be found at http://www.mediawiki.org/wiki/Extension:Semantic Maps#Settings
+ * More info can be found at http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Settings
  *
  *                          NOTICE:
  * Changing one of these settings can be done by copieng or cutting it, 
@@ -25,7 +25,18 @@ if( !defined( 'MEDIAWIKI' ) ) {
 # (named) Array of String. This array contains the available features for Maps.
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
-$egMapsAvailableFeatures['qp'] = 'Query Printer';
-$egMapsAvailableFeatures['fi'] = 'Form input';
+$egMapsAvailableFeatures['qp'] = array(
+							'name' => 'Query Printer',
+							'class' => 'SMQueryPrinters',
+							'file' => 'SemanticMaps/QueryPrinters/SM_QueryPrinters.php',
+							'local' => false
+							);
+
+$egMapsAvailableFeatures['fi'] = array(
+							'name' => 'Form input',
+							'class' => 'SMFormInputs',
+							'file' => 'SemanticMaps/FormInputs/SM_FormInputs.php',
+							'local' => false
+							);							
 
 

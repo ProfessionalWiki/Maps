@@ -17,7 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsFormInput extends SMFormInput {
 
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
+	public $serviceName = MapsGoogleMapsUtils::SERVICE_NAME;
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()

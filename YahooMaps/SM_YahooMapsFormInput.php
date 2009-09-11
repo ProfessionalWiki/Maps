@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMapsFormInput extends SMFormInput {
 	
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;	
+	public $serviceName = MapsYahooMapsUtils::SERVICE_NAME;	
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
