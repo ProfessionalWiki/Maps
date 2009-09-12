@@ -103,12 +103,9 @@ function efMapsSetup() {
 				call_user_func(array($values['class'], 'initialize'));
 			}
 		}
-	
-	}
-	
-	// TODO: move to above loop
-	foreach ($egMapsServices as  $serviceData) {
-		foreach($egMapsAvailableFeatures as $key => $name) {
+		
+		// Check for wich services there are handlers for the current fature, and load them
+		foreach ($egMapsServices as  $serviceData) {
 			if (array_key_exists($key, $serviceData)) {
 				$file = $serviceData[$key]['local'] ? $egMapsIP . '/' . $serviceData[$key]['file'] : $IP . '/extensions/' . $serviceData[$key]['file'];
 				$wgAutoloadClasses[$serviceData[$key]['class']] = $file;			
@@ -119,9 +116,8 @@ function efMapsSetup() {
 					$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
 					$wgAutoloadClasses[$class['class']] = $file;
 				}
-			}
+			}			
 		}
-	
 	}
 	
 	return true;
@@ -132,7 +128,7 @@ function efMapsSetup() {
 /**
  * This function ensures backward compatibility with Semantic Google Maps and other extensions
  * using $wgGoogleMapsKey instead of $egGoogleMapsKey.
- */
+ */ // TODO: move to gmaps code
 function efMapsValidateGoogleMapsKey() {
 	global $egGoogleMapsKey, $wgGoogleMapsKey;
 	
