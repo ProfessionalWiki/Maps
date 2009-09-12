@@ -453,6 +453,13 @@ $messages['tl'] = array(
 	'semanticmaps_enteraddresshere' => 'Ipasok ang adres dito',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
+$messages['vep'] = array(
+	'semanticmaps_notfound' => 'ei voi löuta',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
