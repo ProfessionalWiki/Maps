@@ -118,6 +118,13 @@ $messages['el'] = array(
 	'maps_coordinates_missing' => 'Καμία συντεταγμένη δεν παρασχέθηκε για τον χάρτη.',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
