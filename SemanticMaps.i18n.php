@@ -215,6 +215,13 @@ $messages['hsb'] = array(
 	'semanticmaps_notfound' => 'njenamakany',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'semanticmaps_notfound' => 'nincs találat',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
