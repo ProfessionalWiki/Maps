@@ -215,8 +215,11 @@ K dispoziciji stejace kartowe słužby: $1',
  */
 $messages['hu'] = array(
 	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://wiki.bn2vs.com/wiki/Maps demó]). Elérhető térképszolgáltatások: $1',
+	'maps_coordinates_missing' => 'Nincsenek megadva koordináták a térképhez.',
 	'maps_geocoding_failed' => 'A következő {{PLURAL:$2|cím|címek}} nem geokódolhatók: $1.
 A térképet nem lehet megjeleníteni.',
+	'maps_geocoding_failed_for' => 'A következő {{PLURAL:$2|cím nem geokódolható|címek nem geokódolhatóak}}, és nem {{PLURAL:$2|szerepel|szerepelnek}} a térképen:
+$1',
 );
 
 /** Indonesian (Bahasa Indonesia)
