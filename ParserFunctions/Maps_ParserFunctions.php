@@ -208,8 +208,11 @@ final class MapsParserFunctions {
 		$geoservice = isset($geoservice) ? $geoservice : '';
 		
 		for ($i = 0; $i < count($params); $i++) {
+			
 			$split = split('=', $params[$i]);
-			if (((strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 0)) {
+			$isAddress = ((strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1);
+			
+			if ($isAddress || count($split) == 1) {
 				$address_srting = count($split) == 1 ? $split[0] : $split[1];
 				//var_dump($address_srting);
 				$addresses = explode(';', $address_srting);
