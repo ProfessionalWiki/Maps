@@ -143,13 +143,14 @@ function efMapsValidateGoogleMapsKey() {
 function efMapsAddToAdminLinks(&$admin_links_tree) {
 	// TODO: move the documentation link to another section - and make it non dependant on SMW?
     $displaying_data_section = $admin_links_tree->getSection(wfMsg('smw_adminlinks_displayingdata'));
+    
     // Escape if SMW hasn't added links
-    if (is_null($displaying_data_section))
-        return true;
+    if (is_null($displaying_data_section)) return true;
     $smw_docu_row = $displaying_data_section->getRow('smw');
-    wfLoadExtensionMessages('Maps');
+    
     $maps_docu_label = wfMsg('adminlinks_documentation', wfMsg('maps_name'));
     $smw_docu_row->addItem(AlItem::newFromExternalLink('http://www.mediawiki.org/wiki/Extension:Maps', $maps_docu_label));
+
     return true;
 }
 
