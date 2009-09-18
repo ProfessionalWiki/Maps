@@ -43,7 +43,8 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد Semantic MediaWiki. خدمات الخرائط المتوفرة: $1',
+	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://wiki.bn2vs.com/wiki/Semantic_Maps تجربة]).
+خدمات الخرائط المتوفرة: $1',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 	'semanticmaps_notfound' => 'لم يوجد',
@@ -219,6 +220,10 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'semanticmaps_desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztés segítségével tárolt koordinátaadatok megtekintését és szerkesztését ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Elérhető térképszolgáltatók: $1',
+	'semanticmaps_lookupcoordinates' => 'Koordináták felkeresése',
+	'semanticmaps_enteraddresshere' => 'Add meg a címet itt',
 	'semanticmaps_notfound' => 'nincs találat',
 );
 
