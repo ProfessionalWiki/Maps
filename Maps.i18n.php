@@ -43,9 +43,12 @@ $messages['qqq'] = array(
 * $2 is the number of list items for PLURAL use.',
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Meno25
+ */
 $messages['ar'] = array(
-	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي. خدمات الخرائط المتوفرة: $1',
+	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://wiki.bn2vs.com/wiki/Maps تجربة]).
+خدمات الخرائط المتوفرة: $1',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
