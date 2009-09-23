@@ -225,6 +225,19 @@ A térképet nem lehet megjeleníteni.',
 $1',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Servicios cartographic disponibile: $1',
+	'maps_coordinates_missing' => 'Nulle coordinata providite pro le mappa.',
+	'maps_geocoding_failed' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate: $1.
+Le mappa non pote esser monstrate.',
+	'maps_geocoding_failed_for' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate e ha essite omittite del mappa:
+$1',
+);
+
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
@@ -403,9 +416,12 @@ $messages['th'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ, và địa chỉ mã địa lý. Các dịch vụ bản đồ hiện có: $1',
+	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://wiki.bn2vs.com/wiki/Maps thử xem]).
+Các dịch vụ bản đồ có sẵn: $1',
+	'maps_coordinates_missing' => 'Chưa định rõ tọa độ cho bản đồ.',
 );
 
