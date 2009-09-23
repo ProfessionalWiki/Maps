@@ -473,11 +473,15 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'semanticmaps_desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps thử xem]).
+Các dịch vụ bản đồ có sẵn: $1',
 	'semanticmaps_lookupcoordinates' => 'Tra tọa độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
+	'semanticmaps_notfound' => 'không tìm thấy',
 );
 
 /** Volapük (Volapük)
