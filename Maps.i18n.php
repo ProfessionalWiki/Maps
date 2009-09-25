@@ -128,6 +128,13 @@ $messages['es'] = array(
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
 );
 
+/** Basque (Euskara)
+ * @author Kobazulo
+ */
+$messages['eu'] = array(
+	'maps_coordinates_missing' => 'Ez dago koordenaturik maparentzat.',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
