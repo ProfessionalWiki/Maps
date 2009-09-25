@@ -201,6 +201,8 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
+	'semanticmaps_desc' => 'הוספת האפשרות לצפייה ולעריכה בנתוני קואורדינטה המאוחסנים דרך הרחבת המדיה־ויקי הסמנטי ([http://wiki.bn2vs.com/wiki/Semantic_Maps הדגמה]).
+שירותי מפה זמינים: $1',
 	'semanticmaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
 	'semanticmaps_notfound' => 'לא נמצאה',
