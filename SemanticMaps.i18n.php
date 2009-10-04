@@ -374,11 +374,13 @@ Sërvissi ëd mapa disponìbij: $1',
 );
 
 /** Portuguese (Português)
+ * @author Indech
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
+	'semanticmaps_notfound' => 'não encontrado',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
