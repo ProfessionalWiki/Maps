@@ -20,6 +20,11 @@ $magicWords['ar'] = array(
 	'geocode'             => array( '0', 'كود_جغرافي', 'geocode' ),
 );
 
+$magicWords['mr'] = array(
+	'display_address'     => array( '0', 'पत्ता_दाखवा', 'display_address' ),
+	'display_addresses'   => array( '0', 'पत्ते दाखवा', 'display_addresses' ),
+);
+
 $magicWords['nl'] = array(
 	'display_point'       => array( '0', 'punt_weergeven', 'display_point' ),
 	'display_points'      => array( '0', 'punten_weergeven', 'display_points' ),
