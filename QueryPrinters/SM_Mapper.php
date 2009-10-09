@@ -28,6 +28,14 @@ final class SMMapper {
 		$this->queryPrinter = new $egMapsServices[$service]['qp']['class']($format, $inline);
 	}	
 
+	public static function getAliases() {
+		return $this->queryPrinter->getAliases();
+	}
+	
+	public static function setAliases() {
+		return $this->queryPrinter->setAliases();
+	}
+	
 	public function getName() {
 		return $this->queryPrinter->getName();
 	}

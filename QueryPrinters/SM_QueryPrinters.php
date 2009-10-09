@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Initialization file for query printer functionality in the Maps extension
+ * Initialization file for query printer functionality in the Semantic Maps extension
  *
- * @file SM_FormInputs.php
+ * @file SM_QueryPrinters.php
  * @ingroup SemanticMaps
  *
  * @author Jeroen De Dauw
@@ -34,15 +34,12 @@ final class SMQueryPrinters {
 			// At least one query printer will be enabled when this point is reached.
 			$hasQueryPrinters = true;				
 			
-			// Add the result format for the service name.
-			self::initFormat($serviceName, $serviceData['qp']);
-			
-			// Loop through the service alliases, and add them as result formats to the query printer.
-			foreach ($serviceData['aliases'] as $alias) self::initFormat($alias, $serviceData['qp']);
+			// Initiate the format.
+			self::initFormat($serviceName, $serviceData['qp'], $serviceData['aliases']);
 		}	
 
 		// Add the 'map' result format if there are mapping services that have QP's loaded.
-		if ($hasQueryPrinters) self::initFormat('map', array('class' => 'SMMapper', 'file' => 'QueryPrinters/SM_Mapper.php', 'local' => true));
+		if ($hasQueryPrinters) self::initFormat('map', array('class' => 'SMMapper', 'file' => 'QueryPrinters/SM_Mapper.php', 'local' => true), array());
 	}
 	
 	/**
@@ -50,8 +47,9 @@ final class SMQueryPrinters {
 	 *
 	 * @param string $format
 	 * @param array $qp
+	 * @param array $aliases
 	 */
-	private static function initFormat($format, array $qp) {
+	private static function initFormat($format, array $qp, array $aliases) {
 		global $wgAutoloadClasses, $smwgResultFormats, $smgIP;
 		
 		if (! array_key_exists($qp['class'], $wgAutoloadClasses)) {
@@ -65,6 +63,10 @@ final class SMQueryPrinters {
 		else {
 			SMWQueryProcessor::$formats[$format] = $qp['class'];
 		}	
+		
+		// TODO: set aliases
+		// PHP 5.3 required
+		//call_user_func_array(array($qp['class'], 'setAliases'), array($aliases));
 	}	
 	
 }

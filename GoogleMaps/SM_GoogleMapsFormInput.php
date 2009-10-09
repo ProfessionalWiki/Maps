@@ -41,13 +41,13 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgJsMimeType;
-		global $smgIncludePath, $smgGoogleFormsOnThisPage;
+		global $smgScriptPath, $smgGoogleFormsOnThisPage;
 		
 		MapsGoogleMapsUtils::addGMapDependencies($this->output);
 		
 		if (empty($smgGoogleFormsOnThisPage)) {
 			$smgGoogleFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgIncludePath/GoogleMaps/SM_GoogleMapsFunctions.js'></script>";
+			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions.js'></script>";
 		}
 	}
 	

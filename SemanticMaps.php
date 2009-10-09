@@ -23,21 +23,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.3.5');
+define('SM_VERSION', '0.3.5 a2');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
-$smgIncludePath = $wgServer . $smgScriptPath;
 
 // Include the settings file
 require_once($smgIP . '/SM_Settings.php');
 
-// Add the extensions initializing function
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'smfSetup';
-} else {
-	$wgExtensionFunctions[] = 'smfSetup'; // Legacy support
-}
+$wgExtensionFunctions[] = 'smfSetup'; 
 
 $wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
 

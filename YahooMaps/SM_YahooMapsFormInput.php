@@ -45,7 +45,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		
 		if (empty($smgYahooFormsOnThisPage)) {
 			$smgYahooFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgIncludePath/YahooMaps/SM_YahooMapsFunctions.js'></script>";
+			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/YahooMaps/SM_YahooMapsFunctions.js'></script>";
 		}
 	}		
 	

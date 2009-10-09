@@ -39,13 +39,13 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgJsMimeType;
-		global $smgIncludePath, $smgOLFormsOnThisPage;
+		global $smgScriptPath, $smgOLFormsOnThisPage;
 		
 		MapsOpenLayersUtils::addOLDependencies($this->output);
 		
 		if (empty($smgOLFormsOnThisPage)) {
 			$smgOLFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgIncludePath/OpenLayers/SM_OpenLayersFunctions.js'></script>";
+			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/OpenLayers/SM_OpenLayersFunctions.js'></script>";
 		}
 	}	
 	
