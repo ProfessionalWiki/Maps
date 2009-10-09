@@ -23,21 +23,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.3.5');
+define('Maps_VERSION', '0.3.5 a2');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
-$egMapsIncludePath 	= $wgServer . $egMapsScriptPath;
 
 // Include the settings file
 require_once($egMapsIP . '/Maps_Settings.php');
 
-// Add the extensions initializing function
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efMapsSetup';
-} else {
-	$wgExtensionFunctions[] = 'efMapsSetup'; // Legacy support
-}
+$wgExtensionFunctions[] = 'efMapsSetup'; 
 
 $wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
 
@@ -65,7 +59,7 @@ include_once $egMapsIP . '/ParserFunctions/Maps_ParserFunctions.php';
 /**
  * Initialization function for the Maps extension
  */
-function efMapsSetup() { 
+function efMapsSetup() {
 	global $wgExtensionCredits, $wgOut, $wgLang, $wgAutoloadClasses, $IP;	
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
 

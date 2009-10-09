@@ -115,13 +115,16 @@ final class MapsGoogleMapsUtils {
 	 * @param string $output
 	 */
 	public static function addGMapDependencies(&$output) {
-		global $wgJsMimeType, $wgLang;
-		global $egGoogleMapsKey, $egMapsIncludePath, $egGoogleMapsOnThisPage;
+		global $wgJsMimeType, $wgLang, $wgOut;
+		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
+			// TODO: strbuilder for performance?
 			$egGoogleMapsOnThisPage = 0;
+
+			$wgOut->addScriptFile($egMapsScriptPath . '/GoogleMaps/GoogleMapFunctions.js');
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
-			<script type='$wgJsMimeType' src='$egMapsIncludePath/GoogleMaps/GoogleMapFunctions.js'></script>";
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js'></script>";
 		}
 	}
 	

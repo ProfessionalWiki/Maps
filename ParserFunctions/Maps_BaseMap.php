@@ -1,7 +1,9 @@
 <?php
 
 /**
- * MapsBaseMap is an abstract class inherited by the map services classes
+ * Abstract class MapsBaseMap provides the scafolding for classes handling parser function
+ * calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
+ * forces inheriting classes to implement sereveral methods.
  *
  * @file Maps_BaseMap.php
  * @ingroup Maps
@@ -15,9 +17,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 abstract class MapsBaseMap extends MapsMapFeature {
 	
-	// TODO: move this abstract function to a new MapsBaseMapUtils file?
-	//protected abstract static function getDefaultParams();
-	
 	protected $markerData = array();
 	
 	/**
@@ -25,7 +24,8 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
 	 * @param unknown_type $parser
-	 * @param array $map
+	 * @param array $params
+	 * 
 	 * @return html
 	 */
 	public final function displayMap(&$parser, array $params) {
@@ -39,7 +39,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 
 		$this->setMapName();
 		
-		$this->setCoordinates();		
+		$this->setCoordinates($parser);		
 		
 		$this->setZoom();
 		
@@ -54,6 +54,10 @@ abstract class MapsBaseMap extends MapsMapFeature {
 		return $this->output;
 	}
 	
+	/**
+	 * (non-PHPdoc)
+	 * @see smw/extensions/Maps/MapsMapFeature#manageMapProperties($mapProperties, $className)
+	 */
 	protected function manageMapProperties($params) {
 		parent::manageMapProperties($params, __CLASS__);
 	}
@@ -78,8 +82,9 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	/**
 	 * Fills the $markerData array with the locations and their meta data.
 	 *
+	 * @param unknown_type $parser
 	 */
-	private function setCoordinates() {
+	private function setCoordinates($parser) {
 		$this->coordinates = explode(';', $this->coordinates);		
 		
 		foreach($this->coordinates as $coordinates) {
@@ -91,10 +96,10 @@ abstract class MapsBaseMap extends MapsMapFeature {
 			$markerData = MapsUtils::getLatLon($args[0]);
 			
 			if (count($args) > 1) {
-				$markerData['title'] = $args[1];
+				$markerData['title'] = $parser->recursiveTagParse( $args[1] );
 				
 				if (count($args) > 2) {
-					$markerData['label'] = $args[2];
+					$markerData['label'] = $parser->recursiveTagParse( $args[2] );
 					
 					if (count($args) > 3) {
 						$markerData['icon'] = $args[3];
@@ -142,9 +147,9 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	/**
 	 * Parse the wiki text in the title and label values.
 	 * 
-	 * @param $parser
+	 * @param unknown_type $parser
 	 */
-	private function DoParsing(&$parser) {
+	private function doParsing(&$parser) {
 		$this->title = $parser->recursiveTagParse( $this->title );
 		$this->label = $parser->recursiveTagParse( $this->label );
 	}

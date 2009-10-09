@@ -14,6 +14,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgHooks['LanguageGetMagic'][] = 'efMapsFunctionMagic';
+$wgHooks['ParserFirstCallInit'][] = 'efMapsRegisterParserFunctions';
 
 /**
  * Adds the magic words for the parser functions
@@ -32,6 +33,25 @@ function efMapsFunctionMagic( &$magicWords, $langCode ) {
 }	
 
 /**
+ * Adds the parser function hooks
+ */
+function efMapsRegisterParserFunctions(&$wgParser) {
+	// A hooks to enable the '#display_point' and '#display_points' parser functions
+	$wgParser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender') );
+	$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender') );
+
+	// A hooks to enable the '#display_adress' and '#display_adresses' parser functions
+	$wgParser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender') );
+	$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender') );
+
+	// A hook to enable the geocoder parser functions
+	$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder') );
+	$wgParser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat') );
+	$wgParser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng') );
+	return true;
+}	
+
+/**
  * A class that holds handlers for the mapping parser functions.
  * Spesific functions are located in @see MapsUtils
  * 
@@ -45,31 +65,10 @@ final class MapsParserFunctions {
 	 * 
 	 */
 	public static function initialize() {
-		global $egMapsIP, $wgAutoloadClasses;
-		$wgAutoloadClasses['MapsBaseMap'] 			= $egMapsIP . '/ParserFunctions/Maps_BaseMap.php';
+		global $egMapsIP, $wgAutoloadClasses, $wgHooks, $wgParser;
 		
-		self::addParserHooks();
+		$wgAutoloadClasses['MapsBaseMap'] 			= $egMapsIP . '/ParserFunctions/Maps_BaseMap.php';	
 	}
-	
-	/**
-	 * Adds the parser function hooks
-	 */
-	private static function addParserHooks() {
-		global $wgParser;
-		
-		// A hooks to enable the '#display_point' and '#display_points' parser functions
-		$wgParser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender') );
-		$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender') );
-	
-		// A hooks to enable the '#display_adress' and '#display_adresses' parser functions
-		$wgParser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender') );
-		$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender') );
-	
-		// A hook to enable the geocoder parser functions
-		$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder') );
-		$wgParser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat') );
-		$wgParser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng') );
-	}	
 	
 	public static function getMapHtml(&$parser, array $params, array $coordFails = array()) {
         global $wgLang;
@@ -214,7 +213,6 @@ final class MapsParserFunctions {
 			
 			if ($isAddress || count($split) == 1) {
 				$address_srting = count($split) == 1 ? $split[0] : $split[1];
-				//var_dump($address_srting);
 				$addresses = explode(';', $address_srting);
 
 				$coordinates = array();
@@ -239,7 +237,7 @@ final class MapsParserFunctions {
 				$params[$i] = 'coordinates=' . implode(';', $coordinates);
 
 			}
-		} //exit;
+		}
 
 		return $fails;
 	}

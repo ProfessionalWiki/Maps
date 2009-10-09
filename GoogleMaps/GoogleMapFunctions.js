@@ -28,6 +28,7 @@ function createGMarker(point, title, label, icon) {
 	if ((title + label).length > 0) {
 		var bothTxtAreSet = title.length > 0 && label.length > 0;
 		var popupText = bothTxtAreSet ? '<b>' + title + '</b><hr />' + label : title + label;	
+		popupText = '<div style="overflow:auto;max-height:150px;">' + popupText + '</div>';
 
 		GEvent.addListener(marker, 'click',
 			function() {

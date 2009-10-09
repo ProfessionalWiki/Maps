@@ -74,14 +74,14 @@ final class MapsOpenLayersUtils {
 	 */
 	public static function addOLDependencies(&$output) {
 		global $wgJsMimeType;
-		global $egOpenLayersOnThisPage, $egMapsIncludePath;
+		global $egOpenLayersOnThisPage, $egMapsScriptPath;
 		
 		if (empty($egOpenLayersOnThisPage)) {
 			$egOpenLayersOnThisPage = 0;
 			
-			$output .="<link rel='stylesheet' href='$egMapsIncludePath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
-			<script type='$wgJsMimeType' src='$egMapsIncludePath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsIncludePath/OpenLayers/OpenLayerFunctions.js'></script>
+			$output .="<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.js'></script>
 			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
 		}		
 	}
