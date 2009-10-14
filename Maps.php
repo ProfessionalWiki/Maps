@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.3.5 a3');
+define('Maps_VERSION', '0.3.5 a4');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
@@ -47,11 +47,6 @@ $wgAutoloadClasses['MapsGeocoder'] 			= $egMapsIP . '/Geocoders/Maps_Geocoder.ph
 $wgAutoloadClasses['MapsBaseGeocoder'] 		= $egMapsIP . '/Geocoders/Maps_BaseGeocoder.php';
 
 if (empty($egMapsServices)) $egMapsServices = array();
-
-// TODO: move inclusions, or add init file to settings to allow auto load?
-include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php';
-include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php';
-include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php';
 
 // TODO: split Maps_ParserFunctions.php functionallity so this line is not required
 include_once $egMapsIP . '/ParserFunctions/Maps_ParserFunctions.php';
@@ -101,9 +96,11 @@ function efMapsSetup() {
 		// Check for wich services there are handlers for the current fature, and load them
 		foreach ($egMapsServices as  $serviceData) {
 			if (array_key_exists($key, $serviceData)) {
-				$file = $serviceData[$key]['local'] ? $egMapsIP . '/' . $serviceData[$key]['file'] : $IP . '/extensions/' . $serviceData[$key]['file'];
-				$wgAutoloadClasses[$serviceData[$key]['class']] = $file;			
-			}	
+				if (array_key_exists('class', $serviceData[$key]) && array_key_exists('file', $serviceData[$key]) && array_key_exists('local', $serviceData[$key])) {
+					$file = $serviceData[$key]['local'] ? $egMapsIP . '/' . $serviceData[$key]['file'] : $IP . '/extensions/' . $serviceData[$key]['file'];
+					$wgAutoloadClasses[$serviceData[$key]['class']] = $file;	
+				}
+			}
 
 			if (array_key_exists('classes', $serviceData)) {
 				foreach($serviceData['classes'] as $class) {

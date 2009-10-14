@@ -10,7 +10,10 @@
  */
 
 $egMapsServices['openlayers'] = array(
-									'pf' => array('class' => 'MapsOpenLayersParserFunctions', 'file' => 'OpenLayers/Maps_OpenLayersParserFunctions.php', 'local' => true),
+									'pf' => array(
+										'display_point' => array('class' => 'MapsOpenLayersDispPoint', 'file' => 'OpenLayers/Maps_OpenLayersDispPoint.php', 'local' => true),
+										'display_map' => array('class' => 'MapsOpenLayersDispMap', 'file' => 'OpenLayers/Maps_OpenLayersDispMap.php', 'local' => true),
+										),
 									'classes' => array(
 											array('class' => 'MapsOpenLayersUtils', 'file' => 'OpenLayers/Maps_OpenLayersUtils.php', 'local' => true)
 											),

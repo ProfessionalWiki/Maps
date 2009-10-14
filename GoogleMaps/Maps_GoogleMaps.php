@@ -10,7 +10,10 @@
  */
 
 $egMapsServices['googlemaps'] = array(
-									'pf' => array('class' => 'MapsGoogleMapsParserFunctions', 'file' => 'GoogleMaps/Maps_GoogleMapsParserFunctions.php', 'local' => true),
+									'pf' => array(
+										'display_point' => array('class' => 'MapsGoogleMapsDispPoint', 'file' => 'GoogleMaps/Maps_GoogleMapsDispPoint.php', 'local' => true),
+										'display_map' => array('class' => 'MapsGoogleMapsDispMap', 'file' => 'GoogleMaps/Maps_GoogleMapsDispMap.php', 'local' => true),
+										),
 									'classes' => array(
 											array('class' => 'MapsGoogleMapsUtils', 'file' => 'GoogleMaps/Maps_GoogleMapsUtils.php', 'local' => true)
 											),

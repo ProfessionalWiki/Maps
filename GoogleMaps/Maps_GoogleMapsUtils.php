@@ -167,7 +167,7 @@ final class MapsGoogleMapsUtils {
 	 * @param boolean $enableEarth
 	 * @return string
 	 */
-	public function createTypesString(array &$types, $enableEarth) {	
+	public function createTypesString(array &$types, $enableEarth = false) {	
 		global $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid;
 		
 		$types = MapsMapper::getValidTypes($types, $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid, array(__CLASS__, 'getGMapType'));

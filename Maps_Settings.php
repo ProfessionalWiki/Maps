@@ -18,16 +18,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-# API keys configuration
-
-# Your Google Maps API key. Required for displaying Google Maps, and using the Google Geocoder services.
-# Haven't got an API key yet? Get it here: http://code.google.com/apis/maps/signup.html
-if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ''; 
-
-# Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
-# Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
-if (empty($egYahooMapsKey)) $egYahooMapsKey = ''; 
-
 
 
 
@@ -42,7 +32,11 @@ $egMapsAvailableFeatures['pf'] = array(
 							'name' => 'Parser Function',
 							'class' => 'MapsParserFunctions',
 							'file' => 'ParserFunctions/Maps_ParserFunctions.php',
-							'local' => true
+							'local' => true,
+							'functions' => array(
+								'display_point' => array('class' => 'MapsBasePointMap', 'file' => 'ParserFunctions/Maps_BasePointMap.php', 'local' => true),
+								'display_map' => array('class' => 'MapsBaseMap', 'file' => 'ParserFunctions/Maps_BaseMap.php', 'local' => true),
+								),
 							);
 
 
@@ -50,8 +44,13 @@ $egMapsAvailableFeatures['pf'] = array(
 
 
 # Map services configuration
-# Note: You can not use aliases in the setting. Use the main service names.
+# Note: You can not use aliases in the settings. Use the main service names.
 
+# Include the mapping services that should be loaded into Maps. 
+include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php';
+include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php';
+include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php';
+							
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
 $egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers');
@@ -102,6 +101,10 @@ $egMapsMapLon = '1';
 
 # Google maps
 
+# Your Google Maps API key. Required for displaying Google Maps, and using the Google Geocoder services.
+# Haven't got an API key yet? Get it here: http://code.google.com/apis/maps/signup.html
+if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ''; 
+
 # String. The Google Maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsGoogleMapsPrefix = 'map_google';
 
@@ -125,6 +128,10 @@ $egMapsGMapControls = array('large', 'scale', 'type');
 
 
 # Yahoo maps
+
+# Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
+# Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
+if (empty($egYahooMapsKey)) $egYahooMapsKey = ''; 
 
 # String. The Yahoo! maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsYahooMapsPrefix = 'map_yahoo';

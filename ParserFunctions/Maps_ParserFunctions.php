@@ -20,10 +20,10 @@ $wgHooks['ParserFirstCallInit'][] = 'efMapsRegisterParserFunctions';
  * Adds the magic words for the parser functions
  */
 function efMapsFunctionMagic( &$magicWords, $langCode ) {
-	$magicWords['display_point'] = array( 0, 'display_point' );
-	$magicWords['display_points'] = array( 0, 'display_points' );
-	$magicWords['display_address'] = array( 0, 'display_address' );
-	$magicWords['display_addresses'] = array( 0, 'display_addresses' );
+	$magicWords['display_point'] = array( 0, 'display_point', 'display_points' );
+	$magicWords['display_address'] = array( 0, 'display_address', 'display_addresses' );
+
+	$magicWords['display_map'] = array( 0,  'display_map');
 
 	$magicWords['geocode'] = array( 0, 'geocode' );
 	$magicWords['geocodelat']	= array ( 0, 'geocodelat' );
@@ -36,18 +36,22 @@ function efMapsFunctionMagic( &$magicWords, $langCode ) {
  * Adds the parser function hooks
  */
 function efMapsRegisterParserFunctions(&$wgParser) {
-	// A hooks to enable the '#display_point' and '#display_points' parser functions
+	// A hook to enable the '#display_map' parser function
+	$wgParser->setFunctionHook( 'display_map', array('MapsParserFunctions', 'displayMapRender') );
+	
+	// Hooks to enable the '#display_point' and '#display_points' parser functions
 	$wgParser->setFunctionHook( 'display_point', array('MapsParserFunctions', 'displayPointRender') );
-	$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointsRender') );
+	//$wgParser->setFunctionHook( 'display_points', array('MapsParserFunctions', 'displayPointRender') );
 
-	// A hooks to enable the '#display_adress' and '#display_adresses' parser functions
+	// Hooks to enable the '#display_adress' and '#display_adresses' parser functions
 	$wgParser->setFunctionHook( 'display_address', array('MapsParserFunctions', 'displayAddressRender') );
-	$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressesRender') );
+	//$wgParser->setFunctionHook( 'display_addresses', array('MapsParserFunctions', 'displayAddressRender') );
 
-	// A hook to enable the geocoder parser functions
+	// Hooks to enable the geocoding parser functions
 	$wgParser->setFunctionHook( 'geocode', array('MapsGeocoder', 'renderGeocoder') );
-	$wgParser->setFunctionHook( 'geocodelat' , array('MapsGeocoder', 'renderGeocoderLat') );
-	$wgParser->setFunctionHook( 'geocodelng' , array('MapsGeocoder', 'renderGeocoderLng') );
+	$wgParser->setFunctionHook( 'geocodelat', array('MapsGeocoder', 'renderGeocoderLat') );
+	$wgParser->setFunctionHook( 'geocodelng', array('MapsGeocoder', 'renderGeocoderLng') );
+	
 	return true;
 }	
 
@@ -61,16 +65,37 @@ function efMapsRegisterParserFunctions(&$wgParser) {
 final class MapsParserFunctions {
 	
 	/**
-	 * Initialize the parser functions feature
+	 * Initialize the parser functions feature. This function handles the parser function hook,
+	 * and will load the required classes.
 	 * 
 	 */
 	public static function initialize() {
-		global $egMapsIP, $wgAutoloadClasses, $wgHooks, $wgParser;
+		global $egMapsIP, $IP, $wgAutoloadClasses, $egMapsAvailableFeatures, $egMapsServices;
 		
-		$wgAutoloadClasses['MapsBaseMap'] 			= $egMapsIP . '/ParserFunctions/Maps_BaseMap.php';	
+		//$wgAutoloadClasses['MapsBaseMap'] 			= $egMapsIP . '/ParserFunctions/Maps_BaseMap.php';
+		//$wgAutoloadClasses['MapsBasePointMap'] 		= $egMapsIP . '/ParserFunctions/Maps_BasePointMap.php';	
+		
+		foreach($egMapsAvailableFeatures['pf']['functions'] as $parser_name => $parser_data) {
+			$file = $parser_data['local'] ? $egMapsIP . '/' . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
+			$wgAutoloadClasses[$parser_data['class']] = $file;
+		}
+		
+		foreach($egMapsServices as $serviceName => $serviceData) {
+			// Check if the service has parser function support
+			$hasPFs = array_key_exists('pf', $serviceData);
+			
+			// If the service has no parser function support, skipt it and continue with the next one.
+			if (!$hasPFs) continue;
+			
+			// Go through the parser functions supported by the mapping service, and load their classes.
+			foreach($serviceData['pf'] as $parser_name => $parser_data) {
+				$file = $parser_data['local'] ? $egMapsIP . '/' . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
+				$wgAutoloadClasses[$parser_data['class']] = $file;
+			}
+		}				
 	}
 	
-	public static function getMapHtml(&$parser, array $params, array $coordFails = array()) {
+	public static function getMapHtml(&$parser, array $params, $parserFunction, array $coordFails = array()) {
         global $wgLang;
         
         $map = array();
@@ -97,7 +122,7 @@ final class MapsParserFunctions {
             if (! MapsMapper::paramIsPresent('service', $map)) $map['service'] = '';
             $map['service'] = MapsMapper::getValidService($map['service'], 'pf');                
     
-            $mapClass = self::getParserClassInstance($map['service']);
+            $mapClass = self::getParserClassInstance($map['service'], $parserFunction);
     
             // Call the function according to the map service to get the HTML output
             $output = $mapClass->displayMap($parser, $map);    
@@ -117,9 +142,11 @@ final class MapsParserFunctions {
         return array( $output, 'noparse' => true, 'isHTML' => true ); 	
 	}
 	
-	private static function getParserClassInstance($service) {
+	private static function getParserClassInstance($service, $parserFunction) {
 		global $egMapsServices;
-		return new $egMapsServices[$service]['pf']['class']();
+		// TODO: add check to see if the service actually supports this parser function, and return false for error handling if not.
+		//die($egMapsServices[$service]['pf'][$parserFunction]['class']);
+		return new $egMapsServices[$service]['pf'][$parserFunction]['class']();
 	}
 
 	/**
@@ -133,20 +160,9 @@ final class MapsParserFunctions {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 				
-		return self::getMapHtml($parser, $params);
-	}
-	
-	/**
-	 * Sets the default map properties, gets the map HTML depending 
-	 * on the provided service, and then returns it.
-	 *
-	 * @param unknown_type $parser
-	 */
-	public static function displayPointsRender(&$parser) {	
-		$params = func_get_args();
-		array_shift( $params ); // We already know the $parser ...
+		// TODO: auto geocode when required
 		
-		return self::getMapHtml($parser, $params);
+		return self::getMapHtml($parser, $params, 'display_point');
 	}
 	
 	/**
@@ -156,29 +172,33 @@ final class MapsParserFunctions {
 	 * @param unknown_type $parser
 	 * @return array
 	 */
-	public static function displayAddressRender(&$parser) {		
+	public static function displayAddressRender(&$parser) {	
+		// TODO: remove	
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 		
 		$fails = self::changeAddressToCoords($params);
 		
-		return self::getMapHtml($parser, $params, $fails);
+		return self::getMapHtml($parser, $params, 'display_point', $fails);
 	}
 	
 	/**
-	 * Turns the address parameter into coordinates, then calls
-	 * getMapHtml() and returns it's result. 
+	 * If an address value is provided, turn it into coordinates,
+	 * then calls getMapHtml() and returns it's result. 
 	 *
 	 * @param unknown_type $parser
+	 * @return array
 	 */
-	public static function displayAddressesRender(&$parser) {
+	public static function displayMapRender(&$parser) {		
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 		
-		$fails = self::changeAddressToCoords($params);
+		// TODO: auto geocode when required
+		//$fails = self::changeAddressToCoords($params);
+		//die('disp map');
 		
-		return self::getMapHtml($parser, $params, $fails);
-	}
+		return self::getMapHtml($parser, $params, 'display_map');
+	}	
 	
 	/**
 	 * Changes the values of the address or addresses parameter into coordinates
