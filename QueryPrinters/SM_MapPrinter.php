@@ -142,7 +142,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				
 			}
 		}
-		
 	}
 	
 	/**
@@ -156,14 +155,20 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$legend_labels = array();
 		
 		// Look for display_options field, which can be set by Semantic Compound Queries
-		if (property_exists($row[0], 'display_options')) {
-			if (array_key_exists('icon', $row[0]->display_options)) {
-				$icon = $row[0]->display_options['icon'];
+                // the location of this field changed in SMW 1.5
+                if (method_exists($row[0], 'getResultSubject')) // SMW 1.5+
+                        $display_location = $row[0]->getResultSubject();
+                else
+                        $display_location = $row[0];
+		if (property_exists($display_location, 'display_options') && is_array($display_location->display_options)) {
+			$display_options = $display_location->display_options;
+			if (array_key_exists('icon', $display_options)) {
+				$icon = $display_options['icon'];
 
 				// This is somewhat of a hack - if a legend label has been set, we're getting it for every point, instead of just once per icon	
-				if (array_key_exists('legend label', $row[0]->display_options)) {
+				if (array_key_exists('legend label', $display_options)) {
 									
-					$legend_label = $row[0]->display_options['legend label'];
+					$legend_label = $display_options['legend label'];
 					
 					if (! array_key_exists($icon, $legend_labels)) {
 						$legend_labels[$icon] = $legend_label;
