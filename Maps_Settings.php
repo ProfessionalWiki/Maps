@@ -33,11 +33,14 @@ $egMapsAvailableFeatures['pf'] = array(
 							'class' => 'MapsParserFunctions',
 							'file' => 'ParserFunctions/Maps_ParserFunctions.php',
 							'local' => true,
-							'functions' => array(
-								'display_point' => array('class' => 'MapsBasePointMap', 'file' => 'ParserFunctions/Maps_BasePointMap.php', 'local' => true),
-								'display_map' => array('class' => 'MapsBaseMap', 'file' => 'ParserFunctions/Maps_BaseMap.php', 'local' => true),
-								),
 							);
+							
+$egMapsAvailableFeatures['geocode'] = array(
+							'name' => 'Parser Function',
+							'class' => 'MapsParserFunctions',
+							'file' => 'ParserFunctions/Maps_ParserFunctions.php',
+							'local' => true,
+							);							
 
 
 
@@ -47,9 +50,10 @@ $egMapsAvailableFeatures['pf'] = array(
 # Note: You can not use aliases in the settings. Use the main service names.
 
 # Include the mapping services that should be loaded into Maps. 
-include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php';
-include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php';
-include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php';
+# Commenting or removing a mapping service will cause Maps to completely ignore it, and so improve performance.
+include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
+include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
+include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
 							
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers

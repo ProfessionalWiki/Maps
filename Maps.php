@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.3.5 a4');
+define('Maps_VERSION', '0.4 a5');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
@@ -42,14 +42,17 @@ $wgAutoloadClasses['MapsMapFeature'] 		= $egMapsIP . '/Maps_MapFeature.php';
 $wgAutoloadClasses['MapsMapper'] 			= $egMapsIP . '/Maps_Mapper.php';
 $wgAutoloadClasses['MapsUtils'] 			= $egMapsIP . '/Maps_Utils.php';
 
-// TODO: change geocoder setup to feature hook, and load the relevant classes from it's init function
-$wgAutoloadClasses['MapsGeocoder'] 			= $egMapsIP . '/Geocoders/Maps_Geocoder.php';
-$wgAutoloadClasses['MapsBaseGeocoder'] 		= $egMapsIP . '/Geocoders/Maps_BaseGeocoder.php';
-
 if (empty($egMapsServices)) $egMapsServices = array();
 
-// TODO: split Maps_ParserFunctions.php functionallity so this line is not required
-include_once $egMapsIP . '/ParserFunctions/Maps_ParserFunctions.php';
+// TODO: move to settings file after parser hook has been completed
+include_once $egMapsIP . '/ParserFunctions/DisplayMap/Maps_DisplayMap.php';
+include_once $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';
+include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_Geocoder.php';
+
+// TODO: move
+$wgAutoloadClasses['MapsBaseGeocoder'] 		= $egMapsIP . '/Geocoders/Maps_BaseGeocoder.php';
+$wgAutoloadClasses['MapsGeocoder'] 			= $egMapsIP . '/ParserFunctions/Geocode/Maps_Geocoder.php';
+
 
 /**
  * Initialization function for the Maps extension
