@@ -405,8 +405,11 @@ Dostupné mapovacie služby: $1',
 
 /** Swedish (Svenska)
  * @author Fluff
+ * @author Per
  */
 $messages['sv'] = array(
+	'maps_desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Tillgängliga karttjänster: $1',
 	'maps_coordinates_missing' => 'Inga koordinater angivna för kartan.',
 	'maps_geocoding_failed' => 'Följande {{PLURAL:$2|adress|adresser}} kunde inte geokodas: $1.
 Kartan kan inte visas.',
