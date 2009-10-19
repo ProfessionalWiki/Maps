@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.4 a5');
+define('SM_VERSION', '0.4 a6');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
@@ -48,8 +48,9 @@ $egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayersQP', 'file' 
 $egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'SemanticMaps/OpenLayers/SM_OpenLayersFormInput.php', 'local' => false);
 
 /**
- * Initialization function for the Semantic Maps extension
- *
+ * 'Initialization' function for the Semantic Maps extension. 
+ * The only work done here is creating the extension credits for
+ * Semantic Maps. The actuall work in done via the Maps hooks.
  */
 function smfSetup() {
 	global $wgExtensionCredits, $wgLang, $egMapsServices;
@@ -79,13 +80,14 @@ function smfSetup() {
  * Returns html for an html input field with a default value that will automatically dissapear when
  * the user clicks in it, and reappers when the focus on the field is lost and it's still empty.
  *
+ * @author Jeroen De Dauw
+ *
  * @param string $id
  * @param string $value
  * @param string $args
  * @return html
- */
+ */ // TODO: move to FI feature code
 function smfGetDynamicInput($id, $value, $args='') {
-	// By De Dauw Jeroen - November 2008 - http://code.bn2vs.com/viewtopic.php?t=120
 	return '<input id="'.$id.'" '.$args.' value="'.$value.'" onfocus="if (this.value==\''.$value.'\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\''.$value.'\';}" />';
 }
 

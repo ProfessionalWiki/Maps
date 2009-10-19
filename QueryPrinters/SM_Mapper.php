@@ -37,7 +37,7 @@ final class SMMapper {
 	}
 	
 	public function getName() {
-		return $this->queryPrinter->getName();
+		return wfMsg('maps_map');
 	}
 	
 	public function getQueryMode($context) {

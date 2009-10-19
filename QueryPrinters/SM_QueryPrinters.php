@@ -15,12 +15,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMQueryPrinters {
 	
+	/**
+	 * Initialization function for Maps query printer functionality.
+	 */
 	public static function initialize() {
 		global $smgIP, $wgAutoloadClasses, $egMapsServices;
 		
 		$wgAutoloadClasses['SMMapPrinter'] 	= $smgIP . '/QueryPrinters/SM_MapPrinter.php';
-		
-		global $egMapsServices;
 		
 		$hasQueryPrinters = false;
 		
@@ -43,30 +44,52 @@ final class SMQueryPrinters {
 	}
 	
 	/**
-	 * Add the result format for a mapping service or alias
+	 * Add the result format for a mapping service or alias.
 	 *
 	 * @param string $format
 	 * @param array $qp
 	 * @param array $aliases
 	 */
 	private static function initFormat($format, array $qp, array $aliases) {
-		global $wgAutoloadClasses, $smwgResultFormats, $smgIP;
+		global $wgAutoloadClasses, $smgIP, $smwgResultAliases;
 		
+		// Load the QP class when it's not loaded yet
 		if (! array_key_exists($qp['class'], $wgAutoloadClasses)) {
 			$file = $qp['local'] ? $smgIP . '/' . $qp['file'] : $qp['file'];
 			$wgAutoloadClasses[$qp['class']] = $file;
 		}
 		
+		// Add the QP to SMW
+		self::addFormatQP($format, $qp['class']);
+		
+		// If SMW supports aliasing, add the aliases to $smwgResultAliases
+		if (isset($smwgResultAliases)) {
+			$smwgResultAliases[$format] = $aliases;
+		}
+		else { // If SMW does not support aliasing, add every alias as a format
+			foreach($aliases as $alias) self::addFormatQP($alias, $qp['class']);
+		}
+		
+		//if (count($smwgResultAliases) == 4) die(var_dump($smwgResultAliases));
+	}	
+	
+	/**
+	 * Adds a QP to SMW's $smwgResultFormats array or SMWQueryProcessor
+	 * depending on if SMW supports $smwgResultFormats.
+	 * 
+	 * @param string $format
+	 * @param string $class
+	 */
+	private static function addFormatQP($format, $class) {
+		global $smwgResultFormats;
+		
 		if (isset($smwgResultFormats)) {
-			$smwgResultFormats[$format] = $qp['class'];
+			$smwgResultFormats[$format] = $class;
 		}
 		else {
-			SMWQueryProcessor::$formats[$format] = $qp['class'];
-		}	
-		
-		// TODO: set aliases
-		// PHP 5.3 required
-		//call_user_func_array(array($qp['class'], 'setAliases'), array($aliases));
-	}	
+			SMWQueryProcessor::$formats[$format] = $class;
+		}			
+	}
+	
 	
 }
