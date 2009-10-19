@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.4 a5');
+define('Maps_VERSION', '0.4 a6');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
@@ -44,33 +44,21 @@ $wgAutoloadClasses['MapsUtils'] 			= $egMapsIP . '/Maps_Utils.php';
 
 if (empty($egMapsServices)) $egMapsServices = array();
 
-// TODO: move to settings file after parser hook has been completed
-include_once $egMapsIP . '/ParserFunctions/DisplayMap/Maps_DisplayMap.php';
-include_once $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';
-include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_Geocoder.php';
-
-// TODO: move
-$wgAutoloadClasses['MapsBaseGeocoder'] 		= $egMapsIP . '/Geocoders/Maps_BaseGeocoder.php';
-$wgAutoloadClasses['MapsGeocoder'] 			= $egMapsIP . '/ParserFunctions/Geocode/Maps_Geocoder.php';
-
-
 /**
  * Initialization function for the Maps extension
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgOut, $wgLang, $wgAutoloadClasses, $IP;	
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
-
-	efMapsValidateGoogleMapsKey();
 	
-	// Enure that the default service is one of the enabled ones
+	// Enure that the default service and geoservice are one of the enabled ones.
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
-	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : $egMapsAvailableGeoServices[0];
+	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : end(array_reverse(array_keys($egMapsAvailableGeoServices)));
 	
 	// TODO: split for feature hook system?	
 	wfLoadExtensionMessages( 'Maps' );
 	
-	// Creation of a list of internationalized service names
+	// Creation of a list of internationalized service names.
 	$services = array();
 	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
 	$services_list = $wgLang->listToText($services);
@@ -87,8 +75,9 @@ function efMapsSetup() {
 
 	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
 	
+	// These loops take care of everything hooked into Maps.
 	foreach($egMapsAvailableFeatures as $key => $values) {
-		// Load and optionally initizlize feature
+		// Load and optionally initizlize feature.
 		if (array_key_exists('class', $values) && array_key_exists('file', $values) && array_key_exists('local', $values)) {
 			$wgAutoloadClasses[$values['class']] = $values['local'] ? $egMapsIP . '/' . $values['file'] : $IP . '/extensions/' . $values['file'];
 			if (method_exists($values['class'], 'initialize')) {
@@ -119,17 +108,7 @@ function efMapsSetup() {
 
 
 
-/**
- * This function ensures backward compatibility with Semantic Google Maps and other extensions
- * using $wgGoogleMapsKey instead of $egGoogleMapsKey.
- */ // TODO: move to gmaps code
-function efMapsValidateGoogleMapsKey() {
-	global $egGoogleMapsKey, $wgGoogleMapsKey;
-	
-	if (isset($wgGoogleMapsKey)){
-		if (strlen(trim($egGoogleMapsKey)) < 1) $egGoogleMapsKey = $wgGoogleMapsKey;
-	} 
-}
+
 
 /**
  * Adds a link to Admin Links page
