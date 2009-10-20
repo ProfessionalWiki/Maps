@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 
-/**
+/**  
  * A class that holds static helper functions for common functionality that is map-spesific.
  * Non spesific functions are located in @see MapsParserFunctions
  *
@@ -102,4 +102,26 @@ class MapsUtils {
 			$value .= 'px';
 	}
 
+	/**
+	 * Returns if the current php version is equal of bigger then the provided one.
+	 *
+	 * @param string $requiredVersion
+	 * @return boolean
+	 */
+	public static function phpVersionIsEqualOrBigger($requiredVersion) {
+		// TODO: Ensure this works, and does not cause errors for some versions.
+		$currentVersion = phpversion();
+
+		for($i = 0; $i < 3; $i++) {
+			if ($currentVersion[$i] < $requiredVersion[$i]) {
+				return false; 
+			}
+			else if($currentVersion[$i] > $requiredVersion[$i]) {
+				return true;
+			} 
+		}
+		
+		return true;
+	}	
+	
 }

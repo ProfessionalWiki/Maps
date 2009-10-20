@@ -1,6 +1,6 @@
 <?php
 
-/**
+/**  
  * Initialization file for the Maps extension.
  * Extension documentation: http://www.mediawiki.org/wiki/Extension:Maps
  *
@@ -56,7 +56,7 @@ function efMapsSetup() {
 	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : end(array_reverse(array_keys($egMapsAvailableGeoServices)));
 	
 	// TODO: split for feature hook system?	
-	wfLoadExtensionMessages( 'Maps' );
+	wfLoadExtensionMessages( 'Maps' ); 
 	
 	// Creation of a list of internationalized service names.
 	$services = array();

@@ -12,7 +12,7 @@
 if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
-
+ 
 final class MapsGoogleMapsUtils {
 	
 	const SERVICE_NAME = 'googlemaps';
@@ -119,10 +119,13 @@ final class MapsGoogleMapsUtils {
 		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
-			// TODO: strbuilder for performance?
 			$egGoogleMapsOnThisPage = 0;
 
+			MapsGoogleMapsUtils::validateGoogleMapsKey();
+			
 			$wgOut->addScriptFile($egMapsScriptPath . '/GoogleMaps/GoogleMapFunctions.js');
+			
+			// TODO: use strbuilder for performance gain?
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js'></script>";
 		}
@@ -167,7 +170,7 @@ final class MapsGoogleMapsUtils {
 	 * @param boolean $enableEarth
 	 * @return string
 	 */
-	public function createTypesString(array &$types, $enableEarth = false) {	
+	public static function createTypesString(array &$types, $enableEarth = false) {	
 		global $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid;
 		
 		$types = MapsMapper::getValidTypes($types, $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid, array(__CLASS__, 'getGMapType'));
@@ -177,5 +180,17 @@ final class MapsGoogleMapsUtils {
 			
 		return MapsMapper::createJSItemsString($types, null, false, false);
 	}
+	
+	/**
+	 * This function ensures backward compatibility with Semantic Google Maps and other extensions
+	 * using $wgGoogleMapsKey instead of $egGoogleMapsKey.
+	 */
+	public static function validateGoogleMapsKey() {
+		global $egGoogleMapsKey, $wgGoogleMapsKey;
+		
+		if (isset($wgGoogleMapsKey)){
+			if (strlen(trim($egGoogleMapsKey)) < 1) $egGoogleMapsKey = $wgGoogleMapsKey;
+		} 
+	}	
 	
 }

@@ -84,4 +84,23 @@ final class MapsParserGeocoder {
 		return $fails;
 	}	
 	
+	/**
+	 * 
+	 * @return unknown_type
+	 */
+	public static function attemptToGeocode($coordsOrAddress) {
+		// TODO: add check for DM and DD notations
+		$floatRegex = "/^\d{1,3}(|\.\d{1,7}),(|\s)\d{1,3}(|\.\d{1,7})$/";
+		$dmsRegex = "/^(\d{1,2}°)(\d{2}')?((\d{2}\")?|(\d{2}\.\d{2}\")?)(N|S)(| )(\d{1,2}°)(\d{2}')?((\d{2}\")?|(\d{2}\.\d{2}\")?)(E|W)$/";
+		
+		$needsGeocoding = !preg_match($floatRegex, $coordsOrAddress);
+		if ($needsGeocoding) $needsGeocoding = !preg_match($dmsRegex, $coordsOrAddress);
+		
+		if ($needsGeocoding) {
+			// TODO: geocode
+		}
+		
+		return array('coords' => $coords, 'geocoded' => $needsGeocoding);
+	}	
+	
 }

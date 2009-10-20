@@ -47,19 +47,6 @@ final class MapsParserFunctions {
 		}				
 	}
 	
-	/**
-	 * 
-	 * @return unknown_type
-	 */
-	public static function attemptToGeocode($coordsOrAddress) {
-		
-		$needsGeocoding = true;
-		
-		if ($needsGeocoding) {
-			// TODO: geocode
-		}
-		
-		return array('coords' => $coords, 'geocoded' => $needsGeocoding);
-	}
+
 
 }

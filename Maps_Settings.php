@@ -16,7 +16,7 @@
 
 if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
-}
+} 
 
 
 
@@ -28,19 +28,29 @@ if( !defined( 'MEDIAWIKI' ) ) {
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
 if (empty($egMapsAvailableFeatures)) $egMapsAvailableFeatures = array();
 
+$egMapsAvailableFeatures['geocode'] = array(
+							'name' => 'Geocoding',
+							'class' => 'Geocoders',
+							'file' => 'Geocoders/Maps_Geocoders.php',
+							'local' => true,
+							);
+
 $egMapsAvailableFeatures['pf'] = array(
-							'name' => 'Parser Function',
+							'name' => 'Parser Functions',
 							'class' => 'MapsParserFunctions',
 							'file' => 'ParserFunctions/Maps_ParserFunctions.php',
 							'local' => true,
 							);
-							
-$egMapsAvailableFeatures['geocode'] = array(
-							'name' => 'Parser Function',
-							'class' => 'MapsParserFunctions',
-							'file' => 'ParserFunctions/Maps_ParserFunctions.php',
-							'local' => true,
-							);							
+
+
+
+
+
+# Include the parser functions that should be loaded into Maps.
+# Commenting or removing a parser functions will cause Maps to completely ignore it, and so improve performance.
+include_once $egMapsIP . '/ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// display_map	
+include_once $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// display_point(s)
+include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// geocode, geocodelon, geocodelat
 
 
 
@@ -77,7 +87,25 @@ $egMapsDefaultServices = array('pf' => 'googlemaps', 'qp' => 'googlemaps', 'fi' 
 
 # Array of String. Array containing all the geocoding services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableGeoServices = array('google', 'yahoo', 'geonames');
+$egMapsAvailableGeoServices = array(
+									'google' => array(
+										'class' => 'MapsGoogleGeocoder',
+										'file' => 'Geocoders/Maps_GoogleGeocoder.php',
+										'local' => true,
+										'overrides' => array('googlemaps'),
+										),
+									'yahoo' => array(
+										'class' => 'MapsYahooGeocoder',
+										'file' => 'Geocoders/Maps_YahooGeocoder.php',
+										'local' => true,
+										'overrides' => array('yahoomaps'),
+										),
+									'geonames' => array(
+										'class' => 'MapsGeonamesGeocoder',
+										'file' => 'Geocoders/Maps_GeonamesGeocoder.php',
+										'local' => true,
+										),
+									);
 
 # String. The default geocoding service, which will be used when no service is provided by the user.
 # This service needs to be enabled, if not, the first one from the available services will be taken.

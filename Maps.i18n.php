@@ -25,9 +25,11 @@ The map cannot be displayed.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 
+	'maps_map' => 'Map',
+
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
-	'maps_openlayers' => 'OpenLayers',
+	'maps_openlayers' => 'OpenLayers', 
 );
 
 /** Message documentation (Message documentation)
@@ -36,7 +38,7 @@ $1',
  */
 $messages['qqq'] = array(
 	'maps_name' => '{{Optional}}',
-	'maps_desc' => '{{desc}}
+	'maps_desc' => '{{desc}} 
 
 * $1: a list of available map services',
 	'maps_geocoding_failed_for' => '* $1 is a list
