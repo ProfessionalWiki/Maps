@@ -270,7 +270,7 @@ final class MapsMapper {
 	 */
 	public static function getValidTypes(array $types, array &$defaults, &$defaultsAreValid, $validationFunction) {
 		$validTypes = array();
-		$phpAtLeast523 = MapsMapper::phpVersionIsEqualOrBigger('5.2.3');
+		$phpAtLeast523 = MapsUtils::phpVersionIsEqualOrBigger('5.2.3');
 		
 		// Ensure every type is valid and uses the relevant map API's name.
 		for($i = 0 ; $i < count($types); $i++) {
@@ -278,7 +278,7 @@ final class MapsMapper {
 			if ($type) $validTypes[] = $type; 
 		}
 		
-		$types = $validTypes;			
+		$types = $validTypes;
 		
 		// If there are no valid types, add the default ones.
 		if (count($types) < 1) {
@@ -302,25 +302,5 @@ final class MapsMapper {
 		return $types;
 	}
 	
-	/**
-	 * Returns if the current php version is equal of bigger then the provided one.
-	 *
-	 * @param string $requiredVersion
-	 * @return boolean
-	 */
-	private static function phpVersionIsEqualOrBigger($requiredVersion) {
-		// TODO: Ensure this works, and does not cause errors for some versions.
-		$currentVersion = phpversion();
 
-		for($i = 0; $i < 3; $i++) {
-			if ($currentVersion[$i] < $requiredVersion[$i]) {
-				return false; 
-			}
-			else if($currentVersion[$i] > $requiredVersion[$i]) {
-				return true;
-			} 
-		}
-		
-		return true;
-	}
 }
