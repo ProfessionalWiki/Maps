@@ -33,16 +33,25 @@ $1',
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
 	'maps_name' => '{{Optional}}',
-	'maps_desc' => '{{desc}} 
+	'maps_desc' => '{{desc}}
 
 * $1: a list of available map services',
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
+	'maps_map' => '{{Identical|Map}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'maps_map' => 'Kaart',
 );
 
 /** Arabic (العربية)
@@ -64,6 +73,7 @@ $messages['be-tarask'] = array(
 Мапа ня можа быць паказана.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Наступны адрас ня можа быць геакадаваны і быў выдалены|Наступныя адрасы ня могуць быць геакадаваны і былі выдаленыя}} з мапы:
 $1',
+	'maps_map' => 'Мапа',
 );
 
 /** Breton (Brezhoneg)
@@ -161,6 +171,7 @@ Services de cartographie disponibles : $1',
 	'maps_geocoding_failed' => "{{PLURAL:$2|L′adresse suivante n'as pu être géocodée|Les adresses suivantes n'ont pas pu être géocodées}} : $1.
 Le plan ne peut pas être affiché.",
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|L′adresse suivante n’as pu être géocodée|Les adresses suivantes n’ont pas pu être géocodées}} et {{PLURAL:$2|n’est pas affichée|ne sont pas affichées}} sur le plan : $1',
+	'maps_map' => 'Carte',
 );
 
 /** Galician (Galego)
@@ -173,6 +184,7 @@ Servizos de mapeamento dispoñibles: $1',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}}: $1.
 O mapa non se pode mostrar.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}} e {{PLURAL:$2|omitiuse|omitíronse}} no mapa: $1.',
+	'maps_map' => 'Mapa',
 );
 
 /** Swiss German (Alemannisch)
@@ -197,6 +209,7 @@ $messages['he'] = array(
 לא ניתן להציג את המפה.',
 	'maps_geocoding_failed_for' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}, ולכן {{PLURAL:$2|היא הושמטה|הן הושמטו}} מהמפה:
 $1',
+	'maps_map' => 'מפה',
 );
 
 /** Croatian (Hrvatski)
@@ -313,6 +326,7 @@ Beschikbare kaartdiensten: $1',
 De kaart kan niet worden weergegeven.',
 	'maps_geocoding_failed_for' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk en {{PLURAL:$2|dit is|deze zijn}} weggelaten uit de kaart:
 $1',
+	'maps_map' => 'Kaart',
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
@@ -329,6 +343,7 @@ Servicis de cartografia disponibles : $1",
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} : $1.
 Lo plan pòt pas èsser afichat.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} e {{PLURAL:$2|es pas afichada|son pas afichadas}} sul plan : $1",
+	'maps_map' => 'Mapa',
 );
 
 /** Polish (Polski)
@@ -392,6 +407,7 @@ $messages['ru'] = array(
 Карта не может быть отображена.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следующий адрес не может быть геокодирован и был удалён|Следующие адреса не могут быть геокодированы и были удалены}} с карты:
 $1',
+	'maps_map' => 'Карта',
 );
 
 /** Slovak (Slovenčina)
