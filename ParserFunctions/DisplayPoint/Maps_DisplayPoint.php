@@ -23,8 +23,8 @@ $wgHooks['ParserFirstCallInit'][] 		= 'efMapsRegisterDisplayPoint';
  * Adds the magic words for the parser functions
  */
 function efMapsDisplayPointMagic( &$magicWords, $langCode ) {
-	$magicWords['display_point'] = array( 0, 'display_point', 'display_points' );
-	$magicWords['display_address'] = array( 0, 'display_address', 'display_addresses' );
+	// The display_address(es) aliases are for backward compatibility only, and will be removed eventually.
+	$magicWords['display_point'] = array( 0, 'display_point', 'display_points', 'display_address', 'display_addresses' );
 	
 	return true; // Unless we return true, other parser functions won't get loaded
 }	
@@ -35,9 +35,6 @@ function efMapsDisplayPointMagic( &$magicWords, $langCode ) {
 function efMapsRegisterDisplayPoint(&$wgParser) {
 	// Hooks to enable the '#display_point' and '#display_points' parser functions
 	$wgParser->setFunctionHook( 'display_point', array('MapsDisplayPoint', 'displayPointRender') );
-
-	// Hooks to enable the '#display_adress' and '#display_adresses' parser functions
-	$wgParser->setFunctionHook( 'display_address', array('MapsDisplayPoint', 'displayAddressRender') );
 	
 	return true;
 }
@@ -61,27 +58,10 @@ final class MapsDisplayPoint {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 				
-		// TODO: auto geocode when required
-		
-		return self::getMapHtml($parser, $params, 'display_point');
-	}
-	
-	/**
-	 * Turns the address parameter into coordinates, then calls
-	 * getMapHtml() and returns it's result. 
-	 *
-	 * @param unknown_type $parser
-	 * @return array
-	 */
-	public static function displayAddressRender(&$parser) {	
-		// TODO: remove	
-		$params = func_get_args();
-		array_shift( $params ); // We already know the $parser ...
-		
-		$fails = MapsParserGeocoder::changeAddressToCoords($params);
+		$fails = MapsParserGeocoder::changeAddressesToCoords($params);
 		
 		return self::getMapHtml($parser, $params, 'display_point', $fails);
-	}	
+	}
 	
 	public static function getMapHtml(&$parser, array $params, $parserFunction, array $coordFails = array()) {
         global $wgLang;

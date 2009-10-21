@@ -57,10 +57,9 @@ final class MapsDisplayMap {
 		$params = func_get_args();
 		array_shift( $params ); // We already know the $parser ...
 		
-		// TODO: auto geocode when required
-		//$fails = MapsParserGeocoder::changeAddressToCoords($params);
+		$fails = MapsParserGeocoder::changeAddressesToCoords($params);
 		
-		return self::getMapHtml($parser, $params, 'display_map');
+		return self::getMapHtml($parser, $params, 'display_map', $fails);
 	}
 
 	public static function getMapHtml(&$parser, array $params, $parserFunction, array $coordFails = array()) {

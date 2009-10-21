@@ -29,7 +29,7 @@ final class MapsParserGeocoder {
 	 *
 	 * @param array $params
 	 */
-	public static function changeAddressToCoords(&$params) {
+	public static function changeAddressesToCoords(&$params) {
 		global $egMapsDefaultService;
 
 		$fails = array();
@@ -46,14 +46,14 @@ final class MapsParserGeocoder {
 
 		$service = isset($service) ? MapsMapper::getValidService($service, 'pf') : $egMapsDefaultService;
 
-		$geoservice = isset($geoservice) ? $geoservice : '';
+		if (!isset($geoservice)) $geoservice = '';
 		
 		for ($i = 0; $i < count($params); $i++) {
 			
 			$split = split('=', $params[$i]);
-			$isAddress = ((strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1);
+			$isAddress = ((strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1) || count($split) == 1;
 			
-			if ($isAddress || count($split) == 1) {
+			if ($isAddress) {
 				$address_srting = count($split) == 1 ? $split[0] : $split[1];
 				$addresses = explode(';', $address_srting);
 
@@ -64,7 +64,7 @@ final class MapsParserGeocoder {
 					$args[0] = trim($args[0]);
 					
 					if (strlen($args[0]) > 0) {
-						$coords =  MapsGeocoder::geocodeToString($args[0], $geoservice, $service);
+						$coords =  MapsParserGeocoder::attemptToGeocode($args[0], $geoservice, $service);
 						
 						if ($coords) {
 							$args[0] = $coords;
@@ -88,19 +88,22 @@ final class MapsParserGeocoder {
 	 * 
 	 * @return unknown_type
 	 */
-	public static function attemptToGeocode($coordsOrAddress) {
+	private static function attemptToGeocode($coordsOrAddress, $geoservice, $service) {
 		// TODO: add check for DM and DD notations
 		$floatRegex = "/^\d{1,3}(|\.\d{1,7}),(|\s)\d{1,3}(|\.\d{1,7})$/";
 		$dmsRegex = "/^(\d{1,2}°)(\d{2}')?((\d{2}\")?|(\d{2}\.\d{2}\")?)(N|S)(| )(\d{1,2}°)(\d{2}')?((\d{2}\")?|(\d{2}\.\d{2}\")?)(E|W)$/";
 		
 		$needsGeocoding = !preg_match($floatRegex, $coordsOrAddress);
 		if ($needsGeocoding) $needsGeocoding = !preg_match($dmsRegex, $coordsOrAddress);
-		
+ 		
 		if ($needsGeocoding) {
-			// TODO: geocode
+			$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
+		}
+		else {
+			$coords = $coordsOrAddress;
 		}
 		
-		return array('coords' => $coords, 'geocoded' => $needsGeocoding);
+		return $coords;
 	}	
 	
 }
