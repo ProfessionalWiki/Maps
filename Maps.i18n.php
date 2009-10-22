@@ -124,6 +124,7 @@ K dispoziciji stojece kórtowe słužby: $1',
 	'maps_coordinates_missing' => 'Za kórtu njejsu koordinaty pódane.',
 	'maps_geocoding_failed' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było: $1. Kórta njedajo se zwobrazniś.',
 	'maps_geocoding_failed_for' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było a togodla toś {{PLURAL:$2|ta adresa wuwóstaja|tej adresy wuwóstajotej|te adrese wuwóstajaju|te adresy wuwóstajaju}} se na kórśe: $1',
+	'maps_map' => 'Karta',
 );
 
 /** Greek (Ελληνικά)
@@ -233,6 +234,7 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_coordinates_missing' => 'Za kartu njejsu koordinaty podate.',
 	'maps_geocoding_failed' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno: $1. Karta njeda so zwobraznić.',
 	'maps_geocoding_failed_for' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno a {{PLURAL:$2|tuta adresa|tutej adresy|tute adresy|tute adresy}} so na karće {{PLURAL:$2|wuwostaja|wuwostajetej|wuwostajeja|wuwostajeja}}: $1',
+	'maps_map' => 'Karta',
 );
 
 /** Hungarian (Magyar)
@@ -258,6 +260,7 @@ Servicios cartographic disponibile: $1',
 Le mappa non pote esser monstrate.',
 	'maps_geocoding_failed_for' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate e ha essite omittite del mappa:
 $1',
+	'maps_map' => 'Carta',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -300,6 +303,9 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
 	'maps_coordinates_missing' => "Et goufe keng Koordinate fir d'Kaart uginn.",
+	'maps_geocoding_failed_for' => 'Dës {{PLURAL:$2|Adress|Adresse}} konnten net geocodéiert ginn an {{PLURAL:$2|huet|hu}} missen op der Kaart ewechgelooss ginn:
+$1',
+	'maps_map' => 'Kaart',
 );
 
 /** Macedonian (Македонски)
