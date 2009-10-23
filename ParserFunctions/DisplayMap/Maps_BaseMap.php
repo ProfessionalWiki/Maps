@@ -27,8 +27,6 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * @return html
 	 */
 	public final function displayMap(&$parser, array $params) {			
-die('disp map');
-		
 		$this->setMapSettings();
 		
 		$coords = $this->manageMapProperties($params);
@@ -61,11 +59,31 @@ die('disp map');
 	 *
 	 */
 	private function setZoom() {
-		if (strlen($this->zoom) < 1) $this->zoom = $this->defaultZoom;			
+		if (empty($this->zoom)) $this->zoom = $this->defaultZoom;			
 	}	
 	
+	/**
+	 * Sets the $centre_lat and $centre_lon fields.
+	 */
 	private function setCentre() {
-		if (strlen($this->centre) < 1) $this->centre = $this->defaultZoom;	
+		if (empty($this->coordinates)) { // If centre is not set, use the default latitude and longitutde.
+			global $egMapsMapLat, $egMapsMapLon;
+			$this->centre_lat = $egMapsMapLat;
+			$this->centre_lon = $egMapsMapLon;	
+		} 
+		else { // If a centre value is set, geocode when needed and use it.
+			$this->coordinates = MapsParserGeocoder::attemptToGeocode($this->coordinates, $this->geoservice, $this->serviceName);
+
+			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
+			if ($this->coordinates) {
+				$this->coordinates = MapsUtils::getLatLon($this->coordinates);
+				$this->centre_lat = $this->coordinates['lat'];
+				$this->centre_lon = $this->coordinates['lon'];				
+			}
+			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
+				$this->setCentreDefaults();
+			}
+		}
 	}
 	
 }

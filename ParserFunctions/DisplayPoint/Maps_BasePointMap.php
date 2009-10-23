@@ -112,7 +112,6 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 	/**
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
-	 *
 	 */
 	private function setCentre() {
 		if (empty($this->centre)) {
@@ -129,18 +128,32 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 			}
 			else {
 				// If centre is not set and there are no markers, use the default latitude and longitutde.
-				global $egMapsMapLat, $egMapsMapLon;
-				$this->centre_lat = $egMapsMapLat;
-				$this->centre_lon = $egMapsMapLon;
+				$this->setCentreDefaults();
 			}
 		}
-		else {
-			// If a centre value is set, use it.
-			$centre = MapsUtils::getLatLon($this->centre);
-			$this->centre_lat = $centre['lat'];
-			$this->centre_lon = $centre['lon'];
-		}		
-	}	
+		else { // If a centre value is set, geocode when needed and use it.
+			$this->centre = MapsParserGeocoder::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
+			
+			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
+			if ($this->centre) {
+				$this->centre = MapsUtils::getLatLon($this->centre);
+				$this->centre_lat = $this->centre['lat'];
+				$this->centre_lon = $this->centre['lon'];				
+			}
+			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
+				$this->setCentreDefaults();
+			}
+		}
+	}
+	
+	/**
+	 * Sets the centre latitude and longitutde to the defaults.
+	 */
+	private function setCentreDefaults() {
+		global $egMapsMapLat, $egMapsMapLon;
+		$this->centre_lat = $egMapsMapLat;
+		$this->centre_lon = $egMapsMapLon;		
+	}
 	
 	/**
 	 * Parse the wiki text in the title and label values.

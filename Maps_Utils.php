@@ -35,6 +35,17 @@ class MapsUtils {
 		}
 	}
 	
+	private static function convertCoord($deg_coord = "") {
+		if (preg_match ( '/°/', $deg_coord )) {
+			if (preg_match ( '/"/', $deg_coord )) {
+				return MapsUtils::degree2Decimal ( $deg_coord );
+			} else {
+				return MapsUtils::decDegree2Decimal ( $deg_coord );
+			}
+		}
+		return $deg_coord;
+	}	
+	
 	private static function degree2Decimal($deg_coord = "") {
 		$dpos = strpos ( $deg_coord, '°' );
 		$mpos = strpos ( $deg_coord, '.' );
@@ -63,17 +74,6 @@ class MapsUtils {
 			$decimal *= - 1;
 		}
 		return $decimal;
-	}
-	
-	private static function convertCoord($deg_coord = "") {
-		if (preg_match ( '/°/', $deg_coord )) {
-			if (preg_match ( '/"/', $deg_coord )) {
-				return MapsUtils::degree2Decimal ( $deg_coord );
-			} else {
-				return MapsUtils::decDegree2Decimal ( $deg_coord );
-			}
-		}
-		return $deg_coord;
 	}
 	
 	public static function latDecimal2Degree($decimal) {

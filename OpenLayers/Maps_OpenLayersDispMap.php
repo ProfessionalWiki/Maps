@@ -13,7 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-class MapsOpenLayersDispMap extends MapsBasePointMap {
+class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsOpenLayersUtils::SERVICE_NAME;	
 	

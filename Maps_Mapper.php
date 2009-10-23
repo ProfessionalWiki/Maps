@@ -24,6 +24,7 @@ final class MapsMapper {
 	private static $mainParams = array
 			(
 			'service' => array(),
+			'geoservice' => array(),
 			'coordinates' => array('coords', 'location', 'locations'),
 			'zoom' => array(),
 			'centre' => array('center'),
@@ -115,6 +116,7 @@ final class MapsMapper {
 
         $mapDefaults = array(
             'service' => $egMapsDefaultService,
+        	'geoservice' => '',
             'coordinates' => "$egMapsMapLat, $egMapsMapLon",
         	'zoom' => '',
         	'centre' => '',

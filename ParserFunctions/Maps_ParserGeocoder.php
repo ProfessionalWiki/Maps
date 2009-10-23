@@ -79,31 +79,57 @@ final class MapsParserGeocoder {
 				$params[$i] = 'coordinates=' . implode(';', $coordinates);
 
 			}
+			
 		}
 
 		return $fails;
 	}	
 	
 	/**
+	 * This function first determines wether the provided string is a pair or coordinates 
+	 * or an address. If it's the later, an attempt to geocode will be made. The function will
+	 * return the coordinates or false, in case a geocoding attempt was made but failed. 
 	 * 
-	 * @return unknown_type
+	 * @param $coordsOrAddress
+	 * @param $geoservice
+	 * @param $service
+	 * 
+	 * @return string or boolean
 	 */
-	private static function attemptToGeocode($coordsOrAddress, $geoservice, $service) {
-		// TODO: add check for DM and DD notations
-		$floatRegex = "/^\d{1,3}(|\.\d{1,7}),(|\s)\d{1,3}(|\.\d{1,7})$/";
-		$dmsRegex = "/^(\d{1,2}°)(\d{2}')?((\d{2}\")?|(\d{2}\.\d{2}\")?)(N|S)(| )(\d{1,2}°)(\d{2}')?((\d{2}\")?|(\d{2}\.\d{2}\")?)(E|W)$/";
-		
-		$needsGeocoding = !preg_match($floatRegex, $coordsOrAddress);
-		if ($needsGeocoding) $needsGeocoding = !preg_match($dmsRegex, $coordsOrAddress);
- 		
-		if ($needsGeocoding) {
-			$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
+	public static function attemptToGeocode($coordsOrAddress, $geoservice, $service) {
+		if (MapsParserGeocoder::isCoordinate($coordsOrAddress)) {
+			$coords = $coordsOrAddress;
 		}
 		else {
-			$coords = $coordsOrAddress;
+			$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
 		}
 		
 		return $coords;
+	}	
+	
+	/**
+	 * 
+	 * @param $coordsOrAddress
+	 * @return unknown_type
+	 */
+	private static function isCoordinate($coordsOrAddress) {		
+		$coordRegexes = array( // TODO: change . to °, this won't work for some reason
+			'/^\d{1,3}(\.\d{1,7})?,(\s)?\d{1,3}(\.\d{1,7})?$/', // Floats
+			'/^(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(N|S)(\s)?(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(E|W)$/', // DMS // TODO: compress logic
+			'/^(-)?\d{1,3}(|\.\d{1,7}).,(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,7}).$/', // DD
+			'/(-)?\d{1,3}.\d{1,3}(\.\d{1,7}\')?,(\s)?(-)?\d{1,3}.\d{1,3}(\.\d{1,7}\')?$/', // DM
+			);
+			
+		$isCoordinate = false;
+		
+		foreach ($coordRegexes as $coordRegex) {
+			if (preg_match($coordRegex, $coordsOrAddress)) {
+				$isCoordinate = true;
+				continue;
+			}		
+		}
+
+		return $isCoordinate;
 	}	
 	
 }

@@ -13,7 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-class MapsYahooMapsDispMap extends MapsBasePointMap {
+class MapsYahooMapsDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsYahooMapsUtils::SERVICE_NAME;		
 	

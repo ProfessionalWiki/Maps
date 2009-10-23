@@ -13,7 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-final class MapsGoogleMapsDispMap extends MapsBasePointMap {
+final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsGoogleMapsUtils::SERVICE_NAME;
 
