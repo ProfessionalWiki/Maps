@@ -196,6 +196,7 @@ $messages['gsw'] = array(
 	'maps_coordinates_missing' => 'S git kei Koordinate fir die Charte.',
 	'maps_geocoding_failed' => 'Die {{PLURAL:$2|Adräss het|Adräss hän}} nit chenne georeferänziert wäre: $1. D Charte cha nit aazeigt wäre.',
 	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|Adräss het|Adrässe hän}} nit chenne georeferänziert wäre un {{PLURAL:$2|isch|sin}} us dr Charte uusegnuu wore: $1',
+	'maps_map' => 'Charte',
 );
 
 /** Hebrew (עברית)
@@ -285,6 +286,7 @@ $messages['ja'] = array(
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
 	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
+	'maps_map' => '地図',
 );
 
 /** Ripoarisch (Ripoarisch)
