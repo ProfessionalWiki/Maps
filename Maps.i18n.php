@@ -136,9 +136,11 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
+	'maps_map' => 'Mapa',
 );
 
 /** Basque (Euskara)
