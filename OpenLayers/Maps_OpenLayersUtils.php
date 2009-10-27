@@ -29,7 +29,7 @@ final class MapsOpenLayersUtils {
 	 * @param string $layer The layer to check (and load the dependencies for
 	 */
 	public static function loadDependencyWhenNeeded(&$output, $layer) {
-		global $wgJsMimeType;
+		global $wgJsMimeType, $wgStyleVersion;
 		global $egGoogleMapsOnThisPage, $egMapsScriptPath;
 		
 		switch ($layer) {
@@ -49,7 +49,7 @@ final class MapsOpenLayersUtils {
 				if (!self::$loadedOL) { $output .= "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>\n"; self::$loadedOL = true; }
 				break;
 			case 'osm' : case 'openstreetmap' :
-				if (!self::$loadedOSM) { $output .= "<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OSM/OpenStreetMap.js'></script>\n"; self::$loadedOSM = true; }
+				if (!self::$loadedOSM) { $output .= "<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OSM/OpenStreetMap.js?$wgStyleVersion'></script>\n"; self::$loadedOSM = true; }
 				break;													
 		}		
 	}

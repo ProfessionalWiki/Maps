@@ -30,6 +30,7 @@ $1',
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers', 
+	'maps_osm' => 'OpenStreetMaps', 
 );
 
 /** Message documentation (Message documentation)

@@ -53,9 +53,6 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 		$this->type = MapsYahooMapsUtils::getYMapType($this->type, true);
 		
 		$this->controls = MapsYahooMapsUtils::createControlsString($this->controls);
-		
-		MapsUtils::makePxValue($this->width);
-		MapsUtils::makePxValue($this->height);
 
 		$this->autozoom = MapsYahooMapsUtils::getAutozoomJSValue($this->autozoom);
 		
@@ -83,10 +80,10 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 		$typesString = MapsYahooMapsUtils::createTypesString($this->types);		
 		
 		$this->output .= <<<END
-		<div id="$this->mapName" style="width: $this->width; height: $this->height;"></div>  
+		<div id="$this->mapName" style="width: {$this->width}px; height: {$this->height}px;"></div>  
 		
 		<script type="$wgJsMimeType">/*<![CDATA[*/
-		addLoadEvent(
+		addOnloadHook(
 			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString])
 		);
 			/*]]>*/</script>

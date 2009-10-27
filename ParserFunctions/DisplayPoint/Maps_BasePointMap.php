@@ -154,7 +154,7 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 		$this->centre_lat = $egMapsMapLat;
 		$this->centre_lon = $egMapsMapLon;		
 	}
-	
+
 	/**
 	 * Parse the wiki text in the title and label values.
 	 * 
@@ -167,7 +167,6 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 	
 	/**
 	 * Escape the title and label text
-	 *
 	 */
 	private function doEscaping() {
 		$this->title = str_replace("'", "\'", $this->title);

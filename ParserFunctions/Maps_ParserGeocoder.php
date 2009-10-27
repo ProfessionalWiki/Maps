@@ -109,13 +109,13 @@ final class MapsParserGeocoder {
 	
 	/**
 	 * 
-	 * @param $coordsOrAddress
-	 * @return unknown_type
+	 * 
+	 * @param string $coordsOrAddress
 	 */
 	private static function isCoordinate($coordsOrAddress) {		
 		$coordRegexes = array( // TODO: change . to °, this won't work for some reason
 			'/^\d{1,3}(\.\d{1,7})?,(\s)?\d{1,3}(\.\d{1,7})?$/', // Floats
-			'/^(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(N|S)(\s)?(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(E|W)$/', // DMS // TODO: compress logic
+			'/^(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(N|S)(\s)?(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(E|W)$/', // DMS 
 			'/^(-)?\d{1,3}(|\.\d{1,7}).,(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,7}).$/', // DD
 			'/(-)?\d{1,3}.\d{1,3}(\.\d{1,7}\')?,(\s)?(-)?\d{1,3}.\d{1,3}(\.\d{1,7}\')?$/', // DM
 			);

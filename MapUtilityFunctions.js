@@ -9,6 +9,7 @@
   * @author Jeroen De Dauw
   */
 
+/*
 function addLoadEvent(func) {
 	var oldonload = window.onload;
 	if (typeof oldonload == 'function') {
@@ -21,6 +22,7 @@ function addLoadEvent(func) {
 		window.onload = func;
 	}
 }
+*/
 
 function convertLatToDMS (val) {
 	return Math.abs(val) + "° " + ( val < 0 ? "S" : "N" );

@@ -115,7 +115,7 @@ final class MapsGoogleMapsUtils {
 	 * @param string $output
 	 */
 	public static function addGMapDependencies(&$output) {
-		global $wgJsMimeType, $wgLang, $wgOut;
+		global $wgJsMimeType, $wgLang, $wgStyleVersion;
 		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
@@ -123,11 +123,9 @@ final class MapsGoogleMapsUtils {
 
 			MapsGoogleMapsUtils::validateGoogleMapsKey();
 			
-			$wgOut->addScriptFile($egMapsScriptPath . '/GoogleMaps/GoogleMapFunctions.js');
-			
 			// TODO: use strbuilder for performance gain?
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js'></script>";
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js?$wgStyleVersion'></script>";
 		}
 	}
 	

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MapsMapFeature bundles some base functionallity for all general mapping feature classes
+ * MapsMapFeature bundles some base functionallity for all general mapping feature classes.
  *
  * @file Maps_MapFeature.php
  * @ingroup Maps
@@ -67,7 +67,10 @@ abstract class MapsMapFeature {
 			}
 		}
 		
+		// TODO: refactor down - not every mapping feature/service should support a controls parameter
 		MapsMapper::enforceArrayValues($this->controls);
+		
+		MapsUtils::makeMapSizeValid($this->width, $this->height);
 	}	
 	
 	/**
