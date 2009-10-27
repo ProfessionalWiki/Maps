@@ -86,6 +86,7 @@ $messages['br'] = array(
 N'haller ket diskwel ar gartenn.",
 	'maps_geocoding_failed_for' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul, setu {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn : 
 $1",
+	'maps_map' => 'Kartenn',
 );
 
 /** Bosnian (Bosanski)
@@ -99,6 +100,7 @@ Dostupne usluge mapa: $1',
 Mapa se ne može prikazati.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Slijedeća adresa nije|Slijedeće adrese nisu}} mogle biti geokodiranje i {{PLURAL:$2|izostavljena je|izostavljene su}} iz mape:
 $1',
+	'maps_map' => 'Mapa',
 );
 
 /** Catalan (Català)
@@ -250,6 +252,7 @@ $messages['hu'] = array(
 A térképet nem lehet megjeleníteni.',
 	'maps_geocoding_failed_for' => 'A következő {{PLURAL:$2|cím nem geokódolható|címek nem geokódolhatóak}}, és nem {{PLURAL:$2|szerepel|szerepelnek}} a térképen:
 $1',
+	'maps_map' => 'Térkép',
 );
 
 /** Interlingua (Interlingua)
