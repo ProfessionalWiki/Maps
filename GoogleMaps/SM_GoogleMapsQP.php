@@ -86,7 +86,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		$this->output .= <<<END
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
-addLoadEvent(
+addOnloadHook(
 	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString])
 );
 /*]]>*/ </script>

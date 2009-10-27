@@ -54,9 +54,6 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		
 		MapsMapper::enforceArrayValues($this->layers);
 		$layerItems = MapsOpenLayersUtils::createLayersStringAndLoadDependencies($this->output, $this->layers);
-
-		MapsUtils::makePxValue($this->width);
-		MapsUtils::makePxValue($this->height);
 			
 		$markerItems = array();
 		
@@ -72,9 +69,9 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		
 		$markersString = implode(',', $markerItems);		
 		
-		$this->output .= "<div id='$this->mapName' style='width: $this->width; height: $this->height; background-color: #cccccc;'></div>
+		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
-			addLoadEvent(
+			addOnloadHook(
 				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems], [$markersString])
 			);
 		/*]]>*/ </script>";		
