@@ -143,6 +143,8 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
+	'maps_geocoding_failed' => ' {{PLURAL:$2|La siguiente dirección no ha podido ser geocodificada|Las siguientes direcciones no han podido ser geocodificadas}}: $1.
+No se puede mostrar el mapa.',
 	'maps_map' => 'Mapa',
 );
 
