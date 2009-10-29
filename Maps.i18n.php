@@ -383,6 +383,7 @@ $messages['pms'] = array(
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peulo pa esse sota geocode: $1.
 La mapa a peul pa esse visualisà.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peula pa esse sota geocode e a {{PLURAL:$2|l'é pa stàita|son pa stàite}}  butà ant la mapa: $1",
+	'maps_map' => 'Mapa',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -436,6 +437,7 @@ Dostupné mapovacie služby: $1',
 	'maps_coordinates_missing' => 'Neboli poskytnuté žiadne súradnice.',
 	'maps_geocoding_failed' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}}: $1.',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
+	'maps_map' => 'Mapa',
 );
 
 /** Swedish (Svenska)
