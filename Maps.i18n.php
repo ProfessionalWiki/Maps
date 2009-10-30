@@ -143,7 +143,7 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
-	'maps_geocoding_failed' => ' {{PLURAL:$2|La siguiente dirección no ha podido ser geocodificada|Las siguientes direcciones no han podido ser geocodificadas}}: $1.
+	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
 	'maps_map' => 'Mapa',
 );
@@ -180,6 +180,20 @@ Services de cartographie disponibles : $1',
 Le plan ne peut pas être affiché.",
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|L′adresse suivante n’as pu être géocodée|Les adresses suivantes n’ont pas pu être géocodées}} et {{PLURAL:$2|n’est pas affichée|ne sont pas affichées}} sur le plan : $1',
 	'maps_map' => 'Carte',
+);
+
+/** Friulian (Furlan)
+ * @author Klenje
+ */
+$messages['fur'] = array(
+	'maps_desc' => 'Al furnìs la possibilitât di mostrâ i dâts de coordinadis e lis direzions geocodificadis intune mape ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Servizis di mapis disponibii: $1',
+	'maps_coordinates_missing' => 'Nissune coordenade furnide pe mape.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|La direzion ca sot no pues jessi geocodificade|Lis direzions ca sot no puedin jessi geocodificadis}}: $1.
+La mape no pues jessi mostrade.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|La direzion|Lis direzions}} ca sot no {{PLURAL:$2|pues|puedin}} jessi {{PLURAL:$2|geocodificade|geocodificadis}} e  {{PLURAL:$2|no je mostrade|no son mostradis}} te mape:
+$1',
+	'maps_map' => 'Mape',
 );
 
 /** Galician (Galego)
@@ -375,6 +389,7 @@ Mapa nie może zostać wyświetlona.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -383,7 +398,7 @@ $messages['pms'] = array(
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peulo pa esse sota geocode: $1.
 La mapa a peul pa esse visualisà.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peula pa esse sota geocode e a {{PLURAL:$2|l'é pa stàita|son pa stàite}}  butà ant la mapa: $1",
-	'maps_map' => 'Mapa',
+	'maps_map' => 'Pian',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
