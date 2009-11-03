@@ -17,7 +17,7 @@ $egMapsServices['osm'] = array(
 									'classes' => array(
 											array('class' => 'MapsOSMUtils', 'file' => 'OpenStreetMaps/Maps_OSMUtils.php', 'local' => true)
 											),
-									'aliases' => array('openstreetmaps'),
+									'aliases' => array('openstreetmap', 'openstreetmaps'),
 									'parameters' => array(
 											)
 									);
