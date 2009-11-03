@@ -9,26 +9,11 @@
   * @author Jeroen De Dauw
   */
 
-/*
-function addLoadEvent(func) {
-	var oldonload = window.onload;
-	if (typeof oldonload == 'function') {
-		window.onload = function() {
-			oldonload();
-			func();
-		};
-	}
-	else { 
-		window.onload = func;
-	}
-}
-*/
-
 function convertLatToDMS (val) {
-	return Math.abs(val) + "Â° " + ( val < 0 ? "S" : "N" );
+	return Math.abs(val) + "° " + ( val < 0 ? "S" : "N" );
 }
 
 function convertLngToDMS (val) {
-	return Math.abs(val) + "Â° " + ( val < 0 ? "W" : "E" );
+	return Math.abs(val) + "° " + ( val < 0 ? "W" : "E" );
 
 }

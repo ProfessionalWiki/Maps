@@ -17,19 +17,16 @@ abstract class MapsMapFeature {
 	
 	/**
 	 * Set the map service specific element name and the javascript function handling the displaying of an address
-	 *
 	 */
 	protected abstract function setMapSettings();
 	
 	/**
 	 * Map service specific map count and loading of dependencies
-	 *
 	 */	
 	protected abstract function doMapServiceLoad();
 	
 	/**
 	 * Adds the HTML specific to the mapping service to the output
-	 *
 	 */	
 	protected abstract function addSpecificMapHTML();
 	
@@ -51,7 +48,6 @@ abstract class MapsMapFeature {
 	
 	/**
 	 * Sets the map properties as class fields.
-	 *
 	 */
 	protected function manageMapProperties($mapProperties, $className) {
 		global $egMapsServices;
@@ -67,7 +63,6 @@ abstract class MapsMapFeature {
 			}
 		}
 		
-		// TODO: refactor down - not every mapping feature/service should support a controls parameter
 		MapsMapper::enforceArrayValues($this->controls);
 		
 		MapsUtils::makeMapSizeValid($this->width, $this->height);
@@ -75,7 +70,6 @@ abstract class MapsMapFeature {
 	
 	/**
 	 * Sets the $mapName field, using the $elementNamePrefix and $elementNr.
-	 *
 	 */
 	protected function setMapName() {
 		$this->mapName = $this->elementNamePrefix.'_'.$this->elementNr;

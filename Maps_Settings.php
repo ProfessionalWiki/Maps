@@ -64,11 +64,11 @@ include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	/
 include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
 include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
 include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
-//include_once $egMapsIP . '/OpenStreetMaps/Maps_OSM.php'; 		// OpenLayers optimized for OSM
+include_once $egMapsIP . '/OpenStreetMaps/Maps_OSM.php'; 		// OpenLayers optimized for OSM
 							
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers'/*, 'osm'*/);
+$egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers', 'osm');
 
 # String. The default mapping service, which will be used when no default service is prsent in the
 # $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
@@ -203,9 +203,8 @@ $egMapsOpenLayersPrefix = 'open_layer';
 $egMapsOpenLayersZoom = 13;
 
 # Array of String. The default controls for Open Layers. This value will only be used when the user does not provide one.
-# Available values: layerswitcher, mouseposition, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-# Note: panzoom and panzoombar can NOT be used together
-$egMapsOLControls = array('layerswitcher', 'mouseposition', 'panzoombar', 'scaleline', 'navigation');
+# Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
+$egMapsOLControls = array('layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation');
 
 # Array of String. The default layers for Open Layers. This value will only be used when the user does not provide one.
 # Available values: google, bing, yahoo, openlayers, nasa
@@ -220,3 +219,7 @@ $egMapsOSMPrefix = 'map_osm';
 
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
 $egMapsOSMZoom = 13;
+
+# Array of String. The default controls for OSM maps. This value will only be used when the user does not provide one.
+# Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
+$egMapsOSMControls = array('layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation');

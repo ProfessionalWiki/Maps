@@ -64,17 +64,34 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 			$label = str_replace("'", "\'", $label);				
 
 			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
-			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label', '$icon')";
+			$markerItems[] = "getOSMMarkerData($lon, $lat, '$title', '$label', '$icon')";
 		}		
 		
 		$markersString = implode(',', $markerItems);		
 		
-		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
-		<script type='$wgJsMimeType'> /*<![CDATA[*/
-			addOnloadHook(
-				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[$markersString])
-			);
-		/*]]>*/ </script>";
+		$controlItems = MapsOSMUtils::createControlsString($this->controls);
+		
+		$this->output .= <<<EOT
+			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
+				mode: 'osm-wm',
+				layer: 'osm-like',
+				locale: 'en',				
+				lat: $this->centre_lat,
+				lon: $this->centre_lon,
+				zoom: $this->zoom,
+				width: $this->width,
+				height: $this->height,
+				markers: [$markersString],
+				controls: [$controlItems]
+				
+			});</script>
+		
+				<!-- map div -->
+				<div id='$this->mapName' class='map' style='width:{$this->width}px; height:{$this->height}px;'>
+					<script type='$wgJsMimeType'>slippymaps['$this->mapName'].init();</script>
+				<!-- /map div -->
+				</div>
+EOT;
 	}
 
 }

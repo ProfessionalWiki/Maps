@@ -80,13 +80,11 @@ final class MapsOSMUtils {
 	public static function getDefaultParams() {
 		return array
 			(
-			'layers' => array(),
-			'baselayer' => ''
 			); 		
 	}		
 	
 	/**
-	 * If this is the first open layers map on the page, load the API, styles and extra JS functions
+	 * If this is the first OSM map on the page, load the OpenLayers API, OSM styles and extra JS functions
 	 * 
 	 * @param string $output
 	 */
@@ -102,6 +100,17 @@ final class MapsOSMUtils {
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMaps/OSMFunctions.js?$wgStyleVersion'></script>
 			<script type='$wgJsMimeType'>slippymaps = Array();</script>\n";
 		}		
+	}	
+
+	/**
+	 * Build up a csv string with the controls, to be outputted as a JS array
+	 *
+	 * @param array $controls
+	 * @return csv string
+	 */
+	public static function createControlsString(array $controls) {
+		global $egMapsOSMControls;
+		return MapsMapper::createJSItemsString($controls, $egMapsOSMControls);
 	}		
 	
 }

@@ -126,7 +126,7 @@ class MapsUtils {
 	 */
 	public static function makeMapSizeValid(&$width, &$height) {
 		global $egMapsSizeRestrictions;
-		
+
 		if ($width < $egMapsSizeRestrictions['width'][0])  {
 			$width = $egMapsSizeRestrictions['width'][0];
 		}
@@ -134,11 +134,11 @@ class MapsUtils {
 			$width = $egMapsSizeRestrictions['width'][1];
 		}
 		
-		if ($width < $egMapsSizeRestrictions['height'][0])  {
-			$width = $egMapsSizeRestrictions['height'][0];
+		if ($height < $egMapsSizeRestrictions['height'][0])  {
+			$height = $egMapsSizeRestrictions['height'][0];
 		}
-		else if($width > $egMapsSizeRestrictions['height'][1]) {
-			$width = $egMapsSizeRestrictions['height'][1];
+		else if($height > $egMapsSizeRestrictions['height'][1]) {
+			$height = $egMapsSizeRestrictions['height'][1];
 		}		
 	}
 

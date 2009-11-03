@@ -66,8 +66,8 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;	
 			
 			$title = str_replace("'", "\'", $title);
-			$label = str_replace("'", "\'", $label);				
-				
+			$label = str_replace("'", "\'", $label);
+
 			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
 			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label', '$icon')";
 		}		
@@ -77,7 +77,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
 			addOnloadHook(
-				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[$markersString])
+				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[$markersString], $this->height)
 			);
 		/*]]>*/ </script>";
 	}

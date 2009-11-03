@@ -1,6 +1,6 @@
 <?php
 
-/**
+/** 
  * A class that holds static helper functions for common functionality that is not map-spesific.
  *
  * @file Maps_Mapper.php

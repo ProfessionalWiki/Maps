@@ -11,7 +11,7 @@
  * Creates and initializes an OpenLayers map. 
  * The resulting map is returned by the function but no further handling is required in most cases.
  */
-function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data){
+function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data, height){
 
 	// Create a new OpenLayers map with without any controls on it
 	var mapOptions = 	{ 
@@ -31,6 +31,10 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 		
 		// If a string is provided, find the correct name for the control, and use eval to create the object itself
 		if (typeof controls[i] == 'string') {
+			if (controls[i].toLowerCase() == 'autopanzoom') {
+				if (height > 140) controls[i] = height > 320 ? 'panzoombar' : 'panzoom';
+			}	
+				
 			control = getValidControlName(controls[i]);
 			
 			if (control) {

@@ -50,19 +50,22 @@ class MapsOSMDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 
+		$controlItems = MapsOSMUtils::createControlsString($this->controls);
+		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
 				mode: 'osm-wm',
 				layer: 'osm-like',
-				locale: 'en',				
+				locale: 'en',
 				lat: $this->centre_lat,
 				lon: $this->centre_lon,
 				zoom: $this->zoom,
 				width: $this->width,
 				height: $this->height,
-				marker: 0
+				markers: [],
+				controls: [$controlItems]
 			});</script>
-		
+
 				<!-- map div -->
 				<div id='$this->mapName' class='map' style='width:{$this->width}px; height:{$this->height}px;'>
 					<script type='$wgJsMimeType'>slippymaps['$this->mapName'].init();</script>
