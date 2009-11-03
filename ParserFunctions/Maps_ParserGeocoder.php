@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * File holding the MapsParserGeocoder class.
  *
  * @file Maps_ParserGeocoder.php
  * @ingroup Maps
@@ -108,16 +108,18 @@ final class MapsParserGeocoder {
 	}	
 	
 	/**
-	 * 
+	 * Returns a boolean indication if a provided value is a valid coordinate.
 	 * 
 	 * @param string $coordsOrAddress
+	 * 
+	 * @return boolean
 	 */
 	private static function isCoordinate($coordsOrAddress) {		
-		$coordRegexes = array( // TODO: change . to °, this won't work for some reason
-			'/^\d{1,3}(\.\d{1,7})?,(\s)?\d{1,3}(\.\d{1,7})?$/', // Floats
+		$coordRegexes = array( // TODO: change .{2} to °, this won't work for some reason
+			'/^(-)?\d{1,3}(\.\d{1,7})?,(\s)?(-)?\d{1,3}(\.\d{1,7})?$/', // Floats
 			'/^(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(N|S)(\s)?(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(E|W)$/', // DMS 
-			'/^(-)?\d{1,3}(|\.\d{1,7}).,(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,7}).$/', // DD
-			'/(-)?\d{1,3}.\d{1,3}(\.\d{1,7}\')?,(\s)?(-)?\d{1,3}.\d{1,3}(\.\d{1,7}\')?$/', // DM
+			'/^(-)?\d{1,3}(|\.\d{1,7}).{2},(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,7}).{2}$/', // DD
+			'/(-)?\d{1,3}.{2}\d{1,3}(\.\d{1,7}\')?,(\s)?(-)?\d{1,3}.{2}\d{1,3}(\.\d{1,7}\')?$/', // DM
 			);
 			
 		$isCoordinate = false;

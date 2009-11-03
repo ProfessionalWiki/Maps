@@ -1,12 +1,12 @@
 == About ==
 
-Maps is an extension that provides the ability to display coordinate data, using multiple
-mapping services, including Google Maps, OpenLayers and Yahoo Maps, and allows users to
-geocode addresses. It can be used together with Semantic Maps, which adds semantic
-capabilities to the mapping services, but can also be used without it on non-semantic
-wiki's. Both Maps and Semantic Maps are based on Semantic Google Maps and Semantic Layers,
-and are meant to replace those extensions. Maps contains all functionality of Google
-Geocoder, and so also replaces this extension.
+Maps is a MediaWiki extension that provides the ability to display coordinate data 
+on maps and allows users to geocode addresses.
+
+Due to it's unique structure, it allows you to use multiple mapping services to 
+display your coordinates. These include Google Maps, Yahoo! Maps, OpenLayers, and 
+also allow you to display maps with Google Earth, OpenStreetMaps, Bing maps and others.
+Modifying the mapping service of a map is as easy as changing a single parameter!
 
 Notes on installing Maps are found in the file INSTALL.
 
@@ -19,6 +19,7 @@ gmail.com.
 
 [0] http://www.mediawiki.org/w/index.php?title=Extension_talk:Maps
 
+For more info, see http://www.mediawiki.org/wiki/Extension:Maps#Contributing_to_the_project
 
 == Credits to other projects ==
 

@@ -3,8 +3,112 @@ For a documentation of all features, see http://www.mediawiki.org/wiki/Extension
 ==Maps change log==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every version of Maps.
 
+=== Maps 0.4 ===
+(2009-11-03)
+
+==== New features ====
+
+* Added display_map parser function, to display maps without any markers.
+
+* Added parsing of marker-specific title and label values.
+
+* Added geocoding support for the centre parameter. This is based on automatic detection of non-coordinates to see if geocoding is required, similar to the modified behaviour of display_point(s).
+
+* Added minimum and maximum map size restrictions, like done in SlippyMap.
+
+* Added OSM mapping service, which uses OL, but only allows OSM layers and is optimized for OSM.
+
+* Added smart 'autopanzoom' control to OL and OSM services. It will determine for itself if a panzoom, panzoombar, or no control should be displayed, depending on the maps height.
+
+* Added support for DM and DD coordinate notations.
+
+==== Refactoring ====
+
+* Created a hook system for the parser functions, allowing the adding or removing of additional parser function support.
+
+* Removed redundant absolute script path variable. This absolute value caused problems for some installations.
+
+* Changed the geocoding functionality into a true feature hook element, enabling easy removal.
+
+* Created service hook for the geocoding feature, loose from the mapping services hook.
+
+* Changed display_point(s) and display_address(es) to display_point(s), with auto detect functionality to see if the provided value are coordinates or addresses. display_address and display_addresses have been retained for backward compatibility, but will be removed from the docs. Backward compatibility will be removed at some point, so the use of these functions is discouraged.
+
+==== Bug fixes ====
+
+* Fixed issue with the default parameter for the display_address(es) parser functions.
+
+* Fixed major bug in the initialization method causing hook code to get executed at a probably wrong moment. This bug can be the cause of some weird problems that surfaced since 0.3.3.
+
+* Fixed issue with size of popups in Google Maps. They did not stretch far enough vertically for large contents.
+
+===Maps 0.3.4===
+(2009-09-12)
+
+Changes in 0.3.4 discussed on the authors blog:
+
+* [http://blog.bn2vs.com/2009/09/12/maps-and-semantic-maps-0-3-4-released/ Maps and Semantic Maps 0.3.4 released]
+
+====New features====
+
+* Created hook system for features, which now also allows you to specify which features should be enabled and which not.
+
+====Refactoring====
+
+* Added old style geocoding request again for people who do not have cURL enabled, plus a more consistent fall-back mechanism.
+
+* Added internationalization for the mapping service names.
+
+* Added internationalized list notations.
+
+* Restructured the parser function handling code to work with the new feature hook system.
+
+* Improved structure of geocoding classes.
+
+* Moved Semantic Maps JavaScript code from the Maps JS files to new SM JS files.
+
+* Fixed tiny performance issues all over the code.
+
+====Bug fixes====
+
+* Fixed issue with empty parameters (par=value||par2=value2) that caused the default parameter (coordinate(s)/address(es)) to be overridden if it occurred after the default one was set.
+
+* Fixed wrong error message when you provide a coordinate(s)/address(es) parameter without any value (ie |coordinates=|)
+
+===Maps 0.3.3===
+(2009-08-25)
+
+Changes in 0.3.3 discussed on the authors blog:
+
+* [http://blog.bn2vs.com/2009/08/25/maps-and-semantic-maps-0-3-3/ Maps and Semantic Maps 0.3.3]
+
+====New features====
+
+*Added [http://www.geonames.org GeoNames] geocoding support. This is an open source geocoding service, that does not require a licence. It has been made the default geocoding service.
+
+* Added wiki-text rendering to the values of the title and label parameters, allowing users to pass along links, images, and more.
+
+====Refactoring====
+
+* Refactored some common functionality of the geocoder classes up to MapsBaseGeocoder.
+
+* Minor issue - the OpenLayers default zoom should be closer, when displaying one point - see the last map in [http://discoursedb.org/wiki/One-point_map the same page].
+
+====Bug fixes====
+
+* Fixed small bug in MapsMapper::inParamAliases that caused the determination of the geoservice to fail in some cases, and set it to the default.
+
+===Maps 0.3.2===
+(2009-08-18)
+
+Release for consistency. Only changes to Semantic Maps where made in 0.3.2.
+
 ===Maps 0.3.1===
 (2009-08-18)
+
+====New features====
+
+* Users can now define a default service for each feature - parser functions, query printers and form inputs.
 
 ====Refactoring====
 
@@ -16,7 +120,9 @@ This change log contains a list of completed to-do's (new features, bug fixes, r
 
 ====Bug fixes====
 
-* Added path to extension directory to non local class item in a service's info array, since adding the path is impossible in the declaration.===Maps 0.3===
+* Added path to extension directory to non local class item in a service's info array, since adding the path is impossible in the declaration.
+
+===Maps 0.3===
 (2009-08-14)
 
 Changes in 0.3 discussed on the authors blog:
