@@ -79,7 +79,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		<div id='".$this->mapName."' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(makeFormInputOpenLayer('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", [$layerItems], [$controlItems]));
+		addOnloadHook(makeFormInputOpenLayer('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", [$layerItems], [$controlItems], $this->height));
 		/*]]>*/</script>";			
 	}
 	

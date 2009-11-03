@@ -11,7 +11,7 @@
  * This function holds spesific functionallity for the Open Layers form input of Semantic Maps
  * TODO: Refactor as much code as possible to non specific functions
  */
-function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls) {
+function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls, height) {
 	var markers = Array();
 
 	// Show a starting marker only if marker coordinates are provided
@@ -54,7 +54,7 @@ function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, mark
 	var clickHanler = new OpenLayers.Control.Click();
      controls.push(clickHanler);
      
-     var map = initOpenLayer(mapName, lon, lat, zoom, layers, controls, markers);
+     var map = initOpenLayer(mapName, lon, lat, zoom, layers, controls, markers, height);
 	
 	// Make the map variable available for other functions
 	if (!window.OLMaps) window.OLMaps = new Object;

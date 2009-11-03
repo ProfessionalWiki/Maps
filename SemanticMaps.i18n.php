@@ -142,11 +142,8 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
- * @author Locos epraix
  */
 $messages['es'] = array(
-	'semanticmaps_desc' => 'Proporciona la capacidad de ver y editar los datos coordinados almacenados a través de la extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Servicios de mapas disponibles: $1',
 	'semanticmaps_lookupcoordinates' => 'Busque las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Ingresar dirección aquí',
 	'semanticmaps_notfound' => 'no encontrado',
