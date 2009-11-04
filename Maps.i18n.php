@@ -77,6 +77,13 @@ $1',
 	'maps_map' => 'Мапа',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'maps_map' => 'Карта',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
