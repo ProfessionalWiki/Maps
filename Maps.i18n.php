@@ -491,6 +491,7 @@ $messages['th'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'maps_name' => 'Bản đồ',
 	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://wiki.bn2vs.com/wiki/Maps thử xem]).
 Các dịch vụ bản đồ có sẵn: $1',
 	'maps_coordinates_missing' => 'Chưa định rõ tọa độ cho bản đồ.',
@@ -498,5 +499,6 @@ Các dịch vụ bản đồ có sẵn: $1',
 Không thể hiển thị bản đồ.',
 	'maps_geocoding_failed_for' => 'Không thể tính ra mã địa lý của {{PLURAL:$2|địa chỉ|các địa chỉ}} sau nên bản đồ bỏ qua nó:
 $1',
+	'maps_osm' => 'OpenStreetMap',
 );
 
