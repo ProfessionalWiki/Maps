@@ -28,7 +28,9 @@ Available map services: $1",
  * @author Raymond
  */
 $messages['qqq'] = array(
-	'semanticmaps_desc' => '{{desc}}',
+	'semanticmaps_desc' => '{{desc}}
+
+* $1: a list of available map services',
 );
 
 /** Afrikaans (Afrikaans)
