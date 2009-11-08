@@ -328,6 +328,7 @@ $messages['ksh'] = array(
 	'maps_coordinates_missing' => 'Mer han kein Koodinaate för di Kaat.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Di Koodinaat|De Koodinaate|Kein Koodinaat}} om Jlobus för di {{PLURAL:$2|aanjejovve Adräß wohr|aanjejovve Adräße wohre|kein aanjejovve Adräß wohr}} Kappes: $1. Di Kaat künne mer su nit aanzeije.',
 	'maps_geocoding_failed_for' => 'De Koodinaate om Jlobus för {{PLURAL:$2|ein|paa|kein}} vun dä aanjejovve Adräße {{PLURAL:$2|es|wohre|Fähler!}} Kappes. Di {{PLURAL:$2|es|sin|Fähler!}} dröm nit op dä Kaat. De fottjelohße {{PLURAL:$2|es|sin|Fähler!}}: $1',
+	'maps_map' => 'Kaat',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -425,9 +426,17 @@ $1',
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
+	'maps_desc' => 'Asigură capacitatea de a afişa coordonate pe hărţi şi adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstraţie]).
+Servici de cartografiere disponibile: $1',
 	'maps_coordinates_missing' => 'Nici o coordonată oferită pentru hartă.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}}: $1.
+Harta nu poate fi afişată.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}} şi {{PLURAL:$2|a|au}} fost {{PLURAL:$2|omisă|omise}} de pe hartă:
+$1',
+	'maps_map' => 'Hartă',
 );
 
 /** Tarandíne (Tarandíne)
