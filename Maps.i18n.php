@@ -141,6 +141,12 @@ K dispoziciji stojece kórtowe słužby: $1',
 	'maps_coordinates_missing' => 'Za kórtu njejsu koordinaty pódane.',
 	'maps_geocoding_failed' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było: $1. Kórta njedajo se zwobrazniś.',
 	'maps_geocoding_failed_for' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było a togodla toś {{PLURAL:$2|ta adresa wuwóstaja|tej adresy wuwóstajotej|te adrese wuwóstajaju|te adresy wuwóstajaju}} se na kórśe: $1',
+	'maps_error_parameters' => 'Slědujuce zmólki su se namakali w twójej syntaksy:',
+	'maps_error_invalid_argument' => 'Gódnota $1 njejo płaśiwa za parameter $2.',
+	'maps_error_empty_argument' => 'Parameter $1 njamóžo proznu gódnotu měś.',
+	'maps_error_required_missing' => 'Trěbny parameter $1 njejo pódany.',
+	'maps_error_must_be_number' => 'Parameter $1 móžo jano licba byś.',
+	'maps_error_ivalid_range' => 'Parameter $1 musy mjazy $2 a $3 byś.',
 	'maps_map' => 'Karta',
 );
 
@@ -183,6 +189,7 @@ Karttaa ei voida näyttää.',
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author PieRRoMaN
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -193,6 +200,12 @@ Services de cartographie disponibles : $1',
 	'maps_geocoding_failed' => "{{PLURAL:$2|L′adresse suivante n'as pu être géocodée|Les adresses suivantes n'ont pas pu être géocodées}} : $1.
 Le plan ne peut pas être affiché.",
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|L′adresse suivante n’as pu être géocodée|Les adresses suivantes n’ont pas pu être géocodées}} et {{PLURAL:$2|n’est pas affichée|ne sont pas affichées}} sur le plan : $1',
+	'maps_error_parameters' => 'Les erreurs suivantes ont été détectées dans votre syntaxe',
+	'maps_error_invalid_argument' => "La valeur $1 n'est pas valide pour le paramètre $2.",
+	'maps_error_empty_argument' => 'Le paramètre $1 ne peut pas avoir une valeur vide.',
+	'maps_error_required_missing' => "Le paramètre requis $1 n'est pas fourni.",
+	'maps_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
+	'maps_error_ivalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
 	'maps_map' => 'Carte',
 );
 
@@ -220,6 +233,12 @@ Servizos de mapeamento dispoñibles: $1',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}}: $1.
 O mapa non se pode mostrar.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}} e {{PLURAL:$2|omitiuse|omitíronse}} no mapa: $1.',
+	'maps_error_parameters' => 'Detectáronse os seguintes erros na sintaxe empregada',
+	'maps_error_invalid_argument' => 'O valor $1 non é válido para o parámetro $2.',
+	'maps_error_empty_argument' => 'O parámetro $1 non pode ter un valor baleiro.',
+	'maps_error_required_missing' => 'Non se proporcionou o parámetro $1 necesario.',
+	'maps_error_must_be_number' => 'O parámetro $1 só pode ser un número.',
+	'maps_error_ivalid_range' => 'O parámetro $1 debe estar entre $2 e $3.',
 	'maps_map' => 'Mapa',
 );
 
@@ -270,6 +289,12 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_coordinates_missing' => 'Za kartu njejsu koordinaty podate.',
 	'maps_geocoding_failed' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno: $1. Karta njeda so zwobraznić.',
 	'maps_geocoding_failed_for' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno a {{PLURAL:$2|tuta adresa|tutej adresy|tute adresy|tute adresy}} so na karće {{PLURAL:$2|wuwostaja|wuwostajetej|wuwostajeja|wuwostajeja}}: $1',
+	'maps_error_parameters' => 'Slědowace zmylki buchu w twojej syntaksy wotkryli:',
+	'maps_error_invalid_argument' => 'Hódnota $1 njeje płaćiwa za parameter $2.',
+	'maps_error_empty_argument' => 'Parameter $1 njemóže prózdnu hódnotu měć.',
+	'maps_error_required_missing' => 'Trěbny parameter $1 njeje podaty.',
+	'maps_error_must_be_number' => 'Parameter $1 móže jenož ličba być.',
+	'maps_error_ivalid_range' => 'Parameter $1 dyrbi mjez $2 a $3 być.',
 	'maps_map' => 'Karta',
 );
 
@@ -465,6 +490,12 @@ $messages['ru'] = array(
 Карта не может быть отображена.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следующий адрес не может быть геокодирован и был удалён|Следующие адреса не могут быть геокодированы и были удалены}} с карты:
 $1',
+	'maps_error_parameters' => 'Обнаружены следующие ошибки в синтаксисе',
+	'maps_error_invalid_argument' => 'Значение $1 не является допустимым параметром $2',
+	'maps_error_empty_argument' => 'Параметр $1 не может принимать пустое значение.',
+	'maps_error_required_missing' => 'Не указан обязательный параметр $1.',
+	'maps_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
+	'maps_error_ivalid_range' => 'Параметр $1 должен быть от $2 до $3.',
 	'maps_map' => 'Карта',
 );
 
