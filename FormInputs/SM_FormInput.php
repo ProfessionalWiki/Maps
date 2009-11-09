@@ -75,13 +75,12 @@ abstract class SMFormInput extends MapsMapFeature {
 		if ($this->enableGeocoding) {
 			$sfgTabIndex++;
 			
-			// Retrieve language values
-			// wfLoadExtensionMessages( 'SemanticMaps' ); // TODO: remove?
+			// Retrieve language valuess
 			$enter_address_here_text = wfMsg('semanticmaps_enteraddresshere');
 			$lookup_coordinates_text = wfMsg('semanticmaps_lookupcoordinates');	
 			$not_found_text = wfMsg('semanticmaps_notfound');				
 			
-			$adress_field = smfGetDynamicInput($this->geocodeFieldName, $enter_address_here_text, 'size="30" name="geocode" style="color: #707070" tabindex="'.$sfgTabIndex.'"');
+			$adress_field = SMFormInput::getDynamicInput($this->geocodeFieldName, $enter_address_here_text, 'size="30" name="geocode" style="color: #707070" tabindex="'.$sfgTabIndex.'"');
 			$this->output .= "
 			<p>
 				$adress_field
@@ -141,10 +140,28 @@ abstract class SMFormInput extends MapsMapFeature {
 			}
 		}
 		else {
-			$centre = MapsUtils::getLatLon($this->centre);
+			// Geocode and convert if required.
+			$centre = MapsGeocodeUtils::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
+			$centre = MapsUtils::getLatLon($centre);
+			
 			$this->centre_lat = $centre['lat'];
 			$this->centre_lon = $centre['lon'];			
 		}		
+	}
+	
+	/**
+	 * Returns html for an html input field with a default value that will automatically dissapear when
+	 * the user clicks in it, and reappers when the focus on the field is lost and it's still empty.
+	 *
+	 * @author Jeroen De Dauw
+	 *
+	 * @param string $id
+	 * @param string $value
+	 * @param string $args
+	 * @return html
+	 */
+	private static function getDynamicInput($id, $value, $args='') {
+		return '<input id="'.$id.'" '.$args.' value="'.$value.'" onfocus="if (this.value==\''.$value.'\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\''.$value.'\';}" />';
 	}
 }
 

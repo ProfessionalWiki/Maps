@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.4 RC1');
+define('SM_VERSION', '0.4.1 a1');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
@@ -60,7 +60,6 @@ function smfSetup() {
 	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
 	$services_list = $wgLang->listToText($services);	
 	
-	// TODO: split for feature hook system?
 	wfLoadExtensionMessages( 'SemanticMaps' );
 	
 	$wgExtensionCredits['other'][]= array(
@@ -74,21 +73,6 @@ function smfSetup() {
 	);
 	
 	return true;	
-}
-
-/**
- * Returns html for an html input field with a default value that will automatically dissapear when
- * the user clicks in it, and reappers when the focus on the field is lost and it's still empty.
- *
- * @author Jeroen De Dauw
- *
- * @param string $id
- * @param string $value
- * @param string $args
- * @return html
- */ // TODO: move to FI feature code
-function smfGetDynamicInput($id, $value, $args='') {
-	return '<input id="'.$id.'" '.$args.' value="'.$value.'" onfocus="if (this.value==\''.$value.'\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\''.$value.'\';}" />';
 }
 
 /**

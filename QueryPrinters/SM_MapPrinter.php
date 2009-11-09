@@ -226,9 +226,12 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 *
 	 */
 	private function setCentre() {
+		// If a centre value is set, use it.
 		if (strlen($this->centre) > 0) {
-			// If a centre value is set, use it.
-			$centre = MapsUtils::getLatLon($this->centre);
+			// Geocode and convert if required.
+			$centre = MapsGeocodeUtils::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
+			$centre = MapsUtils::getLatLon($centre);
+			
 			$this->centre_lat = $centre['lat'];
 			$this->centre_lon = $centre['lon'];
 		}
@@ -236,7 +239,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
 			$this->centre_lat = 'null';
 			$this->centre_lon = 'null';
-		}	
+		}
 		else {
 			// If centre is not set and there is exactelly one marker, use it's coordinates.			
 			$this->centre_lat = $this->m_locations[0][0];

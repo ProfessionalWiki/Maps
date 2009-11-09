@@ -39,7 +39,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgJsMimeType;
-		global $smgIncludePath, $smgYahooFormsOnThisPage;
+		global $smgScriptPath, $smgYahooFormsOnThisPage;
 		
 		MapsYahooMapsUtils::addYMapDependencies($this->output);
 		
