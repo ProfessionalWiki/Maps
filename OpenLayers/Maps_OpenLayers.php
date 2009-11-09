@@ -3,7 +3,7 @@
 /**
  * This groupe contains all OpenLayers related files of the Maps extension.
  * 
- * @defgroup MapsOpenLayers
+ * @defgroup MapsOpenLayers OpenLayers
  * @ingroup Maps
  */
 
@@ -15,6 +15,10 @@
  *
  * @author Jeroen De Dauw
  */
+
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
 
 $egMapsServices['openlayers'] = array(
 									'pf' => array(

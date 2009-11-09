@@ -56,7 +56,7 @@ include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	/
 
 
 
-# Map services configuration
+# Mapping services configuration
 # Note: You can not use aliases in the settings. Use the main service names.
 
 # Include the mapping services that should be loaded into Maps. 
@@ -64,7 +64,7 @@ include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	/
 include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
 include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
 include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
-include_once $egMapsIP . '/OpenStreetMaps/Maps_OSM.php'; 		// OpenLayers optimized for OSM
+include_once $egMapsIP . '/OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
 							
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers

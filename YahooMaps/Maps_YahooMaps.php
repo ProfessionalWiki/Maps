@@ -3,7 +3,7 @@
 /**
  * This groupe contains all Yahoo! Maps related files of the Maps extension.
  * 
- * @defgroup MapsYahooMaps
+ * @defgroup MapsYahooMaps Yahoo! Maps
  * @ingroup Maps
  */
 
@@ -15,6 +15,10 @@
  *
  * @author Jeroen De Dauw
  */
+
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
 
 $egMapsServices['yahoomaps'] = array(
 									'pf' => array(

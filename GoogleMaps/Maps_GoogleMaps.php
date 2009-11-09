@@ -3,7 +3,7 @@
 /**
  * This groupe contains all Google Maps related files of the Maps extension.
  * 
- * @defgroup MapsGoogleMaps
+ * @defgroup MapsGoogleMaps Google Maps
  * @ingroup Maps
  */
 
@@ -15,6 +15,10 @@
  *
  * @author Jeroen De Dauw
  */
+
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
 
 $egMapsServices['googlemaps'] = array(
 									'pf' => array(

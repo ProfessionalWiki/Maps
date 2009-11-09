@@ -3,7 +3,7 @@
 /**
  * This groupe contains all OpenStreetMap related files of the Maps extension.
  * 
- * @defgroup MapsOpenStreetMap
+ * @defgroup MapsOpenStreetMap OpenStreetMap
  * @ingroup Maps
  */
 
@@ -16,13 +16,17 @@
  * @author Jeroen De Dauw
  */
 
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 $egMapsServices['osm'] = array(
 									'pf' => array(
-										'display_point' => array('class' => 'MapsOSMDispPoint', 'file' => 'OpenStreetMaps/Maps_OSMDispPoint.php', 'local' => true),
-										'display_map' => array('class' => 'MapsOSMDispMap', 'file' => 'OpenStreetMaps/Maps_OSMDispMap.php', 'local' => true),
+										'display_point' => array('class' => 'MapsOSMDispPoint', 'file' => 'OpenStreetMap/Maps_OSMDispPoint.php', 'local' => true),
+										'display_map' => array('class' => 'MapsOSMDispMap', 'file' => 'OpenStreetMap/Maps_OSMDispMap.php', 'local' => true),
 										),
 									'classes' => array(
-											array('class' => 'MapsOSMUtils', 'file' => 'OpenStreetMaps/Maps_OSMUtils.php', 'local' => true)
+											array('class' => 'MapsOSMUtils', 'file' => 'OpenStreetMap/Maps_OSMUtils.php', 'local' => true)
 											),
 									'aliases' => array('openstreetmap', 'openstreetmaps'),
 									'parameters' => array(

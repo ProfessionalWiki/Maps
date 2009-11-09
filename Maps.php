@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.4.1 a1');
+define('Maps_VERSION', '0.4.1 a2');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
@@ -55,7 +55,6 @@ function efMapsSetup() {
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
 	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : end(array_reverse(array_keys($egMapsAvailableGeoServices)));
 	
-	// TODO: split for feature hook system?	
 	wfLoadExtensionMessages( 'Maps' ); 
 	
 	// Creation of a list of internationalized service names.
