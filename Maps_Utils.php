@@ -25,12 +25,15 @@ class MapsUtils {
 	 * @param string $coordinates
 	 */
 	public static function getLatLon($coordinates) {
-		$coordinates = preg_split ( "/,/", $coordinates );
+		$containsComma = strpos($coordinates, ',') !== false;
+		$coordinates = $containsComma ? preg_split ( '/,/', $coordinates ) : explode ( ' ', $coordinates );
+
 		if (count ( $coordinates ) == 2) {
-			$lat = MapsUtils::convertCoord ( $coordinates [0] );
-			$lon = MapsUtils::convertCoord ( $coordinates [1] );
-			return array ('lat' => $lat, 'lon' => $lon);
-		} else {
+			return array (
+				'lat' => MapsUtils::convertCoord ( $coordinates [0] ),
+				'lon' => MapsUtils::convertCoord ( $coordinates [1] )
+			);
+		} else {				
 			return array ('lat' => null, 'lon' => null);
 		}
 	}

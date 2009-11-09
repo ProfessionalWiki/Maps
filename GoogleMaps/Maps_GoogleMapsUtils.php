@@ -117,7 +117,7 @@ final class MapsGoogleMapsUtils {
 	 */
 	public static function addGMapDependencies(&$output) {
 		global $wgJsMimeType, $wgLang, $wgStyleVersion;
-		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage;
+		global $egGoogleMapsKey, /* $egGoogleAjaxKey, */ $egMapsScriptPath, $egGoogleMapsOnThisPage;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
@@ -127,6 +127,13 @@ final class MapsGoogleMapsUtils {
 			// TODO: use strbuilder for performance gain?
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js?$wgStyleVersion'></script>";
+			
+			/*
+			if (strlen($egGoogleAjaxKey) > 0) {
+				$output .= '<script src="http://www.google.com/jsapi?key='. $egGoogleAjaxKey .'" type="'. $wgJsMimeType .'"></script>
+				<script type="'. $wgJsMimeType .'">var localSearch = new GlocalSearch();</script>';
+			}
+			*/
 		}
 	}
 	

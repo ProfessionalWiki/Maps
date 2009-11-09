@@ -142,8 +142,8 @@ $egMapsMapLon = '1';
 # Google maps
 
 # Your Google Maps API key. Required for displaying Google Maps, and using the Google Geocoder services.
-# Haven't got an API key yet? Get it here: http://code.google.com/apis/maps/signup.html
-if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ''; 
+if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
+// if (empty($egGoogleAjaxKey)) $egGoogleAjaxKey = ''; # http://code.google.com/apis/ajaxsearch/signup.html
 
 # String. The Google Maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsGoogleMapsPrefix = 'map_google';
