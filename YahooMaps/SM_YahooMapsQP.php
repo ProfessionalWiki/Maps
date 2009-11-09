@@ -3,7 +3,7 @@
  * A query printer for maps using the Yahoo Maps API
  *
  * @file SM_YahooMaps.php
- * @ingroup SemanticMaps
+ * @ingroup SMYahooMaps
  *
  * @author Jeroen De Dauw
  */

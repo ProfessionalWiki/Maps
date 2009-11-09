@@ -4,7 +4,7 @@
  * A class that holds static helper functions and extension hooks for the Google Maps service
  *
  * @file SM_GoogleMapsFormInput.php
- * @ingroup SemanticMaps
+ * @ingroup SMGoogleMaps
  * 
  * @author Robert Buzink
  * @author Yaron Koren

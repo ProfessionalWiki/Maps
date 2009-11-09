@@ -4,7 +4,7 @@
 * Form input hook that adds an Yahoo! Maps map format to Semantic Forms
  *
  * @file SM_YahooMapsFormInput.php
- * @ingroup SemanticMaps
+ * @ingroup SMYahooMaps
  * 
  * @author Jeroen De Dauw
  */

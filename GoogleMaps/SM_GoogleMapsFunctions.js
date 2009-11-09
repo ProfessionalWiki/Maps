@@ -2,7 +2,7 @@
   * Javascript functions for Google Maps functionallity in Semantic Maps
   *
   * @file SM_GoogleMapFunctions.js
-  * @ingroup SemanticMaps
+  * @ingroup SMGoogleMaps
   * 
   * @author Jeroen De Dauw
   */

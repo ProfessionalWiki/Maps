@@ -37,6 +37,19 @@ $egMapsAvailableFeatures['fi'] = array(
 							'class' => 'SMFormInputs',
 							'file' => 'SemanticMaps/FormInputs/SM_FormInputs.php',
 							'local' => false
-							);							
+							);		
+
+
+
+
+
+# Mapping services configuration
+
+# Include the mapping services that should be loaded into Semantic Maps. 
+# Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
+include_once $smgIP . '/GoogleMaps/SM_GoogleMaps.php'; 	// Google Maps
+include_once $smgIP . '/OpenLayers/SM_OpenLayers.php'; 	// OpenLayers
+include_once $smgIP . '/YahooMaps/SM_YahooMaps.php'; 	// Yahoo! Maps
+include_once $smgIP . '/OpenStreetMap/SM_OSM.php'; 		// OpenLayers optimized for OSM
 
 

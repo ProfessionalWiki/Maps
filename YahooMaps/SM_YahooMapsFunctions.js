@@ -2,7 +2,7 @@
   * Javascript functions for Yahoo! Maps functionallity in Semantic Maps
   *
   * @file SM_YahooMapsFunctions.js
-  * @ingroup SemanticMaps
+  * @ingroup SMYahooMaps
   * 
   * @author Jeroen De Dauw
   */

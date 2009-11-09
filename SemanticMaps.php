@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.4.1 a1');
+define('SM_VERSION', '0.4.1 a2');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
@@ -36,16 +36,6 @@ $wgExtensionFunctions[] = 'smfSetup';
 $wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
 
 $wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
-
-// Add the services
-$egMapsServices['googlemaps']['qp'] = array('class' => 'SMGoogleMapsQP', 'file' => 'SemanticMaps/GoogleMaps/SM_GoogleMapsQP.php', 'local' => false);
-$egMapsServices['googlemaps']['fi'] = array('class' => 'SMGoogleMapsFormInput', 'file' => 'SemanticMaps/GoogleMaps/SM_GoogleMapsFormInput.php', 'local' => false);
-
-$egMapsServices['yahoomaps']['qp'] = array('class' => 'SMYahooMapsQP', 'file' => 'SemanticMaps/YahooMaps/SM_YahooMapsQP.php', 'local' => false);
-$egMapsServices['yahoomaps']['fi'] = array('class' => 'SMYahooMapsFormInput', 'file' => 'SemanticMaps/YahooMaps/SM_YahooMapsFormInput.php', 'local' => false);
-
-$egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayersQP', 'file' => 'SemanticMaps/OpenLayers/SM_OpenLayersQP.php', 'local' => false);
-$egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'SemanticMaps/OpenLayers/SM_OpenLayersFormInput.php', 'local' => false);
 
 /**
  * 'Initialization' function for the Semantic Maps extension. 

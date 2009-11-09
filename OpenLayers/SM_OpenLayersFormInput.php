@@ -4,7 +4,7 @@
  * Form input hook that adds an Open Layers map format to Semantic Forms
  *
  * @file SM_OpenLayersFormInput.php
- * @ingroup SemanticMaps
+ * @ingroup SMOpenLayers
  * 
  * @author Jeroen De Dauw
  */

@@ -2,7 +2,7 @@
   * Javascript functions for OpenLayers functionallity in Semantic Maps
   *
   * @file SM_OpenLayersFunctions.js
-  * @ingroup SemanticMaps
+  * @ingroup SMOpenLayers
   * 
   * @author Jeroen De Dauw
   */

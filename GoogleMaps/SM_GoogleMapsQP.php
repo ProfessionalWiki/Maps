@@ -3,7 +3,7 @@
  * A query printer for maps using the Google Maps API
  *
  * @file SM_GoogleMaps.php
- * @ingroup SemanticMaps
+ * @ingroup SMGoogleMaps
  *
  * @author Robert Buzink
  * @author Yaron Koren
