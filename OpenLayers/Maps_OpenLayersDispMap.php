@@ -4,7 +4,7 @@
  * Class for handling the display_map parser function with OpenLayers
  *
  * @file Maps_OpenLayersDispMap.php
- * @ingroup Maps
+ * @ingroup MapsOpenLayers
  *
  * @author Jeroen De Dauw
  */

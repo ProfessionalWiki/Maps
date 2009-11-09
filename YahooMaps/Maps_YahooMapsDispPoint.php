@@ -4,7 +4,7 @@
  * Class for handling the display_point(s) parser functions with Yahoo! Maps
  *
  * @file Maps_YahooMapsDispPoint.php
- * @ingroup Maps
+ * @ingroup MapsYahooMaps
  *
  * @author Jeroen De Dauw
  */

@@ -1,10 +1,17 @@
 <?php
 
 /**
+ * This groupe contains all Yahoo! Maps related files of the Maps extension.
+ * 
+ * @defgroup MapsYahooMaps
+ * @ingroup Maps
+ */
+
+/**
  * This file holds the general information for the Yahoo! Maps service
  *
  * @file Maps_YahooMaps.php
- * @ingroup Maps
+ * @ingroup MapsYahooMaps
  *
  * @author Jeroen De Dauw
  */

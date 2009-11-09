@@ -1,10 +1,17 @@
 <?php
 
 /**
+ * This groupe contains all OpenLayers related files of the Maps extension.
+ * 
+ * @defgroup MapsOpenLayers
+ * @ingroup Maps
+ */
+
+/**
  * This file holds the general information for the OpenLayers service
  *
  * @file Maps_OpenLayers.php
- * @ingroup Maps
+ * @ingroup MapsOpenLayers
  *
  * @author Jeroen De Dauw
  */

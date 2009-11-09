@@ -25,6 +25,13 @@ The map cannot be displayed.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 
+	'maps_error_parameters' => 'The following errors have been detected in your syntaxis',
+	'maps_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
+	'maps_error_empty_argument' => 'Parameter $1 can not have an empty value.',
+	'maps_error_required_missing' => 'The required parameter $1 is not provided.',
+	'maps_error_must_be_number' => 'Parameter $1 can only be a number.',
+	'maps_error_ivalid_range' => 'Parameter $1 must be between $2 and $3.',
+
 	'maps_map' => 'Map',
 
 	'maps_googlemaps' => 'Google Maps',

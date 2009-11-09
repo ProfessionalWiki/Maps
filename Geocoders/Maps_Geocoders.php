@@ -31,6 +31,7 @@ final class Geocoders {
 		
 		$wgAutoloadClasses['MapsBaseGeocoder'] 		= $egMapsIP . '/Geocoders/Maps_BaseGeocoder.php';
 		$wgAutoloadClasses['MapsGeocoder'] 			= $egMapsIP . '/Geocoders/Maps_Geocoder.php';
+		$wgAutoloadClasses['MapsGeocodeUtils'] 		= $egMapsIP . '/Geocoders/Maps_GeocodeUtils.php';
 	}
 	
 }

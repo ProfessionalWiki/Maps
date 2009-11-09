@@ -1,10 +1,17 @@
 <?php
 
 /**
+ * This groupe contains all Google Maps related files of the Maps extension.
+ * 
+ * @defgroup MapsGoogleMaps
+ * @ingroup Maps
+ */
+
+/**
  * This file holds the general information for the Google Maps service
  *
  * @file Maps_GoogleMaps.php
- * @ingroup Maps
+ * @ingroup MapsGoogleMaps
  *
  * @author Jeroen De Dauw
  */

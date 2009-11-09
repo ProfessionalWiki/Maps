@@ -4,7 +4,7 @@
  * A class that holds static helper functions for OpenLayers
  *
  * @file Maps_OpenLayersUtils.php
- * @ingroup Maps
+ * @ingroup MapsOpenLayers
  *
  * @author Jeroen De Dauw
  */

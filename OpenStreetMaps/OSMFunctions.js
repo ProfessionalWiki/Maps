@@ -1,6 +1,6 @@
 /* 
  * @file OSMFunctions.js
- * @ingroup Maps
+ * @ingroup MapsOpenStreetMap
  *
  * @author Harry Wood, Jens Frank, Grant Slater, Raymond Spekking, Jeroen De Dauw and others 
  *

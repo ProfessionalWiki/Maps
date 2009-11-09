@@ -4,7 +4,7 @@
  * Class for handling the display_map parser function with Yahoo! Maps
  *
  * @file Maps_YahooMapsDispMap.php
- * @ingroup Maps
+ * @ingroup MapsYahooMaps
  *
  * @author Jeroen De Dauw
  */

@@ -4,7 +4,7 @@
  * Class for handling the display_point(s) parser functions with OpenLayers
  *
  * @file Maps_OpenLayersDispPoint.php
- * @ingroup Maps
+ * @ingroup MapsOpenLayers
  *
  * @author Jeroen De Dauw
  */

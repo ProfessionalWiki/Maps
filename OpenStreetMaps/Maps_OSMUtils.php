@@ -4,7 +4,7 @@
  * A class that holds static helper functions for OSM.
  *
  * @file Maps_OSMUtils.php
- * @ingroup Maps
+ * @ingroup MapsOpenStreetMap
  *
  * @author Jeroen De Dauw
  */

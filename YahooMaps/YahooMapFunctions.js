@@ -2,7 +2,7 @@
   * Javascript functions for Yahoo! Maps functionallity in Maps and it's extensions
   *
   * @file YahooMapFunctions.js
-  * @ingroup Maps
+  * @ingroup MapsYahooMaps
   *
   * @author Jeroen De Dauw
   */

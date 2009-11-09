@@ -2,7 +2,7 @@
   * Javascript functions for Open Layers functionallity in Maps and it's extensions
   *
   * @file OpenLayerFunctions.js
-  * @ingroup Maps
+  * @ingroup MapsOpenLayers
   *
   * @author Jeroen De Dauw
   */

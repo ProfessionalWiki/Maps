@@ -1,10 +1,17 @@
 <?php
 
 /**
+ * This groupe contains all OpenStreetMap related files of the Maps extension.
+ * 
+ * @defgroup MapsOpenStreetMap
+ * @ingroup Maps
+ */
+
+/**
  * This file holds the general information for the OSM optimized OpenLayers service
  *
  * @file Maps_OSM.php
- * @ingroup Maps
+ * @ingroup MapsOpenStreetMap
  *
  * @author Jeroen De Dauw
  */

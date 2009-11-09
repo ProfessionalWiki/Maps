@@ -4,7 +4,7 @@
  * Class for handling the display_point(s) parser functions with Google Maps
  *
  * @file Maps_GoogleMapsDispPoint.php
- * @ingroup Maps
+ * @ingroup MapsGoogleMaps
  *
  * @author Jeroen De Dauw
  */

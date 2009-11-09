@@ -2,7 +2,7 @@
   * Javascript functions for Google Maps functionallity in Maps and it's extensions
   *
   * @file GoogleMapFunctions.js
-  * @ingroup Maps
+  * @ingroup MapsGoogleMaps
   *
   * @author Robert Buzink
   * @author Yaron Koren   

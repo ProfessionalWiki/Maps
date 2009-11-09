@@ -4,7 +4,7 @@
  * A class that holds static helper functions for Yahoo! Maps
  *
  * @file Maps_YahooMapsUtils.php
- * @ingroup Maps
+ * @ingroup MapsYahooMaps
  *
  * @author Jeroen De Dauw
  */

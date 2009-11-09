@@ -4,7 +4,7 @@
  * A class that holds static helper functions for Google Maps
  *
  * @file Maps_GooleMapsUtils.php
- * @ingroup Maps
+ * @ingroup MapsGoogleMaps
  *
  * @author Jeroen De Dauw
  */
@@ -29,6 +29,7 @@ final class MapsGoogleMapsUtils {
 					'hybrid' => 'G_HYBRID_MAP',
 					'G_HYBRID_MAP' => 'G_HYBRID_MAP',
 	
+					'terrain' => 'G_PHYSICAL_MAP',
 					'physical' => 'G_PHYSICAL_MAP',
 					'G_PHYSICAL_MAP' => 'G_PHYSICAL_MAP',
 	

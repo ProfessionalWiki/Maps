@@ -64,7 +64,7 @@ final class MapsParserGeocoder {
 					$args[0] = trim($args[0]);
 					
 					if (strlen($args[0]) > 0) {
-						$coords =  MapsParserGeocoder::attemptToGeocode($args[0], $geoservice, $service);
+						$coords =  MapsGeocodeUtils::attemptToGeocode($args[0], $geoservice, $service);
 						
 						if ($coords) {
 							$args[0] = $coords;
@@ -84,54 +84,5 @@ final class MapsParserGeocoder {
 
 		return $fails;
 	}	
-	
-	/**
-	 * This function first determines wether the provided string is a pair or coordinates 
-	 * or an address. If it's the later, an attempt to geocode will be made. The function will
-	 * return the coordinates or false, in case a geocoding attempt was made but failed. 
-	 * 
-	 * @param $coordsOrAddress
-	 * @param $geoservice
-	 * @param $service
-	 * 
-	 * @return string or boolean
-	 */
-	public static function attemptToGeocode($coordsOrAddress, $geoservice, $service) {
-		if (MapsParserGeocoder::isCoordinate($coordsOrAddress)) {
-			$coords = $coordsOrAddress;
-		}
-		else {
-			$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
-		}
 		
-		return $coords;
-	}	
-	
-	/**
-	 * Returns a boolean indication if a provided value is a valid coordinate.
-	 * 
-	 * @param string $coordsOrAddress
-	 * 
-	 * @return boolean
-	 */
-	private static function isCoordinate($coordsOrAddress) {		
-		$coordRegexes = array( // TODO: change .{2} to °, this won't work for some reason
-			'/^(-)?\d{1,3}(\.\d{1,7})?,(\s)?(-)?\d{1,3}(\.\d{1,7})?$/', // Floats
-			'/^(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(N|S)(\s)?(\d{1,2}.)(\d{2}\')?((\d{2}")?|(\d{2}\.\d{2}")?)(E|W)$/', // DMS 
-			'/^(-)?\d{1,3}(|\.\d{1,7}).{2},(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,7}).{2}$/', // DD
-			'/(-)?\d{1,3}.{2}\d{1,3}(\.\d{1,7}\')?,(\s)?(-)?\d{1,3}.{2}\d{1,3}(\.\d{1,7}\')?$/', // DM
-			);
-			
-		$isCoordinate = false;
-		
-		foreach ($coordRegexes as $coordRegex) {
-			if (preg_match($coordRegex, $coordsOrAddress)) {
-				$isCoordinate = true;
-				continue;
-			}		
-		}
-
-		return $isCoordinate;
-	}	
-	
 }

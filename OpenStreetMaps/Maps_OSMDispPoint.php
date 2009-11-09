@@ -4,7 +4,7 @@
  * Class for handling the display_point(s) parser functions with OSM.
  *
  * @file Maps_OSMDispPoint.php
- * @ingroup Maps
+ * @ingroup MapsOpenStreetMap
  *
  * @author Jeroen De Dauw
  */

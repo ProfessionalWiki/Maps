@@ -4,7 +4,7 @@
  * Class for handling the display_map parser function with OSM.
  *
  * @file Maps_OSMDispMap.php
- * @ingroup Maps
+ * @ingroup MapsOpenStreetMap
  *
  * @author Jeroen De Dauw
  */

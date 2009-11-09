@@ -122,7 +122,8 @@ $egMapsDefaultGeoService = 'geonames';
 $egMapsMapWidth = 600;
 $egMapsMapHeight = 350;
 
-# Array. The minimum and maximum width and height for all maps.
+# Array. The minimum and maximum width and height for all maps. First min, then max. Min needs to be smaller then max.
+# When the height or width exceed their limits, they will be changed to the closest allowed value.
 $egMapsSizeRestrictions = array(
 	'width'  => array( 100, 1000 ),
 	'height' => array( 100, 1000 ),
