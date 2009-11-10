@@ -41,13 +41,13 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgJsMimeType;
-		global $smgScriptPath, $smgGoogleFormsOnThisPage;
+		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion;
 		
 		MapsGoogleMapsUtils::addGMapDependencies($this->output);
 		
 		if (empty($smgGoogleFormsOnThisPage)) {
 			$smgGoogleFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions.js'></script>";
+			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions.js?$smgStyleVersion'></script>";
 		}
 	}
 	
@@ -89,8 +89,25 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		<div id='".$this->mapName."' class='".$this->class."'></div>
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(makeFormInputGoogleMap('$this->mapName', '$this->coordsFieldName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, $this->marker_lat, $this->marker_lon));
-		window.unload = GUnload;
+		addOnloadHook(
+			makeGoogleMapFormInput(
+				'$this->mapName', 
+				'$this->coordsFieldName',
+				{
+				width: $this->width,
+				height: $this->height,
+				lat: $this->centre_lat,
+				lon: $this->centre_lon,
+				zoom: $this->zoom,
+				type: $this->type,
+				types: [$typesString],
+				controls: [$this->controls],
+				scrollWheelZoom: $this->autozoom
+				},
+				$this->marker_lat,
+				$this->marker_lon	
+			)			
+		);
 		/*]]>*/</script>";
 	}
 	
