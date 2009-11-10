@@ -466,6 +466,13 @@ $messages['sv'] = array(
 	'semanticmaps_enteraddresshere' => 'Skriv in adress här',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'semanticmaps_notfound' => 'కనబడలేదు',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
