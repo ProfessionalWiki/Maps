@@ -1,5 +1,5 @@
  /**
-  * Javascript functions for Google Maps functionallity in Maps and it's extensions
+  * Javascript functions for Google Maps functionallity in Maps and it's extensions.
   *
   * @file GoogleMapFunctions.js
   * @ingroup MapsGoogleMaps
@@ -42,41 +42,39 @@ function createGMarker(point, title, label, icon) {
 
 /**
  * Returns GMap2 object with the provided properties and markers.
+ * This is done by setting the map centre and size, and passing the arguments to function createGoogleMap.
  */
-function initializeGoogleMap(mapName, width, height, lat, lon, zoom, type, types, controls, scrollWheelZoom, markers) {
-	var map;
-	
-	var centre = (lat != null && lon != null) ? new GLatLng(lat, lon) : null;
-	
+function initializeGoogleMap(mapName, mapOptions, markers) {
 	if (GBrowserIsCompatible()) {
-		map = createGoogleMap(document.getElementById(mapName), new GSize(width, height), centre, zoom, type, types, controls, scrollWheelZoom, markers);
+		mapOptions.centre = (mapOptions.lat != null && mapOptions.lon != null) ? new GLatLng(mapOptions.lat, mapOptions.lon) : null;
+		mapOptions.size = new GSize(mapOptions.width, mapOptions.height);	
+		return createGoogleMap(document.getElementById(mapName), mapOptions, markers);	
 	}
-		
-	return map;
+	else {
+		return false;
+	}
 }
 
 /**
  * Returns GMap2 object with the provided properties.
  */
-function createGoogleMap(mapElement, size, centre, zoom, type, types, controls, scrollWheelZoom, markers) {
+function createGoogleMap(mapElement, mapOptions, markers) {
 	var typesContainType = false;
 
 	// TODO: Change labels of the moon/mars map types?
-	for (var i = 0; i < types.length; i++) {
-		if (types[i] == type) typesContainType = true;
+	for (var i = 0; i < mapOptions.types.length; i++) {
+		if (mapOptions.types[i] == mapOptions.type) typesContainType = true;
 	}
 	
-	if (! typesContainType) {
-		types.push(type);
-	}
+	if (! typesContainType) mapOptions.types.push(mapOptions.type);
 
-	var map = new GMap2(mapElement, {size: size, mapTypes: types});
+	var map = new GMap2(mapElement, {size: mapOptions.size, mapTypes: mapOptions.types});
 	
-	map.setMapType(type);	
+	map.setMapType(mapOptions.type);	
 	
 	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
-	for (i in controls){
-		switch (controls[i]) {
+	for (i in mapOptions.controls){
+		switch (mapOptions.controls[i]) {
 			case 'large' : 
 				map.addControl(new GLargeMapControl3D());
 				break;
@@ -110,7 +108,7 @@ function createGoogleMap(mapElement, size, centre, zoom, type, types, controls, 
 		}
 	}	
 	
-	var bounds = ((zoom == null || centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
+	var bounds = ((mapOptions.zoom == null || mapOptions.centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
 	
 	for (i in markers) {
 		var marker = markers[i];
@@ -122,10 +120,10 @@ function createGoogleMap(mapElement, size, centre, zoom, type, types, controls, 
 		map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds));
 	}
 	
-	if (centre != null) map.setCenter(centre);
-	if (zoom != null) map.setZoom(zoom);
+	if (mapOptions.centre != null) map.setCenter(mapOptions.centre);
+	if (mapOptions.zoom != null) map.setZoom(mapOptions.zoom);
 	
-	if (scrollWheelZoom) map.enableScrollWheelZoom();
+	if (mapOptions.scrollWheelZoom) map.enableScrollWheelZoom();
 	
 	map.enableContinuousZoom();
 	

@@ -15,7 +15,7 @@
  *
  * Please do not use this group name for other code. If you have an extension to 
  * Maps, please use your own group defenition.
- * 
+ *  
  * @defgroup Maps Maps
  */
 
@@ -23,10 +23,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.4.1 rc1');
+define('Maps_VERSION', '0.4.2 a1');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
+
+$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
 // Include the settings file
 require_once($egMapsIP . '/Maps_Settings.php');

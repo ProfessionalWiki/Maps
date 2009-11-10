@@ -35,6 +35,7 @@ $egMapsServices['googlemaps'] = array(
 											'earth' => array(),
 											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom'),
 											'class' => array(),
-											'style' => array()										
+											'style' => array(),
+											'overlays' => array()									
 											)
 									);

@@ -80,13 +80,13 @@ final class MapsYahooMapsUtils {
 	 * @param string $output
 	 */
 	public static function addYMapDependencies(&$output) {
-		global $wgJsMimeType, $wgStyleVersion;
-		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage;
+		global $wgJsMimeType;
+		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion;
 		
 		if (empty($egYahooMapsOnThisPage)) {
 			$egYahooMapsOnThisPage = 0;
 			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey'></script>
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/YahooMaps/YahooMapFunctions.js?$wgStyleVersion'></script>";
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/YahooMaps/YahooMapFunctions.js?$egMapsStyleVersion'></script>";
 		}
 	}
 

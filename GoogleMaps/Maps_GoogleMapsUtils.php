@@ -106,7 +106,8 @@ final class MapsGoogleMapsUtils {
 			'class' => 'pmap',
 			'autozoom' => $egMapsGoogleAutozoom ? 'on' : 'off',
 			'earth' => '',
-			'style' => ''			
+			'style' => '',
+			'overlays' => ''		
 			); 		
 	}
 	
@@ -116,8 +117,8 @@ final class MapsGoogleMapsUtils {
 	 * @param string $output
 	 */
 	public static function addGMapDependencies(&$output) {
-		global $wgJsMimeType, $wgLang, $wgStyleVersion;
-		global $egGoogleMapsKey, /* $egGoogleAjaxKey, */ $egMapsScriptPath, $egGoogleMapsOnThisPage;
+		global $wgJsMimeType, $wgLang;
+		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage, $egMapsStyleVersion;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
@@ -126,14 +127,8 @@ final class MapsGoogleMapsUtils {
 			
 			// TODO: use strbuilder for performance gain?
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js?$wgStyleVersion'></script>";
-			
-			/*
-			if (strlen($egGoogleAjaxKey) > 0) {
-				$output .= '<script src="http://www.google.com/jsapi?key='. $egGoogleAjaxKey .'" type="'. $wgJsMimeType .'"></script>
-				<script type="'. $wgJsMimeType .'">var localSearch = new GlocalSearch();</script>';
-			}
-			*/
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js?$egMapsStyleVersion'></script>
+			<script type='$wgJsMimeType'>window.unload = GUnload;</script>";
 		}
 	}
 	

@@ -89,15 +89,15 @@ final class MapsOSMUtils {
 	 * @param string $output
 	 */
 	public static function addOSMDependencies(&$output) {
-		global $wgJsMimeType, $wgStyleVersion;
-		global $egOSMMapsOnThisPage, $egMapsScriptPath;
+		global $wgJsMimeType;
+		global $egOSMMapsOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;
 		
 		if (empty($egOSMMapsOnThisPage)) {
 			$egOSMMapsOnThisPage = 0;
 			
 			$output .="<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMaps/OSMFunctions.js?$wgStyleVersion'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMap/OSMFunctions.js?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>slippymaps = Array();</script>\n";
 		}		
 	}	

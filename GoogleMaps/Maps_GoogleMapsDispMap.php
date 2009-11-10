@@ -65,7 +65,18 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
-	initializeGoogleMap('$this->mapName', $this->width, $this->height, $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [])
+	initializeGoogleMap('$this->mapName', 
+		{
+		width: $this->width,
+		height: $this->height,
+		lat: $this->centre_lat,
+		lon: $this->centre_lon,
+		zoom: $this->zoom,
+		type: $this->type,
+		types: [$typesString],
+		controls: [$this->controls],
+		scrollWheelZoom: $this->autozoom
+		}, [])
 );
 /*]]>*/ </script>
 
