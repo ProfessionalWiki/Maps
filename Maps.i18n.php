@@ -250,6 +250,12 @@ $messages['gsw'] = array(
 	'maps_coordinates_missing' => 'S git kei Koordinate fir die Charte.',
 	'maps_geocoding_failed' => 'Die {{PLURAL:$2|Adräss het|Adräss hän}} nit chenne georeferänziert wäre: $1. D Charte cha nit aazeigt wäre.',
 	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|Adräss het|Adrässe hän}} nit chenne georeferänziert wäre un {{PLURAL:$2|isch|sin}} us dr Charte uusegnuu wore: $1',
+	'maps_error_parameters' => 'Die Fähler sin in Dyyre Syntax gfunde wore',
+	'maps_error_invalid_argument' => 'Dr Wärt $1 isch nit giltig fir dr Parameter $2.',
+	'maps_error_empty_argument' => 'Dr Parameter $1 cha kei lääre Wärt haa.',
+	'maps_error_required_missing' => 'Dr Paramter $1, wu aagforderet woren isch, wird nit z Verfiegig gstellt.',
+	'maps_error_must_be_number' => 'Dr Parameter $1 cha nume ne Zahl syy.',
+	'maps_error_ivalid_range' => 'Dr Parameter $1 muess zwische $2 un $3 syy.',
 	'maps_map' => 'Charte',
 );
 
@@ -299,6 +305,7 @@ K dispoziciji stejace kartowe słužby: $1',
 );
 
 /** Hungarian (Magyar)
+ * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
@@ -308,6 +315,12 @@ $messages['hu'] = array(
 A térképet nem lehet megjeleníteni.',
 	'maps_geocoding_failed_for' => 'A következő {{PLURAL:$2|cím nem geokódolható|címek nem geokódolhatóak}}, és nem {{PLURAL:$2|szerepel|szerepelnek}} a térképen:
 $1',
+	'maps_error_parameters' => 'A következő hibák találhatóak a szintaxisodban',
+	'maps_error_invalid_argument' => 'A(z) $1 érték nem érvényes a(z) $2 paraméterhez.',
+	'maps_error_empty_argument' => 'A(z) $1 paraméter értéke nem lehet üres.',
+	'maps_error_required_missing' => 'A(z) $1 kötelező paraméter nem lett megadva.',
+	'maps_error_must_be_number' => 'A(z) $1 paraméter csak szám lehet.',
+	'maps_error_ivalid_range' => 'A(z) $1 paraméter értékének $2 és $3 között kell lennie.',
 	'maps_map' => 'Térkép',
 );
 
@@ -322,6 +335,12 @@ Servicios cartographic disponibile: $1',
 Le mappa non pote esser monstrate.',
 	'maps_geocoding_failed_for' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate e ha essite omittite del mappa:
 $1',
+	'maps_error_parameters' => 'Le sequente errores ha essite detegite in tu syntaxe',
+	'maps_error_invalid_argument' => 'Le valor $1 non es valide pro le parametro $2.',
+	'maps_error_empty_argument' => 'Le parametro $1 non pote haber un valor vacue.',
+	'maps_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
+	'maps_error_must_be_number' => 'Le parametro $1 pote solmente esser un numero.',
+	'maps_error_ivalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
 	'maps_map' => 'Carta',
 );
 
@@ -337,6 +356,12 @@ Layanan pemetaan yang tersedia: $1",
 	'maps_geocoding_failed' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode: $1. 
 Peta tidak dapat ditampilkan.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode dan  {{PLURAL:$2|telah|telah}} dihilangkan dari peta: $1',
+	'maps_error_parameters' => 'Kesalahan berikut telah dideteksi pada sintaksis Anda',
+	'maps_error_invalid_argument' => 'Nilai $1 tidak valid untuk parameter $2.',
+	'maps_error_empty_argument' => 'Parameter $1 tidak dapat bernilai kosong.',
+	'maps_error_required_missing' => 'Parameter $1 yang diperlukan tidak diberikan.',
+	'maps_error_must_be_number' => 'Parameter $1 hanya dapat berupa angka.',
+	'maps_error_ivalid_range' => 'Parameter $1 harus antara $2 dan $3.',
 	'maps_map' => 'Peta',
 );
 
@@ -385,6 +410,12 @@ $messages['mk'] = array(
 Картата не може да се прикаже.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следнава адреса|Следниве адреси}} не можеа да се геокодираат и затоа {{PLURAL:$2|е испуштена|се испуштени}} од картата:
 $1',
+	'maps_error_parameters' => 'Откриени се следниве грешки во вашата синтакса',
+	'maps_error_invalid_argument' => 'Вредноста $1 е неважечка за параметарот $2.',
+	'maps_error_empty_argument' => 'Параметарот $1 не може да има празна вредност.',
+	'maps_error_required_missing' => 'Бараниот параметар $1 не е наведен.',
+	'maps_error_must_be_number' => 'Параметарот $1 може да биде само број.',
+	'maps_error_ivalid_range' => 'Параметарот $1 мора да изнесува помеѓу $2 и $3.',
 	'maps_map' => 'Карта',
 );
 
@@ -399,6 +430,12 @@ Beschikbare kaartdiensten: $1',
 De kaart kan niet worden weergegeven.',
 	'maps_geocoding_failed_for' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk en {{PLURAL:$2|dit is|deze zijn}} weggelaten uit de kaart:
 $1',
+	'maps_error_parameters' => 'In uw syntaxis zijn de volgende fouten gedetecteerd',
+	'maps_error_invalid_argument' => 'De waarde $1 is niet geldig voor de parameter $2.',
+	'maps_error_empty_argument' => 'De parameter $1 mag niet leeg zijn.',
+	'maps_error_required_missing' => 'De verplichte parameter $1 is niet opgegeven.',
+	'maps_error_must_be_number' => 'De parameter $1 mag alleen een getal zijn.',
+	'maps_error_ivalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
 	'maps_map' => 'Kaart',
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
@@ -440,6 +477,12 @@ $messages['pms'] = array(
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peulo pa esse sota geocode: $1.
 La mapa a peul pa esse visualisà.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peula pa esse sota geocode e a {{PLURAL:$2|l'é pa stàita|son pa stàite}}  butà ant la mapa: $1",
+	'maps_error_parameters' => "J'eror sì sota a son ëstàit trovà an toa sintassi",
+	'maps_error_invalid_argument' => "Ël valor $1 a l'é pa bon për ël paràmetr $2.",
+	'maps_error_empty_argument' => 'Ël paràmetr $1 a peul pa avèj un valor veuid.',
+	'maps_error_required_missing' => "Ël paràmetr obligatòri $1 a l'é pa dàit.",
+	'maps_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
+	'maps_error_ivalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
 	'maps_map' => 'Pian',
 );
 
