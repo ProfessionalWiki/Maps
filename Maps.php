@@ -55,7 +55,13 @@ function efMapsSetup() {
 	
 	// Enure that the default service and geoservice are one of the enabled ones.
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
-	$egMapsDefaultGeoService = in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices) ? $egMapsDefaultGeoService : end(array_reverse(array_keys($egMapsAvailableGeoServices)));
+	if (!in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices)) {
+		foreach($egMapsAvailableGeoServices as $geoServiceName => $value) {
+			$defService = $geoServiceName;
+			continue;
+		}		
+		$egMapsDefaultGeoService = $egMapsAvailableGeoServices[$defService];
+	}
 	
 	wfLoadExtensionMessages( 'Maps' ); 
 	
@@ -75,6 +81,7 @@ function efMapsSetup() {
 	);
 
 	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
+	$wgOut->addExtensionStyle($egMapsScriptPath . '/GoogleMaps/GoogleMapStyles.css');
 	
 	// These loops take care of everything hooked into Maps.
 	foreach($egMapsAvailableFeatures as $key => $values) {
