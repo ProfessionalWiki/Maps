@@ -81,7 +81,6 @@ function efMapsSetup() {
 	);
 
 	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
-	$wgOut->addExtensionStyle($egMapsScriptPath . '/GoogleMaps/GoogleMapStyles.css');
 	
 	// These loops take care of everything hooked into Maps.
 	foreach($egMapsAvailableFeatures as $key => $values) {
