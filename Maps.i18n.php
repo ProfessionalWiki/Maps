@@ -370,10 +370,16 @@ Peta tidak dapat ditampilkan.',
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する([http://wiki.bn2vs.com/wiki/Maps 実演])。次の地図サービスに対応します：$1',
+	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する ([http://wiki.bn2vs.com/wiki/Maps 実演])。次の地図サービスに対応します: $1',
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
 	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
+	'maps_error_parameters' => 'あなたの入力から以下のエラーが検出されました',
+	'maps_error_invalid_argument' => '値「$1」は引数「$2」として妥当ではありません。',
+	'maps_error_empty_argument' => '引数「$1」は空の値をとることができません。',
+	'maps_error_required_missing' => '必須の引数「$1」が入力されていません。',
+	'maps_error_must_be_number' => '引数「$1」は数値でなければなりません。',
+	'maps_error_ivalid_range' => '引数「$1」は $2 と $3 の間の値でなければなりません。',
 	'maps_map' => '地図',
 );
 
@@ -484,6 +490,26 @@ La mapa a peul pa esse visualisà.",
 	'maps_error_must_be_number' => 'Ël paràmetr $1 a peul mach esse un nùmer.',
 	'maps_error_ivalid_range' => 'Ël paràmetr $1 a deuv esse an tra $2 e $3.',
 	'maps_map' => 'Pian',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e endereços por geocódigo ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
+Serviços de cartografia disponíveis: $1',
+	'maps_coordinates_missing' => 'Não foram fornecidas coordenadas para o mapa.',
+	'maps_geocoding_failed' => 'Não foi possível geocodificar {{PLURAL:$2|o seguinte endereço|os seguintes endereços}}: $1.
+O mapa não pode ser apresentado.',
+	'maps_geocoding_failed_for' => 'Não foi possível geocodificar {{PLURAL:$2|o seguinte endereço, que foi omitido|os seguintes endereços, que foram omitidos}} do mapa:
+$1.',
+	'maps_error_parameters' => 'Foram detectados os seguintes erros sintácticos',
+	'maps_error_invalid_argument' => 'O valor $1 não é válido para o parâmetro $2.',
+	'maps_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
+	'maps_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
+	'maps_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
+	'maps_error_ivalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
+	'maps_map' => 'Mapa',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
