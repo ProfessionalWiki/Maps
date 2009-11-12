@@ -157,7 +157,6 @@ function MoreControl() {};
 MoreControl.prototype = new GControl();
 
 MoreControl.prototype.initialize = function(map) {
-	alert('ur doin it wron');
 	this.map = map;
 	
 	var more = document.getElementById(map.name + "-outer-more");
