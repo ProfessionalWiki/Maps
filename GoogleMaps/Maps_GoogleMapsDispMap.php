@@ -54,6 +54,8 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 		
 		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);	
 		
+		$onloadFunctions = MapsGoogleMapsUtils::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
+		
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
 		$this->types = explode(",", $this->types);
@@ -82,6 +84,8 @@ addOnloadHook(
 
 END;
 
+	$this->output .= $onloadFunctions;		
+		
 	}
 	
 }

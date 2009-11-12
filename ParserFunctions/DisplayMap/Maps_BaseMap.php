@@ -29,7 +29,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	public final function displayMap(&$parser, array $params) {			
 		$this->setMapSettings();
 		
-		$coords = $this->manageMapProperties($params);
+		$coords = $this->manageMapProperties($params, __CLASS__);
 		
 		$this->doMapServiceLoad();
 
@@ -48,8 +48,8 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	 * (non-PHPdoc)
 	 * @see smw/extensions/Maps/MapsMapFeature#manageMapProperties($mapProperties, $className)
 	 */
-	protected function manageMapProperties($params) {
-		parent::manageMapProperties($params, __CLASS__);
+	protected function manageMapProperties($params, $className) {
+		parent::manageMapProperties($params, $className);
 	}
 	
 	/**

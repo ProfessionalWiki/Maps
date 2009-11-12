@@ -15,16 +15,20 @@ $messages = array();
  * @author Jeroen De Dauw
  */
 $messages['en'] = array(
+	// General
 	'maps_name' => 'Maps',
 	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Available mapping services: $1",
+	'maps_map' => 'Map',
 
+	// Geocoding errors
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
 	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.
 The map cannot be displayed.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 
+	// Parameter errors. Used when strict parameter validation is turned on.
 	'maps_error_parameters' => 'The following errors have been detected in your syntaxis',
 	'maps_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
 	'maps_error_empty_argument' => 'Parameter $1 can not have an empty value.',
@@ -32,12 +36,18 @@ $1',
 	'maps_error_must_be_number' => 'Parameter $1 can only be a number.',
 	'maps_error_ivalid_range' => 'Parameter $1 must be between $2 and $3.',
 
-	'maps_map' => 'Map',
-
+	// Mapping services
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers', 
 	'maps_osm' => 'OpenStreetMaps', 
+
+	// Google Maps overlays
+	'maps_overlays' => 'Overlays',	
+	'maps_photos' => 'Photos',
+	'maps_videos' => 'Videos',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webcams'
 );
 
 /** Message documentation (Message documentation)

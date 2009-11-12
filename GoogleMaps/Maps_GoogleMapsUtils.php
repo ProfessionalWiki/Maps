@@ -54,7 +54,14 @@ final class MapsGoogleMapsUtils {
 					'mars-infrared' => 'G_MARS_INFRARED_MAP',
 					'G_MARS_INFRARED_MAP' => 'G_MARS_INFRARED_MAP',	
 					);
-
+					
+	private static $overlayData = array(
+					'photos' => '0',
+					'videos' => '1',
+					'wikipedia' => '2',
+					'webcams' => '3'
+					);				
+					
 	/**
 	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 
 	 * for the provided a general map type. When no match is found, false
@@ -117,7 +124,7 @@ final class MapsGoogleMapsUtils {
 	 * @param string $output
 	 */
 	public static function addGMapDependencies(&$output) {
-		global $wgJsMimeType, $wgLang;
+		global $wgJsMimeType, $wgLang, $wgOut;
 		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage, $egMapsStyleVersion;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
@@ -193,5 +200,131 @@ final class MapsGoogleMapsUtils {
 			if (strlen(trim($egGoogleMapsKey)) < 1) $egGoogleMapsKey = $wgGoogleMapsKey;
 		} 
 	}	
+	
+	/**
+	 * 
+	 * 
+	 * @param string $output
+	 * @param string $mapName
+	 * @return unknown_type
+	 */
+	public static function addOverlayOutput(&$output, $mapName, $overlays, $controls) {
+		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
+
+		// Check to see if there is an overlays control.
+		$hasOverlayControl = in_string('overlays', $controls);
+		
+		$overlayNames = array_keys(self::$overlayData);
+		
+		// Create the overlays array, and use the default in case no overlays have been provided.
+		if (strlen(trim($overlays)) < 1) {
+			$overlays = $egMapsGMapOverlays;
+		} else {
+			MapsMapper::enforceArrayValues($overlays);
+			$validOverlays = array();
+			foreach ($overlays as $overlay) {
+				$segements = split('-', $overlay);
+				$name = $segements[0];
+				
+				if (in_array($name, $overlayNames)) {
+					$isOn = count($segements) > 1 ? $segements[1] : '0';
+					$validOverlays[$name] = $isOn == '1';
+				}
+			} 
+			$overlays = $validOverlays;
+		}
+		
+		// If there are no overlays or there is no control to hold them, don't bother the rest.
+		if(!$hasOverlayControl || count($overlays) < 1) return;
+		
+		// If the overlays JS and CSS has not yet loaded, do it.
+		if (empty($egMapsGoogleOverlLoaded)) {
+			$egMapsGoogleOverlLoaded = true;
+			MapsGoogleMapsUtils::addOverlayCss($output);
+		}
+		
+		// Add the inputs for the overlays.
+		$addedOverlays = array();
+		$overlayHtml = '';
+		$onloadFunctions = '';
+		foreach ($overlays as $overlay => $isOn) {
+			$overlay = strtolower($overlay);
+			
+			if (in_array($overlay, $overlayNames)) {
+				if (! in_array($overlay, $addedOverlays)) {
+					$addedOverlays[] = $overlay;
+					$label = wfMsg('maps_' . $overlay);
+					$urlNr = self::$overlayData[$overlay];
+					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
+					if ($isOn) {
+						$onloadFunctions .= "<script type='$wgJsMimeType'>addOnloadHook( initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) );</script>";
+					}
+				}				
+			}
+		}
+		
+		$output .=<<<END
+<script type='$wgJsMimeType'>var timer_$mapName;</script>		
+<div class='outer-more' id='$mapName-outer-more'><form action=''><div class='more-box' id='$mapName-more-box'>
+$overlayHtml
+</div></form></div>		
+END;
+
+	return $onloadFunctions;
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @param $output
+	 * @return unknown_type
+	 */
+	private static function addOverlayCss(&$output) {
+		$css =<<<END
+
+<style type="text/css">
+.inner-more {
+	text-align:center;
+	font-size:12px;
+	background-color: #fff;
+	color: #000;
+	border: 1px solid #fff;
+	border-right-color: #b0b0b0;
+	border-bottom-color: #c0c0c0;
+	width:7em;
+	cursor: pointer;
+}
+
+.inner-more.highlight {
+	font-weight: bold;
+	border: 1px solid #483D8B;
+	border-right-color: #6495ed;
+	border-bottom-color: #6495ed;
+} 
+
+.more-box {  position:absolute;
+	top:25px; left:0px;
+	margin-top:-1px;
+	font-size:12px;
+	padding: 6px 4px;
+	width:120px;
+	background-color: #fff;
+	color: #000;
+	border: 1px solid gray;
+	border-top:1px solid #e2e2e2;
+	display: none;
+	cursor:default;
+}
+
+.more-box.highlight {
+	width:119px;
+	border-width:2px;
+}	
+</style>	
+
+END;
+
+	$output .= preg_replace('/\s+/m', ' ', $css);
+	}
 	
 }

@@ -48,13 +48,15 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	 *
 	 */	
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgJsMimeType, $wgOut;
 		
 		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
 		
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
 		
 		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);	
+		
+		$onloadFunctions = MapsGoogleMapsUtils::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
@@ -67,10 +69,10 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 			
 			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
 			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;
-			
+
 			$title = str_replace("'", "\'", $title);
 			$label = str_replace("'", "\'", $label);	
-						
+
 			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
 			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}		
@@ -82,7 +84,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);
 		
 		$this->output .=<<<END
-
+			
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
@@ -104,6 +106,8 @@ addOnloadHook(
 /*]]>*/ </script>
 
 END;
+
+	$this->output .= $onloadFunctions;
 
 	}
 	
