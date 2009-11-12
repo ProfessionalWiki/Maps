@@ -108,7 +108,7 @@ final class MapsDisplayMap {
 		elseif (trim($coords) == "" && (count($geoFails) > 0 || count($coordFails) > 0)) {
         	if (count($coordFails) > 0) $output = '<i>' . wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
             if (count($geoFails) > 0) $output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
-            $output .= '<i>' . wfMsgExt('maps_map_cannot_be_displayed') .'</i>'; 
+            $output .= '<i>' . wfMsg('maps_map_cannot_be_displayed') .'</i>'; 
         }
         else {
             $output = '<i>'.wfMsg( 'maps_coordinates_missing' ).'</i>';
