@@ -151,6 +151,7 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://wiki.bn2vs.com/wiki/Maps demo]).
 K dispoziciji stojece kórtowe słužby: $1',
+	'maps_map' => 'Karta',
 	'maps_coordinates_missing' => 'Za kórtu njejsu koordinaty pódane.',
 	'maps_geocoding_failed' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było: $1. Kórta njedajo se zwobrazniś.',
 	'maps_geocoding_failed_for' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było a togodla toś {{PLURAL:$2|ta adresa wuwóstaja|tej adresy wuwóstajotej|te adrese wuwóstajaju|te adresy wuwóstajaju}} se na kórśe: $1',
@@ -160,7 +161,11 @@ K dispoziciji stojece kórtowe słužby: $1',
 	'maps_error_required_missing' => 'Trěbny parameter $1 njejo pódany.',
 	'maps_error_must_be_number' => 'Parameter $1 móžo jano licba byś.',
 	'maps_error_ivalid_range' => 'Parameter $1 musy mjazy $2 a $3 byś.',
-	'maps_map' => 'Karta',
+	'maps_overlays' => 'Pśekšyśa',
+	'maps_photos' => 'Fota',
+	'maps_videos' => 'Wideo',
+	'maps_wikipedia' => 'Wikipedija',
+	'maps_webcams' => 'Webcamy',
 );
 
 /** Greek (Ελληνικά)
@@ -209,17 +214,25 @@ $messages['fr'] = array(
 	'maps_name' => 'Cartes',
 	'maps_desc' => 'Permet d’afficher des coordonnées dans des cartes, ainsi que des adresses géocodées ([http://wiki.bn2vs.com/wiki/Maps démonstration]).
 Services de cartographie disponibles : $1',
+	'maps_map' => 'Carte',
 	'maps_coordinates_missing' => "Aucune coordonnée n'a été fournie pour le plan.",
 	'maps_geocoding_failed' => "{{PLURAL:$2|L′adresse suivante n'as pu être géocodée|Les adresses suivantes n'ont pas pu être géocodées}} : $1.
 Le plan ne peut pas être affiché.",
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|L′adresse suivante n’as pu être géocodée|Les adresses suivantes n’ont pas pu être géocodées}} et {{PLURAL:$2|n’est pas affichée|ne sont pas affichées}} sur le plan : $1',
+	'maps_unrecognized_coords' => "Les coordonnées suivantes n'ont pas été reconnues : $1.",
+	'maps_unrecognized_coords_for' => "Les coordonnées suivantes n'ont pas été reconnues et {{PLURAL:$2|a été omise|ont été omises}} sur la carte : $1.",
+	'maps_map_cannot_be_displayed' => 'La carte ne peut pas être affichée.',
 	'maps_error_parameters' => 'Les erreurs suivantes ont été détectées dans votre syntaxe',
 	'maps_error_invalid_argument' => "La valeur $1 n'est pas valide pour le paramètre $2.",
 	'maps_error_empty_argument' => 'Le paramètre $1 ne peut pas avoir une valeur vide.',
 	'maps_error_required_missing' => "Le paramètre requis $1 n'est pas fourni.",
 	'maps_error_must_be_number' => 'Le paramètre $1 peut être uniquement un nombre.',
 	'maps_error_ivalid_range' => 'Le paramètre $1 doit être entre $2 et $3.',
-	'maps_map' => 'Carte',
+	'maps_overlays' => 'Superpositions',
+	'maps_photos' => 'Photos',
+	'maps_videos' => 'Vidéos',
+	'maps_wikipedia' => 'Wikipédia',
+	'maps_webcams' => 'Webcams',
 );
 
 /** Friulian (Furlan)
@@ -242,17 +255,26 @@ $1',
 $messages['gl'] = array(
 	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://wiki.bn2vs.com/wiki/Maps demostración]).
 Servizos de mapeamento dispoñibles: $1',
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Non se proporcionou ningunha coordenada para o mapa.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}}: $1.
 O mapa non se pode mostrar.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}} e {{PLURAL:$2|omitiuse|omitíronse}} no mapa: $1.',
+	'maps_unrecognized_coords' => 'Non se recoñeceron as seguintes coordenadas: $1.',
+	'maps_unrecognized_coords_for' => 'Non se {{PLURAL:$2|recoñeceu a seguinte coordenada|recoñeceron as seguintes coordenadas}} e {{PLURAL:$2|foi omitida|foron omitidas}} do mapa:
+$1',
+	'maps_map_cannot_be_displayed' => 'O mapa non se pode mostrar.',
 	'maps_error_parameters' => 'Detectáronse os seguintes erros na sintaxe empregada',
 	'maps_error_invalid_argument' => 'O valor $1 non é válido para o parámetro $2.',
 	'maps_error_empty_argument' => 'O parámetro $1 non pode ter un valor baleiro.',
 	'maps_error_required_missing' => 'Non se proporcionou o parámetro $1 necesario.',
 	'maps_error_must_be_number' => 'O parámetro $1 só pode ser un número.',
 	'maps_error_ivalid_range' => 'O parámetro $1 debe estar entre $2 e $3.',
-	'maps_map' => 'Mapa',
+	'maps_overlays' => 'Sobreposicións',
+	'maps_photos' => 'Fotos',
+	'maps_videos' => 'Vídeos',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Cámaras web',
 );
 
 /** Swiss German (Alemannisch)
@@ -305,6 +327,7 @@ $1',
 $messages['hsb'] = array(
 	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić ([http://wiki.bn2vs.com/wiki/Maps demo]). 
 K dispoziciji stejace kartowe słužby: $1',
+	'maps_map' => 'Karta',
 	'maps_coordinates_missing' => 'Za kartu njejsu koordinaty podate.',
 	'maps_geocoding_failed' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno: $1. Karta njeda so zwobraznić.',
 	'maps_geocoding_failed_for' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno a {{PLURAL:$2|tuta adresa|tutej adresy|tute adresy|tute adresy}} so na karće {{PLURAL:$2|wuwostaja|wuwostajetej|wuwostajeja|wuwostajeja}}: $1',
@@ -314,7 +337,11 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_error_required_missing' => 'Trěbny parameter $1 njeje podaty.',
 	'maps_error_must_be_number' => 'Parameter $1 móže jenož ličba być.',
 	'maps_error_ivalid_range' => 'Parameter $1 dyrbi mjez $2 a $3 być.',
-	'maps_map' => 'Karta',
+	'maps_overlays' => 'Naworštowanja',
+	'maps_photos' => 'Fota',
+	'maps_videos' => 'Wideja',
+	'maps_wikipedia' => 'Wikipedija',
+	'maps_webcams' => 'Webcamy',
 );
 
 /** Hungarian (Magyar)
@@ -323,18 +350,26 @@ K dispoziciji stejace kartowe słužby: $1',
  */
 $messages['hu'] = array(
 	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://wiki.bn2vs.com/wiki/Maps demó]). Elérhető térképszolgáltatások: $1',
+	'maps_map' => 'Térkép',
 	'maps_coordinates_missing' => 'Nincsenek megadva koordináták a térképhez.',
 	'maps_geocoding_failed' => 'A következő {{PLURAL:$2|cím|címek}} nem geokódolhatók: $1.
 A térképet nem lehet megjeleníteni.',
 	'maps_geocoding_failed_for' => 'A következő {{PLURAL:$2|cím nem geokódolható|címek nem geokódolhatóak}}, és nem {{PLURAL:$2|szerepel|szerepelnek}} a térképen:
 $1',
+	'maps_unrecognized_coords' => 'A következő koordinátákat nem sikerült felismerni: $1.',
+	'maps_unrecognized_coords_for' => 'A következő koordinátákat nem sikerült felismerni, és {{PLURAL:$2|el|el}} lettek távolítva a térképről: $1',
+	'maps_map_cannot_be_displayed' => 'A térképet nem sikerült megjeleníteni.',
 	'maps_error_parameters' => 'A következő hibák találhatóak a szintaxisodban',
 	'maps_error_invalid_argument' => 'A(z) $1 érték nem érvényes a(z) $2 paraméterhez.',
 	'maps_error_empty_argument' => 'A(z) $1 paraméter értéke nem lehet üres.',
 	'maps_error_required_missing' => 'A(z) $1 kötelező paraméter nem lett megadva.',
 	'maps_error_must_be_number' => 'A(z) $1 paraméter csak szám lehet.',
 	'maps_error_ivalid_range' => 'A(z) $1 paraméter értékének $2 és $3 között kell lennie.',
-	'maps_map' => 'Térkép',
+	'maps_overlays' => 'Rétegek',
+	'maps_photos' => 'Fényképek',
+	'maps_videos' => 'Videók',
+	'maps_wikipedia' => 'Wikipédia',
+	'maps_webcams' => 'Webkamerák',
 );
 
 /** Interlingua (Interlingua)
@@ -444,21 +479,30 @@ $1',
 $messages['nl'] = array(
 	'maps_desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Beschikbare kaartdiensten: $1',
+	'maps_map' => 'Kaart',
 	'maps_coordinates_missing' => 'Er zijn geen coördinaten opgegeven voor de kaart.',
 	'maps_geocoding_failed' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk: $1
 De kaart kan niet worden weergegeven.',
 	'maps_geocoding_failed_for' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk en {{PLURAL:$2|dit is|deze zijn}} weggelaten uit de kaart:
 $1',
+	'maps_unrecognized_coords' => 'De volgende coördinaten zijn niet herkend: $1.',
+	'maps_unrecognized_coords_for' => 'De volgende {{PLURAL:$2|coördinaat is niet herkend en is|coördinaten zijn niet herkend en zijn}} weggelaten uit de kaart:
+$1.',
+	'maps_map_cannot_be_displayed' => 'De kaart kan niet weergegeven worden.',
 	'maps_error_parameters' => 'In uw syntaxis zijn de volgende fouten gedetecteerd',
 	'maps_error_invalid_argument' => 'De waarde $1 is niet geldig voor de parameter $2.',
 	'maps_error_empty_argument' => 'De parameter $1 mag niet leeg zijn.',
 	'maps_error_required_missing' => 'De verplichte parameter $1 is niet opgegeven.',
 	'maps_error_must_be_number' => 'De parameter $1 mag alleen een getal zijn.',
 	'maps_error_ivalid_range' => 'De parameter $1 moet tussen $2 en $3 liggen.',
-	'maps_map' => 'Kaart',
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
+	'maps_overlays' => "Overlay's",
+	'maps_photos' => "Foto's",
+	'maps_videos' => 'Video',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webcams',
 );
 
 /** Occitan (Occitan)
@@ -567,18 +611,27 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'maps_desc' => 'Обеспечивает возможность отображения координатных данных на картах и геокодирование адресов ([http://wiki.bn2vs.com/wiki/Maps демонстрация]).
 Доступные картографические службы: $1',
+	'maps_map' => 'Карта',
 	'maps_coordinates_missing' => 'Не указаны координаты для карты.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Следующий адрес не может быть геокодирован|Следующие адреса не могут быть геокодированы}}: $1.
 Карта не может быть отображена.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следующий адрес не может быть геокодирован и был удалён|Следующие адреса не могут быть геокодированы и были удалены}} с карты:
 $1',
+	'maps_unrecognized_coords' => 'Следующие координаты не были опознаны: $1.',
+	'maps_unrecognized_coords_for' => 'Следующие координаты не были опознаны, {{PLURAL:$2|они|они}} не показаны на карте:
+$1',
+	'maps_map_cannot_be_displayed' => 'Карта не может быть показана.',
 	'maps_error_parameters' => 'Обнаружены следующие ошибки в синтаксисе',
 	'maps_error_invalid_argument' => 'Значение $1 не является допустимым параметром $2',
 	'maps_error_empty_argument' => 'Параметр $1 не может принимать пустое значение.',
 	'maps_error_required_missing' => 'Не указан обязательный параметр $1.',
 	'maps_error_must_be_number' => 'Значением параметра $1 могут быть только числа.',
 	'maps_error_ivalid_range' => 'Параметр $1 должен быть от $2 до $3.',
-	'maps_map' => 'Карта',
+	'maps_overlays' => 'Слои',
+	'maps_photos' => 'Фото',
+	'maps_videos' => 'Видео',
+	'maps_wikipedia' => 'Википедия',
+	'maps_webcams' => 'Веб-камеры',
 );
 
 /** Slovak (Slovenčina)
