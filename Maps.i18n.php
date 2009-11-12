@@ -26,8 +26,8 @@ Available mapping services: $1",
 	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
-	'maps_unrecognized_coords' => 'The following coordinates where not recognized: $1.',
-	'maps_unrecognized_coords_for' => 'The following coordinates where not recognized and {{PLURAL:$2|has|have}} been omitted from the map:
+	'maps_unrecognized_coords' => 'The following coordinates were not recognized: $1.',
+	'maps_unrecognized_coords_for' => 'The following coordinates were not recognized and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
