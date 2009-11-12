@@ -167,7 +167,7 @@ $egMapsGMapControls = array('large', 'scale', 'type', 'overlays');
 # Array. The default overlays for the Google Maps overlays control, and wether they should be shown at pageload.
 # This value will only be used when the user does not provide one.
 # Available values: photos, videos, wikipedia, webcams
-$egMapsGMapOverlays = array('photos' => false, 'videos' => true, 'wikipedia' => true, 'webcams' => false);
+$egMapsGMapOverlays = array('photos' => false, 'videos' => false, 'wikipedia' => false, 'webcams' => false);
 
 
 

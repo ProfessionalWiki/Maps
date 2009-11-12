@@ -34,6 +34,7 @@ final class MapsParserGeocoder {
 
 		$fails = array();
 		
+		// Get the service and geoservice from the parameters, since they are needed to geocode addresses.
 		for ($i = 0; $i < count($params); $i++) {
 			$split = split('=', $params[$i]);
 			if (MapsMapper::inParamAliases(strtolower(trim($split[0])), 'service') && count($split) > 1) {
@@ -44,27 +45,31 @@ final class MapsParserGeocoder {
 			}			
 		}
 
+		// Make sure the service and geoservice are valid.
 		$service = isset($service) ? MapsMapper::getValidService($service, 'pf') : $egMapsDefaultService;
-
-		if (!isset($geoservice)) $geoservice = '';
+		if (! isset($geoservice)) $geoservice = '';
 		
+		// Go over all parameters.
 		for ($i = 0; $i < count($params); $i++) {
-			
 			$split = split('=', $params[$i]);
-			$isAddress = ((strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1) || count($split) == 1;
+			$isAddress = (strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1;
+			$isDefault = count($split) == 1;
 			
-			if ($isAddress) {
-				$address_srting = count($split) == 1 ? $split[0] : $split[1];
+			// If a parameter is either the default (no name), or an addresses list, extract all locations.
+			if ($isAddress || $isDefault) {
+				
+				$address_srting = $split[count($split) == 1 ? 0 : 1];
 				$addresses = explode(';', $address_srting);
 
 				$coordinates = array();
 				
+				// Go over every location and attempt to geocode it.
 				foreach($addresses as $address) {
 					$args = explode('~', $address);
 					$args[0] = trim($args[0]);
 					
 					if (strlen($args[0]) > 0) {
-						$coords =  MapsGeocodeUtils::attemptToGeocode($args[0], $geoservice, $service);
+						$coords =  MapsGeocodeUtils::attemptToGeocode($args[0], $geoservice, $service, $isDefault);
 						
 						if ($coords) {
 							$args[0] = $coords;
@@ -76,7 +81,8 @@ final class MapsParserGeocoder {
 					}
 				}				
 				
-				$params[$i] = 'coordinates=' . implode(';', $coordinates);
+				// Add the geocoded result back to the parameter list.
+				$params[$i] = implode(';', $coordinates);
 
 			}
 			

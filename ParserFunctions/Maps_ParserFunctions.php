@@ -47,6 +47,31 @@ final class MapsParserFunctions {
 		}				
 	}
 	
+	/**
+	 * Filters all non coordinate valus from a coordinate string, 
+	 * and returns an array containing all filtered out values.
+	 * 
+	 * @param string $coordList
+	 * @return array
+	 */
+	public static function filterInvalidCoords(&$coordList, $delimeter = ';') {
+		$coordFails = array();
+		$validCoordinates = array();
+        $coordinates = explode($delimeter, $coordList);
+        
+        foreach($coordinates as $coordinate) {
+        	if (MapsGeocodeUtils::isCoordinate($coordinate)) {
+        		$validCoordinates[] = $coordinate;
+        	}
+        	else {
+        		$coordFails[] = $coordinate;
+        	}
+        }
+        
+        $coordList = implode($delimeter, $validCoordinates);  
+        return $coordFails;
+	}
+	
 
 
 }

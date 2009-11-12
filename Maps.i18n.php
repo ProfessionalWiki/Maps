@@ -21,12 +21,15 @@ $messages['en'] = array(
 Available mapping services: $1",
 	'maps_map' => 'Map',
 
-	// Geocoding errors
+	// Coordinate errors
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
-	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.
-The map cannot be displayed.',
+	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
+	'maps_unrecognized_coords' => 'The following coordinates where not recognized: $1.',
+	'maps_unrecognized_coords_for' => 'The following coordinates where not recognized and {{PLURAL:$2|has|have}} been omitted from the map:
+$1',
+	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
 	// Parameter errors. Used when strict parameter validation is turned on.
 	'maps_error_parameters' => 'The following errors have been detected in your syntaxis',

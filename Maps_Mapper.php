@@ -39,9 +39,9 @@ final class MapsMapper {
 	 * Gets if a provided name is present in the aliases array of a parameter
 	 * name in the $mainParams array.
 	 *
-	 * @param string $name
-	 * @param string $mainParamName
-	 * @param string $compareMainName
+	 * @param string $name The name you want to check for.
+	 * @param string $mainParamName The main parameter name.
+	 * @param boolean $compareMainName Boolean indicating wether the main name should also be compared.
 	 * @return boolean
 	 */
 	public static function inParamAliases($name, $mainParamName, $compareMainName = true) {

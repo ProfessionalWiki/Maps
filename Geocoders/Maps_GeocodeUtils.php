@@ -25,9 +25,14 @@ final class MapsGeocodeUtils {
 	 * 
 	 * @return string or boolean
 	 */
-	public static function attemptToGeocode($coordsOrAddress, $geoservice, $service) {
-		if (MapsGeocodeUtils::isCoordinate($coordsOrAddress)) {
-			$coords = $coordsOrAddress;
+	public static function attemptToGeocode($coordsOrAddress, $geoservice, $service, $checkForCoords = true) {
+		if ($checkForCoords) {
+			if (MapsGeocodeUtils::isCoordinate($coordsOrAddress)) {
+				$coords = $coordsOrAddress;
+			}
+			else {
+				$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
+			}
 		}
 		else {
 			$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
@@ -43,18 +48,19 @@ final class MapsGeocodeUtils {
 	 * 
 	 * @return boolean
 	 */
-	private static function isCoordinate($coordsOrAddress) {
+	public static function isCoordinate($coordsOrAddress) {
 		$coordRegexes = array(
-			'/^(-)?\d{1,3}(\.\d{1,7})?,(\s)?(-)?\d{1,3}(\.\d{1,7})?$/', // Floats
+			'/^(-)?\d{1,3}(\.\d{1,14})?,(\s)?(-)?\d{1,3}(\.\d{1,14})?$/', // Floats
 			'/^(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(N|S)(\s)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(E|W)$/', // DMS 
-			'/^(-)?\d{1,3}(|\.\d{1,7})°,(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,7})°$/', // DD
-			'/(-)?\d{1,3}°\d{1,3}(\.\d{1,7}\')?,(\s)?(-)?\d{1,3}°\d{1,3}(\.\d{1,7}\')?$/', // DM
+			'/^(-)?\d{1,3}(|\.\d{1,14})°,(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,14})°$/', // DD
+			'/^\d{1,3}(|\.\d{1,14})°(\s)?(N|S),(\s)?(\s)?\d{1,3}(|\.\d{1,14})°(\s)(E|W)?$/', // DD (directional)
+			'/(-)?\d{1,3}°\d{1,3}(\.\d{1,14}\')?,(\s)?(-)?\d{1,3}°\d{1,3}(\.\d{1,14}\')?$/', // DM
 			); 
 			
 		$isCoordinate = false;
 		
 		foreach ($coordRegexes as $coordRegex) {
-			if (preg_match($coordRegex, $coordsOrAddress)) {
+			if (preg_match($coordRegex, trim($coordsOrAddress))) {
 				$isCoordinate = true;
 				continue;
 			}		

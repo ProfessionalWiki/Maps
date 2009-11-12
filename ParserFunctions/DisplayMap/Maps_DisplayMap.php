@@ -62,10 +62,12 @@ final class MapsDisplayMap {
 		return self::getMapHtml($parser, $params, 'display_map', $fails);
 	}
 
-	public static function getMapHtml(&$parser, array $params, $parserFunction, array $coordFails = array()) {
+	// TODO: refactor up
+	public static function getMapHtml(&$parser, array $params, $parserFunction, array $geoFails = array()) {
         global $wgLang;
         
         $map = array();
+        $coordFails = array();
         
         // Go through all parameters, split their names and values, and put them in the $map array.
         foreach($params as $param) {
@@ -75,6 +77,7 @@ final class MapsDisplayMap {
                 $paramValue = trim($split[1]);
                 if (strlen($paramName) > 0 && strlen($paramValue) > 0) {
                 	$map[$paramName] = $paramValue;
+                	if (MapsMapper::inParamAliases($paramName, 'coordinates')) $coordFails = MapsParserFunctions::filterInvalidCoords($map[$paramName]);
                 }
             }
             else if (count($split) == 1) { // Default parameter (without name)
@@ -94,12 +97,18 @@ final class MapsDisplayMap {
             // Call the function according to the map service to get the HTML output
             $output = $mapClass->displayMap($parser, $map);    
             
-            if (count($coordFails) > 0) {
-                $output .= '<i>' . wfMsgExt( 'maps_geocoding_failed_for', array( 'parsemag' ), $wgLang->listToText($coordFails ), count( $coordFails ) ) . '</i>';
+			if (count($coordFails) > 0) {
+                $output .= '<i>' . wfMsgExt( 'maps_unrecognized_coords_for', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
+            }               
+            
+            if (count($geoFails) > 0) {
+                $output .= '<i>' . wfMsgExt( 'maps_geocoding_failed_for', array( 'parsemag' ), $wgLang->listToText($geoFails ), count( $geoFails ) ) . '</i>';
             }
         }
-        elseif (trim($coords) == "" && count($coordFails) > 0) {
-            $output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
+		elseif (trim($coords) == "" && (count($geoFails) > 0 || count($coordFails) > 0)) {
+        	if (count($coordFails) > 0) $output = '<i>' . wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
+            if (count($geoFails) > 0) $output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
+            $output .= '<i>' . wfMsgExt('maps_map_cannot_be_displayed') .'</i>'; 
         }
         else {
             $output = '<i>'.wfMsg( 'maps_coordinates_missing' ).'</i>';
