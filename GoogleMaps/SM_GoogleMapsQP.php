@@ -63,6 +63,8 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		
 		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);
 
+		$onloadFunctions = MapsGoogleMapsUtils::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
+		
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();
@@ -106,6 +108,7 @@ addOnloadHook(
 
 END;
 	
+		$this->output .= $onloadFunctions;	
 	}
 	
 

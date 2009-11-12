@@ -81,6 +81,11 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);		
 		
+		if (in_string('overlays', $this->controls)) {
+			$this->controls = str_replace(",'overlays'", '', $this->controls);
+			$this->controls = str_replace("'overlays',", '', $this->controls);
+		}
+		
 		$this->types = explode(",", $this->types);
 		
 		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);
@@ -108,7 +113,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 				$this->marker_lon	
 			)			
 		);
-		/*]]>*/</script>";
+		/*]]>*/</script>";			
 	}
 	
 	/**

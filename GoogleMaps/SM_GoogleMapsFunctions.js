@@ -15,8 +15,8 @@ function makeGoogleMapFormInput(mapName, locationFieldName, mapOptions, marker_l
 	 if (GBrowserIsCompatible()) {
 		 mapOptions.centre =  new GLatLng(mapOptions.lat, mapOptions.lon);
 		 mapOptions.size = new GSize(mapOptions.width, mapOptions.height);			 
-		 var map = createGoogleMap(document.getElementById(mapName), mapOptions, [getGMarkerData(marker_lat, marker_lon, '', '', '')]);
-
+		 var map = createGoogleMap(mapName, mapOptions, [getGMarkerData(marker_lat, marker_lon, '', '', '')]);
+		 
 		// Show a starting marker only if marker coordinates are provided
 		if (marker_lat != null && marker_lon != null) {
 			map.addOverlay(new GMarker(new GLatLng(marker_lat, marker_lon)));
