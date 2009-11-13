@@ -109,7 +109,7 @@ final class MapsYahooMapsUtils {
 	 * @param boolean $enableEarth
 	 * @return string
 	 */
-	public function createTypesString(array &$types) {	
+	public static function createTypesString(array &$types) {	
 		global $egMapsYahooMapsTypes, $egMapsYahooMapTypesValid;
 		
 		$types = MapsMapper::getValidTypes($types, $egMapsYahooMapsTypes, $egMapsYahooMapTypesValid, array(__CLASS__, 'getYMapType'));
