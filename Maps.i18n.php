@@ -73,6 +73,14 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'maps_map' => 'Kaart',
+	'maps_unrecognized_coords_for' => 'Die volgende {{PLURAL:$2|koördinaat|koördinate}} is nie herken nie en is uit die kaart weggelaat:
+$1.',
+	'maps_map_cannot_be_displayed' => 'Die kaart kan nie vertoon word nie.',
+	'maps_error_parameters' => 'Die volgende foute is in u sintaks opgespoor',
+	'maps_photos' => "Foto's",
+	'maps_videos' => "Video's",
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webkameras',
 );
 
 /** Arabic (العربية)
@@ -213,6 +221,7 @@ Karttaa ei voida näyttää.',
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author McDutchie
  * @author PieRRoMaN
  * @author Verdy p
  */
@@ -226,7 +235,8 @@ Services de cartographie disponibles : $1',
 Le plan ne peut pas être affiché.",
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|L′adresse suivante n’as pu être géocodée|Les adresses suivantes n’ont pas pu être géocodées}} et {{PLURAL:$2|n’est pas affichée|ne sont pas affichées}} sur le plan : $1',
 	'maps_unrecognized_coords' => "Les coordonnées suivantes n'ont pas été reconnues : $1.",
-	'maps_unrecognized_coords_for' => "Les coordonnées suivantes n'ont pas été reconnues et {{PLURAL:$2|a été omise|ont été omises}} sur la carte : $1.",
+	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordonnée suivante n'a pas été reconnue|Les coordonnées suivantes n'ont pas été reconnues}} et {{PLURAL:$2|a été omise|ont été omises}} sur la carte :
+$1",
 	'maps_map_cannot_be_displayed' => 'La carte ne peut pas être affichée.',
 	'maps_error_parameters' => 'Les erreurs suivantes ont été détectées dans votre syntaxe',
 	'maps_error_invalid_argument' => "La valeur $1 n'est pas valide pour le paramètre $2.",
@@ -375,7 +385,7 @@ A térképet nem lehet megjeleníteni.',
 	'maps_geocoding_failed_for' => 'A következő {{PLURAL:$2|cím nem geokódolható|címek nem geokódolhatóak}}, és nem {{PLURAL:$2|szerepel|szerepelnek}} a térképen:
 $1',
 	'maps_unrecognized_coords' => 'A következő koordinátákat nem sikerült felismerni: $1.',
-	'maps_unrecognized_coords_for' => 'A következő koordinátákat nem sikerült felismerni, és {{PLURAL:$2|el|el}} lettek távolítva a térképről: $1',
+	'maps_unrecognized_coords_for' => 'A következő {{PLURAL:$2|koordinátát|koordinátákat}} nem sikerült felismerni, és el {{PLURAL:$2|lett|lettek}} távolítva a térképről: $1',
 	'maps_map_cannot_be_displayed' => 'A térképet nem sikerült megjeleníteni.',
 	'maps_error_parameters' => 'A következő hibák találhatóak a szintaxisodban',
 	'maps_error_invalid_argument' => 'A(z) $1 érték nem érvényes a(z) $2 paraméterhez.',
@@ -396,18 +406,27 @@ $1',
 $messages['ia'] = array(
 	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Servicios cartographic disponibile: $1',
+	'maps_map' => 'Carta',
 	'maps_coordinates_missing' => 'Nulle coordinata providite pro le mappa.',
 	'maps_geocoding_failed' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate: $1.
 Le mappa non pote esser monstrate.',
 	'maps_geocoding_failed_for' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate e ha essite omittite del mappa:
 $1',
+	'maps_unrecognized_coords' => 'Le sequente coordinatas non esseva recognoscite: $1.',
+	'maps_unrecognized_coords_for' => 'Le sequente {{PLURAL:$2|coordinata|coordinatas}} non esseva recognoscite e ha essite omittite del carta:
+$1',
+	'maps_map_cannot_be_displayed' => 'Le carta on pote esser monstrate.',
 	'maps_error_parameters' => 'Le sequente errores ha essite detegite in tu syntaxe',
 	'maps_error_invalid_argument' => 'Le valor $1 non es valide pro le parametro $2.',
 	'maps_error_empty_argument' => 'Le parametro $1 non pote haber un valor vacue.',
 	'maps_error_required_missing' => 'Le parametro requisite $1 non ha essite fornite.',
 	'maps_error_must_be_number' => 'Le parametro $1 pote solmente esser un numero.',
 	'maps_error_ivalid_range' => 'Le parametro $1 debe esser inter $2 e $3.',
-	'maps_map' => 'Carta',
+	'maps_overlays' => 'Superpositiones',
+	'maps_photos' => 'Photos',
+	'maps_videos' => 'Videos',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Cameras web',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -451,7 +470,7 @@ $messages['ja'] = array(
 	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
 	'maps_unrecognized_coords' => '以下の座標は認識されませんでした: $1',
-	'maps_unrecognized_coords_for' => '以下の座標は認識されなかったため、地図から省かれて{{PLURAL:$2|います}}:
+	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}は認識されなかったため、地図から省かれています:
 $1',
 	'maps_map_cannot_be_displayed' => 'この地図は表示できません。',
 	'maps_error_parameters' => 'あなたの入力から以下のエラーが検出されました',
@@ -472,10 +491,24 @@ $1',
  */
 $messages['ksh'] = array(
 	'maps_desc' => 'Määt et müjjelesch, Koodinaate en Landkaate aanzezeije, un Addräße en Koodinaate op de Ääd ömzerääschne. (E [http://wiki.bn2vs.com/wiki/Maps Beispöll]). He di Deenste för Landkaat(e) ham_mer ze beede: $1',
+	'maps_map' => 'Kaat',
 	'maps_coordinates_missing' => 'Mer han kein Koodinaate för di Kaat.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Di Koodinaat|De Koodinaate|Kein Koodinaat}} om Jlobus för di {{PLURAL:$2|aanjejovve Adräß wohr|aanjejovve Adräße wohre|kein aanjejovve Adräß wohr}} Kappes: $1. Di Kaat künne mer su nit aanzeije.',
 	'maps_geocoding_failed_for' => 'De Koodinaate om Jlobus för {{PLURAL:$2|ein|paa|kein}} vun dä aanjejovve Adräße {{PLURAL:$2|es|wohre|Fähler!}} Kappes. Di {{PLURAL:$2|es|sin|Fähler!}} dröm nit op dä Kaat. De fottjelohße {{PLURAL:$2|es|sin|Fähler!}}: $1',
-	'maps_map' => 'Kaat',
+	'maps_unrecognized_coords' => 'He di Koordinate kunnte mer nit verschtonn: $1.',
+	'maps_unrecognized_coords_for' => 'He di {{PLURAL:$2|Koordinat kunnt|Koordinate kunnte}} mer nit verschtonn un dröm {{PLURAL:$2|es|sin}} se nit en de Kaat opjenumme woode:
+$1',
+	'maps_map_cannot_be_displayed' => 'Di Kaat künne mer nit aanzeije.',
+	'maps_error_parameters' => 'Heh di Fähler sin en Dinge  Syntax opjevalle:',
+	'maps_error_invalid_argument' => 'Däm Parameeter $2 singe Wäät es $1, dat es ävver doför nit jöltesch.',
+	'maps_error_empty_argument' => 'Dä Parameeter $1 kann keine Wäät met nix dren hann.',
+	'maps_error_required_missing' => 'Dä Parameeter $1 moß aanjejovve sin, un fählt.',
+	'maps_error_must_be_number' => 'Dä Parameeter $1 kann blohß en Zahl sin.',
+	'maps_error_ivalid_range' => 'Dä Parameeter $1 moß zwesche $2 un $3 sin.',
+	'maps_photos' => 'Fottos',
+	'maps_videos' => 'Viddejos',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webkammeras',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -491,6 +524,7 @@ $1',
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author McDutchie
  */
 $messages['mk'] = array(
 	'maps_desc' => 'Дава можност за приказ на координатни податоци во картите, и геокодирање на адреси ([http://wiki.bn2vs.com/wiki/Maps демо]).
@@ -578,6 +612,7 @@ Mapa nie może zostać wyświetlona.',
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
+ * @author McDutchie
  */
 $messages['pms'] = array(
 	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Sërvissi ëd mapatura disponìbil: $1",
@@ -659,6 +694,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Lockal
+ * @author McDutchie
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -729,11 +765,27 @@ $messages['vi'] = array(
 	'maps_name' => 'Bản đồ',
 	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://wiki.bn2vs.com/wiki/Maps thử xem]).
 Các dịch vụ bản đồ có sẵn: $1',
+	'maps_map' => 'Bản đồ',
 	'maps_coordinates_missing' => 'Chưa định rõ tọa độ cho bản đồ.',
 	'maps_geocoding_failed' => 'Không thể tính ra mã địa lý của {{PLURAL:$2|địa chỉ|các địa chỉ}} sau: $1.
 Không thể hiển thị bản đồ.',
 	'maps_geocoding_failed_for' => 'Không thể tính ra mã địa lý của {{PLURAL:$2|địa chỉ|các địa chỉ}} sau nên bản đồ bỏ qua nó:
 $1',
+	'maps_unrecognized_coords' => 'Không thể nhận ra tọa độ sau: $1.',
+	'maps_unrecognized_coords_for' => 'Không thể nhận ra {{PLURAL:$2|tọa độ|các tọa độ}} sau nên bản đồ bỏ qua nó:
+$1',
+	'maps_map_cannot_be_displayed' => 'Không thể hiển thị bản đồ.',
+	'maps_error_parameters' => 'Cú pháp có các lỗi sau',
+	'maps_error_invalid_argument' => 'Giá trị “$1” không hợp tham số “$2”.',
+	'maps_error_empty_argument' => 'Tham số “$1” không được để trống.',
+	'maps_error_required_missing' => 'Không định rõ tham số bắt buộc “$1”.',
+	'maps_error_must_be_number' => 'Tham số “$1” phải là con số.',
+	'maps_error_ivalid_range' => 'Tham số “$1” phải nằm giữa $2 và $3.',
 	'maps_osm' => 'OpenStreetMap',
+	'maps_overlays' => 'Lớp',
+	'maps_photos' => 'Hình ảnh',
+	'maps_videos' => 'Video',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webcam',
 );
 
