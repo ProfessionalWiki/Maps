@@ -36,8 +36,8 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	}
 	
 	/**
-	 * @see MapsMapFeature::addFormDependencies()
-	 *
+	 * (non-PHPdoc)
+	 * @see smw/extensions/SemanticMaps/FormInputs/SMFormInput#addFormDependencies()
 	 */
 	protected function addFormDependencies() {
 		global $wgJsMimeType;

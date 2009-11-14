@@ -48,11 +48,11 @@ abstract class SMFormInput extends MapsMapFeature {
 		
 		$this->coordinates = $coordinates;
 		
-		$this->manageGeocoding();
-		
 		$this->setMapSettings();
 		
 		$this->doMapServiceLoad();
+		
+		$this->manageGeocoding();		
 
 		$this->manageMapProperties($field_args, __CLASS__);
 
