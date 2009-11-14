@@ -32,7 +32,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
 	// Parameter errors. Used when strict parameter validation is turned on.
-	'maps_error_parameters' => 'The following errors have been detected in your syntaxis',
+	'maps_error_parameters' => 'The following errors have been detected in your syntax',
 	'maps_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
 	'maps_error_empty_argument' => 'Parameter $1 can not have an empty value.',
 	'maps_error_required_missing' => 'The required parameter $1 is not provided.',
