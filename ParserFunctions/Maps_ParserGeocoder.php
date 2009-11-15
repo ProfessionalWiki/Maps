@@ -36,7 +36,7 @@ final class MapsParserGeocoder {
 		
 		// Get the service and geoservice from the parameters, since they are needed to geocode addresses.
 		for ($i = 0; $i < count($params); $i++) {
-			$split = split('=', $params[$i]);
+			$split = explode('=', $params[$i]);
 			if (MapsMapper::inParamAliases(strtolower(trim($split[0])), 'service') && count($split) > 1) {
 				$service = trim($split[1]);
 			}
@@ -51,7 +51,7 @@ final class MapsParserGeocoder {
 		
 		// Go over all parameters.
 		for ($i = 0; $i < count($params); $i++) {
-			$split = split('=', $params[$i]);
+			$split = explode('=', $params[$i]);
 			$isAddress = (strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1;
 			$isDefault = count($split) == 1;
 			
