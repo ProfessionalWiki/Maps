@@ -195,6 +195,11 @@ $messages['es'] = array(
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
+	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
+	'maps_error_empty_argument' => 'El parámetro $1 no puede tener un valor vacío.',
+	'maps_error_required_missing' => 'No se ha provisto el parámetro requerido $1.',
+	'maps_error_must_be_number' => 'El parámetro $1 sólo puede ser un número.',
+	'maps_error_ivalid_range' => 'El parámetro $1 debe ser entre $2 y $3.',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Videos',
 	'maps_webcams' => 'Cámaras Web',
@@ -499,7 +504,7 @@ $messages['ksh'] = array(
 	'maps_unrecognized_coords_for' => 'He di {{PLURAL:$2|Koordinat kunnt|Koordinate kunnte}} mer nit verschtonn un dröm {{PLURAL:$2|es|sin}} se nit en de Kaat opjenumme woode:
 $1',
 	'maps_map_cannot_be_displayed' => 'Di Kaat künne mer nit aanzeije.',
-	'maps_error_parameters' => 'Heh di Fähler sin en Dinge  Syntax opjevalle:',
+	'maps_error_parameters' => 'Heh {{PLURAL:$1|dä|di|keine}} Fähler {{PLURAL:$1|es|sin|keine}} en Dinge Syntax opjevalle:',
 	'maps_error_invalid_argument' => 'Däm Parameeter $2 singe Wäät es $1, dat es ävver doför nit jöltesch.',
 	'maps_error_empty_argument' => 'Dä Parameeter $1 kann keine Wäät met nix dren hann.',
 	'maps_error_required_missing' => 'Dä Parameeter $1 moß aanjejovve sin, un fählt.',
@@ -536,7 +541,7 @@ $messages['mk'] = array(
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следнава адреса|Следниве адреси}} не можеа да се геокодираат и затоа {{PLURAL:$2|е испуштена|се испуштени}} од картата:
 $1',
 	'maps_unrecognized_coords' => 'Следниве координати не беа препознаени: $1.',
-	'maps_unrecognized_coords_for' => 'Следниве координати не беа препознаени, и затоа {{PLURAL:$2|тие|тие}} не се прикажани на картата:
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Следнава координата не беше препознаена|Следниве координати не беа препознаени}} и {{PLURAL:$2|беше изоставена|беа изоставени}} од картата:
 $1',
 	'maps_map_cannot_be_displayed' => 'Картата не може да се прикаже.',
 	'maps_error_parameters' => 'Откриени се следниве грешки во вашата синтакса',
@@ -622,7 +627,8 @@ $messages['pms'] = array(
 La mapa a peul pa esse visualisà.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peula pa esse sota geocode e a {{PLURAL:$2|l'é pa stàita|son pa stàite}}  butà ant la mapa: $1",
 	'maps_unrecognized_coords' => 'Le coordinà sota a son pa stàite arconossùe: $1.',
-	'maps_unrecognized_coords_for' => 'Le coordinà sota a son pa stàite arconossùe e a {{PLURAL:$2|son|son}} stàite pa butà ant la carta: $1',
+	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta: 
+$1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
 	'maps_error_parameters' => "J'eror sì sota a son ëstàit trovà an toa sintassi",
 	'maps_error_invalid_argument' => "Ël valor $1 a l'é pa bon për ël paràmetr $2.",
@@ -643,18 +649,27 @@ La mapa a peul pa esse visualisà.",
 $messages['pt'] = array(
 	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e endereços por geocódigo ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
 Serviços de cartografia disponíveis: $1',
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Não foram fornecidas coordenadas para o mapa.',
 	'maps_geocoding_failed' => 'Não foi possível geocodificar {{PLURAL:$2|o seguinte endereço|os seguintes endereços}}: $1.
 O mapa não pode ser apresentado.',
 	'maps_geocoding_failed_for' => 'Não foi possível geocodificar {{PLURAL:$2|o seguinte endereço, que foi omitido|os seguintes endereços, que foram omitidos}} do mapa:
 $1.',
+	'maps_unrecognized_coords' => 'As seguintes coordenadas não foram reconhecidas: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
+$1',
+	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
 	'maps_error_parameters' => 'Foram detectados os seguintes erros sintácticos',
 	'maps_error_invalid_argument' => 'O valor $1 não é válido para o parâmetro $2.',
 	'maps_error_empty_argument' => 'O parâmetro $1 não pode estar vazio.',
 	'maps_error_required_missing' => 'O parâmetro obrigatório $1 não foi fornecido.',
 	'maps_error_must_be_number' => 'O parâmetro $1 só pode ser numérico.',
 	'maps_error_ivalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
-	'maps_map' => 'Mapa',
+	'maps_overlays' => 'Camadas',
+	'maps_photos' => 'Fotografias',
+	'maps_videos' => 'Vídeos',
+	'maps_wikipedia' => 'Wikipédia',
+	'maps_webcams' => 'Câmaras Web',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
