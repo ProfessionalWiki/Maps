@@ -59,8 +59,8 @@ function efMapsSetup() {
 		foreach($egMapsAvailableGeoServices as $geoServiceName => $value) {
 			$defService = $geoServiceName;
 			continue;
-		}		
-		$egMapsDefaultGeoService = $egMapsAvailableGeoServices[$defService];
+		}
+		$egMapsDefaultGeoService = $defService;
 	}
 	
 	wfLoadExtensionMessages( 'Maps' ); 
