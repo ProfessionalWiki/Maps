@@ -110,6 +110,9 @@ $1',
  */
 $messages['bg'] = array(
 	'maps_map' => 'Карта',
+	'maps_photos' => 'Снимки',
+	'maps_wikipedia' => 'Уикипедия',
+	'maps_webcams' => 'Уебкамери',
 );
 
 /** Breton (Brezhoneg)
