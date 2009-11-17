@@ -1,13 +1,11 @@
 <?php
 
 /**
- * Abstract class MapsBasePointMap provides the scafolding for classes handling display_point(s)
- * and display_address(es) calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
- * forces inheriting classes to implement sereveral methods.
- *
+ * File holding class MapsBasePointMap.
+ * 
  * @file Maps_BasePointMap.php
  * @ingroup Maps
- *
+ * 
  * @author Jeroen De Dauw
  */
 
@@ -15,9 +13,18 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Abstract class MapsBasePointMap provides the scafolding for classes handling display_point(s)
+ * and display_address(es) calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
+ * forces inheriting classes to implement sereveral methods.
+ *
+ * @author Jeroen De Dauw
+ */
 abstract class MapsBasePointMap extends MapsMapFeature {
 	
-	protected $markerData = array();
+	private $markerData = array();
+	protected $markerStringFormat = '';
+	protected $markerString;
 	
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
@@ -31,13 +38,15 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 	public final function displayMap(&$parser, array $params) {
 		$this->setMapSettings();
 		
-		$coords = $this->manageMapProperties($params, __CLASS__);
+		/* $coords = */ $this->manageMapProperties($params, __CLASS__);
 		
 		$this->doMapServiceLoad();
 
 		$this->setMapName();
 		
-		$this->setCoordinates($parser);		
+		$this->setCoordinates($parser);	
+
+		$this->createMarkerString();
 		
 		$this->setZoom();
 		
@@ -107,6 +116,35 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 
 			$this->markerData[] = $markerData;
 		}
+	}
+	
+	/**
+	 * Creates a JS string with the marker data.
+	 * 
+	 * @return unknown_type
+	 */
+	private function createMarkerString() {
+		$markerItems = array();
+		
+		foreach ($this->markerData as $markerData) {
+			$lat = $markerData['lat'];
+			$lon = $markerData['lon'];		
+			
+			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
+			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;
+
+			$title = str_replace("'", "\'", $title);
+			$label = str_replace("'", "\'", $label);	
+
+			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
+			
+			$markerItems[] = str_replace(	array('lon', 'lat', 'title', 'label', 'icon'), 
+											array($lon, $lat, $title, $label, $label), 
+											$this->markerStringFormat
+											);
+		}		
+		
+		$this->markerString = implode(',', $markerItems);		
 	}
 	
 	/**

@@ -124,7 +124,7 @@ final class MapsGoogleMapsUtils {
 	 * @param string $output
 	 */
 	public static function addGMapDependencies(&$output) {
-		global $wgJsMimeType, $wgLang, $wgOut;
+		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage, $egMapsStyleVersion;
 		
 		if (empty($egGoogleMapsOnThisPage)) {
@@ -150,26 +150,6 @@ final class MapsGoogleMapsUtils {
 	}
 	
 	/**
-	 * Returns a boolean representing if the earth map type should be showed or not,
-	 * when provided the the wiki code value.
-	 *
-	 * @param string $earthValue
-	 * @param boolean $adaptDefault When not set to false, the default map type will be changed to earth when earth is enabled
-	 * @return boolean Indicates wether the earth type should be enabled.
-	 */
-	public static function getEarthValue($earthValue, $adaptDefault = true) {
-		$trueValues = array('on', 'yes');
-		$enabled = in_array($earthValue, $trueValues);
-		
-		if ($enabled && $adaptDefault) {
-			global $egMapsGoogleMapsType;
-			$egMapsGoogleMapsType = 'G_SATELLITE_3D_MAP';
-		}
-		
-		return $enabled;		
-	}
-	
-	/**
 	 * Returns a JS items string with the provided types. The earth type will
 	 * be added to it when it's not present and $enableEarth is true. If there are
 	 * no types, the default will be used.
@@ -178,13 +158,10 @@ final class MapsGoogleMapsUtils {
 	 * @param boolean $enableEarth
 	 * @return string
 	 */
-	public static function createTypesString(array &$types, $enableEarth = false) {	
+	public static function createTypesString(array &$types) {	
 		global $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid;
 		
 		$types = MapsMapper::getValidTypes($types, $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid, array(__CLASS__, 'getGMapType'));
-		
-		// This is to ensure backwards compatibility with 0.1 and 0.2.
-		if ($enableEarth && ! in_array('G_SATELLITE_3D_MAP', $types)) $types[] = 'G_SATELLITE_3D_MAP';	
 			
 		return MapsMapper::createJSItemsString($types, null, false, false);
 	}
@@ -202,11 +179,12 @@ final class MapsGoogleMapsUtils {
 	}	
 	
 	/**
-	 * 
+	 * Adds the needed output for the overlays control.
 	 * 
 	 * @param string $output
 	 * @param string $mapName
-	 * @return unknown_type
+	 * @param string $overlays
+	 * @param string $controls
 	 */
 	public static function addOverlayOutput(&$output, $mapName, $overlays, $controls) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
@@ -223,7 +201,7 @@ final class MapsGoogleMapsUtils {
 			MapsMapper::enforceArrayValues($overlays);
 			$validOverlays = array();
 			foreach ($overlays as $overlay) {
-				$segements = split('-', $overlay);
+				$segements = explode('-', $overlay);
 				$name = $segements[0];
 				
 				if (in_array($name, $overlayNames)) {

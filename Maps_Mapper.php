@@ -42,6 +42,7 @@ final class MapsMapper {
 	 * @param string $name The name you want to check for.
 	 * @param string $mainParamName The main parameter name.
 	 * @param boolean $compareMainName Boolean indicating wether the main name should also be compared.
+	 * 
 	 * @return boolean
 	 */
 	public static function inParamAliases($name, $mainParamName, $compareMainName = true) {
@@ -61,6 +62,7 @@ final class MapsMapper {
 	 * @param string $paramName
 	 * @param array $stack
 	 * @param boolean $checkForAliases
+	 * 
 	 * @return boolean
 	 */		
 	public static function paramIsPresent($paramName, array $stack, $checkForAliases = true) {
@@ -84,6 +86,7 @@ final class MapsMapper {
 	 * @param string $paramName
 	 * @param array $stack
 	 * @param boolean $checkForAliases
+	 * 
 	 * @return the parameter value or false
 	 */
 	public static function getParamValue($paramName, array $stack, $checkForAliases = true) {
@@ -109,6 +112,7 @@ final class MapsMapper {
 	 * @param array $serviceDefaults Array with the default parameters and their values for the used mapping service.
 	 * @param boolean $strict If set to false, values which a key that does not
 	 * exist in the $map array will be retained.
+	 * 
 	 * @return array
 	 */
 	public static function setDefaultParValues(array $params, array $serviceDefaults, $strict = true) {
@@ -154,7 +158,7 @@ final class MapsMapper {
 	 * @param string $delimeter
 	 */
 	public static function enforceArrayValues(&$values, $delimeter = ',') {
-		if (!is_array($values)) $values = split($delimeter, $values); // If not an array yet, split the values
+		if (!is_array($values)) $values = explode($delimeter, $values); // If not an array yet, split the values
 		for ($i = 0; $i < count($values); $i++) $values[$i] = trim($values[$i]); // Trim all values
 	}
 	
@@ -165,6 +169,8 @@ final class MapsMapper {
 	 * @param array $items
 	 * @param array $defaultItems
 	 * @param boolean $asStrings
+	 * @param boolean $toLower
+	 *  
 	 * @return string
 	 */
 	public static function createJSItemsString(array $items, array $defaultItems = null, $asStrings = true, $toLower = true) {
@@ -180,6 +186,8 @@ final class MapsMapper {
 	 *
 	 * @param array $paramz
 	 * @param array $serviceParameters
+	 * @param boolean $strict
+	 * 
 	 * @return array
 	 */
 	public static function getValidParams(array $paramz, array $serviceParameters, $strict = true) {
@@ -201,6 +209,7 @@ final class MapsMapper {
 	 *
 	 * @param string $paramName
 	 * @param array $allowedParms
+	 * 
 	 * @return string
 	 */
 	private static function getMainParamName($paramName, array $allowedParms) {

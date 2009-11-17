@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for handling the display_point(s) parser functions with OSM.
+ * File holding the MapsOSMDispPoint class.
  *
  * @file Maps_OSMDispPoint.php
  * @ingroup MapsOpenStreetMap
@@ -13,6 +13,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Class for handling the display_point(s) parser functions with OSM.
+ *
+ * @author Jeroen De Dauw
+ */
 class MapsOSMDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsOSMUtils::SERVICE_NAME;	
@@ -28,6 +33,8 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 		
 		$this->elementNamePrefix = $egMapsOSMPrefix;
 		$this->defaultZoom = $egMapsOSMZoom;
+		
+		$this->markerStringFormat = 'getOSMMarkerData(lat, lon, "title", "label", "icon")';
 	}
 	
 	/**
@@ -48,26 +55,7 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 	 *
 	 */	
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
-		
-		$markerItems = array();		
-		
-		// TODO: Refactor up
-		foreach ($this->markerData as $markerData) {
-			$lat = $markerData['lat'];
-			$lon = $markerData['lon'];
-			
-			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
-			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;	
-			
-			$title = str_replace("'", "\'", $title);
-			$label = str_replace("'", "\'", $label);				
-
-			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
-			$markerItems[] = "getOSMMarkerData($lon, $lat, '$title', '$label', '$icon')";
-		}		
-		
-		$markersString = implode(',', $markerItems);		
+		global $wgJsMimeType;	
 		
 		$controlItems = MapsOSMUtils::createControlsString($this->controls);
 		
@@ -81,7 +69,7 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 				zoom: $this->zoom,
 				width: $this->width,
 				height: $this->height,
-				markers: [$markersString],
+				markers: [$this->markerString],
 				controls: [$controlItems]
 				
 			});</script>

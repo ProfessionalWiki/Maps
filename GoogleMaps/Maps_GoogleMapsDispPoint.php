@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for handling the display_point(s) parser functions with Google Maps
+ * File holding the MapsGoogleMapsDispPoint class.
  *
  * @file Maps_GoogleMapsDispPoint.php
  * @ingroup MapsGoogleMaps
@@ -13,6 +13,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Class for handling the display_point(s) parser functions with Google Maps.
+ *
+ * @author Jeroen De Dauw
+ */
 final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsGoogleMapsUtils::SERVICE_NAME;
@@ -28,6 +33,8 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
+		
+		$this->markerStringFormat = 'getGMarkerData(lat, lon, "title", "label", "icon")';
 	}
 	
 	/**
@@ -48,9 +55,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	 *
 	 */	
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType, $wgOut;
-		
-		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
+		global $wgJsMimeType;
 		
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
 		
@@ -60,28 +65,9 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
-		$markerItems = array();		
-		
-		// TODO: Refactor up
-		foreach ($this->markerData as $markerData) {
-			$lat = $markerData['lat'];
-			$lon = $markerData['lon'];		
-			
-			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
-			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;
-
-			$title = str_replace("'", "\'", $title);
-			$label = str_replace("'", "\'", $label);	
-
-			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
-			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
-		}		
-		
-		$markersString = implode(',', $markerItems);	
-		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);
+		$typesString = MapsGoogleMapsUtils::createTypesString($this->types);
 		
 		$this->output .=<<<END
 			
@@ -100,7 +86,7 @@ addOnloadHook(
 		controls: [$this->controls],
 		scrollWheelZoom: $this->autozoom
 		},
-		[$markersString]
+		[$this->markerString]
 	)
 );
 /*]]>*/ </script>
