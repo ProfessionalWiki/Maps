@@ -73,8 +73,6 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
-		
 		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
 		
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
@@ -88,7 +86,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);
+		$typesString = MapsGoogleMapsUtils::createTypesString($this->types);
 		
 		$this->output .= "
 		<div id='".$this->mapName."' class='".$this->class."'></div>

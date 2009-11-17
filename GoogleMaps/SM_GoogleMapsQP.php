@@ -55,10 +55,8 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
-				
-		$enableEarth = MapsGoogleMapsUtils::getEarthValue($this->earth);
 		
-		// Get the Google Maps names for the control and map types
+		// Get the Google Maps names for the control and map types.
 		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
 		
 		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);
@@ -83,7 +81,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsGoogleMapsUtils::createTypesString($this->types, $enableEarth);		
+		$typesString = MapsGoogleMapsUtils::createTypesString($this->types);		
 		
 		$this->output .= <<<END
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
