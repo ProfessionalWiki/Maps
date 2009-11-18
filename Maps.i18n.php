@@ -760,10 +760,13 @@ Dostupné mapovacie služby: $1',
 $messages['sv'] = array(
 	'maps_desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Tillgängliga karttjänster: $1',
+	'maps_map' => 'Karta',
 	'maps_coordinates_missing' => 'Inga koordinater angivna för kartan.',
 	'maps_geocoding_failed' => 'Följande {{PLURAL:$2|adress|adresser}} kunde inte geokodas: $1.
 Kartan kan inte visas.',
 	'maps_geocoding_failed_for' => 'Följande {{PLURAL:$2|adress|adresser}}kunde inte geokodas och {{PLURAL:$2|har|har}} uteslutits från kartan: $1',
+	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
+	'maps_photos' => 'Foton',
 );
 
 /** Thai (ไทย)
