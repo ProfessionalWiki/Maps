@@ -116,16 +116,22 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fohanno
  * @author Fulup
  */
 $messages['br'] = array(
 	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
+	'maps_map' => 'Kartenn',
 	'maps_coordinates_missing' => "N'eus bet spisaet daveenn ebet evit ar gartenn.",
 	'maps_geocoding_failed' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul : $1.
 N'haller ket diskwel ar gartenn.",
 	'maps_geocoding_failed_for' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul, setu {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn : 
 $1",
-	'maps_map' => 'Kartenn',
+	'maps_map_cannot_be_displayed' => "Ar gartenn ne c'hall ket bezañ diskwelet.",
+	'maps_photos' => "Luc'hskeudennoù",
+	'maps_videos' => 'Videoioù',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Kameraoù web',
 );
 
 /** Bosnian (Bosanski)
