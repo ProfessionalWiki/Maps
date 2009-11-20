@@ -23,7 +23,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.5 a1');
+define('Maps_VERSION', '0.5 a3');
+
+// Constants indicating the strictness of the parameter validation.
+define('Maps_ERRORS_NONE', 0);
+define('Maps_ERRORS_WARN', 1);
+define('Maps_ERRORS_SHOW', 2);
+define('Maps_ERRORS_STRICT', 3);
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
@@ -47,7 +53,7 @@ $wgAutoloadClasses['MapsUtils'] 			= $egMapsIP . '/Maps_Utils.php';
 if (empty($egMapsServices)) $egMapsServices = array();
 
 /**
- * Initialization function for the Maps extension
+ * Initialization function for the Maps extension.
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgOut, $wgLang, $wgAutoloadClasses, $IP;	
@@ -56,11 +62,8 @@ function efMapsSetup() {
 	// Enure that the default service and geoservice are one of the enabled ones.
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
 	if (!in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices)) {
-		foreach($egMapsAvailableGeoServices as $geoServiceName => $value) {
-			$defService = $geoServiceName;
-			continue;
-		}
-		$egMapsDefaultGeoService = $defService;
+		reset($egMapsAvailableGeoServices);
+		$egMapsDefaultGeoService = current($egMapsAvailableGeoServices);
 	}
 	
 	wfLoadExtensionMessages( 'Maps' ); 

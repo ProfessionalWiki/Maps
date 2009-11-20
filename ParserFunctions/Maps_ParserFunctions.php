@@ -27,6 +27,8 @@ final class MapsParserFunctions {
 	public static function initialize() {
 		global $egMapsIP, $IP, $wgAutoloadClasses, $egMapsServices;
 		
+		include_once $egMapsIP . '/ParserFunctions/Maps_iDisplayFunction.php';
+		
 		foreach($egMapsServices as $serviceName => $serviceData) {
 			// Check if the service has parser function support
 			$hasPFs = array_key_exists('pf', $serviceData);
@@ -39,7 +41,7 @@ final class MapsParserFunctions {
 				$file = $parser_data['local'] ? $egMapsIP . '/' . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
 				$wgAutoloadClasses[$parser_data['class']] = $file;
 			}
-		}				
+		}
 	}
 	
 	/**

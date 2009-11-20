@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MapsMapFeature bundles some base functionallity for all general mapping feature classes.
+ * File holding class MapsMapFeature.
  *
  * @file Maps_MapFeature.php
  * @ingroup Maps
@@ -13,6 +13,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * MapsMapFeature bundles base functionallity for all general mapping feature classes.
+ *
+ * @author Jeroen De Dauw
+ */
 abstract class MapsMapFeature {
 	
 	/**
@@ -32,8 +37,8 @@ abstract class MapsMapFeature {
 	
 	public $serviceName;
 	
-	protected $defaultParams = array();
-	
+	protected $defaultParams = array();		
+
 	protected $defaultZoom;
 	
 	protected $elementNr;
@@ -45,13 +50,18 @@ abstract class MapsMapFeature {
 	protected $centre_lon;
 
 	protected $output = '';	
+	protected $errors = array();
 	
 	/**
-	 * Sets the map properties as class fields.
+	 * Validates and corrects the provided map properties, and the sets them as class fields.
+	 * 
+	 * @param array $mapProperties
+	 * @param string $className 
 	 */
-	protected function manageMapProperties($mapProperties, $className) {
+	protected function manageMapProperties(array $mapProperties, $className) {
 		global $egMapsServices;
 		
+		// TODO: implement strict parameter validation, put errors in  array.
 		$mapProperties = MapsMapper::getValidParams($mapProperties, $egMapsServices[$this->serviceName]['parameters']);
 		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, $this->defaultParams);
 		
@@ -72,7 +82,7 @@ abstract class MapsMapFeature {
 	 * Sets the $mapName field, using the $elementNamePrefix and $elementNr.
 	 */
 	protected function setMapName() {
-		$this->mapName = $this->elementNamePrefix.'_'.$this->elementNr;
+		$this->mapName = $this->elementNamePrefix . '_' . $this->elementNr;
 	}
 	
 }

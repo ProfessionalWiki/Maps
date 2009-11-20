@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-abstract class MapsBaseMap extends MapsMapFeature {
+abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
@@ -29,7 +29,7 @@ abstract class MapsBaseMap extends MapsMapFeature {
 	public final function displayMap(&$parser, array $params) {			
 		$this->setMapSettings();
 		
-		$coords = $this->manageMapProperties($params, __CLASS__);
+		parent::manageMapProperties($params, __CLASS__);
 		
 		$this->doMapServiceLoad();
 
@@ -42,14 +42,6 @@ abstract class MapsBaseMap extends MapsMapFeature {
 		$this->addSpecificMapHTML();			
 		
 		return $this->output;
-	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see smw/extensions/Maps/MapsMapFeature#manageMapProperties($mapProperties, $className)
-	 */
-	protected function manageMapProperties($params, $className) {
-		parent::manageMapProperties($params, $className);
 	}
 	
 	/**

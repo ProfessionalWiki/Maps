@@ -32,7 +32,8 @@ final class MapsMapper {
 			'height' => array(),
 			'controls' => array(),
 			'label' => array(),
-			'title' => array()				
+			'title' => array(),
+			'lang' => array('locale', 'language')		
 			);
 	
 	/**

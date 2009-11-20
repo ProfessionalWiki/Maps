@@ -116,7 +116,14 @@ $egMapsDefaultGeoService = 'geonames';
 
 
 
-# General map properties configuration
+# General map configuration
+
+# Integer. The strictness of the parameter validation and resulting error report. 
+# Maps_ERRORS_NONE  : Maps will not show any errors, and make the best of the imput it got.
+# Maps_ERRORS_WARN  : Maps will make the best of the imput it got, but will show warnings for omitted coordinates.
+# Maps_ERRORS_SHOW  : Maps will make the best of the imput it got, but will show a list of all errors.
+# Maps_ERRORS_STRICT: Maps will only show a map when there are no errors, if there are, a list of them will be shown.
+$egMapsErrorLevel = Maps_ERRORS_WARN;
 
 # Integer. The default width and height of a map. These values will only be used when the user does not provide them.
 $egMapsMapWidth = 600;

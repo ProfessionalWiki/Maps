@@ -20,7 +20,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  */
-abstract class MapsBasePointMap extends MapsMapFeature {
+abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFunction {
 	
 	private $markerData = array();
 	protected $markerStringFormat = '';
@@ -38,7 +38,7 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 	public final function displayMap(&$parser, array $params) {
 		$this->setMapSettings();
 		
-		/* $coords = */ $this->manageMapProperties($params, __CLASS__);
+		parent::manageMapProperties($params, __CLASS__);
 		
 		$this->doMapServiceLoad();
 
@@ -59,14 +59,6 @@ abstract class MapsBasePointMap extends MapsMapFeature {
 		$this->addSpecificMapHTML();			
 		
 		return $this->output;
-	}
-	
-	/**
-	 * (non-PHPdoc)
-	 * @see smw/extensions/Maps/MapsMapFeature#manageMapProperties($mapProperties, $className)
-	 */
-	protected function manageMapProperties($params, $className) {
-		parent::manageMapProperties($params, $className);
 	}
 	
 	/**
