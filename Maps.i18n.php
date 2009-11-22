@@ -118,6 +118,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
@@ -128,6 +129,10 @@ N'haller ket diskwel ar gartenn.",
 	'maps_geocoding_failed_for' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul, setu {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn : 
 $1",
 	'maps_map_cannot_be_displayed' => "Ar gartenn ne c'hall ket bezañ diskwelet.",
+	'maps_error_invalid_argument' => "An dalvoudenn $1 n'eo ket reizh evit an arventenn $2.",
+	'maps_error_must_be_number' => "An arventenn $1 a c'hell bezañ un niver hepken.",
+	'maps_error_ivalid_range' => 'An arventenn $1 a rank bezañ etre $2 hag $3.',
+	'maps_overlays' => 'Dreistlakaadoù',
 	'maps_photos' => "Luc'hskeudennoù",
 	'maps_videos' => 'Videoioù',
 	'maps_wikipedia' => 'Wikipedia',
@@ -772,7 +777,9 @@ Tillgängliga karttjänster: $1',
 Kartan kan inte visas.',
 	'maps_geocoding_failed_for' => 'Följande {{PLURAL:$2|adress|adresser}}kunde inte geokodas och {{PLURAL:$2|har|har}} uteslutits från kartan: $1',
 	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
+	'maps_error_ivalid_range' => 'Parameter $1 måste vara i mellan $2 och $3.',
 	'maps_photos' => 'Foton',
+	'maps_wikipedia' => 'Wikipedia',
 );
 
 /** Thai (ไทย)
