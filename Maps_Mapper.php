@@ -218,6 +218,7 @@ final class MapsMapper {
 			foreach ($allowedParms as $name => $aliases) {
 				if (in_array($paramName, $aliases)) {
 					$paramName = $name;
+					continue;
 				}
 			}
 		}

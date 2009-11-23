@@ -15,7 +15,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * MapsMapFeature bundles base functionallity for all general mapping feature classes.
- *
+ * 
+ * @ingroup Maps
+ * 
  * @author Jeroen De Dauw
  */
 abstract class MapsMapFeature {
@@ -60,7 +62,7 @@ abstract class MapsMapFeature {
 	 */
 	protected function manageMapProperties(array $mapProperties, $className) {
 		global $egMapsServices;
-		
+		//$egMapsErrorLevel
 		// TODO: implement strict parameter validation, put errors in  array.
 		$mapProperties = MapsMapper::getValidParams($mapProperties, $egMapsServices[$this->serviceName]['parameters']);
 		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, $this->defaultParams);
@@ -76,7 +78,7 @@ abstract class MapsMapFeature {
 		MapsMapper::enforceArrayValues($this->controls);
 		
 		MapsUtils::makeMapSizeValid($this->width, $this->height);
-	}	
+	}
 	
 	/**
 	 * Sets the $mapName field, using the $elementNamePrefix and $elementNr.

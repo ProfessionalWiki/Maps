@@ -1,9 +1,7 @@
 <?php
 
 /**
- * Abstract class MapsBaseMap provides the scafolding for classes handling display_map
- * calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
- * forces inheriting classes to implement sereveral methods.
+ * File holding class MapsBaseMap.
  *
  * @file Maps_BaseMap.php
  * @ingroup Maps
@@ -15,6 +13,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Abstract class MapsBaseMap provides the scafolding for classes handling display_map
+ * calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
+ * forces inheriting classes to implement sereveral methods.
+ *
+ * @ingroup Maps
+ *
+ * @author Jeroen De Dauw
+ */
 abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	
 	/**

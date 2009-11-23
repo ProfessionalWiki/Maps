@@ -18,6 +18,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * and display_address(es) calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
  * forces inheriting classes to implement sereveral methods.
  *
+ * @ingroup Maps
+ *
  * @author Jeroen De Dauw
  */
 abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFunction {
