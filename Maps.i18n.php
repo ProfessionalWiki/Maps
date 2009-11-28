@@ -33,11 +33,13 @@ $1',
 
 	// Parameter errors. Used when strict parameter validation is turned on.
 	'maps_error_parameters' => 'The following errors have been detected in your syntax',
+	'maps_error_unknown_argument' => '$1 is not a valid parameter.',
 	'maps_error_invalid_argument' => 'The value $1 is not valid for parameter $2.',
 	'maps_error_empty_argument' => 'Parameter $1 can not have an empty value.',
 	'maps_error_required_missing' => 'The required parameter $1 is not provided.',
 	'maps_error_must_be_number' => 'Parameter $1 can only be a number.',
 	'maps_error_ivalid_range' => 'Parameter $1 must be between $2 and $3.',
+	'maps_error_accepts_only' => 'Parameter $1 can only be $2.',
 
 	// Mapping services
 	'maps_googlemaps' => 'Google Maps',

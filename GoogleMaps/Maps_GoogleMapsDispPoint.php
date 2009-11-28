@@ -20,7 +20,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	
-	public $serviceName = MapsGoogleMapsUtils::SERVICE_NAME;
+	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 
 	/**
 	 * @see MapsBaseMap::setMapSettings()
@@ -29,12 +29,21 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	protected function setMapSettings() {
 		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
 		
-		$this->defaultParams = MapsGoogleMapsUtils::getDefaultParams();
-		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
 		$this->markerStringFormat = 'getGMarkerData(lat, lon, "title", "label", "icon")';
+		
+		$this->spesificParameters = array(
+			'overlays' => array(
+				'aliases' => array(),
+				'criteria' => array(),
+				'default' => ''												
+				),	
+			'zoom' => array(
+				'default' => '', 	
+			)							
+		);		
 	}
 	
 	/**
@@ -44,7 +53,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	protected function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMapsUtils::addGMapDependencies($this->output);
+		MapsGoogleMaps::addGMapDependencies($this->output);
 		$egGoogleMapsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
@@ -57,17 +66,17 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
+		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
 		
-		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);	
+		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));	
 		
-		$onloadFunctions = MapsGoogleMapsUtils::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
+		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
-		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
 		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsGoogleMapsUtils::createTypesString($this->types);
+		$typesString = MapsGoogleMaps::createTypesString($this->types);
 		
 		$this->output .=<<<END
 			

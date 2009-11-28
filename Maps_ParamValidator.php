@@ -22,11 +22,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsParamValidator {
 	
-	/**
-	 * @var boolean Indicates whether parameters not found in the criteria list
-	 * should be accepted. The default is false.
-	 */
-	public static $acceptUnknownParameters = false;
+	// TODO: add lower/upper case nullification
 	
 	/**
 	 * @var boolean Indicates whether parameters not found in the criteria list
@@ -34,7 +30,25 @@ final class MapsParamValidator {
 	 */	
 	public static $storeUnknownParameters = false;
 	
-	private $parameterCriteria;
+	/**
+	 * @var boolean Indicates whether parameters not found in the criteria list
+	 * should be stored in case they are not accepted. The default is false.
+	 */		
+	public static $accumulateParameterErrors = false;
+	
+	/**
+	 * @var array Holder for the validation functions.
+	 */		
+	private static $validationFunctions = array(
+			'in_array' => 'in_array',
+			'in_range' => array('MapsValidationFunctions', 'in_range'),
+			'is_numeric' => 'is_numeric', 
+			'not_empty' => array('MapsValidationFunctions', 'not_empty'), 
+			'all_in_array' => array('MapsValidationFunctions', 'all_in_array'), 
+			'any_in_array' => array('MapsValidationFunctions', 'any_in_array'), 	
+			);
+	
+	private $parameterInfo;
 	private $rawParameters = array();
 	
 	private $valid = array();
@@ -46,10 +60,10 @@ final class MapsParamValidator {
 	/**
 	 * Sets the parameter criteria, used to valiate the parameters.
 	 * 
-	 * @param array $parameterCriteria
+	 * @param array $parameterInfo
 	 */
-	public function setCriteria(array $parameterCriteria) {
-		$this->parameterCriteria = $parameterCriteria;
+	public function setParameterInfo(array $parameterInfo) {
+		$this->parameterInfo = $parameterInfo;
 	} 	
 	
 	/**
@@ -65,31 +79,85 @@ final class MapsParamValidator {
 	 * Valides the raw parameters, and allocates them as valid, invalid or unknown.
 	 * Errors are collected, and can be retrieved via getErrors.
 	 * 
-	 * @return boolean Indicates whether there where any errors.
+	 * @return boolean Indicates whether there where no errors.
 	 */
 	public function validateParameters() {	
+
+		$parameters = array();		
+		
+		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
 		foreach($this->rawParameters as $paramName => $paramValue) {
-			$paramName = MapsMapper::getMainParamName($paramName, $allowedParms);  // TODO: get $allowedParms
-			if(array_key_exists($paramName, $allowedParms)) { 
+			// Attempt to get the main parameter name (takes care of aliases).
+			$mainName = MapsParamValidator::getMainParamName($paramName, $this->parameterInfo);
+			// If the parameter is found in the list of allowed ones, add it to the $parameters array.
+			if($mainName) { 
+				$parameters[$mainName] = $paramValue;
+			}
+			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->errors array.
+				if (MapsParamValidator::$storeUnknownParameters) $this->unknown[$paramName] = $paramValue;
+				$this->errors[] = array('error' => array('unknown'), 'name' => $paramName);				
+			}
+		}
+
+		// Loop through the list of allowed parameters.
+		foreach($this->parameterInfo as $paramName => $paramInfo) {
+			// If the user provided a value for this parameter, validate and handle it.
+			if (array_key_exists($paramName, $this->rawParameters)) {
 				
-				$validationResult = $this->validateParameter($paramName, $paramValue);
+				$paramValue = $this->rawParameters[$paramName];
+				$validationErrors = $this->validateParameter($paramName, $paramValue);
 				
-				if ($validationResult === true) {
+				if (count($validationErrors) == 0) {
 					$this->valid[$paramName] = $paramValue;
 				}
 				else {
 					$this->invalid[$paramName] = $paramValue;
-					$this->errors[] = array('type' => $validationResult, 'name' => $paramName);
-				}
+					foreach($validationErrors as $error) {
+						$this->errors[] = array('error' => $error, 'name' => $paramName);
+					}
+				}				
 			}
-			else {
-				if ($storeUnknownParameters) $this->unknown[$paramName] = $paramValue;
-				$this->errors[] = array('type' => 'unknown', 'name' => $paramName);
+			else { // If the user did not provide a value for this parameter, set the default if there is one.
+				if (array_key_exists('default', $paramInfo)) {
+					$this->valid[$paramName] = $paramInfo['default'];
+				}
+				else { // If there is no default, the parameter must be provided, so add an error.
+					$this->errors[] = array('error' => array('missing'), 'name' => $paramName);	
+				}
 			}
 		}
 		
-		return count($this->errors) > 0;
+		return count($this->errors) == 0;
 	}
+	
+	/**
+	 * Returns the main parameter name for a given parameter or alias, or false
+	 * when it is not recognized as main parameter or alias.
+	 *
+	 * @param string $paramName
+	 * @param array $allowedParms
+	 * 
+	 * @return string
+	 */
+	private function getMainParamName($paramName, array $allowedParms) {
+		$result = false;
+		
+		if (array_key_exists($paramName, $allowedParms)) {
+			$result = $paramName;
+		}
+		else {
+			foreach ($allowedParms as $name => $data) {
+				if (array_key_exists('aliases', $data)) {
+					if (in_array($paramName, $data['aliases'])) {
+						$result = $name;
+						break;
+					}					
+				}
+			}
+		}
+		
+		return $result;
+	}		
 	
 	/**
 	 * Valides the provided parameter by matching the value against the criteria for the name.
@@ -97,27 +165,37 @@ final class MapsParamValidator {
 	 * @param string $name
 	 * @param string $value
 	 * 
-	 * @return true or string
+	 * @return array The errors that occured during validation.
 	 */
 	private function validateParameter($name, $value) {
+		$errors = array();
 		
-		// TODO: get criteria and validate
-		// If valid: return true
-		// If infalid: return error type
-		
+		if (array_key_exists('criteria', $this->parameterInfo[$name])) {
+			foreach($this->parameterInfo[$name]['criteria'] as $criteriaName => $criteriaArgs) {
+				$validationFunction = MapsParamValidator::$validationFunctions[$criteriaName];
+				$arguments = array($value);
+				if (count($criteriaArgs) > 0) $arguments[] = $criteriaArgs;
+				$isValid = call_user_func_array($validationFunction, $arguments);	
+				
+				if (! $isValid) {
+					$errors[] = array($criteriaName, $criteriaArgs, $value);
+					if (! MapsParamValidator::$accumulateParameterErrors) break;
+				}
+			}			
+		}
+
+		return $errors;
 	}
 	
 	/**
 	 * Changes the invalid parameters to their default values, and changes their state to valid.
-	 * 
-	 * @param array $defaults
 	 */
-	public function correctInvalidParams(array $defaults) {
+	public function correctInvalidParams() {
 		foreach($this->invalid as $paramName => $paramValue) {
 			
-			if(array_key_exists($paramName, $defaults)) {
+			if(array_key_exists('default', $this->parameterInfo[$paramName])) {
 				unset($this->invalid[$paramName]);
-				$this->valid[$paramName] = $defaults[$defaults];
+				$this->valid[$paramName] = $this->parameterInfo[$paramName]['default'];
 			}
 			else {
 				throw new Exception('The default value for parameter ' . $paramName . ' is not set.');
@@ -131,7 +209,16 @@ final class MapsParamValidator {
 	 * @return array
 	 */
 	public function getValidParams() {
-		return $this->valid();
+		return $this->valid;
+	}
+	
+	/**
+	 * Returns the unknown parameters. 
+	 * 
+	 * @return array
+	 */	
+	public static function getUnknownParams() {
+		return $this->unknown;
 	}
 	
 	/**
@@ -140,7 +227,19 @@ final class MapsParamValidator {
 	 * @return array
 	 */
 	public function getErrors() {
-		return $this->errors();
+		return $this->errors;
+	}
+	
+	/**
+	 * Adds a new criteria type and the validation function that should validate values of this type.
+	 * You can use this function to override existing criteria type handlers.
+	 * 
+	 * @param string $criteriaName The name of the cirteria.
+	 * @param array $functionName The functions location. If it's a global function, only the name,
+	 * if it's in a class, first the class name, then the method name. 
+	 */
+	public static function addValidationFunction($criteriaName, array $functionName) {
+		$this->validationFunctions[$criteriaName] = $functionName;
 	}
 	
 }

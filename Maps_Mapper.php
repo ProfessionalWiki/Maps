@@ -16,26 +16,72 @@ if( !defined( 'MEDIAWIKI' ) ) {
 final class MapsMapper {
 	
 	/**
-	 * Array holding the allowed main parameters and their alias. 
-	 * The array keys hold the main name, and the values are arrays holding the aliases.
+	 * Array holding the parameters that are not spesific to a mapping service, 
+	 * their aliases, criteria and default value.
 	 *
 	 * @var array
 	 */
-	private static $mainParams = array
-			(
-			'service' => array(),
-			'geoservice' => array(),
-			'coordinates' => array('coords', 'location', 'locations'),
-			'zoom' => array(),
-			'centre' => array('center'),
-			'width' => array(),
-			'height' => array(),
-			'controls' => array(),
-			'label' => array(),
-			'title' => array(),
-			'lang' => array('locale', 'language')		
-			);
+	private static $mainParams;
 	
+	public static function initializeMainParams() {
+		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsDefaultCentre;
+		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		
+		self::$mainParams = array
+			(		
+			'service' => array(
+				'aliases' => array(),
+				'criteria' => array(
+					'in_array' => $egMapsAvailableServices
+					),
+				'default' => $egMapsDefaultService
+				),			
+			'zoom' => array(
+				'aliases' => array(),
+				'criteria' => array(
+					'is_numeric' => array(),
+					'in_range' => array(0, 15)
+					)			
+				),
+			'width' => array(
+				'aliases' => array(),
+				'criteria' => array(
+					'is_numeric' => array(),
+					'in_range' => $egMapsSizeRestrictions['width']
+					),
+				'default' => $egMapsMapWidth		
+				),
+			'height' => array(
+				'aliases' => array(),
+				'criteria' => array(
+					'is_numeric' => array(),
+					'in_range' => $egMapsSizeRestrictions['height']
+					),
+				'default' => $egMapsMapHeight		
+				),
+			'controls' => array(
+				'aliases' => array(),
+				'criteria' => array(),					
+				),			
+			'lang' => array(
+				'aliases' => array('locale', 'language'),	
+				'criteria' => array(
+					'not_empty' => array()
+					),
+				'default' => ''					
+				),	
+			);
+	} 
+	
+	/**
+	 * Returns the main parameters array.
+	 * 
+	 * @return array
+	 */
+	public static function getMainParams() {
+		return self::$mainParams;
+	}	
+			
 	/**
 	 * Gets if a provided name is present in the aliases array of a parameter
 	 * name in the $mainParams array.
@@ -54,29 +100,32 @@ final class MapsMapper {
 		}
 
 		return $equals;
-	}
+	}	
 	
-	/**
-	 * Gets if a parameter is present as key in the $stack. Also checks for
-	 * the presence of aliases in the $mainParams array unless specified not to.
-	 *
-	 * @param string $paramName
-	 * @param array $stack
-	 * @param boolean $checkForAliases
-	 * 
-	 * @return boolean
-	 */		
-	public static function paramIsPresent($paramName, array $stack, $checkForAliases = true) {
-		$isPresent = array_key_exists($paramName, $stack);
-		
-		if ($checkForAliases) {
-			foreach(self::$mainParams[$paramName] as $alias) {
-				if (array_key_exists($alias, $stack)) $isPresent = true;
-			}
-		}
-		
-		return $isPresent;
-	}			
+    /**
+     * Gets if a parameter is present as key in the $stack. Also checks for
+     * the presence of aliases in the $mainParams array unless specified not to.
+     *
+     * @param string $paramName
+     * @param array $stack
+     * @param boolean $checkForAliases
+     * 
+     * @return boolean
+     */        
+    public static function paramIsPresent($paramName, array $stack, $checkForAliases = true) {
+        $isPresent = array_key_exists($paramName, $stack);
+        
+        if ($checkForAliases) {
+            foreach(self::$mainParams[$paramName]['aliases'] as $alias) {
+                if (array_key_exists($alias, $stack)) {
+                	$isPresent = true;
+                	break;
+                }
+            }
+        }
+
+        return $isPresent;
+    }
 	
 	/**
 	 * Returns the value of a parameter represented as key in the $stack.
@@ -85,60 +134,25 @@ final class MapsMapper {
 	 * no array key name match is found, false will be returned.
 	 *
 	 * @param string $paramName
-	 * @param array $stack
+	 * @param array $stack The values to search through
+	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters
 	 * @param boolean $checkForAliases
 	 * 
 	 * @return the parameter value or false
 	 */
-	public static function getParamValue($paramName, array $stack, $checkForAliases = true) {
+	public static function getParamValue($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
 		$paramValue = false;
 		
 		if (array_key_exists($paramName, $stack)) $paramValue = $stack[$paramName];
 		
 		if ($checkForAliases) {
-			foreach(self::$mainParams[$paramName] as $alias) {
+			foreach($paramInfo[$paramName]['aliases'] as $alias) {
 				if (array_key_exists($alias, $stack)) $paramValue = $stack[$alias];
+				break;
 			}
 		}
 		
 		return $paramValue;		
-	}
-			
-	/**
-	 * Sets the default map properties and returns the new array.
-	 * This function also ensures all the properties are present, even when being empty,
-	 * which is important for the weakly typed classes using them.
-	 *
-	 * @param array $params Array containing the current set of pareters.
-	 * @param array $serviceDefaults Array with the default parameters and their values for the used mapping service.
-	 * @param boolean $strict If set to false, values which a key that does not
-	 * exist in the $map array will be retained.
-	 * 
-	 * @return array
-	 */
-	public static function setDefaultParValues(array $params, array $serviceDefaults, $strict = true) {
-		global $egMapsMapLat, $egMapsMapLon, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
-
-        $mapDefaults = array(
-            'service' => $egMapsDefaultService,
-        	'geoservice' => '',
-            'coordinates' => "$egMapsMapLat, $egMapsMapLon",
-        	'zoom' => '',
-        	'centre' => '',
-            'width' => $egMapsMapWidth,
-            'height' => $egMapsMapHeight,  
-        	'controls' => array(),
-        	'title' => '',
-        	'label' => ''
-            );	
-
-        $map = array_merge($mapDefaults, $serviceDefaults);
-		
-		foreach($params as $paramName => $paramValue) {
-			if(array_key_exists($paramName, $map) || !$strict) $map[$paramName] = $paramValue;
-		}
-		
-		return $map;
 	}
 	
 	/**
@@ -159,7 +173,7 @@ final class MapsMapper {
 	 * @param string $delimeter
 	 */
 	public static function enforceArrayValues(&$values, $delimeter = ',') {
-		if (!is_array($values)) $values = explode($delimeter, $values); // If not an array yet, split the values
+		if (! is_array($values)) $values = explode($delimeter, $values); // If not an array yet, split the values
 		for ($i = 0; $i < count($values); $i++) $values[$i] = trim($values[$i]); // Trim all values
 	}
 	
@@ -174,76 +188,61 @@ final class MapsMapper {
 	 *  
 	 * @return string
 	 */
-	public static function createJSItemsString(array $items, array $defaultItems = null, $asStrings = true, $toLower = true) {
-		if (count($items) < 1 && isset($defaultItems)) $items = $defaultItems;
+	public static function createJSItemsString(array $items, $asStrings = true, $toLower = true) {
 		$itemString = $asStrings ? "'" . implode("','", $items) . "'" : implode(',', $items);
 		if ($toLower) $itemString = strtolower($itemString);
 		return $itemString;
 	}		
 	
 	/**
-	 * Returns a valid version of the provided parameter array. Paramaters that are not allowed will
-	 * be ignored, and alias parameter names will be changed to main parameter names, using getMainParamName().
-	 *
-	 * @param array $paramz
-	 * @param array $serviceParameters
-	 * @param boolean $strict
-	 * 
-	 * @return array
-	 */
-	public static function getValidParams(array $paramz, array $serviceParameters, $strict = true) {
-		$validParams = array();
-		
-		$allowedParms = array_merge(self::$mainParams, $serviceParameters);
-		
-		foreach($paramz as $paramName => $paramValue) {		
-			$paramName = self::getMainParamName($paramName, $allowedParms);
-			if(array_key_exists($paramName, $allowedParms) || !$strict) $validParams[$paramName] = $paramValue;
-		}
-		
-		return $validParams;		
-	}
-	
-	/**
-	 * Checks if the patameter name is an alias for an actual parameter,
-	 * and changes it into the main paremeter name if this is the case.
+	 * Returns the main parameter name for a given parameter or alias, or false
+	 * when it is not recognized as main parameter or alias.
 	 *
 	 * @param string $paramName
 	 * @param array $allowedParms
 	 * 
 	 * @return string
 	 */
-	private static function getMainParamName($paramName, array $allowedParms) {
-		if (!array_key_exists($paramName, $allowedParms)) {
-			foreach ($allowedParms as $name => $aliases) {
-				if (in_array($paramName, $aliases)) {
-					$paramName = $name;
-					continue;
+	public static function getMainParamName($paramName, array $allowedParms) {
+		$result = false;
+		
+		if (array_key_exists($paramName, $allowedParms)) {
+			$result = $paramName;
+		}
+		else {
+			foreach ($allowedParms as $name => $data) {
+				if (array_key_exists('aliases', $data)) {
+					if (in_array($paramName, $data['aliases'])) {
+						$result = $name;
+						break;
+					}					
 				}
 			}
 		}
-		return $paramName;
-	}		
+		
+		return $result;
+	}	
+
 		
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
 	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
 	 *
 	 * @param string $service
+	 * @param string $feature
+	 * 
 	 * @return string
 	 */
-	public static function getValidService($service, $feature = '') {
+	public static function getValidService($service, $feature) {
 		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
 		
 		$service = self::getMainServiceName($service);
 		
-		if ($feature != '') {
-			$shouldChange = ! array_key_exists($service, $egMapsServices);
-			if (! $shouldChange) $shouldChange = ! array_key_exists($feature, $egMapsServices[$service]);
-			
-			if ($shouldChange) {
-				$service = array_key_exists($feature, $egMapsDefaultServices) ? $egMapsDefaultServices[$feature] : $egMapsDefaultService;
-			}
+		$shouldChange = ! array_key_exists($service, $egMapsServices);
+		if (! $shouldChange) $shouldChange = ! array_key_exists($feature, $egMapsServices[$service]);
+		
+		if ($shouldChange) {
+			$service = array_key_exists($feature, $egMapsDefaultServices) ? $egMapsDefaultServices[$feature] : $egMapsDefaultService;
 		}
 		
 		if(! in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;

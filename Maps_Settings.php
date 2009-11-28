@@ -123,7 +123,7 @@ $egMapsDefaultGeoService = 'geonames';
 # Maps_ERRORS_WARN  : Maps will make the best of the imput it got, but will show warnings for omitted coordinates.
 # Maps_ERRORS_SHOW  : Maps will make the best of the imput it got, but will show a list of all errors.
 # Maps_ERRORS_STRICT: Maps will only show a map when there are no errors, if there are, a list of them will be shown.
-$egMapsErrorLevel = Maps_ERRORS_WARN;
+$egMapsErrorLevel = Maps_ERRORS_SHOW;
 
 # Integer. The default width and height of a map. These values will only be used when the user does not provide them.
 $egMapsMapWidth = 600;
@@ -136,9 +136,19 @@ $egMapsSizeRestrictions = array(
 	'height' => array( 100, 1000 ),
 );
 
-# Strings. The default coordinates of the marker. This value will only be used when the user does not provide one.
+# Strings. The default coordinates for the map. Must be in floating point notation.
+# This value will only be used when the user does not provide one.
 $egMapsMapLat = '1';
 $egMapsMapLon = '1';
+
+# String. The default centre for a map. Must be in floating point notation. 
+# This value will override the smart behaviour when multiple markers are present when set.
+# This value will only be used when the user does not provide one.
+$egMapsDefaultCentre = '';
+
+# Strings. The default content for all pop-ups. This value will only be used when the user does not provide one.
+$egMapsDefaultTitle = '';
+$egMapsDefaultLabel = '';
 
 
 

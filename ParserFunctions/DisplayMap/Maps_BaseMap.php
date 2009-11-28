@@ -36,19 +36,21 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	public final function displayMap(&$parser, array $params) {			
 		$this->setMapSettings();
 		
-		parent::manageMapProperties($params, __CLASS__);
+		$this->featureParameters = MapsDisplayMap::$parameters;
 		
-		$this->doMapServiceLoad();
-
-		$this->setMapName();	
+		if (parent::manageMapProperties($params, __CLASS__)) {
+			$this->doMapServiceLoad();
+	
+			$this->setMapName();	
+			
+			$this->setZoom();
+			
+			$this->setCentre();
+			
+			$this->addSpecificMapHTML();				
+		}
 		
-		$this->setZoom();
-		
-		$this->setCentre();
-		
-		$this->addSpecificMapHTML();			
-		
-		return $this->output;
+		return $this->output . $this->errorList;
 	}
 	
 	/**

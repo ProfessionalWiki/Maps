@@ -13,11 +13,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsDisplayMap'] 	= $egMapsIP . '/ParserFunctions/DisplayMap/Maps_DisplayMap.php';
-$wgAutoloadClasses['MapsBaseMap'] 		= $egMapsIP . '/ParserFunctions/DisplayMap/Maps_BaseMap.php';
+$wgAutoloadClasses['MapsDisplayMap'] 		= $egMapsIP . '/ParserFunctions/DisplayMap/Maps_DisplayMap.php';
+$wgAutoloadClasses['MapsBaseMap'] 			= $egMapsIP . '/ParserFunctions/DisplayMap/Maps_BaseMap.php';
 
-$wgHooks['LanguageGetMagic'][] 			= 'efMapsDisplayMapMagic';
-$wgHooks['ParserFirstCallInit'][] 		= 'efMapsRegisterDisplayMap';
+$wgHooks['LanguageGetMagic'][] 				= 'efMapsDisplayMapMagic';
+$wgHooks['ParserFirstCallInit'][] 			= 'efMapsRegisterDisplayMap';
+
+$egMapsAvailableFeatures['pf']['hooks'][]	= 'MapsDisplayMap';
 
 /**
  * Adds the magic words for the parser functions.
@@ -46,15 +48,29 @@ function efMapsRegisterDisplayMap(&$wgParser) {
  */
 final class MapsDisplayMap {
 	
+	public static $parameters = array();
+	
+	public static function initialize() {
+		self::initializeParams();
+	}	
+	
 	/**
 	 * Returns the output for a display_map call.
 	 *
 	 * @param unknown_type $parser
+	 * 
 	 * @return array
 	 */
 	public static function displayMapRender(&$parser) {	
 		$args = func_get_args();
 		return MapsParserFunctions::getMapHtml($parser, $args, 'display_map');
+	}
+	
+	private static function initializeParams() {
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		
+		self::$parameters = array_merge(MapsParserFunctions::$parameters, array(
+			));
 	}
 	
 }

@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.5 a4');
+define('Maps_VERSION', '0.5 a6');
 
 // Constants indicating the strictness of the parameter validation.
 define('Maps_ERRORS_NONE', 0);
@@ -46,9 +46,14 @@ $wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
 $wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
 
 // Autoload the general classes
-$wgAutoloadClasses['MapsMapFeature'] 		= $egMapsIP . '/Maps_MapFeature.php';
-$wgAutoloadClasses['MapsMapper'] 			= $egMapsIP . '/Maps_Mapper.php';
-$wgAutoloadClasses['MapsUtils'] 			= $egMapsIP . '/Maps_Utils.php';
+$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsIP . '/Maps_MapFeature.php';
+$wgAutoloadClasses['MapsMapper'] 				= $egMapsIP . '/Maps_Mapper.php';
+$wgAutoloadClasses['MapsUtils'] 				= $egMapsIP . '/Maps_Utils.php';
+
+// TODO: seperate extension
+$wgAutoloadClasses['MapsParamValidator'] 		= $egMapsIP . '/Maps_ParamValidator.php';
+$wgAutoloadClasses['MapsValidationFunctions'] 	= $egMapsIP . '/Maps_ValidationFunctions.php';
+$wgAutoloadClasses['MapsParamManager'] 			= $egMapsIP . '/Maps_ParamManager.php';
 
 if (empty($egMapsServices)) $egMapsServices = array();
 
@@ -57,7 +62,7 @@ if (empty($egMapsServices)) $egMapsServices = array();
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgOut, $wgLang, $wgAutoloadClasses, $IP;	
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures, $egMapsErrorLevel;
 	
 	// Enure that the default service and geoservice are one of the enabled ones.
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
@@ -77,11 +82,13 @@ function efMapsSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg('maps_name'),
 		'version' => Maps_VERSION,
-		'author' => array('[http://bn2vs.com Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'Robert Buzink', 'Matt Williamson', '[http://www.sergeychernyshev.com Sergey Chernyshev]'),
+		'author' => array('[http://bn2vs.com Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others'),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
 		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 	);
+	
+	MapsMapper::initializeMainParams();
 
 	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
 	
@@ -90,9 +97,7 @@ function efMapsSetup() {
 		// Load and optionally initizlize feature.
 		if (array_key_exists('class', $values) && array_key_exists('file', $values) && array_key_exists('local', $values)) {
 			$wgAutoloadClasses[$values['class']] = $values['local'] ? $egMapsIP . '/' . $values['file'] : $IP . '/extensions/' . $values['file'];
-			if (method_exists($values['class'], 'initialize')) {
-				call_user_func(array($values['class'], 'initialize'));
-			}
+			if (method_exists($values['class'], 'initialize')) call_user_func(array($values['class'], 'initialize'));
 		}
 		
 		// Check for wich services there are handlers for the current fature, and load them
@@ -108,6 +113,7 @@ function efMapsSetup() {
 				foreach($serviceData['classes'] as $class) {
 					$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
 					$wgAutoloadClasses[$class['class']] = $file;
+					if (method_exists($class['class'], 'initialize')) call_user_func(array($class['class'], 'initialize'));
 				}
 			}			
 		}

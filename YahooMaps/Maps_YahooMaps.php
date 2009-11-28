@@ -26,7 +26,7 @@ $egMapsServices['yahoomaps'] = array(
 										'display_map' => array('class' => 'MapsYahooMapsDispMap', 'file' => 'YahooMaps/Maps_YahooMapsDispMap.php', 'local' => true),
 										),
 									'classes' => array(
-											array('class' => 'MapsYahooMapsUtils', 'file' => 'YahooMaps/Maps_YahooMapsUtils.php', 'local' => true)
+											array('class' => 'MapsYahooMaps', 'file' => 'YahooMaps/Maps_YahooMapsUtils.php', 'local' => true)											
 											),
 									'aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps'),
 									'parameters' => array(
@@ -35,3 +35,141 @@ $egMapsServices['yahoomaps'] = array(
 											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom')
 											)
 									);
+									
+/**
+ * Class for Yahoo! Maps initialization.
+ * 
+ * @ingroup MapsYahooMaps
+ * 
+ * @author Jeroen De Dauw
+ */						
+class MapsYahooMaps {
+	
+	const SERVICE_NAME = 'yahoomaps';	
+	
+	public static function initialize() {
+		self::initializeParams();
+	}
+	
+	private static function initializeParams() {
+		global $egMapsServices, $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
+		
+		$allowedTypes = MapsYahooMaps::getTypeNames();
+		
+		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
+									'zoom' => array (
+										'default' => $egMapsYahooMapsZoom
+										),
+									'controls' => array(
+										'criteria' => array(), // TODO
+										'default' => implode(',', $egMapsYMapControls)			
+										),											
+									'type' => array (
+										'aliases' => array('map-type', 'map type'),
+										'criteria' => array(
+											'in_array' => array($allowedTypes)			
+											),
+										'default' => $egMapsYahooMapsType										
+										),
+									'types' => array (
+										'aliases' => array('map-types', 'map types'),
+										'criteria' => array(
+											'all_in_array' => array($allowedTypes)
+											),
+										'default' => implode(',', $egMapsYahooMapsTypes)										
+										),			
+									'autozoom' => array(
+										'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
+										'criteria' => array(
+											'in_array' => array('on', 'off', 'yes', 'no')	
+											),		
+										'default' => $egMapsYahooAutozoom ? 'on' : 'off' 												
+										),		
+									);
+	}
+	
+	// http://developer.yahoo.com/maps/ajax
+	private static $mapTypes = array(
+					'normal' => 'YAHOO_MAP_REG',
+					'YAHOO_MAP_REG' => 'YAHOO_MAP_REG',
+	
+					'satellite' => 'YAHOO_MAP_SAT',
+					'YAHOO_MAP_SAT' => 'YAHOO_MAP_SAT',
+	
+					'hybrid' => 'YAHOO_MAP_HYB',
+					'YAHOO_MAP_HYB' => 'YAHOO_MAP_HYB'
+					);				
+	
+	/**
+	 * Returns the names of all supported map types.
+	 * 
+	 * @return array
+	 */
+	public static function getTypeNames() {
+		return array_keys(self::$mapTypes);
+	} 					
+					
+	/**
+	 * Returns the Yahoo Map type (defined in MapsYahooMaps::$mapTypes) 
+	 * for the provided a general map type. When no match is found, the first 
+	 * Google Map type will be returned as default.
+	 *
+	 * @param string $type
+	 * @param boolean $restoreAsDefault
+	 * 
+	 * @return string or false
+	 */
+	public static function getYMapType($type, $restoreAsDefault = false) {
+		global $egMapsYahooMapsType;
+		
+		$typeIsValid = array_key_exists($type, self::$mapTypes);
+		
+		if (!$typeIsValid && $restoreAsDefault) $type = $egMapsYahooMapsType;
+		
+		return $typeIsValid || $restoreAsDefault ? self::$mapTypes[ $type ] : false;	
+	}
+
+	/**
+	 * Add references to the Yahoo! Maps API and required JS file to the provided output 
+	 *
+	 * @param string $output
+	 */
+	public static function addYMapDependencies(&$output) {
+		global $wgJsMimeType;
+		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion;
+		
+		if (empty($egYahooMapsOnThisPage)) {
+			$egYahooMapsOnThisPage = 0;
+			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/YahooMaps/YahooMapFunctions.js?$egMapsStyleVersion'></script>";
+		}
+	}
+
+	/**
+	 * Retuns a boolean as string, true if $autozoom is on or yes.
+	 *
+	 * @param string $autozoom
+	 * @return string
+	 */
+	public static function getAutozoomJSValue($autozoom) {
+		return MapsMapper::getJSBoolValue(in_array($autozoom, array('on', 'yes')));
+	}	
+
+	/**
+	 * Returns a JS items string with the provided types. The earth type will
+	 * be added to it when it's not present and $enableEarth is true. If there are
+	 * no types, the default will be used.
+	 *
+	 * @param array $types
+	 * @param boolean $enableEarth
+	 * @return string
+	 */
+	public static function createTypesString(array &$types) {	
+		global $egMapsYahooMapsTypes, $egMapsYahooMapTypesValid;
+		
+		$types = MapsMapper::getValidTypes($types, $egMapsYahooMapsTypes, $egMapsYahooMapTypesValid, array(__CLASS__, 'getYMapType'));
+			
+		return MapsMapper::createJSItemsString($types, null, false, false);
+	}		
+	
+}									

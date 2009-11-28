@@ -20,14 +20,18 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsParserFunctions {
 	
+	public static $parameters = array();
+	
 	/**
 	 * Initialize the parser functions feature. This function handles the parser function hook,
 	 * and will load the required classes.
 	 */
 	public static function initialize() {
-		global $egMapsIP, $IP, $wgAutoloadClasses, $egMapsServices;
+		global $egMapsIP, $IP, $wgAutoloadClasses, $egMapsAvailableFeatures, $egMapsServices;
 		
 		include_once $egMapsIP . '/ParserFunctions/Maps_iDisplayFunction.php';
+		
+		self::initializeParams();	
 		
 		foreach($egMapsServices as $serviceName => $serviceData) {
 			// Check if the service has parser function support
@@ -42,6 +46,31 @@ final class MapsParserFunctions {
 				$wgAutoloadClasses[$parser_data['class']] = $file;
 			}
 		}
+		
+		// This runs a small hook that enables parser functions to run initialization code.
+		foreach($egMapsAvailableFeatures['pf']['hooks'] as $hook) {
+			if (method_exists($hook, 'initialize')) call_user_func(array($hook, 'initialize'));
+		}			
+	}
+	
+	private static function initializeParams() {
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		
+		self::$parameters = array(		
+			'coordinates' => array(
+				'aliases' => array('coords', 'location', 'locations'),
+				'criteria' => array(
+					//'arecoords' => array()// TODO
+					),
+				),			
+			'geoservice' => array(
+				'aliases' => array(),
+				'criteria' => array(
+					'in_array' => $egMapsAvailableGeoServices
+					),
+				'default' => array($egMapsDefaultGeoService)
+				),			
+			);		
 	}
 	
 	/**
@@ -80,7 +109,8 @@ final class MapsParserFunctions {
             }
         }
         
-        $coords = MapsMapper::getParamValue('coordinates', $map);
+        $paramInfo = array_merge(MapsMapper::getMainParams(), self::$parameters);
+        $coords = MapsMapper::getParamValue('coordinates', $map, $paramInfo);
         
         if ($coords) {
             if (! MapsMapper::paramIsPresent('service', $map)) $map['service'] = '';

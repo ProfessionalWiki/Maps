@@ -20,7 +20,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsOSMDispPoint extends MapsBasePointMap {
 	
-	public $serviceName = MapsOSMUtils::SERVICE_NAME;	
+	public $serviceName = MapsOSM::SERVICE_NAME;	
 	
 	/**
 	 * @see MapsBaseMap::setMapSettings()
@@ -29,12 +29,16 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 	protected function setMapSettings() {
 		global $egMapsOSMZoom, $egMapsOSMPrefix;
 		
-		$this->defaultParams = MapsOSMUtils::getDefaultParams();
-		
 		$this->elementNamePrefix = $egMapsOSMPrefix;
 		$this->defaultZoom = $egMapsOSMZoom;
 		
 		$this->markerStringFormat = 'getOSMMarkerData(lat, lon, "title", "label", "icon")';
+		
+		$this->spesificParameters = array(
+			'zoom' => array(
+				'default' => '', 	
+			)
+		);			
 	}
 	
 	/**
@@ -44,7 +48,7 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 	protected function doMapServiceLoad() {
 		global $egOSMMapsOnThisPage;
 		
-		MapsOSMUtils::addOSMDependencies($this->output);
+		MapsOSM::addOSMDependencies($this->output);
 		$egOSMMapsOnThisPage++;
 		
 		$this->elementNr = $egOSMMapsOnThisPage;
@@ -57,7 +61,7 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;	
 		
-		$controlItems = MapsOSMUtils::createControlsString($this->controls);
+		$controlItems = MapsMapper::createJSItemsString(explode(',', $this->controls));
 		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {

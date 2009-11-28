@@ -21,7 +21,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	
-	public $serviceName = MapsOpenLayersUtils::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
 	
 	/**
 	 * @see MapsBaseMap::setMapSettings()
@@ -30,12 +30,16 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	protected function setMapSettings() {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
-		$this->defaultParams = MapsOpenLayersUtils::getDefaultParams();
-		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->defaultZoom = $egMapsOpenLayersZoom;
 		
-		$this->markerStringFormat = 'getOLMarkerData(lat, lon, "title", "label", "icon")';
+		$this->markerStringFormat = 'getOLMarkerData(lat, lon, "title", "label", "icon")';	
+		
+		$this->spesificParameters = array(
+			'zoom' => array(
+				'default' => '', 	
+			)
+		);			
 	}
 	
 	/**
@@ -45,7 +49,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayersUtils::addOLDependencies($this->output);
+		MapsOpenLayers::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
@@ -58,10 +62,10 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsOpenLayersUtils::createControlsString($this->controls);
+		$controlItems = MapsMapper::createJSItemsString(explode(',', $this->controls));
 		
-		MapsMapper::enforceArrayValues($this->layers);
-		$layerItems = MapsOpenLayersUtils::createLayersStringAndLoadDependencies($this->output, $this->layers);	
+		//var_dump($this->layers);die();
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
 		
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/

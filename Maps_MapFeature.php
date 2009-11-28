@@ -37,9 +37,7 @@ abstract class MapsMapFeature {
 	 */	
 	protected abstract function addSpecificMapHTML();
 	
-	public $serviceName;
-	
-	protected $defaultParams = array();		
+	public $serviceName;	
 
 	protected $defaultZoom;
 	
@@ -52,32 +50,62 @@ abstract class MapsMapFeature {
 	protected $centre_lon;
 
 	protected $output = '';	
-	protected $errors = array();
+	protected $errorList;	
+	
+	protected $featureParameters = array();
+	protected $spesificParameters = array();
 	
 	/**
 	 * Validates and corrects the provided map properties, and the sets them as class fields.
 	 * 
 	 * @param array $mapProperties
 	 * @param string $className 
+	 * 
+	 * @return boolean Indicates whether the map should be shown or not.
 	 */
-	protected function manageMapProperties(array $mapProperties, $className) {
-		global $egMapsServices;
-		//$egMapsErrorLevel
-		// TODO: implement strict parameter validation, put errors in  array.
-		$mapProperties = MapsMapper::getValidParams($mapProperties, $egMapsServices[$this->serviceName]['parameters']);
-		$mapProperties = MapsMapper::setDefaultParValues($mapProperties, $this->defaultParams);
+	protected final function manageMapProperties(array $mapProperties, $className) {
+		global $egMapsServices, $egMapsErrorLevel;
 		
-		// Go through the array with map parameters and create new variables
-		// with the name of the key and value of the item if they don't exist on class level yet.
+		/*
+		 * Assembliy of the allowed parameters and their information. 
+		 * The main parameters (the ones that are shared by everything) are overidden
+		 * by the feature parameters (the ones spesific to a feature). The result is then
+		 * again overidden by the service parameters (the ones spesific to the service),
+		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
+		 */
+		$parameterInfo = array_merge(MapsMapper::getMainParams(), $this->featureParameters);
+		$parameterInfo = array_merge($parameterInfo, $egMapsServices[$this->serviceName]['parameters']);
+		$parameterInfo = array_merge($parameterInfo, $this->spesificParameters);
+		
+		$manager = new MapsParamManager();
+		
+		$result = $manager->manageMapparameters($mapProperties, $parameterInfo);
+		
+		$showMap = $result !== false;
+		
+		if ($showMap) $this->setMapProperties($result, $className);
+		
+		$this->errorList = $manager->getErrorList();
+		
+		return $showMap;
+	}
+	
+	/**
+	 * Sets the map properties as class fields.
+	 * 
+	 * @param array $mapProperties
+	 * @param string $className
+	 */
+	private function setMapProperties(array $mapProperties, $className) {
+		//var_dump($mapProperties); exit;
 		foreach($mapProperties as $paramName => $paramValue) {
 			if (! property_exists($className, $paramName)) {
 				$this->{$paramName} = $paramValue;
 			}
-		}
-		
-		MapsMapper::enforceArrayValues($this->controls);
-		
-		MapsUtils::makeMapSizeValid($this->width, $this->height);
+			else {
+				throw new Exception('Attempt to override a class field during map propertie assignment. Field name: ' . $paramName);
+			}
+		}		
 	}
 	
 	/**

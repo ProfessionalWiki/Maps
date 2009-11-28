@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 class MapsYahooMapsDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsYahooMapsUtils::SERVICE_NAME;		
+	public $serviceName = MapsYahooMaps::SERVICE_NAME;		
 	
 	/**
 	 * @see MapsBaseMap::setFormInputSettings()
@@ -23,8 +23,6 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	 */	
 	protected function setMapSettings() {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
-		
-		$this->defaultParams = MapsYahooMapsUtils::getDefaultParams();
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->defaultZoom = $egMapsYahooMapsZoom;
@@ -37,7 +35,7 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	protected function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMapsUtils::addYMapDependencies($this->output);	
+		MapsYahooMaps::addYMapDependencies($this->output);	
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
@@ -50,15 +48,15 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = MapsYahooMapsUtils::getYMapType($this->type, true);
+		$this->type = MapsYahooMaps::getYMapType($this->type, true);
 		
-		$this->controls = MapsYahooMapsUtils::createControlsString($this->controls);
+		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));
 
-		$this->autozoom = MapsYahooMapsUtils::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
 
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsYahooMapsUtils::createTypesString($this->types);		
+		$typesString = MapsYahooMaps::createTypesString($this->types);		
 		
 		$this->output .= <<<END
 		<div id="$this->mapName" style="width: {$this->width}px; height: {$this->height}px;"></div>  

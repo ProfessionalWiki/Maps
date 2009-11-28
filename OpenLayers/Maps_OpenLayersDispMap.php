@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 class MapsOpenLayersDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsOpenLayersUtils::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
 	
 	/**
 	 * @see MapsBaseMap::setMapSettings()
@@ -24,10 +24,8 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	protected function setMapSettings() {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
-		$this->defaultParams = MapsOpenLayersUtils::getDefaultParams();
-		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;
+		$this->defaultZoom = $egMapsOpenLayersZoom;	
 	}
 	
 	/**
@@ -37,7 +35,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayersUtils::addOLDependencies($this->output);
+		MapsOpenLayers::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
@@ -50,10 +48,9 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsOpenLayersUtils::createControlsString($this->controls);
+		$controlItems = MapsMapper::createJSItemsString(explode(',', $this->controls));
 		
-		MapsMapper::enforceArrayValues($this->layers);
-		$layerItems = MapsOpenLayersUtils::createLayersStringAndLoadDependencies($this->output, $this->layers);
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
 		
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/

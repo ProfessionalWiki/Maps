@@ -13,11 +13,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsDisplayPoint'] 	= $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';
-$wgAutoloadClasses['MapsBasePointMap']	= $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_BasePointMap.php';
+$wgAutoloadClasses['MapsDisplayPoint'] 		= $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';
+$wgAutoloadClasses['MapsBasePointMap']		= $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_BasePointMap.php';
 
-$wgHooks['LanguageGetMagic'][] 			= 'efMapsDisplayPointMagic';
-$wgHooks['ParserFirstCallInit'][] 		= 'efMapsRegisterDisplayPoint';
+$wgHooks['LanguageGetMagic'][] 				= 'efMapsDisplayPointMagic';
+$wgHooks['ParserFirstCallInit'][] 			= 'efMapsRegisterDisplayPoint';
+
+$egMapsAvailableFeatures['pf']['hooks'][]	= 'MapsDisplayPoint';
 
 /**
  * Adds the magic words for the parser functions.
@@ -47,15 +49,44 @@ function efMapsRegisterDisplayPoint(&$wgParser) {
  */
 final class MapsDisplayPoint {
 	
+	public static $parameters = array();
+	
+	public static function initialize() {
+		self::initializeParams();
+	}		
+	
 	/**
 	 * Returns the output for a display_point call.
 	 *
 	 * @param unknown_type $parser
+	 * 
 	 * @return array
 	 */
 	public static function displayPointRender(&$parser) {	
 		$args = func_get_args();
 		return MapsParserFunctions::getMapHtml($parser, $args, 'display_point');
 	}
+	
+	private static function initializeParams() {
+		global $egMapsDefaultCentre, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		
+		self::$parameters = array_merge(MapsParserFunctions::$parameters, array(	
+			'centre' => array(
+				'aliases' => array('center'),
+				'criteria' => array(),
+				'default' => $egMapsDefaultCentre		
+				),	
+			'title' => array(
+				'aliases' => array(),	
+				'criteria' => array(),				
+				'default' => $egMapsDefaultTitle					
+				),
+			'label' => array(
+				'aliases' => array(),	
+				'criteria' => array(),				
+				'default' => $egMapsDefaultLabel
+				),							
+			));
+	}	
 	
 }
