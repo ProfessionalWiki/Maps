@@ -17,7 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsFormInput extends SMFormInput {
 
-	public $serviceName = MapsGoogleMapsUtils::SERVICE_NAME;
+	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -31,8 +31,15 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 
 		$this->earthZoom = 1;
 		
-		$this->defaultParams = MapsGoogleMapsUtils::getDefaultParams();
-        $this->defaultZoom = $egMapsGoogleMapsZoom;		
+        $this->defaultZoom = $egMapsGoogleMapsZoom;	
+
+		$this->spesificParameters = array(
+			'overlays' => array(
+				'aliases' => array(),
+				'criteria' => array(),
+				'default' => ''												
+				),				
+		);        
 	}
 	
 	/**
@@ -43,7 +50,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion;
 		
-		MapsGoogleMapsUtils::addGMapDependencies($this->output);
+		MapsGoogleMaps::addGMapDependencies($this->output);
 		
 		if (empty($smgGoogleFormsOnThisPage)) {
 			$smgGoogleFormsOnThisPage = 0;
@@ -73,11 +80,11 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
 		
-		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
+		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
 		
-		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);		
+		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));		
 		
 		if (in_string('overlays', $this->controls)) {
 			$this->controls = str_replace(",'overlays'", '', $this->controls);
@@ -86,7 +93,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsGoogleMapsUtils::createTypesString($this->types);
+		$typesString = MapsGoogleMaps::createTypesString($this->types);
 		
 		$this->output .= "
 		<div id='".$this->mapName."' class='".$this->class."'></div>
@@ -121,7 +128,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function manageGeocoding() {
 		global $egGoogleMapsKey;
 		$this->enableGeocoding = strlen(trim($egGoogleMapsKey)) > 0;
-		if ($this->enableGeocoding) MapsGoogleMapsUtils::addGMapDependencies($this->output);		
+		if ($this->enableGeocoding) MapsGoogleMaps::addGMapDependencies($this->output);		
 	}	
 	
 }

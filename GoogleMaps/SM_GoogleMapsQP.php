@@ -16,7 +16,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsQP extends SMMapPrinter {
 	
-	public $serviceName = MapsGoogleMapsUtils::SERVICE_NAME;
+	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
@@ -29,7 +29,11 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
-		$this->defaultParams = MapsGoogleMapsUtils::getDefaultParams();
+		$this->spesificParameters = array(
+			'zoom' => array(
+				'default' => '', 	
+			)
+		);			
 	}	
 	
 	/**
@@ -41,7 +45,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMapsUtils::addGMapDependencies($this->output);
+			MapsGoogleMaps::addGMapDependencies($this->output);
 		}
 		
 		$egGoogleMapsOnThisPage++;	
@@ -57,13 +61,13 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		global $wgJsMimeType;
 		
 		// Get the Google Maps names for the control and map types.
-		$this->type = MapsGoogleMapsUtils::getGMapType($this->type, true);
+		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
 		
-		$this->controls = MapsGoogleMapsUtils::createControlsString($this->controls);
+		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));
 
-		$onloadFunctions = MapsGoogleMapsUtils::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
+		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
-		$this->autozoom = MapsGoogleMapsUtils::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();
 		
@@ -81,7 +85,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsGoogleMapsUtils::createTypesString($this->types);		
+		$typesString = MapsGoogleMaps::createTypesString($this->types);		
 		
 		$this->output .= <<<END
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>

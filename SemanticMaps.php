@@ -23,19 +23,22 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.5 a4');
+define('SM_VERSION', '0.5 a6');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
 
 $smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
 
-// Include the settings file
+// Include the settings file.
 require_once($smgIP . '/SM_Settings.php');
 
 $wgExtensionFunctions[] = 'smfSetup'; 
 
 $wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
+
+$wgAutoloadClasses['SMGeoCoordsValue'] = $smgIP . '/SM_GeoCoordsValue.php';
+$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
 
 $wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
 
@@ -47,7 +50,7 @@ $wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
 function smfSetup() {
 	global $wgExtensionCredits, $wgLang, $egMapsServices;
 	
-	// Creation of a list of internationalized service names
+	// Creation of a list of internationalized service names.
 	$services = array();
 	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
 	$services_list = $wgLang->listToText($services);	
@@ -58,7 +61,7 @@ function smfSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg('semanticmaps_name'),
 		'version' => SM_VERSION,
-		'author' => array('[http://bn2vs.com Jeroen De Dauw]', 'Yaron Koren', 'Robert Buzink'),
+		'author' => array('[http://bn2vs.com Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others'),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
@@ -68,12 +71,20 @@ function smfSetup() {
 }
 
 /**
- * Adds a link to Admin Links page
+ * Adds support for the geographical coordinate data type to Semantic MediaWiki.
+ */
+function smfInitGeoCoordsType() {
+	SMWDataValueFactory::registerDatatype('_geo', 'SMWGeoCoordsValue');
+	return true;	
+}
+
+/**
+ * Adds a link to Admin Links page.
  */
 function smfAddToAdminLinks(&$admin_links_tree) {
     $displaying_data_section = $admin_links_tree->getSection(wfMsg('smw_adminlinks_displayingdata'));
     
-    // Escape if SMW hasn't added links
+    // Escape if SMW hasn't added links.
     if (is_null($displaying_data_section)) return true;
     
     $smw_docu_row = $displaying_data_section->getRow('smw');

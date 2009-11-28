@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersQP extends SMMapPrinter {
 
-	public $serviceName = MapsOpenLayersUtils::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
@@ -25,9 +25,13 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;		
-		
-		$this->defaultParams = MapsOpenLayersUtils::getDefaultParams();
+		$this->defaultZoom = $egMapsOpenLayersZoom;	
+
+		$this->spesificParameters = array(
+			'zoom' => array(
+				'default' => '', 	
+			)
+		);	
 	}	
 
 	/**
@@ -37,7 +41,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayersUtils::addOLDependencies($this->output);
+		MapsOpenLayers::addOLDependencies($this->output);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;		
@@ -49,30 +53,29 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
-		
-		$controlItems = MapsOpenLayersUtils::createControlsString($this->controls);
-		
-		MapsMapper::enforceArrayValues($this->layers);
-		$layerItems = MapsOpenLayersUtils::createLayersStringAndLoadDependencies($this->output, $this->layers);
-			
+
+		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));
+
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
+
 		$markerItems = array();
 		
 		foreach ($this->m_locations as $location) {
 			// Create a string containing the marker JS 
 			list($lat, $lon, $title, $label, $icon) = $location;
-			
+
 			$title = str_replace("'", "\'", $title);
 			$label = str_replace("'", "\'", $label);
-			
+
 			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label', '$icon')";
 		}
-		
+
 		$markersString = implode(',', $markerItems);		
-		
+
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
 			addOnloadHook(
-				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems], [$markersString], $this->height)
+				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls], [$markersString], $this->height)
 			);
 		/*]]>*/ </script>";		
 	}

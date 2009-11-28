@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMapsFormInput extends SMFormInput {
 	
-	public $serviceName = MapsYahooMapsUtils::SERVICE_NAME;	
+	public $serviceName = MapsYahooMaps::SERVICE_NAME;	
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -29,7 +29,6 @@ final class SMYahooMapsFormInput extends SMFormInput {
 
 		$this->earthZoom = 17;	
 
-		$this->defaultParams = MapsYahooMapsUtils::getDefaultParams();
         $this->defaultZoom = $egMapsYahooMapsZoom;		
 	}	
 	
@@ -41,7 +40,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion;
 		
-		MapsYahooMapsUtils::addYMapDependencies($this->output);
+		MapsYahooMaps::addYMapDependencies($this->output);
 		
 		if (empty($smgYahooFormsOnThisPage)) {
 			$smgYahooFormsOnThisPage = 0;
@@ -71,21 +70,21 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$type = MapsYahooMapsUtils::getYMapType($this->type, true);
+		$type = MapsYahooMaps::getYMapType($this->type, true);
 		
-		$this->autozoom = MapsYahooMapsUtils::getAutozoomJSValue($this->autozoom);
+		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
 		
-		$controlItems = MapsYahooMapsUtils::createControlsString($this->controls);		
+		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));		
 		
 		$this->types = explode(",", $this->types);
 		
-		$typesString = MapsYahooMapsUtils::createTypesString($this->types);			
+		$typesString = MapsYahooMaps::createTypesString($this->types);			
 		
 		$this->output .="
 		<div id='".$this->mapName."' style='width: {$this->width}px; height: {$this->height}px;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(makeFormInputYahooMap('$this->mapName', '$this->coordsFieldName', $this->centre_lat, $this->centre_lon, $this->zoom, $type, [$typesString], [$controlItems], $this->autozoom, $this->marker_lat, $this->centre_lon));
+		addOnloadHook(makeFormInputYahooMap('$this->mapName', '$this->coordsFieldName', $this->centre_lat, $this->centre_lon, $this->zoom, $type, [$typesString], [$this->controls], $this->autozoom, $this->marker_lat, $this->centre_lon));
 		/*]]>*/</script>";		
 	}
 	
@@ -96,7 +95,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	protected function manageGeocoding() {
 		global $egYahooMapsKey;
 		$this->enableGeocoding = strlen(trim($egYahooMapsKey)) > 0;
-		if ($this->enableGeocoding) MapsYahooMapsUtils::addYMapDependencies($this->output);			
+		if ($this->enableGeocoding) MapsYahooMaps::addYMapDependencies($this->output);			
 	}
 
 	

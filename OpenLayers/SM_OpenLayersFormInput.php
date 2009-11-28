@@ -15,7 +15,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersFormInput extends SMFormInput {
 	
-	public $serviceName = MapsOpenLayersUtils::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -29,8 +29,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 
 		$this->earthZoom = 1;
 
-		$this->defaultParams = MapsOpenLayersUtils::getDefaultParams();
-        $this->defaultZoom = $egMapsOpenLayersZoom;			
+        $this->defaultZoom = $egMapsOpenLayersZoom;	
 	}	
 	
 	/**
@@ -41,7 +40,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion;
 		
-		MapsOpenLayersUtils::addOLDependencies($this->output);
+		MapsOpenLayers::addOLDependencies($this->output);
 		
 		if (empty($smgOLFormsOnThisPage)) {
 			$smgOLFormsOnThisPage = 0;
@@ -71,15 +70,15 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsOpenLayersUtils::createControlsString($this->controls);
+		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));
 		
-		$layerItems = MapsOpenLayersUtils::createLayersStringAndLoadDependencies($this->output, $this->layers);	
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
 		
 		$this->output .="
 		<div id='".$this->mapName."' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(makeFormInputOpenLayer('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", [$layerItems], [$controlItems], $this->height));
+		addOnloadHook(makeFormInputOpenLayer('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", [$layerItems], [$this->controls], $this->height));
 		/*]]>*/</script>";			
 	}
 	
