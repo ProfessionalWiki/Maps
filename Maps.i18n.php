@@ -143,8 +143,14 @@ $messages['br'] = array(
 N'haller ket diskwel ar gartenn.",
 	'maps_geocoding_failed_for' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul, setu {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn : 
 $1",
+	'maps_unrecognized_coords' => "N'eo ket bet anavezet an daveennoù da-heul : $1.",
+	'maps_unrecognized_coords_for' => "N'eo ket bet anavezet an {{PLURAL:$2|daveenn|daveennoù}} da-heul ha {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn :
+$1",
 	'maps_map_cannot_be_displayed' => "Ar gartenn ne c'hall ket bezañ diskwelet.",
+	'maps_error_parameters' => 'Kavet eo bet ar fazioù da-heul en o ereadur',
 	'maps_error_invalid_argument' => "N'eo ket reizh an dalvoudenn $1 evit an arventenn $2.",
+	'maps_error_empty_argument' => "N'hall ket an arventenn $1 bezañ goullo he zalvoudenn",
+	'maps_error_required_missing' => "N'eo ket bet pourchaset an arventenn rekis $1",
 	'maps_error_must_be_number' => 'Un niver e rank an arventenn $1 bezañ hepken.',
 	'maps_error_ivalid_range' => 'Rankout a ra an arventenn $1 bezañ etre $2 hag $3.',
 	'maps_overlays' => 'Dreistlakadennoù',
