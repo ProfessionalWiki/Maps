@@ -105,7 +105,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * @return boolean Indicates whether the map should be shown or not.
 	 */
 	protected final function manageMapProperties(array $mapProperties, $className) {
-		global $egMapsServices, $egMapsErrorLevel;
+		global $egMapsServices;
 		
 		/*
 		 * Assembliy of the allowed parameters and their information. 
@@ -118,7 +118,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$parameterInfo = array_merge($parameterInfo, $egMapsServices[$this->serviceName]['parameters']);
 		$parameterInfo = array_merge($parameterInfo, $this->spesificParameters);
 		
-		$manager = new MapsParamManager();
+		$manager = new ValidatorManager(); // TODO
 		
 		$result = $manager->manageMapparameters($mapProperties, $parameterInfo);
 		
