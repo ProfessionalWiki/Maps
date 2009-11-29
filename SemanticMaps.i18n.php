@@ -22,6 +22,18 @@ Available map services: $1",
 	'semanticmaps_lookupcoordinates' => 'Look up coordinates',
 	'semanticmaps_enteraddresshere' => 'Enter address here',
 	'semanticmaps_notfound' => 'not found',
+	'semanticmaps_paramdesc_format' => 'The mapping service used to generate the map',
+	'semanticmaps_paramdesc_geoservice' => 'The geocoding service used to turn addresses into coordinates',
+	'semanticmaps_paramdesc_height' => 'The height of the map, in pixels (default is $1)',
+	'semanticmaps_paramdesc_width' => 'The width of the map, in pixels (default is $1)',
+	'semanticmaps_paramdesc_zoom' => 'The zoom level of the map',
+	'semanticmaps_paramdesc_centre' => 'The coordinates of the maps\' centre',
+	'semanticmaps_paramdesc_controls' => 'The user controls placed on the map',
+	'semanticmaps_paramdesc_types' => 'The map types available on the map',
+	'semanticmaps_paramdesc_type' => 'The default map type for the map',
+	'semanticmaps_paramdesc_overlays' => 'The overlays available on the map',
+	'semanticmaps_paramdesc_autozoom' => 'Whether or not one can zoom in and out by using the mouse scroll wheel',
+	'semanticmaps_paramdesc_layers' => 'The layers available on the map',
 );
 
 /** Message documentation (Message documentation)
