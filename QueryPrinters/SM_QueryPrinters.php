@@ -68,13 +68,13 @@ final class SMQueryPrinters {
 	 */
 	private static function initFormat($format, array $qp, array $aliases) {
 		global $wgAutoloadClasses, $smgIP, $smwgResultAliases;
-		
+
 		// Load the QP class when it's not loaded yet
 		if (! array_key_exists($qp['class'], $wgAutoloadClasses)) {
 			$file = $qp['local'] ? $smgIP . '/' . $qp['file'] : $qp['file'];
 			$wgAutoloadClasses[$qp['class']] = $file;
 		}
-		
+
 		// Add the QP to SMW
 		self::addFormatQP($format, $qp['class']);
 		
@@ -85,10 +85,8 @@ final class SMQueryPrinters {
 		else { // If SMW does not support aliasing, add every alias as a format
 			foreach($aliases as $alias) self::addFormatQP($alias, $qp['class']);
 		}
-		
-		//if (count($smwgResultAliases) == 4) die(var_dump($smwgResultAliases));
 	}	
-	
+
 	/**
 	 * Adds a QP to SMW's $smwgResultFormats array or SMWQueryProcessor
 	 * depending on if SMW supports $smwgResultFormats.
