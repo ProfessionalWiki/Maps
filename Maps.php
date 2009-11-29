@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.5 a8');
+define('Maps_VERSION', '0.5 a9');
 
 // Constants indicating the strictness of the parameter validation.
 define('Maps_ERRORS_NONE', 0);

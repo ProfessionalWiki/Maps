@@ -97,7 +97,9 @@ final class MapsParserFunctions {
         $map = array();
         $coordFails = array();
         
-        $geoFails = self::changeAddressesToCoords($params);        
+        $paramInfo = array_merge(MapsMapper::getMainParams(), self::$parameters);
+        
+        $geoFails = self::changeAddressesToCoords($params, $paramInfo);        
         
         // Go through all parameters, split their names and values, and put them in the $map array.
         foreach($params as $param) {
@@ -107,7 +109,7 @@ final class MapsParserFunctions {
                 $paramValue = trim($split[1]);
                 if (strlen($paramName) > 0 && strlen($paramValue) > 0) {
                 	$map[$paramName] = $paramValue;
-                	if (MapsMapper::inParamAliases($paramName, 'coordinates')) $coordFails = self::filterInvalidCoords($map[$paramName]);
+                	if (MapsMapper::inParamAliases($paramName, 'coordinates', $paramInfo)) $coordFails = self::filterInvalidCoords($map[$paramName]);
                 }
             }
             else if (count($split) == 1) { // Default parameter (without name)
@@ -115,12 +117,11 @@ final class MapsParserFunctions {
                 if (strlen($split[0]) > 0) $map['coordinates'] = $split[0];
             }
         }
-        
-        $paramInfo = array_merge(MapsMapper::getMainParams(), self::$parameters);
+
         $coords = MapsMapper::getParamValue('coordinates', $map, $paramInfo);
         
         if ($coords) {
-            if (! MapsMapper::paramIsPresent('service', $map)) $map['service'] = '';
+            if (! MapsMapper::paramIsPresent('service', $map, $paramInfo)) $map['service'] = '';
             $map['service'] = MapsMapper::getValidService($map['service'], 'pf');                
     
             $mapClass = self::getParserClassInstance($map['service'], $parserFunction);
@@ -185,7 +186,7 @@ final class MapsParserFunctions {
 	 * 
 	 * @return array
 	 */
-	private static function changeAddressesToCoords(&$params) {
+	private static function changeAddressesToCoords(&$params, array $paramInfo) {
 		global $egMapsDefaultService;
 
 		$fails = array();
@@ -193,7 +194,7 @@ final class MapsParserFunctions {
 		// Get the service and geoservice from the parameters, since they are needed to geocode addresses.
 		for ($i = 0; $i < count($params); $i++) {
 			$split = explode('=', $params[$i]);
-			if (MapsMapper::inParamAliases(strtolower(trim($split[0])), 'service') && count($split) > 1) {
+			if (MapsMapper::inParamAliases(strtolower(trim($split[0])), 'service', $paramInfo) && count($split) > 1) {
 				$service = trim($split[1]);
 			}
 			else if (strtolower(trim($split[0])) == 'geoservice' && count($split) > 1) {

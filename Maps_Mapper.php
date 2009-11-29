@@ -81,15 +81,16 @@ final class MapsMapper {
 	 *
 	 * @param string $name The name you want to check for.
 	 * @param string $mainParamName The main parameter name.
+	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
 	 * @param boolean $compareMainName Boolean indicating wether the main name should also be compared.
 	 * 
 	 * @return boolean
 	 */
-	public static function inParamAliases($name, $mainParamName, $compareMainName = true) {
+	public static function inParamAliases($name, $mainParamName, array $paramInfo = array(), $compareMainName = true) {
 		$equals = $compareMainName && $mainParamName == $name;
 
-		if (array_key_exists($mainParamName, self::$mainParams)) {
-			$equals = $equals || in_array($name, self::$mainParams[$mainParamName]);
+		if (array_key_exists($mainParamName, $paramInfo)) {
+			$equals = $equals || in_array($name, $paramInfo[$mainParamName]);
 		}
 
 		return $equals;
@@ -101,15 +102,16 @@ final class MapsMapper {
      *
      * @param string $paramName
      * @param array $stack
+	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
      * @param boolean $checkForAliases
      * 
      * @return boolean
      */        
-    public static function paramIsPresent($paramName, array $stack, $checkForAliases = true) {
+    public static function paramIsPresent($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
         $isPresent = array_key_exists($paramName, $stack);
         
         if ($checkForAliases) {
-            foreach(self::$mainParams[$paramName]['aliases'] as $alias) {
+            foreach($paramInfo[$paramName]['aliases'] as $alias) {
                 if (array_key_exists($alias, $stack)) {
                 	$isPresent = true;
                 	break;
@@ -128,7 +130,7 @@ final class MapsMapper {
 	 *
 	 * @param string $paramName
 	 * @param array $stack The values to search through
-	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters
+	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
 	 * @param boolean $checkForAliases
 	 * 
 	 * @return the parameter value or false
