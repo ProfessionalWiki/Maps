@@ -56,7 +56,7 @@ final class MapsParserFunctions {
 	private static function initializeParams() {
 		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 		
-		self::$parameters = array(		
+		self::$parameters = array(
 			'coordinates' => array(
 				'aliases' => array('coords', 'location', 'locations'),
 				'criteria' => array(
@@ -66,10 +66,10 @@ final class MapsParserFunctions {
 			'geoservice' => array(
 				'aliases' => array(),
 				'criteria' => array(
-					'in_array' => $egMapsAvailableGeoServices
+					'in_array' => array_keys($egMapsAvailableGeoServices)
 					),
-				'default' => array($egMapsDefaultGeoService)
-				),			
+				'default' => $egMapsDefaultGeoService
+				),	
 			);		
 	}
 	

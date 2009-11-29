@@ -68,7 +68,7 @@ final class MapsDisplayPoint {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsDefaultCentre, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		global $egMapsDefaultCentre, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
 		self::$parameters = array_merge(MapsParserFunctions::$parameters, array(	
 			'centre' => array(

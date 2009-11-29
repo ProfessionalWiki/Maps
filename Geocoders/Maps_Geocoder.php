@@ -39,6 +39,7 @@ final class MapsGeocoder {
 	 * @param string $service
 	 * @param string $mappingService
 	 * @param string $format
+	 * 
 	 * @return formatted coordinate string or false
 	 */
 	public static function geocodeToString($address, $service = '', $mappingService = '', $format = '%1$s, %2$s') {
@@ -53,6 +54,7 @@ final class MapsGeocoder {
 	 * @param string $address
 	 * @param string $service
 	 * @param string $mappingService
+	 * 
 	 * @return array with coordinates or false
 	 */
 	public static function geocode($address, $service, $mappingService) {
@@ -89,6 +91,7 @@ final class MapsGeocoder {
 	 *
 	 * @param string $service
 	 * @param string $mappingService
+	 * 
 	 * @return string
 	 */
 	private static function getValidGeoService($service, $mappingService) {
@@ -99,7 +102,7 @@ final class MapsGeocoder {
 			foreach ($egMapsAvailableGeoServices as $geoService => $serviceData) {
 				if (in_array($mappingService, $serviceData))  {
 					$service = $geoService; // Use the override
-					continue;
+					break;
 				}
 			}	
 			
@@ -108,7 +111,7 @@ final class MapsGeocoder {
 		}
 		else {
 			// If a service is provided, but is not supported, use the default.
-			if(!array_key_exists($service, $egMapsAvailableGeoServices)) $service = $egMapsDefaultGeoService;
+			if(! array_key_exists($service, $egMapsAvailableGeoServices)) $service = $egMapsDefaultGeoService;
 		}
 
 		return $service;

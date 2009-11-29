@@ -95,7 +95,7 @@ final class MapsParamManager {
 				}
 			}
 			
-			return $errorList. implode($errors, '<br />') . '</i>';
+			return $errorList. implode($errors, '<br />') . '</i><br />';
 		}
 		else {
 			return '';

@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.5 a6');
+define('Maps_VERSION', '0.5 a7');
 
 // Constants indicating the strictness of the parameter validation.
 define('Maps_ERRORS_NONE', 0);
@@ -68,7 +68,7 @@ function efMapsSetup() {
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
 	if (!in_array($egMapsDefaultGeoService, $egMapsAvailableGeoServices)) {
 		reset($egMapsAvailableGeoServices);
-		$egMapsDefaultGeoService = current($egMapsAvailableGeoServices);
+		$egMapsDefaultGeoService = key($egMapsAvailableGeoServices);
 	}
 	
 	wfLoadExtensionMessages( 'Maps' ); 
