@@ -83,6 +83,34 @@ final class MapsValidationFunctions {
 			}
 		}
 		return $true;
-	}		
+	}
+	
+	/**
+	 * Returns if all items in the string are present in the array.
+	 * The first element of the $args array should be the delimieter, 
+	 * the second one an array holding the haystack.
+	 * 
+	 * @param string $needles
+	 * @param array $args
+	 * 
+	 * @return boolean
+	 */
+	public static function all_str_in_array($needles, array $args) {
+		return self::all_in_array(explode($args[0], $needles), $args[1]);
+	}	
+
+	/**
+	 * Returns if any items in the string are present in the array.
+	 * The first element of the $args array should be the delimieter, 
+	 * the second one an array holding the haystack.
+	 * 
+	 * @param string $needles
+	 * @param array $args
+	 * 
+	 * @return boolean
+	 */
+	public static function any_str_in_array($needles, array $args) {
+		return self::any_in_array(explode($args[0], $needles), $args[1]);
+	}	
 	
 }

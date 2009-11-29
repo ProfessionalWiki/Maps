@@ -29,13 +29,6 @@ final class MapsMapper {
 		
 		self::$mainParams = array
 			(		
-			'service' => array(
-				'aliases' => array(),
-				'criteria' => array(
-					'in_array' => $egMapsAvailableServices
-					),
-				'default' => $egMapsDefaultService
-				),			
 			'zoom' => array(
 				'aliases' => array(),
 				'criteria' => array(

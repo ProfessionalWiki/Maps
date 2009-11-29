@@ -53,26 +53,26 @@ class MapsGoogleMaps {
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
 									'zoom' => array(
-										'default' => $egMapsGoogleMapsZoom, 	
-										),		
+										'default' => $egMapsGoogleMapsZoom,
+										),
 									'controls' => array(
 										'criteria' => array(), // TODO 
 										'default' => implode(',', $egMapsGMapControls)			
-										),		
+										),
 									'type' => array (
 										'aliases' => array('map-type', 'map type'),
 										'criteria' => array(
-											'in_array' => array($allowedTypes)		
+											'in_array' => $allowedTypes		
 											),
 										'default' => $egMapsGoogleMapsType												
 										),
 									'types' => array (
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
-											'all_in_array' => array($allowedTypes)
+											'all_str_in_array' => array(',', $allowedTypes)
 											),
 										'default' => implode(',', $egMapsGoogleMapsTypes)									
-										),			
+										),
 									'autozoom' => array(
 										'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
 										'criteria' => array(
@@ -92,51 +92,29 @@ class MapsGoogleMaps {
 										),
 									);
 	}
-	
+
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
-	// TODO: Add a true alliasing system? Might be overkill.
 	private static $mapTypes = array(
 					'normal' => 'G_NORMAL_MAP',
-					'G_NORMAL_MAP' => 'G_NORMAL_MAP',
-	
 					'satellite' => 'G_SATELLITE_MAP',
-					'G_SATELLITE_MAP' => 'G_SATELLITE_MAP',
-	
 					'hybrid' => 'G_HYBRID_MAP',
-					'G_HYBRID_MAP' => 'G_HYBRID_MAP',
-	
 					'terrain' => 'G_PHYSICAL_MAP',
 					'physical' => 'G_PHYSICAL_MAP',
-					'G_PHYSICAL_MAP' => 'G_PHYSICAL_MAP',
-	
 					'earth' => 'G_SATELLITE_3D_MAP',
-					'G_SATELLITE_3D_MAP' => 'G_SATELLITE_3D_MAP',
-	
 					'sky' => 'G_SKY_VISIBLE_MAP',
-					'G_SKY_VISIBLE_MAP' => 'G_SKY_VISIBLE_MAP',	
-	
 					'moon' => 'G_MOON_VISIBLE_MAP',
-					'G_MOON_VISIBLE_MAP' => 'G_MOON_VISIBLE_MAP',
-
 					'moon-elevation' => 'G_MOON_ELEVATION_MAP',
-					'G_MOON_ELEVATION_MAP' => 'G_MOON_ELEVATION_MAP',
-	
 					'mars' => 'G_MARS_VISIBLE_MAP',
-					'G_MARS_VISIBLE_MAP' => 'G_MARS_VISIBLE_MAP',
-
 					'mars-elevation' => 'G_MARS_ELEVATION_MAP',
-					'G_MARS_ELEVATION_MAP' => 'G_MARS_ELEVATION_MAP',
-	
-					'mars-infrared' => 'G_MARS_INFRARED_MAP',
-					'G_MARS_INFRARED_MAP' => 'G_MARS_INFRARED_MAP',	
+					'mars-infrared' => 'G_MARS_INFRARED_MAP'
 					);
-					
+
 	private static $overlayData = array(
 					'photos' => '0',
 					'videos' => '1',
 					'wikipedia' => '2',
 					'webcams' => '3'
-					);	
+					);
 
 	/**
 	 * Returns the names of all supported map types.
@@ -146,7 +124,7 @@ class MapsGoogleMaps {
 	public static function getTypeNames() {
 		return array_keys(self::$mapTypes);
 	} 
-					
+
 	/**
 	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 
 	 * for the provided a general map type. When no match is found, false
@@ -182,12 +160,12 @@ class MapsGoogleMaps {
 	public static function addGMapDependencies(&$output) {
 		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage, $egMapsStyleVersion;
-		
+
 		if (empty($egGoogleMapsOnThisPage)) {
 			$egGoogleMapsOnThisPage = 0;
 
 			MapsGoogleMaps::validateGoogleMapsKey();
-			
+
 			// TODO: use strbuilder for performance gain?
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js?$egMapsStyleVersion'></script>

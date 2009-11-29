@@ -46,6 +46,8 @@ final class MapsParamValidator {
 			'not_empty' => array('MapsValidationFunctions', 'not_empty'), 
 			'all_in_array' => array('MapsValidationFunctions', 'all_in_array'), 
 			'any_in_array' => array('MapsValidationFunctions', 'any_in_array'), 	
+			'all_str_in_array' => array('MapsValidationFunctions', 'all_str_in_array'), 
+			'any_str_in_array' => array('MapsValidationFunctions', 'any_str_in_array'), 	
 			);
 	
 	private $parameterInfo;
