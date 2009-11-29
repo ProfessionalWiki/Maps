@@ -49,7 +49,6 @@ final class SMFormInputs {
 			if ($hasFormInputs) self::initFormHook('map');	
 
 		}
-
 	}
 	
 	private static function initializeParams() {
@@ -62,7 +61,12 @@ final class SMFormInputs {
 					'in_array' => $egMapsAvailableServices
 					),
 				'default' => $egMapsDefaultService
-				),				
+				),		
+			'service_name' => array(),	
+			'part_of_multiple' => array(),
+			'possible_values' => array(),
+			'is_list' => array(),
+			'semantic_property' => array(),	
 			);		
 	}	
 	
@@ -99,6 +103,7 @@ final class SMFormInputs {
  * @param unknown_type $is_mandatory
  * @param unknown_type $is_disabled
  * @param array $field_args
+ * 
  * @return unknown
  */
 function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, array $field_args) {
