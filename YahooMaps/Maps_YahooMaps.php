@@ -61,7 +61,9 @@ class MapsYahooMaps {
 										'default' => $egMapsYahooMapsZoom
 										),
 									'controls' => array(
-										'criteria' => array(), // TODO
+										'criteria' => array(
+											'all_str_in_array' => array(',', self::getControlNames())
+										),
 										'default' => implode(',', $egMapsYMapControls)			
 										),											
 									'type' => array (
@@ -91,13 +93,8 @@ class MapsYahooMaps {
 	// http://developer.yahoo.com/maps/ajax
 	private static $mapTypes = array(
 					'normal' => 'YAHOO_MAP_REG',
-					'YAHOO_MAP_REG' => 'YAHOO_MAP_REG',
-	
 					'satellite' => 'YAHOO_MAP_SAT',
-					'YAHOO_MAP_SAT' => 'YAHOO_MAP_SAT',
-	
 					'hybrid' => 'YAHOO_MAP_HYB',
-					'YAHOO_MAP_HYB' => 'YAHOO_MAP_HYB'
 					);				
 	
 	/**
@@ -107,8 +104,19 @@ class MapsYahooMaps {
 	 */
 	public static function getTypeNames() {
 		return array_keys(self::$mapTypes);
-	} 					
-					
+	}
+
+	/**
+	 * Returns the names of all supported controls. 
+	 * This data is a copy of the one used to actually translate the names
+	 * into the controls, since this resides client side, in YahooMapFunctions.js. 
+	 * 
+	 * @return array
+	 */
+	public static function getControlNames() {
+		return array('scale', 'type', 'pan', 'zoom', 'zoom-short');
+	}	
+		
 	/**
 	 * Returns the Yahoo Map type (defined in MapsYahooMaps::$mapTypes) 
 	 * for the provided a general map type. When no match is found, the first 

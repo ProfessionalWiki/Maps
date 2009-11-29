@@ -39,7 +39,7 @@ $1',
 	'maps_error_required_missing' => 'The required parameter $1 is not provided.',
 	'maps_error_must_be_number' => 'Parameter $1 can only be a number.',
 	'maps_error_ivalid_range' => 'Parameter $1 must be between $2 and $3.',
-	'maps_error_accepts_only' => 'Parameter $1 can only be $2.',
+	'maps_error_accepts_only' => 'Parameter $1 only accepts these values: $2.',
 
 	// Mapping services
 	'maps_googlemaps' => 'Google Maps',

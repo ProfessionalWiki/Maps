@@ -49,14 +49,16 @@ class MapsGoogleMaps {
 	private static function initializeParams() {
 		global $egMapsServices, $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGoogleMapsZoom, $egMapsGMapControls;
 		
-		$allowedTypes = MapsGoogleMaps::getTypeNames();
+		$allowedTypes = self::getTypeNames();
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
 									'zoom' => array(
 										'default' => $egMapsGoogleMapsZoom,
 										),
 									'controls' => array(
-										'criteria' => array(), // TODO 
+										'criteria' => array(
+											'all_str_in_array' => array(',', self::getControlNames())
+											), // TODO 
 										'default' => implode(',', $egMapsGMapControls)			
 										),
 									'type' => array (
@@ -124,6 +126,20 @@ class MapsGoogleMaps {
 	public static function getTypeNames() {
 		return array_keys(self::$mapTypes);
 	} 
+	
+	/**
+	 * Returns the names of all supported controls. 
+	 * This data is a copy of the one used to actually translate the names
+	 * into the controls, since this resides client side, in GoogleMapFunctions.js. 
+	 * 
+	 * @return array
+	 */		
+	public static function getControlNames() {
+		return array(
+			'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu', 
+			'overlays', 'overview', 'overview-map', 'scale', 'nav-label', 'nav'
+			);
+	}
 
 	/**
 	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 

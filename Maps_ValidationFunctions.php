@@ -58,7 +58,7 @@ final class MapsValidationFunctions {
 	public static function all_in_array(array $needles, array $haystack) {
 		$true = true;
 		foreach($needles as $needle) {
-			if (! in_array($needle, $haystack)) {
+			if (! in_array(trim($needle), $haystack)) {
 				$true = false;
 				break;
 			}
@@ -77,7 +77,7 @@ final class MapsValidationFunctions {
 	public static function any_in_array(array $needles, array $haystack) {
 		$true = false;
 		foreach($needles as $needle) {
-			if (in_array($needle, $haystack)) {
+			if (in_array(trim($needle), $haystack)) {
 				$true = true;
 				break;
 			}
