@@ -50,6 +50,8 @@ abstract class SMFormInput extends MapsMapFeature {
 		
 		$this->setMapSettings();
 		
+		$this->featureParameters = SMFormInputs::$parameters;
+		
 		$this->doMapServiceLoad();
 		
 		$this->manageGeocoding();		

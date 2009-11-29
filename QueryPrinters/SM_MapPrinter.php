@@ -73,6 +73,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$this->setQueryPrinterSettings();
 		
+		$this->featureParameters = SMQueryPrinters::$parameters;
+		
 		if (self::manageMapProperties($this->m_params, __CLASS__)) {
 			// Only create a map when there is at least one result.
 			if (count($this->m_locations) > 0) {

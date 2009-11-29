@@ -15,6 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMQueryPrinters {
 	
+	public static $parameters = array();
+	
 	/**
 	 * Initialization function for Maps query printer functionality.
 	 */
@@ -22,6 +24,8 @@ final class SMQueryPrinters {
 		global $smgIP, $wgAutoloadClasses, $egMapsServices;
 		
 		$wgAutoloadClasses['SMMapPrinter'] 	= $smgIP . '/QueryPrinters/SM_MapPrinter.php';
+		
+		self::initializeParams();
 		
 		$hasQueryPrinters = false;
 		
@@ -42,6 +46,18 @@ final class SMQueryPrinters {
 		// Add the 'map' result format if there are mapping services that have QP's loaded.
 		if ($hasQueryPrinters) self::initFormat('map', array('class' => 'SMMapper', 'file' => 'QueryPrinters/SM_Mapper.php', 'local' => true), array());
 	}
+	
+	private static function initializeParams() {
+		global $egMapsDefaultService;
+
+		self::$parameters = array(
+			'format' => array(
+				'aliases' => array(),
+				'criteria' => array(),
+				'default' => $egMapsDefaultService
+				),				
+			);		
+	}	
 	
 	/**
 	 * Add the result format for a mapping service or alias.

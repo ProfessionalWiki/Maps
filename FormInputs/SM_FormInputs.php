@@ -15,14 +15,18 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMFormInputs {
 	
+	public static $parameters = array();	
+	
 	public static function initialize() {
 		global $smgIP, $wgAutoloadClasses, $egMapsServices, $sfgFormPrinter;
 
-		$wgAutoloadClasses['SMFormInput'] 	= $smgIP . '/FormInputs/SM_FormInput.php';
-		
 		// This feature can only be enbled when Semantic Forms is loaded.
 		if (isset($sfgFormPrinter)) {
 			$hasFormInputs = false;
+			
+			$wgAutoloadClasses['SMFormInput'] 	= $smgIP . '/FormInputs/SM_FormInput.php';
+			
+			self::initializeParams();
 			
 			foreach($egMapsServices as $serviceName => $serviceData) {
 				// Check if the service has a form input
@@ -47,6 +51,20 @@ final class SMFormInputs {
 		}
 
 	}
+	
+	private static function initializeParams() {
+		global $egMapsAvailableServices, $egMapsDefaultService;
+
+		self::$parameters = array(
+			'service' => array(
+				'aliases' => array(),
+				'criteria' => array(
+					'in_array' => $egMapsAvailableServices
+					),
+				'default' => $egMapsDefaultService
+				),				
+			);		
+	}	
 	
 	/**
 	 * Adds a mapping service's form hook

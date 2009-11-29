@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.5 a7');
+define('SM_VERSION', '0.5 a8');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
@@ -54,9 +54,9 @@ function smfSetup() {
 	$services = array();
 	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
 	$services_list = $wgLang->listToText($services);	
-	
+
 	wfLoadExtensionMessages( 'SemanticMaps' );
-	
+
 	$wgExtensionCredits['other'][]= array(
 		'path' => __FILE__,
 		'name' => wfMsg('semanticmaps_name'),
@@ -66,7 +66,7 @@ function smfSetup() {
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
-	
+
 	return true;	
 }
 
@@ -74,7 +74,7 @@ function smfSetup() {
  * Adds support for the geographical coordinate data type to Semantic MediaWiki.
  */
 function smfInitGeoCoordsType() {
-	SMWDataValueFactory::registerDatatype('_geo', 'SMWGeoCoordsValue');
+	SMWDataValueFactory::registerDatatype('_geo', 'SMGeoCoordsValue');
 	return true;	
 }
 
@@ -83,15 +83,15 @@ function smfInitGeoCoordsType() {
  */
 function smfAddToAdminLinks(&$admin_links_tree) {
     $displaying_data_section = $admin_links_tree->getSection(wfMsg('smw_adminlinks_displayingdata'));
-    
+
     // Escape if SMW hasn't added links.
     if (is_null($displaying_data_section)) return true;
-    
+
     $smw_docu_row = $displaying_data_section->getRow('smw');
-    
+
     $sm_docu_label = wfMsg('adminlinks_documentation', wfMsg('semanticmaps_name'));
     $smw_docu_row->addItem(AlItem::newFromExternalLink("http://www.mediawiki.org/wiki/Extension:Semantic_Maps", $sm_docu_label));
-    
+
     return true;
 }
 
