@@ -86,8 +86,8 @@ final class MapsParamManager {
 						break;		
 					case 'in_array' : case 'all_in_array' :  case 'all_str_in_array' :
 						$items = $error['error'][0] == 'all_str_in_array' ? $error['error'][1][1] : $error['error'][1];
-						$items = $wgLang->listToText($items);
-						$errors[] = wfMsgExt('maps_error_accepts_only', array('parsemag'), $error['name'], $items);
+						$itemsText = $wgLang->listToText($items);
+						$errors[] = wfMsgExt('maps_error_accepts_only', array('parsemag'), $error['name'], $itemsText, count( $items) );
 						break;	
 					// Unspesified errors
 					case 'invalid' : default :
