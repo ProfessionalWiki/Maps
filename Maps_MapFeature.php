@@ -64,7 +64,7 @@ abstract class MapsMapFeature {
 	 * @return boolean Indicates whether the map should be shown or not.
 	 */
 	protected final function manageMapProperties(array $mapProperties, $className) {
-		global $egMapsServices, $egMapsErrorLevel;
+		global $egMapsServices;
 		
 		/*
 		 * Assembliy of the allowed parameters and their information. 
@@ -77,7 +77,7 @@ abstract class MapsMapFeature {
 		$parameterInfo = array_merge($parameterInfo, $egMapsServices[$this->serviceName]['parameters']);
 		$parameterInfo = array_merge($parameterInfo, $this->spesificParameters);
 		
-		$manager = new MapsParamManager();
+		$manager = new ValidatorManager();
 		
 		$result = $manager->manageMapparameters($mapProperties, $parameterInfo);
 		

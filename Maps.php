@@ -23,7 +23,12 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('Maps_VERSION', '0.5 a9');
+if( !defined( 'Validator_VERSION' ) ) {
+	// Include the Validator extension if that hasn't been done yet, since it's required for Maps to work.
+	include_once('extensions/Validator/Validator.php');
+}
+
+define('Maps_VERSION', '0.5 a10');
 
 // Constants indicating the strictness of the parameter validation.
 define('Maps_ERRORS_NONE', 0);
@@ -50,11 +55,6 @@ $wgAutoloadClasses['MapsMapFeature'] 			= $egMapsIP . '/Maps_MapFeature.php';
 $wgAutoloadClasses['MapsMapper'] 				= $egMapsIP . '/Maps_Mapper.php';
 $wgAutoloadClasses['MapsUtils'] 				= $egMapsIP . '/Maps_Utils.php';
 
-// TODO: seperate extension
-$wgAutoloadClasses['MapsParamValidator'] 		= $egMapsIP . '/Maps_ParamValidator.php';
-$wgAutoloadClasses['MapsValidationFunctions'] 	= $egMapsIP . '/Maps_ValidationFunctions.php';
-$wgAutoloadClasses['MapsParamManager'] 			= $egMapsIP . '/Maps_ParamManager.php';
-
 if (empty($egMapsServices)) $egMapsServices = array();
 
 /**
@@ -62,7 +62,7 @@ if (empty($egMapsServices)) $egMapsServices = array();
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgOut, $wgLang, $wgAutoloadClasses, $IP;	
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures, $egMapsErrorLevel;
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
 	
 	// Enure that the default service and geoservice are one of the enabled ones.
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
