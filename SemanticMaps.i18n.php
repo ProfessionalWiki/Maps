@@ -135,6 +135,18 @@ K dispoziciji stojece kórtowe słužby: $1.',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami póglědaś',
 	'semanticmaps_enteraddresshere' => 'Zapódaj how adresu',
 	'semanticmaps_notfound' => 'njenamakany',
+	'semanticmaps_paramdesc_format' => 'Kartěrowańska słužba, kótaraž se wužywa, aby napórała kórtu',
+	'semanticmaps_paramdesc_geoservice' => 'Geokoděrowańska słužba, kótaraž se wužywa, aby pśetwóriła adrese do koordinatow',
+	'semanticmaps_paramdesc_height' => 'Wusokosć kórty, w pikselach (standard jo $1)',
+	'semanticmaps_paramdesc_width' => 'Šyrokosć kórty, w pikselach (standard jo $1)',
+	'semanticmaps_paramdesc_zoom' => 'Skalěrowański schóźeńk kórty',
+	'semanticmaps_paramdesc_centre' => 'Koordinaty srjejźišća kórty',
+	'semanticmaps_paramdesc_controls' => 'Wužywarske elementy na kórśe',
+	'semanticmaps_paramdesc_types' => 'Kórtowe typy, kótarež stoje za kórtu k dispoziciji',
+	'semanticmaps_paramdesc_type' => 'Standardny kórtowy typ za kórtu',
+	'semanticmaps_paramdesc_overlays' => 'Pśewarstowanja, kótarež stoje za kórtu k dispoziciji',
+	'semanticmaps_paramdesc_autozoom' => 'Jolic pówětšenje a pómjeńšenje z pomocu kólaska myški jo móžno abo nic',
+	'semanticmaps_paramdesc_layers' => 'Warsty, kótarež stoje za kórtu k dispoziciji',
 );
 
 /** Greek (Ελληνικά)
@@ -184,12 +196,25 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Grondin
  * @author IAlex
+ * @author PieRRoMaN
  */
 $messages['fr'] = array(
 	'semanticmaps_desc' => "Permet de voir et modifier les données de coordonnées stockées à travers l'extension Semantic MediaWiki. Services de cartes disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Démo]",
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
 	'semanticmaps_notfound' => 'pas trouvé',
+	'semanticmaps_paramdesc_format' => 'Le service de cartographie utilisé pour générer la carte',
+	'semanticmaps_paramdesc_geoservice' => 'Le service de géocodage utilisé pour transformer les adresses en coordonnées',
+	'semanticmaps_paramdesc_height' => 'La hauteur de la carte, en pixels ($1 par défaut)',
+	'semanticmaps_paramdesc_width' => 'La largeur de la carte, en pixels ($1 par défaut)',
+	'semanticmaps_paramdesc_zoom' => "Le niveau d'agrandissement de la carte",
+	'semanticmaps_paramdesc_centre' => 'Les coordonnées du centre de la carte',
+	'semanticmaps_paramdesc_controls' => 'Les contrôles utilisateurs placés sur la carte',
+	'semanticmaps_paramdesc_types' => 'Les types de cartes disponibles sur la carte',
+	'semanticmaps_paramdesc_type' => 'Le type de carte par défaut pour la carte',
+	'semanticmaps_paramdesc_overlays' => 'Les revêtements disponibles sur la carte',
+	'semanticmaps_paramdesc_autozoom' => 'Si on peut faire un zoom avant ou arrière en utilisant la molette de la souris ou non',
+	'semanticmaps_paramdesc_layers' => 'Les revêtements disponibles sur la carte',
 );
 
 /** Galician (Galego)
@@ -211,6 +236,18 @@ $messages['gsw'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticmaps_enteraddresshere' => 'Doo Adräss yygee',
 	'semanticmaps_notfound' => 'nit gfunde',
+	'semanticmaps_paramdesc_format' => 'Dr Chartedienscht, wu brucht wäre soll zum Erzyyge vu dr Charte',
+	'semanticmaps_paramdesc_geoservice' => 'Dr Geokodierigs-Service, wu brucht wäre soll zum umwandle vu Adrässe in Koordinate',
+	'semanticmaps_paramdesc_height' => 'D Hechi vu dr Charte, in Pixel (Standard: $1)',
+	'semanticmaps_paramdesc_width' => 'D Breiti vu dr Charte, in Pixel (Standard: $1)',
+	'semanticmaps_paramdesc_zoom' => 'S Zoom-Level vu dr Charte',
+	'semanticmaps_paramdesc_centre' => 'D Koordinate vum Mittelpunkt vu dr Charte',
+	'semanticmaps_paramdesc_controls' => 'D Hilfsmittel, wu in d Charte yygfiegt sin',
+	'semanticmaps_paramdesc_types' => 'D Chartetype, wu fir d Charte verfiegbar sin',
+	'semanticmaps_paramdesc_type' => 'Dr Standard-Chartetyp fir d Charte',
+	'semanticmaps_paramdesc_overlays' => 'D Overlays, wu fir d Charte verfiegbar sin',
+	'semanticmaps_paramdesc_autozoom' => 'Eb mer e Charte cha vergreßere oder verchleinere mit em Muusrad',
+	'semanticmaps_paramdesc_layers' => 'D Lage, wu fir Charte verfiegbar sin',
 );
 
 /** Hebrew (עברית)
@@ -233,6 +270,18 @@ $messages['hsb'] = array(
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami hladać',
 	'semanticmaps_enteraddresshere' => 'Zapodaj tu adresu',
 	'semanticmaps_notfound' => 'njenamakany',
+	'semanticmaps_paramdesc_format' => 'Kartěrowanska słužba, kotraž so wužiwa, zo by kartu wutworiła',
+	'semanticmaps_paramdesc_geoservice' => 'Geokodowanska słužba, kotraž so wužiwa, zo by adresy do koordinatow přetworiła',
+	'semanticmaps_paramdesc_height' => 'Wysokosć karty, w pikselach (standard je $1)',
+	'semanticmaps_paramdesc_width' => 'Šěrokosć karty, w pikselach (standard je $1)',
+	'semanticmaps_paramdesc_zoom' => 'Skalowanski schodźenk karty',
+	'semanticmaps_paramdesc_centre' => 'Koordinaty srjedźišća karty',
+	'semanticmaps_paramdesc_controls' => 'Wužiwarske elementy na karće',
+	'semanticmaps_paramdesc_types' => 'Kartowe typy, kotrež za kartu k dispoziciji steja',
+	'semanticmaps_paramdesc_type' => 'Standardny kartowy typ za kartu',
+	'semanticmaps_paramdesc_overlays' => 'Naworštowanja, kotrež za kartu k dispoziciji steja',
+	'semanticmaps_paramdesc_autozoom' => 'Jeli powjetšenje a pomjenšenje z pomocu kolesko myški je móžno abo nic',
+	'semanticmaps_paramdesc_layers' => 'Woršty, kotrež za kartu k dispoziciji steja',
 );
 
 /** Hungarian (Magyar)
@@ -337,6 +386,18 @@ Beschikbare kaartdiensten: $1',
 	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
 	'semanticmaps_enteraddresshere' => 'Voer hier het adres in',
 	'semanticmaps_notfound' => 'niet gevonden',
+	'semanticmaps_paramdesc_format' => 'De kaartdienst die de kaart levert',
+	'semanticmaps_paramdesc_geoservice' => 'De geocoderingsdienst die adressen in coördinaten converteert',
+	'semanticmaps_paramdesc_height' => 'De hoogte van de kaart in pixels (standaard is $1)',
+	'semanticmaps_paramdesc_width' => 'De breedte van de kaart in pixels (standaard is $1)',
+	'semanticmaps_paramdesc_zoom' => 'Het zoomniveau van de kaart',
+	'semanticmaps_paramdesc_centre' => 'De coördinaten van het midden van de kaart',
+	'semanticmaps_paramdesc_controls' => 'De op de kaart te plaatsen hulpmiddelen',
+	'semanticmaps_paramdesc_types' => 'De voor de kaart beschikbare kaarttypen',
+	'semanticmaps_paramdesc_type' => 'Het standaard kaarttype voor de kaart',
+	'semanticmaps_paramdesc_overlays' => 'De voor de kaart beschikbare overlays',
+	'semanticmaps_paramdesc_autozoom' => 'Of in- en uitzoomen met het scrollwiel van de muis mogelijk is',
+	'semanticmaps_paramdesc_layers' => 'De lagen die beschikbaar zijn voor de kaart',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
