@@ -63,7 +63,7 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 		
 		<script type="$wgJsMimeType">/*<![CDATA[*/
 		addOnloadHook(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [])
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [], $this->height)
 		);
 			/*]]>*/</script>
 END;

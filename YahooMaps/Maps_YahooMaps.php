@@ -69,14 +69,14 @@ class MapsYahooMaps {
 									'type' => array (
 										'aliases' => array('map-type', 'map type'),
 										'criteria' => array(
-											'in_array' => array($allowedTypes)			
+											'in_array' => $allowedTypes			
 											),
 										'default' => $egMapsYahooMapsType										
 										),
 									'types' => array (
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
-											'all_in_array' => array($allowedTypes)
+											'all_str_in_array' => array(',', $allowedTypes)
 											),
 										'default' => implode(',', $egMapsYahooMapsTypes)										
 										),			
@@ -114,7 +114,7 @@ class MapsYahooMaps {
 	 * @return array
 	 */
 	public static function getControlNames() {
-		return array('scale', 'type', 'pan', 'zoom', 'zoom-short');
+		return array('scale', 'type', 'pan', 'zoom', 'zoom-short', 'auto-zoom');
 	}	
 		
 	/**

@@ -76,7 +76,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 		
 		<script type="$wgJsMimeType">/*<![CDATA[*/
 		addOnloadHook(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$this->markerString])
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$this->markerString], $this->height)
 		);
 			/*]]>*/</script>
 END;

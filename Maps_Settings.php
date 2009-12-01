@@ -126,7 +126,7 @@ $egMapsMapHeight = 350;
 # When the height or width exceed their limits, they will be changed to the closest allowed value.
 $egMapsSizeRestrictions = array(
 	'width'  => array( 100, 1000 ),
-	'height' => array( 100, 1000 ),
+	'height' => array( 0, 1000 ),
 );
 
 # Strings. The default coordinates for the map. Must be in floating point notation.
@@ -171,8 +171,8 @@ $egMapsGoogleMapsType = 'normal';
 $egMapsGoogleAutozoom = true;
 
 # Array of String. The default controls for Google Maps. This value will only be used when the user does not provide one.
-# Available values: large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label
-$egMapsGMapControls = array('large', 'scale', 'type', 'overlays');
+# Available values: auto, large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label
+$egMapsGMapControls = array('auto', 'scale', 'type', 'overlays');
 
 # Array. The default overlays for the Google Maps overlays control, and wether they should be shown at pageload.
 # This value will only be used when the user does not provide one.
@@ -204,8 +204,8 @@ $egMapsYahooMapsZoom = 4;
 $egMapsYahooAutozoom = true;
 
 # Array of String. The default controls for Yahoo! Maps. This value will only be used when the user does not provide one.
-# Available values: type, pan, zoom, zoom-short
-$egMapsYMapControls = array('type', 'pan', 'zoom');
+# Available values: type, pan, zoom, zoom-short, auto-zoom
+$egMapsYMapControls = array('type', 'pan', 'auto-zoom');
 
 
 

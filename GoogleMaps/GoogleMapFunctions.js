@@ -83,6 +83,10 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
 	for (i in mapOptions.controls){
+		if (mapOptions.controls[i].toLowerCase() == 'auto') {
+			if (mapOptions.height > 75) mapOptions.controls[i] = mapOptions.height > 320 ? 'large' : 'small';
+		}			
+		
 		switch (mapOptions.controls[i]) {
 			case 'large' : 
 				map.addControl(new GLargeMapControl3D());
@@ -152,7 +156,6 @@ function getGMarkerData(lat, lon, title, label, icon) {
 
 function setupCheckboxShiftClick() { return true; }
 
-
 function MoreControl() {};
 MoreControl.prototype = new GControl();
 
@@ -219,7 +222,6 @@ function setGLayerboxClose() {
 }
 
 function switchGLayer(map, checked, layer) {
-	//	Function borrowed from Esa: http://esa.ilmari.googlepages.com/dropdownmenu.htm
 	var	layerbox = document.getElementById(map.name + "-more-box");
 	var	button = document.getElementById(map.name + "-inner-more");
 	

@@ -136,7 +136,7 @@ class MapsGoogleMaps {
 	 */		
 	public static function getControlNames() {
 		return array(
-			'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu', 
+			'auto', 'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu', 
 			'overlays', 'overview', 'overview-map', 'scale', 'nav-label', 'nav'
 			);
 	}
