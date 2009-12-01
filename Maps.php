@@ -28,13 +28,7 @@ if( !defined( 'Validator_VERSION' ) ) {
 	include_once('extensions/Validator/Validator.php');
 }
 
-define('Maps_VERSION', '0.5 a10');
-
-// Constants indicating the strictness of the parameter validation.
-define('Maps_ERRORS_NONE', 0);
-define('Maps_ERRORS_WARN', 1);
-define('Maps_ERRORS_SHOW', 2);
-define('Maps_ERRORS_STRICT', 3);
+define('Maps_VERSION', '0.5 a11');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';

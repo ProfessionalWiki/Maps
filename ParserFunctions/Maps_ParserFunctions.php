@@ -109,7 +109,7 @@ final class MapsParserFunctions {
                 $paramValue = trim($split[1]);
                 if (strlen($paramName) > 0 && strlen($paramValue) > 0) {
                 	$map[$paramName] = $paramValue;
-                	if (MapsMapper::inParamAliases($paramName, 'coordinates', $paramInfo)) $coordFails = self::filterInvalidCoords($map[$paramName]);
+                	if (self::inParamAliases($paramName, 'coordinates', $paramInfo)) $coordFails = self::filterInvalidCoords($map[$paramName]);
                 }
             }
             else if (count($split) == 1) { // Default parameter (without name)
@@ -118,10 +118,10 @@ final class MapsParserFunctions {
             }
         }
 
-        $coords = MapsMapper::getParamValue('coordinates', $map, $paramInfo);
+        $coords = self::getParamValue('coordinates', $map, $paramInfo);
         
         if ($coords) {
-            if (! MapsMapper::paramIsPresent('service', $map, $paramInfo)) $map['service'] = '';
+            if (! self::paramIsPresent('service', $map, $paramInfo)) $map['service'] = '';
             $map['service'] = MapsMapper::getValidService($map['service'], 'pf');                
     
             $mapClass = self::getParserClassInstance($map['service'], $parserFunction);
@@ -194,7 +194,7 @@ final class MapsParserFunctions {
 		// Get the service and geoservice from the parameters, since they are needed to geocode addresses.
 		for ($i = 0; $i < count($params); $i++) {
 			$split = explode('=', $params[$i]);
-			if (MapsMapper::inParamAliases(strtolower(trim($split[0])), 'service', $paramInfo) && count($split) > 1) {
+			if (self::inParamAliases(strtolower(trim($split[0])), 'service', $paramInfo) && count($split) > 1) {
 				$service = trim($split[1]);
 			}
 			else if (strtolower(trim($split[0])) == 'geoservice' && count($split) > 1) {
@@ -261,5 +261,80 @@ final class MapsParserFunctions {
 		global $egMapsServices;
 		return new $egMapsServices[$service]['pf'][$parserFunction]['class']();
 	}		
+	
+	/**
+	 * Gets if a provided name is present in the aliases array of a parameter
+	 * name in the $mainParams array.
+	 *
+	 * @param string $name The name you want to check for.
+	 * @param string $mainParamName The main parameter name.
+	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
+	 * @param boolean $compareMainName Boolean indicating wether the main name should also be compared.
+	 * 
+	 * @return boolean
+	 */
+	private static function inParamAliases($name, $mainParamName, array $paramInfo = array(), $compareMainName = true) {
+		$equals = $compareMainName && $mainParamName == $name;
+
+		if (array_key_exists($mainParamName, $paramInfo)) {
+			$equals = $equals || in_array($name, $paramInfo[$mainParamName]);
+		}
+
+		return $equals;
+	}	
+	
+    /**
+     * Gets if a parameter is present as key in the $stack. Also checks for
+     * the presence of aliases in the $mainParams array unless specified not to.
+     *
+     * @param string $paramName
+     * @param array $stack
+	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
+     * @param boolean $checkForAliases
+     * 
+     * @return boolean
+     */        
+    private static function paramIsPresent($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
+        $isPresent = array_key_exists($paramName, $stack);
+        
+        if ($checkForAliases) {
+            foreach($paramInfo[$paramName]['aliases'] as $alias) {
+                if (array_key_exists($alias, $stack)) {
+                	$isPresent = true;
+                	break;
+                }
+            }
+        }
+
+        return $isPresent;
+    }
+	
+	/**
+	 * Returns the value of a parameter represented as key in the $stack.
+	 * Also checks for the presence of aliases in the $mainParams array
+	 * and returns the value of the alies unless specified not to. When
+	 * no array key name match is found, false will be returned.
+	 *
+	 * @param string $paramName
+	 * @param array $stack The values to search through
+	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
+	 * @param boolean $checkForAliases
+	 * 
+	 * @return the parameter value or false
+	 */
+	private static function getParamValue($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
+		$paramValue = false;
+		
+		if (array_key_exists($paramName, $stack)) $paramValue = $stack[$paramName];
+		
+		if ($checkForAliases) {
+			foreach($paramInfo[$paramName]['aliases'] as $alias) {
+				if (array_key_exists($alias, $stack)) $paramValue = $stack[$alias];
+				break;
+			}
+		}
+		
+		return $paramValue;		
+	}	
 
 }

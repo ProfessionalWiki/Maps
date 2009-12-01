@@ -74,81 +74,6 @@ final class MapsMapper {
 	public static function getMainParams() {
 		return self::$mainParams;
 	}	
-			
-	/**
-	 * Gets if a provided name is present in the aliases array of a parameter
-	 * name in the $mainParams array.
-	 *
-	 * @param string $name The name you want to check for.
-	 * @param string $mainParamName The main parameter name.
-	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
-	 * @param boolean $compareMainName Boolean indicating wether the main name should also be compared.
-	 * 
-	 * @return boolean
-	 */
-	public static function inParamAliases($name, $mainParamName, array $paramInfo = array(), $compareMainName = true) {
-		$equals = $compareMainName && $mainParamName == $name;
-
-		if (array_key_exists($mainParamName, $paramInfo)) {
-			$equals = $equals || in_array($name, $paramInfo[$mainParamName]);
-		}
-
-		return $equals;
-	}	
-	
-    /**
-     * Gets if a parameter is present as key in the $stack. Also checks for
-     * the presence of aliases in the $mainParams array unless specified not to.
-     *
-     * @param string $paramName
-     * @param array $stack
-	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
-     * @param boolean $checkForAliases
-     * 
-     * @return boolean
-     */        
-    public static function paramIsPresent($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
-        $isPresent = array_key_exists($paramName, $stack);
-        
-        if ($checkForAliases) {
-            foreach($paramInfo[$paramName]['aliases'] as $alias) {
-                if (array_key_exists($alias, $stack)) {
-                	$isPresent = true;
-                	break;
-                }
-            }
-        }
-
-        return $isPresent;
-    }
-	
-	/**
-	 * Returns the value of a parameter represented as key in the $stack.
-	 * Also checks for the presence of aliases in the $mainParams array
-	 * and returns the value of the alies unless specified not to. When
-	 * no array key name match is found, false will be returned.
-	 *
-	 * @param string $paramName
-	 * @param array $stack The values to search through
-	 * @param array $paramInfo Contains meta data, including aliases, of the possible parameters.
-	 * @param boolean $checkForAliases
-	 * 
-	 * @return the parameter value or false
-	 */
-	public static function getParamValue($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
-		$paramValue = false;
-		
-		if (array_key_exists($paramName, $stack)) $paramValue = $stack[$paramName];
-		
-		if ($checkForAliases) {
-			foreach($paramInfo[$paramName]['aliases'] as $alias) {
-				if (array_key_exists($alias, $stack)) $paramValue = $stack[$alias];
-				break;
-			}
-		}
-		
-		return $paramValue;		
-	}
 	
 	/**
 	 * Returns the JS version (true/false as string) of the provided boolean parameter.
@@ -187,37 +112,7 @@ final class MapsMapper {
 		$itemString = $asStrings ? "'" . implode("','", $items) . "'" : implode(',', $items);
 		if ($toLower) $itemString = strtolower($itemString);
 		return $itemString;
-	}		
-	
-	/**
-	 * Returns the main parameter name for a given parameter or alias, or false
-	 * when it is not recognized as main parameter or alias.
-	 *
-	 * @param string $paramName
-	 * @param array $allowedParms
-	 * 
-	 * @return string
-	 */
-	public static function getMainParamName($paramName, array $allowedParms) {
-		$result = false;
-		
-		if (array_key_exists($paramName, $allowedParms)) {
-			$result = $paramName;
-		}
-		else {
-			foreach ($allowedParms as $name => $data) {
-				if (array_key_exists('aliases', $data)) {
-					if (in_array($paramName, $data['aliases'])) {
-						$result = $name;
-						break;
-					}					
-				}
-			}
-		}
-		
-		return $result;
-	}	
-
+	}
 		
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
@@ -273,6 +168,7 @@ final class MapsMapper {
 	 * @param array $defaults
 	 * @param boolean $defaultsAreValid
 	 * @param function $validationFunction
+	 * 
 	 * @return array
 	 */
 	public static function getValidTypes(array $types, array &$defaults, &$defaultsAreValid, $validationFunction) {

@@ -205,7 +205,7 @@ class MapsGoogleMaps {
 	 * no types, the default will be used.
 	 *
 	 * @param array $types
-	 * @param boolean $enableEarth
+	 * 
 	 * @return string
 	 */
 	public static function createTypesString(array &$types) {	

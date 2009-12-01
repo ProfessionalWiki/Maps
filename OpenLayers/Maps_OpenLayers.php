@@ -88,7 +88,7 @@ class MapsOpenLayers {
 			case 'google' : case 'google-normal' : case 'google-sattelite' : case 'google-hybrid' : case 'google-physical' :
 				if (empty($egGoogleMapsOnThisPage)) {
 					$egGoogleMapsOnThisPage = 0;
-					MapsGoogleMapsUtils::addGMapDependencies($output);
+					MapsGoogleMaps::addGMapDependencies($output);
 					}
 				break;
 			case 'bing' : case 'virtual-earth' :
