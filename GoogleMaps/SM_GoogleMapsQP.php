@@ -18,6 +18,8 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
+	protected $spesificParameters;
+	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 *
@@ -113,6 +115,11 @@ END;
 		$this->output .= $onloadFunctions;	
 	}
 	
-
+	public function getParameters() {
+		return array_merge(parent::getParameters(), 
+			array()
+			); 
+	}
+	
 }
 
