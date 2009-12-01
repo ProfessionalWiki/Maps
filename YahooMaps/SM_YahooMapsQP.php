@@ -82,7 +82,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addOnloadHook(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString])
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString], $this->height)
 		);
 			/*]]>*/</script>";		
 

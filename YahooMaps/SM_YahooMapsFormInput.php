@@ -84,7 +84,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		<div id='".$this->mapName."' style='width: {$this->width}px; height: {$this->height}px;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(makeFormInputYahooMap('$this->mapName', '$this->coordsFieldName', $this->centre_lat, $this->centre_lon, $this->zoom, $type, [$typesString], [$this->controls], $this->autozoom, $this->marker_lat, $this->centre_lon));
+		addOnloadHook(makeFormInputYahooMap('$this->mapName', '$this->coordsFieldName', $this->centre_lat, $this->centre_lon, $this->zoom, $type, [$typesString], [$this->controls], $this->autozoom, $this->marker_lat, $this->centre_lon, $this->height));
 		/*]]>*/</script>";		
 	}
 	
