@@ -462,6 +462,18 @@ Serviços de cartografia disponíveis: $1',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
 	'semanticmaps_notfound' => 'não encontrado',
+	'semanticmaps_paramdesc_format' => 'O serviço de cartografia usado para gerar o mapa',
+	'semanticmaps_paramdesc_geoservice' => 'O serviço de geocódigos usado para transformar endereços em coordenadas',
+	'semanticmaps_paramdesc_height' => 'A altura do mapa, em pixels (por omissão, $1)',
+	'semanticmaps_paramdesc_width' => 'A largura do mapa, em pixels (por omissão, $1)',
+	'semanticmaps_paramdesc_zoom' => 'O nível de aproximação do mapa',
+	'semanticmaps_paramdesc_centre' => 'As coordenadas do centro do mapa',
+	'semanticmaps_paramdesc_controls' => 'Os controles colocados no mapa',
+	'semanticmaps_paramdesc_types' => 'Os tipos de mapa disponíveis no mapa',
+	'semanticmaps_paramdesc_type' => 'O tipo do mapa, por omissão',
+	'semanticmaps_paramdesc_overlays' => 'As sobreposições disponíveis no mapa',
+	'semanticmaps_paramdesc_autozoom' => 'Possibilitar, ou não, a aproximação e afastamento usando a roda de deslizamento do rato',
+	'semanticmaps_paramdesc_layers' => 'As camadas disponíveis no mapa',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -504,6 +516,18 @@ $messages['ru'] = array(
 	'semanticmaps_lookupcoordinates' => 'Найти координаты',
 	'semanticmaps_enteraddresshere' => 'Введите адрес',
 	'semanticmaps_notfound' => 'не найдено',
+	'semanticmaps_paramdesc_format' => 'Картографическая служба, используемая для создания карт',
+	'semanticmaps_paramdesc_geoservice' => 'Служба геокодирования используется для преобразования адреса в координаты',
+	'semanticmaps_paramdesc_height' => 'Высота карты в пикселях (по умолчанию $1)',
+	'semanticmaps_paramdesc_width' => 'Ширина карты в пикселях (по умолчанию $1)',
+	'semanticmaps_paramdesc_zoom' => 'Масштаб карты',
+	'semanticmaps_paramdesc_centre' => 'Координаты центра карты',
+	'semanticmaps_paramdesc_controls' => 'Элементы управления на карте',
+	'semanticmaps_paramdesc_types' => 'Типы карты, доступные на карте',
+	'semanticmaps_paramdesc_type' => 'Тип карты по умолчанию',
+	'semanticmaps_paramdesc_overlays' => 'Доступные наложения',
+	'semanticmaps_paramdesc_autozoom' => 'Можно ли увеличивать и уменьшать масштаб с помощью колеса прокрутки мыши',
+	'semanticmaps_paramdesc_layers' => 'Доступные на карте слои',
 );
 
 /** Slovak (Slovenčina)
