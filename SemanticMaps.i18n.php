@@ -333,10 +333,22 @@ $messages['it'] = array(
  * @author Mizusumashi
  */
 $messages['ja'] = array(
-	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する([http://wiki.bn2vs.com/wiki/Semantic_Maps 実演])。次の地図サービスに対応します：$1',
+	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する ([http://wiki.bn2vs.com/wiki/Semantic_Maps 実演])。次の地図サービスに対応します：$1',
 	'semanticmaps_lookupcoordinates' => '座標を調べる',
 	'semanticmaps_enteraddresshere' => '住所をここに入力します',
 	'semanticmaps_notfound' => '見つかりません',
+	'semanticmaps_paramdesc_format' => '地図の生成に利用されている地図サービス',
+	'semanticmaps_paramdesc_geoservice' => '住所の座標への変換に利用されているジオコーディングサービス',
+	'semanticmaps_paramdesc_height' => '地図の縦幅 (単位はピクセル、既定は$1)',
+	'semanticmaps_paramdesc_width' => '地図の横幅 (単位はピクセル、既定は$1)',
+	'semanticmaps_paramdesc_zoom' => '地図の拡大度',
+	'semanticmaps_paramdesc_centre' => '地図の中心の座標',
+	'semanticmaps_paramdesc_controls' => 'この地図上に設置するユーザーコントロール',
+	'semanticmaps_paramdesc_types' => 'この地図で利用できる地図タイプ',
+	'semanticmaps_paramdesc_type' => 'この地図のデフォルト地図タイプ',
+	'semanticmaps_paramdesc_overlays' => 'この地図で利用できるオーバーレイ',
+	'semanticmaps_paramdesc_autozoom' => 'マウスのスクロールホイールを使ってズームインやアウトができるようにするかどうか',
+	'semanticmaps_paramdesc_layers' => 'この地図で利用できるレイヤー',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -354,6 +366,16 @@ $messages['ksh'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinate nohkike',
 	'semanticmaps_enteraddresshere' => 'Donn hee de Address enjäve',
 	'semanticmaps_notfound' => 'nit jefonge',
+	'semanticmaps_paramdesc_format' => 'Dä Deens för Kaate ußzejävve, woh heh di Kaat vun kütt',
+	'semanticmaps_paramdesc_geoservice' => "Dä Deens för Adräße en Ko'odinaate öm_ze_wandelle",
+	'semanticmaps_paramdesc_height' => 'De Hühde vun heh dä Kaat en Pixelle — schtandattmääßesch {{PLURAL:$1|$1 Pixel|$1 Pixelle|nix}}',
+	'semanticmaps_paramdesc_width' => 'De Breedt vun heh dä Kaat en Pixelle — schtandattmääßesch {{PLURAL:$1|$1 Pixel|$1 Pixelle|nix}}',
+	'semanticmaps_paramdesc_zoom' => 'Wi doll dä Zoom fö heh di Kaat es',
+	'semanticmaps_paramdesc_centre' => "De Ko'odinaate op de Ääd, vun de Medde vun heh dä Kaat",
+	'semanticmaps_paramdesc_controls' => 'De Knöppe för de Bedeenung, di op di Kaat jemohlt wäääde',
+	'semanticmaps_paramdesc_types' => 'De Kaate-Zoote di mer för heh di Kaat ußsöhke kann',
+	'semanticmaps_paramdesc_type' => 'De Schtandatt Kaate-Zoot för heh di Kaat',
+	'semanticmaps_paramdesc_layers' => 'De Nivohs, di för di Kaat ze han sin',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
