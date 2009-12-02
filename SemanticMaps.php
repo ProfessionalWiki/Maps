@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.5 a13');
+define('SM_VERSION', '0.5 a14');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
@@ -37,10 +37,11 @@ $wgExtensionFunctions[] = 'smfSetup';
 
 $wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
 
-//$wgAutoloadClasses['SMGeoCoordsValue'] = $smgIP . '/SM_GeoCoordsValue.php';
-//$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
-
 $wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
+
+// Registration of the Geographical Coordinate type.
+$wgAutoloadClasses['SMGeoCoordsValue'] = $smgIP . '/SM_GeoCoordsValue.php';
+$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
 
 /**
  * 'Initialization' function for the Semantic Maps extension. 

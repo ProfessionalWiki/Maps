@@ -37,7 +37,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	// Note: signs are used as e.g. on Google maps, i.e. S and W are negative numbers.
 
 	protected function parseUserValue($value) {
-		wfLoadExtensionMessages('SemanticMediaWiki');
 		$this->m_lat = false;
 		$this->m_long = false;
 		$this->m_latparts = false;
@@ -66,7 +65,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 						$angles[0] = $curnum;
 						$curnum = false;
 					} else {
-						$this->addError(wfMsgForContent('smw_lonely_unit', $part));
+						$this->addError(wfMsgForContent('semanticmaps_lonely_unit', $part));
 					}
 				break;
 				case SM_GEO_MIN:
@@ -75,7 +74,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 						if ($angles[0] === false) $angles[0] = 0;
 						$curnum = false;
 					} else {
-						$this->addError(wfMsgForContent('smw_lonely_unit', $part));
+						$this->addError(wfMsgForContent('semanticmaps_lonely_unit', $part));
 					}
 				break;
 				case SM_GEO_SEC:
@@ -85,13 +84,13 @@ class SMGeoCoordsValue extends SMWDataValue {
 						if ($angles[1] === false) $angles[1] = 0;
 						$curnum = false;
 					} else {
-						$this->addError(wfMsgForContent('smw_lonely_unit', $part));
+						$this->addError(wfMsgForContent('semanticmaps_lonely_unit', $part));
 					}
 				break;
 				case 'N': case 'S': // interpret findings as latitude
 					if ( $curnum !== false ) { // work off number without °
 						if ($angles[0] !== false) { // "12° 34" as coordinate, complain
-							$this->addError(wfMsgForContent('smw_bad_latlong'));
+							$this->addError(wfMsgForContent('semanticmaps_bad_latlong'));
 							break;
 						} else {
 							$angles[0] = $curnum;
@@ -101,13 +100,13 @@ class SMGeoCoordsValue extends SMWDataValue {
 					if (($this->m_lat === false) && ($angles[0] !== false)) {
 						$this->setAngleValues($part,$angles);
 					} else {
-						$this->addError(wfMsgForContent('smw_bad_latlong'));
+						$this->addError(wfMsgForContent('semanticmaps_bad_latlong'));
 					}
 				break;
 				case 'E': case 'W': // interpret findings as longitude
 					if ( $curnum !== false ) { // work off number without °
 						if ($angles[0] !== false) { // "12° 34" as coordinate, complain
-							$this->addError(wfMsgForContent('smw_bad_latlong'));
+							$this->addError(wfMsgForContent('semanticmaps_bad_latlong'));
 							break;
 						} else {
 							$angles[0] = $curnum;
@@ -117,13 +116,13 @@ class SMGeoCoordsValue extends SMWDataValue {
 					if (($this->m_long === false) && ($angles[0] !== false)) {
 						$this->setAngleValues($part,$angles);
 					} else {
-						$this->addError(wfMsgForContent('smw_bad_latlong'));
+						$this->addError(wfMsgForContent('semanticmaps_bad_latlong'));
 					}
 				break;
 				case ';': // interpret findings as latitude
 					if ( $curnum !== false ) { // work off number without °
 						if ($angles[0] !== false) { // "12° 34" as coordinate, complain
-							$this->addError(wfMsgForContent('smw_bad_latlong'));
+							$this->addError(wfMsgForContent('semanticmaps_bad_latlong'));
 							break;
 						} else {
 							$angles[0] = $curnum;
@@ -137,7 +136,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				case '': break; // ignore
 				default: // should be a number (if not, errors appear elsewhere)
 					// no kiloseps in coordinates, use as decsep as a convenience to some users (Bug 11808):
-					$curnum = str_replace(wfMsgForContent('smw_kiloseparator'), wfMsgForContent('smw_decseparator'), $part);
+					$curnum = str_replace(wfMsgForContent('semanticmaps_kiloseparator'), wfMsgForContent('semanticmaps_decseparator'), $part);
 				break;
 			}
 		}
@@ -168,11 +167,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	public function getShortWikiText($linked = NULL) {
 		if ($this->isValid() && ($linked !== NULL) && ($linked !== false)) {
-			wfLoadExtensionMessages('SemanticMediaWiki');
 			SMWOutputs::requireHeadItem(SMW_HEADER_TOOLTIP);
 			return '<span class="smwttinline">' . $this->m_caption . '<span class="smwttcontent">' .
-			        wfMsgForContent('smw_label_latitude') . ' ' . $this->formatAngleValues(true) . '<br />' .
-			        wfMsgForContent('smw_label_longitude') . ' ' . $this->formatAngleValues(false) .
+			        wfMsgForContent('semanticmaps_label_latitude') . ' ' . $this->formatAngleValues(true) . '<br />' .
+			        wfMsgForContent('semanticmaps_label_longitude') . ' ' . $this->formatAngleValues(false) .
 			        '</span></span>';
 		} else {
 			return $this->m_caption;
@@ -218,11 +216,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Get and cache localised direction labels. Just for convenience.
 	 */
 	protected function initDirectionLabels() {
-		wfLoadExtensionMessages('SemanticMediaWiki');
-		$this->m_N = wfMsgForContent('smw_abb_north');
-		$this->m_E = wfMsgForContent('smw_abb_east');
-		$this->m_W = wfMsgForContent('smw_abb_west');
-		$this->m_S = wfMsgForContent('smw_abb_south');
+		$this->m_N = wfMsgForContent('semanticmaps_abb_north');
+		$this->m_E = wfMsgForContent('semanticmaps_abb_east');
+		$this->m_W = wfMsgForContent('semanticmaps_abb_west');
+		$this->m_S = wfMsgForContent('semanticmaps_abb_south');
 	}
 
 	/**
@@ -231,7 +228,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * each possibly false if unset.
 	 */
 	protected function setAngleValues($direction, &$angles) {
-		wfLoadExtensionMessages('SemanticMediaWiki');
 		$numvalue = SMWDataValueFactory::newTypeIDValue('_num');
 		$res = 0;
 		$factor = 1;
@@ -241,7 +237,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				if ($numvalue->isValid() && ($numvalue->getUnit() == '')) {
 					$res += $numvalue->getNumericValue() / $factor;
 				} else {
-					$this->addError(wfMsgForContent('smw_nofloat', $angles[$i]));
+					$this->addError(wfMsgForContent('semanticmaps_nofloat', $angles[$i]));
 				}
 			}
 			$factor = $factor * 60;
