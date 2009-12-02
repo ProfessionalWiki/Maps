@@ -47,17 +47,25 @@ class MapsOSM {
 	}
 	
 	private static function initializeParams() {
+		global $wgLang;
 		global $egMapsServices, $egMapsOSMZoom, $egMapsOSMControls;
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-									'zoom' => array(
-										'default' => $egMapsOSMZoom, 	
-										),			
-									'controls' => array(
-										'criteria' => array(), // TODO
-										'default' => implode(',', $egMapsOSMControls)			
-										),		
-									);
+			'zoom' => array(
+				'default' => $egMapsOSMZoom, 	
+				),
+			'controls' => array(
+				'criteria' => array(), // TODO
+				'default' => implode(',', $egMapsOSMControls)			
+				),	
+			'lang' => array(
+				'aliases' => array('locale', 'language'),	
+				'criteria' => array(
+					'in_array' => array_keys( Language::getLanguageNames( false ) )
+					),
+				'default' => $wgLang->getCode()
+				),												
+			);
 	}
 	
 	// TODO: create a modular system for this SlippyMap code

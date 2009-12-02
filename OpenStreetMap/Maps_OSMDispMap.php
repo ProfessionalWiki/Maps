@@ -54,7 +54,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
 				mode: 'osm-wm',
 				layer: 'osm-like',
-				locale: 'en',
+				locale: '$this->lang',
 				lat: $this->centre_lat,
 				lon: $this->centre_lon,
 				zoom: $this->zoom,

@@ -176,6 +176,7 @@ slippymap_map.prototype.osm_create = function(mapId, lon, lat, zoom) {
 	return map;
 }
 
+/*
 slippymap_map.prototype.resetPosition = function() {
 	this.map.setCenter(new OpenLayers.LonLat(this.lon, this.lat).transform(new OpenLayers.Projection('EPSG:4326'), this.map.getProjectionObject()), this.zoom);
 }
@@ -190,6 +191,7 @@ slippymap_map.prototype.getWikicode = function() {
 	    "<slippymap lat=" + LL.lat + " lon=" + LL.lon + " zoom=" + Z + " width=" + size.w + " height=" + size.h + " mode=" + this.mode + " layer=" + this.layer + (this.marker == 0 ? "" : " marker=" + this.marker) + " />"
 	);
 }
+*/
 
 function getOSMMarkerData(lon, lat, title, label, icon) {
 	lonLat = new OpenLayers.LonLat(lon, lat);
@@ -200,6 +202,7 @@ function getOSMMarkerData(lon, lat, title, label, icon) {
 		icon: icon
 		};
 }
+
 
 function getOSMMarker(markerLayer, markerData, projectionObject) {
 	var marker;

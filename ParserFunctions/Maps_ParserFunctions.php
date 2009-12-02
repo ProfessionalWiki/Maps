@@ -63,7 +63,7 @@ final class MapsParserFunctions {
 					'in_array' => $egMapsAvailableServices
 					),
 				'default' => $egMapsDefaultService
-				),			
+				),
 			'coordinates' => array(
 				'aliases' => array('coords', 'location', 'locations'),
 				'criteria' => array(

@@ -22,13 +22,13 @@ final class MapsMapper {
 	 * @var array
 	 */
 	private static $mainParams;
-	
+
 	public static function initializeMainParams() {
 		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsDefaultCentre;
 		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultTitle, $egMapsDefaultLabel;
-		
+
 		self::$mainParams = array
-			(		
+			(
 			'zoom' => array(
 				'aliases' => array(),
 				'criteria' => array(
@@ -50,22 +50,15 @@ final class MapsMapper {
 					'is_numeric' => array(),
 					'in_range' => $egMapsSizeRestrictions['height']
 					),
-				'default' => $egMapsMapHeight		
+				'default' => $egMapsMapHeight
 				),
 			'controls' => array(
 				'aliases' => array(),
 				'criteria' => array(),					
-				),			
-			'lang' => array(
-				'aliases' => array('locale', 'language'),	
-				'criteria' => array(
-					'not_empty' => array()
-					),
-				'default' => ''					
-				),	
+				),
 			);
-	} 
-	
+	}
+
 	/**
 	 * Returns the main parameters array.
 	 * 

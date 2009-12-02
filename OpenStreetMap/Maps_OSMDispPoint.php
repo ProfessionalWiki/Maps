@@ -67,7 +67,7 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
 				mode: 'osm-wm',
 				layer: 'osm-like',
-				locale: 'en',				
+				locale: '$this->lang',				
 				lat: $this->centre_lat,
 				lon: $this->centre_lon,
 				zoom: $this->zoom,
@@ -75,7 +75,6 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 				height: $this->height,
 				markers: [$this->markerString],
 				controls: [$controlItems]
-				
 			});</script>
 		
 				<!-- map div -->
