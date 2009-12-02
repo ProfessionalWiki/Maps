@@ -34,7 +34,12 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		$this->spesificParameters = array(
 			'zoom' => array(
 				'default' => '', 	
-			)
+			),
+			'overlays' => array(
+				'aliases' => array(),
+				'criteria' => array(),
+				'default' => ''												
+			),				
 		);			
 	}	
 	

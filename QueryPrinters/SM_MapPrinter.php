@@ -66,6 +66,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 *
 	 * @param unknown_type $res
 	 * @param unknown_type $outputmode
+	 * 
 	 * @return array
 	 */
 	public final function getResultText($res, $outputmode) {
