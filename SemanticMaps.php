@@ -23,7 +23,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.5 a14');
+define('SM_VERSION', '0.5 a15');
 
 $smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 $smgIP 			= $IP . '/extensions/SemanticMaps';
@@ -49,7 +49,7 @@ $wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
  * Semantic Maps. The actuall work in done via the Maps hooks.
  */
 function smfSetup() {
-	global $wgExtensionCredits, $wgLang, $egMapsServices;
+	global $wgExtensionCredits, $wgLang, $wgOut, $egMapsServices, $smgScriptPath;
 	
 	// Creation of a list of internationalized service names.
 	$services = array();
@@ -68,6 +68,8 @@ function smfSetup() {
 		'descriptionmsg' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
 
+	$wgOut->addScriptFile($smgScriptPath . '/SMUtilityFunctions.js');	
+	
 	return true;	
 }
 
