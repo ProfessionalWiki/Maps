@@ -328,12 +328,19 @@ $1',
 $messages['he'] = array(
 	'maps_desc' => 'הוספת האפשרות להצגת נתוני קואורדינטות במפות וכתובות geocode ([http://wiki.bn2vs.com/wiki/Maps demo]).
 שירותי המיפוי הזמינים: $1',
+	'maps_map' => 'מפה',
 	'maps_coordinates_missing' => 'לא סופקו קואורדינטות למפה.',
 	'maps_geocoding_failed' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}: $1.
 לא ניתן להציג את המפה.',
 	'maps_geocoding_failed_for' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}, ולכן {{PLURAL:$2|היא הושמטה|הן הושמטו}} מהמפה:
 $1',
-	'maps_map' => 'מפה',
+	'maps_unrecognized_coords' => 'הקואורדינטות הבאות אינן מזוהות: $1.',
+	'maps_map_cannot_be_displayed' => 'לא ניתן להציג את המפה',
+	'maps_overlays' => 'שכבות',
+	'maps_photos' => 'תמונות',
+	'maps_videos' => 'סרטוני וידאו',
+	'maps_wikipedia' => 'ויקיפדיה',
+	'maps_webcams' => 'מצלמות אינטרנט',
 );
 
 /** Croatian (Hrvatski)
