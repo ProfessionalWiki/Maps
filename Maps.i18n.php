@@ -37,6 +37,9 @@ $1',
 	'maps_openlayers' => 'OpenLayers', 
 	'maps_osm' => 'OpenStreetMaps', 
 
+	// Static maps
+	'maps_click_to_activate' => 'Click to activate map',
+
 	// Google Maps overlays
 	'maps_overlays' => 'Overlays',	
 	'maps_photos' => 'Photos',

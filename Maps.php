@@ -28,7 +28,7 @@ if( !defined( 'Validator_VERSION' ) ) {
 	include_once('extensions/Validator/Validator.php');
 }
 
-define('Maps_VERSION', '0.5 a14');
+define('Maps_VERSION', '0.5 a15');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';
@@ -55,8 +55,8 @@ if (empty($egMapsServices)) $egMapsServices = array();
  * Initialization function for the Maps extension.
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgOut, $wgLang, $wgAutoloadClasses, $IP;	
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsScriptPath, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
+	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP;	
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
 	
 	// Enure that the default service and geoservice are one of the enabled ones.
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];
@@ -83,8 +83,6 @@ function efMapsSetup() {
 	);
 	
 	MapsMapper::initializeMainParams();
-
-	$wgOut->addScriptFile($egMapsScriptPath . '/MapUtilityFunctions.js');
 	
 	// These loops take care of everything hooked into Maps.
 	foreach($egMapsAvailableFeatures as $key => $values) {
@@ -116,10 +114,6 @@ function efMapsSetup() {
 	return true;
 }
 
-
-
-
-
 /**
  * Adds a link to Admin Links page
  */
@@ -136,5 +130,3 @@ function efMapsAddToAdminLinks(&$admin_links_tree) {
 
     return true;
 }
-
-

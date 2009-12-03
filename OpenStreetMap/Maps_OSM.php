@@ -26,7 +26,8 @@ $egMapsServices['osm'] = array(
 										'display_map' => array('class' => 'MapsOSMDispMap', 'file' => 'OpenStreetMap/Maps_OSMDispMap.php', 'local' => true),
 										),
 									'classes' => array(
-											array('class' => 'MapsOSM', 'file' => 'OpenStreetMap/Maps_OSM.php', 'local' => true)
+											array('class' => 'MapsOSM', 'file' => 'OpenStreetMap/Maps_OSM.php', 'local' => true),
+											array('class' => 'MapsOSMCgiBin', 'file' => 'OpenStreetMap/Maps_OSMCgiBin.php', 'local' => true),
 											),
 									'aliases' => array('openstreetmap', 'openstreetmaps'),
 									);
@@ -68,18 +69,13 @@ class MapsOSM {
 			);
 	}
 	
-	// TODO: create a modular system for this SlippyMap code
-	
-	private static $layers = array(
+	private static $modes = array(
 		'osm-wm' => array(
 			// First layer = default
 			'layers' => array( 'osm-like' ),
 	
-			// Default "zoom=" argument
-			'defaultZoomLevel' => 14,
-	
 			'static_rendering' => array(
-				'type' => 'SlippyMapExportCgiBin',
+				'type' => 'MapsOSMCgiBin',
 				'options' => array(
 					'base_url' => 'http://cassini.toolserver.org/cgi-bin/export',
 	
@@ -91,22 +87,19 @@ class MapsOSM {
 	
 					// More GET arguments
 					'get_args' => array(
-						// Will use $wgContLang->getCode()
-						'locale' => true,
+						'locale' => true, // Will use $wgContLang->getCode()
 						'maptype' => 'osm-like'
 					),
 				),
 			),
 		),
+		
 		'osm' => array(
 			// First layer = default
 			'layers' => array( 'mapnik', 'osmarender', 'maplint', 'cycle' ),
 	
-			// Default "zoom=" argument
-			'defaultZoomLevel' => 14,
-	
 			'static_rendering' => array(
-				'type' => 'SlippyMapExportCgiBin',
+				'type' => 'MapsOSMCgiBin',
 				'options' => array(
 					'base_url' => 'http://tile.openstreetmap.org/cgi-bin/export',
 	
@@ -118,12 +111,20 @@ class MapsOSM {
 				),
 			),
 		),
+		
 		'satellite' => array(
 			'layers' => array( 'urban', 'landsat', 'bluemarble' ),
-			'defaultZoomLevel' => 14,
 			'static_rendering' => null,
 		),
-	);	
+	);
+	
+	public static function getModeNames() {
+		return array_keys(self::$modes);
+	}
+	
+	public static function getModeData($modeName) {
+		return self::$modes[$modeName];
+	}
 	
 	/**
 	 * If this is the first OSM map on the page, load the OpenLayers API, OSM styles and extra JS functions
