@@ -125,7 +125,7 @@ function slippymap_map(mapId, mapParams) {
 
 slippymap_map.prototype.init = function() {
 	/* Swap out against the preview image */
-	var previewImage = document.getElementById('mapPreview' + this.mapId);	
+	var previewImage = document.getElementById(this.mapId + '-preview');	
 	if (previewImage)
 		previewImage.style.display = 'none';
 

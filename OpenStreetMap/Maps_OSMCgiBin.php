@@ -1,11 +1,33 @@
 <?php
-class MapsOSMCgiBin {
-	var $lat;
-	var $lon;
-	var $zoom;
-	var $width;
-	var $height;
-	var $url;
+
+/**
+ * File holding the MapsOSMCgiBin class.
+ *
+ * @file Maps_OSMCgiBin.php
+ * @ingroup MapsOpenStreetMap
+ *
+ * @author Ævar Arnfjörð Bjarmason
+ * @author Jeroen De Dauw
+ */
+
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
+/**
+ * A class for static image requests.
+ *
+ * @author Ævar Arnfjörð Bjarmason
+ * @author Jeroen De Dauw
+ */
+
+final class MapsOSMCgiBin {
+	private $lat;
+	private $lon;
+	private $zoom;
+	private $width;
+	private $height;
+	private $url;
 
 	/** borrowed from OpenLayers.DOTS_PER_UNIT */
 	private static $INCHES_PER_UNIT = array (
@@ -22,21 +44,25 @@ class MapsOSMCgiBin {
 	/**
 	 * Constructor
 	 */
-	public function __construct( $lat, $lon, $zoom, $width, $height, $options ) {
+	public function __construct( $lat, $lon, $zoom, $width, $height, $lang, $options ) {
 		$this->lat = $lat;
 		$this->lon = $lon;
 		$this->zoom = $zoom;
 		$this->width = $width;
 		$this->height = $height;
+		$this->lang = $lang;
 		$this->options = $options;
 
 		self::initResolutionsAndScales();
 		self::setBounds();
 	}
 
+	/**
+	 * Returns the image url.
+	 * 
+	 * @return string
+	 */
 	public function getUrl() {
-		global $wgContLang;
-
 		$args =
 			$this->options['base_url']
 			. '?'
@@ -48,7 +74,7 @@ class MapsOSMCgiBin {
 		if ( isset( $this->options['get_args'] ) ) {
 			$args .=
 				'&amp;maptype=' . $this->options['get_args']['maptype']
-				. '&amp;locale=' . $this->options['locale'];
+				. '&amp;locale=' . $this->lang;
 		}
 
 		return $args;
@@ -73,14 +99,14 @@ class MapsOSMCgiBin {
 		$center = array( $this->lon, $this->lat );
 		if ( $this->options['sphericalMercator'] ) {
 			// Calculate bounds within a spherical mercator projection if that is what the scale is based on
-			$mercatorCenter = self::forwardMercator( $center );
+			$mercatorCenter = MapsUtils::forwardMercator( $center );
 			$mbounds = array( 
 				$mercatorCenter[0] - $w_deg / 2, 
 				$mercatorCenter[1] - $h_deg / 2, 
 				$mercatorCenter[0] + $w_deg / 2, 
 				$mercatorCenter[1] + $h_deg / 2 
 			);
-			$this->bounds = self::inverseMercator( $mbounds );
+			$this->bounds = MapsUtils::inverseMercator( $mbounds );
 		}
 		else {
 			// Calculate bounds within WGS84
@@ -109,35 +135,5 @@ class MapsOSMCgiBin {
 		}
 	}
     
-	/**
-	 * Convert from WGS84 to spherical mercator
-	 */
-	protected static function forwardMercator($lonlat) {
-		for ($i=0; $i<count($lonlat); $i+=2) {
-			/* lon */
-			$lonlat[$i] = $lonlat[$i] * (2 * M_PI * 6378137 / 2.0) / 180.0;
-			
-			/* lat */
-			$lonlat[$i+1] = log(tan((90 + $lonlat[$i+1]) * M_PI / 360.0)) / (M_PI / 180.0);
-			$lonlat[$i+1] = $lonlat[$i+1] * (2 * M_PI * 6378137 / 2.0) / 180.0;
-		}		
-		return $lonlat;
-	}
-	
-	/**
-	 * Convert from spherical mercator to WGS84
-	 */
-	protected static function inverseMercator($lonlat) {
-		for ($i=0; $i<count($lonlat); $i+=2) {
-			/* lon */
-			$lonlat[$i] = $lonlat[$i] / ((2 * M_PI * 6378137 / 2.0) / 180.0);
-			
-			/* lat */
-			$lonlat[$i+1] = $lonlat[$i+1] / ((2 * M_PI * 6378137 / 2.0) / 180.0);
-			$lonlat[$i+1] = 180.0 / M_PI * (2 * atan(exp($lonlat[$i+1] * M_PI / 180.0)) - M_PI / 2);
-		}		
-		
-		return $lonlat;
-	}
 }
-?>
+

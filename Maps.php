@@ -28,7 +28,7 @@ if( !defined( 'Validator_VERSION' ) ) {
 	include_once('extensions/Validator/Validator.php');
 }
 
-define('Maps_VERSION', '0.5 a15');
+define('Maps_VERSION', '0.5 a16');
 
 $egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 $egMapsIP 			= $IP . '/extensions/Maps';

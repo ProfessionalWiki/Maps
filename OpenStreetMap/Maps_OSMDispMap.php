@@ -119,7 +119,7 @@ EOT;
 		$staticType				= $mode['static_rendering']['type'];
 		$staticOptions			= $mode['static_rendering']['options'];
 		
-		$static = new $staticType($this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $staticOptions);
+		$static = new $staticType($this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions);
 		$rendering_url = $static->getUrl();
 		
 		return <<<EOT
@@ -133,7 +133,7 @@ EOT;
 						onclick="slippymaps['$this->mapName'].init();"
 						width="$this->width"
 						height="$this->height"
-						alt="Map"
+						alt="Map centred on $this->centre_lat, $this->centre_lon."
 						title="$clickToActivate"/>
 				<!-- /map div -->
 				</div>
