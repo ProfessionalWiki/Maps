@@ -65,7 +65,7 @@ include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
 include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
 include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
 include_once $egMapsIP . '/OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
-							
+
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
 $egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers', 'osm');
@@ -78,7 +78,7 @@ $egMapsDefaultService = 'googlemaps';
 # Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
 # Each service needs to be enabled, if not, the first one from the available services will be taken.
 # Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
-$egMapsDefaultServices = array('pf' => 'googlemaps', 'qp' => 'googlemaps', 'fi' => 'googlemaps');
+$egMapsDefaultServices = array('pf' => 'googlemaps');
 
 
 

@@ -24,8 +24,7 @@ final class MapsMapper {
 	private static $mainParams;
 
 	public static function initializeMainParams() {
-		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsDefaultCentre;
-		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
 		self::$mainParams = array
 			(
@@ -106,53 +105,6 @@ final class MapsMapper {
 		if ($toLower) $itemString = strtolower($itemString);
 		return $itemString;
 	}
-		
-	/**
-	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
-	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
-	 *
-	 * @param string $service
-	 * @param string $feature
-	 * 
-	 * @return string
-	 */
-	public static function getValidService($service, $feature) {
-		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
-		
-		$service = self::getMainServiceName($service);
-		
-		$shouldChange = ! array_key_exists($service, $egMapsServices);
-		if (! $shouldChange) $shouldChange = ! array_key_exists($feature, $egMapsServices[$service]);
-		
-		if ($shouldChange) {
-			$service = array_key_exists($feature, $egMapsDefaultServices) ? $egMapsDefaultServices[$feature] : $egMapsDefaultService;
-		}
-		
-		if(! in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;
-		
-		return $service;
-	}
-	
-	/**
-	 * Checks if the service name is an alias for an actual service,
-	 * and changes it into the main service name if this is the case.
-	 *
-	 * @param string $service
-	 * @return string
-	 */
-	public static function getMainServiceName($service) {
-		global $egMapsServices;
-		
-		if (! array_key_exists($service, $egMapsServices)) {
-			foreach ($egMapsServices as $serviceName => $serviceInfo) {
-				if (in_array($service, $serviceInfo['aliases'])) {
-					 $service = $serviceName;
-				}
-			}
-		}
-		
-		return $service;
-	}
 	
 	/**
 	 * Returns a valid version of the types.
@@ -198,5 +150,51 @@ final class MapsMapper {
 		return $types;
 	}
 	
-
+	/**
+	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
+	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
+	 *
+	 * @param string $service
+	 * @param string $feature
+	 * 
+	 * @return string
+	 */
+	public static function getValidService($service, $feature) {
+		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
+		
+		$service = self::getMainServiceName($service);
+		
+		$shouldChange = ! array_key_exists($service, $egMapsServices);
+		if (! $shouldChange) $shouldChange = ! array_key_exists($feature, $egMapsServices[$service]);
+		
+		if ($shouldChange) {
+			$service = array_key_exists($feature, $egMapsDefaultServices) ? $egMapsDefaultServices[$feature] : $egMapsDefaultService;
+		}
+		
+		if(! in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;
+		
+		return $service;
+	}
+	
+	/**
+	 * Checks if the service name is an alias for an actual service,
+	 * and changes it into the main service name if this is the case.
+	 *
+	 * @param string $service
+	 * @return string
+	 */
+	private static function getMainServiceName($service) {
+		global $egMapsServices;
+		
+		if (! array_key_exists($service, $egMapsServices)) {
+			foreach ($egMapsServices as $serviceName => $serviceInfo) {
+				if (in_array($service, $serviceInfo['aliases'])) {
+					 $service = $serviceName;
+					 break;
+				}
+			}
+		}
+		
+		return $service;
+	}	
 }

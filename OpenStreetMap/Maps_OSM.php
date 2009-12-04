@@ -80,7 +80,7 @@ class MapsOSM {
 					'base_url' => 'http://cassini.toolserver.org/cgi-bin/export',
 	
 					'format' => 'png',
-					'numZoomLevels' => 19,
+					'numZoomLevels' => 16,
 					'maxResolution' => 156543.0339,
 					'unit' => 'm',
 					'sphericalMercator' => true,
@@ -104,7 +104,7 @@ class MapsOSM {
 					'base_url' => 'http://tile.openstreetmap.org/cgi-bin/export',
 	
 					'format' => 'png',
-					'numZoomLevels' => 19,
+					'numZoomLevels' => 16,
 					'maxResolution' => 156543.0339,
 					'unit' => 'm',
 					'sphericalMercator' => true

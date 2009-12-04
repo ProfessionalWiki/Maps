@@ -35,7 +35,7 @@ $1',
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers', 
-	'maps_osm' => 'OpenStreetMaps', 
+	'maps_osm' => 'OpenStreetMap', 
 
 	// Static maps
 	'maps_click_to_activate' => 'Click to activate map',

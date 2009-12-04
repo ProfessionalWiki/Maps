@@ -23,33 +23,37 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+// Include the Validator extension if that hasn't been done yet, since it's required for Maps to work.
 if( !defined( 'Validator_VERSION' ) ) {
-	// Include the Validator extension if that hasn't been done yet, since it's required for Maps to work.
-	include_once('extensions/Validator/Validator.php');
+	@include_once('extensions/Validator/Validator.php');		
 }
 
-define('Maps_VERSION', '0.5 a16');
-
-$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
-$egMapsIP 			= $IP . '/extensions/Maps';
-
-$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
-
-// Include the settings file
-require_once($egMapsIP . '/Maps_Settings.php');
-
-$wgExtensionFunctions[] = 'efMapsSetup'; 
-
-$wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
-
-$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
-
-// Autoload the general classes
-$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsIP . '/Maps_MapFeature.php';
-$wgAutoloadClasses['MapsMapper'] 				= $egMapsIP . '/Maps_Mapper.php';
-$wgAutoloadClasses['MapsUtils'] 				= $egMapsIP . '/Maps_Utils.php';
-
-if (empty($egMapsServices)) $egMapsServices = array();
+// Only initialize the extension when all dependencies are present.
+if (defined( 'Validator_VERSION' )) {
+	define('Maps_VERSION', '0.5 a18');
+	
+	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
+	$egMapsIP 			= $IP . '/extensions/Maps';
+	
+	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
+	
+	// Include the settings file
+	require_once($egMapsIP . '/Maps_Settings.php');
+	
+	// Register the initialization function of Maps.
+	 $wgExtensionFunctions[] = 'efMapsSetup'; 
+	
+	$wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
+	
+	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
+	
+	// Autoload the general classes
+	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsIP . '/Maps_MapFeature.php';
+	$wgAutoloadClasses['MapsMapper'] 				= $egMapsIP . '/Maps_Mapper.php';
+	$wgAutoloadClasses['MapsUtils'] 				= $egMapsIP . '/Maps_Utils.php';
+	
+	if (empty($egMapsServices)) $egMapsServices = array();
+}
 
 /**
  * Initialization function for the Maps extension.
@@ -57,6 +61,11 @@ if (empty($egMapsServices)) $egMapsServices = array();
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP;	
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
+
+	// Remove all hooked in services that should not be available.
+	foreach($egMapsServices as $service => $data) {
+		if (! in_array($service, $egMapsAvailableServices)) unset($egMapsServices[$service]);
+	}
 	
 	// Enure that the default service and geoservice are one of the enabled ones.
 	$egMapsDefaultService = in_array($egMapsDefaultService, $egMapsAvailableServices) ? $egMapsDefaultService : $egMapsAvailableServices[0];

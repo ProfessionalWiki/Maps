@@ -111,7 +111,7 @@ EOT;
 	 * 
 	 * @return string
 	 */	
-	private function getStaticMap() {		
+	private function getStaticMap() {
 		$clickToActivate = wfMsg('maps_click_to_activate');
 		
 		$mode = MapsOSM::getModeData($this->mode);
