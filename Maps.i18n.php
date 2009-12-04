@@ -102,7 +102,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Наступная каардыната не была апазнаная|Наступныя каардынаты не былі апазнаныя}} і {{PLURAL:$2|яна не паказаная|яны не паказаныя}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Мапа ня можа быць паказаная.',
-
+	'maps_click_to_activate' => 'Націсьніце для актывацыі мапы',
 	'maps_overlays' => 'Слаі',
 	'maps_photos' => 'Фотаздымкі',
 	'maps_videos' => 'Відэа',
@@ -167,10 +167,13 @@ $messages['ca'] = array(
 );
 
 /** German (Deutsch)
+ * @author DaSch
  * @author Imre
  */
 $messages['de'] = array(
+	'maps_map' => 'Karte',
 	'maps_coordinates_missing' => 'Es wurden keine Koordinaten für die Karte angegeben.',
+	'maps_photos' => 'Fotos',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -186,7 +189,7 @@ K dispoziciji stojece kórtowe słužby: $1',
 	'maps_unrecognized_coords' => 'Slědujuce koordinaty njejsu se spóznali: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědujuca koordinata njejo se spóznała|Slědujucej koordinaśe stej se spóznałej|Slědujuce koordinaty su se spóznali|Slědujuce koordinaty su se spóznali}} a {{PLURAL:$2|njejo se wuwóstajiła|njejstej se wuwóstajiłej|njejsu wuwóstajili|njejsu se wuwóstajili}} na kórśe: $1',
 	'maps_map_cannot_be_displayed' => 'Kórta njedajo se zwobrazniś.',
-
+	'maps_click_to_activate' => 'Klikni, aby kórtu aktiwěrował',
 	'maps_overlays' => 'Pśekšyśa',
 	'maps_photos' => 'Fota',
 	'maps_videos' => 'Wideo',
@@ -313,7 +316,7 @@ $messages['gsw'] = array(
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Die Koordinate isch nit erkannt wore un isch|Die Koordinate sin nit erkannt wore un sin}} wäge däm uusegnuu wore us dr Charte:
 $1',
 	'maps_map_cannot_be_displayed' => 'D Charte cha nit aazeigt wäre.',
-
+	'maps_click_to_activate' => 'Klick go d Charte aktiviere',
 	'maps_overlays' => 'Overlay',
 	'maps_photos' => 'Foto',
 	'maps_videos' => 'Video',
@@ -335,7 +338,7 @@ $messages['he'] = array(
 	'maps_geocoding_failed_for' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}, ולכן {{PLURAL:$2|היא הושמטה|הן הושמטו}} מהמפה:
 $1',
 	'maps_unrecognized_coords' => 'הקואורדינטות הבאות אינן מזוהות: $1.',
-	'maps_map_cannot_be_displayed' => 'לא ניתן להציג את המפה',
+	'maps_map_cannot_be_displayed' => 'לא ניתן להציג את המפה.',
 	'maps_overlays' => 'שכבות',
 	'maps_photos' => 'תמונות',
 	'maps_videos' => 'סרטוני וידאו',
@@ -368,7 +371,7 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_unrecognized_coords' => 'Slědowace koordinaty njebuchu spóznane: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}} a {{PLURAL:$2|bu na karće wuwostajena|buštej na karće wuwostajenej|buchu na karće wuwostajene|buchu na karće wuwostajene}}: $1',
 	'maps_map_cannot_be_displayed' => 'Karta njeda so zwobraznić.',
-
+	'maps_click_to_activate' => 'Klikń, zo by kartu aktiwizował',
 	'maps_overlays' => 'Naworštowanja',
 	'maps_photos' => 'Fota',
 	'maps_videos' => 'Wideja',
@@ -462,7 +465,7 @@ $messages['ja'] = array(
 	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}は認識されなかったため、地図から省かれています:
 $1',
 	'maps_map_cannot_be_displayed' => 'この地図は表示できません。',
-
+	'maps_click_to_activate' => 'クリックして地図をアクティブに',
 	'maps_overlays' => 'オーバーレイ',
 	'maps_photos' => '写真',
 	'maps_videos' => '動画',
@@ -483,7 +486,7 @@ $messages['ksh'] = array(
 	'maps_unrecognized_coords_for' => 'He di {{PLURAL:$2|Koordinat kunnt|Koordinate kunnte}} mer nit verschtonn un dröm {{PLURAL:$2|es|sin}} se nit en de Kaat opjenumme woode:
 $1',
 	'maps_map_cannot_be_displayed' => 'Di Kaat künne mer nit aanzeije.',
-
+	'maps_click_to_activate' => 'Donn klecke, öm op di Kaat ze jonn',
 	'maps_photos' => 'Fottos',
 	'maps_videos' => 'Viddejos',
 	'maps_wikipedia' => 'Wikipedia',
@@ -542,10 +545,10 @@ $1',
 	'maps_unrecognized_coords_for' => 'De volgende {{PLURAL:$2|coördinaat is niet herkend en is|coördinaten zijn niet herkend en zijn}} weggelaten uit de kaart:
 $1.',
 	'maps_map_cannot_be_displayed' => 'De kaart kan niet weergegeven worden.',
-
 	'maps_googlemaps' => 'Google Maps',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
+	'maps_click_to_activate' => 'Klik om de kaart te activeren',
 	'maps_overlays' => "Overlay's",
 	'maps_photos' => "Foto's",
 	'maps_videos' => 'Video',
@@ -618,8 +621,8 @@ $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
-
-	'maps_overlays' => 'Camadas',
+	'maps_click_to_activate' => 'Clique para activar o mapa',
+	'maps_overlays' => 'Sobreposições',
 	'maps_photos' => 'Fotografias',
 	'maps_videos' => 'Vídeos',
 	'maps_wikipedia' => 'Wikipédia',
@@ -679,7 +682,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Следующие координаты не были опознаны, {{PLURAL:$2|они|они}} не показаны на карте:
 $1',
 	'maps_map_cannot_be_displayed' => 'Карта не может быть показана.',
-
+	'maps_click_to_activate' => 'Нажмите для активации карты',
 	'maps_overlays' => 'Слои',
 	'maps_photos' => 'Фото',
 	'maps_videos' => 'Видео',
