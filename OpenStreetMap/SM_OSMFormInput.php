@@ -40,7 +40,7 @@ final class SMOSMFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgOSMFormsOnThisPage, $smgStyleVersion;
 		
-		MapsOSM::addOLDependencies($this->output);
+		MapsOSM::addOSMDependencies($this->output);
 		
 		if (empty($smgOSMFormsOnThisPage)) {
 			$smgOSMFormsOnThisPage = 0;
@@ -73,9 +73,9 @@ final class SMOSMFormInput extends SMFormInput {
 		$controlItems = MapsMapper::createJSItemsString(explode(',', $this->controls));
 		
 		$this->output .= <<<EOT
-			addOnloadHook(makeOSMFormInput(
+			<script type='$wgJsMimeType'>
+			slippymaps['$this->mapName'] = new slippymap_map(
 				'$this->mapName',
-				'$this->coordsFieldName',
 				{
 				mode: 'osm-wm',
 				layer: 'osm-like',
@@ -85,9 +85,11 @@ final class SMOSMFormInput extends SMFormInput {
 				zoom: $this->zoom,
 				width: $this->width,
 				height: $this->height,
-				controls: [$controlItems]				
+				controls: [$controlItems],
+				coordField: '$this->coordsFieldName'		
 				}
-			));
+			);
+			</script>
 		
 				<div id='$this->mapName' class='map' style='width:{$this->width}px; height:{$this->height}px;'>
 					<script type='$wgJsMimeType'>slippymaps['$this->mapName'].init();</script>

@@ -48,13 +48,13 @@ final class SMQueryPrinters {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsDefaultService, $egMapsDefaultCentre;
+		global $egMapsDefaultServices, $egMapsDefaultCentre;
 
 		self::$parameters = array(
 			'format' => array(
 				'aliases' => array(),
 				'criteria' => array(),
-				'default' => $egMapsDefaultService
+				'default' => $egMapsDefaultServices['qp']
 				),	
 			'centre' => array(
 				'aliases' => array('center'),

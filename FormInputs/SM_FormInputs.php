@@ -39,7 +39,7 @@ final class SMFormInputs {
 				$hasFormInputs = true;			
 
 				// Add the result form input type for the service name.
-				self::initFormHook($serviceName, $serviceData['fi']);
+				self::initFormHook($serviceName, $serviceData['fi'], $serviceName);
 				
 				// Loop through the service alliases, and add them as form input types.
 				foreach ($serviceData['aliases'] as $alias) self::initFormHook($alias, $serviceData['fi'], $serviceName);
@@ -52,8 +52,8 @@ final class SMFormInputs {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultCentre, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
-
+		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsDefaultCentre, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		
 		self::$parameters = array(
 			'centre' => array(
 				'aliases' => array('center'),
@@ -65,7 +65,7 @@ final class SMFormInputs {
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
 					),
-				'default' => $egMapsDefaultService
+				'default' => $egMapsDefaultServices['fi']
 				),
 			'geoservice' => array(
 				'aliases' => array(),
@@ -73,7 +73,7 @@ final class SMFormInputs {
 					'in_array' => array_keys($egMapsAvailableGeoServices)
 					),
 				'default' => $egMapsDefaultGeoService
-				),					
+				),
 			'service_name' => array('default' => ''),	
 			'part_of_multiple' => array('default' => ''),	
 			'possible_values' => array('default' => ''),	
@@ -84,13 +84,13 @@ final class SMFormInputs {
 	}	
 	
 	/**
-	 * Adds a mapping service's form hook
+	 * Adds a mapping service's form hook.
 	 *
-	 * @param string $service
+	 * @param string $inputName The name of the form input.
 	 * @param array $fi
 	 * @param strig $mainName
 	 */
-	private static function initFormHook($service, array $fi = null, $mainName = '') {
+	private static function initFormHook($inputName, array $fi = null, $mainName = '') {
 		global $wgAutoloadClasses, $sfgFormPrinter, $smgIP;
 	
 		if (isset($fi)) {
@@ -103,13 +103,13 @@ final class SMFormInputs {
 		// Add the form input hook for the service
 		$field_args = array();
 		if (strlen($mainName) > 0) $field_args['service_name'] = $mainName;
-		$sfgFormPrinter->setInputTypeHook($service, 'smfSelectFormInputHTML', $field_args);
+		$sfgFormPrinter->setInputTypeHook($inputName, 'smfSelectFormInputHTML', $field_args);
 	}
 	
 }
 
 /**
- * Class for the form input type 'map'. The relevant form input class is called depending on the provided service.
+ * Calls the relevant form input class depending on the provided service.
  *
  * @param unknown_type $coordinates
  * @param unknown_type $input_name
@@ -122,10 +122,8 @@ final class SMFormInputs {
 function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, array $field_args) {
     global $egMapsServices;
     
-    // If service_name is set, use this value, and ignore any given
-    // service parameters
-    // This will prevent ..input type=googlemaps|service=yahoo.. from
-    // showing up as a Yahoo! Maps map
+    // If service_name is set, use this value, and ignore any given service parameters.
+    // This will prevent ..input type=googlemaps|service=yahoo.. from showing up as a Yahoo! Maps map.
     if (array_key_exists('service_name', $field_args)) {
         $service_name = $field_args['service_name'];
     }
@@ -137,7 +135,6 @@ function smfSelectFormInputHTML($coordinates, $input_name, $is_mandatory, $is_di
     }
     
     $service_name = MapsMapper::getValidService($service_name, 'fi');
-    
     $formInput = new $egMapsServices[$service_name]['fi']['class']();
     
     // Get and return the form input HTML from the hook corresponding with the provided service

@@ -87,7 +87,7 @@ function showOLAddress(address, mapName, outputElementName, notFoundFormat) {
 }
  
 /**
- * Remove all markers from an OL map (that's in window.OLMaps), and pplace a new one.
+ * Remove all markers from an OL map (that's in window.OLMaps), and place a new one.
  * 
  * @param mapName Name of the map as in OLMaps[mapName].
  * @param newLocation The location for the new marker.

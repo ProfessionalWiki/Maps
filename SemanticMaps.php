@@ -23,26 +23,29 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define('SM_VERSION', '0.5 a15');
-
-$smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
-$smgIP 			= $IP . '/extensions/SemanticMaps';
-
-$smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
-
-// Include the settings file.
-require_once($smgIP . '/SM_Settings.php');
-
-$wgExtensionFunctions[] = 'smfSetup'; 
-
-$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
-
-$wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
-
-// Registration of the Geographical Coordinate type.
-$wgAutoloadClasses['SMGeoCoordsValue'] = $smgIP . '/SM_GeoCoordsValue.php';
-$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
-
+// Only initialize the extension when all dependencies are present.
+if (defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' )) {
+	define('SM_VERSION', '0.5 a18');
+	
+	$smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
+	$smgIP 			= $IP . '/extensions/SemanticMaps';
+	
+	$smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
+	
+	// Include the settings file.
+	require_once($smgIP . '/SM_Settings.php');
+	
+	$wgExtensionFunctions[] = 'smfSetup'; 
+	
+	$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
+	
+	$wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
+	
+	// Registration of the Geographical Coordinate type.
+	$wgAutoloadClasses['SMGeoCoordsValue'] = $smgIP . '/SM_GeoCoordsValue.php';
+	$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
+}
+	
 /**
  * 'Initialization' function for the Semantic Maps extension. 
  * The only work done here is creating the extension credits for

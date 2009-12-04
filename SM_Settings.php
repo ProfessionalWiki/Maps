@@ -53,3 +53,11 @@ include_once $smgIP . '/YahooMaps/SM_YahooMaps.php'; 	// Yahoo! Maps
 include_once $smgIP . '/OpenStreetMap/SM_OSM.php'; 		// OpenLayers optimized for OSM
 
 
+
+
+
+# Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
+# Each service needs to be enabled, if not, the first one from the available services will be taken.
+# Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
+$egMapsDefaultServices['qp'] = 'googlemaps';
+$egMapsDefaultServices['fi'] = 'googlemaps';
