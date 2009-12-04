@@ -47,7 +47,7 @@ Available map services: $1",
 	'semanticmaps_paramdesc_types' 		=> 'The map types available on the map',
 	'semanticmaps_paramdesc_type' 		=> 'The default map type for the map',
 	'semanticmaps_paramdesc_overlays' 	=> 'The overlays available on the map',
-	'semanticmaps_paramdesc_autozoom' 	=> 'Whether or not one can zoom in and out by using the mouse scroll wheel',
+	'semanticmaps_paramdesc_autozoom' 	=> 'If zoom in and out by using the mouse scroll wheel is enabled',
 	'semanticmaps_paramdesc_layers' 	=> 'The layers available on the map',
 );
 
