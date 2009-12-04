@@ -237,7 +237,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				if ($numvalue->isValid() && ($numvalue->getUnit() == '')) {
 					$res += $numvalue->getNumericValue() / $factor;
 				} else {
-					$this->addError(wfMsgForContent('semanticmaps_nofloat', $angles[$i]));
+					$this->addError(wfMsgForContent('smw_nofloat', $angles[$i]));
 				}
 			}
 			$factor = $factor * 60;
