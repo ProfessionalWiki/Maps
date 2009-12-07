@@ -53,6 +53,7 @@ Available map services: $1",
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
@@ -61,6 +62,7 @@ $messages['qqq'] = array(
 * $1: a list of available map services',
 	'semanticmaps_label_latitude' => '{{Identical|Latitude}}',
 	'semanticmaps_label_longitude' => '{{Identical|Longitude}}',
+	'semanticmaps_paramdesc_overlays' => 'An "overlay" is a map layer, containing icons or images, or whatever, to enrich, in this case, the map. Could for example be a layer with speed cameras, or municipality borders.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -99,6 +101,7 @@ Beskikbare kaartdienste: $1',
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'semanticmaps_name' => 'خرائط دلالية',
 	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://wiki.bn2vs.com/wiki/Semantic_Maps تجربة]).
 خدمات الخرائط المتوفرة: $1',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
@@ -143,7 +146,7 @@ $messages['be-tarask'] = array(
 	'semanticmaps_paramdesc_types' => 'Тыпы мапы даступныя на мапе',
 	'semanticmaps_paramdesc_type' => 'Тып мапы па змоўчваньні',
 	'semanticmaps_paramdesc_overlays' => 'Даступныя слаі на мапе',
-	'semanticmaps_paramdesc_autozoom' => 'Ці можна зьмяншаць ці павялічваць маштаб праз кола пракруткі мышы',
+	'semanticmaps_paramdesc_autozoom' => 'Калі ўключана зьмяншэньне ці павялічэньне маштабу праз кола пракруткі мышы',
 	'semanticmaps_paramdesc_layers' => 'Даступныя слаі на мапе',
 );
 
@@ -196,6 +199,12 @@ $messages['ca'] = array(
 $messages['de'] = array(
 	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden ([http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]).
 Unterstützte Kartendienste: $1',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'O',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_label_latitude' => 'Breitengrad:',
+	'semanticmaps_label_longitude' => 'Längengrad:',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticmaps_enteraddresshere' => 'Adresse hier eingeben',
 	'semanticmaps_notfound' => 'nicht gefunden',
@@ -228,7 +237,7 @@ K dispoziciji stojece kórtowe słužby: $1.',
 	'semanticmaps_paramdesc_types' => 'Kórtowe typy, kótarež stoje za kórtu k dispoziciji',
 	'semanticmaps_paramdesc_type' => 'Standardny kórtowy typ za kórtu',
 	'semanticmaps_paramdesc_overlays' => 'Pśewarstowanja, kótarež stoje za kórtu k dispoziciji',
-	'semanticmaps_paramdesc_autozoom' => 'Jolic pówětšenje a pómjeńšenje z pomocu kólaska myški jo móžno abo nic',
+	'semanticmaps_paramdesc_autozoom' => 'Jolic pówětšenje a pómjeńšenje z pomocu kólaska myški jo zmóžnjone',
 	'semanticmaps_paramdesc_layers' => 'Warsty, kótarež stoje za kórtu k dispoziciji',
 );
 
@@ -284,6 +293,8 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'semanticmaps_desc' => "Permet de voir et modifier les données de coordonnées stockées à travers l'extension Semantic MediaWiki. Services de cartes disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Démo]",
+	'semanticmaps_lonely_unit' => 'Aucun nombre trouvé devant le symbole « $1 ».',
+	'semanticmaps_bad_latlong' => "La latitude et la longitude ne doivent être données qu'une fois, et avec des coordonnées valides.",
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'E',
 	'semanticmaps_abb_south' => 'S',
@@ -303,7 +314,7 @@ $messages['fr'] = array(
 	'semanticmaps_paramdesc_types' => 'Les types de cartes disponibles sur la carte',
 	'semanticmaps_paramdesc_type' => 'Le type de carte par défaut pour la carte',
 	'semanticmaps_paramdesc_overlays' => 'Les revêtements disponibles sur la carte',
-	'semanticmaps_paramdesc_autozoom' => 'Si on peut faire un zoom avant ou arrière en utilisant la molette de la souris ou non',
+	'semanticmaps_paramdesc_autozoom' => 'Si le zoom avant et arrière en utilisant la molette de la souris est activé',
 	'semanticmaps_paramdesc_layers' => 'Les revêtements disponibles sur la carte',
 );
 
@@ -313,9 +324,29 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demostración]).
 Servizos de mapa dispoñibles: $1',
+	'semanticmaps_lonely_unit' => 'Non se atopou ningún número antes do símbolo "$1".',
+	'semanticmaps_bad_latlong' => 'A latitude e mais a lonxitude só se deben proporcionar unha vez, e con coordenadas válidas.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'L',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'O',
+	'semanticmaps_label_latitude' => 'Latitude:',
+	'semanticmaps_label_longitude' => 'Lonxitude:',
 	'semanticmaps_lookupcoordinates' => 'Ver as coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza o enderezo aquí',
 	'semanticmaps_notfound' => 'non se atopou',
+	'semanticmaps_paramdesc_format' => 'O servizo de cartografía utilizado para xerar o mapa',
+	'semanticmaps_paramdesc_geoservice' => 'O servizo de xeocodificación usado para transformar enderezos en coordenadas',
+	'semanticmaps_paramdesc_height' => 'A altura do mapa, en píxeles (por defecto, $1)',
+	'semanticmaps_paramdesc_width' => 'O largo do mapa, en píxeles (por defecto, $1)',
+	'semanticmaps_paramdesc_zoom' => 'O nivel de zoom do mapa',
+	'semanticmaps_paramdesc_centre' => 'As coordenadas do centro do mapa',
+	'semanticmaps_paramdesc_controls' => 'Os controis de usuario situados no mapa',
+	'semanticmaps_paramdesc_types' => 'Os tipos de mapa dispoñibles no mapa',
+	'semanticmaps_paramdesc_type' => 'O tipo de mapa por defecto para o mapa',
+	'semanticmaps_paramdesc_overlays' => 'As sobreposicións dispoñibles no mapa',
+	'semanticmaps_paramdesc_autozoom' => 'Activa o achegamento e afastamento coa roda do rato',
+	'semanticmaps_paramdesc_layers' => 'As capas dispoñibles no mapa',
 );
 
 /** Swiss German (Alemannisch)
@@ -386,7 +417,7 @@ $messages['hsb'] = array(
 	'semanticmaps_paramdesc_types' => 'Kartowe typy, kotrež za kartu k dispoziciji steja',
 	'semanticmaps_paramdesc_type' => 'Standardny kartowy typ za kartu',
 	'semanticmaps_paramdesc_overlays' => 'Naworštowanja, kotrež za kartu k dispoziciji steja',
-	'semanticmaps_paramdesc_autozoom' => 'Jeli powjetšenje a pomjenšenje z pomocu kolesko myški je móžno abo nic',
+	'semanticmaps_paramdesc_autozoom' => 'Jeli powjetšenje a pomjenšenje z pomocu kolesko myški je zmóžnjene',
 	'semanticmaps_paramdesc_layers' => 'Woršty, kotrež za kartu k dispoziciji steja',
 );
 
@@ -429,19 +460,40 @@ Servicios de cartas disponibile: $1',
 	'semanticmaps_paramdesc_types' => 'Le typos de carta disponibile in le carta',
 	'semanticmaps_paramdesc_type' => 'Le typo de carta predefinite pro le carta',
 	'semanticmaps_paramdesc_overlays' => 'Le superpositiones disponibile in le carta',
-	'semanticmaps_paramdesc_autozoom' => 'Si o non on pote facer zoom avante o retro con le rota de rolamento del mouse',
+	'semanticmaps_paramdesc_autozoom' => 'Si le zoom avante e retro con le rota de rolamento del mouse es active',
 	'semanticmaps_paramdesc_layers' => 'Le stratos disponibile in le carta',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  */
 $messages['id'] = array(
 	'semanticmaps_desc' => 'Memampukan penampilan dan penyuntingan data koordinat yang disimpan melalui pengaya MediaWiki Semantic ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). 
 Layanan peta yang tersedia: $1',
+	'semanticmaps_lonely_unit' => 'Tak ada angka yang ditemukan sebelum simbol "$1".',
+	'semanticmaps_bad_latlong' => 'Lintang dan bujur harus diisi sekali, dan dengan koordinat yang benar.',
+	'semanticmaps_abb_north' => 'U',
+	'semanticmaps_abb_east' => 'T',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'B',
+	'semanticmaps_label_latitude' => 'Lintang:',
+	'semanticmaps_label_longitude' => 'Bujur:',
 	'semanticmaps_lookupcoordinates' => 'Cari koordinat',
 	'semanticmaps_enteraddresshere' => 'Masukkan alamat di sini',
 	'semanticmaps_notfound' => 'tidak ditemukan',
+	'semanticmaps_paramdesc_format' => 'Layanan pemetaan untuk membuat peta',
+	'semanticmaps_paramdesc_geoservice' => 'Layanan kode geo untuk mengubah alamat menjadi koordinat',
+	'semanticmaps_paramdesc_height' => 'Tinggi peta, dalam piksel (umumnya $1)',
+	'semanticmaps_paramdesc_width' => 'Lebar peta, dalam piksel (umumnya $1)',
+	'semanticmaps_paramdesc_zoom' => 'Tingkat zum peta',
+	'semanticmaps_paramdesc_centre' => 'Koordinat bagian tengah peta',
+	'semanticmaps_paramdesc_controls' => 'Kontrol pengguna yang diletakkan di peta',
+	'semanticmaps_paramdesc_types' => 'Jenis peta tersedia di peta',
+	'semanticmaps_paramdesc_type' => 'Jenis peta biasa untuk peta ini',
+	'semanticmaps_paramdesc_overlays' => 'Lapisan yang tersedia di peta',
+	'semanticmaps_paramdesc_autozoom' => 'Bila ingin zum dekat dan jauh menggunakan mouse, gunakan roda gulung',
+	'semanticmaps_paramdesc_layers' => 'Lapisan tersedia di peta',
 );
 
 /** Italian (Italiano)
@@ -481,7 +533,7 @@ $messages['ja'] = array(
 	'semanticmaps_paramdesc_types' => 'この地図で利用できる地図タイプ',
 	'semanticmaps_paramdesc_type' => 'この地図のデフォルト地図タイプ',
 	'semanticmaps_paramdesc_overlays' => 'この地図で利用できるオーバーレイ',
-	'semanticmaps_paramdesc_autozoom' => 'マウスのスクロールホイールを使ってズームインやアウトができるようにするかどうか',
+	'semanticmaps_paramdesc_autozoom' => 'マウスのスクロールホイールを使ったズームインやアウトを有効にするか',
 	'semanticmaps_paramdesc_layers' => 'この地図で利用できるレイヤー',
 );
 
@@ -517,6 +569,8 @@ $messages['ksh'] = array(
 	'semanticmaps_paramdesc_controls' => 'De Knöppe för de Bedeenung, di op di Kaat jemohlt wäääde',
 	'semanticmaps_paramdesc_types' => 'De Kaate-Zoote di mer för heh di Kaat ußsöhke kann',
 	'semanticmaps_paramdesc_type' => 'De Schtandatt Kaate-Zoot för heh di Kaat',
+	'semanticmaps_paramdesc_overlays' => 'De zohsäzlijje Eijnzelheijte, di mer op di Kaat drop bränge kann',
+	'semanticmaps_paramdesc_autozoom' => 'Falls et erin un eruß zoome met däm Kompjuter singe Muuß ierem Rättsche aanjeschalldt es, dann:',
 	'semanticmaps_paramdesc_layers' => 'De Nivohs, di för di Kaat ze han sin',
 );
 
@@ -652,7 +706,7 @@ Serviços de cartografia disponíveis: $1',
 	'semanticmaps_paramdesc_types' => 'Os tipos de mapa disponíveis no mapa',
 	'semanticmaps_paramdesc_type' => 'O tipo do mapa, por omissão',
 	'semanticmaps_paramdesc_overlays' => 'As sobreposições disponíveis no mapa',
-	'semanticmaps_paramdesc_autozoom' => 'Possibilitar, ou não, a aproximação e afastamento usando a roda de deslizamento do rato',
+	'semanticmaps_paramdesc_autozoom' => 'Possibilitar a aproximação e afastamento usando a roda de deslizamento do rato',
 	'semanticmaps_paramdesc_layers' => 'As camadas disponíveis no mapa',
 );
 
@@ -714,7 +768,7 @@ $messages['ru'] = array(
 	'semanticmaps_paramdesc_types' => 'Типы карты, доступные на карте',
 	'semanticmaps_paramdesc_type' => 'Тип карты по умолчанию',
 	'semanticmaps_paramdesc_overlays' => 'Доступные наложения',
-	'semanticmaps_paramdesc_autozoom' => 'Можно ли увеличивать и уменьшать масштаб с помощью колеса прокрутки мыши',
+	'semanticmaps_paramdesc_autozoom' => 'Если включено увеличение и уменьшение масштаб с помощью колеса прокрутки мыши',
 	'semanticmaps_paramdesc_layers' => 'Доступные на карте слои',
 );
 
