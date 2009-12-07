@@ -82,8 +82,13 @@ $1.',
  * @author Meno25
  */
 $messages['ar'] = array(
+	'maps_name' => 'خرائط',
 	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://wiki.bn2vs.com/wiki/Maps تجربة]).
 خدمات الخرائط المتوفرة: $1',
+	'maps_googlemaps' => 'خرائط جوجل',
+	'maps_yahoomaps' => 'خرائط ياهو!',
+	'maps_openlayers' => 'أوبن لايرز',
+	'maps_osm' => 'أوبن ستريت ماب',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -258,7 +263,7 @@ Le plan ne peut pas être affiché.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordonnée suivante n'a pas été reconnue|Les coordonnées suivantes n'ont pas été reconnues}} et {{PLURAL:$2|a été omise|ont été omises}} sur la carte :
 $1",
 	'maps_map_cannot_be_displayed' => 'La carte ne peut pas être affichée.',
-
+	'maps_click_to_activate' => 'Cliquer pour activer la carte',
 	'maps_overlays' => 'Superpositions',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Vidéos',
@@ -285,7 +290,7 @@ $1',
  */
 $messages['gl'] = array(
 	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://wiki.bn2vs.com/wiki/Maps demostración]).
-Servizos de mapeamento dispoñibles: $1',
+Servizos de cartografía dispoñibles: $1',
 	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Non se proporcionou ningunha coordenada para o mapa.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}}: $1.
@@ -295,7 +300,7 @@ O mapa non se pode mostrar.',
 	'maps_unrecognized_coords_for' => 'Non se {{PLURAL:$2|recoñeceu a seguinte coordenada|recoñeceron as seguintes coordenadas}} e {{PLURAL:$2|foi omitida|foron omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'O mapa non se pode mostrar.',
-
+	'maps_click_to_activate' => 'Prema para activar o mapa',
 	'maps_overlays' => 'Sobreposicións',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Vídeos',
@@ -418,7 +423,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Le sequente {{PLURAL:$2|coordinata|coordinatas}} non esseva recognoscite e ha essite omittite del carta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Le carta on pote esser monstrate.',
-
+	'maps_click_to_activate' => 'Clicca pro activar le carta',
 	'maps_overlays' => 'Superpositiones',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Videos',
@@ -428,6 +433,7 @@ $1',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  */
@@ -443,7 +449,7 @@ Peta tidak dapat ditampilkan.',
 	'maps_unrecognized_coords_for' => 'Koordinat berikut tidak dikenali dan {{PLURAL:$2|telah|telah}} diabaikan dari peta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Peta tak dapat ditampilkan.',
-
+	'maps_click_to_activate' => 'Klik untuk mengaktifkan peta',
 	'maps_overlays' => 'Hamparan',
 	'maps_photos' => 'Foto',
 	'maps_videos' => 'Video',
@@ -487,6 +493,7 @@ $messages['ksh'] = array(
 $1',
 	'maps_map_cannot_be_displayed' => 'Di Kaat künne mer nit aanzeije.',
 	'maps_click_to_activate' => 'Donn klecke, öm op di Kaat ze jonn',
+	'maps_overlays' => 'Enbländunge',
 	'maps_photos' => 'Fottos',
 	'maps_videos' => 'Viddejos',
 	'maps_wikipedia' => 'Wikipedia',
