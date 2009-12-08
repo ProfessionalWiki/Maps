@@ -82,30 +82,6 @@ function slippymap_map(mapId, mapParams) {
 	
 	for (key in mapParams)
 		this[key] = mapParams[key];
-		
-	/*
-	var buttonsPanel = new OpenLayers.Control.Panel( { displayClass: "buttonsPanel" } );
-	buttonsPanel.addControls([	new OpenLayers.Control.Button({
-									title: wgSlippyMapButtonCode,
-									displayClass: "getWikiCodeButton",
-									trigger: function() { self.getWikicode(); }
-								}), 
-								new OpenLayers.Control.Button({
-									title: wgSlippyMapResetview,
-									displayClass: "resetButton",
-									trigger: function() { self.resetPosition(); }
-								})
-							]);
-							*/
-
-	/*
-	this.mapOptions = { controls: [ new OpenLayers.Control.Navigation(),
-                                  	new OpenLayers.Control.ArgParser(),
-                                  	new OpenLayers.Control.Attribution(),
-                                  	// buttonsPanel 
-                                  	]                                  
-                      };
-                      */
 
 	// Add the controls
 	this.mapOptions = {controls: []};
@@ -120,7 +96,7 @@ function slippymap_map(mapId, mapParams) {
 		if (control) {
 			eval(' this.mapOptions.controls.push( new OpenLayers.Control.' + control + '() ); ');
 		}
-	}	
+	}		
 }
 
 slippymap_map.prototype.init = function() {
@@ -129,7 +105,7 @@ slippymap_map.prototype.init = function() {
 	if (previewImage)
 		previewImage.style.display = 'none';
 
-	this.map = this.osm_create(this.mapId, this.lon, this.lat, this.zoom);
+	this.map = this.osm_create(this.mapId, this.lon, this.lat, this.zoom, this.initializedContols);
 	
 	var centerIsSet = this.lon != null && this.lat != null;
 	
@@ -163,9 +139,16 @@ slippymap_map.prototype.init = function() {
 	if (this.zoom != null) this.map.zoomTo(this.zoom); // When the zoom is provided, set it	
 }
 
-slippymap_map.prototype.osm_create = function(mapId, lon, lat, zoom) {
+slippymap_map.prototype.osm_create = function(mapId, lon, lat, zoom, initializedContols) {
 	var osmLayer;
 	var map = new OpenLayers.Map(mapId, this.mapOptions /* all provided for by OSM.js */);
+	
+	if (initializedContols) {
+		for (i in initializedContols) {
+			map.addControl(initializedContols[i]);
+			initializedContols[i].activate();
+		}
+	}	
 	
 	if (this.layer == 'osm-like') {
 		osmLayer = new OpenLayers.Layer.OSM("OpenStreetMaps", 'http://cassini.toolserver.org/tiles/osm-like/' + this.locale + '/${z}/${x}/${y}.png');
@@ -175,23 +158,6 @@ slippymap_map.prototype.osm_create = function(mapId, lon, lat, zoom) {
 	map.setCenter(new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection('EPSG:4326'), map.getProjectionObject()), zoom);
 	return map;
 }
-
-/*
-slippymap_map.prototype.resetPosition = function() {
-	this.map.setCenter(new OpenLayers.LonLat(this.lon, this.lat).transform(new OpenLayers.Projection('EPSG:4326'), this.map.getProjectionObject()), this.zoom);
-}
-
-slippymap_map.prototype.getWikicode = function() {
-	LL = this.map.getCenter().transform(this.map.getProjectionObject(), new OpenLayers.Projection("EPSG:4326"));
-	Z = this.map.getZoom();
-	size = this.map.getSize();
-	
-	prompt(
-	    wgSlippyMapCode,
-	    "<slippymap lat=" + LL.lat + " lon=" + LL.lon + " zoom=" + Z + " width=" + size.w + " height=" + size.h + " mode=" + this.mode + " layer=" + this.layer + (this.marker == 0 ? "" : " marker=" + this.marker) + " />"
-	);
-}
-*/
 
 function getOSMMarkerData(lon, lat, title, label, icon) {
 	lonLat = new OpenLayers.LonLat(lon, lat);

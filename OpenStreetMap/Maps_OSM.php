@@ -69,6 +69,26 @@ class MapsOSM {
 			);
 	}
 	
+	/**
+	 * Returns the names of all supported controls. 
+	 * This data is a copy of the one used to actually translate the names
+	 * into the controls, since this resides client side, in OSMFunctions.js. 
+	 * 
+	 * @return array
+	 */		
+	public static function getControlNames() {
+		return array(
+					  'ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan', 
+	                  'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
+	                  'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
+	                  'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
+	                  'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'AutoPanZoom', 'Permalink',
+	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split', 
+	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
+	                  'ZoomToMaxExtent'
+			);
+	}		
+	
 	private static $modes = array(
 		'osm-wm' => array(
 			// First layer = default

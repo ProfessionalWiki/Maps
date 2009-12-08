@@ -142,6 +142,15 @@ class MapsGoogleMaps {
 	}
 
 	/**
+	 * Returns the names of all supported map overlays.
+	 * 
+	 * @return array
+	 */	
+	public static function getOverlayNames() {
+		return array_keys(self::$overlayData);
+	}
+
+	/**
 	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 
 	 * for the provided a general map type. When no match is found, false
 	 * will be returned.

@@ -58,21 +58,64 @@ class MapsOpenLayers {
 										'default' => $egMapsOpenLayersZoom, 	
 									),	
 									'controls' => array(
-										'criteria' => array(), // TODO
+										'criteria' => array(
+											'in_array' => self::getControlNames()
+											),
 										'default' => implode(',', $egMapsOLControls)			
 										),		
 									'layers' => array(  
 										'aliases' => array(),
-										'criteria' => array(), // TODO
+										'criteria' => array(
+											'in_array' => self::getLayerNames()
+											),
 										'default' => implode(',', $egMapsOLLayers)											
-										),											
+										),
+										/*									
 									'baselayer' => array( // TODO
 										'aliases' => array(),
 										'criteria' => array(),		
 										'default' => '' 												
 										),
+										*/
 									);
 	}
+	
+	/**
+	 * Returns the names of all supported controls. 
+	 * This data is a copy of the one used to actually translate the names
+	 * into the controls, since this resides client side, in OpenLayerFunctions.js. 
+	 * 
+	 * @return array
+	 */		
+	public static function getControlNames() {
+		return array(
+					  'ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan', 
+	                  'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
+	                  'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
+	                  'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
+	                  'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'AutoPanZoom', 'Permalink',
+	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split', 
+	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
+	                  'ZoomToMaxExtent'
+			);
+	}
+
+	/**
+	 * Returns the names of all supported layers. 
+	 * This data is a copy of the one used to actually translate the names
+	 * into the layers, since this resides client side, in OpenLayerFunctions.js. 
+	 * 
+	 * @return array
+	 */		
+	public static function getLayerNames() {
+		return array(
+					  'google', 'google-normal', 'google-satellite', 'google-hybrid', 'google-hybrid', 'google-physical',
+					  'bing', 'bing-normal', 'bing-satellite', 'bing-hybrid',
+						'yahoo', 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid',
+						'openlayers', 'nasa',
+						'openstreetmap', 'osmarender', 'osm-nik', 'osm-cycle' 
+			);
+	}	
 	
 	/**
 	 * Load the dependencies of a layer if they are not loaded yet
