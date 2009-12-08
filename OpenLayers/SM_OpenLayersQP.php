@@ -80,4 +80,13 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		/*]]>*/ </script>";		
 	}
 
+    public function getParameters() {
+        $params = parent::getParameters();
+        
+        $params[] = array('name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_controls'), 'values' => MapsOpenLayers::getControlNames());
+        $params[] = array('name' => 'layers', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_layers'), 'values' => MapsOpenLayers::getLayerNames());
+        
+        return $params;
+    }	
+	
 }

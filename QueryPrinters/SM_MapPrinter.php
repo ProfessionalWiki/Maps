@@ -309,4 +309,16 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		return wfMsg('maps_' . $this->serviceName);
 	}
 	
+    public function getParameters() {
+    	global $egMapsMapWidth, $egMapsMapHeight;
+    	
+        $params = parent::exportFormatParameters();
+        
+        $params[] = array('name' => 'zoom', 'type' => 'int', 'description' => wfMsg('semanticmaps_paramdesc_zoom'));
+        $params[] = array('name' => 'width', 'type' => 'int', 'description' => wfMsgExt('semanticmaps_paramdesc_width', 'parsemag', $egMapsMapWidth));
+        $params[] = array('name' => 'height', 'type' => 'int', 'description' => wfMsgExt('semanticmaps_paramdesc_height', 'parsemag', $egMapsMapHeight));
+
+        return $params;
+    }
+	
 }

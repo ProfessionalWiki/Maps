@@ -92,4 +92,12 @@ final class SMOSMQP extends SMMapPrinter {
 EOT;
 	}		
 
+    public function getParameters() {
+        $params = parent::getParameters();
+        
+        $params[] = array('name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_controls'), 'values' => MapsOSM::getControlNames());
+        
+        return $params;
+    }
+	
 }

@@ -60,31 +60,6 @@ function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, mark
 	if (!window.OLMaps) window.OLMaps = new Object;
 	eval("window.OLMaps." + mapName + " = map;"); 
 }
-
-
-/**
- * This function holds spesific functionallity for the Open Layers form input of Semantic Maps
- * TODO: Refactor as much code as possible to non specific functions
- */
-function showOLAddress(address, mapName, outputElementName, notFoundFormat) {
-
-	var map = OLMaps[mapName];
-	var geocoder = new GClientGeocoder();
-
-	geocoder.getLatLng(address,
-		function(point) {
-			if (!point) {
-				window.alert(address + ' ' + notFoundFormat);
-			} else {
-				var loc = new OpenLayers.LonLat(point.x, point.y);
-				
-				replaceMarker(mapName, loc);
-				document.getElementById(outputElementName).value = convertLatToDMS(point.y) + ', ' + convertLngToDMS(point.x);
-			}
-		}
-	);
-
-}
  
 /**
  * Remove all markers from an OL map (that's in window.OLMaps), and place a new one.

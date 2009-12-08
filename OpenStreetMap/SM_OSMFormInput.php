@@ -24,8 +24,7 @@ final class SMOSMFormInput extends SMFormInput {
 	protected function setMapSettings() {
 		global $egMapsOSMZoom, $egMapsOSMPrefix;
 		
-		$this->elementNamePrefix = $egMapsOSMPrefix;
-		$this->showAddresFunction = 'showOSMAddress';	
+		$this->elementNamePrefix = $egMapsOSMPrefix;	
 
 		$this->earthZoom = 1;
 
@@ -74,8 +73,9 @@ final class SMOSMFormInput extends SMFormInput {
 		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>
-			slippymaps['$this->mapName'] = new slippymap_map(
+			makeOSMFormInput(
 				'$this->mapName',
+				'$this->coordsFieldName',
 				{
 				mode: 'osm-wm',
 				layer: 'osm-like',
@@ -86,9 +86,10 @@ final class SMOSMFormInput extends SMFormInput {
 				width: $this->width,
 				height: $this->height,
 				controls: [$controlItems],
-				coordField: '$this->coordsFieldName'		
 				}
-			);
+				);
+				
+			
 			</script>
 		
 				<div id='$this->mapName' class='map' style='width:{$this->width}px; height:{$this->height}px;'>

@@ -120,11 +120,19 @@ END;
 		$this->output .= $onloadFunctions;	
 	}
 	
-	public function getParameters() {
-		return array_merge(parent::getParameters(), 
-			array()
-			); 
-	}
+    public function getParameters() {
+        $params = parent::getParameters();
+        
+        $allowedTypes = MapsGoogleMaps::getTypeNames();
+        
+        $params[] = array('name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_controls'), 'values' => MapsGoogleMaps::getControlNames());
+        $params[] = array('name' => 'types', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_types'), 'values' => $allowedTypes);
+        $params[] = array('name' => 'type', 'type' => 'enumeration', 'description' => wfMsg('semanticmaps_paramdesc_type'), 'values' => $allowedTypes);
+        $params[] = array('name' => 'overlays', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_overlays'), 'values' => MapsGoogleMaps::getOverlayNames());
+        $params[] = array('name' => 'autozoom', 'type' => 'enumeration', 'description' => wfMsg('semanticmaps_paramdesc_autozoom'), 'values' => array('on', 'off'));
+        
+        return $params;
+    }
 	
 }
 

@@ -25,7 +25,6 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->showAddresFunction = 'showOLAddress';	
 
 		$this->earthZoom = 1;
 

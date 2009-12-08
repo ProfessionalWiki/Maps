@@ -25,7 +25,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if (defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' )) {
-	define('SM_VERSION', '0.5 a18');
+	define('SM_VERSION', '0.5 a19');
 	
 	$smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 	$smgIP 			= $IP . '/extensions/SemanticMaps';

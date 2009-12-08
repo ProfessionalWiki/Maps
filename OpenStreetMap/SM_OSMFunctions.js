@@ -9,16 +9,15 @@
 
 /**
  * This function holds spesific functionallity for the OpenStreetMap form input of Semantic Maps
- * TODO: Refactor as much code as possible to non specific functions
  */
-function makeOSMFormInput(mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls, height) {
+function makeOSMFormInput(mapName, locationFieldName, mapParams) {
 	var markers = Array();
 
 	// Show a starting marker only if marker coordinates are provided
-	if (marker_lat != null && marker_lon != null) {
-		markers.push(getOSMMarkerData(marker_lon, marker_lat, '', ''));
+	if (mapParams.lat != null && mapParams.lon != null) {
+		mapParams.markers = [(getOSMMarkerData(mapParams.lon, mapParams.lat, '', ''))];
 	}
-	
+
 	// Click event handler for updating the location of the marker
 	// TODO / FIXME: This will probably cause problems when used for multiple maps on one page.
      OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
@@ -42,7 +41,7 @@ function makeOSMFormInput(mapName, locationFieldName, lat, lon, zoom, marker_lat
                      'click': this.trigger
                  }, this.handlerOptions
              );
-         }, 
+         },
 
          trigger: function(e) {
              replaceMarker(mapName, map.getLonLatFromViewPortPx(e.xy));
@@ -50,40 +49,14 @@ function makeOSMFormInput(mapName, locationFieldName, lat, lon, zoom, marker_lat
          }
 
      });
-     
+
 	var clickHanler = new OpenLayers.Control.Click();
-     controls.push(clickHanler);
+	mapParams.initializedContols = [clickHanler];
+
+    var map = new slippymap_map(mapName, mapParams);     
      
-     var map = initOpenLayer(mapName, lon, lat, zoom, layers, controls, markers, height);
-	
-	// Make the map variable available for other functions
-	if (!window.OSMMaps) window.OSMMaps = new Object;
-	eval("window.OSMMaps." + mapName + " = map;"); 
-}
-
-
-/**
- * This function holds spesific functionallity for the OpenStreetMap form input of Semantic Maps
- * TODO: Refactor as much code as possible to non specific functions
- */
-function showOSMAddress(address, mapName, outputElementName, notFoundFormat) {
-
-	var map = OSMMaps[mapName];
-	var geocoder = new GClientGeocoder();
-
-	geocoder.getLatLng(address,
-		function(point) {
-			if (!point) {
-				window.alert(address + ' ' + notFoundFormat);
-			} else {
-				var loc = new OpenLayers.LonLat(point.x, point.y);
-				
-				replaceMarker(mapName, loc);
-				document.getElementById(outputElementName).value = convertLatToDMS(point.y) + ', ' + convertLngToDMS(point.x);
-			}
-		}
-	);
-
+ 	// Make the map variable available for other functions
+ 	eval("window.slippymaps." + mapName + " = map;");      
 }
  
 /**
