@@ -110,10 +110,10 @@ class MapsOpenLayers {
 	public static function getLayerNames() {
 		return array(
 					  'google', 'google-normal', 'google-satellite', 'google-hybrid', 'google-hybrid', 'google-physical',
-					  'bing', 'bing-normal', 'bing-satellite', 'bing-hybrid',
+					  'bing', 'virtual-earth', 'bing-normal', 'bing-satellite', 'bing-hybrid',
 						'yahoo', 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid',
-						'openlayers', 'nasa',
-						'openstreetmap', 'osmarender', 'osm-nik', 'osm-cycle' 
+						'openlayers', 'open-layers', 'nasa',
+						'openstreetmap', 'osm', 'osmarender', 'osm-nik', 'osm-mapnik', 'osm-cycle', 'osm-cyclemap'
 			);
 	}	
 	
@@ -122,7 +122,7 @@ class MapsOpenLayers {
 	 *
 	 * @param string $output The output to which the html to load the dependencies needs to be added
 	 * @param string $layer The layer to check (and load the dependencies for
-	 */
+	 */ 
 	public static function loadDependencyWhenNeeded(&$output, $layer) {
 		global $wgJsMimeType;
 		global $egGoogleMapsOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;

@@ -28,13 +28,13 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data,
 	
 	// Add the controls
 	for (i in controls) {
-		
+
 		// If a string is provided, find the correct name for the control, and use eval to create the object itself
 		if (typeof controls[i] == 'string') {
 			if (controls[i].toLowerCase() == 'autopanzoom') {
 				if (height > 140) controls[i] = height > 320 ? 'panzoombar' : 'panzoom';
-			}	
-				
+			}
+
 			control = getValidControlName(controls[i]);
 			
 			if (control) {
