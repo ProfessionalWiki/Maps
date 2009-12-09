@@ -13,6 +13,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+// TODO: the js for this form input does not work yet. Requires fixing before the FI can be enabled.
+
 final class SMOSMFormInput extends SMFormInput {
 	
 	public $serviceName = MapsOSM::SERVICE_NAME;	

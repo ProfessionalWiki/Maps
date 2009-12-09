@@ -92,6 +92,9 @@ final class SMOSMQP extends SMMapPrinter {
 EOT;
 	}		
 
+	/**
+	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the spesific ones to the list.
+	 */	
     public function getParameters() {
         $params = parent::getParameters();
         
