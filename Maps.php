@@ -30,7 +30,7 @@ if( !defined( 'Validator_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if (defined( 'Validator_VERSION' )) {
-	define('Maps_VERSION', '0.5 a19');
+	define('Maps_VERSION', '0.5 a20');
 	
 	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 	$egMapsIP 			= $IP . '/extensions/Maps';

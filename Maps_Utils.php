@@ -16,6 +16,8 @@ if (! defined ( 'MEDIAWIKI' )) {
 	die ( 'Not an entry point.' );
 }
 
+// TODO: merge with parding done in the geo coord type located in SM.
+
 class MapsUtils {	
 	
 	/*

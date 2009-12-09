@@ -97,13 +97,12 @@ abstract class MapsMapFeature {
 	 * @param string $className
 	 */
 	private function setMapProperties(array $mapProperties, $className) {
-		//var_dump($mapProperties); exit;
 		foreach($mapProperties as $paramName => $paramValue) {
 			if (! property_exists($className, $paramName)) {
 				$this->{$paramName} = $paramValue;
 			}
 			else {
-				throw new Exception('Attempt to override a class field during map propertie assignment. Field name: ' . $paramName);
+				throw new Exception('Attempt to override a class field during map property assignment. Field name: ' . $paramName);
 			}
 		}		
 	}
