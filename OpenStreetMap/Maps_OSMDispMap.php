@@ -31,14 +31,12 @@ class MapsOSMDispMap extends MapsBaseMap {
 		
 		$this->spesificParameters = array(
 			'static' => array(
-				'aliases' => array(),
 				'criteria' => array(
 					'in_array' => array('yes', 'no')
 					),
 				'default' => 'no'												
 				),
 			'mode' => array(
-				'aliases' => array(),
 				'criteria' => array(
 					'in_array' => $modes
 					),

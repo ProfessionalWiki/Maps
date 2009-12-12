@@ -58,20 +58,15 @@ final class MapsParserFunctions {
 		
 		self::$parameters = array(
 			'service' => array(
-				'aliases' => array(),
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
 					),
 				'default' => $egMapsDefaultServices['pf']
 				),
-			'coordinates' => array(
+			'coordinates' => array(				
 				'aliases' => array('coords', 'location', 'locations'),
-				'criteria' => array(
-					//'arecoords' => array()// TODO
-					),
 				),			
 			'geoservice' => array(
-				'aliases' => array(),
 				'criteria' => array(
 					'in_array' => array_keys($egMapsAvailableGeoServices)
 					),
@@ -297,7 +292,7 @@ final class MapsParserFunctions {
     private static function paramIsPresent($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
         $isPresent = array_key_exists($paramName, $stack);
         
-        if ($checkForAliases) {
+        if ($checkForAliases && array_key_exists('aliases', $paramInfo[$paramName])) {
             foreach($paramInfo[$paramName]['aliases'] as $alias) {
                 if (array_key_exists($alias, $stack)) {
                 	$isPresent = true;

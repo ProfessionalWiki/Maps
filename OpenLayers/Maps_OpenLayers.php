@@ -58,25 +58,20 @@ class MapsOpenLayers {
 										'default' => $egMapsOpenLayersZoom, 	
 									),	
 									'controls' => array(
+										'type' => 'list-string',
 										'criteria' => array(
-											'in_array' => self::getControlNames()
+											'all_in_array' => self::getControlNames()
 											),
-										'default' => implode(',', $egMapsOLControls)			
+										'default' => $egMapsOLControls		
 										),		
 									'layers' => array(  
-										'aliases' => array(),
+										'type' => 'list-string',
 										'criteria' => array(
-											'in_array' => self::getLayerNames()
+											'all_in_array' => self::getLayerNames()
 											),
-										'default' => implode(',', $egMapsOLLayers)											
-										),
-										/*									
-									'baselayer' => array( // TODO
-										'aliases' => array(),
-										'criteria' => array(),		
-										'default' => '' 												
-										),
-										*/
+										'default' => $egMapsOLLayers										
+										),							
+									/* 'baselayer' => array(), */
 									);
 	}
 	

@@ -56,8 +56,11 @@ class MapsOSM {
 				'default' => $egMapsOSMZoom, 	
 				),
 			'controls' => array(
-				'criteria' => array(), // TODO
-				'default' => implode(',', $egMapsOSMControls)			
+				'type' => 'list-string',
+				'criteria' => array(
+					'all_in_array' => self::getControlNames()
+					),
+				'default' => $egMapsOSMControls			
 				),	
 			'lang' => array(
 				'aliases' => array('locale', 'language'),	

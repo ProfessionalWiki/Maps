@@ -135,14 +135,14 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
 			
 			$markerItems[] = str_replace(	array('lon', 'lat', 'title', 'label', 'icon'), 
-											array($lon, $lat, $title, $label, $label), 
+											array($lon, $lat, $title, $label, $icon), 
 											$this->markerStringFormat
 											);
-		}		
+		}
 		
 		$this->markerString = implode(',', $markerItems);		
 	}
-	
+
 	/**
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.

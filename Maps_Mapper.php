@@ -29,32 +29,26 @@ final class MapsMapper {
 		self::$mainParams = array
 			(
 			'zoom' => array(
-				'aliases' => array(),
+				'type' => 'integer',
 				'criteria' => array(
-					'is_numeric' => array(),
 					'in_range' => array(0, 15)
 					)			
 				),
 			'width' => array(
-				'aliases' => array(),
+				'type' => 'integer',
 				'criteria' => array(
-					'is_numeric' => array(),
 					'in_range' => $egMapsSizeRestrictions['width']
 					),
 				'default' => $egMapsMapWidth		
 				),
 			'height' => array(
-				'aliases' => array(),
+				'type' => 'integer',
 				'criteria' => array(
-					'is_numeric' => array(),
 					'in_range' => $egMapsSizeRestrictions['height']
 					),
 				'default' => $egMapsMapHeight
 				),
-			'controls' => array(
-				'aliases' => array(),
-				'criteria' => array(),					
-				),
+			'controls' => array(),
 			);
 	}
 

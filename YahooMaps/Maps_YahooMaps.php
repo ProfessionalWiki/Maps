@@ -29,11 +29,6 @@ $egMapsServices['yahoomaps'] = array(
 											array('class' => 'MapsYahooMaps', 'file' => 'YahooMaps/Maps_YahooMapsUtils.php', 'local' => true)											
 											),
 									'aliases' => array('yahoo', 'yahoomap', 'ymap', 'ymaps'),
-									'parameters' => array(
-											'type' => array('map-type'),
-											'types' => array('map-types', 'map types'),
-											'autozoom' => array('auto zoom', 'mouse zoom', 'mousezoom')
-											)
 									);
 									
 /**
@@ -61,11 +56,12 @@ class MapsYahooMaps {
 										'default' => $egMapsYahooMapsZoom
 										),
 									'controls' => array(
+										'type' => 'list-string',
 										'criteria' => array(
-											'all_str_in_array' => array(',', self::getControlNames())
+											'all_in_array' => self::getControlNames()
 										),
-										'default' => implode(',', $egMapsYMapControls)			
-										),											
+										'default' => $egMapsYMapControls			
+										),
 									'type' => array (
 										'aliases' => array('map-type', 'map type'),
 										'criteria' => array(
@@ -74,17 +70,18 @@ class MapsYahooMaps {
 										'default' => $egMapsYahooMapsType										
 										),
 									'types' => array (
+										'type' => 'list-string',
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
-											'all_str_in_array' => array(',', $allowedTypes)
+											'all_in_array' => $allowedTypes
 											),
-										'default' => implode(',', $egMapsYahooMapsTypes)										
+										'default' =>  $egMapsYahooMapsTypes										
 										),			
 									'autozoom' => array(
 										'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
 										'criteria' => array(
 											'in_array' => array('on', 'off', 'yes', 'no')	
-											),		
+											),
 										'default' => $egMapsYahooAutozoom ? 'on' : 'off' 												
 										),		
 									);

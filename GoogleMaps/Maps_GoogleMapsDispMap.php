@@ -29,9 +29,10 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 		
 		$this->spesificParameters = array(
 			'overlays' => array(
-				'aliases' => array(),
-				'criteria' => array(),
-				'default' => ''												
+				'type' => 'list-string',
+				'criteria' => array(
+					'all_in_array' => MapsGoogleMaps::getOverlayNames()
+					),											
 				),				
 		);
 	}

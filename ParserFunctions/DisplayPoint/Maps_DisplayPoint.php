@@ -73,17 +73,12 @@ final class MapsDisplayPoint {
 		self::$parameters = array_merge(MapsParserFunctions::$parameters, array(	
 			'centre' => array(
 				'aliases' => array('center'),
-				'criteria' => array(),
 				'default' => $egMapsDefaultCentre		
 				),	
-			'title' => array(
-				'aliases' => array(),	
-				'criteria' => array(),				
+			'title' => array(			
 				'default' => $egMapsDefaultTitle					
 				),
-			'label' => array(
-				'aliases' => array(),	
-				'criteria' => array(),				
+			'label' => array(			
 				'default' => $egMapsDefaultLabel
 				),							
 			));

@@ -56,10 +56,11 @@ class MapsGoogleMaps {
 										'default' => $egMapsGoogleMapsZoom,
 										),
 									'controls' => array(
+										'type' => 'list-string',
 										'criteria' => array(
-											'all_str_in_array' => array(',', self::getControlNames())
-											), // TODO 
-										'default' => implode(',', $egMapsGMapControls)			
+											'all_in_array' => self::getControlNames()
+											),
+										'default' => $egMapsGMapControls	
 										),
 									'type' => array (
 										'aliases' => array('map-type', 'map type'),
@@ -71,9 +72,9 @@ class MapsGoogleMaps {
 									'types' => array (
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
-											'all_str_in_array' => array(',', $allowedTypes)
+											'all_in_array' => $allowedTypes
 											),
-										'default' => implode(',', $egMapsGoogleMapsTypes)									
+										'default' => $egMapsGoogleMapsTypes							
 										),
 									'autozoom' => array(
 										'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
@@ -82,16 +83,8 @@ class MapsGoogleMaps {
 											),		
 										'default' => $egMapsGoogleAutozoom ? 'on' : 'off'										
 										),									
-									'class' => array(
-										'aliases' => array(),
-										'criteria' => array(),		
-										'default' => '' 												
-										),
-									'style' => array(
-										'aliases' => array(),
-										'criteria' => array(),		
-										'default' => '' 												
-										),
+									'class' => array(),
+									'style' => array(),
 									);
 	}
 
@@ -191,7 +184,6 @@ class MapsGoogleMaps {
 
 			MapsGoogleMaps::validateGoogleMapsKey();
 
-			// TODO: use strbuilder for performance gain?
 			$output .= "<script src='http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl={$wgLang->getCode()}' type='$wgJsMimeType'></script>
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.js?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>window.unload = GUnload;</script>";
