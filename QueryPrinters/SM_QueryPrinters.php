@@ -52,20 +52,16 @@ final class SMQueryPrinters {
 
 		self::$parameters = array(
 			'geoservice' => array(
-				'aliases' => array(),
 				'criteria' => array(
 					'in_array' => array_keys($egMapsAvailableGeoServices)
 					),
 				'default' => $egMapsDefaultGeoService
 				),			
 			'format' => array(
-				'aliases' => array(),
-				'criteria' => array(),
 				'default' => $egMapsDefaultServices['qp']
 				),	
 			'centre' => array(
 				'aliases' => array('center'),
-				'criteria' => array(),
 				'default' => $egMapsDefaultCentre		
 				),								
 			);		

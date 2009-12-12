@@ -57,29 +57,26 @@ final class SMFormInputs {
 		self::$parameters = array(
 			'centre' => array(
 				'aliases' => array('center'),
-				'criteria' => array(),
 				'default' => $egMapsDefaultCentre		
 				),		
 			'service' => array(
-				'aliases' => array(),
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
 					),
 				'default' => $egMapsDefaultServices['fi']
 				),
 			'geoservice' => array(
-				'aliases' => array(),
 				'criteria' => array(
 					'in_array' => array_keys($egMapsAvailableGeoServices)
 					),
 				'default' => $egMapsDefaultGeoService
 				),
-			'service_name' => array('default' => ''),	
-			'part_of_multiple' => array('default' => ''),	
-			'possible_values' => array('default' => ''),	
-			'is_list' => array('default' => ''),	
-			'semantic_property' => array('default' => ''),	
-			'value_labels' => array('default' => ''),	
+			'service_name' => array(),	
+			'part_of_multiple' => array(),	
+			'possible_values' => array(),	
+			'is_list' => array(),	
+			'semantic_property' => array(),	
+			'value_labels' => array(),	
 			);		
 	}	
 	

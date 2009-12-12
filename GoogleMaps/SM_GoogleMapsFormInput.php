@@ -31,15 +31,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 
 		$this->earthZoom = 1;
 		
-        $this->defaultZoom = $egMapsGoogleMapsZoom;	
-
-		$this->spesificParameters = array(
-			'overlays' => array(
-				'aliases' => array(),
-				'criteria' => array(),
-				'default' => ''												
-				),				
-		);        
+        $this->defaultZoom = $egMapsGoogleMapsZoom;	        
 	}
 	
 	/**
@@ -86,6 +78,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));		
 		
+		// Remove the overlays control in case it's present.
 		if (in_string('overlays', $this->controls)) {
 			$this->controls = str_replace(",'overlays'", '', $this->controls);
 			$this->controls = str_replace("'overlays',", '', $this->controls);
