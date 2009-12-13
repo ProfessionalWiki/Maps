@@ -505,10 +505,15 @@ $1',
  */
 $messages['lb'] = array(
 	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
+	'maps_map' => 'Kaart',
 	'maps_coordinates_missing' => "Et goufe keng Koordinate fir d'Kaart uginn.",
 	'maps_geocoding_failed_for' => 'Dës {{PLURAL:$2|Adress|Adresse}} konnten net geocodéiert ginn an {{PLURAL:$2|huet|hu}} missen op der Kaart ewechgelooss ginn:
 $1',
-	'maps_map' => 'Kaart',
+	'maps_click_to_activate' => "Klickt fir d'kaart z'aktivéieren",
+	'maps_photos' => 'Fotoen',
+	'maps_videos' => 'Videoen',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Web-Kameraen',
 );
 
 /** Macedonian (Македонски)
