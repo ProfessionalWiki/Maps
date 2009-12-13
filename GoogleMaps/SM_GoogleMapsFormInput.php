@@ -76,15 +76,13 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
 		
-		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));		
+		$this->controls = MapsMapper::createJSItemsString($this->controls);		
 		
 		// Remove the overlays control in case it's present.
 		if (in_string('overlays', $this->controls)) {
 			$this->controls = str_replace(",'overlays'", '', $this->controls);
 			$this->controls = str_replace("'overlays',", '', $this->controls);
 		}
-		
-		$this->types = explode(",", $this->types);
 		
 		$typesString = MapsGoogleMaps::createTypesString($this->types);
 		
