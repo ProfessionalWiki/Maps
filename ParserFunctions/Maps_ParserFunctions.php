@@ -142,7 +142,8 @@ final class MapsParserFunctions {
         }
         
         // Return the result
-        return array( $output, 'noparse' => true, 'isHTML' => true ); 	
+        return $parser->insertStripItem($output, $parser->mStripState);
+        //return array( $output, 'noparse' => true, 'isHTML' => true ); 	
 	}		
 	
 	/**
