@@ -50,11 +50,9 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 		
 		$this->type = MapsYahooMaps::getYMapType($this->type, true);
 		
-		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));
+		$this->controls = MapsMapper::createJSItemsString($this->controls);
 
 		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
-
-		$this->types = explode(",", $this->types);
 		
 		$typesString = MapsYahooMaps::createTypesString($this->types);		
 		

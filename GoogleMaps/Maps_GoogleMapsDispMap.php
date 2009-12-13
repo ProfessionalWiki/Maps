@@ -59,13 +59,11 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 		
 		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
 			
-		$this->controls = MapsMapper::createJSItemsString(explode(',', $this->controls));
+		$this->controls = MapsMapper::createJSItemsString($this->controls);
 		
 		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
 		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
-		
-		$this->types = explode(",", $this->types);
 		
 		$typesString = MapsGoogleMaps::createTypesString($this->types);
 		

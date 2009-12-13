@@ -62,9 +62,8 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsMapper::createJSItemsString(explode(',', $this->controls));
+		$controlItems = MapsMapper::createJSItemsString($this->controls);
 		
-		//var_dump($this->layers);die();
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
 		
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>

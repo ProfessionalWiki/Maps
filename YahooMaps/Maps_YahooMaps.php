@@ -56,7 +56,7 @@ class MapsYahooMaps {
 										'default' => $egMapsYahooMapsZoom
 										),
 									'controls' => array(
-										'type' => 'list-string',
+										'type' => 'list',
 										'criteria' => array(
 											'all_in_array' => self::getControlNames()
 										),
@@ -70,7 +70,7 @@ class MapsYahooMaps {
 										'default' => $egMapsYahooMapsType										
 										),
 									'types' => array (
-										'type' => 'list-string',
+										'type' => 'list',
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
 											'all_in_array' => $allowedTypes

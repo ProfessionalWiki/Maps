@@ -56,7 +56,7 @@ class MapsGoogleMaps {
 										'default' => $egMapsGoogleMapsZoom,
 										),
 									'controls' => array(
-										'type' => 'list-string',
+										'type' => 'list',
 										'criteria' => array(
 											'all_in_array' => self::getControlNames()
 											),
@@ -70,6 +70,7 @@ class MapsGoogleMaps {
 										'default' => $egMapsGoogleMapsType												
 										),
 									'types' => array (
+										'type' => 'list',
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
 											'all_in_array' => $allowedTypes

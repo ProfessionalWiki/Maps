@@ -58,14 +58,14 @@ class MapsOpenLayers {
 										'default' => $egMapsOpenLayersZoom, 	
 									),	
 									'controls' => array(
-										'type' => 'list-string',
+										'type' => 'list',
 										'criteria' => array(
 											'all_in_array' => self::getControlNames()
 											),
 										'default' => $egMapsOLControls		
 										),		
 									'layers' => array(  
-										'type' => 'list-string',
+										'type' => 'list',
 										'criteria' => array(
 											'all_in_array' => self::getLayerNames()
 											),
@@ -84,14 +84,14 @@ class MapsOpenLayers {
 	 */		
 	public static function getControlNames() {
 		return array(
-					  'ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan', 
-	                  'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
-	                  'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
-	                  'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
-	                  'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'AutoPanZoom', 'Permalink',
-	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split', 
-	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
-	                  'ZoomToMaxExtent'
+					  'argparser', 'attribution', 'button', 'dragfeature', 'dragpan', 
+	                  'drawfeature', 'editingtoolbar', 'getfeature', 'keyboarddefaults', 'layerswitcher',
+	                  'measure', 'modifyfeature', 'mousedefaults', 'mouseposition', 'mousetoolbar',
+	                  'navigation', 'navigationhistory', 'navtoolbar', 'overviewmap', 'pan',
+	                  'panel', 'panpanel', 'panzoom', 'panzoombar', 'autopanzoom', 'permalink',
+	                  'scale', 'scaleline', 'selectfeature', 'snapping', 'split', 
+	                  'wmsgetfeatureinfo', 'zoombox', 'zoomin', 'zoomout', 'zoompanel',
+	                  'zoomtomaxextent'
 			);
 	}
 
@@ -170,9 +170,7 @@ class MapsOpenLayers {
 	 * @param string $layers
 	 * @return csv string
 	 */
-	public static function createLayersStringAndLoadDependencies(&$output, $layers) {
-		$layers = explode(',', $layers);
-		
+	public static function createLayersStringAndLoadDependencies(&$output, array $layers) {
 		$layerItems = '';
 		foreach ($layers as $layer) {
 			$layer = strtolower($layer);

@@ -48,7 +48,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$controlItems = MapsMapper::createJSItemsString(explode(',', $this->controls));
+		$controlItems = MapsMapper::createJSItemsString($this->controls);
 		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
 		
