@@ -29,8 +29,11 @@ if( !defined( 'Validator_VERSION' ) ) {
 }
 
 // Only initialize the extension when all dependencies are present.
-if (defined( 'Validator_VERSION' )) {
-	define('Maps_VERSION', '0.5 a21');
+if (! defined( 'Validator_VERSION' )) {
+	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
+}
+else {
+	define('Maps_VERSION', '0.5 rc1');
 	
 	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 	$egMapsIP 			= $IP . '/extensions/Maps';
