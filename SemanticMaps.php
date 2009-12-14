@@ -23,9 +23,19 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+// Show a warning if Maps is not loaded.
+if (! defined( 'Maps_VERSION' )) {
+	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>. ';	
+} 
+
+// Show a warning if Semantic MediaWiki is not loaded.
+if (! defined( 'SMW_VERSION' )) {
+	echo '<b>Warning:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.';	
+} 
+
 // Only initialize the extension when all dependencies are present.
 if (defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' )) {
-	define('SM_VERSION', '0.5 a21');
+	define('SM_VERSION', '0.5 rc1');
 	
 	$smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
 	$smgIP 			= $IP . '/extensions/SemanticMaps';
