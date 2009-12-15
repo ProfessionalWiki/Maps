@@ -589,9 +589,29 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку проширувањето Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps демо]).
 Картографски служби на располагање: $1',
+	'semanticmaps_lonely_unit' => 'Нема пронајдено број пред симболот „$1“.',
+	'semanticmaps_bad_latlong' => 'Географската ширина и должина мора да се наведат само еднаш, и со важечки координати.',
+	'semanticmaps_abb_north' => 'С',
+	'semanticmaps_abb_east' => 'И',
+	'semanticmaps_abb_south' => 'Ј',
+	'semanticmaps_abb_west' => 'З',
+	'semanticmaps_label_latitude' => 'Геог. ширина',
+	'semanticmaps_label_longitude' => 'Геог. должина:',
 	'semanticmaps_lookupcoordinates' => 'Побарај координати',
 	'semanticmaps_enteraddresshere' => 'Внесете адреса тука',
 	'semanticmaps_notfound' => 'не е најдено ништо',
+	'semanticmaps_paramdesc_format' => 'Картографската служба со која се создава картата',
+	'semanticmaps_paramdesc_geoservice' => 'Службата за геокодирање со која адресите се претвораат во координати',
+	'semanticmaps_paramdesc_height' => 'Висината на картата во пиксели ($1 по основно)',
+	'semanticmaps_paramdesc_width' => 'Ширината на картата во пиксели ($1 по основно)',
+	'semanticmaps_paramdesc_zoom' => 'Размерот на картата',
+	'semanticmaps_paramdesc_centre' => 'Координатите на средиштето на картата',
+	'semanticmaps_paramdesc_controls' => 'Корисничките контроли за на картата',
+	'semanticmaps_paramdesc_types' => 'Типови на карти, достапни за картата',
+	'semanticmaps_paramdesc_type' => 'Основно зададениот тип на карта',
+	'semanticmaps_paramdesc_overlays' => 'Достапните облоги за картата',
+	'semanticmaps_paramdesc_autozoom' => 'Ако е овозможено приближување и оддалечување со тркалцето на глушецот',
+	'semanticmaps_paramdesc_layers' => 'Слоевите достапни на картата',
 );
 
 /** Dutch (Nederlands)
@@ -672,9 +692,18 @@ Dostępne serwisy mapowe: $1',
 $messages['pms'] = array(
 	'semanticmaps_desc' => 'A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con le estension Semantic mediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Sërvissi ëd mapa disponìbij: $1',
+	'semanticmaps_lonely_unit' => 'Pa gnun nùmer trovà prima dël sìmbol "$1".',
+	'semanticmaps_bad_latlong' => 'Latitùdin e longitùdin a deuv esse dàit mach na vira, e con coordinà bon-e.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_label_latitude' => 'Latitùdin:',
+	'semanticmaps_label_longitude' => 'Longitùdin:',
 	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
 	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
 	'semanticmaps_notfound' => 'pa trovà',
+	'semanticmaps_paramdesc_format' => 'Ël servissi ëd mapping dovrà për generé la mapa',
 );
 
 /** Portuguese (Português)
