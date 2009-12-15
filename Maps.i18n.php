@@ -584,13 +584,25 @@ Lo plan pòt pas èsser afichat.",
 
 /** Polish (Polski)
  * @author Sp5uhe
+ * @author Yarl
  */
 $messages['pl'] = array(
 	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostępne serwisy mapowe: $1',
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Brak współrzędnych dla mapy.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Następującego adresu nie można odnaleźć na mapie|Następujących adresów nie można odnaleźć na mapie:}} $1.
 Mapa nie może zostać wyświetlona.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Następujący adres został pominięty, ponieważ nie można go odnaleźć na mapie|Następujące adresy zostały pominięte, ponieważ nie można ich odnaleźć na mapie:}} $1.',
+	'maps_unrecognized_coords' => 'Następujące współrzędne nie zostały rozpoznane: $1.',
+	'maps_unrecognized_coords_for' => 'Następując{{PLURAL:$2|a współrzędna|e współrzędne}} nie został{{PLURAL:$2|a|y}} rozpoznan{{PLURAL:$2|a|e}} i został{{PLURAL:$2|a|y}} pominięte:
+$1',
+	'maps_map_cannot_be_displayed' => 'Mapa nie może zostać wyświetlona.',
+	'maps_click_to_activate' => 'Kliknij, aby aktywować mapę',
+	'maps_overlays' => 'Nakładki',
+	'maps_photos' => 'Zdjęcia',
+	'maps_videos' => 'Filmy',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Kamery internetowe',
 );
 
 /** Piedmontese (Piemontèis)
@@ -609,7 +621,7 @@ La mapa a peul pa esse visualisà.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta: 
 $1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
-
+	'maps_click_to_activate' => 'Sgnaca për ativé la mapa',
 	'maps_overlays' => 'Sovraposission',
 	'maps_photos' => 'Fòto',
 	'maps_videos' => 'Filmà',
@@ -762,8 +774,8 @@ $1',
 	'maps_unrecognized_coords_for' => 'Không thể nhận ra {{PLURAL:$2|tọa độ|các tọa độ}} sau nên bản đồ bỏ qua nó:
 $1',
 	'maps_map_cannot_be_displayed' => 'Không thể hiển thị bản đồ.',
-
 	'maps_osm' => 'OpenStreetMap',
+	'maps_click_to_activate' => 'Nhấn chuột vào bản đồ để kích hoạt',
 	'maps_overlays' => 'Lớp',
 	'maps_photos' => 'Hình ảnh',
 	'maps_videos' => 'Video',
