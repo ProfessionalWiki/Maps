@@ -687,13 +687,14 @@ Dostępne serwisy mapowe: $1',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'semanticmaps_desc' => 'A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con le estension Semantic mediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Sërvissi ëd mapa disponìbij: $1',
 	'semanticmaps_lonely_unit' => 'Pa gnun nùmer trovà prima dël sìmbol "$1".',
-	'semanticmaps_bad_latlong' => 'Latitùdin e longitùdin a deuv esse dàit mach na vira, e con coordinà bon-e.',
+	'semanticmaps_bad_latlong' => 'Latitùdin e longitùdin a deuvo esse dàite mach na vira, e con coordinà bon-e.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'E',
 	'semanticmaps_abb_south' => 'S',
@@ -703,7 +704,18 @@ Sërvissi ëd mapa disponìbij: $1',
 	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
 	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
 	'semanticmaps_notfound' => 'pa trovà',
-	'semanticmaps_paramdesc_format' => 'Ël servissi ëd mapping dovrà për generé la mapa',
+	'semanticmaps_paramdesc_format' => 'Ël servissi ëd cartografìa dovrà për generé la carta',
+	'semanticmaps_paramdesc_geoservice' => "Ël servissi ëd geocodìfica dovrà për trasformé j'adrësse an coordinà",
+	'semanticmaps_paramdesc_height' => "L'autëssa dla carta, an pontin (lë stàndard a l'é $1)",
+	'semanticmaps_paramdesc_width' => "La larghëssa dla carta, an pontin (lë stàndard a l'é $1)",
+	'semanticmaps_paramdesc_zoom' => "Ël livel d'angrandiment ëd la carta",
+	'semanticmaps_paramdesc_centre' => 'Le coordinà dël sènter ëd la carta',
+	'semanticmaps_paramdesc_controls' => 'Ij contròj utent piassà an sla carta',
+	'semanticmaps_paramdesc_types' => 'Le sòrt ëd carte disponìbij an sla carta',
+	'semanticmaps_paramdesc_type' => 'Ël tipo ëd carta stàndard për la carta',
+	'semanticmaps_paramdesc_overlays' => 'Le dzor-posission disponìbij an sla carta',
+	'semanticmaps_paramdesc_autozoom' => "Se l'angrandiment anans e andré an dovrand la roëtta dël rat a l'é abilità",
+	'semanticmaps_paramdesc_layers' => 'Ij livej disponìbij an sla carta',
 );
 
 /** Portuguese (Português)
