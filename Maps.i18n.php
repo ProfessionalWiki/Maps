@@ -142,7 +142,7 @@ $1",
 	'maps_unrecognized_coords_for' => "N'eo ket bet anavezet an {{PLURAL:$2|daveenn|daveennoù}} da-heul ha {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn :
 $1",
 	'maps_map_cannot_be_displayed' => "Ar gartenn ne c'hall ket bezañ diskwelet.",
-
+	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
 	'maps_overlays' => 'Dreistlakadennoù',
 	'maps_photos' => "Luc'hskeudennoù",
 	'maps_videos' => 'Videoioù',
@@ -211,6 +211,7 @@ $messages['el'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Peter17
  * @author Translationista
  */
 $messages['es'] = array(
@@ -219,9 +220,9 @@ $messages['es'] = array(
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
-
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Videos',
+	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Cámaras Web',
 );
 
@@ -621,7 +622,7 @@ La mapa a peul pa esse visualisà.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta: 
 $1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
-	'maps_click_to_activate' => 'Sgnaca për ativé la mapa',
+	'maps_click_to_activate' => 'Sgnaca për ativé la carta',
 	'maps_overlays' => 'Sovraposission',
 	'maps_photos' => 'Fòto',
 	'maps_videos' => 'Filmà',
