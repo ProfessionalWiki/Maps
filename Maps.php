@@ -33,7 +33,7 @@ if (! defined( 'Validator_VERSION' )) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define('Maps_VERSION', '0.5');
+	define('Maps_VERSION', '0.5.1 a1');
 	
 	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 	$egMapsIP 			= $IP . '/extensions/Maps';
@@ -130,7 +130,6 @@ function efMapsSetup() {
  * Adds a link to Admin Links page
  */
 function efMapsAddToAdminLinks(&$admin_links_tree) {
-	// TODO: move the documentation link to another section - and make it non dependant on SMW?
     $displaying_data_section = $admin_links_tree->getSection(wfMsg('smw_adminlinks_displayingdata'));
     
     // Escape if SMW hasn't added links
