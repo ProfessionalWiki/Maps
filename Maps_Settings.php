@@ -70,7 +70,7 @@ include_once $egMapsIP . '/OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimize
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
 $egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers', 'osm');
 
-# String. The default mapping service, which will be used when no default service is prsent in the
+# String. The default mapping service, which will be used when no default service is present in the
 # $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
 # This service needs to be enabled, if not, the first one from the available services will be taken.
 $egMapsDefaultService = 'googlemaps';

@@ -33,7 +33,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
 		$this->defaultZoom = $egMapsOpenLayersZoom;
 		
-		$this->markerStringFormat = 'getOLMarkerData(lat, lon, "title", "label", "icon")';	
+		$this->markerStringFormat = 'getOLMarkerData(lon, lat, "title", "label", "icon")';	
 		
 		$this->spesificParameters = array(
 			'zoom' => array(

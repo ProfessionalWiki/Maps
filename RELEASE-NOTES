@@ -8,7 +8,7 @@ http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
 
 
 === Maps 0.5 ===
-(2009-12-xx)
+(2009-12-17)
 
 ==== New features ====
 
@@ -77,7 +77,7 @@ Changes in 0.4.2 discussed on the authors blog:
 
 ==== Bug fixes ====
 
-* Fixed problems with the ° sign, caused by wrong file encodings, resulting into problems with the DMS notation.
+* Fixed problems with the ï¿½ sign, caused by wrong file encodings, resulting into problems with the DMS notation.
 
 * Fixed flaw in DMS to float translation, resulting into a map being displayed when the values where not separated by a comma.
 
@@ -221,7 +221,7 @@ Changes in 0.3 discussed on the authors blog:
 
 * Configurable map type controls. Users can now configure the map type controls of Google maps and Yahoo! maps maps. They can set the available map types, and the order they want them to be displayed in the map type control.
 
-* Property names now have aliases. This means you can add several alternative ways to name the same parameter, for instance, you can make so that ‘auto zoom’ and ‘auto-zoom’ will do excellently the same as the main parameter ‘autozoom’. This is particularly handy for parameters such as ‘centre’ (British spelling) and ‘center’ (American spelling).
+* Property names now have aliases. This means you can add several alternative ways to name the same parameter, for instance, you can make so that ï¿½auto zoomï¿½ and ï¿½auto-zoomï¿½ will do excellently the same as the main parameter ï¿½autozoomï¿½. This is particularly handy for parameters such as ï¿½centreï¿½ (British spelling) and ï¿½centerï¿½ (American spelling).
 
 * Added Google Maps moon, Mars and sky support.
 
@@ -235,7 +235,7 @@ Changes in 0.3 discussed on the authors blog:
 
 ====Refactoring====
 
-* Created hook system for the mapping services. All hard-coded references to mapping services in the core code have been removed. A service is now added by one multi dimensional array in Maps.php (note that this can also be done in the initialization file of another extension!), which holds the name of the parser functions class and it’s location, the aliases for the service name (feature added in 0.2), and their allowed specific parameters and their aliases. This architecture allows other people to create their own mapping extension using the Maps (and Semantic Maps) ‘API’.
+* Created hook system for the mapping services. All hard-coded references to mapping services in the core code have been removed. A service is now added by one multi dimensional array in Maps.php (note that this can also be done in the initialization file of another extension!), which holds the name of the parser functions class and itï¿½s location, the aliases for the service name (feature added in 0.2), and their allowed specific parameters and their aliases. This architecture allows other people to create their own mapping extension using the Maps (and Semantic Maps) ï¿½APIï¿½.
 
 * Created a class that bundles common functionality from MapsBaseMap and SMFormInput.
 
