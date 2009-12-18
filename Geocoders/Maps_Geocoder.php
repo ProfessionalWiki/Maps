@@ -74,8 +74,7 @@ final class MapsGeocoder {
 		$wgAutoloadClasses[$egMapsAvailableGeoServices[$service]['class']] = $file;
 		
 		// Call the geocode function in the spesific geocoder class.
-		$phpAtLeast523 = MapsUtils::phpVersionIsEqualOrBigger('5.2.3');
-		$coordinates = call_user_func(array($egMapsAvailableGeoServices[$service]['class'], 'geocode'), $phpAtLeast523 ? $address : array($address));
+		$coordinates = call_user_func(array($egMapsAvailableGeoServices[$service]['class'], 'geocode'), $address);
 
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
 		if (self::$mEnableCache && $coordinates) {
