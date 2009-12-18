@@ -595,7 +595,7 @@ $messages['pl'] = array(
 Mapa nie może zostać wyświetlona.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Następujący adres został pominięty, ponieważ nie można go odnaleźć na mapie|Następujące adresy zostały pominięte, ponieważ nie można ich odnaleźć na mapie:}} $1.',
 	'maps_unrecognized_coords' => 'Następujące współrzędne nie zostały rozpoznane: $1.',
-	'maps_unrecognized_coords_for' => 'Następując{{PLURAL:$2|a współrzędna|e współrzędne}} nie został{{PLURAL:$2|a|y}} rozpoznan{{PLURAL:$2|a|e}} i został{{PLURAL:$2|a|y}} pominięte:
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Następującą współrzędną|Następujące współrzędne}} pominięto, ponieważ nie {{PLURAL:$2|została rozpoznana|zostały rozpoznane}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Mapa nie może zostać wyświetlona.',
 	'maps_click_to_activate' => 'Kliknij, aby aktywować mapę',
