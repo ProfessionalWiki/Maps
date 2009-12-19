@@ -153,9 +153,14 @@ $messages['be-tarask'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servijoù kartennoù hegerz : $1',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'R',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'K',
 	'semanticmaps_label_latitude' => 'Ledred :',
 	'semanticmaps_label_longitude' => 'Hedred :',
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
@@ -665,8 +670,15 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'Ø',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'V',
+	'semanticmaps_label_latitude' => 'Breddegrad:',
+	'semanticmaps_label_longitude' => 'Lengdegrad:',
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressen her',
+	'semanticmaps_notfound' => 'ikke funnet',
 );
 
 /** Occitan (Occitan)
