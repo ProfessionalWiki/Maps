@@ -576,11 +576,21 @@ $messages['oc'] = array(
 	'maps_desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocodadas
 ([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://wiki.bn2vs.com/wiki/Maps demonstracion]). 
 Servicis de cartografia disponibles : $1",
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Cap de coordenada es pas estada provesida pel plan.',
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} : $1.
 Lo plan pòt pas èsser afichat.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} e {{PLURAL:$2|es pas afichada|son pas afichadas}} sul plan : $1",
-	'maps_map' => 'Mapa',
+	'maps_unrecognized_coords' => 'Las coordenadas seguentas son pas estadas reconegudas : $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada seguenta es pas estada reconeguda|Las coordenadas seguentas son pas estadas reconegudas}} e {{PLURAL:$2|es estada omesa|son estadas omesas}} sus la mapa :
+$1',
+	'maps_map_cannot_be_displayed' => 'La mapa pòt pas èsser afichada.',
+	'maps_click_to_activate' => 'Clicar per activar la mapa',
+	'maps_overlays' => 'Superposicions',
+	'maps_photos' => 'Fòtos',
+	'maps_videos' => 'Vidèos',
+	'maps_wikipedia' => 'Wikipèdia',
+	'maps_webcams' => 'Webcams',
 );
 
 /** Polish (Polski)
