@@ -694,14 +694,23 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Odder
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostępne serwisy mapowe: $1',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_label_latitude' => 'Szerokość geograficzna:',
+	'semanticmaps_label_longitude' => 'Długość geograficzna:',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
 	'semanticmaps_notfound' => 'nie odnaleziono',
+	'semanticmaps_paramdesc_height' => 'Wysokość mapy, w pikselach (domyślnie: $1)',
+	'semanticmaps_paramdesc_width' => 'Szerokość mapy, w pikselach (domyślnie: $1)',
 );
 
 /** Piedmontese (Piemontèis)
