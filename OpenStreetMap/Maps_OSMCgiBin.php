@@ -63,21 +63,24 @@ final class MapsOSMCgiBin {
 	 * @return string
 	 */
 	public function getUrl() {
-		$args =
-			$this->options['base_url']
-			. '?'
-			. 'bbox=' . implode( ',', $this->bounds )
-			. '&amp;scale=' . $this->scale
-			. '&amp;format=' . $this->options['format'];
-
-		// Hack to support my custom cgi-bin/export script
-		if ( isset( $this->options['get_args'] ) ) {
-			$args .=
-				'&amp;maptype=' . $this->options['get_args']['maptype']
-				. '&amp;locale=' . $this->lang;
+		$urlElements = array();
+		
+		$urlElements[] = $this->options['base_url'];
+		$urlElements[] = '?bbox=';
+		$urlElements[] = implode( ',', $this->bounds );
+		$urlElements[] = '&amp;scale=';
+		$urlElements[] = $this->scale;
+		$urlElements[] = '&amp;format=';
+		$urlElements[] = $this->options['format'];
+		$urlElements[] = '&amp;locale=';
+		$urlElements[] = $this->lang;
+		
+		if (array_key_exists('maptype', $this->options)) {
+			$urlElements[] = '&amp;maptype=';
+			$urlElements[] = $this->options['maptype'];
 		}
 
-		return $args;
+		return implode('', $urlElements);
 	}
 
 	/**

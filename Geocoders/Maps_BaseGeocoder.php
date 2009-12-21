@@ -58,7 +58,6 @@ abstract class MapsBaseGeocoder {
 				if (array_key_exists('HTTP_USER_AGENT', $_SERVER))
 					curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 				// TODO else curl_setopt($ch, CURLOPT_USERAGENT, "MediaWiki/Maps extension");
-				//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			 
 				$result = curl_exec($ch);

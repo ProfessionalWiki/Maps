@@ -171,7 +171,7 @@ $egMapsGoogleMapsType = 'normal';
 $egMapsGoogleAutozoom = true;
 
 # Array of String. The default controls for Google Maps. This value will only be used when the user does not provide one.
-# Available values: auto, large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label
+# Available values: auto, large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label, overlays
 $egMapsGMapControls = array('auto', 'scale', 'type', 'overlays');
 
 # Array. The default overlays for the Google Maps overlays control, and wether they should be shown at pageload.
@@ -238,3 +238,6 @@ $egMapsOSMZoom = 13;
 # Array of String. The default controls for OSM maps. This value will only be used when the user does not provide one.
 # Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
 $egMapsOSMControls = array('layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation');
+
+$egMapsOSMStaticAsDefault = false;
+$egMapsOSMStaticActivatable = true;

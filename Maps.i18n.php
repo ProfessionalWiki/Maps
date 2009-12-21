@@ -39,6 +39,7 @@ $1',
 
 	// Static maps
 	'maps_click_to_activate' => 'Click to activate map',
+	'maps_centred_on' => 'Map centred on',
 
 	// Google Maps overlays
 	'maps_overlays' => 'Overlays',	

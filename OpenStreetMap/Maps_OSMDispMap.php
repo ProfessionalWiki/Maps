@@ -22,7 +22,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 	 *
 	 */	
 	protected function setMapSettings() {
-		global $egMapsOSMZoom, $egMapsOSMPrefix;
+		global $egMapsOSMZoom, $egMapsOSMPrefix,$egMapsOSMStaticAsDefault, $egMapsOSMStaticActivatable;
 		
 		$this->elementNamePrefix = $egMapsOSMPrefix;
 		$this->defaultZoom = $egMapsOSMZoom;
@@ -34,14 +34,20 @@ class MapsOSMDispMap extends MapsBaseMap {
 				'criteria' => array(
 					'in_array' => array('yes', 'no')
 					),
-				'default' => 'no'												
+				'default' => $egMapsOSMStaticAsDefault ? 'yes' : 'no'												
 				),
 			'mode' => array(
 				'criteria' => array(
 					'in_array' => $modes
 					),
-				'default' => $modes[0]								
-				),							
+				'default' => $modes[0]			
+				),
+			'activatable' => array(
+				'criteria' => array(
+					'in_array' => array('yes', 'no')
+					),
+				'default' => $egMapsOSMStaticActivatable ? 'yes' : 'no'		
+				),										
 		);		
 	}
 	
@@ -84,7 +90,6 @@ class MapsOSMDispMap extends MapsBaseMap {
 EOT;
 	
 		$this->output .= $this->static == 'yes' ? $this->getStaticMap() : $this->getDynamicMap();
-		
 	}
 	
 	/**
@@ -110,30 +115,35 @@ EOT;
 	 * @return string
 	 */	
 	private function getStaticMap() {
-		$clickToActivate = wfMsg('maps_click_to_activate');
-		
 		$mode = MapsOSM::getModeData($this->mode);
 
-		$staticType				= $mode['static_rendering']['type'];
-		$staticOptions			= $mode['static_rendering']['options'];
+		$staticType		= $mode['handler'];
+		$staticOptions	= $mode['options'];
 		
-		$static = new $staticType($this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions);
-		$rendering_url = $static->getUrl();
+		$static 		= new $staticType($this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions);
+		$rendering_url 	= $static->getUrl();
+		
+		$alt = wfMsg('maps_centred_on') . " $this->centre_lat, $this->centre_lon.";
+		
+		if ($this->activatable != 'no') {
+			$title = wfMsg('maps_click_to_activate');
+			$activationCode = "onclick=\"slippymaps['$this->mapName'].init();\"";
+		}
+		else {
+			$activationCode = '';
+			$title = $alt;
+		}
 		
 		return <<<EOT
-				<!-- map div -->
 				<div id="$this->mapName" class="map" style="width:{$this->width}px; height:{$this->height}px;">
-					<!-- Static preview -->
-					<img
-						id="$this->mapName-preview"
+					<img id="$this->mapName-preview"
 						class="mapPreview"
-						src="{$rendering_url}"
-						onclick="slippymaps['$this->mapName'].init();"
+						src="{$rendering_url}" 
 						width="$this->width"
 						height="$this->height"
-						alt="Map centred on $this->centre_lat, $this->centre_lon."
-						title="$clickToActivate"/>
-				<!-- /map div -->
+						alt="$alt"
+						title="$title"
+						$activationCode />
 				</div>
 EOT;
 	}

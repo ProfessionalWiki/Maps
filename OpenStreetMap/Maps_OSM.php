@@ -94,57 +94,49 @@ class MapsOSM {
 	
 	private static $modes = array(
 		'osm-wm' => array(
-			// First layer = default
-			'layers' => array( 'osm-like' ),
+			'handler' => 'MapsOSMCgiBin',
+			'options' => array(
+				'base_url' => 'http://cassini.toolserver.org/cgi-bin/export',
+
+				'format' => 'png',
+				'numZoomLevels' => 16,
+				'maxResolution' => 156543.0339,
+				'unit' => 'm',
+				'sphericalMercator' => true,
 	
-			'static_rendering' => array(
-				'type' => 'MapsOSMCgiBin',
-				'options' => array(
-					'base_url' => 'http://cassini.toolserver.org/cgi-bin/export',
-	
-					'format' => 'png',
-					'numZoomLevels' => 16,
-					'maxResolution' => 156543.0339,
-					'unit' => 'm',
-					'sphericalMercator' => true,
-	
-					// More GET arguments
-					'get_args' => array(
-						'locale' => true, // Will use $wgContLang->getCode()
-						'maptype' => 'osm-like'
-					),
-				),
+				'maptype' => 'osm-like'
 			),
 		),
 		
 		'osm' => array(
-			// First layer = default
-			'layers' => array( 'mapnik', 'osmarender', 'maplint', 'cycle' ),
-	
-			'static_rendering' => array(
-				'type' => 'MapsOSMCgiBin',
-				'options' => array(
-					'base_url' => 'http://tile.openstreetmap.org/cgi-bin/export',
-	
-					'format' => 'png',
-					'numZoomLevels' => 16,
-					'maxResolution' => 156543.0339,
-					'unit' => 'm',
-					'sphericalMercator' => true
-				),
+			'handler' => 'MapsOSMCgiBin',
+			'options' => array(
+				'base_url' => 'http://tile.openstreetmap.org/cgi-bin/export',
+
+				'format' => 'png',
+				'numZoomLevels' => 16,
+				'maxResolution' => 156543.0339,
+				'unit' => 'm',
+				'sphericalMercator' => true
 			),
-		),
-		
-		'satellite' => array(
-			'layers' => array( 'urban', 'landsat', 'bluemarble' ),
-			'static_rendering' => null,
 		),
 	);
 	
+	/**
+	 * Returns an array containing the names of all modes.
+	 * 
+	 * @return array
+	 */
 	public static function getModeNames() {
 		return array_keys(self::$modes);
 	}
 	
+	/**
+	 * Returns the data of a mode.
+	 * 
+	 * @param string $modeName
+	 * @return array
+	 */
 	public static function getModeData($modeName) {
 		return self::$modes[$modeName];
 	}
