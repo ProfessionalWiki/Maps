@@ -123,7 +123,7 @@ EOT;
 		$static 		= new $staticType($this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions);
 		$rendering_url 	= $static->getUrl();
 		
-		$alt = wfMsg('maps_centred_on') . " $this->centre_lat, $this->centre_lon.";
+		$alt = wfMsg( 'maps_centred_on', $this->centre_lat, $this->centre_lon );
 		
 		if ($this->activatable != 'no') {
 			$title = wfMsg('maps_click_to_activate');
