@@ -1,7 +1,7 @@
 <?php
 
 /**
- * File defining the settings for the Maps extension
+ * File defining the settings for the Maps extension.
  * More info can be found at http://www.mediawiki.org/wiki/Extension:Maps#Settings
  *
  *                          NOTICE:
@@ -239,5 +239,10 @@ $egMapsOSMZoom = 13;
 # Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
 $egMapsOSMControls = array('layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation');
 
+# Boolean. Indicates whether you want to get a static map (image) or not.
+# This value will only be used when the user does not provide one.
 $egMapsOSMStaticAsDefault = false;
+
+# Boolean. Indicates whether the user should be able to activate a static map.
+# This value will only be used when the user does not provide one.      
 $egMapsOSMStaticActivatable = true;
