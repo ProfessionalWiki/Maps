@@ -92,7 +92,7 @@ Beskikbare kaartdienste: $1',
 	'semanticmaps_paramdesc_types' => 'Die kaarttipes beskikbaar op die kaart',
 	'semanticmaps_paramdesc_type' => 'Die standaard kaarttipe vir die kaart',
 	'semanticmaps_paramdesc_overlays' => 'Die oorleggings beskikbaar op die kaart',
-	'semanticmaps_paramdesc_autozoom' => 'Of in- en uit-zoom met die muis se wiel moontlik is',
+	'semanticmaps_paramdesc_autozoom' => 'Of in- en uitzoom met die muis se wiel moontlik is',
 	'semanticmaps_paramdesc_layers' => 'Die lae beskikbaar op die kaart',
 );
 
@@ -168,6 +168,7 @@ $messages['br'] = array(
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
 	'semanticmaps_paramdesc_height' => 'Uhelder ar gartenn, e pikseloù ($1 dre izouer)',
 	'semanticmaps_paramdesc_width' => 'Ledander ar gartenn, e pikseloù ($1 dre izouer)',
+	'semanticmaps_paramdesc_types' => "Tu 'zo kaout an doareoù kartennoù war ar gartenn",
 	'semanticmaps_paramdesc_layers' => 'Ar gwiskadoù zo da gaout war ar gartenn',
 );
 
