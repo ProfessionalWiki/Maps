@@ -51,6 +51,7 @@ $1',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Fryed-peach
  * @author Purodha
  * @author Raymond
  */
@@ -59,9 +60,10 @@ $messages['qqq'] = array(
 	'maps_desc' => '{{desc}}
 
 * $1: a list of available map services',
+	'maps_map' => '{{Identical|Map}}',
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
-	'maps_map' => '{{Identical|Map}}',
+	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -86,10 +88,22 @@ $messages['ar'] = array(
 	'maps_name' => 'خرائط',
 	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://wiki.bn2vs.com/wiki/Maps تجربة]).
 خدمات الخرائط المتوفرة: $1',
+	'maps_map' => 'خريطة',
+	'maps_coordinates_missing' => 'لا إحداثيات موفرة للخريطة.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|العنوان التالي|العناوين التالية}} لم يمكن تكويدها جغرافيا و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
+$1',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|الإحداثي التالي|الإحداثيات التالية}} لم يتم التعرف عليها و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
+$1',
 	'maps_googlemaps' => 'خرائط جوجل',
 	'maps_yahoomaps' => 'خرائط ياهو!',
 	'maps_openlayers' => 'أوبن لايرز',
 	'maps_osm' => 'أوبن ستريت ماب',
+	'maps_click_to_activate' => 'اضغط لتنشيط الخريطة',
+	'maps_overlays' => 'الطبقات الإضافية',
+	'maps_photos' => 'صور',
+	'maps_videos' => 'فيديوهات',
+	'maps_wikipedia' => 'ويكيبيديا',
+	'maps_webcams' => 'كاميرات الويب',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -109,6 +123,7 @@ $1',
 $1',
 	'maps_map_cannot_be_displayed' => 'Мапа ня можа быць паказаная.',
 	'maps_click_to_activate' => 'Націсьніце для актывацыі мапы',
+	'maps_centred_on' => 'Цэнтар мапы — $1, $2.',
 	'maps_overlays' => 'Слаі',
 	'maps_photos' => 'Фотаздымкі',
 	'maps_videos' => 'Відэа',
@@ -196,6 +211,7 @@ K dispoziciji stojece kórtowe słužby: $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědujuca koordinata njejo se spóznała|Slědujucej koordinaśe stej se spóznałej|Slědujuce koordinaty su se spóznali|Slědujuce koordinaty su se spóznali}} a {{PLURAL:$2|njejo se wuwóstajiła|njejstej se wuwóstajiłej|njejsu wuwóstajili|njejsu se wuwóstajili}} na kórśe: $1',
 	'maps_map_cannot_be_displayed' => 'Kórta njedajo se zwobrazniś.',
 	'maps_click_to_activate' => 'Klikni, aby kórtu aktiwěrował',
+	'maps_centred_on' => 'Kórta na $1, $2 centrěrowana.',
 	'maps_overlays' => 'Pśekšyśa',
 	'maps_photos' => 'Fota',
 	'maps_videos' => 'Wideo',
@@ -237,17 +253,25 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
+	'maps_map' => 'Kartta',
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
 Karttaa ei voida näyttää.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|on|ovat}} jätetty kartalta: $1',
+	'maps_map_cannot_be_displayed' => 'Karttaa ei voida näyttää.',
+	'maps_photos' => 'Kuvat',
+	'maps_videos' => 'Videot',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Web-kamerat',
 );
 
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Jean-Frédéric
  * @author McDutchie
  * @author PieRRoMaN
  * @author Verdy p
@@ -266,6 +290,7 @@ Le plan ne peut pas être affiché.",
 $1",
 	'maps_map_cannot_be_displayed' => 'La carte ne peut pas être affichée.',
 	'maps_click_to_activate' => 'Cliquer pour activer la carte',
+	'maps_centred_on' => 'Carte centrée sur $1, $2.',
 	'maps_overlays' => 'Superpositions',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Vidéos',
@@ -303,6 +328,7 @@ O mapa non se pode mostrar.',
 $1',
 	'maps_map_cannot_be_displayed' => 'O mapa non se pode mostrar.',
 	'maps_click_to_activate' => 'Prema para activar o mapa',
+	'maps_centred_on' => 'Mapa centrado en $1, $2.',
 	'maps_overlays' => 'Sobreposicións',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Vídeos',
@@ -324,6 +350,7 @@ $messages['gsw'] = array(
 $1',
 	'maps_map_cannot_be_displayed' => 'D Charte cha nit aazeigt wäre.',
 	'maps_click_to_activate' => 'Klick go d Charte aktiviere',
+	'maps_centred_on' => 'Charte zäntriert uf $1, $2.',
 	'maps_overlays' => 'Overlay',
 	'maps_photos' => 'Foto',
 	'maps_videos' => 'Video',
@@ -379,6 +406,7 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}} a {{PLURAL:$2|bu na karće wuwostajena|buštej na karće wuwostajenej|buchu na karće wuwostajene|buchu na karće wuwostajene}}: $1',
 	'maps_map_cannot_be_displayed' => 'Karta njeda so zwobraznić.',
 	'maps_click_to_activate' => 'Klikń, zo by kartu aktiwizował',
+	'maps_centred_on' => 'Karta na $1, $2 centrowana.',
 	'maps_overlays' => 'Naworštowanja',
 	'maps_photos' => 'Fota',
 	'maps_videos' => 'Wideja',
@@ -426,6 +454,7 @@ $1',
 $1',
 	'maps_map_cannot_be_displayed' => 'Le carta on pote esser monstrate.',
 	'maps_click_to_activate' => 'Clicca pro activar le carta',
+	'maps_centred_on' => 'Carta centrate super $1, $2.',
 	'maps_overlays' => 'Superpositiones',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Videos',
@@ -474,6 +503,7 @@ $messages['ja'] = array(
 $1',
 	'maps_map_cannot_be_displayed' => 'この地図は表示できません。',
 	'maps_click_to_activate' => 'クリックして地図をアクティブに',
+	'maps_centred_on' => '地図の中心は $1、$2。',
 	'maps_overlays' => 'オーバーレイ',
 	'maps_photos' => '写真',
 	'maps_videos' => '動画',
@@ -563,6 +593,7 @@ $1.',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_click_to_activate' => 'Klik om de kaart te activeren',
+	'maps_centred_on' => 'Kaart gecentreerd op $1, $2.',
 	'maps_overlays' => "Overlay's",
 	'maps_photos' => "Foto's",
 	'maps_videos' => 'Video',
@@ -658,6 +689,7 @@ $1.',
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
 	'maps_click_to_activate' => 'Clique para activar o mapa',
+	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
 	'maps_overlays' => 'Sobreposições',
 	'maps_photos' => 'Fotografias',
 	'maps_videos' => 'Vídeos',
@@ -679,18 +711,23 @@ $1',
 );
 
 /** Romanian (Română)
+ * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Minisarm
  */
 $messages['ro'] = array(
 	'maps_desc' => 'Asigură capacitatea de a afişa coordonate pe hărţi şi adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstraţie]).
 Servici de cartografiere disponibile: $1',
+	'maps_map' => 'Hartă',
 	'maps_coordinates_missing' => 'Nici o coordonată oferită pentru hartă.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}}: $1.
 Harta nu poate fi afişată.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}} şi {{PLURAL:$2|a|au}} fost {{PLURAL:$2|omisă|omise}} de pe hartă:
 $1',
-	'maps_map' => 'Hartă',
+	'maps_photos' => 'Fotografii',
+	'maps_videos' => 'Filme',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Camere web',
 );
 
 /** Tarandíne (Tarandíne)
@@ -719,6 +756,7 @@ $1',
 $1',
 	'maps_map_cannot_be_displayed' => 'Карта не может быть показана.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
+	'maps_centred_on' => 'Центр карты — $1, $2.',
 	'maps_overlays' => 'Слои',
 	'maps_photos' => 'Фото',
 	'maps_videos' => 'Видео',
@@ -759,6 +797,15 @@ $1',
 	'maps_wikipedia' => 'Wikipedia',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'maps_photos' => 'చిత్రాలు',
+	'maps_videos' => 'దృశ్యకాలు',
+	'maps_wikipedia' => 'వికీపీడియా',
+);
+
 /** Thai (ไทย)
  * @author Woraponboonkerd
  */
@@ -766,6 +813,20 @@ $messages['th'] = array(
 	'maps_desc' => 'ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://wiki.bn2vs.com/wiki/Maps demo]).
 <br />บริการแผนที่ที่มีอยู่: $1',
 	'maps_coordinates_missing' => 'ไม่ได้กำหนดพิกัดของแผนที่มาให้',
+);
+
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'maps_map' => 'Harita',
+	'maps_unrecognized_coords' => 'Şu koordinatlar tanınamadı: $1',
+	'maps_map_cannot_be_displayed' => 'Harita görüntülenemiyor.',
+	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
+	'maps_photos' => 'Fotoğraflar',
+	'maps_videos' => 'Videolar',
+	'maps_wikipedia' => 'Vikipedi',
+	'maps_webcams' => 'Web kameraları',
 );
 
 /** Vietnamese (Tiếng Việt)
