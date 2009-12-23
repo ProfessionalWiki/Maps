@@ -69,8 +69,6 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->controls = MapsMapper::createJSItemsString($this->controls);
-		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
 		
 		$this->output .="

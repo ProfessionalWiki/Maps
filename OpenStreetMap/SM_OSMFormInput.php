@@ -71,8 +71,6 @@ final class SMOSMFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;		
 		
-		$controlItems = MapsMapper::createJSItemsString($this->controls);
-		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>
 			makeOSMFormInput(
@@ -87,7 +85,7 @@ final class SMOSMFormInput extends SMFormInput {
 				zoom: $this->zoom,
 				width: $this->width,
 				height: $this->height,
-				controls: [$controlItems],
+				controls: [$this->controls],
 				}
 				);
 				

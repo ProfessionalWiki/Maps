@@ -72,9 +72,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		
 		$type = MapsYahooMaps::getYMapType($this->type, true);
 		
-		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
-		
-		$this->controls = MapsMapper::createJSItemsString($this->controls);		
+		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);	
 		
 		$typesString = MapsYahooMaps::createTypesString($this->types);			
 		

@@ -68,8 +68,6 @@ final class SMOSMQP extends SMMapPrinter {
 
 		$markersString = implode(',', $markerItems);		
 		
-		$controlItems = MapsMapper::createJSItemsString($this->controls);
-		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
 				mode: 'osm-wm',
@@ -81,7 +79,7 @@ final class SMOSMQP extends SMMapPrinter {
 				width: $this->width,
 				height: $this->height,
 				markers: [$markersString],
-				controls: [$controlItems]
+				controls: [$this->controls]
 			});</script>
 		
 				<!-- map div -->
