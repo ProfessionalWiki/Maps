@@ -63,7 +63,12 @@ final class SMQueryPrinters {
 			'centre' => array(
 				'aliases' => array('center'),
 				'default' => $egMapsDefaultCentre		
-				),								
+				),
+			'limit' => array(),
+			'headers' => array(),
+			'mainlabel' => array(),
+			'link' => array(),
+			'distance' => array(),
 			);		
 	}	
 	
