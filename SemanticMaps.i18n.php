@@ -104,9 +104,20 @@ $messages['ar'] = array(
 	'semanticmaps_name' => 'خرائط دلالية',
 	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://wiki.bn2vs.com/wiki/Semantic_Maps تجربة]).
 خدمات الخرائط المتوفرة: $1',
+	'semanticmaps_abb_north' => 'شم',
+	'semanticmaps_abb_east' => 'شر',
+	'semanticmaps_abb_south' => 'ج',
+	'semanticmaps_abb_west' => 'غ',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 	'semanticmaps_notfound' => 'لم يوجد',
+	'semanticmaps_paramdesc_geoservice' => 'خدمة التكويد الجغرافي المستخدمة لتحويل العناوين إلى إحداثيات',
+	'semanticmaps_paramdesc_zoom' => 'مستوى التقريب للخريطة',
+	'semanticmaps_paramdesc_controls' => 'متحكمات المستخدم موضوعة على الخريطة',
+	'semanticmaps_paramdesc_types' => 'أنواع الخرائط المتوفرة على الخريطة',
+	'semanticmaps_paramdesc_overlays' => 'الطبقات الفوقية متوفرة على الخريطة',
+	'semanticmaps_paramdesc_autozoom' => 'لو أن التقريب والابتعاد بواسطة استخدام عجلة تدحرج الفأرة مفعلة',
+	'semanticmaps_paramdesc_layers' => 'الطبقات المتوفرة على الخريطة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -290,9 +301,13 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'semanticmaps_label_latitude' => 'Leveysaste',
+	'semanticmaps_label_longitude' => 'Pituusaste',
+	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
 	'semanticmaps_notfound' => 'ei löytynyt',
 );
 
@@ -705,13 +720,13 @@ Dostępne serwisy mapowe: $1',
 	'semanticmaps_abb_east' => 'E',
 	'semanticmaps_abb_south' => 'S',
 	'semanticmaps_abb_west' => 'W',
-	'semanticmaps_label_latitude' => 'Szerokość geograficzna:',
-	'semanticmaps_label_longitude' => 'Długość geograficzna:',
+	'semanticmaps_label_latitude' => 'Szerokość geograficzna',
+	'semanticmaps_label_longitude' => 'Długość geograficzna',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
 	'semanticmaps_notfound' => 'nie odnaleziono',
-	'semanticmaps_paramdesc_height' => 'Wysokość mapy, w pikselach (domyślnie: $1)',
-	'semanticmaps_paramdesc_width' => 'Szerokość mapy, w pikselach (domyślnie: $1)',
+	'semanticmaps_paramdesc_height' => 'Wysokość mapy w pikselach (domyślnie $1)',
+	'semanticmaps_paramdesc_width' => 'Szerokość mapy w pikselach (domyślnie $1)',
 );
 
 /** Piedmontese (Piemontèis)
@@ -794,6 +809,13 @@ Serviços de mapeamento disponíveis: $1',
  * @author Firilacroco
  */
 $messages['ro'] = array(
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'V',
+	'semanticmaps_label_latitude' => 'Latitudine:',
+	'semanticmaps_label_longitude' => 'Longitudine:',
+	'semanticmaps_enteraddresshere' => 'Introduceţi adresa aici',
 	'semanticmaps_notfound' => 'nu a fost găsit',
 );
 
@@ -871,16 +893,34 @@ $messages['sr-el'] = array(
 /** Swedish (Svenska)
  * @author Boivie
  * @author Najami
+ * @author Per
  */
 $messages['sv'] = array(
+	'semanticmaps_bad_latlong' => 'Bredd och längdgrad skall anges endast en gång och med giltiga koordinater.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'Ö',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'V',
+	'semanticmaps_label_latitude' => 'Breddgrad:',
+	'semanticmaps_label_longitude' => 'Längdgrad:',
 	'semanticmaps_lookupcoordinates' => 'Kolla upp koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv in adress här',
+	'semanticmaps_notfound' => 'hittades inte',
+	'semanticmaps_paramdesc_height' => 'Höjden på kartan i pixlar (standard är $1)',
+	'semanticmaps_paramdesc_width' => 'Bredden på kartan i pixlar (standard är $1)',
+	'semanticmaps_paramdesc_layers' => 'Lagren tillgängliga för kartan',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
+	'semanticmaps_abb_north' => 'ఉ',
+	'semanticmaps_abb_east' => 'తూ',
+	'semanticmaps_abb_south' => 'ద',
+	'semanticmaps_abb_west' => 'ప',
+	'semanticmaps_label_latitude' => 'అక్షాంశం:',
+	'semanticmaps_label_longitude' => 'రేఖాంశం:',
 	'semanticmaps_notfound' => 'కనబడలేదు',
 );
 
