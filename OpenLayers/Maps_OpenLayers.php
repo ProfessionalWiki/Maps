@@ -58,16 +58,16 @@ class MapsOpenLayers {
 										'default' => $egMapsOpenLayersZoom, 	
 									),	
 									'controls' => array(
-										'type' => 'list',
+										'type' => array('string', 'list'),
 										'criteria' => array(
-											'all_in_array' => self::getControlNames()
+											'in_array' => self::getControlNames()
 											),
 										'default' => $egMapsOLControls		
 										),		
 									'layers' => array(  
-										'type' => 'list',
+										'type' => array('string', 'list'),
 										'criteria' => array(
-											'all_in_array' => self::getLayerNames()
+											'in_array' => self::getLayerNames()
 											),
 										'default' => $egMapsOLLayers										
 										),							

@@ -56,33 +56,34 @@ class MapsGoogleMaps {
 										'default' => $egMapsGoogleMapsZoom,
 										),
 									'controls' => array(
-										'type' => 'list',
+										'type' => array('string', 'list'),
 										'criteria' => array(
-											'all_in_array' => self::getControlNames()
+											'in_array' => self::getControlNames()
 											),
 										'default' => $egMapsGMapControls	
 										),
-									'type' => array (
+									'type' => array(
 										'aliases' => array('map-type', 'map type'),
 										'criteria' => array(
 											'in_array' => $allowedTypes		
 											),
 										'default' => $egMapsGoogleMapsType												
 										),
-									'types' => array (
-										'type' => 'list',
+									'types' => array(
+										'type' => array('string', 'list'),
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
-											'all_in_array' => $allowedTypes
+											'in_array' => $allowedTypes
 											),
 										'default' => $egMapsGoogleMapsTypes							
 										),
 									'autozoom' => array(
+										'type' => 'boolean',
 										'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
 										'criteria' => array(
 											'in_array' => array('on', 'off', 'yes', 'no')	
 											),		
-										'default' => $egMapsGoogleAutozoom ? 'on' : 'off'										
+										'default' => $egMapsGoogleAutozoom										
 										),									
 									'class' => array(),
 									'style' => array(),

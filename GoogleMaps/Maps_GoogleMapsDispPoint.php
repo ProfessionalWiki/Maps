@@ -36,9 +36,9 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		
 		$this->spesificParameters = array(
 			'overlays' => array(
-				'type' => 'list-string',
+				'type' => array('string', 'list'),
 				'criteria' => array(
-					'all_in_array' => MapsGoogleMaps::getOverlayNames()
+					'in_array' => MapsGoogleMaps::getOverlayNames()
 					),											
 				),	
 			'zoom' => array(

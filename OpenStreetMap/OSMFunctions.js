@@ -151,7 +151,7 @@ slippymap_map.prototype.osm_create = function(mapId, lon, lat, zoom, initialized
 	}	
 	
 	if (this.layer == 'osm-like') {
-		osmLayer = new OpenLayers.Layer.OSM("OpenStreetMaps", 'http://cassini.toolserver.org/tiles/osm-like/' + this.locale + '/${z}/${x}/${y}.png');
+		osmLayer = new OpenLayers.Layer.OSM("OpenStreetMap", 'http://cassini.toolserver.org/tiles/osm-like/' + this.locale + '/${z}/${x}/${y}.png');
     }
 	
 	map.addLayers([osmLayer]);

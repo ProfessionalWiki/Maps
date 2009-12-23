@@ -56,9 +56,9 @@ class MapsYahooMaps {
 										'default' => $egMapsYahooMapsZoom
 										),
 									'controls' => array(
-										'type' => 'list',
+										'type' => array('string', 'list'),
 										'criteria' => array(
-											'all_in_array' => self::getControlNames()
+											'in_array' => self::getControlNames()
 										),
 										'default' => $egMapsYMapControls			
 										),
@@ -70,10 +70,10 @@ class MapsYahooMaps {
 										'default' => $egMapsYahooMapsType										
 										),
 									'types' => array (
-										'type' => 'list',
+										'type' => array('string', 'list'),
 										'aliases' => array('map-types', 'map types'),
 										'criteria' => array(
-											'all_in_array' => $allowedTypes
+											'in_array' => $allowedTypes
 											),
 										'default' =>  $egMapsYahooMapsTypes										
 										),			
