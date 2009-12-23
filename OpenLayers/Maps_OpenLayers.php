@@ -62,7 +62,8 @@ class MapsOpenLayers {
 										'criteria' => array(
 											'in_array' => self::getControlNames()
 											),
-										'default' => $egMapsOLControls		
+										'default' => $egMapsOLControls	,
+										'output-type' => array('list', ',', '\'')	
 										),		
 									'layers' => array(  
 										'type' => array('string', 'list'),

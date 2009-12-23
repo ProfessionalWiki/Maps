@@ -61,15 +61,13 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	 */	
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
-		
-		$controlItems = MapsMapper::createJSItemsString($this->controls);
-		
+
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
 		
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
 			addOnloadHook(
-				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$controlItems],[$this->markerString], $this->height)
+				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls],[$this->markerString], $this->height)
 			);
 		/*]]>*/ </script>";
 	}

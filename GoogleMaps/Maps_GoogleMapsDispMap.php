@@ -58,8 +58,6 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 		global $wgJsMimeType;
 		
 		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
-			
-		$this->controls = MapsMapper::createJSItemsString($this->controls);
 		
 		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		

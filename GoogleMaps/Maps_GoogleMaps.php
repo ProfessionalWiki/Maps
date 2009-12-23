@@ -60,7 +60,8 @@ class MapsGoogleMaps {
 										'criteria' => array(
 											'in_array' => self::getControlNames()
 											),
-										'default' => $egMapsGMapControls	
+										'default' => $egMapsGMapControls,
+										'output-type' => array('list', ',', '\'')
 										),
 									'type' => array(
 										'aliases' => array('map-type', 'map type'),

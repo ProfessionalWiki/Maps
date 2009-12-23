@@ -60,7 +60,8 @@ class MapsYahooMaps {
 										'criteria' => array(
 											'in_array' => self::getControlNames()
 										),
-										'default' => $egMapsYMapControls			
+										'default' => $egMapsYMapControls,
+										'output-type' => array('list', ',', '\'')		
 										),
 									'type' => array (
 										'aliases' => array('map-type', 'map type'),

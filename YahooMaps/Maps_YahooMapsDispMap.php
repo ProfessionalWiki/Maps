@@ -49,8 +49,6 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 		global $wgJsMimeType;
 		
 		$this->type = MapsYahooMaps::getYMapType($this->type, true);
-		
-		$this->controls = MapsMapper::createJSItemsString($this->controls);
 
 		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
 		

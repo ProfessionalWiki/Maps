@@ -61,8 +61,6 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;	
 		
-		$controlItems = MapsMapper::createJSItemsString($this->controls);
-		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
 				mode: 'osm-wm',
@@ -74,7 +72,7 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 				width: $this->width,
 				height: $this->height,
 				markers: [$this->markerString],
-				controls: [$controlItems]
+				controls: [$this->controls]
 			});</script>
 		
 				<!-- map div -->

@@ -60,7 +60,8 @@ class MapsOSM {
 				'criteria' => array(
 					'in_array' => self::getControlNames()
 					),
-				'default' => $egMapsOSMControls			
+				'default' => $egMapsOSMControls,
+				'output-type' => array('list', ',', '\'')	
 				),	
 			'lang' => array(
 				'aliases' => array('locale', 'language'),	
