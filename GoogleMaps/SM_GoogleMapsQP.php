@@ -70,8 +70,6 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 
 		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
-		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
-		
 		$markerItems = array();
 		
 		foreach ($this->m_locations as $location) {

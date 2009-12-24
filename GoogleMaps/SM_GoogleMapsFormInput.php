@@ -72,8 +72,6 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
-		
 		// Remove the overlays control in case it's present.
 		if (in_string('overlays', $this->controls)) {
 			$this->controls = str_replace(",'overlays'", '', $this->controls);

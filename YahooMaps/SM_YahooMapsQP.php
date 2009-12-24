@@ -53,8 +53,6 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
-
-		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();
 		
