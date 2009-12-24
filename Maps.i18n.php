@@ -90,15 +90,19 @@ $messages['ar'] = array(
 خدمات الخرائط المتوفرة: $1',
 	'maps_map' => 'خريطة',
 	'maps_coordinates_missing' => 'لا إحداثيات موفرة للخريطة.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|العنوان التالي|العناوين التالية}} لم يمكن تكويدها جغرافيا: $1.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|العنوان التالي|العناوين التالية}} لم يمكن تكويدها جغرافيا و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
 $1',
+	'maps_unrecognized_coords' => 'الإحداثيات التالية لم يتم التعرف عليها: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|الإحداثي التالي|الإحداثيات التالية}} لم يتم التعرف عليها و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
 $1',
+	'maps_map_cannot_be_displayed' => 'الخريطة لا يمكن عرضها.',
 	'maps_googlemaps' => 'خرائط جوجل',
 	'maps_yahoomaps' => 'خرائط ياهو!',
 	'maps_openlayers' => 'أوبن لايرز',
 	'maps_osm' => 'أوبن ستريت ماب',
 	'maps_click_to_activate' => 'اضغط لتنشيط الخريطة',
+	'maps_centred_on' => 'الخريطة مركزها في $1، $2.',
 	'maps_overlays' => 'الطبقات الإضافية',
 	'maps_photos' => 'صور',
 	'maps_videos' => 'فيديوهات',
@@ -221,9 +225,13 @@ K dispoziciji stojece kórtowe słužby: $1',
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author ZaDiak
  */
 $messages['el'] = array(
 	'maps_coordinates_missing' => 'Καμία συντεταγμένη δεν παρασχέθηκε για τον χάρτη.',
+	'maps_photos' => 'Φωτογραφίες',
+	'maps_videos' => 'Βίντεο',
+	'maps_wikipedia' => 'Βικιπαίδεια',
 );
 
 /** Spanish (Español)
@@ -599,6 +607,27 @@ $1.',
 	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcams',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'maps_map' => 'Kart',
+	'maps_coordinates_missing' => 'Ingen koordinater oppgitt for kartet.',
+	'maps_geocoding_failed' => 'Følgende {{PLURAL:$2|adresse|adresser}} kunne ikke geokodes: $1.',
+	'maps_geocoding_failed_for' => 'Følgende {{PLURAL:$2|adresse|adresser}} kunne ikke geokodes og har blitt utelatt fra kartet:
+$1',
+	'maps_unrecognized_coords' => 'Følgende koordinat ble ikke gjenkjent: $1.',
+	'maps_unrecognized_coords_for' => 'Følgende {{PLURAL:$2|koordinat|koordinater}} ble ikke gjenkjent og har blitt utelatt fra kartet:
+$1',
+	'maps_map_cannot_be_displayed' => 'Kartet kan ikke vises.',
+	'maps_click_to_activate' => 'Klikk for å aktivere kartet',
+	'maps_centred_on' => 'Kart sentrert om $1, $2.',
+	'maps_photos' => 'Foto',
+	'maps_videos' => 'Videoer',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webkamera',
 );
 
 /** Occitan (Occitan)
