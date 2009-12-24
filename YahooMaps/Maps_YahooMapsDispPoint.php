@@ -61,8 +61,6 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);	
-		
 		$this->output .= <<<END
 		<div id="$this->mapName" style="width: {$this->width}px; height: {$this->height}px;"></div>  
 		

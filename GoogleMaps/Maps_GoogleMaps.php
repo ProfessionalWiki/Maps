@@ -71,7 +71,7 @@ class MapsGoogleMaps {
 						'in_array' => $allowedTypes		
 						),
 					'default' => $egMapsGoogleMapsType,
-					'output-type' => array('gmaptype')											
+					'output-type' => 'gmaptype'										
 					),
 				'types' => array(
 					'type' => array('string', 'list'),
@@ -84,11 +84,9 @@ class MapsGoogleMaps {
 					),
 				'autozoom' => array(
 					'type' => 'boolean',
-					'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
-					'criteria' => array(
-						'in_array' => array('on', 'off', 'yes', 'no')	
-						),		
-					'default' => $egMapsGoogleAutozoom										
+					'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),	
+					'default' => $egMapsGoogleAutozoom	,
+					'output-type' => 'boolstr'									
 					),									
 				'class' => array(),
 				'style' => array(),
@@ -193,18 +191,6 @@ class MapsGoogleMaps {
 	}
 	
 	/**
-	 * TODO: remove
-	 * 
-	 * Retuns a boolean as string, true if $autozoom is on or yes.
-	 *
-	 * @param string $autozoom
-	 * @return string
-	 */
-	public static function getAutozoomJSValue($autozoom) {
-		return MapsMapper::getJSBoolValue(in_array($autozoom, array('on', 'yes')));
-	}
-	
-	/**
 	 * This function ensures backward compatibility with Semantic Google Maps and other extensions
 	 * using $wgGoogleMapsKey instead of $egGoogleMapsKey.
 	 */
@@ -236,7 +222,6 @@ class MapsGoogleMaps {
 		if (strlen(trim($overlays)) < 1) {
 			$overlays = $egMapsGMapOverlays;
 		} else {
-			MapsMapper::enforceArrayValues($overlays);
 			$validOverlays = array();
 			foreach ($overlays as $overlay) {
 				$segements = explode('-', $overlay);

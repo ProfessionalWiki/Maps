@@ -32,7 +32,7 @@ final class MapsMapper {
 				'type' => 'integer',
 				'criteria' => array(
 					'in_range' => array(0, 15)
-					)			
+					)
 				),
 			'width' => array(
 				'type' => 'integer',
@@ -72,20 +72,6 @@ final class MapsMapper {
 	public static function getJSBoolValue($bool) {		
 		return $bool ? 'true' : 'false';
 	}	
-	
-	/**
-	 * TODO: remove
-	 * 
-	 * Turns the provided values into an array by splitting it on comma's if
-	 * it's not an array yet.
-	 *
-	 * @param unknown_type $values
-	 * @param string $delimeter
-	 */
-	public static function enforceArrayValues(&$values, $delimeter = ',') {
-		if (! is_array($values)) $values = explode($delimeter, $values); // If not an array yet, split the values
-		for ($i = 0; $i < count($values); $i++) $values[$i] = trim($values[$i]); // Trim all values
-	}
 	
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
