@@ -268,6 +268,10 @@ K dispoziciji stojece kórtowe słužby: $1.',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'semanticmaps_abb_north' => 'Β',
+	'semanticmaps_abb_east' => 'Α',
+	'semanticmaps_abb_south' => 'Ν',
+	'semanticmaps_abb_west' => 'Δ',
 	'semanticmaps_lookupcoordinates' => 'Επιθεώρηση συντεταγμένων',
 	'semanticmaps_enteraddresshere' => 'Εισαγωγή διεύθυνσης εδώ',
 	'semanticmaps_notfound' => 'δεν βρέθηκε',
@@ -686,6 +690,10 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'semanticmaps_desc' => 'Tilbyr muligheten til å se og endre koordinatdata lagret gjennom Semantic MediaWiki-utvidelsen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+Tilgjengelige karttjenester: $1',
+	'semanticmaps_lonely_unit' => 'Fant ingen tall før symbolet «$1».',
+	'semanticmaps_bad_latlong' => 'Bredde- og lengdegrad må gis kun en gang og med gyldige koordinater.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'Ø',
 	'semanticmaps_abb_south' => 'S',
@@ -695,6 +703,18 @@ $messages['no'] = array(
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressen her',
 	'semanticmaps_notfound' => 'ikke funnet',
+	'semanticmaps_paramdesc_format' => 'Karttjenesten brukt for å generere kart',
+	'semanticmaps_paramdesc_geoservice' => 'Geokodetjenesten brukt for å gjøre adresser om til koordinater',
+	'semanticmaps_paramdesc_height' => 'Høyden til kartet, i pixler (standard er $1)',
+	'semanticmaps_paramdesc_width' => 'Bredden til kartet, i pixler (standard er $1)',
+	'semanticmaps_paramdesc_zoom' => 'Zoomnivået til kartet',
+	'semanticmaps_paramdesc_centre' => 'Koordinatene til kartets senter',
+	'semanticmaps_paramdesc_controls' => 'Brukerkontrollene plassert på kartet',
+	'semanticmaps_paramdesc_types' => 'Karttypene tilgjengelig for kartet',
+	'semanticmaps_paramdesc_type' => 'Standard karttype for kartet',
+	'semanticmaps_paramdesc_overlays' => 'Overlag tilgjengelig for kartet',
+	'semanticmaps_paramdesc_autozoom' => 'Dersom zooming ved bruk av musehjulet er slått på',
+	'semanticmaps_paramdesc_layers' => 'Lagene tilgjengelig på kartet',
 );
 
 /** Occitan (Occitan)
