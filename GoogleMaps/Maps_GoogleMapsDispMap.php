@@ -57,13 +57,9 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
-		
 		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
 		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
-		
-		$typesString = MapsGoogleMaps::createTypesString($this->types);
 		
 		$this->output .=<<<END
 
@@ -78,7 +74,7 @@ addOnloadHook(
 		lon: $this->centre_lon,
 		zoom: $this->zoom,
 		type: $this->type,
-		types: [$typesString],
+		types: [$this->types],
 		controls: [$this->controls],
 		scrollWheelZoom: $this->autozoom
 		}, [])

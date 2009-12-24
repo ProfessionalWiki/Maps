@@ -62,6 +62,8 @@ final class MapsMapper {
 	}	
 	
 	/**
+	 * TODO: remove
+	 * 
 	 * Returns the JS version (true/false as string) of the provided boolean parameter.
 	 *
 	 * @param boolean $bool
@@ -72,6 +74,8 @@ final class MapsMapper {
 	}	
 	
 	/**
+	 * TODO: remove
+	 * 
 	 * Turns the provided values into an array by splitting it on comma's if
 	 * it's not an array yet.
 	 *
@@ -81,67 +85,6 @@ final class MapsMapper {
 	public static function enforceArrayValues(&$values, $delimeter = ',') {
 		if (! is_array($values)) $values = explode($delimeter, $values); // If not an array yet, split the values
 		for ($i = 0; $i < count($values); $i++) $values[$i] = trim($values[$i]); // Trim all values
-	}
-	
-	/**
-	 * Checks if the items array has members, and sets it to the default when this is not the case.
-	 * Then returns an imploded/joined, comma seperated, version of the array as string.
-	 *
-	 * @param array $items
-	 * @param array $defaultItems
-	 * @param boolean $asStrings
-	 * @param boolean $toLower
-	 *  
-	 * @return string
-	 */
-	public static function createJSItemsString(array $items, $asStrings = true, $toLower = true) {
-		$itemString = $asStrings ? "'" . implode("','", $items) . "'" : implode(',', $items);
-		if ($toLower) $itemString = strtolower($itemString);
-		return $itemString;
-	}
-	
-	/**
-	 * Returns a valid version of the types.
-	 *
-	 * @param array $types
-	 * @param array $defaults
-	 * @param boolean $defaultsAreValid
-	 * @param function $validationFunction
-	 * 
-	 * @return array
-	 */
-	public static function getValidTypes(array $types, array &$defaults, &$defaultsAreValid, $validationFunction) {
-		$validTypes = array();
-		$phpAtLeast523 = MapsUtils::phpVersionIsEqualOrBigger('5.2.3');
-		
-		// Ensure every type is valid and uses the relevant map API's name.
-		for($i = 0 ; $i < count($types); $i++) {
-			$type = call_user_func($validationFunction, $phpAtLeast523 ? $types[$i] : array($types[$i]));
-			if ($type) $validTypes[] = $type; 
-		}
-		
-		$types = $validTypes;
-		
-		// If there are no valid types, add the default ones.
-		if (count($types) < 1) {
-			$validTypes = array();
-			
-			// If the default ones have not been checked,
-			// ensure every type is valid and uses the relevant map API's name.
-			if (empty($defaultsAreValid)) {
-				for($i = 0 ; $i < count($defaults); $i++) {
-					$type = call_user_func($validationFunction, $phpAtLeast523 ? $defaults[$i] : array($defaults[$i]));
-					if ($type) $validTypes[] = $type; 
-				}
-				
-				$defaults = $validTypes;
-				$defaultsAreValid = true;
-			}
-			
-			$types = $defaults;
-		}
-
-		return $types;
 	}
 	
 	/**

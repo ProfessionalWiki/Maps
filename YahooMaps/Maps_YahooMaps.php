@@ -44,6 +44,8 @@ class MapsYahooMaps {
 	
 	public static function initialize() {
 		self::initializeParams();
+		Validator::addOutputFormat('ymaptype', array('MapsYahooMaps', 'setYMapType'));
+		Validator::addOutputFormat('ymaptypes', array('MapsYahooMaps', 'setYMapTypes'));		
 	}
 	
 	private static function initializeParams() {
@@ -68,7 +70,8 @@ class MapsYahooMaps {
 										'criteria' => array(
 											'in_array' => $allowedTypes			
 											),
-										'default' => $egMapsYahooMapsType										
+										'default' => $egMapsYahooMapsType,
+										'output-type' => array('ymaptype')										
 										),
 									'types' => array (
 										'type' => array('string', 'list'),
@@ -76,7 +79,8 @@ class MapsYahooMaps {
 										'criteria' => array(
 											'in_array' => $allowedTypes
 											),
-										'default' =>  $egMapsYahooMapsTypes										
+										'default' =>  $egMapsYahooMapsTypes,
+										'output-types' => array('ymaptypes', 'list')									
 										),			
 									'autozoom' => array(
 										'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
@@ -114,26 +118,30 @@ class MapsYahooMaps {
 	public static function getControlNames() {
 		return array('scale', 'type', 'pan', 'zoom', 'zoom-short', 'auto-zoom');
 	}	
-		
+	
 	/**
-	 * Returns the Yahoo Map type (defined in MapsYahooMaps::$mapTypes) 
-	 * for the provided a general map type. When no match is found, the first 
-	 * Google Map type will be returned as default.
+	 * Changes the map type name into the corresponding Yahoo! Maps API identifier.
 	 *
 	 * @param string $type
-	 * @param boolean $restoreAsDefault
 	 * 
-	 * @return string or false
+	 * @return string
 	 */
-	public static function getYMapType($type, $restoreAsDefault = false) {
-		global $egMapsYahooMapsType;
-		
-		$typeIsValid = array_key_exists($type, self::$mapTypes);
-		
-		if (!$typeIsValid && $restoreAsDefault) $type = $egMapsYahooMapsType;
-		
-		return $typeIsValid || $restoreAsDefault ? self::$mapTypes[ $type ] : false;	
-	}
+	public static function setYMapType(&$type) {
+		$type = self::$mapTypes[ $type ];
+	}	
+	
+	/**
+	 * Changes the map type names into the corresponding Yahoo! Maps API identifiers.
+	 * 
+	 * @param array $types
+	 * 
+	 * @return array
+	 */
+	public static function setYMapTypes(array &$types) {
+		for($i = count($types) - 1; $i >= 0; $i--) {
+			$types[$i] = self::$mapTypes[ $types[$i] ];
+		}
+	}	
 
 	/**
 	 * Add references to the Yahoo! Maps API and required JS file to the provided output 

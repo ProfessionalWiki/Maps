@@ -44,6 +44,8 @@ class MapsGoogleMaps {
 	
 	public static function initialize() {
 		self::initializeParams();
+		Validator::addOutputFormat('gmaptype', array('MapsGoogleMaps', 'setGMapType'));
+		Validator::addOutputFormat('gmaptypes', array('MapsGoogleMaps', 'setGMapTypes'));
 	}
 	
 	private static function initializeParams() {
@@ -52,43 +54,45 @@ class MapsGoogleMaps {
 		$allowedTypes = self::getTypeNames();
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-									'zoom' => array(
-										'default' => $egMapsGoogleMapsZoom,
-										),
-									'controls' => array(
-										'type' => array('string', 'list'),
-										'criteria' => array(
-											'in_array' => self::getControlNames()
-											),
-										'default' => $egMapsGMapControls,
-										'output-type' => array('list', ',', '\'')
-										),
-									'type' => array(
-										'aliases' => array('map-type', 'map type'),
-										'criteria' => array(
-											'in_array' => $allowedTypes		
-											),
-										'default' => $egMapsGoogleMapsType												
-										),
-									'types' => array(
-										'type' => array('string', 'list'),
-										'aliases' => array('map-types', 'map types'),
-										'criteria' => array(
-											'in_array' => $allowedTypes
-											),
-										'default' => $egMapsGoogleMapsTypes							
-										),
-									'autozoom' => array(
-										'type' => 'boolean',
-										'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
-										'criteria' => array(
-											'in_array' => array('on', 'off', 'yes', 'no')	
-											),		
-										'default' => $egMapsGoogleAutozoom										
-										),									
-									'class' => array(),
-									'style' => array(),
-									);
+				'zoom' => array(
+					'default' => $egMapsGoogleMapsZoom,
+					),
+				'controls' => array(
+					'type' => array('string', 'list'),
+					'criteria' => array(
+						'in_array' => self::getControlNames()
+						),
+					'default' => $egMapsGMapControls,
+					'output-type' => array('list', ',', '\'')
+					),
+				'type' => array(
+					'aliases' => array('map-type', 'map type'),
+					'criteria' => array(
+						'in_array' => $allowedTypes		
+						),
+					'default' => $egMapsGoogleMapsType,
+					'output-type' => array('gmaptype')											
+					),
+				'types' => array(
+					'type' => array('string', 'list'),
+					'aliases' => array('map-types', 'map types'),
+					'criteria' => array(
+						'in_array' => $allowedTypes
+						),
+					'default' => $egMapsGoogleMapsTypes,
+					'output-types' => array('gmaptypes', 'list')				
+					),
+				'autozoom' => array(
+					'type' => 'boolean',
+					'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),
+					'criteria' => array(
+						'in_array' => array('on', 'off', 'yes', 'no')	
+						),		
+					'default' => $egMapsGoogleAutozoom										
+					),									
+				'class' => array(),
+				'style' => array(),
+				);
 	}
 
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
@@ -147,31 +151,28 @@ class MapsGoogleMaps {
 	}
 
 	/**
-	 * Returns the Google Map type (defined in MapsGoogleMaps::$mapTypes) 
-	 * for the provided a general map type. When no match is found, false
-	 * will be returned.
+	 * Changes the map type name into the corresponding Google Maps API identifier.
 	 *
 	 * @param string $type
-	 * @param boolean $restoreAsDefault
 	 * 
-	 * @return string or false
+	 * @return string
 	 */
-	public static function getGMapType($type, $restoreAsDefault = false) {
-		global $egMapsGoogleMapsType;
-		$typeIsValid = array_key_exists($type, self::$mapTypes);
-		
-		if ($typeIsValid) {
-			return self::$mapTypes[ $type ];
+	public static function setGMapType(&$type) {
+		$type = self::$mapTypes[ $type ];
+	}
+	
+	/**
+	 * Changes the map type names into the corresponding Google Maps API identifiers.
+	 * 
+	 * @param array $types
+	 * 
+	 * @return array
+	 */
+	public static function setGMapTypes(array &$types) {
+		for($i = count($types) - 1; $i >= 0; $i--) {
+			$types[$i] = self::$mapTypes[ $types[$i] ];
 		}
-		else {
-			if ($restoreAsDefault) {
-				return self::$mapTypes[ $egMapsGoogleMapsType ]; 
-			}
-			else {
-				return false;
-			}
-		}
-	}	
+	}
 	
 	/**
 	 * Add references to the Google Maps API and required JS file to the provided output 
@@ -192,6 +193,8 @@ class MapsGoogleMaps {
 	}
 	
 	/**
+	 * TODO: remove
+	 * 
 	 * Retuns a boolean as string, true if $autozoom is on or yes.
 	 *
 	 * @param string $autozoom
@@ -199,23 +202,6 @@ class MapsGoogleMaps {
 	 */
 	public static function getAutozoomJSValue($autozoom) {
 		return MapsMapper::getJSBoolValue(in_array($autozoom, array('on', 'yes')));
-	}
-	
-	/**
-	 * Returns a JS items string with the provided types. The earth type will
-	 * be added to it when it's not present and $enableEarth is true. If there are
-	 * no types, the default will be used.
-	 *
-	 * @param array $types
-	 * 
-	 * @return string
-	 */
-	public static function createTypesString(array &$types) {	
-		global $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid;
-		
-		$types = MapsMapper::getValidTypes($types, $egMapsGoogleMapsTypes, $egMapsGoogleMapTypesValid, array(__CLASS__, 'getGMapType'));
-			
-		return MapsMapper::createJSItemsString($types, null, false, false);
 	}
 	
 	/**

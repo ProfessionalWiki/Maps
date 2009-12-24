@@ -57,22 +57,18 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
-	 */		
+	 */
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->type = MapsYahooMaps::getYMapType($this->type, true);
-
-		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
-		
-		$typesString = MapsYahooMaps::createTypesString($this->types);		
+		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);	
 		
 		$this->output .= <<<END
 		<div id="$this->mapName" style="width: {$this->width}px; height: {$this->height}px;"></div>  
 		
 		<script type="$wgJsMimeType">/*<![CDATA[*/
 		addOnloadHook(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$this->markerString], $this->height)
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->types], [$this->controls], $this->autozoom, [$this->markerString], $this->height)
 		);
 			/*]]>*/</script>
 END;
