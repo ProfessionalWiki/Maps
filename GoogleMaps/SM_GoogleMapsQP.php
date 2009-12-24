@@ -67,9 +67,6 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
-		
-		// Get the Google Maps names for the control and map types.
-		$this->type = MapsGoogleMaps::getGMapType($this->type, true);
 
 		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
@@ -89,8 +86,6 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		// Create a string containing the marker JS 
 		$markersString = implode(',', $markerItems);		
 		
-		$typesString = MapsGoogleMaps::createTypesString($this->types);		
-		
 		$this->output .= <<<END
 <div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
@@ -103,7 +98,7 @@ addOnloadHook(
 		lon: $this->centre_lon,
 		zoom: $this->zoom,
 		type: $this->type,
-		types: [$typesString],
+		types: [$this->types],
 		controls: [$this->controls],
 		scrollWheelZoom: $this->autozoom
 		},

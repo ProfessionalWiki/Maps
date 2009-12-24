@@ -53,9 +53,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
-		
-		$this->type = MapsYahooMaps::getYMapType($this->type, true);
-		
+
 		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);
 		
 		$markerItems = array();
@@ -70,16 +68,14 @@ final class SMYahooMapsQP extends SMMapPrinter {
 			$markerItems[] = "getYMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		
-		$markersString = implode(',', $markerItems);
-		
-		$typesString = MapsYahooMaps::createTypesString($this->types);			
+		$markersString = implode(',', $markerItems);	
 		
 		$this->output .= "
 		<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addOnloadHook(
-			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$typesString], [$this->controls], $this->autozoom, [$markersString], $this->height)
+			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->types], [$this->controls], $this->autozoom, [$markersString], $this->height)
 		);
 			/*]]>*/</script>";		
 

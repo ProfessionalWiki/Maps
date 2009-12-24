@@ -70,11 +70,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$type = MapsYahooMaps::getYMapType($this->type, true);
-		
-		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);	
-		
-		$typesString = MapsYahooMaps::createTypesString($this->types);			
+		$this->autozoom = MapsYahooMaps::getAutozoomJSValue($this->autozoom);			
 		
 		$this->output .="
 		<div id='".$this->mapName."' style='width: {$this->width}px; height: {$this->height}px;'></div>  

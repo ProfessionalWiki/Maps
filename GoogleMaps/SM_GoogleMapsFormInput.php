@@ -74,15 +74,11 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		$this->autozoom = MapsGoogleMaps::getAutozoomJSValue($this->autozoom);
 		
-		$this->type = MapsGoogleMaps::getGMapType($this->type, true);	
-		
 		// Remove the overlays control in case it's present.
 		if (in_string('overlays', $this->controls)) {
 			$this->controls = str_replace(",'overlays'", '', $this->controls);
 			$this->controls = str_replace("'overlays',", '', $this->controls);
 		}
-		
-		$typesString = MapsGoogleMaps::createTypesString($this->types);
 		
 		$this->output .= "
 		<div id='".$this->mapName."' class='".$this->class."'></div>
@@ -99,7 +95,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 				lon: $this->centre_lon,
 				zoom: $this->zoom,
 				type: $this->type,
-				types: [$typesString],
+				types: [$this->types],
 				controls: [$this->controls],
 				scrollWheelZoom: $this->autozoom
 				},
