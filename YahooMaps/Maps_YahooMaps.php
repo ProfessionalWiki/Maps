@@ -53,10 +53,9 @@ class MapsYahooMaps {
 		
 		$allowedTypes = MapsYahooMaps::getTypeNames();
 		
+		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsYahooMapsZoom;
+		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-				'zoom' => array (
-					'default' => $egMapsYahooMapsZoom
-					),
 				'controls' => array(
 					'type' => array('string', 'list'),
 					'criteria' => array(

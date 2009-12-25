@@ -174,10 +174,10 @@ $egMapsGoogleAutozoom = true;
 # Available values: auto, large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label, overlays
 $egMapsGMapControls = array('auto', 'scale', 'type', 'overlays');
 
-# Array. The default overlays for the Google Maps overlays control, and wether they should be shown at pageload.
+# Array. The default overlays for the Google Maps overlays control, and whether they should be shown at pageload.
 # This value will only be used when the user does not provide one.
 # Available values: photos, videos, wikipedia, webcams
-$egMapsGMapOverlays = array('photos' => false, 'videos' => false, 'wikipedia' => false, 'webcams' => false);
+$egMapsGMapOverlays = array('photos', 'videos', 'wikipedia', 'webcams');
 
 
 

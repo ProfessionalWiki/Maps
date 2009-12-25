@@ -32,13 +32,7 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 		$this->elementNamePrefix = $egMapsOSMPrefix;
 		$this->defaultZoom = $egMapsOSMZoom;
 		
-		$this->markerStringFormat = 'getOSMMarkerData(lat, lon, "title", "label", "icon")';
-		
-		$this->spesificParameters = array(
-			'zoom' => array(
-				'default' => '', 	
-			)
-		);			
+		$this->markerStringFormat = 'getOSMMarkerData(lat, lon, "title", "label", "icon")';			
 	}
 	
 	/**

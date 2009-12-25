@@ -22,7 +22,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	 *
 	 */	
 	protected function setMapSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
+		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
@@ -32,8 +32,8 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 				'type' => array('string', 'list'),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),
-				'output-type' => 'array'						
+					),	
+				'default' => $egMapsGMapOverlays,							
 				),				
 		);
 	}

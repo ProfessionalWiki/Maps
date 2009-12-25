@@ -32,13 +32,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->defaultZoom = $egMapsYahooMapsZoom;
 		
-		$this->markerStringFormat = 'getYMarkerData(lat, lon, "title", "label", "icon")';
-		
-		$this->spesificParameters = array(
-			'zoom' => array(
-				'default' => '', 	
-			)
-		);			
+		$this->markerStringFormat = 'getYMarkerData(lat, lon, "title", "label", "icon")';		
 	}
 	
 	/**

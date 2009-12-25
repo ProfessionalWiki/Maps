@@ -27,7 +27,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	 *
 	 */	
 	protected function setMapSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
+		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
@@ -39,12 +39,9 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 				'type' => array('string', 'list'),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),
-				'output-type' => 'array'			
-				),	
-			'zoom' => array(
-				'default' => '', 	
-			)							
+					),	
+				'default' => $egMapsGMapOverlays,		
+				),
 		);		
 	}
 	

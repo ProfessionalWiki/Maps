@@ -33,7 +33,7 @@ if (! defined( 'Validator_VERSION' )) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define('Maps_VERSION', '0.5.1 a7');
+	define('Maps_VERSION', '0.5.1 a8');
 	
 	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 	$egMapsIP 			= $IP . '/extensions/Maps';
@@ -103,25 +103,18 @@ function efMapsSetup() {
 			$wgAutoloadClasses[$values['class']] = $values['local'] ? $egMapsIP . '/' . $values['file'] : $IP . '/extensions/' . $values['file'];
 			if (method_exists($values['class'], 'initialize')) call_user_func(array($values['class'], 'initialize'));
 		}
-		
-		// Check for wich services there are handlers for the current fature, and load them
-		foreach ($egMapsServices as  $serviceData) {
-			if (array_key_exists($key, $serviceData)) {
-				if (array_key_exists('class', $serviceData[$key]) && array_key_exists('file', $serviceData[$key]) && array_key_exists('local', $serviceData[$key])) {
-					$file = $serviceData[$key]['local'] ? $egMapsIP . '/' . $serviceData[$key]['file'] : $IP . '/extensions/' . $serviceData[$key]['file'];
-					$wgAutoloadClasses[$serviceData[$key]['class']] = $file;	
-				}
-			}
-
-			if (array_key_exists('classes', $serviceData)) {
-				foreach($serviceData['classes'] as $class) {
-					$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
-					$wgAutoloadClasses[$class['class']] = $file;
-					if (method_exists($class['class'], 'initialize')) call_user_func(array($class['class'], 'initialize'));
-				}
-			}			
-		}
 	}
+	
+	// Check for wich services there are handlers for the current fature, and load them
+	foreach ($egMapsServices as  $serviceData) {
+		if (array_key_exists('classes', $serviceData)) {
+			foreach($serviceData['classes'] as $class) {
+				$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
+				$wgAutoloadClasses[$class['class']] = $file;
+				if (method_exists($class['class'], 'initialize')) call_user_func(array($class['class'], 'initialize'));
+			}
+		}			
+	}	
 	
 	return true;
 }

@@ -62,18 +62,6 @@ final class MapsMapper {
 	}	
 	
 	/**
-	 * TODO: remove
-	 * 
-	 * Returns the JS version (true/false as string) of the provided boolean parameter.
-	 *
-	 * @param boolean $bool
-	 * @return string
-	 */
-	public static function getJSBoolValue($bool) {		
-		return $bool ? 'true' : 'false';
-	}	
-	
-	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
 	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
 	 *

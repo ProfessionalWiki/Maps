@@ -54,10 +54,9 @@ class MapsGoogleMaps {
 		
 		$allowedTypes = self::getTypeNames();
 		
+		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsGoogleMapsZoom;
+		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-				'zoom' => array(
-					'default' => $egMapsGoogleMapsZoom,
-					),
 				'controls' => array(
 					'type' => array('string', 'list'),
 					'criteria' => array(
@@ -86,7 +85,7 @@ class MapsGoogleMaps {
 				'autozoom' => array(
 					'type' => 'boolean',
 					'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),	
-					'default' => $egMapsGoogleAutozoom	,
+					'default' => $egMapsGoogleAutozoom,
 					'output-type' => 'boolstr'									
 					),									
 				'class' => array(),
@@ -225,7 +224,7 @@ class MapsGoogleMaps {
 	 */
 	public static function addOverlayOutput(&$output, $mapName, $overlays, $controls) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
-
+		
 		// Check to see if there is an overlays control.
 		$hasOverlayControl = in_string('overlays', $controls);
 		

@@ -53,10 +53,9 @@ class MapsOpenLayers {
 	private static function initializeParams() {
 		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
+		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsOpenLayersZoom;
+		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(	
-									'zoom' => array(
-										'default' => $egMapsOpenLayersZoom, 	
-									),	
 									'controls' => array(
 										'type' => array('string', 'list'),
 										'criteria' => array(
