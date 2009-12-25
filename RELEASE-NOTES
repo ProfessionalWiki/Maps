@@ -6,6 +6,27 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.5.1 ===
+(2009-12-25)
+
+==== New features ====
+
+* Added parameter support for the 'map' format on Special:Ask.
+
+* Added forceshow parameter to the result formats to allow users to force showing a map, even when there are no geographical coordinate results from a query.
+
+==== Refactoring ====
+
+* Modified the parameter definitions to work with Validator 0.2.
+
+* Removed redundant (because of Validator 0.2) utility function calls from the mapping classes.
+
+* Ensured none of the form input classes get loaded when SF is not present.
+
+==== Bug fixes ====
+
+* Fixed issue with the query printers causing error messages to be shown for ask specific parameters.
+
 === Semantic Maps 0.5 ===
 (2009-12-17)
 
