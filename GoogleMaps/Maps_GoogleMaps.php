@@ -46,6 +46,7 @@ class MapsGoogleMaps {
 		self::initializeParams();
 		Validator::addOutputFormat('gmaptype', array('MapsGoogleMaps', 'setGMapType'));
 		Validator::addOutputFormat('gmaptypes', array('MapsGoogleMaps', 'setGMapTypes'));
+		Validator::addValidationFunction('is_google_overlay', array('MapsGoogleMaps', 'isGOverlay'));
 	}
 	
 	private static function initializeParams() {
@@ -147,6 +148,18 @@ class MapsGoogleMaps {
 	public static function getOverlayNames() {
 		return array_keys(self::$overlayData);
 	}
+	
+	/**
+	 * Returns whether the provided value is a valid google overlay.
+	 * 
+	 * @param $value
+	 * 
+	 * @return boolean
+	 */
+	public static function isGOverlay( $value ) {
+		$value = explode('-', $value);
+		return in_array($value[0], self::getOverlayNames());
+	}
 
 	/**
 	 * Changes the map type name into the corresponding Google Maps API identifier.
@@ -218,22 +231,17 @@ class MapsGoogleMaps {
 		
 		$overlayNames = array_keys(self::$overlayData);
 		
-		// Create the overlays array, and use the default in case no overlays have been provided.
-		if (strlen(trim($overlays)) < 1) {
-			$overlays = $egMapsGMapOverlays;
-		} else {
-			$validOverlays = array();
-			foreach ($overlays as $overlay) {
-				$segements = explode('-', $overlay);
-				$name = $segements[0];
-				
-				if (in_array($name, $overlayNames)) {
-					$isOn = count($segements) > 1 ? $segements[1] : '0';
-					$validOverlays[$name] = $isOn == '1';
-				}
-			} 
-			$overlays = $validOverlays;
-		}
+		$validOverlays = array();
+		foreach ($overlays as $overlay) {
+			$segements = explode('-', $overlay);
+			$name = $segements[0];
+			
+			if (in_array($name, $overlayNames)) {
+				$isOn = count($segements) > 1 ? $segements[1] : '0';
+				$validOverlays[$name] = $isOn == '1';
+			}
+		} 
+		$overlays = $validOverlays;
 		
 		// If there are no overlays or there is no control to hold them, don't bother the rest.
 		if(!$hasOverlayControl || count($overlays) < 1) return;

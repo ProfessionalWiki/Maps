@@ -33,7 +33,7 @@ if (! defined( 'Validator_VERSION' )) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define('Maps_VERSION', '0.5.1 a6');
+	define('Maps_VERSION', '0.5.1 a7');
 	
 	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 	$egMapsIP 			= $IP . '/extensions/Maps';
