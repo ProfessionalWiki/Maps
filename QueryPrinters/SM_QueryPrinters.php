@@ -64,6 +64,12 @@ final class SMQueryPrinters {
 				'aliases' => array('center'),
 				'default' => $egMapsDefaultCentre		
 				),
+			'forceshow' => array(
+				'type' => 'boolean',
+				'aliases' => array('force show'),
+				'default' => false,
+				'output-type' => 'boolean'
+				),				
 			'limit' => array(),
 			'headers' => array(),
 			'mainlabel' => array(),

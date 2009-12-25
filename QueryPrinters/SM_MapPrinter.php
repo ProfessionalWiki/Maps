@@ -78,7 +78,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		if (self::manageMapProperties($this->m_params, __CLASS__)) {
 			// Only create a map when there is at least one result.
-			if (count($this->m_locations) > 0) {
+			if (count($this->m_locations) > 0 || $this->forceshow) {
 				$this->doMapServiceLoad();
 		
 				$this->setMapName();
@@ -90,7 +90,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				$this->addSpecificMapHTML();			
 			}		
 			else {
-				// TODO: add warning when level high enough and append to erro list.
+				// TODO: add warning when level high enough and append to error list?
 			}	
 		}
 		
@@ -119,7 +119,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$parameterInfo = array_merge($parameterInfo, $egMapsServices[$this->serviceName]['parameters']);
 		$parameterInfo = array_merge($parameterInfo, $this->spesificParameters);
 		
-		$manager = new ValidatorManager(); // TODO
+		$manager = new ValidatorManager();
 		
 		$result = $manager->manageMapparameters($mapProperties, $parameterInfo);
 		
@@ -276,25 +276,33 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 *
 	 */
 	private function setCentre() {
-		// If a centre value is set, use it.
-		if (strlen($this->centre) > 0) {
-			// Geocode and convert if required.
-			$centre = MapsGeocodeUtils::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
-			$centre = MapsUtils::getLatLon($centre);
-			
-			$this->centre_lat = $centre['lat'];
-			$this->centre_lon = $centre['lon'];
-		}
-		elseif (count($this->m_locations) > 1) {
-			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
-			$this->centre_lat = 'null';
-			$this->centre_lon = 'null';
+		// If there are no results, centre on the default coordinates.
+		if ( count($this->m_locations) < 1 ) {
+			global $egMapsMapLat, $egMapsMapLon;
+			$this->centre_lat = $egMapsMapLat;
+			$this->centre_lon = $egMapsMapLon;		
 		}
 		else {
-			// If centre is not set and there is exactelly one marker, use it's coordinates.			
-			$this->centre_lat = $this->m_locations[0][0];
-			$this->centre_lon = $this->m_locations[0][1];
-		}				
+			// If a centre value is set, use it.
+			if (strlen($this->centre) > 0) {
+				// Geocode and convert if required.
+				$centre = MapsGeocodeUtils::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
+				$centre = MapsUtils::getLatLon($centre);
+				
+				$this->centre_lat = $centre['lat'];
+				$this->centre_lon = $centre['lon'];
+			}
+			elseif (count($this->m_locations) > 1) {
+				// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
+				$this->centre_lat = 'null';
+				$this->centre_lon = 'null';
+			}
+			else {
+				// If centre is not set and there is exactelly one marker, use it's coordinates.			
+				$this->centre_lat = $this->m_locations[0][0];
+				$this->centre_lon = $this->m_locations[0][1];
+			}			
+		}		
 	}	
 	
 	/**
