@@ -33,7 +33,7 @@ if (! defined( 'Validator_VERSION' )) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define('Maps_VERSION', '0.5.1 rc1');
+	define('Maps_VERSION', '0.5.1 rc2');
 	
 	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
 	$egMapsIP 			= $IP . '/extensions/Maps';
@@ -44,7 +44,7 @@ else {
 	require_once($egMapsIP . '/Maps_Settings.php');
 	
 	// Register the initialization function of Maps.
-	 $wgExtensionFunctions[] = 'efMapsSetup'; 
+	$wgExtensionFunctions[] = 'efMapsSetup'; 
 	
 	$wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
 	
@@ -93,28 +93,28 @@ function efMapsSetup() {
 		'description' =>  wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 	);
-	
+
 	MapsMapper::initializeMainParams();
-	
-	// These loops take care of everything hooked into Maps.
+
+	// Loop through the available mapping features, load and initialize them.
 	foreach($egMapsAvailableFeatures as $key => $values) {
 		// Load and optionally initizlize feature.
 		if (array_key_exists('class', $values) && array_key_exists('file', $values) && array_key_exists('local', $values)) {
-			$wgAutoloadClasses[$values['class']] = $values['local'] ? $egMapsIP . '/' . $values['file'] : $IP . '/extensions/' . $values['file'];
+			$wgAutoloadClasses[$values['class']] = array_key_exists('local', $values) && $values['local'] ? $egMapsIP . '/' . $values['file'] : $IP . '/extensions/' . $values['file'];
 			if (method_exists($values['class'], 'initialize')) call_user_func(array($values['class'], 'initialize'));
 		}
 	}
-	
-	// Check for wich services there are handlers for the current fature, and load them
+
+	// Loop through the available mapping services to load and initialize their general classes.
 	foreach ($egMapsServices as  $serviceData) {
 		if (array_key_exists('classes', $serviceData)) {
 			foreach($serviceData['classes'] as $class) {
-				$file = $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
+				$file = array_key_exists('local', $class) && $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
 				$wgAutoloadClasses[$class['class']] = $file;
 				if (method_exists($class['class'], 'initialize')) call_user_func(array($class['class'], 'initialize'));
 			}
-		}			
-	}	
+		}
+	}
 	
 	return true;
 }
