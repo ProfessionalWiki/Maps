@@ -43,11 +43,10 @@ final class SMFormInputs {
 				
 				// Loop through the service alliases, and add them as form input types.
 				foreach ($serviceData['aliases'] as $alias) self::initFormHook($alias, $serviceData['fi'], $serviceName);
-			}		
+			}
 			
 			// Add the 'map' form input type if there are mapping services that have FI's loaded.
 			if ($hasFormInputs) self::initFormHook('map');	
-
 		}
 	}
 	
@@ -73,7 +72,9 @@ final class SMFormInputs {
 				),
 			'service_name' => array(),	
 			'part_of_multiple' => array(),	
-			'possible_values' => array(),	
+			'possible_values' => array(
+				'type' => array('string', 'array'),
+				),	
 			'is_list' => array(),	
 			'semantic_property' => array(),	
 			'value_labels' => array(),	
@@ -92,7 +93,7 @@ final class SMFormInputs {
 	
 		if (isset($fi)) {
 			if (! array_key_exists($fi['class'], $wgAutoloadClasses)) {
-				$file = $fi['local'] ? $smgIP . '/' . $fi['file'] : $fi['file'];
+				$file = array_key_exists('local', $fi) && $fi['local'] ? $smgIP . '/' . $fi['file'] : $fi['file'];
 				$wgAutoloadClasses[$fi['class']] = $file;
 			}
 		}

@@ -20,5 +20,5 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['osm']['qp'] = array('class' => 'SMOSMQP', 'file' => 'extensions/SemanticMaps/OpenStreetMap/SM_OSMQP.php', 'local' => false);
+$egMapsServices['osm']['qp'] = array('class' => 'SMOSMQP', 'file' => 'OpenStreetMap/SM_OSMQP.php', 'local' => true);
 //$egMapsServices['osm']['fi'] = array('class' => 'SMOSMFormInput', 'file' => 'extensions/SemanticMaps/OpenStreetMap/SM_OSMFormInput.php', 'local' => false);
