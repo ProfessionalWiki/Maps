@@ -34,7 +34,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 				'criteria' => array(
 					'in_array' => array('yes', 'no')
 					),
-				'default' => $egMapsOSMStaticAsDefault ? 'yes' : 'no'												
+				'default' => $egMapsOSMStaticAsDefault ? 'yes' : 'no'	// TODO: boolean type											
 				),
 			'mode' => array(
 				'criteria' => array(
@@ -46,7 +46,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 				'criteria' => array(
 					'in_array' => array('yes', 'no')
 					),
-				'default' => $egMapsOSMStaticActivatable ? 'yes' : 'no'		
+				'default' => $egMapsOSMStaticActivatable ? 'yes' : 'no'		// TODO: boolean type
 				),										
 		);		
 	}
