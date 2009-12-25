@@ -38,9 +38,10 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 			'overlays' => array(
 				'type' => array('string', 'list'),
 				'criteria' => array(
-					'in_array' => MapsGoogleMaps::getOverlayNames()
-					),											
-				),				
+					'is_google_overlay' => array()
+					),
+				'output-type' => 'array'
+				),
 		);			
 	}	
 	
