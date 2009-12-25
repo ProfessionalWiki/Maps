@@ -25,22 +25,19 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 *
 	 */
 	protected function setQueryPrinterSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
+		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
 		$this->spesificParameters = array(
-			'zoom' => array(
-				'default' => '', 	
-			),
 			'overlays' => array(
 				'type' => array('string', 'list'),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),
-				'output-type' => 'array'
+					),	
+				'default' => $egMapsGMapOverlays,	
 				),
 		);			
 	}	

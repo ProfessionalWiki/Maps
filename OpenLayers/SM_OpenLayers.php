@@ -20,5 +20,5 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayersQP', 'file' => 'SemanticMaps/OpenLayers/SM_OpenLayersQP.php', 'local' => false);
-$egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'SemanticMaps/OpenLayers/SM_OpenLayersFormInput.php', 'local' => false);
+$egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayersQP', 'file' => 'extensions/SemanticMaps/OpenLayers/SM_OpenLayersQP.php', 'local' => false);
+$egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'extensions/SemanticMaps/OpenLayers/SM_OpenLayersFormInput.php', 'local' => false);

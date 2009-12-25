@@ -25,13 +25,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;	
-
-		$this->spesificParameters = array(
-			'zoom' => array(
-				'default' => '', 	
-			)
-		);	
+		$this->defaultZoom = $egMapsOpenLayersZoom;		
 	}	
 
 	/**

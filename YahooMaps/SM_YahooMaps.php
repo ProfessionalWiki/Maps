@@ -20,5 +20,5 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['yahoomaps']['qp'] = array('class' => 'SMYahooMapsQP', 'file' => 'SemanticMaps/YahooMaps/SM_YahooMapsQP.php', 'local' => false);
-$egMapsServices['yahoomaps']['fi'] = array('class' => 'SMYahooMapsFormInput', 'file' => 'SemanticMaps/YahooMaps/SM_YahooMapsFormInput.php', 'local' => false);
+$egMapsServices['yahoomaps']['qp'] = array('class' => 'SMYahooMapsQP', 'file' => 'extensions/SemanticMaps/YahooMaps/SM_YahooMapsQP.php', 'local' => false);
+$egMapsServices['yahoomaps']['fi'] = array('class' => 'SMYahooMapsFormInput', 'file' => 'extensions/SemanticMaps/YahooMaps/SM_YahooMapsFormInput.php', 'local' => false);

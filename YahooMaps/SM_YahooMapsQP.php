@@ -25,13 +25,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		
-		$this->defaultZoom = $egMapsYahooMapsZoom;	
-		
-		$this->spesificParameters = array(
-			'zoom' => array(
-				'default' => '', 	
-			)
-		);			
+		$this->defaultZoom = $egMapsYahooMapsZoom;				
 	}
 	
 	/**

@@ -20,5 +20,5 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps']['qp'] = array('class' => 'SMGoogleMapsQP', 'file' => 'SemanticMaps/GoogleMaps/SM_GoogleMapsQP.php', 'local' => false);
-$egMapsServices['googlemaps']['fi'] = array('class' => 'SMGoogleMapsFormInput', 'file' => 'SemanticMaps/GoogleMaps/SM_GoogleMapsFormInput.php', 'local' => false);
+$egMapsServices['googlemaps']['qp'] = array('class' => 'SMGoogleMapsQP', 'file' => 'extensions/SemanticMaps/GoogleMaps/SM_GoogleMapsQP.php', 'local' => false);
+$egMapsServices['googlemaps']['fi'] = array('class' => 'SMGoogleMapsFormInput', 'file' => 'extensions/SemanticMaps/GoogleMaps/SM_GoogleMapsFormInput.php', 'local' => false);

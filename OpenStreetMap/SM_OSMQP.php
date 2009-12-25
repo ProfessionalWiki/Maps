@@ -25,13 +25,7 @@ final class SMOSMQP extends SMMapPrinter {
 		global $egMapsOSMZoom, $egMapsOSMPrefix;
 		
 		$this->elementNamePrefix = $egMapsOSMPrefix;
-		$this->defaultZoom = $egMapsOSMZoom;	
-
-		$this->spesificParameters = array(
-			'zoom' => array(
-				'default' => '', 	
-			)
-		);	
+		$this->defaultZoom = $egMapsOSMZoom;		
 	}	
 
 	/**
