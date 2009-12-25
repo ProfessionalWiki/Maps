@@ -6,6 +6,28 @@ version of Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.5.1 ===
+(2009-12-25)
+
+==== New features ====
+
+* Integrated further with Validator by holding into account the error level for coordinate validation in the display_ parser functions.
+
+* Added activatable= parameter to the static map support.
+
+==== Refactoring ====
+
+* Cleaned up the static map code for OSM display_map.
+
+* Modified the parameter definitions to work with Validator 0.2
+
+* Removed redundant (because of Validator 0.2) utility function calls from the mapping classes.
+
+* Removed redundant (because of Validator 0.2) utility functions from the mapping service files.
+
+==== Bug fixes ====
+
+* Fixed issue with the hook system that caused code to get executed when it shouldn't.
 
 === Maps 0.5 ===
 (2009-12-17)

@@ -48,7 +48,6 @@ final class MapsMapper {
 					),
 				'default' => $egMapsMapHeight
 				),
-			'controls' => array(),
 			);
 	}
 
