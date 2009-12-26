@@ -198,7 +198,20 @@ $messages['ca'] = array(
 $messages['de'] = array(
 	'maps_map' => 'Karte',
 	'maps_coordinates_missing' => 'Es wurden keine Koordinaten für die Karte angegeben.',
+	'maps_geocoding_failed' => 'Die {{PLURAL:$2|folgende Adresse|folgenden Adressen}} konnten nicht geokodiert werden: $1.',
+	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|folgende Adresse konnte|folgenden Adressen konnten}} nicht geokodiert werden und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
+$1',
+	'maps_unrecognized_coords' => 'Folgende Koordinaten wurden nicht erkannt: $1.',
+	'maps_unrecognized_coords_for' => 'Die {{PLURAL:$2|folgende Koordinate wurde|folgenden Koordinaten wurden}} nicht erkannt und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
+$1',
+	'maps_map_cannot_be_displayed' => 'Diese Karte kann nicht angezeigt werden.',
+	'maps_click_to_activate' => 'Klicken um Karte zu aktivieren',
+	'maps_centred_on' => 'Karte ist zentriert auf $1, $2.',
+	'maps_overlays' => 'Einblendungen',
 	'maps_photos' => 'Fotos',
+	'maps_videos' => 'Videos',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webcams',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -381,6 +394,8 @@ $messages['he'] = array(
 $1',
 	'maps_unrecognized_coords' => 'הקואורדינטות הבאות אינן מזוהות: $1.',
 	'maps_map_cannot_be_displayed' => 'לא ניתן להציג את המפה.',
+	'maps_click_to_activate' => 'יש ללחוץ כדי להפעיל את המפה',
+	'maps_centred_on' => 'המפה ממורכזת סביב $1,$2',
 	'maps_overlays' => 'שכבות',
 	'maps_photos' => 'תמונות',
 	'maps_videos' => 'סרטוני וידאו',
@@ -519,6 +534,13 @@ $1',
 	'maps_webcams' => 'ウェブカメラ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'maps_wikipedia' => 'ವಿಕಿಪೀಡಿಯ',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -613,6 +635,8 @@ $1.',
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'maps_desc' => 'Gir mulighet for å vise koorinatdata i kart og geokodeadresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Tilgjengelige karttjenester: $1',
 	'maps_map' => 'Kart',
 	'maps_coordinates_missing' => 'Ingen koordinater oppgitt for kartet.',
 	'maps_geocoding_failed' => 'Følgende {{PLURAL:$2|adresse|adresser}} kunne ikke geokodes: $1.',
