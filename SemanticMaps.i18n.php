@@ -104,17 +104,26 @@ $messages['ar'] = array(
 	'semanticmaps_name' => 'خرائط دلالية',
 	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://wiki.bn2vs.com/wiki/Semantic_Maps تجربة]).
 خدمات الخرائط المتوفرة: $1',
+	'semanticmaps_lonely_unit' => 'لا رقم تم العثور عليه قبل الرمز "$1".',
+	'semanticmaps_bad_latlong' => 'دائرة العرض وخط الطول يجب أن يتم إعطاؤهم مرة واحدة فقط، وبإحداثيات صحيحة.',
 	'semanticmaps_abb_north' => 'شم',
 	'semanticmaps_abb_east' => 'شر',
 	'semanticmaps_abb_south' => 'ج',
 	'semanticmaps_abb_west' => 'غ',
+	'semanticmaps_label_latitude' => 'دائرة العرض:',
+	'semanticmaps_label_longitude' => 'خط الطول:',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 	'semanticmaps_notfound' => 'لم يوجد',
+	'semanticmaps_paramdesc_format' => 'خدمة الخرائط المستخدمة لتوليد الخريطة',
 	'semanticmaps_paramdesc_geoservice' => 'خدمة التكويد الجغرافي المستخدمة لتحويل العناوين إلى إحداثيات',
+	'semanticmaps_paramdesc_height' => 'ارتفاع الخريطة، بالبكسل (افتراضيا $1)',
+	'semanticmaps_paramdesc_width' => 'عرض الخريطة، بالبكسل (افتراضيا $1)',
 	'semanticmaps_paramdesc_zoom' => 'مستوى التقريب للخريطة',
+	'semanticmaps_paramdesc_centre' => 'إحداثيات وسط الخريطة',
 	'semanticmaps_paramdesc_controls' => 'متحكمات المستخدم موضوعة على الخريطة',
 	'semanticmaps_paramdesc_types' => 'أنواع الخرائط المتوفرة على الخريطة',
+	'semanticmaps_paramdesc_type' => 'نوع الخريطة الافتراضي للخريطة',
 	'semanticmaps_paramdesc_overlays' => 'الطبقات الفوقية متوفرة على الخريطة',
 	'semanticmaps_paramdesc_autozoom' => 'لو أن التقريب والابتعاد بواسطة استخدام عجلة تدحرج الفأرة مفعلة',
 	'semanticmaps_paramdesc_layers' => 'الطبقات المتوفرة على الخريطة',
@@ -200,10 +209,17 @@ Dostupne usluge mapa: $1',
 	'semanticmaps_lookupcoordinates' => 'Nađi koordinate',
 	'semanticmaps_enteraddresshere' => 'Unesite adresu ovdje',
 	'semanticmaps_notfound' => 'nije pronađeno',
+	'semanticmaps_paramdesc_format' => 'Usluga kartiranja korištena za generiranje karte',
+	'semanticmaps_paramdesc_geoservice' => 'Usluga geokodiranja korištena za pretvaranje adresa u koordinate',
 	'semanticmaps_paramdesc_height' => 'Visina mape, u pikselima (pretpostavljeno je $1)',
 	'semanticmaps_paramdesc_width' => 'Širina mape, u pikselima (pretpostavljeno je $1)',
 	'semanticmaps_paramdesc_zoom' => 'Nivo zumiranja mape',
+	'semanticmaps_paramdesc_centre' => 'Koordinate centra karte',
+	'semanticmaps_paramdesc_controls' => 'Korisničke kontrole postavljene na kartu',
 	'semanticmaps_paramdesc_types' => 'Tipovi karti dostupnih na mapi',
+	'semanticmaps_paramdesc_type' => 'Pretpostavljeni tip karte za kartu',
+	'semanticmaps_paramdesc_overlays' => 'Slojevi dostupni na karti',
+	'semanticmaps_paramdesc_autozoom' => 'Ako je zumiranje i odaljavanje putem kotačića na mišu omogućeno',
 	'semanticmaps_paramdesc_layers' => 'Slojevi dostupni na mapi',
 );
 
@@ -216,12 +232,15 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author DaSch
+ * @author Imre
  * @author Pill
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden ([http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]).
 Unterstützte Kartendienste: $1',
+	'semanticmaps_lonely_unit' => 'Keine Zahl vor dem Symbol "$1" gefunden.',
+	'semanticmaps_bad_latlong' => 'Breiten- und Längengrad dürfen nur einmal und mit gültigen Koordinaten angegeben werden.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'O',
 	'semanticmaps_abb_south' => 'S',
@@ -231,6 +250,11 @@ Unterstützte Kartendienste: $1',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticmaps_enteraddresshere' => 'Adresse hier eingeben',
 	'semanticmaps_notfound' => 'nicht gefunden',
+	'semanticmaps_paramdesc_height' => 'Die Höhe der Karte in Pixeln (Standard ist $1)',
+	'semanticmaps_paramdesc_width' => 'Die Breite der Karte in Pixeln (Standard ist $1)',
+	'semanticmaps_paramdesc_zoom' => 'Die Vergrößerungsstufe der Karte',
+	'semanticmaps_paramdesc_centre' => 'Die Koordinaten der Kartenmitte',
+	'semanticmaps_paramdesc_autozoom' => 'Wenn Vergrößerung und Verkleinerung mit dem Maus-Scrollrad aktiviert ist',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -292,6 +316,12 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'semanticmaps_desc' => 'Proporciona la capacidad de ver y editar los datos coordinados almacenados a través de la extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Servicios de mapas disponibles: $1',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'O',
+	'semanticmaps_label_latitude' => 'Latitud:',
+	'semanticmaps_label_longitude' => 'Longitud:',
 	'semanticmaps_lookupcoordinates' => 'Busque las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Ingresar dirección aquí',
 	'semanticmaps_notfound' => 'no encontrado',
@@ -313,6 +343,10 @@ $messages['fi'] = array(
 	'semanticmaps_label_longitude' => 'Pituusaste',
 	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
 	'semanticmaps_notfound' => 'ei löytynyt',
+	'semanticmaps_paramdesc_height' => 'Kartan korkeus pikseleinä (oletus on $1)',
+	'semanticmaps_paramdesc_width' => 'Kartan leveys pikseleinä (oletus on $1)',
+	'semanticmaps_paramdesc_zoom' => 'Kartan suurennostaso',
+	'semanticmaps_paramdesc_centre' => 'Kartan keskipisteen koordinaatit',
 );
 
 /** French (Français)
@@ -417,9 +451,17 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'semanticmaps_desc' => 'הוספת האפשרות לצפייה ולעריכה בנתוני קואורדינטה המאוחסנים דרך הרחבת המדיה־ויקי הסמנטי ([http://wiki.bn2vs.com/wiki/Semantic_Maps הדגמה]).
 שירותי מפה זמינים: $1',
+	'semanticmaps_lonely_unit' => 'לא נמצא מספר לפני הסימן "$1".',
+	'semanticmaps_abb_north' => "צפ'",
+	'semanticmaps_abb_east' => "מז'",
+	'semanticmaps_abb_south' => "דר'",
+	'semanticmaps_abb_west' => "מע'",
+	'semanticmaps_label_latitude' => 'קו רוחב:',
+	'semanticmaps_label_longitude' => 'קו אורך:',
 	'semanticmaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
 	'semanticmaps_notfound' => 'לא נמצאה',
+	'semanticmaps_paramdesc_format' => 'שירות המיפוי המשמש להכנת המפה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
