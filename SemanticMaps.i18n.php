@@ -462,6 +462,10 @@ $messages['he'] = array(
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
 	'semanticmaps_notfound' => 'לא נמצאה',
 	'semanticmaps_paramdesc_format' => 'שירות המיפוי המשמש להכנת המפה',
+	'semanticmaps_paramdesc_width' => 'רוחב המפה, בפיקסלים (ברירת המחדל היא $1)',
+	'semanticmaps_paramdesc_controls' => 'פקדי המשתמש ממוקמים על המפה',
+	'semanticmaps_paramdesc_type' => 'סוג ברירת המחדל של המפה עבור המפה',
+	'semanticmaps_paramdesc_layers' => 'השכבות הזמינות במפה',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
