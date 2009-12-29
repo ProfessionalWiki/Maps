@@ -225,8 +225,14 @@ Dostupne usluge mapa: $1',
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Solde
  */
 $messages['ca'] = array(
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_label_latitude' => 'Latitud:',
 	'semanticmaps_notfound' => "no s'ha trobat",
 );
 
@@ -250,11 +256,18 @@ Unterstützte Kartendienste: $1',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticmaps_enteraddresshere' => 'Adresse hier eingeben',
 	'semanticmaps_notfound' => 'nicht gefunden',
+	'semanticmaps_paramdesc_format' => 'Der Kartographiedienst zum Generieren der Karte',
+	'semanticmaps_paramdesc_geoservice' => 'Der Geokodierungsdienst, um Adressen in Koordinaten umzuwandeln',
 	'semanticmaps_paramdesc_height' => 'Die Höhe der Karte in Pixeln (Standard ist $1)',
 	'semanticmaps_paramdesc_width' => 'Die Breite der Karte in Pixeln (Standard ist $1)',
 	'semanticmaps_paramdesc_zoom' => 'Die Vergrößerungsstufe der Karte',
 	'semanticmaps_paramdesc_centre' => 'Die Koordinaten der Kartenmitte',
+	'semanticmaps_paramdesc_controls' => 'Die Benutzerkontrollen, die sich auf der Karte befinden',
+	'semanticmaps_paramdesc_types' => 'Die verfügbaren Kartentypen für die Karte',
+	'semanticmaps_paramdesc_type' => 'Der Standard-Kartentyp für die Karte',
+	'semanticmaps_paramdesc_overlays' => 'Die auf der Karte verfügbaren Overlays',
 	'semanticmaps_paramdesc_autozoom' => 'Wenn Vergrößerung und Verkleinerung mit dem Maus-Scrollrad aktiviert ist',
+	'semanticmaps_paramdesc_layers' => 'Die auf der Karte verfügbaren Ebenen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -462,8 +475,11 @@ $messages['he'] = array(
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
 	'semanticmaps_notfound' => 'לא נמצאה',
 	'semanticmaps_paramdesc_format' => 'שירות המיפוי המשמש להכנת המפה',
+	'semanticmaps_paramdesc_height' => 'גובה המפה, בפיקסלים (ברירת המחדל היא $1)',
 	'semanticmaps_paramdesc_width' => 'רוחב המפה, בפיקסלים (ברירת המחדל היא $1)',
+	'semanticmaps_paramdesc_centre' => 'קואורדינטות מרכז המפה',
 	'semanticmaps_paramdesc_controls' => 'פקדי המשתמש ממוקמים על המפה',
+	'semanticmaps_paramdesc_types' => 'צורות המפה הזמינות על המפה',
 	'semanticmaps_paramdesc_type' => 'סוג ברירת המחדל של המפה עבור המפה',
 	'semanticmaps_paramdesc_layers' => 'השכבות הזמינות במפה',
 );
@@ -655,9 +671,23 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'semanticmaps_lonely_unit' => 'Keng Zuel virum Symbol "$1" fonnt.',
+	'semanticmaps_bad_latlong' => 'Längtegrad a Breedegrad däerfen nëmmen eemol a mat valabele Koordinaten ugi ginn.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'O',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_label_latitude' => 'Breedegrad:',
+	'semanticmaps_label_longitude' => 'Längtegrad:',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticmaps_enteraddresshere' => 'Adress hei aginn',
 	'semanticmaps_notfound' => 'net fonnt',
+	'semanticmaps_paramdesc_format' => "De Kartographie-Service dee fir d'generéiere vun der Kaart benotzt gëtt",
+	'semanticmaps_paramdesc_height' => "D'Héicht vun der Kaart, a Pixelen (Standard ass $1)",
+	'semanticmaps_paramdesc_width' => "D'Breet vun der Kaart, a Pixelen (Standard ass $1)",
+	'semanticmaps_paramdesc_zoom' => 'DenNiveau vum Zoom vun der Kaart',
+	'semanticmaps_paramdesc_centre' => "D'Koordinate vum zentrum vun der Kaart",
+	'semanticmaps_paramdesc_controls' => "D'Benotzerkontrollen déi op der Kaart plazéiert sinn",
 );
 
 /** Macedonian (Македонски)
