@@ -176,12 +176,23 @@ $1",
 $messages['bs'] = array(
 	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Dostupne usluge mapa: $1',
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Za mapu nisu navedene koordinate.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Slijedeća adresa nije mogla biti geokodirana|Slijedeće adrese nisu mogle biti geokodirane}}: $1.
 Mapa se ne može prikazati.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Slijedeća adresa nije|Slijedeće adrese nisu}} mogle biti geokodiranje i {{PLURAL:$2|izostavljena je|izostavljene su}} iz mape:
 $1',
-	'maps_map' => 'Mapa',
+	'maps_unrecognized_coords' => 'Slijedeće koordinate nisu prepoznate: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slijedeća koordinata nije|Slijedeće koordinate nisu}} prepoznate i {{PLURAL:$2|ignorirana je|ignorirane su}} na karti:
+$1',
+	'maps_map_cannot_be_displayed' => 'Karta se ne može prikazati.',
+	'maps_click_to_activate' => 'Kliknite da aktivirate kartu',
+	'maps_centred_on' => 'Karta centrirana na $1, $2.',
+	'maps_overlays' => 'Slojevi',
+	'maps_photos' => 'Fotografije',
+	'maps_videos' => 'Video snimci',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Web kamere',
 );
 
 /** Catalan (Català)
@@ -196,6 +207,8 @@ $messages['ca'] = array(
  * @author Imre
  */
 $messages['de'] = array(
+	'maps_desc' => 'Ermöglicht es, Koordinaten in Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
+Verfügbare Kartografie-Dienste: $1',
 	'maps_map' => 'Karte',
 	'maps_coordinates_missing' => 'Es wurden keine Koordinaten für die Karte angegeben.',
 	'maps_geocoding_failed' => 'Die {{PLURAL:$2|folgende Adresse|folgenden Adressen}} konnten nicht geokodiert werden: $1.',
@@ -275,14 +288,23 @@ $messages['eu'] = array(
  * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
+ * @author ZeiP
  */
 $messages['fi'] = array(
+	'maps_desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Käytettävissä olevat karttapalvelut: $1',
 	'maps_map' => 'Kartta',
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
 Karttaa ei voida näyttää.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|on|ovat}} jätetty kartalta: $1',
+	'maps_unrecognized_coords' => 'Seuraavia koordinaatteja ei tunnistettu: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu ja {{PLURAL:$2|se|ne}} on jätetty pois kartasta:
+$1',
 	'maps_map_cannot_be_displayed' => 'Karttaa ei voida näyttää.',
+	'maps_click_to_activate' => 'Napsauta aktivoidaksesi kartan',
+	'maps_centred_on' => 'Kartta keskitetty kohtaan $1, $2.',
+	'maps_overlays' => 'Kerrokset',
 	'maps_photos' => 'Kuvat',
 	'maps_videos' => 'Videot',
 	'maps_wikipedia' => 'Wikipedia',
@@ -569,9 +591,16 @@ $messages['lb'] = array(
 	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
 	'maps_map' => 'Kaart',
 	'maps_coordinates_missing' => "Et goufe keng Koordinate fir d'Kaart uginn.",
+	'maps_geocoding_failed' => 'Dës {{PLURAL:$2|Adress konnt|Adresse konnten}} net geocodéiert ginn: $1',
 	'maps_geocoding_failed_for' => 'Dës {{PLURAL:$2|Adress|Adresse}} konnten net geocodéiert ginn an {{PLURAL:$2|huet|hu}} missen op der Kaart ewechgelooss ginn:
 $1',
+	'maps_unrecognized_coords' => 'Dës Koordinate goufen net erkannt: $1',
+	'maps_unrecognized_coords_for' => 'Dës {{PLURAL:$2|Koordinate|Koordinate}} goufen net erkannt a vun der Kaart ignoréiert:
+$1',
+	'maps_map_cannot_be_displayed' => "D'Kaart kann net gewise ginn.",
 	'maps_click_to_activate' => "Klickt fir d'kaart z'aktivéieren",
+	'maps_centred_on' => "D'Kaart ass zentréiert op $1, $2",
+	'maps_overlays' => 'Ablendungen',
 	'maps_photos' => 'Fotoen',
 	'maps_videos' => 'Videoen',
 	'maps_wikipedia' => 'Wikipedia',
