@@ -194,7 +194,7 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	/**
 	 * Escape function for titles and labels.
 	 */
-	private function doEscaping(&$text) {
+	private function doEscaping($text) {
 		// TODO: links do not get escaped properly yet.
 		return str_replace("'", "\'", $text);	
 	}
