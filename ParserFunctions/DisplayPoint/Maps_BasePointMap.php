@@ -47,7 +47,9 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	
 			$this->setMapName();
 			
-			$this->setCoordinates($parser);	
+			$this->doParsing($parser);
+			
+			$this->setMarkerData($parser);	
 	
 			$this->createMarkerString();
 			
@@ -55,11 +57,7 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			
 			$this->setCentre();
 			
-			$this->doParsing($parser);
-			
-			$this->doEscaping();
-			
-			$this->addSpecificMapHTML();			
+			$this->addSpecificMapHTML();
 		}	
 		
 		return $this->output . $this->errorList;
@@ -87,22 +85,22 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	 *
 	 * @param unknown_type $parser
 	 */
-	private function setCoordinates($parser) {
+	private function setMarkerData($parser) {
 		$this->coordinates = explode(';', $this->coordinates);		
 		
 		foreach($this->coordinates as $coordinates) {
 			$args = explode('~', $coordinates);
 			
-			$args[0] = str_replace('″', '"', $args[0]);
-			$args[0] = str_replace('′', "'", $args[0]);			
+            $args[0] = str_replace('″', '"', $args[0]);
+            $args[0] = str_replace('′', "'", $args[0]); 		
 			
 			$markerData = MapsUtils::getLatLon($args[0]);
 			
 			if (count($args) > 1) {
-				$markerData['title'] = $parser->recursiveTagParse( $args[1] );
+				$markerData['title'] = $this->doEscaping( $parser->recursiveTagParse( $args[1] ) );
 				
 				if (count($args) > 2) {
-					$markerData['label'] = $parser->recursiveTagParse( $args[2] );
+					$markerData['label'] = $this->doEscaping( $parser->recursiveTagParse( $args[2] ) );
 					
 					if (count($args) > 3) {
 						$markerData['icon'] = $args[3];
@@ -123,19 +121,13 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 		$markerItems = array();
 		
 		foreach ($this->markerData as $markerData) {
-			$lat = $markerData['lat'];
-			$lon = $markerData['lon'];		
-			
 			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
-			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;
-
-			$title = str_replace("'", "\'", $title);
-			$label = str_replace("'", "\'", $label);	
-
+			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;	
+			
 			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
 			
 			$markerItems[] = str_replace(	array('lon', 'lat', 'title', 'label', 'icon'), 
-											array($lon, $lat, $title, $label, $icon), 
+											array($markerData['lon'], $markerData['lat'], $title, $label, $icon), 
 											$this->markerStringFormat
 											);
 		}
@@ -195,16 +187,16 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	 * @param unknown_type $parser
 	 */
 	private function doParsing(&$parser) {
-		$this->title = $parser->recursiveTagParse( $this->title );
-		$this->label = $parser->recursiveTagParse( $this->label );
+		$this->title = $this->doEscaping( $parser->recursiveTagParse( $this->title ) );
+		$this->label = $this->doEscaping( $parser->recursiveTagParse( $this->label ) );	
 	}
 	
 	/**
-	 * Escape the title and label text
+	 * Escape function for titles and labels.
 	 */
-	private function doEscaping() {
-		$this->title = str_replace("'", "\'", $this->title);
-		$this->label = str_replace("'", "\'", $this->label);		
+	private function doEscaping(&$text) {
+		// TODO: links do not get escaped properly yet.
+		return str_replace("'", "\'", $text);	
 	}
 	
 }

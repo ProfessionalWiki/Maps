@@ -32,7 +32,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
-		$this->markerStringFormat = 'getGMarkerData(lat, lon, "title", "label", "icon")';
+		$this->markerStringFormat = 'getGMarkerData(lat, lon, \'title\', \'label\', "icon")';
 		
 		$this->spesificParameters = array(
 			'overlays' => array(
