@@ -134,6 +134,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
+	'semanticmaps_name' => 'خرائط دلالية',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
@@ -318,7 +319,15 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'U',
+	'semanticmaps_label_latitude' => 'Latitudo:',
+	'semanticmaps_label_longitude' => 'Longitudo:',
 	'semanticmaps_lookupcoordinates' => 'Rigardi koordinatojn',
+	'semanticmaps_enteraddresshere' => 'Enigu adreson ĉi tie',
+	'semanticmaps_notfound' => 'ne trovita',
 );
 
 /** Spanish (Español)
