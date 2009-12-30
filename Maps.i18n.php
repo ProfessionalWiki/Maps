@@ -110,6 +110,15 @@ $1',
 	'maps_webcams' => 'كاميرات الويب',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Meno25
+ */
+$messages['arz'] = array(
+	'maps_name' => 'خرايط',
+	'maps_googlemaps' => 'خرايط جوجل',
+	'maps_yahoomaps' => 'خرايط ياهو',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -260,8 +269,17 @@ $messages['el'] = array(
 	'maps_wikipedia' => 'Βικιπαίδεια',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'maps_map_cannot_be_displayed' => 'La mapo ne esti montrebla.',
+	'maps_photos' => 'Fotoj',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Imre
  * @author Peter17
  * @author Translationista
  */
@@ -271,6 +289,7 @@ $messages['es'] = array(
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
+	'maps_centred_on' => 'Mapa centrado en $1, $2.',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',
