@@ -361,6 +361,10 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'semanticmaps_abb_north' => 'P',
+	'semanticmaps_abb_east' => 'I',
+	'semanticmaps_abb_south' => 'E',
+	'semanticmaps_abb_west' => 'L',
 	'semanticmaps_label_latitude' => 'Leveysaste',
 	'semanticmaps_label_longitude' => 'Pituusaste',
 	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
@@ -901,10 +905,17 @@ Serviços de cartografia disponíveis: $1',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'semanticmaps_desc' => 'Provê a possibilidade de ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://wiki.bn2vs.com/wiki/Semantic_Maps demonstração]).
 Serviços de mapeamento disponíveis: $1',
+	'semanticmaps_lonely_unit' => 'Nenhum número encontrado antes do símbolo "$1".',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'O',
+	'semanticmaps_label_latitude' => 'Latitude:',
+	'semanticmaps_label_longitude' => 'Longitude:',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
 	'semanticmaps_notfound' => 'Não encontrado',
