@@ -274,7 +274,9 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'maps_map_cannot_be_displayed' => 'La mapo ne esti montrebla.',
+	'maps_click_to_activate' => 'Klaku aktivigi mapon',
 	'maps_photos' => 'Fotoj',
+	'maps_wikipedia' => 'Vikipedio',
 );
 
 /** Spanish (Español)
@@ -800,15 +802,19 @@ $1',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
 Serviços de mapeamento disponíveis: $1',
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Nenhuma coordenada fornecida para o mapa',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado|geocodificados}}: $1.
 O mapa não pode ser exibido.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado e foi omitido|geocodificados e foram omitidos}} do mapa:
 $1',
+	'maps_unrecognized_coords' => 'As seguintes coordenadas não foram reconhecidas: $1.',
+	'maps_click_to_activate' => 'Clique para ativar o mapa',
 );
 
 /** Romanian (Română)
@@ -921,9 +927,11 @@ $messages['th'] = array(
  */
 $messages['tr'] = array(
 	'maps_map' => 'Harita',
+	'maps_coordinates_missing' => 'Harita için koordinat girilmedi.',
 	'maps_unrecognized_coords' => 'Şu koordinatlar tanınamadı: $1',
 	'maps_map_cannot_be_displayed' => 'Harita görüntülenemiyor.',
 	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
+	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
 	'maps_photos' => 'Fotoğraflar',
 	'maps_videos' => 'Videolar',
 	'maps_wikipedia' => 'Vikipedi',
