@@ -1048,6 +1048,23 @@ $messages['tl'] = array(
 	'semanticmaps_enteraddresshere' => 'Ipasok ang adres dito',
 );
 
+/** Turkish (Türkçe)
+ * @author Vito Genovese
+ */
+$messages['tr'] = array(
+	'semanticmaps_abb_north' => 'K',
+	'semanticmaps_abb_east' => 'D',
+	'semanticmaps_abb_south' => 'G',
+	'semanticmaps_abb_west' => 'B',
+	'semanticmaps_label_latitude' => 'Enlem:',
+	'semanticmaps_label_longitude' => 'Boylam:',
+	'semanticmaps_lookupcoordinates' => 'Koordinat ara',
+	'semanticmaps_enteraddresshere' => 'Adresi buraya girin',
+	'semanticmaps_notfound' => 'bulunamadı',
+	'semanticmaps_paramdesc_zoom' => 'Haritanın yakınlaşma seviyesi',
+	'semanticmaps_paramdesc_layers' => 'Haritada mevcut olan katmanlar',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */
