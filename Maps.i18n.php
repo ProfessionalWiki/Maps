@@ -74,7 +74,6 @@ $messages['af'] = array(
 	'maps_unrecognized_coords_for' => 'Die volgende {{PLURAL:$2|koördinaat|koördinate}} is nie herken nie en is uit die kaart weggelaat:
 $1.',
 	'maps_map_cannot_be_displayed' => 'Die kaart kan nie vertoon word nie.',
-	'maps_error_parameters' => 'Die volgende foute is in u sintaks opgespoor',
 	'maps_photos' => "Foto's",
 	'maps_videos' => "Video's",
 	'maps_wikipedia' => 'Wikipedia',
@@ -368,12 +367,12 @@ $1",
 $messages['fur'] = array(
 	'maps_desc' => 'Al furnìs la possibilitât di mostrâ i dâts de coordinadis e lis direzions geocodificadis intune mape ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Servizis di mapis disponibii: $1',
+	'maps_map' => 'Mape',
 	'maps_coordinates_missing' => 'Nissune coordenade furnide pe mape.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|La direzion ca sot no pues jessi geocodificade|Lis direzions ca sot no puedin jessi geocodificadis}}: $1.
 La mape no pues jessi mostrade.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|La direzion|Lis direzions}} ca sot no {{PLURAL:$2|pues|puedin}} jessi {{PLURAL:$2|geocodificade|geocodificadis}} e  {{PLURAL:$2|no je mostrade|no son mostradis}} te mape:
 $1',
-	'maps_map' => 'Mape',
 );
 
 /** Galician (Galego)
@@ -495,7 +494,6 @@ $1',
 	'maps_unrecognized_coords' => 'A következő koordinátákat nem sikerült felismerni: $1.',
 	'maps_unrecognized_coords_for' => 'A következő {{PLURAL:$2|koordinátát|koordinátákat}} nem sikerült felismerni, és el {{PLURAL:$2|lett|lettek}} távolítva a térképről: $1',
 	'maps_map_cannot_be_displayed' => 'A térképet nem sikerült megjeleníteni.',
-
 	'maps_overlays' => 'Rétegek',
 	'maps_photos' => 'Fényképek',
 	'maps_videos' => 'Videók',
@@ -646,6 +644,7 @@ $1',
 $1',
 	'maps_map_cannot_be_displayed' => 'Картата не може да се прикаже.',
 	'maps_click_to_activate' => 'Кликнете за активирање на картата',
+	'maps_centred_on' => 'Средиште на картата во $1, $2.',
 	'maps_overlays' => 'Слоеви',
 	'maps_photos' => 'Фотографии',
 	'maps_videos' => 'Видеа',
@@ -877,10 +876,10 @@ $1',
 $messages['sk'] = array(
 	'maps_desc' => 'Poskytuje možnosť zobrazovať údaje súradníc na mapách a tvoriť geografické adresy lokalít ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostupné mapovacie služby: $1',
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Neboli poskytnuté žiadne súradnice.',
 	'maps_geocoding_failed' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}}: $1.',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
-	'maps_map' => 'Mapa',
 );
 
 /** Swedish (Svenska)
@@ -899,7 +898,6 @@ Kartan kan inte visas.',
 	'maps_unrecognized_coords_for' => 'Följande {{PLURAL:$2|koordinat|koordinater}} kändes inte igen och {{PLURAL:$2|har|har}} utelämnats från kartan:
 $1',
 	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
-
 	'maps_photos' => 'Foton',
 	'maps_wikipedia' => 'Wikipedia',
 );
