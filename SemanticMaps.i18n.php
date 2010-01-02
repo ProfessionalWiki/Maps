@@ -1012,6 +1012,9 @@ $messages['sr-el'] = array(
  * @author Per
  */
 $messages['sv'] = array(
+	'semanticmaps_desc' => 'Ger möjligheten att titta på och ändra koordinatdata sparad genom Semantic MediaWiki-utvidgningen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+
+Tillgängliga karttjänster: $1',
 	'semanticmaps_bad_latlong' => 'Bredd och längdgrad skall anges endast en gång och med giltiga koordinater.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'Ö',
@@ -1024,6 +1027,9 @@ $messages['sv'] = array(
 	'semanticmaps_notfound' => 'hittades inte',
 	'semanticmaps_paramdesc_height' => 'Höjden på kartan i pixlar (standard är $1)',
 	'semanticmaps_paramdesc_width' => 'Bredden på kartan i pixlar (standard är $1)',
+	'semanticmaps_paramdesc_zoom' => 'Zoomnivån för kartan',
+	'semanticmaps_paramdesc_centre' => 'Koordinaterna för kartans mittpunkt',
+	'semanticmaps_paramdesc_type' => 'Standard karttyp för kartan',
 	'semanticmaps_paramdesc_layers' => 'Lagren tillgängliga för kartan',
 );
 
