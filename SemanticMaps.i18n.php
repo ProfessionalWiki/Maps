@@ -334,10 +334,13 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Imre
  * @author Locos epraix
+ * @author Translationista
  */
 $messages['es'] = array(
 	'semanticmaps_desc' => 'Proporciona la capacidad de ver y editar los datos coordinados almacenados a través de la extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Servicios de mapas disponibles: $1',
+	'semanticmaps_lonely_unit' => 'No se encontró ningún  número antes del símbolo "$1".',
+	'semanticmaps_bad_latlong' => 'La latitud y longitud deben darse sólo una vez y con coordenadas válidas.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'E',
 	'semanticmaps_abb_south' => 'S',
@@ -347,6 +350,16 @@ Servicios de mapas disponibles: $1',
 	'semanticmaps_lookupcoordinates' => 'Busque las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Ingresar dirección aquí',
 	'semanticmaps_notfound' => 'no encontrado',
+	'semanticmaps_paramdesc_height' => 'Alto del mapa en píxeles (el predeterminado es $1)',
+	'semanticmaps_paramdesc_width' => 'Ancho del mapa en píxeles (el predeterminado es $1)',
+	'semanticmaps_paramdesc_zoom' => 'Nivel de acercamiento del mapa',
+	'semanticmaps_paramdesc_centre' => 'Las coordenadas del centro del mapa',
+	'semanticmaps_paramdesc_controls' => 'Los controles de usuario ubicados en el mapa',
+	'semanticmaps_paramdesc_types' => 'Los tipos de mapa disponibles en el mapa',
+	'semanticmaps_paramdesc_type' => 'El tipo de mapa predeterminado para el mapa',
+	'semanticmaps_paramdesc_overlays' => 'FUZZY!!! Las capas disponibles en el mapa',
+	'semanticmaps_paramdesc_autozoom' => 'En caso de que el acercamiento y alejamiento mediante la rueda del ratón esté habilitado',
+	'semanticmaps_paramdesc_layers' => 'Las capas disponibles en el mapa',
 );
 
 /** Basque (Euskara)
