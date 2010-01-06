@@ -189,6 +189,8 @@ $messages['br'] = array(
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
 	'semanticmaps_paramdesc_height' => 'Uhelder ar gartenn, e pikseloù ($1 dre izouer)',
 	'semanticmaps_paramdesc_width' => 'Ledander ar gartenn, e pikseloù ($1 dre izouer)',
+	'semanticmaps_paramdesc_zoom' => 'Live zoum ar gartenn',
+	'semanticmaps_paramdesc_centre' => 'Daveennoù kreiz ar gartenn',
 	'semanticmaps_paramdesc_types' => "Tu 'zo kaout an doareoù kartennoù war ar gartenn",
 	'semanticmaps_paramdesc_layers' => 'Ar gwiskadoù zo da gaout war ar gartenn',
 );
