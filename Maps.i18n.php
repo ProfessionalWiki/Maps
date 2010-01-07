@@ -290,6 +290,7 @@ $messages['es'] = array(
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
+	'maps_click_to_activate' => 'Haz clic para activar el mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Videos',
