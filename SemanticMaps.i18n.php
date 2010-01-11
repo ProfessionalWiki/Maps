@@ -191,7 +191,9 @@ $messages['br'] = array(
 	'semanticmaps_paramdesc_width' => 'Ledander ar gartenn, e pikseloù ($1 dre izouer)',
 	'semanticmaps_paramdesc_zoom' => 'Live zoum ar gartenn',
 	'semanticmaps_paramdesc_centre' => 'Daveennoù kreiz ar gartenn',
+	'semanticmaps_paramdesc_controls' => "Ar c'hontrolloù implijer lakaet war ar gartenn",
 	'semanticmaps_paramdesc_types' => "Tu 'zo kaout an doareoù kartennoù war ar gartenn",
+	'semanticmaps_paramdesc_type' => 'Ar seurt kartenn dre ziouer evit ar gartenn',
 	'semanticmaps_paramdesc_layers' => 'Ar gwiskadoù zo da gaout war ar gartenn',
 );
 
