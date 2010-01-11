@@ -171,6 +171,7 @@ $1",
 $1",
 	'maps_map_cannot_be_displayed' => "Ar gartenn ne c'hall ket bezañ diskwelet.",
 	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
+	'maps_centred_on' => 'Kartenn kreizet war $1, $2.',
 	'maps_overlays' => 'Dreistlakadennoù',
 	'maps_photos' => "Luc'hskeudennoù",
 	'maps_videos' => 'Videoioù',
@@ -682,6 +683,7 @@ $1.',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -698,6 +700,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikke vises.',
 	'maps_click_to_activate' => 'Klikk for å aktivere kartet',
 	'maps_centred_on' => 'Kart sentrert om $1, $2.',
+	'maps_overlays' => 'Transparenter',
 	'maps_photos' => 'Foto',
 	'maps_videos' => 'Videoer',
 	'maps_wikipedia' => 'Wikipedia',
