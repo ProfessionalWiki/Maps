@@ -552,6 +552,10 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'semanticmaps_desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztés segítségével tárolt koordinátaadatok megtekintését és szerkesztését ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Elérhető térképszolgáltatók: $1',
+	'semanticmaps_abb_north' => 'É',
+	'semanticmaps_abb_east' => 'K',
+	'semanticmaps_abb_south' => 'D',
+	'semanticmaps_abb_west' => 'Ny',
 	'semanticmaps_lookupcoordinates' => 'Koordináták felkeresése',
 	'semanticmaps_enteraddresshere' => 'Add meg a címet itt',
 	'semanticmaps_notfound' => 'nincs találat',
@@ -1034,6 +1038,7 @@ $messages['sv'] = array(
 	'semanticmaps_desc' => 'Ger möjligheten att titta på och ändra koordinatdata sparad genom Semantic MediaWiki-utvidgningen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 
 Tillgängliga karttjänster: $1',
+	'semanticmaps_lonely_unit' => 'Inget tal framför symbolen "$1".',
 	'semanticmaps_bad_latlong' => 'Bredd och längdgrad skall anges endast en gång och med giltiga koordinater.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'Ö',
