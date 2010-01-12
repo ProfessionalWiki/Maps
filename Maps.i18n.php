@@ -496,6 +496,8 @@ $1',
 	'maps_unrecognized_coords' => 'A következő koordinátákat nem sikerült felismerni: $1.',
 	'maps_unrecognized_coords_for' => 'A következő {{PLURAL:$2|koordinátát|koordinátákat}} nem sikerült felismerni, és el {{PLURAL:$2|lett|lettek}} távolítva a térképről: $1',
 	'maps_map_cannot_be_displayed' => 'A térképet nem sikerült megjeleníteni.',
+	'maps_click_to_activate' => 'Kattints a térkép aktiválásához',
+	'maps_centred_on' => 'Térkép középre igazítva a következő koordináták alapján: $1, $2.',
 	'maps_overlays' => 'Rétegek',
 	'maps_photos' => 'Fényképek',
 	'maps_videos' => 'Videók',
@@ -680,6 +682,22 @@ $1.',
 	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcams',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Harald Khan
+ */
+$messages['nn'] = array(
+	'maps_map' => 'Kart',
+	'maps_coordinates_missing' => 'Ingen koordinatar vart oppgjevne for kartet.',
+	'maps_unrecognized_coords' => 'Dei fylgjande koordinatane vart ikkje kjende att: $1.',
+	'maps_map_cannot_be_displayed' => 'Kartet kan ikkje verta vist.',
+	'maps_click_to_activate' => 'Trykk for å aktivera kartet',
+	'maps_centred_on' => 'Kart sentrert på $1, $2.',
+	'maps_photos' => 'Bilete',
+	'maps_videos' => 'Videoar',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webkamera',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -902,6 +920,7 @@ Kartan kan inte visas.',
 	'maps_unrecognized_coords_for' => 'Följande {{PLURAL:$2|koordinat|koordinater}} kändes inte igen och {{PLURAL:$2|har|har}} utelämnats från kartan:
 $1',
 	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
+	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_photos' => 'Foton',
 	'maps_wikipedia' => 'Wikipedia',
 );
