@@ -178,6 +178,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servijoù kartennoù hegerz : $1',
+	'semanticmaps_lonely_unit' => "N'eus bet kavet niver ebet a-raok an arouezenn « $1 ».",
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'R',
 	'semanticmaps_abb_south' => 'S',
@@ -187,6 +188,7 @@ $messages['br'] = array(
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
+	'semanticmaps_paramdesc_format' => 'Ar servij kartennaouiñ implijet da grouiñ ar gartenn',
 	'semanticmaps_paramdesc_height' => 'Uhelder ar gartenn, e pikseloù ($1 dre izouer)',
 	'semanticmaps_paramdesc_width' => 'Ledander ar gartenn, e pikseloù ($1 dre izouer)',
 	'semanticmaps_paramdesc_zoom' => 'Live zoum ar gartenn',
