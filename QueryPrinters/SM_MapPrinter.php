@@ -217,13 +217,15 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 					
 					if ($this->template) {
 						global $wgParser;
-						$segments = array_merge(array($this->template, $titleForTemplate, $lat, $lon), $label);
+						$segments = array_merge(
+							array($this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon),
+							$label
+							);
 						$text = $wgParser->recursiveTagParse('{{' . implode('|', $segments) . '}}');
 					}
 					
 					$this->m_locations[] = array($lat, $lon, $title, $text, $icon);
 				}
-				
 			}
 		}
 	}
