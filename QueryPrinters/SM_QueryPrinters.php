@@ -58,6 +58,7 @@ final class SMQueryPrinters {
 				'default' => $egMapsDefaultGeoService
 				),			
 			'format' => array(
+				'required' => true,
 				'default' => $egMapsDefaultServices['qp']
 				),	
 			'centre' => array(
@@ -70,6 +71,12 @@ final class SMQueryPrinters {
 				'default' => false,
 				'output-type' => 'boolean'
 				),
+			'template' => array(
+				'criteria' => array(
+					'not_empty' => array()
+					),
+				'default' => false,					
+				),				
 			// SMW #Ask: parameters
 			'limit' => array(
 				'type' => 'integer',

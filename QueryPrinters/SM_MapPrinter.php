@@ -70,13 +70,13 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * @return array
 	 */
 	public final function getResultText($res, $outputmode) {
-		$this->formatResultData($res, $outputmode);
-		
 		$this->setQueryPrinterSettings();
 		
 		$this->featureParameters = SMQueryPrinters::$parameters;
 		
 		if (self::manageMapProperties($this->m_params, __CLASS__)) {
+			$this->formatResultData($res, $outputmode);
+			
 			// Only create a map when there is at least one result.
 			if (count($this->m_locations) > 0 || $this->forceshow) {
 				$this->doMapServiceLoad();
@@ -179,6 +179,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$lon = '';		
 		
 		$coords = array();
+		$label = array();
 		
 		// Loop throught all fields of the record
 		foreach ($row as $i => $field) {
@@ -191,13 +192,23 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				}
 				
 				if ($object->getTypeID() != '_geo' && $i != 0) {
-					$text .= $pr->getHTMLText($skin) . ': ' . $object->getLongText($outputmode, $skin) . '<br />';
+					if ($this->template) {
+						$label[] = $object->getLongText($outputmode, $skin);
+					}
+					else {
+						$text .= $pr->getHTMLText($skin) . ': ' . $object->getLongText($outputmode, $skin) . '<br />';
+					}
 				}
 		
 				if ($pr->getMode() == SMWPrintRequest::PRINT_PROP && $pr->getTypeID() == '_geo') {
 					$coords[] = explode(',', $object->getXSDValue());
 				}
 			}
+		}
+		
+		if ($this->template) {
+			global $wgParser;
+			$text = $wgParser->recursiveTagParse('{{' . $this->template . '|' . implode('|', $label) . '}}');
 		}
 		
 		foreach ($coords as $coord) {
