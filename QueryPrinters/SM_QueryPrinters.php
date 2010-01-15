@@ -76,7 +76,13 @@ final class SMQueryPrinters {
 					'not_empty' => array()
 					),
 				'default' => false,					
-				),				
+				),
+			'showtitle' => array(
+				'type' => 'boolean',
+				'aliases' => array('show title'),
+				'default' => true,
+				'output-type' => 'boolean'				
+				),								
 			// SMW #Ask: parameters
 			'limit' => array(
 				'type' => 'integer',

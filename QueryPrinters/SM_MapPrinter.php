@@ -174,6 +174,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$skin = $wgUser->getSkin();		
 		
 		$title = '';
+		$titleForTemplate = '';
 		$text = '';
 		$lat = '';
 		$lon = '';		
@@ -188,7 +189,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			// Loop throught all the parts of the field value
 			while ( ($object = $field->getNextObject()) !== false ) {
 				if ($object->getTypeID() == '_wpg' && $i == 0) {
-					$title = $object->getLongText($outputmode, $skin);
+					if($this->showtitle) $title = $object->getLongText($outputmode, $skin);
+					if($this->template) $titleForTemplate = $object->getLongText($outputmode, NULL);
 				}
 				
 				if ($object->getTypeID() != '_geo' && $i != 0) {
@@ -206,17 +208,19 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			}
 		}
 		
-		if ($this->template) {
-			global $wgParser;
-			$text = $wgParser->recursiveTagParse('{{' . $this->template . '|' . implode('|', $label) . '}}');
-		}
-		
 		foreach ($coords as $coord) {
 			if (count($coord) == 2) {
 				list($lat, $lon) = $coord;
 				
 				if (strlen($lat) > 0 && strlen($lon) > 0) {
 					$icon = $this->getLocationIcon($row);
+					
+					if ($this->template) {
+						global $wgParser;
+						$segments = array_merge(array($this->template, $titleForTemplate, $lat, $lon), $label);
+						$text = $wgParser->recursiveTagParse('{{' . implode('|', $segments) . '}}');
+					}
+					
 					$this->m_locations[] = array($lat, $lon, $title, $text, $icon);
 				}
 				
