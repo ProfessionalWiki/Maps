@@ -1010,9 +1010,29 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'semanticmaps_desc' => 'Poskytuje schopnosť zobrazovať a upravovať údaje súradníc uložené prostredníctvom rozšírenia Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostupné mapové služby: $1',
+	'semanticmaps_lonely_unit' => 'Pred symbolom „$1“ sa nenachádza žiadne číslo.',
+	'semanticmaps_bad_latlong' => 'Zemepisná dĺžka a šírka musí byť zadaná iba raz a s platnými súradnicami.',
+	'semanticmaps_abb_north' => 'S',
+	'semanticmaps_abb_east' => 'V',
+	'semanticmaps_abb_south' => 'J',
+	'semanticmaps_abb_west' => 'Z',
+	'semanticmaps_label_latitude' => 'Zem. dĺžka:',
+	'semanticmaps_label_longitude' => 'Zem. šírka:',
 	'semanticmaps_lookupcoordinates' => 'Vyhľadať súradnice',
 	'semanticmaps_enteraddresshere' => 'Sem zadajte emailovú adresu',
 	'semanticmaps_notfound' => 'nenájdené',
+	'semanticmaps_paramdesc_format' => 'Služba použitá na tvorbu mapy',
+	'semanticmaps_paramdesc_geoservice' => 'Služba použitá na vyhľadanie súradníc na základe adresy',
+	'semanticmaps_paramdesc_height' => 'Výška mapy v pixloch (predvolené je $1)',
+	'semanticmaps_paramdesc_width' => 'Šírka mapy v pixloch (predvolené je $1)',
+	'semanticmaps_paramdesc_zoom' => 'Úroveň priblíženia mapy',
+	'semanticmaps_paramdesc_centre' => 'Súradnice stredu mapy',
+	'semanticmaps_paramdesc_controls' => 'Používateľské ovládacie prvky umiestnené na mape',
+	'semanticmaps_paramdesc_types' => 'Typy máp dostupné na mape',
+	'semanticmaps_paramdesc_type' => 'Predvolený typ mapy na mape',
+	'semanticmaps_paramdesc_overlays' => 'Vrstvy dostupné na mape',
+	'semanticmaps_paramdesc_autozoom' => 'Či je povolené približovanie a odďaľovanie mapy kolieskom myši',
+	'semanticmaps_paramdesc_layers' => 'Dostupné vrstvy mapy',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
