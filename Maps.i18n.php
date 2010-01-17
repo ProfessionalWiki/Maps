@@ -929,6 +929,7 @@ $1',
  * @author Veeven
  */
 $messages['te'] = array(
+	'maps_map' => 'పటం',
 	'maps_photos' => 'చిత్రాలు',
 	'maps_videos' => 'దృశ్యకాలు',
 	'maps_wikipedia' => 'వికీపీడియా',
