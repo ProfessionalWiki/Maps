@@ -70,7 +70,7 @@ class MapsGoogleMaps {
 					'criteria' => array(
 						'in_array' => $allowedTypes		
 						),
-					'default' => $egMapsGoogleMapsType,
+					'default' => $egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
 					'output-type' => 'gmaptype'										
 					),
 				'types' => array(

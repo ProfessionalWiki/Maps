@@ -31,10 +31,9 @@ class MapsOSMDispMap extends MapsBaseMap {
 		
 		$this->spesificParameters = array(
 			'static' => array(
-				'criteria' => array(
-					'in_array' => array('yes', 'no')
-					),
-				'default' => $egMapsOSMStaticAsDefault ? 'yes' : 'no'	// TODO: boolean type											
+				'type' => 'boolean',
+				'default' => $egMapsOSMStaticAsDefault,	
+				'output-type' => 'boolean'							
 				),
 			'mode' => array(
 				'criteria' => array(
@@ -43,10 +42,9 @@ class MapsOSMDispMap extends MapsBaseMap {
 				'default' => $modes[0]			
 				),
 			'activatable' => array(
-				'criteria' => array(
-					'in_array' => array('yes', 'no')
-					),
-				'default' => $egMapsOSMStaticActivatable ? 'yes' : 'no'		// TODO: boolean type
+				'type' => 'boolean',
+				'default' => $egMapsOSMStaticActivatable,
+				'output-type' => 'boolean'
 				),										
 		);		
 	}
@@ -87,7 +85,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 
 EOT;
 	
-		$this->output .= $this->static == 'yes' ? $this->getStaticMap() : $this->getDynamicMap();
+		$this->output .= $this->static ? $this->getStaticMap() : $this->getDynamicMap();
 	}
 	
 	/**
@@ -123,7 +121,7 @@ EOT;
 		
 		$alt = wfMsg( 'maps_centred_on', $this->centre_lat, $this->centre_lon );
 		
-		if ($this->activatable != 'no') {
+		if ($this->activatable) {
 			$title = wfMsg('maps_click_to_activate');
 			$activationCode = "onclick=\"slippymaps['$this->mapName'].init();\"";
 		}
