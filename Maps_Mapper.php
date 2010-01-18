@@ -31,12 +31,14 @@ final class MapsMapper {
 			'zoom' => array(
 				'type' => 'integer',
 				'criteria' => array(
+					'not_empty' => array(),
 					'in_range' => array(0, 15)
-					)
+					)				
 				),
 			'width' => array(
 				'type' => 'integer',
 				'criteria' => array(
+					'not_empty' => array(),
 					'in_range' => $egMapsSizeRestrictions['width']
 					),
 				'default' => $egMapsMapWidth		
@@ -44,6 +46,7 @@ final class MapsMapper {
 			'height' => array(
 				'type' => 'integer',
 				'criteria' => array(
+					'not_empty' => array(),
 					'in_range' => $egMapsSizeRestrictions['height']
 					),
 				'default' => $egMapsMapHeight

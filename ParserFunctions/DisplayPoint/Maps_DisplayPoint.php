@@ -80,7 +80,12 @@ final class MapsDisplayPoint {
 				),
 			'label' => array(			
 				'default' => $egMapsDefaultLabel
-				),							
+				),
+			'icon' => array(			
+				'criteria' => array(
+					'not_empty' => array()
+					)
+				),										
 			));
 	}	
 	

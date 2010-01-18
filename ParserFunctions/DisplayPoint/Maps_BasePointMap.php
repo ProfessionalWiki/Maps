@@ -97,17 +97,32 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			$markerData = MapsUtils::getLatLon($args[0]);
 			
 			if (count($args) > 1) {
+				// Parse and add the point specific title if it's present.
 				$markerData['title'] = $this->doEscaping( $parser->recursiveTagParse( $args[1] ) );
 				
 				if (count($args) > 2) {
+					// Parse and add the point specific label if it's present.
 					$markerData['label'] = $this->doEscaping( $parser->recursiveTagParse( $args[2] ) );
 					
 					if (count($args) > 3) {
+						// Add the point specific icon if it's present.
 						$markerData['icon'] = $args[3];
-					}					
+					}
 				}
 			}
-
+			
+			// If there is no point specific icon, use the general icon parameter when available.
+			if (! array_key_exists('icon', $markerData) && strlen($this->icon) > 0) $markerData['icon'] = $this->icon;
+			
+			// Get the url for the icon when there is one, else set the icon to an empty string.
+			if (array_key_exists('icon', $markerData)) {
+				$icon_image_page = new ImagePage( Title::newFromText( $markerData['icon'] ) );
+				$markerData['icon'] = $icon_image_page->getDisplayedFile()->getURL();				
+			}
+			else {
+				$markerData['icon'] = '';
+			}
+			
 			$this->markerData[] = $markerData;
 		}
 	}
@@ -124,10 +139,8 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
 			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;	
 			
-			$icon = array_key_exists('icon', $markerData) ? $markerData['icon'] : '';
-			
 			$markerItems[] = str_replace(	array('lon', 'lat', 'title', 'label', 'icon'), 
-											array($markerData['lon'], $markerData['lat'], $title, $label, $icon), 
+											array($markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon']), 
 											$this->markerStringFormat
 											);
 		}
