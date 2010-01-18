@@ -241,11 +241,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$legend_labels = array();
 		
 		// Look for display_options field, which can be set by Semantic Compound Queries
-                // the location of this field changed in SMW 1.5
-                if (method_exists($row[0], 'getResultSubject')) // SMW 1.5+
-                        $display_location = $row[0]->getResultSubject();
-                else
-                        $display_location = $row[0];
+        // the location of this field changed in SMW 1.5
+		$display_location = method_exists($row[0], 'getResultSubject') ? $display_location = $row[0]->getResultSubject() : $row[0];
+		
 		if (property_exists($display_location, 'display_options') && is_array($display_location->display_options)) {
 			$display_options = $display_location->display_options;
 			if (array_key_exists('icon', $display_options)) {
@@ -262,12 +260,10 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				}
 			}
 		// Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here	
-		} elseif (array_key_exists('icon', $this->m_params)) {
-	
-			$icon_title = Title::newFromText($this->m_params['icon']);
-			$icon_image_page = new ImagePage($icon_title);
+		} elseif (strlen($this->icon) > 0) {	
+			$icon_image_page = new ImagePage( Title::newFromText($this->icon) );
 			$icon = $icon_image_page->getDisplayedFile()->getURL();
-		}	
+		}
 
 		return $icon;
 	}
@@ -293,33 +289,31 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 *
 	 */
 	private function setCentre() {
-		// If there are no results, centre on the default coordinates.
-		if ( count($this->m_locations) < 1 ) {
-			global $egMapsMapLat, $egMapsMapLon;
-			$this->centre_lat = $egMapsMapLat;
-			$this->centre_lon = $egMapsMapLon;		
+		// If a centre value is set, use it.
+		if (strlen($this->centre) > 0) {
+			// Geocode and convert if required.
+			$centre = MapsGeocodeUtils::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
+			$centre = MapsUtils::getLatLon($centre);
+			
+			$this->centre_lat = $centre['lat'];
+			$this->centre_lon = $centre['lon'];
+		}
+		elseif (count($this->m_locations) > 1) {
+			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
+			$this->centre_lat = 'null';
+			$this->centre_lon = 'null';
+		}
+		elseif (count($this->m_locations) == 1) {
+			// If centre is not set and there is exactelly one marker, use it's coordinates.			
+			$this->centre_lat = $this->m_locations[0][0];
+			$this->centre_lon = $this->m_locations[0][1];
 		}
 		else {
-			// If a centre value is set, use it.
-			if (strlen($this->centre) > 0) {
-				// Geocode and convert if required.
-				$centre = MapsGeocodeUtils::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
-				$centre = MapsUtils::getLatLon($centre);
-				
-				$this->centre_lat = $centre['lat'];
-				$this->centre_lon = $centre['lon'];
-			}
-			elseif (count($this->m_locations) > 1) {
-				// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
-				$this->centre_lat = 'null';
-				$this->centre_lon = 'null';
-			}
-			else {
-				// If centre is not set and there is exactelly one marker, use it's coordinates.			
-				$this->centre_lat = $this->m_locations[0][0];
-				$this->centre_lon = $this->m_locations[0][1];
-			}			
-		}		
+			// If centre is not set and there are no results, centre on the default coordinates.
+			global $egMapsMapLat, $egMapsMapLon;
+			$this->centre_lat = $egMapsMapLat;
+			$this->centre_lon = $egMapsMapLon;				
+		}			
 	}	
 	
 	/**

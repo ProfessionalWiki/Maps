@@ -82,7 +82,12 @@ final class SMQueryPrinters {
 				'aliases' => array('show title'),
 				'default' => true,
 				'output-type' => 'boolean'				
-				),								
+				),
+			'icon' => array(
+				'criteria' => array(
+					'not_empty' => array()
+					)					
+				),						
 			// SMW #Ask: parameters
 			'limit' => array(
 				'type' => 'integer',
