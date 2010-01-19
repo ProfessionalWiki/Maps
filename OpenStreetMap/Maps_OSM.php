@@ -155,7 +155,7 @@ class MapsOSM {
 			
 			$output .="<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMap/OSMFunctions.js?$egMapsStyleVersion'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMap/OSMFunctions.min.js?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>slippymaps = Array();</script>\n";
 		}		
 	}			
