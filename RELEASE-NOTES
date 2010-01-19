@@ -6,6 +6,23 @@ version of Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.5.2 ===
+(2010-01-20)
+
+==== New features ====
+
+* Added icon parameter to display_point(s), allowing you to set the icon for all markers that do not have a specific icon assigned.
+
+==== Refactoring ====
+
+* Usage of Validator 0.2 features for the static map specific parameters.
+
+==== Bug fixes ====
+
+* Fixed escaping issue causing wikitext in the title and label parameters not to be displayed correctly.
+
+* Fixed file path for location specific icons.
+
 === Maps 0.5.1 ===
 (2009-12-25)
 
