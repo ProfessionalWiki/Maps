@@ -221,7 +221,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 							array($this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon),
 							$label
 							);
-						$text = $wgParser->recursiveTagParse('{{' . implode('|', $segments) . '}}');
+						$text = preg_replace('/\n+/m', '<br />', $wgParser->recursiveTagParse('{{' . implode('|', $segments) . '}}'));
 					}
 					
 					$this->m_locations[] = array($lat, $lon, $title, $text, $icon);

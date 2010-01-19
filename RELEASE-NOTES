@@ -6,6 +6,21 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.5.2 ===
+(2010-01-20)
+
+==== New features ====
+
+* Added support for template= parameter to the result printers.
+
+* Added icon parameter to the query printers, allowing you to set the icon for all markers that do not have a specific icon assigned via a compound query.
+
+==== Bug fixes ====
+
+* Added missing SMW #Ask: parameters to the parameter list of the Semantic Maps query printers.
+
+* Fixed issue with centre parameter for maps with no results (using forceshow=on).
+
 === Semantic Maps 0.5.1 ===
 (2009-12-25)
 
