@@ -62,13 +62,14 @@ include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	/
 # Include the mapping services that should be loaded into Maps. 
 # Commenting or removing a mapping service will cause Maps to completely ignore it, and so improve performance.
 include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
+include_once $egMapsIP . '/GoogleMaps3/Maps_GoogleMaps3.php'; 	// Google Maps v3
 include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
 include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
 include_once $egMapsIP . '/OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableServices = array('googlemaps', 'yahoomaps', 'openlayers', 'osm');
+$egMapsAvailableServices = array('googlemaps', 'googlemaps3', 'yahoomaps', 'openlayers', 'osm');
 
 # String. The default mapping service, which will be used when no default service is present in the
 # $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
@@ -149,7 +150,7 @@ $egMapsDefaultLabel = '';
 
 # Specific map properties configuration
 
-# Google maps
+# Google Maps
 
 # Your Google Maps API key. Required for displaying Google Maps, and using the Google Geocoder services.
 if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
@@ -181,7 +182,17 @@ $egMapsGMapOverlays = array('photos', 'videos', 'wikipedia', 'webcams');
 
 
 
-# Yahoo maps
+# Google Maps v3
+
+# String. The Google Maps v3 map name prefix. It can not be identical to the one of another mapping service.
+$egMapsGoogleMaps3Prefix = 'map_google3';
+
+# Integer. The default zoom of a map. This value will only be used when the user does not provide one.
+$egMapsGoogleMaps3Zoom = 14;
+
+
+
+# Yahoo! Maps
 
 # Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
 # Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
@@ -227,7 +238,7 @@ $egMapsOLLayers = array('openlayers');
 
 
 
-# OpenStreetMaps (OpenLayers optimized for OSM)
+# OpenStreetMap (OpenLayers optimized for OSM)
 
 # String. The OSM map name prefix. It can not be identical to the one of another mapping service.
 $egMapsOSMPrefix = 'map_osm';

@@ -22,11 +22,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 $egMapsServices['googlemaps3'] = array(
 									'pf' => array(
-										'display_point' => array('class' => 'MapsGoogleMaps3DispPoint', 'file' => 'GoogleMaps/Maps_GoogleMaps3DispPoint.php', 'local' => true),
-										'display_map' => array('class' => 'MapsGoogleMaps3DispMap', 'file' => 'GoogleMaps/Maps_GoogleMaps3DispMap.php', 'local' => true),
+										'display_point' => array('class' => 'MapsGoogleMaps3DispPoint', 'file' => 'GoogleMaps3/Maps_GoogleMaps3DispPoint.php', 'local' => true),
+										'display_map' => array('class' => 'MapsGoogleMaps3DispMap', 'file' => 'GoogleMaps3/Maps_GoogleMaps3DispMap.php', 'local' => true),
 										),
 									'classes' => array(
-											array('class' => 'MapsGoogleMaps3', 'file' => 'GoogleMaps/Maps_GoogleMaps3.php', 'local' => true)
+											array('class' => 'MapsGoogleMaps3', 'file' => 'GoogleMaps3/Maps_GoogleMaps3.php', 'local' => true)
 											),
 									'aliases' => array('google3', 'googlemap3', 'gmap3', 'gmaps3'),
 									);	
@@ -38,7 +38,7 @@ $egMapsServices['googlemaps3'] = array(
  * 
  * @author Jeroen De Dauw
  */											
-class MapsGoogleMaps {
+class MapsGoogleMaps3 {
 	
 	const SERVICE_NAME = 'googlemaps3';	
 	
