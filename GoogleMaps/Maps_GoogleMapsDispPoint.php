@@ -16,6 +16,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 /**
  * Class for handling the display_point(s) parser functions with Google Maps.
  *
+ * @ingroup MapsGoogleMaps
+ *
  * @author Jeroen De Dauw
  */
 final class MapsGoogleMapsDispPoint extends MapsBasePointMap {

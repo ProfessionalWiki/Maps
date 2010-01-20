@@ -13,6 +13,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Class for handling the display_map parser functions with Google Maps.
+ *
+ * @ingroup MapsGoogleMaps
+ *
+ * @author Jeroen De Dauw
+ */
 final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
