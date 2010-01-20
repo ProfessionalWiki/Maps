@@ -52,6 +52,7 @@ class MapsOSM {
 		global $egMapsServices, $egMapsOSMZoom, $egMapsOSMControls;
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsOSMZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array(0, 19);
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
 			'controls' => array(

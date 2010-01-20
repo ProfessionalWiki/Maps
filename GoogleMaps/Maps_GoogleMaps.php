@@ -55,6 +55,7 @@ class MapsGoogleMaps {
 		$allowedTypes = self::getTypeNames();
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsGoogleMapsZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array(0, 20);
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
 				'controls' => array(

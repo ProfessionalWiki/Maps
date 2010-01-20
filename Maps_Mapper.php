@@ -31,8 +31,7 @@ final class MapsMapper {
 			'zoom' => array(
 				'type' => 'integer',
 				'criteria' => array(
-					'not_empty' => array(),
-					'in_range' => array(0, 15)
+					'not_empty' => array()
 					)				
 				),
 			'width' => array(
