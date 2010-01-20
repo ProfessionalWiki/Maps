@@ -580,6 +580,14 @@ $1',
 	'maps_webcams' => 'ウェブカメラ',
 );
 
+/** Georgian (ქართული)
+ * @author Temuri rajavi
+ */
+$messages['ka'] = array(
+	'maps_map' => 'რუკა',
+	'maps_videos' => 'ვიდეოები',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */
@@ -790,7 +798,7 @@ La mapa a peul pa esse visualisà.",
 $1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
 	'maps_click_to_activate' => 'Sgnaca për ativé la carta',
-	'maps_centred_on' => 'Mapa sentrà su $1, $2.',
+	'maps_centred_on' => 'Carta sentrà su $1, $2.',
 	'maps_overlays' => 'Sovraposission',
 	'maps_photos' => 'Fòto',
 	'maps_videos' => 'Filmà',
