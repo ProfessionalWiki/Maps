@@ -28,15 +28,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $egMapsAvailableFeatures['qp'] = array(
 							'name' => 'Query Printer',
 							'class' => 'SMQueryPrinters',
-							'file' => 'SemanticMaps/QueryPrinters/SM_QueryPrinters.php',
-							'local' => false
+							'file' => 'SemanticMaps/QueryPrinters/SM_QueryPrinters.php'
 							);
 
 $egMapsAvailableFeatures['fi'] = array(
 							'name' => 'Form input',
 							'class' => 'SMFormInputs',
-							'file' => 'SemanticMaps/FormInputs/SM_FormInputs.php',
-							'local' => false
+							'file' => 'SemanticMaps/FormInputs/SM_FormInputs.php'
 							);		
 
 
@@ -59,5 +57,5 @@ include_once $smgIP . '/OpenStreetMap/SM_OSM.php'; 		// OpenLayers optimized for
 # Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
 # Each service needs to be enabled, if not, the first one from the available services will be taken.
 # Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
-$egMapsDefaultServices['qp'] = 'googlemaps';
-$egMapsDefaultServices['fi'] = 'googlemaps';
+$egMapsDefaultServices['qp'] = 'googlemaps2';
+$egMapsDefaultServices['fi'] = 'googlemaps2';

@@ -135,7 +135,7 @@ final class SMQueryPrinters {
 
 		// Load the QP class when it's not loaded yet
 		if (! array_key_exists($qp['class'], $wgAutoloadClasses)) {
-			$file = $qp['local'] ? $smgIP . '/' . $qp['file'] : $qp['file'];
+			$file = array_key_exists('local', $qp) && $qp['local'] ? $smgIP . '/' . $qp['file'] : $qp['file'];
 			$wgAutoloadClasses[$qp['class']] = $file;
 		}
 
