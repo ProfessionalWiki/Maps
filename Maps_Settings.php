@@ -69,17 +69,17 @@ include_once $egMapsIP . '/OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimize
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableServices = array('googlemaps', 'googlemaps3', 'yahoomaps', 'openlayers', 'osm');
+$egMapsAvailableServices = array('googlemaps2', 'googlemaps3', 'yahoomaps', 'openlayers', 'osm');
 
 # String. The default mapping service, which will be used when no default service is present in the
 # $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
 # This service needs to be enabled, if not, the first one from the available services will be taken.
-$egMapsDefaultService = 'googlemaps';
+$egMapsDefaultService = 'googlemaps2';
 
 # Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
 # Each service needs to be enabled, if not, the first one from the available services will be taken.
 # Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
-$egMapsDefaultServices = array('pf' => 'googlemaps');
+$egMapsDefaultServices = array('pf' => 'googlemaps2');
 
 
 
@@ -94,7 +94,7 @@ $egMapsAvailableGeoServices = array(
 										'class' => 'MapsGoogleGeocoder',
 										'file' => 'Geocoders/Maps_GoogleGeocoder.php',
 										'local' => true,
-										'overrides' => array('googlemaps'),
+										'overrides' => array('googlemaps2'),
 										),
 									'yahoo' => array(
 										'class' => 'MapsYahooGeocoder',

@@ -32,7 +32,8 @@ $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
 	// Mapping services
-	'maps_googlemaps' => 'Google Maps',
+	'maps_googlemaps2' => 'Google Maps v2',
+	'maps_googlemaps3' => 'Google Maps v3',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers', 
 	'maps_osm' => 'OpenStreetMap', 
@@ -41,7 +42,7 @@ $1',
 	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centered on $1, $2.',
 
-	// Google Maps overlays
+	// Google Maps v2 overlays
 	'maps_overlays' => 'Overlays',	
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Videos',
@@ -96,7 +97,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|الإحداثي التالي|الإحداثيات التالية}} لم يتم التعرف عليها و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
 $1',
 	'maps_map_cannot_be_displayed' => 'الخريطة لا يمكن عرضها.',
-	'maps_googlemaps' => 'خرائط جوجل',
+	'maps_googlemaps2' => 'خرائط جوجل',
 	'maps_yahoomaps' => 'خرائط ياهو!',
 	'maps_openlayers' => 'أوبن لايرز',
 	'maps_osm' => 'أوبن ستريت ماب',
@@ -114,7 +115,7 @@ $1',
  */
 $messages['arz'] = array(
 	'maps_name' => 'خرايط',
-	'maps_googlemaps' => 'خرايط جوجل',
+	'maps_googlemaps2' => 'خرايط جوجل',
 	'maps_yahoomaps' => 'خرايط ياهو',
 );
 
@@ -672,7 +673,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'De volgende {{PLURAL:$2|coördinaat is niet herkend en is|coördinaten zijn niet herkend en zijn}} weggelaten uit de kaart:
 $1.',
 	'maps_map_cannot_be_displayed' => 'De kaart kan niet weergegeven worden.',
-	'maps_googlemaps' => 'Google Maps',
+	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_click_to_activate' => 'Klik om de kaart te activeren',

@@ -60,6 +60,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
+		// TODO
 		$this->output .=<<<END
 
 END;

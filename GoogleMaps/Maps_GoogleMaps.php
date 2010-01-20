@@ -20,7 +20,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps'] = array(
+$egMapsServices['googlemaps2'] = array(
 									'pf' => array(
 										'display_point' => array('class' => 'MapsGoogleMapsDispPoint', 'file' => 'GoogleMaps/Maps_GoogleMapsDispPoint.php', 'local' => true),
 										'display_map' => array('class' => 'MapsGoogleMapsDispMap', 'file' => 'GoogleMaps/Maps_GoogleMapsDispMap.php', 'local' => true),
@@ -28,7 +28,7 @@ $egMapsServices['googlemaps'] = array(
 									'classes' => array(
 											array('class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true)
 											),
-									'aliases' => array('google', 'googlemap', 'gmap', 'gmaps'),
+									'aliases' => array('googlemaps', 'google', 'googlemap', 'gmap', 'gmaps'),
 									);	
 
 /**
@@ -40,7 +40,7 @@ $egMapsServices['googlemaps'] = array(
  */											
 class MapsGoogleMaps {
 	
-	const SERVICE_NAME = 'googlemaps';	
+	const SERVICE_NAME = 'googlemaps2';	
 	
 	public static function initialize() {
 		self::initializeParams();
