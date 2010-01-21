@@ -153,7 +153,7 @@ class MapsYahooMaps {
 		
 		if (empty($egYahooMapsOnThisPage)) {
 			$egYahooMapsOnThisPage = 0;
-			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey'></script>
+			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&amp;appid=$egYahooMapsKey'></script>
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/YahooMaps/YahooMapFunctions.min.js?$egMapsStyleVersion'></script>";
 		}
 	}	

@@ -58,21 +58,22 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		// TODO
 		$this->output .=<<<END
-<div id="$this->mapName" style="width:100%; height:100%"></div>
+
+<div id="$this->mapName" class="$this->class" style="$this->style" ></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
-	function() {
-    	var latlng = new google.maps.LatLng(-34.397, 150.644);
-    	var myOptions = {
-			zoom: 8,
-			center: latlng,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var map = new google.maps.Map(document.getElementById("$this->mapName"), myOptions);
-}
+    function() {
+        var latlng = new google.maps.LatLng(-34.397, 150.644);
+        var myOptions = {
+            zoom: 8,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("$this->mapName"), myOptions);
+);
 /*]]>*/ </script>
+
 END;
 		
 	}

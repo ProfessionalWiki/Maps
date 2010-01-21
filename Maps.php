@@ -99,14 +99,14 @@ function efMapsSetup() {
 	// Loop through the available mapping features, load and initialize them.
 	foreach($egMapsAvailableFeatures as $key => $values) {
 		// Load and optionally initizlize feature.
-		if (array_key_exists('class', $values) && array_key_exists('file', $values) && array_key_exists('local', $values)) {
+		if (array_key_exists('class', $values) && array_key_exists('file', $values)) {
 			$wgAutoloadClasses[$values['class']] = array_key_exists('local', $values) && $values['local'] ? $egMapsIP . '/' . $values['file'] : $IP . '/extensions/' . $values['file'];
 			if (method_exists($values['class'], 'initialize')) call_user_func(array($values['class'], 'initialize'));
 		}
 	}
 
 	// Loop through the available mapping services to load and initialize their general classes.
-	foreach ($egMapsServices as  $serviceData) {
+	foreach ($egMapsServices as $serviceData) {
 		if (array_key_exists('classes', $serviceData)) {
 			foreach($serviceData['classes'] as $class) {
 				$file = array_key_exists('local', $class) && $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];

@@ -65,7 +65,7 @@ class MapsGoogleMaps3 {
 		if (empty($egGoogleMaps3OnThisPage)) {
 			$egGoogleMaps3OnThisPage = 0;
 
-			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&language={$wgLang->getCode()}'><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps3/GoogleMap3Functions.js?$egMapsStyleVersion'></script>";
+			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&amp;language={$wgLang->getCode()}'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps3/GoogleMap3Functions.js?$egMapsStyleVersion'></script>";
 		}
 	}
 	
