@@ -60,7 +60,7 @@ function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, mark
 	if (!window.OLMaps) window.OLMaps = new Object;
 	eval("window.OLMaps." + mapName + " = map;"); 
 }
- 
+
 /**
  * Remove all markers from an OL map (that's in window.OLMaps), and place a new one.
  * 

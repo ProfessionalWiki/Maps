@@ -22,7 +22,6 @@ final class SMQueryPrinters {
 	 */
 	public static function initialize() {
 		global $smgIP, $wgAutoloadClasses, $egMapsServices;
-		
 		$wgAutoloadClasses['SMMapPrinter'] 	= $smgIP . '/QueryPrinters/SM_MapPrinter.php';
 		
 		self::initializeParams();
