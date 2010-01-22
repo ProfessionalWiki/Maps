@@ -29,10 +29,10 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	 *
 	 */	
 	protected function setMapSettings() {
-		global $egMapsGoogleMaps3Zoom, $egMapsGoogleMaps3Prefix;
+		global $egMapsGMaps3Zoom, $egMapsGMaps3Prefix;
 		
-		$this->elementNamePrefix = $egMapsGoogleMaps3Prefix;
-		$this->defaultZoom = $egMapsGoogleMaps3Zoom;
+		$this->elementNamePrefix = $egMapsGMaps3Prefix;
+		$this->defaultZoom = $egMapsGMaps3Zoom;
 		
 		$this->markerStringFormat = ''; // TODO
 		
@@ -45,12 +45,12 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	 *
 	 */		
 	protected function doMapServiceLoad() {
-		global $egGoogleMaps3OnThisPage;
+		global $egGMaps3OnThisPage;
 		
 		MapsGoogleMaps3::addGMap3Dependencies($this->output);
-		$egGoogleMaps3OnThisPage++;
+		$egGMaps3OnThisPage++;
 		
-		$this->elementNr = $egGoogleMaps3OnThisPage;
+		$this->elementNr = $egGMaps3OnThisPage;
 	}
 	
 	/**
@@ -62,7 +62,18 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 		
 		// TODO
 		$this->output .=<<<END
-
+<div id="$this->mapName" style="width:{$this->width}px; height:{$this->height}px"></div>
+<script type="$wgJsMimeType"> /*<![CDATA[*/
+addOnloadHook(
+	initGMap3("$this->mapName", {
+			zoom: $this->zoom,
+			lat: $this->centre_lat,
+			lon: $this->centre_lon,		
+		},
+		[]
+	)
+);
+/*]]>*/ </script>
 END;
 
 	}

@@ -29,10 +29,10 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	 *
 	 */	
 	protected function setMapSettings() {
-		global $egMapsGoogleMaps3Zoom, $egMapsGoogleMaps3Prefix;
+		global $egMapsGMaps3Zoom, $egMapsGMaps3Prefix;
 		
-		$this->elementNamePrefix = $egMapsGoogleMaps3Prefix;
-		$this->defaultZoom = $egMapsGoogleMaps3Zoom;
+		$this->elementNamePrefix = $egMapsGMaps3Prefix;
+		$this->defaultZoom = $egMapsGMaps3Zoom;
 		
 		$this->spesificParameters = array(			
 		);
@@ -41,39 +41,38 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
-	 */		
+	 */
 	protected function doMapServiceLoad() {
-		global $egGoogleMaps3OnThisPage;
+		global $egGMaps3OnThisPage;
 		
 		MapsGoogleMaps3::addGMap3Dependencies($this->output);
-		$egGoogleMaps3OnThisPage++;
+		$egGMaps3OnThisPage++;
 		
-		$this->elementNr = $egGoogleMaps3OnThisPage;
+		$this->elementNr = $egGMaps3OnThisPage;
 	}
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
-	 */	
+	 */
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
 		$this->output .=<<<END
-
-<div id="$this->mapName" class="$this->class" style="$this->style" ></div>
+<div id="$this->mapName" style="width:{$this->width}px; height:{$this->height}px"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
-    function() {
-        var latlng = new google.maps.LatLng(-34.397, 150.644);
-        var myOptions = {
-            zoom: 8,
-            center: latlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("$this->mapName"), myOptions);
+	initGMap3("$this->mapName", {
+			zoom: $this->zoom,
+			lat: $this->centre_lat,
+			lon: $this->centre_lon,	
+			types: [$this->types],
+			type: $this->type,
+		},
+		[]
+	)
 );
 /*]]>*/ </script>
-
 END;
 		
 	}

@@ -153,7 +153,7 @@ $egMapsDefaultLabel = '';
 # Google Maps
 
 # Your Google Maps API key. Required for displaying Google Maps, and using the Google Geocoder services.
-if (empty($egGoogleMapsKey)) $egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
+$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
 
 # String. The Google Maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsGoogleMapsPrefix = 'map_google';
@@ -161,7 +161,7 @@ $egMapsGoogleMapsPrefix = 'map_google';
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsZoom = 14;
 
-# Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
+# Array of String. The Google Maps v2 default map types. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsTypes = array('normal', 'satellite', 'hybrid', 'physical');
 
 # String. The default map type. This value will only be used when the user does not provide one.
@@ -171,11 +171,11 @@ $egMapsGoogleMapsType = 'normal';
 # This value will only be used when the user does not provide one.
 $egMapsGoogleAutozoom = true;
 
-# Array of String. The default controls for Google Maps. This value will only be used when the user does not provide one.
+# Array of String. The default controls for Google Maps v2. This value will only be used when the user does not provide one.
 # Available values: auto, large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label, overlays
 $egMapsGMapControls = array('auto', 'scale', 'type', 'overlays');
 
-# Array. The default overlays for the Google Maps overlays control, and whether they should be shown at pageload.
+# Array. The default overlays for the Google Maps v2 overlays control, and whether they should be shown at pageload.
 # This value will only be used when the user does not provide one.
 # Available values: photos, videos, wikipedia, webcams
 $egMapsGMapOverlays = array('photos', 'videos', 'wikipedia', 'webcams');
@@ -185,10 +185,16 @@ $egMapsGMapOverlays = array('photos', 'videos', 'wikipedia', 'webcams');
 # Google Maps v3
 
 # String. The Google Maps v3 map name prefix. It can not be identical to the one of another mapping service.
-$egMapsGoogleMaps3Prefix = 'map_google3';
+$egMapsGMaps3Prefix = 'map_google3';
 
 # Integer. The default zoom of a map. This value will only be used when the user does not provide one.
-$egMapsGoogleMaps3Zoom = 14;
+$egMapsGMaps3Zoom = 14;
+
+# Array of String. The Google Maps v3 default map types. This value will only be used when the user does not provide one.
+$egMapsGMaps3Types = array('roadmap', 'satellite', 'hybrid', 'terrain');
+
+# String. The default map type. This value will only be used when the user does not provide one.
+$egMapsGMaps3Type = 'roadmap';
 
 
 
@@ -196,7 +202,7 @@ $egMapsGoogleMaps3Zoom = 14;
 
 # Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
 # Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
-if (empty($egYahooMapsKey)) $egYahooMapsKey = ''; 
+$egYahooMapsKey = ''; 
 
 # String. The Yahoo! maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsYahooMapsPrefix = 'map_yahoo';

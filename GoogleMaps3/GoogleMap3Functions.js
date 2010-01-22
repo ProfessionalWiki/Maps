@@ -7,4 +7,14 @@
   * @author Jeroen De Dauw
   */
 
-// TODO
+/**
+ * Created a new Map object with the provided properties and markers.
+ */
+function initGMap3(name, options, markers) {
+	options.center = new google.maps.LatLng(options.lat, options.lon);
+	
+	var map = new google.maps.Map(document.getElementById(name), options);
+	
+	map.mapTypes = options.types;
+	map.setMapTypeId(options.type);
+}

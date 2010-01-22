@@ -162,7 +162,7 @@ class MapsGoogleMaps {
 	}
 
 	/**
-	 * Changes the map type name into the corresponding Google Maps API identifier.
+	 * Changes the map type name into the corresponding Google Maps API v2 identifier.
 	 *
 	 * @param string $type
 	 * 
@@ -173,7 +173,7 @@ class MapsGoogleMaps {
 	}
 	
 	/**
-	 * Changes the map type names into the corresponding Google Maps API identifiers.
+	 * Changes the map type names into the corresponding Google Maps API v2 identifiers.
 	 * 
 	 * @param array $types
 	 * 

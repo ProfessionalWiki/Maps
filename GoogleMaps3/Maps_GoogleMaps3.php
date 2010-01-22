@@ -44,14 +44,77 @@ class MapsGoogleMaps3 {
 	
 	public static function initialize() {
 		self::initializeParams();
+		Validator::addOutputFormat('gmap3type', array('MapsGoogleMaps3', 'setGMapType'));
+		Validator::addOutputFormat('gmap3types', array('MapsGoogleMaps3', 'setGMapTypes'));		
 	}
 	
 	private static function initializeParams() {
-		global $egMapsServices;
+		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
+		
+		$allowedTypes = self::getTypeNames();
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
+				'type' => array(
+					'aliases' => array('map-type', 'map type'),
+					'criteria' => array(
+						'in_array' => $allowedTypes		
+						),
+					'default' => $egMapsGMaps3Type, // FIXME: default value should not be used when not present in types parameter.
+					'output-type' => 'gmap3type'										
+					),
+				'types' => array(
+					'type' => array('string', 'list'),
+					'aliases' => array('map-types', 'map types'),
+					'criteria' => array(
+						'in_array' => $allowedTypes
+						),
+					'default' => $egMapsGMaps3Types,
+					'output-types' => array('gmap3types', 'list')				
+					),		
 				);
 	}
+	
+	private static $mapTypes = array(
+					'normal' => 'ROADMAP',
+					'roadmap' => 'ROADMAP',	
+					'satellite' => 'SATELLITE',
+					'hybrid' => 'HYBRID',
+					'terrain' => 'TERRAIN',
+					'physical' => 'TERRAIN'
+					);	
+	
+	/**
+	 * Returns the names of all supported map types.
+	 * 
+	 * @return array
+	 */					
+	public static function getTypeNames() {
+		return array_keys(self::$mapTypes);
+	} 	
+	
+	/**
+	 * Changes the map type name into the corresponding Google Maps API v3 identifier.
+	 *
+	 * @param string $type
+	 * 
+	 * @return string
+	 */
+	public static function setGMapType(&$type) {
+		$type = 'google.maps.MapTypeId.' . self::$mapTypes[ $type ];
+	}
+	
+	/**
+	 * Changes the map type names into the corresponding Google Maps API v3 identifiers.
+	 * 
+	 * @param array $types
+	 * 
+	 * @return array
+	 */
+	public static function setGMapTypes(array &$types) {
+		for($i = count($types) - 1; $i >= 0; $i--) {
+			self::setGMapType($types[$i]);
+		}
+	}	
 	
 	/**
 	 * Add references to the Google Maps API v3 and required JS file to the provided output 
@@ -60,10 +123,10 @@ class MapsGoogleMaps3 {
 	 */
 	public static function addGMap3Dependencies(&$output) {
 		global $wgJsMimeType, $wgLang;
-		global $egMapsScriptPath, $egGoogleMaps3OnThisPage, $egMapsStyleVersion;
+		global $egMapsScriptPath, $egGMaps3OnThisPage, $egMapsStyleVersion;
 
-		if (empty($egGoogleMaps3OnThisPage)) {
-			$egGoogleMaps3OnThisPage = 0;
+		if (empty($egGMaps3OnThisPage)) {
+			$egGMaps3OnThisPage = 0;
 
 			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&amp;language={$wgLang->getCode()}'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps3/GoogleMap3Functions.js?$egMapsStyleVersion'></script>";
 		}
