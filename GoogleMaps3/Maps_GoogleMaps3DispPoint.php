@@ -34,7 +34,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 		$this->elementNamePrefix = $egMapsGMaps3Prefix;
 		$this->defaultZoom = $egMapsGMaps3Zoom;
 		
-		$this->markerStringFormat = ''; // TODO
+		$this->markerStringFormat = 'getGMaps3MarkerData(lat, lon, \'title\', \'label\', "icon")';
 		
 		$this->spesificParameters = array(
 		);		
@@ -68,9 +68,11 @@ addOnloadHook(
 	initGMap3("$this->mapName", {
 			zoom: $this->zoom,
 			lat: $this->centre_lat,
-			lon: $this->centre_lon,		
+			lon: $this->centre_lon,	
+			types: [$this->types],
+			mapTypeId: $this->type
 		},
-		[]
+		[$this->markerString]
 	)
 );
 /*]]>*/ </script>

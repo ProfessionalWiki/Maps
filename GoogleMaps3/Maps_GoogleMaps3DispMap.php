@@ -67,7 +67,7 @@ addOnloadHook(
 			lat: $this->centre_lat,
 			lon: $this->centre_lon,	
 			types: [$this->types],
-			type: $this->type,
+			mapTypeId: $this->type
 		},
 		[]
 	)

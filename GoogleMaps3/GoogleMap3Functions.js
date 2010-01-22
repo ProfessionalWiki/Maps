@@ -10,11 +10,16 @@
 /**
  * Created a new Map object with the provided properties and markers.
  */
-function initGMap3(name, options, markers) {
+function initGMap3(name, options, markerData) {
 	options.center = new google.maps.LatLng(options.lat, options.lon);
 	
 	var map = new google.maps.Map(document.getElementById(name), options);
 	
-	map.mapTypes = options.types;
-	map.setMapTypeId(options.type);
+	// TODO: types - http://code.google.com/apis/maps/documentation/v3/reference.html#MapTypeRegistry
+	
+	// TODO: markers
+}
+
+function getGMaps3MarkerData(lat, lon, title, label, icon) {
+	return {position: new google.maps.LatLng(lat, lon), title: title, label: label, icon: icon};
 }
