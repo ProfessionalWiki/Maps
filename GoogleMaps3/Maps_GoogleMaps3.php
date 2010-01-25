@@ -62,6 +62,7 @@ class MapsGoogleMaps3 {
 					'default' => $egMapsGMaps3Type, // FIXME: default value should not be used when not present in types parameter.
 					'output-type' => 'gmap3type'										
 					),
+					/*
 				'types' => array(
 					'type' => array('string', 'list'),
 					'aliases' => array('map-types', 'map types'),
@@ -70,8 +71,9 @@ class MapsGoogleMaps3 {
 						),
 					'default' => $egMapsGMaps3Types,
 					'output-types' => array('gmap3types', 'list')				
-					),		
-				);
+					),	
+					*/	
+				);	
 	}
 	
 	private static $mapTypes = array(
