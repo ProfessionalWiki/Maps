@@ -55,7 +55,7 @@ final class SMQueryPrinters {
 					'in_array' => array_keys($egMapsAvailableGeoServices)
 					),
 				'default' => $egMapsDefaultGeoService
-				),			
+				),
 			'format' => array(
 				'required' => true,
 				'default' => $egMapsDefaultServices['qp']
@@ -140,7 +140,7 @@ final class SMQueryPrinters {
 
 		// Add the QP to SMW
 		self::addFormatQP($format, $qp['class']);
-		
+
 		// If SMW supports aliasing, add the aliases to $smwgResultAliases
 		if (isset($smwgResultAliases)) {
 			$smwgResultAliases[$format] = $aliases;
@@ -148,7 +148,7 @@ final class SMQueryPrinters {
 		else { // If SMW does not support aliasing, add every alias as a format
 			foreach($aliases as $alias) self::addFormatQP($alias, $qp['class']);
 		}
-	}	
+	}
 
 	/**
 	 * Adds a QP to SMW's $smwgResultFormats array or SMWQueryProcessor
