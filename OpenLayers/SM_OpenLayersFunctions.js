@@ -9,16 +9,15 @@
 
 /**
  * This function holds spesific functionallity for the Open Layers form input of Semantic Maps
- * TODO: Refactor as much code as possible to non specific functions
  */
 function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls, height) {
 	var markers = Array();
 
 	// Show a starting marker only if marker coordinates are provided
 	if (marker_lat != null && marker_lon != null) {
-		markers.push(getOLMarkerData(marker_lon, marker_lat, '', ''));
-	}		
-	
+		markers.push(getOLMarkerData(marker_lon, marker_lat, '', '', ''));
+	}
+
 	// Click event handler for updating the location of the marker
 	// TODO / FIXME: This will probably cause problems when used for multiple maps on one page.
      OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
@@ -45,8 +44,14 @@ function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, mark
          }, 
 
          trigger: function(e) {
-             replaceMarker(mapName, map.getLonLatFromViewPortPx(e.xy));
-             document.getElementById(locationFieldName).value = convertLatToDMS(map.getLonLatFromViewPortPx(e.xy).lat)+', '+convertLngToDMS(map.getLonLatFromViewPortPx(e.xy).lon);
+        	 var lonlat = map.getLonLatFromViewPortPx(e.xy);
+        	 
+        	 replaceMarker(mapName, lonlat);
+        	 
+        	 var proj = new OpenLayers.Projection("EPSG:4326");
+        	 lonlat.transform(map.getProjectionObject(), proj);
+             
+             document.getElementById(locationFieldName).value = convertLatToDMS(lonlat.lat)+', '+convertLngToDMS(lonlat.lon);
          }
 
      });
@@ -73,7 +78,7 @@ function replaceMarker(mapName, newLocation) {
 	var markerLayer = map.getLayer('markerLayer');
 	
 	removeMarkers(markerLayer);
-	markerLayer.addMarker(getOLMarker(markerLayer, getOLMarkerData(newLocation.lon, newLocation.lat, '', ''), map.getProjectionObject()));
+	markerLayer.addMarker(getOLMarker(markerLayer, getOLMarkerData(newLocation.lon, newLocation.lat, '', '', ''), map.getProjectionObject()));
 	
 	map.panTo(newLocation);
 }
