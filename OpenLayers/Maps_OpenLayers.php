@@ -64,7 +64,7 @@ class MapsOpenLayers {
 											),
 										'default' => $egMapsOLControls	,
 										'output-type' => array('list', ',', '\'')	
-										),		
+										),
 									'layers' => array(  
 										'type' => array('string', 'list'),
 										'criteria' => array(
@@ -152,14 +152,14 @@ class MapsOpenLayers {
 	 */
 	public static function addOLDependencies(&$output) {
 		global $wgJsMimeType;
-		global $egOpenLayersOnThisPage, $egMapsScriptPath;
+		global $egOpenLayersOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;
 		
 		if (empty($egOpenLayersOnThisPage)) {
 			$egOpenLayersOnThisPage = 0;
 			
 			$output .="<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.min.js'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.js?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
 		}		
 	}
@@ -172,14 +172,8 @@ class MapsOpenLayers {
 	 * @return csv string
 	 */
 	public static function createLayersStringAndLoadDependencies(&$output, array $layers) {
-		$layerItems = '';
-		foreach ($layers as $layer) {
-			$layer = strtolower($layer);
-			$layerItems .= "'$layer'" . ',';
-			self::loadDependencyWhenNeeded($output, $layer);
-		}
-		
-		return rtrim($layerItems, ',');		
+		foreach ($layers as $layer) self::loadDependencyWhenNeeded($output, $layer);
+		return "'" . implode("','", $layers) . "'";		
 	}	
 	
 }

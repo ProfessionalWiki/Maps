@@ -235,7 +235,7 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 	} else {
 		marker = new OpenLayers.Marker(markerData.lonlat);
 	}
-	
+
 	if (markerData.title.length + markerData.label.length > 0 ) {
 		
 		// This is the handler for the mousedown event on the marker, and displays the popup
@@ -257,7 +257,7 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 		);
 		
 	}	
-	
+
 	return marker;
 }
 	
