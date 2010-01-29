@@ -72,9 +72,13 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'maps_map' => 'Kaart',
+	'maps_coordinates_missing' => 'Geen koördinate is vir die kaart verskaf nie.',
+	'maps_unrecognized_coords' => 'Die volgende koördinate is nie herken nie: $1.',
 	'maps_unrecognized_coords_for' => 'Die volgende {{PLURAL:$2|koördinaat|koördinate}} is nie herken nie en is uit die kaart weggelaat:
 $1.',
 	'maps_map_cannot_be_displayed' => 'Die kaart kan nie vertoon word nie.',
+	'maps_click_to_activate' => 'Kliek om die kaart te aktiveer',
+	'maps_centred_on' => 'Kaart gesentreer op $1, $2.',
 	'maps_photos' => "Foto's",
 	'maps_videos' => "Video's",
 	'maps_wikipedia' => 'Wikipedia',
