@@ -117,8 +117,9 @@ final class MapsParserFunctions {
         
         if ($coords) {
             if (! self::paramIsPresent('service', $map, $paramInfo)) $map['service'] = '';
-            $map['service'] = MapsMapper::getValidService($map['service'], 'pf');                
-    
+
+            $map['service'] = MapsMapper::getValidService($map['service'], 'pf', $parserFunction);                
+
             $mapClass = self::getParserClassInstance($map['service'], $parserFunction);
     
             // Call the function according to the map service to get the HTML output

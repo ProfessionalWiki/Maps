@@ -68,19 +68,42 @@ final class MapsMapper {
 	 *
 	 * @param string $service
 	 * @param string $feature
+	 * @param string $subfeature
 	 * 
 	 * @return string
 	 */
-	public static function getValidService($service, $feature) {
+	public static function getValidService($service, $feature, $subfeature = '') {
 		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
 		
 		$service = self::getMainServiceName($service);
 		
 		$shouldChange = ! array_key_exists($service, $egMapsServices);
-		if (! $shouldChange) $shouldChange = ! array_key_exists($feature, $egMapsServices[$service]);
+		if (! $shouldChange) {
+			if (array_key_exists($feature, $egMapsServices[$service])) {
+				$shouldChange = is_array($egMapsServices[$service][$feature]) && !array_key_exists($subfeature, $egMapsServices[$service][$feature]);
+			}
+			else {
+				$shouldChange = true;
+			}
+		}
 		
 		if ($shouldChange) {
-			$service = array_key_exists($feature, $egMapsDefaultServices) ? $egMapsDefaultServices[$feature] : $egMapsDefaultService;
+			if (array_key_exists($feature, $egMapsDefaultServices)) {
+				if (is_array($egMapsDefaultServices[$feature])) {
+					if (array_key_exists($subfeature, $egMapsDefaultServices[$feature])) {
+						$service = $egMapsDefaultServices[$feature][$subfeature];
+					}
+					else {
+						$service = $egMapsDefaultService;
+					}
+				}
+				else {
+					$service = $egMapsDefaultServices[$feature];
+				}
+			}
+			else {
+				$service = $egMapsDefaultService;
+			}
 		}
 		
 		if(! in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;

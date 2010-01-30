@@ -22,7 +22,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 $egMapsServices['googlemaps3'] = array(
 									'pf' => array(
-										'display_point' => array('class' => 'MapsGoogleMaps3DispPoint', 'file' => 'GoogleMaps3/Maps_GoogleMaps3DispPoint.php', 'local' => true),
+										//'display_point' => array('class' => 'MapsGoogleMaps3DispPoint', 'file' => 'GoogleMaps3/Maps_GoogleMaps3DispPoint.php', 'local' => true),
 										'display_map' => array('class' => 'MapsGoogleMaps3DispMap', 'file' => 'GoogleMaps3/Maps_GoogleMaps3DispMap.php', 'local' => true),
 										),
 									'classes' => array(
