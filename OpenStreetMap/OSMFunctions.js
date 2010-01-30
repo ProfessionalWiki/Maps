@@ -75,7 +75,7 @@ function getValidControlName(control) {
 	
 	return false;
 }
-	
+
 function slippymap_map(mapId, mapParams) {
 	var self = this;
 	this.mapId = mapId;
@@ -85,16 +85,22 @@ function slippymap_map(mapId, mapParams) {
 
 	// Add the controls
 	this.mapOptions = {controls: []};
-	
+
 	for (i in this.controls) {
-		if (this.controls[i].toLowerCase() == 'autopanzoom') {
-			if (this.height > 140) this.controls[i] = this.height > 320 ? 'panzoombar' : 'panzoom';
-		}	
-		
-		control = getValidControlName(this.controls[i]);
-		
-		if (control) {
-			eval(' this.mapOptions.controls.push( new OpenLayers.Control.' + control + '() ); ');
+		if (typeof controls[i] == 'string') {
+			if (this.controls[i].toLowerCase() == 'autopanzoom') {
+				if (this.height > 140) this.controls[i] = this.height > 320 ? 'panzoombar' : 'panzoom';
+			}
+			
+			control = getValidControlName(this.controls[i]);
+			
+			if (control) {
+				eval(' this.mapOptions.controls.push( new OpenLayers.Control.' + control + '() ); ');
+			}			
+		}
+		else {
+			this.mapOptions.controls.push(controls[i]); // If a control is provided, instead a string, just add it
+			controls[i].activate(); // And activate it			
 		}
 	}		
 }
