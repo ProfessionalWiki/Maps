@@ -15,12 +15,12 @@ function makeOSMFormInput(mapName, locationFieldName, mapParams) {
 
 	// Show a starting marker only if marker coordinates are provided
 	if (mapParams.lat != null && mapParams.lon != null) {
-		mapParams.markers = [(getOSMMarkerData(mapParams.lon, mapParams.lat, '', ''))];
+		mapParams.markers = [(getOSMMarkerData(mapParams.lon, mapParams.lat, '', '', ''))];
 	}
 
 	// Click event handler for updating the location of the marker
 	// TODO / FIXME: This will probably cause problems when used for multiple maps on one page.
-     OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
+     OpenLayers.Control.ClickHandler = OpenLayers.Class(OpenLayers.Control, {                
          defaultHandlerOptions: {
              'single': true,
              'double': false,
@@ -44,14 +44,21 @@ function makeOSMFormInput(mapName, locationFieldName, mapParams) {
          },
 
          trigger: function(e) {
-             replaceMarker(mapName, map.getLonLatFromViewPortPx(e.xy));
-             document.getElementById(locationFieldName).value = convertLatToDMS(map.getLonLatFromViewPortPx(e.xy).lat)+', '+convertLngToDMS(map.getLonLatFromViewPortPx(e.xy).lon);
+        	 var lonlat = this.getLonLatFromViewPortPx(e.xy);
+        	 
+        	 replaceMarker(mapName, lonlat);
+        	 
+        	 var proj = new OpenLayers.Projection("EPSG:4326");
+        	 lonlat.transform(map.getProjectionObject(), proj);
+             
+             document.getElementById(locationFieldName).value = convertLatToDMS(lonlat.lat)+', '+convertLngToDMS(lonlat.lon);
          }
 
      });
 
-	var clickHanler = new OpenLayers.Control.Click();
-	mapParams.initializedContols = [clickHanler];
+	var clickHanler = new OpenLayers.Control.ClickHandler();
+	mapParams.controls.push(clickHanler);
+	mapParams.initializedContols = [];
 
     var map = new slippymap_map(mapName, mapParams);     
      
@@ -67,11 +74,12 @@ function makeOSMFormInput(mapName, locationFieldName, mapParams) {
  * @return
  */
 function replaceMarker(mapName, newLocation) {
-	var map = OSMMaps[mapName];
+	var map = slippymaps[mapName];
+
 	var markerLayer = map.getLayer('markerLayer');
 	
 	removeOSMMarkers(markerLayer);
-	markerLayer.addMarker(getOSMMarker(markerLayer, getOSMMarkerData(newLocation.lon, newLocation.lat, '', ''), map.getProjectionObject()));
+	markerLayer.addMarker(getOSMMarker(markerLayer, getOSMMarkerData(newLocation.lon, newLocation.lat, '', '', ''), map.getProjectionObject()));
 	
 	map.panTo(newLocation);
 }
