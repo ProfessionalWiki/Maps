@@ -131,8 +131,8 @@ $egMapsMapHeight = 350;
 # Array. The minimum and maximum width and height for all maps. First min, then max. Min needs to be smaller then max.
 # When the height or width exceed their limits, they will be changed to the closest allowed value.
 $egMapsSizeRestrictions = array(
-	'width'  => array( 100, 1000 ),
-	'height' => array( 0, 1000 ),
+	'width'  => array( 50, 1020 ),
+	'height' => array( 50, 1000 ),
 );
 
 # Strings. The default coordinates for the map. Must be in floating point notation.
