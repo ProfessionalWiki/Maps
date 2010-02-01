@@ -91,9 +91,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			}		
 			else {
 				// TODO: add warning when level high enough and append to error list?
-			}	
+			}
 		}
-		
+
 		return array($this->output . $this->errorList, 'noparse' => 'true', 'isHTML' => 'true');
 	}
 	
