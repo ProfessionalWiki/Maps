@@ -57,4 +57,8 @@ final class SMMapper {
 		return $this->queryPrinter->getParameters();
 	}
 	
+	public function getMimeType($res) {
+		return $this->queryPrinter->getMimeType($res);
+	}
+	
 }
