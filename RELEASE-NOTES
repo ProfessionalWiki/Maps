@@ -6,6 +6,21 @@ version of Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.5.3 ===
+(2010-02-01)
+
+==== New features ====
+
+* Added Google Maps v3 support for display_map.
+
+==== Refactoring ====
+
+* Added service defaulting for features using a hook themselves.
+
+==== Bug fixes ====
+
+* Fixed JavaScript bug causing all OSM maps to fail.
+
 === Maps 0.5.2 ===
 (2010-01-20)
 
