@@ -74,19 +74,36 @@ final class MapsMapper {
 	 */
 	public static function getValidService($service, $feature, $subfeature = '') {
 		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
-		
+
+		// Get rid of any aliases.
 		$service = self::getMainServiceName($service);
 		
-		$shouldChange = ! array_key_exists($service, $egMapsServices);
+		// If the service is not in the list of allowed ones, or is simply not loaded into maps, it should be changed.
+		$shouldChange = ! (in_array($service, $egMapsAvailableServices) && array_key_exists($service, $egMapsServices));
+
+		// If it should not be changed, ensure the service supports this feature, and when present, sub feature.
+		// TODO: recursive checking for sub features would definitly be cooler.
 		if (! $shouldChange) {
 			if (array_key_exists($feature, $egMapsServices[$service])) {
-				$shouldChange = is_array($egMapsServices[$service][$feature]) && !array_key_exists($subfeature, $egMapsServices[$service][$feature]);
+				if (array_key_exists('class', $egMapsServices[$service][$feature])) {
+					// If the class key is set, the feature does not have sub features, so the service supports the feature.
+					$shouldChange = false;
+				}
+				else
+				{
+					// The feature has sub features, so check if the current service has support for it.
+					$shouldChange = !array_key_exists($subfeature, $egMapsServices[$service][$feature]);
+				}
 			}
 			else {
+				// The service does not support this feature.
 				$shouldChange = true;
 			}
 		}
-		
+
+		// Change the service to the most specific default value available.
+		// Note: the default services should support their corresponding features.
+		// If they don't, a fatal error will occur later on.
 		if ($shouldChange) {
 			if (array_key_exists($feature, $egMapsDefaultServices)) {
 				if (is_array($egMapsDefaultServices[$feature])) {
@@ -105,8 +122,6 @@ final class MapsMapper {
 				$service = $egMapsDefaultService;
 			}
 		}
-		
-		if(! in_array($service, $egMapsAvailableServices)) $service = $egMapsDefaultService;
 		
 		return $service;
 	}

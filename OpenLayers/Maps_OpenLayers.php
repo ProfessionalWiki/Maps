@@ -159,7 +159,7 @@ class MapsOpenLayers {
 			
 			$output .="<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.js?$egMapsStyleVersion'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.min.js?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
 		}		
 	}
