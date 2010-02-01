@@ -41,6 +41,8 @@ abstract class SMFormInput extends MapsMapFeature {
 	/**
 	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
 	 * the form to handle coordinate data.
+	 * 
+	 * @return array
 	 */
 	public final function formInputHTML($coordinates, $input_name, $is_mandatory, $is_disabled, $field_args) {
 		global $sfgTabIndex;
