@@ -295,9 +295,13 @@ $messages['es'] = array(
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
+	'maps_geocoding_failed_for' => 'No fue posible geocodificar {{PLURAL:$2|la siguiente dirección, que ha sido omitida|las siguientes direcciones, que han sido omitidas}} del mapa:$1.',
+	'maps_unrecognized_coords' => 'Las siguientes coordenadas no fueron reconocidas: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada siguiente no es reconocida|Las coordenadas siguientes no son reconocidas}} y PLURAL:$2|{{han sido omitidas|han sido omitidas}} del mapa :$1',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
 	'maps_click_to_activate' => 'Haz clic para activar el mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
+	'maps_overlays' => 'Superposiciones',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',
