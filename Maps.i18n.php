@@ -565,6 +565,16 @@ $1',
 	'maps_webcams' => 'Kamera web',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'maps_map' => 'Otú Uzọr',
+	'maps_photos' => 'Onyònyò',
+	'maps_videos' => 'Enyónyó-na-jé',
+	'maps_wikipedia' => 'Wikipedia',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -759,6 +769,7 @@ Lo plan pòt pas èsser afichat.",
 $1',
 	'maps_map_cannot_be_displayed' => 'La mapa pòt pas èsser afichada.',
 	'maps_click_to_activate' => 'Clicar per activar la mapa',
+	'maps_centred_on' => 'Mapa centrada sus $1, $2.',
 	'maps_overlays' => 'Superposicions',
 	'maps_photos' => 'Fòtos',
 	'maps_videos' => 'Vidèos',
