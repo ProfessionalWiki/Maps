@@ -48,7 +48,8 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data,
 		
 	}
 	
-	addMapBaseLayers(map, mapTypes);
+	// Add the base layers
+	for (i in mapTypes) map.addLayer(mapTypes[i]);
 	
 	// Layer to hold the markers
 	var markerLayer = new OpenLayers.Layer.Markers('Markers');
@@ -103,22 +104,6 @@ function getValidControlName(control) {
 	}
 	
 	return false;
-}
-
-/**
- * Adds all map type base layers to a map, and returns it.
- */
-function addMapBaseLayers(map, layers) {
-	// Variables for whowing an error when the Google Maps API is not loaded
-	var googleAPILoaded = typeof(G_NORMAL_MAP) != 'undefined';
-	var shownApiError = false;
-	
-	var isDefaultBaseLayer = false;
-
-	// Add the base layers
-	for (i in layers) map.addLayer(layers[i]);
-	
-	return map;
 }
 	
 function getOLMarker(markerLayer, markerData, projectionObject) {
