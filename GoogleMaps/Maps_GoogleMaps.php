@@ -44,9 +44,9 @@ class MapsGoogleMaps {
 	
 	public static function initialize() {
 		self::initializeParams();
-		Validator::addOutputFormat('gmaptype', array('MapsGoogleMaps', 'setGMapType'));
-		Validator::addOutputFormat('gmaptypes', array('MapsGoogleMaps', 'setGMapTypes'));
-		Validator::addValidationFunction('is_google_overlay', array('MapsGoogleMaps', 'isGOverlay'));
+		Validator::addOutputFormat('gmaptype', array(__CLASS__, 'setGMapType'));
+		Validator::addOutputFormat('gmaptypes', array(__CLASS__, 'setGMapTypes'));
+		Validator::addValidationFunction('is_google_overlay', array(__CLASS__, 'isGOverlay'));
 	}
 	
 	private static function initializeParams() {
@@ -54,7 +54,7 @@ class MapsGoogleMaps {
 		
 		$allowedTypes = self::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsGoogleMapsZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsGoogleMapsZoom;
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array(0, 20);
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(

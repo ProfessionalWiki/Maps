@@ -48,12 +48,13 @@ class MapsOpenLayers {
 	
 	public static function initialize() {
 		self::initializeParams();
+		Validator::addOutputFormat('olgroups', array(__CLASS__, 'unpackLayerGroups'));
 	}
 	
 	private static function initializeParams() {
 		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsOpenLayersZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsOpenLayersZoom;
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array(0, 19);
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(	
@@ -62,17 +63,21 @@ class MapsOpenLayers {
 										'criteria' => array(
 											'in_array' => self::getControlNames()
 											),
-										'default' => $egMapsOLControls	,
+										'default' => $egMapsOLControls,
 										'output-type' => array('list', ',', '\'')	
 										),
-									'layers' => array(  
+									'layers' => array(
 										'type' => array('string', 'list'),
 										'criteria' => array(
-											'in_array' => self::getLayerNames()
+											'in_array' => self::getLayerNames(true)
 											),
-										'default' => $egMapsOLLayers										
+										'default' => $egMapsOLLayers,
+										'output-types' => array(
+											'unique_items',
+											'olgroups',
+											array('filtered_array', self::getLayerNames()),
+											)						
 										),							
-									/* 'baselayer' => array(), */
 									);
 	}
 	
@@ -97,20 +102,15 @@ class MapsOpenLayers {
 	}
 
 	/**
-	 * Returns the names of all supported layers. 
-	 * This data is a copy of the one used to actually translate the names
-	 * into the layers, since this resides client side, in OpenLayerFunctions.js. 
+	 * Returns the names of all supported layers.
 	 * 
 	 * @return array
 	 */		
-	public static function getLayerNames() {
-		return array(
-					  'google', 'google-normal', 'google-satellite', 'google-hybrid', 'google-hybrid', 'google-physical',
-					  'bing', 'virtual-earth', 'bing-normal', 'bing-satellite', 'bing-hybrid',
-						'yahoo', 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid',
-						'openlayers', 'open-layers', 'nasa',
-						'openstreetmap', 'osm', 'osmarender', 'osm-nik', 'osm-mapnik', 'osm-cycle', 'osm-cyclemap'
-			);
+	public static function getLayerNames($includeGroups = false) {
+		global $egMapsOLAvailableLayers, $egMapsOLLayerGroups;
+		$keys = array_keys($egMapsOLAvailableLayers);
+		if ($includeGroups) $keys = array_merge($keys, array_keys($egMapsOLLayerGroups));
+		return $keys;
 	}	
 	
 	/**
@@ -124,22 +124,22 @@ class MapsOpenLayers {
 		global $egGoogleMapsOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;
 		
 		switch ($layer) {
-			case 'google' : case 'google-normal' : case 'google-sattelite' : case 'google-hybrid' : case 'google-physical' :
+			case 'google-normal' : case 'google-sattelite' : case 'google-hybrid' : case 'google-physical' :
 				if (empty($egGoogleMapsOnThisPage)) {
 					$egGoogleMapsOnThisPage = 0;
 					MapsGoogleMaps::addGMapDependencies($output);
 					}
 				break;
-			case 'bing' : case 'virtual-earth' :
+			case 'bing-normal' : case 'bing-satellite' : case 'bing-hybrid' :
 				if (!self::$loadedBing) { $output .= "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>\n"; self::$loadedBing = true; }
 				break;
-			case 'yahoo' : case 'yahoo-maps' :
+			case 'yahoo-normal' : case 'yahoo-satellite' : case 'yahoo-hybrid' :
 				if (!self::$loadedYahoo) { $output .= "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>\n"; self::$loadedYahoo = true; }
 				break;
-			case 'openlayers' : case 'open-layers' :
+			case 'openlayers-wms' :
 				if (!self::$loadedOL) { $output .= "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>\n"; self::$loadedOL = true; }
 				break;
-			case 'osm' : case 'openstreetmap' :
+			case 'osmarender' : case 'osm-mapnik' : case 'osm-cyclemap' :
 				if (!self::$loadedOSM) { $output .= "<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>\n"; self::$loadedOSM = true; }
 				break;													
 		}		
@@ -159,7 +159,7 @@ class MapsOpenLayers {
 			
 			$output .="<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.min.js?$egMapsStyleVersion'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.js?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
 		}		
 	}
@@ -172,9 +172,33 @@ class MapsOpenLayers {
 	 * @return csv string
 	 */
 	public static function createLayersStringAndLoadDependencies(&$output, array $layers) {
-		foreach ($layers as $layer) self::loadDependencyWhenNeeded($output, $layer);
-		return "'" . implode("','", $layers) . "'";		
-	}	
+		global $egMapsOLAvailableLayers;
+		$layerStr = array();
+		
+		foreach ($layers as $layer) {
+			self::loadDependencyWhenNeeded($output, $layer);
+			$layerStr[] = $egMapsOLAvailableLayers[$layer];
+		}
+		
+		return 'new ' . implode(',new ', $layerStr);
+	}
+	
+	public static function unpackLayerGroups(&$layers) {
+		global $egMapsOLLayerGroups;
+		
+		$unpacked = array();
+		
+		foreach($layers as $layerOrGroup) {
+			if (array_key_exists($layerOrGroup, $egMapsOLLayerGroups)) {
+				$unpacked = array_merge($unpacked, $egMapsOLLayerGroups[$layerOrGroup]);
+			}
+			else {
+				$unpacked[] = $layerOrGroup;
+			}
+		}
+		
+		$layers = $unpacked;
+	}
 	
 }
 																		

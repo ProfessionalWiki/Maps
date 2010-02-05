@@ -245,8 +245,39 @@ $egMapsOLControls = array('layerswitcher', 'mouseposition', 'autopanzoom', 'scal
 
 # Array of String. The default layers for Open Layers. This value will only be used when the user does not provide one.
 # Available values: google, bing, yahoo, openlayers, nasa
-$egMapsOLLayers = array('openlayers');
+$egMapsOLLayers = array('openlayers-wms');
 
+# The difinitions for the layers that should be available for the user.
+$egMapsOLAvailableLayers = array(
+	'google-normal' => 'OpenLayers.Layer.Google( "Google Streets", {"sphericalMercator":true} )',
+	'google-satellite' => 'OpenLayers.Layer.Google( "Google Satellite", {type: G_SATELLITE_MAP , "sphericalMercator":true} )',
+	'google-hybrid' => 'OpenLayers.Layer.Google( "Google Hybrid", {type: G_HYBRID_MAP , "sphericalMercator":true} )',
+	'google-physical' => 'OpenLayers.Layer.Google( "Google Physical", {type: G_PHYSICAL_MAP , "sphericalMercator":true} )',
+
+	'bing-normal' => 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )',
+	'bing-satellite' => 'OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )',
+	'bing-hybrid' => 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )',
+
+	'yahoo-normal' => 'OpenLayers.Layer.Yahoo( "Yahoo! Streets", {"sphericalMercator":true} )',
+	'yahoo-hybrid' => 'OpenLayers.Layer.Yahoo( "Yahoo! Hybrid", {"type": YAHOO_MAP_HYB, "sphericalMercator":true} )',
+	'yahoo-satellite' => 'OpenLayers.Layer.Yahoo( "Yahoo! Satellite", {"type": YAHOO_MAP_SAT, "sphericalMercator":true} )',
+
+	'osmarender' => 'OpenLayers.Layer.OSM.Osmarender("OSM arender")',
+	'osm-mapnik' => 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")',
+	'osm-cyclemap' => 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")',
+
+	'openlayers-wms' => 'OpenLayers.Layer.WMS( "OpenLayers WMS", "http://labs.metacarta.com/wms/vmap0", {layers: "basic", "sphericalMercator":true} )',
+
+	'nasa' => 'OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",  {layers: "landsat7", "sphericalMercator":true} )',
+);
+
+# Layer group definitions. Group names must be different from layer names, and must only contain layers that are present in $egMapsOLAvailableLayers.
+$egMapsOLLayerGroups = array(
+	'google' => array('google-normal', 'google-satellite', 'google-hybrid', 'google-physical'),
+	'yahoo' => array('yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid'),
+	'bing' => array('bing-normal', 'bing-satellite', 'bing-hybrid'),
+	'osm' => array('osmarender', 'osm-mapnik', 'osm-cyclemap'),
+);
 
 
 # OpenStreetMap (OpenLayers optimized for OSM)

@@ -44,8 +44,8 @@ class MapsYahooMaps {
 	
 	public static function initialize() {
 		self::initializeParams();
-		Validator::addOutputFormat('ymaptype', array('MapsYahooMaps', 'setYMapType'));
-		Validator::addOutputFormat('ymaptypes', array('MapsYahooMaps', 'setYMapTypes'));		
+		Validator::addOutputFormat('ymaptype', array(__CLASS__, 'setYMapType'));
+		Validator::addOutputFormat('ymaptypes', array(__CLASS__, 'setYMapTypes'));		
 	}
 	
 	private static function initializeParams() {
@@ -53,7 +53,7 @@ class MapsYahooMaps {
 		
 		$allowedTypes = MapsYahooMaps::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['default'] = $egMapsYahooMapsZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsYahooMapsZoom;
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array(1, 13);
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
