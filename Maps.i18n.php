@@ -634,6 +634,13 @@ $1',
 	'maps_webcams' => 'Webkammeras',
 );
 
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'maps_wikipedia' => 'Vikipedia',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
