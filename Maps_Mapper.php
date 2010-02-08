@@ -78,8 +78,8 @@ final class MapsMapper {
 		// Get rid of any aliases.
 		$service = self::getMainServiceName($service);
 		
-		// If the service is not in the list of allowed ones, or is simply not loaded into maps, it should be changed.
-		$shouldChange = ! (in_array($service, $egMapsAvailableServices) && array_key_exists($service, $egMapsServices));
+		// If the service is not loaded into maps, it should be changed.
+		$shouldChange = ! array_key_exists($service, $egMapsServices);
 
 		// If it should not be changed, ensure the service supports this feature, and when present, sub feature.
 		// TODO: recursive checking for sub features would definitly be cooler.

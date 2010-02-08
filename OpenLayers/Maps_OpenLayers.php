@@ -41,14 +41,12 @@ class MapsOpenLayers {
 	
 	const SERVICE_NAME = 'openlayers';	
 	
-	private static $loadedBing = false; 
-	private static $loadedYahoo = false;
-	private static $loadedOL = false;
-	private static $loadedOSM = false; 	
-	
 	public static function initialize() {
 		self::initializeParams();
 		Validator::addOutputFormat('olgroups', array(__CLASS__, 'unpackLayerGroups'));
+		
+		global $egMapsOLLoadedLayers;
+		$egMapsOLLoadedLayers = array();
 	}
 	
 	private static function initializeParams() {
@@ -114,38 +112,6 @@ class MapsOpenLayers {
 	}	
 	
 	/**
-	 * Load the dependencies of a layer if they are not loaded yet
-	 *
-	 * @param string $output The output to which the html to load the dependencies needs to be added
-	 * @param string $layer The layer to check (and load the dependencies for
-	 */ 
-	public static function loadDependencyWhenNeeded(&$output, $layer) {
-		global $wgJsMimeType;
-		global $egGoogleMapsOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;
-		
-		switch ($layer) {
-			case 'google-normal' : case 'google-sattelite' : case 'google-hybrid' : case 'google-physical' :
-				if (empty($egGoogleMapsOnThisPage)) {
-					$egGoogleMapsOnThisPage = 0;
-					MapsGoogleMaps::addGMapDependencies($output);
-					}
-				break;
-			case 'bing-normal' : case 'bing-satellite' : case 'bing-hybrid' :
-				if (!self::$loadedBing) { $output .= "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>\n"; self::$loadedBing = true; }
-				break;
-			case 'yahoo-normal' : case 'yahoo-satellite' : case 'yahoo-hybrid' :
-				if (!self::$loadedYahoo) { $output .= "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>\n"; self::$loadedYahoo = true; }
-				break;
-			case 'openlayers-wms' :
-				if (!self::$loadedOL) { $output .= "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>\n"; self::$loadedOL = true; }
-				break;
-			case 'osmarender' : case 'osm-mapnik' : case 'osm-cyclemap' :
-				if (!self::$loadedOSM) { $output .= "<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>\n"; self::$loadedOSM = true; }
-				break;													
-		}		
-	}	
-	
-	/**
 	 * If this is the first open layers map on the page, load the API, styles and extra JS functions
 	 * 
 	 * @param string $output
@@ -177,13 +143,40 @@ class MapsOpenLayers {
 		
 		foreach ($layers as $layer) {
 			self::loadDependencyWhenNeeded($output, $layer);
-			$layerStr[] = $egMapsOLAvailableLayers[$layer];
+			$layerStr[] = is_array($egMapsOLAvailableLayers[$layer]) ? $egMapsOLAvailableLayers[$layer][0] : $egMapsOLAvailableLayers[$layer];
 		}
 		
 		return 'new ' . implode(',new ', $layerStr);
 	}
 	
-	public static function unpackLayerGroups(&$layers) {
+	/**
+	 * Load the dependencies of a layer if they are not loaded yet.
+	 *
+	 * @param string $output The output to which the html to load the dependencies needs to be added
+	 * @param string $layer The layer to check (and load the dependencies for
+	 */ 
+	public static function loadDependencyWhenNeeded(&$output, $layer) {
+		global $wgJsMimeType;
+		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies, $egMapsOLLoadedLayers;
+		
+		// Check if there is a dependency refered by the layer definition.
+		if (is_array($egMapsOLAvailableLayers[$layer])
+			&& count($egMapsOLAvailableLayers[$layer]) > 1 
+			&& array_key_exists($egMapsOLAvailableLayers[$layer][1], $egMapsOLLayerDependencies)
+			&& !in_array($egMapsOLAvailableLayers[$layer][1], $egMapsOLLoadedLayers)) {
+			// Add the dependency to the output.
+			$output .= $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layer][1]];
+			// Register that it's added so it does not get done multiple times.
+			$egMapsOLLoadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
+		}		
+	}
+	
+	/**
+	 * Removed the layer groups from the layer list, and adds their members back in.
+	 * 
+	 * @param array $layers
+	 */
+	public static function unpackLayerGroups(array &$layers) {
 		global $egMapsOLLayerGroups;
 		
 		$unpacked = array();
