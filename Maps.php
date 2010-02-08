@@ -54,8 +54,6 @@ else {
 	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsIP . '/Maps_MapFeature.php';
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsIP . '/Maps_Mapper.php';
 	$wgAutoloadClasses['MapsUtils'] 				= $egMapsIP . '/Maps_Utils.php';
-	
-	if (empty($egMapsServices)) $egMapsServices = array();
 }
 
 /**

@@ -59,6 +59,9 @@ include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	/
 # Mapping services configuration
 # Note: You can not use aliases in the settings. Use the main service names.
 
+# Initialization of the mapping services array. 
+$egMapsServices = array();
+
 # Include the mapping services that should be loaded into Maps. 
 # Commenting or removing a mapping service will cause Maps to completely ignore it, and so improve performance.
 include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
