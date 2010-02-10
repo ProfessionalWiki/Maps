@@ -120,12 +120,12 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 	if (markerData.title.length + markerData.label.length > 0 ) {
 		
 		// This is the handler for the mousedown event on the marker, and displays the popup
-		marker.events.register("mousedown", marker,
+		marker.events.register('mousedown', marker,
 			function(evt) { 
 				var popup = new OpenLayers.Feature(markerLayer, markerData.lonlat).createPopup(true);
 				
 				if (markerData.title.length > 0 && markerData.label.length > 0) { // Add the title and label to the popup text
-					popup.setContentHTML("<b>" + markerData.title + "</b><hr />" + markerData.label);
+					popup.setContentHTML('<b>' + markerData.title + '</b><hr />' + markerData.label);
 				}
 				else {
 					popup.setContentHTML(markerData.title + markerData.label);
@@ -154,7 +154,7 @@ function getOLMarkerData(lon, lat, title, label, icon) {
 
 function initOLSettings(minWidth, minHeight) {
     OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
-    OpenLayers.Util.onImageLoadErrorColor = "transparent";
-	OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {"autoSize": true, "minSize": new OpenLayers.Size(minWidth, minHeight)});
+    OpenLayers.Util.onImageLoadErrorColor = 'transparent';
+	OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {'autoSize': true, 'minSize': new OpenLayers.Size(minWidth, minHeight)});
 }
 
