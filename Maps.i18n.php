@@ -291,6 +291,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'maps_desc' => 'Proporciona la capacidad de mostrar los datos de coordenadas en los mapas y geocodifica direcciones ([http://wiki.bn2vs.com/wiki/Maps demo]). Servicios de mapeo disponibles: $1',
 	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
