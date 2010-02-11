@@ -48,9 +48,9 @@ $egMapsAvailableFeatures['pf'] = array(
 
 # Include the parser functions that should be loaded into Maps.
 # Commenting or removing a parser functions will cause Maps to completely ignore it, and so improve performance.
-include_once $egMapsIP . '/ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// display_map	
-include_once $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// display_point(s)
-include_once $egMapsIP . '/ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// geocode, geocodelon, geocodelat
+include_once $egMapsDir . 'ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// display_map	
+include_once $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// display_point(s)
+include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// geocode, geocodelon, geocodelat
 
 
 
@@ -64,11 +64,11 @@ $egMapsServices = array();
 
 # Include the mapping services that should be loaded into Maps. 
 # Commenting or removing a mapping service will cause Maps to completely ignore it, and so improve performance.
-include_once $egMapsIP . '/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
-include_once $egMapsIP . '/GoogleMaps3/Maps_GoogleMaps3.php'; 	// Google Maps v3
-include_once $egMapsIP . '/OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
-include_once $egMapsIP . '/YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
-include_once $egMapsIP . '/OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
+include_once $egMapsDir . 'GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
+include_once $egMapsDir . 'GoogleMaps3/Maps_GoogleMaps3.php'; 	// Google Maps v3
+include_once $egMapsDir . 'OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
+include_once $egMapsDir . 'YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
+include_once $egMapsDir . 'OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers

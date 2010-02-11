@@ -35,25 +35,26 @@ if (! defined( 'Validator_VERSION' )) {
 else {
 	define('Maps_VERSION', '0.5.4 a3');
 	
+	// TODO: try to get out the hardcoded path.
 	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
-	$egMapsIP 			= $IP . '/extensions/Maps';
+	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 	
 	// Include the settings file
-	require_once($egMapsIP . '/Maps_Settings.php');
+	require_once($egMapsDir . 'Maps_Settings.php');
 	
 	// Register the initialization function of Maps.
 	$wgExtensionFunctions[] = 'efMapsSetup'; 
 	
-	$wgExtensionMessagesFiles['Maps'] = $egMapsIP . '/Maps.i18n.php';
+	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
 	
 	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
 	
 	// Autoload the general classes
-	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsIP . '/Maps_MapFeature.php';
-	$wgAutoloadClasses['MapsMapper'] 				= $egMapsIP . '/Maps_Mapper.php';
-	$wgAutoloadClasses['MapsUtils'] 				= $egMapsIP . '/Maps_Utils.php';
+	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsDir . 'Maps_MapFeature.php';
+	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';
+	$wgAutoloadClasses['MapsUtils'] 				= $egMapsDir . 'Maps_Utils.php';
 }
 
 /**
@@ -61,7 +62,7 @@ else {
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP;	
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsIP, $egMapsAvailableFeatures;
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures;
 
 	// Remove all hooked in services that should not be available.
 	foreach($egMapsServices as $service => $data) {
@@ -98,7 +99,7 @@ function efMapsSetup() {
 	foreach($egMapsAvailableFeatures as $key => $values) {
 		// Load and optionally initizlize feature.
 		if (array_key_exists('class', $values) && array_key_exists('file', $values)) {
-			$wgAutoloadClasses[$values['class']] = array_key_exists('local', $values) && $values['local'] ? $egMapsIP . '/' . $values['file'] : $IP . '/extensions/' . $values['file'];
+			$wgAutoloadClasses[$values['class']] = array_key_exists('local', $values) && $values['local'] ? $egMapsDir . $values['file'] : $IP . '/extensions/' . $values['file'];
 			if (method_exists($values['class'], 'initialize')) call_user_func(array($values['class'], 'initialize'));
 		}
 	}
@@ -107,7 +108,7 @@ function efMapsSetup() {
 	foreach ($egMapsServices as $serviceData) {
 		if (array_key_exists('classes', $serviceData)) {
 			foreach($serviceData['classes'] as $class) {
-				$file = array_key_exists('local', $class) && $class['local'] ? $egMapsIP . '/' . $class['file'] : $IP . '/extensions/' . $class['file'];
+				$file = array_key_exists('local', $class) && $class['local'] ? $egMapsDir . $class['file'] : $IP . '/extensions/' . $class['file'];
 				$wgAutoloadClasses[$class['class']] = $file;
 				if (method_exists($class['class'], 'initialize')) call_user_func(array($class['class'], 'initialize'));
 			}

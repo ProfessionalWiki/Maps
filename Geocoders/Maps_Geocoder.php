@@ -58,7 +58,7 @@ final class MapsGeocoder {
 	 * @return array with coordinates or false
 	 */
 	public static function geocode($address, $service, $mappingService) {
-		global $egMapsAvailableGeoServices, $wgAutoloadClasses, $egMapsIP, $IP;
+		global $egMapsAvailableGeoServices, $wgAutoloadClasses, $egMapsDir, $IP;
 		
 		// If the adress is already in the cache and the cache is enabled, return the coordinates.
 		if (self::$mEnableCache && array_key_exists($address, MapsGeocoder::$mGeocoderCache)) {
@@ -70,7 +70,7 @@ final class MapsGeocoder {
 		$service = self::getValidGeoService($service, $mappingService);
 		
 		// Make sure the needed class is loaded.
-		$file = $egMapsAvailableGeoServices[$service]['local'] ? $egMapsIP . '/' . $egMapsAvailableGeoServices[$service]['file'] : $IP . '/extensions/' . $egMapsAvailableGeoServices[$service]['file'];
+		$file = $egMapsAvailableGeoServices[$service]['local'] ? $egMapsDir . $egMapsAvailableGeoServices[$service]['file'] : $IP . '/extensions/' . $egMapsAvailableGeoServices[$service]['file'];
 		$wgAutoloadClasses[$egMapsAvailableGeoServices[$service]['class']] = $file;
 		
 		// Call the geocode function in the spesific geocoder class.

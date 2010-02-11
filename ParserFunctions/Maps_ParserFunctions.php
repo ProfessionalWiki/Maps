@@ -27,9 +27,9 @@ final class MapsParserFunctions {
 	 * and will load the required classes.
 	 */
 	public static function initialize() {
-		global $egMapsIP, $IP, $wgAutoloadClasses, $egMapsAvailableFeatures, $egMapsServices;
+		global $egMapsDir, $IP, $wgAutoloadClasses, $egMapsAvailableFeatures, $egMapsServices;
 		
-		include_once $egMapsIP . '/ParserFunctions/Maps_iDisplayFunction.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_iDisplayFunction.php';
 		
 		self::initializeParams();	
 		
@@ -42,7 +42,7 @@ final class MapsParserFunctions {
 			
 			// Go through the parser functions supported by the mapping service, and load their classes.
 			foreach($serviceData['pf'] as $parser_name => $parser_data) {
-				$file = $parser_data['local'] ? $egMapsIP . '/' . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
+				$file = $parser_data['local'] ? $egMapsDir . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
 				$wgAutoloadClasses[$parser_data['class']] = $file;
 			}
 		}

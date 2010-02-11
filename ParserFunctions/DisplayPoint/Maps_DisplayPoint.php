@@ -13,8 +13,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsDisplayPoint'] 		= $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';
-$wgAutoloadClasses['MapsBasePointMap']		= $egMapsIP . '/ParserFunctions/DisplayPoint/Maps_BasePointMap.php';
+$wgAutoloadClasses['MapsDisplayPoint'] 		= $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';
+$wgAutoloadClasses['MapsBasePointMap']		= $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_BasePointMap.php';
 
 $wgHooks['LanguageGetMagic'][] 				= 'efMapsDisplayPointMagic';
 $wgHooks['ParserFirstCallInit'][] 			= 'efMapsRegisterDisplayPoint';
