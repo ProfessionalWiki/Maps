@@ -37,22 +37,23 @@ if (! defined( 'SMW_VERSION' )) {
 if (defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' )) {
 	define('SM_VERSION', '0.5.4 a2');
 
+	// TODO: try to get out the hardcoded path.
 	$smgScriptPath 	= $wgScriptPath . '/extensions/SemanticMaps';
-	$smgIP 			= $IP . '/extensions/SemanticMaps';
+	$smgDir 		= dirname( __FILE__ ) . '/';
 
 	$smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
 
 	// Include the settings file.
-	require_once($smgIP . '/SM_Settings.php');
+	require_once($smgDir . 'SM_Settings.php');
 
 	$wgExtensionFunctions[] = 'smfSetup'; 
 
 	$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
 
-	$wgExtensionMessagesFiles['SemanticMaps'] = $smgIP . '/SemanticMaps.i18n.php';
+	$wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
 
 	// Registration of the Geographical Coordinate type.
-	$wgAutoloadClasses['SMGeoCoordsValue'] = $smgIP . '/SM_GeoCoordsValue.php';
+	$wgAutoloadClasses['SMGeoCoordsValue'] = $smgDir . 'SM_GeoCoordsValue.php';
 	$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
 }
 

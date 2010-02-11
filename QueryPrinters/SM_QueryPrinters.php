@@ -21,8 +21,8 @@ final class SMQueryPrinters {
 	 * Initialization function for Maps query printer functionality.
 	 */
 	public static function initialize() {
-		global $smgIP, $wgAutoloadClasses, $egMapsServices;
-		$wgAutoloadClasses['SMMapPrinter'] 	= $smgIP . '/QueryPrinters/SM_MapPrinter.php';
+		global $smgDir, $wgAutoloadClasses, $egMapsServices;
+		$wgAutoloadClasses['SMMapPrinter'] 	= $smgDir . 'QueryPrinters/SM_MapPrinter.php';
 		
 		self::initializeParams();
 		
@@ -131,11 +131,11 @@ final class SMQueryPrinters {
 	 * @param array $aliases
 	 */
 	private static function initFormat($format, array $qp, array $aliases) {
-		global $wgAutoloadClasses, $smgIP, $smwgResultAliases;
+		global $wgAutoloadClasses, $smgDir, $smwgResultAliases;
 
 		// Load the QP class when it's not loaded yet.
 		if (! array_key_exists($qp['class'], $wgAutoloadClasses)) {
-			$file = array_key_exists('local', $qp) && $qp['local'] ? $smgIP . '/' . $qp['file'] : $qp['file'];
+			$file = array_key_exists('local', $qp) && $qp['local'] ? $smgDir . $qp['file'] : $qp['file'];
 			$wgAutoloadClasses[$qp['class']] = $file;
 		}
 

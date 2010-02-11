@@ -45,10 +45,10 @@ $egMapsAvailableFeatures['fi'] = array(
 
 # Include the mapping services that should be loaded into Semantic Maps. 
 # Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
-include_once $smgIP . '/GoogleMaps/SM_GoogleMaps.php'; 	// Google Maps
-include_once $smgIP . '/OpenLayers/SM_OpenLayers.php'; 	// OpenLayers
-include_once $smgIP . '/YahooMaps/SM_YahooMaps.php'; 	// Yahoo! Maps
-include_once $smgIP . '/OpenStreetMap/SM_OSM.php'; 		// OpenLayers optimized for OSM
+include_once $smgDir . 'GoogleMaps/SM_GoogleMaps.php'; 	// Google Maps
+include_once $smgDir . 'OpenLayers/SM_OpenLayers.php'; 	// OpenLayers
+include_once $smgDir . 'YahooMaps/SM_YahooMaps.php'; 	// Yahoo! Maps
+include_once $smgDir . 'OpenStreetMap/SM_OSM.php'; 		// OpenLayers optimized for OSM
 
 # Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
 # Each service needs to be enabled, if not, the first one from the available services will be taken.

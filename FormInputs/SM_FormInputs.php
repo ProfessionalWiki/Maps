@@ -18,13 +18,13 @@ final class SMFormInputs {
 	public static $parameters = array();	
 	
 	public static function initialize() {
-		global $smgIP, $wgAutoloadClasses, $egMapsServices, $sfgFormPrinter;
+		global $smgDir, $wgAutoloadClasses, $egMapsServices, $sfgFormPrinter;
 
 		// This feature can only be enbled when Semantic Forms is loaded.
 		if (isset($sfgFormPrinter)) {
 			$hasFormInputs = false;
 			
-			$wgAutoloadClasses['SMFormInput'] 	= $smgIP . '/FormInputs/SM_FormInput.php';
+			$wgAutoloadClasses['SMFormInput'] 	= $smgDir . 'FormInputs/SM_FormInput.php';
 			
 			self::initializeParams();
 			
@@ -83,11 +83,11 @@ final class SMFormInputs {
 	 * @param strig $mainName
 	 */
 	private static function initFormHook($inputName, array $fi = null, $mainName = '') {
-		global $wgAutoloadClasses, $sfgFormPrinter, $smgIP;
+		global $wgAutoloadClasses, $sfgFormPrinter, $smgDir;
 	
 		if (isset($fi)) {
 			if (! array_key_exists($fi['class'], $wgAutoloadClasses)) {
-				$file = array_key_exists('local', $fi) && $fi['local'] ? $smgIP . '/' . $fi['file'] : $fi['file'];
+				$file = array_key_exists('local', $fi) && $fi['local'] ? $smgDir . $fi['file'] : $fi['file'];
 				$wgAutoloadClasses[$fi['class']] = $file;
 			}
 		}
