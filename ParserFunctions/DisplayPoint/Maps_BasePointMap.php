@@ -47,8 +47,6 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	
 			$this->setMapName();
 			
-			$this->doParsing($parser);
-			
 			$this->setMarkerData($parser);	
 	
 			$this->createMarkerString();
@@ -88,6 +86,9 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	private function setMarkerData($parser) {
 		$this->coordinates = explode(';', $this->coordinates);		
 		
+		$this->title = Xml::escapeJsString( $parser->recursiveTagParse( $this->title ) );
+		$this->label = Xml::escapeJsString( $parser->recursiveTagParse( $this->label ) );	
+		
 		foreach($this->coordinates as $coordinates) {
 			$args = explode('~', $coordinates);
 			
@@ -98,11 +99,11 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			
 			if (count($args) > 1) {
 				// Parse and add the point specific title if it's present.
-				$markerData['title'] = $this->doEscaping( $parser->recursiveTagParse( $args[1] ) );
+				$markerData['title'] = $parser->recursiveTagParse( $args[1] );
 				
 				if (count($args) > 2) {
 					// Parse and add the point specific label if it's present.
-					$markerData['label'] = $this->doEscaping( $parser->recursiveTagParse( $args[2] ) );
+					$markerData['label'] = $parser->recursiveTagParse( $args[2] );
 					
 					if (count($args) > 3) {
 						// Add the point specific icon if it's present.
@@ -128,16 +129,18 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	}
 	
 	/**
-	 * Creates a JS string with the marker data.
-	 * 
-	 * @return unknown_type
+	 * Creates a JS string with the marker data. Takes care of escaping the used values.
 	 */
 	private function createMarkerString() {
 		$markerItems = array();
 		
 		foreach ($this->markerData as $markerData) {
-			$title = array_key_exists('title', $markerData) ? $markerData['title'] : $this->title;
-			$label = array_key_exists('label', $markerData) ? $markerData['label'] : $this->label;	
+			$title = array_key_exists('title', $markerData) ? Xml::escapeJsString($markerData['title']) : $this->title;
+			$label = array_key_exists('label', $markerData) ? Xml::escapeJsString($markerData['label']) : $this->label;	
+			
+			$markerData['lon'] = Xml::escapeJsString($markerData['lon']);
+			$markerData['lat'] = Xml::escapeJsString($markerData['lat']);
+			$markerData['icon'] = Xml::escapeJsString($markerData['icon']);
 			
 			$markerItems[] = str_replace(	array('lon', 'lat', 'title', 'label', 'icon'), 
 											array($markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon']), 
@@ -156,8 +159,8 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 		if (empty($this->centre)) {
 			if (count($this->markerData) == 1) {
 				// If centre is not set and there is exactelly one marker, use it's coordinates.
-				$this->centre_lat = $this->markerData[0]['lat'];
-				$this->centre_lon = $this->markerData[0]['lon'];
+				$this->centre_lat = Xml::escapeJsString( $this->markerData[0]['lat'] );
+				$this->centre_lon = Xml::escapeJsString( $this->markerData[0]['lon'] );
 			}
 			elseif (count($this->markerData) > 1) {
 				// If centre is not set and there are multiple markers, set the values to null,
@@ -176,8 +179,8 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
 			if ($this->centre) {
 				$this->centre = MapsUtils::getLatLon($this->centre);
-				$this->centre_lat = $this->centre['lat'];
-				$this->centre_lon = $this->centre['lon'];				
+				$this->centre_lat = Xml::escapeJsString( $this->centre['lat'] );
+				$this->centre_lon = Xml::escapeJsString( $this->centre['lon'] );				
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
 				$this->setCentreDefaults();
@@ -193,23 +196,4 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 		$this->centre_lat = $egMapsMapLat;
 		$this->centre_lon = $egMapsMapLon;		
 	}
-
-	/**
-	 * Parse the wiki text in the title and label values.
-	 * 
-	 * @param unknown_type $parser
-	 */
-	private function doParsing(&$parser) {
-		$this->title = $this->doEscaping( $parser->recursiveTagParse( $this->title ) );
-		$this->label = $this->doEscaping( $parser->recursiveTagParse( $this->label ) );	
-	}
-	
-	/**
-	 * Escape function for titles and labels.
-	 */
-	private function doEscaping($text) {
-		// TODO: links do not get escaped properly yet.
-		return str_replace("'", "\'", $text);	
-	}
-	
 }
