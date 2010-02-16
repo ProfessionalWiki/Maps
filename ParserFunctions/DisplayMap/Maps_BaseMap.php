@@ -78,8 +78,8 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
 			if ($this->coordinates) {
 				$this->coordinates = MapsUtils::getLatLon($this->coordinates);
-				$this->centre_lat = $this->coordinates['lat'];
-				$this->centre_lon = $this->coordinates['lon'];				
+				$this->centre_lat = Xml::escapeJsString( $this->coordinates['lat'] );
+				$this->centre_lon = Xml::escapeJsString( $this->coordinates['lon'] );				
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
 				$this->setCentreDefaults();
