@@ -77,7 +77,6 @@ function smfSetup() {
 		'version' => SM_VERSION,
 		'author' => array('[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others'),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
-		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 		'descriptionmsg' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
 
