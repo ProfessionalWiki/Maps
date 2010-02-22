@@ -89,8 +89,6 @@ class MapsGoogleMaps {
 					'default' => $egMapsGoogleAutozoom,
 					'output-type' => 'boolstr'									
 					),									
-				'class' => array(),
-				'style' => array(),
 				);
 	}
 

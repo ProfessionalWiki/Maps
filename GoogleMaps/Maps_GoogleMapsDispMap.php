@@ -69,7 +69,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 		
 		$this->output .=<<<END
 
-<div id="$this->mapName" class="$this->class" style="$this->style" ></div>
+<div id="$this->mapName"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
 	initializeGoogleMap('$this->mapName', 

@@ -33,10 +33,9 @@ if (! defined( 'Validator_VERSION' )) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define('Maps_VERSION', '0.5.4 a3');
+	define('Maps_VERSION', '0.5.4 a4');
 	
-	// TODO: try to get out the hardcoded path.
-	$egMapsScriptPath 	= $wgScriptPath . '/extensions/Maps';
+	$egMapsScriptPath 	= (isset($wgExtensionAssetsPath) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions') . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
