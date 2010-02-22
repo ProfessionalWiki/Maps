@@ -79,7 +79,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		}
 		
 		$this->output .= "
-		<div id='".$this->mapName."' class='".$this->class."'></div>
+		<div id='".$this->mapName."'></div>
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addOnloadHook(

@@ -207,14 +207,14 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				}
 			}
 		}
-		
+
 		foreach ($coords as $coord) {
 			if (count($coord) == 2) {
 				list($lat, $lon) = $coord;
-				
+
 				if (strlen($lat) > 0 && strlen($lon) > 0) {
 					$icon = $this->getLocationIcon($row);
-					
+
 					if ($this->template) {
 						global $wgParser;
 						$segments = array_merge(
@@ -223,13 +223,19 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 							);
 						$text = preg_replace('/\n+/m', '<br />', $wgParser->recursiveTagParse('{{' . implode('|', $segments) . '}}'));
 					}
-					
-					$this->m_locations[] = array($lat, $lon, $title, $text, $icon);
+
+					$this->m_locations[] = array(
+						Xml::escapeJsString($lat),
+						Xml::escapeJsString($lon),
+						Xml::escapeJsString($title),
+						Xml::escapeJsString($text),
+						Xml::escapeJsString($icon)
+						);
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * Get the icon for a row
 	 *
@@ -305,8 +311,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		}
 		elseif (count($this->m_locations) == 1) {
 			// If centre is not set and there is exactelly one marker, use it's coordinates.			
-			$this->centre_lat = $this->m_locations[0][0];
-			$this->centre_lon = $this->m_locations[0][1];
+			$this->centre_lat = Xml::escapeJsString( $this->m_locations[0][0] );
+			$this->centre_lon = Xml::escapeJsString( $this->m_locations[0][1] );
 		}
 		else {
 			// If centre is not set and there are no results, centre on the default coordinates.

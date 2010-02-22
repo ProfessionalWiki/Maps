@@ -151,8 +151,8 @@ abstract class SMFormInput extends MapsMapFeature {
 			$centre = MapsGeocodeUtils::attemptToGeocode($this->centre, $this->geoservice, $this->serviceName);
 			$centre = MapsUtils::getLatLon($centre);
 			
-			$this->centre_lat = $centre['lat'];
-			$this->centre_lon = $centre['lon'];			
+			$this->centre_lat = Xml::escapeJsString( $centre['lat'] );
+			$this->centre_lon = Xml::escapeJsString( $centre['lon'] );			
 		}		
 	}
 	
