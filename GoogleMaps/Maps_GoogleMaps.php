@@ -270,12 +270,12 @@ class MapsGoogleMaps {
 			}
 		}
 		
-		$output .=<<<END
+		$output .=<<<EOT
 <script type='$wgJsMimeType'>var timer_$mapName;</script>		
 <div class='outer-more' id='$mapName-outer-more'><form action=''><div class='more-box' id='$mapName-more-box'>
 $overlayHtml
 </div></form></div>		
-END;
+EOT;
 
 	return $onloadFunctions;
 	}

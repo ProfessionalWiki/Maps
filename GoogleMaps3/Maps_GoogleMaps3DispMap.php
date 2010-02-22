@@ -58,7 +58,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->output .=<<<END
+		$this->output .=<<<EOT
 <div id="$this->mapName" style="width:{$this->width}px; height:{$this->height}px"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
@@ -73,7 +73,7 @@ addOnloadHook(
 	)
 );
 /*]]>*/ </script>
-END;
+EOT;
 		
 	}
 	

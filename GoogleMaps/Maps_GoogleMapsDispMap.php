@@ -67,8 +67,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 		
 		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
 		
-		$this->output .=<<<END
-
+		$this->output .=<<<EOT
 <div id="$this->mapName"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
@@ -86,8 +85,7 @@ addOnloadHook(
 		}, [])
 );
 /*]]>*/ </script>
-
-END;
+EOT;
 
 	$this->output .= $onloadFunctions;		
 		

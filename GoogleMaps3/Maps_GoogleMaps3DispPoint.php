@@ -61,7 +61,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 		global $wgJsMimeType;
 		
 		// TODO
-		$this->output .=<<<END
+		$this->output .=<<<EOT
 <div id="$this->mapName" style="width:{$this->width}px; height:{$this->height}px"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
@@ -76,7 +76,7 @@ addOnloadHook(
 	)
 );
 /*]]>*/ </script>
-END;
+EOT;
 
 	}
 	

@@ -55,7 +55,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->output .= <<<END
+		$this->output .= <<<EOT
 		<div id="$this->mapName" style="width: {$this->width}px; height: {$this->height}px;"></div>  
 		
 		<script type="$wgJsMimeType">/*<![CDATA[*/
@@ -63,7 +63,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 			initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->types], [$this->controls], $this->autozoom, [$this->markerString], $this->height)
 		);
 			/*]]>*/</script>
-END;
+EOT;
 	}
 
 }
