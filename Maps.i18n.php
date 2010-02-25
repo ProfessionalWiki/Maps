@@ -211,9 +211,17 @@ $1',
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author PerroVerd
  */
 $messages['ca'] = array(
+	'maps_map' => 'Mapa',
 	'maps_coordinates_missing' => "No s'han proporcionat coordenades pel mapa.",
+	'maps_centred_on' => 'Mapa centrat en $1, $2.',
+	'maps_overlays' => 'Capes addicionals',
+	'maps_photos' => 'Fotos',
+	'maps_videos' => 'Videos',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Cámeres web',
 );
 
 /** German (Deutsch)
@@ -1017,6 +1025,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Không thể hiển thị bản đồ.',
 	'maps_osm' => 'OpenStreetMap',
 	'maps_click_to_activate' => 'Nhấn chuột vào bản đồ để kích hoạt',
+	'maps_centred_on' => 'Bản đồ với trung tậm tại $1, $2.',
 	'maps_overlays' => 'Lớp',
 	'maps_photos' => 'Hình ảnh',
 	'maps_videos' => 'Video',
