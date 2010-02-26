@@ -86,6 +86,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 <div id="$this->mapName"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
+	function() {
 	initializeGoogleMap('$this->mapName', 
 		{
 		width: $this->width,
@@ -99,7 +100,8 @@ addOnloadHook(
 		scrollWheelZoom: $this->autozoom
 		},
 		[$markersString]	
-	)
+	);
+	}
 );
 /*]]>*/ </script>
 EOT;

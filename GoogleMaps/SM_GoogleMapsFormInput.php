@@ -83,6 +83,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addOnloadHook(
+			function() {
 			makeGoogleMapFormInput(
 				'$this->mapName', 
 				'$this->coordsFieldName',
@@ -99,7 +100,8 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 				},
 				$this->marker_lat,
 				$this->marker_lon	
-			)			
+			);
+			}		
 		);
 		/*]]>*/</script>";			
 	}
