@@ -73,6 +73,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 <div id="$this->mapName"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
+	function() {
 	initializeGoogleMap('$this->mapName', 
 		{
 		width: $this->width,
@@ -86,7 +87,8 @@ addOnloadHook(
 		scrollWheelZoom: $this->autozoom
 		},
 		[$this->markerString]
-	)
+	);
+	}
 );
 /*]]>*/ </script>
 EOT;

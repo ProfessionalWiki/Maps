@@ -65,6 +65,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 <div id="$this->mapName" style="width:{$this->width}px; height:{$this->height}px"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(
+	function() {
 	initGMap3("$this->mapName", {
 			zoom: $this->zoom,
 			lat: $this->centre_lat,
@@ -73,7 +74,8 @@ addOnloadHook(
 			mapTypeId: $this->type
 		},
 		[$this->markerString]
-	)
+	);
+	}
 );
 /*]]>*/ </script>
 EOT;

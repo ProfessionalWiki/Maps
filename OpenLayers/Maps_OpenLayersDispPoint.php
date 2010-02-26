@@ -61,7 +61,9 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
 			addOnloadHook(
-				initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls],[$this->markerString], $this->height)
+				function() {
+					initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls],[$this->markerString], $this->height);
+				}
 			);
 		/*]]>*/ </script>";
 	}
