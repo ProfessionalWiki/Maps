@@ -6,6 +6,27 @@ version of Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.5.4 ===
+(2010-03-01)
+
+==== New features ====
+
+* Added the ability to define the layers (and their dependencies) that can be added by users to an OpenLayers map.
+
+* Added the ability to define "layer groups" for OpenLayers layers.
+
+==== Refactoring ====
+
+* Moved the OpenLayers layer definition validation and selection from JS to PHP.
+
+==== Bug fixes ====
+
+* Fixed bug causing the default zoom for each mapping service to be off.
+
+* Fixed potential xss vectors.
+
+* Fixed minor JS error that was present for all maps except OSM.
+
 === Maps 0.5.3 ===
 (2010-02-01)
 
