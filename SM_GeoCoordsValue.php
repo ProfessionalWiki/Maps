@@ -136,7 +136,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				case '': break; // ignore
 				default: // should be a number (if not, errors appear elsewhere)
 					// no kiloseps in coordinates, use as decsep as a convenience to some users (Bug 11808):
-					$curnum = str_replace(wfMsgForContent('semanticmaps_kiloseparator'), wfMsgForContent('semanticmaps_decseparator'), $part);
+					$curnum = str_replace(wfMsgForContent('smw_kiloseparator'), wfMsgForContent('smw_decseparator'), $part);
 				break;
 			}
 		}

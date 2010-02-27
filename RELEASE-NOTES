@@ -6,6 +6,17 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.5.4 ===
+(2010-03-01)
+
+==== Bug fixes ====
+
+* Fixed potential xss vectors.
+
+* Fixed minor JS error that was present for all maps except OSM.
+
+* Fixed i18n issue that caused geocoords not to be recognized on several foreign language wiki's.
+
 === Semantic Maps 0.5.3 ===
 (2010-02-01)
 
