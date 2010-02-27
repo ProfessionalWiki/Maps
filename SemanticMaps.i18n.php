@@ -129,6 +129,16 @@ $messages['ar'] = array(
 	'semanticmaps_paramdesc_layers' => 'الطبقات المتوفرة على الخريطة',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'semanticmaps_abb_north' => 'ܓܪܒܝܐ',
+	'semanticmaps_abb_east' => 'ܡܕܢܚܐ',
+	'semanticmaps_abb_south' => 'ܬܝܡܢܐ',
+	'semanticmaps_abb_west' => 'ܡܥܪܒܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Ghaly
  * @author Meno25
@@ -137,6 +147,14 @@ $messages['arz'] = array(
 	'semanticmaps_name' => 'خرائط دلالية',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
+	'semanticmaps_lonely_unit' => 'لم يتم العثور على رقم قبل الرمز "$1".',
+	'semanticmaps_bad_latlong' => 'خطوط الطول والعرض يجب أن تعطى مره واحده فقط، وإحداثيات صحيحه.',
+	'semanticmaps_abb_north' => 'شمال',
+	'semanticmaps_abb_east' => 'شرق',
+	'semanticmaps_abb_south' => 'جنوب',
+	'semanticmaps_abb_west' => 'غرب',
+	'semanticmaps_label_latitude' => 'دوائر العرض:',
+	'semanticmaps_label_longitude' => 'خطوط الطول:',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -171,6 +189,16 @@ $messages['be-tarask'] = array(
 	'semanticmaps_paramdesc_layers' => 'Даступныя слаі на мапе',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'semanticmaps_abb_north' => 'С',
+	'semanticmaps_abb_east' => 'И',
+	'semanticmaps_abb_south' => 'Ю',
+	'semanticmaps_abb_west' => 'З',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -179,6 +207,7 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servijoù kartennoù hegerz : $1',
 	'semanticmaps_lonely_unit' => "N'eus bet kavet niver ebet a-raok an arouezenn « $1 ».",
+	'semanticmaps_bad_latlong' => 'Al ledred hag an Hedred a rank bezañ roet ur wech hepken, ha gant daveennoù reizh.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'R',
 	'semanticmaps_abb_south' => 'S',
@@ -235,12 +264,31 @@ Dostupne usluge mapa: $1',
  * @author Solde
  */
 $messages['ca'] = array(
+	'semanticmaps_lonely_unit' => 'No s\'ha trobat cap nombre davant el símbol "$1".',
+	'semanticmaps_bad_latlong' => 'La latitud i la longitud només es poden donar un sol cop, i amb coordenades vàlides.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'E',
 	'semanticmaps_abb_south' => 'S',
-	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_abb_west' => 'O',
 	'semanticmaps_label_latitude' => 'Latitud:',
+	'semanticmaps_label_longitude' => 'Longitud:',
 	'semanticmaps_notfound' => "no s'ha trobat",
+);
+
+/** Czech (Česky)
+ * @author Kjbenes
+ * @author Matěj Grabovský
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'semanticmaps_lonely_unit' => 'Před symbolem „$1“ se nenachází číslo.',
+	'semanticmaps_bad_latlong' => 'Zeměpisná šířka a délka musí být zadány jen jednou a s platnými souřadnicemi.',
+	'semanticmaps_abb_north' => 'S',
+	'semanticmaps_abb_east' => 'V',
+	'semanticmaps_abb_south' => 'J',
+	'semanticmaps_abb_west' => 'Z',
+	'semanticmaps_label_latitude' => 'Zeměpisná šířka:',
+	'semanticmaps_label_longitude' => 'Zeměpisná délka:',
 );
 
 /** German (Deutsch)
@@ -316,6 +364,8 @@ $messages['el'] = array(
 	'semanticmaps_abb_east' => 'Α',
 	'semanticmaps_abb_south' => 'Ν',
 	'semanticmaps_abb_west' => 'Δ',
+	'semanticmaps_label_latitude' => 'Γεωγραφικό πλάτος:',
+	'semanticmaps_label_longitude' => 'Γεωγραφικό μήκος:',
 	'semanticmaps_lookupcoordinates' => 'Επιθεώρηση συντεταγμένων',
 	'semanticmaps_enteraddresshere' => 'Εισαγωγή διεύθυνσης εδώ',
 	'semanticmaps_notfound' => 'δεν βρέθηκε',
@@ -325,8 +375,10 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'semanticmaps_lonely_unit' => 'Nombro mankas antaŭ simbolo "$1".',
+	'semanticmaps_bad_latlong' => 'Latitudo kaj longitudo devas esti donata nur unufoje, kaj kun validaj koordinatoj.',
 	'semanticmaps_abb_north' => 'N',
-	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_east' => 'O',
 	'semanticmaps_abb_south' => 'S',
 	'semanticmaps_abb_west' => 'U',
 	'semanticmaps_label_latitude' => 'Latitudo:',
@@ -375,6 +427,12 @@ Servicios de mapas disponibles: $1',
  */
 $messages['eu'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordenatuak bilatu',
+	'semanticmaps_abb_north' => 'I',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'H',
+	'semanticmaps_abb_west' => 'M',
+	'semanticmaps_label_latitude' => 'Latitudea:',
+	'semanticmaps_label_longitude' => 'Longitudea:',
 );
 
 /** Finnish (Suomi)
@@ -382,12 +440,14 @@ $messages['eu'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'semanticmaps_abb_north' => 'P',
-	'semanticmaps_abb_east' => 'I',
-	'semanticmaps_abb_south' => 'E',
-	'semanticmaps_abb_west' => 'L',
-	'semanticmaps_label_latitude' => 'Leveysaste',
-	'semanticmaps_label_longitude' => 'Pituusaste',
+	'semanticmaps_lonely_unit' => 'Symbolin ”$1” edestä puuttuu luku.',
+	'semanticmaps_bad_latlong' => 'Pituuspiiri ja leveysaste voidaan määritellä vain kerran ja toimivilla koordinaateilla.',
+	'semanticmaps_abb_north' => 'Pohj.',
+	'semanticmaps_abb_east' => 'It.',
+	'semanticmaps_abb_south' => 'Etel.',
+	'semanticmaps_abb_west' => 'Länt.',
+	'semanticmaps_label_latitude' => 'Korkeusaste:',
+	'semanticmaps_label_longitude' => 'Pituuspiiri:',
 	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
 	'semanticmaps_notfound' => 'ei löytynyt',
 	'semanticmaps_paramdesc_height' => 'Kartan korkeus pikseleinä (oletus on $1)',
@@ -430,6 +490,19 @@ $messages['fr'] = array(
 	'semanticmaps_paramdesc_layers' => 'Les revêtements disponibles sur la carte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author Cedric31
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'semanticmaps_abb_north' => 'B',
+	'semanticmaps_abb_east' => 'L',
+	'semanticmaps_abb_south' => 'M',
+	'semanticmaps_abb_west' => 'P',
+	'semanticmaps_label_latitude' => 'Latituda :',
+	'semanticmaps_label_longitude' => 'Longituda :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -459,6 +532,19 @@ Servizos de mapa dispoñibles: $1',
 	'semanticmaps_paramdesc_overlays' => 'As sobreposicións dispoñibles no mapa',
 	'semanticmaps_paramdesc_autozoom' => 'Activa o achegamento e afastamento coa roda do rato',
 	'semanticmaps_paramdesc_layers' => 'As capas dispoñibles no mapa',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ * @author Omnipaedista
+ */
+$messages['grc'] = array(
+	'semanticmaps_abb_north' => 'Β',
+	'semanticmaps_abb_east' => 'Α',
+	'semanticmaps_abb_south' => 'Ν',
+	'semanticmaps_abb_west' => 'Δ',
+	'semanticmaps_label_latitude' => 'Πλάτος γεωγραφικόν:',
+	'semanticmaps_label_longitude' => 'Μῆκος γεωγραφικόν:',
 );
 
 /** Swiss German (Alemannisch)
@@ -499,6 +585,7 @@ $messages['he'] = array(
 	'semanticmaps_desc' => 'הוספת האפשרות לצפייה ולעריכה בנתוני קואורדינטה המאוחסנים דרך הרחבת המדיה־ויקי הסמנטי ([http://wiki.bn2vs.com/wiki/Semantic_Maps הדגמה]).
 שירותי מפה זמינים: $1',
 	'semanticmaps_lonely_unit' => 'לא נמצא מספר לפני הסימן "$1".',
+	'semanticmaps_bad_latlong' => 'יש לציין את מידות קווי האורך והרוחב פעם אחת בלבד, ולציין קואורדינטות תקפות.',
 	'semanticmaps_abb_north' => "צפ'",
 	'semanticmaps_abb_east' => "מז'",
 	'semanticmaps_abb_south' => "דר'",
@@ -516,6 +603,18 @@ $messages['he'] = array(
 	'semanticmaps_paramdesc_types' => 'צורות המפה הזמינות על המפה',
 	'semanticmaps_paramdesc_type' => 'סוג ברירת המחדל של המפה עבור המפה',
 	'semanticmaps_paramdesc_layers' => 'השכבות הזמינות במפה',
+);
+
+/** Hindi (हिन्दी)
+ * @author Kaustubh
+ */
+$messages['hi'] = array(
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_label_latitude' => 'अक्षांश:',
+	'semanticmaps_label_longitude' => 'रेखांश:',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -548,16 +647,31 @@ $messages['hsb'] = array(
 	'semanticmaps_paramdesc_layers' => 'Woršty, kotrež za kartu k dispoziciji steja',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Jvm
+ * @author Masterches
+ */
+$messages['ht'] = array(
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+);
+
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'semanticmaps_desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztés segítségével tárolt koordinátaadatok megtekintését és szerkesztését ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Elérhető térképszolgáltatók: $1',
+	'semanticmaps_lonely_unit' => 'Nem található szám a(z) „$1” szimbólum előtt.',
+	'semanticmaps_bad_latlong' => 'A földrajzi szélességet és hosszúságot csak egyszer kell megadni, érvényes koordinátákkal.',
 	'semanticmaps_abb_north' => 'É',
 	'semanticmaps_abb_east' => 'K',
 	'semanticmaps_abb_south' => 'D',
 	'semanticmaps_abb_west' => 'Ny',
+	'semanticmaps_label_latitude' => 'Földrajzi szélesség:',
+	'semanticmaps_label_longitude' => 'Földrajzi hosszúság:',
 	'semanticmaps_lookupcoordinates' => 'Koordináták felkeresése',
 	'semanticmaps_enteraddresshere' => 'Add meg a címet itt',
 	'semanticmaps_notfound' => 'nincs találat',
@@ -635,6 +749,14 @@ $messages['it'] = array(
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
 	'semanticmaps_notfound' => 'non trovato',
+	'semanticmaps_lonely_unit' => 'Non &egrave; stato trovato nessun numero prima del simbolo “$1”.',
+	'semanticmaps_bad_latlong' => 'Latitudine e longitudine devono essere inserite solo una volta, e con coordinate valide.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'O',
+	'semanticmaps_label_latitude' => 'Latitudine:',
+	'semanticmaps_label_longitude' => 'Longitudine:',
 );
 
 /** Japanese (日本語)
@@ -668,11 +790,34 @@ $messages['ja'] = array(
 	'semanticmaps_paramdesc_layers' => 'この地図で利用できるレイヤー',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ * @author Pras
+ */
+$messages['jv'] = array(
+	'semanticmaps_lonely_unit' => 'Ora ditemokaké angka sangarepé simbul “$1”.',
+	'semanticmaps_bad_latlong' => 'Latituda lan longituda namung olèh diwènèhaké sapisan, lan mawa koordinat sing absah.',
+	'semanticmaps_abb_north' => 'L',
+	'semanticmaps_abb_east' => 'W',
+	'semanticmaps_abb_south' => 'Kdl',
+	'semanticmaps_abb_west' => 'Kln',
+	'semanticmaps_label_latitude' => 'Latituda:',
+	'semanticmaps_label_longitude' => 'Longituda:',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
 $messages['km'] = array(
 	'semanticmaps_lookupcoordinates' => 'ក្រឡេក​មើល​កូអរដោនេ',
+	'semanticmaps_lonely_unit' => 'គ្មាន​លេខ​បាន​រកឃើញ​មុន​និមិត្តសញ្ញា "$1" ទេ​។',
+	'semanticmaps_bad_latlong' => 'រយៈទទឹង និង​រយៈបណ្ដោយ ត្រូវតែ​ផ្ដល់ឱ្យ​ក្នុង​ពេល​តែមួយ ព្រមទាំង​ជាមួយ​កូអរដោនេ​ត្រឹមត្រូវ​។',
+	'semanticmaps_abb_north' => 'ជ',
+	'semanticmaps_abb_east' => 'ក',
+	'semanticmaps_abb_south' => 'ត្ប',
+	'semanticmaps_abb_west' => 'ល',
+	'semanticmaps_label_latitude' => 'រយះទទឹង៖',
+	'semanticmaps_label_longitude' => 'រយះបណ្តោយ៖',
 );
 
 /** Ripoarisch (Ripoarisch)
@@ -759,6 +904,54 @@ $messages['mk'] = array(
 	'semanticmaps_paramdesc_layers' => 'Слоевите достапни на картата',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Shijualex
+ */
+$messages['ml'] = array(
+	'semanticmaps_lonely_unit' => '“$1” എന്ന ചിഹ്നത്തിനു മുന്‍പ് സംഖ്യകള്‍ കണ്ടില്ല.',
+	'semanticmaps_abb_north' => 'വടക്ക്',
+	'semanticmaps_abb_east' => 'കിഴക്ക്',
+	'semanticmaps_abb_south' => 'തെക്ക്',
+	'semanticmaps_abb_west' => 'പടിഞ്ഞാറ്‌',
+	'semanticmaps_label_latitude' => 'അക്ഷാംശം:',
+	'semanticmaps_label_longitude' => 'രേഖാംശം:',
+);
+
+/** Marathi (मराठी)
+ * @author Kaustubh
+ */
+$messages['mr'] = array(
+	'semanticmaps_lonely_unit' => '“$1” चिन्हाच्या आधी कुठलीही संख्या सापडली नाही.',
+	'semanticmaps_bad_latlong' => 'अक्षांश व रेखांश फक्त एकदाच देता येतील, ते सुद्धा योग्य किंमतींसकट.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
+	'semanticmaps_label_latitude' => 'अक्षांश:',
+	'semanticmaps_label_longitude' => 'रेखांश:',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'semanticmaps_abb_north' => 'Веньэльйонкс',
+	'semanticmaps_abb_east' => 'Чилисемайонкс',
+	'semanticmaps_abb_south' => 'Чиньэльйонкс',
+	'semanticmaps_abb_west' => 'Чивалгомайонкс',
+	'semanticmaps_label_latitude' => 'Келезэ:',
+	'semanticmaps_label_longitude' => 'Кувалмозо:',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Fluence
+ */
+$messages['nah'] = array(
+	'semanticmaps_abb_north' => 'M',
+	'semanticmaps_abb_east' => 'T',
+	'semanticmaps_abb_south' => 'H',
+);
+
 /** Dutch (Nederlands)
  * @author Jeroen De Dauw
  * @author Siebrand
@@ -797,6 +990,14 @@ Beschikbare kaartdiensten: $1',
 $messages['nn'] = array(
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinatar',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressa her',
+	'semanticmaps_lonely_unit' => 'Fann ikkje noko tal framom symbolet «$1».',
+	'semanticmaps_bad_latlong' => 'Breidde- og lengdegrad kan berre verta oppgjeve éin gong, og med gyldige koordinatar.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'A',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'V',
+	'semanticmaps_label_latitude' => 'Breiddegrad:',
+	'semanticmaps_label_longitude' => 'Lengdegrad:',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -839,6 +1040,23 @@ $messages['oc'] = array(
 	'semanticmaps_lookupcoordinates' => 'Estimar las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Picatz aicí l’adreça',
 	'semanticmaps_notfound' => 'pas trobat',
+	'semanticmaps_lonely_unit' => 'Cap de nombre pas trobat abans lo simbòl “$1”.',
+	'semanticmaps_bad_latlong' => "Latitud e longitud devon pas èsser indicats qu'un sol còp, e amb de coordenadas validas.",
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'E',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'O',
+	'semanticmaps_label_latitude' => 'Latitud :',
+	'semanticmaps_label_longitude' => 'Longitud :',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'W',
 );
 
 /** Polish (Polski)
@@ -850,6 +1068,8 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostępne serwisy mapowe: $1',
+	'semanticmaps_lonely_unit' => 'Przed symbolem „$1” nie umieszczono żadnej cyfry.',
+	'semanticmaps_bad_latlong' => 'Szerokość i długość geograficzna muszą być podane raz, z prawidłowymi współrzędnymi.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'E',
 	'semanticmaps_abb_south' => 'S',
@@ -936,6 +1156,7 @@ $messages['pt-br'] = array(
 	'semanticmaps_desc' => 'Provê a possibilidade de ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://wiki.bn2vs.com/wiki/Semantic_Maps demonstração]).
 Serviços de mapeamento disponíveis: $1',
 	'semanticmaps_lonely_unit' => 'Nenhum número encontrado antes do símbolo "$1".',
+	'semanticmaps_bad_latlong' => 'A latitude e a longitude só podem ser fornecidas uma vez, e com coordenadas válidas.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_south' => 'S',
 	'semanticmaps_abb_west' => 'O',
@@ -950,6 +1171,8 @@ Serviços de mapeamento disponíveis: $1',
  * @author Firilacroco
  */
 $messages['ro'] = array(
+	'semanticmaps_lonely_unit' => 'Nici un număr găsit înaintea simbolului "$1".',
+	'semanticmaps_bad_latlong' => 'Latitudinea şi longitutdinea trebuie date o singură dată, şi cu valori valide.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'E',
 	'semanticmaps_abb_south' => 'S',
@@ -1041,6 +1264,14 @@ Dostupné mapové služby: $1',
 $messages['sr-ec'] = array(
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 	'semanticmaps_notfound' => 'није нађено',
+	'semanticmaps_lonely_unit' => 'Није пронађен број пре симбола "$1".',
+	'semanticmaps_bad_latlong' => 'Географска ширина и дужина морају бити дате само једном и са ваљаним координатама.',
+	'semanticmaps_abb_north' => 'С',
+	'semanticmaps_abb_east' => 'И',
+	'semanticmaps_abb_south' => 'Ј',
+	'semanticmaps_abb_west' => 'З',
+	'semanticmaps_label_latitude' => 'Географска ширина:',
+	'semanticmaps_label_longitude' => 'Географска дужина:',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1049,6 +1280,14 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'semanticmaps_enteraddresshere' => 'Unesi adresu ovde',
 	'semanticmaps_notfound' => 'nije nađeno',
+	'semanticmaps_lonely_unit' => 'Nije pronađen broj pre simbola "$1".',
+	'semanticmaps_bad_latlong' => 'Geografska širina i dužina moraju biti date samo jednom i sa valjanim koordinatama.',
+	'semanticmaps_abb_north' => 'S',
+	'semanticmaps_abb_east' => 'I',
+	'semanticmaps_abb_south' => 'J',
+	'semanticmaps_abb_west' => 'Z',
+	'semanticmaps_label_latitude' => 'Geografska širina:',
+	'semanticmaps_label_longitude' => 'Geografska dužina:',
 );
 
 /** Swedish (Svenska)
@@ -1098,6 +1337,14 @@ $messages['te'] = array(
 $messages['tl'] = array(
 	'semanticmaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
 	'semanticmaps_enteraddresshere' => 'Ipasok ang adres dito',
+	'semanticmaps_lonely_unit' => 'Walang natagpuang bilang bago ang sagisag na "$1".',
+	'semanticmaps_bad_latlong' => 'Isang ulit lamang dapat ibigay ang latitud at longhitud, at may tanggap na mga tugmaang pampook.',
+	'semanticmaps_abb_north' => 'H',
+	'semanticmaps_abb_east' => 'S',
+	'semanticmaps_abb_south' => 'T',
+	'semanticmaps_abb_west' => 'K',
+	'semanticmaps_label_latitude' => 'Latitud:',
+	'semanticmaps_label_longitude' => 'Longhitud:',
 );
 
 /** Turkish (Türkçe)
@@ -1122,6 +1369,12 @@ $messages['tr'] = array(
  */
 $messages['vep'] = array(
 	'semanticmaps_notfound' => 'ei voi löuta',
+	'semanticmaps_abb_north' => 'Pohj.',
+	'semanticmaps_abb_east' => 'Päivl.',
+	'semanticmaps_abb_south' => 'Suvi',
+	'semanticmaps_abb_west' => 'Päivn.',
+	'semanticmaps_label_latitude' => 'Leveduz:',
+	'semanticmaps_label_longitude' => 'Piduz:',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -1134,6 +1387,14 @@ Các dịch vụ bản đồ có sẵn: $1',
 	'semanticmaps_lookupcoordinates' => 'Tra tọa độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
 	'semanticmaps_notfound' => 'không tìm thấy',
+	'semanticmaps_lonely_unit' => 'Không tìm thấy số trước ký hiệu “$1”.',
+	'semanticmaps_bad_latlong' => 'Vĩ độ và kinh độ phải được cung cấp chỉ một lần, và với giá trị tọa độ hợp lệ.',
+	'semanticmaps_abb_north' => 'B',
+	'semanticmaps_abb_east' => 'Đ',
+	'semanticmaps_abb_south' => 'N',
+	'semanticmaps_abb_west' => 'T',
+	'semanticmaps_label_latitude' => 'Vĩ độ:',
+	'semanticmaps_label_longitude' => 'Kinh độ:',
 );
 
 /** Volapük (Volapük)
@@ -1141,6 +1402,23 @@ Các dịch vụ bản đồ có sẵn: $1',
  */
 $messages['vo'] = array(
 	'semanticmaps_lookupcoordinates' => 'Tuvön koordinatis',
+	'semanticmaps_bad_latlong' => 'Videt e lunet mutons pagivön te balna, e mutons binön koordinats lonöföl.',
+	'semanticmaps_abb_north' => 'N',
+	'semanticmaps_abb_east' => 'L',
+	'semanticmaps_abb_south' => 'S',
+	'semanticmaps_abb_west' => 'V',
+	'semanticmaps_label_latitude' => 'Videt:',
+	'semanticmaps_label_longitude' => 'Lunet:',
+);
+
+/** Chinese (China) (‪中文(中国大陆)‬)
+ * @author Roc Michael
+ */
+$messages['zh-cn'] = array(
+	'semanticmaps_lonely_unit' => '在“$1＂此一单位之前并无数目字',
+	'semanticmaps_bad_latlong' => '纬度和经度只能以有效的座标值标示一次',
+	'semanticmaps_label_latitude' => '纬度：',
+	'semanticmaps_label_longitude' => '经度：',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -1148,12 +1426,41 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'semanticmaps_lookupcoordinates' => '查找坐标',
+	'semanticmaps_abb_north' => '北',
+	'semanticmaps_abb_east' => '东',
+	'semanticmaps_abb_south' => '南',
+	'semanticmaps_abb_west' => '西',
+	'semanticmaps_label_latitude' => '纬度：',
+	'semanticmaps_label_longitude' => '经度：',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Gzdavidwong
+ * @author Sheepy
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'semanticmaps_lookupcoordinates' => '尋找座標',
+	'semanticmaps_abb_north' => '北',
+	'semanticmaps_abb_east' => '東',
+	'semanticmaps_abb_south' => '南',
+	'semanticmaps_abb_west' => '西',
+	'semanticmaps_label_latitude' => '緯度：',
+	'semanticmaps_label_longitude' => '經度：',
 );
 
+
+/** Chinese (Taiwan) (‪中文(台灣)‬)
+ * @author Roc michael
+ * @author Sheepy
+ */
+$messages['zh-tw'] = array(
+	'semanticmaps_lonely_unit' => '在“$1”此一單位之前並無數目字',
+	'semanticmaps_bad_latlong' => '緯度和經度只能以有效的座標值標示一次',
+	'semanticmaps_abb_north' => '北',
+	'semanticmaps_abb_east' => '東',
+	'semanticmaps_abb_south' => '南',
+	'semanticmaps_abb_west' => '西',
+	'semanticmaps_label_latitude' => '緯度：',
+	'semanticmaps_label_longitude' => '經度：',
+);
