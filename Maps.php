@@ -88,7 +88,7 @@ function efMapsSetup() {
 		'version' => Maps_VERSION,
 		'author' => array('[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others'),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
-		'descriptionmsg' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
+		'description' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 	);
 
 	MapsMapper::initializeMainParams();
