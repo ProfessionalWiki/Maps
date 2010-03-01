@@ -15,8 +15,8 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * Abstract class MapsBasePointMap provides the scafolding for classes handling display_point(s)
- * and display_address(es) calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
- * forces inheriting classes to implement sereveral methods.
+ * calls for a spesific mapping service. It inherits from MapsMapFeature and therefore forces
+ * inheriting classes to implement sereveral methods.
  *
  * @ingroup Maps
  *

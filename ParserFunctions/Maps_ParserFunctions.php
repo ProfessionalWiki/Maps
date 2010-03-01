@@ -42,7 +42,7 @@ final class MapsParserFunctions {
 			
 			// Go through the parser functions supported by the mapping service, and load their classes.
 			foreach($serviceData['pf'] as $parser_name => $parser_data) {
-				$file = $parser_data['local'] ? $egMapsDir . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
+				$file = array_key_exists('local', $parser_data) && $parser_data['local'] ? $egMapsDir . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
 				$wgAutoloadClasses[$parser_data['class']] = $file;
 			}
 		}
@@ -159,7 +159,7 @@ final class MapsParserFunctions {
 	 * 
 	 * @return array
 	 */
-	private static function filterInvalidCoords(&$coordList, $delimeter = ';') {
+	public static function filterInvalidCoords(&$coordList, $delimeter = ';') {
 		$coordFails = array();
 		$validCoordinates = array();
         $coordinates = explode($delimeter, $coordList);
@@ -257,7 +257,7 @@ final class MapsParserFunctions {
 	 * 
 	 * @return class
 	 */
-	private static function getParserClassInstance($service, $parserFunction) {
+	public static function getParserClassInstance($service, $parserFunction) {
 		global $egMapsServices;
 		return new $egMapsServices[$service]['pf'][$parserFunction]['class']();
 	}		
@@ -273,7 +273,7 @@ final class MapsParserFunctions {
 	 * 
 	 * @return boolean
 	 */
-	private static function inParamAliases($name, $mainParamName, array $paramInfo = array(), $compareMainName = true) {
+	public static function inParamAliases($name, $mainParamName, array $paramInfo = array(), $compareMainName = true) {
 		$equals = $compareMainName && $mainParamName == $name;
 
 		if (array_key_exists($mainParamName, $paramInfo)) {

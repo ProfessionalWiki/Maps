@@ -26,7 +26,7 @@ $egMapsAvailableFeatures['pf']['hooks'][]	= 'MapsDisplayPoint';
  */
 function efMapsDisplayPointMagic( &$magicWords, $langCode ) {
 	// The display_address(es) aliases are for backward compatibility only, and will be removed eventually.
-	$magicWords['display_point'] = array( 0, 'display_point', 'display_points', 'display_address', 'display_addresses' );
+	$magicWords['display_point'] = array( 0, 'display_point', 'display_points' );
 	
 	return true; // Unless we return true, other parser functions won't get loaded.
 }	
