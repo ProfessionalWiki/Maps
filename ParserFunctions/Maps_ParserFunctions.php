@@ -294,7 +294,7 @@ final class MapsParserFunctions {
      * 
      * @return boolean
      */        
-    private static function paramIsPresent($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
+    public static function paramIsPresent($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
         $isPresent = array_key_exists($paramName, $stack);
         
         if ($checkForAliases && array_key_exists('aliases', $paramInfo[$paramName])) {
