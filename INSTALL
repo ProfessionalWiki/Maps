@@ -1,16 +1,27 @@
 [[Semantic Maps 0.5.4]]
 
-Make sure you have Semantic MediaWiki and Maps successfully installed before
-proceeding with the installation. Once you have downloaded the code, place
-the 'SemanticMaps' directory within your MediaWiki 'extensions' directory.
-Then add the following code to your LocalSettings.php file after the lines
-that install Maps:
+Make sure you have Semantic MediaWiki, Maps and Validator successfully installed before proceeding
+withthe installation. Semantic Maps and Maps are always released together. This means you should
+always use the same version of Maps as the one of Semantic Maps you have. For example Maps 0.3.4
+and Semantic Maps 0.3.4, but not Maps 0.2 and Semantic Maps 0.3. For the correct version of
+Validator, see the INSTALL file of Maps. Once you have downloaded the code, place the 'SemanticMaps'
+directory within your MediaWiki 'extensions' directory. Then add the following code to your
+LocalSettings.php file after the lines that install Maps:
 
 # Semantic Maps
 require_once( "$IP/extensions/SemanticMaps/SemanticMaps.php" );
 
-The inclusion of extensions should happen in this order: Semantic MediaWiki,
-Semantic Forms (if you use it), Semantic Maps. Maps should proceed Semantic
-Maps. See the installation instructions of Maps for info about the API keys.
+The placement of the inclusion of Maps and Semantic Maps needs to be at a certain position. Hold
+the following rules into account:
+* Maps needs to be included before Semantic Maps.
+* Semantic MediaWiki needs to be included before Maps.
+* Semantic Forms (if used) needs to be included before Maps (after SMW).
+An example of a typical inclusion order: ..., SMW, ..., SF, ..., Validator, Maps, SM, ...
 
-More information can be found at http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Download_and_installation
+Once you have successfully installed Semantic Maps, please add your wiki to the sites that use
+Semantic Maps section [0].
+
+More information can be found at [1].
+
+[0] http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Sites_that_use_Semantic_Maps
+[1] http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Download_and_installation

@@ -82,15 +82,15 @@ function smfSetup() {
 
 	$wgOut->addScriptFile($smgScriptPath . '/SMUtilityFunctions.js');	
 	
-	return true;	
+	return true;
 }
 
 /**
  * Adds support for the geographical coordinate data type to Semantic MediaWiki.
  */
 function smfInitGeoCoordsType() {
-	SMWDataValueFactory::registerDatatype('_geo', 'SMGeoCoordsValue');
-	return true;	
+	SMWDataValueFactory::registerDatatype('_geo', 'SMGeoCoordsValue', 'Geographic coordinate');
+	return true;
 }
 
 /**
