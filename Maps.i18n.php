@@ -224,6 +224,13 @@ $messages['ca'] = array(
 	'maps_webcams' => 'Cámeres web',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'maps_overlays' => 'Překryvné vrstvy',
+);
+
 /** German (Deutsch)
  * @author DaSch
  * @author Imre
