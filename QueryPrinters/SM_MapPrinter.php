@@ -203,34 +203,34 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				}
 		
 				if ($pr->getMode() == SMWPrintRequest::PRINT_PROP && $pr->getTypeID() == '_geo') {
-					$coords[] = explode(',', $object->getXSDValue());
+					$coords[] = explode( ',', $object->getXSDValue() );
 				}
 			}
 		}
 
-		foreach ($coords as $coord) {
-			if (count($coord) == 2) {
-				list($lat, $lon) = $coord;
+		foreach ( $coords as $coord ) {
+			if ( count( $coord ) == 2 ) {
+				list( $lat, $lon ) = $coord;
 
-				if (strlen($lat) > 0 && strlen($lon) > 0) {
-					$icon = $this->getLocationIcon($row);
+				if ( strlen( $lat ) > 0 && strlen( $lon ) > 0 ) {
+					$icon = $this->getLocationIcon( $row );
 
-					if ($this->template) {
+					if ( $this->template ) {
 						global $wgParser;
 						$segments = array_merge(
-							array($this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon),
+							array( $this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon ),
 							$label
-							);
-						$text = preg_replace('/\n+/m', '<br />', $wgParser->recursiveTagParse('{{' . implode('|', $segments) . '}}'));
+						);
+						$text = preg_replace( '/\n+/m', '<br />', $wgParser->recursiveTagParse( '{{' . implode( '|', $segments ) . '}}' ) );
 					}
 
 					$this->m_locations[] = array(
-						Xml::escapeJsString($lat),
-						Xml::escapeJsString($lon),
-						Xml::escapeJsString($title),
-						Xml::escapeJsString($text),
-						Xml::escapeJsString($icon)
-						);
+						Xml::escapeJsString( $lat ),
+						Xml::escapeJsString( $lon ),
+						$title,
+						$text,
+						Xml::escapeJsString( $icon )
+					);
 				}
 			}
 		}
