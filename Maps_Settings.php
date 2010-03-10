@@ -252,11 +252,6 @@ $egMapsOLLayers = array('openlayers-wms');
 
 # The difinitions for the layers that should be available for the user.
 $egMapsOLAvailableLayers = array(
-	'google-normal' => array('OpenLayers.Layer.Google( "Google Streets", {"sphericalMercator":true} )', 'google'),
-	'google-satellite' => array('OpenLayers.Layer.Google( "Google Satellite", {type: G_SATELLITE_MAP , "sphericalMercator":true} )', 'google'),
-	'google-hybrid' => array('OpenLayers.Layer.Google( "Google Hybrid", {type: G_HYBRID_MAP , "sphericalMercator":true} )', 'google'),
-	'google-physical' => array('OpenLayers.Layer.Google( "Google Physical", {type: G_PHYSICAL_MAP , "sphericalMercator":true} )', 'google'),
-
 	'bing-normal' => array('OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing'),
 	'bing-satellite' => array('OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing'),
 	'bing-hybrid' => array('OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing'),
@@ -278,7 +273,6 @@ $egMapsOLAvailableLayers = array(
 
 # Layer group definitions. Group names must be different from layer names, and must only contain layers that are present in $egMapsOLAvailableLayers.
 $egMapsOLLayerGroups = array(
-	'google' => array('google-normal', 'google-satellite', 'google-hybrid', 'google-physical'),
 	'yahoo' => array('yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid'),
 	'bing' => array('bing-normal', 'bing-satellite', 'bing-hybrid'),
 	'osm' => array('osmarender', 'osm-mapnik', 'osm-cyclemap'),
@@ -286,7 +280,6 @@ $egMapsOLLayerGroups = array(
 
 # Layer dependencies.
 $egMapsOLLayerDependencies = array(
-	'google' => "<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl={}' type='$wgJsMimeType'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.min.js?$egMapsStyleVersion'></script><script type='$wgJsMimeType'>window.unload = GUnload;</script>",
 	'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 	'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 	'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
