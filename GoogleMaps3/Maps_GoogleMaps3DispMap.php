@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -27,14 +27,14 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	/**
 	 * @see MapsBaseMap::setMapSettings()
 	 *
-	 */	
+	 */
 	protected function setMapSettings() {
 		global $egMapsGMaps3Zoom, $egMapsGMaps3Prefix;
 		
 		$this->elementNamePrefix = $egMapsGMaps3Prefix;
 		$this->defaultZoom = $egMapsGMaps3Zoom;
 		
-		$this->spesificParameters = array(			
+		$this->spesificParameters = array(
 		);
 	}
 	
@@ -45,7 +45,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	protected function doMapServiceLoad() {
 		global $egGMaps3OnThisPage;
 		
-		MapsGoogleMaps3::addGMap3Dependencies($this->output);
+		MapsGoogleMaps3::addGMap3Dependencies( $this->output );
 		$egGMaps3OnThisPage++;
 		
 		$this->elementNr = $egGMaps3OnThisPage;
@@ -58,7 +58,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$this->output .=<<<EOT
+		$this->output .= <<<EOT
 <div id="$this->mapName" style="width:{$this->width}px; height:{$this->height}px"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(

@@ -10,7 +10,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -75,12 +75,12 @@ final class MapsOSMCgiBin {
 		$urlElements[] = '&amp;locale=';
 		$urlElements[] = $this->lang;
 		
-		if (array_key_exists('maptype', $this->options)) {
+		if ( array_key_exists( 'maptype', $this->options ) ) {
 			$urlElements[] = '&amp;maptype=';
 			$urlElements[] = $this->options['maptype'];
 		}
 
-		return implode('', $urlElements);
+		return implode( '', $urlElements );
 	}
 
 	/**
@@ -103,11 +103,11 @@ final class MapsOSMCgiBin {
 		if ( $this->options['sphericalMercator'] ) {
 			// Calculate bounds within a spherical mercator projection if that is what the scale is based on
 			$mercatorCenter = MapsUtils::forwardMercator( $center );
-			$mbounds = array( 
-				$mercatorCenter[0] - $w_deg / 2, 
-				$mercatorCenter[1] - $h_deg / 2, 
-				$mercatorCenter[0] + $w_deg / 2, 
-				$mercatorCenter[1] + $h_deg / 2 
+			$mbounds = array(
+				$mercatorCenter[0] - $w_deg / 2,
+				$mercatorCenter[1] - $h_deg / 2,
+				$mercatorCenter[0] + $w_deg / 2,
+				$mercatorCenter[1] + $h_deg / 2
 			);
 			$this->bounds = MapsUtils::inverseMercator( $mbounds );
 		}

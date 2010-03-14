@@ -35,15 +35,15 @@ $1',
 	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_googlemaps3' => 'Google Maps v3',
 	'maps_yahoomaps' => 'Yahoo! Maps',
-	'maps_openlayers' => 'OpenLayers', 
-	'maps_osm' => 'OpenStreetMap', 
+	'maps_openlayers' => 'OpenLayers',
+	'maps_osm' => 'OpenStreetMap',
 
 	// Static maps
 	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centered on $1, $2.',
 
 	// Google Maps v2 overlays
-	'maps_overlays' => 'Overlays',	
+	'maps_overlays' => 'Overlays',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',

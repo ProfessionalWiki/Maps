@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -20,40 +20,40 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsOSMDispPoint extends MapsBasePointMap {
 	
-	public $serviceName = MapsOSM::SERVICE_NAME;	
+	public $serviceName = MapsOSM::SERVICE_NAME;
 	
 	/**
 	 * @see MapsBaseMap::setMapSettings()
 	 *
-	 */	
+	 */
 	protected function setMapSettings() {
 		global $egMapsOSMZoom, $egMapsOSMPrefix;
 		
 		$this->elementNamePrefix = $egMapsOSMPrefix;
 		$this->defaultZoom = $egMapsOSMZoom;
 		
-		$this->markerStringFormat = 'getOSMMarkerData(lat, lon, \'title\', \'label\', "icon")';			
+		$this->markerStringFormat = 'getOSMMarkerData(lat, lon, \'title\', \'label\', "icon")';
 	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
-	 */		
+	 */
 	protected function doMapServiceLoad() {
 		global $egOSMMapsOnThisPage;
 		
-		MapsOSM::addOSMDependencies($this->output);
+		MapsOSM::addOSMDependencies( $this->output );
 		$egOSMMapsOnThisPage++;
 		
 		$this->elementNr = $egOSMMapsOnThisPage;
-	}	
+	}
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
-	 */	
+	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;	
+		global $wgJsMimeType;
 		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {

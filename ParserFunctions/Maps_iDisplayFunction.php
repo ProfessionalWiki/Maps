@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -19,5 +19,5 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 interface iDisplayFunction {
-	public function displayMap(&$parser, array $params);
+	public function displayMap( &$parser, array $params );
 }

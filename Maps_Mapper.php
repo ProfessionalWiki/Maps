@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -32,7 +32,7 @@ final class MapsMapper {
 				'type' => 'integer',
 				'criteria' => array(
 					'not_empty' => array()
-					)				
+					)
 				),
 			'width' => array(
 				'type' => 'integer',
@@ -40,7 +40,7 @@ final class MapsMapper {
 					'not_empty' => array(),
 					'in_range' => $egMapsSizeRestrictions['width']
 					),
-				'default' => $egMapsMapWidth		
+				'default' => $egMapsMapWidth
 				),
 			'height' => array(
 				'type' => 'integer',
@@ -60,7 +60,7 @@ final class MapsMapper {
 	 */
 	public static function getMainParams() {
 		return self::$mainParams;
-	}	
+	}
 	
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
@@ -72,27 +72,27 @@ final class MapsMapper {
 	 * 
 	 * @return string
 	 */
-	public static function getValidService($service, $feature, $subfeature = '') {
+	public static function getValidService( $service, $feature, $subfeature = '' ) {
 		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
 
 		// Get rid of any aliases.
-		$service = self::getMainServiceName($service);
+		$service = self::getMainServiceName( $service );
 		
 		// If the service is not loaded into maps, it should be changed.
-		$shouldChange = ! array_key_exists($service, $egMapsServices);
+		$shouldChange = ! array_key_exists( $service, $egMapsServices );
 
 		// If it should not be changed, ensure the service supports this feature, and when present, sub feature.
 		// TODO: recursive checking for sub features would definitly be cooler.
-		if (! $shouldChange) {
-			if (array_key_exists($feature, $egMapsServices[$service])) {
-				if (array_key_exists('class', $egMapsServices[$service][$feature])) {
+		if ( ! $shouldChange ) {
+			if ( array_key_exists( $feature, $egMapsServices[$service] ) ) {
+				if ( array_key_exists( 'class', $egMapsServices[$service][$feature] ) ) {
 					// If the class key is set, the feature does not have sub features, so the service supports the feature.
 					$shouldChange = false;
 				}
 				else
 				{
 					// The feature has sub features, so check if the current service has support for it.
-					$shouldChange = !array_key_exists($subfeature, $egMapsServices[$service][$feature]);
+					$shouldChange = !array_key_exists( $subfeature, $egMapsServices[$service][$feature] );
 				}
 			}
 			else {
@@ -104,10 +104,10 @@ final class MapsMapper {
 		// Change the service to the most specific default value available.
 		// Note: the default services should support their corresponding features.
 		// If they don't, a fatal error will occur later on.
-		if ($shouldChange) {
-			if (array_key_exists($feature, $egMapsDefaultServices)) {
-				if (is_array($egMapsDefaultServices[$feature])) {
-					if (array_key_exists($subfeature, $egMapsDefaultServices[$feature])) {
+		if ( $shouldChange ) {
+			if ( array_key_exists( $feature, $egMapsDefaultServices ) ) {
+				if ( is_array( $egMapsDefaultServices[$feature] ) ) {
+					if ( array_key_exists( $subfeature, $egMapsDefaultServices[$feature] ) ) {
 						$service = $egMapsDefaultServices[$feature][$subfeature];
 					}
 					else {
@@ -133,12 +133,12 @@ final class MapsMapper {
 	 * @param string $service
 	 * @return string
 	 */
-	private static function getMainServiceName($service) {
+	private static function getMainServiceName( $service ) {
 		global $egMapsServices;
 		
-		if (! array_key_exists($service, $egMapsServices)) {
-			foreach ($egMapsServices as $serviceName => $serviceInfo) {
-				if (in_array($service, $serviceInfo['aliases'])) {
+		if ( ! array_key_exists( $service, $egMapsServices ) ) {
+			foreach ( $egMapsServices as $serviceName => $serviceInfo ) {
+				if ( in_array( $service, $serviceInfo['aliases'] ) ) {
 					 $service = $serviceName;
 					 break;
 				}
@@ -146,5 +146,5 @@ final class MapsMapper {
 		}
 		
 		return $service;
-	}	
+	}
 }

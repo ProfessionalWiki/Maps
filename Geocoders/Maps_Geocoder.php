@@ -11,7 +11,7 @@
  * @author Sergey Chernyshev
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -42,9 +42,9 @@ final class MapsGeocoder {
 	 * 
 	 * @return formatted coordinate string or false
 	 */
-	public static function geocodeToString($address, $service = '', $mappingService = '', $format = '%1$s, %2$s') {
-		$geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
-		return $geovalues ? sprintf($format, $geovalues['lat'], $geovalues['lon']) : false;
+	public static function geocodeToString( $address, $service = '', $mappingService = '', $format = '%1$s, %2$s' ) {
+		$geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
+		return $geovalues ? sprintf( $format, $geovalues['lat'], $geovalues['lon'] ) : false;
 	}
 
 	/**
@@ -57,27 +57,27 @@ final class MapsGeocoder {
 	 * 
 	 * @return array with coordinates or false
 	 */
-	public static function geocode($address, $service, $mappingService) {
+	public static function geocode( $address, $service, $mappingService ) {
 		global $egMapsAvailableGeoServices, $wgAutoloadClasses, $egMapsDir, $IP;
 		
 		// If the adress is already in the cache and the cache is enabled, return the coordinates.
-		if (self::$mEnableCache && array_key_exists($address, MapsGeocoder::$mGeocoderCache)) {
+		if ( self::$mEnableCache && array_key_exists( $address, MapsGeocoder::$mGeocoderCache ) ) {
 			return self::$mGeocoderCache[$address];
 		}
 		
 		$coordinates = false;
 		
-		$service = self::getValidGeoService($service, $mappingService);
+		$service = self::getValidGeoService( $service, $mappingService );
 		
 		// Make sure the needed class is loaded.
 		$file = $egMapsAvailableGeoServices[$service]['local'] ? $egMapsDir . $egMapsAvailableGeoServices[$service]['file'] : $IP . '/extensions/' . $egMapsAvailableGeoServices[$service]['file'];
 		$wgAutoloadClasses[$egMapsAvailableGeoServices[$service]['class']] = $file;
 		
 		// Call the geocode function in the spesific geocoder class.
-		$coordinates = call_user_func(array($egMapsAvailableGeoServices[$service]['class'], 'geocode'), $address);
+		$coordinates = call_user_func( array( $egMapsAvailableGeoServices[$service]['class'], 'geocode' ), $address );
 
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
-		if (self::$mEnableCache && $coordinates) {
+		if ( self::$mEnableCache && $coordinates ) {
 			MapsGeocoder::$mGeocoderCache[$address] = $coordinates;
 		}
 
@@ -93,28 +93,28 @@ final class MapsGeocoder {
 	 * 
 	 * @return string
 	 */
-	private static function getValidGeoService($service, $mappingService) {
+	private static function getValidGeoService( $service, $mappingService ) {
 		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 		
-		if (strlen($service) < 1) {
+		if ( strlen( $service ) < 1 ) {
 			// If no service has been provided, check if there are overrides for the default.
-			foreach ($egMapsAvailableGeoServices as $geoService => $serviceData) {
-				if (in_array($mappingService, $serviceData))  {
+			foreach ( $egMapsAvailableGeoServices as $geoService => $serviceData ) {
+				if ( in_array( $mappingService, $serviceData ) )  {
 					$service = $geoService; // Use the override
 					break;
 				}
-			}	
+			}
 			
 			// If no overrides where applied, use the default mapping service.
-			if (strlen($service) < 1) $service = $egMapsDefaultGeoService;
+			if ( strlen( $service ) < 1 ) $service = $egMapsDefaultGeoService;
 		}
 		else {
 			// If a service is provided, but is not supported, use the default.
-			if(! array_key_exists($service, $egMapsAvailableGeoServices)) $service = $egMapsDefaultGeoService;
+			if ( ! array_key_exists( $service, $egMapsAvailableGeoServices ) ) $service = $egMapsDefaultGeoService;
 		}
 
 		return $service;
-	}	
+	}
 }
 
 

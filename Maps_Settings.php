@@ -14,9 +14,9 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
-} 
+}
 
 
 
@@ -26,7 +26,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 # (named) Array of String. This array contains the available features for Maps.
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
-if (empty($egMapsAvailableFeatures)) $egMapsAvailableFeatures = array();
+if ( empty( $egMapsAvailableFeatures ) ) $egMapsAvailableFeatures = array();
 
 $egMapsAvailableFeatures['geocode'] = array(
 							'name' => 'Geocoding',
@@ -72,7 +72,7 @@ include_once $egMapsDir . 'OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimize
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableServices = array('googlemaps2', 'googlemaps3', 'yahoomaps', 'openlayers', 'osm');
+$egMapsAvailableServices = array( 'googlemaps2', 'googlemaps3', 'yahoomaps', 'openlayers', 'osm' );
 
 # String. The default mapping service, which will be used when no default service is present in the
 # $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
@@ -102,13 +102,13 @@ $egMapsAvailableGeoServices = array(
 										'class' => 'MapsGoogleGeocoder',
 										'file' => 'Geocoders/Maps_GoogleGeocoder.php',
 										'local' => true,
-										'overrides' => array('googlemaps2'),
+										'overrides' => array( 'googlemaps2' ),
 										),
 									'yahoo' => array(
 										'class' => 'MapsYahooGeocoder',
 										'file' => 'Geocoders/Maps_YahooGeocoder.php',
 										'local' => true,
-										'overrides' => array('yahoomaps'),
+										'overrides' => array( 'yahoomaps' ),
 										),
 									'geonames' => array(
 										'class' => 'MapsGeonamesGeocoder',
@@ -170,7 +170,7 @@ $egMapsGoogleMapsPrefix = 'map_google';
 $egMapsGoogleMapsZoom = 14;
 
 # Array of String. The Google Maps v2 default map types. This value will only be used when the user does not provide one.
-$egMapsGoogleMapsTypes = array('normal', 'satellite', 'hybrid', 'physical');
+$egMapsGoogleMapsTypes = array( 'normal', 'satellite', 'hybrid', 'physical' );
 
 # String. The default map type. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsType = 'normal';
@@ -181,12 +181,12 @@ $egMapsGoogleAutozoom = true;
 
 # Array of String. The default controls for Google Maps v2. This value will only be used when the user does not provide one.
 # Available values: auto, large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label, overlays
-$egMapsGMapControls = array('auto', 'scale', 'type', 'overlays');
+$egMapsGMapControls = array( 'auto', 'scale', 'type', 'overlays' );
 
 # Array. The default overlays for the Google Maps v2 overlays control, and whether they should be shown at pageload.
 # This value will only be used when the user does not provide one.
 # Available values: photos, videos, wikipedia, webcams
-$egMapsGMapOverlays = array('photos', 'videos', 'wikipedia', 'webcams');
+$egMapsGMapOverlays = array( 'photos', 'videos', 'wikipedia', 'webcams' );
 
 
 
@@ -199,7 +199,7 @@ $egMapsGMaps3Prefix = 'map_google3';
 $egMapsGMaps3Zoom = 14;
 
 # Array of String. The Google Maps v3 default map types. This value will only be used when the user does not provide one.
-$egMapsGMaps3Types = array('roadmap', 'satellite', 'hybrid', 'terrain');
+$egMapsGMaps3Types = array( 'roadmap', 'satellite', 'hybrid', 'terrain' );
 
 # String. The default map type. This value will only be used when the user does not provide one.
 $egMapsGMaps3Type = 'roadmap';
@@ -210,13 +210,13 @@ $egMapsGMaps3Type = 'roadmap';
 
 # Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
 # Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
-$egYahooMapsKey = ''; 
+$egYahooMapsKey = '';
 
 # String. The Yahoo! maps map name prefix. It can not be identical to the one of another mapping service.
 $egMapsYahooMapsPrefix = 'map_yahoo';
 
 # Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
-$egMapsYahooMapsTypes = array('normal', 'satellite', 'hybrid');
+$egMapsYahooMapsTypes = array( 'normal', 'satellite', 'hybrid' );
 
 # String. The default map type. This value will only be used when the user does not provide one.
 $egMapsYahooMapsType = 'normal';
@@ -230,7 +230,7 @@ $egMapsYahooAutozoom = true;
 
 # Array of String. The default controls for Yahoo! Maps. This value will only be used when the user does not provide one.
 # Available values: type, pan, zoom, zoom-short, auto-zoom
-$egMapsYMapControls = array('type', 'pan', 'auto-zoom');
+$egMapsYMapControls = array( 'type', 'pan', 'auto-zoom' );
 
 
 
@@ -244,28 +244,28 @@ $egMapsOpenLayersZoom = 13;
 
 # Array of String. The default controls for Open Layers. This value will only be used when the user does not provide one.
 # Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-$egMapsOLControls = array('layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation');
+$egMapsOLControls = array( 'layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation' );
 
 # Array of String. The default layers for Open Layers. This value will only be used when the user does not provide one.
 # Available values: google, bing, yahoo, openlayers, nasa
-$egMapsOLLayers = array('openlayers-wms');
+$egMapsOLLayers = array( 'openlayers-wms' );
 
 # The difinitions for the layers that should be available for the user.
 $egMapsOLAvailableLayers = array(
-	'bing-normal' => array('OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing'),
-	'bing-satellite' => array('OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing'),
-	'bing-hybrid' => array('OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing'),
+	'bing-normal' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ),
+	'bing-satellite' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing' ),
+	'bing-hybrid' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing' ),
 
-	'yahoo-normal' => array('OpenLayers.Layer.Yahoo( "Yahoo! Streets", {"sphericalMercator":true} )', 'yahoo'),
-	'yahoo-hybrid' => array('OpenLayers.Layer.Yahoo( "Yahoo! Hybrid", {"type": YAHOO_MAP_HYB, "sphericalMercator":true} )', 'yahoo'),
-	'yahoo-satellite' => array('OpenLayers.Layer.Yahoo( "Yahoo! Satellite", {"type": YAHOO_MAP_SAT, "sphericalMercator":true} )', 'yahoo'),
+	'yahoo-normal' => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Streets", {"sphericalMercator":true} )', 'yahoo' ),
+	'yahoo-hybrid' => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Hybrid", {"type": YAHOO_MAP_HYB, "sphericalMercator":true} )', 'yahoo' ),
+	'yahoo-satellite' => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Satellite", {"type": YAHOO_MAP_SAT, "sphericalMercator":true} )', 'yahoo' ),
 
-	'osmarender' => array('OpenLayers.Layer.OSM.Osmarender("OSM arender")', 'osm'),
-	'osm-mapnik' => array('OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm'),
-	'osm-cyclemap' => array('OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm'),
+	'osmarender' => array( 'OpenLayers.Layer.OSM.Osmarender("OSM arender")', 'osm' ),
+	'osm-mapnik' => array( 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ),
+	'osm-cyclemap' => array( 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm' ),
 
-	'openlayers-wms' => array('OpenLayers.Layer.WMS( "OpenLayers WMS", "http://labs.metacarta.com/wms/vmap0",
-		{layers: "basic", "sphericalMercator":true} )', 'ol-wms'),
+	'openlayers-wms' => array( 'OpenLayers.Layer.WMS( "OpenLayers WMS", "http://labs.metacarta.com/wms/vmap0",
+		{layers: "basic", "sphericalMercator":true} )', 'ol-wms' ),
 
 	'nasa' => 'OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7", 
 		{layers: "landsat7", "sphericalMercator":true} )',
@@ -273,9 +273,9 @@ $egMapsOLAvailableLayers = array(
 
 # Layer group definitions. Group names must be different from layer names, and must only contain layers that are present in $egMapsOLAvailableLayers.
 $egMapsOLLayerGroups = array(
-	'yahoo' => array('yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid'),
-	'bing' => array('bing-normal', 'bing-satellite', 'bing-hybrid'),
-	'osm' => array('osmarender', 'osm-mapnik', 'osm-cyclemap'),
+	'yahoo' => array( 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid' ),
+	'bing' => array( 'bing-normal', 'bing-satellite', 'bing-hybrid' ),
+	'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
 );
 
 # Layer dependencies.
@@ -298,7 +298,7 @@ $egMapsOSMZoom = 13;
 
 # Array of String. The default controls for OSM maps. This value will only be used when the user does not provide one.
 # Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-$egMapsOSMControls = array('layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation');
+$egMapsOSMControls = array( 'layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation' );
 
 # Boolean. Indicates whether you want to get a static map (image) or not.
 # This value will only be used when the user does not provide one.

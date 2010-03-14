@@ -16,20 +16,20 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 $egMapsServices['googlemaps2'] = array(
 									'pf' => array(
-										'display_point' => array('class' => 'MapsGoogleMapsDispPoint', 'file' => 'GoogleMaps/Maps_GoogleMapsDispPoint.php', 'local' => true),
-										'display_map' => array('class' => 'MapsGoogleMapsDispMap', 'file' => 'GoogleMaps/Maps_GoogleMapsDispMap.php', 'local' => true),
+										'display_point' => array( 'class' => 'MapsGoogleMapsDispPoint', 'file' => 'GoogleMaps/Maps_GoogleMapsDispPoint.php', 'local' => true ),
+										'display_map' => array( 'class' => 'MapsGoogleMapsDispMap', 'file' => 'GoogleMaps/Maps_GoogleMapsDispMap.php', 'local' => true ),
 										),
 									'classes' => array(
-											array('class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true)
+											array( 'class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true )
 											),
-									'aliases' => array('googlemaps', 'google', 'googlemap', 'gmap', 'gmaps'),
-									);	
+									'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
+									);
 
 /**
  * Class for Google Maps initialization.
@@ -37,16 +37,16 @@ $egMapsServices['googlemaps2'] = array(
  * @ingroup MapsGoogleMaps
  * 
  * @author Jeroen De Dauw
- */											
+ */
 class MapsGoogleMaps {
 	
-	const SERVICE_NAME = 'googlemaps2';	
+	const SERVICE_NAME = 'googlemaps2';
 	
 	public static function initialize() {
 		self::initializeParams();
-		Validator::addOutputFormat('gmaptype', array(__CLASS__, 'setGMapType'));
-		Validator::addOutputFormat('gmaptypes', array(__CLASS__, 'setGMapTypes'));
-		Validator::addValidationFunction('is_google_overlay', array(__CLASS__, 'isGOverlay'));
+		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
+		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
+		Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );
 	}
 	
 	private static function initializeParams() {
@@ -55,40 +55,40 @@ class MapsGoogleMaps {
 		$allowedTypes = self::getTypeNames();
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsGoogleMapsZoom;
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array(0, 20);
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
 				'controls' => array(
-					'type' => array('string', 'list'),
+					'type' => array( 'string', 'list' ),
 					'criteria' => array(
 						'in_array' => self::getControlNames()
 						),
 					'default' => $egMapsGMapControls,
-					'output-type' => array('list', ',', '\'')
+					'output-type' => array( 'list', ',', '\'' )
 					),
 				'type' => array(
-					'aliases' => array('map-type', 'map type'),
+					'aliases' => array( 'map-type', 'map type' ),
 					'criteria' => array(
-						'in_array' => $allowedTypes		
+						'in_array' => $allowedTypes
 						),
 					'default' => $egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
-					'output-type' => 'gmaptype'										
+					'output-type' => 'gmaptype'
 					),
 				'types' => array(
-					'type' => array('string', 'list'),
-					'aliases' => array('map-types', 'map types'),
+					'type' => array( 'string', 'list' ),
+					'aliases' => array( 'map-types', 'map types' ),
 					'criteria' => array(
 						'in_array' => $allowedTypes
 						),
 					'default' => $egMapsGoogleMapsTypes,
-					'output-types' => array('gmaptypes', 'list')				
+					'output-types' => array( 'gmaptypes', 'list' )
 					),
 				'autozoom' => array(
 					'type' => 'boolean',
-					'aliases' => array('auto zoom', 'mouse zoom', 'mousezoom'),	
+					'aliases' => array( 'auto zoom', 'mouse zoom', 'mousezoom' ),
 					'default' => $egMapsGoogleAutozoom,
-					'output-type' => 'boolstr'									
-					),									
+					'output-type' => 'boolstr'
+					),
 				);
 	}
 
@@ -119,10 +119,10 @@ class MapsGoogleMaps {
 	 * Returns the names of all supported map types.
 	 * 
 	 * @return array
-	 */					
+	 */
 	public static function getTypeNames() {
-		return array_keys(self::$mapTypes);
-	} 
+		return array_keys( self::$mapTypes );
+	}
 	
 	/**
 	 * Returns the names of all supported controls. 
@@ -130,10 +130,10 @@ class MapsGoogleMaps {
 	 * into the controls, since this resides client side, in GoogleMapFunctions.js. 
 	 * 
 	 * @return array
-	 */		
+	 */
 	public static function getControlNames() {
 		return array(
-			'auto', 'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu', 
+			'auto', 'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu',
 			'overlays', 'overview', 'overview-map', 'scale', 'nav-label', 'nav'
 			);
 	}
@@ -142,9 +142,9 @@ class MapsGoogleMaps {
 	 * Returns the names of all supported map overlays.
 	 * 
 	 * @return array
-	 */	
+	 */
 	public static function getOverlayNames() {
-		return array_keys(self::$overlayData);
+		return array_keys( self::$overlayData );
 	}
 	
 	/**
@@ -155,8 +155,8 @@ class MapsGoogleMaps {
 	 * @return boolean
 	 */
 	public static function isGOverlay( $value ) {
-		$value = explode('-', $value);
-		return in_array($value[0], self::getOverlayNames());
+		$value = explode( '-', $value );
+		return in_array( $value[0], self::getOverlayNames() );
 	}
 
 	/**
@@ -166,7 +166,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return string
 	 */
-	public static function setGMapType(&$type) {
+	public static function setGMapType( &$type ) {
 		$type = self::$mapTypes[ $type ];
 	}
 	
@@ -177,8 +177,8 @@ class MapsGoogleMaps {
 	 * 
 	 * @return array
 	 */
-	public static function setGMapTypes(array &$types) {
-		for($i = count($types) - 1; $i >= 0; $i--) {
+	public static function setGMapTypes( array &$types ) {
+		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
 			$types[$i] = self::$mapTypes[ $types[$i] ];
 		}
 	}
@@ -188,11 +188,11 @@ class MapsGoogleMaps {
 	 *
 	 * @param string $output
 	 */
-	public static function addGMapDependencies(&$output) {
+	public static function addGMapDependencies( &$output ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage, $egMapsStyleVersion;
 
-		if (empty($egGoogleMapsOnThisPage)) {
+		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
 
 			MapsGoogleMaps::validateGoogleMapsKey();
@@ -208,10 +208,10 @@ class MapsGoogleMaps {
 	public static function validateGoogleMapsKey() {
 		global $egGoogleMapsKey, $wgGoogleMapsKey;
 		
-		if (isset($wgGoogleMapsKey)){
-			if (strlen(trim($egGoogleMapsKey)) < 1) $egGoogleMapsKey = $wgGoogleMapsKey;
-		} 
-	}	
+		if ( isset( $wgGoogleMapsKey ) ) {
+			if ( strlen( trim( $egGoogleMapsKey ) ) < 1 ) $egGoogleMapsKey = $wgGoogleMapsKey;
+		}
+	}
 	
 	/**
 	 * Adds the needed output for the overlays control.
@@ -221,56 +221,56 @@ class MapsGoogleMaps {
 	 * @param string $overlays
 	 * @param string $controls
 	 */
-	public static function addOverlayOutput(&$output, $mapName, $overlays, $controls) {
+	public static function addOverlayOutput( &$output, $mapName, $overlays, $controls ) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
 		
 		// Check to see if there is an overlays control.
-		$hasOverlayControl = in_string('overlays', $controls);
+		$hasOverlayControl = in_string( 'overlays', $controls );
 		
-		$overlayNames = array_keys(self::$overlayData);
+		$overlayNames = array_keys( self::$overlayData );
 		
 		$validOverlays = array();
-		foreach ($overlays as $overlay) {
-			$segements = explode('-', $overlay);
+		foreach ( $overlays as $overlay ) {
+			$segements = explode( '-', $overlay );
 			$name = $segements[0];
 			
-			if (in_array($name, $overlayNames)) {
-				$isOn = count($segements) > 1 ? $segements[1] : '0';
+			if ( in_array( $name, $overlayNames ) ) {
+				$isOn = count( $segements ) > 1 ? $segements[1] : '0';
 				$validOverlays[$name] = $isOn == '1';
 			}
-		} 
+		}
 		$overlays = $validOverlays;
 		
 		// If there are no overlays or there is no control to hold them, don't bother the rest.
-		if(!$hasOverlayControl || count($overlays) < 1) return;
+		if ( !$hasOverlayControl || count( $overlays ) < 1 ) return;
 		
 		// If the overlays JS and CSS has not yet loaded, do it.
-		if (empty($egMapsGoogleOverlLoaded)) {
+		if ( empty( $egMapsGoogleOverlLoaded ) ) {
 			$egMapsGoogleOverlLoaded = true;
-			MapsGoogleMaps::addOverlayCss($output);
+			MapsGoogleMaps::addOverlayCss( $output );
 		}
 		
 		// Add the inputs for the overlays.
 		$addedOverlays = array();
 		$overlayHtml = '';
 		$onloadFunctions = '';
-		foreach ($overlays as $overlay => $isOn) {
-			$overlay = strtolower($overlay);
+		foreach ( $overlays as $overlay => $isOn ) {
+			$overlay = strtolower( $overlay );
 			
-			if (in_array($overlay, $overlayNames)) {
-				if (! in_array($overlay, $addedOverlays)) {
+			if ( in_array( $overlay, $overlayNames ) ) {
+				if ( ! in_array( $overlay, $addedOverlays ) ) {
 					$addedOverlays[] = $overlay;
-					$label = wfMsg('maps_' . $overlay);
+					$label = wfMsg( 'maps_' . $overlay );
 					$urlNr = self::$overlayData[$overlay];
 					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
-					if ($isOn) {
+					if ( $isOn ) {
 						$onloadFunctions .= "<script type='$wgJsMimeType'>addOnloadHook( initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) );</script>";
 					}
-				}				
+				}
 			}
 		}
 		
-		$output .=<<<EOT
+		$output .= <<<EOT
 <script type='$wgJsMimeType'>var timer_$mapName;</script>		
 <div class='outer-more' id='$mapName-outer-more'><form action=''><div class='more-box' id='$mapName-more-box'>
 $overlayHtml
@@ -286,8 +286,8 @@ EOT;
 	 * @param $output
 	 * @return unknown_type
 	 */
-	private static function addOverlayCss(&$output) {
-		$css =<<<END
+	private static function addOverlayCss( &$output ) {
+		$css = <<<END
 
 <style type="text/css">
 .inner-more {
@@ -331,8 +331,8 @@ EOT;
 
 END;
 
-	$output .= preg_replace('/\s+/m', ' ', $css);
-	}	
+	$output .= preg_replace( '/\s+/m', ' ', $css );
+	}
 	
 }
 									

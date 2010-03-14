@@ -16,20 +16,20 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 $egMapsServices['osm'] = array(
 									'pf' => array(
-										'display_point' => array('class' => 'MapsOSMDispPoint', 'file' => 'OpenStreetMap/Maps_OSMDispPoint.php', 'local' => true),
-										'display_map' => array('class' => 'MapsOSMDispMap', 'file' => 'OpenStreetMap/Maps_OSMDispMap.php', 'local' => true),
+										'display_point' => array( 'class' => 'MapsOSMDispPoint', 'file' => 'OpenStreetMap/Maps_OSMDispPoint.php', 'local' => true ),
+										'display_map' => array( 'class' => 'MapsOSMDispMap', 'file' => 'OpenStreetMap/Maps_OSMDispMap.php', 'local' => true ),
 										),
 									'classes' => array(
-											array('class' => 'MapsOSM', 'file' => 'OpenStreetMap/Maps_OSM.php', 'local' => true),
-											array('class' => 'MapsOSMCgiBin', 'file' => 'OpenStreetMap/Maps_OSMCgiBin.php', 'local' => true),
+											array( 'class' => 'MapsOSM', 'file' => 'OpenStreetMap/Maps_OSM.php', 'local' => true ),
+											array( 'class' => 'MapsOSMCgiBin', 'file' => 'OpenStreetMap/Maps_OSMCgiBin.php', 'local' => true ),
 											),
-									'aliases' => array('openstreetmap', 'openstreetmaps'),
+									'aliases' => array( 'openstreetmap', 'openstreetmaps' ),
 									);
 									
 /**
@@ -38,10 +38,10 @@ $egMapsServices['osm'] = array(
  * @ingroup MapsOpenStreetMap
  * 
  * @author Jeroen De Dauw
- */						
+ */
 class MapsOSM {
 	
-	const SERVICE_NAME = 'osm';		
+	const SERVICE_NAME = 'osm';
 	
 	public static function initialize() {
 		self::initializeParams();
@@ -52,24 +52,24 @@ class MapsOSM {
 		global $egMapsServices, $egMapsOSMZoom, $egMapsOSMControls;
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsOSMZoom;
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array(0, 19);
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 19 );
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
 			'controls' => array(
-				'type' => array('string', 'list'),
+				'type' => array( 'string', 'list' ),
 				'criteria' => array(
 					'in_array' => self::getControlNames()
 					),
 				'default' => $egMapsOSMControls,
-				'output-type' => array('list', ',', '\'')	
-				),	
+				'output-type' => array( 'list', ',', '\'' )
+				),
 			'lang' => array(
-				'aliases' => array('locale', 'language'),	
+				'aliases' => array( 'locale', 'language' ),
 				'criteria' => array(
 					'in_array' => array_keys( Language::getLanguageNames( false ) )
 					),
 				'default' => $wgLang->getCode()
-				),												
+				),
 			);
 	}
 	
@@ -79,19 +79,19 @@ class MapsOSM {
 	 * into the controls, since this resides client side, in OSMFunctions.js. 
 	 * 
 	 * @return array
-	 */		
+	 */
 	public static function getControlNames() {
 		return array(
-					  'ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan', 
+					  'ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan',
 	                  'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
 	                  'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
 	                  'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
 	                  'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'AutoPanZoom', 'Permalink',
-	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split', 
+	                  'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split',
 	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
 	                  'ZoomToMaxExtent'
 			);
-	}		
+	}
 	
 	private static $modes = array(
 		'osm-wm' => array(
@@ -129,7 +129,7 @@ class MapsOSM {
 	 * @return array
 	 */
 	public static function getModeNames() {
-		return array_keys(self::$modes);
+		return array_keys( self::$modes );
 	}
 	
 	/**
@@ -138,7 +138,7 @@ class MapsOSM {
 	 * @param string $modeName
 	 * @return array
 	 */
-	public static function getModeData($modeName) {
+	public static function getModeData( $modeName ) {
 		return self::$modes[$modeName];
 	}
 	
@@ -147,18 +147,18 @@ class MapsOSM {
 	 * 
 	 * @param string $output
 	 */
-	public static function addOSMDependencies(&$output) {
+	public static function addOSMDependencies( &$output ) {
 		global $wgJsMimeType;
 		global $egOSMMapsOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;
 		
-		if (empty($egOSMMapsOnThisPage)) {
+		if ( empty( $egOSMMapsOnThisPage ) ) {
 			$egOSMMapsOnThisPage = 0;
 			
-			$output .="<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
+			$output .= "<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMap/OSMFunctions.min.js?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>slippymaps = Array();</script>\n";
-		}		
-	}			
+		}
+	}
 	
 }									

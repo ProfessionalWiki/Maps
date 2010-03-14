@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -33,21 +33,21 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	 * 
 	 * @return html
 	 */
-	public final function displayMap(&$parser, array $params) {			
+	public final function displayMap( &$parser, array $params ) {
 		$this->setMapSettings();
 		
 		$this->featureParameters = MapsDisplayMap::$parameters;
 		
-		if (parent::manageMapProperties($params, __CLASS__)) {
+		if ( parent::manageMapProperties( $params, __CLASS__ ) ) {
 			$this->doMapServiceLoad();
 	
-			$this->setMapName();	
+			$this->setMapName();
 			
 			$this->setZoom();
 			
 			$this->setCentre();
 			
-			$this->addSpecificMapHTML();				
+			$this->addSpecificMapHTML();
 		}
 		
 		return $this->output . $this->errorList;
@@ -60,26 +60,26 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	 *
 	 */
 	private function setZoom() {
-		if (empty($this->zoom)) $this->zoom = $this->defaultZoom;			
-	}	
+		if ( empty( $this->zoom ) ) $this->zoom = $this->defaultZoom;
+	}
 	
 	/**
 	 * Sets the $centre_lat and $centre_lon fields.
 	 */
 	private function setCentre() {
-		if (empty($this->coordinates)) { // If centre is not set, use the default latitude and longitutde.
+		if ( empty( $this->coordinates ) ) { // If centre is not set, use the default latitude and longitutde.
 			global $egMapsMapLat, $egMapsMapLon;
 			$this->centre_lat = $egMapsMapLat;
-			$this->centre_lon = $egMapsMapLon;	
-		} 
+			$this->centre_lon = $egMapsMapLon;
+		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->coordinates = MapsGeocodeUtils::attemptToGeocode($this->coordinates, $this->geoservice, $this->serviceName);
+			$this->coordinates = MapsGeocodeUtils::attemptToGeocode( $this->coordinates, $this->geoservice, $this->serviceName );
 
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
-			if ($this->coordinates) {
-				$this->coordinates = MapsUtils::getLatLon($this->coordinates);
+			if ( $this->coordinates ) {
+				$this->coordinates = MapsUtils::getLatLon( $this->coordinates );
 				$this->centre_lat = Xml::escapeJsString( $this->coordinates['lat'] );
-				$this->centre_lon = Xml::escapeJsString( $this->coordinates['lon'] );				
+				$this->centre_lon = Xml::escapeJsString( $this->coordinates['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
 				$this->setCentreDefaults();

@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -29,14 +29,14 @@ function efMapsDisplayPointMagic( &$magicWords, $langCode ) {
 	$magicWords['display_point'] = array( 0, 'display_point', 'display_points' );
 	
 	return true; // Unless we return true, other parser functions won't get loaded.
-}	
+}
 
 /**
  * Adds the parser function hooks
  */
-function efMapsRegisterDisplayPoint(&$wgParser) {
+function efMapsRegisterDisplayPoint( &$wgParser ) {
 	// Hooks to enable the '#display_point' and '#display_points' parser functions.
-	$wgParser->setFunctionHook( 'display_point', array('MapsDisplayPoint', 'displayPointRender') );
+	$wgParser->setFunctionHook( 'display_point', array( 'MapsDisplayPoint', 'displayPointRender' ) );
 	
 	return true;
 }
@@ -53,7 +53,7 @@ final class MapsDisplayPoint {
 	
 	public static function initialize() {
 		self::initializeParams();
-	}		
+	}
 	
 	/**
 	 * Returns the output for a display_point call.
@@ -62,31 +62,31 @@ final class MapsDisplayPoint {
 	 * 
 	 * @return array
 	 */
-	public static function displayPointRender(&$parser) {	
+	public static function displayPointRender( &$parser ) {
 		$args = func_get_args();
-		return MapsParserFunctions::getMapHtml($parser, $args, 'display_point');
+		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_point' );
 	}
 	
 	private static function initializeParams() {
 		global $egMapsDefaultCentre, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
-		self::$parameters = array_merge(MapsParserFunctions::$parameters, array(	
+		self::$parameters = array_merge( MapsParserFunctions::$parameters, array(
 			'centre' => array(
-				'aliases' => array('center'),
-				'default' => $egMapsDefaultCentre		
-				),	
-			'title' => array(			
-				'default' => $egMapsDefaultTitle					
+				'aliases' => array( 'center' ),
+				'default' => $egMapsDefaultCentre
 				),
-			'label' => array(			
+			'title' => array(
+				'default' => $egMapsDefaultTitle
+				),
+			'label' => array(
 				'default' => $egMapsDefaultLabel
 				),
-			'icon' => array(			
+			'icon' => array(
 				'criteria' => array(
 					'not_empty' => array()
 					)
-				),										
-			));
-	}	
+				),
+			) );
+	}
 	
 }

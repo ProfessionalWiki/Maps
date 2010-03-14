@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -20,33 +20,33 @@ if( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;		
+	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
 	/**
 	 * @see MapsBaseMap::setFormInputSettings()
 	 *
-	 */	
+	 */
 	protected function setMapSettings() {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->defaultZoom = $egMapsYahooMapsZoom;
 		
-		$this->markerStringFormat = 'getYMarkerData(lat, lon, \'title\', \'label\', "icon")';		
+		$this->markerStringFormat = 'getYMarkerData(lat, lon, \'title\', \'label\', "icon")';
 	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
-	 */		 
+	 */
 	protected function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMaps::addYMapDependencies($this->output);	
+		MapsYahooMaps::addYMapDependencies( $this->output );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
-	}	
+	}
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()

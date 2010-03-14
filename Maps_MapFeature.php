@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -29,15 +29,15 @@ abstract class MapsMapFeature {
 	
 	/**
 	 * Map service specific map count and loading of dependencies
-	 */	
+	 */
 	protected abstract function doMapServiceLoad();
 	
 	/**
 	 * Adds the HTML specific to the mapping service to the output
-	 */	
+	 */
 	protected abstract function addSpecificMapHTML();
 	
-	public $serviceName;	
+	public $serviceName;
 
 	protected $defaultZoom;
 	
@@ -49,8 +49,8 @@ abstract class MapsMapFeature {
 	protected $centre_lat;
 	protected $centre_lon;
 
-	protected $output = '';	
-	protected $errorList;	
+	protected $output = '';
+	protected $errorList;
 	
 	protected $featureParameters = array();
 	protected $spesificParameters = array();
@@ -63,7 +63,7 @@ abstract class MapsMapFeature {
 	 * 
 	 * @return boolean Indicates whether the map should be shown or not.
 	 */
-	protected final function manageMapProperties(array $mapProperties, $className) {
+	protected final function manageMapProperties( array $mapProperties, $className ) {
 		global $egMapsServices;
 		
 		/*
@@ -73,17 +73,17 @@ abstract class MapsMapFeature {
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
 		 */
-		$parameterInfo = array_merge(MapsMapper::getMainParams(), $this->featureParameters);
-		$parameterInfo = array_merge($parameterInfo, $egMapsServices[$this->serviceName]['parameters']);
-		$parameterInfo = array_merge($parameterInfo, $this->spesificParameters);
+		$parameterInfo = array_merge( MapsMapper::getMainParams(), $this->featureParameters );
+		$parameterInfo = array_merge( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
+		$parameterInfo = array_merge( $parameterInfo, $this->spesificParameters );
 		
 		$manager = new ValidatorManager();
 		
-		$result = $manager->manageMapparameters($mapProperties, $parameterInfo);
+		$result = $manager->manageMapparameters( $mapProperties, $parameterInfo );
 		
 		$showMap = $result !== false;
 		
-		if ($showMap) $this->setMapProperties($result, $className);
+		if ( $showMap ) $this->setMapProperties( $result, $className );
 		
 		$this->errorList = $manager->getErrorList();
 		
@@ -96,15 +96,15 @@ abstract class MapsMapFeature {
 	 * @param array $mapProperties
 	 * @param string $className
 	 */
-	private function setMapProperties(array $mapProperties, $className) {
-		foreach($mapProperties as $paramName => $paramValue) {
-			if (! property_exists($className, $paramName)) {
-				$this->{$paramName} = $paramValue;
+	private function setMapProperties( array $mapProperties, $className ) {
+		foreach ( $mapProperties as $paramName => $paramValue ) {
+			if ( ! property_exists( $className, $paramName ) ) {
+				$this-> { $paramName } = $paramValue;
 			}
 			else {
-				throw new Exception('Attempt to override a class field during map property assignment. Field name: ' . $paramName);
+				throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
 			}
-		}		
+		}
 	}
 	
 	/**

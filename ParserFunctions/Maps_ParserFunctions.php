@@ -1,5 +1,5 @@
 <?php
- 
+
 /**
  * Initialization file for parser function functionality in the Maps extension
  *
@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -31,26 +31,26 @@ final class MapsParserFunctions {
 		
 		include_once $egMapsDir . 'ParserFunctions/Maps_iDisplayFunction.php';
 		
-		self::initializeParams();	
+		self::initializeParams();
 		
-		foreach($egMapsServices as $serviceName => $serviceData) {
+		foreach ( $egMapsServices as $serviceName => $serviceData ) {
 			// Check if the service has parser function support
-			$hasPFs = array_key_exists('pf', $serviceData);
+			$hasPFs = array_key_exists( 'pf', $serviceData );
 			
 			// If the service has no parser function support, skipt it and continue with the next one.
-			if (!$hasPFs) continue;
+			if ( !$hasPFs ) continue;
 			
 			// Go through the parser functions supported by the mapping service, and load their classes.
-			foreach($serviceData['pf'] as $parser_name => $parser_data) {
-				$file = array_key_exists('local', $parser_data) && $parser_data['local'] ? $egMapsDir . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
+			foreach ( $serviceData['pf'] as $parser_name => $parser_data ) {
+				$file = array_key_exists( 'local', $parser_data ) && $parser_data['local'] ? $egMapsDir . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
 				$wgAutoloadClasses[$parser_data['class']] = $file;
 			}
 		}
 		
 		// This runs a small hook that enables parser functions to run initialization code.
-		foreach($egMapsAvailableFeatures['pf']['hooks'] as $hook) {
-			if (method_exists($hook, 'initialize')) call_user_func(array($hook, 'initialize'));
-		}			
+		foreach ( $egMapsAvailableFeatures['pf']['hooks'] as $hook ) {
+			if ( method_exists( $hook, 'initialize' ) ) call_user_func( array( $hook, 'initialize' ) );
+		}
 	}
 	
 	private static function initializeParams() {
@@ -63,16 +63,16 @@ final class MapsParserFunctions {
 					),
 				'default' => $egMapsDefaultServices['pf']
 				),
-			'coordinates' => array(				
-				'aliases' => array('coords', 'location', 'locations'),
-				),			
+			'coordinates' => array(
+				'aliases' => array( 'coords', 'location', 'locations' ),
+				),
 			'geoservice' => array(
 				'criteria' => array(
-					'in_array' => array_keys($egMapsAvailableGeoServices)
+					'in_array' => array_keys( $egMapsAvailableGeoServices )
 					),
 				'default' => $egMapsDefaultGeoService
-				),	
-			);		
+				),
+			);
 	}
 	
 	/**
@@ -84,71 +84,71 @@ final class MapsParserFunctions {
 	 * 
 	 * @return array
 	 */
-	public static function getMapHtml(&$parser, array $params, $parserFunction) {
+	public static function getMapHtml( &$parser, array $params, $parserFunction ) {
         global $wgLang, $egValidatorErrorLevel;
         
         array_shift( $params ); // We already know the $parser.
-        
+
         $map = array();
         $coordFails = array();
         
-        $paramInfo = array_merge(MapsMapper::getMainParams(), self::$parameters);
+        $paramInfo = array_merge( MapsMapper::getMainParams(), self::$parameters );
         
-        $geoFails = self::changeAddressesToCoords($params, $paramInfo);        
+        $geoFails = self::changeAddressesToCoords( $params, $paramInfo );
         
         // Go through all parameters, split their names and values, and put them in the $map array.
-        foreach($params as $param) {
-            $split = explode('=', $param);
-            if (count($split) > 1) {
-                $paramName = strtolower(trim($split[0]));
-                $paramValue = trim($split[1]);
-                if (strlen($paramName) > 0 && strlen($paramValue) > 0) {
+        foreach ( $params as $param ) {
+            $split = explode( '=', $param );
+            if ( count( $split ) > 1 ) {
+                $paramName = strtolower( trim( $split[0] ) );
+                $paramValue = trim( $split[1] );
+                if ( strlen( $paramName ) > 0 && strlen( $paramValue ) > 0 ) {
                 	$map[$paramName] = $paramValue;
-                	if (self::inParamAliases($paramName, 'coordinates', $paramInfo)) $coordFails = self::filterInvalidCoords($map[$paramName]);
+                	if ( self::inParamAliases( $paramName, 'coordinates', $paramInfo ) ) $coordFails = self::filterInvalidCoords( $map[$paramName] );
                 }
             }
-            else if (count($split) == 1) { // Default parameter (without name)
-            	$split[0] = trim($split[0]);
-                if (strlen($split[0]) > 0) $map['coordinates'] = $split[0];
+            else if ( count( $split ) == 1 ) { // Default parameter (without name)
+            	$split[0] = trim( $split[0] );
+                if ( strlen( $split[0] ) > 0 ) $map['coordinates'] = $split[0];
             }
         }
 
-        $coords = self::getParamValue('coordinates', $map, $paramInfo);
+        $coords = self::getParamValue( 'coordinates', $map, $paramInfo );
         
-        if ($coords) {
-            if (! self::paramIsPresent('service', $map, $paramInfo)) $map['service'] = '';
+        if ( $coords ) {
+            if ( ! self::paramIsPresent( 'service', $map, $paramInfo ) ) $map['service'] = '';
 
-            $map['service'] = MapsMapper::getValidService($map['service'], 'pf', $parserFunction);                
+            $map['service'] = MapsMapper::getValidService( $map['service'], 'pf', $parserFunction );
 
-            $mapClass = self::getParserClassInstance($map['service'], $parserFunction);
+            $mapClass = self::getParserClassInstance( $map['service'], $parserFunction );
     
             // Call the function according to the map service to get the HTML output
-            $output = $mapClass->displayMap($parser, $map);    
+            $output = $mapClass->displayMap( $parser, $map );
 
-            if ($egValidatorErrorLevel >= Validator_ERRORS_WARN) {
-	            if (count($coordFails) > 0) {
+            if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) {
+	            if ( count( $coordFails ) > 0 ) {
 	                $output .= '<i>' . wfMsgExt( 'maps_unrecognized_coords_for', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
 	            }
 
-	            if (count($geoFails) > 0) {
+	            if ( count( $geoFails ) > 0 ) {
 	                $output .= '<i>' . wfMsgExt( 'maps_geocoding_failed_for', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
-	            }            	
+	            }
             }
         }
-        elseif ($egValidatorErrorLevel >= Validator_ERRORS_MINIMAL) {
-	        if (trim($coords) == '' && (count($geoFails) > 0 || count($coordFails) > 0)) {
-	        	if (count($coordFails) > 0) $output = '<i>' . wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
-	            if (count($geoFails) > 0) $output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
-	            $output .= '<i>' . wfMsg('maps_map_cannot_be_displayed') .'</i>';
+        elseif ( $egValidatorErrorLevel >= Validator_ERRORS_MINIMAL ) {
+	        if ( trim( $coords ) == '' && ( count( $geoFails ) > 0 || count( $coordFails ) > 0 ) ) {
+	        	if ( count( $coordFails ) > 0 ) $output = '<i>' . wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
+	            if ( count( $geoFails ) > 0 ) $output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
+	            $output .= '<i>' . wfMsg( 'maps_map_cannot_be_displayed' ) . '</i>';
 	        }
 	        else {
-	            $output = '<i>'.wfMsg( 'maps_coordinates_missing' ).'</i>';
+	            $output = '<i>' . wfMsg( 'maps_coordinates_missing' ) . '</i>';
 	        }
         }
         
         // Return the result
-        return $parser->insertStripItem($output, $parser->mStripState);	
-	}		
+        return $parser->insertStripItem( $output, $parser->mStripState );
+	}
 	
 	/**
 	 * Filters all non coordinate valus from a coordinate string, 
@@ -159,13 +159,13 @@ final class MapsParserFunctions {
 	 * 
 	 * @return array
 	 */
-	public static function filterInvalidCoords(&$coordList, $delimeter = ';') {
+	public static function filterInvalidCoords( &$coordList, $delimeter = ';' ) {
 		$coordFails = array();
 		$validCoordinates = array();
-        $coordinates = explode($delimeter, $coordList);
+        $coordinates = explode( $delimeter, $coordList );
         
-        foreach($coordinates as $coordinate) {
-        	if (MapsGeocodeUtils::isCoordinate($coordinate)) {
+        foreach ( $coordinates as $coordinate ) {
+        	if ( MapsGeocodeUtils::isCoordinate( $coordinate ) ) {
         		$validCoordinates[] = $coordinate;
         	}
         	else {
@@ -173,7 +173,7 @@ final class MapsParserFunctions {
         	}
         }
         
-        $coordList = implode($delimeter, $validCoordinates);  
+        $coordList = implode( $delimeter, $validCoordinates );
         return $coordFails;
 	}
 	
@@ -186,67 +186,67 @@ final class MapsParserFunctions {
 	 * 
 	 * @return array
 	 */
-	private static function changeAddressesToCoords(&$params, array $paramInfo) {
+	private static function changeAddressesToCoords( &$params, array $paramInfo ) {
 		global $egMapsDefaultService;
 
 		$fails = array();
 		
 		// Get the service and geoservice from the parameters, since they are needed to geocode addresses.
-		for ($i = 0; $i < count($params); $i++) {
-			$split = explode('=', $params[$i]);
-			if (self::inParamAliases(strtolower(trim($split[0])), 'service', $paramInfo) && count($split) > 1) {
-				$service = trim($split[1]);
+		for ( $i = 0; $i < count( $params ); $i++ ) {
+			$split = explode( '=', $params[$i] );
+			if ( self::inParamAliases( strtolower( trim( $split[0] ) ), 'service', $paramInfo ) && count( $split ) > 1 ) {
+				$service = trim( $split[1] );
 			}
-			else if (strtolower(trim($split[0])) == 'geoservice' && count($split) > 1) {
-				$geoservice = trim($split[1]);
-			}			
+			else if ( strtolower( trim( $split[0] ) ) == 'geoservice' && count( $split ) > 1 ) {
+				$geoservice = trim( $split[1] );
+			}
 		}
 
 		// Make sure the service and geoservice are valid.
-		$service = isset($service) ? MapsMapper::getValidService($service, 'pf') : $egMapsDefaultService;
-		if (! isset($geoservice)) $geoservice = '';
+		$service = isset( $service ) ? MapsMapper::getValidService( $service, 'pf' ) : $egMapsDefaultService;
+		if ( ! isset( $geoservice ) ) $geoservice = '';
 		
 		// Go over all parameters.
-		for ($i = 0; $i < count($params); $i++) {
-			$split = explode('=', $params[$i]);
-			$isAddress = (strtolower(trim($split[0])) == 'address' || strtolower(trim($split[0])) == 'addresses') && count($split) > 1;
-			$isDefault = count($split) == 1;
+		for ( $i = 0; $i < count( $params ); $i++ ) {
+			$split = explode( '=', $params[$i] );
+			$isAddress = ( strtolower( trim( $split[0] ) ) == 'address' || strtolower( trim( $split[0] ) ) == 'addresses' ) && count( $split ) > 1;
+			$isDefault = count( $split ) == 1;
 			
 			// If a parameter is either the default (no name), or an addresses list, extract all locations.
-			if ($isAddress || $isDefault) {
+			if ( $isAddress || $isDefault ) {
 				
-				$address_srting = $split[count($split) == 1 ? 0 : 1];
-				$addresses = explode(';', $address_srting);
+				$address_srting = $split[count( $split ) == 1 ? 0 : 1];
+				$addresses = explode( ';', $address_srting );
 
 				$coordinates = array();
 				
 				// Go over every location and attempt to geocode it.
-				foreach($addresses as $address) {
-					$args = explode('~', $address);
-					$args[0] = trim($args[0]);
+				foreach ( $addresses as $address ) {
+					$args = explode( '~', $address );
+					$args[0] = trim( $args[0] );
 					
-					if (strlen($args[0]) > 0) {
-						$coords =  MapsGeocodeUtils::attemptToGeocode($args[0], $geoservice, $service, $isDefault);
+					if ( strlen( $args[0] ) > 0 ) {
+						$coords =  MapsGeocodeUtils::attemptToGeocode( $args[0], $geoservice, $service, $isDefault );
 						
-						if ($coords) {
+						if ( $coords ) {
 							$args[0] = $coords;
-							$coordinates[] = implode('~', $args);
+							$coordinates[] = implode( '~', $args );
 						}
 						else {
 							$fails[] = $args[0];
 						}
 					}
-				}				
+				}
 				
 				// Add the geocoded result back to the parameter list.
-				$params[$i] = implode(';', $coordinates);
+				$params[$i] = implode( ';', $coordinates );
 
 			}
 			
 		}
 
 		return $fails;
-	}	
+	}
 	
 	/**
 	 * Returns an instance of the class supporting the spesified mapping service for
@@ -257,10 +257,10 @@ final class MapsParserFunctions {
 	 * 
 	 * @return class
 	 */
-	public static function getParserClassInstance($service, $parserFunction) {
+	public static function getParserClassInstance( $service, $parserFunction ) {
 		global $egMapsServices;
 		return new $egMapsServices[$service]['pf'][$parserFunction]['class']();
-	}		
+	}
 	
 	/**
 	 * Gets if a provided name is present in the aliases array of a parameter
@@ -273,15 +273,15 @@ final class MapsParserFunctions {
 	 * 
 	 * @return boolean
 	 */
-	public static function inParamAliases($name, $mainParamName, array $paramInfo = array(), $compareMainName = true) {
+	public static function inParamAliases( $name, $mainParamName, array $paramInfo = array(), $compareMainName = true ) {
 		$equals = $compareMainName && $mainParamName == $name;
 
-		if (array_key_exists($mainParamName, $paramInfo)) {
-			$equals = $equals || in_array($name, $paramInfo[$mainParamName]);
+		if ( array_key_exists( $mainParamName, $paramInfo ) ) {
+			$equals = $equals || in_array( $name, $paramInfo[$mainParamName] );
 		}
 
 		return $equals;
-	}	
+	}
 	
     /**
      * Gets if a parameter is present as key in the $stack. Also checks for
@@ -293,13 +293,13 @@ final class MapsParserFunctions {
      * @param boolean $checkForAliases
      * 
      * @return boolean
-     */        
-    public static function paramIsPresent($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
-        $isPresent = array_key_exists($paramName, $stack);
+     */
+    public static function paramIsPresent( $paramName, array $stack, array $paramInfo = array(), $checkForAliases = true ) {
+        $isPresent = array_key_exists( $paramName, $stack );
         
-        if ($checkForAliases && array_key_exists('aliases', $paramInfo[$paramName])) {
-            foreach($paramInfo[$paramName]['aliases'] as $alias) {
-                if (array_key_exists($alias, $stack)) {
+        if ( $checkForAliases && array_key_exists( 'aliases', $paramInfo[$paramName] ) ) {
+            foreach ( $paramInfo[$paramName]['aliases'] as $alias ) {
+                if ( array_key_exists( $alias, $stack ) ) {
                 	$isPresent = true;
                 	break;
                 }
@@ -322,19 +322,19 @@ final class MapsParserFunctions {
 	 * 
 	 * @return the parameter value or false
 	 */
-	private static function getParamValue($paramName, array $stack, array $paramInfo = array(), $checkForAliases = true) {
+	private static function getParamValue( $paramName, array $stack, array $paramInfo = array(), $checkForAliases = true ) {
 		$paramValue = false;
 		
-		if (array_key_exists($paramName, $stack)) $paramValue = $stack[$paramName];
+		if ( array_key_exists( $paramName, $stack ) ) $paramValue = $stack[$paramName];
 		
-		if ($checkForAliases) {
-			foreach($paramInfo[$paramName]['aliases'] as $alias) {
-				if (array_key_exists($alias, $stack)) $paramValue = $stack[$alias];
+		if ( $checkForAliases ) {
+			foreach ( $paramInfo[$paramName]['aliases'] as $alias ) {
+				if ( array_key_exists( $alias, $stack ) ) $paramValue = $stack[$alias];
 				break;
 			}
 		}
 		
-		return $paramValue;		
-	}		
+		return $paramValue;
+	}
 
 }

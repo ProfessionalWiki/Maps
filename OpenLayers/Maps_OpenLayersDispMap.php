@@ -9,46 +9,46 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 class MapsOpenLayersDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
 	/**
 	 * @see MapsBaseMap::setMapSettings()
 	 *
-	 */	
+	 */
 	protected function setMapSettings() {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;	
+		$this->defaultZoom = $egMapsOpenLayersZoom;
 	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
-	 */		
+	 */
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies($this->output);
+		MapsOpenLayers::addOLDependencies( $this->output );
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
-	}	
+	}
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
-	 */	
+	 */
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/

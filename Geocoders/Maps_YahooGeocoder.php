@@ -10,7 +10,7 @@
  * 
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -21,27 +21,27 @@ final class MapsYahooGeocoder extends MapsBaseGeocoder {
 	 *
 	 * @param string $address
 	 */
-	public static function geocode($address) {
+	public static function geocode( $address ) {
 		global $egYahooMapsKey;
 
 		// In case the Yahoo! Maps API key is not set, return false
-		if (empty($egYahooMapsKey)) return false;
+		if ( empty( $egYahooMapsKey ) ) return false;
 
 		// Create the request url
-		$requestURL = "http://where.yahooapis.com/v1/places.q('".urlencode($address)."')?appid=".urlencode($egYahooMapsKey)."&format=xml"; 
+		$requestURL = "http://where.yahooapis.com/v1/places.q('" . urlencode( $address ) . "')?appid=" . urlencode( $egYahooMapsKey ) . "&format=xml";
 
-		$result = self::GetResponse($requestURL);
+		$result = self::GetResponse( $requestURL );
 	
-		$lon = self::getXmlElementValue($result, 'longitude');
-		$lat = self::getXmlElementValue($result, 'latitude');
+		$lon = self::getXmlElementValue( $result, 'longitude' );
+		$lat = self::getXmlElementValue( $result, 'latitude' );
 
 		// In case one of the values is not found, return false
-		if (!$lon || !$lat) return false;
+		if ( !$lon || !$lat ) return false;
 
 		return array(
 					'lat' => $lat,
 					'lon' => $lon
-					);	
-	}	
+					);
+	}
 	
 }

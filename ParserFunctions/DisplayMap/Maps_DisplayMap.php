@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -25,17 +25,17 @@ $egMapsAvailableFeatures['pf']['hooks'][]	= 'MapsDisplayMap';
  * Adds the magic words for the parser functions.
  */
 function efMapsDisplayMapMagic( &$magicWords, $langCode ) {
-	$magicWords['display_map'] = array( 0,  'display_map');
+	$magicWords['display_map'] = array( 0,  'display_map' );
 	
 	return true; // Unless we return true, other parser functions won't get loaded.
-}	
+}
 
 /**
  * Adds the parser function hooks
  */
-function efMapsRegisterDisplayMap(&$wgParser) {
+function efMapsRegisterDisplayMap( &$wgParser ) {
 	// A hook to enable the '#display_map' parser function.
-	$wgParser->setFunctionHook( 'display_map', array('MapsDisplayMap', 'displayMapRender') );
+	$wgParser->setFunctionHook( 'display_map', array( 'MapsDisplayMap', 'displayMapRender' ) );
 	
 	return true;
 }
@@ -52,7 +52,7 @@ final class MapsDisplayMap {
 	
 	public static function initialize() {
 		self::initializeParams();
-	}	
+	}
 	
 	/**
 	 * Returns the output for a display_map call.
@@ -61,16 +61,16 @@ final class MapsDisplayMap {
 	 * 
 	 * @return array
 	 */
-	public static function displayMapRender(&$parser) {	
+	public static function displayMapRender( &$parser ) {
 		$args = func_get_args();
-		return MapsParserFunctions::getMapHtml($parser, $args, 'display_map');
+		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_map' );
 	}
 	
 	private static function initializeParams() {
 		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 		
-		self::$parameters = array_merge(MapsParserFunctions::$parameters, array(
-			));
+		self::$parameters = array_merge( MapsParserFunctions::$parameters, array(
+			) );
 	}
 	
 }

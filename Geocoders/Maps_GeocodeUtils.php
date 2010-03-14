@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -25,21 +25,21 @@ final class MapsGeocodeUtils {
 	 * 
 	 * @return string or boolean
 	 */
-	public static function attemptToGeocode($coordsOrAddress, $geoservice, $service, $checkForCoords = true) {
-		if ($checkForCoords) {
-			if (MapsGeocodeUtils::isCoordinate($coordsOrAddress)) {
+	public static function attemptToGeocode( $coordsOrAddress, $geoservice, $service, $checkForCoords = true ) {
+		if ( $checkForCoords ) {
+			if ( MapsGeocodeUtils::isCoordinate( $coordsOrAddress ) ) {
 				$coords = $coordsOrAddress;
 			}
 			else {
-				$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
+				$coords = MapsGeocoder::geocodeToString( $coordsOrAddress, $geoservice, $service );
 			}
 		}
 		else {
-			$coords = MapsGeocoder::geocodeToString($coordsOrAddress, $geoservice, $service);
+			$coords = MapsGeocoder::geocodeToString( $coordsOrAddress, $geoservice, $service );
 		}
 		
 		return $coords;
-	}	
+	}
 	
 	/**
 	 * Returns a boolean indication if a provided value is a valid coordinate.
@@ -48,25 +48,25 @@ final class MapsGeocodeUtils {
 	 * 
 	 * @return boolean
 	 */
-	public static function isCoordinate($coordsOrAddress) {
+	public static function isCoordinate( $coordsOrAddress ) {
 		$coordRegexes = array(
 			'/^(-)?\d{1,3}(\.\d{1,20})?,(\s)?(-)?\d{1,3}(\.\d{1,20})?$/', // Floats
 			'/^(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(N|S)(\s)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(E|W)$/', // DMS 
 			'/^(-)?\d{1,3}(|\.\d{1,20})°,(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,20})°$/', // DD
 			'/^\d{1,3}(|\.\d{1,20})°(\s)?(N|S),(\s)?(\s)?\d{1,3}(|\.\d{1,20})°(\s)(E|W)?$/', // DD (directional)
 			'/(-)?\d{1,3}°\d{1,3}(\.\d{1,20}\')?,(\s)?(-)?\d{1,3}°\d{1,3}(\.\d{1,20}\')?$/', // DM
-			); 
+			);
 			
 		$isCoordinate = false;
 		
-		foreach ($coordRegexes as $coordRegex) {
-			if (preg_match($coordRegex, trim($coordsOrAddress))) {
+		foreach ( $coordRegexes as $coordRegex ) {
+			if ( preg_match( $coordRegex, trim( $coordsOrAddress ) ) ) {
 				$isCoordinate = true;
 				continue;
-			}		
+			}
 		}
 
 		return $isCoordinate;
-	}	
+	}
 	
 }

@@ -14,7 +14,7 @@
  * @author Sergey Chernyshev
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -30,25 +30,25 @@ function efMapsGeoFunctionMagic( &$magicWords, $langCode ) {
 	$magicWords['geocodelng']	= array ( 0, 'geocodelng' );
 	
 	return true; // Unless we return true, other parser functions won't get loaded
-}	
+}
 
 /**
  * Adds the parser function hooks
  */
-function efMapsRegisterGeoFunctions(&$wgParser) {
+function efMapsRegisterGeoFunctions( &$wgParser ) {
 	// Hooks to enable the geocoding parser functions
-	$wgParser->setFunctionHook( 'geocode', array('MapsGeocodeFunctions', 'renderGeocoder') );
-	$wgParser->setFunctionHook( 'geocodelat', array('MapsGeocodeFunctions', 'renderGeocoderLat') );
-	$wgParser->setFunctionHook( 'geocodelng', array('MapsGeocodeFunctions', 'renderGeocoderLng') );
+	$wgParser->setFunctionHook( 'geocode', array( 'MapsGeocodeFunctions', 'renderGeocoder' ) );
+	$wgParser->setFunctionHook( 'geocodelat', array( 'MapsGeocodeFunctions', 'renderGeocoderLat' ) );
+	$wgParser->setFunctionHook( 'geocodelng', array( 'MapsGeocodeFunctions', 'renderGeocoderLng' ) );
 	
 	return true;
-}	
+}
 
 final class MapsGeocodeFunctions {
 
 	private static function geocoderIsAvailable() {
 		global $wgAutoloadClasses;
-		return array_key_exists('MapsGeocoder', $wgAutoloadClasses);
+		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
 	}
 	
 	/**
@@ -61,9 +61,9 @@ final class MapsGeocodeFunctions {
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
 	 * @return string
 	 */
-	public static function renderGeocoder($parser, $address, $service = '', $mappingService = '') {
-		if (self::geocoderIsAvailable()) $geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
-		return $geovalues ? $geovalues['lat'].', '.$geovalues['lon'] : '';
+	public static function renderGeocoder( $parser, $address, $service = '', $mappingService = '' ) {
+		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
+		return $geovalues ? $geovalues['lat'] . ', ' . $geovalues['lon'] : '';
 	}
 
 	/**
@@ -75,9 +75,9 @@ final class MapsGeocodeFunctions {
 	 * @param string $service Optional. The geocoding service to use.
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
 	 * @return string
-	 */	
-	public static function renderGeocoderLat(&$parser, $address, $service = '', $mappingService = '') {
-		if (self::geocoderIsAvailable()) $geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
+	 */
+	public static function renderGeocoderLat( &$parser, $address, $service = '', $mappingService = '' ) {
+		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
 		return $geovalues ? $geovalues['lat'] : '';
 	}
 	
@@ -90,9 +90,9 @@ final class MapsGeocodeFunctions {
 	 * @param string $service Optional. The geocoding service to use.
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
 	 * @return string
-	 */	
-	public static function renderGeocoderLng(&$parser, $address, $service = '', $mappingService = '') {
-		if (self::geocoderIsAvailable()) $geovalues = MapsGeocoder::geocode($address, $service, $mappingService);
+	 */
+	public static function renderGeocoderLng( &$parser, $address, $service = '', $mappingService = '' ) {
+		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
 		return $geovalues ? $geovalues['lon'] : '';
 	}
 	

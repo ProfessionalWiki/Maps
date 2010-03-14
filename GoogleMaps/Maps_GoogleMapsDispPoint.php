@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -27,7 +27,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	/**
 	 * @see MapsBaseMap::setMapSettings()
 	 *
-	 */	
+	 */
 	protected function setMapSettings() {
 		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
 		
@@ -38,23 +38,23 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		
 		$this->spesificParameters = array(
 			'overlays' => array(
-				'type' => array('string', 'list'),
+				'type' => array( 'string', 'list' ),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),	
-				'default' => $egMapsGMapOverlays,		
+					),
+				'default' => $egMapsGMapOverlays,
 				),
-		);		
+		);
 	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
-	 */		
+	 */
 	protected function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addGMapDependencies($this->output);
+		MapsGoogleMaps::addGMapDependencies( $this->output );
 		$egGoogleMapsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
@@ -63,13 +63,13 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
-	 */	
+	 */
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);	
+		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
-		$this->output .=<<<EOT
+		$this->output .= <<<EOT
 <div id="$this->mapName"></div>
 <script type="$wgJsMimeType"> /*<![CDATA[*/
 addOnloadHook(

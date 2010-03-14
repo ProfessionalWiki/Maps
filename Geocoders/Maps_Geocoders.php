@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -19,7 +19,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  *
  */
-final class Geocoders {  
+final class Geocoders {
 	
 	/**
 	 * Initialization function for Maps geocoder functionality.

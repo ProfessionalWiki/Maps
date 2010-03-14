@@ -9,20 +9,20 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 class MapsOSMDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsOSM::SERVICE_NAME;	
+	public $serviceName = MapsOSM::SERVICE_NAME;
 	
 	/**
 	 * @see MapsBaseMap::setMapSettings()
 	 *
-	 */	
+	 */
 	protected function setMapSettings() {
-		global $egMapsOSMZoom, $egMapsOSMPrefix,$egMapsOSMStaticAsDefault, $egMapsOSMStaticActivatable;
+		global $egMapsOSMZoom, $egMapsOSMPrefix, $egMapsOSMStaticAsDefault, $egMapsOSMStaticActivatable;
 		
 		$this->elementNamePrefix = $egMapsOSMPrefix;
 		$this->defaultZoom = $egMapsOSMZoom;
@@ -32,40 +32,40 @@ class MapsOSMDispMap extends MapsBaseMap {
 		$this->spesificParameters = array(
 			'static' => array(
 				'type' => 'boolean',
-				'default' => $egMapsOSMStaticAsDefault,	
-				'output-type' => 'boolean'							
+				'default' => $egMapsOSMStaticAsDefault,
+				'output-type' => 'boolean'
 				),
 			'mode' => array(
 				'criteria' => array(
 					'in_array' => $modes
 					),
-				'default' => $modes[0]			
+				'default' => $modes[0]
 				),
 			'activatable' => array(
 				'type' => 'boolean',
 				'default' => $egMapsOSMStaticActivatable,
 				'output-type' => 'boolean'
-				),										
-		);		
+				),
+		);
 	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
-	 */		
+	 */
 	protected function doMapServiceLoad() {
 		global $egOSMMapsOnThisPage;
 		
-		MapsOSM::addOSMDependencies($this->output);
+		MapsOSM::addOSMDependencies( $this->output );
 		$egOSMMapsOnThisPage++;
 		
 		$this->elementNr = $egOSMMapsOnThisPage;
-	}	
+	}
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
-	 */	
+	 */
 	public function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
@@ -109,20 +109,20 @@ EOT;
 	 * Returns html for a static map.
 	 * 
 	 * @return string
-	 */	
+	 */
 	private function getStaticMap() {
-		$mode = MapsOSM::getModeData($this->mode);
+		$mode = MapsOSM::getModeData( $this->mode );
 
 		$staticType		= $mode['handler'];
 		$staticOptions	= $mode['options'];
 		
-		$static 		= new $staticType($this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions);
+		$static 		= new $staticType( $this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions );
 		$rendering_url 	= $static->getUrl();
 		
 		$alt = wfMsg( 'maps_centred_on', $this->centre_lat, $this->centre_lon );
 		
-		if ($this->activatable) {
-			$title = wfMsg('maps_click_to_activate');
+		if ( $this->activatable ) {
+			$title = wfMsg( 'maps_click_to_activate' );
 			$activationCode = "onclick=\"slippymaps['$this->mapName'].init();\"";
 		}
 		else {
