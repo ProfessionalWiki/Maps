@@ -9,13 +9,13 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 final class SMOpenLayersFormInput extends SMFormInput {
 	
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -28,8 +28,8 @@ final class SMOpenLayersFormInput extends SMFormInput {
 
 		$this->earthZoom = 1;
 
-        $this->defaultZoom = $egMapsOpenLayersZoom;	
-	}	
+        $this->defaultZoom = $egMapsOpenLayersZoom;
+	}
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
@@ -39,13 +39,13 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion;
 		
-		MapsOpenLayers::addOLDependencies($this->output);
+		MapsOpenLayers::addOLDependencies( $this->output );
 		
-		if (empty($smgOLFormsOnThisPage)) {
+		if ( empty( $smgOLFormsOnThisPage ) ) {
 			$smgOLFormsOnThisPage = 0;
 			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/OpenLayers/SM_OpenLayersFunctions.js?$smgStyleVersion'></script>";
 		}
-	}	
+	}
 	
 	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
@@ -56,11 +56,11 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		
 		self::addFormDependencies();
 		
-		$egOpenLayersOnThisPage++;	
+		$egOpenLayersOnThisPage++;
 		$smgOLFormsOnThisPage++;
 
 		$this->elementNr = $egOpenLayersOnThisPage;
-	}	
+	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML()
@@ -69,21 +69,21 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);	
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$this->output .="
-		<div id='".$this->mapName."' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>  
+		$this->output .= "
+		<div id='" . $this->mapName . "' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(function() {makeFormInputOpenLayer('".$this->mapName."', '".$this->coordsFieldName."', ".$this->centre_lat.", ".$this->centre_lon.", ".$this->zoom.", ".$this->marker_lat.", ".$this->marker_lon.", [$layerItems], [$this->controls], $this->height);});
-		/*]]>*/</script>";			
+		addOnloadHook(function() {makeFormInputOpenLayer('" . $this->mapName . "', '" . $this->coordsFieldName . "', " . $this->centre_lat . ", " . $this->centre_lon . ", " . $this->zoom . ", " . $this->marker_lat . ", " . $this->marker_lon . ", [$layerItems], [$this->controls], $this->height);});
+		/*]]>*/</script>";
 	}
 	
 	/**
 	 * @see SMFormInput::manageGeocoding()
 	 *
 	 */
-	protected function manageGeocoding() {	
+	protected function manageGeocoding() {
 		$this->enableGeocoding = false;
 	}
 	

@@ -16,9 +16,9 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['openlayers']['qp'] = array('class' => 'SMOpenLayersQP', 'file' => 'OpenLayers/SM_OpenLayersQP.php', 'local' => true);
-$egMapsServices['openlayers']['fi'] = array('class' => 'SMOpenLayersFormInput', 'file' => 'OpenLayers/SM_OpenLayersFormInput.php', 'local' => true);
+$egMapsServices['openlayers']['qp'] = array( 'class' => 'SMOpenLayersQP', 'file' => 'OpenLayers/SM_OpenLayersQP.php', 'local' => true );
+$egMapsServices['openlayers']['fi'] = array( 'class' => 'SMOpenLayersFormInput', 'file' => 'OpenLayers/SM_OpenLayersFormInput.php', 'local' => true );

@@ -9,13 +9,13 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 final class SMYahooMapsFormInput extends SMFormInput {
 	
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;	
+	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -25,12 +25,12 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
-		$this->showAddresFunction = 'showYAddress';		
+		$this->showAddresFunction = 'showYAddress';
 
-		$this->earthZoom = 17;	
+		$this->earthZoom = 17;
 
-        $this->defaultZoom = $egMapsYahooMapsZoom;		
-	}	
+        $this->defaultZoom = $egMapsYahooMapsZoom;
+	}
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
@@ -40,13 +40,13 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion;
 		
-		MapsYahooMaps::addYMapDependencies($this->output);
+		MapsYahooMaps::addYMapDependencies( $this->output );
 		
-		if (empty($smgYahooFormsOnThisPage)) {
+		if ( empty( $smgYahooFormsOnThisPage ) ) {
 			$smgYahooFormsOnThisPage = 0;
 			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/YahooMaps/SM_YahooMapsFunctions.js?$smgStyleVersion'></script>";
 		}
-	}		
+	}
 	
 	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
@@ -58,24 +58,24 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		self::addFormDependencies();
 		
 		$egYahooMapsOnThisPage++;
-		$smgYahooFormsOnThisPage++;			
+		$smgYahooFormsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
-	}	
+	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML()
 	 *
 	 */
 	protected function addSpecificMapHTML() {
-		global $wgJsMimeType;			
+		global $wgJsMimeType;
 		
-		$this->output .="
-		<div id='".$this->mapName."' style='width: {$this->width}px; height: {$this->height}px;'></div>  
+		$this->output .= "
+		<div id='" . $this->mapName . "' style='width: {$this->width}px; height: {$this->height}px;'></div>  
 		
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addOnloadHook(function() {makeFormInputYahooMap('$this->mapName', '$this->coordsFieldName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->types], [$this->controls], $this->autozoom, $this->marker_lat, $this->centre_lon, $this->height);});
-		/*]]>*/</script>";		
+		/*]]>*/</script>";
 	}
 	
 	/**
@@ -84,8 +84,8 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	 */
 	protected function manageGeocoding() {
 		global $egYahooMapsKey;
-		$this->enableGeocoding = strlen(trim($egYahooMapsKey)) > 0;
-		if ($this->enableGeocoding) MapsYahooMaps::addYMapDependencies($this->output);			
+		$this->enableGeocoding = strlen( trim( $egYahooMapsKey ) ) > 0;
+		if ( $this->enableGeocoding ) MapsYahooMaps::addYMapDependencies( $this->output );
 	}
 
 	

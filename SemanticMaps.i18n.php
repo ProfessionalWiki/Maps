@@ -7,7 +7,7 @@
  * @ingroup Semantic Maps
  *
  * @author Jeroen De Dauw
- */ 
+ */
 
 $messages = array();
 

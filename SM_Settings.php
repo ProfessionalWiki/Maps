@@ -14,7 +14,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -35,7 +35,7 @@ $egMapsAvailableFeatures['fi'] = array(
 							'name' => 'Form input',
 							'class' => 'SMFormInputs',
 							'file' => 'SemanticMaps/FormInputs/SM_FormInputs.php'
-							);		
+							);
 
 
 
@@ -72,4 +72,4 @@ $smgQPShowTitle = true;
 
 # String or false. Allows you to define the content and it's layout of marker pop-ups via a template.
 # This value will only be used when the user does not provide one.
-$smgQPTemplate = false; 
+$smgQPTemplate = false;

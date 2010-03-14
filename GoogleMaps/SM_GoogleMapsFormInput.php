@@ -11,7 +11,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -27,11 +27,11 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
-		$this->showAddresFunction = 'showGAddress';	
+		$this->showAddresFunction = 'showGAddress';
 
 		$this->earthZoom = 1;
 		
-        $this->defaultZoom = $egMapsGoogleMapsZoom;	        
+        $this->defaultZoom = $egMapsGoogleMapsZoom;
 	}
 	
 	/**
@@ -42,9 +42,9 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion;
 		
-		MapsGoogleMaps::addGMapDependencies($this->output);
+		MapsGoogleMaps::addGMapDependencies( $this->output );
 		
-		if (empty($smgGoogleFormsOnThisPage)) {
+		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;
 			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions.js?$smgStyleVersion'></script>";
 		}
@@ -60,7 +60,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		self::addFormDependencies();
 		
 		$egGoogleMapsOnThisPage++;
-		$smgGoogleFormsOnThisPage++;	
+		$smgGoogleFormsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
 	}
@@ -73,13 +73,13 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		
 		// Remove the overlays control in case it's present.
-		if (in_string('overlays', $this->controls)) {
-			$this->controls = str_replace(",'overlays'", '', $this->controls);
-			$this->controls = str_replace("'overlays',", '', $this->controls);
+		if ( in_string( 'overlays', $this->controls ) ) {
+			$this->controls = str_replace( ",'overlays'", '', $this->controls );
+			$this->controls = str_replace( "'overlays',", '', $this->controls );
 		}
 		
 		$this->output .= "
-		<div id='".$this->mapName."'></div>
+		<div id='" . $this->mapName . "'></div>
 	
 		<script type='$wgJsMimeType'>/*<![CDATA[*/
 		addOnloadHook(
@@ -103,7 +103,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 			);
 			}		
 		);
-		/*]]>*/</script>";			
+		/*]]>*/</script>";
 	}
 	
 	/**
@@ -112,8 +112,8 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 */
 	protected function manageGeocoding() {
 		global $egGoogleMapsKey;
-		$this->enableGeocoding = strlen(trim($egGoogleMapsKey)) > 0;
-		if ($this->enableGeocoding) MapsGoogleMaps::addGMapDependencies($this->output);		
-	}	
+		$this->enableGeocoding = strlen( trim( $egGoogleMapsKey ) ) > 0;
+		if ( $this->enableGeocoding ) MapsGoogleMaps::addGMapDependencies( $this->output );
+	}
 	
 }

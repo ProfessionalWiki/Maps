@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -17,7 +17,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOSMFormInput extends SMFormInput {
 	
-	public $serviceName = MapsOSM::SERVICE_NAME;	
+	public $serviceName = MapsOSM::SERVICE_NAME;
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -26,12 +26,12 @@ final class SMOSMFormInput extends SMFormInput {
 	protected function setMapSettings() {
 		global $egMapsOSMZoom, $egMapsOSMPrefix;
 		
-		$this->elementNamePrefix = $egMapsOSMPrefix;	
+		$this->elementNamePrefix = $egMapsOSMPrefix;
 
 		$this->earthZoom = 1;
 
-        $this->defaultZoom = $egMapsOSMZoom;	
-	}	
+        $this->defaultZoom = $egMapsOSMZoom;
+	}
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
@@ -41,13 +41,13 @@ final class SMOSMFormInput extends SMFormInput {
 		global $wgJsMimeType;
 		global $smgScriptPath, $smgOSMFormsOnThisPage, $smgStyleVersion;
 		
-		MapsOSM::addOSMDependencies($this->output);
+		MapsOSM::addOSMDependencies( $this->output );
 		
-		if (empty($smgOSMFormsOnThisPage)) {
+		if ( empty( $smgOSMFormsOnThisPage ) ) {
 			$smgOSMFormsOnThisPage = 0;
 			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/OpenStreetMap/SM_OSMFunctions.js?$smgStyleVersion'></script>";
 		}
-	}	
+	}
 	
 	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
@@ -58,18 +58,18 @@ final class SMOSMFormInput extends SMFormInput {
 		
 		self::addFormDependencies();
 		
-		$egOSMMapsOnThisPage++;	
+		$egOSMMapsOnThisPage++;
 		$smgOSMFormsOnThisPage++;
 
 		$this->elementNr = $egOSMMapsOnThisPage;
-	}	
+	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML()
 	 *
 	 */
 	protected function addSpecificMapHTML() {
-		global $wgJsMimeType;		
+		global $wgJsMimeType;
 		
 		$this->output .= <<<EOT
 			<script type='$wgJsMimeType'>
@@ -96,13 +96,13 @@ final class SMOSMFormInput extends SMFormInput {
 					<script type='$wgJsMimeType'>slippymaps['$this->mapName'].init();</script>
 				</div>
 EOT;
-	}	
+	}
 	
 	/**
 	 * @see SMFormInput::manageGeocoding()
 	 *
 	 */
-	protected function manageGeocoding() {	
+	protected function manageGeocoding() {
 		$this->enableGeocoding = false;
 	}
 	

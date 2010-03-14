@@ -9,13 +9,13 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 final class SMOpenLayersQP extends SMMapPrinter {
 
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;	
+	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
@@ -25,8 +25,8 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
 		
 		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;		
-	}	
+		$this->defaultZoom = $egMapsOpenLayersZoom;
+	}
 
 	/**
 	 * @see SMMapPrinter::doMapServiceLoad()
@@ -35,10 +35,10 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies($this->output);
+		MapsOpenLayers::addOLDependencies( $this->output );
 		$egOpenLayersOnThisPage++;
 		
-		$this->elementNr = $egOpenLayersOnThisPage;		
+		$this->elementNr = $egOpenLayersOnThisPage;
 	}
 	
 	/**
@@ -48,21 +48,21 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies($this->output, $this->layers);
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 
 		$markerItems = array();
 		
-		foreach ($this->m_locations as $location) {
+		foreach ( $this->m_locations as $location ) {
 			// Create a string containing the marker JS 
-			list($lat, $lon, $title, $label, $icon) = $location;
+			list( $lat, $lon, $title, $label, $icon ) = $location;
 
-			$title = str_replace("'", "\'", $title);
-			$label = str_replace("'", "\'", $label);
+			$title = str_replace( "'", "\'", $title );
+			$label = str_replace( "'", "\'", $label );
 
 			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label', '$icon')";
 		}
 
-		$markersString = implode(',', $markerItems);		
+		$markersString = implode( ',', $markerItems );
 
 		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
 		<script type='$wgJsMimeType'> /*<![CDATA[*/
@@ -71,19 +71,19 @@ final class SMOpenLayersQP extends SMMapPrinter {
 					initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls], [$markersString], $this->height);
 				}
 			);
-		/*]]>*/ </script>";		
+		/*]]>*/ </script>";
 	}
 
 	/**
 	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the spesific ones to the list.
-	 */	
+	 */
     public function getParameters() {
         $params = parent::getParameters();
         
-        $params[] = array('name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_controls'), 'values' => MapsOpenLayers::getControlNames());
-        $params[] = array('name' => 'layers', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_layers'), 'values' => MapsOpenLayers::getLayerNames());
+        $params[] = array( 'name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg( 'semanticmaps_paramdesc_controls' ), 'values' => MapsOpenLayers::getControlNames() );
+        $params[] = array( 'name' => 'layers', 'type' => 'enum-list', 'description' => wfMsg( 'semanticmaps_paramdesc_layers' ), 'values' => MapsOpenLayers::getLayerNames() );
         
         return $params;
-    }	
+    }
 	
 }

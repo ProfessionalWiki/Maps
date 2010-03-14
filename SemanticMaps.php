@@ -1,5 +1,5 @@
 <?php
-  
+
 /**
  * Initialization file for the Semantic Maps extension.
  * Extension documentation: http://www.mediawiki.org/wiki/Extension:Semantic_Maps
@@ -19,33 +19,33 @@
  * @defgroup SemanticMaps Semantic Maps
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
 // Show a warning if Maps is not loaded.
-if (! defined( 'Maps_VERSION' )) {
-	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>. ';	
-} 
+if ( ! defined( 'Maps_VERSION' ) ) {
+	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>. ';
+}
 
 // Show a warning if Semantic MediaWiki is not loaded.
-if (! defined( 'SMW_VERSION' )) {
-	echo '<b>Warning:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.';	
-} 
+if ( ! defined( 'SMW_VERSION' ) ) {
+	echo '<b>Warning:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.';
+}
 
 // Only initialize the extension when all dependencies are present.
-if (defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' )) {
-	define('SM_VERSION', '0.5.5 a1');
+if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
+	define( 'SM_VERSION', '0.5.5 a1' );
 
-	$smgScriptPath 	= (isset($wgExtensionAssetsPath) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions') . '/SemanticMaps';
+	$smgScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';
 	$smgDir 		= dirname( __FILE__ ) . '/';
 
 	$smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
 
 	// Include the settings file.
-	require_once($smgDir . 'SM_Settings.php');
+	require_once( $smgDir . 'SM_Settings.php' );
 
-	$wgExtensionFunctions[] = 'smfSetup'; 
+	$wgExtensionFunctions[] = 'smfSetup';
 
 	$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
 
@@ -66,21 +66,21 @@ function smfSetup() {
 
 	// Creation of a list of internationalized service names.
 	$services = array();
-	foreach (array_keys($egMapsServices) as $name) $services[] = wfMsg('maps_'.$name);
-	$services_list = $wgLang->listToText($services);	
+	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
+	$services_list = $wgLang->listToText( $services );
 
 	wfLoadExtensionMessages( 'SemanticMaps' );
 
-	$wgExtensionCredits['other'][]= array(
+	$wgExtensionCredits['other'][] = array(
 		'path' => __FILE__,
-		'name' => wfMsg('semanticmaps_name'),
+		'name' => wfMsg( 'semanticmaps_name' ),
 		'version' => SM_VERSION,
-		'author' => array('[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others'),
+		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others' ),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
 
-	$wgOut->addScriptFile($smgScriptPath . '/SMUtilityFunctions.js');	
+	$wgOut->addScriptFile( $smgScriptPath . '/SMUtilityFunctions.js' );
 	
 	return true;
 }
@@ -89,23 +89,23 @@ function smfSetup() {
  * Adds support for the geographical coordinate data type to Semantic MediaWiki.
  */
 function smfInitGeoCoordsType() {
-	SMWDataValueFactory::registerDatatype('_geo', 'SMGeoCoordsValue', 'Geographic coordinate');
+	SMWDataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', 'Geographic coordinate' );
 	return true;
 }
 
 /**
  * Adds a link to Admin Links page.
  */
-function smfAddToAdminLinks(&$admin_links_tree) {
-    $displaying_data_section = $admin_links_tree->getSection(wfMsg('smw_adminlinks_displayingdata'));
+function smfAddToAdminLinks( &$admin_links_tree ) {
+    $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
 
     // Escape if SMW hasn't added links.
-    if (is_null($displaying_data_section)) return true;
+    if ( is_null( $displaying_data_section ) ) return true;
 
-    $smw_docu_row = $displaying_data_section->getRow('smw');
+    $smw_docu_row = $displaying_data_section->getRow( 'smw' );
 
-    $sm_docu_label = wfMsg('adminlinks_documentation', wfMsg('semanticmaps_name'));
-    $smw_docu_row->addItem(AlItem::newFromExternalLink("http://www.mediawiki.org/wiki/Extension:Semantic_Maps", $sm_docu_label));
+    $sm_docu_label = wfMsg( 'adminlinks_documentation', wfMsg( 'semanticmaps_name' ) );
+    $smw_docu_row->addItem( AlItem::newFromExternalLink( "http://www.mediawiki.org/wiki/Extension:Semantic_Maps", $sm_docu_label ) );
 
     return true;
 }

@@ -10,7 +10,7 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
@@ -33,14 +33,14 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		
 		$this->spesificParameters = array(
 			'overlays' => array(
-				'type' => array('string', 'list'),
+				'type' => array( 'string', 'list' ),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),	
-				'default' => $egMapsGMapOverlays,	
+					),
+				'default' => $egMapsGMapOverlays,
 				),
-		);			
-	}	
+		);
+	}
 	
 	/**
 	 * @see SMMapPrinter::doMapServiceLoad()
@@ -49,14 +49,14 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 
-		if (empty($egGoogleMapsOnThisPage)) {
+		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies($this->output);
+			MapsGoogleMaps::addGMapDependencies( $this->output );
 		}
 		
-		$egGoogleMapsOnThisPage++;	
+		$egGoogleMapsOnThisPage++;
 		
-		$this->elementNr = $egGoogleMapsOnThisPage;		
+		$this->elementNr = $egGoogleMapsOnThisPage;
 	}
 	
 	/**
@@ -66,21 +66,21 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	protected function addSpecificMapHTML() {
 		global $wgJsMimeType;
 
-		$onloadFunctions = MapsGoogleMaps::addOverlayOutput($this->output, $this->mapName, $this->overlays, $this->controls);
+		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
 		$markerItems = array();
 		
-		foreach ($this->m_locations as $location) {
-			list($lat, $lon, $title, $label, $icon) = $location;
+		foreach ( $this->m_locations as $location ) {
+			list( $lat, $lon, $title, $label, $icon ) = $location;
 			
-			$title = str_replace("'", "\'", $title);
-			$label = str_replace("'", "\'", $label);
+			$title = str_replace( "'", "\'", $title );
+			$label = str_replace( "'", "\'", $label );
 			
 			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		
 		// Create a string containing the marker JS 
-		$markersString = implode(',', $markerItems);		
+		$markersString = implode( ',', $markerItems );
 		
 		$this->output .= <<<EOT
 <div id="$this->mapName"></div>
@@ -106,7 +106,7 @@ addOnloadHook(
 /*]]>*/ </script>
 EOT;
 	
-		$this->output .= $onloadFunctions;	
+		$this->output .= $onloadFunctions;
 	}
 	
 	/**
@@ -117,11 +117,11 @@ EOT;
         
         $allowedTypes = MapsGoogleMaps::getTypeNames();
         
-        $params[] = array('name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_controls'), 'values' => MapsGoogleMaps::getControlNames());
-        $params[] = array('name' => 'types', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_types'), 'values' => $allowedTypes);
-        $params[] = array('name' => 'type', 'type' => 'enumeration', 'description' => wfMsg('semanticmaps_paramdesc_type'), 'values' => $allowedTypes);
-        $params[] = array('name' => 'overlays', 'type' => 'enum-list', 'description' => wfMsg('semanticmaps_paramdesc_overlays'), 'values' => MapsGoogleMaps::getOverlayNames());
-        $params[] = array('name' => 'autozoom', 'type' => 'enumeration', 'description' => wfMsg('semanticmaps_paramdesc_autozoom'), 'values' => array('on', 'off'));
+        $params[] = array( 'name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg( 'semanticmaps_paramdesc_controls' ), 'values' => MapsGoogleMaps::getControlNames() );
+        $params[] = array( 'name' => 'types', 'type' => 'enum-list', 'description' => wfMsg( 'semanticmaps_paramdesc_types' ), 'values' => $allowedTypes );
+        $params[] = array( 'name' => 'type', 'type' => 'enumeration', 'description' => wfMsg( 'semanticmaps_paramdesc_type' ), 'values' => $allowedTypes );
+        $params[] = array( 'name' => 'overlays', 'type' => 'enum-list', 'description' => wfMsg( 'semanticmaps_paramdesc_overlays' ), 'values' => MapsGoogleMaps::getOverlayNames() );
+        $params[] = array( 'name' => 'autozoom', 'type' => 'enumeration', 'description' => wfMsg( 'semanticmaps_paramdesc_autozoom' ), 'values' => array( 'on', 'off' ) );
         
         return $params;
     }

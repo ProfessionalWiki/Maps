@@ -16,9 +16,9 @@
  * @author Jeroen De Dauw
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps2']['qp'] = array('class' => 'SMGoogleMapsQP', 'file' => 'GoogleMaps/SM_GoogleMapsQP.php', 'local' => true);
-$egMapsServices['googlemaps2']['fi'] = array('class' => 'SMGoogleMapsFormInput', 'file' => 'GoogleMaps/SM_GoogleMapsFormInput.php', 'local' => true);
+$egMapsServices['googlemaps2']['qp'] = array( 'class' => 'SMGoogleMapsQP', 'file' => 'GoogleMaps/SM_GoogleMapsQP.php', 'local' => true );
+$egMapsServices['googlemaps2']['fi'] = array( 'class' => 'SMGoogleMapsFormInput', 'file' => 'GoogleMaps/SM_GoogleMapsFormInput.php', 'local' => true );
