@@ -4,10 +4,15 @@
  * 
  * @file SM_GeoCoordsValue.php
  * @ingroup SMWDataValues
+ * @ingroup SemanticMaps
  * 
  * @author Markus Krötzsch
  * @author Jeroen De Dauw
  */
+
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
 
 // / Unicode symbols for coordinate minutes and seconds;
 // / may not display in every font ...
@@ -21,6 +26,8 @@ define( 'SM_GEO_SEC', '″' );
  * @author Jeroen De Dauw
  * 
  * @ingroup SemanticMaps
+ * 
+ * TODO: this class should be integrated with Maps's handling of coordinates, as not to have redundant code.
  */
 class SMGeoCoordsValue extends SMWDataValue {
 
@@ -36,7 +43,32 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected $m_longparts; // longitude array of four entries: degrees, minutes, seconds, direction
 	// Note: signs are used as e.g. on Google maps, i.e. S and W are negative numbers.
 
+	/**
+	 * @see SMWDataValue::parseUserValue
+	 */
 	protected function parseUserValue( $value ) {
+		return $this->parseUserValueOrQuery( $value, false );
+	}
+
+	/**
+	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
+	 * comparators between all values.
+	 * 
+	 * @return SMGeoCoordsValueDescription
+	 */
+	public function getQueryDescription( $value ) {
+		return $this->parseUserValueOrQuery( $value, true );
+	}
+	
+	/**
+	 * TODO: support $isQuery=true
+	 */
+	protected function parseUserValueOrQuery( $value, $isQuery ) {
+		if ( $value == '' ) {
+			$this->addError( wfMsg( 'smw_novalues' ) );
+			return $isQuery ? new SMWThingDescription() : true;
+		}
+		
 		$this->m_lat = false;
 		$this->m_long = false;
 		$this->m_latparts = false;
@@ -51,10 +83,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$value = str_replace( array( '&acute;', '&#180;' ), '´', $value );
 		$value = str_replace( array( '&#8243;', '&Prime;', "''", '"', '´´', SM_GEO_MIN . SM_GEO_MIN ), SM_GEO_SEC, $value );
 		$value = str_replace( array( '&#8242;', '&prime;', "'", '´' ), SM_GEO_MIN, $value );
+		
 		// now split the string
 		$parts = preg_split( '/\s*(°|' . SM_GEO_MIN . '|' . SM_GEO_SEC . '|N|E|W|S|;)\s*/u', str_replace( ', ', ';', $value ) . ';', - 1, PREG_SPLIT_DELIM_CAPTURE );
 		$curnum = false;
 		$angles = array( false, false, false ); // temporary values for deg, min, sec
+		
 		foreach ( $parts as $part ) {
 			switch ( $part ) {
 				case '°':
@@ -144,6 +178,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( ( $this->m_lat !== false ) && ( $this->m_long === false ) && ( $angles[0] !== false ) ) { // no final E or W?
 			$this->setAngleValues( 'E', $angles );
 		}
+		
 		if ( ( $angles[0] !== false ) || ( $curnum !== false ) ) { // unprocessed chunk, error
 
 		}
@@ -151,9 +186,17 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( $this->m_caption === false ) {
 			$this->m_caption = $value;
 		}
-		return true;
-	}
-
+		
+		if ( $isQuery ) {
+			return new SMGeoCoordsValueDescription(  ); // TODO
+		} else {
+			return true;
+		}
+	}	
+	
+	/**
+	 * @see SMWDataValue::parseDBkeys
+	 */
 	protected function parseDBkeys( $args ) {
 		$this->m_lat = false;
 		$this->m_long = false;
@@ -161,10 +204,14 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->m_longparts = false;
 
 		list( $this->m_lat, $this->m_long ) = explode( ',', $args[0] );
+		
 		$this->m_caption = $this->formatAngleValues( true ) . ', ' . $this->formatAngleValues( false ); // this is our output text
 		$this->m_wikivalue = $this->m_caption;
 	}
 
+	/**
+	 * @see SMWDataValue::getShortWikiText
+	 */
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
@@ -176,11 +223,17 @@ class SMGeoCoordsValue extends SMWDataValue {
 			return $this->m_caption;
 		}
 	}
-
+	
+	/**
+	 * @see SMWDataValue::getShortHTMLText
+	 */
 	public function getShortHTMLText( $linker = null ) {
 		return $this->getShortWikiText( $linker ); // should be save (based on xsdvalue)
 	}
-
+	
+	/**
+	 * @see SMWDataValue::getLongWikiText
+	 */		
 	public function getLongWikiText( $linked = null ) {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
@@ -189,20 +242,32 @@ class SMGeoCoordsValue extends SMWDataValue {
 		}
 	}
 
+	/**
+	 * @see SMWDataValue::getLongHTMLText
+	 */		
 	public function getLongHTMLText( $linker = null ) {
 		return $this->getLongWikiText( $linker );
 	}
 
+	/**
+	 * @see SMWDataValue::getDBkeys
+	 */	
 	public function getDBkeys() {
 		$this->unstub();
 		return array( $this->m_lat . ',' . $this->m_long );
 	}
 
+	/**
+	 * @see SMWDataValue::getWikiValue
+	 */	
 	public function getWikiValue() {
 		$this->unstub();
 		return $this->m_wikivalue;
 	}
 
+	/**
+	 * @see SMWDataValue::getExportData
+	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
 			$lit = new SMWExpLiteral( $this->formatAngleValues( true, false ) . ', ' . $this->formatAngleValues( false, false ), $this, 'http://www.w3.org/2001/XMLSchema#string' );
@@ -231,6 +296,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$numvalue = SMWDataValueFactory::newTypeIDValue( '_num' );
 		$res = 0;
 		$factor = 1;
+		
 		for ( $i = 0; $i < 3; $i++ ) {
 			if ( $angles[$i] !== false ) {
 				$numvalue->setUserValue( $angles[$i] );
@@ -242,23 +308,28 @@ class SMGeoCoordsValue extends SMWDataValue {
 			}
 			$factor = $factor * 60;
 		}
+		
 		switch ( $direction ) {
 			case 'N': $this->m_lat = $res; break;
 			case 'S': $this->m_lat = - 1 * $res; break;
 			case 'E': $this->m_long = $res; break;
 			case 'W': $this->m_long = - 1 * $res; break;
 		}
+		
 		if ( ( ( $direction == 'E' ) || ( $direction == 'W' ) ) &&
 		     ( ( $this->m_long > 180 ) || ( $this->m_long <= - 180 ) ) ) { // bring values back into [180, -180)
 			$this->m_long += ( $this->m_long < 0 ) ? ( round( abs( $this->m_long ) / 360 ) * 360 ):( round( $this->m_long / 360 ) * - 360 );
 		}
-		// /TODO: also make such a normalisation for lat ...
+		// TODO: also make such a normalisation for lat ...
+		
 		$angles = array( false, false, false );
 	}
 
 	/**
 	 * Return array with four entries for deg, min, sec, direction,
 	 * that corresponds to the current latitude or longitude.
+	 * 
+	 * @param Boolean $lat When true, latitude will be used, otherwise longitude will be.
 	 */
 	protected function getAngleValues( $lat = true ) {
 		if ( $lat ) {
@@ -294,9 +365,13 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Format the current latitude or longitude. The parameter $content states
 	 * whether the result is for content printout. Alternatively, a language-
 	 * independent result is generated.
+	 * 
+	 * @param Boolean $lat When true, latitude will be used, otherwise longitude will be.
+	 * @param Boolean $content
 	 */
 	protected function formatAngleValues( $lat = true, $content = true ) {
 		$values = $this->getAngleValues( $lat );
+		
 		if ( $content ) {
 			$this->initDirectionLabels();
 			$result = smwfNumberFormat( $values[0] ) . '°' . smwfNumberFormat( $values[1] ) . SM_GEO_MIN .
@@ -313,15 +388,18 @@ class SMGeoCoordsValue extends SMWDataValue {
 		}
 	}
 
+	/**
+	 * Create links to mapping services based on a wiki-editable message. The parameters
+	 * available to the message are:
+	 * 
+	 * $1: latitude integer degrees, $2: longitude integer degrees
+	 * $3: latitude integer minutes, $4: longitude integer minutes
+	 * $5: latitude integer seconds, $6: longitude integer seconds,
+	 * $7: latitude direction string (N or S), $8: longitude direction string (W or E)
+	 * $9: latitude in decimal degrees, $10: longitude in decimal degrees
+	 * $11: sign (- if south) for latitude, $12: sign (- if west) for longitude
+	 */
 	protected function getServiceLinkParams() {
-		// Create links to mapping services based on a wiki-editable message. The parameters
-		// available to the message are:
-		// $1: latitude integer degrees, $2: longitude integer degrees
-		// $3: latitude integer minutes, $4: longitude integer minutes
-		// $5: latitude integer seconds, $6: longitude integer seconds,
-		// $7: latitude direction string (N or S), $8: longitude direction string (W or E)
-		// $9: latitude in decimal degrees, $10: longitude in decimal degrees
-		// $11: sign (- if south) for latitude, $12: sign (- if west) for longitude
 		$latvals = $this->getAngleValues( true );
 		$longvals = $this->getAngleValues( false );
 		return array( $latvals[0], $longvals[0],

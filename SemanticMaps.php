@@ -35,7 +35,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.5.5 a1' );
+	define( 'SM_VERSION', '0.5.5 a2' );
 
 	$smgScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';
 	$smgDir 		= dirname( __FILE__ ) . '/';
@@ -51,9 +51,8 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
 
 	$wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
 
-	// Registration of the Geographical Coordinate type.
-	$wgAutoloadClasses['SMGeoCoordsValue'] = $smgDir . 'SM_GeoCoordsValue.php';
-	$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
+	// Include the GeoCoords SMW data type file.
+	require_once( $smgDir . '/GeoCoords/SM_GeoCoords.php' );
 }
 
 /**
@@ -80,16 +79,9 @@ function smfSetup() {
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
 
+	// TODO: only add this file when it's required.
 	$wgOut->addScriptFile( $smgScriptPath . '/SMUtilityFunctions.js' );
 	
-	return true;
-}
-
-/**
- * Adds support for the geographical coordinate data type to Semantic MediaWiki.
- */
-function smfInitGeoCoordsType() {
-	SMWDataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', 'Geographic coordinate' );
 	return true;
 }
 

@@ -60,6 +60,17 @@ $egMapsDefaultServices['fi'] = 'googlemaps2';
 
 
 
+
+# Geographical Coordinate data type settings
+
+# Integer. The default distance value to be used in geographical distance queries.
+# This value will only be used when the user does not provide one.
+$smgGeoCoordDistance = 5;
+
+
+
+
+
 # Query Printers
 
 # Boolean. The default value for the forceshow parameter. Will force a map to be shown even when there are no query results
