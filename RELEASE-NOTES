@@ -6,6 +6,17 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.5.5 ===
+(2010-03-20)
+
+==== Refactoring ====
+
+* Stylized the code to conform to MediaWiki's spacing conventions.
+
+==== Bug fixes ====
+
+* Fixed issue causing properties of type Page to not show up in pop-ups when using the template parameter.
+
 === Semantic Maps 0.5.4 ===
 (2010-03-01)
 
