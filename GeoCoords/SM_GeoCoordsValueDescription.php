@@ -21,33 +21,39 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup SemanticMaps
  */
 class SMGeoCoordsValueDescription extends SMWValueDescription {
-
 	protected $m_distance;
-	
+
 	public function __construct( SMGeoCoordsValue $datavalue, $distance, $comparator = SMW_CMP_EQ ) {
 		parent::__construct( $datavalue, $comparator );
 		$this->m_distance = $distance;
 	}
-	
-	public function getQueryString( $asvalue = false ) {
+
+	/**
+	 * @see SMWDescription:getQueryString
+	 * @param Boolean $asvalue
+	 */
+	public function getQueryString( $asValue = false ) {
 		if ( $this->m_datavalue !== null ) {
-			switch ( $this->m_comparator ) {
-				case SMW_CMP_LEQ:  $comparator = '<'; break;
-				case SMW_CMP_GEQ:  $comparator = '>'; break;
-				case SMW_CMP_NEQ:  $comparator = '!'; break;
-				case SMW_CMP_LIKE: $comparator = '~'; break;
-				default: case SMW_CMP_EQ:
-					$comparator = '';
-				break;
-			}
-			if ( $asvalue ) {
-				return $comparator . $this->m_datavalue->getWikiValue();
-			} else { // this only is possible for values of Type:Page
-				return '[[' . $comparator . $this->m_datavalue->getWikiValue() . ']]';
-			}
+			$queryString = $this->m_datavalue->getWikiValue();
+			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
-			return $asvalue ? '+':''; // the else case may result in an error here (query without proper condition)
+			return $asValue ? '+' : '';
 		}
-	}	
-	
+	}
+
+	/**
+	 * @see SMWDescription:prune
+	 */
+    public function prune( &$maxsize, &$maxdepth, &$log ) {
+    	if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
+			$log[] = $this->getQueryString();
+			$result = new SMWThingDescription();
+			$result->setPrintRequests( $this->getPrintRequests() );
+			return $result;
+		} else {
+			$maxsize = $maxsize - $this->getSize();
+			$maxdepth = $maxdepth - $this->getDepth();
+			return $this;
+		}
+    }
 }

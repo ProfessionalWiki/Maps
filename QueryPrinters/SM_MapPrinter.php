@@ -195,7 +195,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				
 				if ( $object->getTypeID() != '_geo' && $i != 0 ) {
 					if ( $this->template ) {
-						$label[] = $object->getLongText( $outputmode, $skin );
+						if ( $object instanceof SMWWikiPageValue ) {
+							$label[] = $object->getTitle()->getPrefixedText();
+						} else {
+							$label[] = $object->getLongText( $outputmode, $skin );
+						}
 					}
 					else {
 						$text .= $pr->getHTMLText( $skin ) . ': ' . $object->getLongText( $outputmode, $skin ) . '<br />';
@@ -207,7 +211,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				}
 			}
 		}
-
+		
 		foreach ( $coords as $coord ) {
 			if ( count( $coord ) == 2 ) {
 				list( $lat, $lon ) = $coord;
@@ -225,6 +229,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 					}
 
 					$this->m_locations[] = array(
+						// TODO: add escaping to title and label (they are getting escaped now on some place where they shouldn't)
 						Xml::escapeJsString( $lat ),
 						Xml::escapeJsString( $lon ),
 						$title,
