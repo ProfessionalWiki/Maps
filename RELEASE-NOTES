@@ -6,6 +6,21 @@ version of Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.5.5. ===
+(2010-03-20)
+
+==== Refactoring ====
+
+* Stylized the code to conform to MediaWiki's spacing conventions.
+
+==== Bug fixes ====
+
+* Fixed issue with scrollbar in pop-ups on Google Maps maps.
+
+* Fixed Google Maps key issue with OpenLayers that arose from the new OpenLayers layer definition system.
+
+* Fixed JS issue with Google Maps default overlays.
+
 === Maps 0.5.4 ===
 (2010-03-01)
 
