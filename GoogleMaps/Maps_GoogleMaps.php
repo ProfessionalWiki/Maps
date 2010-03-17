@@ -264,7 +264,7 @@ class MapsGoogleMaps {
 					$urlNr = self::$overlayData[$overlay];
 					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
 					if ( $isOn ) {
-						$onloadFunctions .= "<script type='$wgJsMimeType'>addOnloadHook( initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) );</script>";
+						$onloadFunctions .= "<script type='$wgJsMimeType'>addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );</script>";
 					}
 				}
 			}
