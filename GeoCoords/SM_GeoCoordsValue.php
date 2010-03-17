@@ -75,7 +75,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->m_longparts = false;
 		$this->m_wikivalue = $value;
 
-		// first normalise some typical symbols
+		// Normalize the notation.
 		$this->initDirectionLabels();
 		$value = str_replace( array( '&nbsp;', $this->m_N, $this->m_E, $this->m_W, $this->m_S, ),
 		                     array( ' ', 'N', 'E', 'W', 'S' ), $value );
@@ -84,10 +84,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$value = str_replace( array( '&#8243;', '&Prime;', "''", '"', '´´', SM_GEO_MIN . SM_GEO_MIN ), SM_GEO_SEC, $value );
 		$value = str_replace( array( '&#8242;', '&prime;', "'", '´' ), SM_GEO_MIN, $value );
 		
-		// now split the string
+		// Split the value string.
 		$parts = preg_split( '/\s*(°|' . SM_GEO_MIN . '|' . SM_GEO_SEC . '|N|E|W|S|;)\s*/u', str_replace( ', ', ';', $value ) . ';', - 1, PREG_SPLIT_DELIM_CAPTURE );
 		$curnum = false;
-		$angles = array( false, false, false ); // temporary values for deg, min, sec
+		$angles = array( false, false, false ); // Temporary values for deg, min, sec
 		
 		foreach ( $parts as $part ) {
 			switch ( $part ) {

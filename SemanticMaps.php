@@ -51,7 +51,7 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
 
 	$wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
 
-	// Include the GeoCoords SMW data type file.
+	// Include the GeoCoords related functionality.
 	require_once( $smgDir . '/GeoCoords/SM_GeoCoords.php' );
 }
 

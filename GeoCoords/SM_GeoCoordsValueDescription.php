@@ -29,4 +29,25 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		$this->m_distance = $distance;
 	}
 	
+	public function getQueryString( $asvalue = false ) {
+		if ( $this->m_datavalue !== null ) {
+			switch ( $this->m_comparator ) {
+				case SMW_CMP_LEQ:  $comparator = '<'; break;
+				case SMW_CMP_GEQ:  $comparator = '>'; break;
+				case SMW_CMP_NEQ:  $comparator = '!'; break;
+				case SMW_CMP_LIKE: $comparator = '~'; break;
+				default: case SMW_CMP_EQ:
+					$comparator = '';
+				break;
+			}
+			if ( $asvalue ) {
+				return $comparator . $this->m_datavalue->getWikiValue();
+			} else { // this only is possible for values of Type:Page
+				return '[[' . $comparator . $this->m_datavalue->getWikiValue() . ']]';
+			}
+		} else {
+			return $asvalue ? '+':''; // the else case may result in an error here (query without proper condition)
+		}
+	}	
+	
 }

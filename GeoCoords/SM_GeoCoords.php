@@ -23,6 +23,8 @@ $wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
 // Hook for initializing the Geographical Proximity query support.
 $wgHooks['smwGetSQLConditionForValue'][] = 'smfGetGeoProximitySQLCondition';
 
+define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.
+
 /**
  * Adds support for the geographical coordinate data type to Semantic MediaWiki.
  * 
@@ -36,9 +38,8 @@ function smfInitGeoCoordsType() {
 /**
  * Custom SQL query extension for matching geographic coordinates.
  * 
- * TODO: Parsing latitude and longitude from the DB key of the coordinates
- * value is cleary not a good approach. Instead, the geographic coordinate
- * value object should provide functions to access this data directly.
+ * TODO: Change the way coords are stored in the db from a string field to 2 float fields.
+ * The geographic coordinate value object should provide functions to access the lat and lon data directly.
  * 
  * TODO: Add support for a per-coordinate set distance parameter.
  */
@@ -46,11 +47,13 @@ function smfGetGeoProximitySQLCondition( &$where, $description, $tablename, $fie
 	$where = '';
 	$dv = $description->getDatavalue();
 	
+	// Only execute the query when the description's type is geographical coordinates,
+	// the description is valid, and the near comparator is used.
 	if ( ( $dv->getTypeID() != '_geo' ) 
 		|| ( !$dv->isValid() ) 
-		|| ( $description->getComparator() != SMW_CMP_LIKE )
-		) return true; // Only act on certain query conditions.
-		
+		|| ( $description->getComparator() != SM_CMP_NEAR )
+		) return true; 
+
 	$keys = $dv->getDBkeys();
 	$geoarray = explode( ',', $keys[0] );
 	
