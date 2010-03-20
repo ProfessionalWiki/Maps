@@ -295,12 +295,13 @@ $messages['cs'] = array(
  * @author DaSch
  * @author Imre
  * @author Pill
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden ([http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]).
 Unterstützte Kartendienste: $1',
-	'semanticmaps_lonely_unit' => 'Keine Zahl vor dem Symbol "$1" gefunden.',
+	'semanticmaps_lonely_unit' => 'Keine Zahl vor dem Symbol „$1“ gefunden.',
 	'semanticmaps_bad_latlong' => 'Breiten- und Längengrad dürfen nur einmal und mit gültigen Koordinaten angegeben werden.',
 	'semanticmaps_abb_north' => 'N',
 	'semanticmaps_abb_east' => 'O',
