@@ -14,8 +14,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-// / Unicode symbols for coordinate minutes and seconds;
-// / may not display in every font ...
+/// Unicode symbols for coordinate minutes and seconds;
+/// may not display in every font ...
 define( 'SM_GEO_MIN', '′' );
 define( 'SM_GEO_SEC', '″' );
 
@@ -43,6 +43,16 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected $m_longparts; // longitude array of four entries: degrees, minutes, seconds, direction
 	// Note: signs are used as e.g. on Google maps, i.e. S and W are negative numbers.
 
+	/**
+	 * Adds support for the geographical coordinate data type to Semantic MediaWiki.
+	 * 
+	 * TODO: i18n keys still need to be moved
+	 */
+	function InitGeoCoordsType() {
+		SMWDataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', 'Geographic coordinate' );
+		return true;
+	}	
+	
 	/**
 	 * @see SMWDataValue::parseUserValue
 	 */
@@ -85,7 +95,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$value = str_replace( array( '&#8242;', '&prime;', "'", '´' ), SM_GEO_MIN, $value );
 		
 		// Split the value string.
-		$parts = preg_split( '/\s*(°|' . SM_GEO_MIN . '|' . SM_GEO_SEC . '|N|E|W|S|;)\s*/u', str_replace( ', ', ';', $value ) . ';', - 1, PREG_SPLIT_DELIM_CAPTURE );
+		$parts = preg_split(
+			'/\s*(°|' . SM_GEO_MIN . '|' . SM_GEO_SEC . '|N|E|W|S|;)\s*/u',
+			str_replace( ', ', ';', $value ) . ';',
+			- 1,
+			PREG_SPLIT_DELIM_CAPTURE
+		);
 		$curnum = false;
 		$angles = array( false, false, false ); // Temporary values for deg, min, sec
 		

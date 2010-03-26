@@ -18,22 +18,13 @@ $wgAutoloadClasses['SMGeoCoordsValue'] = $smgDir . 'GeoCoords/SM_GeoCoordsValue.
 $wgAutoloadClasses['SMGeoCoordsValueDescription'] = $smgDir . 'GeoCoords/SM_GeoCoordsValueDescription.php';
 
 // Hook for initializing the Geographical Coordinate type.
-$wgHooks['smwInitDatatypes'][] = 'smfInitGeoCoordsType';
+$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::InitGeoCoordsType';
 
 // Hook for initializing the Geographical Proximity query support.
 $wgHooks['smwGetSQLConditionForValue'][] = 'smfGetGeoProximitySQLCondition';
 
 define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.
 
-/**
- * Adds support for the geographical coordinate data type to Semantic MediaWiki.
- * 
- * TODO: i18n keys still need to be moved
- */
-function smfInitGeoCoordsType() {
-	SMWDataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', 'Geographic coordinate' );
-	return true;
-}
 
 /**
  * Custom SQL query extension for matching geographic coordinates.
@@ -44,6 +35,8 @@ function smfInitGeoCoordsType() {
  * TODO: Add support for a per-coordinate set distance parameter.
  */
 function smfGetGeoProximitySQLCondition( &$where, $description, $tablename, $fieldname, $dbs ) {
+	global $smgGeoCoordDistance;
+	
 	$where = '';
 	$dv = $description->getDatavalue();
 	
@@ -68,7 +61,7 @@ function smfGetGeoProximitySQLCondition( &$where, $description, $tablename, $fie
 	// Compute distances in miles:
 	$distance = "ROUND(((ACOS( SIN({$latitude} * PI()/180 ) * SIN(SUBSTRING_INDEX({$tablename}.{$fieldname}, ',',1) * PI()/180 ) + COS({$latitude} * PI()/180 ) * COS(SUBSTRING_INDEX({$tablename}.{$fieldname}, ',',1) * PI()/180 ) * COS(({$longitude} - SUBSTRING_INDEX({$tablename}.{$fieldname}, ',',-1)) * PI()/180))*180/PI())*60*1.1515),6)";
 
-	$where = "{$distance} <= " . $dbs->addQuotes( "5" );
+	$where = "{$distance} <= " . $dbs->addQuotes( $smgGeoCoordDistance );
 	
 	return true;
 }

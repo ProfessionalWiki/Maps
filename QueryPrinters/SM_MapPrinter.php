@@ -303,7 +303,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		// If a centre value is set, use it.
 		if ( strlen( $this->centre ) > 0 ) {
 			// Geocode and convert if required.
-			$centre = MapsGeocodeUtils::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
+			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
 			$centre = MapsUtils::getLatLon( $centre );
 			
 			$this->centre_lat = $centre['lat'];

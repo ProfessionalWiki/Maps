@@ -148,7 +148,7 @@ abstract class SMFormInput extends MapsMapFeature {
 		}
 		else {
 			// Geocode and convert if required.
-			$centre = MapsGeocodeUtils::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
+			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
 			$centre = MapsUtils::getLatLon( $centre );
 			
 			$this->centre_lat = Xml::escapeJsString( $centre['lat'] );
