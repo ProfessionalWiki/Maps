@@ -174,7 +174,7 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			}
 		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->centre = MapsGeocodeUtils::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
+			$this->centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
 			
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
 			if ( $this->centre ) {

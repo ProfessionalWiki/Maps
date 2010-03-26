@@ -32,6 +32,26 @@ final class MapsGeocoder {
 	private static $mGeocoderCache = array();
 	
 	/**
+	 * This function first determines wether the provided string is a pair or coordinates 
+	 * or an address. If it's the later, an attempt to geocode will be made. The function will
+	 * return the coordinates or false, in case a geocoding attempt was made but failed. 
+	 * 
+	 * @param string $coordsOrAddress
+	 * @param string $geoservice
+	 * @param string $service
+	 * @param boolean $checkForCoords
+	 * 
+	 * @return string or boolean
+	 */
+	public static function attemptToGeocode( $coordsOrAddress, $geoservice, $service, $checkForCoords = true ) {
+		if ( $checkForCoords && MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
+			return $coordsOrAddress;
+		} else {
+			return self::geocodeToString( $coordsOrAddress, $geoservice, $service );
+		}
+	}	
+	
+	/**
 	 * Geocodes an address with the provided geocoding service and returns the result 
 	 * as a string with the optionally provided format, or false when the geocoding failed.
 	 * 

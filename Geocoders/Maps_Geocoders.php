@@ -31,7 +31,6 @@ final class Geocoders {
 		
 		$wgAutoloadClasses['MapsBaseGeocoder'] 		= $egMapsDir . 'Geocoders/Maps_BaseGeocoder.php';
 		$wgAutoloadClasses['MapsGeocoder'] 			= $egMapsDir . 'Geocoders/Maps_Geocoder.php';
-		$wgAutoloadClasses['MapsGeocodeUtils'] 		= $egMapsDir . 'Geocoders/Maps_GeocodeUtils.php';
 	}
 	
 }

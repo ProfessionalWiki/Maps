@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.5.5' );
+	define( 'Maps_VERSION', '0.5.6' );
 	
 	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
@@ -51,6 +51,7 @@ else {
 	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
 	
 	// Autoload the general classes
+	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';	
 	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsDir . 'Maps_MapFeature.php';
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';
 	$wgAutoloadClasses['MapsUtils'] 				= $egMapsDir . 'Maps_Utils.php';

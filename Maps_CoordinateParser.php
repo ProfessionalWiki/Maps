@@ -74,12 +74,10 @@ class MapsCoordinateParser {
 		
 		$coordinates = self::resolveAngles( $coordinates );
 		
-		$coordinates = array(
+		return array(
 			'lat' => self::parseCoordinate( $coordinates['lat'], $coordsType ),
 			'lon' => self::parseCoordinate( $coordinates['lon'], $coordsType ),
 		);
-		
-		return $floatCoordinates;
 	}
 	
 	/**
@@ -109,6 +107,25 @@ class MapsCoordinateParser {
 		}
 	}
 	
+	/**
+	 * Returns a boolean indicating if the provided value is a valid set of coordinate.
+	 * 
+	 * @param string $coordsOrAddress
+	 * 
+	 * @return boolean
+	 */	
+	public static function areCoordinates( $coordsOrAddress ) {
+		return self::getCoordinatesType( $coordsOrAddress ) !== false;
+	}
+	
+	/**
+	 * Returns the coordinate parsed in the given notation.
+	 * 
+	 * @param string $coordinate
+	 * @param coordinate type $coordType
+	 * 
+	 * @return string
+	 */
 	private static function parseCoordinate( $coordinate, $coordType ) {
 		switch ( $coordType ) {
 			case COORDS_FLOAT:

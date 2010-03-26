@@ -165,7 +165,7 @@ final class MapsParserFunctions {
         $coordinates = explode( $delimeter, $coordList );
         
         foreach ( $coordinates as $coordinate ) {
-        	if ( MapsGeocodeUtils::isCoordinate( $coordinate ) ) {
+        	if ( MapsCoordinateParser::areCoordinates( $coordinate ) ) {
         		$validCoordinates[] = $coordinate;
         	}
         	else {
@@ -226,7 +226,7 @@ final class MapsParserFunctions {
 					$args[0] = trim( $args[0] );
 					
 					if ( strlen( $args[0] ) > 0 ) {
-						$coords =  MapsGeocodeUtils::attemptToGeocode( $args[0], $geoservice, $service, $isDefault );
+						$coords =  MapsGeocoder::attemptToGeocode( $args[0], $geoservice, $service, $isDefault );
 						
 						if ( $coords ) {
 							$args[0] = $coords;

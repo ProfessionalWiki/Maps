@@ -73,7 +73,7 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 			$this->centre_lon = $egMapsMapLon;
 		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->coordinates = MapsGeocodeUtils::attemptToGeocode( $this->coordinates, $this->geoservice, $this->serviceName );
+			$this->coordinates = MapsGeocoder::attemptToGeocode( $this->coordinates, $this->geoservice, $this->serviceName );
 
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
 			if ( $this->coordinates ) {

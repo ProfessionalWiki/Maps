@@ -101,19 +101,26 @@ final class MapsOSMCgiBin {
 
 		$center = array( $this->lon, $this->lat );
 		if ( $this->options['sphericalMercator'] ) {
-			// Calculate bounds within a spherical mercator projection if that is what the scale is based on
+			// Calculate bounds within a spherical mercator projection if that is what the scale is based on.
 			$mercatorCenter = MapsUtils::forwardMercator( $center );
-			$mbounds = array(
-				$mercatorCenter[0] - $w_deg / 2,
-				$mercatorCenter[1] - $h_deg / 2,
-				$mercatorCenter[0] + $w_deg / 2,
-				$mercatorCenter[1] + $h_deg / 2
+			
+			$this->bounds = MapsUtils::inverseMercator( 
+				array(
+					$mercatorCenter[0] - $w_deg / 2,
+					$mercatorCenter[1] - $h_deg / 2,
+					$mercatorCenter[0] + $w_deg / 2,
+					$mercatorCenter[1] + $h_deg / 2
+				)
 			);
-			$this->bounds = MapsUtils::inverseMercator( $mbounds );
 		}
 		else {
 			// Calculate bounds within WGS84
-			$this->bounds = array( $center[0] - $w_deg / 2, $center[1] - $h_deg / 2, $center[0] + $w_deg / 2, $center[1] + $h_deg / 2 );
+			$this->bounds = array(
+				$center[0] - $w_deg / 2,
+				$center[1] - $h_deg / 2,
+				$center[0] + $w_deg / 2,
+				$center[1] + $h_deg / 2
+			);
 		}
 	}
 
