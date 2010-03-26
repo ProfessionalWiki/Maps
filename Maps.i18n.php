@@ -80,6 +80,12 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'maps_map' => 'Kaart',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Breedte:',
+	'maps-longitude' => 'Lengte:',
 	'maps_coordinates_missing' => 'Geen koördinate is vir die kaart verskaf nie.',
 	'maps_unrecognized_coords' => 'Die volgende koördinate is nie herken nie: $1.',
 	'maps_unrecognized_coords_for' => 'Die volgende {{PLURAL:$2|koördinaat|koördinate}} is nie herken nie en is uit die kaart weggelaat:
@@ -101,6 +107,12 @@ $messages['ar'] = array(
 	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://wiki.bn2vs.com/wiki/Maps تجربة]).
 خدمات الخرائط المتوفرة: $1',
 	'maps_map' => 'خريطة',
+	'maps-abb-north' => 'شم',
+	'maps-abb-east' => 'شر',
+	'maps-abb-south' => 'ج',
+	'maps-abb-west' => 'غ',
+	'maps-latitude' => 'دائرة العرض:',
+	'maps-longitude' => 'خط الطول:',
 	'maps_coordinates_missing' => 'لا إحداثيات موفرة للخريطة.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|العنوان التالي|العناوين التالية}} لم يمكن تكويدها جغرافيا: $1.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|العنوان التالي|العناوين التالية}} لم يمكن تكويدها جغرافيا و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
@@ -138,12 +150,18 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
 	'maps_map' => 'Мапа',
+	'maps-abb-north' => 'Пн.',
+	'maps-abb-east' => 'У.',
+	'maps-abb-south' => 'Пд.',
+	'maps-abb-west' => 'З.',
+	'maps-latitude' => 'Шырата:',
+	'maps-longitude' => 'Даўгата:',
 	'maps_coordinates_missing' => 'Каардынаты для мапы не пазначаныя.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Наступны адрас ня можа быць геакадаваны|Наступныя адрасы ня могуць быць геакадаваныя}}: $1.
 Мапа ня можа быць паказана.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Наступны адрас ня можа быць геакадаваны і быў выдалены|Наступныя адрасы ня могуць быць геакадаваны і былі выдаленыя}} з мапы:
 $1',
-	'maps_unrecognized_coords' => 'Наступныя каардынаты не былі распазнаныя: $1.',
+	'maps_unrecognized_coords' => 'Наступныя {{PLURAL:$2|каардыната не была распазнаная|каардынаты не былі распазнаныя}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Наступная каардыната не была апазнаная|Наступныя каардынаты не былі апазнаныя}} і {{PLURAL:$2|яна не паказаная|яны не паказаныя}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Мапа ня можа быць паказаная.',
@@ -174,6 +192,12 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
 	'maps_map' => 'Kartenn',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'R',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'K',
+	'maps-latitude' => 'Ledred :',
+	'maps-longitude' => 'Hedred :',
 	'maps_coordinates_missing' => "N'eus bet spisaet daveenn ebet evit ar gartenn.",
 	'maps_geocoding_failed' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul : $1.
 N'haller ket diskwel ar gartenn.",
@@ -199,12 +223,18 @@ $messages['bs'] = array(
 	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Dostupne usluge mapa: $1',
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'S',
+	'maps-abb-east' => 'I',
+	'maps-abb-south' => 'J',
+	'maps-abb-west' => 'Z',
+	'maps-latitude' => 'Geografska širina:',
+	'maps-longitude' => 'Geografska dužina:',
 	'maps_coordinates_missing' => 'Za mapu nisu navedene koordinate.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Slijedeća adresa nije mogla biti geokodirana|Slijedeće adrese nisu mogle biti geokodirane}}: $1.
 Mapa se ne može prikazati.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Slijedeća adresa nije|Slijedeće adrese nisu}} mogle biti geokodiranje i {{PLURAL:$2|izostavljena je|izostavljene su}} iz mape:
 $1',
-	'maps_unrecognized_coords' => 'Slijedeće koordinate nisu prepoznate: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Slijedeća koordinata nije prepoznata|Slijedeće koordinate nisu prepoznate}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slijedeća koordinata nije|Slijedeće koordinate nisu}} prepoznate i {{PLURAL:$2|ignorirana je|ignorirane su}} na karti:
 $1',
 	'maps_map_cannot_be_displayed' => 'Karta se ne može prikazati.',
@@ -247,11 +277,17 @@ $messages['de'] = array(
 	'maps_desc' => 'Ermöglicht es, Koordinaten in Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
 Verfügbare Kartografie-Dienste: $1',
 	'maps_map' => 'Karte',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Breitengrad:',
+	'maps-longitude' => 'Längengrad:',
 	'maps_coordinates_missing' => 'Es wurden keine Koordinaten für die Karte angegeben.',
 	'maps_geocoding_failed' => 'Die {{PLURAL:$2|folgende Adresse|folgenden Adressen}} konnten nicht geokodiert werden: $1.',
 	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|folgende Adresse konnte|folgenden Adressen konnten}} nicht geokodiert werden und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
-	'maps_unrecognized_coords' => 'Folgende Koordinaten wurden nicht erkannt: $1.',
+	'maps_unrecognized_coords' => 'Folgende {{PLURAL:$2|Koordinate wurde|Koordinaten wurden}} nicht erkannt: $1.',
 	'maps_unrecognized_coords_for' => 'Die {{PLURAL:$2|folgende Koordinate wurde|folgenden Koordinaten wurden}} nicht erkannt und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
 	'maps_map_cannot_be_displayed' => 'Diese Karte kann nicht angezeigt werden.',
@@ -271,10 +307,16 @@ $messages['dsb'] = array(
 	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://wiki.bn2vs.com/wiki/Maps demo]).
 K dispoziciji stojece kórtowe słužby: $1',
 	'maps_map' => 'Karta',
+	'maps-abb-north' => 'PP',
+	'maps-abb-east' => 'PZ',
+	'maps-abb-south' => 'PD',
+	'maps-abb-west' => 'PW',
+	'maps-latitude' => 'Šyrina:',
+	'maps-longitude' => 'Dlinina:',
 	'maps_coordinates_missing' => 'Za kórtu njejsu koordinaty pódane.',
 	'maps_geocoding_failed' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było: $1. Kórta njedajo se zwobrazniś.',
 	'maps_geocoding_failed_for' => 'Geokoděrowanje {{PLURAL:$2|slědujuceje adrese|slědujuceju adresowu|slědujucych adresow|slědujucych adresow}} njejo móžno było a togodla toś {{PLURAL:$2|ta adresa wuwóstaja|tej adresy wuwóstajotej|te adrese wuwóstajaju|te adresy wuwóstajaju}} se na kórśe: $1',
-	'maps_unrecognized_coords' => 'Slědujuce koordinaty njejsu se spóznali: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Slědujuca koordinata njejo se spóznała|Slědujucej koordinaśe njejstej se spóznałej|Slědujuce koordinaty njejsu se spóznali|Slědujuce koordinaty njejsu se spóznali}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědujuca koordinata njejo se spóznała|Slědujucej koordinaśe stej se spóznałej|Slědujuce koordinaty su se spóznali|Slědujuce koordinaty su se spóznali}} a {{PLURAL:$2|njejo se wuwóstajiła|njejstej se wuwóstajiłej|njejsu wuwóstajili|njejsu se wuwóstajili}} na kórśe: $1',
 	'maps_map_cannot_be_displayed' => 'Kórta njedajo se zwobrazniś.',
 	'maps_click_to_activate' => 'Klikni, aby kórtu aktiwěrował',
@@ -316,6 +358,12 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'maps_desc' => 'Proporciona la capacidad de mostrar los datos de coordenadas en los mapas y geocodifica direcciones ([http://wiki.bn2vs.com/wiki/Maps demo]). Servicios de mapeo disponibles: $1',
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitud:',
+	'maps-longitude' => 'Longitud:',
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
@@ -349,6 +397,12 @@ $messages['fi'] = array(
 	'maps_desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Käytettävissä olevat karttapalvelut: $1',
 	'maps_map' => 'Kartta',
+	'maps-abb-north' => 'Pohj.',
+	'maps-abb-east' => 'It.',
+	'maps-abb-south' => 'Etel.',
+	'maps-abb-west' => 'Länt.',
+	'maps-latitude' => 'Korkeusaste:',
+	'maps-longitude' => 'Pituuspiiri:',
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
 Karttaa ei voida näyttää.',
@@ -371,6 +425,7 @@ $1',
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
+ * @author Peter17
  * @author PieRRoMaN
  * @author Verdy p
  */
@@ -379,11 +434,17 @@ $messages['fr'] = array(
 	'maps_desc' => 'Permet d’afficher des coordonnées dans des cartes, ainsi que des adresses géocodées ([http://wiki.bn2vs.com/wiki/Maps démonstration]).
 Services de cartographie disponibles : $1',
 	'maps_map' => 'Carte',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitude :',
+	'maps-longitude' => 'Longitude :',
 	'maps_coordinates_missing' => "Aucune coordonnée n'a été fournie pour le plan.",
 	'maps_geocoding_failed' => "{{PLURAL:$2|L′adresse suivante n'as pu être géocodée|Les adresses suivantes n'ont pas pu être géocodées}} : $1.
 Le plan ne peut pas être affiché.",
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|L′adresse suivante n’as pu être géocodée|Les adresses suivantes n’ont pas pu être géocodées}} et {{PLURAL:$2|n’est pas affichée|ne sont pas affichées}} sur le plan : $1',
-	'maps_unrecognized_coords' => "Les coordonnées suivantes n'ont pas été reconnues : $1.",
+	'maps_unrecognized_coords' => "{{PLURAL:$2|La coordonnée suivante n'a pas été reconnue|Les coordonnées suivantes n'ont pas été reconnues}} : $1.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordonnée suivante n'a pas été reconnue|Les coordonnées suivantes n'ont pas été reconnues}} et {{PLURAL:$2|a été omise|ont été omises}} sur la carte :
 $1",
 	'maps_map_cannot_be_displayed' => 'La carte ne peut pas être affichée.',
@@ -417,11 +478,17 @@ $messages['gl'] = array(
 	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://wiki.bn2vs.com/wiki/Maps demostración]).
 Servizos de cartografía dispoñibles: $1',
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'L',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitude:',
+	'maps-longitude' => 'Lonxitude:',
 	'maps_coordinates_missing' => 'Non se proporcionou ningunha coordenada para o mapa.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}}: $1.
 O mapa non se pode mostrar.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte enderezo non se puido xeocodificar|Os seguintes enderezos non se puideron xeocodificar}} e {{PLURAL:$2|omitiuse|omitíronse}} no mapa: $1.',
-	'maps_unrecognized_coords' => 'Non se recoñeceron as seguintes coordenadas: $1.',
+	'maps_unrecognized_coords' => 'Non se {{PLURAL:$2|recoñeceu a seguinte coordenada|recoñeceron as seguintes coordenadas}}: $1.',
 	'maps_unrecognized_coords_for' => 'Non se {{PLURAL:$2|recoñeceu a seguinte coordenada|recoñeceron as seguintes coordenadas}} e {{PLURAL:$2|foi omitida|foron omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'O mapa non se pode mostrar.',
@@ -440,6 +507,12 @@ $1',
 $messages['gsw'] = array(
 	'maps_desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Maps Demo]',
 	'maps_map' => 'Charte',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Breiti:',
+	'maps-longitude' => 'Lengi:',
 	'maps_coordinates_missing' => 'S git kei Koordinate fir die Charte.',
 	'maps_geocoding_failed' => 'Die {{PLURAL:$2|Adräss het|Adräss hän}} nit chenne georeferänziert wäre: $1. D Charte cha nit aazeigt wäre.',
 	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|Adräss het|Adrässe hän}} nit chenne georeferänziert wäre un {{PLURAL:$2|isch|sin}} us dr Charte uusegnuu wore: $1',
@@ -464,6 +537,12 @@ $messages['he'] = array(
 	'maps_desc' => 'הוספת האפשרות להצגת נתוני קואורדינטות במפות וכתובות geocode ([http://wiki.bn2vs.com/wiki/Maps demo]).
 שירותי המיפוי הזמינים: $1',
 	'maps_map' => 'מפה',
+	'maps-abb-north' => "צפ'",
+	'maps-abb-east' => "מז'",
+	'maps-abb-south' => "דר'",
+	'maps-abb-west' => "מע'",
+	'maps-latitude' => 'קו רוחב:',
+	'maps-longitude' => 'קו אורך:',
 	'maps_coordinates_missing' => 'לא סופקו קואורדינטות למפה.',
 	'maps_geocoding_failed' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}: $1.
 לא ניתן להציג את המפה.',
@@ -499,10 +578,16 @@ $messages['hsb'] = array(
 	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić ([http://wiki.bn2vs.com/wiki/Maps demo]). 
 K dispoziciji stejace kartowe słužby: $1',
 	'maps_map' => 'Karta',
+	'maps-abb-north' => 'S',
+	'maps-abb-east' => 'W',
+	'maps-abb-south' => 'J',
+	'maps-abb-west' => 'Z',
+	'maps-latitude' => 'Šěrina:',
+	'maps-longitude' => 'Dołhosć:',
 	'maps_coordinates_missing' => 'Za kartu njejsu koordinaty podate.',
 	'maps_geocoding_failed' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno: $1. Karta njeda so zwobraznić.',
 	'maps_geocoding_failed_for' => 'Geokodowanje {{PLURAL:$2|slědowaceje adresy|slědowaceju adresow|slědowacych adresow|slědowacych adresow}} njebě móžno a {{PLURAL:$2|tuta adresa|tutej adresy|tute adresy|tute adresy}} so na karće {{PLURAL:$2|wuwostaja|wuwostajetej|wuwostajeja|wuwostajeja}}: $1',
-	'maps_unrecognized_coords' => 'Slědowace koordinaty njebuchu spóznane: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}} a {{PLURAL:$2|bu na karće wuwostajena|buštej na karće wuwostajenej|buchu na karće wuwostajene|buchu na karće wuwostajene}}: $1',
 	'maps_map_cannot_be_displayed' => 'Karta njeda so zwobraznić.',
 	'maps_click_to_activate' => 'Klikń, zo by kartu aktiwizował',
@@ -521,6 +606,12 @@ K dispoziciji stejace kartowe słužby: $1',
 $messages['hu'] = array(
 	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://wiki.bn2vs.com/wiki/Maps demó]). Elérhető térképszolgáltatások: $1',
 	'maps_map' => 'Térkép',
+	'maps-abb-north' => 'É',
+	'maps-abb-east' => 'K',
+	'maps-abb-south' => 'D',
+	'maps-abb-west' => 'Ny',
+	'maps-latitude' => 'Földrajzi szélesség:',
+	'maps-longitude' => 'Földrajzi hosszúság:',
 	'maps_coordinates_missing' => 'Nincsenek megadva koordináták a térképhez.',
 	'maps_geocoding_failed' => 'A következő {{PLURAL:$2|cím|címek}} nem geokódolhatók: $1.
 A térképet nem lehet megjeleníteni.',
@@ -545,6 +636,12 @@ $messages['ia'] = array(
 	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Servicios cartographic disponibile: $1',
 	'maps_map' => 'Carta',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Latitude:',
+	'maps-longitude' => 'Longitude:',
 	'maps_coordinates_missing' => 'Nulle coordinata providite pro le mappa.',
 	'maps_geocoding_failed' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate: $1.
 Le mappa non pote esser monstrate.',
@@ -573,6 +670,12 @@ $messages['id'] = array(
 	'maps_desc' => "Memampukan tampilan data koordinat pada peta, dan alamat ''geocode'' ([http://wiki.bn2vs.com/wiki/Maps demo]). 
 Layanan pemetaan yang tersedia: $1",
 	'maps_map' => 'Peta',
+	'maps-abb-north' => 'U',
+	'maps-abb-east' => 'T',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'B',
+	'maps-latitude' => 'Lintang:',
+	'maps-longitude' => 'Bujur:',
 	'maps_coordinates_missing' => 'Tidak koordinat yang disediakan bagi peta.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode: $1. 
 Peta tidak dapat ditampilkan.',
@@ -606,6 +709,12 @@ $messages['ig'] = array(
 $messages['ja'] = array(
 	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する ([http://wiki.bn2vs.com/wiki/Maps 実演])。次の地図サービスに対応します: $1',
 	'maps_map' => '地図',
+	'maps-abb-north' => '北',
+	'maps-abb-east' => '東',
+	'maps-abb-south' => '南',
+	'maps-abb-west' => '西',
+	'maps-latitude' => '緯度:',
+	'maps-longitude' => '経度:',
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
 	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
@@ -637,12 +746,18 @@ $messages['kn'] = array(
 	'maps_wikipedia' => 'ವಿಕಿಪೀಡಿಯ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
 	'maps_desc' => 'Määt et müjjelesch, Koodinaate en Landkaate aanzezeije, un Addräße en Koodinaate op de Ääd ömzerääschne. (E [http://wiki.bn2vs.com/wiki/Maps Beispöll]). He di Deenste för Landkaat(e) ham_mer ze beede: $1',
 	'maps_map' => 'Kaat',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Breedt om Jlobus:',
+	'maps-longitude' => 'Längde om Jlobus:',
 	'maps_coordinates_missing' => 'Mer han kein Koodinaate för di Kaat.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Di Koodinaat|De Koodinaate|Kein Koodinaat}} om Jlobus för di {{PLURAL:$2|aanjejovve Adräß wohr|aanjejovve Adräße wohre|kein aanjejovve Adräß wohr}} Kappes: $1. Di Kaat künne mer su nit aanzeije.',
 	'maps_geocoding_failed_for' => 'De Koodinaate om Jlobus för {{PLURAL:$2|ein|paa|kein}} vun dä aanjejovve Adräße {{PLURAL:$2|es|wohre|Fähler!}} Kappes. Di {{PLURAL:$2|es|sin|Fähler!}} dröm nit op dä Kaat. De fottjelohße {{PLURAL:$2|es|sin|Fähler!}}: $1',
@@ -671,6 +786,12 @@ $messages['lad'] = array(
 $messages['lb'] = array(
 	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
 	'maps_map' => 'Kaart',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Breedegrad:',
+	'maps-longitude' => 'Längtegrad:',
 	'maps_coordinates_missing' => "Et goufe keng Koordinate fir d'Kaart uginn.",
 	'maps_geocoding_failed' => 'Dës {{PLURAL:$2|Adress konnt|Adresse konnten}} net geocodéiert ginn: $1',
 	'maps_geocoding_failed_for' => 'Dës {{PLURAL:$2|Adress|Adresse}} konnten net geocodéiert ginn an {{PLURAL:$2|huet|hu}} missen op der Kaart ewechgelooss ginn:
@@ -696,12 +817,18 @@ $messages['mk'] = array(
 	'maps_desc' => 'Дава можност за приказ на координатни податоци во картите, и геокодирање на адреси ([http://wiki.bn2vs.com/wiki/Maps демо]).
 Картографски служби на располагање: $1',
 	'maps_map' => 'Карта',
+	'maps-abb-north' => 'С',
+	'maps-abb-east' => 'И',
+	'maps-abb-south' => 'Ј',
+	'maps-abb-west' => 'З',
+	'maps-latitude' => 'Геог. ширина',
+	'maps-longitude' => 'Геог. должина:',
 	'maps_coordinates_missing' => 'Нема координати за картата.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Следнава адреса не можеше да се геокодира|Следниве адреси не можеа да се геокодираат}}: $1.
 Картата не може да се прикаже.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следнава адреса не можеше да се геокодира|Следниве адреси не можеа да се геокодираат}} и затоа {{PLURAL:$2|беше изоставена|беа изоставени}} од картата:
 $1',
-	'maps_unrecognized_coords' => 'Следниве координати не беа препознаени: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Следнава координата не е препознаена|Следниве координати не се препознаени}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Следнава координата не беше препознаена|Следниве координати не беа препознаени}} и {{PLURAL:$2|беше изоставена|беа изоставени}} од картата:
 $1',
 	'maps_map_cannot_be_displayed' => 'Картата не може да се прикаже.',
@@ -721,12 +848,18 @@ $messages['nl'] = array(
 	'maps_desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Beschikbare kaartdiensten: $1',
 	'maps_map' => 'Kaart',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'Z',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Breedte:',
+	'maps-longitude' => 'Lengte:',
 	'maps_coordinates_missing' => 'Er zijn geen coördinaten opgegeven voor de kaart.',
 	'maps_geocoding_failed' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk: $1
 De kaart kan niet worden weergegeven.',
 	'maps_geocoding_failed_for' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk en {{PLURAL:$2|dit is|deze zijn}} weggelaten uit de kaart:
 $1',
-	'maps_unrecognized_coords' => 'De volgende coördinaten zijn niet herkend: $1.',
+	'maps_unrecognized_coords' => 'De volgende {{PLURAL:$2|coördinaat is|coördinaten zijn}} niet herkend: $1.',
 	'maps_unrecognized_coords_for' => 'De volgende {{PLURAL:$2|coördinaat is niet herkend en is|coördinaten zijn niet herkend en zijn}} weggelaten uit de kaart:
 $1.',
 	'maps_map_cannot_be_displayed' => 'De kaart kan niet weergegeven worden.',
@@ -747,6 +880,12 @@ $1.',
  */
 $messages['nn'] = array(
 	'maps_map' => 'Kart',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'A',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'V',
+	'maps-latitude' => 'Breiddegrad:',
+	'maps-longitude' => 'Lengdegrad:',
 	'maps_coordinates_missing' => 'Ingen koordinatar vart oppgjevne for kartet.',
 	'maps_unrecognized_coords' => 'Dei fylgjande koordinatane vart ikkje kjende att: $1.',
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikkje verta vist.',
@@ -766,11 +905,17 @@ $messages['no'] = array(
 	'maps_desc' => 'Gir mulighet for å vise koorinatdata i kart og geokodeadresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Tilgjengelige karttjenester: $1',
 	'maps_map' => 'Kart',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'Ø',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'V',
+	'maps-latitude' => 'Breddegrad:',
+	'maps-longitude' => 'Lengdegrad:',
 	'maps_coordinates_missing' => 'Ingen koordinater oppgitt for kartet.',
 	'maps_geocoding_failed' => 'Følgende {{PLURAL:$2|adresse|adresser}} kunne ikke geokodes: $1.',
 	'maps_geocoding_failed_for' => 'Følgende {{PLURAL:$2|adresse|adresser}} kunne ikke geokodes og har blitt utelatt fra kartet:
 $1',
-	'maps_unrecognized_coords' => 'Følgende koordinat ble ikke gjenkjent: $1.',
+	'maps_unrecognized_coords' => 'Følgende {{PLURAL:$2|koordinat|koordinat}} ble ikke gjenkjent: $1.',
 	'maps_unrecognized_coords_for' => 'Følgende {{PLURAL:$2|koordinat|koordinater}} ble ikke gjenkjent og har blitt utelatt fra kartet:
 $1',
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikke vises.',
@@ -791,6 +936,12 @@ $messages['oc'] = array(
 ([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://wiki.bn2vs.com/wiki/Maps demonstracion]). 
 Servicis de cartografia disponibles : $1",
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitud :',
+	'maps-longitude' => 'Longitud :',
 	'maps_coordinates_missing' => 'Cap de coordenada es pas estada provesida pel plan.',
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} : $1.
 Lo plan pòt pas èsser afichat.",
@@ -815,6 +966,12 @@ $1',
 $messages['pl'] = array(
 	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostępne serwisy mapowe: $1',
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Szerokość geograficzna',
+	'maps-longitude' => 'Długość geograficzna',
 	'maps_coordinates_missing' => 'Brak współrzędnych dla mapy.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Następującego adresu nie można odnaleźć na mapie|Następujących adresów nie można odnaleźć na mapie:}} $1.
 Mapa nie może zostać wyświetlona.',
@@ -839,11 +996,17 @@ $1',
 $messages['pms'] = array(
 	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Sërvissi ëd mapatura disponìbil: $1",
 	'maps_map' => 'Pian',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Latitùdin:',
+	'maps-longitude' => 'Longitùdin:',
 	'maps_coordinates_missing' => 'Pa gnun-e coordinà dàite për la mapa.',
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peulo pa esse sota geocode: $1.
 La mapa a peul pa esse visualisà.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peula pa esse sota geocode e a {{PLURAL:$2|l'é pa stàita|son pa stàite}}  butà ant la mapa: $1",
-	'maps_unrecognized_coords' => 'Le coordinà sota a son pa stàite arconossùe: $1.',
+	'maps_unrecognized_coords' => "{{PLURAL:$2|La coordinà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}: $1.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta: 
 $1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
@@ -857,18 +1020,25 @@ $1",
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
 	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e endereços por geocódigo ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
 Serviços de cartografia disponíveis: $1',
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitude:',
+	'maps-longitude' => 'Longitude:',
 	'maps_coordinates_missing' => 'Não foram fornecidas coordenadas para o mapa.',
 	'maps_geocoding_failed' => 'Não foi possível geocodificar {{PLURAL:$2|o seguinte endereço|os seguintes endereços}}: $1.
 O mapa não pode ser apresentado.',
 	'maps_geocoding_failed_for' => 'Não foi possível geocodificar {{PLURAL:$2|o seguinte endereço, que foi omitido|os seguintes endereços, que foram omitidos}} do mapa:
 $1.',
-	'maps_unrecognized_coords' => 'As seguintes coordenadas não foram reconhecidas: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|As seguintes coordenadas não foram reconhecidas|A seguinte coordenada não foi reconhecida}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
@@ -889,6 +1059,11 @@ $messages['pt-br'] = array(
 	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
 Serviços de mapeamento disponíveis: $1',
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'N',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitude:',
+	'maps-longitude' => 'Longitude:',
 	'maps_coordinates_missing' => 'Nenhuma coordenada fornecida para o mapa',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado|geocodificados}}: $1.
 O mapa não pode ser exibido.',
@@ -934,12 +1109,18 @@ $messages['ru'] = array(
 	'maps_desc' => 'Обеспечивает возможность отображения координатных данных на картах и геокодирование адресов ([http://wiki.bn2vs.com/wiki/Maps демонстрация]).
 Доступные картографические службы: $1',
 	'maps_map' => 'Карта',
+	'maps-abb-north' => 'С',
+	'maps-abb-east' => 'В',
+	'maps-abb-south' => 'Ю',
+	'maps-abb-west' => 'З',
+	'maps-latitude' => 'Широта:',
+	'maps-longitude' => 'Долгота:',
 	'maps_coordinates_missing' => 'Не указаны координаты для карты.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Следующий адрес не может быть геокодирован|Следующие адреса не могут быть геокодированы}}: $1.
 Карта не может быть отображена.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Следующий адрес не может быть геокодирован и был удалён|Следующие адреса не могут быть геокодированы и были удалены}} с карты:
 $1',
-	'maps_unrecognized_coords' => 'Следующие координаты не были опознаны: $1.',
+	'maps_unrecognized_coords' => 'Следующие {{PLURAL:$2|координаты|координаты}} не были опознаны: $1.',
 	'maps_unrecognized_coords_for' => 'Следующие координаты не были опознаны, {{PLURAL:$2|они|они}} не показаны на карте:
 $1',
 	'maps_map_cannot_be_displayed' => 'Карта не может быть показана.',
@@ -972,6 +1153,12 @@ $messages['sv'] = array(
 	'maps_desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Tillgängliga karttjänster: $1',
 	'maps_map' => 'Karta',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'Ö',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'V',
+	'maps-latitude' => 'Breddgrad:',
+	'maps-longitude' => 'Längdgrad:',
 	'maps_coordinates_missing' => 'Inga koordinater angivna för kartan.',
 	'maps_geocoding_failed' => 'Följande {{PLURAL:$2|adress|adresser}} kunde inte geokodas: $1.
 Kartan kan inte visas.',
@@ -1009,6 +1196,12 @@ $messages['th'] = array(
  */
 $messages['tr'] = array(
 	'maps_map' => 'Harita',
+	'maps-abb-north' => 'K',
+	'maps-abb-east' => 'D',
+	'maps-abb-south' => 'G',
+	'maps-abb-west' => 'B',
+	'maps-latitude' => 'Enlem:',
+	'maps-longitude' => 'Boylam:',
 	'maps_coordinates_missing' => 'Harita için koordinat girilmedi.',
 	'maps_unrecognized_coords' => 'Şu koordinatlar tanınamadı: $1',
 	'maps_map_cannot_be_displayed' => 'Harita görüntülenemiyor.',
@@ -1029,6 +1222,12 @@ $messages['vi'] = array(
 	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://wiki.bn2vs.com/wiki/Maps thử xem]).
 Các dịch vụ bản đồ có sẵn: $1',
 	'maps_map' => 'Bản đồ',
+	'maps-abb-north' => 'B',
+	'maps-abb-east' => 'Đ',
+	'maps-abb-south' => 'N',
+	'maps-abb-west' => 'T',
+	'maps-latitude' => 'Vĩ độ:',
+	'maps-longitude' => 'Kinh độ:',
 	'maps_coordinates_missing' => 'Chưa định rõ tọa độ cho bản đồ.',
 	'maps_geocoding_failed' => 'Không thể tính ra mã địa lý của {{PLURAL:$2|địa chỉ|các địa chỉ}} sau: $1.
 Không thể hiển thị bản đồ.',
