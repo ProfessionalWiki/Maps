@@ -453,17 +453,10 @@ $messages['fi'] = array(
  * @author IAlex
  * @author Jean-Frédéric
  * @author PieRRoMaN
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'semanticmaps_desc' => "Permet de voir et modifier les données de coordonnées stockées à travers l'extension Semantic MediaWiki. Services de cartes disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Démo]",
-	'semanticmaps_lonely_unit' => 'Aucun nombre trouvé devant le symbole « $1 ».',
-	'semanticmaps_bad_latlong' => "La latitude et la longitude ne doivent être données qu'une fois, et avec des coordonnées valides.",
-	'semanticmaps_abb_north' => 'N',
-	'semanticmaps_abb_east' => 'E',
-	'semanticmaps_abb_south' => 'S',
-	'semanticmaps_abb_west' => 'O',
-	'semanticmaps_label_latitude' => 'Latitude :',
-	'semanticmaps_label_longitude' => 'Longitude :',
+	'semanticmaps_desc' => 'Permet de voir et modifier les données de coordonnées stockées à travers l’extension Semantic MediaWiki ([http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Démo]). Services de cartes disponibles : $1.',
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
 	'semanticmaps_notfound' => 'pas trouvé',
@@ -471,7 +464,7 @@ $messages['fr'] = array(
 	'semanticmaps_paramdesc_geoservice' => 'Le service de géocodage utilisé pour transformer les adresses en coordonnées',
 	'semanticmaps_paramdesc_height' => 'La hauteur de la carte, en pixels ($1 par défaut)',
 	'semanticmaps_paramdesc_width' => 'La largeur de la carte, en pixels ($1 par défaut)',
-	'semanticmaps_paramdesc_zoom' => "Le niveau d'agrandissement de la carte",
+	'semanticmaps_paramdesc_zoom' => 'Le niveau d’agrandissement de la carte',
 	'semanticmaps_paramdesc_centre' => 'Les coordonnées du centre de la carte',
 	'semanticmaps_paramdesc_controls' => 'Les contrôles utilisateurs placés sur la carte',
 	'semanticmaps_paramdesc_types' => 'Les types de cartes disponibles sur la carte',
