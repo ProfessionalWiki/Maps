@@ -14,11 +14,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-/// Unicode symbols for coordinate minutes and seconds;
-/// may not display in every font ...
-define( 'SM_GEO_MIN', '′' );
-define( 'SM_GEO_SEC', '″' );
-
 /**
  * Implementation of datavalues that are geographic coordinates.
  *
@@ -49,11 +44,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( $value == '' ) {
 			$this->addError( wfMsg( 'smw_novalues' ) );
 		} else {
-			$coordinates = MapsCoordinateParser::formatCoordinates( $value );
+			$coordinates = MapsCoordinateParser::parseCoordinates( $value );
 			if ( $coordinates ) {
 				$this->mCoordinateSet = $coordinates;
 				
 				if ( $this->m_caption === false ) {
+					// TODO: parse coodinates to some notation, depending on a new setting
 					$this->m_caption = $value;
         		}				
 			} else {
@@ -78,6 +74,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected function parseDBkeys( $args ) {
 		list( $this->mCoordinateSet['lat'], $this->mCoordinateSet['lon'] ) = explode( ',', $args[0] );
 		
+		// TODO: parse coodinates to some notation, depending on a new setting
 		$this->m_caption = $this->mCoordinateSet['lat'] . ', ' . $this->mCoordinateSet['lon'];
 		$this->mWikivalue = $this->m_caption;
 	}
@@ -92,6 +89,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getShortWikiText
+	 * 
+	 * TODO: make the output here more readible (and iff possible informative)
 	 */
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
@@ -120,6 +119,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
 		} else {
+			// TODO: parse coodinates to some notation, depending on a new setting
 			return $this->mCoordinateSet['lat'] . ', ' . $this->mCoordinateSet['lon'];
 		}
 	}
@@ -145,7 +145,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
-			$lit = new SMWExpLiteral( $this->formatAngleValues( true, false ) . ', ' . $this->formatAngleValues( false, false ), $this, 'http://www.w3.org/2001/XMLSchema#string' );
+			// TODO: parse coodinates to some notation, depending on a new setting
+			$lit = new SMWExpLiteral( $this->mCoordinateSet['lat'] . ', ' . $this->mCoordinateSet['lon'], $this, 'http://www.w3.org/2001/XMLSchema#string' );
 			return new SMWExpData( $lit );
 		} else {
 			return null;
