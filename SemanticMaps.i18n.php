@@ -21,16 +21,6 @@ $messages['en'] = array(
 	'semanticmaps_desc' => "Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Available map services: $1",
 
-	// Geo coord data type
-	'semanticmaps_lonely_unit'     => 'No number found before the symbol "$1".', // $1 is something like Â°
-	'semanticmaps_bad_latlong'     => 'Latitude and longitude must be given only once, and with valid coordinates.',
-	'semanticmaps_abb_north'       => 'N',
-	'semanticmaps_abb_east'        => 'E',
-	'semanticmaps_abb_south'       => 'S',
-	'semanticmaps_abb_west'        => 'W',
-	'semanticmaps_label_latitude'  => 'Latitude:',
-	'semanticmaps_label_longitude' => 'Longitude:',
-
 	// Forms
 	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',
 	'semanticmaps_enteraddresshere' 	=> 'Enter address here',
