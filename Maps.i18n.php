@@ -21,12 +21,20 @@ $messages['en'] = array(
 Available mapping services: $1",
 	'maps_map' => 'Map',
 
+	// Coordinate handling
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude'  => 'Latitude:',
+	'maps-longitude' => 'Longitude:',	
+
 	// Coordinate errors
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
 	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
-	'maps_unrecognized_coords' => 'The following coordinates were not recognized: $1.',
+	'maps_unrecognized_coords' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognized: $1.',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognized and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',

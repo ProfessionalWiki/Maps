@@ -56,12 +56,22 @@ class MapsCoordinateParser {
 	public static function formatCoordinates( $coordinates, $targetType = COORDS_FLOAT, $directional = false ) {
 		$coordinates = trim( $coordinates );
 		
+		/*
+		
+		$value = str_replace( array( '&#176;', '&deg;' ), '°', $value );
+		$value = str_replace( array( '&acute;', '&#180;' ), '´', $value );
+		$value = str_replace( array( '&#8243;', '&Prime;', "''", '"', '´´', SM_GEO_MIN . SM_GEO_MIN ), SM_GEO_SEC, $value );
+		$value = str_replace( array( '&#8242;', '&prime;', "'", '´' ), SM_GEO_MIN, $value );
+		
+		 */
+
 		$coordinates = self::handleI18nLabels( $coordinates );
 		
 		$coordsType = self::getCoordinatesType( $coordinates );
 		
 		// If getCoordinatesType returned false, the provided value is invalid.
 		if ( $coordsType === false ) {
+			die('WUHA');
 			return false;
 		}
 		
@@ -197,14 +207,14 @@ class MapsCoordinateParser {
 	 */
 	private static function handleI18nLabels( $coordinates ) {
 		self::initializeDirectionLabels();
-		$coordinates = str_replace( self::$mI18nDirections, self::$mDirections, $coordinates );
+		return str_replace( self::$mI18nDirections, self::$mDirections, $coordinates );
 	}
 	
 	/**
 	 * Initialize the cache for internationalized direction labels if not done yet. 
 	 */
 	private static function initializeDirectionLabels() {
-		if ( !$this->mI18nDirections ) {
+		if ( !self::$mI18nDirections ) {
 			self::$mI18nDirections = array(
 				'N' => wfMsgForContent( 'maps-abb-north' ),
 				'E' => wfMsgForContent( 'maps-abb-east' ),
