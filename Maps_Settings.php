@@ -125,6 +125,19 @@ $egMapsDefaultGeoService = 'geonames';
 
 
 
+# Coordinate configuration
+
+# Enum. The default output format of coordinates.
+# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
+$egMapsCoordinateNotation = Maps_COORDS_FLOAT;
+
+# Boolean. Indicates if coordinates should be outputted in directional notation by default.
+$egMapsCoordinateDirectional = false;
+
+
+
+
+
 # General map configuration
 
 # Integer. The default width and height of a map. These values will only be used when the user does not provide them.

@@ -162,14 +162,18 @@ final class MapsParserFunctions {
 	public static function filterInvalidCoords( &$coordList, $delimeter = ';' ) {
 		$coordFails = array();
 		$validCoordinates = array();
-        $coordinates = explode( $delimeter, $coordList );
+        $coordinateSets = explode( $delimeter, $coordList );
         
-        foreach ( $coordinates as $coordinate ) {
-        	if ( MapsCoordinateParser::areCoordinates( $coordinate ) ) {
-        		$validCoordinates[] = $coordinate;
+        // Loop through all the provided coordinates. If they are valid, format their parsed values
+        // to non-directional floats, and add them to the valid array, else add them to the fails array.
+        foreach ( $coordinateSets as $coordinates ) {
+        	$parsedCoords = MapsCoordinateParser::parseCoordinates( $coordinates );
+        	
+        	if ( $parsedCoords ) { // Will be false when parsing failed.
+        		$validCoordinates[] = MapsCoordinateParser::formatCoordinates( $parsedCoords, Maps_COORDS_FLOAT, false );
         	}
         	else {
-        		$coordFails[] = $coordinate;
+        		$coordFails[] = $coordinates;
         	}
         }
         

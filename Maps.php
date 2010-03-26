@@ -35,6 +35,11 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 else {
 	define( 'Maps_VERSION', '0.5.6' );
 	
+	define( 'Maps_COORDS_FLOAT', 0 );
+	define( 'Maps_COORDS_DMS', 1 );
+	define( 'Maps_COORDS_DM', 2 );
+	define( 'Maps_COORDS_DD', 3 );
+	
 	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	

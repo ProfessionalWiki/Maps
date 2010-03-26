@@ -13,12 +13,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'COORDS_FLOAT', 0 );
-define( 'COORDS_DMS', 1 );
-define( 'COORDS_DM', 2 );
-define( 'COORDS_DD', 3 );
-
-/// Unicode symbols for coordinate minutes and seconds.
+// Unicode symbols for coordinate minutes and seconds.
+// TODO: use?
 define( 'Maps_GEO_MIN', '′' );
 define( 'Maps_GEO_SEC', '″' );
 
@@ -30,7 +26,6 @@ define( 'Maps_GEO_SEC', '″' );
  * 
  * @author Jeroen De Dauw
  * 
- * TODO: add functions to get a parsed value back in a non-float representatation
  * TODO: hold into account all valid spacing styles
  * TODO: support different coordinate seperators, currently only comma's are supported
  * TODO: normalize the input before doing anything with it 
@@ -42,18 +37,14 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Takes in a set of coordinates and checks if they are a supported format.
-	 * If they are, they will be parsed to the given notation, which defaults to
-	 * non-directional floats, and returned in an associative array with keys lat and lon. 
+	 * If they are, they will be parsed to a set of non-directional floats, that
+	 * will be stored in an array with keys 'lat' and 'lon'. 
 	 * 
-	 * @param string $coordinates The coordinates to be formatted.
-	 * @param coordinate type $targetType The notation to which they should be formatted. Defaults to floats.
-	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
+	 * @param string $coordinates The coordinates to be parsed.
 	 * 
 	 * @return array or false
-	 * 
-	 * TODO: hold into account type and directional parameters
 	 */
-	public static function formatCoordinates( $coordinates, $targetType = COORDS_FLOAT, $directional = false ) {
+	public static function parseCoordinates( $coordinates ) {
 		$coordinates = trim( $coordinates );
 		
 		/*
@@ -71,7 +62,6 @@ class MapsCoordinateParser {
 		
 		// If getCoordinatesType returned false, the provided value is invalid.
 		if ( $coordsType === false ) {
-			die('WUHA');
 			return false;
 		}
 		
@@ -101,16 +91,16 @@ class MapsCoordinateParser {
 	public static function getCoordinatesType( $coordinates ) {
 		switch ( true ) {
 			case self::areFloatCoordinates( $coordinates ):
-				return COORDS_FLOAT;
+				return Maps_COORDS_FLOAT;
 				break;
 			case self::areDMSCoordinates( $coordinates ):
-				return COORDS_DMS;
+				return Maps_COORDS_DMS;
 				break;
 			case self::areDDCoordinates( $coordinates ):
-				return COORDS_DD;
+				return Maps_COORDS_DD;
 				break;
 			case self::areDMCoordinates( $coordinates ):
-				return COORDS_DM;
+				return Maps_COORDS_DM;
 				break;
 			default:
 				return false;
@@ -129,26 +119,81 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * Returns the coordinate parsed in the given notation.
+	 * Turns a given coordinate set into a single string that gets formatted
+	 * depending on the $targetType and $directional parameters. 
 	 * 
-	 * @param string $coordinate
-	 * @param coordinate type $coordType
+	 * they will be parsed to the given notation, which defaults to
+	 * non-directional floats
+	 * 
+	 * @param array $coordinates The set of coordinates that needs to be formatted. Either an associative
+	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
+	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
+	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
+	 * 
+	 * @return string
+	 */
+	public static function formatCoordinates( array $coordinates, $targetFormat = Maps_COORDS_FLOAT, $directional = false, $separator = ', ' ) {
+		if ( !array_key_exists( 'lat', $coordinates ) || !array_key_exists( 'lon', $coordinates ) ) {
+			list( $coordinates['lat'], $coordinates['lon'] ) = $coordinates;
+		}
+		
+		$coordinates = array(
+			'lat' => self::formatCoordinate( $coordinates['lat'], $targetFormat ),
+			'lon' => self::formatCoordinate( $coordinates['lon'], $targetFormat ),
+		);		
+		
+		$coordinates = self::setAngles( $coordinates, $directional );
+		
+		return implode( $separator, $coordinates );
+	}
+	
+	/**
+	 * Formats a single non-directional float coordinate in the given notation.
+	 * 
+	 * @param string $coordinate The coordinate to be formatted.
+	 * @param coordinate type $targetFormat The notation to which they should be formatted.
+	 * 
+	 * @return string
+	 */
+	private static function formatCoordinate( $coordinate, $targetFormat ) {
+		switch ( $targetFormat ) {
+			case Maps_COORDS_FLOAT:
+				return $coordinate;
+			case Maps_COORDS_DMS:
+				$coordStr = round( $coordinate ) . '° ';
+				$minutes = ( $coordinate % 1 ) / 60;
+				$coordStr .= round( $minutes ) . "' ";
+				$coordStr .= ( $minutes % 1 ) / 60 . '"';
+				return $coordStr;
+			case Maps_COORDS_DD:
+				return $coordinate . '°';
+			case Maps_COORDS_DM:
+				return round( $coordinate ) . '° ' . ( $coordinate % 1 ) / 60 . "'";
+			default:
+				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
+		}
+	}
+	
+	/**
+	 * Parses a coordinate that's in the provided notation to float representatation.
+	 * 
+	 * @param string $coordinate The coordinate to be parsed.
+	 * @param coordinate type $coordType The notation the coordinate is currently in.
 	 * 
 	 * @return string
 	 */
 	private static function parseCoordinate( $coordinate, $coordType ) {
 		switch ( $coordType ) {
-			case COORDS_FLOAT:
-				return self::parseFloatCoordinate( $coordinate );
-				break;
-			case COORDS_DMS:
+			case Maps_COORDS_FLOAT:
+				return $coordinate;
+			case Maps_COORDS_DMS:
 				return self::parseDMSCoordinate( $coordinate );
-				break;
-			case COORDS_DD:
+			case Maps_COORDS_DD:
 				return self::parseDDCoordinate( $coordinate );
-				break;
-			case COORDS_DM:
+			case Maps_COORDS_DM:
 				return self::parseDMCoordinate( $coordinate );
+			default:
+				throw new Exception( __METHOD__ . " does not support parsing of the $coordType coordinate type." );
 		}		
 	}	
 	
@@ -159,7 +204,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return boolean
 	 */
-	private static function areFloatCoordinates( $coordinates ) {
+	public static function areFloatCoordinates( $coordinates ) {
 		return preg_match( '/^(-)?\d{1,3}(\.\d{1,20})?,(\s)?(-)?\d{1,3}(\.\d{1,20})?$/', $coordinates ) // Non-directional
 			|| preg_match( '/^\d{1,3}(\.\d{1,20})?(\s)?(N|S),(\s)?\d{1,3}(\.\d{1,20})?(\s)?(E|W)$/', $coordinates ); // Directional
 	}
@@ -171,7 +216,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return boolean
 	 */	
-	private static function areDMSCoordinates( $coordinates ) {
+	public static function areDMSCoordinates( $coordinates ) {
 		return preg_match( '/^(-)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?),(\s)?(-)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)$/', $coordinates ) // Non-directional
 			|| preg_match( '/^(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(\s)?(N|S),(\s)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(\s)?(E|W)$/', $coordinates ); // Directional
 	}
@@ -183,7 +228,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return boolean
 	 */	
-	private static function areDDCoordinates( $coordinates ) {
+	public static function areDDCoordinates( $coordinates ) {
 		return preg_match( '/^(-)?\d{1,3}(|\.\d{1,20})°,(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,20})°$/', $coordinates ) // Non-directional
 			|| preg_match( '/^\d{1,3}(|\.\d{1,20})°(\s)?(N|S),(\s)?(\s)?\d{1,3}(|\.\d{1,20})°(\s)?(E|W)?$/', $coordinates ); // Directional
 	}
@@ -195,7 +240,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return boolean
 	 */	
-	private static function areDMCoordinates( $coordinates ) {
+	public static function areDMCoordinates( $coordinates ) {
 		return preg_match( '/(-)?\d{1,3}°\d{1,3}(\.\d{1,20}\')?,(\s)?(-)?\d{1,3}°\d{1,3}(\.\d{1,20}\')?$/', $coordinates ) // Non-directional
 			|| preg_match( '/\d{1,3}°\d{1,3}(\.\d{1,20}\')?(\s)?(N|S),(\s)?\d{1,3}°\d{1,3}(\.\d{1,20}\')?(\s)?(E|W)?$/', $coordinates ); // Directional
 	}
@@ -242,7 +287,7 @@ class MapsCoordinateParser {
 	/**
 	 * Turns directional notation (N/E/S/W) of a single coordinate into non-directional notation (+/-).
 	 * 
-	 * @param string $coordinates
+	 * @param string $coordinate
 	 * 
 	 * @return string
 	 */	
@@ -263,14 +308,33 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * Takes a set of coordinates in float representataion, and returns them in float representataion.
+	 * Turns non-directional notation in directional notation when needed.
 	 * 
-	 * @param string $coordinate
+	 * @param array $coordinates The coordinates set to possibly make directional. Needs to be non-directional!
+	 * 
+	 * @return array
+	 */	
+	private static function setAngles( array $coordinates, $directional ) {
+		if ( $directional ) {
+			return array(
+				'lat' => self::setDirectionalAngle( $coordinates['lat'] ),
+				'lon' => self::setDirectionalAngle( $coordinates['lon'] ),
+			);
+		} else {
+			return $coordinates;
+		}
+	}
+	
+	/**
+	 * Turns non-directional notation in directional notation.
+	 * 
+	 * @param string $coordinate The coordinate to make directional. Needs to be non-directional!
 	 * 
 	 * @return string
-	 */
-	private static function parseFloatCoordinate( $coordinate ) {
-		return $coordinate; // No parsing needed?
+	 */	
+	private static function setDirectionalAngle( $coordinate ) {	
+		// TODO: do reverse of resolveAngle
+		return $coordinate;
 	}
 	
 	/**
