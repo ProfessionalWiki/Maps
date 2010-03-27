@@ -84,13 +84,36 @@ abstract class SMFormInput extends MapsMapFeature {
 	}
 	
 	private function addGeocodingField() {
-		global $sfgTabIndex;
+		global $sfgTabIndex, $wgOut, $smgAddedFormJs;
 		$sfgTabIndex++;
 		
-		// Retrieve language valuess
-		$enter_address_here_text = wfMsg( 'semanticmaps_enteraddresshere' );
-		$lookup_coordinates_text = wfMsg( 'semanticmaps_lookupcoordinates' );
-		$not_found_text = wfMsg( 'semanticmaps_notfound' );
+		// TODO: test if this works
+		
+		if ( !$smgAddedFormJs ) {
+			$smgAddedFormJs = true;
+			
+			$n = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-north' ) );
+			$e = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-east' ) );
+			$s = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-south' ) );
+			$w = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-south' ) );
+			$deg = Xml::encodeJsVar( Maps_GEO_DEG );
+			
+			$wgOut->addScript(
+				<<<EOT
+function convertLatToDMS (val) {
+	return Math.abs(val) + "$deg " + ( val < 0 ? "$s" : "$n" );
+}
+function convertLngToDMS (val) {
+	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
+}			
+EOT
+			);			
+		}
+		
+		// Retrieve language values.
+		$enter_address_here_text = Xml::encodeJsVar( wfMsg( 'semanticmaps_enteraddresshere' ) );
+		$lookup_coordinates_text = Xml::encodeJsVar( wfMsg( 'semanticmaps_lookupcoordinates' ) );
+		$not_found_text = Xml::encodeJsVar( wfMsg( 'semanticmaps_notfound' ) );
 		
 		$adress_field = SMFormInput::getDynamicInput( $this->geocodeFieldName, $enter_address_here_text, 'size="30" name="geocode" style="color: #707070" tabindex="' . $sfgTabIndex . '"' );
 		$this->output .= "
