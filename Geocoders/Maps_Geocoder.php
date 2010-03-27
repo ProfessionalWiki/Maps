@@ -93,8 +93,6 @@ final class MapsGeocoder {
 			return self::$mGeocoderCache[$address];
 		}
 		
-		$coordinates = false;
-		
 		$service = self::getValidGeoService( $service, $mappingService );
 		
 		// Make sure the needed class is loaded.

@@ -204,6 +204,8 @@ class MapsGoogleMaps {
 	/**
 	 * This function ensures backward compatibility with Semantic Google Maps and other extensions
 	 * using $wgGoogleMapsKey instead of $egGoogleMapsKey.
+	 * 
+	 * FIXME: Possible vunerability when register globals is on.
 	 */
 	public static function validateGoogleMapsKey() {
 		global $egGoogleMapsKey, $wgGoogleMapsKey;

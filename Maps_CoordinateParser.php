@@ -14,9 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 // Unicode symbols for coordinate minutes and seconds.
-// TODO: use?
-define( 'Maps_GEO_MIN', '′' );
-define( 'Maps_GEO_SEC', '″' );
+define( 'Maps_GEO_DEG', "°" );
+define( 'Maps_GEO_MIN', "'" );
+define( 'Maps_GEO_SEC', '"' );
 
 /**
  * Static class for coordinate validation and parsing.
@@ -26,9 +26,9 @@ define( 'Maps_GEO_SEC', '″' );
  * 
  * @author Jeroen De Dauw
  * 
- * TODO: hold into account all valid spacing styles
- * TODO: support different coordinate seperators, currently only comma's are supported
- * TODO: normalize the input before doing anything with it 
+ * TODO:
+ * support different coordinate seperators, currently only comma's are supported. 
+ * esp spaces since these where allowed in previouse version.
  */
 class MapsCoordinateParser {
 	
@@ -41,39 +41,40 @@ class MapsCoordinateParser {
 	 * will be stored in an array with keys 'lat' and 'lon'. 
 	 * 
 	 * @param string $coordinates The coordinates to be parsed.
+	 * @param string $separator Delimiter that seperates the latitude and longitude
 	 * 
 	 * @return array or false
 	 */
-	public static function parseCoordinates( $coordinates ) {
+	public static function parseCoordinates( $coordinates, $separator = ',' ) {
+		// Normalize the coordinates string.
 		$coordinates = trim( $coordinates );
-		
-		/*
-		
-		$value = str_replace( array( '&#176;', '&deg;' ), '°', $value );
-		$value = str_replace( array( '&acute;', '&#180;' ), '´', $value );
-		$value = str_replace( array( '&#8243;', '&Prime;', "''", '"', '´´', SM_GEO_MIN . SM_GEO_MIN ), SM_GEO_SEC, $value );
-		$value = str_replace( array( '&#8242;', '&prime;', "'", '´' ), SM_GEO_MIN, $value );
-		
-		 */
+		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
+		$coordinates = str_replace( array( '&acute;', '&#180;' ), Maps_GEO_SEC, $coordinates );
+		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″'), Maps_GEO_MIN, $coordinates );
+		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
 
+		// Handle i18n notations.
 		$coordinates = self::handleI18nLabels( $coordinates );
 		
+		// Determine what notation the coordinates are in.
 		$coordsType = self::getCoordinatesType( $coordinates );
 		
-		// If getCoordinatesType returned false, the provided value is invalid.
+		// If getCoordinatesType returned false, the provided value is invalid or in an unsuported notation.
 		if ( $coordsType === false ) {
 			return false;
 		}
 		
 		// Split the coodrinates string into a lat and lon part.
-		$coordinates = explode( ',', $coordinates );
+		$coordinates = explode( $separator, $coordinates );
 		$coordinates = array(
 			'lat' => trim ( $coordinates[0] ),
 			'lon' => trim ( $coordinates[1] ),
 		);
 		
+		// Ensure the coordinates are in non-directional notation.
 		$coordinates = self::resolveAngles( $coordinates );
 		
+		// Parse both latitude and longitude to float notation, and return the result.
 		return array(
 			'lat' => self::parseCoordinate( $coordinates['lat'], $coordsType ),
 			'lon' => self::parseCoordinate( $coordinates['lon'], $coordsType ),
@@ -129,6 +130,7 @@ class MapsCoordinateParser {
 	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
+	 * @param string $separator Delimiter to seperate the latitude and longitude with.
 	 * 
 	 * @return string
 	 */
@@ -160,15 +162,15 @@ class MapsCoordinateParser {
 			case Maps_COORDS_FLOAT:
 				return $coordinate;
 			case Maps_COORDS_DMS:
-				$coordStr = round( $coordinate ) . '° ';
+				$coordStr = round( $coordinate ) . Maps_GEO_DEG . ' ';
 				$minutes = ( $coordinate % 1 ) / 60;
-				$coordStr .= round( $minutes ) . "' ";
-				$coordStr .= ( $minutes % 1 ) / 60 . '"';
+				$coordStr .= round( $minutes ) . Maps_GEO_MIN . ' ';
+				$coordStr .= ( $minutes % 1 ) / 60 . Maps_GEO_SEC;
 				return $coordStr;
 			case Maps_COORDS_DD:
-				return $coordinate . '°';
+				return $coordinate . Maps_GEO_DEG;
 			case Maps_COORDS_DM:
-				return round( $coordinate ) . '° ' . ( $coordinate % 1 ) / 60 . "'";
+				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate % 1 ) / 60 . Maps_GEO_MIN;
 			default:
 				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
 		}
@@ -348,9 +350,9 @@ class MapsCoordinateParser {
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
-		$degreePosition = strpos( $coordinate, '°' );
-		$minutePosition = strpos( $coordinate, "'" );
-		$secondPosition = strpos( $coordinate, '"' );
+		$degreePosition = strpos( $coordinate, Maps_GEO_DEG );
+		$minutePosition = strpos( $coordinate, Maps_GEO_MIN );
+		$secondPosition = strpos( $coordinate, Maps_GEO_SEC );
 		
 		$minuteLength = $minutePosition - $degreePosition - 1;
 		$secondLength = $secondPosition - $minutePosition - 1;
@@ -373,7 +375,7 @@ class MapsCoordinateParser {
 	 * @return string
 	 */	
 	private static function parseDDCoordinate( $coordinate ) {
-		return (int)str_replace( '°', '', $coordinate );
+		return (int)str_replace( Maps_GEO_DEG, '', $coordinate );
 	}
 	
 	/**
@@ -387,7 +389,7 @@ class MapsCoordinateParser {
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 				
-		list( $degrees, $minutes ) = explode( '°', $coordinate );
+		list( $degrees, $minutes ) = explode( Maps_GEO_DEG, $coordinate );
 		$minutes = substr( $minutes, -1 );
 		
 		$coordinate = $degrees + $minutes / 60;

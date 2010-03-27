@@ -27,7 +27,7 @@ $wgHooks['ParserFirstCallInit'][] = 'efMapsRegisterGeoFunctions';
 function efMapsGeoFunctionMagic( &$magicWords, $langCode ) {
 	$magicWords['geocode'] = array( 0, 'geocode' );
 	$magicWords['geocodelat']	= array ( 0, 'geocodelat' );
-	$magicWords['geocodelng']	= array ( 0, 'geocodelng' );
+	$magicWords['geocodelon']	= array ( 0, 'geocodelon', 'geocodelng' );
 	
 	return true; // Unless we return true, other parser functions won't get loaded
 }
@@ -39,13 +39,16 @@ function efMapsRegisterGeoFunctions( &$wgParser ) {
 	// Hooks to enable the geocoding parser functions
 	$wgParser->setFunctionHook( 'geocode', array( 'MapsGeocodeFunctions', 'renderGeocoder' ) );
 	$wgParser->setFunctionHook( 'geocodelat', array( 'MapsGeocodeFunctions', 'renderGeocoderLat' ) );
-	$wgParser->setFunctionHook( 'geocodelng', array( 'MapsGeocodeFunctions', 'renderGeocoderLng' ) );
+	$wgParser->setFunctionHook( 'geocodelon', array( 'MapsGeocodeFunctions', 'renderGeocoderLon' ) );
 	
 	return true;
 }
 
 final class MapsGeocodeFunctions {
 
+	/**
+	 * Returns a boolean indicating if MapsGeocoder is available. 
+	 */
 	private static function geocoderIsAvailable() {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
@@ -55,25 +58,29 @@ final class MapsGeocodeFunctions {
 	 * Handler for the geocode parser function. Returns the latitude and longitude
 	 * for the provided address, or an empty string, when the geocoding fails.
 	 *
-	 * @param unknown_type $parser
-	 * @param string $address The address to geocode.
+	 * @param $parser
+	 * @param string $coordsOrAddress The address to geocode, or coordinates to reformat.
 	 * @param string $service Optional. The geocoding service to use.
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
+	 * 
+	 * TODO: rewrite
+	 * 
 	 * @return string
 	 */
-	public static function renderGeocoder( $parser, $address, $service = '', $mappingService = '' ) {
-		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
-		return $geovalues ? $geovalues['lat'] . ', ' . $geovalues['lon'] : '';
+	public static function renderGeocoder( $parser, $coordsOrAddress, $service = '', $mappingService = '' ) {
+		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::attemptToGeocode( $coordsOrAddress, $service, $mappingService );
+		return $geovalues ? $geovalues : '';
 	}
 
 	/**
 	 * Handler for the geocode parser function. Returns the latitude
 	 * for the provided address, or an empty string, when the geocoding fails.
 	 *
-	 * @param unknown_type $parser
+	 * @param $parser
 	 * @param string $address The address to geocode.
 	 * @param string $service Optional. The geocoding service to use.
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
+	 * 
 	 * @return string
 	 */
 	public static function renderGeocoderLat( &$parser, $address, $service = '', $mappingService = '' ) {
@@ -85,13 +92,14 @@ final class MapsGeocodeFunctions {
 	 * Handler for the geocode parser function. Returns the longitude
 	 * for the provided address, or an empty string, when the geocoding fails.
 	 *
-	 * @param unknown_type $parser
+	 * @param $parser
 	 * @param string $address The address to geocode.
 	 * @param string $service Optional. The geocoding service to use.
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
+	 * 
 	 * @return string
 	 */
-	public static function renderGeocoderLng( &$parser, $address, $service = '', $mappingService = '' ) {
+	public static function renderGeocoderLon( &$parser, $address, $service = '', $mappingService = '' ) {
 		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
 		return $geovalues ? $geovalues['lon'] : '';
 	}
