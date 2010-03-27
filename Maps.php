@@ -35,10 +35,16 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 else {
 	define( 'Maps_VERSION', '0.6 a1' );
 	
+	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 0 );
 	define( 'Maps_COORDS_DMS', 1 );
 	define( 'Maps_COORDS_DM', 2 );
 	define( 'Maps_COORDS_DD', 3 );
+	
+	// The symbols to use for degrees, minutes and seconds.
+	define( 'Maps_GEO_DEG', "°" );
+	define( 'Maps_GEO_MIN', "'" );
+	define( 'Maps_GEO_SEC', '"' );	
 	
 	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';

@@ -13,11 +13,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-// Unicode symbols for coordinate minutes and seconds.
-define( 'Maps_GEO_DEG', "°" );
-define( 'Maps_GEO_MIN', "'" );
-define( 'Maps_GEO_SEC', '"' );
-
 /**
  * Static class for coordinate validation and parsing.
  * Supports floats, DMS, decimal degrees, and decimal minutes notations, both directional and non-directional.
