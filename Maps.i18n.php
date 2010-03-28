@@ -351,6 +351,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Dferg
  * @author Imre
  * @author Peter17
  * @author Translationista
@@ -368,7 +369,7 @@ $messages['es'] = array(
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
 	'maps_geocoding_failed_for' => 'No fue posible geocodificar {{PLURAL:$2|la siguiente dirección, que ha sido omitida|las siguientes direcciones, que han sido omitidas}} del mapa:$1.',
-	'maps_unrecognized_coords' => 'Las siguientes coordenadas no fueron reconocidas: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|La siguiente coordenada no fue reconocida|Las siguientes coordenadas no fueron reconocidas}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada siguiente no es reconocida|Las coordenadas siguientes no son reconocidas}} y PLURAL:$2|{{han sido omitidas|han sido omitidas}} del mapa :$1',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
 	'maps_click_to_activate' => 'Haz clic para activar el mapa',
@@ -647,7 +648,7 @@ Servicios cartographic disponibile: $1',
 Le mappa non pote esser monstrate.',
 	'maps_geocoding_failed_for' => 'Le sequente {{PLURAL:$2|adresse|adresses}} non poteva esser geocodificate e ha essite omittite del mappa:
 $1',
-	'maps_unrecognized_coords' => 'Le sequente coordinatas non esseva recognoscite: $1.',
+	'maps_unrecognized_coords' => 'Le sequente {{PLURAL:$2|coordinata|coordinatas}} non esseva recognoscite: $1.',
 	'maps_unrecognized_coords_for' => 'Le sequente {{PLURAL:$2|coordinata|coordinatas}} non esseva recognoscite e ha essite omittite del carta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Le carta on pote esser monstrate.',
@@ -796,7 +797,7 @@ $messages['lb'] = array(
 	'maps_geocoding_failed' => 'Dës {{PLURAL:$2|Adress konnt|Adresse konnten}} net geocodéiert ginn: $1',
 	'maps_geocoding_failed_for' => 'Dës {{PLURAL:$2|Adress|Adresse}} konnten net geocodéiert ginn an {{PLURAL:$2|huet|hu}} missen op der Kaart ewechgelooss ginn:
 $1',
-	'maps_unrecognized_coords' => 'Dës Koordinate goufen net erkannt: $1',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Dëse Koordinate gouf|Dës Koordinate goufen}} net erkannt: $1',
 	'maps_unrecognized_coords_for' => 'Dës {{PLURAL:$2|Koordinate|Koordinate}} goufen net erkannt a vun der Kaart ignoréiert:
 $1',
 	'maps_map_cannot_be_displayed' => "D'Kaart kann net gewise ginn.",
@@ -1038,7 +1039,7 @@ Serviços de cartografia disponíveis: $1',
 O mapa não pode ser apresentado.',
 	'maps_geocoding_failed_for' => 'Não foi possível geocodificar {{PLURAL:$2|o seguinte endereço, que foi omitido|os seguintes endereços, que foram omitidos}} do mapa:
 $1.',
-	'maps_unrecognized_coords' => '{{PLURAL:$2|As seguintes coordenadas não foram reconhecidas|A seguinte coordenada não foi reconhecida}}: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida|As seguintes coordenadas não foram reconhecidas}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
