@@ -67,8 +67,6 @@ addOnloadHook(
 				lat: $this->centre_lat,
 				lon: $this->centre_lon,
 				zoom: $this->zoom,
-				width: $this->width,
-				height: $this->height,
 				markers: [$this->markerString],
 				controls: [$this->controls]
 			}

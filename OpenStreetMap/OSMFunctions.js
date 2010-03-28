@@ -43,16 +43,6 @@ var slippymaps = new Array();
 var mapId = 0;
 var layer = null;
 
-if (false) { // wgSlippyMapSlippyByDefault
-	addOnloadHook(slippymap_init);
-}
-	
-function slippymap_init() {
-	for(keyName in slippymaps) {
-		slippymaps[keyName].init();
-	}
-}
-
 /**
  * Gets a valid control name (with excat lower and upper case letters),
  * or returns false when the control is not allowed.
@@ -89,7 +79,7 @@ function slippymap_map(mapId, mapParams) {
 	for (i in this.controls) {
 		if (typeof controls[i] == 'string') {
 			if (this.controls[i].toLowerCase() == 'autopanzoom') {
-				if (this.height > 140) this.controls[i] = this.height > 320 ? 'panzoombar' : 'panzoom';
+				//if (this.height > 140) this.controls[i] = this.height > 320 ? 'panzoombar' : 'panzoom';
 			}
 			
 			control = getValidControlName(this.controls[i]);
@@ -99,8 +89,8 @@ function slippymap_map(mapId, mapParams) {
 			}			
 		}
 		else {
-			this.mapOptions.controls.push(controls[i]); // If a control is provided, instead a string, just add it
-			controls[i].activate(); // And activate it			
+			this.mapOptions.controls.push(controls[i]); // If a control is provided, instead a string, just add it.
+			controls[i].activate(); // And activate it.		
 		}
 	}		
 }

@@ -11,9 +11,9 @@
  * Creates and initializes an OpenLayers map. 
  * The resulting map is returned by the function but no further handling is required in most cases.
  */
-function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data, height){
+function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data){
 
-	// Create a new OpenLayers map with without any controls on it
+	// Create a new OpenLayers map with without any controls on it.
 	var mapOptions = 	{ 
 			            projection: new OpenLayers.Projection("EPSG:900913"),
 			            displayProjection: new OpenLayers.Projection("EPSG:4326"),
@@ -26,13 +26,13 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data,
 
 	var map = new OpenLayers.Map(mapName, mapOptions);
 	
-	// Add the controls
+	// Add the controls.
 	for (i in controls) {
 
-		// If a string is provided, find the correct name for the control, and use eval to create the object itself
+		// If a string is provided, find the correct name for the control, and use eval to create the object itself.
 		if (typeof controls[i] == 'string') {
 			if (controls[i].toLowerCase() == 'autopanzoom') {
-				if (height > 140) controls[i] = height > 320 ? 'panzoombar' : 'panzoom';
+				//if (height > 140) controls[i] = height > 320 ? 'panzoombar' : 'panzoom';
 			}
 
 			control = getValidControlName(controls[i]);
@@ -42,16 +42,16 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data,
 			}
 		}
 		else {
-			map.addControl(controls[i]); // If a control is provided, instead a string, just add it
-			controls[i].activate(); // And activate it
+			map.addControl(controls[i]); // If a control is provided, instead a string, just add it.
+			controls[i].activate(); // And activate it.
 		}
 		
 	}
 	
-	// Add the base layers
+	// Add the base layers.
 	for (i in mapTypes) map.addLayer(mapTypes[i]);
 	
-	// Layer to hold the markers
+	// Layer to hold the markers.
 	var markerLayer = new OpenLayers.Layer.Markers('Markers');
 	markerLayer.id= 'markerLayer';
 	map.addLayer(markerLayer);
@@ -66,19 +66,19 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data,
 	
 	for (i in marker_data) {
 		marker_data[i].lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
-		if (bounds != null) bounds.extend(marker_data[i].lonlat); // Extend the bounds when no center is set
-		markerLayer.addMarker(getOLMarker(markerLayer, marker_data[i], map.getProjectionObject())); // Create and add the marker
+		if (bounds != null) bounds.extend(marker_data[i].lonlat); // Extend the bounds when no center is set.
+		markerLayer.addMarker(getOLMarker(markerLayer, marker_data[i], map.getProjectionObject())); // Create and add the marker.
 	}
 		
-	if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center
+	if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center.
 	
-	if (centerIsSet) { // When the center is provided, set it
+	if (centerIsSet) { // When the center is provided, set it.
 		var centre = new OpenLayers.LonLat(lon, lat);
 		centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
 		map.setCenter(centre); 
 	}
 	
-	if (zoom != null) map.zoomTo(zoom); // When the zoom is provided, set it
+	if (zoom != null) map.zoomTo(zoom); // When the zoom is provided, set it.
 	
 	return map;
 }
@@ -119,12 +119,12 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 
 	if (markerData.title.length + markerData.label.length > 0 ) {
 		
-		// This is the handler for the mousedown event on the marker, and displays the popup
+		// This is the handler for the mousedown event on the marker, and displays the popup.
 		marker.events.register('mousedown', marker,
 			function(evt) { 
 				var popup = new OpenLayers.Feature(markerLayer, markerData.lonlat).createPopup(true);
 				
-				if (markerData.title.length > 0 && markerData.label.length > 0) { // Add the title and label to the popup text
+				if (markerData.title.length > 0 && markerData.label.length > 0) { // Add the title and label to the popup text.
 					popup.setContentHTML('<b>' + markerData.title + '</b><hr />' + markerData.label);
 				}
 				else {
@@ -133,7 +133,7 @@ function getOLMarker(markerLayer, markerData, projectionObject) {
 				
 				popup.setOpacity(0.85);
 				markerLayer.map.addPopup(popup);
-				OpenLayers.Event.stop(evt); // Stop the event
+				OpenLayers.Event.stop(evt); // Stop the event.
 			}
 		);
 		
@@ -155,6 +155,12 @@ function getOLMarkerData(lon, lat, title, label, icon) {
 function initOLSettings(minWidth, minHeight) {
     OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
     OpenLayers.Util.onImageLoadErrorColor = 'transparent';
-	OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {'autoSize': true, 'minSize': new OpenLayers.Size(minWidth, minHeight)});
+	OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(
+		OpenLayers.Popup.FramedCloud,
+		{
+			'autoSize': true,
+			'minSize': new OpenLayers.Size(minWidth, minHeight)
+		}
+	);
 }
 

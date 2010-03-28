@@ -77,8 +77,7 @@ addOnloadHook(
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
-			[$this->markerString],
-			$this->height
+			[$this->markerString]
 		);
 	}
 );
