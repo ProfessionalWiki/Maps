@@ -136,8 +136,33 @@ EOT
 	}
 	
 	/**
+	 * 
+	 * @param $decimal
+	 * @return unknown_type
+	 */
+	private static function latDecimal2Degree( $decimal ) {
+		if ( $decimal < 0 ) {
+			return abs ( $decimal ) . "° S";
+		} else {
+			return $decimal . "° N";
+		}
+	}
+	
+	/**
+	 * 
+	 * @param $decimal
+	 * @return unknown_type
+	 */
+	private static function lonDecimal2Degree( $decimal ) {
+		if ( $decimal < 0 ) {
+			return abs ( $decimal ) . "° W";
+		} else {
+			return $decimal . "° E";
+		}
+	}	
+	
+	/**
 	 * Sets the $marler_lon and $marler_lat fields and when set, the starting coordinates
-	 *
 	 */
 	private function setCoordinates() {
 		if ( empty( $this->coordinates ) ) {
@@ -146,17 +171,16 @@ EOT
 			$this->marker_lon = 'null';
 		}
 		else {
-			$marker = MapsUtils::getLatLon( $this->coordinates );
+			$marker = MapsCoordinateParser::parseCoordinates( $this->coordinates );
 			$this->marker_lat = $marker['lat'];
 			$this->marker_lon = $marker['lon'];
-			$this->startingCoords =  MapsUtils::latDecimal2Degree( $this->marker_lat ) . ', ' . MapsUtils::lonDecimal2Degree( $this->marker_lon );
+			$this->startingCoords =  self::latDecimal2Degree( $this->marker_lat ) . ', ' . self::lonDecimal2Degree( $this->marker_lon );
 		}
 	}
 	
 	/**
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
-	 *
 	 */
 	private function setCentre() {
 		if ( empty( $this->centre ) ) {
@@ -172,7 +196,6 @@ EOT
 		else {
 			// Geocode and convert if required.
 			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
-			$centre = MapsUtils::getLatLon( $centre );
 			
 			$this->centre_lat = Xml::escapeJsString( $centre['lat'] );
 			$this->centre_lon = Xml::escapeJsString( $centre['lon'] );
