@@ -102,7 +102,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			}
 		}
 
-		return array( $this->output . $this->errorList, 'noparse' => 'true', 'isHTML' => 'true' );
+		return array( $this->output . $this->errorList, 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**

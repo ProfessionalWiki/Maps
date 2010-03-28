@@ -45,7 +45,7 @@ abstract class SMFormInput extends MapsMapFeature {
 	 * @return array
 	 */
 	public final function formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args ) {
-		global $sfgTabIndex;
+		global $wgParser, $sfgTabIndex;
 		// TODO: Use function args for sf stuffz
 
 		$this->coordinates = $coordinates;
@@ -75,15 +75,15 @@ abstract class SMFormInput extends MapsMapFeature {
 			<input id='" . $this->coordsFieldName . "' name='$input_name' type='text' value='$this->startingCoords' size='40' tabindex='$sfgTabIndex'>
 			<span id='" . $this->infoFieldName . "' class='error_message'></span>";
 			
-			if ( $this->enableGeocoding ) $this->addGeocodingField();
+			if ( $this->enableGeocoding ) $this->addGeocodingField( $wgParser );
 			
-			$this->addSpecificMapHTML();
+			$this->addSpecificMapHTML( $wgParser );
 		}
 		
 		return array( $this->output . $this->errorList, '' );
 	}
 	
-	private function addGeocodingField() {
+	private function addGeocodingField( Parser $parser ) {
 		global $sfgTabIndex, $wgOut, $smgAddedFormJs;
 		$sfgTabIndex++;
 		
@@ -98,8 +98,9 @@ abstract class SMFormInput extends MapsMapFeature {
 			$w = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-south' ) );
 			$deg = Xml::encodeJsVar( Maps_GEO_DEG );
 			
-			$wgOut->addScript(
-				<<<EOT
+			$parser->getOutput()->addHeadItem(
+				Html::inlineScript(
+					<<<EOT
 function convertLatToDMS (val) {
 	return Math.abs(val) + "$deg " + ( val < 0 ? "$s" : "$n" );
 }
@@ -107,6 +108,7 @@ function convertLngToDMS (val) {
 	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
 }			
 EOT
+				)
 			);			
 		}
 		
@@ -141,10 +143,11 @@ EOT
 	 * @return unknown_type
 	 */
 	private static function latDecimal2Degree( $decimal ) {
+		$deg = Maps_GEO_DEG;
 		if ( $decimal < 0 ) {
-			return abs ( $decimal ) . "° S";
+			return abs ( $decimal ) . "$deg S";
 		} else {
-			return $decimal . "° N";
+			return $decimal . "$deg N";
 		}
 	}
 	
