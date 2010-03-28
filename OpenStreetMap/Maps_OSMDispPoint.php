@@ -60,7 +60,6 @@ addOnloadHook(
 		slippymaps['$this->mapName'] = new slippymap_map(
 			'$this->mapName',
 			{
-				mode: '$this->mode',
 				layer: 'osm-like',
 				locale: '$this->lang',
 				lat: $this->centre_lat,

@@ -147,8 +147,6 @@ final class MapsParserFunctions {
         }
         
         // Return the result.
-        //return array( $parser->insertStripItem( $output, $parser->mStripState), 'noparse' => true, 'isHTML' => true );
-        //return $parser->insertStripItem( $output, $parser->mStripState);
         return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 	
@@ -261,7 +259,7 @@ final class MapsParserFunctions {
 	 * @param string $service
 	 * @param string $parserFunction
 	 * 
-	 * @return class
+	 * @return MapsMapFeature
 	 */
 	public static function getParserClassInstance( $service, $parserFunction ) {
 		global $egMapsServices;

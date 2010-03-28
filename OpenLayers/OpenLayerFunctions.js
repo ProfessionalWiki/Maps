@@ -24,8 +24,12 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 						controls: []
 						};
 
-	var map = new OpenLayers.Map(mapName, mapOptions);
 	var mapElement = document.getElementById(mapName);
+	
+	// Remove the loading map message.
+	mapElement.innerHTML = '';
+	
+	var map = new OpenLayers.Map(mapName, mapOptions);
 	
 	// Add the controls.
 	for (i in controls) {
