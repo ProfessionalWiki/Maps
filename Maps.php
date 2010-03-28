@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 a3' );
+	define( 'Maps_VERSION', '0.6 a4' );
 	
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 0 );
@@ -51,7 +51,7 @@ else {
 	
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 	
-	// Include the settings file
+	// Include the settings file.
 	require_once( $egMapsDir . 'Maps_Settings.php' );
 	
 	// Register the initialization function of Maps.
@@ -65,7 +65,6 @@ else {
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';	
 	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsDir . 'Maps_MapFeature.php';
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';
-	$wgAutoloadClasses['MapsUtils'] 				= $egMapsDir . 'Maps_Utils.php';
 }
 
 /**

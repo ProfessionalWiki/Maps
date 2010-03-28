@@ -102,9 +102,9 @@ final class MapsOSMCgiBin {
 		$center = array( $this->lon, $this->lat );
 		if ( $this->options['sphericalMercator'] ) {
 			// Calculate bounds within a spherical mercator projection if that is what the scale is based on.
-			$mercatorCenter = MapsUtils::forwardMercator( $center );
+			$mercatorCenter = self::forwardMercator( $center );
 			
-			$this->bounds = MapsUtils::inverseMercator( 
+			$this->bounds = self::inverseMercator( 
 				array(
 					$mercatorCenter[0] - $w_deg / 2,
 					$mercatorCenter[1] - $h_deg / 2,
@@ -144,6 +144,37 @@ final class MapsOSMCgiBin {
 			$this->scales[$i] = $this->getScaleFromResolution( $this->resolutions[$i] );
 		}
 	}
+	
+	/**
+	 * Convert from WGS84 to spherical mercator.
+	 */
+	private static function forwardMercator( array $lonlat ) {
+		for ( $i = 0; $i < count( $lonlat ); $i += 2 ) {
+			/* lon */
+			$lonlat[$i] = $lonlat[$i] * ( 2 * M_PI * 6378137 / 2.0 ) / 180.0;
+			
+			/* lat */
+			$lonlat[$i + 1] = log( tan( ( 90 + $lonlat[$i + 1] ) * M_PI / 360.0 ) ) / ( M_PI / 180.0 );
+			$lonlat[$i + 1] = $lonlat[$i + 1] * ( 2 * M_PI * 6378137 / 2.0 ) / 180.0;
+		}
+		return $lonlat;
+	}
+	
+	/**
+	 * Convert from spherical mercator to WGS84.
+	 */
+	private static function inverseMercator( array $lonlat ) {
+		for ( $i = 0; $i < count( $lonlat ); $i += 2 ) {
+			/* lon */
+			$lonlat[$i] = $lonlat[$i] / ( ( 2 * M_PI * 6378137 / 2.0 ) / 180.0 );
+			
+			/* lat */
+			$lonlat[$i + 1] = $lonlat[$i + 1] / ( ( 2 * M_PI * 6378137 / 2.0 ) / 180.0 );
+			$lonlat[$i + 1] = 180.0 / M_PI * ( 2 * atan( exp( $lonlat[$i + 1] * M_PI / 180.0 ) ) - M_PI / 2 );
+		}
+		
+		return $lonlat;
+	}	
     
 }
 
