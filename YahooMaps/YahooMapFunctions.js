@@ -37,15 +37,15 @@ function createYMarker(geoPoint, title, label, icon){
 /**
  * Returns YMap object with the provided properties and markers.
  */
-function initializeYahooMap(mapName, lat, lon, zoom, type, types, controls, scrollWheelZoom, markers, height) {
+function initializeYahooMap(mapName, lat, lon, zoom, type, types, controls, scrollWheelZoom, markers) {
 	 var centre = (lon != null && lat != null) ? new YGeoPoint(lat, lon) : null;
-	 return createYahooMap(document.getElementById(mapName), centre, zoom, type, types, controls, scrollWheelZoom, markers, height);
+	 return createYahooMap(document.getElementById(mapName), centre, zoom, type, types, controls, scrollWheelZoom, markers);
 }
 
 /**
  * Returns YMap object with the provided properties.
  */
-function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollWheelZoom, markers, height) {
+function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollWheelZoom, markers) {
 	var typesContainType = false;
 
 	for (var i = 0; i < types.length; i++) {
@@ -60,7 +60,7 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 	
 	for (i in controls){
 		if (controls[i].toLowerCase() == 'auto-zoom') {
-			if (height > 42) controls[i] = height > 100 ? 'zoom' : 'zoom-short';
+			//if (height > 42) controls[i] = height > 100 ? 'zoom' : 'zoom-short';
 		}			
 		
 		switch (controls[i]) {

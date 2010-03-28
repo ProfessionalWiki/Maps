@@ -66,10 +66,11 @@ class MapsOSMDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgOut;
 		
-		$wgOut->addInlineScript( <<<EOT
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {		
 		slippymaps['$this->mapName'] = new slippymap_map(
@@ -88,7 +89,7 @@ addOnloadHook(
 	}
 );			
 EOT
-		);		
+		) );		
 	
 		$this->output .= $this->static ? $this->getStaticMap() : $this->getDynamicMap();
 	}
@@ -114,11 +115,9 @@ EOT
 			'div',
 			array(
 				'id' => $this->mapName,
-				'width' => $this->width,
-				'height' => $this->height,
-				'class' => 'map'
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			null
+			wfMsg('maps-loading-map')
 		);
 	}
 	
@@ -151,14 +150,12 @@ EOT
 		if ( $this->activatable ) {
 			$image['onclick'] = "slippymaps['$this->mapName'].init();";
 		}
-		
+
 		return Html::element(
 			'div',
 			array(
 				'id' => $this->mapName,
-				'width' => $this->width,
-				'height' => $this->height,
-				'class' => 'map'
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
 			Html::element(
 				'img',

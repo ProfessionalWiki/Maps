@@ -35,7 +35,7 @@ abstract class MapsMapFeature {
 	/**
 	 * Adds the HTML specific to the mapping service to the output
 	 */
-	protected abstract function addSpecificMapHTML();
+	protected abstract function addSpecificMapHTML( Parser $parser );
 	
 	public $serviceName;
 

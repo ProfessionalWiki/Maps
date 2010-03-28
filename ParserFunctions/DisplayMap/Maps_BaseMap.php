@@ -47,7 +47,7 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 			
 			$this->setCentre();
 			
-			$this->addSpecificMapHTML();
+			$this->addSpecificMapHTML( $parser );
 		}
 		
 		return $this->output . $this->errorList;

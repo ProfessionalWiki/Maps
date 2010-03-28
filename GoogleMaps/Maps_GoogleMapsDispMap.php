@@ -62,7 +62,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgOut;
 		
 		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
@@ -71,13 +71,13 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 			'div',
 			array(
 				'id' => $this->mapName,
-				'width' => $this->width,
-				'height' => $this->height
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			null
+			wfMsg('maps-loading-map')
 		);
 		
-		$wgOut->addInlineScript( <<<EOT
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initializeGoogleMap('$this->mapName', 
@@ -94,7 +94,7 @@ addOnloadHook(
 	}
 );
 EOT
-		);
+		) );
 		
 	}
 	

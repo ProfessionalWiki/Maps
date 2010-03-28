@@ -45,20 +45,20 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgOut;
 		
 		$this->output .= Html::element(
 			'div',
 			array(
 				'id' => $this->mapName,
-				'width' => $this->width,
-				'height' => $this->height
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			null
+			wfMsg('maps-loading-map')
 		);
 		
-		$wgOut->addInlineScript( <<<EOT
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initializeYahooMap(
@@ -70,13 +70,12 @@ addOnloadHook(
 			[$this->types],
 			[$this->controls],
 			$this->autozoom,
-			[],
-			$this->height
+			[]
 		);
 	}
 );
 EOT
-		);		
+		) );		
 	}
 
 }

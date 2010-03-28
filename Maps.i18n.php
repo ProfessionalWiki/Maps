@@ -20,6 +20,7 @@ $messages['en'] = array(
 	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Available mapping services: $1",
 	'maps_map' => 'Map',
+	'maps-loading-map' => 'Loading map...',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
