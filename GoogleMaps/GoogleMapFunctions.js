@@ -84,7 +84,7 @@ function createGoogleMap(mapName, mapOptions, markers) {
 	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
 	for (i in mapOptions.controls){
 		if (mapOptions.controls[i].toLowerCase() == 'auto') {
-			// if (mapOptions.height > 75) mapOptions.controls[i] = mapOptions.height > 320 ? 'large' : 'small';
+			if (mapElement.offsetHeight > 75) mapOptions.controls[i] = mapElement.offsetHeight > 320 ? 'large' : 'small';
 		}			
 		
 		switch (mapOptions.controls[i]) {

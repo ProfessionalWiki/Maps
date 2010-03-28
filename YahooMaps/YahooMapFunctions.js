@@ -60,7 +60,7 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 	
 	for (i in controls){
 		if (controls[i].toLowerCase() == 'auto-zoom') {
-			//if (height > 42) controls[i] = height > 100 ? 'zoom' : 'zoom-short';
+			if (mapElement.offsetHeight > 42) controls[i] = mapElement.offsetHeight > 100 ? 'zoom' : 'zoom-short';
 		}			
 		
 		switch (controls[i]) {

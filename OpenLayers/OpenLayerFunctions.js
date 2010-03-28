@@ -25,6 +25,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 						};
 
 	var map = new OpenLayers.Map(mapName, mapOptions);
+	var mapElement = document.getElementById(mapName);
 	
 	// Add the controls.
 	for (i in controls) {
@@ -32,7 +33,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 		// If a string is provided, find the correct name for the control, and use eval to create the object itself.
 		if (typeof controls[i] == 'string') {
 			if (controls[i].toLowerCase() == 'autopanzoom') {
-				//if (height > 140) controls[i] = height > 320 ? 'panzoombar' : 'panzoom';
+				if (mapElement.offsetHeight > 140) controls[i] = mapElement.offsetHeight > 320 ? 'panzoombar' : 'panzoom';
 			}
 
 			control = getValidControlName(controls[i]);
