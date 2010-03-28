@@ -73,9 +73,6 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		foreach ( $this->m_locations as $location ) {
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 			
-			$title = str_replace( "'", "\'", $title );
-			$label = str_replace( "'", "\'", $label );
-			
 			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		

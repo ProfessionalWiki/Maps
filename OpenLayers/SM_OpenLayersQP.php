@@ -56,9 +56,6 @@ final class SMOpenLayersQP extends SMMapPrinter {
 			// Create a string containing the marker JS 
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 
-			$title = str_replace( "'", "\'", $title );
-			$label = str_replace( "'", "\'", $label );
-
 			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label', '$icon')";
 		}
 

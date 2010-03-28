@@ -54,9 +54,6 @@ final class SMYahooMapsQP extends SMMapPrinter {
 			// Create a string containing the marker JS 
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 			
-			$title = str_replace( "'", "\'", $title );
-			$label = str_replace( "'", "\'", $label );
-			
 			$markerItems[] = "getYMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		

@@ -39,13 +39,13 @@ final class SMOSMFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgJsMimeType;
-		global $smgScriptPath, $smgOSMFormsOnThisPage, $smgStyleVersion;
+		global $smgScriptPath, $smgOSMFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
 		MapsOSM::addOSMDependencies( $this->output );
 		
 		if ( empty( $smgOSMFormsOnThisPage ) ) {
 			$smgOSMFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/OpenStreetMap/SM_OSMFunctions.js?$smgStyleVersion'></script>";
+			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/OpenStreetMap/SM_OSMFunctions{$egMapsJsExt}?$smgStyleVersion'></script>";
 		}
 	}
 	

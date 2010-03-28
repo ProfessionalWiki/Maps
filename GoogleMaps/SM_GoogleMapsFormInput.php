@@ -40,13 +40,13 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgJsMimeType;
-		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion;
+		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
 		MapsGoogleMaps::addGMapDependencies( $this->output );
 		
 		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions.js?$smgStyleVersion'></script>";
+			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions{$egMapsJsExt}?$smgStyleVersion'></script>";
 		}
 	}
 	
@@ -78,18 +78,23 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 			$this->controls = str_replace( "'overlays',", '', $this->controls );
 		}
 		
-		$this->output .= "
-		<div id='" . $this->mapName . "'></div>
-	
-		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(
-			function() {
-			makeGoogleMapFormInput(
-				'$this->mapName', 
-				'$this->coordsFieldName',
-				{
-				width: $this->width,
-				height: $this->height,
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+			),
+			wfMsg('maps-loading-map')
+		);
+		
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		makeGoogleMapFormInput(
+			'$this->mapName', 
+			'$this->coordsFieldName',
+			{
 				lat: $this->centre_lat,
 				lon: $this->centre_lon,
 				zoom: $this->zoom,
@@ -97,13 +102,14 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 				types: [$this->types],
 				controls: [$this->controls],
 				scrollWheelZoom: $this->autozoom
-				},
-				$this->marker_lat,
-				$this->marker_lon	
-			);
-			}		
+			},
+			$this->marker_lat,
+			$this->marker_lon	
 		);
-		/*]]>*/</script>";
+	}	
+);
+EOT
+		) );
 	}
 	
 	/**
