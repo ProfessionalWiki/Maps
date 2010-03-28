@@ -46,19 +46,37 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgOut;
 		
-		$this->output .= <<<EOT
-		<div id="$this->mapName" style="width: {$this->width}px; height: {$this->height}px;"></div>  
-		
-		<script type="$wgJsMimeType">/*<![CDATA[*/
-		addOnloadHook(
-			function() {
-				initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->types], [$this->controls], $this->autozoom, [], $this->height);
-			}
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height
+			),
+			null
 		);
-			/*]]>*/</script>
-EOT;
+		
+		$wgOut->addInlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		initializeYahooMap(
+			'$this->mapName',
+			$this->centre_lat,
+			$this->centre_lon,
+			$this->zoom,
+			$this->type,
+			[$this->types],
+			[$this->controls],
+			$this->autozoom,
+			[],
+			$this->height
+		);
+	}
+);
+EOT
+		);		
 	}
 
 }

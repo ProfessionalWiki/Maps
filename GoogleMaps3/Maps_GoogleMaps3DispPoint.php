@@ -58,28 +58,36 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgOut;
 		
-		// TODO
-		$this->output .= <<<EOT
-<div id="$this->mapName" style="width:{$this->width}px; height:{$this->height}px"></div>
-<script type="$wgJsMimeType"> /*<![CDATA[*/
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height
+			),
+			null
+		);
+		
+		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
 	function() {
-	initGMap3("$this->mapName", {
-			zoom: $this->zoom,
-			lat: $this->centre_lat,
-			lon: $this->centre_lon,	
-			types: [],
-			mapTypeId: $this->type
-		},
-		[$this->markerString]
-	);
+		initGMap3(
+			"$this->mapName",
+			{
+				zoom: $this->zoom,
+				lat: $this->centre_lat,
+				lon: $this->centre_lon,	
+				types: [],
+				mapTypeId: $this->type
+			},
+			[$this->markerString]
+		);
 	}
 );
-/*]]>*/ </script>
-EOT;
-
+EOT
+		);
 	}
 	
 }

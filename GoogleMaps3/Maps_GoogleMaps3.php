@@ -125,12 +125,12 @@ class MapsGoogleMaps3 {
 	 */
 	public static function addGMap3Dependencies( &$output ) {
 		global $wgJsMimeType, $wgLang;
-		global $egMapsScriptPath, $egGMaps3OnThisPage, $egMapsStyleVersion;
+		global $egMapsScriptPath, $egGMaps3OnThisPage, $egMapsStyleVersion, $egMapsJsExt;
 
 		if ( empty( $egGMaps3OnThisPage ) ) {
 			$egGMaps3OnThisPage = 0;
 
-			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&amp;language={$wgLang->getCode()}'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps3/GoogleMap3Functions.js?$egMapsStyleVersion'></script>";
+			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&amp;language={$wgLang->getCode()}'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
 		}
 	}
 	

@@ -53,13 +53,17 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgOut;
 		
-		$this->output .= <<<EOT
-			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
-				mode: 'osm-wm',
+		$wgOut->addInlineScript( <<<EOT
+addOnloadHook(
+	function() {		
+		slippymaps['$this->mapName'] = new slippymap_map(
+			'$this->mapName',
+			{
+				mode: '$this->mode',
 				layer: 'osm-like',
-				locale: '$this->lang',				
+				locale: '$this->lang',
 				lat: $this->centre_lat,
 				lon: $this->centre_lon,
 				zoom: $this->zoom,
@@ -67,14 +71,23 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 				height: $this->height,
 				markers: [$this->markerString],
 				controls: [$this->controls]
-			});</script>
-		
-				<!-- map div -->
-				<div id='$this->mapName' class='map' style='width:{$this->width}px; height:{$this->height}px;'>
-					<script type='$wgJsMimeType'>slippymaps['$this->mapName'].init();</script>
-				<!-- /map div -->
-				</div>
-EOT;
+			}
+		);
+		slippymaps['$this->mapName'].init();
 	}
-
+);	
+EOT
+		);
+		
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height,
+				'class' => 'map'
+			),
+			null
+		);
+	}
 }

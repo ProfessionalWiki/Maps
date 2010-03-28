@@ -26,31 +26,31 @@ final class MapsMapper {
 	public static function initializeMainParams() {
 		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
-		self::$mainParams = array
-			(
+		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
+		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );			
+		
+		self::$mainParams = array (
 			'zoom' => array(
 				'type' => 'integer',
 				'criteria' => array(
 					'not_empty' => array()
-					)
-				),
+				)
+			),
 			'width' => array(
-				'type' => 'integer',
 				'criteria' => array(
-					'not_empty' => array(),
-					'in_range' => $egMapsSizeRestrictions['width']
-					),
-				'default' => $egMapsMapWidth
+					'is_map_dimension' => array( 'width' ),
 				),
+				'default' => $egMapsMapWidth,
+				'output-type' => array( 'mapdimension', 'width', true, $egMapsMapWidth )
+			),
 			'height' => array(
-				'type' => 'integer',
 				'criteria' => array(
-					'not_empty' => array(),
-					'in_range' => $egMapsSizeRestrictions['height']
-					),
-				'default' => $egMapsMapHeight
+					'is_map_dimension' => array( 'height' ),
 				),
-			);
+				'default' => $egMapsMapHeight,
+				'output-type' => array( 'mapdimension', 'height', true, $egMapsMapHeight )
+			),
+		);
 	}
 
 	/**
@@ -147,4 +147,47 @@ final class MapsMapper {
 		
 		return $service;
 	}
+	
+	public static function isMapDimension( &$value, $dimension, $correct = false, $default = 0 ) {
+		global $egMapsSizeRestrictions;
+		
+		if ( !preg_match( '/^\d+(\.\d+)?(px|ex|em|%)?$/', $value ) ) {
+			if ( $correct ) {
+				$value = $default;
+			} else {
+				return false;
+			}
+		}
+		
+		if ( !preg_match( '/^.*%$/', $value ) ) {
+			$number = preg_replace( '/[^0-9]/', '', $value );
+			if ( $number < $egMapsSizeRestrictions[$dimension][0] ) {
+				if ( $correct ) {
+					$value = $egMapsSizeRestrictions[$dimension][0];
+				} else {
+					return false;
+				}
+			} else if ( $number > $egMapsSizeRestrictions[$dimension][1] ) {
+				if ( $correct ) {
+					$value = $egMapsSizeRestrictions[$dimension][1];
+				} else {
+					return false;
+				}
+			}
+		}
+		
+		if ( $correct ) {
+			if ( !preg_match( '/(px|ex|em|%)$/', $value ) ) {
+				$value .= 'px';
+			}			
+		}
+		
+		return true;		
+	}
+	
+	public static function setMapDimension( &$value, $dimension, $correct, $default ) {
+		global $egMapsMapWidth;
+		self::isMapDimension( $value, $dimension, $correct, $default );	
+	}
+
 }

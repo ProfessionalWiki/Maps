@@ -149,12 +149,12 @@ class MapsYahooMaps {
 	 */
 	public static function addYMapDependencies( &$output ) {
 		global $wgJsMimeType;
-		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion;
+		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt;
 		
 		if ( empty( $egYahooMapsOnThisPage ) ) {
 			$egYahooMapsOnThisPage = 0;
 			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&amp;appid=$egYahooMapsKey'></script>
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/YahooMaps/YahooMapFunctions.min.js?$egMapsStyleVersion'></script>";
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
 		}
 	}
 	

@@ -127,31 +127,6 @@ class MapsUtils {
 			return $decimal . "° E";
 		}
 	}
-	
-	/**
-	 * If the provided height or width do not fall within the allowed interval,
-	 * they are changed to the nearest allowed value.
-	 * 
-	 * @param integer $width
-	 * @param integer $height
-	 */
-	public static function makeMapSizeValid( &$width, &$height ) {
-		global $egMapsSizeRestrictions;
-
-		if ( $width < $egMapsSizeRestrictions['width'][0] )  {
-			$width = $egMapsSizeRestrictions['width'][0];
-		}
-		else if ( $width > $egMapsSizeRestrictions['width'][1] ) {
-			$width = $egMapsSizeRestrictions['width'][1];
-		}
-		
-		if ( $height < $egMapsSizeRestrictions['height'][0] )  {
-			$height = $egMapsSizeRestrictions['height'][0];
-		}
-		else if ( $height > $egMapsSizeRestrictions['height'][1] ) {
-			$height = $egMapsSizeRestrictions['height'][1];
-		}
-	}
 
 	/**
 	 * Convert from WGS84 to spherical mercator.

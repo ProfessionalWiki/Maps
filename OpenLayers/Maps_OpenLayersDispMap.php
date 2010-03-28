@@ -46,18 +46,37 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgOut;
 		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
-		<script type='$wgJsMimeType'> /*<![CDATA[*/
-			addOnloadHook(
-				function() {
-					initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls],[], $this->height);
-				}
-			);
-		/*]]>*/ </script>";
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height
+			),
+			null
+		);
+		
+		$wgOut->addInlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		initOpenLayer(
+			'$this->mapName',
+			$this->centre_lon,
+			$this->centre_lat,
+			$this->zoom,
+			[$layerItems],
+			[$this->controls],
+			[],
+			$this->height
+		);
+	}
+);
+EOT
+		);
 	}
 
 }

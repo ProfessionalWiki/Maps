@@ -63,33 +63,38 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgOut;
 		
-		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
+		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
-		$this->output .= <<<EOT
-<div id="$this->mapName"></div>
-<script type="$wgJsMimeType"> /*<![CDATA[*/
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height
+			),
+			null
+		);
+		
+		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
 	function() {
-	initializeGoogleMap('$this->mapName', 
-		{
-		width: $this->width,
-		height: $this->height,
-		lat: $this->centre_lat,
-		lon: $this->centre_lon,
-		zoom: $this->zoom,
-		type: $this->type,
-		types: [$this->types],
-		controls: [$this->controls],
-		scrollWheelZoom: $this->autozoom
-		}, []);
+		initializeGoogleMap('$this->mapName', 
+			{
+			lat: $this->centre_lat,
+			lon: $this->centre_lon,
+			zoom: $this->zoom,
+			type: $this->type,
+			types: [$this->types],
+			controls: [$this->controls],
+			scrollWheelZoom: $this->autozoom
+			},
+		[]);
 	}
 );
-/*]]>*/ </script>
-EOT;
-
-	$this->output .= $onloadFunctions;
+EOT
+		);
 		
 	}
 	

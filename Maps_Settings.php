@@ -125,6 +125,15 @@ $egMapsDefaultGeoService = 'geonames';
 
 
 
+# General configuration
+
+# Boolean. Indicates if minified js files should be used where available.
+$egMapsUseMinJs = false; 
+
+
+
+
+
 # Coordinate configuration
 
 # Enum. The default output format of coordinates.

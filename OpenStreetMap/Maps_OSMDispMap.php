@@ -67,10 +67,14 @@ class MapsOSMDispMap extends MapsBaseMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
+		global $wgOut;
 		
-		$this->output .= <<<EOT
-			<script type='$wgJsMimeType'>slippymaps['$this->mapName'] = new slippymap_map('$this->mapName', {
+		$wgOut->addInlineScript( <<<EOT
+addOnloadHook(
+	function() {		
+		slippymaps['$this->mapName'] = new slippymap_map(
+			'$this->mapName',
+			{
 				mode: '$this->mode',
 				layer: 'osm-like',
 				locale: '$this->lang',
@@ -81,9 +85,12 @@ class MapsOSMDispMap extends MapsBaseMap {
 				height: $this->height,
 				markers: [],
 				controls: [$this->controls]
-			});</script>
-
-EOT;
+			}
+		);
+	}
+);			
+EOT
+		);		
 	
 		$this->output .= $this->static ? $this->getStaticMap() : $this->getDynamicMap();
 	}
@@ -94,15 +101,27 @@ EOT;
 	 * @return string
 	 */
 	private function getDynamicMap() {
-		global $wgJsMimeType;
+		global $wgOut;
 		
-		return <<<EOT
-				<!-- map div -->
-				<div id='$this->mapName' class='map' style='width:{$this->width}px; height:{$this->height}px;'>
-					<script type='$wgJsMimeType'>slippymaps['$this->mapName'].init();</script>
-				<!-- /map div -->
-				</div>
-EOT;
+		$wgOut->addInlineScript( <<<EOT
+addOnloadHook(
+	function() {		
+		slippymaps['$this->mapName'].init();
+	}
+);	
+EOT
+		);
+		
+		return Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height,
+				'class' => 'map'
+			),
+			null
+		);
 	}
 	
 	/**
@@ -120,28 +139,34 @@ EOT;
 		$rendering_url 	= $static->getUrl();
 		
 		$alt = wfMsg( 'maps_centred_on', $this->centre_lat, $this->centre_lon );
+		$title = $this->activatable ? wfMsg( 'maps_click_to_activate' ) : $alt;
+		
+		$image = array(
+			'class' => 'mapPreview',
+			'src' => $rendering_url,
+			'width' => $this->width,
+			'height' => $this->height,
+			'alt' => $alt,
+			'title' => $title,
+		);
 		
 		if ( $this->activatable ) {
-			$title = wfMsg( 'maps_click_to_activate' );
-			$activationCode = "onclick=\"slippymaps['$this->mapName'].init();\"";
-		}
-		else {
-			$activationCode = '';
-			$title = $alt;
+			$image['onclick'] = "slippymaps['$this->mapName'].init();";
 		}
 		
-		return <<<EOT
-				<div id="$this->mapName" class="map" style="width:{$this->width}px; height:{$this->height}px;">
-					<img id="$this->mapName-preview"
-						class="mapPreview"
-						src="{$rendering_url}" 
-						width="$this->width"
-						height="$this->height"
-						alt="$alt"
-						title="$title"
-						$activationCode />
-				</div>
-EOT;
+		return Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height,
+				'class' => 'map'
+			),
+			Html::element(
+				'img',
+				$image
+			)
+		);
 	}
 	
 }

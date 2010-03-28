@@ -54,7 +54,7 @@ function createGMarker(point, title, label, icon) {
 function initializeGoogleMap(mapName, mapOptions, markers) {
 	if (GBrowserIsCompatible()) {
 		mapOptions.centre = (mapOptions.lat != null && mapOptions.lon != null) ? new GLatLng(mapOptions.lat, mapOptions.lon) : null;
-		mapOptions.size = new GSize(mapOptions.width, mapOptions.height);	
+		//mapOptions.size = new GSize(mapOptions.width, mapOptions.height);	
 		return createGoogleMap(mapName, mapOptions, markers);	
 	}
 	else {
@@ -76,7 +76,7 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	if (! typesContainType) mapOptions.types.push(mapOptions.type);
 
-	var map = new GMap2(mapElement, {size: mapOptions.size, mapTypes: mapOptions.types});
+	var map = new GMap2(mapElement, {mapTypes: mapOptions.types});
 	map.name = mapName;
 
 	map.setMapType(mapOptions.type);	
@@ -84,7 +84,7 @@ function createGoogleMap(mapName, mapOptions, markers) {
 	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
 	for (i in mapOptions.controls){
 		if (mapOptions.controls[i].toLowerCase() == 'auto') {
-			if (mapOptions.height > 75) mapOptions.controls[i] = mapOptions.height > 320 ? 'large' : 'small';
+			// if (mapOptions.height > 75) mapOptions.controls[i] = mapOptions.height > 320 ? 'large' : 'small';
 		}			
 		
 		switch (mapOptions.controls[i]) {

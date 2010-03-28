@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 a1' );
+	define( 'Maps_VERSION', '0.6 a2' );
 	
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 0 );
@@ -73,7 +73,8 @@ else {
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP;
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures;
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService;
+	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsJsExt;
 
 	// Remove all hooked in services that should not be available.
 	foreach ( $egMapsServices as $service => $data ) {
@@ -124,6 +125,8 @@ function efMapsSetup() {
 			}
 		}
 	}
+	
+	$egMapsJsExt = $egMapsUseMinJs ? '.min.js' : '.js';
 	
 	return true;
 }

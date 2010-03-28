@@ -190,14 +190,14 @@ class MapsGoogleMaps {
 	 */
 	public static function addGMapDependencies( &$output ) {
 		global $wgJsMimeType, $wgLang;
-		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage, $egMapsStyleVersion;
+		global $egGoogleMapsKey, $egMapsScriptPath, $egGoogleMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt;
 
 		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
 
 			MapsGoogleMaps::validateGoogleMapsKey();
 
-			$output .= "<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl={$wgLang->getCode()}' type='$wgJsMimeType'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions.min.js?$egMapsStyleVersion'></script><script type='$wgJsMimeType'>window.unload = GUnload;</script>";
+			$output .= "<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl={$wgLang->getCode()}' type='$wgJsMimeType'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script><script type='$wgJsMimeType'>window.unload = GUnload;</script>";
 		}
 	}
 	
@@ -255,7 +255,7 @@ class MapsGoogleMaps {
 		// Add the inputs for the overlays.
 		$addedOverlays = array();
 		$overlayHtml = '';
-		$onloadFunctions = '';
+		$onloadFunctions = array();
 		foreach ( $overlays as $overlay => $isOn ) {
 			$overlay = strtolower( $overlay );
 			
@@ -266,7 +266,7 @@ class MapsGoogleMaps {
 					$urlNr = self::$overlayData[$overlay];
 					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
 					if ( $isOn ) {
-						$onloadFunctions .= "<script type='$wgJsMimeType'>addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );</script>";
+						$onloadFunctions .= "addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );";
 					}
 				}
 			}
@@ -279,7 +279,7 @@ $overlayHtml
 </div></form></div>		
 EOT;
 
-	return $onloadFunctions;
+	$output .= "<script type='$wgJsMimeType'>" . implode( "\n", $onloadFunctions ) . '</script>';
 	}
 	
 	/**

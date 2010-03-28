@@ -149,14 +149,14 @@ class MapsOSM {
 	 */
 	public static function addOSMDependencies( &$output ) {
 		global $wgJsMimeType;
-		global $egOSMMapsOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;
+		global $egOSMMapsOnThisPage, $egMapsScriptPath, $egMapsStyleVersion, $egMapsJsExt;
 		
 		if ( empty( $egOSMMapsOnThisPage ) ) {
 			$egOSMMapsOnThisPage = 0;
 			
 			$output .= "<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMap/OSMFunctions.min.js?$egMapsStyleVersion'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenStreetMap/OSMFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>slippymaps = Array();</script>\n";
 		}
 	}

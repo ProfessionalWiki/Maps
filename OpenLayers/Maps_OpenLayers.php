@@ -118,14 +118,14 @@ class MapsOpenLayers {
 	 */
 	public static function addOLDependencies( &$output ) {
 		global $wgJsMimeType;
-		global $egOpenLayersOnThisPage, $egMapsScriptPath, $egMapsStyleVersion;
+		global $egOpenLayersOnThisPage, $egMapsScriptPath, $egMapsStyleVersion, $egMapsJsExt;
 		
 		if ( empty( $egOpenLayersOnThisPage ) ) {
 			$egOpenLayersOnThisPage = 0;
 			
 			$output .= "<link rel='stylesheet' href='$egMapsScriptPath/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions.js?$egMapsStyleVersion'></script>
+			<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>
 			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
 		}
 	}

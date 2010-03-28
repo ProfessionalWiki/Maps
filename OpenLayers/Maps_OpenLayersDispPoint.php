@@ -13,7 +13,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-
 /**
  * Class for handling the display_point(s) parser functions with OpenLayers.
  *
@@ -54,18 +53,37 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgJsMimeType;
-
+		global $wgOut;
+		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
-		<script type='$wgJsMimeType'> /*<![CDATA[*/
-			addOnloadHook(
-				function() {
-					initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls],[$this->markerString], $this->height);
-				}
-			);
-		/*]]>*/ </script>";
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'width' => $this->width,
+				'height' => $this->height
+			),
+			null
+		);
+		
+		$wgOut->addInlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		initOpenLayer(
+			'$this->mapName',
+			$this->centre_lon,
+			$this->centre_lat,
+			$this->zoom,
+			[$layerItems],
+			[$this->controls],
+			[$this->markerString],
+			$this->height
+		);
+	}
+);
+EOT
+		);
 	}
 
 }
