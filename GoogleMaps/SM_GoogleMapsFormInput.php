@@ -69,7 +69,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addSpecificFormInputHTML()
 	 *
 	 */
-	protected function addSpecificMapHTML() {
+	protected function addSpecificMapHTML( Parser $parser ) {
 		global $wgJsMimeType;
 		
 		// Remove the overlays control in case it's present.

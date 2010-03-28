@@ -45,15 +45,12 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 *
 	 */
-	protected function addSpecificMapHTML() {
-		global $wgJsMimeType;
-
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
-
+	protected function addSpecificMapHTML( Parser $parser ) {
+		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
 		foreach ( $this->m_locations as $location ) {
-			// Create a string containing the marker JS 
+			// Create a string containing the marker JS .
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 
 			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label', '$icon')";
@@ -61,14 +58,34 @@ final class SMOpenLayersQP extends SMMapPrinter {
 
 		$markersString = implode( ',', $markerItems );
 
-		$this->output .= "<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>
-		<script type='$wgJsMimeType'> /*<![CDATA[*/
-			addOnloadHook(
-				function() {
-					initOpenLayer('$this->mapName', $this->centre_lon, $this->centre_lat, $this->zoom, [$layerItems], [$this->controls], [$markersString], $this->height);
-				}
-			);
-		/*]]>*/ </script>";
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+			),
+			wfMsg('maps-loading-map')
+		);
+		
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		initOpenLayer(
+			'$this->mapName',
+			$this->centre_lat,
+			$this->centre_lon,
+			$this->zoom,
+			[$layerItems],
+			[$this->controls],
+			[$markersString]
+		);
+	}
+);
+EOT
+		) );		
 	}
 
 	/**

@@ -63,47 +63,53 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 * @see SMMapPrinter::getQueryResult()
 	 *
 	 */
-	protected function addSpecificMapHTML() {
-		global $wgJsMimeType;
-
-		$onloadFunctions = MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
+	protected function addSpecificMapHTML( Parser $parser ) {
+		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
+		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
 		foreach ( $this->m_locations as $location ) {
 			list( $lat, $lon, $title, $label, $icon ) = $location;
-			
 			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
 		
-		// Create a string containing the marker JS 
+		// Create a string containing the marker JS.
 		$markersString = implode( ',', $markerItems );
 		
-		$this->output .= <<<EOT
-<div id="$this->mapName"></div>
-<script type="$wgJsMimeType"> /*<![CDATA[*/
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+			),
+			wfMsg('maps-loading-map')
+		);
+		
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
-	initializeGoogleMap('$this->mapName', 
-		{
-		width: $this->width,
-		height: $this->height,
-		lat: $this->centre_lat,
-		lon: $this->centre_lon,
-		zoom: $this->zoom,
-		type: $this->type,
-		types: [$this->types],
-		controls: [$this->controls],
-		scrollWheelZoom: $this->autozoom
-		},
-		[$markersString]	
-	);
+		initializeGoogleMap('$this->mapName', 
+			{
+				width: $this->width,
+				height: $this->height,
+				lat: $this->centre_lat,
+				lon: $this->centre_lon,
+				zoom: $this->zoom,
+				type: $this->type,
+				types: [$this->types],
+				controls: [$this->controls],
+				scrollWheelZoom: $this->autozoom
+			},
+			[$markersString]	
+		);
 	}
 );
-/*]]>*/ </script>
-EOT;
-	
-		$this->output .= $onloadFunctions;
+EOT
+		) );		
+
+
 	}
 	
 	/**

@@ -66,22 +66,43 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addSpecificMapHTML()
 	 *
 	 */
-	protected function addSpecificMapHTML() {
-		global $wgJsMimeType;
+	protected function addSpecificMapHTML( Parser $parser ) {
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+			),
+			wfMsg('maps-loading-map')
+		);
 		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$this->output .= "
-		<div id='" . $this->mapName . "' style='width: {$this->width}px; height: {$this->height}px; background-color: #cccccc;'></div>  
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		makeFormInputOpenLayer(
+			'$this->mapName',
+			'$this->coordsFieldName',
+			$this->centre_lat,
+			$this->centre_lon,
+			$this->zoom,
+			$this->marker_lat,
+			$this->marker_lon,
+			[$layerItems],
+			[$this->controls],
+		);
+	}
+);
+EOT
+		) );
 		
-		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(function() {makeFormInputOpenLayer('" . $this->mapName . "', '" . $this->coordsFieldName . "', " . $this->centre_lat . ", " . $this->centre_lon . ", " . $this->zoom . ", " . $this->marker_lat . ", " . $this->marker_lon . ", [$layerItems], [$this->controls], $this->height);});
-		/*]]>*/</script>";
 	}
 	
 	/**
 	 * @see SMFormInput::manageGeocoding()
-	 *
+	 * TODO: find a geocoding service that can be used here
 	 */
 	protected function manageGeocoding() {
 		$this->enableGeocoding = false;

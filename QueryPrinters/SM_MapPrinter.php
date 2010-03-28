@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Abstract class that provides the common functionallity for all map query printers
+ * File holding abstract class SMMapPrinter.
  *
  * @file SM_MapPrinter.php
  * @ingroup SemanticMaps
@@ -15,16 +15,23 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Abstract class that provides the common functionallity for all map query printers.
+ *
+ * @ingroup SemanticMaps
+ *
+ * @author Jeroen De Dauw
+ * @author Robert Buzink
+ * @author Yaron Koren
+ * 
+ * TODO:
+ * This class is borrowing an awefull lot code from MapsMapFeature, which
+ * ideally should be inherited. Since SMWResultPrinter already gets inherited,
+ * this is not possible. Finding a better solution to this code redundancy 
+ * would be nice, cause now changes to MapsMapFeature need to be copied here.
+ */
 abstract class SMMapPrinter extends SMWResultPrinter {
 
-	/*
-	 * TODO:
-	 * This class is borrowing an awefull lot code from MapsMapFeature, which
-	 * ideally should be inherited. Since SMWResultPrinter already gets inherited,
-	 * this is not possible. Finding a better solution to this code redundancy 
-	 * would be nice, cause now changes to MapsMapFeature need to be copied here.
-	 */
-	
 	/**
 	 * Sets the map service specific element name
 	 */
@@ -38,7 +45,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * Gets the query result
 	 */
-	protected abstract function addSpecificMapHTML();
+	protected abstract function addSpecificMapHTML( Parser $parser );
 	
 	public $serviceName;
 	

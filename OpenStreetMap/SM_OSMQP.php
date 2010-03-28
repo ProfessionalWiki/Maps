@@ -45,7 +45,7 @@ final class SMOSMQP extends SMMapPrinter {
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 *
 	 */
-	protected function addSpecificMapHTML() {
+	protected function addSpecificMapHTML( Parser $parser ) {
 		global $wgJsMimeType;
 		
 		$markerItems = array();

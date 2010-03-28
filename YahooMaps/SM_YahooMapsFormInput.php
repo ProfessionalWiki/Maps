@@ -67,7 +67,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addSpecificMapHTML()
 	 *
 	 */
-	protected function addSpecificMapHTML() {
+	protected function addSpecificMapHTML( Parser $parser ) {
 		global $wgJsMimeType;
 		
 		$this->output .= "
