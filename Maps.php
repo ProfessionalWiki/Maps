@@ -33,13 +33,13 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 a4' );
+	define( 'Maps_VERSION', '0.6 a5' );
 	
 	// The different coordinate notations.
-	define( 'Maps_COORDS_FLOAT', 0 );
-	define( 'Maps_COORDS_DMS', 1 );
-	define( 'Maps_COORDS_DM', 2 );
-	define( 'Maps_COORDS_DD', 3 );
+	define( 'Maps_COORDS_FLOAT', 'float' );
+	define( 'Maps_COORDS_DMS', 'dms' );
+	define( 'Maps_COORDS_DM', 'dm' );
+	define( 'Maps_COORDS_DD', 'dd' );
 	
 	// The symbols to use for degrees, minutes and seconds.
 	define( 'Maps_GEO_DEG', "°" );

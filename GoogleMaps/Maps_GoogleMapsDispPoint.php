@@ -65,8 +65,6 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
-		global $wgOut;
-		
 		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
 		$this->output .= Html::element(

@@ -56,8 +56,6 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgOut;
-		
 		$this->output .= Html::element(
 			'div',
 			array(

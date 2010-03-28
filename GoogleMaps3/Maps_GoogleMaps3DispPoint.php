@@ -58,8 +58,6 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $wgOut;
-		
 		$this->output .= Html::element(
 			'div',
 			array(

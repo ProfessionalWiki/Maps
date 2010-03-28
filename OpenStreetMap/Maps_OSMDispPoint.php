@@ -53,8 +53,6 @@ class MapsOSMDispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
-		global $wgOut;
-		
 		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(

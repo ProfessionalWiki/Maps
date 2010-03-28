@@ -46,8 +46,6 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
-		global $wgOut;
-		
 		$this->output .= Html::element(
 			'div',
 			array(

@@ -53,8 +53,6 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
-		global $wgOut;
-		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
 		$this->output .= Html::element(
