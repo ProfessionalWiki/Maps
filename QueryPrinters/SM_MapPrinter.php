@@ -94,7 +94,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				
 				$this->setCentre();
 				
-				$this->addSpecificMapHTML();
+				global $wgParser;
+				$this->addSpecificMapHTML( $wgParser );
 			}
 			else {
 				// TODO: add warning when level high enough and append to error list?
@@ -239,8 +240,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 						// TODO: add escaping to title and label (they are getting escaped now on some place where they shouldn't)
 						Xml::escapeJsString( $lat ),
 						Xml::escapeJsString( $lon ),
-						$title,
-						$text,
+						Xml::escapeJsString( $title ),
+						Xml::escapeJsString( $text ),
 						Xml::escapeJsString( $icon )
 					);
 				}

@@ -92,8 +92,6 @@ addOnloadHook(
 	function() {
 		initializeGoogleMap('$this->mapName', 
 			{
-				width: $this->width,
-				height: $this->height,
 				lat: $this->centre_lat,
 				lon: $this->centre_lon,
 				zoom: $this->zoom,

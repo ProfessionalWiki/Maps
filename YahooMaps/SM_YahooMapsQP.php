@@ -67,13 +67,11 @@ final class SMYahooMapsQP extends SMMapPrinter {
 			wfMsg('maps-loading-map')
 		);
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
-		
 		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
-		initOpenLayer(
+		initializeYahooMap(
 			'$this->mapName',
 			$this->centre_lat,
 			$this->centre_lon,
