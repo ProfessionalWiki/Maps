@@ -40,29 +40,26 @@ final class MapsGeocoder {
 	 * @param string $geoservice
 	 * @param string $service
 	 * @param boolean $checkForCoords
-	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
-	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * 
-	 * @return string or boolean
+	 * @return array or false
 	 */
-	public static function attemptToGeocode( $coordsOrAddress, $geoservice, $service, $checkForCoords = true, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
+	public static function attemptToGeocode( $coordsOrAddress, $geoservice, $service, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
 			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
-				$parsedCoordinates = MapsCoordinateParser::parseCoordinates( $coordsOrAddress );
-				return MapsCoordinateParser::formatCoordinates( $parsedCoordinates, $targetFormat, $directional );
+				return MapsCoordinateParser::parseCoordinates( $coordsOrAddress );
 			} else {
-				return self::geocodeToString( $coordsOrAddress, $geoservice, $service, $targetFormat, $directional );
+				return self::geocode( $coordsOrAddress, $geoservice, $service );
 			}
 		} else {
-			return self::geocodeToString( $coordsOrAddress, $geoservice, $service, $targetFormat, $directional );
+			return self::geocode( $coordsOrAddress, $geoservice, $service );
 		}
-	}	
+	}
 	
 	/**
 	 * Geocodes an address with the provided geocoding service and returns the result 
 	 * as a string with the optionally provided format, or false when the geocoding failed.
 	 * 
-	 * @param string $address
+	 * @param string $coordsOrAddress
 	 * @param string $service
 	 * @param string $mappingService
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
@@ -70,9 +67,9 @@ final class MapsGeocoder {
 	 * 
 	 * @return formatted coordinate string or false
 	 */
-	public static function geocodeToString( $address, $service = '', $mappingService = '', $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
-		$geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
-		return $geovalues ?  MapsCoordinateParser::formatCoordinates( $geovalues, $targetFormat, $directional ) : false;
+	public static function attemptToGeocodeToString( $coordsOrAddress, $service = '', $mappingService = '', $checkForCoords = true, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
+		$geoValues = self::attemptToGeocode( $coordsOrAddress, $service, $mappingService, $checkForCoords );
+		return $geoValues ?  MapsCoordinateParser::formatCoordinates( $geoValues, $targetFormat, $directional ) : false;
 	}
 
 	/**

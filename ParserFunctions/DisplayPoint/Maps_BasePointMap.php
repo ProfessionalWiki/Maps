@@ -92,10 +92,9 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 		foreach ( $this->coordinates as $coordinates ) {
 			$args = explode( '~', $coordinates );
 			
-            $args[0] = str_replace( '″', '"', $args[0] );
-            $args[0] = str_replace( '′', "'", $args[0] );
+			$markerData = MapsCoordinateParser::parseCoordinates( $args[0] );
 			
-			$markerData = MapsUtils::getLatLon( $args[0] );
+			if ( !$markerData ) continue;
 			
 			if ( count( $args ) > 1 ) {
 				// Parse and add the point specific title if it's present.
@@ -178,7 +177,6 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
 			if ( $this->centre ) {
-				$this->centre = MapsUtils::getLatLon( $this->centre );
 				$this->centre_lat = Xml::escapeJsString( $this->centre['lat'] );
 				$this->centre_lon = Xml::escapeJsString( $this->centre['lon'] );
 			}

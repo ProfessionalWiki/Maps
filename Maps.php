@@ -74,7 +74,7 @@ else {
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP;
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService;
-	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsJsExt;
+	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt;
 
 	// Remove all hooked in services that should not be available.
 	foreach ( $egMapsServices as $service => $data ) {

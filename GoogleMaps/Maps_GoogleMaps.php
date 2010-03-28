@@ -279,7 +279,9 @@ $overlayHtml
 </div></form></div>		
 EOT;
 
-	$output .= "<script type='$wgJsMimeType'>" . implode( "\n", $onloadFunctions ) . '</script>';
+		if ( count($onloadFunctions) > 0 ) {
+			$output .= "<script type='$wgJsMimeType'>" . implode( "\n", $onloadFunctions ) . '</script>';
+		}
 	}
 	
 	/**

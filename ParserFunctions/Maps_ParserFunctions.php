@@ -232,7 +232,7 @@ final class MapsParserFunctions {
 					$args[0] = trim( $args[0] );
 					
 					if ( strlen( $args[0] ) > 0 ) {
-						$coords =  MapsGeocoder::attemptToGeocode( $args[0], $geoservice, $service, $isDefault );
+						$coords =  MapsGeocoder::attemptToGeocodeToString( $args[0], $geoservice, $service, $isDefault );
 						
 						if ( $coords ) {
 							$args[0] = $coords;
