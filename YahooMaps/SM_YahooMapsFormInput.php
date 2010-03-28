@@ -68,14 +68,37 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
-		global $wgJsMimeType;
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+			),
+			wfMsg('maps-loading-map')
+		);
 		
-		$this->output .= "
-		<div id='" . $this->mapName . "' style='width: {$this->width}px; height: {$this->height}px;'></div>  
-		
-		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(function() {makeFormInputYahooMap('$this->mapName', '$this->coordsFieldName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->types], [$this->controls], $this->autozoom, $this->marker_lat, $this->centre_lon, $this->height);});
-		/*]]>*/</script>";
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		makeFormInputYahooMap(
+			'$this->mapName',
+			'$this->coordsFieldName',
+			$this->centre_lat,
+			$this->centre_lon,
+			$this->zoom,
+			$this->type,
+			[$this->types],
+			[$this->controls],
+			$this->autozoom,
+			$this->marker_lat,
+			$this->marker_lon
+		);
+	}
+);
+EOT
+		) );
+
 	}
 	
 	/**

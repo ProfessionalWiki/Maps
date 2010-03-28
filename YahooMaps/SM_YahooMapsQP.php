@@ -46,12 +46,11 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
-		global $wgJsMimeType;
-		
+		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
 		foreach ( $this->m_locations as $location ) {
-			// Create a string containing the marker JS 
+			// Create a string containing the marker JS.
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 			
 			$markerItems[] = "getYMarkerData($lat, $lon, '$title', '$label', '$icon')";
@@ -59,17 +58,36 @@ final class SMYahooMapsQP extends SMMapPrinter {
 		
 		$markersString = implode( ',', $markerItems );
 		
-		$this->output .= "
-		<div id='$this->mapName' style='width: {$this->width}px; height: {$this->height}px;'></div>  
-		
-		<script type='$wgJsMimeType'>/*<![CDATA[*/
-		addOnloadHook(
-			function() {
-				initializeYahooMap('$this->mapName', $this->centre_lat, $this->centre_lon, $this->zoom, $this->type, [$this->types], [$this->controls], $this->autozoom, [$markersString], $this->height);
-			}
+		$this->output .= Html::element(
+			'div',
+			array(
+				'id' => $this->mapName,
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+			),
+			wfMsg('maps-loading-map')
 		);
-			/*]]>*/</script>";
-
+		
+		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
+addOnloadHook(
+	function() {
+		initOpenLayer(
+			'$this->mapName',
+			$this->centre_lat,
+			$this->centre_lon,
+			$this->zoom,
+			$this->type,
+			[$this->types],
+			[$this->controls],
+			$this->autozoom,
+			[$markersString]
+		);
+	}
+);
+EOT
+		) );		
 	}
 
 	/**
