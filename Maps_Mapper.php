@@ -41,14 +41,14 @@ final class MapsMapper {
 					'is_map_dimension' => array( 'width' ),
 				),
 				'default' => $egMapsMapWidth,
-				'output-type' => array( 'mapdimension', 'width', true, $egMapsMapWidth )
+				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
 			),
 			'height' => array(
 				'criteria' => array(
 					'is_map_dimension' => array( 'height' ),
 				),
 				'default' => $egMapsMapHeight,
-				'output-type' => array( 'mapdimension', 'height', true, $egMapsMapHeight )
+				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
 			),
 		);
 	}
@@ -148,9 +148,20 @@ final class MapsMapper {
 		return $service;
 	}
 	
+	/**
+	 * Determines if a value is a valid map dimension, and optionally corrects it.
+	 * 
+	 * @param string or number $value The value as it was entered by the user.
+	 * @param string $dimension Must be width or hieght.
+	 * @param boolean $correct If true, the value will be corrected when invalid. Defaults to false.
+	 * @param number $default The default value for this dimension. Must be set when $correct = true.
+	 * 
+	 * @return boolean
+	 */
 	public static function isMapDimension( &$value, $dimension, $correct = false, $default = 0 ) {
 		global $egMapsSizeRestrictions;
 		
+		// See if the notation is valid.
 		if ( !preg_match( '/^\d+(\.\d+)?(px|ex|em|%)?$/', $value ) ) {
 			if ( $correct ) {
 				$value = $default;
@@ -159,23 +170,38 @@ final class MapsMapper {
 			}
 		}
 		
-		if ( !preg_match( '/^.*%$/', $value ) ) {
-			$number = preg_replace( '/[^0-9]/', '', $value );
-			if ( $number < $egMapsSizeRestrictions[$dimension][0] ) {
-				if ( $correct ) {
-					$value = $egMapsSizeRestrictions[$dimension][0];
-				} else {
-					return false;
-				}
-			} else if ( $number > $egMapsSizeRestrictions[$dimension][1] ) {
-				if ( $correct ) {
-					$value = $egMapsSizeRestrictions[$dimension][1];
-				} else {
-					return false;
-				}
+		// Determine the minimum and maximum values.
+		if ( preg_match( '/^.*%$/', $value ) ) {
+			if ( count( $egMapsSizeRestrictions[$dimension] >= 4 ) ) {
+				$min = $egMapsSizeRestrictions[$dimension][2];
+				$max = $egMapsSizeRestrictions[$dimension][3];
+			} else {
+				// This is for backward compatibility with people who have set a custom min and max before 0.6.
+				$min = 1;
+				$max = 100;				
+			}
+		} else {
+			$min = $egMapsSizeRestrictions[$dimension][0];
+			$max = $egMapsSizeRestrictions[$dimension][1];			
+		}
+		
+		// See if the actual value is withing the limits.
+		$number = preg_replace( '/[^0-9]/', '', $value );
+		if ( $number < $egMapsSizeRestrictions[$dimension][0] ) {
+			if ( $correct ) {
+				$value = $egMapsSizeRestrictions[$dimension][0];
+			} else {
+				return false;
+			}
+		} else if ( $number > $egMapsSizeRestrictions[$dimension][1] ) {
+			if ( $correct ) {
+				$value = $egMapsSizeRestrictions[$dimension][1];
+			} else {
+				return false;
 			}
 		}
 		
+		// If this is a 'correct the value call', add 'px' if no unit has been provided.
 		if ( $correct ) {
 			if ( !preg_match( '/(px|ex|em|%)$/', $value ) ) {
 				$value .= 'px';
@@ -185,9 +211,15 @@ final class MapsMapper {
 		return true;		
 	}
 	
-	public static function setMapDimension( &$value, $dimension, $correct, $default ) {
-		global $egMapsMapWidth;
-		self::isMapDimension( $value, $dimension, $correct, $default );	
+	/**
+	 * Corrects the provided map demension value when not valid.
+	 * 
+	 * @param string or number $value The value as it was entered by the user.
+	 * @param string $dimension Must be width or hieght.
+	 * @param number $default The default value for this dimension.
+	 */
+	public static function setMapDimension( &$value, $dimension, $default ) {
+		self::isMapDimension( $value, $dimension, true, $default );	
 	}
 
 }

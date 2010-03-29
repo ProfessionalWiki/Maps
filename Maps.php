@@ -42,7 +42,7 @@ else {
 	define( 'Maps_COORDS_DD', 'dd' );
 	
 	// The symbols to use for degrees, minutes and seconds.
-	define( 'Maps_GEO_DEG', "°" );
+	define( 'Maps_GEO_DEG', '°' );
 	define( 'Maps_GEO_MIN', "'" );
 	define( 'Maps_GEO_SEC', '"' );	
 	

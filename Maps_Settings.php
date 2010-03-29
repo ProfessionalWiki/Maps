@@ -153,11 +153,12 @@ $egMapsCoordinateDirectional = false;
 $egMapsMapWidth = '100%';
 $egMapsMapHeight = 350;
 
-# Array. The minimum and maximum width and height for all maps. First min, then max. Min needs to be smaller then max.
+# Array. The minimum and maximum width and height for all maps.
+# First min and max for absolute values, then min and max for percentage values.
 # When the height or width exceed their limits, they will be changed to the closest allowed value.
 $egMapsSizeRestrictions = array(
-	'width'  => array( 50, 1020 ),
-	'height' => array( 50, 1000 ),
+	'width'  => array( 50, 1020, 1, 100 ),
+	'height' => array( 50, 1000, 1, 100 ),
 );
 
 # Strings. The default coordinates for the map. Must be in floating point notation.
