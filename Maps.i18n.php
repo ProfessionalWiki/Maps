@@ -151,6 +151,7 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
 	'maps_map' => 'Мапа',
+	'maps-loading-map' => 'Загрузка мапы…',
 	'maps-abb-north' => 'Пн.',
 	'maps-abb-east' => 'У.',
 	'maps-abb-south' => 'Пд.',
@@ -278,6 +279,7 @@ $messages['de'] = array(
 	'maps_desc' => 'Ermöglicht es, Koordinaten in Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
 Verfügbare Kartografie-Dienste: $1',
 	'maps_map' => 'Karte',
+	'maps-loading-map' => 'Karte wird geladen …',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
@@ -308,6 +310,7 @@ $messages['dsb'] = array(
 	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://wiki.bn2vs.com/wiki/Maps demo]).
 K dispoziciji stojece kórtowe słužby: $1',
 	'maps_map' => 'Karta',
+	'maps-loading-map' => 'Kórta se zacytujo...',
 	'maps-abb-north' => 'PP',
 	'maps-abb-east' => 'PZ',
 	'maps-abb-south' => 'PD',
@@ -436,6 +439,7 @@ $messages['fr'] = array(
 	'maps_desc' => 'Permet d’afficher des coordonnées dans des cartes, ainsi que des adresses géocodées ([http://wiki.bn2vs.com/wiki/Maps démonstration]).
 Services de cartographie disponibles : $1',
 	'maps_map' => 'Carte',
+	'maps-loading-map' => 'Chargement de la carte...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -480,6 +484,7 @@ $messages['gl'] = array(
 	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://wiki.bn2vs.com/wiki/Maps demostración]).
 Servizos de cartografía dispoñibles: $1',
 	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Cargando o mapa...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'S',
@@ -509,6 +514,7 @@ $1',
 $messages['gsw'] = array(
 	'maps_desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Maps Demo]',
 	'maps_map' => 'Charte',
+	'maps-loading-map' => 'Am Lade vu dr Charte ...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
@@ -580,6 +586,7 @@ $messages['hsb'] = array(
 	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić ([http://wiki.bn2vs.com/wiki/Maps demo]). 
 K dispoziciji stejace kartowe słužby: $1',
 	'maps_map' => 'Karta',
+	'maps-loading-map' => 'Karta so začituje...',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'W',
 	'maps-abb-south' => 'J',
@@ -608,6 +615,7 @@ K dispoziciji stejace kartowe słužby: $1',
 $messages['hu'] = array(
 	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://wiki.bn2vs.com/wiki/Maps demó]). Elérhető térképszolgáltatások: $1',
 	'maps_map' => 'Térkép',
+	'maps-loading-map' => 'Térkép betöltése…',
 	'maps-abb-north' => 'É',
 	'maps-abb-east' => 'K',
 	'maps-abb-south' => 'D',
@@ -619,7 +627,7 @@ $messages['hu'] = array(
 A térképet nem lehet megjeleníteni.',
 	'maps_geocoding_failed_for' => 'A következő {{PLURAL:$2|cím nem geokódolható|címek nem geokódolhatóak}}, és nem {{PLURAL:$2|szerepel|szerepelnek}} a térképen:
 $1',
-	'maps_unrecognized_coords' => 'A következő koordinátákat nem sikerült felismerni: $1.',
+	'maps_unrecognized_coords' => 'A következő {{PLURAL:$2|koordinátát|koordinátákat}} nem sikerült felismerni: $1.',
 	'maps_unrecognized_coords_for' => 'A következő {{PLURAL:$2|koordinátát|koordinátákat}} nem sikerült felismerni, és el {{PLURAL:$2|lett|lettek}} távolítva a térképről: $1',
 	'maps_map_cannot_be_displayed' => 'A térképet nem sikerült megjeleníteni.',
 	'maps_click_to_activate' => 'Kattints a térkép aktiválásához',
@@ -1111,6 +1119,7 @@ $messages['ru'] = array(
 	'maps_desc' => 'Обеспечивает возможность отображения координатных данных на картах и геокодирование адресов ([http://wiki.bn2vs.com/wiki/Maps демонстрация]).
 Доступные картографические службы: $1',
 	'maps_map' => 'Карта',
+	'maps-loading-map' => 'Идёт загрузка карты…',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'В',
 	'maps-abb-south' => 'Ю',
