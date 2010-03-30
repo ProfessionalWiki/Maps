@@ -68,7 +68,7 @@ include_once $egMapsDir . 'GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
 include_once $egMapsDir . 'GoogleMaps3/Maps_GoogleMaps3.php'; 	// Google Maps v3
 include_once $egMapsDir . 'OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
 include_once $egMapsDir . 'YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
-include_once $egMapsDir . 'OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
+// include_once $egMapsDir . 'OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
