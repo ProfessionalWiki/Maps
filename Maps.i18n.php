@@ -646,6 +646,7 @@ $messages['ia'] = array(
 	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Servicios cartographic disponibile: $1',
 	'maps_map' => 'Carta',
+	'maps-loading-map' => 'Cargamento del carta…',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -827,6 +828,7 @@ $messages['mk'] = array(
 	'maps_desc' => 'Дава можност за приказ на координатни податоци во картите, и геокодирање на адреси ([http://wiki.bn2vs.com/wiki/Maps демо]).
 Картографски служби на располагање: $1',
 	'maps_map' => 'Карта',
+	'maps-loading-map' => 'Ја вчитувам картата...',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ј',
@@ -858,6 +860,7 @@ $messages['nl'] = array(
 	'maps_desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Beschikbare kaartdiensten: $1',
 	'maps_map' => 'Kaart',
+	'maps-loading-map' => 'Bezig met het laden van de kaart...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'Z',
@@ -1027,6 +1030,16 @@ $1",
 	'maps_videos' => 'Filmà',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcam',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'maps_map' => 'نخشه',
+	'maps_photos' => 'انځورونه',
+	'maps_videos' => 'ويډيوګانې',
+	'maps_wikipedia' => 'ويکيپېډيا',
 );
 
 /** Portuguese (Português)
