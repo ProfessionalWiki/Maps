@@ -1009,6 +1009,7 @@ $1',
 $messages['pms'] = array(
 	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Sërvissi ëd mapatura disponìbil: $1",
 	'maps_map' => 'Pian',
+	'maps-loading-map' => 'Carié mapa ...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1050,6 +1051,7 @@ $messages['pt'] = array(
 	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e endereços por geocódigo ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
 Serviços de cartografia disponíveis: $1',
 	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'A carregar o mapa...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
