@@ -19,5 +19,5 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 interface iDisplayFunction {
-	public function displayMap( &$parser, array $params );
+	public function displayMap( Parser &$parser, array $params );
 }
