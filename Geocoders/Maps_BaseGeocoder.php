@@ -22,7 +22,7 @@ abstract class MapsBaseGeocoder {
 	 *
 	 * @param string $address
 	 */
-	public abstract static function geocode( $address );
+	public abstract function geocode( $address );
 	
 	/**
 	 * Returns the content of the requested file, or false when the connection fails
