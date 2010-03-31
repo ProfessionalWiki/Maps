@@ -24,6 +24,17 @@ $wgAutoloadClasses['MapsOpenLayers'] = dirname( __FILE__ ) . '/Maps_OpenLayers.p
 
 $wgHooks['MappingServiceLoad'][] = 'MapsOpenLayers::initialize';
 
+$wgAutoloadClasses['MapsOpenLayersDispMap'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
+$wgAutoloadClasses['MapsOpenLayersDispPoint'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
+
+$egMapsServices[MapsOpenLayers::SERVICE_NAME] = array(
+	'aliases' => array( 'layers', 'openlayer' ),
+	'features' => array(
+		'display_point' => 'MapsOpenLayersDispPoint',
+		'display_map' => 'MapsOpenLayersDispMap',
+	)
+);	
+
 /**
  * Class for OpenLayers initialization.
  * 
@@ -39,17 +50,6 @@ class MapsOpenLayers {
 		global $wgAutoloadClasses, $egMapsServices, $egMapsOLLoadedLayers;
 		
 		$egMapsOLLoadedLayers = array();
-		
-		$wgAutoloadClasses['MapsOpenLayersDispMap'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
-		$wgAutoloadClasses['MapsOpenLayersDispPoint'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
-		
-		$egMapsServices[self::SERVICE_NAME] = array(
-			'aliases' => array( 'layers', 'openlayer' ),
-			'features' => array(
-				'display_point' => 'MapsOpenLayersDispPoint',
-				'display_map' => 'MapsOpenLayersDispMap',
-			)
-		);		
 		
 		self::initializeParams();
 		

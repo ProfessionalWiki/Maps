@@ -51,6 +51,9 @@ else {
 	
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;		
 	
+	$egMapsFeatures = array();
+	$egMapsServices = array();	
+	
 	// Include the settings file.
 	require_once( $egMapsDir . 'Maps_Settings.php' );
 	
@@ -70,16 +73,13 @@ function efMapsSetup() {
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsScriptPath;
 	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;	
 	
-	$egMapsFeatures = array();
-	$egMapsServices = array();
-	
 	// Autoload the general classes
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';	
 	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsDir . 'Maps_MapFeature.php';
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';	
 	
 	wfLoadExtensionMessages( 'Maps' );
-	
+
 	wfRunHooks( 'MappingFeatureLoad' );
 	wfRunHooks( 'MappingServiceLoad' );
 	
@@ -101,7 +101,11 @@ function efMapsSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg( 'maps_name' ),
 		'version' => Maps_VERSION,
-		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others' ),
+		'author' => array(
+			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
+			'[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]',
+			'[http://www.ohloh.net/p/maps/contributors others]'
+		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
 		'description' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
 	);

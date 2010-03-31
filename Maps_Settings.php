@@ -27,8 +27,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
 
-# Initialization of the mapping features array. 
-
 include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php'; 				// Geocoders
 include_once $egMapsDir . 'ParserFunctions/Maps_ParserFunctions.php'; 	// Parser functions
 

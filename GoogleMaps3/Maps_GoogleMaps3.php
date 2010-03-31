@@ -24,6 +24,15 @@ $wgAutoloadClasses['MapsGoogleMaps3'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3
 
 $wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps3::initialize';
 
+$wgAutoloadClasses['MapsGoogleMaps3DispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3DispMap.php';
+
+$egMapsServices[MapsGoogleMaps3::SERVICE_NAME] = array(
+	'aliases' => array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' ),
+	'features' => array(
+		'display_map' => 'MapsGoogleMaps3DispMap',
+	)
+);	
+
 /**
  * Class for Google Maps v3 initialization.
  * 
@@ -37,16 +46,7 @@ class MapsGoogleMaps3 {
 	
 	public static function initialize() {
 		global $wgAutoloadClasses, $egMapsServices;
-		
-		$wgAutoloadClasses['MapsGoogleMaps3DispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3DispMap.php';
-		
-		$egMapsServices[self::SERVICE_NAME] = array(
-			'aliases' => array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' ),
-			'features' => array(
-				'display_map' => 'MapsGoogleMaps3DispMap',
-			)
-		);		
-		
+
 		self::initializeParams();
 		
 		Validator::addOutputFormat( 'gmap3type', array( 'MapsGoogleMaps3', 'setGMapType' ) );

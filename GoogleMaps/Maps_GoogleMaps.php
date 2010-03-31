@@ -24,6 +24,17 @@ $wgAutoloadClasses['MapsGoogleMaps'] = dirname( __FILE__ ) . '/Maps_GoogleMaps.p
 
 $wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps::initialize';
 
+$wgAutoloadClasses['MapsGoogleMapsDispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
+$wgAutoloadClasses['MapsGoogleMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';
+
+$egMapsServices[MapsGoogleMaps::SERVICE_NAME] = array(
+	'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
+	'features' => array(
+		'display_point' => 'MapsGoogleMapsDispPoint',
+		'display_map' => 'MapsGoogleMapsDispMap',
+	)
+);	
+
 /**
  * Class for Google Maps initialization.
  * 
@@ -37,17 +48,6 @@ class MapsGoogleMaps {
 	
 	public static function initialize() {
 		global $wgAutoloadClasses, $egMapsServices;
-		
-		$wgAutoloadClasses['MapsGoogleMapsDispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
-		$wgAutoloadClasses['MapsGoogleMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';
-		
-		$egMapsServices[self::SERVICE_NAME] = array(
-			'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
-			'features' => array(
-				'display_point' => 'MapsGoogleMapsDispPoint',
-				'display_map' => 'MapsGoogleMapsDispMap',
-			)
-		);		
 		
 		self::initializeParams();
 		
