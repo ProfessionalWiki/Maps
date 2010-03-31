@@ -20,5 +20,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['yahoomaps']['qp'] = array( 'class' => 'SMYahooMapsQP', 'file' => 'YahooMaps/SM_YahooMapsQP.php', 'local' => true );
-$egMapsServices['yahoomaps']['fi'] = array( 'class' => 'SMYahooMapsFormInput', 'file' => 'YahooMaps/SM_YahooMapsFormInput.php', 'local' => true );
+$wgAutoloadClasses['SMYahooMapsQP'] = dirname( __FILE__ ) . '/SM_YahooMapsQP.php';
+$wgAutoloadClasses['SMYahooMapsFormInput'] = dirname( __FILE__ ) . '/SM_YahooMapsFormInput.php';
+
+$egMapsServices['yahoomaps']['features']['qp'] = 'SMYahooMapsQP';
+$egMapsServices['yahoomaps']['features']['fi'] = 'SMYahooMapsFormInput';

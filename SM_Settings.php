@@ -25,17 +25,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # (named) Array of String. This array contains the available features for Maps.
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
-$egMapsAvailableFeatures['qp'] = array(
-							'name' => 'Query Printer',
-							'class' => 'SMQueryPrinters',
-							'file' => 'SemanticMaps/QueryPrinters/SM_QueryPrinters.php'
-							);
-
-$egMapsAvailableFeatures['fi'] = array(
-							'name' => 'Form input',
-							'class' => 'SMFormInputs',
-							'file' => 'SemanticMaps/FormInputs/SM_FormInputs.php'
-							);
+include_once $smgDir . 'QueryPrinters/SM_QueryPrinters.php'; 	// Query printers
+include_once $smgDir . 'FormInputs/SM_FormInputs.php'; 			// Form imputs							
 
 
 

@@ -20,5 +20,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['openlayers']['qp'] = array( 'class' => 'SMOpenLayersQP', 'file' => 'OpenLayers/SM_OpenLayersQP.php', 'local' => true );
-$egMapsServices['openlayers']['fi'] = array( 'class' => 'SMOpenLayersFormInput', 'file' => 'OpenLayers/SM_OpenLayersFormInput.php', 'local' => true );
+$wgAutoloadClasses['SMOpenLayersQP'] = dirname( __FILE__ ) . '/SM_OpenLayersQP.php';
+$wgAutoloadClasses['SMOpenLayersFormInput'] = dirname( __FILE__ ) . '/SM_OpenLayersFormInput.php';
+
+$egMapsServices['openlayers']['features']['qp'] = 'SMOpenLayersQP';
+$egMapsServices['openlayers']['features']['fi'] = 'SMOpenLayersFormInput';

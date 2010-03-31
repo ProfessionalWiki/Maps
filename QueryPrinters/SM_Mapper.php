@@ -26,7 +26,7 @@ final class SMMapper {
 		
 		$service = MapsMapper::getValidService( $format, 'qp' );
 		
-		$this->queryPrinter = new $egMapsServices[$service]['qp']['class']( $format, $inline );
+		$this->queryPrinter = new $egMapsServices[$service]['features']['qp']( $format, $inline );
 	}
 
 	public static function getAliases() {

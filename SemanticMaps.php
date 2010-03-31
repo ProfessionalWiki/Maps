@@ -35,7 +35,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.6 a7' );
+	define( 'SM_VERSION', '0.6 a8' );
 
 	$smgScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';
 	$smgDir 		= dirname( __FILE__ ) . '/';
@@ -74,7 +74,11 @@ function smfSetup() {
 		'path' => __FILE__,
 		'name' => wfMsg( 'semanticmaps_name' ),
 		'version' => SM_VERSION,
-		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]', '[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]', 'others' ),
+		'author' => array(
+			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
+			'[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]',
+			'[http://www.ohloh.net/p/semanticmaps/contributors others]'
+		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);

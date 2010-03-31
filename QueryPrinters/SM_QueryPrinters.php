@@ -13,6 +13,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$wgAutoloadClasses['SMQueryPrinters'] = __FILE__;
+
+$wgHooks['MappingFeatureLoad'][] = 'SMQueryPrinters::initialize';
+
 final class SMQueryPrinters {
 	
 	public static $parameters = array();
@@ -22,15 +26,17 @@ final class SMQueryPrinters {
 	 */
 	public static function initialize() {
 		global $smgDir, $wgAutoloadClasses, $egMapsServices;
-		$wgAutoloadClasses['SMMapPrinter'] 	= $smgDir . 'QueryPrinters/SM_MapPrinter.php';
+		
+		$wgAutoloadClasses['SMMapper'] 	= dirname( __FILE__ ) . '/SM_Mapper.php';
+		$wgAutoloadClasses['SMMapPrinter'] 	= dirname( __FILE__ ) . '/SM_MapPrinter.php';
 		
 		self::initializeParams();
 		
 		$hasQueryPrinters = false;
-		
+
 		foreach ( $egMapsServices as $serviceName => $serviceData ) {
-			// Check if the service has a query printer
-			$hasQP = array_key_exists( 'qp', $serviceData );
+			// Check if the service has a query printer.
+			$hasQP = array_key_exists( 'qp', $serviceData['features'] );
 			
 			// If the service has no QP, skipt it and continue with the next one.
 			if ( !$hasQP ) continue;
@@ -39,11 +45,13 @@ final class SMQueryPrinters {
 			$hasQueryPrinters = true;
 			
 			// Initiate the format.
-			self::initFormat( $serviceName, $serviceData['qp'], $serviceData['aliases'] );
+			self::initFormat( $serviceName, $serviceData['features']['qp'], $serviceData['aliases'] );
 		}
 
 		// Add the 'map' result format if there are mapping services that have QP's loaded.
-		if ( $hasQueryPrinters ) self::initFormat( 'map', array( 'class' => 'SMMapper', 'file' => 'QueryPrinters/SM_Mapper.php', 'local' => true ), array() );
+		if ( $hasQueryPrinters ) self::initFormat( 'map', 'SMMapper' );
+		
+		return true;
 	}
 	
 	private static function initializeParams() {
@@ -127,27 +135,21 @@ final class SMQueryPrinters {
 	 * Add the result format for a mapping service or alias.
 	 *
 	 * @param string $format
-	 * @param array $qp
+	 * @param string $formatClass
 	 * @param array $aliases
 	 */
-	private static function initFormat( $format, array $qp, array $aliases ) {
+	private static function initFormat( $format, $formatClass, array $aliases = array() ) {
 		global $wgAutoloadClasses, $smgDir, $smwgResultAliases;
 
-		// Load the QP class when it's not loaded yet.
-		if ( ! array_key_exists( $qp['class'], $wgAutoloadClasses ) ) {
-			$file = array_key_exists( 'local', $qp ) && $qp['local'] ? $smgDir . $qp['file'] : $qp['file'];
-			$wgAutoloadClasses[$qp['class']] = $file;
-		}
-
 		// Add the QP to SMW.
-		self::addFormatQP( $format, $qp['class'] );
+		self::addFormatQP( $format, $formatClass );
 
 		// If SMW supports aliasing, add the aliases to $smwgResultAliases.
 		if ( isset( $smwgResultAliases ) ) {
 			$smwgResultAliases[$format] = $aliases;
 		}
 		else { // If SMW does not support aliasing, add every alias as a format.
-			foreach ( $aliases as $alias ) self::addFormatQP( $alias, $qp['class'] );
+			foreach ( $aliases as $alias ) self::addFormatQP( $alias, $formatClass );
 		}
 	}
 

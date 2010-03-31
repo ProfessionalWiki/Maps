@@ -13,6 +13,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$wgAutoloadClasses['SMFormInputs'] = __FILE__;
+
+$wgHooks['MappingFeatureLoad'][] = 'SMFormInputs::initialize';
+
 final class SMFormInputs {
 	
 	public static $parameters = array();
@@ -24,13 +28,13 @@ final class SMFormInputs {
 		if ( isset( $sfgFormPrinter ) ) {
 			$hasFormInputs = false;
 			
-			$wgAutoloadClasses['SMFormInput'] 	= $smgDir . 'FormInputs/SM_FormInput.php';
+			$wgAutoloadClasses['SMFormInput'] = dirname( __FILE__ ) . '/SM_FormInput.php';
 			
 			self::initializeParams();
 			
 			foreach ( $egMapsServices as $serviceName => $serviceData ) {
 				// Check if the service has a form input
-				$hasFI = array_key_exists( 'fi', $serviceData );
+				$hasFI = array_key_exists( 'fi', $serviceData['features'] );
 				
 				// If the service has no FI, skipt it and continue with the next one.
 				if ( !$hasFI ) continue;
@@ -39,15 +43,17 @@ final class SMFormInputs {
 				$hasFormInputs = true;
 
 				// Add the result form input type for the service name.
-				self::initFormHook( $serviceName, $serviceData['fi'], $serviceName );
+				self::initFormHook( $serviceName, $serviceName );
 				
 				// Loop through the service alliases, and add them as form input types.
-				foreach ( $serviceData['aliases'] as $alias ) self::initFormHook( $alias, $serviceData['fi'], $serviceName );
+				foreach ( $serviceData['aliases'] as $alias ) self::initFormHook( $alias, $serviceName );
 			}
 			
 			// Add the 'map' form input type if there are mapping services that have FI's loaded.
 			if ( $hasFormInputs ) self::initFormHook( 'map' );
 		}
+		
+		return true;
 	}
 	
 	private static function initializeParams() {
@@ -82,17 +88,10 @@ final class SMFormInputs {
 	 * @param array $fi
 	 * @param strig $mainName
 	 */
-	private static function initFormHook( $inputName, array $fi = null, $mainName = '' ) {
+	private static function initFormHook( $inputName, $mainName = '' ) {
 		global $wgAutoloadClasses, $sfgFormPrinter, $smgDir;
-	
-		if ( isset( $fi ) ) {
-			if ( ! array_key_exists( $fi['class'], $wgAutoloadClasses ) ) {
-				$file = array_key_exists( 'local', $fi ) && $fi['local'] ? $smgDir . $fi['file'] : $fi['file'];
-				$wgAutoloadClasses[$fi['class']] = $file;
-			}
-		}
 		
-		// Add the form input hook for the service
+		// Add the form input hook for the service.
 		$field_args = array();
 		if ( strlen( $mainName ) > 0 ) $field_args['service_name'] = $mainName;
 		$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectFormInputHTML', $field_args );
@@ -124,7 +123,7 @@ function smfSelectFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_d
     
     // Ensure the service is valid and create a new instance of the handling form input class.
     $service_name = MapsMapper::getValidService( $service_name, 'fi' );
-    $formInput = new $egMapsServices[$service_name]['fi']['class']();
+    $formInput = new $egMapsServices[$service_name]['features']['fi']();
     
     // Get and return the form input HTML from the hook corresponding with the provided service.
     return $formInput->formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args );

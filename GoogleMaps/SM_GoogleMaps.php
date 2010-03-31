@@ -20,5 +20,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps2']['qp'] = array( 'class' => 'SMGoogleMapsQP', 'file' => 'GoogleMaps/SM_GoogleMapsQP.php', 'local' => true );
-$egMapsServices['googlemaps2']['fi'] = array( 'class' => 'SMGoogleMapsFormInput', 'file' => 'GoogleMaps/SM_GoogleMapsFormInput.php', 'local' => true );
+$wgAutoloadClasses['SMGoogleMapsQP'] = dirname( __FILE__ ) . '/SM_GoogleMapsQP.php';
+$wgAutoloadClasses['SMGoogleMapsFormInput'] = dirname( __FILE__ ) . '/SM_GoogleMapsFormInput.php';
+
+$egMapsServices['googlemaps2']['features']['qp'] = 'SMGoogleMapsQP';
+$egMapsServices['googlemaps2']['features']['fi'] = 'SMGoogleMapsFormInput';
