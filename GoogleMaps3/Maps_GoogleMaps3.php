@@ -20,16 +20,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps3'] = array(
-									'pf' => array(
-										// 'display_point' => array('class' => 'MapsGoogleMaps3DispPoint', 'file' => 'GoogleMaps3/Maps_GoogleMaps3DispPoint.php', 'local' => true),
-										'display_map' => array( 'class' => 'MapsGoogleMaps3DispMap', 'file' => 'GoogleMaps3/Maps_GoogleMaps3DispMap.php', 'local' => true ),
-										),
-									'classes' => array(
-											array( 'class' => 'MapsGoogleMaps3', 'file' => 'GoogleMaps3/Maps_GoogleMaps3.php', 'local' => true )
-											),
-									'aliases' => array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' ),
-									);
+$wgAutoloadClasses['MapsGoogleMaps3'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3.php';
+
+$wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps3::initialize';
 
 /**
  * Class for Google Maps v3 initialization.
@@ -43,9 +36,23 @@ class MapsGoogleMaps3 {
 	const SERVICE_NAME = 'googlemaps3';
 	
 	public static function initialize() {
+		global $wgAutoloadClasses, $egMapsServices;
+		
+		$wgAutoloadClasses['MapsGoogleMaps3DispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3DispMap.php';
+		
+		$egMapsServices[self::SERVICE_NAME] = array(
+			'aliases' => array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' ),
+			'features' => array(
+				'display_map' => 'MapsGoogleMaps3DispMap',
+			)
+		);		
+		
 		self::initializeParams();
+		
 		Validator::addOutputFormat( 'gmap3type', array( 'MapsGoogleMaps3', 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmap3types', array( 'MapsGoogleMaps3', 'setGMapTypes' ) );
+		
+		return true;
 	}
 	
 	private static function initializeParams() {

@@ -33,7 +33,7 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	 * 
 	 * @return html
 	 */
-	public final function displayMap( &$parser, array $params ) {
+	public final function displayMap( Parser &$parser, array $params ) {
 		$this->setMapSettings();
 		
 		$this->featureParameters = MapsDisplayMap::$parameters;

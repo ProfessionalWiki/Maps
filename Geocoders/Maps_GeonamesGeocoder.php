@@ -14,6 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$wgAutoloadClasses['MapsGeonamesGeocoder'] 	= __FILE__;
+$egMapsGeoServices['geonames'] = 'MapsGeonamesGeocoder';
+
 final class MapsGeonamesGeocoder extends MapsBaseGeocoder {
 	
 	/**

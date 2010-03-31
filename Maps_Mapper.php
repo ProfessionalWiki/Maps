@@ -72,33 +72,17 @@ final class MapsMapper {
 	 * 
 	 * @return string
 	 */
-	public static function getValidService( $service, $feature, $subfeature = '' ) {
-		global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices, $egMapsServices;
+	public static function getValidService( $service, $feature ) {
+		global $egMapsServices, $egMapsDefaultService, $egMapsDefaultServices, $shouldChange;
 
 		// Get rid of any aliases.
 		$service = self::getMainServiceName( $service );
-		
 		// If the service is not loaded into maps, it should be changed.
 		$shouldChange = ! array_key_exists( $service, $egMapsServices );
 
-		// If it should not be changed, ensure the service supports this feature, and when present, sub feature.
-		// TODO: recursive checking for sub features would definitly be cooler.
+		// If it should not be changed, ensure the service supports this feature.
 		if ( ! $shouldChange ) {
-			if ( array_key_exists( $feature, $egMapsServices[$service] ) ) {
-				if ( array_key_exists( 'class', $egMapsServices[$service][$feature] ) ) {
-					// If the class key is set, the feature does not have sub features, so the service supports the feature.
-					$shouldChange = false;
-				}
-				else
-				{
-					// The feature has sub features, so check if the current service has support for it.
-					$shouldChange = !array_key_exists( $subfeature, $egMapsServices[$service][$feature] );
-				}
-			}
-			else {
-				// The service does not support this feature.
-				$shouldChange = true;
-			}
+			$shouldChange = !array_key_exists( $feature, $egMapsServices[$service]['features'] );
 		}
 
 		// Change the service to the most specific default value available.

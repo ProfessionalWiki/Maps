@@ -20,16 +20,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['googlemaps2'] = array(
-									'pf' => array(
-										'display_point' => array( 'class' => 'MapsGoogleMapsDispPoint', 'file' => 'GoogleMaps/Maps_GoogleMapsDispPoint.php', 'local' => true ),
-										'display_map' => array( 'class' => 'MapsGoogleMapsDispMap', 'file' => 'GoogleMaps/Maps_GoogleMapsDispMap.php', 'local' => true ),
-										),
-									'classes' => array(
-											array( 'class' => 'MapsGoogleMaps', 'file' => 'GoogleMaps/Maps_GoogleMaps.php', 'local' => true )
-											),
-									'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
-									);
+$wgAutoloadClasses['MapsGoogleMaps'] = dirname( __FILE__ ) . '/Maps_GoogleMaps.php';
+
+$wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps::initialize';
 
 /**
  * Class for Google Maps initialization.
@@ -43,10 +36,27 @@ class MapsGoogleMaps {
 	const SERVICE_NAME = 'googlemaps2';
 	
 	public static function initialize() {
+		global $wgAutoloadClasses, $egMapsServices;
+		
+		$wgAutoloadClasses['MapsGoogleMapsDispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
+		$wgAutoloadClasses['MapsGoogleMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';
+		
+		$egMapsServices[self::SERVICE_NAME] = array(
+			'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
+			'features' => array(
+				'display_point' => 'MapsGoogleMapsDispPoint',
+				'display_map' => 'MapsGoogleMapsDispMap',
+			)
+		);		
+		
 		self::initializeParams();
+		
 		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
+		
 		Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );
+		
+		return true;
 	}
 	
 	private static function initializeParams() {

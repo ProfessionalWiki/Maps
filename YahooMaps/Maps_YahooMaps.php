@@ -20,16 +20,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['yahoomaps'] = array(
-									'pf' => array(
-										'display_point' => array( 'class' => 'MapsYahooMapsDispPoint', 'file' => 'YahooMaps/Maps_YahooMapsDispPoint.php', 'local' => true ),
-										'display_map' => array( 'class' => 'MapsYahooMapsDispMap', 'file' => 'YahooMaps/Maps_YahooMapsDispMap.php', 'local' => true ),
-										),
-									'classes' => array(
-											array( 'class' => 'MapsYahooMaps', 'file' => 'YahooMaps/Maps_YahooMapsUtils.php', 'local' => true )
-											),
-									'aliases' => array( 'yahoo', 'yahoomap', 'ymap', 'ymaps' ),
-									);
+$wgAutoloadClasses['MapsYahooMaps'] = dirname( __FILE__ ) . '/Maps_YahooMaps.php';
+
+$wgHooks['MappingServiceLoad'][] = 'MapsYahooMaps::initialize';
 									
 /**
  * Class for Yahoo! Maps initialization.
@@ -43,9 +36,25 @@ class MapsYahooMaps {
 	const SERVICE_NAME = 'yahoomaps';
 	
 	public static function initialize() {
+		global $wgAutoloadClasses, $egMapsServices;
+		
+		$wgAutoloadClasses['MapsYahooMapsDispMap'] = dirname( __FILE__ ) . '/Maps_YahooMapsDispMap.php';
+		$wgAutoloadClasses['MapsYahooMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_YahooMapsDispPoint.php';
+		
+		$egMapsServices[self::SERVICE_NAME] = array(
+			'aliases' => array( 'yahoo', 'yahoomap', 'ymap', 'ymaps' ),
+			'features' => array(
+				'display_point' => 'MapsYahooMapsDispPoint',
+				'display_map' => 'MapsYahooMapsDispMap',
+			)
+		);		
+		
 		self::initializeParams();
+		
 		Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
 		Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );
+		
+		return true;
 	}
 	
 	private static function initializeParams() {

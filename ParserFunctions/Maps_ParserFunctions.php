@@ -13,6 +13,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$wgAutoloadClasses['MapsParserFunctions'] = __FILE__;
+
+$wgHooks['MappingFeatureLoad'][] = 'MapsParserFunctions::initialize';
+
 /**
  * A class that holds handlers for the mapping parser functions.
  * 
@@ -27,30 +31,18 @@ final class MapsParserFunctions {
 	 * and will load the required classes.
 	 */
 	public static function initialize() {
-		global $egMapsDir, $IP, $wgAutoloadClasses, $egMapsAvailableFeatures, $egMapsServices;
+		global $egMapsDir, $IP, $wgAutoloadClasses, $egMapsFeatures, $egMapsServices;
 		
 		include_once $egMapsDir . 'ParserFunctions/Maps_iDisplayFunction.php';
 		
 		self::initializeParams();
 		
-		foreach ( $egMapsServices as $serviceName => $serviceData ) {
-			// Check if the service has parser function support
-			$hasPFs = array_key_exists( 'pf', $serviceData );
-			
-			// If the service has no parser function support, skipt it and continue with the next one.
-			if ( !$hasPFs ) continue;
-			
-			// Go through the parser functions supported by the mapping service, and load their classes.
-			foreach ( $serviceData['pf'] as $parser_name => $parser_data ) {
-				$file = array_key_exists( 'local', $parser_data ) && $parser_data['local'] ? $egMapsDir . $parser_data['file'] : $IP . '/extensions/' . $parser_data['file'];
-				$wgAutoloadClasses[$parser_data['class']] = $file;
-			}
+		// This runs a small hook that enables parser functions to run initialization code.
+		foreach ( $egMapsFeatures['pf'] as $hook ) {
+			call_user_func( $hook );
 		}
 		
-		// This runs a small hook that enables parser functions to run initialization code.
-		foreach ( $egMapsAvailableFeatures['pf']['hooks'] as $hook ) {
-			if ( method_exists( $hook, 'initialize' ) ) call_user_func( array( $hook, 'initialize' ) );
-		}
+		return true;
 	}
 	
 	private static function initializeParams() {
@@ -60,7 +52,7 @@ final class MapsParserFunctions {
 			'service' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
-					),
+					),		
 				'default' => $egMapsDefaultServices['pf']
 				),
 			'coordinates' => array(
@@ -93,8 +85,8 @@ final class MapsParserFunctions {
         $coordFails = array();
         
         $paramInfo = array_merge( MapsMapper::getMainParams(), self::$parameters );
-        
-        $geoFails = self::changeAddressesToCoords( $params, $paramInfo );
+
+        $geoFails = self::changeAddressesToCoords( $params, $paramInfo, $parserFunction );
         
         // Go through all parameters, split their names and values, and put them in the $map array.
         foreach ( $params as $param ) {
@@ -107,7 +99,7 @@ final class MapsParserFunctions {
                 	if ( self::inParamAliases( $paramName, 'coordinates', $paramInfo ) ) $coordFails = self::filterInvalidCoords( $map[$paramName] );
                 }
             }
-            else if ( count( $split ) == 1 ) { // Default parameter (without name)
+            else if ( count( $split ) == 1 ) { // Default parameter (without name).
             	$split[0] = trim( $split[0] );
                 if ( strlen( $split[0] ) > 0 ) $map['coordinates'] = $split[0];
             }
@@ -116,13 +108,9 @@ final class MapsParserFunctions {
         $coords = self::getParamValue( 'coordinates', $map, $paramInfo );
         
         if ( $coords ) {
-            if ( ! self::paramIsPresent( 'service', $map, $paramInfo ) ) $map['service'] = '';
-
-            $map['service'] = MapsMapper::getValidService( $map['service'], 'pf', $parserFunction );
-
             $mapClass = self::getParserClassInstance( $map['service'], $parserFunction );
     
-            // Call the function according to the map service to get the HTML output
+            // Call the function according to the map service to get the HTML output.
             $output = $mapClass->displayMap( $parser, $map );
 
             if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) {
@@ -185,12 +173,14 @@ final class MapsParserFunctions {
 	 * Changes the values of the address or addresses parameter into coordinates
 	 * in the provided array. Returns an array containing the addresses that
 	 * could not be geocoded.
+	 * 
+	 * Also ensures the service parameter is valid.
 	 *
 	 * @param array $params
 	 * 
 	 * @return array
 	 */
-	private static function changeAddressesToCoords( &$params, array $paramInfo ) {
+	private static function changeAddressesToCoords( &$params, array $paramInfo, $parserFunction ) {
 		global $egMapsDefaultService;
 
 		$fails = array();
@@ -207,8 +197,12 @@ final class MapsParserFunctions {
 		}
 
 		// Make sure the service and geoservice are valid.
-		$service = isset( $service ) ? MapsMapper::getValidService( $service, 'pf' ) : $egMapsDefaultService;
+		if ( !isset( $service ) ) $service = '';
+		$service = MapsMapper::getValidService( $service, $parserFunction );
+		
 		if ( ! isset( $geoservice ) ) $geoservice = '';
+		
+		$setService = false;
 		
 		// Go over all parameters.
 		for ( $i = 0; $i < count( $params ); $i++ ) {
@@ -245,10 +239,16 @@ final class MapsParserFunctions {
 				// Add the geocoded result back to the parameter list.
 				$params[$i] = implode( ';', $coordinates );
 
+			} else if ( self::inParamAliases( strtolower( trim( $split[0] ) ), 'service', $paramInfo ) && count( $split ) > 1 ) {
+				$params[$i] = "service=$service";
+				$setService = true;
 			}
-			
 		}
 
+		if ( !$setService ) {
+			$params[] = "service=$service";
+		}		
+		
 		return $fails;
 	}
 	
@@ -263,7 +263,7 @@ final class MapsParserFunctions {
 	 */
 	public static function getParserClassInstance( $service, $parserFunction ) {
 		global $egMapsServices;
-		return new $egMapsServices[$service]['pf'][$parserFunction]['class']();
+		return new $egMapsServices[$service]['features'][$parserFunction]();
 	}
 	
 	/**

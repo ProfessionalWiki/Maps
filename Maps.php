@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 a7' );
+	define( 'Maps_VERSION', '0.6 a8' );
 	
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -44,50 +44,53 @@ else {
 	// The symbols to use for degrees, minutes and seconds.
 	define( 'Maps_GEO_DEG', '°' );
 	define( 'Maps_GEO_MIN', "'" );
-	define( 'Maps_GEO_SEC', '"' );	
+	define( 'Maps_GEO_SEC', '"' );		
 	
 	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	
-	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
+	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;		
 	
 	// Include the settings file.
 	require_once( $egMapsDir . 'Maps_Settings.php' );
 	
+	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';	
+	
 	// Register the initialization function of Maps.
 	$wgExtensionFunctions[] = 'efMapsSetup';
-	
-	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
-	
+
 	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
-	
-	// Autoload the general classes
-	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';	
-	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsDir . 'Maps_MapFeature.php';
-	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';
 }
 
 /**
  * Initialization function for the Maps extension.
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP;
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService;
-	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt;
-
+	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP, $wgStyleVersion, $wgScriptPath,  $wgJsMimeType, $wgExtensionAssetsPath;
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsScriptPath;
+	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;	
+	
+	$egMapsFeatures = array();
+	$egMapsServices = array();
+	
+	// Autoload the general classes
+	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';	
+	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsDir . 'Maps_MapFeature.php';
+	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';	
+	
+	wfLoadExtensionMessages( 'Maps' );
+	
+	wfRunHooks( 'MappingFeatureLoad' );
+	wfRunHooks( 'MappingServiceLoad' );
+	
 	// Remove all hooked in services that should not be available.
 	foreach ( $egMapsServices as $service => $data ) {
 		if ( ! in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
 	}
+	$egMapsAvailableServices = array_keys( $egMapsServices );
 	
-	// Enure that the default service and geoservice are one of the enabled ones.
-	$egMapsDefaultService = in_array( $egMapsDefaultService, $egMapsAvailableServices ) ? $egMapsDefaultService : $egMapsAvailableServices[0];
-	if ( !in_array( $egMapsDefaultGeoService, $egMapsAvailableGeoServices ) ) {
-		reset( $egMapsAvailableGeoServices );
-		$egMapsDefaultGeoService = key( $egMapsAvailableGeoServices );
-	}
-	
-	wfLoadExtensionMessages( 'Maps' );
+	// Enure that the default service is one of the enabled ones.
+	$egMapsDefaultService = in_array( $egMapsDefaultService, $egMapsAvailableServices ) ? $egMapsDefaultService : $egMapsAvailableServices[0];	
 	
 	// Creation of a list of internationalized service names.
 	$services = array();
@@ -104,29 +107,6 @@ function efMapsSetup() {
 	);
 
 	MapsMapper::initializeMainParams();
-
-	// wfRunHooks( 'MappingFeatureLoad');
-	// wfRunHooks( 'MappingServiceLoad');
-	
-	// Loop through the available mapping features, load and initialize them.
-	foreach ( $egMapsAvailableFeatures as $key => $values ) {
-		// Load and optionally initizlize feature.
-		if ( array_key_exists( 'class', $values ) && array_key_exists( 'file', $values ) ) {
-			$wgAutoloadClasses[$values['class']] = array_key_exists( 'local', $values ) && $values['local'] ? $egMapsDir . $values['file'] : $IP . '/extensions/' . $values['file'];
-			if ( method_exists( $values['class'], 'initialize' ) ) call_user_func( array( $values['class'], 'initialize' ) );
-		}
-	}
-
-	// Loop through the available mapping services to load and initialize their general classes.
-	foreach ( $egMapsServices as $serviceData ) {
-		if ( array_key_exists( 'classes', $serviceData ) ) {
-			foreach ( $serviceData['classes'] as $class ) {
-				$file = array_key_exists( 'local', $class ) && $class['local'] ? $egMapsDir . $class['file'] : $IP . '/extensions/' . $class['file'];
-				$wgAutoloadClasses[$class['class']] = $file;
-				if ( method_exists( $class['class'], 'initialize' ) ) call_user_func( array( $class['class'], 'initialize' ) );
-			}
-		}
-	}
 	
 	$egMapsJsExt = $egMapsUseMinJs ? '.min.js' : '.js';
 	
@@ -134,12 +114,12 @@ function efMapsSetup() {
 }
 
 /**
- * Adds a link to Admin Links page
+ * Adds a link to Admin Links page.
  */
 function efMapsAddToAdminLinks( &$admin_links_tree ) {
     $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
     
-    // Escape if SMW hasn't added links
+    // Escape if SMW hasn't added links.
     if ( is_null( $displaying_data_section ) ) return true;
     $smw_docu_row = $displaying_data_section->getRow( 'smw' );
     

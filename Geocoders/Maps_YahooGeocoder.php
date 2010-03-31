@@ -14,6 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$wgAutoloadClasses['MapsYahooGeocoder'] = __FILE__;
+$egMapsGeoServices['yahoo'] = 'MapsYahooGeocoder';
+
 final class MapsYahooGeocoder extends MapsBaseGeocoder {
 	
 	/**

@@ -83,7 +83,7 @@ final class MapsGeocoder {
 	 * @return array with coordinates or false
 	 */
 	public static function geocode( $address, $service, $mappingService ) {
-		global $egMapsAvailableGeoServices, $wgAutoloadClasses, $egMapsDir, $IP;
+		global $egMapsGeoServices, $wgAutoloadClasses, $egMapsDir, $IP;
 		
 		// If the adress is already in the cache and the cache is enabled, return the coordinates.
 		if ( self::$mEnableCache && array_key_exists( $address, MapsGeocoder::$mGeocoderCache ) ) {
@@ -92,12 +92,8 @@ final class MapsGeocoder {
 		
 		$service = self::getValidGeoService( $service, $mappingService );
 		
-		// Make sure the needed class is loaded.
-		$file = $egMapsAvailableGeoServices[$service]['local'] ? $egMapsDir . $egMapsAvailableGeoServices[$service]['file'] : $IP . '/extensions/' . $egMapsAvailableGeoServices[$service]['file'];
-		$wgAutoloadClasses[$egMapsAvailableGeoServices[$service]['class']] = $file;
-		
 		// Call the geocode function in the spesific geocoder class.
-		$coordinates = call_user_func( array( $egMapsAvailableGeoServices[$service]['class'], 'geocode' ), $address );
+		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
 
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
 		if ( self::$mEnableCache && $coordinates ) {
@@ -117,13 +113,13 @@ final class MapsGeocoder {
 	 * @return string
 	 */
 	private static function getValidGeoService( $service, $mappingService ) {
-		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsGeoOverrides;
 		
-		if ( strlen( $service ) < 1 ) {
+		if ( $service == '' ) {
 			// If no service has been provided, check if there are overrides for the default.
-			foreach ( $egMapsAvailableGeoServices as $geoService => $serviceData ) {
-				if ( in_array( $mappingService, $serviceData ) )  {
-					$service = $geoService; // Use the override
+			foreach ( $egMapsAvailableGeoServices as $geoService ) {
+				if ( array_key_exists( $geoService, $egMapsGeoOverrides ) && in_array( $mappingService, $egMapsGeoOverrides[$geoService] ) )  {
+					$service = $geoService; // Use the override.
 					break;
 				}
 			}

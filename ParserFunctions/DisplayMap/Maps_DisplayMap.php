@@ -19,7 +19,7 @@ $wgAutoloadClasses['MapsBaseMap'] 			= $egMapsDir . 'ParserFunctions/DisplayMap/
 $wgHooks['LanguageGetMagic'][] 				= 'efMapsDisplayMapMagic';
 $wgHooks['ParserFirstCallInit'][] 			= 'efMapsRegisterDisplayMap';
 
-$egMapsAvailableFeatures['pf']['hooks'][]	= 'MapsDisplayMap';
+$egMapsFeatures['pf'][]	= 'MapsDisplayMap::initialize';
 
 /**
  * Adds the magic words for the parser functions.

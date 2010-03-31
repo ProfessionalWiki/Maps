@@ -20,16 +20,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$egMapsServices['openlayers'] = array(
-									'pf' => array(
-										'display_point' => array( 'class' => 'MapsOpenLayersDispPoint', 'file' => 'OpenLayers/Maps_OpenLayersDispPoint.php', 'local' => true ),
-										'display_map' => array( 'class' => 'MapsOpenLayersDispMap', 'file' => 'OpenLayers/Maps_OpenLayersDispMap.php', 'local' => true ),
-										),
-									'classes' => array(
-											array( 'class' => 'MapsOpenLayers', 'file' => 'OpenLayers/Maps_OpenLayers.php', 'local' => true )
-											),
-									'aliases' => array( 'layers', 'openlayer' ),
-									);
+$wgAutoloadClasses['MapsOpenLayers'] = dirname( __FILE__ ) . '/Maps_OpenLayers.php';
+
+$wgHooks['MappingServiceLoad'][] = 'MapsOpenLayers::initialize';
+
 /**
  * Class for OpenLayers initialization.
  * 
@@ -42,11 +36,26 @@ class MapsOpenLayers {
 	const SERVICE_NAME = 'openlayers';
 	
 	public static function initialize() {
+		global $wgAutoloadClasses, $egMapsServices, $egMapsOLLoadedLayers;
+		
+		$egMapsOLLoadedLayers = array();
+		
+		$wgAutoloadClasses['MapsOpenLayersDispMap'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
+		$wgAutoloadClasses['MapsOpenLayersDispPoint'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
+		
+		$egMapsServices[self::SERVICE_NAME] = array(
+			'aliases' => array( 'layers', 'openlayer' ),
+			'features' => array(
+				'display_point' => 'MapsOpenLayersDispPoint',
+				'display_map' => 'MapsOpenLayersDispMap',
+			)
+		);		
+		
 		self::initializeParams();
+		
 		Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
 		
-		global $egMapsOLLoadedLayers;
-		$egMapsOLLoadedLayers = array();
+		return true;
 	}
 	
 	private static function initializeParams() {

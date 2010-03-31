@@ -26,23 +26,24 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # (named) Array of String. This array contains the available features for Maps.
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
-if ( empty( $egMapsAvailableFeatures ) ) $egMapsAvailableFeatures = array();
 
-$egMapsAvailableFeatures['geocode'] = array(
-							'name' => 'Geocoding',
-							'class' => 'Geocoders',
-							'file' => 'Geocoders/Maps_Geocoders.php',
-							'local' => true,
-							);
+# Initialization of the mapping features array. 
 
-$egMapsAvailableFeatures['pf'] = array(
-							'name' => 'Parser Functions',
-							'class' => 'MapsParserFunctions',
-							'file' => 'ParserFunctions/Maps_ParserFunctions.php',
-							'local' => true,
-							);
+include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php'; 				// Geocoders
+include_once $egMapsDir . 'ParserFunctions/Maps_ParserFunctions.php'; 	// Parser functions
 
 
+
+
+# Geocoding services configuration
+
+# Array of String. Array containing all the geocoding services that will be made available to the user.
+# Currently Maps provides the following services: geonames, google, yahoo
+$egMapsAvailableGeoServices = array('geonames', 'google', 'yahoo');
+
+# String. The default geocoding service, which will be used when no service is provided by the user.
+# This service needs to be enabled, if not, the first one from the available services will be taken.
+$egMapsDefaultGeoService = 'geonames';
 
 
 
@@ -51,7 +52,6 @@ $egMapsAvailableFeatures['pf'] = array(
 include_once $egMapsDir . 'ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// display_map	
 include_once $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// display_point(s)
 include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// geocode, geocodelon, geocodelat
-
 
 
 
@@ -72,7 +72,7 @@ include_once $egMapsDir . 'YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableServices = array( 'googlemaps2', 'googlemaps3', 'yahoomaps', 'openlayers', 'osm' );
+$egMapsAvailableServices = array( 'googlemaps2', 'googlemaps3', 'yahoomaps', 'openlayers' );
 
 # String. The default mapping service, which will be used when no default service is present in the
 # $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
@@ -92,34 +92,6 @@ $egMapsDefaultServices = array(
 
 
 
-
-# Geocoding services configuration
-
-# Array of String. Array containing all the geocoding services that will be made available to the user.
-# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableGeoServices = array(
-									'google' => array(
-										'class' => 'MapsGoogleGeocoder',
-										'file' => 'Geocoders/Maps_GoogleGeocoder.php',
-										'local' => true,
-										'overrides' => array( 'googlemaps2' ),
-										),
-									'yahoo' => array(
-										'class' => 'MapsYahooGeocoder',
-										'file' => 'Geocoders/Maps_YahooGeocoder.php',
-										'local' => true,
-										'overrides' => array( 'yahoomaps' ),
-										),
-									'geonames' => array(
-										'class' => 'MapsGeonamesGeocoder',
-										'file' => 'Geocoders/Maps_GeonamesGeocoder.php',
-										'local' => true,
-										),
-									);
-
-# String. The default geocoding service, which will be used when no service is provided by the user.
-# This service needs to be enabled, if not, the first one from the available services will be taken.
-$egMapsDefaultGeoService = 'geonames';
 
 
 

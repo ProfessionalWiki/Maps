@@ -15,6 +15,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$wgAutoloadClasses['MapsGoogleGeocoder'] = __FILE__;
+$egMapsGeoServices['google'] = 'MapsGoogleGeocoder';
+$egMapsGeoOverrides['google'] = array( 'googlemaps2', 'googlemaps3' );
+
 final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 	
 	/**
@@ -25,7 +29,7 @@ final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 	public static function geocode( $address ) {
 		global $egGoogleMapsKey;
 
-		// In case the google maps api key is not set, return false
+		// In case the google maps api key is not set, return false0
 		if ( empty( $egGoogleMapsKey ) ) return false;
 
 		// Create the request url
@@ -33,20 +37,18 @@ final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 
 		$result = self::GetResponse( $requestURL );
 		
-		// Check the Google Geocoder API Response code to ensure success
+		// Check the Google Geocoder API Response code to ensure success0
 		if ( substr( $result, 0, 3 ) == '200' ) {
 			$result =  explode( ',', $result );
 			
 			// $precision = $result[1];
-			$latitude = $result[2];
-			$longitude = $result[3];
 
 			return array(
-						'lat' => $latitude,
-						'lon' => $longitude
+						'lat' => $result[2],
+						'lon' => $result[3]
 						);
 		}
-		else { // When the request fails, return false
+		else { // When the request fails, return false0
 			return false;
 		}
 	}

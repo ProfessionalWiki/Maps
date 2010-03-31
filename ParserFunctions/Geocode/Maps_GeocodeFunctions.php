@@ -22,21 +22,21 @@ $wgHooks['LanguageGetMagic'][] = 'efMapsGeoFunctionMagic';
 $wgHooks['ParserFirstCallInit'][] = 'efMapsRegisterGeoFunctions';
 
 /**
- * Adds the magic words for the parser functions
+ * Adds the magic words for the parser functions.
  */
 function efMapsGeoFunctionMagic( &$magicWords, $langCode ) {
 	$magicWords['geocode'] = array( 0, 'geocode' );
 	$magicWords['geocodelat']	= array ( 0, 'geocodelat' );
 	$magicWords['geocodelon']	= array ( 0, 'geocodelon', 'geocodelng' );
 	
-	return true; // Unless we return true, other parser functions won't get loaded
+	return true; // Unless we return true, other parser functions won't get loaded.
 }
 
 /**
- * Adds the parser function hooks
+ * Adds the parser function hooks.
  */
 function efMapsRegisterGeoFunctions( &$wgParser ) {
-	// Hooks to enable the geocoding parser functions
+	// Hooks to enable the geocoding parser functions.
 	$wgParser->setFunctionHook( 'geocode', array( 'MapsGeocodeFunctions', 'renderGeocoder' ) );
 	$wgParser->setFunctionHook( 'geocodelat', array( 'MapsGeocodeFunctions', 'renderGeocoderLat' ) );
 	$wgParser->setFunctionHook( 'geocodelon', array( 'MapsGeocodeFunctions', 'renderGeocoderLon' ) );
@@ -67,8 +67,8 @@ final class MapsGeocodeFunctions {
 	 * 
 	 * @return string
 	 */
-	public static function renderGeocoder( $parser, $coordsOrAddress, $service = '', $mappingService = '' ) {
-		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::attemptToGeocode( $coordsOrAddress, $service, $mappingService );
+	public static function renderGeocoder( Parser $parser, $coordsOrAddress, $service = '', $mappingService = '' ) {
+		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::attemptToGeocodeToString( $coordsOrAddress, $service, $mappingService );
 		return $geovalues ? $geovalues : '';
 	}
 
@@ -83,7 +83,7 @@ final class MapsGeocodeFunctions {
 	 * 
 	 * @return string
 	 */
-	public static function renderGeocoderLat( &$parser, $address, $service = '', $mappingService = '' ) {
+	public static function renderGeocoderLat( Parser &$parser, $address, $service = '', $mappingService = '' ) {
 		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
 		return $geovalues ? $geovalues['lat'] : '';
 	}
@@ -99,7 +99,7 @@ final class MapsGeocodeFunctions {
 	 * 
 	 * @return string
 	 */
-	public static function renderGeocoderLon( &$parser, $address, $service = '', $mappingService = '' ) {
+	public static function renderGeocoderLon( Parser &$parser, $address, $service = '', $mappingService = '' ) {
 		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
 		return $geovalues ? $geovalues['lon'] : '';
 	}
