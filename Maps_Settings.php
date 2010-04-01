@@ -37,7 +37,11 @@ include_once $egMapsDir . 'ParserFunctions/Maps_ParserFunctions.php'; 	// Parser
 
 # Array of String. Array containing all the geocoding services that will be made available to the user.
 # Currently Maps provides the following services: geonames, google, yahoo
-$egMapsAvailableGeoServices = array('geonames', 'google', 'yahoo');
+$egMapsAvailableGeoServices = array(
+	'geonames',
+	'google',
+	'yahoo'
+);
 
 # String. The default geocoding service, which will be used when no service is provided by the user.
 # This service needs to be enabled, if not, the first one from the available services will be taken.
@@ -47,18 +51,16 @@ $egMapsDefaultGeoService = 'geonames';
 
 # Include the parser functions that should be loaded into Maps.
 # Commenting or removing a parser functions will cause Maps to completely ignore it, and so improve performance.
-include_once $egMapsDir . 'ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// display_map	
-include_once $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// display_point(s)
-include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// geocode, geocodelon, geocodelat
+include_once $egMapsDir . 'ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// #display_map	
+include_once $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// #display_point(s)
+include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// #geocode, #geocodelat, #geocodelon
+include_once $egMapsDir . 'ParserFunctions/Coordinates/Maps_Coordinates.php';	// #coordinates
 
 
 
 
 # Mapping services configuration
 # Note: You can not use aliases in the settings. Use the main service names.
-
-# Initialization of the mapping services array. 
-$egMapsServices = array();
 
 # Include the mapping services that should be loaded into Maps. 
 # Commenting or removing a mapping service will cause Maps to completely ignore it, and so improve performance.
@@ -70,7 +72,12 @@ include_once $egMapsDir . 'YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
-$egMapsAvailableServices = array( 'googlemaps2', 'googlemaps3', 'yahoomaps', 'openlayers' );
+$egMapsAvailableServices = array(
+	'googlemaps2',
+	'googlemaps3',
+	'yahoomaps',
+	'openlayers'
+);
 
 # String. The default mapping service, which will be used when no default service is present in the
 # $egMapsDefaultServices array for a certain feature. A service that supports all features is recommended.
@@ -91,10 +98,6 @@ $egMapsDefaultServices = array(
 
 
 
-
-
-
-
 # General configuration
 
 # Boolean. Indicates if minified js files should be used where available.
@@ -106,12 +109,21 @@ $egMapsUseMinJs = false;
 
 # Coordinate configuration
 
+$egMapsAvailableCoordNotations = array(
+	Maps_COORDS_FLOAT,
+	Maps_COORDS_DMS,
+	Maps_COORDS_DM,
+	Maps_COORDS_DD
+);
+
 # Enum. The default output format of coordinates.
 # Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
 $egMapsCoordinateNotation = Maps_COORDS_FLOAT;
 
 # Boolean. Indicates if coordinates should be outputted in directional notation by default.
 $egMapsCoordinateDirectional = false;
+
+
 
 
 
@@ -163,7 +175,12 @@ $egMapsGoogleMapsPrefix = 'map_google';
 $egMapsGoogleMapsZoom = 14;
 
 # Array of String. The Google Maps v2 default map types. This value will only be used when the user does not provide one.
-$egMapsGoogleMapsTypes = array( 'normal', 'satellite', 'hybrid', 'physical' );
+$egMapsGoogleMapsTypes = array(
+	'normal',
+	'satellite',
+	'hybrid',
+	'physical'
+);
 
 # String. The default map type. This value will only be used when the user does not provide one.
 $egMapsGoogleMapsType = 'normal';
@@ -174,12 +191,22 @@ $egMapsGoogleAutozoom = true;
 
 # Array of String. The default controls for Google Maps v2. This value will only be used when the user does not provide one.
 # Available values: auto, large, small, large-original, small-original, zoom, type, type-menu, overview-map, scale, nav-label, overlays
-$egMapsGMapControls = array( 'auto', 'scale', 'type', 'overlays' );
+$egMapsGMapControls = array(
+	'auto',
+	'scale',
+	'type',
+	'overlays'
+);
 
 # Array. The default overlays for the Google Maps v2 overlays control, and whether they should be shown at pageload.
 # This value will only be used when the user does not provide one.
 # Available values: photos, videos, wikipedia, webcams
-$egMapsGMapOverlays = array( 'photos', 'videos', 'wikipedia', 'webcams' );
+$egMapsGMapOverlays = array(
+	'photos',
+	'videos',
+	'wikipedia',
+	'webcams'
+);
 
 
 
@@ -192,7 +219,12 @@ $egMapsGMaps3Prefix = 'map_google3';
 $egMapsGMaps3Zoom = 14;
 
 # Array of String. The Google Maps v3 default map types. This value will only be used when the user does not provide one.
-$egMapsGMaps3Types = array( 'roadmap', 'satellite', 'hybrid', 'terrain' );
+$egMapsGMaps3Types = array(
+	'roadmap',
+	'satellite',
+	'hybrid',
+	'terrain'
+);
 
 # String. The default map type. This value will only be used when the user does not provide one.
 $egMapsGMaps3Type = 'roadmap';
@@ -209,7 +241,11 @@ $egYahooMapsKey = '';
 $egMapsYahooMapsPrefix = 'map_yahoo';
 
 # Array of String. The Google Maps default map types. This value will only be used when the user does not provide one.
-$egMapsYahooMapsTypes = array( 'normal', 'satellite', 'hybrid' );
+$egMapsYahooMapsTypes = array(
+	'normal',
+	'satellite',
+	'hybrid'
+);
 
 # String. The default map type. This value will only be used when the user does not provide one.
 $egMapsYahooMapsType = 'normal';
@@ -223,7 +259,11 @@ $egMapsYahooAutozoom = true;
 
 # Array of String. The default controls for Yahoo! Maps. This value will only be used when the user does not provide one.
 # Available values: type, pan, zoom, zoom-short, auto-zoom
-$egMapsYMapControls = array( 'type', 'pan', 'auto-zoom' );
+$egMapsYMapControls = array(
+	'type',
+	'pan',
+	'auto-zoom'
+);
 
 
 
@@ -237,11 +277,19 @@ $egMapsOpenLayersZoom = 13;
 
 # Array of String. The default controls for Open Layers. This value will only be used when the user does not provide one.
 # Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-$egMapsOLControls = array( 'layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation' );
+$egMapsOLControls = array(
+	'layerswitcher',
+	'mouseposition',
+	'autopanzoom',
+	'scaleline',
+	'navigation'
+);
 
 # Array of String. The default layers for Open Layers. This value will only be used when the user does not provide one.
 # Available values: google, bing, yahoo, openlayers, nasa
-$egMapsOLLayers = array( 'openlayers-wms' );
+$egMapsOLLayers = array(
+	'openlayers-wms'
+);
 
 # The difinitions for the layers that should be available for the user.
 $egMapsOLAvailableLayers = array(
@@ -291,7 +339,13 @@ $egMapsOSMZoom = 13;
 
 # Array of String. The default controls for OSM maps. This value will only be used when the user does not provide one.
 # Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-$egMapsOSMControls = array( 'layerswitcher', 'mouseposition', 'autopanzoom', 'scaleline', 'navigation' );
+$egMapsOSMControls = array(
+	'layerswitcher', 
+	'mouseposition',
+	'autopanzoom',
+	'scaleline',
+	'navigation'
+);
 
 # Boolean. Indicates whether you want to get a static map (image) or not.
 # This value will only be used when the user does not provide one.
