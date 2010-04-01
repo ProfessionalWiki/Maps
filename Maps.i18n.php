@@ -357,12 +357,14 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Dferg
  * @author Imre
+ * @author Locos epraix
  * @author Peter17
  * @author Translationista
  */
 $messages['es'] = array(
 	'maps_desc' => 'Proporciona la capacidad de mostrar los datos de coordenadas en los mapas y geocodifica direcciones ([http://wiki.bn2vs.com/wiki/Maps demo]). Servicios de mapeo disponibles: $1',
 	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Cargando mapa...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1009,7 +1011,7 @@ $1',
 $messages['pms'] = array(
 	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Sërvissi ëd mapatura disponìbil: $1",
 	'maps_map' => 'Pian',
-	'maps-loading-map' => 'Carié mapa ...',
+	'maps-loading-map' => 'Cariament ëd la carta...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1218,6 +1220,7 @@ $messages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -1229,7 +1232,7 @@ $messages['tr'] = array(
 	'maps-latitude' => 'Enlem:',
 	'maps-longitude' => 'Boylam:',
 	'maps_coordinates_missing' => 'Harita için koordinat girilmedi.',
-	'maps_unrecognized_coords' => 'Şu koordinatlar tanınamadı: $1',
+	'maps_unrecognized_coords' => 'Şu {{PLURAL:$2|koordinat|koordinatlar}} tanınamadı: $1',
 	'maps_map_cannot_be_displayed' => 'Harita görüntülenemiyor.',
 	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
