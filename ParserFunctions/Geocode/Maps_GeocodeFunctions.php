@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file contains registration 
+ * This file contains the registration functions for the following parser functions: 
  * 
  * {{#geocode:<Address>|<param1>=<value1>|<param2>=<value2>}}
  * {{#geocodelat:<Address>|<param1>=<value1>|<param2>=<value2>}}
@@ -67,9 +67,95 @@ final class MapsGeocodeFunctions {
 	 * 
 	 * @return string
 	 */
-	public static function renderGeocoder( Parser $parser, $coordsOrAddress, $service = '', $mappingService = '' ) {
-		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::attemptToGeocodeToString( $coordsOrAddress, $service, $mappingService );
-		return $geovalues ? $geovalues : '';
+	public static function renderGeocoder( Parser $parser ) {
+		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsAvailableCoordNotations;
+		global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
+		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
+		
+		$args = func_get_args();
+		
+		// We already know the $parser.
+		array_shift( $args ); 
+		
+		// For backward compatibility with pre 0.6.
+		$defaultParams = array( 'location', 'service', 'mappingservice' );
+		$parameters = array();
+		
+		// Determine all parameter names and value, and take care of default (nameless)
+		// parameters, by turning them into named ones.
+		foreach( $args as $arg ) {
+			$parts = explode( '=', $arg );
+			if ( count( $parts ) == 1 ) {
+				if ( count( $defaultParams ) > 0 ) {
+					$defaultParam = array_shift( $defaultParams ); 
+					$parameters[$defaultParam] = $parts[0];	
+				}
+			} else {
+				$name = array_shift( $parts );
+				$parameters[$name] = implode( $parts );
+			}
+		}
+		
+		$parameterInfo = array(
+			'location' => array(
+				'required' => true 
+			),
+			'mappingservice' => array(
+				'criteria' => array(
+					'in_array' => $egMapsAvailableServices
+				),		
+				'default' => $egMapsDefaultServices['pf']
+			),
+			'service' => array(
+				'criteria' => array(
+					'in_array' => array_keys( $egMapsAvailableGeoServices )
+				),
+				'default' => $egMapsDefaultGeoService
+			),
+			'notation' => array(
+				'criteria' => array(
+					'in_array' => $egMapsAvailableCoordNotations
+				),
+				'default' => $egMapsCoordinateNotation
+			),
+			'allowcoordinates' => array(
+				'type' => 'boolean',
+				'default' => $egMapsAllowCoordsGeocoding
+			),
+			'directional' => array(
+				'type' => 'boolean',
+				'default' => $egMapsCoordinateDirectional
+			),								
+		);
+		
+		$manager = new ValidatorManager();
+		
+		$parameters = $manager->manageMapparameters( $parameters, $parameterInfo );
+		
+		$doGeocoding = $parameters !== false;
+		
+		if ( $doGeocoding ) {
+			if ( self::geocoderIsAvailable() ) {
+				$geovalues = MapsGeocoder::attemptToGeocodeToString( 
+					$parameters['location'],
+					$parameters['service'],
+					$parameters['mappingservice'],
+					$parameters['allowcoordinates'],
+					$parameters['notation'],
+					$parameters['directional']
+				);
+				return ( $geovalues ? $geovalues : '' ) . $manager->getErrorList();
+			}
+			else {
+				return htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
+			}
+		} else {
+			return $manager->getErrorList();
+		}				
+		
+		//$egMapsAvailableCoordNotations
+		
+		;
 	}
 
 	/**

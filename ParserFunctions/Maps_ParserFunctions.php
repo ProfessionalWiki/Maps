@@ -52,19 +52,19 @@ final class MapsParserFunctions {
 			'service' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
-					),		
+				),		
 				'default' => $egMapsDefaultServices['pf']
-				),
+			),
 			'coordinates' => array(
 				'aliases' => array( 'coords', 'location', 'locations' ),
-				),
+			),
 			'geoservice' => array(
 				'criteria' => array(
 					'in_array' => array_keys( $egMapsAvailableGeoServices )
-					),
-				'default' => $egMapsDefaultGeoService
 				),
-			);
+				'default' => $egMapsDefaultGeoService
+			),
+		);
 	}
 	
 	/**
