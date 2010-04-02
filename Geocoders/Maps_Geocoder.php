@@ -44,7 +44,7 @@ final class MapsGeocoder {
 	 * @return array or false
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice, $service, $checkForCoords = true ) {
-		if ( $checkForCoords ) {
+		if ( $checkForCoords ) {			
 			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
 				return MapsCoordinateParser::parseCoordinates( $coordsOrAddress );
 			} else {

@@ -91,17 +91,17 @@ final class MapsParserFunctions {
         // Go through all parameters, split their names and values, and put them in the $map array.
         foreach ( $params as $param ) {
             $split = explode( '=', $param );
-            if ( count( $split ) > 1 ) {
-                $paramName = strtolower( trim( $split[0] ) );
-                $paramValue = trim( $split[1] );
-                if ( strlen( $paramName ) > 0 && strlen( $paramValue ) > 0 ) {
+            if ( count( $split ) > 1 ) {           	
+                $paramName = strtolower( trim( array_shift( $split ) ) );
+                $paramValue = trim( implode( $split ) );
+                if ( $paramName != '' && $paramValue != '' ) {
                 	$map[$paramName] = $paramValue;
                 	if ( self::inParamAliases( $paramName, 'coordinates', $paramInfo ) ) $coordFails = self::filterInvalidCoords( $map[$paramName] );
                 }
             }
-            else if ( count( $split ) == 1 ) { // Default parameter (without name).
+            else { // Default parameter (without name).
             	$split[0] = trim( $split[0] );
-                if ( strlen( $split[0] ) > 0 ) $map['coordinates'] = $split[0];
+                if ( $split[0] != '' ) $map['coordinates'] = $split[0];
             }
         }
 
@@ -124,7 +124,7 @@ final class MapsParserFunctions {
             }
         }
         elseif ( $egValidatorErrorLevel >= Validator_ERRORS_MINIMAL ) {
-	        if ( trim( $coords ) == '' && ( count( $geoFails ) > 0 || count( $coordFails ) > 0 ) ) {
+	        if ( $coords == '' && ( count( $geoFails ) > 0 || count( $coordFails ) > 0 ) ) {
 	        	if ( count( $coordFails ) > 0 ) $output = '<i>' . wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
 	            if ( count( $geoFails ) > 0 ) $output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
 	            $output .= '<i>' . wfMsg( 'maps_map_cannot_be_displayed' ) . '</i>';

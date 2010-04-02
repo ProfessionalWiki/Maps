@@ -88,11 +88,11 @@ final class MapsGeocodeFunctions {
 			if ( count( $parts ) == 1 ) {
 				if ( count( $defaultParams ) > 0 ) {
 					$defaultParam = array_shift( $defaultParams ); 
-					$parameters[$defaultParam] = $parts[0];	
+					$parameters[$defaultParam] = trim( $parts[0] );	
 				}
 			} else {
-				$name = array_shift( $parts );
-				$parameters[$name] = implode( $parts );
+				$name = strtolower( trim( array_shift( $parts ) ) );
+				$parameters[$name] = trim( implode( $parts ) );
 			}
 		}
 		
@@ -152,10 +152,6 @@ final class MapsGeocodeFunctions {
 		} else {
 			return $manager->getErrorList();
 		}				
-		
-		//$egMapsAvailableCoordNotations
-		
-		;
 	}
 
 	/**

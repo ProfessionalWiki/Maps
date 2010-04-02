@@ -111,6 +111,7 @@ class MapsCoordinateParser {
 	 * @return boolean
 	 */	
 	public static function areCoordinates( $coordsOrAddress ) {
+		// TODO: normalize notation before checking
 		return self::getCoordinatesType( $coordsOrAddress ) !== false;
 	}
 	
@@ -153,19 +154,20 @@ class MapsCoordinateParser {
 	 * @return string
 	 */
 	private static function formatCoordinate( $coordinate, $targetFormat ) {
+		$coordinate = (float)$coordinate;
 		switch ( $targetFormat ) {
 			case Maps_COORDS_FLOAT:
 				return $coordinate;
 			case Maps_COORDS_DMS:
-				$coordStr = round( $coordinate ) . Maps_GEO_DEG . ' ';
-				$minutes = ( $coordinate % 1 ) / 60;
-				$coordStr .= round( $minutes ) . Maps_GEO_MIN . ' ';
-				$coordStr .= ( $minutes % 1 ) / 60 . Maps_GEO_SEC;
-				return $coordStr;
+				var_dump($coordinate);
+				$degrees = floor( $coordinate );
+				$minutes = ( $coordinate - $degrees ) * 60;
+				$seconds = ( $minutes - floor( $minutes ) ) * 60;
+				return $degrees . Maps_GEO_DEG . ' ' . floor( $minutes ) . Maps_GEO_MIN . ' ' . round( $seconds ) . Maps_GEO_SEC;
 			case Maps_COORDS_DD:
 				return $coordinate . Maps_GEO_DEG;
 			case Maps_COORDS_DM:
-				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate % 1 ) / 60 . Maps_GEO_MIN;
+				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - floor( $coordinate ) )* 60 . Maps_GEO_MIN;
 			default:
 				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
 		}
