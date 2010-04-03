@@ -31,6 +31,7 @@ Available mapping services: $1",
 	'maps-longitude' => 'Longitude:',	
 
 	// Coordinate errors
+	'maps-invalid-coordinates' => 'The value $1 was not recognized as a valid set of coordinates.',
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
 	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:

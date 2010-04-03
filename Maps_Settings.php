@@ -118,7 +118,7 @@ $egMapsAvailableCoordNotations = array(
 
 # Enum. The default output format of coordinates.
 # Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
-$egMapsCoordinateNotation = Maps_COORDS_DM;
+$egMapsCoordinateNotation = Maps_COORDS_DMS;
 
 # Boolean. Indicates if coordinates should be outputted in directional notation by default.
 $egMapsCoordinateDirectional = false;
