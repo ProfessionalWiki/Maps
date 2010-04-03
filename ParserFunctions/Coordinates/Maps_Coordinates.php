@@ -65,7 +65,7 @@ function efMapsRenderCoordinates() {
 			$parameters[$name] = trim( implode( $parts ) );
 		}
 	}
-	
+
 	$parameterInfo = array(
 		'location' => array(
 			'required' => true 
@@ -92,9 +92,11 @@ function efMapsRenderCoordinates() {
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
 		if ( $parsedCoords ) {
-			return MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['notation'], $parameters['directional'] );
+			return MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['notation'], $parameters['directional'] ) .
+				$manager->getErrorList();
 		} else {
-			return htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) );
+			return htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) ) .
+				$manager->getErrorList();
 		}
 	} else {
 		return $manager->getErrorList();
