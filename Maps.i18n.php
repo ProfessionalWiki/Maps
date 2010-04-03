@@ -42,7 +42,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
 	// Geocoding
-	'maps-geocoder-not-available' => 'The geocoding feature is of Maps is not available, your location can not be geocoded.',
+	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',
 
 	// Mapping services
 	'maps_googlemaps2' => 'Google Maps v2',
