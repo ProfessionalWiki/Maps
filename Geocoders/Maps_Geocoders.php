@@ -21,7 +21,6 @@ $wgHooks['MappingFeatureLoad'][] = 'MapsGeocoders::initialize';
  * Initialization class for geocoder functionality in the Maps extension. 
  * 
  * @author Jeroen De Dauw
- *
  */
 final class MapsGeocoders {
 	
@@ -42,7 +41,7 @@ final class MapsGeocoders {
 		include_once dirname( __FILE__ ) . '/Maps_GeonamesGeocoder.php'; 	// GeoNames
 		
 		// Remove the supported geocoding services that are not in the $egMapsAvailableGeoServices array.
-		$supportedServices = array_keys($egMapsGeoServices);
+		$supportedServices = array_keys( $egMapsGeoServices );
 		foreach ($supportedServices as $supportedService) {
 			if ( !in_array($supportedService, $egMapsAvailableGeoServices) ) {
 				unset( $egMapsGeoServices[$supportedService] );
@@ -50,7 +49,7 @@ final class MapsGeocoders {
 		}
 		
 		// Re-populate the $egMapsAvailableGeoServices with it's original services that are supported. 
-		$egMapsAvailableGeoServices = array_keys($egMapsGeoServices);
+		$egMapsAvailableGeoServices = array_keys( $egMapsGeoServices );
 		
 		// Enure that the default geoservice is one of the enabled ones.
 		if ( !in_array( $egMapsDefaultGeoService, $egMapsAvailableGeoServices ) ) {

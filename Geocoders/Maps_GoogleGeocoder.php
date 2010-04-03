@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Google Geocoding Service info: http://code.google.com/apis/maps/documentation/services.html#Geocoding_Direct
+ * Google Geocoding Service (v2)
+ * More info: http://code.google.com/apis/maps/documentation/services.html#Geocoding_Direct
  *
  * @file Maps_GoogleGeocoder.php
  * @ingroup Maps

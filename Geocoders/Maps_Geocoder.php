@@ -16,13 +16,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsGeocoder {
-
-	/**
-	 * Holds if geocoded data should be cached or not.
-	 *
-	 * @var boolean
-	 */
-	private static $mEnableCache = true;
 	
 	/**
 	 * The geocoder cache, holding geocoded data when enabled.
@@ -83,10 +76,10 @@ final class MapsGeocoder {
 	 * @return array with coordinates or false
 	 */
 	public static function geocode( $address, $service, $mappingService ) {
-		global $egMapsGeoServices, $wgAutoloadClasses, $egMapsDir, $IP;
+		global $egMapsGeoServices, $wgAutoloadClasses, $egMapsDir, $IP, $egMapsEnableGeoCache;
 		
 		// If the adress is already in the cache and the cache is enabled, return the coordinates.
-		if ( self::$mEnableCache && array_key_exists( $address, MapsGeocoder::$mGeocoderCache ) ) {
+		if ( $egMapsEnableGeoCache && array_key_exists( $address, MapsGeocoder::$mGeocoderCache ) ) {
 			return self::$mGeocoderCache[$address];
 		}
 		
@@ -96,7 +89,7 @@ final class MapsGeocoder {
 		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
 
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
-		if ( self::$mEnableCache && $coordinates ) {
+		if ( $egMapsEnableGeoCache && $coordinates ) {
 			MapsGeocoder::$mGeocoderCache[$address] = $coordinates;
 		}
 
@@ -113,17 +106,19 @@ final class MapsGeocoder {
 	 * @return string
 	 */
 	private static function getValidGeoService( $service, $mappingService ) {
-		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsGeoOverrides;
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsGeoOverrides, $egMapsUserGeoOverrides;
 		
 		if ( $service == '' ) {
-			// If no service has been provided, check if there are overrides for the default.
-			foreach ( $egMapsAvailableGeoServices as $geoService ) {
-				if ( array_key_exists( $geoService, $egMapsGeoOverrides ) && in_array( $mappingService, $egMapsGeoOverrides[$geoService] ) )  {
-					$service = $geoService; // Use the override.
-					break;
-				}
+			if ( $egMapsUserGeoOverrides ) {
+				// If no service has been provided, check if there are overrides for the default.
+				foreach ( $egMapsAvailableGeoServices as $geoService ) {
+					if ( array_key_exists( $geoService, $egMapsGeoOverrides ) && in_array( $mappingService, $egMapsGeoOverrides[$geoService] ) )  {
+						$service = $geoService; // Use the override.
+						break;
+					}
+				}				
 			}
-			
+
 			// If no overrides where applied, use the default mapping service.
 			if ( strlen( $service ) < 1 ) $service = $egMapsDefaultGeoService;
 		}
