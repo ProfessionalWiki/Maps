@@ -33,12 +33,12 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 alpha 1' );
+	define( 'Maps_VERSION', '0.6 a11' );
 	
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
 	define( 'Maps_COORDS_DMS', 'dms' );
-	define( 'Maps_COORDS_DM', 'dm' );
+	define( 'Maps_COORDS_SDM', 'dm' );
 	define( 'Maps_COORDS_DD', 'dd' );
 	
 	// The symbols to use for degrees, minutes and seconds.
@@ -48,6 +48,11 @@ else {
 	
 	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
+	
+	// To ensure Maps remains compatible with 1.15 (Html was added in 1.16).
+	if ( !class_exists('Html') ) { 
+		require_once ( $egMapsDir . 'Compat/Html.php' );
+	}
 	
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;		
 	
