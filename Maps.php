@@ -38,7 +38,7 @@ else {
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
 	define( 'Maps_COORDS_DMS', 'dms' );
-	define( 'Maps_COORDS_SDM', 'dm' );
+	define( 'Maps_COORDS_DM', 'dm' );
 	define( 'Maps_COORDS_DD', 'dd' );
 	
 	// The symbols to use for degrees, minutes and seconds.
