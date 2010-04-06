@@ -162,6 +162,7 @@ $messages['be-tarask'] = array(
 	'maps-abb-west' => 'З.',
 	'maps-latitude' => 'Шырата:',
 	'maps-longitude' => 'Даўгата:',
+	'maps-invalid-coordinates' => 'Значэньне $1 зьяўляецца недапушчальным наборам каардынатаў.',
 	'maps_coordinates_missing' => 'Каардынаты для мапы не пазначаныя.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Наступны адрас ня можа быць геакадаваны|Наступныя адрасы ня могуць быць геакадаваныя}}: $1.
 Мапа ня можа быць паказана.',
@@ -171,6 +172,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Наступная каардыната не была апазнаная|Наступныя каардынаты не былі апазнаныя}} і {{PLURAL:$2|яна не паказаная|яны не паказаныя}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Мапа ня можа быць паказаная.',
+	'maps-geocoder-not-available' => 'Магчымасьць геаграфічнага кадаваньня для мапаў недаступная. Вашае месцазнаходжаньне ня можа быць геаграфічна закадаванае.',
 	'maps_click_to_activate' => 'Націсьніце для актывацыі мапы',
 	'maps_centred_on' => 'Цэнтар мапы — $1, $2.',
 	'maps_overlays' => 'Слаі',
@@ -198,12 +200,14 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
 	'maps_map' => 'Kartenn',
+	'maps-loading-map' => 'O kargañ ar gartenn...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'R',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'K',
 	'maps-latitude' => 'Ledred :',
 	'maps-longitude' => 'Hedred :',
+	'maps-invalid-coordinates' => "N'eo ket bet anavezet an talvoudenn $1 evel ul stroll a c'henurzhiennoù reizh.",
 	'maps_coordinates_missing' => "N'eus bet spisaet daveenn ebet evit ar gartenn.",
 	'maps_geocoding_failed' => "N'eus ket bet gallet douarkodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul : $1.
 N'haller ket diskwel ar gartenn.",
@@ -364,6 +368,7 @@ $messages['eo'] = array(
  * @author Dferg
  * @author Imre
  * @author Locos epraix
+ * @author Pertile
  * @author Peter17
  * @author Translationista
  */
@@ -377,6 +382,7 @@ $messages['es'] = array(
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Latitud:',
 	'maps-longitude' => 'Longitud:',
+	'maps-invalid-coordinates' => 'El valor $1 no fue reconocido como un conjunto válido de coordenadas.',
 	'maps_coordinates_missing' => 'Sin coordenadas provistas para el mapa.',
 	'maps_geocoding_failed' => 'Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.
 No se puede mostrar el mapa.',
@@ -384,6 +390,7 @@ No se puede mostrar el mapa.',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|La siguiente coordenada no fue reconocida|Las siguientes coordenadas no fueron reconocidas}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada siguiente no es reconocida|Las coordenadas siguientes no son reconocidas}} y PLURAL:$2|{{han sido omitidas|han sido omitidas}} del mapa :$1',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
+	'maps-geocoder-not-available' => 'La funcionalidad de geocodificación de Maps no está disponible. Su ubicación no puede ser geocodificada.',
 	'maps_click_to_activate' => 'Haz clic para activar el mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
 	'maps_overlays' => 'Superposiciones',
