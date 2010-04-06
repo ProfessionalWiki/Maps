@@ -57,7 +57,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		$this->output .= Html::element(
 			'div',
 			array(
