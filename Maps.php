@@ -49,9 +49,9 @@ else {
 	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	
-	// To ensure Maps remains compatible with 1.15 (Html was added in 1.16).
-	if ( !class_exists('Html') ) { 
-		require_once ( $egMapsDir . 'Compat/Html.php' );
+	// To ensure Maps remains compatible with pre 1.16.
+	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
+		$wgAutoloadClasses['Html'] = $egMapsDir . 'Compat/Html.php';
 	}
 	
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;		
