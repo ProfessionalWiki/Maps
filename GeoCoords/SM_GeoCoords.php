@@ -34,7 +34,7 @@ define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity querie
  * 
  * TODO: Add support for a per-coordinate set distance parameter.
  */
-function smfGetGeoProximitySQLCondition( &$where, $description, $tablename, $fieldname, $dbs ) {
+function smfGetGeoProximitySQLCondition( &$where, SMGeoCoordsValueDescription $description, $tablename, $fieldname, $dbs ) {
 	global $smgGeoCoordDistance;
 	
 	$where = '';
