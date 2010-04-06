@@ -92,10 +92,8 @@ $egMapsDefaultService = 'googlemaps2';
 # Each service needs to be enabled, if not, the first one from the available services will be taken.
 # Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
 $egMapsDefaultServices = array(
-	'pf' => array(
-		'display_point' => 'googlemaps2',
-		'display_map' => 'googlemaps2'
-	)
+	'display_point' => 'googlemaps2',
+	'display_map' => 'googlemaps2'
 );
 
 

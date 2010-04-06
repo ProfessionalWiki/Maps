@@ -90,17 +90,7 @@ final class MapsMapper {
 		// If they don't, a fatal error will occur later on.
 		if ( $shouldChange ) {
 			if ( array_key_exists( $feature, $egMapsDefaultServices ) ) {
-				if ( is_array( $egMapsDefaultServices[$feature] ) ) {
-					if ( array_key_exists( $subfeature, $egMapsDefaultServices[$feature] ) ) {
-						$service = $egMapsDefaultServices[$feature][$subfeature];
-					}
-					else {
-						$service = $egMapsDefaultService;
-					}
-				}
-				else {
-					$service = $egMapsDefaultServices[$feature];
-				}
+				$service = $egMapsDefaultServices[$feature];
 			}
 			else {
 				$service = $egMapsDefaultService;
