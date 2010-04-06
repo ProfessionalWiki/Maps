@@ -115,7 +115,7 @@ EOT
 		// Retrieve language values.
 		$enter_address_here_text = Xml::escapeJsString( wfMsg( 'semanticmaps_enteraddresshere' ) );
 		$lookup_coordinates_text = Xml::escapeJsString( wfMsg( 'semanticmaps_lookupcoordinates' ) );
-		$not_found_text = Xml::encodeJsVar( wfMsg( 'semanticmaps_notfound' ) );
+		$not_found_text = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
 		
 		$adress_field = SMFormInput::getDynamicInput( $this->geocodeFieldName, $enter_address_here_text, 'size="30" name="geocode" style="color: #707070" tabindex="' . $sfgTabIndex . '"' );
 		$this->output .= "
