@@ -63,19 +63,19 @@ abstract class SMFormInput extends MapsMapFeature {
 			$this->setCentre();
 			$this->setZoom();
 			
-			// Create html element names
+			// Create html element names.
 			$this->setMapName();
 			$this->mapName .= '_' . $sfgTabIndex;
 			$this->geocodeFieldName = $this->elementNamePrefix . '_geocode_' . $this->elementNr . '_' . $sfgTabIndex;
 			$this->coordsFieldName = $this->elementNamePrefix . '_coords_' . $this->elementNr . '_' . $sfgTabIndex;
 			$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
 	
-			// Create the non specific form HTML
+			// Create the non specific form HTML.
 			$this->output .= "
 			<input id='" . $this->coordsFieldName . "' name='$input_name' type='text' value='$this->startingCoords' size='40' tabindex='$sfgTabIndex'>
 			<span id='" . $this->infoFieldName . "' class='error_message'></span>";
 			
-			if ( $this->enableGeocoding ) $this->addGeocodingField( $wgParser );
+			if ( $this->enableGeocoding ) $this->addGeocodingField();
 			
 			$this->addSpecificMapHTML( $wgParser );
 		}
@@ -83,23 +83,20 @@ abstract class SMFormInput extends MapsMapFeature {
 		return array( $this->output . $this->errorList, '' );
 	}
 	
-	private function addGeocodingField( Parser $parser ) {
+	private function addGeocodingField() {
 		global $sfgTabIndex, $wgOut, $smgAddedFormJs;
 		$sfgTabIndex++;
-		
-		// TODO: test if this works
 		
 		if ( !$smgAddedFormJs ) {
 			$smgAddedFormJs = true;
 			
-			$n = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-north' ) );
-			$e = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-east' ) );
-			$s = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-south' ) );
-			$w = Xml::encodeJsVar( wfMsgForContent( 'maps-abb-south' ) );
-			$deg = Xml::encodeJsVar( Maps_GEO_DEG );
+			$n = Xml::escapeJsString( wfMsgForContent( 'maps-abb-north' ) );
+			$e = Xml::escapeJsString( wfMsgForContent( 'maps-abb-east' ) );
+			$s = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
+			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
+			$deg = Xml::escapeJsString( Maps_GEO_DEG );
 			
-			$parser->getOutput()->addHeadItem(
-				Html::inlineScript(
+			$wgOut->addInlineScript(
 					<<<EOT
 function convertLatToDMS (val) {
 	return Math.abs(val) + "$deg " + ( val < 0 ? "$s" : "$n" );
@@ -108,7 +105,6 @@ function convertLngToDMS (val) {
 	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
 }			
 EOT
-				)
 			);			
 		}
 		

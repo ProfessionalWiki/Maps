@@ -68,6 +68,8 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
+		global $wgOut;
+		
 		$this->output .= Html::element(
 			'div',
 			array(
@@ -77,8 +79,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 			wfMsg('maps-loading-map')
 		);
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		makeFormInputYahooMap(
@@ -97,7 +98,7 @@ addOnloadHook(
 	}
 );
 EOT
-		) );
+		);
 
 	}
 	

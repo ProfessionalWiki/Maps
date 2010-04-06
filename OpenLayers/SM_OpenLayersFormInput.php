@@ -67,6 +67,8 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
+		global $wgOut;
+		
 		$this->output .= Html::element(
 			'div',
 			array(
@@ -78,8 +80,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		makeFormInputOpenLayer(
@@ -91,12 +92,12 @@ addOnloadHook(
 			$this->marker_lat,
 			$this->marker_lon,
 			[$layerItems],
-			[$this->controls],
+			[$this->controls]
 		);
 	}
 );
 EOT
-		) );
+		);
 		
 	}
 	

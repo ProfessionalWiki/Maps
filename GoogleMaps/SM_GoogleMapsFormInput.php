@@ -70,7 +70,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
-		global $wgJsMimeType;
+		global $wgOut;
 		
 		// Remove the overlays control in case it's present.
 		if ( in_string( 'overlays', $this->controls ) ) {
@@ -87,8 +87,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 			wfMsg('maps-loading-map')
 		);
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		makeGoogleMapFormInput(
@@ -109,7 +108,7 @@ addOnloadHook(
 	}	
 );
 EOT
-		) );
+		);
 	}
 	
 	/**
