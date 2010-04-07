@@ -61,7 +61,7 @@ final class SMQueryPrinters {
 		self::$parameters = array(
 			'geoservice' => array(
 				'criteria' => array(
-					'in_array' => array_keys( $egMapsAvailableGeoServices )
+					'in_array' => $egMapsAvailableGeoServices
 					),
 				'default' => $egMapsDefaultGeoService
 				),
