@@ -25,14 +25,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFunction {
 	
 	private $markerData = array();
-	protected $markerStringFormat = '';
 	protected $markerString;
 	
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
-	 * @param unknown_type $parser
+	 * @param Parser $parser
 	 * @param array $params
 	 * 
 	 * @return html

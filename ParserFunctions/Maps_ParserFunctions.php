@@ -300,7 +300,7 @@ final class MapsParserFunctions {
     public static function paramIsPresent( $paramName, array $stack, array $paramInfo = array(), $checkForAliases = true ) {
         $isPresent = array_key_exists( $paramName, $stack );
         
-        if ( $checkForAliases && array_key_exists( 'aliases', $paramInfo[$paramName] ) ) {
+        if ( !$isPresent && $checkForAliases && array_key_exists( 'aliases', $paramInfo[$paramName] ) ) {
             foreach ( $paramInfo[$paramName]['aliases'] as $alias ) {
                 if ( array_key_exists( $alias, $stack ) ) {
                 	$isPresent = true;
