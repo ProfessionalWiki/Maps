@@ -60,7 +60,7 @@ final class MapsGeocoder {
 	 * 
 	 * @return formatted coordinate string or false
 	 */
-	public static function attemptToGeocodeToString( $coordsOrAddress, $service = '', $mappingService = '', $checkForCoords = true, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
+	public static function attemptToGeocodeToString( $coordsOrAddress, $service = '', $mappingService = false, $checkForCoords = true, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
 		$geoValues = self::attemptToGeocode( $coordsOrAddress, $service, $mappingService, $checkForCoords );
 		return $geoValues ?  MapsCoordinateParser::formatCoordinates( $geoValues, $targetFormat, $directional ) : false;
 	}
@@ -109,7 +109,7 @@ final class MapsGeocoder {
 		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsGeoOverrides, $egMapsUserGeoOverrides;
 		
 		if ( $service == '' ) {
-			if ( $egMapsUserGeoOverrides ) {
+			if ( $egMapsUserGeoOverrides && $mappingService ) {
 				// If no service has been provided, check if there are overrides for the default.
 				foreach ( $egMapsAvailableGeoServices as $geoService ) {
 					if ( array_key_exists( $geoService, $egMapsGeoOverrides ) && in_array( $mappingService, $egMapsGeoOverrides[$geoService] ) )  {

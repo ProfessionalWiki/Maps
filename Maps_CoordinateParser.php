@@ -27,6 +27,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsCoordinateParser {
 	
+	protected static $mSeperators = array( ',', ';' );
+	
 	protected static $mI18nDirections = false; // Cache for localised direction labels
 	protected static $mDirections; // Cache for English direction labels
 	

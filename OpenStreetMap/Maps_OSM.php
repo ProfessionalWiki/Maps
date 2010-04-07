@@ -14,6 +14,8 @@
  * @ingroup MapsOpenStreetMap
  *
  * @author Jeroen De Dauw
+ * 
+ * FIXME: this file has not been changed to work with 0.6
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

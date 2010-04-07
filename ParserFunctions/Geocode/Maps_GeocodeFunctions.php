@@ -103,12 +103,12 @@ final class MapsGeocodeFunctions {
 			'mappingservice' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
-				),		
-				'default' => $egMapsDefaultServices['pf']
+				),
+				'default' => false
 			),
 			'service' => array(
 				'criteria' => array(
-					'in_array' => array_keys( $egMapsAvailableGeoServices )
+					'in_array' => $egMapsAvailableGeoServices
 				),
 				'default' => $egMapsDefaultGeoService
 			),

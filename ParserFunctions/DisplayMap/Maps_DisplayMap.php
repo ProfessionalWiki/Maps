@@ -65,12 +65,18 @@ final class MapsDisplayMap {
 		$args = func_get_args();
 		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_map' );
 	}
-	
+
 	private static function initializeParams() {
-		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
-		
-		self::$parameters = array_merge( MapsParserFunctions::$parameters, array(
-			) );
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsDefaultServices;
+
+		self::$parameters = array_merge( 
+			MapsParserFunctions::$parameters,
+			array(
+				'service' => array(	
+					'default' => $egMapsDefaultServices['display_map']
+				),
+			)
+		);
 	}
 	
 }

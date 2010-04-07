@@ -68,25 +68,31 @@ final class MapsDisplayPoint {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsDefaultCentre, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		global $egMapsDefaultCentre, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsDefaultServices;
 		
-		self::$parameters = array_merge( MapsParserFunctions::$parameters, array(
-			'centre' => array(
-				'aliases' => array( 'center' ),
-				'default' => $egMapsDefaultCentre
+		self::$parameters = array_merge(
+			MapsParserFunctions::$parameters,
+			array(
+				'service' => array(	
+					'default' => $egMapsDefaultServices['display_map']
+				),		
+				'centre' => array(
+					'aliases' => array( 'center' ),
+					'default' => $egMapsDefaultCentre
 				),
-			'title' => array(
-				'default' => $egMapsDefaultTitle
+				'title' => array(
+					'default' => $egMapsDefaultTitle
 				),
-			'label' => array(
-				'default' => $egMapsDefaultLabel
+				'label' => array(
+					'default' => $egMapsDefaultLabel
 				),
-			'icon' => array(
-				'criteria' => array(
-					'not_empty' => array()
+				'icon' => array(
+					'criteria' => array(
+						'not_empty' => array()
 					)
 				),
-			) );
+			)
+		);
 	}
 	
 }

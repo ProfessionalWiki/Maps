@@ -53,14 +53,13 @@ final class MapsParserFunctions {
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
 				),		
-				'default' => $egMapsDefaultServices['pf']
 			),
 			'coordinates' => array(
 				'aliases' => array( 'coords', 'location', 'locations' ),
 			),
 			'geoservice' => array(
 				'criteria' => array(
-					'in_array' => array_keys( $egMapsAvailableGeoServices )
+					'in_array' => $egMapsAvailableGeoServices
 				),
 				'default' => $egMapsDefaultGeoService
 			),
