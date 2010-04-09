@@ -741,6 +741,17 @@ $messages['ig'] = array(
 	'maps_wikipedia' => 'Wikipedia',
 );
 
+/** Italian (Italiano) */
+$messages['it'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitudine:',
+	'maps-longitude' => 'Longitudine:',
+	'maps_wikipedia' => 'Wikipedia',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -950,12 +961,14 @@ $messages['no'] = array(
 	'maps_desc' => 'Gir mulighet for å vise koorinatdata i kart og geokodeadresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Tilgjengelige karttjenester: $1',
 	'maps_map' => 'Kart',
+	'maps-loading-map' => 'Laster kart...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ø',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'V',
 	'maps-latitude' => 'Breddegrad:',
 	'maps-longitude' => 'Lengdegrad:',
+	'maps-invalid-coordinates' => 'Verdien $1 ble ikke gjenkjent som et gyldig sett med koordinater.',
 	'maps_coordinates_missing' => 'Ingen koordinater oppgitt for kartet.',
 	'maps_geocoding_failed' => 'Følgende {{PLURAL:$2|adresse|adresser}} kunne ikke geokodes: $1.',
 	'maps_geocoding_failed_for' => 'Følgende {{PLURAL:$2|adresse|adresser}} kunne ikke geokodes og har blitt utelatt fra kartet:
@@ -964,6 +977,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Følgende {{PLURAL:$2|koordinat|koordinater}} ble ikke gjenkjent og har blitt utelatt fra kartet:
 $1',
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikke vises.',
+	'maps-geocoder-not-available' => 'Geokodingsfunksjonen i Maps er ikke tilgjengelig. Din plassering kan ikke geokodes.',
 	'maps_click_to_activate' => 'Klikk for å aktivere kartet',
 	'maps_centred_on' => 'Kart sentrert om $1, $2.',
 	'maps_overlays' => 'Transparenter',
