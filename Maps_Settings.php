@@ -47,7 +47,7 @@ $egMapsAvailableGeoServices = array(
 
 # String. The default geocoding service, which will be used when no service is provided by the user.
 # This service needs to be enabled, if not, the first one from the available services will be taken.
-$egMapsDefaultGeoService = 'geonames';
+$egMapsDefaultGeoService = 'google';
 
 $egMapsUserGeoOverrides = true;
 
@@ -59,6 +59,7 @@ include_once $egMapsDir . 'ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// 
 include_once $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// #display_point(s)
 include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// #geocode, #geocodelat, #geocodelon
 include_once $egMapsDir . 'ParserFunctions/Coordinates/Maps_Coordinates.php';	// #coordinates
+include_once $egMapsDir . 'ParserFunctions/GeoFunctions/Maps_GeoFunctions.php';	// #geodistance
 
 
 
