@@ -142,7 +142,11 @@ final class MapsGeoFunctions {
 				$output = $errorList;
 			}
 		} else {
-			$output = $manager->getErrorList();
+			// One of the parameters is not provided, so display an error message.
+			// If the error level is Validator_ERRORS_MINIMAL, show the Validator_ERRORS_WARN message since 
+			// the function could not do any work, otherwise use the error level as it is.
+			global $egValidatorErrorLevel;
+			$output = $manager->getErrorList( $egValidatorErrorLevel == Validator_ERRORS_MINIMAL ? Validator_ERRORS_WARN : $egValidatorErrorLevel );
 		}
 	 
 		return array( $output, 'noparse' => true, 'isHTML' => true );
