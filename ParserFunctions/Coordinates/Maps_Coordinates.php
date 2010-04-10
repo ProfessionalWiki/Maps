@@ -1,10 +1,9 @@
 <?php
 
 /**
- * This file contains registration 
+ * This file contains registration for the #coordinates parser function,
+ * which can transform the notation of a set of coordinates.
  * 
- * 
- *
  * @file Maps_Coordinates.php
  * @ingroup Maps
  *
@@ -37,6 +36,7 @@ function efMapsCoordinatesFunction( &$wgParser ) {
 	return true;
 }
 
+// TODO: add coordinate validation
 function efMapsRenderCoordinates() {
 	global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsAvailableCoordNotations;
 	global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
@@ -74,6 +74,9 @@ function efMapsRenderCoordinates() {
 			'criteria' => array(
 				'in_array' => $egMapsAvailableCoordNotations
 			),
+			'aliases' => array(
+				'format'
+			),
 			'default' => $egMapsCoordinateNotation
 		),
 		'directional' => array(
@@ -92,13 +95,15 @@ function efMapsRenderCoordinates() {
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
 		if ( $parsedCoords ) {
-			return MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['notation'], $parameters['directional'] ) .
-				$manager->getErrorList();
+			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['notation'], $parameters['directional'] ) .
+				'<br />' . $manager->getErrorList();
 		} else {
-			return htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) ) .
-				$manager->getErrorList();
+			$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) ) .
+				'<br />' . $manager->getErrorList();
 		}
 	} else {
-		return $manager->getErrorList();
-	}		
+		$output = $manager->getErrorList();
+	}
+
+	return array( $output, 'noparse' => true, 'isHTML' => true );
 }
