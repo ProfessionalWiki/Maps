@@ -31,20 +31,20 @@ final class MapsGeocoder {
 	 * 
 	 * @param string $coordsOrAddress
 	 * @param string $geoservice
-	 * @param string $service
+	 * @param string $mappingService
 	 * @param boolean $checkForCoords
 	 * 
 	 * @return array or false
 	 */
-	public static function attemptToGeocode( $coordsOrAddress, $geoservice, $service, $checkForCoords = true ) {
+	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {			
 			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
 				return MapsCoordinateParser::parseCoordinates( $coordsOrAddress );
 			} else {
-				return self::geocode( $coordsOrAddress, $geoservice, $service );
+				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
 			}
 		} else {
-			return self::geocode( $coordsOrAddress, $geoservice, $service );
+			return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
 		}
 	}
 	
@@ -75,7 +75,7 @@ final class MapsGeocoder {
 	 * 
 	 * @return array with coordinates or false
 	 */
-	public static function geocode( $address, $service, $mappingService ) {
+	public static function geocode( $address, $service = '', $mappingService = false ) {
 		global $egMapsGeoServices, $wgAutoloadClasses, $egMapsDir, $IP, $egMapsEnableGeoCache;
 		
 		// If the adress is already in the cache and the cache is enabled, return the coordinates.

@@ -53,7 +53,7 @@ final class MapsGeoFunctions {
 	
 		// Default parameter assignment, to allow for nameless syntax.
 		$defaultParams = array( 'location1', 'location2' );
-		$parameters = array();	
+		$parameters = array();
 		
 		// Determine all parameter names and value, and take care of default (nameless)
 		// parameters, by turning them into named ones.
@@ -86,41 +86,74 @@ final class MapsGeoFunctions {
 		$doCalculation = $parameters !== false;	
 		
 		if ( $doCalculation ) {
-			$start = MapsCoordinateParser::parseCoordinates( $parameters['location1'] );
-			$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );
-		 
-			$northRad1 = deg2rad( $start['lat'] );
-			$eastRad1 = deg2rad( $start['lon'] );
-	
-			$cosNorth1 = cos( $northRad1 );
-			$cosEast1 = cos( $eastRad1 );
+			if ( self::geocoderIsAvailable() ) {
+				$start = MapsGeocoder::attemptToGeocode( $parameters['location1'] );
+				$end = MapsGeocoder::attemptToGeocode( $parameters['location2'] );
+			} else {
+				$start = MapsCoordinateParser::parseCoordinates( $parameters['location1'] );
+				$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );				
+			}		
 			
-			$sinNorth1 = sin( $northRad1 );
-			$sinEast1 = sin( $eastRad1 );
-			
-			$northRad2 = deg2rad( $end['lat'] );
-			$eastRad2 = deg2rad( $end['lon'] );		
-			
-			$cosNorth2 = cos( $northRad2 );
-			$cosEast2 = cos( $eastRad2 );
-	
-			$sinNorth2 = sin( $northRad2 );
-			$sinEast2 = sin( $eastRad2 );
-		 
-			$term1 = $cosNorth1 * $sinEast1 - $cosNorth2 * $sinEast2;
-			$term2 = $cosNorth1 * $cosEast1 - $cosNorth2 * $cosEast2;
-			$term3 = $sinNorth1 - $sinNorth2;
-		 
-			$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
-		 
-			$surfaceDistance = 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
-			
-			$output = $surfaceDistance . ' km<br />' . $manager->getErrorList();
+			if ( $start && $end ) {
+				$northRad1 = deg2rad( $start['lat'] );
+				$eastRad1 = deg2rad( $start['lon'] );
+		
+				$cosNorth1 = cos( $northRad1 );
+				$cosEast1 = cos( $eastRad1 );
+				
+				$sinNorth1 = sin( $northRad1 );
+				$sinEast1 = sin( $eastRad1 );
+				
+				$northRad2 = deg2rad( $end['lat'] );
+				$eastRad2 = deg2rad( $end['lon'] );		
+				
+				$cosNorth2 = cos( $northRad2 );
+				$cosEast2 = cos( $eastRad2 );
+		
+				$sinNorth2 = sin( $northRad2 );
+				$sinEast2 = sin( $eastRad2 );
+			 
+				$term1 = $cosNorth1 * $sinEast1 - $cosNorth2 * $sinEast2;
+				$term2 = $cosNorth1 * $cosEast1 - $cosNorth2 * $cosEast2;
+				$term3 = $sinNorth1 - $sinNorth2;
+			 
+				$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
+			 
+				$surfaceDistance = 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
+				
+				$output = $surfaceDistance . ' km';
+				$errorList = $manager->getErrorList();	
+				
+				if ( $errorList != '' ) {
+					$output .= '<br />' . $errorList;
+				}
+			} else {
+				$errorList = '';
+				
+				if ( !$start ) {
+					$errorList .= wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location1'] );
+				}
+				
+				if ( !$end ) {
+					if ( $errorList != '' ) $errorList .= '<br />'; 
+					$errorList .= wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location2'] );
+				}					
+				
+				$output = $errorList;
+			}
 		} else {
 			$output = $manager->getErrorList();
 		}
 	 
 		return array( $output, 'noparse' => true, 'isHTML' => true );
+	}
+	
+	/**
+	 * Returns a boolean indicating if MapsGeocoder is available. 
+	 */
+	private static function geocoderIsAvailable() {
+		global $wgAutoloadClasses;
+		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
 	}	
 	
 }
