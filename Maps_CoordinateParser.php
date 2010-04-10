@@ -20,10 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
- * 
- * TODO:
- * support different coordinate seperators, currently only comma's are supported. 
- * esp spaces since these where allowed in previouse version.
+ *
  */
 class MapsCoordinateParser {
 	
@@ -61,6 +58,12 @@ class MapsCoordinateParser {
 		foreach( self::$mSeperators as $seperator ){
 			$split = explode( $seperator, $coordinates );
 			if ( count( $split ) == 2 ) break;
+		}
+		
+		// This should not happen, as the validity of the coordinate set is already ensured by the regexes,
+		// but do the check anyway, and return false if it fails.
+		if ( count( $split ) != 2 ) {
+			return false;
 		}
 
 		$coordinates = array(
