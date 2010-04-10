@@ -47,7 +47,7 @@ $egMapsAvailableGeoServices = array(
 
 # String. The default geocoding service, which will be used when no service is provided by the user.
 # This service needs to be enabled, if not, the first one from the available services will be taken.
-$egMapsDefaultGeoService = 'google';
+$egMapsDefaultGeoService = 'geonames';
 
 $egMapsUserGeoOverrides = true;
 

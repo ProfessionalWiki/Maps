@@ -116,6 +116,9 @@ final class MapsGeocodeFunctions {
 				'criteria' => array(
 					'in_array' => $egMapsAvailableCoordNotations
 				),
+				'aliases' => array(
+					'format'
+				),				
 				'default' => $egMapsCoordinateNotation
 			),
 			'allowcoordinates' => array(
