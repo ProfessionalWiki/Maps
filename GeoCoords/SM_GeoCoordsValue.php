@@ -32,10 +32,20 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * 
 	 * TODO: i18n keys still need to be moved
 	 */
-	public static function InitGeoCoordsType() {
+	public static function initGeoCoordsType() {
 		SMWDataValueFactory::registerDatatype( '_geo', __CLASS__, 'Geographic coordinate' );
 		return true;
-	}	
+	}
+	
+	public static function initGeoCoordsTable( $propertyTables ) {
+		/*
+		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
+			'sm_coords',
+			array( 'lat' => 'f', 'lon' => 'f' )
+		);
+		*/
+		return true;
+	}
 	
 	/**
 	 * @see SMWDataValue::parseUserValue

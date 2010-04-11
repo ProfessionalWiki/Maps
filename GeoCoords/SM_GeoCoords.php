@@ -11,57 +11,93 @@
  * @author Markus Krötzsch
  */
 
+// Registration of the GoeCoords class.
+$wgAutoloadClasses['SMGeoCoords'] = __FILE__;
+
 // Registration of the Geographical Coordinate type.
-$wgAutoloadClasses['SMGeoCoordsValue'] = $smgDir . 'GeoCoords/SM_GeoCoordsValue.php';
+$wgAutoloadClasses['SMGeoCoordsValue'] = dirname( __FILE__ ) . '/SM_GeoCoordsValue.php';
 
 // Registration of the Geographical Coordinate value description class.
-$wgAutoloadClasses['SMGeoCoordsValueDescription'] = $smgDir . 'GeoCoords/SM_GeoCoordsValueDescription.php';
+$wgAutoloadClasses['SMGeoCoordsValueDescription'] = dirname( __FILE__ ) . '/SM_GeoCoordsValueDescription.php';
 
 // Hook for initializing the Geographical Coordinate type.
-$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::InitGeoCoordsType';
+$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
+
+$wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
 
 // Hook for initializing the Geographical Proximity query support.
-$wgHooks['smwGetSQLConditionForValue'][] = 'smfGetGeoProximitySQLCondition';
+$wgHooks['smwGetSQLConditionForValue'][] = 'SMGeoCoords::getGeoProximitySQLCondition';
 
 define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.
 
+final class SMGeoCoords {
+	
+	/**
+	 * Custom SQL query extension for matching geographic coordinates.
+	 * 
+	 * TODO: Change the way coords are stored in the db from a string field to 2 float fields.
+	 * The geographic coordinate value object should provide functions to access the lat and lon data directly.
+	 * 
+	 * TODO: Add support for a per-coordinate set distance parameter.
+	 */
+	public static function getGeoProximitySQLCondition( &$whereSQL, SMGeoCoordsValueDescription $description, $tablename, $fieldname, $dbs ) {
+		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
+		if ( !self::geoFunctionsAreAvailable() ) {
+			return true;
+		}
 
-/**
- * Custom SQL query extension for matching geographic coordinates.
- * 
- * TODO: Change the way coords are stored in the db from a string field to 2 float fields.
- * The geographic coordinate value object should provide functions to access the lat and lon data directly.
- * 
- * TODO: Add support for a per-coordinate set distance parameter.
- */
-function smfGetGeoProximitySQLCondition( &$where, SMGeoCoordsValueDescription $description, $tablename, $fieldname, $dbs ) {
-	global $smgGeoCoordDistance;
-	
-	$where = '';
-	$dv = $description->getDatavalue();
-	
-	// Only execute the query when the description's type is geographical coordinates,
-	// the description is valid, and the near comparator is used.
-	if ( ( $dv->getTypeID() != '_geo' ) 
-		|| ( !$dv->isValid() ) 
-		|| ( $description->getComparator() != SM_CMP_NEAR )
-		) return true; 
-
-	$keys = $dv->getDBkeys();
-	$geoarray = explode( ',', $keys[0] );
-	
-	if ( ( count( $geoarray ) != 2 ) 
-		|| ( $geoarray[0] == '' )
-		|| ( $geoarray[1] == '' )
-		) return true; // There is something wrong with the lat/lon pair
+		$dataValue = $description->getDatavalue();
 		
-	$latitude = $dbs->addQuotes( $geoarray[0] );
-	$longitude = $dbs->addQuotes( $geoarray[1] );
-	
-	// Compute distances in miles:
-	$distance = "ROUND(((ACOS( SIN({$latitude} * PI()/180 ) * SIN(SUBSTRING_INDEX({$tablename}.{$fieldname}, ',',1) * PI()/180 ) + COS({$latitude} * PI()/180 ) * COS(SUBSTRING_INDEX({$tablename}.{$fieldname}, ',',1) * PI()/180 ) * COS(({$longitude} - SUBSTRING_INDEX({$tablename}.{$fieldname}, ',',-1)) * PI()/180))*180/PI())*60*1.1515),6)";
+		// Only execute the query when the description's type is geographical coordinates,
+		// the description is valid, and the near comparator is used.
+		if ( ( $dataValue->getTypeID() != '_geo' ) 
+			|| ( !$dataValue->isValid() ) 
+			|| ( $description->getComparator() != SM_CMP_NEAR )
+			) return true; 
+			
+		$dbKeys = $dataValue->getDBkeys();
 
-	$where = "{$distance} <= " . $dbs->addQuotes( $smgGeoCoordDistance );
+		global $smgGeoCoordDistance;
+		$distance = $smgGeoCoordDistance; // TODO: get user provided distance
+		
+		$boundingBox = self::getBoundingBox(
+			array(
+				'lat' => $dbKeys[0],
+				'lon' => $dbKeys[1]
+			),
+			$distance
+		); 
+		
+		$north = $dbs->addQuotes( $boundingBox['north'] );
+		$east = $dbs->addQuotes( $boundingBox['east'] );
+		$south = $dbs->addQuotes( $boundingBox['south'] );
+		$west = $dbs->addQuotes( $boundingBox['west'] );
+		
+		$whereSQL .= "{$tablename}lat < $north && {$tablename}lat > $south && {$tablename}lon < $east && {$tablename}lon > $west";
+		
+		return true;
+	}
+
+	private static function getBoundingBox( $centerCoordinates, $circleRadius ) {
+		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
+		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
+		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
+		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
+
+		return array(
+			'north' => $north['lat'],
+			'east' => $east['lon'],
+			'south' => $south['lat'],
+			'west' => $west['lon'],
+		);
+	}
 	
-	return true;
+	/**
+	 * Returns a boolean indicating if MapsGeoFunctions is available. 
+	 */
+	private static function geoFunctionsAreAvailable() {
+		global $wgAutoloadClasses;
+		return array_key_exists( 'MapsGeoFunctions', $wgAutoloadClasses );
+	}	
 }
+
