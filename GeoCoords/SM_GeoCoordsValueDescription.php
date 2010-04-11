@@ -56,4 +56,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 			return $this;
 		}
     }
+    
+    public function getDistance() {
+    	return $this->m_distance;
+    }
 }

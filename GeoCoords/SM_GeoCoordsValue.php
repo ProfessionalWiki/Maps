@@ -6,8 +6,8 @@
  * @ingroup SMWDataValues
  * @ingroup SemanticMaps
  * 
- * @author Markus Krötzsch
  * @author Jeroen De Dauw
+ * @author Markus Krötzsch
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -17,8 +17,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /**
  * Implementation of datavalues that are geographic coordinates.
  *
- * @author Markus Krötzsch
  * @author Jeroen De Dauw
+ * @author Markus Krötzsch
  * 
  * @ingroup SemanticMaps
  */
@@ -37,7 +37,14 @@ class SMGeoCoordsValue extends SMWDataValue {
 		return true;
 	}
 	
-	public static function initGeoCoordsTable( $propertyTables ) {
+	/**
+	 * Defines the layout for the smw_coords table which is used to store value of the GeoCoords type.
+	 * 
+	 * @param array $propertyTables The property tables defined by SMW, passed by reference.
+	 * 
+	 * FIXME
+	 */
+	public static function initGeoCoordsTable( array $propertyTables ) {
 		/*
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',
@@ -61,7 +68,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				if ( $this->m_caption === false ) {
 					// TODO: parse coodinates to some notation, depending on a new setting
 					$this->m_caption = $value;
-        		}				
+        		}
 			} else {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $value, 1 ) );
 			}

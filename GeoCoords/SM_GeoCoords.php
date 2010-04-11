@@ -35,12 +35,15 @@ final class SMGeoCoords {
 	/**
 	 * Custom SQL query extension for matching geographic coordinates.
 	 * 
-	 * TODO: Change the way coords are stored in the db from a string field to 2 float fields.
-	 * The geographic coordinate value object should provide functions to access the lat and lon data directly.
+	 * @param string $whereSQL The SQL where condition to expand.
+	 * @param SMGeoCoordsValueDescription $description The description of center coordinate.
+	 * @param string $tablename
+	 * @param string $fieldname
+	 * @param Database $dbs
 	 * 
-	 * TODO: Add support for a per-coordinate set distance parameter.
+	 * @return true
 	 */
-	public static function getGeoProximitySQLCondition( &$whereSQL, SMGeoCoordsValueDescription $description, $tablename, $fieldname, $dbs ) {
+	public static function getGeoProximitySQLCondition( &$whereSQL, SMGeoCoordsValueDescription $description, $tablename, $fieldname, Database $dbs ) {
 		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
 		if ( !self::geoFunctionsAreAvailable() ) {
 			return true;
@@ -57,8 +60,10 @@ final class SMGeoCoords {
 			
 		$dbKeys = $dataValue->getDBkeys();
 
+		// TODO: get user provided distance
+		// $dataValue->getDistance()
 		global $smgGeoCoordDistance;
-		$distance = $smgGeoCoordDistance; // TODO: get user provided distance
+		$distance = $smgGeoCoordDistance; 
 		
 		$boundingBox = self::getBoundingBox(
 			array(
@@ -78,7 +83,15 @@ final class SMGeoCoords {
 		return true;
 	}
 
-	private static function getBoundingBox( $centerCoordinates, $circleRadius ) {
+	/**
+	 * Returns the lat and lon limits of a bounding box around a circle defined by the provided parameters.
+	 * 
+	 * @param array $centerCoordinates Array containing non-directional float coordinates with lat and lon keys. 
+	 * @param float $circleRadius The radidus of the circle to create a bounding box for, in km.
+	 * 
+	 * @return An associative array containing the limits with keys north, east, south and west.
+	 */
+	private static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
 		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
 		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
 		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
