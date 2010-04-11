@@ -112,12 +112,12 @@ final class MapsGeocodeFunctions {
 				),
 				'default' => $egMapsDefaultGeoService
 			),
-			'notation' => array(
+			'format' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableCoordNotations
 				),
 				'aliases' => array(
-					'format'
+					'notation'
 				),				
 				'default' => $egMapsCoordinateNotation
 			),

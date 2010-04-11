@@ -27,6 +27,7 @@ $wgHooks['ParserFirstCallInit'][] = 'efMapsGeoFunctions';
  */
 function efMapsGeoFunctionsMagic( &$magicWords, $langCode ) {
 	$magicWords['geodistance'] = array( 0, 'geodistance' );
+	$magicWords['finddestination'] = array( 0, 'finddestination' );
 	
 	return true; // Unless we return true, other parser functions won't get loaded.
 }
@@ -37,12 +38,19 @@ function efMapsGeoFunctionsMagic( &$magicWords, $langCode ) {
 function efMapsGeoFunctions( &$wgParser ) {
 	// Hooks to enable the geocoding parser functions.
 	$wgParser->setFunctionHook( 'geodistance', array( 'MapsGeoFunctions', 'renderGeoDistance' ) );
+	$wgParser->setFunctionHook( 'finddestination', array( 'MapsGeoFunctions', 'renderFindDestination' ) );
 	
 	return true;
 }
 
 final class MapsGeoFunctions {
 	
+	/**
+	 * Handler for the #geodistance parser function. 
+	 * See http://mapping.referata.com/wiki/Geodistance
+	 * 
+	 * @param Parser $parser
+	 */
 	function renderGeoDistance( Parser &$parser ) {
 		$args = func_get_args();
 		
@@ -124,16 +132,68 @@ final class MapsGeoFunctions {
 		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 	
-	public static function renderFindDestination() {
+	/**
+	 * Handler for the #finddestination parser function. 
+	 * See http://mapping.referata.com/wiki/Finddestination
+	 * 
+	 * @param Parser $parser
+	 */	
+	public static function renderFindDestination( Parser &$parser ) {
+		$args = func_get_args();
+		
+		// We already know the $parser.
+		array_shift( $args ); 
+	
+		// Default parameter assignment, to allow for nameless syntax.
+		$defaultParams = array( 'location', 'bearing', 'distance' );
+		$parameters = array();
+		
+		// Determine all parameter names and value, and take care of default (nameless)
+		// parameters, by turning them into named ones.
+		foreach( $args as $arg ) {
+			$parts = explode( '=', $arg );
+			if ( count( $parts ) == 1 ) {
+				if ( count( $defaultParams ) > 0 ) {
+					$defaultParam = array_shift( $defaultParams ); 
+					$parameters[$defaultParam] = trim( $parts[0] );	
+				}
+			} else {
+				$name = strtolower( trim( array_shift( $parts ) ) );
+				$parameters[$name] = trim( implode( $parts ) );
+			}
+		}	
+		
+		$parameterInfo = array(
+			'location' => array(
+				'required' => true
+			),
+			'bearing' => array(
+				'required' => true 
+			),
+			'distance' => array(
+				'required' => true 
+			),						
+		);
+		
+		$manager = new ValidatorManager();
+		
+		$parameters = $manager->manageMapparameters( $parameters, $parameterInfo );
+		
+		$doCalculation = $parameters !== false;	
+				
 		// TODO
 	}
 	
 	/**
+	 * Returns the geographical distance between two coordinates.
+	 * See http://en.wikipedia.org/wiki/Geographical_distance
 	 * 
-	 * @param unknown_type $start
-	 * @param unknown_type $end
+	 * @param array $start The first coordinates, as non-directional floats in an array with lat and lon keys.
+	 * @param array $end The second coordinates, as non-directional floats in an array with lat and lon keys.
+	 * 
+	 * @return float Distance in km.
 	 */
-	public static function calculateDistance( $start, $end ) {
+	public static function calculateDistance( array $start, array $end ) {
 		$northRad1 = deg2rad( $start['lat'] );
 		$eastRad1 = deg2rad( $start['lon'] );
 
@@ -162,12 +222,15 @@ final class MapsGeoFunctions {
 	}
 	
 	/**
+	 * Finds a destination given a starting location, bearing and distance.
 	 * 
-	 * @param unknown_type $startingCoordinates
-	 * @param unknown_type $bearing
-	 * @param unknown_type $distance
+	 * @param array $startingCoordinates The starting coordinates, as non-directional floats in an array with lat and lon keys.
+	 * @param float $bearing The initial bearing in degrees.
+	 * @param float $distance The distance to travel in km.
+	 * 
+	 * @return array The desitination coordinates, as non-directional floats in an array with lat and lon keys.
 	 */
-	public static function findDestination( $startingCoordinates, $bearing, $distance ) {
+	public static function findDestination( array $startingCoordinates, $bearing, $distance ) {
 		$angularDistance = $distance / Maps_EARTH_RADIUS;
 		$lat = asin(
 				sin( $startingCoordinates['lat'] ) * cos( $angularDistance ) +
@@ -184,6 +247,8 @@ final class MapsGeoFunctions {
 	
 	/**
 	 * Returns a boolean indicating if MapsGeocoder is available. 
+	 * 
+	 * @return Boolean
 	 */
 	private static function geocoderIsAvailable() {
 		global $wgAutoloadClasses;

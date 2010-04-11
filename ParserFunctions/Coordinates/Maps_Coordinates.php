@@ -48,7 +48,7 @@ function efMapsRenderCoordinates() {
 	array_shift( $args ); 
 	
 	// For backward compatibility with pre 0.6.
-	$defaultParams = array( 'location', 'notation', 'directional' );
+	$defaultParams = array( 'location', 'format', 'directional' );
 	$parameters = array();
 	
 	// Determine all parameter names and value, and take care of default (nameless)
@@ -70,12 +70,12 @@ function efMapsRenderCoordinates() {
 		'location' => array(
 			'required' => true 
 		),
-		'notation' => array(
+		'format' => array(
 			'criteria' => array(
 				'in_array' => $egMapsAvailableCoordNotations
 			),
 			'aliases' => array(
-				'format'
+				'notation'
 			),
 			'default' => $egMapsCoordinateNotation
 		),
