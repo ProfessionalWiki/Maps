@@ -43,8 +43,6 @@ function efMapsGeoFunctions( &$wgParser ) {
 
 final class MapsGeoFunctions {
 	
-	// TODO: add support for smart geocoding
-	// TODO: add coordinate validation
 	function renderGeoDistance( Parser &$parser ) {
 		$args = func_get_args();
 		
@@ -95,33 +93,7 @@ final class MapsGeoFunctions {
 			}		
 			
 			if ( $start && $end ) {
-				$northRad1 = deg2rad( $start['lat'] );
-				$eastRad1 = deg2rad( $start['lon'] );
-		
-				$cosNorth1 = cos( $northRad1 );
-				$cosEast1 = cos( $eastRad1 );
-				
-				$sinNorth1 = sin( $northRad1 );
-				$sinEast1 = sin( $eastRad1 );
-				
-				$northRad2 = deg2rad( $end['lat'] );
-				$eastRad2 = deg2rad( $end['lon'] );		
-				
-				$cosNorth2 = cos( $northRad2 );
-				$cosEast2 = cos( $eastRad2 );
-		
-				$sinNorth2 = sin( $northRad2 );
-				$sinEast2 = sin( $eastRad2 );
-			 
-				$term1 = $cosNorth1 * $sinEast1 - $cosNorth2 * $sinEast2;
-				$term2 = $cosNorth1 * $cosEast1 - $cosNorth2 * $cosEast2;
-				$term3 = $sinNorth1 - $sinNorth2;
-			 
-				$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
-			 
-				$surfaceDistance = 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
-				
-				$output = $surfaceDistance . ' km';
+				$output = self::calculateDistance( $start, $end ) . ' km';
 				$errorList = $manager->getErrorList();	
 				
 				if ( $errorList != '' ) {
@@ -150,6 +122,64 @@ final class MapsGeoFunctions {
 		}
 	 
 		return array( $output, 'noparse' => true, 'isHTML' => true );
+	}
+	
+	public static function renderFindDestination() {
+		// TODO
+	}
+	
+	/**
+	 * 
+	 * @param unknown_type $start
+	 * @param unknown_type $end
+	 */
+	public static function calculateDistance( $start, $end ) {
+		$northRad1 = deg2rad( $start['lat'] );
+		$eastRad1 = deg2rad( $start['lon'] );
+
+		$cosNorth1 = cos( $northRad1 );
+		$cosEast1 = cos( $eastRad1 );
+		
+		$sinNorth1 = sin( $northRad1 );
+		$sinEast1 = sin( $eastRad1 );
+		
+		$northRad2 = deg2rad( $end['lat'] );
+		$eastRad2 = deg2rad( $end['lon'] );		
+		
+		$cosNorth2 = cos( $northRad2 );
+		$cosEast2 = cos( $eastRad2 );
+
+		$sinNorth2 = sin( $northRad2 );
+		$sinEast2 = sin( $eastRad2 );
+	 
+		$term1 = $cosNorth1 * $sinEast1 - $cosNorth2 * $sinEast2;
+		$term2 = $cosNorth1 * $cosEast1 - $cosNorth2 * $cosEast2;
+		$term3 = $sinNorth1 - $sinNorth2;
+	 
+		$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
+	 
+		return 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );		
+	}
+	
+	/**
+	 * 
+	 * @param unknown_type $startingCoordinates
+	 * @param unknown_type $bearing
+	 * @param unknown_type $distance
+	 */
+	public static function findDestination( $startingCoordinates, $bearing, $distance ) {
+		$angularDistance = $distance / Maps_EARTH_RADIUS;
+		$lat = asin(
+				sin( $startingCoordinates['lat'] ) * cos( $angularDistance ) +
+				cos( $startingCoordinates['lat'] ) * sin( $angularDistance ) * cos( $bearing )
+		);
+		return array(
+			'lat' => $lat,
+			'lon' => $startingCoordinates['lon'] + atan2(
+				sin( $bearing ) * sin( $angularDistance ) * cos( $startingCoordinates['lat'] ),
+				cos( $angularDistance ) - sin( $startingCoordinates['lat'] ) * sin( $lat )
+			)
+		);
 	}
 	
 	/**
