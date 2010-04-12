@@ -648,17 +648,14 @@ $messages['ht'] = array(
 $messages['hu'] = array(
 	'semanticmaps_desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztés segítségével tárolt koordinátaadatok megtekintését és szerkesztését ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Elérhető térképszolgáltatók: $1',
-	'semanticmaps_lonely_unit' => 'Nem található szám a(z) „$1” szimbólum előtt.',
-	'semanticmaps_bad_latlong' => 'A földrajzi szélességet és hosszúságot csak egyszer kell megadni, érvényes koordinátákkal.',
-	'semanticmaps_abb_north' => 'É',
-	'semanticmaps_abb_east' => 'K',
-	'semanticmaps_abb_south' => 'D',
-	'semanticmaps_abb_west' => 'Ny',
-	'semanticmaps_label_latitude' => 'Földrajzi szélesség:',
-	'semanticmaps_label_longitude' => 'Földrajzi hosszúság:',
 	'semanticmaps_lookupcoordinates' => 'Koordináták felkeresése',
 	'semanticmaps_enteraddresshere' => 'Add meg a címet itt',
 	'semanticmaps_notfound' => 'nincs találat',
+	'semanticmaps_paramdesc_zoom' => 'A térkép nagyítása',
+	'semanticmaps_paramdesc_centre' => 'A térkép középpontjának koordinátái',
+	'semanticmaps_paramdesc_types' => 'A térképen elérhető térképtípusok',
+	'semanticmaps_paramdesc_type' => 'A térkép alapértelmezett térképtípusa',
+	'semanticmaps_paramdesc_layers' => 'A térképen elérhető rétegek',
 );
 
 /** Interlingua (Interlingua)
