@@ -130,6 +130,8 @@ final class MapsGeoFunctions {
 	 * See http://mapping.referata.com/wiki/Finddestination
 	 * 
 	 * @param Parser $parser
+	 * 
+	 * FIXME: something here is going wrong - need to debug
 	 */	
 	public static function renderFindDestination( Parser &$parser ) {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
@@ -202,6 +204,7 @@ final class MapsGeoFunctions {
 			
 			if ( $location ) {
 				$destination = self::findDestination( $location, $parameters['bearing'], $parameters['distance'] );
+				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 			} else {
 				global $egValidatorFatalLevel;
 				switch ( $egValidatorFatalLevel ) {
