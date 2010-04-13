@@ -85,8 +85,8 @@ addOnloadHook(
 		makeFormInputYahooMap(
 			'$this->mapName',
 			'$this->coordsFieldName',
-			$this->centre_lat,
-			$this->centre_lon,
+			$this->centreLat,
+			$this->centreLon,
 			$this->zoom,
 			$this->type,
 			[$this->types],

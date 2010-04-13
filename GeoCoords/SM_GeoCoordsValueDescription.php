@@ -19,6 +19,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  * 
  * @ingroup SemanticMaps
+ * 
+ * TODO: storing the distance here does not seem quite right
  */
 class SMGeoCoordsValueDescription extends SMWValueDescription {
 	protected $m_distance;

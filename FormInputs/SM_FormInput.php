@@ -184,20 +184,20 @@ EOT
 	private function setCentre() {
 		if ( empty( $this->centre ) ) {
 			if ( isset( $this->coordinates ) ) {
-				$this->centre_lat = $this->marker_lat;
-				$this->centre_lon = $this->marker_lon;
+				$this->centreLat = $this->marker_lat;
+				$this->centreLon = $this->marker_lon;
 			}
 			else {
-				$this->centre_lat = '0';
-				$this->centre_lon = '0';
+				$this->centreLat = '0';
+				$this->centreLon = '0';
 			}
 		}
 		else {
 			// Geocode and convert if required.
 			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
 			
-			$this->centre_lat = Xml::escapeJsString( $centre['lat'] );
-			$this->centre_lon = Xml::escapeJsString( $centre['lon'] );
+			$this->centreLat = Xml::escapeJsString( $centre['lat'] );
+			$this->centreLon = Xml::escapeJsString( $centre['lon'] );
 		}
 	}
 	

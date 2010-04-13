@@ -29,6 +29,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * ideally should be inherited. Since SMWResultPrinter already gets inherited,
  * this is not possible. Finding a better solution to this code redundancy 
  * would be nice, cause now changes to MapsMapFeature need to be copied here.
+ * 
+ * The adaptor pattern could be used to prevent this.
  */
 abstract class SMMapPrinter extends SMWResultPrinter {
 
@@ -57,8 +59,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	protected $mapName;
 	
-	protected $centre_lat;
-	protected $centre_lon;
+	protected $centreLat;
+	protected $centreLon;
 	
 	protected $output = '';
 	protected $errorList;
@@ -313,24 +315,24 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			// Geocode and convert if required.
 			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
 			
-			$this->centre_lat = $centre['lat'];
-			$this->centre_lon = $centre['lon'];
+			$this->centreLat = $centre['lat'];
+			$this->centreLon = $centre['lon'];
 		}
 		elseif ( count( $this->m_locations ) > 1 ) {
 			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
-			$this->centre_lat = 'null';
-			$this->centre_lon = 'null';
+			$this->centreLat = 'null';
+			$this->centreLon = 'null';
 		}
 		elseif ( count( $this->m_locations ) == 1 ) {
 			// If centre is not set and there is exactelly one marker, use it's coordinates.			
-			$this->centre_lat = Xml::escapeJsString( $this->m_locations[0][0] );
-			$this->centre_lon = Xml::escapeJsString( $this->m_locations[0][1] );
+			$this->centreLat = Xml::escapeJsString( $this->m_locations[0][0] );
+			$this->centreLon = Xml::escapeJsString( $this->m_locations[0][1] );
 		}
 		else {
 			// If centre is not set and there are no results, centre on the default coordinates.
 			global $egMapsMapLat, $egMapsMapLon;
-			$this->centre_lat = $egMapsMapLat;
-			$this->centre_lon = $egMapsMapLon;
+			$this->centreLat = $egMapsMapLat;
+			$this->centreLon = $egMapsMapLon;
 		}
 	}
 	

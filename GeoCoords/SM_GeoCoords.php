@@ -43,7 +43,7 @@ final class SMGeoCoords {
 	 * 
 	 * @return true
 	 */
-	public static function getGeoProximitySQLCondition( &$whereSQL, SMGeoCoordsValueDescription $description, $tablename, $fieldname, Database $dbs ) {
+	public static function getGeoProximitySQLCondition( &$whereSQL, SMGeoCoordsValueDescription $description, $tablename, $fieldname, DatabaseBase $dbs ) {
 		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
 		if ( !self::geoFunctionsAreAvailable() ) {
 			return true;
@@ -78,7 +78,7 @@ final class SMGeoCoords {
 		$south = $dbs->addQuotes( $boundingBox['south'] );
 		$west = $dbs->addQuotes( $boundingBox['west'] );
 		
-		$whereSQL .= "{$tablename}lat < $north && {$tablename}lat > $south && {$tablename}lon < $east && {$tablename}lon > $west";
+		$whereSQL .= "{$tablename}.lat < $north && {$tablename}.lat > $south && {$tablename}.lon < $east && {$tablename}.lon > $west";
 		
 		return true;
 	}
