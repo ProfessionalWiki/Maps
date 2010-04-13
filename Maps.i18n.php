@@ -217,6 +217,7 @@ $1",
 	'maps_unrecognized_coords_for' => "N'eo ket bet anavezet an {{PLURAL:$2|daveenn|daveennoù}} da-heul ha {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn :
 $1",
 	'maps_map_cannot_be_displayed' => "Ar gartenn ne c'hall ket bezañ diskwelet.",
+	'maps-geocoder-not-available' => "N'haller ket ober gant arc'hwel geokodiñ ar c'hartennoù. N'haller ket geokodiñ ho lec'hiadur.",
 	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
 	'maps_centred_on' => 'Kartenn kreizet war $1, $2.',
 	'maps_overlays' => 'Dreistlakadennoù',
