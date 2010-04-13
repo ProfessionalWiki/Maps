@@ -7,6 +7,8 @@
  * @ingroup Maps
  *
  * @author Jeroen De Dauw
+ * 
+ * TODO: clean up this stuff (goes together with refactoring MapsMapFeature and it's subclasses).
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -69,13 +71,13 @@ final class MapsParserFunctions {
 	/**
 	 * Returns the output for the call to the specified parser function.
 	 * 
-	 * @param $parser
+	 * @param Parser $parser
 	 * @param array $params
 	 * @param string $parserFunction
 	 * 
 	 * @return array
 	 */
-	public static function getMapHtml( &$parser, array $params, $parserFunction ) {
+	public static function getMapHtml( Parser &$parser, array $params, $parserFunction ) {
         global $wgLang, $egValidatorErrorLevel;
         
         array_shift( $params ); // We already know the $parser.

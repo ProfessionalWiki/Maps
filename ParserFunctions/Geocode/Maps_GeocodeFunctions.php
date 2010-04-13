@@ -54,12 +54,7 @@ final class MapsGeocodeFunctions {
 	 * Handler for the geocode parser function. Returns the latitude and longitude
 	 * for the provided address, or an empty string, when the geocoding fails.
 	 *
-	 * @param $parser
-	 * @param string $coordsOrAddress The address to geocode, or coordinates to reformat.
-	 * @param string $service Optional. The geocoding service to use.
-	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
-	 * 
-	 * TODO: rewrite
+	 * @param Parser $parser
 	 * 
 	 * @return string
 	 */
@@ -73,63 +68,46 @@ final class MapsGeocodeFunctions {
 		// We already know the $parser.
 		array_shift( $args ); 
 		
-		// For backward compatibility with pre 0.6.
-		$defaultParams = array( 'location', 'service', 'mappingservice' );
-		$parameters = array();
-		
-		// Determine all parameter names and value, and take care of default (nameless)
-		// parameters, by turning them into named ones.
-		foreach( $args as $arg ) {
-			$parts = explode( '=', $arg );
-			if ( count( $parts ) == 1 ) {
-				if ( count( $defaultParams ) > 0 ) {
-					$defaultParam = array_shift( $defaultParams ); 
-					$parameters[$defaultParam] = trim( $parts[0] );	
-				}
-			} else {
-				$name = strtolower( trim( array_shift( $parts ) ) );
-				$parameters[$name] = trim( implode( $parts ) );
-			}
-		}
-		
-		$parameterInfo = array(
-			'location' => array(
-				'required' => true 
-			),
-			'mappingservice' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableServices
-				),
-				'default' => false
-			),
-			'service' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableGeoServices
-				),
-				'default' => $egMapsDefaultGeoService
-			),
-			'format' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableCoordNotations
-				),
-				'aliases' => array(
-					'notation'
-				),				
-				'default' => $egMapsCoordinateNotation
-			),
-			'allowcoordinates' => array(
-				'type' => 'boolean',
-				'default' => $egMapsAllowCoordsGeocoding
-			),
-			'directional' => array(
-				'type' => 'boolean',
-				'default' => $egMapsCoordinateDirectional
-			),								
-		);
-		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageMapparameters( $parameters, $parameterInfo );
+		$parameters = $manager->manageMapparameters(
+			$args,
+			array(
+				'location' => array(
+					'required' => true 
+				),
+				'mappingservice' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableServices
+					),
+					'default' => false
+				),
+				'service' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableGeoServices
+					),
+					'default' => $egMapsDefaultGeoService
+				),
+				'format' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableCoordNotations
+					),
+					'aliases' => array(
+						'notation'
+					),				
+					'default' => $egMapsCoordinateNotation
+				),
+				'allowcoordinates' => array(
+					'type' => 'boolean',
+					'default' => $egMapsAllowCoordsGeocoding
+				),
+				'directional' => array(
+					'type' => 'boolean',
+					'default' => $egMapsCoordinateDirectional
+				),
+			),
+			array( 'location', 'service', 'mappingservice' )
+		);
 		
 		$doGeocoding = $parameters !== false;
 		
@@ -140,7 +118,7 @@ final class MapsGeocodeFunctions {
 					$parameters['service'],
 					$parameters['mappingservice'],
 					$parameters['allowcoordinates'],
-					$parameters['notation'],
+					$parameters['format'],
 					$parameters['directional']
 				);
 				return ( $geovalues ? $geovalues : '' ) . $manager->getErrorList();
@@ -157,7 +135,7 @@ final class MapsGeocodeFunctions {
 	 * Handler for the geocode parser function. Returns the latitude
 	 * for the provided address, or an empty string, when the geocoding fails.
 	 *
-	 * @param $parser
+	 * @param Parser $parser
 	 * @param string $address The address to geocode.
 	 * @param string $service Optional. The geocoding service to use.
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.
@@ -173,7 +151,7 @@ final class MapsGeocodeFunctions {
 	 * Handler for the geocode parser function. Returns the longitude
 	 * for the provided address, or an empty string, when the geocoding fails.
 	 *
-	 * @param $parser
+	 * @param Parser $parser
 	 * @param string $address The address to geocode.
 	 * @param string $service Optional. The geocoding service to use.
 	 * @param string $mappingService Optional. The mapping service that will use the geocoded data.

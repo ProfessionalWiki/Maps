@@ -47,47 +47,30 @@ function efMapsRenderCoordinates() {
 	// We already know the $parser.
 	array_shift( $args ); 
 	
-	// For backward compatibility with pre 0.6.
-	$defaultParams = array( 'location', 'format', 'directional' );
-	$parameters = array();
-	
-	// Determine all parameter names and value, and take care of default (nameless)
-	// parameters, by turning them into named ones.
-	foreach( $args as $arg ) {
-		$parts = explode( '=', $arg );
-		if ( count( $parts ) == 1 ) {
-			if ( count( $defaultParams ) > 0 ) {
-				$defaultParam = array_shift( $defaultParams ); 
-				$parameters[$defaultParam] = trim( $parts[0] );	
-			}
-		} else {
-			$name = strtolower( trim( array_shift( $parts ) ) );
-			$parameters[$name] = trim( implode( $parts ) );
-		}
-	}
-
-	$parameterInfo = array(
-		'location' => array(
-			'required' => true 
-		),
-		'format' => array(
-			'criteria' => array(
-				'in_array' => $egMapsAvailableCoordNotations
-			),
-			'aliases' => array(
-				'notation'
-			),
-			'default' => $egMapsCoordinateNotation
-		),
-		'directional' => array(
-			'type' => 'boolean',
-			'default' => $egMapsCoordinateDirectional
-		),								
-	);
-	
 	$manager = new ValidatorManager();
 	
-	$parameters = $manager->manageMapparameters( $parameters, $parameterInfo );
+	$parameters = $manager->manageMapparameters( 
+		$args,
+		array(
+			'location' => array(
+				'required' => true 
+			),
+			'format' => array(
+				'criteria' => array(
+					'in_array' => $egMapsAvailableCoordNotations
+				),
+				'aliases' => array(
+					'notation'
+				),
+				'default' => $egMapsCoordinateNotation
+			),
+			'directional' => array(
+				'type' => 'boolean',
+				'default' => $egMapsCoordinateDirectional
+			),								
+		),
+		array( 'location', 'format', 'directional' )
+	);
 	
 	$doFormatting = $parameters !== false;
 	

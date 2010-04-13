@@ -104,7 +104,7 @@ final class MapsGeoFunctions {
 						$output = '';
 						break;
 					case Validator_ERRORS_WARN:
-						$output = '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $fails ) ) . '</b>';
+						$output = '<b>' . htmlspecialchars( wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $fails ) ) ) . '</b>';
 						break;
 					case Validator_ERRORS_SHOW: default:
 						global $wgLang;
@@ -209,7 +209,7 @@ final class MapsGeoFunctions {
 						$output = '';
 						break;
 					case Validator_ERRORS_WARN:
-						$output = '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), 1 ) . '</b>';
+						$output = '<b>' . htmlspecialchars( wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), 1 ) ) . '</b>';
 						break;
 					case Validator_ERRORS_SHOW: default:
 						// Show an error that the location could not be geocoded or the coordinates where not recognized.
