@@ -157,14 +157,14 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 		if ( empty( $this->centre ) ) {
 			if ( count( $this->markerData ) == 1 ) {
 				// If centre is not set and there is exactelly one marker, use it's coordinates.
-				$this->centre_lat = Xml::escapeJsString( $this->markerData[0]['lat'] );
-				$this->centre_lon = Xml::escapeJsString( $this->markerData[0]['lon'] );
+				$this->centreLat = Xml::escapeJsString( $this->markerData[0]['lat'] );
+				$this->centreLon = Xml::escapeJsString( $this->markerData[0]['lon'] );
 			}
 			elseif ( count( $this->markerData ) > 1 ) {
 				// If centre is not set and there are multiple markers, set the values to null,
 				// to be auto determined by the JS of the mapping API.
-				$this->centre_lat = 'null';
-				$this->centre_lon = 'null';
+				$this->centreLat = 'null';
+				$this->centreLon = 'null';
 			}
 			else {
 				// If centre is not set and there are no markers, use the default latitude and longitutde.
@@ -176,8 +176,8 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 			
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
 			if ( $this->centre ) {
-				$this->centre_lat = Xml::escapeJsString( $this->centre['lat'] );
-				$this->centre_lon = Xml::escapeJsString( $this->centre['lon'] );
+				$this->centreLat = Xml::escapeJsString( $this->centre['lat'] );
+				$this->centreLon = Xml::escapeJsString( $this->centre['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
 				$this->setCentreDefaults();
@@ -190,7 +190,7 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	 */
 	private function setCentreDefaults() {
 		global $egMapsMapLat, $egMapsMapLon;
-		$this->centre_lat = $egMapsMapLat;
-		$this->centre_lon = $egMapsMapLon;
+		$this->centreLat = $egMapsMapLat;
+		$this->centreLon = $egMapsMapLon;
 	}
 }

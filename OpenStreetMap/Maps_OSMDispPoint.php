@@ -62,8 +62,8 @@ addOnloadHook(
 			{
 				layer: 'osm-like',
 				locale: '$this->lang',
-				lat: $this->centre_lat,
-				lon: $this->centre_lon,
+				lat: $this->centreLat,
+				lon: $this->centreLon,
 				zoom: $this->zoom,
 				markers: [$this->markerString],
 				controls: [$this->controls]

@@ -56,43 +56,28 @@ final class MapsGeoFunctions {
 		
 		// We already know the $parser.
 		array_shift( $args ); 
-	
-		// Default parameter assignment, to allow for nameless syntax.
-		$defaultParams = array( 'location1', 'location2' );
-		$parameters = array();
-		
-		// Determine all parameter names and value, and take care of default (nameless)
-		// parameters, by turning them into named ones.
-		foreach( $args as $arg ) {
-			$parts = explode( '=', $arg );
-			if ( count( $parts ) == 1 ) {
-				if ( count( $defaultParams ) > 0 ) {
-					$defaultParam = array_shift( $defaultParams ); 
-					$parameters[$defaultParam] = trim( $parts[0] );	
-				}
-			} else {
-				$name = strtolower( trim( array_shift( $parts ) ) );
-				$parameters[$name] = trim( implode( $parts ) );
-			}
-		}	
-		
-		$parameterInfo = array(
-			'location1' => array(
-				'required' => true
-			),
-			'location2' => array(
-				'required' => true 
-			),							
-		);
 		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageMapparameters( $parameters, $parameterInfo );
+		$parameters = $manager->manageMapparameters(
+			$parameters,
+			array(
+				'location1' => array(
+					'required' => true
+				),
+				'location2' => array(
+					'required' => true 
+				),							
+			),
+			array( 'location1', 'location2' )
+		);
 		
 		$doCalculation = $parameters !== false;	
 		
 		if ( $doCalculation ) {
-			if ( self::geocoderIsAvailable() ) {
+			$canGeocode = self::geocoderIsAvailable(); 
+			
+			if ( $canGeocode ) {
 				$start = MapsGeocoder::attemptToGeocode( $parameters['location1'] );
 				$end = MapsGeocoder::attemptToGeocode( $parameters['location2'] );
 			} else {
@@ -108,25 +93,33 @@ final class MapsGeoFunctions {
 					$output .= '<br />' . $errorList;
 				}
 			} else {
-				$errorList = '';
+				global $egValidatorFatalLevel;
 				
-				if ( !$start ) {
-					$errorList .= wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location1'] );
+				$fails = array();
+				if ( !$start ) $fails[] = $parameters['location1'];
+				if ( !$end ) $fails[] = $parameters['location2'];				
+				
+				switch ( $egValidatorFatalLevel ) {
+					case Validator_ERRORS_NONE:
+						$output = '';
+						break;
+					case Validator_ERRORS_WARN:
+						$output = '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $fails ) ) . '</b>';
+						break;
+					case Validator_ERRORS_SHOW: default:
+						global $wgLang;
+						
+						if ( $canGeocode ) {
+							$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
+						} else {
+							$output = htmlspecialchars( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
+						}							
+						break;
 				}
-				
-				if ( !$end ) {
-					if ( $errorList != '' ) $errorList .= '<br />'; 
-					$errorList .= wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location2'] );
-				}					
-				
-				$output = $errorList;
 			}
 		} else {
 			// One of the parameters is not provided, so display an error message.
-			// If the error level is Validator_ERRORS_MINIMAL, show the Validator_ERRORS_WARN message since 
-			// the function could not do any work, otherwise use the error level as it is.
-			global $egValidatorErrorLevel;
-			$output = $manager->getErrorList( $egValidatorErrorLevel == Validator_ERRORS_MINIMAL ? Validator_ERRORS_WARN : $egValidatorErrorLevel );
+			$output = $manager->getErrorList();
 		}
 	 
 		return array( $output, 'noparse' => true, 'isHTML' => true );
@@ -139,49 +132,101 @@ final class MapsGeoFunctions {
 	 * @param Parser $parser
 	 */	
 	public static function renderFindDestination( Parser &$parser ) {
+		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
+		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
+		
 		$args = func_get_args();
 		
 		// We already know the $parser.
 		array_shift( $args ); 
-	
-		// Default parameter assignment, to allow for nameless syntax.
-		$defaultParams = array( 'location', 'bearing', 'distance' );
-		$parameters = array();
-		
-		// Determine all parameter names and value, and take care of default (nameless)
-		// parameters, by turning them into named ones.
-		foreach( $args as $arg ) {
-			$parts = explode( '=', $arg );
-			if ( count( $parts ) == 1 ) {
-				if ( count( $defaultParams ) > 0 ) {
-					$defaultParam = array_shift( $defaultParams ); 
-					$parameters[$defaultParam] = trim( $parts[0] );	
-				}
-			} else {
-				$name = strtolower( trim( array_shift( $parts ) ) );
-				$parameters[$name] = trim( implode( $parts ) );
-			}
-		}	
-		
-		$parameterInfo = array(
-			'location' => array(
-				'required' => true
-			),
-			'bearing' => array(
-				'required' => true 
-			),
-			'distance' => array(
-				'required' => true 
-			),						
-		);
 		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageMapparameters( $parameters, $parameterInfo );
+				$parameters = $manager->manageMapparameters(
+			$parameters,
+			array(
+				'location' => array(
+					'required' => true
+				),
+				'bearing' => array(
+					'type' => 'float',
+					'required' => true 
+				),
+				'distance' => array(
+					'type' => 'float',
+					'required' => true 
+				),
+				'mappingservice' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableServices
+					),
+					'default' => false
+				),
+				'service' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableGeoServices
+					),
+					'default' => $egMapsDefaultGeoService
+				),
+				'format' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableCoordNotations
+					),
+					'aliases' => array(
+						'notation'
+					),				
+					'default' => $egMapsCoordinateNotation
+				),
+				'allowcoordinates' => array(
+					'type' => 'boolean',
+					'default' => $egMapsAllowCoordsGeocoding
+				),
+				'directional' => array(
+					'type' => 'boolean',
+					'default' => $egMapsCoordinateDirectional
+				),
+			),
+			array( 'location', 'bearing', 'distance' )
+		);	
 		
 		$doCalculation = $parameters !== false;	
 				
-		// TODO
+		if ( $doCalculation ) {
+			$canGeocode = self::geocoderIsAvailable(); 
+			
+			if ( $canGeocode ) {
+				$location = MapsGeocoder::attemptToGeocode( $parameters['location'] );
+			} else {
+				$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
+			}				
+			
+			if ( $location ) {
+				$destination = self::findDestination( $location, $parameters['bearing'], $parameters['distance'] );
+			} else {
+				global $egValidatorFatalLevel;
+				switch ( $egValidatorFatalLevel ) {
+					case Validator_ERRORS_NONE:
+						$output = '';
+						break;
+					case Validator_ERRORS_WARN:
+						$output = '<b>' . wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), 1 ) . '</b>';
+						break;
+					case Validator_ERRORS_SHOW: default:
+						// Show an error that the location could not be geocoded or the coordinates where not recognized.
+						if ( $canGeocode ) {
+							$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $parameters['location'] ) );
+						} else {
+							$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location'] ) );
+						}						
+						break;
+				}				
+			}
+		} else {
+			// Either required parameters are missing, or there are errors while having a strict error level.
+			$output = $manager->getErrorList();			
+		}
+		
+		return array( $output, 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**

@@ -80,8 +80,8 @@ addOnloadHook(
 	function() {
 		initializeGoogleMap('$this->mapName', 
 			{
-			lat: $this->centre_lat,
-			lon: $this->centre_lon,
+			lat: $this->centreLat,
+			lon: $this->centreLon,
 			zoom: $this->zoom,
 			type: $this->type,
 			types: [$this->types],

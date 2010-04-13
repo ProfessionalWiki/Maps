@@ -77,8 +77,8 @@ addOnloadHook(
 				mode: '$this->mode',
 				layer: 'osm-like',
 				locale: '$this->lang',
-				lat: $this->centre_lat,
-				lon: $this->centre_lon,
+				lat: $this->centreLat,
+				lon: $this->centreLon,
 				zoom: $this->zoom,
 				markers: [],
 				controls: [$this->controls]
@@ -130,10 +130,10 @@ EOT
 		$staticType		= $mode['handler'];
 		$staticOptions	= $mode['options'];
 		
-		$static 		= new $staticType( $this->centre_lat, $this->centre_lon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions );
+		$static 		= new $staticType( $this->centreLat, $this->centreLon, $this->zoom, $this->width, $this->height, $this->lang, $staticOptions );
 		$rendering_url 	= $static->getUrl();
 		
-		$alt = wfMsg( 'maps_centred_on', $this->centre_lat, $this->centre_lon );
+		$alt = wfMsg( 'maps_centred_on', $this->centreLat, $this->centreLon );
 		$title = $this->activatable ? wfMsg( 'maps_click_to_activate' ) : $alt;
 		
 		$image = array(

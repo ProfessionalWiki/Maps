@@ -2,10 +2,6 @@
 
 /**
  * This file contains the registration functions for the following parser functions: 
- * 
- * {{#geocode:<Address>|<param1>=<value1>|<param2>=<value2>}}
- * {{#geocodelat:<Address>|<param1>=<value1>|<param2>=<value2>}}
- * {{#geocodelng:<Address>|<param1>=<value1>|<param2>=<value2>}}
  *
  * @file Maps_GeocodeFunctions.php
  * @ingroup Maps

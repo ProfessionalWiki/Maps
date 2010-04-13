@@ -69,16 +69,16 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	private function setCentre() {
 		if ( empty( $this->coordinates ) ) { // If centre is not set, use the default latitude and longitutde.
 			global $egMapsMapLat, $egMapsMapLon;
-			$this->centre_lat = $egMapsMapLat;
-			$this->centre_lon = $egMapsMapLon;
+			$this->centreLat = $egMapsMapLat;
+			$this->centreLon = $egMapsMapLon;
 		}
 		else { // If a centre value is set, geocode when needed and use it.
 			$this->coordinates = MapsGeocoder::attemptToGeocode( $this->coordinates, $this->geoservice, $this->serviceName );
 
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
 			if ( $this->coordinates ) {
-				$this->centre_lat = Xml::escapeJsString( $this->coordinates['lat'] );
-				$this->centre_lon = Xml::escapeJsString( $this->coordinates['lon'] );
+				$this->centreLat = Xml::escapeJsString( $this->coordinates['lat'] );
+				$this->centreLon = Xml::escapeJsString( $this->coordinates['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
 				$this->setCentreDefaults();

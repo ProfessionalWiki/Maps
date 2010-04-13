@@ -63,8 +63,8 @@ addOnloadHook(
 	function() {
 		initOpenLayer(
 			'$this->mapName',
-			$this->centre_lon,
-			$this->centre_lat,
+			$this->centreLon,
+			$this->centreLat,
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],

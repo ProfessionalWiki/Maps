@@ -19,6 +19,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
+ * 
+ * TODO: refactor this and subclasses to follow mw conventions and simply have a better design pattern.
  */
 abstract class MapsMapFeature {
 	
@@ -46,8 +48,8 @@ abstract class MapsMapFeature {
 	
 	protected $mapName;
 	
-	protected $centre_lat;
-	protected $centre_lon;
+	protected $centreLat;
+	protected $centreLon;
 
 	protected $output = '';
 	protected $errorList;
