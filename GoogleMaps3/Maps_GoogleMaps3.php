@@ -61,36 +61,36 @@ class MapsGoogleMaps3 {
 		$allowedTypes = self::getTypeNames();
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-				'type' => array(
-					'aliases' => array( 'map-type', 'map type' ),
-					'criteria' => array(
-						'in_array' => $allowedTypes
-						),
-					'default' => $egMapsGMaps3Type, // FIXME: default value should not be used when not present in types parameter.
-					'output-type' => 'gmap3type'
-					),
-					/*
-				'types' => array(
-					'type' => array('string', 'list'),
-					'aliases' => array('map-types', 'map types'),
-					'criteria' => array(
-						'in_array' => $allowedTypes
-						),
-					'default' => $egMapsGMaps3Types,
-					'output-types' => array('gmap3types', 'list')				
-					),	
-					*/
-				);
+			'type' => array(
+				'aliases' => array( 'map-type', 'map type' ),
+				'criteria' => array(
+					'in_array' => $allowedTypes
+				),
+				'default' => $egMapsGMaps3Type, // FIXME: default value should not be used when not present in types parameter.
+				'output-type' => 'gmap3type'
+			),
+				/*
+			'types' => array(
+				'type' => array('string', 'list'),
+				'aliases' => array('map-types', 'map types'),
+				'criteria' => array(
+					'in_array' => $allowedTypes
+				),
+				'default' => $egMapsGMaps3Types,
+				'output-types' => array('gmap3types', 'list')				
+			),	
+				*/
+		);
 	}
 	
 	private static $mapTypes = array(
-					'normal' => 'ROADMAP',
-					'roadmap' => 'ROADMAP',
-					'satellite' => 'SATELLITE',
-					'hybrid' => 'HYBRID',
-					'terrain' => 'TERRAIN',
-					'physical' => 'TERRAIN'
-					);
+		'normal' => 'ROADMAP',
+		'roadmap' => 'ROADMAP',
+		'satellite' => 'SATELLITE',
+		'hybrid' => 'HYBRID',
+		'terrain' => 'TERRAIN',
+		'physical' => 'TERRAIN'
+	);
 	
 	/**
 	 * Returns the names of all supported map types.
@@ -137,9 +137,29 @@ class MapsGoogleMaps3 {
 		if ( empty( $egGMaps3OnThisPage ) ) {
 			$egGMaps3OnThisPage = 0;
 
-			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&amp;language={$wgLang->getCode()}'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
+			$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
+			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&amp;language={$languageCode}'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
 		}
 	}
+	
+	/**
+	 * Maps language codes to Google Maps API v3 compatible values.
+	 * 
+	 * @param string $code
+	 * 
+	 * @return string The mapped code
+	 */
+	private static function getMappedLanguageCode( $code ) {
+		$mappings = array(
+	         'en_gb' => 'en-gb',// v3 supports en_gb - but wants us to call it en-gb
+	         'he' => 'iw',      // iw is googlish for hebrew
+	         'fj' => 'fil',     // google does not support Fijian - use Filipino as close(?) supported relative
+		);
+		if ( array_key_exists( $code, $mappings ) ) {
+			$code = $mappings[$code];
+		}
+		return $code;
+	}	
 	
 }
 									

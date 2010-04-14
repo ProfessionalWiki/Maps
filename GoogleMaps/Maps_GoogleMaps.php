@@ -207,8 +207,29 @@ class MapsGoogleMaps {
 
 			MapsGoogleMaps::validateGoogleMapsKey();
 
-			$output .= "<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl={$wgLang->getCode()}' type='$wgJsMimeType'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script><script type='$wgJsMimeType'>window.unload = GUnload;</script>";
+			$langCode = self::getMappedLanguageCode( $wgLang->getCode() );
+			$output .= "<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl={$langCode}' type='$wgJsMimeType'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script><script type='$wgJsMimeType'>window.unload = GUnload;</script>";
 		}
+	}
+	
+	/**
+	 * Maps language codes to Google Maps API v2 compatible values.
+	 * 
+	 * @param string $code
+	 * 
+	 * @return string The mapped code
+	 */
+	private static function getMappedLanguageCode( $code ) {
+		$mappings = array(
+	         'en_gb' => 'en',// v2 does not support en_gb - use english :(
+	         'he' => 'iw',   // iw is googlish for hebrew
+	         'fj' => 'fil',  // google does not support Fijian - use Filipino as close(?) supported relative
+	         'or' => 'en'    // v2 does not support Oriya.
+		);
+		if ( array_key_exists( $code, $mappings ) ) {
+			$code = $mappings[$code];
+		}
+		return $code;
 	}
 	
 	/**
@@ -295,10 +316,9 @@ EOT;
 	}
 	
 	/**
-	 * 
+	 * Add CSS for the overlays. 
 	 * 
 	 * @param $output
-	 * @return unknown_type
 	 */
 	private static function addOverlayCss( &$output ) {
 		$css = <<<END
