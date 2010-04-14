@@ -283,9 +283,10 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author DaSch
  * @author Imre
+ * @author Kghbln
  */
 $messages['de'] = array(
-	'maps_desc' => 'Ermöglicht es, Koordinaten in Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
+	'maps_desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
 Verfügbare Kartografie-Dienste: $1',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
@@ -295,6 +296,7 @@ Verfügbare Kartografie-Dienste: $1',
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'Breitengrad:',
 	'maps-longitude' => 'Längengrad:',
+	'maps-invalid-coordinates' => 'Der Wert $1 bezeichnet kein gültiges Koordinatenpaar.',
 	'maps_coordinates_missing' => 'Es wurden keine Koordinaten für die Karte angegeben.',
 	'maps_geocoding_failed' => 'Die {{PLURAL:$2|folgende Adresse|folgenden Adressen}} konnten nicht geokodiert werden: $1.',
 	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|folgende Adresse konnte|folgenden Adressen konnten}} nicht geokodiert werden und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
@@ -303,8 +305,9 @@ $1',
 	'maps_unrecognized_coords_for' => 'Die {{PLURAL:$2|folgende Koordinate wurde|folgenden Koordinaten wurden}} nicht erkannt und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
 	'maps_map_cannot_be_displayed' => 'Diese Karte kann nicht angezeigt werden.',
-	'maps_click_to_activate' => 'Klicken um Karte zu aktivieren',
-	'maps_centred_on' => 'Karte ist zentriert auf $1, $2.',
+	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Ihr Standort kann nicht geokodiert werden.',
+	'maps_click_to_activate' => 'Klicken, um die Karte zu aktivieren.',
+	'maps_centred_on' => 'Karte ist auf $1, $2 zentriert.',
 	'maps_overlays' => 'Einblendungen',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Videos',
