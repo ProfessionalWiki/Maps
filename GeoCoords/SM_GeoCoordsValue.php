@@ -41,16 +41,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Defines the layout for the smw_coords table which is used to store value of the GeoCoords type.
 	 * 
 	 * @param array $propertyTables The property tables defined by SMW, passed by reference.
-	 * 
-	 * FIXME
 	 */
 	public static function initGeoCoordsTable( array $propertyTables ) {
-		/*
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',
 			array( 'lat' => 'f', 'lon' => 'f' )
 		);
-		*/
 		return true;
 	}
 	

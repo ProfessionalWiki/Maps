@@ -131,7 +131,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$manager = new ValidatorManager();
 		
-		$result = $manager->manageMapparameters( $mapProperties, $parameterInfo );
+		$result = $manager->manageParameters( $mapProperties, $parameterInfo );
 		
 		$showMap = $result !== false;
 		
