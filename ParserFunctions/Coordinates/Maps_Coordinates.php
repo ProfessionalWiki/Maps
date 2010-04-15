@@ -49,7 +49,7 @@ function efMapsRenderCoordinates() {
 	
 	$manager = new ValidatorManager();
 	
-	$parameters = $manager->manageMapparameters( 
+	$parameters = $manager->manageParameters( 
 		$args,
 		array(
 			'location' => array(

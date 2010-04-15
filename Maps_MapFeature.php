@@ -81,7 +81,7 @@ abstract class MapsMapFeature {
 		
 		$manager = new ValidatorManager();
 		
-		$result = $manager->manageMapparameters( $mapProperties, $parameterInfo );
+		$result = $manager->manageParameters( $mapProperties, $parameterInfo );
 		
 		$showMap = $result !== false;
 		

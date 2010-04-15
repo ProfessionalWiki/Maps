@@ -59,7 +59,7 @@ final class MapsGeoFunctions {
 		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageMapparameters(
+		$parameters = $manager->manageParameters(
 			$args,
 			array(
 				'location1' => array(
@@ -144,7 +144,7 @@ final class MapsGeoFunctions {
 		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageMapparameters(
+		$parameters = $manager->manageParameters(
 			$args,
 			array(
 				'location' => array(
