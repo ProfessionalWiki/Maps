@@ -78,7 +78,7 @@ final class MapsParserFunctions {
 	 * @return array
 	 */
 	public static function getMapHtml( Parser &$parser, array $params, $parserFunction ) {
-        global $wgLang, $egValidatorErrorLevel;
+        global $wgLang, $egValidatorErrorLevel, $egValidatorFatalLevel;
         
         array_shift( $params ); // We already know the $parser.
 
@@ -116,25 +116,22 @@ final class MapsParserFunctions {
 
             if ( $egValidatorErrorLevel >= Validator_ERRORS_WARN ) {
 	            if ( count( $coordFails ) > 0 ) {
-	            	// TODO: escaping
-	                $output .= '<i>' . wfMsgExt( 'maps_unrecognized_coords_for', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
+	                $output .= '<i>' . htmlspecialchars( wfMsgExt( 'maps_unrecognized_coords_for', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) ) . '</i>';
 	            }
 
 	            if ( count( $geoFails ) > 0 ) {
-	            	// TODO: escaping
-	                $output .= '<i>' . wfMsgExt( 'maps_geocoding_failed_for', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
+	                $output .= '<i>' . htmlspecialchars( wfMsgExt( 'maps_geocoding_failed_for', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) ) . '</i>';
 	            }
             }
         }
-        elseif ( $egValidatorErrorLevel >= Validator_ERRORS_MINIMAL ) {
+        elseif ( $egValidatorFatalLevel >= Validator_ERRORS_NONE ) {
 	        if ( $coords == '' && ( count( $geoFails ) > 0 || count( $coordFails ) > 0 ) ) {
-	        	// TODO: escaping
 	        	if ( count( $coordFails ) > 0 ) $output = '<i>' . wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $coordFails ), count( $coordFails ) ) . '</i>';
 	            if ( count( $geoFails ) > 0 ) $output = '<i>' . wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $geoFails ), count( $geoFails ) ) . '</i>';
-	            $output .= '<i>' . wfMsg( 'maps_map_cannot_be_displayed' ) . '</i>';
+	            $output .= '<i>' . htmlspecialchars( wfMsg( 'maps_map_cannot_be_displayed' ) ) . '</i>';
 	        }
 	        else {
-	            $output = '<i>' . wfMsg( 'maps_coordinates_missing' ) . '</i>';
+	            $output = '<i>' . htmlspecialchars( wfMsg( 'maps_coordinates_missing' ) ) . '</i>';
 	        }
         }
         

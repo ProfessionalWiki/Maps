@@ -190,7 +190,6 @@ final class MapsGeoFunctions {
 			),
 			array( 'location', 'bearing', 'distance' )
 		);	
-		
 		$doCalculation = $parameters !== false;	
 				
 		if ( $doCalculation ) {
@@ -203,7 +202,9 @@ final class MapsGeoFunctions {
 			}				
 			
 			if ( $location ) {
+				var_dump($location);
 				$destination = self::findDestination( $location, $parameters['bearing'], $parameters['distance'] );
+				var_dump($destination);exit;
 				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 			} else {
 				global $egValidatorFatalLevel;
@@ -279,6 +280,8 @@ final class MapsGeoFunctions {
 	 * @return array The desitination coordinates, as non-directional floats in an array with lat and lon keys.
 	 */
 	public static function findDestination( array $startingCoordinates, $bearing, $distance ) {
+		$startingCoordinates['lat'] = (float)$startingCoordinates['lat'];
+		$startingCoordinates['lon'] = (float)$startingCoordinates['lon'];
 		$angularDistance = $distance / Maps_EARTH_RADIUS;
 		$lat = asin(
 				sin( $startingCoordinates['lat'] ) * cos( $angularDistance ) +
