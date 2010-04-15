@@ -202,9 +202,9 @@ final class MapsGeoFunctions {
 			}				
 			
 			if ( $location ) {
-				var_dump($location);
+				//var_dump($location);
 				$destination = self::findDestination( $location, $parameters['bearing'], $parameters['distance'] );
-				var_dump($destination);exit;
+				//var_dump($destination);exit;
 				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 			} else {
 				global $egValidatorFatalLevel;
