@@ -305,7 +305,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Die {{PLURAL:$2|folgende Koordinate wurde|folgenden Koordinaten wurden}} nicht erkannt und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
 	'maps_map_cannot_be_displayed' => 'Diese Karte kann nicht angezeigt werden.',
-	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Ihr Standort kann nicht geokodiert werden.',
+	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Dein Standort kann nicht geokodiert werden.',
 	'maps_click_to_activate' => 'Klicken, um die Karte zu aktivieren.',
 	'maps_centred_on' => 'Karte ist auf $1, $2 zentriert.',
 	'maps_overlays' => 'Einblendungen',
