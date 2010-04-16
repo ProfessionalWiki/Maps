@@ -152,11 +152,6 @@ $egMapsSizeRestrictions = array(
 $egMapsMapLat = '1';
 $egMapsMapLon = '1';
 
-# String. The default centre for a map. Must be in floating point notation. 
-# This value will override the smart behaviour when multiple markers are present when set.
-# This value will only be used when the user does not provide one.
-$egMapsDefaultCentre = '';
-
 # Strings. The default content for all pop-ups. This value will only be used when the user does not provide one.
 $egMapsDefaultTitle = '';
 $egMapsDefaultLabel = '';

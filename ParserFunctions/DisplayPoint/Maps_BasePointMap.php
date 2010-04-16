@@ -22,10 +22,40 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  */
-abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFunction {
+abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFunction {	
 	
 	private $markerData = array();
 	protected $markerString;
+	
+	/**
+	 * @return array
+	 */	
+	public function getFeatureParameters() {
+		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		
+		return array_merge(
+			parent::getFeatureParameters(),
+			array(
+				'service' => array(	
+					'default' => $egMapsDefaultServices['display_point']
+				),
+				'centre' => array(
+					'aliases' => array( 'center' ),
+				),
+				'title' => array(
+					'default' => $egMapsDefaultTitle
+				),
+				'label' => array(
+					'default' => $egMapsDefaultLabel
+				),
+				'icon' => array(
+					'criteria' => array(
+						'not_empty' => array()
+					)
+				),
+			)
+		);
+	}	
 	
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
@@ -40,24 +70,24 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 		$this->setMapSettings();
 		
 		$this->featureParameters = MapsDisplayPoint::$parameters;
-		
-		if ( parent::manageMapProperties( $params, __CLASS__ ) ) {
-			$this->doMapServiceLoad();
 	
-			$this->setMapName();
-			
-			$this->setMarkerData( $parser );
-	
-			$this->createMarkerString();
-			
-			$this->setZoom();
-			
-			$this->setCentre();
-			
-			$this->addSpecificMapHTML( $parser );
-		}
+		$this->doMapServiceLoad();
+
+		parent::setMapProperties( $params, __CLASS__ );
 		
-		return $this->output . $this->errorList;
+		$this->setMapName();
+		
+		$this->setMarkerData( $parser );
+
+		$this->createMarkerString();
+		
+		$this->setZoom();
+		
+		$this->setCentre();
+		
+		$this->addSpecificMapHTML( $parser );
+		
+		return $this->output;
 	}
 	
 	/**

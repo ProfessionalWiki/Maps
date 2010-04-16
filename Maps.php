@@ -62,7 +62,11 @@ else {
 	// Include the settings file.
 	require_once( $egMapsDir . 'Maps_Settings.php' );
 	
-	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';	
+	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
+	
+	if( version_compare( $wgVersion, '1.16alpha', '>=' ) ) {
+		$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.magic.php';	
+	} 
 	
 	// Register the initialization function of Maps.
 	$wgExtensionFunctions[] = 'efMapsSetup';

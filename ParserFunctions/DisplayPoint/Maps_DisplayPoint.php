@@ -16,7 +16,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgAutoloadClasses['MapsDisplayPoint'] 		= $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';
 $wgAutoloadClasses['MapsBasePointMap']		= $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_BasePointMap.php';
 
-$wgHooks['LanguageGetMagic'][] 				= 'efMapsDisplayPointMagic';
+if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
+	$wgHooks['LanguageGetMagic'][] 				= 'efMapsDisplayPointMagic';
+}	
 $wgHooks['ParserFirstCallInit'][] 			= 'efMapsRegisterDisplayPoint';
 
 $egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
@@ -52,7 +54,6 @@ final class MapsDisplayPoint {
 	public static $parameters = array();
 	
 	public static function initialize() {
-		self::initializeParams();
 	}
 	
 	/**
@@ -65,34 +66,6 @@ final class MapsDisplayPoint {
 	public static function displayPointRender( &$parser ) {
 		$args = func_get_args();
 		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_point' );
-	}
-	
-	private static function initializeParams() {
-		global $egMapsDefaultCentre, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsDefaultServices;
-		
-		self::$parameters = array_merge(
-			MapsParserFunctions::$parameters,
-			array(
-				'service' => array(	
-					'default' => $egMapsDefaultServices['display_map']
-				),		
-				'centre' => array(
-					'aliases' => array( 'center' ),
-					'default' => $egMapsDefaultCentre
-				),
-				'title' => array(
-					'default' => $egMapsDefaultTitle
-				),
-				'label' => array(
-					'default' => $egMapsDefaultLabel
-				),
-				'icon' => array(
-					'criteria' => array(
-						'not_empty' => array()
-					)
-				),
-			)
-		);
 	}
 	
 }

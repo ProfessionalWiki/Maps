@@ -25,6 +25,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	
 	/**
+	 * @return array
+	 */	
+	public function getFeatureParameters() {
+		global $egMapsDefaultServices;
+		
+		return array_merge(
+			parent::getFeatureParameters(),
+			array(
+				'service' => array(	
+					'default' => $egMapsDefaultServices['display_map']
+				)
+			)
+		);
+	}
+	
+	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
@@ -38,19 +54,19 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 		
 		$this->featureParameters = MapsDisplayMap::$parameters;
 		
-		if ( parent::manageMapProperties( $params, __CLASS__ ) ) {
-			$this->doMapServiceLoad();
-	
-			$this->setMapName();
-			
-			$this->setZoom();
-			
-			$this->setCentre();
-			
-			$this->addSpecificMapHTML( $parser );
-		}
+		$this->doMapServiceLoad();
+
+		parent::setMapProperties( $params, __CLASS__ );
 		
-		return $this->output . $this->errorList;
+		$this->setMapName();
+		
+		$this->setZoom();
+		
+		$this->setCentre();
+		
+		$this->addSpecificMapHTML( $parser );
+		
+		return $this->output;
 	}
 	
 	/**
@@ -81,7 +97,10 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 				$this->centreLon = Xml::escapeJsString( $this->coordinates['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
-				$this->setCentreDefaults();
+				// TODO: Some warning this failed would be nice here. 
+				global $egMapsMapLat, $egMapsMapLon;
+				$this->centreLat = $egMapsMapLat;
+				$this->centreLon = $egMapsMapLon;
 			}
 		}
 	}

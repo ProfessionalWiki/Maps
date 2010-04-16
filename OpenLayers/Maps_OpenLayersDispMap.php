@@ -19,7 +19,6 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	/**
 	 * @see MapsBaseMap::setMapSettings()
-	 *
 	 */
 	protected function setMapSettings() {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
@@ -30,7 +29,6 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
@@ -43,7 +41,6 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
-	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );

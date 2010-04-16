@@ -16,7 +16,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgAutoloadClasses['MapsDisplayMap'] 		= $egMapsDir . 'ParserFunctions/DisplayMap/Maps_DisplayMap.php';
 $wgAutoloadClasses['MapsBaseMap'] 			= $egMapsDir . 'ParserFunctions/DisplayMap/Maps_BaseMap.php';
 
-$wgHooks['LanguageGetMagic'][] 				= 'efMapsDisplayMapMagic';
+if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
+	$wgHooks['LanguageGetMagic'][] = 'efMapsDisplayMapMagic';
+}	
 $wgHooks['ParserFirstCallInit'][] 			= 'efMapsRegisterDisplayMap';
 
 $egMapsFeatures['pf'][]	= 'MapsDisplayMap::initialize';
@@ -51,7 +53,6 @@ final class MapsDisplayMap {
 	public static $parameters = array();
 	
 	public static function initialize() {
-		self::initializeParams();
 	}
 	
 	/**
@@ -64,19 +65,6 @@ final class MapsDisplayMap {
 	public static function displayMapRender( &$parser ) {
 		$args = func_get_args();
 		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_map' );
-	}
-
-	private static function initializeParams() {
-		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsDefaultServices;
-
-		self::$parameters = array_merge( 
-			MapsParserFunctions::$parameters,
-			array(
-				'service' => array(	
-					'default' => $egMapsDefaultServices['display_map']
-				),
-			)
-		);
 	}
 	
 }

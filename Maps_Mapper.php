@@ -14,22 +14,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsMapper {
-	
-	/**
-	 * Array holding the parameters that are not spesific to a mapping service, 
-	 * their aliases, criteria and default value.
-	 *
-	 * @var array
-	 */
-	private static $mainParams;
 
+	private static $mainParams;
+	
 	public static function initializeMainParams() {
 		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
-		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );			
-		
-		self::$mainParams = array (
+		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
+
+		self::$mainParams = array(
 			'zoom' => array(
 				'type' => 'integer',
 				'criteria' => array(
@@ -49,10 +43,10 @@ final class MapsMapper {
 				),
 				'default' => $egMapsMapHeight,
 				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
-			),
+			),		
 		);
 	}
-
+	
 	/**
 	 * Returns the main parameters array.
 	 * 
@@ -60,7 +54,7 @@ final class MapsMapper {
 	 */
 	public static function getMainParams() {
 		return self::$mainParams;
-	}
+	}	
 	
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
@@ -68,7 +62,6 @@ final class MapsMapper {
 	 *
 	 * @param string $service
 	 * @param string $feature
-	 * @param string $subfeature
 	 * 
 	 * @return string
 	 */

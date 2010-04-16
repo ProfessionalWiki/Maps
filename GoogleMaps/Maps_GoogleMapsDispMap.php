@@ -24,30 +24,33 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 
-	/**
-	 * @see MapsBaseMap::setMapSettings()
-	 *
-	 */
-	protected function setMapSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
-		
-		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
-		$this->defaultZoom = $egMapsGoogleMapsZoom;
-		
+	public function getSpecificParameterInfo() {
+		global $egMapsGMapOverlays;
+		// TODO: it'd be cool to have this static so it can be cheched in order to only init it once.
 		$this->spesificParameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),
-				'default' => $egMapsGMapOverlays,
 				),
+				'default' => $egMapsGMapOverlays,
+			),
 		);
+		return $this->spesificParameters;
+	}
+	
+	/**
+	 * @see MapsBaseMap::setMapSettings()
+	 */
+	protected function setMapSettings() {
+		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
+		
+		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
+		$this->defaultZoom = $egMapsGoogleMapsZoom;
 	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
@@ -60,7 +63,6 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
-	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
 		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );

@@ -19,7 +19,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // The approximate radius of the earth in km.
 define( 'Maps_EARTH_RADIUS', 20000 / M_PI );
 
-$wgHooks['LanguageGetMagic'][] = 'efMapsGeoFunctionsMagic';
+if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
+	$wgHooks['LanguageGetMagic'][] = 'efMapsGeoFunctionsMagic';
+}
 $wgHooks['ParserFirstCallInit'][] = 'efMapsGeoFunctions';
 
 /**

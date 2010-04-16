@@ -14,7 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgHooks['LanguageGetMagic'][] = 'efMapsCoordinatesMagic';
+if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
+	$wgHooks['LanguageGetMagic'][] = 'efMapsCoordinatesMagic';
+}
 $wgHooks['ParserFirstCallInit'][] = 'efMapsCoordinatesFunction';
 
 /**
