@@ -725,21 +725,21 @@ Layanan peta yang tersedia: $1',
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'semanticmaps_desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servizi di mappe disponibili: $1",
-	'semanticmaps_lonely_unit' => 'Non &egrave; stato trovato nessun numero prima del simbolo “$1”.',
-	'semanticmaps_bad_latlong' => 'Latitudine e longitudine devono essere inserite solo una volta, e con coordinate valide.',
-	'semanticmaps_abb_north' => 'N',
-	'semanticmaps_abb_east' => 'E',
-	'semanticmaps_abb_south' => 'S',
-	'semanticmaps_abb_west' => 'O',
-	'semanticmaps_label_latitude' => 'Latitudine:',
-	'semanticmaps_label_longitude' => 'Longitudine:',
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
 	'semanticmaps_notfound' => 'non trovato',
+	'semanticmaps_paramdesc_height' => "L'altezza della mappa in pixel (il valore di default è $1)",
+	'semanticmaps_paramdesc_width' => 'La larghezza della mappa in pixel (il valore di default è $1)',
+	'semanticmaps_paramdesc_zoom' => 'Il livello di zoom della mappa',
+	'semanticmaps_paramdesc_centre' => 'Le coordinate del centro della mappa',
+	'semanticmaps_paramdesc_controls' => 'I controlli utente posizionati sulla mappa',
+	'semanticmaps_paramdesc_types' => 'I tipi di mappa disponibili sulla mappa',
+	'semanticmaps_paramdesc_type' => 'Il tipo mappa predefinito per la mappa',
 );
 
 /** Japanese (日本語)
