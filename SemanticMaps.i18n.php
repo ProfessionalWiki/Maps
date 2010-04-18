@@ -733,6 +733,8 @@ $messages['it'] = array(
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
 	'semanticmaps_notfound' => 'non trovato',
+	'semanticmaps_paramdesc_format' => 'Il servizio di mapping utilizzato per generare la mappa',
+	'semanticmaps_paramdesc_geoservice' => 'Il servizio di geocoding utilizzato per trasformare gli indirizzi in coordinate',
 	'semanticmaps_paramdesc_height' => "L'altezza della mappa in pixel (il valore di default è $1)",
 	'semanticmaps_paramdesc_width' => 'La larghezza della mappa in pixel (il valore di default è $1)',
 	'semanticmaps_paramdesc_zoom' => 'Il livello di zoom della mappa',
@@ -740,6 +742,9 @@ $messages['it'] = array(
 	'semanticmaps_paramdesc_controls' => 'I controlli utente posizionati sulla mappa',
 	'semanticmaps_paramdesc_types' => 'I tipi di mappa disponibili sulla mappa',
 	'semanticmaps_paramdesc_type' => 'Il tipo mappa predefinito per la mappa',
+	'semanticmaps_paramdesc_overlays' => 'Gli overlay disponibili sulla mappa',
+	'semanticmaps_paramdesc_autozoom' => 'Se sono attivati lo zoom avanti e indietro utilizzando la rotellina del mouse',
+	'semanticmaps_paramdesc_layers' => 'Gli strati (layer) disponibili sulla mappa',
 );
 
 /** Japanese (日本語)
