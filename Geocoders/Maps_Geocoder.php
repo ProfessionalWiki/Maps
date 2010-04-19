@@ -33,6 +33,7 @@ final class MapsGeocoder {
 	 * @param string $geoservice
 	 * @param string $mappingService
 	 * @param boolean $checkForCoords
+	 * @param boolean $checkForCoords
 	 * 
 	 * @return array or false
 	 */
@@ -55,10 +56,11 @@ final class MapsGeocoder {
 	 * @param string $coordsOrAddress
 	 * @param string $service
 	 * @param string $mappingService
+	 * @param boolean $checkForCoords
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * 
-	 * @return formatted coordinate string or false
+	 * @return formatted coordinates string or false
 	 */
 	public static function attemptToGeocodeToString( $coordsOrAddress, $service = '', $mappingService = false, $checkForCoords = true, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
 		$geoValues = self::attemptToGeocode( $coordsOrAddress, $service, $mappingService, $checkForCoords );
@@ -97,6 +99,22 @@ final class MapsGeocoder {
 	}
 	
 	/**
+	 * Does the same as Geocode, but also formats the result into a string.
+	 * 
+	 * @param string $coordsOrAddress
+	 * @param string $service
+	 * @param string $mappingService
+	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
+	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
+	 * 
+	 * @return formatted coordinates string or false
+	 */
+	public static function geocodeToString( $address, $service = '', $mappingService = false, $targetFormat = Maps_COORDS_FLOAT, $directional = false  ) {
+		$coordinates = self::geocode( $address, $service, $mappingService );
+		return $coordinates ?  MapsCoordinateParser::formatCoordinates( $coordinates, $targetFormat, $directional ) : false;		
+	}
+	
+	/**
 	 * Makes sure that the geo service is one of the available ones.
 	 * Also enforces licencing restrictions when no geocoding service is explicitly provided.
 	 *
@@ -120,16 +138,13 @@ final class MapsGeocoder {
 			}
 
 			// If no overrides where applied, use the default mapping service.
-			if ( strlen( $service ) < 1 ) $service = $egMapsDefaultGeoService;
+			if ( $service == '' ) $service = $egMapsDefaultGeoService;
 		}
 		else {
 			// If a service is provided, but is not supported, use the default.
-			if ( ! array_key_exists( $service, $egMapsAvailableGeoServices ) ) $service = $egMapsDefaultGeoService;
+			if ( !array_key_exists( $service, $egMapsAvailableGeoServices ) ) $service = $egMapsDefaultGeoService;
 		}
 
 		return $service;
 	}
 }
-
-
-

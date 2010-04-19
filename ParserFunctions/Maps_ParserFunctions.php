@@ -31,7 +31,7 @@ final class MapsParserFunctions {
 	 * and will load the required classes.
 	 */
 	public static function initialize() {
-		global $egMapsDir, $IP, $wgAutoloadClasses, $egMapsFeatures, $egMapsServices;
+		global $egMapsDir, $egMapsFeatures;
 		
 		include_once $egMapsDir . 'ParserFunctions/Maps_iDisplayFunction.php';
 		
@@ -44,7 +44,6 @@ final class MapsParserFunctions {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 	}
 	
 	/**
@@ -110,7 +109,12 @@ final class MapsParserFunctions {
             // Call the function according to the map service to get the HTML output.
             $output = $mapClass->displayMap( $parser, $parameters ) . $manager->getErrorList();
         } else {
-			// TODO: add errors to output depending on validator fatal level 	
+        	// TODO: Get failiures
+        	if ( $egValidatorFatalLevel == Validator_ERRORS_WARN ) {
+        		$output .= htmlspecialchars( wfMsg( '' ) );
+        	} elseif ( $egValidatorFatalLevel > Validator_ERRORS_WARN ) {
+        		$output .= htmlspecialchars( wfMsg( '' ) );
+        	}
         }
         
         // Return the result.
@@ -131,8 +135,8 @@ final class MapsParserFunctions {
 	public static function inParamAliases( $name, $mainParamName, array $paramInfo = array(), $compareMainName = true ) {
 		$equals = $compareMainName && $mainParamName == $name;
 
-		if ( array_key_exists( $mainParamName, $paramInfo ) ) {
-			$equals = $equals || in_array( $name, $paramInfo[$mainParamName] );
+		if ( !$equals && array_key_exists( $mainParamName, $paramInfo ) ) {
+			$equals = in_array( $name, $paramInfo[$mainParamName] );
 		}
 
 		return $equals;

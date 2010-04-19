@@ -141,6 +141,24 @@ class MapsCoordinateParser {
 	 * @return string
 	 */
 	public static function formatCoordinates( array $coordinates, $targetFormat = Maps_COORDS_FLOAT, $directional = false, $separator = ', ' ) {
+		return implode( $separator, self::formatToArray( $coordinates, $targetFormat, $directional ) );
+	}
+
+	/**
+	 * Turns a given coordinate set into a single string that gets formatted
+	 * depending on the $targetType and $directional parameters. 
+	 * 
+	 * they will be parsed to the given notation, which defaults to
+	 * non-directional floats
+	 * 
+	 * @param array $coordinates The set of coordinates that needs to be formatted. Either an associative
+	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
+	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
+	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
+	 * 
+	 * @return array
+	 */
+	public static function formatToArray( array $coordinates, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
 		if ( !array_key_exists( 'lat', $coordinates ) || !array_key_exists( 'lon', $coordinates ) ) {
 			list( $coordinates['lat'], $coordinates['lon'] ) = $coordinates;
 		}
@@ -150,9 +168,7 @@ class MapsCoordinateParser {
 			'lon' => self::formatCoordinate( $coordinates['lon'], $targetFormat ),
 		);		
 		
-		$coordinates = self::setAngles( $coordinates, $directional );
-		
-		return implode( $separator, $coordinates );
+		return self::setAngles( $coordinates, $directional );		
 	}
 	
 	/**
@@ -441,6 +457,23 @@ class MapsCoordinateParser {
 	private static function getSeperatorsRegex() {
 		if ( !self::$mSeperatorsRegex ) self::$mSeperatorsRegex = '(' . implode( '|', self::$mSeperators ) . ')';
 		return self::$mSeperatorsRegex;
+	}
+	
+	/**
+	 * 
+	 * @param unknown_type $coordinates
+	 * @param unknown_type $targetFormat
+	 * @param unknown_type $directional
+	 * 
+	 * return 
+	 */
+	public static function parseAndFormat( $coordinates, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
+		$parsedCoords = self::parseCoordinates( $coordinates );
+		if ( $parsedCoords ) {
+			return self::formatCoordinates( $parsedCoords );
+		} else {
+			return false;
+		}
 	}
 	
 }

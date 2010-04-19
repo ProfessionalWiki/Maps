@@ -92,13 +92,17 @@ abstract class MapsMapFeature {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 		
 		return array(
+			'coordinates' => array(
+				'aliases' => array( 'coords', 'location', 'locations' ),
+				'criteria' => array(
+					'is_location' => array()
+				),
+				'output-type' => 'format_coordinates', 
+			),		
 			'service' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
 				),		
-			),
-			'coordinates' => array(
-				'aliases' => array( 'coords', 'location', 'locations' ),
 			),
 			'geoservice' => array(
 				'criteria' => array(

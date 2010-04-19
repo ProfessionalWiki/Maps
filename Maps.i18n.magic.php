@@ -9,6 +9,8 @@ $magicWords['en'] = array(
 	'geocode'           => array( 0, 'geocode' ),
 	'geocodelat'        => array( 0, 'geocodelat' ),
 	'geocodelon'        => array( 0, 'geocodelon' ),
+	'geodistance'       => array( 0, 'geodistance' ),
+	'finddestination'   => array( 0, 'finddestination' ),
 );
 
 $magicWords['ar'] = array(

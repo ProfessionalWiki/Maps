@@ -145,7 +145,7 @@ final class MapsGeocodeFunctions {
 	 * @return string
 	 */
 	public static function renderGeocoderLat( Parser &$parser, $address, $service = '', $mappingService = '' ) {
-		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
+		if ( MapsMapper::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
 		return $geovalues ? $geovalues['lat'] : '';
 	}
 	
@@ -161,11 +161,8 @@ final class MapsGeocodeFunctions {
 	 * @return string
 	 */
 	public static function renderGeocoderLon( Parser &$parser, $address, $service = '', $mappingService = '' ) {
-		if ( self::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
+		if ( MapsMapper::geocoderIsAvailable() ) $geovalues = MapsGeocoder::geocode( $address, $service, $mappingService );
 		return $geovalues ? $geovalues['lon'] : '';
 	}
 	
 }
-
-
-

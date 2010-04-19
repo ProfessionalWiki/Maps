@@ -77,7 +77,7 @@ final class MapsGeoFunctions {
 		$doCalculation = $parameters !== false;	
 		
 		if ( $doCalculation ) {
-			$canGeocode = self::geocoderIsAvailable(); 
+			$canGeocode = MapsMapper::geocoderIsAvailable(); 
 			
 			if ( $canGeocode ) {
 				$start = MapsGeocoder::attemptToGeocode( $parameters['location1'] );
@@ -195,7 +195,7 @@ final class MapsGeoFunctions {
 		$doCalculation = $parameters !== false;	
 				
 		if ( $doCalculation ) {
-			$canGeocode = self::geocoderIsAvailable(); 
+			$canGeocode = MapsMapper::geocoderIsAvailable(); 
 			
 			if ( $canGeocode ) {
 				$location = MapsGeocoder::attemptToGeocode( $parameters['location'] );
@@ -297,16 +297,6 @@ final class MapsGeoFunctions {
 			)
 		);
 	}
-	
-	/**
-	 * Returns a boolean indicating if MapsGeocoder is available. 
-	 * 
-	 * @return Boolean
-	 */
-	private static function geocoderIsAvailable() {
-		global $wgAutoloadClasses;
-		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
-	}	
 	
 }
 

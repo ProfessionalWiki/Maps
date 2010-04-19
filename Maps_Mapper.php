@@ -23,6 +23,20 @@ final class MapsMapper {
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
 
+		// Take care of maybe not having the geocoder available here.
+		// This is done by hooking a MapsGeocoder function that can handle addresses and coordinates,
+		// or one of MapsCoordinateParser, which only accepts coordinates.
+		if ( self::geocoderIsAvailable() ) {
+			$locationValidationFunction = array( 'MapsGeocoder', 'attemptToGeocodeToString' );
+			$locationFormattingFunction = array( __CLASS__, 'attemptToGeocodeToString' );
+		} else {
+			$locationValidationFunction = array( 'MapsCoordinateParser', 'areCoordinates' );		
+			$locationFormattingFunction = array( __CLASS__, 'parseAndFormat' );				
+		}
+
+		Validator::addValidationFunction( 'is_location', $locationValidationFunction );
+		Validator::addOutputFormat( 'format_coordinates', $locationFormattingFunction );	
+		
 		self::$mainParams = array(
 			'zoom' => array(
 				'type' => 'integer',
@@ -189,4 +203,22 @@ final class MapsMapper {
 		self::isMapDimension( $value, $dimension, true, $default );	
 	}
 
+	/**
+	 * Returns a boolean indicating if MapsGeocoder is available. 
+	 * 
+	 * @return Boolean
+	 */
+	public static function geocoderIsAvailable() {
+		global $wgAutoloadClasses;
+		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
+	}	
+
+	public static function attemptToGeocodeToString( &$value ) {
+		$value = MapsGeocoder::attemptToGeocodeToString( $value );
+	}
+	
+	public static function parseAndFormat( &$value ) {
+		$value = MapsCoordinateParser::parseAndFormat( $value );
+	}
+	
 }
