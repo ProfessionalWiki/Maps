@@ -23,20 +23,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsGoogleMaps3::SERVICE_NAME;
-
-	/**
-	 * @see MapsBaseMap::setMapSettings()
-	 *
-	 */
-	protected function setMapSettings() {
-		global $egMapsGMaps3Zoom, $egMapsGMaps3Prefix;
-		
-		$this->elementNamePrefix = $egMapsGMaps3Prefix;
-		$this->defaultZoom = $egMapsGMaps3Zoom;
-		
-		$this->spesificParameters = array(
-		);
-	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
@@ -56,21 +42,26 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
+		global $egMapsGMaps3Prefix, $egGMaps3OnThisPage;
+		
+		$mapName = $egMapsGMaps3Prefix . '_' . $egGMaps3OnThisPage;
+		
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'width' => $this->width,
 				'height' => $this->height
 			),
 			null
 		);
 		
-		$wgOut->addInlineScript( <<<EOT
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initGMap3(
-			"$this->mapName",
+			'$mapName',
 			{
 				zoom: $this->zoom,
 				lat: $this->centreLat,
@@ -83,6 +74,7 @@ addOnloadHook(
 	}
 );
 EOT
+			)
 		);
 	}
 	

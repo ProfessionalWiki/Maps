@@ -84,7 +84,6 @@ function efMapsSetup() {
 	
 	// Autoload the general classes
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';	
-	$wgAutoloadClasses['MapsMapFeature'] 			= $egMapsDir . 'Maps_MapFeature.php';
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';	
 	
 	wfLoadExtensionMessages( 'Maps' );

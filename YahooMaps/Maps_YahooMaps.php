@@ -62,50 +62,50 @@ class MapsYahooMaps {
 		
 		$allowedTypes = MapsYahooMaps::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsYahooMapsZoom;
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );
-		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-				'controls' => array(
-					'type' => array( 'string', 'list' ),
-					'criteria' => array(
-						'in_array' => self::getControlNames()
-					),
-					'default' => $egMapsYMapControls,
-					'output-type' => array( 'list', ',', '\'' )
-					),
-				'type' => array (
-					'aliases' => array( 'map-type', 'map type' ),
-					'criteria' => array(
-						'in_array' => $allowedTypes
-						),
-					'default' => $egMapsYahooMapsType, // FIXME: default value should not be used when not present in types parameter.
-					'output-type' => 'ymaptype'
-					),
-				'types' => array (
-					'type' => array( 'string', 'list' ),
-					'aliases' => array( 'map-types', 'map types' ),
-					'criteria' => array(
-						'in_array' => $allowedTypes
-						),
-					'default' =>  $egMapsYahooMapsTypes,
-					'output-types' => array( 'ymaptypes', 'list' )
-					),
-				'autozoom' => array(
-					'type' => 'boolean',
-					'aliases' => array( 'auto zoom', 'mouse zoom', 'mousezoom' ),
-					'default' => $egMapsYahooAutozoom,
-					'output-type' => 'boolstr'
-					),
-				);
+			'controls' => array(
+				'type' => array( 'string', 'list' ),
+				'criteria' => array(
+					'in_array' => self::getControlNames()
+				),
+				'default' => $egMapsYMapControls,
+				'output-type' => array( 'list', ',', '\'' )
+			),
+			'type' => array (
+				'aliases' => array( 'map-type', 'map type' ),
+				'criteria' => array(
+					'in_array' => $allowedTypes
+				),
+				'default' => $egMapsYahooMapsType, // FIXME: default value should not be used when not present in types parameter.
+				'output-type' => 'ymaptype'
+			),
+			'types' => array (
+				'type' => array( 'string', 'list' ),
+				'aliases' => array( 'map-types', 'map types' ),
+				'criteria' => array(
+					'in_array' => $allowedTypes
+				),
+				'default' =>  $egMapsYahooMapsTypes,
+				'output-types' => array( 'ymaptypes', 'list' )
+			),
+			'autozoom' => array(
+				'type' => 'boolean',
+				'aliases' => array( 'auto zoom', 'mouse zoom', 'mousezoom' ),
+				'default' => $egMapsYahooAutozoom,
+				'output-type' => 'boolstr'
+			),
+		);
+				
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsYahooMapsZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );				
 	}
 	
 	// http://developer.yahoo.com/maps/ajax
 	private static $mapTypes = array(
-					'normal' => 'YAHOO_MAP_REG',
-					'satellite' => 'YAHOO_MAP_SAT',
-					'hybrid' => 'YAHOO_MAP_HYB',
-					);
+		'normal' => 'YAHOO_MAP_REG',
+		'satellite' => 'YAHOO_MAP_SAT',
+		'hybrid' => 'YAHOO_MAP_HYB',
+	);
 	
 	/**
 	 * Returns the names of all supported map types.

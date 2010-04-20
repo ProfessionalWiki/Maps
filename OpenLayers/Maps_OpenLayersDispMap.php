@@ -18,16 +18,6 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
 	/**
-	 * @see MapsBaseMap::setMapSettings()
-	 */
-	protected function setMapSettings() {
-		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
-		
-		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;
-	}
-	
-	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 */
 	protected function doMapServiceLoad() {
@@ -43,23 +33,27 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
+		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
+		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
+
+		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
 		
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
 			wfMsg('maps-loading-map')
 		);
 		
-				$parser->getOutput()->addHeadItem(
+		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
-			'$this->mapName',
+			'$mapName',
 			$this->centreLon,
 			$this->centreLat,
 			$this->zoom,

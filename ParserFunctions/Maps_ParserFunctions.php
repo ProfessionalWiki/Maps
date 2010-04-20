@@ -24,8 +24,6 @@ $wgHooks['MappingFeatureLoad'][] = 'MapsParserFunctions::initialize';
  */
 final class MapsParserFunctions {
 	
-	public static $parameters = array();
-	
 	/**
 	 * Initialize the parser functions feature. This function handles the parser function hook,
 	 * and will load the required classes.
@@ -33,7 +31,7 @@ final class MapsParserFunctions {
 	public static function initialize() {
 		global $egMapsDir, $egMapsFeatures;
 		
-		include_once $egMapsDir . 'ParserFunctions/Maps_iDisplayFunction.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_iMapFeature.php';
 		
 		// This runs a small hook that enables parser functions to run initialization code.
 		foreach ( $egMapsFeatures['pf'] as $hook ) {
@@ -66,7 +64,7 @@ final class MapsParserFunctions {
 		foreach( $args as $arg ) {
 			$split = explode( '=', $arg );
 			$name = strtolower( trim( array_shift( $split ) ) );
-			if ( count( $split ) > 1 && self::inParamAliases( $name, 'service', self::$parameters ) ) {
+			if ( count( $split ) > 1 && self::inParamAliases( $name, 'service', MapsMapper::getCommonParameters() ) ) {
 				if ( !$setService ) {
 					$service = implode( '=', $split );
 					$parameters = 'service=' . $service;
@@ -90,7 +88,7 @@ final class MapsParserFunctions {
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
 		 */
-		$parameterInfo = array_merge( self::$parameters, $mapClass->getFeatureParameters() );
+		$parameterInfo = array_merge( MapsMapper::getCommonParameters(), $mapClass->getFeatureParameters() );
 		$parameterInfo = array_merge( $parameterInfo, $egMapsServices[$service]['parameters'] );
 		$parameterInfo = array_merge( $parameterInfo, $mapClass->getSpecificParameterInfo() ); 
 		

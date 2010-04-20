@@ -201,6 +201,49 @@ final class MapsMapper {
 	public static function geocoderIsAvailable() {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
+	}
+	
+	/**
+	 * This function returns the definitions for the parameters used by every map feature. 
+	 * 
+	 * @return array
+	 */	
+	public static function getCommonParameters() {
+		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
+		
+		return array(	
+			'service' => array(
+				'criteria' => array(
+					'in_array' => $egMapsAvailableServices
+				),		
+			),
+			'geoservice' => array(
+				'criteria' => array(
+					'in_array' => $egMapsAvailableGeoServices
+				),
+				'default' => $egMapsDefaultGeoService
+			),
+			'zoom' => array(
+				'type' => 'integer',
+				'criteria' => array(
+					'not_empty' => array()
+				)
+			),
+			'width' => array(
+				'criteria' => array(
+					'is_map_dimension' => array( 'width' ),
+				),
+				'default' => $egMapsMapWidth,
+				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
+			),
+			'height' => array(
+				'criteria' => array(
+					'is_map_dimension' => array( 'height' ),
+				),
+				'default' => $egMapsMapHeight,
+				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
+			),			
+		);
 	}	
 	
 }

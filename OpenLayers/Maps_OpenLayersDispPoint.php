@@ -22,19 +22,8 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
-	/**
-	 * @see MapsBaseMap::setMapSettings()
-	 *
-	 */
-	protected function setMapSettings() {
-		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
-		
-		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;
-		
-		$this->markerStringFormat = 'getOLMarkerData(lon, lat, \'title\', \'label\', "icon")';
-	}
-	
+	protected $markerStringFormat = 'getOLMarkerData(lon, lat, \'title\', \'label\', "icon")';
+
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
@@ -53,12 +42,16 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
+		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
+		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		
+		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
 		
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
 			wfMsg('maps-loading-map')
@@ -69,7 +62,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 addOnloadHook(
 	function() {
 		initOpenLayer(
-			'$this->mapName',
+			'$mapName',
 			$this->centreLon,
 			$this->centreLat,
 			$this->zoom,

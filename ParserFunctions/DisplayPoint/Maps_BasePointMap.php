@@ -21,11 +21,46 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Maps
  *
  * @author Jeroen De Dauw
+ * 
+ * TODO: fix zoom - should default to 'null' when no value given and multiple points
  */
-abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFunction {	
+abstract class MapsBasePointMap implements iMapFeature {	
+	
+	public $serviceName;
+	
+	protected $centreLat, $centreLon;
+
+	protected $output = '';
+
+	protected $spesificParameters = false;
+	protected $featureParameters = false;	
 	
 	private $markerData = array();
 	protected $markerString;
+	
+	/**
+	 * Sets the map properties as class fields.
+	 * 
+	 * @param array $mapProperties
+	 */
+	protected function setMapProperties( array $mapProperties ) {
+		foreach ( $mapProperties as $paramName => $paramValue ) {
+			if ( !property_exists( __CLASS__, $paramName ) ) {
+				$this-> { $paramName } = $paramValue;
+			}
+			else {
+				// If this happens in any way, it could be a big vunerability, so throw an exception.
+				throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
+			}
+		}
+	}	
+	
+	/**
+	 * @return array
+	 */
+	public function getSpecificParameterInfo() {
+		return array();
+	}	
 	
 	/**
 	 * @return array
@@ -33,36 +68,33 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	public function getFeatureParameters() {
 		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
-		return array_merge(
-			parent::getFeatureParameters(),
-			array(
-				'service' => array(	
-					'default' => $egMapsDefaultServices['display_point']
+		return array(
+			'service' => array(	
+				'default' => $egMapsDefaultServices['display_point']
+			),
+			'centre' => array(
+				'aliases' => array( 'center' ),
+			),
+			'title' => array(
+				'default' => $egMapsDefaultTitle
+			),
+			'label' => array(
+				'default' => $egMapsDefaultLabel
+			),
+			'icon' => array(
+				'criteria' => array(
+					'not_empty' => array()
+				)
+			),
+			'coordinates' => array(
+				'required' => true,
+				'type' => array( 'string', 'list', ';' ),
+				'aliases' => array( 'coords', 'location', 'locations' ),
+				'criteria' => array(
+					'are_locations' => array()
 				),
-				'centre' => array(
-					'aliases' => array( 'center' ),
-				),
-				'title' => array(
-					'default' => $egMapsDefaultTitle
-				),
-				'label' => array(
-					'default' => $egMapsDefaultLabel
-				),
-				'icon' => array(
-					'criteria' => array(
-						'not_empty' => array()
-					)
-				),
-				'coordinates' => array(
-					'required' => true,
-					'type' => array( 'string', 'list', ';' ),
-					'aliases' => array( 'coords', 'location', 'locations' ),
-					'criteria' => array(
-						'are_locations' => array()
-					),
-					'output-type' => 'coordinateSets', 
-				),					
-			)
+				'output-type' => 'coordinateSets', 
+			),					
 		);
 	}	
 	
@@ -75,45 +107,22 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	 * 
 	 * @return html
 	 */
-	public final function displayMap( Parser &$parser, array $params ) {
-		$this->setMapSettings();
-		
+	public final function displayMap( Parser &$parser, array $params ) {		
 		$this->featureParameters = MapsDisplayPoint::$parameters;
 	
 		$this->doMapServiceLoad();
 
-		parent::setMapProperties( $params, __CLASS__ );
-		
-		$this->setMapName();
+		$this->setMapProperties( $params );
 		
 		$this->setMarkerData( $parser );
 
 		$this->createMarkerString();
-		
-		$this->setZoom();
 		
 		$this->setCentre();
 		
 		$this->addSpecificMapHTML( $parser );
 		
 		return $this->output;
-	}
-	
-	/**
-	 * Sets the zoom level to the provided value. When no zoom is provided, set
-	 * it to the default when there is only one location, or the best fitting soom when
-	 * there are multiple locations.
-	 *
-	 */
-	private function setZoom() {
-		if ( strlen( $this->zoom ) < 1 ) {
-			if ( count( $this->markerData ) > 1 ) {
-		        $this->zoom = 'null';
-		    }
-		    else {
-		        $this->zoom = $this->defaultZoom;
-		    }
-		}
 	}
 	
 	/**

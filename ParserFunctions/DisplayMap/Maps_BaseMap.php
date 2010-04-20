@@ -22,7 +22,40 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  */
-abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
+abstract class MapsBaseMap implements iMapFeature {
+	
+	public $serviceName;
+	
+	protected $centreLat, $centreLon;
+
+	protected $output = '';
+
+	protected $spesificParameters = false;
+	protected $featureParameters = false;	
+	
+	/**
+	 * Sets the map properties as class fields.
+	 * 
+	 * @param array $mapProperties
+	 */
+	protected function setMapProperties( array $mapProperties ) {
+		foreach ( $mapProperties as $paramName => $paramValue ) {
+			if ( !property_exists( __CLASS__, $paramName ) ) {
+				$this-> { $paramName } = $paramValue;
+			}
+			else {
+				// If this happens in any way, it could be a big vunerability, so throw an exception.
+				throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
+			}
+		}
+	}	
+	
+	/**
+	 * @return array
+	 */
+	public function getSpecificParameterInfo() {
+		return array();
+	}	
 	
 	/**
 	 * @return array
@@ -30,21 +63,18 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	public function getFeatureParameters() {
 		global $egMapsDefaultServices;
 		
-		return array_merge(
-			parent::getFeatureParameters(),
-			array(
-				'service' => array(	
-					'default' => $egMapsDefaultServices['display_map']
+		return array(
+			'service' => array(	
+				'default' => $egMapsDefaultServices['display_map']
+			),
+			'coordinates' => array(
+				'required' => true,
+				'aliases' => array( 'coords', 'location', 'locations' ),
+				'criteria' => array(
+					'is_location' => array()
 				),
-				'coordinates' => array(
-					'required' => true,
-					'aliases' => array( 'coords', 'location', 'locations' ),
-					'criteria' => array(
-						'is_location' => array()
-					),
-					'output-type' => 'coordinateSet', 
-				),					
-			)
+				'output-type' => 'coordinateSet', 
+			),					
 		);
 	}
 	
@@ -58,33 +88,17 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 	 * @return html
 	 */
 	public final function displayMap( Parser &$parser, array $params ) {
-		$this->setMapSettings();
-		
 		$this->featureParameters = MapsDisplayMap::$parameters;
 		
 		$this->doMapServiceLoad();
 
-		parent::setMapProperties( $params, __CLASS__ );
-		
-		$this->setMapName();
-		
-		$this->setZoom();
+		$this->setMapProperties( $params );
 		
 		$this->setCentre();
 		
 		$this->addSpecificMapHTML( $parser );
 		
 		return $this->output;
-	}
-	
-	/**
-	 * Sets the zoom level to the provided value. When no zoom is provided, set
-	 * it to the default when there is only one location, or the best fitting soom when
-	 * there are multiple locations.
-	 *
-	 */
-	private function setZoom() {
-		if ( empty( $this->zoom ) ) $this->zoom = $this->defaultZoom;
 	}
 	
 	/**

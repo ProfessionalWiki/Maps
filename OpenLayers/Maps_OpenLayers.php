@@ -61,31 +61,31 @@ class MapsOpenLayers {
 	private static function initializeParams() {
 		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsOpenLayersZoom;
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 19 );
-		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-									'controls' => array(
-										'type' => array( 'string', 'list' ),
-										'criteria' => array(
-											'in_array' => self::getControlNames()
-											),
-										'default' => $egMapsOLControls,
-										'output-type' => array( 'list', ',', '\'' )
-										),
-									'layers' => array(
-										'type' => array( 'string', 'list' ),
-										'criteria' => array(
-											'in_array' => self::getLayerNames( true )
-											),
-										'default' => $egMapsOLLayers,
-										'output-types' => array(
-											'unique_items',
-											'olgroups',
-											array( 'filtered_array', self::getLayerNames() ),
-											)
-										),
-									);
+			'controls' => array(
+				'type' => array( 'string', 'list' ),
+				'criteria' => array(
+					'in_array' => self::getControlNames()
+				),
+				'default' => $egMapsOLControls,
+				'output-type' => array( 'list', ',', '\'' )
+			),
+			'layers' => array(
+				'type' => array( 'string', 'list' ),
+				'criteria' => array(
+					'in_array' => self::getLayerNames( true )
+				),
+				'default' => $egMapsOLLayers,
+				'output-types' => array(
+					'unique_items',
+					'olgroups',
+					array( 'filtered_array', self::getLayerNames() ),
+				)
+			),
+		);
+									
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsOpenLayersZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 19 );									
 	}
 	
 	/**
@@ -97,15 +97,15 @@ class MapsOpenLayers {
 	 */
 	public static function getControlNames() {
 		return array(
-					  'argparser', 'attribution', 'button', 'dragfeature', 'dragpan',
-	                  'drawfeature', 'editingtoolbar', 'getfeature', 'keyboarddefaults', 'layerswitcher',
-	                  'measure', 'modifyfeature', 'mousedefaults', 'mouseposition', 'mousetoolbar',
-	                  'navigation', 'navigationhistory', 'navtoolbar', 'overviewmap', 'pan',
-	                  'panel', 'panpanel', 'panzoom', 'panzoombar', 'autopanzoom', 'permalink',
-	                  'scale', 'scaleline', 'selectfeature', 'snapping', 'split',
-	                  'wmsgetfeatureinfo', 'zoombox', 'zoomin', 'zoomout', 'zoompanel',
-	                  'zoomtomaxextent'
-			);
+			'argparser', 'attribution', 'button', 'dragfeature', 'dragpan',
+			'drawfeature', 'editingtoolbar', 'getfeature', 'keyboarddefaults', 'layerswitcher',
+			'measure', 'modifyfeature', 'mousedefaults', 'mouseposition', 'mousetoolbar',
+			'navigation', 'navigationhistory', 'navtoolbar', 'overviewmap', 'pan',
+			'panel', 'panpanel', 'panzoom', 'panzoombar', 'autopanzoom', 'permalink',
+			'scale', 'scaleline', 'selectfeature', 'snapping', 'split',
+			'wmsgetfeatureinfo', 'zoombox', 'zoomin', 'zoomout', 'zoompanel',
+			'zoomtomaxextent'
+		);
 	}
 
 	/**

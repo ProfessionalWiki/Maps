@@ -22,18 +22,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
-	/**
-	 * @see MapsBaseMap::setFormInputSettings()
-	 *
-	 */
-	protected function setMapSettings() {
-		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
-		
-		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
-		$this->defaultZoom = $egMapsYahooMapsZoom;
-		
-		$this->markerStringFormat = 'getYMarkerData(lat, lon, \'title\', \'label\', "icon")';
-	}
+	protected $markerStringFormat = 'getYMarkerData(lat, lon, \'title\', \'label\', "icon")';
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
@@ -53,10 +42,14 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
+		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
+		
+		$mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
+		
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
 			wfMsg('maps-loading-map')
@@ -67,7 +60,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 addOnloadHook(
 	function() {
 		initializeYahooMap(
-			'$this->mapName',
+			'$mapName',
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,

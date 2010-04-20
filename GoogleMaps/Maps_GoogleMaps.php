@@ -64,9 +64,6 @@ class MapsGoogleMaps {
 		
 		$allowedTypes = self::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsGoogleMapsZoom;
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );
-		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
 			'controls' => array(
 				'type' => array( 'string', 'list' ),
@@ -100,6 +97,9 @@ class MapsGoogleMaps {
 				'output-type' => 'boolstr'
 			),
 		);
+		
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsGoogleMapsZoom;
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );		
 	}
 
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP

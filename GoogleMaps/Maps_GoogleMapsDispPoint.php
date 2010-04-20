@@ -24,6 +24,8 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 
+	protected $markerStringFormat = 'getGMarkerData(lat, lon, \'title\', \'label\', "icon")';	
+	
 	public function getSpecificParameterInfo() {
 		global $egMapsGMapOverlays;
 		// TODO: it'd be cool to have this static so it can be cheched in order to only init it once.
@@ -38,25 +40,11 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		);
 		return $this->spesificParameters;
 	}	
-	
-	/**
-	 * @see MapsBaseMap::setMapSettings()
-	 *
-	 */
-	protected function setMapSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
-		
-		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
-		$this->defaultZoom = $egMapsGoogleMapsZoom;
-		
-		$this->markerStringFormat = 'getGMarkerData(lat, lon, \'title\', \'label\', "icon")';
-	}
-	
+
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
 	 */
-	protected function doMapServiceLoad() {
+	public function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
 		MapsGoogleMaps::addGMapDependencies( $this->output );
@@ -67,18 +55,21 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
-	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
-		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
+		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
 		
+		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
+		
+		MapsGoogleMaps::addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
+
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 		
 		$parser->getOutput()->addHeadItem(
@@ -86,7 +77,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 				<<<EOT
 addOnloadHook(
 	function() {
-		initializeGoogleMap('$this->mapName', 
+		initializeGoogleMap('$mapName', 
 			{
 			lat: $this->centreLat,
 			lon: $this->centreLon,
