@@ -132,8 +132,6 @@ final class MapsGeoFunctions {
 	 * See http://mapping.referata.com/wiki/Finddestination
 	 * 
 	 * @param Parser $parser
-	 * 
-	 * FIXME: something here is going wrong - need to debug
 	 */	
 	public static function renderFindDestination( Parser &$parser ) {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
@@ -280,6 +278,8 @@ final class MapsGeoFunctions {
 	 * @param float $distance The distance to travel in km.
 	 * 
 	 * @return array The desitination coordinates, as non-directional floats in an array with lat and lon keys.
+	 * 
+	 * FIXME: something here is going wrong - need to debug
 	 */
 	public static function findDestination( array $startingCoordinates, $bearing, $distance ) {
 		$startingCoordinates['lat'] = (float)$startingCoordinates['lat'];

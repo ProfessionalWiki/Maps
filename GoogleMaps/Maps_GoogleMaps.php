@@ -68,62 +68,62 @@ class MapsGoogleMaps {
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
-				'controls' => array(
-					'type' => array( 'string', 'list' ),
-					'criteria' => array(
-						'in_array' => self::getControlNames()
-						),
-					'default' => $egMapsGMapControls,
-					'output-type' => array( 'list', ',', '\'' )
-					),
-				'type' => array(
-					'aliases' => array( 'map-type', 'map type' ),
-					'criteria' => array(
-						'in_array' => $allowedTypes
-						),
-					'default' => $egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
-					'output-type' => 'gmaptype'
-					),
-				'types' => array(
-					'type' => array( 'string', 'list' ),
-					'aliases' => array( 'map-types', 'map types' ),
-					'criteria' => array(
-						'in_array' => $allowedTypes
-						),
-					'default' => $egMapsGoogleMapsTypes,
-					'output-types' => array( 'gmaptypes', 'list' )
-					),
-				'autozoom' => array(
-					'type' => 'boolean',
-					'aliases' => array( 'auto zoom', 'mouse zoom', 'mousezoom' ),
-					'default' => $egMapsGoogleAutozoom,
-					'output-type' => 'boolstr'
-					),
-				);
+			'controls' => array(
+				'type' => array( 'string', 'list' ),
+				'criteria' => array(
+					'in_array' => self::getControlNames()
+				),
+				'default' => $egMapsGMapControls,
+				'output-type' => array( 'list', ',', '\'' )
+			),
+			'type' => array(
+				'aliases' => array( 'map-type', 'map type' ),
+				'criteria' => array(
+					'in_array' => $allowedTypes
+				),
+				'default' => $egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
+				'output-type' => 'gmaptype'
+			),
+			'types' => array(
+				'type' => array( 'string', 'list' ),
+				'aliases' => array( 'map-types', 'map types' ),
+				'criteria' => array(
+					'in_array' => $allowedTypes
+				),
+				'default' => $egMapsGoogleMapsTypes,
+				'output-types' => array( 'gmaptypes', 'list' )
+			),
+			'autozoom' => array(
+				'type' => 'boolean',
+				'aliases' => array( 'auto zoom', 'mouse zoom', 'mousezoom' ),
+				'default' => $egMapsGoogleAutozoom,
+				'output-type' => 'boolstr'
+			),
+		);
 	}
 
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
 	private static $mapTypes = array(
-					'normal' => 'G_NORMAL_MAP',
-					'satellite' => 'G_SATELLITE_MAP',
-					'hybrid' => 'G_HYBRID_MAP',
-					'terrain' => 'G_PHYSICAL_MAP',
-					'physical' => 'G_PHYSICAL_MAP',
-					'earth' => 'G_SATELLITE_3D_MAP',
-					'sky' => 'G_SKY_VISIBLE_MAP',
-					'moon' => 'G_MOON_VISIBLE_MAP',
-					'moon-elevation' => 'G_MOON_ELEVATION_MAP',
-					'mars' => 'G_MARS_VISIBLE_MAP',
-					'mars-elevation' => 'G_MARS_ELEVATION_MAP',
-					'mars-infrared' => 'G_MARS_INFRARED_MAP'
-					);
+		'normal' => 'G_NORMAL_MAP',
+		'satellite' => 'G_SATELLITE_MAP',
+		'hybrid' => 'G_HYBRID_MAP',
+		'terrain' => 'G_PHYSICAL_MAP',
+		'physical' => 'G_PHYSICAL_MAP',
+		'earth' => 'G_SATELLITE_3D_MAP',
+		'sky' => 'G_SKY_VISIBLE_MAP',
+		'moon' => 'G_MOON_VISIBLE_MAP',
+		'moon-elevation' => 'G_MOON_ELEVATION_MAP',
+		'mars' => 'G_MARS_VISIBLE_MAP',
+		'mars-elevation' => 'G_MARS_ELEVATION_MAP',
+		'mars-infrared' => 'G_MARS_INFRARED_MAP'
+	);
 
 	private static $overlayData = array(
-					'photos' => '0',
-					'videos' => '1',
-					'wikipedia' => '2',
-					'webcams' => '3'
-					);
+		'photos' => '0',
+		'videos' => '1',
+		'wikipedia' => '2',
+		'webcams' => '3'
+	);
 
 	/**
 	 * Returns the names of all supported map types.
@@ -145,7 +145,7 @@ class MapsGoogleMaps {
 		return array(
 			'auto', 'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu',
 			'overlays', 'overview', 'overview-map', 'scale', 'nav-label', 'nav'
-			);
+		);
 	}
 
 	/**
@@ -319,6 +319,8 @@ EOT;
 	 * Add CSS for the overlays. 
 	 * 
 	 * @param $output
+	 * 
+	 * TODO
 	 */
 	private static function addOverlayCss( &$output ) {
 		$css = <<<END

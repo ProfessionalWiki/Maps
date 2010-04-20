@@ -53,6 +53,15 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 						'not_empty' => array()
 					)
 				),
+				'coordinates' => array(
+					'required' => true,
+					'type' => array( 'string', 'list', ';' ),
+					'aliases' => array( 'coords', 'location', 'locations' ),
+					'criteria' => array(
+						'are_locations' => array()
+					),
+					'output-type' => 'coordinateSets', 
+				),					
 			)
 		);
 	}	
@@ -113,8 +122,6 @@ abstract class MapsBasePointMap extends MapsMapFeature implements iDisplayFuncti
 	 * @param unknown_type $parser
 	 */
 	private function setMarkerData( $parser ) {
-		$this->coordinates = explode( ';', $this->coordinates );
-		
 		$this->title = Xml::escapeJsString( $parser->recursiveTagParse( $this->title ) );
 		$this->label = Xml::escapeJsString( $parser->recursiveTagParse( $this->label ) );
 		

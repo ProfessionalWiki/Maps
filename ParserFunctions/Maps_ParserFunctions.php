@@ -79,8 +79,6 @@ final class MapsParserFunctions {
 		
 		$service = MapsMapper::getValidService( $setService ? $service : '', $parserFunction );
 		
-		// TODO: hook into Validator for main parameter validation, geocoding and coordinate parsing
-		
 		$mapClass = new $egMapsServices[$service]['features'][$parserFunction]();
 		
 		$manager = new ValidatorManager();
@@ -92,8 +90,7 @@ final class MapsParserFunctions {
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
 		 */
-		$parameterInfo = array_merge( MapsMapper::getMainParams(), self::$parameters );
-		$parameterInfo = array_merge( $parameterInfo, $mapClass->getFeatureParameters() );
+		$parameterInfo = array_merge( self::$parameters, $mapClass->getFeatureParameters() );
 		$parameterInfo = array_merge( $parameterInfo, $egMapsServices[$service]['parameters'] );
 		$parameterInfo = array_merge( $parameterInfo, $mapClass->getSpecificParameterInfo() ); 
 		

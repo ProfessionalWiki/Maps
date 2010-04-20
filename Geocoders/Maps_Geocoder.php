@@ -50,6 +50,16 @@ final class MapsGeocoder {
 	}
 	
 	/**
+	 * 
+	 * @param string $coordsOrAddress
+	 * 
+	 * @return boolean
+	 */
+	public static function isLocation( $coordsOrAddress ) {
+		return self::attemptToGeocode( $coordsOrAddress ) !== false;
+	}
+	
+	/**
 	 * Geocodes an address with the provided geocoding service and returns the result 
 	 * as a string with the optionally provided format, or false when the geocoding failed.
 	 * 

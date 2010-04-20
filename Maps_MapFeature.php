@@ -89,16 +89,9 @@ abstract class MapsMapFeature {
 	 * @return array
 	 */	
 	public function getFeatureParameters() {
-		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
 		
-		return array(
-			'coordinates' => array(
-				'aliases' => array( 'coords', 'location', 'locations' ),
-				'criteria' => array(
-					'is_location' => array()
-				),
-				'output-type' => 'format_coordinates', 
-			),		
+		return array(	
 			'service' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableServices
@@ -110,6 +103,26 @@ abstract class MapsMapFeature {
 				),
 				'default' => $egMapsDefaultGeoService
 			),
+			'zoom' => array(
+				'type' => 'integer',
+				'criteria' => array(
+					'not_empty' => array()
+				)
+			),
+			'width' => array(
+				'criteria' => array(
+					'is_map_dimension' => array( 'width' ),
+				),
+				'default' => $egMapsMapWidth,
+				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
+			),
+			'height' => array(
+				'criteria' => array(
+					'is_map_dimension' => array( 'height' ),
+				),
+				'default' => $egMapsMapHeight,
+				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
+			),			
 		);
 	}
 }

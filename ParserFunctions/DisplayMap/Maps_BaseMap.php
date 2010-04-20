@@ -35,7 +35,15 @@ abstract class MapsBaseMap extends MapsMapFeature implements iDisplayFunction {
 			array(
 				'service' => array(	
 					'default' => $egMapsDefaultServices['display_map']
-				)
+				),
+				'coordinates' => array(
+					'required' => true,
+					'aliases' => array( 'coords', 'location', 'locations' ),
+					'criteria' => array(
+						'is_location' => array()
+					),
+					'output-type' => 'coordinateSet', 
+				),					
 			)
 		);
 	}

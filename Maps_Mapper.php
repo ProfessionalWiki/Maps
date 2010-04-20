@@ -14,61 +14,51 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsMapper {
-
-	private static $mainParams;
 	
-	public static function initializeMainParams() {
+	public static function initialize() {
 		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
-		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
+		Validator::addValidationFunction( 'is_location', array( __CLASS__, 'isLocation' ) );
+		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );	
 
-		// Take care of maybe not having the geocoder available here.
-		// This is done by hooking a MapsGeocoder function that can handle addresses and coordinates,
-		// or one of MapsCoordinateParser, which only accepts coordinates.
-		if ( self::geocoderIsAvailable() ) {
-			$locationValidationFunction = array( 'MapsGeocoder', 'attemptToGeocodeToString' );
-			$locationFormattingFunction = array( __CLASS__, 'attemptToGeocodeToString' );
-		} else {
-			$locationValidationFunction = array( 'MapsCoordinateParser', 'areCoordinates' );		
-			$locationFormattingFunction = array( __CLASS__, 'parseAndFormat' );				
-		}
-
-		Validator::addValidationFunction( 'is_location', $locationValidationFunction );
-		Validator::addOutputFormat( 'format_coordinates', $locationFormattingFunction );	
-		
-		self::$mainParams = array(
-			'zoom' => array(
-				'type' => 'integer',
-				'criteria' => array(
-					'not_empty' => array()
-				)
-			),
-			'width' => array(
-				'criteria' => array(
-					'is_map_dimension' => array( 'width' ),
-				),
-				'default' => $egMapsMapWidth,
-				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
-			),
-			'height' => array(
-				'criteria' => array(
-					'is_map_dimension' => array( 'height' ),
-				),
-				'default' => $egMapsMapHeight,
-				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
-			),		
-		);
+		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
+		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
+		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );		
 	}
 	
-	/**
-	 * Returns the main parameters array.
-	 * 
-	 * @return array
-	 */
-	public static function getMainParams() {
-		return self::$mainParams;
-	}	
+	public static function isLocation( $location ) {
+		if ( self::geocoderIsAvailable() ) {
+			return MapsGeocoder::isLocation( $location );
+		} else {
+			return MapsCoordinateParser::areCoordinates( $location );
+		}
+	}
+	
+	public static function areLocations( $locations ) {
+		$locations = (array)$locations;
+		foreach( $locations as $location ) {
+			if ( !self::isLocation( $location ) ) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static function formatLocation( &$location ) {
+		if ( self::geocoderIsAvailable() ) {
+			$location = MapsGeocoder::attemptToGeocodeToString( $location );
+		} else {
+			$location = MapsCoordinateParser::parseAndFormat( $location );
+		}		
+	}
+	
+	public static function formatLocations( &$locations ) {
+		$locations = (array)$locations;
+		foreach( $locations as &$location ) {
+			self::formatLocation( $location );
+		}
+	}
 	
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
@@ -212,13 +202,5 @@ final class MapsMapper {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
 	}	
-
-	public static function attemptToGeocodeToString( &$value ) {
-		$value = MapsGeocoder::attemptToGeocodeToString( $value );
-	}
-	
-	public static function parseAndFormat( &$value ) {
-		$value = MapsCoordinateParser::parseAndFormat( $value );
-	}
 	
 }
