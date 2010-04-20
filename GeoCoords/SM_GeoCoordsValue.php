@@ -85,10 +85,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::parseDBkeys
 	 */
 	protected function parseDBkeys( $args ) {
-		list( $this->mCoordinateSet['lat'], $this->mCoordinateSet['lon'] ) = explode( ',', $args[0] );
+		$this->mCoordinateSet['lat'] = $args[0];
+		$this->mCoordinateSet['lon'] = $args[1];
 		
-		// TODO: parse coodinates to some notation, depending on a new setting
-		$this->m_caption = $this->mCoordinateSet['lat'] . ', ' . $this->mCoordinateSet['lon'];
+		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
 		$this->mWikivalue = $this->m_caption;
 	}
 	
@@ -97,21 +97,21 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */	
 	public function getDBkeys() {
 		$this->unstub();
-		return array( $this->mCoordinateSet['lat'] . ',' . $this->mCoordinateSet['lon'] );
+		return array( $this->mCoordinateSet['lat'], $this->mCoordinateSet['lon'] );
 	}	
 
 	/**
 	 * @see SMWDataValue::getShortWikiText
 	 * 
-	 * TODO: make the output here more readible (and iff possible informative)
+	 * TODO: make the output here more readible (and if possible informative)
 	 */
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
 			return '<span class="smwttinline">' . $this->m_caption . '<span class="smwttcontent">' .
-			        wfMsgForContent( 'maps-latitude' ) . ' ' . $this->mCoordinateSet['lat'] . '<br />' .
-			        wfMsgForContent( 'maps-longitude' ) . ' ' . $this->mCoordinateSet['lon'] .
-			        '</span></span>';
+		        wfMsgForContent( 'maps-latitude' ) . ' ' . $this->mCoordinateSet['lat'] . '<br />' .
+		        wfMsgForContent( 'maps-longitude' ) . ' ' . $this->mCoordinateSet['lon'] .
+		        '</span></span>';
 		} else {
 			return $this->m_caption;
 		}
@@ -132,8 +132,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
 		} else {
-			// TODO: parse coodinates to some notation, depending on a new setting
-			return $this->mCoordinateSet['lat'] . ', ' . $this->mCoordinateSet['lon'];
+			return MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
 		}
 	}
 
@@ -158,8 +157,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
-			// TODO: parse coodinates to some notation, depending on a new setting
-			$lit = new SMWExpLiteral( $this->mCoordinateSet['lat'] . ', ' . $this->mCoordinateSet['lon'], $this, 'http://www.w3.org/2001/XMLSchema#string' );
+			$lit = new SMWExpLiteral( 
+				MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet ),
+				$this,
+				'http://www.w3.org/2001/XMLSchema#string'
+			);
 			return new SMWExpData( $lit );
 		} else {
 			return null;
@@ -170,7 +172,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Create links to mapping services based on a wiki-editable message. The parameters
 	 * available to the message are:
 	 * 
-	 * 
+	 * @return array
 	 */
 	protected function getServiceLinkParams() {
 		return array(  ); // TODO

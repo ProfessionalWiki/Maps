@@ -52,33 +52,31 @@ abstract class SMFormInput extends MapsMapFeature {
 		
 		$this->setMapSettings();
 		
-		$this->featureParameters = SMFormInputs::$parameters;
+		parent::setMapProperties( $field_args, __CLASS__ );
 		
 		$this->doMapServiceLoad();
 		
 		$this->manageGeocoding();
 
-		if ( parent::manageMapProperties( $field_args, __CLASS__ ) ) {
-			$this->setCoordinates();
-			$this->setCentre();
-			$this->setZoom();
-			
-			// Create html element names.
-			$this->setMapName();
-			$this->mapName .= '_' . $sfgTabIndex;
-			$this->geocodeFieldName = $this->elementNamePrefix . '_geocode_' . $this->elementNr . '_' . $sfgTabIndex;
-			$this->coordsFieldName = $this->elementNamePrefix . '_coords_' . $this->elementNr . '_' . $sfgTabIndex;
-			$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
-	
-			// Create the non specific form HTML.
-			$this->output .= "
-			<input id='" . $this->coordsFieldName . "' name='$input_name' type='text' value='$this->startingCoords' size='40' tabindex='$sfgTabIndex'>
-			<span id='" . $this->infoFieldName . "' class='error_message'></span>";
-			
-			if ( $this->enableGeocoding ) $this->addGeocodingField();
-			
-			$this->addSpecificMapHTML( $wgParser );
-		}
+		$this->setCoordinates();
+		$this->setCentre();
+		$this->setZoom();
+		
+		// Create html element names.
+		$this->setMapName();
+		$this->mapName .= '_' . $sfgTabIndex;
+		$this->geocodeFieldName = $this->elementNamePrefix . '_geocode_' . $this->elementNr . '_' . $sfgTabIndex;
+		$this->coordsFieldName = $this->elementNamePrefix . '_coords_' . $this->elementNr . '_' . $sfgTabIndex;
+		$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
+
+		// Create the non specific form HTML.
+		$this->output .= "
+		<input id='" . $this->coordsFieldName . "' name='$input_name' type='text' value='$this->startingCoords' size='40' tabindex='$sfgTabIndex'>
+		<span id='" . $this->infoFieldName . "' class='error_message'></span>";
+		
+		if ( $this->enableGeocoding ) $this->addGeocodingField();
+		
+		$this->addSpecificMapHTML( $wgParser );
 		
 		return array( $this->output . $this->errorList, '' );
 	}

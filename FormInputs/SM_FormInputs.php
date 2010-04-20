@@ -57,35 +57,33 @@ final class SMFormInputs {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsDefaultCentre, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 		
 		self::$parameters = array(
 			'centre' => array(
 				'aliases' => array( 'center' ),
-				'default' => $egMapsDefaultCentre
-				),
+			),
 			'geoservice' => array(
 				'criteria' => array(
 					'in_array' => array_keys( $egMapsAvailableGeoServices )
-					),
-				'default' => $egMapsDefaultGeoService
 				),
+				'default' => $egMapsDefaultGeoService
+			),
 			'service_name' => array(),
 			'part_of_multiple' => array(),
 			'possible_values' => array(
 				'type' => array( 'string', 'array' ),
-				),
+			),
 			'is_list' => array(),
 			'semantic_property' => array(),
 			'value_labels' => array(),
-			);
+		);
 	}
 	
 	/**
 	 * Adds a mapping service's form hook.
 	 *
 	 * @param string $inputName The name of the form input.
-	 * @param array $fi
 	 * @param strig $mainName
 	 */
 	private static function initFormHook( $inputName, $mainName = '' ) {
@@ -102,10 +100,10 @@ final class SMFormInputs {
 /**
  * Calls the relevant form input class depending on the provided service.
  *
- * @param unknown_type $coordinates
- * @param unknown_type $input_name
- * @param unknown_type $is_mandatory
- * @param unknown_type $is_disabled
+ * @param string $coordinates
+ * @param string $input_name
+ * @param boolean $is_mandatory
+ * @param boolean $is_disabled
  * @param array $field_args
  * 
  * @return array

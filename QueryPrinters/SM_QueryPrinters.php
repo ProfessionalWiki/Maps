@@ -55,7 +55,7 @@ final class SMQueryPrinters {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsDefaultServices, $egMapsDefaultCentre, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		global $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate;
 
 		self::$parameters = array(
@@ -71,7 +71,6 @@ final class SMQueryPrinters {
 				),
 			'centre' => array(
 				'aliases' => array( 'center' ),
-				'default' => $egMapsDefaultCentre
 				),
 			'forceshow' => array(
 				'type' => 'boolean',

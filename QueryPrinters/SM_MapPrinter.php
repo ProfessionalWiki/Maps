@@ -125,7 +125,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
 		 */
-		$parameterInfo = array_merge( MapsMapper::getMainParams(), $this->featureParameters );
+		$parameterInfo = /* array_merge( MapsMapper::getMainParams(), */ $this->featureParameters /*)*/;
 		$parameterInfo = array_merge( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
 		$parameterInfo = array_merge( $parameterInfo, $this->spesificParameters );
 		
@@ -217,16 +217,17 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				}
 		
 				if ( $pr->getMode() == SMWPrintRequest::PRINT_PROP && $pr->getTypeID() == '_geo' ) {
-					$coords[] = explode( ',', $object->getXSDValue() );
+					$coords[] = $object->getDBkeys();
 				}
 			}
 		}
 		
 		foreach ( $coords as $coord ) {
-			if ( count( $coord ) == 2 ) {
-				list( $lat, $lon ) = $coord;
-
-				if ( strlen( $lat ) > 0 && strlen( $lon ) > 0 ) {
+			if ( count( $coord ) >= 2 ) {
+				$lat = $coord[0];
+				$lon = $coord[1];
+				
+				if ( $lat != '' && $lon != '' ) {
 					$icon = $this->getLocationIcon( $row );
 
 					if ( $this->template ) {
@@ -239,7 +240,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 					}
 
 					$this->m_locations[] = array(
-						// TODO: add escaping to title and label (they are getting escaped now on some place where they shouldn't)
 						Xml::escapeJsString( $lat ),
 						Xml::escapeJsString( $lon ),
 						Xml::escapeJsString( $title ),
