@@ -14,7 +14,7 @@ $magicWords['en'] = array(
 
 $magicWords['ar'] = array(
 	'display_map'       => array( '0', 'عرض_الخريطة', 'display_map' ),
-	'display_point'     => array( '0', 'نقطة_العرض', 'display_point', 'display_points' ),
+	'display_point'     => array( '0', 'نقطة_العرض', 'نقاط_العرض', 'display_point', 'display_points' ),
 	'geocode'           => array( '0', 'كود_جغرافي', 'geocode' ),
 	'geocodelat'        => array( '0', 'كود_جغرافي_طول', 'geocodelat' ),
 	'geocodelon'        => array( '0', 'كود_جغرافي_عرض', 'geocodelon' ),
