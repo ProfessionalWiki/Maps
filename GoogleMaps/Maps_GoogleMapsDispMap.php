@@ -24,9 +24,13 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
+	protected function getDefaultZoom() {
+		global $egMapsGoogleMapsZoom; 
+		return $egMapsGoogleMapsZoom;
+	}	
+	
 	public function getSpecificParameterInfo() {
 		global $egMapsGMapOverlays;
-		// TODO: it'd be cool to have this static so it can be cheched in order to only init it once.
 		$this->spesificParameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),

@@ -96,6 +96,10 @@ abstract class MapsBaseMap implements iMapFeature {
 		
 		$this->setCentre();
 		
+		if ( $this->zoom == 'null' ) {
+			$htis->zoom = $this->getDefaultZoom();
+		}		
+		
 		$this->addSpecificMapHTML( $parser );
 		
 		return $this->output;

@@ -60,7 +60,7 @@ class MapsGoogleMaps {
 	}
 	
 	private static function initializeParams() {
-		global $egMapsServices, $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGoogleMapsZoom, $egMapsGMapControls;
+		global $egMapsServices, $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
 		$allowedTypes = self::getTypeNames();
 		
@@ -98,7 +98,6 @@ class MapsGoogleMaps {
 			),
 		);
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsGoogleMapsZoom;
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );		
 	}
 

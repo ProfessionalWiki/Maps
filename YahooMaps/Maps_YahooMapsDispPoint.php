@@ -24,6 +24,11 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	
 	protected $markerStringFormat = 'getYMarkerData(lat, lon, \'title\', \'label\', "icon")';
 	
+	protected function getDefaultZoom() {
+		global $egMapsYahooMapsZoom; 
+		return $egMapsYahooMapsZoom;
+	}		
+	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *

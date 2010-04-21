@@ -7,6 +7,8 @@
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
+ * 
+ * TODO: revise this interface
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

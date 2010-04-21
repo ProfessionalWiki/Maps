@@ -17,6 +17,11 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
+	protected function getDefaultZoom() {
+		global $egMapsYahooMapsZoom; 
+		return $egMapsYahooMapsZoom;
+	}		
+	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 */

@@ -38,7 +38,7 @@ final class MapsGeocoder {
 	 * @return array or false
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
-		if ( $checkForCoords ) {			
+		if ( $checkForCoords ) {
 			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
 				return MapsCoordinateParser::parseCoordinates( $coordsOrAddress );
 			} else {
@@ -96,7 +96,7 @@ final class MapsGeocoder {
 		}
 		
 		$service = self::getValidGeoService( $service, $mappingService );
-		
+
 		// Call the geocode function in the spesific geocoder class.
 		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
 

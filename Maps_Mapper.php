@@ -227,7 +227,8 @@ final class MapsMapper {
 				'type' => 'integer',
 				'criteria' => array(
 					'not_empty' => array()
-				)
+				),
+				'default' => 'null'
 			),
 			'width' => array(
 				'criteria' => array(

@@ -26,6 +26,11 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 
 	protected $markerStringFormat = 'getGMarkerData(lat, lon, \'title\', \'label\', "icon")';	
 	
+	protected function getDefaultZoom() {
+		global $egMapsGoogleMapsZoom; 
+		return $egMapsGoogleMapsZoom;
+	}
+	
 	public function getSpecificParameterInfo() {
 		global $egMapsGMapOverlays;
 		// TODO: it'd be cool to have this static so it can be cheched in order to only init it once.

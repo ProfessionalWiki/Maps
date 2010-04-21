@@ -17,6 +17,11 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
+	protected function getDefaultZoom() {
+		global $egMapsOpenLayersZoom; 
+		return $egMapsOpenLayersZoom;
+	}		
+	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 */

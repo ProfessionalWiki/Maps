@@ -96,7 +96,6 @@ class MapsYahooMaps {
 			),
 		);
 				
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsYahooMapsZoom;
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );				
 	}
 	

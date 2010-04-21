@@ -21,8 +21,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Maps
  *
  * @author Jeroen De Dauw
- * 
- * TODO: fix zoom - should default to 'null' when no value given and multiple points
  */
 abstract class MapsBasePointMap implements iMapFeature {	
 	
@@ -119,6 +117,10 @@ abstract class MapsBasePointMap implements iMapFeature {
 		$this->createMarkerString();
 		
 		$this->setCentre();
+		
+		if ( count( $this->markerData ) <= 1 && $this->zoom == 'null' ) {
+			$this->zoom = $this->getDefaultZoom();
+		}
 		
 		$this->addSpecificMapHTML( $parser );
 		

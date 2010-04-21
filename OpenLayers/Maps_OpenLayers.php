@@ -84,7 +84,6 @@ class MapsOpenLayers {
 			),
 		);
 									
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['default'] = $egMapsOpenLayersZoom;
 		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 19 );									
 	}
 	

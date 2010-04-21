@@ -41,9 +41,6 @@ final class MapsParserFunctions {
 		return true;
 	}
 	
-	private static function initializeParams() {
-	}
-	
 	/**
 	 * Returns the output for the call to the specified parser function.
 	 * 
@@ -88,9 +85,9 @@ final class MapsParserFunctions {
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
 		 */
-		$parameterInfo = array_merge( MapsMapper::getCommonParameters(), $mapClass->getFeatureParameters() );
-		$parameterInfo = array_merge( $parameterInfo, $egMapsServices[$service]['parameters'] );
-		$parameterInfo = array_merge( $parameterInfo, $mapClass->getSpecificParameterInfo() ); 
+		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $mapClass->getFeatureParameters() );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$service]['parameters'] );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $mapClass->getSpecificParameterInfo() ); 
 		
 		$parameters = $manager->manageParameters(
 			$parameters,
