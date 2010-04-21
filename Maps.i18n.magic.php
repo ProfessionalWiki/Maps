@@ -13,11 +13,13 @@ $magicWords['en'] = array(
 );
 
 $magicWords['ar'] = array(
-	'display_point'       => array( '0', 'نقطة_العرض', 'display_point' ),
-	'display_points'      => array( '0', 'نقاط_العرض', 'display_points' ),
-	'geocode'             => array( '0', 'كود_جغرافي', 'geocode' ),
-	'geocodelat'          => array( '0', 'كود_جغرافي_طول', 'geocodelat' ),
-	'geocodelon'          => array( '0', 'كود_جغرافي_عرض', 'geocodelon' ),
+	'display_map'       => array( '0', 'عرض_الخريطة', 'display_map' ),
+	'display_point'     => array( '0', 'نقطة_العرض', 'display_point', 'display_points' ),
+	'geocode'           => array( '0', 'كود_جغرافي', 'geocode' ),
+	'geocodelat'        => array( '0', 'كود_جغرافي_طول', 'geocodelat' ),
+	'geocodelon'        => array( '0', 'كود_جغرافي_عرض', 'geocodelon' ),
+	'geodistance'       => array( '0', 'مسافة_جغرافية', 'geodistance' ),
+	'finddestination'   => array( '0', 'إيجاد_الوجهة', 'finddestination' ),
 );
 
 $magicWords['arz'] = array(
