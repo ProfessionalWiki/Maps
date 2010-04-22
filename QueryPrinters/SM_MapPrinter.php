@@ -54,10 +54,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected $m_locations = array();
 	
 	protected $defaultZoom;
-	protected $elementNr;
-	protected $elementNamePrefix;
-	
-	protected $mapName;
 	
 	protected $centreLat;
 	protected $centreLon;
@@ -68,7 +64,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected $mapFeature;
 	
 	protected $featureParameters = array();
-	protected $spesificParameters = array();
+	protected $spesificParameters = array();		
 	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
@@ -125,9 +121,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
 		 */
-		$parameterInfo = /* array_merge( MapsMapper::getMainParams(), */ $this->featureParameters /*)*/;
-		$parameterInfo = array_merge( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
-		$parameterInfo = array_merge( $parameterInfo, $this->spesificParameters );
+		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters ); 		
 		
 		$manager = new ValidatorManager();
 		
