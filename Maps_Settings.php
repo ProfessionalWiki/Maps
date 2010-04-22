@@ -29,37 +29,19 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
 
-include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php'; 				// Geocoders
-include_once $egMapsDir . 'ParserFunctions/Maps_ParserFunctions.php'; 	// Parser functions
-
-
-
-
-# Geocoding services configuration
-
-# Array of String. Array containing all the geocoding services that will be made available to the user.
-# Currently Maps provides the following services: geonames, google, yahoo
-$egMapsAvailableGeoServices = array(
-	'geonames',
-	'google',
-	'yahoo'
-);
-
-# String. The default geocoding service, which will be used when no service is provided by the user.
-# This service needs to be enabled, if not, the first one from the available services will be taken.
-$egMapsDefaultGeoService = 'geonames';
-
-$egMapsUserGeoOverrides = true;
+include_once $egMapsDir . 'Features/Maps_ParserFunctions.php'; 	// Parser functions
+include_once $egMapsDir . 'Features/DisplayMap/Maps_DisplayMap.php';		// #display_map	
+include_once $egMapsDir . 'Features/DisplayPoint/Maps_DisplayPoint.php';	// #display_point(s)
 
 
 
 # Include the parser functions that should be loaded into Maps.
 # Commenting or removing a parser functions will cause Maps to completely ignore it, and so improve performance.
-include_once $egMapsDir . 'ParserFunctions/DisplayMap/Maps_DisplayMap.php';		// #display_map	
-include_once $egMapsDir . 'ParserFunctions/DisplayPoint/Maps_DisplayPoint.php';	// #display_point(s)
+include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php'; 				// Geocoders
 include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';	// #geocode, #geocodelat, #geocodelon
 include_once $egMapsDir . 'ParserFunctions/Coordinates/Maps_Coordinates.php';	// #coordinates
 include_once $egMapsDir . 'ParserFunctions/GeoFunctions/Maps_GeoFunctions.php';	// #geodistance
+
 
 
 
@@ -69,11 +51,11 @@ include_once $egMapsDir . 'ParserFunctions/GeoFunctions/Maps_GeoFunctions.php';	
 
 # Include the mapping services that should be loaded into Maps. 
 # Commenting or removing a mapping service will cause Maps to completely ignore it, and so improve performance.
-include_once $egMapsDir . 'GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
-include_once $egMapsDir . 'GoogleMaps3/Maps_GoogleMaps3.php'; 	// Google Maps v3
-include_once $egMapsDir . 'OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
-include_once $egMapsDir . 'YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
-// include_once $egMapsDir . 'OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
+include_once $egMapsDir . 'Services/GoogleMaps/Maps_GoogleMaps.php'; 	// Google Maps
+include_once $egMapsDir . 'Services/GoogleMaps3/Maps_GoogleMaps3.php'; 	// Google Maps v3
+include_once $egMapsDir . 'Services/OpenLayers/Maps_OpenLayers.php'; 	// OpenLayers
+include_once $egMapsDir . 'Services/YahooMaps/Maps_YahooMaps.php'; 		// Yahoo! Maps
+// include_once $egMapsDir . 'Services/OpenStreetMap/Maps_OSM.php'; 		// OpenLayers optimized for OSM
 
 # Array of String. Array containing all the mapping services that will be made available to the user.
 # Currently Maps provides the following services: googlemaps, yahoomaps, openlayers
@@ -98,6 +80,23 @@ $egMapsDefaultServices = array(
 );
 
 
+
+
+# Geocoding services configuration
+
+# Array of String. Array containing all the geocoding services that will be made available to the user.
+# Currently Maps provides the following services: geonames, google, yahoo
+$egMapsAvailableGeoServices = array(
+	'geonames',
+	'google',
+	'yahoo'
+);
+
+# String. The default geocoding service, which will be used when no service is provided by the user.
+# This service needs to be enabled, if not, the first one from the available services will be taken.
+$egMapsDefaultGeoService = 'geonames';
+
+$egMapsUserGeoOverrides = true;
 
 
 
