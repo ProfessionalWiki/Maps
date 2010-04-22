@@ -13,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-abstract class SMFormInput extends MapsMapFeature {
+abstract class SMFormInput {
 
 	/**
 	 * Determine if geocoding will be enabled and load the required dependencies.
@@ -39,20 +39,57 @@ abstract class SMFormInput extends MapsMapFeature {
 	private $coordinates;
 	
 	/**
+	 * Validates and corrects the provided map properties, and the sets them as class fields.
+	 * 
+	 * @param array $mapProperties
+	 * 
+	 * @return boolean Indicates whether the map should be shown or not.
+	 */
+	protected final function setMapProperties( array $mapProperties ) {
+		global $egMapsServices;
+		
+		/*
+		 * Assembliy of the allowed parameters and their information. 
+		 * The main parameters (the ones that are shared by everything) are overidden
+		 * by the feature parameters (the ones spesific to a feature). The result is then
+		 * again overidden by the service parameters (the ones spesific to the service),
+		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
+		 * 
+		 * FIXME: this causes some wicket error?
+		 */
+		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters ); 		
+		
+		$manager = new ValidatorManager();
+		
+		$result = $manager->manageParameters( $mapProperties, $parameterInfo );
+		
+		$showMap = $result !== false;
+		
+		if ( $showMap ) $this->setMapProperties( $result, __CLASS__ );
+		
+		$this->errorList  = $manager->getErrorList();
+		
+		return $showMap;
+	}	
+	
+	/**
 	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
 	 * the form to handle coordinate data.
 	 * 
 	 * @return array
+	 * 
+	 * TODO: Use function args for sf stuffz
 	 */
 	public final function formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args ) {
 		global $wgParser, $sfgTabIndex;
-		// TODO: Use function args for sf stuffz
 
 		$this->coordinates = $coordinates;
 		
 		$this->setMapSettings();
 		
-		parent::setMapProperties( $field_args, __CLASS__ );
+		$this->setMapProperties( $field_args );
 		
 		$this->doMapServiceLoad();
 		

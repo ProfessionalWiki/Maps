@@ -36,9 +36,9 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
 					'is_google_overlay' => array()
-					),
-				'default' => $egMapsGMapOverlays,
 				),
+				'default' => $egMapsGMapOverlays,
+			),
 		);
 	}
 	

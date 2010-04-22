@@ -79,7 +79,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$this->featureParameters = SMQueryPrinters::$parameters;
 		
-		if ( self::manageMapProperties( $this->m_params, __CLASS__ ) ) {
+		if ( self::manageMapProperties( $this->m_params ) ) {
 			$this->formatResultData( $res, $outputmode );
 			
 			// Only create a map when there is at least one result.
@@ -107,11 +107,10 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * Validates and corrects the provided map properties, and the sets them as class fields.
 	 * 
 	 * @param array $mapProperties
-	 * @param string $className 
 	 * 
 	 * @return boolean Indicates whether the map should be shown or not.
 	 */
-	protected final function manageMapProperties( array $mapProperties, $className ) {
+	protected final function manageMapProperties( array $mapProperties ) {
 		global $egMapsServices;
 		
 		/*
@@ -131,7 +130,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$showMap = $result !== false;
 		
-		if ( $showMap ) $this->setMapProperties( $result, $className );
+		if ( $showMap ) $this->setMapProperties( $result, __CLASS__ );
 		
 		$this->errorList  = $manager->getErrorList();
 		
