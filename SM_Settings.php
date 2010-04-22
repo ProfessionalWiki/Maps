@@ -25,8 +25,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # (named) Array of String. This array contains the available features for Maps.
 # The array element name contains an abbriviation, used for code references,
 # and in the service data arrays, the value is the human readible version for displaying purpouses.
-include_once $smgDir . 'QueryPrinters/SM_QueryPrinters.php'; 	// Query printers
-include_once $smgDir . 'FormInputs/SM_FormInputs.php'; 			// Form imputs							
+include_once $smgDir . 'Features/QueryPrinters/SM_QueryPrinters.php'; 	// Query printers
+include_once $smgDir . 'Features/FormInputs/SM_FormInputs.php'; 			// Form imputs							
+
+# Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
+# Each service needs to be enabled, if not, the first one from the available services will be taken.
+# Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
+$egMapsDefaultServices['qp'] = 'googlemaps2';
+$egMapsDefaultServices['fi'] = 'googlemaps2';
 
 
 
@@ -36,16 +42,12 @@ include_once $smgDir . 'FormInputs/SM_FormInputs.php'; 			// Form imputs
 
 # Include the mapping services that should be loaded into Semantic Maps. 
 # Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
-include_once $smgDir . 'GoogleMaps/SM_GoogleMaps.php'; 	// Google Maps
-include_once $smgDir . 'OpenLayers/SM_OpenLayers.php'; 	// OpenLayers
-include_once $smgDir . 'YahooMaps/SM_YahooMaps.php'; 	// Yahoo! Maps
-// include_once $smgDir . 'OpenStreetMap/SM_OSM.php'; 		// OpenLayers optimized for OSM
+include_once $smgDir . 'Services/GoogleMaps/SM_GoogleMaps.php'; 	// Google Maps
+include_once $smgDir . 'Services/OpenLayers/SM_OpenLayers.php'; 	// OpenLayers
+include_once $smgDir . 'Services/YahooMaps/SM_YahooMaps.php'; 	// Yahoo! Maps
+// include_once $smgDir . 'Services/OpenStreetMap/SM_OSM.php'; 		// OpenLayers optimized for OSM
 
-# Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
-# Each service needs to be enabled, if not, the first one from the available services will be taken.
-# Note: The default service needs to be available for the feature you set it for, since it's used as a fallback mechanism.
-$egMapsDefaultServices['qp'] = 'googlemaps2';
-$egMapsDefaultServices['fi'] = 'googlemaps2';
+
 
 
 
