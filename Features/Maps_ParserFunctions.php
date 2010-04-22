@@ -61,10 +61,10 @@ final class MapsParserFunctions {
 		foreach( $args as $arg ) {
 			$split = explode( '=', $arg );
 			$name = strtolower( trim( array_shift( $split ) ) );
-			if ( count( $split ) > 1 && self::inParamAliases( $name, 'service', MapsMapper::getCommonParameters() ) ) {
+			if ( count( $split ) > 0 && self::inParamAliases( $name, 'service', MapsMapper::getCommonParameters() ) ) {
 				if ( !$setService ) {
 					$service = implode( '=', $split );
-					$parameters = 'service=' . $service;
+					$parameters[] = 'service=' . $service;
 					$setService = true;					
 				}
 			} else {
@@ -73,7 +73,6 @@ final class MapsParserFunctions {
 		}
 		
 		$service = MapsMapper::getValidService( $setService ? $service : '', $parserFunction );
-		
 		$mapClass = new $egMapsServices[$service]['features'][$parserFunction]();
 		
 		$manager = new ValidatorManager();
