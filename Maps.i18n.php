@@ -75,6 +75,8 @@ $messages['qqq'] = array(
 
 * $1: a list of available map services',
 	'maps_map' => '{{Identical|Map}}',
+	'maps-latitude' => '{{Identical|Latitude}}',
+	'maps-longitude' => '{{Identical|Longitude}}',
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
 	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
@@ -139,11 +141,25 @@ $1',
 	'maps_webcams' => 'كاميرات الويب',
 );
 
+/** Aramaic (ܐܪܡܝܐ) */
+$messages['arc'] = array(
+	'maps-abb-north' => 'ܓܪܒܝܐ',
+	'maps-abb-east' => 'ܡܕܢܚܐ',
+	'maps-abb-south' => 'ܬܝܡܢܐ',
+	'maps-abb-west' => 'ܡܥܪܒܐ',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Meno25
  */
 $messages['arz'] = array(
 	'maps_name' => 'خرايط',
+	'maps-abb-north' => 'شمال',
+	'maps-abb-east' => 'شرق',
+	'maps-abb-south' => 'جنوب',
+	'maps-abb-west' => 'غرب',
+	'maps-latitude' => 'دوائر العرض:',
+	'maps-longitude' => 'خطوط الطول:',
 	'maps_googlemaps2' => 'خرايط جوجل',
 	'maps_yahoomaps' => 'خرايط ياهو',
 );
@@ -187,6 +203,10 @@ $1',
  */
 $messages['bg'] = array(
 	'maps_map' => 'Карта',
+	'maps-abb-north' => 'С',
+	'maps-abb-east' => 'И',
+	'maps-abb-south' => 'Ю',
+	'maps-abb-west' => 'З',
 	'maps_photos' => 'Снимки',
 	'maps_wikipedia' => 'Уикипедия',
 	'maps_webcams' => 'Уебкамери',
@@ -264,6 +284,12 @@ $1',
  */
 $messages['ca'] = array(
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitud:',
+	'maps-longitude' => 'Longitud:',
 	'maps_coordinates_missing' => "No s'han proporcionat coordenades pel mapa.",
 	'maps_centred_on' => 'Mapa centrat en $1, $2.',
 	'maps_overlays' => 'Capes addicionals',
@@ -277,6 +303,12 @@ $messages['ca'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'maps-abb-north' => 'S',
+	'maps-abb-east' => 'V',
+	'maps-abb-south' => 'J',
+	'maps-abb-west' => 'Z',
+	'maps-latitude' => 'Zeměpisná šířka:',
+	'maps-longitude' => 'Zeměpisná délka:',
 	'maps_overlays' => 'Překryvné vrstvy',
 );
 
@@ -315,6 +347,11 @@ $1',
 	'maps_webcams' => 'Webcams',
 );
 
+/** German (formal address) (Deutsch (Sie-Form)) */
+$messages['de-formal'] = array(
+	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Ihr Standort kann nicht geokodiert werden.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -351,16 +388,46 @@ K dispoziciji stojece kórtowe słužby: $1',
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'maps-abb-north' => 'Β',
+	'maps-abb-east' => 'Α',
+	'maps-abb-south' => 'Ν',
+	'maps-abb-west' => 'Δ',
+	'maps-latitude' => 'Γεωγραφικό πλάτος:',
+	'maps-longitude' => 'Γεωγραφικό μήκος:',
 	'maps_coordinates_missing' => 'Καμία συντεταγμένη δεν παρασχέθηκε για τον χάρτη.',
 	'maps_photos' => 'Φωτογραφίες',
 	'maps_videos' => 'Βίντεο',
 	'maps_wikipedia' => 'Βικιπαίδεια',
 );
 
+/** British English (British English)
+ * @author Bruce89
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'maps_desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Available mapping services: $1',
+	'maps_map' => 'Map',
+	'maps_coordinates_missing' => 'No coordinates provided for the map.',
+	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.',
+	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
+$1',
+	'maps_unrecognized_coords' => 'The following coordinates were not recognised: $1.',
+	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised and {{PLURAL:$2|has|have}} been omitted from the map:
+$1',
+	'maps_centred_on' => 'Map centred on $1, $2.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'U',
+	'maps-latitude' => 'Latitudo:',
+	'maps-longitude' => 'Longitudo:',
 	'maps_map_cannot_be_displayed' => 'La mapo ne esti montrebla.',
 	'maps_click_to_activate' => 'Klaku aktivigi mapon',
 	'maps_photos' => 'Fotoj',
@@ -408,6 +475,12 @@ No se puede mostrar el mapa.',
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'maps-abb-north' => 'I',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'H',
+	'maps-abb-west' => 'M',
+	'maps-latitude' => 'Latitudea:',
+	'maps-longitude' => 'Longitudea:',
 	'maps_coordinates_missing' => 'Ez dago koordenaturik maparentzat.',
 );
 
@@ -484,6 +557,16 @@ $1",
 	'maps_webcams' => 'Webcams',
 );
 
+/** Franco-Provençal (Arpetan) */
+$messages['frp'] = array(
+	'maps-abb-north' => 'B',
+	'maps-abb-east' => 'L',
+	'maps-abb-south' => 'M',
+	'maps-abb-west' => 'P',
+	'maps-latitude' => 'Latituda :',
+	'maps-longitude' => 'Longituda :',
+);
+
 /** Friulian (Furlan)
  * @author Klenje
  */
@@ -530,6 +613,16 @@ $1',
 	'maps_videos' => 'Vídeos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Cámaras web',
+);
+
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
+$messages['grc'] = array(
+	'maps-abb-north' => 'Β',
+	'maps-abb-east' => 'Α',
+	'maps-abb-south' => 'Ν',
+	'maps-abb-west' => 'Δ',
+	'maps-latitude' => 'Πλάτος γεωγραφικόν:',
+	'maps-longitude' => 'Μῆκος γεωγραφικόν:',
 );
 
 /** Swiss German (Alemannisch)
@@ -593,6 +686,16 @@ $1',
 	'maps_webcams' => 'מצלמות אינטרנט',
 );
 
+/** Hindi (हिन्दी) */
+$messages['hi'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'अक्षांश:',
+	'maps-longitude' => 'रेखांश:',
+);
+
 /** Croatian (Hrvatski)
  * @author Ex13
  */
@@ -634,6 +737,14 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_videos' => 'Wideja',
 	'maps_wikipedia' => 'Wikipedija',
 	'maps_webcams' => 'Webcamy',
+);
+
+/** Haitian (Kreyòl ayisyen) */
+$messages['ht'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
 );
 
 /** Hungarian (Magyar)
@@ -789,12 +900,32 @@ $1',
 	'maps_webcams' => 'ウェブカメラ',
 );
 
+/** Javanese (Basa Jawa) */
+$messages['jv'] = array(
+	'maps-abb-north' => 'L',
+	'maps-abb-east' => 'W',
+	'maps-abb-south' => 'Kdl',
+	'maps-abb-west' => 'Kln',
+	'maps-latitude' => 'Latituda:',
+	'maps-longitude' => 'Longituda:',
+);
+
 /** Georgian (ქართული)
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'maps_map' => 'რუკა',
 	'maps_videos' => 'ვიდეოები',
+);
+
+/** Khmer (ភាសាខ្មែរ) */
+$messages['km'] = array(
+	'maps-abb-north' => 'ជ',
+	'maps-abb-east' => 'ក',
+	'maps-abb-south' => 'ត្ប',
+	'maps-abb-west' => 'ល',
+	'maps-latitude' => 'រយះទទឹង៖',
+	'maps-longitude' => 'រយះបណ្តោយ៖',
 );
 
 /** Kannada (ಕನ್ನಡ)
@@ -900,6 +1031,43 @@ $1',
 	'maps_videos' => 'Видеа',
 	'maps_wikipedia' => 'Википедија',
 	'maps_webcams' => 'Веб-камери',
+);
+
+/** Malayalam (മലയാളം) */
+$messages['ml'] = array(
+	'maps-abb-north' => 'വടക്ക്',
+	'maps-abb-east' => 'കിഴക്ക്',
+	'maps-abb-south' => 'തെക്ക്',
+	'maps-abb-west' => 'പടിഞ്ഞാറ്‌',
+	'maps-latitude' => 'അക്ഷാംശം:',
+	'maps-longitude' => 'രേഖാംശം:',
+);
+
+/** Marathi (मराठी) */
+$messages['mr'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'अक्षांश:',
+	'maps-longitude' => 'रेखांश:',
+);
+
+/** Erzya (Эрзянь) */
+$messages['myv'] = array(
+	'maps-abb-north' => 'Веньэльйонкс',
+	'maps-abb-east' => 'Чилисемайонкс',
+	'maps-abb-south' => 'Чиньэльйонкс',
+	'maps-abb-west' => 'Чивалгомайонкс',
+	'maps-latitude' => 'Келезэ:',
+	'maps-longitude' => 'Кувалмозо:',
+);
+
+/** Nahuatl (Nāhuatl) */
+$messages['nah'] = array(
+	'maps-abb-north' => 'M',
+	'maps-abb-east' => 'T',
+	'maps-abb-south' => 'H',
 );
 
 /** Dutch (Nederlands)
@@ -1024,6 +1192,13 @@ $1',
 	'maps_videos' => 'Vidèos',
 	'maps_wikipedia' => 'Wikipèdia',
 	'maps_webcams' => 'Webcams',
+);
+
+/** Deitsch (Deitsch) */
+$messages['pdc'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
 );
 
 /** Polish (Polski)
@@ -1165,6 +1340,12 @@ $messages['ro'] = array(
 	'maps_desc' => 'Asigură capacitatea de a afişa coordonate pe hărţi şi adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstraţie]).
 Servici de cartografiere disponibile: $1',
 	'maps_map' => 'Hartă',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'V',
+	'maps-latitude' => 'Latitudine:',
+	'maps-longitude' => 'Longitudine:',
 	'maps_coordinates_missing' => 'Nici o coordonată oferită pentru hartă.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}}: $1.
 Harta nu poate fi afişată.',
@@ -1226,9 +1407,35 @@ $messages['sk'] = array(
 	'maps_desc' => 'Poskytuje možnosť zobrazovať údaje súradníc na mapách a tvoriť geografické adresy lokalít ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostupné mapovacie služby: $1',
 	'maps_map' => 'Mapa',
+	'maps-abb-north' => 'S',
+	'maps-abb-east' => 'V',
+	'maps-abb-south' => 'J',
+	'maps-abb-west' => 'Z',
+	'maps-latitude' => 'Zem. dĺžka:',
+	'maps-longitude' => 'Zem. šírka:',
 	'maps_coordinates_missing' => 'Neboli poskytnuté žiadne súradnice.',
 	'maps_geocoding_failed' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}}: $1.',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$messages['sr-ec'] = array(
+	'maps-abb-north' => 'С',
+	'maps-abb-east' => 'И',
+	'maps-abb-south' => 'Ј',
+	'maps-abb-west' => 'З',
+	'maps-latitude' => 'Географска ширина:',
+	'maps-longitude' => 'Географска дужина:',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'maps-abb-north' => 'S',
+	'maps-abb-east' => 'I',
+	'maps-abb-south' => 'J',
+	'maps-abb-west' => 'Z',
+	'maps-latitude' => 'Geografska širina:',
+	'maps-longitude' => 'Geografska dužina:',
 );
 
 /** Swedish (Svenska)
@@ -1263,6 +1470,12 @@ $1',
  */
 $messages['te'] = array(
 	'maps_map' => 'పటం',
+	'maps-abb-north' => 'ఉ',
+	'maps-abb-east' => 'తూ',
+	'maps-abb-south' => 'ద',
+	'maps-abb-west' => 'ప',
+	'maps-latitude' => 'అక్షాంశం:',
+	'maps-longitude' => 'రేఖాంశం:',
 	'maps_photos' => 'చిత్రాలు',
 	'maps_videos' => 'దృశ్యకాలు',
 	'maps_wikipedia' => 'వికీపీడియా',
@@ -1275,6 +1488,16 @@ $messages['th'] = array(
 	'maps_desc' => 'ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://wiki.bn2vs.com/wiki/Maps demo]).
 <br />บริการแผนที่ที่มีอยู่: $1',
 	'maps_coordinates_missing' => 'ไม่ได้กำหนดพิกัดของแผนที่มาให้',
+);
+
+/** Tagalog (Tagalog) */
+$messages['tl'] = array(
+	'maps-abb-north' => 'H',
+	'maps-abb-east' => 'S',
+	'maps-abb-south' => 'T',
+	'maps-abb-west' => 'K',
+	'maps-latitude' => 'Latitud:',
+	'maps-longitude' => 'Longhitud:',
 );
 
 /** Turkish (Türkçe)
@@ -1298,6 +1521,16 @@ $messages['tr'] = array(
 	'maps_videos' => 'Videolar',
 	'maps_wikipedia' => 'Vikipedi',
 	'maps_webcams' => 'Web kameraları',
+);
+
+/** Veps (Vepsan kel') */
+$messages['vep'] = array(
+	'maps-abb-north' => 'Pohj.',
+	'maps-abb-east' => 'Päivl.',
+	'maps-abb-south' => 'Suvi',
+	'maps-abb-west' => 'Päivn.',
+	'maps-latitude' => 'Leveduz:',
+	'maps-longitude' => 'Piduz:',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -1332,5 +1565,51 @@ $1',
 	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcam',
+);
+
+/** Volapük (Volapük) */
+$messages['vo'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'L',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'V',
+	'maps-latitude' => 'Videt:',
+	'maps-longitude' => 'Lunet:',
+);
+
+/** Chinese (China) (‪中文(中国大陆)‬) */
+$messages['zh-cn'] = array(
+	'maps-latitude' => '纬度：',
+	'maps-longitude' => '经度：',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'maps-abb-north' => '北',
+	'maps-abb-east' => '东',
+	'maps-abb-south' => '南',
+	'maps-abb-west' => '西',
+	'maps-latitude' => '纬度：',
+	'maps-longitude' => '经度：',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'maps-abb-north' => '北',
+	'maps-abb-east' => '東',
+	'maps-abb-south' => '南',
+	'maps-abb-west' => '西',
+	'maps-latitude' => '緯度：',
+	'maps-longitude' => '經度：',
+);
+
+/** Chinese (Taiwan) (‪中文(台灣)‬) */
+$messages['zh-tw'] = array(
+	'maps-abb-north' => '北',
+	'maps-abb-east' => '東',
+	'maps-abb-south' => '南',
+	'maps-abb-west' => '西',
+	'maps-latitude' => '緯度：',
+	'maps-longitude' => '經度：',
 );
 
