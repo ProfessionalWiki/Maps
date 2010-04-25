@@ -706,7 +706,7 @@ Sërvissi ëd mapa disponìbij: $1',
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'semanticmaps_desc' => 'Permite visualizar e editar dados de coordenadas, armazenados através da extensão Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demonstração]).
+	'semanticmaps_desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([http://wiki.bn2vs.com/wiki/Semantic_Maps demonstração]).
 Serviços de cartografia disponíveis: $1',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
