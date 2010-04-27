@@ -856,15 +856,35 @@ $messages['ig'] = array(
 	'maps_wikipedia' => 'Wikipedia',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Civvì
+ */
 $messages['it'] = array(
+	'maps_desc' => "Fornisce la possibilità di visualizzare i dati di coordinate su mappe e la geocodifica di indirizzi ([http://wiki.bn2vs.com/wiki/Demo dell'estensione Maps]).
+Servizi di cartografia disponibili: $1",
+	'maps_map' => 'Mappa',
+	'maps-loading-map' => 'Caricamento mappa ...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Latitudine:',
 	'maps-longitude' => 'Longitudine:',
+	'maps-invalid-coordinates' => 'Il valore $1 non è stato riconosciuto come un set di coordinate valido.',
+	'maps_coordinates_missing' => 'Non sono state fornite coordinate per la mappa',
+	'maps_geocoding_failed' => 'Non è stato possibile effettuare la geocodifica per {{PLURAL:$2|il seguente indirizzo|i seguenti indirizzi}}: $1.',
+	'maps_geocoding_failed_for' => 'Non è stato possibile effettuare la geocodifica {{PLURAL:$2|del seguente indirizzo|dei seguenti indirizzi}} che {{PLURAL:$2|è stato omesso|sono stati omessi}} dalla mappa: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|La seguente coordinata|Le seguenti coordinate}} non sono state riconosciute: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La seguente coordinata|Le seguenti coordinate}} {{PLURAL:$2|non è stata riconosciuta ed è stata omessa|non sono state riconosciute e sono state omesse}} dalla mappa: $1.',
+	'maps_map_cannot_be_displayed' => 'La mappa non può essere visualizzata.',
+	'maps-geocoder-not-available' => "La funzionalità di geocodifica dell'estensione Maps non è disponibile. La tua posizione non può essere geocodificata.",
+	'maps_click_to_activate' => 'Clicca per attivare la mappa.',
+	'maps_centred_on' => 'Mappa centrata su $1, $2.',
+	'maps_overlays' => 'Overlay',
+	'maps_photos' => 'Foto',
+	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webcam',
 );
 
 /** Japanese (日本語)
