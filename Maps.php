@@ -1,21 +1,21 @@
 <?php
 
-/**  
+/**
  * Initialization file for the Maps extension.
  * Extension documentation: http://www.mediawiki.org/wiki/Extension:Maps
  *
  * @file Maps.php
  * @ingroup Maps
- * 
+ *
  * @author Jeroen De Dauw
  */
 
 /**
  * This documenation group collects source code files belonging to Maps.
  *
- * Please do not use this group name for other code. If you have an extension to 
+ * Please do not use this group name for other code. If you have an extension to
  * Maps, please use your own group defenition.
- *  
+ *
  * @defgroup Maps Maps
  */
 
@@ -33,41 +33,41 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 a17' );
-	
+	define( 'Maps_VERSION', '0.6 a18' );
+
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
 	define( 'Maps_COORDS_DMS', 'dms' );
 	define( 'Maps_COORDS_DM', 'dm' );
 	define( 'Maps_COORDS_DD', 'dd' );
-	
+
 	// The symbols to use for degrees, minutes and seconds.
 	define( 'Maps_GEO_DEG', '°' );
 	define( 'Maps_GEO_MIN', "'" );
-	define( 'Maps_GEO_SEC', '"' );		
-	
+	define( 'Maps_GEO_SEC', '"' );
+
 	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
-	
+
 	// To ensure Maps remains compatible with pre 1.16.
 	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
 		$wgAutoloadClasses['Html'] = $egMapsDir . 'Compat/Html.php';
 	}
-	
-	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;		
-	
+
+	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
+
 	$egMapsFeatures = array();
-	$egMapsServices = array();	
-	
+	$egMapsServices = array();
+
 	// Include the settings file.
 	require_once( $egMapsDir . 'Maps_Settings.php' );
-	
+
 	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
-	
+
 	if( version_compare( $wgVersion, '1.16alpha', '>=' ) ) {
-		$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.magic.php';	
-	} 
-	
+		$wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
+	}
+
 	// Register the initialization function of Maps.
 	$wgExtensionFunctions[] = 'efMapsSetup';
 
@@ -80,31 +80,31 @@ else {
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP, $wgStyleVersion, $wgScriptPath,  $wgJsMimeType, $wgExtensionAssetsPath;
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsScriptPath;
-	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;	
-	
+	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;
+
 	// Autoload the general classes
-	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';	
-	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';	
-	
+	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';
+	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';
+
 	wfLoadExtensionMessages( 'Maps' );
 
 	wfRunHooks( 'MappingFeatureLoad' );
 	wfRunHooks( 'MappingServiceLoad' );
-	
+
 	// Remove all hooked in services that should not be available.
 	foreach ( $egMapsServices as $service => $data ) {
 		if ( ! in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
 	}
 	$egMapsAvailableServices = array_keys( $egMapsServices );
-	
+
 	// Enure that the default service is one of the enabled ones.
-	$egMapsDefaultService = in_array( $egMapsDefaultService, $egMapsAvailableServices ) ? $egMapsDefaultService : $egMapsAvailableServices[0];	
-	
+	$egMapsDefaultService = in_array( $egMapsDefaultService, $egMapsAvailableServices ) ? $egMapsDefaultService : $egMapsAvailableServices[0];
+
 	// Creation of a list of internationalized service names.
 	$services = array();
 	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
 	$services_list = $wgLang->listToText( $services );
-	
+
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,
 		'name' => wfMsg( 'maps_name' ),
@@ -119,9 +119,9 @@ function efMapsSetup() {
 	);
 
 	MapsMapper::initialize();
-	
+
 	$egMapsJsExt = $egMapsUseMinJs ? '.min.js' : '.js';
-	
+
 	return true;
 }
 
@@ -130,11 +130,11 @@ function efMapsSetup() {
  */
 function efMapsAddToAdminLinks( &$admin_links_tree ) {
     $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
-    
+
     // Escape if SMW hasn't added links.
     if ( is_null( $displaying_data_section ) ) return true;
     $smw_docu_row = $displaying_data_section->getRow( 'smw' );
-    
+
     $maps_docu_label = wfMsg( 'adminlinks_documentation', wfMsg( 'maps_name' ) );
     $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://www.mediawiki.org/wiki/Extension:Maps', $maps_docu_label ) );
 
