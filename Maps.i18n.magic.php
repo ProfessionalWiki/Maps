@@ -10,6 +10,7 @@ $magicWords['en'] = array(
 	'geocodelon'        => array( 0, 'geocodelon' ),
 	'geodistance'       => array( 0, 'geodistance' ),
 	'finddestination'   => array( 0, 'finddestination' ),
+	'coordinates'       => array( 0, 'coordinates' ),
 );
 
 $magicWords['ar'] = array(
