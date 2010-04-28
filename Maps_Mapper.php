@@ -204,6 +204,24 @@ final class MapsMapper {
 	}
 	
 	/**
+	 * Returns an array containing all the possible values for the service parameter, including aliases.
+	 * 
+	 * @return array
+	 */
+	public static function getAllServiceValues() {
+		global $egMapsAvailableServices, $egMapsServices;
+		
+		$allServiceValues = array();
+		
+		foreach( $egMapsAvailableServices as $availableService ) {
+			$allServiceValues[] = $availableService;
+			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]['aliases'] );
+		}
+		
+		return $allServiceValues;
+	}
+	
+	/**
 	 * This function returns the definitions for the parameters used by every map feature. 
 	 * 
 	 * @return array
@@ -214,7 +232,7 @@ final class MapsMapper {
 		return array(	
 			'service' => array(
 				'criteria' => array(
-					'in_array' => $egMapsAvailableServices
+					'in_array' => self::getAllServiceValues()
 				),		
 			),
 			'geoservice' => array(
