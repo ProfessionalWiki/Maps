@@ -97,7 +97,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 		$this->setCentre();
 		
 		if ( $this->zoom == 'null' ) {
-			$htis->zoom = $this->getDefaultZoom();
+			$this->zoom = $this->getDefaultZoom();
 		}		
 		
 		$this->addSpecificMapHTML( $parser );
