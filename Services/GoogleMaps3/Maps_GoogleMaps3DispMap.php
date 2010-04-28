@@ -55,8 +55,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 			'div',
 			array(
 				'id' => $mapName,
-				'width' => $this->width,
-				'height' => $this->height
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;"
 			),
 			null
 		);
