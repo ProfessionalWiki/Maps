@@ -99,7 +99,15 @@ final class MapsGeocoder {
 
 		// Call the geocode function in the spesific geocoder class.
 		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
-
+		
+		// If there address could not be geocoded, and contains comma's, try again without the comma's.
+		// This is cause several geocoding services such as geonames do not handle comma's well.
+		if ( !$coordinates && strpos( $address, ',' ) !== false ) {
+			$coordinates = call_user_func(
+				array( $egMapsGeoServices[$service], 'geocode' ), str_replace( ',', '', $address )
+			);
+		}
+		
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
 		if ( $egMapsEnableGeoCache && $coordinates ) {
 			MapsGeocoder::$mGeocoderCache[$address] = $coordinates;
