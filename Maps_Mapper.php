@@ -239,7 +239,8 @@ final class MapsMapper {
 				'criteria' => array(
 					'in_array' => $egMapsAvailableGeoServices
 				),
-				'default' => $egMapsDefaultGeoService
+				'default' => $egMapsDefaultGeoService,
+				'dependencies' => array( 'service' )
 			),
 			'zoom' => array(
 				'type' => 'integer',
