@@ -471,6 +471,18 @@ No se puede mostrar el mapa.',
 	'maps_webcams' => 'Cámaras Web',
 );
 
+/** Estonian (Eesti)
+ * @author Hendrik
+ */
+$messages['et'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Laiuskraad:',
+	'maps-longitude' => 'Pikkuskraad:',
+);
+
 /** Basque (Euskara)
  * @author Kobazulo
  */
