@@ -68,7 +68,7 @@ final class MapsGeocodeFunctions {
 		$args = func_get_args();
 		
 		// We already know the $parser.
-		array_shift( $args ); 
+		array_shift( $args );
 		
 		$manager = new ValidatorManager();
 		
@@ -76,7 +76,7 @@ final class MapsGeocodeFunctions {
 			$args,
 			array(
 				'location' => array(
-					'required' => true 
+					'required' => true
 				),
 				'mappingservice' => array(
 					'criteria' => array(
@@ -96,7 +96,7 @@ final class MapsGeocodeFunctions {
 					),
 					'aliases' => array(
 						'notation'
-					),				
+					),
 					'default' => $egMapsCoordinateNotation
 				),
 				'allowcoordinates' => array(
@@ -115,7 +115,7 @@ final class MapsGeocodeFunctions {
 		
 		if ( $doGeocoding ) {
 			if ( self::geocoderIsAvailable() ) {
-				$geovalues = MapsGeocoder::attemptToGeocodeToString( 
+				$geovalues = MapsGeocoder::attemptToGeocodeToString(
 					$parameters['location'],
 					$parameters['service'],
 					$parameters['mappingservice'],
@@ -130,7 +130,7 @@ final class MapsGeocodeFunctions {
 			}
 		} else {
 			return $manager->getErrorList();
-		}				
+		}
 	}
 
 	/**

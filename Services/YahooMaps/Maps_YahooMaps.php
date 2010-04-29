@@ -33,7 +33,7 @@ $egMapsServices[MapsYahooMaps::SERVICE_NAME] = array(
 		'display_point' => 'MapsYahooMapsDispPoint',
 		'display_map' => 'MapsYahooMapsDispMap',
 	)
-);	
+);
 
 /**
  * Class for Yahoo! Maps initialization.
@@ -96,7 +96,7 @@ class MapsYahooMaps {
 			),
 		);
 				
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );				
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );
 	}
 	
 	// http://developer.yahoo.com/maps/ajax

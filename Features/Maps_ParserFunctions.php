@@ -54,18 +54,18 @@ final class MapsParserFunctions {
         global $wgLang, $egValidatorErrorLevel, $egValidatorFatalLevel, $egMapsServices;
         
         array_shift( $args ); // We already know the $parser.
-        
+
         $parameters = array();
-        $setService = false; 
+        $setService = false;
         
-		foreach( $args as $arg ) {
+		foreach ( $args as $arg ) {
 			$split = explode( '=', $arg );
 			$name = strtolower( trim( array_shift( $split ) ) );
 			if ( count( $split ) > 0 && self::inParamAliases( $name, 'service', MapsMapper::getCommonParameters() ) ) {
 				if ( !$setService ) {
 					$service = implode( '=', $split );
 					$parameters[] = 'service=' . $service;
-					$setService = true;					
+					$setService = true;
 				}
 			} else {
 				$parameters[] = $arg;
@@ -86,13 +86,13 @@ final class MapsParserFunctions {
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $mapClass->getFeatureParameters() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$service]['parameters'] );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $mapClass->getSpecificParameterInfo() ); 
+		$parameterInfo = array_merge_recursive( $parameterInfo, $mapClass->getSpecificParameterInfo() );
 		
 		$parameters = $manager->manageParameters(
 			$parameters,
 			$parameterInfo,
 			array( 'coordinates' )
-		);        
+		);
         
 		$displayMap = $parameters !== false;
 		

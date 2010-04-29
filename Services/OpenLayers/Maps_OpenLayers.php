@@ -33,7 +33,7 @@ $egMapsServices[MapsOpenLayers::SERVICE_NAME] = array(
 		'display_point' => 'MapsOpenLayersDispPoint',
 		'display_map' => 'MapsOpenLayersDispMap',
 	)
-);	
+);
 
 /**
  * Class for OpenLayers initialization.
@@ -84,7 +84,7 @@ class MapsOpenLayers {
 			),
 		);
 									
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 19 );									
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 19 );
 	}
 	
 	/**

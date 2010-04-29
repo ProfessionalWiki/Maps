@@ -25,9 +25,9 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
 	protected function getDefaultZoom() {
-		global $egMapsGoogleMapsZoom; 
+		global $egMapsGoogleMapsZoom;
 		return $egMapsGoogleMapsZoom;
-	}	
+	}
 	
 	public function getSpecificParameterInfo() {
 		global $egMapsGMapOverlays;

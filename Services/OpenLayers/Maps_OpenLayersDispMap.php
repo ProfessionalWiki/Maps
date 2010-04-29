@@ -18,9 +18,9 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
 	protected function getDefaultZoom() {
-		global $egMapsOpenLayersZoom; 
+		global $egMapsOpenLayersZoom;
 		return $egMapsOpenLayersZoom;
-	}		
+	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
@@ -50,7 +50,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 		
 		$parser->getOutput()->addHeadItem(

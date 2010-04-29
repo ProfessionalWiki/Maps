@@ -121,7 +121,7 @@ final class MapsGeocoder {
 	 */
 	public static function geocodeToString( $address, $service = '', $mappingService = false, $targetFormat = Maps_COORDS_FLOAT, $directional = false  ) {
 		$coordinates = self::geocode( $address, $service, $mappingService );
-		return $coordinates ?  MapsCoordinateParser::formatCoordinates( $coordinates, $targetFormat, $directional ) : false;		
+		return $coordinates ?  MapsCoordinateParser::formatCoordinates( $coordinates, $targetFormat, $directional ) : false;
 	}
 	
 	/**
@@ -144,7 +144,7 @@ final class MapsGeocoder {
 						$service = $geoService; // Use the override.
 						break;
 					}
-				}				
+				}
 			}
 
 			// If no overrides where applied, use the default mapping service.

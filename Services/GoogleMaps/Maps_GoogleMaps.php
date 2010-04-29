@@ -33,7 +33,7 @@ $egMapsServices[MapsGoogleMaps::SERVICE_NAME] = array(
 		'display_point' => 'MapsGoogleMapsDispPoint',
 		'display_map' => 'MapsGoogleMapsDispMap',
 	)
-);	
+);
 
 /**
  * Class for Google Maps initialization.
@@ -98,7 +98,7 @@ class MapsGoogleMaps {
 			),
 		);
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );		
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );
 	}
 
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
@@ -309,7 +309,7 @@ $overlayHtml
 </div></form></div>		
 EOT;
 
-		if ( count($onloadFunctions) > 0 ) {
+		if ( count( $onloadFunctions ) > 0 ) {
 			$output .= "<script type='$wgJsMimeType'>" . implode( "\n", $onloadFunctions ) . '</script>';
 		}
 	}

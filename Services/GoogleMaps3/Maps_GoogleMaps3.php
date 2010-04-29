@@ -31,7 +31,7 @@ $egMapsServices[MapsGoogleMaps3::SERVICE_NAME] = array(
 	'features' => array(
 		'display_map' => 'MapsGoogleMaps3DispMap',
 	)
-);	
+);
 
 /**
  * Class for Google Maps v3 initialization.
@@ -159,7 +159,7 @@ class MapsGoogleMaps3 {
 			$code = $mappings[$code];
 		}
 		return $code;
-	}	
+	}
 	
 }
 									

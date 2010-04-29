@@ -18,9 +18,9 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
 	protected function getDefaultZoom() {
-		global $egMapsYahooMapsZoom; 
+		global $egMapsYahooMapsZoom;
 		return $egMapsYahooMapsZoom;
-	}		
+	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
@@ -48,7 +48,7 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 		
 		$parser->getOutput()->addHeadItem(
@@ -69,7 +69,7 @@ addOnloadHook(
 	}
 );
 EOT
-		) );		
+		) );
 	}
 
 }

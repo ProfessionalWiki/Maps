@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  */
-abstract class MapsBasePointMap implements iMapParserFunction {	
+abstract class MapsBasePointMap implements iMapParserFunction {
 	
 	public $serviceName;
 	
@@ -31,7 +31,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	protected $output = '';
 
 	protected $spesificParameters = false;
-	protected $featureParameters = false;	
+	protected $featureParameters = false;
 	
 	private $markerData = array();
 	protected $markerString;
@@ -51,23 +51,23 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 				throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
 			}
 		}
-	}	
+	}
 	
 	/**
 	 * @return array
 	 */
 	public function getSpecificParameterInfo() {
 		return array();
-	}	
+	}
 	
 	/**
 	 * @return array
-	 */	
+	 */
 	public function getFeatureParameters() {
 		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
 		return array(
-			'service' => array(	
+			'service' => array(
 				'default' => $egMapsDefaultServices['display_point']
 			),
 			'centre' => array(
@@ -91,10 +91,10 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 				'criteria' => array(
 					'are_locations' => array()
 				),
-				'output-type' => 'coordinateSets', 
-			),					
+				'output-type' => 'coordinateSets',
+			),
 		);
-	}	
+	}
 	
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
@@ -105,7 +105,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	 * 
 	 * @return html
 	 */
-	public final function getMapHtml( Parser &$parser, array $params ) {		
+	public final function getMapHtml( Parser &$parser, array $params ) {
 		$this->featureParameters = MapsDisplayPoint::$parameters;
 	
 		$this->doMapServiceLoad();

@@ -25,9 +25,9 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	public $serviceName = MapsGoogleMaps3::SERVICE_NAME;
 	
 	protected function getDefaultZoom() {
-		global $egMapsGMaps3Zoom; 
+		global $egMapsGMaps3Zoom;
 		return $egMapsGMaps3Zoom;
-	}	
+	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()

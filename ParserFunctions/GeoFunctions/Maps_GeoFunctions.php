@@ -57,7 +57,7 @@ final class MapsGeoFunctions {
 		$args = func_get_args();
 		
 		// We already know the $parser.
-		array_shift( $args ); 
+		array_shift( $args );
 		
 		$manager = new ValidatorManager();
 		
@@ -68,28 +68,28 @@ final class MapsGeoFunctions {
 					'required' => true
 				),
 				'location2' => array(
-					'required' => true 
-				),							
+					'required' => true
+				),
 			),
 			array( 'location1', 'location2' )
 		);
 		
-		$doCalculation = $parameters !== false;	
+		$doCalculation = $parameters !== false;
 		
 		if ( $doCalculation ) {
-			$canGeocode = MapsMapper::geocoderIsAvailable(); 
+			$canGeocode = MapsMapper::geocoderIsAvailable();
 			
 			if ( $canGeocode ) {
 				$start = MapsGeocoder::attemptToGeocode( $parameters['location1'] );
 				$end = MapsGeocoder::attemptToGeocode( $parameters['location2'] );
 			} else {
 				$start = MapsCoordinateParser::parseCoordinates( $parameters['location1'] );
-				$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );				
-			}		
+				$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );
+			}
 			
 			if ( $start && $end ) {
 				$output = self::calculateDistance( $start, $end ) . ' km';
-				$errorList = $manager->getErrorList();	
+				$errorList = $manager->getErrorList();
 				
 				if ( $errorList != '' ) {
 					$output .= '<br />' . $errorList;
@@ -99,7 +99,7 @@ final class MapsGeoFunctions {
 				
 				$fails = array();
 				if ( !$start ) $fails[] = $parameters['location1'];
-				if ( !$end ) $fails[] = $parameters['location2'];				
+				if ( !$end ) $fails[] = $parameters['location2'];
 				
 				switch ( $egValidatorFatalLevel ) {
 					case Validator_ERRORS_NONE:
@@ -115,7 +115,7 @@ final class MapsGeoFunctions {
 							$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
 						} else {
 							$output = htmlspecialchars( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
-						}							
+						}
 						break;
 				}
 			}
@@ -132,7 +132,7 @@ final class MapsGeoFunctions {
 	 * See http://mapping.referata.com/wiki/Finddestination
 	 * 
 	 * @param Parser $parser
-	 */	
+	 */
 	public static function renderFindDestination( Parser &$parser ) {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
 		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
@@ -140,7 +140,7 @@ final class MapsGeoFunctions {
 		$args = func_get_args();
 		
 		// We already know the $parser.
-		array_shift( $args ); 
+		array_shift( $args );
 		
 		$manager = new ValidatorManager();
 		
@@ -152,11 +152,11 @@ final class MapsGeoFunctions {
 				),
 				'bearing' => array(
 					'type' => 'float',
-					'required' => true 
+					'required' => true
 				),
 				'distance' => array(
 					'type' => 'float',
-					'required' => true 
+					'required' => true
 				),
 				'mappingservice' => array(
 					'criteria' => array(
@@ -176,7 +176,7 @@ final class MapsGeoFunctions {
 					),
 					'aliases' => array(
 						'notation'
-					),				
+					),
 					'default' => $egMapsCoordinateNotation
 				),
 				'allowcoordinates' => array(
@@ -189,22 +189,22 @@ final class MapsGeoFunctions {
 				),
 			),
 			array( 'location', 'bearing', 'distance' )
-		);	
-		$doCalculation = $parameters !== false;	
+		);
+		$doCalculation = $parameters !== false;
 				
 		if ( $doCalculation ) {
-			$canGeocode = MapsMapper::geocoderIsAvailable(); 
+			$canGeocode = MapsMapper::geocoderIsAvailable();
 			
 			if ( $canGeocode ) {
 				$location = MapsGeocoder::attemptToGeocode( $parameters['location'] );
 			} else {
 				$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
-			}				
+			}
 			
 			if ( $location ) {
-				//var_dump($location);
+				// var_dump($location);
 				$destination = self::findDestination( $location, $parameters['bearing'], $parameters['distance'] );
-				//var_dump($destination);exit;
+				// var_dump($destination);exit;
 				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 			} else {
 				global $egValidatorFatalLevel;
@@ -221,13 +221,13 @@ final class MapsGeoFunctions {
 							$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $parameters['location'] ) );
 						} else {
 							$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location'] ) );
-						}						
+						}
 						break;
-				}				
+				}
 			}
 		} else {
 			// Either required parameters are missing, or there are errors while having a strict error level.
-			$output = $manager->getErrorList();			
+			$output = $manager->getErrorList();
 		}
 		
 		return array( $output, 'noparse' => true, 'isHTML' => true );
@@ -253,7 +253,7 @@ final class MapsGeoFunctions {
 		$sinEast1 = sin( $eastRad1 );
 		
 		$northRad2 = deg2rad( $end['lat'] );
-		$eastRad2 = deg2rad( $end['lon'] );		
+		$eastRad2 = deg2rad( $end['lon'] );
 		
 		$cosNorth2 = cos( $northRad2 );
 		$cosEast2 = cos( $eastRad2 );
@@ -267,7 +267,7 @@ final class MapsGeoFunctions {
 	 
 		$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
 	 
-		return 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );		
+		return 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
 	}
 	
 	/**

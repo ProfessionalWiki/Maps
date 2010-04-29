@@ -31,6 +31,6 @@ interface iMapParserFunction {
 	/**
 	 * Adds the HTML specific to the mapping service to the output.
 	 */
-	function addSpecificMapHTML( Parser $parser );	
+	function addSpecificMapHTML( Parser $parser );
 }
 

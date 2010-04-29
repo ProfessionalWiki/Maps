@@ -39,11 +39,11 @@ final class MapsGeocoders {
 		include_once dirname( __FILE__ ) . '/Maps_GoogleGeocoder.php'; 		// Google
 		include_once dirname( __FILE__ ) . '/Maps_YahooGeocoder.php'; 		// Yahoo!
 		include_once dirname( __FILE__ ) . '/Maps_GeonamesGeocoder.php'; 	// GeoNames
-		
+
 		// Remove the supported geocoding services that are not in the $egMapsAvailableGeoServices array.
 		$supportedServices = array_keys( $egMapsGeoServices );
-		foreach ($supportedServices as $supportedService) {
-			if ( !in_array($supportedService, $egMapsAvailableGeoServices) ) {
+		foreach ( $supportedServices as $supportedService ) {
+			if ( !in_array( $supportedService, $egMapsAvailableGeoServices ) ) {
 				unset( $egMapsGeoServices[$supportedService] );
 			}
 		}
@@ -55,7 +55,7 @@ final class MapsGeocoders {
 		if ( !in_array( $egMapsDefaultGeoService, $egMapsAvailableGeoServices ) ) {
 			reset( $egMapsAvailableGeoServices );
 			$egMapsDefaultGeoService = key( $egMapsAvailableGeoServices );
-		}		
+		}
 		
 		return true;
 	}

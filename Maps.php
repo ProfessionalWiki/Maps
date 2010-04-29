@@ -64,7 +64,7 @@ else {
 
 	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
 
-	if( version_compare( $wgVersion, '1.16alpha', '>=' ) ) {
+	if ( version_compare( $wgVersion, '1.16alpha', '>=' ) ) {
 		$wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
 	}
 

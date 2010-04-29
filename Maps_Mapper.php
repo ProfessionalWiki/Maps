@@ -20,11 +20,11 @@ final class MapsMapper {
 
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
 		Validator::addValidationFunction( 'is_location', array( __CLASS__, 'isLocation' ) );
-		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );	
+		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );
 
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
 		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
-		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );		
+		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
 	
 	public static function isLocation( $location ) {
@@ -37,7 +37,7 @@ final class MapsMapper {
 	
 	public static function areLocations( $locations ) {
 		$locations = (array)$locations;
-		foreach( $locations as $location ) {
+		foreach ( $locations as $location ) {
 			if ( !self::isLocation( $location ) ) {
 				return false;
 			}
@@ -50,12 +50,12 @@ final class MapsMapper {
 			$location = MapsGeocoder::attemptToGeocodeToString( $location );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
-		}		
+		}
 	}
 	
 	public static function formatLocations( &$locations ) {
 		$locations = (array)$locations;
-		foreach( $locations as &$location ) {
+		foreach ( $locations as &$location ) {
 			self::formatLocation( $location );
 		}
 	}
@@ -149,11 +149,11 @@ final class MapsMapper {
 			} else {
 				// This is for backward compatibility with people who have set a custom min and max before 0.6.
 				$min = 1;
-				$max = 100;				
+				$max = 100;
 			}
 		} else {
 			$min = $egMapsSizeRestrictions[$dimension][0];
-			$max = $egMapsSizeRestrictions[$dimension][1];			
+			$max = $egMapsSizeRestrictions[$dimension][1];
 		}
 		
 		// See if the actual value is withing the limits.
@@ -176,10 +176,10 @@ final class MapsMapper {
 		if ( $correct ) {
 			if ( !preg_match( '/(px|ex|em|%)$/', $value ) ) {
 				$value .= 'px';
-			}			
+			}
 		}
 		
-		return true;		
+		return true;
 	}
 	
 	/**
@@ -190,7 +190,7 @@ final class MapsMapper {
 	 * @param number $default The default value for this dimension.
 	 */
 	public static function setMapDimension( &$value, $dimension, $default ) {
-		self::isMapDimension( $value, $dimension, true, $default );	
+		self::isMapDimension( $value, $dimension, true, $default );
 	}
 
 	/**
@@ -213,7 +213,7 @@ final class MapsMapper {
 		
 		$allServiceValues = array();
 		
-		foreach( $egMapsAvailableServices as $availableService ) {
+		foreach ( $egMapsAvailableServices as $availableService ) {
 			$allServiceValues[] = $availableService;
 			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]['aliases'] );
 		}
@@ -225,15 +225,15 @@ final class MapsMapper {
 	 * This function returns the definitions for the parameters used by every map feature. 
 	 * 
 	 * @return array
-	 */	
+	 */
 	public static function getCommonParameters() {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
 		
-		return array(	
+		return array(
 			'service' => array(
 				'criteria' => array(
 					'in_array' => self::getAllServiceValues()
-				),		
+				),
 			),
 			'geoservice' => array(
 				'criteria' => array(
@@ -261,8 +261,8 @@ final class MapsMapper {
 				),
 				'default' => $egMapsMapHeight,
 				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
-			),			
+			),
 		);
-	}	
+	}
 	
 }

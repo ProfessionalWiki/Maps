@@ -31,7 +31,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 	protected $output = '';
 
 	protected $spesificParameters = false;
-	protected $featureParameters = false;	
+	protected $featureParameters = false;
 	
 	/**
 	 * Sets the map properties as class fields.
@@ -48,23 +48,23 @@ abstract class MapsBaseMap implements iMapParserFunction {
 				throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
 			}
 		}
-	}	
+	}
 	
 	/**
 	 * @return array
 	 */
 	public function getSpecificParameterInfo() {
 		return array();
-	}	
+	}
 	
 	/**
 	 * @return array
-	 */	
+	 */
 	public function getFeatureParameters() {
 		global $egMapsDefaultServices;
 		
 		return array(
-			'service' => array(	
+			'service' => array(
 				'default' => $egMapsDefaultServices['display_map']
 			),
 			'coordinates' => array(
@@ -73,8 +73,8 @@ abstract class MapsBaseMap implements iMapParserFunction {
 				'criteria' => array(
 					'is_location' => array()
 				),
-				'output-type' => 'coordinateSet', 
-			),					
+				'output-type' => 'coordinateSet',
+			),
 		);
 	}
 	
@@ -98,7 +98,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 		
 		if ( $this->zoom == 'null' ) {
 			$this->zoom = $this->getDefaultZoom();
-		}		
+		}
 		
 		$this->addSpecificMapHTML( $parser );
 		

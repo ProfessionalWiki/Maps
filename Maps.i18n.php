@@ -28,7 +28,7 @@ Available mapping services: $1",
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
 	'maps-latitude'  => 'Latitude:',
-	'maps-longitude' => 'Longitude:',	
+	'maps-longitude' => 'Longitude:',
 
 	// Coordinate errors
 	'maps-invalid-coordinates' => 'The value $1 was not recognized as a valid set of coordinates.',

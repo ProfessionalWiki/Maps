@@ -25,9 +25,9 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	protected $markerStringFormat = 'getOLMarkerData(lon, lat, \'title\', \'label\', "icon")';
 
 	protected function getDefaultZoom() {
-		global $egMapsOpenLayersZoom; 
+		global $egMapsOpenLayersZoom;
 		return $egMapsOpenLayersZoom;
-	}		
+	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
@@ -59,7 +59,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 		
 				$parser->getOutput()->addHeadItem(

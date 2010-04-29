@@ -24,10 +24,10 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 
-	protected $markerStringFormat = 'getGMarkerData(lat, lon, \'title\', \'label\', "icon")';	
+	protected $markerStringFormat = 'getGMarkerData(lat, lon, \'title\', \'label\', "icon")';
 	
 	protected function getDefaultZoom() {
-		global $egMapsGoogleMapsZoom; 
+		global $egMapsGoogleMapsZoom;
 		return $egMapsGoogleMapsZoom;
 	}
 	
@@ -44,7 +44,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 			),
 		);
 		return $this->spesificParameters;
-	}	
+	}
 
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
@@ -97,7 +97,7 @@ addOnloadHook(
 	}
 );
 EOT
-			) 
+			)
 		);
 
 	}

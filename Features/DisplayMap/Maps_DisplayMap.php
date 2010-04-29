@@ -18,7 +18,7 @@ $wgAutoloadClasses['MapsBaseMap'] 			= dirname( __FILE__ ) . '/Maps_BaseMap.php'
 
 if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
 	$wgHooks['LanguageGetMagic'][] = 'efMapsDisplayMapMagic';
-}	
+}
 $wgHooks['ParserFirstCallInit'][] 			= 'efMapsRegisterDisplayMap';
 
 $egMapsFeatures['pf'][]	= 'MapsDisplayMap::initialize';

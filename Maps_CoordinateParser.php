@@ -29,7 +29,7 @@ class MapsCoordinateParser {
 	
 	protected static $mI18nDirections = false; // Cache for localised direction labels
 	protected static $mDirections; // Cache for English direction labels
-	
+
 	/**
 	 * Takes in a set of coordinates and checks if they are a supported format.
 	 * If they are, they will be parsed to a set of non-directional floats, that
@@ -55,7 +55,7 @@ class MapsCoordinateParser {
 		}
 		
 		// Split the coodrinates string into a lat and lon part.
-		foreach( self::$mSeperators as $seperator ){
+		foreach ( self::$mSeperators as $seperator ) {
 			$split = explode( $seperator, $coordinates );
 			if ( count( $split ) == 2 ) break;
 		}
@@ -114,7 +114,7 @@ class MapsCoordinateParser {
 	 * @param string $coordsOrAddress
 	 * 
 	 * @return boolean
-	 */	
+	 */
 	public static function areCoordinates( $coordsOrAddress ) {
 		// Normalize the coordinates string.
 		$coordsOrAddress = self::normalizeCoordinates( $coordsOrAddress );
@@ -166,9 +166,9 @@ class MapsCoordinateParser {
 		$coordinates = array(
 			'lat' => self::formatCoordinate( $coordinates['lat'], $targetFormat ),
 			'lon' => self::formatCoordinate( $coordinates['lon'], $targetFormat ),
-		);		
+		);
 		
-		return self::setAngles( $coordinates, $directional );		
+		return self::setAngles( $coordinates, $directional );
 	}
 	
 	/**
@@ -182,8 +182,8 @@ class MapsCoordinateParser {
 		$coordinates = trim( $coordinates );
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
 		$coordinates = str_replace( array( '&acute;', '&#180;' ), Maps_GEO_SEC, $coordinates );
-		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″'), Maps_GEO_MIN, $coordinates );
-		return str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );		
+		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″' ), Maps_GEO_MIN, $coordinates );
+		return str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
 	}
 	
 	/**
@@ -207,7 +207,7 @@ class MapsCoordinateParser {
 			case Maps_COORDS_DD:
 				return $coordinate . Maps_GEO_DEG;
 			case Maps_COORDS_DM:
-				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - floor( $coordinate ) )* 60 . Maps_GEO_MIN;
+				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - floor( $coordinate ) ) * 60 . Maps_GEO_MIN;
 			default:
 				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
 		}
@@ -233,8 +233,8 @@ class MapsCoordinateParser {
 				return self::parseDMCoordinate( $coordinate );
 			default:
 				throw new Exception( __METHOD__ . " does not support parsing of the $coordType coordinate type." );
-		}		
-	}	
+		}
+	}
 	
 	/**
 	 * returns whether the coordinates are in float representataion.
@@ -255,7 +255,7 @@ class MapsCoordinateParser {
 	 * @param string $coordinates
 	 * 
 	 * @return boolean
-	 */	
+	 */
 	public static function areDMSCoordinates( $coordinates ) {
 		$sep = self::getSeperatorsRegex();
 		return preg_match( '/^(-)?(\d{1,3}°)((\s)?\d{1,2}(\′|\'))?(((\s)?\d{1,2}(″|"))?|((\s)?\d{1,2}\.\d{1,2}(″|"))?)'
@@ -270,7 +270,7 @@ class MapsCoordinateParser {
 	 * @param string $coordinates
 	 * 
 	 * @return boolean
-	 */	
+	 */
 	public static function areDDCoordinates( $coordinates ) {
 		$sep = self::getSeperatorsRegex();
 		return preg_match( '/^(-)?\d{1,3}(|\.\d{1,20})°' . $sep . '(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,20})°$/', $coordinates ) // Non-directional
@@ -283,7 +283,7 @@ class MapsCoordinateParser {
 	 * @param string $coordinates
 	 * 
 	 * @return boolean
-	 */	
+	 */
 	public static function areDMCoordinates( $coordinates ) {
 		$sep = self::getSeperatorsRegex();
 		return preg_match( '/(-)?\d{1,3}°(\s)?\d{1,2}(\.\d{1,20}\')?' . $sep . '(\s)?(-)?\d{1,3}°(\s)?\d{1,2}(\.\d{1,20}\')?$/', $coordinates ) // Non-directional
@@ -309,11 +309,11 @@ class MapsCoordinateParser {
 				'N' => wfMsgForContent( 'maps-abb-north' ),
 				'E' => wfMsgForContent( 'maps-abb-east' ),
 				'S' => wfMsgForContent( 'maps-abb-south' ),
-				'W' => wfMsgForContent( 'maps-abb-west' ),			
+				'W' => wfMsgForContent( 'maps-abb-west' ),
 			);
 			self::$mDirections = array_keys( self::$mI18nDirections );
-		}		
-	}	
+		}
+	}
 	
 	/**
 	 * Turns directional notation (N/E/S/W) of a coordinate set into non-directional notation (+/-).
@@ -335,7 +335,7 @@ class MapsCoordinateParser {
 	 * @param string $coordinate
 	 * 
 	 * @return string
-	 */	
+	 */
 	private static function resolveAngle( $coordinate ) {
 		// Get the last char, which could be a direction indicator
 		$lastChar = substr( $coordinate, -1 );
@@ -358,7 +358,7 @@ class MapsCoordinateParser {
 	 * @param array $coordinates The coordinates set to possibly make directional. Needs to be non-directional!
 	 * 
 	 * @return array
-	 */	
+	 */
 	private static function setAngles( array $coordinates, $directional ) {
 		if ( $directional ) {
 			return array(
@@ -377,8 +377,8 @@ class MapsCoordinateParser {
 	 * @param boolean $isLat Should be true for latitudes and false for longitudes.
 	 * 
 	 * @return string
-	 */	
-	private static function setDirectionalAngle( $coordinate, $isLat ) {	
+	 */
+	private static function setDirectionalAngle( $coordinate, $isLat ) {
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
@@ -399,7 +399,7 @@ class MapsCoordinateParser {
 	 * @return string
 	 * 
 	 * TODO: fix innacuracy
-	 */	
+	 */
 	private static function parseDMSCoordinate( $coordinate ) {
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
@@ -415,7 +415,7 @@ class MapsCoordinateParser {
 		$minutes = substr ( $coordinate, $degreePosition + 1, $minuteLength );
 		$seconds = substr ( $coordinate, $minutePosition + 1, $secondLength );
 		
-		$coordinate = $degrees + ( $minutes + $seconds / 60 ) / 60;		
+		$coordinate = $degrees + ( $minutes + $seconds / 60 ) / 60;
 		if ( $isNegative ) $coordinate *= -1;
 		
 		return $coordinate;
@@ -427,7 +427,7 @@ class MapsCoordinateParser {
 	 * @param string $coordinate
 	 * 
 	 * @return string
-	 */	
+	 */
 	private static function parseDDCoordinate( $coordinate ) {
 		return (float)str_replace( Maps_GEO_DEG, '', $coordinate );
 	}
@@ -440,7 +440,7 @@ class MapsCoordinateParser {
 	 * @return string
 	 * 
 	 * TODO: fix innacuracy
-	 */	
+	 */
 	private static function parseDMCoordinate( $coordinate ) {
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );

@@ -104,7 +104,7 @@ final class MapsOSMCgiBin {
 			// Calculate bounds within a spherical mercator projection if that is what the scale is based on.
 			$mercatorCenter = self::forwardMercator( $center );
 			
-			$this->bounds = self::inverseMercator( 
+			$this->bounds = self::inverseMercator(
 				array(
 					$mercatorCenter[0] - $w_deg / 2,
 					$mercatorCenter[1] - $h_deg / 2,
@@ -174,7 +174,7 @@ final class MapsOSMCgiBin {
 		}
 		
 		return $lonlat;
-	}	
+	}
     
 }
 

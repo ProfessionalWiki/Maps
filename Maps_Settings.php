@@ -103,7 +103,7 @@ $egMapsUserGeoOverrides = true;
 # General configuration
 
 # Boolean. Indicates if minified js files should be used where available.
-$egMapsUseMinJs = false; 
+$egMapsUseMinJs = false;
 
 
 
@@ -338,7 +338,7 @@ $egMapsOSMZoom = 13;
 # Array of String. The default controls for OSM maps. This value will only be used when the user does not provide one.
 # Available values: layerswitcher, mouseposition, autopanzoom, panzoom, panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
 $egMapsOSMControls = array(
-	'layerswitcher', 
+	'layerswitcher',
 	'mouseposition',
 	'autopanzoom',
 	'scaleline',

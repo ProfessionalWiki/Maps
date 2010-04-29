@@ -87,7 +87,7 @@ addOnloadHook(
 	}
 );			
 EOT
-		) );		
+		) );
 	
 		$this->output .= $this->static ? $this->getStaticMap() : $this->getDynamicMap();
 	}
@@ -115,7 +115,7 @@ EOT
 				'id' => $this->mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 	}
 	
