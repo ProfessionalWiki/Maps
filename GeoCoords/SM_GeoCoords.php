@@ -48,8 +48,8 @@ final class SMGeoCoords {
 		
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( ( $dataValue->getTypeID() != '_geo' ) 
-			|| ( !$dataValue->isValid() ) 
+		if ( ( $dataValue->getTypeID() != '_geo' )
+			|| ( !$dataValue->isValid() )
 			|| ( $description->getComparator() != SM_CMP_NEAR )
 			) return true;
 		

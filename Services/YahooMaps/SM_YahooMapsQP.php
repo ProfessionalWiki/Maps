@@ -64,7 +64,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 				'id' => $this->mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 		
 		$parser->getOutput()->addHeadItem(
@@ -85,7 +85,7 @@ addOnloadHook(
 	}
 );
 EOT
-		) );		
+		) );
 	}
 
 	/**

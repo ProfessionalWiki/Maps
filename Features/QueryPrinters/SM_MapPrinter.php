@@ -64,7 +64,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected $mapFeature;
 	
 	protected $featureParameters = array();
-	protected $spesificParameters = array();		
+	protected $spesificParameters = array();
 	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
@@ -122,7 +122,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters ); 		
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
 		
 		$manager = new ValidatorManager();
 		

@@ -59,7 +59,7 @@ abstract class SMFormInput {
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters ); 		
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
 		
 		$manager = new ValidatorManager();
 		
@@ -72,7 +72,7 @@ abstract class SMFormInput {
 		$this->errorList  = $manager->getErrorList();
 		
 		return $showMap;
-	}	
+	}
 	
 	/**
 	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
@@ -140,7 +140,7 @@ function convertLngToDMS (val) {
 	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
 }			
 EOT
-			);			
+			);
 		}
 		
 		// Retrieve language values.
@@ -193,7 +193,7 @@ EOT
 		} else {
 			return $decimal . "° E";
 		}
-	}	
+	}
 	
 	/**
 	 * Sets the $marler_lon and $marler_lat fields and when set, the starting coordinates

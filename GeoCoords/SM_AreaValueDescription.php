@@ -29,9 +29,9 @@ class SMAreaValueDescription extends SMWValueDescription {
 		parent::__construct( $dataValue, $comparator );
 		
 		// TODO: get user provided distance
-		//global $smgGeoCoordDistance;
-		//$distance = $smgGeoCoordDistance; 		
-		
+		// global $smgGeoCoordDistance;
+		// $distance = $smgGeoCoordDistance; 		
+
 		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
 		if ( self::geoFunctionsAreAvailable() ) {
 			$dbKeys = $dataValue->getDBkeys();
@@ -42,9 +42,9 @@ class SMAreaValueDescription extends SMWValueDescription {
 					'lon' => $dbKeys[1]
 				),
 				$radius
-			); 			
-		}		
-	}	
+			);
+		}
+	}
 	
 	/**
 	 * @see SMWDescription:getQueryString
@@ -107,5 +107,5 @@ class SMAreaValueDescription extends SMWValueDescription {
 	private static function geoFunctionsAreAvailable() {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeoFunctions', $wgAutoloadClasses );
-	}	    
+	}
 }

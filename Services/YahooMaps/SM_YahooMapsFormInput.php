@@ -78,7 +78,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 				'id' => $this->mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 		
 		$wgOut->addInlineScript( <<<EOT

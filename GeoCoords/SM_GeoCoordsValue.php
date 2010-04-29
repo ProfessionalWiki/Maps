@@ -79,7 +79,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getQueryDescription( $value ) {
 		// TODO
-	}	
+	}
 	
 	/**
 	 * @see SMWDataValue::parseDBkeys
@@ -94,11 +94,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::getDBkeys
-	 */	
+	 */
 	public function getDBkeys() {
 		$this->unstub();
 		return array( $this->mCoordinateSet['lat'], $this->mCoordinateSet['lon'] );
-	}	
+	}
 
 	/**
 	 * @see SMWDataValue::getShortWikiText
@@ -127,7 +127,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::getLongWikiText
-	 */		
+	 */
 	public function getLongWikiText( $linked = null ) {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
@@ -138,7 +138,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getLongHTMLText
-	 */		
+	 */
 	public function getLongHTMLText( $linker = null ) {
 		// TODO: parse to HTML?
 		return $this->getLongWikiText( $linker );
@@ -146,7 +146,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getWikiValue
-	 */	
+	 */
 	public function getWikiValue() {
 		$this->unstub();
 		return $this->mWikivalue;
@@ -157,7 +157,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
-			$lit = new SMWExpLiteral( 
+			$lit = new SMWExpLiteral(
 				MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet ),
 				$this,
 				'http://www.w3.org/2001/XMLSchema#string'
