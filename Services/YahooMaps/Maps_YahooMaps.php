@@ -77,7 +77,8 @@ class MapsYahooMaps {
 					'in_array' => $allowedTypes
 				),
 				'default' => $egMapsYahooMapsType, // FIXME: default value should not be used when not present in types parameter.
-				'output-type' => 'ymaptype'
+				'output-type' => 'ymaptype',
+				'dependencies' => array( 'types' )
 			),
 			'types' => array (
 				'type' => array( 'string', 'list' ),

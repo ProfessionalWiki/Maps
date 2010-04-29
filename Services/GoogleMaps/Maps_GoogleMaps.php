@@ -79,7 +79,8 @@ class MapsGoogleMaps {
 					'in_array' => $allowedTypes
 				),
 				'default' => $egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
-				'output-type' => 'gmaptype'
+				'output-type' => 'gmaptype',
+				'dependencies' => array( 'types' )
 			),
 			'types' => array(
 				'type' => array( 'string', 'list' ),
