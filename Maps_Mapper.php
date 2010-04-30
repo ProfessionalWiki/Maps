@@ -1,6 +1,6 @@
 <?php
 
-/** 
+/**
  * A class that holds static helper functions for common functionality that is not map-spesific.
  *
  * @file Maps_Mapper.php
@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsMapper {
-	
+
 	public static function initialize() {
 		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
@@ -26,7 +26,7 @@ final class MapsMapper {
 		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
 		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
-	
+
 	public static function isLocation( $location ) {
 		if ( self::geocoderIsAvailable() ) {
 			return MapsGeocoder::isLocation( $location );
@@ -34,7 +34,7 @@ final class MapsMapper {
 			return MapsCoordinateParser::areCoordinates( $location );
 		}
 	}
-	
+
 	public static function areLocations( $locations ) {
 		$locations = (array)$locations;
 		foreach ( $locations as $location ) {
@@ -44,7 +44,7 @@ final class MapsMapper {
 		}
 		return true;
 	}
-	
+
 	public static function formatLocation( &$location ) {
 		if ( self::geocoderIsAvailable() ) {
 			$location = MapsGeocoder::attemptToGeocodeToString( $location );
@@ -52,21 +52,21 @@ final class MapsMapper {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
 		}
 	}
-	
+
 	public static function formatLocations( &$locations ) {
 		$locations = (array)$locations;
 		foreach ( $locations as &$location ) {
 			self::formatLocation( $location );
 		}
 	}
-	
+
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
 	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
 	 *
 	 * @param string $service
 	 * @param string $feature
-	 * 
+	 *
 	 * @return string
 	 */
 	public static function getValidService( $service, $feature ) {
@@ -93,10 +93,10 @@ final class MapsMapper {
 				$service = $egMapsDefaultService;
 			}
 		}
-		
+
 		return $service;
 	}
-	
+
 	/**
 	 * Checks if the service name is an alias for an actual service,
 	 * and changes it into the main service name if this is the case.
@@ -106,7 +106,7 @@ final class MapsMapper {
 	 */
 	private static function getMainServiceName( $service ) {
 		global $egMapsServices;
-		
+
 		if ( ! array_key_exists( $service, $egMapsServices ) ) {
 			foreach ( $egMapsServices as $serviceName => $serviceInfo ) {
 				if ( in_array( $service, $serviceInfo['aliases'] ) ) {
@@ -115,23 +115,23 @@ final class MapsMapper {
 				}
 			}
 		}
-		
+
 		return $service;
 	}
-	
+
 	/**
 	 * Determines if a value is a valid map dimension, and optionally corrects it.
-	 * 
+	 *
 	 * @param string or number $value The value as it was entered by the user.
-	 * @param string $dimension Must be width or hieght.
+	 * @param string $dimension Must be width or height.
 	 * @param boolean $correct If true, the value will be corrected when invalid. Defaults to false.
 	 * @param number $default The default value for this dimension. Must be set when $correct = true.
-	 * 
+	 *
 	 * @return boolean
 	 */
 	public static function isMapDimension( &$value, $dimension, $correct = false, $default = 0 ) {
 		global $egMapsSizeRestrictions;
-		
+
 		// See if the notation is valid.
 		if ( !preg_match( '/^\d+(\.\d+)?(px|ex|em|%)?$/', $value ) ) {
 			if ( $correct ) {
@@ -140,7 +140,7 @@ final class MapsMapper {
 				return false;
 			}
 		}
-		
+
 		// Determine the minimum and maximum values.
 		if ( preg_match( '/^.*%$/', $value ) ) {
 			if ( count( $egMapsSizeRestrictions[$dimension] >= 4 ) ) {
@@ -155,7 +155,7 @@ final class MapsMapper {
 			$min = $egMapsSizeRestrictions[$dimension][0];
 			$max = $egMapsSizeRestrictions[$dimension][1];
 		}
-		
+
 		// See if the actual value is withing the limits.
 		$number = preg_replace( '/[^0-9]/', '', $value );
 		if ( $number < $egMapsSizeRestrictions[$dimension][0] ) {
@@ -171,22 +171,22 @@ final class MapsMapper {
 				return false;
 			}
 		}
-		
+
 		// If this is a 'correct the value call', add 'px' if no unit has been provided.
 		if ( $correct ) {
 			if ( !preg_match( '/(px|ex|em|%)$/', $value ) ) {
 				$value .= 'px';
 			}
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Corrects the provided map demension value when not valid.
-	 * 
+	 *
 	 * @param string or number $value The value as it was entered by the user.
-	 * @param string $dimension Must be width or hieght.
+	 * @param string $dimension Must be width or height.
 	 * @param number $default The default value for this dimension.
 	 */
 	public static function setMapDimension( &$value, $dimension, $default ) {
@@ -194,41 +194,41 @@ final class MapsMapper {
 	}
 
 	/**
-	 * Returns a boolean indicating if MapsGeocoder is available. 
-	 * 
+	 * Returns a boolean indicating if MapsGeocoder is available.
+	 *
 	 * @return Boolean
 	 */
 	public static function geocoderIsAvailable() {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
 	}
-	
+
 	/**
 	 * Returns an array containing all the possible values for the service parameter, including aliases.
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getAllServiceValues() {
 		global $egMapsAvailableServices, $egMapsServices;
-		
+
 		$allServiceValues = array();
-		
+
 		foreach ( $egMapsAvailableServices as $availableService ) {
 			$allServiceValues[] = $availableService;
 			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]['aliases'] );
 		}
-		
+
 		return $allServiceValues;
 	}
-	
+
 	/**
-	 * This function returns the definitions for the parameters used by every map feature. 
-	 * 
+	 * This function returns the definitions for the parameters used by every map feature.
+	 *
 	 * @return array
 	 */
 	public static function getCommonParameters() {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
-		
+
 		return array(
 			'service' => array(
 				'criteria' => array(
@@ -265,5 +265,5 @@ final class MapsMapper {
 			),
 		);
 	}
-	
+
 }
