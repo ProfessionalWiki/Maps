@@ -1,5 +1,4 @@
 <?php
-
 /**
  * A class that holds static helper functions for common functionality that is not map-spesific.
  *
@@ -14,7 +13,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsMapper {
-
 	public static function initialize() {
 		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
@@ -265,5 +263,4 @@ final class MapsMapper {
 			),
 		);
 	}
-
 }
