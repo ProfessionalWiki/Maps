@@ -25,7 +25,7 @@ final class MapsMapper {
 		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
 
-	public static function isLocation( $location ) {
+	public static function isLocation( $location, array $metaData ) {
 		if ( self::geocoderIsAvailable() ) {
 			return MapsGeocoder::isLocation( $location );
 		} else {
@@ -33,10 +33,10 @@ final class MapsMapper {
 		}
 	}
 
-	public static function areLocations( $locations ) {
+	public static function areLocations( $locations, array $metaData ) {
 		$locations = (array)$locations;
 		foreach ( $locations as $location ) {
-			if ( !self::isLocation( $location ) ) {
+			if ( !self::isLocation( $location, $metaData ) ) {
 				return false;
 			}
 		}
@@ -127,7 +127,7 @@ final class MapsMapper {
 	 *
 	 * @return boolean
 	 */
-	public static function isMapDimension( &$value, $dimension, $correct = false, $default = 0 ) {
+	public static function isMapDimension( &$value, array $metaData, $dimension, $correct = false, $default = 0 ) {
 		global $egMapsSizeRestrictions;
 
 		// See if the notation is valid.
@@ -188,7 +188,7 @@ final class MapsMapper {
 	 * @param number $default The default value for this dimension.
 	 */
 	public static function setMapDimension( &$value, $dimension, $default ) {
-		self::isMapDimension( $value, $dimension, true, $default );
+		self::isMapDimension( $value, array(), $dimension, true, $default );
 	}
 
 	/**

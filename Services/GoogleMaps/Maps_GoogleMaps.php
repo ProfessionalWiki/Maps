@@ -164,7 +164,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return boolean
 	 */
-	public static function isGOverlay( $value ) {
+	public static function isGOverlay( $value, array $metaData ) {
 		$value = explode( '-', $value );
 		return in_array( $value[0], self::getOverlayNames() );
 	}
