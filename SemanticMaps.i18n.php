@@ -153,6 +153,7 @@ $messages['br'] = array(
 	'semanticmaps_paramdesc_controls' => "Ar c'hontrolloù implijer lakaet war ar gartenn",
 	'semanticmaps_paramdesc_types' => "Ar seurtoù kartennoù a c'haller kaout war ar gartenn",
 	'semanticmaps_paramdesc_type' => 'Ar seurt kartenn dre ziouer evit ar gartenn',
+	'semanticmaps_paramdesc_autozoom' => 'Mard eo gweredekaet ar zoumañ hag an dizoumañ gant rodig al logodenn',
 	'semanticmaps_paramdesc_layers' => 'Ar gwiskadoù zo da gaout war ar gartenn',
 );
 
