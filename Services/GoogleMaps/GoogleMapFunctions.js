@@ -21,18 +21,32 @@ var GOverlays = [
  * Returns GMarker object on the provided location. It will show a popup baloon
  * with title and label when clicked, if either of these is set.
  */
-function createGMarker(point, title, label, icon) {
+function createGMarker( point, title, label, icon ) {
 	var marker;
 	
-	if (icon != '') {
-		var iconObj = new GIcon(G_DEFAULT_ICON);
+	if ( icon != '' ) {
+		var iconObj = new GIcon( G_DEFAULT_ICON );
 		iconObj.image = icon;
-		marker = new GMarker(point, {icon:iconObj});
+
+		/* Determine size of icon and pass it in */
+		var newimg = new Image();
+		newimg.src = icon;
+		iconObj.iconSize.width = newimg.width;
+		iconObj.iconSize.height = newimg.height;
+		iconObj.shadow = null;
+
+		/* Anchor the icon on center */
+		var anchor = new GPoint();
+		anchor.x = Math.floor( newimg.width / 2 );
+		anchor.y = Math.floor( newimg.height / 2 );
+		iconObj.iconAnchor = anchor;
+		
+		marker = new GMarker( point, { icon:iconObj } );
 	} else {
-		marker = new GMarker(point);
+		marker = new GMarker( point );
 	}
 	
-	if ((title + label).length > 0) {
+	if ( ( title + label ).length > 0 ) {
 		var bothTxtAreSet = title.length > 0 && label.length > 0;
 		var popupText = bothTxtAreSet ? '<b>' + title + '</b><hr />' + label : title + label;	
 		popupText = '<div style="overflow:auto;max-height:140px;">' + popupText + '</div>';
