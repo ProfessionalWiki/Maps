@@ -110,7 +110,7 @@ $egMapsCoordinateNotation = Maps_COORDS_DMS;
 
 # Boolean. Indicates if coordinates should be outputted in directional notation by default.
 # Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
-$egMapsCoordinateDirectional = false;
+$egMapsCoordinateDirectional = true;
 
 # Boolean.
 $egMapsAllowCoordsGeocoding = true;

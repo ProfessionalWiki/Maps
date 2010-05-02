@@ -377,10 +377,10 @@ class MapsCoordinateParser {
 	 * @param boolean $isLat Should be true for latitudes and false for longitudes.
 	 * 
 	 * @return string
-	 * 
-	 * FIXME: Notice: Undefined variable: mI18nDirections in ...\Maps\Maps_CoordinateParser.php  on line 388
 	 */
 	private static function setDirectionalAngle( $coordinate, $isLat ) {
+		self::initializeDirectionLabels();
+		
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
@@ -389,7 +389,7 @@ class MapsCoordinateParser {
 		} else {
 			$directionChar = self::$mI18nDirections[ $isNegative ? 'W' : 'E' ];
 		}
-		
+
 		return $coordinate . ' ' . $directionChar;
 	}
 	
