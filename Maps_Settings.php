@@ -86,7 +86,7 @@ $egMapsAvailableGeoServices = array(
 # String. The default geocoding service, which will be used when no service is
 # is provided by the user. This service needs to be enabled, if not, the first
 # one from the available services will be taken.
-$egMapsDefaultGeoService = 'geonames';
+$egMapsDefaultGeoService = 'google'; // TODO: change back again, this is for temporal debugging
 
 $egMapsUserGeoOverrides = true;
 
@@ -105,17 +105,21 @@ $egMapsAvailableCoordNotations = array(
 );
 
 # Enum. The default output format of coordinates.
-# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM,
-# Maps_COORDS_DD
-$egMapsCoordinateNotation = Maps_COORDS_FLOAT;
+# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
+$egMapsCoordinateNotation = Maps_COORDS_DMS;
 
-# Boolean. Indicates if coordinates should be outputted in directional notation
-# by default.
+# Boolean. Indicates if coordinates should be outputted in directional notation by default.
+# Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
 $egMapsCoordinateDirectional = false;
 
+# Boolean.
 $egMapsAllowCoordsGeocoding = true;
 
+# Boolean.
 $egMapsEnableGeoCache = true;
+
+
+
 
 # General map configuration
 
