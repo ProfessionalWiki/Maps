@@ -15,10 +15,13 @@
 function createYMarker(geoPoint, title, label, icon){
 	var newMarker;
 	
-	if (icon != '') {
-		newMarker = new YMarker(geoPoint,  new YImage(icon));
+	if ( icon != '' ) {
+		/* Determine size of icon and pass it in */
+		var newimg = new Image();
+		newimg.src = icon;
+		newMarker = new YMarker( geoPoint,  new YImage( icon, new YSize( newimg.width, newimg.height ) ) );
 	} else {
-		newMarker = new YMarker(geoPoint);
+		newMarker = new YMarker( geoPoint );
 	}	
 	
 	if ((title + label).length > 0) {
