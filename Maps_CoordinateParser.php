@@ -377,6 +377,8 @@ class MapsCoordinateParser {
 	 * @param boolean $isLat Should be true for latitudes and false for longitudes.
 	 * 
 	 * @return string
+	 * 
+	 * FIXME: Notice: Undefined variable: mI18nDirections in ...\Maps\Maps_CoordinateParser.php  on line 388
 	 */
 	private static function setDirectionalAngle( $coordinate, $isLat ) {
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
@@ -398,7 +400,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 * 
-	 * TODO: fix innacuracy
+	 * FIXME: fix innacuracy
 	 */
 	private static function parseDMSCoordinate( $coordinate ) {
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
