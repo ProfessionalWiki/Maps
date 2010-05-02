@@ -166,6 +166,8 @@ class MapsGoogleMaps {
 	 */
 	public static function isGOverlay( $value, array $metaData ) {
 		$value = explode( '-', $value );
+		if ( count( $value ) > 2 ) return false;
+		if ( count( $value ) > 1 && !in_array( $value[1], array( '0', '1' ) ) ) return false;
 		return in_array( $value[0], self::getOverlayNames() );
 	}
 
