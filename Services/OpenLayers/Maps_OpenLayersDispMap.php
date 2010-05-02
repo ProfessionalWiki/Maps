@@ -25,7 +25,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 */
-	protected function doMapServiceLoad() {
+	public function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
 		MapsOpenLayers::addOLDependencies( $this->output );
