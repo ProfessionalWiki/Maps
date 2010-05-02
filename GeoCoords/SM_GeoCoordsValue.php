@@ -86,8 +86,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::parseDBkeys
 	 */
 	protected function parseDBkeys( $args ) {
-		$this->mCoordinateSet['lat'] = $args['lat'];
-		$this->mCoordinateSet['lon'] = $args['lon'];
+		$this->mCoordinateSet['lat'] = $args[0];
+		$this->mCoordinateSet['lon'] = $args[1];
 		
 		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
 		$this->mWikivalue = $this->m_caption;
@@ -100,8 +100,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->unstub();
 		
 		return array(
-			'lat' => $this->mCoordinateSet['lat'],
-			'lon' => $this->mCoordinateSet['lon']
+			$this->mCoordinateSet['lat'],
+			$this->mCoordinateSet['lon']
 		);
 	}
 	
