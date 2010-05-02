@@ -79,14 +79,15 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getQueryDescription( $value ) {
 		// TODO
+		return parent::getQueryDescription( $value );
 	}
 	
 	/**
 	 * @see SMWDataValue::parseDBkeys
 	 */
 	protected function parseDBkeys( $args ) {
-		$this->mCoordinateSet['lat'] = $args[0];
-		$this->mCoordinateSet['lon'] = $args[1];
+		$this->mCoordinateSet['lat'] = $args['lat'];
+		$this->mCoordinateSet['lon'] = $args['lon'];
 		
 		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
 		$this->mWikivalue = $this->m_caption;
@@ -97,8 +98,19 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getDBkeys() {
 		$this->unstub();
-		return array( $this->mCoordinateSet['lat'], $this->mCoordinateSet['lon'] );
+		
+		return array(
+			'lat' => $this->mCoordinateSet['lat'],
+			'lon' => $this->mCoordinateSet['lon']
+		);
 	}
+	
+	/**
+	 * @see SMWDataValue::getSignature
+	 */	
+	public function getSignature() {
+		return 'ff';
+	}	
 
 	/**
 	 * @see SMWDataValue::getShortWikiText

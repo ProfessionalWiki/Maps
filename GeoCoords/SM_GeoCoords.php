@@ -60,6 +60,9 @@ final class SMGeoCoords {
 		$south = $dbs->addQuotes( $boundingBox['south'] );
 		$west = $dbs->addQuotes( $boundingBox['west'] );
 		
+		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
+		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
+		// add their own semantic tables with similar signatures.
 		$whereSQL .= "{$tablename}.lat < $north && {$tablename}.lat > $south && {$tablename}.lon < $east && {$tablename}.lon > $west";
 		
 		return true;

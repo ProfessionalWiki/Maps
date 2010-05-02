@@ -170,5 +170,4 @@ final class SMQueryPrinters {
 		}
 	}
 	
-	
 }
