@@ -77,3 +77,10 @@ $smgQPShowTitle = true;
 # String or false. Allows you to define the content and it's layout of marker pop-ups via a template.
 # This value will only be used when the user does not provide one.
 $smgQPTemplate = false;
+
+# Enum. The default output format of coordinates.
+# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
+$smgQPCoodFormat = $egMapsCoordinateNotation;
+
+# Boolean. Indicates if coordinates should be outputted in directional notation by default.
+$smgQPCoodDirectional = $egMapsCoordinateDirectional;

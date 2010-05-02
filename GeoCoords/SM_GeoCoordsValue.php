@@ -62,8 +62,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 				$this->mCoordinateSet = $coordinates;
 				
 				if ( $this->m_caption === false ) {
-					// TODO: parse coodinates to some notation, depending on a new setting
-					$this->m_caption = $value;
+					global $smgQPCoodFormat, $smgQPCoodDirectional;
+					$this->m_caption = MapsCoordinateParser::formatCoordinates( $coordinates, $smgQPCoodFormat, $smgQPCoodDirectional );
         		}
 			} else {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $value, 1 ) );
@@ -86,10 +86,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::parseDBkeys
 	 */
 	protected function parseDBkeys( $args ) {
+		global $smgQPCoodFormat, $smgQPCoodDirectional;
+		
 		$this->mCoordinateSet['lat'] = $args[0];
 		$this->mCoordinateSet['lon'] = $args[1];
 		
-		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
+		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
 		$this->mWikivalue = $this->m_caption;
 	}
 	
@@ -144,7 +146,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
 		} else {
-			return MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
+			global $smgQPCoodFormat, $smgQPCoodDirectional;
+			return MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
 		}
 	}
 
@@ -169,8 +172,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
+			global $smgQPCoodFormat, $smgQPCoodDirectional;
 			$lit = new SMWExpLiteral(
-				MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet ),
+				MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional ),
 				$this,
 				'http://www.w3.org/2001/XMLSchema#string'
 			);
