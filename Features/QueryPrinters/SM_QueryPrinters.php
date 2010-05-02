@@ -62,72 +62,72 @@ final class SMQueryPrinters {
 			'geoservice' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableGeoServices
-					),
-				'default' => $egMapsDefaultGeoService
 				),
+				'default' => $egMapsDefaultGeoService
+			),
 			'format' => array(
 				'required' => true,
 				'default' => $egMapsDefaultServices['qp']
-				),
+			),
 			'centre' => array(
 				'aliases' => array( 'center' ),
-				),
+			),
 			'forceshow' => array(
 				'type' => 'boolean',
 				'aliases' => array( 'force show' ),
 				'default' => $smgQPForceShow,
 				'output-type' => 'boolean'
-				),
+			),
 			'template' => array(
 				'criteria' => array(
 					'not_empty' => array()
-					),
-				'default' => $smgQPTemplate,
 				),
+				'default' => $smgQPTemplate,
+			),
 			'showtitle' => array(
 				'type' => 'boolean',
 				'aliases' => array( 'show title' ),
 				'default' => $smgQPShowTitle,
 				'output-type' => 'boolean'
-				),
+			),
 			'icon' => array(
 				'criteria' => array(
 					'not_empty' => array()
-					)
-				),
+				)
+			),
 			// SMW #Ask: parameters
 			'limit' => array(
 				'type' => 'integer',
 				'criteria' => array(
 					'in_range' => array( 0 )
-					)
-				),
+				)
+			),
 			'offset' => array(
 				'type' => 'integer'
-				),
+			),
 			'sort' => array(),
 			'order' => array(
 				'criteria' => array(
 					'in_array' => array( 'ascending', 'asc', 'descending', 'desc', 'reverse' )
-					)
-				),
+				)
+			),
 			'headers' => array(
 				'criteria' => array(
 					'in_array' => array( 'show', 'hide' )
-					)
-				),
+				)
+			),
 			'mainlabel' => array(),
 			'link' => array(
 				'criteria' => array(
 					'in_array' => array( 'none', 'subject', 'all' )
-					)
-				),
+				)
+			),
 			'default' => array(),
 			'intro' => array(),
 			'outro' => array(),
 			'searchlabel' => array(),
 			'distance' => array(),
-			);
+		);
 	}
 	
 	/**
