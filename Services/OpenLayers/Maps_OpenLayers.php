@@ -131,8 +131,6 @@ class MapsOpenLayers {
 		if ( empty( $egOpenLayersOnThisPage ) ) {
 			$egOpenLayersOnThisPage = 0;
 			
-			$dir = dirname( __FILE__ );
-			
 			$output .= "<link rel='stylesheet' href='$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js'></script>		
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>

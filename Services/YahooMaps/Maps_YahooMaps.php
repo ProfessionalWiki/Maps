@@ -163,8 +163,6 @@ class MapsYahooMaps {
 		if ( empty( $egYahooMapsOnThisPage ) ) {
 			$egYahooMapsOnThisPage = 0;
 
-			$dir = dirname( __FILE__ );
-			
 			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&amp;appid=$egYahooMapsKey'></script>
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
 		}

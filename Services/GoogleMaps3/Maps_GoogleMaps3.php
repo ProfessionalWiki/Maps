@@ -155,9 +155,11 @@ class MapsGoogleMaps3 {
 	         'he' => 'iw',      // iw is googlish for hebrew
 	         'fj' => 'fil',     // google does not support Fijian - use Filipino as close(?) supported relative
 		);
+		
 		if ( array_key_exists( $code, $mappings ) ) {
 			$code = $mappings[$code];
 		}
+		
 		return $code;
 	}
 	
