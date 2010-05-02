@@ -80,7 +80,7 @@ function efMapsRenderCoordinates() {
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
 		if ( $parsedCoords ) {
-			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['notation'], $parameters['directional'] ) .
+			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] ) .
 				'<br />' . $manager->getErrorList();
 		} else {
 			$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) ) .
