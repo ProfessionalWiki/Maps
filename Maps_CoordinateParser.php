@@ -385,9 +385,9 @@ class MapsCoordinateParser {
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		if ( $isLat ) {
-			$directionChar = self::$mI18nDirections( $isNegative ? 'S' : 'N' );
+			$directionChar = self::$mI18nDirections[ $isNegative ? 'S' : 'N' ];
 		} else {
-			$directionChar = self::$mI18nDirections( $isNegative ? 'W' : 'E' );
+			$directionChar = self::$mI18nDirections[ $isNegative ? 'W' : 'E' ];
 		}
 		
 		return $coordinate . ' ' . $directionChar;
