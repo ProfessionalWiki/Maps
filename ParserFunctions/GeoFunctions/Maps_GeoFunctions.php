@@ -191,7 +191,7 @@ final class MapsGeoFunctions {
 			array( 'location', 'bearing', 'distance' )
 		);
 		$doCalculation = $parameters !== false;
-				
+
 		if ( $doCalculation ) {
 			$canGeocode = MapsMapper::geocoderIsAvailable();
 			
@@ -202,9 +202,7 @@ final class MapsGeoFunctions {
 			}
 			
 			if ( $location ) {
-				// var_dump($location);
 				$destination = self::findDestination( $location, $parameters['bearing'], $parameters['distance'] );
-				// var_dump($destination);exit;
 				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 			} else {
 				global $egValidatorFatalLevel;
@@ -278,17 +276,18 @@ final class MapsGeoFunctions {
 	 * @param float $distance The distance to travel in km.
 	 * 
 	 * @return array The desitination coordinates, as non-directional floats in an array with lat and lon keys.
-	 * 
-	 * FIXME: something here is going wrong - need to debug
 	 */
 	public static function findDestination( array $startingCoordinates, $bearing, $distance ) {
 		$startingCoordinates['lat'] = (float)$startingCoordinates['lat'];
 		$startingCoordinates['lon'] = (float)$startingCoordinates['lon'];
+		
 		$angularDistance = $distance / Maps_EARTH_RADIUS;
+		
 		$lat = asin(
 				sin( $startingCoordinates['lat'] ) * cos( $angularDistance ) +
 				cos( $startingCoordinates['lat'] ) * sin( $angularDistance ) * cos( $bearing )
 		);
+
 		return array(
 			'lat' => $lat,
 			'lon' => $startingCoordinates['lon'] + atan2(
