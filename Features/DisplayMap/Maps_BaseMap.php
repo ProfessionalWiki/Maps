@@ -69,7 +69,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 			),
 			'coordinates' => array(
 				'required' => true,
-				'aliases' => array( 'coords', 'location', 'locations' ),
+				'aliases' => array( 'coords', 'location', 'address' ),
 				'criteria' => array(
 					'is_location' => array()
 				),
