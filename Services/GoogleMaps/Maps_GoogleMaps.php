@@ -198,9 +198,9 @@ class MapsGoogleMaps {
 	/**
 	 * Add references to the Google Maps API and required JS file to the provided output 
 	 *
-	 * @param string $output
+	 * @param Parser $parser
 	 */
-	public static function addGMapDependencies( &$output, Parser &$parser ) {
+	public static function addGMapDependencies( Parser &$parser ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egGoogleMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 
