@@ -152,19 +152,33 @@ class MapsYahooMaps {
 	}
 
 	/**
-	 * Add references to the Yahoo! Maps API and required JS file to the provided output 
+	 * Loads the Yahoo! Maps API and required JS files.
 	 *
-	 * @param string $output
+	 * @param Parser $parser
 	 */
-	public static function addYMapDependencies( &$output ) {
+	public static function addYMapDependencies( Parser &$parser ) {
 		global $wgJsMimeType;
 		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt;
 		
 		if ( empty( $egYahooMapsOnThisPage ) ) {
 			$egYahooMapsOnThisPage = 0;
 
-			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&amp;appid=$egYahooMapsKey'></script>
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
+			$parser->getOutput()->addHeadItem( 
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey"
+					)
+				) .		
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
+					)
+				)						
+			);
 		}
 	}
 	

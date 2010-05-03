@@ -31,12 +31,11 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
 	 */
 	public function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies( $this->output );
+		MapsOpenLayers::addOLDependencies( $this->parser );
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
@@ -44,7 +43,6 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
-	 *
 	 */
 	public function addSpecificMapHTML() {
 		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;

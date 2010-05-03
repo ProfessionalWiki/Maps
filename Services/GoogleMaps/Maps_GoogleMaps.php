@@ -196,7 +196,7 @@ class MapsGoogleMaps {
 	}
 	
 	/**
-	 * Add references to the Google Maps API and required JS file to the provided output 
+	 * Loads the Google Maps API and required JS files.
 	 *
 	 * @param Parser $parser
 	 */

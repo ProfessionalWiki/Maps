@@ -120,21 +120,42 @@ class MapsOpenLayers {
 	}
 	
 	/**
-	 * If this is the first open layers map on the page, load the API, styles and extra JS functions
+	 * If this is the first open layers map on the page, load the API, styles and extra JS functions.
 	 * 
-	 * @param string $output
+	 * @param Parser $parser
 	 */
-	public static function addOLDependencies( &$output ) {
+	public static function addOLDependencies( Parser &$parser ) {
 		global $wgJsMimeType;
 		global $egOpenLayersOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
 		if ( empty( $egOpenLayersOnThisPage ) ) {
 			$egOpenLayersOnThisPage = 0;
 			
-			$output .= "<link rel='stylesheet' href='$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>
-			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
+			$parser->getOutput()->addHeadItem( 
+				Html::element(
+					'link', 
+					array(
+						'rel' => 'stylesheet',
+						'type' => 'text/css',
+						'href' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css"
+					)
+				) .				
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js"
+					)
+				) .	
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion"
+					)
+				) .								
+				Html::inlineScript( 'initOLSettings(200, 100);' )
+			);
 		}
 	}
 		
