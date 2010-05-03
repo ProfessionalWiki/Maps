@@ -200,7 +200,7 @@ class MapsGoogleMaps {
 	 *
 	 * @param string $output
 	 */
-	public static function addGMapDependencies( &$output ) {
+	public static function addGMapDependencies( &$output, Parser &$parser ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egGoogleMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 
@@ -209,8 +209,15 @@ class MapsGoogleMaps {
 
 			MapsGoogleMaps::validateGoogleMapsKey();
 
-			$langCode = self::getMappedLanguageCode( $wgLang->getCode() );
-			$output .= "<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl={$langCode}' type='$wgJsMimeType'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script><script type='$wgJsMimeType'>window.unload = GUnload;</script>";
+			$langCode = htmlspecialchars( self::getMappedLanguageCode( $wgLang->getCode() ) );
+			$key = htmlspecialchars( $egGoogleMapsKey );
+			$output .= '<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=$key&amp;hl=$langCode"" type="' .
+				htmlspecialchars( $wgJsMimeType ) . '"></script>';
+			$output .= '<script type="' . htmlspecialchars( $wgJsMimeType ) .
+				'" src="' . htmlspecialchars( $egMapsScriptPath ) . '/Services/GoogleMaps/GoogleMapFunctions' .
+				htmlspecialchars( $egMapsJsExt ) . '?' . $egMapsStyleVersion . '"></script>';
+				
+			$parser->getOutput()->addHeadItem( Html::inlineScript( 'window.unload = GUnload;') );
 		}
 	}
 	
