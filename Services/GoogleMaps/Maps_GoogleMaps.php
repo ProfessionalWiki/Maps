@@ -216,7 +216,7 @@ class MapsGoogleMaps {
 					'script', 
 					array(
 						'type' => $wgJsMimeType,
-						'src' => "http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl=$langCode"
+						'src' => "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode"
 					)
 				) .	
 				Html::element(
@@ -256,8 +256,6 @@ class MapsGoogleMaps {
 	/**
 	 * This function ensures backward compatibility with Semantic Google Maps and other extensions
 	 * using $wgGoogleMapsKey instead of $egGoogleMapsKey.
-	 * 
-	 * FIXME: Possible vunerability when register globals is on.
 	 */
 	public static function validateGoogleMapsKey() {
 		global $egGoogleMapsKey, $wgGoogleMapsKey;
@@ -275,6 +273,8 @@ class MapsGoogleMaps {
 	 * @param string $mapName
 	 * @param string $overlays
 	 * @param string $controls
+	 * 
+	 * FIXME: layer onload function kills maps for some reason
 	 */
 	public static function addOverlayOutput( &$output, Parser &$parser, $mapName, $overlays, $controls ) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
@@ -314,12 +314,21 @@ class MapsGoogleMaps {
 			$overlay = strtolower( $overlay );
 			
 			if ( in_array( $overlay, $overlayNames ) ) {
-				if ( ! in_array( $overlay, $addedOverlays ) ) {
+				if ( !in_array( $overlay, $addedOverlays ) ) {
 					$addedOverlays[] = $overlay;
 					$label = wfMsg( 'maps_' . $overlay );
 					$urlNr = self::$overlayData[$overlay];
-					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
-
+					
+					$overlayHtml .= Html::input(
+						"$mapName-overlay-box",
+						null,
+						'checkbox',
+						array(
+							'id' => "$mapName-overlay-box-$overlay",
+							'onclick' => "switchGLayer(GMaps['$mapName'], this.checked, GOverlays[$urlNr])"
+						)
+					) . htmlspecialchars( $label ) . '<br />' ;
+					
 					if ( $isOn ) {
 						$onloadFunctions[] = "addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );";
 					}
