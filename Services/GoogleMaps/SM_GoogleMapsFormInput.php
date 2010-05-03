@@ -41,10 +41,10 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 * @see smw/extensions/SemanticMaps/FormInputs/SMFormInput#addFormDependencies()
 	 */
 	protected function addFormDependencies() {
-		global $wgJsMimeType;
+		global $wgJsMimeType, $wgParser;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
-		
-		MapsGoogleMaps::addGMapDependencies( $this->output );
+
+		MapsGoogleMaps::addGMapDependencies( $this->output, $wgParser );
 		
 		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;
@@ -120,7 +120,7 @@ EOT
 	protected function manageGeocoding() {
 		global $egGoogleMapsKey;
 		$this->enableGeocoding = strlen( trim( $egGoogleMapsKey ) ) > 0;
-		if ( $this->enableGeocoding ) MapsGoogleMaps::addGMapDependencies( $this->output );
+		if ( $this->enableGeocoding ) MapsGoogleMaps::addGMapDependencies( $this->output, $this->parser );
 	}
 	
 }

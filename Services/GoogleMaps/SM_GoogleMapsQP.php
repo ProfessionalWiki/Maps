@@ -47,11 +47,11 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage;
+		global $wgParser, $egGoogleMapsOnThisPage;
 
 		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies( $this->output );
+			MapsGoogleMaps::addGMapDependencies( $this->output, $wgParser );
 		}
 		
 		$egGoogleMapsOnThisPage++;
