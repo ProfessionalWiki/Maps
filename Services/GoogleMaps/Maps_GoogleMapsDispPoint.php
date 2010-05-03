@@ -66,7 +66,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		
 		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
+		MapsGoogleMaps::addOverlayOutput( $this->output, $this->parser, $mapName, $this->overlays, $this->controls );
 
 		$this->output .= Html::element(
 			'div',

@@ -271,11 +271,12 @@ class MapsGoogleMaps {
 	 * Adds the needed output for the overlays control.
 	 * 
 	 * @param string $output
+	 * @param Parser $parser
 	 * @param string $mapName
 	 * @param string $overlays
 	 * @param string $controls
 	 */
-	public static function addOverlayOutput( &$output, $mapName, $overlays, $controls ) {
+	public static function addOverlayOutput( &$output, Parser &$parser, $mapName, $overlays, $controls ) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
 		
 		// Check to see if there is an overlays control.
@@ -301,13 +302,14 @@ class MapsGoogleMaps {
 		// If the overlays JS and CSS has not yet loaded, do it.
 		if ( empty( $egMapsGoogleOverlLoaded ) ) {
 			$egMapsGoogleOverlLoaded = true;
-			MapsGoogleMaps::addOverlayCss( $output );
+			self::addOverlayCss( $parser );
 		}
 		
 		// Add the inputs for the overlays.
 		$addedOverlays = array();
 		$overlayHtml = '';
 		$onloadFunctions = array();
+		
 		foreach ( $overlays as $overlay => $isOn ) {
 			$overlay = strtolower( $overlay );
 			
@@ -317,6 +319,7 @@ class MapsGoogleMaps {
 					$label = wfMsg( 'maps_' . $overlay );
 					$urlNr = self::$overlayData[$overlay];
 					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
+
 					if ( $isOn ) {
 						$onloadFunctions[] = "addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );";
 					}
@@ -324,29 +327,37 @@ class MapsGoogleMaps {
 			}
 		}
 		
-		$output .= <<<EOT
-<script type='$wgJsMimeType'>var timer_$mapName;</script>		
-<div class='outer-more' id='$mapName-outer-more'><form action=''><div class='more-box' id='$mapName-more-box'>
-$overlayHtml
-</div></form></div>		
-EOT;
-
-		if ( count( $onloadFunctions ) > 0 ) {
-			$output .= "<script type='$wgJsMimeType'>" . implode( "\n", $onloadFunctions ) . '</script>';
-		}
+		$output .= Html::rawElement(
+			'div',
+			array(
+				'class' => 'outer-more',
+				'id' => htmlspecialchars( "$mapName-outer-more" )
+			),
+			'<form action="">' .
+			Html::rawElement(
+				'div',
+				array(
+					'class' => 'more-box',
+					'id' => htmlspecialchars( "$mapName-more-box" )
+				),
+				$overlayHtml
+			) .
+			'</form>'
+		);
+		
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( 'var timer_' . htmlspecialchars( $mapName ) . ';' . implode( "\n", $onloadFunctions ) )
+		);
 	}
 	
 	/**
 	 * Add CSS for the overlays. 
 	 * 
-	 * @param $output
-	 * 
-	 * TODO
+	 * @param Parser $parser
 	 */
-	private static function addOverlayCss( &$output ) {
-		$css = <<<END
-
-<style type="text/css">
+	private static function addOverlayCss( Parser &$parser ) {
+		$parser->getOutput()->addHeadItem(
+			Html::inlineStyle( <<<EOT
 .inner-more {
 	text-align:center;
 	font-size:12px;
@@ -383,12 +394,10 @@ EOT;
 .more-box.highlight {
 	width:119px;
 	border-width:2px;
-}	
-</style>	
-
-END;
-
-	$output .= preg_replace( '/\s+/m', ' ', $css );
+}
+EOT
+			)
+		);
 	}
 	
 }
