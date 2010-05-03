@@ -44,7 +44,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgJsMimeType, $wgParser;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 
-		MapsGoogleMaps::addGMapDependencies( $this->output, $wgParser );
+		MapsGoogleMaps::addGMapDependencies( $wgParser );
 		
 		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;

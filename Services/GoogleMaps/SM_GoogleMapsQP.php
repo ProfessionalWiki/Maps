@@ -22,7 +22,6 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
-	 *
 	 */
 	protected function setQueryPrinterSettings() {
 		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
@@ -44,14 +43,13 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
 		global $wgParser, $egGoogleMapsOnThisPage;
 
 		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies( $this->output, $wgParser );
+			MapsGoogleMaps::addGMapDependencies( $wgParser );
 		}
 		
 		$egGoogleMapsOnThisPage++;
@@ -61,7 +59,6 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::getQueryResult()
-	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
 		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
