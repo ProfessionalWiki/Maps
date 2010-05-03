@@ -37,7 +37,7 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function addSpecificMapHTML() {
 		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
 		
 		$mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
@@ -51,7 +51,7 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
+		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {

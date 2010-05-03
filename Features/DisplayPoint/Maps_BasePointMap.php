@@ -106,13 +106,15 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	 * @return html
 	 */
 	public final function getMapHtml( Parser &$parser, array $params ) {
+		$this->parser = $parser;
+		
 		$this->featureParameters = MapsDisplayPoint::$parameters;
 	
 		$this->doMapServiceLoad();
 
 		$this->setMapProperties( $params );
 		
-		$this->setMarkerData( $parser );
+		$this->setMarkerData();
 
 		$this->createMarkerString();
 		
@@ -122,19 +124,17 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			$this->zoom = $this->getDefaultZoom();
 		}
 		
-		$this->addSpecificMapHTML( $parser );
+		$this->addSpecificMapHTML();
 		
 		return $this->output;
 	}
 	
 	/**
 	 * Fills the $markerData array with the locations and their meta data.
-	 *
-	 * @param unknown_type $parser
 	 */
-	private function setMarkerData( $parser ) {
-		$this->title = Xml::escapeJsString( $parser->recursiveTagParse( $this->title ) );
-		$this->label = Xml::escapeJsString( $parser->recursiveTagParse( $this->label ) );
+	private function setMarkerData() {
+		$this->title = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->title ) );
+		$this->label = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->label ) );
 		
 		foreach ( $this->coordinates as $coordinates ) {
 			$args = explode( '~', $coordinates );
@@ -145,11 +145,11 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			
 			if ( count( $args ) > 1 ) {
 				// Parse and add the point specific title if it's present.
-				$markerData['title'] = $parser->recursiveTagParse( $args[1] );
+				$markerData['title'] = $this->parser->recursiveTagParse( $args[1] );
 				
 				if ( count( $args ) > 2 ) {
 					// Parse and add the point specific label if it's present.
-					$markerData['label'] = $parser->recursiveTagParse( $args[2] );
+					$markerData['label'] = $this->parser->recursiveTagParse( $args[2] );
 					
 					if ( count( $args ) > 3 ) {
 						// Add the point specific icon if it's present.

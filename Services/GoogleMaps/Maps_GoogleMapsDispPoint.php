@@ -61,7 +61,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function addSpecificMapHTML() {
 		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
 		
 		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
@@ -77,7 +77,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
+		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript(
 				<<<EOT
 addOnloadHook(

@@ -30,6 +30,8 @@ abstract class MapsBaseMap implements iMapParserFunction {
 
 	protected $output = '';
 
+	protected $parser;
+	
 	protected $spesificParameters = false;
 	protected $featureParameters = false;
 	
@@ -88,6 +90,8 @@ abstract class MapsBaseMap implements iMapParserFunction {
 	 * @return html
 	 */
 	public final function getMapHtml( Parser &$parser, array $params ) {
+		$this->parser = $parser;
+		
 		$this->featureParameters = MapsDisplayMap::$parameters;
 		
 		$this->doMapServiceLoad();
@@ -100,7 +104,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 			$this->zoom = $this->getDefaultZoom();
 		}
 		
-		$this->addSpecificMapHTML( $parser );
+		$this->addSpecificMapHTML();
 		
 		return $this->output;
 	}

@@ -46,7 +46,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function addSpecificMapHTML() {
 		global $egMapsGMaps3Prefix, $egGMaps3OnThisPage;
 		
 		$mapName = $egMapsGMaps3Prefix . '_' . $egGMaps3OnThisPage;
@@ -60,7 +60,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 			null
 		);
 		
-		$parser->getOutput()->addHeadItem(
+		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
