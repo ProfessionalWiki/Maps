@@ -61,7 +61,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 * @see SMMapPrinter::getQueryResult()
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
-		MapsGoogleMaps::addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
+		MapsGoogleMaps::addOverlayOutput( $this->output, $parser, $this->mapName, $this->overlays, $this->controls );
 		
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
