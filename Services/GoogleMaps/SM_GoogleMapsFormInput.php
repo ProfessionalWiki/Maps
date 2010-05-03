@@ -48,7 +48,16 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		
 		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions{$egMapsJsExt}?$smgStyleVersion'></script>";
+			
+			$wgParser->getOutput()->addHeadItem( 
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions{$egMapsJsExt}?$smgStyleVersion"
+					)
+				)
+			);
 		}
 	}
 	

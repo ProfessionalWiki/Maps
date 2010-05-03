@@ -18,7 +18,6 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
-	 *
 	 */
 	protected function setQueryPrinterSettings() {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
@@ -30,12 +29,11 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage;
+		global $egYahooMapsOnThisPage, $wgParser;
 		
-		MapsYahooMaps::addYMapDependencies( $this->output );
+		MapsYahooMaps::addYMapDependencies( $wgParser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
@@ -43,7 +41,6 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
-	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
 		// TODO: refactor up like done in maps with display point
