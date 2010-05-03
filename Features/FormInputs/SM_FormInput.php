@@ -25,6 +25,7 @@ abstract class SMFormInput {
 	 */
 	protected abstract function addFormDependencies();
 	
+	// TODO: change into a single array
 	protected $marker_lat;
 	protected $marker_lon;
 
@@ -33,8 +34,6 @@ abstract class SMFormInput {
 	protected $showAddresFunction;
 	
 	protected $enableGeocoding = false;
-	
-	private $startingCoords = '';
 	
 	private $coordinates;
 	
@@ -55,11 +54,12 @@ abstract class SMFormInput {
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
 		 * 
-		 * FIXME: this causes some wicket error?
+		 * FIXME: this causes some wicked error?
 		 */
-		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
+		$parameterInfo = /* array_merge_recursive( MapsMapper::getCommonParameters(), */ SMFormInputs::$parameters /* ) */;
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
+		$parameterInfo = array();
 		
 		$manager = new ValidatorManager();
 		
@@ -107,9 +107,24 @@ abstract class SMFormInput {
 		$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
 
 		// Create the non specific form HTML.
-		$this->output .= "
-		<input id='" . $this->coordsFieldName . "' name='$input_name' type='text' value='$this->startingCoords' size='40' tabindex='$sfgTabIndex'>
-		<span id='" . $this->infoFieldName . "' class='error_message'></span>";
+		$this->output .= Html::input( 
+			$input_name,
+			MapsCoordinateParser::formatCoordinates( array( 'lat' => $this->marker_lat, 'lon' => $this->marker_lon ) ),
+			'text',
+			array(
+				'size' => 42,
+				'tabindex' => $sfgTabIndex,
+				'id' => $this->coordsFieldName
+			)
+		);
+		
+		$this->output .= Html::element( 
+			'span',
+			array(
+				'class' => 'error_message',
+				'id' => $this->infoFieldName
+			)
+		);
 		
 		if ( $this->enableGeocoding ) $this->addGeocodingField();
 		
@@ -143,17 +158,27 @@ EOT
 			);
 		}
 		
-		// Retrieve language values.
-		$enter_address_here_text = Xml::escapeJsString( wfMsg( 'semanticmaps_enteraddresshere' ) );
-		$lookup_coordinates_text = Xml::escapeJsString( wfMsg( 'semanticmaps_lookupcoordinates' ) );
-		$not_found_text = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
+		$adress_field = SMFormInput::getDynamicInput(
+			$this->geocodeFieldName,
+			wfMsg( 'semanticmaps_enteraddresshere' ),
+			'size="30" name="geocode" style="color: #707070" tabindex="' . htmlspecialchars( $sfgTabIndex ) . '"'
+		);
 		
-		$adress_field = SMFormInput::getDynamicInput( $this->geocodeFieldName, $enter_address_here_text, 'size="30" name="geocode" style="color: #707070" tabindex="' . $sfgTabIndex . '"' );
-		$this->output .= "
-		<p>
-			$adress_field
-			<input type='submit' onClick=\"$this->showAddresFunction(document.forms['createbox'].$this->geocodeFieldName.value, '$this->mapName', '$this->coordsFieldName', '$not_found_text'); return false\" value='$lookup_coordinates_text' />
-		</p>";
+		$notFoundText = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
+		$mapName = Xml::escapeJsString( $this->mapName );
+		$geoFieldName = Xml::escapeJsString( $this->geocodeFieldName );
+		$coordFieldName = Xml::escapeJsString( $this->coordsFieldName );
+		
+		$this->output .= '<p>' . $adress_field .
+			Html::input(
+				'geosubmit',
+				wfMsg( 'semanticmaps_lookupcoordinates' ),
+				'submit',
+				array(
+					'onClick' => "$this->showAddresFunction( document.forms['createbox'].$geoFieldName.value, '$mapName', '$coordFieldName', '$notFoundText'); return false"
+				)
+			) . 
+			'</p>';
 	}
 	
 	/**
@@ -163,40 +188,13 @@ EOT
 	private function setZoom() {
         if ( empty( $this->coordinates ) ) {
             $this->zoom = $this->earthZoom;
-        } else if ( strlen( $this->zoom ) < 1 ) {
+        } else if (  $this->zoom == '' ) {
              $this->zoom = $this->defaultZoom;
         }
 	}
 	
 	/**
-	 * 
-	 * @param $decimal
-	 * @return unknown_type
-	 */
-	private static function latDecimal2Degree( $decimal ) {
-		$deg = Maps_GEO_DEG;
-		if ( $decimal < 0 ) {
-			return abs ( $decimal ) . "$deg S";
-		} else {
-			return $decimal . "$deg N";
-		}
-	}
-	
-	/**
-	 * 
-	 * @param $decimal
-	 * @return unknown_type
-	 */
-	private static function lonDecimal2Degree( $decimal ) {
-		if ( $decimal < 0 ) {
-			return abs ( $decimal ) . "° W";
-		} else {
-			return $decimal . "° E";
-		}
-	}
-	
-	/**
-	 * Sets the $marler_lon and $marler_lat fields and when set, the starting coordinates
+	 * Sets the $marler_lon and $marler_lat fields and when set, the starting coordinates.
 	 */
 	private function setCoordinates() {
 		if ( empty( $this->coordinates ) ) {
@@ -208,7 +206,6 @@ EOT
 			$marker = MapsCoordinateParser::parseCoordinates( $this->coordinates );
 			$this->marker_lat = $marker['lat'];
 			$this->marker_lon = $marker['lon'];
-			$this->startingCoords =  self::latDecimal2Degree( $this->marker_lat ) . ', ' . self::lonDecimal2Degree( $this->marker_lon );
 		}
 	}
 	

@@ -19,18 +19,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  * 
  * @ingroup SemanticMaps
- * 
- * TODO: storing the distance here does not seem quite right
  */
 class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
 	public function __construct( SMGeoCoordsValue $dataValue, $radius, $comparator = SMW_CMP_EQ ) {
-		parent::__construct( $dataValue, $comparator );
-		
-		// TODO: get user provided distance
-		// global $smgGeoCoordDistance;
-		// $distance = $smgGeoCoordDistance; 		
+		parent::__construct( $dataValue, $comparator );	
 
 		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
 		if ( self::geoFunctionsAreAvailable() ) {
@@ -48,6 +42,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	
 	/**
 	 * @see SMWDescription:getQueryString
+	 * 
 	 * @param Boolean $asvalue
 	 */
 	public function getQueryString( $asValue = false ) {
@@ -75,6 +70,9 @@ class SMAreaValueDescription extends SMWValueDescription {
 		}
     }
     
+    /**
+     * Returns the bounds of the area.
+     */
     public function getBounds() {
     	return $this->mBounds;
     }

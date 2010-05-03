@@ -75,10 +75,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
 	 * comparators between all values.
 	 * 
-	 * @return SMGeoCoordsValueDescription
+	 * @return SMWDescription
 	 */
 	public function getQueryDescription( $value ) {
-		// TODO
 		return parent::getQueryDescription( $value );
 	}
 	
@@ -91,7 +90,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->mCoordinateSet['lat'] = $args[0];
 		$this->mCoordinateSet['lon'] = $args[1];
 		
-		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
+		$this->m_caption = MapsCoordinateParser::formatCoordinates(
+			$this->mCoordinateSet,
+			$smgQPCoodFormat,
+			$smgQPCoodDirectional
+		);
 		$this->mWikivalue = $this->m_caption;
 	}
 	
@@ -122,12 +125,14 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
-			return '<span class="smwttinline">' . $this->m_caption . '<span class="smwttcontent">' .
-		        wfMsgForContent( 'maps-latitude' ) . ' ' . $this->mCoordinateSet['lat'] . '<br />' .
-		        wfMsgForContent( 'maps-longitude' ) . ' ' . $this->mCoordinateSet['lon'] .
+			return '<span class="smwttinline">' . htmlspecialchars( $this->m_caption ) . '<span class="smwttcontent">' .
+		        htmlspecialchars (
+		        	wfMsgForContent( 'maps-latitude' ) . ' ' . $this->mCoordinateSet['lat'] . '<br />' .
+		        	wfMsgForContent( 'maps-longitude' ) . ' ' . $this->mCoordinateSet['lon']
+		        ) .
 		        '</span></span>';
 		} else {
-			return $this->m_caption;
+			return htmlspecialchars( $this->m_caption );
 		}
 	}
 	
