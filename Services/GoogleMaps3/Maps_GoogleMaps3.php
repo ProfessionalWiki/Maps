@@ -126,11 +126,11 @@ class MapsGoogleMaps3 {
 	}
 	
 	/**
-	 * Add references to the Google Maps API v3 and required JS file to the provided output 
+	 * Loads the Google Maps API v3 and required JS files.
 	 *
-	 * @param string $output
+	 * @param Parser $parser
 	 */
-	public static function addGMap3Dependencies( &$output ) {
+	public static function addGMap3Dependencies( Parser &$parser ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGMaps3OnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 
@@ -138,7 +138,22 @@ class MapsGoogleMaps3 {
 			$egGMaps3OnThisPage = 0;
 
 			$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
-			$output .= "<script type='$wgJsMimeType' src='http://maps.google.com/maps/api/js?sensor=false&amp;language={$languageCode}'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
+			$parser->getOutput()->addHeadItem( 
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode"
+					)
+				) .
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion"
+					)
+				)				
+			);
 		}
 	}
 	
