@@ -209,20 +209,25 @@ class MapsGoogleMaps {
 
 			MapsGoogleMaps::validateGoogleMapsKey();
 
-			$key = htmlspecialchars( $egGoogleMapsKey );
-			$langCode = htmlspecialchars( self::getMappedLanguageCode( $wgLang->getCode() ) );
-			$type = htmlspecialchars( $wgJsMimeType );
-			$path = htmlspecialchars( $egMapsScriptPath );
-			$ext = htmlspecialchars( $egMapsJsExt );
-			$styleVersion = htmlspecialchars( $egMapsStyleVersion );
+			$langCode = self::getMappedLanguageCode( $wgLang->getCode() );
 			
-			$parser->getOutput()->addHeadItem( <<<EOT
-<script type="$type" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=$key&amp;hl=$langCode"></script>
-<script type="$type" src="$path/Services/GoogleMaps/GoogleMapFunctions{$ext}?$styleVersion"></script>
-EOT
+			$parser->getOutput()->addHeadItem( 
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl=$langCode"
+					)
+				) .	
+				Html::element(
+					'script', 
+					array(
+						'type' => $wgJsMimeType,
+						'src' => "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
+					)
+				) .								
+				Html::inlineScript( 'window.unload = GUnload;' )
 			);
-				
-			$parser->getOutput()->addHeadItem( Html::inlineScript( 'window.unload = GUnload;') );
 		}
 	}
 	
