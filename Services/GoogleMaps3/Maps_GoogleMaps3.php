@@ -49,8 +49,8 @@ class MapsGoogleMaps3 {
 
 		self::initializeParams();
 		
-		Validator::addOutputFormat( 'gmap3type', array( 'MapsGoogleMaps3', 'setGMapType' ) );
-		Validator::addOutputFormat( 'gmap3types', array( 'MapsGoogleMaps3', 'setGMapTypes' ) );
+		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
+		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );
 		
 		return true;
 	}
@@ -108,7 +108,7 @@ class MapsGoogleMaps3 {
 	 * 
 	 * @return string
 	 */
-	public static function setGMapType( &$type ) {
+	public static function setGMapType( &$type, $name, array $parameters ) {
 		$type = 'google.maps.MapTypeId.' . self::$mapTypes[ $type ];
 	}
 	
@@ -119,9 +119,9 @@ class MapsGoogleMaps3 {
 	 * 
 	 * @return array
 	 */
-	public static function setGMapTypes( array &$types ) {
+	public static function setGMapTypes( array &$types, $name, array $parameters ) {
 		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
-			self::setGMapType( $types[$i] );
+			self::setGMapType( $types[$i], $name, $parameters );
 		}
 	}
 	

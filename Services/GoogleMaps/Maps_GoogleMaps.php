@@ -178,7 +178,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return string
 	 */
-	public static function setGMapType( &$type ) {
+	public static function setGMapType( &$type, $name, array $parameters ) {
 		$type = self::$mapTypes[ $type ];
 	}
 	
@@ -189,7 +189,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return array
 	 */
-	public static function setGMapTypes( array &$types ) {
+	public static function setGMapTypes( array &$types, $name, array $parameters ) {
 		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
 			$types[$i] = self::$mapTypes[ $types[$i] ];
 		}

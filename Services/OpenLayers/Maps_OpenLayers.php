@@ -205,7 +205,7 @@ class MapsOpenLayers {
 	 * 
 	 * @param array $layers
 	 */
-	public static function unpackLayerGroups( array &$layers ) {
+	public static function unpackLayerGroups( array &$layers, $name, array $parameters ) {
 		global $egMapsOLLayerGroups;
 		
 		$unpacked = array();

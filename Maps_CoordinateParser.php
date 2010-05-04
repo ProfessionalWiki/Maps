@@ -180,9 +180,11 @@ class MapsCoordinateParser {
 	 */
 	private static function normalizeCoordinates( $coordinates ) {
 		$coordinates = trim( $coordinates );
+		
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
 		$coordinates = str_replace( array( '&acute;', '&#180;' ), Maps_GEO_SEC, $coordinates );
 		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″' ), Maps_GEO_MIN, $coordinates );
+		
 		return str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
 	}
 	

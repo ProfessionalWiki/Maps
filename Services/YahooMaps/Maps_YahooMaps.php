@@ -134,7 +134,7 @@ class MapsYahooMaps {
 	 * 
 	 * @return string
 	 */
-	public static function setYMapType( &$type ) {
+	public static function setYMapType( &$type, $name, array $parameters ) {
 		$type = self::$mapTypes[ $type ];
 	}
 	
@@ -145,7 +145,7 @@ class MapsYahooMaps {
 	 * 
 	 * @return array
 	 */
-	public static function setYMapTypes( array &$types ) {
+	public static function setYMapTypes( array &$types, $name, array $parameters ) {
 		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
 			$types[$i] = self::$mapTypes[ $types[$i] ];
 		}

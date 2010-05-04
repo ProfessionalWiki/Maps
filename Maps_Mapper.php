@@ -43,7 +43,7 @@ final class MapsMapper {
 		return true;
 	}
 
-	public static function formatLocation( &$location ) {
+	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
 			$location = MapsGeocoder::attemptToGeocodeToString( $location );
 		} else {
@@ -51,10 +51,10 @@ final class MapsMapper {
 		}
 	}
 
-	public static function formatLocations( &$locations ) {
+	public static function formatLocations( &$locations, $name, array $parameters ) {
 		$locations = (array)$locations;
 		foreach ( $locations as &$location ) {
-			self::formatLocation( $location );
+			self::formatLocation( $location, $name, $parameters );
 		}
 	}
 
@@ -187,7 +187,7 @@ final class MapsMapper {
 	 * @param string $dimension Must be width or height.
 	 * @param number $default The default value for this dimension.
 	 */
-	public static function setMapDimension( &$value, $dimension, $default ) {
+	public static function setMapDimension( &$value, $name, array $parameters, $dimension, $default ) {
 		self::isMapDimension( $value, array(), $dimension, true, $default );
 	}
 
