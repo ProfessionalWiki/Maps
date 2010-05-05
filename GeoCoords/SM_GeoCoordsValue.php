@@ -126,10 +126,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
 			return '<span class="smwttinline">' . htmlspecialchars( $this->m_caption ) . '<span class="smwttcontent">' .
-		        htmlspecialchars (
-		        	wfMsgForContent( 'maps-latitude' ) . ' ' . $this->mCoordinateSet['lat'] . '<br />' .
-		        	wfMsgForContent( 'maps-longitude' ) . ' ' . $this->mCoordinateSet['lon']
-		        ) .
+		        htmlspecialchars ( wfMsgForContent( 'maps-latitude' ) . ' ' . $this->mCoordinateSet['lat'] ) . '<br />' .
+		        htmlspecialchars ( wfMsgForContent( 'maps-longitude' ) . ' ' . $this->mCoordinateSet['lon'] ) .
 		        '</span></span>';
 		} else {
 			return htmlspecialchars( $this->m_caption );
