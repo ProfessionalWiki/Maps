@@ -6,16 +6,43 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.6 ===
+(2010-05-xx)
+
+==== New features ====
+
+* Added full support for both directional and non-directional coordinate notations in DMS, DD, DM and float notation.
+
+* Added native geographical proximity query support.
+
+* Added settings to specify the width and height of maps in forms.
+
+* Added settings to specify the format of coordinates as shown in query printouts. 
+
+==== Refactoring ====
+
+* Rewrote map divs and added loading message for each map.
+
+* Rewrote individual map JS to be added to the page header.
+
+* Restructured the directory structure to make what the services and features are more clear.
+
+* Rewrote storage of coordinates to make the proximity query scalable.
+
 === Semantic Maps 0.5.5 ===
 (2010-03-20)
 
 ==== Refactoring ====
+
+* Moved the geographical proximity query from Semantic MediaWiki over to Semantic Maps.
 
 * Stylized the code to conform to MediaWiki's spacing conventions.
 
 ==== Bug fixes ====
 
 * Fixed issue causing properties of type Page to not show up in pop-ups when using the template parameter.
+
+* Fixed escaping issues that caused pop-ups to break when they contained '-signs.
 
 === Semantic Maps 0.5.4 ===
 (2010-03-01)
@@ -79,10 +106,10 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 * Fixed issue with the query printers causing error messages to be shown for ask specific parameters.
 
-=== Semantic Maps 0.5 ===
+===Semantic Maps 0.5===
 (2009-12-17)
 
-==== New features ====
+====New features====
 
 * Added a result format for the OL optimized for OSM service.
 
