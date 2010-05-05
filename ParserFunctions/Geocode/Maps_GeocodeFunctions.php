@@ -72,7 +72,7 @@ final class MapsGeocodeFunctions {
 		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageParameters(
+		$doGeocoding = $manager->manageParameters(
 			$args,
 			array(
 				'location' => array(
@@ -111,9 +111,9 @@ final class MapsGeocodeFunctions {
 			array( 'location', 'service', 'mappingservice' )
 		);
 		
-		$doGeocoding = $parameters !== false;
-		
 		if ( $doGeocoding ) {
+			$parameters = $manager->getParameters( false );
+			
 			if ( self::geocoderIsAvailable() ) {
 				$geovalues = MapsGeocoder::attemptToGeocodeToString(
 					$parameters['location'],

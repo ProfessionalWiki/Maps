@@ -61,7 +61,7 @@ final class MapsGeoFunctions {
 		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageParameters(
+		$doCalculation = $manager->manageParameters(
 			$args,
 			array(
 				'location1' => array(
@@ -74,9 +74,9 @@ final class MapsGeoFunctions {
 			array( 'location1', 'location2' )
 		);
 		
-		$doCalculation = $parameters !== false;
-		
 		if ( $doCalculation ) {
+			$parameters = $manager->getParameters( false );
+			
 			$canGeocode = MapsMapper::geocoderIsAvailable();
 			
 			if ( $canGeocode ) {
@@ -144,7 +144,7 @@ final class MapsGeoFunctions {
 		
 		$manager = new ValidatorManager();
 		
-		$parameters = $manager->manageParameters(
+		$doCalculation = $manager->manageParameters(
 			$args,
 			array(
 				'location' => array(
@@ -190,9 +190,10 @@ final class MapsGeoFunctions {
 			),
 			array( 'location', 'bearing', 'distance' )
 		);
-		$doCalculation = $parameters !== false;
 
 		if ( $doCalculation ) {
+			$parameters = $manager->getParameters( false );
+			
 			$canGeocode = MapsMapper::geocoderIsAvailable();
 			
 			if ( $canGeocode ) {

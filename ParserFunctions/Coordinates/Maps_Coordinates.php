@@ -51,7 +51,7 @@ function efMapsRenderCoordinates() {
 	
 	$manager = new ValidatorManager();
 	
-	$parameters = $manager->manageParameters(
+	$doFormatting = $manager->manageParameters(
 		$args,
 		array(
 			'location' => array(
@@ -74,9 +74,9 @@ function efMapsRenderCoordinates() {
 		array( 'location', 'format', 'directional' )
 	);
 	
-	$doFormatting = $parameters !== false;
-	
 	if ( $doFormatting ) {
+		$parameters = $manager->getParameters( false );
+		
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
 		if ( $parsedCoords ) {

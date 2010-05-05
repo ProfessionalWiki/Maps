@@ -88,17 +88,15 @@ final class MapsParserFunctions {
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$service]['parameters'] );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $mapClass->getSpecificParameterInfo() );
 		
-		$parameters = $manager->manageParameters(
+		$displayMap = $manager->manageParameters(
 			$parameters,
 			$parameterInfo,
 			array( 'coordinates' )
 		);
-        
-		$displayMap = $parameters !== false;
 		
         if ( $displayMap ) {
             // Call the function according to the map service to get the HTML output.
-            $output = $mapClass->getMapHtml( $parser, $parameters ) . $manager->getErrorList();
+            $output = $mapClass->getMapHtml( $parser, $manager->getParameters( false ) ) . $manager->getErrorList();
         } else {
         	// TODO: Get failiures
         	if ( $egValidatorFatalLevel == Validator_ERRORS_WARN ) {
