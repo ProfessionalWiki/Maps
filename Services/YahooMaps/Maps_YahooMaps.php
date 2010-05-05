@@ -154,31 +154,40 @@ class MapsYahooMaps {
 	/**
 	 * Loads the Yahoo! Maps API and required JS files.
 	 *
-	 * @param Parser $parser
+	 * @param mixed $parserOrOut
 	 */
-	public static function addYMapDependencies( Parser &$parser ) {
+	public static function addYMapDependencies( &$parserOrOut ) {
 		global $wgJsMimeType;
 		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt;
 		
 		if ( empty( $egYahooMapsOnThisPage ) ) {
 			$egYahooMapsOnThisPage = 0;
 
-			$parser->getOutput()->addHeadItem( 
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey"
-					)
-				) .		
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
-					)
-				)						
-			);
+			if ( $parserOrOut instanceof Parser ) {
+				$parser = $parserOrOut;
+				
+				$parser->getOutput()->addHeadItem( 
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey"
+						)
+					) .		
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
+						)
+					)						
+				);				
+			}
+			else if ( $parserOrOut instanceof OutputPage ) {
+				$out = $parserOrOut;
+				$out->addScriptFile( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
+			}			
 		}
 	}
 	

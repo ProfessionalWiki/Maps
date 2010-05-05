@@ -218,7 +218,7 @@ final class MapsMapper {
 
 		return $allServiceValues;
 	}
-
+	
 	/**
 	 * This function returns the definitions for the parameters used by every map feature.
 	 *

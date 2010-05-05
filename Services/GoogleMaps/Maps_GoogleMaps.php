@@ -198,12 +198,12 @@ class MapsGoogleMaps {
 	/**
 	 * Loads the Google Maps API and required JS files.
 	 *
-	 * @param Parser $parser
+	 * @param mixed $parserOrOut
 	 */
-	public static function addGMapDependencies( Parser &$parser ) {
+	public static function addGMapDependencies( &$parserOrOut ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egGoogleMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
-
+		
 		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
 
@@ -211,23 +211,32 @@ class MapsGoogleMaps {
 
 			$langCode = self::getMappedLanguageCode( $wgLang->getCode() );
 			
-			$parser->getOutput()->addHeadItem( 
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode"
-					)
-				) .	
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
-					)
-				) .								
-				Html::inlineScript( 'window.unload = GUnload;' )
-			);
+			if ( $parserOrOut instanceof Parser ) {
+				$parser = $parserOrOut;
+				
+				$parser->getOutput()->addHeadItem( 
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode"
+						)
+					) .	
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
+						)
+					) .						
+					Html::inlineScript( 'window.unload = GUnload;' )
+				);				
+			}
+			else if ( $parserOrOut instanceof OutputPage ) {
+				$out = $parserOrOut;
+				$out->addScriptFile( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
+			}			
 		}
 	}
 	

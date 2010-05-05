@@ -122,41 +122,51 @@ class MapsOpenLayers {
 	/**
 	 * If this is the first open layers map on the page, load the API, styles and extra JS functions.
 	 * 
-	 * @param Parser $parser
+	 * @param mixed $parserOrOut
 	 */
-	public static function addOLDependencies( Parser &$parser ) {
+	public static function addOLDependencies( &$parserOrOut ) {
 		global $wgJsMimeType;
 		global $egOpenLayersOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
 		if ( empty( $egOpenLayersOnThisPage ) ) {
 			$egOpenLayersOnThisPage = 0;
 			
-			$parser->getOutput()->addHeadItem( 
-				Html::element(
-					'link', 
-					array(
-						'rel' => 'stylesheet',
-						'type' => 'text/css',
-						'href' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css"
-					)
-				) .				
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js"
-					)
-				) .	
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion"
-					)
-				) .								
-				Html::inlineScript( 'initOLSettings(200, 100);' )
-			);
-		}
+			if ( $parserOrOut instanceof Parser ) {
+				$parser = $parserOrOut;
+				
+				$parser->getOutput()->addHeadItem( 
+					Html::element(
+						'link', 
+						array(
+							'rel' => 'stylesheet',
+							'type' => 'text/css',
+							'href' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css"
+						)
+					) .				
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion"
+						)
+					) .	
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion"
+						)
+					) .								
+					Html::inlineScript( 'initOLSettings(200, 100);' )
+				);				
+			}
+			else if ( $parserOrOut instanceof OutputPage ) {
+				$out = $parserOrOut;
+				$out->addStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
+			}			
+		}			
 	}
 		
 	/**

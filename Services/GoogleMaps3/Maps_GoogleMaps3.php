@@ -128,9 +128,9 @@ class MapsGoogleMaps3 {
 	/**
 	 * Loads the Google Maps API v3 and required JS files.
 	 *
-	 * @param Parser $parser
+	 * @param mixed $parserOrOut
 	 */
-	public static function addGMap3Dependencies( Parser &$parser ) {
+	public static function addGMap3Dependencies( &$parserOrOut ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGMaps3OnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 
@@ -138,22 +138,32 @@ class MapsGoogleMaps3 {
 			$egGMaps3OnThisPage = 0;
 
 			$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
-			$parser->getOutput()->addHeadItem( 
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode"
-					)
-				) .
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion"
-					)
-				)				
-			);
+			
+			if ( $parserOrOut instanceof Parser ) {
+				$parser = $parserOrOut;
+				
+				$parser->getOutput()->addHeadItem( 
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode"
+						)
+					) .
+					Html::element(
+						'script', 
+						array(
+							'type' => $wgJsMimeType,
+							'src' => "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion"
+						)
+					)				
+				);				
+			}
+			else if ( $parserOrOut instanceof OutputPage ) {
+				$out = $parserOrOut;
+				$out->addScriptFile( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" );
+			}
 		}
 	}
 	
