@@ -67,6 +67,12 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
 		return array(
+			'width' => array(
+				'default' => $egMapsMapWidth
+			),
+			'height' => array(
+				'default' => $egMapsMapHeight
+			),			
 			'service' => array(
 				'default' => $egMapsDefaultServices['display_point']
 			),

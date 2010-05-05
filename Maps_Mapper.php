@@ -270,14 +270,12 @@ final class MapsMapper {
 				'criteria' => array(
 					'is_map_dimension' => array( 'width' ),
 				),
-				'default' => $egMapsMapWidth,
 				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
 			),
 			'height' => array(
 				'criteria' => array(
 					'is_map_dimension' => array( 'height' ),
 				),
-				'default' => $egMapsMapHeight,
 				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
 			),
 		);
