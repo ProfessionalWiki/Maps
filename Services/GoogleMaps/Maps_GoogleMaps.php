@@ -164,7 +164,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return boolean
 	 */
-	public static function isGOverlay( $value, array $metaData ) {
+	public static function isGOverlay( $value, $name, array $parameters ) {
 		$value = explode( '-', $value );
 		if ( count( $value ) > 2 ) return false;
 		if ( count( $value ) > 1 && !in_array( $value[1], array( '0', '1' ) ) ) return false;
