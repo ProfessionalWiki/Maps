@@ -64,7 +64,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	 * @return array
 	 */
 	public function getFeatureParameters() {
-		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsMapWidth, $egMapsMapHeight;
 		
 		return array(
 			'width' => array(
