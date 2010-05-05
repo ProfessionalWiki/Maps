@@ -25,6 +25,8 @@ abstract class SMFormInput {
 	 */
 	protected abstract function addFormDependencies();
 	
+	protected $mapName;
+	
 	// TODO: change into a single array
 	protected $marker_lat;
 	protected $marker_lon;
@@ -53,23 +55,30 @@ abstract class SMFormInput {
 		 * by the feature parameters (the ones spesific to a feature). The result is then
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
-		 * 
-		 * FIXME: this causes some wicked error?
 		 */
-		$parameterInfo = /* array_merge_recursive( MapsMapper::getCommonParameters(), */ SMFormInputs::$parameters /* ) */;
+		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
-		$parameterInfo = array();
 		
 		$manager = new ValidatorManager();
 		
 		$showMap = $manager->manageParameters( $mapProperties, $parameterInfo );
 		
 		if ( $showMap ) {
-			$this->setMapProperties( $manager->getParameters( false ), __CLASS__ );
+			$parameters = $manager->getParameters( false );
+			
+			foreach ( $parameters as $paramName => $paramValue ) {
+				if ( !property_exists( __CLASS__, $paramName ) ) {
+					$this-> { $paramName } = $paramValue;
+				}
+				else {
+					// If this happens in any way, it could be a big vunerability, so throw an exception.
+					throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
+				}
+			}			
 		}
 		
-		$this->errorList  = $manager->getErrorList();
+		$this->errorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -83,13 +92,17 @@ abstract class SMFormInput {
 	 * TODO: Use function args for sf stuffz
 	 */
 	public final function formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args ) {
-		global $wgParser, $sfgTabIndex;
+		global $sfgTabIndex;
 
 		$this->coordinates = $coordinates;
 		
 		$this->setMapSettings();
 		
-		$this->setMapProperties( $field_args );
+		$showInput = $this->setMapProperties( $field_args );
+		
+		if ( !$showInput ) {
+			return array( $this->errorList );
+		}
 		
 		$this->doMapServiceLoad();
 		
@@ -100,8 +113,6 @@ abstract class SMFormInput {
 		$this->setZoom();
 		
 		// Create html element names.
-		$this->setMapName();
-		$this->mapName .= '_' . $sfgTabIndex;
 		$this->geocodeFieldName = $this->elementNamePrefix . '_geocode_' . $this->elementNr . '_' . $sfgTabIndex;
 		$this->coordsFieldName = $this->elementNamePrefix . '_coords_' . $this->elementNr . '_' . $sfgTabIndex;
 		$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
@@ -128,7 +139,7 @@ abstract class SMFormInput {
 		
 		if ( $this->enableGeocoding ) $this->addGeocodingField();
 		
-		$this->addSpecificMapHTML( $wgParser );
+		$this->addSpecificMapHTML();
 		
 		return array( $this->output . $this->errorList, '' );
 	}

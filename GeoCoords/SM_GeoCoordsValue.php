@@ -119,8 +119,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getShortWikiText
-	 * 
-	 * TODO: make the output here more readible (and if possible informative)
 	 */
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {

@@ -21,7 +21,6 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
-	 *
 	 */
 	protected function setMapSettings() {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
@@ -35,10 +34,9 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
-	 * 	  
 	 */
 	protected function addFormDependencies() {
-		global $wgJsMimeType, $wgParser;
+		global $wgOut, $wgParser;
 		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
 		MapsOpenLayers::addOLDependencies( $wgParser );
@@ -46,24 +44,15 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		if ( empty( $smgOLFormsOnThisPage ) ) {
 			$smgOLFormsOnThisPage = 0;
 			
-			$wgParser->getOutput()->addHeadItem( 
-				Html::element(
-					'script', 
-					array(
-						'type' => $wgJsMimeType,
-						'src' => "$smgScriptPath/OpenLayers/SM_OpenLayersFunctions{$egMapsJsExt}?$smgStyleVersion"
-					)
-				)
-			);				
+			$wgOut->addScriptFile( "$smgScriptPath/Services/OpenLayers/SM_OpenLayersFunctions{$egMapsJsExt}?$smgStyleVersion" );
 		}
 	}
 	
 	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egOpenLayersOnThisPage, $smgOLFormsOnThisPage;
+		global $egOpenLayersOnThisPage, $smgOLFormsOnThisPage, $egMapsOpenLayersPrefix;
 		
 		self::addFormDependencies();
 		
@@ -71,13 +60,13 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		$smgOLFormsOnThisPage++;
 
 		$this->elementNr = $egOpenLayersOnThisPage;
+		$this->mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
 	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML()
-	 *
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
+	protected function addSpecificMapHTML() {
 		global $wgOut;
 		
 		$this->output .= Html::element(
