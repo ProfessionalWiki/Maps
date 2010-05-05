@@ -161,7 +161,7 @@ class MapsGoogleMaps3 {
 			}
 			else if ( $parserOrOut instanceof OutputPage ) {
 				$out = $parserOrOut;
-				$out->addScriptFile( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" );
+				MapsMapper::addScriptFile( $out, "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" );
 				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" );
 			}
 		}

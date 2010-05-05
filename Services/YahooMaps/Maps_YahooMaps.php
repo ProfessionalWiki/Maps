@@ -185,7 +185,7 @@ class MapsYahooMaps {
 			}
 			else if ( $parserOrOut instanceof OutputPage ) {
 				$out = $parserOrOut;
-				$out->addScriptFile( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" );
+				MapsMapper::addScriptFile( $out, "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" );
 				$out->addScriptFile( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
 			}			
 		}

@@ -220,6 +220,25 @@ final class MapsMapper {
 	}
 	
 	/**
+	 * Add a JavaScript file out of skins/common, or a given relative path.
+	 * 
+	 * This is a copy of the native function in OutputPage to work around a pre 1.16 bug.
+	 * Should be used for adding external files, like the Google Maps API.
+	 * 
+	 * @param OutputPage $out
+	 * @param string $file
+	 */
+	public static function addScriptFile( OutputPage $out, $file ) {
+		global $wgStylePath, $wgStyleVersion;
+		if( substr( $file, 0, 1 ) == '/' || preg_match( '#^[a-z]*://#i', $file ) ) {
+			$path = $file;
+		} else {
+			$path =  "{$wgStylePath}/common/{$file}";
+		}
+		$out->addScript( Html::linkedScript( wfAppendQuery( $path, $wgStyleVersion ) ) );		
+	}
+	
+	/**
 	 * This function returns the definitions for the parameters used by every map feature.
 	 *
 	 * @return array

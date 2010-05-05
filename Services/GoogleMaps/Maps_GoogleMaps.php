@@ -234,9 +234,9 @@ class MapsGoogleMaps {
 			}
 			else if ( $parserOrOut instanceof OutputPage ) {
 				$out = $parserOrOut;
-				$out->addScriptFile( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" );
+				MapsMapper::addScriptFile( $out, "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" );
 				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
-			}			
+			}
 		}
 	}
 	
