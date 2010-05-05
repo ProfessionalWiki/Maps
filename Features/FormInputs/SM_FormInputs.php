@@ -58,8 +58,15 @@ final class SMFormInputs {
 	
 	private static function initializeParams() {
 		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
+		global $smgFIWidth, $smgFIHeight;
 		
 		self::$parameters = array(
+			'width' => array(
+				'default' => $smgFIWidth
+			),
+			'height' => array(
+				'default' => $smgFIHeight
+			),		
 			'centre' => array(
 				'aliases' => array( 'center' ),
 			),

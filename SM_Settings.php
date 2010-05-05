@@ -51,20 +51,7 @@ include_once $smgDir . 'Services/YahooMaps/SM_YahooMaps.php'; 	// Yahoo! Maps
 
 
 
-
-
-
-# Geographical Coordinate data type settings
-
-# Integer. The default distance value to be used in geographical distance queries.
-# This value will only be used when the user does not provide one.
-$smgGeoCoordDistance = 5;
-
-
-
-
-
-# Query Printers
+# Queries
 
 # Boolean. The default value for the forceshow parameter. Will force a map to be shown even when there are no query results
 # when set to true. This value will only be used when the user does not provide one.
@@ -84,3 +71,18 @@ $smgQPCoodFormat = $egMapsCoordinateNotation;
 
 # Boolean. Indicates if coordinates should be outputted in directional notation by default.
 $smgQPCoodDirectional = $egMapsCoordinateDirectional;
+
+# Integer. The default distance value to be used in geographical distance queries.
+# This value will only be used when the user does not provide one.
+$smgGeoCoordDistance = 5;
+
+
+
+
+
+# Forms
+
+# Integer or string. The default width and height of maps in forms created by using Semantic Forms.
+# These values only be used when the user does not provide them.
+$smgFIWidth = 665;
+$smgFIHeight = $egMapsMapHeight;
