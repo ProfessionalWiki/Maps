@@ -1,10 +1,60 @@
-For a documentation of all features, see http://www.mediawiki.org/wiki/Extension:Maps
+Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Maps
+Documentation and examples: http://mapping.referata.com/wiki/Maps
 
 == Maps change log ==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every
 version of Maps. You can find the most upt-do-date version at
-http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
+http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
+
+=== Maps 0.6 ===
+(2010-05-xx)
+
+==== New features ====
+
+* Added support for width and height in px, ex, em and %, instead of only px, allowing for maps that adjust their size to the screen width and other content.
+
+* Added full support for both directional and non-directional coordinate notations in DMS, DD, DM and float notation.
+
+* Added #coordinates parser function which allows rewformatting of coordinates to all supported notations.
+
+* Rewrote the #geocode parser function to work with named parameters and added support for smart geocoding. Now takes in all supported coordinate notations, and is able to output in all of them as well.
+
+* Added #geodistance function (based on the one in MathFunctions) with smart geocoding support.
+
+* Added #finddestination function with smart geocoding support.
+
+==== Refactoring ====
+
+* Rewrote the handling of the display_map and display_point(s) parser functions, esp the way the service parameter is getting determined and acted upon.
+
+* Removed the MapsMapFeature class to make the base classes for the features more independent and flexible.
+
+* Restructured the directory structure to make what the services and features are more clear.
+
+* Rewrote map divs and added loading message for each map.
+
+* Rewrote individual map JS to be added to the page header.
+
+* Mayor clean up of the coordinate handling, to allow for coordinate formatting and to facilitate better integration by the GeoCoords data type in Semantic Maps. All this code is now located in MapsCoordinateParser.
+
+* Use native MW hook system for mapping services and features if possible.
+
+* Updated the magic words to mw >=1.16 style, and retained backward compatibility.
+
+* Updated the OpenLayers version from 2.8 to 2.9.
+
+* Rewrote the parameter definitions to work with Validator 0.3.
+
+* Rewrote the resource inclusion html to make the code cleaner and more secure.
+
+==== Bug fixes ====
+
+* Changed parsing of parameters so that '=' signs in values don't cause themselves and proceeding characters to be omitted.
+
+* Add mapping to the language codes that are send to the Google Maps API to null the naming differences between MW and the API.
+
+* Added automatic icon image sizing for Google Maps and Yahoo! Maps markers.
 
 === Maps 0.5.5. ===
 (2010-03-20)
@@ -132,6 +182,14 @@ http://www.mediawiki.org/wiki/Extension:Maps/Version_history#Maps_change_log
 
 * Fixed bug causing markers not to show up when a specific description was provided.
 
+==== Documenting ====
+
+* Created screencast demonstrating display_map usage.
+
+* Creates screencast demonstrating display_point usage.
+
+* Updated the developer documentation about hooking into and extending Maps to be useful for the current version.
+
 ===Maps 0.4.2===
 (2009-11-15)
 
@@ -167,7 +225,7 @@ Changes in 0.4.2 discussed on the authors blog:
 
 ==== Bug fixes ====
 
-* Fixed problems with the � sign, caused by wrong file encodings, resulting into problems with the DMS notation.
+* Fixed problems with the ° sign, caused by wrong file encodings, resulting into problems with the DMS notation.
 
 * Fixed flaw in DMS to float translation, resulting into a map being displayed when the values where not separated by a comma.
 
@@ -311,7 +369,7 @@ Changes in 0.3 discussed on the authors blog:
 
 * Configurable map type controls. Users can now configure the map type controls of Google maps and Yahoo! maps maps. They can set the available map types, and the order they want them to be displayed in the map type control.
 
-* Property names now have aliases. This means you can add several alternative ways to name the same parameter, for instance, you can make so that �auto zoom� and �auto-zoom� will do excellently the same as the main parameter �autozoom�. This is particularly handy for parameters such as �centre� (British spelling) and �center� (American spelling).
+* Property names now have aliases. This means you can add several alternative ways to name the same parameter, for instance, you can make so that ‘auto zoom’ and ‘auto-zoom’ will do excellently the same as the main parameter ‘autozoom’. This is particularly handy for parameters such as ‘centre’ (British spelling) and ‘center’ (American spelling).
 
 * Added Google Maps moon, Mars and sky support.
 
@@ -325,7 +383,7 @@ Changes in 0.3 discussed on the authors blog:
 
 ====Refactoring====
 
-* Created hook system for the mapping services. All hard-coded references to mapping services in the core code have been removed. A service is now added by one multi dimensional array in Maps.php (note that this can also be done in the initialization file of another extension!), which holds the name of the parser functions class and it�s location, the aliases for the service name (feature added in 0.2), and their allowed specific parameters and their aliases. This architecture allows other people to create their own mapping extension using the Maps (and Semantic Maps) �API�.
+* Created hook system for the mapping services. All hard-coded references to mapping services in the core code have been removed. A service is now added by one multi dimensional array in Maps.php (note that this can also be done in the initialization file of another extension!), which holds the name of the parser functions class and it’s location, the aliases for the service name (feature added in 0.2), and their allowed specific parameters and their aliases. This architecture allows other people to create their own mapping extension using the Maps (and Semantic Maps) ‘API’.
 
 * Created a class that bundles common functionality from MapsBaseMap and SMFormInput.
 
