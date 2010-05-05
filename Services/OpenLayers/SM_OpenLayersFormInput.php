@@ -89,8 +89,8 @@ addOnloadHook(
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
-			$this->marker_lat,
-			$this->marker_lon,
+			{$this->markerCoords['lat']},
+			{$this->markerCoords['lon']},
 			[$layerItems],
 			[$this->controls]
 		);

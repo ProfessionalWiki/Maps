@@ -102,8 +102,8 @@ addOnloadHook(
 				controls: [$this->controls],
 				scrollWheelZoom: $this->autozoom
 			},
-			$this->marker_lat,
-			$this->marker_lon	
+			{$this->markerCoords['lat']},
+			{$this->markerCoords['lon']}	
 		);
 	}	
 );

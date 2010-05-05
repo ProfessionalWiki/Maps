@@ -25,11 +25,15 @@ abstract class SMFormInput {
 	 */
 	protected abstract function addFormDependencies();
 	
+	/**
+	 * @var string
+	 */	
 	protected $mapName;
 	
-	// TODO: change into a single array
-	protected $marker_lat;
-	protected $marker_lon;
+	/**
+	 * @var array
+	 */
+	protected $markerCoords;
 
 	protected $earthZoom;
 	
@@ -118,9 +122,16 @@ abstract class SMFormInput {
 		$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
 
 		// Create the non specific form HTML.
+		if ( $this->markerCoords === false ) {
+			$coords = 'null, null';
+		}
+		else {
+			$coords = MapsCoordinateParser::formatCoordinates( $this->markerCoords );
+		}
+		
 		$this->output .= Html::input( 
 			$input_name,
-			MapsCoordinateParser::formatCoordinates( array( 'lat' => $this->marker_lat, 'lon' => $this->marker_lon ) ),
+			$coords,
 			'text',
 			array(
 				'size' => 42,
@@ -205,30 +216,27 @@ EOT
 	}
 	
 	/**
-	 * Sets the $marler_lon and $marler_lat fields and when set, the starting coordinates.
+	 * Sets the $this->markerCoords value, which are the coordinates for the marker.
 	 */
 	private function setCoordinates() {
 		if ( empty( $this->coordinates ) ) {
-			// If no coordinates exist yet, no marker should be displayed
-			$this->marker_lat = 'null';
-			$this->marker_lon = 'null';
+			// If no coordinates exist yet, no marker should be displayed.
+			$this->markerCoords = false;
 		}
 		else {
-			$marker = MapsCoordinateParser::parseCoordinates( $this->coordinates );
-			$this->marker_lat = $marker['lat'];
-			$this->marker_lon = $marker['lon'];
+			$this->markerCoords = MapsCoordinateParser::parseCoordinates( $this->coordinates );
 		}
 	}
 	
 	/**
-	 * Sets the $centre_lat and $centre_lon fields.
+	 * Sets the $centreLat and $centreLon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
 	 */
 	private function setCentre() {
 		if ( empty( $this->centre ) ) {
 			if ( isset( $this->coordinates ) ) {
-				$this->centreLat = $this->marker_lat;
-				$this->centreLon = $this->marker_lon;
+				$this->centreLat = $this->markerCoords['lat'];
+				$this->centreLon = $this->markerCoords['lon'];
 			}
 			else {
 				$this->centreLat = '0';
