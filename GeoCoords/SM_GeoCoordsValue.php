@@ -81,22 +81,27 @@ class SMGeoCoordsValue extends SMWDataValue {
 			// TODO: parse the parts here
 			SMWDataValue::prepareValue( $value, $comparator );					
 			
-			//$parts = preg_split( '', $value );
-			// preg_match( '/(.*)\((.*)\)/', $user_input, $matches );
+			$parts = array();
+			preg_match( '/(.*)\((.*)\)/', $value, $parts );
 			
-			$distance = 5;
-			$hasDistance = false;
+			$coordinates = array_shift( $parts );
+			$distance = count( $parts ) > 0 ? array_shift( $parts ) : false;
 			
-			$coordinates = MapsCoordinateParser::parseCoordinates( $value );
-			if ( $coordinates ) {
-				$this->mCoordinateSet = $coordinates;
+			if ( $distance !== false && !preg_match( '/^\d+(\.\d+)?$/', $distance ) ) {
+				$this->addError( wfMsgExt( 'semanticmaps-unrecognizeddistance', array( 'parsemag' ), $distance ) );
+				$distance = false;
+			}
+			
+			$parsedCoords = MapsCoordinateParser::parseCoordinates( $coordinates );
+			if ( $parsedCoords ) {
+				$this->mCoordinateSet = $parsedCoords;
 				
 				if ( $this->m_caption === false && !$asQuery ) {
 					global $smgQPCoodFormat, $smgQPCoodDirectional;
-					$this->m_caption = MapsCoordinateParser::formatCoordinates( $coordinates, $smgQPCoodFormat, $smgQPCoodDirectional );
+					$this->m_caption = MapsCoordinateParser::formatCoordinates( $parsedCoords, $smgQPCoodFormat, $smgQPCoodDirectional );
         		}
 			} else {
-				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $value, 1 ) );
+				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $coordinates, 1 ) );
 			}
 		}
 
@@ -107,7 +112,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				case !$this->isValid() :
 					return new SMWThingDescription();
 					break;
-				case $hasDistance :
+				case $distance !== false :
 					return new SMAreaValueDescription( $this, $distance );
 					break;
 				default :

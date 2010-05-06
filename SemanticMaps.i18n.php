@@ -20,6 +20,7 @@ $messages['en'] = array(
 	'semanticmaps_name' => 'Semantic Maps',
 	'semanticmaps_desc' => "Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Available map services: $1",
+	'semanticmaps-unrecognizeddistance' => 'The value $1 is not a valid distance.',
 
 	// Forms
 	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',

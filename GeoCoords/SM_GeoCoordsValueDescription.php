@@ -23,8 +23,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMGeoCoordsValueDescription extends SMWValueDescription {
 	
 	/**
-	 * TODO: re-add the coparator parameter once support for this is implemented in the query hook.
-	 * 
 	 * @param SMGeoCoordsValue $dataValue
 	 */
 	public function __construct( SMGeoCoordsValue $dataValue, $comparator ) {
