@@ -79,7 +79,7 @@ abstract class SMFormInput {
 					// If this happens in any way, it could be a big vunerability, so throw an exception.
 					throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
 				}
-			}			
+			}
 		}
 		
 		$this->errorList = $manager->getErrorList();
@@ -122,16 +122,9 @@ abstract class SMFormInput {
 		$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
 
 		// Create the non specific form HTML.
-		if ( $this->markerCoords === false ) {
-			$coords = 'null, null';
-		}
-		else {
-			$coords = MapsCoordinateParser::formatCoordinates( $this->markerCoords );
-		}
-		
 		$this->output .= Html::input( 
 			$input_name,
-			$coords,
+			$this->markerCoords ? MapsCoordinateParser::formatCoordinates( $this->markerCoords ) : '',
 			'text',
 			array(
 				'size' => 42,
@@ -149,6 +142,15 @@ abstract class SMFormInput {
 		);
 		
 		if ( $this->enableGeocoding ) $this->addGeocodingField();
+		
+		if ( $this->markerCoords === false ) {
+			$this->markerCoords = array(
+				'lat' => 'null',
+				'lon' => 'null'
+			);
+			$this->centreLat = 'null';
+			$this->centreLon = 'null';
+		}
 		
 		$this->addSpecificMapHTML();
 		
@@ -175,7 +177,7 @@ function convertLatToDMS (val) {
 }
 function convertLngToDMS (val) {
 	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
-}			
+}
 EOT
 			);
 		}
