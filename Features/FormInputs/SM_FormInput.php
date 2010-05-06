@@ -212,7 +212,7 @@ EOT
 	private function setZoom() {
         if ( empty( $this->coordinates ) ) {
             $this->zoom = $this->earthZoom;
-        } else if (  $this->zoom == '' ) {
+        } else if ( $this->zoom == 'null' ) {
              $this->zoom = $this->defaultZoom;
         }
 	}
