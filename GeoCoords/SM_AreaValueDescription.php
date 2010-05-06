@@ -26,9 +26,10 @@ class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
 	public function __construct( SMGeoCoordsValue $dataValue, $radius ) {
-		parent::__construct( $dataValue );	
+		parent::__construct( $dataValue, SM_CMP_NEAR );	
 
-		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
+		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box,
+		// so don't add any conditions.
 		if ( self::geoFunctionsAreAvailable() ) {
 			$dbKeys = $dataValue->getDBkeys();
 			
@@ -88,11 +89,13 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @return An associative array containing the limits with keys north, east, south and west.
 	 */
 	private static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
+		$centerCoordinates = array('lat' => 0, 'lon' => 0);
+		var_dump($centerCoordinates);
 		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
 		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
 		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
 		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
-
+var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 		return array(
 			'north' => $north['lat'],
 			'east' => $east['lon'],
@@ -105,8 +108,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * Returns a boolean indicating if MapsGeoFunctions is available. 
 	 */
 	private static function geoFunctionsAreAvailable() {
-		global $wgAutoloadClasses;
-		return array_key_exists( 'MapsGeoFunctions', $wgAutoloadClasses );
+		return class_exists( 'MapsGeoFunctions' );
 	}
 	
 	/**
@@ -122,7 +124,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 */
 	public static function getSQLCondition( &$whereSQL, SMWDescription $description, $tablename, $fieldname, DatabaseBase $dbs ) {
 		$dataValue = $description->getDatavalue();
-		
+
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
 		if ( $dataValue->getTypeID() != '_geo'
@@ -136,12 +138,12 @@ class SMAreaValueDescription extends SMWValueDescription {
 		$east = $dbs->addQuotes( $boundingBox['east'] );
 		$south = $dbs->addQuotes( $boundingBox['south'] );
 		$west = $dbs->addQuotes( $boundingBox['west'] );
-		
+
 		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
 		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
 		// add their own semantic tables with similar signatures.
 		$whereSQL .= "{$tablename}.lat < $north && {$tablename}.lat > $south && {$tablename}.lon < $east && {$tablename}.lon > $west";
-		
+var_dump($whereSQL);exit;
 		return true;
 	}	
 }

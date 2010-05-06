@@ -68,7 +68,6 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		$coordinates = $dataValue->getCoordinateSet();
 		
 		$comparator = $description->getComparator() == SMW_CMP_EQ ? '=' : '!=';
-		//var_dump($comparator);exit;
 		
 		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
 		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions

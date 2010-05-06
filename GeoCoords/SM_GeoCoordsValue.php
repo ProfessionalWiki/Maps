@@ -78,20 +78,23 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( $value == '' ) {
 			$this->addError( wfMsg( 'smw_novalues' ) );
 		} else {
-			// TODO: parse the parts here
 			SMWDataValue::prepareValue( $value, $comparator );					
+
+			$parts = explode( '(', $value );
 			
-			$parts = array();
-			preg_match( '/(.*)\((.*)\)/', $value, $parts );
-			
-			$coordinates = array_shift( $parts );
-			$distance = count( $parts ) > 0 ? array_shift( $parts ) : false;
-			
-			if ( $distance !== false && !preg_match( '/^\d+(\.\d+)?$/', $distance ) ) {
-				$this->addError( wfMsgExt( 'semanticmaps-unrecognizeddistance', array( 'parsemag' ), $distance ) );
-				$distance = false;
+			$coordinates = trim( array_shift( $parts ) );
+			$distance = count( $parts ) > 0 ? trim( array_shift( $parts ) ) : false;
+
+			if ( $distance !== false ) {
+				if ( preg_match( '/^\d+(\.\d+)?\)$/', $distance ) ) {
+					$distance = substr( $distance, 0, -1 );
+				}
+				else {
+					$this->addError( wfMsgExt( 'semanticmaps-unrecognizeddistance', array( 'parsemag' ), $distance ) );
+					$distance = false;						
+				}
 			}
-			
+
 			$parsedCoords = MapsCoordinateParser::parseCoordinates( $coordinates );
 			if ( $parsedCoords ) {
 				$this->mCoordinateSet = $parsedCoords;
