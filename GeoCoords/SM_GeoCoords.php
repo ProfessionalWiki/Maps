@@ -34,4 +34,4 @@ $wgHooks['smwGetSQLConditionForValue'][] = 'SMAreaValueDescription::getSQLCondit
 // Hook for initializing the Geographical Proximity query support.
 $wgHooks['smwGetSQLConditionForValue'][] = 'SMGeoCoordsValueDescription::getSQLCondition';
 
-// define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.
+define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.

@@ -27,8 +27,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * 
 	 * @param SMGeoCoordsValue $dataValue
 	 */
-	public function __construct( SMGeoCoordsValue $dataValue ) {
-		parent::__construct( $dataValue );	
+	public function __construct( SMGeoCoordsValue $dataValue, $comparator ) {
+		parent::__construct( $dataValue, $comparator );	
 	}
 
 	/**
@@ -64,14 +64,18 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		if ( $dataValue->getTypeID() != '_geo'
 			|| !$dataValue->isValid()
 			|| !$description instanceof SMGeoCoordsValueDescription
+			//|| ( $description->getComparator() != SMW_CMP_EQ && $description->getComparator() != SMW_CMP_NEQ )
 			) return true;
 		
 		$coordinates = $dataValue->getCoordinateSet();
-			
+		
+		$comparator = $description->getComparator() == SMW_CMP_EQ ? '=' : '!=';
+		//var_dump($comparator);exit;
+		
 		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
 		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
 		// add their own semantic tables with similar signatures.
-		$whereSQL .= "{$tablename}.lat = {$coordinates['lat']} && {$tablename}.lon = {$coordinates['lon']}";
+		$whereSQL .= "{$tablename}.lat {$comparator} {$coordinates['lat']} && {$tablename}.lon {$comparator} {$coordinates['lon']}";
 		
 		return true;
 	}		

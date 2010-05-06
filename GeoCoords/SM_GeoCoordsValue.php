@@ -73,11 +73,17 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Parses the value into the coordinates and any meta data provided, such as distance.
 	 */
 	protected function parseUserValueOrQuery( $value, $asQuery = false ) {
+		$comparator = SMW_CMP_EQ;
+		
 		if ( $value == '' ) {
 			$this->addError( wfMsg( 'smw_novalues' ) );
 		} else {
 			// TODO: parse the parts here
+			SMWDataValue::prepareValue( $value, $comparator );					
+			
 			//$parts = preg_split( '', $value );
+			// preg_match( '/(.*)\((.*)\)/', $user_input, $matches );
+			
 			$distance = 5;
 			$hasDistance = false;
 			
@@ -105,7 +111,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 					return new SMAreaValueDescription( $this, $distance );
 					break;
 				default :
-					return new SMGeoCoordsValueDescription( $this );
+					return new SMGeoCoordsValueDescription( $this, $comparator );
 					break;										
 			}			
 		}
