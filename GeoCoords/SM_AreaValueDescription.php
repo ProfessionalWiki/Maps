@@ -14,7 +14,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Description of one data value of type Goegraphical Areas.
+ * Description of a geographical area defined by a coordinates set and a distance to the bounds.
+ * The bounds are a 'rectangle' (but bend due to the earhs curvature), as the resulting query
+ * would otherwise be to resource intensive.
  *
  * @author Jeroen De Dauw
  * 
@@ -23,8 +25,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
-	public function __construct( SMGeoCoordsValue $dataValue, $radius, $comparator = SMW_CMP_EQ ) {
-		parent::__construct( $dataValue, $comparator );	
+	public function __construct( SMGeoCoordsValue $dataValue, $radius ) {
+		parent::__construct( $dataValue );	
 
 		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
 		if ( self::geoFunctionsAreAvailable() ) {
@@ -39,7 +41,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 			);
 		}
 	}
-	
+
 	/**
 	 * @see SMWDescription:getQueryString
 	 * 
@@ -75,7 +77,7 @@ class SMAreaValueDescription extends SMWValueDescription {
      */
     public function getBounds() {
     	return $this->mBounds;
-    }
+    }    
     
 	/**
 	 * Returns the lat and lon limits of a bounding box around a circle defined by the provided parameters.
@@ -106,4 +108,40 @@ class SMAreaValueDescription extends SMWValueDescription {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeoFunctions', $wgAutoloadClasses );
 	}
+	
+	/**
+	 * Custom SQL query extension for matching geographic coordinates in an area.
+	 * 
+	 * @param string $whereSQL The SQL where condition to expand.
+	 * @param SMWDescription $description
+	 * @param string $tablename
+	 * @param string $fieldname
+	 * @param DatabaseBase $dbs
+	 * 
+	 * @return true
+	 */
+	public static function getSQLCondition( &$whereSQL, SMWDescription $description, $tablename, $fieldname, DatabaseBase $dbs ) {
+		$dataValue = $description->getDatavalue();
+		
+		// Only execute the query when the description's type is geographical coordinates,
+		// the description is valid, and the near comparator is used.
+		if ( $dataValue->getTypeID() != '_geo'
+			|| !$dataValue->isValid()
+			|| !$description instanceof SMAreaValueDescription
+			) return true;
+		
+		$boundingBox = $description->getBounds();
+			
+		$north = $dbs->addQuotes( $boundingBox['north'] );
+		$east = $dbs->addQuotes( $boundingBox['east'] );
+		$south = $dbs->addQuotes( $boundingBox['south'] );
+		$west = $dbs->addQuotes( $boundingBox['west'] );
+		
+		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
+		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
+		// add their own semantic tables with similar signatures.
+		$whereSQL .= "{$tablename}.lat < $north && {$tablename}.lat > $south && {$tablename}.lon < $east && {$tablename}.lon > $west";
+		
+		return true;
+	}	
 }

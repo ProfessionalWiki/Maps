@@ -8,7 +8,6 @@
  * @ingroup SemanticMaps
  * 
  * @author Jeroen De Dauw
- * @author Markus Krötzsch
  */
 
 // Registration of the GoeCoords class.
@@ -18,56 +17,21 @@ $wgAutoloadClasses['SMGeoCoords'] = __FILE__;
 $wgAutoloadClasses['SMGeoCoordsValue'] = dirname( __FILE__ ) . '/SM_GeoCoordsValue.php';
 
 // Registration of the Geographical Coordinate value description class.
+$wgAutoloadClasses['SMGeoCoordsValueDescription'] = dirname( __FILE__ ) . '/SM_GeoCoordsValueDescription.php';
+
+// Registration of the Geographical Coordinate are description class.
 $wgAutoloadClasses['SMAreaValueDescription'] = dirname( __FILE__ ) . '/SM_AreaValueDescription.php';
 
 // Hook for initializing the Geographical Coordinate type.
 $wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
 
+// Hook for defining a table to store geographical coordinates in.
 $wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
 
 // Hook for initializing the Geographical Proximity query support.
-$wgHooks['smwGetSQLConditionForValue'][] = 'SMGeoCoords::getGeoProximitySQLCondition';
+$wgHooks['smwGetSQLConditionForValue'][] = 'SMAreaValueDescription::getSQLCondition';
 
-define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.
+// Hook for initializing the Geographical Proximity query support.
+$wgHooks['smwGetSQLConditionForValue'][] = 'SMGeoCoordsValueDescription::getSQLCondition';
 
-final class SMGeoCoords {
-	
-	/**
-	 * Custom SQL query extension for matching geographic coordinates.
-	 * 
-	 * @param string $whereSQL The SQL where condition to expand.
-	 * @param SMAreaValueDescription $description The description of center coordinate.
-	 * @param string $tablename
-	 * @param string $fieldname
-	 * @param DatabaseBase $dbs
-	 * 
-	 * @return true
-	 */
-	public static function getGeoProximitySQLCondition( &$whereSQL, SMAreaValueDescription $description, $tablename, $fieldname, DatabaseBase $dbs ) {
-		$dataValue = $description->getDatavalue();
-		
-		// Only execute the query when the description's type is geographical coordinates,
-		// the description is valid, and the near comparator is used.
-		if ( ( $dataValue->getTypeID() != '_geo' )
-			|| ( !$dataValue->isValid() )
-			|| ( $description->getComparator() != SM_CMP_NEAR )
-			) return true;
-		
-		$boundingBox = $description->getBounds();
-			
-		$north = $dbs->addQuotes( $boundingBox['north'] );
-		$east = $dbs->addQuotes( $boundingBox['east'] );
-		$south = $dbs->addQuotes( $boundingBox['south'] );
-		$west = $dbs->addQuotes( $boundingBox['west'] );
-		
-		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
-		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
-		// add their own semantic tables with similar signatures.
-		$whereSQL .= "{$tablename}.lat < $north && {$tablename}.lat > $south && {$tablename}.lon < $east && {$tablename}.lon > $west";
-		
-		return true;
-	}
-
-
-}
-
+// define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.

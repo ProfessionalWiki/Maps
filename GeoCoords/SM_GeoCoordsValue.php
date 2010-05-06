@@ -54,14 +54,38 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::parseUserValue
 	 */
 	protected function parseUserValue( $value ) {
+		$this->parseUserValueOrQuery( $value );
+	}
+	
+	/**
+	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
+	 * comparators between all values.
+	 * 
+	 * @param string $value
+	 * 
+	 * @return SMWDescription
+	 */
+	public function getQueryDescription( $value ) {
+		return $this->parseUserValueOrQuery( $value, true );
+	}	
+	
+	/**
+	 * Parses the value into the coordinates and any meta data provided, such as distance.
+	 */
+	protected function parseUserValueOrQuery( $value, $asQuery = false ) {
 		if ( $value == '' ) {
 			$this->addError( wfMsg( 'smw_novalues' ) );
 		} else {
+			// TODO: parse the parts here
+			//$parts = preg_split( '', $value );
+			$distance = 5;
+			$hasDistance = false;
+			
 			$coordinates = MapsCoordinateParser::parseCoordinates( $value );
 			if ( $coordinates ) {
 				$this->mCoordinateSet = $coordinates;
 				
-				if ( $this->m_caption === false ) {
+				if ( $this->m_caption === false && !$asQuery ) {
 					global $smgQPCoodFormat, $smgQPCoodDirectional;
 					$this->m_caption = MapsCoordinateParser::formatCoordinates( $coordinates, $smgQPCoodFormat, $smgQPCoodDirectional );
         		}
@@ -69,16 +93,22 @@ class SMGeoCoordsValue extends SMWDataValue {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $value, 1 ) );
 			}
 		}
-	}
 
-	/**
-	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
-	 * comparators between all values.
-	 * 
-	 * @return SMWDescription
-	 */
-	public function getQueryDescription( $value ) {
-		return parent::getQueryDescription( $value );
+		if ( $asQuery ) {
+			$this->setUserValue( $value );
+			
+			switch ( true ) {
+				case !$this->isValid() :
+					return new SMWThingDescription();
+					break;
+				case $hasDistance :
+					return new SMAreaValueDescription( $this, $distance );
+					break;
+				default :
+					return new SMGeoCoordsValueDescription( $this );
+					break;										
+			}			
+		}
 	}
 	
 	/**
@@ -95,6 +125,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 			$smgQPCoodFormat,
 			$smgQPCoodDirectional
 		);
+		
 		$this->mWikivalue = $this->m_caption;
 	}
 	
@@ -136,7 +167,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::getShortHTMLText
 	 */
 	public function getShortHTMLText( $linker = null ) {
-		// TODO: parse to HTML?
 		return $this->getShortWikiText( $linker );
 	}
 	
@@ -156,7 +186,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::getLongHTMLText
 	 */
 	public function getLongHTMLText( $linker = null ) {
-		// TODO: parse to HTML?
 		return $this->getLongWikiText( $linker );
 	}
 
@@ -193,6 +222,13 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	protected function getServiceLinkParams() {
 		return array(  ); // TODO
+	}
+	
+	/**
+	 * @return array
+	 */
+	public function getCoordinateSet() {
+		return $this->mCoordinateSet;
 	}
 
 }
