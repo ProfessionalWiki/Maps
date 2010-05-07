@@ -96,7 +96,7 @@ function createGoogleMap(mapName, mapOptions, markers) {
 	map.setMapType(mapOptions.type);	
 
 	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
-	for (i in mapOptions.controls){
+	for (i = 0; i < mapOptions.controls.length; i++){
 		if (mapOptions.controls[i].toLowerCase() == 'auto') {
 			if (mapElement.offsetHeight > 75) mapOptions.controls[i] = mapElement.offsetHeight > 320 ? 'large' : 'small';
 		}			
@@ -140,7 +140,7 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	var bounds = ((mapOptions.zoom == null || mapOptions.centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
 
-	for (i in markers) {
+	for (i = 0; i < markers.length; i++) {
 		var marker = markers[i];
 		map.addOverlay(createGMarker(marker.point, marker.title, marker.label, marker.icon));
 		if (bounds != null) bounds.extend(marker.point);

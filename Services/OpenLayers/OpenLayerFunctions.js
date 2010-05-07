@@ -32,7 +32,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	var map = new OpenLayers.Map(mapName, mapOptions);
 	
 	// Add the controls.
-	for (i in controls) {
+	for (var i = 0; i < controls.length; i++) {
 
 		// If a string is provided, find the correct name for the control, and use eval to create the object itself.
 		if (typeof controls[i] == 'string') {
@@ -54,7 +54,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 	}
 	
 	// Add the base layers.
-	for (i in mapTypes) map.addLayer(mapTypes[i]);
+	for (i = 0; i < mapTypes.length; i++) map.addLayer(mapTypes[i]);
 	
 	// Layer to hold the markers.
 	var markerLayer = new OpenLayers.Layer.Markers('Markers');
@@ -69,7 +69,7 @@ function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data)
 		bounds = new OpenLayers.Bounds();
 	}
 	
-	for (i in marker_data) {
+	for (i = 0; i < marker_data.length; i++) {
 		marker_data[i].lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
 		if (bounds != null) bounds.extend(marker_data[i].lonlat); // Extend the bounds when no center is set.
 		markerLayer.addMarker(getOLMarker(markerLayer, marker_data[i], map.getProjectionObject())); // Create and add the marker.
@@ -102,7 +102,7 @@ function getValidControlName(control) {
 	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
 	                  'ZoomToMaxExtent'];
 	
-	for (i in OLControls) {
+	for (var i = 0; i < OLControls.length; i++) {
 		if (control == OLControls[i].toLowerCase()) {
 			return OLControls[i];
 		}

@@ -57,7 +57,7 @@ function getValidControlName(control) {
 	                  'WMSGetFeatureInfo', 'ZoomBox', 'ZoomIn', 'ZoomOut', 'ZoomPanel',
 	                  'ZoomToMaxExtent'];
 	
-	for (i in OLControls) {
+	for (var i =0; i < OLControls.length; i++) {
 		if (control == OLControls[i].toLowerCase()) {
 			return OLControls[i];
 		}
@@ -70,13 +70,13 @@ function slippymap_map(mapId, mapParams) {
 	var self = this;
 	this.mapId = mapId;
 	
-	for (key in mapParams)
+	for (var key = 0; key < mapParams.length key++)
 		this[key] = mapParams[key];
 
 	// Add the controls
 	this.mapOptions = {controls: []};
 
-	for (i in this.controls) {
+	for (var i = 0; i < this.controls.length; i++) {
 		if (typeof controls[i] == 'string') {
 			if (this.controls[i].toLowerCase() == 'autopanzoom') {
 				//if (this.height > 140) this.controls[i] = this.height > 320 ? 'panzoombar' : 'panzoom';
@@ -116,7 +116,7 @@ slippymap_map.prototype.init = function() {
 			bounds = new OpenLayers.Bounds();
 		}	
 		
-		for (i in this.markers) {
+		for (var i = 0; i < this.markers.length; i++) {
 			this.markers[i].lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
 			if (bounds != null) bounds.extend(this.markers[i].lonlat); // Extend the bounds when no center is set
 			markerLayer.addMarker(getOSMMarker(markerLayer, this.markers[i], this.map.getProjectionObject())); // Create and add the marker
@@ -140,7 +140,7 @@ slippymap_map.prototype.osm_create = function(mapId, lon, lat, zoom, initialized
 	var map = new OpenLayers.Map(mapId, this.mapOptions /* all provided for by OSM.js */);
 	
 	if (initializedContols) {
-		for (i in initializedContols) {
+		for (var i = 0; i < initializedContols.length; i++) {
 			map.addControl(initializedContols[i]);
 			initializedContols[i].activate();
 		}

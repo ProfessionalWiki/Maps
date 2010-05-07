@@ -17,7 +17,7 @@ function initGMap3(name, options, markerData) {
 	
 	// TODO: types - http://code.google.com/apis/maps/documentation/v3/reference.html#MapTypeRegistry
 	
-	for (marker in markerData) getGMaps3Marker(map, markerData[marker]);
+	for (var marker = 0; marker < markerData.length; marker++) getGMaps3Marker(map, markerData[marker]);
 }
 
 function getGMaps3Marker(map, data) {

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Internationalization file for the Maps extension
+ * Internationalization file for the Maps extension.
  *
  * @file Maps.i18n.php
  * @ingroup Maps
  *
  * @author Jeroen De Dauw
-*/
+ */
 
 $messages = array();
 

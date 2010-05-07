@@ -61,7 +61,7 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 	
 	map.removeZoomScale();
 	
-	for (i in controls){
+	for (var i =0; i < controls.length; i++){
 		if (controls[i].toLowerCase() == 'auto-zoom') {
 			if (mapElement.offsetHeight > 42) controls[i] = mapElement.offsetHeight > 100 ? 'zoom' : 'zoom-short';
 		}			
@@ -90,7 +90,7 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 	
 	var map_locations = ((zoom == null || centre == null) && markers.length > 1) ? Array() : null;
 	
-	for (i in markers) {
+	for (var i=0; i < markers.length; i++) {
 		var marker = markers[i];
 		map.addOverlay(createYMarker(marker.point, marker.title, marker.label, marker.icon));
 		if (map_locations != null) map_locations.push(marker.point);
