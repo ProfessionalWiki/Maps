@@ -116,13 +116,13 @@ var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 	 * 
 	 * @param string $whereSQL The SQL where condition to expand.
 	 * @param SMWDescription $description
-	 * @param string $tablename
-	 * @param string $fieldname
+	 * @param string $tableName
+	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public static function getSQLCondition( &$whereSQL, SMWDescription $description, $tablename, $fieldname, DatabaseBase $dbs ) {
+	public static function getSQLCondition( &$whereSQL, SMWDescription $description, $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		$dataValue = $description->getDatavalue();
 
 		// Only execute the query when the description's type is geographical coordinates,
@@ -139,11 +139,15 @@ var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 		$south = $dbs->addQuotes( $boundingBox['south'] );
 		$west = $dbs->addQuotes( $boundingBox['west'] );
 
-		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
-		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
-		// add their own semantic tables with similar signatures.
-		$whereSQL .= "{$tablename}.lat < $north && {$tablename}.lat > $south && {$tablename}.lon < $east && {$tablename}.lon > $west";
-var_dump($whereSQL);exit;
+		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
+		$conditions = array();
+		$conditions[] = "{$tableName}.{$fieldNames[0]} < $north";
+		$conditions[] = "{$tableName}.{$fieldNames[0]} > $south";
+		$conditions[] = "{$tableName}.{$fieldNames[1]} < $east";
+		$conditions[] = "{$tableName}.{$fieldNames[1]} > $west";
+		
+		$whereSQL .= implode( ' && ', $conditions );
+
 		return true;
 	}	
 }

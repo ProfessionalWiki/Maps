@@ -48,13 +48,13 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * 
 	 * @param string $whereSQL The SQL where condition to expand.
 	 * @param SMWDescription $description
-	 * @param string $tablename
-	 * @param string $fieldname
+	 * @param string $tableName
+	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public static function getSQLCondition( &$whereSQL, SMWDescription $description, $tablename, $fieldname, DatabaseBase $dbs ) {
+	public static function getSQLCondition( &$whereSQL, SMWDescription $description, $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		$dataValue = $description->getDatavalue();
 		
 		// Only execute the query when the description's type is geographical coordinates,
@@ -69,10 +69,12 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		
 		$comparator = $description->getComparator() == SMW_CMP_EQ ? '=' : '!=';
 		
-		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
-		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
-		// add their own semantic tables with similar signatures.
-		$whereSQL .= "{$tablename}.lat {$comparator} {$coordinates['lat']} && {$tablename}.lon {$comparator} {$coordinates['lon']}";
+		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
+		$conditions = array();
+		$conditions[] = "{$tableName}.{$fieldNames[0]} {$comparator} {$coordinates['lat']}";
+		$conditions[] = "{$tableName}.{$fieldNames[1]} {$comparator} {$coordinates['lon']}";
+		
+		$whereSQL .= implode( ' && ', $conditions );		
 		
 		return true;
 	}		
