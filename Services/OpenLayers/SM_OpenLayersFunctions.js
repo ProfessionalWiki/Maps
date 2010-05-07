@@ -92,7 +92,7 @@ function replaceMarker(mapName, newLocation) {
 function removeMarkers(markerLayer) {
 	var markerCollection = markerLayer.markers;
 	
-	for (i in markerCollection) {
+	for (var i = 0; i < markerCollection.length; i++) {
 		markerLayer.removeMarker(markerCollection[i]);
 	}
 }
