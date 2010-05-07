@@ -64,7 +64,7 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 			|| !$description instanceof SMGeoCoordsValueDescription
 			//|| ( $description->getComparator() != SMW_CMP_EQ && $description->getComparator() != SMW_CMP_NEQ )
 			) return true;
-		
+
 		$coordinates = $dataValue->getCoordinateSet();
 		
 		$comparator = $description->getComparator() == SMW_CMP_EQ ? '=' : '!=';
@@ -75,7 +75,7 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		$conditions[] = "{$tableName}.{$fieldNames[1]} {$comparator} {$coordinates['lon']}";
 		
 		$whereSQL .= implode( ' && ', $conditions );		
-		
+
 		return true;
 	}		
 	

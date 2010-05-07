@@ -244,5 +244,23 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function getCoordinateSet() {
 		return $this->mCoordinateSet;
 	}
+	
+	/**
+	 * @see SMWDataValue::getValueIndexes
+	 * 
+	 * @return array
+	 */	
+	public function getValueIndexes() {
+		return array( 0, 1 );
+	}
+
+	/**
+	 * @see SMWDataValue::getLabelIndexes
+	 * 
+	 * @return array
+	 */		
+	public function getLabelIndexes() {
+		return array( 0, 1 );
+	}	
 
 }
