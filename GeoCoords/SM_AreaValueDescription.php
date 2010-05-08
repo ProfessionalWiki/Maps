@@ -112,27 +112,24 @@ var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 	}
 	
 	/**
-	 * Custom SQL query extension for matching geographic coordinates in an area.
+	 * @see SMWDescription::getSQLCondition
 	 * 
-	 * @param string $whereSQL The SQL where condition to expand.
-	 * @param SMWDescription $description
 	 * @param string $tableName
 	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public static function getSQLCondition( &$whereSQL, SMWDescription $description, $tableName, array $fieldNames, DatabaseBase $dbs ) {
-		$dataValue = $description->getDatavalue();
+	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
+		$dataValue = $this->getDatavalue();
 
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
 		if ( $dataValue->getTypeID() != '_geo'
 			|| !$dataValue->isValid()
-			|| !$description instanceof SMAreaValueDescription
 			) return true;
 		
-		$boundingBox = $description->getBounds();
+		$boundingBox = $this->getBounds();
 			
 		$north = $dbs->addQuotes( $boundingBox['north'] );
 		$east = $dbs->addQuotes( $boundingBox['east'] );
