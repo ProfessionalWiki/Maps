@@ -73,6 +73,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Parses the value into the coordinates and any meta data provided, such as distance.
 	 */
 	protected function parseUserValueOrQuery( $value, $asQuery = false ) {
+		$this->mWikivalue = $value;
+		
 		$comparator = SMW_CMP_EQ;
 		
 		if ( $value == '' ) {

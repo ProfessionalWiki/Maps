@@ -62,7 +62,7 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		if ( $dataValue->getTypeID() != '_geo'
 			|| !$dataValue->isValid()
 			|| !$description instanceof SMGeoCoordsValueDescription
-			//|| ( $description->getComparator() != SMW_CMP_EQ && $description->getComparator() != SMW_CMP_NEQ )
+			|| ( $description->getComparator() != SMW_CMP_EQ && $description->getComparator() != SMW_CMP_NEQ )
 			) return true;
 
 		$coordinates = $dataValue->getCoordinateSet();
