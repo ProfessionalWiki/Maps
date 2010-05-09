@@ -1574,21 +1574,24 @@ $messages['vi'] = array(
 	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://wiki.bn2vs.com/wiki/Maps thử xem]).
 Các dịch vụ bản đồ có sẵn: $1',
 	'maps_map' => 'Bản đồ',
+	'maps-loading-map' => 'Đang tải bản đồ…',
 	'maps-abb-north' => 'B',
 	'maps-abb-east' => 'Đ',
 	'maps-abb-south' => 'N',
 	'maps-abb-west' => 'T',
 	'maps-latitude' => 'Vĩ độ:',
 	'maps-longitude' => 'Kinh độ:',
+	'maps-invalid-coordinates' => 'Giá trị $1 không được nhận ra là tọa độ hợp lệ.',
 	'maps_coordinates_missing' => 'Chưa định rõ tọa độ cho bản đồ.',
 	'maps_geocoding_failed' => 'Không thể tính ra mã địa lý của {{PLURAL:$2|địa chỉ|các địa chỉ}} sau: $1.
 Không thể hiển thị bản đồ.',
 	'maps_geocoding_failed_for' => 'Không thể tính ra mã địa lý của {{PLURAL:$2|địa chỉ|các địa chỉ}} sau nên bản đồ bỏ qua nó:
 $1',
-	'maps_unrecognized_coords' => 'Không thể nhận ra tọa độ sau: $1.',
+	'maps_unrecognized_coords' => 'Không thể nhận ra {{PLURAL:$2|tọa độ|các tọa độ}} sau: $1.',
 	'maps_unrecognized_coords_for' => 'Không thể nhận ra {{PLURAL:$2|tọa độ|các tọa độ}} sau nên bản đồ bỏ qua nó:
 $1',
 	'maps_map_cannot_be_displayed' => 'Không thể hiển thị bản đồ.',
+	'maps-geocoder-not-available' => 'Không thể mã hóa vị trí của bạn vì tính năng mã hóa địa lý của Bản đồ không có sẵn.',
 	'maps_osm' => 'OpenStreetMap',
 	'maps_click_to_activate' => 'Nhấn chuột vào bản đồ để kích hoạt',
 	'maps_centred_on' => 'Bản đồ với trung tậm tại $1, $2.',
