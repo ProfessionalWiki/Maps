@@ -135,28 +135,9 @@ class MapsOpenLayers {
 				$parser = $parserOrOut;
 				
 				$parser->getOutput()->addHeadItem( 
-					Html::element(
-						'link', 
-						array(
-							'rel' => 'stylesheet',
-							'type' => 'text/css',
-							'href' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css"
-						)
-					) .				
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion"
-						)
-					) .	
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion"
-						)
-					) .								
+					Html::linkedStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ) .				
+					Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ) .	
+					Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" ) .								
 					Html::inlineScript( 'initOLSettings(200, 100);' )
 				);				
 			}

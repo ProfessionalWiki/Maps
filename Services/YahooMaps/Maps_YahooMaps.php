@@ -167,20 +167,8 @@ class MapsYahooMaps {
 				$parser = $parserOrOut;
 				
 				$parser->getOutput()->addHeadItem( 
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey"
-						)
-					) .		
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
-						)
-					)						
+					Html::linkedScript( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" ) .		
+					Html::linkedScript( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" )						
 				);				
 			}
 			else if ( $parserOrOut instanceof OutputPage ) {

@@ -215,20 +215,8 @@ class MapsGoogleMaps {
 				$parser = $parserOrOut;
 				
 				$parser->getOutput()->addHeadItem( 
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode"
-						)
-					) .	
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion"
-						)
-					) .						
+					Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ) .	
+					Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ) .						
 					Html::inlineScript( 'window.unload = GUnload;' )
 				);				
 			}

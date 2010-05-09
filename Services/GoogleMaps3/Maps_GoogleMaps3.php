@@ -143,20 +143,8 @@ class MapsGoogleMaps3 {
 				$parser = $parserOrOut;
 				
 				$parser->getOutput()->addHeadItem( 
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode"
-						)
-					) .
-					Html::element(
-						'script', 
-						array(
-							'type' => $wgJsMimeType,
-							'src' => "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion"
-						)
-					)				
+					Html::linkedScript( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" ) .
+					Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" )				
 				);				
 			}
 			else if ( $parserOrOut instanceof OutputPage ) {
