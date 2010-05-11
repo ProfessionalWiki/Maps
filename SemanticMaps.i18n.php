@@ -119,6 +119,7 @@ $messages['arz'] = array(
 $messages['be-tarask'] = array(
 	'semanticmaps_name' => 'Сэмантычныя мапы',
 	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps дэманстрацыя]). Даступныя сэрвісы мапаў: $1',
+	'semanticmaps-unrecognizeddistance' => 'Значэньне $1 — няслушная адлегласьць.',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
 	'semanticmaps_notfound' => 'ня знойдзена',
@@ -268,6 +269,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'semanticmaps_desc' => 'Proporciona la capacidad de ver y editar los datos coordinados almacenados a través de la extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Servicios de mapas disponibles: $1',
+	'semanticmaps-unrecognizeddistance' => 'El valor $1 no esuna distancia válida.',
 	'semanticmaps_lookupcoordinates' => 'Busque las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Ingresar dirección aquí',
 	'semanticmaps_notfound' => 'no encontrado',
@@ -362,6 +364,7 @@ Servizos de mapa dispoñibles: $1',
  */
 $messages['gsw'] = array(
 	'semanticmaps_desc' => 'Ergänzt e Megligkeit zum Aaluege un Bearbeite vu Koordinate, wu im Ramme vu dr Erwyterig „Semantisch MediaWiki“ gspycheret wore sin. Unterstitzti Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]',
+	'semanticmaps-unrecognizeddistance' => 'Dr Wert $1 isch kei giltigi Dischtanz.',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticmaps_enteraddresshere' => 'Doo Adräss yygee',
 	'semanticmaps_notfound' => 'nit gfunde',
