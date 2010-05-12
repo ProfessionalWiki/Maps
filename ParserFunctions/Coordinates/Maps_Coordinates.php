@@ -80,11 +80,15 @@ function efMapsRenderCoordinates() {
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
 		if ( $parsedCoords ) {
-			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] ) .
-				'<br />' . $manager->getErrorList();
+			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
 		} else {
-			$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) ) .
-				'<br />' . $manager->getErrorList();
+			$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) );
+		}
+		
+		$errorList = $manager->getErrorList();
+		
+		if ( $errorList != '' ) {
+			$output .= $errorList;
 		}
 	} else {
 		$output = $manager->getErrorList();
