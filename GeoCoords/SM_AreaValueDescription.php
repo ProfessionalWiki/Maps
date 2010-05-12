@@ -38,7 +38,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 					'lat' => $dbKeys[0],
 					'lon' => $dbKeys[1]
 				),
-				$radius
+				$radius * 1000
 			);
 		}
 	}
@@ -89,13 +89,11 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @return An associative array containing the limits with keys north, east, south and west.
 	 */
 	private static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
-		$centerCoordinates = array('lat' => 0, 'lon' => 0);
-		var_dump($centerCoordinates);
 		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
 		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
 		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
 		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
-var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
+
 		return array(
 			'north' => $north['lat'],
 			'east' => $east['lon'],
@@ -127,8 +125,8 @@ var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 		// the description is valid, and the near comparator is used.
 		if ( $dataValue->getTypeID() != '_geo'
 			|| !$dataValue->isValid()
-			) return true;
-		
+			) return false;
+			
 		$boundingBox = $this->getBounds();
 			
 		$north = $dbs->addQuotes( $boundingBox['north'] );
@@ -143,8 +141,6 @@ var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 		$conditions[] = "{$tableName}.{$fieldNames[1]} < $east";
 		$conditions[] = "{$tableName}.{$fieldNames[1]} > $west";
 		
-		$whereSQL .= implode( ' && ', $conditions );
-
-		return true;
+		return implode( ' && ', $conditions );
 	}	
 }
