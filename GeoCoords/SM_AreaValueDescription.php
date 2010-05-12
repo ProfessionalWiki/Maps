@@ -39,6 +39,8 @@ class SMAreaValueDescription extends SMWValueDescription {
 			
 			$ratio = array(
 				'km' => 1000,
+				'kilometers' => 1000,
+				'kilometres' => 1000,
 				'mile' => 1609.344,
 				'miles' => 1609.344,
 				'nautical mile' => 1852,
