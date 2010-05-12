@@ -248,21 +248,21 @@ class SMGeoCoordsValue extends SMWDataValue {
 	}
 	
 	/**
-	 * @see SMWDataValue::getValueIndexes
+	 * @see SMWDataValue::getValueIndex
 	 * 
-	 * @return array
+	 * @return integer
 	 */	
-	public function getValueIndexes() {
-		return array( 0, 1 );
+	public function getValueIndex() {
+		return 0;
 	}
 
 	/**
-	 * @see SMWDataValue::getLabelIndexes
+	 * @see SMWDataValue::getLabelIndex
 	 * 
-	 * @return array
+	 * @return integer
 	 */		
-	public function getLabelIndexes() {
-		return array( 0, 1 );
+	public function getLabelIndex() {
+		return 0;
 	}	
 
 }
