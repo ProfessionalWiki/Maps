@@ -28,6 +28,28 @@ class SMAreaValueDescription extends SMWValueDescription {
 	public function __construct( SMGeoCoordsValue $dataValue, $radius ) {
 		parent::__construct( $dataValue, SM_CMP_NEAR );	
 
+		// Parse the radius to the actual value and the optional unit.
+		$radius = preg_replace('/\s\s+/', ' ', $radius);
+		$parts = explode( ' ', $radius );
+		$radius = (float)array_shift( $parts );
+		
+		// If there is a unit, find it's ratio and apply it to the radius value.
+		if ( count( $parts ) > 0 ) {
+			$unit = strtolower( implode( ' ', $parts ) );
+			
+			$ratio = array(
+				'km' => 1000,
+				'mile' => 1609.344,
+				'miles' => 1609.344,
+				'nautical mile' => 1852,
+				'nautical miles' => 1852,
+			);			
+			
+			if ( array_key_exists( $unit, $ratio ) ) {
+				$radius = $radius * $ratio[$unit];
+			}
+		}
+		
 		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box,
 		// so don't add any conditions.
 		if ( self::geoFunctionsAreAvailable() ) {
@@ -38,7 +60,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 					'lat' => $dbKeys[0],
 					'lon' => $dbKeys[1]
 				),
-				$radius * 1000
+				$radius
 			);
 		}
 	}
