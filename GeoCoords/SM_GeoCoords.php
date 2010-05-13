@@ -27,5 +27,3 @@ $wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
 
 // Hook for defining a table to store geographical coordinates in.
 $wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
-
-define( 'SM_CMP_NEAR', 101 ); // Define the near comparator for proximity queries.

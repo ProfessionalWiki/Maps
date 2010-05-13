@@ -47,33 +47,41 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * @see SMWDescription::getSQLCondition
 	 * 
 	 * @param string $tableName
-	 * @param string $fieldName
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public function getSQLCondition( $tableName, $fieldName, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, DatabaseBase $dbs ) {
 		$dataValue = $this->getDatavalue();
 		
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
 		if ( $dataValue->getTypeID() != '_geo'
 			|| !$dataValue->isValid()
-			|| ( $this->getComparator() != SMW_CMP_EQ && $this->getComparator() != SMW_CMP_NEQ )
-			) return true;
+			) return false;
 
-		$coordinates = $dataValue->getCoordinateSet();
+		$comparator = false;
 		
-		$comparator = $this->getComparator() == SMW_CMP_EQ ? '=' : '!=';
+		switch ( $this->getComparator() ) {
+			case SMW_CMP_EQ: $comparator = '='; break;
+			case SMW_CMP_LEQ: $comparator = '<='; break;
+			case SMW_CMP_GEQ: $comparator = '>='; break;
+			case SMW_CMP_NEQ: $comparator = '!='; break;
+		}
 		
-		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
-		$conditions = array();
-		$conditions[] = "{$tableName}.lat {$comparator} {$coordinates['lat']}";
-		$conditions[] = "{$tableName}.lon {$comparator} {$coordinates['lon']}";
-		
-		$whereSQL .= implode( ' && ', $conditions );		
-
-		return true;
-	}		
+		if ( $comparator ) {
+			$coordinates = $dataValue->getCoordinateSet();
+			
+			// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
+			$conditions = array();
+			$conditions[] = "{$tableName}.lat {$comparator} {$coordinates['lat']}";
+			$conditions[] = "{$tableName}.lon {$comparator} {$coordinates['lon']}";
+			
+			return implode( ' && ', $conditions );			
+		}
+		else {
+			return false;
+		}
+	}
 	
 }

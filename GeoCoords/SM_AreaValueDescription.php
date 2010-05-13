@@ -49,7 +49,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 				'nm' => 1852,
 				'nautical mile' => 1852,
 				'nautical miles' => 1852,
-			);			
+			);
 			
 			if ( array_key_exists( $unit, $ratio ) ) {
 				$radius = $radius * $ratio[$unit];
@@ -151,23 +151,31 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( $dataValue->getTypeID() != '_geo'
+		if ( $dataValue->getTypeID() != '_geo' 
 			|| !$dataValue->isValid()
-			) return false;
+			|| ( $this->getComparator() != SMW_CMP_EQ && $this->getComparator() != SMW_CMP_NEQ )
+			) {
+			return false;
+		}
 			
 		$boundingBox = $this->getBounds();
-			
+		
 		$north = $dbs->addQuotes( $boundingBox['north'] );
 		$east = $dbs->addQuotes( $boundingBox['east'] );
 		$south = $dbs->addQuotes( $boundingBox['south'] );
 		$west = $dbs->addQuotes( $boundingBox['west'] );
 
+		$isEq = $this->getComparator() == SMW_CMP_EQ;
+		
+		$smallerThen = $isEq ? '<' : '>';
+		$biggerThen = $isEq ? '>' : '<';
+		
 		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
 		$conditions = array();
-		$conditions[] = "{$tableName}.lat < $north";
-		$conditions[] = "{$tableName}.lat > $south";
-		$conditions[] = "{$tableName}.lon < $east";
-		$conditions[] = "{$tableName}.lon > $west";
+		$conditions[] = "{$tableName}.lat $smallerThen $north";
+		$conditions[] = "{$tableName}.lat $biggerThen $south";
+		$conditions[] = "{$tableName}.lon $smallerThen $east";
+		$conditions[] = "{$tableName}.lon $biggerThen $west";
 		
 		return implode( ' && ', $conditions );
 	}	
