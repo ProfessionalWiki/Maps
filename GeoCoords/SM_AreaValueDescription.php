@@ -28,7 +28,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
 	public function __construct( SMGeoCoordsValue $dataValue, $comparator, $radius ) {
-		parent::__construct( $dataValue );	
+		parent::__construct( $dataValue, $comparator );	
 
 		// Parse the radius to the actual value and the optional unit.
 		$radius = preg_replace('/\s\s+/', ' ', $radius);
@@ -156,7 +156,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 			) {
 			return false;
 		}
-			
+		
 		$boundingBox = $this->getBounds();
 		
 		$north = $dbs->addQuotes( $boundingBox['north'] );
@@ -166,8 +166,9 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
 		
-		$smallerThen = $isEq ? '<' : '>';
-		$biggerThen = $isEq ? '>' : '<';
+		$smallerThen = $isEq ? '<' : '>=';
+		$biggerThen = $isEq ? '>' : '<=';
+		$joinCond = $isEq ? '&&' : '||';
 		
 		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
 		$conditions = array();
@@ -176,6 +177,6 @@ class SMAreaValueDescription extends SMWValueDescription {
 		$conditions[] = "{$tableName}.lon $smallerThen $east";
 		$conditions[] = "{$tableName}.lon $biggerThen $west";
 		
-		return implode( ' && ', $conditions );
+		return implode( " $joinCond ", $conditions );
 	}	
 }

@@ -88,7 +88,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 			$distance = count( $parts ) > 0 ? trim( array_shift( $parts ) ) : false;
 
 			if ( $distance !== false ) {
-				if ( preg_match( '/^\d+(\.\d+)?(\s.+)?\)$/', $distance ) ) {
+				if ( preg_match( '/^!?\d+(\.\d+)?(\s.+)?\)$/', $distance ) ) {
 					$distance = substr( $distance, 0, -1 );
 				}
 				else {
