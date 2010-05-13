@@ -20,6 +20,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  * 
+ * TODO: would be awesome to use Spatial Extensions to select coordinates
+ * 
  * @ingroup SemanticMaps
  */
 class SMAreaValueDescription extends SMWValueDescription {
@@ -41,8 +43,10 @@ class SMAreaValueDescription extends SMWValueDescription {
 				'km' => 1000,
 				'kilometers' => 1000,
 				'kilometres' => 1000,
+				'mi' => 1609.344,
 				'mile' => 1609.344,
 				'miles' => 1609.344,
+				'nm' => 1852,
 				'nautical mile' => 1852,
 				'nautical miles' => 1852,
 			);			
