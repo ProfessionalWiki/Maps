@@ -118,7 +118,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 					return new SMWThingDescription();
 					break;
 				case $distance !== false :
-					return new SMAreaValueDescription( $this, $distance );
+					return new SMAreaValueDescription( $this, $comparator, $distance );
 					break;
 				default :
 					return new SMGeoCoordsValueDescription( $this, $comparator );

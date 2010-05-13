@@ -27,8 +27,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
-	public function __construct( SMGeoCoordsValue $dataValue, $radius ) {
-		parent::__construct( $dataValue, SM_CMP_NEAR );	
+	public function __construct( SMGeoCoordsValue $dataValue, $comparator, $radius ) {
+		parent::__construct( $dataValue );	
 
 		// Parse the radius to the actual value and the optional unit.
 		$radius = preg_replace('/\s\s+/', ' ', $radius);
@@ -141,12 +141,11 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @see SMWDescription::getSQLCondition
 	 * 
 	 * @param string $tableName
-	 * @param string $fieldName
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public function getSQLCondition( $tableName, $fieldName, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, DatabaseBase $dbs ) {
 		$dataValue = $this->getDatavalue();
 
 		// Only execute the query when the description's type is geographical coordinates,
