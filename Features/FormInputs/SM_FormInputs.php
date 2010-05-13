@@ -72,7 +72,7 @@ final class SMFormInputs {
 			),
 			'geoservice' => array(
 				'criteria' => array(
-					'in_array' => array_keys( $egMapsAvailableGeoServices )
+					'in_array' => $egMapsAvailableGeoServices
 				),
 				'default' => $egMapsDefaultGeoService
 			),
