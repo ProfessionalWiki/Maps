@@ -160,7 +160,7 @@ final class MapsGeocoder {
 		}
 		else {
 			// If a service is provided, but is not supported, use the default.
-			if ( !array_key_exists( $service, $egMapsAvailableGeoServices ) ) $service = $egMapsDefaultGeoService;
+			if ( !in_array( $service, $egMapsAvailableGeoServices ) ) $service = $egMapsDefaultGeoService;
 		}
 
 		return $service;

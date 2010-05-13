@@ -148,7 +148,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# only be used when the user does not provide them.
 	$egMapsMapWidth = '100%';
 	$egMapsMapHeight = 350;
-	
+
 	# Array. The minimum and maximum width and height for all maps. First min and
 	# max for absolute values, then min and max for percentage values. When the
 	# height or width exceed their limits, they will be changed to the closest

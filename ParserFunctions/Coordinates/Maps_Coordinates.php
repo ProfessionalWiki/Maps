@@ -40,7 +40,7 @@ function efMapsCoordinatesFunction( &$wgParser ) {
 
 // TODO: add coordinate validation
 function efMapsRenderCoordinates() {
-	global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsAvailableCoordNotations;
+	global $egMapsAvailableServices, $egMapsAvailableCoordNotations;
 	global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
 	global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
 	
