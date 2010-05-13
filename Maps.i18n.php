@@ -1134,7 +1134,7 @@ $1.',
 	'maps_centred_on' => 'Kaart gecentreerd op $1, $2.',
 	'maps_overlays' => "Overlay's",
 	'maps_photos' => "Foto's",
-	'maps_videos' => 'Video',
+	'maps_videos' => "Video's",
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcams',
 );
