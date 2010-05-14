@@ -998,7 +998,7 @@ $1',
  * @author Universal Life
  */
 $messages['lad'] = array(
-	'maps_wikipedia' => 'Vikipedia',
+	'maps_wikipedia' => 'Vikipeddia',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
