@@ -141,11 +141,12 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @see SMWDescription::getSQLCondition
 	 * 
 	 * @param string $tableName
+	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public function getSQLCondition( $tableName, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		$dataValue = $this->getDatavalue();
 
 		// Only execute the query when the description's type is geographical coordinates,
@@ -172,10 +173,10 @@ class SMAreaValueDescription extends SMWValueDescription {
 		
 		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
 		$conditions = array();
-		$conditions[] = "{$tableName}.lat $smallerThen $north";
-		$conditions[] = "{$tableName}.lat $biggerThen $south";
-		$conditions[] = "{$tableName}.lon $smallerThen $east";
-		$conditions[] = "{$tableName}.lon $biggerThen $west";
+		$conditions[] = "{$tableName}.$fieldNames[0] $smallerThen $north";
+		$conditions[] = "{$tableName}.$fieldNames[0] $biggerThen $south";
+		$conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $east";
+		$conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $west";
 		
 		return implode( " $joinCond ", $conditions );
 	}	

@@ -47,11 +47,12 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * @see SMWDescription::getSQLCondition
 	 * 
 	 * @param string $tableName
+	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public function getSQLCondition( $tableName, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		$dataValue = $this->getDatavalue();
 		
 		// Only execute the query when the description's type is geographical coordinates,
@@ -72,10 +73,13 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		if ( $comparator ) {
 			$coordinates = $dataValue->getCoordinateSet();
 			
+			$lat = $dbs->addQuotes( $coordinates['lat'] );
+			$lon = $dbs->addQuotes( $coordinates['lon'] );
+			
 			// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
 			$conditions = array();
-			$conditions[] = "{$tableName}.lat {$comparator} {$coordinates['lat']}";
-			$conditions[] = "{$tableName}.lon {$comparator} {$coordinates['lon']}";
+			$conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
+			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";
 			
 			return implode( ' && ', $conditions );			
 		}
