@@ -1304,6 +1304,7 @@ $messages['ps'] = array(
 	'maps_photos' => 'انځورونه',
 	'maps_videos' => 'ويډيوګانې',
 	'maps_wikipedia' => 'ويکيپېډيا',
+	'maps_webcams' => 'وېبکامرې',
 );
 
 /** Portuguese (Português)
@@ -1471,6 +1472,7 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Fluff
  * @author Per
  */
@@ -1495,6 +1497,7 @@ $1',
 	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_photos' => 'Foton',
 	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webbkameror',
 );
 
 /** Telugu (తెలుగు)
