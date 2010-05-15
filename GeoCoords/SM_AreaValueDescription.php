@@ -171,7 +171,6 @@ class SMAreaValueDescription extends SMWValueDescription {
 		$biggerThen = $isEq ? '>' : '<=';
 		$joinCond = $isEq ? '&&' : '||';
 		
-		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
 		$conditions = array();
 		$conditions[] = "{$tableName}.$fieldNames[0] $smallerThen $north";
 		$conditions[] = "{$tableName}.$fieldNames[0] $biggerThen $south";

@@ -76,7 +76,6 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 			$lat = $dbs->addQuotes( $coordinates['lat'] );
 			$lon = $dbs->addQuotes( $coordinates['lon'] );
 			
-			// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
 			$conditions = array();
 			$conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
 			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";

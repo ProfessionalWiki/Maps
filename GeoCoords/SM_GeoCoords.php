@@ -10,9 +10,6 @@
  * @author Jeroen De Dauw
  */
 
-// Registration of the GoeCoords class.
-$wgAutoloadClasses['SMGeoCoords'] = __FILE__;
-
 // Registration of the Geographical Coordinate type.
 $wgAutoloadClasses['SMGeoCoordsValue'] = dirname( __FILE__ ) . '/SM_GeoCoordsValue.php';
 
