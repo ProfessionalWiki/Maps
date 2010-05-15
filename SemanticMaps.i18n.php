@@ -712,6 +712,13 @@ Sërvissi ëd mapa disponìbij: $1',
 	'semanticmaps_paramdesc_layers' => 'Ij livej disponìbij an sla carta',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'semanticmaps_notfound' => 'و نه موندل شو',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Indech
