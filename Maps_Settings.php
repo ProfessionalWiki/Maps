@@ -134,10 +134,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
 	$egMapsCoordinateDirectional = true;
 	
-	# Boolean.
+	# Boolean. Sets if coordinates should be allowed in geocoding calls.
 	$egMapsAllowCoordsGeocoding = true;
 	
-	# Boolean.
+	# Boolean. Sets if geocoded addresses should be stored in a cache.
 	$egMapsEnableGeoCache = true;
 
 
