@@ -1480,6 +1480,7 @@ $messages['sv'] = array(
 	'maps_desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Tillgängliga karttjänster: $1',
 	'maps_map' => 'Karta',
+	'maps-loading-map' => 'Laddar karta ...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ö',
 	'maps-abb-south' => 'S',
