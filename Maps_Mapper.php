@@ -13,9 +13,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsMapper {
+	
+	/**
+	 * Initialization function. Needs to be called before parameters using Maps defined validation
+	 * or formatting functions are handled. 
+	 */
 	public static function initialize() {
-		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
-
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
 		Validator::addValidationFunction( 'is_location', array( __CLASS__, 'isLocation' ) );
 		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );
@@ -25,6 +28,15 @@ final class MapsMapper {
 		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
 
+	/**
+	 * Returns if the value is a location.
+	 * 
+	 * @param string $location
+	 * @param string $name The name of the parameter.
+	 * @param array $parameters Array containing data about the so far handled parameters.
+	 * 
+	 * @return boolean
+	 */
 	public static function isLocation( $location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
 			return MapsGeocoder::isLocation( $location );
@@ -33,6 +45,15 @@ final class MapsMapper {
 		}
 	}
 
+	/**
+	 * Returns if the values are a locations.
+	 * 
+	 * @param string $locations
+	 * @param string $name The name of the parameter.
+	 * @param array $parameters Array containing data about the so far handled parameters.
+	 * 
+	 * @return boolean
+	 */	
 	public static function areLocations( $locations, $name, array $parameters ) {
 		$locations = (array)$locations;
 		foreach ( $locations as $location ) {
@@ -43,6 +64,13 @@ final class MapsMapper {
 		return true;
 	}
 
+	/**
+	 * Formats a location to a coordinate set in a certain representation.
+	 * 
+	 * @param string $locations
+	 * @param string $name The name of the parameter.
+	 * @param array $parameters Array containing data about the so far handled parameters.
+	 */		
 	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
 			$location = MapsGeocoder::attemptToGeocodeToString( $location );
@@ -51,6 +79,13 @@ final class MapsMapper {
 		}
 	}
 
+	/**
+	 * Formats a set of locations to coordinate sets in a certain representation.
+	 * 
+	 * @param string $locations
+	 * @param string $name The name of the parameter.
+	 * @param array $parameters Array containing data about the so far handled parameters.
+	 */		
 	public static function formatLocations( &$locations, $name, array $parameters ) {
 		$locations = (array)$locations;
 		foreach ( $locations as &$location ) {
