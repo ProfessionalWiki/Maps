@@ -1370,7 +1370,7 @@ $1',
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'maps_desc' => 'Asigură capacitatea de a afişa coordonate pe hărţi şi adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstraţie]).
+	'maps_desc' => 'Asigură capacitatea de a afișa coordonate pe hărți și adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstrație]).
 Servici de cartografiere disponibile: $1',
 	'maps_map' => 'Hartă',
 	'maps-abb-north' => 'N',
@@ -1381,8 +1381,8 @@ Servici de cartografiere disponibile: $1',
 	'maps-longitude' => 'Longitudine:',
 	'maps_coordinates_missing' => 'Nici o coordonată oferită pentru hartă.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}}: $1.
-Harta nu poate fi afişată.',
-	'maps_geocoding_failed_for' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}} şi {{PLURAL:$2|a|au}} fost {{PLURAL:$2|omisă|omise}} de pe hartă:
+Harta nu poate fi afișată.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}} și {{PLURAL:$2|a|au}} fost {{PLURAL:$2|omisă|omise}} de pe hartă:
 $1',
 	'maps_photos' => 'Fotografii',
 	'maps_videos' => 'Filme',
