@@ -518,9 +518,11 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する ([http://wiki.bn2vs.com/wiki/Semantic_Maps 実演])。次の地図サービスに対応します：$1',
+	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps_lookupcoordinates' => '座標を調べる',
 	'semanticmaps_enteraddresshere' => '住所をここに入力します',
 	'semanticmaps_notfound' => '見つかりません',
@@ -761,7 +763,7 @@ Serviços de mapeamento disponíveis: $1',
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'semanticmaps_enteraddresshere' => 'Introduceţi adresa aici',
+	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
 	'semanticmaps_notfound' => 'nu a fost găsit',
 );
 
