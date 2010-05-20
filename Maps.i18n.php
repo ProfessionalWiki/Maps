@@ -106,6 +106,24 @@ $1.',
 	'maps_webcams' => 'Webkameras',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'maps_desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Hartës shërbimet në dispozicion: $1',
+	'maps_map' => 'Hartë',
+	'maps-loading-map' => 'Loading Harta ...',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Latitude:',
+	'maps-longitude' => 'Gjatësi:',
+	'maps-invalid-coordinates' => 'Vlera $1 nuk është njohur si një grup të vlefshme të kordinatave.',
+	'maps_coordinates_missing' => 'Nuk ka koordinon parashikuara në hartë.',
+	'maps_geocoding_failed' => 'Më poshtë {{PLURAL:$2|Adresa|adresat}} nuk mund të geocoded: $1.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
