@@ -58,7 +58,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Spatial extensions significantly speed up querying, but are not present by default on postgres databases.
 	# If this value is false, coordinates will be stored in 2 float fields.
 	# You are unlikely to need to change this setting, so don't unless you know what you are doing!
-	$smgUseSpatialExtensions = false; // $wgDBtype != 'postgres';
+	$smgUseSpatialExtensions = false; // TODO: $wgDBtype != 'postgres';
 	
 	
 	

@@ -66,7 +66,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 		
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',
-			$signature
+			$signature,
+			array_keys( $signature ) // These are the fields that should be indexed.
 		);
 		
 		return true;
