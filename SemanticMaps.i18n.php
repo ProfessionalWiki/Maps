@@ -77,6 +77,20 @@ Beskikbare kaartdienste: $1',
 	'semanticmaps_paramdesc_layers' => 'Die lae beskikbaar op die kaart',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'semanticmaps_paramdesc_zoom' => 'Shkalla e zmadhimit Harta',
+	'semanticmaps_paramdesc_centre' => "Koordinatat e qendrës hartave '",
+	'semanticmaps_paramdesc_controls' => 'Perdoruesi kontrolleve të vendosura në hartë',
+	'semanticmaps_paramdesc_types' => 'Llojet Harta dispozicion në hartë',
+	'semanticmaps_paramdesc_type' => 'Harta default lloji për hartën',
+	'semanticmaps_paramdesc_overlays' => 'Overlays në dispozicion në hartë',
+	'semanticmaps_paramdesc_autozoom' => 'Nëse zoom brenda dhe jashtë duke përdorur rrotëzën miut është i aktivizuar',
+	'semanticmaps_paramdesc_layers' => 'Shtresat në dispozicion në hartë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
