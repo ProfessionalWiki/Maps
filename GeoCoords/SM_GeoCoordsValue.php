@@ -47,7 +47,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 		// Only add the table when the SQL store is not a postgres database, and it has not been added by SMW itself.
 		if ( $smgUseSpatialExtensions && !array_key_exists( 'c', $fieldTypes ) ) {
-			$fieldTypes['c'] = 'WUHAAAA'; // TODO: WUHAAAA is not a valid field type o_O
+			$fieldTypes['c'] = 'Point';
 		}
 		
 		return true;
@@ -62,7 +62,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		global $smgUseSpatialExtensions;
 		
 		// No spatial extensions support for postgres yet, so just store as 2 float fields.
-		$signature = $smgUseSpatialExtensions ? array( 'c' ) : array( 'lat' => 'f', 'lon' => 'f' );
+		$signature = $smgUseSpatialExtensions ? array( 'point' => 'c' ) : array( 'lat' => 'f', 'lon' => 'f' );
 		
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',
