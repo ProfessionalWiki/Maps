@@ -38,15 +38,37 @@ class SMGeoCoordsValue extends SMWDataValue {
 	}
 	
 	/**
+	 * Defines the signature for geographical fields needed for the smw_coords table.
+	 * 
+	 * @param array $fieldTypes The field types defined by SMW, passed by reference.
+	 */
+	public static function initGeoCoordsFieldTypes( array $fieldTypes ) {
+		global $smgUseSpatialExtensions;
+
+		// Only add the table when the SQL store is not a postgres database, and it has not been added by SMW itself.
+		if ( $smgUseSpatialExtensions && !array_key_exists( 'c', $fieldTypes ) ) {
+			$fieldTypes['c'] = 'WUHAAAA'; // TODO: WUHAAAA is not a valid field type o_O
+		}
+		
+		return true;
+	}
+	
+	/**
 	 * Defines the layout for the smw_coords table which is used to store value of the GeoCoords type.
 	 * 
 	 * @param array $propertyTables The property tables defined by SMW, passed by reference.
 	 */
 	public static function initGeoCoordsTable( array $propertyTables ) {
+		global $smgUseSpatialExtensions;
+		
+		// No spatial extensions support for postgres yet, so just store as 2 float fields.
+		$signature = $smgUseSpatialExtensions ? array( 'c' ) : array( 'lat' => 'f', 'lon' => 'f' );
+		
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',
-			array( 'lat' => 'f', 'lon' => 'f' )
+			$signature
 		);
+		
 		return true;
 	}
 	
@@ -131,10 +153,15 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::parseDBkeys
 	 */
 	protected function parseDBkeys( $args ) {
-		global $smgQPCoodFormat, $smgQPCoodDirectional;
+		global $smgUseSpatialExtensions, $smgQPCoodFormat, $smgQPCoodDirectional;
 		
-		$this->mCoordinateSet['lat'] = $args[0];
-		$this->mCoordinateSet['lon'] = $args[1];
+		if ( $smgUseSpatialExtensions ) {
+			// TODO
+		}
+		else {
+			$this->mCoordinateSet['lat'] = $args[0];
+			$this->mCoordinateSet['lon'] = $args[1];			
+		}
 		
 		$this->m_caption = MapsCoordinateParser::formatCoordinates(
 			$this->mCoordinateSet,
@@ -151,17 +178,22 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function getDBkeys() {
 		$this->unstub();
 		
-		return array(
-			$this->mCoordinateSet['lat'],
-			$this->mCoordinateSet['lon']
-		);
+		if ( $smgUseSpatialExtensions ) {
+			// TODO
+		}
+		else {
+			return array(
+				$this->mCoordinateSet['lat'],
+				$this->mCoordinateSet['lon']
+			);			
+		}
 	}
 	
 	/**
 	 * @see SMWDataValue::getSignature
 	 */	
 	public function getSignature() {
-		return 'ff';
+		return $smgUseSpatialExtensions ? 'c' : 'ff';
 	}	
 
 	/**
@@ -170,11 +202,15 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
+			
+			// TODO: fix lang keys so they include the space and coordinates.
+			
 			return '<span class="smwttinline">' . htmlspecialchars( $this->m_caption ) . '<span class="smwttcontent">' .
 		        htmlspecialchars ( wfMsgForContent( 'maps-latitude' ) . ' ' . $this->mCoordinateSet['lat'] ) . '<br />' .
 		        htmlspecialchars ( wfMsgForContent( 'maps-longitude' ) . ' ' . $this->mCoordinateSet['lon'] ) .
 		        '</span></span>';
-		} else {
+		}
+		else {
 			return htmlspecialchars( $this->m_caption );
 		}
 	}
@@ -192,7 +228,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function getLongWikiText( $linked = null ) {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
-		} else {
+		}
+		else {
 			global $smgQPCoodFormat, $smgQPCoodDirectional;
 			return MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
 		}

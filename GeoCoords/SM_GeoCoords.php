@@ -22,5 +22,7 @@ $wgAutoloadClasses['SMAreaValueDescription'] = dirname( __FILE__ ) . '/SM_AreaVa
 // Hook for initializing the Geographical Coordinate type.
 $wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
 
+$wgHooks['SMWCustomSQLStoreFieldType'][] = 'SMGeoCoordsValue::initGeoCoordsFieldTypes';
+
 // Hook for defining a table to store geographical coordinates in.
 $wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
