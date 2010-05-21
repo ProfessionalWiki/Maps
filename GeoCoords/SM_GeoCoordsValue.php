@@ -177,11 +177,16 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::getDBkeys
 	 */
 	public function getDBkeys() {
+		global $smgUseSpatialExtensions;
+		
 		$this->unstub();
 		
 		if ( $smgUseSpatialExtensions ) {
-			global $smgUseSpatialExtensions;
 			// TODO
+			return array(
+				// GeomFromText()
+				str_replace( ',', '.', " POINT({$this->mCoordinateSet['lat']} {$this->mCoordinateSet['lon']}) " )
+			);
 		}
 		else {
 			return array(
