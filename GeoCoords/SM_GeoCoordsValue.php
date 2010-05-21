@@ -180,6 +180,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->unstub();
 		
 		if ( $smgUseSpatialExtensions ) {
+			global $smgUseSpatialExtensions;
 			// TODO
 		}
 		else {
@@ -194,6 +195,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @see SMWDataValue::getSignature
 	 */	
 	public function getSignature() {
+		global $smgUseSpatialExtensions;
 		return $smgUseSpatialExtensions ? 'c' : 'ff';
 	}	
 
