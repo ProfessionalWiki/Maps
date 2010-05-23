@@ -48,18 +48,18 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * 
 	 * @param string $tableName
 	 * @param array $fieldNames
-	 * @param DatabaseBase $dbs
+	 * @param DatabaseBase or Database $dbs
 	 * 
 	 * @return true
 	 */
-	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
+		global $smgUseSpatialExtensions;
+		
 		$dataValue = $this->getDatavalue();
 		
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( $dataValue->getTypeID() != '_geo'
-			|| !$dataValue->isValid()
-			) return false;
+		if ( $dataValue->getTypeID() != '_geo' || !$dataValue->isValid() ) return false;
 
 		$comparator = false;
 		
@@ -77,8 +77,14 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 			$lon = $dbs->addQuotes( $coordinates['lon'] );
 			
 			$conditions = array();
-			$conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
-			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";
+			
+			if ( $smgUseSpatialExtensions ) {
+				// TODO
+			}
+			else {		
+				$conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
+				$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";				
+			}	
 			
 			return implode( ' && ', $conditions );			
 		}

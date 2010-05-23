@@ -137,11 +137,11 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * 
 	 * @param string $tableName
 	 * @param array $fieldNames
-	 * @param DatabaseBase $dbs
+	 * @param DatabaseBase or Database $dbs
 	 * 
 	 * @return true
 	 */
-	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
 		global $smgUseSpatialExtensions;
 		
 		$dataValue = $this->getDatavalue();
