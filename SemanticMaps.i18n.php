@@ -158,10 +158,12 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servijoù kartennoù hegerz : $1',
+	'semanticmaps-unrecognizeddistance' => "An talvoud $1 n'eo ket un hed reizh anezhañ.",
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
 	'semanticmaps_paramdesc_format' => 'Ar servij kartennaouiñ implijet da grouiñ ar gartenn',
+	'semanticmaps_paramdesc_geoservice' => "Ar servij geokodiñ implijet da dreiñ ar chomlec'hioù e daveennoù",
 	'semanticmaps_paramdesc_height' => 'Uhelder ar gartenn, e pikseloù ($1 dre izouer)',
 	'semanticmaps_paramdesc_width' => 'Ledander ar gartenn, e pikseloù ($1 dre izouer)',
 	'semanticmaps_paramdesc_zoom' => 'Live zoum ar gartenn',
@@ -169,6 +171,7 @@ $messages['br'] = array(
 	'semanticmaps_paramdesc_controls' => "Ar c'hontrolloù implijer lakaet war ar gartenn",
 	'semanticmaps_paramdesc_types' => "Ar seurtoù kartennoù a c'haller kaout war ar gartenn",
 	'semanticmaps_paramdesc_type' => 'Ar seurt kartenn dre ziouer evit ar gartenn',
+	'semanticmaps_paramdesc_overlays' => "Ar gwiskadoù a c'haller da gaout war ar gartenn",
 	'semanticmaps_paramdesc_autozoom' => 'Mard eo gweredekaet ar zoumañ hag an dizoumañ gant rodig al logodenn',
 	'semanticmaps_paramdesc_layers' => 'Ar gwiskadoù zo da gaout war ar gartenn',
 );
