@@ -55,7 +55,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 			'div',
 			array(
 				'id' => $mapName,
-				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
 		);
