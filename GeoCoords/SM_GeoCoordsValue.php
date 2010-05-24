@@ -161,7 +161,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		}
 		else {
 			$this->mCoordinateSet['lat'] = $args[0];
-			$this->mCoordinateSet['lon'] = $args[1];			
+			$this->mCoordinateSet['lon'] = $args[1];
 		}
 		
 		$this->m_caption = MapsCoordinateParser::formatCoordinates(

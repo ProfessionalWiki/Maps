@@ -82,7 +82,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 			'div',
 			array(
 				'id' => $this->mapName,
-				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
 		);
