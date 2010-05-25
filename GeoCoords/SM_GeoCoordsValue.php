@@ -47,7 +47,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 		// Only add the table when the SQL store is not a postgres database, and it has not been added by SMW itself.
 		if ( $smgUseSpatialExtensions && !array_key_exists( 'c', $fieldTypes ) ) {
-			$fieldTypes['c'] = 'Point';
+			$fieldTypes['c'] = 'Point NOT NULL';
 		}
 		
 		return true;
@@ -182,11 +182,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->unstub();
 		
 		if ( $smgUseSpatialExtensions ) {
-			// TODO
-			return array(
-				// GeomFromText()
-				str_replace( ',', '.', " POINT({$this->mCoordinateSet['lat']} {$this->mCoordinateSet['lon']}) " )
-			);
+			$point = str_replace( ',', '.', " POINT({$this->mCoordinateSet['lat']} {$this->mCoordinateSet['lon']}) " );
+			return array( "GeomFromText( '$point' )" );
 		}
 		else {
 			return array(
