@@ -1049,6 +1049,33 @@ $1',
 	'maps_webcams' => 'Web-Kameraen',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'maps_desc' => 'Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Katrografavimo paslaugos pasiekiamos: $1',
+	'maps_map' => 'Žemėlapis',
+	'maps-loading-map' => 'Kraunamas žemėlapis ...',
+	'maps-abb-north' => 'Š',
+	'maps-abb-east' => 'R',
+	'maps-abb-south' => 'P',
+	'maps-abb-west' => 'V',
+	'maps-latitude' => 'Platuma:',
+	'maps-longitude' => 'Ilguma:',
+	'maps-invalid-coordinates' => 'Vertė $ 1 nepripažįstama kaip galiojanti koordinatė.',
+	'maps_coordinates_missing' => 'Nesudarytos koordinatės žemėlapiui.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Šis adresas|Šie adresai}} negali būti kartografuoti: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Ši koordinatė|Šios koordinatės}} nebuvo atpažintos: $1.',
+	'maps_map_cannot_be_displayed' => 'Žemėlapis negal būti parodytas.',
+	'maps_click_to_activate' => 'Spustelėkite, norėdami įjungti žemėlapį',
+	'maps_centred_on' => 'Žemėlapis centruotas link $1, $2.',
+	'maps_photos' => 'Nuotraukos',
+	'maps_videos' => 'Vaizdo klipai',
+	'maps_wikipedia' => 'Vikipedija',
+	'maps_webcams' => 'Interneto kameros',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  * @author McDutchie
