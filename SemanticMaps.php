@@ -68,8 +68,6 @@ function smfSetup() {
 	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
 	$services_list = $wgLang->listToText( $services );
 
-	wfLoadExtensionMessages( 'SemanticMaps' );
-
 	$wgExtensionCredits['other'][] = array(
 		'path' => __FILE__,
 		'name' => wfMsg( 'semanticmaps_name' ),
