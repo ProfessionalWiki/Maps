@@ -63,11 +63,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 		
 		// No spatial extensions support for postgres yet, so just store as 2 float fields.
 		$signature = $smgUseSpatialExtensions ? array( 'point' => 'c' ) : array( 'lat' => 'f', 'lon' => 'f' );
+		$indexes = $smgUseSpatialExtensions ? array( array( 'point', 'SPATIAL INDEX' ) ) : array_keys( $signature );
 		
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',
 			$signature,
-			array_keys( $signature ) // These are the fields that should be indexed.
+			$indexes // These are the fields that should be indexed.
 		);
 		
 		return true;
