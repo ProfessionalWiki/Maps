@@ -86,8 +86,6 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';
 
-	wfLoadExtensionMessages( 'Maps' );
-
 	wfRunHooks( 'MappingFeatureLoad' );
 	wfRunHooks( 'MappingServiceLoad' );
 
