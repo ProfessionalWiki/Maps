@@ -158,7 +158,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 		global $smgUseSpatialExtensions, $smgQPCoodFormat, $smgQPCoodDirectional;
 		
 		if ( $smgUseSpatialExtensions ) {
-			// TODO
+			//die(__METHOD__);
+			//var_dump($args);exit;
 		}
 		else {
 			$this->mCoordinateSet['lat'] = $args[0];
@@ -184,6 +185,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		
 		if ( $smgUseSpatialExtensions ) {
 			$point = str_replace( ',', '.', " POINT({$this->mCoordinateSet['lat']} {$this->mCoordinateSet['lon']}) " );
+			//var_dump("GeomFromText( '$point' )");exit;
 			return array( "GeomFromText( '$point' )" );
 		}
 		else {

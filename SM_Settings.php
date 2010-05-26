@@ -20,7 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 
-
 # Features configuration
 
 	# (named) Array of String. This array contains the available features for Maps.
