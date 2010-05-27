@@ -68,6 +68,12 @@ function smfSetup() {
 	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
 	$services_list = $wgLang->listToText( $services );
 
+	// This function has been deprecated in 1.16, but needed for earlier versions.
+	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
+	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
+		wfLoadExtensionMessages( 'SemanticMaps' );
+	}
+
 	$wgExtensionCredits['other'][] = array(
 		'path' => __FILE__,
 		'name' => wfMsg( 'semanticmaps_name' ),
