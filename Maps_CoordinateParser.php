@@ -20,7 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
- *
  */
 class MapsCoordinateParser {
 	
@@ -67,8 +66,8 @@ class MapsCoordinateParser {
 		}
 
 		$coordinates = array(
-			'lat' => trim ( $split[0] ),
-			'lon' => trim ( $split[1] ),
+			'lat' => trim( $split[0] ),
+			'lon' => trim( $split[1] ),
 		);
 		
 		// Ensure the coordinates are in non-directional notation.
@@ -416,8 +415,6 @@ class MapsCoordinateParser {
 	 * @param string $coordinate
 	 * 
 	 * @return string
-	 * 
-	 * FIXME: fix innacuracy
 	 */
 	private static function parseDMSCoordinate( $coordinate ) {
 		$isNegative = $coordinate{0} == '-';
@@ -459,8 +456,6 @@ class MapsCoordinateParser {
 	 * @param string $coordinate
 	 * 
 	 * @return string
-	 * 
-	 * TODO: fix innacuracy
 	 */
 	private static function parseDMCoordinate( $coordinate ) {
 		$isNegative = $coordinate{0} == '-';

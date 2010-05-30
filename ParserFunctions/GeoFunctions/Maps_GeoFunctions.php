@@ -16,8 +16,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-// The approximate radius of the earth in km.
-define( 'Maps_EARTH_RADIUS', 20000 / M_PI );
+// The approximate radius of the earth in meters, according to http://en.wikipedia.org/wiki/Earth_radius.
+define( 'Maps_EARTH_RADIUS', 6371000 );
 
 if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
 	$wgHooks['LanguageGetMagic'][] = 'efMapsGeoFunctionsMagic';
@@ -203,7 +203,8 @@ final class MapsGeoFunctions {
 			}
 			
 			if ( $location ) {
-				$destination = self::findDestination( $location, $parameters['bearing'], $parameters['distance'] );
+				// TODO: have distance unit support here
+				$destination = self::findDestination( $location, $parameters['bearing'], (float)$parameters['distance'] * 1000 );
 				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 			} else {
 				global $egValidatorFatalLevel;
@@ -259,14 +260,11 @@ final class MapsGeoFunctions {
 
 		$sinNorth2 = sin( $northRad2 );
 		$sinEast2 = sin( $eastRad2 );
+
+		$distNOacos = $sinNorth1 * $sinNorth2 + $cosNorth1 * $cosNorth2 + cos ($eastRad1 - $eastRad2);
 	 
-		$term1 = $cosNorth1 * $sinEast1 - $cosNorth2 * $sinEast2;
-		$term2 = $cosNorth1 * $cosEast1 - $cosNorth2 * $cosEast2;
-		$term3 = $sinNorth1 - $sinNorth2;
-	 
-		$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
-	 
-		return 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
+		// Divide by 1000, as the radius is defined in meters.
+		return Maps_EARTH_RADIUS * acos( $distNOacos ) / 1000;		
 	}
 	
 	/**
@@ -281,22 +279,17 @@ final class MapsGeoFunctions {
 	public static function findDestination( array $startingCoordinates, $bearing, $distance ) {
 		$startingCoordinates['lat'] = deg2rad( (float)$startingCoordinates['lat'] );
 		$startingCoordinates['lon'] = deg2rad( (float)$startingCoordinates['lon'] );
+	
+		$radBearing = deg2rad ( (float)$bearing );
+		$angularDistance = $distance / Maps_EARTH_RADIUS;
 		
-		$angularDistance = deg2rad( $distance / Maps_EARTH_RADIUS );
-		
-		$lat = asin(
-				sin( $startingCoordinates['lat'] ) * cos( $angularDistance ) +
-				cos( $startingCoordinates['lat'] ) * sin( $angularDistance ) * cos( $bearing )
-		);
-
+		$lat = asin (sin ( $startingCoordinates['lat'] ) * cos ( $angularDistance ) + cos ( $startingCoordinates['lat'] )  * sin ( $angularDistance ) * cos ( $radBearing ) );
+		$lon = $startingCoordinates['lon'] + atan2 ( sin ( $radBearing ) * sin ( $angularDistance ) * cos ( $startingCoordinates['lat'] ), cos ( $angularDistance ) - sin ( $startingCoordinates['lat'] ) * sin ( $lat ) );
+	
 		return array(
 			'lat' => rad2deg( $lat ),
-			'lon' => rad2deg( $startingCoordinates['lon'] + atan2(
-				sin( $bearing ) * sin( $angularDistance ) * cos( $startingCoordinates['lat'] ),
-				cos( $angularDistance ) - sin( $startingCoordinates['lat'] ) * sin( $lat ) )
-			)
+			'lon' => rad2deg( $lon )
 		);
 	}
 	
 }
-
