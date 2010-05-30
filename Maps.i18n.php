@@ -317,6 +317,14 @@ $messages['ca'] = array(
 	'maps_webcams' => 'Cámeres web',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'maps_photos' => 'Сурт',
+	'maps_wikipedia' => 'Википедийа',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
