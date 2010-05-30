@@ -179,13 +179,14 @@ class MapsCoordinateParser {
 	 * @return string The normalized version of the provided coordinates.
 	 */
 	private static function normalizeCoordinates( $coordinates ) {
-		$coordinates = trim( $coordinates );
+		$coordinates = str_replace( ' ', '', $coordinates );
 		
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
 		$coordinates = str_replace( array( '&acute;', '&#180;' ), Maps_GEO_SEC, $coordinates );
 		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″' ), Maps_GEO_MIN, $coordinates );
+		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
 		
-		return str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
+		return $coordinates;
 	}
 	
 	/**
@@ -405,8 +406,6 @@ class MapsCoordinateParser {
 	 * FIXME: fix innacuracy
 	 */
 	private static function parseDMSCoordinate( $coordinate ) {
-		$coordinate = str_replace( ' ', '', $coordinate );
-		
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
@@ -450,8 +449,6 @@ class MapsCoordinateParser {
 	 * TODO: fix innacuracy
 	 */
 	private static function parseDMCoordinate( $coordinate ) {
-		$coordinate = str_replace( ' ', '', $coordinate );
-		
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
@@ -471,12 +468,13 @@ class MapsCoordinateParser {
 	}
 	
 	/**
+	 * Parse a string containing coordinates and return the same value in the specified notation.
 	 * 
-	 * @param unknown_type $coordinates
-	 * @param unknown_type $targetFormat
-	 * @param unknown_type $directional
+	 * @param string $coordinates
+	 * @param $targetFormat
+	 * @param boolean $directional
 	 * 
-	 * return 
+	 * return string
 	 */
 	public static function parseAndFormat( $coordinates, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
 		$parsedCoords = self::parseCoordinates( $coordinates );
