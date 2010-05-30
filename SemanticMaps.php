@@ -106,4 +106,3 @@ function smfAddToAdminLinks( &$admin_links_tree ) {
 
     return true;
 }
-

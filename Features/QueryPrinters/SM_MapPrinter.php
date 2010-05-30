@@ -151,6 +151,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	public final function getResult( $results, $params, $outputmode ) {
 		// Skip checks, results with 0 entries are normal
 		$this->readParameters( $params, $outputmode );
+		
 		return $this->getResultText( $results, SMW_OUTPUT_HTML );
 	}
 	
@@ -168,7 +169,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * @param unknown_type $row The record you want to add data from
 	 */
 	private function addResultRow( $outputmode, $row ) {
-		global $wgUser;
+		global $wgUser, $smgUseSpatialExtensions;
+		
 		$skin = $wgUser->getSkin();
 		
 		$title = '';
@@ -212,18 +214,24 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		foreach ( $coords as $coord ) {
 			if ( count( $coord ) >= 2 ) {
-				$lat = $coord[0];
-				$lon = $coord[1];
+				if ( $smgUseSpatialExtensions ) {
+					// TODO
+				}
+				else {
+					list( $lat, $lon ) = $coord; 
+				}
 				
 				if ( $lat != '' && $lon != '' ) {
 					$icon = $this->getLocationIcon( $row );
 
 					if ( $this->template ) {
 						global $wgParser;
+						
 						$segments = array_merge(
 							array( $this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon ),
 							$label
 						);
+						
 						$text = preg_replace( '/\n+/m', '<br />', $wgParser->recursiveTagParse( '{{' . implode( '|', $segments ) . '}}' ) );
 					}
 
@@ -268,8 +276,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 					}
 				}
 			}
-		// Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here	
-		} elseif ( strlen( $this->icon ) > 0 ) {
+		} // Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here
+		elseif ( $this->icon != '' ) {
 			$icon_image_page = new ImagePage( Title::newFromText( $this->icon ) );
 			$icon = $icon_image_page->getDisplayedFile()->getURL();
 		}
@@ -319,6 +327,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		else {
 			// If centre is not set and there are no results, centre on the default coordinates.
 			global $egMapsMapLat, $egMapsMapLon;
+			
 			$this->centreLat = $egMapsMapLat;
 			$this->centreLon = $egMapsMapLon;
 		}

@@ -184,9 +184,13 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->unstub();
 		
 		if ( $smgUseSpatialExtensions ) {
+			// TODO: test this
 			$point = str_replace( ',', '.', " POINT({$this->mCoordinateSet['lat']} {$this->mCoordinateSet['lon']}) " );
-			//var_dump("GeomFromText( '$point' )");exit;
-			return array( "GeomFromText( '$point' )" );
+			
+			$dbr = wfGetDB( DB_SLAVE );
+			$row = $dbr->selectRow( 'page', "GeomFromText('$point') AS geom", '' );
+			
+			return array( $row->geom );
 		}
 		else {
 			return array(
