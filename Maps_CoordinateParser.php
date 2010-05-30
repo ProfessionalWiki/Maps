@@ -203,14 +203,18 @@ class MapsCoordinateParser {
 			case Maps_COORDS_FLOAT:
 				return $coordinate;
 			case Maps_COORDS_DMS:
-				$degrees = floor( $coordinate );
+				$isNegative = $coordinate < 0;
+				
+				$degrees = $isNegative ? ceil( $coordinate ) : floor( $coordinate );
 				$minutes = ( $coordinate - $degrees ) * 60;
-				$seconds = ( $minutes - floor( $minutes ) ) * 60;
-				return $degrees . Maps_GEO_DEG . ' ' . floor( $minutes ) . Maps_GEO_MIN . ' ' . round( $seconds ) . Maps_GEO_SEC;
+				$seconds = ( $minutes - ( $isNegative ? ceil( $minutes ) : floor( $minutes ) ) ) * 60;
+				
+				return $degrees . Maps_GEO_DEG . ' ' . ( $isNegative ? ceil( $minutes ) : floor( $minutes ) ) . Maps_GEO_MIN . ' ' . round( $seconds ) . Maps_GEO_SEC;
 			case Maps_COORDS_DD:
 				return $coordinate . Maps_GEO_DEG;
 			case Maps_COORDS_DM:
-				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - floor( $coordinate ) ) * 60 . Maps_GEO_MIN;
+				$isNegative = $coordinate < 0;
+				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - ( $isNegative ? ceil( $coordinate ) : floor( $coordinate ) ) ) * 60 . Maps_GEO_MIN;
 			default:
 				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
 		}
@@ -347,7 +351,7 @@ class MapsCoordinateParser {
 		// If there is no direction indicator, the coordinate is already non-directional and no work is required.
 		if ( in_array( $lastChar, self::$mDirections ) ) {
 			$coordinate = substr( $coordinate, 0, -1 );
-			if ( ( $lastChar == "S" ) or ( $lastChar == "W" ) ) {
+			if ( ( $lastChar == 'S' ) or ( $lastChar == 'W' ) ) {
 				$coordinate = '-' . trim( $coordinate );
 			}
 		}
@@ -384,7 +388,7 @@ class MapsCoordinateParser {
 	private static function setDirectionalAngle( $coordinate, $isLat ) {
 		self::initializeDirectionLabels();
 		
-		$isNegative = substr( $coordinate, 0, 1 ) == '-';
+		$isNegative = $coordinate{0} == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		if ( $isLat ) {
@@ -406,7 +410,7 @@ class MapsCoordinateParser {
 	 * FIXME: fix innacuracy
 	 */
 	private static function parseDMSCoordinate( $coordinate ) {
-		$isNegative = substr( $coordinate, 0, 1 ) == '-';
+		$isNegative = $coordinate{0} == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		$degreePosition = strpos( $coordinate, Maps_GEO_DEG );
@@ -449,7 +453,7 @@ class MapsCoordinateParser {
 	 * TODO: fix innacuracy
 	 */
 	private static function parseDMCoordinate( $coordinate ) {
-		$isNegative = substr( $coordinate, 0, 1 ) == '-';
+		$isNegative = $coordinate{0} == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		list( $degrees, $minutes ) = explode( Maps_GEO_DEG, $coordinate );
