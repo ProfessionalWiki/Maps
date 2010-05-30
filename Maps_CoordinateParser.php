@@ -199,22 +199,32 @@ class MapsCoordinateParser {
 	 */
 	private static function formatCoordinate( $coordinate, $targetFormat ) {
 		$coordinate = (float)$coordinate;
+		
 		switch ( $targetFormat ) {
 			case Maps_COORDS_FLOAT:
 				return $coordinate;
 			case Maps_COORDS_DMS:
 				$isNegative = $coordinate < 0;
+				$coordinate = abs( $coordinate );
 				
-				$degrees = $isNegative ? ceil( $coordinate ) : floor( $coordinate );
+				$degrees = floor( $coordinate );
 				$minutes = ( $coordinate - $degrees ) * 60;
-				$seconds = ( $minutes - ( $isNegative ? ceil( $minutes ) : floor( $minutes ) ) ) * 60;
+				$seconds = ( $minutes - floor( $minutes ) ) * 60;
 				
-				return $degrees . Maps_GEO_DEG . ' ' . ( $isNegative ? ceil( $minutes ) : floor( $minutes ) ) . Maps_GEO_MIN . ' ' . round( $seconds ) . Maps_GEO_SEC;
+				$result = $degrees . Maps_GEO_DEG . ' ' . floor( $minutes ) . Maps_GEO_MIN . ' ' . round( $seconds ) . Maps_GEO_SEC;
+				if ( $isNegative ) $result = '-' . $result;
+				
+				return $result;
 			case Maps_COORDS_DD:
 				return $coordinate . Maps_GEO_DEG;
 			case Maps_COORDS_DM:
 				$isNegative = $coordinate < 0;
-				return round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - ( $isNegative ? ceil( $coordinate ) : floor( $coordinate ) ) ) * 60 . Maps_GEO_MIN;
+				$coordinate = abs( $coordinate );
+				
+				$result = round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - floor( $coordinate ) ) * 60 . Maps_GEO_MIN;
+				if ( $isNegative ) $result = '-' . $result;
+				
+				return $result;
 			default:
 				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
 		}
