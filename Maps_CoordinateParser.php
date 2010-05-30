@@ -405,6 +405,8 @@ class MapsCoordinateParser {
 	 * FIXME: fix innacuracy
 	 */
 	private static function parseDMSCoordinate( $coordinate ) {
+		$coordinate = str_replace( ' ', '', $coordinate );
+		
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
@@ -412,11 +414,13 @@ class MapsCoordinateParser {
 		$minutePosition = strpos( $coordinate, Maps_GEO_MIN );
 		$secondPosition = strpos( $coordinate, Maps_GEO_SEC );
 		
-		$minuteLength = $minutePosition - $degreePosition - 1;
+		$degSignLength = strlen( Maps_GEO_DEG );
+		
+		$minuteLength = $minutePosition - $degreePosition - $degSignLength;
 		$secondLength = $secondPosition - $minutePosition - 1;
 		
 		$degrees = substr ( $coordinate, 0, $degreePosition );
-		$minutes = substr ( $coordinate, $degreePosition + 1, $minuteLength );
+		$minutes = substr ( $coordinate, $degreePosition + $degSignLength, $minuteLength );
 		$seconds = substr ( $coordinate, $minutePosition + 1, $secondLength );
 		
 		$coordinate = $degrees + ( $minutes + $seconds / 60 ) / 60;
