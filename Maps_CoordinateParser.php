@@ -48,7 +48,7 @@ class MapsCoordinateParser {
 		
 		// Determine what notation the coordinates are in.
 		$coordsType = self::getCoordinatesType( $coordinates );
-		
+
 		// If getCoordinatesType returned false, the provided value is invalid or in an unsuported notation.
 		if ( $coordsType === false ) {
 			return false;
@@ -450,11 +450,14 @@ class MapsCoordinateParser {
 	 * TODO: fix innacuracy
 	 */
 	private static function parseDMCoordinate( $coordinate ) {
+		$coordinate = str_replace( ' ', '', $coordinate );
+		
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
-				
+		
 		list( $degrees, $minutes ) = explode( Maps_GEO_DEG, $coordinate );
-		$minutes = substr( $minutes, -1 );
+		
+		$minutes = substr( $minutes, 0, -1 );
 		
 		$coordinate = $degrees + $minutes / 60;
 		if ( $isNegative ) $coordinate *= -1;
