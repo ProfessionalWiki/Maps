@@ -35,7 +35,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.6 rc3' );
+	define( 'SM_VERSION', '0.6' );
 
 	$smgScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';
 	$smgDir 		= dirname( __FILE__ ) . '/';
