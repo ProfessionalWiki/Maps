@@ -32,6 +32,9 @@ class MapsDistanceParser {
 	 * @var array
 	 */
 	protected static $mUnits = array(
+		'm' => 1,
+		'meter' => 1,
+		'meters' => 1,
 		'km' => 1000,
 		'kilometers' => 1000,
 		'kilometres' => 1000,
@@ -51,22 +54,22 @@ class MapsDistanceParser {
 	 * @return float The distance in meters.
 	 */
 	public static function parseDistance( $distance ) {
-		if ( !self::isDistance() ) {
+		if ( !self::isDistance( $distance ) ) {
 			return false;
 		}
 		
-		// TODO: this is a temporary hax
-		$parts = split( ' ', $distance, 2 );
+		$matches = array();
+		preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance, $matches );
 		
-		// This is the value.
-		$parts[0] = (float)$parts[0];
+		$value = (float)( $matches[1] . $matches[2] );
+		$unit = $matches[5];
 		
 		// Check for the precence of a supported unit, and if found, factor it in.
-		if ( count( $parts ) > 1 && array_key_exists( $parts[1], self::$mUnits ) ) {
-			$parts[0] *= self::$mUnits[$parts[1]];
+		if ( $unit != '' && array_key_exists( $unit, self::$mUnits ) ) {
+			$value *= self::$mUnits[$unit];
 		}
 		
-		return $parts[0];
+		return $value;
 	}
 	
 	public static function formatDistance( $meters, $unit = 'km' ) {
@@ -84,7 +87,7 @@ class MapsDistanceParser {
 	}
 	
 	public static function isDistance( $distance ) {
-		return preg_match( '/^\d(+(\.|,)\d+)?\s*(.*)?$/', $distance );
+		return preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance );
 	}
 	
 	/**

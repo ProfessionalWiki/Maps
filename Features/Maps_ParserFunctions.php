@@ -35,6 +35,10 @@ final class MapsParserFunctions {
 		
 		// This runs a small hook that enables parser functions to run initialization code.
 		foreach ( $egMapsFeatures['pf'] as $hook ) {
+			if ( strpos( $hook, '::' ) !== false ) {
+				$hook = explode( '::', $hook );
+			}
+			
 			call_user_func( $hook );
 		}
 		

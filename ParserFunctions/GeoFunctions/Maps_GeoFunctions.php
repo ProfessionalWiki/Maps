@@ -70,8 +70,14 @@ final class MapsGeoFunctions {
 				'location2' => array(
 					'required' => true
 				),
+				'unit' => array(
+					'criteria' => array(
+						'in_array' => MapsDistanceParser::getUnits()
+					),
+					'default' => 'km'
+				)
 			),
-			array( 'location1', 'location2' )
+			array( 'location1', 'location2', 'unit' )
 		);
 		
 		if ( $doCalculation ) {
@@ -89,7 +95,7 @@ final class MapsGeoFunctions {
 			
 			if ( $start && $end ) {
 				// TODO: add extra parameter for the unit
-				$output = MapsDistanceParser::formatDistance( self::calculateDistance( $start, $end ) );
+				$output = MapsDistanceParser::formatDistance( self::calculateDistance( $start, $end ), $parameters['unit'] );
 				$errorList = $manager->getErrorList();
 				
 				if ( $errorList != '' ) {
@@ -244,7 +250,7 @@ final class MapsGeoFunctions {
 	 * @param array $start The first coordinates, as non-directional floats in an array with lat and lon keys.
 	 * @param array $end The second coordinates, as non-directional floats in an array with lat and lon keys.
 	 * 
-	 * @return float Distance in km.
+	 * @return float Distance in m.
 	 */
 	public static function calculateDistance( array $start, array $end ) {
 		$northRad1 = deg2rad( $start['lat'] );
@@ -265,10 +271,13 @@ final class MapsGeoFunctions {
 		$sinNorth2 = sin( $northRad2 );
 		$sinEast2 = sin( $eastRad2 );
 
-		$distNOacos = $sinNorth1 * $sinNorth2 + $cosNorth1 * $cosNorth2 + cos ($eastRad1 - $eastRad2);
-	 
-		// Divide by 1000, as the radius is defined in meters.
-		return Maps_EARTH_RADIUS * acos( $distNOacos ) / 1000;		
+		$term1 = $cosNorth1 * $sinEast1 - $cosNorth2 * $sinEast2;
+		$term2 = $cosNorth1 * $cosEast1 - $cosNorth2 * $cosEast2;
+		$term3 = $sinNorth1 - $sinNorth2;
+
+		$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
+
+		return 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );	
 	}
 	
 	/**
