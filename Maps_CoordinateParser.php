@@ -16,6 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /**
  * Static class for coordinate validation and parsing.
  * Supports floats, DMS, decimal degrees, and decimal minutes notations, both directional and non-directional.
+ * Internal representatations are arrays with lat and lon key with float values.
  * 
  * @ingroup Maps
  * 
@@ -177,7 +178,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string The normalized version of the provided coordinates.
 	 */
-	private static function normalizeCoordinates( $coordinates ) {
+	protected static function normalizeCoordinates( $coordinates ) {
 		$coordinates = str_replace( ' ', '', $coordinates );
 		
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
@@ -196,7 +197,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 */
-	private static function formatCoordinate( $coordinate, $targetFormat ) {
+	protected static function formatCoordinate( $coordinate, $targetFormat ) {
 		$coordinate = (float)$coordinate;
 		
 		switch ( $targetFormat ) {
@@ -237,7 +238,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 */
-	private static function parseCoordinate( $coordinate, $coordType ) {
+	protected static function parseCoordinate( $coordinate, $coordType ) {
 		switch ( $coordType ) {
 			case Maps_COORDS_FLOAT:
 				return $coordinate;
@@ -319,7 +320,7 @@ class MapsCoordinateParser {
 	/**
 	 * Initialize the cache for internationalized direction labels if not done yet. 
 	 */
-	private static function initializeDirectionLabels() {
+	protected static function initializeDirectionLabels() {
 		if ( !self::$mI18nDirections ) {
 			self::$mI18nDirections = array(
 				'N' => wfMsgForContent( 'maps-abb-north' ),
@@ -338,7 +339,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return array
 	 */
-	private static function resolveAngles( array $coordinates ) {
+	protected static function resolveAngles( array $coordinates ) {
 		return array(
 			'lat' => self::resolveAngle( $coordinates['lat'] ),
 			'lon' => self::resolveAngle( $coordinates['lon'] ),
@@ -352,7 +353,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 */
-	private static function resolveAngle( $coordinate ) {
+	protected static function resolveAngle( $coordinate ) {
 		// Get the last char, which could be a direction indicator
 		$lastChar = substr( $coordinate, -1 );
 		
@@ -375,7 +376,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return array
 	 */
-	private static function setAngles( array $coordinates, $directional ) {
+	protected static function setAngles( array $coordinates, $directional ) {
 		if ( $directional ) {
 			return array(
 				'lat' => self::setDirectionalAngle( $coordinates['lat'], true ),
@@ -394,7 +395,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 */
-	private static function setDirectionalAngle( $coordinate, $isLat ) {
+	protected static function setDirectionalAngle( $coordinate, $isLat ) {
 		self::initializeDirectionLabels();
 		
 		$isNegative = $coordinate{0} == '-';
@@ -416,7 +417,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 */
-	private static function parseDMSCoordinate( $coordinate ) {
+	protected static function parseDMSCoordinate( $coordinate ) {
 		$isNegative = $coordinate{0} == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
@@ -446,7 +447,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 */
-	private static function parseDDCoordinate( $coordinate ) {
+	protected static function parseDDCoordinate( $coordinate ) {
 		return (float)str_replace( Maps_GEO_DEG, '', $coordinate );
 	}
 	
@@ -457,7 +458,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @return string
 	 */
-	private static function parseDMCoordinate( $coordinate ) {
+	protected static function parseDMCoordinate( $coordinate ) {
 		$isNegative = $coordinate{0} == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
@@ -471,7 +472,7 @@ class MapsCoordinateParser {
 		return $coordinate;
 	}
 	
-	private static function getSeperatorsRegex() {
+	protected static function getSeperatorsRegex() {
 		if ( !self::$mSeperatorsRegex ) self::$mSeperatorsRegex = '(' . implode( '|', self::$mSeperators ) . ')';
 		return self::$mSeperatorsRegex;
 	}
