@@ -88,7 +88,8 @@ final class MapsGeoFunctions {
 			}
 			
 			if ( $start && $end ) {
-				$output = self::calculateDistance( $start, $end ) . ' km';
+				// TODO: add extra parameter for the unit
+				$output = MapsDistanceParser::formatDistance( self::calculateDistance( $start, $end ) );
 				$errorList = $manager->getErrorList();
 				
 				if ( $errorList != '' ) {
@@ -203,8 +204,11 @@ final class MapsGeoFunctions {
 			}
 			
 			if ( $location ) {
-				// TODO: have distance unit support here
-				$destination = self::findDestination( $location, $parameters['bearing'], (float)$parameters['distance'] * 1000 );
+				$destination = self::findDestination(
+					$location,
+					$parameters['bearing'],
+					MapsDistanceParser::parseDistance( $parameters['distance'] )
+				);
 				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 			} else {
 				global $egValidatorFatalLevel;
