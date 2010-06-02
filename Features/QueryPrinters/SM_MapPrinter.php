@@ -123,8 +123,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
 		
 		if ( $showMap ) {
-			var_dump($manager->getParameters( false ));exit;
-			$this->setMapProperties(  );
+			$this->setMapProperties( $manager->getParameters( false ) );
 		}
 		
 		$this->errorList  = $manager->getErrorList();
