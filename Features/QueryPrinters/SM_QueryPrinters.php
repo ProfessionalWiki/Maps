@@ -64,7 +64,7 @@ final class SMQueryPrinters {
 			),
 			'height' => array(
 				'default' => $egMapsMapHeight
-			),			
+			),
 			'geoservice' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableGeoServices

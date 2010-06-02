@@ -120,10 +120,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$manager = new ValidatorManager();
 		
-		$showMap = $manager->manageParameters( $mapProperties, $parameterInfo );
+		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
 		
 		if ( $showMap ) {
-			$this->setMapProperties( $manager->getParameters( false ), __CLASS__ );
+			var_dump($manager->getParameters( false ));exit;
+			$this->setMapProperties(  );
 		}
 		
 		$this->errorList  = $manager->getErrorList();
@@ -137,9 +138,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * @param array $mapProperties
 	 * @param string $className
 	 */
-	private function setMapProperties( array $mapProperties, $className ) {
+	private function setMapProperties( array $mapProperties ) {
 		foreach ( $mapProperties as $paramName => $paramValue ) {
-			if ( ! property_exists( $className, $paramName ) ) {
+			if ( ! property_exists( __CLASS__, $paramName ) ) {
 				$this-> { $paramName } = $paramValue;
 			}
 			else {
