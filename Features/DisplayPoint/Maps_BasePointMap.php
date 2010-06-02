@@ -95,9 +95,9 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 				'type' => array( 'string', 'list', ';' ),
 				'aliases' => array( 'coords', 'location', 'locations', 'address', 'addresses' ),
 				'criteria' => array(
-					'are_locations' => array()
+					'are_locations' => array( '~' )
 				),
-				'output-type' => 'coordinateSets',
+				'output-type' => 'geoPoints',
 			),
 		);
 	}

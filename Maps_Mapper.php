@@ -25,7 +25,6 @@ final class MapsMapper {
 
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
 		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
-		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
 	
 	/**
@@ -37,7 +36,12 @@ final class MapsMapper {
 	 * 
 	 * @return boolean
 	 */
-	public static function isLocation( $location, $name, array $parameters ) {
+	public static function isLocation( $location, $name, array $parameters, $metaDataSeperator = false ) {
+		if ( $metaDataSeperator ) {
+			$parts = explode( $metaDataSeperator, $location );
+			$location = $parts[0];
+		}
+		
 		if ( self::geocoderIsAvailable() ) {
 			return MapsGeocoder::isLocation( $location, $parameters['geoservice']['value'], $parameters['service']['value'] );
 		} else {
@@ -54,10 +58,10 @@ final class MapsMapper {
 	 * 
 	 * @return boolean
 	 */	
-	public static function areLocations( $locations, $name, array $parameters ) {
+	public static function areLocations( $locations, $name, array $parameters, $metaDataSeperator = false ) {
 		$locations = (array)$locations;
 		foreach ( $locations as $location ) {
-			if ( !self::isLocation( $location, $name, $parameters ) ) {
+			if ( !self::isLocation( $location, $name, $parameters, $metaDataSeperator ) ) {
 				return false;
 			}
 		}
@@ -76,20 +80,6 @@ final class MapsMapper {
 			$location = MapsGeocoder::attemptToGeocodeToString( $location, $parameters['geoservice']['value'], $parameters['service']['value'] );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
-		}
-	}
-
-	/**
-	 * Formats a set of locations to coordinate sets in a certain representation.
-	 * 
-	 * @param string $locations
-	 * @param string $name The name of the parameter.
-	 * @param array $parameters Array containing data about the so far handled parameters.
-	 */		
-	public static function formatLocations( &$locations, $name, array $parameters ) {
-		$locations = (array)$locations;
-		foreach ( $locations as &$location ) {
-			self::formatLocation( $location, $name, $parameters );
 		}
 	}
 

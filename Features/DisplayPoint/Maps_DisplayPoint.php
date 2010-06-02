@@ -54,6 +54,7 @@ final class MapsDisplayPoint {
 	public static $parameters = array();
 	
 	public static function initialize() {
+		Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
 	}
 	
 	/**
@@ -67,5 +68,21 @@ final class MapsDisplayPoint {
 		$args = func_get_args();
 		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_point' );
 	}
+	
+	/**
+	 * Formats a set of points that can have meta data provided.
+	 * 
+	 * @param string $locations
+	 * @param string $name The name of the parameter.
+	 * @param array $parameters Array containing data about the so far handled parameters.
+	 * 
+	 * FIXME: hold into acount meta data
+	 */		
+	public static function formatGeoPoints( &$locations, $name, array $parameters ) {
+		$locations = (array)$locations;
+		foreach ( $locations as &$location ) {
+			self::formatLocation( $location, $name, $parameters );
+		}
+	}	
 	
 }
