@@ -45,9 +45,9 @@ final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 			// $precision = $result[1];
 
 			return array(
-						'lat' => $result[2],
-						'lon' => $result[3]
-						);
+				'lat' => $result[2],
+				'lon' => $result[3]
+			);
 		}
 		else { // When the request fails, return false0
 			return false;

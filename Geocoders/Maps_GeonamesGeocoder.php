@@ -23,6 +23,8 @@ final class MapsGeonamesGeocoder extends MapsBaseGeocoder {
 	 * @see MapsBaseGeocoder::geocode()
 	 *
 	 * @param string $address
+	 * 
+	 * NOTE: The service is now also available in JSON, so it might be nice to change to that.
 	 */
 	public static function geocode( $address ) {
 		// Create the request url
@@ -37,9 +39,9 @@ final class MapsGeonamesGeocoder extends MapsBaseGeocoder {
 		if ( !$lon || !$lat ) return false;
 
 		return array(
-					'lat' => $lat,
-					'lon' => $lon
-					);
+			'lat' => $lat,
+			'lon' => $lon
+		);
 	}
 	
 }

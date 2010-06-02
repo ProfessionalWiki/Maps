@@ -42,9 +42,9 @@ final class MapsYahooGeocoder extends MapsBaseGeocoder {
 		if ( !$lon || !$lat ) return false;
 
 		return array(
-					'lat' => $lat,
-					'lon' => $lon
-					);
+			'lat' => $lat,
+			'lon' => $lon
+		);
 	}
 	
 }
