@@ -66,7 +66,7 @@ abstract class SMFormInput {
 		
 		$manager = new ValidatorManager();
 		
-		$showMap = $manager->manageParameters( $mapProperties, $parameterInfo );
+		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
 		
 		if ( $showMap ) {
 			$parameters = $manager->getParameters( false );
