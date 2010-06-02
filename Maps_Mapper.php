@@ -27,7 +27,7 @@ final class MapsMapper {
 		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
 		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
-
+	
 	/**
 	 * Returns if the value is a location.
 	 * 
@@ -39,7 +39,7 @@ final class MapsMapper {
 	 */
 	public static function isLocation( $location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
-			return MapsGeocoder::isLocation( $location );
+			return MapsGeocoder::isLocation( $location, $parameters['geoservice']['value'], $parameters['service']['value'] );
 		} else {
 			return MapsCoordinateParser::areCoordinates( $location );
 		}
@@ -73,7 +73,7 @@ final class MapsMapper {
 	 */		
 	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
-			$location = MapsGeocoder::attemptToGeocodeToString( $location );
+			$location = MapsGeocoder::attemptToGeocodeToString( $location, $parameters['geoservice']['value'], $parameters['service']['value'] );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
 		}
@@ -291,8 +291,7 @@ final class MapsMapper {
 				'criteria' => array(
 					'in_array' => $egMapsAvailableGeoServices
 				),
-				'default' => $egMapsDefaultGeoService,
-				'dependencies' => array( 'service' )
+				'dependencies' => array( 'service' ),
 			),
 			'zoom' => array(
 				'type' => 'integer',

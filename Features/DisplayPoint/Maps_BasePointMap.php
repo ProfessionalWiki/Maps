@@ -194,10 +194,11 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			$markerData['lat'] = Xml::escapeJsString( $markerData['lat'] );
 			$markerData['icon'] = Xml::escapeJsString( $markerData['icon'] );
 			
-			$markerItems[] = str_replace(	array( 'lon', 'lat', 'title', 'label', 'icon' ),
-											array( $markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon'] ),
-											$this->markerStringFormat
-											);
+			$markerItems[] = str_replace(
+				array( 'lon', 'lat', 'title', 'label', 'icon' ),
+				array( $markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon'] ),
+				$this->markerStringFormat
+			);
 		}
 		
 		$this->markerString = implode( ',', $markerItems );

@@ -55,8 +55,8 @@ final class MapsGeocoder {
 	 * 
 	 * @return boolean
 	 */
-	public static function isLocation( $coordsOrAddress ) {
-		return self::attemptToGeocode( $coordsOrAddress ) !== false;
+	public static function isLocation( $coordsOrAddress, $geoService = '', $mappingService = false ) {
+		return self::attemptToGeocode( $coordsOrAddress, $geoService, $mappingService ) !== false;
 	}
 	
 	/**
@@ -94,7 +94,7 @@ final class MapsGeocoder {
 		if ( $egMapsEnableGeoCache && array_key_exists( $address, MapsGeocoder::$mGeocoderCache ) ) {
 			return self::$mGeocoderCache[$address];
 		}
-		
+
 		$service = self::getValidGeoService( $service, $mappingService );
 
 		// Call the geocode function in the spesific geocoder class.
