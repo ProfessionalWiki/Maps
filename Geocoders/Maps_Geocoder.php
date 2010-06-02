@@ -96,7 +96,9 @@ final class MapsGeocoder {
 		}
 
 		$service = self::getValidGeoService( $service, $mappingService );
-
+		
+		var_dump($address);exit;
+		
 		// Call the geocode function in the spesific geocoder class.
 		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
 		

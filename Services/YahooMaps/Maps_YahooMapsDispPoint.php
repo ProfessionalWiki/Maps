@@ -22,7 +22,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
-	protected $markerStringFormat = 'getYMarkerData(lat, lon, \'title\', \'label\', "icon")';
+	protected $markerStringFormat = 'getYMarkerData(lat, lon, "title", "label", "icon")';
 	
 	protected function getDefaultZoom() {
 		global $egMapsYahooMapsZoom;

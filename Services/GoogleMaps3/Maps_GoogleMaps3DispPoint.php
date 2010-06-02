@@ -24,7 +24,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsGoogleMaps3::SERVICE_NAME;
 
-	protected $markerStringFormat = 'getGMaps3MarkerData(lat, lon, \'title\', \'label\', "icon")';
+	protected $markerStringFormat = 'getGMaps3MarkerData(lat, lon, "title", "label", "icon")';
 	
 	protected function getDefaultZoom() {
 		global $egMapsGMaps3Zoom;

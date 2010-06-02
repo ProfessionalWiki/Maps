@@ -194,6 +194,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			$markerData['lat'] = Xml::escapeJsString( $markerData['lat'] );
 			$markerData['icon'] = Xml::escapeJsString( $markerData['icon'] );
 			
+			// TODO: Replace this by by some json_encode stuff.
 			$markerItems[] = str_replace(
 				array( 'lon', 'lat', 'title', 'label', 'icon' ),
 				array( $markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon'] ),

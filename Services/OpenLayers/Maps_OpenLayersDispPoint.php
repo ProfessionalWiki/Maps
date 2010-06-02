@@ -22,7 +22,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	
 	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
-	protected $markerStringFormat = 'getOLMarkerData(lon, lat, \'title\', \'label\', "icon")';
+	protected $markerStringFormat = 'getOLMarkerData(lon, lat, "title", "label", "icon")';
 
 	protected function getDefaultZoom() {
 		global $egMapsOpenLayersZoom;
