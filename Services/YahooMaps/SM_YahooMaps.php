@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgAutoloadClasses['SMYahooMapsQP'] = dirname( __FILE__ ) . '/SM_YahooMapsQP.php';
-$wgAutoloadClasses['SMYahooMapsFormInput'] = dirname( __FILE__ ) . '/SM_YahooMapsFormInput.php';
+if ( class_exists( 'SMFormInput' ) ) $wgAutoloadClasses['SMYahooMapsFormInput'] = dirname( __FILE__ ) . '/SM_YahooMapsFormInput.php';
 
 $egMapsServices['yahoomaps']['features']['qp'] = 'SMYahooMapsQP';
 $egMapsServices['yahoomaps']['features']['fi'] = 'SMYahooMapsFormInput';

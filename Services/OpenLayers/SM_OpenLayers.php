@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgAutoloadClasses['SMOpenLayersQP'] = dirname( __FILE__ ) . '/SM_OpenLayersQP.php';
-$wgAutoloadClasses['SMOpenLayersFormInput'] = dirname( __FILE__ ) . '/SM_OpenLayersFormInput.php';
+if ( class_exists( 'SMFormInput' ) ) $wgAutoloadClasses['SMOpenLayersFormInput'] = dirname( __FILE__ ) . '/SM_OpenLayersFormInput.php';
 
 $egMapsServices['openlayers']['features']['qp'] = 'SMOpenLayersQP';
 $egMapsServices['openlayers']['features']['fi'] = 'SMOpenLayersFormInput';
