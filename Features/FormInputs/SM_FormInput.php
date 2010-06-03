@@ -167,7 +167,7 @@ abstract class SMFormInput {
 			$n = Xml::escapeJsString( wfMsgForContent( 'maps-abb-north' ) );
 			$e = Xml::escapeJsString( wfMsgForContent( 'maps-abb-east' ) );
 			$s = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
-			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
+			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-west' ) );
 			$deg = Xml::escapeJsString( Maps_GEO_DEG );
 			
 			$wgOut->addInlineScript(
