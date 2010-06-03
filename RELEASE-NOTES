@@ -7,6 +7,19 @@ version of Maps. You can find the most upt-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.6.1 ===
+(2010-06-04)
+
+==== Bug fixes ====
+
+* Fixed bug that caused geocoding requests to fail when using display_points
+
+* Fixed bug that had broken the geoservice parameter for display_points and display_map.
+
+* Fixed bug that made OSM layers in the OpenLayers service fail.
+
+* Fixed issue that made custom markers on Google Maps not show up on initial page load and centred them wrongly.
+
 === Maps 0.6 ===
 (2010-05-31)
 
@@ -55,6 +68,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 * Add mapping to the language codes that are send to the Google Maps API to null the naming differences between MW and the API.
 
 * Added automatic icon image sizing for Google Maps and Yahoo! Maps markers.
+
+* Fixed conflict with prototype library that caused compatibility problems with the Halo extension.
 
 === Maps 0.5.5. ===
 (2010-03-20)
