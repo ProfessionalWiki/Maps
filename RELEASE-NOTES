@@ -6,6 +6,17 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.6.1 ===
+(2010-06-04)
+
+==== Bug fixes ====
+
+* Fixed serious bug that caused mapping parameters to get ignored in semantic queries and forms.
+
+* Fixed fatal error that occurred when not disabling the form input feature when Semantic Forms is not installed.
+
+* Fixed bug in map form inputs that stored 'west' coordinates as 'south' coordinates, effectively rendering the resulting coordinate set invalid.
+
 === Semantic Maps 0.6 ===
 (2010-05-31)
 
@@ -28,6 +39,10 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 * Restructured the directory structure to make what the services and features are more clear.
 
 * Rewrote storage of coordinates to make the proximity query scalable.
+
+==== Bug fixes ====
+
+* Fixed conflict with prototype library that caused compatibility problems with the Halo extension.
 
 === Semantic Maps 0.5.5 ===
 (2010-03-20)
