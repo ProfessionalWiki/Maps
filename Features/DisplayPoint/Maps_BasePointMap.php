@@ -97,7 +97,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 				'criteria' => array(
 					'are_locations' => array( '~' )
 				),
-				'output-type' => 'geoPoints',
+				'output-type' => array( 'geoPoints', '~' ),
 			),
 		);
 	}
@@ -142,24 +142,23 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 		$this->title = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->title ) );
 		$this->label = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->label ) );
 		
-		foreach ( $this->coordinates as $coordinates ) {
-			$args = explode( '~', $coordinates );
-			
-			$markerData = MapsCoordinateParser::parseCoordinates( $args[0] );
+		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
+		foreach ( $this->coordinates as $args ) {
+			$markerData = MapsCoordinateParser::parseCoordinates( array_shift( $args ) );
 			
 			if ( !$markerData ) continue;
 			
-			if ( count( $args ) > 1 ) {
+			if ( count( $args ) > 0 ) {
 				// Parse and add the point specific title if it's present.
-				$markerData['title'] = $this->parser->recursiveTagParse( $args[1] );
+				$markerData['title'] = $this->parser->recursiveTagParse( $args[0] );
 				
-				if ( count( $args ) > 2 ) {
+				if ( count( $args ) > 1 ) {
 					// Parse and add the point specific label if it's present.
-					$markerData['label'] = $this->parser->recursiveTagParse( $args[2] );
+					$markerData['label'] = $this->parser->recursiveTagParse( $args[1] );
 					
-					if ( count( $args ) > 3 ) {
+					if ( count( $args ) > 2 ) {
 						// Add the point specific icon if it's present.
-						$markerData['icon'] = $args[3];
+						$markerData['icon'] = $args[2];
 					}
 				}
 			}

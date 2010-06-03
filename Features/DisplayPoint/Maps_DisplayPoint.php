@@ -75,14 +75,25 @@ final class MapsDisplayPoint {
 	 * @param string $locations
 	 * @param string $name The name of the parameter.
 	 * @param array $parameters Array containing data about the so far handled parameters.
-	 * 
-	 * FIXME: hold into acount meta data
 	 */		
-	public static function formatGeoPoints( &$locations, $name, array $parameters ) {
+	public static function formatGeoPoints( &$locations, $name, array $parameters, $metaDataSeperator = false ) {
 		$locations = (array)$locations;
 		foreach ( $locations as &$location ) {
-			self::formatLocation( $location, $name, $parameters );
+			self::formatGeoPoint( $location, $name, $parameters, $metaDataSeperator );
 		}
-	}	
+	}
+	
+	public static function formatGeoPoint( &$location, $name, array $parameters, $metaDataSeperator = false ) {
+		if ( $metaDataSeperator !== false ) {
+			$segments = explode( $metaDataSeperator, $location );
+		}
+		else {
+			$segments = array( $location );
+		}
+		
+		MapsMapper::formatLocation( $segments[0], $name, $parameters );
+		
+		$location = $segments;
+	}
 	
 }

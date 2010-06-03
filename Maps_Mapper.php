@@ -37,7 +37,7 @@ final class MapsMapper {
 	 * @return boolean
 	 */
 	public static function isLocation( $location, $name, array $parameters, $metaDataSeperator = false ) {
-		if ( $metaDataSeperator ) {
+		if ( $metaDataSeperator !== false ) {
 			$parts = explode( $metaDataSeperator, $location );
 			$location = $parts[0];
 		}
