@@ -28,19 +28,25 @@ function createGMarker( point, title, label, icon ) {
 		var iconObj = new GIcon( G_DEFAULT_ICON );
 		iconObj.image = icon;
 
-		/* Determine size of icon and pass it in */
+		
 		var newimg = new Image();
 		newimg.src = icon;
-		iconObj.iconSize.width = newimg.width;
-		iconObj.iconSize.height = newimg.height;
-		iconObj.shadow = null;
-
-		/* Anchor the icon on center */
-		var anchor = new GPoint();
-		anchor.x = Math.floor( newimg.width / 2 );
-		anchor.y = Math.floor( newimg.height / 2 );
-		iconObj.iconAnchor = anchor;
 		
+		// Only do these things when there is an actual width, which there won,t the first time the image is loaded.
+		// TODO: this means the image won't have it's correct size when it differs from the default on first load!
+		if ( newimg.width > 0 ) {
+			/* Determine size of icon and pass it in */
+			iconObj.iconSize.width = newimg.width;
+			iconObj.iconSize.height = newimg.height;
+			iconObj.shadow = null;	
+			
+			/* Anchor the icon on bottom middle */
+			var anchor = new GPoint();
+			anchor.x = Math.floor( newimg.width / 2 );
+			anchor.y = newimg.height;
+			iconObj.iconAnchor = anchor;			
+		}
+
 		marker = new GMarker( point, { icon:iconObj } );
 	} else {
 		marker = new GMarker( point );
