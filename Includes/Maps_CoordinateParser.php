@@ -221,7 +221,7 @@ class MapsCoordinateParser {
 				$isNegative = $coordinate < 0;
 				$coordinate = abs( $coordinate );
 				
-				$result = round( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - floor( $coordinate ) ) * 60 . Maps_GEO_MIN;
+				$result = floor( $coordinate ) . Maps_GEO_DEG . ' ' . ( $coordinate - floor( $coordinate ) ) * 60 . Maps_GEO_MIN;
 				if ( $isNegative ) $result = '-' . $result;
 				
 				return $result;
