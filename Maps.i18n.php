@@ -17,6 +17,7 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'maps_name' => 'Maps',
+	// TODO: update demo link to the new wiki, once it has 0.6.x running.
 	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Available mapping services: $1",
 	'maps_map' => 'Map',
