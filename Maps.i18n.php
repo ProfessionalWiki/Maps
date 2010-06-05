@@ -1524,14 +1524,21 @@ Dostupné mapovacie služby: $1',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
 $messages['sr-ec'] = array(
+	'maps_map' => 'Мапа',
+	'maps-loading-map' => 'Учитавање мапе...',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ј',
 	'maps-abb-west' => 'З',
 	'maps-latitude' => 'Географска ширина:',
 	'maps-longitude' => 'Географска дужина:',
+	'maps_photos' => 'Фотографије',
+	'maps_videos' => 'Видео снимци',
+	'maps_webcams' => 'Веб-камере',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
