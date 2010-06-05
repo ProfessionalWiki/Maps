@@ -851,8 +851,13 @@ Dostupné mapové služby: $1',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'semanticmaps-unrecognizeddistance' => 'Вредност $1 није исправно растојање.',
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 	'semanticmaps_notfound' => 'није нађено',
+	'semanticmaps_paramdesc_height' => 'Висина мапе у пикселима (подразумевано је $1)',
+	'semanticmaps_paramdesc_width' => 'Ширина мапе у пикселима (подразумевано је $1)',
+	'semanticmaps_paramdesc_zoom' => 'Ниво увећања мапе',
+	'semanticmaps_paramdesc_centre' => 'Координате центра мапе',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
