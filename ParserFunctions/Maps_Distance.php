@@ -39,7 +39,7 @@ function efMapsDistanceFunction( &$wgParser ) {
 }
 
 function efMapsRenderDistance() {
-	global $egMapsDistanceUnit;
+	global $egMapsDistanceUnit, $egMapsDistanceDecimals;
 	
 	$args = func_get_args();
 	
@@ -62,7 +62,7 @@ function efMapsRenderDistance() {
 			),
 			'decimals' => array(
 				'type' => 'integer',
-				'default' => 2 // TODO
+				'default' => $egMapsDistanceDecimals
 			)
 		),
 		array( 'distance', 'unit', 'decimals' )
