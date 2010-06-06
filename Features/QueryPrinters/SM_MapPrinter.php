@@ -45,7 +45,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	public $serviceName;
 	
-	protected $m_locations = array();
+	protected $mLocations = array();
 	
 	protected $defaultZoom;
 	
@@ -53,9 +53,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected $centreLon;
 	
 	protected $output = '';
-	protected $errorList;
+	protected $mErrorList;
 	
-	protected $mapFeature;
+	protected $mMapFeature;
 	
 	protected $featureParameters = array();
 	protected $spesificParameters = array();
@@ -77,7 +77,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$this->formatResultData( $res, $outputmode );
 			
 			// Only create a map when there is at least one result.
-			if ( count( $this->m_locations ) > 0 || $this->forceshow ) {
+			if ( count( $this->mLocations ) > 0 || $this->forceshow ) {
 				$this->doMapServiceLoad();
 		
 				$this->setMapName();
@@ -94,7 +94,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			}
 		}
 
-		return array( $this->output . $this->errorList, 'noparse' => true, 'isHTML' => true );
+		return array( $this->output . $this->mErrorList, 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**
@@ -126,7 +126,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$this->setMapProperties( $manager->getParameters( false ) );
 		}
 		
-		$this->errorList  = $manager->getErrorList();
+		$this->mErrorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -235,7 +235,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 						$text = preg_replace( '/\n+/m', '<br />', $wgParser->recursiveTagParse( '{{' . implode( '|', $segments ) . '}}' ) );
 					}
 
-					$this->m_locations[] = array(
+					$this->mLocations[] = array(
 						Xml::escapeJsString( $lat ),
 						Xml::escapeJsString( $lon ),
 						Xml::escapeJsString( $title ),
@@ -291,7 +291,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	private function setZoom() {
 		if ( strlen( $this->zoom ) < 1 ) {
-			if ( count( $this->m_locations ) > 1 ) {
+			if ( count( $this->mLocations ) > 1 ) {
 		        $this->zoom = 'null';
 		    }
 		    else {
@@ -314,15 +314,15 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$this->centreLat = $centre['lat'];
 			$this->centreLon = $centre['lon'];
 		}
-		elseif ( count( $this->m_locations ) > 1 ) {
+		elseif ( count( $this->mLocations ) > 1 ) {
 			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
 			$this->centreLat = 'null';
 			$this->centreLon = 'null';
 		}
-		elseif ( count( $this->m_locations ) == 1 ) {
+		elseif ( count( $this->mLocations ) == 1 ) {
 			// If centre is not set and there is exactelly one marker, use it's coordinates.			
-			$this->centreLat = Xml::escapeJsString( $this->m_locations[0][0] );
-			$this->centreLon = Xml::escapeJsString( $this->m_locations[0][1] );
+			$this->centreLat = Xml::escapeJsString( $this->mLocations[0][0] );
+			$this->centreLon = Xml::escapeJsString( $this->mLocations[0][1] );
 		}
 		else {
 			// If centre is not set and there are no results, centre on the default coordinates.

@@ -36,6 +36,12 @@ class SMAreaValueDescription extends SMWValueDescription {
 		}
 	}
 
+	/**
+	 * Sets the mBounds fields to an array returned by SMAreaValueDescription::getBoundingBox.
+	 * 
+	 * @param SMGeoCoordsValue $dataValue
+	 * @param string $radius
+	 */
 	protected function calculateBounds( SMGeoCoordsValue $dataValue, $radius ) {
 		$this->mBounds = self::getBoundingBox(
 			$dataValue->getCoordinateSet(),
