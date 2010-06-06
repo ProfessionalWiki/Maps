@@ -38,11 +38,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Geocoding support, required for the geocoding parser functions and smart geocoding support in all other parser functions.
 		include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php';
 		# Geocoding parser functions: #geocode, #geocodelat, #geocodelon.
-		include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_GeocodeFunctions.php';
 		# Required for #coordinates.
-		include_once $egMapsDir . 'ParserFunctions/Coordinates/Maps_Coordinates.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_Coordinates.php';
 		# Geographic parser functions: #geodistance, #finddestination
-		include_once $egMapsDir . 'ParserFunctions/GeoFunctions/Maps_GeoFunctions.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_GeoFunctions.php';
 
 		
 		
