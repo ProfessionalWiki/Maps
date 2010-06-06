@@ -166,7 +166,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsDistanceUnit = 'km';
 	
 	# Integer. The default limit of fractal digits in a distance.
-	$egMapsDistanceDecimals = 'km';	
+	$egMapsDistanceDecimals = 2;	
 	
 	
 	
