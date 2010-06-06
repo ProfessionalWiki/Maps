@@ -26,6 +26,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsDistanceParser {
 	
+	private static $validatedDistanceUnit = false;
+	
 	/**
 	 * Parses a distance optionaly containing a unit to a float value in meters.
 	 * 
@@ -81,15 +83,25 @@ class MapsDistanceParser {
 		return $egMapsDistanceUnits[self::getValidUnit( $unit )];
 	}
 	
+	/**
+	 * Returns a valid unit. If the provided one is invalid, the default will be used.
+	 * 
+	 * @param string $unit
+	 */
 	public static function getValidUnit( $unit = null ) {
 		global $egMapsDistanceUnit, $egMapsDistanceUnits;
 		
-		if ( $unit == null ) {
-			$unit = $egMapsDistanceUnit;
-		}
+		// This ensures the value for $egMapsDistanceUnit is correct, and caches the result.
+		if ( !self::$validatedDistanceUnit ) {
+			if ( !array_key_exists( $egMapsDistanceUnit, $egMapsDistanceUnits ) ) {
+				$egMapsDistanceUnit = $egMapsDistanceUnits[0];
+			}
+			
+			self::$validatedDistanceUnit = true;
+		}		
 		
-		if ( !array_key_exists( $unit, $egMapsDistanceUnits ) ) {
-			$unit = $egMapsDistanceUnits[0];
+		if ( $unit == null || !array_key_exists( $unit, $egMapsDistanceUnits ) ) {
+			$unit = $egMapsDistanceUnit;
 		}
 		
 		return $unit;

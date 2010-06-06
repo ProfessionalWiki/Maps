@@ -98,7 +98,7 @@ function efMapsSetup() {
 
 	// Remove all hooked in services that should not be available.
 	foreach ( $egMapsServices as $service => $data ) {
-		if ( ! in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
+		if ( !in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
 	}
 	$egMapsAvailableServices = array_keys( $egMapsServices );
 
