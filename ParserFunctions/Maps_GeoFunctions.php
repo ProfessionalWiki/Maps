@@ -54,6 +54,8 @@ final class MapsGeoFunctions {
 	 * @param Parser $parser
 	 */
 	function renderGeoDistance( Parser &$parser ) {
+		global $egMapsDistanceUnit, $egMapsDistanceDecimals;
+		
 		$args = func_get_args();
 		
 		// We already know the $parser.
@@ -74,10 +76,14 @@ final class MapsGeoFunctions {
 					'criteria' => array(
 						'in_array' => MapsDistanceParser::getUnits()
 					),
-					'default' => 'km'
-				)
+					'default' => $egMapsDistanceUnit
+				),
+				'decimals' => array(
+					'type' => 'integer',
+					'default' => $egMapsDistanceDecimals
+				)				
 			),
-			array( 'location1', 'location2', 'unit' )
+			array( 'location1', 'location2', 'unit', 'decimals' )
 		);
 		
 		if ( $doCalculation ) {
@@ -94,8 +100,7 @@ final class MapsGeoFunctions {
 			}
 			
 			if ( $start && $end ) {
-				// TODO: add extra parameter for the unit
-				$output = MapsDistanceParser::formatDistance( self::calculateDistance( $start, $end ), $parameters['unit'] );
+				$output = MapsDistanceParser::formatDistance( self::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
 				$errorList = $manager->getErrorList();
 				
 				if ( $errorList != '' ) {
