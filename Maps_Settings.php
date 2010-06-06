@@ -41,6 +41,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		include_once $egMapsDir . 'ParserFunctions/Maps_GeocodeFunctions.php';
 		# Required for #coordinates.
 		include_once $egMapsDir . 'ParserFunctions/Maps_Coordinates.php';
+		# Required for #distance.
+		include_once $egMapsDir . 'ParserFunctions/Maps_Distance.php';		
 		# Geographic parser functions: #geodistance, #finddestination
 		include_once $egMapsDir . 'ParserFunctions/Maps_GeoFunctions.php';
 

@@ -38,10 +38,10 @@ function efMapsCoordinatesFunction( &$wgParser ) {
 	return true;
 }
 
-function efMapsRenderCoordinates() {
+function efMapsRenderCoordinates() {	
 	global $egMapsAvailableServices, $egMapsAvailableCoordNotations;
 	global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
-	global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
+	global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;	
 	
 	$args = func_get_args();
 	

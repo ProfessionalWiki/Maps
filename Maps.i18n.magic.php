@@ -11,6 +11,7 @@ $magicWords['en'] = array(
 	'geodistance'       => array( 0, 'geodistance' ),
 	'finddestination'   => array( 0, 'finddestination' ),
 	'coordinates'       => array( 0, 'coordinates' ),
+	'distance'      	=> array( 0, 'distance' ),
 );
 
 $magicWords['ar'] = array(
@@ -47,6 +48,7 @@ $magicWords['nl'] = array(
 	'geodistance'       => array( '0', 'geoafstand', 'geodistance' ),
 	'finddestination'   => array( '0', 'bestemmingzoeken', 'finddestination' ),
 	'coordinates'       => array( '0', 'coordinaten', 'coordinates' ),
+	'distance'       	=> array( '0', 'afstand', 'distance' ),
 );
 
 $magicWords['ru'] = array(
