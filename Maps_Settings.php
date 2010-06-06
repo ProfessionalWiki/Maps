@@ -146,6 +146,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 # Distance configuration
 	
+	# Array. A list of units (keys) and how many meters they represent (value).
+	$egMapsDistanceUnits = array(
+		'm' => 1,
+		'meter' => 1,
+		'meters' => 1,
+		'km' => 1000,
+		'kilometers' => 1000,
+		'kilometres' => 1000,
+		'mi' => 1609.344,
+		'mile' => 1609.344,
+		'miles' => 1609.344,
+		'nm' => 1852,
+		'nautical mile' => 1852,
+		'nautical miles' => 1852,
+	);
+	
 	# String. The default unit for distances.
 	$egMapsDistanceUnit = 'km';
 	

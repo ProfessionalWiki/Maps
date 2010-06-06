@@ -27,26 +27,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class MapsDistanceParser {
 	
 	/**
-	 * A list of units (keys) and how many meters they represent (value).
-	 * 
-	 * @var array
-	 */
-	protected static $mUnits = array(
-		'm' => 1,
-		'meter' => 1,
-		'meters' => 1,
-		'km' => 1000,
-		'kilometers' => 1000,
-		'kilometres' => 1000,
-		'mi' => 1609.344,
-		'mile' => 1609.344,
-		'miles' => 1609.344,
-		'nm' => 1852,
-		'nautical mile' => 1852,
-		'nautical miles' => 1852,
-	);
-	
-	/**
 	 * Parses a distance optionaly containing a unit to a float value in meters.
 	 * 
 	 * @param string $distance
@@ -54,6 +34,8 @@ class MapsDistanceParser {
 	 * @return float The distance in meters.
 	 */
 	public static function parseDistance( $distance ) {
+		global $egMapsDistanceUnits;
+		
 		if ( !self::isDistance( $distance ) ) {
 			return false;
 		}
@@ -65,19 +47,21 @@ class MapsDistanceParser {
 		$unit = $matches[5];
 		
 		// Check for the precence of a supported unit, and if found, factor it in.
-		if ( $unit != '' && array_key_exists( $unit, self::$mUnits ) ) {
-			$value *= self::$mUnits[$unit];
+		if ( $unit != '' && array_key_exists( $unit, $egMapsDistanceUnits ) ) {
+			$value *= $egMapsDistanceUnits[$unit];
 		}
 		
 		return $value;
 	}
 	
 	public static function formatDistance( $meters, $unit = 'km', $decimals = 2 ) {
-		if ( !array_key_exists( $unit, self::$mUnits ) ) {
-			$unit = self::$mUnits[0];
+		global $egMapsDistanceUnits;
+		
+		if ( !array_key_exists( $unit, $egMapsDistanceUnits ) ) {
+			$unit = $egMapsDistanceUnits[0];
 		}
 		
-		$meters = round( $meters / self::$mUnits[$unit], $decimals );
+		$meters = round( $meters / $egMapsDistanceUnits[$unit], $decimals );
 		
 		return "$meters $unit";
 	}
@@ -96,7 +80,8 @@ class MapsDistanceParser {
 	 * @return array
 	 */
 	public static function getUnits() {
-		return array_keys( self::$mUnits );
+		global $egMapsDistanceUnits;
+		return array_keys( $egMapsDistanceUnits );
 	}
 	
 }
