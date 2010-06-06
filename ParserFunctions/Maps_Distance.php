@@ -73,16 +73,12 @@ function efMapsRenderDistance() {
 		
 		$distanceInMeters = MapsDistanceParser::parseDistance( $parameters['distance'] );
 		
-		if ( $distanceInMeters ) {
-			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
-		} else {
-			$output = htmlspecialchars( wfMsgExt( 'maps_invalid_distance', 'parsemag', $parameters['distance'] ) );
-		}
-		
 		$errorList = $manager->getErrorList();
 		
-		if ( $errorList != '' ) {
-			$output .= $errorList;
+		if ( $distanceInMeters ) {
+			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] ) . $errorList;
+		} else {
+			$output = $errorList . wfMsgExt( 'maps_invalid_distance', 'parsemag', '<b>' . $parameters['distance'] . '</b>' );
 		}
 	} else {
 		$output = $manager->getErrorList();

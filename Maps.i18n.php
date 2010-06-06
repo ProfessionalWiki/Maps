@@ -43,7 +43,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
 	// Distance
-	'maps_invalid_distance' => 'The value "$1" is not a valid distance.',
+	'maps_invalid_distance' => 'The value $1 is not a valid distance.',
 
 	// Geocoding
 	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',
