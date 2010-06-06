@@ -189,6 +189,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
@@ -210,6 +211,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Наступная каардыната не была апазнаная|Наступныя каардынаты не былі апазнаныя}} і {{PLURAL:$2|яна не паказаная|яны не паказаныя}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Мапа ня можа быць паказаная.',
+	'maps_invalid_distance' => 'Значэньне $1 ня слушная адлегласьць.',
 	'maps-geocoder-not-available' => 'Магчымасьць геаграфічнага кадаваньня для мапаў недаступная. Вашае месцазнаходжаньне ня можа быць геаграфічна закадаванае.',
 	'maps_click_to_activate' => 'Націсьніце для актывацыі мапы',
 	'maps_centred_on' => 'Цэнтар мапы — $1, $2.',
@@ -665,6 +667,7 @@ O mapa non se pode mostrar.',
 	'maps_unrecognized_coords_for' => 'Non se {{PLURAL:$2|recoñeceu a seguinte coordenada|recoñeceron as seguintes coordenadas}} e {{PLURAL:$2|foi omitida|foron omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'O mapa non se pode mostrar.',
+	'maps_invalid_distance' => 'O valor $1 non é unha distancia válida.',
 	'maps-geocoder-not-available' => 'A funcionalidade de xeocodificación de mapas non está dispoñible; non se pode xeocodificar a súa situación.',
 	'maps_click_to_activate' => 'Prema para activar o mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
@@ -789,6 +792,7 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}} a {{PLURAL:$2|bu na karće wuwostajena|buštej na karće wuwostajenej|buchu na karće wuwostajene|buchu na karće wuwostajene}}: $1',
 	'maps_map_cannot_be_displayed' => 'Karta njeda so zwobraznić.',
+	'maps_invalid_distance' => 'Hódnota $1 płaćiwa distanca njeje.',
 	'maps-geocoder-not-available' => 'Funkcija geokodowanja Kartow k dispoziciji njesteji, twoje městno njehodźi so geokodować.',
 	'maps_click_to_activate' => 'Klikń, zo by kartu aktiwizował',
 	'maps_centred_on' => 'Karta na $1, $2 centrowana.',
@@ -1131,6 +1135,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Следнава координата не беше препознаена|Следниве координати не беа препознаени}} и {{PLURAL:$2|беше изоставена|беа изоставени}} од картата:
 $1',
 	'maps_map_cannot_be_displayed' => 'Картата не може да се прикаже.',
+	'maps_invalid_distance' => 'Вредноста $1 не претставува важечко растојание.',
 	'maps-geocoder-not-available' => 'Функцијата за геокодирање на Карти е недостапна. Вашата локација не може да се геокодира.',
 	'maps_click_to_activate' => 'Кликнете за активирање на картата',
 	'maps_centred_on' => 'Средиште на картата во $1, $2.',
