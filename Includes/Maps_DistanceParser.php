@@ -72,12 +72,12 @@ class MapsDistanceParser {
 		return $value;
 	}
 	
-	public static function formatDistance( $meters, $unit = 'km' ) {
+	public static function formatDistance( $meters, $unit = 'km', $decimals = 2 ) {
 		if ( !array_key_exists( $unit, self::$mUnits ) ) {
 			$unit = self::$mUnits[0];
 		}
 		
-		$meters = round( $meters / self::$mUnits[$unit], 2 );
+		$meters = round( $meters / self::$mUnits[$unit], $decimals );
 		
 		return "$meters $unit";
 	}

@@ -58,8 +58,12 @@ function efMapsRenderDistance() {
 				),
 				'default' => 'km' // TODO
 			),
+			'decimals' => array(
+				'type' => 'integer',
+				'default' => 2 // TODO
+			)
 		),
-		array( 'distance', 'unit' )
+		array( 'distance', 'unit', 'decimals' )
 	);	
 	
 	if ( $doConversion ) {
@@ -68,7 +72,7 @@ function efMapsRenderDistance() {
 		$distanceInMeters = MapsDistanceParser::parseDistance( $parameters['distance'] );
 		
 		if ( $distanceInMeters ) {
-			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'] );
+			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
 		} else {
 			$output = htmlspecialchars( wfMsgExt( 'maps_invalid_distance', 'parsemag', $parameters['distance'] ) );
 		}
