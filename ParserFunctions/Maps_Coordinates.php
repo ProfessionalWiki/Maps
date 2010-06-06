@@ -38,7 +38,6 @@ function efMapsCoordinatesFunction( &$wgParser ) {
 	return true;
 }
 
-// TODO: add coordinate validation
 function efMapsRenderCoordinates() {
 	global $egMapsAvailableServices, $egMapsAvailableCoordNotations;
 	global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
