@@ -39,6 +39,8 @@ function efMapsDistanceFunction( &$wgParser ) {
 }
 
 function efMapsRenderDistance() {
+	global $egMapsDistanceUnit;
+	
 	$args = func_get_args();
 	
 	// We already know the $parser.
@@ -56,7 +58,7 @@ function efMapsRenderDistance() {
 				'criteria' => array(
 					'in_array' => MapsDistanceParser::getUnits()
 				),
-				'default' => 'km' // TODO
+				'default' => $egMapsDistanceUnit
 			),
 			'decimals' => array(
 				'type' => 'integer',

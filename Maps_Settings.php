@@ -144,6 +144,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 
+# Distance configuration
+	
+	# String. The default unit for distances.
+	$egMapsDistanceUnit = 'km';
+	
+	
+	
 # General map configuration
 
 	# Integer or string. The default width and height of a map. These values will
