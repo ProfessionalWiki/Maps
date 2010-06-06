@@ -179,6 +179,8 @@ class MapsCoordinateParser {
 	 * @return string The normalized version of the provided coordinates.
 	 */
 	protected static function normalizeCoordinates( $coordinates ) {
+		$coordinates = self::removeInvalidChars( $coordinates );
+		
 		$coordinates = str_replace( ' ', '', $coordinates );
 		
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
@@ -187,6 +189,27 @@ class MapsCoordinateParser {
 		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
 		
 		return $coordinates;
+	}
+	
+	/**
+	 * Returns a string with control characters and characters with ascii values above 126 removed.
+	 * 
+	 * @param string $string Yeah, it's a string, seriously!
+	 * 
+	 * @return string
+	 */
+	protected static function removeInvalidChars( $string ) {
+		$filtered = array();
+		
+		foreach ( str_split( $string ) as $character ) {
+			$asciiValue = ord( $character );
+			
+			if ( $asciiValue > 31 and $asciiValue < 127 ) {
+				$filtered[] = $character;
+			}
+		}
+		
+		return implode( '', $filtered );
 	}
 	
 	/**
