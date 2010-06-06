@@ -54,15 +54,17 @@ class MapsDistanceParser {
 		return $value;
 	}
 	
-	public static function formatDistance( $meters, $unit = 'km', $decimals = 2 ) {
-		global $egMapsDistanceUnits;
-		
-		if ( !array_key_exists( $unit, $egMapsDistanceUnits ) ) {
-			$unit = $egMapsDistanceUnits[0];
-		}
-		
-		$meters = round( $meters / $egMapsDistanceUnits[$unit], $decimals );
-		
+	/**
+	 * Formats a given distance in meters to a distance in an optionaly specified notation.
+	 * 
+	 * @param float $meters
+	 * @param string $unit
+	 * @param integer $decimals
+	 * 
+	 * @return string
+	 */
+	public static function formatDistance( $meters, $unit = null, $decimals = 2 ) {
+		$meters = round( $meters / self::getUnitRatio( $unit ), $decimals );
 		return "$meters $unit";
 	}
 	
@@ -72,6 +74,25 @@ class MapsDistanceParser {
 	
 	public static function isDistance( $distance ) {
 		return preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance );
+	}
+	
+	public static function getUnitRatio( $unit = null ) {
+		global $egMapsDistanceUnits;
+		return $egMapsDistanceUnits[self::getValidUnit( $unit )];
+	}
+	
+	public static function getValidUnit( $unit = null ) {
+		global $egMapsDistanceUnit, $egMapsDistanceUnits;
+		
+		if ( $unit == null ) {
+			$unit = $egMapsDistanceUnit;
+		}
+		
+		if ( !array_key_exists( $unit, $egMapsDistanceUnits ) ) {
+			$unit = $egMapsDistanceUnits[0];
+		}
+		
+		return $unit;
 	}
 	
 	/**
