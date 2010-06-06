@@ -16,10 +16,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /**
  * Static class for distance validation and parsing. Internal representatations are in meters.
  * 
- * TODO:
- * This class has been quicly put together for 0.6 - with non generic code from Semantic Maps. 
- * It should be improved and made more generic, but is fine like this for now.
- * 
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
@@ -36,8 +32,6 @@ class MapsDistanceParser {
 	 * @return float The distance in meters.
 	 */
 	public static function parseDistance( $distance ) {
-		global $egMapsDistanceUnits;
-		
 		if ( !self::isDistance( $distance ) ) {
 			return false;
 		}
@@ -46,12 +40,7 @@ class MapsDistanceParser {
 		preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance, $matches );
 		
 		$value = (float)( $matches[1] . $matches[2] );
-		$unit = $matches[5];
-		
-		// Check for the precence of a supported unit, and if found, factor it in.
-		if ( $unit != '' && array_key_exists( $unit, $egMapsDistanceUnits ) ) {
-			$value *= $egMapsDistanceUnits[$unit];
-		}
+		$value *= self::getUnitRatio( $matches[5] );
 		
 		return $value;
 	}
@@ -70,14 +59,37 @@ class MapsDistanceParser {
 		return "$meters $unit";
 	}
 	
-	public static function parseAndFormat( $distance, $unit ) {
-		return self::formatDistance( self::parseDistance( $distance ), $unit );
+	/**
+	 * Shortcut for converting from one unit to another.
+	 * 
+	 * @param string $distance
+	 * @param string $unit
+	 * @param integer $decimals
+	 * 
+	 * @return string
+	 */
+	public static function parseAndFormat( $distance, $unit = null, $decimals = 2 ) {
+		return self::formatDistance( self::parseDistance( $distance ), $unit, $decimals );
 	}
 	
+	/**
+	 * Returns if the provided string is a valid distance.
+	 * 
+	 * @param string $distance
+	 * 
+	 * @return boolean
+	 */
 	public static function isDistance( $distance ) {
 		return preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance );
 	}
 	
+	/**
+	 * Returns the unit to meter ratio in a safe way, by first resolving the unit.
+	 * 
+	 * @param string $unit
+	 * 
+	 * @return float
+	 */
 	public static function getUnitRatio( $unit = null ) {
 		global $egMapsDistanceUnits;
 		return $egMapsDistanceUnits[self::getValidUnit( $unit )];
@@ -87,6 +99,8 @@ class MapsDistanceParser {
 	 * Returns a valid unit. If the provided one is invalid, the default will be used.
 	 * 
 	 * @param string $unit
+	 * 
+	 * @return string
 	 */
 	public static function getValidUnit( $unit = null ) {
 		global $egMapsDistanceUnit, $egMapsDistanceUnits;
