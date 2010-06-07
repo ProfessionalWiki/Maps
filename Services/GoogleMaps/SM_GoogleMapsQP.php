@@ -66,7 +66,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
-		foreach ( $this->m_locations as $location ) {
+		foreach ( $this->mLocations as $location ) {
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}

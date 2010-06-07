@@ -49,7 +49,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
-		foreach ( $this->m_locations as $location ) {
+		foreach ( $this->mLocations as $location ) {
 			// Create a string containing the marker JS .
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 
