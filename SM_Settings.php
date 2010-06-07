@@ -5,7 +5,7 @@
  * More info can be found at http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Settings
  *
  *                          NOTICE:
- * Changing one of these settings can be done by copieng or cutting it, 
+ * Changing one of these settings can be done by copieng or cutting it,
  * and placing it in LocalSettings.php, AFTER the inclusion of Semantic Maps.
  *
  * @file SM_Settings.php
