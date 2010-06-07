@@ -112,5 +112,4 @@ EOT
 		if ( $this->enableGeocoding ) MapsYahooMaps::addYMapDependencies( $this->output );
 	}
 
-	
 }
