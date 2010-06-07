@@ -18,6 +18,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * Supports floats, DMS, decimal degrees, and decimal minutes notations, both directional and non-directional.
  * Internal representatations are arrays with lat and lon key with float values.
  * 
+ * TODO: it migt be a lot nicer to return the releveant segments from the regexes instead of manually parsing them out.
+ * 
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
@@ -186,7 +188,7 @@ class MapsCoordinateParser {
 		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″' ), Maps_GEO_MIN, $coordinates );
 		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
 		
-		//$coordinates = self::removeInvalidChars( $coordinates );
+		$coordinates = self::removeInvalidChars( $coordinates );
 		
 		return $coordinates;
 	}
@@ -378,14 +380,14 @@ class MapsCoordinateParser {
 	 */
 	protected static function resolveAngle( $coordinate ) {
 		// Get the last char, which could be a direction indicator
-		$lastChar = strtolower( substr( $coordinate, -1 ) );
+		$lastChar = strtoupper( substr( $coordinate, -1 ) );
 		
 		// If there is a direction indicator, remove it, and prepend a minus sign for south and west directions.
 		// If there is no direction indicator, the coordinate is already non-directional and no work is required.
 		if ( in_array( $lastChar, self::$mDirections ) ) {
 			$coordinate = substr( $coordinate, 0, -1 );
 			
-			if ( ( $lastChar == 's' ) or ( $lastChar == 'w' ) ) {
+			if ( ( $lastChar == 'S' ) or ( $lastChar == 'W' ) ) {
 				$coordinate = '-' . trim( $coordinate );
 			}
 		}
