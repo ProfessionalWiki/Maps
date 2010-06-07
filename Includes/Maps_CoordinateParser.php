@@ -204,7 +204,7 @@ class MapsCoordinateParser {
 		foreach ( str_split( $string ) as $character ) {
 			$asciiValue = ord( $character );
 			
-			if ( $asciiValue > 31 and $asciiValue < 127 ) {
+			if ( ( $asciiValue > 31 && $asciiValue < 127 ) || $asciiValue == 176 ) {
 				$filtered[] = $character;
 			}
 		}
