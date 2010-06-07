@@ -31,7 +31,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
 	public function getSpecificParameterInfo() {
 		global $egMapsGMapOverlays;
-		$this->spesificParameters = array(
+		$this->specificParameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -40,7 +40,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 				'default' => $egMapsGMapOverlays,
 			),
 		);
-		return $this->spesificParameters;
+		return $this->specificParameters;
 	}
 	
 	/**

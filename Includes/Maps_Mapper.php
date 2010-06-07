@@ -1,6 +1,6 @@
 <?php
 /**
- * A class that holds static helper functions for common functionality that is not map-spesific.
+ * A class that holds static helper functions for common functionality that is not map-specific.
  *
  * @file Maps_Mapper.php
  * @ingroup Maps
@@ -36,9 +36,9 @@ final class MapsMapper {
 	 * 
 	 * @return boolean
 	 */
-	public static function isLocation( $location, $name, array $parameters, $metaDataSeperator = false ) {
-		if ( $metaDataSeperator !== false ) {
-			$parts = explode( $metaDataSeperator, $location );
+	public static function isLocation( $location, $name, array $parameters, $metaDataSeparator = false ) {
+		if ( $metaDataSeparator !== false ) {
+			$parts = explode( $metaDataSeparator, $location );
 			$location = $parts[0];
 		}
 		
@@ -58,10 +58,10 @@ final class MapsMapper {
 	 * 
 	 * @return boolean
 	 */	
-	public static function areLocations( $locations, $name, array $parameters, $metaDataSeperator = false ) {
+	public static function areLocations( $locations, $name, array $parameters, $metaDataSeparator = false ) {
 		$locations = (array)$locations;
 		foreach ( $locations as $location ) {
-			if ( !self::isLocation( $location, $name, $parameters, $metaDataSeperator ) ) {
+			if ( !self::isLocation( $location, $name, $parameters, $metaDataSeparator ) ) {
 				return false;
 			}
 		}

@@ -24,8 +24,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsCoordinateParser {
 	
-	protected static $mSeperators = array( ',', ';' );
-	protected static $mSeperatorsRegex = false;
+	protected static $mSeparators = array( ',', ';' );
+	protected static $mSeparatorsRegex = false;
 	
 	protected static $mI18nDirections = false; // Cache for localised direction labels
 	protected static $mDirections; // Cache for English direction labels
@@ -55,8 +55,8 @@ class MapsCoordinateParser {
 		}
 		
 		// Split the coodrinates string into a lat and lon part.
-		foreach ( self::$mSeperators as $seperator ) {
-			$split = explode( $seperator, $coordinates );
+		foreach ( self::$mSeparators as $separator ) {
+			$split = explode( $separator, $coordinates );
 			if ( count( $split ) == 2 ) break;
 		}
 		
@@ -136,7 +136,7 @@ class MapsCoordinateParser {
 	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
-	 * @param string $separator Delimiter to seperate the latitude and longitude with.
+	 * @param string $separator Delimiter to separate the latitude and longitude with.
 	 * 
 	 * @return string
 	 */
@@ -284,7 +284,7 @@ class MapsCoordinateParser {
 	 * @return boolean
 	 */
 	public static function areFloatCoordinates( $coordinates ) {
-		$sep = self::getSeperatorsRegex();
+		$sep = self::getSeparatorsRegex();
 		return preg_match( '/^(-)?\d{1,3}(\.\d{1,20})?' . $sep . '(\s)?(-)?\d{1,3}(\.\d{1,20})?$/', $coordinates ) // Non-directional
 			|| preg_match( '/^\d{1,3}(\.\d{1,20})?(\s)?(N|S)' . $sep . '(\s)?\d{1,3}(\.\d{1,20})?(\s)?(E|W)$/', $coordinates ); // Directional
 	}
@@ -297,7 +297,7 @@ class MapsCoordinateParser {
 	 * @return boolean
 	 */
 	public static function areDMSCoordinates( $coordinates ) {
-		$sep = self::getSeperatorsRegex();
+		$sep = self::getSeparatorsRegex();
 		return preg_match( '/^(-)?(\d{1,3}°)((\s)?\d{1,2}(\′|\'))?(((\s)?\d{1,2}(″|"))?|((\s)?\d{1,2}\.\d{1,2}(″|"))?)'
 			. $sep . '(\s)?(-)?(\d{1,3}°)((\s)?\d{1,2}(\′|\'))?(((\s)?\d{1,2}(″|"))?|((\s)?\d{1,2}\.\d{1,2}(″|"))?)$/', $coordinates ) // Non-directional
 			|| preg_match( '/^(\d{1,3}°)((\s)?\d{1,2}(\′|\'))?(((\s)?\d{1,2}(″|"))?|((\s)?\d{1,2}\.\d{1,2}(″|"))?)(\s)?(N|S)'
@@ -312,7 +312,7 @@ class MapsCoordinateParser {
 	 * @return boolean
 	 */
 	public static function areDDCoordinates( $coordinates ) {
-		$sep = self::getSeperatorsRegex();
+		$sep = self::getSeparatorsRegex();
 		return preg_match( '/^(-)?\d{1,3}(|\.\d{1,20})°' . $sep . '(\s)?(-)?(\s)?\d{1,3}(|\.\d{1,20})°$/', $coordinates ) // Non-directional
 			|| preg_match( '/^\d{1,3}(|\.\d{1,20})°(\s)?(N|S)' . $sep . '(\s)?(\s)?\d{1,3}(|\.\d{1,20})°(\s)?(E|W)?$/', $coordinates ); // Directional
 	}
@@ -325,7 +325,7 @@ class MapsCoordinateParser {
 	 * @return boolean
 	 */
 	public static function areDMCoordinates( $coordinates ) {
-		$sep = self::getSeperatorsRegex();
+		$sep = self::getSeparatorsRegex();
 		return preg_match( '/(-)?\d{1,3}°(\s)?\d{1,2}(\.\d{1,20}\')?' . $sep . '(\s)?(-)?\d{1,3}°(\s)?\d{1,2}(\.\d{1,20}\')?$/', $coordinates ) // Non-directional
 			|| preg_match( '/\d{1,3}°(\s)?\d{1,2}(\.\d{1,20}\')?(\s)?(N|S)' . $sep . '(\s)?\d{1,3}°(\s)?\d{1,2}(\.\d{1,20}\')?(\s)?(E|W)?$/', $coordinates ); // Directional
 	}
@@ -495,9 +495,9 @@ class MapsCoordinateParser {
 		return $coordinate;
 	}
 	
-	protected static function getSeperatorsRegex() {
-		if ( !self::$mSeperatorsRegex ) self::$mSeperatorsRegex = '(' . implode( '|', self::$mSeperators ) . ')';
-		return self::$mSeperatorsRegex;
+	protected static function getSeparatorsRegex() {
+		if ( !self::$mSeparatorsRegex ) self::$mSeparatorsRegex = '(' . implode( '|', self::$mSeparators ) . ')';
+		return self::$mSeparatorsRegex;
 	}
 	
 	/**

@@ -34,7 +34,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	public function getSpecificParameterInfo() {
 		global $egMapsGMapOverlays;
 		// TODO: it'd be cool to have this static so it can be cheched in order to only init it once.
-		$this->spesificParameters = array(
+		$this->specificParameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -43,7 +43,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 				'default' => $egMapsGMapOverlays,
 			),
 		);
-		return $this->spesificParameters;
+		return $this->specificParameters;
 	}
 
 	/**

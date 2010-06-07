@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * Abstract class MapsBasePointMap provides the scafolding for classes handling display_point(s)
- * calls for a spesific mapping service. It inherits from MapsMapFeature and therefore forces
+ * calls for a specific mapping service. It inherits from MapsMapFeature and therefore forces
  * inheriting classes to implement sereveral methods.
  *
  * @ingroup Maps
@@ -30,7 +30,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 
 	protected $output = '';
 
-	protected $spesificParameters = false;
+	protected $specificParameters = false;
 	protected $featureParameters = false;
 	
 	private $markerData = array();

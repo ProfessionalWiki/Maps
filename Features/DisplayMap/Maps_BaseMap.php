@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * Abstract class MapsBaseMap provides the scafolding for classes handling display_map
- * calls for a spesific mapping service. It inherits from MapsMapFeature and therefore
+ * calls for a specific mapping service. It inherits from MapsMapFeature and therefore
  * forces inheriting classes to implement sereveral methods.
  *
  * @ingroup Maps
@@ -32,7 +32,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 
 	protected $parser;
 	
-	protected $spesificParameters = false;
+	protected $specificParameters = false;
 	protected $featureParameters = false;
 	
 	/**

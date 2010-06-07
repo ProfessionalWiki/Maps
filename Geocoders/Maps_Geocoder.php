@@ -97,7 +97,7 @@ final class MapsGeocoder {
 
 		$service = self::getValidGeoService( $service, $mappingService );
 		
-		// Call the geocode function in the spesific geocoder class.
+		// Call the geocode function in the specific geocoder class.
 		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
 		
 		// If there address could not be geocoded, and contains comma's, try again without the comma's.
