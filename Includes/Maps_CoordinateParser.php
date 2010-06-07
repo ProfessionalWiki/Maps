@@ -179,14 +179,14 @@ class MapsCoordinateParser {
 	 * @return string The normalized version of the provided coordinates.
 	 */
 	protected static function normalizeCoordinates( $coordinates ) {
-		$coordinates = self::removeInvalidChars( $coordinates );
-		
 		$coordinates = str_replace( ' ', '', $coordinates );
 		
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
 		$coordinates = str_replace( array( '&acute;', '&#180;' ), Maps_GEO_SEC, $coordinates );
 		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″' ), Maps_GEO_MIN, $coordinates );
 		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
+		
+		$coordinates = self::removeInvalidChars( $coordinates );
 		
 		return $coordinates;
 	}
