@@ -2,7 +2,7 @@
 
 /**
  * Initialization file for the Semantic Maps extension.
- * Extension documentation: http://www.mediawiki.org/wiki/Extension:Semantic_Maps
+ * Extension documentation: http://mapping.referata.com/wiki/Semantic_Maps
  *
  * @file SemanticMaps.php
  * @ingroup SemanticMaps
