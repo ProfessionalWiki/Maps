@@ -18,9 +18,11 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Added 'decimals' and 'unit' parameters to #geosiatnce.
 
+* Default parameter handling improvements (via Validator 0.3.2).
+
 ==== Bug fixes ====
 
-* Re-added parameter name and value insensitivity.
+* Re-added parameter name and value insensitivity (via Validator 0.3.2).
 
 === Maps 0.6.1 ===
 (2010-06-04)
