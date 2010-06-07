@@ -6,6 +6,13 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.6.2 ===
+(2010-06-07)
+
+==== Bug fixes ====
+
+* Fixed fatal error that occurred when editing a page via a form with a map on it.
+
 === Semantic Maps 0.6.1 ===
 (2010-06-04)
 
