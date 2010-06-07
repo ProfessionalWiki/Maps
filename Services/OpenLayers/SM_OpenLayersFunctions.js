@@ -1,5 +1,5 @@
  /**
-  * Javascript functions for OpenLayers functionallity in Semantic Maps
+  * Javascript functions for OpenLayers functionality in Semantic Maps
   *
   * @file SM_OpenLayersFunctions.js
   * @ingroup SMOpenLayers
@@ -8,7 +8,7 @@
   */
 
 /**
- * This function holds spesific functionallity for the Open Layers form input of Semantic Maps
+ * This function holds specific functionality for the Open Layers form input of Semantic Maps
  */
 function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls, height) {
 	var markers = Array();

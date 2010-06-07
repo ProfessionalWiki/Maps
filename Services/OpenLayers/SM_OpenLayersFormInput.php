@@ -17,7 +17,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	
 	public $serviceName = MapsOpenLayers::SERVICE_NAME;
 	
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()

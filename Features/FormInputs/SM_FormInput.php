@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Abstract class that provides the common functionallity for all map form inputs
+ * Abstract class that provides the common functionality for all map form inputs
  *
  * @file SM_FormInput.php
  * @ingroup SemanticMaps
@@ -56,13 +56,13 @@ abstract class SMFormInput {
 		/*
 		 * Assembliy of the allowed parameters and their information. 
 		 * The main parameters (the ones that are shared by everything) are overidden
-		 * by the feature parameters (the ones spesific to a feature). The result is then
-		 * again overidden by the service parameters (the ones spesific to the service),
-		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
+		 * by the feature parameters (the ones specific to a feature). The result is then
+		 * again overidden by the service parameters (the ones specific to the service),
+		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
 		

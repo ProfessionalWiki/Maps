@@ -17,7 +17,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	
 	public $serviceName = MapsYahooMaps::SERVICE_NAME;
 	
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()

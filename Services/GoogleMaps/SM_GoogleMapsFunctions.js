@@ -1,5 +1,5 @@
  /**
-  * Javascript functions for Google Maps functionallity in Semantic Maps
+  * Javascript functions for Google Maps functionality in Semantic Maps
   *
   * @file SM_GoogleMapFunctions.js
   * @ingroup SMGoogleMaps
@@ -8,7 +8,7 @@
   */
 
 /**
- * This function holds spesific functionallity for the Google Maps form input of Semantic Maps
+ * This function holds specific functionality for the Google Maps form input of Semantic Maps
  * TODO: Refactor as much code as possible to non specific functions
  */
 function makeGoogleMapFormInput(mapName, locationFieldName, mapOptions, marker_lat, marker_lon) {
@@ -42,7 +42,7 @@ function makeGoogleMapFormInput(mapName, locationFieldName, mapOptions, marker_l
 }
 
 /**
- * This function holds spesific functionallity for the Google Maps form input of Semantic Maps
+ * This function holds specific functionality for the Google Maps form input of Semantic Maps
  */
 function showGAddress(address, mapName, outputElementName, notFoundFormat) {
 	var map = GMaps[mapName];

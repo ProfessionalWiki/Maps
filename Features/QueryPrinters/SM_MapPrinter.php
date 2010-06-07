@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Abstract class that provides the common functionallity for all map query printers.
+ * Abstract class that provides the common functionality for all map query printers.
  *
  * @ingroup SemanticMaps
  *
@@ -34,7 +34,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected abstract function setQueryPrinterSettings();
 	
 	/**
-	 * Map service spesific map count and loading of dependencies
+	 * Map service specific map count and loading of dependencies
 	 */
 	protected abstract function doMapServiceLoad();
 	
@@ -58,7 +58,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected $mMapFeature;
 	
 	protected $featureParameters = array();
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
 	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
@@ -110,13 +110,13 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		/*
 		 * Assembliy of the allowed parameters and their information. 
 		 * The main parameters (the ones that are shared by everything) are overidden
-		 * by the feature parameters (the ones spesific to a feature). The result is then
-		 * again overidden by the service parameters (the ones spesific to the service),
-		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
+		 * by the feature parameters (the ones specific to a feature). The result is then
+		 * again overidden by the service parameters (the ones specific to the service),
+		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
 		

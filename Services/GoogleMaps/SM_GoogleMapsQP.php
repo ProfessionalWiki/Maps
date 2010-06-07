@@ -18,7 +18,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
-	protected $spesificParameters;
+	protected $specificParameters;
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
@@ -30,7 +30,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
-		$this->spesificParameters = array(
+		$this->specificParameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -107,7 +107,7 @@ EOT
 	}
 	
 	/**
-	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the spesific ones to the list.
+	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the specific ones to the list.
 	 */
     public function getParameters() {
         $params = parent::getParameters();

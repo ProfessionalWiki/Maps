@@ -19,7 +19,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 
 	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 	
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
