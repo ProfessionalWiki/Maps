@@ -211,7 +211,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Наступная каардыната не была апазнаная|Наступныя каардынаты не былі апазнаныя}} і {{PLURAL:$2|яна не паказаная|яны не паказаныя}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Мапа ня можа быць паказаная.',
-	'maps_invalid_distance' => 'Значэньне $1 ня слушная адлегласьць.',
+	'maps_invalid_distance' => 'Значэньне $1 — няслушная адлегласьць.',
 	'maps-geocoder-not-available' => 'Магчымасьць геаграфічнага кадаваньня для мапаў недаступная. Вашае месцазнаходжаньне ня можа быць геаграфічна закадаванае.',
 	'maps_click_to_activate' => 'Націсьніце для актывацыі мапы',
 	'maps_centred_on' => 'Цэнтар мапы — $1, $2.',
@@ -348,6 +348,7 @@ $messages['cs'] = array(
  * @author DaSch
  * @author Imre
  * @author Kghbln
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'maps_desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
@@ -369,6 +370,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Die {{PLURAL:$2|folgende Koordinate wurde|folgenden Koordinaten wurden}} nicht erkannt und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
 	'maps_map_cannot_be_displayed' => 'Diese Karte kann nicht angezeigt werden.',
+	'maps_invalid_distance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Dein Standort kann nicht geokodiert werden.',
 	'maps_click_to_activate' => 'Klicken, um die Karte zu aktivieren.',
 	'maps_centred_on' => 'Karte ist auf $1, $2 zentriert.',
@@ -485,6 +487,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Dferg
+ * @author Diego Grez
  * @author Imre
  * @author Locos epraix
  * @author Pertile
@@ -509,6 +512,7 @@ No se puede mostrar el mapa.',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|La siguiente coordenada no fue reconocida|Las siguientes coordenadas no fueron reconocidas}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada siguiente no es reconocida|Las coordenadas siguientes no son reconocidas}} y PLURAL:$2|{{han sido omitidas|han sido omitidas}} del mapa :$1',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
+	'maps_invalid_distance' => 'El valor $1 no es una distancia válida.',
 	'maps-geocoder-not-available' => 'La funcionalidad de geocodificación de Maps no está disponible. Su ubicación no puede ser geocodificada.',
 	'maps_click_to_activate' => 'Haz clic para activar el mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
@@ -609,6 +613,7 @@ Le plan ne peut pas être affiché.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordonnée suivante n'a pas été reconnue|Les coordonnées suivantes n'ont pas été reconnues}} et {{PLURAL:$2|a été omise|ont été omises}} sur la carte :
 $1",
 	'maps_map_cannot_be_displayed' => 'La carte ne peut pas être affichée.',
+	'maps_invalid_distance' => 'La valeur $1 n’est pas une distance valide.',
 	'maps-geocoder-not-available' => "La fonctionnalité géocodage des cartes n'est pas disponible. Votre emplacement ne peut être géocodé.",
 	'maps_click_to_activate' => 'Cliquer pour activer la carte',
 	'maps_centred_on' => 'Carte centrée sur $1, $2.',
@@ -868,6 +873,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Le sequente {{PLURAL:$2|coordinata|coordinatas}} non esseva recognoscite e ha essite omittite del carta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Le carta on pote esser monstrate.',
+	'maps_invalid_distance' => 'Le valor $1 non es un distantia valide.',
 	'maps-geocoder-not-available' => 'Le function de geocodification de Maps non es disponibile; tu loco non pote esser geocodificate.',
 	'maps_click_to_activate' => 'Clicca pro activar le carta',
 	'maps_centred_on' => 'Carta centrate super $1, $2.',
@@ -1207,6 +1213,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'De volgende {{PLURAL:$2|coördinaat is niet herkend en is|coördinaten zijn niet herkend en zijn}} weggelaten uit de kaart:
 $1.',
 	'maps_map_cannot_be_displayed' => 'De kaart kan niet weergegeven worden.',
+	'maps_invalid_distance' => 'De waarde $1 is geen geldige afstand.',
 	'maps-geocoder-not-available' => 'Geocoderen via Maps is niet beschikbaar. Het geocoderen van uw locatie is niet mogelijk.',
 	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_yahoomaps' => 'Yahoo! Maps',
@@ -1367,6 +1374,7 @@ La mapa a peul pa esse visualisà.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta: 
 $1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
+	'maps_invalid_distance' => "Ël valor $1 a l'é pa na distansa bon-a.",
 	'maps-geocoder-not-available' => "La possibilità ëd geocodìfica dle carte a l'é pa disponìbil. Soa locassion a peul pa esse geocodificà.",
 	'maps_click_to_activate' => 'Sgnaca për ativé la carta',
 	'maps_centred_on' => 'Carta sentrà su $1, $2.',
@@ -1413,6 +1421,7 @@ $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
+	'maps_invalid_distance' => 'O valor $1 não é uma distância válida.',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para activar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
@@ -1504,6 +1513,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Следующие координаты не были опознаны, {{PLURAL:$2|они|они}} не показаны на карте:
 $1',
 	'maps_map_cannot_be_displayed' => 'Карта не может быть показана.',
+	'maps_invalid_distance' => 'Значение $1 не является допустимым расстоянием.',
 	'maps-geocoder-not-available' => 'Функция геокодирования карт недоступна, ваше местоположение не может быть геокодировано.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
 	'maps_centred_on' => 'Центр карты — $1, $2.',
