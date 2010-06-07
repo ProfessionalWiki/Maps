@@ -21,6 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgAutoloadClasses['SMYahooMapsQP'] = dirname( __FILE__ ) . '/SM_YahooMapsQP.php';
+// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
 if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMYahooMapsFormInput'] = dirname( __FILE__ ) . '/SM_YahooMapsFormInput.php';
 
 $egMapsServices['yahoomaps']['features']['qp'] = 'SMYahooMapsQP';

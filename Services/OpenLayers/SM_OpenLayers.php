@@ -21,6 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgAutoloadClasses['SMOpenLayersQP'] = dirname( __FILE__ ) . '/SM_OpenLayersQP.php';
+// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
 if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMOpenLayersFormInput'] = dirname( __FILE__ ) . '/SM_OpenLayersFormInput.php';
 
 $egMapsServices['openlayers']['features']['qp'] = 'SMOpenLayersQP';
