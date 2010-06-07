@@ -23,6 +23,7 @@ $magicWords['ar'] = array(
 	'geodistance'       => array( '0', 'مسافة_جغرافية', 'geodistance' ),
 	'finddestination'   => array( '0', 'إيجاد_الوجهة', 'finddestination' ),
 	'coordinates'       => array( '0', 'إحداثيات', 'coordinates' ),
+	'distance'          => array( '0', 'مسافة', 'distance' ),
 );
 
 $magicWords['arz'] = array(
