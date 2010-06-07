@@ -1,5 +1,5 @@
  /**
-  * Javascript functions for Open Layers functionallity in Maps and it's extensions
+  * Javascript functions for Open Layers functionality in Maps and its extensions
   *
   * @file OpenLayerFunctions.js
   * @ingroup MapsOpenLayers

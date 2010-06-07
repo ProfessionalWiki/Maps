@@ -1,5 +1,5 @@
  /**
-  * Javascript functions for Google Maps functionallity in Maps.
+  * Javascript functions for Google Maps functionality in Maps.
   *
   * @file GoogleMapFunctions.js
   * @ingroup MapsGoogleMaps

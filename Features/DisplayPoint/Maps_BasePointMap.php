@@ -211,7 +211,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	private function setCentre() {
 		if ( empty( $this->centre ) ) {
 			if ( count( $this->markerData ) == 1 ) {
-				// If centre is not set and there is exactelly one marker, use it's coordinates.
+				// If centre is not set and there is exactly one marker, use its coordinates.
 				$this->centreLat = Xml::escapeJsString( $this->markerData[0]['lat'] );
 				$this->centreLon = Xml::escapeJsString( $this->markerData[0]['lon'] );
 			}

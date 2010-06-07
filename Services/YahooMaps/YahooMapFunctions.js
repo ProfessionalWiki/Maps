@@ -1,5 +1,5 @@
  /**
-  * Javascript functions for Yahoo! Maps functionallity in Maps and it's extensions
+  * Javascript functions for Yahoo! Maps functionality in Maps and its extensions
   *
   * @file YahooMapFunctions.js
   * @ingroup MapsYahooMaps
