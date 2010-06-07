@@ -86,7 +86,7 @@ function smfSetup() {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
-	
+
 	return true;
 }
 
