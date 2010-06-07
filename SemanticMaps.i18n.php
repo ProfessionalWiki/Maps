@@ -694,6 +694,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Deejay1
  * @author Derbeth
  * @author Leinad
  * @author Odder
@@ -702,11 +703,13 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostępne serwisy mapowe: $1',
+	'semanticmaps-unrecognizeddistance' => 'Wartość $1 nie jest poprawną odległością.',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
 	'semanticmaps_notfound' => 'nie odnaleziono',
 	'semanticmaps_paramdesc_height' => 'Wysokość mapy w pikselach (domyślnie $1)',
 	'semanticmaps_paramdesc_width' => 'Szerokość mapy w pikselach (domyślnie $1)',
+	'semanticmaps_paramdesc_layers' => 'Warstwy dostępne na mapie',
 );
 
 /** Piedmontese (Piemontèis)
