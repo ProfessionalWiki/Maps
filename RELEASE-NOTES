@@ -7,6 +7,21 @@ version of Maps. You can find the most upt-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.6.2 ===
+(2010-06-07)
+
+==== New features ====
+
+* Added #distance parser function parse distances using any of the supported units and outputting them in any of these.
+
+* Made supported distance units configurable and added setting for the default distance unit.
+
+* Added 'decimals' and 'unit' parameters to #geosiatnce.
+
+==== Bug fixes ====
+
+* Re-added parameter name and value insensitivity.
+
 === Maps 0.6.1 ===
 (2010-06-04)
 
