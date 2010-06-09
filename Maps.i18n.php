@@ -714,6 +714,7 @@ $messages['gsw'] = array(
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Die Koordinate isch nit erkannt wore un isch|Die Koordinate sin nit erkannt wore un sin}} wäge däm uusegnuu wore us dr Charte:
 $1',
 	'maps_map_cannot_be_displayed' => 'D Charte cha nit aazeigt wäre.',
+	'maps_invalid_distance' => 'Dr Wärt $1 isch kei giltige Abstand.',
 	'maps-geocoder-not-available' => 'S Geokodierigs-Feature vu däre Charte isch nit verfiegbar, Dyy Ort cha nit geokodiert wäre.',
 	'maps_click_to_activate' => 'Klick go d Charte aktiviere',
 	'maps_centred_on' => 'Charte zäntriert uf $1, $2.',
@@ -928,6 +929,7 @@ $messages['ig'] = array(
 
 /** Italian (Italiano)
  * @author Civvì
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'maps_desc' => "Fornisce la possibilità di visualizzare i dati di coordinate su mappe e la geocodifica di indirizzi ([http://wiki.bn2vs.com/wiki/Demo dell'estensione Maps]).
@@ -947,6 +949,7 @@ Servizi di cartografia disponibili: $1",
 	'maps_unrecognized_coords' => '{{PLURAL:$2|La seguente coordinata|Le seguenti coordinate}} non sono state riconosciute: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La seguente coordinata|Le seguenti coordinate}} {{PLURAL:$2|non è stata riconosciuta ed è stata omessa|non sono state riconosciute e sono state omesse}} dalla mappa: $1.',
 	'maps_map_cannot_be_displayed' => 'La mappa non può essere visualizzata.',
+	'maps_invalid_distance' => 'Il valore $1 non è una distanza valida.',
 	'maps-geocoder-not-available' => "La funzionalità di geocodifica dell'estensione Maps non è disponibile. La tua posizione non può essere geocodificata.",
 	'maps_click_to_activate' => 'Clicca per attivare la mappa.',
 	'maps_centred_on' => 'Mappa centrata su $1, $2.',
@@ -1647,6 +1650,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Hindi nakilala ang sumusunod na {{PLURAL:$2|tugmaang pampook|mga tugmaang pampook}} at {{PLURAL:$2|inalis|mga inalis}} na mula sa mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'Hindi maipapakita ang mapa.',
+	'maps_invalid_distance' => 'Hindi isang tanggap na layo ang halagang $1.',
 	'maps-geocoder-not-available' => 'Wala ang katangiang-kasangkapang pang-geokodigo ng Mga Mapa.  Hindi mageokodigo ang lokasyon mo.',
 	'maps_click_to_activate' => 'Pindutin upang mabuhay ang mapa',
 	'maps_centred_on' => 'Nakagitna ang mapa sa $1, $2.',
