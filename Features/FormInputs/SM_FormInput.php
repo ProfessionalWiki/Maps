@@ -65,7 +65,7 @@ abstract class SMFormInput {
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
-		
+
 		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
 		
 		if ( $showMap ) {
