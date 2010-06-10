@@ -1564,12 +1564,17 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Učitavanje mape...',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'I',
 	'maps-abb-south' => 'J',
 	'maps-abb-west' => 'Z',
 	'maps-latitude' => 'Geografska širina:',
 	'maps-longitude' => 'Geografska dužina:',
+	'maps_photos' => 'Fotografije',
+	'maps_videos' => 'Video snimci',
+	'maps_webcams' => 'Veb-kamere',
 );
 
 /** Swedish (Svenska)
