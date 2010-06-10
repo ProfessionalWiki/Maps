@@ -869,8 +869,13 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'semanticmaps-unrecognizeddistance' => 'Vrednost $1 nije ispravno rastojanje.',
 	'semanticmaps_enteraddresshere' => 'Unesi adresu ovde',
 	'semanticmaps_notfound' => 'nije nađeno',
+	'semanticmaps_paramdesc_height' => 'Visina mape u pikselima (podrazumevano je $1)',
+	'semanticmaps_paramdesc_width' => 'Širina mape u pikselima (podrazumevano je $1)',
+	'semanticmaps_paramdesc_zoom' => 'Nivo uvećanja mape',
+	'semanticmaps_paramdesc_centre' => 'Koordinate centra mape',
 );
 
 /** Swedish (Svenska)
