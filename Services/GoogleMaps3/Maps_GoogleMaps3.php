@@ -55,7 +55,7 @@ class MapsGoogleMaps3 implements iMappingService {
 		return true;
 	}
 	
-	private static function initializeParams() {
+	protected static function initializeParams() {
 		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
 		
 		$allowedTypes = self::getTypeNames();
@@ -83,7 +83,7 @@ class MapsGoogleMaps3 implements iMappingService {
 		);
 	}
 	
-	private static $mapTypes = array(
+	protected static $mapTypes = array(
 		'normal' => 'ROADMAP',
 		'roadmap' => 'ROADMAP',
 		'satellite' => 'SATELLITE',
@@ -130,7 +130,7 @@ class MapsGoogleMaps3 implements iMappingService {
 	 *
 	 * @param mixed $parserOrOut
 	 */
-	public static function addGMap3Dependencies( &$parserOrOut ) {
+	public static function addDependencies( &$parserOrOut ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGMaps3OnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 
@@ -162,7 +162,7 @@ class MapsGoogleMaps3 implements iMappingService {
 	 * 
 	 * @return string The mapped code
 	 */
-	private static function getMappedLanguageCode( $code ) {
+	protected static function getMappedLanguageCode( $code ) {
 		$mappings = array(
 	         'en_gb' => 'en-gb',// v3 supports en_gb - but wants us to call it en-gb
 	         'he' => 'iw',      // iw is googlish for hebrew
@@ -176,5 +176,4 @@ class MapsGoogleMaps3 implements iMappingService {
 		return $code;
 	}
 	
-}
-									
+}								

@@ -57,7 +57,7 @@ class MapsYahooMaps implements iMappingService {
 		return true;
 	}
 	
-	private static function initializeParams() {
+	protected static function initializeParams() {
 		global $egMapsServices, $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
 		$allowedTypes = MapsYahooMaps::getTypeNames();
@@ -101,7 +101,7 @@ class MapsYahooMaps implements iMappingService {
 	}
 	
 	// http://developer.yahoo.com/maps/ajax
-	private static $mapTypes = array(
+	protected static $mapTypes = array(
 		'normal' => 'YAHOO_MAP_REG',
 		'satellite' => 'YAHOO_MAP_SAT',
 		'hybrid' => 'YAHOO_MAP_HYB',
@@ -156,7 +156,7 @@ class MapsYahooMaps implements iMappingService {
 	 *
 	 * @param mixed $parserOrOut
 	 */
-	public static function addYMapDependencies( &$parserOrOut ) {
+	public static function addDependencies( &$parserOrOut ) {
 		global $wgJsMimeType;
 		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt;
 		

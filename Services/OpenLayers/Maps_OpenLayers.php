@@ -58,7 +58,7 @@ class MapsOpenLayers implements iMappingService {
 		return true;
 	}
 	
-	private static function initializeParams() {
+	protected static function initializeParams() {
 		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
 		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
@@ -124,7 +124,7 @@ class MapsOpenLayers implements iMappingService {
 	 * 
 	 * @param mixed $parserOrOut
 	 */
-	public static function addOLDependencies( &$parserOrOut ) {
+	public static function addDependencies( &$parserOrOut ) {
 		global $wgJsMimeType;
 		global $egOpenLayersOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
@@ -213,5 +213,4 @@ class MapsOpenLayers implements iMappingService {
 		$layers = $unpacked;
 	}
 	
-}
-																		
+}																	

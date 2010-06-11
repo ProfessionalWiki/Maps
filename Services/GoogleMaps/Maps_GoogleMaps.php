@@ -118,7 +118,7 @@ class MapsGoogleMaps implements iMappingService {
 		'mars-infrared' => 'G_MARS_INFRARED_MAP'
 	);
 
-	private static $overlayData = array(
+	protected static $overlayData = array(
 		'photos' => '0',
 		'videos' => '1',
 		'wikipedia' => '2',
@@ -200,7 +200,7 @@ class MapsGoogleMaps implements iMappingService {
 	 *
 	 * @param mixed $parserOrOut
 	 */
-	public static function addGMapDependencies( &$parserOrOut ) {
+	public static function addDependencies( &$parserOrOut ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egGoogleMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
@@ -235,7 +235,7 @@ class MapsGoogleMaps implements iMappingService {
 	 * 
 	 * @return string The mapped code
 	 */
-	private static function getMappedLanguageCode( $code ) {
+	protected static function getMappedLanguageCode( $code ) {
 		$mappings = array(
 	         'en_gb' => 'en',// v2 does not support en_gb - use english :(
 	         'he' => 'iw',   // iw is googlish for hebrew
@@ -361,7 +361,7 @@ class MapsGoogleMaps implements iMappingService {
 	 * 
 	 * @param Parser $parser
 	 */
-	private static function addOverlayCss( Parser &$parser ) {
+	protected static function addOverlayCss( Parser &$parser ) {
 		$parser->getOutput()->addHeadItem(
 			Html::inlineStyle( <<<EOT
 .inner-more {
@@ -406,5 +406,4 @@ EOT
 		);
 	}
 	
-}
-									
+}								

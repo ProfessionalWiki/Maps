@@ -22,6 +22,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 interface iMappingService {
 	
+	static function initialize();
 	
+	static function addDependencies( &$parserOrOut );
 	
 }

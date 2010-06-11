@@ -28,7 +28,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies( $this->parser );
+		MapsOpenLayers::addDependencies( $this->parser );
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
