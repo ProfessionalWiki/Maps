@@ -33,4 +33,3 @@ interface iMapParserFunction {
 	 */
 	function addSpecificMapHTML();
 }
-

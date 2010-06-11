@@ -27,14 +27,6 @@ $wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps::initialize';
 $wgAutoloadClasses['MapsGoogleMapsDispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
 $wgAutoloadClasses['MapsGoogleMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';
 
-$egMapsServices[MapsGoogleMaps::SERVICE_NAME] = array(
-	'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
-	'features' => array(
-		'display_point' => 'MapsGoogleMapsDispPoint',
-		'display_map' => 'MapsGoogleMapsDispMap',
-	)
-);
-
 /**
  * Class for Google Maps initialization.
  * 
@@ -42,12 +34,20 @@ $egMapsServices[MapsGoogleMaps::SERVICE_NAME] = array(
  * 
  * @author Jeroen De Dauw
  */
-class MapsGoogleMaps {
+class MapsGoogleMaps implements iMappingService {
 	
 	const SERVICE_NAME = 'googlemaps2';
 	
 	public static function initialize() {
 		global $wgAutoloadClasses, $egMapsServices;
+		
+		$egMapsServices[self::SERVICE_NAME] = array(
+			'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
+			'features' => array(
+				'display_point' => 'MapsGoogleMapsDispPoint',
+				'display_map' => 'MapsGoogleMapsDispMap',
+			)
+		);		
 		
 		self::initializeParams();
 		
@@ -59,7 +59,7 @@ class MapsGoogleMaps {
 		return true;
 	}
 	
-	private static function initializeParams() {
+	protected static function initializeParams() {
 		global $egMapsServices, $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
 		$allowedTypes = self::getTypeNames();
@@ -103,7 +103,7 @@ class MapsGoogleMaps {
 	}
 
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
-	private static $mapTypes = array(
+	protected static $mapTypes = array(
 		'normal' => 'G_NORMAL_MAP',
 		'satellite' => 'G_SATELLITE_MAP',
 		'hybrid' => 'G_HYBRID_MAP',
@@ -218,7 +218,7 @@ class MapsGoogleMaps {
 					Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ) .	
 					Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ) .						
 					Html::inlineScript( 'window.unload = GUnload;' )
-				);				
+				);
 			}
 			else if ( $parserOrOut instanceof OutputPage ) {
 				$out = $parserOrOut;

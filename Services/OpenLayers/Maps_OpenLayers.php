@@ -27,14 +27,6 @@ $wgHooks['MappingServiceLoad'][] = 'MapsOpenLayers::initialize';
 $wgAutoloadClasses['MapsOpenLayersDispMap'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
 $wgAutoloadClasses['MapsOpenLayersDispPoint'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
 
-$egMapsServices[MapsOpenLayers::SERVICE_NAME] = array(
-	'aliases' => array( 'layers', 'openlayer' ),
-	'features' => array(
-		'display_point' => 'MapsOpenLayersDispPoint',
-		'display_map' => 'MapsOpenLayersDispMap',
-	)
-);
-
 /**
  * Class for OpenLayers initialization.
  * 
@@ -42,12 +34,20 @@ $egMapsServices[MapsOpenLayers::SERVICE_NAME] = array(
  * 
  * @author Jeroen De Dauw
  */
-class MapsOpenLayers {
+class MapsOpenLayers implements iMappingService {
 	
 	const SERVICE_NAME = 'openlayers';
 	
 	public static function initialize() {
 		global $wgAutoloadClasses, $egMapsServices, $egMapsOLLoadedLayers;
+		
+		$egMapsServices[self::SERVICE_NAME] = array(
+			'aliases' => array( 'layers', 'openlayer' ),
+			'features' => array(
+				'display_point' => 'MapsOpenLayersDispPoint',
+				'display_map' => 'MapsOpenLayersDispMap',
+			)
+		);		
 		
 		$egMapsOLLoadedLayers = array();
 		
