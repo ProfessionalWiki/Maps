@@ -1,14 +1,7 @@
 <?php
 
 /**
- * This groupe contains all OpenLayers related files of the Maps extension.
- * 
- * @defgroup MapsOpenLayers OpenLayers
- * @ingroup Maps
- */
-
-/**
- * This file holds the general information for the OpenLayers service
+ * File holding the MapsOpenLayers class.
  *
  * @file Maps_OpenLayers.php
  * @ingroup MapsOpenLayers
@@ -21,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Class for OpenLayers initialization.
+ * TODO
  * 
  * @ingroup MapsOpenLayers
  * 

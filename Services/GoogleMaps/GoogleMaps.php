@@ -1,5 +1,25 @@
 <?php
 
+/**
+ * This groupe contains all Google Maps v2 related files of the Maps extension.
+ * 
+ * @defgroup MapsGoogleMaps Google Maps v2
+ * @ingroup Maps
+ */
+
+/**
+ * This file holds the hook and initialization for the Google Maps v2 service. 
+ *
+ * @file GoogleMaps.php
+ * @ingroup MapsGoogleMaps
+ *
+ * @author Jeroen De Dauw
+ */
+
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps';
 
 function efMapsInitGoogleMaps() {

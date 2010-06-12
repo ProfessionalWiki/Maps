@@ -1,14 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Yahoo! Maps related files of the Maps extension.
- * 
- * @defgroup MapsYahooMaps Yahoo! Maps
- * @ingroup Maps
- */
-
-/**
- * This file holds the general information for the Yahoo! Maps service
+ * File holding the MapsYahooMaps class.
  *
  * @file Maps_YahooMaps.php
  * @ingroup MapsYahooMaps
@@ -21,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Class for Yahoo! Maps initialization.
+ * TODO
  * 
  * @ingroup MapsYahooMaps
  * 

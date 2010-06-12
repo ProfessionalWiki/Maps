@@ -1,14 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Google Maps related files of the Maps extension.
- * 
- * @defgroup MapsGoogleMaps Google Maps
- * @ingroup Maps
- */
-
-/**
- * This file holds the general information for the Google Maps service
+ * File holding the MapsGoogleMaps class.
  *
  * @file Maps_GoogleMaps.php
  * @ingroup MapsGoogleMaps
@@ -21,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Class for Google Maps initialization.
+ * TODO
  * 
  * @ingroup MapsGoogleMaps
  * 

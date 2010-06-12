@@ -1,14 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Google Maps v3 related files of the Maps extension.
- * 
- * @defgroup MapsGoogleMaps3 Google Maps v3
- * @ingroup Maps
- */
-
-/**
- * This file holds the general information for the Google Maps v3 service.
+ * File holding the MapsGoogleMaps3 class.
  *
  * @file Maps_GoogleMaps3.php
  * @ingroup MapsGoogleMaps3
@@ -21,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Class for Google Maps v3 initialization.
+ * TODO
  * 
  * @ingroup MapsGoogleMaps3
  * 

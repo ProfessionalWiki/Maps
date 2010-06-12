@@ -1,5 +1,25 @@
 <?php
 
+/**
+ * This groupe contains all OpenLayers related files of the Maps extension.
+ * 
+ * @defgroup MapsOpenLayers OpenLayers
+ * @ingroup Maps
+ */
+
+/**
+ * This file holds the hook and initialization for the OpenLayers service. 
+ *
+ * @file OpenLayers.php
+ * @ingroup MapsOpenLayers
+ *
+ * @author Jeroen De Dauw
+ */
+
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 
 function efMapsInitOpenLayers() {
