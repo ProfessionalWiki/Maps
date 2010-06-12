@@ -20,9 +20,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['SMYahooMapsQP'] = dirname( __FILE__ ) . '/SM_YahooMapsQP.php';
-// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
-if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMYahooMapsFormInput'] = dirname( __FILE__ ) . '/SM_YahooMapsFormInput.php';
+$wgHooks['MappingServiceLoad'][] = 'smfInitYahooMaps';
 
-$egMapsServices['yahoomaps']['features']['qp'] = 'SMYahooMapsQP';
-$egMapsServices['yahoomaps']['features']['fi'] = 'SMYahooMapsFormInput';
+function smfInitYahooMaps() {
+	global $egMapsServices, $wgAutoloadClasses;
+	
+	$wgAutoloadClasses['SMYahooMapsQP'] = dirname( __FILE__ ) . '/SM_YahooMapsQP.php';
+	
+	// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
+	if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMYahooMapsFormInput'] = dirname( __FILE__ ) . '/SM_YahooMapsFormInput.php';	
+	
+	if ( array_key_exists( 'yahoomaps', $egMapsServices ) ) {
+		$egMapsServices['yahoomaps']->addFeature( 'qp', 'SMYahooMapsQP' );
+		$egMapsServices['yahoomaps']->addFeature( 'fi', 'SMYahooMapsFormInput' );		
+	}
+	
+	return true;
+}

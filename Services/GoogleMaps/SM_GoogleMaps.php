@@ -20,9 +20,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['SMGoogleMapsQP'] = dirname( __FILE__ ) . '/SM_GoogleMapsQP.php';
-// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
-if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMGoogleMapsFormInput'] = dirname( __FILE__ ) . '/SM_GoogleMapsFormInput.php';
+$wgHooks['MappingServiceLoad'][] = 'smfInitGoogleMaps';
 
-$egMapsServices['googlemaps2']['features']['qp'] = 'SMGoogleMapsQP';
-$egMapsServices['googlemaps2']['features']['fi'] = 'SMGoogleMapsFormInput';
+function smfInitGoogleMaps() {
+	global $egMapsServices, $wgAutoloadClasses;
+	
+	$wgAutoloadClasses['SMGoogleMapsQP'] = dirname( __FILE__ ) . '/SM_GoogleMapsQP.php';
+	
+	// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
+	if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMGoogleMapsFormInput'] = dirname( __FILE__ ) . '/SM_GoogleMapsFormInput.php';	
+	
+	if ( array_key_exists( 'googlemaps2', $egMapsServices ) ) {
+		$egMapsServices['googlemaps2']->addFeature( 'qp', 'SMGoogleMapsQP' );
+		$egMapsServices['googlemaps2']->addFeature( 'fi', 'SMGoogleMapsFormInput' );		
+	}
+	
+	return true;
+}
