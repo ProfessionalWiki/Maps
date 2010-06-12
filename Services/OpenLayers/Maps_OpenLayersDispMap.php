@@ -15,8 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class MapsOpenLayersDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;
-	
 	protected function getDefaultZoom() {
 		global $egMapsOpenLayersZoom;
 		return $egMapsOpenLayersZoom;
@@ -28,7 +26,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;

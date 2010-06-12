@@ -97,12 +97,13 @@ final class MapsMapper {
 
 		// Get rid of any aliases.
 		$service = self::getMainServiceName( $service );
+		
 		// If the service is not loaded into maps, it should be changed.
-		$shouldChange = ! array_key_exists( $service, $egMapsServices );
+		$shouldChange = !array_key_exists( $service, $egMapsServices );
 
 		// If it should not be changed, ensure the service supports this feature.
 		if ( ! $shouldChange ) {
-			$shouldChange = !array_key_exists( $feature, $egMapsServices[$service]['features'] );
+			$shouldChange = $egMapsServices[$service]->getFeature( $feature ) === false;
 		}
 
 		// Change the service to the most specific default value available.
@@ -125,15 +126,16 @@ final class MapsMapper {
 	 * and changes it into the main service name if this is the case.
 	 *
 	 * @param string $service
+	 * 
 	 * @return string
 	 */
 	private static function getMainServiceName( $service ) {
 		global $egMapsServices;
 
-		if ( ! array_key_exists( $service, $egMapsServices ) ) {
-			foreach ( $egMapsServices as $serviceName => $serviceInfo ) {
-				if ( in_array( $service, $serviceInfo['aliases'] ) ) {
-					 $service = $serviceName;
+		if ( !array_key_exists( $service, $egMapsServices ) ) {
+			foreach ( $egMapsServices as $serviceObject ) {
+				if ( $serviceObject->hasAlias( $service ) ) {
+					 $service = $serviceObject->getName();
 					 break;
 				}
 			}
@@ -238,7 +240,7 @@ final class MapsMapper {
 
 		foreach ( $egMapsAvailableServices as $availableService ) {
 			$allServiceValues[] = $availableService;
-			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]['aliases'] );
+			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]->getAliases() );
 		}
 
 		return $allServiceValues;

@@ -55,13 +55,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
 	
 	# Google Maps API v2
-	include_once $egMapsDir . 'Services/GoogleMaps/Maps_GoogleMaps.php';
+	include_once $egMapsDir . 'Services/GoogleMaps/GoogleMaps.php';
+	
 	# Google Maps API v3
-	include_once $egMapsDir . 'Services/GoogleMaps3/Maps_GoogleMaps3.php';
+	include_once $egMapsDir . 'Services/GoogleMaps3/GoogleMaps3.php';
+	
 	# OpenLayers API
-	include_once $egMapsDir . 'Services/OpenLayers/Maps_OpenLayers.php';
+	include_once $egMapsDir . 'Services/OpenLayers/OpenLayers.php';
+	
 	# Yahoo! Maps API
-	include_once $egMapsDir . 'Services/YahooMaps/Maps_YahooMaps.php';
+	include_once $egMapsDir . 'Services/YahooMaps/YahooMaps.php';
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
 	# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers.

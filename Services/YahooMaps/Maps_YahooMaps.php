@@ -20,13 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsYahooMaps'] = dirname( __FILE__ ) . '/Maps_YahooMaps.php';
-
-$wgHooks['MappingServiceLoad'][] = 'MapsYahooMaps::initialize';
-
-$wgAutoloadClasses['MapsYahooMapsDispMap'] = dirname( __FILE__ ) . '/Maps_YahooMapsDispMap.php';
-$wgAutoloadClasses['MapsYahooMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_YahooMapsDispPoint.php';
-
 /**
  * Class for Yahoo! Maps initialization.
  * 
@@ -34,35 +27,36 @@ $wgAutoloadClasses['MapsYahooMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_Yaho
  * 
  * @author Jeroen De Dauw
  */
-class MapsYahooMaps implements iMappingService {
-	
-	const SERVICE_NAME = 'yahoomaps';
-	
-	public static function initialize() {
-		global $wgAutoloadClasses, $egMapsServices;
+class MapsYahooMaps extends MapsMappingService {
 
-		$egMapsServices[self::SERVICE_NAME] = array(
-			'aliases' => array( 'yahoo', 'yahoomap', 'ymap', 'ymaps' ),
-			'features' => array(
-				'display_point' => 'MapsYahooMapsDispPoint',
-				'display_map' => 'MapsYahooMapsDispMap',
-			)
-		);		
-		
-		self::initializeParams();
+	/**
+	 * Mapping for Yahoo! Maps map types. 
+	 * See http://developer.yahoo.com/maps/ajax
+	 * 
+	 * @var array
+	 */
+	protected static $mapTypes = array(
+		'normal' => 'YAHOO_MAP_REG',
+		'satellite' => 'YAHOO_MAP_SAT',
+		'hybrid' => 'YAHOO_MAP_HYB',
+	);	
+	
+	function __construct() {
+		parent::__construct(
+			'yahoomaps',
+			array( 'yahoo', 'yahoomap', 'ymap', 'ymaps' )
+		);
+	}		
+	
+	protected function initParameterInfo( array &$parameters ) {
+		global $egMapsServices, $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
 		Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
-		Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );
-		
-		return true;
-	}
-	
-	protected static function initializeParams() {
-		global $egMapsServices, $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
+		Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );		
 		
 		$allowedTypes = MapsYahooMaps::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
+		$parameters = array(
 			'controls' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -96,16 +90,24 @@ class MapsYahooMaps implements iMappingService {
 				'output-type' => 'boolstr'
 			),
 		);
-				
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );
+		
+		$parameters['zoom']['criteria']['in_range'] = array( 1, 13 );
 	}
 	
-	// http://developer.yahoo.com/maps/ajax
-	protected static $mapTypes = array(
-		'normal' => 'YAHOO_MAP_REG',
-		'satellite' => 'YAHOO_MAP_SAT',
-		'hybrid' => 'YAHOO_MAP_HYB',
-	);
+	/**
+	 * @see MapsMappingService::getDependencies
+	 * 
+	 * @return array
+	 */
+	protected function getDependencies() {
+		global $wgJsMimeType;
+		global $egYahooMapsKey, $egMapsScriptPath, $egMapsStyleVersion, $egMapsJsExt;
+		
+		return array(
+			Html::linkedScript( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" ),
+			Html::linkedScript( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
+		);		
+	}	
 	
 	/**
 	 * Returns the names of all supported map types.
@@ -151,32 +153,4 @@ class MapsYahooMaps implements iMappingService {
 		}
 	}
 
-	/**
-	 * Loads the Yahoo! Maps API and required JS files.
-	 *
-	 * @param mixed $parserOrOut
-	 */
-	public static function addDependencies( &$parserOrOut ) {
-		global $wgJsMimeType;
-		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt;
-		
-		if ( empty( $egYahooMapsOnThisPage ) ) {
-			$egYahooMapsOnThisPage = 0;
-
-			if ( $parserOrOut instanceof Parser ) {
-				$parser = $parserOrOut;
-				
-				$parser->getOutput()->addHeadItem( 
-					Html::linkedScript( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" ) .		
-					Html::linkedScript( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" )						
-				);				
-			}
-			else if ( $parserOrOut instanceof OutputPage ) {
-				$out = $parserOrOut;
-				MapsMapper::addScriptFile( $out, "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" );
-				$out->addScriptFile( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
-			}			
-		}
-	}
-	
 }									

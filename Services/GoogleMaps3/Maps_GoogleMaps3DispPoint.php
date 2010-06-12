@@ -21,8 +21,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
-	
-	public $serviceName = MapsGoogleMaps3::SERVICE_NAME;
 
 	protected $markerStringFormat = 'getGMaps3MarkerData(lat, lon, "title", "label", "icon")';
 	
@@ -38,7 +36,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	public function doMapServiceLoad() {
 		global $egGMaps3OnThisPage;
 		
-		MapsGoogleMaps3::addDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egGMaps3OnThisPage++;
 		
 		$this->elementNr = $egGMaps3OnThisPage;

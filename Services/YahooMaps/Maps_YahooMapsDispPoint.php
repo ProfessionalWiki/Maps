@@ -20,8 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;
-	
 	protected $markerStringFormat = 'getYMarkerData(lat, lon, "title", "label", "icon")';
 	
 	protected function getDefaultZoom() {
@@ -36,7 +34,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	public function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMaps::addDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;

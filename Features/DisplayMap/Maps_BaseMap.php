@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 abstract class MapsBaseMap implements iMapParserFunction {
 	
-	public $serviceName;
+	protected $mService;
 	
 	protected $centreLat, $centreLon;
 
@@ -32,8 +32,12 @@ abstract class MapsBaseMap implements iMapParserFunction {
 
 	protected $parser;
 	
-	protected $specificParameters = false;
+	private $specificParameters = false;
 	protected $featureParameters = false;
+	
+	public function __construct( MapsMappingService $service ) {
+		$this->mService = $service;
+	}
 	
 	/**
 	 * Sets the map properties as class fields.
@@ -53,10 +57,27 @@ abstract class MapsBaseMap implements iMapParserFunction {
 	}
 	
 	/**
+	 * Returns the specific parameters by first checking if they have been initialized yet,
+	 * doing to work if this is not the case, and then returning them.
+	 * 
 	 * @return array
 	 */
-	public function getSpecificParameterInfo() {
-		return array();
+	public final function getSpecificParameterInfo() {
+		if ( $this->specificParameters === false ) {
+			$this->specificParameters = array();
+			$this->initSpecificParamInfo( $this->specificParameters );
+		}
+		
+		return $this->specificParameters;
+	}
+	
+	/**
+	 * Initializes the specific parameters.
+	 * 
+	 * Override this method to set parameters specific to a feature service comibination in
+	 * the inheriting class.
+	 */
+	protected function initSpecificParamInfo( array &$parameters ) {
 	}
 	
 	/**
@@ -90,7 +111,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
-	 * @param unknown_type $parser
+	 * @param Parser $parser
 	 * @param array $params
 	 * 
 	 * @return html
@@ -116,16 +137,14 @@ abstract class MapsBaseMap implements iMapParserFunction {
 	}
 	
 	/**
-	 * Sets the $centre_lat and $centre_lon fields.
+	 * Sets the $centreLat and $centreLon fields.
 	 */
 	private function setCentre() {
 		if ( empty( $this->coordinates ) ) { // If centre is not set, use the default latitude and longitutde.
-			global $egMapsMapLat, $egMapsMapLon;
-			$this->centreLat = $egMapsMapLat;
-			$this->centreLon = $egMapsMapLon;
+			$this->setDefaultCentre();
 		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->coordinates = MapsGeocoder::attemptToGeocode( $this->coordinates, $this->geoservice, $this->serviceName );
+			$this->coordinates = MapsGeocoder::attemptToGeocode( $this->coordinates, $this->geoservice, $this->mService->getName() );
 
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
 			if ( $this->coordinates ) {
@@ -134,11 +153,19 @@ abstract class MapsBaseMap implements iMapParserFunction {
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
 				// TODO: Some warning this failed would be nice here. 
-				global $egMapsMapLat, $egMapsMapLon;
-				$this->centreLat = $egMapsMapLat;
-				$this->centreLon = $egMapsMapLon;
+				$this->setDefaultCentre();
 			}
 		}
+	}
+	
+	/**
+	 * Sets the centre lat and lon to their default.
+	 */
+	private function setDefaultCentre() {
+		global $egMapsMapLat, $egMapsMapLon;
+		
+		$this->centreLat = $egMapsMapLat;
+		$this->centreLon = $egMapsMapLon;		
 	}
 	
 }

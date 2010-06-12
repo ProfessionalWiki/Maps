@@ -24,17 +24,21 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 abstract class MapsBasePointMap implements iMapParserFunction {
 	
-	public $serviceName;
+	public $mService;
 	
 	protected $centreLat, $centreLon;
 
 	protected $output = '';
 
-	protected $specificParameters = false;
+	private $specificParameters = false;
 	protected $featureParameters = false;
 	
 	private $markerData = array();
 	protected $markerString;
+	
+	public function __construct( MapsMappingService $service ) {
+		$this->mService = $service;
+	}
 	
 	/**
 	 * Sets the map properties as class fields.
@@ -54,11 +58,28 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	}
 	
 	/**
+	 * Returns the specific parameters by first checking if they have been initialized yet,
+	 * doing to work if this is not the case, and then returning them.
+	 * 
 	 * @return array
 	 */
-	public function getSpecificParameterInfo() {
-		return array();
+	public final function getSpecificParameterInfo() {
+		if ( $this->specificParameters === false ) {
+			$this->specificParameters = array();
+			$this->initSpecificParamInfo( $this->specificParameters );
+		}
+		
+		return $this->specificParameters;
 	}
+	
+	/**
+	 * Initializes the specific parameters.
+	 * 
+	 * Override this method to set parameters specific to a feature service comibination in
+	 * the inheriting class.
+	 */
+	protected function initSpecificParamInfo( array &$parameters ) {
+	}	
 	
 	/**
 	 * @return array
@@ -227,7 +248,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			}
 		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
+			$this->centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->mService->getName() );
 			
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
 			if ( $this->centre ) {

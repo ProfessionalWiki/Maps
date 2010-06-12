@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6.3 alpha 2' );
+	define( 'Maps_VERSION', '0.6.3 a3' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -59,8 +59,6 @@ else {
 	$egMapsFeatures = array();
 	$egMapsServices = array();
 
-	require_once $egMapsDir . 'Services/Maps_iMappingService.php';
-	
 	// Include the settings file.
 	require_once $egMapsDir . 'Maps_Settings.php';
 
@@ -84,11 +82,11 @@ function efMapsSetup() {
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsScriptPath;
 	global $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;
 
-	// Autoload the general classes.
+	// Autoload the includes/ classes.
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Includes/Maps_CoordinateParser.php';
 	$wgAutoloadClasses['MapsDistanceParser'] 		= $egMapsDir . 'Includes/Maps_DistanceParser.php';
-		
+	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
@@ -96,6 +94,10 @@ function efMapsSetup() {
 	}
 
 	wfRunHooks( 'MappingFeatureLoad' );
+	
+	// Load the service/ classes and interfaces.
+	require_once $egMapsDir . 'Services/Maps_iMappingService.php';
+	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
 	
 	wfRunHooks( 'MappingServiceLoad' );
 

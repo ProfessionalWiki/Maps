@@ -67,8 +67,8 @@ final class MapsParserFunctions {
 			$name = strtolower( trim( array_shift( $split ) ) );
 			if ( count( $split ) > 0 && self::inParamAliases( $name, 'service', MapsMapper::getCommonParameters() ) ) {
 				if ( !$setService ) {
-					$service = implode( '=', $split );
-					$parameters[] = 'service=' . $service;
+					$serviceName = implode( '=', $split );
+					$parameters[] = 'service=' . $serviceName;
 					$setService = true;
 				}
 			} else {
@@ -76,8 +76,13 @@ final class MapsParserFunctions {
 			}
 		}
 		
-		$service = MapsMapper::getValidService( $setService ? $service : '', $parserFunction );
-		$mapClass = new $egMapsServices[$service]['features'][$parserFunction]();
+		// Make sure the service name is valid, and then get the class associated with it.
+		$serviceName = MapsMapper::getValidService( $setService ? $serviceName : '', $parserFunction );
+		$service = $egMapsServices[$serviceName];
+		
+		// Get the name of the class handling the current parser function and service.
+		$className = $service->getFeature( $parserFunction );
+		$mapClass = new $className( $service );
 		
 		$manager = new ValidatorManager();
 		
@@ -89,7 +94,7 @@ final class MapsParserFunctions {
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $mapClass->getFeatureParameters() );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$service]['parameters'] );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $mapClass->getSpecificParameterInfo() );
 		
 		$displayMap = $manager->manageParameters(

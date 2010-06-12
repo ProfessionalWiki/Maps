@@ -21,8 +21,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
-	
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
 
 	protected $markerStringFormat = 'getGMarkerData(lat, lon, "title", "label", "icon")';
 	
@@ -31,10 +29,10 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 		return $egMapsGoogleMapsZoom;
 	}
 	
-	public function getSpecificParameterInfo() {
+	protected function initSpecificParamInfo( array &$parameters ) {
 		global $egMapsGMapOverlays;
-		// TODO: it'd be cool to have this static so it can be cheched in order to only init it once.
-		$this->specificParameters = array(
+		
+		$parameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -43,7 +41,6 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 				'default' => $egMapsGMapOverlays,
 			),
 		);
-		return $this->specificParameters;
 	}
 
 	/**
@@ -52,7 +49,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	public function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egGoogleMapsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
@@ -103,4 +100,3 @@ EOT
 	}
 	
 }
-

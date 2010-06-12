@@ -20,13 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsOpenLayers'] = dirname( __FILE__ ) . '/Maps_OpenLayers.php';
-
-$wgHooks['MappingServiceLoad'][] = 'MapsOpenLayers::initialize';
-
-$wgAutoloadClasses['MapsOpenLayersDispMap'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
-$wgAutoloadClasses['MapsOpenLayersDispPoint'] = dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
-
 /**
  * Class for OpenLayers initialization.
  * 
@@ -34,34 +27,24 @@ $wgAutoloadClasses['MapsOpenLayersDispPoint'] = dirname( __FILE__ ) . '/Maps_Ope
  * 
  * @author Jeroen De Dauw
  */
-class MapsOpenLayers implements iMappingService {
+class MapsOpenLayers extends MapsMappingService {
 	
-	const SERVICE_NAME = 'openlayers';
-	
-	public static function initialize() {
-		global $wgAutoloadClasses, $egMapsServices, $egMapsOLLoadedLayers;
+	function __construct() {
+		parent::__construct(
+			'openlayers',
+			array( 'layers', 'openlayer' )
+		);
 		
-		$egMapsServices[self::SERVICE_NAME] = array(
-			'aliases' => array( 'layers', 'openlayer' ),
-			'features' => array(
-				'display_point' => 'MapsOpenLayersDispPoint',
-				'display_map' => 'MapsOpenLayersDispMap',
-			)
-		);		
-		
+		global $egMapsOLLoadedLayers;
 		$egMapsOLLoadedLayers = array();
-		
-		self::initializeParams();
+	}	
+	
+	protected function initParameterInfo( array &$parameters ) {
+		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
 		Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
 		
-		return true;
-	}
-	
-	protected static function initializeParams() {
-		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
-		
-		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
+		$parameters = array(
 			'controls' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -84,8 +67,25 @@ class MapsOpenLayers implements iMappingService {
 			),
 		);
 									
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 19 );
+		$parameters['zoom']['criteria']['in_range'] = array( 0, 19 );
 	}
+	
+	/**
+	 * @see MapsMappingService::getDependencies
+	 * 
+	 * @return array
+	 */
+	protected function getDependencies() {
+		global $wgJsMimeType;
+		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
+		
+		return array(
+			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ),
+			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ),
+			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
+			Html::inlineScript( 'initOLSettings(200, 100);' )
+		);			
+	}	
 	
 	/**
 	 * Returns the names of all supported controls. 
@@ -118,43 +118,13 @@ class MapsOpenLayers implements iMappingService {
 		if ( $includeGroups ) $keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
 		return $keys;
 	}
-	
-	/**
-	 * If this is the first open layers map on the page, load the API, styles and extra JS functions.
-	 * 
-	 * @param mixed $parserOrOut
-	 */
-	public static function addDependencies( &$parserOrOut ) {
-		global $wgJsMimeType;
-		global $egOpenLayersOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
-		
-		if ( empty( $egOpenLayersOnThisPage ) ) {
-			$egOpenLayersOnThisPage = 0;
-			
-			if ( $parserOrOut instanceof Parser ) {
-				$parser = $parserOrOut;
-				
-				$parser->getOutput()->addHeadItem( 
-					Html::linkedStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ) .				
-					Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ) .	
-					Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" ) .								
-					Html::inlineScript( 'initOLSettings(200, 100);' )
-				);				
-			}
-			else if ( $parserOrOut instanceof OutputPage ) {
-				$out = $parserOrOut;
-				$out->addStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" );
-				$out->addScriptFile( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" );
-				$out->addScriptFile( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
-			}			
-		}			
-	}
 		
 	/**
 	 * Build up a csv string with the layers, to be outputted as a JS array
 	 *
 	 * @param string $output
-	 * @param string $layers
+	 * @param array $layers
+	 * 
 	 * @return csv string
 	 */
 	public static function createLayersStringAndLoadDependencies( &$output, array $layers ) {

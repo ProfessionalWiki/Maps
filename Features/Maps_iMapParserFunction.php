@@ -21,6 +21,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 interface iMapParserFunction {
+	function __construct( MapsMappingService $service );
+	
 	function getMapHtml( Parser &$parser, array $params );
 	
 	/**
@@ -32,4 +34,6 @@ interface iMapParserFunction {
 	 * Adds the HTML specific to the mapping service to the output.
 	 */
 	function addSpecificMapHTML();
+	
+	function getSpecificParameterInfo();
 }

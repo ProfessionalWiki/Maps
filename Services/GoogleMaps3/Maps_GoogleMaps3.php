@@ -20,12 +20,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsGoogleMaps3'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3.php';
-
-$wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps3::initialize';
-
-$wgAutoloadClasses['MapsGoogleMaps3DispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3DispMap.php';
-
 /**
  * Class for Google Maps v3 initialization.
  * 
@@ -33,34 +27,24 @@ $wgAutoloadClasses['MapsGoogleMaps3DispMap'] = dirname( __FILE__ ) . '/Maps_Goog
  * 
  * @author Jeroen De Dauw
  */
-class MapsGoogleMaps3 implements iMappingService {
+class MapsGoogleMaps3 extends MapsMappingService {
 	
-	const SERVICE_NAME = 'googlemaps3';
-	
-	public static function initialize() {
-		global $wgAutoloadClasses, $egMapsServices;
-
-		$egMapsServices[self::SERVICE_NAME] = array(
-			'aliases' => array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' ),
-			'features' => array(
-				'display_map' => 'MapsGoogleMaps3DispMap',
-			)
-		);		
-		
-		self::initializeParams();
-		
-		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
-		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );
-		
-		return true;
+	function __construct() {
+		parent::__construct(
+			'googlemaps3',
+			array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' )
+		);
 	}
 	
-	protected static function initializeParams() {
+	protected function initParameterInfo( array &$parameters ) {
 		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
+		
+		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
+		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );		
 		
 		$allowedTypes = self::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
+		$parameters = array(
 			'type' => array(
 				'aliases' => array( 'map-type', 'map type' ),
 				'criteria' => array(
@@ -126,33 +110,20 @@ class MapsGoogleMaps3 implements iMappingService {
 	}
 	
 	/**
-	 * Loads the Google Maps API v3 and required JS files.
-	 *
-	 * @param mixed $parserOrOut
+	 * @see MapsMappingService::getDependencies
+	 * 
+	 * @return array
 	 */
-	public static function addDependencies( &$parserOrOut ) {
-		global $wgJsMimeType, $wgLang;
-		global $egGMaps3OnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
+	protected function getDependencies() {
+		global $wgLang;
+		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 
-		if ( empty( $egGMaps3OnThisPage ) ) {
-			$egGMaps3OnThisPage = 0;
-
-			$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
-			
-			if ( $parserOrOut instanceof Parser ) {
-				$parser = $parserOrOut;
-				
-				$parser->getOutput()->addHeadItem( 
-					Html::linkedScript( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" ) .
-					Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" )				
-				);				
-			}
-			else if ( $parserOrOut instanceof OutputPage ) {
-				$out = $parserOrOut;
-				MapsMapper::addScriptFile( $out, "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" );
-				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" );
-			}
-		}
+		$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
+		
+		return array(
+			Html::linkedScript( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" ),
+			Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" ),
+		);			
 	}
 	
 	/**

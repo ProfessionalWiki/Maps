@@ -15,8 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class MapsYahooMapsDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;
-	
 	protected function getDefaultZoom() {
 		global $egMapsYahooMapsZoom;
 		return $egMapsYahooMapsZoom;
@@ -28,7 +26,7 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMaps::addDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;

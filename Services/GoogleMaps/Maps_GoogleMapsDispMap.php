@@ -22,16 +22,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
-	
 	protected function getDefaultZoom() {
 		global $egMapsGoogleMapsZoom;
 		return $egMapsGoogleMapsZoom;
 	}
 	
-	public function getSpecificParameterInfo() {
+	protected function initSpecificParamInfo( array &$parameters ) {
 		global $egMapsGMapOverlays;
-		$this->specificParameters = array(
+		
+		$parameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -40,7 +39,6 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 				'default' => $egMapsGMapOverlays,
 			),
 		);
-		return $this->specificParameters;
 	}
 	
 	/**
@@ -49,7 +47,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egGoogleMapsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
@@ -97,4 +95,3 @@ EOT
 	}
 	
 }
-
