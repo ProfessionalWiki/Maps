@@ -92,6 +92,10 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			if ( count( $this->mLocations ) > 0 || $this->forceshow ) {
 				$this->doMapServiceLoad();
 		
+				$dependencies = $this->mService->getDependencyHtml();
+				$hash = md5( $dependencies );
+				SMWOutputs::requireHeadItem( $hash, $dependencies );
+				
 				$this->setMapName();
 				
 				$this->setZoom();
@@ -150,7 +154,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	private function setMapProperties( array $mapProperties ) {
 		foreach ( $mapProperties as $paramName => $paramValue ) {
-			if ( ! property_exists( __CLASS__, $paramName ) ) {
+			if ( !property_exists( __CLASS__, $paramName ) ) {
 				$this-> { $paramName } = $paramValue;
 			}
 			else {

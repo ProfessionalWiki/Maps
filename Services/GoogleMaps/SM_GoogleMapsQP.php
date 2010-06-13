@@ -45,12 +45,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 * @see SMMapPrinter::doMapServiceLoad()
 	 */
 	protected function doMapServiceLoad() {
-		global $wgParser, $egGoogleMapsOnThisPage;
-
-		if ( empty( $egGoogleMapsOnThisPage ) ) {
-			$egGoogleMapsOnThisPage = 0;
-			$this->mService->addDependencies( $wgParser );
-		}
+		global $egGoogleMapsOnThisPage;
 		
 		$egGoogleMapsOnThisPage++;
 		

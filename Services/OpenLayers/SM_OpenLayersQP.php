@@ -21,7 +21,6 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
-	 *
 	 */
 	protected function setQueryPrinterSettings() {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
@@ -32,12 +31,10 @@ final class SMOpenLayersQP extends SMMapPrinter {
 
 	/**
 	 * @see SMMapPrinter::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $wgParser, $egOpenLayersOnThisPage;
+		global $egOpenLayersOnThisPage;
 		
-		$this->mService->addDependencies( $wgParser);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
@@ -45,7 +42,6 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
-	 *
 	 */
 	protected function addSpecificMapHTML( Parser $parser ) {
 		// TODO: refactor up like done in maps with display point
