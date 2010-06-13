@@ -514,6 +514,7 @@ class MapsCoordinateParser {
 	 */
 	public static function parseAndFormat( $coordinates, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
 		$parsedCoords = self::parseCoordinates( $coordinates );
+		
 		if ( $parsedCoords ) {
 			return self::formatCoordinates( $parsedCoords );
 		} else {
