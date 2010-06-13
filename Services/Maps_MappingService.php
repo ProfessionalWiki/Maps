@@ -113,8 +113,8 @@ class MapsMappingService implements iMappingService {
 			if ( $parserOrOut instanceof Parser ) {
 				$parserOrOut->getOutput()->addHeadItem( $dependencies );
 			} 
-			else if ( $parserOrOut instanceof OutputPage ) {
-				$parserOrOut->addHeadItem( $dependencies );
+			else if ( $parserOrOut instanceof OutputPage ) { 
+				$parserOrOut->addHeadItem( md5($dependencies), $dependencies );
 			}
 		}
 	}
