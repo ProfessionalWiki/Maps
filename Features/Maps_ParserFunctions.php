@@ -29,7 +29,7 @@ final class MapsParserFunctions {
 	 * and will load the required classes.
 	 */
 	public static function initialize() {
-		global $egMapsDir, $egMapsFeatures;
+		global $egMapsFeatures;
 		
 		include_once dirname( __FILE__ ) . '/Maps_iMapParserFunction.php';
 		
@@ -55,7 +55,7 @@ final class MapsParserFunctions {
 	 * @return array
 	 */
 	public static function getMapHtml( Parser &$parser, array $args, $parserFunction ) {
-        global $wgLang, $egValidatorErrorLevel, $egValidatorFatalLevel, $egMapsServices;
+        global $egValidatorFatalLevel, $egMapsServices;
         
         array_shift( $args ); // We already know the $parser.
 
