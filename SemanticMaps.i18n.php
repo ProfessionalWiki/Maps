@@ -14,7 +14,6 @@ $messages = array();
 /** English
  * @author Jeroen De Dauw
  */
-
 $messages['en'] = array(
 	// General
 	'semanticmaps_name' => 'Semantic Maps',

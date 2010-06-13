@@ -102,12 +102,11 @@ EOT
 	
 	/**
 	 * @see SMFormInput::manageGeocoding()
-	 *
 	 */
 	protected function manageGeocoding() {
 		global $egYahooMapsKey;
 		$this->enableGeocoding = strlen( trim( $egYahooMapsKey ) ) > 0;
-		if ( $this->enableGeocoding ) MapsYahooMaps::addYMapDependencies( $this->output );
+		if ( $this->enableGeocoding ) $this->mService->addDependencies( $this->output );
 	}
 
 }

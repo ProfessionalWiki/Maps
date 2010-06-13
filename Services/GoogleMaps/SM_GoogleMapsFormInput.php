@@ -115,7 +115,7 @@ EOT
 	protected function manageGeocoding() {
 		global $egGoogleMapsKey, $wgParser;
 		$this->enableGeocoding = $egGoogleMapsKey != '';
-		if ( $this->enableGeocoding ) MapsGoogleMaps::addGMapDependencies( $wgParser );
+		if ( $this->enableGeocoding ) $this->mService->addDependencies( $wgParser );
 	}
 	
 }

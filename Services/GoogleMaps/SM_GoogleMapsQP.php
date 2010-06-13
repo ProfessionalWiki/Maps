@@ -103,7 +103,6 @@ addOnloadHook(
 );
 EOT
 		) );
-
 	}
 	
 	/**
