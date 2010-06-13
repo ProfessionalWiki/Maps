@@ -38,7 +38,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
-		MapsYahooMaps::addDependencies( $wgOut );
+		$this->mService->addDependencies( $wgOut );
 		
 		if ( empty( $smgYahooFormsOnThisPage ) ) {
 			$smgYahooFormsOnThisPage = 0;

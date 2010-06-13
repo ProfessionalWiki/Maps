@@ -35,7 +35,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage, $wgParser;
 		
-		MapsYahooMaps::addDependencies( $wgParser );
+		$this->mService->addDependencies( $wgParser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;

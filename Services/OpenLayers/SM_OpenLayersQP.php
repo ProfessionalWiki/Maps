@@ -37,7 +37,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $wgParser, $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addDependencies( $wgParser);
+		$this->mService->addDependencies( $wgParser);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;

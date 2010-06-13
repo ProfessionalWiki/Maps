@@ -49,7 +49,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 
 		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addDependencies( $wgParser );
+			$this->mService->addDependencies( $wgParser );
 		}
 		
 		$egGoogleMapsOnThisPage++;
