@@ -17,7 +17,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 final class SMGoogleMapsQP extends SMMapPrinter {
 	
 	protected function getServiceName() {
-		return 'googlemaps';
+		return 'googlemaps2';
 	}
 	
 	/**
