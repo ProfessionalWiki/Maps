@@ -15,6 +15,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersQP extends SMMapPrinter {
 
+	protected function getServiceName() {
+		return 'openlayers';
+	}	
+	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 *
@@ -33,7 +37,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $wgParser, $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies( $wgParser);
+		MapsOpenLayers::addDependencies( $wgParser);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;

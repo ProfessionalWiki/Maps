@@ -14,6 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMapsQP extends SMMapPrinter {
 
+	protected function getServiceName() {
+		return 'yahoomaps';
+	}	
+
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 */
@@ -31,7 +35,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	protected function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage, $wgParser;
 		
-		MapsYahooMaps::addYMapDependencies( $wgParser );
+		MapsYahooMaps::addDependencies( $wgParser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;

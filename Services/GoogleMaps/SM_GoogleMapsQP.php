@@ -16,7 +16,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsQP extends SMMapPrinter {
 	
-	protected $specificParameters;
+	protected function getServiceName() {
+		return 'googlemaps';
+	}
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
@@ -47,7 +49,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 
 		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies( $wgParser );
+			MapsGoogleMaps::addDependencies( $wgParser );
 		}
 		
 		$egGoogleMapsOnThisPage++;

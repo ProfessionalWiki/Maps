@@ -38,6 +38,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	protected abstract function doMapServiceLoad();
 	
+	protected abstract function getServiceName();
+	
 	/**
 	 * Gets the query result
 	 */
@@ -61,6 +63,12 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected $specificParameters = array();
 	
 	public function __construct( $format, $inline, /* MapsMappingService */ $service = null ) {
+		// TODO: this is a hack since I can't find a way to pass along the service object here when the QP is created in SMW.
+		if ( $service == null ) {
+			global $egMapsServices;
+			$service = $egMapsServices[$this->getServiceName()];
+		}
+		
 		$this->mService = $service;
 	}
 	

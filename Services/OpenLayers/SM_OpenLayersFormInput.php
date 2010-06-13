@@ -37,7 +37,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
-		MapsOpenLayers::addOLDependencies( $wgOut );
+		MapsOpenLayers::addDependencies( $wgOut );
 		
 		if ( empty( $smgOLFormsOnThisPage ) ) {
 			$smgOLFormsOnThisPage = 0;
