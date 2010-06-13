@@ -45,6 +45,8 @@ class MapsMappingService implements iMappingService {
 	 */
 	private $mAddedDependencies = array();
 	
+	private $mDependencies = array();
+	
 	/**
 	 * Constructor. Creates a new instance of MapsMappingService.
 	 * 
@@ -95,7 +97,26 @@ class MapsMappingService implements iMappingService {
 	 * @param mixed $parserOrOut
 	 */
 	public final function addDependencies( &$parserOrOut ) {
-		$allDependencies = $this->getDependencies();
+		$dependencies = $this->getDependencyHtml();
+		
+		// Only aff a head item when there are dependencies.
+		if ( $dependencies ) {
+			if ( $parserOrOut instanceof Parser ) {
+				$parserOrOut->getOutput()->addHeadItem( $dependencies );
+			} 
+			else if ( $parserOrOut instanceof OutputPage ) { 
+				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
+			}			
+		}
+	}
+	
+	/**
+	 * Returns the html for the needed dependencies or false.
+	 * 
+	 * @return mixed Steing or false
+	 */
+	public final function getDependencyHtml() {
+		$allDependencies = array_merge( $this->getDependencies(), $this->mDependencies );
 		$dependencies = array();
 		
 		// Only add dependnecies that have not yet been added.
@@ -106,18 +127,19 @@ class MapsMappingService implements iMappingService {
 			}
 		}
 		
-		// If there are dependencies, put them all together in a string and add them to the header.
-		if ( count( $dependencies ) > 0 ) {
-			$dependencies = implode( '', $dependencies );
-			
-			if ( $parserOrOut instanceof Parser ) {
-				$parserOrOut->getOutput()->addHeadItem( $dependencies );
-			} 
-			else if ( $parserOrOut instanceof OutputPage ) { 
-				$parserOrOut->addHeadItem( md5($dependencies), $dependencies );
-			}
-		}
+		// If there are dependencies, put them all together in a string, otherwise return false.
+		return count( $dependencies ) > 0 ? implode( '', $dependencies ) : false;
 	}
+	
+	/**
+	 * Adds a dependency that is needed for this service. It will be passed along with the next 
+	 * call to getDependencyHtml or addDependencies.
+	 * 
+	 * @param string $dependencyHtml
+	 */
+	public final function addDependency( $dependencyHtml ) {
+		$this->mDependencies[] = $dependencyHtml;
+	}	
 	
 	/**
 	 * Returns a list of html fragments, such as script includes, the current service depends on.
