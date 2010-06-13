@@ -24,9 +24,10 @@ final class SMMapper {
 		// Note: if this is allowed, then the getParameters should only return the base parameters.
 		if ( $format == 'map' ) $format = $egMapsDefaultServices['qp'];
 		
-		$service = MapsMapper::getValidService( $format, 'qp' );
+		$service = $egMapsServices[MapsMapper::getValidService( $format, 'qp' )];
+		$QPClass = $service->getFeature( 'qp' );
 		
-		$this->queryPrinter = new $egMapsServices[$service]['features']['qp']( $format, $inline );
+		$this->queryPrinter = new $QPClass( $format, $inline, $service );
 	}
 
 	public static function getAliases() {

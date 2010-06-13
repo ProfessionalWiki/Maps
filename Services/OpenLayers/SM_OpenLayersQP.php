@@ -15,8 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersQP extends SMMapPrinter {
 
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;
-	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 *

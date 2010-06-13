@@ -34,21 +34,21 @@ final class SMFormInputs {
 		
 		self::initializeParams();
 		
-		foreach ( $egMapsServices as $serviceName => $serviceData ) {
-			// Check if the service has a form input
-			$hasFI = array_key_exists( 'fi', $serviceData['features'] );
+		foreach ( $egMapsServices as $service ) {
+			// Check if the service has a form input.
+			$FIClass = $service->getFeature( 'fi' );
 			
 			// If the service has no FI, skipt it and continue with the next one.
-			if ( !$hasFI ) continue;
+			if ( $FIClass === false ) continue;
 			
 			// At least one form input will be enabled when this point is reached.
 			$hasFormInputs = true;
 
 			// Add the result form input type for the service name.
-			self::initFormHook( $serviceName, $serviceName );
+			self::initFormHook( $service->getName(), $service->getName() );
 			
 			// Loop through the service alliases, and add them as form input types.
-			foreach ( $serviceData['aliases'] as $alias ) self::initFormHook( $alias, $serviceName );
+			foreach ( $service->getAliases() as $alias ) self::initFormHook( $alias, $service->getName() );
 		}
 		
 		// Add the 'map' form input type if there are mapping services that have FI's loaded.
@@ -121,15 +121,17 @@ function smfSelectFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_d
     
 	// Get the service name from the field_args, and set it to null if it doesn't exist.
     if ( array_key_exists( 'service_name', $field_args ) ) {
-        $service_name = $field_args['service_name'];
+        $serviceName = $field_args['service_name'];
     }
     else {
-        $service_name = null;
+        $serviceName = null;
     }
     
     // Ensure the service is valid and create a new instance of the handling form input class.
-    $service_name = MapsMapper::getValidService( $service_name, 'fi' );
-    $formInput = new $egMapsServices[$service_name]['features']['fi']();
+    $serviceName = MapsMapper::getValidService( $serviceName, 'fi' );
+    $FIClass = $egMapsServices[$serviceName]->getFeature( 'fi' );
+    
+    $formInput = new $FIClass( $egMapsServices[$serviceName] );
     
     // Get and return the form input HTML from the hook corresponding with the provided service.
     return $formInput->formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args );

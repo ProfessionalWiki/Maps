@@ -16,8 +16,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsQP extends SMMapPrinter {
 	
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
-	
 	protected $specificParameters;
 	
 	/**

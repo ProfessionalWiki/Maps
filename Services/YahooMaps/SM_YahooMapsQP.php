@@ -14,8 +14,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMapsQP extends SMMapPrinter {
 
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;
-	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 */

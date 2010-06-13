@@ -17,8 +17,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsFormInput extends SMFormInput {
 
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
-	
 	protected $specificParameters = array();
 	
 	/**

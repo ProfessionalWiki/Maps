@@ -43,7 +43,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	protected abstract function addSpecificMapHTML( Parser $parser );
 	
-	public $serviceName;
+	protected $mService;
 	
 	protected $mLocations = array();
 	
@@ -59,6 +59,10 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	protected $featureParameters = array();
 	protected $specificParameters = array();
+	
+	public function __construct( $format, $inline, /* MapsMappingService */ $service = null ) {
+		$this->mService = $service;
+	}
 	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
@@ -115,7 +119,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->mService->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
@@ -135,7 +139,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * Sets the map properties as class fields.
 	 * 
 	 * @param array $mapProperties
-	 * @param string $className
 	 */
 	private function setMapProperties( array $mapProperties ) {
 		foreach ( $mapProperties as $paramName => $paramValue ) {
@@ -149,7 +152,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	}
 	
 	public final function getResult( $results, $params, $outputmode ) {
-		// Skip checks, results with 0 entries are normal
+		// Skip checks, results with 0 entries are normal.
 		$this->readParameters( $params, $outputmode );
 		
 		return $this->getResultText( $results, SMW_OUTPUT_HTML );
@@ -166,9 +169,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * and add the location data, title, label and icon to the m_locations array.
 	 *
 	 * @param unknown_type $outputmode
-	 * @param unknown_type $row The record you want to add data from
+	 * @param array $row The record you want to add data from
 	 */
-	private function addResultRow( $outputmode, $row ) {
+	private function addResultRow( $outputmode, array $row ) {
 		global $wgUser, $smgUseSpatialExtensions;
 		
 		$skin = $wgUser->getSkin();
@@ -182,11 +185,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$coords = array();
 		$label = array();
 		
-		// Loop throught all fields of the record
+		// Loop throught all fields of the record.
 		foreach ( $row as $i => $field ) {
 			$pr = $field->getPrintRequest();
 			
-			// Loop throught all the parts of the field value
+			// Loop throught all the parts of the field value.
 			while ( ( $object = $field->getNextObject() ) !== false ) {
 				if ( $object->getTypeID() == '_wpg' && $i == 0 ) {
 					if ( $this->showtitle ) $title = $object->getLongText( $outputmode, $skin );
@@ -248,12 +251,13 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	}
 
 	/**
-	 * Get the icon for a row
+	 * Get the icon for a row.
 	 *
-	 * @param unknown_type $row
-	 * @return unknown
+	 * @param array $row
+	 * 
+	 * @return string
 	 */
-	private function getLocationIcon( $row ) {
+	private function getLocationIcon( array $row ) {
 		$icon = '';
 		$legend_labels = array();
 		
@@ -287,7 +291,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	/**
 	 * Sets the zoom level to the provided value, or when not set, to the default.
-	 *
 	 */
 	private function setZoom() {
 		if ( strlen( $this->zoom ) < 1 ) {
@@ -303,7 +306,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
-	 *
 	 */
 	private function setCentre() {
 		// If a centre value is set, use it.

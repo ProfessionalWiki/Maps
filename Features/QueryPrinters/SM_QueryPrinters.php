@@ -34,18 +34,18 @@ final class SMQueryPrinters {
 		
 		$hasQueryPrinters = false;
 
-		foreach ( $egMapsServices as $serviceName => $serviceData ) {
+		foreach ( $egMapsServices as $service ) {
 			// Check if the service has a query printer.
-			$hasQP = array_key_exists( 'qp', $serviceData['features'] );
+			$QPClass = $service->getFeature( 'qp' );
 			
 			// If the service has no QP, skipt it and continue with the next one.
-			if ( !$hasQP ) continue;
+			if ( $QPClass === false ) continue;
 			
 			// At least one query printer will be enabled when this point is reached.
 			$hasQueryPrinters = true;
 			
 			// Initiate the format.
-			self::initFormat( $serviceName, $serviceData['features']['qp'], $serviceData['aliases'] );
+			self::initFormat( $service->getName(), $QPClass, $service->getAliases() );
 		}
 
 		// Add the 'map' result format if there are mapping services that have QP's loaded.

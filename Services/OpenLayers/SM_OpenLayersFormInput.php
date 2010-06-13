@@ -15,8 +15,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersFormInput extends SMFormInput {
 	
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;
-	
 	protected $specificParameters = array();
 	
 	/**

@@ -25,6 +25,8 @@ abstract class SMFormInput {
 	 */
 	protected abstract function addFormDependencies();
 	
+	protected $mService;
+	
 	/**
 	 * @var string
 	 */	
@@ -42,6 +44,10 @@ abstract class SMFormInput {
 	protected $enableGeocoding = false;
 	
 	private $coordinates;
+	
+	public function __construct( MapsMappingService $service ) {
+		$this->mService = $service;
+	}	
 	
 	/**
 	 * Validates and corrects the provided map properties, and the sets them as class fields.
@@ -61,7 +67,7 @@ abstract class SMFormInput {
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->mService->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
@@ -257,8 +263,6 @@ EOT
 	/**
 	 * Returns html for an html input field with a default value that will automatically dissapear when
 	 * the user clicks in it, and reappers when the focus on the field is lost and it's still empty.
-	 *
-	 * @author Jeroen De Dauw
 	 *
 	 * @param string $id
 	 * @param string $value
