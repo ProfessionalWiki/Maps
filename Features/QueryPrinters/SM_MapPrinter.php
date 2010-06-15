@@ -349,14 +349,13 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	/**
 	 * Sets the $mapName field, using the $elementNamePrefix and $elementNr.
-	 *
 	 */
 	protected function setMapName() {
 		$this->mapName = $this->elementNamePrefix . '_' . $this->elementNr;
 	}
 	
 	public final function getName() {
-		return wfMsg( 'maps_' . $this->serviceName );
+		return wfMsg( 'maps_' . $this->mService->getName() );
 	}
 	
     public function getParameters() {

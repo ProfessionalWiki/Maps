@@ -65,8 +65,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$headItem = Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initializeYahooMap(
@@ -83,7 +82,9 @@ addOnloadHook(
 	}
 );
 EOT
-		) );
+		);
+		
+		SMWOutputs::requireHeadItem( md5( $headItem ), $headItem );
 	}
 
 	/**

@@ -67,8 +67,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$headItem = Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
@@ -83,7 +82,9 @@ addOnloadHook(
 	}
 );
 EOT
-		) );
+		);
+		
+		SMWOutputs::requireHeadItem( md5( $headItem ), $headItem );
 	}
 
 	/**
