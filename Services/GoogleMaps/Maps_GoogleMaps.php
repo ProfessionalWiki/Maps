@@ -226,14 +226,13 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * Adds the needed output for the overlays control.
 	 * 
 	 * @param string $output
-	 * @param Parser $parser
 	 * @param string $mapName
 	 * @param string $overlays
 	 * @param string $controls
 	 * 
 	 * FIXME: layer onload function kills maps for some reason
 	 */
-	public static function addOverlayOutput( &$output, Parser &$parser, $mapName, $overlays, $controls ) {
+	public function addOverlayOutput( &$output, $mapName, $overlays, $controls ) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
 		
 		// Check to see if there is an overlays control.
@@ -255,12 +254,6 @@ class MapsGoogleMaps extends MapsMappingService {
 		
 		// If there are no overlays or there is no control to hold them, don't bother the rest.
 		if ( !$hasOverlayControl || count( $overlays ) < 1 ) return;
-		
-		// If the overlays JS and CSS has not yet loaded, do it.
-		if ( empty( $egMapsGoogleOverlLoaded ) ) {
-			$egMapsGoogleOverlLoaded = true;
-			self::addOverlayCss( $parser );
-		}
 		
 		// Add the inputs for the overlays.
 		$addedOverlays = array();
@@ -310,20 +303,23 @@ class MapsGoogleMaps extends MapsMappingService {
 			) .
 			'</form>'
 		);
-		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( 'var timer_' . htmlspecialchars( $mapName ) . ';' . implode( "\n", $onloadFunctions ) )
-		);
+			
+		// If the overlays JS and CSS has not yet loaded, do it.
+		if ( empty( $egMapsGoogleOverlLoaded ) ) {
+			$egMapsGoogleOverlLoaded = true;
+			
+			$this->addDependency(
+				$this->getOverlayCss()
+				. Html::inlineScript( 'var timer_' . htmlspecialchars( $mapName ) . ';' . implode( "\n", $onloadFunctions ) )
+			);
+		}		
 	}
 	
 	/**
-	 * Add CSS for the overlays. 
-	 * 
-	 * @param Parser $parser
+	 * Returns CSS for the overlays. 
 	 */
-	protected static function addOverlayCss( Parser &$parser ) {
-		$parser->getOutput()->addHeadItem(
-			Html::inlineStyle( <<<EOT
+	protected function getOverlayCss() {
+		return Html::inlineStyle( <<<EOT
 .inner-more {
 	text-align:center;
 	font-size:12px;
@@ -362,7 +358,6 @@ class MapsGoogleMaps extends MapsMappingService {
 	border-width:2px;
 }
 EOT
-			)
 		);
 	}
 	
