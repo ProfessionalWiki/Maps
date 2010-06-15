@@ -53,10 +53,10 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	}
 	
 	/**
-	 * @see SMMapPrinter::getQueryResult()
+	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
-		MapsGoogleMaps::addOverlayOutput( $this->output, $parser, $this->mapName, $this->overlays, $this->controls );
+	protected function addSpecificMapHTML() {
+		$this->mService->addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
@@ -78,7 +78,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$headItem = Html::inlineScript( <<<EOT
+		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initializeGoogleMap('$this->mapName', 
@@ -96,9 +96,7 @@ addOnloadHook(
 	}
 );
 EOT
-		);
-		
-		SMWOutputs::requireHeadItem( md5( $headItem ), $headItem );
+		) );
 	}
 	
 	/**

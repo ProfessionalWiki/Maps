@@ -29,21 +29,21 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 abstract class SMMapPrinter extends SMWResultPrinter {
 
 	/**
-	 * Sets the map service specific element name
+	 * Sets the map service specific element name.
 	 */
 	protected abstract function setQueryPrinterSettings();
 	
 	/**
-	 * Map service specific map count and loading of dependencies
+	 * Map service specific map count and loading of dependencies.
 	 */
 	protected abstract function doMapServiceLoad();
 	
 	protected abstract function getServiceName();
 	
 	/**
-	 * Gets the query result
+	 * Gets the query result.
 	 */
-	protected abstract function addSpecificMapHTML( Parser $parser );
+	protected abstract function addSpecificMapHTML();
 	
 	protected $mService;
 	
@@ -91,10 +91,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			// Only create a map when there is at least one result.
 			if ( count( $this->mLocations ) > 0 || $this->forceshow ) {
 				$this->doMapServiceLoad();
-		
-				$dependencies = $this->mService->getDependencyHtml();
-				$hash = md5( $dependencies );
-				SMWOutputs::requireHeadItem( $hash, $dependencies );
 				
 				$this->setMapName();
 				
@@ -102,8 +98,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 				
 				$this->setCentre();
 				
-				global $wgParser;
-				$this->addSpecificMapHTML( $wgParser );
+				$this->addSpecificMapHTML();
+				
+				$dependencies = $this->mService->getDependencyHtml();
+				$hash = md5( $dependencies );
+				SMWOutputs::requireHeadItem( $hash, $dependencies );
 			}
 			else {
 				// TODO: add warning when level high enough and append to error list?

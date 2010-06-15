@@ -43,7 +43,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
+	protected function addSpecificMapHTML() {
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
@@ -67,7 +67,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$headItem = Html::inlineScript( <<<EOT
+		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
@@ -82,9 +82,7 @@ addOnloadHook(
 	}
 );
 EOT
-		);
-		
-		SMWOutputs::requireHeadItem( md5( $headItem ), $headItem );
+		) );
 	}
 
 	/**
