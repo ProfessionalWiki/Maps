@@ -120,7 +120,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * 
 	 * @return csv string
 	 */
-	public static function createLayersStringAndLoadDependencies( &$output, array $layers ) {
+	public function createLayersStringAndLoadDependencies( &$output, array $layers ) {
 		global $egMapsOLAvailableLayers;
 		$layerStr = array();
 		
@@ -138,7 +138,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @param string $output The output to which the html to load the dependencies needs to be added
 	 * @param string $layer The layer to check (and load the dependencies for
 	 */
-	public static function loadDependencyWhenNeeded( &$output, $layer ) {
+	public function loadDependencyWhenNeeded( &$output, $layer ) {
 		global $wgJsMimeType;
 		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies, $egMapsOLLoadedLayers;
 		

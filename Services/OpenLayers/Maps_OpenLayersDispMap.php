@@ -38,7 +38,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->output, $this->layers );
 
 		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
 		
