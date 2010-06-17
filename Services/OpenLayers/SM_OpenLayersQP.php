@@ -65,7 +65,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
 		
 		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
