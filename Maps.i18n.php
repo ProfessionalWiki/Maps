@@ -1152,7 +1152,7 @@ $1',
 	'maps_photos' => 'Фотографии',
 	'maps_videos' => 'Видеа',
 	'maps_wikipedia' => 'Википедија',
-	'maps_webcams' => 'Веб-камери',
+	'maps_webcams' => 'Мреж. камери',
 );
 
 /** Malayalam (മലയാളം) */
