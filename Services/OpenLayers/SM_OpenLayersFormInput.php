@@ -76,7 +76,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
 		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
