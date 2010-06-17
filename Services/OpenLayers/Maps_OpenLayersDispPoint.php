@@ -45,7 +45,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
 		
-		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
 		
 		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
 		
