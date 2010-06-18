@@ -78,9 +78,9 @@ else {
  * Initialization function for the Maps extension.
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP, $wgStyleVersion, $wgScriptPath,  $wgJsMimeType, $wgExtensionAssetsPath;
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsScriptPath;
-	global $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;
+	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
+	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices;
+	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
 	// Autoload the includes/ classes.
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
@@ -97,7 +97,7 @@ function efMapsSetup() {
 	require_once $egMapsDir . 'Services/Maps_iMappingService.php';
 	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
 	
-	wfRunHooks( 'MappingServiceLoad' );	
+	wfRunHooks( 'MappingServiceLoad' );
 	
 	wfRunHooks( 'MappingFeatureLoad' );
 
