@@ -187,9 +187,9 @@ class MapsCoordinateParser {
 		$coordinates = str_replace( array( '&acute;', '&#180;' ), Maps_GEO_SEC, $coordinates );
 		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″' ), Maps_GEO_MIN, $coordinates );
 		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
-		
+
 		$coordinates = self::removeInvalidChars( $coordinates );
-		
+
 		return $coordinates;
 	}
 	
@@ -202,13 +202,14 @@ class MapsCoordinateParser {
 	 */
 	protected static function removeInvalidChars( $string ) {
 		$filtered = array();
-		
+
 		foreach ( str_split( $string ) as $character ) {
 			$asciiValue = ord( $character );
 			
-			if ( ( $asciiValue > 31 && $asciiValue < 127 ) ) {
+			if ( ( $asciiValue > 31 && $asciiValue < 127 ) || $asciiValue == 194 || $asciiValue == 176 ) {
 				$filtered[] = $character;
 			}
+			else {var_dump($asciiValue);}
 		}
 
 		return implode( '', $filtered );
