@@ -983,6 +983,7 @@ $messages['ja'] = array(
 	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}は認識されなかったため、地図から省かれています:
 $1',
 	'maps_map_cannot_be_displayed' => 'この地図は表示できません。',
+	'maps_invalid_distance' => '値 $1 は距離として有効ではありません。',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
 	'maps_click_to_activate' => 'クリックして地図をアクティブに',
 	'maps_centred_on' => '地図の中心は $1、$2。',
