@@ -209,7 +209,6 @@ class MapsCoordinateParser {
 			if ( ( $asciiValue > 31 && $asciiValue < 127 ) || $asciiValue == 194 || $asciiValue == 176 ) {
 				$filtered[] = $character;
 			}
-			else {var_dump($asciiValue);}
 		}
 
 		return implode( '', $filtered );
