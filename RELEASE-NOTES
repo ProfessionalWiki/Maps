@@ -7,6 +7,19 @@ version of Maps. You can find the most upt-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.6.3 ===
+(2010-06-20)
+
+==== Refactoring ====
+
+* Mayor refactoring of the mapping service handling, to make the code flow less messy and be able to do mapping service related things in a more consistent fashion.
+
+* Upgrade to OpenLayers 2.9.1.
+
+==== Bug fixes ====
+
+* Fixed severe bug in the coordinate parsing that removed the degree symbol from passes values, resulting in rendering most of them invalid. Presumably present since 0.6.2.
+
 === Maps 0.6.2 ===
 (2010-06-07)
 
