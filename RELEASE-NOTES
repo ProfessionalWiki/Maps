@@ -6,6 +6,17 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.6.3 ===
+(2010-06-20)
+
+==== Bug fixes ====
+
+* Fixed issue that caused Yahoo! Maps and OpenLayers maps not to load on form pages.
+
+* Fixed php warning originating from Validator that occurred on form pages with maps.
+
+* Fixed issue that caused a fatal error when doing a query via special:ask with a mapping format, present since 0.6.
+
 === Semantic Maps 0.6.2 ===
 (2010-06-07)
 
