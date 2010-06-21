@@ -69,7 +69,6 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		global $wgJsMimeType;
 		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
 		return array(
@@ -140,7 +139,6 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @param string $layer The layer to check (and load the dependencies for
 	 */
 	public function loadDependencyWhenNeeded( $layer ) {
-		global $wgJsMimeType;
 		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies, $egMapsOLLoadedLayers;
 		
 		// Check if there is a dependency refered by the layer definition.

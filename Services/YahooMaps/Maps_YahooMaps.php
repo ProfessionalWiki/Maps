@@ -93,7 +93,6 @@ class MapsYahooMaps extends MapsMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		global $wgJsMimeType;
 		global $egYahooMapsKey, $egMapsScriptPath, $egMapsStyleVersion, $egMapsJsExt;
 		
 		return array(

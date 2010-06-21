@@ -233,7 +233,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * FIXME: layer onload function kills maps for some reason
 	 */
 	public function addOverlayOutput( &$output, $mapName, $overlays, $controls ) {
-		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
+		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded;
 		
 		// Check to see if there is an overlays control.
 		$hasOverlayControl = in_string( 'overlays', $controls );
