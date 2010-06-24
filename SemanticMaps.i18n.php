@@ -178,10 +178,12 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Palapa
  */
 $messages['bs'] = array(
 	'semanticmaps_desc' => 'Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostupne usluge mapa: $1',
+	'semanticmaps-unrecognizeddistance' => 'Vrijednost $1 nije ispravno odstojanje.',
 	'semanticmaps_lookupcoordinates' => 'Nađi koordinate',
 	'semanticmaps_enteraddresshere' => 'Unesite adresu ovdje',
 	'semanticmaps_notfound' => 'nije pronađeno',
