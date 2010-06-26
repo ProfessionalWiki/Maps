@@ -1082,6 +1082,7 @@ $messages['lb'] = array(
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'Breedegrad:',
 	'maps-longitude' => 'Längtegrad:',
+	'maps-invalid-coordinates' => 'De Wäert $1 gouf net als valabel Set vu Koordinaten erkannt.',
 	'maps_coordinates_missing' => "Et goufe keng Koordinate fir d'Kaart uginn.",
 	'maps_geocoding_failed' => 'Dës {{PLURAL:$2|Adress konnt|Adresse konnten}} net geocodéiert ginn: $1',
 	'maps_geocoding_failed_for' => 'Dës {{PLURAL:$2|Adress|Adresse}} konnten net geocodéiert ginn an {{PLURAL:$2|huet|hu}} missen op der Kaart ewechgelooss ginn:
@@ -1090,6 +1091,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Dës {{PLURAL:$2|Koordinate|Koordinate}} goufen net erkannt a vun der Kaart ignoréiert:
 $1',
 	'maps_map_cannot_be_displayed' => "D'Kaart kann net gewise ginn.",
+	'maps_invalid_distance' => 'De Wäert $1 ass keng valabel Distanz.',
 	'maps_click_to_activate' => "Klickt fir d'kaart z'aktivéieren",
 	'maps_centred_on' => "D'Kaart ass zentréiert op $1, $2",
 	'maps_overlays' => 'Ablendungen',
