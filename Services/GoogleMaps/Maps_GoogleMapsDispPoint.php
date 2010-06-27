@@ -49,7 +49,6 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	public function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
-		$this->mService->addDependencies( $this->parser );
 		$egGoogleMapsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;

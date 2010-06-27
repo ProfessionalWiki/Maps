@@ -153,6 +153,8 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 		
 		$this->addSpecificMapHTML();
 		
+		$this->mService->addDependencies( $this->parser );
+		
 		return $this->output;
 	}
 	

@@ -34,7 +34,6 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	public function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		$this->mService->addDependencies( $this->parser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;

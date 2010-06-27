@@ -34,7 +34,6 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egGMaps3OnThisPage;
 		
-		$this->mService->addDependencies( $this->parser );
 		$egGMaps3OnThisPage++;
 		
 		$this->elementNr = $egGMaps3OnThisPage;
