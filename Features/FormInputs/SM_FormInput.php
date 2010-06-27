@@ -43,6 +43,8 @@ abstract class SMFormInput {
 	
 	protected $enableGeocoding = false;
 	
+	protected $mErrorList;
+	
 	private $coordinates;
 	
 	public function __construct( MapsMappingService $service ) {
@@ -88,7 +90,7 @@ abstract class SMFormInput {
 			}
 		}
 		
-		$this->errorList = $manager->getErrorList();
+		$this->mErrorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -160,7 +162,7 @@ abstract class SMFormInput {
 		
 		$this->addSpecificMapHTML();
 		
-		return array( $this->output . $this->errorList, '' );
+		return array( $this->output . $this->mErrorList, '' );
 	}
 	
 	private function addGeocodingField() {
