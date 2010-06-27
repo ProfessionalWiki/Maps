@@ -29,12 +29,15 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	protected $centreLat, $centreLon;
 
 	protected $output = '';
-
-	private $specificParameters = false;
-	protected $featureParameters = false;
 	
-	private $markerData = array();
+	protected $featureParameters = false;
+
 	protected $markerString;
+	
+	protected $parser;
+	
+	private $specificParameters = false;
+	private $markerData = array();
 	
 	public function __construct( MapsMappingService $service ) {
 		$this->mService = $service;

@@ -96,7 +96,7 @@ final class MapsParserFunctions {
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $mapClass->getFeatureParameters() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $mapClass->getSpecificParameterInfo() );
-		
+
 		$displayMap = $manager->manageParameters(
 			$parameters,
 			$parameterInfo,
