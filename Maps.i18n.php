@@ -1745,6 +1745,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Không thể nhận ra {{PLURAL:$2|tọa độ|các tọa độ}} sau nên bản đồ bỏ qua nó:
 $1',
 	'maps_map_cannot_be_displayed' => 'Không thể hiển thị bản đồ.',
+	'maps_invalid_distance' => 'Giá trị $1 không phải là khoảng cách hợp lệ.',
 	'maps-geocoder-not-available' => 'Không thể mã hóa vị trí của bạn vì tính năng mã hóa địa lý của Bản đồ không có sẵn.',
 	'maps_osm' => 'OpenStreetMap',
 	'maps_click_to_activate' => 'Nhấn chuột vào bản đồ để kích hoạt',
