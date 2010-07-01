@@ -1709,6 +1709,14 @@ $messages['tr'] = array(
 	'maps_webcams' => 'Web kameraları',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'maps-latitude' => 'Широта:',
+	'maps-longitude' => 'Довгота:',
+);
+
 /** Veps (Vepsan kel') */
 $messages['vep'] = array(
 	'maps-abb-north' => 'Pohj.',
