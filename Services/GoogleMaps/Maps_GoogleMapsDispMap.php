@@ -83,7 +83,8 @@ addOnloadHook(
 			type: $this->type,
 			types: [$this->types],
 			controls: [$this->controls],
-			scrollWheelZoom: $this->autozoom
+			scrollWheelZoom: $this->autozoom,
+			kml: '$this->kml'
 			},
 		[]);
 	}

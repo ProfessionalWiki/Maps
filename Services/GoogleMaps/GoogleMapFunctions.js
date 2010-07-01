@@ -140,7 +140,10 @@ function createGoogleMap(mapName, mapOptions, markers) {
 				break;
 			case 'nav-label' : case 'nav' : 
 				map.addControl(new GNavLabelControl());
-				break;	
+				break;
+			case 'searchbar' :
+				map.enableGoogleBar();
+				break;
 		}
 	}	
 
@@ -162,6 +165,11 @@ function createGoogleMap(mapName, mapOptions, markers) {
 	if (mapOptions.scrollWheelZoom) map.enableScrollWheelZoom();
 
 	map.enableContinuousZoom();
+	
+	// Code to add KML files
+	if (mapOptions.kml != '') {
+	    map.addOverlay( new GGeoXml( mapOptions.kml ) );
+	}	
 	
 	// Make the map variable available for other functions
 	if (!window.GMaps) window.GMaps = new Object;

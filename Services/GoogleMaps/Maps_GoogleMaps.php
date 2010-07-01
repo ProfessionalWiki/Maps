@@ -72,6 +72,8 @@ class MapsGoogleMaps extends MapsMappingService {
 				'default' => $egMapsGoogleAutozoom,
 				'output-type' => 'boolstr'
 			),
+			'kml' => array(
+			),			
 		);
 		
 		$parameters['zoom']['criteria']['in_range'] = array( 0, 20 );
@@ -119,7 +121,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	public static function getControlNames() {
 		return array(
 			'auto', 'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu',
-			'overlays', 'overview', 'overview-map', 'scale', 'nav-label', 'nav'
+			'overlays', 'overview', 'overview-map', 'scale', 'nav-label', 'nav', 'searchbar'
 		);
 	}
 
