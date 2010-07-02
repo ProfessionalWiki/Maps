@@ -73,6 +73,8 @@ class MapsGoogleMaps extends MapsMappingService {
 				'output-type' => 'boolstr'
 			),
 			'kml' => array(
+				'type' => array( 'string', 'list' ),
+				'output-type' => array( 'list', ',', '\'' )
 			),			
 		);
 		

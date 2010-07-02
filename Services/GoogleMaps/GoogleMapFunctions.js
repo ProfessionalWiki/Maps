@@ -166,12 +166,14 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	map.enableContinuousZoom();
 	
-	// Code to add KML files
-	if (mapOptions.kml != '') {
-	    map.addOverlay( new GGeoXml( mapOptions.kml ) );
-	}	
+	// Code to add KML files.
+	var kmlOverlays = [];
+	for ( i = mapOptions.kml.length -1; i >= 0; i-- ) {
+		kmlOverlays[i] = new GGeoXml( mapOptions.kml[i] );
+		map.addOverlay( kmlOverlays[i] );
+	}
 	
-	// Make the map variable available for other functions
+	// Make the map variable available for other functions.
 	if (!window.GMaps) window.GMaps = new Object;
 	eval("window.GMaps." + mapName + " = map;"); 	
 	
