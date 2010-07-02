@@ -1451,6 +1451,7 @@ $1',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -1464,17 +1465,25 @@ Serviços de mapeamento disponíveis: $1',
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Latitude:',
 	'maps-longitude' => 'Longitude:',
+	'maps-invalid-coordinates' => 'O valor $1 não foi reconhecido como um conjunto de coordenadas válido.',
 	'maps_coordinates_missing' => 'Nenhuma coordenada fornecida para o mapa',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado|geocodificados}}: $1.
 O mapa não pode ser exibido.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado e foi omitido|geocodificados e foram omitidos}} do mapa:
 $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida|As seguintes coordenadas não foram reconhecidas}}: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
+$1',
 	'maps_map_cannot_be_displayed' => 'O mapa não pode ser mostrado.',
 	'maps_invalid_distance' => 'O valor $1 não é uma distância válida.',
+	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para ativar o mapa',
+	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
+	'maps_overlays' => 'Sobreposições',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Vídeos',
+	'maps_wikipedia' => 'Wikipédia',
+	'maps_webcams' => 'Webcams',
 );
 
 /** Romanian (Română)
