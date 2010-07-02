@@ -99,7 +99,7 @@ addOnloadHook(
 				types: [$this->types],
 				controls: [$this->controls],
 				scrollWheelZoom: $this->autozoom,
-				kml: '$this->kml'
+				kml: [$this->kml]
 			},
 			{$this->markerCoords['lat']},
 			{$this->markerCoords['lon']}	
