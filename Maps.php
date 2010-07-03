@@ -25,7 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Include the Validator extension if that hasn't been done yet, since it's required for Maps to work.
 if ( !defined( 'Validator_VERSION' ) ) {
-	@include_once( 'extensions/Validator/Validator.php' );
+	@include_once( dirname( __FILE__ ) . '/../Validator/Validator.php' );
 }
 
 // Only initialize the extension when all dependencies are present.
@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6.4 a5' );
+	define( 'Maps_VERSION', '0.6.4 a6' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -46,8 +46,10 @@ else {
 	define( 'Maps_GEO_MIN', "'" );
 	define( 'Maps_GEO_SEC', '"' );
 
-	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
+	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+	$egMapsScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
+	unset( $useExtensionPath );
 
 	// To ensure Maps remains compatible with pre 1.16.
 	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
