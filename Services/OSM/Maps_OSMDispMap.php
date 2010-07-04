@@ -24,7 +24,20 @@ class MapsOSMDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
 	public function addSpecificMapHTML() {	
-		// TODO
+		global $egMapsOSMPrefix, $egOSMOnThisPage;
+		
+		$egOSMOnThisPage++;
+		$mapName = $egMapsOSMPrefix . '_' . $egOSMOnThisPage;
+		
+		$this->output .= Html::element(
+			'iframe',
+			array(
+				'id' => $mapName,
+				'style' => "width: $this->width; height: $this->height; clear: both;",
+				'src' => "http://toolserver.org/~kolossos/openlayers/kml-on-ol.php?zoom={$this->zoom}&lat={$this->centreLat}&lon={$this->centreLon}&lang=en"
+			),
+			wfMsg( 'maps-loading-map' )
+		);
 	}
 	
 }

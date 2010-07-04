@@ -20,7 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * 
  * @author Jeroen De Dauw
  */
-class MapsOpenLayers extends MapsMappingService {
+class MapsOSM extends MapsMappingService {
 	
 	function __construct() {
 		parent::__construct(

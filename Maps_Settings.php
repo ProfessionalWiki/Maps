@@ -65,14 +65,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 	# Yahoo! Maps API
 	include_once $egMapsDir . 'Services/YahooMaps/YahooMaps.php';
+	
+	# Yahoo! Maps API
+	include_once $egMapsDir . 'Services/OSM/OSM.php';	
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
-	# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers.
+	# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers, osm.
 	$egMapsAvailableServices = array(
 		'googlemaps2',
 		'googlemaps3',
 		'yahoomaps',
-		'openlayers'
+		'openlayers',
+		'osm'
 	);
 
 	# String. The default mapping service, which will be used when no default
@@ -405,17 +409,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 	
 	
-	# OpenStreetMap (OpenLayers optimized for OSM)
+	# OpenStreetMap
 	
-		/*
-		# String. The OSM map name prefix. It can not be identical to the one of
-		# another mapping service.
-		$egMapsOSMPrefix = 'map_osm';
-		
 		# Integer. The default zoom of a map. This value will only be used when the
 		# user does not provide one.
-		$egMapsOSMZoom = 13;
+		$egMapsOSMZoom = 13;		
 		
+		# String. The OSM map name prefix. It can not be identical to the one of
+		# another mapping service.
+		$egMapsOSMPrefix = 'map_osm';		
+		
+		/*
 		# Array of String. The default controls for OSM maps. This value will only be
 		# used when the user does not provide one.
 		# Available values: layerswitcher, mouseposition, autopanzoom, panzoom,
