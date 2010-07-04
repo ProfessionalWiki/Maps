@@ -24,7 +24,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
+		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage, $wgLang;
 		
 		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
 
@@ -40,6 +40,8 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
+		$langCode = $wgLang->getCode();
+		
 		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
@@ -51,7 +53,8 @@ addOnloadHook(
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
-			[]
+			[],
+			'$langCode'
 		);
 	}
 );

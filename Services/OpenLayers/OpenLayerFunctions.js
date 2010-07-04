@@ -11,8 +11,10 @@
  * Creates and initializes an OpenLayers map. 
  * The resulting map is returned by the function but no further handling is required in most cases.
  */
-function initOpenLayer(mapName, lon, lat, zoom, mapTypes, controls, marker_data){
+function initOpenLayer( mapName, lon, lat, zoom, mapTypes, controls, marker_data, langCode ){
 
+	OpenLayers.Lang.setCode( langCode );
+	
 	// Create a new OpenLayers map with without any controls on it.
 	var mapOptions = 	{ 
 			            projection: new OpenLayers.Projection("EPSG:900913"),
@@ -168,4 +170,3 @@ function initOLSettings(minWidth, minHeight) {
 		}
 	);
 }
-
