@@ -35,7 +35,7 @@ abstract class MapsBaseMap implements iMapParserFunction {
 	private $specificParameters = false;
 	protected $featureParameters = false;
 	
-	protected abstract function getDefaultZoom();
+	protected abstract function getDefaultZoom();	
 	
 	public function __construct( MapsMappingService $service ) {
 		$this->mService = $service;
@@ -122,8 +122,6 @@ abstract class MapsBaseMap implements iMapParserFunction {
 		$this->parser = $parser;
 		
 		$this->featureParameters = MapsDisplayMap::$parameters;
-		
-		$this->doMapServiceLoad();
 
 		$this->setMapProperties( $params );
 		
@@ -139,12 +137,6 @@ abstract class MapsBaseMap implements iMapParserFunction {
 		
 		return $this->output;
 	}
-	
-	/**
-	 * Optionally override.
-	 */
-	public function doMapServiceLoad() {
-	}		
 	
 	/**
 	 * Sets the $centreLat and $centreLon fields.

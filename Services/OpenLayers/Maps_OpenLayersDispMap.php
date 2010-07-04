@@ -21,17 +21,6 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	}
 	
 	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 */
-	public function doMapServiceLoad() {
-		global $egOpenLayersOnThisPage;
-		
-		$egOpenLayersOnThisPage++;
-		
-		$this->elementNr = $egOpenLayersOnThisPage;
-	}
-	
-	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
 	public function addSpecificMapHTML() {
@@ -39,6 +28,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 		
 		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
 
+		$egOpenLayersOnThisPage++;
 		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
 		
 		$this->output .= Html::element(

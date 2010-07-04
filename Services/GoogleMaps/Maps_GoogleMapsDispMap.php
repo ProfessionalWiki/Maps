@@ -42,22 +42,12 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	}
 	
 	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 */
-	public function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage;
-		
-		$egGoogleMapsOnThisPage++;
-		
-		$this->elementNr = $egGoogleMapsOnThisPage;
-	}
-	
-	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
 	public function addSpecificMapHTML() {
 		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
 		
+		$egGoogleMapsOnThisPage++;
 		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
 		
 		$this->mService->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );

@@ -42,17 +42,6 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 			),
 		);
 	}
-
-	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 */
-	public function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage;
-		
-		$egGoogleMapsOnThisPage++;
-		
-		$this->elementNr = $egGoogleMapsOnThisPage;
-	}
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
@@ -60,6 +49,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML() {
 		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
 		
+		$egGoogleMapsOnThisPage++;
 		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
 		
 		$this->mService->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );

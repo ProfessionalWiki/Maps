@@ -28,24 +28,13 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	}
 	
 	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
-	 */
-	public function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage;
-		
-		$egYahooMapsOnThisPage++;
-		
-		$this->elementNr = $egYahooMapsOnThisPage;
-	}
-	
-	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
 	public function addSpecificMapHTML() {
 		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
 		
+		$egYahooMapsOnThisPage++;
 		$mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
 		
 		$this->output .= Html::element(

@@ -28,24 +28,13 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	}
 	
 	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
-	 */
-	public function doMapServiceLoad() {
-		global $egGMaps3OnThisPage;
-		
-		$egGMaps3OnThisPage++;
-		
-		$this->elementNr = $egGMaps3OnThisPage;
-	}
-	
-	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
 	public function addSpecificMapHTML() {
 		global $egMapsGMaps3Prefix, $egGMaps3OnThisPage;
 		
+		$egGMaps3OnThisPage++;
 		$mapName = $egMapsGMaps3Prefix . '_' . $egGMaps3OnThisPage;
 		
 		$this->output .= Html::element(

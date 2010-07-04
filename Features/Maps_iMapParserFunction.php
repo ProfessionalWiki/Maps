@@ -26,11 +26,6 @@ interface iMapParserFunction {
 	function getMapHtml( Parser &$parser, array $params );
 	
 	/**
-	 * Map service specific map count and loading of dependencies.
-	 */
-	function doMapServiceLoad();
-	
-	/**
 	 * Adds the HTML specific to the mapping service to the output.
 	 */
 	function addSpecificMapHTML();

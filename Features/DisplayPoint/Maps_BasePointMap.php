@@ -39,6 +39,8 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	private $specificParameters = false;
 	private $markerData = array();
 	
+	protected abstract function getDefaultZoom();	
+	
 	public function __construct( MapsMappingService $service ) {
 		$this->mService = $service;
 	}
@@ -139,8 +141,6 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 		$this->parser = $parser;
 		
 		$this->featureParameters = MapsDisplayPoint::$parameters;
-	
-		$this->doMapServiceLoad();
 
 		$this->setMapProperties( $params );
 		
