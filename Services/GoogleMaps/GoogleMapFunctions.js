@@ -101,45 +101,59 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	map.setMapType(mapOptions.type);	
 
+	var hasSearchBar = false;
+	
+	for ( i = mapOptions.controls.length - 1; i >= 0; i-- ) {
+		if ( mapOptions.controls[i] == 'searchbar' ) {
+			hasSearchBar = true;
+			break;
+		}
+	}
+	
 	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
-	for (i = 0; i < mapOptions.controls.length; i++){
-		if (mapOptions.controls[i].toLowerCase() == 'auto') {
-			if (mapElement.offsetHeight > 75) mapOptions.controls[i] = mapElement.offsetHeight > 320 ? 'large' : 'small';
+	for ( i = 0; i < mapOptions.controls.length; i++ ) {
+		if ( mapOptions.controls[i].toLowerCase() == 'auto' ) {
+			if ( mapElement.offsetHeight > 75 ) mapOptions.controls[i] = mapElement.offsetHeight > 320 ? 'large' : 'small';
 		}			
 		
-		switch (mapOptions.controls[i]) {
+		switch ( mapOptions.controls[i] ) {
 			case 'large' : 
-				map.addControl(new GLargeMapControl3D());
+				map.addControl( new GLargeMapControl3D() );
 				break;
 			case 'small' : 
-				map.addControl(new GSmallZoomControl3D());
+				map.addControl( new GSmallZoomControl3D() );
 				break;
 			case 'large-original' : 
-				map.addControl(new GLargeMapControl());
+				map.addControl( new GLargeMapControl() );
 				break;
 			case 'small-original' : 
-				map.addControl(new GSmallMapControl());
+				map.addControl( new GSmallMapControl() );
 				break;
 			case 'zoom' : 
-				map.addControl(new GSmallZoomControl());
+				map.addControl( new GSmallZoomControl() );
 				break;
 			case 'type' : 
-				map.addControl(new GMapTypeControl());
+				map.addControl( new GMapTypeControl() );
 				break;				
 			case 'type-menu' : 
-				map.addControl(new GMenuMapTypeControl());
+				map.addControl( new GMenuMapTypeControl() );
 				break;
 			case 'overlays' : 
-				map.addControl(new MoreControl());
-				break;					
+				map.addControl( new MoreControl() );
+				break;		
 			case 'overview' : case 'overview-map' : 
-				map.addControl(new GOverviewMapControl());
-				break;					
+				map.addControl( new GOverviewMapControl() );
+				break;
 			case 'scale' : 
-				map.addControl(new GScaleControl());
+				if ( hasSearchBar ) {
+					map.addControl( new GScaleControl(), new GControlPosition( G_ANCHOR_BOTTOM_LEFT, new GSize( 5,37 ) ) );
+				}
+				else {
+					map.addControl( new GScaleControl() );
+				}
 				break;
 			case 'nav-label' : case 'nav' : 
-				map.addControl(new GNavLabelControl());
+				map.addControl( new GNavLabelControl() );
 				break;
 			case 'searchbar' :
 				map.enableGoogleBar();
@@ -168,7 +182,7 @@ function createGoogleMap(mapName, mapOptions, markers) {
 	
 	// Code to add KML files.
 	var kmlOverlays = [];
-	for ( i = mapOptions.kml.length -1; i >= 0; i-- ) {
+	for ( i = mapOptions.kml.length - 1; i >= 0; i-- ) {
 		kmlOverlays[i] = new GGeoXml( mapOptions.kml[i] );
 		map.addOverlay( kmlOverlays[i] );
 	}
