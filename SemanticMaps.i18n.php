@@ -669,6 +669,7 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'semanticmaps_desc' => 'Tilbyr muligheten til å se og endre koordinatdata lagret gjennom Semantic MediaWiki-utvidelsen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Tilgjengelige karttjenester: $1',
+	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressen her',
 	'semanticmaps_notfound' => 'ikke funnet',
