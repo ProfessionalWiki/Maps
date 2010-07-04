@@ -75,7 +75,7 @@ class MapsOpenLayers extends MapsMappingService {
 			Html::linkedStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ),
 			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ),
 			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
-			Html::inlineScript( 'initOLSettings(200, 100);' )
+			Html::inlineScript( 'initOLSettings(200, 100); var msgMarkers = "' . Xml::encodeJsVar( wfMsg( 'maps-markers' ) ) . '";' )
 		);			
 	}	
 	

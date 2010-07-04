@@ -22,6 +22,7 @@ $messages['en'] = array(
 Available mapping services: $1",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
+	'maps-markers' => 'Markers',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
