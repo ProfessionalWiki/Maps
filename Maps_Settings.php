@@ -359,6 +359,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 		# The difinitions for the layers that should be available for the user.
 		$egMapsOLAvailableLayers = array(
+			'google-physical'	=> array( 'OpenLayers.Layer.Google( "Google Physical", {type: G_PHYSICAL_MAP} )', 'google' ),
+			'google-streets'	=> array( 'OpenLayers.Layer.Google( "Google Streets", {numZoomLevels: 20} )', 'google' ),
+			'google-hybrid'		=> array( 'OpenLayers.Layer.Google( "Google Hybrid", {type: G_HYBRID_MAP, numZoomLevels: 20} )', 'google' ),
+			'google-satellite'	=> array( 'OpenLayers.Layer.Google( "Google Satellite", {type: G_SATELLITE_MAP, numZoomLevels: 22} )', 'google' ),
+
 			'bing-normal' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ),
 			'bing-satellite' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing' ),
 			'bing-hybrid' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing' ),
@@ -394,6 +399,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Layer group definitions. Group names must be different from layer names, and
 		# must only contain layers that are present in $egMapsOLAvailableLayers.
 		$egMapsOLLayerGroups = array(
+			'google' => array( 'google-physical', 'google-streets', 'google-hybrid', 'google-satellite' ),
 			'yahoo' => array( 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid' ),
 			'bing' => array( 'bing-normal', 'bing-satellite', 'bing-hybrid' ),
 			'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
