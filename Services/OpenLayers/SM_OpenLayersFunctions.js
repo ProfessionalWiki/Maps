@@ -10,7 +10,7 @@
 /**
  * This function holds specific functionality for the Open Layers form input of Semantic Maps
  */
-function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls, height) {
+function makeFormInputOpenLayer( mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls, height, langCode ) {
 	var markers = Array();
 
 	// Show a starting marker only if marker coordinates are provided
@@ -57,9 +57,9 @@ function makeFormInputOpenLayer(mapName, locationFieldName, lat, lon, zoom, mark
      });
      
 	var clickHanler = new OpenLayers.Control.Click();
-     controls.push(clickHanler);
+	controls.push(clickHanler);
      
-     var map = initOpenLayer(mapName, lon, lat, zoom, layers, controls, markers, height);
+	var map = initOpenLayer( mapName, lon, lat, zoom, layers, controls, markers, height, langCode );
 	
 	// Make the map variable available for other functions
 	if (!window.OLMaps) window.OLMaps = new Object;

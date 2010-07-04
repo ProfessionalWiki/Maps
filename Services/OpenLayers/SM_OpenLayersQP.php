@@ -44,6 +44,8 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
 	protected function addSpecificMapHTML() {
+		global $wgLang;
+		
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
@@ -67,6 +69,8 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		
 		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
 		
+		$langCode = $wgLang->getCode();
+		
 		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
@@ -77,7 +81,8 @@ addOnloadHook(
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
-			[$markersString]
+			[$markersString],
+			'$langCode'
 		);
 	}
 );

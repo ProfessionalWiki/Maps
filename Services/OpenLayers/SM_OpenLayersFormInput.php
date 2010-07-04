@@ -65,7 +65,7 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addSpecificMapHTML()
 	 */
 	protected function addSpecificMapHTML() {
-		global $wgOut;
+		global $wgOut, $wgLang;
 		
 		$this->output .= Html::element(
 			'div',
@@ -77,6 +77,8 @@ final class SMOpenLayersFormInput extends SMFormInput {
 		);
 		
 		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
+		
+		$langCode = $wgLang->getCode();
 		
 		$wgOut->addInlineScript( <<<EOT
 addOnloadHook(
@@ -90,7 +92,8 @@ addOnloadHook(
 			{$this->markerCoords['lat']},
 			{$this->markerCoords['lon']},
 			[$layerItems],
-			[$this->controls]
+			[$this->controls],
+			'$langCode'
 		);
 	}
 );
