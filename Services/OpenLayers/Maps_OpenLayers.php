@@ -72,7 +72,7 @@ class MapsOpenLayers extends MapsMappingService {
 		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
 		return array(
-			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ),
+			Html::linkedStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ),
 			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ),
 			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
 			Html::inlineScript( 'initOLSettings(200, 100);' )
