@@ -23,28 +23,18 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 */
 	protected function setQueryPrinterSettings() {
-		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
-		
-		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
+		global $egMapsOpenLayersZoom;
 		$this->defaultZoom = $egMapsOpenLayersZoom;
-	}
-
-	/**
-	 * @see SMMapPrinter::doMapServiceLoad()
-	 */
-	protected function doMapServiceLoad() {
-		global $egOpenLayersOnThisPage;
-		
-		$egOpenLayersOnThisPage++;
-		
-		$this->elementNr = $egOpenLayersOnThisPage;
 	}
 	
 	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
 	protected function addSpecificMapHTML() {
-		global $wgLang;
+		global $wgLang, $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
+		
+		$egOpenLayersOnThisPage++;
+		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;			
 		
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
@@ -61,7 +51,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
@@ -75,7 +65,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 addOnloadHook(
 	function() {
 		initOpenLayer(
-			'$this->mapName',
+			'$mapName',
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,

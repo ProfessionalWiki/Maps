@@ -33,11 +33,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	protected abstract function setQueryPrinterSettings();
 	
-	/**
-	 * Map service specific map count and loading of dependencies.
-	 */
-	protected abstract function doMapServiceLoad();
-	
 	protected abstract function getServiceName();
 	
 	/**
@@ -90,10 +85,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			
 			// Only create a map when there is at least one result.
 			if ( count( $this->mLocations ) > 0 || $this->forceshow ) {
-				$this->doMapServiceLoad();
-				
-				$this->setMapName();
-				
 				$this->setZoom();
 				
 				$this->setCentre();
@@ -304,7 +295,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * Sets the zoom level to the provided value, or when not set, to the default.
 	 */
 	private function setZoom() {
-		if ( strlen( $this->zoom ) < 1 ) {
+		if ( $this->zoom == '' ) {
 			if ( count( $this->mLocations ) > 1 ) {
 		        $this->zoom = 'null';
 		    }
@@ -320,7 +311,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	private function setCentre() {
 		// If a centre value is set, use it.
-		if ( strlen( $this->centre ) > 0 ) {
+		if ( $this->centre != '' ) {
 			// Geocode and convert if required.
 			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->mService->getName() );
 			
@@ -347,16 +338,19 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	}
 	
 	/**
-	 * Sets the $mapName field, using the $elementNamePrefix and $elementNr.
+	 * Returns the internationalized name of the mapping service.
+	 * 
+	 * @return string
 	 */
-	protected function setMapName() {
-		$this->mapName = $this->elementNamePrefix . '_' . $this->elementNr;
-	}
-	
 	public final function getName() {
 		return wfMsg( 'maps_' . $this->mService->getName() );
 	}
 	
+	/**
+	 * Returns a list of parameter information, for usage by Special:Ask and others.
+	 * 
+	 * @return array
+	 */
     public function getParameters() {
     	global $egMapsMapWidth, $egMapsMapHeight;
     	

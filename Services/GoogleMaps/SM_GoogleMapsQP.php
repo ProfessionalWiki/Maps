@@ -24,10 +24,8 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 */
 	protected function setQueryPrinterSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
+		global $egMapsGoogleMapsZoom, $egMapsGMapOverlays;
 		
-		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
-
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
 		$this->specificParameters = array(
@@ -42,21 +40,15 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	}
 	
 	/**
-	 * @see SMMapPrinter::doMapServiceLoad()
-	 */
-	protected function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage;
-		
-		$egGoogleMapsOnThisPage++;
-		
-		$this->elementNr = $egGoogleMapsOnThisPage;
-	}
-	
-	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
 	protected function addSpecificMapHTML() {
-		$this->mService->addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
+		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
+		
+		$egGoogleMapsOnThisPage++;
+		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;		
+		
+		$this->mService->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
 		
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
@@ -72,7 +64,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
@@ -81,7 +73,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
-		initializeGoogleMap('$this->mapName', 
+		initializeGoogleMap('$mapName', 
 			{
 				lat: $this->centreLat,
 				lon: $this->centreLon,

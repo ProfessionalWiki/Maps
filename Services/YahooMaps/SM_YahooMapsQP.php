@@ -24,26 +24,18 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	protected function setQueryPrinterSettings() {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
 		
-		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
-		
 		$this->defaultZoom = $egMapsYahooMapsZoom;
-	}
-	
-	/**
-	 * @see SMMapPrinter::doMapServiceLoad()
-	 */
-	protected function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage;
-		
-		$egYahooMapsOnThisPage++;
-		
-		$this->elementNr = $egYahooMapsOnThisPage;
 	}
 	
 	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
 	protected function addSpecificMapHTML() {
+		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
+		
+		$egYahooMapsOnThisPage++;
+		$mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;		
+		
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
@@ -59,7 +51,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
@@ -69,7 +61,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 addOnloadHook(
 	function() {
 		initializeYahooMap(
-			'$this->mapName',
+			'$mapName',
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
