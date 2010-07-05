@@ -315,10 +315,24 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			// Geocode and convert if required.
 			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->mService->getName() );
 			
-			$this->centreLat = $centre['lat'];
-			$this->centreLon = $centre['lon'];
+			if ( $centre ) {
+				$this->centreLat = $centre['lat'];
+				$this->centreLon = $centre['lon'];				
+			}
+			else {
+				$this->setCentreDefault();
+			}
 		}
-		elseif ( count( $this->mLocations ) > 1 ) {
+		else {
+			$this->setCentreDefault();
+		}
+	}
+	
+	/**
+	 * Figures out the default value for the centre. 
+	 */
+	private function setCentreDefault() {
+		if ( count( $this->mLocations ) > 1 ) {
 			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
 			$this->centreLat = 'null';
 			$this->centreLon = 'null';
@@ -334,7 +348,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			
 			$this->centreLat = $egMapsMapLat;
 			$this->centreLon = $egMapsMapLon;
-		}
+		}		
 	}
 	
 	/**
