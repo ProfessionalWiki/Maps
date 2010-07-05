@@ -168,7 +168,7 @@ final class MapsMapper {
 
 		// Determine the minimum and maximum values.
 		if ( preg_match( '/^.*%$/', $value ) ) {
-			if ( count( $egMapsSizeRestrictions[$dimension] >= 4 ) ) {
+			if ( count( $egMapsSizeRestrictions[$dimension] ) >= 4 ) {
 				$min = $egMapsSizeRestrictions[$dimension][2];
 				$max = $egMapsSizeRestrictions[$dimension][3];
 			} else {
@@ -183,15 +183,15 @@ final class MapsMapper {
 
 		// See if the actual value is withing the limits.
 		$number = preg_replace( '/[^0-9]/', '', $value );
-		if ( $number < $egMapsSizeRestrictions[$dimension][0] ) {
+		if ( $number < $min ) {
 			if ( $correct ) {
-				$value = $egMapsSizeRestrictions[$dimension][0];
+				$value = $min;
 			} else {
 				return false;
 			}
-		} else if ( $number > $egMapsSizeRestrictions[$dimension][1] ) {
+		} else if ( $number > $max ) {
 			if ( $correct ) {
-				$value = $egMapsSizeRestrictions[$dimension][1];
+				$value = $max;
 			} else {
 				return false;
 			}
