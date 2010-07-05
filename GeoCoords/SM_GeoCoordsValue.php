@@ -282,10 +282,20 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Create links to mapping services based on a wiki-editable message. The parameters
 	 * available to the message are:
 	 * 
+	 * $1: The location in non-directional float notation.
+	 * $2: The location in directional DMS notation.
+	 * $3: The latitude in non-directional float notation.
+	 * $4 The longitude in non-directional float notation.
+	 * 
 	 * @return array
 	 */
 	protected function getServiceLinkParams() {
-		return array(  ); // TODO
+		return array(
+			MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, 'float', false ),
+			MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, 'dms', true ),
+			$this->mCoordinateSet['lat'],
+			$this->mCoordinateSet['lon']
+		);
 	}
 	
 	/**
