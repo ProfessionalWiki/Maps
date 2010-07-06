@@ -61,6 +61,10 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
  * 'Initialization' function for the Semantic Maps extension. 
  * The only work done here is creating the extension credits for
  * Semantic Maps. The actuall work in done via the Maps hooks.
+ * 
+ * @since 0.1
+ * 
+ * @return true
  */
 function smfSetup() {
 	global $wgExtensionCredits, $wgLang, $wgOut, $egMapsServices, $smgScriptPath;
@@ -94,6 +98,10 @@ function smfSetup() {
 
 /**
  * Adds a link to Admin Links page.
+ * 
+ * @since 0.2
+ * 
+ * @return true
  */
 function smfAddToAdminLinks( &$admin_links_tree ) {
     $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );

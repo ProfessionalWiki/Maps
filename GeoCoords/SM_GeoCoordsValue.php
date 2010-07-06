@@ -20,6 +20,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  * @author Markus Krötzsch
  * 
+ * @since 0.6
+ * 
  * @ingroup SemanticMaps
  */
 class SMGeoCoordsValue extends SMWDataValue {
@@ -30,7 +32,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 	/**
 	 * Adds support for the geographical coordinate data type to Semantic MediaWiki.
 	 * 
+	 * @since 0.6
+	 * 
 	 * TODO: i18n keys still need to be moved
+	 * 
+	 * @return true
 	 */
 	public static function initGeoCoordsType() {
 		SMWDataValueFactory::registerDatatype( '_geo', __CLASS__, 'Geographic coordinate' );
@@ -40,7 +46,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 	/**
 	 * Defines the signature for geographical fields needed for the smw_coords table.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param array $fieldTypes The field types defined by SMW, passed by reference.
+	 * 
+	 * @return true
 	 */
 	public static function initGeoCoordsFieldTypes( array $fieldTypes ) {
 		global $smgUseSpatialExtensions;
@@ -55,6 +65,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * Defines the layout for the smw_coords table which is used to store value of the GeoCoords type.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param array $propertyTables The property tables defined by SMW, passed by reference.
 	 */
@@ -76,6 +88,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::parseUserValue
+	 * 
+	 * @since 0.6
 	 */
 	protected function parseUserValue( $value ) {
 		$this->parseUserValueOrQuery( $value );
@@ -84,6 +98,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	/**
 	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
 	 * comparators between all values.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $value
 	 * 
@@ -95,6 +111,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * Parses the value into the coordinates and any meta data provided, such as distance.
+	 * 
+	 * @since 0.6
+	 * 
+	 * @param $value String
+	 * @param $asQuery Boolean
 	 */
 	protected function parseUserValueOrQuery( $value, $asQuery = false ) {
 		$this->mWikivalue = $value;
@@ -152,6 +173,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::parseDBkeys
+	 * 
+	 * @since 0.6
 	 */
 	protected function parseDBkeys( $args ) {
 		global $smgUseSpatialExtensions, $smgQPCoodFormat, $smgQPCoodDirectional;
@@ -176,6 +199,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::getDBkeys
+	 * 
+	 * @since 0.6
 	 */
 	public function getDBkeys() {
 		global $smgUseSpatialExtensions;
@@ -201,6 +226,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::getSignature
+	 * 
+	 * @since 0.6
 	 */	
 	public function getSignature() {
 		global $smgUseSpatialExtensions;
@@ -209,6 +236,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getShortWikiText
+	 * 
+	 * @since 0.6
 	 */
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
@@ -228,6 +257,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::getShortHTMLText
+	 * 
+	 * @since 0.6
 	 */
 	public function getShortHTMLText( $linker = null ) {
 		return $this->getShortWikiText( $linker );
@@ -235,6 +266,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::getLongWikiText
+	 * 
+	 * @since 0.6
 	 */
 	public function getLongWikiText( $linked = null ) {
 		if ( !$this->isValid() ) {
@@ -248,6 +281,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getLongHTMLText
+	 * 
+	 * @since 0.6
 	 */
 	public function getLongHTMLText( $linker = null ) {
 		return $this->getLongWikiText( $linker );
@@ -255,6 +290,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getWikiValue
+	 * 
+	 * @since 0.6
 	 */
 	public function getWikiValue() {
 		$this->unstub();
@@ -263,6 +300,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getExportData
+	 * 
+	 * @since 0.6
 	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
@@ -287,6 +326,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * $3: The latitude in non-directional float notation.
 	 * $4 The longitude in non-directional float notation.
 	 * 
+	 * @since 0.6.4
+	 * 
 	 * @return array
 	 */
 	protected function getServiceLinkParams() {
@@ -299,6 +340,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	}
 	
 	/**
+	 * @since 0.6
+	 * 
 	 * @return array
 	 */
 	public function getCoordinateSet() {
@@ -308,6 +351,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getValueIndex
 	 * 
+	 * @since 0.6
+	 * 
 	 * @return integer
 	 */	
 	public function getValueIndex() {
@@ -316,6 +361,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getLabelIndex
+	 * 
+	 * @since 0.6
 	 * 
 	 * @return integer
 	 */		
