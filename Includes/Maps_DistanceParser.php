@@ -18,6 +18,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * 
  * @ingroup Maps
  * 
+ * @since 0.6
+ * 
  * @author Jeroen De Dauw
  */
 class MapsDistanceParser {
@@ -26,6 +28,8 @@ class MapsDistanceParser {
 	
 	/**
 	 * Parses a distance optionaly containing a unit to a float value in meters.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $distance
 	 * 
@@ -48,6 +52,8 @@ class MapsDistanceParser {
 	/**
 	 * Formats a given distance in meters to a distance in an optionaly specified notation.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param float $meters
 	 * @param string $unit
 	 * @param integer $decimals
@@ -62,6 +68,8 @@ class MapsDistanceParser {
 	/**
 	 * Shortcut for converting from one unit to another.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $distance
 	 * @param string $unit
 	 * @param integer $decimals
@@ -75,6 +83,8 @@ class MapsDistanceParser {
 	/**
 	 * Returns if the provided string is a valid distance.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $distance
 	 * 
 	 * @return boolean
@@ -85,6 +95,8 @@ class MapsDistanceParser {
 	
 	/**
 	 * Returns the unit to meter ratio in a safe way, by first resolving the unit.
+	 * 
+	 * @since 0.6.2
 	 * 
 	 * @param string $unit
 	 * 
@@ -97,6 +109,8 @@ class MapsDistanceParser {
 	
 	/**
 	 * Returns a valid unit. If the provided one is invalid, the default will be used.
+	 * 
+	 * @since 0.6.2
 	 * 
 	 * @param string $unit
 	 * 
@@ -123,6 +137,8 @@ class MapsDistanceParser {
 	
 	/**
 	 * Returns a list of all suported units.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @return array
 	 */
