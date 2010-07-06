@@ -21,6 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * TODO: it migt be a lot nicer to return the releveant segments from the regexes instead of manually parsing them out.
  * 
  * @ingroup Maps
+ * @since 0.6
  * 
  * @author Jeroen De Dauw
  */
@@ -36,6 +37,8 @@ class MapsCoordinateParser {
 	 * Takes in a set of coordinates and checks if they are a supported format.
 	 * If they are, they will be parsed to a set of non-directional floats, that
 	 * will be stored in an array with keys 'lat' and 'lon'. 
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinates The coordinates to be parsed.
 	 * 
@@ -87,6 +90,8 @@ class MapsCoordinateParser {
 	 * Returns the type of the provided coordinates, or flase if they are invalid.
 	 * You can use this as validation function, but be sure to use ===, since 0 can be returned.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordinates
 	 * 
 	 * @return Integer or false
@@ -113,6 +118,8 @@ class MapsCoordinateParser {
 	/**
 	 * Returns a boolean indicating if the provided value is a valid set of coordinate.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordsOrAddress
 	 * 
 	 * @return boolean
@@ -134,6 +141,8 @@ class MapsCoordinateParser {
 	 * they will be parsed to the given notation, which defaults to
 	 * non-directional floats
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param array $coordinates The set of coordinates that needs to be formatted. Either an associative
 	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
@@ -152,6 +161,8 @@ class MapsCoordinateParser {
 	 * 
 	 * they will be parsed to the given notation, which defaults to
 	 * non-directional floats
+	 * 
+	 * @since 0.6.2
 	 * 
 	 * @param array $coordinates The set of coordinates that needs to be formatted. Either an associative
 	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
@@ -176,6 +187,8 @@ class MapsCoordinateParser {
 	/**
 	 * Returns a normalized version of the provided coordinates.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordinates
 	 * 
 	 * @return string The normalized version of the provided coordinates.
@@ -195,6 +208,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Returns a string with control characters and characters with ascii values above 126 removed.
+	 * 
+	 * @since 0.6.3
 	 * 
 	 * @param string $string Yeah, it's a string, seriously!
 	 * 
@@ -216,6 +231,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Formats a single non-directional float coordinate in the given notation.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinate The coordinate to be formatted.
 	 * @param coordinate type $targetFormat The notation to which they should be formatted.
@@ -258,6 +275,8 @@ class MapsCoordinateParser {
 	/**
 	 * Parses a coordinate that's in the provided notation to float representatation.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordinate The coordinate to be parsed.
 	 * @param coordinate type $coordType The notation the coordinate is currently in.
 	 * 
@@ -281,6 +300,8 @@ class MapsCoordinateParser {
 	/**
 	 * returns whether the coordinates are in float representataion.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordinates
 	 * 
 	 * @return boolean
@@ -293,6 +314,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * returns whether the coordinates are in DMS representataion.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinates
 	 * 
@@ -309,6 +332,8 @@ class MapsCoordinateParser {
 	/**
 	 * returns whether the coordinates are in Decimal Degree representataion.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordinates
 	 * 
 	 * @return boolean
@@ -321,6 +346,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * returns whether the coordinates are in Decimal Minute representataion.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinates
 	 * 
@@ -335,7 +362,11 @@ class MapsCoordinateParser {
 	/**
 	 * Turn i18n labels into English ones, for both validation and ease of handling.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordinates
+	 * 
+	 * @return string
 	 */
 	private static function handleI18nLabels( $coordinates ) {
 		self::initializeDirectionLabels();
@@ -344,6 +375,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Initialize the cache for internationalized direction labels if not done yet. 
+	 * 
+	 * @since 0.6
 	 */
 	protected static function initializeDirectionLabels() {
 		if ( !self::$mI18nDirections ) {
@@ -360,6 +393,8 @@ class MapsCoordinateParser {
 	/**
 	 * Turns directional notation (N/E/S/W) of a coordinate set into non-directional notation (+/-).
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param array $coordinates
 	 * 
 	 * @return array
@@ -373,6 +408,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Turns directional notation (N/E/S/W) of a single coordinate into non-directional notation (+/-).
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinate
 	 * 
@@ -398,6 +435,8 @@ class MapsCoordinateParser {
 	/**
 	 * Turns non-directional notation in directional notation when needed.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param array $coordinates The coordinates set to possibly make directional. Needs to be non-directional!
 	 * 
 	 * @return array
@@ -415,6 +454,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Turns non-directional notation in directional notation.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinate The coordinate to make directional. Needs to be non-directional!
 	 * @param boolean $isLat Should be true for latitudes and false for longitudes.
@@ -438,6 +479,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Takes a set of coordinates in DMS representataion, and returns them in float representataion.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinate
 	 * 
@@ -469,6 +512,8 @@ class MapsCoordinateParser {
 	/**
 	 * Takes a set of coordinates in Decimal Degree representataion, and returns them in float representataion.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $coordinate
 	 * 
 	 * @return string
@@ -479,6 +524,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Takes a set of coordinates in Decimal Minute representataion, and returns them in float representataion.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinate
 	 * 
@@ -498,6 +545,13 @@ class MapsCoordinateParser {
 		return $coordinate;
 	}
 	
+	/**
+	 * Gets a regex group that allows only the supported seperators.
+	 * 
+	 * @since 0.6.2
+	 * 
+	 * @return string
+	 */
 	protected static function getSeparatorsRegex() {
 		if ( !self::$mSeparatorsRegex ) self::$mSeparatorsRegex = '(' . implode( '|', self::$mSeparators ) . ')';
 		return self::$mSeparatorsRegex;
@@ -505,6 +559,8 @@ class MapsCoordinateParser {
 	
 	/**
 	 * Parse a string containing coordinates and return the same value in the specified notation.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $coordinates
 	 * @param $targetFormat
