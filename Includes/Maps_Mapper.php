@@ -12,6 +12,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Class with generic mapping methods.
+ * 
+ * @since 0.1
+ * 
+ * @author Jeroen De Dauw
+ */
 final class MapsMapper {
 	
 	/**

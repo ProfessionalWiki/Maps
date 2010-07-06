@@ -79,6 +79,8 @@ else {
 /**
  * Initialization function for the Maps extension.
  * 
+ * @since 0.1
+ * 
  * @return true
  */
 function efMapsSetup() {
@@ -141,6 +143,8 @@ function efMapsSetup() {
 
 /**
  * Adds a link to Admin Links page.
+ * 
+ * @since 0.2
  * 
  * @return true
  */

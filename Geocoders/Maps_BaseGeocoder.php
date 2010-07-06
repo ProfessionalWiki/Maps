@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MapsBaseGeocoder is an abstract class inherited by the geocoding classes
+ * File holding the MapsBaseGeocoder class.
  *
  * @file Maps_BaseGeocoder.php
  * @ingroup Maps
@@ -13,6 +13,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * MapsBaseGeocoder is an abstract class inherited by the geocoding classes.
+ * 
+ * @ingroup Maps
+ * @since 0.2
+ * 
+ * @author Jeroen De Dauw
+ */
 abstract class MapsBaseGeocoder {
 	
 	/**
@@ -20,7 +28,11 @@ abstract class MapsBaseGeocoder {
 	 * longitude (lon) of the provided address, or false in case the
 	 * geocoding fails.
 	 *
-	 * @param string $address
+	 * @since 0.2
+	 *
+	 * @param $address String: the address to be geocoded
+	 * 
+	 * @return string or false
 	 */
 	public static function geocode( $address ) {
 		return false; // This method needs to be overriden, if it's not, return false.
@@ -29,7 +41,10 @@ abstract class MapsBaseGeocoder {
 	/**
 	 * Returns the content of the requested file, or false when the connection fails
 	 * 
-	 * @param string $requestURL
+	 * @since 0.2
+	 * 
+	 * @param $requestURL String: the url to make the request to
+	 * 
 	 * @return string or false
 	 */
 	protected static function GetResponse( $requestURL ) {
@@ -46,7 +61,8 @@ abstract class MapsBaseGeocoder {
 	 * Attempts to get the contents of a file via cURL request and
 	 * returns it, or false when the attempt fails.
 	 * 
-	 * @param string $requestURL
+	 * @param $requestURL String: the url to make the request to
+	 * 
 	 * @return string or false
 	 */
 	protected static function GetCurlResponse( $requestURL ) {
