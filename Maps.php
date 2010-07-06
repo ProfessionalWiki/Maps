@@ -78,6 +78,8 @@ else {
 
 /**
  * Initialization function for the Maps extension.
+ * 
+ * @return true
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
@@ -139,6 +141,8 @@ function efMapsSetup() {
 
 /**
  * Adds a link to Admin Links page.
+ * 
+ * @return true
  */
 function efMapsAddToAdminLinks( &$admin_links_tree ) {
     $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
