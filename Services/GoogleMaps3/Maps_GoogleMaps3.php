@@ -14,7 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * TODO
+ * Class holding information and functionallity specific to Google Maps v3.
+ * This infomation and features can be used by any mapping feature. 
+ * 
+ * @since 0.1
  * 
  * @ingroup MapsGoogleMaps3
  * 
@@ -22,6 +25,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsGoogleMaps3 extends MapsMappingService {
 	
+	/**
+	 * Constructor
+	 * 
+	 * @since 0.6.3
+	 */	
 	function __construct() {
 		parent::__construct(
 			'googlemaps3',
