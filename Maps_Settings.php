@@ -246,7 +246,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'auto',
 			'scale',
 			'type',
-			//'overlays' # Temporary disabled untill css issue has been fixed
+			'overlays'
 		);
 		
 		# Array. The default overlays for the Google Maps v2 overlays control, and
