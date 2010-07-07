@@ -7,7 +7,28 @@ version of Maps. You can find the most upt-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
-TODO
+=== Maps 0.6.4 ===
+(2010-07-08)
+
+==== New features ====
+
+* Added new OSM service based on iframe inclusion of toolserver page that renders OpenStreetMap tiles with Wikipedia overlays.
+
+* Added internationalization to the OpenLayers service.
+
+* Added support for including KML files for Google Maps v2.
+
+* Added 'searchbar' control for Google Maps v2.
+
+==== Refactoring ====
+
+* Moved more functionality over from feature classes to service classes to prevent crazy code-flow and code duplication.
+
+==== Bug fixes ====
+
+* Fixed bug in the OpenLayers service causing it to display badly in Chrome.
+
+* Fixed issue with with and height validation for % values, also causing backward compatibility problems with pre 0.6 setting definitions.
 
 === Maps 0.6.3 ===
 (2010-06-20)
