@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file holds the general information for the Google Maps service
+ * File holding the MapsMappingService class.
  *
  * @file Maps_MappingService.php
  * @ingroup Maps
@@ -13,38 +13,57 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Base class for mapping services. Deriving classes hold mapping service specific 
+ * information and functionality, which can be used by any mapping feature.
+ * 
+ * @since 0.6.3
+ * 
+ * @author Jeroen De Dauw
+ */
 class MapsMappingService implements iMappingService {
 	
 	/**
+	 * The internal name of the service.
 	 * 
 	 * @var string
 	 */
 	protected $mServiceName;
 	
 	/**
+	 * A list of aliases for the internal name.
 	 * 
 	 * @var array
 	 */
 	protected $mAliases;
 	
 	/**
+	 * A list of features that support the service, used for validation and defaulting.
 	 * 
 	 * @var array
 	 */
 	protected $mFeatures;
 	
 	/**
+	 * A list of parameter info specific to the service, which can be used by any feature
+	 * to pass along to Validator to handle parameters.
 	 * 
 	 * @var mixed Array or false
 	 */
 	private $mParameterInfo = false;
 	
 	/**
+	 * A list of dependencies (header items) that have been added.
 	 * 
 	 * @var array
 	 */
 	private $mAddedDependencies = array();
 	
+	/**
+	 * A list of dependencies (header items) that need to be added.
+	 * 
+	 * @var array
+	 */
 	private $mDependencies = array();
 	
 	/**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with OSM
+ * File holding the MapsOSMDispMap class.
  *
  * @file Maps_OSMDispMap.php
  * @ingroup OSM
@@ -13,8 +13,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Class for handling the display_map parser function with OSM.
+ * 
+ * @since 0.6.4
+ * 
+ * @ingroup OSM
+ * 
+ * @author Jeroen De Dauw
+ */
 class MapsOSMDispMap extends MapsBaseMap {
 	
+	/**
+	 * @since 0.6.4
+	 */
 	protected function getDefaultZoom() {
 		global $egMapsOSMZoom;
 		return $egMapsOSMZoom;
@@ -22,6 +34,8 @@ class MapsOSMDispMap extends MapsBaseMap {
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
+	 * 
+	 * @since 0.6.4
 	 */
 	public function addSpecificMapHTML() {	
 		global $egMapsOSMPrefix, $egOSMOnThisPage;

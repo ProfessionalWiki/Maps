@@ -14,7 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * TODO
+ * Class holding information and functionallity specific to OSM.
+ * This infomation and features can be used by any mapping feature. 
+ * 
+ * @since 0.6.4
  * 
  * @ingroup OSM
  * 
@@ -22,6 +25,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsOSM extends MapsMappingService {
 	
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.6.4
+	 */
 	function __construct() {
 		parent::__construct(
 			'osm',
