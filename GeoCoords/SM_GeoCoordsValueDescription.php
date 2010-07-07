@@ -18,11 +18,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  * 
+ * @since 0.6
+ * 
  * @ingroup SemanticMaps
  */
 class SMGeoCoordsValueDescription extends SMWValueDescription {
 	
 	/**
+	 * Constructor.
+	 * 
+	 * @since 0.6
+	 * 
 	 * @param SMGeoCoordsValue $dataValue
 	 */
 	public function __construct( SMGeoCoordsValue $dataValue, $comparator ) {
@@ -31,6 +37,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 
 	/**
 	 * @see SMWDescription::getQueryString
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param Boolean $asvalue
 	 */
@@ -45,6 +53,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	
 	/**
 	 * @see SMWDescription::getSQLCondition
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $tableName
 	 * @param array $fieldNames

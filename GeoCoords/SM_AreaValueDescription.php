@@ -22,11 +22,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * 
  * TODO: would be awesome to use Spatial Extensions to select coordinates
  * 
+ * @since 0.6
+ * 
  * @ingroup SemanticMaps
  */
 class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.6
+	 * 
+	 * @param SMGeoCoordsValue $dataValue
+	 * @param string $comparator
+	 * @param string $radius
+	 */
 	public function __construct( SMGeoCoordsValue $dataValue, $comparator, $radius ) {
 		parent::__construct( $dataValue, $comparator );	
 
@@ -38,6 +49,8 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 	/**
 	 * Sets the mBounds fields to an array returned by SMAreaValueDescription::getBoundingBox.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param SMGeoCoordsValue $dataValue
 	 * @param string $radius
@@ -52,6 +65,8 @@ class SMAreaValueDescription extends SMWValueDescription {
 	/**
 	 * @see SMWDescription:getQueryString
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param Boolean $asvalue
 	 */
 	public function getQueryString( $asValue = false ) {
@@ -65,12 +80,16 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 	/**
 	 * @see SMWDescription:prune
+	 * 
+	 * @since 0.6
 	 */
     public function prune( &$maxsize, &$maxdepth, &$log ) {
     	if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
 			$log[] = $this->getQueryString();
+			
 			$result = new SMWThingDescription();
 			$result->setPrintRequests( $this->getPrintRequests() );
+			
 			return $result;
 		} else {
 			$maxsize = $maxsize - $this->getSize();
@@ -81,6 +100,10 @@ class SMAreaValueDescription extends SMWValueDescription {
     
     /**
      * Returns the bounds of the area.
+     * 
+     * @since 0.6
+     * 
+     * @return array
      */
     public function getBounds() {
     	return $this->mBounds;
@@ -89,11 +112,13 @@ class SMAreaValueDescription extends SMWValueDescription {
 	/**
 	 * @see SMWDescription::getSQLCondition
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param string $tableName
 	 * @param array $fieldNames
 	 * @param DatabaseBase or Database $dbs
 	 * 
-	 * @return true
+	 * @return string or false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
 		global $smgUseSpatialExtensions;
@@ -140,6 +165,8 @@ class SMAreaValueDescription extends SMWValueDescription {
 	/**
 	 * Returns the lat and lon limits of a bounding box around a circle defined by the provided parameters.
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param array $centerCoordinates Array containing non-directional float coordinates with lat and lon keys. 
 	 * @param float $circleRadius The radidus of the circle to create a bounding box for, in m.
 	 * 
@@ -161,8 +188,13 @@ class SMAreaValueDescription extends SMWValueDescription {
 	
 	/**
 	 * Returns a boolean indicating if MapsGeoFunctions is available. 
+	 * 
+	 * @since 0.6
+	 * 
+	 * @return boolean
 	 */
 	protected static function geoFunctionsAreAvailable() {
 		return class_exists( 'MapsGeoFunctions' );
 	}	
+	
 }
