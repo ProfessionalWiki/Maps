@@ -26,6 +26,7 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitOSM';
  * Initialization function for the OSM service. 
  * 
  * @since 0.6.4
+ * @ingroup OSM
  * 
  * @return true
  */

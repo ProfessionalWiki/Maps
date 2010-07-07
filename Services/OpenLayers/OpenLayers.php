@@ -22,6 +22,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 
+/**
+ * Initialization function for the OpenLayers service. 
+ * 
+ * @since 0.6.3
+ * @ingroup MapsOpenLayers
+ * 
+ * @return true
+ */
 function efMapsInitOpenLayers() {
 	global $egMapsServices, $wgAutoloadClasses;
 	

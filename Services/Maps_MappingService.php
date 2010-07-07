@@ -96,6 +96,8 @@ class MapsMappingService implements iMappingService {
 	 * Initializes the service parameters.
 	 * 
 	 * You can override this method to set service specific parameters in the inheriting class. 
+	 * 
+	 * @param array $parameters
 	 */	
 	protected function initParameterInfo( array &$parameters ) {
 	}

@@ -40,6 +40,11 @@ class MapsOpenLayers extends MapsMappingService {
 		$egMapsOLLoadedLayers = array();
 	}	
 	
+	/**
+	 * @see MapsMappingService::initParameterInfo
+	 * 
+	 * @since 0.5
+	 */	
 	protected function initParameterInfo( array &$parameters ) {
 		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
@@ -165,6 +170,8 @@ class MapsOpenLayers extends MapsMappingService {
 	 * Removed the layer groups from the layer list, and adds their members back in.
 	 * 
 	 * @param array $layers
+	 * @param string $name
+	 * @param array $parameters
 	 */
 	public static function unpackLayerGroups( array &$layers, $name, array $parameters ) {
 		global $egMapsOLLayerGroups;

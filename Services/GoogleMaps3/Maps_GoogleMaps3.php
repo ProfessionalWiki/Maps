@@ -37,6 +37,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		);
 	}
 	
+	/**
+	 * @see MapsMappingService::initParameterInfo
+	 * 
+	 * @since 0.5
+	 */	
 	protected function initParameterInfo( array &$parameters ) {
 		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
 		

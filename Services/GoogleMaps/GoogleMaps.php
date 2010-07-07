@@ -22,6 +22,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps';
 
+/**
+ * Initialization function for the Google Maps v2 service. 
+ * 
+ * @since 0.6.3
+ * @ingroup MapsGoogleMaps
+ * 
+ * @return true
+ */
 function efMapsInitGoogleMaps() {
 	global $egMapsServices, $wgAutoloadClasses;
 	

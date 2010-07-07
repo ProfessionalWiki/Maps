@@ -22,6 +22,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
 
+/**
+ * Initialization function for the Google Maps v3 service. 
+ * 
+ * @since 0.6.3
+ * @ingroup MapsGoogleMaps3
+ * 
+ * @return true
+ */
 function efMapsInitGoogleMaps3() {
 	global $egMapsServices, $wgAutoloadClasses;
 	
