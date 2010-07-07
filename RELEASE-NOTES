@@ -6,7 +6,22 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
-TODO
+=== Semantic Maps 0.6.4 ===
+(2010-07-08)
+
+==== New features ====
+
+* Re-added service link support, which got removed in 0.6.
+
+==== Refactoring ====
+
+* Moved more functionality over from feature classes to service classes to prevent crazy code-flow and code duplication.
+
+==== Bug fixes ====
+
+* Fixed php notice that occurred in some queries, introduced in 0.6.3.
+
+* Fixed issue that caused result format maps not to load when a centre address was provided that could not be geocoded.
 
 === Semantic Maps 0.6.3 ===
 (2010-06-20)
