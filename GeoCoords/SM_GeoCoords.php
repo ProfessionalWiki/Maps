@@ -27,3 +27,5 @@ $wgHooks['SMWCustomSQLStoreFieldType'][] = 'SMGeoCoordsValue::initGeoCoordsField
 
 // Hook for defining a table to store geographical coordinates in.
 $wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
+
+$wgHooks['SMWResultDefaults'][] = 'SMGeoCoordsValue::addGeoCoordsDefaultFormat';

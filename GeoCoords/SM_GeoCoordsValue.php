@@ -30,6 +30,22 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected $mWikivalue;
 
 	/**
+	 * Adds the map format as default for queries that have geocoords as only output.
+	 * This feature was added in SMW 1.5.2, and requires the setting $smwgUseResultDefaults
+	 * to be set to true.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @param array $formats
+	 * 
+	 * @return true
+	 */
+	public static function addGeoCoordsDefaultFormat( array $formats ) {
+		$formats['_geo'] = 'map';
+		return true;
+	}
+	
+	/**
 	 * Adds support for the geographical coordinate data type to Semantic MediaWiki.
 	 * 
 	 * @since 0.6

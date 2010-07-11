@@ -73,8 +73,6 @@ final class SMQueryPrinters {
 				'default' => $egMapsDefaultGeoService
 			),
 			'format' => array(
-				'required' => true,
-				'default' => $egMapsDefaultServices['qp']
 			),
 			'centre' => array(
 				'aliases' => array( 'center' ),
