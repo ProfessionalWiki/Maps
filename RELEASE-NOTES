@@ -6,6 +6,29 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.6.5 ===
+(2010-07-xx)
+
+==== New features ====
+
+* Added hook for default result formats based on queried data types (requires SMW 1.5.2 or above).
+
+==== Refactoring ====
+
+* Moved map id creation to the mapping service class for all features.
+
+* Moved marker js creation for query printers to the mapping service class for all features.
+
+* Moved default zoom level access method to the mapping service class for all features.
+
+* Cleaned up the way specific parameter info is handled.
+
+* Improved the structure of the geocoding functionallity in form inputs.
+
+==== Bug fixes ====
+
+* Fixed the default zoom for form inputs and query printers.
+
 === Semantic Maps 0.6.4 ===
 (2010-07-08)
 
@@ -25,6 +48,10 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 === Semantic Maps 0.6.3 ===
 (2010-06-20)
+
+==== Refactoring ====
+
+* Mayor refactoring of the mapping service handling, to make the code flow less messy and be able to do mapping service related things in a more consistent fashion.
 
 ==== Bug fixes ====
 

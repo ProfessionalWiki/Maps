@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Form input hook that adds an Yahoo! Maps map format to Semantic Forms
+ * File holding the SMYahooMapsFormInput class.
  *
  * @file SM_YahooMapsFormInput.php
  * @ingroup SMYahooMaps
@@ -13,22 +13,25 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-final class SMYahooMapsFormInput extends SMFormInput {
-	
-	protected $specificParameters = array();
+/**
+ * Class for Yahoo Maps! form inputs.
+ * 
+ * @ingroup SMYahooMaps
+ * 
+ * @author Jeroen De Dauw
+ */
+class SMYahooMapsFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
 	 */
 	protected function setMapSettings() {
-		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
+		global $egMapsYahooMapsPrefix;
 		
 		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
 		$this->showAddresFunction = 'showYAddress';
 
 		$this->earthZoom = 17;
-
-        $this->defaultZoom = $egMapsYahooMapsZoom;
 	}
 	
 	/**
@@ -38,7 +41,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
-		$this->mService->addDependencies( $wgOut );
+		$this->service->addDependencies( $wgOut );
 		
 		if ( empty( $smgYahooFormsOnThisPage ) ) {
 			$smgYahooFormsOnThisPage = 0;
@@ -48,30 +51,19 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	}
 	
 	/**
-	 * @see MapsMapFeature::doMapServiceLoad()
-	 */
-	protected function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage, $smgYahooFormsOnThisPage, $egMapsYahooMapsPrefix;
-		
-		self::addFormDependencies();
-		
-		$egYahooMapsOnThisPage++;
-		$smgYahooFormsOnThisPage++;
-		
-		$this->elementNr = $egYahooMapsOnThisPage;
-		$this->mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
-	}
-	
-	/**
-	 * @see MapsMapFeature::addSpecificMapHTML()
+	 * @see MapsMapFeature::addSpecificMapHTML
+	 * 
+	 * TODO: fix map name
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgOut;
 		
+		$mapName = $this->service->getMapId( false );
+		
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
@@ -81,7 +73,7 @@ final class SMYahooMapsFormInput extends SMFormInput {
 addOnloadHook(
 	function() {
 		makeFormInputYahooMap(
-			'$this->mapName',
+			'$mapName',
 			'$this->coordsFieldName',
 			$this->centreLat,
 			$this->centreLon,
@@ -105,8 +97,7 @@ EOT
 	 */
 	protected function manageGeocoding() {
 		global $egYahooMapsKey;
-		$this->enableGeocoding = strlen( trim( $egYahooMapsKey ) ) > 0;
-		if ( $this->enableGeocoding ) $this->mService->addDependencies( $this->output );
+		return $egYahooMapsKey != '';
 	}
 
 }

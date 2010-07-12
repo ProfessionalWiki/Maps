@@ -1,47 +1,51 @@
 <?php
 
 /**
- * A class that holds static helper functions and extension hooks for the Google Maps service
+ * File holding the SMGoogleMapsFormInput class.
  *
  * @file SM_GoogleMapsFormInput.php
  * @ingroup SMGoogleMaps
- * 
+ *
+ * @author Jeroen De Dauw
  * @author Robert Buzink
  * @author Yaron Koren
- * @author Jeroen De Dauw
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-final class SMGoogleMapsFormInput extends SMFormInput {
+/**
+ * Class for Google Maps v2 form inputs.
+ * 
+ * @ingroup SMGoogleMaps
+ * 
+ * @author Jeroen De Dauw
+ * @author Robert Buzink
+ * @author Yaron Koren
+ */
+class SMGoogleMapsFormInput extends SMFormInput {
 
-	protected $specificParameters = array();
-	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
 	 */
 	protected function setMapSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
+		global $egMapsGoogleMapsPrefix;
 		
 		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
 		$this->showAddresFunction = 'showGAddress';
 
 		$this->earthZoom = 1;
-		
-        $this->defaultZoom = $egMapsGoogleMapsZoom;
 	}
 	
 	/**
-	 * (non-PHPdoc)
 	 * @see smw/extensions/SemanticMaps/FormInputs/SMFormInput#addFormDependencies()
 	 */
 	protected function addFormDependencies() {
 		global $wgOut;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 
-		$this->mService->addDependencies( $wgOut );
+		$this->service->addDependencies( $wgOut );
 		
 		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;
@@ -50,25 +54,12 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	}
 	
 	/**
-	 * @see MapsMapFeature::doMapServiceLoad()
-	 */
-	protected function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage, $smgGoogleFormsOnThisPage, $egMapsGoogleMapsPrefix;
-		
-		self::addFormDependencies();
-		
-		$egGoogleMapsOnThisPage++;
-		$smgGoogleFormsOnThisPage++;
-		
-		$this->elementNr = $egGoogleMapsOnThisPage;
-		$this->mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
-	}
-	
-	/**
-	 * @see MapsMapFeature::addSpecificFormInputHTML()
+	 * @see MapsMapFeature::addSpecificFormInputHTML
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgOut;
+		
+		$mapName = $this->service->getMapId( false );
 		
 		// Remove the overlays control in case it's present.
 		// TODO: make less insane
@@ -79,7 +70,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
@@ -89,7 +80,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 addOnloadHook(
 	function() {
 		makeGoogleMapFormInput(
-			'$this->mapName', 
+			'$mapName', 
 			'$this->coordsFieldName',
 			{
 				lat: $this->centreLat,
@@ -111,12 +102,11 @@ EOT
 	}
 	
 	/**
-	 * @see SMFormInput::manageGeocoding()
+	 * @see SMFormInput::manageGeocoding
 	 */
 	protected function manageGeocoding() {
-		global $egGoogleMapsKey, $wgParser;
-		$this->enableGeocoding = $egGoogleMapsKey != '';
-		if ( $this->enableGeocoding ) $this->mService->addDependencies( $wgParser );
+		global $egGoogleMapsKey;
+		return $egGoogleMapsKey != '';
 	}
 	
 }

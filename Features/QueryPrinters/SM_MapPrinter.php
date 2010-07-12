@@ -26,36 +26,32 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * 
  * The adaptor pattern could be used to prevent this.
  */
-abstract class SMMapPrinter extends SMWResultPrinter {
+abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature {
 
 	/**
-	 * Sets the map service specific element name.
+	 * Returns the name of the service to get the correct mapping service object.
+	 * 
+	 * @since 0.6.3
+	 * 
+	 * @return string
 	 */
-	protected abstract function setQueryPrinterSettings();
-	
 	protected abstract function getServiceName();
 	
-	/**
-	 * Gets the query result.
-	 */
-	protected abstract function addSpecificMapHTML();
+	protected $service;
 	
-	protected $mService;
-	
-	protected $mLocations = array();
-	
-	protected $defaultZoom;
+	protected $locations = array();
+	protected $markerJs;
 	
 	protected $centreLat;
 	protected $centreLon;
 	
 	protected $output = '';
-	protected $mErrorList;
+	protected $errorList;
 	
-	protected $mMapFeature;
+	protected $mapFeature;
 	
 	protected $featureParameters = array();
-	protected $specificParameters = array();
+	protected $specificParameters = false;
 	
 	public function __construct( $format, $inline, /* MapsMappingService */ $service = null ) {
 		// TODO: this is a hack since I can't find a way to pass along the service object here when the QP is created in SMW.
@@ -64,34 +60,64 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$service = $egMapsServices[$this->getServiceName()];
 		}
 		
-		$this->mService = $service;
+		$this->service = $service;
 	}
+	
+	/**
+	 * Returns the specific parameters by first checking if they have been initialized yet,
+	 * doing to work if this is not the case, and then returning them.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @return array
+	 */
+	public final function getSpecificParameterInfo() {
+		if ( $this->specificParameters === false ) {
+			$this->specificParameters = array();
+			$this->initSpecificParamInfo( $this->specificParameters );
+		}
+		
+		return $this->specificParameters;
+	}
+	
+	/**
+	 * Initializes the specific parameters.
+	 * 
+	 * Override this method to set parameters specific to a feature service comibination in
+	 * the inheriting class.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @param array $parameters
+	 */
+	protected function initSpecificParamInfo( array &$parameters ) {
+	}	
 	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
-	 * @param unknown_type $res
-	 * @param unknown_type $outputmode
+	 * @param SMWQueryResult $res
+	 * @param $outputmode
 	 * 
 	 * @return array
 	 */
-	public final function getResultText( $res, $outputmode ) {
-		$this->setQueryPrinterSettings();
-		
+	public final function getResultText( /* SMWQueryResult */ $res, $outputmode ) {
 		$this->featureParameters = SMQueryPrinters::$parameters;
 		
 		if ( self::manageMapProperties( $this->m_params ) ) {
 			$this->formatResultData( $res, $outputmode );
 			
 			// Only create a map when there is at least one result.
-			if ( count( $this->mLocations ) > 0 || $this->forceshow ) {
+			if ( count( $this->locations ) > 0 || $this->forceshow ) {
 				$this->setZoom();
 				
 				$this->setCentre();
 				
+				$this->markerJs = $this->service->createMarkersJs( $this->locations );
+				
 				$this->addSpecificMapHTML();
 				
-				$dependencies = $this->mService->getDependencyHtml();
+				$dependencies = $this->service->getDependencyHtml();
 				$hash = md5( $dependencies );
 				SMWOutputs::requireHeadItem( $hash, $dependencies );
 			}
@@ -100,7 +126,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			}
 		}
 
-		return array( $this->output . $this->mErrorList, 'noparse' => true, 'isHTML' => true );
+		return array( $this->output . $this->errorList, 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**
@@ -111,7 +137,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * @return boolean Indicates whether the map should be shown or not.
 	 */
 	protected final function manageMapProperties( array $mapProperties ) {
-		global $egMapsServices;
 		
 		/*
 		 * Assembliy of the allowed parameters and their information. 
@@ -121,8 +146,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->mService->getParameterInfo() );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
 		$manager = new ValidatorManager();
 		
@@ -132,7 +157,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$this->setMapProperties( $manager->getParameters( false ) );
 		}
 		
-		$this->mErrorList = $manager->getErrorList();
+		$this->errorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -153,14 +178,29 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		}
 	}
 	
-	public final function getResult( $results, $params, $outputmode ) {
+	/**
+	 * Reads the parameters and gets the query printers output.
+	 * 
+	 * @param SMWQueryResult $results
+	 * @param array $params
+	 * @param $outputmode
+	 * 
+	 * @return array
+	 */
+	public final function getResult( SMWQueryResult $results, array $params, $outputmode ) {
 		// Skip checks, results with 0 entries are normal.
 		$this->readParameters( $params, $outputmode );
 		
 		return $this->getResultText( $results, SMW_OUTPUT_HTML );
 	}
 	
-	private function formatResultData( $res, $outputmode ) {
+	/**
+	 * Loops over the rows in the result and adds them via addResultRow.
+	 * 
+	 * @param SMWQueryResult $res
+	 * @param $outputmode
+	 */
+	private function formatResultData( SMWQueryResult $res, $outputmode ) {
 		while ( ( $row = $res->getNext() ) !== false ) {
 			$this->addResultRow( $outputmode, $row );
 		}
@@ -170,7 +210,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * This function will loop through all properties (fields) of one record (row),
 	 * and add the location data, title, label and icon to the m_locations array.
 	 *
-	 * @param unknown_type $outputmode
+	 * @param $outputmode
 	 * @param array $row The record you want to add data from
 	 */
 	private function addResultRow( $outputmode, array $row ) {
@@ -240,12 +280,12 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 						$text = preg_replace( '/\n+/m', '<br />', $wgParser->recursiveTagParse( '{{' . implode( '|', $segments ) . '}}' ) );
 					}
 
-					$this->mLocations[] = array(
-						Xml::escapeJsString( $lat ),
-						Xml::escapeJsString( $lon ),
-						Xml::escapeJsString( $title ),
-						Xml::escapeJsString( $text ),
-						Xml::escapeJsString( $icon )
+					$this->locations[] = array(
+						$lat,
+						$lon,
+						$title,
+						$text,
+						$icon
 					);
 				}
 			}
@@ -296,7 +336,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 */
 	private function setZoom() {
 		if ( $this->zoom == '' ) {
-			if ( count( $this->mLocations ) > 1 ) {
+			if ( count( $this->locations ) > 1 ) {
 		        $this->zoom = 'null';
 		    }
 		    else {
@@ -313,7 +353,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		// If a centre value is set, use it.
 		if ( $this->centre != '' ) {
 			// Geocode and convert if required.
-			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->mService->getName() );
+			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
 			
 			if ( $centre ) {
 				$this->centreLat = $centre['lat'];
@@ -332,15 +372,15 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * Figures out the default value for the centre. 
 	 */
 	private function setCentreDefault() {
-		if ( count( $this->mLocations ) > 1 ) {
+		if ( count( $this->locations ) > 1 ) {
 			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
 			$this->centreLat = 'null';
 			$this->centreLon = 'null';
 		}
-		elseif ( count( $this->mLocations ) == 1 ) {
+		elseif ( count( $this->locations ) == 1 ) {
 			// If centre is not set and there is exactelly one marker, use it's coordinates.			
-			$this->centreLat = Xml::escapeJsString( $this->mLocations[0][0] );
-			$this->centreLon = Xml::escapeJsString( $this->mLocations[0][1] );
+			$this->centreLat = Xml::escapeJsString( $this->locations[0][0] );
+			$this->centreLon = Xml::escapeJsString( $this->locations[0][1] );
 		}
 		else {
 			// If centre is not set and there are no results, centre on the default coordinates.
@@ -357,7 +397,7 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * @return string
 	 */
 	public final function getName() {
-		return wfMsg( 'maps_' . $this->mService->getName() );
+		return wfMsg( 'maps_' . $this->service->getName() );
 	}
 	
 	/**

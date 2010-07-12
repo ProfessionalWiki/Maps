@@ -13,19 +13,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-abstract class SMFormInput {
+abstract class SMFormInput implements iMappingFeature {
 
-	/**
-	 * Determine if geocoding will be enabled and load the required dependencies.
-	 */
-	protected abstract function manageGeocoding();
-	
 	/**
 	 * Ensures all dependencies for the used map are loaded, and increases that map service's count
 	 */
 	protected abstract function addFormDependencies();
 	
-	protected $mService;
+	protected $service;
 	
 	/**
 	 * @var string
@@ -41,14 +36,21 @@ abstract class SMFormInput {
 	
 	protected $showAddresFunction;
 	
-	protected $enableGeocoding = false;
+	protected $enableGeocoding;
 	
-	protected $mErrorList;
+	protected $errorList;
 	
 	private $coordinates;
 	
+	protected $specificParameters = false;
+	
+	/**
+	 * Constructor.
+	 * 
+	 * @param MapsMappingService $service
+	 */
 	public function __construct( MapsMappingService $service ) {
-		$this->mService = $service;
+		$this->service = $service;
 	}	
 	
 	/**
@@ -69,7 +71,7 @@ abstract class SMFormInput {
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->mService->getParameterInfo() );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
@@ -90,7 +92,7 @@ abstract class SMFormInput {
 			}
 		}
 		
-		$this->mErrorList = $manager->getErrorList();
+		$this->errorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -116,18 +118,17 @@ abstract class SMFormInput {
 			return array( $this->errorList );
 		}
 		
-		$this->doMapServiceLoad();
-		
-		$this->manageGeocoding();
+		$this->enableGeocoding = $this->manageGeocoding();
 
 		$this->setCoordinates();
 		$this->setCentre();
 		$this->setZoom();
 		
 		// Create html element names.
-		$this->geocodeFieldName = $this->elementNamePrefix . '_geocode_' . $this->elementNr . '_' . $sfgTabIndex;
-		$this->coordsFieldName = $this->elementNamePrefix . '_coords_' . $this->elementNr . '_' . $sfgTabIndex;
-		$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
+		$mapName = $this->service->getMapId();
+		$this->geocodeFieldName = $mapName . '_geocode_' . $sfgTabIndex;
+		$this->coordsFieldName = $mapName . '_coords_' . $sfgTabIndex;
+		$this->infoFieldName = $mapName . '_info_' . $sfgTabIndex;
 
 		// Create the non specific form HTML.
 		$this->output .= Html::input( 
@@ -135,7 +136,7 @@ abstract class SMFormInput {
 			$this->markerCoords ? MapsCoordinateParser::formatCoordinates( $this->markerCoords ) : '',
 			'text',
 			array(
-				'size' => 42,
+				'size' => 42, #_O
 				'tabindex' => $sfgTabIndex,
 				'id' => $this->coordsFieldName
 			)
@@ -149,23 +150,24 @@ abstract class SMFormInput {
 			)
 		);
 		
-		if ( $this->enableGeocoding ) $this->addGeocodingField();
+		if ( $this->enableGeocoding ) $this->addGeocodingField( $mapName );
 		
 		if ( $this->markerCoords === false ) {
 			$this->markerCoords = array(
 				'lat' => 'null',
 				'lon' => 'null'
 			);
+			
 			$this->centreLat = 'null';
 			$this->centreLon = 'null';
 		}
 		
 		$this->addSpecificMapHTML();
 		
-		return array( $this->output . $this->mErrorList, '' );
+		return array( $this->output . $this->errorList, '' );
 	}
 	
-	private function addGeocodingField() {
+	private function addGeocodingField( $mapName ) {
 		global $sfgTabIndex, $wgOut, $smgAddedFormJs;
 		$sfgTabIndex++;
 		
@@ -197,7 +199,7 @@ EOT
 		);
 		
 		$notFoundText = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
-		$mapName = Xml::escapeJsString( $this->mapName );
+		$mapName = Xml::escapeJsString( $mapName );
 		$geoFieldName = Xml::escapeJsString( $this->geocodeFieldName );
 		$coordFieldName = Xml::escapeJsString( $this->coordsFieldName );
 		
@@ -270,9 +272,21 @@ EOT
 	 * @param string $value
 	 * @param string $args
 	 * 
-	 * @return html
+	 * @return string (html)
 	 */
 	private static function getDynamicInput( $id, $value, $args = '' ) {
+		// TODO: escape properly
 		return '<input id="' . $id . '" ' . $args . ' value="' . $value . '" onfocus="if (this.value==\'' . $value . '\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\'' . $value . '\';}" />';
 	}
+	
+	/**
+	 * Determine if geocoding will be enabled and load the required dependencies.
+	 * Override in deriving classes to enable geocoding functionallity there.
+	 * 
+	 * @return boolean
+	 */
+	protected function manageGeocoding() {
+		return false;
+	}
+		
 }

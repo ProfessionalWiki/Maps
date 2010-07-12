@@ -77,6 +77,9 @@ final class SMFormInputs {
 				),
 				'default' => $egMapsDefaultGeoService
 			),
+			'mappingservice' => array(
+				'default' => $egMapsDefaultServices['fi']
+			),				
 			'service_name' => array(),
 			'part_of_multiple' => array(),
 			'possible_values' => array(
