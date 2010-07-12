@@ -7,8 +7,6 @@
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
- * 
- * TODO: revise this interface
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -16,19 +14,29 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Interface that should be implemented by all mapping feature classes.
+ * Interface that should be implemented by all map display parser functions.
  * 
  * @author Jeroen De Dauw
+ * 
+ * @since 0.6.3
  */
-interface iMapParserFunction {
-	function __construct( MapsMappingService $service );
-	
-	function getMapHtml( Parser &$parser, array $params );
+interface iMapParserFunction extends iMappingFeature {
 	
 	/**
-	 * Adds the HTML specific to the mapping service to the output.
+	 * Constructor.
+	 * 
+	 * @param MapsMappingService $service
 	 */
-	function addSpecificMapHTML();
+	function __construct( MapsMappingService $service );
 	
-	function getSpecificParameterInfo();
+	/**
+	 * Method that serves as the parser function handler. 
+	 * It's responsible for executing all needed logic, and then creating the map output. 
+	 * 
+	 * @param Parser $parser
+	 * @param array $params
+	 * 
+	 * @return array
+	 */
+	function getMapHtml( Parser &$parser, array $params );
 }

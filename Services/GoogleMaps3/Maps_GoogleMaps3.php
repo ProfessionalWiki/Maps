@@ -73,6 +73,50 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		);
 	}
 	
+	/**
+	 * @see iMappingService::getDefaultZoom
+	 * 
+	 * @since 0.6.5
+	 */	
+	public function getDefaultZoom() {
+		global $egMapsGoogleMaps3Zoom;
+		return $egMapsGoogleMaps3Zoom;
+	}	
+	
+	/**
+	 * @see MapsMappingService::getMapId
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		global $egMapsGoogleMaps3Prefix, $egGoogleMaps3OnThisPage;
+		
+		if ( $increment ) {
+			$egGoogleMaps3OnThisPage++;
+		}
+		
+		return $egMapsGoogleMaps3Prefix . '_' . $egGoogleMaps3OnThisPage;
+	}	
+	
+	/**
+	 * @see MapsMappingService::createMarkersJs
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * TODO: escaping!
+	 */
+	public function createMarkersJs( array $markers ) {
+		$markerItems = array();
+		
+		foreach ( $markers as $marker ) {
+			list( $lat, $lon, $title, $label, $icon ) = $marker;
+			$markerItems[] = "getGMaps3MarkerData($lat, $lon, \"$title\", \"$label\", \"$icon\")";
+		}
+		
+		// Create a string containing the marker JS.
+		return '[' . implode( ',', $markerItems ) . ']';
+	}	
+	
 	protected static $mapTypes = array(
 		'normal' => 'ROADMAP',
 		'roadmap' => 'ROADMAP',

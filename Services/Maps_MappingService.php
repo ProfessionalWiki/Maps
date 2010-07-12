@@ -21,75 +21,93 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * 
  * @author Jeroen De Dauw
  */
-class MapsMappingService implements iMappingService {
+abstract class MapsMappingService implements iMappingService {
 	
 	/**
 	 * The internal name of the service.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @var string
 	 */
-	protected $mServiceName;
+	protected $serviceName;
 	
 	/**
 	 * A list of aliases for the internal name.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @var array
 	 */
-	protected $mAliases;
+	protected $aliases;
 	
 	/**
 	 * A list of features that support the service, used for validation and defaulting.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @var array
 	 */
-	protected $mFeatures;
+	protected $features;
 	
 	/**
 	 * A list of parameter info specific to the service, which can be used by any feature
 	 * to pass along to Validator to handle parameters.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @var mixed Array or false
 	 */
-	private $mParameterInfo = false;
+	private $parameterInfo = false;
 	
 	/**
 	 * A list of dependencies (header items) that have been added.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @var array
 	 */
-	private $mAddedDependencies = array();
+	private $addedDependencies = array();
 	
 	/**
 	 * A list of dependencies (header items) that need to be added.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @var array
 	 */
-	private $mDependencies = array();
+	private $dependencies = array();
 	
 	/**
 	 * Constructor. Creates a new instance of MapsMappingService.
+	 * 
+	 * @since 0.6.3
 	 * 
 	 * @param string $serviceName
 	 * @param array $aliases
 	 */
 	function __construct( $serviceName, array $aliases = array() ) {
-		$this->mServiceName = $serviceName;
-		$this->mAliases = $aliases;
+		$this->serviceName = $serviceName;
+		$this->aliases = $aliases;
 	}
 	
 	/**
 	 * Returns the service parameters by first checking if they have been initialized yet,
 	 * doing to work if this is not the case, and then returning them.
 	 * 
+	 * @since 0.6.3
+	 * 
+	 * @see iMappingService::getParameterInfo
+	 * 
 	 * @return array
 	 */	
 	public final function getParameterInfo() {
-		if ( $this->mParameterInfo === false ) {
-			$this->mParameterInfo = array();
-			$this->initParameterInfo( $this->mParameterInfo );
+		if ( $this->parameterInfo === false ) {
+			$this->parameterInfo = array();
+			$this->initParameterInfo( $this->parameterInfo );
 		}
 		
-		return $this->mParameterInfo;
+		return $this->parameterInfo;
 	}
 	
 	/**
@@ -97,23 +115,38 @@ class MapsMappingService implements iMappingService {
 	 * 
 	 * You can override this method to set service specific parameters in the inheriting class. 
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @param array $parameters
 	 */	
 	protected function initParameterInfo( array &$parameters ) {
 	}
 	
 	/**
+	 * @see iMappingService::createMarkersJs
+	 * 
+	 * @since 0.6.5
+	 */
+	public function createMarkersJs( array $markers ) {
+		return '[]';
+	}		
+	
+	/**
 	 * Adds a feature to this service. This is to indicate this service has support for this feature.
+	 * 
+	 * @since 0.6.3
 	 * 
 	 * @param string $featureName
 	 * @param string $handlingClass
 	 */
 	public function addFeature( $featureName, $handlingClass ) {
-		$this->mFeatures[$featureName] = $handlingClass;
+		$this->features[$featureName] = $handlingClass;
 	}
 	
 	/**
 	 * Adds the mapping services dependencies to the header. 
+	 * 
+	 * @since 0.6.3
 	 * 
 	 * @param mixed $parserOrOut
 	 */
@@ -134,17 +167,19 @@ class MapsMappingService implements iMappingService {
 	/**
 	 * Returns the html for the needed dependencies or false.
 	 * 
-	 * @return mixed Steing or false
+	 * @since 0.6.3
+	 * 
+	 * @return mixed String or false
 	 */
 	public final function getDependencyHtml() {
-		$allDependencies = array_merge( $this->getDependencies(), $this->mDependencies );
+		$allDependencies = array_merge( $this->getDependencies(), $this->dependencies );
 		$dependencies = array();
 		
 		// Only add dependnecies that have not yet been added.
 		foreach ( $allDependencies as $dependency ) {
-			if ( !in_array( $dependency, $this->mAddedDependencies ) ) {
+			if ( !in_array( $dependency, $this->addedDependencies ) ) {
 				$dependencies[] = $dependency;
-				$this->mAddedDependencies[] = $dependency;
+				$this->addedDependencies[] = $dependency;
 			}
 		}
 		
@@ -156,14 +191,18 @@ class MapsMappingService implements iMappingService {
 	 * Adds a dependency that is needed for this service. It will be passed along with the next 
 	 * call to getDependencyHtml or addDependencies.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @param string $dependencyHtml
 	 */
 	public final function addDependency( $dependencyHtml ) {
-		$this->mDependencies[] = $dependencyHtml;
+		$this->dependencies[] = $dependencyHtml;
 	}	
 	
 	/**
 	 * Returns a list of html fragments, such as script includes, the current service depends on.
+	 * 
+	 * @since 0.6.3
 	 * 
 	 * @return array
 	 */
@@ -174,41 +213,49 @@ class MapsMappingService implements iMappingService {
 	/**
 	 * Returns the internal name of the service.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @return string
 	 */
 	public function getName() {
-		return $this->mServiceName;
+		return $this->serviceName;
 	}
 	
 	/**
 	 * Returns the name of the class that handles the provided feature in this service, or false if there is none.
+	 * 
+	 * @since 0.6.3
 	 * 
 	 * @param string $featureName.
 	 * 
 	 * @return mixed String or false
 	 */
 	public function getFeature( $featureName ) {
-		return array_key_exists( $featureName, $this->mFeatures ) ? $this->mFeatures[$featureName] : false;
+		return array_key_exists( $featureName, $this->features ) ? $this->features[$featureName] : false;
 	}
 	
 	/**
 	 * Returns a list of aliases.
 	 * 
+	 * @since 0.6.3
+	 * 
 	 * @return array
 	 */
 	public function getAliases() {
-		return $this->mAliases;
+		return $this->aliases;
 	}
 	
 	/**
 	 * Returns if the service has a certain alias or not.
+	 * 
+	 * @since 0.6.3
 	 * 
 	 * @param string $alias
 	 * 
 	 * @return boolean
 	 */
 	public function hasAlias( $alias ) {
-		return in_array( $alias, $this->mAliases );
+		return in_array( $alias, $this->aliases );
 	}
 	
 }

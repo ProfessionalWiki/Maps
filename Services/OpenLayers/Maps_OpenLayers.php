@@ -77,6 +77,50 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 	
 	/**
+	 * @see iMappingService::getDefaultZoom
+	 * 
+	 * @since 0.6.5
+	 */	
+	public function getDefaultZoom() {
+		global $egMapsOpenLayersZoom;
+		return $egMapsOpenLayersZoom;
+	}		
+	
+	/**
+	 * @see MapsMappingService::getMapId
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
+		
+		if ( $increment ) {
+			$egOpenLayersOnThisPage++;
+		}
+		
+		return $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
+	}		
+	
+	/**
+	 * @see MapsMappingService::createMarkersJs
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * TODO: escaping!
+	 */
+	public function createMarkersJs( array $markers ) {
+		$markerItems = array();
+		
+		foreach ( $markers as $marker ) {
+			list( $lat, $lon, $title, $label, $icon ) = $marker;
+			$markerItems[] = "getOLMarkerData($lat, $lon, \"$title\", \"$label\", \"$icon\")";
+		}
+		
+		// Create a string containing the marker JS.
+		return '[' . implode( ',', $markerItems ) . ']';
+	}	
+	
+	/**
 	 * @see MapsMappingService::getDependencies
 	 * 
 	 * @return array

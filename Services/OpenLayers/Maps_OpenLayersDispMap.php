@@ -15,21 +15,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class MapsOpenLayersDispMap extends MapsBaseMap {
 	
-	protected function getDefaultZoom() {
-		global $egMapsOpenLayersZoom;
-		return $egMapsOpenLayersZoom;
-	}
-	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage, $wgLang;
+		global $wgLang;
 		
-		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
+		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
 
-		$egOpenLayersOnThisPage++;
-		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
+		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
 			'div',

@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6.5 a1' );
+	define( 'Maps_VERSION', '0.6.5 a3' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -88,7 +88,7 @@ function efMapsSetup() {
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices;
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
-	// Autoload the includes/ classes.
+	// Autoload the "includes/" classes.
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Includes/Maps_CoordinateParser.php';
 	$wgAutoloadClasses['MapsDistanceParser'] 		= $egMapsDir . 'Includes/Maps_DistanceParser.php';
@@ -99,11 +99,14 @@ function efMapsSetup() {
 		wfLoadExtensionMessages( 'Maps' );
 	}
 
-	// Load the service/ classes and interfaces.
+	// Load the "service/" classes and interfaces.
 	require_once $egMapsDir . 'Services/Maps_iMappingService.php';
 	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
 	
 	wfRunHooks( 'MappingServiceLoad' );
+	
+	// Load the "feature/" classes and interfaces.
+	require_once $egMapsDir . 'Features/Maps_iMappingFeature.php';
 	
 	wfRunHooks( 'MappingFeatureLoad' );
 

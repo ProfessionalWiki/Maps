@@ -22,11 +22,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
-	protected function getDefaultZoom() {
-		global $egMapsGoogleMapsZoom;
-		return $egMapsGoogleMapsZoom;
-	}
-	
 	protected function initSpecificParamInfo( array &$parameters ) {
 		global $egMapsGMapOverlays;
 		
@@ -45,12 +40,9 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
+		$mapName = $this->service->getMapId();
 		
-		$egGoogleMapsOnThisPage++;
-		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
-		
-		$this->mService->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
+		$this->service->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
 		
 		$this->output .= Html::element(
 			'div',

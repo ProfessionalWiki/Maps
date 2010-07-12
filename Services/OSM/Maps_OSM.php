@@ -37,4 +37,29 @@ class MapsOSM extends MapsMappingService {
 		);
 	}
 	
+	/**
+	 * @see iMappingService::getDefaultZoom
+	 * 
+	 * @since 0.6.5
+	 */	
+	public function getDefaultZoom() {
+		global $egMapsOSMZoom;
+		return $egMapsOSMZoom;
+	}
+
+	/**
+	 * @see MapsMappingService::getMapId
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		global $egMapsOSMPrefix, $egOSMOnThisPage;
+		
+		if ( $increment ) {
+			$egOSMOnThisPage++;
+		}
+		
+		return $egMapsOSMPrefix . '_' . $egOSMOnThisPage;
+	}		
+	
 }

@@ -25,28 +25,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class MapsOSMDispMap extends MapsBaseMap {
 	
 	/**
-	 * @since 0.6.4
-	 */
-	protected function getDefaultZoom() {
-		global $egMapsOSMZoom;
-		return $egMapsOSMZoom;
-	}	
-	
-	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 * 
 	 * @since 0.6.4
 	 */
 	public function addSpecificMapHTML() {	
-		global $egMapsOSMPrefix, $egOSMOnThisPage;
-		
-		$egOSMOnThisPage++;
-		$mapName = $egMapsOSMPrefix . '_' . $egOSMOnThisPage;
-		
 		$this->output .= Html::element(
 			'iframe',
 			array(
-				'id' => $mapName,
+				'id' => $this->service->getMapId(),
 				'style' => "width: $this->width; height: $this->height; clear: both;",
 				'src' => "http://toolserver.org/~kolossos/openlayers/kml-on-ol.php?zoom={$this->zoom}&lat={$this->centreLat}&lon={$this->centreLon}&lang=en"
 			),

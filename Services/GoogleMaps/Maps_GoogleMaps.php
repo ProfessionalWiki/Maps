@@ -93,8 +93,58 @@ class MapsGoogleMaps extends MapsMappingService {
 		
 		$parameters['zoom']['criteria']['in_range'] = array( 0, 20 );
 	}
+	
+	/**
+	 * @see iMappingService::getDefaultZoom
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getDefaultZoom() {
+		global $egMapsGoogleMapsZoom;
+		return $egMapsGoogleMapsZoom;
+	}
 
-	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
+	/**
+	 * @see MapsMappingService::getMapId
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
+		
+		if ( $increment ) {
+			$egGoogleMapsOnThisPage++;
+		}
+		
+		return $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
+	}
+
+	/**
+	 * @see MapsMappingService::createMarkersJs
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * TODO: escaping!
+	 */
+	public function createMarkersJs( array $markers ) {
+		$markerItems = array();
+
+		foreach ( $markers as $marker ) {
+			list( $lat, $lon, $title, $label, $icon ) = $marker;
+			$markerItems[] = "getGMarkerData($lat, $lon, \"$title\", \"$label\", \"$icon\")";
+		}
+		
+		// Create a string containing the marker JS.
+		return '[' . implode( ',', $markerItems ) . ']';
+	}
+	
+	/**
+	 * A list of mappings between supported map type values and their corresponding JS variable.
+	 * 
+	 * http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
+	 * 
+	 * @var array
+	 */ 
 	protected static $mapTypes = array(
 		'normal' => 'G_NORMAL_MAP',
 		'satellite' => 'G_SATELLITE_MAP',
@@ -110,6 +160,11 @@ class MapsGoogleMaps extends MapsMappingService {
 		'mars-infrared' => 'G_MARS_INFRARED_MAP'
 	);
 
+	/**
+	 * A list of supported overlays.
+	 * 
+	 * @var array
+	 */
 	protected static $overlayData = array(
 		'photos' => '0',
 		'videos' => '1',

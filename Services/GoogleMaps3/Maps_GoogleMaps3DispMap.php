@@ -22,20 +22,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	
-	protected function getDefaultZoom() {
-		global $egMapsGMaps3Zoom;
-		return $egMapsGMaps3Zoom;
-	}
-	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
-	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsGMaps3Prefix, $egGMaps3OnThisPage;
-		
-		$egGMaps3OnThisPage++;
-		$mapName = $egMapsGMaps3Prefix . '_' . $egGMaps3OnThisPage;
+		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
 			'div',

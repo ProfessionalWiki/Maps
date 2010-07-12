@@ -7,6 +7,19 @@ version of Maps. You can find the most upt-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.6.5 ===
+(2010-07-xx)
+
+==== Refactoring ====
+
+* Created iMappingFeature interface, from which iMapParserFunctions inherits.
+
+* Moved map id creation to the mapping service class for all features.
+
+* Moved marker js creation for display_points to the mapping service class for all features. 
+
+* Moved default zoom level access method to the mapping service class for all features.
+
 === Maps 0.6.4 ===
 (2010-07-08)
 

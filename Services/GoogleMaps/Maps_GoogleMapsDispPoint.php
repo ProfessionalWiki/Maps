@@ -22,13 +22,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 
-	protected $markerStringFormat = 'getGMarkerData(lat, lon, "title", "label", "icon")';
-	
-	protected function getDefaultZoom() {
-		global $egMapsGoogleMapsZoom;
-		return $egMapsGoogleMapsZoom;
-	}
-	
 	protected function initSpecificParamInfo( array &$parameters ) {
 		global $egMapsGMapOverlays;
 		
@@ -44,15 +37,12 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	}
 	
 	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
+	 * @see MapsBaseMap::addSpecificMapHTML
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
+		$mapName = $this->service->getMapId();
 		
-		$egGoogleMapsOnThisPage++;
-		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
-		
-		$this->mService->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
+		$this->service->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
 
 		$this->output .= Html::element(
 			'div',
@@ -79,7 +69,7 @@ addOnloadHook(
 			scrollWheelZoom: $this->autozoom,
 			kml: [$this->kml]
 			},
-			[$this->markerString]
+			$this->markerJs
 		);
 	}
 );

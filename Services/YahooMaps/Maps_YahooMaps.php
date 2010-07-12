@@ -41,6 +41,11 @@ class MapsYahooMaps extends MapsMappingService {
 		);
 	}		
 	
+	/**
+	 * @see MapsMappingService::initParameterInfo
+	 * 
+	 * @since 0.5
+	 */		
 	protected function initParameterInfo( array &$parameters ) {
 		global $egMapsServices, $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
@@ -86,6 +91,50 @@ class MapsYahooMaps extends MapsMappingService {
 		
 		$parameters['zoom']['criteria']['in_range'] = array( 1, 13 );
 	}
+	
+	/**
+	 * @see iMappingService::getDefaultZoom
+	 * 
+	 * @since 0.6.5
+	 */	
+	public function getDefaultZoom() {
+		global $egMapsYahooMapsTypes;
+		return $egMapsYahooMapsTypes;
+	}
+
+	/**
+	 * @see MapsMappingService::getMapId
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
+		
+		if ( $increment ) {
+			$egYahooMapsOnThisPage++;
+		}
+		
+		return $egYahooMapsOnThisPage . '_' . $egOSMOnThisPage;
+	}		
+	
+	/**
+	 * @see MapsMappingService::createMarkersJs
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * TODO: escaping!
+	 */
+	public function createMarkersJs( array $markers ) {
+		$markerItems = array();
+		
+		foreach ( $markers as $marker ) {
+			list( $lat, $lon, $title, $label, $icon ) = $marker;
+			$markerItems[] = "getYMarkerData($lat, $lon, \"$title\", \"$label\", \"$icon\")";
+		}
+		
+		// Create a string containing the marker JS.
+		return '[' . implode( ',', $markerItems ) . ']';
+	}	
 	
 	/**
 	 * @see MapsMappingService::getDependencies

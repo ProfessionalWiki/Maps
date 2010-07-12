@@ -24,9 +24,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 abstract class MapsBasePointMap implements iMapParserFunction {
 	
-	public $mService;
+	public $service;
 	
 	protected $centreLat, $centreLon;
+	protected $markerJs;
 
 	protected $output = '';
 	
@@ -39,10 +40,8 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	private $specificParameters = false;
 	private $markerData = array();
 	
-	protected abstract function getDefaultZoom();	
-	
 	public function __construct( MapsMappingService $service ) {
-		$this->mService = $service;
+		$this->service = $service;
 	}
 	
 	/**
@@ -99,7 +98,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			'height' => array(
 				'default' => $egMapsMapHeight
 			),			
-			'service' => array(
+			'mappingservice' => array(
 				'default' => $egMapsDefaultServices['display_point']
 			),
 			'centre' => array(
@@ -146,17 +145,17 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 		
 		$this->setMarkerData();
 
-		$this->createMarkerString();
-		
 		$this->setCentre();
 		
 		if ( count( $this->markerData ) <= 1 && $this->zoom == 'null' ) {
-			$this->zoom = $this->getDefaultZoom();
+			$this->zoom = $this->service->getDefaultZoom();
 		}
+		
+		$this->markerJs = $this->service->createMarkersJs();
 		
 		$this->addSpecificMapHTML();
 		
-		$this->mService->addDependencies( $this->parser );
+		$this->service->addDependencies( $this->parser );
 		
 		return $this->output;
 	}
@@ -165,8 +164,8 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	 * Fills the $markerData array with the locations and their meta data.
 	 */
 	private function setMarkerData() {
-		$this->title = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->title ) );
-		$this->label = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->label ) );
+		$this->title = $this->parser->recursiveTagParse( $this->title );
+		$this->label = $this->parser->recursiveTagParse( $this->label );
 		
 		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
 		foreach ( $this->coordinates as $args ) {
@@ -190,7 +189,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			}
 			
 			// If there is no point specific icon, use the general icon parameter when available.
-			if ( ! array_key_exists( 'icon', $markerData ) && strlen( $this->icon ) > 0 ) $markerData['icon'] = $this->icon;
+			if ( !array_key_exists( 'icon', $markerData ) && strlen( $this->icon ) > 0 ) $markerData['icon'] = $this->icon;
 			
 			// Get the url for the icon when there is one, else set the icon to an empty string.
 			if ( array_key_exists( 'icon', $markerData ) ) {
@@ -203,31 +202,6 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			
 			$this->markerData[] = $markerData;
 		}
-	}
-	
-	/**
-	 * Creates a JS string with the marker data. Takes care of escaping the used values.
-	 */
-	private function createMarkerString() {
-		$markerItems = array();
-		
-		foreach ( $this->markerData as $markerData ) {
-			$title = array_key_exists( 'title', $markerData ) ? Xml::escapeJsString( $markerData['title'] ) : $this->title;
-			$label = array_key_exists( 'label', $markerData ) ? Xml::escapeJsString( $markerData['label'] ) : $this->label;
-			
-			$markerData['lon'] = Xml::escapeJsString( $markerData['lon'] );
-			$markerData['lat'] = Xml::escapeJsString( $markerData['lat'] );
-			$markerData['icon'] = Xml::escapeJsString( $markerData['icon'] );
-			
-			// TODO: Replace this by by some json_encode stuff.
-			$markerItems[] = str_replace(
-				array( 'lon', 'lat', 'title', 'label', 'icon' ),
-				array( $markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon'] ),
-				$this->markerStringFormat
-			);
-		}
-		
-		$this->markerString = implode( ',', $markerItems );
 	}
 
 	/**
@@ -253,7 +227,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			}
 		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->mService->getName() );
+			$this->centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
 			
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
 			if ( $this->centre ) {
