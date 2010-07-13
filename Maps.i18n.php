@@ -87,6 +87,17 @@ $messages['qqq'] = array(
 	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'maps-abb-north' => 'U',
+	'maps-abb-east' => 'T',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'B',
+	'maps_wikipedia' => 'Wikipidia',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -1283,6 +1294,7 @@ $messages['no'] = array(
 Tilgjengelige karttjenester: $1',
 	'maps_map' => 'Kart',
 	'maps-loading-map' => 'Laster kart...',
+	'maps-markers' => 'Markører',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ø',
 	'maps-abb-south' => 'S',
@@ -1423,6 +1435,10 @@ $1",
  */
 $messages['ps'] = array(
 	'maps_map' => 'نخشه',
+	'maps-abb-north' => 'سهـ',
+	'maps-abb-east' => 'خ',
+	'maps-abb-south' => 'سو',
+	'maps-abb-west' => 'ل',
 	'maps_photos' => 'انځورونه',
 	'maps_videos' => 'ويډيوګانې',
 	'maps_wikipedia' => 'ويکيپېډيا',
@@ -1547,6 +1563,7 @@ $messages['ru'] = array(
 Доступные картографические службы: $1',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
+	'maps-markers' => 'Отметки',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'В',
 	'maps-abb-south' => 'Ю',
