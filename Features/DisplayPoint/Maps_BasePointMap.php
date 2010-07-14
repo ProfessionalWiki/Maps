@@ -151,7 +151,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			$this->zoom = $this->service->getDefaultZoom();
 		}
 		
-		$this->markerJs = $this->service->createMarkersJs();
+		$this->markerJs = $this->service->createMarkersJs( $this->markerData );
 		
 		$this->addSpecificMapHTML();
 		
@@ -189,7 +189,9 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			}
 			
 			// If there is no point specific icon, use the general icon parameter when available.
-			if ( !array_key_exists( 'icon', $markerData ) && strlen( $this->icon ) > 0 ) $markerData['icon'] = $this->icon;
+			if ( !array_key_exists( 'icon', $markerData ) && strlen( $this->icon ) > 0 ) {
+				$markerData['icon'] = $this->icon;
+			}
 			
 			// Get the url for the icon when there is one, else set the icon to an empty string.
 			if ( array_key_exists( 'icon', $markerData ) ) {
@@ -199,6 +201,16 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			else {
 				$markerData['icon'] = '';
 			}
+			
+			// Temporary fix, will refactor away later
+			// TODO
+			$markerData = array_values( $markerData );
+			if ( count( $markerData ) < 5 ) {
+				if ( count( $markerData ) < 4 ) {
+					$markerData[] = '';
+				}				
+				$markerData[] = '';
+			} 
 			
 			$this->markerData[] = $markerData;
 		}
@@ -212,8 +224,8 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 		if ( empty( $this->centre ) ) {
 			if ( count( $this->markerData ) == 1 ) {
 				// If centre is not set and there is exactly one marker, use its coordinates.
-				$this->centreLat = Xml::escapeJsString( $this->markerData[0]['lat'] );
-				$this->centreLon = Xml::escapeJsString( $this->markerData[0]['lon'] );
+				$this->centreLat = Xml::escapeJsString( $this->markerData[0][0] );
+				$this->centreLon = Xml::escapeJsString( $this->markerData[0][1] );
 			}
 			elseif ( count( $this->markerData ) > 1 ) {
 				// If centre is not set and there are multiple markers, set the values to null,
