@@ -74,6 +74,8 @@ else {
 	$wgExtensionFunctions[] = 'efMapsSetup';
 
 	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
+	
+	$wgHooks['UnitTestsList'][] = 'efMapsUnitTests';
 }
 
 /**
@@ -162,4 +164,16 @@ function efMapsAddToAdminLinks( &$admin_links_tree ) {
     $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://www.mediawiki.org/wiki/Extension:Maps', $maps_docu_label ) );
 
     return true;
+}
+
+/**
+ * Hook to add PHPUnit test cases.
+ * 
+ * @since 0.6.5
+ * 
+ * @param array $files
+ */
+function efMapsUnitTests( array &$files ) {
+	$testDir = dirname( __FILE__ ) . '/test/';
+	$files[] = $testDir . 'MapsCoordinateParserTest.php';
 }
