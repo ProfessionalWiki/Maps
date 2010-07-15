@@ -16,9 +16,11 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Moved map id creation to the mapping service class for all features.
 
-* Moved marker js creation for display_points to the mapping service class for all features. 
+* Moved marker JavaScript creation for display_points to the mapping service class for all features. 
 
 * Moved default zoom level access method to the mapping service class for all features.
+
+* Improved the way marker data is turned into JavaScript variables.
 
 === Maps 0.6.4 ===
 (2010-07-08)
