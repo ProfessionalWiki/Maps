@@ -77,7 +77,23 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '55° S, 37.6176330 ° W' ), Maps_COORDS_DD );
 		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '-55°, -37.6176330 °' ), Maps_COORDS_DD );	
 		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '5.5°S,37°W ' ), Maps_COORDS_DD );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '-5.5°,-37° ' ), Maps_COORDS_DD );		
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '-5.5°,-37° ' ), Maps_COORDS_DD );
+		
+		// Decimal Minutes 
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45.34716' N, 37° 37.05798' W" ), Maps_COORDS_DM );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45.34716', -37° 37.05798'" ), Maps_COORDS_DM );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° S, 37° 37.05798'W" ), Maps_COORDS_DM );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°, 37° -37.05798'" ), Maps_COORDS_DM );	
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55°S, 37°37.05798'W " ), Maps_COORDS_DM );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°, 37°-37.05798' " ), Maps_COORDS_DM );
+		
+		// Degrees Minutes Seconds 
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45' 21\" N, 37° 37' 3\" W" ), Maps_COORDS_DMS );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45' 21\" N, -37° 37' 3\"" ), Maps_COORDS_DMS );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45' S, 37° 37' 3\"W" ), Maps_COORDS_DMS );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°, -37° 37' 3\"" ), Maps_COORDS_DMS );	
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55°45'S,37°37'3\"W " ), Maps_COORDS_DMS );
+		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°,-37°37'3\" " ), Maps_COORDS_DMS );		
 	}
 	
 	/**
