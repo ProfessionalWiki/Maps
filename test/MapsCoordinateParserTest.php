@@ -11,6 +11,48 @@ require_once 'PHPUnit\Framework\TestCase.php';
  */
 class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	
+	public static $coordinates = array(
+		'float' => array(
+			'55.7557860 N, 37.6176330 W',
+			'55.7557860, -37.6176330',
+			'55 S, 37.6176330 W',
+			'-55, -37.6176330',
+			'5.5S,37W ',
+			'-5.5,-37 '
+		),
+		'dd' => array(
+			'55.7557860° N, 37.6176330° W',
+			'55.7557860°, -37.6176330°',
+			'55° S, 37.6176330 ° W',
+			'-55°, -37.6176330 °',
+			'5.5°S,37°W ',
+			'-5.5°,-37° '
+		),
+		'dm' => array(
+			"55° 45.34716' N, 37° 37.05798' W",
+			"55° 45.34716', -37° 37.05798'",
+			"55° S, 37° 37.05798'W",
+			"-55°, 37° -37.05798'",
+			"55°S, 37°37.05798'W ",
+			"-55°, 37°-37.05798' "
+		),
+		'dms' => array(
+			"55° 45' 21\" N, 37° 37' 3\" W",
+			"55° 45' 21\" N, -37° 37' 3\"",
+			"55° 45' S, 37° 37' 3\"W",
+			"-55°, -37° 37' 3\"",
+			"55°45'S,37°37'3\"W ",
+			"-55°,-37°37'3\" "
+		),
+	);
+	
+	public static $fakeCoordinates = array(
+		'55.7557860 E, 37.6176330 W',
+		'55.7557860 N, 37.6176330 N',
+		'55.7557860 S, 37.6176330 N',
+		'55.7557860 N, 37.6176330 S',
+	);
+	
 	/**
 	 * @var MapsCoordinateParser
 	 */
@@ -63,48 +105,36 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 * Tests MapsCoordinateParser::getCoordinatesType()
 	 */
 	public function testGetCoordinatesType() {
-		// Floats
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '55.7557860 N, 37.6176330 W' ), Maps_COORDS_FLOAT );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '55.7557860, -37.6176330' ), Maps_COORDS_FLOAT );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '55 S, 37.6176330 W' ), Maps_COORDS_FLOAT );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '-55, -37.6176330' ), Maps_COORDS_FLOAT );	
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '5.5S,37W ' ), Maps_COORDS_FLOAT );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '-5.5,-37 ' ), Maps_COORDS_FLOAT );
+		foreach( self::$coordinates['float'] as $coord ) {
+			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_FLOAT );
+		}
 
-		// Decimal Degrees 
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '55.7557860° N, 37.6176330° W' ), Maps_COORDS_DD );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '55.7557860°, -37.6176330°' ), Maps_COORDS_DD );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '55° S, 37.6176330 ° W' ), Maps_COORDS_DD );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '-55°, -37.6176330 °' ), Maps_COORDS_DD );	
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '5.5°S,37°W ' ), Maps_COORDS_DD );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( '-5.5°,-37° ' ), Maps_COORDS_DD );
+		foreach( self::$coordinates['dd'] as $coord ) {
+			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_DD );
+		}
 		
-		// Decimal Minutes 
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45.34716' N, 37° 37.05798' W" ), Maps_COORDS_DM );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45.34716', -37° 37.05798'" ), Maps_COORDS_DM );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° S, 37° 37.05798'W" ), Maps_COORDS_DM );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°, 37° -37.05798'" ), Maps_COORDS_DM );	
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55°S, 37°37.05798'W " ), Maps_COORDS_DM );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°, 37°-37.05798' " ), Maps_COORDS_DM );
-		
-		// Degrees Minutes Seconds 
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45' 21\" N, 37° 37' 3\" W" ), Maps_COORDS_DMS );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45' 21\" N, -37° 37' 3\"" ), Maps_COORDS_DMS );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55° 45' S, 37° 37' 3\"W" ), Maps_COORDS_DMS );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°, -37° 37' 3\"" ), Maps_COORDS_DMS );	
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "55°45'S,37°37'3\"W " ), Maps_COORDS_DMS );
-		$this->assertEquals( MapsCoordinateParser::getCoordinatesType( "-55°,-37°37'3\" " ), Maps_COORDS_DMS );		
+		foreach( self::$coordinates['dm'] as $coord ) {
+			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_DM );
+		}
+
+		foreach( self::$coordinates['dms'] as $coord ) {
+			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_DMS );
+		}		
 	}
 	
 	/**
 	 * Tests MapsCoordinateParser::areCoordinates()
 	 */
 	public function testAreCoordinates() {
-		// TODO Auto-generated MapsCoordinateParserTest::testAreCoordinates()
-		$this->markTestIncomplete ( "areCoordinates test not implemented" );
+		foreach( self::$coordinates as $type ) {
+			foreach( self::$coordinates[$type] as $coord ) {
+				$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ) );
+			}			
+		}
 		
-		MapsCoordinateParser::areCoordinates(/* parameters */);
-	
+		foreach ( self::$fakeCoordinates as $coord ) {
+			$this->assertFalse( MapsCoordinateParser::areCoordinates( $coord ) );
+		}
 	}
 	
 	/**
