@@ -2,6 +2,12 @@
 
 require_once 'PHPUnit\Framework\TestCase.php';
 
+// Trick MW into thinking this is a command line script.
+// This is obviously not a good approach, as it will not work on other setups then my own.
+unset($_SERVER['REQUEST_METHOD']);
+$argv = array( 'over9000failz' );
+require_once '../../../smw/maintenance/commandLine.inc';
+
 /**
  * MapsCoordinateParser test case.
  * 
@@ -21,28 +27,28 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 			'-5.5,-37 '
 		),
 		'dd' => array(
-			'55.7557860° N, 37.6176330° W',
-			'55.7557860°, -37.6176330°',
-			'55° S, 37.6176330 ° W',
-			'-55°, -37.6176330 °',
-			'5.5°S,37°W ',
-			'-5.5°,-37° '
+			'55.7557860Â° N, 37.6176330Â° W',
+			'55.7557860Â°, -37.6176330Â°',
+			'55Â° S, 37.6176330 Â° W',
+			'-55Â°, -37.6176330 Â°',
+			'5.5Â°S,37Â°W ',
+			'-5.5Â°,-37Â° '
 		),
 		'dm' => array(
-			"55° 45.34716' N, 37° 37.05798' W",
-			"55° 45.34716', -37° 37.05798'",
-			"55° S, 37° 37.05798'W",
-			"-55°, 37° -37.05798'",
-			"55°S, 37°37.05798'W ",
-			"-55°, 37°-37.05798' "
+			"55Â° 45.34716' N, 37Â° 37.05798' W",
+			"55Â° 45.34716', -37Â° 37.05798'",
+			"55Â° S, 37Â° 37.05798'W",
+			"-55Â°, 37Â° -37.05798'",
+			"55Â°S, 37Â°37.05798'W ",
+			"-55Â°, 37Â°-37.05798' "
 		),
 		'dms' => array(
-			"55° 45' 21\" N, 37° 37' 3\" W",
-			"55° 45' 21\" N, -37° 37' 3\"",
-			"55° 45' S, 37° 37' 3\"W",
-			"-55°, -37° 37' 3\"",
-			"55°45'S,37°37'3\"W ",
-			"-55°,-37°37'3\" "
+			"55Â° 45' 21\" N, 37Â° 37' 3\" W",
+			"55Â° 45' 21\" N, -37Â° 37' 3\"",
+			"55Â° 45' S, 37Â° 37' 3\"W",
+			"-55Â°, -37Â° 37' 3\"",
+			"55Â°45'S,37Â°37'3\"W ",
+			"-55Â°,-37Â°37'3\" "
 		),
 	);
 	
@@ -106,19 +112,19 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testGetCoordinatesType() {
 		foreach( self::$coordinates['float'] as $coord ) {
-			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_FLOAT );
+			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as float." );
 		}
 
 		foreach( self::$coordinates['dd'] as $coord ) {
-			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_DD );
+			$this->assertEquals( Maps_COORDS_DD, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dd." );
 		}
 		
 		foreach( self::$coordinates['dm'] as $coord ) {
-			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_DM );
+			$this->assertEquals( Maps_COORDS_DM, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dm." );
 		}
 
 		foreach( self::$coordinates['dms'] as $coord ) {
-			$this->assertEquals( MapsCoordinateParser::getCoordinatesType( $coord ), Maps_COORDS_DMS );
+			$this->assertEquals( Maps_COORDS_DMS, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dms." );
 		}		
 	}
 	
@@ -126,15 +132,16 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 * Tests MapsCoordinateParser::areCoordinates()
 	 */
 	public function testAreCoordinates() {
-		foreach( self::$coordinates as $type ) {
-			foreach( self::$coordinates[$type] as $coord ) {
-				$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ) );
+		foreach( self::$coordinates as $coordsOfType ) {
+			foreach( $coordsOfType as $coord ) {
+				$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ), "$coord not recognized as coordinate." );
 			}			
 		}
 		
 		foreach ( self::$fakeCoordinates as $coord ) {
-			$this->assertFalse( MapsCoordinateParser::areCoordinates( $coord ) );
+			$this->assertFalse( MapsCoordinateParser::areCoordinates( $coord ), "$coord was recognized as coordinate." );
 		}
+		
 	}
 	
 	/**
