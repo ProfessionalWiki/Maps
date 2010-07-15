@@ -4,7 +4,7 @@ require_once 'PHPUnit\Framework\TestCase.php';
 
 // Trick MW into thinking this is a command line script.
 // This is obviously not a good approach, as it will not work on other setups then my own.
-unset($_SERVER['REQUEST_METHOD']);
+unset( $_SERVER['REQUEST_METHOD'] );
 $argv = array( 'over9000failz' );
 require_once '../../../smw/maintenance/commandLine.inc';
 
@@ -128,19 +128,32 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 		}		
 	}
 	
-	/**
-	 * Tests MapsCoordinateParser::areCoordinates()
-	 */
-	public function testAreCoordinates() {
+	public function provider() {
+		die(__METHOD__);
+		$coords = array();
+		
 		foreach( self::$coordinates as $coordsOfType ) {
 			foreach( $coordsOfType as $coord ) {
-				$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ), "$coord not recognized as coordinate." );
+				$coords[] = array( $coord );
 			}			
-		}
+		}		
+		return $coords;
+	}	
+	
+	/**
+	 * @dataProvider provider
+	 */
+	public function testAreCoordinates( $coord ) {
+		$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ), "$coord not recognized as coordinate." );
+
 		
+		/*
+		 * Tests MapsCoordinateParser::areCoordinates()
+		 * 
 		foreach ( self::$fakeCoordinates as $coord ) {
 			$this->assertFalse( MapsCoordinateParser::areCoordinates( $coord ), "$coord was recognized as coordinate." );
 		}
+		*/
 		
 	}
 	
