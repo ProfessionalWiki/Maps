@@ -40,15 +40,15 @@ function createYMarker(geoPoint, title, label, icon){
 /**
  * Returns YMap object with the provided properties and markers.
  */
-function initializeYahooMap(mapName, lat, lon, zoom, type, types, controls, scrollWheelZoom, markers) {
-	 var centre = (lon != null && lat != null) ? new YGeoPoint(lat, lon) : null;
-	 return createYahooMap(document.getElementById(mapName), centre, zoom, type, types, controls, scrollWheelZoom, markers);
+function initializeYahooMap( mapName, lat, lon, zoom, type, types, controls, scrollWheelZoom, markers ) {
+	 var centre = ( lon != null && lat != null ) ? new YGeoPoint( lat, lon ) : null;
+	 return createYahooMap( document.getElementById( mapName ), centre, zoom, type, types, controls, scrollWheelZoom, markers );
 }
 
 /**
  * Returns YMap object with the provided properties.
  */
-function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollWheelZoom, markers) {
+function createYahooMap( mapElement, centre, zoom, type, types, controls, scrollWheelZoom, markers ) {
 	var typesContainType = false;
 
 	for (var i = 0; i < types.length; i++) {
@@ -61,9 +61,9 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 	
 	map.removeZoomScale();
 	
-	for (var i =0; i < controls.length; i++){
-		if (controls[i].toLowerCase() == 'auto-zoom') {
-			if (mapElement.offsetHeight > 42) controls[i] = mapElement.offsetHeight > 100 ? 'zoom' : 'zoom-short';
+	for ( var i = controls.length - 1; i >= 0; i-- ){
+		if ( controls[i].toLowerCase() == 'auto-zoom' ) {
+			if ( mapElement.offsetHeight > 42 ) controls[i] = mapElement.offsetHeight > 100 ? 'zoom' : 'zoom-short';
 		}			
 		
 		switch (controls[i]) {
@@ -84,16 +84,17 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 		}
 	}
 	
-	map.setMapType(type);
+	map.setMapType( type );
 	
-	if (!scrollWheelZoom) map.disableKeyControls();
+	if ( !scrollWheelZoom ) map.disableKeyControls();
 	
-	var map_locations = ((zoom == null || centre == null) && markers.length > 1) ? Array() : null;
+	var map_locations = ( ( zoom == null || centre == null ) && markers.length > 1 ) ? Array() : null;
 	
-	for (var i=0; i < markers.length; i++) {
+	for ( var i= markers.length - 1; i >= 0; i-- ) {
 		var marker = markers[i];
-		map.addOverlay(createYMarker(marker.point, marker.title, marker.label, marker.icon));
-		if (map_locations != null) map_locations.push(marker.point);
+		marker.point = new YGeoPoint( marker.lat, marker.lon );		
+		map.addOverlay( createYMarker( marker.point, marker.title, marker.label, marker.icon ) );
+		if ( map_locations != null ) map_locations.push( marker.point );
 	}
 
 	if (map_locations != null) {
@@ -101,16 +102,12 @@ function createYahooMap(mapElement, centre, zoom, type, types, controls, scrollW
 		map.drawZoomAndCenter(centerAndZoom.YGeoPoint, centerAndZoom.zoomLevel);
 	}
 	
-	if (zoom != null) map.setZoomLevel(zoom);
+	if ( zoom != null ) map.setZoomLevel( zoom );
 	
 	// FIXME: the code after this line REFUSES to be executed
 	// This is probably caused by the YGeoPoint
 	// Notice that the map object will therefore NOT BE RETURNED!
-	if (centre != null) map.drawZoomAndCenter(centre);
+	if ( centre != null ) map.drawZoomAndCenter( centre );
 	
 	return map;
 }
- 
-function getYMarkerData(lat, lon, title, label, icon) {
-		return {point: new YGeoPoint(lat, lon), title: title, label: label, icon: icon};
-	}

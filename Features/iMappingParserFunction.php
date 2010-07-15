@@ -1,9 +1,9 @@
 <?php
 
 /**
- * File holding interface iMapParserFunction.
+ * File holding interface iMappingParserFunction.
  * 
- * @file Maps_iMapParserFunction.php
+ * @file iMappingParserFunction.php
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
@@ -20,7 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * 
  * @since 0.6.3
  */
-interface iMapParserFunction extends iMappingFeature {
+interface iMappingParserFunction extends iMappingFeature {
 	
 	/**
 	 * Constructor.

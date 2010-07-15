@@ -34,7 +34,7 @@ final class MapsParserFunctions {
 	public static function initialize() {
 		global $egMapsFeatures;
 		
-		include_once dirname( __FILE__ ) . '/Maps_iMapParserFunction.php';
+		include_once dirname( __FILE__ ) . '/iMappingParserFunction.php';
 		
 		// This runs a small hook that enables parser functions to run initialization code.
 		foreach ( $egMapsFeatures['pf'] as $hook ) {
@@ -138,7 +138,7 @@ final class MapsParserFunctions {
 		$equals = $compareMainName && $mainParamName == $name;
 
 		if ( !$equals && array_key_exists( $mainParamName, $paramInfo ) ) {
-			$equals = in_array( $name, $paramInfo[$mainParamName] );
+			$equals = in_array( $name, $paramInfo[$mainParamName]['aliases'] );
 		}
 
 		return $equals;

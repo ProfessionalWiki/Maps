@@ -22,7 +22,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  */
-abstract class MapsBasePointMap implements iMapParserFunction {
+abstract class MapsBasePointMap implements iMappingParserFunction {
 	
 	public $service;
 	

@@ -3,12 +3,10 @@
 /**
  * File holding interface iMapParserFunction.
  * 
- * @file Maps_iMappingService.php
+ * @file iMappingService.php
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
- * 
- * TODO: revise this interface
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

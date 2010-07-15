@@ -3,7 +3,7 @@
 /**
  * File holding interface iMappingFeature.
  * 
- * @file Maps_iMappingFeature.php
+ * @file iMappingFeature.php
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw

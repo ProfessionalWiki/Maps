@@ -105,15 +105,18 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @see MapsMappingService::createMarkersJs
 	 * 
 	 * @since 0.6.5
-	 * 
-	 * TODO: escaping!
 	 */
 	public function createMarkersJs( array $markers ) {
 		$markerItems = array();
 		
 		foreach ( $markers as $marker ) {
-			list( $lat, $lon, $title, $label, $icon ) = $marker;
-			$markerItems[] = "getOLMarkerData($lat, $lon, \"$title\", \"$label\", \"$icon\")";
+			$markerItems[] = Xml::encodeJsVar( array(
+				'lat' => $marker[0],
+				'lon' => $marker[1],
+				'title' => $marker[2],
+				'label' =>$marker[3],
+				'icon' => $marker[4]
+			) );
 		}
 		
 		// Create a string containing the marker JS.

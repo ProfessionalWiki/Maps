@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6.5 a3' );
+	define( 'Maps_VERSION', '0.6.5 a4' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -100,13 +100,13 @@ function efMapsSetup() {
 	}
 
 	// Load the "service/" classes and interfaces.
-	require_once $egMapsDir . 'Services/Maps_iMappingService.php';
+	require_once $egMapsDir . 'Services/iMappingService.php';
 	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
 	
 	wfRunHooks( 'MappingServiceLoad' );
 	
 	// Load the "feature/" classes and interfaces.
-	require_once $egMapsDir . 'Features/Maps_iMappingFeature.php';
+	require_once $egMapsDir . 'Features/iMappingFeature.php';
 	
 	wfRunHooks( 'MappingFeatureLoad' );
 

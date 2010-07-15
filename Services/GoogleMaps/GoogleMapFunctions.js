@@ -21,16 +21,16 @@ var GOverlays = [
  * Returns GMarker object on the provided location. It will show a popup baloon
  * with title and label when clicked, if either of these is set.
  */
-function createGMarker( point, title, label, icon ) {
+function createGMarker( markerData ) {
 	var marker;
 	
-	if ( icon != '' ) {
+	if ( markerData.icon != '' ) {
 		var iconObj = new GIcon( G_DEFAULT_ICON );
-		iconObj.image = icon;
+		iconObj.image = markerData.icon;
 
 		
 		var newimg = new Image();
-		newimg.src = icon;
+		newimg.src = markerData.icon;
 		
 		// Only do these things when there is an actual width, which there won,t the first time the image is loaded.
 		// TODO: this means the image won't have it's correct size when it differs from the default on first load!
@@ -47,14 +47,14 @@ function createGMarker( point, title, label, icon ) {
 			iconObj.iconAnchor = anchor;			
 		}
 
-		marker = new GMarker( point, { icon:iconObj } );
+		marker = new GMarker( markerData.point, { icon: iconObj } );
 	} else {
-		marker = new GMarker( point );
+		marker = new GMarker( markerData.point );
 	}
 	
-	if ( ( title + label ).length > 0 ) {
-		var bothTxtAreSet = title.length > 0 && label.length > 0;
-		var popupText = bothTxtAreSet ? '<b>' + title + '</b><hr />' + label : title + label;	
+	if ( ( markerData.title + markerData.label ).length != '' ) {
+		var bothTxtAreSet = markerData.title.length != '' && markerData.label.length != '';
+		var popupText = bothTxtAreSet ? '<b>' + markerData.title + '</b><hr />' + markerData.label : markerData.title + markerData.label;	
 		popupText = '<div style="overflow:auto;max-height:140px;">' + popupText + '</div>';
 
 		GEvent.addListener(marker, 'click',
@@ -163,10 +163,11 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	var bounds = ((mapOptions.zoom == null || mapOptions.centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
 
-	for (i = 0; i < markers.length; i++) {
+	for ( i = markers.length - 1; i >= 0; i-- ) {
 		var marker = markers[i];
-		map.addOverlay(createGMarker(marker.point, marker.title, marker.label, marker.icon));
-		if (bounds != null) bounds.extend(marker.point);
+		marker.point = new GLatLng( marker.lat, marker.lon );
+		map.addOverlay( createGMarker( marker ) );
+		if ( bounds != null ) bounds.extend( marker.point );
 	}
 
 	if (bounds != null) {
@@ -192,10 +193,6 @@ function createGoogleMap(mapName, mapOptions, markers) {
 	eval("window.GMaps." + mapName + " = map;"); 	
 	
 	return map;
-}
- 
-function getGMarkerData(lat, lon, title, label, icon) {
-		return {point: new GLatLng(lat, lon), title: title, label: label, icon: icon};
 }
 
 function setupCheckboxShiftClick() { return true; }
