@@ -45,9 +45,6 @@ class MapsCoordinateParser {
 	 * @return array or false
 	 */
 	public static function parseCoordinates( $coordinates ) {
-		// Normalize the coordinates string.
-		$coordinates = self::normalizeCoordinates( $coordinates );
-
 		// Handle i18n notations.
 		$coordinates = self::handleI18nLabels( $coordinates );
 		
@@ -97,6 +94,9 @@ class MapsCoordinateParser {
 	 * @return Integer or false
 	 */
 	public static function getCoordinatesType( $coordinates ) {
+		// Normalize the coordinates string.
+		$coordinates = self::normalizeCoordinates( $coordinates );		
+		
 		switch ( true ) {
 			case self::areFloatCoordinates( $coordinates ):
 				return Maps_COORDS_FLOAT;
@@ -125,9 +125,6 @@ class MapsCoordinateParser {
 	 * @return boolean
 	 */
 	public static function areCoordinates( $coordsOrAddress ) {
-		// Normalize the coordinates string.
-		$coordsOrAddress = self::normalizeCoordinates( $coordsOrAddress );
-
 		// Handle i18n notations.
 		$coordsOrAddress = self::handleI18nLabels( $coordsOrAddress );
 
