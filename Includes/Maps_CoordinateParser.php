@@ -27,11 +27,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsCoordinateParser {
 	
-	protected static $mSeparators = array( ',', ';' );
-	protected static $mSeparatorsRegex = false;
+	protected static $separators = array( ',', ';' );
+	protected static $separatorsRegex = false;
 	
-	protected static $mI18nDirections = false; // Cache for localised direction labels
-	protected static $mDirections; // Cache for English direction labels
+	protected static $i18nDirections = false; // Cache for localised direction labels
+	protected static $directions; // Cache for English direction labels
 
 	/**
 	 * Takes in a set of coordinates and checks if they are a supported format.
@@ -60,7 +60,7 @@ class MapsCoordinateParser {
 		}
 		
 		// Split the coodrinates string into a lat and lon part.
-		foreach ( self::$mSeparators as $separator ) {
+		foreach ( self::$separators as $separator ) {
 			$split = explode( $separator, $coordinates );
 			if ( count( $split ) == 2 ) break;
 		}
@@ -370,7 +370,7 @@ class MapsCoordinateParser {
 	 */
 	private static function handleI18nLabels( $coordinates ) {
 		self::initializeDirectionLabels();
-		return str_replace( self::$mI18nDirections, self::$mDirections, $coordinates );
+		return str_replace( self::$i18nDirections, self::$directions, $coordinates );
 	}
 	
 	/**
@@ -379,14 +379,14 @@ class MapsCoordinateParser {
 	 * @since 0.6
 	 */
 	protected static function initializeDirectionLabels() {
-		if ( !self::$mI18nDirections ) {
-			self::$mI18nDirections = array(
+		if ( !self::$i18nDirections ) {
+			self::$i18nDirections = array(
 				'N' => wfMsgForContent( 'maps-abb-north' ),
 				'E' => wfMsgForContent( 'maps-abb-east' ),
 				'S' => wfMsgForContent( 'maps-abb-south' ),
 				'W' => wfMsgForContent( 'maps-abb-west' ),
 			);
-			self::$mDirections = array_keys( self::$mI18nDirections );
+			self::$directions = array_keys( self::$i18nDirections );
 		}
 	}
 	
@@ -421,7 +421,7 @@ class MapsCoordinateParser {
 		
 		// If there is a direction indicator, remove it, and prepend a minus sign for south and west directions.
 		// If there is no direction indicator, the coordinate is already non-directional and no work is required.
-		if ( in_array( $lastChar, self::$mDirections ) ) {
+		if ( in_array( $lastChar, self::$directions ) ) {
 			$coordinate = substr( $coordinate, 0, -1 );
 			
 			if ( ( $lastChar == 'S' ) or ( $lastChar == 'W' ) ) {
@@ -469,9 +469,9 @@ class MapsCoordinateParser {
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		if ( $isLat ) {
-			$directionChar = self::$mI18nDirections[ $isNegative ? 'S' : 'N' ];
+			$directionChar = self::$i18nDirections[ $isNegative ? 'S' : 'N' ];
 		} else {
-			$directionChar = self::$mI18nDirections[ $isNegative ? 'W' : 'E' ];
+			$directionChar = self::$i18nDirections[ $isNegative ? 'W' : 'E' ];
 		}
 
 		return $coordinate . ' ' . $directionChar;
@@ -553,8 +553,8 @@ class MapsCoordinateParser {
 	 * @return string
 	 */
 	protected static function getSeparatorsRegex() {
-		if ( !self::$mSeparatorsRegex ) self::$mSeparatorsRegex = '(' . implode( '|', self::$mSeparators ) . ')';
-		return self::$mSeparatorsRegex;
+		if ( !self::$separatorsRegex ) self::$separatorsRegex = '(' . implode( '|', self::$separators ) . ')';
+		return self::$separatorsRegex;
 	}
 	
 	/**
