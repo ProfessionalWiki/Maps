@@ -114,7 +114,7 @@ class MapsYahooMaps extends MapsMappingService {
 			$egYahooMapsOnThisPage++;
 		}
 		
-		return $egYahooMapsOnThisPage . '_' . $egOSMOnThisPage;
+		return $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
 	}		
 	
 	/**
