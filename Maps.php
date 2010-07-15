@@ -176,4 +176,5 @@ function efMapsAddToAdminLinks( &$admin_links_tree ) {
 function efMapsUnitTests( array &$files ) {
 	$testDir = dirname( __FILE__ ) . '/test/';
 	$files[] = $testDir . 'MapsCoordinateParserTest.php';
+	return true;
 }
