@@ -51,6 +51,36 @@ abstract class SMFormInput implements iMappingFeature {
 	 */
 	public function __construct( MapsMappingService $service ) {
 		$this->service = $service;
+	}
+	
+	/**
+	 * Returns the specific parameters by first checking if they have been initialized yet,
+	 * doing to work if this is not the case, and then returning them.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @return array
+	 */
+	public final function getSpecificParameterInfo() {
+		if ( $this->specificParameters === false ) {
+			$this->specificParameters = array();
+			$this->initSpecificParamInfo( $this->specificParameters );
+		}
+		
+		return $this->specificParameters;
+	}
+	
+	/**
+	 * Initializes the specific parameters.
+	 * 
+	 * Override this method to set parameters specific to a feature service comibination in
+	 * the inheriting class.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @param array $parameters
+	 */
+	protected function initSpecificParamInfo( array &$parameters ) {
 	}	
 	
 	/**

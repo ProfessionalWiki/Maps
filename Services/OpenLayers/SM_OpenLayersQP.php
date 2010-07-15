@@ -26,6 +26,8 @@ class SMOpenLayersQP extends SMMapPrinter {
 	 * @see SMMapPrinter::addSpecificMapHTML
 	 */
 	public function addSpecificMapHTML() {
+		global $wgLang;
+		
 		$mapName = $this->service->getMapId();			
 
 		$this->output .= Html::element(

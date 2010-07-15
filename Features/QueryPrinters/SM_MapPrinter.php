@@ -187,7 +187,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * 
 	 * @return array
 	 */
-	public final function getResult( SMWQueryResult $results, array $params, $outputmode ) {
+	public final function getResult( /* SMWQueryResult */ $results, /* array */ $params, $outputmode ) {
 		// Skip checks, results with 0 entries are normal.
 		$this->readParameters( $params, $outputmode );
 		
