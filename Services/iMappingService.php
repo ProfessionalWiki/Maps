@@ -21,6 +21,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 interface iMappingService {
 	
 	/**
+	 * Returns the internal name of the service.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @return string
+	 */	
+	function getName();
+	
+	/**
 	 * Adds the dependencies to the parser output as head items.
 	 * 
 	 * @since 0.6.3
@@ -38,6 +47,47 @@ interface iMappingService {
 	 * @return array
 	 */
 	function getParameterInfo();
+	
+	/**
+	 * Adds a dependency that is needed for this service. It will be passed along with the next 
+	 * call to getDependencyHtml or addDependencies.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @param string $dependencyHtml
+	 */	
+	function addDependency( $dependencyHtml );
+	
+	/**
+	 * Returns the name of the class that handles the provided feature in this service, or false if there is none.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @param string $featureName.
+	 * 
+	 * @return mixed String or false
+	 */	
+	function getFeature( $featureName );
+	
+	/**
+	 * Returns a list of aliases.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @return array
+	 */	
+	function getAliases();
+	
+	/**
+	 * Returns if the service has a certain alias or not.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @param string $alias
+	 * 
+	 * @return boolean
+	 */	
+	function hasAlias( $alias );
 	
 	/**
 	 * Returns the default zoomlevel for the mapping service.

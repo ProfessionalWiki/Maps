@@ -111,18 +111,6 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * Initializes the service parameters.
-	 * 
-	 * You can override this method to set service specific parameters in the inheriting class. 
-	 * 
-	 * @since 0.6.3
-	 * 
-	 * @param array $parameters
-	 */	
-	protected function initParameterInfo( array &$parameters ) {
-	}
-	
-	/**
 	 * @see iMappingService::createMarkersJs
 	 * 
 	 * @since 0.6.5
@@ -188,16 +176,49 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * Adds a dependency that is needed for this service. It will be passed along with the next 
-	 * call to getDependencyHtml or addDependencies.
+	 * @see iMappingService::addDependency
 	 * 
 	 * @since 0.6.3
-	 * 
-	 * @param string $dependencyHtml
 	 */
 	public final function addDependency( $dependencyHtml ) {
 		$this->dependencies[] = $dependencyHtml;
 	}	
+	
+	/**
+	 * @see iMappingService::getName
+	 * 
+	 * @since 0.6.3
+	 */	
+	public function getName() {
+		return $this->serviceName;
+	}
+	
+	/**
+	 * @see iMappingService::getFeature
+	 * 
+	 * @since 0.6.3
+	 */
+	public function getFeature( $featureName ) {
+		return array_key_exists( $featureName, $this->features ) ? $this->features[$featureName] : false;
+	}
+	
+	/**
+	 * @see iMappingService::getAliases
+	 * 
+	 * @since 0.6.3
+	 */
+	public function getAliases() {
+		return $this->aliases;
+	}
+	
+	/**
+	 * @see iMappingService::hasAlias
+	 * 
+	 * @since 0.6.3
+	 */
+	public function hasAlias( $alias ) {
+		return in_array( $alias, $this->aliases );
+	}
 	
 	/**
 	 * Returns a list of html fragments, such as script includes, the current service depends on.
@@ -211,51 +232,15 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * Returns the internal name of the service.
+	 * Initializes the service parameters.
+	 * 
+	 * You can override this method to set service specific parameters in the inheriting class. 
 	 * 
 	 * @since 0.6.3
 	 * 
-	 * @return string
-	 */
-	public function getName() {
-		return $this->serviceName;
-	}
-	
-	/**
-	 * Returns the name of the class that handles the provided feature in this service, or false if there is none.
-	 * 
-	 * @since 0.6.3
-	 * 
-	 * @param string $featureName.
-	 * 
-	 * @return mixed String or false
-	 */
-	public function getFeature( $featureName ) {
-		return array_key_exists( $featureName, $this->features ) ? $this->features[$featureName] : false;
-	}
-	
-	/**
-	 * Returns a list of aliases.
-	 * 
-	 * @since 0.6.3
-	 * 
-	 * @return array
-	 */
-	public function getAliases() {
-		return $this->aliases;
-	}
-	
-	/**
-	 * Returns if the service has a certain alias or not.
-	 * 
-	 * @since 0.6.3
-	 * 
-	 * @param string $alias
-	 * 
-	 * @return boolean
-	 */
-	public function hasAlias( $alias ) {
-		return in_array( $alias, $this->aliases );
-	}
+	 * @param array $parameters
+	 */	
+	protected function initParameterInfo( array &$parameters ) {
+	}	
 	
 }

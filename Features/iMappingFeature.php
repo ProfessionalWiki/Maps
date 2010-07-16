@@ -21,6 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 interface iMappingFeature {
+	
 	/**
 	 * Adds the HTML specific to the mapping service to the output.
 	 * 
@@ -39,4 +40,5 @@ interface iMappingFeature {
 	 * @return array
 	 */
 	function getSpecificParameterInfo();
+	
 }
