@@ -8,14 +8,14 @@
   */
 
 /**
- * This function holds specific functionality for the Open Layers form input of Semantic Maps
+ * This function holds specific functionality for the Open Layers form input of Semantic Maps.
  */
 function makeFormInputOpenLayer( mapName, locationFieldName, lat, lon, zoom, marker_lat, marker_lon, layers, controls, height, langCode ) {
 	var markers = Array();
 
-	// Show a starting marker only if marker coordinates are provided
-	if (marker_lat != null && marker_lon != null) {
-		markers.push(getOLMarkerData(marker_lon, marker_lat, '', '', ''));
+	// Show a starting marker only if marker coordinates are provided.
+	if ( marker_lat != null && marker_lon != null ) {
+		markers.push( { "lat": marker_lat, "lon": marker_lon, "title": "", "label": "", "icon": "" } );
 	}
 
 	// Click event handler for updating the location of the marker

@@ -9,16 +9,15 @@
 
 /**
  * This function holds specific functionality for the Google Maps form input of Semantic Maps
- * TODO: Refactor as much code as possible to non specific functions
  */
-function makeGoogleMapFormInput(mapName, locationFieldName, mapOptions, marker_lat, marker_lon) {
-	 if (GBrowserIsCompatible()) {
+function makeGoogleMapFormInput( mapName, locationFieldName, mapOptions, marker_lat, marker_lon ) {
+	 if ( GBrowserIsCompatible() ) {
 		 mapOptions.centre =  new GLatLng(mapOptions.lat, mapOptions.lon);		 
-		 var map = createGoogleMap(mapName, mapOptions, [getGMarkerData(marker_lat, marker_lon, '', '', '')]);
+		 var map = createGoogleMap( mapName, mapOptions, [ { "lat": marker_lat, "lon": marker_lon, "title": "", "label": "", "icon": "" } ] );
 		 
 		// Show a starting marker only if marker coordinates are provided
-		if (marker_lat != null && marker_lon != null) {
-			map.addOverlay(new GMarker(new GLatLng(marker_lat, marker_lon)));
+		if ( marker_lat != null && marker_lon != null ) {
+			map.addOverlay( new GMarker( new GLatLng( marker_lat, marker_lon ) ) );
 		}
 		
 		// Click event handler for updating the location of the marker
