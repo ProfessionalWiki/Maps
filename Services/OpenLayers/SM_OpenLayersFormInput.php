@@ -23,15 +23,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMOpenLayersFormInput extends SMFormInput {
 	
 	/**
-	 * @see MapsMapFeature::setMapSettings()
+	 * @see SMFormInput::getEarthZoom
+	 * 
+	 * @since 0.6.5
 	 */
-	protected function setMapSettings() {
-		global $egMapsOpenLayersPrefix;
-		
-		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-
-		$this->earthZoom = 1;
-	}
+	protected function getEarthZoom() {
+		return 1;
+	}	
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
@@ -51,8 +49,6 @@ class SMOpenLayersFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML
-	 * 
-	 * TODO: fix map name
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgOut, $wgLang;

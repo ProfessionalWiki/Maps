@@ -20,36 +20,33 @@ abstract class SMFormInput implements iMappingFeature {
 	 */
 	protected abstract function addFormDependencies();
 	
-	protected $service;
+	/**
+	 * Returns the zoom level at which the whole earth is visible.
+	 */
+	protected abstract function getEarthZoom();	
 	
 	/**
-	 * @var string
-	 */	
-	protected $mapName;
+	 * @var iMappingService
+	 */
+	protected $service;
 	
 	/**
 	 * @var array
 	 */
 	protected $markerCoords;
-
-	protected $earthZoom;
-	
-	protected $showAddresFunction;
-	
-	protected $enableGeocoding;
 	
 	protected $errorList;
 	
-	private $coordinates;
-	
 	protected $specificParameters = false;
+	
+	private $coordinates;
 	
 	/**
 	 * Constructor.
 	 * 
-	 * @param MapsMappingService $service
+	 * @param iMappingService $service
 	 */
-	public function __construct( MapsMappingService $service ) {
+	public function __construct( iMappingService $service ) {
 		$this->service = $service;
 	}
 	
@@ -148,17 +145,16 @@ abstract class SMFormInput implements iMappingFeature {
 			return array( $this->errorList );
 		}
 		
-		$this->enableGeocoding = $this->manageGeocoding();
-
 		$this->setCoordinates();
 		$this->setCentre();
 		$this->setZoom();
 		
 		// Create html element names.
 		$mapName = $this->service->getMapId();
-		$this->geocodeFieldName = $mapName . '_geocode_' . $sfgTabIndex;
-		$this->coordsFieldName = $mapName . '_coords_' . $sfgTabIndex;
-		$this->infoFieldName = $mapName . '_info_' . $sfgTabIndex;
+		$coordsFieldName = $mapName . '_coords_' . $sfgTabIndex;
+		$infoFieldName = $mapName . '_info_' . $sfgTabIndex;				
+		
+		$geocodingFunction = $this->getShowAddressFunction(); 
 
 		// Create the non specific form HTML.
 		$this->output .= Html::input( 
@@ -168,7 +164,7 @@ abstract class SMFormInput implements iMappingFeature {
 			array(
 				'size' => 42, #_O
 				'tabindex' => $sfgTabIndex,
-				'id' => $this->coordsFieldName
+				'id' => $coordsFieldName
 			)
 		);
 		
@@ -176,11 +172,13 @@ abstract class SMFormInput implements iMappingFeature {
 			'span',
 			array(
 				'class' => 'error_message',
-				'id' => $this->infoFieldName
+				'id' => $infoFieldName
 			)
 		);
 		
-		if ( $this->enableGeocoding ) $this->addGeocodingField( $mapName );
+		if ( $geocodingFunction !== false ) {
+			$this->addGeocodingField( $geocodingFunction, $mapName, $mapName . '_geocode_' . $sfgTabIndex );
+		}			
 		
 		if ( $this->markerCoords === false ) {
 			$this->markerCoords = array(
@@ -197,7 +195,14 @@ abstract class SMFormInput implements iMappingFeature {
 		return array( $this->output . $this->errorList, '' );
 	}
 	
-	private function addGeocodingField( $mapName ) {
+	/**
+	 * Adds geocoding controls to the form.
+	 * 
+	 * @param string $geocodingFunction
+	 * @param string $mapName
+	 * @param string $geocodeFieldName
+	 */
+	private function addGeocodingField( $geocodingFunction, $mapName, $geocodeFieldName ) {
 		global $sfgTabIndex, $wgOut, $smgAddedFormJs;
 		$sfgTabIndex++;
 		
@@ -222,24 +227,24 @@ EOT
 			);
 		}
 		
-		$adress_field = SMFormInput::getDynamicInput(
-			$this->geocodeFieldName,
-			wfMsg( 'semanticmaps_enteraddresshere' ),
+		$adressField = SMFormInput::getDynamicInput(
+			$geocodeFieldName,
+			htmlspecialchars( wfMsg( 'semanticmaps_enteraddresshere' ) ),
 			'size="30" name="geocode" style="color: #707070" tabindex="' . htmlspecialchars( $sfgTabIndex ) . '"'
 		);
 		
 		$notFoundText = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
 		$mapName = Xml::escapeJsString( $mapName );
-		$geoFieldName = Xml::escapeJsString( $this->geocodeFieldName );
-		$coordFieldName = Xml::escapeJsString( $this->coordsFieldName );
+		$geoFieldName = Xml::escapeJsString( $geocodeFieldName );
+		$coordFieldName = Xml::escapeJsString( $geocodeFieldName );
 		
-		$this->output .= '<p>' . $adress_field .
+		$this->output .= '<p>' . $adressField .
 			Html::input(
 				'geosubmit',
 				wfMsg( 'semanticmaps_lookupcoordinates' ),
 				'submit',
 				array(
-					'onClick' => "$this->showAddresFunction( document.forms['createbox'].$geoFieldName.value, '$mapName', '$coordFieldName', '$notFoundText'); return false"
+					'onClick' => "$geocodingFunction( document.forms['createbox'].$geoFieldName.value, '$mapName', '$coordFieldName', '$notFoundText'); return false"
 				)
 			) . 
 			'</p>';
@@ -251,7 +256,7 @@ EOT
 	 */
 	private function setZoom() {
         if ( empty( $this->coordinates ) ) {
-            $this->zoom = $this->earthZoom;
+            $this->zoom = $this->getEarthZoom();
         } else if ( $this->zoom == 'null' ) {
              $this->zoom = $this->defaultZoom;
         }
@@ -305,17 +310,18 @@ EOT
 	 * @return string (html)
 	 */
 	private static function getDynamicInput( $id, $value, $args = '' ) {
-		// TODO: escape properly
+		// TODO: escape properly, use Html class
 		return '<input id="' . $id . '" ' . $args . ' value="' . $value . '" onfocus="if (this.value==\'' . $value . '\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\'' . $value . '\';}" />';
 	}
 	
 	/**
-	 * Determine if geocoding will be enabled and load the required dependencies.
-	 * Override in deriving classes to enable geocoding functionallity there.
+	 * Returns the name of the JavaScript function to use for live geocoding,
+	 * or false to indicate there is no such function. Override this method
+	 * to implement geocoding functionallity.
 	 * 
-	 * @return boolean
+	 * @return mixed: string or false
 	 */
-	protected function manageGeocoding() {
+	protected function getShowAddressFunction() {
 		return false;
 	}
 		

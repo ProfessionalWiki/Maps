@@ -27,15 +27,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMGoogleMapsFormInput extends SMFormInput {
 
 	/**
-	 * @see MapsMapFeature::setMapSettings()
+	 * @see SMFormInput::getEarthZoom
+	 * 
+	 * @since 0.6.5
 	 */
-	protected function setMapSettings() {
-		global $egMapsGoogleMapsPrefix;
-		
-		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
-		$this->showAddresFunction = 'showGAddress';
-
-		$this->earthZoom = 1;
+	protected function getEarthZoom() {
+		return 1;
+	}	
+	
+	/**
+	 * @see SMFormInput::getShowAddressFunction
+	 * 
+	 * @since 0.6.5
+	 */	
+	protected function getShowAddressFunction() {
+		global $egGoogleMapsKey;
+		return $egGoogleMapsKey == '' ? false : 'showGAddress';	
 	}
 	
 	/**
@@ -100,13 +107,5 @@ addOnloadHook(
 EOT
 		);
 	}
-	
-	/**
-	 * @see SMFormInput::manageGeocoding
-	 */
-	protected function manageGeocoding() {
-		global $egGoogleMapsKey;
-		return $egGoogleMapsKey != '';
-	}
-	
+
 }

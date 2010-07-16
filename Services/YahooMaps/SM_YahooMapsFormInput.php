@@ -23,16 +23,23 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMYahooMapsFormInput extends SMFormInput {
 	
 	/**
-	 * @see MapsMapFeature::setMapSettings()
+	 * @see SMFormInput::getEarthZoom
+	 * 
+	 * @since 0.6.5
 	 */
-	protected function setMapSettings() {
-		global $egMapsYahooMapsPrefix;
-		
-		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
-		$this->showAddresFunction = 'showYAddress';
-
-		$this->earthZoom = 17;
-	}
+	protected function getEarthZoom() {
+		return 17;
+	}	
+	
+	/**
+	 * @see SMFormInput::getShowAddressFunction
+	 * 
+	 * @since 0.6.5
+	 */	
+	protected function getShowAddressFunction() {
+		global $egYahooMapsKey;
+		return $egYahooMapsKey == '' ? false : 'showYAddress';	
+	}	
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
@@ -52,8 +59,6 @@ class SMYahooMapsFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML
-	 * 
-	 * TODO: fix map name
 	 */
 	protected function addSpecificMapHTML() {
 		global $wgOut;
@@ -92,12 +97,4 @@ EOT
 
 	}
 	
-	/**
-	 * @see SMFormInput::manageGeocoding()
-	 */
-	protected function manageGeocoding() {
-		global $egYahooMapsKey;
-		return $egYahooMapsKey != '';
-	}
-
 }
