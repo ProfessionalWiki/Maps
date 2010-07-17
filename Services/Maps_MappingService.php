@@ -92,14 +92,9 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * Returns the service parameters by first checking if they have been initialized yet,
-	 * doing to work if this is not the case, and then returning them.
-	 * 
-	 * @since 0.6.3
-	 * 
 	 * @see iMappingService::getParameterInfo
 	 * 
-	 * @return array
+	 * @since 0.6.3
 	 */	
 	public final function getParameterInfo() {
 		if ( $this->parameterInfo === false ) {
@@ -120,23 +115,18 @@ abstract class MapsMappingService implements iMappingService {
 	}		
 	
 	/**
-	 * Adds a feature to this service. This is to indicate this service has support for this feature.
+	 * @see iMappingService::addFeature
 	 * 
 	 * @since 0.6.3
-	 * 
-	 * @param string $featureName
-	 * @param string $handlingClass
 	 */
 	public function addFeature( $featureName, $handlingClass ) {
 		$this->features[$featureName] = $handlingClass;
 	}
 	
 	/**
-	 * Adds the mapping services dependencies to the header. 
+	 * @see iMappingService::addDependencies 
 	 * 
 	 * @since 0.6.3
-	 * 
-	 * @param mixed $parserOrOut
 	 */
 	public final function addDependencies( &$parserOrOut ) {
 		$dependencies = $this->getDependencyHtml();
@@ -153,11 +143,9 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * Returns the html for the needed dependencies or false.
+	 * @see iMappingService::getDependencyHtml 
 	 * 
 	 * @since 0.6.3
-	 * 
-	 * @return mixed String or false
 	 */
 	public final function getDependencyHtml() {
 		$allDependencies = array_merge( $this->getDependencies(), $this->dependencies );
