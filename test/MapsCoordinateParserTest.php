@@ -184,44 +184,48 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 * Tests MapsCoordinateParser::areFloatCoordinates()
 	 */
 	public function testAreFloatCoordinates() {
-		// TODO Auto-generated MapsCoordinateParserTest::testAreFloatCoordinates()
-		$this->markTestIncomplete ( "areFloatCoordinates test not implemented" );
-		
-		MapsCoordinateParser::areFloatCoordinates(/* parameters */);
-	
+		foreach ( self::$fakeCoordinates as $coord ) {
+			$this->assertFalse( MapsCoordinateParser::areFloatCoordinates( $coord ), "$coord was recognized as float." );
+		}
+		foreach( self::$coordinates['float'] as $coord ) {
+			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as float." );
+		}		
 	}
 	
 	/**
 	 * Tests MapsCoordinateParser::areDMSCoordinates()
 	 */
 	public function testAreDMSCoordinates() {
-		// TODO Auto-generated MapsCoordinateParserTest::testAreDMSCoordinates()
-		$this->markTestIncomplete ( "areDMSCoordinates test not implemented" );
-		
-		MapsCoordinateParser::areDMSCoordinates(/* parameters */);
-	
+		foreach ( self::$fakeCoordinates as $coord ) {
+			$this->assertFalse( MapsCoordinateParser::areFloatCoordinates( $coord ), "$coord was recognized as dms." );
+		}
+		foreach( self::$coordinates['dms'] as $coord ) {
+			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dms." );
+		}		
 	}
 	
 	/**
 	 * Tests MapsCoordinateParser::areDDCoordinates()
 	 */
 	public function testAreDDCoordinates() {
-		// TODO Auto-generated MapsCoordinateParserTest::testAreDDCoordinates()
-		$this->markTestIncomplete ( "areDDCoordinates test not implemented" );
-		
-		MapsCoordinateParser::areDDCoordinates(/* parameters */);
-	
+		foreach ( self::$fakeCoordinates as $coord ) {
+			$this->assertFalse( MapsCoordinateParser::areFloatCoordinates( $coord ), "$coord was recognized as dd." );
+		}
+		foreach( self::$coordinates['dd'] as $coord ) {
+			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dd." );
+		}	
 	}
 	
 	/**
 	 * Tests MapsCoordinateParser::areDMCoordinates()
 	 */
 	public function testAreDMCoordinates() {
-		// TODO Auto-generated MapsCoordinateParserTest::testAreDMCoordinates()
-		$this->markTestIncomplete ( "areDMCoordinates test not implemented" );
-		
-		MapsCoordinateParser::areDMCoordinates(/* parameters */);
-	
+		foreach ( self::$fakeCoordinates as $coord ) {
+			$this->assertFalse( MapsCoordinateParser::areFloatCoordinates( $coord ), "$coord was recognized as dm." );
+		}
+		foreach( self::$coordinates['dm'] as $coord ) {
+			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dm." );
+		}		
 	}
 	
 	/**

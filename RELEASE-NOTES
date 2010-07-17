@@ -22,6 +22,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Improved the way marker data is turned into JavaScript variables.
 
+* Improved coordinate recognition regexes. 
+
 === Maps 0.6.4 ===
 (2010-07-08)
 
