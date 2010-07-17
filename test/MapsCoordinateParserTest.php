@@ -54,7 +54,9 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	
 	public static $coordinateMappings = array(
 		'float-dms' => array(
-			'42° 30\' 0", -42° 30\' 0"' => array( '42.5, -42.5', '42.5 N, 42.5 W' )
+			'42° 30\' 0", -42° 30\' 0"' => array( '42.5, -42.5', '42.5 N, 42.5 W' ),
+			'-42° 30\' 0", 42° 30\' 0"' => array( '-42.5, 42.5', '42.5 S, 42.5 E' ),
+			'42° 25\' 27", 42° 25\' 27"' => array( '42.4242, 42.4242', '42.4242 N, 42.4242 E' ),
 		),
 	);
 	
@@ -142,7 +144,7 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider coordinatesProvider
 	 */
-	public function testAreCoordinates( $coord ) {
+	public function testAreCoordinates() {
 		foreach( self::$coordinates as $coordsOfType ) {
 			foreach( $coordsOfType as $coord ) {	
 				$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ), "$coord not recognized as coordinate." );
@@ -239,7 +241,7 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 				$this->assertEquals( 
 					$destination,
 					$result,
-					"$source parsed to $result, not $destination"
+					"$source parsed to \n$result, not \n$destination."
 				);
 			}
 		}
