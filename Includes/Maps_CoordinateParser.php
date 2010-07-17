@@ -468,7 +468,9 @@ class MapsCoordinateParser {
 	protected static function setDirectionalAngle( $coordinate, $isLat ) {
 		self::initializeDirectionLabels();
 		
+		$coordinate = (string)$coordinate;
 		$isNegative = $coordinate{0} == '-';
+		
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		if ( $isLat ) {

@@ -17,6 +17,11 @@ require_once '../../../smw/maintenance/commandLine.inc';
  */
 class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	
+	/**
+	 * Valid coordinates.
+	 * 
+	 * @var array
+	 */
 	public static $coordinates = array(
 		'float' => array(
 			'55.7557860 N, 37.6176330 W',
@@ -52,7 +57,13 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 		),
 	);
 	
-	// Expected result => array( everything that should lead to it )
+	/**
+	 * Mappings between coordinate notations.
+	 * 
+	 * Expected result => array( everything that should lead to it )
+	 * 
+	 * @var array
+	 */	
 	public static $coordinateMappings = array(
 		// Float to non-directional DMS
 		'float-dms' => array(
@@ -65,9 +76,33 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 			'42.5 N, 42.5 W' => array( '42° 30\' 0", -42° 30\' 0"', '42° 30\' 0" N, 42° 30\' 0" W' ),
 			'42.5 S, 42.5 E' => array( '-42° 30\' 0", 42° 30\' 0"', '42° 30\' 0" S, 42° 30\' 0" E' ),
 			'42.4242 N, 42.4242 E' => array( '42° 25\' 27", 42° 25\' 27"', '42° 25\' 27" N, 42° 25\' 27" E' )
-		)
+		),	
 	);
 	
+	/**
+	 * Parsing tests.
+	 * 
+	 * @var array
+	 */
+	public static $parsingTests = array(
+		'42.5, -42.5' => array( 'lat' => '42.5', 'lon' => '-42.5' ),
+		'42° 30\' 0" N, 42° 30\' 0" W' => array( 'lat' => '42.5', 'lon' => '-42.5' ),
+	);
+	
+	/**
+	 * Formatting tests.
+	 * 
+	 * @var array
+	 */
+	public static $formattingTests = array(
+		
+	);	
+	
+	/**
+	 * Invalid coordinates.
+	 * 
+	 * @var array
+	 */	
 	public static $fakeCoordinates = array(
 		'IN YOUR CODE, BEING TOTALLY REDICULOUSE',
 		'55.7557860 E, 37.6176330 W',
@@ -116,6 +151,10 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 		// TODO Auto-generated MapsCoordinateParserTest::testParseCoordinates()
 		foreach ( self::$fakeCoordinates as $coord ) {
 			$this->assertFalse( MapsCoordinateParser::parseCoordinates( $coord ), "parseCoordinates did not return false for $coord." );
+		}
+		
+		foreach ( self::$parsingTests as $coord => $destination ) {
+			$this->assertEquals( $destination, MapsCoordinateParser::parseCoordinates( $coord ), "Parsing test failed at " . __METHOD__ );
 		}
 	}
 	
@@ -259,7 +298,17 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 				);
 			}
 		}
+		
+		foreach ( self::$coordinateMappings['dms-float-directional'] as $destination => $sources ) {
+			foreach ( $sources as $source ) {
+				$result = MapsCoordinateParser::parseAndFormat( $source, Maps_COORDS_FLOAT, true );
+				$this->assertEquals( 
+					$destination,
+					$result,
+					"$source parsed to \n$result, not \n$destination."
+				);
+			}
+		}		
 	}
 
 }
-
