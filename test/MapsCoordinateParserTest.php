@@ -200,7 +200,7 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 			$this->assertFalse( MapsCoordinateParser::areFloatCoordinates( $coord ), "$coord was recognized as dms." );
 		}
 		foreach( self::$coordinates['dms'] as $coord ) {
-			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dms." );
+			$this->assertEquals( Maps_COORDS_DMS, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dms." );
 		}		
 	}
 	
@@ -212,7 +212,7 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 			$this->assertFalse( MapsCoordinateParser::areFloatCoordinates( $coord ), "$coord was recognized as dd." );
 		}
 		foreach( self::$coordinates['dd'] as $coord ) {
-			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dd." );
+			$this->assertEquals( Maps_COORDS_DD, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dd." );
 		}	
 	}
 	
@@ -224,7 +224,7 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 			$this->assertFalse( MapsCoordinateParser::areFloatCoordinates( $coord ), "$coord was recognized as dm." );
 		}
 		foreach( self::$coordinates['dm'] as $coord ) {
-			$this->assertEquals( Maps_COORDS_FLOAT, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dm." );
+			$this->assertEquals( Maps_COORDS_DM, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dm." );
 		}		
 	}
 	
