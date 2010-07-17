@@ -47,6 +47,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Fixed issue with with and height validation for % values, also causing backward compatibility problems with pre 0.6 setting definitions.
 
+* Fixed several small bugs in the coordinate parser.
+
 === Maps 0.6.3 ===
 (2010-06-20)
 

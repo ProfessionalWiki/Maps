@@ -575,7 +575,7 @@ class MapsCoordinateParser {
 		$parsedCoords = self::parseCoordinates( $coordinates );
 		
 		if ( $parsedCoords ) {
-			return self::formatCoordinates( $parsedCoords );
+			return self::formatCoordinates( $parsedCoords, $targetFormat, $directional );
 		} else {
 			return false;
 		}
