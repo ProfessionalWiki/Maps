@@ -52,19 +52,33 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 		),
 	);
 	
+	// Expected result => array( everything that should lead to it )
 	public static $coordinateMappings = array(
+		// Float to non-directional DMS
 		'float-dms' => array(
 			'42° 30\' 0", -42° 30\' 0"' => array( '42.5, -42.5', '42.5 N, 42.5 W' ),
 			'-42° 30\' 0", 42° 30\' 0"' => array( '-42.5, 42.5', '42.5 S, 42.5 E' ),
 			'42° 25\' 27", 42° 25\' 27"' => array( '42.4242, 42.4242', '42.4242 N, 42.4242 E' ),
 		),
+		// DMS to directional Float
+		'dms-float-directional' => array(
+			'42.5 N, 42.5 W' => array( '42° 30\' 0", -42° 30\' 0"', '42° 30\' 0" N, 42° 30\' 0" W' ),
+			'42.5 S, 42.5 E' => array( '-42° 30\' 0", 42° 30\' 0"', '42° 30\' 0" S, 42° 30\' 0" E' ),
+			'42.4242 N, 42.4242 E' => array( '42° 25\' 27", 42° 25\' 27"', '42° 25\' 27" N, 42° 25\' 27" E' )
+		)
 	);
 	
 	public static $fakeCoordinates = array(
+		'IN YOUR CODE, BEING TOTALLY REDICULOUSE',
 		'55.7557860 E, 37.6176330 W',
 		'55.7557860 N, 37.6176330 N',
 		'55.7557860 S, 37.6176330 N',
 		'55.7557860 N, 37.6176330 S',
+		'42.5, -42.5.5',
+		'42.5, --42.5',
+		'42.5-, 42.5',
+		'42.5, 42 -5',
+		'9342.5, -42.5'
 	);
 	
 	/**
