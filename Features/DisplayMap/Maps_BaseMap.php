@@ -24,6 +24,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 abstract class MapsBaseMap implements iMappingParserFunction {
 	
+	/**
+	 * @var iMappingService
+	 */	
 	protected $service;
 	
 	protected $centreLat, $centreLon;
@@ -40,7 +43,7 @@ abstract class MapsBaseMap implements iMappingParserFunction {
 	 * 
 	 * @param MapsMappingService $service
 	 */
-	public function __construct( MapsMappingService $service ) {
+	public function __construct( iMappingService $service ) {
 		$this->service = $service;
 	}
 	

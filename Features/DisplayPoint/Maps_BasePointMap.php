@@ -24,7 +24,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 abstract class MapsBasePointMap implements iMappingParserFunction {
 	
-	public $service;
+	/**
+	 * @var iMappingService
+	 */
+	protected $service;
 	
 	protected $centreLat, $centreLon;
 	protected $markerJs;
@@ -40,7 +43,7 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 	private $specificParameters = false;
 	private $markerData = array();
 	
-	public function __construct( MapsMappingService $service ) {
+	public function __construct( iMappingService $service ) {
 		$this->service = $service;
 	}
 	

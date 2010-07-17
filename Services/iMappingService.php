@@ -69,15 +69,6 @@ interface iMappingService {
 	function addFeature( $featureName, $handlingClass );
 	
 	/**
-	 * Adds the mapping services dependencies to the header. 
-	 * 
-	 * @since 0.6.5
-	 * 
-	 * @param mixed $parserOrOut
-	 */
-	function addDependencies( &$parserOrOut );
-	
-	/**
 	 * Returns the html for the needed dependencies or false.
 	 * 
 	 * @since 0.6.5
