@@ -258,6 +258,7 @@ $messages['br'] = array(
 	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
 	'maps_map' => 'Kartenn',
 	'maps-loading-map' => 'O kargañ ar gartenn...',
+	'maps-markers' => 'Merkerien',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'R',
 	'maps-abb-south' => 'S',
@@ -1600,6 +1601,18 @@ $1',
 	'maps_videos' => 'Видео',
 	'maps_wikipedia' => 'Википедия',
 	'maps_webcams' => 'Веб-камеры',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'maps_map' => 'Мапа',
+	'maps-loading-map' => 'Награваня мапы. . .',
+	'maps-abb-north' => 'С',
+	'maps-abb-east' => 'В',
+	'maps-abb-south' => 'Ю',
+	'maps-abb-west' => 'З',
 );
 
 /** Slovak (Slovenčina)
