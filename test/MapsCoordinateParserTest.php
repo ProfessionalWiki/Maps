@@ -38,13 +38,13 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 			"55° 45.34716' N, 37° 37.05798' W",
 			"55° 45.34716', -37° 37.05798'",
 			"55° S, 37° 37.05798'W",
-			"-55°, 37° -37.05798'",
+			"-55°, -37° 37.05798'",
 			"55°S, 37°37.05798'W ",
-			"-55°, 37°-37.05798' "
+			"-55°, 37°37.05798' "
 		),
 		'dms' => array(
 			"55° 45' 21\" N, 37° 37' 3\" W",
-			"55° 45' 21\" N, -37° 37' 3\"",
+			"55° 45' 21\", -37° 37' 3\"",
 			"55° 45' S, 37° 37' 3\"W",
 			"-55°, -37° 37' 3\"",
 			"55°45'S,37°37'3\"W ",
@@ -125,10 +125,12 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 
 		foreach( self::$coordinates['dms'] as $coord ) {
 			$this->assertEquals( Maps_COORDS_DMS, MapsCoordinateParser::getCoordinatesType( $coord ), "$coord not recognized as dms." );
-		}		
+		}
+				
 	}
 	
-	public function provider() {
+	/*
+	public function coordinatesProvider() {
 		die(__METHOD__);
 		$coords = array();
 		
@@ -138,23 +140,22 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 			}			
 		}		
 		return $coords;
-	}	
+	}
+	*/
 	
 	/**
-	 * @dataProvider provider
+	 * @dataProvider coordinatesProvider
 	 */
 	public function testAreCoordinates( $coord ) {
-		$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ), "$coord not recognized as coordinate." );
-
+		foreach( self::$coordinates as $coordsOfType ) {
+			foreach( $coordsOfType as $coord ) {	
+				$this->assertTrue( MapsCoordinateParser::areCoordinates( $coord ), "$coord not recognized as coordinate." );
+			}	
+		}
 		
-		/*
-		 * Tests MapsCoordinateParser::areCoordinates()
-		 * 
 		foreach ( self::$fakeCoordinates as $coord ) {
 			$this->assertFalse( MapsCoordinateParser::areCoordinates( $coord ), "$coord was recognized as coordinate." );
 		}
-		*/
-		
 	}
 	
 	/**
