@@ -60,7 +60,7 @@ class SMYahooMapsFormInput extends SMFormInput {
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML
 	 */
-	protected function addSpecificMapHTML() {
+	public function addSpecificMapHTML() {
 		global $wgOut;
 		
 		$mapName = $this->service->getMapId( false );

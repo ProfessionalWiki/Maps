@@ -63,7 +63,7 @@ class SMGoogleMapsFormInput extends SMFormInput {
 	/**
 	 * @see MapsMapFeature::addSpecificFormInputHTML
 	 */
-	protected function addSpecificMapHTML() {
+	public function addSpecificMapHTML() {
 		global $wgOut;
 		
 		$mapName = $this->service->getMapId( false );

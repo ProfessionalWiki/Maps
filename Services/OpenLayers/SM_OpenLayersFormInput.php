@@ -50,7 +50,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML
 	 */
-	protected function addSpecificMapHTML() {
+	public function addSpecificMapHTML() {
 		global $wgOut, $wgLang;
 		
 		$mapName = $this->service->getMapId( false );

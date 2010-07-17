@@ -39,6 +39,8 @@ abstract class SMFormInput implements iMappingFeature {
 	
 	protected $specificParameters = false;
 	
+	protected $coordsFieldName;
+	
 	private $coordinates;
 	
 	/**
@@ -99,7 +101,7 @@ abstract class SMFormInput implements iMappingFeature {
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
 		$manager = new ValidatorManager();
 
@@ -137,8 +139,6 @@ abstract class SMFormInput implements iMappingFeature {
 
 		$this->coordinates = $coordinates;
 		
-		$this->setMapSettings();
-		
 		$showInput = $this->setMapProperties( $field_args );
 		
 		if ( !$showInput ) {
@@ -151,7 +151,7 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		// Create html element names.
 		$mapName = $this->service->getMapId();
-		$coordsFieldName = $mapName . '_coords_' . $sfgTabIndex;
+		$this->coordsFieldName = $mapName . '_coords_' . $sfgTabIndex;
 		$infoFieldName = $mapName . '_info_' . $sfgTabIndex;				
 		
 		$geocodingFunction = $this->getShowAddressFunction(); 
@@ -164,7 +164,7 @@ abstract class SMFormInput implements iMappingFeature {
 			array(
 				'size' => 42, #_O
 				'tabindex' => $sfgTabIndex,
-				'id' => $coordsFieldName
+				'id' => $this->coordsFieldName
 			)
 		);
 		
@@ -236,7 +236,7 @@ EOT
 		$notFoundText = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
 		$mapName = Xml::escapeJsString( $mapName );
 		$geoFieldName = Xml::escapeJsString( $geocodeFieldName );
-		$coordFieldName = Xml::escapeJsString( $geocodeFieldName );
+		$coordFieldName = Xml::escapeJsString( $this->coordsFieldName );
 		
 		$this->output .= '<p>' . $adressField .
 			Html::input(
