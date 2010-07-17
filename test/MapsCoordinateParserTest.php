@@ -52,6 +52,12 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 		),
 	);
 	
+	public static $coordinateMappings = array(
+		'float-dms' => array(
+			'42° 30\' 0", -42° 30\' 0"' => array( '42.5, -42.5', '42.5 N, 42.5 W' )
+		),
+	);
+	
 	public static $fakeCoordinates = array(
 		'55.7557860 E, 37.6176330 W',
 		'55.7557860 N, 37.6176330 N',
@@ -69,10 +75,6 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 */
 	protected function setUp() {
 		parent::setUp ();
-		
-		// TODO Auto-generated MapsCoordinateParserTest::setUp()
-		
-
 		$this->MapsCoordinateParser = new MapsCoordinateParser(/* parameters */);
 	
 	}
@@ -81,11 +83,7 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 * Cleans up the environment after running a test.
 	 */
 	protected function tearDown() {
-		// TODO Auto-generated MapsCoordinateParserTest::tearDown()
-		
-
 		$this->MapsCoordinateParser = null;
-		
 		parent::tearDown ();
 	}
 	
@@ -93,7 +91,6 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 * Constructs the test case.
 	 */
 	public function __construct() {
-		// TODO Auto-generated constructor
 	}
 	
 	/**
@@ -101,10 +98,9 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testParseCoordinates() {
 		// TODO Auto-generated MapsCoordinateParserTest::testParseCoordinates()
-		$this->markTestIncomplete ( "parseCoordinates test not implemented" );
-		
-		MapsCoordinateParser::parseCoordinates(/* parameters */);
-	
+		foreach ( self::$fakeCoordinates as $coord ) {
+			$this->assertFalse( MapsCoordinateParser::parseCoordinates( $coord ), "parseCoordinates did not return false for $coord." );
+		}
 	}
 	
 	/**
@@ -233,10 +229,20 @@ class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testParseAndFormat() {
 		// TODO Auto-generated MapsCoordinateParserTest::testParseAndFormat()
-		$this->markTestIncomplete ( "parseAndFormat test not implemented" );
+		foreach ( self::$fakeCoordinates as $coord ) {
+			$this->assertFalse( MapsCoordinateParser::parseAndFormat( $coord ), "parseAndFormat did not return false for $coord." );
+		}
 		
-		MapsCoordinateParser::parseAndFormat(/* parameters */);
-	
+		foreach ( self::$coordinateMappings['float-dms'] as $destination => $sources ) {
+			foreach ( $sources as $source ) {
+				$result = MapsCoordinateParser::parseAndFormat( $source, Maps_COORDS_DMS, false );
+				$this->assertEquals( 
+					$destination,
+					$result,
+					"$source parsed to $result, not $destination"
+				);
+			}
+		}
 	}
 
 }
