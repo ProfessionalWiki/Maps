@@ -192,6 +192,8 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		$this->addSpecificMapHTML();
 		
+		$this->addFormDependencies();
+		
 		return array( $this->output . $this->errorList, '' );
 	}
 	
