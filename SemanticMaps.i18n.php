@@ -595,6 +595,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'semanticmaps-unrecognizeddistance' => 'De Wäert $1 ass keng valabel Distanz.',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticmaps_enteraddresshere' => 'Adress hei aginn',
 	'semanticmaps_notfound' => 'net fonnt',
