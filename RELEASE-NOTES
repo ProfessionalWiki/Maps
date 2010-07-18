@@ -12,6 +12,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 ==== Refactoring ====
 
+* Added unit tests for the coordinates parser.
+
 * Created iMappingFeature interface, from which iMapParserFunctions inherits.
 
 * Moved map id creation to the mapping service class for all features.
