@@ -19,8 +19,6 @@ $wgHooks['MappingFeatureLoad'][] = 'SMFormInputs::initialize';
 
 final class SMFormInputs {
 	
-	public static $parameters = array();
-	
 	public static function initialize() {
 		global $smgDir, $wgAutoloadClasses, $egMapsServices, $sfgFormPrinter;
 
@@ -31,8 +29,6 @@ final class SMFormInputs {
 		$wgAutoloadClasses['SMFormInput'] = dirname( __FILE__ ) . '/SM_FormInput.php';
 		
 		$hasFormInputs = false;
-		
-		self::initializeParams();
 		
 		foreach ( $egMapsServices as $service ) {
 			// Check if the service has a form input.
@@ -57,39 +53,7 @@ final class SMFormInputs {
 		return true;
 	}
 	
-	private static function initializeParams() {
-		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
-		global $smgFIWidth, $smgFIHeight;
-		
-		self::$parameters = array(
-			'width' => array(
-				'default' => $smgFIWidth
-			),
-			'height' => array(
-				'default' => $smgFIHeight
-			),		
-			'centre' => array(
-				'aliases' => array( 'center' ),
-			),
-			'geoservice' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableGeoServices
-				),
-				'default' => $egMapsDefaultGeoService
-			),
-			'mappingservice' => array(
-				'default' => $egMapsDefaultServices['fi']
-			),				
-			'service_name' => array(),
-			'part_of_multiple' => array(),
-			'possible_values' => array(
-				'type' => array( 'string', 'array' ),
-			),
-			'is_list' => array(),
-			'semantic_property' => array(),
-			'value_labels' => array(),
-		);
-	}
+
 	
 	/**
 	 * Adds a mapping service's form hook.
