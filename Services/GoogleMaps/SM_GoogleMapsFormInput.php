@@ -52,7 +52,7 @@ class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 
-		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/GoogleMaps/SM_GoogleMapsFunctions{$egMapsJsExt}?$smgStyleVersion" ) );
+		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/GoogleMaps/SM_GoogleMapsForms{$egMapsJsExt}?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
 	}
 	
