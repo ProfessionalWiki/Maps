@@ -25,7 +25,7 @@ interface iMappingParserFunction extends iMappingFeature {
 	/**
 	 * Constructor.
 	 * 
-	 * @param MapsMappingService $service
+	 * @param iMappingService $service
 	 */
 	function __construct( iMappingService $service );
 	

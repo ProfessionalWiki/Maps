@@ -16,6 +16,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /**
  * Interface that should be implemented by all mapping feature classes.
  * 
+ * @since 0.6.3
+ * 
  * @author Jeroen De Dauw
  */
 interface iMappingService {
