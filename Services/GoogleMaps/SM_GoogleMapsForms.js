@@ -41,7 +41,7 @@ function makeGoogleMapFormInput( mapName, locationFieldName, mapOptions, marker_
 }
 
 /**
- * This function holds specific functionality for the Google Maps form input of Semantic Maps
+ * This function holds specific functionality for the Google Maps form input of Semantic Maps.
  */
 function showGAddress(address, mapName, outputElementName, notFoundFormat) {
 	var map = GMaps[mapName];

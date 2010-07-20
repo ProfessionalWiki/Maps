@@ -196,8 +196,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		global $smgUseSpatialExtensions, $smgQPCoodFormat, $smgQPCoodDirectional;
 		
 		if ( $smgUseSpatialExtensions ) {
-			//die(__METHOD__);
-			//var_dump($args);exit;
+			// var_dump($args);exit;
 		}
 		else {
 			$this->coordinateSet['lat'] = $args[0];

@@ -143,12 +143,15 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
 		
-		$conditions = array();
+		
 		
 		if ( $smgUseSpatialExtensions ) {
 			// TODO
+			$sql = '';
 		}
 		else {
+			$conditions = array();
+			
 			$smallerThen = $isEq ? '<' : '>=';
 			$biggerThen = $isEq ? '>' : '<=';
 			$joinCond = $isEq ? '&&' : '||';
@@ -156,10 +159,12 @@ class SMAreaValueDescription extends SMWValueDescription {
 			$conditions[] = "{$tableName}.$fieldNames[0] $smallerThen $north";
 			$conditions[] = "{$tableName}.$fieldNames[0] $biggerThen $south";
 			$conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $east";
-			$conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $west";			
+			$conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $west";
+
+			$sql = implode( " $joinCond ", $conditions );
 		}
 		
-		return implode( " $joinCond ", $conditions );
+		return $sql;
 	}
 
 	/**
