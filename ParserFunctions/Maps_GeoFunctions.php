@@ -51,9 +51,11 @@ final class MapsGeoFunctions {
 	 * Handler for the #geodistance parser function. 
 	 * See http://mapping.referata.com/wiki/Geodistance
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param Parser $parser
 	 */
-	function renderGeoDistance( Parser &$parser ) {
+	public static function renderGeoDistance( Parser &$parser ) {
 		global $egMapsDistanceUnit, $egMapsDistanceDecimals;
 		
 		$args = func_get_args();
@@ -142,6 +144,8 @@ final class MapsGeoFunctions {
 	/**
 	 * Handler for the #finddestination parser function. 
 	 * See http://mapping.referata.com/wiki/Finddestination
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param Parser $parser
 	 */
@@ -252,6 +256,8 @@ final class MapsGeoFunctions {
 	 * Returns the geographical distance between two coordinates.
 	 * See http://en.wikipedia.org/wiki/Geographical_distance
 	 * 
+	 * @since 0.6
+	 * 
 	 * @param array $start The first coordinates, as non-directional floats in an array with lat and lon keys.
 	 * @param array $end The second coordinates, as non-directional floats in an array with lat and lon keys.
 	 * 
@@ -287,6 +293,8 @@ final class MapsGeoFunctions {
 	
 	/**
 	 * Finds a destination given a starting location, bearing and distance.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param array $startingCoordinates The starting coordinates, as non-directional floats in an array with lat and lon keys.
 	 * @param float $bearing The initial bearing in degrees.
