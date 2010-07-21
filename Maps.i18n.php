@@ -18,7 +18,7 @@ $messages['en'] = array(
 	// General
 	'maps_name' => 'Maps',
 	// TODO: update demo link to the new wiki, once it has 0.6.x running.
-	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demo's]).
 Available mapping services: $1",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
@@ -126,7 +126,7 @@ $1.',
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'maps_desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Hartës shërbimet në dispozicion: $1',
+	'maps_desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://mapping.referata.com/wiki/Maps_examples demo]). Hartës shërbimet në dispozicion: $1',
 	'maps_map' => 'Hartë',
 	'maps-loading-map' => 'Loading Harta ...',
 	'maps-abb-north' => 'N',
@@ -145,7 +145,7 @@ $messages['aln'] = array(
  */
 $messages['ar'] = array(
 	'maps_name' => 'خرائط',
-	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://wiki.bn2vs.com/wiki/Maps تجربة]).
+	'maps_desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://mapping.referata.com/wiki/Maps_examples تجربة]).
 خدمات الخرائط المتوفرة: $1',
 	'maps_map' => 'خريطة',
 	'maps-abb-north' => 'شم',
@@ -204,7 +204,7 @@ $messages['arz'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
+	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://mapping.referata.com/wiki/Maps_examples дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Загрузка мапы…',
 	'maps-markers' => 'Пазнакі',
@@ -255,7 +255,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://wiki.bn2vs.com/wiki/Maps demo]). Servijoù kartennaouiñ hegerz : $1",
+	'maps_desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://mapping.referata.com/wiki/Maps_examples demo]). Servijoù kartennaouiñ hegerz : $1",
 	'maps_map' => 'Kartenn',
 	'maps-loading-map' => 'O kargañ ar gartenn...',
 	'maps-markers' => 'Merkerien',
@@ -290,7 +290,7 @@ $1",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Dostupne usluge mapa: $1',
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'S',
@@ -366,7 +366,7 @@ $messages['cs'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps_desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
+	'maps_desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu geokodieren ([http://mapping.referata.com/wiki/Maps_examples Demonstration]).
 Verfügbare Kartografie-Dienste: $1',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
@@ -406,7 +406,7 @@ $messages['de-formal'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://mapping.referata.com/wiki/Maps_examples demo]).
 K dispoziciji stojece kórtowe słužby: $1',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
@@ -457,7 +457,7 @@ $messages['el'] = array(
  * @author Reedy
  */
 $messages['en-gb'] = array(
-	'maps_desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Available mapping services: $1',
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
@@ -513,7 +513,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'maps_desc' => 'Proporciona la capacidad de mostrar los datos de coordenadas en los mapas y geocodifica direcciones ([http://wiki.bn2vs.com/wiki/Maps demo]). Servicios de mapeo disponibles: $1',
+	'maps_desc' => 'Proporciona la capacidad de mostrar los datos de coordenadas en los mapas y geocodifica direcciones ([http://mapping.referata.com/wiki/Maps_examples demo]). Servicios de mapeo disponibles: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
 	'maps-markers' => 'Marcadores',
@@ -574,7 +574,7 @@ $messages['eu'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'maps_desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Käytettävissä olevat karttapalvelut: $1',
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
@@ -613,7 +613,7 @@ $1',
  */
 $messages['fr'] = array(
 	'maps_name' => 'Cartes',
-	'maps_desc' => 'Permet d’afficher des coordonnées dans des cartes, ainsi que des adresses géocodées ([http://wiki.bn2vs.com/wiki/Maps démonstration]).
+	'maps_desc' => 'Permet d’afficher des coordonnées dans des cartes, ainsi que des adresses géocodées ([http://mapping.referata.com/wiki/Maps_examples démonstration]).
 Services de cartographie disponibles : $1',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
@@ -658,7 +658,7 @@ $messages['frp'] = array(
  * @author Klenje
  */
 $messages['fur'] = array(
-	'maps_desc' => 'Al furnìs la possibilitât di mostrâ i dâts de coordinadis e lis direzions geocodificadis intune mape ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Al furnìs la possibilitât di mostrâ i dâts de coordinadis e lis direzions geocodificadis intune mape ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Servizis di mapis disponibii: $1',
 	'maps_map' => 'Mape',
 	'maps_coordinates_missing' => 'Nissune coordenade furnide pe mape.',
@@ -673,7 +673,7 @@ $1',
  * @author Toliño
  */
 $messages['gl'] = array(
-	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://wiki.bn2vs.com/wiki/Maps demostración]).
+	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://mapping.referata.com/wiki/Maps_examples demostración]).
 Servizos de cartografía dispoñibles: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
@@ -718,7 +718,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'maps_desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Maps Demo]',
+	'maps_desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://mapping.referata.com/wiki/Maps_examples Demo]',
 	'maps_map' => 'Charte',
 	'maps-loading-map' => 'Am Lade vu dr Charte ...',
 	'maps-markers' => 'Markierige',
@@ -753,7 +753,7 @@ $1',
  * @author Yonidebest
  */
 $messages['he'] = array(
-	'maps_desc' => 'הוספת האפשרות להצגת נתוני קואורדינטות במפות וכתובות geocode ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'הוספת האפשרות להצגת נתוני קואורדינטות במפות וכתובות geocode ([http://mapping.referata.com/wiki/Maps_examples demo]).
 שירותי המיפוי הזמינים: $1',
 	'maps_map' => 'מפה',
 	'maps-loading-map' => 'המפה נטענת...',
@@ -796,7 +796,7 @@ $messages['hi'] = array(
  * @author Ex13
  */
 $messages['hr'] = array(
-	'maps_desc' => 'Pruža mogućnost prikaza podataka o koordinatama na kartama, te geokodiranih adresa ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostupne usluge kartiranja: $1',
+	'maps_desc' => 'Pruža mogućnost prikaza podataka o koordinatama na kartama, te geokodiranih adresa ([http://mapping.referata.com/wiki/Maps_examples demo]). Dostupne usluge kartiranja: $1',
 	'maps_coordinates_missing' => 'Za kartu nisu dostupne koordinate.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Sljedeća adresa ne može biti geokodirana|Sljedeće adrese ne mogu biti geokodirane}}: $1.
 Karta ne može biti prikazana.',
@@ -808,7 +808,7 @@ $1',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić ([http://wiki.bn2vs.com/wiki/Maps demo]). 
+	'maps_desc' => 'Skići móžnosć koordinatowe daty w geografiskich kartach a geokodne adresy zwobraznić ([http://mapping.referata.com/wiki/Maps_examples demo]). 
 K dispoziciji stejace kartowe słužby: $1',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Karta so začituje...',
@@ -850,7 +850,7 @@ $messages['ht'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://wiki.bn2vs.com/wiki/Maps demó]). Elérhető térképszolgáltatások: $1',
+	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://mapping.referata.com/wiki/Maps_examples demó]). Elérhető térképszolgáltatások: $1',
 	'maps_map' => 'Térkép',
 	'maps-loading-map' => 'Térkép betöltése…',
 	'maps-abb-north' => 'É',
@@ -882,7 +882,7 @@ $1',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Servicios cartographic disponibile: $1',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
@@ -921,7 +921,7 @@ $1',
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'maps_desc' => "Memampukan tampilan data koordinat pada peta, dan alamat ''geocode'' ([http://wiki.bn2vs.com/wiki/Maps demo]). 
+	'maps_desc' => "Memampukan tampilan data koordinat pada peta, dan alamat ''geocode'' ([http://mapping.referata.com/wiki/Maps_examples demo]). 
 Layanan pemetaan yang tersedia: $1",
 	'maps_map' => 'Peta',
 	'maps-abb-north' => 'U',
@@ -995,7 +995,7 @@ Servizi di cartografia disponibili: $1",
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する ([http://wiki.bn2vs.com/wiki/Maps 実演])。次の地図サービスに対応します: $1',
+	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する ([http://mapping.referata.com/wiki/Maps_examples 実演])。次の地図サービスに対応します: $1',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中…',
 	'maps-abb-north' => '北',
@@ -1062,7 +1062,7 @@ $messages['kn'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'maps_desc' => 'Määt et müjjelesch, Koodinaate en Landkaate aanzezeije, un Addräße en Koodinaate op de Ääd ömzerääschne. (E [http://wiki.bn2vs.com/wiki/Maps Beispöll]). He di Deenste för Landkaat(e) ham_mer ze beede: $1',
+	'maps_desc' => 'Määt et müjjelesch, Koodinaate en Landkaate aanzezeije, un Addräße en Koodinaate op de Ääd ömzerääschne. (E [http://mapping.referata.com/wiki/Maps_examples Beispöll]). He di Deenste för Landkaat(e) ham_mer ze beede: $1',
 	'maps_map' => 'Kaat',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
@@ -1096,7 +1096,7 @@ $messages['lad'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
+	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://mapping.referata.com/wiki/Maps_examples Démo]",
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-abb-north' => 'N',
@@ -1128,7 +1128,7 @@ $1',
  * @author Hugo.arg
  */
 $messages['lt'] = array(
-	'maps_desc' => 'Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Katrografavimo paslaugos pasiekiamos: $1',
 	'maps_map' => 'Žemėlapis',
 	'maps-loading-map' => 'Kraunamas žemėlapis ...',
@@ -1156,7 +1156,7 @@ Katrografavimo paslaugos pasiekiamos: $1',
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'maps_desc' => 'Дава можност за приказ на координатни податоци во картите, и геокодирање на адреси ([http://wiki.bn2vs.com/wiki/Maps демо]).
+	'maps_desc' => 'Дава можност за приказ на координатни податоци во картите, и геокодирање на адреси ([http://mapping.referata.com/wiki/Maps_examples демо]).
 Картографски служби на располагање: $1',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Ја вчитувам картата...',
@@ -1291,7 +1291,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'maps_desc' => 'Gir mulighet for å vise koorinatdata i kart og geokodeadresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Gir mulighet for å vise koorinatdata i kart og geokodeadresser ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Tilgjengelige karttjenester: $1',
 	'maps_map' => 'Kart',
 	'maps-loading-map' => 'Laster kart...',
@@ -1327,7 +1327,7 @@ $1',
  */
 $messages['oc'] = array(
 	'maps_desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocodadas
-([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://wiki.bn2vs.com/wiki/Maps demonstracion]). 
+([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://mapping.referata.com/wiki/Maps_examples demonstracion]). 
 Servicis de cartografia disponibles : $1",
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'N',
@@ -1365,7 +1365,7 @@ $messages['pdc'] = array(
  * @author Yarl
  */
 $messages['pl'] = array(
-	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostępne serwisy mapowe: $1',
+	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://mapping.referata.com/wiki/Maps_examples demo]). Dostępne serwisy mapowe: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
 	'maps-markers' => 'Zaznaczenia',
@@ -1401,7 +1401,7 @@ $1',
  * @author McDutchie
  */
 $messages['pms'] = array(
-	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Sërvissi ëd mapatura disponìbil: $1",
+	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://mapping.referata.com/wiki/Maps_examples demo]). Sërvissi ëd mapatura disponìbil: $1",
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
 	'maps-markers' => 'Marcador',
@@ -1451,7 +1451,7 @@ $messages['ps'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e endereços por geocódigo ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
+	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e endereços por geocódigo ([http://mapping.referata.com/wiki/Maps_examples demonstração]).
 Serviços de cartografia disponíveis: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'A carregar o mapa...',
@@ -1489,7 +1489,7 @@ $1',
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
+	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://mapping.referata.com/wiki/Maps_examples demonstração]).
 Serviços de mapeamento disponíveis: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
@@ -1527,7 +1527,7 @@ $1',
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'maps_desc' => 'Asigură capacitatea de a afișa coordonate pe hărți și adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstrație]).
+	'maps_desc' => 'Asigură capacitatea de a afișa coordonate pe hărți și adrese geocode ([http://mapping.referata.com/wiki/Maps_examples demonstrație]).
 Servici de cartografiere disponibile: $1',
 	'maps_map' => 'Hartă',
 	'maps-loading-map' => 'Se încarcă harta...',
@@ -1562,7 +1562,7 @@ $1',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps_desc' => "Dè l'abbilità a fà vedè le coordinate jndr'à le mappe e le indirizze geocodificate ([http://wiki.bn2vs.com/wiki/Maps demo]). Disponibbile le servizie de mappe: $1",
+	'maps_desc' => "Dè l'abbilità a fà vedè le coordinate jndr'à le mappe e le indirizze geocodificate ([http://mapping.referata.com/wiki/Maps_examples demo]). Disponibbile le servizie de mappe: $1",
 );
 
 /** Russian (Русский)
@@ -1571,7 +1571,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps_desc' => 'Обеспечивает возможность отображения координатных данных на картах и геокодирование адресов ([http://wiki.bn2vs.com/wiki/Maps демонстрация]).
+	'maps_desc' => 'Обеспечивает возможность отображения координатных данных на картах и геокодирование адресов ([http://mapping.referata.com/wiki/Maps_examples демонстрация]).
 Доступные картографические службы: $1',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
@@ -1671,7 +1671,7 @@ $messages['sr-el'] = array(
  * @author Per
  */
 $messages['sv'] = array(
-	'maps_desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Tillgängliga karttjänster: $1',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
@@ -1715,7 +1715,7 @@ $messages['te'] = array(
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
-	'maps_desc' => 'ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://wiki.bn2vs.com/wiki/Maps demo]).
+	'maps_desc' => 'ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://mapping.referata.com/wiki/Maps_examples demo]).
 <br />บริการแผนที่ที่มีอยู่: $1',
 	'maps_coordinates_missing' => 'ไม่ได้กำหนดพิกัดของแผนที่มาให้',
 );
@@ -1724,7 +1724,7 @@ $messages['th'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'maps_desc' => 'Nagbibigay ng kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga adres ([http://wiki.bn2vs.com/wiki/Maps pagpapakita]).
+	'maps_desc' => 'Nagbibigay ng kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga adres ([http://mapping.referata.com/wiki/Maps_examples pagpapakita]).
 Makukuhang mga paglilingkod na pangpagmamapa: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Ikinakarga ang mapa...',
@@ -1808,7 +1808,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'maps_name' => 'Bản đồ',
-	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://wiki.bn2vs.com/wiki/Maps thử xem]).
+	'maps_desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://mapping.referata.com/wiki/Maps_examples thử xem]).
 Các dịch vụ bản đồ có sẵn: $1',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
