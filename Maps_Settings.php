@@ -170,7 +170,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	);
 	
 	# String. The default unit for distances.
-	$egMapsDistanceUnit = 'km';
+	$egMapsDistanceUnit = 'm';
 	
 	# Integer. The default limit of fractal digits in a distance.
 	$egMapsDistanceDecimals = 2;	

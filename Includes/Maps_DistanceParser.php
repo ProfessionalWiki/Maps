@@ -40,6 +40,8 @@ class MapsDistanceParser {
 			return false;
 		}
 		
+		$distance = self::normalizeDistance( $distance );
+		
 		$matches = array();
 		preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance, $matches );
 		
@@ -90,6 +92,7 @@ class MapsDistanceParser {
 	 * @return boolean
 	 */
 	public static function isDistance( $distance ) {
+		$distance = self::normalizeDistance( $distance );
 		return preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance );
 	}
 	
@@ -120,9 +123,10 @@ class MapsDistanceParser {
 		global $egMapsDistanceUnit, $egMapsDistanceUnits;
 		
 		// This ensures the value for $egMapsDistanceUnit is correct, and caches the result.
-		if ( !self::$validatedDistanceUnit ) {
+		if ( self::$validatedDistanceUnit === false ) {
 			if ( !array_key_exists( $egMapsDistanceUnit, $egMapsDistanceUnits ) ) {
-				$egMapsDistanceUnit = $egMapsDistanceUnits[0];
+				$units = array_keys( $egMapsDistanceUnits );
+				$egMapsDistanceUnit = $units[0];
 			}
 			
 			self::$validatedDistanceUnit = true;
@@ -131,7 +135,7 @@ class MapsDistanceParser {
 		if ( $unit == null || !array_key_exists( $unit, $egMapsDistanceUnits ) ) {
 			$unit = $egMapsDistanceUnit;
 		}
-		
+
 		return $unit;
 	}
 	
@@ -145,6 +149,21 @@ class MapsDistanceParser {
 	public static function getUnits() {
 		global $egMapsDistanceUnits;
 		return array_keys( $egMapsDistanceUnits );
+	}
+	
+	/**
+	 * Normalizes a potential distance by removing spaces and truning comma's into dots.
+	 * 
+	 * @since 0.6.5
+	 * 
+	 * @param $distance String
+	 * 
+	 * @return string
+	 */
+	protected static function normalizeDistance( $distance ) {
+		$distance = str_replace( ' ', '', $distance );
+		$distance = str_replace( ',', '.', $distance );
+		return $distance;
 	}
 	
 }
