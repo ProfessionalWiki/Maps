@@ -46,14 +46,14 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 addOnloadHook(
 	function() {
 		initOpenLayer(
-			'$mapName',
+			"$mapName",
 			$this->centreLon,
 			$this->centreLat,
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
 			$this->markerJs,
-			'$langCode'
+			"$langCode"
 		);
 	}
 );

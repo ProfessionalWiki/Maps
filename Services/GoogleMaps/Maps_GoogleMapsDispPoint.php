@@ -58,7 +58,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 				<<<EOT
 addOnloadHook(
 	function() {
-		initializeGoogleMap('$mapName', 
+		initializeGoogleMap("$mapName", 
 			{
 			lat: $this->centreLat,
 			lon: $this->centreLon,

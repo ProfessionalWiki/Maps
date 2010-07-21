@@ -43,7 +43,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 addOnloadHook(
 	function() {
 		initGMap3(
-			'$mapName',
+			"$mapName",
 			{
 				zoom: $this->zoom,
 				lat: $this->centreLat,

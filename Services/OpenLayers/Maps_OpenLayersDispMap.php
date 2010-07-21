@@ -41,14 +41,14 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 addOnloadHook(
 	function() {
 		initOpenLayer(
-			'$mapName',
+			"$mapName",
 			$this->centreLon,
 			$this->centreLat,
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
 			[],
-			'$langCode'
+			"$langCode"
 		);
 	}
 );

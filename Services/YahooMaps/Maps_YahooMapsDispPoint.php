@@ -40,7 +40,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 addOnloadHook(
 	function() {
 		initializeYahooMap(
-			'$mapName',
+			"$mapName",
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
