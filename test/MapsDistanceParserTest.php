@@ -18,10 +18,10 @@ require_once '../../../smw/maintenance/commandLine.inc';
 class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	
 	public static $distances = array(
-		//'1' => 1,
-		//'1m' => 1,
-		//'1 m' => 1,
-		//'   1   	  m ' => 1,
+		'1' => 1,
+		'1m' => 1,
+		'1 m' => 1,
+		'   1   	  m ' => 1,
 		'1.1' => 1.1,
 		'1,1' => 1.1,
 		'1 km' => 1000,
@@ -31,6 +31,15 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 		'1 mile' => 1609.344,
 		'10 nauticalmiles' => 18520,
 		'1.0nautical mile' => 1852,
+	);
+	
+	public static $formatTests = array(
+		'km' => array(
+			'0.001 km' => 1,
+			'1 km' => 1000,
+			'4,24 km' => 4242,
+		),
+		 
 	);
 	
 	/**
@@ -95,11 +104,9 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	 * Tests MapsDistanceParser::formatDistance()
 	 */
 	public function testFormatDistance() {
-		// TODO Auto-generated MapsDistanceParserTest::testFormatDistance()
-		$this->markTestIncomplete ( "formatDistance test not implemented" );
-		
-		MapsDistanceParser::formatDistance(/* parameters */);
-	
+			foreach ( self::$distances['km'] as $rawValue => $parsedValue ) {
+			$this->assertEquals( $rawValue, MapsDistanceParser::formatDistance( $parsedValue, 'km' ), "'$parsedValue' was not formatted to '$rawValue':" );
+		}
 	}
 	
 	/**

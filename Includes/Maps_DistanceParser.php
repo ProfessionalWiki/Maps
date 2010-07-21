@@ -168,7 +168,7 @@ class MapsDistanceParser {
 	 * @return string
 	 */
 	protected static function normalizeDistance( $distance ) {
-		$distance = (string)$distance;
+		$distance = trim( (string)$distance );
 		$strlen = strlen( $distance );
 		
 		for ( $i = 0; $i < $strlen; $i++ ) {
