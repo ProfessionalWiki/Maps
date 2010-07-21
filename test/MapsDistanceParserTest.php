@@ -2,6 +2,12 @@
 
 require_once 'PHPUnit\Framework\TestCase.php';
 
+// Trick MW into thinking this is a command line script.
+// This is obviously not a good approach, as it will not work on other setups then my own.
+unset( $_SERVER['REQUEST_METHOD'] );
+$argv = array( 'over9000failz' );
+require_once '../../../smw/maintenance/commandLine.inc';
+
 /**
  * MapsDistanceParser test case.
  * 
@@ -10,6 +16,35 @@ require_once 'PHPUnit\Framework\TestCase.php';
  * @author Jeroen De Dauw
  */
 class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
+	
+	public static $distances = array(
+		'1' => 1,
+		'1m' => 1,
+		'1 m' => 1,
+		'   1   	  m ' => 1,
+		'1.1' => 1.1,
+		'1,1' => 1.1,
+		'1 km' => 1000,
+		'42 km' => 42000,
+		'4.2 km' => 4200,
+		'4,20km' => 4200,
+		'1 mile' => 1609.344,
+	);
+	
+	/**
+	 * Invalid distances.
+	 * 
+	 * @var array
+	 */	
+	public static $fakeDistances = array(	
+		'IN YOUR CODE, BEING TOTALLY REDICULOUSE',
+		'0x20 km',
+		'km 42',
+		'42 42 km',
+		'42 km km',
+		'42 foo',
+		'3.4.2 km'
+	);
 	
 	/**
 	 * @var MapsDistanceParser
@@ -22,20 +57,13 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		parent::setUp ();
 		
-		// TODO Auto-generated MapsDistanceParserTest::setUp()
-		
-
 		$this->MapsDistanceParser = new MapsDistanceParser(/* parameters */);
-	
 	}
 	
 	/**
 	 * Cleans up the environment after running a test.
 	 */
 	protected function tearDown() {
-		// TODO Auto-generated MapsDistanceParserTest::tearDown()
-		
-
 		$this->MapsDistanceParser = null;
 		
 		parent::tearDown ();
@@ -45,18 +73,16 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	 * Constructs the test case.
 	 */
 	public function __construct() {
-		// TODO Auto-generated constructor
+		
 	}
 	
 	/**
 	 * Tests MapsDistanceParser::parseDistance()
 	 */
 	public function testParseDistance() {
-		// TODO Auto-generated MapsDistanceParserTest::testParseDistance()
-		$this->markTestIncomplete ( "parseDistance test not implemented" );
-		
-		MapsDistanceParser::parseDistance(/* parameters */);
-	
+		foreach ( self::$distances as $rawValue => $parsedValue ) {
+			$this->assertEquals( $parsedValue, MapsDistanceParser::parseDistance( $rawValue ), "'$rawValue' was not parsed to '$parsedValue':" );
+		}
 	}
 	
 	/**
@@ -126,4 +152,3 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	}
 
 }
-
