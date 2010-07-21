@@ -18,10 +18,10 @@ require_once '../../../smw/maintenance/commandLine.inc';
 class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	
 	public static $distances = array(
-		'1' => 1,
-		'1m' => 1,
-		'1 m' => 1,
-		'   1   	  m ' => 1,
+		//'1' => 1,
+		//'1m' => 1,
+		//'1 m' => 1,
+		//'   1   	  m ' => 1,
 		'1.1' => 1.1,
 		'1,1' => 1.1,
 		'1 km' => 1000,
@@ -29,6 +29,8 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 		'4.2 km' => 4200,
 		'4,20km' => 4200,
 		'1 mile' => 1609.344,
+		'10 nauticalmiles' => 18520,
+		'1.0nautical mile' => 1852,
 	);
 	
 	/**
@@ -82,6 +84,10 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	public function testParseDistance() {
 		foreach ( self::$distances as $rawValue => $parsedValue ) {
 			$this->assertEquals( $parsedValue, MapsDistanceParser::parseDistance( $rawValue ), "'$rawValue' was not parsed to '$parsedValue':" );
+		}
+		
+		foreach ( self::$fakeDistances as $fakeDistance ) {
+			$this->assertFalse( MapsDistanceParser::parseDistance( $fakeDistance ), "'$fakeDistance' should not be recognized:" );
 		}
 	}
 	

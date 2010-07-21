@@ -26,6 +26,8 @@ class MapsDistanceParser {
 	
 	private static $validatedDistanceUnit = false;
 	
+	private static $unitRegex = false;
+	
 	/**
 	 * Parses a distance optionaly containing a unit to a float value in meters.
 	 * 
@@ -42,11 +44,13 @@ class MapsDistanceParser {
 		
 		$distance = self::normalizeDistance( $distance );
 		
-		$matches = array();
-		preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance, $matches );
+		self::initUnitRegex();
 		
-		$value = (float)( $matches[1] . $matches[2] );
-		$value *= self::getUnitRatio( $matches[5] );
+		$matches = array();
+		preg_match( '/^\d+(\.\d+)?\s?(' . self::$unitRegex . ')?$/', $distance, $matches );
+
+		$value = (float)( $matches[0] . $matches[1] );
+		$value *= self::getUnitRatio( $matches[2] );
 		
 		return $value;
 	}
@@ -93,7 +97,10 @@ class MapsDistanceParser {
 	 */
 	public static function isDistance( $distance ) {
 		$distance = self::normalizeDistance( $distance );
-		return preg_match( '/^(\d+)((\.|,)(\d+))?\s*(.*)?$/', $distance );
+		
+		self::initUnitRegex();
+
+		return (bool)preg_match( '/^\d+(\.\d+)?\s?(' . self::$unitRegex . ')?$/', $distance );
 	}
 	
 	/**
@@ -161,9 +168,31 @@ class MapsDistanceParser {
 	 * @return string
 	 */
 	protected static function normalizeDistance( $distance ) {
-		$distance = str_replace( ' ', '', $distance );
-		$distance = str_replace( ',', '.', $distance );
-		return $distance;
+		$distance = (string)$distance;
+		$strlen = strlen( $distance );
+		
+		for ( $i = 0; $i < $strlen; $i++ ) {
+			if ( !ctype_digit( $distance{$i} ) && !in_array( $distance{$i}, array( ',', '.' ) ) ) {
+				$value = substr( $distance, 0, $i );
+				$unit = substr( $distance, $i );
+				break;
+			}
+		}
+		
+		$value = str_replace( ',', '.', isset( $value ) ? $value : $distance );
+		
+		if ( isset( $unit ) ) {
+			$value .= ' ' . str_replace( array( ' ', "\t" ), '', $unit );
+		}
+
+		return $value;
+	}
+	
+	private static function initUnitRegex() {
+		if ( self::$unitRegex === false ) {
+			global $egMapsDistanceUnits;
+			self::$unitRegex = implode( '|', array_keys( $egMapsDistanceUnits ) ) . '|';
+		}		
 	}
 	
 }
