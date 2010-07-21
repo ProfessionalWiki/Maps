@@ -34,12 +34,22 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	);
 	
 	public static $formatTests = array(
+		'm' => array(
+			'1 m' => 1,
+			'1000 m' => 1000.00,
+			'42.42 m' => 42.42,
+			'42.42 m' => 42.4242,
+		),		
 		'km' => array(
 			'0.001 km' => 1,
 			'1 km' => 1000,
 			'4,24 km' => 4242,
 		),
-		 
+		'kilometers' => array(
+			'0.001 kilometers' => 1,
+			'1 kilometers' => 1000,
+			'4,24 kilometers' => 4242,
+		),
 	);
 	
 	/**
@@ -124,11 +134,13 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	 * Tests MapsDistanceParser::isDistance()
 	 */
 	public function testIsDistance() {
-		// TODO Auto-generated MapsDistanceParserTest::testIsDistance()
-		$this->markTestIncomplete ( "isDistance test not implemented" );
+		foreach ( self::$fakeDistances as $fakeDistance ) {
+			$this->assertFalse( MapsDistanceParser::isDistance( $fakeDistance ), "'$fakeDistance' should not be recognized:" );
+		}
 		
-		MapsDistanceParser::isDistance(/* parameters */);
-	
+		foreach ( self::$distances as $distance ) {
+			$this->assertTrue( MapsDistanceParser::isDistance( $distance ), "'$distance' was not be recognized:" );
+		}		
 	}
 	
 	/**
