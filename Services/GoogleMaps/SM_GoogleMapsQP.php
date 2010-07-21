@@ -60,7 +60,7 @@ class SMGoogleMapsQP extends SMMapPrinter {
 		$this->service->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
-		initializeGoogleMap('$mapName', 
+		initializeGoogleMap("$mapName", 
 			{
 				lat: $this->centreLat,
 				lon: $this->centreLon,

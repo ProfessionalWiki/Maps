@@ -40,7 +40,7 @@ class SMYahooMapsQP extends SMMapPrinter {
 addOnloadHook(
 	function() {
 		initializeYahooMap(
-			'$mapName',
+			"$mapName",
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,

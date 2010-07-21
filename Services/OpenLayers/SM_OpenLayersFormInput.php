@@ -67,8 +67,8 @@ class SMOpenLayersFormInput extends SMFormInput {
 addOnloadHook(
 	function() {
 		makeFormInputOpenLayer(
-			'$mapName',
-			'$this->coordsFieldName',
+			"$mapName",
+			"$this->coordsFieldName",
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
@@ -76,7 +76,7 @@ addOnloadHook(
 			{$this->markerCoords['lon']},
 			[$layerItems],
 			[$this->controls],
-			'$langCode'
+			"$langCode"
 		);
 	}
 );

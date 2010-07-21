@@ -83,8 +83,8 @@ class SMGoogleMapsFormInput extends SMFormInput {
 addOnloadHook(
 	function() {
 		makeGoogleMapFormInput(
-			'$mapName', 
-			'$this->coordsFieldName',
+			"$mapName", 
+			"$this->coordsFieldName",
 			{
 				lat: $this->centreLat,
 				lon: $this->centreLon,

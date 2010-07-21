@@ -47,14 +47,14 @@ class SMOpenLayersQP extends SMMapPrinter {
 addOnloadHook(
 	function() {
 		initOpenLayer(
-			'$mapName',
+			"$mapName",
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
 			$this->markerJs,
-			'$langCode'
+			"$langCode"
 		);
 	}
 );

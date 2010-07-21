@@ -73,8 +73,8 @@ class SMYahooMapsFormInput extends SMFormInput {
 addOnloadHook(
 	function() {
 		makeFormInputYahooMap(
-			'$mapName',
-			'$this->coordsFieldName',
+			"$mapName",
+			"$this->coordsFieldName",
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
