@@ -1615,6 +1615,17 @@ $messages['rue'] = array(
 	'maps-abb-west' => 'З',
 );
 
+/** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
+ */
+$messages['si'] = array(
+	'maps-loading-map' => 'සිතියම පුරණය වෙමින් පවතී...',
+	'maps-abb-north' => 'උ',
+	'maps-abb-east' => 'නැ',
+	'maps-abb-south' => 'ද',
+	'maps-abb-west' => 'බ',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
