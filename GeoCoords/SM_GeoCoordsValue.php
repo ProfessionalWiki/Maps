@@ -30,18 +30,44 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected $wikiValue;
 
 	/**
-	 * Adds the map format as default for queries that have geocoords as only output.
-	 * This feature was added in SMW 1.5.2, and requires the setting $smwgUseResultDefaults
-	 * to be set to true.
+	 * Set the default format to 'map' when the requested properties are
+	 * of type geographic coordinates.
 	 * 
 	 * @since 0.6.5
 	 * 
-	 * @param array $formats
+	 * @param $format Mixed: The format (string), or false when not set yet 
+	 * @param $printRequests Array: The print requests made
+	 * @param $params Array: The parameters for the query printer
 	 * 
 	 * @return true
 	 */
-	public static function addGeoCoordsDefaultFormat( array $formats ) {
-		$formats['_geo'] = 'map';
+	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests, array $params ) {
+		// Only set the format when not set yet. This allows other extensions to override the Semantic Maps behaviour. 
+		if ( $format === false ) {
+			$allCoords = true;
+			$hasNonPage = false;
+			
+			// Loop through the print requests to determine their types.
+			foreach( $printRequests as $printRequest ) {
+				$typeId = $printRequest->getTypeID();
+				
+				// Ignore the page type.
+				if ( $typeId != '_wpg' ) {
+					$hasNonPage = true;
+					
+					if ( $typeId != '_geo' ) {
+						$allCoords = false;
+						break;
+					}
+				}
+			}
+			
+			// If they are all coordinates, set the result format to 'map'.
+			if ( $allCoords && $hasNonPage ) {
+				$format = 'map';
+			}
+		}
+		
 		return true;
 	}
 	

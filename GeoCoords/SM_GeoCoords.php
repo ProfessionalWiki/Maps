@@ -29,4 +29,4 @@ $wgHooks['SMWCustomSQLStoreFieldType'][] = 'SMGeoCoordsValue::initGeoCoordsField
 $wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
 
 // Hook for defining the default query printer for queries that ask for geographical coordinates.
-$wgHooks['SMWResultDefaults'][] = 'SMGeoCoordsValue::addGeoCoordsDefaultFormat';
+$wgHooks['SMWResultFormat'][] = 'SMGeoCoordsValue::addGeoCoordsDefaultFormat';
