@@ -58,8 +58,9 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'semanticmaps_desc' => 'Bied die vermoë om koördinaatdata met behulp van die Semantiese MediaWiki-uitbreiding te sien en te wysig ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Bied die vermoë om koördinaatdata met behulp van die Semantiese MediaWiki-uitbreiding te sien en te wysig ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Beskikbare kaartdienste: $1',
+	'semanticmaps-unrecognizeddistance' => 'Die waarde "$1" is nie \'n geldige afstand nie.',
 	'semanticmaps_lookupcoordinates' => 'Soek koördinate op',
 	'semanticmaps_enteraddresshere' => 'Voer adres hier in',
 	'semanticmaps_notfound' => 'nie gevind nie',
@@ -97,7 +98,7 @@ $messages['aln'] = array(
  */
 $messages['ar'] = array(
 	'semanticmaps_name' => 'خرائط دلالية',
-	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://wiki.bn2vs.com/wiki/Semantic_Maps تجربة]).
+	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://mapping.referata.com/wiki/Semantic_Maps_examples تجربة]).
 خدمات الخرائط المتوفرة: $1',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
@@ -132,7 +133,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'semanticmaps_name' => 'Сэмантычныя мапы',
-	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps дэманстрацыя]). Даступныя сэрвісы мапаў: $1',
+	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples дэманстрацыя]). Даступныя сэрвісы мапаў: $1',
 	'semanticmaps-unrecognizeddistance' => 'Значэньне $1 — няслушная адлегласьць.',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
@@ -157,7 +158,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servijoù kartennoù hegerz : $1',
+	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). Servijoù kartennoù hegerz : $1',
 	'semanticmaps-unrecognizeddistance' => "An talvoud $1 n'eo ket un hed reizh anezhañ.",
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
@@ -181,7 +182,7 @@ $messages['br'] = array(
  * @author Palapa
  */
 $messages['bs'] = array(
-	'semanticmaps_desc' => 'Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Dostupne usluge mapa: $1',
 	'semanticmaps-unrecognizeddistance' => 'Vrijednost $1 nije ispravno odstojanje.',
 	'semanticmaps_lookupcoordinates' => 'Nađi koordinate',
@@ -212,12 +213,13 @@ $messages['ca'] = array(
 /** German (Deutsch)
  * @author DaSch
  * @author Imre
+ * @author Kghbln
  * @author Pill
  * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden ([http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]).
+	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die mit der Softwareerweiterung „Semantic MediaWiki“ gespeichert wurden ([http://mapping.referata.com/wiki/Semantic_Maps_examples Demo]).
 Unterstützte Kartendienste: $1',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
@@ -241,7 +243,7 @@ Unterstützte Kartendienste: $1',
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'semanticmaps_desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 K dispoziciji stojece kórtowe słužby: $1.',
 	'semanticmaps-unrecognizeddistance' => 'Gódnota $1 njejo płaśiwa distanca.',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami póglědaś',
@@ -286,7 +288,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'semanticmaps_desc' => 'Proporciona la capacidad de ver y editar los datos coordinados almacenados a través de la extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Proporciona la capacidad de ver y editar los datos coordinados almacenados a través de la extensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Servicios de mapas disponibles: $1',
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no esuna distancia válida.',
 	'semanticmaps_lookupcoordinates' => 'Busque las coordenadas',
@@ -335,7 +337,7 @@ $messages['fi'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'semanticmaps_desc' => 'Permet de voir et modifier les données de coordonnées stockées à travers l’extension Semantic MediaWiki ([http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Démo]). Services de cartes disponibles : $1.',
+	'semanticmaps_desc' => 'Permet de voir et modifier les données de coordonnées stockées à travers l’extension Semantic MediaWiki ([http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://mapping.referata.com/wiki/Semantic_Maps_examples Démo]). Services de cartes disponibles : $1.',
 	'semanticmaps-unrecognizeddistance' => "La valeur $1 n'est pas une distance valide",
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
@@ -358,7 +360,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demostración]).
+	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demostración]).
 Servizos de mapa dispoñibles: $1',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 non é unha distancia válida.',
 	'semanticmaps_lookupcoordinates' => 'Ver as coordenadas',
@@ -382,7 +384,7 @@ Servizos de mapa dispoñibles: $1',
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'semanticmaps_desc' => 'Ergänzt e Megligkeit zum Aaluege un Bearbeite vu Koordinate, wu im Ramme vu dr Erwyterig „Semantisch MediaWiki“ gspycheret wore sin. Unterstitzti Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]',
+	'semanticmaps_desc' => 'Ergänzt e Megligkeit zum Aaluege un Bearbeite vu Koordinate, wu im Ramme vu dr Erwyterig „Semantisch MediaWiki“ gspycheret wore sin. Unterstitzti Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Dokumäntation]. [http://mapping.referata.com/wiki/Semantic_Maps_examples Demo]',
 	'semanticmaps-unrecognizeddistance' => 'Dr Wert $1 isch kei giltigi Dischtanz.',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticmaps_enteraddresshere' => 'Doo Adräss yygee',
@@ -406,7 +408,7 @@ $messages['gsw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'semanticmaps_desc' => 'הוספת האפשרות לצפייה ולעריכה בנתוני קואורדינטה המאוחסנים דרך הרחבת המדיה־ויקי הסמנטי ([http://wiki.bn2vs.com/wiki/Semantic_Maps הדגמה]).
+	'semanticmaps_desc' => 'הוספת האפשרות לצפייה ולעריכה בנתוני קואורדינטה המאוחסנים דרך הרחבת המדיה־ויקי הסמנטי ([http://mapping.referata.com/wiki/Semantic_Maps_examples הדגמה]).
 שירותי מפה זמינים: $1',
 	'semanticmaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
@@ -425,7 +427,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). K dispoziciji stejace kartowe słužby: $1',
+	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). K dispoziciji stejace kartowe słužby: $1',
 	'semanticmaps-unrecognizeddistance' => 'Hódnota $1 płaćiwa distanca njeje.',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami hladać',
 	'semanticmaps_enteraddresshere' => 'Zapodaj tu adresu',
@@ -448,7 +450,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'semanticmaps_desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztés segítségével tárolt koordinátaadatok megtekintését és szerkesztését ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztés segítségével tárolt koordinátaadatok megtekintését és szerkesztését ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Elérhető térképszolgáltatók: $1',
 	'semanticmaps_lookupcoordinates' => 'Koordináták felkeresése',
 	'semanticmaps_enteraddresshere' => 'Add meg a címet itt',
@@ -467,7 +469,7 @@ Elérhető térképszolgáltatók: $1',
  */
 $messages['ia'] = array(
 	'semanticmaps_desc' => 'Permitte vider e modificar datos de coordinatas immagazinate per le extension Semantic MediaWiki
-([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Servicios cartographic disponibile: $1',
 	'semanticmaps-unrecognizeddistance' => 'Le valor $1 non es un distantia valide.',
 	'semanticmaps_lookupcoordinates' => 'Cercar coordinatas',
@@ -492,7 +494,7 @@ Servicios cartographic disponibile: $1',
  * @author Farras
  */
 $messages['id'] = array(
-	'semanticmaps_desc' => 'Memampukan penampilan dan penyuntingan data koordinat yang disimpan melalui pengaya MediaWiki Semantic ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). 
+	'semanticmaps_desc' => 'Memampukan penampilan dan penyuntingan data koordinat yang disimpan melalui pengaya MediaWiki Semantic ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). 
 Layanan peta yang tersedia: $1',
 	'semanticmaps-unrecognizeddistance' => 'Nilai $1 bukan jarak yang sah.',
 	'semanticmaps_lookupcoordinates' => 'Cari koordinat',
@@ -518,7 +520,7 @@ Layanan peta yang tersedia: $1',
  * @author HalphaZ
  */
 $messages['it'] = array(
-	'semanticmaps_desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servizi di mappe disponibili: $1",
+	'semanticmaps_desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). Servizi di mappe disponibili: $1",
 	'semanticmaps-unrecognizeddistance' => 'Il valore $1 non è una distanza valida.',
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
@@ -543,7 +545,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する ([http://wiki.bn2vs.com/wiki/Semantic_Maps 実演])。次の地図サービスに対応します：$1',
+	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する ([http://mapping.referata.com/wiki/Semantic_Maps_examples 実演])。次の地図サービスに対応します：$1',
 	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps_lookupcoordinates' => '座標を調べる',
 	'semanticmaps_enteraddresshere' => '住所をここに入力します',
@@ -573,7 +575,7 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'semanticmaps_desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di per Semantesch Mediawiki faßjehallde woodte. (E [http://wiki.bn2vs.com/wiki/Semantic_Maps Beijshpöll]) Deenste för Kaate ham_mer di heh: $1',
+	'semanticmaps_desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di per Semantesch Mediawiki faßjehallde woodte. (E [http://mapping.referata.com/wiki/Semantic_Maps_examples Beijshpöll]) Deenste för Kaate ham_mer di heh: $1',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nohkike',
 	'semanticmaps_enteraddresshere' => 'Donn hee de Address enjäve',
 	'semanticmaps_notfound' => 'nit jefonge',
@@ -611,7 +613,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку проширувањето Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps демо]).
+	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку проширувањето Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples демо]).
 Картографски служби на располагање: $1',
 	'semanticmaps-unrecognizeddistance' => 'Вредноста $1 не претставува важечко растојание.',
 	'semanticmaps_lookupcoordinates' => 'Побарај координати',
@@ -636,7 +638,7 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Beschikbare kaartdiensten: $1',
 	'semanticmaps-unrecognizeddistance' => 'De waarde "$1" is geen geldige afstand.',
 	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
@@ -669,7 +671,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'semanticmaps_desc' => 'Tilbyr muligheten til å se og endre koordinatdata lagret gjennom Semantic MediaWiki-utvidelsen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Tilbyr muligheten til å se og endre koordinatdata lagret gjennom Semantic MediaWiki-utvidelsen ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Tilgjengelige karttjenester: $1',
 	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinater',
@@ -693,7 +695,7 @@ Tilgjengelige karttjenester: $1',
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'semanticmaps_desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. Servicis de mapas disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentacion]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]",
+	'semanticmaps_desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. Servicis de mapas disponibles : $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentacion]. [http://mapping.referata.com/wiki/Semantic_Maps_examples Demo]",
 	'semanticmaps_lookupcoordinates' => 'Estimar las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Picatz aicí l’adreça',
 	'semanticmaps_notfound' => 'pas trobat',
@@ -707,7 +709,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Dostępne serwisy mapowe: $1',
 	'semanticmaps-unrecognizeddistance' => 'Wartość $1 nie jest poprawną odległością.',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
@@ -723,8 +725,8 @@ Dostępne serwisy mapowe: $1',
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'semanticmaps_desc' => 'A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con le estension Semantic mediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Sërvissi ëd mapa disponìbij: $1',
+	'semanticmaps_desc' => "A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con j'estension Semantic mediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
+Servissi ëd carte disponìbij: $1",
 	'semanticmaps-unrecognizeddistance' => "Ël valor $1 a l'é pa na distansa bon-a.",
 	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
 	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
@@ -756,7 +758,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'semanticmaps_desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([http://wiki.bn2vs.com/wiki/Semantic_Maps demonstração]).
+	'semanticmaps_desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([http://mapping.referata.com/wiki/Semantic_Maps_examples demonstração]).
 Serviços de cartografia disponíveis: $1',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
@@ -782,7 +784,7 @@ Serviços de cartografia disponíveis: $1',
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'semanticmaps_desc' => 'Provê a possibilidade de ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://wiki.bn2vs.com/wiki/Semantic_Maps demonstração]).
+	'semanticmaps_desc' => 'Provê a possibilidade de ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://mapping.referata.com/wiki/Semantic_Maps_examples demonstração]).
 Serviços de mapeamento disponíveis: $1',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
@@ -814,7 +816,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'semanticmaps_desc' => "Dè l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => "Dè l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Disponibbile le servizie de mappe: $1",
 	'semanticmaps_lookupcoordinates' => 'Ingroce le coordinate',
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
@@ -827,7 +829,7 @@ Disponibbile le servizie de mappe: $1",
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'semanticmaps_desc' => 'Предоставляет возможность просмотра и редактирования данных о координатах, хранящихся посредством расширения Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps демонстрация]).
+	'semanticmaps_desc' => 'Предоставляет возможность просмотра и редактирования данных о координатах, хранящихся посредством расширения Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples демонстрация]).
 Доступные службы карт: $1',
 	'semanticmaps-unrecognizeddistance' => 'Значение $1 не является допустимым расстоянием.',
 	'semanticmaps_lookupcoordinates' => 'Найти координаты',
@@ -851,7 +853,7 @@ $messages['ru'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'semanticmaps_desc' => 'Poskytuje schopnosť zobrazovať a upravovať údaje súradníc uložené prostredníctvom rozšírenia Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Poskytuje schopnosť zobrazovať a upravovať údaje súradníc uložené prostredníctvom rozšírenia Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Dostupné mapové služby: $1',
 	'semanticmaps_lookupcoordinates' => 'Vyhľadať súradnice',
 	'semanticmaps_enteraddresshere' => 'Sem zadajte emailovú adresu',
@@ -902,7 +904,7 @@ $messages['sr-el'] = array(
  * @author Per
  */
 $messages['sv'] = array(
-	'semanticmaps_desc' => 'Ger möjligheten att titta på och ändra koordinatdata sparad genom Semantic MediaWiki-utvidgningen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
+	'semanticmaps_desc' => 'Ger möjligheten att titta på och ändra koordinatdata sparad genom Semantic MediaWiki-utvidgningen ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 
 Tillgängliga karttjänster: $1',
 	'semanticmaps_lookupcoordinates' => 'Kolla upp koordinater',
@@ -927,7 +929,7 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'semanticmaps_desc' => 'Nagbibigay ng kakayahang makita at baguhin ang dato ng tugmaang nakatabi sa pamamagitan ng dugtong na Semantikong MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps pagpapakita]).
+	'semanticmaps_desc' => 'Nagbibigay ng kakayahang makita at baguhin ang dato ng tugmaang nakatabi sa pamamagitan ng dugtong na Semantikong MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples pagpapakita]).
 Makukuhang mga palingkurang pangmapa: $1',
 	'semanticmaps-unrecognizeddistance' => 'Hindi isang tanggap na layo ang halagang $1.',
 	'semanticmaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
@@ -970,7 +972,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'semanticmaps_desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps thử xem]).
+	'semanticmaps_desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples thử xem]).
 Các dịch vụ bản đồ có sẵn: $1',
 	'semanticmaps_lookupcoordinates' => 'Tra tọa độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
