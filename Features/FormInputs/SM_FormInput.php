@@ -281,7 +281,7 @@ EOT
         if ( empty( $this->coordinates ) ) {
             $this->zoom = $this->getEarthZoom();
         } else if ( $this->zoom == 'null' ) {
-             $this->zoom = $this->defaultZoom;
+             $this->zoom = $this->service->getDefaultZoom();
         }
 	}
 	
