@@ -607,6 +607,8 @@ $messages['lb'] = array(
 	'semanticmaps_paramdesc_zoom' => 'DenNiveau vum Zoom vun der Kaart',
 	'semanticmaps_paramdesc_centre' => "D'Koordinate vum zentrum vun der Kaart",
 	'semanticmaps_paramdesc_controls' => "D'Benotzerkontrollen déi op der Kaart plazéiert sinn",
+	'semanticmaps_paramdesc_types' => 'Déi disponibel Kaartentypen op der Kaart',
+	'semanticmaps_paramdesc_type' => "De Standard-Kaartentyp fir d'Kaart",
 );
 
 /** Macedonian (Македонски)
