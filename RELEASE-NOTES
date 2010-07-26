@@ -8,7 +8,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 0.6.5 ===
-(2010-07-xx)
+(2010-07-26)
 
 ==== Refactoring ====
 
@@ -25,6 +25,12 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 * Improved the way marker data is turned into JavaScript variables.
 
 * Improved coordinate recognition regexes. 
+
+==== Bug fixes ====
+
+* Fixed several small coordinate parsing and formatting issues.
+
+* Fixed a few small distance arsing issues.
 
 === Maps 0.6.4 ===
 (2010-07-08)
