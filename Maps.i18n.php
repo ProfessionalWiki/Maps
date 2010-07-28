@@ -87,17 +87,6 @@ $messages['qqq'] = array(
 	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'maps-abb-north' => 'U',
-	'maps-abb-east' => 'T',
-	'maps-abb-south' => 'S',
-	'maps-abb-west' => 'B',
-	'maps_wikipedia' => 'Wikipidia',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -247,6 +236,17 @@ $messages['bg'] = array(
 	'maps_photos' => 'Снимки',
 	'maps_wikipedia' => 'Уикипедия',
 	'maps_webcams' => 'Уебкамери',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'maps-abb-north' => 'U',
+	'maps-abb-east' => 'T',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'B',
+	'maps_wikipedia' => 'Wikipidia',
 );
 
 /** Breton (Brezhoneg)
@@ -998,6 +998,7 @@ $messages['ja'] = array(
 	'maps_desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する ([http://mapping.referata.com/wiki/Maps_examples 実演])。次の地図サービスに対応します: $1',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中…',
+	'maps-markers' => 'マーカー',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '東',
 	'maps-abb-south' => '南',
@@ -1879,8 +1880,12 @@ $messages['zh-hans'] = array(
 	'maps-longitude' => '经度：',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
 $messages['zh-hant'] = array(
+	'maps_map' => '地圖',
+	'maps-loading-map' => '載入中...',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '東',
 	'maps-abb-south' => '南',
