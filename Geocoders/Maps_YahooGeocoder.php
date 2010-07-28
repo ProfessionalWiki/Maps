@@ -7,7 +7,6 @@
  * @ingroup Maps
  *
  * @author Jeroen De Dauw
- * 
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

@@ -9,7 +9,6 @@
  *
  * @author Jeroen De Dauw
  * @author Sergey Chernyshev
- * 
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
