@@ -30,6 +30,8 @@ final class MapsParserFunctions {
 	/**
 	 * Initialize the parser functions feature. This function handles the parser function hook,
 	 * and will load the required classes.
+	 * 
+	 * @return true
 	 */
 	public static function initialize() {
 		global $egMapsFeatures;
@@ -143,4 +145,5 @@ final class MapsParserFunctions {
 
 		return $equals;
 	}
+	
 }
