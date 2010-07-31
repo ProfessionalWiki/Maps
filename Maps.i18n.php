@@ -1090,7 +1090,14 @@ $1',
  * @author Universal Life
  */
 $messages['lad'] = array(
-	'maps_wikipedia' => 'Vikipeddia',
+	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Cargando la mapa...',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps_photos' => 'Fotoggrafías',
+	'maps_wikipedia' => 'Vikipedya',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
