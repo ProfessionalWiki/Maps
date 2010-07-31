@@ -132,7 +132,6 @@ function efMapsSetup() {
 		'version' => Maps_VERSION,
 		'author' => array(
 			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
-			'[http://www.mediawiki.org/wiki/User:Yaron_Koren Yaron Koren]',
 			'[http://www.ohloh.net/p/maps/contributors others]'
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
