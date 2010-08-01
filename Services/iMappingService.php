@@ -91,6 +91,17 @@ interface iMappingService {
 	function getFeature( $featureName );
 	
 	/**
+	 * Returns an instance of the class handling the provided feature with this service, or false if there is none.
+	 * 
+	 * @since 0.6.6
+	 * 
+	 * @param string $featureName.
+	 * 
+	 * @return iMappingFeature or false
+	 */	
+	function getFeatureInstance( $featureName );	
+	
+	/**
 	 * Returns a list of aliases.
 	 * 
 	 * @since 0.6.5

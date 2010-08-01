@@ -82,15 +82,11 @@ final class MapsParserFunctions {
 			}
 		}
 		
-		// Make sure the service name is valid, and then get the class associated with it.
-		$serviceName = MapsMapper::getValidService( $setService ? $serviceName : '', $parserFunction );
-		$service = $egMapsServices[$serviceName];
+		// Get the instance of the service class.
+		$service = MapsMappingService::getServiceInstance( $setService ? $serviceName : '', $parserFunction );
 		
-		// Get the name of the class handling the current parser function and service.
-		$className = $service->getFeature( $parserFunction );
-		$mapClass = new $className( $service );
-		
-		$manager = new ValidatorManager();
+		// Get an instance of the class handling the current parser function and service.
+		$mapClass = $service->getFeatureInstance( $parserFunction );
 		
 		/*
 		 * Assembliy of the allowed parameters and their information. 
@@ -103,6 +99,8 @@ final class MapsParserFunctions {
 		$parameterInfo = array_merge_recursive( $parameterInfo, $service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $mapClass->getSpecificParameterInfo() );
 
+		$manager = new ValidatorManager();
+		
 		$displayMap = $manager->manageParameters(
 			$parameters,
 			$parameterInfo,
