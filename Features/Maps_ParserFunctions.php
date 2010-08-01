@@ -83,7 +83,7 @@ final class MapsParserFunctions {
 		}
 		
 		// Get the instance of the service class.
-		$service = MapsMappingService::getServiceInstance( $setService ? $serviceName : '', $parserFunction );
+		$service = MapsMappingServices::getServiceInstance( $setService ? $serviceName : '', $parserFunction );
 		
 		// Get an instance of the class handling the current parser function and service.
 		$mapClass = $service->getFeatureInstance( $parserFunction );

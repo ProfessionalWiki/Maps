@@ -103,6 +103,7 @@ function efMapsSetup() {
 
 	// Load the "service/" classes and interfaces.
 	require_once $egMapsDir . 'Services/iMappingService.php';
+	$wgAutoloadClasses['MapsMappingServices'] = $egMapsDir . 'Services/Maps_MappingServices.php';
 	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
 	
 	wfRunHooks( 'MappingServiceLoad' );

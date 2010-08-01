@@ -97,10 +97,10 @@ final class MapsMapper {
 	}
 	
 	/**
-	 * @deprecated Method moved to MapsMappingService. Will be removed in 0.7.
+	 * @deprecated Method moved to MapsMappingServices. Will be removed in 0.7.
 	 */
 	public static function getValidService( $service, $feature ) {
-		MapsMappingService::getValidService( $service, $feature );
+		MapsMappingServices::getValidService( $service, $feature );
 	}
 
 	/**
