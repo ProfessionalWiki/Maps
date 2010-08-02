@@ -113,12 +113,9 @@ function efMapsSetup() {
 	wfRunHooks( 'MappingFeatureLoad' );
 
 	// Creation of a list of internationalized service names.
-	/* TODO
 	$services = array();
-	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
-	$services_list = $wgLang->listToText( $services );
-	*/
-	$services_list = '';
+	foreach ( MapsMappingServices::getServiceIdentifiers() as $identifier ) $services[] = wfMsg( 'maps_' . $identifier );
+	$servicesList = $wgLang->listToText( $services );
 
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,
@@ -129,7 +126,7 @@ function efMapsSetup() {
 			'[http://www.ohloh.net/p/maps/contributors others]'
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
-		'description' => wfMsgExt( 'maps_desc', 'parsemag', $services_list ),
+		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList ),
 	);
 
 	MapsMapper::initialize();
