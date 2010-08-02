@@ -77,6 +77,7 @@ class MapsMappingServices {
 	
 	/**
 	 * Registeres a feature for a service object.
+	 * Registers a warning when the service is not registered, but does not give an error.
 	 * 
 	 * @since 0.6.6
 	 * 
@@ -85,8 +86,14 @@ class MapsMappingServices {
 	 * @param $featureClassName String
 	 */
 	public static function registerServiceFeature( $serviceIdentifier, $featureName, $featureClassName ) {
-		$service = self::getServiceInstance( $serviceIdentifier );
-		$service->addFeature( $featureName, $featureClassName );
+		if ( array_key_exists( $serviceIdentifier, self::$registeredServices ) ) {
+			$service = self::getServiceInstance( $serviceIdentifier );
+			$service->addFeature( $featureName, $featureClassName );			
+		}
+		else {
+			// If the feature is not registered, register a warning. This is not an error though!
+			wfWarn( "Tried to register feature '$featureName' with class '$featureClassName' to non-registered service '$serviceIdentifier'." );
+		}
 	}
 	
 	/**
