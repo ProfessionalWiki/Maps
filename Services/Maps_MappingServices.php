@@ -178,6 +178,17 @@ class MapsMappingServices {
 	}
 
 	/**
+	 * Returns an array with the identifiers for all registered services.
+	 * 
+	 * @since 0.6.6
+	 * 
+	 * @return array
+	 */
+	public static function getServiceIdentifiers() {
+		return array_keys( self::$registeredServices );
+	}
+	
+	/**
 	 * Checks if the service name is an alias for an actual service,
 	 * and changes it into the main service name if this is the case.
 	 *
@@ -189,7 +200,7 @@ class MapsMappingServices {
 	 */
 	protected static function getMainServiceName( $serviceName ) {
 		if ( !array_key_exists( $serviceName, self::$services ) ) {
-			foreach ( self::$registeredServices as $serviceIdentifier => $serviceClassName ) {
+			foreach ( self::getServiceIdentifiers() as $serviceIdentifier ) {
 				$service = self::getServiceInstance( $serviceIdentifier );
 				
 				if ( $service->hasAlias( $service ) ) {
