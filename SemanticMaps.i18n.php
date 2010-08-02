@@ -19,7 +19,7 @@ $messages['en'] = array(
 	'semanticmaps_name' => 'Semantic Maps',
 	// TODO: update demo link to the new wiki, once it has 0.6.x running.
 	'semanticmaps_desc' => "Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo's]).
-Available map services: $1",
+Available mapping services: $1",
 	'semanticmaps-unrecognizeddistance' => 'The value $1 is not a valid distance.',
 
 	// Forms
