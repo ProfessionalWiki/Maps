@@ -25,7 +25,7 @@ final class SMQueryPrinters {
 	 * Initialization function for Maps query printer functionality.
 	 */
 	public static function initialize() {
-		global $smgDir, $wgAutoloadClasses, $egMapsServices;
+		global $smgDir, $wgAutoloadClasses;
 		
 		$wgAutoloadClasses['SMMapper'] 	= dirname( __FILE__ ) . '/SM_Mapper.php';
 		$wgAutoloadClasses['SMMapPrinter'] 	= dirname( __FILE__ ) . '/SM_MapPrinter.php';
@@ -34,7 +34,9 @@ final class SMQueryPrinters {
 		
 		$hasQueryPrinters = false;
 
-		foreach ( $egMapsServices as $service ) {
+		foreach ( MapsMappingServices::getServiceIdentifiers() as $serviceIdentifier ) {
+			$service = MapsMappingServices::getServiceInstance( $serviceIdentifier );	
+				
 			// Check if the service has a query printer.
 			$QPClass = $service->getFeature( 'qp' );
 			

@@ -37,27 +37,62 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 */
 	protected abstract function getServiceName();
 	
+	/**
+	 * @var iMappingService
+	 */
 	protected $service;
 	
+	/**
+	 * @var array
+	 */	
 	protected $locations = array();
+	
+	/**
+	 * @var string
+	 */
 	protected $markerJs;
 	
+	/**
+	 * @var string
+	 */
 	protected $centreLat;
+	
+	/**
+	 * @var string
+	 */	
 	protected $centreLon;
 	
+	/**
+	 * @var string
+	 */	
 	protected $output = '';
+	
+	/**
+	 * @var string
+	 */	
 	protected $errorList;
-	
-	protected $mapFeature;
-	
+
+	/**
+	 * @var array
+	 */
 	protected $featureParameters = array();
+	
+	/**
+	 * @var array or false
+	 */	
 	protected $specificParameters = false;
 	
-	public function __construct( $format, $inline, /* MapsMappingService */ $service = null ) {
+	/**
+	 * Constructor.
+	 * 
+	 * @param $format String
+	 * @param $inline
+	 * @param $service iMappingService
+	 */
+	public function __construct( $format, $inline, /* iMappingService */ $service = null ) {
 		// TODO: this is a hack since I can't find a way to pass along the service object here when the QP is created in SMW.
 		if ( $service == null ) {
-			global $egMapsServices;
-			$service = $egMapsServices[$this->getServiceName()];
+			$service = MapsMappingServices::getServiceInstance( $this->getServiceName() );
 		}
 		
 		$this->service = $service;

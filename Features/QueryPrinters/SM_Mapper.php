@@ -15,18 +15,29 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMMapper {
 	
-	private $queryPrinter;
+	/**
+	 * @var SMMapPrinter
+	 */
+	protected $queryPrinter;
 	
+	/**
+	 * Constructor.
+	 * 
+	 * @param $format String
+	 * @param $inline
+	 */
 	public function __construct( $format, $inline ) {
-		global $egMapsDefaultServices, $egMapsServices;
+		global $egMapsDefaultServices;
 		
 		// TODO: allow service parameter to override the default
 		// Note: if this is allowed, then the getParameters should only return the base parameters.
 		if ( $format == 'map' ) $format = $egMapsDefaultServices['qp'];
 		
-		$service = $egMapsServices[MapsMapper::getValidService( $format, 'qp' )];
-		$QPClass = $service->getFeature( 'qp' );
+		// Get the instance of the service class.
+		$service = MapsMappingServices::getValidServiceInstance( $format, 'qp' );
 		
+		// Get an instance of the class handling the current query printer and service.
+		$QPClass = $service->getFeature( 'qp' );	
 		$this->queryPrinter = new $QPClass( $format, $inline, $service );
 	}
 

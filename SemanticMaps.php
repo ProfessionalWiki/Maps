@@ -67,12 +67,14 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
  * @return true
  */
 function smfSetup() {
-	global $wgExtensionCredits, $wgLang, $wgOut, $egMapsServices, $smgScriptPath;
+	global $wgExtensionCredits, $wgLang, $wgOut, $smgScriptPath;
 
 	// Creation of a list of internationalized service names.
+	/* TODO
 	$services = array();
 	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
-	$services_list = $wgLang->listToText( $services );
+	*/
+	$services_list = ''; //$wgLang->listToText( $services );
 
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
@@ -111,7 +113,7 @@ function smfAddToAdminLinks( &$admin_links_tree ) {
     $smw_docu_row = $displaying_data_section->getRow( 'smw' );
 
     $sm_docu_label = wfMsg( 'adminlinks_documentation', wfMsg( 'semanticmaps_name' ) );
-    $smw_docu_row->addItem( AlItem::newFromExternalLink( "http://www.mediawiki.org/wiki/Extension:Semantic_Maps", $sm_docu_label ) );
+    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps', $sm_docu_label ) );
 
     return true;
 }

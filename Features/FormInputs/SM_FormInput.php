@@ -105,8 +105,6 @@ abstract class SMFormInput implements iMappingFeature {
 	 * @return boolean Indicates whether the map should be shown or not.
 	 */
 	protected final function setMapProperties( array $mapProperties ) {
-		global $egMapsServices;
-		
 		/*
 		 * Assembliy of the allowed parameters and their information. 
 		 * The main parameters (the ones that are shared by everything) are overidden

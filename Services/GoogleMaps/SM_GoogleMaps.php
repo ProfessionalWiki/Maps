@@ -23,17 +23,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgHooks['MappingServiceLoad'][] = 'smfInitGoogleMaps';
 
 function smfInitGoogleMaps() {
-	global $egMapsServices, $wgAutoloadClasses;
+	global $wgAutoloadClasses;
 	
 	$wgAutoloadClasses['SMGoogleMapsQP'] = dirname( __FILE__ ) . '/SM_GoogleMapsQP.php';
 	
 	// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
 	if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMGoogleMapsFormInput'] = dirname( __FILE__ ) . '/SM_GoogleMapsFormInput.php';	
 	
-	if ( array_key_exists( 'googlemaps2', $egMapsServices ) ) {
-		$egMapsServices['googlemaps2']->addFeature( 'qp', 'SMGoogleMapsQP' );
-		$egMapsServices['googlemaps2']->addFeature( 'fi', 'SMGoogleMapsFormInput' );		
-	}
+	MapsMappingServices::registerServiceFeature( 'googlemaps2', 'qp', 'SMGoogleMapsQP' );
+	MapsMappingServices::registerServiceFeature( 'googlemaps2', 'fi', 'SMGoogleMapsFormInput' );
 	
 	return true;
 }
