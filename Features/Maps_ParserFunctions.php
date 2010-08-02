@@ -60,7 +60,7 @@ final class MapsParserFunctions {
 	 * @return array
 	 */
 	public static function getMapHtml( Parser &$parser, array $args, $parserFunction ) {
-        global $egValidatorFatalLevel, $egMapsServices;
+        global $egValidatorFatalLevel;
         
         array_shift( $args ); // We already know the $parser.
 
@@ -83,7 +83,7 @@ final class MapsParserFunctions {
 		}
 		
 		// Get the instance of the service class.
-		$service = MapsMappingServices::getServiceInstance( $setService ? $serviceName : '', $parserFunction );
+		$service = MapsMappingServices::getValidServiceInstance( $setService ? $serviceName : '', $parserFunction );
 		
 		// Get an instance of the class handling the current parser function and service.
 		$mapClass = $service->getFeatureInstance( $parserFunction );

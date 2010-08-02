@@ -31,15 +31,14 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
  * @return true
  */
 function efMapsInitGoogleMaps3() {
-	global $egMapsServices, $wgAutoloadClasses;
+	global $wgAutoloadClasses;
 	
 	$wgAutoloadClasses['MapsGoogleMaps3'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3.php';
 	$wgAutoloadClasses['MapsGoogleMaps3DispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3DispMap.php';
-	
-	$googleMaps = new MapsGoogleMaps3();
-	$googleMaps->addFeature( 'display_map', 'MapsGoogleMaps3DispMap' );
 
-	$egMapsServices[$googleMaps->getName()] = $googleMaps;
+	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
+	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );	
+	$googleMaps->addFeature( 'display_map', 'MapsGoogleMaps3DispMap' );
 	
 	return true;
 }

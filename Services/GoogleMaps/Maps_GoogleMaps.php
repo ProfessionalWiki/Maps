@@ -26,13 +26,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class MapsGoogleMaps extends MapsMappingService {
 	
 	/**
-	 * Constructor
+	 * Constructor.
 	 * 
-	 * @since 0.6.3
+	 * @since 0.6.6
 	 */
-	function __construct() {
+	function __construct( $serviceName ) {
 		parent::__construct(
-			'googlemaps2',
+			$serviceName,
 			array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' )
 		);
 	}

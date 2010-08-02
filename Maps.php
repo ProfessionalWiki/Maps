@@ -59,7 +59,6 @@ else {
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
 	$egMapsFeatures = array();
-	$egMapsServices = array();
 
 	// Include the settings file.
 	require_once $egMapsDir . 'Maps_Settings.php';
@@ -87,7 +86,7 @@ else {
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
-	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices;
+	global $egMapsDefaultService, $egMapsAvailableServices;
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
 	// Autoload the "includes/" classes.
@@ -113,19 +112,13 @@ function efMapsSetup() {
 	
 	wfRunHooks( 'MappingFeatureLoad' );
 
-	// Remove all hooked in services that should not be available.
-	foreach ( $egMapsServices as $service => $data ) {
-		if ( !in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
-	}
-	$egMapsAvailableServices = array_keys( $egMapsServices );
-
-	// Enure that the default service is one of the enabled ones.
-	$egMapsDefaultService = in_array( $egMapsDefaultService, $egMapsAvailableServices ) ? $egMapsDefaultService : $egMapsAvailableServices[0];
-
 	// Creation of a list of internationalized service names.
+	/* TODO
 	$services = array();
 	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
 	$services_list = $wgLang->listToText( $services );
+	*/
+	$services_list = '';
 
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,

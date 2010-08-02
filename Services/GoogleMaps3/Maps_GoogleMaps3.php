@@ -28,11 +28,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.6.3
+	 * @since 0.6.6
 	 */	
-	function __construct() {
+	function __construct( $serviceName ) {
 		parent::__construct(
-			'googlemaps3',
+			$serviceName,
 			array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' )
 		);
 	}

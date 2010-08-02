@@ -31,15 +31,18 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitOSM';
  * @return true
  */
 function efMapsInitOSM() {
-	global $egMapsServices, $wgAutoloadClasses;
+	global $wgAutoloadClasses;
 	
 	$wgAutoloadClasses['MapsOSM'] = dirname( __FILE__ ) . '/Maps_OSM.php';
 	$wgAutoloadClasses['MapsOSMDispMap'] = dirname( __FILE__ ) . '/Maps_OSMDispMap.php';
 	
-	$osm = new MapsOSM();
-	$osm->addFeature( 'display_map', 'MapsOSMDispMap' );
-
-	$egMapsServices[$osm->getName()] = $osm;
+	MapsMappingServices::registerService( 
+		'osm',
+		'MapsOSM',
+		array(
+			'display_map' => 'MapsOSMDispMap',
+		)
+	);	
 	
 	return true;
 }

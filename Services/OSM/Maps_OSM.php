@@ -28,11 +28,11 @@ class MapsOSM extends MapsMappingService {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.6.4
+	 * @since 0.6.6
 	 */
-	function __construct() {
+	function __construct( $serviceName ) {
 		parent::__construct(
-			'osm',
+			$serviceName,
 			array( 'openstreetmap' )
 		);
 	}

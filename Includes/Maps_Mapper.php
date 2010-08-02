@@ -100,7 +100,7 @@ final class MapsMapper {
 	 * @deprecated Method moved to MapsMappingServices. Will be removed in 0.7.
 	 */
 	public static function getValidService( $service, $feature ) {
-		MapsMappingServices::getValidService( $service, $feature );
+		MapsMappingServices::getValidServiceInstance( $service, $feature );
 	}
 
 	/**
@@ -190,24 +190,6 @@ final class MapsMapper {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
 	}
-
-	/**
-	 * Returns an array containing all the possible values for the service parameter, including aliases.
-	 *
-	 * @return array
-	 */
-	public static function getAllServiceValues() {
-		global $egMapsAvailableServices, $egMapsServices;
-
-		$allServiceValues = array();
-
-		foreach ( $egMapsAvailableServices as $availableService ) {
-			$allServiceValues[] = $availableService;
-			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]->getAliases() );
-		}
-
-		return $allServiceValues;
-	}
 	
 	/**
 	 * Add a JavaScript file out of skins/common, or a given relative path.
@@ -239,7 +221,7 @@ final class MapsMapper {
 		return array(
 			'mappingservice' => array(
 				'criteria' => array(
-					'in_array' => self::getAllServiceValues()
+					'in_array' => MapsMappingServices::getAllServiceValues()
 				),
 				'aliases' => array( 'service' )
 			),
