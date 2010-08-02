@@ -70,11 +70,9 @@ function smfSetup() {
 	global $wgExtensionCredits, $wgLang, $wgOut, $smgScriptPath;
 
 	// Creation of a list of internationalized service names.
-	/* TODO
 	$services = array();
-	foreach ( array_keys( $egMapsServices ) as $name ) $services[] = wfMsg( 'maps_' . $name );
-	*/
-	$services_list = ''; //$wgLang->listToText( $services );
+	foreach ( MapsMappingServices::getServiceIdentifiers() as $identifier ) $services[] = wfMsg( 'maps_' . $identifier );
+	$servicesList = $wgLang->listToText( $services );
 
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
@@ -91,7 +89,7 @@ function smfSetup() {
 			'[http://www.ohloh.net/p/semanticmaps/contributors others]'
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
-		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
+		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $servicesList ),
 	);
 
 	return true;
