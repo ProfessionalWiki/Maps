@@ -23,7 +23,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgHooks['MappingServiceLoad'][] = 'smfInitYahooMaps';
 
 function smfInitYahooMaps() {
-	global $egMapsServices, $wgAutoloadClasses;
+	global $wgAutoloadClasses;
 	
 	$wgAutoloadClasses['SMYahooMapsQP'] = dirname( __FILE__ ) . '/SM_YahooMapsQP.php';
 	
