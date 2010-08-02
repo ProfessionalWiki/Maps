@@ -52,7 +52,7 @@ class MapsYahooMaps extends MapsMappingService {
 	 * @since 0.5
 	 */		
 	protected function initParameterInfo( array &$parameters ) {
-		global $egMapsServices, $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
+		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
 		Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
 		Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );		

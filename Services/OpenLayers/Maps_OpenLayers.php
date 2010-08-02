@@ -46,7 +46,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @since 0.5
 	 */	
 	protected function initParameterInfo( array &$parameters ) {
-		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
+		global $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
 		Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
 		

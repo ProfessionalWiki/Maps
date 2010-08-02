@@ -41,8 +41,6 @@ function efMapsInitGoogleMaps() {
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps2' );
 	$googleMaps->addFeature( 'display_point', 'MapsGoogleMapsDispPoint' );
 	$googleMaps->addFeature( 'display_map', 'MapsGoogleMapsDispMap' );
-
-	$egMapsServices[$googleMaps->getName()] = $googleMaps;
 	
 	return true;
 }

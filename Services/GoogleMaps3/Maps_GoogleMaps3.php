@@ -43,7 +43,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * @since 0.5
 	 */	
 	protected function initParameterInfo( array &$parameters ) {
-		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
+		global $egMapsGMaps3Type, $egMapsGMaps3Types;
 		
 		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );		
