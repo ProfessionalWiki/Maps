@@ -1879,6 +1879,8 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
+	'maps_map' => '地图',
+	'maps-loading-map' => '载入中...',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '东',
 	'maps-abb-south' => '南',
