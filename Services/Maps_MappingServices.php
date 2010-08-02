@@ -23,13 +23,24 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class MapsMappingServices {
 	
 	/**
-	 * Array containg the service identifiers as provided during service registration.
+	 * Accociative array containing service identifiers as keys and the names
+	 * of service classes as values.
+	 * 
+	 * @since 0.6.6
 	 * 
 	 * @var array of string
 	 */
 	protected static $registeredServices = array();
 	
 	/**
+	 * Accociative with service identifiers as keys containing instances of
+	 * the mapping service classes. 
+	 * 
+	 * Note: This list only contains the instances, so is not to be used for
+	 * looping over all available services, as not all of them are guaranteed 
+	 * to have an instance already, use $registeredServices for this purpouse.
+	 * 
+	 * @since 0.6.6
 	 * 
 	 * @var array of iMappingService
 	 */
@@ -50,6 +61,8 @@ class MapsMappingServices {
 	 * Registeres a service class linked to an identifier. 
 	 * Also allows automatic registration of a list of features for this service.
 	 * 
+	 * @since 0.6.6
+	 * 
 	 * @param $serviceIdentifier String: internal service identifier
 	 * @param $serviceClassName String
 	 * @param $features Array
@@ -65,6 +78,8 @@ class MapsMappingServices {
 	/**
 	 * Registeres a feature for a service object.
 	 * 
+	 * @since 0.6.6
+	 * 
 	 * @param $serviceIdentifier String: internal service identifier
 	 * @param $featureName String
 	 * @param $featureClassName String
@@ -77,6 +92,8 @@ class MapsMappingServices {
 	/**
 	 * Returns the instance of a service class. This method takes
 	 * care of creating the instance if this is not done yet.
+	 * 
+	 * @since 0.6.6
 	 * 
 	 * @param $serviceIdentifier String: internal service identifier
 	 * 
