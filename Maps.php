@@ -123,7 +123,7 @@ function efMapsSetup() {
 		'version' => Maps_VERSION,
 		'author' => array(
 			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
-			'[http://www.ohloh.net/p/maps/contributors others]'
+			'[http://www.mediawiki.org/wiki/Extension:Maps/Credits others]'
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
 		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList ),
