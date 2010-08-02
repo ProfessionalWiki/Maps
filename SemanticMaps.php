@@ -111,7 +111,7 @@ function smfAddToAdminLinks( &$admin_links_tree ) {
     $smw_docu_row = $displaying_data_section->getRow( 'smw' );
 
     $sm_docu_label = wfMsg( 'adminlinks_documentation', wfMsg( 'semanticmaps_name' ) );
-    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps', $sm_docu_label ) );
+    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Semantic_Maps', $sm_docu_label ) );
 
     return true;
 }
