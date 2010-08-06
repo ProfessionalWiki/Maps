@@ -423,6 +423,30 @@ $messages['he'] = array(
 	'semanticmaps_paramdesc_layers' => 'השכבות הזמינות במפה',
 );
 
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'semanticmaps_desc' => "Pruža pregledavanje i uređivanje koordinata spremljenih koristeći Semantic MediaWiki ekstenziju ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo's]).
+Dostupne kartografske usluge: $1",
+	'semanticmaps-unrecognizeddistance' => 'Vrijednost $1 nije valjana udaljenost.',
+	'semanticmaps_lookupcoordinates' => 'Potraži koordinate',
+	'semanticmaps_enteraddresshere' => 'Unesite adresu ovdje',
+	'semanticmaps_notfound' => 'nije nađeno',
+	'semanticmaps_paramdesc_format' => 'Kartografska usluga koja se koristi za stvaranje karte',
+	'semanticmaps_paramdesc_geoservice' => 'Goecoding usluga koja pretvara adrese u koordinate',
+	'semanticmaps_paramdesc_height' => 'Visina karte, u pikselima ($1 ako nije navedeno)',
+	'semanticmaps_paramdesc_width' => 'Širina karte, u pikselima ($1 ako nije navedeno)',
+	'semanticmaps_paramdesc_zoom' => 'Razina zumiranja karte',
+	'semanticmaps_paramdesc_centre' => 'Koordinate centra karte',
+	'semanticmaps_paramdesc_controls' => 'Korisničke kontrole stavljene na kartu',
+	'semanticmaps_paramdesc_types' => 'Dostupni tipovi karte',
+	'semanticmaps_paramdesc_type' => 'Prvotno zadani tip karte',
+	'semanticmaps_paramdesc_overlays' => 'Nadslojevi dostupni na karti',
+	'semanticmaps_paramdesc_autozoom' => 'Ako je omogućeno zumiranje kotačićem miša',
+	'semanticmaps_paramdesc_layers' => 'Slojevi dostupni na karti',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
