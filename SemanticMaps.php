@@ -80,7 +80,7 @@ function smfSetup() {
 		wfLoadExtensionMessages( 'SemanticMaps' );
 	}
 
-	$wgExtensionCredits['other'][] = array(
+	$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 		'path' => __FILE__,
 		'name' => wfMsg( 'semanticmaps_name' ),
 		'version' => SM_VERSION,
