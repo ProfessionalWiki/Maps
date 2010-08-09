@@ -193,8 +193,21 @@ class MapsGoogleMaps extends MapsMappingService {
 	 */
 	public static function getControlNames() {
 		return array(
-			'auto', 'large', 'small', 'large-original', 'small-original', 'zoom', 'type', 'type-menu',
-			'overlays', 'overview', 'overview-map', 'scale', 'nav-label', 'nav', 'searchbar'
+			'auto',
+			'large',
+			'small',
+			'large-original',
+			'small-original',
+			'zoom',
+			'type',
+			'type-menu',
+			'overlays',
+			'overview',
+			'overview-map',
+			'scale',
+			'nav-label',
+			'nav',
+			'searchbar'
 		);
 	}
 
