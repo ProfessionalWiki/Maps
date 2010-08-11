@@ -7,6 +7,15 @@ version of Maps. You can find the most upt-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.6.6 ===
+(2010-08-xx)
+
+==== Refactoring ====
+
+* Added MapsMappingServices, which serves as factory for MapsPappingService objects and does away with all the globals previously needed for this.
+
+* Removed the http/curl request code from the geocoder classes - now using Http:get() instead.
+
 === Maps 0.6.5 ===
 (2010-07-26)
 
