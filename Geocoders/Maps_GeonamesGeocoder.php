@@ -30,7 +30,7 @@ final class MapsGeonamesGeocoder extends MapsBaseGeocoder {
 		// Create the request url
 		$requestURL = 'http://ws.geonames.org/search?q=' . urlencode( $address ) . '&maxRows=1&style=SHORT';
 		 
-		$result = self::GetResponse( $requestURL );
+		$result = Http::get( $requestURL );
 	
 		$lon = self::getXmlElementValue( $result, 'lng' );
 		$lat = self::getXmlElementValue( $result, 'lat' );

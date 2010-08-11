@@ -35,7 +35,7 @@ final class MapsGoogleGeocoder extends MapsBaseGeocoder {
 		// Create the request url
 		$requestURL = 'http://maps.google.com/maps/geo?q=' . urlencode( $address ) . '&output=csv&key=' . urlencode( $egGoogleMapsKey );
 
-		$result = self::GetResponse( $requestURL );
+		$result = Http::get( $requestURL );
 		
 		// Check the Google Geocoder API Response code to ensure success0
 		if ( substr( $result, 0, 3 ) == '200' ) {
