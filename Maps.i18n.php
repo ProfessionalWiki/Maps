@@ -1839,6 +1839,7 @@ $messages['vi'] = array(
 Các dịch vụ bản đồ có sẵn: $1',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
+	'maps-markers' => 'Chú thích',
 	'maps-abb-north' => 'B',
 	'maps-abb-east' => 'Đ',
 	'maps-abb-south' => 'N',
