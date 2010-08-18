@@ -1003,6 +1003,8 @@ Các dịch vụ bản đồ có sẵn: $1',
 	'semanticmaps_lookupcoordinates' => 'Tra tọa độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
 	'semanticmaps_notfound' => 'không tìm thấy',
+	'semanticmaps_paramdesc_zoom' => 'Mức độ thu phóng của bản đồ',
+	'semanticmaps_paramdesc_overlays' => 'Các lớp có sẵn trên bản đồ',
 );
 
 /** Volapük (Volapük)
