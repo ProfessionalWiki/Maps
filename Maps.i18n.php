@@ -1812,11 +1812,40 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Arturyatsko
  * @author Тест
  */
 $messages['uk'] = array(
+	'maps_desc' => 'Надає можливість відображення координат даних в картах, і геокодування адрес ([http://mapping.referata.com/wiki/Maps_examples]). 
+Доступні картографічні служби: $1',
+	'maps_map' => 'Мапа',
+	'maps-loading-map' => 'Завантаження мапи...',
+	'maps-markers' => 'Відмітки',
+	'maps-abb-north' => 'П',
+	'maps-abb-east' => 'С',
+	'maps-abb-south' => 'П',
+	'maps-abb-west' => 'З',
 	'maps-latitude' => 'Широта:',
 	'maps-longitude' => 'Довгота:',
+	'maps-invalid-coordinates' => 'Значення $1 не є дійсним набором координат.',
+	'maps_coordinates_missing' => 'Не вказані координати для мапи.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Ця адреса не може бути геокодована|Ці адреси не можуть бути геокодовані}}: $1.
+Мапа не може бути відображена.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Наступна адреса не може бути геокодована та була видалена|Наступні адреси не можуть бути геокодовані та були видалені}} з мапи:
+$1',
+	'maps_unrecognized_coords' => 'Ці {{PLURAL:$2|координати|координати}} не були розпізнані: $1.',
+	'maps_unrecognized_coords_for' => 'Наступні координати не були розпізнані, {{PLURAL:$2|вони|вони}} не показані на мапі:
+$1',
+	'maps_map_cannot_be_displayed' => 'Мапа не може бути відображена.',
+	'maps_invalid_distance' => 'Значення $1 не є допустимим значенням відстані.',
+	'maps-geocoder-not-available' => 'Функція геокодування мап недоступна. Ваше місце розташування не може бути геокодоване.',
+	'maps_click_to_activate' => 'Натисність щоб активувати мапу',
+	'maps_centred_on' => 'Центр мапи — $1, $2.',
+	'maps_overlays' => 'Шари',
+	'maps_photos' => 'Фото',
+	'maps_videos' => 'Відео',
+	'maps_wikipedia' => 'Вікіпедія',
+	'maps_webcams' => 'Веб-камери',
 );
 
 /** Veps (Vepsan kel') */
