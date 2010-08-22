@@ -249,7 +249,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @param array $row The record you want to add data from
 	 */
 	private function addResultRow( $outputmode, array $row ) {
-		global $wgUser, $smgUseSpatialExtensions;
+		global $wgUser, $smgUseSpatialExtensions, $wgTitle;
 		
 		$skin = $wgUser->getSkin();
 		
@@ -292,6 +292,11 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 			}
 		}
 		
+		if ( $this->template ) {
+			// New parser object to render the templates with.
+			$parser = new Parser();			
+		}
+		
 		foreach ( $coords as $coord ) {
 			if ( count( $coord ) >= 2 ) {
 				if ( $smgUseSpatialExtensions ) {
@@ -305,14 +310,13 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 					$icon = $this->getLocationIcon( $row );
 
 					if ( $this->template ) {
-						global $wgParser;
-						
 						$segments = array_merge(
 							array( $this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon ),
 							$label
 						);
 						
-						$text = preg_replace( '/\n+/m', '<br />', $wgParser->recursiveTagParse( '{{' . implode( '|', $segments ) . '}}' ) );
+						
+						$text = $parser->parse( '{{' . implode( '|', $segments ) . '}}', $wgTitle, new ParserOptions() )->getText();
 					}
 
 					$this->locations[] = array(
@@ -340,7 +344,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		
 		// Look for display_options field, which can be set by Semantic Compound Queries
         // the location of this field changed in SMW 1.5
-		$display_location = method_exists( $row[0], 'getResultSubject' ) ? $display_location = $row[0]->getResultSubject() : $row[0];
+		$display_location = method_exists( $row[0], 'getResultSubject' ) ? $row[0]->getResultSubject() : $row[0];
 		
 		if ( property_exists( $display_location, 'display_options' ) && is_array( $display_location->display_options ) ) {
 			$display_options = $display_location->display_options;
