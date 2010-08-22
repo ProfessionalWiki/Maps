@@ -93,6 +93,7 @@ final class SMQueryPrinters {
 					'not_empty' => array()
 				),
 				'default' => $smgQPTemplate,
+				'tolower' => false
 			),
 			'showtitle' => array(
 				'type' => 'boolean',
