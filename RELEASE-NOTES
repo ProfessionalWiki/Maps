@@ -6,6 +6,19 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Maps 0.6.6 ===
+(2010-08-xx)
+
+==== Refactoring ====
+
+* Use of the new MapsMappingServices class of the Maps extension instead of the globals.
+
+==== Bug fixes ====
+
+* Fixed issue that cuased popup contents to be displayed incorrectly when using templates.
+
+* Fixed issue that lowercased template names provided with the template parameter in queries. 
+
 === Semantic Maps 0.6.5 ===
 (2010-07-26)
 
