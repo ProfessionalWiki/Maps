@@ -167,8 +167,13 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 	 * Fills the $markerData array with the locations and their meta data.
 	 */
 	private function setMarkerData() {
-		$this->title = $this->parser->recursiveTagParse( $this->title );
-		$this->label = $this->parser->recursiveTagParse( $this->label );
+		global $wgTitle;
+		
+		// New parser object to render popup contents with.
+		$parser = new Parser();			
+		
+		$this->title = $parser->parse( $this->title, $wgTitle, new ParserOptions() )->getText();
+		$this->label = $parser->parse( $this->label, $wgTitle, new ParserOptions() )->getText();
 		
 		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
 		foreach ( $this->coordinates as $args ) {
@@ -178,11 +183,11 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 			
 			if ( count( $args ) > 0 ) {
 				// Parse and add the point specific title if it's present.
-				$markerData['title'] = $this->parser->recursiveTagParse( $args[0] );
+				$markerData['title'] = $parser->parse( $args[0], $wgTitle, new ParserOptions() )->getText();
 				
 				if ( count( $args ) > 1 ) {
 					// Parse and add the point specific label if it's present.
-					$markerData['label'] = $this->parser->recursiveTagParse( $args[1] );
+					$markerData['label'] = $parser->parse( $args[1], $wgTitle, new ParserOptions() )->getText();
 					
 					if ( count( $args ) > 2 ) {
 						// Add the point specific icon if it's present.
