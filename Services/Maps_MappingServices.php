@@ -209,14 +209,14 @@ class MapsMappingServices {
 		if ( !array_key_exists( $serviceName, self::$services ) ) {
 			foreach ( self::getServiceIdentifiers() as $serviceIdentifier ) {
 				$service = self::getServiceInstance( $serviceIdentifier );
-				
-				if ( $service->hasAlias( $service ) ) {
+
+				if ( $service->hasAlias( $serviceName ) ) {
 					 $serviceName = $service->getName();
 					 break;
 				}
 			}
 		}
-
+		
 		return $serviceName;
 	}
 	
