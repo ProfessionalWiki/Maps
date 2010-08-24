@@ -1,24 +1,14 @@
 <?php
 
 /**
- * File holding interface iMappingParserFunction.
+ * Interface that should be implemented by all map display parser functions.
+ * 
+* @since 0.6.3
  * 
  * @file iMappingParserFunction.php
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * Interface that should be implemented by all map display parser functions.
- * 
- * @author Jeroen De Dauw
- * 
- * @since 0.6.3
  */
 interface iMappingParserFunction extends iMappingFeature {
 	
@@ -39,4 +29,5 @@ interface iMappingParserFunction extends iMappingFeature {
 	 * @return array
 	 */
 	function getMapHtml( Parser &$parser, array $params );
+	
 }

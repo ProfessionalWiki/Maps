@@ -1,22 +1,12 @@
 <?php
 
 /**
- * File holding interface iMappingFeature.
- * 
- * @file iMappingFeature.php
- * @ingroup Maps
- * 
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Interface that should be implemented by all mapping features that want to use the.
  * 
  * @since 0.6.5
+ * 
+ * @file iMappingFeature.php
+ * @ingroup Maps
  * 
  * @author Jeroen De Dauw
  */

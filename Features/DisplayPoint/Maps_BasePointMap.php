@@ -1,23 +1,11 @@
 <?php
 
 /**
- * File holding class MapsBasePointMap.
- * 
- * @file Maps_BasePointMap.php
- * @ingroup Maps
- * 
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Abstract class MapsBasePointMap provides the scafolding for classes handling display_point(s)
  * calls for a specific mapping service. It inherits from MapsMapFeature and therefore forces
  * inheriting classes to implement sereveral methods.
  *
+ * @file Maps_BasePointMap.php
  * @ingroup Maps
  *
  * @author Jeroen De Dauw
