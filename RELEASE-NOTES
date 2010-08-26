@@ -7,7 +7,7 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 
 === Maps 0.6.6 ===
-(2010-08-xx)
+(2010-08-26)
 
 ==== Refactoring ====
 
@@ -15,12 +15,12 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 ==== Bug fixes ====
 
-* Fixed issue that cuased popup contents to be displayed incorrectly when using templates.
+* Fixed issue that caused popup contents to be displayed incorrectly when using templates.
 
 * Fixed issue that lowercased template names provided with the template parameter in queries. 
 
 === Semantic Maps 0.6.5 ===
-(2010-07-26)
+(2010-07-27)
 
 ==== New features ====
 
@@ -36,7 +36,7 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 * Cleaned up the way specific parameter info is handled.
 
-* Improved the structure of the geocoding functionallity in form inputs.
+* Improved the structure of the geocoding functionality in form inputs.
 
 ==== Bug fixes ====
 
