@@ -81,6 +81,7 @@ final class SMQueryPrinters {
 			),
 			'centre' => array(
 				'aliases' => array( 'center' ),
+				'tolower' => false,
 			),
 			'forceshow' => array(
 				'type' => 'boolean',
