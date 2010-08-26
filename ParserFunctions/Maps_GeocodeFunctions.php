@@ -72,47 +72,48 @@ final class MapsGeocodeFunctions {
 		
 		$manager = new ValidatorManager();
 		
-$doGeocoding = $manager->manageParameters(
-	$args,
-	array(
-		'location' => array(
-			'required' => true
-		),
-		'mappingservice' => array(
-			'criteria' => array(
-				'in_array' => $egMapsAvailableServices
+		$doGeocoding = $manager->manageParameters(
+			$args,
+			array(
+				'location' => array(
+					'required' => true,
+					'tolower' => false
+				),
+				'mappingservice' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableServices
+					),
+					'default' => false
+				),
+				'service' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableGeoServices
+					),
+					'default' => $egMapsDefaultGeoService
+				),
+				'format' => array(
+					'criteria' => array(
+						'in_array' => $egMapsAvailableCoordNotations
+					),
+					'aliases' => array(
+						'notation'
+					),
+					'default' => $egMapsCoordinateNotation
+				),
+				'allowcoordinates' => array(
+					'type' => 'boolean',
+					'default' => $egMapsAllowCoordsGeocoding
+				),
+				'directional' => array(
+					'type' => 'boolean',
+					'default' => $egMapsCoordinateDirectional
+				),
 			),
-			'default' => false
-		),
-		'service' => array(
-			'criteria' => array(
-				'in_array' => $egMapsAvailableGeoServices
-			),
-			'default' => $egMapsDefaultGeoService
-		),
-		'format' => array(
-			'criteria' => array(
-				'in_array' => $egMapsAvailableCoordNotations
-			),
-			'aliases' => array(
-				'notation'
-			),
-			'default' => $egMapsCoordinateNotation
-		),
-		'allowcoordinates' => array(
-			'type' => 'boolean',
-			'default' => $egMapsAllowCoordsGeocoding
-		),
-		'directional' => array(
-			'type' => 'boolean',
-			'default' => $egMapsCoordinateDirectional
-		),
-	),
-	array( 'location', 'service', 'mappingservice' )
-);
-
-if ( $doGeocoding ) {
-	$parameters = $manager->getParameters( false );
+			array( 'location', 'service', 'mappingservice' )
+		);
+		
+		if ( $doGeocoding ) {
+			$parameters = $manager->getParameters( false );
 			
 			if ( self::geocoderIsAvailable() ) {
 				$geovalues = MapsGeocoder::attemptToGeocodeToString(

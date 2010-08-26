@@ -94,6 +94,7 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 			),
 			'centre' => array(
 				'aliases' => array( 'center' ),
+				'tolower' => false,
 			),
 			'title' => array(
 				'default' => $egMapsDefaultTitle
@@ -108,6 +109,7 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 			),
 			'coordinates' => array(
 				'required' => true,
+				'tolower' => false,
 				'type' => array( 'string', 'list', ';' ),
 				'aliases' => array( 'coords', 'location', 'locations', 'address', 'addresses' ),
 				'criteria' => array(
@@ -256,4 +258,5 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 		$this->centreLat = $egMapsMapLat;
 		$this->centreLon = $egMapsMapLon;
 	}
+	
 }

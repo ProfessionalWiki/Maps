@@ -54,7 +54,8 @@ function efMapsRenderCoordinates() {
 		$args,
 		array(
 			'location' => array(
-				'required' => true
+				'required' => true,
+				'tolower' => false
 			),
 			'format' => array(
 				'criteria' => array(
@@ -85,13 +86,13 @@ function efMapsRenderCoordinates() {
 		}
 		
 		$errorList = $manager->getErrorList();
-		
+
 		if ( $errorList != '' ) {
-			$output .= $errorList;
+			$output .= '<br />' . $errorList;
 		}
 	} else {
 		$output = $manager->getErrorList();
 	}
 
-	return array( $output, 'noparse' => true, 'isHTML' => true );
+	return array( $output );
 }

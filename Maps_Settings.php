@@ -148,6 +148,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 	# Boolean. Sets if geocoded addresses should be stored in a cache.
 	$egMapsEnableGeoCache = true;
+	
+	# Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
+	$egMapsInternatDirectionLabels = true;
 
 
 

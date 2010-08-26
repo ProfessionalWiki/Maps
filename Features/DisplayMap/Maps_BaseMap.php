@@ -96,6 +96,7 @@ abstract class MapsBaseMap implements iMappingParserFunction {
 			),
 			'coordinates' => array(
 				'required' => true,
+				'tolower' => false,
 				'aliases' => array( 'coords', 'location', 'address' ),
 				'criteria' => array(
 					'is_location' => array()

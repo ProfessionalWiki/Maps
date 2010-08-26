@@ -69,10 +69,12 @@ final class MapsGeoFunctions {
 			$args,
 			array(
 				'location1' => array(
-					'required' => true
+					'required' => true,
+					'tolower' => false
 				),
 				'location2' => array(
-					'required' => true
+					'required' => true,
+					'tolower' => false
 				),
 				'unit' => array(
 					'criteria' => array(
@@ -164,7 +166,8 @@ final class MapsGeoFunctions {
 			$args,
 			array(
 				'location' => array(
-					'required' => true
+					'required' => true,
+					'tolower' => false
 				),
 				'bearing' => array(
 					'type' => 'float',

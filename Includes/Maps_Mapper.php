@@ -1,21 +1,12 @@
 <?php
-/**
- * A class that holds static helper functions for common functionality that is not map-specific.
- *
- * @file Maps_Mapper.php
- * @ingroup Maps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
 
 /**
- * Class with generic mapping methods.
+ * A class that holds static helper functions for generic mapping-related functions.
  * 
  * @since 0.1
+ * 
+ * @file Maps_Mapper.php
+ * @ingroup Maps
  * 
  * @author Jeroen De Dauw
  */
@@ -252,4 +243,5 @@ final class MapsMapper {
 			),
 		);
 	}
+	
 }

@@ -1,19 +1,6 @@
 <?php
 
 /**
- * File holding class MapsCoordinateParser.
- *
- * @file Maps_CoordinateParser.php
- * @ingroup Maps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Static class for coordinate validation and parsing.
  * Supports floats, DMS, decimal degrees, and decimal minutes notations, both directional and non-directional.
  * Internal representatations are arrays with lat and lon key with float values.
@@ -26,6 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * regex to also accept dm and dd, which can give unexpected results in certain
  * usecases. The different seperator support could also be made nice.
  * 
+ * @file Maps_CoordinateParser.php
  * @ingroup Maps
  * @since 0.6
  * 
@@ -382,13 +370,26 @@ class MapsCoordinateParser {
 	 * @since 0.6
 	 */
 	protected static function initializeDirectionLabels() {
+		global $egMapsInternatDirectionLabels;
+		
 		if ( !self::$i18nDirections ) {
-			self::$i18nDirections = array(
-				'N' => wfMsgForContent( 'maps-abb-north' ),
-				'E' => wfMsgForContent( 'maps-abb-east' ),
-				'S' => wfMsgForContent( 'maps-abb-south' ),
-				'W' => wfMsgForContent( 'maps-abb-west' ),
-			);
+			if ( $egMapsInternatDirectionLabels ) {
+				self::$i18nDirections = array(
+					'N' => wfMsgForContent( 'maps-abb-north' ),
+					'E' => wfMsgForContent( 'maps-abb-east' ),
+					'S' => wfMsgForContent( 'maps-abb-south' ),
+					'W' => wfMsgForContent( 'maps-abb-west' ),
+				);				
+			}
+			else {
+				self::$i18nDirections = array(
+					'N' => 'N',
+					'E' => 'E',
+					'S' => 'S',
+					'W' => 'W',
+				);					
+			}
+
 			self::$directions = array_keys( self::$i18nDirections );
 		}
 	}
