@@ -9,6 +9,10 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 === Maps 0.6.6 ===
 (2010-08-26)
 
+=== New features ===
+
+* Added support for 'semantic' extension type, added by SMW 1.5.2 and above.
+
 ==== Refactoring ====
 
 * Use of the new MapsMappingServices class of the Maps extension instead of the globals.
