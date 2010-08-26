@@ -84,5 +84,5 @@ function efMapsRenderDistance() {
 		$output = $manager->getErrorList();
 	}
 
-	return array( $output, 'noparse' => true, 'isHTML' => true );
+	return array( $output );
 }
