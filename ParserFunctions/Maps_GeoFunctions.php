@@ -252,7 +252,7 @@ final class MapsGeoFunctions {
 			$output = $manager->getErrorList();
 		}
 		
-		return array( $output, 'noparse' => true, 'isHTML' => true );
+		return $output;
 	}
 	
 	/**
