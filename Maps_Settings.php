@@ -121,6 +121,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# one from the available services will be taken.
 	$egMapsDefaultGeoService = 'geonames';
 	
+	# Boolean. Indicates if geocoders can override the default geoservice based on
+	# the used mapping service.
 	$egMapsUserGeoOverrides = true;
 
 

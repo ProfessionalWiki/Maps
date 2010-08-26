@@ -3,16 +3,18 @@ Documentation and examples: http://mapping.referata.com/wiki/Maps
 
 == Maps change log ==
 This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every
-version of Maps. You can find the most upt-do-date version at
+version of Maps. You can find the most up-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 0.6.6 ===
-(2010-08-xx)
+(2010-08-26)
 
 ==== New features ====
 
 * Support for geocoding over proxies.
+
+* Added $egMapsInternatDirectionLabels settings, allowing users to disable internationalization of direction labels.
 
 ==== Refactoring ====
 
@@ -22,10 +24,14 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 ==== Bug fixes ====
 
-* Fixed issue that cuased popup contents to render incorrectly when it contained wiki markup.
+* Fixed issue that caused pop-up contents to render incorrectly when it contained wiki markup.
+
+* Fixed coordinate parsing bug (direction labels did not get recognized) that was introduced in 0.6.4.
+
+* Fixed spacing issues with several parser functions.
 
 === Maps 0.6.5 ===
-(2010-07-26)
+(2010-07-27)
 
 ==== Refactoring ====
 
@@ -47,7 +53,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Fixed several small coordinate parsing and formatting issues.
 
-* Fixed a few small distance arsing issues.
+* Fixed a few small distance parsing issues.
 
 === Maps 0.6.4 ===
 (2010-07-08)
