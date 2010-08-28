@@ -964,6 +964,7 @@ $messages['ig'] = array(
 
 /** Italian (Italiano)
  * @author Civvì
+ * @author Gianfranco
  * @author HalphaZ
  */
 $messages['it'] = array(
@@ -971,6 +972,7 @@ $messages['it'] = array(
 Servizi di cartografia disponibili: $1",
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
+	'maps-markers' => 'Marcatori',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
