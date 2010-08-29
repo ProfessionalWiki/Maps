@@ -93,6 +93,7 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Includes/Maps_CoordinateParser.php';
 	$wgAutoloadClasses['MapsDistanceParser'] 		= $egMapsDir . 'Includes/Maps_DistanceParser.php';
+	$wgAutoloadClasses['MapsGeoFunctions'] 		= $egMapsDir . 'Includes/Maps_GeoFunctions.php';
 	
 	// Autoload the "ParserHooks/" classes.
 	$wgAutoloadClasses['MapsCoordinates'] 			= $egMapsDir . 'ParserHooks/Maps_Coordinates.php';

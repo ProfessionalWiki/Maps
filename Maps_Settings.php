@@ -40,9 +40,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Geocoding parser functions: #geocode, #geocodelat, #geocodelon.
 		include_once $egMapsDir . 'ParserHooks/Maps_GeocodeFunctions.php';
 		
-		# Geographic functions
-		include_once $egMapsDir . 'ParserHooks/Maps_GeoFunctions.php';
-		
 		# Required for #coordinates.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
 		$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';		
