@@ -1,32 +1,18 @@
 <?php
 
-/**
- * This file contains registration for the #coordinates parser function,
- * 
- * 
- * @file Maps_Coordinates.php
- * @ingroup Maps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 $wgAutoloadClasses['MapsCoordinates'] = dirname( __FILE__ ) . '/Maps_Coordinates.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
-
-if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
-	$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';
-}
+$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';
 
 /**
  * Class for the 'coordinates' parser hooks, 
  * which can transform the notation of a set of coordinates.
  * 
  * @since 0.7
+ * 
+ * @file Maps_Coordinates.php
+ * @ingroup Maps
  * 
  * @author Jeroen De Dauw
  */

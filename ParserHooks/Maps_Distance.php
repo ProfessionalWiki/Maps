@@ -1,56 +1,67 @@
 <?php
 
+$wgAutoloadClasses['MapsMapsDistance'] = dirname( __FILE__ ) . '/Maps_MapsDistance.php';
+
+$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
+$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';
+
 /**
- * This file contains registration for the #distance parser function,
- * which can convert a distance in one unit to the equivalent in another unit.
+ * Class for the 'distance' parser hooks, 
+ * which can transform the notation of a distance.
  * 
- * @file Maps_Distance.php
+ * @since 0.7
+ * 
+ * @file Maps_Coordinates.php
  * @ingroup Maps
- *
+ * 
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
-	$wgHooks['LanguageGetMagic'][] = 'efMapsDistanceMagic';
-}
-$wgHooks['ParserFirstCallInit'][] = 'efMapsDistanceFunction';
-
-/**
- * Adds the magic words for the parser functions.
- */
-function efMapsDistanceMagic( &$magicWords, $langCode ) {
-	$magicWords['distance'] = array( 0, 'distance' );
+class MapsDistance extends ParserHook {
 	
-	return true; // Unless we return true, other parser functions won't get loaded.
-}
-
-/**
- * Adds the parser function hooks.
- */
-function efMapsDistanceFunction( &$wgParser ) {
-	// Hooks to enable the geocoding parser functions.
-	$wgParser->setFunctionHook( 'distance', 'efMapsRenderDistance' );
+	/**
+	 * No LST in pre-5.3 PHP *sigh*.
+	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
+	 */
+	public static function staticMagic( array &$magicWords, $langCode ) {
+		$className = __CLASS__;
+		$instance = new $className();
+		return $instance->magic( $magicWords, $langCode );
+	}
 	
-	return true;
-}
-
-function efMapsRenderDistance() {
-	global $egMapsDistanceUnit, $egMapsDistanceDecimals;
+	/**
+	 * No LST in pre-5.3 PHP *sigh*.
+	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
+	 */	
+	public static function staticInit( Parser &$wgParser ) {
+		$className = __CLASS__;
+		$instance = new $className();
+		return $instance->init( $wgParser );
+	}	
 	
-	$args = func_get_args();
+	/**
+	 * Gets the name of the parser hook.
+	 * @see ParserHook::getName
+	 * 
+	 * @since 0.7
+	 * 
+	 * @return string
+	 */
+	protected function getName() {
+		return 'distance';
+	}
 	
-	// We already know the $parser.
-	array_shift( $args );
-	
-	$manager = new ValidatorManager();
-	
-	$doConversion = $manager->manageParameters(
-		$args,
-		array(
+	/**
+	 * Returns an array containing the parameter info.
+	 * @see ParserHook::getParameterInfo
+	 * 
+	 * @since 0.7
+	 * 
+	 * @return array
+	 */
+	protected function getParameterInfo() {
+		global $egMapsDistanceUnit, $egMapsDistanceDecimals; 
+				
+		return array(
 			'distance' => array(
 				'required' => true
 			),
@@ -64,25 +75,41 @@ function efMapsRenderDistance() {
 				'type' => 'integer',
 				'default' => $egMapsDistanceDecimals
 			)
-		),
-		array( 'distance', 'unit', 'decimals' )
-	);	
+		);
+	}
 	
-	if ( $doConversion ) {
-		$parameters = $manager->getParameters( false );
-		
+	/**
+	 * Returns the list of default parameters.
+	 * @see ParserHook::getDefaultParameters
+	 * 
+	 * @since 0.7
+	 * 
+	 * @return array
+	 */
+	protected function getDefaultParameters() {
+		return array( 'distance', 'unit', 'decimals' );
+	}
+	
+	/**
+	 * Renders and returns the output.
+	 * @see ParserHook::render
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param array $parameters
+	 * 
+	 * @return string
+	 */
+	public function render( array $parameters ) {
 		$distanceInMeters = MapsDistanceParser::parseDistance( $parameters['distance'] );
 		
-		$errorList = $manager->getErrorList();
-		
 		if ( $distanceInMeters ) {
-			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] ) . $errorList;
+			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
 		} else {
-			$output = $errorList . wfMsgExt( 'maps_invalid_distance', 'parsemag', '<b>' . $parameters['distance'] . '</b>' );
+			$output = wfMsgExt( 'maps_invalid_distance', 'parsemag', '<b>' . $parameters['distance'] . '</b>' );
 		}
-	} else {
-		$output = $manager->getErrorList();
-	}
 
-	return array( $output );
+		return $output;
+	}
+	
 }
