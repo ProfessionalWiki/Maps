@@ -1,8 +1,12 @@
 <?php
 
+// The approximate radius of the earth in meters, according to http://en.wikipedia.org/wiki/Earth_radius.
+define( 'Maps_EARTH_RADIUS', 6371000 );
+
 /**
- * This file contains registration for the geographical coordinate functions
- * such as #geodistance for the Maps extension. 
+ * Static class containing geographical functions.
+ *
+ * @since 0.6
  * 
  * @file Maps_GeoFunctions.php
  * @ingroup Maps
@@ -11,152 +15,7 @@
  * @author Pnelnik
  * @author Matěj Grabovský
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-// The approximate radius of the earth in meters, according to http://en.wikipedia.org/wiki/Earth_radius.
-define( 'Maps_EARTH_RADIUS', 6371000 );
-
-if ( version_compare( $wgVersion, '1.16alpha', '<' ) ) {
-	$wgHooks['LanguageGetMagic'][] = 'efMapsGeoFunctionsMagic';
-}
-$wgHooks['ParserFirstCallInit'][] = 'efMapsGeoFunctions';
-
-/**
- * Adds the magic words for the parser functions.
- */
-function efMapsGeoFunctionsMagic( &$magicWords, $langCode ) {
-	$magicWords['geodistance'] = array( 0, 'geodistance' );
-	$magicWords['finddestination'] = array( 0, 'finddestination' );
-	
-	return true; // Unless we return true, other parser functions won't get loaded.
-}
-
-/**
- * Adds the parser function hooks.
- */
-function efMapsGeoFunctions( &$wgParser ) {
-	// Hooks to enable the geocoding parser functions.
-	$wgParser->setFunctionHook( 'finddestination', array( 'MapsGeoFunctions', 'renderFindDestination' ) );
-	
-	return true;
-}
-
-final class MapsGeoFunctions {
-	
-	/**
-	 * Handler for the #finddestination parser function. 
-	 * See http://mapping.referata.com/wiki/Finddestination
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param Parser $parser
-	 */
-	public static function renderFindDestination( Parser &$parser ) {
-		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
-		
-		$args = func_get_args();
-		
-		// We already know the $parser.
-		array_shift( $args );
-		
-		$manager = new ValidatorManager();
-		
-		$doCalculation = $manager->manageParameters(
-			$args,
-			array(
-				'location' => array(
-					'required' => true,
-					'tolower' => false
-				),
-				'bearing' => array(
-					'type' => 'float',
-					'required' => true
-				),
-				'distance' => array(
-					'type' => 'float',
-					'required' => true
-				),
-				'mappingservice' => array(
-					'criteria' => array(
-						'in_array' => $egMapsAvailableServices
-					),
-					'default' => false
-				),
-				'service' => array(
-					'criteria' => array(
-						'in_array' => $egMapsAvailableGeoServices
-					),
-					'default' => $egMapsDefaultGeoService
-				),
-				'format' => array(
-					'criteria' => array(
-						'in_array' => $egMapsAvailableCoordNotations
-					),
-					'aliases' => array(
-						'notation'
-					),
-					'default' => $egMapsCoordinateNotation
-				),
-				'allowcoordinates' => array(
-					'type' => 'boolean',
-					'default' => $egMapsAllowCoordsGeocoding
-				),
-				'directional' => array(
-					'type' => 'boolean',
-					'default' => $egMapsCoordinateDirectional
-				),
-			),
-			array( 'location', 'bearing', 'distance' )
-		);
-
-		if ( $doCalculation ) {
-			$parameters = $manager->getParameters( false );
-			
-			$canGeocode = MapsMapper::geocoderIsAvailable();
-			
-			if ( $canGeocode ) {
-				$location = MapsGeocoder::attemptToGeocode( $parameters['location'] );
-			} else {
-				$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
-			}
-			
-			if ( $location ) {
-				$destination = self::findDestination(
-					$location,
-					$parameters['bearing'],
-					MapsDistanceParser::parseDistance( $parameters['distance'] )
-				);
-				$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
-			} else {
-				global $egValidatorFatalLevel;
-				switch ( $egValidatorFatalLevel ) {
-					case Validator_ERRORS_NONE:
-						$output = '';
-						break;
-					case Validator_ERRORS_WARN:
-						$output = '<b>' . htmlspecialchars( wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), 1 ) ) . '</b>';
-						break;
-					case Validator_ERRORS_SHOW: default:
-						// Show an error that the location could not be geocoded or the coordinates where not recognized.
-						if ( $canGeocode ) {
-							$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $parameters['location'] ) );
-						} else {
-							$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location'] ) );
-						}
-						break;
-				}
-			}
-		} else {
-			// Either required parameters are missing, or there are errors while having a strict error level.
-			$output = $manager->getErrorList();
-		}
-		
-		return $output;
-	}
+final class MapsGeoFunctions {	
 	
 	/**
 	 * Returns the geographical distance between two coordinates.

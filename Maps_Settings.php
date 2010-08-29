@@ -51,7 +51,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';
 		# Required for #geodistance.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';			
+		$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';
+		# Required for #finddestination.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsFinddestination::staticMagic';		
 
 		
 		

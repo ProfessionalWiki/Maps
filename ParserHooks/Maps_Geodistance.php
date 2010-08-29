@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Class for the 'geodistance' parser hooks, 
- * which can transform the notation of a distance.
+ * Class for the 'geodistance' parser hooks, which can
+ * calculate the geographical distance between two points.
  * 
  * @since 0.7
  * 
