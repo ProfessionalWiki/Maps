@@ -1,17 +1,12 @@
 <?php
 
-$wgAutoloadClasses['MapsMapsDistance'] = dirname( __FILE__ ) . '/Maps_MapsDistance.php';
-
-$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
-$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';
-
 /**
  * Class for the 'distance' parser hooks, 
  * which can transform the notation of a distance.
  * 
  * @since 0.7
  * 
- * @file Maps_Coordinates.php
+ * @file Maps_Distance.php
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
@@ -106,6 +101,7 @@ class MapsDistance extends ParserHook {
 		if ( $distanceInMeters ) {
 			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
 		} else {
+			// TODO: use ParserHook class methods to handle errors
 			$output = wfMsgExt( 'maps_invalid_distance', 'parsemag', '<b>' . $parameters['distance'] . '</b>' );
 		}
 

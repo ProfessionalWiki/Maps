@@ -39,109 +39,12 @@ function efMapsGeoFunctionsMagic( &$magicWords, $langCode ) {
  */
 function efMapsGeoFunctions( &$wgParser ) {
 	// Hooks to enable the geocoding parser functions.
-	$wgParser->setFunctionHook( 'geodistance', array( 'MapsGeoFunctions', 'renderGeoDistance' ) );
 	$wgParser->setFunctionHook( 'finddestination', array( 'MapsGeoFunctions', 'renderFindDestination' ) );
 	
 	return true;
 }
 
 final class MapsGeoFunctions {
-	
-	/**
-	 * Handler for the #geodistance parser function. 
-	 * See http://mapping.referata.com/wiki/Geodistance
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param Parser $parser
-	 */
-	public static function renderGeoDistance( Parser &$parser ) {
-		global $egMapsDistanceUnit, $egMapsDistanceDecimals;
-		
-		$args = func_get_args();
-		
-		// We already know the $parser.
-		array_shift( $args );
-		
-		$manager = new ValidatorManager();
-		
-		$doCalculation = $manager->manageParameters(
-			$args,
-			array(
-				'location1' => array(
-					'required' => true,
-					'tolower' => false
-				),
-				'location2' => array(
-					'required' => true,
-					'tolower' => false
-				),
-				'unit' => array(
-					'criteria' => array(
-						'in_array' => MapsDistanceParser::getUnits()
-					),
-					'default' => $egMapsDistanceUnit
-				),
-				'decimals' => array(
-					'type' => 'integer',
-					'default' => $egMapsDistanceDecimals
-				)				
-			),
-			array( 'location1', 'location2', 'unit', 'decimals' )
-		);
-		
-		if ( $doCalculation ) {
-			$parameters = $manager->getParameters( false );
-			
-			$canGeocode = MapsMapper::geocoderIsAvailable();
-			
-			if ( $canGeocode ) {
-				$start = MapsGeocoder::attemptToGeocode( $parameters['location1'] );
-				$end = MapsGeocoder::attemptToGeocode( $parameters['location2'] );
-			} else {
-				$start = MapsCoordinateParser::parseCoordinates( $parameters['location1'] );
-				$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );
-			}
-			
-			if ( $start && $end ) {
-				$output = MapsDistanceParser::formatDistance( self::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
-				$errorList = $manager->getErrorList();
-				
-				if ( $errorList != '' ) {
-					$output .= '<br />' . $errorList;
-				}
-			} else {
-				global $egValidatorFatalLevel;
-				
-				$fails = array();
-				if ( !$start ) $fails[] = $parameters['location1'];
-				if ( !$end ) $fails[] = $parameters['location2'];
-				
-				switch ( $egValidatorFatalLevel ) {
-					case Validator_ERRORS_NONE:
-						$output = '';
-						break;
-					case Validator_ERRORS_WARN:
-						$output = '<b>' . htmlspecialchars( wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $fails ) ) ) . '</b>';
-						break;
-					case Validator_ERRORS_SHOW: default:
-						global $wgLang;
-						
-						if ( $canGeocode ) {
-							$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
-						} else {
-							$output = htmlspecialchars( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
-						}
-						break;
-				}
-			}
-		} else {
-			// One of the parameters is not provided, so display an error message.
-			$output = $manager->getErrorList();
-		}
-	 
-		return $output;
-	}
 	
 	/**
 	 * Handler for the #finddestination parser function. 

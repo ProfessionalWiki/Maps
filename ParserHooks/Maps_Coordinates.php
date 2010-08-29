@@ -1,10 +1,5 @@
 <?php
 
-$wgAutoloadClasses['MapsCoordinates'] = dirname( __FILE__ ) . '/Maps_Coordinates.php';
-
-$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
-$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';
-
 /**
  * Class for the 'coordinates' parser hooks, 
  * which can transform the notation of a set of coordinates.
@@ -112,6 +107,7 @@ class MapsCoordinates extends ParserHook {
 		if ( $parsedCoords ) {
 			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
 		} else {
+			// TODO: use ParserHook class methods to handle errors
 			$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) );
 		}
 		

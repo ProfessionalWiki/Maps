@@ -39,12 +39,19 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php';
 		# Geocoding parser functions: #geocode, #geocodelat, #geocodelon.
 		include_once $egMapsDir . 'ParserHooks/Maps_GeocodeFunctions.php';
-		# Required for #coordinates.
-		include_once $egMapsDir . 'ParserHooks/Maps_Coordinates.php';
-		# Required for #distance.
-		include_once $egMapsDir . 'ParserHooks/Maps_Distance.php';		
-		# Geographic parser functions: #geodistance, #finddestination
+		
+		# Geographic functions
 		include_once $egMapsDir . 'ParserHooks/Maps_GeoFunctions.php';
+		
+		# Required for #coordinates.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';		
+		# Required for #distance.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';
+		# Required for #geodistance.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';			
 
 		
 		

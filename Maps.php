@@ -89,10 +89,15 @@ function efMapsSetup() {
 	global $egMapsDefaultService, $egMapsAvailableServices;
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
-	// Autoload the "includes/" classes.
+	// Autoload the "Includes/" classes.
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Includes/Maps_CoordinateParser.php';
 	$wgAutoloadClasses['MapsDistanceParser'] 		= $egMapsDir . 'Includes/Maps_DistanceParser.php';
+	
+	// Autoload the "ParserHooks/" classes.
+	$wgAutoloadClasses['MapsCoordinates'] 			= $egMapsDir . 'ParserHooks/Maps_Coordinates.php';
+	$wgAutoloadClasses['MapsDistance'] 				= $egMapsDir . 'ParserHooks/Maps_Distance.php';
+	$wgAutoloadClasses['MapsGeodistance'] 			= $egMapsDir . 'ParserHooks/Maps_Geodistance.php';
 	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
