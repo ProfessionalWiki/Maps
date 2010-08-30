@@ -7,6 +7,30 @@ version of Maps. You can find the most up-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
+=== Maps 0.7 ===
+(2010-09-xx)
+
+==== New features ====
+
+* Tag support for these parser hooks (which previously only had parser function support):
+** Coordinates
+** Distance
+** Finddestination
+** Geocode
+** Geodistance
+
+==== Bug fixes ====
+
+* 
+
+==== Removed features ====
+
+* #geocodelong and #geocodelat parser functions
+
+==== Internal improvements ====
+
+* 
+
 === Maps 0.6.6 ===
 (2010-08-26)
 

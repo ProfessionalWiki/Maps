@@ -34,11 +34,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Required for #display_point and #display_points.
 		include_once $egMapsDir . 'Features/DisplayPoint/Maps_DisplayPoint.php';
 
-	# Include the additional features such geocoding and stand alone parser functions that should be loaded into Maps.
-		# Geocoding support, required for the geocoding parser functions and smart geocoding support in all other parser functions.
-		include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php';
-		# Geocoding parser functions: #geocode, #geocodelat, #geocodelon.
-		include_once $egMapsDir . 'ParserHooks/Maps_GeocodeFunctions.php';
+	# Registration of adittional parser hooks (tags and parser functions).
 		
 		# Required for #coordinates.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
@@ -46,12 +42,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Required for #distance.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
 		$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';
+		# Required for #finddestination.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsFinddestination::staticMagic';
+		# Required for #geocode.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsGeocode::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsGeocode::staticMagic';		
 		# Required for #geodistance.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
 		$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';
-		# Required for #finddestination.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsFinddestination::staticMagic';		
+		
+	# 
+		
+		# Geocoding support, required for the geocoding parser functions and smart geocoding support in all other parser functions.
+		include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php';		
 
 		
 		
