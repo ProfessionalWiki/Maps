@@ -1,27 +1,16 @@
 <?php
 
 /**
- * File holding the MapsBaseGeocoder class.
- *
- * @file Maps_BaseGeocoder.php
- * @ingroup Maps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * MapsBaseGeocoder is an abstract class inherited by the geocoding classes.
+ * Base geocoder class to be inherited by classes with a specific geocding implementation. 
  * 
+ * @since 0.7
+ * 
+ * @file Maps_Geocoder.php
  * @ingroup Maps
- * @since 0.2
  * 
  * @author Jeroen De Dauw
  */
-abstract class MapsBaseGeocoder {
+abstract class MapsGeocoder {
 	
 	/**
 	 * Returns an array containing the geocoded latitude (lat) and

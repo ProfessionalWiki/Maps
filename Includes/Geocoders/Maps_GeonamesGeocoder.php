@@ -17,7 +17,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgAutoloadClasses['MapsGeonamesGeocoder'] 	= __FILE__;
 $egMapsGeoServices['geonames'] = 'MapsGeonamesGeocoder';
 
-final class MapsGeonamesGeocoder extends MapsBaseGeocoder {
+final class MapsGeonamesGeocoder extends MapsGeocoder {
 	
 	/**
 	 * @see MapsBaseGeocoder::geocode()

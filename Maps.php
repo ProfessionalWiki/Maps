@@ -99,7 +99,7 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsDistanceParser'] 		= $incDir . 'Maps_DistanceParser.php';
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
-	$wgAutoloadClasses['MapsBaseGeocoder'] 			= $incDir . 'Maps_BaseGeocoder.php';
+	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
 	
 	// Autoload the "ParserHooks/" classes.
 	$phDir = dirname( __FILE__ ) . '/ParserHooks/';

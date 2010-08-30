@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgAutoloadClasses['MapsYahooGeocoder'] = __FILE__;
 $egMapsGeoServices['yahoo'] = 'MapsYahooGeocoder';
 
-final class MapsYahooGeocoder extends MapsBaseGeocoder {
+final class MapsYahooGeocoder extends MapsGeocoder {
 	
 	/**
 	 * @see MapsBaseGeocoder::geocode()

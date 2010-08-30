@@ -19,7 +19,7 @@ $wgAutoloadClasses['MapsGoogleGeocoder'] = __FILE__;
 $egMapsGeoServices['google'] = 'MapsGoogleGeocoder';
 $egMapsGeoOverrides['google'] = array( 'googlemaps2', 'googlemaps3' );
 
-final class MapsGoogleGeocoder extends MapsBaseGeocoder {
+final class MapsGoogleGeocoder extends MapsGeocoder {
 	
 	/**
 	 * @see MapsBaseGeocoder::geocode()
