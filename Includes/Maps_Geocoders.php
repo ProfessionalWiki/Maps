@@ -19,12 +19,11 @@ final class MapsGeocoders {
 		$egMapsGeoServices = array();
 		$egMapsGeoOverrides = array();
 		
-		$wgAutoloadClasses['MapsBaseGeocoder'] 		= dirname( __FILE__ ) . '/Maps_BaseGeocoder.php';
-		$wgAutoloadClasses['MapsGeocoder'] 			= dirname( __FILE__ ) . '/Maps_Geocoder.php';
-		
-		include_once dirname( __FILE__ ) . '/Maps_GoogleGeocoder.php'; 		// Google
-		include_once dirname( __FILE__ ) . '/Maps_YahooGeocoder.php'; 		// Yahoo!
-		include_once dirname( __FILE__ ) . '/Maps_GeonamesGeocoder.php'; 	// GeoNames
+		$geoDir = dirname( __FILE__ ) . '/Geocoders/';
+		// TODO: replace by autoloading
+		include_once $geoDir . 'Maps_GoogleGeocoder.php'; 		// Google
+		include_once $geoDir . 'Maps_YahooGeocoder.php'; 		// Yahoo!
+		include_once $geoDir . 'Maps_GeonamesGeocoder.php'; 	// GeoNames
 
 		// Remove the supported geocoding services that are not in the $egMapsAvailableGeoServices array.
 		$supportedServices = array_keys( $egMapsGeoServices );
