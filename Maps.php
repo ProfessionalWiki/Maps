@@ -90,18 +90,20 @@ function efMapsSetup() {
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
 	// Autoload the "Includes/" classes.
-	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
-	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Includes/Maps_CoordinateParser.php';
-	$wgAutoloadClasses['MapsDistanceParser'] 		= $egMapsDir . 'Includes/Maps_DistanceParser.php';
-	$wgAutoloadClasses['MapsGeoFunctions'] 			= $egMapsDir . 'Includes/Maps_GeoFunctions.php';
+	$incDir = dirname( __FILE__ ) . '/Includes/';
+	$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
+	$wgAutoloadClasses['MapsCoordinateParser'] 		= $incDir . 'Maps_CoordinateParser.php';
+	$wgAutoloadClasses['MapsDistanceParser'] 		= $incDir . 'Maps_DistanceParser.php';
+	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
+	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Geocoders/Maps_Geocoders.php';
 	
 	// Autoload the "ParserHooks/" classes.
-	$wgAutoloadClasses['MapsCoordinates'] 			= $egMapsDir . 'ParserHooks/Maps_Coordinates.php';
-	$wgAutoloadClasses['MapsDistance'] 				= $egMapsDir . 'ParserHooks/Maps_Distance.php';
-	$wgAutoloadClasses['MapsFinddestination'] 		= $egMapsDir . 'ParserHooks/Maps_Finddestination.php';
-	$wgAutoloadClasses['MapsGeocode'] 				= $egMapsDir . 'ParserHooks/Maps_Geocode.php';
-	$wgAutoloadClasses['MapsGeodistance'] 			= $egMapsDir . 'ParserHooks/Maps_Geodistance.php';
-	
+	$phDir = dirname( __FILE__ ) . '/ParserHooks/';
+	$wgAutoloadClasses['MapsCoordinates'] 			= $phDir . 'Maps_Coordinates.php';
+	$wgAutoloadClasses['MapsDistance'] 				= $phDir . 'Maps_Distance.php';
+	$wgAutoloadClasses['MapsFinddestination'] 		= $phDir . 'Maps_Finddestination.php';
+	$wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
+	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
 	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.

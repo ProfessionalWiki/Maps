@@ -53,9 +53,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';
 		
 	# 
-		
-		# Geocoding support, required for the geocoding parser functions and smart geocoding support in all other parser functions.
-		include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php';		
+	
+		$wgHooks['MappingFeatureLoad'][] = 'MapsGeocoders::initialize';
+				
 
 		
 		
