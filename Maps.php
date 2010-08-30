@@ -2,12 +2,15 @@
 
 /**
  * Initialization file for the Maps extension.
- * Extension documentation: http://www.mediawiki.org/wiki/Extension:Maps
+ * 
+ * On MediaWiki.org: 		http://www.mediawiki.org/wiki/Extension:Maps
+ * Official documentation: 	http://mapping.referata.com/wiki/Maps
+ * Examples/demo's: 		http://mapping.referata.com/wiki/Maps_examples
  *
  * @file Maps.php
  * @ingroup Maps
  *
- * @author Jeroen De Dauw
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 /**
@@ -97,7 +100,6 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsBaseGeocoder'] 			= $incDir . 'Maps_BaseGeocoder.php';
-	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';	
 	
 	// Autoload the "ParserHooks/" classes.
 	$phDir = dirname( __FILE__ ) . '/ParserHooks/';

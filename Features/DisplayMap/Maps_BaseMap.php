@@ -143,7 +143,7 @@ abstract class MapsBaseMap implements iMappingParserFunction {
 			$this->setDefaultCentre();
 		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->coordinates = MapsGeocoder::attemptToGeocode( $this->coordinates, $this->geoservice, $this->service->getName() );
+			$this->coordinates = MapsGeocoders::attemptToGeocode( $this->coordinates, $this->geoservice, $this->service->getName() );
 
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
 			if ( $this->coordinates ) {

@@ -106,8 +106,8 @@ class MapsGeodistance extends ParserHook {
 		$canGeocode = MapsMapper::geocoderIsAvailable();
 		
 		if ( $canGeocode ) {
-			$start = MapsGeocoder::attemptToGeocode( $parameters['location1'] );
-			$end = MapsGeocoder::attemptToGeocode( $parameters['location2'] );
+			$start = MapsGeocoders::attemptToGeocode( $parameters['location1'] );
+			$end = MapsGeocoders::attemptToGeocode( $parameters['location2'] );
 		} else {
 			$start = MapsCoordinateParser::parseCoordinates( $parameters['location1'] );
 			$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );

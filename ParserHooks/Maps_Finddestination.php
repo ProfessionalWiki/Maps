@@ -128,7 +128,7 @@ class MapsFinddestination extends ParserHook {
 		$canGeocode = MapsMapper::geocoderIsAvailable();
 			
 		if ( $canGeocode ) {
-			$location = MapsGeocoder::attemptToGeocode( $parameters['location'] );
+			$location = MapsGeocoders::attemptToGeocode( $parameters['location'] );
 		} else {
 			$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		}

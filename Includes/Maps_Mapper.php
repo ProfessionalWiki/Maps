@@ -43,7 +43,7 @@ final class MapsMapper {
 		}
 		
 		if ( self::geocoderIsAvailable() ) {
-			return MapsGeocoder::isLocation( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
+			return MapsGeocoders::isLocation( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
 		} else {
 			return MapsCoordinateParser::areCoordinates( $location );
 		}
@@ -179,7 +179,7 @@ final class MapsMapper {
 	 */
 	public static function geocoderIsAvailable() {
 		global $wgAutoloadClasses;
-		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
+		return array_key_exists( 'MapsGeocoders', $wgAutoloadClasses );
 	}
 	
 	/**

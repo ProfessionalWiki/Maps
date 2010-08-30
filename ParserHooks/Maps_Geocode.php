@@ -118,8 +118,8 @@ class MapsGeocode extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		if ( self::geocoderIsAvailable() ) {
-			$geovalues = MapsGeocoder::attemptToGeocodeToString(
+		if ( MapsMapper::geocoderIsAvailable() ) {
+			$geovalues = MapsGeocoders::attemptToGeocodeToString(
 				$parameters['location'],
 				$parameters['service'],
 				$parameters['mappingservice'],
@@ -136,17 +136,5 @@ class MapsGeocode extends ParserHook {
 		
 		return $output;		
 	}
-	
-	/**
-	 * Returns a boolean indicating if MapsGeocoder is available. 
-	 * 
-	 * @since 0.7
-	 * 
-	 * @return boolean
-	 */
-	private static function geocoderIsAvailable() {
-		global $wgAutoloadClasses;
-		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
-	}	
 	
 }
