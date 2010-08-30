@@ -1,26 +1,16 @@
 <?php
 
 /**
- * File holding the MapsMappingServices class.
- *
- * @file Maps_MappingServices.php
- * @ingroup Maps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * Class serving as a factory for the MapsMappingService classes.
+ * Class for interaction with MappingService objects.
  * 
  * @since 0.6.6
  * 
+ * @file Maps_MappingServices.php
+ * @ingroup Maps
+ * 
  * @author Jeroen De Dauw
  */
-class MapsMappingServices {
+final class MapsMappingServices {
 	
 	/**
 	 * Accociative array containing service identifiers as keys and the names
@@ -45,17 +35,6 @@ class MapsMappingServices {
 	 * @var array of iMappingService
 	 */
 	protected static $services = array();
-	
-/* TODO
-	// Remove all hooked in services that should not be available.
-	foreach ( $egMapsServices as $service => $data ) {
-		if ( !in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
-	}
-	$egMapsAvailableServices = array_keys( $egMapsServices );
-	
-	// Enure that the default service is one of the enabled ones.
-	$egMapsDefaultService = in_array( $egMapsDefaultService, $egMapsAvailableServices ) ? $egMapsDefaultService : $egMapsAvailableServices[0];	
- */	
 	
 	/**
 	 * Registeres a service class linked to an identifier. 
