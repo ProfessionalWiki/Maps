@@ -25,11 +25,13 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 ==== Removed features ====
 
-* #geocodelong and #geocodelat parser functions
+* #geocodelong and #geocodelat parser functions - you can obtain their functionality using #geocode.
 
 ==== Internal improvements ====
 
-* 
+* Rewrote the geocoding functionality. It's now an integral part of the extension that can not be just pulled out,
+  while the reverse is true for individual geocoders. Geocoder interaction now uses the same model as mapping
+  service interaction. 
 
 === Maps 0.6.6 ===
 (2010-08-26)
