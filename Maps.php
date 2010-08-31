@@ -101,6 +101,12 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
 	
+	// Geocoders at "Includes/Geocoders/".
+	$geoDir = $incDir . 'Geocoders/';
+	$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= $geoDir . 'Maps_GeonamesGeocoder.php';
+	$wgAutoloadClasses['MapsGoogleGeocoder'] 		= $geoDir . 'Maps_GoogleGeocoder.php';
+	$wgAutoloadClasses['MapsYahooGeocoder'] 		= $geoDir . 'Maps_YahooGeocoder.php';
+	
 	// Autoload the "ParserHooks/" classes.
 	$phDir = dirname( __FILE__ ) . '/ParserHooks/';
 	$wgAutoloadClasses['MapsCoordinates'] 			= $phDir . 'Maps_Coordinates.php';

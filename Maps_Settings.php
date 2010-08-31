@@ -52,12 +52,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
 		$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';
 		
-	# 
-	
-		$wgHooks['MappingFeatureLoad'][] = 'MapsGeocoders::initialize';
-				
-
+	# Geocoders
 		
+		$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
+		$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
+		$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
 		
 # Mapping services configuration
 # Note: You can not use aliases in the settings. Use the main service names.

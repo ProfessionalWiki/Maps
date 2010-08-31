@@ -175,11 +175,12 @@ final class MapsMapper {
 	/**
 	 * Returns a boolean indicating if MapsGeocoder is available.
 	 *
+	 * @deprecated - use MapsGeocoders::canGeocode() instead
+	 *
 	 * @return Boolean
 	 */
 	public static function geocoderIsAvailable() {
-		global $wgAutoloadClasses;
-		return array_key_exists( 'MapsGeocoders', $wgAutoloadClasses );
+		return MapsGeocoders::canGeocode();
 	}
 	
 	/**

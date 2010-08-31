@@ -13,51 +13,59 @@
 final class MapsGeocoders {
 	
 	/**
-	 * The geocoder cache, holding geocoded data when enabled.
+	 * Accociative with geoservice identifiers as keys containing instances of
+	 * the geocoder classes. 
+	 * 
+	 * Note: This list only contains the instances, so is not to be used for
+	 * looping over all available services, as not all of them are guaranteed 
+	 * to have an instance already, use $registeredServices for this purpouse.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @var array of string => MapsGeocoder
+	 */
+	protected static $geocoders = array();	
+	
+	/**
+	 * Accociative with geoservice identifiers as keys containing the class
+	 * name of the geocoders. This is used for registration of a geocoder
+	 * without immedialty instantiating it.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @var array of string => string
+	 */
+	protected static $registeredGeocoders = array();
+	
+	/**
+	 * The global geocoder cache, holding geocoded data when enabled.
 	 *
 	 * @since 0.7
 	 *
 	 * @var array
 	 */
-	private static $mGeocoderCache = array();	
+	private static $globalGeocoderCache = array();	
 	
 	/**
-	 * Initialization function for Maps geocoder functionality.
+	 * Returns if this class can do geocoding operations.
+	 * Ie. if there are any geocoders available.
 	 * 
-	 * @since 0.4
+	 * @since 0.7
 	 * 
-	 * @return true
+	 * @return boolean
 	 */
-	public static function initialize() {
-		global $wgAutoloadClasses, $egMapsDir, $egMapsGeoServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsGeoOverrides;
+	public static function canGeocode() {
+		static $canGeocode = null;
 		
-		$egMapsGeoServices = array();
-		$egMapsGeoOverrides = array();
-		
-		$geoDir = dirname( __FILE__ ) . '/Geocoders/';
-		// TODO: replace by autoloading
-		include_once $geoDir . 'Maps_GoogleGeocoder.php'; 		// Google
-		include_once $geoDir . 'Maps_YahooGeocoder.php'; 		// Yahoo!
-		include_once $geoDir . 'Maps_GeonamesGeocoder.php'; 	// GeoNames
-
-		// Remove the supported geocoding services that are not in the $egMapsAvailableGeoServices array.
-		$supportedServices = array_keys( $egMapsGeoServices );
-		foreach ( $supportedServices as $supportedService ) {
-			if ( !in_array( $supportedService, $egMapsAvailableGeoServices ) ) {
-				unset( $egMapsGeoServices[$supportedService] );
-			}
+		if ( is_null( $canGeocode ) ) {
+			// Register the geocoders.
+			wfRunHooks( 'GeocoderFirstCallInit' );
+			
+			// Determine if there are any geocoders.
+			$canGeocode = count( self::$registeredGeocoders ) > 0;
 		}
 		
-		// Re-populate the $egMapsAvailableGeoServices with it's original services that are supported. 
-		$egMapsAvailableGeoServices = array_keys( $egMapsGeoServices );
-		
-		// Enure that the default geoservice is one of the enabled ones.
-		if ( !in_array( $egMapsDefaultGeoService, $egMapsAvailableGeoServices ) ) {
-			reset( $egMapsAvailableGeoServices );
-			$egMapsDefaultGeoService = key( $egMapsAvailableGeoServices );
-		}
-		
-		return true;
+		return $canGeocode;
 	}
 	
 	/**
@@ -127,38 +135,82 @@ final class MapsGeocoders {
 	 * @since 0.7
 	 *
 	 * @param string $address
-	 * @param string $service
+	 * @param string $geoService
 	 * @param string $mappingService
 	 * 
 	 * @return array with coordinates or false
 	 */
-	public static function geocode( $address, $service = '', $mappingService = false ) {
-		global $egMapsGeoServices, $wgAutoloadClasses, $egMapsDir, $IP, $egMapsEnableGeoCache;
-		
-		// If the adress is already in the cache and the cache is enabled, return the coordinates.
-		if ( $egMapsEnableGeoCache && array_key_exists( $address, self::$mGeocoderCache ) ) {
-			return self::$mGeocoderCache[$address];
+	public static function geocode( $address, $geoService = '', $mappingService = false ) {
+		if ( !self::canGeocode() ) {
+			return false;
 		}
-
-		$service = self::getValidGeoService( $service, $mappingService );
 		
-		// Call the geocode function in the specific geocoder class.
-		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
+		$geocoder = self::getValidGeocoderInstance( $geoService, $mappingService );
+		
+		// This means there was no suitable geocoder found, so return false.
+		if ( $geocoder === false ) {
+			return false;
+		}
+		
+		if ( $geocoder->hasGlobalCacheSupport() ) {
+			$cacheResult = self::cacheRead( $address );
+	
+			// This means the cache returned an already computed set of coordinates.
+			if ( $cacheResult !== false ) {
+				return $cacheResult;
+			}				
+		}
+		
+		// Do the actual geocoding via the geocoder.
+		$coordinates = $geocoder->geocode( $address );
 		
 		// If there address could not be geocoded, and contains comma's, try again without the comma's.
 		// This is cause several geocoding services such as geonames do not handle comma's well.
 		if ( !$coordinates && strpos( $address, ',' ) !== false ) {
-			$coordinates = call_user_func(
-				array( $egMapsGeoServices[$service], 'geocode' ), str_replace( ',', '', $address )
-			);
+			$coordinates = $geocoder->geocode( str_replace( ',', '', $address ) );
 		}
+		
+		self::cacheWrite( $address, $coordinates );
+		
+		return $coordinates;
+	}
+	
+	/**
+	 * Returns already coordinates already known from previous geocoding operations,
+	 * or false if there is no match found in the cache.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param string $address
+	 * 
+	 * @return array or false
+	 */
+	protected static function cacheRead( $address ) {
+		global $egMapsEnableGeoCache;
+		
+		if ( $egMapsEnableGeoCache && array_key_exists( $address, self::$globalGeocoderCache ) ) {
+			return self::$globalGeocoderCache[$address];
+		}
+		else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Writes the geocoded result to the cache if the cache is on.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param string $address
+	 * @param array $coordinates
+	 */
+	protected static function cacheWrite( $address, array $coordinates ) {
+		global $egMapsEnableGeoCache;
 		
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
 		if ( $egMapsEnableGeoCache && $coordinates ) {
-			self::$mGeocoderCache[$address] = $coordinates;
+			self::$globalGeocoderCache[$address] = $coordinates;
 		}
-
-		return $coordinates;
 	}
 	
 	/**
@@ -180,39 +232,118 @@ final class MapsGeocoders {
 	}
 	
 	/**
-	 * Makes sure that the geo service is one of the available ones.
-	 * Also enforces licencing restrictions when no geocoding service is explicitly provided.
+	 * Registeres a geocoder linked to an identifier. 
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param string $geocoderIdentifier
+	 * @param string $geocoderClassName
+	 */
+	public static function registerGeocoder( $geocoderIdentifier, $geocoderClassName ) {
+		self::$registeredGeocoders[$geocoderIdentifier] = $geocoderClassName;
+	}
+	
+	/**
+	 * Returns the instance of the geocoder linked to the provided identifier
+	 * or the default one when it's not valid. False is returned when there
+	 * are no geocoders available.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param string $geocoderIdentifier
+	 * 
+	 * @return MapsGeocoder or false
+	 */
+	protected static function getValidGeocoderInstance( $geocoderIdentifier ) {
+		return self::getGeocoderInstance( self::getValidGeocoderIdentifier( $geocoderIdentifier ) );
+	}
+	
+	/**
+	 * Returns the instance of a geocoder. This function assumes there is a
+	 * geocoder linked to the identifier you provide - if you are not sure
+	 * it does, use getValidGeocoderInstance instead.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param string $geocoderIdentifier
+	 * 
+	 * @return MapsGeocoder or false
+	 */
+	protected static function getGeocoderInstance( $geocoderIdentifier ) {
+		if ( !array_key_exists( $geocoderIdentifier, self::$geocoders ) ) {
+			if ( array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
+				$geocoder = new self::$registeredGeocoders[$geocoderIdentifier]( $geocoderIdentifier );
+				
+				//if ( $service instanceof iMappingService ) {
+					self::$geocoders[$geocoderIdentifier] = $geocoder;
+				//}
+				//else {
+				//	throw new Exception( 'The geocoder linked to identifier ' . $geocoderIdentifier . ' does not implement .' );
+				//}
+			}
+			else {
+				throw new Exception( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
+			}
+		}
+
+		return self::$geocoders[$geocoderIdentifier];
+	}
+	
+	/**
+	 * Returns a valid geocoder idenifier. If the given one is a valid main identifier,
+	 * it will simply be returned. If it's an alias, it will be turned into the correponding
+	 * main identifier. If it's not recognized at all (or empty), the default will be used.
+	 * Only call this function when there are geocoders available, else an erro will be thrown.
+	 * 
+	 * TODO: implement overrides
 	 *
 	 * @since 0.7
 	 *
-	 * @param string $service
+	 * @param string $geocoderIdentifier
 	 * @param string $mappingService
 	 * 
-	 * @return string
+	 * @return string or false
 	 */
-	private static function getValidGeoService( $service, $mappingService ) {
-		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsGeoOverrides, $egMapsUserGeoOverrides;
+	protected static function getValidGeocoderIdentifier( $geocoderIdentifier /*, $mappingService */ ) {
+		global $egMapsDefaultGeoService, $egMapsUserGeoOverrides;
+		static $validatedDefault = false;
 		
-		if ( $service == '' ) {
-			if ( $egMapsUserGeoOverrides && $mappingService ) {
-				// If no service has been provided, check if there are overrides for the default.
-				foreach ( $egMapsAvailableGeoServices as $geoService ) {
-					if ( array_key_exists( $geoService, $egMapsGeoOverrides ) && in_array( $mappingService, $egMapsGeoOverrides[$geoService] ) )  {
-						$service = $geoService; // Use the override.
-						break;
+		// Get rid of any aliases.
+		$geocoderIdentifier = self::getMainGeocoderIndentifier( $geocoderIdentifier );		
+		
+		if ( $geocoderIdentifier == '' || !array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
+			if ( !$validatedDefault ) {
+				if ( !array_key_exists( $egMapsDefaultGeoService, self::$registeredGeocoders ) ) {
+					$egMapsDefaultGeoService = array_shift( array_keys( self::$registeredGeocoders ) );
+					if ( is_null( $egMapsDefaultGeoService ) ) {
+						throw new Exception( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
 					}
 				}
 			}
-
-			// If no overrides where applied, use the default mapping service.
-			if ( $service == '' ) $service = $egMapsDefaultGeoService;
+			
+			if ( array_key_exists( $egMapsDefaultGeoService, self::$registeredGeocoders ) ) {
+				$geocoderIdentifier = $egMapsDefaultGeoService;
+			}
+			else {
+				return false;
+			}
 		}
-		else {
-			// If a service is provided, but is not supported, use the default.
-			if ( !in_array( $service, $egMapsAvailableGeoServices ) ) $service = $egMapsDefaultGeoService;
-		}
-
-		return $service;
-	}	
+		
+		return $geocoderIdentifier;
+	}
+	
+	/**
+	 * Gets the main geocoder identifier by resolving aliases.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param string $geocoderIdentifier
+	 * 
+	 * @return string
+	 */
+	protected static function getMainGeocoderIndentifier( $geocoderIdentifier ) {
+		// TODO: implement actual function
+		return $geocoderIdentifier;
+	}
 	
 }
