@@ -54,9 +54,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 	# Geocoders
 		
+		# Registration of the GeoNames service geocoder.
 		$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
+		
+		# Registration of the Google Geocoding (v2) service geocoder.
 		$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
+		
+		# Registration of the Yahoo! Geocoding service geocoder.
 		$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
+		
+		
 		
 # Mapping services configuration
 # Note: You can not use aliases in the settings. Use the main service names.

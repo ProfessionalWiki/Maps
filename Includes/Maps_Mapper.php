@@ -81,7 +81,7 @@ final class MapsMapper {
 	 */		
 	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
-			$location = MapsGeocoder::attemptToGeocodeToString( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
+			$location = MapsGeocoders::attemptToGeocodeToString( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
 		}
@@ -173,7 +173,7 @@ final class MapsMapper {
 	}
 
 	/**
-	 * Returns a boolean indicating if MapsGeocoder is available.
+	 * Returns a boolean indicating if MapsGeocoders is available.
 	 *
 	 * @deprecated - use MapsGeocoders::canGeocode() instead
 	 *
