@@ -92,7 +92,7 @@ function efMapsSetup() {
 	global $egMapsDefaultService, $egMapsAvailableServices;
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
-	// Autoload the "Includes/" classes.
+	// Autoload the "Includes/" classes and interfaces.
 	$incDir = dirname( __FILE__ ) . '/Includes/';
 	$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $incDir . 'Maps_CoordinateParser.php';
@@ -100,6 +100,8 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
+	$wgAutoloadClasses['iMappingFeature'] 			= $incDir . 'iMappingFeature.php';
+	$wgAutoloadClasses['iMappingParserFunction'] 	= $incDir . 'iMappingParserFunction.php'; // TODO
 	
 	// Geocoders at "Includes/Geocoders/".
 	$geoDir = $incDir . 'Geocoders/';
@@ -117,10 +119,11 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
 	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
 	
-	// Load the "service/" classes and interfaces.
-	require_once $egMapsDir . 'Services/iMappingService.php';
-	$wgAutoloadClasses['MapsMappingServices'] 		= $egMapsDir . 'Services/Maps_MappingServices.php';
-	$wgAutoloadClasses['MapsMappingService'] 		= $egMapsDir . 'Services/Maps_MappingService.php';
+	// Load the "Service/" classes and interfaces.
+	$srvDir = dirname( __FILE__ ) . '/Services/';
+	$wgAutoloadClasses['iMappingService'] 			= $srvDir . 'iMappingService.php';
+	$wgAutoloadClasses['MapsMappingServices'] 		= $srvDir . 'Maps_MappingServices.php';
+	$wgAutoloadClasses['MapsMappingService'] 		= $srvDir . 'Maps_MappingService.php';
 	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
@@ -129,11 +132,6 @@ function efMapsSetup() {
 	}	
 	
 	wfRunHooks( 'MappingServiceLoad' );
-	
-	// Load the feature classes and interfaces.
-	require_once $egMapsDir . 'Includes/iMappingFeature.php';
-	include_once $egMapsDir . 'Includes/iMappingParserFunction.php';
-	
 	wfRunHooks( 'MappingFeatureLoad' );
 
 	// Creation of a list of internationalized service names.
