@@ -66,7 +66,7 @@ class MapsDisplayMap extends ParserHook {
 			),
 			'height' => array(
 				'default' => $egMapsMapHeight
-			),			
+			),
 			'mappingservice' => array(
 				'default' => $egMapsDefaultServices['display_map']
 			),
@@ -105,7 +105,16 @@ class MapsDisplayMap extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		return '';//MapsParserFunctions::getMapHtml( $parser, $args, 'display_map' );
+		// Get the instance of the service class. 
+		$service = MapsMappingServices::getValidServiceInstance( $parameters['mappingservice'], $this->getName() );
+		
+		/*
+		// Get an instance of the class handling the current parser hook and service. 
+		$mapClass = $service->getFeatureInstance( $this->getName() );
+		
+		return $mapClass->getMapHtml( $parameters );
+		*/
+		return ''; // TODO
 	}	
 		
 }

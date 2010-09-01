@@ -39,6 +39,33 @@ class MapsDisplayPoint extends ParserHook {
 	}
 	
 	/**
+	 * Formats a set of points that can have meta data provided.
+	 * 
+	 * @param string $locations
+	 * @param string $name The name of the parameter.
+	 * @param array $parameters Array containing data about the so far handled parameters.
+	 */		
+	public static function formatGeoPoints( &$locations, $name, array $parameters, $metaDataSeparator = false ) {
+		$locations = (array)$locations;
+		foreach ( $locations as &$location ) {
+			self::formatGeoPoint( $location, $name, $parameters, $metaDataSeparator );
+		}
+	}
+	
+	public static function formatGeoPoint( &$location, $name, array $parameters, $metaDataSeparator = false ) {
+		if ( $metaDataSeparator !== false ) {
+			$segments = explode( $metaDataSeparator, $location );
+		}
+		else {
+			$segments = array( $location );
+		}
+		
+		MapsMapper::formatLocation( $segments[0], $name, $parameters );
+		
+		$location = $segments;
+	}		
+	
+	/**
 	 * Gets the name of the parser hook.
 	 * @see ParserHook::getName
 	 * 
@@ -123,34 +150,15 @@ class MapsDisplayPoint extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_point' );
+		// Get the instance of the service class. 
+		$service = MapsMappingServices::getValidServiceInstance( $parameters['mappingservice'], $this->getName() );
+		/*
+		// Get an instance of the class handling the current parser hook and service. 
+		$mapClass = $service->getFeatureInstance( $this->getName() );
+		
+		return $mapClass->getMapHtml( $parameters );
+		*/
+		return ''; // TODO
 	}	
-	
-	/**
-	 * Formats a set of points that can have meta data provided.
-	 * 
-	 * @param string $locations
-	 * @param string $name The name of the parameter.
-	 * @param array $parameters Array containing data about the so far handled parameters.
-	 */		
-	public static function formatGeoPoints( &$locations, $name, array $parameters, $metaDataSeparator = false ) {
-		$locations = (array)$locations;
-		foreach ( $locations as &$location ) {
-			self::formatGeoPoint( $location, $name, $parameters, $metaDataSeparator );
-		}
-	}
-	
-	public static function formatGeoPoint( &$location, $name, array $parameters, $metaDataSeparator = false ) {
-		if ( $metaDataSeparator !== false ) {
-			$segments = explode( $metaDataSeparator, $location );
-		}
-		else {
-			$segments = array( $location );
-		}
-		
-		MapsMapper::formatLocation( $segments[0], $name, $parameters );
-		
-		$location = $segments;
-	}	
-		
+			
 }

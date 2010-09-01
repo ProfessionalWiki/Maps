@@ -125,6 +125,11 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsMappingServices'] 		= $srvDir . 'Maps_MappingServices.php';
 	$wgAutoloadClasses['MapsMappingService'] 		= $srvDir . 'Maps_MappingService.php';
 	
+	// Load the "Feature/" classes.
+	$ftDir = dirname( __FILE__ ) . '/Features/';
+	$wgAutoloadClasses['MapsBaseMap'] 				= $ftDir . 'Maps_BaseMap.php';
+	$wgAutoloadClasses['MapsBasePointMap'] 			= $ftDir . 'Maps_BasePointMap.php';
+	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {

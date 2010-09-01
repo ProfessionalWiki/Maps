@@ -10,7 +10,7 @@
  *
  * @author Jeroen De Dauw
  */
-abstract class MapsBaseMap implements iMappingParserFunction {
+abstract class MapsBaseMap {
 	
 	/**
 	 * @var iMappingService
@@ -21,11 +21,7 @@ abstract class MapsBaseMap implements iMappingParserFunction {
 
 	protected $output = '';
 
-	protected $parser;
-	
 	private $specificParameters = false;
-	protected $featureParameters = false;
-	
 	/**
 	 * Constructor.
 	 * 
@@ -79,47 +75,14 @@ abstract class MapsBaseMap implements iMappingParserFunction {
 	}
 	
 	/**
-	 * @return array
-	 */
-	public function getFeatureParameters() {
-		global $egMapsDefaultServices, $egMapsMapWidth, $egMapsMapHeight;
-		
-		return array(
-			'width' => array(
-				'default' => $egMapsMapWidth
-			),
-			'height' => array(
-				'default' => $egMapsMapHeight
-			),			
-			'mappingservice' => array(
-				'default' => $egMapsDefaultServices['display_map']
-			),
-			'coordinates' => array(
-				'required' => true,
-				'tolower' => false,
-				'aliases' => array( 'coords', 'location', 'address' ),
-				'criteria' => array(
-					'is_location' => array()
-				),
-				'output-type' => 'coordinateSet',
-			),
-		);
-	}
-	
-	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
-	 * @param Parser $parser
 	 * @param array $params
 	 * 
 	 * @return html
 	 */
-	public final function getMapHtml( Parser &$parser, array $params ) {
-		$this->parser = $parser;
-		
-		$this->featureParameters = MapsDisplayMap::$parameters;
-
+	public final function getMapHtml( array $params ) {
 		$this->setMapProperties( $params );
 		
 		$this->setCentre();

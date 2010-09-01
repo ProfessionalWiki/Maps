@@ -10,7 +10,7 @@
  *
  * @author Jeroen De Dauw
  */
-abstract class MapsBasePointMap implements iMappingParserFunction {
+abstract class MapsBasePointMap {
 	
 	/**
 	 * @var iMappingService
@@ -22,11 +22,7 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 
 	protected $output = '';
 	
-	protected $featureParameters = false;
-
 	protected $markerString;
-	
-	protected $parser;
 	
 	private $specificParameters = false;
 	private $markerData = array();
@@ -77,63 +73,14 @@ abstract class MapsBasePointMap implements iMappingParserFunction {
 	}	
 	
 	/**
-	 * @return array
-	 */
-	public function getFeatureParameters() {
-		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsMapWidth, $egMapsMapHeight;
-		
-		return array(
-			'width' => array(
-				'default' => $egMapsMapWidth
-			),
-			'height' => array(
-				'default' => $egMapsMapHeight
-			),			
-			'mappingservice' => array(
-				'default' => $egMapsDefaultServices['display_point']
-			),
-			'centre' => array(
-				'aliases' => array( 'center' ),
-				'tolower' => false,
-			),
-			'title' => array(
-				'default' => $egMapsDefaultTitle
-			),
-			'label' => array(
-				'default' => $egMapsDefaultLabel
-			),
-			'icon' => array(
-				'criteria' => array(
-					'not_empty' => array()
-				)
-			),
-			'coordinates' => array(
-				'required' => true,
-				'tolower' => false,
-				'type' => array( 'string', 'list', ';' ),
-				'aliases' => array( 'coords', 'location', 'locations', 'address', 'addresses' ),
-				'criteria' => array(
-					'are_locations' => array( '~' )
-				),
-				'output-type' => array( 'geoPoints', '~' ),
-			),
-		);
-	}
-	
-	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
-	 * @param Parser $parser
 	 * @param array $params
 	 * 
 	 * @return html
 	 */
-	public final function getMapHtml( Parser &$parser, array $params ) {
-		$this->parser = $parser;
-		
-		$this->featureParameters = MapsDisplayPoint::$parameters;
-
+	public final function getMapHtml( array $params ) {
 		$this->setMapProperties( $params );
 		
 		$this->setMarkerData();
