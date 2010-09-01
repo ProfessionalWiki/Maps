@@ -356,6 +356,16 @@ $messages['fr'] = array(
 	'semanticmaps_paramdesc_layers' => 'Les revêtements disponibles sur la carte',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'semanticmaps-unrecognizeddistance' => 'La valor $1 est pas una distance valida.',
+	'semanticmaps_lookupcoordinates' => 'Èstimar les coordonâs',
+	'semanticmaps_enteraddresshere' => 'Buchiéd l’adrèce ique',
+	'semanticmaps_notfound' => 'pas trovâ',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
