@@ -101,13 +101,6 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
 	
-		# General function support, required for #display_map and #display_point(s).
-		include_once $egMapsDir . 'Features/Maps_ParserFunctions.php'; 		
-		# Required for #display_map.
-		include_once $egMapsDir . 'Features/DisplayMap/Maps_DisplayMap.php';
-		# Required for #display_point and #display_points.
-		include_once $egMapsDir . 'Features/DisplayPoint/Maps_DisplayPoint.php';	
-	
 	// Geocoders at "Includes/Geocoders/".
 	$geoDir = $incDir . 'Geocoders/';
 	$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= $geoDir . 'Maps_GeonamesGeocoder.php';
@@ -138,7 +131,7 @@ function efMapsSetup() {
 	wfRunHooks( 'MappingServiceLoad' );
 	
 	// Load the feature classes and interfaces.
-	require_once $egMapsDir . 'Features/iMappingFeature.php';
+	require_once $egMapsDir . 'Includes/iMappingFeature.php';
 	include_once $egMapsDir . 'Includes/iMappingParserFunction.php';
 	
 	wfRunHooks( 'MappingFeatureLoad' );
