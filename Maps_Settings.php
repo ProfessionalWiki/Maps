@@ -27,18 +27,21 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Include the features you want to have available.
 	# Functionality in the features directory uses the Maps framework to support multiple mapping services.
 
-		# General function support, required for #display_map and #display_point(s).
-		include_once $egMapsDir . 'Features/Maps_ParserFunctions.php'; 		
-		# Required for #display_map.
-		include_once $egMapsDir . 'Features/DisplayMap/Maps_DisplayMap.php';
-		# Required for #display_point and #display_points.
-		include_once $egMapsDir . 'Features/DisplayPoint/Maps_DisplayPoint.php';
 
 	# Registration of adittional parser hooks (tags and parser functions).
 		
+		$egMapsFeatures['pf'][]	= 'MapsDisplayMap::initialize';
+		$egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
+		
 		# Required for #coordinates.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';		
+		$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';
+		# Required for #display_map.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsDisplayMap::staticMagic';	
+		# Required for #display_point.
+		$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayPoint::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsDisplayPoint::staticMagic';				
 		# Required for #distance.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
 		$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';

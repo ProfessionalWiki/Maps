@@ -36,7 +36,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.7 alpha-1' );
+	define( 'Maps_VERSION', '0.7 alpha-2' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -101,6 +101,13 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
 	
+		# General function support, required for #display_map and #display_point(s).
+		include_once $egMapsDir . 'Features/Maps_ParserFunctions.php'; 		
+		# Required for #display_map.
+		include_once $egMapsDir . 'Features/DisplayMap/Maps_DisplayMap.php';
+		# Required for #display_point and #display_points.
+		include_once $egMapsDir . 'Features/DisplayPoint/Maps_DisplayPoint.php';	
+	
 	// Geocoders at "Includes/Geocoders/".
 	$geoDir = $incDir . 'Geocoders/';
 	$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= $geoDir . 'Maps_GeonamesGeocoder.php';
@@ -110,26 +117,29 @@ function efMapsSetup() {
 	// Autoload the "ParserHooks/" classes.
 	$phDir = dirname( __FILE__ ) . '/ParserHooks/';
 	$wgAutoloadClasses['MapsCoordinates'] 			= $phDir . 'Maps_Coordinates.php';
+	$wgAutoloadClasses['MapsDisplayMap'] 			= $phDir . 'Maps_DisplayMap.php';
+	$wgAutoloadClasses['MapsDisplayPoint'] 			= $phDir . 'Maps_DisplayPoint.php';
 	$wgAutoloadClasses['MapsDistance'] 				= $phDir . 'Maps_Distance.php';
 	$wgAutoloadClasses['MapsFinddestination'] 		= $phDir . 'Maps_Finddestination.php';
 	$wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
 	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
 	
+	// Load the "service/" classes and interfaces.
+	require_once $egMapsDir . 'Services/iMappingService.php';
+	$wgAutoloadClasses['MapsMappingServices'] 		= $egMapsDir . 'Services/Maps_MappingServices.php';
+	$wgAutoloadClasses['MapsMappingService'] 		= $egMapsDir . 'Services/Maps_MappingService.php';
+	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
-	}
-
-	// Load the "service/" classes and interfaces.
-	require_once $egMapsDir . 'Services/iMappingService.php';
-	$wgAutoloadClasses['MapsMappingServices'] = $egMapsDir . 'Services/Maps_MappingServices.php';
-	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
+	}	
 	
 	wfRunHooks( 'MappingServiceLoad' );
 	
-	// Load the "feature/" classes and interfaces.
+	// Load the feature classes and interfaces.
 	require_once $egMapsDir . 'Features/iMappingFeature.php';
+	include_once $egMapsDir . 'Includes/iMappingParserFunction.php';
 	
 	wfRunHooks( 'MappingFeatureLoad' );
 

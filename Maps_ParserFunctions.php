@@ -12,14 +12,6 @@
  * @author Jeroen De Dauw
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-$wgAutoloadClasses['MapsParserFunctions'] = __FILE__;
-
-$wgHooks['MappingFeatureLoad'][] = 'MapsParserFunctions::initialize';
-
 /**
  * A class that holds handlers for the mapping parser functions.
  * 

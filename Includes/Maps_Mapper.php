@@ -42,8 +42,10 @@ final class MapsMapper {
 			$location = $parts[0];
 		}
 		
-		if ( self::geocoderIsAvailable() ) {
-			return MapsGeocoders::isLocation( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
+		if ( MapsGeocoders::canGeocode() ) {
+			$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
+			$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;
+			return MapsGeocoders::isLocation( $location, $geoService, $mappingService );
 		} else {
 			return MapsCoordinateParser::areCoordinates( $location );
 		}
@@ -81,7 +83,9 @@ final class MapsMapper {
 	 */		
 	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
-			$location = MapsGeocoders::attemptToGeocodeToString( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
+			$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
+			$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;			
+			$location = MapsGeocoders::attemptToGeocodeToString( $location, $geoService, $mappingService );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
 		}
@@ -215,7 +219,7 @@ final class MapsMapper {
 				'criteria' => array(
 					'in_array' => MapsMappingServices::getAllServiceValues()
 				),
-				'aliases' => array( 'service' )
+				'aliases' => array( 'service' ),
 			),
 			'geoservice' => array(
 				'criteria' => array(
