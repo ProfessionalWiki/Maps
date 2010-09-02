@@ -108,13 +108,16 @@ class MapsDisplayMap extends ParserHook {
 		// Get the instance of the service class. 
 		$service = MapsMappingServices::getValidServiceInstance( $parameters['mappingservice'], $this->getName() );
 		
-		/*
 		// Get an instance of the class handling the current parser hook and service. 
 		$mapClass = $service->getFeatureInstance( $this->getName() );
 		
-		return $mapClass->getMapHtml( $parameters );
-		*/
-		return ''; // TODO
+		if ( $mapClass === false ) {
+			return ''; // TODO
+		}
+		else {
+			return ''; // TODO
+			//return $mapClass->getMapHtml( $parameters );
+		}
 	}	
 		
 }

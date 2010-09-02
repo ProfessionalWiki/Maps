@@ -12,8 +12,6 @@
  */
 class MapsDisplayPoint extends ParserHook {
 	
-	// Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
-	
 	/**
 	 * No LST in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
@@ -88,6 +86,8 @@ class MapsDisplayPoint extends ParserHook {
 	protected function getParameterInfo() {
 		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
+		Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
+		
 		return array_merge( MapsMapper::getCommonParameters(), array(
 			// TODO
 			'width' => array(
@@ -152,13 +152,19 @@ class MapsDisplayPoint extends ParserHook {
 	public function render( array $parameters ) {
 		// Get the instance of the service class. 
 		$service = MapsMappingServices::getValidServiceInstance( $parameters['mappingservice'], $this->getName() );
-		/*
+		
 		// Get an instance of the class handling the current parser hook and service. 
 		$mapClass = $service->getFeatureInstance( $this->getName() );
 		
 		return $mapClass->getMapHtml( $parameters );
-		*/
-		return ''; // TODO
+		
+		if ( $mapClass === false ) {
+			return ''; // TODO
+		}
+		else {
+			return ''; // TODO
+			//return $mapClass->getMapHtml( $parameters );
+		}
 	}	
 			
 }
