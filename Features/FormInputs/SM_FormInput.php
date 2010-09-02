@@ -117,7 +117,7 @@ abstract class SMFormInput implements iMappingFeature {
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
-		$manager = new ValidatorManager();
+		$manager = new ValidationManager();
 
 		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
 		
