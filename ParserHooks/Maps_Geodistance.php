@@ -103,6 +103,8 @@ class MapsGeodistance extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
+		global $wgLang;
+		
 		$canGeocode = MapsMapper::geocoderIsAvailable();
 		
 		if ( $canGeocode ) {

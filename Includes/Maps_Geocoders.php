@@ -170,7 +170,9 @@ final class MapsGeocoders {
 			$coordinates = $geocoder->geocode( str_replace( ',', '', $address ) );
 		}
 		
-		self::cacheWrite( $address, $coordinates );
+		if ( $coordinates !== false ) {
+			self::cacheWrite( $address, $coordinates );
+		}
 		
 		return $coordinates;
 	}
