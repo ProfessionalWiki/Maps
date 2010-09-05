@@ -48,7 +48,8 @@ class MapsGoogleMaps extends MapsMappingService {
 		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
 		
-		Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );		
+		// TODO
+		//Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );		
 		
 		$allowedTypes = self::getTypeNames();
 		

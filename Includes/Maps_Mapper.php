@@ -17,9 +17,11 @@ final class MapsMapper {
 	 * or formatting functions are handled.
 	 */
 	public static function initialize() {
+		/* TODO
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
 		Validator::addValidationFunction( 'is_location', array( __CLASS__, 'isLocation' ) );
 		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );
+		*/
 
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
 		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
