@@ -54,11 +54,6 @@ else {
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	unset( $useExtensionPath );
 
-	// To ensure Maps remains compatible with pre 1.16.
-	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
-		$wgAutoloadClasses['Html'] = $egMapsDir . 'Compat/Html.php';
-	}
-
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
 	$egMapsFeatures = array();
@@ -110,7 +105,7 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsYahooGeocoder'] 		= $geoDir . 'Maps_YahooGeocoder.php';
 	
 	// Autoload the "ParserHooks/" classes.
-	$phDir = dirname( __FILE__ ) . '/ParserHooks/';
+	$phDir = $incDir . '/parserHooks/';
 	$wgAutoloadClasses['MapsCoordinates'] 			= $phDir . 'Maps_Coordinates.php';
 	$wgAutoloadClasses['MapsDisplayMap'] 			= $phDir . 'Maps_DisplayMap.php';
 	$wgAutoloadClasses['MapsDisplayPoint'] 			= $phDir . 'Maps_DisplayPoint.php';
@@ -120,13 +115,13 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
 	
 	// Load the "Service/" classes and interfaces.
-	$srvDir = dirname( __FILE__ ) . '/Services/';
+	$srvDir = $incDir . '/services/';
 	$wgAutoloadClasses['iMappingService'] 			= $srvDir . 'iMappingService.php';
 	$wgAutoloadClasses['MapsMappingServices'] 		= $srvDir . 'Maps_MappingServices.php';
 	$wgAutoloadClasses['MapsMappingService'] 		= $srvDir . 'Maps_MappingService.php';
 	
 	// Load the "Feature/" classes.
-	$ftDir = dirname( __FILE__ ) . '/Features/';
+	$ftDir = $incDir . '/features/';
 	$wgAutoloadClasses['MapsBaseMap'] 				= $ftDir . 'Maps_BaseMap.php';
 	$wgAutoloadClasses['MapsBasePointMap'] 			= $ftDir . 'Maps_BasePointMap.php';
 	
@@ -134,6 +129,11 @@ function efMapsSetup() {
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
+	}
+	
+	// To ensure Maps remains compatible with pre 1.16.
+	if ( !array_key_exists( 'Html', $wgAutoloadClasses ) ) {
+		$wgAutoloadClasses['Html'] = $egMapsDir . 'Compat/Html.php';
 	}	
 	
 	wfRunHooks( 'MappingServiceLoad' );
