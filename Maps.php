@@ -88,7 +88,7 @@ function efMapsSetup() {
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
 	// Autoload the "Includes/" classes and interfaces.
-	$incDir = dirname( __FILE__ ) . '/Includes/';
+	$incDir = dirname( __FILE__ ) . '/includes/';
 	$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $incDir . 'Maps_CoordinateParser.php';
 	$wgAutoloadClasses['MapsDistanceParser'] 		= $incDir . 'Maps_DistanceParser.php';
