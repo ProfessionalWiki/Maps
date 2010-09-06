@@ -272,7 +272,7 @@ class MapsGoogleMaps extends MapsMappingService {
 		
 		return array(
 			Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ),
-			Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
+			Html::linkedScript( "$egMapsScriptPath/includes/services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
 			Html::inlineScript( 'window.unload = GUnload;' )
 		);
 	}

@@ -154,7 +154,7 @@ class MapsYahooMaps extends MapsMappingService {
 		
 		return array(
 			Html::linkedScript( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" ),
-			Html::linkedScript( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
+			Html::linkedScript( "$egMapsScriptPath/includes/services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
 		);		
 	}	
 	
