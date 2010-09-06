@@ -85,9 +85,10 @@ final class MapsMapper {
 	 */		
 	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
-			$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
-			$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;			
-			$location = MapsGeocoders::attemptToGeocodeToString( $location, $geoService, $mappingService );
+			// TODO
+			//$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
+			//$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;			
+			$location = MapsGeocoders::attemptToGeocodeToString( $location/*, $geoService, $mappingService*/ );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
 		}
