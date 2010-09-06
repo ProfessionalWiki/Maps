@@ -133,7 +133,7 @@ function efMapsSetup() {
 	
 	// To ensure Maps remains compatible with pre 1.16.
 	if ( !array_key_exists( 'Html', $wgAutoloadClasses ) ) {
-		$wgAutoloadClasses['Html'] = $egMapsDir . 'Compat/Html.php';
+		$wgAutoloadClasses['Html'] = $egMapsDir . 'compat/Html.php';
 	}	
 	
 	wfRunHooks( 'MappingServiceLoad' );
