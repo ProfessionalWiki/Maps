@@ -97,6 +97,9 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
 	$wgAutoloadClasses['iMappingFeature'] 			= $incDir . 'iMappingFeature.php';
 	$wgAutoloadClasses['iMappingParserFunction'] 	= $incDir . 'iMappingParserFunction.php'; // TODO
+	$wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
+	$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
+	$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';	
 	
 	// Geocoders at "Includes/Geocoders/".
 	$geoDir = $incDir . 'geocoders/';
@@ -113,12 +116,6 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsFinddestination'] 		= $phDir . 'Maps_Finddestination.php';
 	$wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
 	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
-	
-	// Load the "Service/" classes and interfaces.
-	$srvDir = $incDir . '/services/';
-	$wgAutoloadClasses['iMappingService'] 			= $srvDir . 'iMappingService.php';
-	$wgAutoloadClasses['MapsMappingServices'] 		= $srvDir . 'Maps_MappingServices.php';
-	$wgAutoloadClasses['MapsMappingService'] 		= $srvDir . 'Maps_MappingService.php';
 	
 	// Load the "Feature/" classes.
 	$ftDir = $incDir . '/features/';
