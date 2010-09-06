@@ -87,7 +87,7 @@ function efMapsSetup() {
 	global $egMapsDefaultService, $egMapsAvailableServices;
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
-	// Autoload the "Includes/" classes and interfaces.
+	// Autoload the "includes/" classes and interfaces.
 	$incDir = dirname( __FILE__ ) . '/includes/';
 	$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $incDir . 'Maps_CoordinateParser.php';
@@ -101,13 +101,22 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
 	$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';	
 	
-	// Geocoders at "Includes/Geocoders/".
+	// Autoload the "includes/criteria/" classes.
+	$criDir = $incDir . 'criteria/';
+	$wgAutoloadClasses['CriterionAreLocations'] 	= $criDir . 'CriterionAreLocations.php';	
+	
+	// Autoload the "includes/features/" classes.
+	$ftDir = $incDir . '/features/';
+	$wgAutoloadClasses['MapsBaseMap'] 				= $ftDir . 'Maps_BaseMap.php';
+	$wgAutoloadClasses['MapsBasePointMap'] 			= $ftDir . 'Maps_BasePointMap.php';	
+	
+	// Autoload the "includes/geocoders/" classes.
 	$geoDir = $incDir . 'geocoders/';
 	$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= $geoDir . 'Maps_GeonamesGeocoder.php';
 	$wgAutoloadClasses['MapsGoogleGeocoder'] 		= $geoDir . 'Maps_GoogleGeocoder.php';
 	$wgAutoloadClasses['MapsYahooGeocoder'] 		= $geoDir . 'Maps_YahooGeocoder.php';
 	
-	// Autoload the "ParserHooks/" classes.
+	// Autoload the "includes/parserHooks/" classes.
 	$phDir = $incDir . '/parserHooks/';
 	$wgAutoloadClasses['MapsCoordinates'] 			= $phDir . 'Maps_Coordinates.php';
 	$wgAutoloadClasses['MapsDisplayMap'] 			= $phDir . 'Maps_DisplayMap.php';
@@ -116,12 +125,7 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsFinddestination'] 		= $phDir . 'Maps_Finddestination.php';
 	$wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
 	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
-	
-	// Load the "Feature/" classes.
-	$ftDir = $incDir . '/features/';
-	$wgAutoloadClasses['MapsBaseMap'] 				= $ftDir . 'Maps_BaseMap.php';
-	$wgAutoloadClasses['MapsBasePointMap'] 			= $ftDir . 'Maps_BasePointMap.php';
-	
+
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {

@@ -75,7 +75,7 @@ class MapsDisplayMap extends ParserHook {
 				'tolower' => false,
 				'aliases' => array( 'coords', 'location', 'address' ),
 				'criteria' => array(
-					'is_location' => array()
+					new CriterionAreLocations()
 				),
 				'output-type' => 'coordinateSet',
 			),
