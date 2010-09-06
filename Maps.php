@@ -99,7 +99,7 @@ function efMapsSetup() {
 	$wgAutoloadClasses['iMappingParserFunction'] 	= $incDir . 'iMappingParserFunction.php'; // TODO
 	
 	// Geocoders at "Includes/Geocoders/".
-	$geoDir = $incDir . 'Geocoders/';
+	$geoDir = $incDir . 'geocoders/';
 	$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= $geoDir . 'Maps_GeonamesGeocoder.php';
 	$wgAutoloadClasses['MapsGoogleGeocoder'] 		= $geoDir . 'Maps_GoogleGeocoder.php';
 	$wgAutoloadClasses['MapsYahooGeocoder'] 		= $geoDir . 'Maps_YahooGeocoder.php';
