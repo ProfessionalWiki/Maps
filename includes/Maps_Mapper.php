@@ -24,7 +24,7 @@ final class MapsMapper {
 		*/
 
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
-		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
+		Validator::addOutputFormat( 'coordinateset', array( __CLASS__, 'formatLocation' ) );
 	}
 	
 	/**
