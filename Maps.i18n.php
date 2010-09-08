@@ -355,6 +355,7 @@ $messages['ce'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
 	'maps-abb-south' => 'J',
@@ -362,6 +363,7 @@ $messages['cs'] = array(
 	'maps-latitude' => 'Zeměpisná šířka:',
 	'maps-longitude' => 'Zeměpisná délka:',
 	'maps_overlays' => 'Překryvné vrstvy',
+	'maps_wikipedia' => 'Wikipedie',
 );
 
 /** German (Deutsch)
@@ -1930,6 +1932,7 @@ $messages['zh-hans'] = array(
 	'maps-abb-west' => '西',
 	'maps-latitude' => '纬度：',
 	'maps-longitude' => '经度：',
+	'maps_wikipedia' => '维基百科',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
