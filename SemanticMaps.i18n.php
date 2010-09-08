@@ -1029,6 +1029,7 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'semanticmaps_lookupcoordinates' => '查找坐标',
+	'semanticmaps_notfound' => '未找到',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
