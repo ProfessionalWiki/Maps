@@ -19,61 +19,12 @@ final class MapsMapper {
 	public static function initialize() {
 		/* TODO
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
-		Validator::addValidationFunction( 'is_location', array( __CLASS__, 'isLocation' ) );
-		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );
 		*/
 
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
 		Validator::addOutputFormat( 'coordinateset', array( __CLASS__, 'formatLocation' ) );
 	}
 	
-	/**
-	 * Returns if the value is a location.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param string $location
-	 * @param string $name The name of the parameter.
-	 * @param array $parameters Array containing data about the so far handled parameters.
-	 * 
-	 * @return boolean
-	 */
-	public static function isLocation( $location, $name, array $parameters, $metaDataSeparator = false ) {
-		if ( $metaDataSeparator !== false ) {
-			$parts = explode( $metaDataSeparator, $location );
-			$location = $parts[0];
-		}
-		
-		if ( MapsGeocoders::canGeocode() ) {
-			$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
-			$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;
-			return MapsGeocoders::isLocation( $location, $geoService, $mappingService );
-		} else {
-			return MapsCoordinateParser::areCoordinates( $location );
-		}
-	}
-
-	/**
-	 * Returns if the values are a locations.
-	 * 
-	 * @param string $locations
-	 * @param string $name The name of the parameter.
-	 * @param array $parameters Array containing data about the so far handled parameters.
-	 * 
-	 * @return boolean
-	 */	
-	public static function areLocations( $locations, $name, array $parameters, $metaDataSeparator = false ) {
-		$locations = (array)$locations;
-		
-		foreach ( $locations as $location ) {
-			if ( !self::isLocation( $location, $name, $parameters, $metaDataSeparator ) ) {
-				return false;
-			}
-		}
-		
-		return true;
-	}
-
 	/**
 	 * Formats a location to a coordinate set in a certain representation.
 	 * 
@@ -239,13 +190,13 @@ final class MapsMapper {
 			),
 			'width' => array(
 				'criteria' => array(
-					'is_map_dimension' => array( 'width' ),
+					new CriterionMapDimension( 'width' )
 				),
 				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
 			),
 			'height' => array(
 				'criteria' => array(
-					'is_map_dimension' => array( 'height' ),
+					new CriterionMapDimension( 'height' )
 				),
 				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
 			),

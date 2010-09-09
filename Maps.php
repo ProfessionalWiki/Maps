@@ -103,7 +103,8 @@ function efMapsSetup() {
 	
 	// Autoload the "includes/criteria/" classes.
 	$criDir = $incDir . 'criteria/';
-	$wgAutoloadClasses['CriterionAreLocations'] 	= $criDir . 'CriterionAreLocations.php';	
+	$wgAutoloadClasses['CriterionAreLocations'] 	= $criDir . 'CriterionAreLocations.php';
+	$wgAutoloadClasses['CriterionMapDimension'] 	= $criDir . 'CriterionMapDimension.php';
 	
 	// Autoload the "includes/features/" classes.
 	$ftDir = $incDir . '/features/';

@@ -13,12 +13,21 @@
  */
 class CriterionAreLocations extends ParameterCriterion {
 	
+	/**
+	 * In some usecases, the parameter values will contain extra location
+	 * metadata, which should be ignored here. This field holds the delimiter
+	 * used to seperata this data from the actual location. 
+	 * 
+	 * @since 0.7
+	 * 
+	 * @var string
+	 */
 	protected $metaDataSeparator;
 	
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.4
+	 * @since 0.7
 	 */
 	public function __construct( $metaDataSeparator = false ) {
 		parent::__construct();
