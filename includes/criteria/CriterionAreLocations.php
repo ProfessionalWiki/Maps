@@ -11,7 +11,7 @@
  * 
  * @author Jeroen De Dauw
  */
-class CriterionAreLocations extends ParameterCriterion {
+class CriterionAreLocations extends ItemParameterCriterion {
 	
 	/**
 	 * In some usecases, the parameter values will contain extra location
@@ -36,9 +36,9 @@ class CriterionAreLocations extends ParameterCriterion {
 	}
 	
 	/**
-	 * @see ParameterCriterion::validate
+	 * @see ItemParameterCriterion::validate
 	 */	
-	public function validate( $value ) {
+	protected function doValidation( $value ) {
 		if ( $this->metaDataSeparator !== false ) {
 			$parts = explode( $this->metaDataSeparator, $value );
 			$value = $parts[0];
@@ -54,5 +54,20 @@ class CriterionAreLocations extends ParameterCriterion {
 			return MapsCoordinateParser::areCoordinates( $value );
 		}
 	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getItemErrorMessage( $value ) {
+		return wfMsgExt( '', 'parsemag', $value );
+	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getListErrorMessage( array $value ) {
+		global $wgLang;
+		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+	}	
 	
 }

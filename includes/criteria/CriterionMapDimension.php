@@ -11,7 +11,7 @@
  * 
  * @author Jeroen De Dauw
  */
-class CriterionMapDimension extends ParameterCriterion {
+class CriterionMapDimension extends ItemParameterCriterion {
 	
 	/**
 	 * Indicates if the prarameter is for width or height.
@@ -34,9 +34,9 @@ class CriterionMapDimension extends ParameterCriterion {
 	}
 	
 	/**
-	 * @see ParameterCriterion::validate
+	 * @see ItemParameterCriterion::validate
 	 */	
-	public function validate( $value ) {
+	protected function doValidation( $value ) {
 		global $egMapsSizeRestrictions;
 
 		// See if the notation is valid.
@@ -64,5 +64,20 @@ class CriterionMapDimension extends ParameterCriterion {
 
 		return $number >= $min && $number <= $max;
 	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getItemErrorMessage( $value ) {
+		return wfMsgExt( '', 'parsemag', $value );
+	}
+	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getListErrorMessage( array $value ) {
+		global $wgLang;
+		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+	}	
 	
 }
