@@ -155,39 +155,61 @@ final class MapsMapper {
 	public static function getCommonParameters() {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
 
-		return array(
-			'mappingservice' => array(
-				'criteria' => array(
-					'in_array' => MapsMappingServices::getAllServiceValues()
-				),
-				'aliases' => array( 'service' ),
-			),
-			'geoservice' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableGeoServices
-				),
-				'dependencies' => array( 'mappingservice' ),
-			),
-			'zoom' => array(
-				'type' => 'integer',
-				'criteria' => array(
-					'not_empty' => array()
-				),
-				'default' => 'null'
-			),
-			'width' => array(
-				'criteria' => array(
-					new CriterionMapDimension( 'width' )
-				),
-				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
-			),
-			'height' => array(
-				'criteria' => array(
-					new CriterionMapDimension( 'height' )
-				),
-				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
-			),
+		$params = array();
+		
+		$params['mappingservice'] = new Parameter(
+			'mappingservice', 
+			Parameter::TYPE_STRING,
+			null,
+			array( 'service' ),
+			array(
+				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
+			)
 		);
+		
+		$params['geoservice'] = new Parameter(
+			'geoservice', 
+			Parameter::TYPE_STRING,
+			null,
+			array( 'service' ),
+			array(
+				new CriterionInArray( $egMapsAvailableGeoServices ),
+			),
+			array( 'mappingservice' )
+		);
+		
+		$params['zoom'] = new Parameter(
+			'zoom', 
+			Parameter::TYPE_INTEGER,
+			null,
+			array( 'service' )
+		);
+		
+		$params['width'] = new Parameter(
+			'width', 
+			Parameter::TYPE_STRING,
+			null,
+			array(),
+			array(
+				new CriterionMapDimension( 'width' ),
+			)
+		);
+
+		$params['width']->outputTypes = array( 'mapdimension', 'width', $egMapsMapWidth );
+		
+		$params['height'] = new Parameter(
+			'height', 
+			Parameter::TYPE_STRING,
+			null,
+			array(),
+			array(
+				new CriterionMapDimension( 'height' ),
+			)
+		);
+
+		$params['width']->outputTypes = array( 'mapdimension', 'height', $egMapsMapHeight );
+		
+		return $params;
 	}
 	
 }
