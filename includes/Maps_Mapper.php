@@ -13,19 +13,6 @@
 final class MapsMapper {
 	
 	/**
-	 * Initialization function. Needs to be called before parameters using Maps defined validation
-	 * or formatting functions are handled.
-	 */
-	public static function initialize() {
-		/* TODO
-		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
-		*/
-
-		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
-		Validator::addOutputFormat( 'coordinateset', array( __CLASS__, 'formatLocation' ) );
-	}
-	
-	/**
 	 * Formats a location to a coordinate set in a certain representation.
 	 * 
 	 * @since 0.6

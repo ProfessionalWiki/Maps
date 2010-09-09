@@ -85,7 +85,7 @@ else {
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
 	global $egMapsDefaultService, $egMapsAvailableServices;
-	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
+	global $egMapsDir, $egMapsUseMinJs;
 
 	// Autoload the "includes/" classes and interfaces.
 	$incDir = dirname( __FILE__ ) . '/includes/';
@@ -158,9 +158,8 @@ function efMapsSetup() {
 		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList ),
 	);
 
-	MapsMapper::initialize();
-
-	$egMapsJsExt = $egMapsUseMinJs ? '.min.js' : '.js';
+	Validator::addOutputFormat( 'mapdimension', array( 'MapsMapper', 'setMapDimension' ) );
+	Validator::addOutputFormat( 'coordinateset', array( 'MapsMapper', 'formatLocation' ) );
 
 	return true;
 }

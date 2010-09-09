@@ -266,13 +266,13 @@ class MapsGoogleMaps extends MapsMappingService {
 	 */
 	protected function getDependencies() {
 		global $wgLang;
-		global $egGoogleMapsKey, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
+		global $egGoogleMapsKey, $egMapsStyleVersion, $egMapsScriptPath;
 		
 		$langCode = self::getMappedLanguageCode( $wgLang->getCode() ); 
 		
 		return array(
 			Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ),
-			Html::linkedScript( "$egMapsScriptPath/includes/services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
+			Html::linkedScript( "$egMapsScriptPath/includes/services/GoogleMaps/GoogleMapFunctions.js?$egMapsStyleVersion" ),
 			Html::inlineScript( 'window.unload = GUnload;' )
 		);
 	}

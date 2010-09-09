@@ -169,13 +169,13 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 */
 	protected function getDependencies() {
 		global $wgLang;
-		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
+		global $egMapsStyleVersion, $egMapsScriptPath;
 
 		$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
 		
 		return array(
 			Html::linkedScript( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" ),
-			Html::linkedScript( "$egMapsScriptPath/includes/services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" ),
+			Html::linkedScript( "$egMapsScriptPath/includes/services/GoogleMaps3/GoogleMap3Functions.js?$egMapsStyleVersion" ),
 		);			
 	}
 	
