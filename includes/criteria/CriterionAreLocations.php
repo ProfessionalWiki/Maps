@@ -58,16 +58,16 @@ class CriterionAreLocations extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
-	protected function getItemErrorMessage( $value ) {
-		return wfMsgExt( '', 'parsemag', $value );
+	protected function getItemErrorMessage( Parameter $parameter ) {
+		return wfMsgExt( '', 'parsemag', $parameter->value );
 	}
 	
-	/**
-	 * @see ItemParameterCriterion::getItemErrorMessage
+		/**
+	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
-	protected function getListErrorMessage( array $value ) {
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {
 		global $wgLang;
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $value ), count( $value ) );
+		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
 	}	
 	
 }
