@@ -1010,11 +1010,22 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'semanticmaps_desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples thử xem]).
 Các dịch vụ bản đồ có sẵn: $1',
+	'semanticmaps-unrecognizeddistance' => 'Giá trị $1 không phải là tầm hợp lệ.',
 	'semanticmaps_lookupcoordinates' => 'Tra tọa độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
 	'semanticmaps_notfound' => 'không tìm thấy',
+	'semanticmaps_paramdesc_format' => 'Dịch vụ cung cấp bản đồ',
+	'semanticmaps_paramdesc_geoservice' => 'Dịch vụ mã hóa địa lý được sử dụng để tính ra tọa độ của địa chỉ',
+	'semanticmaps_paramdesc_height' => 'Chiều cao của bản đồ bằng điểm ảnh (mặc định là $1)',
+	'semanticmaps_paramdesc_width' => 'Chiều rộng của bản đồ bằng điểm ảnh (mặc định là $1)',
 	'semanticmaps_paramdesc_zoom' => 'Mức độ thu phóng của bản đồ',
-	'semanticmaps_paramdesc_overlays' => 'Các lớp có sẵn trên bản đồ',
+	'semanticmaps_paramdesc_centre' => 'Tọa độ của trung tâm bản đồ',
+	'semanticmaps_paramdesc_controls' => 'Các điều khiển nằm trên bản đồ',
+	'semanticmaps_paramdesc_types' => 'Các chế độ có sẵn dành cho bản đồ',
+	'semanticmaps_paramdesc_type' => 'Chế độ mặc định của bản đồ',
+	'semanticmaps_paramdesc_overlays' => 'Các lấp có sẵn trên bản đồ',
+	'semanticmaps_paramdesc_autozoom' => 'Bánh xe chuột có thu phóng hay không',
+	'semanticmaps_paramdesc_layers' => 'Các lớp có sẵn trên bản đồ',
 );
 
 /** Volapük (Volapük)
