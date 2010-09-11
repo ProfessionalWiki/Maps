@@ -90,12 +90,6 @@ class MapsDisplayPoint extends ParserHook {
 		
 		return array_merge( MapsMapper::getCommonParameters(), array(
 			// TODO
-			'width' => array(
-				'default' => $egMapsMapWidth
-			),
-			'height' => array(
-				'default' => $egMapsMapHeight
-			),			
 			'mappingservice' => array(
 				'default' => $egMapsDefaultServices['display_point']
 			),

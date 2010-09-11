@@ -170,8 +170,8 @@ final class MapsMapper {
 		$params['geoservice'] = new Parameter(
 			'geoservice', 
 			Parameter::TYPE_STRING,
-			null,
-			array( 'service' ),
+			$egMapsDefaultGeoService,
+			array(),
 			array(
 				new CriterionInArray( $egMapsAvailableGeoServices ),
 			),
@@ -181,33 +181,35 @@ final class MapsMapper {
 		$params['zoom'] = new Parameter(
 			'zoom', 
 			Parameter::TYPE_INTEGER,
-			null,
+			10, // TODO
 			array( 'service' )
 		);
 		
 		$params['width'] = new Parameter(
 			'width', 
 			Parameter::TYPE_STRING,
-			null,
+			$egMapsMapWidth,
 			array(),
 			array(
 				new CriterionMapDimension( 'width' ),
 			)
 		);
 
-		$params['width']->outputTypes = array( 'mapdimension', 'width', $egMapsMapWidth );
-		
+		// TODO
+		$params['width']->outputTypes = array( 'mapdimension' => array( 'mapdimension', 'width', $egMapsMapWidth ) );
+
 		$params['height'] = new Parameter(
 			'height', 
 			Parameter::TYPE_STRING,
-			null,
+			$egMapsMapHeight,
 			array(),
 			array(
 				new CriterionMapDimension( 'height' ),
 			)
 		);
 
-		$params['width']->outputTypes = array( 'mapdimension', 'height', $egMapsMapHeight );
+		// TODO
+		$params['height']->outputTypes = array( 'mapdimension' => array( 'mapdimension', 'height', $egMapsMapWidth ) );
 		
 		return $params;
 	}
