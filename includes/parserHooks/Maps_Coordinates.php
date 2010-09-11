@@ -57,26 +57,38 @@ class MapsCoordinates extends ParserHook {
 		global $egMapsAvailableServices, $egMapsAvailableCoordNotations;
 		global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
 		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
-				
-		return array(
-			'location' => array(
-				'required' => true,
-				'tolower' => false
-			),
-			'format' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableCoordNotations
-				),
-				'aliases' => array(
-					'notation'
-				),
-				'default' => $egMapsCoordinateNotation
-			),
-			'directional' => array(
-				'type' => 'boolean',
-				'default' => $egMapsCoordinateDirectional
-			)
+		
+		$params = array();
+		
+		$params['location'] = new Parameter(
+			'location',
+			Parameter::TYPE_STRING,
+			null,
+			array(),
+			array(
+				new CriterionIsLocation(),
+			)			
 		);
+		
+		$params['location']->lowerCaseValue = false;
+		
+		$params['format'] = new Parameter(
+			'format',
+			Parameter::TYPE_STRING,
+			$egMapsCoordinateNotation,
+			array( 'notation' ),
+			array(
+				new CriterionInArray( $egMapsAvailableCoordNotations ),
+			)			
+		);		
+		
+		$params['directional'] = new Parameter(
+			'directional',
+			Parameter::TYPE_BOOLEAN,
+			$egMapsCoordinateDirectional			
+		);		
+		
+		return $params;
 	}
 	
 	/**

@@ -5,13 +5,13 @@
  * 
  * @since 0.7
  * 
- * @file CriterionAreLocations.php
+ * @file CriterionIsLocation.php
  * @ingroup Maps
  * @ingroup Criteria
  * 
  * @author Jeroen De Dauw
  */
-class CriterionAreLocations extends ItemParameterCriterion {
+class CriterionIsLocation extends ItemParameterCriterion {
 	
 	/**
 	 * In some usecases, the parameter values will contain extra location
@@ -43,12 +43,11 @@ class CriterionAreLocations extends ItemParameterCriterion {
 			$parts = explode( $this->metaDataSeparator, $value );
 			$value = $parts[0];
 		}
-		
+
 		if ( MapsGeocoders::canGeocode() ) {
 			// TODO
 			//$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
 			//$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;
-			
 			return MapsGeocoders::isLocation( $value/*, $geoService, $mappingService */ );
 		} else {
 			return MapsCoordinateParser::areCoordinates( $value );
@@ -59,10 +58,10 @@ class CriterionAreLocations extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( '', 'parsemag', $parameter->value );
+		return wfMsgExt( 'validation-error-invalid-location', 'parsemag', $parameter->getOriginalName() );
 	}
 	
-		/**
+	/**
 	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
 	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {

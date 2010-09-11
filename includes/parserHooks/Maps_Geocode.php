@@ -118,6 +118,7 @@ class MapsGeocode extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
+		var_dump($parameters);exit;
 		if ( MapsGeocoders::canGeocode() ) {
 			$geovalues = MapsGeocoders::attemptToGeocodeToString(
 				$parameters['location'],
