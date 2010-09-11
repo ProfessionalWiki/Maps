@@ -1,11 +1,12 @@
 <?php
 
-require_once 'PHPUnit\Framework\TestCase.php';
+require_once 'PHPUnit/Framework/TestCase.php';
 
 // Trick MW into thinking this is a command line script.
 // This is obviously not a good approach, as it will not work on other setups then my own.
 unset( $_SERVER['REQUEST_METHOD'] );
 $argv = array( 'over9000failz' );
+( include dirname(__FILE__) . '/../../../phase3/maintenance/commandLine.inc' ) or
 require_once '../../../smw/maintenance/commandLine.inc';
 
 /**
