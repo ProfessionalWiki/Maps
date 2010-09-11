@@ -69,7 +69,7 @@ class CriterionMapDimension extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( '', 'parsemag', $parameter->value );
+		return wfMsgExt( "validation-error-invalid-$this->dimension", 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**

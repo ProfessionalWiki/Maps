@@ -120,7 +120,7 @@ class MapsDisplayPoint extends ParserHook {
 				'type' => array( 'string', 'list', ';' ),
 				'aliases' => array( 'coords', 'location', 'locations', 'address', 'addresses' ),
 				'criteria' => array(
-					new CriterionAreLocations( '~' )
+					new CriterionIsLocation( '~' )
 				),
 				'output-type' => array( 'geoPoints', '~' ),
 			),

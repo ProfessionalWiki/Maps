@@ -23,7 +23,11 @@ Available mapping services: $1",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
 	'maps-markers' => 'Markers',
+
+	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
+	'validation-error-invalid-width' => 'Parameter $1 must be a valid width.',
+	'validation-error-invalid-height' => 'Parameter $1 must be a valid height.',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
