@@ -383,7 +383,7 @@ Verfügbare Kartografie-Dienste: $1',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
 	'maps-markers' => 'Markierungen',
-	'validation-error-invalid-location' => 'Parameter $1 muss eine gültiger Standort sein.',
+	'validation-error-invalid-location' => 'Parameter $1 muss ein gültiger Standort sein.',
 	'validation-error-invalid-width' => 'Parameter $1 muss eine gültige Breite sein.',
 	'validation-error-invalid-height' => 'Parameter $1 muss eine gültige Länge sein.',
 	'maps-abb-north' => 'N',
@@ -863,11 +863,16 @@ $messages['ht'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author Glanthor Reviol
+ * @author Misibacsi
  */
 $messages['hu'] = array(
 	'maps_desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://mapping.referata.com/wiki/Maps_examples demó]). Elérhető térképszolgáltatások: $1',
 	'maps_map' => 'Térkép',
 	'maps-loading-map' => 'Térkép betöltése…',
+	'maps-markers' => 'Markerek',
+	'validation-error-invalid-location' => 'A $1 paraméternek valós helynek kell lennie.',
+	'validation-error-invalid-width' => 'A $1 paraméternek valós szélességnek kell lennie.',
+	'validation-error-invalid-height' => 'A $1 paraméternek valós magasságnak kell lennie.',
 	'maps-abb-north' => 'É',
 	'maps-abb-east' => 'K',
 	'maps-abb-south' => 'D',
@@ -883,6 +888,7 @@ $1',
 	'maps_unrecognized_coords' => 'A következő {{PLURAL:$2|koordinátát|koordinátákat}} nem sikerült felismerni: $1.',
 	'maps_unrecognized_coords_for' => 'A következő {{PLURAL:$2|koordinátát|koordinátákat}} nem sikerült felismerni, és el {{PLURAL:$2|lett|lettek}} távolítva a térképről: $1',
 	'maps_map_cannot_be_displayed' => 'A térképet nem sikerült megjeleníteni.',
+	'maps_invalid_distance' => 'A $1 paraméter nem valós távolság.',
 	'maps-geocoder-not-available' => 'A térképek kiterjesztés geokódoló funkciója nem elérhető. A tartózkodási helyed nem geokódolható.',
 	'maps_click_to_activate' => 'Kattints a térkép aktiválásához',
 	'maps_centred_on' => 'Térkép középre igazítva a következő koordináták alapján: $1, $2.',
@@ -903,6 +909,8 @@ Servicios cartographic disponibile: $1',
 	'maps-loading-map' => 'Cargamento del carta…',
 	'maps-markers' => 'Marcatores',
 	'validation-error-invalid-location' => 'Le parametro $1 debe esser un loco valide.',
+	'validation-error-invalid-width' => 'Le parametro $1 debe esser un latitude valide.',
+	'validation-error-invalid-height' => 'Le parametro $1 debe esser un altitude valide.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1016,6 +1024,7 @@ Servizi di cartografia disponibili: $1",
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Yanajin66
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -1023,6 +1032,9 @@ $messages['ja'] = array(
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中…',
 	'maps-markers' => 'マーカー',
+	'validation-error-invalid-location' => 'パラメータ$1は有効な場所でなければなりません。',
+	'validation-error-invalid-width' => 'パラメータ$1は有効な幅でなければなりません。',
+	'validation-error-invalid-height' => 'パラメータ$1は有効な高さでなければなりません。',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '東',
 	'maps-abb-south' => '南',
@@ -1196,6 +1208,8 @@ $messages['mk'] = array(
 	'maps-loading-map' => 'Ја вчитувам картата...',
 	'maps-markers' => 'Обележувачи',
 	'validation-error-invalid-location' => 'Параметарот $1 мора да претставува важечка местоположба.',
+	'validation-error-invalid-width' => 'Параметарот $1 мора да претставува важечка ширина.',
+	'validation-error-invalid-height' => 'Параметарот $1 мора да претставува важечка висина.',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ј',
@@ -1261,6 +1275,7 @@ $messages['nah'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Kjell
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1270,6 +1285,8 @@ Beschikbare kaartdiensten: $1',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
 	'maps-markers' => 'Markeringen',
 	'validation-error-invalid-location' => 'Parameter $1 moet een geldige locatie zijn.',
+	'validation-error-invalid-width' => 'Parameter $1 moet een geldige breedte zijn.',
+	'validation-error-invalid-height' => 'Parameter $1 moet een geldige hoogte zijn.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'Z',
@@ -1441,6 +1458,9 @@ $messages['pms'] = array(
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
 	'maps-markers' => 'Marcador',
+	'validation-error-invalid-location' => 'Ël paràmetr $1 a deuv esse na locassion bon-a.',
+	'validation-error-invalid-width' => 'Ël paràmetr $1 a deuv esse na larghëssa bon-a.',
+	'validation-error-invalid-height' => 'Ël paràmetr $1 a deuv esse na autëssa bon-a.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1530,6 +1550,9 @@ Serviços de mapeamento disponíveis: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
 	'maps-markers' => 'Marcadores',
+	'validation-error-invalid-location' => 'O parâmetro $1 deve ser uma localização válida.',
+	'validation-error-invalid-width' => 'O parâmetro $1 deve ser uma largura válida.',
+	'validation-error-invalid-height' => 'O parâmetro $1 deve ser uma altura válida.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'S',
@@ -1612,6 +1635,9 @@ $messages['ru'] = array(
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
 	'maps-markers' => 'Отметки',
+	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
+	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
+	'validation-error-invalid-height' => 'Параметр $1 должен быть корректной высотой.',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'В',
 	'maps-abb-south' => 'Ю',
