@@ -59,21 +59,26 @@ class MapsDisplayMap extends ParserHook {
 	protected function getParameterInfo() {
 		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices;
 		
-		return array_merge( MapsMapper::getCommonParameters(), array(
-			// TODO
-			'mappingservice' => array(
-				'default' => $egMapsDefaultServices['display_map']
-			),
-			'coordinates' => array(
-				'required' => true,
-				'tolower' => false,
-				'aliases' => array( 'coords', 'location', 'address' ),
-				'criteria' => array(
-					new CriterionIsLocation()
-				),
-				'output-type' => 'coordinateSet',
-			),
-		) );	
+		$params = MapsMapper::getCommonParameters();
+		
+		$params['mappingservice']->default = $egMapsDefaultServices['display_map'];
+		
+		$params['coordinates'] = new Parameter(
+			'coordinates', 
+			Parameter::TYPE_STRING,
+			null,
+			array( 'coords', 'location', 'address' ),
+			array(
+				new CriterionIsLocation(),
+			)
+		);
+		
+		$params['coordinates']->lowerCaseValue = false;
+		
+		// TODO
+		$params['coordinates']->outputTypes = array( 'coordinateSet' => array( 'coordinateSet' ) );		
+		
+		return $params;
 	}
 	
 	/**
