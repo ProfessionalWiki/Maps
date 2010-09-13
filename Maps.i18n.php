@@ -300,6 +300,9 @@ Dostupne usluge mapa: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavam kartu...',
 	'maps-markers' => 'Markeri',
+	'validation-error-invalid-location' => 'Parametar $1 mora biti valjana lokacija.',
+	'validation-error-invalid-width' => 'Parametar $1 mora biti valjana širina.',
+	'validation-error-invalid-height' => 'Parametar $1 mora biti valjana visina.',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'I',
 	'maps-abb-south' => 'J',
@@ -525,6 +528,7 @@ $messages['eo'] = array(
  * @author Locos epraix
  * @author Pertile
  * @author Peter17
+ * @author Sanbec
  * @author Translationista
  */
 $messages['es'] = array(
@@ -532,6 +536,9 @@ $messages['es'] = array(
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
 	'maps-markers' => 'Marcadores',
+	'validation-error-invalid-location' => 'El parámetro $1 deber ser una ubicación válida.',
+	'validation-error-invalid-width' => 'El parámetro $1 debe ser un ancho válido.',
+	'validation-error-invalid-height' => 'El parámetro $1 deber ser una altura válida.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -624,6 +631,7 @@ $1',
  * @author McDutchie
  * @author Peter17
  * @author PieRRoMaN
+ * @author Sherbrooke
  * @author Verdy p
  */
 $messages['fr'] = array(
@@ -633,6 +641,9 @@ Services de cartographie disponibles : $1',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
 	'maps-markers' => 'Marqueurs',
+	'validation-error-invalid-location' => 'Le paramètre $1 doit être un emplacement valide.',
+	'validation-error-invalid-width' => "Le paramètre $1 doit être d'une largeur valide.",
+	'validation-error-invalid-height' => 'Le paramètre $1 doit être une hauteur valide.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1144,6 +1155,9 @@ $messages['lb'] = array(
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-markers' => 'Markéierungen',
+	'validation-error-invalid-location' => 'Parameter $1 muss eng valabel Plaz sinn.',
+	'validation-error-invalid-width' => 'Parameter $1 muss eng valabel Breet sinn.',
+	'validation-error-invalid-height' => 'Parameter $1 muss eng valabel Héicht sinn.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
@@ -1512,6 +1526,9 @@ Serviços de cartografia disponíveis: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'A carregar o mapa...',
 	'maps-markers' => 'Marcadores',
+	'validation-error-invalid-location' => 'O parâmetro $1 tem de ser uma localização válida.',
+	'validation-error-invalid-width' => 'O parâmetro $1 tem de ser uma largura válida.',
+	'validation-error-invalid-height' => 'O parâmetro $1 tem de ser uma altura válida.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
