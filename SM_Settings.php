@@ -26,9 +26,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
 	
 		# Query printers
-		include_once $smgDir . 'includes/features/QueryPrinters/SM_QueryPrinters.php';
+		include_once $smgDir . 'includes/queryprinters/SM_QueryPrinters.php';
 		# Form imputs
-		include_once $smgDir . 'includes/features/FormInputs/SM_FormInputs.php'; 
+		include_once $smgDir . 'includes/forminputs/SM_FormInputs.php'; 
 
 
 
