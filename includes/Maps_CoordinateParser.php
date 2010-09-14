@@ -314,10 +314,10 @@ class MapsCoordinateParser {
 	 */
 	public static function areDMSCoordinates( $coordinates ) {
 		$sep = self::getSeparatorsRegex();
-		return preg_match( '/^(-)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)'
-			. $sep . '(-)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)$/i', $coordinates ) // Non-directional
-			|| preg_match( '/^(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(N|S)'
-			. $sep . '(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,2}(″|"))?)(E|W)$/i', $coordinates ); // Directional
+		return preg_match( '/^(-)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,20}(″|"))?)'
+			. $sep . '(-)?(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,20}(″|"))?)$/i', $coordinates ) // Non-directional
+			|| preg_match( '/^(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,20}(″|"))?)(N|S)'
+			. $sep . '(\d{1,3}°)(\d{1,2}(\′|\'))?((\d{1,2}(″|"))?|(\d{1,2}\.\d{1,20}(″|"))?)(E|W)$/i', $coordinates ); // Directional
 	}
 
 	/**
