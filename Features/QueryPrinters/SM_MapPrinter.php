@@ -297,7 +297,6 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 							$label
 						);
 						
-						
 						$text = $parser->parse( '{{' . implode( '|', $segments ) . '}}', $wgTitle, new ParserOptions() )->getText();
 					}
 

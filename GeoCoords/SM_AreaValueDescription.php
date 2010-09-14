@@ -1,33 +1,29 @@
 <?php
 
 /**
- * File holding the SMAreaValueDescription class.
- * 
- * @file SM_AreaValueDescription.php
- * @ingroup SemanticMaps
- * 
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Description of a geographical area defined by a coordinates set and a distance to the bounds.
  * The bounds are a 'rectangle' (but bend due to the earhs curvature), as the resulting query
  * would otherwise be to resource intensive.
  *
+ * @since 0.6
+ *
+ * @file SM_AreaValueDescription.php
+ * @ingroup SemanticMaps
+ *
  * @author Jeroen De Dauw
  * 
  * TODO: would be awesome to use Spatial Extensions to select coordinates
- * 
- * @since 0.6
- * 
- * @ingroup SemanticMaps
  */
 class SMAreaValueDescription extends SMWValueDescription {
-	protected $mBounds = false;
+	
+	/**
+	 * Associative array containing the bounds of the area, or false when not set.
+	 * 
+	 * @since 0.6
+	 * 
+	 * @var mixed
+	 */
+	protected $bounds = false;
 
 	/**
 	 * Constructor.
@@ -56,7 +52,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @param string $radius
 	 */
 	protected function calculateBounds( SMGeoCoordsValue $dataValue, $radius ) {
-		$this->mBounds = self::getBoundingBox(
+		$this->bounds = self::getBoundingBox(
 			$dataValue->getCoordinateSet(),
 			MapsDistanceParser::parseDistance( $radius )
 		);		
@@ -106,7 +102,7 @@ class SMAreaValueDescription extends SMWValueDescription {
      * @return array
      */
     public function getBounds() {
-    	return $this->mBounds;
+    	return $this->bounds;
     }    
 	
 	/**
@@ -134,16 +130,12 @@ class SMAreaValueDescription extends SMWValueDescription {
 			return false;
 		}
 		
-		$boundingBox = $this->getBounds();
-		
-		$north = $dbs->addQuotes( $boundingBox['north'] );
-		$east = $dbs->addQuotes( $boundingBox['east'] );
-		$south = $dbs->addQuotes( $boundingBox['south'] );
-		$west = $dbs->addQuotes( $boundingBox['west'] );
+		$north = $dbs->addQuotes( $this->bounds['north'] );
+		$east = $dbs->addQuotes( $this->bounds['east'] );
+		$south = $dbs->addQuotes( $this->bounds['south'] );
+		$west = $dbs->addQuotes( $this->bounds['west'] );
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
-		
-		
 		
 		if ( $smgUseSpatialExtensions ) {
 			// TODO
