@@ -111,7 +111,7 @@ final class SMQueryPrinters {
 			'limit' => array(
 				'type' => 'integer',
 				'criteria' => array(
-					'in_range' => array( 0 )
+					'in_range' => array( 0, false )
 				)
 			),
 			'offset' => array(

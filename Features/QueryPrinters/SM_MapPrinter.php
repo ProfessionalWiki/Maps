@@ -1,7 +1,7 @@
 <?php
 
 /**
- * File holding abstract class SMMapPrinter.
+ * Abstract class that provides the common functionality for all map query printers.
  *
  * @file SM_MapPrinter.php
  * @ingroup SemanticMaps
@@ -9,22 +9,6 @@
  * @author Jeroen De Dauw
  * @author Robert Buzink
  * @author Yaron Koren
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * Abstract class that provides the common functionality for all map query printers.
- *
- * @ingroup SemanticMaps
- *
- * @author Jeroen De Dauw
- * @author Robert Buzink
- * @author Yaron Koren
- * 
- * The adaptor pattern could be used to prevent this.
  */
 abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature {
 
@@ -66,11 +50,6 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @var string
 	 */	
 	protected $output = '';
-	
-	/**
-	 * @var string
-	 */	
-	protected $errorList;
 
 	/**
 	 * @var array
@@ -161,7 +140,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 			}
 		}
 
-		return array( $this->output . $this->errorList, 'noparse' => true, 'isHTML' => true );
+		return array( $this->output, 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**
@@ -184,15 +163,18 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
-		$manager = new ValidationManager();
+		$this->validator = new Validator( $this->getName() );
 		
-		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
+		$this->validator->setParameters( $mapProperties, $parameterInfo );
 		
+		$this->validator->validateParameters();
+		
+		$showMap = $this->validator->hasFatalError();
+			
 		if ( $showMap ) {
-			$this->setMapProperties( $manager->getParameters( false ) );
+			$this->validator->formatParameters();
+			$this->setMapProperties( $this->validator->getParameterValues() );
 		}
-		
-		$this->errorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
