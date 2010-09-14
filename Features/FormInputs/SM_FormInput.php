@@ -43,11 +43,6 @@ abstract class SMFormInput implements iMappingFeature {
 	protected $markerCoords;
 	
 	/**
-	 * @var string
-	 */
-	protected $errorList;
-	
-	/**
 	 * Parameters specific to this feature.
 	 * 
 	 * @var mixed
@@ -117,12 +112,16 @@ abstract class SMFormInput implements iMappingFeature {
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
-		$manager = new ValidationManager();
-
-		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
+		$validator = new Validator( 'form' ); // TODO
 		
+		$validator->setParameters( $mapProperties, $parameterInfo );
+		
+		$validator->validateParameters();
+		
+		$showMap = $validator->hasFatalError();
+
 		if ( $showMap ) {
-			$parameters = $manager->getParameters( false );
+			$parameters = $validator->getParameterValues();
 			
 			foreach ( $parameters as $paramName => $paramValue ) {
 				if ( !property_exists( __CLASS__, $paramName ) ) {
@@ -134,8 +133,6 @@ abstract class SMFormInput implements iMappingFeature {
 				}
 			}
 		}
-		
-		$this->errorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -156,7 +153,7 @@ abstract class SMFormInput implements iMappingFeature {
 		$showInput = $this->setMapProperties( $field_args );
 		
 		if ( !$showInput ) {
-			return array( $this->errorList );
+			return array( '' );
 		}
 		
 		$this->setCoordinates();

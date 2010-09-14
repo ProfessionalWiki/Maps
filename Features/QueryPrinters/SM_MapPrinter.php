@@ -163,17 +163,17 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
-		$this->validator = new Validator( $this->getName() );
+		$validator = new Validator( $this->getName() );
 		
-		$this->validator->setParameters( $mapProperties, $parameterInfo );
+		$validator->setParameters( $mapProperties, $parameterInfo );
 		
-		$this->validator->validateParameters();
+		$validator->validateParameters();
 		
-		$showMap = $this->validator->hasFatalError();
+		$showMap = $validator->hasFatalError();
 			
 		if ( $showMap ) {
-			$this->validator->formatParameters();
-			$this->setMapProperties( $this->validator->getParameterValues() );
+			$validator->formatParameters();
+			$this->setMapProperties( $validator->getParameterValues() );
 		}
 		
 		return $showMap;
