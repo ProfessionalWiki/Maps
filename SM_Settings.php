@@ -1,7 +1,7 @@
 <?php
 
 /**
- * File defining the settings for the Semantic Maps extension
+ * File defining the settings for the Semantic Maps extension.
  * More info can be found at http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Settings
  *
  *                          NOTICE:
