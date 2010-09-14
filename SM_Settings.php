@@ -26,9 +26,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
 	
 		# Query printers
-		include_once $smgDir . 'Features/QueryPrinters/SM_QueryPrinters.php';
+		include_once $smgDir . 'includes/features/QueryPrinters/SM_QueryPrinters.php';
 		# Form imputs
-		include_once $smgDir . 'Features/FormInputs/SM_FormInputs.php'; 
+		include_once $smgDir . 'includes/features/FormInputs/SM_FormInputs.php'; 
 
 
 
@@ -37,11 +37,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Include the mapping services that should be loaded into Semantic Maps. 
 	# Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
 	# Google Maps API v2
-	include_once $smgDir . 'Services/GoogleMaps/SM_GoogleMaps.php';
+	include_once $smgDir . 'includes/services/GoogleMaps/SM_GoogleMaps.php';
 	# OpenLayers API
-	include_once $smgDir . 'Services/OpenLayers/SM_OpenLayers.php';
+	include_once $smgDir . 'includes/services/OpenLayers/SM_OpenLayers.php';
 	# Yahoo! Maps API
-	include_once $smgDir . 'Services/YahooMaps/SM_YahooMaps.php';
+	include_once $smgDir . 'includes/services/YahooMaps/SM_YahooMaps.php';
 
 	# Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
 	# Each service needs to be enabled, if not, the first one from the available services will be taken.

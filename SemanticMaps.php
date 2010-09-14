@@ -35,7 +35,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.7 alpha-1' );
+	define( 'SM_VERSION', '0.7 alpha-2' );
 
 	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$smgScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';	
@@ -45,16 +45,35 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
 	$smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
 
 	// Include the settings file.
-	require_once( $smgDir . 'SM_Settings.php' );
+	require_once 'SM_Settings.php';
 
 	$wgExtensionFunctions[] = 'smfSetup';
 
-	$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';
-
 	$wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
-
-	// Include the GeoCoords related functionality.
-	require_once( $smgDir . '/GeoCoords/SM_GeoCoords.php' );
+	
+	$incDir = dirname( __FILE__ ) . '/includes/';
+	
+	// Data values
+	$wgAutoloadClasses['SMGeoCoordsValue'] 				= $incDir . 'SM_GeoCoordsValue.php';
+	
+	// Value descriptions
+	$wgAutoloadClasses['SMGeoCoordsValueDescription'] 	= $incDir . 'SM_GeoCoordsValueDescription.php';
+	$wgAutoloadClasses['SMAreaValueDescription'] 		= $incDir . 'SM_AreaValueDescription.php';
+	
+	// Hook for initializing the Geographical Coordinate type.
+	$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
+	
+	// Hook for initializing the field types needed by Geographical Coordinates.
+	$wgHooks['SMWCustomSQLStoreFieldType'][] = 'SMGeoCoordsValue::initGeoCoordsFieldTypes';
+	
+	// Hook for defining a table to store geographical coordinates in.
+	$wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
+	
+	// Hook for defining the default query printer for queries that ask for geographical coordinates.
+	$wgHooks['SMWResultFormat'][] = 'SMGeoCoordsValue::addGeoCoordsDefaultFormat';	
+	
+	// Hook for adding a Semantic Maps links to the Admin Links extension.
+	$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';	
 }
 
 /**
