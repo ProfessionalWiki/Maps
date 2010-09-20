@@ -8,11 +8,6 @@
  *
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 abstract class SMFormInput implements iMappingFeature {
 
 	/**

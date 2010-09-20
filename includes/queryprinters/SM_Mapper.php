@@ -1,18 +1,13 @@
 <?php
 
 /**
- * General map query printer class
+ * General map query printer class.
  *
  * @file SM_Mapper.php
  * @ingroup SemanticMaps
  *
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 final class SMMapper {
 	
 	/**

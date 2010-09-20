@@ -1,28 +1,16 @@
 <?php
-/**
- * File holding the SMGeoCoordsValue class.
- * 
- * @file SM_GeoCoordsValue.php
- * @ingroup SMWDataValues
- * @ingroup SemanticMaps
- * 
- * @author Jeroen De Dauw
- * @author Markus Krötzsch
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
 
 /**
  * Implementation of datavalues that are geographic coordinates.
- *
- * @author Jeroen De Dauw
- * @author Markus Krötzsch
  * 
  * @since 0.6
  * 
+ * @file SM_GeoCoordsValue.php
  * @ingroup SemanticMaps
+ * @ingroup SMWDataValues
+ * 
+ * @author Jeroen De Dauw
+ * @author Markus Krötzsch
  */
 class SMGeoCoordsValue extends SMWDataValue {
 
