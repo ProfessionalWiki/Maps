@@ -12,13 +12,16 @@ if ( count( $_REQUEST ) ) {
 if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
+	$IP = false;
 	foreach( array( '../../../phase3', '../../../smw' ) as $rel ) {
 		if ( file_exists( dirname( __FILE__ ) . "/$rel/maintenance/commandLine.inc" ) ) {
 			$IP = dirname( __FILE__ ) . "/$rel";
 			break;
 		}
 	}
-	die( 'maintenance/commandLine.inc not found' );
+	if ( !$IP ) {
+		die( 'maintenance/commandLine.inc not found' );
+	}
 }
 require( "$IP/maintenance/commandLine.inc" );
 
