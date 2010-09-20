@@ -18,6 +18,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 			break;
 		}
 	}
+	die( 'maintenance/commandLine.inc not found' );
 }
 require( "$IP/maintenance/commandLine.inc" );
 
