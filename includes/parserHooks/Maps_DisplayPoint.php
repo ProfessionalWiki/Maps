@@ -126,12 +126,16 @@ class MapsDisplayPoint extends ParserHook {
 			$egMapsDefaultTitle
 		);
 		
+		$params['title']->lowerCaseValue = false;
+		
 		$params['label'] = new Parameter(
 			'label',
 			Parameter::TYPE_STRING,
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
+		
+		$params['label']->lowerCaseValue = false;
 		
 		$params['icon'] = new Parameter(
 			'icon',
@@ -141,7 +145,9 @@ class MapsDisplayPoint extends ParserHook {
 			array(
 				New CriterionNotEmpty()
 			)
-		);			
+		);	
+
+		$params['icon']->lowerCaseValue = false;
 		
 		return $params;
 	}
