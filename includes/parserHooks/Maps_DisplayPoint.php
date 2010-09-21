@@ -86,39 +86,64 @@ class MapsDisplayPoint extends ParserHook {
 	protected function getParameterInfo() {
 		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
+		// TODO
 		Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
 		
-		return array_merge( MapsMapper::getCommonParameters(), array(
-			// TODO
-			'mappingservice' => array(
-				'default' => $egMapsDefaultServices['display_point']
-			),
-			'centre' => array(
-				'aliases' => array( 'center' ),
-				'tolower' => false,
-			),
-			'title' => array(
-				'default' => $egMapsDefaultTitle
-			),
-			'label' => array(
-				'default' => $egMapsDefaultLabel
-			),
-			'icon' => array(
-				'criteria' => array(
-					'not_empty' => array()
-				)
-			),
-			'coordinates' => array(
-				'required' => true,
-				'tolower' => false,
-				'type' => array( 'string', 'list', ';' ),
-				'aliases' => array( 'coords', 'location', 'locations', 'address', 'addresses' ),
-				'criteria' => array(
-					new CriterionIsLocation( '~' )
-				),
-				'output-type' => array( 'geoPoints', '~' ),
-			),
-		) );
+		$params = MapsMapper::getCommonParameters();
+		
+		$params['mappingservice']->default = $egMapsDefaultServices['display_point'];
+		
+		$params['coordinates'] = new Parameter(
+			'coordinates', 
+			Parameter::TYPE_STRING,
+			null,
+			array( 'coords', 'location', 'locations', 'address', 'addresses' ),
+			array(
+				new CriterionIsLocation(),
+			)
+		);
+		
+		$params['coordinates']->lowerCaseValue = false;
+		
+		// TODO
+		$params['coordinates']->outputTypes = array( 'coordinateSet' => array( 'coordinateSet', '~' ) );	
+
+		$params['centre'] = new Parameter(
+			'centre',
+			Parameter::TYPE_STRING,
+			'', // TODO
+			array( 'center' ),
+			array(
+				new CriterionIsLocation(),
+			)			
+		);
+		
+		$params['centre']->lowerCaseValue = false;
+		
+		$params['title'] = new Parameter(
+			'title',
+			Parameter::TYPE_STRING,
+			$egMapsDefaultTitle
+		);
+		
+		$params['label'] = new Parameter(
+			'label',
+			Parameter::TYPE_STRING,
+			$egMapsDefaultLabel,
+			array( 'text' )
+		);
+		
+		$params['icon'] = new Parameter(
+			'icon',
+			Parameter::TYPE_STRING,
+			'', // TODO
+			array(),
+			array(
+				New CriterionNotEmpty()
+			)
+		);			
+		
+		return $params;
 	}
 	
 	/**
