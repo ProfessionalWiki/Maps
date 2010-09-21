@@ -1691,7 +1691,7 @@ $1',
 	'maps_webcams' => 'Веб-камеры',
 );
 
-/** Rusyn (русиньскый язык)
+/** Rusyn (Русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
