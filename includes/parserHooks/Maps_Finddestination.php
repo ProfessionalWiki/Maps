@@ -57,49 +57,73 @@ class MapsFinddestination extends ParserHook {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
 		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;	 
 		
-		return array(
-			'location' => array(
-				'required' => true,
-				'tolower' => false
-			),
-			'bearing' => array(
-				'type' => 'float',
-				'required' => true
-			),
-			'distance' => array(
-				'type' => 'float',
-				'required' => true
-			),
-			'mappingservice' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableServices
-				),
-				'default' => false
-			),
-			'service' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableGeoServices
-				),
-				'default' => $egMapsDefaultGeoService
-			),
-			'format' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableCoordNotations
-				),
-				'aliases' => array(
-					'notation'
-				),
-				'default' => $egMapsCoordinateNotation
-			),
-			'allowcoordinates' => array(
-				'type' => 'boolean',
-				'default' => $egMapsAllowCoordsGeocoding
-			),
-			'directional' => array(
-				'type' => 'boolean',
-				'default' => $egMapsCoordinateDirectional
-			),
+		$params = array();
+		
+		$params['location'] = new Parameter(
+			'location',
+			Parameter::TYPE_STRING,
+			null,
+			array(),
+			array(
+				new CriterionIsLocation(),
+			)			
 		);
+
+		$params['location']->lowerCaseValue = false;
+		
+		$params['bearing'] = new Parameter(
+			'bearing',
+			Parameter::TYPE_FLOAT
+		);
+		
+		$params['distance'] = new Parameter(
+			'distance'
+			// TODO: add distance criterion
+		);
+		
+		$params['mappingservice'] = new Parameter(
+			'mappingservice', 
+			Parameter::TYPE_STRING,
+			'', // TODO
+			array(),
+			array(
+				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
+			)
+		);
+		
+		$params['geoservice'] = new Parameter(
+			'geoservice', 
+			Parameter::TYPE_STRING,
+			$egMapsDefaultGeoService,
+			array( 'service' ),
+			array(
+				new CriterionInArray( $egMapsAvailableGeoServices ),
+			)
+		);	
+
+		$params['allowcoordinates'] = new Parameter(
+			'allowcoordinates', 
+			Parameter::TYPE_BOOLEAN,
+			$egMapsAllowCoordsGeocoding
+		);			
+		
+		$params['format'] = new Parameter(
+			'format',
+			Parameter::TYPE_STRING,
+			$egMapsCoordinateNotation,
+			array( 'notation' ),
+			array(
+				new CriterionInArray( $egMapsAvailableCoordNotations ),
+			)			
+		);		
+		
+		$params['directional'] = new Parameter(
+			'directional',
+			Parameter::TYPE_BOOLEAN,
+			$egMapsCoordinateDirectional			
+		);			
+		
+		return $params;
 	}
 	
 	/**

@@ -160,7 +160,7 @@ final class MapsMapper {
 		$params['mappingservice'] = new Parameter(
 			'mappingservice', 
 			Parameter::TYPE_STRING,
-			null,
+			'', // TODO
 			array( 'service' ),
 			array(
 				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
