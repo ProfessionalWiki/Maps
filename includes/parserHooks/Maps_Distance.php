@@ -55,22 +55,31 @@ class MapsDistance extends ParserHook {
 	 */
 	protected function getParameterInfo() {
 		global $egMapsDistanceUnit, $egMapsDistanceDecimals; 
-				
-		return array(
-			'distance' => array(
-				'required' => true
-			),
-			'unit' => array(
-				'criteria' => array(
-					'in_array' => MapsDistanceParser::getUnits()
-				),
-				'default' => $egMapsDistanceUnit
-			),
-			'decimals' => array(
-				'type' => 'integer',
-				'default' => $egMapsDistanceDecimals
-			)
+		
+		$params = array();
+		
+		$params['distance'] = new Parameter(
+			'distance'
+			// TODO: add distance criterion
 		);
+		
+		$params['unit'] = new Parameter(
+			'unit',
+			Parameter::TYPE_STRING,
+			$egMapsDistanceUnit,
+			array(),
+			array(
+				new CriterionInArray( MapsDistanceParser::getUnits() ),
+			)
+		);	
+
+		$params['decimals'] = new Parameter(
+			'decimals',
+			Parameter::TYPE_INTEGER,
+			$egMapsDistanceDecimals
+		);		
+		
+		return $params;
 	}
 	
 	/**
