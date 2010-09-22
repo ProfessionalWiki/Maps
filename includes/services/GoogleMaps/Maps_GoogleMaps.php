@@ -103,7 +103,7 @@ class MapsGoogleMaps extends MapsMappingService {
 		);
 		
 		// TODO
-		$params['types']->outputTypes = array( 'boolstr' => array( 'boolstr' ) );
+		$params['autozoom']->outputTypes = array( 'boolstr' => array( 'boolstr' ) );
 		
 		$params['kml'] = new ListParameter(
 			'kml',

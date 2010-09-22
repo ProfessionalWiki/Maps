@@ -1,21 +1,10 @@
 <?php
 
 /**
- * File holding the MapsYahooMaps class.
- *
- * @file Maps_YahooMaps.php
- * @ingroup MapsYahooMaps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * TODO
+ * Class holding information and functionallity specific to Yahoo! Maps.
+ * This infomation and features can be used by any mapping feature. 
  * 
+ * @file Maps_YahooMaps.php
  * @ingroup MapsYahooMaps
  * 
  * @author Jeroen De Dauw
@@ -51,50 +40,65 @@ class MapsYahooMaps extends MapsMappingService {
 	 * 
 	 * @since 0.5
 	 */		
-	protected function initParameterInfo( array &$parameters ) {
+	protected function initParameterInfo( array &$params ) {
 		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
 		Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
 		Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );		
 		
-		$allowedTypes = MapsYahooMaps::getTypeNames();
+		//$params['zoom']->addCriterion( new CriterionInRange( 1, 13 ) );
+		//$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
-		$parameters = array(
-			'controls' => array(
-				'type' => array( 'string', 'list' ),
-				'criteria' => array(
-					'in_array' => self::getControlNames()
-				),
-				'default' => $egMapsYMapControls,
-				'output-type' => array( 'list', ',', '\'' )
+		$params['controls'] = new ListParameter(
+			'controls',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsYMapControls,
+			array(),
+			array(
+				new CriterionInArray( self::getControlNames() ),
+			)			
+		);
+
+		// TODO
+		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		
+		$params['type'] = new Parameter(
+			'type',
+			Parameter::TYPE_STRING,
+			$egMapsYahooMapsType,// FIXME: default value should not be used when not present in types parameter.
+			array(),
+			array(
+				new CriterionInArray( self::getTypeNames() ),
 			),
-			'type' => array (
-				'aliases' => array( 'map-type', 'map type' ),
-				'criteria' => array(
-					'in_array' => $allowedTypes
-				),
-				'default' => $egMapsYahooMapsType, // FIXME: default value should not be used when not present in types parameter.
-				'output-type' => 'ymaptype',
-				'dependencies' => array( 'types' )
-			),
-			'types' => array (
-				'type' => array( 'string', 'list' ),
-				'aliases' => array( 'map-types', 'map types' ),
-				'criteria' => array(
-					'in_array' => $allowedTypes
-				),
-				'default' =>  $egMapsYahooMapsTypes,
-				'output-types' => array( 'ymaptypes', 'list' )
-			),
-			'autozoom' => array(
-				'type' => 'boolean',
-				'aliases' => array( 'auto zoom', 'mouse zoom', 'mousezoom' ),
-				'default' => $egMapsYahooAutozoom,
-				'output-type' => 'boolstr'
-			),
+			array( 'types' )		
+		);
+
+		// TODO
+		$params['type']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );
+
+		$params['types'] = new ListParameter(
+			'types',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsYahooMapsTypes, // FIXME: default value should not be used when not present in types parameter.
+			array(),
+			array(
+				new CriterionInArray( self::getTypeNames() ),
+			)
+		);
+
+		// TODO
+		$params['types']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );			
+		
+		$params['autozoom'] = new Parameter(
+			'autozoom',
+			Parameter::TYPE_BOOLEAN,
+			$egMapsYahooAutozoom
 		);
 		
-		$parameters['zoom']['criteria']['in_range'] = array( 1, 13 );
+		// TODO
+		$params['autozoom']->outputTypes = array( 'boolstr' => array( 'boolstr' ) );
 	}
 	
 	/**
