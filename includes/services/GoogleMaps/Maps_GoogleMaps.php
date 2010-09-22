@@ -42,57 +42,79 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * 
 	 * @since 0.5
 	 */
-	protected function initParameterInfo( array &$parameters ) {
+	protected function initParameterInfo( array &$params ) {
 		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
+		// TODO
 		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
 		
 		// TODO
 		//Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );		
+
+		//$params['zoom']->addCriterion( new CriterionInRange( 0, 20 ) );
+		//$params['zoom']->setDefault( self::getDefaultZoom() );
 		
-		$allowedTypes = self::getTypeNames();
+		$params['controls'] = new ListParameter(
+			'controls',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsGMapControls,
+			array(),
+			array(
+				new CriterionInArray( self::getControlNames() ),
+			)			
+		);
+
+		// TODO
+		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
 		
-		$parameters = array(
-			'controls' => array(
-				'type' => array( 'string', 'list' ),
-				'criteria' => array(
-					'in_array' => self::getControlNames()
-				),
-				'default' => $egMapsGMapControls,
-				'output-type' => array( 'list', ',', '\'' )
+		$params['type'] = new Parameter(
+			'type',
+			Parameter::TYPE_STRING,
+			$egMapsGoogleMapsType,// FIXME: default value should not be used when not present in types parameter.
+			array(),
+			array(
+				new CriterionInArray( self::getTypeNames() ),
 			),
-			'type' => array(
-				'aliases' => array( 'map-type', 'map type' ),
-				'criteria' => array(
-					'in_array' => $allowedTypes
-				),
-				'default' => $egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
-				'output-type' => 'gmaptype',
-				'dependencies' => array( 'types' )
-			),
-			'types' => array(
-				'type' => array( 'string', 'list' ),
-				'aliases' => array( 'map-types', 'map types' ),
-				'criteria' => array(
-					'in_array' => $allowedTypes
-				),
-				'default' => $egMapsGoogleMapsTypes,
-				'output-types' => array( 'gmaptypes', 'list' )
-			),
-			'autozoom' => array(
-				'type' => 'boolean',
-				'aliases' => array( 'auto zoom', 'mouse zoom', 'mousezoom' ),
-				'default' => $egMapsGoogleAutozoom,
-				'output-type' => 'boolstr'
-			),
-			'kml' => array(
-				'type' => array( 'string', 'list' ),
-				'output-type' => array( 'list', ',', '\'' )
-			),			
+			array( 'types' )		
+		);
+
+		// TODO
+		$params['type']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );
+
+		$params['types'] = new ListParameter(
+			'types',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsGoogleMapsTypes, // FIXME: default value should not be used when not present in types parameter.
+			array(),
+			array(
+				new CriterionInArray( self::getTypeNames() ),
+			)
+		);
+
+		// TODO
+		$params['types']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );			
+		
+		$params['autozoom'] = new Parameter(
+			'autozoom',
+			Parameter::TYPE_BOOLEAN,
+			$egMapsGoogleAutozoom
 		);
 		
-		$parameters['zoom']['criteria']['in_range'] = array( 0, 20 );
+		// TODO
+		$params['types']->outputTypes = array( 'boolstr' => array( 'boolstr' ) );
+		
+		$params['kml'] = new ListParameter(
+			'kml',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			array() // TODO
+		);		
+		
+		// TODO
+		$params['kml']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
 	}
 	
 	/**
