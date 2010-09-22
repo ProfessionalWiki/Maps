@@ -45,7 +45,6 @@ class MapsGoogleMaps extends MapsMappingService {
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
-		// TODO
 		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
 		

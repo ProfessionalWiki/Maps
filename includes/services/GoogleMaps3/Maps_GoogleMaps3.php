@@ -42,35 +42,25 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * 
 	 * @since 0.5
 	 */	
-	protected function initParameterInfo( array &$parameters ) {
+	protected function initParameterInfo( array &$params ) {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types;
 		
 		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );		
 		
-		$allowedTypes = self::getTypeNames();
-		
-		$parameters = array(
-			'type' => array(
-				'aliases' => array( 'map-type', 'map type' ),
-				'criteria' => array(
-					'in_array' => $allowedTypes
-				),
-				'default' => $egMapsGMaps3Type, // FIXME: default value should not be used when not present in types parameter.
-				'output-type' => 'gmap3type'
+		$params['type'] = new Parameter(
+			'type',
+			Parameter::TYPE_STRING,
+			$egMapsGMaps3Type,// FIXME: default value should not be used when not present in types parameter.
+			array(),
+			array(
+				new CriterionInArray( self::getTypeNames() ),
 			),
-				/*
-			'types' => array(
-				'type' => array('string', 'list'),
-				'aliases' => array('map-types', 'map types'),
-				'criteria' => array(
-					'in_array' => $allowedTypes
-				),
-				'default' => $egMapsGMaps3Types,
-				'output-types' => array('gmap3types', 'list')				
-			),	
-				*/
+			array( 'types' )		
 		);
+
+		// TODO
+		$params['type']->outputTypes = array( 'gmap3type' => array( 'gmap3type' ) );		
 	}
 	
 	/**
