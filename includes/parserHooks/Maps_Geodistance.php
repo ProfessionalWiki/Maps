@@ -55,29 +55,50 @@ class MapsGeodistance extends ParserHook {
 	 */
 	protected function getParameterInfo() {
 		global $egMapsDistanceUnit, $egMapsDistanceDecimals; 
-				
-		return array(
-			'location1' => array(
-				'required' => true,
-				'tolower' => false,
-				'aliases' => array( 'from' )
-			),
-			'location2' => array(
-				'required' => true,
-				'tolower' => false,
-				'aliases' => array( 'to' )
-			),
-			'unit' => array(
-				'criteria' => array(
-					'in_array' => MapsDistanceParser::getUnits()
-				),
-				'default' => $egMapsDistanceUnit
-			),
-			'decimals' => array(
-				'type' => 'integer',
-				'default' => $egMapsDistanceDecimals
-			)
+		
+		$params = array();
+		
+		$params['location1'] = new Parameter(
+			'location1',
+			Parameter::TYPE_STRING,
+			null,
+			array( 'from' ),
+			array(
+				new CriterionIsLocation(),
+			)			
 		);
+
+		$params['location1']->lowerCaseValue = false;
+		
+		$params['location2'] = new Parameter(
+			'location2',
+			Parameter::TYPE_STRING,
+			null,
+			array( 'to' ),
+			array(
+				new CriterionIsLocation(),
+			)			
+		);
+
+		$params['location2']->lowerCaseValue = false;			
+		
+		$params['unit'] = new Parameter(
+			'unit',
+			Parameter::TYPE_STRING,
+			$egMapsDistanceUnit,
+			array(),
+			array(
+				new CriterionInArray( MapsDistanceParser::getUnits() ),
+			)
+		);	
+
+		$params['decimals'] = new Parameter(
+			'decimals',
+			Parameter::TYPE_INTEGER,
+			$egMapsDistanceDecimals
+		);			
+		
+		return $params;
 	}
 	
 	/**
