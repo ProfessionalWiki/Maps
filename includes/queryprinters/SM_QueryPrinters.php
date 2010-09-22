@@ -57,89 +57,74 @@ final class SMQueryPrinters {
 		return true;
 	}
 	
+	// TODO
 	private static function initializeParams() {
 		global $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
 		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate;
 
-		self::$parameters = array(
-			'width' => array(
-				'default' => $egMapsMapWidth
-			),
-			'height' => array(
-				'default' => $egMapsMapHeight
-			),
-			'mappingservice' => array(
-				'default' => $egMapsDefaultServices['qp']
-			),			
-			'geoservice' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableGeoServices
-				),
-				'default' => $egMapsDefaultGeoService
-			),
-			'format' => array(
-			),
-			'centre' => array(
-				'aliases' => array( 'center' ),
-				'tolower' => false,
-			),
-			'forceshow' => array(
-				'type' => 'boolean',
-				'aliases' => array( 'force show' ),
-				'default' => $smgQPForceShow,
-				'output-type' => 'boolean'
-			),
-			'template' => array(
-				'criteria' => array(
-					'not_empty' => array()
-				),
-				'default' => $smgQPTemplate,
-				'tolower' => false
-			),
-			'showtitle' => array(
-				'type' => 'boolean',
-				'aliases' => array( 'show title' ),
-				'default' => $smgQPShowTitle,
-				'output-type' => 'boolean'
-			),
-			'icon' => array(
-				'criteria' => array(
-					'not_empty' => array()
-				)
-			),
-			// SMW #Ask: parameters
-			'limit' => array(
-				'type' => 'integer',
-				'criteria' => array(
-					'in_range' => array( 0, false )
-				)
-			),
-			'offset' => array(
-				'type' => 'integer'
-			),
-			'sort' => array(),
-			'order' => array(
-				'criteria' => array(
-					'in_array' => array( 'ascending', 'asc', 'descending', 'desc', 'reverse' )
-				)
-			),
-			'headers' => array(
-				'criteria' => array(
-					'in_array' => array( 'show', 'hide' )
-				)
-			),
-			'mainlabel' => array(),
-			'link' => array(
-				'criteria' => array(
-					'in_array' => array( 'none', 'subject', 'all' )
-				)
-			),
-			'default' => array(),
-			'intro' => array(),
-			'outro' => array(),
-			'searchlabel' => array(),
-			'distance' => array(),
+		// TODO
+		//$params['geoservice']->setDefault( $egMapsDefaultGeoService );
+		//$params['mappingservice']->setDefault( $egMapsDefaultServices['qp'] );		
+		
+		$params = array();
+		
+		$params['centre'] = new Parameter(
+			'centre',
+			Parameter::TYPE_STRING,
+			'', // TODO
+			array( 'center' ),
+			array(
+				new CriterionIsLocation(),
+			)			
 		);
+		
+		$params['centre']->lowerCaseValue = false;			
+		
+		$params['icon'] = new Parameter(
+			'icon',
+			Parameter::TYPE_STRING,
+			'', // TODO
+			array(),
+			array(
+				New CriterionNotEmpty()
+			)
+		);	
+		
+		$params['icon']->lowerCaseValue = false;
+		
+		$params['forceshow'] = new Parameter(
+			'forceshow',
+			Parameter::TYPE_BOOLEAN,
+			$smgQPForceShow,
+			array( 'force show' )
+		);
+		
+		// TODO
+		$params['forceshow']->outputTypes = array( 'boolean' => array( 'boolean' ) );		
+
+		$params['showtitle'] = new Parameter(
+			'showtitle',
+			Parameter::TYPE_BOOLEAN,
+			$smgQPShowTitle,
+			array( 'show title' )
+		);
+		
+		// TODO
+		$params['showtitle']->outputTypes = array( 'boolean' => array( 'boolean' ) );		
+		
+		$params['template'] = new Parameter(
+			'template',
+			Parameter::TYPE_STRING,
+			$smgQPTemplate,
+			array(),
+			array(
+				New CriterionNotEmpty()
+			)
+		);
+		
+		$params['template']->lowerCaseValue = false;
+		
+		self::$parameters = $params;
 	}
 	
 	/**

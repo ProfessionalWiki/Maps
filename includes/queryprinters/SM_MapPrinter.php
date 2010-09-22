@@ -165,6 +165,41 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		
 		$validator = new Validator( $this->getName() );
 		
+		/* TODO: filter these!
+			// SMW #Ask: parameters
+			'limit' => array(
+				'type' => 'integer',
+				'criteria' => array(
+					'in_range' => array( 0, false )
+				)
+			),
+			'offset' => array(
+				'type' => 'integer'
+			),
+			'sort' => array(),
+			'order' => array(
+				'criteria' => array(
+					'in_array' => array( 'ascending', 'asc', 'descending', 'desc', 'reverse' )
+				)
+			),
+			'headers' => array(
+				'criteria' => array(
+					'in_array' => array( 'show', 'hide' )
+				)
+			),
+			'mainlabel' => array(),
+			'link' => array(
+				'criteria' => array(
+					'in_array' => array( 'none', 'subject', 'all' )
+				)
+			),
+			'default' => array(),
+			'intro' => array(),
+			'outro' => array(),
+			'searchlabel' => array(),
+			'distance' => array(),		
+		*/
+		
 		$validator->setParameters( $mapProperties, $parameterInfo );
 		
 		$validator->validateParameters();
@@ -226,6 +261,8 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	/**
 	 * This function will loop through all properties (fields) of one record (row),
 	 * and add the location data, title, label and icon to the m_locations array.
+	 *
+	 * TODO: this doesn't qualify as a megamoth just yet, but some splitting up would be nice
 	 *
 	 * @param $outputmode
 	 * @param array $row The record you want to add data from
