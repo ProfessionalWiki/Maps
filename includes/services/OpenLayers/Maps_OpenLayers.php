@@ -1,29 +1,27 @@
 <?php
 
 /**
- * File holding the MapsOpenLayers class.
- *
- * @file Maps_OpenLayers.php
- * @ingroup MapsOpenLayers
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class holding information and functionallity specific to OpenLayers.
  * This infomation and features can be used by any mapping feature. 
  * 
  * @since 0.1
  * 
+ * @file Maps_OpenLayers.php
  * @ingroup MapsOpenLayers
  * 
  * @author Jeroen De Dauw
  */
 class MapsOpenLayers extends MapsMappingService {
+	
+	/**
+	 * List to keep track of loaded layers.
+	 * Typically this means one or more js/css files have been added.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @var array
+	 */
+	protected static $loadedLayers = array();
 	
 	/**
 	 * Constructor.
@@ -35,9 +33,6 @@ class MapsOpenLayers extends MapsMappingService {
 			$serviceName,
 			array( 'layers', 'openlayer' )
 		);
-		
-		global $egMapsOLLoadedLayers;
-		$egMapsOLLoadedLayers = array();
 	}	
 	
 	/**
@@ -45,35 +40,45 @@ class MapsOpenLayers extends MapsMappingService {
 	 * 
 	 * @since 0.5
 	 */	
-	protected function initParameterInfo( array &$parameters ) {
+	protected function initParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
 		Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
 		
-		$parameters = array(
-			'controls' => array(
-				'type' => array( 'string', 'list' ),
-				'criteria' => array(
-					'in_array' => self::getControlNames()
-				),
-				'default' => $egMapsOLControls,
-				'output-type' => array( 'list', ',', '\'' )
-			),
-			'layers' => array(
-				'type' => array( 'string', 'list' ),
-				'criteria' => array(
-					'in_array' => self::getLayerNames( true )
-				),
-				'default' => $egMapsOLLayers,
-				'output-types' => array(
-					'unique_items',
-					'olgroups',
-					array( 'filtered_array', self::getLayerNames() ),
-				)
-			),
+		//$params['zoom']->addCriterion( new CriterionInRange( 0, 19 ) );
+		//$params['zoom']->setDefault( self::getDefaultZoom() );		
+		
+		$params['controls'] = new ListParameter(
+			'controls',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsOLControls,
+			array(),
+			array(
+				new CriterionInArray( self::getControlNames() ),
+			)			
 		);
-									
-		$parameters['zoom']['criteria']['in_range'] = array( 0, 19 );
+
+		// TODO
+		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		
+		$params['layers'] = new ListParameter(
+			'layers',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsOLLayers,
+			array(),
+			array(
+				new CriterionInArray( self::getLayerNames( true ) ),
+			)			
+		);	
+
+		// TODO
+		$params['layers']->outputTypes = array(
+			'unique_items' => array( 'unique_items' ),
+			'olgroups' => array( 'olgroups' ),
+			'filtered_array' => array( 'filtered_array', self::getLayerNames() )
+		);		
 	}
 	
 	/**
@@ -199,17 +204,17 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @param string $layer The layer to check (and load the dependencies for
 	 */
 	public function loadDependencyWhenNeeded( $layer ) {
-		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies, $egMapsOLLoadedLayers;
+		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies;
 		
 		// Check if there is a dependency refered by the layer definition.
 		if ( is_array( $egMapsOLAvailableLayers[$layer] )
 			&& count( $egMapsOLAvailableLayers[$layer] ) > 1
 			&& array_key_exists( $egMapsOLAvailableLayers[$layer][1], $egMapsOLLayerDependencies )
-			&& !in_array( $egMapsOLAvailableLayers[$layer][1], $egMapsOLLoadedLayers ) ) {
+			&& !in_array( $egMapsOLAvailableLayers[$layer][1], self::$loadedLayers ) ) {
 			// Add the dependency to the output.
 			$this->addDependency( $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layer][1]] );
 			// Register that it's added so it does not get done multiple times.
-			$egMapsOLLoadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
+			self::$loadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
 		}
 	}
 	
