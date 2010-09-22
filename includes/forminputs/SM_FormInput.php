@@ -109,6 +109,17 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		$validator = new Validator( 'form' ); // TODO
 		
+		/* TODO: filter these params!
+			'service_name' => array(),
+			'part_of_multiple' => array(),
+			'possible_values' => array(
+				'type' => array( 'string', 'array' ),
+			),
+			'is_list' => array(),
+			'semantic_property' => array(),
+			'value_labels' => array(),	
+		*/	
+		
 		$validator->setParameters( $mapProperties, $parameterInfo );
 		
 		$validator->validateParameters();
@@ -378,34 +389,29 @@ EOT
 		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
 		global $smgFIWidth, $smgFIHeight;
 		
-		return array(
-			'width' => array(
-				'default' => $smgFIWidth
-			),
-			'height' => array(
-				'default' => $smgFIHeight
-			),		
-			'centre' => array(
-				'aliases' => array( 'center' ),
-			),
-			'geoservice' => array(
-				'criteria' => array(
-					'in_array' => $egMapsAvailableGeoServices
-				),
-				'default' => $egMapsDefaultGeoService
-			),
-			'mappingservice' => array(
-				'default' => $egMapsDefaultServices['fi']
-			),				
-			'service_name' => array(),
-			'part_of_multiple' => array(),
-			'possible_values' => array(
-				'type' => array( 'string', 'array' ),
-			),
-			'is_list' => array(),
-			'semantic_property' => array(),
-			'value_labels' => array(),
+		$params = array();
+		
+		// TODO
+		//$params['width']->setDefault( $smgFIWidth );
+		//$params['height']->setDefault( $smgFIHeight );
+		
+		$params['centre'] = new Parameter(
+			'centre',
+			Parameter::TYPE_STRING,
+			'', // TODO
+			array( 'center' ),
+			array(
+				new CriterionIsLocation(),
+			)			
 		);
+		
+		$params['centre']->lowerCaseValue = false;		
+		
+		// TODO
+		//$params['geoservice']->setDefault( $egMapsDefaultGeoService );
+		//$params['mappingservice']->setDefault( $egMapsDefaultServices['fi'] );
+		
+		return $params;
 	}	
 		
 }
