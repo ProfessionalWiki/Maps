@@ -27,17 +27,6 @@ class SMGoogleMapsQP extends SMMapPrinter {
 	 * @see SMMapPrinter::initSpecificParamInfo
 	 */
 	protected function initSpecificParamInfo( array &$parameters ) {
-		global $egMapsGMapOverlays;
-
-		$parameters = array(
-			'overlays' => array(
-				'type' => array( 'string', 'list' ),
-				'criteria' => array(
-					'is_google_overlay' => array()
-				),
-				'default' => $egMapsGMapOverlays,
-			),
-		);
 	}
 	
 	/**
