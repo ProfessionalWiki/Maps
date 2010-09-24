@@ -23,17 +23,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
 	protected function initSpecificParamInfo( array &$parameters ) {
-		global $egMapsGMapOverlays;
-		
-		$parameters = array(
-			'overlays' => array(
-				'type' => array( 'string', 'list' ),
-				'criteria' => array(
-					'is_google_overlay' => array()
-				),
-				'default' => $egMapsGMapOverlays,
-			),
-		);
 	}
 	
 	/**

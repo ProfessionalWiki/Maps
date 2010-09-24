@@ -26,6 +26,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class MapsGoogleMaps extends MapsMappingService {
 	
 	/**
+	 * A list of supported overlays.
+	 * 
+	 * @var array
+	 */
+	protected static $overlayData = array(
+		'photos' => '0',
+		'videos' => '1',
+		'wikipedia' => '2',
+		'webcams' => '3'
+	);		
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @since 0.6.6
@@ -48,9 +60,6 @@ class MapsGoogleMaps extends MapsMappingService {
 		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
 		
-		// TODO
-		//Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );		
-
 		//$params['zoom']->addCriterion( new CriterionInRange( 0, 20 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );
 		
@@ -113,7 +122,17 @@ class MapsGoogleMaps extends MapsMappingService {
 		);		
 		
 		// TODO
-		$params['kml']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		$params['kml']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );
+
+		$params['overlays'] = new ListParameter(
+			'overlays',
+			ListParameter::DEFAULT_DELIMITER,
+			Parameter::TYPE_STRING,
+			$egMapsGMapOverlays,
+			array(
+				new CriterionGoogleOverlay( self::$overlayData )
+			)
+		);
 	}
 	
 	/**
@@ -186,18 +205,6 @@ class MapsGoogleMaps extends MapsMappingService {
 	);
 
 	/**
-	 * A list of supported overlays.
-	 * 
-	 * @var array
-	 */
-	protected static $overlayData = array(
-		'photos' => '0',
-		'videos' => '1',
-		'wikipedia' => '2',
-		'webcams' => '3'
-	);
-
-	/**
 	 * Returns the names of all supported map types.
 	 * 
 	 * @return array
@@ -231,29 +238,6 @@ class MapsGoogleMaps extends MapsMappingService {
 			'nav',
 			'searchbar'
 		);
-	}
-
-	/**
-	 * Returns the names of all supported map overlays.
-	 * 
-	 * @return array
-	 */
-	public static function getOverlayNames() {
-		return array_keys( self::$overlayData );
-	}
-	
-	/**
-	 * Returns whether the provided value is a valid google overlay.
-	 * 
-	 * @param $value
-	 * 
-	 * @return boolean
-	 */
-	public static function isGOverlay( $value, $name, array $parameters ) {
-		$value = explode( '-', $value );
-		if ( count( $value ) > 2 ) return false;
-		if ( count( $value ) > 1 && !in_array( $value[1], array( '0', '1' ) ) ) return false;
-		return in_array( $value[0], self::getOverlayNames() );
 	}
 
 	/**
