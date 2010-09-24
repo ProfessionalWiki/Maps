@@ -33,9 +33,10 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps';
 function efMapsInitGoogleMaps() {
 	global $wgAutoloadClasses;
 	
-	$wgAutoloadClasses['MapsGoogleMaps'] = dirname( __FILE__ ) . '/Maps_GoogleMaps.php';
-	$wgAutoloadClasses['MapsGoogleMapsDispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
-	$wgAutoloadClasses['MapsGoogleMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';	
+	$wgAutoloadClasses['MapsGoogleMaps'] 			= dirname( __FILE__ ) . '/Maps_GoogleMaps.php';
+	$wgAutoloadClasses['CriterionGoogleOverlay'] 	= dirname( __FILE__ ) . '/CriterionGoogleOverlay.php';
+	$wgAutoloadClasses['MapsGoogleMapsDispMap'] 	= dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
+	$wgAutoloadClasses['MapsGoogleMapsDispPoint'] 	= dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';	
 	
 	MapsMappingServices::registerService( 'googlemaps2', 'MapsGoogleMaps' );
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps2' );

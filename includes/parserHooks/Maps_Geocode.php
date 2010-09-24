@@ -126,7 +126,7 @@ class MapsGeocode extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters() {
-		return array( 'location', 'service', 'mappingservice' );
+		return array( 'location', 'geoservice', 'mappingservice' );
 	}
 	
 	/**
