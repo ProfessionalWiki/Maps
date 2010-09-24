@@ -143,7 +143,7 @@ class MapsGeocode extends ParserHook {
 		if ( MapsGeocoders::canGeocode() ) {
 			$geovalues = MapsGeocoders::attemptToGeocodeToString(
 				$parameters['location'],
-				$parameters['service'],
+				$parameters['geoservice'],
 				$parameters['mappingservice'],
 				$parameters['allowcoordinates'],
 				$parameters['format'],
