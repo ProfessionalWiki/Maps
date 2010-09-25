@@ -43,9 +43,6 @@ class MapsOpenLayers extends MapsMappingService {
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
-		// TODO
-		//Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
-		
 		//$params['zoom']->addCriterion( new CriterionInRange( 0, 19 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
@@ -74,9 +71,7 @@ class MapsOpenLayers extends MapsMappingService {
 
 		// TODO
 		$params['layers']->outputTypes = array(
-			'unique_items' => array( 'unique_items' ),
 			'olgroups' => array( 'olgroups' ),
-			'filtered_array' => array( 'filtered_array', self::getLayerNames() )
 		);		
 	}
 	
@@ -215,30 +210,6 @@ class MapsOpenLayers extends MapsMappingService {
 			// Register that it's added so it does not get done multiple times.
 			self::$loadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
 		}
-	}
-	
-	/**
-	 * Removed the layer groups from the layer list, and adds their members back in.
-	 * 
-	 * @param array $layers
-	 * @param string $name
-	 * @param array $parameters
-	 */
-	public static function unpackLayerGroups( array &$layers, $name, array $parameters ) {
-		global $egMapsOLLayerGroups;
-		
-		$unpacked = array();
-		
-		foreach ( $layers as $layerOrGroup ) {
-			if ( array_key_exists( $layerOrGroup, $egMapsOLLayerGroups ) ) {
-				$unpacked = array_merge( $unpacked, $egMapsOLLayerGroups[$layerOrGroup] );
-			}
-			else {
-				$unpacked[] = $layerOrGroup;
-			}
-		}
-		
-		$layers = $unpacked;
 	}
 	
 }																	
