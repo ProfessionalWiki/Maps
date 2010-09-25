@@ -74,9 +74,7 @@ class MapsGoogleMaps extends MapsMappingService {
 				new CriterionInArray( self::getControlNames() ),
 			)			
 		);
-
-		// TODO
-		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
 		
 		$params['type'] = new Parameter(
 			'type',
@@ -111,9 +109,7 @@ class MapsGoogleMaps extends MapsMappingService {
 			Parameter::TYPE_BOOLEAN,
 			$egMapsGoogleAutozoom
 		);
-		
-		// TODO
-		$params['autozoom']->outputTypes = array( 'boolstr' => array( 'boolstr' ) );
+		$params['autozoom']->addManipulations( new ParamManipulationBoolstr() );
 		
 		$params['kml'] = new ListParameter(
 			'kml',
@@ -121,9 +117,7 @@ class MapsGoogleMaps extends MapsMappingService {
 			Parameter::TYPE_STRING,
 			array() // TODO
 		);		
-		
-		// TODO
-		$params['kml']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );
+		$params['kml']->addManipulations( new ParamManipulationImplode( ',', "'" ) );
 
 		$params['overlays'] = new ListParameter(
 			'overlays',

@@ -59,9 +59,7 @@ class MapsOpenLayers extends MapsMappingService {
 				new CriterionInArray( self::getControlNames() ),
 			)			
 		);
-
-		// TODO
-		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
 		
 		$params['layers'] = new ListParameter(
 			'layers',

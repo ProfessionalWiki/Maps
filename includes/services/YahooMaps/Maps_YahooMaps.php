@@ -60,9 +60,7 @@ class MapsYahooMaps extends MapsMappingService {
 				new CriterionInArray( self::getControlNames() ),
 			)			
 		);
-
-		// TODO
-		$params['controls']->outputTypes = array( 'list' => array( 'list', ',', '\'' ) );		
+		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
 		
 		$params['type'] = new Parameter(
 			'type',
@@ -97,9 +95,7 @@ class MapsYahooMaps extends MapsMappingService {
 			Parameter::TYPE_BOOLEAN,
 			$egMapsYahooAutozoom
 		);
-		
-		// TODO
-		$params['autozoom']->outputTypes = array( 'boolstr' => array( 'boolstr' ) );
+		$params['autozoom']->addManipulations( new ParamManipulationBoolstr() );
 	}
 	
 	/**
