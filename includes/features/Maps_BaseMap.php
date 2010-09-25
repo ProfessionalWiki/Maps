@@ -114,20 +114,10 @@ abstract class MapsBaseMap {
 				$this->centreLon = Xml::escapeJsString( $this->coordinates['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
-				// TODO: Some warning this failed would be nice here. 
-				$this->setDefaultCentre();
+				global $egMapsDefaultMapCentre;
+				$this->setCentre( $egMapsDefaultMapCentre );
 			}
 		}
-	}
-	
-	/**
-	 * Sets the centre lat and lon to their default.
-	 */
-	private function setDefaultCentre() {
-		global $egMapsMapLat, $egMapsMapLon;
-		
-		$this->centreLat = $egMapsMapLat;
-		$this->centreLon = $egMapsMapLon;		
 	}
 	
 }

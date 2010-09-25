@@ -180,7 +180,8 @@ abstract class MapsBasePointMap {
 			}
 			else {
 				// If centre is not set and there are no markers, use the default latitude and longitutde.
-				$this->setCentreDefaults();
+				global $egMapsDefaultMapCentre;
+				// TODO
 			}
 		}
 		else { // If a centre value is set, geocode when needed and use it.
@@ -192,18 +193,10 @@ abstract class MapsBasePointMap {
 				$this->centreLon = Xml::escapeJsString( $this->centre['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
-				$this->setCentreDefaults();
+				global $egMapsDefaultMapCentre;
+				// TODO
 			}
 		}
-	}
-	
-	/**
-	 * Sets the centre latitude and longitutde to the defaults.
-	 */
-	private function setCentreDefaults() {
-		global $egMapsMapLat, $egMapsMapLon;
-		$this->centreLat = $egMapsMapLat;
-		$this->centreLon = $egMapsMapLon;
 	}
 	
 }
