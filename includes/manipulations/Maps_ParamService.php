@@ -41,7 +41,7 @@ class MapsParamService extends ItemParameterManipulation {
 		
 		$this->feature = $feature;
 		$this->serviceParams = $serviceParams;
-	}	
+	}
 	
 	/**
 	 * @see ItemParameterManipulation::doManipulation

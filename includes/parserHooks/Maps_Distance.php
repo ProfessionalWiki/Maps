@@ -58,10 +58,8 @@ class MapsDistance extends ParserHook {
 		
 		$params = array();
 		
-		$params['distance'] = new Parameter(
-			'distance'
-			// TODO: add distance criterion
-		);
+		$params['distance'] = new Parameter( 'distance' );
+		$params['distance']->addCriteria( new CriterionIsDistance() );
 		
 		$params['unit'] = new Parameter(
 			'unit',
@@ -106,15 +104,7 @@ class MapsDistance extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		$distanceInMeters = MapsDistanceParser::parseDistance( $parameters['distance'] );
-		
-		if ( $distanceInMeters ) {
-			$output = MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
-		} else {
-			// TODO: use ParserHook class methods to handle errors
-			$output = wfMsgExt( 'maps_invalid_distance', 'parsemag', '<b>' . $parameters['distance'] . '</b>' );
-		}
-
-		return $output;
+		return MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
 	}
 	
 }
