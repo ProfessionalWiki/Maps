@@ -93,21 +93,12 @@ class MapsDisplayPoint extends ParserHook {
 		
 		$params['mappingservice']->default = $egMapsDefaultServices['display_point'];
 		
-		$params['coordinates'] = new Parameter(
-			'coordinates', 
-			Parameter::TYPE_STRING,
-			null,
-			array( 'coords', 'location', 'locations', 'address', 'addresses' ),
-			array(
-				new CriterionIsLocation(),
-			)
-		);
+		$params['coordinates'] = new Parameter( 'coordinates' );
+		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
+		$params['coordinates']->addCriteria( new CriterionIsLocation( '~' ) );
+		$params['coordinates']->addManipulations( new MapsParamCoordSet( '~' ) );		
+		$params['coordinates']->lowerCaseValue = false;		
 		
-		$params['coordinates']->lowerCaseValue = false;
-		
-		// TODO
-		$params['coordinates']->outputTypes = array( 'coordinateSet' => array( 'coordinateSet', '~' ) );	
-
 		$params['centre'] = new Parameter(
 			'centre',
 			Parameter::TYPE_STRING,

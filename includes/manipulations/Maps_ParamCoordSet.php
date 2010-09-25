@@ -14,12 +14,25 @@
 class MapsParamCoordSet extends ItemParameterManipulation {
 	
 	/**
+	 * In some usecases, the parameter values will contain extra location
+	 * metadata, which should be ignored here. This field holds the delimiter
+	 * used to seperata this data from the actual location. 
+	 * 
+	 * @since 0.7
+	 * 
+	 * @var string
+	 */
+	protected $metaDataSeparator;	
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @since 0.7
 	 */
-	public function __construct() {
+	public function __construct( $metaDataSeparator = false ) {
 		parent::__construct();
+		
+		$this->metaDataSeparator = $metaDataSeparator;		
 	}
 	
 	/**
@@ -28,11 +41,19 @@ class MapsParamCoordSet extends ItemParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function doManipulation( &$value, array &$parameters ) {
+		if ( $this->metaDataSeparator !== false ) {
+			$parts = explode( $this->metaDataSeparator, $value );
+			$value = array_shift( $parts );
+		}
+		
 		if ( MapsGeocoders::canGeocode() ) {
-			// TODO
 			$value = MapsGeocoders::attemptToGeocodeToString( $value/*, $geoService, $mappingService*/ );
 		} else {
 			$value = MapsCoordinateParser::parseAndFormat( $value );
+		}
+		
+		if ( $this->metaDataSeparator !== false ) {
+			$value = array_merge( array( $value ), $parts );
 		}
 	}
 	
