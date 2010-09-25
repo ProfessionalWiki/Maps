@@ -59,16 +59,8 @@ class MapsFinddestination extends ParserHook {
 		
 		$params = array();
 		
-		$params['location'] = new Parameter(
-			'location',
-			Parameter::TYPE_STRING,
-			null,
-			array(),
-			array(
-				new CriterionIsLocation(),
-			)			
-		);
-
+		$params['location'] = new Parameter( 'location' );
+		$params['location']->addCriteria( new CriterionIsLocation() );
 		$params['location']->lowerCaseValue = false;
 		
 		$params['bearing'] = new Parameter(
@@ -76,10 +68,8 @@ class MapsFinddestination extends ParserHook {
 			Parameter::TYPE_FLOAT
 		);
 		
-		$params['distance'] = new Parameter(
-			'distance'
-			// TODO: add distance criterion
-		);
+		$params['distance'] = new Parameter( 'distance' );
+		$params['distance']->addCriteria( new CriterionIsDistance() );
 		
 		$params['mappingservice'] = new Parameter(
 			'mappingservice', 
