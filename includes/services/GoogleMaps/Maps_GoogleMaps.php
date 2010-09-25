@@ -57,8 +57,9 @@ class MapsGoogleMaps extends MapsMappingService {
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
-		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
-		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
+		// TODO
+		//Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
+		//Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
 		
 		//$params['zoom']->addCriterion( new CriterionInRange( 0, 20 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );

@@ -43,7 +43,8 @@ class MapsOpenLayers extends MapsMappingService {
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
-		Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
+		// TODO
+		//Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
 		
 		//$params['zoom']->addCriterion( new CriterionInRange( 0, 19 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );		

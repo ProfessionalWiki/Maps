@@ -87,7 +87,7 @@ class MapsDisplayPoint extends ParserHook {
 		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
 		// TODO
-		Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
+		//Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
 		
 		$params = MapsMapper::getCommonParameters();
 		

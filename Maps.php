@@ -117,6 +117,10 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGoogleGeocoder'] 		= $geoDir . 'Maps_GoogleGeocoder.php';
 	$wgAutoloadClasses['MapsYahooGeocoder'] 		= $geoDir . 'Maps_YahooGeocoder.php';
 	
+	// Autoload the "includes/manipulations/" classes.
+	$manDir = $incDir . 'manipulations/';
+	$wgAutoloadClasses['MapsParamService'] 			= $manDir . 'Maps_ParamService.php';
+	
 	// Autoload the "includes/parserHooks/" classes.
 	$phDir = $incDir . '/parserHooks/';
 	$wgAutoloadClasses['MapsCoordinates'] 			= $phDir . 'Maps_Coordinates.php';
@@ -158,8 +162,9 @@ function efMapsSetup() {
 		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList ),
 	);
 
-	Validator::addOutputFormat( 'mapdimension', array( 'MapsMapper', 'setMapDimension' ) );
-	Validator::addOutputFormat( 'coordinateset', array( 'MapsMapper', 'formatLocation' ) );
+	// TODO
+	//Validator::addOutputFormat( 'mapdimension', array( 'MapsMapper', 'setMapDimension' ) );
+	//Validator::addOutputFormat( 'coordinateset', array( 'MapsMapper', 'formatLocation' ) );
 
 	return true;
 }

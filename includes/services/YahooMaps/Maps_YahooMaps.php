@@ -43,8 +43,9 @@ class MapsYahooMaps extends MapsMappingService {
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
-		Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
-		Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );		
+		// TODO
+		//Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
+		//Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );		
 		
 		//$params['zoom']->addCriterion( new CriterionInRange( 1, 13 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );		
