@@ -1,23 +1,13 @@
 <?php
 
 /**
- * File holding the MapsMappingService class.
- *
- * @file Maps_MappingService.php
- * @ingroup Maps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Base class for mapping services. Deriving classes hold mapping service specific 
  * information and functionality, which can be used by any mapping feature.
  * 
  * @since 0.6.3
+ * 
+ * @file Maps_MappingService.php
+ * @ingroup Maps
  * 
  * @author Jeroen De Dauw
  */

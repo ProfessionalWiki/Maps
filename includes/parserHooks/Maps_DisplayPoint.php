@@ -92,6 +92,7 @@ class MapsDisplayPoint extends ParserHook {
 		$params = MapsMapper::getCommonParameters();
 		
 		$params['mappingservice']->default = $egMapsDefaultServices['display_point'];
+		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
 		
 		$params['coordinates'] = new Parameter( 'coordinates' );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
@@ -102,13 +103,12 @@ class MapsDisplayPoint extends ParserHook {
 		$params['centre'] = new Parameter(
 			'centre',
 			Parameter::TYPE_STRING,
-			'', // TODO
+			$egMapsDefaultMapCentre,
 			array( 'center' ),
 			array(
 				new CriterionIsLocation(),
 			)			
 		);
-		
 		$params['centre']->lowerCaseValue = false;
 		
 		$params['title'] = new Parameter(
@@ -116,7 +116,6 @@ class MapsDisplayPoint extends ParserHook {
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
-		
 		$params['title']->lowerCaseValue = false;
 		
 		$params['label'] = new Parameter(
@@ -125,7 +124,6 @@ class MapsDisplayPoint extends ParserHook {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
-		
 		$params['label']->lowerCaseValue = false;
 		
 		$params['icon'] = new Parameter(
@@ -137,7 +135,6 @@ class MapsDisplayPoint extends ParserHook {
 				New CriterionNotEmpty()
 			)
 		);	
-
 		$params['icon']->lowerCaseValue = false;
 		
 		return $params;

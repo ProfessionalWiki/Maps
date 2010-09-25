@@ -43,7 +43,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * @since 0.5
 	 */
 	protected function initParameterInfo( array &$params ) {
-		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
+		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls, $egMapsGMapOverlays;
 		
 		//$params['zoom']->addCriterion( new CriterionInRange( 0, 20 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );

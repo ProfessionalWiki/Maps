@@ -23,24 +23,14 @@ class MapsParamService extends ItemParameterManipulation {
 	protected $feature;
 	
 	/**
-	 * Adittional parameter definitions to load.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @var array of Parameter
-	 */
-	protected $serviceParams;
-	
-	/**
 	 * Constructor.
 	 * 
 	 * @since 0.7
 	 */
-	public function __construct( $feature, array $serviceParams = array() ) {
+	public function __construct( $feature ) {
 		parent::__construct();
 		
 		$this->feature = $feature;
-		$this->serviceParams = $serviceParams;
 	}
 	
 	/**
@@ -50,10 +40,13 @@ class MapsParamService extends ItemParameterManipulation {
 	 */	
 	public function doManipulation( &$value, array &$parameters ) {
 		// Make sure the service is valid.
-		$value = MapsMappingService::getValidServiceName( $value, $this->feature );
+		$value = MapsMappingServices::getValidServiceName( $value, $this->feature );
+		
+		// Get the service object so the service specific parameters can be retrieved.
+		$serviceObject = MapsMappingServices::getServiceInstance( $value );
 		
 		// Add the service specific service parameters.
-		$parameters = array_merge( $parameters, $this->serviceParams );
+		$parameters = array_merge( $parameters, $serviceObject->getParameterInfo() );
 	}
 	
 }

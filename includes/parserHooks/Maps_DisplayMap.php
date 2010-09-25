@@ -62,6 +62,7 @@ class MapsDisplayMap extends ParserHook {
 		$params = MapsMapper::getCommonParameters();
 		
 		$params['mappingservice']->default = $egMapsDefaultServices['display_map'];
+		$params['mappingservice']->addManipulations( new MapsParamService( 'display_map' ) );
 		
 		$params['coordinates'] = new Parameter( 'coordinates' );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address' );

@@ -219,10 +219,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		'height' => array( 50, 1000, 1, 100 ),
 	);
 	
-	# Strings. The default coordinates for the map. Must be in floating point
-	# notation. This value will only be used when the user does not provide one.
-	$egMapsMapLat = '1';
-	$egMapsMapLon = '1';
+	# String. The default centre for maps. Can be either a set of coordinates or an address.
+	$egMapsDefaultMapCentre = '0, 0';
 	
 	# Strings. The default content for all pop-ups. This value will only be used
 	# when the user does not provide one.

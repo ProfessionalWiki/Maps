@@ -48,4 +48,21 @@ class CriterionGoogleOverlay extends ItemParameterCriterion {
 		;
 	}	
 	
+	/**
+	 * @see ItemParameterCriterion::getItemErrorMessage
+	 */	
+	protected function getItemErrorMessage( Parameter $parameter ) {
+		// TODO
+		return wfMsgExt( '', 'parsemag', $parameter->getOriginalName() );
+	}
+	
+	/** 
+	 * @see ItemParameterCriterion::getListErrorMessage
+	 */	
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {
+		global $wgLang;
+		// TODO
+		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
+	}		
+	
 }
