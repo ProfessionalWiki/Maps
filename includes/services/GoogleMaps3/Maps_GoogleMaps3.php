@@ -1,24 +1,12 @@
 <?php
 
 /**
- * File holding the MapsGoogleMaps3 class.
- *
- * @file Maps_GoogleMaps3.php
- * @ingroup MapsGoogleMaps3
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class holding information and functionallity specific to Google Maps v3.
  * This infomation and features can be used by any mapping feature. 
  * 
  * @since 0.1
  * 
+ * @file Maps_GoogleMaps3.php
  * @ingroup MapsGoogleMaps3
  * 
  * @author Jeroen De Dauw
@@ -111,7 +99,14 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		return '[' . implode( ',', $markerItems ) . ']';
 	}	
 	
-	protected static $mapTypes = array(
+	/**
+	 * List of map types (keys) and their internal values (values). 
+	 * 
+	 * @since 0.7
+	 * 
+	 * @var array
+	 */
+	public static $mapTypes = array(
 		'normal' => 'ROADMAP',
 		'roadmap' => 'ROADMAP',
 		'satellite' => 'SATELLITE',

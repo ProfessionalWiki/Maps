@@ -205,30 +205,6 @@ class MapsGoogleMaps extends MapsMappingService {
 			'searchbar'
 		);
 	}
-
-	/**
-	 * Changes the map type name into the corresponding Google Maps API v2 identifier.
-	 *
-	 * @param string $type
-	 * 
-	 * @return string
-	 */
-	public static function setGMapType( &$type, $name, array $parameters ) {
-		$type = self::$mapTypes[$type];
-	}
-	
-	/**
-	 * Changes the map type names into the corresponding Google Maps API v2 identifiers.
-	 * 
-	 * @param array $types
-	 * 
-	 * @return array
-	 */
-	public static function setGMapTypes( array &$types, $name, array $parameters ) {
-		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
-			$types[$i] = self::$mapTypes[ $types[$i] ];
-		}
-	}
 	
 	/**
 	 * @see MapsMappingService::getDependencies
