@@ -15,6 +15,8 @@ final class MapsMapper {
 	/**
 	 * Determines if a value is a valid map dimension, and optionally corrects it.
 	 *
+	 * TODO: move to param validation and manipulation classes
+	 *
 	 * @since 0.6
 	 *
 	 * @param string or number $value The value as it was entered by the user.
@@ -156,9 +158,7 @@ final class MapsMapper {
 				new CriterionMapDimension( 'width' ),
 			)
 		);
-
-		// TODO
-		$params['width']->outputTypes = array( 'mapdimension' => array( 'mapdimension', 'width', $egMapsMapWidth ) );
+		$params['width']->addManipulations( new MapsParamDimension( 'width' ) );
 
 		$params['height'] = new Parameter(
 			'height', 
@@ -169,9 +169,7 @@ final class MapsMapper {
 				new CriterionMapDimension( 'height' ),
 			)
 		);
-
-		// TODO
-		$params['height']->outputTypes = array( 'mapdimension' => array( 'mapdimension', 'height', $egMapsMapWidth ) );
+		$params['height']->addManipulations( new MapsParamDimension( 'height' ) );
 		
 		return $params;
 	}
