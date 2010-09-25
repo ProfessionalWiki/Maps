@@ -427,10 +427,8 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		}
 		else {
 			// If centre is not set and there are no results, centre on the default coordinates.
-			global $egMapsMapLat, $egMapsMapLon;
-			
-			$this->centreLat = $egMapsMapLat;
-			$this->centreLon = $egMapsMapLon;
+			global $egMapsDefaultMapCentre;
+			// TODO
 		}		
 	}
 	
