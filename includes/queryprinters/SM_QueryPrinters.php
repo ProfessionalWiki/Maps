@@ -77,7 +77,6 @@ final class SMQueryPrinters {
 				new CriterionIsLocation(),
 			)			
 		);
-		
 		$params['centre']->lowerCaseValue = false;			
 		
 		$params['icon'] = new Parameter(
@@ -89,7 +88,6 @@ final class SMQueryPrinters {
 				New CriterionNotEmpty()
 			)
 		);	
-		
 		$params['icon']->lowerCaseValue = false;
 		
 		$params['forceshow'] = new Parameter(
@@ -98,9 +96,7 @@ final class SMQueryPrinters {
 			$smgQPForceShow,
 			array( 'force show' )
 		);
-		
-		// TODO
-		$params['forceshow']->outputTypes = array( 'boolean' => array( 'boolean' ) );		
+		$params['forceshow']->addManipulations( new ParamManipulationBoolean() );		
 
 		$params['showtitle'] = new Parameter(
 			'showtitle',
@@ -108,9 +104,7 @@ final class SMQueryPrinters {
 			$smgQPShowTitle,
 			array( 'show title' )
 		);
-		
-		// TODO
-		$params['showtitle']->outputTypes = array( 'boolean' => array( 'boolean' ) );		
+		$params['showtitle']->addManipulations( new ParamManipulationBoolean() );		
 		
 		$params['template'] = new Parameter(
 			'template',
@@ -121,7 +115,6 @@ final class SMQueryPrinters {
 				New CriterionNotEmpty()
 			)
 		);
-		
 		$params['template']->lowerCaseValue = false;
 		
 		self::$parameters = $params;
