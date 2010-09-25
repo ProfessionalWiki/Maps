@@ -15,9 +15,11 @@ class MapsYahooMaps extends MapsMappingService {
 	 * Mapping for Yahoo! Maps map types. 
 	 * See http://developer.yahoo.com/maps/ajax
 	 * 
+	 * @since 0.7
+	 * 
 	 * @var array
 	 */
-	protected static $mapTypes = array(
+	public static $mapTypes = array(
 		'normal' => 'YAHOO_MAP_REG',
 		'satellite' => 'YAHOO_MAP_SAT',
 		'hybrid' => 'YAHOO_MAP_HYB',
@@ -42,10 +44,6 @@ class MapsYahooMaps extends MapsMappingService {
 	 */		
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
-		
-		// TODO
-		//Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
-		//Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );		
 		
 		//$params['zoom']->addCriterion( new CriterionInRange( 1, 13 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );		
@@ -72,23 +70,19 @@ class MapsYahooMaps extends MapsMappingService {
 			),
 			array( 'types' )		
 		);
-
-		// TODO
-		$params['type']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );
+		$params['type']->addManipulations( new MapsParamYMapType() );
 
 		$params['types'] = new ListParameter(
 			'types',
 			ListParameter::DEFAULT_DELIMITER,
 			Parameter::TYPE_STRING,
-			$egMapsYahooMapsTypes, // FIXME: default value should not be used when not present in types parameter.
+			$egMapsYahooMapsTypes,
 			array(),
 			array(
 				new CriterionInArray( self::getTypeNames() ),
 			)
 		);
-
-		// TODO
-		$params['types']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );			
+		$params['type']->addManipulations( new MapsParamYMapType() );
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',
@@ -177,30 +171,6 @@ class MapsYahooMaps extends MapsMappingService {
 	 */
 	public static function getControlNames() {
 		return array( 'scale', 'type', 'pan', 'zoom', 'zoom-short', 'auto-zoom' );
-	}
-	
-	/**
-	 * Changes the map type name into the corresponding Yahoo! Maps API identifier.
-	 *
-	 * @param string $type
-	 * 
-	 * @return string
-	 */
-	public static function setYMapType( &$type, $name, array $parameters ) {
-		$type = self::$mapTypes[ $type ];
-	}
-	
-	/**
-	 * Changes the map type names into the corresponding Yahoo! Maps API identifiers.
-	 * 
-	 * @param array $types
-	 * 
-	 * @return array
-	 */
-	public static function setYMapTypes( array &$types, $name, array $parameters ) {
-		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
-			$types[$i] = self::$mapTypes[ $types[$i] ];
-		}
 	}
 
 }									

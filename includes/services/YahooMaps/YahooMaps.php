@@ -25,9 +25,10 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitYahooMaps';
 function efMapsInitYahooMaps() {
 	global $wgAutoloadClasses;
 	
-	$wgAutoloadClasses['MapsYahooMaps'] = dirname( __FILE__ ) . '/Maps_YahooMaps.php';
-	$wgAutoloadClasses['MapsYahooMapsDispMap'] = dirname( __FILE__ ) . '/Maps_YahooMapsDispMap.php';
-	$wgAutoloadClasses['MapsYahooMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_YahooMapsDispPoint.php';	
+	$wgAutoloadClasses['MapsParamYMapType'] 		= dirname( __FILE__ ) . '/Maps_ParamYMapType.php';
+	$wgAutoloadClasses['MapsYahooMaps'] 			= dirname( __FILE__ ) . '/Maps_YahooMaps.php';
+	$wgAutoloadClasses['MapsYahooMapsDispMap'] 		= dirname( __FILE__ ) . '/Maps_YahooMapsDispMap.php';
+	$wgAutoloadClasses['MapsYahooMapsDispPoint'] 	= dirname( __FILE__ ) . '/Maps_YahooMapsDispPoint.php';	
 	
 	MapsMappingServices::registerService( 
 		'yahoomaps',
