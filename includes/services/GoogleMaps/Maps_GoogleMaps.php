@@ -45,10 +45,6 @@ class MapsGoogleMaps extends MapsMappingService {
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
-		// TODO
-		//Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
-		//Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
-		
 		//$params['zoom']->addCriterion( new CriterionInRange( 0, 20 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );
 		
@@ -67,30 +63,26 @@ class MapsGoogleMaps extends MapsMappingService {
 		$params['type'] = new Parameter(
 			'type',
 			Parameter::TYPE_STRING,
-			$egMapsGoogleMapsType,// FIXME: default value should not be used when not present in types parameter.
+			$egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
 			array(),
 			array(
-				new CriterionInArray( self::getTypeNames() ),
+				new CriterionInArray( array_keys( self::$mapTypes ) ),
 			),
 			array( 'types' )		
 		);
-
-		// TODO
-		$params['type']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );
+		$params['type']->addManipulations( new MapsParamGMapType() );
 
 		$params['types'] = new ListParameter(
 			'types',
 			ListParameter::DEFAULT_DELIMITER,
 			Parameter::TYPE_STRING,
-			$egMapsGoogleMapsTypes, // FIXME: default value should not be used when not present in types parameter.
+			$egMapsGoogleMapsTypes,
 			array(),
 			array(
-				new CriterionInArray( self::getTypeNames() ),
+				new CriterionInArray( array_keys( self::$mapTypes ) ),
 			)
 		);
-
-		// TODO
-		$params['types']->outputTypes = array( 'gmaptype' => array( 'gmaptype' ) );			
+		$params['types']->addManipulations( new MapsParamGMapType() );		
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',
@@ -172,7 +164,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * 
 	 * @var array
 	 */ 
-	protected static $mapTypes = array(
+	public static $mapTypes = array(
 		'normal' => 'G_NORMAL_MAP',
 		'satellite' => 'G_SATELLITE_MAP',
 		'hybrid' => 'G_HYBRID_MAP',
@@ -186,15 +178,6 @@ class MapsGoogleMaps extends MapsMappingService {
 		'mars-elevation' => 'G_MARS_ELEVATION_MAP',
 		'mars-infrared' => 'G_MARS_INFRARED_MAP'
 	);
-
-	/**
-	 * Returns the names of all supported map types.
-	 * 
-	 * @return array
-	 */
-	public static function getTypeNames() {
-		return array_keys( self::$mapTypes );
-	}
 	
 	/**
 	 * Returns the names of all supported controls. 

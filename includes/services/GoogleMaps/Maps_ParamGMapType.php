@@ -29,7 +29,7 @@ class MapsParamGMapType extends ItemParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function doManipulation( &$value, array &$parameters ) {
-
+		$value = MapsGoogleMaps::$mapTypes[$value];
 	}
 	
 }
