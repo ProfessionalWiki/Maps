@@ -96,7 +96,6 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
 	$wgAutoloadClasses['iMappingFeature'] 			= $incDir . 'iMappingFeature.php';
-	$wgAutoloadClasses['iMappingParserFunction'] 	= $incDir . 'iMappingParserFunction.php'; // TODO
 	$wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 	$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
 	$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';	
