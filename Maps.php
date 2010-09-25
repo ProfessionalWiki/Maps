@@ -120,6 +120,7 @@ function efMapsSetup() {
 	
 	// Autoload the "includes/manipulations/" classes.
 	$manDir = $incDir . 'manipulations/';
+	$wgAutoloadClasses['MapsParamCoordSet'] 		= $manDir . 'Maps_ParamCoordSet.php';
 	$wgAutoloadClasses['MapsParamService'] 			= $manDir . 'Maps_ParamService.php';
 	
 	// Autoload the "includes/parserHooks/" classes.

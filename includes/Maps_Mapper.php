@@ -13,33 +13,6 @@
 final class MapsMapper {
 	
 	/**
-	 * Formats a location to a coordinate set in a certain representation.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param string $locations
-	 * @param string $name The name of the parameter.
-	 * @param array $parameters Array containing data about the so far handled parameters.
-	 */		
-	public static function formatLocation( &$location, $name, array $parameters ) {
-		if ( self::geocoderIsAvailable() ) {
-			// TODO
-			//$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
-			//$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;			
-			$location = MapsGeocoders::attemptToGeocodeToString( $location/*, $geoService, $mappingService*/ );
-		} else {
-			$location = MapsCoordinateParser::parseAndFormat( $location );
-		}
-	}
-	
-	/**
-	 * @deprecated Method moved to MapsMappingServices. Will be removed in 0.7.
-	 */
-	public static function getValidService( $service, $feature ) {
-		MapsMappingServices::getValidServiceInstance( $service, $feature );
-	}
-
-	/**
 	 * Determines if a value is a valid map dimension, and optionally corrects it.
 	 *
 	 * @since 0.6
@@ -115,17 +88,6 @@ final class MapsMapper {
 	 */
 	public static function setMapDimension( &$value, $name, array $parameters, $dimension, $default ) {
 		self::isMapDimension( $value, $name, $parameters, $dimension, true, $default );
-	}
-
-	/**
-	 * Returns a boolean indicating if MapsGeocoders is available.
-	 *
-	 * @deprecated - use MapsGeocoders::canGeocode() instead
-	 *
-	 * @return Boolean
-	 */
-	public static function geocoderIsAvailable() {
-		return MapsGeocoders::canGeocode();
 	}
 	
 	/**

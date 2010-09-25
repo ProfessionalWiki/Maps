@@ -6,7 +6,7 @@
  * @since 0.7
  * 
  * @file Maps_ParamService.php
- * @ingroup Validator
+ * @ingroup Maps
  * @ingroup ParameterManipulations
  * 
  * @author Jeroen De Dauw

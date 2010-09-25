@@ -63,20 +63,11 @@ class MapsDisplayMap extends ParserHook {
 		
 		$params['mappingservice']->default = $egMapsDefaultServices['display_map'];
 		
-		$params['coordinates'] = new Parameter(
-			'coordinates', 
-			Parameter::TYPE_STRING,
-			null,
-			array( 'coords', 'location', 'address' ),
-			array(
-				new CriterionIsLocation(),
-			)
-		);
-		
+		$params['coordinates'] = new Parameter( 'coordinates' );
+		$params['coordinates']->addAliases( 'coords', 'location', 'address' );
+		$params['coordinates']->addCriteria( new CriterionIsLocation() );
+		$params['coordinates']->addManipulations( new MapsParamCoordSet() );		
 		$params['coordinates']->lowerCaseValue = false;
-		
-		// TODO
-		$params['coordinates']->outputTypes = array( 'coordinateSet' => array( 'coordinateSet' ) );		
 		
 		return $params;
 	}
