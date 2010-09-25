@@ -40,7 +40,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			array(),
 			array(
 				new CriterionInArray( self::getTypeNames() ),
-			),
+			)
 		);
 		$params['type']->addManipulations( new MapsParamGMap3Type() );		
 	}
