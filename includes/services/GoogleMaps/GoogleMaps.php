@@ -36,7 +36,8 @@ function efMapsInitGoogleMaps() {
 	$wgAutoloadClasses['MapsGoogleMaps'] 			= dirname( __FILE__ ) . '/Maps_GoogleMaps.php';
 	$wgAutoloadClasses['CriterionGoogleOverlay'] 	= dirname( __FILE__ ) . '/CriterionGoogleOverlay.php';
 	$wgAutoloadClasses['MapsGoogleMapsDispMap'] 	= dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
-	$wgAutoloadClasses['MapsGoogleMapsDispPoint'] 	= dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';	
+	$wgAutoloadClasses['MapsGoogleMapsDispPoint'] 	= dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';
+	$wgAutoloadClasses['MapsParamGMapType']		 	= dirname( __FILE__ ) . '/Maps_ParamGMapType.php';
 	
 	MapsMappingServices::registerService( 'googlemaps2', 'MapsGoogleMaps' );
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps2' );

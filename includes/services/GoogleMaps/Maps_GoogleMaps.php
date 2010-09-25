@@ -1,24 +1,12 @@
 <?php
 
 /**
- * File holding the MapsGoogleMaps class.
- *
- * @file Maps_GoogleMaps.php
- * @ingroup MapsGoogleMaps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class holding information and functionallity specific to Google Maps v2.
  * This infomation and features can be used by any mapping feature. 
  * 
  * @since 0.1
  * 
+ * @file Maps_GoogleMaps.php
  * @ingroup MapsGoogleMaps
  * 
  * @author Jeroen De Dauw
