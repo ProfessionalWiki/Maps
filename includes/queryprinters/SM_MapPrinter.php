@@ -181,7 +181,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		);
 		
 		foreach ( $paramsToFilter as $paramName ) {
-			if ( aray_key_exists( $paramName, $mapProperties ) ) {
+			if ( array_key_exists( $paramName, $mapProperties ) ) {
 				unset( $mapProperties[$paramName] );
 			}
 		}
