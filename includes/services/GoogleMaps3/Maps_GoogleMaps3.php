@@ -31,25 +31,18 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * @since 0.5
 	 */	
 	protected function initParameterInfo( array &$params ) {
-		global $egMapsGMaps3Type, $egMapsGMaps3Types;
-		
-		// TODO
-		//Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
-		//Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );		
+		global $egMapsGMaps3Type;
 		
 		$params['type'] = new Parameter(
 			'type',
 			Parameter::TYPE_STRING,
-			$egMapsGMaps3Type,// FIXME: default value should not be used when not present in types parameter.
+			$egMapsGMaps3Type,
 			array(),
 			array(
 				new CriterionInArray( self::getTypeNames() ),
 			),
-			array( 'types' )		
 		);
-
-		// TODO
-		$params['type']->outputTypes = array( 'gmap3type' => array( 'gmap3type' ) );		
+		$params['type']->addManipulations( new MapsParamGMap3Type() );		
 	}
 	
 	/**
@@ -122,30 +115,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 */
 	public static function getTypeNames() {
 		return array_keys( self::$mapTypes );
-	}
-	
-	/**
-	 * Changes the map type name into the corresponding Google Maps API v3 identifier.
-	 *
-	 * @param string $type
-	 * 
-	 * @return string
-	 */
-	public static function setGMapType( &$type, $name, array $parameters ) {
-		$type = 'google.maps.MapTypeId.' . self::$mapTypes[ $type ];
-	}
-	
-	/**
-	 * Changes the map type names into the corresponding Google Maps API v3 identifiers.
-	 * 
-	 * @param array $types
-	 * 
-	 * @return array
-	 */
-	public static function setGMapTypes( array &$types, $name, array $parameters ) {
-		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
-			self::setGMapType( $types[$i], $name, $parameters );
-		}
 	}
 	
 	/**
