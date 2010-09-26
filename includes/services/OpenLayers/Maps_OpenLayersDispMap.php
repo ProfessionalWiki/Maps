@@ -1,18 +1,13 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with OpenLayers
+ * Class for handling the display_map parser function with OpenLayers.
  *
  * @file Maps_OpenLayersDispMap.php
  * @ingroup MapsOpenLayers
  *
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	/**
@@ -20,7 +15,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgLang;
-		
+
 		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
 
 		$mapName = $this->service->getMapId();

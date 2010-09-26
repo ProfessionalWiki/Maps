@@ -65,14 +65,10 @@ class MapsOpenLayers extends MapsMappingService {
 			$egMapsOLLayers,
 			array(),
 			array(
-				new CriterionInArray( self::getLayerNames( true ), new ParamManipulationImplode( ',', "'" ) ),
+				new CriterionInArray( self::getLayerNames( true ) ),
 			)			
-		);	
-
-		// TODO
-		$params['layers']->outputTypes = array(
-			'olgroups' => array( 'olgroups' ),
-		);		
+		);
+		$params['layers']->addManipulations( new MapsParamOLLayers() );
 	}
 	
 	/**
@@ -186,7 +182,7 @@ class MapsOpenLayers extends MapsMappingService {
 			$this->loadDependencyWhenNeeded( $layer );
 			$layerStr[] = is_array( $egMapsOLAvailableLayers[$layer] ) ? $egMapsOLAvailableLayers[$layer][0] : $egMapsOLAvailableLayers[$layer];
 		}
-		
+
 		return count( $layerStr ) == 0 ? '' : 'new ' . implode( ',new ', $layerStr );
 	}
 	

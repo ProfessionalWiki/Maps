@@ -32,7 +32,7 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		global $egMapsOLLayerGroups;
 		
 		$unpacked = array();
-		
+
 		foreach ( $parameter->value as $layerOrGroup ) {
 			if ( array_key_exists( $layerOrGroup, $egMapsOLLayerGroups ) ) {
 				$unpacked = array_merge( $unpacked, $egMapsOLLayerGroups[$layerOrGroup] );
