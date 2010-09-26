@@ -77,25 +77,27 @@ abstract class MapsBasePointMap {
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
 	 * @param array $params
+	 * @param Parser $parser
 	 * 
 	 * @return html
 	 */
-	public final function getMapHtml( array $params ) {
+	public final function getMapHtml( array $params, Parser $parser ) {
 		$this->setMapProperties( $params );
 		
 		$this->setMarkerData();
 
 		$this->setCentre();
 		
+		// TODO
 		if ( count( $this->markerData ) <= 1 && $this->zoom == 'null' ) {
 			$this->zoom = $this->service->getDefaultZoom();
 		}
 		
 		$this->markerJs = $this->service->createMarkersJs( $this->markerData );
 		
-		$this->addSpecificMapHTML();
+		$this->addSpecificMapHTML( $parser );
 		
-		$this->service->addDependencies( $this->parser );
+		$this->service->addDependencies( $parser );
 		
 		return $this->output;
 	}
@@ -112,6 +114,7 @@ abstract class MapsBasePointMap {
 		$this->title = $parser->parse( $this->title, $wgTitle, new ParserOptions() )->getText();
 		$this->label = $parser->parse( $this->label, $wgTitle, new ParserOptions() )->getText();
 		
+		/* TODO
 		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
 		foreach ( $this->coordinates as $args ) {
 			$markerData = MapsCoordinateParser::parseCoordinates( array_shift( $args ) );
@@ -159,6 +162,7 @@ abstract class MapsBasePointMap {
 			
 			$this->markerData[] = $markerData;
 		}
+		*/
 	}
 
 	/**

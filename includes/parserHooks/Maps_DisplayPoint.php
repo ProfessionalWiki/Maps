@@ -84,7 +84,7 @@ class MapsDisplayPoint extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo() {
-		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsDefaultMapCentre;
 		
 		// TODO
 		//Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
@@ -164,18 +164,12 @@ class MapsDisplayPoint extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		// Get the instance of the service class. 
-		$service = MapsMappingServices::getValidServiceInstance( $parameters['mappingservice'], $this->getName() );
+		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
 		
 		// Get an instance of the class handling the current parser hook and service. 
 		$mapClass = $service->getFeatureInstance( $this->getName() );
 		
-		if ( $mapClass === false ) {
-			return ''; // TODO
-		}
-		else {
-			return ''; // TODO
-			//return $mapClass->getMapHtml( $parameters );
-		}
+		return $mapClass->getMapHtml( $parameters, $this->parser );
 	}	
 			
 }

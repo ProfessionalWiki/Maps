@@ -1,20 +1,10 @@
 <?php
 
 /**
- * File holding the MapsOpenLayersDispPoint class.
+ * Class for handling the display_point(s) parser functions with OpenLayers.
  *
  * @file Maps_OpenLayersDispPoint.php
  * @ingroup MapsOpenLayers
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * Class for handling the display_point(s) parser functions with OpenLayers.
  *
  * @author Jeroen De Dauw
  */
@@ -23,7 +13,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgLang;
 		
 		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
@@ -41,7 +31,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 		
 		$langCode = $wgLang->getCode();
 		
-		$this->parser->getOutput()->addHeadItem(
+		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {

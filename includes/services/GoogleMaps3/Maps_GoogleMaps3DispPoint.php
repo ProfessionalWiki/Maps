@@ -1,21 +1,9 @@
 <?php
 
 /**
- * File holding the MapsGoogleMaps3DispPoint class.
- *
- * @file Maps_GoogleMaps3DispPoint.php
- * @ingroup MapsGoogleMaps3
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for handling the display_point(s) parser functions with Google Maps v3.
  *
+ * @file Maps_GoogleMaps3DispPoint.php
  * @ingroup MapsGoogleMaps3
  *
  * @author Jeroen De Dauw
@@ -26,7 +14,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	 * @see MapsBaseMap::addSpecificMapHTML
 	 *
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		$mapName = $this->service->getMapId();;
 		
 		$this->output .= Html::element(
@@ -38,7 +26,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 			null
 		);
 		
-		$this->parser->getOutput()->addHeadItem(
+		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {

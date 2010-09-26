@@ -1,20 +1,10 @@
 <?php
 
 /**
- * File holding the MapsYahooMapsDispPoint class.
+ * Class for handling the display_point(s) parser functions with Yahoo! Maps.
  *
  * @file Maps_YahooMapsDispPoint.php
  * @ingroup MapsYahooMaps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * Class for handling the display_point(s) parser functions with Yahoo! Maps.
  *
  * @author Jeroen De Dauw
  */
@@ -23,7 +13,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
@@ -35,7 +25,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$this->parser->getOutput()->addHeadItem(
+		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
