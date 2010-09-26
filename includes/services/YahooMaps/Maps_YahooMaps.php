@@ -68,7 +68,7 @@ class MapsYahooMaps extends MapsMappingService {
 			array(
 				new CriterionInArray( self::getTypeNames() ),
 			),
-			array( 'types' )		
+			array( 'types' )
 		);
 		$params['type']->addManipulations( new MapsParamYMapType() );
 
@@ -82,7 +82,7 @@ class MapsYahooMaps extends MapsMappingService {
 				new CriterionInArray( self::getTypeNames() ),
 			)
 		);
-		$params['type']->addManipulations( new MapsParamYMapType() );
+		$params['types']->addManipulations( new MapsParamYMapType(), new ParamManipulationImplode( ',', "'" ) );
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',

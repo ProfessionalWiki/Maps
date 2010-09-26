@@ -65,7 +65,7 @@ class MapsOpenLayers extends MapsMappingService {
 			$egMapsOLLayers,
 			array(),
 			array(
-				new CriterionInArray( self::getLayerNames( true ) ),
+				new CriterionInArray( self::getLayerNames( true ), new ParamManipulationImplode( ',', "'" ) ),
 			)			
 		);	
 
