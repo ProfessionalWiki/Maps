@@ -69,6 +69,10 @@ class MapsParamDimension extends ItemParameterManipulation {
 		} else if ( $number > $max ) {
 			$value = $max;
 		}
+		
+		if ( !preg_match( '/(px|ex|em|%)$/', $value ) ) { 
+			$value .= 'px'; 
+		}
 	}
 	
 }

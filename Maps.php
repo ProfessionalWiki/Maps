@@ -49,7 +49,8 @@ else {
 	define( 'Maps_GEO_MIN', "'" );
 	define( 'Maps_GEO_SEC', '"' );
 
-	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+	// TODO 
+	$useExtensionPath = /*version_compare( $wgVersion, '1.16', '>=' ) &&*/ isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$egMapsScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	unset( $useExtensionPath );

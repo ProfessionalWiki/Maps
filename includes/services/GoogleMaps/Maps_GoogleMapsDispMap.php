@@ -1,21 +1,9 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with Google Maps
- *
- * @file Maps_GoogleMapsDispMap.php
- * @ingroup MapsGoogleMaps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for handling the display_map parser functions with Google Maps.
  *
+ * @file Maps_GoogleMapsDispMap.php
  * @ingroup MapsGoogleMaps
  *
  * @author Jeroen De Dauw
