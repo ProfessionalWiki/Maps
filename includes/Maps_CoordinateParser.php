@@ -13,9 +13,10 @@
  * regex to also accept dm and dd, which can give unexpected results in certain
  * usecases. The different seperator support could also be made nice.
  * 
+ * @since 0.6
+ * 
  * @file Maps_CoordinateParser.php
  * @ingroup Maps
- * @since 0.6
  * 
  * @author Jeroen De Dauw
  */

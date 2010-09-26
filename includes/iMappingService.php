@@ -1,22 +1,12 @@
 <?php
 
 /**
- * File holding interface iMapParserFunction.
- * 
- * @file iMappingService.php
- * @ingroup Maps
- * 
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Interface that should be implemented by all mapping feature classes.
  * 
  * @since 0.6.3
+ * 
+ * @file iMappingService.php
+ * @ingroup Maps
  * 
  * @author Jeroen De Dauw
  */

@@ -25,7 +25,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
@@ -37,7 +37,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 			null
 		);
 		
-		$this->parser->getOutput()->addHeadItem(
+		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {

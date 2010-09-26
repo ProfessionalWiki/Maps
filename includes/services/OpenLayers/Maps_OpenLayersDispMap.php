@@ -18,7 +18,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
-	public function addSpecificMapHTML() {
+	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgLang;
 		
 		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
@@ -36,7 +36,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 		
 		$langCode = $wgLang->getCode();
 		
-		$this->parser->getOutput()->addHeadItem(
+		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {

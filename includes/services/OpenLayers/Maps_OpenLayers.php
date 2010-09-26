@@ -43,7 +43,7 @@ class MapsOpenLayers extends MapsMappingService {
 	protected function initParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
-		//$params['zoom']->addCriterion( new CriterionInRange( 0, 19 ) );
+		//$params['zoom']->addCriteria( new CriterionInRange( 0, 19 ) );
 		//$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
 		$params['controls'] = new ListParameter(

@@ -29,7 +29,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 	 * 
 	 * @since 0.6.4
 	 */
-	public function addSpecificMapHTML() {	
+	public function addSpecificMapHTML( Parser $parser ) {	
 		$this->output .= Html::element(
 			'iframe',
 			array(

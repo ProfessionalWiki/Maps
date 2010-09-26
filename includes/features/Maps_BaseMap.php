@@ -79,10 +79,11 @@ abstract class MapsBaseMap {
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
 	 * @param array $params
+	 * @param Parser $parser
 	 * 
 	 * @return html
 	 */
-	public final function getMapHtml( array $params ) {
+	public final function getMapHtml( array $params, Parser $parser ) {
 		$this->setMapProperties( $params );
 		
 		$this->setCentre();
@@ -91,9 +92,9 @@ abstract class MapsBaseMap {
 			$this->zoom = $this->service->getDefaultZoom();
 		}
 		
-		$this->addSpecificMapHTML();
+		$this->addSpecificMapHTML( $parser );
 		
-		$this->service->addDependencies( $this->parser );
+		$this->service->addDependencies( $parser );
 		
 		return $this->output;
 	}

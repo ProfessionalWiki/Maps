@@ -1,21 +1,9 @@
 <?php
 
 /**
- * File holding class MapsDistanceParser.
- *
- * @file Maps_DistanceParser.php
- * @ingroup Maps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Static class for distance validation and parsing. Internal representatations are in meters.
  * 
+ * @file Maps_DistanceParser.php
  * @ingroup Maps
  * 
  * @since 0.6
