@@ -114,7 +114,6 @@ abstract class MapsBasePointMap {
 		$this->title = $parser->parse( $this->title, $wgTitle, new ParserOptions() )->getText();
 		$this->label = $parser->parse( $this->label, $wgTitle, new ParserOptions() )->getText();
 		
-		/* TODO
 		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
 		foreach ( $this->coordinates as $args ) {
 			$markerData = MapsCoordinateParser::parseCoordinates( array_shift( $args ) );
@@ -162,7 +161,7 @@ abstract class MapsBasePointMap {
 			
 			$this->markerData[] = $markerData;
 		}
-		*/
+		
 	}
 
 	/**

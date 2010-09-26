@@ -86,15 +86,12 @@ class MapsDisplayPoint extends ParserHook {
 	protected function getParameterInfo() {
 		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsDefaultMapCentre;
 		
-		// TODO
-		//Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
-		
 		$params = MapsMapper::getCommonParameters();
 		
 		$params['mappingservice']->default = $egMapsDefaultServices['display_point'];
 		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
 		
-		$params['coordinates'] = new Parameter( 'coordinates' );
+		$params['coordinates'] = new ListParameter( 'coordinates' );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( '~' ) );
 		$params['coordinates']->addManipulations( new MapsParamCoordSet( '~' ) );		
