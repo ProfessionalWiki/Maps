@@ -1,21 +1,9 @@
 <?php
 
 /**
- * File holding the MapsGoogleMapsDispPoint class.
- *
- * @file Maps_GoogleMapsDispPoint.php
- * @ingroup MapsGoogleMaps
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for handling the display_point(s) parser functions with Google Maps.
  *
+ * @file Maps_GoogleMapsDispPoint.php
  * @ingroup MapsGoogleMaps
  *
  * @author Jeroen De Dauw
@@ -29,6 +17,8 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 	 * @see MapsBaseMap::addSpecificMapHTML
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
+		global $wgOut;
+		
 		$mapName = $this->service->getMapId();
 		
 		$this->service->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
@@ -42,9 +32,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript(
-				<<<EOT
+		MapsMapper::addInlineScript( $parser, <<<EOT
 addOnloadHook(
 	function() {
 		initializeGoogleMap("$mapName", 
@@ -63,7 +51,6 @@ addOnloadHook(
 	}
 );
 EOT
-			)
 		);
 	}
 	

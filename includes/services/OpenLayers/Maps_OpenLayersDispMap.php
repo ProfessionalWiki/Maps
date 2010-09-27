@@ -31,8 +31,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 		
 		$langCode = $wgLang->getCode();
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		MapsMapper::addInlineScript( $parser, <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
@@ -48,7 +47,7 @@ addOnloadHook(
 	}
 );
 EOT
-		) );
+		);
 	}
 
 }

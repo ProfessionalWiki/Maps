@@ -37,8 +37,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 			null
 		);
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		MapsMapper::addInlineScript( $parser, <<<EOT
 addOnloadHook(
 	function() {
 		initGMap3(
@@ -55,7 +54,6 @@ addOnloadHook(
 	}
 );
 EOT
-			)
 		);
 	}
 	

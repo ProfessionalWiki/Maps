@@ -30,7 +30,9 @@ class MapsOSMDispMap extends MapsBaseMap {
 	 * @since 0.6.4
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {	
-		$this->output .= Html::element(
+		global $wgOut;
+		
+		$wgOut->addHtml( Html::element(
 			'iframe',
 			array(
 				'id' => $this->service->getMapId(),
@@ -38,7 +40,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 				'src' => "http://toolserver.org/~kolossos/openlayers/kml-on-ol.php?zoom={$this->zoom}&lat={$this->centreLat}&lon={$this->centreLon}&lang=en"
 			),
 			wfMsg( 'maps-loading-map' )
-		);
+		) );
 	}
 	
 }

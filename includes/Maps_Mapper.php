@@ -112,6 +112,29 @@ final class MapsMapper {
 	}
 	
 	/**
+	 * Adds a string of JavaScript to the page after wrapping it in a script tag.
+	 * This function takes care of incompatible changes between MW 1.16 and 1.17.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param Parser $parser
+	 * @param string $script
+	 */
+	public static function addInlineScript( Parser $parser, $script ) {
+		$script = Html::inlineScript( $script );
+		
+		if ( method_exists( 'ParserOutput', 'addModules' ) ) {
+			// 1.17 and later
+			// TODO
+			throw new Exception( "MediaWiki doesn't like inline JS!" );
+		}
+		else {
+			// 1.16 and earlier
+			$parser->getOutput()->addHeadItem( $script );
+		}
+	}
+	
+	/**
 	 * This function returns the definitions for the parameters used by every map feature.
 	 *
 	 * @return array
