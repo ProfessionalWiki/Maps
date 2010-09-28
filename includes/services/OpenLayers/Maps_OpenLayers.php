@@ -69,6 +69,7 @@ class MapsOpenLayers extends MapsMappingService {
 			)			
 		);
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
+		$params['layers']->setDoManipulationOfDefault( true );
 	}
 	
 	/**
