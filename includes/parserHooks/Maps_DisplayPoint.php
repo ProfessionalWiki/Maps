@@ -91,7 +91,7 @@ class MapsDisplayPoint extends ParserHook {
 		$params['mappingservice']->default = $egMapsDefaultServices['display_point'];
 		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
 		
-		$params['coordinates'] = new ListParameter( 'coordinates' );
+		$params['coordinates'] = new ListParameter( 'coordinates', ';' );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( '~' ) );
 		$params['coordinates']->addManipulations( new MapsParamCoordSet( '~' ) );		
