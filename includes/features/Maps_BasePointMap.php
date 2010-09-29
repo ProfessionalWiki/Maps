@@ -168,24 +168,25 @@ abstract class MapsBasePointMap {
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
 	 */
-	private function setCentre() {
-		if ( empty( $this->centre ) ) {
+	protected function setCentre() {
+		global $egMapsDefaultMapCentre;
+		
+		if ( $this->centre === false ) {
 			if ( count( $this->markerData ) == 1 ) {
 				// If centre is not set and there is exactly one marker, use its coordinates.
 				$this->centreLat = Xml::escapeJsString( $this->markerData[0][0] );
-				$this->centreLon = Xml::escapeJsString( $this->markerData[0][1] );
+				$this->centreLon = Xml::escapeJsString( $this->markerData[0][1] );				
 			}
 			elseif ( count( $this->markerData ) > 1 ) {
 				// If centre is not set and there are multiple markers, set the values to null,
 				// to be auto determined by the JS of the mapping API.
 				$this->centreLat = 'null';
-				$this->centreLon = 'null';
+				$this->centreLon = 'null';				
 			}
-			else {
-				// If centre is not set and there are no markers, use the default latitude and longitutde.
-				global $egMapsDefaultMapCentre;
-				// TODO
+			else  {
+				$this->setCentreToDefault();
 			}
+			
 		}
 		else { // If a centre value is set, geocode when needed and use it.
 			$this->centre = MapsGeocoders::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
@@ -196,9 +197,29 @@ abstract class MapsBasePointMap {
 				$this->centreLon = Xml::escapeJsString( $this->centre['lon'] );
 			}
 			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
-				global $egMapsDefaultMapCentre;
-				// TODO
+				$this->setCentreToDefault();
 			}
+		}
+
+	}
+	
+	/**
+	 * Attempts to set the centreLat and centreLon fields to the Maps default.
+	 * When this fails (aka the default is not valid), an exception is thrown.
+	 * 
+	 * @since 0.7
+	 */
+	protected function setCentreToDefault() {
+		global $egMapsDefaultMapCentre;
+		
+		$centre = MapsGeocoders::attemptToGeocode( $egMapsDefaultMapCentre, $this->geoservice, $this->service->getName() );
+		
+		if ( $centre === false ) {
+			throw new Exception( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
+		}
+		else {
+			$this->centreLat = Xml::escapeJsString( $centre['lat'] );
+			$this->centreLon = Xml::escapeJsString( $centre['lon'] );			
 		}
 	}
 	

@@ -100,7 +100,7 @@ class MapsDisplayPoint extends ParserHook {
 		$params['centre'] = new Parameter(
 			'centre',
 			Parameter::TYPE_STRING,
-			$egMapsDefaultMapCentre,
+			false,
 			array( 'center' ),
 			array(
 				new CriterionIsLocation(),
