@@ -168,7 +168,7 @@ final class MapsMapper {
 		$params['zoom'] = new Parameter(
 			'zoom', 
 			Parameter::TYPE_INTEGER,
-			10, // TODO
+			10,
 			array( 'service' )
 		);
 		

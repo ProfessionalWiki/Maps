@@ -181,7 +181,7 @@ abstract class MapsBasePointMap {
 				// If centre is not set and there are multiple markers, set the values to null,
 				// to be auto determined by the JS of the mapping API.
 				$this->centreLat = 'null';
-				$this->centreLon = 'null';				
+				$this->centreLon = 'null';
 			}
 			else  {
 				$this->setCentreToDefault();

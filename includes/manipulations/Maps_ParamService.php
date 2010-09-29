@@ -46,7 +46,7 @@ class MapsParamService extends ItemParameterManipulation {
 		$serviceObject = MapsMappingServices::getServiceInstance( $value );
 		
 		// Add the service specific service parameters.
-		$parameters = array_merge( $parameters, $serviceObject->getParameterInfo() );
+		$serviceObject->addParameterInfo( $parameters );
 	}
 	
 }

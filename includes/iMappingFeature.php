@@ -9,6 +9,8 @@
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
+ * 
+ * TODO: update to 0.7 architecture
  */
 interface iMappingFeature {
 	

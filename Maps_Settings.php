@@ -90,7 +90,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	include_once $egMapsDir . 'includes/services/OSM/OSM.php';	
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
-	# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers, osm.
 	$egMapsAvailableServices = array(
 		'googlemaps2',
 		'googlemaps3',

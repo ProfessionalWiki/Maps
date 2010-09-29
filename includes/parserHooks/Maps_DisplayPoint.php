@@ -88,7 +88,7 @@ class MapsDisplayPoint extends ParserHook {
 		
 		$params = MapsMapper::getCommonParameters();
 		
-		$params['mappingservice']->default = $egMapsDefaultServices['display_point'];
+		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_point'] );
 		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
 		
 		$params['coordinates'] = new ListParameter( 'coordinates', ';' );

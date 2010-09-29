@@ -38,15 +38,15 @@ class MapsYahooMaps extends MapsMappingService {
 	}		
 	
 	/**
-	 * @see MapsMappingService::initParameterInfo
+	 * @see MapsMappingService::addParameterInfo
 	 * 
-	 * @since 0.5
+	 * @since 0.7
 	 */		
-	protected function initParameterInfo( array &$params ) {
+	public function addParameterInfo( array &$params ) {
 		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
-		//$params['zoom']->addCriteria( new CriterionInRange( 1, 13 ) );
-		//$params['zoom']->setDefault( self::getDefaultZoom() );		
+		$params['zoom']->addCriteria( new CriterionInRange( 1, 13 ) );
+		$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
 		$params['controls'] = new ListParameter(
 			'controls',

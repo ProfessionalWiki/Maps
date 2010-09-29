@@ -31,14 +31,13 @@ interface iMappingService {
 	function addDependencies( &$parserOrOut );
 	
 	/**
-	 * Returns an array that specifies the parameters supported by this service,
-	 * together with their meta-data. This is in a format usable by Validator.
+	 * Adds service-specific parameter definitions to the porvided parameter list.
 	 * 
-	 * @since 0.6.3
+	 * @since 0.7
 	 * 
 	 * @return array
 	 */
-	function getParameterInfo();
+	function addParameterInfo( array &$parameterInfo );
 	
 	/**
 	 * Adds a dependency that is needed for this service. It will be passed along with the next 

@@ -38,15 +38,15 @@ class MapsGoogleMaps extends MapsMappingService {
 	}
 	
 	/**
-	 * @see MapsMappingService::initParameterInfo
+	 * @see MapsMappingService::addParameterInfo
 	 * 
-	 * @since 0.5
+	 * @since 0.7
 	 */
-	protected function initParameterInfo( array &$params ) {
+	public function addParameterInfo( array &$params ) {
 		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls, $egMapsGMapOverlays;
 		
-		//$params['zoom']->addCriteria( new CriterionInRange( 0, 20 ) );
-		//$params['zoom']->setDefault( self::getDefaultZoom() );
+		$params['zoom']->addCriteria( new CriterionInRange( 0, 20 ) );
+		$params['zoom']->setDefault( self::getDefaultZoom() );
 		
 		$params['controls'] = new ListParameter(
 			'controls',

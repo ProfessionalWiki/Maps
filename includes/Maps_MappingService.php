@@ -41,16 +41,6 @@ abstract class MapsMappingService implements iMappingService {
 	protected $features;
 	
 	/**
-	 * A list of parameter info specific to the service, which can be used by any feature
-	 * to pass along to Validator to handle parameters.
-	 * 
-	 * @since 0.6.3
-	 * 
-	 * @var mixed Array or false
-	 */
-	private $parameterInfo = false;
-	
-	/**
 	 * A list of dependencies (header items) that have been added.
 	 * 
 	 * @since 0.6.3
@@ -82,17 +72,13 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * @see iMappingService::getParameterInfo
+	 * @see iMappingService::addParameterInfo
 	 * 
-	 * @since 0.6.3
+	 * @since 0.7
+	 * 
+	 * @param array $parameterInfo
 	 */	
-	public final function getParameterInfo() {
-		if ( $this->parameterInfo === false ) {
-			$this->parameterInfo = array();
-			$this->initParameterInfo( $this->parameterInfo );
-		}
-		
-		return $this->parameterInfo;
+	public function addParameterInfo( array &$parameterInfo ) {
 	}
 	
 	/**
@@ -223,17 +209,5 @@ abstract class MapsMappingService implements iMappingService {
 	protected function getDependencies() {
 		return array();
 	}
-	
-	/**
-	 * Initializes the service parameters.
-	 * 
-	 * You can override this method to set service specific parameters in the inheriting class. 
-	 * 
-	 * @since 0.6.3
-	 * 
-	 * @param array $parameters
-	 */	
-	protected function initParameterInfo( array &$parameters ) {
-	}	
 	
 }
