@@ -214,7 +214,7 @@ MoreControl.prototype.initialize = function(map) {
 	var textDiv = document.createElement("div");
 	textDiv.id = map.name + "-inner-more";
 	textDiv.setAttribute('class', 'inner-more');
-	textDiv.appendChild(document.createTextNode("Overlays"));
+	textDiv.appendChild(document.createTextNode( msgOverlays ));
 
 	buttonDiv.appendChild(textDiv);
 
