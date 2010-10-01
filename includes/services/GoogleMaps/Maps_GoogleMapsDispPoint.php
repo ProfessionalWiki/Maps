@@ -32,9 +32,7 @@ final class MapsGoogleMapsDispPoint extends MapsBasePointMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		MapsMapper::addInlineScript( $parser, <<<EOT
-addOnloadHook(
-	function() {
+		MapsMapper::addInlineScript( <<<EOT
 		initializeGoogleMap("$mapName", 
 			{
 			lat: $this->centreLat,
@@ -48,8 +46,6 @@ addOnloadHook(
 			},
 			$this->markerJs
 		);
-	}
-);
 EOT
 		);
 	}

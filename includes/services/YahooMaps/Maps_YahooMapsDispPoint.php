@@ -25,9 +25,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		MapsMapper::addInlineScript( $parser, <<<EOT
-addOnloadHook(
-	function() {
+		MapsMapper::addInlineScript( <<<EOT
 		initializeYahooMap(
 			"$mapName",
 			$this->centreLat,
@@ -39,8 +37,6 @@ addOnloadHook(
 			$this->autozoom,
 			$this->markerJs
 		);
-	}
-);
 EOT
 		);
 	}

@@ -107,7 +107,7 @@ abstract class MapsMappingService implements iMappingService {
 	public final function addDependencies( &$parserOrOut ) {
 		$dependencies = $this->getDependencyHtml();
 		
-		// Only aff a head item when there are dependencies.
+		// Only add a head item when there are dependencies.
 		if ( $dependencies ) {
 			if ( $parserOrOut instanceof Parser ) {
 				$parserOrOut->getOutput()->addHeadItem( $dependencies );

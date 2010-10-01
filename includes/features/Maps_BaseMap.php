@@ -84,6 +84,8 @@ abstract class MapsBaseMap {
 	 * @return html
 	 */
 	public final function getMapHtml( array $params, Parser $parser ) {
+		MapsMapper::addBCJS( $parser );
+		
 		$this->setMapProperties( $params );
 		
 		$this->setCentre();

@@ -74,6 +74,8 @@ else {
 	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
 	
 	$wgHooks['UnitTestsList'][] = 'efMapsUnitTests';
+	
+	$wgHooks['SkinAfterBottomScripts'][] = 'efMapsAddOnloadFunction';
 }
 
 /**
@@ -86,8 +88,10 @@ else {
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
 	global $egMapsDefaultService, $egMapsAvailableServices;
-	global $egMapsDir, $egMapsUseMinJs;
+	global $egMapsDir, $egMapsUseMinJs, $egMapsEvilJS;
 
+	$egMapsEvilJS = '';
+	
 	// Autoload the "includes/" classes and interfaces.
 	$incDir = dirname( __FILE__ ) . '/includes/';
 	$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
@@ -165,10 +169,6 @@ function efMapsSetup() {
 		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList ),
 	);
 
-	// TODO
-	//Validator::addOutputFormat( 'mapdimension', array( 'MapsMapper', 'setMapDimension' ) );
-	//Validator::addOutputFormat( 'coordinateset', array( 'MapsMapper', 'formatLocation' ) );
-
 	return true;
 }
 
@@ -202,5 +202,18 @@ function efMapsAddToAdminLinks( &$admin_links_tree ) {
 function efMapsUnitTests( array &$files ) {
 	$testDir = dirname( __FILE__ ) . '/test/';
 	//$files[] = $testDir . 'MapsCoordinateParserTest.php';
+	return true;
+}
+
+/**
+ * Adds the map JS to the bottom of the page. This is a hack to get
+ * around the lack of inline script support in the MW 1.17 resource loader.
+ * 
+ * @since 0.7
+ */
+function efMapsAddOnloadFunction( $skin, &$text ) {
+	if ( method_exists( 'ParserOutput', 'addModules' ) ) {
+		$text .= Html::inlineScript( 'if (window.runMapsOnloadHook) runMapsOnloadHook();' );
+	}
 	return true;
 }

@@ -112,26 +112,45 @@ final class MapsMapper {
 	}
 	
 	/**
-	 * Adds a string of JavaScript to the page after wrapping it in a script tag.
-	 * This function takes care of incompatible changes between MW 1.16 and 1.17.
+	 * Adds a string of JavaScript to the end of the page in a script container.
+	 * This is a hack to get around the lack of inline script support in the 
+	 * MW 1.17 resource loader.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param Parser $parser 
+	 * @param string $script
+	 */
+	public static function addInlineScript( Parser $parser, $script ) {
+		$onloadFunction = method_exists( 'ParserOutput', 'addModules' ) ? 'addMapsOnloadHook' : 'addOnloadHook';
+		
+		$parser->getOutput()->addHeadItem( Html::inlineScript( 
+			"$onloadFunction( function() { $script } );"
+		) ); 
+	}
+	
+	/**
+	 * Includes the mapsonload.js script.
+	 * 
+	 * This is a hack to get around the lack of inline script support in the 
+	 * MW 1.17 resource loader.
 	 * 
 	 * @since 0.7
 	 * 
 	 * @param Parser $parser
-	 * @param string $script
 	 */
-	public static function addInlineScript( Parser $parser, $script ) {
-		$script = Html::inlineScript( $script );
-		
+	public static function addBCJS( Parser $parser ) {
 		if ( method_exists( 'ParserOutput', 'addModules' ) ) {
-			// 1.17 and later
-			// TODO
-			throw new Exception( "MediaWiki doesn't like inline JS!" );
-		}
-		else {
-			// 1.16 and earlier
-			$parser->getOutput()->addHeadItem( $script );
-		}
+			static $addOnloadJs = false;
+			
+			if ( !$addOnloadJs ) {
+				$addOnloadJs = true;
+				global $egMapsScriptPath, $egMapsStyleVersion;
+				$parser->getOutput()->addHeadItem(
+					Html::linkedScript( "$egMapsScriptPath/includes/mapsonload.js?$egMapsStyleVersion" )
+				);
+			}
+		}		
 	}
 	
 	/**

@@ -82,6 +82,8 @@ abstract class MapsBasePointMap {
 	 * @return html
 	 */
 	public final function getMapHtml( array $params, Parser $parser ) {
+		MapsMapper::addBCJS( $parser );
+		
 		$this->setMapProperties( $params );
 		
 		$this->setMarkerData();
