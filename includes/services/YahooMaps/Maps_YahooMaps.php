@@ -98,8 +98,8 @@ class MapsYahooMaps extends MapsMappingService {
 	 * @since 0.6.5
 	 */	
 	public function getDefaultZoom() {
-		global $egMapsYahooMapsTypes;
-		return $egMapsYahooMapsTypes;
+		global $egMapsYahooMapsZoom;
+		return $egMapsYahooMapsZoom;
 	}
 
 	/**

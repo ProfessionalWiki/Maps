@@ -30,7 +30,7 @@ class MapsYahooMapsDispMap extends MapsBaseMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		MapsMapper::addInlineScript( <<<EOT
+		MapsMapper::addInlineScript( $parser, <<<EOT
 		initializeYahooMap(
 			"$mapName",
 			$this->centreLat,

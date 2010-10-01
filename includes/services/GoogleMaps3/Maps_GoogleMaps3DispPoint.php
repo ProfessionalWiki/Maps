@@ -12,10 +12,9 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML
-	 *
 	 */
 	public function addSpecificMapHTML( Parser $parser ) {
-		$mapName = $this->service->getMapId();;
+		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
 			'div',
@@ -26,7 +25,7 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 			null
 		);
 		
-		MapsMapper::addInlineScript( <<<EOT
+		MapsMapper::addInlineScript( $parser, <<<EOT
 		initGMap3(
 			"$mapName",
 			{
