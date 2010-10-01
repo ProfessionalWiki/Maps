@@ -222,8 +222,7 @@ class MapsGoogleMaps extends MapsMappingService {
 		return array(
 			Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ),
 			Html::linkedScript( "$egMapsScriptPath/includes/services/GoogleMaps/GoogleMapFunctions.js?$egMapsStyleVersion" ),
-			Html::inlineScript( 'window.unload = GUnload;' ),
-			Html::inlineScript( 'var msgOverlays = ' . Xml::encodeJsVar( wfMsg( 'maps_overlays' ) ) . ';' )
+			Html::inlineScript( 'window.unload = GUnload; var msgOverlays = ' . Xml::encodeJsVar( wfMsg( 'maps_overlays' ) ) . ';' )
 		);
 	}
 	
