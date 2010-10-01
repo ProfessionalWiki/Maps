@@ -82,7 +82,7 @@ class MapsGoogleMaps extends MapsMappingService {
 				new CriterionInArray( array_keys( self::$mapTypes ) ),
 			)
 		);
-		$params['types']->addManipulations( new MapsParamGMapType(), new ParamManipulationImplode( ',', "'" ) );		
+		$params['types']->addManipulations( new MapsParamGMapType(), new ParamManipulationImplode( ',' ) );		
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',
