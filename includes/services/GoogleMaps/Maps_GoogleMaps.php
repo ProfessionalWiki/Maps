@@ -59,7 +59,7 @@ class MapsGoogleMaps extends MapsMappingService {
 			)			
 		);
 		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
-		
+
 		$params['type'] = new Parameter(
 			'type',
 			Parameter::TYPE_STRING,

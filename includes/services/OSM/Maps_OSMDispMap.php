@@ -1,23 +1,11 @@
 <?php
 
 /**
- * File holding the MapsOSMDispMap class.
- *
- * @file Maps_OSMDispMap.php
- * @ingroup OSM
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for handling the display_map parser function with OSM.
  * 
  * @since 0.6.4
  * 
+ * @file Maps_OSMDispMap.php
  * @ingroup OSM
  * 
  * @author Jeroen De Dauw
@@ -32,7 +20,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML( Parser $parser ) {	
 		global $wgOut;
 		
-		$wgOut->addHtml( Html::element(
+		$this->output .= Html::element(
 			'iframe',
 			array(
 				'id' => $this->service->getMapId(),
@@ -40,7 +28,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 				'src' => "http://toolserver.org/~kolossos/openlayers/kml-on-ol.php?zoom={$this->zoom}&lat={$this->centreLat}&lon={$this->centreLon}&lang=en"
 			),
 			wfMsg( 'maps-loading-map' )
-		) );
+		);
 	}
 	
 }

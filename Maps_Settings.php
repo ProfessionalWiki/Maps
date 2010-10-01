@@ -110,21 +110,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Note: The default service needs to be available for the feature you set it
 	# for, since it's used as a fallback mechanism.
 	$egMapsDefaultServices = array(
-		'display_point' => 'googlemaps2',
-		'display_map' => 'googlemaps2'
+		'display_point' => $egMapsDefaultService,
+		'display_map' => $egMapsDefaultService
 	);
 
 
-
-# General configuration
-
-	# Boolean. Indicates if minified js files should be used where available.
-	# Do not change this value unless you know what you are doing!
-	$egMapsUseMinJs = false;
-
-
 	
-# Geocoding services configuration
+# Geocoding
 
 	# Array of String. Array containing all the geocoding services that will be
 	# made available to the user. Currently Maps provides the following services:
@@ -143,6 +135,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Boolean. Indicates if geocoders can override the default geoservice based on
 	# the used mapping service.
 	$egMapsUserGeoOverrides = true;
+	
+	# Boolean. Sets if coordinates should be allowed in geocoding calls.
+	$egMapsAllowCoordsGeocoding = true;
+	
+	# Boolean. Sets if geocoded addresses should be stored in a cache.
+	$egMapsEnableGeoCache = true;	
 
 
 
@@ -164,12 +162,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
 	$egMapsCoordinateDirectional = true;
 	
-	# Boolean. Sets if coordinates should be allowed in geocoding calls.
-	$egMapsAllowCoordsGeocoding = true;
-	
-	# Boolean. Sets if geocoded addresses should be stored in a cache.
-	$egMapsEnableGeoCache = true;
-	
 	# Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
 	$egMapsInternatDirectionLabels = true;
 
@@ -178,7 +170,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # Distance configuration
 	
 	# Array. A list of units (keys) and how many meters they represent (value).
-	# No spaces! If the unit consists out of multple words, just write them together.
+	# No spaces! If the unit consists out of multiple words, just write them together.
 	$egMapsDistanceUnits = array(
 		'm' => 1,
 		'meter' => 1,
@@ -197,7 +189,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# String. The default unit for distances.
 	$egMapsDistanceUnit = 'm';
 	
-	# Integer. The default limit of fractal digits in a distance.
+	# Integer. The default amount of fractal digits in a distance.
 	$egMapsDistanceDecimals = 2;	
 	
 	

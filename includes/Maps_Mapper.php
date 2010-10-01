@@ -95,7 +95,7 @@ final class MapsMapper {
 	/**
 	 * Add a JavaScript file out of skins/common, or a given relative path.
 	 * 
-	 * This is a copy of the native function in OutputPage to work around a pre 1.16 bug.
+	 * This is a copy of the native function in OutputPage to work around a pre MW 1.16 bug.
 	 * Should be used for adding external files, like the Google Maps API.
 	 * 
 	 * @param OutputPage $out

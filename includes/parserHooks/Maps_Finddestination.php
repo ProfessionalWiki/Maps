@@ -151,6 +151,7 @@ class MapsFinddestination extends ParserHook {
 			$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		}
 		
+		// TODO
 		if ( $location ) {
 			$destination = MapsGeoFunctions::findDestination(
 				$location,
