@@ -61,13 +61,14 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * @since 0.6.5
 	 */
 	public function getMapId( $increment = true ) {
-		global $egMapsGoogleMaps3Prefix, $egGoogleMaps3OnThisPage;
+		global $egMapsGoogleMaps3Prefix;
+		static $mapsOnThisPage = 0;
 		
 		if ( $increment ) {
-			$egGoogleMaps3OnThisPage++;
+			$mapsOnThisPage++;
 		}
 		
-		return $egMapsGoogleMaps3Prefix . '_' . $egGoogleMaps3OnThisPage;
+		return $egMapsGoogleMaps3Prefix . '_' . $mapsOnThisPage;
 	}	
 	
 	/**

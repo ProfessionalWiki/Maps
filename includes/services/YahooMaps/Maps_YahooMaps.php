@@ -108,13 +108,14 @@ class MapsYahooMaps extends MapsMappingService {
 	 * @since 0.6.5
 	 */
 	public function getMapId( $increment = true ) {
-		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
+		global $egMapsYahooMapsPrefix;
+		static $mapsOnThisPage = 0;
 		
 		if ( $increment ) {
-			$egYahooMapsOnThisPage++;
+			$mapsOnThisPage++;
 		}
 		
-		return $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
+		return $egMapsYahooMapsPrefix . '_' . $mapsOnThisPage;
 	}		
 	
 	/**
