@@ -160,7 +160,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
+		$this->service->addParameterInfo( $parameterInfo );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
 		$validator = new Validator( $this->getName() );

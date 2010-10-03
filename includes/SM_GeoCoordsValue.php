@@ -21,6 +21,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * Set the default format to 'map' when the requested properties are
 	 * of type geographic coordinates.
 	 * 
+	 * TODO: have a setting to turn this off and have it off by default for #show
+	 * 
 	 * @since 0.6.5
 	 * 
 	 * @param $format Mixed: The format (string), or false when not set yet 
