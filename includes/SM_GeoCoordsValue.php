@@ -34,28 +34,34 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests, array $params ) {
 		// Only set the format when not set yet. This allows other extensions to override the Semantic Maps behaviour. 
 		if ( $format === false ) {
-			$allCoords = true;
-			$hasNonPage = false;
-			
-			// Loop through the print requests to determine their types.
-			foreach( $printRequests as $printRequest ) {
-				$typeId = $printRequest->getTypeID();
+			// Only apply when there is more then one print request.
+			// This way requests comming from #show are ignored. 
+			if ( count( $printRequests ) > 1 ) {
+				$allCoords = true;
+				$first = true;
 				
-				// Ignore the page type.
-				if ( $typeId != '_wpg' ) {
-					$hasNonPage = true;
+				// Loop through the print requests to determine their types.
+				foreach( $printRequests as $printRequest ) {
+					// Skip the first request, as it's the object.
+					if ( $first ) {
+						$first = false;
+						continue;
+					}
 					
+					$typeId = $printRequest->getTypeID();
+						
 					if ( $typeId != '_geo' ) {
 						$allCoords = false;
 						break;
 					}
 				}
+	
+				// If they are all coordinates, set the result format to 'map'.
+				if ( $allCoords ) {
+					$format = 'map';
+				}				
 			}
-			
-			// If they are all coordinates, set the result format to 'map'.
-			if ( $allCoords && $hasNonPage ) {
-				$format = 'map';
-			}
+
 		}
 		
 		return true;
