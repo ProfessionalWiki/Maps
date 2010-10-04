@@ -190,14 +190,18 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		
 		$validator->validateParameters();
 		
-		$showMap = $validator->hasFatalError();
+		$fatalError  = $validator->hasFatalError();
 			
-		if ( $showMap ) {
-			$validator->formatParameters();
+		if ( $fatalError === false ) {
 			$this->setMapProperties( $validator->getParameterValues() );
 		}
+		else {
+			$this->output = '<span class="errorbox">' .
+				htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $error->getMessage() ) ) . 
+				'</span>';			
+		}
 		
-		return $showMap;
+		return !$fatalError;
 	}
 	
 	/**

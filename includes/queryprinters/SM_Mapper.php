@@ -23,7 +23,7 @@ final class SMMapper {
 	 */
 	public function __construct( $format, $inline ) {
 		global $egMapsDefaultServices;
-		
+
 		// TODO: allow service parameter to override the default
 		// Note: if this is allowed, then the getParameters should only return the base parameters.
 		if ( $format == 'map' ) $format = $egMapsDefaultServices['qp'];
