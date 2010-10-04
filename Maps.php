@@ -71,11 +71,16 @@ else {
 	// Register the initialization function of Maps.
 	$wgExtensionFunctions[] = 'efMapsSetup';
 
-	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
+	$wgAutoloadClasses['MapsHooks'] = dirname( __FILE__ ) . '/Maps.hooks.php';
 	
-	$wgHooks['UnitTestsList'][] = 'efMapsUnitTests';
+	// Since 0.2
+	$wgHooks['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
 	
-	$wgHooks['SkinAfterBottomScripts'][] = 'efMapsAddOnloadFunction';
+	// Since 0.6.5
+	$wgHooks['UnitTestsList'][] = 'MapsHooks::registerUnitTests';
+	
+	// Since 0.7
+	$wgHooks['SkinAfterBottomScripts'][] = 'MapsHooks::addOnloadFunction';
 }
 
 /**
@@ -88,10 +93,8 @@ else {
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
 	global $egMapsDefaultService, $egMapsAvailableServices;
-	global $egMapsDir, $egMapsUseMinJs, $egMapsEvilJS;
+	global $egMapsDir, $egMapsUseMinJs;
 
-	$egMapsEvilJS = '';
-	
 	// Autoload the "includes/" classes and interfaces.
 	$incDir = dirname( __FILE__ ) . '/includes/';
 	$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
@@ -169,51 +172,5 @@ function efMapsSetup() {
 		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList ),
 	);
 
-	return true;
-}
-
-/**
- * Adds a link to Admin Links page.
- * 
- * @since 0.2
- * 
- * @return true
- */
-function efMapsAddToAdminLinks( &$admin_links_tree ) {
-    $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
-
-    // Escape if SMW hasn't added links.
-    if ( is_null( $displaying_data_section ) ) return true;
-    $smw_docu_row = $displaying_data_section->getRow( 'smw' );
-
-    $maps_docu_label = wfMsg( 'adminlinks_documentation', wfMsg( 'maps_name' ) );
-    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Maps', $maps_docu_label ) );
-
-    return true;
-}
-
-/**
- * Hook to add PHPUnit test cases.
- * 
- * @since 0.6.5
- * 
- * @param array $files
- */
-function efMapsUnitTests( array &$files ) {
-	$testDir = dirname( __FILE__ ) . '/test/';
-	//$files[] = $testDir . 'MapsCoordinateParserTest.php';
-	return true;
-}
-
-/**
- * Adds the map JS to the bottom of the page. This is a hack to get
- * around the lack of inline script support in the MW 1.17 resource loader.
- * 
- * @since 0.7
- */
-function efMapsAddOnloadFunction( $skin, &$text ) {
-	if ( method_exists( 'ParserOutput', 'addModules' ) ) {
-		$text .= Html::inlineScript( 'if (window.runMapsOnloadHook) runMapsOnloadHook();' );
-	}
 	return true;
 }
