@@ -81,6 +81,9 @@ else {
 	
 	// Since 0.7
 	$wgHooks['SkinAfterBottomScripts'][] = 'MapsHooks::addOnloadFunction';
+	
+	// Since 0.7
+	$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsHooks::registerResourceLoaderModules';
 }
 
 /**

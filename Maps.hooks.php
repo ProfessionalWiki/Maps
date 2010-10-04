@@ -57,6 +57,30 @@ final class MapsHooks {
 		}
 		
 		return true;
+	}
+
+	/**
+	 * Register the resource modules for the resource loader.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @param ResourceLoader $resourceLoader
+	 * 
+	 * @return true
+	 */
+	public static function registerResourceLoaderModules( ResourceLoader &$resourceLoader ) {
+		global $smwgScriptPath, $wgContLang;
+		
+		$modules = array(	
+		);
+		
+		foreach ( $modules as $name => $resources ) { 
+			$resourceLoader->register( $name, new ResourceLoaderFileModule(
+				array_merge_recursive( $resources, array( 'group' => 'ext.maps' ) )
+			) ); 
+		}
+		
+		return true;
 	}	
 	
 } 
