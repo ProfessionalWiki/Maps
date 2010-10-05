@@ -1,4 +1,5 @@
 <?php
+
 /**
  * A query printer for maps using the Yahoo Maps API.
  *
@@ -7,11 +8,6 @@
  *
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 class SMYahooMapsQP extends SMMapPrinter {
 
 	/**
@@ -37,8 +33,6 @@ class SMYahooMapsQP extends SMMapPrinter {
 		);
 		
 		MapsMapper::addInlineScript( $this->service, <<<EOT
-addOnloadHook(
-	function() {
 		initializeYahooMap(
 			"$mapName",
 			$this->centreLat,
@@ -50,8 +44,6 @@ addOnloadHook(
 			$this->autozoom,
 			$this->markerJs
 		);
-	}
-);
 EOT
 		);
 	}

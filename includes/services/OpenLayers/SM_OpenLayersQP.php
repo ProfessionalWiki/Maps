@@ -8,11 +8,6 @@
  *
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 class SMOpenLayersQP extends SMMapPrinter {
 
 	/**
@@ -44,8 +39,6 @@ class SMOpenLayersQP extends SMMapPrinter {
 		$langCode = $wgLang->getCode();
 		
 		MapsMapper::addInlineScript( $this->service, <<<EOT
-addOnloadHook(
-	function() {
 		initOpenLayer(
 			"$mapName",
 			$this->centreLat,
@@ -56,8 +49,6 @@ addOnloadHook(
 			$this->markerJs,
 			"$langCode"
 		);
-	}
-);
 EOT
 		);
 	}

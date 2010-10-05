@@ -9,11 +9,6 @@
  * @author Yaron Koren
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 class SMGoogleMapsQP extends SMMapPrinter {
 	
 	/**
@@ -47,8 +42,6 @@ class SMGoogleMapsQP extends SMMapPrinter {
 		);
 		
 		MapsMapper::addInlineScript( $this->service, <<<EOT
-addOnloadHook(
-	function() {
 		initializeGoogleMap("$mapName", 
 			{
 				lat: $this->centreLat,
@@ -62,8 +55,6 @@ addOnloadHook(
 			},
 			$this->markerJs	
 		);
-	}
-);
 EOT
 		);
 	}
