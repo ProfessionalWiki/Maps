@@ -112,21 +112,22 @@ final class MapsMapper {
 	}
 	
 	/**
-	 * Adds a string of JavaScript to the end of the page in a script container.
-	 * This is a hack to get around the lack of inline script support in the 
-	 * MW 1.17 resource loader.
+	 * Adds a string of JavaScript as dependency for a mapping service
+	 * after wrapping it in an onload hook and script tag. This is sort
+	 * of a hack, but it takes care of the difference between artciles
+	 * and special pages.
 	 * 
 	 * @since 0.7
 	 * 
-	 * @param Parser $parser 
+	 * @param iMappingService $service 
 	 * @param string $script
 	 */
-	public static function addInlineScript( Parser $parser, $script ) {
+	public static function addInlineScript( iMappingService $service, $script ) {
 		$onloadFunction = method_exists( 'ParserOutput', 'addModules' ) ? 'addMapsOnloadHook' : 'addOnloadHook';
 		
-		$parser->getOutput()->addHeadItem( Html::inlineScript( 
+		$service->addDependency( Html::inlineScript( 
 			"$onloadFunction( function() { $script } );"
-		) ); 
+		) );
 	}
 	
 	/**

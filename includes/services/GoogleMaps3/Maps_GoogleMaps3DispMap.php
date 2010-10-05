@@ -37,7 +37,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 			null
 		);
 		
-		MapsMapper::addInlineScript( $parser, <<<EOT
+		MapsMapper::addInlineScript( $this->service, <<<EOT
 		initGMap3(
 			"$mapName",
 			{

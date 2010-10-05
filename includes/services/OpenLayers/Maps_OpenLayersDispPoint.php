@@ -31,7 +31,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 		
 		$langCode = $wgLang->getCode();
 		
-		MapsMapper::addInlineScript( $parser, <<<EOT
+		MapsMapper::addInlineScript( $this->service, <<<EOT
 		initOpenLayer(
 			"$mapName",
 			$this->centreLon,
