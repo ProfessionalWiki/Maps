@@ -102,9 +102,10 @@ abstract class SMFormInput implements iMappingFeature {
 		 * again overidden by the service parameters (the ones specific to the service),
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
-		$parameterInfo = MapsMapper::getCommonParameters();
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getFormParameterInfo() );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->service->getParameterInfo() );
+		$parameterInfo = $this->getFormParameterInfo();
+		$this->service->addParameterInfo( $parameterInfo );
+		
+		// TODO
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
 		$validator = new Validator( 'form' ); // TODO
@@ -119,7 +120,7 @@ abstract class SMFormInput implements iMappingFeature {
 		);
 		
 		foreach ( $paramsToFilter as $paramName ) {
-			if ( aray_key_exists( $paramName, $mapProperties ) ) {
+			if ( array_key_exists( $paramName, $mapProperties ) ) {
 				unset( $mapProperties[$paramName] );
 			}
 		}	
@@ -372,28 +373,7 @@ EOT
 	 * @return array
 	 */
 	protected function getFormParameterInfo() {
-		$parameters = self::$formParameters;
-		
-		if ( $parameters === false ) {
-			$parameters = $this->initializeFormParameters();
-			self::$formParameters = $parameters;
-		}
-		
-		return $parameters;
-	}	
-	
-	/**
-	 * Initializes and returns the definitions for the parameters specific to the form input feature.
-	 * 
-	 * @since 0.6.5
-	 * 
-	 * @return array
-	 */
-	private static function initializeFormParameters() {
-		global $egMapsAvailableServices, $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService;
-		global $smgFIWidth, $smgFIHeight;
-		
-		$params = array();
+		$params = MapsMapper::getCommonParameters();
 		
 		// TODO
 		//$params['width']->setDefault( $smgFIWidth );
@@ -417,5 +397,5 @@ EOT
 		
 		return $params;
 	}	
-		
+	
 }
