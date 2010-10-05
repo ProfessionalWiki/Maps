@@ -36,7 +36,7 @@ class SMYahooMapsQP extends SMMapPrinter {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$this->service->addDependency( Html::inlineScript( <<<EOT
+		MapsMapper::addInlineScript( $this->service, <<<EOT
 addOnloadHook(
 	function() {
 		initializeYahooMap(
@@ -53,7 +53,7 @@ addOnloadHook(
 	}
 );
 EOT
-		) );
+		);
 	}
 
 	/**

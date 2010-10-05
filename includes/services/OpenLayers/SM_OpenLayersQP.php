@@ -43,7 +43,7 @@ class SMOpenLayersQP extends SMMapPrinter {
 		
 		$langCode = $wgLang->getCode();
 		
-		$this->service->addDependency( Html::inlineScript( <<<EOT
+		MapsMapper::addInlineScript( $this->service, <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
@@ -59,7 +59,7 @@ addOnloadHook(
 	}
 );
 EOT
-		) );
+		);
 	}
 
 	/**
