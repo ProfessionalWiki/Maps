@@ -29,8 +29,9 @@ class MapsParamZoom extends ItemParameterManipulation {
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		if ( $parameter->wasSetToDefault() ) {
-			//var_dump($parameters['coordinates']);exit;
-			// TODO
+			if ( count( $parameters['coordinates']->getValue() ) > 1 ) {
+				$value = 'null';
+			}
 		}
 	}
 	
