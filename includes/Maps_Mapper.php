@@ -123,35 +123,23 @@ final class MapsMapper {
 	 * @param string $script
 	 */
 	public static function addInlineScript( iMappingService $service, $script ) {
-		$onloadFunction = method_exists( 'ParserOutput', 'addModules' ) ? 'addMapsOnloadHook' : 'addOnloadHook';
+		static $addOnloadJs = false;
+		
+		$hasRL = method_exists( 'ParserOutput', 'addModules' );
+		
+		if ( $hasRL && !$addOnloadJs ) {
+			global $egMapsScriptPath, $egMapsStyleVersion;
+			
+			$service->addDependency(
+				Html::linkedScript( "$egMapsScriptPath/includes/mapsonload.js?$egMapsStyleVersion" )
+			);
+			
+			$addOnloadJs = true;
+		} 		
 		
 		$service->addDependency( Html::inlineScript( 
-			"$onloadFunction( function() { $script } );"
+			( $hasRL ? 'addMapsOnloadHook' : 'addOnloadHook' ) . "( function() { $script } );"
 		) );
-	}
-	
-	/**
-	 * Includes the mapsonload.js script.
-	 * 
-	 * This is a hack to get around the lack of inline script support in the 
-	 * MW 1.17 resource loader.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @param Parser $parser
-	 */
-	public static function addBCJS( Parser $parser ) {
-		if ( method_exists( 'ParserOutput', 'addModules' ) ) {
-			static $addOnloadJs = false;
-			
-			if ( !$addOnloadJs ) {
-				$addOnloadJs = true;
-				global $egMapsScriptPath, $egMapsStyleVersion;
-				$parser->getOutput()->addHeadItem(
-					Html::linkedScript( "$egMapsScriptPath/includes/mapsonload.js?$egMapsStyleVersion" )
-				);
-			}
-		}		
 	}
 	
 	/**
