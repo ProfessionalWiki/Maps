@@ -40,7 +40,7 @@ class MapsParamCoordSet extends ItemParameterManipulation {
 	 * 
 	 * @since 0.7
 	 */	
-	public function doManipulation( &$value, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		if ( $this->metaDataSeparator !== false ) {
 			$parts = explode( $this->metaDataSeparator, $value );
 			$value = array_shift( $parts );

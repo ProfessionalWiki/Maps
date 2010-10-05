@@ -36,7 +36,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.7 alpha-6' );
+	define( 'Maps_VERSION', '0.7 alpha-7' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -133,6 +133,7 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsParamCoordSet'] 		= $manDir . 'Maps_ParamCoordSet.php';
 	$wgAutoloadClasses['MapsParamDimension'] 		= $manDir . 'Maps_ParamDimension.php';
 	$wgAutoloadClasses['MapsParamService'] 			= $manDir . 'Maps_ParamService.php';
+	$wgAutoloadClasses['MapsParamZoom'] 			= $manDir . 'Maps_ParamZoom.php';
 	
 	// Autoload the "includes/parserHooks/" classes.
 	$phDir = $incDir . '/parserHooks/';

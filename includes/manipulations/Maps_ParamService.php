@@ -38,7 +38,7 @@ class MapsParamService extends ItemParameterManipulation {
 	 * 
 	 * @since 0.7
 	 */	
-	public function doManipulation( &$value, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		// Make sure the service is valid.
 		$value = MapsMappingServices::getValidServiceName( $value, $this->feature );
 		

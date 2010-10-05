@@ -1,19 +1,18 @@
 <?php
 
 /**
- * Parameter manipulation ensuring the value is a Google Maps v2 map type.
+ * Parameter manipulation ensuring the value is a coordinate set.
  * 
  * @since 0.7
  * 
- * @file Maps_ParamGMapType.php
+ * @file Maps_ParamCoordSet.php
  * @ingroup Maps
  * @ingroup ParameterManipulations
- * @ingroup MapsGoogleMaps
  * 
  * @author Jeroen De Dauw
  */
-class MapsParamGMapType extends ItemParameterManipulation {
-	
+class MapsParamZoom extends ItemParameterManipulation {
+
 	/**
 	 * Constructor.
 	 * 
@@ -29,7 +28,10 @@ class MapsParamGMapType extends ItemParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
-		$value = MapsGoogleMaps::$mapTypes[$value];
+		if ( $parameter->wasSetToDefault() ) {
+			//var_dump($parameters['coordinates']);exit;
+			// TODO
+		}
 	}
 	
 }

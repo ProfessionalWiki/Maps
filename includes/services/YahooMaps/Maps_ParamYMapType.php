@@ -28,7 +28,7 @@ class MapsParamYMapType extends ItemParameterManipulation {
 	 * 
 	 * @since 0.7
 	 */	
-	public function doManipulation( &$value, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		$value = MapsYahooMaps::$mapTypes[$value];
 	}
 	

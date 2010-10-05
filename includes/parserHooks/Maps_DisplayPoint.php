@@ -60,6 +60,9 @@ class MapsDisplayPoint extends ParserHook {
 		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_point'] );
 		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
 		
+		$params['zoom']->addDependencies( 'coordinates' );
+		$params['zoom']->addManipulations( new MapsParamZoom() );
+		
 		$params['coordinates'] = new ListParameter( 'coordinates', ';' );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( '~' ) );

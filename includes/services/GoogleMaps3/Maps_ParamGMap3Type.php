@@ -28,7 +28,7 @@ class MapsParamGMap3Type extends ItemParameterManipulation {
 	 * 
 	 * @since 0.7
 	 */	
-	public function doManipulation( &$value, array &$parameters ) {
+	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		$value = 'google.maps.MapTypeId.' . MapsGoogleMaps3::$mapTypes[$value];
 	}
 	
