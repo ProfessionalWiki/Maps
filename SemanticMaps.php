@@ -1,13 +1,16 @@
 <?php
 
 /**
- * Initialization file for the Semantic Maps extension.
- * Extension documentation: http://mapping.referata.com/wiki/Semantic_Maps
+ * Initialization file for the Maps extension.
+ * 
+ * On MediaWiki.org: 		http://www.mediawiki.org/wiki/Extension:Semantic_Maps
+ * Official documentation: 	http://mapping.referata.com/wiki/Semantic_Maps
+ * Examples/demo's: 		http://mapping.referata.com/wiki/Semantic_Maps_examples
  *
  * @file SemanticMaps.php
  * @ingroup SemanticMaps
  *
- * @author Jeroen De Dauw 
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 /**
@@ -35,7 +38,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.7 alpha-6' );
+	define( 'SM_VERSION', '0.7 alpha-7' );
 
 	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$smgScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';	

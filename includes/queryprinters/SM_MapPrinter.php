@@ -50,16 +50,20 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @var string
 	 */	
 	protected $output = '';
-
-	/**
-	 * @var array
-	 */
-	protected $featureParameters = array();
 	
 	/**
 	 * @var array or false
 	 */	
 	protected $specificParameters = false;
+	
+	/**
+	 * Indicates if the zoom paramter was set to it's default.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @var boolean
+	 */
+	protected $zoomDefaulted;
 	
 	/**
 	 * Constructor.
@@ -116,8 +120,6 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @return array
 	 */
 	public final function getResultText( /* SMWQueryResult */ $res, $outputmode ) {
-		$this->featureParameters = SMQueryPrinters::$parameters;
-		
 		if ( self::manageMapProperties( $this->m_params ) ) {
 			$this->formatResultData( $res, $outputmode );
 			
@@ -159,8 +161,10 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		 * again overidden by the service parameters (the ones specific to the service),
 		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
-		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
+		$parameterInfo = SMQueryPrinters::getParameterInfo();
 		$this->service->addParameterInfo( $parameterInfo );
+		
+		// TODO
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
 		$validator = new Validator( $this->getName() );
@@ -193,6 +197,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		$fatalError  = $validator->hasFatalError();
 			
 		if ( $fatalError === false ) {
+			$this->zoomDefaulted = $validator->getParameter( 'zoom' )->wasSetToDefault();
 			$this->setMapProperties( $validator->getParameterValues() );
 		}
 		else {
@@ -381,13 +386,10 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	/**
 	 * Sets the zoom level to the provided value, or when not set, to the default.
 	 */
-	private function setZoom() {
-		if ( $this->zoom == '' ) {
+	protected function setZoom() {
+		if ( $this->zoomDefaulted ) {
 			if ( count( $this->locations ) > 1 ) {
 		        $this->zoom = 'null';
-		    }
-		    else {
-		        $this->zoom = $this->defaultZoom;
 		    }
 		}
 	}
@@ -396,7 +398,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
 	 */
-	private function setCentre() {
+	protected function setCentre() {
 		// If a centre value is set, use it.
 		if ( $this->centre != '' ) {
 			// Geocode and convert if required.

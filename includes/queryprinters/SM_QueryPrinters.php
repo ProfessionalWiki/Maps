@@ -19,8 +19,6 @@ $wgHooks['MappingFeatureLoad'][] = 'SMQueryPrinters::initialize';
 
 final class SMQueryPrinters {
 	
-	public static $parameters = array();
-	
 	/**
 	 * Initialization function for Maps query printer functionality.
 	 */
@@ -29,8 +27,6 @@ final class SMQueryPrinters {
 		
 		$wgAutoloadClasses['SMMapper'] 	= dirname( __FILE__ ) . '/SM_Mapper.php';
 		$wgAutoloadClasses['SMMapPrinter'] 	= dirname( __FILE__ ) . '/SM_MapPrinter.php';
-		
-		self::initializeParams();
 		
 		$hasQueryPrinters = false;
 
@@ -57,16 +53,18 @@ final class SMQueryPrinters {
 		return true;
 	}
 	
-	// TODO
-	private static function initializeParams() {
+	/**
+	 * Returns an array containing the parameter info.
+	 * 
+	 * @since 0.7
+	 * 
+	 * @return array
+	 */
+	public static function getParameterInfo() {
 		global $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
 		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate;
-
-		// TODO
-		//$params['geoservice']->setDefault( $egMapsDefaultGeoService );
-		//$params['mappingservice']->setDefault( $egMapsDefaultServices['qp'] );		
 		
-		$params = array();
+		$params = MapsMapper::getCommonParameters();
 		
 		$params['centre'] = new Parameter(
 			'centre',
@@ -117,7 +115,7 @@ final class SMQueryPrinters {
 		);
 		$params['template']->lowerCaseValue = false;
 		
-		self::$parameters = $params;
+		return $params;
 	}
 	
 	/**
