@@ -144,11 +144,7 @@ class MapsGeodistance extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		global $wgLang;
-		
-		$canGeocode = MapsMapper::geocoderIsAvailable();
-		
-		if ( $canGeocode ) {
+		if ( MapsGeocoders::canGeocode() ) {
 			$start = MapsGeocoders::attemptToGeocode( $parameters['location1'], $parameters['geoservice'], $parameters['mappingservice'] );
 			$end = MapsGeocoders::attemptToGeocode( $parameters['location2'], $parameters['geoservice'], $parameters['mappingservice'] );
 		} else {
