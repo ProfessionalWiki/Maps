@@ -122,6 +122,21 @@ final class SMQueryPrinters {
 		);
 		$params['template']->lowerCaseValue = false;
 		
+		$params['title'] = new Parameter(
+			'title',
+			Parameter::TYPE_STRING,
+			$egMapsDefaultTitle
+		);
+		$params['title']->lowerCaseValue = false;
+		
+		$params['label'] = new Parameter(
+			'label',
+			Parameter::TYPE_STRING,
+			$egMapsDefaultLabel,
+			array( 'text' )
+		);
+		$params['label']->lowerCaseValue = false;		
+		
 		return $params;
 	}
 	
