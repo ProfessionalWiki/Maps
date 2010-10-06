@@ -161,23 +161,8 @@ class MapsFinddestination extends ParserHook {
 			);
 			$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 		} else {
-			global $egValidatorFatalLevel;
-			switch ( $egValidatorFatalLevel ) {
-				case Validator_ERRORS_NONE:
-					$output = '';
-					break;
-				case Validator_ERRORS_WARN:
-					$output = '<b>' . htmlspecialchars( wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), 1 ) ) . '</b>';
-					break;
-				case Validator_ERRORS_SHOW: default:
-					// Show an error that the location could not be geocoded or the coordinates where not recognized.
-					if ( $canGeocode ) {
-						$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $parameters['location'] ) );
-					} else {
-						$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', array( 'parsemag' ), $parameters['location'] ) );
-					}
-					break;
-			}
+			// The location should be valid when this method gets called.
+			throw new Exception( 'Attempt to find a destination from an invalid location' );
 		}
 			
 		return $output;

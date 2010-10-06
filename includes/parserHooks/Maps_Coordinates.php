@@ -119,8 +119,8 @@ class MapsCoordinates extends ParserHook {
 		if ( $parsedCoords ) {
 			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
 		} else {
-			// TODO: use ParserHook class methods to handle errors
-			$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) );
+			// The coordinates should be valid when this method gets called.
+			throw new Exception( 'Attempt to format an invalid set of coordinates' );
 		}
 		
 		return $output;		

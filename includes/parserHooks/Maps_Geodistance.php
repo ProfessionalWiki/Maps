@@ -159,30 +159,8 @@ class MapsGeodistance extends ParserHook {
 		if ( $start && $end ) {
 			$output = MapsDistanceParser::formatDistance( MapsGeoFunctions::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
 		} else {
-			// TODO: use ParserHook class methods to handle errors
-			global $egValidatorFatalLevel;
-			
-			$fails = array();
-			if ( !$start ) $fails[] = $parameters['location1'];
-			if ( !$end ) $fails[] = $parameters['location2'];
-			
-			switch ( $egValidatorFatalLevel ) {
-				case Validator_ERRORS_NONE:
-					$output = '';
-					break;
-				case Validator_ERRORS_WARN:
-					$output = '<b>' . htmlspecialchars( wfMsgExt( 'validator_warning_parameters', array( 'parsemag' ), count( $fails ) ) ) . '</b>';
-					break;
-				case Validator_ERRORS_SHOW: default:
-					global $wgLang;
-					
-					if ( $canGeocode ) {
-						$output = htmlspecialchars( wfMsgExt( 'maps_geocoding_failed', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
-					} else {
-						$output = htmlspecialchars( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $wgLang->listToText( $fails ), count( $fails ) ) );
-					}
-					break;
-			}
+			// The locations should be valid when this method gets called.
+			throw new Exception( 'Attempt to find the distance between locations of at least one is invalid' );
 		}
 
 		return $output;
