@@ -13,8 +13,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['SMFormInputs'] = __FILE__;
-
 $wgHooks['MappingFeatureLoad'][] = 'SMFormInputs::initialize';
 
 final class SMFormInputs {
@@ -46,12 +44,14 @@ final class SMFormInputs {
 			self::initFormHook( $service->getName(), $service->getName() );
 			
 			// Loop through the service alliases, and add them as form input types.
-			foreach ( $service->getAliases() as $alias ) self::initFormHook( $alias, $service->getName() );
+			foreach ( $service->getAliases() as $alias ) {
+				self::initFormHook( $alias, $service->getName() );
+			}
 		}
 		
 		// Add the 'map' form input type if there are mapping services that have FI's loaded.
 		if ( $hasFormInputs ) self::initFormHook( 'map' );
-		
+
 		return true;
 	}
 	
@@ -65,10 +65,14 @@ final class SMFormInputs {
 	 */
 	private static function initFormHook( $inputName, $mainName = '' ) {
 		global $wgAutoloadClasses, $sfgFormPrinter, $smgDir;
-		
+
 		// Add the form input hook for the service.
 		$field_args = array();
-		if ( strlen( $mainName ) > 0 ) $field_args['service_name'] = $mainName;
+		
+		if ( $mainName != '' ) {
+			$field_args['service_name'] = $mainName;
+		}
+		
 		$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectFormInputHTML', $field_args );
 	}
 	

@@ -38,7 +38,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion;
 		
-		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/OpenLayers/SM_OpenLayersForms.js?$smgStyleVersion" ) );
+		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/includes/services/OpenLayers/SM_OpenLayersForms.js?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
 	}
 	
@@ -46,7 +46,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addSpecificMapHTML
 	 */
 	public function addSpecificMapHTML() {
-		global $wgOut, $wgLang;
+		global $wgLang;
 		
 		$mapName = $this->service->getMapId( false );
 		
@@ -63,9 +63,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 		
 		$langCode = $wgLang->getCode();
 		
-		$wgOut->addInlineScript( <<<EOT
-addOnloadHook(
-	function() {
+		MapsMapper::addInlineScript( $this->service,<<<EOT
 		makeFormInputOpenLayer(
 			"$mapName",
 			"$this->coordsFieldName",
@@ -78,8 +76,6 @@ addOnloadHook(
 			[$this->controls],
 			"$langCode"
 		);
-	}
-);
 EOT
 		);
 		

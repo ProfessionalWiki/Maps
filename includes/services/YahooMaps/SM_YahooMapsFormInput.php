@@ -48,7 +48,7 @@ class SMYahooMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion;
 		
-		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/YahooMaps/SM_YahooMapsForms.js?$smgStyleVersion" ) );
+		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/includes/services/YahooMaps/SM_YahooMapsForms.js?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
 	}
 	
@@ -56,8 +56,6 @@ class SMYahooMapsFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addSpecificMapHTML
 	 */
 	public function addSpecificMapHTML() {
-		global $wgOut;
-		
 		$mapName = $this->service->getMapId( false );
 		
 		$this->output .= Html::element(
@@ -69,9 +67,7 @@ class SMYahooMapsFormInput extends SMFormInput {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$wgOut->addInlineScript( <<<EOT
-addOnloadHook(
-	function() {
+		MapsMapper::addInlineScript( $this->service, <<<EOT
 		makeFormInputYahooMap(
 			"$mapName",
 			"$this->coordsFieldName",
@@ -85,8 +81,6 @@ addOnloadHook(
 			{$this->markerCoords['lat']},
 			{$this->markerCoords['lon']}
 		);
-	}
-);
 EOT
 		);
 

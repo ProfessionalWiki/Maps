@@ -92,7 +92,7 @@ abstract class SMFormInput implements iMappingFeature {
 	 * 
 	 * @param array $mapProperties
 	 * 
-	 * @return boolean Indicates whether the map should be shown or not.
+	 * @return mixed ValidationError object if there is a fatal error, false othewise
 	 */
 	protected final function setMapProperties( array $mapProperties ) {
 		/*
@@ -129,9 +129,9 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		$validator->validateParameters();
 		
-		$showMap = $validator->hasFatalError();
+		$fatalError = $validator->hasFatalError();
 
-		if ( $showMap ) {
+		if ( $fatalError === false ) {
 			$parameters = $validator->getParameterValues();
 			
 			foreach ( $parameters as $paramName => $paramValue ) {
@@ -145,26 +145,31 @@ abstract class SMFormInput implements iMappingFeature {
 			}
 		}
 		
-		return $showMap;
+		return $fatalError;
 	}
 	
 	/**
 	 * This function is a hook for Semantic Forms, and returns the HTML needed in 
 	 * the form to handle coordinate data.
 	 * 
-	 * @return array
-	 * 
 	 * TODO: Use function args for sf stuffz
+	 * 
+	 * @return array
 	 */
 	public final function formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args ) {
 		global $sfgTabIndex;
 
 		$this->coordinates = $coordinates;
 		
-		$showInput = $this->setMapProperties( $field_args );
+		$fatalError = $this->setMapProperties( $field_args );
 		
-		if ( !$showInput ) {
-			return array( '' );
+		if ( $fatalError !== false ) {
+			return array(
+				'<div><span class="errorbox">' .
+					htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $fatalError->getMessage() ) ) . 
+					'</span></div><br /><br /><br /><br />',
+				''
+			);
 		}
 		
 		$this->setCoordinates();
@@ -216,7 +221,8 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		$this->addFormDependencies();
 		
-		return array( $this->output . $this->errorList, '' );
+		// TODO: errors
+		return array( $this->output, '' );
 	}
 	
 	/**
@@ -390,6 +396,8 @@ EOT
 		);
 		
 		$params['centre']->lowerCaseValue = false;		
+		
+		//$params['foobar'] = new Parameter('foobar');	
 		
 		// TODO
 		//$params['geoservice']->setDefault( $egMapsDefaultGeoService );

@@ -52,7 +52,7 @@ class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion;
 
-		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/GoogleMaps/SM_GoogleMapsForms.js?$smgStyleVersion" ) );
+		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/includes/services/GoogleMaps/SM_GoogleMapsForms.js?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
 	}
 	
@@ -60,8 +60,6 @@ class SMGoogleMapsFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addSpecificFormInputHTML
 	 */
 	public function addSpecificMapHTML() {
-		global $wgOut;
-		
 		$mapName = $this->service->getMapId( false );
 		
 		// Remove the overlays control in case it's present.
@@ -79,9 +77,7 @@ class SMGoogleMapsFormInput extends SMFormInput {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$wgOut->addInlineScript( <<<EOT
-addOnloadHook(
-	function() {
+		MapsMapper::addInlineScript( $this->service, <<<EOT
 		makeGoogleMapFormInput(
 			"$mapName", 
 			"$this->coordsFieldName",
@@ -98,8 +94,6 @@ addOnloadHook(
 			{$this->markerCoords['lat']},
 			{$this->markerCoords['lon']}	
 		);
-	}	
-);
 EOT
 		);
 	}

@@ -13,8 +13,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['SMQueryPrinters'] = __FILE__;
-
 $wgHooks['MappingFeatureLoad'][] = 'SMQueryPrinters::initialize';
 
 final class SMQueryPrinters {
@@ -48,7 +46,9 @@ final class SMQueryPrinters {
 		}
 
 		// Add the 'map' result format if there are mapping services that have QP's loaded.
-		if ( $hasQueryPrinters ) self::initFormat( 'map', 'SMMapper' );
+		if ( $hasQueryPrinters ) {
+			self::initFormat( 'map', 'SMMapper' );
+		}
 		
 		return true;
 	}
