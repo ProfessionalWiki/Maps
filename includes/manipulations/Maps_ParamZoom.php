@@ -28,10 +28,10 @@ class MapsParamZoom extends ItemParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
-		if ( $parameter->wasSetToDefault() ) {
-			if ( count( $parameters['coordinates']->getValue() ) > 1 ) {
-				$value = 'null';
-			}
+		// If there are multiple points and the value was not provided or incorrect (=defaulted),
+		// set it to 'null', so the mapping service can figure out the optimal value.
+		if ( $parameter->wasSetToDefault() && count( $parameters['coordinates']->getValue() ) > 1 ) {
+			$value = 'null';
 		}
 	}
 	

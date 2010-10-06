@@ -136,7 +136,7 @@ abstract class MapsBasePointMap {
 			}
 			
 			// If there is no point specific icon, use the general icon parameter when available.
-			if ( !array_key_exists( 'icon', $markerData ) && strlen( $this->icon ) > 0 ) {
+			if ( !array_key_exists( 'icon', $markerData ) && $this->icon != '' ) {
 				$markerData['icon'] = $this->icon;
 			}
 			
