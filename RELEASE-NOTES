@@ -10,9 +10,20 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 === Semantic Maps 0.7 ===
 (2010-10-xx)
 
-===  ===
+=== New features ===
 
-*
+* Added 'locations' parameter to the map query printers that allows for displaying static locations
+  in adittion to query results in queries. It behaves the same as the locations parameter in display_points.
+
+==== Bug fixes ====
+
+* Fixed compatibility with the MW 1.17 resource loader.
+
+==== Internal improvements ====
+
+* Use of Validator 0.4, allowing for more robust and consistent error reporting.
+
+* Restructured the directory structure of the extension to better match it's architecture.
 
 === Semantic Maps 0.6.6 ===
 (2010-08-26)
