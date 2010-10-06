@@ -62,6 +62,7 @@ class MapsFinddestination extends ParserHook {
 		$params['location'] = new Parameter( 'location' );
 		$params['location']->addCriteria( new CriterionIsLocation() );
 		$params['location']->lowerCaseValue = false;
+		$params['location']->addDependencies( 'mappingservice', 'geoservice' );
 		
 		$params['bearing'] = new Parameter(
 			'bearing',

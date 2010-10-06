@@ -69,6 +69,7 @@ class MapsDisplayMap extends ParserHook {
 		$params['coordinates']->addCriteria( new CriterionIsLocation() );
 		$params['coordinates']->addManipulations( new MapsParamCoordSet() );		
 		$params['coordinates']->lowerCaseValue = false;
+		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
 		
 		return $params;
 	}

@@ -60,17 +60,10 @@ class MapsGeocode extends ParserHook {
 		
 		$params = array();
 		
-		$params['location'] = new Parameter(
-			'location',
-			Parameter::TYPE_STRING,
-			null,
-			array(),
-			array(
-				new CriterionIsLocation(),
-			)			
-		);
-
-		$params['location']->lowerCaseValue = false;		
+		$params['location'] = new Parameter( 'location' );
+		$params['location']->lowerCaseValue = false;	
+		$params['location']->addDependencies( 'mappingservice', 'geoservice' );
+		$params['location']->addCriteria( new CriterionIsLocation() );	
 		
 		$params['mappingservice'] = new Parameter(
 			'mappingservice', 

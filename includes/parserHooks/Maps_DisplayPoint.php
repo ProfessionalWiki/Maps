@@ -67,7 +67,8 @@ class MapsDisplayPoint extends ParserHook {
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( '~' ) );
 		$params['coordinates']->addManipulations( new MapsParamCoordSet( '~' ) );		
-		$params['coordinates']->lowerCaseValue = false;		
+		$params['coordinates']->lowerCaseValue = false;
+		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
 		
 		$params['centre'] = new Parameter(
 			'centre',

@@ -38,17 +38,21 @@ class CriterionIsLocation extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value, Parameter $parameter, array &$parameters ) {
+	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
 		if ( $this->metaDataSeparator !== false ) {
 			$parts = explode( $this->metaDataSeparator, $value );
 			$value = $parts[0];
 		}
 
 		if ( MapsGeocoders::canGeocode() ) {
-			// TODO
-			//$geoService = array_key_exists( 'geoservice', $parameters ) ? $parameters['geoservice']['value'] : '';
-			//$mappingService = array_key_exists( 'mappingservice', $parameters ) ? $parameters['mappingservice']['value'] : false;
-			return MapsGeocoders::isLocation( $value/*, $geoService, $mappingService */ );
+			$geoService = /*$parameter->hasDependency( 'geoservice' ) ? $parameters['geoservice']->getValue() :*/ '';
+			$mappingService = /*$parameter->hasDependency( 'mappingservice' ) ? $parameters['mappingservice']->getValue() :*/ false;
+			
+			return MapsGeocoders::isLocation(
+				$value,
+				$geoService,
+				$mappingService
+			);
 		} else {
 			return MapsCoordinateParser::areCoordinates( $value );
 		}

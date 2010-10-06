@@ -54,7 +54,7 @@ class MapsGeodistance extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo() {
-		global $egMapsDistanceUnit, $egMapsDistanceDecimals; 
+		global $egMapsDistanceUnit, $egMapsDistanceDecimals, $egMapsAvailableGeoServices, $egMapsDefaultGeoService; 
 		
 		$params = array();
 		
@@ -67,8 +67,8 @@ class MapsGeodistance extends ParserHook {
 				new CriterionIsLocation(),
 			)			
 		);
-
 		$params['location1']->lowerCaseValue = false;
+		$params['location1']->addDependencies( 'mappingservice', 'geoservice' );
 		
 		$params['location2'] = new Parameter(
 			'location2',
@@ -79,8 +79,8 @@ class MapsGeodistance extends ParserHook {
 				new CriterionIsLocation(),
 			)			
 		);
-
-		$params['location2']->lowerCaseValue = false;			
+		$params['location2']->lowerCaseValue = false;
+		$params['location2']->addDependencies( 'mappingservice', 'geoservice' );			
 		
 		$params['unit'] = new Parameter(
 			'unit',
@@ -96,6 +96,26 @@ class MapsGeodistance extends ParserHook {
 			'decimals',
 			Parameter::TYPE_INTEGER,
 			$egMapsDistanceDecimals
+		);			
+		
+		$params['mappingservice'] = new Parameter(
+			'mappingservice', 
+			Parameter::TYPE_STRING,
+			'', // TODO
+			array(),
+			array(
+				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
+			)
+		);
+		
+		$params['geoservice'] = new Parameter(
+			'geoservice', 
+			Parameter::TYPE_STRING,
+			$egMapsDefaultGeoService,
+			array( 'service' ),
+			array(
+				new CriterionInArray( $egMapsAvailableGeoServices ),
+			)
 		);			
 		
 		return $params;
@@ -129,8 +149,8 @@ class MapsGeodistance extends ParserHook {
 		$canGeocode = MapsMapper::geocoderIsAvailable();
 		
 		if ( $canGeocode ) {
-			$start = MapsGeocoders::attemptToGeocode( $parameters['location1'] );
-			$end = MapsGeocoders::attemptToGeocode( $parameters['location2'] );
+			$start = MapsGeocoders::attemptToGeocode( $parameters['location1'], $parameters['geoservice'], $parameters['mappingservice'] );
+			$end = MapsGeocoders::attemptToGeocode( $parameters['location2'], $parameters['geoservice'], $parameters['mappingservice'] );
 		} else {
 			$start = MapsCoordinateParser::parseCoordinates( $parameters['location1'] );
 			$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );
