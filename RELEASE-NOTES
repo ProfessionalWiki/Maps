@@ -27,7 +27,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Fixed default zoom level for Yahoo! Maps maps.
 
-* Increased the maximun decimals for DMS coordinates from 2 to 20.
+* Increased the maximum decimals for DMS coordinates from 2 to 20.
 
 ==== Removed features ====
 
