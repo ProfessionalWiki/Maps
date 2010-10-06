@@ -10,10 +10,10 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 === Semantic Maps 0.7 ===
 (2010-10-xx)
 
-=== New features ===
+==== New features ====
 
 * Added 'locations' parameter to the map query printers that allows for displaying static locations
-  in adittion to query results in queries. It behaves the same as the locations parameter in display_points.
+  in addition to query results in queries. It behaves the same as the locations parameter in display_points.
 
 ==== Bug fixes ====
 
