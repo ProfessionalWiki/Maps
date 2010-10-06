@@ -45,9 +45,9 @@ class CriterionIsLocation extends ItemParameterCriterion {
 		}
 
 		if ( MapsGeocoders::canGeocode() ) {
-			$geoService = /*$parameter->hasDependency( 'geoservice' ) ? $parameters['geoservice']->getValue() :*/ '';
-			$mappingService = /*$parameter->hasDependency( 'mappingservice' ) ? $parameters['mappingservice']->getValue() :*/ false;
-			
+			$geoService = $parameter->hasDependency( 'geoservice' ) ? $parameters['geoservice']->getValue() : '';
+			$mappingService = $parameter->hasDependency( 'mappingservice' ) ? $parameters['mappingservice']->getValue() : false;
+
 			return MapsGeocoders::isLocation(
 				$value,
 				$geoService,
@@ -68,7 +68,7 @@ class CriterionIsLocation extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems ) {
+	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
 		global $wgLang;
 		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
 	}	
