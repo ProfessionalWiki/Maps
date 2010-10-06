@@ -36,7 +36,7 @@ class CriterionMapDimension extends ItemParameterCriterion {
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
-	protected function doValidation( $value ) {
+	protected function doValidation( $value, Parameter $parameter, array &$parameters ) {
 		global $egMapsSizeRestrictions;
 
 		// See if the notation is valid.

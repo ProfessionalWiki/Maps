@@ -148,19 +148,14 @@ final class MapsMapper {
 	 * @return array
 	 */
 	public static function getCommonParameters() {
-		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
+		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
 
 		$params = array();
 		
-		$params['mappingservice'] = new Parameter(
-			'mappingservice', 
-			Parameter::TYPE_STRING,
-			'', // TODO
-			array( 'service' ),
-			array(
-				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
-			)
-		);
+		$params['mappingservice'] = new Parameter( 'mappingservice' );
+		$params['mappingservice']->addAliases( 'service' );
+		$params['mappingservice']->setDefault( $egMapsDefaultService );
+		$params['mappingservice']->addCriteria( new CriterionInArray( MapsMappingServices::getAllServiceValues() ) );
 		
 		$params['geoservice'] = new Parameter(
 			'geoservice', 
