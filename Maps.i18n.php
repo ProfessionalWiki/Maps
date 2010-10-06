@@ -25,6 +25,8 @@ Available mapping services: $1",
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
+	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
+	'validation-error-invalid-locations-omitted' => 'Parameter $1 must be one or more valid locations. The {{PLURAL:$3|value|values}} "$2" {{PLURAL:$3|has|have}} been omitted.',
 	'validation-error-invalid-width' => 'Parameter $1 must be a valid width.',
 	'validation-error-invalid-height' => 'Parameter $1 must be a valid height.',
 

@@ -69,8 +69,19 @@ class CriterionIsLocation extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getListErrorMessage
 	 */	
 	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
-		global $wgLang;
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
+		if ( $allInvalid ) {
+			return wfMsgExt( 'validation-error-invalid-locations', 'parsemag', $parameter->getOriginalName() );
+		}
+		else {
+			global $wgLang;
+			return wfMsgExt(
+				'validation-error-invalid-locations-omitted',
+				'parsemag',
+				$parameter->getOriginalName(),
+				$wgLang->listToText( $invalidItems ),
+				count( $invalidItems )
+			);
+		}
 	}	
 	
 }
