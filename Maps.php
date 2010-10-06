@@ -36,7 +36,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.7 alpha-7' );
+	define( 'Maps_VERSION', '0.7 beta 1' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -49,8 +49,7 @@ else {
 	define( 'Maps_GEO_MIN', "'" );
 	define( 'Maps_GEO_SEC', '"' );
 
-	// TODO 
-	$useExtensionPath = /*version_compare( $wgVersion, '1.16', '>=' ) &&*/ isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$egMapsScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
 	unset( $useExtensionPath );
