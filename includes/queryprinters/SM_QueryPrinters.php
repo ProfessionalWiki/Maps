@@ -62,6 +62,7 @@ final class SMQueryPrinters {
 	 */
 	public static function getParameterInfo() {
 		global $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
+		global $egMapsDefaultLabel, $egMapsDefaultTitle;
 		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate;
 		
 		$params = MapsMapper::getCommonParameters();

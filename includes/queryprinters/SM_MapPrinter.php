@@ -202,7 +202,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		}
 		else {
 			$this->output = '<span class="errorbox">' .
-				htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $error->getMessage() ) ) . 
+				htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $fatalError->getMessage() ) ) . 
 				'</span>';			
 		}
 		
