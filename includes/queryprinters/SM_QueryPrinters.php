@@ -66,6 +66,13 @@ final class SMQueryPrinters {
 		
 		$params = MapsMapper::getCommonParameters();
 		
+		$params['staticlocations'] = new ListParameter( 'staticlocations', ';' );
+		$params['staticlocations']->addAliases( 'locations' );
+		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
+		$params['staticlocations']->addManipulations( new MapsParamCoordSet( '~' ) );		
+		$params['staticlocations']->lowerCaseValue = false;
+		$params['staticlocations']->setDefault( array() );
+		
 		$params['centre'] = new Parameter(
 			'centre',
 			Parameter::TYPE_STRING,

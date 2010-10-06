@@ -247,10 +247,70 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @param SMWQueryResult $res
 	 * @param $outputmode
 	 */
-	private function formatResultData( SMWQueryResult $res, $outputmode ) {
+	protected function formatResultData( SMWQueryResult $res, $outputmode ) {
+		$this->addStaticLocations();
+		
 		while ( ( $row = $res->getNext() ) !== false ) {
 			$this->addResultRow( $outputmode, $row );
 		}
+	}
+	
+	protected function addStaticLocations() {
+		global $wgTitle;
+		
+		// New parser object to render popup contents with.
+		$parser = new Parser();			
+		
+		$this->title = $parser->parse( $this->title, $wgTitle, new ParserOptions() )->getText();
+		$this->label = $parser->parse( $this->label, $wgTitle, new ParserOptions() )->getText();
+		
+		// Each $location is an array containg the coordinate set as first element, possibly followed by meta data. 
+		foreach ( $this->staticlocations as $location ) {
+			$markerData = MapsCoordinateParser::parseCoordinates( array_shift( $location ) );
+			
+			if ( !$markerData ) continue;
+			
+			if ( count( $location ) > 0 ) {
+				// Parse and add the point specific title if it's present.
+				$markerData['title'] = $parser->parse( $location[0], $wgTitle, new ParserOptions() )->getText();
+				
+				if ( count( $location ) > 1 ) {
+					// Parse and add the point specific label if it's present.
+					$markerData['label'] = $parser->parse( $location[1], $wgTitle, new ParserOptions() )->getText();
+					
+					if ( count( $location ) > 2 ) {
+						// Add the point specific icon if it's present.
+						$markerData['icon'] = $location[2];
+					}
+				}
+			}
+			
+			// If there is no point specific icon, use the general icon parameter when available.
+			if ( !array_key_exists( 'icon', $markerData ) && $this->icon != '' ) {
+				$markerData['icon'] = $this->icon;
+			}
+			
+			// Get the url for the icon when there is one, else set the icon to an empty string.
+			if ( array_key_exists( 'icon', $markerData ) ) {
+				$icon_image_page = new ImagePage( Title::newFromText( $markerData['icon'] ) );
+				$markerData['icon'] = $icon_image_page->getDisplayedFile()->getURL();
+			}
+			else {
+				$markerData['icon'] = '';
+			}
+			
+			// Temporary fix, will refactor away later
+			// TODO
+			$markerData = array_values( $markerData );
+			if ( count( $markerData ) < 5 ) {
+				if ( count( $markerData ) < 4 ) {
+					$markerData[] = '';
+				}				
+				$markerData[] = '';
+			} 
+			
+			$this->locations[] = $markerData;
+		}		
 	}
 	
 	/**
@@ -262,7 +322,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @param $outputmode
 	 * @param array $row The record you want to add data from
 	 */
-	private function addResultRow( $outputmode, array $row ) {
+	protected function addResultRow( $outputmode, array $row ) {
 		global $wgUser, $smgUseSpatialExtensions, $wgTitle;
 		
 		$skin = $wgUser->getSkin();

@@ -40,7 +40,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
 	define( 'SM_VERSION', '0.7 alpha-7' );
 
-	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+	$useExtensionPath = /*version_compare( $wgVersion, '1.16', '>=' ) &&*/ isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$smgScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';	
 	$smgDir 		= dirname( __FILE__ ) . '/';
 	unset( $useExtensionPath );
