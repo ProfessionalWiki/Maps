@@ -286,17 +286,17 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 			}
 			
 			// If there is no point specific icon, use the general icon parameter when available.
-			if ( !array_key_exists( 'icon', $markerData ) && $this->icon != '' ) {
+			if ( !array_key_exists( 'icon', $markerData ) ) {
 				$markerData['icon'] = $this->icon;
 			}
 			
-			// Get the url for the icon when there is one, else set the icon to an empty string.
-			if ( array_key_exists( 'icon', $markerData ) ) {
-				$icon_image_page = new ImagePage( Title::newFromText( $markerData['icon'] ) );
-				$markerData['icon'] = $icon_image_page->getDisplayedFile()->getURL();
-			}
-			else {
-				$markerData['icon'] = '';
+			if ( $markerData['icon'] != '' ) {
+				$title = Title::newFromText( $markerData['icon'] );
+
+				if ( !is_null( $title ) && $title->exists() ) {
+					$iconImagePage = new ImagePage( $title );
+					$markerData['icon'] = $iconImagePage->getDisplayedFile()->getURL();
+				}
 			}
 			
 			// Temporary fix, will refactor away later
