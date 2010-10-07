@@ -36,7 +36,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.7 beta 1' );
+	define( 'Maps_VERSION', '0.7 beta 2' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -56,47 +56,8 @@ else {
 
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
-	$egMapsFeatures = array();
-
-	// Include the settings file.
-	require_once $egMapsDir . 'Maps_Settings.php';
-
-	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
-
-	if ( version_compare( $wgVersion, '1.16alpha', '>=' ) ) {
-		$wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
-	}
-
-	// Register the initialization function of Maps.
-	$wgExtensionFunctions[] = 'efMapsSetup';
-
 	$wgAutoloadClasses['MapsHooks'] = dirname( __FILE__ ) . '/Maps.hooks.php';
 	
-	// Since 0.2
-	$wgHooks['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
-	
-	// Since 0.6.5
-	$wgHooks['UnitTestsList'][] = 'MapsHooks::registerUnitTests';
-	
-	// Since 0.7
-	$wgHooks['SkinAfterBottomScripts'][] = 'MapsHooks::addOnloadFunction';
-	
-	// Since 0.7
-	$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsHooks::registerResourceLoaderModules';
-}
-
-/**
- * Initialization function for the Maps extension.
- * 
- * @since 0.1
- * 
- * @return true
- */
-function efMapsSetup() {
-	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
-	global $egMapsDefaultService, $egMapsAvailableServices;
-	global $egMapsDir, $egMapsUseMinJs;
-
 	// Autoload the "includes/" classes and interfaces.
 	$incDir = dirname( __FILE__ ) . '/includes/';
 	$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
@@ -142,18 +103,57 @@ function efMapsSetup() {
 	$wgAutoloadClasses['MapsDistance'] 				= $phDir . 'Maps_Distance.php';
 	$wgAutoloadClasses['MapsFinddestination'] 		= $phDir . 'Maps_Finddestination.php';
 	$wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
-	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
+	$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';	
+	
+	// To ensure Maps remains compatible with pre 1.16.
+	if ( !array_key_exists( 'Html', $wgAutoloadClasses ) ) {
+		$wgAutoloadClasses['Html'] = $egMapsDir . 'compat/Html.php';
+	}	
+	
+	if ( version_compare( $wgVersion, '1.16alpha', '>=' ) ) {
+		$wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
+	}		
+	
+	$egMapsFeatures = array();
+	
+	// Include the settings file.
+	require_once $egMapsDir . 'Maps_Settings.php';
+
+	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
+
+	// Register the initialization function of Maps.
+	$wgExtensionFunctions[] = 'efMapsSetup';
+
+	// Since 0.2
+	$wgHooks['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
+	
+	// Since 0.6.5
+	$wgHooks['UnitTestsList'][] = 'MapsHooks::registerUnitTests';
+	
+	// Since 0.7
+	$wgHooks['SkinAfterBottomScripts'][] = 'MapsHooks::addOnloadFunction';
+	
+	// Since 0.7
+	$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsHooks::registerResourceLoaderModules';
+}
+
+/**
+ * Initialization function for the Maps extension.
+ * 
+ * @since 0.1
+ * 
+ * @return true
+ */
+function efMapsSetup() {
+	global $wgExtensionCredits, $wgLang;
+	global $egMapsDefaultService, $egMapsAvailableServices;
+	global $egMapsDir, $egMapsUseMinJs;
 
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
 	}
-	
-	// To ensure Maps remains compatible with pre 1.16.
-	if ( !array_key_exists( 'Html', $wgAutoloadClasses ) ) {
-		$wgAutoloadClasses['Html'] = $egMapsDir . 'compat/Html.php';
-	}	
 	
 	wfRunHooks( 'MappingServiceLoad' );
 	wfRunHooks( 'MappingFeatureLoad' );
