@@ -34,8 +34,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		$egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
 		
 		# Required for #coordinates.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';//array( 'MapsCoordinates', 'staticInit' );
-		$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';// array( 'MapsCoordinates', 'staticMagic' );//;
+		$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
+		$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';
 		# Required for #display_map.
 		$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
 		$wgHooks['LanguageGetMagic'][] = 'MapsDisplayMap::staticMagic';	
