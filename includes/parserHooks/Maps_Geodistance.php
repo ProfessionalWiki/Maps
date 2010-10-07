@@ -53,7 +53,7 @@ class MapsGeodistance extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	protected function getParameterInfo( $type ) {
 		global $egMapsDistanceUnit, $egMapsDistanceDecimals, $egMapsAvailableGeoServices, $egMapsDefaultGeoService; 
 		
 		$params = array();
@@ -129,7 +129,7 @@ class MapsGeodistance extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getDefaultParameters() {
+	protected function getDefaultParameters( $type ) {
 		return array( 'location1', 'location2', 'unit', 'decimals' );
 	}
 	

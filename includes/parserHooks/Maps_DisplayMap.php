@@ -56,7 +56,7 @@ class MapsDisplayMap extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	protected function getParameterInfo( $type ) {
 		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices;
 		
 		$params = MapsMapper::getCommonParameters();
@@ -82,7 +82,7 @@ class MapsDisplayMap extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getDefaultParameters() {
+	protected function getDefaultParameters( $type ) {
 		return array( 'coordinates' );
 	}
 	

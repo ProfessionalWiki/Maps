@@ -53,7 +53,7 @@ class MapsFinddestination extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	protected function getParameterInfo( $type ) {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
 		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;	 
 		
@@ -125,7 +125,7 @@ class MapsFinddestination extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getDefaultParameters() {
+	protected function getDefaultParameters( $type ) {
 		return array( 'location', 'bearing', 'distance' );
 	}
 	

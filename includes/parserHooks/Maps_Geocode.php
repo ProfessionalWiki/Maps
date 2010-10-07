@@ -53,7 +53,7 @@ class MapsGeocode extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	protected function getParameterInfo( $type ) {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsAvailableCoordNotations;
 		global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
 		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
@@ -118,7 +118,7 @@ class MapsGeocode extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getDefaultParameters() {
+	protected function getDefaultParameters( $type ) {
 		return array( 'location', 'geoservice', 'mappingservice' );
 	}
 	

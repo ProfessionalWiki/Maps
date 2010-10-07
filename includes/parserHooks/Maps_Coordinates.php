@@ -53,7 +53,7 @@ class MapsCoordinates extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	protected function getParameterInfo( $type ) {
 		global $egMapsAvailableServices, $egMapsAvailableCoordNotations;
 		global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
 		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
@@ -99,7 +99,7 @@ class MapsCoordinates extends ParserHook {
 	 * 
 	 * @return array
 	 */
-	protected function getDefaultParameters() {
+	protected function getDefaultParameters( $type ) {
 		return array( 'location', 'format', 'directional' );
 	}
 	
