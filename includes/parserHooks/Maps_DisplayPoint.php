@@ -63,10 +63,10 @@ class MapsDisplayPoint extends ParserHook {
 		$params['zoom']->addDependencies( 'coordinates', 'mappingservice' );
 		$params['zoom']->addManipulations( new MapsParamZoom() );
 		
-		$params['coordinates'] = new ListParameter( 'coordinates', ';' );
+		$params['coordinates'] = new ListParameter( 'coordinates', $type === ParserHook::TYPE_FUNCTION ? ';' : "\n" );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
-		$params['coordinates']->addCriteria( new CriterionIsLocation( '~' ) );
-		$params['coordinates']->addManipulations( new MapsParamCoordSet( '~' ) );		
+		$params['coordinates']->addCriteria( new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
+		$params['coordinates']->addManipulations( new MapsParamCoordSet( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );		
 		$params['coordinates']->lowerCaseValue = false;
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
 		
