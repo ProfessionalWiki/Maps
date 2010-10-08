@@ -49,6 +49,16 @@ class MapsOSM extends MapsMappingService {
 		}
 		
 		return $egMapsOSMPrefix . '_' . $mapsOnThisPage;
-	}		
+	}
+
+	/**
+	 * @see MapsMappingService::addParameterInfo
+	 * 
+	 * @since 0.7
+	 */		
+	public function addParameterInfo( array &$params ) {
+		$params['zoom']->addCriteria( new CriterionInRange( 1, 18 ) );
+		$params['zoom']->setDefault( self::getDefaultZoom() );			
+	}	
 	
 }
