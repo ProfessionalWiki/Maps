@@ -72,12 +72,4 @@ class CriterionMapDimension extends ItemParameterCriterion {
 		return wfMsgExt( "validation-error-invalid-$this->dimension", 'parsemag', $parameter->getOriginalName() );
 	}
 	
-	/**
-	 * @see ItemParameterCriterion::getListErrorMessage
-	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
-		global $wgLang;
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
-	}	
-	
 }

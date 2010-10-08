@@ -26,9 +26,12 @@ Available mapping services: $1",
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
-	'validation-error-invalid-locations-omitted' => 'Parameter $1 must be one or more valid locations. The {{PLURAL:$3|value|values}} "$2" {{PLURAL:$3|has|have}} been omitted.',
 	'validation-error-invalid-width' => 'Parameter $1 must be a valid width.',
 	'validation-error-invalid-height' => 'Parameter $1 must be a valid height.',
+	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
+	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
+	'validation-error-invalid-distance' => 'Parameter $1 must be a valid distance.',
+	'validation-error-invalid-distances' => 'Parameter $1 must be one or more valid distances.',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
@@ -48,9 +51,6 @@ $1',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognized and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
-
-	// Distance
-	'validation-error-invalid-distance' => 'The value $1 is not a valid distance.',
 
 	// Geocoding
 	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',

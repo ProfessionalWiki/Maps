@@ -52,17 +52,14 @@ class CriterionGoogleOverlay extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */	
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		// TODO
-		return wfMsgExt( '', 'parsemag', $parameter->getOriginalName() );
+		return wfMsgExt( 'validation-error-invalid-goverlay', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/** 
-	 * @see ItemParameterCriterion::getListErrorMessage
+	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
-		global $wgLang;
-		// TODO
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
+	protected function getFullListErrorMessage( Parameter $parameter ) {
+		return wfMsgExt( 'validation-error-invalid-goverlays', 'parsemag', $parameter->getOriginalName() );
 	}		
 	
 }

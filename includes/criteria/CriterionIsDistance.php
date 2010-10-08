@@ -37,11 +37,11 @@ class CriterionIsDistance extends ItemParameterCriterion {
 	}
 	
 	/**
-	 * @see ItemParameterCriterion::getListErrorMessage
+	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
+	protected function getFullListErrorMessage( Parameter $parameter ) {
 		global $wgLang;
-		return wfMsgExt( '', 'parsemag', $wgLang->listToText( $invalidItems ), count( $invalidItems ) );
+		return wfMsgExt( 'validation-error-invalid-distances', 'parsemag', $parameter->getOriginalName() );
 	}	
 	
 }

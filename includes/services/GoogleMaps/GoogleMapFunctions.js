@@ -33,7 +33,7 @@ function createGMarker( markerData ) {
 		newimg.src = markerData.icon;
 		
 		// Only do these things when there is an actual width, which there won,t the first time the image is loaded.
-		// TODO: this means the image won't have it's correct size when it differs from the default on first load!
+		// FIXME: this means the image won't have it's correct size when it differs from the default on first load!
 		if ( newimg.width > 0 ) {
 			/* Determine size of icon and pass it in */
 			iconObj.iconSize.width = newimg.width;
@@ -89,7 +89,6 @@ function createGoogleMap(mapName, mapOptions, markers) {
 	var mapElement = document.getElementById(mapName);
 	var typesContainType = false;
 
-	// TODO: Change labels of the moon/mars map types?
 	for (var i = 0; i < mapOptions.types.length; i++) {
 		if (mapOptions.types[i] == mapOptions.type) typesContainType = true;
 	}

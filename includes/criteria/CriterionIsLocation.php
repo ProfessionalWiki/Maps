@@ -66,22 +66,10 @@ class CriterionIsLocation extends ItemParameterCriterion {
 	}
 	
 	/**
-	 * @see ItemParameterCriterion::getListErrorMessage
+	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */	
-	protected function getListErrorMessage( Parameter $parameter, array $invalidItems, $allInvalid ) {
-		if ( $allInvalid ) {
-			return wfMsgExt( 'validation-error-invalid-locations', 'parsemag', $parameter->getOriginalName() );
-		}
-		else {
-			global $wgLang;
-			return wfMsgExt(
-				'validation-error-invalid-locations-omitted',
-				'parsemag',
-				$parameter->getOriginalName(),
-				$wgLang->listToText( $invalidItems ),
-				count( $invalidItems )
-			);
-		}
+	protected function getFullListErrorMessage( Parameter $parameter ) {
+		return wfMsgExt( 'validation-error-invalid-locations', 'parsemag', $parameter->getOriginalName() );
 	}	
 	
 }
