@@ -38,7 +38,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.7 beta 2' );
+	define( 'SM_VERSION', '0.7 beta 3' );
 
 	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$smgScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';	
@@ -63,6 +63,8 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
 	$wgAutoloadClasses['SMGeoCoordsValueDescription'] 	= $incDir . 'SM_GeoCoordsValueDescription.php';
 	$wgAutoloadClasses['SMAreaValueDescription'] 		= $incDir . 'SM_AreaValueDescription.php';
 	
+	$wgAutoloadClasses['SemanticMapsHooks'] 			= dirname( __FILE__ ) . '/SemanticMaps.hooks.php';
+	
 	// Hook for initializing the Geographical Coordinate type.
 	$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
 	
@@ -76,7 +78,7 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
 	$wgHooks['SMWResultFormat'][] = 'SMGeoCoordsValue::addGeoCoordsDefaultFormat';	
 	
 	// Hook for adding a Semantic Maps links to the Admin Links extension.
-	$wgHooks['AdminLinks'][] = 'smfAddToAdminLinks';	
+	$wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';	
 }
 
 /**
@@ -115,25 +117,4 @@ function smfSetup() {
 	);
 
 	return true;
-}
-
-/**
- * Adds a link to Admin Links page.
- * 
- * @since 0.2
- * 
- * @return true
- */
-function smfAddToAdminLinks( &$admin_links_tree ) {
-    $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
-
-    // Escape if SMW hasn't added links.
-    if ( is_null( $displaying_data_section ) ) return true;
-
-    $smw_docu_row = $displaying_data_section->getRow( 'smw' );
-
-    $sm_docu_label = wfMsg( 'adminlinks_documentation', wfMsg( 'semanticmaps_name' ) );
-    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Semantic_Maps', $sm_docu_label ) );
-
-    return true;
 }
