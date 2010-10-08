@@ -433,24 +433,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# another mapping service.
 		$egMapsOSMPrefix = 'map_osm';		
 		
-		/*
-		# Array of String. The default controls for OSM maps. This value will only be
-		# used when the user does not provide one.
-		# Available values: layerswitcher, mouseposition, autopanzoom, panzoom,
-		# panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-		$egMapsOSMControls = array(
-			'layerswitcher',
-			'mouseposition',
-			'autopanzoom',
-			'scaleline',
-			'navigation'
-		);
+		# Boolean. Thumbnail pictures on or off.
+		$egMapsOSMThumbs = false;
 		
-		# Boolean. Indicates whether you want to get a static map (image) or not.
-		# This value will only be used when the user does not provide one.
-		$egMapsOSMStaticAsDefault = false;
-		
-		# Boolean. Indicates whether the user should be able to activate a static map.
-		# This value will only be used when the user does not provide one.
-		$egMapsOSMStaticActivatable = true;
-		*/
+		# Boolean. Photos in article pop-ups on or off.
+		$egMapsOSMPhotos = false;		

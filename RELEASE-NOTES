@@ -19,6 +19,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 ** Geocode
 ** Geodistance
 
+* Thumbs and photos parameters for the OSM service.
+
 ==== Bug fixes ====
 
 * Fixed compatibility with the MW 1.17 resource loader.
