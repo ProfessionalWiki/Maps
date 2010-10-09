@@ -10,7 +10,7 @@
  * 
  * @author Jeroen De Dauw
  */
-final class MapsHooks {
+final class SemanticMapsHooks {
 
 	/**
 	 * Adds a link to Admin Links page.
