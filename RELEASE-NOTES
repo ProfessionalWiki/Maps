@@ -8,7 +8,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 0.7 ===
-(2010-10-xx)
+(2010-10-15)
 
 ==== New features ====
 
@@ -38,14 +38,16 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 ==== Internal improvements ====
 
 * Rewrote the geocoding functionality. It's now an integral part of the extension that can not be just pulled out,
-  while the reverse is true for individual geocoders. Geocoder interaction now uses the same model as mapping
-  service interaction.
+while the reverse is true for individual geocoders. Geocoder interaction now uses the same model as mapping
+service interaction.
   
 * Use of Validator 0.4, allowing for more robust and consistent error reporting.
 
 * Rewrote the parser hooks to use the ParserHook class provided by Validator.
 
 * Restructured the directory structure of the extension to better match it's architecture.
+
+* Use of OpenLayers 2.10 instead of 2.9.
 
 === Maps 0.6.6 ===
 (2010-08-26)
