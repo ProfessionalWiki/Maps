@@ -68,7 +68,7 @@ EOT
     public function getParameters() {
         $params = parent::getParameters();
         
-        $allowedTypes = MapsGoogleMaps::getTypeNames();
+        $allowedTypes = array_keys( MapsGoogleMaps::$mapTypes );
         
         $params[] = array( 'name' => 'controls', 'type' => 'enum-list', 'description' => wfMsg( 'semanticmaps_paramdesc_controls' ), 'values' => MapsGoogleMaps::getControlNames() );
         $params[] = array( 'name' => 'types', 'type' => 'enum-list', 'description' => wfMsg( 'semanticmaps_paramdesc_types' ), 'values' => $allowedTypes );
