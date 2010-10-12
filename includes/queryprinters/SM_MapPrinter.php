@@ -462,7 +462,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		// If a centre value is set, use it.
 		if ( $this->centre != '' ) {
 			// Geocode and convert if required.
-			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
+			$centre = MapsGeocoders::attemptToGeocode( $this->centre, $this->geoservice, $this->service->getName() );
 			
 			if ( $centre ) {
 				$this->centreLat = $centre['lat'];
