@@ -123,6 +123,18 @@ class MapsGeocode extends ParserHook {
 	}
 	
 	/**
+	 * Returns the parser function otpions.
+	 * @see ParserHook::getFunctionOptions
+	 * 
+	 * @since 0.7
+	 * 
+	 * @return array
+	 */
+	protected function getFunctionOptions() {
+		return array();
+	}	
+	
+	/**
 	 * Renders and returns the output.
 	 * @see ParserHook::render
 	 * 
@@ -148,7 +160,7 @@ class MapsGeocode extends ParserHook {
 		else {
 			$output = htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
 		}
-		
+
 		return $output;		
 	}
 	
