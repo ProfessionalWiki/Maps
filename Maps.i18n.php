@@ -1420,12 +1420,19 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'maps_desc' => 'Gir mulighet for å vise koorinatdata i kart og geokodeadresser ([http://mapping.referata.com/wiki/Maps_examples demo]).
+	'maps_desc' => 'Gir mulighet for å vise koordinatdata i kart og geokodeadresser ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Tilgjengelige karttjenester: $1',
 	'maps_map' => 'Kart',
 	'maps-loading-map' => 'Laster kart...',
 	'maps-markers' => 'Markører',
-	'validation-error-invalid-distance' => 'Verdien $1 er ikke en gyldig avstand.',
+	'validation-error-invalid-location' => 'Parameter $1 må være en gyldig lokasjon.',
+	'validation-error-invalid-locations' => 'Parameter $1 må være en eller flere gyldige lokasjoner.',
+	'validation-error-invalid-width' => 'Parameter $1 må være en gyldig bredde.',
+	'validation-error-invalid-height' => 'Parameter $1 må være en gyldig høyde.',
+	'validation-error-invalid-goverlay' => 'Parameter $1 må være et gyldig overlegg.',
+	'validation-error-invalid-goverlays' => 'Parameter $1 må være et eller flere gyldige overlegg.',
+	'validation-error-invalid-distance' => 'Parameter $1 må være en gyldig avstand.',
+	'validation-error-invalid-distances' => 'Parameter $1 må være en eller flere gyldige avstander.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ø',
 	'maps-abb-south' => 'S',
