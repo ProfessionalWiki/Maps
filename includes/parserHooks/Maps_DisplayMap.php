@@ -104,6 +104,21 @@ class MapsDisplayMap extends ParserHook {
 		$mapClass = $service->getFeatureInstance( $this->getName() );
 
 		return $mapClass->getMapHtml( $parameters, $this->parser );
+	}
+	
+	/**
+	 * Returns the parser function otpions.
+	 * @see ParserHook::getFunctionOptions
+	 * 
+	 * @since 0.7
+	 * 
+	 * @return array
+	 */
+	protected function getFunctionOptions() {
+		return array(
+			'noparse' => true,
+			'isHTML' => true
+		);
 	}	
 		
 }

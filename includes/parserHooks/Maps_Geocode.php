@@ -120,18 +120,6 @@ class MapsGeocode extends ParserHook {
 	 */
 	protected function getDefaultParameters( $type ) {
 		return array( 'location', 'geoservice', 'mappingservice' );
-	}
-	
-	/**
-	 * Returns the parser function otpions.
-	 * @see ParserHook::getFunctionOptions
-	 * 
-	 * @since 0.7
-	 * 
-	 * @return array
-	 */
-	protected function getFunctionOptions() {
-		return array();
 	}	
 	
 	/**
