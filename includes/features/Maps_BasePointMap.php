@@ -97,7 +97,14 @@ abstract class MapsBasePointMap {
 		
 		$this->addSpecificMapHTML( $parser );
 		
-		$this->service->addDependencies( $parser );
+		global $wgTitle;
+		if ( $wgTitle->isSpecialPage() ) {
+			global $wgOut;
+			$this->service->addDependencies( $wgOut );
+		}
+		else {
+			$this->service->addDependencies( $parser );			
+		}
 		
 		return $this->output;
 	}
