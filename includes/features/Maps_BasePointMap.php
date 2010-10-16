@@ -148,6 +148,10 @@ abstract class MapsBasePointMap {
 			}
 			
 			if ( $markerData['icon'] != '' ) {
+				if ( strpos( $markerData['icon'], ':' ) === false ) {
+					$markerData['icon'] = 'File:' . $markerData['icon'];
+				}			
+				
 				$title = Title::newFromText( $markerData['icon'] );
 
 				if ( !is_null( $title ) && $title->exists() ) {
