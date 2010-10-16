@@ -43,7 +43,7 @@ else {
 	define( 'Maps_COORDS_DMS', 'dms' );
 	define( 'Maps_COORDS_DM', 'dm' );
 	define( 'Maps_COORDS_DD', 'dd' );
-
+	
 	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$egMapsScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
@@ -61,10 +61,11 @@ else {
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
+	$wgAutoloadClasses['MapsLayerPage'] 			= $incDir . 'Maps_LayerPage.php';
 	$wgAutoloadClasses['iMappingFeature'] 			= $incDir . 'iMappingFeature.php';
 	$wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 	$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
-	$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';	
+	$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';
 	
 	// Autoload the "includes/criteria/" classes.
 	$criDir = $incDir . 'criteria/';
@@ -109,11 +110,6 @@ else {
 		$wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
 	}		
 	
-	$egMapsFeatures = array();
-	
-	// Include the settings file.
-	require_once $egMapsDir . 'Maps_Settings.php';
-
 	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
 
 	// Register the initialization function of Maps.
@@ -130,6 +126,16 @@ else {
 	
 	// Since 0.7
 	$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsHooks::registerResourceLoaderModules';
+	
+	// Since 0.7.1
+	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArtcileFromTitle';	
+	
+	$egMapsFeatures = array();
+	
+	// Include the settings file.
+	require_once $egMapsDir . 'Maps_Settings.php';
+	
+	define( 'Maps_NS_LAYER', $egMapsNamespaceIndex + 0 );
 }
 
 /**
@@ -140,7 +146,7 @@ else {
  * @return true
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgLang;
+	global $wgExtensionCredits, $wgLang, $wgNamespaceAliases;
 	global $egMapsDefaultService, $egMapsAvailableServices;
 	global $egMapsDir, $egMapsUseMinJs;
 
@@ -149,6 +155,10 @@ function efMapsSetup() {
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
 	}
+	
+	$wgNamespaceAliases += array(
+		wfMsg( 'maps-ns-layer' ) => Maps_NS_LAYER
+	);
 	
 	wfRunHooks( 'MappingServiceLoad' );
 	wfRunHooks( 'MappingFeatureLoad' );

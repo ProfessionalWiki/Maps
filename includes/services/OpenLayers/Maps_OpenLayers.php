@@ -46,30 +46,18 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['zoom']->addCriteria( new CriterionInRange( 0, 19 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
-		$params['controls'] = new ListParameter(
-			'controls',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			$egMapsOLControls,
-			array(),
-			array(
-				new CriterionInArray( self::getControlNames() ),
-			)			
-		);
+		$params['controls'] = new ListParameter( 'controls' );
+		$params['controls']->setDefault( $egMapsOLControls );
+		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
 		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
 		
-		$params['layers'] = new ListParameter(
-			'layers',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			$egMapsOLLayers,
-			array(),
-			array(
-				new CriterionInArray( self::getLayerNames( true ) ),
-			)			
-		);
+		$params['layers'] = new ListParameter( 'layers' );
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
 		$params['layers']->setDoManipulationOfDefault( true );
+		$params['layers']->addCriteria( new CriterionInArray( self::getLayerNames( true ) ) );
+		$params['layers']->setDefault( $egMapsOLLayers );
+		
+		//$params['imagelayers'] = new ListParameter();
 	}
 	
 	/**

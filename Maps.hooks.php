@@ -81,6 +81,22 @@ final class MapsHooks {
 		}
 		
 		return true;
-	}	
+	}
+	
+	/**
+	 * Intercept pages in the Layer namespace to handle them correctly.
+	 *
+	 * @param $title: Title
+	 * @param $article: Article or null
+	 *
+	 * @return true
+	 */
+	public static function onArtcileFromTitle( Title &$title, /* Article */ &$article ) {
+		if ( $title->getNamespace() == Maps_NS_LAYER ) {
+			$article = new MapsLayerPage( $title );
+		}
+		
+		return true;
+	}
 	
 } 

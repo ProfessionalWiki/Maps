@@ -219,7 +219,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsDefaultLabel = '';
 
 
-
+	
+# Other general configuration
+	
+	# Namespace index start of the mapping namespaces.
+	$egMapsNamespaceIndex = 9001;
+	
+	
+	
 # Specific mapping service configuration
 
 	# Google Maps
