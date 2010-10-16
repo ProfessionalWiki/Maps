@@ -44,11 +44,6 @@ else {
 	define( 'Maps_COORDS_DM', 'dm' );
 	define( 'Maps_COORDS_DD', 'dd' );
 
-	// The symbols to use for degrees, minutes and seconds.
-	define( 'Maps_GEO_DEG', '°' );
-	define( 'Maps_GEO_MIN', "'" );
-	define( 'Maps_GEO_SEC', '"' );
-
 	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$egMapsScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
