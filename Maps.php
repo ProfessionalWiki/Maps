@@ -128,7 +128,7 @@ else {
 	$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsHooks::registerResourceLoaderModules';
 	
 	// Since 0.7.1
-	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArtcileFromTitle';	
+	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';	
 	
 	$egMapsFeatures = array();
 	
@@ -146,7 +146,7 @@ else {
  * @return true
  */
 function efMapsSetup() {
-	global $wgExtensionCredits, $wgLang, $wgNamespaceAliases;
+	global $wgExtensionCredits, $wgLang, $wgExtraNamespaces, $wgNamespaceAliases;
 	global $egMapsDefaultService, $egMapsAvailableServices;
 	global $egMapsDir, $egMapsUseMinJs;
 
@@ -155,6 +155,10 @@ function efMapsSetup() {
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
 	}
+	
+	$wgExtraNamespaces += array(
+		'Layer' => Maps_NS_LAYER
+	);
 	
 	$wgNamespaceAliases += array(
 		wfMsg( 'maps-ns-layer' ) => Maps_NS_LAYER

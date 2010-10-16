@@ -23,4 +23,12 @@ class MapsLayerPage extends Article {
 		parent::__construct( $title );
 	}
 	
+	/**
+	 * @see Article::view
+	 */
+	public function view() {
+		//global $wgOut;
+		//$wgOut->addHTML( 'ohai' );
+	}
+	
 }

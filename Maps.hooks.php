@@ -91,7 +91,7 @@ final class MapsHooks {
 	 *
 	 * @return true
 	 */
-	public static function onArtcileFromTitle( Title &$title, /* Article */ &$article ) {
+	public static function onArticleFromTitle( Title &$title, /* Article */ &$article ) {
 		if ( $title->getNamespace() == Maps_NS_LAYER ) {
 			$article = new MapsLayerPage( $title );
 		}
