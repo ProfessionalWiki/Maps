@@ -195,7 +195,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		$validator->validateParameters();
 		
 		$fatalError  = $validator->hasFatalError();
-			
+		
 		if ( $fatalError === false ) {
 			$this->zoomDefaulted = $validator->getParameter( 'zoom' )->wasSetToDefault();
 			$this->setMapProperties( $validator->getParameterValues() );
@@ -291,16 +291,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 			}
 			
 			if ( $markerData['icon'] != '' ) {
-				if ( strpos( $markerData['icon'], ':' ) === false ) {
-					$markerData['icon'] = 'File:' . $markerData['icon'];
-				}				
-				
-				$title = Title::newFromText( $markerData['icon'] );
-
-				if ( !is_null( $title ) && $title->exists() ) {
-					$iconImagePage = new ImagePage( $title );
-					$markerData['icon'] = $iconImagePage->getDisplayedFile()->getURL();
-				}
+				$markerData['icon'] = MapsMapper::getImageUrl( $markerData['icon'] );
 			}
 			
 			// Temporary fix, will refactor away later
