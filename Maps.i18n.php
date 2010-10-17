@@ -29,10 +29,13 @@ Available mapping services: $1",
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
 	'validation-error-invalid-width' => 'Parameter $1 must be a valid width.',
 	'validation-error-invalid-height' => 'Parameter $1 must be a valid height.',
-	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
-	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
 	'validation-error-invalid-distance' => 'Parameter $1 must be a valid distance.',
 	'validation-error-invalid-distances' => 'Parameter $1 must be one or more valid distances.',
+
+	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
+	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
+	'validation-error-invalid-ollayer' => 'Parameter $1 must be a valid layer.',
+	'validation-error-invalid-ollayers' => 'Parameter $1 must be one or more valid layers.',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',

@@ -33,6 +33,7 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 function efMapsInitOpenLayers() {
 	global $wgAutoloadClasses;
 	
+	$wgAutoloadClasses['CriterionOLLayer']	 			= dirname( __FILE__ ) . '/CriterionOLLayer.php';
 	$wgAutoloadClasses['MapsOpenLayers'] 				= dirname( __FILE__ ) . '/Maps_OpenLayers.php';
 	$wgAutoloadClasses['MapsOpenLayersDispMap'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
 	$wgAutoloadClasses['MapsOpenLayersDispPoint'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
