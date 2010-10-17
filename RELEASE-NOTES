@@ -10,7 +10,13 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 === Maps 0.7.1 ===
 (2010-1x-xx)
 
-*
+==== New features ====
+
+* Image layers for OpenLayers maps, defined via pages in the Layer namespace.
+
+==== Bug fixes ====
+
+* Support for images without namespace prefix in the display points parser hook.
 
 === Maps 0.7 ===
 (2010-10-15)

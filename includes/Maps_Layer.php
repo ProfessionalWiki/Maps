@@ -70,7 +70,9 @@ class MapsLayer {
 		$this->properties = $properties;
 		
 		// TODO
-		$this->properties['source'] = MapsMapper::getImageUrl( $this->properties['source'] );
+		if ( array_key_exists( 'source', $this->properties ) ) {
+			$this->properties['source'] = MapsMapper::getImageUrl( $this->properties['source'] );
+		}
 	}
 	
 	/**
@@ -198,7 +200,7 @@ class MapsLayer {
 		
 		$options = array();
 		
-		if ( array_key_exists( 'zoomlevels', $this->properties ) ) {
+		if ( $this->properties !== false ) {
 			$options['numZoomLevels'] = $zoomlevels;
 		}
 		
