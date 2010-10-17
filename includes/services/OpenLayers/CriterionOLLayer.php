@@ -27,7 +27,20 @@ class CriterionOLLayer extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::validate
 	 */	
 	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
-		return true; // TODO
+		$dynamicLayers = MapsOpenLayers::getLayerNames();
+		
+		// Dynamic layers, defined in the settings file or localsettings.
+		if ( in_array( $value, $dynamicLayers ) ) {
+			return true;
+		}
+		
+		// Image layers.
+		$title = Title::newFromText( $value, Maps_NS_LAYER );
+		if ( $title->getNamespace() == Maps_NS_LAYER && $title->exists() ) {
+			return true;
+		}
+		
+		return false;
 	}	
 	
 	/**

@@ -16,7 +16,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgLang;
 		
-		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
+		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers[0] );
 		
 		$mapName = $this->service->getMapId();
 		

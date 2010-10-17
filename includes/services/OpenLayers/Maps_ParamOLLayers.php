@@ -29,20 +29,32 @@ class MapsParamOLLayers extends ListParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function manipulate( Parameter &$parameter, array &$parameters ) {
-		global $egMapsOLLayerGroups;
+		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers;
 		
 		$unpacked = array();
-
+		$imageLayers = array();
+		
 		foreach ( $parameter->getValue() as $layerOrGroup ) {
 			if ( array_key_exists( $layerOrGroup, $egMapsOLLayerGroups ) ) {
-				$unpacked = array_merge( $unpacked, $egMapsOLLayerGroups[$layerOrGroup] );
+				$unpacked += $egMapsOLLayerGroups[$layerOrGroup];
+			}
+			elseif ( in_array( $layerOrGroup, $egMapsOLAvailableLayers ) ) {
+				$unpacked[] = $layerOrGroup;
 			}
 			else {
-				$unpacked[] = $layerOrGroup;
+				$title = Title::newFromText( $layerOrGroup, Maps_NS_LAYER );
+				
+				if ( $title->getNamespace() == Maps_NS_LAYER && $title->exists() ) {
+					$layerPage = new MapsLayerPage( $title );
+					$imageLayers[] = $layerPage->getLayer();
+				}
+				else {
+					wfWarn( "Invalid layer ($layerOrGroup) encountered after validation." );
+				}
 			}
 		}
 		
-		$parameter->setValue( $unpacked );		
+		$parameter->setValue( array( $unpacked, $imageLayers ) );	
 	}
 	
 }

@@ -54,7 +54,7 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['layers'] = new ListParameter( 'layers' );
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
 		$params['layers']->setDoManipulationOfDefault( true );
-		$params['layers']->addCriteria( new CriterionInArray( self::getLayerNames( true ) ) );
+		$params['layers']->addCriteria( new CriterionOLLayer() );
 		$params['layers']->setDefault( $egMapsOLLayers );
 		
 		//$params['imagelayers'] = new ListParameter();
@@ -145,14 +145,19 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
-	 * Returns the names of all supported layers.
+	 * Returns the names of all supported dynamic layers.
 	 * 
 	 * @return array
 	 */
 	public static function getLayerNames( $includeGroups = false ) {
 		global $egMapsOLAvailableLayers, $egMapsOLLayerGroups;
+		
 		$keys = array_keys( $egMapsOLAvailableLayers );
-		if ( $includeGroups ) $keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
+		
+		if ( $includeGroups ) {
+			$keys += array_keys( $egMapsOLLayerGroups );
+		}
+		
 		return $keys;
 	}
 		
