@@ -25,10 +25,22 @@ class MapsLayerPage extends Article {
 	
 	/**
 	 * @see Article::view
+	 * 
+	 * @since 0.7.1
 	 */
 	public function view() {
-		//global $wgOut;
-		//$wgOut->addHTML( 'ohai' );
+		parent::view();
+	}
+	
+	/**
+	 * Returns a new MapsLayer object created from the data in the page.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @return MapsLayer
+	 */
+	public function getLayer() {
+		return MapsLayer::newFromArray();
 	}
 	
 }
