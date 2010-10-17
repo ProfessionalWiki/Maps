@@ -223,7 +223,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # Other general configuration
 	
 	# Namespace index start of the mapping namespaces.
-	$egMapsNamespaceIndex = 9001;
+	$egMapsNamespaceIndex = 420;
 	
 	
 	
@@ -378,7 +378,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'osmarender',
 			'osm-cyclemap',
 			'osm-mapnik'
-		
 		);
 		
 		# The difinitions for the layers that should be available for the user.
@@ -397,19 +396,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 			'nasa' => 'OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",
 				{layers: "landsat7", "sphericalMercator":true} )',
-		
-			/* FIXME: does not work properly yet
-			'wikipediaworld' => 'OpenLayers.Layer.Vector("Wikipedia World", {
-		strategies: [new OpenLayers.Strategy.BBOX( { ratio : 1.1, resFactor: 1 })],
-		protocol: new OpenLayers.Protocol.HTTP({
-				url: "http://toolserver.org/~kolossos/geoworld/marks.php?LANG=de",
-				format: new OpenLayers.Format.KML({
-                           extractStyles: true, 
-                           extractAttributes: true
-                })		
-        })
-	})'
-	*/
 		);
 		
 		# Layer group definitions. Group names must be different from layer names, and
