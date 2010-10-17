@@ -14,16 +14,6 @@
 class MapsOpenLayers extends MapsMappingService {
 	
 	/**
-	 * List to keep track of loaded layers.
-	 * Typically this means one or more js/css files have been added.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @var array
-	 */
-	protected static $loadedLayers = array();
-	
-	/**
 	 * Constructor.
 	 * 
 	 * @since 0.6.6
@@ -160,46 +150,17 @@ class MapsOpenLayers extends MapsMappingService {
 		
 		return $keys;
 	}
-		
-	/**
-	 * Build up a csv string with the layers, to be outputted as a JS array
-	 *
-	 * @param array $layers
-	 * 
-	 * @return csv string
-	 */
-	public function createLayersStringAndLoadDependencies( array $layers ) {
-		global $egMapsOLAvailableLayers;
-		
-		$layerStr = array();
-		
-		foreach ( $layers as $layer ) {
-			$this->loadDependencyWhenNeeded( $layer );
-			$layerStr[] = is_array( $egMapsOLAvailableLayers[$layer] ) ? $egMapsOLAvailableLayers[$layer][0] : $egMapsOLAvailableLayers[$layer];
-		}
-
-		return count( $layerStr ) == 0 ? '' : 'new ' . implode( ',new ', $layerStr );
-	}
 	
 	/**
-	 * Load the dependencies of a layer if they are not loaded yet.
+	 * Adds the layer dependencies. 
 	 * 
-	 * Note: The check if the layer has been added is redudant with the new (>=0.6.3) dependency management.
-	 *
-	 * @param string $layer The layer to check (and load the dependencies for
+	 * @since 0.7.1
+	 * 
+	 * @param array $dependencies
 	 */
-	public function loadDependencyWhenNeeded( $layer ) {
-		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies;
-		
-		// Check if there is a dependency refered by the layer definition.
-		if ( is_array( $egMapsOLAvailableLayers[$layer] )
-			&& count( $egMapsOLAvailableLayers[$layer] ) > 1
-			&& array_key_exists( $egMapsOLAvailableLayers[$layer][1], $egMapsOLLayerDependencies )
-			&& !in_array( $egMapsOLAvailableLayers[$layer][1], self::$loadedLayers ) ) {
-			// Add the dependency to the output.
-			$this->addDependency( $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layer][1]] );
-			// Register that it's added so it does not get done multiple times.
-			self::$loadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
+	public function addLayerDependencies( array $dependencies ) {
+		foreach ( $dependencies as $dependency ) {
+			$this->addDependency( $dependency );
 		}
 	}
 	

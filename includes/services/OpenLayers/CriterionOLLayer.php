@@ -36,8 +36,11 @@ class CriterionOLLayer extends ItemParameterCriterion {
 		
 		// Image layers.
 		$title = Title::newFromText( $value, Maps_NS_LAYER );
+
 		if ( $title->getNamespace() == Maps_NS_LAYER && $title->exists() ) {
-			return true;
+			$layerPage = new MapsLayerPage( $title );
+			$layer = $layerPage->getLayer();
+			return $layer->isValid();
 		}
 		
 		return false;
