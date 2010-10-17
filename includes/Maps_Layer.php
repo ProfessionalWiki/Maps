@@ -81,17 +81,6 @@ class MapsLayer {
 	}
 	
 	/**
-	 * Sets the properties.
-	 * 
-	 * @since 0.7.1 
-	 * 
-	 * @param array $properties
-	 */
-	public function setProperties( array $properties ) {
-		$this->properties = $properties;
-	}
-	
-	/**
 	 * Returns the type of the layer.
 	 * 
 	 * @since 0.7.1 
@@ -100,6 +89,17 @@ class MapsLayer {
 	 */	
 	public function getType() {
 		return array_key_exists( 'type', $this->properties ) ? $this->properties['type'] : self::getDefaultType();
+	}
+	
+	/**
+	 * Returns the layers properties.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @return array
+	 */
+	public function getProperties() {
+		return $this->properties;
 	}
 	
 	/**
@@ -125,6 +125,17 @@ class MapsLayer {
 		else {
 			return false;
 		}
+	}		
+	
+	/**
+	 * Sets the properties.
+	 * 
+	 * @since 0.7.1 
+	 * 
+	 * @param array $properties
+	 */
+	public function setProperties( array $properties ) {
+		$this->properties = $properties;
 	}
 	
 	/**

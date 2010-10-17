@@ -26,6 +26,7 @@ Available mapping services: $1",
 	'maps-ns-layer-talk' => 'Layer talk',
 	'maps-layer-property' => 'Property',
 	'maps-layer-value' => 'Value',
+	'maps-error-invalid-layerdef' => 'This layer definition is not valid.',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',

@@ -13,6 +13,15 @@
 class MapsLayerPage extends Article {
 	
 	/**
+	 * Cached MapsLayer or false.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @var false or MapsLayer
+	 */
+	protected $cachedLayer = false;
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @since 0.7.1
@@ -33,6 +42,16 @@ class MapsLayerPage extends Article {
 		
 		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 		
+		$layer = $this->getLayer();
+		
+		if ( !$layer->isValid() ) {
+			$wgOut->addHTML(
+				'<span class="errorbox">' .
+				htmlspecialchars( wfMsg( 'maps-error-invalid-layerdef' ) ) . 
+				'</span><br />'
+			);
+		}
+		
 		$rows = array();
 		
 		$rows[] = Html::rawElement(
@@ -50,7 +69,7 @@ class MapsLayerPage extends Article {
 			)
 		);		
 		
-		foreach ( $this->getProperties() as $property => $value ) {
+		foreach ( $layer->getProperties() as $property => $value ) {
 			$rows[] = Html::rawElement(
 				'tr',
 				array(),
@@ -71,6 +90,18 @@ class MapsLayerPage extends Article {
 	}
 	
 	/**
+	 * Returns if the layer definition in the page is valid.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @return boolean
+	 */
+	public function hasValidDefinition() {
+		$layer = $this->getLayer();
+		return $layer->isValid();
+	}
+	
+	/**
 	 * Returns a new MapsLayer object created from the data in the page.
 	 * 
 	 * @since 0.7.1
@@ -78,7 +109,11 @@ class MapsLayerPage extends Article {
 	 * @return MapsLayer
 	 */
 	public function getLayer() {
-		return MapsLayer::newFromArray( $this->getProperties() );
+		if ( $this->cachedLayer === false ) {
+			$this->cachedLayer = MapsLayer::newFromArray( $this->getProperties() );
+		}		
+		
+		return $this->cachedLayer;
 	}
 	
 	/**
@@ -89,12 +124,6 @@ class MapsLayerPage extends Article {
 	 * @return array
 	 */
 	protected function getProperties() {
-		static $cachedProperties = false;
-		
-		if ( $cachedProperties !== false ) {
-			return $cachedProperties;
-		}
-		
 		$properties = array();
 
 		if ( is_null( $this->mContent ) ) {
@@ -109,7 +138,8 @@ class MapsLayerPage extends Article {
 			}
 		}
 
-		$cachedProperties = $properties;
+		$properties['type'] = array_key_exists( 'type', $properties ) ? $properties['type'] : MapsLayer::getDefaultType();
+		
 		return $properties;
 	}
 	
