@@ -155,9 +155,9 @@ function efMapsSetup() {
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
 	}
-	
+
 	$wgExtraNamespaces += array(
-		'Layer' => Maps_NS_LAYER
+		Maps_NS_LAYER => 'Layer'
 	);
 	
 	$wgNamespaceAliases += array(
