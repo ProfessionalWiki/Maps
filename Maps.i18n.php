@@ -24,6 +24,8 @@ Available mapping services: $1",
 	'maps-markers' => 'Markers',
 	'maps-ns-layer' => 'Layer',
 	'maps-ns-layer-talk' => 'Layer talk',
+	'maps-layer-property' => 'Property',
+	'maps-layer-value' => 'Value',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',

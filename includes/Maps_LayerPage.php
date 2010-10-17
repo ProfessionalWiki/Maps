@@ -29,7 +29,45 @@ class MapsLayerPage extends Article {
 	 * @since 0.7.1
 	 */
 	public function view() {
-		parent::view();
+		global $wgOut;
+		
+		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
+		
+		$rows = array();
+		
+		$rows[] = Html::rawElement(
+			'tr',
+			array(),
+			Html::element(
+				'th',
+				array( 'width' => '200px' ),
+				wfMsg( 'maps-layer-property' )
+			) .
+			Html::element(
+				'th',
+				array(),
+				wfMsg( 'maps-layer-value' )
+			)			
+		);		
+		
+		foreach ( $this->getProperties() as $property => $value ) {
+			$rows[] = Html::rawElement(
+				'tr',
+				array(),
+				Html::element(
+					'td',
+					array(),
+					$property
+				) .
+				Html::element(
+					'td',
+					array(),
+					$value
+				)			
+			);			
+		}
+		
+		$wgOut->addHTML( Html::rawElement( 'table', array( 'width' => '100%', 'class' => 'wikitable sortable' ), implode( "\n", $rows ) ) );
 	}
 	
 	/**
@@ -51,6 +89,12 @@ class MapsLayerPage extends Article {
 	 * @return array
 	 */
 	protected function getProperties() {
+		static $cachedProperties = false;
+		
+		if ( $cachedProperties !== false ) {
+			return $cachedProperties;
+		}
+		
 		$properties = array();
 
 		if ( is_null( $this->mContent ) ) {
@@ -65,6 +109,7 @@ class MapsLayerPage extends Article {
 			}
 		}
 
+		$cachedProperties = $properties;
 		return $properties;
 	}
 	
