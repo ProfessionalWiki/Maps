@@ -136,7 +136,8 @@ else {
 	// Include the settings file.
 	require_once $egMapsDir . 'Maps_Settings.php';
 	
-	define( 'Maps_NS_LAYER', $egMapsNamespaceIndex + 0 );
+	define( 'Maps_NS_LAYER', 		$egMapsNamespaceIndex + 0 );
+	define( 'Maps_NS_LAYER_TALK', 	$egMapsNamespaceIndex + 1 );
 }
 
 /**
@@ -158,11 +159,13 @@ function efMapsSetup() {
 	}
 
 	$wgExtraNamespaces += array(
-		Maps_NS_LAYER => 'Layer'
+		Maps_NS_LAYER => 'Layer',
+		Maps_NS_LAYER_TALK => 'Layer talk'
 	);
 	
 	$wgNamespaceAliases += array(
-		wfMsg( 'maps-ns-layer' ) => Maps_NS_LAYER
+		wfMsg( 'maps-ns-layer' ) => Maps_NS_LAYER,
+		wfMsg( 'maps-ns-layer-talk' ) => Maps_NS_LAYER_TALK
 	);
 	
 	wfRunHooks( 'MappingServiceLoad' );

@@ -23,6 +23,7 @@ Available mapping services: $1",
 	'maps-loading-map' => 'Loading map...',
 	'maps-markers' => 'Markers',
 	'maps-ns-layer' => 'Layer',
+	'maps-ns-layer-talk' => 'Layer talk',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
