@@ -44,12 +44,29 @@ class MapsLayerPage extends Article {
 		
 		$layer = $this->getLayer();
 		
+		$errorHeader = '';
+		
 		if ( !$layer->isValid() ) {
+			$messages = $layer->getErrorMessages( 'missing' );
+			$errorString = '';
+			
+			if ( count( $messages ) > 0 ) {
+				$errorString = '<br />' . implode( '<br />', array_map( 'htmlspecialchars', $messages ) );
+			}
+			
 			$wgOut->addHTML(
 				'<span class="errorbox">' .
-				htmlspecialchars( wfMsg( 'maps-error-invalid-layerdef' ) ) . 
+				htmlspecialchars( wfMsg( 'maps-error-invalid-layerdef' ) ) . $errorString .
 				'</span><br />'
 			);
+			
+			if ( count( $layer->getErrorMessages() ) - count( $messages ) > 0 ) {
+				$errorHeader = Html::element(
+					'th',
+					array( 'width' => '50%' ),
+					wfMsg( 'maps-layer-errors' )
+				);				
+			}
 		}
 		
 		$rows = array();
@@ -66,10 +83,32 @@ class MapsLayerPage extends Article {
 				'th',
 				array(),
 				wfMsg( 'maps-layer-value' )
-			)
+			) . $errorHeader
 		);		
 		
 		foreach ( $layer->getProperties() as $property => $value ) {
+			$errorTD = '';
+			
+			if ( !$layer->isValid() ) {
+				$messages = $layer->getErrorMessages( $property );
+				
+				if ( count( $messages ) > 0 ) {
+					$errorString = implode( '<br />', array_map( 'htmlspecialchars', $messages ) );
+
+					$errorTD = Html::rawElement(
+						'td', 
+						array(),
+						$errorString
+					);
+				}
+			}
+			
+			$valueTD = Html::element(
+				'td',
+				array( 'colspan' => $errorTD == '' && !$layer->isValid() ? 2 : 1 ),
+				$value
+			);			
+			
 			$rows[] = Html::rawElement(
 				'tr',
 				array(),
@@ -78,11 +117,7 @@ class MapsLayerPage extends Article {
 					array(),
 					$property
 				) .
-				Html::element(
-					'td',
-					array(),
-					$value
-				)			
+				$valueTD . $errorTD
 			);			
 		}
 		
@@ -110,7 +145,7 @@ class MapsLayerPage extends Article {
 	 */
 	public function getLayer() {
 		if ( $this->cachedLayer === false ) {
-			$this->cachedLayer = MapsLayer::newFromArray( $this->getProperties() );
+			$this->cachedLayer = new MapsLayer( $this->getProperties() );
 		}		
 		
 		return $this->cachedLayer;

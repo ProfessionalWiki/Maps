@@ -46,6 +46,22 @@ class MapsLayer {
 	protected $properties;
 	
 	/**
+	 * @since 0.7.1
+	 * 
+	 * @var array
+	 */
+	protected $errors = array();
+	
+	/**
+	 * Keeps track if the layer has been validated, to prevent doing redundant work.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @var boolean
+	 */
+	protected $hasValidated = false;
+	
+	/**
 	 * Returns the default layer type.
 	 * 
 	 * @since 0.7.1
@@ -57,27 +73,14 @@ class MapsLayer {
 	}
 	
 	/**
-	 * Creates and returns a new instance of an MapsLayer, based on the provided array of key value pairs.
+	 * Constructor.
 	 * 
 	 * @since 0.7.1
 	 * 
 	 * @param array $properties
-	 * 
-	 * @return MapsLayer
 	 */
-	public static function newFromArray( array $properties ) {
-		$layer = new MapsLayer();
-		$layer->setProperties( $properties );
-		return $layer;
-	}
-	
-	/**
-	 * Constructor.
-	 * 
-	 * @since 0.7.1
-	 */
-	public function __construct() {
-		
+	public function __construct( array $properties ) {
+		$this->properties = $properties;
 	}
 	
 	/**
@@ -92,6 +95,27 @@ class MapsLayer {
 	}
 	
 	/**
+	 * Returns the error messages, optionaly filtered by an error tag.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @param mixed $tag
+	 * 
+	 * @return array of string
+	 */
+	public function getErrorMessages( $tag = false ) {
+		$messages = array();
+		
+		foreach ( $this->errors as $error ) {
+			if ( $tag === false || $error->hasTag( $tag ) ) {
+				$messages[] = $error->getMessage();
+			}
+		}
+		
+		return $messages;
+	}
+	
+	/**
 	 * Returns the layers properties.
 	 * 
 	 * @since 0.7.1
@@ -103,6 +127,50 @@ class MapsLayer {
 	}
 	
 	/**
+	 * Returns an array of parameter definitions.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @return array
+	 */
+	protected function getParameterDefinitions() {
+		$params = array();
+		
+		$params[] = new Parameter( 'label' );
+		
+		$params[] = new Parameter( 'lowerbound', Parameter::TYPE_INTEGER );
+		$params[] = new Parameter( 'upperbound', Parameter::TYPE_INTEGER );
+		$params[] = new Parameter( 'leftbound', Parameter::TYPE_INTEGER );
+		$params[] = new Parameter( 'rightbound', Parameter::TYPE_INTEGER );
+		$params[] = new Parameter( 'width', Parameter::TYPE_INTEGER );
+		$params[] = new Parameter( 'height', Parameter::TYPE_INTEGER );
+		
+		$params[] = new Parameter( 'zoomlevels', Parameter::TYPE_INTEGER, false );
+		
+		$params['source'] = new Parameter( 'source' );
+		//$params['source']->addCriteria();
+		//$params['source']->addManipulations();
+		
+		return $params;
+	}
+	
+	/**
+	 * Validates the layer.
+	 * 
+	 * @since 0.7.1
+	 */
+	protected function validate() {
+		$validator = new Validator();
+		
+		$validator->setParameters( $this->properties, $this->getParameterDefinitions() );
+		$validator->validateParameters();
+		
+		if ( $validator->hasFatalError() !== false ) {
+			$this->errors = $validator->getErrors();
+		}
+	}
+	
+	/**
 	 * Gets if the properties make up a valid layer definition.
 	 * 
 	 * @since 0.7.1
@@ -110,33 +178,13 @@ class MapsLayer {
 	 * @return boolean
 	 */
 	public function isValid() {
-		if ( array_key_exists( $this->getType(), self::$types ) ) {
-			$typeDefinition = self::$types[$this->getType()];
-			
-			// Loop over the required parameters.
-			foreach ( $typeDefinition['required'] as $paramName ) {
-				if ( !array_key_exists( $paramName, $this->properties ) ) {
-					return false;
-				}
-			}
-			
-			return true;
+		if ( !$this->hasValidated ) {
+			$this->validate();
+			$this->hasValidated = true;
 		}
-		else {
-			return false;
-		}
+		
+		return count( $this->errors ) == 0;
 	}		
-	
-	/**
-	 * Sets the properties.
-	 * 
-	 * @since 0.7.1 
-	 * 
-	 * @param array $properties
-	 */
-	public function setProperties( array $properties ) {
-		$this->properties = $properties;
-	}
 	
 	/**
 	 * Returns a string containing the JavaScript definition of this layer.
