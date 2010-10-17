@@ -59,7 +59,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
+		$this->service->addLayerDependencies( $this->layers[1] );
 		
 		$langCode = $wgLang->getCode();
 		
@@ -72,7 +72,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 			$this->zoom,
 			{$this->markerCoords['lat']},
 			{$this->markerCoords['lon']},
-			[$layerItems],
+			{$this->layers[0]},
 			[$this->controls],
 			"$langCode"
 		);

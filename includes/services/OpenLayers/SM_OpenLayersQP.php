@@ -34,7 +34,7 @@ class SMOpenLayersQP extends SMMapPrinter {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
+		$this->service->addLayerDependencies( $this->layers[1] );
 		
 		$langCode = $wgLang->getCode();
 		
@@ -44,7 +44,7 @@ class SMOpenLayersQP extends SMMapPrinter {
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
-			[$layerItems],
+			{$this->layers[0]},
 			[$this->controls],
 			$this->markerJs,
 			"$langCode"
