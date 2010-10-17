@@ -30,6 +30,8 @@ class MapsLayerPage extends Article {
 	 */
 	public function view() {
 		parent::view();
+		//$layer = $this->getLayer();
+		//var_dump($layer);exit;
 	}
 	
 	/**
@@ -40,7 +42,28 @@ class MapsLayerPage extends Article {
 	 * @return MapsLayer
 	 */
 	public function getLayer() {
-		return MapsLayer::newFromArray();
+		return MapsLayer::newFromArray( $this->getProperties() );
+	}
+	
+	/**
+	 * Returns the properties defined on the page.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @return array
+	 */
+	protected function getProperties() {
+		$properties = array();
+
+		foreach ( explode( "\n", $this->mContent ) as $line ) {
+			$parts = explode( '=', $line, 2 );
+			
+			if ( count( $parts ) == 2 ) {
+				$properties[$parts[0]] = $parts[1];
+			}
+		}
+		
+		return $properties;
 	}
 	
 }

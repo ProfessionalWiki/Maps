@@ -13,6 +13,13 @@
 class MapsLayer {
 	
 	/**
+	 * @since 0.7.1
+	 * 
+	 * @var array
+	 */
+	protected $properties;
+	
+	/**
 	 * Creates and returns a new instance of an MapsLayer, based on the provided array of key value pairs.
 	 * 
 	 * @since 0.7.1
@@ -22,7 +29,9 @@ class MapsLayer {
 	 * @return MapsLayer
 	 */
 	public static function newFromArray( array $properties ) {
-		// TODO
+		$layer = new MapsLayer();
+		$layer->setProperties( $properties );
+		return $layer;
 	}
 	
 	/**
@@ -31,7 +40,18 @@ class MapsLayer {
 	 * @since 0.7.1
 	 */
 	public function __construct() {
-		// TODO
+		
+	}
+	
+	/**
+	 * Sets the properties.
+	 * 
+	 * @since 0.7.1 
+	 * 
+	 * @param array $properties
+	 */
+	public function setProperties( array $properties ) {
+		$this->properties = $properties;
 	}
 	
 }
