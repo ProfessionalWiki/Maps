@@ -70,7 +70,7 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		$parameter->setValue( array(
 			'[' . implode( ',', $layerDefs ) . ']',
 			$this->getDependencies( $layerNames )
-		) );	
+		) );
 	}
 	
 	/**
