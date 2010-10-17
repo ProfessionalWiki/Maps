@@ -95,7 +95,7 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		
 		foreach ( $layerNames as $layerName ) {
 			if ( array_key_exists( $layerName, $egMapsOLLayerDependencies ) ) {
-				
+				$layerDependencies[] = $egMapsOLLayerDependencies[$layerName];
 			}
 		}
 

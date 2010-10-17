@@ -138,7 +138,7 @@ class MapsLayer {
 	public function getJavaScriptDefinition() {
 		// Note: this is currently hardcoded for layers of type image.
 		$label = Xml::encodeJsVar( $this->properties['label'] );
-		$source = Xml::encodeJsVar( $this->properties['source'] );
+		$source = Xml::encodeJsVar( MapsMapper::getImageUrl( $this->properties['source'] ) );
 		$lowerBound = Xml::encodeJsVar( (int)$this->properties['lowerbound'] );
 		$upperBound = Xml::encodeJsVar( (int)$this->properties['upperbound'] );
 		$leftBound = Xml::encodeJsVar( (int)$this->properties['leftbound'] );

@@ -198,4 +198,24 @@ final class MapsMapper {
 		return $params;
 	}
 	
+	/**
+	 * Resolves the url of images provided as wiki page; leaves others alone.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @param string $image
+	 * 
+	 * @return string
+	 */
+	public static function getImageUrl( $image ) {
+		$title = Title::newFromText( $image, NS_FILE );
+		
+		if ( $title->getNamespace() == NS_FILE && $title->exists() ) {
+			$imagePage = new ImagePage( $title );
+			$image = $imagePage->getDisplayedFile()->getURL();
+		}		
+		
+		return $image;
+	}
+	
 }

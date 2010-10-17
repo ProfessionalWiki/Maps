@@ -47,7 +47,7 @@ class MapsLayerPage extends Article {
 				'th',
 				array(),
 				wfMsg( 'maps-layer-value' )
-			)			
+			)
 		);		
 		
 		foreach ( $this->getProperties() as $property => $value ) {
