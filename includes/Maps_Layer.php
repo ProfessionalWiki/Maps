@@ -22,19 +22,6 @@ class MapsLayer {
 	protected static $types = array(
 		'image' => array(
 			'class' => 'OpenLayers.Layer.Image',
-			'required' => array(
-				'label',
-				'source',
-				'lowerbound',
-				'upperbound',
-				'leftbound',
-				'rightbound',
-				'width',
-				'height'	
-			),
-			'optional' => array(
-				'zoomlevels'
-			)
 		)
 	);
 	
@@ -81,6 +68,9 @@ class MapsLayer {
 	 */
 	public function __construct( array $properties ) {
 		$this->properties = $properties;
+		
+		// TODO
+		$this->properties['source'] = MapsMapper::getImageUrl( $this->properties['source'] );
 	}
 	
 	/**
@@ -136,19 +126,22 @@ class MapsLayer {
 	protected function getParameterDefinitions() {
 		$params = array();
 		
+		$params['type'] = new Parameter( 'type' );
+		$params['type']->addCriteria( New CriterionInArray( array_keys( self::$types ) ) );
+		
 		$params[] = new Parameter( 'label' );
 		
-		$params[] = new Parameter( 'lowerbound', Parameter::TYPE_INTEGER );
-		$params[] = new Parameter( 'upperbound', Parameter::TYPE_INTEGER );
-		$params[] = new Parameter( 'leftbound', Parameter::TYPE_INTEGER );
-		$params[] = new Parameter( 'rightbound', Parameter::TYPE_INTEGER );
-		$params[] = new Parameter( 'width', Parameter::TYPE_INTEGER );
-		$params[] = new Parameter( 'height', Parameter::TYPE_INTEGER );
+		$params[] = new Parameter( 'lowerbound', Parameter::TYPE_FLOAT );
+		$params[] = new Parameter( 'upperbound', Parameter::TYPE_FLOAT );
+		$params[] = new Parameter( 'leftbound', Parameter::TYPE_FLOAT );
+		$params[] = new Parameter( 'rightbound', Parameter::TYPE_FLOAT );
+		$params[] = new Parameter( 'width', Parameter::TYPE_FLOAT );
+		$params[] = new Parameter( 'height', Parameter::TYPE_FLOAT );
 		
 		$params[] = new Parameter( 'zoomlevels', Parameter::TYPE_INTEGER, false );
 		
 		$params['source'] = new Parameter( 'source' );
-		//$params['source']->addCriteria();
+		//$params['source']->addCriteria(); // TODO
 		//$params['source']->addManipulations();
 		
 		return $params;
@@ -168,6 +161,8 @@ class MapsLayer {
 		if ( $validator->hasFatalError() !== false ) {
 			$this->errors = $validator->getErrors();
 		}
+		
+		$this->properties = $validator->getParameterValues();
 	}
 	
 	/**
@@ -195,22 +190,16 @@ class MapsLayer {
 	 * @return string
 	 */
 	public function getJavaScriptDefinition() {
-		// Note: this is currently hardcoded for layers of type image.
-		$label = Xml::encodeJsVar( $this->properties['label'] );
-		$source = Xml::encodeJsVar( MapsMapper::getImageUrl( $this->properties['source'] ) );
-		$lowerBound = Xml::encodeJsVar( (int)$this->properties['lowerbound'] );
-		$upperBound = Xml::encodeJsVar( (int)$this->properties['upperbound'] );
-		$leftBound = Xml::encodeJsVar( (int)$this->properties['leftbound'] );
-		$rightBound = Xml::encodeJsVar( (int)$this->properties['rightbound'] );	
-		$width = Xml::encodeJsVar( (int)$this->properties['width'] );	
-		$height = Xml::encodeJsVar( (int)$this->properties['height'] );			
+		foreach ( $this->properties as $name => $value ) {
+			${ $name } = Xml::encodeJsVar( $value );
+		}
 		
 		$class = self::$types[$this->getType()]['class'];
 		
 		$options = array();
 		
 		if ( array_key_exists( 'zoomlevels', $this->properties ) ) {
-			$options['numZoomLevels'] = (int)$this->properties['zoomlevels'];
+			$options['numZoomLevels'] = $zoomlevels;
 		}
 		
 		$options = Xml::encodeJsVar( (object)$options );
@@ -219,7 +208,7 @@ class MapsLayer {
 	new $class(
 		$label,
 		$source,
-		new OpenLayers.Bounds($leftBound, $lowerBound, $rightBound, $upperBound),
+		new OpenLayers.Bounds($leftbound, $lowerbound, $rightbound, $upperbound),
 		new OpenLayers.Size($width, $height),
 		{$options}
 	)
