@@ -225,6 +225,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Namespace index start of the mapping namespaces.
 	$egMapsNamespaceIndex = 420;
 	
+	# Boolean. Controls if you can specify images using a full path in layers.
+	$egMapsAllowExternalImages = true;
+	
 	
 	
 # Specific mapping service configuration
@@ -375,9 +378,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Array of String. The default layers for Open Layers. This value will only be
 		# used when the user does not provide one.
 		$egMapsOLLayers = array(
-			'osmarender',
+			'osm-mapnik',
 			'osm-cyclemap',
-			'osm-mapnik'
+			'osmarender'
 		);
 		
 		# The difinitions for the layers that should be available for the user.

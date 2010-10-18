@@ -145,7 +145,7 @@ class MapsOpenLayers extends MapsMappingService {
 		$keys = array_keys( $egMapsOLAvailableLayers );
 		
 		if ( $includeGroups ) {
-			$keys += array_keys( $egMapsOLLayerGroups );
+			$keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
 		}
 		
 		return $keys;

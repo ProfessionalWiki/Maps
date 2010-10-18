@@ -35,21 +35,34 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		$layerNames = array();
 		
 		foreach ( $parameter->getValue() as $layerOrGroup ) {
+			// Layer groups. Loop over all items and add them when not present yet.
 			if ( array_key_exists( $layerOrGroup, $egMapsOLLayerGroups ) ) {
 				foreach ( $egMapsOLLayerGroups[$layerOrGroup] as $layerName ) {
 					if ( !in_array( $layerName, $layerNames ) ) {
-						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName];
-						$layerNames[] = $layerOrGroup;
+						if ( is_array( $egMapsOLAvailableLayers[$layerName] ) ) {
+							$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName][0];
+						}
+						else {
+							$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName];
+						}
+						$layerNames[] = $layerName;
 					}
 				}
 			}
+			// Single layers. Add them when not present yet.
 			elseif ( array_key_exists( $layerOrGroup, $egMapsOLAvailableLayers ) ) {
 				if ( !in_array( $layerOrGroup, $layerNames ) ) {
-					$layerDef = is_array( $egMapsOLAvailableLayers[$layerOrGroup] ) ? $egMapsOLAvailableLayers[$layerOrGroup][0] : $egMapsOLAvailableLayers[$layerOrGroup];
-					$layerDefs[] = 'new ' . $layerDef;
+					if ( is_array( $egMapsOLAvailableLayers[$layerOrGroup] ) ) {
+						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerOrGroup][0];
+					}
+					else {
+						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerOrGroup];
+					}
+					
 					$layerNames[] = $layerOrGroup;
 				}
 			}
+			// Image layers. Check validity and add when not present yet.
 			else {
 				$title = Title::newFromText( $layerOrGroup, Maps_NS_LAYER );
 				
@@ -89,41 +102,19 @@ class MapsParamOLLayers extends ListParameterManipulation {
 	 * @return array
 	 */
 	protected function getDependencies( array $layerNames ) {
-		global $egMapsOLLayerDependencies;
-		static $decompressed = false;
-		
-		if ( !$decompressed ) {
-			$this->decompressLayerDependencies();
-			$decompressed = true;
-		}
+		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
 		
 		$layerDependencies = array();
 		
 		foreach ( $layerNames as $layerName ) {
-			if ( array_key_exists( $layerName, $egMapsOLLayerDependencies ) ) {
-				$layerDependencies[] = $egMapsOLLayerDependencies[$layerName];
+			if ( is_array( $egMapsOLAvailableLayers[$layerName] ) 
+				&& count( $egMapsOLAvailableLayers[$layerName] ) > 1
+				&& array_key_exists( $egMapsOLAvailableLayers[$layerName][1], $egMapsOLLayerDependencies ) ) {
+				$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
 			}
 		}
 
-		return $layerDependencies;
-	}
-	
-	/**
-	 * Resolves group dependencies to individual layer dependencies.
-	 * 
-	 * @since 0.7.1
-	 */
-	protected static function decompressLayerDependencies() {
-		global $egMapsOLLayerDependencies, $egMapsOLLayerGroups;
-		
-		foreach ( $egMapsOLLayerGroups as $groupName => $groupItems ) {
-			if ( array_key_exists( $groupName, $egMapsOLLayerDependencies ) ) {
-				foreach ( $groupItems as $item ) {
-					$egMapsOLLayerDependencies[$item] = $egMapsOLLayerDependencies[$groupName];
-				}
-				unset($egMapsOLLayerDependencies[$groupName]);
-			}
-		}
+		return array_unique( $layerDependencies );
 	}
 	
 }

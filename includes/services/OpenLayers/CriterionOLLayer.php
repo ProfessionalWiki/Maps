@@ -27,8 +27,8 @@ class CriterionOLLayer extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::validate
 	 */	
 	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
-		$dynamicLayers = MapsOpenLayers::getLayerNames();
-		
+		$dynamicLayers = MapsOpenLayers::getLayerNames( true );
+
 		// Dynamic layers, defined in the settings file or localsettings.
 		if ( in_array( $value, $dynamicLayers ) ) {
 			return true;
