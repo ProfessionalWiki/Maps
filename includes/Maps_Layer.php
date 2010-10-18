@@ -126,7 +126,8 @@ class MapsLayer {
 		$params['type'] = new Parameter( 'type' );
 		$params['type']->addCriteria( New CriterionInArray( array_keys( self::$types ) ) );
 		
-		$params[] = new Parameter( 'label' );
+		$params['label'] = new Parameter( 'label' );
+		$params['label']->lowerCaseValue = false;
 		
 		$params[] = new Parameter( 'lowerbound', Parameter::TYPE_FLOAT );
 		$params[] = new Parameter( 'upperbound', Parameter::TYPE_FLOAT );
@@ -188,9 +189,9 @@ class MapsLayer {
 	 */
 	public function getJavaScriptDefinition() {
 		foreach ( $this->properties as $name => $value ) {
-			${ $name } = Xml::encodeJsVar( $value );
+			${ $name } = MapsMapper::encodeJsVar( $value );
 		}
-		
+
 		$class = self::$types[$this->getType()]['class'];
 		
 		$options = array();

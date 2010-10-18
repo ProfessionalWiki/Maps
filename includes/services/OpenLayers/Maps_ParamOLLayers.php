@@ -36,6 +36,7 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		
 		foreach ( $parameter->getValue() as $layerOrGroup ) {
 			$lcLayerOrGroup = strtolower( $layerOrGroup );
+			
 			// Layer groups. Loop over all items and add them when not present yet.
 			if ( array_key_exists( $lcLayerOrGroup, $egMapsOLLayerGroups ) ) {
 				foreach ( $egMapsOLLayerGroups[$lcLayerOrGroup] as $layerName ) {
