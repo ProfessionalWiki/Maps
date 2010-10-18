@@ -141,6 +141,7 @@ class MapsLayer {
 		$params['source'] = new Parameter( 'source' );
 		$params['source']->addCriteria( new CriterionIsImage() );
 		$params['source']->addManipulations( new MapsParamImage() );
+		$params['source']->lowerCaseValue = false;
 		
 		return $params;
 	}
