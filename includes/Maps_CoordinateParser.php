@@ -42,7 +42,7 @@ class MapsCoordinateParser {
 	 * 
 	 * @param string $coordinates The coordinates to be parsed.
 	 * 
-	 * @return array or false
+	 * @return array of float or false
 	 */
 	public static function parseCoordinates( $coordinates ) {
 		// Handle i18n notations.
@@ -78,8 +78,8 @@ class MapsCoordinateParser {
 		
 		// Parse both latitude and longitude to float notation, and return the result.
 		return array(
-			'lat' => self::parseCoordinate( $coordinates['lat'], $coordsType ),
-			'lon' => self::parseCoordinate( $coordinates['lon'], $coordsType ),
+			'lat' => (float)self::parseCoordinate( $coordinates['lat'], $coordsType ),
+			'lon' => (float)self::parseCoordinate( $coordinates['lon'], $coordsType ),
 		);
 	}
 	
@@ -166,7 +166,7 @@ class MapsCoordinateParser {
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * 
-	 * @return array
+	 * @return array of string
 	 */
 	public static function formatToArray( array $coordinates, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
 		if ( !array_key_exists( 'lat', $coordinates ) || !array_key_exists( 'lon', $coordinates ) ) {

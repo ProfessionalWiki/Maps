@@ -124,7 +124,7 @@ abstract class MapsBasePointMap {
 		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
 		foreach ( $this->coordinates as $args ) {
 			$markerData = MapsCoordinateParser::parseCoordinates( array_shift( $args ) );
-			
+
 			if ( !$markerData ) continue;
 			
 			if ( count( $args ) > 0 ) {

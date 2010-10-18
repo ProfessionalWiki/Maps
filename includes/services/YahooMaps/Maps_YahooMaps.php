@@ -127,7 +127,7 @@ class MapsYahooMaps extends MapsMappingService {
 		$markerItems = array();
 		
 		foreach ( $markers as $marker ) {
-			$markerItems[] = Xml::encodeJsVar( (object)array(
+			$markerItems[] = MapsMapper::encodeJsVar( (object)array(
 				'lat' => $marker[0],
 				'lon' => $marker[1],
 				'title' => $marker[2],
