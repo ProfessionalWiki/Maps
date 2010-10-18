@@ -56,7 +56,7 @@ function initOpenLayer( mapName, lon, lat, zoom, mapTypes, controls, marker_data
 	}
 	
 	// Add the base layers.
-	for ( i = mapTypes.length - 1; i >= 0; i-- ) map.addLayer( mapTypes[i] );
+	for ( i = 0, n = mapTypes.length; i < n; i++ ) map.addLayer( mapTypes[i] );
 	
 	// Layer to hold the markers.
 	var markerLayer = new OpenLayers.Layer.Markers( msgMarkers );

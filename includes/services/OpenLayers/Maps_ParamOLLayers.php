@@ -36,15 +36,19 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		
 		foreach ( $parameter->getValue() as $layerOrGroup ) {
 			if ( array_key_exists( $layerOrGroup, $egMapsOLLayerGroups ) ) {
-				$layerNames += $egMapsOLLayerGroups[$layerOrGroup];
-				
 				foreach ( $egMapsOLLayerGroups[$layerOrGroup] as $layerName ) {
-					$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName];
+					if ( !in_array( $layerName, $layerNames ) ) {
+						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName];
+						$layerNames[] = $layerOrGroup;
+					}
 				}
 			}
 			elseif ( array_key_exists( $layerOrGroup, $egMapsOLAvailableLayers ) ) {
-				$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerOrGroup];
-				$layerNames[] = $layerOrGroup;
+				if ( !in_array( $layerOrGroup, $layerNames ) ) {
+					$layerDef = is_array( $egMapsOLAvailableLayers[$layerOrGroup] ) ? $egMapsOLAvailableLayers[$layerOrGroup][0] : $egMapsOLAvailableLayers[$layerOrGroup];
+					$layerDefs[] = 'new ' . $layerDef;
+					$layerNames[] = $layerOrGroup;
+				}
 			}
 			else {
 				$title = Title::newFromText( $layerOrGroup, Maps_NS_LAYER );
@@ -54,8 +58,10 @@ class MapsParamOLLayers extends ListParameterManipulation {
 					$layer = $layerPage->getLayer();
 					
 					if ( $layer->isValid() ) {
-						$layerDefs[] = $layer->getJavaScriptDefinition();
-						$layerNames[] = $layerOrGroup;
+						if ( !in_array( $layerOrGroup, $layerNames ) ) {
+							$layerDefs[] = $layer->getJavaScriptDefinition();
+							$layerNames[] = $layerOrGroup;							
+						}
 					}
 					else {
 						wfWarn( "Invalid layer ($layerOrGroup) encountered after validation." );

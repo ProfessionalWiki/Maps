@@ -18,6 +18,12 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Support for images without namespace prefix in the display points parser hook.
 
+* Fixed layer oder for OpenLayers maps.
+
+==== Internal improvements ====
+
+* Rewrote OpenLayers layer handling.
+
 === Maps 0.7 ===
 (2010-10-15)
 
