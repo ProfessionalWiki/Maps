@@ -183,6 +183,29 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		$geocodingFunction = $this->getShowAddressFunction(); 
 
+		static $addedFormJs = false;
+		if ( !$addedFormJs ) {
+			global $wgOut;
+			$addedFormJs = true;
+			
+			$n = Xml::escapeJsString( wfMsgForContent( 'maps-abb-north' ) );
+			$e = Xml::escapeJsString( wfMsgForContent( 'maps-abb-east' ) );
+			$s = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
+			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-west' ) );
+			$deg = Xml::escapeJsString( MapsCoordinateParser::SYMBOL_DEG );
+			
+			$wgOut->addInlineScript(
+					<<<EOT
+function convertLatToDMS (val) {
+	return Math.abs(val) + "$deg " + ( val < 0 ? "$s" : "$n" );
+}
+function convertLngToDMS (val) {
+	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
+}
+EOT
+			);
+		}		
+		
 		// Create the non specific form HTML.
 		$this->output .= Html::input( 
 			$input_name,
@@ -205,7 +228,7 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		if ( $geocodingFunction !== false ) {
 			$this->addGeocodingField( $geocodingFunction, $mapName, $mapName . '_geocode_' . $sfgTabIndex );
-		}			
+		}
 		
 		if ( $this->markerCoords === false ) {
 			$this->markerCoords = array(
@@ -233,29 +256,8 @@ abstract class SMFormInput implements iMappingFeature {
 	 * @param string $geocodeFieldName
 	 */
 	private function addGeocodingField( $geocodingFunction, $mapName, $geocodeFieldId ) {
-		global $sfgTabIndex, $wgOut, $smgAddedFormJs;
+		global $sfgTabIndex;
 		$sfgTabIndex++;
-		
-		if ( !$smgAddedFormJs ) {
-			$smgAddedFormJs = true;
-			
-			$n = Xml::escapeJsString( wfMsgForContent( 'maps-abb-north' ) );
-			$e = Xml::escapeJsString( wfMsgForContent( 'maps-abb-east' ) );
-			$s = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
-			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-west' ) );
-			$deg = Xml::escapeJsString( MapsCoordinateParser::SYMBOL_DEG );
-			
-			$wgOut->addInlineScript(
-					<<<EOT
-function convertLatToDMS (val) {
-	return Math.abs(val) + "$deg " + ( val < 0 ? "$s" : "$n" );
-}
-function convertLngToDMS (val) {
-	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
-}
-EOT
-			);
-		}
 		
 		$adressField = SMFormInput::getDynamicInput(
 			'geocode',

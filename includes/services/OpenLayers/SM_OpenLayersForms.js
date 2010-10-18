@@ -71,14 +71,17 @@ function makeFormInputOpenLayer( mapName, locationFieldName, lat, lon, zoom, mar
  * 
  * @param mapName Name of the map as in OLMaps[mapName].
  * @param newLocation The location for the new marker.
- * @return
  */
 function replaceMarker(mapName, newLocation) {
 	var map = OLMaps[mapName];
 	var markerLayer = map.getLayer('markerLayer');
 	
 	removeMarkers(markerLayer);
-	markerLayer.addMarker(getOLMarker(markerLayer, getOLMarkerData(newLocation.lon, newLocation.lat, '', '', ''), map.getProjectionObject()));
+	markerLayer.addMarker(getOLMarker(
+		markerLayer,
+		{ lonlat:newLocation, title: "", label:"", icon:"" },
+		map.getProjectionObject())
+	);
 	
 	map.panTo(newLocation);
 }
