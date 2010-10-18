@@ -243,7 +243,7 @@ abstract class SMFormInput implements iMappingFeature {
 			$e = Xml::escapeJsString( wfMsgForContent( 'maps-abb-east' ) );
 			$s = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
 			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-west' ) );
-			$deg = Xml::escapeJsString( Maps_GEO_DEG );
+			$deg = Xml::escapeJsString( MapsCoordinateParser::SYMBOL_DEG );
 			
 			$wgOut->addInlineScript(
 					<<<EOT
