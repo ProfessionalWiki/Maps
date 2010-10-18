@@ -71,6 +71,7 @@ else {
 	// Autoload the "includes/criteria/" classes.
 	$criDir = $incDir . 'criteria/';
 	$wgAutoloadClasses['CriterionIsDistance'] 		= $criDir . 'CriterionIsDistance.php';
+	$wgAutoloadClasses['CriterionIsImage'] 			= $criDir . 'CriterionIsImage.php';
 	$wgAutoloadClasses['CriterionIsLocation'] 		= $criDir . 'CriterionIsLocation.php';
 	$wgAutoloadClasses['CriterionMapDimension'] 	= $criDir . 'CriterionMapDimension.php';
 	
@@ -89,6 +90,7 @@ else {
 	$manDir = $incDir . 'manipulations/';
 	$wgAutoloadClasses['MapsParamCoordSet'] 		= $manDir . 'Maps_ParamCoordSet.php';
 	$wgAutoloadClasses['MapsParamDimension'] 		= $manDir . 'Maps_ParamDimension.php';
+	$wgAutoloadClasses['MapsParamImage'] 			= $manDir . 'Maps_ParamImage.php';
 	$wgAutoloadClasses['MapsParamService'] 			= $manDir . 'Maps_ParamService.php';
 	$wgAutoloadClasses['MapsParamZoom'] 			= $manDir . 'Maps_ParamZoom.php';
 	

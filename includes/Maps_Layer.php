@@ -68,11 +68,6 @@ class MapsLayer {
 	 */
 	public function __construct( array $properties ) {
 		$this->properties = $properties;
-		
-		// TODO
-		if ( array_key_exists( 'source', $this->properties ) ) {
-			$this->properties['source'] = MapsMapper::getImageUrl( $this->properties['source'] );
-		}
 	}
 	
 	/**
@@ -143,8 +138,8 @@ class MapsLayer {
 		$params[] = new Parameter( 'zoomlevels', Parameter::TYPE_INTEGER, false );
 		
 		$params['source'] = new Parameter( 'source' );
-		//$params['source']->addCriteria(); // TODO
-		//$params['source']->addManipulations();
+		$params['source']->addCriteria( new CriterionIsImage() );
+		$params['source']->addManipulations( new MapsParamImage() );
 		
 		return $params;
 	}

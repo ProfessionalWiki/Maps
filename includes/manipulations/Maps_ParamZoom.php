@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Parameter manipulation ensuring the value is a coordinate set.
+ * Parameter manipulation for zoom levels that overides the default in case of multiple locations.
  * 
  * @since 0.7
  * 
- * @file Maps_ParamCoordSet.php
+ * @file Maps_ParamZoom.php
  * @ingroup Maps
  * @ingroup ParameterManipulations
  * 

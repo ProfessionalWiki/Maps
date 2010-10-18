@@ -36,6 +36,8 @@ Available mapping services: $1",
 	'validation-error-invalid-height' => 'Parameter $1 must be a valid height.',
 	'validation-error-invalid-distance' => 'Parameter $1 must be a valid distance.',
 	'validation-error-invalid-distances' => 'Parameter $1 must be one or more valid distances.',
+	'validation-error-invalid-image' => 'Parameter $1 must be a valid image.',
+	'validation-error-invalid-images' => 'Parameter $1 must be one or more valid images.',
 
 	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
