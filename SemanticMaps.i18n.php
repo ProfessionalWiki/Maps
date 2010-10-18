@@ -426,10 +426,12 @@ $messages['he'] = array(
 	'semanticmaps_paramdesc_format' => 'שירות המיפוי המשמש להכנת המפה',
 	'semanticmaps_paramdesc_height' => 'גובה המפה, בפיקסלים (ברירת המחדל היא $1)',
 	'semanticmaps_paramdesc_width' => 'רוחב המפה, בפיקסלים (ברירת המחדל היא $1)',
+	'semanticmaps_paramdesc_zoom' => 'רמת התקריב של המפה',
 	'semanticmaps_paramdesc_centre' => 'קואורדינטות מרכז המפה',
 	'semanticmaps_paramdesc_controls' => 'פקדי המשתמש ממוקמים על המפה',
 	'semanticmaps_paramdesc_types' => 'צורות המפה הזמינות על המפה',
 	'semanticmaps_paramdesc_type' => 'סוג ברירת המחדל של המפה עבור המפה',
+	'semanticmaps_paramdesc_overlays' => 'השכבות הזמינות במפה',
 	'semanticmaps_paramdesc_layers' => 'השכבות הזמינות במפה',
 );
 
