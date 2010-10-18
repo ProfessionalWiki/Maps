@@ -30,7 +30,7 @@ class CriterionOLLayer extends ItemParameterCriterion {
 		$dynamicLayers = MapsOpenLayers::getLayerNames( true );
 
 		// Dynamic layers, defined in the settings file or localsettings.
-		if ( in_array( $value, $dynamicLayers ) ) {
+		if ( in_array( strtolower( $value ), $dynamicLayers ) ) {
 			return true;
 		}
 		

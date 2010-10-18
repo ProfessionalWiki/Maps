@@ -46,6 +46,7 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['layers']->setDoManipulationOfDefault( true );
 		$params['layers']->addCriteria( new CriterionOLLayer() );
 		$params['layers']->setDefault( $egMapsOLLayers );
+		$params['layers']->lowerCaseValue = false;
 		
 		//$params['imagelayers'] = new ListParameter();
 	}
@@ -83,9 +84,10 @@ class MapsOpenLayers extends MapsMappingService {
 	 */
 	public function createMarkersJs( array $markers ) {
 		$markerItems = array();
-		
+		$defaultGroup = wfMsg( 'maps-markers' );
+		//.// TODO
 		foreach ( $markers as $marker ) {
-			$markerItems[] = Xml::encodeJsVar( (object)array(
+			$markerItems[false ? $marker[5] : $defaultGroup] = Xml::encodeJsVar( (object)array(
 				'lat' => $marker[0],
 				'lon' => $marker[1],
 				'title' => $marker[2],
