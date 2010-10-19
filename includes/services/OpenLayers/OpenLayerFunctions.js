@@ -6,7 +6,7 @@
   *
   * @author Jeroen De Dauw
   */
-  
+
 /**
  * Creates and initializes an OpenLayers map. 
  * The resulting map is returned by the function but no further handling is required in most cases.
@@ -15,16 +15,28 @@ function initOpenLayer( mapName, lon, lat, zoom, mapTypes, controls, marker_data
 
 	OpenLayers.Lang.setCode( langCode );
 	
+	var hasImageLayer = false;
+	for ( i = 0, n = mapTypes.length; i < n; i++ ) {
+		// Idieally this would check if the objecct is of type OpenLayers.layer.image
+		if ( mapTypes[i].options && mapTypes[i].options.isImage === true ) {
+			hasImageLayer = true;
+			break;
+		}
+	}
+	
 	// Create a new OpenLayers map with without any controls on it.
-	var mapOptions = { 
-        projection: new OpenLayers.Projection("EPSG:900913"),
-        displayProjection: new OpenLayers.Projection("EPSG:4326"),
-        units: "m",
-        numZoomLevels: 18,
-        maxResolution: 156543.0339,
-        maxExtent: new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34), 
+	var mapOptions = {
 		controls: []
 	};
+	
+	if ( !hasImageLayer ) {
+		mapOptions.projection = new OpenLayers.Projection("EPSG:900913");
+		mapOptions.displayProjection = new OpenLayers.Projection("EPSG:4326");
+		mapOptions.units = "m";
+		mapOptions.numZoomLevels = 18;
+		mapOptions.maxResolution = 156543.0339;
+		mapOptions.maxExtent = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
+	}
 
 	var mapElement = document.getElementById( mapName );
 	
@@ -73,7 +85,11 @@ function initOpenLayer( mapName, lon, lat, zoom, mapTypes, controls, marker_data
 	
 	for ( i = marker_data.length - 1; i >= 0; i-- ) {
 		marker_data[i].lonlat = new OpenLayers.LonLat( marker_data[i].lon, marker_data[i].lat );
-		marker_data[i].lonlat.transform( new OpenLayers.Projection( "EPSG:4326" ), new OpenLayers.Projection( "EPSG:900913" ) );
+		
+		if ( !hasImageLayer ) {
+			marker_data[i].lonlat.transform( new OpenLayers.Projection( "EPSG:4326" ), new OpenLayers.Projection( "EPSG:900913" ) );
+		}
+		
 		if ( bounds != null ) bounds.extend( marker_data[i].lonlat ); // Extend the bounds when no center is set.
 		markerLayer.addMarker( getOLMarker( markerLayer, marker_data[i], map.getProjectionObject() ) ); // Create and add the marker.
 	}
@@ -82,7 +98,11 @@ function initOpenLayer( mapName, lon, lat, zoom, mapTypes, controls, marker_data
 	
 	if (centerIsSet) { // When the center is provided, set it.
 		var centre = new OpenLayers.LonLat(lon, lat);
-		centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+		
+		if ( !hasImageLayer ) {
+			centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+		}
+
 		map.setCenter(centre); 
 	}
 	

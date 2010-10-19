@@ -184,6 +184,8 @@ class MapsLayer {
 	 * Returns a string containing the JavaScript definition of this layer.
 	 * Only call this function when you are sure the layer is valid!
 	 * 
+	 * TODO: move this to the OpenLayers class
+	 * 
 	 * @since 0.7.1
 	 * 
 	 * @return string
@@ -195,7 +197,7 @@ class MapsLayer {
 
 		$class = self::$types[$this->getType()]['class'];
 		
-		$options = array();
+		$options = array( 'isImage' => true );
 		
 		if ( $this->properties !== false ) {
 			$options['numZoomLevels'] = $zoomlevels;
