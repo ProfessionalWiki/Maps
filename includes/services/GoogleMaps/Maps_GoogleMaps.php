@@ -120,6 +120,17 @@ class MapsGoogleMaps extends MapsMappingService {
 		global $egMapsGoogleMapsZoom;
 		return $egMapsGoogleMapsZoom;
 	}
+	
+	/**
+	 * Returns all possible values for the overlays parameter.
+	 * 
+	 * @since 0.7.1
+	 * 
+	 * @return array
+	 */
+	public function getOverlayNames() {
+		return array_keys( self::$overlayData );
+	}
 
 	/**
 	 * @see MapsMappingService::getMapId

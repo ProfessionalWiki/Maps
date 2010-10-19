@@ -45,6 +45,14 @@ class MapsCoordinateParser {
 	 * @return array of float or false
 	 */
 	public static function parseCoordinates( $coordinates ) {
+		if ( $coordinates === false ) {
+			return false;
+		}
+		
+		if ( is_array( $coordinates ) ) {
+			$coordinates = implode( self::$separators[0], $coordinates );
+		}
+		
 		// Handle i18n notations.
 		$coordinates = self::handleI18nLabels( $coordinates );
 		
