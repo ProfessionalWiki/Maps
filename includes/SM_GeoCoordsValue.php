@@ -221,8 +221,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 			// var_dump($args);exit;
 		}
 		else {
-			$this->coordinateSet['lat'] = $args[0];
-			$this->coordinateSet['lon'] = $args[1];
+			$this->coordinateSet['lat'] = (float)$args[0];
+			$this->coordinateSet['lon'] = (float)$args[1];
 		}
 		
 		$this->m_caption = MapsCoordinateParser::formatCoordinates(

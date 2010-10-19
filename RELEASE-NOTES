@@ -18,6 +18,8 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 * Support for images without namespace prefix in the statispoints parameter in map ask queries.
 
+* Fixed several issue with the OpenLayers form input.
+
 === Semantic Maps 0.7 ===
 (2010-10-15)
 

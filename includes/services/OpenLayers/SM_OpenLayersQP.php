@@ -33,7 +33,7 @@ class SMOpenLayersQP extends SMMapPrinter {
 			),
 			wfMsg( 'maps-loading-map' )
 		);
-		
+
 		$this->service->addLayerDependencies( $this->layers[1] );
 		
 		$langCode = $wgLang->getCode();

@@ -255,6 +255,11 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		}
 	}
 	
+	/**
+	 * Adds the static locations (specified via the staticlocations parameter) to the map.
+	 * 
+	 * @since 0.7
+	 */
 	protected function addStaticLocations() {
 		global $wgTitle;
 		
