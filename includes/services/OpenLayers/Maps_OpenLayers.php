@@ -87,7 +87,7 @@ class MapsOpenLayers extends MapsMappingService {
 		$defaultGroup = wfMsg( 'maps-markers' );
 		//.// TODO
 		foreach ( $markers as $marker ) {
-			$markerItems[false ? $marker[5] : $defaultGroup] = MapsMapper::encodeJsVar( (object)array(
+			$markerItems[] = MapsMapper::encodeJsVar( (object)array(
 				'lat' => $marker[0],
 				'lon' => $marker[1],
 				'title' => $marker[2],

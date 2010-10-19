@@ -23,7 +23,7 @@ function initOpenLayer( mapName, lon, lat, zoom, mapTypes, controls, marker_data
 			break;
 		}
 	}
-	
+
 	// Create a new OpenLayers map with without any controls on it.
 	var mapOptions = {
 		controls: []
