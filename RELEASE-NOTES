@@ -20,6 +20,8 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 * Fixed several issue with the OpenLayers form input.
 
+* Fixed fatal error for Google Maps v2 options on Special:Ask. 
+
 === Semantic Maps 0.7 ===
 (2010-10-15)
 

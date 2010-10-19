@@ -1,21 +1,9 @@
 <?php
 
 /**
- * File holding the SMOpenLayersFormInput class.
- *
- * @file SM_OpenLayersFormInput.php
- * @ingroup SMOpenLayers
- * 
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for OpenLayers form inputs.
  * 
+ * @file SM_OpenLayersFormInput.php
  * @ingroup SMOpenLayers
  * 
  * @author Jeroen De Dauw
