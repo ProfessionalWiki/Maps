@@ -67,7 +67,6 @@ class MapsGeodistance extends ParserHook {
 				new CriterionIsLocation(),
 			)			
 		);
-		$params['location1']->lowerCaseValue = false;
 		$params['location1']->addDependencies( 'mappingservice', 'geoservice' );
 		
 		$params['location2'] = new Parameter(
@@ -79,7 +78,6 @@ class MapsGeodistance extends ParserHook {
 				new CriterionIsLocation(),
 			)			
 		);
-		$params['location2']->lowerCaseValue = false;
 		$params['location2']->addDependencies( 'mappingservice', 'geoservice' );			
 		
 		$params['unit'] = new Parameter(
@@ -90,7 +88,8 @@ class MapsGeodistance extends ParserHook {
 			array(
 				new CriterionInArray( MapsDistanceParser::getUnits() ),
 			)
-		);	
+		);
+		$params['unit']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 
 		$params['decimals'] = new Parameter(
 			'decimals',
@@ -107,6 +106,7 @@ class MapsGeodistance extends ParserHook {
 				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
 			)
 		);
+		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 		
 		$params['geoservice'] = new Parameter(
 			'geoservice', 
@@ -116,7 +116,8 @@ class MapsGeodistance extends ParserHook {
 			array(
 				new CriterionInArray( $egMapsAvailableGeoServices ),
 			)
-		);			
+		);
+		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
 		
 		return $params;
 	}

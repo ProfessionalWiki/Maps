@@ -67,10 +67,8 @@ class MapsCoordinates extends ParserHook {
 			array(),
 			array(
 				new CriterionIsLocation(),
-			)			
+			)	
 		);
-		
-		$params['location']->lowerCaseValue = false;
 		
 		$params['format'] = new Parameter(
 			'format',
@@ -80,7 +78,8 @@ class MapsCoordinates extends ParserHook {
 			array(
 				new CriterionInArray( $egMapsAvailableCoordNotations ),
 			)			
-		);		
+		);	
+		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
 		
 		$params['directional'] = new Parameter(
 			'directional',

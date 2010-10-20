@@ -29,7 +29,7 @@ class MapsParamYMapType extends ItemParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
-		$value = MapsYahooMaps::$mapTypes[$value];
+		$value = MapsYahooMaps::$mapTypes[strtolower( $value )];
 	}
 	
 }

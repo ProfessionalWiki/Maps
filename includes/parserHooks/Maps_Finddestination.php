@@ -61,7 +61,6 @@ class MapsFinddestination extends ParserHook {
 		
 		$params['location'] = new Parameter( 'location' );
 		$params['location']->addCriteria( new CriterionIsLocation() );
-		$params['location']->lowerCaseValue = false;
 		$params['location']->addDependencies( 'mappingservice', 'geoservice' );
 		
 		$params['bearing'] = new Parameter(
@@ -71,6 +70,7 @@ class MapsFinddestination extends ParserHook {
 		
 		$params['distance'] = new Parameter( 'distance' );
 		$params['distance']->addCriteria( new CriterionIsDistance() );
+		// TODO: manipulate to distance object
 		
 		$params['mappingservice'] = new Parameter(
 			'mappingservice', 
@@ -81,6 +81,7 @@ class MapsFinddestination extends ParserHook {
 				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
 			)
 		);
+		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 		
 		$params['geoservice'] = new Parameter(
 			'geoservice', 
@@ -90,7 +91,8 @@ class MapsFinddestination extends ParserHook {
 			array(
 				new CriterionInArray( $egMapsAvailableGeoServices ),
 			)
-		);	
+		);
+		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 
 		$params['allowcoordinates'] = new Parameter(
 			'allowcoordinates', 
@@ -106,7 +108,8 @@ class MapsFinddestination extends ParserHook {
 			array(
 				new CriterionInArray( $egMapsAvailableCoordNotations ),
 			)			
-		);		
+		);
+		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 		
 		$params['directional'] = new Parameter(
 			'directional',

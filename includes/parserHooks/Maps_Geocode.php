@@ -61,7 +61,6 @@ class MapsGeocode extends ParserHook {
 		$params = array();
 		
 		$params['location'] = new Parameter( 'location' );
-		$params['location']->lowerCaseValue = false;	
 		$params['location']->addDependencies( 'mappingservice', 'geoservice' );
 		$params['location']->addCriteria( new CriterionIsLocation() );	
 		
@@ -74,6 +73,7 @@ class MapsGeocode extends ParserHook {
 				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
 			)
 		);
+		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 		
 		$params['geoservice'] = new Parameter(
 			'geoservice', 
@@ -83,13 +83,14 @@ class MapsGeocode extends ParserHook {
 			array(
 				new CriterionInArray( $egMapsAvailableGeoServices ),
 			)
-		);		
+		);	
+		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
 		
 		$params['allowcoordinates'] = new Parameter(
 			'allowcoordinates', 
 			Parameter::TYPE_BOOLEAN,
 			$egMapsAllowCoordsGeocoding
-		);			
+		);
 		
 		$params['format'] = new Parameter(
 			'format',
@@ -98,8 +99,9 @@ class MapsGeocode extends ParserHook {
 			array( 'notation' ),
 			array(
 				new CriterionInArray( $egMapsAvailableCoordNotations ),
-			)			
-		);		
+			)	
+		);
+		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );		
 		
 		$params['directional'] = new Parameter(
 			'directional',

@@ -48,22 +48,18 @@ class MapsYahooMaps extends MapsMappingService {
 		$params['zoom']->addCriteria( new CriterionInRange( 1, 13 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );		
 		
-		$params['controls'] = new ListParameter(
-			'controls',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			$egMapsYMapControls,
-			array(),
-			array(
-				new CriterionInArray( self::getControlNames() ),
-			)			
-		);
-		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
+		$params['controls'] = new ListParameter( 'controls' );
+		$params['controls']->setDefault( $egMapsYMapControls );
+		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
+		$params['controls']->addManipulations(
+			new ParamManipulationFunctions( 'strtolower' ),
+			new ParamManipulationImplode( ',', "'" )
+		);		
 		
 		$params['type'] = new Parameter(
 			'type',
 			Parameter::TYPE_STRING,
-			$egMapsYahooMapsType,// FIXME: default value should not be used when not present in types parameter.
+			$egMapsYahooMapsType, // FIXME: default value should not be used when not present in types parameter.
 			array(),
 			array(
 				new CriterionInArray( self::getTypeNames() ),

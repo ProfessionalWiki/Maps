@@ -39,14 +39,16 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['controls'] = new ListParameter( 'controls' );
 		$params['controls']->setDefault( $egMapsOLControls );
 		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
-		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
+		$params['controls']->addManipulations(
+			new ParamManipulationFunctions( 'strtolower' ),
+			new ParamManipulationImplode( ',', "'" )
+		);
 		
 		$params['layers'] = new ListParameter( 'layers' );
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
 		$params['layers']->setDoManipulationOfDefault( true );
 		$params['layers']->addCriteria( new CriterionOLLayer() );
 		$params['layers']->setDefault( $egMapsOLLayers );
-		$params['layers']->lowerCaseValue = false;
 		
 		//$params['imagelayers'] = new ListParameter();
 	}

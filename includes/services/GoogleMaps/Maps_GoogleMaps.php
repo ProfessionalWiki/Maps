@@ -48,17 +48,13 @@ class MapsGoogleMaps extends MapsMappingService {
 		$params['zoom']->addCriteria( new CriterionInRange( 0, 20 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );
 		
-		$params['controls'] = new ListParameter(
-			'controls',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			$egMapsGMapControls,
-			array(),
-			array(
-				new CriterionInArray( self::getControlNames() ),
-			)			
-		);
-		$params['controls']->addManipulations( new ParamManipulationImplode( ',', "'" ) );		
+		$params['controls'] = new ListParameter( 'controls' );
+		$params['controls']->setDefault( $egMapsGMapControls );
+		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
+		$params['controls']->addManipulations(
+			new ParamManipulationFunctions( 'strtolower' ),
+			new ParamManipulationImplode( ',', "'" )
+		);		
 
 		$params['type'] = new Parameter(
 			'type',
@@ -91,24 +87,14 @@ class MapsGoogleMaps extends MapsMappingService {
 		);
 		$params['autozoom']->addManipulations( new ParamManipulationBoolstr() );
 		
-		$params['kml'] = new ListParameter(
-			'kml',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			array() // TODO
-		);		
+		$params['kml'] = new ListParameter( 'kml' );
+		$params['kml']->setDefault( array() );
 		$params['kml']->addManipulations( new ParamManipulationImplode( ',', "'" ) );
 
-		$params['overlays'] = new ListParameter(
-			'overlays',
-			ListParameter::DEFAULT_DELIMITER,
-			Parameter::TYPE_STRING,
-			$egMapsGMapOverlays,
-			array(),
-			array(
-				new CriterionGoogleOverlay( self::$overlayData )
-			)
-		);
+		$params['overlays'] = new ListParameter( 'overlays' );
+		$params['overlays']->setDefault( $egMapsGMapOverlays );
+		$params['overlays']->addCriteria( new CriterionGoogleOverlay( self::$overlayData ) );
+		$params['overlays']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) ); // TODO
 	}
 	
 	/**

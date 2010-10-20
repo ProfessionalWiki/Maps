@@ -123,12 +123,6 @@ class MapsLayer {
 	protected function getParameterDefinitions() {
 		$params = array();
 		
-		$params['type'] = new Parameter( 'type' );
-		$params['type']->addCriteria( New CriterionInArray( array_keys( self::$types ) ) );
-		
-		$params['label'] = new Parameter( 'label' );
-		$params['label']->lowerCaseValue = false;
-		
 		$params[] = new Parameter( 'lowerbound', Parameter::TYPE_FLOAT );
 		$params[] = new Parameter( 'upperbound', Parameter::TYPE_FLOAT );
 		$params[] = new Parameter( 'leftbound', Parameter::TYPE_FLOAT );
@@ -136,12 +130,17 @@ class MapsLayer {
 		$params[] = new Parameter( 'width', Parameter::TYPE_FLOAT );
 		$params[] = new Parameter( 'height', Parameter::TYPE_FLOAT );
 		
+		$params['type'] = new Parameter( 'type' );
+		$params['type']->addCriteria( New CriterionInArray( array_keys( self::$types ) ) );		
+		$params['type']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
+		
 		$params[] = new Parameter( 'zoomlevels', Parameter::TYPE_INTEGER, false );
+		
+		$params['label'] = new Parameter( 'label' );
 		
 		$params['source'] = new Parameter( 'source' );
 		$params['source']->addCriteria( new CriterionIsImage() );
 		$params['source']->addManipulations( new MapsParamImage() );
-		$params['source']->lowerCaseValue = false;
 		
 		return $params;
 	}

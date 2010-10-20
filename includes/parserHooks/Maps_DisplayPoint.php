@@ -67,7 +67,6 @@ class MapsDisplayPoint extends ParserHook {
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
 		$params['coordinates']->addManipulations( new MapsParamCoordSet( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );		
-		$params['coordinates']->lowerCaseValue = false;
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
 		
 		$params['centre'] = new Parameter(
@@ -79,14 +78,12 @@ class MapsDisplayPoint extends ParserHook {
 				new CriterionIsLocation(),
 			)			
 		);
-		$params['centre']->lowerCaseValue = false;
 		
 		$params['title'] = new Parameter(
 			'title',
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
-		$params['title']->lowerCaseValue = false;
 		
 		$params['label'] = new Parameter(
 			'label',
@@ -94,7 +91,6 @@ class MapsDisplayPoint extends ParserHook {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
-		$params['label']->lowerCaseValue = false;
 		
 		$params['icon'] = new Parameter(
 			'icon',
@@ -105,7 +101,6 @@ class MapsDisplayPoint extends ParserHook {
 				New CriterionNotEmpty()
 			)
 		);	
-		$params['icon']->lowerCaseValue = false;
 		
 		return $params;
 	}
