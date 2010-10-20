@@ -71,7 +71,6 @@ final class SMQueryPrinters {
 		$params['staticlocations']->addAliases( 'locations' );
 		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
 		$params['staticlocations']->addManipulations( new MapsParamCoordSet( '~' ) );		
-		$params['staticlocations']->lowerCaseValue = false;
 		$params['staticlocations']->setDefault( array() );
 		
 		$params['centre'] = new Parameter(
@@ -83,7 +82,6 @@ final class SMQueryPrinters {
 				new CriterionIsLocation(),
 			)			
 		);
-		$params['centre']->lowerCaseValue = false;			
 		
 		$params['icon'] = new Parameter(
 			'icon',
@@ -94,7 +92,6 @@ final class SMQueryPrinters {
 				New CriterionNotEmpty()
 			)
 		);	
-		$params['icon']->lowerCaseValue = false;
 		
 		$params['forceshow'] = new Parameter(
 			'forceshow',
@@ -121,14 +118,12 @@ final class SMQueryPrinters {
 				New CriterionNotEmpty()
 			)
 		);
-		$params['template']->lowerCaseValue = false;
 		
 		$params['title'] = new Parameter(
 			'title',
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
-		$params['title']->lowerCaseValue = false;
 		
 		$params['label'] = new Parameter(
 			'label',
@@ -136,7 +131,6 @@ final class SMQueryPrinters {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
-		$params['label']->lowerCaseValue = false;		
 		
 		return $params;
 	}

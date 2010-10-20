@@ -397,8 +397,6 @@ EOT
 			)			
 		);
 		
-		$params['centre']->lowerCaseValue = false;		
-		
 		//$params['foobar'] = new Parameter('foobar');	
 		
 		// TODO
