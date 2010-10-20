@@ -90,6 +90,7 @@ $1',
  * @author Fryed-peach
  * @author Purodha
  * @author Raymond
+ * @author Тест
  */
 $messages['qqq'] = array(
 	'maps_name' => '{{Optional}}',
@@ -97,6 +98,7 @@ $messages['qqq'] = array(
 
 * $1: a list of available map services',
 	'maps_map' => '{{Identical|Map}}',
+	'maps-layer-value' => '{{identical|Value}}',
 	'maps-latitude' => '{{Identical|Latitude}}',
 	'maps-longitude' => '{{Identical|Longitude}}',
 	'maps_geocoding_failed_for' => '* $1 is a list
@@ -710,6 +712,8 @@ Services de cartographie disponibles : $1',
 	'validation-error-invalid-height' => 'Le paramètre $1 doit être une hauteur valide.',
 	'validation-error-invalid-distance' => 'Le paramètre $1 doit être une distance valide.',
 	'validation-error-invalid-distances' => 'Le paramètre $1 doit être une ou plusieurs distance(s) valide(s).',
+	'validation-error-invalid-image' => 'Le paramètre $1 doit être une image valide.',
+	'validation-error-invalid-images' => 'Le paramètre $1 doit être une ou plusieurs image(s) valide(s).',
 	'validation-error-invalid-goverlay' => 'Le paramètre $1 doit être un recouvrement valide.',
 	'validation-error-invalid-goverlays' => 'Le paramètre $1 doit être un ou plusieurs recouvrement(s) valide(s).',
 	'validation-error-invalid-ollayer' => 'Le paramètre $1 doit être une couche valide.',
@@ -2170,6 +2174,9 @@ $messages['uk'] = array(
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
 	'maps-markers' => 'Відмітки',
+	'maps-layer-property' => 'Властивість',
+	'maps-layer-value' => 'Значення',
+	'maps-layer-errors' => 'Помилки',
 	'validation-error-invalid-distance' => 'Параметр $1 повинен бути дійсною відстанню.',
 	'maps-abb-north' => 'П',
 	'maps-abb-east' => 'С',
