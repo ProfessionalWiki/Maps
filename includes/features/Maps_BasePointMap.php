@@ -98,7 +98,7 @@ abstract class MapsBasePointMap {
 		$this->addSpecificMapHTML( $parser );
 		
 		global $wgTitle;
-		if ( $wgTitle->isSpecialPage() ) {
+		if ( $wgTitle->getNamespace() == NS_SPECIAL ) {
 			global $wgOut;
 			$this->service->addDependencies( $wgOut );
 		}
