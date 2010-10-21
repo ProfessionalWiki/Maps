@@ -127,6 +127,8 @@ abstract class MapsBasePointMap {
 
 			if ( !$markerData ) continue;
 			
+			$markerData = array( $markerData['lat'], $markerData['lon'] );
+			
 			if ( count( $args ) > 0 ) {
 				// Parse and add the point specific title if it's present.
 				$markerData['title'] = $parser->parse( $args[0], $wgTitle, new ParserOptions() )->getText();
