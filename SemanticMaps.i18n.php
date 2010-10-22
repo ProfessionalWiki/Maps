@@ -972,6 +972,7 @@ Tillgängliga karttjänster: $1',
  * @author Veeven
  */
 $messages['te'] = array(
+	'semanticmaps_enteraddresshere' => 'చిరునామాని ఇక్కడ ఇవ్వండి',
 	'semanticmaps_notfound' => 'కనబడలేదు',
 );
 
