@@ -203,8 +203,8 @@ class MapsCoordinateParser {
 		
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), self::SYMBOL_DEG, $coordinates );
 		$coordinates = str_replace( array( '&acute;', '&#180;' ), self::SYMBOL_SEC, $coordinates );
-		$coordinates = str_replace( array( '&#8243;', '&Prime;', self::SYMBOL_SEC . self::SYMBOL_SEC, '´´', '′′', '″' ), self::SYMBOL_MIN, $coordinates );
-		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), self::SYMBOL_SEC, $coordinates );
+		$coordinates = str_replace( array( '&#8242;', '&prime;', '´', '′' ), self::SYMBOL_MIN, $coordinates );
+		$coordinates = str_replace( array( '&#8243;', '&Prime;', self::SYMBOL_MIN . self::SYMBOL_MIN, '´´', '′′', '″' ), self::SYMBOL_SEC, $coordinates );
 
 		$coordinates = self::removeInvalidChars( $coordinates );
 
