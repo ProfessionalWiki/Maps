@@ -358,7 +358,9 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 						}
 					}
 					else {
-						$text .= $pr->getHTMLText( $skin ) . ': ' . $object->getLongText( $outputmode, $skin ) . '<br />';
+						$propertyName = $pr->getHTMLText( $skin );
+						if ( $propertyName != '' ) $propertyName .= ': ';
+						$text .= $propertyName . $object->getLongText( $outputmode, $skin ) . '<br />';
 					}
 				}
 		
