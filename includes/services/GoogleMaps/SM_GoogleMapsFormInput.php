@@ -1,23 +1,9 @@
 <?php
 
 /**
- * File holding the SMGoogleMapsFormInput class.
- *
- * @file SM_GoogleMapsFormInput.php
- * @ingroup SMGoogleMaps
- *
- * @author Jeroen De Dauw
- * @author Robert Buzink
- * @author Yaron Koren
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
  * Class for Google Maps v2 form inputs.
  * 
+ * @file SM_GoogleMapsFormInput.php
  * @ingroup SMGoogleMaps
  * 
  * @author Jeroen De Dauw
@@ -50,7 +36,7 @@ class SMGoogleMapsFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgOut;
-		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion;
+		global $smgScriptPath, $smgStyleVersion;
 
 		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/includes/services/GoogleMaps/SM_GoogleMapsForms.js?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );

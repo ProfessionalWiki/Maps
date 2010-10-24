@@ -46,7 +46,7 @@ class SMYahooMapsFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgOut;
-		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion;
+		global $smgScriptPath, $smgStyleVersion;
 		
 		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/includes/services/YahooMaps/SM_YahooMapsForms.js?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );

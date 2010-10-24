@@ -24,7 +24,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 	 */
 	protected function addFormDependencies() {
 		global $wgOut;
-		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion;
+		global $smgScriptPath, $smgStyleVersion;
 		
 		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/includes/services/OpenLayers/SM_OpenLayersForms.js?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
