@@ -8,9 +8,11 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 
 === Semantic Maps 0.7.2 ===
-(2010-1x-xx)
+(2010-10-2x)
 
-* ...
+==== Bug fixes ====
+
+* Fixed small layout issue in query pop-ups when property names are blank.
 
 === Semantic Maps 0.7.1 ===
 (2010-10-20)
