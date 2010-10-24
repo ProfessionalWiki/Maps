@@ -238,10 +238,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Google Geocoder services.
 		$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
 		
-		# String. The Google Maps map name prefix. It can not be identical to the one
-		# of another mapping service.
-		$egMapsGoogleMapsPrefix = 'map_google';
-		
 		# Integer. The default zoom of a map. This value will only be used when the
 		# user does not provide one.
 		$egMapsGoogleMapsZoom = 14;
@@ -289,10 +285,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 	# Google Maps v3
 	
-		# String. The Google Maps v3 map name prefix. It can not be identical to the
-		# one of another mapping service.
-		$egMapsGMaps3Prefix = 'map_google3';
-		
 		# Integer. The default zoom of a map. This value will only be used when the
 		# user does not provide one.
 		$egMapsGMaps3Zoom = 14;
@@ -317,10 +309,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
 		# Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
 		$egYahooMapsKey = '';
-		
-		# String. The Yahoo! maps map name prefix. It can not be identical to the one
-		# of another mapping service.
-		$egMapsYahooMapsPrefix = 'map_yahoo';
 		
 		# Array of String. The Google Maps default map types. This value will only be
 		# used when the user does not provide one.
@@ -354,10 +342,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 	
 	# OpenLayers
-	
-		# String. The OpenLayers map name prefix. It can not be identical to the one of
-		# another mapping service.
-		$egMapsOpenLayersPrefix = 'open_layer';
 		
 		# Integer. The default zoom of a map. This value will only be used when the
 		# user does not provide one.
@@ -424,10 +408,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Integer. The default zoom of a map. This value will only be used when the
 		# user does not provide one.
 		$egMapsOSMZoom = 13;		
-		
-		# String. The OSM map name prefix. It can not be identical to the one of
-		# another mapping service.
-		$egMapsOSMPrefix = 'map_osm';		
 		
 		# Boolean. Thumbnail pictures on or off.
 		$egMapsOSMThumbs = false;

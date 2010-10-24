@@ -124,14 +124,13 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * @since 0.6.5
 	 */
 	public function getMapId( $increment = true ) {
-		global $egMapsGoogleMapsPrefix;
 		static $mapsOnThisPage = 0;
 		
 		if ( $increment ) {
 			$mapsOnThisPage++;
 		}
 		
-		return $egMapsGoogleMapsPrefix . '_' . $mapsOnThisPage;
+		return 'map_google_' . $mapsOnThisPage;
 	}
 
 	/**

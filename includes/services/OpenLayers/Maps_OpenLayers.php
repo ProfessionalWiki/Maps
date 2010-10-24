@@ -69,14 +69,13 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @since 0.6.5
 	 */
 	public function getMapId( $increment = true ) {
-		global $egMapsOpenLayersPrefix;
 		static $mapsOnThisPage = 0;
 		
 		if ( $increment ) {
 			$mapsOnThisPage++;
 		}
 		
-		return $egMapsOpenLayersPrefix . '_' . $mapsOnThisPage;
+		return 'open_layer_' . $mapsOnThisPage;
 	}		
 	
 	/**

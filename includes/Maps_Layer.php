@@ -9,6 +9,8 @@
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
+ * 
+ * TODO: this should be probebly integrated into the mapping service system.
  */
 class MapsLayer {
 	
@@ -182,8 +184,6 @@ class MapsLayer {
 	/**
 	 * Returns a string containing the JavaScript definition of this layer.
 	 * Only call this function when you are sure the layer is valid!
-	 * 
-	 * TODO: move this to the OpenLayers class
 	 * 
 	 * @since 0.7.1
 	 * 

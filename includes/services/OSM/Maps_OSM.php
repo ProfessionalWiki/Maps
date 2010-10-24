@@ -41,14 +41,13 @@ class MapsOSM extends MapsMappingService {
 	 * @since 0.6.5
 	 */
 	public function getMapId( $increment = true ) {
-		global $egMapsOSMPrefix;
 		static $mapsOnThisPage = 0;
 		
 		if ( $increment ) {
 			$mapsOnThisPage++;
 		}
 		
-		return $egMapsOSMPrefix . '_' . $mapsOnThisPage;
+		return 'map_osm_' . $mapsOnThisPage;
 	}
 
 	/**
