@@ -8,9 +8,15 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 0.7.2 ===
-(2010-1x-xx)
+(2010-10-2x)
 
-* ...
+==== Bug fixes ====
+
+* Fixed incompatibility with MW 1.15.x.
+
+* Fixed incorect parsing of certain DM and DMS coordinates.
+
+* Fixed small layout issue with pop-ups in Google Maps.
 
 === Maps 0.7.1 ===
 (2010-10-20)
