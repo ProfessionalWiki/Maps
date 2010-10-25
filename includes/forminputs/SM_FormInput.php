@@ -329,7 +329,7 @@ EOT
 		}
 		else {
 			// Geocode and convert if required.
-			$centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
+			$centre = MapsGeocoders::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
 			
 			$this->centreLat = Xml::escapeJsString( $centre['lat'] );
 			$this->centreLon = Xml::escapeJsString( $centre['lon'] );
