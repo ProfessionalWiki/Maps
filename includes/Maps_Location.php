@@ -15,13 +15,6 @@ class MapsLocation {
 	/**
 	 * @since 0.7.1
 	 * 
-	 * @var string
-	 */
-	protected $address;
-	
-	/**
-	 * @since 0.7.1
-	 * 
 	 * @var float
 	 */	
 	protected $latitude;
@@ -32,6 +25,41 @@ class MapsLocation {
 	 * @var float
 	 */	
 	protected $longitude;
+
+	/**
+	 * @since 0.7.2
+	 * 
+	 * @var float
+	 */	
+	protected $altitude = 0;	
+	
+	/**
+	 * @since 0.7.1
+	 * 
+	 * @var string
+	 */
+	protected $address;
+
+	/**
+	 * @since 0.7.2
+	 * 
+	 * @var string
+	 */	
+	protected $title = '';
+
+	/**
+	 * @since 0.7.2
+	 * 
+	 * @var string
+	 */		
+	protected $text = '';
+	
+	/**
+	 * @since 0.7.2
+	 * 
+	 * @var string
+	 */		
+	protected $icon = '';
 	
 	
 	/**
@@ -66,6 +94,11 @@ class MapsLocation {
 	
 	/**
 	 * Constructor.
+	 * 
+	 * @param mixed $coordsOrAddress string or array with lat and lon
+	 * @param integer $format
+	 * @param boolean $directional
+	 * @param string $separator
 	 * 
 	 * @since 0.7.1
 	 */
@@ -116,7 +149,7 @@ class MapsLocation {
 	 */
 	public function setAddress( $address, $asActualLocation = true ) {
 		if ( $asActualLocation ) {
-			$this->setCoordinates( MapsGeocoder::geocode( $address ) );
+			$this->setCoordinates( MapsGeocoders::geocode( $address ) );
 		}
 		
 		$this->address = $address;
@@ -211,5 +244,71 @@ class MapsLocation {
 		
 		return $this->address;
 	}
+
+	/**
+	 * Sets the title.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @param string $title
+	 */
+	public function setTitle( $title ) {
+		$this->title = $title;
+	}
+
+	/**
+	 * Sets the text.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @param string $text
+	 */
+	public function setText( $text ) {
+		$this->text = $text;
+	}	
+	
+	/**
+	 * Sets the icon
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @param string $icon
+	 */
+	public function setIcon( $icon ) {
+		$this->icon = $icon;
+	}	
+	
+	/**
+	 * Returns the title.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @return string
+	 */
+	public function getTitle() {
+		return $tis->title;
+	}
+	
+	/**
+	 * Returns the text.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @return string
+	 */
+	public function getText() {
+		return $tis->text;
+	}
+	
+	/**
+	 * Returns the icon.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @return string
+	 */
+	public function getIcon() {
+		return $tis->icon;
+	}	
 	
 }

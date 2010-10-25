@@ -98,6 +98,7 @@ else {
 	$wgAutoloadClasses['MapsParamCoordSet'] 		= $manDir . 'Maps_ParamCoordSet.php';
 	$wgAutoloadClasses['MapsParamDimension'] 		= $manDir . 'Maps_ParamDimension.php';
 	$wgAutoloadClasses['MapsParamImage'] 			= $manDir . 'Maps_ParamImage.php';
+	$wgAutoloadClasses['MapsParamLocation'] 		= $manDir . 'Maps_ParamLocation.php';
 	$wgAutoloadClasses['MapsParamService'] 			= $manDir . 'Maps_ParamService.php';
 	$wgAutoloadClasses['MapsParamZoom'] 			= $manDir . 'Maps_ParamZoom.php';
 	
