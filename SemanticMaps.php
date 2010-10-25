@@ -110,7 +110,7 @@ function smfSetup() {
 		'version' => SM_VERSION,
 		'author' => array(
 			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
-			'[http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Credits others]'
+			'[http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Credits ' . wfMsg( 'maps-others' ) . ']'
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $servicesList ),
