@@ -10,6 +10,10 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 === Maps 0.7.2 ===
 (2010-10-28)
 
+==== New features ====
+
+* Added experimental support for KML layer definitions.
+
 ==== Internal improvements ====
 
 * Extended the layer handling to support different types of layers, each of which can be supported by one or more mapping services.
