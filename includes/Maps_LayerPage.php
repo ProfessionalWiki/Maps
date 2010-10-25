@@ -49,7 +49,7 @@ class MapsLayerPage extends Article {
 	 * @since 0.7.1
 	 */
 	public function view() {
-		global $wgOut;
+		global $wgOut, $wgLang;
 		
 		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 		
@@ -57,10 +57,23 @@ class MapsLayerPage extends Article {
 			$layerType = $this->getLayerType();
 			
 			if ( $layerType !== false && MapsLayers::hasLayer( $layerType ) ) {
+				$wgOut->addHTML(
+					Html::element(
+						'h3',
+						array(),
+						wfMsgExt( 'maps-layer-of-type', 'parsemag', $layerType )
+					)
+				);
+				
+				$supportedServices = MapsLayers::getServicesForType( $layerType );
+				
+				$wgOut->addHTML(
+					wfMsgExt( 'maps-layer-type-supported-by', 'parsemag', $wgLang->listToText( $supportedServices ), count( $supportedServices ) )
+				);
+				
 				$this->displayLayerDefinition();
 			}
 			else {
-				global $wgLang;
 				$availableLayerTypes = MapsLayers::getAvailableLayers();				
 				
 				if ( $layerType === false ) {
@@ -117,13 +130,11 @@ class MapsLayerPage extends Article {
 				'</span><br />'
 			);
 			
-			if ( count( $layer->getErrorMessages() ) - count( $messages ) > 0 ) {
-				$errorHeader = Html::element(
-					'th',
-					array( 'width' => '50%' ),
-					wfMsg( 'maps-layer-errors' )
-				);				
-			}
+			$errorHeader = Html::element(
+				'th',
+				array( 'width' => '50%' ),
+				wfMsg( 'maps-layer-errors' )
+			);				
 		}
 		
 		$rows = array();
@@ -138,7 +149,7 @@ class MapsLayerPage extends Article {
 			) .
 			Html::element(
 				'th',
-				array(),
+				array( 'colspan' ),
 				wfMsg( 'maps-layer-value' )
 			) . $errorHeader
 		);		

@@ -22,7 +22,7 @@ class MapsLayers {
 	protected static $classes = array();
 	
 	/**
-	 * List that maps layer types (keys) to the services that support them (values).
+	 * List that maps layer types (keys) to the services that they support (values).
 	 * 
 	 * @since 0.7.2
 	 * 
@@ -78,6 +78,19 @@ class MapsLayers {
 			
 			return $layers;
 		}
+	}
+	
+	/**
+	 * Returns the mapping services supported by the provided layer type.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @param string $type
+	 * 
+	 * @return array
+	 */
+	public static function getServicesForType( $type ) {
+		return array_key_exists( $type, self::$services ) ? self::$services[$type] : array();
 	}
 
 	/**

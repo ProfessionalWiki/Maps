@@ -51,7 +51,7 @@ class MapsImageLayer extends MapsLayer {
 	/**
 	 * @see MapsLayer::getJavaScriptDefinition
 	 * 
-	 * @since 0.7.1
+	 * @since 0.7.2
 	 * 
 	 * @return string
 	 */

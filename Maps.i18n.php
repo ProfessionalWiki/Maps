@@ -32,6 +32,8 @@ Available mapping services: $1",
 	'maps-error-no-layertype' => 'You need to specify the layer type. {{PLURAL:$2|Only this type is|These types are}} supported: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 must be a valid layer.',
 	'validation-error-invalid-layers' => 'Parameter $1 must be one or more valid layers.',
+	'maps-layer-of-type' => 'Layer of type $1',
+	'maps-layer-type-supported-by' => 'This layer type can {{PLURAL:$2|only be used with the $1 mapping service|be used with these mapping services: $1}}.',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
