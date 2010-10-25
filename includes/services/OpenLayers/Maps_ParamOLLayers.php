@@ -70,9 +70,9 @@ class MapsParamOLLayers extends ListParameterManipulation {
 				
 				if ( $title->getNamespace() == Maps_NS_LAYER && $title->exists() ) {
 					$layerPage = new MapsLayerPage( $title );
-					$layer = $layerPage->getLayer();
 					
-					if ( $layer->isValid() ) {
+					if ( $layerPage->hasValidDefinition( 'openlayers' ) ) {
+						$layer = $layerPage->getLayer();
 						if ( !in_array( $layerOrGroup, $layerNames ) ) {
 							$layerDefs[] = $layer->getJavaScriptDefinition();
 							$layerNames[] = $layerOrGroup;							

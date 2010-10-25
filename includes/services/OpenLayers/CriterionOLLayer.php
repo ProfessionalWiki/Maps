@@ -3,7 +3,7 @@
 /**
  * Parameter criterion stating that the value must be an OpenLayers layer.
  * 
- * @since 0.7
+ * @since 0.7.1
  * 
  * @file CriterionOLLayer.php
  * @ingroup Maps
@@ -12,7 +12,8 @@
  * 
  * @author Jeroen De Dauw
  */
-class CriterionOLLayer extends ItemParameterCriterion {
+class CriterionOLLayer extends CriterionMapLayer {
+	
 	
 	/**
 	 * Constructor.
@@ -20,44 +21,19 @@ class CriterionOLLayer extends ItemParameterCriterion {
 	 * @since 0.7
 	 */
 	public function __construct() {
-		parent::__construct();
-	}
+		parent::__construct( 'openlayers' );
+	}	
 	
 	/**
 	 * @see ItemParameterCriterion::validate
 	 */	
 	protected function doValidation( $value, Parameter $parameter, array $parameters ) {
-		$dynamicLayers = MapsOpenLayers::getLayerNames( true );
-
 		// Dynamic layers, defined in the settings file or localsettings.
-		if ( in_array( strtolower( $value ), $dynamicLayers ) ) {
+		if ( in_array( strtolower( $value ), MapsOpenLayers::getLayerNames( true ) ) ) {
 			return true;
 		}
-		
-		// Image layers.
-		$title = Title::newFromText( $value, Maps_NS_LAYER );
 
-		if ( $title->getNamespace() == Maps_NS_LAYER && $title->exists() ) {
-			$layerPage = new MapsLayerPage( $title );
-			$layer = $layerPage->getLayer();
-			return $layer->isValid();
-		}
-		
-		return false;
+		return parent::doValidation( $value, $parameter, $parameters );
 	}	
-	
-	/**
-	 * @see ItemParameterCriterion::getItemErrorMessage
-	 */	
-	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validation-error-invalid-ollayer', 'parsemag', $parameter->getOriginalName() );
-	}
-	
-	/** 
-	 * @see ItemParameterCriterion::getFullListErrorMessage
-	 */	
-	protected function getFullListErrorMessage( Parameter $parameter ) {
-		return wfMsgExt( 'validation-error-invalid-ollayers', 'parsemag', $parameter->getOriginalName() );
-	}		
 	
 }

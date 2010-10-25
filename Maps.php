@@ -61,8 +61,10 @@ else {
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
+	$wgAutoloadClasses['MapsImageLayer'] 			= $incDir . 'Maps_ImageLayer.php';
 	$wgAutoloadClasses['MapsLayer'] 				= $incDir . 'Maps_Layer.php';
 	$wgAutoloadClasses['MapsLayerPage'] 			= $incDir . 'Maps_LayerPage.php';
+	$wgAutoloadClasses['MapsLayers'] 				= $incDir . 'Maps_Layers.php';
 	$wgAutoloadClasses['iMappingFeature'] 			= $incDir . 'iMappingFeature.php';
 	$wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 	$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
@@ -74,6 +76,7 @@ else {
 	$wgAutoloadClasses['CriterionIsImage'] 			= $criDir . 'CriterionIsImage.php';
 	$wgAutoloadClasses['CriterionIsLocation'] 		= $criDir . 'CriterionIsLocation.php';
 	$wgAutoloadClasses['CriterionMapDimension'] 	= $criDir . 'CriterionMapDimension.php';
+	$wgAutoloadClasses['CriterionMapLayer'] 		= $criDir . 'CriterionMapLayer.php';
 	
 	// Autoload the "includes/features/" classes.
 	$ftDir = $incDir . '/features/';
@@ -132,6 +135,9 @@ else {
 	
 	// Since 0.7.1
 	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';	
+	
+	// Since 0.7.2
+	$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
 	
 	$egMapsFeatures = array();
 	

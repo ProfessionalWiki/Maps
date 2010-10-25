@@ -9,6 +9,8 @@
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
+ * 
+ * TODO: check for the page being not created yet (then it's not invalid if there is nothing there...)
  */
 class MapsLayerPage extends Article {
 	
@@ -20,6 +22,15 @@ class MapsLayerPage extends Article {
 	 * @var false or MapsLayer
 	 */
 	protected $cachedLayer = false;
+	
+	/**
+	 * Cached key-value pairs or false.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @var false or array
+	 */
+	protected $keyValuePairs = false;
 	
 	/**
 	 * Constructor.
@@ -42,8 +53,33 @@ class MapsLayerPage extends Article {
 		
 		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 		
-		$layer = $this->getLayer();
-		
+		if ( MapsLayers::hasLayer( $this->getLayerType() ) ) {
+			$this->displayLayerDefinition( MapsLayers::getLayer( $this->getLayerType() ) );
+		}
+		else {
+			$availableLayerTypes = MapsLayers::getAvailableLayers();
+			$wgOut->addHTML(
+				'<span class="errorbox">' . 
+				htmlspecialchars( wfMsgExt( 
+					'maps-error-invalid-layertype',
+					'parsemag',
+					$this->getLayerType(),
+					$availableLayerTypes,
+					count( $availableLayerTypes )
+				) ) .
+				'</span><br />'
+			);
+		}
+	}
+	
+	/**
+	 * Displays the layer definition as a table.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @param MapsLayer $layer
+	 */
+	protected function displayLayerDefinition( MapsLayer $layer ) {
 		$errorHeader = '';
 		
 		if ( !$layer->isValid() ) {
@@ -121,7 +157,7 @@ class MapsLayerPage extends Article {
 			);			
 		}
 		
-		$wgOut->addHTML( Html::rawElement( 'table', array( 'width' => '100%', 'class' => 'wikitable sortable' ), implode( "\n", $rows ) ) );
+		$wgOut->addHTML( Html::rawElement( 'table', array( 'width' => '100%', 'class' => 'wikitable sortable' ), implode( "\n", $rows ) ) );		
 	}
 	
 	/**
@@ -131,9 +167,14 @@ class MapsLayerPage extends Article {
 	 * 
 	 * @return boolean
 	 */
-	public function hasValidDefinition() {
-		$layer = $this->getLayer();
-		return $layer->isValid();
+	public function hasValidDefinition( $service = null ) {
+		if ( MapsLayers::hasLayer( $this->getLayerType(), $service ) ) {
+			$layer = $this->getLayer();
+			return $layer->isValid();
+		}
+		else {
+			return false;
+		}
 	}
 	
 	/**
@@ -145,7 +186,7 @@ class MapsLayerPage extends Article {
 	 */
 	public function getLayer() {
 		if ( $this->cachedLayer === false ) {
-			$this->cachedLayer = new MapsLayer( $this->getProperties() );
+			$this->cachedLayer = MapsLayers::getLayer( $this->getLayerType(), $this->getProperties() );
 		}		
 		
 		return $this->cachedLayer;
@@ -158,24 +199,53 @@ class MapsLayerPage extends Article {
 	 * 
 	 * @return array
 	 */
-	protected function getProperties() {
-		$properties = array();
+	final protected function getProperties() {
+		$properties = $this->getKeyValuePairs();
 
-		if ( is_null( $this->mContent ) ) {
-			$this->loadContent();
+		if ( array_key_exists( 'type', $properties ) ) {
+			unset( $properties['type'] );
 		}
-		
-		foreach ( explode( "\n", $this->mContent ) as $line ) {
-			$parts = explode( '=', $line, 2 );
-			
-			if ( count( $parts ) == 2 ) {
-				$properties[strtolower( str_replace( ' ', '', $parts[0] ) )] = $parts[1];
-			}
-		}
-
-		$properties['type'] = array_key_exists( 'type', $properties ) ? $properties['type'] : MapsLayer::getDefaultType();
 		
 		return $properties;
+	}
+	
+	/**
+	 * Gets the layer type of false if none is set.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @return string or false
+	 */
+	final protected function getLayerType() {
+		$properties = $this->getKeyValuePairs();
+		return array_key_exists( 'type' , $properties ) ? $properties['type'] : false;
+	}	
+
+	/**
+	 * Returns all key-value pairs stored in the page.
+	 * 
+	 * @since 0.7.2
+	 * 
+	 * @return array
+	 */
+	final protected function getKeyValuePairs() {
+		if ( $this->keyValuePairs === false ) {
+			$this->keyValuePairs = array();
+			
+			if ( is_null( $this->mContent ) ) {
+				$this->loadContent();
+			}
+			
+			foreach ( explode( "\n", $this->mContent ) as $line ) {
+				$parts = explode( '=', $line, 2 );
+				
+				if ( count( $parts ) == 2 ) {
+					$this->keyValuePairs[strtolower( str_replace( ' ', '', $parts[0] ) )] = $parts[1];
+				}
+			}	
+		}
+		
+		return $this->keyValuePairs;
 	}
 	
 }

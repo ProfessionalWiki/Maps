@@ -28,6 +28,9 @@ Available mapping services: $1",
 	'maps-layer-value' => 'Value',
 	'maps-layer-errors' => 'Errors',
 	'maps-error-invalid-layerdef' => 'This layer definition is not valid.',
+	'maps-error-invalid-layertype' => 'There are no layers of type "$1". Only {{PLURAL:$3|this type is|these types are}} supported: $2',
+	'validation-error-invalid-layer' => 'Parameter $1 must be a valid layer.',
+	'validation-error-invalid-layers' => 'Parameter $1 must be one or more valid layers.',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
@@ -41,8 +44,6 @@ Available mapping services: $1",
 
 	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
-	'validation-error-invalid-ollayer' => 'Parameter $1 must be a valid layer.',
-	'validation-error-invalid-ollayers' => 'Parameter $1 must be one or more valid layers.',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
