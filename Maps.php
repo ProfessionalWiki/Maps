@@ -61,7 +61,6 @@ else {
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
-	$wgAutoloadClasses['MapsImageLayer'] 			= $incDir . 'Maps_ImageLayer.php';
 	$wgAutoloadClasses['MapsLayer'] 				= $incDir . 'Maps_Layer.php';
 	$wgAutoloadClasses['MapsLayerPage'] 			= $incDir . 'Maps_LayerPage.php';
 	$wgAutoloadClasses['MapsLayers'] 				= $incDir . 'Maps_Layers.php';
@@ -88,6 +87,11 @@ else {
 	$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= $geoDir . 'Maps_GeonamesGeocoder.php';
 	$wgAutoloadClasses['MapsGoogleGeocoder'] 		= $geoDir . 'Maps_GoogleGeocoder.php';
 	$wgAutoloadClasses['MapsYahooGeocoder'] 		= $geoDir . 'Maps_YahooGeocoder.php';
+	
+	// Autoload the "includes/layers/" classes.
+	$lyrDir = $incDir . 'layers/';
+	$wgAutoloadClasses['MapsImageLayer'] 			= $lyrDir . 'Maps_ImageLayer.php';
+	$wgAutoloadClasses['MapsKMLLayer'] 				= $lyrDir . 'Maps_KMLLayer.php';
 	
 	// Autoload the "includes/manipulations/" classes.
 	$manDir = $incDir . 'manipulations/';
@@ -135,9 +139,6 @@ else {
 	
 	// Since 0.7.1
 	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';	
-	
-	// Since 0.7.2
-	$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
 	
 	$egMapsFeatures = array();
 	

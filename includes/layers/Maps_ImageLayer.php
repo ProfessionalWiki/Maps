@@ -62,7 +62,7 @@ class MapsImageLayer extends MapsLayer {
 
 		$options = array( 'isImage' => true );
 		
-		if ( $this->properties !== false ) {
+		if ( $zoomlevels !== false ) {
 			$options['numZoomLevels'] = $zoomlevels;
 		}
 		

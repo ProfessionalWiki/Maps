@@ -8,7 +8,11 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 0.7.2 ===
-(2010-10-2x)
+(2010-10-28)
+
+==== Internal improvements ====
+
+* Extended the layer handling to support different types of layers, each of which can be supported by one or more mapping services.
 
 ==== Bug fixes ====
 
@@ -17,6 +21,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 * Fixed incorect parsing of certain DM and DMS coordinates.
 
 * Fixed small layout issue with pop-ups in Google Maps.
+
+* Fixed incorrect error on non-existing pages in the Layer namespace.
 
 === Maps 0.7.1 ===
 (2010-10-20)

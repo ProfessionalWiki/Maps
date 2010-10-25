@@ -66,6 +66,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Registration of the Yahoo! Geocoding service geocoder.
 		$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
 		
+	# Layers
+	
+		# Registration of the image layer type.
+		$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
+		
+		# Registration of the KML layer type.
+		$wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
+
 		
 		
 # Mapping services configuration
