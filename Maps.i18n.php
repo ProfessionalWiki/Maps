@@ -29,6 +29,7 @@ Available mapping services: $1",
 	'maps-layer-errors' => 'Errors',
 	'maps-error-invalid-layerdef' => 'This layer definition is not valid.',
 	'maps-error-invalid-layertype' => 'There are no layers of type "$1". Only {{PLURAL:$3|this type is|these types are}} supported: $2',
+	'maps-error-no-layertype' => 'You need to specify the layer type. {{PLURAL:$2|Only this type is|These types are}} supported: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 must be a valid layer.',
 	'validation-error-invalid-layers' => 'Parameter $1 must be one or more valid layers.',
 

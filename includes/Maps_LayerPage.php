@@ -53,22 +53,42 @@ class MapsLayerPage extends Article {
 		
 		$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 		
-		if ( MapsLayers::hasLayer( $this->getLayerType() ) ) {
-			$this->displayLayerDefinition( MapsLayers::getLayer( $this->getLayerType() ) );
-		}
-		else {
-			$availableLayerTypes = MapsLayers::getAvailableLayers();
-			$wgOut->addHTML(
-				'<span class="errorbox">' . 
-				htmlspecialchars( wfMsgExt( 
-					'maps-error-invalid-layertype',
-					'parsemag',
-					$this->getLayerType(),
-					$availableLayerTypes,
-					count( $availableLayerTypes )
-				) ) .
-				'</span><br />'
-			);
+		if ( $this->exists() ) {
+			$layerType = $this->getLayerType();
+			
+			if ( $layerType !== false && MapsLayers::hasLayer( $layerType ) ) {
+				$this->displayLayerDefinition();
+			}
+			else {
+				global $wgLang;
+				$availableLayerTypes = MapsLayers::getAvailableLayers();				
+				
+				if ( $layerType === false ) {
+					$wgOut->addHTML(
+						'<span class="errorbox">' .
+						htmlspecialchars( wfMsgExt(
+							'maps-error-no-layertype',
+							'parsemag',
+							$wgLang->listToText( $availableLayerTypes ),
+							count( $availableLayerTypes )
+						) ) .
+						'</span><br />'
+					);
+				}
+				else {					
+					$wgOut->addHTML(
+						'<span class="errorbox">' . 
+						htmlspecialchars( wfMsgExt( 
+							'maps-error-invalid-layertype',
+							'parsemag',
+							$this->getLayerType(),
+							$wgLang->listToText( $availableLayerTypes ),
+							count( $availableLayerTypes )
+						) ) .
+						'</span><br />'
+					);						
+				}
+			}
 		}
 	}
 	
@@ -76,10 +96,11 @@ class MapsLayerPage extends Article {
 	 * Displays the layer definition as a table.
 	 * 
 	 * @since 0.7.2
-	 * 
-	 * @param MapsLayer $layer
 	 */
-	protected function displayLayerDefinition( MapsLayer $layer ) {
+	protected function displayLayerDefinition() {
+		global $wgOut;
+		
+		$layer = $this->getLayer();
 		$errorHeader = '';
 		
 		if ( !$layer->isValid() ) {

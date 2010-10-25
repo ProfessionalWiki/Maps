@@ -92,7 +92,7 @@ class MapsLayers {
 	 */	
 	public static function hasLayer( $type, $service = null ) {
 		self::initializeLayers();
-		
+
 		if ( array_key_exists( $type, self::$classes ) && array_key_exists( $type, self::$services ) ) {
 			return is_null( $service ) || in_array( $service, self::$services[$type] );
 		}
