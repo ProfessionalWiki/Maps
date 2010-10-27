@@ -76,8 +76,9 @@ final class MapsHooks {
 		
 		foreach ( $modules as $name => $resources ) { 
 			$resourceLoader->register( $name, new ResourceLoaderFileModule(
-				array_merge_recursive( $resources, array( 'group' => 'ext.maps' ) )
-			), dirname( __FILE__ ), "$wgExtensionAssetsPath/Maps" ); 
+				array_merge_recursive( $resources, array( 'group' => 'ext.maps' ) ),
+				dirname( __FILE__ ), "$wgExtensionAssetsPath/Maps"
+			) ); 
 		}
 		
 		return true;
