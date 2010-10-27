@@ -674,6 +674,14 @@ $messages['mk'] = array(
 	'semanticmaps_paramdesc_layers' => 'Слоевите достапни на картата',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'semanticmaps_enteraddresshere' => 'വിലാസം നൽകുക',
+	'semanticmaps_notfound' => 'കണ്ടെത്താനായില്ല',
+);
+
 /** Dutch (Nederlands)
  * @author Jeroen De Dauw
  * @author Siebrand
