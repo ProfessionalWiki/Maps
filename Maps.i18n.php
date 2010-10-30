@@ -1378,6 +1378,7 @@ $messages['lb'] = array(
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-markers' => 'Markéierungen',
+	'maps-others' => 'anerer',
 	'maps-layer-value' => 'Wäert',
 	'maps-layer-errors' => 'Feeler',
 	'validation-error-invalid-location' => 'Parameter $1 muss eng valabel Plaz sinn.',
