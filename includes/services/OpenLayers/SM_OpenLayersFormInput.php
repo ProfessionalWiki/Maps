@@ -47,8 +47,6 @@ class SMOpenLayersFormInput extends SMFormInput {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$this->service->addLayerDependencies( $this->layers[1] );
-		
 		$langCode = $wgLang->getCode();
 		
 		MapsMapper::addInlineScript( $this->service,<<<EOT
@@ -60,7 +58,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 			$this->zoom,
 			{$this->markerCoords['lat']},
 			{$this->markerCoords['lon']},
-			{$this->layers[0]},
+			{$this->layers},
 			[$this->controls],
 			"$langCode"
 		);
