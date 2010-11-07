@@ -14,34 +14,45 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::getMapHTML()
 	 */
 	public function getMapHTML( array $params, Parser $parser ) {
+		global $egMapsUseRL;
+		
 		$mapName = $this->service->getMapId();
 		
-		$this->service->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
+		$output = '';
 		
-		$this->output .= Html::element(
+		$this->service->addOverlayOutput( $output, $mapName, $params['overlays'], $params['controls'] );
+		
+		if ( !$egMapsUseRL ) {
+			$centreLat = MapsMapper::encodeJsVar( $params['centre']['lat'] );
+			$centreLon = MapsMapper::encodeJsVar( $params['centre']['lon'] );
+			$zoom = MapsMapper::encodeJsVar( $params['zoom'] );
+			$type = Xml::escapeJsString( $params['type'] );	
+				
+			MapsMapper::addInlineScript( $this->service, <<<EOT
+			initializeGoogleMap("$mapName", 
+				{
+				lat: $centreLat,
+				lon: $centreLon,
+				zoom: $zoom,
+				type: $type,
+				types: [{$params['types']}],
+				controls: [{$params['controls']}],
+				scrollWheelZoom: {$params['autozoom']},
+				kml: [{$params['kml']}]
+				},
+			[]);
+EOT
+			);
+		}
+		
+		return $output . Html::element(
 			'div',
 			array(
 				'id' => $mapName,
-				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
-		);
-		
-		MapsMapper::addInlineScript( $this->service, <<<EOT
-		initializeGoogleMap("$mapName", 
-			{
-			lat: $this->centreLat,
-			lon: $this->centreLon,
-			zoom: $this->zoom,
-			type: $this->type,
-			types: [$this->types],
-			controls: [$this->controls],
-			scrollWheelZoom: $this->autozoom,
-			kml: [$this->kml]
-			},
-		[]);
-EOT
-		);
+		);			
 	}
 	
 }

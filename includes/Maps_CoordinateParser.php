@@ -145,6 +145,7 @@ class MapsCoordinateParser {
 	 * @return boolean
 	 */
 	public static function areCoordinates( $coordsOrAddress ) {
+		
 		// Handle i18n notations.
 		$coordsOrAddress = self::handleI18nLabels( $coordsOrAddress );
 

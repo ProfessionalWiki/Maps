@@ -16,8 +16,6 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	public function addSpecificMapHTML( Parser $parser ) {
 		global $wgLang;
 		
-		$this->service->addLayerDependencies( $this->layers[1] );
-		
 		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
@@ -37,7 +35,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 			$this->centreLon,
 			$this->centreLat,
 			$this->zoom,
-			{$this->layers[0]},
+			{$this->layers},
 			[$this->controls],
 			$this->markerJs,
 			"$langCode"
