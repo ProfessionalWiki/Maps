@@ -32,11 +32,11 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	 * @since 0.7.3
 	 */
 	public function getMapHTML( array $params, Parser $parser ) {
-		global $wgLang;
+		global $wgLang, $egMapsUseRL;
 
 		$mapName = $this->service->getMapId();
 		
-		if ( !method_exists( 'OutputPage', 'addModules' ) ) {
+		if ( !$egMapsUseRL ) {
 			$langCode = $wgLang->getCode();
 			$centreLat = MapsMapper::encodeJsVar( $params['centre']['lat'] );
 			$centreLon = MapsMapper::encodeJsVar( $params['centre']['lon'] );
@@ -48,7 +48,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 				$centreLon,
 				$centreLat,
 				$zoom,
-				{$params['layers'][0]},
+				{$params['layers']},
 				[{$params['controls']}],
 				[],
 				"$langCode"

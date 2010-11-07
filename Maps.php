@@ -51,6 +51,8 @@ else {
 
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
+	$egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
+	
 	$wgAutoloadClasses['MapsHooks'] = dirname( __FILE__ ) . '/Maps.hooks.php';
 	
 	// Autoload the "includes/" classes and interfaces.
@@ -160,7 +162,6 @@ else {
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgExtraNamespaces, $wgNamespaceAliases;
 	global $egMapsDefaultService, $egMapsAvailableServices;
-	global $egMapsDir, $egMapsUseMinJs;
 
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.

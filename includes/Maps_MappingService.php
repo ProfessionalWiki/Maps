@@ -105,6 +105,8 @@ abstract class MapsMappingService implements iMappingService {
 	 * @since 0.6.3
 	 */
 	public final function addDependencies( &$parserOrOut ) {
+		global $egMapsUseRL;
+		
 		$dependencies = $this->getDependencyHtml();
 		
 		// Only add a head item when there are dependencies.
@@ -113,7 +115,7 @@ abstract class MapsMappingService implements iMappingService {
 				$parserOrOut->getOutput()->addHeadItem( $dependencies );
 			}
 			
-			if ( method_exists( $parserOrOut->getOutput(), 'addModules' ) ) {
+			if ( $egMapsUseRL /* method_exists( $parserOrOut->getOutput(), 'addModules' ) */ ) {
 				$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
 			}
 		} 
@@ -122,7 +124,7 @@ abstract class MapsMappingService implements iMappingService {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
 			}
 			
-			if ( method_exists( $parserOrOut, 'addModules' ) ) {
+			if ( $egMapsUseRL /* method_exists( $parserOrOut, 'addModules' ) */ ) {
 				$parserOrOut->addModules( $this->getResourceModules() );
 			}
 		}			

@@ -31,7 +31,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @since 0.7
 	 */	
 	public function addParameterInfo( array &$params ) {
-		global $egMapsOLLayers, $egMapsOLControls;
+		global $egMapsOLLayers, $egMapsOLControls, $egMapsUseRL;
 		
 		$params['zoom']->addCriteria( new CriterionInRange( 0, 19 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );		
@@ -43,7 +43,7 @@ class MapsOpenLayers extends MapsMappingService {
 			new ParamManipulationFunctions( 'strtolower' )
 		);
 		
-		if ( !method_exists( 'OutputPage', 'addModules' ) ) {
+		if ( !$egMapsUseRL ) {
 			$params['controls']->addManipulations(
 				new ParamManipulationImplode( ',', "'" )
 			);
@@ -112,9 +112,9 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		global $egMapsStyleVersion, $egMapsScriptPath;
+		global $egMapsStyleVersion, $egMapsScriptPath, $egMapsUseRL;
 		
-		if ( method_exists( 'OutputPage', 'addModules' ) ) {
+		if ( $egMapsUseRL ) {
 			return array();
 		}
 		else {

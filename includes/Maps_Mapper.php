@@ -45,9 +45,7 @@ final class MapsMapper {
 	public static function addInlineScript( iMappingService $service, $script ) {
 		static $addOnloadJs = false;
 		
-		$hasRL = method_exists( 'ParserOutput', 'addModules' );
-		
-		if ( $hasRL && !$addOnloadJs ) {
+		if ( method_exists( 'OutputPage', 'addModules' ) && !$addOnloadJs ) {
 			global $egMapsScriptPath, $egMapsStyleVersion;
 			
 			$service->addDependency(
@@ -58,7 +56,7 @@ final class MapsMapper {
 		} 		
 		
 		$service->addDependency( Html::inlineScript( 
-			( $hasRL ? 'addMapsOnloadHook' : 'addOnloadHook' ) . "( function() { $script } );"
+			( method_exists( 'OutputPage', 'addModules' ) ? 'addMapsOnloadHook' : 'addOnloadHook' ) . "( function() { $script } );"
 		) );
 	}
 	

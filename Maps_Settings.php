@@ -408,7 +408,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
 		);
 		
-		if ( !method_exists( 'OutputPage', 'addModules' ) ) {
+		if ( !$egMapsUseRL ) {
 			$egMapsOLLayerDependencies['osm'] = "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>";
 		}
 	

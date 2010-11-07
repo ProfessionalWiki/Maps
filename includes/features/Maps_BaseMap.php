@@ -67,6 +67,8 @@ abstract class MapsBaseMap {
 	 * @return html
 	 */
 	public final function renderMap( array $params, Parser $parser ) {
+		global $egMapsUseRL;
+		
 		$this->setCentre( $params );
 		
 		if ( $params['zoom'] == 'null' ) {
@@ -75,7 +77,7 @@ abstract class MapsBaseMap {
 		
 		$output = $this->getMapHTML( $params, $parser );
 		
-		if ( method_exists( 'OutputPage', 'addModules' ) ) {
+		if ( $egMapsUseRL ) {
 			$output .= $this->getJSON( $params, $parser );
 		}
 		
