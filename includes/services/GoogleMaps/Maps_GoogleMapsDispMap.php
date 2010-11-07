@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for handling the display_map parser functions with Google Maps.
+ * Class for handling the display_map parser hook with Google Maps.
  *
  * @file Maps_GoogleMapsDispMap.php
  * @ingroup MapsGoogleMaps
@@ -10,13 +10,10 @@
  */
 final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
-	protected function initSpecificParamInfo( array &$parameters ) {
-	}
-	
 	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
+	 * @see MapsBaseMap::getMapHTML()
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function getMapHTML( array $params, Parser $parser ) {
 		$mapName = $this->service->getMapId();
 		
 		$this->service->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );

@@ -1,20 +1,7 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with Google Maps v3.
- *
- * @file Maps_GoogleMaps3DispMap.php
- * @ingroup MapsGoogleMaps3
- *
- * @author Jeroen De Dauw
- */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-/**
- * Class for handling the display_map parser functions with Google Maps v3.
+ * Class for handling the display_map parser hook with Google Maps v3.
  *
  * @ingroup MapsGoogleMaps3
  *
@@ -23,9 +10,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	
 	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
+	 * @see MapsBaseMap::getMapHTML()
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function getMapHTML( array $params, Parser $parser ) {
 		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(

@@ -1,24 +1,19 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with Yahoo! Maps
+ * Class for handling the display_map parser hook with Yahoo! Maps
  *
  * @file Maps_YahooMapsDispMap.php
  * @ingroup MapsYahooMaps
  *
  * @author Jeroen De Dauw
  */
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 class MapsYahooMapsDispMap extends MapsBaseMap {
 	
 	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
+	 * @see MapsBaseMap::getMapHTML()
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function getMapHTML( array $params, Parser $parser ) {
 		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(

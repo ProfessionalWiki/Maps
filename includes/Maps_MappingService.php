@@ -108,14 +108,24 @@ abstract class MapsMappingService implements iMappingService {
 		$dependencies = $this->getDependencyHtml();
 		
 		// Only add a head item when there are dependencies.
-		if ( $dependencies ) {
-			if ( $parserOrOut instanceof Parser ) {
+		if ( $parserOrOut instanceof Parser ) {
+			if ( $dependencies ) {
 				$parserOrOut->getOutput()->addHeadItem( $dependencies );
-			} 
-			else if ( $parserOrOut instanceof OutputPage ) { 
+			}
+			
+			if ( method_exists( $parserOrOut->getOutput(), 'addModules' ) ) {
+				$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
+			}
+		} 
+		else if ( $parserOrOut instanceof OutputPage ) { 
+			if ( $dependencies ) {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
-			}			
-		}
+			}
+			
+			if ( method_exists( $parserOrOut, 'addModules' ) ) {
+				$parserOrOut->addModules( $this->getResourceModules() );
+			}
+		}			
 	}
 	
 	/**
@@ -207,6 +217,28 @@ abstract class MapsMappingService implements iMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
+		return array();
+	}
+	
+	/**
+	 * Returns the resource modules that need to be loaded to use this mapping service.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @return array of string
+	 */
+	protected function getResourceModules() {
+		return array();
+	}
+	
+	/**
+	 * Returns the modules definitions for the resources of this mapping service. 
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @return array of arrays
+	 */	
+	public function getResourceModuleDefinitions() {
 		return array();
 	}
 	

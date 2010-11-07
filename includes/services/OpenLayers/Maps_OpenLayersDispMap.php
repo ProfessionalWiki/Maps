@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with OpenLayers.
+ * Class for handling the display_map parser hook with OpenLayers.
  *
  * @file Maps_OpenLayersDispMap.php
  * @ingroup MapsOpenLayers
@@ -11,39 +11,60 @@
 class MapsOpenLayersDispMap extends MapsBaseMap {
 	
 	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
-	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	 * @see MapsBaseMap::getJSONObject
+	 *
+	 * @since 0.7.3
+	 *
+	 * @param array $params
+	 * @param Parser $parser
+	 * 
+	 * @return mixed
+	 */	
+	protected function getJSONObject( array $params, Parser $parser ) {
 		global $wgLang;
-
-		$this->service->addLayerDependencies( $this->layers[1] );
+		$params['langCode'] = $wgLang->getCode();
+		return $params;
+	}	
+	
+	/**
+	 * @see MapsBaseMap::getMapHTML
+	 * 
+	 * @since 0.7.3
+	 */
+	public function getMapHTML( array $params, Parser $parser ) {
+		global $wgLang;
 
 		$mapName = $this->service->getMapId();
 		
-		$this->output .= Html::element(
+		if ( !method_exists( 'OutputPage', 'addModules' ) ) {
+			$langCode = $wgLang->getCode();
+			$centreLat = MapsMapper::encodeJsVar( $params['centre']['lat'] );
+			$centreLon = MapsMapper::encodeJsVar( $params['centre']['lon'] );
+			$zoom = MapsMapper::encodeJsVar( $params['zoom'] );
+			
+			MapsMapper::addInlineScript( $this->service, <<<EOT
+			initOpenLayer(
+				"$mapName",
+				$centreLon,
+				$centreLat,
+				$zoom,
+				{$params['layers'][0]},
+				[{$params['controls']}],
+				[],
+				"$langCode"
+			);
+EOT
+			);			
+		}
+
+		return Html::element(
 			'div',
 			array(
 				'id' => $mapName,
-				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
-		);
-		
-		$langCode = $wgLang->getCode();
-		
-		MapsMapper::addInlineScript( $this->service, <<<EOT
-		initOpenLayer(
-			"$mapName",
-			$this->centreLon,
-			$this->centreLat,
-			$this->zoom,
-			{$this->layers[0]},
-			[$this->controls],
-			[],
-			"$langCode"
-		);
-EOT
-		);
+		);		
 	}
 
 }

@@ -69,15 +69,24 @@ final class MapsHooks {
 	 * @return true
 	 */
 	public static function registerResourceLoaderModules( ResourceLoader &$resourceLoader ) {
-		global $wgExtensionAssetsPath;
+		global $egMapsScriptPath;
 		
-		$modules = array(	
+		$modules = array(
+			'ext.maps.common' => array(
+			
+			),
 		);
+		
+		// TODO: makes more sense to have a seperate hook for each service 
+		foreach ( MapsMappingServices::getAllObjects() as $service ) {
+			$modules = array_merge( $modules, $service->getResourceModuleDefinitions() );
+		}
 		
 		foreach ( $modules as $name => $resources ) { 
 			$resourceLoader->register( $name, new ResourceLoaderFileModule(
 				array_merge_recursive( $resources, array( 'group' => 'ext.maps' ) ),
-				dirname( __FILE__ ), "$wgExtensionAssetsPath/Maps"
+				dirname( __FILE__ ) . '/includes/services/OpenLayers/',
+				$egMapsScriptPath . '/includes/services/OpenLayers/'
 			) ); 
 		}
 		

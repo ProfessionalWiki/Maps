@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Class for handling the display_map parser function with OSM.
+ * Class for handling the display_map parser hook with OSM.
  * 
  * @since 0.6.4
  * 
@@ -13,11 +13,9 @@
 class MapsOSMDispMap extends MapsBaseMap {
 	
 	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
-	 * 
-	 * @since 0.6.4
+	 * @see MapsBaseMap::getMapHTML()
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {	
+	public function getMapHTML( array $params, Parser $parser ) {	
 		global $wgLang;
 		
 		$thumbs = $this->thumbs ? 'yes' : 'no';

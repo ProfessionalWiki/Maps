@@ -406,8 +406,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-			'osm' => "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>",
 		);
+		
+		if ( !method_exists( 'OutputPage', 'addModules' ) ) {
+			$egMapsOLLayerDependencies['osm'] = "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>";
+		}
 	
 	
 	

@@ -40,9 +40,14 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['controls']->setDefault( $egMapsOLControls );
 		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
 		$params['controls']->addManipulations(
-			new ParamManipulationFunctions( 'strtolower' ),
-			new ParamManipulationImplode( ',', "'" )
+			new ParamManipulationFunctions( 'strtolower' )
 		);
+		
+		if ( !method_exists( 'OutputPage', 'addModules' ) ) {
+			$params['controls']->addManipulations(
+				new ParamManipulationImplode( ',', "'" )
+			);
+		}
 		
 		$params['layers'] = new ListParameter( 'layers' );
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
@@ -86,7 +91,7 @@ class MapsOpenLayers extends MapsMappingService {
 	public function createMarkersJs( array $markers ) {
 		$markerItems = array();
 		$defaultGroup = wfMsg( 'maps-markers' );
-		//.// TODO
+
 		foreach ( $markers as $marker ) {
 			$markerItems[] = MapsMapper::encodeJsVar( (object)array(
 				'lat' => $marker[0],
@@ -109,12 +114,17 @@ class MapsOpenLayers extends MapsMappingService {
 	protected function getDependencies() {
 		global $egMapsStyleVersion, $egMapsScriptPath;
 		
-		return array(
-			Html::linkedStyle( "$egMapsScriptPath/includes/services/OpenLayers/OpenLayers/theme/default/style.css" ),
-			Html::linkedScript( "$egMapsScriptPath/includes/services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ),
-			Html::linkedScript( "$egMapsScriptPath/includes/services/OpenLayers/OpenLayerFunctions.js?$egMapsStyleVersion" ),
-			Html::inlineScript( 'initOLSettings(200, 100); var msgMarkers = ' . Xml::encodeJsVar( wfMsg( 'maps-markers' ) ) . ';' )
-		);			
+		if ( method_exists( 'OutputPage', 'addModules' ) ) {
+			return array();
+		}
+		else {
+			return array(
+				Html::linkedStyle( "$egMapsScriptPath/includes/services/OpenLayers/OpenLayers/theme/default/style.css" ),
+				Html::linkedScript( "$egMapsScriptPath/includes/services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ),
+				Html::linkedScript( "$egMapsScriptPath/includes/services/OpenLayers/OpenLayerFunctions.js?$egMapsStyleVersion" ),
+				Html::inlineScript( 'initOLSettings(200, 100); var msgMarkers = ' . Xml::encodeJsVar( wfMsg( 'maps-markers' ) ) . ';' )
+			);				
+		}
 	}	
 	
 	/**
@@ -166,5 +176,44 @@ class MapsOpenLayers extends MapsMappingService {
 			$this->addDependency( $dependency );
 		}
 	}
+	
+	/**
+	 * @see MapsMappingService::getResourceModules
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @return array of string
+	 */
+	protected function getResourceModules() {
+		return array( 'ext.maps.openlayers', 'ext.maps.osm' );
+	}
+	
+	/**
+	 * @see MapsMappingService::getResourceModuleDefinitions
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @return array of arrays
+	 */	
+	public function getResourceModuleDefinitions() {
+		return array(
+			'ext.maps.openlayers' => array(
+				'scripts' =>   array(
+					'OpenLayers/OpenLayers.js',
+					'ext.maps.openlayers.js'
+				),
+				'styles' => array(
+					'OpenLayers/theme/default/style.css'
+				),
+				'dependencies' => 'ext.maps.common'
+			),
+			'ext.maps.osm' => array(
+				'scripts' =>   array(
+					'OSM/OpenStreetMap.js',
+				),
+				'dependencies' => 'ext.maps.openlayers'
+			)		
+		);
+	}	
 	
 }																	

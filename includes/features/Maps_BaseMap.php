@@ -13,15 +13,31 @@
 abstract class MapsBaseMap {
 	
 	/**
+	 * @since 0.6.x
+	 * 
 	 * @var iMappingService
 	 */	
 	protected $service;
+
+	/**
+	 * @since 0.7.3
+	 * 
+	 * @var array
+	 */
+	protected $properties = array();
 	
-	protected $centreLat, $centreLon;
-
-	protected $output = '';
-
-	private $specificParameters = false;
+	/**
+	 * Returns the HTML to display the map.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @param array $params
+	 * @param $parser
+	 * 
+	 * @return string
+	 */
+	protected abstract function getMapHTML( array $params, Parser $parser );
+	
 	/**
 	 * Constructor.
 	 * 
@@ -32,67 +48,36 @@ abstract class MapsBaseMap {
 	}
 	
 	/**
-	 * Sets the map properties as class fields.
+	 * @see 
 	 * 
-	 * @param array $mapProperties
-	 */
-	protected function setMapProperties( array $mapProperties ) {
-		foreach ( $mapProperties as $paramName => $paramValue ) {
-			if ( !property_exists( __CLASS__, $paramName ) ) {
-				$this-> { $paramName } = $paramValue;
-			}
-			else {
-				// If this happens in any way, it could be a big vunerability, so throw an exception.
-				throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
-			}
-		}
-	}
-	
-	/**
-	 * Returns the specific parameters by first checking if they have been initialized yet,
-	 * doing to work if this is not the case, and then returning them.
-	 * 
-	 * @return array
-	 */
-	public final function getSpecificParameterInfo() {
-		if ( $this->specificParameters === false ) {
-			$this->specificParameters = array();
-			$this->initSpecificParamInfo( $this->specificParameters );
-		}
-		
-		return $this->specificParameters;
-	}
-	
-	/**
-	 * Initializes the specific parameters.
-	 * 
-	 * Override this method to set parameters specific to a feature service comibination in
-	 * the inheriting class.
-	 * 
-	 * @param array $parameters
-	 */
-	protected function initSpecificParamInfo( array &$parameters ) {
+	 * @since 0.7.3
+	 */	
+	public function addParameterInfo( array &$params ) {
 	}
 	
 	/**
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
+	 * @since 0.7.3
+	 *
 	 * @param array $params
 	 * @param Parser $parser
 	 * 
 	 * @return html
 	 */
-	public final function getMapHtml( array $params, Parser $parser ) {
-		$this->setMapProperties( $params );
+	public final function renderMap( array $params, Parser $parser ) {
+		$this->setCentre( $params );
 		
-		$this->setCentre();
-		
-		if ( $this->zoom == 'null' ) {
-			$this->zoom = $this->service->getDefaultZoom();
+		if ( $params['zoom'] == 'null' ) {
+			$params['zoom'] = $this->service->getDefaultZoom();
 		}
 		
-		$this->addSpecificMapHTML( $parser );
+		$output = $this->getMapHTML( $params, $parser );
+		
+		if ( method_exists( 'OutputPage', 'addModules' ) ) {
+			$output .= $this->getJSON( $params, $parser );
+		}
 		
 		global $wgTitle;
 		if ( $wgTitle->getNamespace() == NS_SPECIAL ) {
@@ -103,48 +88,66 @@ abstract class MapsBaseMap {
 			$this->service->addDependencies( $parser );			
 		}
 		
-		return $this->output;
+		return $output;
 	}
 	
 	/**
-	 * Sets the $centreLat and $centreLon fields.
-	 */
-	protected function setCentre() {
-		if ( empty( $this->coordinates ) ) { // If centre is not set, use the default latitude and longitutde.
-			$this->setCentreToDefault();
-		}
-		else { // If a centre value is set, geocode when needed and use it.
-			$this->coordinates = MapsGeocoders::attemptToGeocode( $this->coordinates, $this->geoservice, $this->service->getName() );
-
-			// If the centre is not false, it will be a valid coordinate, which can be used to set the  latitude and longitutde.
-			if ( $this->coordinates ) {
-				$this->centreLat = Xml::escapeJsString( $this->coordinates['lat'] );
-				$this->centreLon = Xml::escapeJsString( $this->coordinates['lon'] );
-			}
-			else { // If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
-				$this->setCentreToDefault();
-			}
-		}
-	}
-	
-	/**
-	 * Attempts to set the centreLat and centreLon fields to the Maps default.
-	 * When this fails (aka the default is not valid), an exception is thrown.
+	 * Returns the JSON with the maps data.
+	 *
+	 * @since 0.7.3
+	 *
+	 * @param array $params
+	 * @param Parser $parser
 	 * 
-	 * @since 0.7
+	 * @return string
+	 */	
+	protected function getJSON( array $params, Parser $parser ) {
+		$object = $this->getJSONObject( $params, $parser );
+		
+		if ( $object === false ) {
+			return '';
+		}
+		
+		// TODO
+		return Html::inlineScript( "maps=[]; maps['{$this->service->getName()}']=[]; maps['{$this->service->getName()}'].push(" . json_encode( $object ) . ')' );
+	}
+	
+	/**
+	 * Returns a PHP object to encode to JSON with the map data.
+	 *
+	 * @since 0.7.3
+	 *
+	 * @param array $params
+	 * @param Parser $parser
+	 * 
+	 * @return mixed
+	 */	
+	protected function getJSONObject( array $params, Parser $parser ) {
+		return $params;
+	}
+	
+	/**
+	 * Translates the coordinates field to the centre field and makes sure it's set to it's default when invalid. 
 	 */
-	protected function setCentreToDefault() {
-		global $egMapsDefaultMapCentre;
+	protected function setCentre( array &$params ) {
+		// If it's false, the coordinate was invalid, or geocoding failed. Either way, the default's should be used.
+		if ( $params['coordinates'] === false ) {
+			global $egMapsDefaultMapCentre;
 		
-		$centre = MapsGeocoders::attemptToGeocode( $egMapsDefaultMapCentre, $this->geoservice, $this->service->getName() );
-		
-		if ( $centre === false ) {
-			throw new Exception( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
+			$centre = MapsGeocoders::attemptToGeocode( $egMapsDefaultMapCentre, $params['geoservice'], $this->service->getName() );
+			
+			if ( $centre === false ) {
+				throw new Exception( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
+			}
+			else {
+				$params['centre'] = $centre;
+			}
 		}
 		else {
-			$this->centreLat = Xml::escapeJsString( $centre['lat'] );
-			$this->centreLon = Xml::escapeJsString( $centre['lon'] );			
+			$params['centre'] = MapsCoordinateParser::parseCoordinates( $params['coordinates'] );
 		}
-	}	
+		
+		unset( $params['coordinates'] );
+	}
 	
 }

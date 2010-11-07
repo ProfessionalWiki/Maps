@@ -87,11 +87,10 @@ class MapsParamOLLayers extends ListParameterManipulation {
 				}
 			}
 		}
-
-		$parameter->setValue( array(
-			'[' . implode( ',', $layerDefs ) . ']',
-			$this->getDependencies( $layerNames )
-		) );
+		
+		$parameter->setValue( method_exists( 'OutputPage', 'addModules' ) ? $layerDefs : '[' . implode( ',', $layerDefs ) . ']' );
+		
+		MapsOpenLayers::addLayerDependencies( $this->getDependencies( $layerNames ) );
 	}
 	
 	/**

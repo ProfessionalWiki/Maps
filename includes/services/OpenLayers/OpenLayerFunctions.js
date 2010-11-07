@@ -1,5 +1,7 @@
  /**
-  * Javascript functions for Open Layers functionality in Maps and its extensions
+  * Javascript functions for Open Layers functionality in Maps and its extensions.
+  * 
+  * Note: This file is for backward compatibility with MediaWiki <=1.16.
   *
   * @file OpenLayerFunctions.js
   * @ingroup MapsOpenLayers

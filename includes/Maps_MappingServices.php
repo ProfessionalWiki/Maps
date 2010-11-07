@@ -204,7 +204,7 @@ final class MapsMappingServices {
 	 *
 	 * @since 0.6.6
 	 *
-	 * @return array
+	 * @return array of string
 	 */
 	public static function getAllServiceValues() {
 		global $egMapsAvailableServices;
@@ -217,6 +217,23 @@ final class MapsMappingServices {
 		}
 
 		return $allServiceValues;
-	}	
+	}
+	
+	/**
+	 * Returns an array with an instance of a MappingService object for every available mapping service.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @return array of MappingService
+	 */
+	public static function getAllObjects() {
+		$objects = array();
+		
+		foreach ( self::$registeredServices as $service => $class ) {
+			$objects[] = self::getServiceInstance( $service );
+		}
+		
+		return $objects;
+	} 
 	
 }
