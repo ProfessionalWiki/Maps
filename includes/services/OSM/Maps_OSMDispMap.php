@@ -18,17 +18,17 @@ class MapsOSMDispMap extends MapsBaseMap {
 	public function getMapHTML( array $params, Parser $parser ) {	
 		global $wgLang;
 		
-		$thumbs = $this->thumbs ? 'yes' : 'no';
-		$photos = $this->photos ? 'yes' : 'no';
+		$thumbs = $params['thumbs'] ? 'yes' : 'no';
+		$photos = $params['photos'] ? 'yes' : 'no';
 		$lang = $wgLang->getCode();
 		
 		// https://secure.wikimedia.org/wikipedia/de/wiki/Wikipedia:WikiProjekt_Georeferenzierung/Wikipedia-World/en#Expert_mode
-		$this->output .= Html::element(
+		return Html::element(
 			'iframe',
 			array(
 				'id' => $this->service->getMapId(),
-				'style' => "width: $this->width; height: $this->height; clear: both;",
-				'src' => "http://toolserver.org/~kolossos/openlayers/kml-on-ol.php?zoom={$this->zoom}&lat={$this->centreLat}&lon={$this->centreLon}&lang=$lang&thumbs=$thumbs&photo=$photos"
+				'style' => "width: {$params['width']}; height: {$params['height']}; clear: both;",
+				'src' => "http://toolserver.org/~kolossos/openlayers/kml-on-ol.php?zoom={$params['zoom']}&lat={$params['centre']['lat']}&lon={$params['centre']['lon']}&lang=$lang&thumbs=$thumbs&photo=$photos"
 			),
 			wfMsg( 'maps-loading-map' )
 		);
