@@ -39,23 +39,23 @@ $( document ).ready( function() {
 		var mapOptions = {
 			controls: []
 		};
-		
-		if ( !hasImageLayer ) {
-			mapOptions.projection = new OpenLayers.Projection("EPSG:900913");
-			mapOptions.displayProjection = new OpenLayers.Projection("EPSG:4326");
-			mapOptions.units = "m";
-			mapOptions.numZoomLevels = 18;
-			mapOptions.maxResolution = 156543.0339;
-			mapOptions.maxExtent = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
-		}
 
 		// TODO
 		var mapElement = document.getElementById( 'open_layer_1' );
 		
 		// Remove the loading map message.
 		mapElement.innerHTML = '';
+		
 		// TODO
-		var map = new OpenLayers.Map( 'open_layer_1', mapOptions );
+		var map = new OpenLayers.Map( 'open_layer_1', mapOptions );		
+		
+		map.addLayer(new OpenLayers.Layer.WMS(
+			    "OpenLayers WMS",
+			    "http://vmap0.tiles.osgeo.org/wms/vmap0",
+			    {layers: "basic"}
+			)
+		);
+		
 		addControls( map, params.controls, mapElement );
 
 		// Add the base layers.
@@ -70,10 +70,6 @@ $( document ).ready( function() {
 		
 		if ( centerIsSet ) { // When the center is provided, set it.
 			var centre = new OpenLayers.LonLat( params.centre.lon, params.centre.lat );
-
-			if ( !hasImageLayer ) {
-				centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
-			}
 			
 			//map.setCenter( centre );
 		}
@@ -84,7 +80,6 @@ $( document ).ready( function() {
 	function addControls( map, controls, mapElement ) {
 		// Add the controls.
 		for ( var i = controls.length - 1; i >= 0; i-- ) {
-
 			// If a string is provided, find the correct name for the control, and use eval to create the object itself.
 			if ( typeof controls[i] == 'string' ) {
 				if ( controls[i].toLowerCase() == 'autopanzoom' ) {
@@ -124,12 +119,8 @@ $( document ).ready( function() {
 		for ( i = params.markers.length - 1; i >= 0; i-- ) {
 			params.markers[i].lonlat = new OpenLayers.LonLat( params.markers[i].lon, params.markers[i].lat );
 			
-			if ( !hasImageLayer ) {
-				params.markers[i].lonlat.transform( new OpenLayers.Projection( "EPSG:4326" ), new OpenLayers.Projection( "EPSG:900913" ) );
-			}
-			
 			if ( bounds != null ) bounds.extend( params.markers[i].lonlat ); // Extend the bounds when no center is set.
-			markerLayer.addMarker( getOLMarker( markerLayer, params.markers[i], map.getProjectionObject() ) ); // Create and add the marker.
+			markerLayer.addMarker( getOLMarker( markerLayer, params.markers[i] ) ); // Create and add the marker.
 		}
 			
 		if ( bounds != null ) map.zoomToExtent( bounds ); // If a bounds object has been created, use it to set the zoom and center.		
@@ -160,7 +151,7 @@ $( document ).ready( function() {
 		return false;
 	}
 	
-	function getOLMarker(markerLayer, markerData, projectionObject) {
+	function getOLMarker(markerLayer, markerData) {
 		var marker;
 		
 		if (markerData.icon != "") {

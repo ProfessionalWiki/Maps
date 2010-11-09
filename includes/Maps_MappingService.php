@@ -233,15 +233,4 @@ abstract class MapsMappingService implements iMappingService {
 		return array();
 	}
 	
-	/**
-	 * Returns the modules definitions for the resources of this mapping service. 
-	 * 
-	 * @since 0.7.3
-	 * 
-	 * @return array of arrays
-	 */	
-	public function getResourceModuleDefinitions() {
-		return array();
-	}
-	
 }

@@ -19,34 +19,21 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
-
-$wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
-
-/**
- * Initialization function for the OpenLayers service. 
- * 
- * @since 0.6.3
- * @ingroup MapsOpenLayers
- * 
- * @return true
- */
-function efMapsInitOpenLayers() {
-	global $wgAutoloadClasses;
 	
-	$wgAutoloadClasses['CriterionOLLayer']	 			= dirname( __FILE__ ) . '/CriterionOLLayer.php';
-	$wgAutoloadClasses['MapsOpenLayers'] 				= dirname( __FILE__ ) . '/Maps_OpenLayers.php';
-	$wgAutoloadClasses['MapsOpenLayersDispMap'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
-	$wgAutoloadClasses['MapsOpenLayersDispPoint'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
-	$wgAutoloadClasses['MapsParamOLLayers'] 			= dirname( __FILE__ ) . '/Maps_ParamOLLayers.php';	
+$wgAutoloadClasses['CriterionOLLayer']	 			= dirname( __FILE__ ) . '/CriterionOLLayer.php';
+$wgAutoloadClasses['MapsOpenLayers'] 				= dirname( __FILE__ ) . '/Maps_OpenLayers.php';
+$wgAutoloadClasses['MapsOpenLayersDispMap'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
+$wgAutoloadClasses['MapsOpenLayersDispPoint'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
+$wgAutoloadClasses['MapsParamOLLayers'] 			= dirname( __FILE__ ) . '/Maps_ParamOLLayers.php';	
 
-	MapsMappingServices::registerService( 
-		'openlayers',
-		'MapsOpenLayers',
-		array(
-			'display_point' => 'MapsOpenLayersDispPoint',
-			'display_map' => 'MapsOpenLayersDispMap'
-		)
-	);
-	
-	return true;
-}
+// Since 0.7.3
+$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsOpenLayers::registerResourceLoaderModules';
+
+MapsMappingServices::registerService( 
+	'openlayers',
+	'MapsOpenLayers',
+	array(
+		'display_point' => 'MapsOpenLayersDispPoint',
+		'display_map' => 'MapsOpenLayersDispMap'
+	)
+);

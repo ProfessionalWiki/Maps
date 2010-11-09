@@ -189,14 +189,18 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 	
 	/**
-	 * @see MapsMappingService::getResourceModuleDefinitions
+	 * Register the resource modules for the resource loader.
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @return array of arrays
-	 */	
-	public function getResourceModuleDefinitions() {
-		return array(
+	 * @param ResourceLoader $resourceLoader
+	 * 
+	 * @return true
+	 */
+	public static function registerResourceLoaderModules( ResourceLoader &$resourceLoader ) {
+		global $egMapsScriptPath;
+		
+		$modules = array(
 			'ext.maps.openlayers' => array(
 				'scripts' =>   array(
 					'OpenLayers/OpenLayers.js',
@@ -207,6 +211,9 @@ class MapsOpenLayers extends MapsMappingService {
 				),				
 				'dependencies' => array( 
 					//'ext.maps.common',
+				),
+				'messages' => array(
+					'maps-markers'
 				)
 			),
 			'ext.maps.osm' => array(
@@ -215,7 +222,17 @@ class MapsOpenLayers extends MapsMappingService {
 				),
 				'dependencies' => 'ext.maps.openlayers'
 			)		
-		);
+		); 
+		
+		foreach ( $modules as $name => $resources ) { 
+			$resourceLoader->register( $name, new ResourceLoaderFileModule(
+				array_merge_recursive( $resources, array( 'group' => 'ext.maps' ) ),
+				dirname( __FILE__ ),
+				$egMapsScriptPath . '/includes/services/OpenLayers/'
+			) ); 
+		}
+		
+		return true;		
 	}	
 	
 }																	
