@@ -98,7 +98,7 @@ $( document ).ready( function() {
 		var bounds = null;
 		
 		// Layer to hold the markers.
-		var markerLayer = new OpenLayers.Layer.Markers( mediaWiki.msg( 'maps-markers' ) ); // TODO
+		var markerLayer = new OpenLayers.Layer.Markers( mediaWiki.msg( 'maps-markers' ) );
 		markerLayer.id= 'markerLayer';
 		map.addLayer( markerLayer );		
 		
@@ -145,9 +145,7 @@ $( document ).ready( function() {
 		var marker;
 		
 		if (markerData.icon != "") {
-			//var iconSize = new OpenLayers.Size(10,17);
-			//var iconOffset = new OpenLayers.Pixel(-(iconSize.w/2), -iconSize.h);
-			marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerData.icon)); // , iconSize, iconOffset
+			marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerData.icon));
 		} else {
 			marker = new OpenLayers.Marker(markerData.lonlat);
 		}
@@ -175,18 +173,6 @@ $( document ).ready( function() {
 		}	
 
 		return marker;
-	}
-
-	function initOLSettings(minWidth, minHeight) {
-	    OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
-	    OpenLayers.Util.onImageLoadErrorColor = 'transparent';
-		OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(
-			OpenLayers.Popup.FramedCloud,
-			{
-				'autoSize': true,
-				'minSize': new OpenLayers.Size(minWidth, minHeight)
-			}
-		);
 	}	
 	
 } );
