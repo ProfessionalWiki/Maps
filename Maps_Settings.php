@@ -21,6 +21,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 
+$egMapsUseRL = true; //method_exists( 'OutputPage', 'addModules' );
+
 # Features configuration
 # Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
 

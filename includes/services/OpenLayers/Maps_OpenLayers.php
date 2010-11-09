@@ -204,8 +204,10 @@ class MapsOpenLayers extends MapsMappingService {
 				),
 				'styles' => array(
 					'OpenLayers/theme/default/style.css'
-				),
-				'dependencies' => 'ext.maps.common'
+				),				
+				'dependencies' => array( 
+					//'ext.maps.common',
+				)
 			),
 			'ext.maps.osm' => array(
 				'scripts' =>   array(

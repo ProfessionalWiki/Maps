@@ -1,7 +1,10 @@
 /**
  * JavasSript for OpenLayers maps in the Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Maps
+ * 
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+ * 
+ * TODO: document
  */
 
 $( document ).ready( function() { 
@@ -51,34 +54,30 @@ $( document ).ready( function() {
 		
 		// Remove the loading map message.
 		mapElement.innerHTML = '';
-		alert('');
 		// TODO
 		var map = new OpenLayers.Map( 'open_layer_1', mapOptions );
-		alert('');
 		addControls( map, params.controls, mapElement );
-		
+
 		// Add the base layers.
-		for ( i = 0, n = params.layers.length; i < n; i++ ) map.addLayer( params.layers[i] );
+		for ( i = 0, n = params.layers.length; i < n; i++ ) {
+			//alert(params.layers[i]);
+			//map.addLayer( params.layers[i] );
+		}
+
+		var centerIsSet = params.centre.lon != null && params.centre.lat != null;		
 		
-		// Layer to hold the markers.
-		var markerLayer = new OpenLayers.Layer.Markers( 'Markers' ); // TODO
-		markerLayer.id= 'markerLayer';
-		map.addLayer( markerLayer );
-		
-		var centerIsSet = params.centre.lon != null && params.centre.lat != null;
-		
-		addMarkers( map, params, markerLayer, centerIsSet );
+		addMarkers( map, params, centerIsSet );
 		
 		if ( centerIsSet ) { // When the center is provided, set it.
 			var centre = new OpenLayers.LonLat( params.centre.lon, params.centre.lat );
-			
+
 			if ( !hasImageLayer ) {
 				centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
 			}
-
-			map.setCenter( centre ); 
+			
+			//map.setCenter( centre );
 		}
-		
+
 		if (params.zoom != null) map.zoomTo(params.zoom); // When the zoom is provided, set it.		
 	}
 	
@@ -106,8 +105,17 @@ $( document ).ready( function() {
 		}		
 	}
 	
-	function addMarkers( map, params, markerLayer, centerIsSet ) {
+	function addMarkers( map, params, centerIsSet ) {
+		if ( typeof params.markers == 'undefined' ) {
+			return;
+		}
+
 		var bounds = null;
+		
+		// Layer to hold the markers.
+		var markerLayer = new OpenLayers.Layer.Markers( 'Markers' ); // TODO
+		markerLayer.id= 'markerLayer';
+		map.addLayer( markerLayer );		
 		
 		if ( params.markers.length > 1 && ( !centerIsSet || params.zoom == null ) ) {
 			bounds = new OpenLayers.Bounds();

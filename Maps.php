@@ -51,8 +51,6 @@ else {
 
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
-	$egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
-	
 	$wgAutoloadClasses['MapsHooks'] = dirname( __FILE__ ) . '/Maps.hooks.php';
 	
 	// Autoload the "includes/" classes and interfaces.
