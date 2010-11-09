@@ -23,6 +23,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	protected function getJSONObject( array $params, Parser $parser ) {
 		global $wgLang;
 		$params['langCode'] = $wgLang->getCode();
+		$params['mapId'] = $this->service->getMapId( false ); 
 		return $params;
 	}	
 	

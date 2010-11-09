@@ -40,28 +40,18 @@ $( document ).ready( function() {
 			controls: []
 		};
 
-		// TODO
-		var mapElement = document.getElementById( 'open_layer_1' );
+		var mapElement = document.getElementById( params.mapId );
 		
 		// Remove the loading map message.
 		mapElement.innerHTML = '';
 		
-		// TODO
-		var map = new OpenLayers.Map( 'open_layer_1', mapOptions );		
-		
-		map.addLayer(new OpenLayers.Layer.WMS(
-			    "OpenLayers WMS",
-			    "http://vmap0.tiles.osgeo.org/wms/vmap0",
-			    {layers: "basic"}
-			)
-		);
+		var map = new OpenLayers.Map( params.mapId, mapOptions );		
 		
 		addControls( map, params.controls, mapElement );
 
 		// Add the base layers.
 		for ( i = 0, n = params.layers.length; i < n; i++ ) {
-			//alert(params.layers[i]);
-			//map.addLayer( params.layers[i] );
+			map.addLayer( eval( params.layers[i] ) );
 		}
 
 		var centerIsSet = params.centre.lon != null && params.centre.lat != null;		
@@ -71,7 +61,7 @@ $( document ).ready( function() {
 		if ( centerIsSet ) { // When the center is provided, set it.
 			var centre = new OpenLayers.LonLat( params.centre.lon, params.centre.lat );
 			
-			//map.setCenter( centre );
+			map.setCenter( centre );
 		}
 
 		if (params.zoom != null) map.zoomTo(params.zoom); // When the zoom is provided, set it.		
@@ -108,7 +98,7 @@ $( document ).ready( function() {
 		var bounds = null;
 		
 		// Layer to hold the markers.
-		var markerLayer = new OpenLayers.Layer.Markers( 'Markers' ); // TODO
+		var markerLayer = new OpenLayers.Layer.Markers( mediaWiki.msg( 'maps-markers' ) ); // TODO
 		markerLayer.id= 'markerLayer';
 		map.addLayer( markerLayer );		
 		
