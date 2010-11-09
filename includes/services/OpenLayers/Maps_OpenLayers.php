@@ -209,9 +209,6 @@ class MapsOpenLayers extends MapsMappingService {
 				'styles' => array(
 					'OpenLayers/theme/default/style.css'
 				),				
-				'dependencies' => array( 
-					//'ext.maps.common',
-				),
 				'messages' => array(
 					'maps-markers'
 				)
