@@ -225,7 +225,7 @@ class MapsOpenLayers extends MapsMappingService {
 			$resourceLoader->register( $name, new ResourceLoaderFileModule(
 				array_merge_recursive( $resources, array( 'group' => 'ext.maps' ) ),
 				dirname( __FILE__ ),
-				$egMapsScriptPath . '/includes/services/OpenLayers/'
+				$egMapsScriptPath . '/includes/services/OpenLayers'
 			) ); 
 		}
 		
