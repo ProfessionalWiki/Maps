@@ -412,7 +412,7 @@ $egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
 		
 		if ( !$egMapsUseRL ) {
 			$egMapsOLLayerDependencies['osm'] = "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>";
-		}
+		}		
 	
 	
 	
