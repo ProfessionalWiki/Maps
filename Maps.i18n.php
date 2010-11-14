@@ -1384,7 +1384,7 @@ $messages['lad'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://mapping.referata.com/wiki/Maps_examples Démo]",
+	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://mapping.referata.com/wiki/Maps_examples Démo]",
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-markers' => 'Markéierungen',
