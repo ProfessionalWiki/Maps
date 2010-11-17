@@ -407,7 +407,7 @@ $egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
 		
 		# Layer dependencie (MediaWiki >= 1.17).
 		// http://maps.google.com/maps/api/js?sensor=false
-		$egMapsOLLayerModules = array(
+		$egMapsOLLayerModules = array(/*
 			'ext.maps.ol.osm' => array(
 				'scripts' =>   array(
 					'OSM/OpenStreetMap.js',
@@ -428,7 +428,7 @@ $egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
 					'http://clients.multimap.com/API/maps/1.1/metacarta_04',
 				),
 			)				
-		);
+		*/);
 		
 		# Layer dependencies (MediaWiki < 1.17).
 		$egMapsOLLayerDependencies = array(
