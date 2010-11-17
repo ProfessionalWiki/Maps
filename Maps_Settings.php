@@ -379,6 +379,8 @@ $egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
 		
 		# The difinitions for the layers that should be available for the user.
 		$egMapsOLAvailableLayers = array(
+			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
+		
 			'bing-normal' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ),
 			'bing-satellite' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing' ),
 			'bing-hybrid' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing' ),
@@ -403,17 +405,39 @@ $egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
 			'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
 		);
 		
-		# Layer dependencies.
+		# Layer dependencie (MediaWiki >= 1.17).
+		// http://maps.google.com/maps/api/js?sensor=false
+		$egMapsOLLayerModules = array(
+			'ext.maps.ol.osm' => array(
+				'scripts' =>   array(
+					'OSM/OpenStreetMap.js',
+				),
+			),
+			'ext.maps.ol.yahoo' => array(
+				'scripts' =>   array(
+					'http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers',
+				),
+			),
+			'ext.maps.ol.bing' => array(
+				'scripts' =>   array(
+					'http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1',
+				),
+			),
+			'ext.maps.ol.ol-wms' => array(
+				'scripts' =>   array(
+					'http://clients.multimap.com/API/maps/1.1/metacarta_04',
+				),
+			)				
+		);
+		
+		# Layer dependencies (MediaWiki < 1.17).
 		$egMapsOLLayerDependencies = array(
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-		);
-		
-		if ( !$egMapsUseRL ) {
-			$egMapsOLLayerDependencies['osm'] = "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>";
-		}		
-	
+			'osm' => "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>"
+		);	
+
 	
 	
 	# OpenStreetMap

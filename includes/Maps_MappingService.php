@@ -41,6 +41,15 @@ abstract class MapsMappingService implements iMappingService {
 	protected $features;
 	
 	/**
+	 * A list of names of resource modules to add.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @var array
+	 */	
+	protected $resourceModules = array();
+	
+	/**
 	 * A list of dependencies (header items) that have been added.
 	 * 
 	 * @since 0.6.3
@@ -230,7 +239,18 @@ abstract class MapsMappingService implements iMappingService {
 	 * @return array of string
 	 */
 	protected function getResourceModules() {
-		return array();
+		return $this->resourceModules;
+	}
+	
+	/**
+	 * Add one or more names of resource modules that should be loaded.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @param mixed $modules Array of string or string
+	 */
+	public function addResourceModules( $modules ) {
+		$this->resourceModules = array_merge( $this->resourceModules, (array)$modules );
 	}
 	
 }

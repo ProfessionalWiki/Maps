@@ -90,7 +90,13 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		
 		$parameter->setValue( $egMapsUseRL ? $layerDefs : '[' . implode( ',', $layerDefs ) . ']' );
 		
-		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getDependencies( $layerNames ) );
+		if ( $egMapsUseRL ) {
+			MapsMappingServices::getServiceInstance( 'openlayers' )->addResourceModules( $this->getModules( $layerNames ) );
+		}
+		else {
+			MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getDependencies( $layerNames ) );
+		}
+		
 	}
 	
 	/**
@@ -117,6 +123,32 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		}
 
 		return array_unique( $layerDependencies );
+	}
+	
+	/**
+	 * Returns the names of the resource modules for the provided layers.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @param array $layerNames
+	 * 
+	 * @return array
+	 */	
+	protected function getModules( array $layerNames ) {
+		global $egMapsOLLayerModules, $egMapsOLAvailableLayers;
+		
+		$moduleNames = array();
+		
+		foreach ( $layerNames as $layerName ) {
+			if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
+				&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...
+				&& count( $egMapsOLAvailableLayers[$layerName] ) > 1 // ...with a second element...
+				&& array_key_exists( 'ext.maps.ol.' . $egMapsOLAvailableLayers[$layerName][1], $egMapsOLLayerModules ) ) { //...that is a dependency.
+				$moduleNames[] = 'ext.maps.ol.' . $egMapsOLAvailableLayers[$layerName][1];
+			}
+		}
+
+		return array_unique( $moduleNames );		
 	}
 	
 }

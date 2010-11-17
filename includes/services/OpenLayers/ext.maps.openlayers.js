@@ -38,7 +38,13 @@ $( document ).ready( function() {
 		
 		// Create a new OpenLayers map with without any controls on it.
 		var mapOptions = {
-			controls: []
+			controls: [],
+			projection: new OpenLayers.Projection("EPSG:900913"),
+			units: "m",
+	        maxResolution: 156543.0339,
+	        maxExtent: new OpenLayers.Bounds(
+	            -20037508, -20037508, 20037508, 20037508.34
+	        )
 		};
 
 		var mapElement = document.getElementById( params.mapId );

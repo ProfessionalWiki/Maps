@@ -185,7 +185,10 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return array of string
 	 */
 	protected function getResourceModules() {
-		return array( 'ext.maps.openlayers', 'ext.maps.osm' );
+		return array_merge(
+			parent::getResourceModules(),
+			array( 'ext.maps.openlayers' )
+		);
 	}
 	
 	/**
@@ -198,7 +201,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return true
 	 */
 	public static function registerResourceLoaderModules( ResourceLoader &$resourceLoader ) {
-		global $egMapsScriptPath;
+		global $egMapsScriptPath, $egMapsOLLayerModules;
 		
 		$modules = array(
 			'ext.maps.openlayers' => array(
@@ -212,15 +215,17 @@ class MapsOpenLayers extends MapsMappingService {
 				'messages' => array(
 					'maps-markers'
 				)
-			),
-			'ext.maps.osm' => array(
-				'scripts' =>   array(
-					'OSM/OpenStreetMap.js',
-				),
-				'dependencies' => 'ext.maps.openlayers'
-			)		
-		); 
+			),	
+		);
 		
+		foreach ( $egMapsOLLayerModules as $name => &$data ) {
+			$data['dependencies'] = array_key_exists( 'dependencies', $data ) ? 
+				array_merge( (array)$data['dependencies'], array( 'ext.maps.openlayers' ) ) :
+				array( 'ext.maps.openlayers' );
+		}
+		
+		$modules = array_merge( $modules, $egMapsOLLayerModules );
+
 		foreach ( $modules as $name => $resources ) { 
 			$resourceLoader->register( $name, new ResourceLoaderFileModule(
 				array_merge_recursive( $resources, array( 'group' => 'ext.maps' ) ),
