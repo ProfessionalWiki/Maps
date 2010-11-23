@@ -36,7 +36,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.7.3 alpha' );
+	define( 'Maps_VERSION', '0.7.3 a2' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -61,9 +61,11 @@ else {
 	$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
 	$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
 	$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
+	$wgAutoloadClasses['MapsKMLFormatter'] 			= $incDir . 'Maps_KMLFormatter.php';
 	$wgAutoloadClasses['MapsLayer'] 				= $incDir . 'Maps_Layer.php';
 	$wgAutoloadClasses['MapsLayerPage'] 			= $incDir . 'Maps_LayerPage.php';
 	$wgAutoloadClasses['MapsLayers'] 				= $incDir . 'Maps_Layers.php';
+	$wgAutoloadClasses['MapsLocation'] 				= $incDir . 'Maps_Location.php';
 	$wgAutoloadClasses['iMappingFeature'] 			= $incDir . 'iMappingFeature.php';
 	$wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 	$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';

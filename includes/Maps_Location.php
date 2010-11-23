@@ -197,6 +197,20 @@ class MapsLocation {
 	}
 	
 	/**
+	 * Returns the locations altitude.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @return float
+	 */
+	public function getAltitude() {
+		if ( !$this->isValid() ) {
+			throw new Exception( 'Attempt to get the altitude of an invalid location' );
+		}
+		return $this->altitude;
+	}	
+	
+	/**
 	 * Returns the locations coordinates formatted in the specified notation.
 	 * 
 	 * @since 0.7.1
@@ -286,7 +300,7 @@ class MapsLocation {
 	 * @return string
 	 */
 	public function getTitle() {
-		return $tis->title;
+		return $this->title;
 	}
 	
 	/**
@@ -297,7 +311,7 @@ class MapsLocation {
 	 * @return string
 	 */
 	public function getText() {
-		return $tis->text;
+		return $this->text;
 	}
 	
 	/**
@@ -308,7 +322,7 @@ class MapsLocation {
 	 * @return string
 	 */
 	public function getIcon() {
-		return $tis->icon;
-	}	
+		return $this->icon;
+	}
 	
 }
