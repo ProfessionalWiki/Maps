@@ -7,6 +7,13 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+=== Semantic Maps 0.7.3 ===
+(2010-11-xx)
+
+==== new features ====
+
+* Added KML result format that allows the export of geographical data queried via SMW in the form of .kml files.
+
 === Semantic Maps 0.7.2 ===
 (2010-10-28)
 
