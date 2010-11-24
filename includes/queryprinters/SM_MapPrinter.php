@@ -3,6 +3,9 @@
 /**
  * Abstract class that provides the common functionality for all map query printers.
  *
+ * TODO: make use of SMQueryHandler
+ * TODO: make use of new-style Validator parameter handling
+ *
  * @file SM_MapPrinter.php
  * @ingroup SemanticMaps
  *

@@ -23,8 +23,12 @@ final class SMQueryPrinters {
 	public static function initialize() {
 		global $smgDir, $wgAutoloadClasses;
 		
-		$wgAutoloadClasses['SMMapper'] 	= dirname( __FILE__ ) . '/SM_Mapper.php';
-		$wgAutoloadClasses['SMMapPrinter'] 	= dirname( __FILE__ ) . '/SM_MapPrinter.php';
+		$wgAutoloadClasses['SMQueryHandler']	= dirname( __FILE__ ) . '/SM_QueryHandler.php';
+		$wgAutoloadClasses['SMMapper'] 			= dirname( __FILE__ ) . '/SM_Mapper.php';
+		$wgAutoloadClasses['SMMapPrinter'] 		= dirname( __FILE__ ) . '/SM_MapPrinter.php';
+		$wgAutoloadClasses['SMKMLPrinter'] 		= dirname( __FILE__ ) . '/SM_KMLPrinter.php';
+		
+		self::initFormat( 'kml', 'SMKMLPrinter' );
 		
 		$hasQueryPrinters = false;
 
