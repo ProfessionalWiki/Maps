@@ -132,11 +132,13 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'semanticmaps_name' => 'Сэмантычныя мапы',
 	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples дэманстрацыя]). Даступныя сэрвісы мапаў: $1',
 	'semanticmaps-unrecognizeddistance' => 'Значэньне $1 — няслушная адлегласьць.',
+	'semanticmaps-kml-link' => 'Праглядзець KML-файл',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
 	'semanticmaps_notfound' => 'ня знойдзена',
@@ -224,6 +226,7 @@ $messages['de'] = array(
 	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die mit der Softwareerweiterung „Semantic MediaWiki“ gespeichert wurden ([http://mapping.referata.com/wiki/Semantic_Maps_examples Demo]).
 Unterstützte Kartendienste: $1',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
+	'semanticmaps-kml-link' => 'KML-Datei ansehen',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticmaps_enteraddresshere' => 'Adresse hier eingeben',
 	'semanticmaps_notfound' => 'nicht gefunden',
@@ -467,6 +470,7 @@ Dostupne kartografske usluge: $1",
 $messages['hsb'] = array(
 	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). K dispoziciji stejace kartowe słužby: $1',
 	'semanticmaps-unrecognizeddistance' => 'Hódnota $1 płaćiwa distanca njeje.',
+	'semanticmaps-kml-link' => 'KML-dataju sej wobhladać',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami hladać',
 	'semanticmaps_enteraddresshere' => 'Zapodaj tu adresu',
 	'semanticmaps_notfound' => 'njenamakany',
@@ -513,6 +517,7 @@ $messages['ia'] = array(
 ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Servicios cartographic disponibile: $1',
 	'semanticmaps-unrecognizeddistance' => 'Le valor $1 non es un distantia valide.',
+	'semanticmaps-kml-link' => 'Vider le file KML',
 	'semanticmaps_lookupcoordinates' => 'Cercar coordinatas',
 	'semanticmaps_enteraddresshere' => 'Entra adresse hic',
 	'semanticmaps_notfound' => 'non trovate',
@@ -533,11 +538,13 @@ Servicios cartographic disponibile: $1',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Farras
+ * @author IvanLanin
  */
 $messages['id'] = array(
 	'semanticmaps_desc' => 'Memampukan penampilan dan penyuntingan data koordinat yang disimpan melalui pengaya MediaWiki Semantic ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). 
 Layanan peta yang tersedia: $1',
 	'semanticmaps-unrecognizeddistance' => 'Nilai $1 bukan jarak yang sah.',
+	'semanticmaps-kml-link' => 'Lihat berkas KML',
 	'semanticmaps_lookupcoordinates' => 'Cari koordinat',
 	'semanticmaps_enteraddresshere' => 'Masukkan alamat di sini',
 	'semanticmaps_notfound' => 'tidak ditemukan',
@@ -656,9 +663,11 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'semanticmaps_name' => 'Семантички карти',
 	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку проширувањето Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples демо]).
 Картографски служби на располагање: $1',
 	'semanticmaps-unrecognizeddistance' => 'Вредноста $1 не претставува важечко растојание.',
+	'semanticmaps-kml-link' => 'Преглед на KML-податотеката',
 	'semanticmaps_lookupcoordinates' => 'Побарај координати',
 	'semanticmaps_enteraddresshere' => 'Внесете адреса тука',
 	'semanticmaps_notfound' => 'не е најдено ништо',
@@ -788,6 +797,7 @@ $messages['pms'] = array(
 	'semanticmaps_desc' => "A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con j'estension Semantic mediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Servissi ëd carte disponìbij: $1",
 	'semanticmaps-unrecognizeddistance' => "Ël valor $1 a l'é pa na distansa bon-a.",
+	'semanticmaps-kml-link' => 'Varda ël file KML',
 	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
 	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
 	'semanticmaps_notfound' => 'pa trovà',
@@ -821,6 +831,7 @@ $messages['pt'] = array(
 	'semanticmaps_desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([http://mapping.referata.com/wiki/Semantic_Maps_examples demonstração]).
 Serviços de cartografia disponíveis: $1',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
+	'semanticmaps-kml-link' => 'Ver o ficheiro KML',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
 	'semanticmaps_notfound' => 'não encontrado',
@@ -892,6 +903,7 @@ $messages['ru'] = array(
 	'semanticmaps_desc' => 'Предоставляет возможность просмотра и редактирования данных о координатах, хранящихся посредством расширения Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples демонстрация]).
 Доступные службы карт: $1',
 	'semanticmaps-unrecognizeddistance' => 'Значение $1 не является допустимым расстоянием.',
+	'semanticmaps-kml-link' => 'Просмотреть файл KML',
 	'semanticmaps_lookupcoordinates' => 'Найти координаты',
 	'semanticmaps_enteraddresshere' => 'Введите адрес',
 	'semanticmaps_notfound' => 'не найдено',
