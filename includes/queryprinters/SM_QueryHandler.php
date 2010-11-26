@@ -12,6 +12,10 @@
  */
 class SMQueryHandler {
 	
+	const LINK_NONE = 0;
+	const LINK_RELATIVE = 1;
+	const LINK_ABSOLUTE = 2;	
+	
 	protected $queryResult;
 	protected $outputmode;
 	
@@ -20,7 +24,10 @@ class SMQueryHandler {
 	// TODO: add system to properly handle query parameters
 	public $template = false;
 	public $icon = '';
-	public $makeLinks = false;
+	
+	public $titleLink = self::LINK_ABSOLUTE;
+	public $propNameLink = self::LINK_NONE;
+	public $propValueLink = self::LINK_NONE;
 	
 	/**
 	 * Constructor.
@@ -71,6 +78,8 @@ class SMQueryHandler {
 	 * Returns the locations found in the provided result row.
 	 * 
 	 * TODO: split up this method if possible
+	 * TODO: fix template handling
+	 * TODO: clean up link type handling
 	 * 
 	 * @since 0.7.3
 	 * 
@@ -86,7 +95,6 @@ class SMQueryHandler {
 		$skin = $wgUser->getSkin();
 		
 		$title = '';
-		$titleForTemplate = '';
 		$text = '';
 		$lat = '';
 		$lon = '';
@@ -101,23 +109,28 @@ class SMQueryHandler {
 			// Loop throught all the parts of the field value.
 			while ( ( /* SMWDataValue */ $object = $resultArray->getNextObject() ) !== false ) {		
 				if ( $object->getTypeID() == '_wpg' && $i == 0 ) {
-					$title = $object->getLongText( $this->outputmode, $this->makeLinks ? $skin : NULL );
-					$titleForTemplate = $object->getLongText( $this->outputmode, NULL );
+					if ( $this->titleLink == self::LINK_ABSOLUTE ) {
+						$title = Html::element( 'a', array( 'href' => $object->getTitle()->getFullUrl() ) );
+					}
+					else {
+						$title = $object->getLongText( $this->outputmode, $this->titleLink == self::LINK_RELATIVE ? $skin : NULL );
+					}
 				}
 				
 				if ( $object->getTypeID() != '_geo' && $i != 0 ) {
-					if ( $this->template ) {
+					/*
+					 if ( $this->template ) {
 						if ( $object instanceof SMWWikiPageValue ) {
 							$label[] = $object->getTitle()->getPrefixedText();
 						} else {
 							$label[] = $object->getLongText( $this->outputmode, $this->makeLinks ? $skin : NULL );
 						}
 					}
-					else {
-						$propertyName = $printRequest->getHTMLText( $this->makeLinks ? $skin : NULL );
+					else { */
+						$propertyName = $printRequest->getHTMLText( $this->propNameLink == self::LINK_RELATIVE ? $skin : NULL );
 						if ( $propertyName != '' ) $propertyName .= ': ';
-						$text .= $propertyName . $object->getLongText( $this->outputmode, $this->makeLinks ? $skin : NULL ) . '<br />';
-					}
+						$text .= $propertyName . $object->getLongText( $this->outputmode, $this->propValueLink == self::LINK_RELATIVE ? $skin : NULL ) . '<br />';
+					//}
 				}
 		
 				if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
@@ -126,10 +139,12 @@ class SMQueryHandler {
 			}
 		}
 		
+		/*
 		if ( $this->template ) {
 			// New parser object to render the templates with.
 			$parser = new Parser();			
 		}
+		*/
 		
 		foreach ( $coords as $coord ) {
 			if ( count( $coord ) >= 2 ) {
@@ -142,7 +157,7 @@ class SMQueryHandler {
 				
 				if ( $lat != '' && $lon != '' ) {
 					$icon = $this->getLocationIcon( $row );
-
+					/*
 					if ( $this->template ) {
 						$segments = array_merge(
 							array( $this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon ),
@@ -151,6 +166,7 @@ class SMQueryHandler {
 						
 						$text = $parser->parse( '{{' . implode( '|', $segments ) . '}}', $wgTitle, new ParserOptions() )->getText();
 					}
+					*/
 
 					$location = new MapsLocation();
 					
@@ -168,6 +184,13 @@ class SMQueryHandler {
 		}	
 		
 		return $locations;
+	}
+	
+	/**
+	 * Get  
+	 */
+	protected function getDataValueLink() {
+		
 	}
 	
 	/**
