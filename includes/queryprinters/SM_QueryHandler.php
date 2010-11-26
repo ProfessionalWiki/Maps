@@ -110,7 +110,11 @@ class SMQueryHandler {
 			while ( ( /* SMWDataValue */ $object = $resultArray->getNextObject() ) !== false ) {		
 				if ( $object->getTypeID() == '_wpg' && $i == 0 ) {
 					if ( $this->titleLink == self::LINK_ABSOLUTE ) {
-						$title = Html::element( 'a', array( 'href' => $object->getTitle()->getFullUrl() ) );
+						$title = Html::element(
+							'a',
+							array( 'href' => $object->getTitle()->getFullUrl() ),
+							$object->getTitle()->getText()
+						);
 					}
 					else {
 						$title = $object->getLongText( $this->outputmode, $this->titleLink == self::LINK_RELATIVE ? $skin : NULL );
