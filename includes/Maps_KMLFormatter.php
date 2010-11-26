@@ -129,7 +129,7 @@ EOT;
 	 * @return string
 	 */		
 	protected function getKMLForLocation( MapsLocation $location ) {
-		$name = Xml::element( 'name', array(), $location->getTitle() );
+		$name = '<name><![CDATA[ ' . $location->getTitle() . ']]></name>';
 		
 		$description = '<description><![CDATA[ ' . $location->getText() . ']]></description>';
 		
