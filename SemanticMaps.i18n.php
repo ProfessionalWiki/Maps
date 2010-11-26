@@ -338,12 +338,14 @@ $messages['fi'] = array(
  * @author Grondin
  * @author IAlex
  * @author Jean-Frédéric
+ * @author Peter17
  * @author PieRRoMaN
  * @author Urhixidur
  */
 $messages['fr'] = array(
 	'semanticmaps_desc' => 'Permet de voir et modifier les données de coordonnées stockées à travers l’extension Semantic MediaWiki ([http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://mapping.referata.com/wiki/Semantic_Maps_examples Démo]). Services de cartes disponibles : $1.',
 	'semanticmaps-unrecognizeddistance' => "La valeur $1 n'est pas une distance valide",
+	'semanticmaps-kml-link' => 'Voir le fichier KML',
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
 	'semanticmaps_notfound' => 'pas trouvé',
@@ -378,6 +380,7 @@ $messages['gl'] = array(
 	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demostración]).
 Servizos de mapa dispoñibles: $1',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 non é unha distancia válida.',
+	'semanticmaps-kml-link' => 'Ollar o ficheiro KML',
 	'semanticmaps_lookupcoordinates' => 'Ver as coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza o enderezo aquí',
 	'semanticmaps_notfound' => 'non se atopou',
@@ -401,6 +404,7 @@ Servizos de mapa dispoñibles: $1',
 $messages['gsw'] = array(
 	'semanticmaps_desc' => 'Ergänzt e Megligkeit zum Aaluege un Bearbeite vu Koordinate, wu im Ramme vu dr Erwyterig „Semantisch MediaWiki“ gspycheret wore sin. Unterstitzti Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Dokumäntation]. [http://mapping.referata.com/wiki/Semantic_Maps_examples Demo]',
 	'semanticmaps-unrecognizeddistance' => 'Dr Wert $1 isch kei giltigi Dischtanz.',
+	'semanticmaps-kml-link' => 'KML-Datei aaluege',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticmaps_enteraddresshere' => 'Doo Adräss yygee',
 	'semanticmaps_notfound' => 'nit gfunde',
