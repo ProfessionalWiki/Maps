@@ -138,7 +138,7 @@ $messages['be-tarask'] = array(
 	'semanticmaps_name' => 'Сэмантычныя мапы',
 	'semanticmaps_desc' => 'Забясьпечвае магчымасьць прагляду і рэдагаваньня зьвестак пра каардынаты, якія захоўваюцца з дапамогай пашырэньня Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples дэманстрацыя]). Даступныя сэрвісы мапаў: $1',
 	'semanticmaps-unrecognizeddistance' => 'Значэньне $1 — няслушная адлегласьць.',
-	'semanticmaps-kml-link' => 'Праглядзець KML-файл',
+	'semanticmaps-kml-link' => 'Паказаць KML-файл',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
 	'semanticmaps_notfound' => 'ня знойдзена',
@@ -776,6 +776,7 @@ $messages['pl'] = array(
 	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Dostępne serwisy mapowe: $1',
 	'semanticmaps-unrecognizeddistance' => 'Wartość $1 nie jest poprawną odległością.',
+	'semanticmaps-kml-link' => 'Wyświetla plik KML',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
 	'semanticmaps_notfound' => 'nie odnaleziono',
