@@ -2220,6 +2220,7 @@ $messages['sr-el'] = array(
 /** Swedish (Svenska)
  * @author Ainali
  * @author Dafer45
+ * @author Fader
  * @author Fluff
  * @author Per
  */
@@ -2229,6 +2230,7 @@ Tillgängliga karttjänster: $1',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
 	'maps-markers' => 'Markörer',
+	'maps-layer-errors' => 'Fel',
 	'validation-error-invalid-location' => 'Parameter $1 måste vara en giltig plats.',
 	'validation-error-invalid-locations' => 'Parameter $1 måste vara en eller flera giltiga platser.',
 	'validation-error-invalid-width' => 'Parameter $1 måste vara en giltig bredd.',
