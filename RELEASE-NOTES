@@ -8,9 +8,11 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 0.7.3 ===
-(2010-11-xx)
+(2010-11-30)
 
 * Some internal improvements and translation updates.
+
+* Fixed issue occuring when Maps is the only extension adding custom namespaces.
 
 === Maps 0.7.2 ===
 (2010-10-28)
