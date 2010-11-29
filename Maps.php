@@ -168,6 +168,10 @@ function efMapsSetup() {
 		wfLoadExtensionMessages( 'Maps' );
 	}
 
+	if ( is_null( $wgExtraNamespaces ) ) {
+		$wgExtraNamespaces = array();
+	}
+	
 	$wgExtraNamespaces += array(
 		Maps_NS_LAYER => 'Layer',
 		Maps_NS_LAYER_TALK => 'Layer talk'
