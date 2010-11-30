@@ -164,6 +164,7 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'semanticmaps_desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). Servijoù kartennoù hegerz : $1',
 	'semanticmaps-unrecognizeddistance' => "An talvoud $1 n'eo ket un hed reizh anezhañ.",
+	'semanticmaps-kml-link' => 'Gwelet ar restr KML',
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
@@ -705,6 +706,7 @@ $messages['nl'] = array(
 	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Beschikbare kaartdiensten: $1',
 	'semanticmaps-unrecognizeddistance' => 'De waarde "$1" is geen geldige afstand.',
+	'semanticmaps-kml-link' => 'KML-bestand bekijken',
 	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
 	'semanticmaps_enteraddresshere' => 'Voer hier het adres in',
 	'semanticmaps_notfound' => 'niet gevonden',
