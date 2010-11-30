@@ -231,8 +231,7 @@ class SMQueryHandler {
 			}
 		} // Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here
 		elseif ( $this->icon != '' ) {
-			$icon_image_page = new ImagePage( Title::newFromText( $this->icon ) );
-			$icon = $icon_image_page->getDisplayedFile()->getURL();
+			$icon = MapsMapper::getImageUrl( $this->icon );
 		}
 
 		return $icon;
