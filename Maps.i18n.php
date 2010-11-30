@@ -716,6 +716,19 @@ $messages['eu'] = array(
 	'maps_coordinates_missing' => 'Ez dago koordenaturik maparentzat.',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'maps_map' => 'نقشه',
+	'maps-abb-north' => 'شمال',
+	'maps-abb-east' => 'شرق',
+	'maps-abb-south' => 'جنوب',
+	'maps-abb-west' => 'غرب',
+	'maps-latitude' => 'عرض جغرافیایی:',
+	'maps-longitude' => 'طول جغرافیایی:',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
