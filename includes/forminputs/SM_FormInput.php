@@ -108,22 +108,7 @@ abstract class SMFormInput implements iMappingFeature {
 		// TODO
 		$parameterInfo = array_merge_recursive( $parameterInfo, $this->getSpecificParameterInfo() );
 		
-		$validator = new Validator( 'form' ); // TODO
-		
-		$paramsToFilter = array(
-			'service_name',
-			'part_of_multiple',
-			'possible_values',
-			'is_list',
-			'semantic_property',
-			'value_labels'
-		);
-		
-		foreach ( $paramsToFilter as $paramName ) {
-			if ( array_key_exists( $paramName, $mapProperties ) ) {
-				unset( $mapProperties[$paramName] );
-			}
-		}	
+		$validator = new Validator( 'form', false ); // TODO
 		
 		$validator->setParameters( $mapProperties, $parameterInfo );
 		
@@ -396,8 +381,6 @@ EOT
 				new CriterionIsLocation(),
 			)			
 		);
-		
-		//$params['foobar'] = new Parameter('foobar');	
 		
 		// TODO
 		//$params['geoservice']->setDefault( $egMapsDefaultGeoService );

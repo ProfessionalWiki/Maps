@@ -21,6 +21,13 @@ class SMQueryHandler {
 	
 	protected $locations = false;
 	
+	/**
+	 * @since 0.7.4
+	 * 
+	 * @var array
+	 */
+	protected $params;
+	
 	// TODO: add system to properly handle query parameters
 	public $template = false;
 	public $icon = '';
@@ -28,6 +35,8 @@ class SMQueryHandler {
 	public $titleLink = self::LINK_ABSOLUTE;
 	public $propNameLink = self::LINK_NONE;
 	public $propValueLink = self::LINK_NONE;
+	
+	public $titleLinkSeperate = true;
 	
 	/**
 	 * Constructor.
@@ -37,9 +46,16 @@ class SMQueryHandler {
 	 * @param SMWQueryResult $queryResult
 	 * @param integer $outputmode
 	 */
-	public function __construct( SMWQueryResult $queryResult, $outputmode ) {
+	public function __construct( SMWQueryResult $queryResult, $outputmode, array $params ) {
 		$this->queryResult = $queryResult;
 		$this->outputmode = $outputmode;
+		$this->params = $params;
+		
+		$linkType = $params['linkabsolute'] ? self::LINK_ABSOLUTE : self::LINK_RELATIVE;
+		
+		$this->titleLink = $params['linkpage'] ? $linkType : self::LINK_NONE;
+		$this->propNameLink = $params['linkpropnames'] ? $linkType : self::LINK_NONE;
+		$this->propValueLink = $params['linkpropvalues'] ? $linkType : self::LINK_NONE;
 	}
 	
 	/**
@@ -77,7 +93,7 @@ class SMQueryHandler {
 	/**
 	 * Returns the locations found in the provided result row.
 	 * 
-	 * TODO: split up this method if possible
+	 * TODO: split up this method if possible (!)
 	 * TODO: fix template handling
 	 * TODO: clean up link type handling
 	 * 
@@ -109,7 +125,7 @@ class SMQueryHandler {
 			// Loop throught all the parts of the field value.
 			while ( ( /* SMWDataValue */ $object = $resultArray->getNextObject() ) !== false ) {		
 				if ( $object->getTypeID() == '_wpg' && $i == 0 ) {
-					if ( $this->titleLink == self::LINK_ABSOLUTE ) {
+					if ( !$this->titleLinkSeperate && $this->titleLink == self::LINK_ABSOLUTE ) {
 						$title = Html::element(
 							'a',
 							array( 'href' => $object->getTitle()->getFullUrl() ),
@@ -117,24 +133,77 @@ class SMQueryHandler {
 						);
 					}
 					else {
-						$title = $object->getLongText( $this->outputmode, $this->titleLink == self::LINK_RELATIVE ? $skin : NULL );
+						$title = $object->getLongText(
+							$this->outputmode,
+							( $this->titleLink == self::LINK_RELATIVE && !$this->titleLinkSeperate ) ? $skin : NULL
+						);
 					}
+					
+					if ( $this->titleLinkSeperate && $this->titleLink != self::LINK_NONE ) {
+						$text .= Html::element(
+							'a',
+							array( 'href' => $object->getTitle()->getFullUrl() ),
+							str_replace( '$1', $object->getTitle()->getText(), $this->params['pagelinktext'] ) 
+						) . '<br />';
+					}					
 				}
 				
 				if ( $object->getTypeID() != '_geo' && $i != 0 ) {
-					/*
-					 if ( $this->template ) {
-						if ( $object instanceof SMWWikiPageValue ) {
-							$label[] = $object->getTitle()->getPrefixedText();
-						} else {
-							$label[] = $object->getLongText( $this->outputmode, $this->makeLinks ? $skin : NULL );
-						}
+					switch ( $this->propNameLink ) {
+						case self::LINK_NONE:
+							$propertyName = $printRequest->getHTMLText( NULL );
+							break;
+						case self::LINK_RELATIVE:
+							$propertyName = $printRequest->getHTMLText( $skin );
+							break; 
+						case self::LINK_ABSOLUTE:
+							$t = Title::newFromText( $printRequest->getHTMLText( NULL ), SMW_NS_PROPERTY );
+							
+							if ( $t->exists() ) {
+								
+								$propertyName = $propertyName = Html::element(
+									'a',
+									array( 'href' => $t->getFullUrl() ),
+									$printRequest->getHTMLText( NULL )
+								);
+							}
+							else {
+								$propertyName = $printRequest->getHTMLText( NULL );
+							}
+							break; 		
 					}
-					else { */
-						$propertyName = $printRequest->getHTMLText( $this->propNameLink == self::LINK_RELATIVE ? $skin : NULL );
-						if ( $propertyName != '' ) $propertyName .= ': ';
-						$text .= $propertyName . $object->getLongText( $this->outputmode, $this->propValueLink == self::LINK_RELATIVE ? $skin : NULL ) . '<br />';
-					//}
+					
+					if ( $propertyName != '' ) $propertyName .= ': ';
+					
+					switch ( $this->propNameLink ) {
+						case self::LINK_NONE:
+							$propertyValue = $object->getLongText( $this->outputmode, NULL );
+							break;
+						case self::LINK_RELATIVE:
+							$propertyValue = $object->getLongText( $this->outputmode, $skin );
+							break; 
+						case self::LINK_ABSOLUTE:
+							$hasPage = $object->getTypeID() == '_wpg';
+							
+							if ( $hasPage ) {
+								$t = Title::newFromText( $object->getLongText( $this->outputmode, NULL ), NS_MAIN );
+								$hasPage = $t->exists();
+							}
+							
+							if ( $hasPage ) {
+								$propertyValue = Html::element(
+									'a',
+									array( 'href' => $t->getFullUrl() ),
+									$object->getLongText( $this->outputmode, NULL )
+								);
+							}
+							else {
+								$propertyValue = $object->getLongText( $this->outputmode, NULL );
+							}
+							break; 		
+					}		
+								
+					$text .= $propertyName . $propertyValue . '<br />';
 				}
 		
 				if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
@@ -142,13 +211,6 @@ class SMQueryHandler {
 				}
 			}
 		}
-		
-		/*
-		if ( $this->template ) {
-			// New parser object to render the templates with.
-			$parser = new Parser();			
-		}
-		*/
 		
 		foreach ( $coords as $coord ) {
 			if ( count( $coord ) >= 2 ) {
@@ -161,16 +223,6 @@ class SMQueryHandler {
 				
 				if ( $lat != '' && $lon != '' ) {
 					$icon = $this->getLocationIcon( $row );
-					/*
-					if ( $this->template ) {
-						$segments = array_merge(
-							array( $this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon ),
-							$label
-						);
-						
-						$text = $parser->parse( '{{' . implode( '|', $segments ) . '}}', $wgTitle, new ParserOptions() )->getText();
-					}
-					*/
 
 					$location = new MapsLocation();
 					
@@ -188,13 +240,6 @@ class SMQueryHandler {
 		}	
 		
 		return $locations;
-	}
-	
-	/**
-	 * Get  
-	 */
-	protected function getDataValueLink() {
-		
 	}
 	
 	/**
