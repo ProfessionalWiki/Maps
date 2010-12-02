@@ -23,7 +23,7 @@ Available mapping services: $1",
 	'semanticmaps-unrecognizeddistance' => 'The value $1 is not a valid distance.',
 	'semanticmaps-kml-link' => 'View the KML file',
 	'semanticmaps-kml' => 'KML',
-	'semanticmaps-default-kml-pagelink' => 'View article $1',
+	'semanticmaps-default-kml-pagelink' => 'View page $1',
 
 	// Forms
 	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',
