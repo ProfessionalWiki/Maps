@@ -91,7 +91,7 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
  * @return true
  */
 function smfSetup() {
-	global $wgExtensionCredits, $wgLang, $wgOut, $smgScriptPath;
+	global $wgExtensionCredits, $wgLang;
 
 	// Creation of a list of internationalized service names.
 	$services = array();
