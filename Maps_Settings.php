@@ -1,7 +1,7 @@
 <?php
 /**
  * File defining the settings for the Maps extension.
- * More info can be found at http://www.mediawiki.org/wiki/Extension:Maps#Settings
+ * More info can be found at http://mapping.referata.com/wiki/Help:Configuration
  *
  *                          NOTICE:
  * Changing one of these settings can be done by copieng or cutting it,
