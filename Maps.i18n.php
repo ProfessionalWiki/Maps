@@ -1525,6 +1525,7 @@ Katrografavimo paslaugos pasiekiamos: $1',
  * @author McDutchie
  */
 $messages['mk'] = array(
+	'maps_name' => 'Карти',
 	'maps_desc' => 'Дава можност за приказ на координатни податоци во картите, и геокодирање на адреси ([http://mapping.referata.com/wiki/Maps_examples демо]).
 Картографски служби на располагање: $1',
 	'maps_map' => 'Карта',
@@ -1570,6 +1571,9 @@ $1',
 $1',
 	'maps_map_cannot_be_displayed' => 'Картата не може да се прикаже.',
 	'maps-geocoder-not-available' => 'Функцијата за геокодирање на Карти е недостапна. Вашата местоположба не може да се геокодира.',
+	'maps_googlemaps2' => 'Google Карти в.2',
+	'maps_googlemaps3' => 'Google Карти в.2',
+	'maps_yahoomaps' => 'Yahoo! Карти',
 	'maps_click_to_activate' => 'Кликнете за активирање на картата',
 	'maps_centred_on' => 'Средиште на картата во $1, $2.',
 	'maps_overlays' => 'Слоеви',
