@@ -416,6 +416,7 @@ $messages['gsw'] = array(
 	'semanticmaps_desc' => 'Ergänzt e Megligkeit zum Aaluege un Bearbeite vu Koordinate, wu im Ramme vu dr Erwyterig „Semantisch MediaWiki“ gspycheret wore sin. Unterstitzti Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Dokumäntation]. [http://mapping.referata.com/wiki/Semantic_Maps_examples Demo]',
 	'semanticmaps-unrecognizeddistance' => 'Dr Wert $1 isch kei giltigi Dischtanz.',
 	'semanticmaps-kml-link' => 'KML-Datei aaluege',
+	'semanticmaps-default-kml-pagelink' => 'Syte $1 aaluege',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticmaps_enteraddresshere' => 'Doo Adräss yygee',
 	'semanticmaps_notfound' => 'nit gfunde',
