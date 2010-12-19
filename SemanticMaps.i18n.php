@@ -886,6 +886,8 @@ $messages['pt-br'] = array(
 	'semanticmaps_desc' => 'Provê a possibilidade de ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://mapping.referata.com/wiki/Semantic_Maps_examples demonstração]).
 Serviços de mapeamento disponíveis: $1',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
+	'semanticmaps-kml-link' => 'Ver o arquivo KML',
+	'semanticmaps-default-kml-pagelink' => 'Ver a página $1',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
 	'semanticmaps_notfound' => 'Não encontrado',
