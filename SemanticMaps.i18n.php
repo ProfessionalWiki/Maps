@@ -758,6 +758,8 @@ $messages['no'] = array(
 	'semanticmaps_desc' => 'Tilbyr muligheten til å se og endre koordinatdata lagret gjennom Semantic MediaWiki-utvidelsen ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Tilgjengelige karttjenester: $1',
 	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
+	'semanticmaps-kml-link' => 'Vis KML-filen',
+	'semanticmaps-default-kml-pagelink' => 'Vis siden $1',
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressen her',
 	'semanticmaps_notfound' => 'ikke funnet',
