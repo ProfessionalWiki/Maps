@@ -28,12 +28,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Show a warning if Maps is not loaded.
 if ( ! defined( 'Maps_VERSION' ) ) {
-	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>. ';
+	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
 }
 
 // Show a warning if Semantic MediaWiki is not loaded.
 if ( ! defined( 'SMW_VERSION' ) ) {
-	echo '<b>Warning:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.';
+	die( '<b>Error:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
 }
 
 // Only initialize the extension when all dependencies are present.
