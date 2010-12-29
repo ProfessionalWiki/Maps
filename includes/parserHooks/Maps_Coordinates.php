@@ -79,7 +79,7 @@ class MapsCoordinates extends ParserHook {
 				new CriterionInArray( $egMapsAvailableCoordNotations ),
 			)			
 		);	
-		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
+		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
 		
 		$params['directional'] = new Parameter(
 			'directional',
