@@ -685,7 +685,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'semanticmaps_name' => 'Семантички карти',
-	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку проширувањето Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples демо]).
+	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку додатокот Семантички МедијаВики ([http://mapping.referata.com/wiki/Semantic_Maps_examples демо]).
 Картографски служби на располагање: $1',
 	'semanticmaps-unrecognizeddistance' => 'Вредноста $1 не претставува важечко растојание.',
 	'semanticmaps-kml-link' => 'Преглед на KML-податотеката',
