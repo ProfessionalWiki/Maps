@@ -68,6 +68,7 @@ class MapsGeodistance extends ParserHook {
 			)			
 		);
 		$params['location1']->addDependencies( 'mappingservice', 'geoservice' );
+		$params['location1']->setDescription( wfMsg( 'maps-geodistance-par-location1' ) );
 		
 		$params['location2'] = new Parameter(
 			'location2',
@@ -79,6 +80,7 @@ class MapsGeodistance extends ParserHook {
 			)			
 		);
 		$params['location2']->addDependencies( 'mappingservice', 'geoservice' );			
+		$params['location2']->setDescription( wfMsg( 'maps-geodistance-par-location2' ) );
 		
 		$params['unit'] = new Parameter(
 			'unit',
@@ -90,12 +92,14 @@ class MapsGeodistance extends ParserHook {
 			)
 		);
 		$params['unit']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-
+		$params['unit']->setDescription( wfMsg( 'maps-geodistance-par-unit' ) );
+		
 		$params['decimals'] = new Parameter(
 			'decimals',
 			Parameter::TYPE_INTEGER,
 			$egMapsDistanceDecimals
 		);			
+		$params['decimals']->setDescription( wfMsg( 'maps-geodistance-par-decimals' ) );
 		
 		$params['mappingservice'] = new Parameter(
 			'mappingservice', 
@@ -107,6 +111,7 @@ class MapsGeodistance extends ParserHook {
 			)
 		);
 		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
+		$params['mappingservice']->setDescription( wfMsg( 'maps-geodistance-par-mappingservice' ) );
 		
 		$params['geoservice'] = new Parameter(
 			'geoservice', 
@@ -118,6 +123,7 @@ class MapsGeodistance extends ParserHook {
 			)
 		);
 		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
+		$params['geoservice']->setDescription( wfMsg( 'maps-geodistance-par-geoservice' ) );
 		
 		return $params;
 	}

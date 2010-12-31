@@ -67,6 +67,27 @@ Available mapping services: $1",
 This will maps allow to override the default value of the service parameter by the one that's optimal for the mapping service.
 (Example: In case of Google Maps, the Google geocoder will be used.)",
 
+	// Geocode parser hook
+	'maps-geocode-par-location' => 'The address you want to geocode.',
+	'maps-geocode-par-mappingservice' => 'The geocoding service you want to use. See the available geocoding services.',
+	'maps-geocode-par-geoservice' => 'This parameter allows you to indicate you are using this geocoding request in combination with a specific mapping service.
+Each mapping service can have overrides over the default value for the geocoding service.
+This is for legal considerations, since you can not use the Google Geocoding service except together with Google Maps. Settings this parameter and not the service one will ensure you are not using an invalid combination.',
+	'maps-geocode-par-allowcoordinates' => 'Allows disabling the support for coordinates in this function. Must be either yes or no.
+When no, every value will be geocoded, even valid coordinates. ',
+	'maps-geocode-par-format' => 'The format for the resulting coordinates.',
+	'maps-geocode-par-directional' => 'Indicates if the coordinates should be outputted directional or not.',
+
+	// Geodistance parser hook
+	'maps-geodistance-par-location1' => 'The first point in the set to calculate the distance between.',
+	'maps-geodistance-par-location2' => 'The second point in the set to calculate the distance between.',
+	'maps-geodistance-par-unit' => 'The unit the output the distance in.',
+	'maps-geodistance-par-decimals' => 'The maximum amount of fractional digits to use in the resulting value.',
+	'maps-geodistance-par-mappingservice' => 'The geocoding service to use to geocode any addresses.',
+	'maps-geodistance-par-geoservice' => 'The mapping service this is used together with.
+This can affect the default geocoding service value.',
+
+
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
