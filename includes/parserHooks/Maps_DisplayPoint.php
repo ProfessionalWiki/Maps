@@ -59,15 +59,18 @@ class MapsDisplayPoint extends ParserHook {
 		
 		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_point'] );
 		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
+		$params['mappingservice']->setDescription( wfMsg( 'maps-displaypoints-par-mappingservice' ) );
 		
 		$params['zoom']->addDependencies( 'coordinates', 'mappingservice' );
 		$params['zoom']->addManipulations( new MapsParamZoom() );
+		$params['zoom']->setDescription( wfMsg( 'maps-displaypoints-par-zoom' ) );
 		
 		$params['coordinates'] = new ListParameter( 'coordinates', $type === ParserHook::TYPE_FUNCTION ? ';' : "\n" );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
 		$params['coordinates']->addManipulations( new MapsParamCoordSet( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );		
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
+		$params['coordinates']->setDescription( wfMsg( 'maps-displaypoints-par-coordinates' ) );
 		
 		$params['centre'] = new Parameter(
 			'centre',
@@ -78,12 +81,14 @@ class MapsDisplayPoint extends ParserHook {
 				new CriterionIsLocation(),
 			)			
 		);
+		$params['centre']->setDescription( wfMsg( 'maps-displaypoints-par-centre' ) );
 		
 		$params['title'] = new Parameter(
 			'title',
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
+		$params['title']->setDescription( wfMsg( 'maps-displaypoints-par-title' ) );
 		
 		$params['label'] = new Parameter(
 			'label',
@@ -91,6 +96,7 @@ class MapsDisplayPoint extends ParserHook {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
+		$params['label']->setDescription( wfMsg( 'maps-displaypoints-par-label' ) );
 		
 		$params['icon'] = new Parameter(
 			'icon',
@@ -101,6 +107,7 @@ class MapsDisplayPoint extends ParserHook {
 				New CriterionNotEmpty()
 			)
 		);	
+		$params['icon']->setDescription( wfMsg( 'maps-displaypoints-par-icon' ) );
 		
 		return $params;
 	}

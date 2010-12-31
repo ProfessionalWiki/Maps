@@ -87,6 +87,22 @@ When no, every value will be geocoded, even valid coordinates. ',
 	'maps-geodistance-par-geoservice' => 'The mapping service this is used together with.
 This can affect the default geocoding service value.',
 
+	// display_map parser hook
+	'maps-displaymap-par-mappingservice' => 'Allows to set the mapping service that will be used to generate the map.',
+	'maps-displaymap-par-coordinates' => 'The location the map will initially be centred on.',
+
+	// display_points parser hook
+	'maps-displaypoints-par-zoom' => 'Allows to set the zoom level of the map.
+When not provided and multiple markers are present on the map, the best fitting zoom will be taken, not the configurable default.',
+	'maps-displaypoints-par-mappingservice' => 'Allows to set the mapping service that will be used to generate the map.',
+	'maps-displaypoints-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
+	'maps-displaypoints-par-centre' => "Allows to set the coordinates of the map's centre for display_point(s).
+Accepts both addresses and coordinates.
+When this property is not provided, the map will centre itself on the provided marker, or between the provided markers.",
+	'maps-displaypoints-par-title' => 'Allows to set text that will be displayed in the pop-ups of all markers that do not have a specific title.
+When used together with label, the title will be bold and have a line under it.',
+	'maps-displaypoints-par-label' => 'Allows to set text that will be displayed in the pop-ups of all markers that do not have a specific label.',
+	'maps-displaypoints-par-icon' => 'Allows you to set the icon used for all markers.',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
