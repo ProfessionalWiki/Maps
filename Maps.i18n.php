@@ -36,6 +36,15 @@ Available mapping services: $1",
 	'maps-layer-of-type' => 'Layer of type $1',
 	'maps-layer-type-supported-by' => 'This layer type can {{PLURAL:$2|only be used with the $1 mapping service|be used with these mapping services: $1}}.',
 
+	// Parser function descriptions
+	'maps-coordinates-description' => 'Parser hook to format coordinates, from and to any of the supported formats.',
+	'maps-displaymap-description' => 'Display geographical maps without any wiki-defined markers on them.',
+	'maps-displaypoint-description' => 'Display geographical maps with one or more wiki-defined markers on them.',
+	'maps-distance-description' => "Convert a distance using a certain supported unit to it's equivalent using another unit.",
+	'maps-finddestination-description' => 'Find a destination given a starting point(that can be in any of the supported formats), an initial bearing and a distance.',
+	'maps-geocode-description' => 'Enables the geocoding of addresses, in other words, turning human readable locations into sets of coordinates. There is support for several geocoding services, which should not be confused with mapping services.',
+	'maps-geodistance-description' => 'Calculate the geographical distance between two points, from and to any of the supported formats.',
+
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',

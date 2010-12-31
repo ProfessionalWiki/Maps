@@ -170,5 +170,14 @@ class MapsFinddestination extends ParserHook {
 			
 		return $output;
 	}
+
+	/**
+	 * @see ParserHook::getDescription()
+	 * 
+	 * @since 0.7.4
+	 */
+	public function getDescription() {
+		return wfMsg( 'maps-finddestination-description' );
+	}	
 	
 }
