@@ -60,6 +60,7 @@ class MapsDistance extends ParserHook {
 		
 		$params['distance'] = new Parameter( 'distance' );
 		$params['distance']->addCriteria( new CriterionIsDistance() );
+		$params['distance']->setDescription( wfMsg( 'maps-distance-par-distance' ) );
 		
 		$params['unit'] = new Parameter(
 			'unit',
@@ -69,13 +70,15 @@ class MapsDistance extends ParserHook {
 			array(
 				new CriterionInArray( MapsDistanceParser::getUnits() ),
 			)
-		);	
+		);
+		$params['unit']->setDescription( wfMsg( 'maps-distance-par-unit' ) );
 
 		$params['decimals'] = new Parameter(
 			'decimals',
 			Parameter::TYPE_INTEGER,
 			$egMapsDistanceDecimals
-		);		
+		);
+		$params['decimals']->setDescription( wfMsg( 'maps-distance-par-decimals' ) );
 		
 		return $params;
 	}

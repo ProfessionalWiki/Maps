@@ -69,6 +69,7 @@ class MapsCoordinates extends ParserHook {
 				new CriterionIsLocation(),
 			)	
 		);
+		$params['location']->setDescription( wfMsg( 'maps-coordinates-par-location' ) );
 		
 		$params['format'] = new Parameter(
 			'format',
@@ -80,12 +81,14 @@ class MapsCoordinates extends ParserHook {
 			)			
 		);	
 		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
+		$params['format']->setDescription( wfMsg( 'maps-coordinates-par-format' ) );
 		
 		$params['directional'] = new Parameter(
 			'directional',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsCoordinateDirectional			
-		);		
+		);
+		$params['directional']->setDescription( wfMsg( 'maps-coordinates-par-directional' ) );
 		
 		return $params;
 	}

@@ -45,6 +45,16 @@ Available mapping services: $1",
 	'maps-geocode-description' => 'Enables the geocoding of addresses, in other words, turning human readable locations into sets of coordinates. There is support for several geocoding services, which should not be confused with mapping services.',
 	'maps-geodistance-description' => 'Calculate the geographical distance between two points, from and to any of the supported formats.',
 
+	// Coordinates parser hook
+	'maps-coordinates-par-location' => 'The coordinates you want to format.',
+	'maps-coordinates-par-format' => 'The target format for the coordinates.',
+	'maps-coordinates-par-directional' => 'Indicates if the coordinates should be outputted directional or not.',
+
+	// Distance parser hook
+	'maps-distance-par-distance' => "The distance to convert to it's equivalent with a specified unit.",
+	'maps-distance-par-decimals' => 'The maximum amount of fractional digits to use in the resulting value.',
+	'maps-distance-par-unit' => 'The unit the output the distance in.',
+
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
