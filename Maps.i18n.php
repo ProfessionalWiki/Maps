@@ -55,6 +55,18 @@ Available mapping services: $1",
 	'maps-distance-par-decimals' => 'The maximum amount of fractional digits to use in the resulting value.',
 	'maps-distance-par-unit' => 'The unit the output the distance in.',
 
+	// Finddestination paser hook
+	'maps-finddestination-par-location' => 'The initial location.',
+	'maps-finddestination-par-bearing' => 'The initial bearing.',
+	'maps-finddestination-par-distance' => 'The distance to travel.',
+	'maps-finddestination-par-format' => 'The format in which to output the destination.',
+	'maps-finddestination-par-directional' => 'Indicates if the format of the destination should be directional or not.',
+	'maps-finddestination-par-allowcoordinates' => 'Indicates if coordinates should be allowed. If set to no, only addresses will be accepted.',
+	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it's an address.",
+	'maps-finddestination-par-mappingservice' => "Parameter you can use to indicate the mapping service you are using this function with.
+This will maps allow to override the default value of the service parameter by the one that's optimal for the mapping service.
+(Example: In case of Google Maps, the Google geocoder will be used.)",
+
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
