@@ -667,6 +667,8 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'semanticmaps-unrecognizeddistance' => 'De Wäert $1 ass keng valabel Distanz.',
+	'semanticmaps-kml-link' => 'KML-Fichier weisen',
+	'semanticmaps-default-kml-pagelink' => 'Säit $1 weisen',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticmaps_enteraddresshere' => 'Adress hei aginn',
 	'semanticmaps_notfound' => 'net fonnt',
