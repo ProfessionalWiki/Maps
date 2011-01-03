@@ -313,6 +313,10 @@ $messages['be-tarask'] = array(
 	'validation-error-invalid-layers' => 'Парамэтар $1 мусіць быць адным ці болей слушнымі слаямі.',
 	'maps-layer-of-type' => 'Слой тыпу $1',
 	'maps-layer-type-supported-by' => 'Гэты тып слою можа быць выкарыстаны толькі з {{PLURAL:$2|сэрвісам мапаў $1|сэрвісамі мапаў: $1}}.',
+	'maps-displaymap-description' => 'Паказвае геаграфічныя мапы без аніякіх вікі-пазнакаў на іх.',
+	'maps-displaypoint-description' => 'Паказвае геаграфічныя мапы з адной ці болей вікі-пазнакамі на іх.',
+	'maps-geocode-description' => 'Уключае геаграфічную кадыроўку адрасу, іншымі словамі, пераўтварае чытальнае для чалавека знаходжаньне ў набор каардынатаў. Тут ёсьць падтрымка для некалькіх сэрвісаў геаграфічнай кадыроўкі, якія не павінны быць блытаныя з сэрвісамі мапаў.',
+	'maps-geodistance-description' => 'Падлічвае геаграфічную адлегласьць паміж двума пунктамі, з і для любога з фарматаў, якія падтрымліваюцца.',
 	'validation-error-invalid-location' => 'Парамэтар $1 мусіць быць слушным знаходжаньнем.',
 	'validation-error-invalid-locations' => 'Парамэтар $1 мусіць быць адным ці болей слушнымі знаходжаньнямі.',
 	'validation-error-invalid-width' => 'Парамэтар $1 мусіць быць слушнай шырынёй.',
@@ -581,8 +585,14 @@ Verfügbare Kartografiedienste: $1',
 	'maps-finddestination-par-directional' => 'Gibt an, ob das Ausgabeformat des Ziels eine Richtungsangabe haben soll oder nicht.',
 	'maps-finddestination-par-allowcoordinates' => 'Gibt an, ob die Angabe von Koordinaten zulässig ist. Sofern deaktiviert, ist lediglich die Angabe von Adressen möglich.',
 	'maps-finddestination-par-geoservice' => 'Der Kartografiedienst der, für den Fall dass es sich um eine Adresse handelt, zum Geokodieren des Werts verwendet werden soll.',
+	'maps-finddestination-par-mappingservice' => 'Parameter mit denen der Kartografiedienst angegeben werden kann, der zusammen mit dieser Funktion genutzt wird.
+Dadurch können die Standardwerte der Funktion durch die für den Kartografiedienst optimalen überschrieben werden.
+(Beispiel: Im Fall von Google Maps wird dann der Google Geocoder genutzt.)',
 	'maps-geocode-par-location' => 'Die Adresse, die geokodiert werden soll.',
 	'maps-geocode-par-mappingservice' => 'Der Kartografiedienst der genutzt werden soll.',
+	'maps-geocode-par-geoservice' => 'Dieser Parameter ermöglicht es, einen bestimmten Kartografiedienst für Geokodiernungsanfragen anzugeben.
+Jeder Kartografiedienst kann über eigenständige Standardwerte für die Geokodierung verfügen.
+Diese Einstellung hat rechtliche Gründe, da man bspw. den Google Geokodierungsdienst nur zusammen mit Google Maps nutzen kann. Diesen Parameter anstatt dem zum Geokodierungsdienst einzustellen, verhindert eine unzulässige Kombination bei der Nutzung der Dienste.',
 	'maps-geocode-par-allowcoordinates' => 'Ermöglicht die Deaktivierung der Unterstützung von Koordinaten. Entweder Ja oder Nein angeben.
 Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordinaten.',
 	'maps-geocode-par-format' => 'Das Ausgabeformat für die Koordinaten.',
@@ -596,8 +606,13 @@ Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordi
 Dies kann Auswirkungen auf die Standardwerte des Geokodierdiensts haben.',
 	'maps-displaymap-par-mappingservice' => 'Ermöglicht die Festlegung des Kartografiediensts, der zur Generierung der Karte genutzt werden soll.',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll.',
+	'maps-displaypoints-par-zoom' => 'Ermöglicht die Angabe des Detaillierungsgrades (Zoom) der Karte.
+Sofern keiner angegeben wurde und mehrerer Markierungen auf der Karte vorhanden sind, wird der für deren gemeinsame Darstellung passende Zoom verwendet und nicht der Standardwert des Kartografiediensts.',
 	'maps-displaypoints-par-mappingservice' => 'Ermöglicht die Festlegung des Kartografiediensts, der zur Generierung der Karte genutzt werden soll.',
 	'maps-displaypoints-par-coordinates' => 'Einer oder mehrere Standorte, die auf der Karte angezeigt werden sollen. Sie werden mit einer Markierung versehen sein.',
+	'maps-displaypoints-par-centre' => 'Ermöglicht die Angabe der Koordinaten, die für die Zentrierung der Karte verwendet werden soll.
+Sowohl die direkte Angabe von Koordinaten wie auch die indirekte Angabe einer Adresse ist möglich.
+Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markierung, bzw. zwischen den darzustellenden Markierungen zentrieren.',
 	'maps-displaypoints-par-title' => 'Ermöglicht das Festlegen des Texts, der in den Pop-up-Fenstern der Markierungen angezeigt werden soll, die über keinen eigenständigen Titel verfügen. Sofern dieser zusammen mit einer Beschriftung genutzt wird, wird der Titel in Fettschrift und unterstrichen angezeigt.',
 	'maps-displaypoints-par-label' => 'Ermöglicht das Festlegen des Texts, der in den Pop-up-Fenstern der Markierungen angezeigt werden soll, die über keine eigenständige Beschriftung verfügen.',
 	'maps-displaypoints-par-icon' => 'Ermöglicht die Festlegung des Symbols, das für alle Markierungen genutzt werden soll.',
