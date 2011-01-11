@@ -63,7 +63,7 @@ Available mapping services: $1",
 	'maps-finddestination-par-directional' => 'Indicates if the format of the destination should be directional or not.',
 	'maps-finddestination-par-allowcoordinates' => 'Indicates if coordinates should be allowed. If set to no, only addresses will be accepted.',
 	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it's an address.",
-	'maps-finddestination-par-mappingservice' => "Parameter you can use to indicate the mapping service you are using this function with.
+	'maps-finddestination-par-mappingservice' => "Parameter to indicate the mapping service to use with this function.
 This will maps allow to override the default value of the service parameter by the one that's optimal for the mapping service.
 (Example: In case of Google Maps, the Google geocoder will be used.)",
 
