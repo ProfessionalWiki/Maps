@@ -50,8 +50,8 @@ Available mapping services: $1",
 	'maps-coordinates-par-directional' => 'Indicates if the coordinates should be outputted directional or not.',
 
 	// Distance parser hook
-	'maps-distance-par-distance' => "The distance to convert to it's equivalent with a specified unit.",
-	'maps-distance-par-decimals' => 'The maximum amount of fractional digits to use in the resulting value.',
+	'maps-distance-par-distance' => "The distance to convert to its equivalent with a specified unit.",
+	'maps-distance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
 	'maps-distance-par-unit' => 'The unit the output the distance in.',
 
 	// Finddestination paser hook
@@ -61,7 +61,7 @@ Available mapping services: $1",
 	'maps-finddestination-par-format' => 'The format in which to output the destination.',
 	'maps-finddestination-par-directional' => 'Indicates if the format of the destination should be directional or not.',
 	'maps-finddestination-par-allowcoordinates' => 'Indicates if coordinates should be allowed. If set to no, only addresses will be accepted.',
-	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it's an address.",
+	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it is an address.",
 	'maps-finddestination-par-mappingservice' => "Parameter to indicate the mapping service to use with this function.
 This will maps allow to override the default value of the service parameter by the one that's optimal for the mapping service.
 (Example: In case of Google Maps, the Google geocoder will be used.)",
@@ -81,7 +81,7 @@ When no, every value will be geocoded, even valid coordinates.',
 	'maps-geodistance-par-location1' => 'The first point in the set to calculate the distance between.',
 	'maps-geodistance-par-location2' => 'The second point in the set to calculate the distance between.',
 	'maps-geodistance-par-unit' => 'The unit the output the distance in.',
-	'maps-geodistance-par-decimals' => 'The maximum amount of fractional digits to use in the resulting value.',
+	'maps-geodistance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
 	'maps-geodistance-par-mappingservice' => 'The geocoding service to use to geocode any addresses.',
 	'maps-geodistance-par-geoservice' => 'The mapping service this is used together with.
 This can affect the default geocoding service value.',
