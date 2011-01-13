@@ -215,9 +215,13 @@ Dostupne usluge mapa: $1',
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Toniher
  */
 $messages['ca'] = array(
+	'semanticmaps_enteraddresshere' => 'Introduïu una adreça a continuació',
 	'semanticmaps_notfound' => "no s'ha trobat",
+	'semanticmaps_paramdesc_zoom' => 'El nivell de zoom del mapa',
+	'semanticmaps_paramdesc_layers' => 'Les capes disponibles al mapa',
 );
 
 /** German (Deutsch)
