@@ -71,7 +71,8 @@ This will maps allow to override the default value of the service parameter by t
 	'maps-geocode-par-mappingservice' => 'The geocoding service you want to use. See the available geocoding services.',
 	'maps-geocode-par-geoservice' => 'This parameter allows you to indicate you are using this geocoding request in combination with a specific mapping service.
 Each mapping service can have overrides over the default value for the geocoding service.
-This is for legal considerations, since you can not use the Google Geocoding service except together with Google Maps. Settings this parameter and not the service one will ensure you are not using an invalid combination.',
+This is for legal considerations, since you can not use the Google Geocoding service except together with Google Maps.
+Setting this parameter and not the parameter for the service, will ensure you are not using an invalid combination.',
 	'maps-geocode-par-allowcoordinates' => 'Allows disabling the support for coordinates in this function. Must be either yes or no.
 When no, every value will be geocoded, even valid coordinates.',
 	'maps-geocode-par-format' => 'The format for the resulting coordinates.',
