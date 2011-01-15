@@ -1988,6 +1988,7 @@ Beschikbare kaartdiensten: $1',
 	'maps-coordinates-par-location' => 'De op te maken coördinaten.',
 	'maps-coordinates-par-format' => 'Gewenste notatie voor de coördinaten.',
 	'maps-coordinates-par-directional' => 'Geeft aan of de coördinaten wel of niet directioneel uitgestuurd moeten worden.',
+	'maps-distance-par-distance' => 'De afstand om te converteren naar haar equivalent in een aangegeven eenheid.',
 	'maps-distance-par-decimals' => 'Het maximale aantal te gebruiken decimalen in de resultaatwaarde.',
 	'maps-distance-par-unit' => 'De eenheid waarin de afstand weergegeven moet worden.',
 	'maps-finddestination-par-location' => 'De initiële locatie.',
@@ -1997,8 +1998,15 @@ Beschikbare kaartdiensten: $1',
 	'maps-finddestination-par-directional' => 'Geeft aan of de notatie van de bestemming directioneel moet zijn of niet.',
 	'maps-finddestination-par-allowcoordinates' => 'Geeft aan of coördinaten gebruikt mogen worden. Als deze waarde op "nee" is ingesteld, zijn alleen adressen toegestaan.',
 	'maps-finddestination-par-geoservice' => 'De te gebruiken geocoderingsdienst in het geval de waarde een adres is.',
+	'maps-finddestination-par-mappingservice' => 'Parameter om aan te geven welke kaartdienst bij deze functie gebruikt moet worden.
+Dit maakt het mogelijk de standaard waarde van de dienstparameter te overschrijven met een waarde die optimaal is voor de kaartdienst.
+Voorbeeld: in het geval van Google Maps, wordt de geocoderingsdienst van Google gebruikt.',
 	'maps-geocode-par-location' => 'Het te geocoderen adres.',
 	'maps-geocode-par-mappingservice' => 'De te gebruiken geocoderingsdienst. Alleen beschikbare geocoderingsdiensten zijn te gebruiken.',
+	'maps-geocode-par-geoservice' => 'Parameter om aan te geven welke kaartdienst bij een geocoderingsverzoek gebruikt moet worden.
+Voor iedere kaartdienst kan de standaard waarde voor de geocoderingsdienst overschreven worden.
+Hieraan liggen juridische argumenten ten grondslag omdat het niet mogelijk is gebruik te maken van Google Geocoding tenzij dit in combinatie met Google Maps wordt gedaan.
+Als deze parameter wordt ingesteld, en niet die voor de dienst, dan is het zeker dat er geen ongeldige combinatie van diensten wordt gebruikt.',
 	'maps-geocode-par-allowcoordinates' => 'Maakt het mogelijk de ondersteuning voor coördinaten in deze functie uit te schakelen. De waarde moet "ja" of "nee" zijn.
 Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coördinaten zijn.',
 	'maps-geocode-par-format' => 'De notatie voor de resulterende coördinaten.',
