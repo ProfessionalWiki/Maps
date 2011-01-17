@@ -354,6 +354,8 @@ $messages['be-tarask'] = array(
 Гэта ўплывае на значэньне сэрвісу геаграфічнай кадыроўкі па змоўчваньні.',
 	'maps-displaymap-par-mappingservice' => 'Дазваляе ўстанаўліваць сэрвіс мапаў, які будзе выкарыстоўвацца для стварэньня мапы.',
 	'maps-displaymap-par-coordinates' => 'Месцазнаходжаньне, на якім мапа будзе цэнтравацца.',
+	'maps-displaypoints-par-zoom' => 'Дазваляе зьмяняць павелічэньне мапы.
+Калі гэта немагчыма, ці на мапе ёсьць некалькі маркераў, замест пазначанага ў наладах будзе выбранае найбольш слушнае павелічэньне.',
 	'maps-displaypoints-par-mappingservice' => 'Дазваляе ўстанаўліваць сэрвіс мапаў, які будзе выкарыстоўвацца для стварэньня мапы.',
 	'maps-displaypoints-par-coordinates' => 'Адно ці болей месцазнаходжаньняў для паказу на мапе. Яны будуць паказаныя маркерамі.',
 	'maps-displaypoints-par-centre' => 'Дазваляе ўстанаўліваць каардынаты цэнтру мапы для display_point(s).
@@ -2899,16 +2901,40 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Mark85296341
  */
 $messages['zh-hant'] = array(
 	'maps_map' => '地圖',
 	'maps-loading-map' => '載入中...',
+	'maps-markers' => '標記',
+	'maps-others' => '其他',
+	'maps-ns-layer' => '圖層',
+	'maps-layer-property' => '屬性',
+	'maps-layer-errors' => '錯誤',
+	'maps-finddestination-par-location' => '初始位置。',
+	'maps-finddestination-par-bearing' => '最初的影響。',
+	'validation-error-invalid-location' => '參數 $1 必須是一個有效的位置。',
+	'validation-error-invalid-locations' => '參數 $1 必須有一個或多個有效的位置。',
+	'validation-error-invalid-width' => '參數 $1 必須是一個有效的寬度。',
+	'validation-error-invalid-height' => '參數 $1 必須是一個有效的高度。',
+	'validation-error-invalid-distance' => '參數 $1 必須是一個有效的距離。',
+	'validation-error-invalid-distances' => '參數 $1 必須是一個或多個有效距離。',
+	'validation-error-invalid-image' => '參數 $1 必須是一個有效的圖片。',
+	'validation-error-invalid-images' => '參數 $1 必須是一個或多個有效的圖像。',
+	'validation-error-invalid-goverlay' => '參數 $1 必須是一個有效的重疊。',
+	'validation-error-invalid-goverlays' => '參數 $1 必須是一個或多個有效重疊。',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '東',
 	'maps-abb-south' => '南',
 	'maps-abb-west' => '西',
 	'maps-latitude' => '緯度：',
 	'maps-longitude' => '經度：',
+	'maps_map_cannot_be_displayed' => '該地圖無法顯示。',
+	'maps_overlays' => '重疊',
+	'maps_photos' => '照片',
+	'maps_videos' => '影片',
+	'maps_wikipedia' => '維基百科',
+	'maps_webcams' => '網路攝影機',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬) */
