@@ -2308,6 +2308,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
+ * @author Lijealso
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -2329,6 +2330,8 @@ Serviços de cartografia disponíveis: $1',
 	'validation-error-invalid-layers' => 'O parâmetro $1 tem de ser uma ou mais camadas válidas.',
 	'maps-layer-of-type' => 'Camada de tipo $1',
 	'maps-layer-type-supported-by' => 'Este tipo de camada só pode ser usado com {{PLURAL:$2|o serviço de cartografia $1|os serviços de cartografia: $1}}.',
+	'maps-finddestination-par-location' => 'A localização inicial.',
+	'maps-finddestination-par-distance' => 'A distância a percorrer.',
 	'validation-error-invalid-location' => 'O parâmetro $1 tem de ser uma localização válida.',
 	'validation-error-invalid-locations' => 'O parâmetro $1 tem de ser uma ou mais localizações válidas.',
 	'validation-error-invalid-width' => 'O parâmetro $1 tem de ser uma largura válida.',
