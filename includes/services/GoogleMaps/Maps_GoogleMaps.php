@@ -324,14 +324,14 @@ class MapsGoogleMaps extends MapsMappingService {
 			'div',
 			array(
 				'class' => 'outer-more',
-				'id' => htmlspecialchars( "$mapName-outer-more" )
+				'id' => "$mapName-outer-more"
 			),
 			'<form action="">' .
 			Html::rawElement(
 				'div',
 				array(
 					'class' => 'more-box',
-					'id' => htmlspecialchars( "$mapName-more-box" )
+					'id' => "$mapName-more-box"
 				),
 				$overlayHtml
 			) .
