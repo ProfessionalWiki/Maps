@@ -110,7 +110,14 @@ abstract class SMFormInput implements iMappingFeature {
 		
 		$validator = new Validator( 'form', false ); // TODO
 		
-		$validator->setParameters( $mapProperties, $parameterInfo );
+		$parameters = array();
+		foreach ( $mapProperties as $param ) {
+			if ( !is_array( $param ) && !is_object( $param ) ) {
+				$parameters[] = $param;
+			}
+		}		
+		
+		$validator->setParameters( $parameters, $parameterInfo );
 		
 		$validator->validateParameters();
 		
