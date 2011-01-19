@@ -41,7 +41,7 @@ class MapsDisplayPoint extends ParserHook {
 	 * @return string
 	 */
 	protected function getName() {
-		return array( 'display_point', 'display_points' );
+		return array( 'display_point', 'display_points', 'display point', 'display points' );
 	}
 	
 	/**
