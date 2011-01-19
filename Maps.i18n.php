@@ -2016,6 +2016,14 @@ Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coörd
 	'maps-geodistance-par-location1' => 'Het eerste punt in de verzameling om de afstand tussen te berekenen.',
 	'maps-geodistance-par-location2' => 'Het tweede punt in de verzameling om de afstand tussen te berekenen.',
 	'maps-geodistance-par-unit' => 'De eenheid om de afstand in weer te geven.',
+	'maps-displaymap-par-coordinates' => 'De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.',
+	'maps-displaypoints-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
+Als deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.',
+	'maps-displaypoints-par-mappingservice' => 'Maakt het mogelijk de kaartdienst in te stellen die de kaart levert.',
+	'maps-displaypoints-par-coordinates' => 'Een of meer weer te geven locaties op de kaart. Deze worden met een marker aangegeven.',
+	'maps-displaypoints-par-centre' => 'Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).
+Kan ingesteld worden met adressen en coördinaten.
+Als deze waarde niet wordt ingesteld, wordt de kaart gecentreerd op of tussen de opgegeven marker(s).',
 	'maps-displaypoints-par-icon' => 'Maakt het mogelijk het icoon voor alle markers in te stellen.',
 	'validation-error-invalid-location' => 'Parameter $1 moet een geldige locatie zijn.',
 	'validation-error-invalid-locations' => 'Parameter $1 moet een of meer geldige locaties zijn.',
