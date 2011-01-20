@@ -2016,6 +2016,11 @@ Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coörd
 	'maps-geodistance-par-location1' => 'Het eerste punt in de verzameling om de afstand tussen te berekenen.',
 	'maps-geodistance-par-location2' => 'Het tweede punt in de verzameling om de afstand tussen te berekenen.',
 	'maps-geodistance-par-unit' => 'De eenheid om de afstand in weer te geven.',
+	'maps-geodistance-par-decimals' => 'Het maximale aantal te gebruiken decimalen in de resulterende waarde.',
+	'maps-geodistance-par-mappingservice' => 'De te gebruiken geocoderingsdienst voor adressen.',
+	'maps-geodistance-par-geoservice' => 'De kaartdienst die hierbij wordt gebruikt.
+Dit kan invloed hebben op de standaardwaarde voor de geocoderingsdienst.',
+	'maps-displaymap-par-mappingservice' => 'Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.',
 	'maps-displaymap-par-coordinates' => 'De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.',
 	'maps-displaypoints-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
 Als deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.',
