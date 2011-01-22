@@ -130,7 +130,7 @@ $messages['arz'] = array(
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -983,7 +983,7 @@ Dostupné mapové služby: $1',
 	'semanticmaps_paramdesc_layers' => 'Dostupné vrstvy mapy',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -996,7 +996,7 @@ $messages['sr-ec'] = array(
 	'semanticmaps_paramdesc_centre' => 'Координате центра мапе',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica))
+/** Serbian Latin ekavian (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
