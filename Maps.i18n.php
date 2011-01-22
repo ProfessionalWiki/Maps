@@ -699,7 +699,7 @@ $1',
 	'maps_webcams' => 'Webcams',
 );
 
-/** German (formal address) (Deutsch (Sie-Form)) */
+/** German (formal address) (‪Deutsch (Sie-Form)‬) */
 $messages['de-formal'] = array(
 	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Ihr Standort kann nicht geokodiert werden.',
 );
@@ -2596,7 +2596,7 @@ Dostupné mapovacie služby: $1',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица))
+/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2613,7 +2613,7 @@ $messages['sr-ec'] = array(
 	'maps_webcams' => 'Веб-камере',
 );
 
-/** Serbian Latin ekavian (Srpski (latinica)) */
+/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavanje mape...',
@@ -2921,6 +2921,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  * @author Mark85296341
+ * @author Waihorace
  */
 $messages['zh-hant'] = array(
 	'maps_map' => '地圖',
