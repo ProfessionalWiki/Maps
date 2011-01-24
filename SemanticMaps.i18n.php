@@ -103,6 +103,7 @@ $messages['ar'] = array(
 	'semanticmaps_name' => 'خرائط دلالية',
 	'semanticmaps_desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://mapping.referata.com/wiki/Semantic_Maps_examples تجربة]).
 خدمات الخرائط المتوفرة: $1',
+	'semanticmaps-kml' => 'كيه إم إل',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 	'semanticmaps_notfound' => 'لم يوجد',
