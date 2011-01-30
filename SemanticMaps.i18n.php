@@ -219,9 +219,25 @@ Dostupne usluge mapa: $1',
  * @author Toniher
  */
 $messages['ca'] = array(
+	'semanticmaps_desc' => "Proporciona l'habilitat de visualitzar i editar dades de coordenades emmagatzemades a través de l'extensió del Semantic MediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples alguns exemples]).
+Serveis de mapes disponibles: $1",
+	'semanticmaps-unrecognizeddistance' => 'El valor $1 no és un valor de distància.',
+	'semanticmaps-kml-link' => 'Visualitza el fitxer KML',
+	'semanticmaps-default-kml-pagelink' => 'Visualitza la pàgina $1',
+	'semanticmaps_lookupcoordinates' => 'Consulta les coordenades',
 	'semanticmaps_enteraddresshere' => 'Introduïu una adreça a continuació',
 	'semanticmaps_notfound' => "no s'ha trobat",
+	'semanticmaps_paramdesc_format' => "El servei de mapes que s'utilitza per generar el mapa",
+	'semanticmaps_paramdesc_geoservice' => 'El servei de geocodificació que es fa servir per transformar les adreces en coordenades',
+	'semanticmaps_paramdesc_height' => "L'altura del mapa, en píxel (per defecte és $1)",
+	'semanticmaps_paramdesc_width' => "L'amplada del mapa, en píxels (per defecte és $1)",
 	'semanticmaps_paramdesc_zoom' => 'El nivell de zoom del mapa',
+	'semanticmaps_paramdesc_centre' => 'Les coordenades del centre dels mapes',
+	'semanticmaps_paramdesc_controls' => "Els controls d'usuari emplaçats al mapa",
+	'semanticmaps_paramdesc_types' => 'El tipus de mapa disponibles en el mapa',
+	'semanticmaps_paramdesc_type' => 'El tipus de mapa per defecte del mapa',
+	'semanticmaps_paramdesc_overlays' => 'Les capes disponibles en el mapa',
+	'semanticmaps_paramdesc_autozoom' => "Si està disponible el zoom d'augment i reducció fent servir la rodeta del ratolí",
 	'semanticmaps_paramdesc_layers' => 'Les capes disponibles al mapa',
 );
 
