@@ -39,8 +39,12 @@ class MapsParamDimension extends ItemParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
-		global $egMapsSizeRestrictions;
+		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
+		if ( $value == 'auto' && $this->dimension == 'width' ) {
+			return;
+		}
+		
 		// Set the default if the value is not valid.
 		if ( !preg_match( '/^\d+(\.\d+)?(px|ex|em|%)?$/', $value ) ) {
 			$value = $this->dimension == 'width' ? $egMapsMapWidth : $egMapsMapHeight;

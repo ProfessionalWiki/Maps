@@ -208,7 +208,7 @@ $egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
 
 	# Integer or string. The default width and height of a map. These values will
 	# only be used when the user does not provide them.
-	$egMapsMapWidth = '100%';
+	$egMapsMapWidth = 'auto';
 	$egMapsMapHeight = 350;
 
 	# Array. The minimum and maximum width and height for all maps. First min and
