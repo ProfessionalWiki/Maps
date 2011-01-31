@@ -159,14 +159,12 @@ class MapsGeodistance extends ParserHook {
 			$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );
 		}
 		
-		if ( $start && $end ) {
-			$output = MapsDistanceParser::formatDistance( MapsGeoFunctions::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
-		} else {
+		if ( !$start || !$end ) {
 			// The locations should be valid when this method gets called.
-			throw new Exception( 'Attempt to find the distance between locations of at least one is invalid' );
+			throw new Exception( 'Attempt to find the distance between locations of at least one is invalid' );			
 		}
 
-		return $output;
+		return MapsDistanceParser::formatDistance( MapsGeoFunctions::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
 	}
 
 	/**

@@ -163,20 +163,18 @@ class MapsFinddestination extends ParserHook {
 			$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		}
 		
-		// TODO
-		if ( $location ) {
-			$destination = MapsGeoFunctions::findDestination(
-				$location,
-				$parameters['bearing'],
-				MapsDistanceParser::parseDistance( $parameters['distance'] )
-			);
-			$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
-		} else {
+		if ( !$location ) {
 			// The location should be valid when this method gets called.
-			throw new Exception( 'Attempt to find a destination from an invalid location' );
-		}
+			throw new Exception( 'Attempt to find a destination from an invalid location' );			
+		}	
+		
+		$destination = MapsGeoFunctions::findDestination(
+			$location,
+			$parameters['bearing'],
+			MapsDistanceParser::parseDistance( $parameters['distance'] )
+		);		
 			
-		return $output;
+		return MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 	}
 
 	/**

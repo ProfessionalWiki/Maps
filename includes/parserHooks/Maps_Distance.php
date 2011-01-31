@@ -106,8 +106,11 @@ class MapsDistance extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$distanceInMeters = MapsDistanceParser::parseDistance( $parameters['distance'] );
-		return MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
+		return MapsDistanceParser::formatDistance( 
+			MapsDistanceParser::parseDistance( $parameters['distance'] ),
+			$parameters['unit'],
+			$parameters['decimals']
+		);
 	}
 
 	/**

@@ -118,14 +118,12 @@ class MapsCoordinates extends ParserHook {
 	public function render( array $parameters ) {
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
-		if ( $parsedCoords ) {
-			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
-		} else {
+		if ( !$parsedCoords ) {
 			// The coordinates should be valid when this method gets called.
 			throw new Exception( 'Attempt to format an invalid set of coordinates' );
 		}
 		
-		return $output;		
+		return MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );		
 	}
 	
 	/**

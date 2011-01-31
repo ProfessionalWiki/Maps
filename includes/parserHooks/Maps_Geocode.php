@@ -151,13 +151,11 @@ class MapsGeocode extends ParserHook {
 				$parameters['directional']
 			);
 			
-			$output = $geovalues ? $geovalues : '';
+			return $geovalues ? $geovalues : '';
 		}
 		else {
-			$output = htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
+			return htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
 		}
-
-		return $output;		
 	}
 
 	/**

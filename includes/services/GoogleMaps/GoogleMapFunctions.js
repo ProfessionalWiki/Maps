@@ -12,7 +12,7 @@
 var GOverlays = [
 	new GLayer("com.panoramio.all"),
 	new GLayer("com.youtube.all"),
-	new GLayer("org.wikipedia.en"),
+	new GLayer("org.wikipedia.nl"),
 	new GLayer("com.google.webcams")
 ];
 
