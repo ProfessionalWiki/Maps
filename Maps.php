@@ -163,8 +163,7 @@ function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgExtraNamespaces, $wgNamespaceAliases, $wgVersion;
 
 	// This function has been deprecated in 1.16, but needed for earlier versions.
-	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
-	if ( version_compare( $wgVersion, '1.15', '<=' ) ) {
+	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
 	}
 
