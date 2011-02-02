@@ -38,7 +38,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.7.4' );
+	define( 'SM_VERSION', '0.7.5 alpha' );
 
 	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
 	$smgScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';	
@@ -99,8 +99,7 @@ function smfSetup() {
 	$servicesList = $wgLang->listToText( $services );
 
 	// This function has been deprecated in 1.16, but needed for earlier versions.
-	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
-	if ( version_compare( $wgVersion, '1.15', '<=' ) ) {
+	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
 		wfLoadExtensionMessages( 'SemanticMaps' );
 	}	
 
