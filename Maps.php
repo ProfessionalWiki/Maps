@@ -17,7 +17,7 @@
  * This documenation group collects source code files belonging to Maps.
  *
  * Please do not use this group name for other code. If you have an extension to
- * Maps, please use your own group defenition.
+ * Maps, please use your own group definition.
  *
  * @defgroup Maps Maps
  */
