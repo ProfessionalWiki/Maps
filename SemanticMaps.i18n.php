@@ -774,6 +774,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
@@ -788,8 +789,8 @@ Tilgjengelige karttjenester: $1',
 	'semanticmaps_notfound' => 'ikke funnet',
 	'semanticmaps_paramdesc_format' => 'Karttjenesten brukt for å generere kart',
 	'semanticmaps_paramdesc_geoservice' => 'Geokodetjenesten brukt for å gjøre adresser om til koordinater',
-	'semanticmaps_paramdesc_height' => 'Høyden til kartet, i pixler (standard er $1)',
-	'semanticmaps_paramdesc_width' => 'Bredden til kartet, i pixler (standard er $1)',
+	'semanticmaps_paramdesc_height' => 'Høyden til kartet, i piksler (standard er $1)',
+	'semanticmaps_paramdesc_width' => 'Bredden til kartet, i piksler (standard er $1)',
 	'semanticmaps_paramdesc_zoom' => 'Zoomnivået til kartet',
 	'semanticmaps_paramdesc_centre' => 'Koordinatene til kartets senter',
 	'semanticmaps_paramdesc_controls' => 'Brukerkontrollene plassert på kartet',
