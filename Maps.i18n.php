@@ -2324,6 +2324,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author GoEThe
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Waldir
@@ -2352,8 +2353,22 @@ Serviços de cartografia disponíveis: $1',
 	'maps-displaypoint-description' => 'Apresentar os mapas com um ou mais marcadores definidos na wiki.',
 	'maps-distance-description' => 'Converter uma distância numa unidade suportada para a distância equivalente noutra unidade.',
 	'maps-finddestination-description' => 'Encontrar um destino a partir de um ponto de partida (expresso em qualquer um dos formatos suportados), uma orientação inicial e uma distância.',
+	'maps-geocode-description' => 'Permite a geocodificação de moradas, por outras palavras, transforma locais legíveis por humanos em conjuntos de coordenadas. Há apoio para vários serviços de geocodificação, que não devem ser confundidos com serviços de mapeamento.',
+	'maps-geodistance-description' => 'Calcula a distância geográfica entre dois pontos, a partir e para qualquer um dos formatos suportados.',
+	'maps-coordinates-par-location' => 'As coordenadas que quer formatar.',
+	'maps-coordinates-par-format' => 'O formato em que quer as coordenadas.',
+	'maps-coordinates-par-directional' => '!! Indica se as coordenadas devem ser mostradas com formato direccional ou não.',
+	'maps-distance-par-distance' => '!! Converter uma distância para o seu equivalente com uma unidade especificada.',
+	'maps-distance-par-decimals' => '!! O número máximo de casas decimais a usar no valor resultante.',
+	'maps-distance-par-unit' => '!! As unidades em que a distância sairá.',
 	'maps-finddestination-par-location' => 'A localização inicial.',
+	'maps-finddestination-par-bearing' => 'A direcção inicial.',
 	'maps-finddestination-par-distance' => 'A distância a percorrer.',
+	'maps-finddestination-par-format' => '!! O formato em que sairá o destino.',
+	'maps-finddestination-par-directional' => '!! Indica se o formato do destino deve ser direccional ou não',
+	'maps-finddestination-par-allowcoordinates' => 'Indica se devem ser permitidas coordenadas. Se marcado como não, apenas serão aceites moradas.',
+	'maps-finddestination-par-geoservice' => 'O serviço de geocodificação a usar para geocodificar o valor em caso de ser uma morada.',
+	'maps-geocode-par-location' => 'A morada que quer geocodificar.',
 	'validation-error-invalid-location' => 'O parâmetro $1 tem de ser uma localização válida.',
 	'validation-error-invalid-locations' => 'O parâmetro $1 tem de ser uma ou mais localizações válidas.',
 	'validation-error-invalid-width' => 'O parâmetro $1 tem de ser uma largura válida.',
