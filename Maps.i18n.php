@@ -1149,6 +1149,7 @@ $1',
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  * @author Yonidebest
@@ -1159,16 +1160,26 @@ $messages['he'] = array(
 	'maps_map' => 'מפה',
 	'maps-loading-map' => 'המפה נטענת...',
 	'maps-markers' => 'סמנים',
+	'maps-others' => 'אחרים',
 	'maps-ns-layer' => 'שכבה',
-	'maps-ns-layer-talk' => 'דיון השכבה',
+	'maps-ns-layer-talk' => 'שיחת שכבה',
 	'maps-layer-property' => 'מאפיין',
 	'maps-layer-value' => 'ערך',
 	'maps-layer-errors' => 'שגיאות',
-	'validation-error-invalid-distance' => 'הערך $1 אינו מרחק תקין.',
-	'maps-abb-north' => "צפ'",
-	'maps-abb-east' => "מז'",
-	'maps-abb-south' => "דר'",
-	'maps-abb-west' => "מע'",
+	'validation-error-invalid-location' => 'הערך $1 צריך להיות מיקום תקין.',
+	'validation-error-invalid-locations' => 'הערך $1 צריך להיות מיקום תקין אחד או יותר.',
+	'validation-error-invalid-width' => 'הערך $1 צריך להיות רוחב תקין.',
+	'validation-error-invalid-height' => 'הערך $1 צריך להיות גובה תקין.',
+	'validation-error-invalid-distance' => 'הערך $1 צריך להיות מרחק תקין.',
+	'validation-error-invalid-distances' => 'הערך $1 צריך להיות מרחק תקין אחד או יותר.',
+	'validation-error-invalid-image' => 'הערך $1 צריך להיות קובץ תמונה תקין.',
+	'validation-error-invalid-images' => 'הערך $1 צריך להיות קובץ תמונה תקין אחד או יותר.',
+	'validation-error-invalid-goverlay' => 'הערך $1 צריך להיות שכבה תקינה.',
+	'validation-error-invalid-goverlays' => 'הערך $1 צריך להיות שכבה תקינה אחת או יותר.',
+	'maps-abb-north' => 'צפ׳',
+	'maps-abb-east' => 'מז׳',
+	'maps-abb-south' => 'דר׳',
+	'maps-abb-west' => 'מע׳',
 	'maps-latitude' => 'קו רוחב:',
 	'maps-longitude' => 'קו אורך:',
 	'maps-invalid-coordinates' => 'הערך $1 לא זוהה כסדרת קואורדינטות תקינה.',
@@ -1177,9 +1188,10 @@ $messages['he'] = array(
 לא ניתן להציג את המפה.',
 	'maps_geocoding_failed_for' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}, ולכן {{PLURAL:$2|היא הושמטה|הן הושמטו}} מהמפה:
 $1',
-	'maps_unrecognized_coords' => '{{PLURAL:$2|הקואורדינטה הבאה אינה מזוהה|הקואורדינטות הבאות אינן מזוהות}}: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|הקואורדינטה הבאה לא זוהתה|הקואורדינטות הבאות לא זוהו}}: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|הקואורדינטה הבאה לא זוהתה|הקואורדינטות הבאות לא זוהו}} ו{{PLURAL:$2|הושמטה|הושמטו}} מהמפה: $1.',
 	'maps_map_cannot_be_displayed' => 'לא ניתן להציג את המפה.',
-	'maps-geocoder-not-available' => 'הקידוד הגיאוקרטוגרפי של מפות אינו זמין. לא ניתן לקודד את המיקום שנבחר.',
+	'maps-geocoder-not-available' => 'הקידוד הגאוקרטוגרפי של מפות אינו זמין. לא ניתן לקודד את המיקום שנבחר.',
 	'maps_click_to_activate' => 'יש ללחוץ כדי להפעיל את המפה',
 	'maps_centred_on' => 'המפה ממורכזת סביב $1,$2',
 	'maps_overlays' => 'שכבות',
@@ -2323,6 +2335,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Alchimista
  * @author Giro720
  * @author GoEThe
  * @author Hamilton Abreu
@@ -2369,6 +2382,7 @@ Serviços de cartografia disponíveis: $1',
 	'maps-finddestination-par-allowcoordinates' => 'Indica se devem ser permitidas coordenadas. Se marcado como não, apenas serão aceites moradas.',
 	'maps-finddestination-par-geoservice' => 'O serviço de geocodificação a usar para geocodificar o valor em caso de ser uma morada.',
 	'maps-geocode-par-location' => 'A morada que quer geocodificar.',
+	'maps-geocode-par-mappingservice' => 'O serviço de geocodificação que deseja usar. Consulte os serviços de geocodificação disponíveis.',
 	'validation-error-invalid-location' => 'O parâmetro $1 tem de ser uma localização válida.',
 	'validation-error-invalid-locations' => 'O parâmetro $1 tem de ser uma ou mais localizações válidas.',
 	'validation-error-invalid-width' => 'O parâmetro $1 tem de ser uma largura válida.',
