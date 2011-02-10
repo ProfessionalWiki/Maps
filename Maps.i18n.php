@@ -1150,6 +1150,7 @@ $1',
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Ex-Diktator
  * @author Rotemliss
  * @author YaronSh
  * @author Yonidebest
@@ -1166,6 +1167,24 @@ $messages['he'] = array(
 	'maps-layer-property' => 'מאפיין',
 	'maps-layer-value' => 'ערך',
 	'maps-layer-errors' => 'שגיאות',
+	'maps-error-invalid-layerdef' => 'הגדרת השכבה הזאת אינה תקינה.',
+	'maps-error-invalid-layertype' => 'אין שכבות מסוג "$1". רק {{PLURAL:$3|הסוג הזה נתמך|הסוגים האלה נתמכים}}: $2.',
+	'maps-error-no-layertype' => 'יש להקליד את סוג השכבה. {{PLURAL:$2|רק הסוג הזה נתמך|הסוגים הנתמכים}}: $1',
+	'validation-error-invalid-layer' => 'הפרמטר $1 צריך להיות שכבה תקינה.',
+	'validation-error-invalid-layers' => 'הפרמטר $1 צריך להיות שכבה תקינה אחת או יותר.',
+	'maps-layer-of-type' => 'שכבה מסוג $1',
+	'maps-layer-type-supported-by' => 'השכבה הזאת יכולה לעבוד רק עם {{PLURAL:$2|שירות המפות הבא|שירותי המפות הבאים}}: $1.',
+	'maps-finddestination-par-location' => 'המיקום ההתחלתי.',
+	'maps-finddestination-par-bearing' => 'הכיוון הראשוני.',
+	'maps-finddestination-par-distance' => 'מרחק הנסיעה.',
+	'maps-finddestination-par-format' => 'באיזו תבנית לפלוט את היעד.',
+	'maps-finddestination-par-directional' => 'האם תבנית היעד צריכה להיות כיוונית או לא.',
+	'maps-finddestination-par-allowcoordinates' => 'האם לאפשר שימוש בקואורדינטות. אם לא, תתקבלנה רק כתובות.',
+	'maps-geocode-par-directional' => 'האם לפלוט את הקואורדינטות באופן כיווני או לא.',
+	'maps-geodistance-par-location1' => 'הנקודה הראשונה בקבוצה לחישוב מרחק.',
+	'maps-geodistance-par-location2' => 'הנקודה השנייה בקבוצה לחישוב מרחק.',
+	'maps-geodistance-par-unit' => 'באילו יחידות לפלוט את המרחק.',
+	'maps-geodistance-par-decimals' => 'המספר המירבי של ספרות בשבר בתוצאה.',
 	'validation-error-invalid-location' => 'הערך $1 צריך להיות מיקום תקין.',
 	'validation-error-invalid-locations' => 'הערך $1 צריך להיות מיקום תקין אחד או יותר.',
 	'validation-error-invalid-width' => 'הערך $1 צריך להיות רוחב תקין.',
@@ -1685,14 +1704,16 @@ $messages['ka'] = array(
 	'maps_videos' => 'ვიდეოები',
 );
 
-/** Khmer (ភាសាខ្មែរ) */
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
 $messages['km'] = array(
 	'maps-abb-north' => 'ជ',
 	'maps-abb-east' => 'ក',
 	'maps-abb-south' => 'ត្ប',
 	'maps-abb-west' => 'ល',
-	'maps-latitude' => 'រយះទទឹង៖',
-	'maps-longitude' => 'រយះបណ្តោយ៖',
+	'maps-latitude' => 'រយៈទទឹង៖',
+	'maps-longitude' => 'រយៈបណ្តោយ៖',
 );
 
 /** Kannada (ಕನ್ನಡ)
