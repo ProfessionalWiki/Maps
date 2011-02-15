@@ -141,7 +141,7 @@ class MapsDisplayPoint extends ParserHook {
 		// Get an instance of the class handling the current parser hook and service. 
 		$mapClass = $service->getFeatureInstance( 'display_point' );
 		
-		return $mapClass->getMapHtml( $parameters, $this->parser );
+		return $mapClass->getMapHtml( $parameters, $this->parser, $this->frame );
 	}
 	
 	/**

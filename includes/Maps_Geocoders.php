@@ -35,7 +35,7 @@ final class MapsGeocoders {
 	 * 
 	 * @var array of string => string
 	 */
-	protected static $registeredGeocoders = array();
+	public static $registeredGeocoders = array();
 	
 	/**
 	 * The global geocoder cache, holding geocoded data when enabled.
@@ -297,21 +297,15 @@ final class MapsGeocoders {
 	 * main identifier. If it's not recognized at all (or empty), the default will be used.
 	 * Only call this function when there are geocoders available, else an erro will be thrown.
 	 * 
-	 * TODO: implement overrides
-	 *
 	 * @since 0.7
 	 *
 	 * @param string $geocoderIdentifier
-	 * @param string $mappingService
 	 * 
 	 * @return string or false
 	 */
-	protected static function getValidGeocoderIdentifier( $geocoderIdentifier /*, $mappingService */ ) {
+	protected static function getValidGeocoderIdentifier( $geocoderIdentifier ) {
 		global $egMapsDefaultGeoService, $egMapsUserGeoOverrides;
 		static $validatedDefault = false;
-		
-		// Get rid of any aliases.
-		$geocoderIdentifier = self::getMainGeocoderIndentifier( $geocoderIdentifier );		
 		
 		if ( $geocoderIdentifier == '' || !array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
 			if ( !$validatedDefault ) {
@@ -331,20 +325,6 @@ final class MapsGeocoders {
 			}
 		}
 		
-		return $geocoderIdentifier;
-	}
-	
-	/**
-	 * Gets the main geocoder identifier by resolving aliases.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @param string $geocoderIdentifier
-	 * 
-	 * @return string
-	 */
-	protected static function getMainGeocoderIndentifier( $geocoderIdentifier ) {
-		// TODO: implement actual function
 		return $geocoderIdentifier;
 	}
 	

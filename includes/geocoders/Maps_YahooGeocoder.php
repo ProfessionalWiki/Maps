@@ -69,7 +69,7 @@ final class MapsYahooGeocoder extends MapsGeocoder {
 	 * 
 	 * @return array
 	 */
-	public function getOverrides() {
+	public static function getOverrides() {
 		return array( 'yahoomaps' );
 	}
 	
