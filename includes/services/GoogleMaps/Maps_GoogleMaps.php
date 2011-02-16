@@ -46,6 +46,8 @@ class MapsGoogleMaps extends MapsMappingService {
 		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls, $egMapsGMapOverlays;
 		
 		$params['zoom']->addCriteria( new CriterionInRange( 0, 20 ) );
+		// Default zoom is not necessary if kml is set
+		//$params['zoom']->setDefault(null);
 		$params['zoom']->setDefault( self::getDefaultZoom() );
 		
 		$params['controls'] = new ListParameter( 'controls' );
@@ -89,8 +91,11 @@ class MapsGoogleMaps extends MapsMappingService {
 		
 		$params['kml'] = new ListParameter( 'kml' );
 		$params['kml']->setDefault( array() );
-		$params['kml']->addManipulations( new ParamManipulationImplode( ',', "'" ) );
+		//do both translation and imploding
+		$myKMLManips = array(new MapsParamImageFull(), new ParamManipulationImplode( ',', "'" ));
+		$params['kml']->addManipulations(  $myKMLManips);
 
+		
 		$params['overlays'] = new ListParameter( 'overlays' );
 		$params['overlays']->setDefault( $egMapsGMapOverlays );
 		$params['overlays']->addCriteria( new CriterionGoogleOverlay( self::$overlayData ) );
