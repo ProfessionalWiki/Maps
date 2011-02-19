@@ -16,7 +16,7 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'maps_name' => 'Maps',
-	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demo's]).
+	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demos]).
 Available mapping services: $1",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
@@ -52,7 +52,7 @@ Available mapping services: $1",
 	// Distance parser hook
 	'maps-distance-par-distance' => "The distance to convert to its equivalent with a specified unit.",
 	'maps-distance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
-	'maps-distance-par-unit' => 'The unit the output the distance in.',
+	'maps-distance-par-unit' => 'The unit to output the distance in.',
 
 	// Finddestination paser hook
 	'maps-finddestination-par-location' => 'The initial location.',
@@ -63,7 +63,7 @@ Available mapping services: $1",
 	'maps-finddestination-par-allowcoordinates' => 'Indicates if coordinates should be allowed. If set to no, only addresses will be accepted.',
 	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it is an address.",
 	'maps-finddestination-par-mappingservice' => "Parameter to indicate the mapping service to use with this function.
-This will maps allow to override the default value of the service parameter by the one that's optimal for the mapping service.
+This will allow maps to override the default value of the service parameter by the one that is optimal for the mapping service.
 (Example: In case of Google Maps, the Google geocoder will be used.)",
 
 	// Geocode parser hook
