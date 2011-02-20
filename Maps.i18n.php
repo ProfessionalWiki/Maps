@@ -81,7 +81,7 @@ When no, every value will be geocoded, even valid coordinates.',
 	// Geodistance parser hook
 	'maps-geodistance-par-location1' => 'The first point in the set to calculate the distance between.',
 	'maps-geodistance-par-location2' => 'The second point in the set to calculate the distance between.',
-	'maps-geodistance-par-unit' => 'The unit the output the distance in.',
+	'maps-geodistance-par-unit' => 'The unit to output the distance in.',
 	'maps-geodistance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
 	'maps-geodistance-par-mappingservice' => 'The geocoding service to use to geocode any addresses.',
 	'maps-geodistance-par-geoservice' => 'The mapping service this is used together with.
