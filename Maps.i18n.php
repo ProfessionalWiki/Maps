@@ -17,7 +17,7 @@ $messages['en'] = array(
 	// General
 	'maps_name' => 'Maps',
 	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demos]).
-Available mapping services: $1",
+{{PLURAL:$2|Mapping service is|Available mapping services:}} $1",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
 	'maps-markers' => 'Markers',

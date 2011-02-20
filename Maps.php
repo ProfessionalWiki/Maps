@@ -200,7 +200,7 @@ function efMapsSetup() {
 			'[http://www.mediawiki.org/wiki/Extension:Maps/Credits ' . wfMsg( 'maps-others' ) . ']'
 		),
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
-		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList ),
+		'description' => wfMsgExt( 'maps_desc', 'parsemag', $servicesList, count($servicesList) ),
 	);
 
 	return true;
