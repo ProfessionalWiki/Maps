@@ -712,8 +712,8 @@ $messages['de-formal'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach a geokodowe adrese zwobrazniś. ([http://mapping.referata.com/wiki/Maps_examples demo]).
-K dispoziciji stojece kórtowe słužby: $1',
+	'maps_desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach zwobrazniś a adrese geokoděrowaś. ([http://mapping.referata.com/wiki/Maps_examples demo]).
+{{PLURAL:$2|Kartografiska słužba jo|K dispoziciji stojecej kartografiskej słužbje stej|K dispoziciji stojece kartografiske słužby su|K dispoziciji stojece kartografiske słužby su}}: $1',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
 	'maps-markers' => 'Marki',
@@ -730,6 +730,13 @@ K dispoziciji stojece kórtowe słužby: $1',
 	'validation-error-invalid-layers' => 'Parameter $1 musy jadna płaśiwa rownina abo někotare płaśiwe rowniny byś.',
 	'maps-layer-of-type' => 'Rownina typa $1',
 	'maps-layer-type-supported-by' => 'Toś ten typ rowniny  dajo se jano {{PLURAL:$2|z kartografiskeju słužbu $1 wužywaś|z toś tymi kartografiskimi słužbami wužywaś: $1}}.',
+	'maps-coordinates-par-location' => 'Koordinaty, kótarež coš formatěrowaś.',
+	'maps-coordinates-par-format' => 'Celowy format za koordinaty.',
+	'maps-finddestination-par-location' => 'Wuchadnišćo.',
+	'maps-finddestination-par-format' => 'Wudawański format za cel.',
+	'maps-geocode-par-location' => 'Adresa, kótaruž coš geokoděrowaś.',
+	'maps-geocode-par-format' => 'Wudawański format za koordinaty.',
+	'maps-geodistance-par-mappingservice' => 'Geokoděrowańska słužba, kótaraž ma se za geokoděrowanje adresow wužywaś.',
 	'validation-error-invalid-location' => 'Parameter $1 musy płaśiwe městno byś.',
 	'validation-error-invalid-locations' => 'Parameter $1 musy jadne płaśiwe městno abo někotare płaśiwe městna byś.',
 	'validation-error-invalid-width' => 'Parameter $1 musy płaśiwa šyrokosć byś.',
@@ -1304,8 +1311,11 @@ $messages['hsb'] = array(
 	'maps-coordinates-par-format' => 'Cilowy format za koordinaty.',
 	'maps-finddestination-par-location' => 'Wuchadźišćo.',
 	'maps-finddestination-par-format' => 'Wudawanski format za cil.',
+	'maps-finddestination-par-geoservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje hódnoty wužiwać, jeli hódnota je adresa.',
 	'maps-geocode-par-location' => 'Adresa, kotruž chceš geokodować.',
+	'maps-geocode-par-mappingservice' => 'Geokodowanska słužba, kotruž chceš wužiwać. Hlej k dispoziciji stejace geokodowanske słužby.',
 	'maps-geocode-par-format' => 'Format za wudate koordinaty.',
+	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
 	'validation-error-invalid-location' => 'Parameter $1 dyrbi płaćiwe městno być.',
 	'validation-error-invalid-locations' => 'Parameter $1 dyrbi jedne městno abo wjacore městna być.',
 	'validation-error-invalid-width' => 'Parameter $1 dyrbi płaćiwa šěrokosć być.',
@@ -1400,8 +1410,8 @@ $1',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Servicios cartographic disponibile: $1',
+	'maps_desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://mapping.referata.com/wiki/Maps_examples demonstrationes]).
+{{PLURAL:$2|Le servicio cartographic es|Servicios cartographic disponibile:}} $1',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
 	'maps-markers' => 'Marcatores',
