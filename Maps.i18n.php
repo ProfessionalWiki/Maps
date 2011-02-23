@@ -493,7 +493,7 @@ $1",
  */
 $messages['bs'] = array(
 	'maps_desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Dostupne usluge mapa: $1',
+{{PLURAL:$2|Dostupna usluga mapa|Dostupne usluge mapa:}} $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavam kartu...',
 	'maps-markers' => 'Markeri',
@@ -2065,7 +2065,7 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'maps_desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Beschikbare kaartdiensten: $1',
+Beschikbare {{PLURAL:$2|kaartdienst|kaartdiensten}}: $1',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
 	'maps-markers' => 'Markeringen',
@@ -2432,8 +2432,8 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e endereços por geocódigo ([http://mapping.referata.com/wiki/Maps_examples demonstração]).
-Serviços de cartografia disponíveis: $1',
+	'maps_desc' => 'Permite apresentar dados de coordenadas em mapas e converter endereços em geocódigo ([http://mapping.referata.com/wiki/Maps_examples demonstração]).
+{{PLURAL:$2|O serviço de cartografia é|Serviços de cartografia disponíveis:}} $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'A carregar o mapa...',
 	'maps-markers' => 'Marcadores',
