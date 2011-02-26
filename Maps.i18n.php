@@ -599,7 +599,7 @@ $messages['cs'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps_desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu geokodieren ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite]).
+	'maps_desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu georeferenzieren ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite]).
 {{PLURAL:$2|Verfügbarer Kartografiedienst|Verfügbare Kartografiedienste}}: $1',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
@@ -622,7 +622,7 @@ $messages['de'] = array(
 	'maps-displaypoint-description' => 'Anzeige geographischer Karten zusammen mit einer oder mehrerer im Wiki definierter Markierungen.',
 	'maps-distance-description' => 'Konvertiere die Entfernung unter Verwendung einer der unterstützten Einheiten in ihr Äquivalent einer anderen unterstützen Einheit.',
 	'maps-finddestination-description' => 'Ein Ziel unter Angabe des Ausgangspunkts (kann in jedwedem unterstützten Format angegeben sein), der Peilung sowie der Entfernung ermitteln.',
-	'maps-geocode-description' => 'Aktiviert das Geokodieren von Adressen, also deren Umwandlung in Koordinaten. Mehrere Geokodierdienste werden unterstützt, was allerdings nicht mit den Kartografiediensten zu verwechseln ist.',
+	'maps-geocode-description' => 'Aktiviert das Georeferenzieren von Adressen, also deren Umwandlung in Koordinaten. Mehrere Georeferenzierungsdienste werden unterstützt, was allerdings nicht mit den Kartografiediensten zu verwechseln ist.',
 	'maps-geodistance-description' => 'Berechne die Entfernung zwischen zwei Punkten von einer der unterstützten Einheiten in ihr Äquivalent einer anderen unterstützten Einheit.',
 	'maps-coordinates-par-location' => 'Die zu formatierenden Koordinaten.',
 	'maps-coordinates-par-format' => 'Das Zielformat der Koordinaten.',
@@ -636,15 +636,16 @@ $messages['de'] = array(
 	'maps-finddestination-par-format' => 'Das Ausgabeformat für das Ziel.',
 	'maps-finddestination-par-directional' => 'Gibt an, ob das Ausgabeformat des Ziels eine Richtungsangabe haben soll oder nicht.',
 	'maps-finddestination-par-allowcoordinates' => 'Gibt an, ob die Angabe von Koordinaten zulässig ist. Sofern deaktiviert, ist lediglich die Angabe von Adressen möglich.',
-	'maps-finddestination-par-geoservice' => 'Der Kartografiedienst der, für den Fall dass es sich um eine Adresse handelt, zum Geokodieren des Werts verwendet werden soll.',
+	'maps-finddestination-par-geoservice' => 'Der Kartografiedienst der, für den Fall dass es sich um eine Adresse handelt, zum Georeferenzieren des Werts verwendet werden soll.',
 	'maps-finddestination-par-mappingservice' => 'Parameter mit denen der Kartografiedienst angegeben werden kann, der zusammen mit dieser Funktion genutzt wird.
 Dadurch können die Standardwerte der Funktion durch die für den Kartografiedienst optimalen überschrieben werden.
 (Beispiel: Im Fall von Google Maps wird dann der Google Geocoder genutzt.)',
 	'maps-geocode-par-location' => 'Die Adresse, die geokodiert werden soll.',
 	'maps-geocode-par-mappingservice' => 'Der Kartografiedienst der genutzt werden soll.',
-	'maps-geocode-par-geoservice' => 'Dieser Parameter ermöglicht es, einen bestimmten Kartografiedienst für Geokodiernungsanfragen anzugeben.
-Jeder Kartografiedienst kann über eigenständige Standardwerte für die Geokodierung verfügen.
-Diese Einstellung hat rechtliche Gründe, da man bspw. den Google Geokodierungsdienst nur zusammen mit Google Maps nutzen kann. Diesen Parameter anstatt dem zum Geokodierungsdienst einzustellen, verhindert eine unzulässige Kombination bei der Nutzung der Dienste.',
+	'maps-geocode-par-geoservice' => 'Dieser Parameter ermöglicht es, einen bestimmten Kartografiedienst für Georeferenzierungsanfragen anzugeben.
+Jeder Kartografiedienst kann über eigenständige Standardwerte für die Georeferenzierung verfügen.
+Diese Einstellung hat rechtliche Gründe, da man bspw. den Google Georeferenzierungsdienst nur zusammen mit Google Maps nutzen kann.
+Diesen Parameter anstatt dem zum Georeferenzierungsdienst einzustellen, verhindert eine unzulässige Kombination bei der Nutzung der Dienste.',
 	'maps-geocode-par-allowcoordinates' => 'Ermöglicht die Deaktivierung der Unterstützung von Koordinaten. Entweder Ja oder Nein angeben.
 Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordinaten.',
 	'maps-geocode-par-format' => 'Das Ausgabeformat für die Koordinaten.',
@@ -655,7 +656,7 @@ Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordi
 	'maps-geodistance-par-decimals' => 'Die bei der Ergebnisausgabe zu verwendende Höchstzahl an Nachkommastellen.',
 	'maps-geodistance-par-mappingservice' => 'Der Kartografiedienst der für alle Adressen genutzt werden soll.',
 	'maps-geodistance-par-geoservice' => 'Der Kartografiedienst mit dem dies genutzt wird.
-Dies kann Auswirkungen auf die Standardwerte des Geokodierdiensts haben.',
+Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.',
 	'maps-displaymap-par-mappingservice' => 'Ermöglicht die Festlegung des Kartografiediensts, der zur Generierung der Karte genutzt werden soll.',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll.',
 	'maps-displaypoints-par-zoom' => 'Ermöglicht die Angabe des Detaillierungsgrades (Zoom) der Karte.
@@ -687,13 +688,13 @@ Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markier
 	'maps-invalid-coordinates' => 'Der Wert $1 bezeichnet kein gültiges Koordinatenpaar.',
 	'maps_coordinates_missing' => 'Es wurden keine Koordinaten für die Karte angegeben.',
 	'maps_geocoding_failed' => 'Die {{PLURAL:$2|folgende Adresse|folgenden Adressen}} konnten nicht geokodiert werden: $1.',
-	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|folgende Adresse konnte|folgenden Adressen konnten}} nicht geokodiert werden und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
+	'maps_geocoding_failed_for' => 'Die {{PLURAL:$2|folgende Adresse konnte|folgenden Adressen konnten}} nicht georeferenziert werden und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
 	'maps_unrecognized_coords' => 'Folgende {{PLURAL:$2|Koordinate wurde|Koordinaten wurden}} nicht erkannt: $1.',
 	'maps_unrecognized_coords_for' => 'Die {{PLURAL:$2|folgende Koordinate wurde|folgenden Koordinaten wurden}} nicht erkannt und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
 	'maps_map_cannot_be_displayed' => 'Diese Karte kann nicht angezeigt werden.',
-	'maps-geocoder-not-available' => 'Die Funktion zum Geokodieren von Karten ist nicht verfügbar. Der Standort kann nicht geokodiert werden.',
+	'maps-geocoder-not-available' => 'Die Funktion zum Georeferenzierung von Karten ist nicht verfügbar. Der Standort kann nicht georeferenziert werden.',
 	'maps_click_to_activate' => 'Klicken, um die Karte zu aktivieren.',
 	'maps_centred_on' => 'Karte ist auf $1, $2 zentriert.',
 	'maps_overlays' => 'Einblendungen',
@@ -701,11 +702,6 @@ $1',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcams',
-);
-
-/** German (formal address) (‪Deutsch (Sie-Form)‬) */
-$messages['de-formal'] = array(
-	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Ihr Standort kann nicht geokodiert werden.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1307,15 +1303,23 @@ $messages['hsb'] = array(
 	'validation-error-invalid-layers' => 'Parameter $1 dyrbi jedna runina abo wjacore runiny być.',
 	'maps-layer-of-type' => 'Runina typa $1',
 	'maps-layer-type-supported-by' => 'Tutón typ runiny móže so {{PLURAL:$2|jenož z kartografiskej słužbu $1|z tutej kartografiskimaj słužbomaj: $1|z tutymi kartografiskimi słužbami: $1|z tutymi kartografiskimi słužbami: $1}}.wužiwać.',
+	'maps-displaymap-description' => 'Geografiske karty bjez we wikiju definowanych markow na nich zwobraznić.',
+	'maps-displaypoint-description' => 'Geografiske karty z jednym we wikiju definowanej marku abo wjace markow na nich zwobraznić.',
 	'maps-coordinates-par-location' => 'Koordinaty, kotrež chceš formatować.',
 	'maps-coordinates-par-format' => 'Cilowy format za koordinaty.',
 	'maps-finddestination-par-location' => 'Wuchadźišćo.',
 	'maps-finddestination-par-format' => 'Wudawanski format za cil.',
+	'maps-finddestination-par-allowcoordinates' => 'Podawa, hač koordinaty su dowolene. Jeli nic, budu so jenož adresy akceptować.',
 	'maps-finddestination-par-geoservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje hódnoty wužiwać, jeli hódnota je adresa.',
 	'maps-geocode-par-location' => 'Adresa, kotruž chceš geokodować.',
 	'maps-geocode-par-mappingservice' => 'Geokodowanska słužba, kotruž chceš wužiwać. Hlej k dispoziciji stejace geokodowanske słužby.',
 	'maps-geocode-par-format' => 'Format za wudate koordinaty.',
+	'maps-geodistance-par-location1' => 'Prěni dypk z dweju dypkow, mjez kotrymajž ma so zdalenosć wuličić.',
 	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
+	'maps-displaymap-par-coordinates' => 'Městno, na kotrež mapa ma so spočatnje centrować.',
+	'maps-displaypoints-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
+	'maps-displaypoints-par-coordinates' => 'Jedne městno abo wjace městnow, kotrež maja so na karće zwobraznić. Woznamjenjeja so z marku.',
+	'maps-displaypoints-par-icon' => 'Zmóžnja postajenje symbola, kotryž ma so za wšě marki wužiwać.',
 	'validation-error-invalid-location' => 'Parameter $1 dyrbi płaćiwe městno być.',
 	'validation-error-invalid-locations' => 'Parameter $1 dyrbi jedne městno abo wjacore městna być.',
 	'validation-error-invalid-width' => 'Parameter $1 dyrbi płaćiwa šěrokosć być.',
@@ -2694,7 +2698,15 @@ $messages['ru'] = array(
 	'maps-finddestination-par-directional' => 'Указывает, должен ли формат назначения быть направленным или нет.',
 	'maps-finddestination-par-allowcoordinates' => 'Указывает, разрешены ли координаты. Если установлено значение «нет», будут приниматься только адреса.',
 	'maps-finddestination-par-geoservice' => 'Сервис геокодирования для географического преобразования значения в случае, если оно является адресом.',
+	'maps-finddestination-par-mappingservice' => 'Параметр для указания картографической службы для использования с этой функцией. 
+Позволяет карте переопределить значение служебного параметра по умолчанию службы на оптимальное для картографической службы.
+(Например, для карт Google, использовать геокодирование Google.)',
 	'maps-geocode-par-location' => 'Адрес, который вы желаете геокодировать.',
+	'maps-geocode-par-mappingservice' => 'Служба геокодирования, которую вы хотите использовать. См. список доступных служб геокодирования.',
+	'maps-geocode-par-geoservice' => 'Этот параметр позволяет указать, что вы используете этот запрос геокодирования в сочетании с конкретной картографической службой. 
+Каждая картографическая служба может иметь переопределение службы геокодирования по умолчанию.
+Это делается из юридических соображений, так как вы можете использовать службу геокодирования Google только вместе с картами Google.
+Установка этого параметра, а не параметра для службы, будет гарантировать, что вы не используете недопустимое сочетание.',
 	'maps-geocode-par-allowcoordinates' => 'Позволяет отключить поддержку координат в этой функции. Должно быть указано «да» или «нет».
 Если «нет», то каждое значение будет геокодировано, даже правильные координаты.',
 	'maps-geocode-par-format' => 'Формат получаемых координат.',
