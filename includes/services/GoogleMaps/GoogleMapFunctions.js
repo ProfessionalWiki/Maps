@@ -51,9 +51,9 @@ function createGMarker(markerData) {
 		marker = new GMarker(markerData.point);
 	}
 
-	if ((markerData.title + markerData.label).length != '') {
-		var bothTxtAreSet = markerData.title.length != ''
-				&& markerData.label.length != '';
+	if ( markerData.title + markerData.label != '' ) {
+		var bothTxtAreSet = markerData.title != ''
+				&& markerData.label != '';
 		var popupText = bothTxtAreSet ? '<b>' + markerData.title + '</b><hr />'
 				+ markerData.label : markerData.title + markerData.label;
 		popupText = '<div style="overflow:auto;max-height:130px;">' + popupText
