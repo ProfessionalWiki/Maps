@@ -849,8 +849,8 @@ $messages['pms'] = array(
 	'semanticmaps_desc' => "A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con j'estension Semantic mediaWiki ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
 Servissi ëd carte disponìbij: $1",
 	'semanticmaps-unrecognizeddistance' => "Ël valor $1 a l'é pa na distansa bon-a.",
-	'semanticmaps-kml-link' => 'Varda ël file KML',
-	'semanticmaps-default-kml-pagelink' => 'Varda pàgina $1',
+	'semanticmaps-kml-link' => "Vëdde l'archivi KML",
+	'semanticmaps-default-kml-pagelink' => 'Lese la pàgina $1',
 	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
 	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
 	'semanticmaps_notfound' => 'pa trovà',
