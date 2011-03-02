@@ -1070,7 +1070,7 @@ $1',
  */
 $messages['gl'] = array(
 	'maps_desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://mapping.referata.com/wiki/Maps_examples demostración]).
-Servizos de cartografía dispoñibles: $1',
+{{PLURAL:$2|O servido de cartografía é|Servizos de cartografía dispoñibles:}} $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
 	'maps-markers' => 'Marcadores',
