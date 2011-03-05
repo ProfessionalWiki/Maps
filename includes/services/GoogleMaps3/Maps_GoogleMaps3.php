@@ -33,6 +33,9 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public function addParameterInfo( array &$params ) {
 		global $egMapsGMaps3Type;
 		
+		$params['zoom']->addCriteria( new CriterionInRange( 0, 20 ) );
+		$params['zoom']->setDefault( self::getDefaultZoom() );			
+		
 		$params['type'] = new Parameter(
 			'type',
 			Parameter::TYPE_STRING,
@@ -51,8 +54,8 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * @since 0.6.5
 	 */	
 	public function getDefaultZoom() {
-		global $egMapsGoogleMaps3Zoom;
-		return $egMapsGoogleMaps3Zoom;
+		global $egMapsGMaps3Zoom;
+		return $egMapsGMaps3Zoom;
 	}	
 	
 	/**
