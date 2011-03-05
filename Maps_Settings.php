@@ -96,7 +96,7 @@ $egMapsUseRL = false; //method_exists( 'OutputPage', 'addModules' );
 	# Yahoo! Maps API
 	include_once $egMapsDir . 'includes/services/YahooMaps/YahooMaps.php';
 	
-	# Yahoo! Maps API
+	# WMF OSM
 	include_once $egMapsDir . 'includes/services/OSM/OSM.php';	
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
