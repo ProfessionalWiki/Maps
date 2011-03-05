@@ -82,6 +82,7 @@ class MapsDisplayPoint extends ParserHook {
 			)			
 		);
 		$params['centre']->setDescription( wfMsg( 'maps-displaypoints-par-centre' ) );
+		$params['centre']->setDoManipulationOfDefault( false );
 		
 		$params['title'] = new Parameter(
 			'title',
