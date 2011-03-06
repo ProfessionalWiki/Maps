@@ -500,13 +500,53 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
     public function getParameters() {
     	global $egMapsMapWidth, $egMapsMapHeight;
     	
-        $params = parent::exportFormatParameters();
+        $params = parent::getParameters();
         
-        $params[] = array( 'name' => 'zoom', 'type' => 'int', 'description' => wfMsg( 'semanticmaps_paramdesc_zoom' ) );
-        $params[] = array( 'name' => 'width', 'type' => 'int', 'description' => wfMsgExt( 'semanticmaps_paramdesc_width', 'parsemag', $egMapsMapWidth ) );
-        $params[] = array( 'name' => 'height', 'type' => 'int', 'description' => wfMsgExt( 'semanticmaps_paramdesc_height', 'parsemag', $egMapsMapHeight ) );
+		$paramDescs = SMQueryPrinters::getParameterInfo();
+		$this->service->addParameterInfo( $paramDescs ); 
+
+		foreach ( $paramDescs as $paramDesc ) {
+			$param = array(
+				'name' => $paramDesc->getName(),
+				'type' => $this->getMappedParamType( $paramDesc->getType() ),
+				'description' => $paramDesc->getDescription() ? $paramDesc->getDescription() : '',
+				'default' => $paramDesc->isRequired() ? '' : $paramDesc->getDefault()
+			);
+			
+	        foreach ( $paramDesc->getCriteria() as $criterion ) {
+	    		if ( $criterion instanceof CriterionInArray ) {
+	    			$param['values'] = $criterion->getAllowedValues();
+	    			$param['type'] = $paramDesc->isList() ? 'enum-list' : 'enumeration';
+	    			break;
+	    		}
+	    	} 
+
+	    	$params[] = $param;
+		}
 
         return $params;
+    }
+    
+    /**
+     * Takes in an element of the Parameter::TYPE_ enum and turns it into an SMW type (string) indicator.
+     * 
+     * @since 0.7.6
+     * 
+     * @param Parameter::TYPE_ $type
+     * 
+     * @return string
+     */
+    protected function getMappedParamType( $type ) {
+    	static $typeMap = array(
+    		Parameter::TYPE_STRING => 'string',
+    		Parameter::TYPE_BOOLEAN => 'boolean',
+    		Parameter::TYPE_CHAR => 'int',
+    		Parameter::TYPE_FLOAT => 'int',
+    		Parameter::TYPE_INTEGER => 'int',
+    		Parameter::TYPE_NUMBER => 'int',
+    	);
+    	
+    	return $typeMap[$type];
     }
 	
 }
