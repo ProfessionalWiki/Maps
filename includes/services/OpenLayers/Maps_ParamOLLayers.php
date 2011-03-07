@@ -90,8 +90,7 @@ class MapsParamOLLayers extends ListParameterManipulation {
 		
 		$parameter->setValue( $egMapsUseRL ? $layerDefs : '[' . implode( ',', $layerDefs ) . ']' );
 		
-		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getDependencies( $layerNames ) );
-		
+		//MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getDependencies( $layerNames ) );
 	}
 	
 	/**

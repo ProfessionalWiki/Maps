@@ -97,6 +97,7 @@ else {
 	
 	// Autoload the "includes/manipulations/" classes.
 	$manDir = $incDir . 'manipulations/';
+	$wgAutoloadClasses['ParamManipulationBoolstr']	= $manDir . 'ParamManipulationBoolstr.php';
 	$wgAutoloadClasses['MapsParamCoordSet'] 		= $manDir . 'Maps_ParamCoordSet.php';
 	$wgAutoloadClasses['MapsParamDimension'] 		= $manDir . 'Maps_ParamDimension.php';
 	$wgAutoloadClasses['MapsParamGeoService'] 		= $manDir . 'Maps_ParamGeoService.php';
