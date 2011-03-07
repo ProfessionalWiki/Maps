@@ -683,6 +683,13 @@ $messages['ksh'] = array(
 	'semanticmaps_paramdesc_layers' => 'De Nivohs, di för di Kaat ze han sin',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'semanticmaps_notfound' => 'nehate dîtin',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
