@@ -3104,10 +3104,14 @@ $messages['zh-cn'] = array(
 	'maps-longitude' => '经度：',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Hydra
+ */
 $messages['zh-hans'] = array(
+	'maps_name' => '地图',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入中...',
+	'maps-others' => '其他',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '东',
 	'maps-abb-south' => '南',
