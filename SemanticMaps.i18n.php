@@ -247,8 +247,7 @@ Serveis de mapes disponibles: $1",
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die mit der Softwareerweiterung „Semantic MediaWiki“ gespeichert wurden ([http://mapping.referata.com/wiki/Semantic_Maps_examples Demo]).
-Unterstützte Kartendienste: $1',
+	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit Semantic MediaWiki gespeichert werden ([http://mapping.referata.com/wiki/Examples Demonstrationsseite]).',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps-kml-link' => 'KML-Datei ansehen',
 	'semanticmaps-default-kml-pagelink' => 'Artikel $1 ansehen',
@@ -502,7 +501,7 @@ Dostupne kartografske usluge: $1",
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]). K dispoziciji stejace kartowe słužby: $1',
+	'semanticmaps-desc' => 'Zmóžnja zwobraznjenje a wobdźěłanje koordinatowych datow, kotrež su so z rozšěrjenjom Semantic MediaWiki składowali ([http://mapping.referata.com/wiki/Examples přikłady]).',
 	'semanticmaps-unrecognizeddistance' => 'Hódnota $1 płaćiwa distanca njeje.',
 	'semanticmaps-kml-link' => 'KML-dataju sej wobhladać',
 	'semanticmaps-default-kml-pagelink' => 'Nastawk $1 sej wobhladać',
@@ -747,8 +746,7 @@ $messages['ml'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://mapping.referata.com/wiki/Semantic_Maps_examples demo]).
-Beschikbare kaartdiensten: $1',
+	'semanticmaps-desc' => 'Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in Semantic MediaWiki te bewerken en te bekijken',
 	'semanticmaps-unrecognizeddistance' => 'De waarde "$1" is geen geldige afstand.',
 	'semanticmaps-kml-link' => 'KML-bestand bekijken',
 	'semanticmaps-default-kml-pagelink' => 'Pagina $1 bekijken',
