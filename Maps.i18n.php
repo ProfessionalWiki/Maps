@@ -15,9 +15,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'maps_name' => 'Maps',
-	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demos]).
-{{PLURAL:$2|Mapping service is|Available mapping services:}} $1",
+	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://mapping.referata.com/wiki/Examples demos])",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
 	'maps-markers' => 'Markers',
