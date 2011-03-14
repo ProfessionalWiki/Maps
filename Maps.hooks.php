@@ -60,35 +60,6 @@ final class MapsHooks {
 	}
 
 	/**
-	 * Register the resource modules for the resource loader.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @param ResourceLoader $resourceLoader
-	 * 
-	 * @return true
-	 */
-	public static function registerResourceLoaderModules( ResourceLoader &$resourceLoader ) {
-		global $egMapsScriptPath;
-		/*
-		$modules = array(
-			'ext.maps.common' => array(
-			
-			),
-		);
-		
-		foreach ( $modules as $name => $resources ) { 
-			$resourceLoader->register( $name, new ResourceLoaderFileModule(
-				$resources,
-				dirname( __FILE__ ),
-				$egMapsScriptPath'
-			) ); 
-		}
-		*/
-		return true;
-	}
-	
-	/**
 	 * Intercept pages in the Layer namespace to handle them correctly.
 	 *
 	 * @param $title: Title

@@ -41,15 +41,6 @@ abstract class MapsMappingService implements iMappingService {
 	protected $features;
 	
 	/**
-	 * A list of names of resource modules to add.
-	 * 
-	 * @since 0.7.3
-	 * 
-	 * @var array
-	 */	
-	protected $resourceModules = array();
-	
-	/**
 	 * A list of dependencies (header items) that have been added.
 	 * 
 	 * @since 0.6.3
@@ -123,18 +114,10 @@ abstract class MapsMappingService implements iMappingService {
 			if ( $dependencies ) {
 				$parserOrOut->getOutput()->addHeadItem( $dependencies );
 			}
-			
-			if ( $egMapsUseRL /* method_exists( $parserOrOut->getOutput(), 'addModules' ) */ ) {
-				$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
-			}
 		} 
 		else if ( $parserOrOut instanceof OutputPage ) { 
 			if ( $dependencies ) {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
-			}
-			
-			if ( $egMapsUseRL /* method_exists( $parserOrOut, 'addModules' ) */ ) {
-				$parserOrOut->addModules( $this->getResourceModules() );
 			}
 		}			
 	}
@@ -229,28 +212,6 @@ abstract class MapsMappingService implements iMappingService {
 	 */
 	protected function getDependencies() {
 		return array();
-	}
-	
-	/**
-	 * Returns the resource modules that need to be loaded to use this mapping service.
-	 * 
-	 * @since 0.7.3
-	 * 
-	 * @return array of string
-	 */
-	protected function getResourceModules() {
-		return $this->resourceModules;
-	}
-	
-	/**
-	 * Add one or more names of resource modules that should be loaded.
-	 * 
-	 * @since 0.7.3
-	 * 
-	 * @param mixed $modules Array of string or string
-	 */
-	public function addResourceModules( $modules ) {
-		$this->resourceModules = array_merge( $this->resourceModules, (array)$modules );
 	}
 	
 }

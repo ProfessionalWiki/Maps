@@ -26,9 +26,6 @@ $wgAutoloadClasses['MapsOpenLayersDispMap'] 		= dirname( __FILE__ ) . '/Maps_Ope
 $wgAutoloadClasses['MapsOpenLayersDispPoint'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
 $wgAutoloadClasses['MapsParamOLLayers'] 			= dirname( __FILE__ ) . '/Maps_ParamOLLayers.php';	
 
-// Since 0.7.3
-$wgHooks['ResourceLoaderRegisterModules'][] = 'MapsOpenLayers::registerResourceLoaderModules';
-
 MapsMappingServices::registerService( 
 	'openlayers',
 	'MapsOpenLayers',
