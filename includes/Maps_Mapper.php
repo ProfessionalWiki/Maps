@@ -32,35 +32,6 @@ final class MapsMapper {
 	}
 	
 	/**
-	 * Adds a string of JavaScript as dependency for a mapping service
-	 * after wrapping it in an onload hook and script tag. This is sort
-	 * of a hack, but it takes care of the difference between artciles
-	 * and special pages.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @param iMappingService $service 
-	 * @param string $script
-	 */
-	public static function addInlineScript( iMappingService $service, $script ) {
-		static $addOnloadJs = false;
-		
-		if ( method_exists( 'OutputPage', 'addModules' ) && !$addOnloadJs ) {
-			global $egMapsScriptPath, $egMapsStyleVersion;
-			
-			$service->addDependency(
-				Html::linkedScript( "$egMapsScriptPath/includes/mapsonload.js?$egMapsStyleVersion" )
-			);
-			
-			$addOnloadJs = true;
-		} 		
-		
-		$service->addDependency( Html::inlineScript( 
-			( method_exists( 'OutputPage', 'addModules' ) ? 'addMapsOnloadHook' : 'addOnloadHook' ) . "( function() { $script } );"
-		) );
-	}
-	
-	/**
 	 * Encode a variable of unknown type to JavaScript.
 	 * Arrays are converted to JS arrays, objects are converted to JS associative
 	 * arrays (objects). So cast your PHP associative arrays to objects before
@@ -68,7 +39,7 @@ final class MapsMapper {
 	 * 
 	 * This is a copy of
 	 * @see Xml::encodeJsVar
-	 * which fixes incorrect behaviour with floats (fixed in MW 1.18).
+	 * which fixes incorrect behaviour with floats.
 	 * 
 	 * @since 0.7.1
 	 * 
@@ -164,21 +135,49 @@ final class MapsMapper {
 	/**
 	 * Resolves the url of images provided as wiki page; leaves others alone.
 	 * 
-	 * @since 0.7.1
+	 * @since 0.8
 	 * 
-	 * @param string $image
+	 * @param string $file
 	 * 
 	 * @return string
 	 */
-	public static function getImageUrl( $image ) {
-		$title = Title::newFromText( $image, NS_FILE );
+	public static function getFileUrl( $file ) {
+		$title = Title::newFromText( $file, NS_FILE );
 
 		if ( !is_null( $title ) && $title->getNamespace() == NS_FILE && $title->exists() ) {
 			$imagePage = new ImagePage( $title );
-			$image = $imagePage->getDisplayedFile()->getURL();
+			$file = $imagePage->getDisplayedFile()->getURL();
 		}		
 		
-		return $image;
+		return $file;
+	}
+	
+	/**
+	 * Returns JS to init the vars to hold the map data when they are not there already.
+	 * 
+	 * @since 0.8
+	 * 
+	 * @param string $serviceName
+	 */
+	public static function getBaseMapJSON( $serviceName ) {
+		static $baseInit = false;
+		static $serviceInit = array();
+		
+		$json = '';
+		
+		if ( !$baseInit ) {
+			$baseInit = true;
+			global $egMapsScriptPath;
+			$json .= 'var egMapsScriptPath =' . json_encode( $egMapsScriptPath ) . ';';
+			$json .= 'var maps={};';
+		}
+		
+		if ( !in_array( $serviceName, $serviceInit ) ) {
+			$serviceInit[] = $serviceName;
+			$json .= "maps.$serviceName={};";
+		}
+		
+		return $json;
 	}
 	
 }

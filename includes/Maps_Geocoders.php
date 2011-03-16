@@ -141,6 +141,10 @@ final class MapsGeocoders {
 	 * @return array with coordinates or false
 	 */
 	public static function geocode( $address, $geoService = '', $mappingService = false ) {
+		if ( !is_string( $address ) ) {
+			throw new Exception( 'Parameter $address must be a string at ' . __METHOD__ );
+		}		
+		
 		if ( !self::canGeocode() ) {
 			return false;
 		}

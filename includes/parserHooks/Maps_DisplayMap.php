@@ -13,22 +13,20 @@
 class MapsDisplayMap extends ParserHook {
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
 	public static function staticMagic( array &$magicWords, $langCode ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->magic( $magicWords, $langCode );
 	}
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */	
 	public static function staticInit( Parser &$wgParser ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->init( $wgParser );
 	}	
 	
@@ -45,7 +43,7 @@ class MapsDisplayMap extends ParserHook {
 	 * @return string
 	 */
 	protected function getName() {
-		return array( 'display_map', 'display map' );
+		return 'display_map';
 	}
 	
 	/**
@@ -68,9 +66,12 @@ class MapsDisplayMap extends ParserHook {
 		$params['coordinates'] = new Parameter( 'coordinates' );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation() );
-		$params['coordinates']->addManipulations( new MapsParamCoordSet() );		
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
 		$params['coordinates']->setDescription( wfMsg( 'maps-displaymap-par-coordinates' ) );
+		$params['coordinates']->setDoManipulationOfDefault( false );
+		$manipulation = new MapsParamLocation();
+		$manipulation->toJSONObj = true;
+		$params['coordinates']->addManipulations( $manipulation );		
 		
 		return $params;
 	}
@@ -102,7 +103,7 @@ class MapsDisplayMap extends ParserHook {
 		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
 		
 		// Get an instance of the class handling the current parser hook and service. 
-		$mapClass = $service->getFeatureInstance( 'display_map' );
+		$mapClass = $service->getFeatureInstance( $this->getName() );
 
 		return $mapClass->renderMap( $parameters, $this->parser );
 	}
@@ -125,7 +126,7 @@ class MapsDisplayMap extends ParserHook {
 	/**
 	 * @see ParserHook::getDescription()
 	 * 
-	 * @since 0.7.4
+	 * @since 0.8
 	 */
 	public function getDescription() {
 		return wfMsg( 'maps-displaymap-description' );

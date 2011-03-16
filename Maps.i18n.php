@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://mapping.referata.com/wiki/Examples demos])",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
+	'maps-load-failed' => 'Could not load the map!',
 	'maps-markers' => 'Markers',
 	'maps-others' => 'others',
 	'maps-ns-layer' => 'Layer',
@@ -50,7 +51,7 @@ $messages['en'] = array(
 	// Distance parser hook
 	'maps-distance-par-distance' => "The distance to convert to its equivalent with a specified unit.",
 	'maps-distance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
-	'maps-distance-par-unit' => 'The unit to output the distance in.',
+	'maps-distance-par-unit' => 'The unit the output the distance in.',
 
 	// Finddestination paser hook
 	'maps-finddestination-par-location' => 'The initial location.',
@@ -61,7 +62,7 @@ $messages['en'] = array(
 	'maps-finddestination-par-allowcoordinates' => 'Indicates if coordinates should be allowed. If set to no, only addresses will be accepted.',
 	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it is an address.",
 	'maps-finddestination-par-mappingservice' => "Parameter to indicate the mapping service to use with this function.
-This will allow maps to override the default value of the service parameter by the one that is optimal for the mapping service.
+This will maps allow to override the default value of the service parameter by the one that's optimal for the mapping service.
 (Example: In case of Google Maps, the Google geocoder will be used.)",
 
 	// Geocode parser hook
@@ -79,7 +80,7 @@ When no, every value will be geocoded, even valid coordinates.',
 	// Geodistance parser hook
 	'maps-geodistance-par-location1' => 'The first point in the set to calculate the distance between.',
 	'maps-geodistance-par-location2' => 'The second point in the set to calculate the distance between.',
-	'maps-geodistance-par-unit' => 'The unit to output the distance in.',
+	'maps-geodistance-par-unit' => 'The unit the output the distance in.',
 	'maps-geodistance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
 	'maps-geodistance-par-mappingservice' => 'The geocoding service to use to geocode any addresses.',
 	'maps-geodistance-par-geoservice' => 'The mapping service this is used together with.
@@ -148,7 +149,8 @@ $1',
 	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centered on $1, $2.',
 
-	// Google Maps v2 overlays
+	// Google Maps v2
+	'maps-googlemaps2-incompatbrowser' => 'Your browser is not compatible with Google Maps v2.',
 	'maps_overlays' => 'Overlays',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Videos',

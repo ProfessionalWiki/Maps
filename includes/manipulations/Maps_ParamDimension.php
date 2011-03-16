@@ -44,7 +44,7 @@ class MapsParamDimension extends ItemParameterManipulation {
 		if ( $value == 'auto' && $this->dimension == 'width' ) {
 			return;
 		}
-		
+
 		// Set the default if the value is not valid.
 		if ( !preg_match( '/^\d+(\.\d+)?(px|ex|em|%)?$/', $value ) ) {
 			$value = $this->dimension == 'width' ? $egMapsMapWidth : $egMapsMapHeight;

@@ -41,6 +41,15 @@ abstract class MapsMappingService implements iMappingService {
 	protected $features;
 	
 	/**
+	 * A list of names of resource modules to add.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @var array
+	 */	
+	protected $resourceModules = array();
+	
+	/**
 	 * A list of dependencies (header items) that have been added.
 	 * 
 	 * @since 0.6.3
@@ -66,7 +75,7 @@ abstract class MapsMappingService implements iMappingService {
 	 * @param string $serviceName
 	 * @param array $aliases
 	 */
-	function __construct( $serviceName, array $aliases = array() ) {
+	public function __construct( $serviceName, array $aliases = array() ) {
 		$this->serviceName = $serviceName;
 		$this->aliases = $aliases;
 	}
@@ -80,15 +89,6 @@ abstract class MapsMappingService implements iMappingService {
 	 */	
 	public function addParameterInfo( array &$parameterInfo ) {
 	}
-	
-	/**
-	 * @see iMappingService::createMarkersJs
-	 * 
-	 * @since 0.6.5
-	 */
-	public function createMarkersJs( array $markers ) {
-		return '[]';
-	}		
 	
 	/**
 	 * @see iMappingService::addFeature
@@ -105,21 +105,23 @@ abstract class MapsMappingService implements iMappingService {
 	 * @since 0.6.3
 	 */
 	public final function addDependencies( &$parserOrOut ) {
-		global $egMapsUseRL;
-		
-		$dependencies = $this->getDependencyHtml();
+		$dependencies = $this->getDependencyHtml(); 
 		
 		// Only add a head item when there are dependencies.
 		if ( $parserOrOut instanceof Parser ) {
 			if ( $dependencies ) {
 				$parserOrOut->getOutput()->addHeadItem( $dependencies );
 			}
+			
+			$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
 		} 
-		else if ( $parserOrOut instanceof OutputPage ) { 
+		else if ( $parserOrOut instanceof OutputPage ) {
 			if ( $dependencies ) {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
 			}
-		}			
+			
+			$parserOrOut->addModules( $this->getResourceModules() );
+		}
 	}
 	
 	/**
@@ -144,13 +146,15 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * @see iMappingService::addDependency
+	 * Returns a list of html fragments, such as script includes, the current service depends on.
 	 * 
 	 * @since 0.6.3
+	 * 
+	 * @return array
 	 */
-	public final function addDependency( $dependencyHtml ) {
-		$this->dependencies[] = $dependencyHtml;
-	}	
+	protected function getDependencies() {
+		return array();
+	}
 	
 	/**
 	 * @see iMappingService::getName
@@ -177,7 +181,7 @@ abstract class MapsMappingService implements iMappingService {
 	 */
 	public function getFeatureInstance( $featureName ) {
 		$className = $this->getFeature( $featureName );
-		
+
 		if ( $className === false || !class_exists( $className ) ) {
 			throw new Exception( 'Could not create a mapping feature class instance' );
 		}
@@ -204,14 +208,43 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
-	 * Returns a list of html fragments, such as script includes, the current service depends on.
+	 * Returns the resource modules that need to be loaded to use this mapping service.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @return array of string
+	 */
+	public function getResourceModules() {
+		return $this->resourceModules;
+	}
+	
+	/**
+	 * Add one or more names of resource modules that should be loaded.
+	 * 
+	 * @since 0.7.3
+	 * 
+	 * @param mixed $modules Array of string or string
+	 */
+	public function addResourceModules( $modules ) {
+		$this->resourceModules = array_merge( $this->resourceModules, (array)$modules );
+	}
+	
+	/**
+	 * @see iMappingService::addDependency
 	 * 
 	 * @since 0.6.3
-	 * 
-	 * @return array
 	 */
-	protected function getDependencies() {
-		return array();
+	public final function addDependency( $dependencyHtml ) {
+		$this->dependencies[] = $dependencyHtml;
 	}
+	
+	/**
+	 * @see iMappingService::getEarthZoom
+	 * 
+	 * @since 0.8
+	 */
+	public function getEarthZoom() {
+		return 1;
+	}		
 	
 }

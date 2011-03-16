@@ -14,22 +14,20 @@
 class MapsCoordinates extends ParserHook {
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
 	public static function staticMagic( array &$magicWords, $langCode ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->magic( $magicWords, $langCode );
 	}
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */	
 	public static function staticInit( Parser &$wgParser ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->init( $wgParser );
 	}	
 	
@@ -118,18 +116,20 @@ class MapsCoordinates extends ParserHook {
 	public function render( array $parameters ) {
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
-		if ( !$parsedCoords ) {
+		if ( $parsedCoords ) {
+			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
+		} else {
 			// The coordinates should be valid when this method gets called.
 			throw new Exception( 'Attempt to format an invalid set of coordinates' );
 		}
 		
-		return MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );		
+		return $output;		
 	}
 	
 	/**
 	 * @see ParserHook::getDescription()
 	 * 
-	 * @since 0.7.4
+	 * @since 0.8
 	 */
 	public function getDescription() {
 		return wfMsg( 'maps-coordinates-description' );

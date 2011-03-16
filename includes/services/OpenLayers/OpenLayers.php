@@ -19,18 +19,35 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
-	
+
+$wgResourceModules['ext.maps.openlayers'] = array(
+	'dependencies' => array( 'ext.maps.common', 'jquery.ui.resizable' ),
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/OpenLayers',	
+	'group' => 'ext.maps',
+	'scripts' =>   array(
+		'OpenLayers/OpenLayers.js',
+		'OSM/OpenStreetMap.js',
+		'jquery.openlayers.js',
+		'ext.maps.openlayers.js'
+	),
+	'styles' => array(
+		'OpenLayers/theme/default/style.css'
+	),
+	'messages' => array(
+		'maps-markers'
+	)			
+);
+
 $wgAutoloadClasses['CriterionOLLayer']	 			= dirname( __FILE__ ) . '/CriterionOLLayer.php';
 $wgAutoloadClasses['MapsOpenLayers'] 				= dirname( __FILE__ ) . '/Maps_OpenLayers.php';
-$wgAutoloadClasses['MapsOpenLayersDispMap'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispMap.php';
-$wgAutoloadClasses['MapsOpenLayersDispPoint'] 		= dirname( __FILE__ ) . '/Maps_OpenLayersDispPoint.php';
 $wgAutoloadClasses['MapsParamOLLayers'] 			= dirname( __FILE__ ) . '/Maps_ParamOLLayers.php';	
 
 MapsMappingServices::registerService( 
 	'openlayers',
 	'MapsOpenLayers',
 	array(
-		'display_point' => 'MapsOpenLayersDispPoint',
-		'display_map' => 'MapsOpenLayersDispMap'
+		'display_point' => 'MapsBasePointMap',
+		'display_map' => 'MapsBaseMap'
 	)
 );

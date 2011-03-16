@@ -7,24 +7,46 @@ version of Maps. You can find the most up-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
-=== Maps 0.7.6 ===
+=== Maps 0.8 ===
 (2011-0x-xx)
 
-* Fixed fatal error occuring when running maintenance/refreshLinks.php
+This version branched from Maps 0.7.x at version 0.7.3.
 
-=== Maps 0.7.5 ===
-(2011-02-16)
+==== New features ====
 
-* Fixed incorrect defaulting of geocoding service.
+* Added full Google Maps v3 support and set it as the default mapping service.
 
-* Improved default width of maps.
-
-=== Maps 0.7.4 ===
-(2011-01-20)
+* Added new geocoder making use of the new GeoNames API.
 
 * Added support for the auto-documentation features for parser hooks introduced in Validator 0.4.3.
 
+* Added resizable parameter to all mapping services except OSM.
+
+==== Removed features ====
+
+* Removed compatibility with pre MediaWiki 1.17.
+
+* Removed overlays parameter for Google Maps v2.
+
+==== Internal improvements ====
+
+* Usage of the Resource Loader for all scripts and stylesheets.
+
+* Rewrote all the map JavaScript to jQuery plugins.
+
+* Rewrote the way parameters are translated to JavaScript. Now one big PHP object is json_encoded.
+
 * Improved KML formatter.
+
+==== Bug fixes ====
+
+* Fixed geocoding service overriding based on mapping service (merged in from Maps 0.7.5).
+
+* Fixed fatal error occuring when running maintenance/refreshLinks.php.
+
+==== Other tweaks ====
+
+* Improved default width of maps (merged in from Maps 0.7.5).
 
 === Maps 0.7.3 ===
 (2010-11-30)

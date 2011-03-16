@@ -2,16 +2,20 @@
 
 /**
  * Class for geocoding requests with the GeoNames webservice.
+ * @deprecated
  * 
- * @since 0.8
+ * GeoNames Web Services Documentation: http://www.geonames.org/export/geonames-search.html
+ *
  * @file Maps_GeonamesGeocoder.php
  * @ingroup Maps
  * @ingroup Geocoders
  *
  * @licence GNU GPL v3
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * 
+ * Thanks go to Joel Natividad for pointing me to the GeoNames services.
  */
-final class MapsGeonamesGeocoder extends MapsGeocoder {
+final class MapsGeonamesOldGeocoder extends MapsGeocoder {
 	
 	/**
 	 * Registeres the geocoder.
@@ -19,14 +23,12 @@ final class MapsGeonamesGeocoder extends MapsGeocoder {
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 * 
-	 * @since 0.8
+	 * @since 0.7
 	 */
 	public static function register() {
 		global $egMapsGeoNamesUser;
 		
-		if ( $egMapsGeoNamesUser != '' ) {
-			MapsGeocoders::registerGeocoder( 'geonames', __CLASS__ );
-		}
+		MapsGeocoders::registerGeocoder( $egMapsGeoNamesUser == '' ? 'geonames' : 'geonamesold', __CLASS__ );
 		
 		return true;
 	}	
@@ -34,21 +36,20 @@ final class MapsGeonamesGeocoder extends MapsGeocoder {
 	/**
 	 * @see MapsGeocoder::getRequestUrl
 	 * 
-	 * @since 0.8
+	 * @since 0.7
 	 * 
 	 * @param string $address
 	 * 
 	 * @return string
 	 */	
 	protected function getRequestUrl( $address ) {
-		global $egMapsGeoNamesUser;
-		return 'http://api.geonames.org/search?q=' . urlencode( $address ) . '&maxRows=1&username=' . urlencode( $egMapsGeoNamesUser );
+		return 'http://ws.geonames.org/search?q=' . urlencode( $address ) . '&maxRows=1&style=SHORT';
 	}
 	
 	/**
 	 * @see MapsGeocoder::parseResponse
 	 * 
-	 * @since 0.8
+	 * @since 0.7
 	 * 
 	 * @param string $address
 	 * 

@@ -21,81 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 
-# Features configuration
-# Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
-
-	# Include the features you want to have available.
-	# Functionality in the features directory uses the Maps framework to support multiple mapping services.
-
-
-	# Registration of adittional parser hooks (tags and parser functions).
-		
-		$egMapsFeatures['pf'][]	= 'MapsDisplayMap::initialize';
-		$egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
-		
-		# Required for #coordinates.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';
-		# Required for #display_map.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsDisplayMap::staticMagic';	
-		# Required for #display_point.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayPoint::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsDisplayPoint::staticMagic';				
-		# Required for #distance.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';
-		# Required for #finddestination.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsFinddestination::staticMagic';
-		# Required for #geocode.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsGeocode::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsGeocode::staticMagic';		
-		# Required for #geodistance.
-		$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
-		$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';
-		
-	# Geocoders
-		
-		# Registration of the GeoNames service geocoder.
-		$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
-		
-		# Registration of the Google Geocoding (v2) service geocoder.
-		$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
-		
-		# Registration of the Yahoo! Geocoding service geocoder.
-		$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
-		
-	# Layers
-	
-		# Registration of the image layer type.
-		$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
-		
-		# Registration of the KML layer type.
-		$wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
-
-		
-		
 # Mapping services configuration
-# Note: You can not use aliases in the settings. Use the main service names.
-
-	# Include the mapping services that should be loaded into Maps.
-	# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
-	
-	# Google Maps API v2
-	include_once $egMapsDir . 'includes/services/GoogleMaps/GoogleMaps.php';
-	
-	# Google Maps API v3
-	include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
-	
-	# OpenLayers API
-	include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
-	
-	# Yahoo! Maps API
-	include_once $egMapsDir . 'includes/services/YahooMaps/YahooMaps.php';
-	
-	# WMF OSM
-	include_once $egMapsDir . 'includes/services/OSM/OSM.php';	
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
 	$egMapsAvailableServices = array(
@@ -110,7 +36,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# service is present in the $egMapsDefaultServices array for a certain feature.
 	# A service that supports all features is recommended. This service needs to be
 	# enabled, if not, the first one from the available services will be taken.
-	$egMapsDefaultService = 'googlemaps2';
+	$egMapsDefaultService = 'googlemaps3';
 	
 	# Array of String. The default mapping service for each feature, which will be
 	# used when no valid service is provided by the user. Each service needs to be
@@ -148,7 +74,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsAllowCoordsGeocoding = true;
 	
 	# Boolean. Sets if geocoded addresses should be stored in a cache.
-	$egMapsEnableGeoCache = true;	
+	$egMapsEnableGeoCache = true;
+	
+	# String. GeoNames API user/application name.
+	# Obtain an account here: http://www.geonames.org/login
+	# Do not forget to activate your account for API usage!
+	$egMapsGeoNamesUser = '';
 
 
 
@@ -225,6 +156,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# when the user does not provide one.
 	$egMapsDefaultTitle = '';
 	$egMapsDefaultLabel = '';
+	
+	$egMapsResizableByDefault = false;
 
 
 	
@@ -240,11 +173,52 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 # Specific mapping service configuration
 
+	# Google Maps v3
+	
+		# Integer. The default zoom of a map. This value will only be used when the
+		# user does not provide one.
+		$egMapsGMaps3Zoom = 14;
+		
+		# Array of String. The Google Maps v3 default map types. This value will only
+		# be used when the user does not provide one.
+		$egMapsGMaps3Types = array(
+			'roadmap',
+			'satellite',
+			'hybrid',
+			'terrain'
+		);
+		
+		# String. The default map type. This value will only be used when the user
+		# does not provide one.
+		$egMapsGMaps3Type = 'roadmap';
+		
+		$egMapsGMaps3Controls = array(
+			'pan',
+			'zoom',
+			'type',
+			'scale',
+			'streetview'			
+		);
+		
+		$egMapsGMaps3DefTypeStyle = 'default';
+		
+		$egMapsGMaps3DefZoomStyle = 'default';
+		
+		$egMapsGMaps3AutoInfoWindows = false;
+		
+		$egMapsGMaps3Layers = array();
+		
+		
+		
 	# Google Maps
 	
 		# Your Google Maps API key. Required for displaying Google Maps, and using the
 		# Google Geocoder services.
 		$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
+		
+		# If your wiki is accessable via multiple urls, you'll need multiple keys.
+		# Example: $egGoogleMapsKeys['http://yourdomain.tld/something'] = 'your key';
+		$egGoogleMapsKeys = array();
 		
 		# Integer. The default zoom of a map. This value will only be used when the
 		# user does not provide one.
@@ -288,28 +262,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'wikipedia',
 			'webcams'
 		);
-	
-	
-	
-	# Google Maps v3
-	
-		# Integer. The default zoom of a map. This value will only be used when the
-		# user does not provide one.
-		$egMapsGMaps3Zoom = 14;
 		
-		# Array of String. The Google Maps v3 default map types. This value will only
-		# be used when the user does not provide one.
-		$egMapsGMaps3Types = array(
-			'roadmap',
-			'satellite',
-			'hybrid',
-			'terrain'
-		);
-		
-		# String. The default map type. This value will only be used when the user
-		# does not provide one.
-		$egMapsGMaps3Type = 'roadmap';
-	
 	
 	
 	# Yahoo! Maps
@@ -408,8 +361,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-			'osm' => "<script type='$wgJsMimeType' src='$egMapsScriptPath/includes/services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>"
-		);	
+		);
+			
 
 	
 	

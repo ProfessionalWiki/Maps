@@ -29,7 +29,7 @@ class MapsParamOLLayers extends ListParameterManipulation {
 	 * @since 0.7
 	 */	
 	public function manipulate( Parameter &$parameter, array &$parameters ) {
-		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers, $egMapsUseRL;
+		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers;
 		
 		$layerDefs = array();
 		$layerNames = array();
@@ -88,9 +88,9 @@ class MapsParamOLLayers extends ListParameterManipulation {
 			}
 		}
 		
-		$parameter->setValue( $egMapsUseRL ? $layerDefs : '[' . implode( ',', $layerDefs ) . ']' );
+		$parameter->setValue( $layerDefs );
 		
-		//MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getDependencies( $layerNames ) );
+		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getDependencies( $layerNames ) );
 	}
 	
 	/**

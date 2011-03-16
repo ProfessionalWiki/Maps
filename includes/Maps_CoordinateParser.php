@@ -520,6 +520,10 @@ class MapsCoordinateParser {
 	 * @return string
 	 */
 	protected static function parseDMSCoordinate( $coordinate ) {
+		if ( !is_string( $coordinate ) ) {
+			throw new Exception( 'Parameter $coordinate must be a string at ' . __METHOD__ );
+		}
+		
 		$isNegative = $coordinate{0} == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		

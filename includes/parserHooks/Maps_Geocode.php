@@ -14,22 +14,20 @@
 class MapsGeocode extends ParserHook {
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
 	public static function staticMagic( array &$magicWords, $langCode ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->magic( $magicWords, $langCode );
 	}
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */	
 	public static function staticInit( Parser &$wgParser ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->init( $wgParser );
 	}	
 	
@@ -151,17 +149,19 @@ class MapsGeocode extends ParserHook {
 				$parameters['directional']
 			);
 			
-			return $geovalues ? $geovalues : '';
+			$output = $geovalues ? $geovalues : '';
 		}
 		else {
-			return htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
+			$output = htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
 		}
+
+		return $output;		
 	}
 
 	/**
 	 * @see ParserHook::getDescription()
 	 * 
-	 * @since 0.7.4
+	 * @since 0.8
 	 */
 	public function getDescription() {
 		return wfMsg( 'maps-geocode-description' );

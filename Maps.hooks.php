@@ -46,20 +46,6 @@ final class MapsHooks {
 	}
 	
 	/**
-	 * Adds the map JS to the bottom of the page. This is a hack to get
-	 * around the lack of inline script support in the MW 1.17 resource loader.
-	 * 
-	 * @since 0.7
-	 */
-	public static function addOnloadFunction( $skin, &$text ) {
-		if ( method_exists( 'ParserOutput', 'addModules' ) ) {
-			$text .= Html::inlineScript( 'if (window.runMapsOnloadHook) runMapsOnloadHook();' );
-		}
-		
-		return true;
-	}
-
-	/**
 	 * Intercept pages in the Layer namespace to handle them correctly.
 	 *
 	 * @param $title: Title

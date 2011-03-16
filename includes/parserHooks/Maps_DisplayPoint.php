@@ -13,22 +13,20 @@
 class MapsDisplayPoint extends ParserHook {
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
 	public static function staticMagic( array &$magicWords, $langCode ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->magic( $magicWords, $langCode );
 	}
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */	
 	public static function staticInit( Parser &$wgParser ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->init( $wgParser );
 	}	
 	
@@ -41,7 +39,7 @@ class MapsDisplayPoint extends ParserHook {
 	 * @return string
 	 */
 	protected function getName() {
-		return array( 'display_point', 'display_points', 'display point', 'display points' );
+		return array( 'display_point', 'display_points' );
 	}
 	
 	/**
@@ -68,21 +66,19 @@ class MapsDisplayPoint extends ParserHook {
 		$params['coordinates'] = new ListParameter( 'coordinates', $type === ParserHook::TYPE_FUNCTION ? ';' : "\n" );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
-		$params['coordinates']->addManipulations( new MapsParamCoordSet( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );		
+		$params['coordinates']->addManipulations( new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );		
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
 		$params['coordinates']->setDescription( wfMsg( 'maps-displaypoints-par-coordinates' ) );
 		
-		$params['centre'] = new Parameter(
-			'centre',
-			Parameter::TYPE_STRING,
-			false,
-			array( 'center' ),
-			array(
-				new CriterionIsLocation(),
-			)			
-		);
+		$params['centre'] = new Parameter( 'centre' );
+		$params['centre']->setDefault( false );
+		$params['centre']->addAliases( 'center' );
+		$params['centre']->addCriteria( new CriterionIsLocation() );
 		$params['centre']->setDescription( wfMsg( 'maps-displaypoints-par-centre' ) );
 		$params['centre']->setDoManipulationOfDefault( false );
+		$manipulation = new MapsParamLocation();
+		$manipulation->toJSONObj = true;
+		$params['centre']->addManipulations( $manipulation );
 		
 		$params['title'] = new Parameter(
 			'title',
@@ -142,7 +138,7 @@ class MapsDisplayPoint extends ParserHook {
 		// Get an instance of the class handling the current parser hook and service. 
 		$mapClass = $service->getFeatureInstance( 'display_point' );
 		
-		return $mapClass->getMapHtml( $parameters, $this->parser, $this->frame );
+		return $mapClass->renderMap( $parameters, $this->parser );
 	}
 	
 	/**
@@ -163,7 +159,7 @@ class MapsDisplayPoint extends ParserHook {
 	/**
 	 * @see ParserHook::getDescription()
 	 * 
-	 * @since 0.7.4
+	 * @since 0.8
 	 */
 	public function getDescription() {
 		return wfMsg( 'maps-displaypoint-description' );

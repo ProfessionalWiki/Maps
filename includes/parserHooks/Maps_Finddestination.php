@@ -14,22 +14,20 @@
 class MapsFinddestination extends ParserHook {
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
 	public static function staticMagic( array &$magicWords, $langCode ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->magic( $magicWords, $langCode );
 	}
 	
 	/**
-	 * No LST in pre-5.3 PHP *sigh*.
+	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */	
 	public static function staticInit( Parser &$wgParser ) {
-		$className = __CLASS__;
-		$instance = new $className();
+		$instance = new self;
 		return $instance->init( $wgParser );
 	}	
 	
@@ -163,24 +161,26 @@ class MapsFinddestination extends ParserHook {
 			$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		}
 		
-		if ( !$location ) {
+		// TODO
+		if ( $location ) {
+			$destination = MapsGeoFunctions::findDestination(
+				$location,
+				$parameters['bearing'],
+				MapsDistanceParser::parseDistance( $parameters['distance'] )
+			);
+			$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
+		} else {
 			// The location should be valid when this method gets called.
-			throw new Exception( 'Attempt to find a destination from an invalid location' );			
-		}	
-		
-		$destination = MapsGeoFunctions::findDestination(
-			$location,
-			$parameters['bearing'],
-			MapsDistanceParser::parseDistance( $parameters['distance'] )
-		);		
+			throw new Exception( 'Attempt to find a destination from an invalid location' );
+		}
 			
-		return MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
+		return $output;
 	}
 
 	/**
 	 * @see ParserHook::getDescription()
 	 * 
-	 * @since 0.7.4
+	 * @since 0.8
 	 */
 	public function getDescription() {
 		return wfMsg( 'maps-finddestination-description' );

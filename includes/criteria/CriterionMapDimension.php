@@ -41,7 +41,7 @@ class CriterionMapDimension extends ItemParameterCriterion {
 
 		if ( $value == 'auto' && $this->dimension == 'width' ) {
 			return true;
-		}
+		}		
 		
 		// See if the notation is valid.
 		if ( !preg_match( '/^\d+(\.\d+)?(px|ex|em|%)?$/', $value ) ) {

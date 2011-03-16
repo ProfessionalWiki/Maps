@@ -1,34 +1,34 @@
 <?php
 
 /**
- * Parameter manipulation converting the value to a boolean value as string.
+ * Parameter manipulation ensuring the value is an file url.
  * 
- * @since 0.7.6
+ * @since 0.8
  * 
- * @file ParamManipulationBoolstr.php
+ * @file Maps_ParamFile.php
  * @ingroup Maps
  * @ingroup ParameterManipulations
  * 
  * @author Jeroen De Dauw
  */
-class ParamManipulationBoolstr extends ItemParameterManipulation {
-	
+class MapsParamFile extends ItemParameterManipulation {
+
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.7.6
+	 * @since 0.7
 	 */
 	public function __construct() {
 		parent::__construct();
-	}	
+	}
 	
 	/**
 	 * @see ItemParameterManipulation::doManipulation
 	 * 
-	 * @since 0.7.6
+	 * @since 0.7
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
-		$value = $value ? 'true' : 'false';
+		$value = MapsMapper::getFileUrl( $value );
 	}
 	
 }

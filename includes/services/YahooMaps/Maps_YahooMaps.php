@@ -43,7 +43,8 @@ class MapsYahooMaps extends MapsMappingService {
 	 * @since 0.7
 	 */		
 	public function addParameterInfo( array &$params ) {
-		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
+		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes;
+		global $egMapsYahooMapsZoom, $egMapsYMapControls, $egMapsResizableByDefault;
 		
 		$params['zoom']->addCriteria( new CriterionInRange( 1, 13 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );		
@@ -51,10 +52,7 @@ class MapsYahooMaps extends MapsMappingService {
 		$params['controls'] = new ListParameter( 'controls' );
 		$params['controls']->setDefault( $egMapsYMapControls );
 		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
-		$params['controls']->addManipulations(
-			new ParamManipulationFunctions( 'strtolower' ),
-			new ParamManipulationImplode( ',', "'" )
-		);		
+		$params['controls']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );		
 		
 		$params['type'] = new Parameter(
 			'type',
@@ -78,14 +76,16 @@ class MapsYahooMaps extends MapsMappingService {
 				new CriterionInArray( self::getTypeNames() ),
 			)
 		);
-		$params['types']->addManipulations( new MapsParamYMapType(), new ParamManipulationImplode( ',', "'" ) );
+		$params['types']->addManipulations( new MapsParamYMapType() );
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsYahooAutozoom
 		);
-		$params['autozoom']->addManipulations( new ParamManipulationBoolstr() );
+		
+		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
+		$params['resizable']->setDefault( $egMapsResizableByDefault, false );		
 	}
 	
 	/**
@@ -97,6 +97,15 @@ class MapsYahooMaps extends MapsMappingService {
 		global $egMapsYahooMapsZoom;
 		return $egMapsYahooMapsZoom;
 	}
+	
+	/**
+	 * @see iMappingService::getEarthZoom
+	 * 
+	 * @since 0.8
+	 */
+	public function getEarthZoom() {
+		return 17;
+	}	
 
 	/**
 	 * @see MapsMappingService::getMapId
@@ -112,28 +121,6 @@ class MapsYahooMaps extends MapsMappingService {
 		
 		return 'map_yahoo_' . $mapsOnThisPage;
 	}		
-	
-	/**
-	 * @see MapsMappingService::createMarkersJs
-	 * 
-	 * @since 0.6.5
-	 */
-	public function createMarkersJs( array $markers ) {
-		$markerItems = array();
-		
-		foreach ( $markers as $marker ) {
-			$markerItems[] = MapsMapper::encodeJsVar( (object)array(
-				'lat' => $marker[0],
-				'lon' => $marker[1],
-				'title' => $marker[2],
-				'label' =>$marker[3],
-				'icon' => $marker[4]
-			) );
-		}
-		
-		// Create a string containing the marker JS.
-		return '[' . implode( ',', $markerItems ) . ']';
-	}	
 	
 	/**
 	 * @see MapsMappingService::getDependencies
@@ -169,4 +156,18 @@ class MapsYahooMaps extends MapsMappingService {
 		return array( 'scale', 'type', 'pan', 'zoom', 'zoom-short', 'auto-zoom' );
 	}
 
-}									
+	/**
+	 * @see MapsMappingService::getResourceModules
+	 * 
+	 * @since 0.8
+	 * 
+	 * @return array of string
+	 */
+	public function getResourceModules() {
+		return array_merge(
+			parent::getResourceModules(),
+			array( 'ext.maps.yahoomaps' )
+		);
+	}
+	
+}
