@@ -243,13 +243,13 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @since 0.7
 	 */
 	protected function addStaticLocations() {
-		global $wgTitle;
+		global $wgParser;
 		
 		// New parser object to render popup contents with.
-		$parser = new Parser();			
-		
-		$this->title = $parser->parse( $this->title, $wgTitle, new ParserOptions() )->getText();
-		$this->label = $parser->parse( $this->label, $wgTitle, new ParserOptions() )->getText();
+		$parser = clone $wgParser;			
+
+		$this->title = $parser->parse( $this->title, $parser->getTitle(), new ParserOptions() )->getText();
+		$this->label = $parser->parse( $this->label, $parser->getTitle(), new ParserOptions() )->getText();
 		
 		// Each $location is an array containg the coordinate set as first element, possibly followed by meta data. 
 		foreach ( $this->staticlocations as $location ) {
@@ -261,11 +261,11 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 			
 			if ( count( $location ) > 0 ) {
 				// Parse and add the point specific title if it's present.
-				$markerData['title'] = $parser->parse( $location[0], $wgTitle, new ParserOptions() )->getText();
+				$markerData['title'] = $parser->parse( $location[0], $parser->getTitle(), new ParserOptions() )->getText();
 				
 				if ( count( $location ) > 1 ) {
 					// Parse and add the point specific label if it's present.
-					$markerData['label'] = $parser->parse( $location[1], $wgTitle, new ParserOptions() )->getText();
+					$markerData['label'] = $parser->parse( $location[1], $parser->getTitle(), new ParserOptions() )->getText();
 					
 					if ( count( $location ) > 2 ) {
 						// Add the point specific icon if it's present.
@@ -307,7 +307,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 	 * @param array $row The record you want to add data from
 	 */
 	protected function addResultRow( $outputmode, array $row ) {
-		global $wgUser, $smgUseSpatialExtensions, $wgTitle;
+		global $wgUser, $smgUseSpatialExtensions;
 		
 		$skin = $wgUser->getSkin();
 		
@@ -354,7 +354,8 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 		
 		if ( $this->template ) {
 			// New parser object to render the templates with.
-			$parser = new Parser();			
+			global $wgParser;
+			$parser = clone $wgParser;			
 		}
 		
 		foreach ( $coords as $coord ) {
@@ -375,7 +376,7 @@ abstract class SMMapPrinter extends SMWResultPrinter implements iMappingFeature 
 							$label
 						);
 						
-						$text = $parser->parse( '{{' . implode( '|', $segments ) . '}}', $wgTitle, new ParserOptions() )->getText();
+						$text = $parser->parse( '{{' . implode( '|', $segments ) . '}}', $parser->getTitle(), new ParserOptions() )->getText();
 					}
 
 					$this->locations[] = array(
