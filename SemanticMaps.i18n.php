@@ -210,12 +210,12 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author SMP
  * @author Solde
  * @author Toniher
  */
 $messages['ca'] = array(
-	'semanticmaps-desc' => "Proporciona l'habilitat de visualitzar i editar dades de coordenades emmagatzemades a través de l'extensió del Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples alguns exemples]).
-Serveis de mapes disponibles: $1",
+	'semanticmaps-desc' => "Ofereix l'habilitat de visualitzar i editar dades de coordenades emmagatzemades a través de l'extensió Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples alguns exemples]).",
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no és un valor de distància.',
 	'semanticmaps-kml-link' => 'Visualitza el fitxer KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualitza la pàgina $1',
