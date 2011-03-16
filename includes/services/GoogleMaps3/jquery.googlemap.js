@@ -21,11 +21,17 @@
 	 * @return {google.maps.Marker}
 	 */
 	this.addMarker = function( markerData ) {
-		var marker = new google.maps.Marker( {
+		var markerOptions = {
 			map: this.map,
 			position: new google.maps.LatLng( markerData.lat , markerData.lon ),
 			title: markerData.title
-		} );
+		};
+		
+		if ( markerData.icon != '' ) {
+			markerOptions.icon = markerData.icon; 
+		}
+		
+		var marker = new google.maps.Marker( markerOptions );
 		
 		marker.openWindow = false;
 		
