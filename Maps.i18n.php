@@ -164,16 +164,13 @@ $1',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Kghbln
  * @author Purodha
  * @author Raymond
  * @author Тест
  */
 $messages['qqq'] = array(
-	'maps_name' => '{{Optional}}',
-	'maps_desc' => '{{desc}}
-
-* $1: a list of available mapping services
-* $2: number of items in list $1',
+	'maps-desc' => '{{desc}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-layer-property' => '{{Identical|Property}}',
@@ -599,9 +596,10 @@ $messages['cs'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps-desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu georeferenzieren ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
+	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Vorgänge ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
+	'maps-load-failed' => 'Die Karte konnte nicht geladen werden.',
 	'maps-markers' => 'Markierungen',
 	'maps-others' => 'andere',
 	'maps-ns-layer' => 'Ebene',
@@ -696,11 +694,13 @@ $1',
 	'maps-geocoder-not-available' => 'Die Funktion zum Georeferenzierung von Karten ist nicht verfügbar. Der Standort kann nicht georeferenziert werden.',
 	'maps_click_to_activate' => 'Klicken, um die Karte zu aktivieren.',
 	'maps_centred_on' => 'Karte ist auf $1, $2 zentriert.',
+	'maps-googlemaps2-incompatbrowser' => 'Der Browser ist nicht mit Google Maps v2 kompatibel.',
 	'maps_overlays' => 'Einblendungen',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcams',
+	'maps-googlemaps3-incompatbrowser' => 'Der Browser ist nicht mit Google Maps v3 kompatibel.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1281,9 +1281,10 @@ $1',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'maps-desc' => 'Skići móžnosć koordinaty w geografiskich kartach zwobraznić a adresy geokodować ([http://mapping.referata.com/wiki/Maps_examples demo])',
+	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([http://mapping.referata.com/wiki/Examples přikłady])',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Karta so začituje...',
+	'maps-load-failed' => 'Karta njeda so začitać!',
 	'maps-markers' => 'Marki',
 	'maps-others' => 'druhe',
 	'maps-ns-layer' => 'Runina',
@@ -1315,7 +1316,9 @@ $messages['hsb'] = array(
 	'maps-geocode-par-format' => 'Format za wudate koordinaty.',
 	'maps-geodistance-par-location1' => 'Prěni dypk z dweju dypkow, mjez kotrymajž ma so zdalenosć wuličić.',
 	'maps-geodistance-par-location2' => 'Druhi dypk z dweju dypkow, mjez kotrymajž ma so zdalenosć wuličić.',
+	'maps-geodistance-par-unit' => 'Jednotka, w kotrejž so zdalenosć podawa.',
 	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
+	'maps-displaymap-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
 	'maps-displaymap-par-coordinates' => 'Městno, na kotrež mapa ma so spočatnje centrować.',
 	'maps-displaypoints-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
 	'maps-displaypoints-par-coordinates' => 'Jedne městno abo wjace městnow, kotrež maja so na karće zwobraznić. Woznamjenjeja so z marku.',
@@ -1346,11 +1349,13 @@ $messages['hsb'] = array(
 	'maps-geocoder-not-available' => 'Funkcija geokodowanja Kartow k dispoziciji njesteji, twoje městno njehodźi so geokodować.',
 	'maps_click_to_activate' => 'Klikń, zo by kartu aktiwizował',
 	'maps_centred_on' => 'Karta na $1, $2 centrowana.',
+	'maps-googlemaps2-incompatbrowser' => 'Twój wobhladowak njeje kompatibelny z Google Maps v2.',
 	'maps_overlays' => 'Naworštowanja',
 	'maps_photos' => 'Fota',
 	'maps_videos' => 'Wideja',
 	'maps_wikipedia' => 'Wikipedija',
 	'maps_webcams' => 'Webcamy',
+	'maps-googlemaps3-incompatbrowser' => 'Twój wobhladowak njeje kompatibelny z Google Maps v3.',
 );
 
 /** Haitian (Kreyòl ayisyen) */
