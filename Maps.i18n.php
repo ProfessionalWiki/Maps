@@ -155,7 +155,10 @@ $1',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webcams'
+	'maps_webcams' => 'Webcams',
+
+	// Google Maps v3
+	'maps-googlemaps3-incompatbrowser' => 'Your browser is not compatible with Google Maps v3.',
 );
 
 /** Message documentation (Message documentation)

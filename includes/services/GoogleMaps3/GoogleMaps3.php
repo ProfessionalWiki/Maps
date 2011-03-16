@@ -28,10 +28,7 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
 	'scripts' => array(
 		'jquery.googlemap.js',
 		'ext.maps.googlemaps3.js',
-	),/*
-	'styles' => array(
-		'ext.maps.googlemaps2.css',
-	),*/
+	),
 	'messages' => array(
 		'maps-googlemaps3-incompatbrowser'
 	)
