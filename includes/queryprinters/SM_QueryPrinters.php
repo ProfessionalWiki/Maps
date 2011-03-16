@@ -46,7 +46,7 @@ final class SMQueryPrinters {
 			
 			// Initiate the format.
 			$aliases = $service->getAliases();
-			self::initFormat( $service->getName(), $QPClass, $aliases );
+			self::initFormat( $service->getName(), 'SMMapper' /* $QPClass */, $aliases );
 		}
 
 		// Add the 'map' result format if there are mapping services that have QP's loaded.
@@ -55,88 +55,6 @@ final class SMQueryPrinters {
 		}
 		
 		return true;
-	}
-	
-	/**
-	 * Returns an array containing the parameter info.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @return array
-	 */
-	public static function getParameterInfo() {
-		global $egMapsDefaultServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
-		global $egMapsDefaultLabel, $egMapsDefaultTitle;
-		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate;
-		
-		$params = MapsMapper::getCommonParameters();
-		
-		$params['staticlocations'] = new ListParameter( 'staticlocations', ';' );
-		$params['staticlocations']->addAliases( 'locations' );
-		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
-		$params['staticlocations']->addManipulations( new MapsParamCoordSet( '~' ) );		
-		$params['staticlocations']->setDefault( array() );
-		
-		$params['centre'] = new Parameter(
-			'centre',
-			Parameter::TYPE_STRING,
-			'', // TODO
-			array( 'center' ),
-			array(
-				new CriterionIsLocation(),
-			)			
-		);
-		
-		$params['icon'] = new Parameter(
-			'icon',
-			Parameter::TYPE_STRING,
-			'', // TODO
-			array(),
-			array(
-				New CriterionNotEmpty()
-			)
-		);	
-		
-		$params['forceshow'] = new Parameter(
-			'forceshow',
-			Parameter::TYPE_BOOLEAN,
-			$smgQPForceShow,
-			array( 'force show' )
-		);
-		$params['forceshow']->addManipulations( new ParamManipulationBoolean() );		
-
-		$params['showtitle'] = new Parameter(
-			'showtitle',
-			Parameter::TYPE_BOOLEAN,
-			$smgQPShowTitle,
-			array( 'show title' )
-		);
-		$params['showtitle']->addManipulations( new ParamManipulationBoolean() );		
-		
-		$params['template'] = new Parameter(
-			'template',
-			Parameter::TYPE_STRING,
-			$smgQPTemplate,
-			array(),
-			array(
-				New CriterionNotEmpty()
-			)
-		);
-		
-		$params['title'] = new Parameter(
-			'title',
-			Parameter::TYPE_STRING,
-			$egMapsDefaultTitle
-		);
-		
-		$params['label'] = new Parameter(
-			'label',
-			Parameter::TYPE_STRING,
-			$egMapsDefaultLabel,
-			array( 'text' )
-		);
-		
-		return $params;
 	}
 	
 	/**
@@ -174,7 +92,7 @@ final class SMQueryPrinters {
 		if ( isset( $smwgResultFormats ) ) {
 			$smwgResultFormats[$format] = $class;
 		}
-		else {
+		else { // BC with some old SMW version
 			SMWQueryProcessor::$formats[$format] = $class;
 		}
 	}

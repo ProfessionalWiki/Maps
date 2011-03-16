@@ -30,7 +30,7 @@ function smfInitYahooMaps() {
 	// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
 	if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMYahooMapsFormInput'] = dirname( __FILE__ ) . '/SM_YahooMapsFormInput.php';	
 	
-	MapsMappingServices::registerServiceFeature( 'yahoomaps', 'qp', 'SMYahooMapsQP' );
+	MapsMappingServices::registerServiceFeature( 'yahoomaps', 'qp', 'SMMapPrinter' );
 	MapsMappingServices::registerServiceFeature( 'yahoomaps', 'fi', 'SMYahooMapsFormInput' );		
 	
 	return true;

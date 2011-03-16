@@ -10,6 +10,7 @@
  * @file SemanticMaps.php
  * @ingroup SemanticMaps
  *
+ * @licence GNU GPL v3
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
@@ -26,6 +27,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+if ( version_compare( $wgVersion, '1.17', '<' ) ) {
+	die( '<b>Error:</b> This version of Semantic Maps requires MediaWiki 1.17 or above; use Maps 0.7.x for older versions.' );
+}
+
 // Show a warning if Maps is not loaded.
 if ( ! defined( 'Maps_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
@@ -36,7 +41,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
 }
 
-define( 'SM_VERSION', '0.7.6 alpha' );
+define( 'SM_VERSION', '0.8 alpha' );
 
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
@@ -49,17 +54,33 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 	'descriptionmsg' => 'semanticmaps-desc'
 );
 
-$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
-$smgScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';	
+$smgScriptPath 	= ( $wgExtensionAssetsPath === false ? '/extensions' : $wgExtensionAssetsPath ) . '/SemanticMaps';	
 $smgDir 		= dirname( __FILE__ ) . '/';
-unset( $useExtensionPath );
 
 $smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
 
 // Include the settings file.
 require_once 'SM_Settings.php';
 
-$wgExtensionFunctions[] = 'smfSetup';
+# (named) Array of String. This array contains the available features for Maps.
+# Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
+
+	# Query printers
+	include_once $smgDir . 'includes/queryprinters/SM_QueryPrinters.php';
+	# Form imputs
+	include_once $smgDir . 'includes/forminputs/SM_FormInputs.php'; 
+
+# Include the mapping services that should be loaded into Semantic Maps. 
+# Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
+	
+	# Google Maps API v2
+	include_once $smgDir . 'includes/services/GoogleMaps/SM_GoogleMaps.php';
+	# Google Maps API v3
+	include_once $smgDir . 'includes/services/GoogleMaps3/SM_GoogleMaps3.php';	
+	# OpenLayers API
+	include_once $smgDir . 'includes/services/OpenLayers/SM_OpenLayers.php';
+	# Yahoo! Maps API
+	include_once $smgDir . 'includes/services/YahooMaps/SM_YahooMaps.php';	
 
 $wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
 
@@ -88,23 +109,3 @@ $wgHooks['SMWResultFormat'][] = 'SMGeoCoordsValue::addGeoCoordsDefaultFormat';
 
 // Hook for adding a Semantic Maps links to the Admin Links extension.
 $wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';	
-
-/**
- * 'Initialization' function for the Semantic Maps extension. 
- * The only work done here is creating the extension credits for
- * Semantic Maps. The actuall work in done via the Maps hooks.
- * 
- * @since 0.1
- * 
- * @return true
- */
-function smfSetup() {
-	global $wgVersion;
-
-	// This function has been deprecated in 1.16, but needed for earlier versions.
-	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
-		wfLoadExtensionMessages( 'SemanticMaps' );
-	}	
-
-	return true;
-}

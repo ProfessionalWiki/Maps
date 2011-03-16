@@ -7,23 +7,23 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
-
-=== Semantic Maps 0.7.6 ===
+=== Semantic Maps 0.8 ===
 (2011-0x-xx)
+
+This version branched from Semantic Maps 0.7.x at version 0.7.3.
+See the maps release notes for all changes not specific to Semantic Maps.
 
 * Improved map query parameter support in the Special:Ask GUI
 
-* Fixed fatal error occuring when running maintenance/refreshLinks.php
+* Fixed fatal error occuring when running maintenance/refreshLinks.php.
 
-=== Semantic Maps 0.7.5 ===
-(2011-02-16)
+* Rewrote all the form inputs to jQuery plugins.
 
-Maintenance release matching Maps 0.7.5.
+* Rewrote the map printers to use the SMQueryHandler class.
 
-=== Semantic Maps 0.7.4 ===
-(2011-01-20)
+* Added geocoding capability to the OpenLayers form input when having a GeoNames API account.
 
-Maintenance release matching Maps 0.7.4.
+* Added 'update map' button to all form inputs.
 
 === Semantic Maps 0.7.3 ===
 (2010-11-30)

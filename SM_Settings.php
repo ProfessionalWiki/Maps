@@ -11,7 +11,8 @@
  * @file SM_Settings.php
  * @ingroup SemanticMaps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -20,28 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 
-# Features configuration
-
-	# (named) Array of String. This array contains the available features for Maps.
-	# Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
-	
-		# Query printers
-		include_once $smgDir . 'includes/queryprinters/SM_QueryPrinters.php';
-		# Form imputs
-		include_once $smgDir . 'includes/forminputs/SM_FormInputs.php'; 
-
-
-
 # Mapping services configuration
-
-	# Include the mapping services that should be loaded into Semantic Maps. 
-	# Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
-	# Google Maps API v2
-	include_once $smgDir . 'includes/services/GoogleMaps/SM_GoogleMaps.php';
-	# OpenLayers API
-	include_once $smgDir . 'includes/services/OpenLayers/SM_OpenLayers.php';
-	# Yahoo! Maps API
-	include_once $smgDir . 'includes/services/YahooMaps/SM_YahooMaps.php';
 
 	# Array of String. The default mapping service for each feature, which will be used when no valid service is provided by the user.
 	# Each service needs to be enabled, if not, the first one from the available services will be taken.
@@ -65,7 +45,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 	# Boolean. The default value for the forceshow parameter. Will force a map to be shown even when there are no query results
 	# when set to true. This value will only be used when the user does not provide one.
-	$smgQPForceShow = false;
+	$smgQPForceShow = true;
 	
 	# Boolean. The default value for the showtitle parameter. Will hide the title in the marker pop-ups when set to true. 
 	# This value will only be used when the user does not provide one.
@@ -86,7 +66,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 # Forms
 
+	$smgFIMulti = true;
+	
+	$smgFIFieldSize = 40;
+	
 	# Integer or string. The default width and height of maps in forms created by using Semantic Forms.
 	# These values only be used when the user does not provide them.
 	$smgFIWidth = 665;
 	$smgFIHeight = $egMapsMapHeight;
+	

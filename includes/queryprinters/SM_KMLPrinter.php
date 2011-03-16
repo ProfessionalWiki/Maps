@@ -57,10 +57,8 @@ class SMKMLPrinter extends SMWResultPrinter {
 	protected function getParameterInfo() {
 		$params = array();
 		
-		$params[] = new Parameter( 'linkpage', Parameter::TYPE_BOOLEAN, true );
-		
-		$params[] = new Parameter( 'linkpropnames', Parameter::TYPE_BOOLEAN, false );
-		$params[] = new Parameter( 'linkpropvalues', Parameter::TYPE_BOOLEAN, false );
+		$params[] = new Parameter( 'text' );
+		$params[] = new Parameter( 'title' );
 		
 		$params[] = new Parameter( 'linkabsolute', Parameter::TYPE_BOOLEAN, true );
 		
@@ -81,11 +79,13 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * @return string
 	 */
 	protected function getKML( SMWQueryResult $res, $outputmode, array $params ) {
-		$queryHandler = new SMQueryHandler( $res, $outputmode, $params );
-		$locations = $queryHandler->getLocations();
+		$queryHandler = new SMQueryHandler( $res, $outputmode, $params['linkabsolute'], $params['pagelinktext'], false );
+		$queryHandler->setText( $params['text'] );
+		$queryHandler->setTitle( $params['title'] );
+		$queryHandler->setSubjectSeparator( '' );
 		
 		$formatter = new MapsKMLFormatter( $params );
-		$formatter->addPlacemarks( $locations );
+		$formatter->addPlacemarks( $queryHandler->getLocations() );
 		
 		return $formatter->getKML();
 	}
@@ -106,9 +106,6 @@ class SMKMLPrinter extends SMWResultPrinter {
 		$link = $res->getQueryLink( $searchLabel ? $searchLabel : wfMsgForContent( 'semanticmaps-kml-link' ) );
 		$link->setParameter( 'kml', 'format' );
 		
-		$link->setParameter( $params['linkpage'] ? 'yes' : 'no', 'linkpage' );
-		$link->setParameter( $params['linkpropnames'] ? 'yes' : 'no', 'linkpropnames' );
-		$link->setParameter( $params['linkpropvalues'] ? 'yes' : 'no', 'linkpropvalues' );
 		$link->setParameter( $params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
 		
 		$link->setParameter( $params['pagelinktext'], 'pagelinktext' );

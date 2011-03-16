@@ -215,15 +215,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	protected function parseDBkeys( $args ) {
-		global $smgUseSpatialExtensions, $smgQPCoodFormat, $smgQPCoodDirectional;
+		global $smgQPCoodFormat, $smgQPCoodDirectional;
 		
-		if ( $smgUseSpatialExtensions ) {
-			// var_dump($args);exit;
-		}
-		else {
-			$this->coordinateSet['lat'] = (float)$args[0];
-			$this->coordinateSet['lon'] = (float)$args[1];
-		}
+		$this->coordinateSet['lat'] = (float)$args[0];
+		$this->coordinateSet['lon'] = (float)$args[1];
 		
 		$this->m_caption = MapsCoordinateParser::formatCoordinates(
 			$this->coordinateSet,
@@ -240,25 +235,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	public function getDBkeys() {
-		global $smgUseSpatialExtensions;
-		
 		$this->unstub();
 		
-		if ( $smgUseSpatialExtensions ) {
-			// TODO: test this
-			$point = str_replace( ',', '.', " POINT({$this->coordinateSet['lat']} {$this->coordinateSet['lon']}) " );
-			
-			$dbr = wfGetDB( DB_SLAVE );
-			$row = $dbr->selectRow( 'page', "GeomFromText('$point') AS geom", '' );
-			
-			return array( $row->geom );
-		}
-		else {
-			return array(
-				$this->coordinateSet['lat'],
-				$this->coordinateSet['lon']
-			);			
-		}
+		return array(
+			$this->coordinateSet['lat'],
+			$this->coordinateSet['lon']
+		);
 	}
 	
 	/**
@@ -267,8 +249,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */	
 	public function getSignature() {
-		global $smgUseSpatialExtensions;
-		return $smgUseSpatialExtensions ? 'c' : 'ff';
+		return 'ff';
 	}	
 
 	/**

@@ -23,9 +23,14 @@ $messages['en'] = array(
 	'semanticmaps-default-kml-pagelink' => 'View page $1',
 
 	// Forms
+	'semanticmaps-loading-forminput'	=> 'Loading map form input...',
 	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',
 	'semanticmaps_enteraddresshere' 	=> 'Enter address here',
+	'semanticmaps-updatemap' 			=> 'Update map',
 	'semanticmaps_notfound' 			=> 'not found',
+	'semanticmaps-forminput-remove'		=> 'Remove',
+	'semanticmaps-forminput-add'		=> 'Add',
+	'semanticmaps-forminput-locations'	=> 'Locations',
 	
 	// Parameter descriptions
 	'semanticmaps_paramdesc_format' 	=> 'The mapping service used to generate the map',
