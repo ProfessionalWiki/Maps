@@ -7,10 +7,13 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
+
 === Semantic Maps 0.7.6 ===
 (2011-0x-xx)
 
 * Improved map query parameter support in the Special:Ask GUI
+
+* Fixed fatal error occuring when running maintenance/refreshLinks.php
 
 === Semantic Maps 0.7.5 ===
 (2011-02-16)
