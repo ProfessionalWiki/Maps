@@ -82,7 +82,7 @@ abstract class MapsBaseMap {
 		}
 		
 		global $wgTitle;
-		if ( $wgTitle->getNamespace() == NS_SPECIAL ) {
+		if ( !is_null( $wgTitle ) && $wgTitle->getNamespace() == NS_SPECIAL ) {
 			global $wgOut;
 			$this->service->addDependencies( $wgOut );
 		}
