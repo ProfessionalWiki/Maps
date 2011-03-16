@@ -25,9 +25,9 @@ class MapsDisplayMap extends ParserHook {
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */	
-	public static function staticInit( Parser &$wgParser ) {
+	public static function staticInit( Parser &$parser ) {
 		$instance = new self;
-		return $instance->init( $wgParser );
+		return $instance->init( $parser );
 	}	
 	
 	public static function initialize() {
