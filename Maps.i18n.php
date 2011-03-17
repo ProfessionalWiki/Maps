@@ -1419,9 +1419,10 @@ $1',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'maps-desc' => 'Permitte monstrar datos de coordinatas in mappas, e adresses geocodice ([http://mapping.referata.com/wiki/Maps_examples demonstrationes])',
+	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://mapping.referata.com/wiki/Maps_examples demonstrationes])',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
+	'maps-load-failed' => 'Non poteva cargar le carta!',
 	'maps-markers' => 'Marcatores',
 	'maps-others' => 'alteres',
 	'maps-ns-layer' => 'Strato',
@@ -1518,11 +1519,13 @@ $1',
 	'maps-geocoder-not-available' => 'Le function de geocodification de Maps non es disponibile; tu loco non pote esser geocodificate.',
 	'maps_click_to_activate' => 'Clicca pro activar le carta',
 	'maps_centred_on' => 'Carta centrate super $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'Tu navigator del web non es compatibile con Google Maps version 2.',
 	'maps_overlays' => 'Superpositiones',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Cameras web',
+	'maps-googlemaps3-incompatbrowser' => 'Tu navigator de web non es compatibile con Google Maps version 3.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1922,9 +1925,10 @@ Katrografavimo paslaugos pasiekiamos: $1',
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'maps-desc' => 'Дава можност за приказ на координатни податоци на карти и геокодирање на адреси ([http://mapping.referata.com/wiki/Maps_examples мостри])',
+	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([http://mapping.referata.com/wiki/Maps_examples мостри])',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Ја вчитувам картата...',
+	'maps-load-failed' => 'Не можев да ја вчитам картата!',
 	'maps-markers' => 'Обележувачи',
 	'maps-others' => 'други',
 	'maps-ns-layer' => 'Слој',
@@ -2023,11 +2027,13 @@ $1',
 	'maps_yahoomaps' => 'Yahoo! Карти',
 	'maps_click_to_activate' => 'Кликнете за активирање на картата',
 	'maps_centred_on' => 'Средиште на картата во $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'Вашиот прелистувач не е погоден за Google Карти вер. 2.',
 	'maps_overlays' => 'Слоеви',
 	'maps_photos' => 'Фотографии',
 	'maps_videos' => 'Видеа',
 	'maps_wikipedia' => 'Википедија',
 	'maps_webcams' => 'Мреж. камери',
+	'maps-googlemaps3-incompatbrowser' => 'Вашиот прелистувач не е погоден за Google Карти вер. 3.',
 );
 
 /** Malayalam (മലയാളം) */
@@ -2072,9 +2078,10 @@ $messages['nah'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coordinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).',
+	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo])',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
+	'maps-load-failed' => 'De kaart kon niet geladen worden!',
 	'maps-markers' => 'Markeringen',
 	'maps-others' => 'anderen',
 	'maps-ns-layer' => 'Laag',
@@ -2174,11 +2181,13 @@ $1.',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_click_to_activate' => 'Klik om de kaart te activeren',
 	'maps_centred_on' => 'Kaart gecentreerd op $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'Uw browser kan niet werken met Google Maps v2.',
 	'maps_overlays' => "Overlay's",
 	'maps_photos' => "Foto's",
 	'maps_videos' => "Video's",
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcams',
+	'maps-googlemaps3-incompatbrowser' => 'Uw browser kan niet werken met Google Maps v3.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
