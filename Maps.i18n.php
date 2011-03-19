@@ -2916,10 +2916,24 @@ $messages['th'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'maps-desc' => 'Nagbibigay ng kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])',
+	'maps-desc' => 'Nagpapagana ng pagbabaon ng gumagalaw na mga mapa papaloob sa mga pahina ng wiki, pagkokodigong pangheograpiya ng mga tirahan at ibang mga gawaing pangheograpiya. ([http://mapping.referata.com/wiki/Examples mga pagpapatunghay])
+
+kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Ikinakarga ang mapa...',
+	'maps-load-failed' => 'Hindi maikarga ang mapa!',
 	'maps-markers' => 'Mga palatandaan',
+	'maps-others' => 'iba pa',
+	'maps-ns-layer' => 'Patong',
+	'maps-ns-layer-talk' => 'Usapan sa patong',
+	'maps-layer-property' => 'Ari-arian',
+	'maps-layer-value' => 'Halaga',
+	'maps-layer-errors' => 'Mga kamalian',
+	'maps-error-invalid-layerdef' => 'Hindi tanggap ang kahulugan ng patong.',
+	'maps-error-no-layertype' => 'Kailangan mong tukuyin ang uri ng patong. {{PLURAL:$2|Ganitong uri lamang ang|Ganitong mga uri ang}} tinatangkilik: $1',
+	'validation-error-invalid-layer' => 'Ang parametrong $1 ay dapat na isang tanggap na patong.',
+	'validation-error-invalid-layers' => 'Ang parametrong $1 ay dapat na isa mahigit pang tanggap na mga patong.',
+	'maps-layer-of-type' => 'Patong ng uring $1',
 	'validation-error-invalid-location' => 'Ang parametrong $1 ay dapat na isang tanggap na lokasyon.',
 	'validation-error-invalid-locations' => 'Ang parametrong $1 ay dapat na isa o mahigit pang tanggap na mga lokasyon.',
 	'validation-error-invalid-width' => 'Ang parametrong $1 ay dapat na isang tanggap na lapad.',
