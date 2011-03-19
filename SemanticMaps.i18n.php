@@ -440,9 +440,14 @@ $messages['gsw'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Dr Wert $1 isch kei giltigi Dischtanz.',
 	'semanticmaps-kml-link' => 'KML-Datei aaluege',
 	'semanticmaps-default-kml-pagelink' => 'Syte $1 aaluege',
+	'semanticmaps-loading-forminput' => 'Am Lade vu dr Formularyygabe zue dr Charte …',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nooluege',
 	'semanticmaps_enteraddresshere' => 'Doo Adräss yygee',
+	'semanticmaps-updatemap' => 'Charte aktualisiere',
 	'semanticmaps_notfound' => 'nit gfunde',
+	'semanticmaps-forminput-remove' => 'Uuseneh',
+	'semanticmaps-forminput-add' => 'Zuefiege',
+	'semanticmaps-forminput-locations' => 'Standort',
 	'semanticmaps_paramdesc_format' => 'Dr Chartedienscht, wu brucht wäre soll zum Erzyyge vu dr Charte',
 	'semanticmaps_paramdesc_geoservice' => 'Dr Geokodierigs-Service, wu brucht wäre soll zum umwandle vu Adrässe in Koordinate',
 	'semanticmaps_paramdesc_height' => 'D Hechi vu dr Charte, in Pixel (Standard: $1)',
@@ -838,7 +843,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'semanticmaps-desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Umożliwia przeglądanie oraz edytowanie współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples dema]).',
 	'semanticmaps-unrecognizeddistance' => 'Wartość $1 nie jest poprawną odległością.',
 	'semanticmaps-kml-link' => 'Wyświetla plik KML',
 	'semanticmaps-default-kml-pagelink' => 'Pokaż stronę $1',
