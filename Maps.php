@@ -60,7 +60,7 @@ define( 'Maps_COORDS_DMS', 'dms' );
 define( 'Maps_COORDS_DM', 'dm' );
 define( 'Maps_COORDS_DD', 'dd' );
 
-$egMapsScriptPath 	= ( $wgExtensionAssetsPath === false ? '/extensions' : $wgExtensionAssetsPath ) . '/Maps';
+$egMapsScriptPath 	= ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/Maps';
 $egMapsDir 			= dirname( __FILE__ ) . '/';
 
 $egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
