@@ -43,11 +43,16 @@ $wgAutoloadClasses['CriterionOLLayer']	 			= dirname( __FILE__ ) . '/CriterionOL
 $wgAutoloadClasses['MapsOpenLayers'] 				= dirname( __FILE__ ) . '/Maps_OpenLayers.php';
 $wgAutoloadClasses['MapsParamOLLayers'] 			= dirname( __FILE__ ) . '/Maps_ParamOLLayers.php';	
 
-MapsMappingServices::registerService( 
-	'openlayers',
-	'MapsOpenLayers',
-	array(
-		'display_point' => 'MapsBasePointMap',
-		'display_map' => 'MapsBaseMap'
-	)
-);
+$wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
+function efMapsInitOpenLayers() {
+	MapsMappingServices::registerService( 
+		'openlayers',
+		'MapsOpenLayers',
+		array(
+			'display_point' => 'MapsBasePointMap',
+			'display_map' => 'MapsBaseMap'
+		)
+	);
+	
+	return true;
+}
