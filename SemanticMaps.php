@@ -54,7 +54,7 @@ $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other']
 	'descriptionmsg' => 'semanticmaps-desc'
 );
 
-$smgScriptPath 	= ( $wgExtensionAssetsPath === false ? '/extensions' : $wgExtensionAssetsPath ) . '/SemanticMaps';	
+$smgScriptPath 	= ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/SemanticMaps';	
 $smgDir 		= dirname( __FILE__ ) . '/';
 
 $smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
