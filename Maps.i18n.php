@@ -490,7 +490,7 @@ $1",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'maps-desc' => 'Daje mogućnost prikazivanja podataka koordinata na mapama i geocode adresa ([http://mapping.referata.com/wiki/Maps_examples demo])',
+	'maps-desc' => 'Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije.  ([http://mapping.referata.com/wiki/Examples primeri])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavam kartu...',
 	'maps-markers' => 'Markeri',
@@ -942,6 +942,7 @@ $1',
 
 /** French (Français)
  * @author Crochet.david
+ * @author Hashar
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
@@ -955,6 +956,7 @@ $messages['fr'] = array(
 Services de cartographie disponibles : $1',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
+	'maps-load-failed' => 'Impossible de charger la carte !',
 	'maps-markers' => 'Marqueurs',
 	'maps-others' => 'autres',
 	'maps-ns-layer' => 'Couche',
@@ -1030,11 +1032,13 @@ $1",
 	'maps-geocoder-not-available' => "La fonctionnalité géocodage des cartes n'est pas disponible. Votre emplacement ne peut être géocodé.",
 	'maps_click_to_activate' => 'Cliquer pour activer la carte',
 	'maps_centred_on' => 'Carte centrée sur $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => "Votre navigateur n'est pas compatible avec Google Maps v2.",
 	'maps_overlays' => 'Superpositions',
 	'maps_photos' => 'Photos',
 	'maps_videos' => 'Vidéos',
 	'maps_wikipedia' => 'Wikipédia',
 	'maps_webcams' => 'Webcams',
+	'maps-googlemaps3-incompatbrowser' => "Votre navigateur n'est pas compatible avec Google Maps v3.",
 );
 
 /** Franco-Provençal (Arpetan) */
@@ -1843,7 +1847,7 @@ $messages['lad'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen [http://mapping.referata.com/wiki/Maps_examples Démo] ze weisen",
+	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen [http://mapping.referata.com/wiki/Examples Démo] ze weisen",
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-markers' => 'Markéierungen',
@@ -2022,8 +2026,8 @@ $1',
 $1',
 	'maps_map_cannot_be_displayed' => 'Картата не може да се прикаже.',
 	'maps-geocoder-not-available' => 'Функцијата за геокодирање на Карти е недостапна. Вашата местоположба не може да се геокодира.',
-	'maps_googlemaps2' => 'Google Карти в.2',
-	'maps_googlemaps3' => 'Google Карти в.2',
+	'maps_googlemaps2' => 'Google Карти вер. 2',
+	'maps_googlemaps3' => 'Google Карти вер. 2',
 	'maps_yahoomaps' => 'Yahoo! Карти',
 	'maps_click_to_activate' => 'Кликнете за активирање на картата',
 	'maps_centred_on' => 'Средиште на картата во $1, $2.',
@@ -2670,6 +2674,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Haffman
  * @author Lockal
  * @author MaxSem
  * @author McDutchie
@@ -2680,6 +2685,7 @@ $messages['ru'] = array(
 	'maps-desc' => 'Предоставляет возможность отображения координатных данных на картах и геокодирование адресов ([http://mapping.referata.com/wiki/Maps_examples демонстрация])',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
+	'maps-load-failed' => 'Невозможно загрузить карту!',
 	'maps-markers' => 'Отметки',
 	'maps-others' => 'другие',
 	'maps-ns-layer' => 'Слой',
@@ -2732,6 +2738,7 @@ $messages['ru'] = array(
 	'maps-geodistance-par-unit' => 'Единица измерения расстояния.',
 	'maps-geodistance-par-decimals' => 'Наибольшее количество цифр в дробной части результата.',
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
+	'maps-displaypoints-par-mappingservice' => 'Позволяет указывать сервис карт, который будет использоваться.',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
 	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
@@ -2761,11 +2768,13 @@ $1',
 	'maps-geocoder-not-available' => 'Функция геокодирования карт недоступна, ваше местоположение не может быть геокодировано.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
 	'maps_centred_on' => 'Центр карты — $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v2.',
 	'maps_overlays' => 'Слои',
 	'maps_photos' => 'Фото',
 	'maps_videos' => 'Видео',
 	'maps_wikipedia' => 'Википедия',
 	'maps_webcams' => 'Веб-камеры',
+	'maps-googlemaps3-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v3.',
 );
 
 /** Rusyn (Русиньскый)
@@ -3009,8 +3018,7 @@ $messages['tt-cyrl'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Надає можливість відображення координат даних в картах, і геокодування адрес ([http://mapping.referata.com/wiki/Maps_examples]). 
-Доступні картографічні служби: $1',
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://mapping.referata.com/wiki/Examples demos]).',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
 	'maps-markers' => 'Відмітки',
