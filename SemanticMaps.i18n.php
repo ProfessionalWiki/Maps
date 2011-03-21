@@ -187,13 +187,18 @@ $messages['br'] = array(
  * @author Palapa
  */
 $messages['bs'] = array(
-	'semanticmaps-desc' => 'Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja ([http://mapping.referata.com/wiki/Examples primjeri]).',
 	'semanticmaps-unrecognizeddistance' => 'Vrijednost $1 nije ispravno odstojanje.',
 	'semanticmaps-kml-link' => 'Pogledajte KML datoteku',
 	'semanticmaps-default-kml-pagelink' => 'Pogledajte stranicu $1',
+	'semanticmaps-loading-forminput' => 'Učitavam obrazac unosa za mapu...',
 	'semanticmaps_lookupcoordinates' => 'Nađi koordinate',
 	'semanticmaps_enteraddresshere' => 'Unesite adresu ovdje',
+	'semanticmaps-updatemap' => 'Ažuriraj mapu',
 	'semanticmaps_notfound' => 'nije pronađeno',
+	'semanticmaps-forminput-remove' => 'Ukloni',
+	'semanticmaps-forminput-add' => 'Dodaj',
+	'semanticmaps-forminput-locations' => 'Lokacije',
 	'semanticmaps_paramdesc_format' => 'Usluga kartiranja korištena za generiranje karte',
 	'semanticmaps_paramdesc_geoservice' => 'Usluga geokodiranja korištena za pretvaranje adresa u koordinate',
 	'semanticmaps_paramdesc_height' => 'Visina mape, u pikselima (pretpostavljeno je $1)',
@@ -363,6 +368,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author Hashar
  * @author IAlex
  * @author Jean-Frédéric
  * @author Peter17
@@ -377,7 +383,11 @@ $messages['fr'] = array(
 	'semanticmaps-default-kml-pagelink' => 'Voir l’article $1',
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
+	'semanticmaps-updatemap' => 'Mise à jour de la carte',
 	'semanticmaps_notfound' => 'pas trouvé',
+	'semanticmaps-forminput-remove' => 'Enlever',
+	'semanticmaps-forminput-add' => 'Ajouter',
+	'semanticmaps-forminput-locations' => 'Emplacements',
 	'semanticmaps_paramdesc_format' => 'Le service de cartographie utilisé pour générer la carte',
 	'semanticmaps_paramdesc_geoservice' => 'Le service de géocodage utilisé pour transformer les adresses en coordonnées',
 	'semanticmaps_paramdesc_height' => 'La hauteur de la carte, en pixels ($1 par défaut)',
@@ -903,14 +913,18 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([http://mapping.referata.com/wiki/Examples demonstração]).
-Serviços de cartografia disponíveis: $1',
+	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([http://mapping.referata.com/wiki/Examples demonstração]).',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
 	'semanticmaps-kml-link' => 'Ver o ficheiro KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver a página $1',
+	'semanticmaps-loading-forminput' => 'A carregar o formulário de entrada do mapa...',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
+	'semanticmaps-updatemap' => 'Actualizar mapa',
 	'semanticmaps_notfound' => 'não encontrado',
+	'semanticmaps-forminput-remove' => 'Remover',
+	'semanticmaps-forminput-add' => 'Adicionar',
+	'semanticmaps-forminput-locations' => 'Locais',
 	'semanticmaps_paramdesc_format' => 'O serviço de cartografia usado para gerar o mapa',
 	'semanticmaps_paramdesc_geoservice' => 'O serviço de geocódigos usado para transformar endereços em coordenadas',
 	'semanticmaps_paramdesc_height' => 'A altura do mapa, em pixels (por omissão, $1)',
