@@ -297,9 +297,10 @@ $messages['arz'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'maps-desc' => 'Забясьпечвае магчымасьць паказу каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://mapping.referata.com/wiki/Maps_examples дэманстрацыя])',
+	'maps-desc' => 'Забясьпечвае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі, геаграфічнага кадаваньня адрасоў і іншыя геаграфічныя апэрацыі. ([http://mapping.referata.com/wiki/Examples Прыклады])',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Загрузка мапы…',
+	'maps-load-failed' => 'Немагчыма загрузіць мапу!',
 	'maps-markers' => 'Пазнакі',
 	'maps-others' => 'іншыя',
 	'maps-ns-layer' => 'Слой',
@@ -395,11 +396,13 @@ $1',
 	'maps-geocoder-not-available' => 'Магчымасьць геаграфічнага кадаваньня для мапаў недаступная. Вашае месцазнаходжаньне ня можа быць геаграфічна закадаванае.',
 	'maps_click_to_activate' => 'Націсьніце для актывацыі мапы',
 	'maps_centred_on' => 'Цэнтар мапы — $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'Ваш браўзэр не сумяшчальны з Google Maps v2.',
 	'maps_overlays' => 'Слаі',
 	'maps_photos' => 'Фотаздымкі',
 	'maps_videos' => 'Відэа',
 	'maps_wikipedia' => 'Вікіпэдыя',
 	'maps_webcams' => 'Ўэб-камэры',
+	'maps-googlemaps3-incompatbrowser' => 'Ваш браўзэр не сумяшчальны з Google Maps v3.',
 );
 
 /** Bulgarian (Български)
@@ -2738,6 +2741,7 @@ $messages['ru'] = array(
 	'maps-geodistance-par-unit' => 'Единица измерения расстояния.',
 	'maps-geodistance-par-decimals' => 'Наибольшее количество цифр в дробной части результата.',
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
+	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-displaypoints-par-mappingservice' => 'Позволяет указывать сервис карт, который будет использоваться.',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
