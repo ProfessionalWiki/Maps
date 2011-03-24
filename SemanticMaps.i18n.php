@@ -168,6 +168,9 @@ $messages['br'] = array(
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
+	'semanticmaps-forminput-remove' => 'Dilemel',
+	'semanticmaps-forminput-add' => 'Ouzhpennañ',
+	'semanticmaps-forminput-locations' => "Lec'hiadurioù",
 	'semanticmaps_paramdesc_format' => 'Ar servij kartennaouiñ implijet da grouiñ ar gartenn',
 	'semanticmaps_paramdesc_geoservice' => "Ar servij geokodiñ implijet da dreiñ ar chomlec'hioù e daveennoù",
 	'semanticmaps_paramdesc_height' => 'Uhelder ar gartenn, e pikseloù ($1 dre izouer)',
@@ -250,7 +253,7 @@ $messages['ca'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit Semantic MediaWiki gespeichert werden ([http://mapping.referata.com/wiki/Examples Demonstrationsseite]).',
+	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit Semantic MediaWiki gespeichert werden ([http://mapping.referata.com/wiki/Examples Demonstrationsseite])',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps-kml-link' => 'KML-Datei ansehen',
 	'semanticmaps-default-kml-pagelink' => 'Artikel $1 ansehen',
@@ -686,7 +689,11 @@ $messages['km'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'semanticmaps-desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di per Semantesch Mediawiki faßjehallde woodte. (E [http://mapping.referata.com/wiki/Examples Beijshpöll])',
+	'semanticmaps-desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di mem „Semantesch Mediawiki“ faßjehallde woode sin. ([http://mapping.referata.com/wiki/Examples Beijshpöll för et vörzemaache])',
+	'semanticmaps-unrecognizeddistance' => 'Dä Wäät „$1“ es keine jölteje Afschtand.',
+	'semanticmaps-kml-link' => 'De KML-Dattei belooere',
+	'semanticmaps-default-kml-pagelink' => 'De Sigg „$1“ belooere',
+	'semanticmaps-loading-forminput' => 'Mer sin de Enjaabe vum Fommulaa for die Kaat aam laade&nbsp;…',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nohkike',
 	'semanticmaps_enteraddresshere' => 'Donn hee de Address enjäve',
 	'semanticmaps-updatemap' => 'De Kaad op der neue Shtand bränge',
