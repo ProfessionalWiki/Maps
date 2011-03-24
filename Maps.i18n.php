@@ -2454,9 +2454,10 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'maps-desc' => 'Permite apresentar dados de coordenadas em mapas e converter endereços em geocódigo ([http://mapping.referata.com/wiki/Maps_examples demonstração])',
+	'maps-desc' => 'Permite incorporar mapas dinâmicos nas páginas da wiki, conversão de endereços em geocódigo e outras operações geográficas ([http://mapping.referata.com/wiki/Examples demonstração])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'A carregar o mapa...',
+	'maps-load-failed' => 'Não foi possível carregar o mapa!',
 	'maps-markers' => 'Marcadores',
 	'maps-others' => 'outros',
 	'maps-ns-layer' => 'Camada',
@@ -2553,11 +2554,13 @@ $1',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para activar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'O seu browser não é compatível com o Google Maps v2.',
 	'maps_overlays' => 'Sobreposições',
 	'maps_photos' => 'Fotografias',
 	'maps_videos' => 'Vídeos',
 	'maps_wikipedia' => 'Wikipédia',
 	'maps_webcams' => 'Câmaras Web',
+	'maps-googlemaps3-incompatbrowser' => 'O seu browser não é compatível com o Google Maps v3.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
