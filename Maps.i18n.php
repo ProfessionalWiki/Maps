@@ -1076,6 +1076,7 @@ $messages['gl'] = array(
 	'maps-desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://mapping.referata.com/wiki/Maps_examples demostración])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
+	'maps-load-failed' => 'Non se puido cargar o mapa!',
 	'maps-markers' => 'Marcadores',
 	'maps-others' => 'outros',
 	'maps-ns-layer' => 'Capa',
@@ -1124,11 +1125,13 @@ $1',
 	'maps-geocoder-not-available' => 'A funcionalidade de xeocodificación de mapas non está dispoñible; non se pode xeocodificar a súa situación.',
 	'maps_click_to_activate' => 'Prema para activar o mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'O seu navegador é compatible co Google Maps v2.',
 	'maps_overlays' => 'Sobreposicións',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Vídeos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Cámaras web',
+	'maps-googlemaps3-incompatbrowser' => 'O seu navegador é compatible co Google Maps v3.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
@@ -1204,10 +1207,11 @@ $1',
  * @author Yonidebest
  */
 $messages['he'] = array(
-	'maps-desc' => 'הוספת האפשרות להצגת נתוני קואורדינטות במפות וכתובות geocode ([http://mapping.referata.com/wiki/Maps_examples demo]).
-שירותי המיפוי הזמינים: $1',
+	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.
+([http://mapping.referata.com/wiki/Maps_examples הדגמות])',
 	'maps_map' => 'מפה',
 	'maps-loading-map' => 'המפה נטענת...',
+	'maps-load-failed' => 'טעינת המפה לא הצליחה!',
 	'maps-markers' => 'סמנים',
 	'maps-others' => 'אחרים',
 	'maps-ns-layer' => 'שכבה',
@@ -1222,6 +1226,12 @@ $messages['he'] = array(
 	'validation-error-invalid-layers' => 'הפרמטר $1 צריך להיות שכבה תקינה אחת או יותר.',
 	'maps-layer-of-type' => 'שכבה מסוג $1',
 	'maps-layer-type-supported-by' => 'השכבה הזאת יכולה לעבוד רק עם {{PLURAL:$2|שירות המפות הבא|שירותי המפות הבאים}}: $1.',
+	'maps-displaymap-description' => 'להציג מפות גאוגרפיות ללא שום סמנים מוגדרים בוויקי עליהן.',
+	'maps-displaypoint-description' => 'להציג מפות גאוגרפיות עם סמן מוגדר בוויקי אחד או יותר עליהן.',
+	'maps-coordinates-par-location' => 'הקואורדינטות שברצונך לעצב.',
+	'maps-coordinates-par-format' => 'עיצוב היעד לקואורדינטות.',
+	'maps-coordinates-par-directional' => 'מציין האם לפלוט את הקואורדינטות באופן כיווני או לא.',
+	'maps-distance-par-decimals' => 'המספר המקסימלי של ספרות אחרי הנקודה בערך של התוצאה.',
 	'maps-finddestination-par-location' => 'המיקום ההתחלתי.',
 	'maps-finddestination-par-bearing' => 'הכיוון הראשוני.',
 	'maps-finddestination-par-distance' => 'מרחק הנסיעה.',
@@ -1233,6 +1243,12 @@ $messages['he'] = array(
 	'maps-geodistance-par-location2' => 'הנקודה השנייה בקבוצה לחישוב מרחק.',
 	'maps-geodistance-par-unit' => 'באילו יחידות לפלוט את המרחק.',
 	'maps-geodistance-par-decimals' => 'המספר המירבי של ספרות בשבר בתוצאה.',
+	'maps-geodistance-par-mappingservice' => 'שירות הקידוד הגאוגרפי שיקודד כתובות כלשהן.',
+	'maps-displaymap-par-coordinates' => 'באיזה מיקום המפה תתמרכז בתחילה.',
+	'maps-displaypoints-par-zoom' => 'מאפשר קביעת קמת התקריב של המפה.
+כאשר נתון זה לא מסופק וסמנים שונים נמצאים על המפה, יילקח התקריב המתאים ביותר, לא ברירת המחדל הניתנת להגדרה.',
+	'maps-displaypoints-par-label' => 'מאפשר להציב מלל שיוצג בכל החלונות הקופצים של כל הסמנים שאין להם תווית מסוימת.',
+	'maps-displaypoints-par-icon' => 'לאפשר להציב סמל לכל הסמנים.',
 	'validation-error-invalid-location' => 'הערך $1 צריך להיות מיקום תקין.',
 	'validation-error-invalid-locations' => 'הערך $1 צריך להיות מיקום תקין אחד או יותר.',
 	'validation-error-invalid-width' => 'הערך $1 צריך להיות רוחב תקין.',
@@ -1261,11 +1277,13 @@ $1',
 	'maps-geocoder-not-available' => 'הקידוד הגאוקרטוגרפי של מפות אינו זמין. לא ניתן לקודד את המיקום שנבחר.',
 	'maps_click_to_activate' => 'יש ללחוץ כדי להפעיל את המפה',
 	'maps_centred_on' => 'המפה ממורכזת סביב $1,$2',
+	'maps-googlemaps2-incompatbrowser' => 'הדפדפן שלך לא תומך בגוגל מפות גרסה 2.',
 	'maps_overlays' => 'שכבות',
 	'maps_photos' => 'תמונות',
 	'maps_videos' => 'סרטוני וידאו',
 	'maps_wikipedia' => 'ויקיפדיה',
 	'maps_webcams' => 'מצלמות אינטרנט',
+	'maps-googlemaps3-incompatbrowser' => 'הדפדפן שלך לא תומך בגוגל מפות גרסה 3.',
 );
 
 /** Hindi (हिन्दी) */
