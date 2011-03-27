@@ -1073,7 +1073,7 @@ $1',
  * @author Toliño
  */
 $messages['gl'] = array(
-	'maps-desc' => 'Proporciona a capacidade de mostrar datos de coordenadas en mapas, e enderezos xeocodificados ([http://mapping.referata.com/wiki/Maps_examples demostración])',
+	'maps-desc' => 'Proporciona a capacidade de mostrar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([http://mapping.referata.com/wiki/Examples demostración])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
 	'maps-load-failed' => 'Non se puido cargar o mapa!',
@@ -1238,12 +1238,15 @@ $messages['he'] = array(
 	'maps-finddestination-par-format' => 'באיזו תבנית לפלוט את היעד.',
 	'maps-finddestination-par-directional' => 'האם תבנית היעד צריכה להיות כיוונית או לא.',
 	'maps-finddestination-par-allowcoordinates' => 'האם לאפשר שימוש בקואורדינטות. אם לא, תתקבלנה רק כתובות.',
+	'maps-geocode-par-location' => 'הכתובת שאתם רוצים לעשות לה קידוד גאוגרפי.',
+	'maps-geocode-par-mappingservice' => "שירות הקידוד הגאוגרפי שאתם רוצים להשתמש בו. ר' רשימת שירותי קידוד גאוגרפי.",
 	'maps-geocode-par-directional' => 'האם לפלוט את הקואורדינטות באופן כיווני או לא.',
 	'maps-geodistance-par-location1' => 'הנקודה הראשונה בקבוצה לחישוב מרחק.',
 	'maps-geodistance-par-location2' => 'הנקודה השנייה בקבוצה לחישוב מרחק.',
 	'maps-geodistance-par-unit' => 'באילו יחידות לפלוט את המרחק.',
 	'maps-geodistance-par-decimals' => 'המספר המירבי של ספרות בשבר בתוצאה.',
 	'maps-geodistance-par-mappingservice' => 'שירות הקידוד הגאוגרפי שיקודד כתובות כלשהן.',
+	'maps-displaymap-par-mappingservice' => 'לאפשר להגדיר שירות מיפוי שישמש ליצרת המפה.',
 	'maps-displaymap-par-coordinates' => 'באיזה מיקום המפה תתמרכז בתחילה.',
 	'maps-displaypoints-par-zoom' => 'מאפשר קביעת קמת התקריב של המפה.
 כאשר נתון זה לא מסופק וסמנים שונים נמצאים על המפה, יילקח התקריב המתאים ביותר, לא ברירת המחדל הניתנת להגדרה.',
