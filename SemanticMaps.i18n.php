@@ -476,15 +476,25 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'semanticmaps-desc' => 'הוספת האפשרות לצפייה ולעריכה בנתוני קואורדינטה המאוחסנים דרך הרחבת המדיה־ויקי הסמנטי ([http://mapping.referata.com/wiki/Examples הדגמה]).1',
+	'semanticmaps-desc' => 'הוספת האפשרות לצפייה בנתוני הקואורדינטות המאוחסנים ולעריכתם באמצעות ההרחבה מדיה־ויקי סמנטית ([http://mapping.referata.com/wiki/Examples הדגמות]).',
+	'semanticmaps-unrecognizeddistance' => 'הערך $1 אינו מרחק תקין.',
+	'semanticmaps-kml-link' => 'הצגת קובץ KML',
+	'semanticmaps-default-kml-pagelink' => 'הצגת הדף $1',
+	'semanticmaps-loading-forminput' => 'טעינת המפה מהקלט...',
 	'semanticmaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
+	'semanticmaps-updatemap' => 'עדכון מפה',
 	'semanticmaps_notfound' => 'לא נמצאה',
+	'semanticmaps-forminput-remove' => 'הסרה',
+	'semanticmaps-forminput-add' => 'הוספה',
+	'semanticmaps-forminput-locations' => 'מיקומים',
 	'semanticmaps_paramdesc_format' => 'שירות המיפוי המשמש להכנת המפה',
+	'semanticmaps_paramdesc_geoservice' => 'שירות הקידוד הגאוגרפי שממיר כתובות לקואורדינטות',
 	'semanticmaps_paramdesc_height' => 'גובה המפה, בפיקסלים (ברירת המחדל היא $1)',
 	'semanticmaps_paramdesc_width' => 'רוחב המפה, בפיקסלים (ברירת המחדל היא $1)',
 	'semanticmaps_paramdesc_zoom' => 'רמת התקריב של המפה',
@@ -493,6 +503,7 @@ $messages['he'] = array(
 	'semanticmaps_paramdesc_types' => 'צורות המפה הזמינות על המפה',
 	'semanticmaps_paramdesc_type' => 'סוג ברירת המחדל של המפה עבור המפה',
 	'semanticmaps_paramdesc_overlays' => 'השכבות הזמינות במפה',
+	'semanticmaps_paramdesc_autozoom' => 'האם תקריב באמצעות גלגל העכבר מופעל',
 	'semanticmaps_paramdesc_layers' => 'השכבות הזמינות במפה',
 );
 
