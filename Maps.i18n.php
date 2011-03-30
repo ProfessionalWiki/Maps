@@ -51,7 +51,7 @@ $messages['en'] = array(
 	// Distance parser hook
 	'maps-distance-par-distance' => "The distance to convert to its equivalent with a specified unit.",
 	'maps-distance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
-	'maps-distance-par-unit' => 'The unit the output the distance in.',
+	'maps-distance-par-unit' => 'The unit to output the distance in.',
 
 	// Finddestination paser hook
 	'maps-finddestination-par-location' => 'The initial location.',
