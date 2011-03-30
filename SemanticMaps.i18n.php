@@ -155,6 +155,14 @@ $messages['be-tarask'] = array(
 	'semanticmaps_paramdesc_layers' => 'Даступныя слаі на мапе',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'semanticmaps-forminput-remove' => 'Премахване',
+	'semanticmaps-forminput-add' => 'Добавяне',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
