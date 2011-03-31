@@ -48,12 +48,16 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
 	'semanticmaps-desc' => '{{desc}}',
+	'semanticmaps-forminput-remove' => '{{Identical|Remove}}',
+	'semanticmaps-forminput-add' => '{{Identical|Add}}',
+	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
 	'semanticmaps_paramdesc_overlays' => 'An "overlay" is a map layer, containing icons or images, or whatever, to enrich, in this case, the map. Could for example be a layer with speed cameras, or municipality borders.',
 );
 
@@ -140,7 +144,11 @@ $messages['be-tarask'] = array(
 	'semanticmaps-default-kml-pagelink' => 'Паказаць старонку $1',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
+	'semanticmaps-updatemap' => 'Абнавіць мапу',
 	'semanticmaps_notfound' => 'ня знойдзена',
+	'semanticmaps-forminput-remove' => 'Выдаліць',
+	'semanticmaps-forminput-add' => 'Дадаць',
+	'semanticmaps-forminput-locations' => 'Месцы',
 	'semanticmaps_paramdesc_format' => 'Картаграфічны сэрвіс, які выкарыстоўваецца для стварэньня мапаў',
 	'semanticmaps_paramdesc_geoservice' => 'Сэрвіс геаграфічнага кадаваньня, які выкарыстоўваецца для пераўтварэньня адрасоў ў каардынаты',
 	'semanticmaps_paramdesc_height' => 'Вышыня мапы ў піксэлях (па змоўчваньні $1)',
@@ -1013,10 +1021,14 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'semanticmaps-desc' => "Dè l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([http://mapping.referata.com/wiki/Examples demo]).",
+	'semanticmaps-desc' => "Dèje l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([http://mapping.referata.com/wiki/Examples demo]).",
+	'semanticmaps-default-kml-pagelink' => "Vide 'a pàgene $1",
 	'semanticmaps_lookupcoordinates' => 'Ingroce le coordinate',
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
+	'semanticmaps-updatemap' => "Aggiorne 'a mappe",
 	'semanticmaps_notfound' => 'no acchiate',
+	'semanticmaps-forminput-remove' => 'Live',
+	'semanticmaps-forminput-add' => 'Aggiunge',
 );
 
 /** Russian (Русский)
