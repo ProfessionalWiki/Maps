@@ -912,6 +912,7 @@ $messages['fa'] = array(
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
+ * @author Nike
  * @author Str4nd
  * @author ZeiP
  */
@@ -920,6 +921,7 @@ $messages['fi'] = array(
 Käytettävissä olevat karttapalvelut: $1',
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
+	'maps-distance-par-unit' => 'Etäisyyden näyttämiseen käytettävä yksikkö.',
 	'maps-abb-north' => 'Pohj.',
 	'maps-abb-east' => 'It.',
 	'maps-abb-south' => 'Etel.',
@@ -1231,6 +1233,7 @@ $messages['he'] = array(
 	'maps-displaypoint-description' => 'להציג מפות גאוגרפיות עם סמן מוגדר בוויקי אחד או יותר עליהן.',
 	'maps-distance-description' => 'להמיר את המרחק ביחידות נתמכות מסוימות לערך מתאים ביחידות אחרות.',
 	'maps-finddestination-description' => 'למצוא את היעד בהינתן נקודת התחלה (שיכולה להיות בכל פורמט), הכיוון הראשוני והמרחק.',
+	'maps-geocode-description' => 'מפעיל קידוד גאוגרפי של כתובות, במילים אחרות, הופך מיקומים עם שמות קריאים לאנשים לערכות של קואורדינטות. יש תמיכה למספר שירותי קידוד גאוגרפי, ואין להתבלבל בינם לבין שירותי מיפוי.',
 	'maps-geodistance-description' => 'לחשב את המרחק הגאוגרפי בין שתי נוקודת, מכל פורמט לכל פורמט אחר.',
 	'maps-coordinates-par-location' => 'הקואורדינטות שברצונך לעצב.',
 	'maps-coordinates-par-format' => 'עיצוב היעד לקואורדינטות.',
@@ -1246,6 +1249,7 @@ $messages['he'] = array(
 	'maps-finddestination-par-allowcoordinates' => 'האם לאפשר שימוש בקואורדינטות. אם לא, תתקבלנה רק כתובות.',
 	'maps-geocode-par-location' => 'הכתובת שאתם רוצים לעשות לה קידוד גאוגרפי.',
 	'maps-geocode-par-mappingservice' => "שירות הקידוד הגאוגרפי שאתם רוצים להשתמש בו. ר' רשימת שירותי קידוד גאוגרפי.",
+	'maps-geocode-par-format' => 'פורמט לקואורדינטות הסופיות.',
 	'maps-geocode-par-directional' => 'האם לפלוט את הקואורדינטות באופן כיווני או לא.',
 	'maps-geodistance-par-location1' => 'הנקודה הראשונה בקבוצה לחישוב מרחק.',
 	'maps-geodistance-par-location2' => 'הנקודה השנייה בקבוצה לחישוב מרחק.',
@@ -1260,6 +1264,11 @@ $messages['he'] = array(
 כאשר נתון זה לא מסופק וסמנים שונים נמצאים על המפה, יילקח התקריב המתאים ביותר, לא ברירת המחדל הניתנת להגדרה.',
 	'maps-displaypoints-par-mappingservice' => 'מאפשר קביעת שירות המיפוי שיחולל את המפה.',
 	'maps-displaypoints-par-coordinates' => 'מיקום אחד או יותר להצגה על המפה. הם יסומנו על המפה בסמנים.',
+	'maps-displaypoints-par-centre' => 'מאפשר קביעת קואורדינטות של מרכז המפה עבור מופעי display_point.
+מקבל כתובות וקואורדינות.
+כאשר המאפיין הזה לא מצוין, המפה תמרכז את עצמה על הסמן שצוין או בין סמנים שצוינו.',
+	'maps-displaypoints-par-title' => 'מאפשר קביעת טקסט שיוצג בחלונות קופצים על כל הסמנים שאין להם כותרת מוגדרת.
+כאשר נעשה שימוש בזה יחד עם תווית, הכותרת תהיה בולטת ועם קו תחתי.',
 	'maps-displaypoints-par-label' => 'מאפשר להציב מלל שיוצג בכל החלונות הקופצים של כל הסמנים שאין להם תווית מסוימת.',
 	'maps-displaypoints-par-icon' => 'לאפשר להציב סמל לכל הסמנים.',
 	'validation-error-invalid-location' => 'הערך $1 צריך להיות מיקום תקין.',
@@ -2714,7 +2723,19 @@ $1',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps-desc' => "Dè l'abbilità a fà vedè le coordinate jndr'à le mappe e le indirizze geocodificate ([http://mapping.referata.com/wiki/Maps_examples demo]). Disponibbile le servizie de mappe: $1",
+	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://mapping.referata.com/wiki/Maps_examples demo])",
+	'maps_map' => 'Mappe',
+	'maps-loading-map' => "Stoche a careche 'a mappe...",
+	'maps-others' => 'otre',
+	'maps-layer-value' => 'Valore',
+	'maps-layer-errors' => 'Errore',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps_photos' => 'Foto',
+	'maps_videos' => 'Video',
+	'maps_wikipedia' => 'Uicchipèdie',
 );
 
 /** Russian (Русский)
