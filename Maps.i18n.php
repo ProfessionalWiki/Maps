@@ -3009,6 +3009,8 @@ kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga tria
 	'validation-error-invalid-layer' => 'Ang parametrong $1 ay dapat na isang tanggap na patong.',
 	'validation-error-invalid-layers' => 'Ang parametrong $1 ay dapat na isa mahigit pang tanggap na mga patong.',
 	'maps-layer-of-type' => 'Patong ng uring $1',
+	'maps-displaymap-description' => 'Ipakita ang mga mapang pangheograpiya na walang anumang tinukoy na pangwiking mga pananda sa ibabaw nila.',
+	'maps-displaypoint-description' => 'Ipakita ang mga mapang pangheograpiya na may isa o higit pang tinukoy na pangwiking mga pananda sa ibabaw nila.',
 	'validation-error-invalid-location' => 'Ang parametrong $1 ay dapat na isang tanggap na lokasyon.',
 	'validation-error-invalid-locations' => 'Ang parametrong $1 ay dapat na isa o mahigit pang tanggap na mga lokasyon.',
 	'validation-error-invalid-width' => 'Ang parametrong $1 ay dapat na isang tanggap na lapad.',
