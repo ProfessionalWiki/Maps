@@ -68,7 +68,7 @@ final class SMMapper {
 	 * @since 0.8
 	 */
 	public function getParameters() {
-		$this->queryPrinter->getParameters();
+		return $this->queryPrinter->getParameters();
 	}
 	
 	/**
