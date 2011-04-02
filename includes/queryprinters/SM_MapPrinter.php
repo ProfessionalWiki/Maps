@@ -343,7 +343,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	    	$params[] = $param;
 		}
 
-        return $params;
+		return $params;
     }
     
     /**
