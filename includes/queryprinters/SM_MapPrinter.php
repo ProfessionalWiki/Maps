@@ -42,6 +42,12 @@ class SMMapPrinter extends SMWResultPrinter {
 	 */
 	public function __construct( $format, $inline, iMappingService $service ) {
 		$this->service = $service;
+		
+		parent::__construct( $format, $inline );
+		
+		if ( property_exists( $this, 'useValidator' ) ) {
+			$this->useValidator = true;
+		}
 	}
 
 	/**
@@ -323,25 +329,31 @@ class SMMapPrinter extends SMWResultPrinter {
     public function getParameters() {
         $params = parent::getParameters();
         
-		// Now go through the descriptions, and convert them from Validator- to SMW-style.
-		foreach ( $this->getParameterInfo() as $paramDesc ) {
-			$param = array(
-				'name' => $paramDesc->getName(),
-				'type' => $this->getMappedParamType( $paramDesc->getType() ),
-				'description' => $paramDesc->getDescription() ? $paramDesc->getDescription() : '',
-				'default' => $paramDesc->isRequired() ? '' : $paramDesc->getDefault()
-			);
-			
-	        foreach ( $paramDesc->getCriteria() as $criterion ) {
-	    		if ( $criterion instanceof CriterionInArray ) {
-	    			$param['values'] = $criterion->getAllowedValues();
-	    			$param['type'] = $paramDesc->isList() ? 'enum-list' : 'enumeration';
-	    			break;
-	    		}
-	    	} 
-
-	    	$params[] = $param;
-		}
+        if ( version_compare( SMW_VERSION, '1.6', '<' ) ) {
+			// Go through the descriptions, and convert them from Validator- to SMW-style.
+			// This if for b/c with SMW 1.5.x; SMW 1.6 directly accepts Parameter objects.
+			foreach ( $this->getParameterInfo() as $paramDesc ) {
+				$param = array(
+					'name' => $paramDesc->getName(),
+					'type' => $this->getMappedParamType( $paramDesc->getType() ),
+					'description' => $paramDesc->getDescription() ? $paramDesc->getDescription() : '',
+					'default' => $paramDesc->isRequired() ? '' : $paramDesc->getDefault()
+				);
+				
+		        foreach ( $paramDesc->getCriteria() as $criterion ) {
+		    		if ( $criterion instanceof CriterionInArray ) {
+		    			$param['values'] = $criterion->getAllowedValues();
+		    			$param['type'] = $paramDesc->isList() ? 'enum-list' : 'enumeration';
+		    			break;
+		    		}
+		    	}
+	
+		    	$params[] = $param;
+			}
+        }
+        else {
+        	$params = array_merge( $params, $this->getParameterInfo() );
+        }
 
 		return $params;
     }
