@@ -121,7 +121,7 @@ class MapsDisplayMap extends ParserHook {
 			'noparse' => true,
 			'isHTML' => true
 		);
-	}	
+	}
 
 	/**
 	 * @see ParserHook::getDescription()
