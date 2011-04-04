@@ -1144,11 +1144,18 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'semanticmaps-desc' => 'Nagbibigay ng kakayahang makita at baguhin ang dato ng tugmaang nakatabi sa pamamagitan ng dugtong na Semantikong MediaWiki ([http://mapping.referata.com/wiki/Examples pagpapakita]).',
+	'semanticmaps-desc' => 'Nagbibigay ng kakayahang matingnan at baguhin ang dato ng tugmaang pampook na nakaimbak sa pamamagitan ng dugtong ng Semantikong MediaWiki ([http://mapping.referata.com/wiki/Examples pagpapamalas]).',
 	'semanticmaps-unrecognizeddistance' => 'Hindi isang tanggap na layo ang halagang $1.',
+	'semanticmaps-kml-link' => 'Tingnan ang talaksang KML',
+	'semanticmaps-default-kml-pagelink' => 'Tingnan ang pahinang $1',
+	'semanticmaps-loading-forminput' => 'Ikinakarga ang pagpapasok ng anyo ng mapa...',
 	'semanticmaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
 	'semanticmaps_enteraddresshere' => 'Ipasok ang adres dito',
+	'semanticmaps-updatemap' => 'Isapanahon ang mapa',
 	'semanticmaps_notfound' => 'hindi natagpuan',
+	'semanticmaps-forminput-remove' => 'Tanggalin',
+	'semanticmaps-forminput-add' => 'Idagdag',
+	'semanticmaps-forminput-locations' => 'Mga kinalalagyan',
 	'semanticmaps_paramdesc_format' => 'Ang palingkurang pangpagmamapa na ginamit sa paglikha ng mapa',
 	'semanticmaps_paramdesc_geoservice' => 'Ang paglingkurang pang-geokodigo na ginagamit upang maging mga tugmaang-pampook ang mga direksyon',
 	'semanticmaps_paramdesc_height' => 'Ang taas ng mapa, sa piksels ($1 ang likas na nakatakda)',
