@@ -41,7 +41,10 @@ final class MapsHooks {
 	 */
 	public static function registerUnitTests( array &$files ) {
 		$testDir = dirname( __FILE__ ) . '/test/';
-		//$files[] = $testDir . 'MapsCoordinateParserTest.php';
+		
+		$files[] = $testDir . 'MapsCoordinateParserTest.php';
+		$files[] = $testDir . 'MapsDistanceParserTest.php';
+		
 		return true;
 	}
 	
