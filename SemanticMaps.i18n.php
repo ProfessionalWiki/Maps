@@ -142,6 +142,7 @@ $messages['be-tarask'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Значэньне $1 — няслушная адлегласьць.',
 	'semanticmaps-kml-link' => 'Паказаць KML-файл',
 	'semanticmaps-default-kml-pagelink' => 'Паказаць старонку $1',
+	'semanticmaps-loading-forminput' => 'Загрузка мапы…',
 	'semanticmaps_lookupcoordinates' => 'Пошук каардынатаў',
 	'semanticmaps_enteraddresshere' => 'Увядзіце тут адрас',
 	'semanticmaps-updatemap' => 'Абнавіць мапу',
