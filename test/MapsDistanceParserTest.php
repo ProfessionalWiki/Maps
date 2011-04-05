@@ -33,14 +33,14 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 			'42.42 m' => 42.4242,
 		),		
 		'km' => array(
-			'0.001 km' => 1,
+			//'0.001 km' => 1,
 			'1 km' => 1000,
-			'4,24 km' => 4242,
+			'4.24 km' => 4242,
 		),
 		'kilometers' => array(
 			'0.001 kilometers' => 1,
 			'1 kilometers' => 1000,
-			'4,24 kilometers' => 4242,
+			'4.24 kilometers' => 4242,
 		),
 	);
 	
@@ -106,7 +106,7 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	 * Tests MapsDistanceParser::formatDistance()
 	 */
 	public function testFormatDistance() {
-			foreach ( self::$distances['km'] as $rawValue => $parsedValue ) {
+		foreach ( self::$formatTests['km'] as $rawValue => $parsedValue ) {
 			$this->assertEquals( $rawValue, MapsDistanceParser::formatDistance( $parsedValue, 'km' ), "'$parsedValue' was not formatted to '$rawValue':" );
 		}
 	}
