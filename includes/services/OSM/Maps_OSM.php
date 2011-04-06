@@ -66,12 +66,14 @@ class MapsOSM extends MapsMappingService {
 			Parameter::TYPE_BOOLEAN,
 			$egMapsOSMThumbs
 		);
+		$params['thumbs']->setDescription( wfMsg( 'maps-osm-par-thumbs' ) );
 
 		$params['photos'] = new Parameter(
 			'photos',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsOSMPhotos
-		);			
+		);
+		$params['photos']->setDescription( wfMsg( 'maps-osm-par-photos' ) );	
 	}	
 	
 }

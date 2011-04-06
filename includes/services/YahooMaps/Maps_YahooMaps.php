@@ -52,7 +52,8 @@ class MapsYahooMaps extends MapsMappingService {
 		$params['controls'] = new ListParameter( 'controls' );
 		$params['controls']->setDefault( $egMapsYMapControls );
 		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
-		$params['controls']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );		
+		$params['controls']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
+		$params['controls']->setDescription( wfMsg( 'maps-yahoomaps-par-controls' ) );
 		
 		$params['type'] = new Parameter(
 			'type',
@@ -65,6 +66,7 @@ class MapsYahooMaps extends MapsMappingService {
 			array( 'types' )
 		);
 		$params['type']->addManipulations( new MapsParamYMapType() );
+		$params['type']->setDescription( wfMsg( 'maps-yahoomaps-par-type' ) );
 
 		$params['types'] = new ListParameter(
 			'types',
@@ -77,15 +79,18 @@ class MapsYahooMaps extends MapsMappingService {
 			)
 		);
 		$params['types']->addManipulations( new MapsParamYMapType() );
+		$params['types']->setDescription( wfMsg( 'maps-yahoomaps-par-types' ) );
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsYahooAutozoom
 		);
+		$params['autozoom']->setDescription( wfMsg( 'maps-yahoomaps-par-autozoom' ) );
 		
 		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
-		$params['resizable']->setDefault( $egMapsResizableByDefault, false );		
+		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
+		$params['resizable']->setDescription( wfMsg( 'maps-par-resizable' ) );
 	}
 	
 	/**
