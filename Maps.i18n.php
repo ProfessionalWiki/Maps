@@ -149,6 +149,8 @@ $1',
 	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centered on $1, $2.',
 
+	'maps-par-resizable' => 'Makes the map resizable by dragging at it\'s lower right corner.',
+
 	// Google Maps v2
 	'maps-googlemaps2-incompatbrowser' => 'Your browser is not compatible with Google Maps v2.',
 	'maps_overlays' => 'Overlays',
@@ -168,7 +170,10 @@ $1',
 	'maps-googlemaps3-par-autoinfowindows' => 'Automatically open all info windows after the page has loaded.',
 	'maps-googlemaps3-par-kml' => 'KML files to load onto the map.',
 	'maps-googlemaps3-par-fusiontables' => 'IDs of Google Fusion Tables which should be loaded onto the map.',
-	'maps-googlemaps3-par-resizable' => 'Makes the map resizable by dragging at it\'s lower right corner.',
+
+	// OpenLayers
+	'maps-openlayers-par-controls' => 'The controls to place on the map.',
+	'maps-openlayers-par-layers' => 'The layers that will be available in the layer selector. The first layer will be shown when the map loads.',
 );
 
 /** Message documentation (Message documentation)

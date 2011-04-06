@@ -137,7 +137,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
 		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
-		$params['resizable']->setDescription( wfMsg( 'maps-googlemaps3-par-resizable' ) );	
+		$params['resizable']->setDescription( wfMsg( 'maps-par-resizable' ) );	
 	}
 	
 	/**

@@ -42,15 +42,18 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['controls']->addManipulations(
 			new ParamManipulationFunctions( 'strtolower' )
 		);
+		$params['controls']->setDescription( wfMsg( 'maps-openlayers-par-controls' ) );
 		
 		$params['layers'] = new ListParameter( 'layers' );
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
 		$params['layers']->setDoManipulationOfDefault( true );
 		$params['layers']->addCriteria( new CriterionOLLayer() );
 		$params['layers']->setDefault( $egMapsOLLayers );
+		$params['layers']->setDescription( wfMsg( 'maps-openlayers-par-layers' ) );
 		
 		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
-		$params['resizable']->setDefault( $egMapsResizableByDefault, false );		
+		$params['resizable']->setDefault( $egMapsResizableByDefault, false );	
+		$params['resizable']->setDescription( wfMsg( 'maps-par-resizable' ) );	
 	}
 	
 	/**
