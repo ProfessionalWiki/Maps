@@ -159,6 +159,16 @@ $1',
 
 	// Google Maps v3
 	'maps-googlemaps3-incompatbrowser' => 'Your browser is not compatible with Google Maps v3.',
+	'maps-googlemaps3-par-type' => 'The map type to initially show.',
+	'maps-googlemaps3-par-types' => 'The map types that will be available via the type control.',
+	'maps-googlemaps3-par-layers' => 'Special layers to load onto the map.',
+	'maps-googlemaps3-par-controls' => 'The controls to place on the map.',
+	'maps-googlemaps3-par-zoomstyle' => 'The style of the zoom control.',
+	'maps-googlemaps3-par-typestyle' => 'The style of the type control.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Automatically open all info windows after the page has loaded.',
+	'maps-googlemaps3-par-kml' => 'KML files to load onto the map.',
+	'maps-googlemaps3-par-fusiontables' => 'IDs of Google Fusion Tables which should be loaded onto the map.',
+	'maps-googlemaps3-par-resizable' => 'Makes the map resizable by dragging at it\'s lower right corner.',
 );
 
 /** Message documentation (Message documentation)
