@@ -115,6 +115,7 @@ class SMMapPrinter extends SMWResultPrinter {
 				New CriterionNotEmpty()
 			)
 		);
+		$params['icon']->setDescription( wfMsg( 'maps-displaypoints-par-icon' ) );
 		
 		$params['forceshow'] = new Parameter(
 			'forceshow',
@@ -146,6 +147,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
+		$params['title']->setDescription( wfMsg( 'maps-displaypoints-par-title' ) );
 		
 		$params['label'] = new Parameter(
 			'label',
@@ -153,6 +155,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
+		$params['label']->setDescription( wfMsg( 'maps-displaypoints-par-label' ) );
 		
 		return $params;
 	}	
