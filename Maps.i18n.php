@@ -158,6 +158,12 @@ $1',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcams',
+	'maps-googlemaps2-par-type' => 'The map type to initially show.',
+	'maps-googlemaps2-par-types' => 'The map types that will be available via the type control.',
+	'maps-googlemaps2-par-controls' => 'The controls to place on the map.',
+	'maps-googlemaps2-par-autozoom' => 'Enable scrolling using the mousewheel.',
+	'maps-googlemaps2-par-kml' => 'KML files to load onto the map.',
+	'maps-googlemaps2-par-overlays' => 'Overlays the user can turn on.',
 
 	// Google Maps v3
 	'maps-googlemaps3-incompatbrowser' => 'Your browser is not compatible with Google Maps v3.',
@@ -179,7 +185,7 @@ $1',
 	'maps-osm-par-thumbs' => 'Show thumbs',
 	'maps-osm-par-photos' => 'Show photos',
 
-	// Yahoo! Maps_examples
+	// Yahoo! Maps
 	'maps-yahoomaps-par-type' => 'The map type to initially show.',
 	'maps-yahoomaps-par-types' => 'The map types that will be available via the type control.',
 	'maps-yahoomaps-par-controls' => 'The controls to place on the map.',

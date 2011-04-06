@@ -53,7 +53,8 @@ class MapsGoogleMaps extends MapsMappingService {
 		$params['controls']->setDefault( $egMapsGMapControls );
 		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
 		$params['controls']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );		
-
+		$params['controls']->setDescription( wfMsg( 'maps-googlemaps2-par-controls' ) );
+		
 		$params['type'] = new Parameter(
 			'type',
 			Parameter::TYPE_STRING,
@@ -65,6 +66,7 @@ class MapsGoogleMaps extends MapsMappingService {
 			array( 'types' )		
 		);
 		$params['type']->addManipulations( new MapsParamGMapType() );
+		$params['type']->setDescription( wfMsg( 'maps-googlemaps2-par-type' ) );
 
 		$params['types'] = new ListParameter(
 			'types',
@@ -76,25 +78,30 @@ class MapsGoogleMaps extends MapsMappingService {
 				new CriterionInArray( array_keys( self::$mapTypes ) ),
 			)
 		);
-		$params['types']->addManipulations( new MapsParamGMapType() );		
+		$params['types']->addManipulations( new MapsParamGMapType() );
+		$params['types']->setDescription( wfMsg( 'maps-googlemaps2-par-types' ) );		
 		
 		$params['autozoom'] = new Parameter(
 			'autozoom',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsGoogleAutozoom
 		);
+		$params['autozoom']->setDescription( wfMsg( 'maps-googlemaps2-par-autozoom' ) );
 		
 		$params['kml'] = new ListParameter( 'kml' );
 		$params['kml']->setDefault( array() );
 		//$params['kml']->addManipulations( new MapsParamFile() );
+		$params['kml']->setDescription( wfMsg( 'maps-googlemaps2-par-kml' ) );
 		
 		$params['overlays'] = new ListParameter( 'overlays' );
 		$params['overlays']->setDefault( $egMapsGMapOverlays );
 		$params['overlays']->addCriteria( new CriterionGoogleOverlay( self::$overlayData ) );
 		$params['overlays']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) ); // TODO
+		$params['overlays']->setDescription( wfMsg( 'maps-googlemaps2-par-overlays' ) );
 		
 		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
 		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
+		$params['resizable']->setDescription( wfMsg( 'maps-par-resizable' ) );
 	}
 	
 	/**
