@@ -94,18 +94,20 @@ final class MapsMapper {
 		$params['mappingservice'] = new Parameter( 'mappingservice' );
 		$params['mappingservice']->addAliases( 'service' );
 		$params['mappingservice']->setDefault( $egMapsDefaultService );
-		$params['mappingservice']->addCriteria( new CriterionInArray( MapsMappingServices::getAllServiceValues() ) );
+		$params['mappingservice']->addCriteria( new CriterionInArray( MapsMappingServices::getAllServiceValues() ) );		
 		
 		$params['geoservice'] = new Parameter( 'geoservice' );
 		$params['geoservice']->setDefault( $egMapsDefaultGeoService );
 		$params['geoservice']->addCriteria( new CriterionInArray( $egMapsAvailableGeoServices ) );
 		$params['geoservice']->addDependencies( 'mappingservice' );
 		$params['geoservice']->addManipulations( new MapsParamGeoService( 'mappingservice' ) );
+		$params['geoservice']->setDescription( wfMsg( 'maps-par-geoservice' ) );
 		
 		$params['zoom'] = new Parameter(
 			'zoom', 
 			Parameter::TYPE_INTEGER
 		);
+		$params['zoom']->setDescription( wfMsg( 'maps-par-zoom' ) );
 		
 		$params['width'] = new Parameter(
 			'width', 
@@ -117,6 +119,7 @@ final class MapsMapper {
 			)
 		);
 		$params['width']->addManipulations( new MapsParamDimension( 'width' ) );
+		$params['width']->setDescription( wfMsg( 'maps-par-width' ) );
 
 		$params['height'] = new Parameter(
 			'height', 
@@ -128,6 +131,7 @@ final class MapsMapper {
 			)
 		);
 		$params['height']->addManipulations( new MapsParamDimension( 'height' ) );
+		$params['height']->setDescription( wfMsg( 'maps-par-height' ) );
 		
 		return $params;
 	}
