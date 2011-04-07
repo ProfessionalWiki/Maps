@@ -331,11 +331,16 @@ class SMMapPrinter extends SMWResultPrinter {
 	 */
     public function getParameters() {
         $params = parent::getParameters();
+        $paramInfo = $this->getParameterInfo();
+        
+        // Do not display this as an option, as the format already determines it
+        // TODO: this can probably be done cleaner with some changes in Maps
+        unset( $paramInfo['mappingservice'] );
         
         if ( version_compare( SMW_VERSION, '1.6', '<' ) ) {
 			// Go through the descriptions, and convert them from Validator- to SMW-style.
 			// This if for b/c with SMW 1.5.x; SMW 1.6 directly accepts Parameter objects.
-			foreach ( $this->getParameterInfo() as $paramDesc ) {
+			foreach ( $paramInfo as $paramDesc ) {
 				$param = array(
 					'name' => $paramDesc->getName(),
 					'type' => $this->getMappedParamType( $paramDesc->getType() ),
@@ -355,7 +360,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			}
         }
         else {
-        	$params = array_merge( $params, $this->getParameterInfo() );
+        	$params = array_merge( $params, $paramInfo );
         }
 
 		return $params;
