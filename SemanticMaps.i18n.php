@@ -45,6 +45,10 @@ $messages['en'] = array(
 	'semanticmaps_paramdesc_overlays' 	=> 'The overlays available on the map',
 	'semanticmaps_paramdesc_autozoom' 	=> 'If zoom in and out by using the mouse scroll wheel is enabled',
 	'semanticmaps_paramdesc_layers' 	=> 'The layers available on the map',
+	
+	'semanticmaps-par-staticlocations'	=> 'A list of locations to add to the map together with the queried data. Like with display_points, you can add a title, description and icon per location using the tilde "~" as separator.',
+	'semanticmaps-par-forceshow'		=> 'Show the map even when there are no locations to display?',
+	'semanticmaps-par-showtitle'		=> 'Show a title in the marker info window or not. Disabling this is often usefull when using a template to format the info window content.',
 );
 
 /** Message documentation (Message documentation)

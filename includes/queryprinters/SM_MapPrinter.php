@@ -96,6 +96,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
 		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );		
 		$params['staticlocations']->setDefault( array() );
+		$params['staticlocations']->setDescription( wfMsg( 'semanticmaps-par-staticlocations' ) );
 		
 		$params['centre'] = new Parameter( 'centre' );
 		$params['centre']->setDefault( false );
@@ -123,6 +124,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$smgQPForceShow,
 			array( 'force show' )
 		);
+		$params['forceshow']->setDescription( wfMsg( 'semanticmaps-par-forceshow' ) );
 
 		$params['showtitle'] = new Parameter(
 			'showtitle',
@@ -130,6 +132,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$smgQPShowTitle,
 			array( 'show title' )
 		);
+		$params['showtitle']->setDescription( wfMsg( 'semanticmaps-par-showtitle' ) );
 		
 		$params['template'] = new Parameter(
 			'template',
