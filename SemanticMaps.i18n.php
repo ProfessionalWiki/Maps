@@ -294,10 +294,13 @@ $messages['de'] = array(
 	'semanticmaps_paramdesc_centre' => 'Die Koordinaten der Kartenmitte',
 	'semanticmaps_paramdesc_controls' => 'Die Benutzerkontrollen, die sich auf der Karte befinden',
 	'semanticmaps_paramdesc_types' => 'Die verfügbaren Kartentypen für die Karte',
-	'semanticmaps_paramdesc_type' => 'Der Standard-Kartentyp für die Karte',
+	'semanticmaps_paramdesc_type' => 'Der Standardkartentyp für die Karte',
 	'semanticmaps_paramdesc_overlays' => 'Die auf der Karte verfügbaren Overlays',
-	'semanticmaps_paramdesc_autozoom' => 'Wenn Vergrößerung und Verkleinerung mit dem Maus-Scrollrad aktiviert ist',
+	'semanticmaps_paramdesc_autozoom' => 'Sofern Vergrößerung und Verkleinerung mit dem Mausrad aktiviert ist',
 	'semanticmaps_paramdesc_layers' => 'Die auf der Karte verfügbaren Ebenen',
+	'semanticmaps-par-staticlocations' => 'Eine Listen von Standorten, die zusammen mit den abgefragten Daten, der Karte hinzugefügt werden sollen. Analog zu den Anzeigepunkten können je Standort Titel, Beschreibung und Symbol, unter Verwendung einer Tilde „~“ als Trennzeichen, hinzugefügt werden.',
+	'semanticmaps-par-forceshow' => 'Die Karte auch dann anzeigen, wenn es keine Standorte zum Anzeigen gibt?',
+	'semanticmaps-par-showtitle' => 'Anzeige eines Titels im Informationsfenster der Kennzeichnung oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -629,6 +632,9 @@ $messages['ia'] = array(
 	'semanticmaps_paramdesc_overlays' => 'Le superpositiones disponibile in le carta',
 	'semanticmaps_paramdesc_autozoom' => 'Si le zoom avante e retro con le rota de rolamento del mouse es active',
 	'semanticmaps_paramdesc_layers' => 'Le stratos disponibile in le carta',
+	'semanticmaps-par-staticlocations' => 'Un lista de locos a adder al carta con le datos resultante del consulta. Como con display_points, tu pote adder un titulo, description e icone per loco usante le tilde "~" como separator.',
+	'semanticmaps-par-forceshow' => 'Monstrar le carta mesmo si il non ha locos a monstrar?',
+	'semanticmaps-par-showtitle' => 'Monstrar un titulo in le fenestra de information de marcator o non. Disactivar isto es sovente utile si un patrono es usate pro formatar le contento del fenestra de information.',
 );
 
 /** Indonesian (Bahasa Indonesia)
