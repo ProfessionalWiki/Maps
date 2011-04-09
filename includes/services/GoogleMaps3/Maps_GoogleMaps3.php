@@ -120,7 +120,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['typestyle']->setDefault( $egMapsGMaps3DefTypeStyle );
 		$params['typestyle']->addCriteria( new CriterionInArray( array_keys( self::$tyepControlStyles ) ) );
 		$params['typestyle']->addManipulations( new MapsParamGMap3Typestyle() );
-		$params['type']->setDescription( wfMsg( 'maps-googlemaps3-par-type' ) );
+		$params['typestyle']->setDescription( wfMsg( 'maps-googlemaps3-par-typestyle' ) );
 
 		$params['autoinfowindows'] = new Parameter( 'autoinfowindows', Parameter::TYPE_BOOLEAN );
 		$params['autoinfowindows']->setDefault( $egMapsGMaps3AutoInfoWindows );
