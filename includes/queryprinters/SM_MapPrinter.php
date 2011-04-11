@@ -105,7 +105,8 @@ class SMMapPrinter extends SMWResultPrinter {
 		$params['centre']->setDoManipulationOfDefault( false );
 		$manipulation = new MapsParamLocation();
 		$manipulation->toJSONObj = true;
-		$params['centre']->addManipulations( $manipulation );	
+		$params['centre']->addManipulations( $manipulation );
+		$params['centre']->setDescription( wfMsg( 'semanticmaps-par-centre' ) );
 		
 		$params['icon'] = new Parameter(
 			'icon',
@@ -144,6 +145,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			)
 		);
 		$params['template']->setDoManipulationOfDefault( false );
+		$params['template']->setDescription( wfMsg( 'semanticmaps-par-template' ) );
 		
 		$params['title'] = new Parameter(
 			'title',
