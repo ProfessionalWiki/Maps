@@ -2405,6 +2405,11 @@ $1.',
 	'maps-googlemaps3-par-controls' => 'De op de kaart te plaatsen besturingselementen.',
 	'maps-googlemaps3-par-zoomstyle' => 'De stijl van het besturingselement zoom.',
 	'maps-googlemaps3-par-typestyle' => 'De stijl van het besturingselement type.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Automatisch alle informatievensters openen na het laden van een pagina.',
+	'maps-googlemaps3-par-kml' => 'Op de kaart te laden KML-bestanden.',
+	'maps-googlemaps3-par-fusiontables' => "Op de kaart te laden ID's van Google Fusion Tables.",
+	'maps-openlayers-par-controls' => 'De op de kaart te plaatsen besturingselementen.',
+	'maps-openlayers-par-layers' => 'De lagen die beschikbaar zijn in het selectievak. De eerste laag worden weergegeven als de kaart wordt geladen.',
 	'maps-osm-par-thumbs' => 'Miniaturen weergeven',
 	'maps-osm-par-photos' => 'Afbeeldingen weergeven',
 	'maps-yahoomaps-par-type' => 'Het initieel weer te geven kaarttype.',
@@ -3184,6 +3189,11 @@ kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga tria
 	'maps-displaypoint-description' => 'Ipakita ang mga mapang pangheograpiya na may isa o higit pang tinukoy na pangwiking mga pananda sa ibabaw nila.',
 	'maps-finddestination-description' => 'Maghanap ng isang patutunguhan na binigyan ng tuldok ng pagsisimula (na maaaring nasa loob ng anuman sa tinatangkilik na mga anyo), isang paunang kapupuntahan at isang layo.',
 	'maps-geodistance-description' => 'Tuusin ang pangheograpiyang layo sa pagitan ng dalawang mga tuldok, magmula at papunta sa anumang tinatangkilik na mga anyo.',
+	'maps-coordinates-par-location' => 'Ang mga tugmaang-pampook na nais mong iayos ang anyo.',
+	'maps-coordinates-par-format' => 'Ang pinupukol na anyo para sa mga tugmaang-pampook.',
+	'maps-coordinates-par-directional' => 'Nagpapahiwatig kung ang mga tugmaang-pampook ay dapat na ilabas bilang pangpatutunguhan o hindi.',
+	'maps-distance-par-distance' => 'Ang layo na gagawing katumbas nito na may tinukoy na yunit.',
+	'maps-distance-par-decimals' => 'Ang pinakamataas na bilang ng kakarampot na mga tambilang na gagamitin sa kalalabasang halaga.',
 	'maps-distance-par-unit' => 'Ang yunit na kalalabasan ng layo.',
 	'maps-finddestination-par-location' => 'Ang paunang kinalalagyan.',
 	'maps-finddestination-par-bearing' => 'Ang paunang patutunguhan.',
@@ -3314,8 +3324,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng hiển thị dữ liệu tọa độ trên bản đồ và địa chỉ mã địa lý ([http://mapping.referata.com/wiki/Maps_examples thử xem]).
-Các dịch vụ bản đồ có sẵn: $1',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://mapping.referata.com/wiki/Examples thử xem]).',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
 	'maps-markers' => 'Chú thích',
