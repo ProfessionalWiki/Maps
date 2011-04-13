@@ -257,65 +257,6 @@ class MapsGoogleMaps extends MapsMappingService {
 	}
 	
 	/**
-	 * Adds the needed output for the overlays control.
-	 * 
-	 * @param string $mapName
-	 * @param string $overlays
-	 * @param string $controls
-	 * 
-	 * FIXME: layer onload function kills maps for some reason
-	 * TODO: integrate this properly with Validator
-	 * 
-	 * @return string
-	 */
-	public function getOverlayOutput( $mapName, $overlays, $controls ) {
-		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded;
-		
-		// Check to see if there is an overlays control.
-		$hasOverlayControl = in_string( 'overlays', $controls );
-		
-		$overlayNames = array_keys( self::$overlayData );
-		
-		$validOverlays = array();
-		foreach ( $overlays as $overlay ) {
-			$segements = explode( '-', $overlay );
-			$name = $segements[0];
-			
-			if ( in_array( $name, $overlayNames ) ) {
-				$isOn = count( $segements ) > 1 ? $segements[1] : '0';
-				$validOverlays[$name] = $isOn == '1';
-			}
-		}
-		$overlays = $validOverlays;
-		
-		// If there are no overlays or there is no control to hold them, don't bother the rest.
-		if ( !$hasOverlayControl || count( $overlays ) < 1 ) return;
-		
-		// Add the inputs for the overlays.
-		$addedOverlays = array();
-		$overlayHtml = '';
-		$onloadFunctions = array();
-		
-		return Html::rawElement(
-			'div',
-			array(
-				'class' => 'outer-more',
-				'id' => "$mapName-outer-more"
-			),
-			'<form action="">' .
-			Html::rawElement(
-				'div',
-				array(
-					'class' => 'more-box',
-					'id' => "$mapName-more-box"
-				),
-				$overlayHtml
-			) .
-			'</form>'
-		);	
-	}
-	
-	/**
 	 * @see MapsMappingService::getResourceModules
 	 * 
 	 * @since 0.8
