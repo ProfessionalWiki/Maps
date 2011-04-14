@@ -3235,6 +3235,8 @@ $1',
 	'maps_videos' => 'Mga bidyo',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Mga webkam',
+	'maps-osm-par-thumbs' => 'Ipakita ang mga kagyat',
+	'maps-osm-par-photos' => 'Ipakita ang mga larawan',
 );
 
 /** Turkish (Türkçe)
