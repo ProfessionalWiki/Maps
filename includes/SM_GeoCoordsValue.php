@@ -19,6 +19,24 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected $wikiValue;
 
 	/**
+	 * @see SMWDataValue::setDataItem()
+	 * 
+	 * @since 0.8
+	 * 
+	 * @param $dataitem SMWDataItem
+	 * 
+	 * @return boolean
+	 */
+	public function setDataItem( SMWDataItem $dataItem ) {
+		if ( $dataItem->getDIType() == SMWDataItem::TYPE_GEO ) {
+			$this->m_dataitem = $dataItem;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
 	 * @see SMWDataValue::parseUserValue
 	 * 
 	 * @since 0.6
