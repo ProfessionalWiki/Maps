@@ -86,6 +86,8 @@ $wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
 
 $incDir = dirname( __FILE__ ) . '/includes/';
 
+$wgAutoloadClasses['SMGeoCoordsHooks'] 				= $incDir . 'SM_GeoCoordsHooks.php';
+
 // Data values
 $wgAutoloadClasses['SMGeoCoordsValue'] 				= $incDir . 'SM_GeoCoordsValue.php';
 
@@ -96,16 +98,16 @@ $wgAutoloadClasses['SMAreaValueDescription'] 		= $incDir . 'SM_AreaValueDescript
 $wgAutoloadClasses['SemanticMapsHooks'] 			= dirname( __FILE__ ) . '/SemanticMaps.hooks.php';
 
 // Hook for initializing the Geographical Coordinate type.
-$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
+$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsHooks::initGeoCoordsType';
 
 // Hook for initializing the field types needed by Geographical Coordinates.
-$wgHooks['SMWCustomSQLStoreFieldType'][] = 'SMGeoCoordsValue::initGeoCoordsFieldTypes';
+$wgHooks['SMWCustomSQLStoreFieldType'][] = 'SMGeoCoordsHooks::initGeoCoordsFieldTypes';
 
 // Hook for defining a table to store geographical coordinates in.
-$wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';
+$wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsHooks::initGeoCoordsTable';
 
 // Hook for defining the default query printer for queries that ask for geographical coordinates.
-$wgHooks['SMWResultFormat'][] = 'SMGeoCoordsValue::addGeoCoordsDefaultFormat';	
+$wgHooks['SMWResultFormat'][] = 'SMGeoCoordsHooks::addGeoCoordsDefaultFormat';	
 
 // Hook for adding a Semantic Maps links to the Admin Links extension.
 $wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';	
