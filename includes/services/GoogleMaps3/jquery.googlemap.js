@@ -83,7 +83,7 @@
 	
 	var mapOptions = {
 		disableDefaultUI: true,
-		mapTypeId: eval( 'google.maps.MapTypeId.' + options.type ),
+		mapTypeId: eval( 'google.maps.MapTypeId.' + options.type )
 	};
 	this.options = options;
 	
