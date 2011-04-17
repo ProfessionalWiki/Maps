@@ -4,7 +4,6 @@
  * 
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
-
 jQuery(document).ready(function() {
 	if ( typeof google != 'undefined' ) {
 		for ( i in window.maps.googlemaps3 ) {

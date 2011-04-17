@@ -55,12 +55,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Array of String. Array containing all the geocoding services that will be
 	# made available to the user. Currently Maps provides the following services:
 	# geonames, google, yahoo
+    # It is recommended that when using GeoNames you get a GeoNames webservice account
+    # at http://www.geonames.org/login and set the username to $egMapsGeoNamesUser below.
+    # Not doing this will result into a legacy service being used, which might be
+    # disabled at some future point.
 	$egMapsAvailableGeoServices = array(
 		'geonames',
 		'google',
 		'yahoo'
 	);
-	
+
 	# String. The default geocoding service, which will be used when no service is
 	# is provided by the user. This service needs to be enabled, if not, the first
 	# one from the available services will be taken.
