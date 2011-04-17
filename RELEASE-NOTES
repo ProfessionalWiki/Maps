@@ -42,7 +42,7 @@ This version branched from Maps 0.7.x at version 0.7.3.
 
 * Fixed geocoding service overriding based on mapping service (merged in from Maps 0.7.5).
 
-* Fixed fatal error occuring when running maintenance/refreshLinks.php.
+* Fixed fatal error occurring when running maintenance/refreshLinks.php.
 
 ==== Other tweaks ====
 
@@ -53,7 +53,7 @@ This version branched from Maps 0.7.x at version 0.7.3.
 
 * Some internal improvements and translation updates.
 
-* Fixed issue occuring when Maps is the only extension adding custom namespaces.
+* Fixed issue occurring when Maps is the only extension adding custom namespaces.
 
 === Maps 0.7.2 ===
 (2010-10-28)
