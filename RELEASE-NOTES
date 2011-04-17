@@ -15,7 +15,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Improved map query parameter support in the Special:Ask GUI
 
-* Fixed fatal error occuring when running maintenance/refreshLinks.php.
+* Fixed fatal error occurring when running maintenance/refreshLinks.php.
 
 * Rewrote all the form inputs to jQuery plugins.
 
