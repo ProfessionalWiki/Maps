@@ -184,12 +184,14 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'semanticmaps-desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù stoket dre an astenn Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Talvezout a ra da welet ha da gemmañ roadennoù daveennoù stoket dre an astenn Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).',
 	'semanticmaps-unrecognizeddistance' => "An talvoud $1 n'eo ket un hed reizh anezhañ.",
 	'semanticmaps-kml-link' => 'Gwelet ar restr KML',
 	'semanticmaps-default-kml-pagelink' => 'Gwelet ar pennad $1',
+	'semanticmaps-loading-forminput' => 'O kargañ enmont furmskrid ar gartenn...',
 	'semanticmaps_lookupcoordinates' => 'Istimañ an daveennoù',
 	'semanticmaps_enteraddresshere' => "Merkit ar chomlec'h amañ",
+	'semanticmaps-updatemap' => 'Hizivaat ar gartenn',
 	'semanticmaps_notfound' => "N'eo ket bet kavet",
 	'semanticmaps-forminput-remove' => 'Dilemel',
 	'semanticmaps-forminput-add' => 'Ouzhpennañ',
@@ -206,6 +208,8 @@ $messages['br'] = array(
 	'semanticmaps_paramdesc_overlays' => "Ar gwiskadoù a c'haller da gaout war ar gartenn",
 	'semanticmaps_paramdesc_autozoom' => 'Mard eo gweredekaet ar zoumañ hag an dizoumañ gant rodig al logodenn',
 	'semanticmaps_paramdesc_layers' => 'Ar gwiskadoù zo da gaout war ar gartenn',
+	'semanticmaps-par-forceshow' => "Diskouez ar gartenn ha pa ne vefe lec'h ebet da welet ?",
+	'semanticmaps-par-template' => "Ur patrom d'ober gantañ da furmadiñ boued ar prenestr titouriñ.",
 );
 
 /** Bosnian (Bosanski)
@@ -779,6 +783,7 @@ $messages['lb'] = array(
 	'semanticmaps_notfound' => 'net fonnt',
 	'semanticmaps-forminput-remove' => 'Ewechhuelen',
 	'semanticmaps-forminput-add' => 'Derbäisetzen',
+	'semanticmaps-forminput-locations' => 'Plazen',
 	'semanticmaps_paramdesc_format' => "De Kartographie-Service dee fir d'generéiere vun der Kaart benotzt gëtt",
 	'semanticmaps_paramdesc_height' => "D'Héicht vun der Kaart, a Pixelen (Standard ass $1)",
 	'semanticmaps_paramdesc_width' => "D'Breet vun der Kaart, a Pixelen (Standard ass $1)",
