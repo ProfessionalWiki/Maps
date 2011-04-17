@@ -497,9 +497,10 @@ $messages['bjn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'maps-desc' => "Talvezout a ra da embann daveennoù ha chomlec'hioù geokod war kartennoù ([http://mapping.referata.com/wiki/Maps_examples demo]). Servijoù kartennaouiñ hegerz : $1",
+	'maps-desc' => "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all. ([http://mapping.referata.com/wiki/Examples Diskouezadenn])",
 	'maps_map' => 'Kartenn',
 	'maps-loading-map' => 'O kargañ ar gartenn...',
+	'maps-load-failed' => "N'eus ket bet gallet kargañ ar gartenn !",
 	'maps-markers' => 'Merkerioù',
 	'maps-others' => 're all',
 	'maps-ns-layer' => 'Gwiskad',
@@ -514,6 +515,8 @@ $messages['br'] = array(
 	'validation-error-invalid-layers' => 'Rankout a ra an arventenn $1 bezañ evit ur gwiskad reizh, pe evit meur a hini.',
 	'maps-layer-of-type' => 'Gwiskad a seurt $1',
 	'maps-layer-type-supported-by' => "N'hall ar seurt gwiskad-mañ {{PLURAL:$2|bezañ implijet nemet gant ar sevij kartennaouiñ $1|bezañ implijet nemet gant ar servijoù kartennaouiñ-mañ : $1}}.",
+	'maps-finddestination-par-location' => "Al lec'hiadur orin.",
+	'maps-finddestination-par-distance' => 'An hed da vont drezañ.',
 	'maps-geocode-par-location' => "Ar chomlec'h da c'heokodiñ.",
 	'validation-error-invalid-location' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh.",
 	'validation-error-invalid-locations' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh, da nebeutañ.",
@@ -2019,6 +2022,7 @@ $messages['lb'] = array(
 	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen [http://mapping.referata.com/wiki/Examples Démo] ze weisen",
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
+	'maps-load-failed' => "D'Kaart konnt net geluede ginn!",
 	'maps-markers' => 'Markéierungen',
 	'maps-others' => 'anerer',
 	'maps-layer-property' => 'Eegeschaft',
@@ -2064,6 +2068,8 @@ $1',
 	'maps_videos' => 'Videoen',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Web-Kameraen',
+	'maps-osm-par-thumbs' => 'Miniaturbiller weisen',
+	'maps-osm-par-photos' => 'Fotoe weisen',
 );
 
 /** Lithuanian (Lietuvių)
