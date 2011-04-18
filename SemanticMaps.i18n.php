@@ -761,6 +761,12 @@ $messages['ksh'] = array(
 	'semanticmaps_paramdesc_overlays' => 'De zohsäzlijje Eijnzelheijte, di mer op di Kaat drop bränge kann',
 	'semanticmaps_paramdesc_autozoom' => 'Falls et erin un eruß zoome met däm Kompjuter singe Muuß ierem Rättsche aanjeschalldt es, dann:',
 	'semanticmaps_paramdesc_layers' => 'De Nivohs, di för di Kaat ze han sin',
+	'semanticmaps-par-staticlocations' => 'En Leß met Pläz, di zosamme met dä nohjefrochte Aanjabe op di Kaat sulle. Wi bei <code lang="en">display_points</code> kam_mer ene Tittel, ene Täx doh zoh, un e Minni_Belldsche
+för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
+	'semanticmaps-par-forceshow' => 'Donn de Kaat aanzeije, selvs wann kein Pläz drop ze zeije sin?',
+	'semanticmaps-par-showtitle' => 'Donn en Övverschreff en däm Finster met Infomazjuhne övver de Makeerong aanzeije udder nit. De Övverschreff afzeschallde es öff joot, wam_mer en Schabloon nemmp för dä Enhallt vum Finster zerääsch ze possumenteere.',
+	'semanticmaps-par-centre' => 'Der Meddelpunk vun dä Kaat. Wann keine aanjejovve_n_es jeiht dä automattesch op der optesche Meddelpunk vun all dä Makeerunge en dä Kaat.',
+	'semanticmaps-par-template' => 'En Schabloon för der Enhalt vum Finster met de Enfommazjuhne ze jeschtallte',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
