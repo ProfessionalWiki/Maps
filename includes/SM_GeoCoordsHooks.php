@@ -74,6 +74,7 @@ final class SMGeoCoordsHooks {
 	 */
 	public static function initGeoCoordsType() {
 		SMWDataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', 'Geographic coordinate' );
+        SMWDataValueFactory::registerDataItem( '_geo', 'SMDIGeoCoord' );
 		return true;
 	}
 	

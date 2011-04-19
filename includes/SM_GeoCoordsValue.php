@@ -15,7 +15,6 @@
  */
 class SMGeoCoordsValue extends SMWDataValue {
 
-	protected $coordinateSet;
 	protected $wikiValue;
 
 	/**
@@ -75,7 +74,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( $value == '' ) {
 			$this->addError( wfMsg( 'smw_novalues' ) );
 		} else {
-			SMWDataValue::prepareValue( $value, $comparator );					
+			SMWDataValue::prepareValue( $value, $comparator );
 
 			$parts = explode( '(', $value );
 			
@@ -93,14 +92,15 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 			$parsedCoords = MapsCoordinateParser::parseCoordinates( $coordinates );
 			if ( $parsedCoords ) {
-				$this->coordinateSet = $parsedCoords;
-				
+                $this->m_dataitem = new SMDIGeoCoord( $parsedCoords, $this->m_typeid );
+
 				if ( $this->m_caption === false && !$asQuery ) {
 					global $smgQPCoodFormat, $smgQPCoodDirectional;
 					$this->m_caption = MapsCoordinateParser::formatCoordinates( $parsedCoords, $smgQPCoodFormat, $smgQPCoodDirectional );
         		}
 			} else {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $coordinates, 1 ) );
+                $this->m_dataitem = new SMDIGeoCoord( array(0, 0), $this->m_typeid ); // make sure this is always set
 			}
 		}
 
@@ -127,17 +127,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	protected function parseDBkeys( $args ) {
-		global $smgQPCoodFormat, $smgQPCoodDirectional;
-		
-		$this->coordinateSet['lat'] = (float)$args[0];
-		$this->coordinateSet['lon'] = (float)$args[1];
-		
-		$this->m_caption = MapsCoordinateParser::formatCoordinates(
-			$this->coordinateSet,
-			$smgQPCoodFormat,
-			$smgQPCoodDirectional
-		);
-		
+		$this->setDataItem( new SMDIGeoCoord( array( (float)$args[0], (float)$args[1] ), $this->m_typeid ) );
+		$this->m_caption = $this->m_dataitem->getSerialization();
 		$this->wikiValue = $this->m_caption;
 	}
 	
@@ -148,10 +139,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getDBkeys() {
 		$this->unstub();
-		
+		$coordinateSet = $this->m_dataitem->getCoordinateSet();
+
 		return array(
-			$this->coordinateSet['lat'],
-			$this->coordinateSet['lon']
+			$coordinateSet['lat'],
+			$coordinateSet['lon']
 		);
 	}
 	
@@ -174,10 +166,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
 			
 			// TODO: fix lang keys so they include the space and coordinates.
-			
+			$coordinateSet = $this->m_dataitem->getCoordinateSet();
+
 			return '<span class="smwttinline">' . htmlspecialchars( $this->m_caption ) . '<span class="smwttcontent">' .
-		        htmlspecialchars ( wfMsgForContent( 'maps-latitude' ) . ' ' . $this->coordinateSet['lat'] ) . '<br />' .
-		        htmlspecialchars ( wfMsgForContent( 'maps-longitude' ) . ' ' . $this->coordinateSet['lon'] ) .
+		        htmlspecialchars ( wfMsgForContent( 'maps-latitude' ) . ' ' . $coordinateSet['lat'] ) . '<br />' .
+		        htmlspecialchars ( wfMsgForContent( 'maps-longitude' ) . ' ' . $coordinateSet['lon'] ) .
 		        '</span></span>';
 		}
 		else {
@@ -205,7 +198,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		}
 		else {
 			global $smgQPCoodFormat, $smgQPCoodDirectional;
-			return MapsCoordinateParser::formatCoordinates( $this->coordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
+			return MapsCoordinateParser::formatCoordinates( $this->m_dataitem->getCoordinateSet(), $smgQPCoodFormat, $smgQPCoodDirectional );
 		}
 	}
 
@@ -237,7 +230,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		if ( $this->isValid() ) {
 			global $smgQPCoodFormat, $smgQPCoodDirectional;
 			$lit = new SMWExpLiteral(
-				MapsCoordinateParser::formatCoordinates( $this->coordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional ),
+				MapsCoordinateParser::formatCoordinates( $this->m_dataitem->getCoordinateSet(), $smgQPCoodFormat, $smgQPCoodDirectional ),
 				$this,
 				'http://www.w3.org/2001/XMLSchema#string'
 			);
@@ -261,21 +254,13 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @return array
 	 */
 	protected function getServiceLinkParams() {
+        $coordinateSet = $this->m_dataitem->getCoordinateSet();
 		return array(
-			MapsCoordinateParser::formatCoordinates( $this->coordinateSet, 'float', false ),
-			MapsCoordinateParser::formatCoordinates( $this->coordinateSet, 'dms', true ),
-			$this->coordinateSet['lat'],
-			$this->coordinateSet['lon']
+			MapsCoordinateParser::formatCoordinates( $coordinateSet, 'float', false ),
+			MapsCoordinateParser::formatCoordinates( $coordinateSet, 'dms', true ),
+			$coordinateSet['lat'],
+			$coordinateSet['lon']
 		);
-	}
-	
-	/**
-	 * @since 0.6
-	 * 
-	 * @return array
-	 */
-	public function getCoordinateSet() {
-		return $this->coordinateSet;
 	}
 	
 	/**

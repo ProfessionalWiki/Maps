@@ -88,6 +88,9 @@ $incDir = dirname( __FILE__ ) . '/includes/';
 
 $wgAutoloadClasses['SMGeoCoordsHooks'] 				= $incDir . 'SM_GeoCoordsHooks.php';
 
+// Data items
+$wgAutoloadClasses['SMDIGeoCoord'] 				    = $incDir . 'SM_DI_GeoCoord.php';
+
 // Data values
 $wgAutoloadClasses['SMGeoCoordsValue'] 				= $incDir . 'SM_GeoCoordsValue.php';
 
