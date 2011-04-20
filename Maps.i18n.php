@@ -3221,6 +3221,8 @@ kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga tria
 	'maps-geodistance-par-unit' => 'Ang yunit na kinapapalooban ng kinalalabasan ng layo.',
 	'maps-geodistance-par-decimals' => 'Ang pinakamataas na bilang ng kakarampot na mga tambilang na gagamitin sa kalalabasang halaga.',
 	'maps-geodistance-par-mappingservice' => 'Ang palingkuran ng pagkokodigong pangheograpiya na gagamitin upang maikodigong pangheograpiya ang anumang mga tirahan.',
+	'maps-displaymap-par-mappingservice' => 'Nagpapahintulot na maitakda ang palingkuran ng pagmamapa na gagamitin upang likhain ang mapa.',
+	'maps-displaymap-par-coordinates' => 'Ang kinalalagyan na paunang pagpapagitnaan ng mapa.',
 	'validation-error-invalid-location' => 'Ang parametrong $1 ay dapat na isang tanggap na lokasyon.',
 	'validation-error-invalid-locations' => 'Ang parametrong $1 ay dapat na isa o mahigit pang tanggap na mga lokasyon.',
 	'validation-error-invalid-width' => 'Ang parametrong $1 ay dapat na isang tanggap na lapad.',
