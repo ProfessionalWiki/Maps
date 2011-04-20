@@ -182,7 +182,7 @@ class SMFormInput {
 		
 		return Html::inlineScript(
 			MapsMapper::getBaseMapJSON( $this->service->getName() . '_forminputs' )
-			. "maps.{$this->service->getName()}_forminputs.{$mapName}=" . json_encode( $object ) . ';'
+			. "maps.{$this->service->getName()}_forminputs.{$mapName}=" . FormatJson::encode( $object ) . ';'
 		);
 	}
 	
