@@ -214,9 +214,9 @@ class MapsGoogleMaps extends MapsMappingService {
 		$dependencies[] = Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" );
 		
 		$dependencies[] = Html::inlineScript(
-			'var googleMapsKey = '. json_encode( $egGoogleMapsKey ) . ';' .
-			'var googleMapsKeys = '. json_encode( $egGoogleMapsKeys ) . ';'  .
-			'var googleLangCode = '. json_encode( $langCode ) . ';'
+			'var googleMapsKey = '. FormatJson::encode( $egGoogleMapsKey ) . ';' .
+			'var googleMapsKeys = '. FormatJson::encode( $egGoogleMapsKeys ) . ';'  .
+			'var googleLangCode = '. FormatJson::encode( $langCode ) . ';'
 		);
 		
 		return $dependencies;
