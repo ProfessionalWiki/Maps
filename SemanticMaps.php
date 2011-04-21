@@ -41,7 +41,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
 }
 
-if ( version_compare( SMW_VERSION, '1.6', '<' ) ) {
+if ( version_compare( SMW_VERSION, '1.6 alpha', '<' ) ) {
 	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.6 or above; use Semantic Maps 0.7.x for older versions.' );
 }
 
