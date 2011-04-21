@@ -92,7 +92,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 			$parsedCoords = MapsCoordinateParser::parseCoordinates( $coordinates );
 			if ( $parsedCoords ) {
-                $this->m_dataitem = new SMDIGeoCoord( $parsedCoords, $this->m_typeid );
+                $this->m_dataitem = new SMWDIGeoCoord( $parsedCoords, $this->m_typeid );
 
 				if ( $this->m_caption === false && !$asQuery ) {
 					global $smgQPCoodFormat, $smgQPCoodDirectional;
@@ -100,7 +100,7 @@ class SMGeoCoordsValue extends SMWDataValue {
         		}
 			} else {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $coordinates, 1 ) );
-                $this->m_dataitem = new SMDIGeoCoord( array(0, 0), $this->m_typeid ); // make sure this is always set
+                $this->m_dataitem = new SMWDIGeoCoord( array(0, 0), $this->m_typeid ); // make sure this is always set
 			}
 		}
 
@@ -127,7 +127,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	protected function parseDBkeys( $args ) {
-		$this->setDataItem( new SMDIGeoCoord( array( (float)$args[0], (float)$args[1] ), $this->m_typeid ) );
+		$this->setDataItem( new SMWDIGeoCoord( array( (float)$args[0], (float)$args[1] ), $this->m_typeid ) );
 		$this->m_caption = $this->m_dataitem->getSerialization();
 		$this->wikiValue = $this->m_caption;
 	}
