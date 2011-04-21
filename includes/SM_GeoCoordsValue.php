@@ -29,6 +29,15 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function setDataItem( SMWDataItem $dataItem ) {
 		if ( $dataItem->getDIType() == SMWDataItem::TYPE_GEO ) {
 			$this->m_dataitem = $dataItem;
+			
+			global $smgQPCoodFormat, $smgQPCoodDirectional;
+			$this->m_caption = MapsCoordinateParser::formatCoordinates(
+				$dataItem->getCoordinateSet(),
+				$smgQPCoodFormat,
+				$smgQPCoodDirectional
+			);
+			
+			$this->wikiValue = $this->m_caption;			
 			return true;
 		} else {
 			return false;
@@ -127,9 +136,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	protected function parseDBkeys( $args ) {
-		$this->setDataItem( new SMWDIGeoCoord( array( (float)$args[0], (float)$args[1] ), $this->m_typeid ) );
-		$this->m_caption = $this->m_dataitem->getSerialization();
-		$this->wikiValue = $this->m_caption;
+		$this->setDataItem( new SMWDIGeoCoord( array( 'lat' => (float)$args[0], 'lon' => (float)$args[1] ), $this->m_typeid ) );
 	}
 	
 	/**
@@ -162,6 +169,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	public function getShortWikiText( $linked = null ) {
+		
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
 			
