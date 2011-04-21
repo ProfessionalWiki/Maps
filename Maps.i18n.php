@@ -3223,6 +3223,8 @@ kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga tria
 	'maps-geodistance-par-mappingservice' => 'Ang palingkuran ng pagkokodigong pangheograpiya na gagamitin upang maikodigong pangheograpiya ang anumang mga tirahan.',
 	'maps-displaymap-par-mappingservice' => 'Nagpapahintulot na maitakda ang palingkuran ng pagmamapa na gagamitin upang likhain ang mapa.',
 	'maps-displaymap-par-coordinates' => 'Ang kinalalagyan na paunang pagpapagitnaan ng mapa.',
+	'maps-displaypoints-par-mappingservice' => 'Nagpapahintulot na maitakda ang palingkuran ng pagmamapa na gagamitin upang likhain ang mapa.',
+	'maps-displaypoints-par-coordinates' => 'Isa o marami pang mga kinalalagyan na ipapakita sa mapa. Ipapahiwatig ang mga ito sa pamamagitan ng isang pananda.',
 	'validation-error-invalid-location' => 'Ang parametrong $1 ay dapat na isang tanggap na lokasyon.',
 	'validation-error-invalid-locations' => 'Ang parametrong $1 ay dapat na isa o mahigit pang tanggap na mga lokasyon.',
 	'validation-error-invalid-width' => 'Ang parametrong $1 ay dapat na isang tanggap na lapad.',
