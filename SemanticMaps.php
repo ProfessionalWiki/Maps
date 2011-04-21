@@ -28,7 +28,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 if ( version_compare( $wgVersion, '1.17', '<' ) ) {
-	die( '<b>Error:</b> This version of Semantic Maps requires MediaWiki 1.17 or above; use Maps 0.7.x for older versions.' );
+	die( '<b>Error:</b> This version of Semantic Maps requires MediaWiki 1.17 or above; use Semantic Maps 0.7.x for older versions.' );
 }
 
 // Show a warning if Maps is not loaded.
@@ -39,6 +39,10 @@ if ( ! defined( 'Maps_VERSION' ) ) {
 // Show a warning if Semantic MediaWiki is not loaded.
 if ( ! defined( 'SMW_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
+}
+
+if ( version_compare( SMW_VERSION, '1.6', '<' ) ) {
+	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.6 or above; use Semantic Maps 0.7.x for older versions.' );
 }
 
 define( 'SM_VERSION', '0.8 alpha' );
