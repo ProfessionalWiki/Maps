@@ -114,6 +114,8 @@ $messages['ar'] = array(
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 	'semanticmaps_notfound' => 'لم يوجد',
+	'semanticmaps-forminput-remove' => 'أزل',
+	'semanticmaps-forminput-add' => 'أضف',
 	'semanticmaps_paramdesc_format' => 'خدمة الخرائط المستخدمة لتوليد الخريطة',
 	'semanticmaps_paramdesc_geoservice' => 'خدمة التكويد الجغرافي المستخدمة لتحويل العناوين إلى إحداثيات',
 	'semanticmaps_paramdesc_height' => 'ارتفاع الخريطة، بالبكسل (افتراضيا $1)',
@@ -653,7 +655,8 @@ $messages['ia'] = array(
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'semanticmaps-desc' => 'Memampukan penampilan dan penyuntingan data koordinat yang disimpan melalui pengaya MediaWiki Semantic ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Memberikan kemampuan untuk melihat dan menyunting data koordinat yang disimpan melalui pengaya MediaWiki Semantic
+([http://mapping.referata.com/wiki/Examples demo]).',
 	'semanticmaps-unrecognizeddistance' => 'Nilai $1 bukan jarak yang sah.',
 	'semanticmaps-kml-link' => 'Lihat berkas KML',
 	'semanticmaps-default-kml-pagelink' => 'Lihat halaman $1',
