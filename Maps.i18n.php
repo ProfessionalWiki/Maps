@@ -1715,8 +1715,8 @@ $1',
  * @author IvanLanin
  */
 $messages['id'] = array(
-	'maps-desc' => "Memampukan tampilan data koordinat pada peta, dan alamat ''geocode'' ([http://mapping.referata.com/wiki/Maps_examples demo]). 
-Layanan pemetaan yang tersedia: $1",
+	'maps-desc' => 'Mengaktifkan penyertaan peta dinamis dalam halaman wiki, pembuatan geokode alamat, dan operasi geografi lain.
+([http://mapping.referata.com/wiki/Examples demo])',
 	'maps_map' => 'Peta',
 	'maps-loading-map' => 'Memuat peta...',
 	'maps-markers' => 'Tanda',
@@ -3383,6 +3383,7 @@ $messages['vi'] = array(
 	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://mapping.referata.com/wiki/Examples thử xem]).',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
+	'maps-load-failed' => 'Không thể tải bản đồ!',
 	'maps-markers' => 'Chú thích',
 	'maps-others' => 'khác',
 	'maps-ns-layer' => 'Lớp',
@@ -3397,6 +3398,16 @@ $messages['vi'] = array(
 	'validation-error-invalid-layers' => 'Tham số $1 phải là một hoặc nhiều lớp hợp lệ.',
 	'maps-layer-of-type' => 'Lớp kiểu $1',
 	'maps-layer-type-supported-by' => '{{PLURAL:$2|Có thể|Chỉ có thể}} sử dụng kiểu lớp này với {{PLURAL:$2|dịch vụ bản đồ $1|các dịch vụ bản đồ: $1}}.',
+	'maps-coordinates-par-location' => 'Tọa độ để định dạng hóa.',
+	'maps-coordinates-par-format' => 'Định dạng cho ra tọa độ.',
+	'maps-coordinates-par-directional' => 'Nên cho ra hướng với tọa độ hay không.',
+	'maps-distance-par-decimals' => 'Đa số chữ số thập phân trong giá trị kết quả.',
+	'maps-distance-par-unit' => 'Đơn vị của tầm xa được cho ra.',
+	'maps-finddestination-par-location' => 'Vị trí ban đầu.',
+	'maps-finddestination-par-bearing' => 'Hướng ban đầu.',
+	'maps-finddestination-par-distance' => 'Tầm xa để chạy.',
+	'maps-finddestination-par-format' => 'Định dạng cho ra nơi đến',
+	'maps-geocode-par-location' => 'Địa chỉ để mã hóa địa lý.',
 	'validation-error-invalid-location' => 'Tham số $1 phải là một vị trí hợp lệ.',
 	'validation-error-invalid-locations' => 'Tham số $1 phải là một hoặc nhiều vị trí hợp lệ.',
 	'validation-error-invalid-width' => 'Tham số $1 phải là một chiều rộng hợp lệ.',
@@ -3432,6 +3443,10 @@ $1',
 	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcam',
+	'maps-openlayers-par-controls' => 'Các điều khiển đặt trên bản đồ.',
+	'maps-openlayers-par-layers' => 'Các lớp sẽ có sẵn trong hộp chọn lớp. Lớp đầu tiên là lớp mặc định.',
+	'maps-osm-par-thumbs' => 'Hiện hình thu nhỏ',
+	'maps-osm-par-photos' => 'Hiện hình ảnh',
 );
 
 /** Volapük (Volapük) */
