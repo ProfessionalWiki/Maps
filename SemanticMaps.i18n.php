@@ -846,6 +846,13 @@ $messages['ml'] = array(
 	'semanticmaps_notfound' => 'കണ്ടെത്താനായില്ല',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'semanticmaps-forminput-locations' => 'Lokasi',
+);
+
 /** Dutch (Nederlands)
  * @author Jeroen De Dauw
  * @author Siebrand
