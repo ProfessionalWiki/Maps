@@ -662,6 +662,16 @@ $messages['cs'] = array(
 	'maps_wikipedia' => 'Wikipedie',
 );
 
+/** Danish (Dansk)
+ * @author Peter Alberti
+ */
+$messages['da'] = array(
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'Ø',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'V',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author DaSch
