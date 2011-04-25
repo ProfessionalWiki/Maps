@@ -78,26 +78,6 @@ final class SMGeoCoordsHooks {
 	}
 	
 	/**
-	 * Defines the signature for geographical fields needed for the smw_coords table.
-	 * 
-	 * @since 0.8
-	 * 
-	 * @param array $fieldTypes The field types defined by SMW, passed by reference.
-	 * 
-	 * @return true
-	 */
-	public static function initGeoCoordsFieldTypes( array $fieldTypes ) {
-		global $smgUseSpatialExtensions;
-
-		// Only add the table when the SQL store is not a postgres database, and it has not been added by SMW itself.
-		if ( $smgUseSpatialExtensions && !array_key_exists( 'c', $fieldTypes ) ) {
-			$fieldTypes['c'] = 'Point NOT NULL';
-		}
-		
-		return true;
-	}
-	
-	/**
 	 * Defines the layout for the smw_coords table which is used to store value of the GeoCoords type.
 	 * 
 	 * @since 0.8
@@ -105,11 +85,9 @@ final class SMGeoCoordsHooks {
 	 * @param array $propertyTables The property tables defined by SMW, passed by reference.
 	 */
 	public static function initGeoCoordsTable( array $propertyTables ) {
-		global $smgUseSpatialExtensions;
-		
 		// No spatial extensions support for postgres yet, so just store as 2 float fields.
-		$signature = $smgUseSpatialExtensions ? array( 'point' => 'c' ) : array( 'lat' => 'f', 'lon' => 'f' );
-		$indexes = $smgUseSpatialExtensions ? array( array( 'point', 'SPATIAL INDEX' ) ) : array_keys( $signature );
+		$signature = array( 'lat' => 'f', 'lon' => 'f' );
+		$indexes = array_keys( $signature );
 		
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',

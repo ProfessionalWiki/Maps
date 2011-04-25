@@ -50,8 +50,6 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * @return true
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
-		global $smgUseSpatialExtensions;
-		
 		$dataValue = $this->getDatavalue();
 		
 		// Only execute the query when the description's type is geographical coordinates,
@@ -74,14 +72,9 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 			$lon = $dbs->addQuotes( $coordinates['lon'] );
 			
 			$conditions = array();
-			
-			if ( $smgUseSpatialExtensions ) {
-				// TODO
-			}
-			else {		
-				$conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
-				$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";				
-			}	
+				
+            $conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
+            $conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";
 			
 			return implode( ' && ', $conditions );			
 		}

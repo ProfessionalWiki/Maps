@@ -117,8 +117,6 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @return string or false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
-		global $smgUseSpatialExtensions;
-		
 		$dataValue = $this->getDatavalue();
 
 		// Only execute the query when the description's type is geographical coordinates,
@@ -137,25 +135,19 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
 		
-		if ( $smgUseSpatialExtensions ) {
-			// TODO
-			$sql = '';
-		}
-		else {
-			$conditions = array();
-			
-			$smallerThen = $isEq ? '<' : '>=';
-			$biggerThen = $isEq ? '>' : '<=';
-			$joinCond = $isEq ? '&&' : '||';
-			
-			$conditions[] = "{$tableName}.$fieldNames[0] $smallerThen $north";
-			$conditions[] = "{$tableName}.$fieldNames[0] $biggerThen $south";
-			$conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $east";
-			$conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $west";
+        $conditions = array();
 
-			$sql = implode( " $joinCond ", $conditions );
-		}
-		
+        $smallerThen = $isEq ? '<' : '>=';
+        $biggerThen = $isEq ? '>' : '<=';
+        $joinCond = $isEq ? '&&' : '||';
+
+        $conditions[] = "{$tableName}.$fieldNames[0] $smallerThen $north";
+        $conditions[] = "{$tableName}.$fieldNames[0] $biggerThen $south";
+        $conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $east";
+        $conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $west";
+
+        $sql = implode( " $joinCond ", $conditions );
+
 		return $sql;
 	}
 
