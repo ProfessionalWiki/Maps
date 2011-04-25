@@ -418,6 +418,7 @@ $messages['fr'] = array(
 	'semanticmaps-unrecognizeddistance' => "La valeur $1 n'est pas une distance valide",
 	'semanticmaps-kml-link' => 'Voir le fichier KML',
 	'semanticmaps-default-kml-pagelink' => 'Voir l’article $1',
+	'semanticmaps-loading-forminput' => "Chargement du formulaire d'entrée de la carte...",
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
 	'semanticmaps-updatemap' => 'Mise à jour de la carte',
@@ -437,6 +438,7 @@ $messages['fr'] = array(
 	'semanticmaps_paramdesc_overlays' => 'Les revêtements disponibles sur la carte',
 	'semanticmaps_paramdesc_autozoom' => 'Si le zoom avant et arrière en utilisant la molette de la souris est activé',
 	'semanticmaps_paramdesc_layers' => 'Les revêtements disponibles sur la carte',
+	'semanticmaps-par-forceshow' => "Afficher la carte même quand il n'y a pas d'emplacement à afficher ?",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -992,6 +994,11 @@ $messages['pms'] = array(
 	'semanticmaps_paramdesc_overlays' => 'Le dzor-posission disponìbij an sla carta',
 	'semanticmaps_paramdesc_autozoom' => "Se l'angrandiment anans e andré an dovrand la roëtta dël rat a l'é abilità",
 	'semanticmaps_paramdesc_layers' => 'Ij livej disponìbij an sla carta',
+	'semanticmaps-par-staticlocations' => 'Na lista ëd ocassion da gionté a la carta ansema con ij dat ciamà. Com con dispay_points, it peule gionté un tìtol, descrission e icon-a për locassion an dovrand la tilde "~" com separador.',
+	'semanticmaps-par-forceshow' => 'Mosta la carta ëdcò quand a-i son pa locassion da mosté?',
+	'semanticmaps-par-showtitle' => "Mosta un tìtol ant a fnesta d'anformassion dël marcador o no. Disabilité sòn-sì a l'é ùtil soens quand as dòvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
+	'semanticmaps-par-centre' => "Ël sénter ëd la carta. Quand a l'é pa dàit, la carta a troverà automaticament ël sénter otimal për mosté tùit ij marcador an sla carta.",
+	'semanticmaps-par-template' => "Në stamp da dovré për formaté ij contnù dla fnesta d'anformassion.",
 );
 
 /** Pashto (پښتو)
@@ -1186,6 +1193,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'semanticmaps_enteraddresshere' => 'చిరునామాని ఇక్కడ ఇవ్వండి',
 	'semanticmaps_notfound' => 'కనబడలేదు',
+	'semanticmaps-forminput-add' => 'చేర్చు',
 );
 
 /** Tagalog (Tagalog)
