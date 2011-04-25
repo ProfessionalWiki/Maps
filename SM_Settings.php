@@ -5,7 +5,7 @@
  * More info can be found at http://www.mediawiki.org/wiki/Extension:Semantic_Maps#Settings
  *
  *                          NOTICE:
- * Changing one of these settings can be done by copieng or cutting it,
+ * Changing one of these settings can be done by copying or cutting it,
  * and placing it in LocalSettings.php, AFTER the inclusion of Semantic Maps.
  *
  * @file SM_Settings.php
@@ -31,16 +31,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 	
 
-# General
-
-	# Boolean. Indicates if spatial extensions should be used for coordinate storage.
-	# Spatial extensions significantly speed up querying, but are not present by default on postgres databases.
-	# If this value is false, coordinates will be stored in 2 float fields.
-	# You are unlikely to need to change this setting, so don't unless you know what you are doing!
-	$smgUseSpatialExtensions = false; // TODO: $wgDBtype != 'postgres';
-	
-	
-	
 # Queries
 
 	# Boolean. The default value for the forceshow parameter. Will force a map to be shown even when there are no query results
