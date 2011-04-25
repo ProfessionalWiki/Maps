@@ -104,7 +104,7 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * Returns the type of the provided coordinates, or flase if they are invalid.
+	 * Returns the type of the provided coordinates, or false if they are invalid.
 	 * You can use this as validation function, but be sure to use ===, since 0 can be returned.
 	 * 
 	 * @since 0.6
@@ -162,7 +162,7 @@ class MapsCoordinateParser {
 	 * @since 0.6
 	 * 
 	 * @param array $coordinates The set of coordinates that needs to be formatted. Either an associative
-	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
+	 *        array with lat and lon keys, or a numbered array with lat on index 0, and lon on index 1.
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * @param string $separator Delimiter to separate the latitude and longitude with.
@@ -183,7 +183,7 @@ class MapsCoordinateParser {
 	 * @since 0.6.2
 	 * 
 	 * @param array $coordinates The set of coordinates that needs to be formatted. Either an associative
-	 *        array with lat and lon keys, or a numbered aray with lat on index 0, and lon on index 1.
+	 *        array with lat and lon keys, or a numbered array with lat on index 0, and lon on index 1.
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * 
