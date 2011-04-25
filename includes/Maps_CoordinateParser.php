@@ -316,7 +316,7 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * returns whether the coordinates are in float representataion.
+	 * returns whether the coordinates are in float representation.
 	 * 
 	 * @since 0.6
 	 * 
@@ -331,7 +331,7 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * returns whether the coordinates are in DMS representataion.
+	 * returns whether the coordinates are in DMS representation.
 	 * 
 	 * @since 0.6
 	 * 
@@ -348,7 +348,7 @@ class MapsCoordinateParser {
 	}
 
 	/**
-	 * returns whether the coordinates are in Decimal Degree representataion.
+	 * returns whether the coordinates are in Decimal Degree representation.
 	 * 
 	 * @since 0.6
 	 * 
@@ -363,7 +363,7 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * returns whether the coordinates are in Decimal Minute representataion.
+	 * returns whether the coordinates are in Decimal Minute representation.
 	 * 
 	 * @since 0.6
 	 * 
@@ -511,7 +511,7 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * Takes a set of coordinates in DMS representataion, and returns them in float representataion.
+	 * Takes a set of coordinates in DMS representation, and returns them in float representation.
 	 * 
 	 * @since 0.6
 	 * 
@@ -547,7 +547,7 @@ class MapsCoordinateParser {
 	}
 
 	/**
-	 * Takes a set of coordinates in Decimal Degree representataion, and returns them in float representataion.
+	 * Takes a set of coordinates in Decimal Degree representation, and returns them in float representation.
 	 * 
 	 * @since 0.6
 	 * 
@@ -560,7 +560,7 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * Takes a set of coordinates in Decimal Minute representataion, and returns them in float representataion.
+	 * Takes a set of coordinates in Decimal Minute representation, and returns them in float representation.
 	 * 
 	 * @since 0.6
 	 * 
@@ -583,7 +583,7 @@ class MapsCoordinateParser {
 	}
 	
 	/**
-	 * Gets a regex group that allows only the supported seperators.
+	 * Gets a regex group that allows only the supported separators.
 	 * 
 	 * @since 0.6.2
 	 * 
