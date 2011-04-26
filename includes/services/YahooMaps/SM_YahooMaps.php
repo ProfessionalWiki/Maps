@@ -21,22 +21,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgResourceModules['ext.sm.fi.yahoomaps'] = array(
-	'dependencies' => array( 'ext.maps.yahoomaps' ),
+	'dependencies' => array( 'ext.maps.yahoomaps', 'ext.sm.forminputs' ),
 	'localBasePath' => dirname( __FILE__ ),
-	'remoteBasePath' => $smgScriptPath .  '/includes/services/OpenLayers',
+	'remoteBasePath' => $smgScriptPath .  '/includes/services/YahooMaps',
 	'group' => 'ext.semanticmaps',
 	'scripts' => array(
-		'jquery.openlayersinput.js',
-		'ext.sm.openlayersinput.js'
+		'jquery.yahoomapsinput.js',
+		'ext.sm.yahoomaps.js'
 	),
-	'messages' => array(
-		'semanticmaps_enteraddresshere',
-		'semanticmaps-updatemap',
-		'semanticmaps_lookupcoordinates',
-		'semanticmaps-forminput-remove',
-		'semanticmaps-forminput-add',
-		'semanticmaps-forminput-locations'
-	)
 );
 
 $wgHooks['MappingServiceLoad'][] = 'smfInitYahooMaps';

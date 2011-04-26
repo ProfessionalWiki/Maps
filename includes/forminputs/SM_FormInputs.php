@@ -22,6 +22,12 @@ $wgResourceModules['ext.sm.forminputs'] = array(
 		'jquery.mapforminput.js'
 	),
 	'messages' => array(
+		'semanticmaps_enteraddresshere',
+		'semanticmaps-updatemap',
+		'semanticmaps_lookupcoordinates',
+		'semanticmaps-forminput-remove',
+		'semanticmaps-forminput-add',
+		'semanticmaps-forminput-locations'
 	)
 );
 

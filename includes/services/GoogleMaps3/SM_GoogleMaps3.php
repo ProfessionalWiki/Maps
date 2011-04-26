@@ -30,7 +30,7 @@ $moduleTemplate = array(
 );
 
 $wgResourceModules['ext.sm.fi.googlemaps3'] = $moduleTemplate + array(
-	'dependencies' => array( 'ext.maps.googlemaps3' ),
+	'dependencies' => array( 'ext.maps.googlemaps3', 'ext.sm.forminputs' ),
 	'scripts' => array(
 		'ext.sm.googlemapsinput.js'
 	),
@@ -42,12 +42,6 @@ $wgResourceModules['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
 		'jquery.googlemapsinput.js',
 	),
 	'messages' => array(
-		'semanticmaps_enteraddresshere',
-		'semanticmaps-updatemap',
-		'semanticmaps_lookupcoordinates',
-		'semanticmaps-forminput-remove',
-		'semanticmaps-forminput-add',
-		'semanticmaps-forminput-locations'
 	)
 );
 /*
