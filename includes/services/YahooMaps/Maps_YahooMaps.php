@@ -133,11 +133,10 @@ class MapsYahooMaps extends MapsMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		global $egYahooMapsKey, $egMapsScriptPath, $egMapsStyleVersion;
+		global $egYahooMapsKey;
 		
 		return array(
-			Html::linkedScript( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" ),
-			Html::linkedScript( "$egMapsScriptPath/includes/services/YahooMaps/YahooMapFunctions.js?$egMapsStyleVersion" ),
+			Html::linkedScript( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" )
 		);		
 	}	
 	
