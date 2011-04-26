@@ -438,7 +438,11 @@ $messages['fr'] = array(
 	'semanticmaps_paramdesc_overlays' => 'Les revêtements disponibles sur la carte',
 	'semanticmaps_paramdesc_autozoom' => 'Si le zoom avant et arrière en utilisant la molette de la souris est activé',
 	'semanticmaps_paramdesc_layers' => 'Les revêtements disponibles sur la carte',
+	'semanticmaps-par-staticlocations' => 'Une liste des endroits à ajouter à la carte avec les données demandées. Comme avec display_points, vous pouvez ajouter un titre, une description et une icône par emplacement en utilisant le tilde « ~ » comme séparateur.',
 	'semanticmaps-par-forceshow' => "Afficher la carte même quand il n'y a pas d'emplacement à afficher ?",
+	'semanticmaps-par-showtitle' => "Afficher un titre dans la fenêtre d'informations des marqueurs ou non. La désactivation de ceci est souvent utile lorsque vous utilisez un modèle pour formater le contenu de la fenêtre d'informations.",
+	'semanticmaps-par-centre' => "Le centre de la carte. Lorsqu'il n'est pas fourni, la carte va choisir automatiquement le centre optimal pour afficher tous les marqueurs sur la carte.",
+	'semanticmaps-par-template' => "Un modèle à utiliser pour mettre en forme le contenu de la fenêtre d'informations.",
 );
 
 /** Franco-Provençal (Arpetan)
