@@ -1056,11 +1056,13 @@ $1',
 );
 
 /** French (Français)
+ * @author Brunoperel
  * @author Crochet.david
  * @author Hashar
  * @author IAlex
  * @author Jean-Frédéric
  * @author McDutchie
+ * @author Od1n
  * @author Peter17
  * @author PieRRoMaN
  * @author Sherbrooke
@@ -1089,6 +1091,8 @@ $messages['fr'] = array(
 	'maps-displaymap-description' => 'Affiche les cartes géographiques sans aucun marqueur wiki sur eux.',
 	'maps-displaypoint-description' => 'Affiche les cartes géographiques avec un ou plusieurs marqueurs wiki sur eux.',
 	'maps-distance-description' => "Convertit une distance d'une certaine unité prise en charge à son équivalent en utilisant une autre unité.",
+	'maps-finddestination-description' => "Trouver une destination avec un point de départ donné (qui peuvent être dans n'importe lequel des formats supportés), une orientation initiale et une distance.",
+	'maps-geocode-description' => "Permet le géocodage d'adresses, en d'autres termes, la transformation des positions humainement lisible en ensembles de coordonnées. Plusieurs services de géocodage sont pris en charge, qui ne doivent pas être confondu avec les services de cartographie.",
 	'maps-geodistance-description' => "Calculer la distance géographique entre deux points, depuis et vers n'importe quel format pris en charge.",
 	'maps-coordinates-par-location' => 'Les coordonnées que vous souhaitez formater.',
 	'maps-coordinates-par-format' => 'Le format cible pour les coordonnées.',
@@ -1103,8 +1107,17 @@ $messages['fr'] = array(
 	'maps-finddestination-par-directional' => 'Indique si le format de destination doit être directionnel ou non.',
 	'maps-finddestination-par-allowcoordinates' => 'Indique si les coordonnées doivent être autorisés. Si non, seul les adresses seront acceptées.',
 	'maps-finddestination-par-geoservice' => "Le service de géocodage à utiliser pour géocoder la valeur au cas où il s'agirait d'une adresse.",
+	'maps-finddestination-par-mappingservice' => 'Paramètre indiquant le service de cartographie à utiliser avec cette fonction.
+Cela permettra aux cartes de remplacer la valeur par défaut du paramètre de service par celui qui est optimal pour le service de cartographie.
+(Exemple : Dans le cas de Google Maps, le géocodage Google sera utilisé.)',
 	'maps-geocode-par-location' => "L'adresse que vous souhaitez géocoder.",
 	'maps-geocode-par-mappingservice' => 'Le service de géocodage que vous souhaitez utiliser. Consultez les services de géocodage disponibles.',
+	'maps-geocode-par-geoservice' => "Ce paramètre vous permet d'indiquer que vous utilisez cette demande de géocodage en combinaison avec un service de cartographie spécifique. 
+Chaque service de cartographie peut écraser la valeur par défaut pour le service de géocodage.
+Cette démarche est liée à des raisons juridiques, puisque vous ne pouvez pas utiliser le service de géocodage de Google, sauf avec Google Maps.
+Indiquer ce paramètre et non le paramètre pour le service veillera à ce que vous n'utilisiez pas une combinaison non valide.",
+	'maps-geocode-par-allowcoordinates' => "Permet de désactiver le support pour les coordonnées dans cette fonction. Doit être soit oui ou non.
+Si cette valeur est « non », chacune des valeurs sera géocodée, même s'il s'agit de coordonnées valides.",
 	'maps-geocode-par-format' => 'Le format des coordonnées qui en résultent.',
 	'maps-geocode-par-directional' => 'Indique si les coordonnées doivent être imprimées directionnellement ou non.',
 	'maps-geodistance-par-location1' => 'Le premier point dans le jeu pour à utiliser pour calculer la distance.',
@@ -1112,10 +1125,19 @@ $messages['fr'] = array(
 	'maps-geodistance-par-unit' => "L'unité à utiliser pour afficher la distance.",
 	'maps-geodistance-par-decimals' => 'Le nombre maximal de chiffres après la virgule à utiliser dans le résultat.',
 	'maps-geodistance-par-mappingservice' => "Le service de géocodage à utiliser pour géocoder n'importe quelle adresse.",
+	'maps-geodistance-par-geoservice' => 'Le service de cartographie à utiliser conjointement.
+Cela peut affecter la valeur par défaut du service de géocodage.',
 	'maps-displaymap-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
 	'maps-displaymap-par-coordinates' => "L'emplacement sur lequel la carte sera initialement centrée.",
+	'maps-displaypoints-par-zoom' => "Permet de définir le niveau de zoom de la carte.
+Lorsqu'il n'est pas fourni et que plusieurs marqueurs sont présents sur la carte, le meilleur zoom sera pris, et non pas la valeur par défaut configurable.",
 	'maps-displaypoints-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
 	'maps-displaypoints-par-coordinates' => 'Un ou plusieurs emplacements à afficher sur la carte. Ils seront indiqués avec un marqueur.',
+	'maps-displaypoints-par-centre' => "Permet de définir les coordonnées du centre de la carte pour display_point(s).
+Accepte les adresses et les coordonnées.!
+Lorsque cette propriété n'est pas fournie, la carte se recentre sur le marqueur fourni, ou entre les marqueurs fournis.",
+	'maps-displaypoints-par-title' => "Permet de définir le texte qui sera affiché dans les pop-ups de tous les marqueurs qui ne disposent pas d'un titre spécifique.
+Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
 	'maps-displaypoints-par-label' => "Permet de définir le texte qui sera affiché dans les fenêtres surgissantes de tous les marqueurs qui n'ont pas une étiquette spécifique.",
 	'maps-displaypoints-par-icon' => "Permet de définir l'icône utilisée pour tous les marqueurs.",
 	'validation-error-invalid-location' => 'Le paramètre $1 doit être un emplacement valide.',
@@ -1134,7 +1156,7 @@ $messages['fr'] = array(
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Latitude :',
 	'maps-longitude' => 'Longitude :',
-	'maps-invalid-coordinates' => "La valeur $1 n'a pas été reconnue comme un ensemble de coordonnées valable.",
+	'maps-invalid-coordinates' => "La valeur $1 n'a pas été reconnue comme un ensemble de coordonnées valide.",
 	'maps_coordinates_missing' => "Aucune coordonnée n'a été fournie pour le plan.",
 	'maps_geocoding_failed' => "{{PLURAL:$2|L′adresse suivante n'as pu être géocodée|Les adresses suivantes n'ont pas pu être géocodées}} : $1.
 Le plan ne peut pas être affiché.",
@@ -1148,6 +1170,9 @@ $1",
 	'maps_centred_on' => 'Carte centrée sur $1, $2.',
 	'maps-par-resizable' => 'Rendre la carte redimensionnable en faisant glisser son coin inférieur droit.',
 	'maps-par-geoservice' => 'Le service de géocodage à utiliser pour effectuer les traductions entre les adresses et les coordonnées.',
+	'maps-par-zoom' => 'Le niveau de zoom de la carte. Pour les cartes avec des marqueurs la valeur par défaut le plus grand zoom qui montre encore tous les marqueurs.',
+	'maps-par-width' => 'Permet de définir la largeur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.',
+	'maps-par-height' => 'Permet de définir la hauteur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.',
 	'maps-googlemaps2-incompatbrowser' => "Votre navigateur n'est pas compatible avec Google Maps v2.",
 	'maps_overlays' => 'Superpositions',
 	'maps_photos' => 'Photos',
@@ -1169,6 +1194,7 @@ $1",
 	'maps-googlemaps3-par-typestyle' => 'Style du contrôle de type.',
 	'maps-googlemaps3-par-autoinfowindows' => "Ouvrir automatiquement toutes les fenêtres d'information après le chargement de la page.",
 	'maps-googlemaps3-par-kml' => 'Fichiers KML à charger sur la carte.',
+	'maps-googlemaps3-par-fusiontables' => 'ID des tables de Google Fusion qui devrait être chargées sur la carte.',
 	'maps-openlayers-par-controls' => 'Les contrôles à placer sur la carte.',
 	'maps-openlayers-par-layers' => 'Les couches qui seront disponibles dans le sélecteur de couche. La première couche sera affichée lors du chargement de la carte.',
 	'maps-osm-par-thumbs' => 'Afficher des miniatures',
