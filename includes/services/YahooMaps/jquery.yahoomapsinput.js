@@ -10,8 +10,33 @@
  */
 
 (function( $ ){ $.fn.yahoomapsinput = function( options ) {
-	
-	
+
+	var self = this;
+	var geocoder = false;
+
+	/**
+	 * Creates and places a new marker on the map at the provided
+	 * coordinate set and the pans to it.
+	 * @param {Object} coordinate
+	 */
+	this.showCoordinate = function( coordinate ) {
+        // TODO
+    };
+
+	this.setupGeocoder = function() {
+		if ( geocoder === false ) {
+			// TODO
+		}
+	}
+
+	this.geocodeAddress = function( address ) {
+		this.setupGeocoder();
+		// TODO
+	};
+
+	this.mapforminput( mapDivId, options );
+
+	this.mapDiv.yahoomaps( options );
 	
 	return this;
 	

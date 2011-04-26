@@ -57,7 +57,7 @@
 		} );
 	};
 	
-	this.mapforminput( mapDivId, options, { canGeocode: true } );
+	this.mapforminput( mapDivId, options );
 	
 	this.mapDiv.googlemaps( options );	
 	
