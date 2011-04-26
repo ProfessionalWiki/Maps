@@ -1,5 +1,5 @@
 /**
- * JavasSript for the Google Maps v3 form input in the Semantic Maps extension.
+ * JavasSript for the OpenLayers form input in the Semantic Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Semantic_Maps
  * 
  * @since 0.8

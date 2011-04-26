@@ -12,7 +12,6 @@
 (function( $ ){ $.fn.yahoomapsinput = function( options ) {
 
 	var self = this;
-	var geocoder = false;
 
 	/**
 	 * Creates and places a new marker on the map at the provided
@@ -20,19 +19,33 @@
 	 * @param {Object} coordinate
 	 */
 	this.showCoordinate = function( coordinate ) {
-        // TODO
+        this.mapDiv.map.removeMarkersAll();
+		coordinate.icon = '';
+		coordinate.title = '';
+		coordinate.text = coord.dms( coordinate.lat, coordinate.lon );
+		var marker = this.mapDiv.addMarker( coordinate );
+        this.mapDiv.map.drawZoomAndCenter( new YGeoPoint( coordinate.lat, coordinate.lon ) );
     };
 
-	this.setupGeocoder = function() {
-		if ( geocoder === false ) {
-			// TODO
-		}
-	}
-
 	this.geocodeAddress = function( address ) {
-		this.setupGeocoder();
-		// TODO
+		this.mapDiv.map.drawZoomAndCenter( address );
+
+        YEvent.Capture(this.mapDiv.map, EventsList.onEndGeoCode,
+            function( resultObj ) {
+                map.addOverlay( new YMarker( resultObj.GeoPoint ) );
+                this.updateInput( [ { 'lat': resultObj.GeoPoint.Lat, 'lon': resultObj.GeoPoint.Lon } ] );
+            }
+        );
 	};
+
+	// Click event handler for updating the location of the marker.
+	YEvent.Capture(this.mapDiv.map, EventsList.MouseClick,
+		function(_e, point) {
+            var coordinate = { 'lat': point.Lat, 'lon': point.Lon };
+			this.showCoordinate( coordinate );
+            this.updateInput( [ coordinate ] );
+		}
+	);
 
 	this.mapforminput( mapDivId, options );
 
