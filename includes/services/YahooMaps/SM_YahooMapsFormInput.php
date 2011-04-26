@@ -1,57 +1,25 @@
 <?php
 
 /**
- * File holding the SMYahooMapsFormInput class.
+ * Yahoo! Maps form input class.
  *
- * @file SM_YahooMapsFormInput.php
- * @ingroup SMYahooMaps
- * 
- * @author Jeroen De Dauw
- */
-
-/**
- * Class for Yahoo Maps! form inputs.
- * 
- * @ingroup SMYahooMaps
- * 
- * @author Jeroen De Dauw
+ * @file SM_GoogleMaps3FormInput.php
+ * @ingroup SemanticMaps
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class SMYahooMapsFormInput extends SMFormInput {
-	
-	/**
-	 * @see SMFormInput::getShowAddressFunction
-	 * 
-	 * @since 0.6.5
-	 */	
-	protected function getShowAddressFunction() {
-		global $egYahooMapsKey;
-		return $egYahooMapsKey == '' ? false : 'showYAddress';	
-	}	
-	
-	/**
-	 * @see MapsMapFeature::addFormDependencies()
-	 */
-	protected function addFormDependencies() {
-		global $wgOut;
-		global $smgScriptPath, $smgStyleVersion;
-		
-		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/includes/services/YahooMaps/SM_YahooMapsForms.js?$smgStyleVersion" ) );
-		$this->service->addDependencies( $wgOut );
-	}
-	
-	/**
-	 * @see MapsMapFeature::addSpecificMapHTML
-	 */
-	public function addSpecificMapHTML() {
-		return Html::element(
-			'div',
-			array(
-				'id' => $this->service->getMapId( false ),
-				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
-			),
-			wfMsg( 'maps-loading-map' )
-		);
 
+	/**
+	 * @see SMFormInput::getResourceModules
+	 *
+	 * @since 0.8
+	 *
+	 * @return array of string
+	 */
+	protected function getResourceModules() {
+		return array_merge( parent::getResourceModules(), array( 'ext.sm.fi.yahoomaps' ) );
 	}
-	
+
 }

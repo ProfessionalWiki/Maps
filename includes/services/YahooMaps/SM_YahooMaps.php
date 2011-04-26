@@ -20,6 +20,25 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+$wgResourceModules['ext.sm.fi.yahoomaps'] = array(
+	'dependencies' => array( 'ext.maps.yahoomaps' ),
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteBasePath' => $smgScriptPath .  '/includes/services/OpenLayers',
+	'group' => 'ext.semanticmaps',
+	'scripts' => array(
+		'jquery.openlayersinput.js',
+		'ext.sm.openlayersinput.js'
+	),
+	'messages' => array(
+		'semanticmaps_enteraddresshere',
+		'semanticmaps-updatemap',
+		'semanticmaps_lookupcoordinates',
+		'semanticmaps-forminput-remove',
+		'semanticmaps-forminput-add',
+		'semanticmaps-forminput-locations'
+	)
+);
+
 $wgHooks['MappingServiceLoad'][] = 'smfInitYahooMaps';
 
 function smfInitYahooMaps() {

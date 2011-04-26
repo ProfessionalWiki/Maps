@@ -21,13 +21,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgResourceModules['ext.sm.fi.openlayers'] = array(
-	'dependencies' => array( 'ext.maps.openlayers', 'jquery.ui.button', 'jquery.ui.dialog' ),
+	'dependencies' => array( 'ext.maps.openlayers' ),
 	'localBasePath' => dirname( __FILE__ ),
-	'remoteBasePath' => $smgScriptPath .  '/includes/services/OpenLayers',	
+	'remoteBasePath' => $smgScriptPath .  '/includes/services/YahooMaps',
 	'group' => 'ext.semanticmaps',
 	'scripts' => array(
-		'jquery.openlayersinput.js',
-		'ext.sm.openlayersinput.js'
+		'jquery.yahoomapsinput.js',
+		'ext.sm.yahoomapsinput.js'
 	),
 	'messages' => array(
 		'semanticmaps_enteraddresshere',
