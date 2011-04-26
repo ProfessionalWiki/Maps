@@ -285,13 +285,28 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @param array $queryLocations
 	 */
 	protected function handleMarkerData( array &$params, array $queryLocations ) {
-		global $wgTitle;
+		global $wgParser;
 
-		$parser = new Parser();			
+		$parserClone = clone $wgParser;		
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$params['locations'] = array();
 
-		foreach ( array_merge( $params['staticlocations'], $queryLocations ) as $location ) {
+		foreach ( $params['staticlocations'] as $location ) {
+			if ( $location->isValid() ) {
+				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl );
+				
+				$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
+				$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
+				
+				$hasTitleAndtext = $jsonObj['title'] != '' && $jsonObj['text'] != '';
+				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
+				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+				
+				$params['locations'][] = $jsonObj;					
+			}
+		}
+		
+		foreach ( $queryLocations as $location ) {
 			if ( $location->isValid() ) {
 				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl );
 				
