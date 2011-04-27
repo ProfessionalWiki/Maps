@@ -246,6 +246,7 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Dvdgmz
  * @author Paucabot
  * @author SMP
  * @author Solde
@@ -256,9 +257,14 @@ $messages['ca'] = array(
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no és un valor de distància.',
 	'semanticmaps-kml-link' => 'Visualitza el fitxer KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualitza la pàgina $1',
+	'semanticmaps-loading-forminput' => "Carregant formulari d'entrada del mapa...",
 	'semanticmaps_lookupcoordinates' => 'Consulta les coordenades',
 	'semanticmaps_enteraddresshere' => 'Introduïu una adreça a continuació',
+	'semanticmaps-updatemap' => 'Actualitzar mapa',
 	'semanticmaps_notfound' => "no s'ha trobat",
+	'semanticmaps-forminput-remove' => 'Suprimir',
+	'semanticmaps-forminput-add' => 'Afegir',
+	'semanticmaps-forminput-locations' => 'Ubicacions',
 	'semanticmaps_paramdesc_format' => "El servei de mapes que s'utilitza per generar el mapa",
 	'semanticmaps_paramdesc_geoservice' => 'El servei de geocodificació que es fa servir per transformar les adreces en coordenades',
 	'semanticmaps_paramdesc_height' => "L'altura del mapa, en píxel (per defecte és $1)",
@@ -271,6 +277,8 @@ $messages['ca'] = array(
 	'semanticmaps_paramdesc_overlays' => 'Les capes disponibles en el mapa',
 	'semanticmaps_paramdesc_autozoom' => "Si està disponible el zoom d'augment i reducció fent servir la rodeta del ratolí",
 	'semanticmaps_paramdesc_layers' => 'Les capes disponibles al mapa',
+	'semanticmaps-par-staticlocations' => "Una llista d'ubicacions per afegir al mapa juntament amb les dades consultades. Com amb 'display_points', s'hi pot afegir un títol, una descripció i una icona per a cada ubicació fent servir el signe \"~\" com a separador.",
+	'semanticmaps-par-forceshow' => 'Mostrar el mapa fins i tot quan no hi ha ubicacions a mostrar?',
 );
 
 /** German (Deutsch)
@@ -545,6 +553,11 @@ $messages['he'] = array(
 	'semanticmaps_paramdesc_overlays' => 'השכבות הזמינות במפה',
 	'semanticmaps_paramdesc_autozoom' => 'האם תקריב באמצעות גלגל העכבר מופעל',
 	'semanticmaps_paramdesc_layers' => 'השכבות הזמינות במפה',
+	'semanticmaps-par-staticlocations' => 'רשימת מיקומים להוסיף למפה יחד עם הנתונים המבוקשים בשאילתה. כמו עם display_points, אפשר להוסיף כאן כותרת, תיאור וסמל לכל מיקום עם טילדה (~) בתור תו מפריד.',
+	'semanticmaps-par-forceshow' => 'להציג מפה גם כשאין מיקומים להצגה?',
+	'semanticmaps-par-showtitle' => 'להציג את הכותרת בחלון המידע על הסמן או לא. הכיבוי של זה שימושי לעתים קרובות כאשר נעשה שימוש בתבנית לעיצוב חלון המידע.',
+	'semanticmaps-par-centre' => 'מרכז המפה. אם לא ניתן, המפה תבחר בעצמה את המרכז המיטבי להצגת כל הסמנים על המפה.',
+	'semanticmaps-par-template' => 'תבנית לעיצוב תוכן חלון המידע.',
 );
 
 /** Croatian (Hrvatski)
@@ -666,9 +679,14 @@ $messages['id'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Nilai $1 bukan jarak yang sah.',
 	'semanticmaps-kml-link' => 'Lihat berkas KML',
 	'semanticmaps-default-kml-pagelink' => 'Lihat halaman $1',
+	'semanticmaps-loading-forminput' => 'Memuat masukan bentuk peta...',
 	'semanticmaps_lookupcoordinates' => 'Cari koordinat',
 	'semanticmaps_enteraddresshere' => 'Masukkan alamat di sini',
+	'semanticmaps-updatemap' => 'Pembaruan peta',
 	'semanticmaps_notfound' => 'tidak ditemukan',
+	'semanticmaps-forminput-remove' => 'Hapus',
+	'semanticmaps-forminput-add' => 'Tambah',
+	'semanticmaps-forminput-locations' => 'Lokasi',
 	'semanticmaps_paramdesc_format' => 'Layanan pemetaan untuk membuat peta',
 	'semanticmaps_paramdesc_geoservice' => 'Layanan kode geo untuk mengubah alamat menjadi koordinat',
 	'semanticmaps_paramdesc_height' => 'Tinggi peta, dalam piksel (umumnya $1)',
@@ -681,6 +699,11 @@ $messages['id'] = array(
 	'semanticmaps_paramdesc_overlays' => 'Lapisan yang tersedia di peta',
 	'semanticmaps_paramdesc_autozoom' => 'Bila ingin zum dekat dan jauh menggunakan mouse, gunakan roda gulung',
 	'semanticmaps_paramdesc_layers' => 'Lapisan tersedia di peta',
+	'semanticmaps-par-staticlocations' => 'Daftar lokasi yang akan ditambahkan ke dalam peta, berikut data kueri. Seperti halnya display_points, Anda dapat menambahkan judul, deskripsi, dan ikon per lokasi dengan menggunakan tanda tilde "~" sebagai pemisah.',
+	'semanticmaps-par-forceshow' => 'Tampilkan peta bahkan ketika tidak ada lokasi untuk ditampilkan?',
+	'semanticmaps-par-showtitle' => 'Tampilkan judul di jendela info penanda. Penonaktifan judul sering berguna ketika menggunakan templat untuk memformat isi jendela info.',
+	'semanticmaps-par-centre' => 'Pusat peta. Jika tidak disediakan, peta secara otomatis akan memilih pusat optimal untuk menampilkan semua penanda di peta.',
+	'semanticmaps-par-template' => 'Ttemplat yang digunakan untuk memformat isi jendela info.',
 );
 
 /** Italian (Italiano)
