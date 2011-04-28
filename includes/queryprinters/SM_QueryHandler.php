@@ -254,7 +254,7 @@ class SMQueryHandler {
 			/* SMWPrintRequest */ $printRequest = $resultArray->getPrintRequest();
 			
 			// Loop throught all the parts of the field value.
-			while ( ( /* SMWDataValue */ $object = $resultArray->getNextObject() ) !== false ) {		
+			while ( ( /* SMWDataValue */ $object = $resultArray->getNextDataValue() ) !== false ) {		
 				if ( $object->getTypeID() == '_wpg' && $i == 0 ) {
 					list( $title, $text ) = $this->handleResultSubject( $object );
 				}
