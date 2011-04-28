@@ -1059,12 +1059,17 @@ $messages['pt'] = array(
 	'semanticmaps_paramdesc_width' => 'A largura do mapa, em pixels (por omissão, $1)',
 	'semanticmaps_paramdesc_zoom' => 'O nível de aproximação do mapa',
 	'semanticmaps_paramdesc_centre' => 'As coordenadas do centro do mapa',
-	'semanticmaps_paramdesc_controls' => 'Os controles colocados no mapa',
+	'semanticmaps_paramdesc_controls' => 'Os controlos colocados no mapa',
 	'semanticmaps_paramdesc_types' => 'Os tipos de mapa disponíveis no mapa',
 	'semanticmaps_paramdesc_type' => 'O tipo do mapa, por omissão',
 	'semanticmaps_paramdesc_overlays' => 'As sobreposições disponíveis no mapa',
 	'semanticmaps_paramdesc_autozoom' => 'Possibilitar a aproximação e afastamento usando a roda de deslizamento do rato',
 	'semanticmaps_paramdesc_layers' => 'As camadas disponíveis no mapa',
+	'semanticmaps-par-staticlocations' => 'Uma lista de localizações para acrescentar ao mapa em conjunto com os dados consultados. Tal como nos pontos a apresentar ("display_points"), pode adicionar um título, descrição e ícone por localização, usando o til "~" como separador.',
+	'semanticmaps-par-forceshow' => 'Mostrar o mapa mesmo quando não existem localizações para apresentar?',
+	'semanticmaps-par-showtitle' => 'Mostrar, ou não, um título na janela informativa do marcador. É frequentemente desejável desactivar esta funcionalidade quando usar uma predefinição para formatar o conteúdo da janela informativa.',
+	'semanticmaps-par-centre' => 'O centro do mapa. Quando este não for fornecido, o mapa escolherá automaticamente o centro óptimo para apresentar todos os marcadores do mapa.',
+	'semanticmaps-par-template' => 'Uma predefinição que será usada para formatar o conteúdo da janela informativa.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
