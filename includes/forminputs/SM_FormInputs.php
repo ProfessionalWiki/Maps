@@ -36,7 +36,7 @@ $wgHooks['MappingFeatureLoad'][] = 'SMFormInputs::initialize';
 final class SMFormInputs {
 	
 	public static function initialize() {
-		global $smgDir, $wgAutoloadClasses, $sfgFormPrinter;
+		global $wgAutoloadClasses;
 
 		// This code should not get called when SF is not loaded, but let's have this
 		// check to not run into problems when people mess up the settings.
@@ -80,7 +80,7 @@ final class SMFormInputs {
 	 * @param strig $mainName
 	 */
 	private static function initFormHook( $inputName, $mainName = '' ) {
-		global $wgAutoloadClasses, $sfgFormPrinter, $smgDir;
+		global $sfgFormPrinter;
 
 		// Add the form input hook for the service.
 		$field_args = array();

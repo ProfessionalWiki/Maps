@@ -111,7 +111,7 @@ class SMFormInput {
 		$fatalError  = $validator->hasFatalError();
 		
 		if ( $fatalError === false ) {
-			global $wgParser, $wgTitle;
+			global $wgParser;
 			
 			$params = $validator->getParameterValues();
 			$mapName = $this->service->getMapId();

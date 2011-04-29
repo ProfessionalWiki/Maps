@@ -21,7 +21,7 @@ final class SMQueryPrinters {
 	 * Initialization function for Maps query printer functionality.
 	 */
 	public static function initialize() {
-		global $smgDir, $wgAutoloadClasses;
+		global $wgAutoloadClasses;
 		
 		$wgAutoloadClasses['SMQueryHandler']	= dirname( __FILE__ ) . '/SM_QueryHandler.php';
 		$wgAutoloadClasses['SMMapper'] 			= dirname( __FILE__ ) . '/SM_Mapper.php';
@@ -65,7 +65,7 @@ final class SMQueryPrinters {
 	 * @param array $aliases
 	 */
 	private static function initFormat( $format, $formatClass, array $aliases = array() ) {
-		global $wgAutoloadClasses, $smgDir, $smwgResultAliases;
+		global $smwgResultAliases;
 
 		// Add the QP to SMW.
 		self::addFormatQP( $format, $formatClass );
