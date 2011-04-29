@@ -106,7 +106,7 @@ class SMQueryHandler {
 	 * @var boolean
 	 */	
 	protected $showSubject = true;
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -199,7 +199,18 @@ class SMQueryHandler {
 	 */
 	public function setShowSubject( $showSubject ) {
 		$this->showSubject = $showSubject;
-	}		
+	}
+
+	/**
+	 * Sets the text for the link to the page when separate from the title.
+	 *
+	 * @since 0.8
+	 *
+	 * @param string $text
+	 */
+	public function setPageLinkText( $text ) {
+		$this->pageLinkText = $text;
+	}
 	
 	/**
 	 * Gets the query result as a list of locations.
@@ -309,10 +320,15 @@ class SMQueryHandler {
 			}
 			
 			if ( $this->titleLinkSeperate ) {
+                $txt = $object->getTitle()->getText();
+                
+                if ( $this->pageLinkText != '' ) {
+                    $txt = str_replace( '$1', $txt, $this->pageLinkText );
+                }
 				$text .= Html::element(
 					'a',
 					array( 'href' => $object->getTitle()->getFullUrl() ),
-					str_replace( '$1', $object->getTitle()->getText(), $this->params['pagelinktext'] ) 
+                    $txt
 				);
 			}			
 		}
