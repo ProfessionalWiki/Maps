@@ -326,6 +326,16 @@ $messages['arz'] = array(
 	'maps_yahoomaps' => 'خرايط ياهو',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'maps-abb-north' => 'Şm',
+	'maps-abb-east' => 'C',
+	'maps-abb-west' => 'Q',
+	'maps_wikipedia' => 'Vikipediya',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -558,6 +568,7 @@ $1",
 	'maps_webcams' => 'Kameraoù web',
 	'maps-googlemaps3-incompatbrowser' => "N'eo ket kenglotus ho merdeer gant Google Maps v3.",
 	'maps-googlemaps3-par-autoinfowindows' => 'Digeriñ an holl brenestroù diouzhtu goude bezañ karget ar bajenn.',
+	'maps-osm-par-thumbs' => 'Diskouez ar munudoù',
 	'maps-osm-par-photos' => 'Diskouez ar skeudennoù',
 );
 
