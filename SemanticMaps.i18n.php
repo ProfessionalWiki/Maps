@@ -488,7 +488,7 @@ $messages['gl'] = array(
 	'semanticmaps_paramdesc_controls' => 'Os controis de usuario situados no mapa',
 	'semanticmaps_paramdesc_types' => 'Os tipos de mapa dispoñibles no mapa',
 	'semanticmaps_paramdesc_type' => 'O tipo de mapa por defecto para o mapa',
-	'semanticmaps_paramdesc_overlays' => 'As sobreposicións dispoñibles no mapa',
+	'semanticmaps_paramdesc_overlays' => 'As superposicións dispoñibles no mapa',
 	'semanticmaps_paramdesc_autozoom' => 'Activa o achegamento e afastamento coa roda do rato',
 	'semanticmaps_paramdesc_layers' => 'As capas dispoñibles no mapa',
 );
@@ -622,6 +622,8 @@ $messages['hu'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordináták felkeresése',
 	'semanticmaps_enteraddresshere' => 'Add meg a címet itt',
 	'semanticmaps_notfound' => 'nincs találat',
+	'semanticmaps-forminput-add' => 'Hozzáadás',
+	'semanticmaps-forminput-locations' => 'Helyszínek',
 	'semanticmaps_paramdesc_format' => 'A térkép generálásához használt térképszolgáltatás.',
 	'semanticmaps_paramdesc_height' => 'A térkép magassága, képpontban (alapértelmezetten $1)',
 	'semanticmaps_paramdesc_width' => 'A térkép szélessége, képpontban (alapértelmezetten $1)',
@@ -1226,6 +1228,14 @@ $messages['te'] = array(
 	'semanticmaps_enteraddresshere' => 'చిరునామాని ఇక్కడ ఇవ్వండి',
 	'semanticmaps_notfound' => 'కనబడలేదు',
 	'semanticmaps-forminput-add' => 'చేర్చు',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'semanticmaps-forminput-remove' => 'Hasai',
+	'semanticmaps-forminput-add' => 'Tau tan',
 );
 
 /** Tagalog (Tagalog)
