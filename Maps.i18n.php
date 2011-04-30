@@ -330,6 +330,7 @@ $messages['arz'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'maps-layer-errors' => 'Xətalar',
 	'maps-abb-north' => 'Şm',
 	'maps-abb-east' => 'C',
 	'maps-abb-west' => 'Q',
@@ -501,6 +502,37 @@ $messages['bjn'] = array(
 	'maps_wikipedia' => 'Wikipidia',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'maps_map' => 'মানচিত্র',
+	'maps-loading-map' => 'মানচিত্র লোড করা হচ্ছে...',
+	'maps-load-failed' => 'মানচিত্র লোড করা সম্ভব হয়নি!',
+	'maps-others' => 'অন্যান্য',
+	'maps-ns-layer' => 'পর্ব',
+	'maps-ns-layer-talk' => 'পর্ব আলোচনা',
+	'maps-layer-property' => 'সম্পত্তি',
+	'maps-layer-value' => 'মান',
+	'maps-layer-errors' => 'ত্রুটি',
+	'maps-error-invalid-layerdef' => 'পর্বের এই সংজ্ঞাটি গ্রহণযোগ্য নয়।',
+	'maps-abb-north' => 'উ',
+	'maps-abb-east' => 'পূ',
+	'maps-abb-south' => 'দ',
+	'maps-abb-west' => 'প',
+	'maps-latitude' => 'অক্ষাংশ:',
+	'maps-longitude' => 'দ্রাঘিমাংশ:',
+	'maps_map_cannot_be_displayed' => 'এই মানচিত্রটি প্রদর্শন করা সম্ভব নয়।',
+	'maps_click_to_activate' => 'মানচিত্র চালু করতে ক্লিক করুন',
+	'maps_centred_on' => 'মানচিত্র $1, $2-এ কেন্দ্রীভূত।',
+	'maps_photos' => 'ছবি',
+	'maps_videos' => 'ভিডিও',
+	'maps_wikipedia' => 'উইকিপিডিয়া',
+	'maps_webcams' => 'ওয়েবক্যাম',
+	'maps-osm-par-thumbs' => 'থাম্ব দেখাও',
+	'maps-osm-par-photos' => 'ছবি দেখাও',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -526,10 +558,12 @@ $messages['br'] = array(
 	'maps-layer-of-type' => 'Gwiskad a seurt $1',
 	'maps-layer-type-supported-by' => "N'hall ar seurt gwiskad-mañ {{PLURAL:$2|bezañ implijet nemet gant ar sevij kartennaouiñ $1|bezañ implijet nemet gant ar servijoù kartennaouiñ-mañ : $1}}.",
 	'maps-geodistance-description' => 'Jediñ an hed douaroniel etre daou bik, adalek ha war-zu ne vern pe furmad skoret.',
+	'maps-coordinates-par-location' => "An daveennoù a fell deoc'h furmadiñ.",
 	'maps-finddestination-par-location' => "Al lec'hiadur orin.",
 	'maps-finddestination-par-bearing' => "An durc'hadur orin.",
 	'maps-finddestination-par-distance' => 'An hed da vont drezañ.',
 	'maps-geocode-par-location' => "Ar chomlec'h da c'heokodiñ.",
+	'maps-geocode-par-mappingservice' => "Ar servij geokodañ a fell deoc'h ober gantañ. Sellit ouzh ar servijoù geokodañ hegerz.",
 	'maps-geocode-par-format' => 'Furmad an daveennoù savet da-heul.',
 	'validation-error-invalid-location' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh.",
 	'validation-error-invalid-locations' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh, da nebeutañ.",
@@ -566,10 +600,15 @@ $1",
 	'maps_videos' => 'Videoioù',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Kameraoù web',
+	'maps-googlemaps2-par-kml' => 'Restroù KML da gargañ war ar gartenn.',
 	'maps-googlemaps3-incompatbrowser' => "N'eo ket kenglotus ho merdeer gant Google Maps v3.",
+	'maps-googlemaps3-par-zoomstyle' => 'Stil kontroll ar zoum.',
+	'maps-googlemaps3-par-typestyle' => 'Stil kontroll ar seurt.',
 	'maps-googlemaps3-par-autoinfowindows' => 'Digeriñ an holl brenestroù diouzhtu goude bezañ karget ar bajenn.',
+	'maps-googlemaps3-par-kml' => 'Restroù KML da gargañ war ar gartenn.',
 	'maps-osm-par-thumbs' => 'Diskouez ar munudoù',
 	'maps-osm-par-photos' => 'Diskouez ar skeudennoù',
+	'maps-yahoomaps-par-autozoom' => 'Aotren an dibunañ war-bouez rodig al logodenn.',
 );
 
 /** Bosnian (Bosanski)
@@ -1263,6 +1302,8 @@ $messages['gl'] = array(
 	'validation-error-invalid-layers' => 'O parámetro $1 debe ser unha ou máis capas válidas.',
 	'maps-layer-of-type' => 'Capa de tipo $1',
 	'maps-layer-type-supported-by' => 'Este tipo de capa só se pode empregar {{PLURAL:$2|co servizo de mapas $1|con estes servizos de mapas: $1}}.',
+	'maps-coordinates-par-location' => 'As coordenadas ás que quere dar formato.',
+	'maps-coordinates-par-format' => 'O formato de destino para as coordenadas.',
 	'maps-finddestination-par-location' => 'A localización inicial.',
 	'maps-finddestination-par-bearing' => 'A dirección inicial.',
 	'maps-finddestination-par-distance' => 'A distancia a percorrer.',
@@ -1298,12 +1339,34 @@ $1',
 	'maps_click_to_activate' => 'Prema para activar o mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
 	'maps-googlemaps2-incompatbrowser' => 'O seu navegador é compatible co Google Maps v2.',
-	'maps_overlays' => 'Sobreposicións',
+	'maps_overlays' => 'Superposicións',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Vídeos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Cámaras web',
+	'maps-googlemaps2-par-type' => 'O tipo de mapa que mostrar inicialmente.',
+	'maps-googlemaps2-par-types' => 'Os tipos de mapas que estarán dispoñibles a través do control de tipos.',
+	'maps-googlemaps2-par-controls' => 'Os controis que incluír no mapa.',
+	'maps-googlemaps2-par-autozoom' => 'Activar o desprazamento coa axuda da roda do rato.',
+	'maps-googlemaps2-par-kml' => 'Ficheiros KML que cargar no mapa.',
+	'maps-googlemaps2-par-overlays' => 'As superposicións que o usuario pode activar.',
 	'maps-googlemaps3-incompatbrowser' => 'O seu navegador é compatible co Google Maps v3.',
+	'maps-googlemaps3-par-type' => 'O tipo de mapa que mostrar inicialmente.',
+	'maps-googlemaps3-par-types' => 'Os tipos de mapas que estarán dispoñibles a través do control de tipos.',
+	'maps-googlemaps3-par-layers' => 'As capas especiais que cargar no mapa.',
+	'maps-googlemaps3-par-controls' => 'Os controis que incluír no mapa.',
+	'maps-googlemaps3-par-zoomstyle' => 'O estilo do control do zoom.',
+	'maps-googlemaps3-par-typestyle' => 'O estilo do control do tipo.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Abrir automaticamente todas as ventás de información tras a carga da páxina.',
+	'maps-googlemaps3-par-kml' => 'Ficheiros KML que cargar no mapa.',
+	'maps-openlayers-par-controls' => 'Os controis que incluír no mapa.',
+	'maps-openlayers-par-layers' => 'As capas que estarán dispoñibles no selector de capas. A primeira capa aparecerá cando o mapa acabe de cargar.',
+	'maps-osm-par-thumbs' => 'Mostrar as miniaturas',
+	'maps-osm-par-photos' => 'Mostrar as fotos',
+	'maps-yahoomaps-par-type' => 'O tipo de mapa que mostrar inicialmente.',
+	'maps-yahoomaps-par-types' => 'Os tipos de mapas que estarán dispoñibles a través do control de tipos.',
+	'maps-yahoomaps-par-controls' => 'Os controis que incluír no mapa.',
+	'maps-yahoomaps-par-autozoom' => 'Activar o desprazamento coa axuda da roda do rato.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
@@ -1597,6 +1660,7 @@ $messages['hu'] = array(
 	'maps-desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://mapping.referata.com/wiki/Maps_examples demó]). Elérhető térképszolgáltatások: $1',
 	'maps_map' => 'Térkép',
 	'maps-loading-map' => 'Térkép betöltése…',
+	'maps-load-failed' => 'Nem sikerült betölteni a térképet!',
 	'maps-markers' => 'Markerek',
 	'maps-ns-layer' => 'Réteg',
 	'maps-ns-layer-talk' => 'Rétegvita',
@@ -1635,6 +1699,11 @@ $1',
 	'maps_videos' => 'Videók',
 	'maps_wikipedia' => 'Wikipédia',
 	'maps_webcams' => 'Webkamerák',
+	'maps-googlemaps3-par-zoomstyle' => 'A nagyítás irányításának stílusa.',
+	'maps-googlemaps3-par-kml' => 'Betöltendő KML fájlok.',
+	'maps-osm-par-thumbs' => 'Bélyegképek megjelenítése',
+	'maps-osm-par-photos' => 'Fényképek megjelenítése',
+	'maps-yahoomaps-par-type' => 'A kezdetben megjelenítendő térképtípus.',
 );
 
 /** Interlingua (Interlingua)
@@ -2203,6 +2272,18 @@ Katrografavimo paslaugos pasiekiamos: $1',
 	'maps_videos' => 'Vaizdo klipai',
 	'maps_wikipedia' => 'Vikipedija',
 	'maps_webcams' => 'Interneto kameros',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'maps-abb-north' => 'Z',
+	'maps-abb-east' => 'A',
+	'maps-abb-south' => 'D',
+	'maps-abb-west' => 'R',
+	'maps-latitude' => 'Platums:',
+	'maps-longitude' => 'Garums:',
 );
 
 /** Macedonian (Македонски)
