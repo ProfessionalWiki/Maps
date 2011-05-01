@@ -180,6 +180,20 @@ $messages['bg'] = array(
 	'semanticmaps-forminput-add' => 'Добавяне',
 );
 
+/** Bengali (বাংলা)
+ * @author Wikitanvir
+ */
+$messages['bn'] = array(
+	'semanticmaps-kml-link' => 'কেএমএল ফাইল দেখাও',
+	'semanticmaps-default-kml-pagelink' => '$1 পাতা প্রদর্শন করো',
+	'semanticmaps_enteraddresshere' => 'এখানে ঠিকানা প্রবেশ করাও',
+	'semanticmaps-updatemap' => 'মানচিত্র হালনাগাদ',
+	'semanticmaps_notfound' => 'খুঁজে পাওয়া যায়নি',
+	'semanticmaps-forminput-remove' => 'অপসারণ',
+	'semanticmaps-forminput-add' => 'যোগ',
+	'semanticmaps-forminput-locations' => 'অবস্থান',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
