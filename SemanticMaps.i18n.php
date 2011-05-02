@@ -1307,9 +1307,16 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples thử xem]).',
 	'semanticmaps-unrecognizeddistance' => 'Giá trị $1 không phải là tầm hợp lệ.',
+	'semanticmaps-kml-link' => 'Xem tập tin KML',
+	'semanticmaps-default-kml-pagelink' => 'Xem trang $1',
+	'semanticmaps-loading-forminput' => 'Đang tải dữ liệu biểu mẫu bản đồ…',
 	'semanticmaps_lookupcoordinates' => 'Tra tọa độ',
 	'semanticmaps_enteraddresshere' => 'Nhập địa chỉ vào đây',
+	'semanticmaps-updatemap' => 'Cập nhật bản đồ',
 	'semanticmaps_notfound' => 'không tìm thấy',
+	'semanticmaps-forminput-remove' => 'Dời',
+	'semanticmaps-forminput-add' => 'Thêm',
+	'semanticmaps-forminput-locations' => 'Các vị trí',
 	'semanticmaps_paramdesc_format' => 'Dịch vụ cung cấp bản đồ',
 	'semanticmaps_paramdesc_geoservice' => 'Dịch vụ mã hóa địa lý được sử dụng để tính ra tọa độ của địa chỉ',
 	'semanticmaps_paramdesc_height' => 'Chiều cao của bản đồ bằng điểm ảnh (mặc định là $1)',
@@ -1322,6 +1329,11 @@ $messages['vi'] = array(
 	'semanticmaps_paramdesc_overlays' => 'Các lấp có sẵn trên bản đồ',
 	'semanticmaps_paramdesc_autozoom' => 'Bánh xe chuột có thu phóng hay không',
 	'semanticmaps_paramdesc_layers' => 'Các lớp có sẵn trên bản đồ',
+	'semanticmaps-par-staticlocations' => 'Danh sách các vị trí để thêm vào bản đồ cùng với dữ liệu được truy vấn. Giống như với display_points, bạn có thể đặt tên, miêu tả, và hình tượng cho mỗi đánh dấu bằng cách phân tách dùng dấu ngã (~).',
+	'semanticmaps-par-forceshow' => 'Hiển thị bản đồ ngay cả khi không có vị trí nào để hiển thị?',
+	'semanticmaps-par-showtitle' => 'Tên tùy chọn của cửa sổ thông tin đánh dấu. Có thể để trống để định dạng nội dung cửa sổ thông tin dùng bản mẫu.',
+	'semanticmaps-par-centre' => 'Trung tâm của bản đồ. Nếu không có, bản đồ sẽ tự động chọn trung tâm tối ưu bao gồm tất cả các dấu trên bản đồ.',
+	'semanticmaps-par-template' => 'Bản đồ dùng để định dạng nội dung của cửa sổ thông tin.',
 );
 
 /** Volapük (Volapük)
