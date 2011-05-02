@@ -114,6 +114,13 @@ class SMFormInput {
 			global $wgParser;
 			
 			$params = $validator->getParameterValues();
+			
+			// We can only take care of the zoom defaulting here, 
+			// as not all locations are available in whats passed to Validator.
+			if ( $params['zoom'] === false && count( $params['locations'] ) <= 1 ) {
+				$params['zoom'] = $this->service->getDefaultZoom();
+			}			
+			
 			$mapName = $this->service->getMapId();
 			
 			$params['inputname'] = $input_name;
