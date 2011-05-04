@@ -145,9 +145,9 @@
 	if ( options.zoom !== false ) {
 		map.setZoom( options.zoom );
 	} // If no zoom level was provided, and there are not enough markers to fitbounds, show planet zoom level.
-	else if ( options.locations.length <= 1 ) {
-		map.setZoom( 1 );
-	}
+//	else if ( options.locations.length <= 1 ) {
+//		map.setZoom( 1 );
+//	}
 	
 	var centre;
 	
