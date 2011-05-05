@@ -461,15 +461,21 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Civvì
  * @author Darth Kule
  * @author HalphaZ
  */
 $messages['it'] = array(
-	'semanticmaps-desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).",
+	'semanticmaps-desc' => "Fornisce la possibilità di visualizzare e modificare le coordinate memorizzate con l'estensione Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).",
 	'semanticmaps-unrecognizeddistance' => 'Il valore $1 non è una distanza valida.',
+	'semanticmaps-kml-link' => 'Visualizza il file KML',
+	'semanticmaps-default-kml-pagelink' => 'Visualizza la pagina $1',
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
+	'semanticmaps-updatemap' => 'Aggiorna mappa',
+	'semanticmaps-forminput-remove' => 'Rimuovi',
+	'semanticmaps-forminput-add' => 'Aggiungi',
 );
 
 /** Japanese (日本語)
