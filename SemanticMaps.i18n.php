@@ -109,6 +109,11 @@ $messages['be-tarask'] = array(
 	'semanticmaps-forminput-remove' => 'Выдаліць',
 	'semanticmaps-forminput-add' => 'Дадаць',
 	'semanticmaps-forminput-locations' => 'Месцы',
+	'semanticmaps-par-staticlocations' => 'Сьпіс месцазнаходжаньняў для даданьня на мапу разам з запытанымі зьвесткамі. Напрыклад, разам з «display_points», Вы можаце дадаць назву, апісаньне і мініятуру для месцазнаходжаньня з дапамогай сымбаля «~» у якасьці разьдзяляльніка.',
+	'semanticmaps-par-forceshow' => 'Паказаць мапу, нават калі няма месцазнаходжаньняў для паказу?',
+	'semanticmaps-par-showtitle' => 'Паказваць назву ў акне інфармацыі пра маркер ці не. Адключэньне гэтай функцыі часта карыснае падчас выкарыстаньня шаблёну для фарматаваньня зьместу акна інфармацыі.',
+	'semanticmaps-par-centre' => 'Цэнтар мапы. Калі ён не пададзены, мапа будзе аўтаматычна выбіраць аптымальны цэнтар для паказу ўсіх маркераў.',
+	'semanticmaps-par-template' => 'Шаблён для фарматаваньня зьместу акна інфармацыі.',
 );
 
 /** Bulgarian (Български)
@@ -753,6 +758,9 @@ $messages['ru'] = array(
 	'semanticmaps-forminput-remove' => 'Удалить',
 	'semanticmaps-forminput-add' => 'Добавить',
 	'semanticmaps-forminput-locations' => 'Места',
+	'semanticmaps-par-staticlocations' => 'Список мест для добавления на карту вместе с запрашиваемыми данными. Например, к display_points можно добавить название, описание и значок, используя тильду ~ в качестве разделителя.',
+	'semanticmaps-par-forceshow' => 'Показывать карту даже тогда, когда нет мест для отображения?',
+	'semanticmaps-par-template' => 'Шаблон для форматирования содержимого окна информация.',
 );
 
 /** Slovak (Slovenčina)
