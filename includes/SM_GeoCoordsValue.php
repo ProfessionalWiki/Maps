@@ -26,17 +26,17 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * 
 	 * @return boolean
 	 */
-	public function setDataItem( SMWDataItem $dataItem ) {
+	protected function loadDataItem( SMWDataItem $dataItem ) {
 		if ( $dataItem->getDIType() == SMWDataItem::TYPE_GEO ) {
 			$this->m_dataitem = $dataItem;
-			
+
 			global $smgQPCoodFormat, $smgQPCoodDirectional;
 			$this->m_caption = MapsCoordinateParser::formatCoordinates(
 				$dataItem->getCoordinateSet(),
 				$smgQPCoodFormat,
 				$smgQPCoodDirectional
 			);
-			
+
 			$this->wikiValue = $this->m_caption;			
 			return true;
 		} else {
@@ -77,9 +77,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	protected function parseUserValueOrQuery( $value, $asQuery = false ) {
 		$this->wikiValue = $value;
-		
+
 		$comparator = SMW_CMP_EQ;
-		
+
 		if ( $value == '' ) {
 			$this->addError( wfMsg( 'smw_novalues' ) );
 		} else {
@@ -101,67 +101,31 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 			$parsedCoords = MapsCoordinateParser::parseCoordinates( $coordinates );
 			if ( $parsedCoords ) {
-                $this->m_dataitem = new SMWDIGeoCoord( $parsedCoords, $this->m_typeid );
+				$this->m_dataitem = new SMWDIGeoCoord( $parsedCoords );
 
 				if ( $this->m_caption === false && !$asQuery ) {
 					global $smgQPCoodFormat, $smgQPCoodDirectional;
 					$this->m_caption = MapsCoordinateParser::formatCoordinates( $parsedCoords, $smgQPCoodFormat, $smgQPCoodDirectional );
-        		}
+				}
 			} else {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $coordinates, 1 ) );
-                $this->m_dataitem = new SMWDIGeoCoord( array(0, 0), $this->m_typeid ); // make sure this is always set
+				$this->m_dataitem = new SMWDIGeoCoord( array(0, 0) ); // make sure this is always set
 			}
 		}
 
 		if ( $asQuery ) {
 			$this->setUserValue( $value );
-			
+
 			switch ( true ) {
 				case !$this->isValid() :
 					return new SMWThingDescription();
-					break;
 				case $distance !== false :
 					return new SMAreaValueDescription( $this, $comparator, $distance );
-					break;
 				default :
 					return new SMGeoCoordsValueDescription( $this, $comparator );
-					break;										
-			}			
+			}
 		}
 	}
-	
-	/**
-	 * @see SMWDataValue::parseDBkeys
-	 * 
-	 * @since 0.6
-	 */
-	protected function parseDBkeys( $args ) {
-		$this->setDataItem( new SMWDIGeoCoord( array( 'lat' => (float)$args[0], 'lon' => (float)$args[1] ), $this->m_typeid ) );
-	}
-	
-	/**
-	 * @see SMWDataValue::getDBkeys
-	 * 
-	 * @since 0.6
-	 */
-	public function getDBkeys() {
-		$this->unstub();
-		$coordinateSet = $this->m_dataitem->getCoordinateSet();
-
-		return array(
-			$coordinateSet['lat'],
-			$coordinateSet['lon']
-		);
-	}
-	
-	/**
-	 * @see SMWDataValue::getSignature
-	 * 
-	 * @since 0.6
-	 */	
-	public function getSignature() {
-		return 'ff';
-	}	
 
 	/**
 	 * @see SMWDataValue::getShortWikiText
@@ -172,7 +136,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		
 		if ( $this->isValid() && ( $linked !== null ) && ( $linked !== false ) ) {
 			SMWOutputs::requireHeadItem( SMW_HEADER_TOOLTIP );
-			
+
 			// TODO: fix lang keys so they include the space and coordinates.
 			$coordinateSet = $this->m_dataitem->getCoordinateSet();
 
@@ -180,8 +144,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		        htmlspecialchars ( wfMsgForContent( 'maps-latitude' ) . ' ' . $coordinateSet['lat'] ) . '<br />' .
 		        htmlspecialchars ( wfMsgForContent( 'maps-longitude' ) . ' ' . $coordinateSet['lon'] ) .
 		        '</span></span>';
-		}
-		else {
+		} else {
 			return htmlspecialchars( $this->m_caption );
 		}
 	}
@@ -203,8 +166,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function getLongWikiText( $linked = null ) {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
-		}
-		else {
+		} else {
 			global $smgQPCoodFormat, $smgQPCoodDirectional;
 			return MapsCoordinateParser::formatCoordinates( $this->m_dataitem->getCoordinateSet(), $smgQPCoodFormat, $smgQPCoodDirectional );
 		}
@@ -225,7 +187,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	public function getWikiValue() {
-		$this->unstub();
 		return $this->wikiValue;
 	}
 
@@ -262,7 +223,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @return array
 	 */
 	protected function getServiceLinkParams() {
-        $coordinateSet = $this->m_dataitem->getCoordinateSet();
+		$coordinateSet = $this->m_dataitem->getCoordinateSet();
 		return array(
 			MapsCoordinateParser::formatCoordinates( $coordinateSet, 'float', false ),
 			MapsCoordinateParser::formatCoordinates( $coordinateSet, 'dms', true ),
@@ -270,27 +231,5 @@ class SMGeoCoordsValue extends SMWDataValue {
 			$coordinateSet['lon']
 		);
 	}
-	
-	/**
-	 * @see SMWDataValue::getValueIndex
-	 * 
-	 * @since 0.6
-	 * 
-	 * @return integer
-	 */	
-	public function getValueIndex() {
-		return 0;
-	}
-
-	/**
-	 * @see SMWDataValue::getLabelIndex
-	 * 
-	 * @since 0.6
-	 * 
-	 * @return integer
-	 */		
-	public function getLabelIndex() {
-		return 0;
-	}	
 
 }
