@@ -281,7 +281,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|الإحداثي التالي|الإحداثيات التالية}} لم يتم التعرف عليها و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
 $1',
 	'maps_map_cannot_be_displayed' => 'الخريطة لا يمكن عرضها.',
-	'maps_googlemaps2' => 'خرائط جوجل',
+	'maps_googlemaps2' => 'خرائط جوجل v2',
 	'maps_googlemaps3' => 'خرائط جوجل v3',
 	'maps_yahoomaps' => 'خرائط ياهو!',
 	'maps_openlayers' => 'أوبن لايرز',
