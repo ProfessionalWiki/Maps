@@ -1315,6 +1315,7 @@ $messages['gl'] = array(
 	'maps-geocode-par-location' => 'O enderezo que quere xeocodificar.',
 	'maps-geocode-par-mappingservice' => 'O servizo de xeocodificación que quere usar. Olle os servizos de xeocodificación dispoñibles.',
 	'maps-geocode-par-format' => 'O formato das coordenadas resultantes.',
+	'maps-displaymap-par-coordinates' => 'A localización do mapa que aparecerá inicialmente.',
 	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
 	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
 	'validation-error-invalid-width' => 'O parámetro $1 debe ser un largo válido.',
