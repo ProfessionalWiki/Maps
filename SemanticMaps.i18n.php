@@ -336,6 +336,11 @@ $messages['gl'] = array(
 	'semanticmaps-forminput-remove' => 'Eliminar',
 	'semanticmaps-forminput-add' => 'Engadir',
 	'semanticmaps-forminput-locations' => 'Localizacións',
+	'semanticmaps-par-staticlocations' => 'Unha lista de localizacións para engadir ao mapa xunto aos datos consultados. Como con display_points, pode engadir un título, unha descrición e mais unha icona por localización mediante o signo "~" como separador.',
+	'semanticmaps-par-forceshow' => 'Quere mostrar o mapa, mesmo cando non haxa localizacións que presentar?',
+	'semanticmaps-par-showtitle' => 'Mostrar ou non un título na ventá de información do marcador. Frecuentemente, desactivar isto é útil ao utilizar un modelo para dar formato ao contido da ventá de información.',
+	'semanticmaps-par-centre' => 'O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.',
+	'semanticmaps-par-template' => 'Un modelo a empregar para dar formato ao contido da ventá de información.',
 );
 
 /** Swiss German (Alemannisch)
@@ -581,6 +586,7 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'semanticmaps-forminput-remove' => 'Buang',
 	'semanticmaps-forminput-locations' => 'Lokasi',
 );
 
