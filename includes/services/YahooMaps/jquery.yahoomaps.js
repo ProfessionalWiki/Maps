@@ -78,7 +78,16 @@
 	
 	if ( options.resizable ) {
 		this.resizable()
-	}	
+	}
+
+    this.addMarker = function( location ) {
+		map.addOverlay( createYMarker(
+            new YGeoPoint( location.lat, location.lon ),
+            location.title,
+            location.text,
+            location.icon
+        ) );
+    };
 	
 	/**
 	 * Returns YMarker object on the provided location.
