@@ -91,6 +91,34 @@ class MapsLocation {
 	 */	
 	protected $separator;
 	
+	/**
+	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @param float $lat
+	 * @param float $lon
+	 * @param integer $format
+	 * 
+	 * @return MapsLocation
+	 */
+	public static function newFromLatLon( $lat, $lon, $format = Maps_COORDS_FLOAT ) {
+		return new self( $lat . ',' . $lon, $format );
+	}
+	
+	/**
+	 * Creates and returns a new instance of a MapsLocation from an address.
+	 * 
+	 * @since 1.0
+	 * 
+	 * @param string $address
+	 * @param integer $format
+	 * 
+	 * @return MapsLocation
+	 */
+	public static function newFromAddress( $address, $format = Maps_COORDS_FLOAT ) {
+		return new self( $address, $format );
+	}
 	
 	/**
 	 * Constructor.
