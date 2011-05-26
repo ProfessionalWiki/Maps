@@ -23,28 +23,24 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * @return array
 	 */
 	public function getResultText( /* SMWQueryResult */ $res, $outputmode ) {
-		$validator = new Validator( $this->getName(), false );
-
-		$validator->setParameters( $this->m_params, $this->getParameterInfo() );
-		
-		$validator->validateParameters();
-		
-		$fatalError  = $validator->hasFatalError();		
-		
-		if ( $fatalError !== false ) {
-			return '<span class="errorbox">' .
-				htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $fatalError->getMessage() ) ) . 
-				'</span>';
-		}
-		
-		$params = $validator->getParameterValues();
-
 		if ( $outputmode == SMW_OUTPUT_FILE ) {
-			return $this->getKML( $res, $outputmode, $params );
+			return $this->getKML( $res, $outputmode );
 		}
 		else {
-			return $this->getLink( $res, $outputmode, $params );
+			return $this->getLink( $res, $outputmode );
 		}
+	}
+	
+	/**
+	 * @see SMWResultPrinter::handleParameters
+	 * 
+	 * @since 1.0
+	 * 
+	 * @param array $params
+	 * @param $outputmode
+	 */
+	protected function handleParameters( array $params, $outputmode ) {
+		$this->m_params = $params;
 	}
 	
 	/**
@@ -54,11 +50,15 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
-		$params = array();
+	public function getParameters() {
+		global $egMapsDefaultLabel, $egMapsDefaultTitle;
 		
-		$params[] = new Parameter( 'text' );
-		$params[] = new Parameter( 'title' );
+		$params = array_merge( parent::getParameters(), $this->exportFormatParameters() );
+		
+		$params['text'] = new Parameter( 'text', Parameter::TYPE_STRING, $egMapsDefaultLabel );
+		//$params['text']->setDescription();
+		
+		$params['title'] = new Parameter( 'title', Parameter::TYPE_STRING, $egMapsDefaultTitle );
 		
 		$params[] = new Parameter( 'linkabsolute', Parameter::TYPE_BOOLEAN, true );
 		
@@ -74,17 +74,16 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * 
 	 * @param SMWQueryResult $res
 	 * @param integer $outputmode
-	 * @param array $params
 	 * 
 	 * @return string
 	 */
-	protected function getKML( SMWQueryResult $res, $outputmode, array $params ) {
-		$queryHandler = new SMQueryHandler( $res, $outputmode, $params['linkabsolute'], $params['pagelinktext'], false );
-		$queryHandler->setText( $params['text'] );
-		$queryHandler->setTitle( $params['title'] );
+	protected function getKML( SMWQueryResult $res, $outputmode ) {
+		$queryHandler = new SMQueryHandler( $res, $outputmode, $this->m_params['linkabsolute'], $this->m_params['pagelinktext'], false );
+		$queryHandler->setText( $this->m_params['text'] );
+		$queryHandler->setTitle( $this->m_params['title'] );
 		$queryHandler->setSubjectSeparator( '' );
 		
-		$formatter = new MapsKMLFormatter( $params );
+		$formatter = new MapsKMLFormatter( $this->m_params );
 		$formatter->addPlacemarks( $queryHandler->getLocations() );
 		
 		return $formatter->getKML();
@@ -97,18 +96,17 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * 
 	 * @param SMWQueryResult $res
 	 * @param integer $outputmode
-	 * @param array $params
 	 * 
 	 * @return string
 	 */	
-	protected function getLink( SMWQueryResult $res, $outputmode, array $params ) {
+	protected function getLink( SMWQueryResult $res, $outputmode ) {
 		$searchLabel = $this->getSearchLabel( $outputmode );
 		$link = $res->getQueryLink( $searchLabel ? $searchLabel : wfMsgForContent( 'semanticmaps-kml-link' ) );
 		$link->setParameter( 'kml', 'format' );
 		
-		$link->setParameter( $params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
+		$link->setParameter( $this->m_params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
 		
-		$link->setParameter( $params['pagelinktext'], 'pagelinktext' );
+		$link->setParameter( $this->m_params['pagelinktext'], 'pagelinktext' );
 		
 		if ( array_key_exists( 'limit', $this->m_params ) ) {
 			$link->setParameter( $this->m_params['limit'], 'limit' );
