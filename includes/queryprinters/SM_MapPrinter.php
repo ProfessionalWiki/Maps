@@ -168,9 +168,9 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @param SMWQueryResult $res
 	 * @param $outputmode
 	 * 
-	 * @return array
+	 * @return array or string
 	 */
-	public final function getResultText( /* SMWQueryResult */ $res, $outputmode ) {
+	public final function getResultText( SMWQueryResult $res, $outputmode ) {
 		if ( $this->fatalErrorMsg === false ) {
 			global $wgParser;
 			
@@ -325,7 +325,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * 
 	 * @return array
 	 */
-	public final function getResult( /* SMWQueryResult */ $results, /* array */ $params, $outputmode ) {
+	public final function getResult( SMWQueryResult $results, array $params, $outputmode ) {
 		// Skip checks, results with 0 entries are normal.
 		$this->readParameters( $params, $outputmode );
 		

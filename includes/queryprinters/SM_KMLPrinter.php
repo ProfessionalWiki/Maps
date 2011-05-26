@@ -33,7 +33,7 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * 
 	 * @return array
 	 */
-	public function getResultText( /* SMWQueryResult */ $res, $outputmode ) {
+	public function getResultText( SMWQueryResult $res, $outputmode ) {
 		if ( $outputmode == SMW_OUTPUT_FILE ) {
 			return $this->getKML( $res, $outputmode );
 		}
