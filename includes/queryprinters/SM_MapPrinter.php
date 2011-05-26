@@ -44,10 +44,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		$this->service = $service;
 		
 		parent::__construct( $format, $inline );
-		
-		if ( property_exists( $this, 'useValidator' ) ) {
-			$this->useValidator = true;
-		}
+		$this->useValidator = true;
 	}
 
 	/**

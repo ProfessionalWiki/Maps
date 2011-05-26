@@ -13,6 +13,17 @@
 class SMKMLPrinter extends SMWResultPrinter {
 	
 	/**
+	 * Constructor.
+	 * 
+	 * @param $format String
+	 * @param $inline
+	 */
+	public function __construct( $format, $inline ) {
+		parent::__construct( $format, $inline );
+		$this->useValidator = true;
+	}
+	
+	/**
 	 * Handler of the print request.
 	 *
 	 * @since 0.7.3
@@ -130,7 +141,7 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * @see SMWResultPrinter::getFileName()
 	 */	
 	public function getFileName( $res ) {
-		// TODO
+		// TODO FIXME
 		return 'kml.kml';
 	}
 	

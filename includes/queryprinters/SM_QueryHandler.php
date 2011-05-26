@@ -254,7 +254,7 @@ class SMQueryHandler {
 	 * @return array of MapsLocation
 	 */
 	protected function handleResultRow( array /* of SMWResultArray */ $row ) {
-		$coords = array();
+		$locations = array();
 		$properties = array();
 		
 		$title = '';
@@ -265,15 +265,22 @@ class SMQueryHandler {
 			/* SMWPrintRequest */ $printRequest = $resultArray->getPrintRequest();
 			
 			// Loop throught all the parts of the field value.
-			while ( ( /* SMWDataValue */ $object = $resultArray->getNextDataValue() ) !== false ) {		
-				if ( $object->getTypeID() == '_wpg' && $i == 0 ) {
-					list( $title, $text ) = $this->handleResultSubject( $object );
+			while ( ( /* SMWDataValue */ $dataValue = $resultArray->getNextDataValue() ) !== false ) {		
+				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
+					list( $title, $text ) = $this->handleResultSubject( $dataValue );
 				}
-				else if ( $object->getTypeID() != '_geo' && $i != 0 ) {
-					$properties[] = $this->handleResultProperty( $object, $printRequest );
+				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 ) {
+					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 				}
 				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
-					$coords[] = $object->getDBkeys();
+					$dataItem = $dataValue->getDataItem();
+					
+					$location = MapsLocation::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
+					
+					if ( $location->isValid() ) {
+						$locations[] = $location;
+					}
+					
 				}
 			}
 		}
@@ -284,7 +291,7 @@ class SMQueryHandler {
 		
 		$icon = $this->getLocationIcon( $row );
 		
-		return $this->buildLocationsList( $coords, $title, $text, $icon, $properties );
+		return $this->buildLocationsList( $locations, $title, $text, $icon, $properties );
 	}
 	
 	/**
@@ -406,7 +413,7 @@ class SMQueryHandler {
 	 * 
 	 * @since 0.8
 	 * 
-	 * @param array $coords
+	 * @param array of MapsLocation $locations
 	 * @param string $title
 	 * @param string $text
 	 * @param string $icon
@@ -414,9 +421,7 @@ class SMQueryHandler {
 	 * 
 	 * @return array of MapsLocation
 	 */
-	protected function buildLocationsList( array $coords, $title, $text, $icon, array $properties ) {
-		$locations = array();
-		
+	protected function buildLocationsList( array $locations, $title, $text, $icon, array $properties ) {
 		if ( $this->template ) {
 			global $wgParser;
 			$parser = clone $wgParser;
@@ -425,28 +430,21 @@ class SMQueryHandler {
 			$text .= implode( '<br />', $properties );
 		}
 		
-		foreach ( $coords as $coord ) {
-			if ( count( $coord ) >= 2 ) {
-				$location = new MapsLocation();
-				$location->setCoordinates( $coord );
+		foreach ( $locations as $location ) {
+			if ( $this->template ) {
+				$segments = array_merge(
+					array( $this->template, 'title=' . $title, 'latitude=' . $location->getLatitude(), 'longitude=' . $location->getLongitude() ),
+					$properties
+				);
 				
-				if ( $location->isValid() ) {
-					if ( $this->template ) {
-						$segments = array_merge(
-							array( $this->template, 'title=' . $title, 'latitude=' . $location->getLatitude(), 'longitude=' . $location->getLongitude() ),
-							$properties
-						);
-						
-						$text .= $parser->parse( '{{' . implode( '|', $segments ) . '}}', $parser->getTitle(), new ParserOptions() )->getText();
-					}				
-					
-					$location->setTitle( $title );
-					$location->setText( $text );
-					$location->setIcon( $icon );
+				$text .= $parser->parse( '{{' . implode( '|', $segments ) . '}}', $parser->getTitle(), new ParserOptions() )->getText();
+			}				
+			
+			$location->setTitle( $title );
+			$location->setText( $text );
+			$location->setIcon( $icon );
 
-					$locations[] = $location;						
-				}
-			}	
+			$locations[] = $location;						
 		}
 		
 		return $locations;
