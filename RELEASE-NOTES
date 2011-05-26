@@ -7,7 +7,7 @@ version of Maps. You can find the most up-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
-=== Maps 1.0 ===
+=== Maps 0.8 ===
 (2011-0x-xx)
 
 This version branched from Maps 0.7.x at version 0.7.3.
@@ -20,7 +20,7 @@ This version branched from Maps 0.7.x at version 0.7.3.
 
 * Added support for the auto-documentation features for parser hooks introduced in Validator 0.4.3.
 
-* Added resizable parameter to all mapping services except OSM.
+* Added resizeable parameter to all mapping services except OSM.
 
 ==== Removed features ====
 
