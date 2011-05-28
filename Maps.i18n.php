@@ -2295,6 +2295,7 @@ $1',
 	'maps_videos' => 'Videoen',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Web-Kameraen',
+	'maps-googlemaps2-par-kml' => "KML-Fichieren déi op d'Kaart musse geluede ginn.",
 	'maps-osm-par-thumbs' => 'Miniaturbiller weisen',
 	'maps-osm-par-photos' => 'Fotoe weisen',
 );
