@@ -317,8 +317,15 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'semanticmaps-unrecognizeddistance' => 'La valor $1 est pas una distance valida.',
+	'semanticmaps-kml-link' => 'Vêre lo fichiér KML',
+	'semanticmaps-default-kml-pagelink' => 'Vêre la pâge $1',
+	'semanticmaps-loading-forminput' => 'Chargement du formulèro d’entrâ de la mapa...',
 	'semanticmaps_lookupcoordinates' => 'Èstimar les coordonâs',
 	'semanticmaps_enteraddresshere' => 'Buchiéd l’adrèce ique',
+	'semanticmaps-updatemap' => 'Misa a jorn de la mapa',
+	'semanticmaps-forminput-remove' => 'Enlevar',
+	'semanticmaps-forminput-add' => 'Apondre',
+	'semanticmaps-forminput-locations' => 'Emplacements',
 );
 
 /** Galician (Galego)
