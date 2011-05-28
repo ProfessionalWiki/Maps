@@ -26,7 +26,7 @@ final class MapsHooks {
 	    if ( is_null( $displaying_data_section ) ) return true;
 	    $smw_docu_row = $displaying_data_section->getRow( 'smw' );
 	
-	    $maps_docu_label = wfMsg( 'adminlinks_documentation', wfMsg( 'maps_name' ) );
+	    $maps_docu_label = wfMsg( 'adminlinks_documentation', 'Maps' );
 	    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Maps', $maps_docu_label ) );
 	
 	    return true;
