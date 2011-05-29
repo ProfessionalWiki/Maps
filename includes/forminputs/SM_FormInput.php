@@ -12,7 +12,7 @@
 class SMFormInput {
 
 	/**
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var iMappingService
 	 */
@@ -21,7 +21,7 @@ class SMFormInput {
 	/**
 	 * A character to separate multiple locations with.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var char
 	 */
@@ -30,7 +30,7 @@ class SMFormInput {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param iMappingService $service
 	 */
@@ -41,7 +41,7 @@ class SMFormInput {
 	/**
 	 * Returns an array containing the parameter info.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array
 	 */
@@ -84,7 +84,7 @@ class SMFormInput {
 	/**
 	 * 
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $coordinates
 	 * @param string $input_name
@@ -150,7 +150,7 @@ class SMFormInput {
 	/**
 	 * Returns the HTML to display the map input.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array $params
 	 * @param Parser $parser
@@ -172,7 +172,7 @@ class SMFormInput {
 	/**
 	 * Returns the JSON with the maps data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -196,7 +196,7 @@ class SMFormInput {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -208,7 +208,7 @@ class SMFormInput {
 	}
 	
 	/**
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array of string
 	 */

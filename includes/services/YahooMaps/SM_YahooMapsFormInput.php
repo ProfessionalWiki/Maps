@@ -14,7 +14,7 @@ class SMYahooMapsFormInput extends SMFormInput {
 	/**
 	 * @see SMFormInput::getResourceModules
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @return array of string
 	 */

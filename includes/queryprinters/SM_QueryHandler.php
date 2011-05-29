@@ -38,7 +38,7 @@ class SMQueryHandler {
 	/**
 	 * The global text.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var string
 	 */	
@@ -47,7 +47,7 @@ class SMQueryHandler {
 	/**
 	 * The global title.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var string
 	 */	
@@ -65,7 +65,7 @@ class SMQueryHandler {
 	/**
 	 * Should link targets be made absolute (instead of relative)?
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var boolean
 	 */
@@ -74,7 +74,7 @@ class SMQueryHandler {
 	/**
 	 * The text used for the link to the page (if it's created). $1 will be replaced by the page name. 
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var string
 	 */
@@ -83,7 +83,7 @@ class SMQueryHandler {
 	/**
 	 * A separator to use beteen the subject and properties in the text field. 
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var string
 	 */
@@ -92,7 +92,7 @@ class SMQueryHandler {
 	/**
 	 * Make the subject in the text bold or not?
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var boolean
 	 */
@@ -101,7 +101,7 @@ class SMQueryHandler {
 	/**
 	 * Show the subject in the text or not?
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var boolean
 	 */	
@@ -127,7 +127,7 @@ class SMQueryHandler {
 	/**
 	 * Sets the template.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $template
 	 */
@@ -138,7 +138,7 @@ class SMQueryHandler {
 	/**
 	 * Sets the global icon.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $icon
 	 */
@@ -149,7 +149,7 @@ class SMQueryHandler {
 	/**
 	 * Sets the global title.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $title
 	 */
@@ -160,7 +160,7 @@ class SMQueryHandler {
 	/**
 	 * Sets the global text.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $text
 	 */
@@ -171,7 +171,7 @@ class SMQueryHandler {
 	/**
 	 * Sets the subject separator.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $subjectSeparator
 	 */
@@ -182,7 +182,7 @@ class SMQueryHandler {
 	/**
 	 * Sets if the subject should be made bold in the text.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $boldSubject
 	 */
@@ -193,7 +193,7 @@ class SMQueryHandler {
 	/**
 	 * Sets if the subject should shown in the text.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $showSubject
 	 */
@@ -204,7 +204,7 @@ class SMQueryHandler {
 	/**
 	 * Sets the text for the link to the page when separate from the title.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param string $text
 	 */
@@ -298,7 +298,7 @@ class SMQueryHandler {
 	 * Handles a SMWDataValue subject value.
 	 * Gets the plain text title and creates the HTML text with headers and the like.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param SMWDataValue $object
 	 * 
@@ -346,7 +346,7 @@ class SMQueryHandler {
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param SMWDataValue $object
 	 * @param SMWPrintRequest $printRequest
@@ -411,7 +411,7 @@ class SMQueryHandler {
 	/**
 	 * Builds a set of locations with the provided title, text and icon.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array of MapsLocation $locations
 	 * @param string $title

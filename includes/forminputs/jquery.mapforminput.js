@@ -13,7 +13,7 @@
  * @param {string} mapDivId
  * @param {Object} options
  * 
- * @since 0.8
+ * @since 1.0
  * @ingroup SemanticMaps
  * 
  * @licence GNU GPL v3

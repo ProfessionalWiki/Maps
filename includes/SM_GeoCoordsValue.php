@@ -20,7 +20,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::setDataItem()
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param $dataitem SMWDataItem
 	 * 

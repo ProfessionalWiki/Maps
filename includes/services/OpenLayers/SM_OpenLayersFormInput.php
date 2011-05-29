@@ -13,7 +13,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 	/**
 	 * @see SMFormInput::getResourceModules
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array of string
 	 */
@@ -24,7 +24,7 @@ class SMOpenLayersFormInput extends SMFormInput {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser

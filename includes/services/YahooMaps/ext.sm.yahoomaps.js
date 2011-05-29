@@ -2,7 +2,7 @@
  * JavasSript for the Yahoo! Maps form input in the Semantic Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Semantic_Maps
  * 
- * @since 0.8
+ * @since 1.0
  * @ingroup SemanticMaps
  * 
  * @licence GNU GPL v3

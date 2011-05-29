@@ -3,7 +3,7 @@
 /**
  * Implementation of datavalues that are geographic coordinates.
  * 
- * @since 0.8
+ * @since 1.0
  * 
  * @file SM_GeoCoordsHooks.php
  * @ingroup SemanticMaps
@@ -19,7 +19,7 @@ final class SMGeoCoordsHooks {
 	 * 
 	 * TODO: have a setting to turn this off and have it off by default for #show
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param $format Mixed: The format (string), or false when not set yet 
 	 * @param $printRequests Array: The print requests made
@@ -66,7 +66,7 @@ final class SMGeoCoordsHooks {
 	/**
 	 * Adds support for the geographical coordinate data type to Semantic MediaWiki.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * TODO: i18n keys still need to be moved
 	 * 
@@ -80,7 +80,7 @@ final class SMGeoCoordsHooks {
 	/**
 	 * Defines the layout for the smw_coords table which is used to store value of the GeoCoords type.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array $propertyTables The property tables defined by SMW, passed by reference.
 	 */

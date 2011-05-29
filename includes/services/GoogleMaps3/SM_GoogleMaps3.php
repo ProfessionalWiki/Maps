@@ -10,7 +10,7 @@
 /**
  * This file holds the general information for the Google Maps v3 service.
  *
- * @since 0.8
+ * @since 1.0
  *
  * @file SM_GoogleMaps3.php
  * @ingroup SMGoogleMaps3

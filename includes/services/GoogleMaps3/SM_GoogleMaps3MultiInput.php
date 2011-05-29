@@ -3,7 +3,7 @@
 /**
  * Google Maps v3 form input class for multiple locations.
  *
- * @since 0.8
+ * @since 1.0
  * @file SM_GoogleMaps3MultiInput.php
  * @ingroup SemanticMaps
  *
@@ -15,7 +15,7 @@ class SMGoogleMaps3MultiInput extends SMFormInput {
 	/**
 	 * @see SMFormInput::getResourceModules
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array of string
 	 */
@@ -31,7 +31,7 @@ class SMGoogleMaps3MultiInput extends SMFormInput {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser

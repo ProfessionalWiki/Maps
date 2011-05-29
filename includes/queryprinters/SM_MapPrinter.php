@@ -20,14 +20,14 @@ class SMMapPrinter extends SMWResultPrinter {
 	protected $service;	
 	
 	/**
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var false or string
 	 */
 	protected $fatalErrorMsg = false;
 	
 	/**
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var array
 	 */
@@ -74,7 +74,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * Returns an array containing the parameter info.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array
 	 */
@@ -215,7 +215,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * Returns the HTML to display the map.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array $params
 	 * @param Parser $parser
@@ -237,7 +237,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * Returns the JSON with the maps data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -261,7 +261,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -276,7 +276,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array &$params
 	 * @param array $queryLocations
@@ -386,7 +386,7 @@ class SMMapPrinter extends SMWResultPrinter {
     /**
      * Takes in an element of the Parameter::TYPE_ enum and turns it into an SMW type (string) indicator.
      * 
-     * @since 0.8
+     * @since 1.0
      * 
      * @param Parameter::TYPE_ $type
      * 

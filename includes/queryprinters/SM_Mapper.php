@@ -20,7 +20,7 @@ final class SMMapper {
 	protected $queryPrinter;
 	
 	/**
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var boolean
 	 */
@@ -52,7 +52,7 @@ final class SMMapper {
 	/**
 	 * Intercept calls to getName, so special behaviour for the map format can be implemented.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return string
 	 */
@@ -65,7 +65,7 @@ final class SMMapper {
 	 * 
 	 * @see SMWResultPrinter::getParameters
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */
 	public function getParameters() {
 		return $this->queryPrinter->getParameters();
@@ -75,7 +75,7 @@ final class SMMapper {
 	 * SMW thinks this class is a SMWResultPrinter, and calls methods that should
 	 * be forewarded to $this->queryPrinter on it.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $name
 	 * @param array $arguments
