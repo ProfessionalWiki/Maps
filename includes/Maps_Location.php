@@ -312,7 +312,7 @@ class MapsLocation {
 	/**
 	 * Returns if there is any icon.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return boolean
 	 */
@@ -334,7 +334,7 @@ class MapsLocation {
 	/**
 	 * Returns if there is any title.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return boolean
 	 */
@@ -356,7 +356,7 @@ class MapsLocation {
 	/**
 	 * Returns if there is any text.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return boolean
 	 */
@@ -389,7 +389,7 @@ class MapsLocation {
 	/**
 	 * Returns an object that can directly be converted to JS using json_encode or similar.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return object
 	 */

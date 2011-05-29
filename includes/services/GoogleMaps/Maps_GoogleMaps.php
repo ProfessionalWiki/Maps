@@ -143,7 +143,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	/**
 	 * @see MapsMappingService::getMapObject
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */
 	public function getMapObject() {
 		
@@ -259,7 +259,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	/**
 	 * @see MapsMappingService::getResourceModules
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array of string
 	 */

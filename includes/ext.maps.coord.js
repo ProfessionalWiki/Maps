@@ -2,7 +2,7 @@
  * JavasSript for coordinate handling in the Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  * 
- * @since 0.8
+ * @since 1.0
  * @ingroup Laos
  * 
  * @licence GNU GPL v3

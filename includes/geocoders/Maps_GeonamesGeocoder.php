@@ -3,7 +3,7 @@
 /**
  * Class for geocoding requests with the GeoNames webservice.
  * 
- * @since 0.8
+ * @since 1.0
  * @file Maps_GeonamesGeocoder.php
  * @ingroup Maps
  * @ingroup Geocoders
@@ -19,7 +19,7 @@ final class MapsGeonamesGeocoder extends MapsGeocoder {
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */
 	public static function register() {
 		global $egMapsGeoNamesUser;
@@ -34,7 +34,7 @@ final class MapsGeonamesGeocoder extends MapsGeocoder {
 	/**
 	 * @see MapsGeocoder::getRequestUrl
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $address
 	 * 
@@ -48,7 +48,7 @@ final class MapsGeonamesGeocoder extends MapsGeocoder {
 	/**
 	 * @see MapsGeocoder::parseResponse
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $address
 	 * 

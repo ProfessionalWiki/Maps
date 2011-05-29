@@ -241,7 +241,7 @@ abstract class MapsMappingService implements iMappingService {
 	/**
 	 * @see iMappingService::getEarthZoom
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */
 	public function getEarthZoom() {
 		return 1;

@@ -139,7 +139,7 @@ final class MapsMapper {
 	/**
 	 * Resolves the url of images provided as wiki page; leaves others alone.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $file
 	 * 
@@ -159,7 +159,7 @@ final class MapsMapper {
 	/**
 	 * Returns JS to init the vars to hold the map data when they are not there already.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param string $serviceName
 	 */

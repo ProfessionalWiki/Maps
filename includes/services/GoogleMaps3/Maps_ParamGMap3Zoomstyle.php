@@ -3,7 +3,7 @@
 /**
  * Parameter manipulation ensuring the value is a Google Maps v3 zoom control style.
  * 
- * @since 0.8
+ * @since 1.0
  * 
  * @file Maps_ParamGMap3Zoomstyle.php
  * @ingroup Maps
@@ -17,7 +17,7 @@ class MapsParamGMap3Zoomstyle extends ItemParameterManipulation {
 	/**
 	 * @see ItemParameterManipulation::doManipulation
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		$value = strtoupper( $value );

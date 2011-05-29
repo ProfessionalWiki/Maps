@@ -3,7 +3,7 @@
 /**
  * Parameter manipulation ensuring the value is an file url.
  * 
- * @since 0.8
+ * @since 1.0
  * 
  * @file Maps_ParamFile.php
  * @ingroup Maps

@@ -13,7 +13,7 @@
 class MapsKMLFormatter {
 
 	/**
-	 * @since 0.8
+	 * @since 1.0
 	 *  
 	 * @var array
 	 */

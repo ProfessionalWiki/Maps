@@ -103,7 +103,7 @@ interface iMappingService {
 	/**
 	 * Returns the zoomlevel that shows the whole earth for the mapping service.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return integer
 	 */

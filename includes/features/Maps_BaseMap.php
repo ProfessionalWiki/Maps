@@ -45,7 +45,7 @@ class MapsBaseMap {
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -78,7 +78,7 @@ class MapsBaseMap {
 	/**
 	 * Returns the HTML to display the map.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array $params
 	 * @param Parser $parser
@@ -138,7 +138,7 @@ class MapsBaseMap {
 	/**
 	 * Translates the coordinates field to the centre field and makes sure it's set to it's default when invalid. 
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array &$params
 	 */

@@ -54,7 +54,7 @@ class MapsBasePointMap {
 	/**
 	 * Returns the HTML to display the map.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array $params
 	 * @param Parser $parser
@@ -76,7 +76,7 @@ class MapsBasePointMap {
 	/**
 	 * Returns the JSON with the maps data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -100,7 +100,7 @@ class MapsBasePointMap {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 0.8
+	 * @since 1.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -115,7 +115,7 @@ class MapsBasePointMap {
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @param array &$params
 	 * @param Parser $parser

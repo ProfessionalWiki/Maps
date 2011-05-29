@@ -32,7 +32,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	/**
 	 * List of supported map layers. 
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var array
 	 */
@@ -50,7 +50,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	/**
 	 * List of supported control names.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @var array
 	 */
@@ -177,7 +177,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	/**
 	 * Returns the names of all supported map layers.
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array
 	 */
@@ -225,7 +225,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	/**
 	 * @see MapsMappingService::getResourceModules
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array of string
 	 */

@@ -161,7 +161,7 @@ class MapsGeocode extends ParserHook {
 	/**
 	 * @see ParserHook::getDescription()
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */
 	public function getDescription() {
 		return wfMsg( 'maps-geocode-description' );

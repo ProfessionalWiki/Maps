@@ -106,7 +106,7 @@ class MapsYahooMaps extends MapsMappingService {
 	/**
 	 * @see iMappingService::getEarthZoom
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 */
 	public function getEarthZoom() {
 		return 17;
@@ -163,7 +163,7 @@ class MapsYahooMaps extends MapsMappingService {
 	/**
 	 * @see MapsMappingService::getResourceModules
 	 * 
-	 * @since 0.8
+	 * @since 1.0
 	 * 
 	 * @return array of string
 	 */
