@@ -28,32 +28,32 @@ class SMAreaValueDescription extends SMWValueDescription {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.8
+	 * @since 0.6
 	 * 
 	 * @param SMWDataItem $dataItem
 	 * @param string $comparator
 	 * @param string $radius
 	 */
 	public function __construct( SMWDataItem $dataItem, $comparator, $radius ) {
-		parent::__construct( $dataValue, $comparator );	
+		parent::__construct( $dataItem, $comparator );	
 
 		// Only if the MapsGeoFunctions class is  loaded, we can create the bounding box.
 		if ( self::geoFunctionsAreAvailable() ) {
-			$this->calculateBounds( $dataValue, $radius );
+			$this->calculateBounds( $dataItem, $radius );
 		}
 	}
 
 	/**
-	 * Sets the mBounds fields to an array returned by SMAreaValueDescription::getBoundingBox.
+	 * Sets the bounds fields to an array returned by SMAreaValueDescription::getBoundingBox.
 	 * 
 	 * @since 0.6
 	 * 
-	 * @param SMGeoCoordsValue $dataValue
+	 * @param SMWDIGeoCoord $dataItem
 	 * @param string $radius
 	 */
-	protected function calculateBounds( SMGeoCoordsValue $dataValue, $radius ) {
+	protected function calculateBounds( SMWDIGeoCoord $dataItem, $radius ) {
 		$this->bounds = self::getBoundingBox(
-			$dataValue->getCoordinateSet(),
+			array( 'lat' => $dataItem->getLatitude(), 'lon' => $dataItem->getLongitude() ),
 			MapsDistanceParser::parseDistance( $radius )
 		);		
 	}
@@ -66,8 +66,8 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @param Boolean $asvalue
 	 */
 	public function getQueryString( $asValue = false ) {
-		if ( $this->m_datavalue !== null ) {
-			$queryString = $this->m_datavalue->getWikiValue();
+		if ( $this->getDataItem() !== null ) {
+			$queryString = SMWDataValueFactory::newDataItemValue( $this->getDataItem() )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
 			return $asValue ? '+' : '';
@@ -117,12 +117,9 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @return string or false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
-		$dataValue = $this->getDatavalue();
-
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( $dataValue->getTypeID() != '_geo' 
-			|| !$dataValue->isValid()
+		if ( $this->getDataItem()->getDIType() != SMWDataItem::TYPE_GEO
 			|| ( $this->getComparator() != SMW_CMP_EQ && $this->getComparator() != SMW_CMP_NEQ )
 			) {
 			return false;
