@@ -1347,8 +1347,17 @@ $messages['gl'] = array(
 	'maps-finddestination-par-directional' => 'Indica se o formato de destino debe producirse con formato direccional ou non.',
 	'maps-finddestination-par-allowcoordinates' => 'Indica se se deben permitir as coordenadas. Se está definido como "non", soamente se aceptarán enderezos.',
 	'maps-finddestination-par-geoservice' => 'O servizo de xeocodificación a usar para xeocodificar o valor no caso de que sexa un enderezo.',
+	'maps-finddestination-par-mappingservice' => 'Parámetro para indicar o servizo de cartografía a usar con esta función.
+Isto permite que os mapas substitúan o valor por defecto do parámetro de servizo por aquel que é óptimo para o servizo de cartografía.
+(Exemplo: No caso do Google Maps empregarase o xeocodificador do Google.)',
 	'maps-geocode-par-location' => 'O enderezo que quere xeocodificar.',
 	'maps-geocode-par-mappingservice' => 'O servizo de xeocodificación que quere usar. Olle os servizos de xeocodificación dispoñibles.',
+	'maps-geocode-par-geoservice' => 'Este parámetro permite indicar que está a usar esta petición de xeocodificación en combinación cun servizo de cartografía específico.
+Para cada servizo de cartografía é posible substituír o valor por defecto para o servizo de xeocodificación.
+Isto ten consideracións xurídicas xa que non pode utilizar o servizo de xeocodificación do Google máis ca co Google Maps.
+Definir este parámetro e non o parámetro para o servizo garantirá que non estea a empregar unha combinación inválida.',
+	'maps-geocode-par-allowcoordinates' => 'Permite desactivar o soporte para as coordenadas nesta función. Debe ser si ou non.
+Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenadas válidas.',
 	'maps-geocode-par-format' => 'O formato das coordenadas resultantes.',
 	'maps-geocode-par-directional' => 'Indica se as coordenadas deben producirse con formato direccional ou non.',
 	'maps-geodistance-par-location1' => 'O primeiro punto do conxunto para calcular a distancia.',
@@ -1356,10 +1365,20 @@ $messages['gl'] = array(
 	'maps-geodistance-par-unit' => 'A unidade na que mostrar a distancia.',
 	'maps-geodistance-par-decimals' => 'O número máximo de díxitos fraccionarios a utilizar no valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'O servizo de xeocodificación a usar para xeocodificar todos os enderezos.',
+	'maps-geodistance-par-geoservice' => 'O servizo de cartografía a usar en conxunto.
+Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'A localización do mapa que aparecerá inicialmente.',
+	'maps-displaypoints-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
+Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
 	'maps-displaypoints-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaypoints-par-coordinates' => 'Unha ou máis localización a mostrar no mapa. Indicaranse cun marcador.',
+	'maps-displaypoints-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
+Admite tanto enderezos como coordenadas.
+Cando non se indica esa propiedade, o mapa centrarase no marcador proporcionado ou entre os marcadores proporcionados.',
+	'maps-displaypoints-par-title' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen un título específico.
+Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliñado.',
+	'maps-displaypoints-par-label' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen unha etiqueta específica.',
 	'maps-displaypoints-par-icon' => 'Permite configurar a icona usada para todos os marcadores.',
 	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
 	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
