@@ -28,13 +28,13 @@ class SMAreaValueDescription extends SMWValueDescription {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.6
+	 * @since 0.8
 	 * 
-	 * @param SMGeoCoordsValue $dataValue
+	 * @param SMWDataItem $dataItem
 	 * @param string $comparator
 	 * @param string $radius
 	 */
-	public function __construct( SMGeoCoordsValue $dataValue, $comparator, $radius ) {
+	public function __construct( SMWDataItem $dataItem, $comparator, $radius ) {
 		parent::__construct( $dataValue, $comparator );	
 
 		// Only if the MapsGeoFunctions class is  loaded, we can create the bounding box.

@@ -14,12 +14,12 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.6
+	 * @since 0.8
 	 * 
-	 * @param SMGeoCoordsValue $dataValue
+	 * @param SMWDataItem $dataItem
 	 */
-	public function __construct( SMGeoCoordsValue $dataValue, $comparator ) {
-		parent::__construct( $dataValue, $comparator );	
+	public function __construct( SMWDataItem $dataItem, $comparator ) {
+		parent::__construct( $dataItem, $comparator );	
 	}
 
 	/**
@@ -30,8 +30,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * @param Boolean $asvalue
 	 */
 	public function getQueryString( $asValue = false ) {
-		if ( $this->m_datavalue !== null ) {
-			$queryString = $this->m_datavalue->getWikiValue();
+		if ( $this->m_dataItem !== null ) {
+			$queryString = SMWDataValueFactory::newDataItemValue( $this->m_dataItem, $this->m_property )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
 			return $asValue ? '+' : '';
@@ -50,11 +50,11 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * @return true
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
-		$dataValue = $this->getDatavalue();
+		$dataItem = $this->getDataItem();
 		
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( $dataValue->getTypeID() != '_geo' || !$dataValue->isValid() ) return false;
+		if ( $dataItem->getDIType() != SMWDataItem::TYPE_GEO ) return false;
 
 		$comparator = false;
 		
@@ -66,10 +66,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		}
 		
 		if ( $comparator ) {
-			$coordinates = $dataValue->getCoordinateSet();
-			
-			$lat = $dbs->addQuotes( $coordinates['lat'] );
-			$lon = $dbs->addQuotes( $coordinates['lon'] );
+			$lat = $dbs->addQuotes( $dataItem->getLatitude() );
+			$lon = $dbs->addQuotes( $dataItem->getLongitude() );
 			
 			$conditions = array();
 				
