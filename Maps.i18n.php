@@ -989,7 +989,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'maps-desc' => 'Proporciona la capacidad de mostrar los datos de coordenadas en los mapas y geocodifica direcciones ([http://mapping.referata.com/wiki/Maps_examples demo]). Servicios de mapeo disponibles: $1',
+	'maps-desc' => 'Habilita inserción de mapas dinámicos en página wiki, geocodificación de direcciones y otras operaciones geográficas. ([http://mapping.referata.com/wiki/Examples demos])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
 	'maps-markers' => 'Marcadores',
