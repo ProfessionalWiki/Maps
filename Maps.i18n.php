@@ -3761,17 +3761,30 @@ $messages['zh-cn'] = array(
  * @author Hydra
  */
 $messages['zh-hans'] = array(
-	'maps_name' => '地图',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入中...',
+	'maps-load-failed' => '无法加载地图！',
+	'maps-markers' => '标记',
 	'maps-others' => '其他',
+	'maps-ns-layer' => '图层',
+	'maps-ns-layer-talk' => '图层讨论',
+	'maps-layer-property' => '属性',
+	'maps-layer-value' => '价值',
+	'maps-layer-errors' => '错误',
+	'maps-error-invalid-layerdef' => '这一层定义不是有效的。',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '东',
 	'maps-abb-south' => '南',
 	'maps-abb-west' => '西',
 	'maps-latitude' => '纬度：',
 	'maps-longitude' => '经度：',
+	'maps_overlays' => '叠加',
+	'maps_photos' => '照片',
+	'maps_videos' => '视频',
 	'maps_wikipedia' => '维基百科',
+	'maps_webcams' => '网络摄像机',
+	'maps-osm-par-thumbs' => '显示大拇指',
+	'maps-osm-par-photos' => '显示图片',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
