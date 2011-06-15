@@ -528,17 +528,28 @@ class MapsCoordinateParser {
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		$degreePosition = strpos( $coordinate, self::SYMBOL_DEG );
+		$degrees = substr ( $coordinate, 0, $degreePosition );
+		
 		$minutePosition = strpos( $coordinate, self::SYMBOL_MIN );
+		
+		if ( $minutePosition === false ) {
+			$minutes = 0;
+		}
+		else {
+			$degSignLength = strlen( self::SYMBOL_DEG );
+			$minuteLength = $minutePosition - $degreePosition - $degSignLength;
+			$minutes = substr ( $coordinate, $degreePosition + $degSignLength, $minuteLength );
+		}
+		
 		$secondPosition = strpos( $coordinate, self::SYMBOL_SEC );
 		
-		$degSignLength = strlen( self::SYMBOL_DEG );
-		
-		$minuteLength = $minutePosition - $degreePosition - $degSignLength;
-		$secondLength = $secondPosition - $minutePosition - 1;
-		
-		$degrees = substr ( $coordinate, 0, $degreePosition );
-		$minutes = substr ( $coordinate, $degreePosition + $degSignLength, $minuteLength );
-		$seconds = substr ( $coordinate, $minutePosition + 1, $secondLength );
+		if ( $minutePosition === false ) {
+			$seconds = 0;
+		}
+		else {
+			$secondLength = $secondPosition - $minutePosition - 1;
+			$seconds = substr ( $coordinate, $minutePosition + 1, $secondLength );			
+		}
 		
 		$coordinate = $degrees + ( $minutes + $seconds / 60 ) / 60;
 		if ( $isNegative ) $coordinate *= -1;
