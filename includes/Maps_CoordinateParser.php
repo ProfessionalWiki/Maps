@@ -68,8 +68,11 @@ class MapsCoordinateParser {
 		// Handle i18n notations.
 		$coordinates = self::handleI18nLabels( $coordinates );
 		
+		// Normalize the coordinates string.
+		$coordinates = self::normalizeCoordinates( $coordinates );
+		
 		// Determine what notation the coordinates are in.
-		$coordsType = self::getCoordinatesType( $coordinates );
+		$coordsType = self::getCoordinatesType( $coordinates, false );
 
 		// If getCoordinatesType returned false, the provided value is invalid or in an unsuported notation.
 		if ( $coordsType === false ) {
@@ -110,12 +113,15 @@ class MapsCoordinateParser {
 	 * @since 0.6
 	 * 
 	 * @param string $coordinates
+	 * @param boolean $normalize
 	 * 
 	 * @return Integer or false
 	 */
-	public static function getCoordinatesType( $coordinates ) {
-		// Normalize the coordinates string.
-		$coordinates = self::normalizeCoordinates( $coordinates );		
+	public static function getCoordinatesType( $coordinates, $normalize = true ) {
+		if ( $normalize ) {
+			// Normalize the coordinates string.
+			$coordinates = self::normalizeCoordinates( $coordinates );
+		}		
 		
 		switch ( true ) {
 			case self::areFloatCoordinates( $coordinates ):

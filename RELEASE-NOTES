@@ -48,6 +48,8 @@ This version branched from Maps 0.7.x at version 0.7.3.
 
 * Fixed DMS coordinate parsing issue (bug 29419).
 
+* Fixed coordinate normalization issue (bug 29421).
+
 ==== Other tweaks ====
 
 * Improved default width of maps (merged in from Maps 0.7.5).
