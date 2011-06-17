@@ -261,12 +261,29 @@ $messages['aln'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Imksa
  * @author Meno25
  */
 $messages['ar'] = array(
 	'maps-desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://mapping.referata.com/wiki/Maps_examples تجربة]).
 خدمات الخرائط المتوفرة: $1',
 	'maps_map' => 'خريطة',
+	'maps-loading-map' => 'تحميل الخريطة...',
+	'maps-load-failed' => 'لا يمكن تحميل الخريطة!',
+	'maps-markers' => 'علامات',
+	'maps-others' => 'أخرون',
+	'maps-ns-layer' => 'طبقة',
+	'maps-layer-property' => 'خاصية',
+	'maps-layer-value' => 'القيمة',
+	'maps-layer-errors' => 'أخطاء',
+	'maps-error-invalid-layerdef' => 'تعريف هذه الطبقة غير صالح.',
+	'maps-error-invalid-layertype' => 'لا توجد طبقات من نوع " $1 ". فقط {{PLURAL:$3| هذا النوع هو | هذه الأنواع هي}} المدعومة : $2',
+	'maps-error-no-layertype' => 'تحتاج إلى تحديد نوع طبقة. {{PLURAL:$2| هذا النوع فقط | هذه الأنواع هي}} المدعومة : $1',
+	'validation-error-invalid-layer' => 'المعلمة $1 يجب أن تكون طبقة صالحة.',
+	'validation-error-invalid-layers' => 'المعلمة $1 يجب أن تكون طبقة واحدة  أو أكثر صالحة.',
+	'maps-layer-of-type' => 'طبقة من نوع $1',
+	'maps-layer-type-supported-by' => 'نوع الطبقة هذا يمكن أن {{PLURAL:$2| يمكن استخدامها فقط مع $1 خدمة الخرائط | يمكن استخدامها مع خدمات الخرائط : $1 }}.',
+	'maps-coordinates-description' => 'ربط محلل بإحداثيات الشكل ، من وإلى أي من الأشكال المدعومة.',
 	'maps-abb-north' => 'شم',
 	'maps-abb-east' => 'شر',
 	'maps-abb-south' => 'ج',
