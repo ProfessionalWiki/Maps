@@ -69,6 +69,7 @@
 	
 	this.input.keypress( function( event ) {
 		if ( event.which == '13' ) {
+			event.preventDefault();
 			updateButton.click();
 		}
 	} );
@@ -104,6 +105,7 @@
 	
 	this.geofield.keypress( function( event ) {
 		if ( event.which == '13' ) {
+			event.preventDefault();
 			geoButton.click();
 		}
 	} );

@@ -60,30 +60,32 @@
 		this.projectAndShowLocation( new OpenLayers.LonLat( coordinate.lon, coordinate.lat ), '' );
 	};
 	
-	this.geocodeAddress = function( address ) {
-		$.getJSON(
-			'http://api.geonames.org/searchJSON?callback=?',
-			{
-				'q': address,
-				'username': options.geonamesusername,
-				//'formatted': 'true',
-				'maxRows': 1
-			},
-			function( data ) {
-				if ( data.totalResultsCount ) {
-					if ( data.totalResultsCount > 0 ) {
-						self.projectAndShowLocation( new OpenLayers.LonLat( data.geonames[0].lng, data.geonames[0].lat ), address );
+	if ( options.geonamesusername != '' ) {
+		this.geocodeAddress = function( address ) {
+			$.getJSON(
+				'http://api.geonames.org/searchJSON?callback=?',
+				{
+					'q': address,
+					'username': options.geonamesusername,
+					//'formatted': 'true',
+					'maxRows': 1
+				},
+				function( data ) {
+					if ( data.totalResultsCount ) {
+						if ( data.totalResultsCount > 0 ) {
+							self.projectAndShowLocation( new OpenLayers.LonLat( data.geonames[0].lng, data.geonames[0].lat ), address );
+						}
+						else {
+							// TODO: notify no result
+						}
 					}
 					else {
-						// TODO: notify no result
+						// TODO: error
 					}
 				}
-				else {
-					// TODO: error
-				}
-			}
-		);		
-	};	
+			);		
+		};		
+	}
 	
 	this.mapforminput( mapDivId, options );
 	
