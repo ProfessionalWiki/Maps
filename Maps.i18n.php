@@ -3376,6 +3376,27 @@ Dostupné mapovacie služby: $1',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Lesko987
+ */
+$messages['sl'] = array(
+	'maps-desc' => 'Omogoča vključevanje dinamičnih zemljevidov na wiki strani, geokodiranje naslovov in drugih geografskih operacij. ([http://mapping.referata.com/wiki/Examples Primeri])',
+	'maps_map' => 'Zemljevid',
+	'maps-loading-map' => 'Nakladanje zemljevida...',
+	'maps-load-failed' => 'Zemljevid ni bilo mogoče naložiti.',
+	'maps-abb-north' => 'S',
+	'maps-abb-east' => 'V',
+	'maps-abb-south' => 'J',
+	'maps-abb-west' => 'Z',
+	'maps-latitude' => 'Zemljepisna širina:',
+	'maps-longitude' => 'Zemljepisna dolžina:',
+	'maps_googlemaps2' => 'Google Maps v2',
+	'maps_googlemaps3' => 'Google Maps v3',
+	'maps_yahoomaps' => 'Yahoo! Maps',
+	'maps_openlayers' => 'OpenLayers',
+	'maps_osm' => 'OpenStreetMap',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
