@@ -785,6 +785,28 @@ $messages['sk'] = array(
 	'semanticmaps_enteraddresshere' => 'Sem zadajte emailovú adresu',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Lesko987
+ */
+$messages['sl'] = array(
+	'semanticmaps-desc' => 'Omogoča ogled in urejanje podatke o lokaciji, shranjene z razširitvijo Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples Primeri]).',
+	'semanticmaps-unrecognizeddistance' => 'Vrednost $1 ni pravilna razdalja.',
+	'semanticmaps-kml-link' => 'Ogled datoteke KML',
+	'semanticmaps-default-kml-pagelink' => 'Poglej stran $1',
+	'semanticmaps-loading-forminput' => 'Nalaganje zemljevida iz vira...',
+	'semanticmaps_lookupcoordinates' => 'Poišči koordinate',
+	'semanticmaps_enteraddresshere' => 'Tukaj vnesite naslov',
+	'semanticmaps-updatemap' => 'Osvežite zemljevid',
+	'semanticmaps-forminput-remove' => 'Odstrani',
+	'semanticmaps-forminput-add' => 'Dodaj',
+	'semanticmaps-forminput-locations' => 'Lokacije',
+	'semanticmaps-par-staticlocations' => 'Seznam lokacij za dodajanje na zemljevid skupaj z rezultati poizvedb. Tako kot z display_points, lahko dodate naslov, opis in ikono za vsako lokacijo z uporabo "~" kot ločilo.',
+	'semanticmaps-par-forceshow' => 'Prikaži zemljevid tudi če ni lokacij za prikaz?',
+	'semanticmaps-par-showtitle' => 'Prikaži naslov v oknu ali ne. Onemogočanje tega je pogosto uporabno, če uporabljate predloge za oblikovanje vsebine info okno.',
+	'semanticmaps-par-centre' => 'Sredini zemljevida. Če ne podana, bo zemljevid samodejno izbral optimalno lokacijo za prikaz vseh oznak na zemljevidu.',
+	'semanticmaps-par-template' => 'Predloga za oblikovanje vsebine info okna.',
+);
+
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
  * @author Михајло Анђелковић
  */
