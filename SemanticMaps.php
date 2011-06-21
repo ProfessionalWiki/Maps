@@ -104,9 +104,6 @@ $wgAutoloadClasses['SemanticMapsHooks'] 			= dirname( __FILE__ ) . '/SemanticMap
 // Hook for initializing the Geographical Coordinate type.
 $wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsHooks::initGeoCoordsType';
 
-// Hook for defining a table to store geographical coordinates in.
-$wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsHooks::initGeoCoordsTable';
-
 // Hook for defining the default query printer for queries that ask for geographical coordinates.
 $wgHooks['SMWResultFormat'][] = 'SMGeoCoordsHooks::addGeoCoordsDefaultFormat';	
 
