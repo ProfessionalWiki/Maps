@@ -2544,6 +2544,13 @@ $messages['mr'] = array(
 	'maps-longitude' => 'रेखांश:',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Anakmalaysia
+ */
+$messages['ms'] = array(
+	'maps-layer-value' => 'Nilai',
+);
+
 /** Erzya (Эрзянь) */
 $messages['myv'] = array(
 	'maps-abb-north' => 'Веньэльйонкс',
