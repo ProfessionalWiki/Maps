@@ -199,6 +199,14 @@ $messages['ca'] = array(
 	'semanticmaps-par-forceshow' => 'Mostrar el mapa fins i tot quan no hi ha ubicacions a mostrar?',
 );
 
+/** Czech (Česky)
+ * @author Utar
+ */
+$messages['cs'] = array(
+	'semanticmaps-forminput-remove' => 'Odebrat',
+	'semanticmaps-forminput-add' => 'Přidat',
+);
+
 /** German (Deutsch)
  * @author DaSch
  * @author Imre
