@@ -835,11 +835,21 @@ $messages['sr-el'] = array(
  * @author Boivie
  * @author Najami
  * @author Per
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'semanticmaps-desc' => 'Ger möjligheten att titta på och ändra koordinatdata sparad genom Semantic MediaWiki-utvidgningen ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med Semantic MediaWiki-utvidgningen ([http://mapping.referata.com/wiki/Examples Demo]).',
+	'semanticmaps-unrecognizeddistance' => 'Värdet $1 är inte ett giltigt avstånd.',
+	'semanticmaps-kml-link' => 'Visa KML-filen',
+	'semanticmaps-default-kml-pagelink' => 'Visa sida $1',
+	'semanticmaps-loading-forminput' => 'Läser in karta från indata...',
 	'semanticmaps_lookupcoordinates' => 'Kolla upp koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv in adress här',
+	'semanticmaps-updatemap' => 'Uppdatera karta',
+	'semanticmaps-forminput-remove' => 'Ta bort',
+	'semanticmaps-forminput-add' => 'Lägg till',
+	'semanticmaps-forminput-locations' => 'Platser',
+	'semanticmaps-par-forceshow' => 'Visa kartan även om det inte finns några platser att visa?',
 );
 
 /** Telugu (తెలుగు)
