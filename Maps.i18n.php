@@ -3442,20 +3442,36 @@ $messages['sr-el'] = array(
  * @author Fader
  * @author Fluff
  * @author Per
+ * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'maps-desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Tillgängliga karttjänster: $1',
+	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([http://mapping.referata.com/wiki/Maps_examples Demo]).',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
+	'maps-load-failed' => 'Kunde inte läsa in karta!',
 	'maps-markers' => 'Markörer',
+	'maps-others' => 'andra',
+	'maps-ns-layer' => 'Lager',
+	'maps-ns-layer-talk' => 'Lagerdiskussion',
+	'maps-layer-property' => 'Egenskap',
+	'maps-layer-value' => 'Värde',
 	'maps-layer-errors' => 'Fel',
+	'maps-error-invalid-layerdef' => 'Denna lagerdefinition är inte giltigt.',
+	'maps-error-invalid-layertype' => 'Det finns inga lager av typen "$1". Endast {{PLURAL:$3|denna typ|denna typer}} stöds: $2',
+	'validation-error-invalid-layer' => 'Parameter $1 måste vara ett giltig lager.',
+	'validation-error-invalid-layers' => 'Parameter $1 måste vara ett eller flera giltiga lager.',
+	'maps-layer-of-type' => 'Lagertyp $1',
+	'maps-geocode-par-location' => 'Adressen som du vill geokoda.',
 	'validation-error-invalid-location' => 'Parameter $1 måste vara en giltig plats.',
 	'validation-error-invalid-locations' => 'Parameter $1 måste vara en eller flera giltiga platser.',
 	'validation-error-invalid-width' => 'Parameter $1 måste vara en giltig bredd.',
 	'validation-error-invalid-height' => 'Parameter $1 måste vara en giltig höjd.',
 	'validation-error-invalid-distance' => 'Parameter $1 måste vara ett giltigt avstånd.',
 	'validation-error-invalid-distances' => 'Parameter $1 måste vara en eller flera giltiga avstånd.',
+	'validation-error-invalid-image' => 'Parameter $1 måste vara en giltig bild.',
+	'validation-error-invalid-images' => 'Parameter $1 måste vara en eller flera giltiga bilder.',
+	'validation-error-invalid-goverlay' => 'Parameter $1 måste vara ett giltigt överlägg.',
+	'validation-error-invalid-goverlays' => 'Parameter $1 måste vara en eller flera giltiga överlägg.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ö',
 	'maps-abb-south' => 'S',
@@ -3467,16 +3483,22 @@ Tillgängliga karttjänster: $1',
 	'maps_geocoding_failed' => 'Följande {{PLURAL:$2|adress|adresser}} kunde inte geokodas: $1.
 Kartan kan inte visas.',
 	'maps_geocoding_failed_for' => 'Följande {{PLURAL:$2|adress|adresser}}kunde inte geokodas och {{PLURAL:$2|har|har}} uteslutits från kartan: $1',
-	'maps_unrecognized_coords' => 'Följande koordinater kändes inte igen: $1.',
+	'maps_unrecognized_coords' => 'Följande {{PLURAL:$2|koordinat|koordinater}} kändes inte igen: $1.',
 	'maps_unrecognized_coords_for' => 'Följande {{PLURAL:$2|koordinat|koordinater}} kändes inte igen och {{PLURAL:$2|har|har}} utelämnats från kartan:
 $1',
 	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
 	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_centred_on' => 'Karta centrerad på $1, $2.',
+	'maps_overlays' => 'Överlägg',
 	'maps_photos' => 'Foton',
 	'maps_videos' => 'Videoklipp',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webbkameror',
+	'maps-googlemaps2-par-autozoom' => 'Aktivera rullning med mushjulet.',
+	'maps-googlemaps2-par-overlays' => 'Överlägg användaren kan aktivera.',
+	'maps-googlemaps3-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v3.',
+	'maps-osm-par-photos' => 'Visa foton',
+	'maps-yahoomaps-par-autozoom' => 'Aktivera rullning med mushjulet.',
 );
 
 /** Telugu (తెలుగు)
