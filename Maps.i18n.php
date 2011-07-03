@@ -2837,7 +2837,7 @@ $messages['pdc'] = array(
  * @author Yarl
  */
 $messages['pl'] = array(
-	'maps-desc' => 'Umożliwia wyświetlanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://mapping.referata.com/wiki/Examples demo])',
+	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://mapping.referata.com/wiki/Examples demo])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
 	'maps-markers' => 'Zaznaczenia',
