@@ -43,11 +43,16 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Lloffiwr
  * @author Purodha
  * @author Raymond
  */
 $messages['qqq'] = array(
 	'semanticmaps-desc' => '{{desc}}',
+	'semanticmaps-loading-forminput' => 'Message displayed during a computer action',
+	'semanticmaps_lookupcoordinates' => 'Submit button next to input box. The box contains the hint {{msg-mw|Semanticmaps_enteraddresshere}}',
+	'semanticmaps_enteraddresshere' => 'Hint provided in an input box. The submit button next to the input box is {{msg-mw|Semanticmaps_lookupcoordinates}}',
+	'semanticmaps-updatemap' => 'Submit button label',
 	'semanticmaps-forminput-remove' => '{{Identical|Remove}}',
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
@@ -205,6 +210,21 @@ $messages['ca'] = array(
 $messages['cs'] = array(
 	'semanticmaps-forminput-remove' => 'Odebrat',
 	'semanticmaps-forminput-add' => 'Přidat',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'semanticmaps-kml-link' => 'Edrych ar y ffeil KML',
+	'semanticmaps-default-kml-pagelink' => 'Edrych ar y dudalen $1',
+	'semanticmaps-loading-forminput' => "Yn llwytho ffurflen mewnbynnu i'r map...",
+	'semanticmaps_lookupcoordinates' => 'Canfydder y cyfesurynnau',
+	'semanticmaps_enteraddresshere' => 'Ysgrifennwch y cyfeiriad yma',
+	'semanticmaps-updatemap' => 'Diweddarer y map',
+	'semanticmaps-forminput-remove' => 'Tynner oddi ar y map',
+	'semanticmaps-forminput-add' => 'Ychwaneger',
+	'semanticmaps-forminput-locations' => 'Lleoliadau',
 );
 
 /** German (Deutsch)
@@ -850,6 +870,20 @@ $messages['sv'] = array(
 	'semanticmaps-forminput-add' => 'Lägg till',
 	'semanticmaps-forminput-locations' => 'Platser',
 	'semanticmaps-par-forceshow' => 'Visa kartan även om det inte finns några platser att visa?',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'semanticmaps-kml-link' => 'Tazama faili la KML',
+	'semanticmaps-default-kml-pagelink' => 'Tazama ukurasa $1',
+	'semanticmaps-loading-forminput' => 'Fomu ya kuingiza ramani inapakiwa...',
+	'semanticmaps_enteraddresshere' => 'Ingiza anwani hapa',
+	'semanticmaps-updatemap' => 'Sasisha ramani',
+	'semanticmaps-forminput-remove' => 'Ondoa',
+	'semanticmaps-forminput-add' => 'Ongeza',
+	'semanticmaps-forminput-locations' => 'Mahali',
 );
 
 /** Telugu (తెలుగు)
