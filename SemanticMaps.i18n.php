@@ -216,6 +216,7 @@ $messages['cs'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'semanticmaps-unrecognizeddistance' => "Nid yw'r gwerth $1 yn bellter dilys.",
 	'semanticmaps-kml-link' => 'Edrych ar y ffeil KML',
 	'semanticmaps-default-kml-pagelink' => 'Edrych ar y dudalen $1',
 	'semanticmaps-loading-forminput' => "Yn llwytho ffurflen mewnbynnu i'r map...",
