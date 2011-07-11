@@ -82,15 +82,6 @@ class MapsCoordinateParserTest extends MediaWikiTestCase {
 	);
 	
 	/**
-	 * Formatting tests.
-	 * 
-	 * @var array
-	 */
-	public static $formattingTests = array(
-		
-	);	
-	
-	/**
 	 * Invalid coordinates.
 	 * 
 	 * @var array
@@ -131,16 +122,9 @@ class MapsCoordinateParserTest extends MediaWikiTestCase {
 	}
 	
 	/**
-	 * Constructs the test case.
-	 */
-	public function __construct() {
-	}
-	
-	/**
 	 * Tests MapsCoordinateParser::parseCoordinates()
 	 */
 	public function testParseCoordinates() {
-		// TODO Auto-generated MapsCoordinateParserTest::testParseCoordinates()
 		foreach ( self::$fakeCoordinates as $coord ) {
 			$this->assertFalse( MapsCoordinateParser::parseCoordinates( $coord ), "parseCoordinates did not return false for $coord." );
 		}
@@ -172,22 +156,8 @@ class MapsCoordinateParserTest extends MediaWikiTestCase {
 				
 	}
 	
-	/*
-	public function coordinatesProvider() {
-		die(__METHOD__);
-		$coords = array();
-		
-		foreach( self::$coordinates as $coordsOfType ) {
-			foreach( $coordsOfType as $coord ) {
-				$coords[] = array( $coord );
-			}			
-		}		
-		return $coords;
-	}
-	*/
-	
 	/**
-	 * @dataProvider coordinatesProvider
+	 * Tests MapsCoordinateParser::areCoordinates()
 	 */
 	public function testAreCoordinates() {
 		foreach( self::$coordinates as $coordsOfType ) {
@@ -199,28 +169,6 @@ class MapsCoordinateParserTest extends MediaWikiTestCase {
 		foreach ( self::$fakeCoordinates as $coord ) {
 			$this->assertFalse( MapsCoordinateParser::areCoordinates( $coord ), "$coord was recognized as coordinate." );
 		}
-	}
-	
-	/**
-	 * Tests MapsCoordinateParser::formatCoordinates()
-	 */
-	public function testFormatCoordinates() {
-		// TODO Auto-generated MapsCoordinateParserTest::testFormatCoordinates()
-		$this->markTestIncomplete ( "formatCoordinates test not implemented" );
-		
-		MapsCoordinateParser::formatCoordinates(/* parameters */);
-	
-	}
-	
-	/**
-	 * Tests MapsCoordinateParser::formatToArray()
-	 */
-	public function testFormatToArray() {
-		// TODO Auto-generated MapsCoordinateParserTest::testFormatToArray()
-		$this->markTestIncomplete ( "formatToArray test not implemented" );
-		
-		MapsCoordinateParser::formatToArray(/* parameters */);
-	
 	}
 	
 	/**
@@ -275,7 +223,6 @@ class MapsCoordinateParserTest extends MediaWikiTestCase {
 	 * Tests MapsCoordinateParser::parseAndFormat()
 	 */
 	public function testParseAndFormat() {
-		// TODO Auto-generated MapsCoordinateParserTest::testParseAndFormat()
 		foreach ( self::$fakeCoordinates as $coord ) {
 			$this->assertFalse( MapsCoordinateParser::parseAndFormat( $coord ), "parseAndFormat did not return false for $coord." );
 		}
