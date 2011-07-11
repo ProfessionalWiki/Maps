@@ -83,13 +83,6 @@ class MapsDistanceParserTest extends MediaWikiTestCase {
 	}
 	
 	/**
-	 * Constructs the test case.
-	 */
-	public function __construct() {
-		
-	}
-	
-	/**
 	 * Tests MapsDistanceParser::parseDistance()
 	 */
 	public function testParseDistance() {
@@ -115,11 +108,15 @@ class MapsDistanceParserTest extends MediaWikiTestCase {
 	 * Tests MapsDistanceParser::parseAndFormat()
 	 */
 	public function testParseAndFormat() {
-		// TODO Auto-generated MapsDistanceParserTest::testParseAndFormat()
-		$this->markTestIncomplete ( "parseAndFormat test not implemented" );
+		$conversions = array(
+			'42 km' => '42000 m'
+		);
 		
-		MapsDistanceParser::parseAndFormat(/* parameters */);
-	
+		foreach( array_merge( $conversions, array_reverse( $conversions ) ) as $source => $target ) {
+			$unit = explode( ' ', $target, 2 );
+			$unit = $unit[1];
+			$this->assertEquals( $target, MapsDistanceParser::parseAndFormat( $source, $unit ), "'$source' was not parsed and formatted to '$target':" );
+		}
 	}
 	
 	/**
