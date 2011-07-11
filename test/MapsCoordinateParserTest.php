@@ -5,7 +5,9 @@
  * 
  * @ingroup Maps
  * @since 0.6.5
- * @author Jeroen De Dauw
+ * 
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsCoordinateParserTest extends MediaWikiTestCase {
 	

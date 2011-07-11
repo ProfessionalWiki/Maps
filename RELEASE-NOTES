@@ -40,6 +40,8 @@ This version branched from Maps 0.7.x at version 0.7.3.
 
 * Use of Google Maps geocoding service v3 instead of v2.
 
+* Completed coordinate and distance parser/formatter unit tests and made them compliant with the MediaWiki unit testing support.
+
 ==== Bug fixes ====
 
 * Fixed geocoding service overriding based on mapping service (merged in from Maps 0.7.5).
