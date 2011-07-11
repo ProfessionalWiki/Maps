@@ -7,7 +7,7 @@
  * @since 0.6.5
  * @author Jeroen De Dauw
  */
-class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
+class MapsDistanceParserTest extends MediaWikiTestCase {
 	
 	public static $distances = array(
 		'1' => 1,
@@ -139,22 +139,27 @@ class MapsDistanceParserTest extends PHPUnit_Framework_TestCase {
 	 * Tests MapsDistanceParser::getUnitRatio()
 	 */
 	public function testGetUnitRatio() {
-		// TODO Auto-generated MapsDistanceParserTest::testGetUnitRatio()
-		$this->markTestIncomplete ( "getUnitRatio test not implemented" );
-		
-		MapsDistanceParser::getUnitRatio(/* parameters */);
-	
+		foreach ( $GLOBALS['egMapsDistanceUnits'] as $unit => $ratio ) {
+			$r = MapsDistanceParser::getUnitRatio( $unit );
+			$this->assertEquals( $ratio, $r, "The ratio for '$unit' should be '$ratio' but was '$r'" );
+		}
 	}
 	
 	/**
 	 * Tests MapsDistanceParser::getValidUnit()
 	 */
 	public function testGetValidUnit() {
-		// TODO Auto-generated MapsDistanceParserTest::testGetValidUnit()
-		$this->markTestIncomplete ( "getValidUnit test not implemented" );
+		foreach ( $GLOBALS['egMapsDistanceUnits'] as $unit => $ratio ) {
+			$u = MapsDistanceParser::getValidUnit( $unit );
+			$this->assertEquals( $unit, $u, "The valid unit for '$unit' should be '$unit' but was '$u'" );			
+		}
 		
-		MapsDistanceParser::getValidUnit(/* parameters */);
-	
+		global $egMapsDistanceUnit;
+		
+		foreach ( array( '0', 'swfwdffdhy', 'dxwgdrfh' ) as $unit ) {
+			$u = MapsDistanceParser::getValidUnit( $unit );
+			$this->assertEquals( $egMapsDistanceUnit, $u, "The valid unit for '$unit' should be '$egMapsDistanceUnit' but was '$u'" );
+		}
 	}
 	
 	/**

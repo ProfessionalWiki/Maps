@@ -7,7 +7,7 @@
  * @since 0.6.5
  * @author Jeroen De Dauw
  */
-class MapsCoordinateParserTest extends PHPUnit_Framework_TestCase {
+class MapsCoordinateParserTest extends MediaWikiTestCase {
 	
 	/**
 	 * Valid coordinates.
