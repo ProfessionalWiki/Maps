@@ -163,11 +163,7 @@ class MapsDistanceParserTest extends MediaWikiTestCase {
 	 * Tests MapsDistanceParser::getUnits()
 	 */
 	public function testGetUnits() {
-		// TODO Auto-generated MapsDistanceParserTest::testGetUnits()
-		$this->markTestIncomplete ( "getUnits test not implemented" );
-		
-		MapsDistanceParser::getUnits(/* parameters */);
-	
+		$this->assertEquals( array_keys( $GLOBALS['egMapsDistanceUnits'] ), MapsDistanceParser::getUnits() );
 	}
 
 }
