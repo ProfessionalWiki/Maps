@@ -25,6 +25,8 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Added 'update map' button to all form inputs.
 
+* Fixed PostGres support for distance queries.
+
 === Semantic Maps 0.7.3 ===
 (2010-11-30)
 
