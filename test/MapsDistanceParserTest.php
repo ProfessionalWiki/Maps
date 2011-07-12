@@ -62,29 +62,6 @@ class MapsDistanceParserTest extends MediaWikiTestCase {
 	);
 	
 	/**
-	 * @var MapsDistanceParser
-	 */
-	private $MapsDistanceParser;
-	
-	/**
-	 * Prepares the environment before running a test.
-	 */
-	protected function setUp() {
-		parent::setUp ();
-		
-		$this->MapsDistanceParser = new MapsDistanceParser(/* parameters */);
-	}
-	
-	/**
-	 * Cleans up the environment after running a test.
-	 */
-	protected function tearDown() {
-		$this->MapsDistanceParser = null;
-		
-		parent::tearDown ();
-	}
-	
-	/**
 	 * Tests MapsDistanceParser::parseDistance()
 	 */
 	public function testParseDistance() {

@@ -102,28 +102,6 @@ class MapsCoordinateParserTest extends MediaWikiTestCase {
 	);
 	
 	/**
-	 * @var MapsCoordinateParser
-	 */
-	private $MapsCoordinateParser;
-	
-	/**
-	 * Prepares the environment before running a test.
-	 */
-	protected function setUp() {
-		parent::setUp ();
-		$this->MapsCoordinateParser = new MapsCoordinateParser(/* parameters */);
-	
-	}
-	
-	/**
-	 * Cleans up the environment after running a test.
-	 */
-	protected function tearDown() {
-		$this->MapsCoordinateParser = null;
-		parent::tearDown ();
-	}
-	
-	/**
 	 * Tests MapsCoordinateParser::parseCoordinates()
 	 */
 	public function testParseCoordinates() {
