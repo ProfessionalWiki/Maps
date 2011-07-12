@@ -136,7 +136,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 
         $smallerThen = $isEq ? '<' : '>=';
         $biggerThen = $isEq ? '>' : '<=';
-        $joinCond = $isEq ? '&&' : '||';
+        $joinCond = $isEq ? 'AND' : 'OR';
 
         $conditions[] = "{$tableName}.$fieldNames[0] $smallerThen $north";
         $conditions[] = "{$tableName}.$fieldNames[0] $biggerThen $south";
