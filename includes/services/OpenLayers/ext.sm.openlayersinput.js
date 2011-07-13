@@ -11,14 +11,14 @@
 
 jQuery(document).ready(function() {
 	if ( true ) {
-		for ( i in window.maps.openlayers_forminputs ) {
-			jQuery( '#' + i + '_forminput' ).openlayersinput( i, window.maps.openlayers_forminputs[i] );
+		for ( i in window.mwmaps.openlayers_forminputs ) {
+			jQuery( '#' + i + '_forminput' ).openlayersinput( i, window.mwmaps.openlayers_forminputs[i] );
 		}
 	}
 	else {
 		alert( mediaWiki.msg( 'maps-openlayers-incompatbrowser' ) );
 		
-		for ( i in window.maps.openlayers_forminputs ) {
+		for ( i in window.mwmaps.openlayers_forminputs ) {
 			jQuery( '#' + i + '_forminput' ).text( mediaWiki.msg( 'maps-load-failed' ) );
 		}
 	}	

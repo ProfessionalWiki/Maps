@@ -11,14 +11,14 @@
 
 jQuery(document).ready(function() {
 	if ( true ) {
-		for ( i in window.maps.yahoomaps_forminputs ) {
-			jQuery( '#' + i + '_forminput' ).yahoomapsinput( i, window.maps.yahoomaps_forminputs[i] );
+		for ( i in window.mwmaps.yahoomaps_forminputs ) {
+			jQuery( '#' + i + '_forminput' ).yahoomapsinput( i, window.mwmaps.yahoomaps_forminputs[i] );
 		}
 	}
 	else {
 		alert( mediaWiki.msg( 'maps-yahoomaps-incompatbrowser' ) );
 		
-		for ( i in window.maps.yahoomaps_forminputs ) {
+		for ( i in window.mwmaps.yahoomaps_forminputs ) {
 			jQuery( '#' + i + '_forminput' ).text( mediaWiki.msg( 'maps-load-failed' ) );
 		}
 	}	
