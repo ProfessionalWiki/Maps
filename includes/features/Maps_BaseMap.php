@@ -117,7 +117,7 @@ class MapsBaseMap {
 		
 		return Html::inlineScript(
 			MapsMapper::getBaseMapJSON( $this->service->getName() )
-			. "maps.{$this->service->getName()}.{$mapName}=" . FormatJson::encode( $object ) . ';'
+			. "mwmaps.{$this->service->getName()}.{$mapName}=" . FormatJson::encode( $object ) . ';'
 		);
 	}
 	

@@ -7,14 +7,14 @@
 
 jQuery(document).ready(function() {
 	if ( true ) {
-		for ( i in window.maps.yahoomaps ) {
-			jQuery( '#' + i ).yahoomaps( i, window.maps.yahoomaps[i] );
+		for ( i in window.mwmaps.yahoomaps ) {
+			jQuery( '#' + i ).yahoomaps( i, window.mwmaps.yahoomaps[i] );
 		}
 	}
 	else {
 		alert( mediaWiki.msg( 'maps-openlayers-incompatbrowser' ) );
 		
-		for ( i in window.maps.googlemaps3 ) {
+		for ( i in window.mwmaps.googlemaps3 ) {
 			jQuery( '#' + i ).text( mediaWiki.msg( 'maps-load-failed' ) );
 		}
 	}	

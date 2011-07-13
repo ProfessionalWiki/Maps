@@ -167,6 +167,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 # Other general configuration
 	
+	# When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
+	$egMapsDebugJS = false;
+	
 	# Namespace index start of the mapping namespaces.
 	$egMapsNamespaceIndex = 420;
 	

@@ -65,4 +65,19 @@ final class MapsHooks {
 		return true;
 	}
 	
+	/**
+	 * Adds global JavaScript variables.
+	 *
+	 * @since 1.0
+	 *
+	 * @param array &$vars
+	 *
+	 * @return true
+	 */
+	public static function onMakeGlobalVariablesScript( array &$vars ) {
+		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
+		
+		return true;
+	}
+	
 } 

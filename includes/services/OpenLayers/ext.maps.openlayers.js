@@ -20,14 +20,14 @@ jQuery(document).ready(function() {
 		
 		// OpenLayers.Lang.setCode( params.langCode );
 		
-		for ( i in window.maps.openlayers ) {
-			jQuery( '#' + i ).openlayers( i, window.maps.openlayers[i] );
+		for ( i in window.mwmaps.openlayers ) {
+			jQuery( '#' + i ).openlayers( i, window.mwmaps.openlayers[i] );
 		}
 	}
 	else {
 		alert( mediaWiki.msg( 'maps-openlayers-incompatbrowser' ) );
 		
-		for ( i in window.maps.googlemaps3 ) {
+		for ( i in window.mwmaps.googlemaps3 ) {
 			jQuery( '#' + i ).text( mediaWiki.msg( 'maps-load-failed' ) );
 		}
 	}	

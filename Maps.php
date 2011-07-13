@@ -152,6 +152,9 @@ $wgHooks['UnitTestsList'][] = 'MapsHooks::registerUnitTests';
 // Since 0.7.1
 $wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';	
 
+// Since 1.0
+$wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
+
 $egMapsFeatures = array();
 
 $egMapsFeatures['pf'][]	= 'MapsDisplayMap::initialize';
@@ -203,10 +206,10 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
 	# Registration of the KML layer type.
 	$wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
 
+# Mapping services
+	
 	# Include the mapping services that should be loaded into Maps.
 	# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
-	
-# Mapping services
 	
 	# Google Maps API v2
 	include_once $egMapsDir . 'includes/services/GoogleMaps/GoogleMaps.php';

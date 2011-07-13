@@ -173,12 +173,12 @@ final class MapsMapper {
 			$baseInit = true;
 			global $egMapsScriptPath;
 			$json .= 'var egMapsScriptPath =' . FormatJson::encode( $egMapsScriptPath ) . ';';
-			$json .= 'var maps={};';
+			$json .= 'var mwmaps={};';
 		}
 		
 		if ( !in_array( $serviceName, $serviceInit ) ) {
 			$serviceInit[] = $serviceName;
-			$json .= "maps.$serviceName={};";
+			$json .= "mwmaps.$serviceName={};";
 		}
 		
 		return $json;

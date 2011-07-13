@@ -128,8 +128,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		
 		$params['kml'] = new ListParameter( 'kml' );
 		$params['kml']->setDefault( array() );
-		//$params['kml']->addManipulations( new MapsParamFile() );	
 		$params['kml']->setDescription( wfMsg( 'maps-googlemaps3-par-kml' ) );
+		
+		$params['gkml'] = new ListParameter( 'gkml' );
+		$params['gkml']->setDefault( array() );
+		$params['gkml']->setDescription( wfMsg( 'maps-googlemaps3-par-gkml' ) );
 
 		$params['fusiontables'] = new ListParameter( 'fusiontables' );
 		$params['fusiontables']->setDefault( array() );

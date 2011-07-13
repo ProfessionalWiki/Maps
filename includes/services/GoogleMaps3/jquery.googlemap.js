@@ -111,10 +111,19 @@
 		markers.push( this.addMarker( options.locations[i] ) );
 	}
 	
-	// Code to add KML files.
-	for ( i = options.kml.length - 1; i >= 0; i-- ) {
-		var kmlLayer = new google.maps.KmlLayer( options.kml[i], { map: map } );
+	// Add the Google KML/KMZ layers.
+	for ( i = options.gkml.length - 1; i >= 0; i-- ) {
+		var kmlLayer = new google.maps.KmlLayer( options.gkml[i], { map: map } );
 	}
+	
+	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
+	mw.loader.using( 'ext.maps.gm3.geoxml', function() {
+		var geoXml = new geoXML3.parser( { map: map } );
+		
+		for ( i = options.kml.length - 1; i >= 0; i-- ) {
+			geoXml.parse( options.kml[i] );
+		}
+	} );
 	
 	for ( i = options.fusiontables.length - 1; i >= 0; i-- ) {
 		var ftLayer = new google.maps.FusionTablesLayer( options.fusiontables[i], { map: map } );

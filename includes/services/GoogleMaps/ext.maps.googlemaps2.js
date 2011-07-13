@@ -16,14 +16,14 @@ jQuery(document).ready(function() {
 	      	new GLayer("com.google.webcams")
 	    ];			
 		
-		for ( i in window.maps.googlemaps2 ) {
-			jQuery( '#' + i ).googlemaps2( window.maps.googlemaps2[i] );
+		for ( i in window.mwmaps.googlemaps2 ) {
+			jQuery( '#' + i ).googlemaps2( window.mwmaps.googlemaps2[i] );
 		}
 	}
 	else {
 		alert( mediaWiki.msg( 'maps-googlemaps2-incompatbrowser' ) );
 		
-		for ( i in window.maps.googlemaps2 ) {
+		for ( i in window.mwmaps.googlemaps2 ) {
 			jQuery( '#' + i ).text( mediaWiki.msg( 'maps-load-failed' ) );
 		}
 	}	
