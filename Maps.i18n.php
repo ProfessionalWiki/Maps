@@ -179,6 +179,7 @@ $1',
 	'maps-googlemaps3-par-typestyle' => 'The style of the type control.',
 	'maps-googlemaps3-par-autoinfowindows' => 'Automatically open all info windows after the page has loaded.',
 	'maps-googlemaps3-par-kml' => 'KML files to load onto the map.',
+	'maps-googlemaps3-par-gkml' => 'KML files hosted by Google to load onto the map.',
 	'maps-googlemaps3-par-fusiontables' => 'IDs of Google Fusion Tables which should be loaded onto the map.',
 
 	// OpenLayers
