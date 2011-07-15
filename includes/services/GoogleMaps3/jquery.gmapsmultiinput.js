@@ -9,7 +9,7 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $ ){ $.fn.gmapsmultiinput = function( mapDivId, options ) {
+(function( $, mw ){ $.fn.gmapsmultiinput = function( mapDivId, options ) {
 	var MAPFILES_URL = "http://maps.gstatic.com/intl/en_us/mapfiles/";
 	
 	var clickIcon = new google.maps.MarkerImage(
@@ -55,7 +55,7 @@
 	}
 	
 	table.append(
-		'<thead><tr class="ui-widget-header "><th colspan="2">' + mediaWiki.msg( 'semanticmaps-forminput-locations' ) + '</th></tr></thead><tbody>'
+		'<thead><tr class="ui-widget-header "><th colspan="2">' + mw.msg( 'semanticmaps-forminput-locations' ) + '</th></tr></thead><tbody>'
 	);
 	
 	var rowNr = options.locations.length;
@@ -68,7 +68,7 @@
 		'<tr id="' + mapDivId + '_addrow"><td width="300px">' +
 			'<input type="text" class="text ui-widget-content ui-corner-all" width="95%" id="' + mapDivId + '_addfield" />' +
 		'</td><td>' + 
-			'<button id="' + mapDivId + '_addbutton" mapid="' + mapDivId + '">' + mediaWiki.msg( 'semanticmaps-forminput-add' ) + '</button>' +
+			'<button id="' + mapDivId + '_addbutton" mapid="' + mapDivId + '">' + mw.msg( 'semanticmaps-forminput-add' ) + '</button>' +
 		'</td></tr></tbody>'
 	);
 	
@@ -290,7 +290,7 @@
 				coord.dms( lat, lon ) +
 			'</td><td>' + 
 				'<button class="forminput-remove" rowid="' + i + '" id="' + mapDivId + '_addbutton_' + i + '">' +
-					mediaWiki.msg( 'semanticmaps-forminput-remove' ) +
+					mw.msg( 'semanticmaps-forminput-remove' ) +
 				'</button>' + 
 			'</td></tr>'
 		);
@@ -314,4 +314,4 @@
 	
 	return this;
 	
-}; })( jQuery );
+}; })( jQuery, mediaWiki );

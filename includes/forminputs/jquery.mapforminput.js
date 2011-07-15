@@ -19,7 +19,7 @@
  * @licence GNU GPL v3
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
-(function( $ ){ $.fn.mapforminput = function( mapDivId, options ) {
+(function( $, mw ){ $.fn.mapforminput = function( mapDivId, options ) {
 	
 	var self = this;
 	
@@ -54,7 +54,7 @@
 		'size': options.fieldsize
 	} );
 	
-	var updateButton = $( '<button />' ).text( mediaWiki.msg( 'semanticmaps-updatemap' ) );
+	var updateButton = $( '<button />' ).text( mw.msg( 'semanticmaps-updatemap' ) );
 	
 	updateButton.click( function() {
 		var locations = coord.split( self.input.attr( 'value' ) );
@@ -77,13 +77,13 @@
 	this.geofield = $( '<input />' ).attr( {
 		'type': 'text',
 		'id': mapDivId + '_geofield',
-		'value': mediaWiki.msg( 'semanticmaps_enteraddresshere' ),
+		'value': mw.msg( 'semanticmaps_enteraddresshere' ),
 		'style': 'color: darkgray',
 		'size': options.fieldsize
 	} );
 	
 	this.geofield.focus( function() {
-		if ( this.value == mediaWiki.msg( 'semanticmaps_enteraddresshere' ) ) {
+		if ( this.value == mw.msg( 'semanticmaps_enteraddresshere' ) ) {
 			this.value = '';
 			$( this ).css( 'color', '' );
 		}
@@ -91,12 +91,12 @@
 	
 	this.geofield.blur( function() {
 		if ( this.value == '' ) {
-			this.value = mediaWiki.msg( 'semanticmaps_enteraddresshere' );
+			this.value = mw.msg( 'semanticmaps_enteraddresshere' );
 			$( this ).css( 'color', 'darkgray' );
 		}
 	} );
 	
-	var geoButton = $( '<button />' ).text( mediaWiki.msg( 'semanticmaps_lookupcoordinates' ) );
+	var geoButton = $( '<button />' ).text( mw.msg( 'semanticmaps_lookupcoordinates' ) );
 	
 	geoButton.click( function() {
 		self.geocodeAddress( self.geofield.attr( 'value' ) );
@@ -133,4 +133,4 @@
 	
 	return this;
 	
-}; })( jQuery );
+}; })( jQuery, mediaWiki );
