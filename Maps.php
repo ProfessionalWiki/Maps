@@ -132,7 +132,8 @@ $wgAutoloadClasses['MapsDisplayPoint'] 			= $phDir . 'Maps_DisplayPoint.php';
 $wgAutoloadClasses['MapsDistance'] 				= $phDir . 'Maps_Distance.php';
 $wgAutoloadClasses['MapsFinddestination'] 		= $phDir . 'Maps_Finddestination.php';
 $wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
-$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';	
+$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
+$wgAutoloadClasses['MapsMapsDoc'] 				= $phDir . 'Maps_MapsDoc.php';
 unset( $phDir );
 unset( $incDir );
 	
@@ -183,6 +184,9 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
 	# Required for #geodistance.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
 	$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';
+	# Required for #mapsdoc.
+	$wgHooks['ParserFirstCallInit'][] = 'MapsMapsDoc::staticInit';
+	$wgHooks['LanguageGetMagic'][] = 'MapsMapsDoc::staticMagic';
 	
 # Geocoders
 	
