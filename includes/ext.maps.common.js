@@ -8,7 +8,7 @@
  * @licence GNU GPL v3+
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
-window.maps = new ( function( $ ) {
+window.maps = new ( function( $, mw ) {
 	
 	this.log = function( message ) {
 		if ( mw.config.get( 'egMapsDebugJS' ) ) {
@@ -16,4 +16,4 @@ window.maps = new ( function( $ ) {
 		}
 	};
 	
-} )( jQuery );
+} )( jQuery, mediaWiki );
