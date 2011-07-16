@@ -72,6 +72,17 @@ final class SMMapper {
 	}
 	
 	/**
+	 * Explcitly define this method, so method_exists returns true in SMW.
+	 * 
+	 * @see SMWResultPrinter::getParameters
+	 * 
+	 * @since 1.0
+	 */
+	public function getValidatorParameters() {
+		return $this->queryPrinter->getValidatorParameters();
+	}
+	
+	/**
 	 * SMW thinks this class is a SMWResultPrinter, and calls methods that should
 	 * be forewarded to $this->queryPrinter on it.
 	 * 
