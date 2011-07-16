@@ -45,7 +45,7 @@ $messages['en'] = array(
 	'maps-mapsdoc-description' => 'Display a table with the parameters for a specified mapping service together with their default values and descriptions.',
 
 	// Mapsdoc parser hook
-	'maps-mapsdoc-par-service' =>, 'The mapping service to display parameter documentation for.',
+	'maps-mapsdoc-par-service' => 'The mapping service to display parameter documentation for.',
 	
 	// Coordinates parser hook
 	'maps-coordinates-par-location' => 'The coordinates you want to format.',
