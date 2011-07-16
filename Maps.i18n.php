@@ -359,6 +359,13 @@ $messages['az'] = array(
 	'maps_wikipedia' => 'Vikipediya',
 );
 
+/** Bavarian (Boarisch)
+ * @author Mucalexx
+ */
+$messages['bar'] = array(
+	'maps-loading-map' => 'Korten werd gloon ...',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
@@ -781,6 +788,8 @@ $messages['de'] = array(
 	'maps-finddestination-description' => 'Ein Ziel unter Angabe des Ausgangspunkts (kann in jedwedem unterstützten Format angegeben sein), der Peilung sowie der Entfernung ermitteln.',
 	'maps-geocode-description' => 'Aktiviert das Georeferenzieren von Adressen, also deren Umwandlung in Koordinaten. Mehrere Georeferenzierungsdienste werden unterstützt, was allerdings nicht mit den Kartografiediensten zu verwechseln ist.',
 	'maps-geodistance-description' => 'Berechne die Entfernung zwischen zwei Punkten von einer der unterstützten Einheiten in ihr Äquivalent einer anderen unterstützten Einheit.',
+	'maps-mapsdoc-description' => 'Zeigt eine Übersicht aller Parameter mitsamt deren Standardwerten einschließlich ihrer Beschreibung, die im Zusammenhang mit dem angegebenen Kartografiedienst genutzt werden können.',
+	'maps-mapsdoc-par-service' => 'Der Kartografiedienst zu dessen Parametern die Dokumentation angezeigt werden soll.',
 	'maps-coordinates-par-location' => 'Die zu formatierenden Koordinaten.',
 	'maps-coordinates-par-format' => 'Das Zielformat der Koordinaten.',
 	'maps-coordinates-par-directional' => 'Gibt an, ob die Koordinaten eine Richtungsangabe haben sollen oder nicht.',
@@ -1560,6 +1569,7 @@ $messages['he'] = array(
 	'validation-error-invalid-layers' => 'הפרמטר $1 צריך להיות שכבה תקינה אחת או יותר.',
 	'maps-layer-of-type' => 'שכבה מסוג $1',
 	'maps-layer-type-supported-by' => 'השכבה הזאת יכולה לעבוד רק עם {{PLURAL:$2|שירות המפות הבא|שירותי המפות הבאים}}: $1.',
+	'maps-coordinates-description' => 'מילת הפעלה לעיצוב נקודות ציון, מכל תסדיר נתמך לכל תסדיר נתמך.',
 	'maps-displaymap-description' => 'להציג מפות גאוגרפיות ללא שום סמנים מוגדרים בוויקי עליהן.',
 	'maps-displaypoint-description' => 'להציג מפות גאוגרפיות עם סמן מוגדר בוויקי אחד או יותר עליהן.',
 	'maps-distance-description' => 'להמיר את המרחק ביחידות נתמכות מסוימות לערך מתאים ביחידות אחרות.',
@@ -1578,8 +1588,18 @@ $messages['he'] = array(
 	'maps-finddestination-par-format' => 'באיזו תבנית לפלוט את היעד.',
 	'maps-finddestination-par-directional' => 'האם תבנית היעד צריכה להיות כיוונית או לא.',
 	'maps-finddestination-par-allowcoordinates' => 'האם לאפשר שימוש בקואורדינטות. אם לא, תתקבלנה רק כתובות.',
+	'maps-finddestination-par-geoservice' => 'שירות קידוד גאוגרפי לקידוד הערך במקרה שזו כתובת.',
+	'maps-finddestination-par-mappingservice' => 'פרמטר לציון שירות המפות שישמש עם הפונקציה הזאת.
+זה יאפשר למפות לדרוס את הערך ההתחלתי של פרמטר השירות בערך הטוב ביותר לשירות המפות.
+(דוגמה: במקרה של מפות גוגל, ישמש המקודד הגאוגרפי של גוגל.)',
 	'maps-geocode-par-location' => 'הכתובת שאתם רוצים לעשות לה קידוד גאוגרפי.',
 	'maps-geocode-par-mappingservice' => "שירות הקידוד הגאוגרפי שאתם רוצים להשתמש בו. ר' רשימת שירותי קידוד גאוגרפי.",
+	'maps-geocode-par-geoservice' => 'הפרמטר הזה מאפשר לציין שאתם משתמשים בבקשת הקידוד הגאוגרפי הזאת בצירוף שירות מיפוי מסוים.
+כל שירות מיפוי יכול לדרוס ערכי ברירת מחדל של שירות הקידוד הגאוגרפי.
+זה קורה מסיבות משפטיות, מאחר וניתן להשתמש בשירות הקידוד הגאוגרפי של גוגל רק עם מפות גוגל.
+הגדרה של הפרמטר הזה, אבל לא של מפרמט השירות, תבטיח שאתם לא משתמשים בצירוף לא תקין.',
+	'maps-geocode-par-allowcoordinates' => 'מאפשר כיבוי של תמיכה בנקודות ציון בפונקציה הזאת. צריך להיות כן או לא.
+אם הערך הוא לא, כל ערך צריך להיות מקודד גאוגרפית, גם נקודות ציון תקינות.',
 	'maps-geocode-par-format' => 'פורמט לקואורדינטות הסופיות.',
 	'maps-geocode-par-directional' => 'האם לפלוט את הקואורדינטות באופן כיווני או לא.',
 	'maps-geodistance-par-location1' => 'הנקודה הראשונה בקבוצה לחישוב מרחק.',
@@ -1610,8 +1630,8 @@ $messages['he'] = array(
 	'validation-error-invalid-distances' => 'הערך $1 צריך להיות מרחק תקין אחד או יותר.',
 	'validation-error-invalid-image' => 'הערך $1 צריך להיות קובץ תמונה תקין.',
 	'validation-error-invalid-images' => 'הערך $1 צריך להיות קובץ תמונה תקין אחד או יותר.',
-	'validation-error-invalid-goverlay' => 'הערך $1 צריך להיות שכבה תקינה.',
-	'validation-error-invalid-goverlays' => 'הערך $1 צריך להיות שכבה תקינה אחת או יותר.',
+	'validation-error-invalid-goverlay' => 'הערך $1 צריך להיות שכבת כיסוי תקינה.',
+	'validation-error-invalid-goverlays' => 'הערך $1 צריך להיות שכבת כיסוי תקינה אחת או יותר.',
 	'maps-abb-north' => 'צפ׳',
 	'maps-abb-east' => 'מז׳',
 	'maps-abb-south' => 'דר׳',
@@ -1630,13 +1650,42 @@ $1',
 	'maps-geocoder-not-available' => 'הקידוד הגאוגרפי של מפות אינו זמין. לא ניתן לקודד את המיקום שנבחר.',
 	'maps_click_to_activate' => 'יש ללחוץ כדי להפעיל את המפה',
 	'maps_centred_on' => 'המפה ממורכזת סביב $1,$2',
+	'maps-par-resizable' => 'מאפשר שינוי גודל מפה באמצעות גרירת הפינה שלה.',
+	'maps-par-geoservice' => 'באיזה שירות קידוד גאוגרפי להשתמש כדי לתרגם בין כתובות ונקודות ציון.',
+	'maps-par-zoom' => 'רמת התקריב של המפה. למפות עם סמנים ברירת המחדל תהיה רמת תקריב גבוהה ביותר שמציגה את כל הסמנים.',
+	'maps-par-width' => 'לאפשר הגדרת רוחב המפה. ברירת המחדל היא שהיחידה תהיה פיקסל, אבל אפשר להגדיר במפורש אחת מהיחידות הבאות: px, ex, em, %.',
+	'maps-par-height' => 'לאפשר הגדרת גובה המפה. ברירת המחדל היא שהיחידה תהיה פיקסל, אבל אפשר להגדיר במפורש אחת מהיחידות הבאות: px, ex, em, %.',
 	'maps-googlemaps2-incompatbrowser' => 'הדפדפן שלך לא תומך בגוגל מפות גרסה 2.',
-	'maps_overlays' => 'שכבות',
+	'maps_overlays' => 'שכבות כיסוי',
 	'maps_photos' => 'תמונות',
 	'maps_videos' => 'סרטוני וידאו',
 	'maps_wikipedia' => 'ויקיפדיה',
 	'maps_webcams' => 'מצלמות אינטרנט',
+	'maps-googlemaps2-par-type' => 'איזה סוג מפה להציג תחילה.',
+	'maps-googlemaps2-par-types' => 'סוגי המפות שיהיו זמינים דרך בקר הסוג.',
+	'maps-googlemaps2-par-controls' => 'אילו בקרים להציב על המפה.',
+	'maps-googlemaps2-par-autozoom' => 'להפעיל גלילה באמצעות גלגל העכבר.',
+	'maps-googlemaps2-par-kml' => 'אילו קבצי KML לטעון אל המפה.',
+	'maps-googlemaps2-par-overlays' => 'אילו שכבות כיסוי המשתמש יכול להפעיל.',
 	'maps-googlemaps3-incompatbrowser' => 'הדפדפן שלך לא תומך בגוגל מפות גרסה 3.',
+	'maps-googlemaps3-par-type' => 'סוג המפה שיוצג תחילה.',
+	'maps-googlemaps3-par-types' => 'סוגי המפה שיהיו זמינים דרך בקר הסוג.',
+	'maps-googlemaps3-par-layers' => 'שכבות מיוחדות שייטענו אל המפה.',
+	'maps-googlemaps3-par-controls' => 'אילו בקרים להציב על המפה.',
+	'maps-googlemaps3-par-zoomstyle' => 'סגנון בקר התקריב.',
+	'maps-googlemaps3-par-typestyle' => 'סגנון בקר הסוג.',
+	'maps-googlemaps3-par-autoinfowindows' => 'לפתוח את כל חלונות המידע אחרי שהדף נטען.',
+	'maps-googlemaps3-par-kml' => 'קבצי KML שייטענו אל המפה.',
+	'maps-googlemaps3-par-gkml' => 'קבצי KML שמתארחים בגוגל וייטענו אל המפה.',
+	'maps-googlemaps3-par-fusiontables' => 'מזהים של Google Fusion Tables שייטענו אל המפה.',
+	'maps-openlayers-par-controls' => 'אילו בקרים להציב על המפה.',
+	'maps-openlayers-par-layers' => 'אילו שכבות יהיו זמינות בבוחר השכבות. השכבה הראשונה תוצג כאשר המפה נטענת.',
+	'maps-osm-par-thumbs' => 'להציג תמונות ממוזערות.',
+	'maps-osm-par-photos' => 'להציג צילומים',
+	'maps-yahoomaps-par-type' => 'איזה סוג מפה להציג תחילה.',
+	'maps-yahoomaps-par-types' => 'סוגי המפה שיהיו זמינים דרך בקר הסוג.',
+	'maps-yahoomaps-par-controls' => 'אילו בקרים להציב על המפה.',
+	'maps-yahoomaps-par-autozoom' => 'להפעיל גלילה באמצעות גלגל העכבר.',
 );
 
 /** Hindi (हिन्दी) */
