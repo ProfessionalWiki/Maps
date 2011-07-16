@@ -12,7 +12,7 @@
  * @licence GNU GPL v3
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsMapsDOc extends ParserHook {
+class MapsMapsDoc extends ParserHook {
 	
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
@@ -119,7 +119,7 @@ class MapsMapsDOc extends ParserHook {
 
 			$table = implode( "\n|-\n", $tableRows );
 
-			$table = "$h3\n\n" .
+			$table = 
 					'{| class="wikitable sortable"' . "\n" .
 					$table .
 					"\n|}";

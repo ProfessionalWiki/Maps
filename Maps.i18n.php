@@ -42,7 +42,11 @@ $messages['en'] = array(
 	'maps-finddestination-description' => 'Find a destination given a starting point (that can be in any of the supported formats), an initial bearing and a distance.',
 	'maps-geocode-description' => 'Enables the geocoding of addresses, in other words, turning human readable locations into sets of coordinates. There is support for several geocoding services, which should not be confused with mapping services.',
 	'maps-geodistance-description' => 'Calculate the geographical distance between two points, from and to any of the supported formats.',
+	'maps-mapsdoc-description' => 'Display a table with the parameters for a specified mapping service together with their default values and descriptions.',
 
+	// Mapsdoc parser hook
+	'maps-mapsdoc-par-service' =>, 'The mapping service to display parameter documentation for.',
+	
 	// Coordinates parser hook
 	'maps-coordinates-par-location' => 'The coordinates you want to format.',
 	'maps-coordinates-par-format' => 'The target format for the coordinates.',
