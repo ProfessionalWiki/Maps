@@ -536,6 +536,7 @@ $messages['ja'] = array(
 	'semanticmaps-default-kml-pagelink' => 'ページ$1を表示',
 	'semanticmaps_lookupcoordinates' => '座標を調べる',
 	'semanticmaps_enteraddresshere' => '住所をここに入力します',
+	'semanticmaps-updatemap' => '地図を更新',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -623,6 +624,7 @@ $messages['ml'] = array(
  */
 $messages['ms'] = array(
 	'semanticmaps-forminput-remove' => 'Buang',
+	'semanticmaps-forminput-add' => 'Tambahkan',
 	'semanticmaps-forminput-locations' => 'Lokasi',
 );
 
