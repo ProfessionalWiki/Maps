@@ -424,7 +424,7 @@ class SMQueryHandler {
 	protected function buildLocationsList( array $locations, $title, $text, $icon, array $properties ) {
 		if ( $this->template ) {
 			global $wgParser;
-			$parser = $wgParser;
+			$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
 		}
 		else {
 			$text .= implode( '<br />', $properties );
