@@ -284,7 +284,6 @@ class SMMapPrinter extends SMWResultPrinter {
 	protected function handleMarkerData( array &$params, array $queryLocations ) {
 		global $wgParser;
 
-		$parserClone = clone $wgParser;		
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$params['locations'] = array();
 
@@ -292,8 +291,8 @@ class SMMapPrinter extends SMWResultPrinter {
 			if ( $location->isValid() ) {
 				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl );
 				
-				$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
-				$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
+				$jsonObj['title'] = $wgParser->parse( $jsonObj['title'], $wgParser->getTitle(), new ParserOptions() )->getText();
+				$jsonObj['text'] = $wgParser->parse( $jsonObj['text'], $wgParser->getTitle(), new ParserOptions() )->getText();
 				
 				$hasTitleAndtext = $jsonObj['title'] != '' && $jsonObj['text'] != '';
 				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
