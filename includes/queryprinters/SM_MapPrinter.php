@@ -254,7 +254,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		
 		return Html::inlineScript(
 			MapsMapper::getBaseMapJSON( $this->service->getName() )
-			. "maps.{$this->service->getName()}.{$mapName}=" . json_encode( $object ) . ';'
+			. "mwmaps.{$this->service->getName()}.{$mapName}=" . json_encode( $object ) . ';'
 		);
 	}
 	
