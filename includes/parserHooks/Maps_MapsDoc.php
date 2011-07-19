@@ -15,6 +15,15 @@
 class MapsMapsDoc extends ParserHook {
 	
 	/**
+	 * Field to store the value of the language parameter.
+	 * 
+	 * @since 1.0.1
+	 * 
+	 * @var string
+	 */
+	protected $language;
+	
+	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
 	 */
@@ -57,7 +66,12 @@ class MapsMapsDoc extends ParserHook {
 		
 		$params['service'] = new Parameter( 'service' );
 		$params['service']->addCriteria( new CriterionInArray( $GLOBALS['egMapsAvailableServices'] ) );
-		$params['service']->setDescription( wfMsg( 'maps-mapsdoc-par-service' ) );
+		$params['service']->setDescription( wfMsgForContent( 'maps-mapsdoc-par-service' ) );
+		
+		$params['language'] = new Parameter( 'language' );
+		$params['language']->setDefault( $GLOBALS['wgLanguageCode'] );
+		//$params['language']->addCriteria( new CriterionInArray(  ) );
+		$params['language']->setDescription( wfMsgForContent( 'maps-mapsdoc-par-language' ) );
 		
 		return $params;
 	}
@@ -71,7 +85,7 @@ class MapsMapsDoc extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'service' );
+		return array( 'service', 'language' );
 	}
 	
 	/**
@@ -85,9 +99,24 @@ class MapsMapsDoc extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
+		$this->language = $parameters['language'];
+		
 		$params = $this->getServiceParameters( $parameters['service'] );
 		
 		return $this->getParameterTable( $params );		
+	}
+	
+	/**
+	 * Message function that takes into account the language parameter.
+	 * 
+	 * @since 1.0.1
+	 * 
+	 * @param string $key
+	 * 
+	 * @return string
+	 */
+	protected function msg( $key ) {
+		return wfMsgReal( $key, array(), true, $this->language );
 	}
 	
 	/**
@@ -110,11 +139,11 @@ class MapsMapsDoc extends ParserHook {
 
 		if ( count( $tableRows ) > 0 ) {
 			$tableRows = array_merge( array(
-			'!' . wfMsg( 'validator-describe-header-parameter' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-aliases' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-type' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-default' ) ."\n" .
-			'!' . wfMsg( 'validator-describe-header-description' )
+			'!' . $this->msg( 'validator-describe-header-parameter' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-aliases' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-type' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-default' ) ."\n" .
+			'!' . $this->msg( 'validator-describe-header-description' )
 			), $tableRows );
 
 			$table = implode( "\n|-\n", $tableRows );
@@ -146,7 +175,7 @@ class MapsMapsDoc extends ParserHook {
 
 		$type = $parameter->getTypeMessage();
 
-		$default = $parameter->isRequired() ? "''" . wfMsg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
+		$default = $parameter->isRequired() ? "''" . $this->msg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
 		if ( is_array( $default ) ) {
 			$default = implode( ', ', $default );
 		}
@@ -154,7 +183,7 @@ class MapsMapsDoc extends ParserHook {
 			$default = $default ? 'yes' : 'no';
 		}
 		
-		if ( $default === '' ) $default = "''" . wfMsg( 'validator-describe-empty' ) . "''";
+		if ( $default === '' ) $default = "''" . $this->msg( 'validator-describe-empty' ) . "''";
 
 		return <<<EOT
 | {$parameter->getName()}

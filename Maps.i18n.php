@@ -46,6 +46,7 @@ $messages['en'] = array(
 
 	// Mapsdoc parser hook
 	'maps-mapsdoc-par-service' => 'The mapping service to display parameter documentation for.',
+	'maps-mapsdoc-par-language' => 'The language in which to display the documentation. If no such translation is available, English will be used instead.',
 	
 	// Coordinates parser hook
 	'maps-coordinates-par-location' => 'The coordinates you want to format.',
