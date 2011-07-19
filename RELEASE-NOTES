@@ -27,6 +27,8 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed PostGres support for distance queries.
 
+* Use of the DataItems introduces in Semantic MediaWiki 1.6.
+
 === Semantic Maps 0.7.3 ===
 (2010-11-30)
 
