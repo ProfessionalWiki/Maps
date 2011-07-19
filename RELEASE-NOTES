@@ -28,6 +28,8 @@ This version branched from Maps 0.7.x at version 0.7.3.
 
 * Removed overlays parameter for Google Maps v2.
 
+* Removed the previously deprecated "display map", "display point" and "display points" parser hooks. Use their underscored equivalents, ie "display_map".
+
 ==== Internal improvements ====
 
 * Usage of the Resource Loader for all scripts and stylesheets.
