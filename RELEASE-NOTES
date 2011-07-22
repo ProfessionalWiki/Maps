@@ -10,7 +10,7 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 === Semantic Maps 1.0.1 ===
 (2011-xx-xx)
 
-* 
+* Fixed handling of the semantic link caption in the geographical coordinate datavalue class. 
 
 === Semantic Maps 1.0 ===
 (2011-07-19)
