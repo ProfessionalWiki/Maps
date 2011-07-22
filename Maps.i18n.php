@@ -1306,6 +1306,8 @@ $messages['frp'] = array(
 	'maps-layer-property' => 'Propriètât',
 	'maps-layer-value' => 'Valor',
 	'maps-layer-errors' => 'Èrrors',
+	'validation-error-invalid-layer' => 'Lo paramètre $1 dêt étre una cuche valida.',
+	'validation-error-invalid-layers' => 'Lo paramètre $1 dêt étre yona ou ben un mouél de cuches valides.',
 	'maps-layer-of-type' => 'Cuche de tipo $1',
 	'maps-abb-north' => 'B',
 	'maps-abb-east' => 'L',
@@ -2640,6 +2642,7 @@ $messages['nah'] = array(
 
 /** Dutch (Nederlands)
  * @author Kjell
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -2668,6 +2671,7 @@ $messages['nl'] = array(
 	'maps-finddestination-description' => 'Een bestemming vinden via een gegeven beginpunt (in elke ondersteunde notatie), een richting en een afstand.',
 	'maps-geocode-description' => 'Maakt het geocoderen van adressen mogelijk, dat wil zeggen dat leesbare locaties worden omgezet in verzamelingen coördinaten. Er is ondersteuning voor verschillende geocoderingsdiensten die niet verward moeten worden met kaartdiensten.',
 	'maps-geodistance-description' => 'De geografische afstand tussen twee punten berekenen, van en naar alle ondersteunde notaties.',
+	'maps-mapsdoc-par-language' => 'De taal waarin de documentatie wordt weergegeven. Indien er geen vertaling beschikbaar is, wordt Engels in de plaats gebruikt.',
 	'maps-coordinates-par-location' => 'De op te maken coördinaten.',
 	'maps-coordinates-par-format' => 'Gewenste notatie voor de coördinaten.',
 	'maps-coordinates-par-directional' => 'Geeft aan of de coördinaten wel of niet directioneel uitgestuurd moeten worden.',
