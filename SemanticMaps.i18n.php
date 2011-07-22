@@ -714,10 +714,10 @@ $messages['pms'] = array(
 	'semanticmaps-forminput-remove' => 'Gava',
 	'semanticmaps-forminput-add' => 'Gionta',
 	'semanticmaps-forminput-locations' => 'Locassion',
-	'semanticmaps-par-staticlocations' => 'Na lista ëd ocassion da gionté a la carta ansema con ij dat ciamà. Com con dispay_points, it peule gionté un tìtol, descrission e icon-a për locassion an dovrand la tilde "~" com separador.',
-	'semanticmaps-par-forceshow' => 'Mosta la carta ëdcò quand a-i son pa locassion da mosté?',
-	'semanticmaps-par-showtitle' => "Mosta un tìtol ant a fnesta d'anformassion dël marcador o no. Disabilité sòn-sì a l'é ùtil soens quand as dòvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
-	'semanticmaps-par-centre' => "Ël sénter ëd la carta. Quand a l'é pa dàit, la carta a troverà automaticament ël sénter otimal për mosté tùit ij marcador an sla carta.",
+	'semanticmaps-par-staticlocations' => 'Na lista ëd locassion da gionté a la carta ansema ai dat ciamà. Com con dispay_points, a peul gionté un tìtol, na descrission e na plancia për locassion an dovrand la tilde "~" com separator.',
+	'semanticmaps-par-forceshow' => 'Mostré la carta ëdcò quand a-i son pa ëd locassion da mostré?',
+	'semanticmaps-par-showtitle' => "Smon-e un tìtol ant la fnesta d'anformassion dël marcator opura nò. La disabilitassion ëd sòn a l'é soens ùtil quand as deuvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
+	'semanticmaps-par-centre' => "Ël sènter ëd la carta. Quand a l'é pa dàit, la carta a trovrà automaticament ël sènter otimal për smon-e tùit ij marcador an sla carta.",
 	'semanticmaps-par-template' => "Në stamp da dovré për formaté ij contnù dla fnesta d'anformassion.",
 );
 
