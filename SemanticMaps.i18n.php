@@ -196,12 +196,15 @@ $messages['ca'] = array(
 	'semanticmaps-loading-forminput' => "Carregant formulari d'entrada del mapa...",
 	'semanticmaps_lookupcoordinates' => 'Consulta les coordenades',
 	'semanticmaps_enteraddresshere' => 'Introduïu una adreça a continuació',
-	'semanticmaps-updatemap' => 'Actualitzar mapa',
-	'semanticmaps-forminput-remove' => 'Suprimir',
-	'semanticmaps-forminput-add' => 'Afegir',
+	'semanticmaps-updatemap' => 'Actualitza el mapa',
+	'semanticmaps-forminput-remove' => 'Suprimeix',
+	'semanticmaps-forminput-add' => 'Afegeix',
 	'semanticmaps-forminput-locations' => 'Ubicacions',
 	'semanticmaps-par-staticlocations' => "Una llista d'ubicacions per afegir al mapa juntament amb les dades consultades. Com amb 'display_points', s'hi pot afegir un títol, una descripció i una icona per a cada ubicació fent servir el signe \"~\" com a separador.",
-	'semanticmaps-par-forceshow' => 'Mostrar el mapa fins i tot quan no hi ha ubicacions a mostrar?',
+	'semanticmaps-par-forceshow' => 'Es mostra el mapa fins i tot quan no hi ha ubicacions a mostrar?',
+	'semanticmaps-par-showtitle' => "Es mostra o no un títol en la finestra d'informació del marcador. Inhabilitar-ho sovint és útil quan s'utilitza una plantilla per donar format al contingut de la finestra d'informació.",
+	'semanticmaps-par-centre' => 'El centre del mapa. Quan no es proporciona, el map triarà automàticament el centre òptim per mostrar tots els marcadors al mapa.',
+	'semanticmaps-par-template' => "Una plantilla que s'utilitza per dona format al contingut de la finestra d'informació.",
 );
 
 /** Czech (Česky)
