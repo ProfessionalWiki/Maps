@@ -61,13 +61,13 @@ class MapsDisplayMap extends ParserHook {
 		
 		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_map'] );
 		$params['mappingservice']->addManipulations( new MapsParamService( 'display_map' ) );
-		$params['mappingservice']->setDescription( wfMsg( 'maps-displaymap-par-mappingservice' ) );
+		$params['mappingservice']->setMessage( 'maps-displaymap-par-mappingservice' );
 		
 		$params['coordinates'] = new Parameter( 'coordinates' );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation() );
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
-		$params['coordinates']->setDescription( wfMsg( 'maps-displaymap-par-coordinates' ) );
+		$params['coordinates']->setMessage( 'maps-displaymap-par-coordinates' );
 		$params['coordinates']->setDoManipulationOfDefault( false );
 		$manipulation = new MapsParamLocation();
 		$manipulation->toJSONObj = true;
@@ -124,12 +124,12 @@ class MapsDisplayMap extends ParserHook {
 	}
 
 	/**
-	 * @see ParserHook::getDescription()
+	 * @see ParserHook::getMessage()
 	 * 
 	 * @since 1.0
 	 */
-	public function getDescription() {
-		return wfMsg( 'maps-displaymap-description' );
+	public function getMessage() {
+		return 'maps-displaymap-description';
 	}		
 	
 }

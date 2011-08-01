@@ -61,7 +61,7 @@ class MapsGeocode extends ParserHook {
 		$params['location'] = new Parameter( 'location' );
 		$params['location']->addDependencies( 'mappingservice', 'geoservice' );
 		$params['location']->addCriteria( new CriterionIsLocation() );	
-		$params['location']->setDescription( wfMsg( 'maps-geocode-par-location' ) );
+		$params['location']->setMessage( 'maps-geocode-par-location' );
 		
 		$params['mappingservice'] = new Parameter(
 			'mappingservice', 
@@ -73,7 +73,7 @@ class MapsGeocode extends ParserHook {
 			)
 		);
 		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['mappingservice']->setDescription( wfMsg( 'maps-geocode-par-mappingservice' ) );
+		$params['mappingservice']->setMessage( 'maps-geocode-par-mappingservice' );
 		
 		$params['geoservice'] = new Parameter(
 			'geoservice', 
@@ -85,14 +85,14 @@ class MapsGeocode extends ParserHook {
 			)
 		);	
 		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
-		$params['geoservice']->setDescription( wfMsg( 'maps-geocode-par-geoservice' ) );
+		$params['geoservice']->setMessage( 'maps-geocode-par-geoservice' );
 		
 		$params['allowcoordinates'] = new Parameter(
 			'allowcoordinates', 
 			Parameter::TYPE_BOOLEAN,
 			$egMapsAllowCoordsGeocoding
 		);
-		$params['allowcoordinates']->setDescription( wfMsg( 'maps-geocode-par-allowcoordinates' ) );
+		$params['allowcoordinates']->setMessage( 'maps-geocode-par-allowcoordinates' );
 		
 		$params['format'] = new Parameter(
 			'format',
@@ -104,14 +104,14 @@ class MapsGeocode extends ParserHook {
 			)	
 		);
 		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );		
-		$params['format']->setDescription( wfMsg( 'maps-geocode-par-format' ) );
+		$params['format']->setMessage( 'maps-geocode-par-format' );
 		
 		$params['directional'] = new Parameter(
 			'directional',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsCoordinateDirectional			
 		);		
-		$params['directional']->setDescription( wfMsg( 'maps-geocode-par-directional' ) );
+		$params['directional']->setMessage( 'maps-geocode-par-directional' );
 		
 		return $params;
 	}
@@ -159,12 +159,12 @@ class MapsGeocode extends ParserHook {
 	}
 
 	/**
-	 * @see ParserHook::getDescription()
+	 * @see ParserHook::getMessage()
 	 * 
 	 * @since 1.0
 	 */
-	public function getDescription() {
-		return wfMsg( 'maps-geocode-description' );
+	public function getMessage() {
+		return 'maps-geocode-description';
 	}		
 	
 }

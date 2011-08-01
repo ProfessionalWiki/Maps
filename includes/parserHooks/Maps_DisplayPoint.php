@@ -57,24 +57,24 @@ class MapsDisplayPoint extends ParserHook {
 		
 		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_point'] );
 		$params['mappingservice']->addManipulations( new MapsParamService( 'display_point' ) );
-		$params['mappingservice']->setDescription( wfMsg( 'maps-displaypoints-par-mappingservice' ) );
+		$params['mappingservice']->setMessage( 'maps-displaypoints-par-mappingservice' );
 		
 		$params['zoom']->addDependencies( 'coordinates', 'mappingservice' );
 		$params['zoom']->addManipulations( new MapsParamZoom() );
-		$params['zoom']->setDescription( wfMsg( 'maps-displaypoints-par-zoom' ) );
+		$params['zoom']->setMessage( 'maps-displaypoints-par-zoom' );
 		
 		$params['coordinates'] = new ListParameter( 'coordinates', $type === ParserHook::TYPE_FUNCTION ? ';' : "\n" );
 		$params['coordinates']->addAliases( 'coords', 'location', 'address', 'addresses', 'locations' );
 		$params['coordinates']->addCriteria( new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
 		$params['coordinates']->addManipulations( new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );		
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
-		$params['coordinates']->setDescription( wfMsg( 'maps-displaypoints-par-coordinates' ) );
+		$params['coordinates']->setMessage( 'maps-displaypoints-par-coordinates' );
 		
 		$params['centre'] = new Parameter( 'centre' );
 		$params['centre']->setDefault( false );
 		$params['centre']->addAliases( 'center' );
 		$params['centre']->addCriteria( new CriterionIsLocation() );
-		$params['centre']->setDescription( wfMsg( 'maps-displaypoints-par-centre' ) );
+		$params['centre']->setMessage( 'maps-displaypoints-par-centre' );
 		$params['centre']->setDoManipulationOfDefault( false );
 		$manipulation = new MapsParamLocation();
 		$manipulation->toJSONObj = true;
@@ -85,7 +85,7 @@ class MapsDisplayPoint extends ParserHook {
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
-		$params['title']->setDescription( wfMsg( 'maps-displaypoints-par-title' ) );
+		$params['title']->setMessage( 'maps-displaypoints-par-title' );
 		
 		$params['label'] = new Parameter(
 			'label',
@@ -93,7 +93,7 @@ class MapsDisplayPoint extends ParserHook {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
-		$params['label']->setDescription( wfMsg( 'maps-displaypoints-par-label' ) );
+		$params['label']->setMessage( 'maps-displaypoints-par-label' );
 		
 		$params['icon'] = new Parameter(
 			'icon',
@@ -104,7 +104,7 @@ class MapsDisplayPoint extends ParserHook {
 				New CriterionNotEmpty()
 			)
 		);	
-		$params['icon']->setDescription( wfMsg( 'maps-displaypoints-par-icon' ) );
+		$params['icon']->setMessage( 'maps-displaypoints-par-icon' );
 		
 		return $params;
 	}
@@ -157,12 +157,12 @@ class MapsDisplayPoint extends ParserHook {
 	}	
 
 	/**
-	 * @see ParserHook::getDescription()
+	 * @see ParserHook::getMessage()
 	 * 
 	 * @since 1.0
 	 */
-	public function getDescription() {
-		return wfMsg( 'maps-displaypoint-description' );
+	public function getMessage() {
+		return 'maps-displaypoint-description';
 	}		
 	
 }

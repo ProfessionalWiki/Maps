@@ -67,7 +67,7 @@ class MapsCoordinates extends ParserHook {
 				new CriterionIsLocation(),
 			)	
 		);
-		$params['location']->setDescription( wfMsg( 'maps-coordinates-par-location' ) );
+		$params['location']->setMessage( 'maps-coordinates-par-location' );
 		
 		$params['format'] = new Parameter(
 			'format',
@@ -79,14 +79,14 @@ class MapsCoordinates extends ParserHook {
 			)			
 		);	
 		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['format']->setDescription( wfMsg( 'maps-coordinates-par-format' ) );
+		$params['format']->setMessage( 'maps-coordinates-par-format' );
 		
 		$params['directional'] = new Parameter(
 			'directional',
 			Parameter::TYPE_BOOLEAN,
 			$egMapsCoordinateDirectional			
 		);
-		$params['directional']->setDescription( wfMsg( 'maps-coordinates-par-directional' ) );
+		$params['directional']->setMessage( 'maps-coordinates-par-directional' );
 		
 		return $params;
 	}
@@ -127,12 +127,12 @@ class MapsCoordinates extends ParserHook {
 	}
 	
 	/**
-	 * @see ParserHook::getDescription()
+	 * @see ParserHook::getMessage()
 	 * 
 	 * @since 1.0
 	 */
-	public function getDescription() {
-		return wfMsg( 'maps-coordinates-description' );
+	public function getMessage() {
+		return 'maps-coordinates-description';
 	}	
 	
 }
