@@ -66,12 +66,11 @@ class MapsMapsDoc extends ParserHook {
 		
 		$params['service'] = new Parameter( 'service' );
 		$params['service']->addCriteria( new CriterionInArray( $GLOBALS['egMapsAvailableServices'] ) );
-		$params['service']->setDescription( wfMsgForContent( 'maps-mapsdoc-par-service' ) );
+		$params['service']->setMessage( 'maps-mapsdoc-par-service' );
 		
 		$params['language'] = new Parameter( 'language' );
 		$params['language']->setDefault( $GLOBALS['wgLanguageCode'] );
-		//$params['language']->addCriteria( new CriterionInArray(  ) );
-		$params['language']->setDescription( wfMsgForContent( 'maps-mapsdoc-par-language' ) );
+		$params['language']->setMessage( 'maps-mapsdoc-par-language' );
 		
 		return $params;
 	}
@@ -112,11 +111,14 @@ class MapsMapsDoc extends ParserHook {
 	 * @since 1.0.1
 	 * 
 	 * @param string $key
+	 * @param array $args
 	 * 
 	 * @return string
 	 */
 	protected function msg( $key ) {
-		return wfMsgReal( $key, array(), true, $this->language );
+		$args = func_get_args();
+		$key = array_shift( $args );
+		return wfMsgReal( $key, $args, true, $this->language );
 	}
 	
 	/**
@@ -140,7 +142,7 @@ class MapsMapsDoc extends ParserHook {
 		if ( count( $tableRows ) > 0 ) {
 			$tableRows = array_merge( array(
 			'!' . $this->msg( 'validator-describe-header-parameter' ) ."\n" .
-			'!' . $this->msg( 'validator-describe-header-aliases' ) ."\n" .
+			//'!' . $this->msg( 'validator-describe-header-aliases' ) ."\n" .
 			'!' . $this->msg( 'validator-describe-header-type' ) ."\n" .
 			'!' . $this->msg( 'validator-describe-header-default' ) ."\n" .
 			'!' . $this->msg( 'validator-describe-header-description' )
@@ -167,11 +169,17 @@ class MapsMapsDoc extends ParserHook {
 	 * @return string
 	 */
 	protected function getDescriptionRow( Parameter $parameter ) {
-		$aliases = $parameter->getAliases();
-		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
+//		$aliases = $parameter->getAliases();
+//		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
 
-		$description = $parameter->getDescription();
-		if ( $description === false ) $description = '-';
+		$description = $parameter->getMessage();
+		if ( $description === false ) {
+			$description = $parameter->getDescription();
+			if ( $description === false ) $description = '-';
+		}
+		else {
+			$description = $this->msg( $description );
+		}
 
 		$type = $parameter->getTypeMessage();
 
@@ -187,7 +195,6 @@ class MapsMapsDoc extends ParserHook {
 
 		return <<<EOT
 | {$parameter->getName()}
-| {$aliases}
 | {$type}
 | {$default}
 | {$description}
@@ -200,7 +207,7 @@ EOT;
 		$params = array();
 		
 		$params['zoom'] = new Parameter( 'zoom',  Parameter::TYPE_INTEGER );
-		$params['zoom']->setDescription( wfMsg( 'maps-par-zoom' ) );
+		$params['zoom']->setMessage( 'maps-par-zoom' );
 		
 		$service->addParameterInfo( $params );	
 
@@ -212,8 +219,8 @@ EOT;
 	 * 
 	 * @since 1.0
 	 */
-	public function getDescription() {
-		return wfMsg( 'maps-mapsdoc-description' );
+	public function getMessage() {
+		return 'maps-mapsdoc-description';
 	}	
 	
 }
