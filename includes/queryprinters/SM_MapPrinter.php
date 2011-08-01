@@ -93,7 +93,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
 		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );		
 		$params['staticlocations']->setDefault( array() );
-		$params['staticlocations']->setDescription( wfMsg( 'semanticmaps-par-staticlocations' ) );
+		$params['staticlocations']->setMessage( 'semanticmaps-par-staticlocations' );
 		
 		$params['centre'] = new Parameter( 'centre' );
 		$params['centre']->setDefault( false );
@@ -103,7 +103,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		$manipulation = new MapsParamLocation();
 		$manipulation->toJSONObj = true;
 		$params['centre']->addManipulations( $manipulation );
-		$params['centre']->setDescription( wfMsg( 'semanticmaps-par-centre' ) );
+		$params['centre']->setMessage( 'semanticmaps-par-centre' );
 		
 		$params['icon'] = new Parameter(
 			'icon',
@@ -114,7 +114,7 @@ class SMMapPrinter extends SMWResultPrinter {
 				New CriterionNotEmpty()
 			)
 		);
-		$params['icon']->setDescription( wfMsg( 'maps-displaypoints-par-icon' ) );
+		$params['icon']->setMessage( 'maps-displaypoints-par-icon' );
 		
 		$params['forceshow'] = new Parameter(
 			'forceshow',
@@ -122,7 +122,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$smgQPForceShow,
 			array( 'force show' )
 		);
-		$params['forceshow']->setDescription( wfMsg( 'semanticmaps-par-forceshow' ) );
+		$params['forceshow']->setMessage( 'semanticmaps-par-forceshow' );
 
 		$params['showtitle'] = new Parameter(
 			'showtitle',
@@ -130,7 +130,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$smgQPShowTitle,
 			array( 'show title' )
 		);
-		$params['showtitle']->setDescription( wfMsg( 'semanticmaps-par-showtitle' ) );
+		$params['showtitle']->setMessage( 'semanticmaps-par-showtitle' );
 		
 		$params['template'] = new Parameter(
 			'template',
@@ -142,14 +142,14 @@ class SMMapPrinter extends SMWResultPrinter {
 			)
 		);
 		$params['template']->setDoManipulationOfDefault( false );
-		$params['template']->setDescription( wfMsg( 'semanticmaps-par-template' ) );
+		$params['template']->setMessage( 'semanticmaps-par-template' );
 		
 		$params['title'] = new Parameter(
 			'title',
 			Parameter::TYPE_STRING,
 			$egMapsDefaultTitle
 		);
-		$params['title']->setDescription( wfMsg( 'maps-displaypoints-par-title' ) );
+		$params['title']->setMessage( 'maps-displaypoints-par-title' );
 		
 		$params['label'] = new Parameter(
 			'label',
@@ -157,7 +157,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$egMapsDefaultLabel,
 			array( 'text' )
 		);
-		$params['label']->setDescription( wfMsg( 'maps-displaypoints-par-label' ) );
+		$params['label']->setMessage( 'maps-displaypoints-par-label' );
 		
 		return $params;
 	}	
