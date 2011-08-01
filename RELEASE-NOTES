@@ -8,9 +8,11 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 1.0.1 ===
-(2011-xx-xx)
+(2011-0x-xx)
 
-* 
+* Added language parameter to the mapsdoc hook.
+
+* Use of Validator 0.4.10s setMessage method instead of setDescription for better i18n.
 
 === Maps 1.0 ===
 (2011-07-19)
