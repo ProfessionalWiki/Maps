@@ -11,10 +11,9 @@
  * @author Jeroen De Dauw
  */
 class SMKMLPrinter extends SMWResultPrinter {
-	
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @param $format String
 	 * @param $inline
 	 */
@@ -22,7 +21,7 @@ class SMKMLPrinter extends SMWResultPrinter {
 		parent::__construct( $format, $inline );
 		$this->useValidator = true;
 	}
-	
+
 	/**
 	 * Handler of the print request.
 	 *
@@ -30,7 +29,7 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 *
 	 * @param SMWQueryResult $res
 	 * @param $outputmode
-	 * 
+	 *
 	 * @return array
 	 */
 	public function getResultText( SMWQueryResult $res, $outputmode ) {
@@ -41,51 +40,51 @@ class SMKMLPrinter extends SMWResultPrinter {
 			return $this->getLink( $res, $outputmode );
 		}
 	}
-	
+
 	/**
 	 * @see SMWResultPrinter::handleParameters
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @param array $params
 	 * @param $outputmode
 	 */
 	protected function handleParameters( array $params, $outputmode ) {
 		$this->m_params = $params;
 	}
-	
+
 	/**
 	 * Returns a list of parameter definitions.
-	 * 
+	 *
 	 * @since 0.7.4
-	 * 
+	 *
 	 * @return array
 	 */
 	public function getParameters() {
 		global $egMapsDefaultLabel, $egMapsDefaultTitle;
-		
+
 		$params = array_merge( parent::getParameters(), $this->exportFormatParameters() );
-		
+
 		$params['text'] = new Parameter( 'text', Parameter::TYPE_STRING, $egMapsDefaultLabel );
 		//$params['text']->setDescription();
-		
+
 		$params['title'] = new Parameter( 'title', Parameter::TYPE_STRING, $egMapsDefaultTitle );
-		
+
 		$params[] = new Parameter( 'linkabsolute', Parameter::TYPE_BOOLEAN, true );
-		
+
 		$params['pagelinktext'] = new Parameter( 'pagelinktext', Parameter::TYPE_STRING, wfMsg( 'semanticmaps-default-kml-pagelink' ) );
 
 		return $params;
 	}
-	
+
 	/**
 	 * Returns the KML for the query result.
-	 * 
+	 *
 	 * @since 0.7.3
-	 * 
+	 *
 	 * @param SMWQueryResult $res
 	 * @param integer $outputmode
-	 * 
+	 *
 	 * @return string
 	 */
 	protected function getKML( SMWQueryResult $res, $outputmode ) {
@@ -93,32 +92,30 @@ class SMKMLPrinter extends SMWResultPrinter {
 		$queryHandler->setText( $this->m_params['text'] );
 		$queryHandler->setTitle( $this->m_params['title'] );
 		$queryHandler->setSubjectSeparator( '' );
-		
+
 		$formatter = new MapsKMLFormatter( $this->m_params );
 		$formatter->addPlacemarks( $queryHandler->getLocations() );
-		
+
 		return $formatter->getKML();
 	}
-	
+
 	/**
 	 * Returns a link (HTML) pointing to a query that returns the actual KML file.
-	 * 
+	 *
 	 * @since 0.7.3
-	 * 
+	 *
 	 * @param SMWQueryResult $res
 	 * @param integer $outputmode
-	 * 
+	 *
 	 * @return string
-	 */	
+	 */
 	protected function getLink( SMWQueryResult $res, $outputmode ) {
 		$searchLabel = $this->getSearchLabel( $outputmode );
 		$link = $res->getQueryLink( $searchLabel ? $searchLabel : wfMsgForContent( 'semanticmaps-kml-link' ) );
 		$link->setParameter( 'kml', 'format' );
-		
 		$link->setParameter( $this->m_params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
-		
 		$link->setParameter( $this->m_params['pagelinktext'], 'pagelinktext' );
-		
+
 		if ( array_key_exists( 'limit', $this->m_params ) ) {
 			$link->setParameter( $this->m_params['limit'], 'limit' );
 		} else { // Use a reasonable default limit.
@@ -126,10 +123,10 @@ class SMKMLPrinter extends SMWResultPrinter {
 		}
 
 		$this->isHTML = ( $outputmode == SMW_OUTPUT_HTML );
-		
-		return $link->getText( $outputmode, $this->mLinker );		
+
+		return $link->getText( $outputmode, $this->mLinker );
 	}
-	
+
 	/**
 	 * @see SMWResultPrinter::getMimeType()
 	 */
@@ -139,17 +136,16 @@ class SMKMLPrinter extends SMWResultPrinter {
 
 	/**
 	 * @see SMWResultPrinter::getFileName()
-	 */	
+	 */
 	public function getFileName( $res ) {
-		// TODO FIXME
+		// @TODO FIXME
 		return 'kml.kml';
 	}
-	
+
 	/**
 	 * @see SMWResultPrinter::getName()
 	 */
 	public final function getName() {
 		return wfMsg( 'semanticmaps-kml' );
 	}
-	
 }
