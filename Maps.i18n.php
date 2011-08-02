@@ -67,7 +67,7 @@ $messages['en'] = array(
 	'maps-finddestination-par-allowcoordinates' => 'Indicates if coordinates should be allowed. If set to no, only addresses will be accepted.',
 	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it is an address.",
 	'maps-finddestination-par-mappingservice' => "Parameter to indicate the mapping service to use with this function.
-This will maps allow to override the default value of the service parameter by the one that's optimal for the mapping service.
+This will allow maps to override the default value of the service parameter by the one that is optimal for the mapping service.
 (Example: In case of Google Maps, the Google geocoder will be used.)",
 
 	// Geocode parser hook
