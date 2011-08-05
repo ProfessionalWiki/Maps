@@ -3904,10 +3904,11 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Hydra
+ * @author PhiLiP
  */
 $messages['zh-hans'] = array(
 	'maps_map' => '地图',
-	'maps-loading-map' => '载入中...',
+	'maps-loading-map' => '载入地图中……',
 	'maps-load-failed' => '无法加载地图！',
 	'maps-markers' => '标记',
 	'maps-others' => '其他',
