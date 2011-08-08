@@ -288,15 +288,24 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Fitoschido
  * @author Imre
  * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
-	'semanticmaps-desc' => 'Proporciona la capacidad de ver y editar los datos coordinados almacenados a través de la extensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).',
-	'semanticmaps-unrecognizeddistance' => 'El valor $1 no esuna distancia válida.',
-	'semanticmaps_lookupcoordinates' => 'Busque las coordenadas',
-	'semanticmaps_enteraddresshere' => 'Ingresar dirección aquí',
+	'semanticmaps-desc' => 'Proporciona la posibilidad de ver y editar datos de coordenadas almacenados con la extensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demos]).',
+	'semanticmaps-unrecognizeddistance' => 'El valor $1 no es una distancia válida.',
+	'semanticmaps-kml-link' => 'Ver el archivo KML',
+	'semanticmaps-default-kml-pagelink' => 'Ver página $1',
+	'semanticmaps-loading-forminput' => 'Cargando mapa de formulario de entrada...',
+	'semanticmaps_lookupcoordinates' => 'Buscar coordenadas',
+	'semanticmaps_enteraddresshere' => 'Introduce aquí la dirección',
+	'semanticmaps-updatemap' => 'Actualizar mapa',
+	'semanticmaps-forminput-remove' => 'Quitar',
+	'semanticmaps-forminput-add' => 'Añadir',
+	'semanticmaps-forminput-locations' => 'Ubicaciones',
+	'semanticmaps-par-forceshow' => '¿Mostrar el mapa incluso cuando no hay ubicaciones que mostrar?',
 );
 
 /** Basque (Euskara)
