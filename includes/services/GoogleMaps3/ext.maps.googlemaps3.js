@@ -5,7 +5,6 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 jQuery(document).ready(function() {
-	window.zzzzzz = window.mwmaps.googlemaps3;
 	if ( typeof google != 'undefined' ) {
 		for ( i in window.mwmaps.googlemaps3 ) {
 			jQuery( '#' + i ).googlemaps( window.mwmaps.googlemaps3[i] );
