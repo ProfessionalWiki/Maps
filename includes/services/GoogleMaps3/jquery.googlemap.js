@@ -5,7 +5,7 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $ ){ $.fn.googlemaps = function( options ) {
+(function( $, mw ){ $.fn.googlemaps = function( options ) {
 
 	/**
 	 * All markers that are currently on the map.
@@ -147,11 +147,12 @@
 		for ( var i = markers.length - 1; i >= 0; i-- ) {
 			bounds.extend( markers[i].getPosition() );
 		}
-		
-		map.fitBounds( bounds );
 	}
 	
-	if ( options.zoom !== false ) {
+	if ( options.zoom === false ) {
+		map.fitBounds( bounds );
+	}
+	else {
 		map.setZoom( options.zoom );
 	}
 	
@@ -186,4 +187,4 @@
 	
 	return this;
 	
-}; })( jQuery );
+}; })( jQuery, window.mediaWiki );
