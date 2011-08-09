@@ -14,7 +14,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Use of Validator 0.4.10s setMessage method instead of setDescription for better i18n.
 
-* Fixed zoom parameter for Google Maps v3.
+* Fixed zoom and types parameters for Google Maps v3.
 
 * Minor improvement to script loading. 
 
