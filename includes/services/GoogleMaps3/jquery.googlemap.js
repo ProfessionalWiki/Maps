@@ -83,58 +83,10 @@
 		this.markers = [];
 	};
 	
-	var mapOptions = {
-		disableDefaultUI: true,
-		mapTypeId: options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : eval( 'google.maps.MapTypeId.' + options.type )
-	};
-	this.options = options;
-	
-	// Map controls
-	mapOptions.panControl = $.inArray( 'pan', options.controls ) != -1;
-	mapOptions.zoomControl = $.inArray( 'zoom', options.controls ) != -1;
-	mapOptions.mapTypeControl = $.inArray( 'type', options.controls ) != -1;
-	mapOptions.scaleControl = $.inArray( 'scale', options.controls ) != -1;
-	mapOptions.streetViewControl = $.inArray( 'streetview', options.controls ) != -1;
-
-	// Map control styles
-	mapOptions.zoomControlOptions = { style: eval( 'google.maps.ZoomControlStyle.' + options.zoomstyle ) }
-	mapOptions.mapTypeControlOptions = { style: eval( 'google.maps.MapTypeControlStyle.' + options.typestyle ) }	
-
-	var map = new google.maps.Map( this.get( 0 ), mapOptions );
-	this.map = map;
-	
-	var markers = [];
-	if ( !options.locations ) {
-		options.locations = [];
-	}
-	
-	// Add the markers.
-	for ( var i = options.locations.length - 1; i >= 0; i-- ) {
-		markers.push( this.addMarker( options.locations[i] ) );
-	}
-	
-	// Add the Google KML/KMZ layers.
-	for ( i = options.gkml.length - 1; i >= 0; i-- ) {
-		var kmlLayer = new google.maps.KmlLayer( options.gkml[i], { map: map } );
-	}
+	var showEarth = $.inArray( 'earth', options.types ); 
 	
 	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
-	if ( options.kml.length != 0 ) {
-		mw.loader.using( 'ext.maps.gm3.geoxml', function() {
-			var geoXml = new geoXML3.parser( { map: map } );
-			
-			for ( i = options.kml.length - 1; i >= 0; i-- ) {
-				geoXml.parse( options.kml[i] );
-			}
-		} );		
-	}
-	
-	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
-	if ( $.inArray( 'earth', options.types ) ) {
-		mw.loader.using( 'ext.maps.gm3.earth', function() {
-			var ge = new GoogleEarth( map );
-		} );
-		
+	if ( showEarth ) {
 		// Yay, IE seriously fails. Compat code for IE < 9. 
 		if (!Array.prototype.filter)
 		{
@@ -169,7 +121,64 @@
 		options.types.filter( function( element, index, array ) { return element != 'earth'; } );
 	}
 	
-	// TODO: map types
+	var mapOptions = {
+		disableDefaultUI: true,
+		mapTypeId: options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : eval( 'google.maps.MapTypeId.' + options.type )
+	};
+	this.options = options;
+	
+	// Map controls
+	mapOptions.panControl = $.inArray( 'pan', options.controls ) != -1;
+	mapOptions.zoomControl = $.inArray( 'zoom', options.controls ) != -1;
+	mapOptions.mapTypeControl = $.inArray( 'type', options.controls ) != -1;
+	mapOptions.scaleControl = $.inArray( 'scale', options.controls ) != -1;
+	mapOptions.streetViewControl = $.inArray( 'streetview', options.controls ) != -1;
+
+	for ( i in options.types ) {
+		options.types[i] = eval( 'google.maps.MapTypeId.' + options.types[i] );
+	}
+	
+	// Map control styles
+	mapOptions.zoomControlOptions = { style: eval( 'google.maps.ZoomControlStyle.' + options.zoomstyle ) };
+	mapOptions.mapTypeControlOptions = {
+		style: eval( 'google.maps.MapTypeControlStyle.' + options.typestyle ),
+		mapTypeIds: options.types
+	};
+
+	var map = new google.maps.Map( this.get( 0 ), mapOptions );
+	this.map = map;
+	
+	var markers = [];
+	if ( !options.locations ) {
+		options.locations = [];
+	}
+	
+	// Add the markers.
+	for ( var i = options.locations.length - 1; i >= 0; i-- ) {
+		markers.push( this.addMarker( options.locations[i] ) );
+	}
+	
+	// Add the Google KML/KMZ layers.
+	for ( i = options.gkml.length - 1; i >= 0; i-- ) {
+		var kmlLayer = new google.maps.KmlLayer( options.gkml[i], { map: map } );
+	}
+	
+	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
+	if ( options.kml.length != 0 ) {
+		mw.loader.using( 'ext.maps.gm3.geoxml', function() {
+			var geoXml = new geoXML3.parser( { map: map } );
+			
+			for ( i = options.kml.length - 1; i >= 0; i-- ) {
+				geoXml.parse( options.kml[i] );
+			}
+		} );		
+	}
+	
+	if ( showEarth ) {
+		mw.loader.using( 'ext.maps.gm3.earth', function() {
+			var ge = new GoogleEarth( map );
+		} );		
+	}
 	
 	for ( i = options.fusiontables.length - 1; i >= 0; i-- ) {
 		var ftLayer = new google.maps.FusionTablesLayer( options.fusiontables[i], { map: map } );

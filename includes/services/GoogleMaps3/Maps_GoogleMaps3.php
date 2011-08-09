@@ -9,7 +9,8 @@
  * @file Maps_GoogleMaps3.php
  * @ingroup MapsGoogleMaps3
  * 
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsGoogleMaps3 extends MapsMappingService {
 	
@@ -95,9 +96,10 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['type']->setMessage( 'maps-googlemaps3-par-type' );
 		
 		$params['types'] = new ListParameter( 'types' );
+		$params['types']->addDependencies( 'type' );
 		$params['types']->setDefault( $egMapsGMaps3Types );
 		$params['types']->addCriteria( new CriterionInArray( self::getTypeNames() ) );		
-		$params['types']->addManipulations( new MapsParamGMap3Type() );
+		$params['types']->addManipulations( new MapsParamGMap3Type(), new MapsParamGMap3Types() );
 		$params['types']->setMessage( 'maps-googlemaps3-par-types' );
 		
 		$params['layers'] = new ListParameter( 'layers' );

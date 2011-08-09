@@ -13,7 +13,8 @@
  * @file GoogleMaps3.php
  * @ingroup MapsGoogleMaps3
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -67,6 +68,7 @@ function efMapsInitGoogleMaps3() {
 	
 	$wgAutoloadClasses['MapsGoogleMaps3'] 			= dirname( __FILE__ ) . '/Maps_GoogleMaps3.php';
 	$wgAutoloadClasses['MapsParamGMap3Type']		= dirname( __FILE__ ) . '/Maps_ParamGMap3Type.php';
+	$wgAutoloadClasses['MapsParamGMap3Types']		= dirname( __FILE__ ) . '/Maps_ParamGMap3Types.php';
 	$wgAutoloadClasses['MapsParamGMap3Typestyle']	= dirname( __FILE__ ) . '/Maps_ParamGMap3Typestyle.php';
 	$wgAutoloadClasses['MapsParamGMap3Zoomstyle']	= dirname( __FILE__ ) . '/Maps_ParamGMap3Zoomstyle.php';
 
