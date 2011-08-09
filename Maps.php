@@ -263,6 +263,10 @@ $wgResourceModules['ext.maps.coord'] = array(
 	)
 );
 
+$wgResourceModules['ext.maps.resizable'] = array(
+	'dependencies' => 'jquery.ui.resizable'
+);
+
 
 /**
  * Initialization function for the Maps extension.

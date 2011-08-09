@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgResourceModules['ext.maps.googlemaps2'] = array(
-	'dependencies' => array( 'ext.maps.common', 'jquery.ui.resizable' ),
+	'dependencies' => array( 'ext.maps.common' ),
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps',	
 	'group' => 'ext.maps',

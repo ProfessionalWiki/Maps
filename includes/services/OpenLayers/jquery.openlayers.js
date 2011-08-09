@@ -173,7 +173,9 @@
 	}
 	
 	if ( options.resizable ) {
-		this.resizable()
+		mw.loader.using( 'ext.maps.resizable', function() {
+			_this.resizable();
+		} );
 	}	
 	
 	return this;

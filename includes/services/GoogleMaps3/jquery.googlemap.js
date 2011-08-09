@@ -7,6 +7,8 @@
 
 (function( $, mw ){ $.fn.googlemaps = function( options ) {
 
+	var _this = this;
+	
 	/**
 	 * All markers that are currently on the map.
 	 * @type {Array}
@@ -182,8 +184,10 @@
 	}
 	
 	if ( options.resizable ) {
-		this.resizable()
-	}	
+		mw.loader.using( 'ext.maps.resizable', function() {
+			_this.resizable();
+		} );
+	}
 	
 	return this;
 	

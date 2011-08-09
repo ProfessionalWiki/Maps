@@ -77,7 +77,9 @@
 	if ( options.centre !== false ) map.drawZoomAndCenter( new YGeoPoint( options.centre.lat, options.centre.lon ) );
 	
 	if ( options.resizable ) {
-		this.resizable()
+		mw.loader.using( 'ext.maps.resizable', function() {
+			_this.resizable();
+		} );
 	}
 
     this.addMarker = function( location ) {
