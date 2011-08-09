@@ -26,7 +26,8 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'satellite' => 'SATELLITE',
 		'hybrid' => 'HYBRID',
 		'terrain' => 'TERRAIN',
-		'physical' => 'TERRAIN'
+		'physical' => 'TERRAIN',
+		'earth' => 'earth'
 	);
 	
 	/**

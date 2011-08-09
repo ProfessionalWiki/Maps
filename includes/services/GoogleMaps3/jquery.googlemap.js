@@ -85,7 +85,7 @@
 	
 	var mapOptions = {
 		disableDefaultUI: true,
-		mapTypeId: eval( 'google.maps.MapTypeId.' + options.type )
+		mapTypeId: options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : eval( 'google.maps.MapTypeId.' + options.type )
 	};
 	this.options = options;
 	
@@ -119,13 +119,57 @@
 	}
 	
 	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
-	mw.loader.using( 'ext.maps.gm3.geoxml', function() {
-		var geoXml = new geoXML3.parser( { map: map } );
+	if ( options.kml.length != 0 ) {
+		mw.loader.using( 'ext.maps.gm3.geoxml', function() {
+			var geoXml = new geoXML3.parser( { map: map } );
+			
+			for ( i = options.kml.length - 1; i >= 0; i-- ) {
+				geoXml.parse( options.kml[i] );
+			}
+		} );		
+	}
+	
+	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
+	if ( $.inArray( 'earth', options.types ) ) {
+		mw.loader.using( 'ext.maps.gm3.earth', function() {
+			var ge = new GoogleEarth( map );
+		} );
 		
-		for ( i = options.kml.length - 1; i >= 0; i-- ) {
-			geoXml.parse( options.kml[i] );
+		// Yay, IE seriously fails. Compat code for IE < 9. 
+		if (!Array.prototype.filter)
+		{
+			Array.prototype.filter = function(fun /*, thisp */)
+			{
+				"use strict";
+
+				if (this === void 0 || this === null)
+					throw new TypeError();
+
+				var t = Object(this);
+				var len = t.length >>> 0;
+				if (typeof fun !== "function")
+					throw new TypeError();
+
+				var res = [];
+				var thisp = arguments[1];
+				for (var i = 0; i < len; i++)
+				{
+					if (i in t)
+					{
+						var val = t[i]; // in case fun mutates this
+						if (fun.call(thisp, val, i, t))
+							res.push(val);
+					}
+				}
+
+				return res;
+			};
 		}
-	} );
+		
+		options.types.filter( function( element, index, array ) { return element != 'earth'; } );
+	}
+	
+	// TODO: map types
 	
 	for ( i = options.fusiontables.length - 1; i >= 0; i-- ) {
 		var ftLayer = new google.maps.FusionTablesLayer( options.fusiontables[i], { map: map } );
