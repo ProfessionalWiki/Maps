@@ -129,9 +129,12 @@ class SMFormInput {
 			
 			$this->service->addResourceModules( $this->getResourceModules() );
 			
+			$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
+			
 			if ( true /* !is_null( $wgTitle ) && $wgTitle->isSpecialPage() */ ) { // TODO
 				global $wgOut;
 				$this->service->addDependencies( $wgOut );
+				$wgOut->addScript( $configVars );
 			}
 			else {
 				$this->service->addDependencies( $wgParser );			
