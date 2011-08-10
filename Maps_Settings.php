@@ -199,6 +199,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# does not provide one.
 		$egMapsGMaps3Type = 'roadmap';
 		
+		# Array. List of controls to display onto maps by default.
 		$egMapsGMaps3Controls = array(
 			'pan',
 			'zoom',
@@ -207,16 +208,26 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'streetview'			
 		);
 		
+		# String. The default style for the type control.
+		# horizontal, vertical or default
 		$egMapsGMaps3DefTypeStyle = 'default';
-		
+
+		# String. The default style for the zoom control.
+		# small, large or default
 		$egMapsGMaps3DefZoomStyle = 'default';
 		
+		# Boolean. Open the info windows on load by default?
 		$egMapsGMaps3AutoInfoWindows = false;
 		
+		# Array. Layers to load by default.
 		$egMapsGMaps3Layers = array();
 		
+		# Integer. Default tilt when using Google Maps.
 		$egMapsGMaps3DefaultTilt = 0;
 		
+		# Google JavaScript Loader API key.
+		# Can be obtained at: https://code.google.com/apis/loader/signup.html
+		# This key is needed when using Google Earth.
 		$egGoogleJsApiKey = '';
 		
 		
