@@ -175,9 +175,23 @@
 	}
 	
 	if ( showEarth ) {
-		mw.loader.using( 'ext.maps.gm3.earth', function() {
-			var ge = new GoogleEarth( map );
-		} );		
+		$.getScript(
+			'https://www.google.com/jsapi?key=' + mw.config.get( 'egGoogleJsApiKey' ),
+			function( data, textStatus ) {
+				google.load( 'earth', '1', { callback: function() {
+					mw.loader.using( 'ext.maps.gm3.earth', function() {
+						if ( google.earth.isSupported() ) {
+							var ge = new GoogleEarth( map );
+							
+							var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+
+							lookAt.setTilt(lookAt.getTilt() + options.tilt);
+							ge.getView().setAbstractView(lookAt);							
+						}
+					} );	
+				} } );
+			}
+		);
 	}
 	
 	for ( i = options.fusiontables.length - 1; i >= 0; i-- ) {

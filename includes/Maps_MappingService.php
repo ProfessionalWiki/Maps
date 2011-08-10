@@ -123,6 +123,17 @@ abstract class MapsMappingService implements iMappingService {
 			$parserOrOut->addModules( $this->getResourceModules() );
 		}
 	}
+	
+	/**
+	 * Returns a list of all config variables that should be passed to the JS.
+	 * 
+	 * @since 1.0.1
+	 * 
+	 * @return array
+	 */
+	public function getConfigVariables() {
+		return array();
+	}
 
 	/**
 	 * @see iMappingService::getDependencyHtml

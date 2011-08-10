@@ -49,7 +49,7 @@ $wgResourceModules['ext.maps.gm3.earth'] = array(
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/earth',	
 	'group' => 'ext.maps',
 	'scripts' => array(
-		'googleearth-compiled.js',
+		'googleearth.js',
 	),
 );
 

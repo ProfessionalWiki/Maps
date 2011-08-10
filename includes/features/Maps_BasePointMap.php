@@ -39,13 +39,17 @@ class MapsBasePointMap {
 		
 		$output = $this->getMapHTML( $params, $parser, $mapName ) . $this->getJSON( $params, $parser, $mapName );
 		
+		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
+		
 		global $wgTitle;
 		if ( !is_null( $wgTitle ) && $wgTitle->isSpecialPage() ) {
 			global $wgOut;
 			$this->service->addDependencies( $wgOut );
+			$wgOut->addScript( $configVars );
 		}
 		else {
-			$this->service->addDependencies( $parser );			
+			$this->service->addDependencies( $parser );
+			$parser->getOutput()->addHeadItem( $configVars );			
 		}
 		
 		return $output;

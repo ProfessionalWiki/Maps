@@ -144,6 +144,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
 		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
 		$params['resizable']->setMessage( 'maps-par-resizable' );
+		
+		$egMapsGMaps3DefaultTilt = 15; // TODO
+		$params['tilt'] = new Parameter( 'tilt', Parameter::TYPE_INTEGER );
+		$params['tilt']->setDefault( $egMapsGMaps3DefaultTilt, false );
+		$params['tilt']->setMessage( 'maps-par-tilt' );
 	}
 	
 	/**
@@ -240,6 +245,20 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			parent::getResourceModules(),
 			array( 'ext.maps.googlemaps3' )
 		);
-	}	
+	}
+
+	/**
+	 * Returns a list of all config variables that should be passed to the JS.
+	 * 
+	 * @since 1.0.1
+	 * 
+	 * @return array
+	 */
+	public final function getConfigVariables() {
+		return parent::getConfigVariables() 
+			+ array(
+				'egGoogleJsApiKey' => $GLOBALS['egGoogleJsApiKey']
+			);
+	}
 	
 }

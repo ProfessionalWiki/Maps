@@ -215,6 +215,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 		$egMapsGMaps3Layers = array();
 		
+		$egGoogleJsApiKey = '';
 		
 		
 	# Google Maps
