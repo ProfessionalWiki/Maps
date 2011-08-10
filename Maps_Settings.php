@@ -215,6 +215,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 		$egMapsGMaps3Layers = array();
 		
+		$egMapsGMaps3DefaultTilt = 0;
+		
 		$egGoogleJsApiKey = '';
 		
 		

@@ -186,6 +186,7 @@ $1',
 	'maps-googlemaps3-par-kml' => 'KML files to load onto the map.',
 	'maps-googlemaps3-par-gkml' => 'KML files hosted by Google to load onto the map.',
 	'maps-googlemaps3-par-fusiontables' => 'IDs of Google Fusion Tables which should be loaded onto the map.',
+	'maps-googlemaps3-par-tilt' => 'Tilt for the Map when using Google Maps.',
 
 	// OpenLayers
 	'maps-openlayers-par-controls' => 'The controls to place on the map.',

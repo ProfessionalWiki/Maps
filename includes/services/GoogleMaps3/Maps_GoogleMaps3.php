@@ -84,7 +84,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public function addParameterInfo( array &$params ) {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
-		global $egMapsResizableByDefault;
+		global $egMapsResizableByDefault, $egMapsGMaps3DefaultTilt;
 		
 		$params['zoom']->addCriteria( new CriterionInRange( 0, 20 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );		
@@ -145,10 +145,9 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
 		$params['resizable']->setMessage( 'maps-par-resizable' );
 		
-		$egMapsGMaps3DefaultTilt = 15; // TODO
 		$params['tilt'] = new Parameter( 'tilt', Parameter::TYPE_INTEGER );
 		$params['tilt']->setDefault( $egMapsGMaps3DefaultTilt, false );
-		$params['tilt']->setMessage( 'maps-par-tilt' );
+		$params['tilt']->setMessage( 'maps-googlemaps3-par-tilt' );
 	}
 	
 	/**
