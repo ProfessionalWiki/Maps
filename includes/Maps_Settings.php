@@ -13,10 +13,21 @@
  */
 final class MapsSettings extends ExtensionSettings {
 	
+	/**
+	 * Initiate the settings list if not done already.
+	 * 
+	 * @since 1.1
+	 * 
+	 * @return boolean True if the settings where initiates in this call.
+	 */
 	protected static function initIfNeeded() {
-		parent::initIfNeeded();
+		$init = parent::initIfNeeded();
 		
-		self::$settings['php-bc'] = self::getPhpCompatSettings();
+		if ( $init ) {
+			self::$settings['php-bc'] = self::getPhpCompatSettings();
+		}
+		
+		return $init;
 	}
 	
 	/**
@@ -76,8 +87,23 @@ final class MapsSettings extends ExtensionSettings {
 
 abstract class ExtensionSettings {
 	
+	/**
+	 * The different groups of settings.
+	 * array[ group name => array[ setting name => setting value ] ]
+	 * 
+	 * @since 1.1
+	 * @var array
+	 */
 	protected static $settings = false;
 	
+	/**
+	 * Cached merged settings groups. The keys are the name of the
+	 * cache, which is created by joining the group names with a |.
+	 * array[ cache name => settings[] ]
+	 * 
+	 * @since 1.1
+	 * @var array
+	 */
 	protected static $mergedCaches = array();
 	
 	/**
@@ -89,13 +115,24 @@ abstract class ExtensionSettings {
 	 */
 	protected abstract static function getDefaultSettings();
 	
+	/**
+	 * Initiate the settings list if not done already.
+	 * 
+	 * @since 1.1
+	 * 
+	 * @return boolean True if the settings where initiates in this call.
+	 */
 	protected static function initIfNeeded() {
-		if ( self::$settings === false ) {
+		$init = self::$settings === false;
+		
+		if ( $init ) {
 			self::$settings = array(
 				'default' => self::getDefaultSettings(),
 				'php' => self::getPhpSettings()
 			);
 		}
+		
+		return $init;
 	}
 	
 	protected static function getMergedSettings( array $groups, $cache = true ) {
@@ -213,14 +250,25 @@ abstract class ExtensionSettings {
 		elseif ( $invalidateCache
 			&& ( !array_key_exists( $settingName, self::$settings[$groupName] )
 				|| self::$settings[$groupName][$settingName] !== $settingValue ) ) {
-			foreach ( array_keys( self::$mergedCaches ) as $cacheName ) {
-				if ( in_array( $groupName, explode( '|', $cacheName ) ) ) {
-					unset( self::$mergedCaches[$cacheName] );
-				}
-			}
+			self::ivalidateCachesForGroup( $groupName );
 		}
 		
 		self::$settings[$groupName][$settingName] = $settingValue;
+	}
+	
+	/**
+	 * Invalidate the cahces that contain data from the specified group.
+	 * 
+	 * @since 1.1
+	 * 
+	 * @param name $group
+	 */
+	protected static function ivalidateCachesForGroup( $group ) {
+		foreach ( array_keys( self::$mergedCaches ) as $cacheName ) {
+			if ( in_array( $groupName, explode( '|', $cacheName ) ) ) {
+				unset( self::$mergedCaches[$cacheName] );
+			}
+		}		
 	}
 	
 }
