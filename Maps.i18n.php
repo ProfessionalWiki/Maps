@@ -765,7 +765,7 @@ $messages['da'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Vorgänge ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
+	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
 	'maps-load-failed' => 'Die Karte konnte nicht geladen werden.',
@@ -894,6 +894,7 @@ $1',
 	'maps-googlemaps3-par-kml' => 'Die auf die Karte zu ladenden KML-Dateien.',
 	'maps-googlemaps3-par-gkml' => 'Von Google gehostete KML-Dateien die auf die Karte geladen werden sollen.',
 	'maps-googlemaps3-par-fusiontables' => 'Die Kennungen von Google Fusion Tables, die auf die Karte geladen werden sollen.',
+	'maps-googlemaps3-par-tilt' => 'Neigung der Karte bei der Verwendung von Google Maps.',
 	'maps-openlayers-par-controls' => 'Die auf der Karte anzuzeigenden Steuerelemente.',
 	'maps-openlayers-par-layers' => 'Die Ebenen, die über die Ebenenauswahl verfügbar sein sollen. Die erste Ebene wird während des Ladens der Karten angezeigt.',
 	'maps-osm-par-thumbs' => 'Miniaturansichten anzeigen',
@@ -1997,6 +1998,7 @@ $1',
 	'maps-googlemaps3-par-kml' => 'Files KML pro cargar in le carta.',
 	'maps-googlemaps3-par-gkml' => 'KML files albergate per Google a cargar sur le carta.',
 	'maps-googlemaps3-par-fusiontables' => 'IDs de tabellas de Google Fusion que debe esser cargate in le carta.',
+	'maps-googlemaps3-par-tilt' => 'Inclination del carta durante le uso de Google Maps.',
 	'maps-openlayers-par-controls' => 'Le controlos a placiar super le carta.',
 	'maps-openlayers-par-layers' => 'Le stratos que essera disponibile in le selector de stratos. Le prime strato essera monstrate durante le cargamento del carta.',
 	'maps-osm-par-thumbs' => 'Monstrar miniaturas',
@@ -2587,6 +2589,7 @@ $1',
 	'maps-googlemaps3-par-kml' => 'KML-податотеки за вчитување во картата.',
 	'maps-googlemaps3-par-gkml' => 'KML-податотеки вдомени од Google за вчитување на карта.',
 	'maps-googlemaps3-par-fusiontables' => 'Назнаки (ID) на табели од Google Fusion Tables што треба да се вчитаат во картата.',
+	'maps-googlemaps3-par-tilt' => 'Наклон на картата кога користите Google Карти.',
 	'maps-openlayers-par-controls' => 'Контролите што сакате да стојат на картата.',
 	'maps-openlayers-par-layers' => 'Слоевите што ќе бидат достапни во бирачот на слоеви. Кога ќе се вчита картата ќе се прикаже првиот слој.',
 	'maps-osm-par-thumbs' => 'Прикажи минијатури',
@@ -2898,6 +2901,15 @@ $1',
 	'maps_videos' => 'Vidèos',
 	'maps_wikipedia' => 'Wikipèdia',
 	'maps_webcams' => 'Webcams',
+);
+
+/** Oriya (ଓଡ଼ିଆ)
+ * @author Odisha1
+ */
+$messages['or'] = array(
+	'maps-others' => 'ବାକିସବୁ',
+	'maps-ns-layer' => 'ସ୍ତର',
+	'maps-layer-value' => 'ମୂଲ୍ୟ',
 );
 
 /** Deitsch (Deitsch) */
