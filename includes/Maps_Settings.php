@@ -312,6 +312,17 @@ abstract class ExtensionSettings {
 	
 }
 
+/**
+ * Simple class to define settings, which can be represented
+ * as key values pairs, together with meta data such as 
+ * description messages and how they can berepresented in
+ * as UI elements.
+ * 
+ * @since ?
+ * 
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 class Setting {
 	
 	public $name;
