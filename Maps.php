@@ -83,7 +83,7 @@ $wgAutoloadClasses['MapsLocation'] 				= $incDir . 'Maps_Location.php';
 $wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 $wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
 $wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';
-$wgAutoloadClasses['MapsSettings']		 		= $incDir . 'Maps_Settings.php';
+//$wgAutoloadClasses['MapsSettings']		 		= $incDir . 'Maps_Settings.php';
 
 // Autoload the "includes/criteria/" classes.
 $criDir = $incDir . 'criteria/';
@@ -229,6 +229,8 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
 	
 	# WMF OSM
 	include_once $egMapsDir . 'includes/services/OSM/OSM.php';		
+
+$egMapsSettings = array();
 	
 // Include the settings file.
 require_once $egMapsDir . 'Maps_Settings.php';

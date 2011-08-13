@@ -41,7 +41,11 @@ final class MapsSettings extends ExtensionSettings {
 		static $defaultSettings = false;
 
 		if ( $defaultSettings === false ) {
-			$defaultSettings = include 'Maps.settings.php'; 
+			$defaultSettings = array();
+			
+			foreach( ( include dirname( __FILE__ ) . '/../Maps.settings.php' ) as $setting ) {
+				$defaultSettings[$setting->getName()] = $setting->getValue();
+			} 
 		}
 		
 		return $defaultSettings;
@@ -69,7 +73,7 @@ final class MapsSettings extends ExtensionSettings {
 	 */
 	protected static function getPhpCompatSettings() {
 		$mappings = array(
-			'egMapsFoobar' => 'foobar' // TODO
+			'egMapsAvailableServices' => 'services',
 		);
 		
 		$settings = array();
@@ -135,7 +139,7 @@ abstract class ExtensionSettings {
 	 * 
 	 * @return array
 	 */
-	protected abstract static function getDefaultSettings();
+	protected static function getDefaultSettings() { return array(); }
 	
 	/**
 	 * Initiate the settings list if not done already.
@@ -145,35 +149,48 @@ abstract class ExtensionSettings {
 	 * @return boolean True if the settings where initiates in this call.
 	 */
 	protected static function initIfNeeded() {
-		$init = self::$settings === false;
+		$init = static::$settings === false;
 		
 		if ( $init ) {
-			self::$settings = array(
-				'default' => self::getDefaultSettings(),
-				'php' => self::getPhpSettings()
+			static::$settings = array(
+				'default' => static::getDefaultSettings(),
+				'php' => static::getPhpSettings()
 			);
 		}
 		
 		return $init;
 	}
 	
+	/**
+	 * Returns the settings of the specified groups, merged.
+	 * If available in the cache, it'll be used. If not,
+	 * and $cache is true, it'll be cached.
+	 * 
+	 * @since 1.1
+	 * 
+	 * @param array $groups
+	 * @param boolean $cache
+	 * 
+	 * @return array
+	 */
 	protected static function getMergedSettings( array $groups, $cache = true ) {
 		$names = implode( '|', $groups ); 
 		
-		if ( array_key_exists( $names, self::$mergedCaches )  ) {
-			return self::$mergedCaches[$names];
+		if ( array_key_exists( $names, static::$mergedCaches )  ) {
+			return static::$mergedCaches[$names];
 		}
 		else {
 			$settings = array();
 			
 			foreach ( $groups as $group ) {
-				if ( array_key_exists( $group, self::$settings ) ) {
-					$settings = array_merge_recursive( $settings, self::$settings[$group] );
+				if ( array_key_exists( $group, static::$settings ) ) {
+					// TODO: recursive merge, that does not append for arrays w/o named keys.
+					$settings = array_merge( $settings, static::$settings[$group] );
 				}
 			}
 			
 			if ( $cache ) {
-				self::$mergedCaches[$names] = $settings;
+				static::$mergedCaches[$names] = $settings;
 			}
 			
 			return $settings;
@@ -203,16 +220,16 @@ abstract class ExtensionSettings {
 	 * @return array
 	 */
 	public static function getSettings( $groups = true, $cache = true ) {
-		self::initIfNeeded();
+		static::initIfNeeded();
 		
 		if ( $groups === false ) {
-			return self::getDefaultSettings(); 
+			return static::getDefaultSettings(); 
 		}
 		else {
 			if ( $groups === true ) {
-				$groups = array_keys( self::$settings );
+				$groups = array_keys( static::$settings );
 			}
-			return self::getMergedSettings( $groups, $cache );
+			return static::getMergedSettings( $groups, $cache );
 		}
 	}
 	
@@ -228,7 +245,7 @@ abstract class ExtensionSettings {
 	 * @return mixed
 	 */
 	public static function get( $settingName, $groups = true, $cache = true ) {
-		$settings = self::getSettings( $groups, $cache );
+		$settings = static::getSettings( $groups, $cache );
 		
 		if ( !array_key_exists( $settingName, $settings ) ) {
 			throw new MWException(); // TODO
@@ -249,7 +266,7 @@ abstract class ExtensionSettings {
 	 * @return boolean
 	 */
 	public static function has( $settingName, $groups = true, $cache = true ) {
-		$settings = self::getSettings( $groups, $cache );
+		$settings = static::getSettings( $groups, $cache );
 		return array_key_exists( $settingName, $settings );
 	}
 
@@ -266,16 +283,16 @@ abstract class ExtensionSettings {
 	 * @return boolean
 	 */
 	public static function set( $settingName, $settingValue, $groupName, $invalidateCache = true ) {
-		if ( !array_key_exists( $groupName, self::$settings ) ) {
-			self::$settings[$groupName] = array();
+		if ( !array_key_exists( $groupName, static::$settings ) ) {
+			static::$settings[$groupName] = array();
 		}
 		elseif ( $invalidateCache
-			&& ( !array_key_exists( $settingName, self::$settings[$groupName] )
-				|| self::$settings[$groupName][$settingName] !== $settingValue ) ) {
-			self::ivalidateCachesForGroup( $groupName );
+			&& ( !array_key_exists( $settingName, static::$settings[$groupName] )
+				|| static::$settings[$groupName][$settingName] !== $settingValue ) ) {
+			static::ivalidateCachesForGroup( $groupName );
 		}
 		
-		self::$settings[$groupName][$settingName] = $settingValue;
+		static::$settings[$groupName][$settingName] = $settingValue;
 	}
 	
 	/**
@@ -286,11 +303,37 @@ abstract class ExtensionSettings {
 	 * @param name $group
 	 */
 	protected static function ivalidateCachesForGroup( $group ) {
-		foreach ( array_keys( self::$mergedCaches ) as $cacheName ) {
+		foreach ( array_keys( static::$mergedCaches ) as $cacheName ) {
 			if ( in_array( $groupName, explode( '|', $cacheName ) ) ) {
-				unset( self::$mergedCaches[$cacheName] );
+				unset( static::$mergedCaches[$cacheName] );
 			}
 		}		
+	}
+	
+}
+
+class Setting {
+	
+	public $name;
+	public $value;
+	public $message = false;
+	
+	public static function newFromValue( $name, $value ) {
+		return new Setting( $name, $value );
+	}
+	
+	public function __construct( $name, $value, $message = false ) {
+		$this->name = $name;
+		$this->value = $value;
+		$this->message = $message;
+	}
+	
+	public function getValue() {
+		return $this->value;
+	}
+	
+	public function getName() {
+		return $this->name;
 	}
 	
 }
