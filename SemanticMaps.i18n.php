@@ -49,6 +49,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'semanticmaps-desc' => '{{desc}}',
+	'semanticmaps-default-kml-pagelink' => '$1 is probably a page title.',
 	'semanticmaps-loading-forminput' => 'Message displayed during a computer action',
 	'semanticmaps_lookupcoordinates' => 'Submit button next to input box. The box contains the hint {{msg-mw|Semanticmaps_enteraddresshere}}',
 	'semanticmaps_enteraddresshere' => 'Hint provided in an input box. The submit button next to the input box is {{msg-mw|Semanticmaps_lookupcoordinates}}',
