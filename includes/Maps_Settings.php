@@ -85,13 +85,35 @@ final class MapsSettings extends ExtensionSettings {
 	
 }
 
+/**
+ * Abstract static class for interaction with the settings of an extension.
+ * Settings can be specified in various groups, and obtained by merging these
+ * in a specific order. In most cases these will oly be the two default groups,
+ * which are "default" and "php". The former contains the settings and their
+ * default values while the later contains settings specified via PHP variables.
+ * 
+ * The setting groups are populated the first time a setting value is requested.
+ * By default merged setting groups will be cached. This makes sense as in most
+ * cases, the only combination accessed will be ["default", "php"].
+ * 
+ * Using this class one can access configuration without the use of globals and
+ * in a way that allows for changing how the configuration is obtained. For
+ * example, it's possible to obtain configuration via database instead of by
+ * PHP vars or add in a user-preferences setting group without making changes
+ * at any other place in the extension.
+ * 
+ * @since ?
+ * 
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ */
 abstract class ExtensionSettings {
 	
 	/**
 	 * The different groups of settings.
 	 * array[ group name => array[ setting name => setting value ] ]
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * @var array
 	 */
 	protected static $settings = false;
@@ -101,7 +123,7 @@ abstract class ExtensionSettings {
 	 * cache, which is created by joining the group names with a |.
 	 * array[ cache name => settings[] ]
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * @var array
 	 */
 	protected static $mergedCaches = array();
@@ -109,7 +131,7 @@ abstract class ExtensionSettings {
 	/**
 	 * Returns a name => value array with the default settings.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @return array
 	 */
@@ -118,7 +140,7 @@ abstract class ExtensionSettings {
 	/**
 	 * Initiate the settings list if not done already.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @return boolean True if the settings where initiates in this call.
 	 */
@@ -162,7 +184,7 @@ abstract class ExtensionSettings {
 	 * Returns a name => value array with the default settings
 	 * specified using global PHP variables.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @return array
 	 */
@@ -173,7 +195,7 @@ abstract class ExtensionSettings {
 	/**
 	 * Returns all settings for a group.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @param array|boolean $groups True to use all overrides, false for none, array for custom set or order. 
 	 * @param boolean $cache Cache the merging of groups or not?
@@ -197,7 +219,7 @@ abstract class ExtensionSettings {
 	/**
 	 * Returns the value of a single setting.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @param string $settingName
 	 * @param array|boolean $groups
@@ -218,7 +240,7 @@ abstract class ExtensionSettings {
 	/**
 	 * Returns if a single setting exists or not.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @param string $settingName
 	 * @param array|boolean $groups
@@ -234,7 +256,7 @@ abstract class ExtensionSettings {
 	/**
 	 * Set a sigle setting in the specified group.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @param string $settingName
 	 * @param mixed $settingValue
@@ -259,7 +281,7 @@ abstract class ExtensionSettings {
 	/**
 	 * Invalidate the cahces that contain data from the specified group.
 	 * 
-	 * @since 1.1
+	 * @since ?
 	 * 
 	 * @param name $group
 	 */
