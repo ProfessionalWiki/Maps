@@ -74,6 +74,17 @@ final class MapsSettings extends ExtensionSettings {
 	protected static function getPhpCompatSettings() {
 		$mappings = array(
 			'egMapsAvailableServices' => 'services',
+			'egMapsDefaultService' => 'defaultService',
+			'egMapsDefaultServices' => 'defaultServices',
+			'egMapsAvailableGeoServices' => 'geoServices',
+			'egMapsDefaultGeoService' => 'defaultGeoService',
+			'egMapsUserGeoOverrides' => 'useGeoOverrides',
+			'egMapsAllowCoordsGeocoding' => 'allowCoordsGeocoding',
+			'egMapsEnableGeoCache' => 'enableGeoCache',
+			'egMapsGeoNamesUser' => 'geoNamesUser',
+			'' => '',
+		
+			// TODO
 		);
 		
 		$settings = array();
