@@ -315,7 +315,7 @@ abstract class ExtensionSettings {
 /**
  * Simple class to define settings, which can be represented
  * as key values pairs, together with meta data such as 
- * description messages and how they can berepresented in
+ * description messages and how they can be represented in
  * as UI elements.
  * 
  * @since ?
@@ -325,9 +325,9 @@ abstract class ExtensionSettings {
  */
 class Setting {
 	
-	public $name;
-	public $value;
-	public $message = false;
+	protected $name;
+	protected $value;
+	protected $message = false;
 	
 	public static function newFromValue( $name, $value ) {
 		return new Setting( $name, $value );
@@ -345,6 +345,14 @@ class Setting {
 	
 	public function getName() {
 		return $this->name;
+	}
+	
+	public function getMessage() {
+		return $this->message;
+	}
+
+	public function setMessage( $message ) {
+		$this->message = $message;
 	}
 	
 }
