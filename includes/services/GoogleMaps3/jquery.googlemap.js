@@ -24,7 +24,6 @@
 	 */
 	this.addMarker = function( markerData ) {
 		var markerOptions = {
-			map: this.map,
 			position: new google.maps.LatLng( markerData.lat , markerData.lon ),
 			title: markerData.title
 		};
@@ -106,7 +105,30 @@
 		}
 	};
 	
-	var showEarth = $.inArray( 'earth', options.types ); 
+	this.addOverlays = function() {
+		debugger;
+		for ( i in this.markers ) {
+			this.markers[i].setMap( map );
+		}
+		
+		// Add the Google KML/KMZ layers.
+		for ( i = options.gkml.length - 1; i >= 0; i-- ) {
+			var kmlLayer = new google.maps.KmlLayer( options.gkml[i], { map: map } );
+		}
+		
+		// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
+		if ( options.kml.length != 0 ) {
+			mw.loader.using( 'ext.maps.gm3.geoxml', function() {
+				var geoXml = new geoXML3.parser( { map: map } );
+				
+				for ( i = options.kml.length - 1; i >= 0; i-- ) {
+					geoXml.parse( options.kml[i] );
+				}
+			} );		
+		}		
+	};
+	
+	var showEarth = $.inArray( 'earth', options.types ) !== -1; 
 	
 	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 	if ( showEarth ) {
@@ -140,50 +162,13 @@
 	var map = new google.maps.Map( this.get( 0 ), mapOptions );
 	this.map = map;
 	
-	var markers = [];
 	if ( !options.locations ) {
 		options.locations = [];
 	}
 	
 	// Add the markers.
 	for ( var i = options.locations.length - 1; i >= 0; i-- ) {
-		markers.push( this.addMarker( options.locations[i] ) );
-	}
-	
-	// Add the Google KML/KMZ layers.
-	for ( i = options.gkml.length - 1; i >= 0; i-- ) {
-		var kmlLayer = new google.maps.KmlLayer( options.gkml[i], { map: map } );
-	}
-	
-	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
-	if ( options.kml.length != 0 ) {
-		mw.loader.using( 'ext.maps.gm3.geoxml', function() {
-			var geoXml = new geoXML3.parser( { map: map } );
-			
-			for ( i = options.kml.length - 1; i >= 0; i-- ) {
-				geoXml.parse( options.kml[i] );
-			}
-		} );		
-	}
-	
-	if ( showEarth ) {
-		$.getScript(
-			'https://www.google.com/jsapi?key=' + mw.config.get( 'egGoogleJsApiKey' ),
-			function( data, textStatus ) {
-				google.load( 'earth', '1', { callback: function() {
-					mw.loader.using( 'ext.maps.gm3.earth', function() {
-						if ( google.earth.isSupported() ) {
-							var ge = new GoogleEarth( map );
-							
-							var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
-
-							lookAt.setTilt(lookAt.getTilt() + options.tilt);
-							ge.getView().setAbstractView(lookAt);							
-						}
-					} );	
-				} } );
-			}
-		);
+		this.addMarker( options.locations[i] );
 	}
 	
 	for ( i = options.fusiontables.length - 1; i >= 0; i-- ) {
@@ -205,8 +190,8 @@
 	if ( ( options.centre === false || options.zoom === false ) && options.locations.length > 1 ) {
 		bounds = new google.maps.LatLngBounds();
 
-		for ( var i = markers.length - 1; i >= 0; i-- ) {
-			bounds.extend( markers[i].getPosition() );
+		for ( var i = this.markers.length - 1; i >= 0; i-- ) {
+			bounds.extend( this.markers[i].getPosition() );
 		}
 	}
 	
@@ -236,9 +221,34 @@
 	
 	map.setCenter( centre );
 	
+	if ( showEarth ) {
+		$.getScript(
+			'https://www.google.com/jsapi?key=' + mw.config.get( 'egGoogleJsApiKey' ),
+			function( data, textStatus ) {
+				google.load( 'earth', '1', { callback: function() {
+					mw.loader.using( 'ext.maps.gm3.earth', function() {
+						if ( google.earth.isSupported() ) {
+							var ge = new GoogleEarth( map );
+							
+							var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+
+							lookAt.setTilt(lookAt.getTilt() + options.tilt);
+							ge.getView().setAbstractView(lookAt);							
+						}
+						debugger;
+						_this.addOverlays();
+					} );	
+				} } );
+			}
+		);
+	}
+	else {
+		google.maps.event.addListenerOnce( map, 'tilesloaded', function() { _this.addOverlays(); } );
+	}
+	
 	if ( options.autoinfowindows ) {
-		for ( var i = markers.length - 1; i >= 0; i-- ) {
-			google.maps.event.trigger( markers[i], 'click' );
+		for ( var i = this.markers.length - 1; i >= 0; i-- ) {
+			google.maps.event.trigger( this.markers[i], 'click' );
 		}		
 	}
 	
