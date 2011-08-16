@@ -228,14 +228,41 @@
 					mw.loader.using( 'ext.maps.gm3.earth', function() {
 						if ( google.earth.isSupported() ) {
 							var ge = new GoogleEarth( map );
+							var setTilt = function() {
+								if ( ge.getInstance() !== undefined ) {
+									 var center = map.getCenter();
+									  var lookAt = ge.instance_.createLookAt('');
+									  var range = Math.pow(2, GoogleEarth.MAX_EARTH_ZOOM_ - map.getZoom());
+									  lookAt.setRange(range);
+									  lookAt.setLatitude(center.lat());
+									  lookAt.setLongitude(center.lng());
+									  lookAt.setHeading(0);
+									  lookAt.setAltitude(0);
+									  
+									    // Teleport to the pre-tilt view immediately.
+									  ge.instance_.getOptions().setFlyToSpeed(5);
+									  ge.instance_.getView().setAbstractView(lookAt);
+									    lookAt.setTilt(options.tilt);
+									    // Fly to the tilt at regular speed in 200ms
+									    ge.instance_.getOptions().setFlyToSpeed(0.75);
+									    window.setTimeout(function() {
+									    	ge.instance_.getView().setAbstractView(lookAt);
+									    }, 200);
+									    // Set the flyto speed back to default after the animation starts.
+									    window.setTimeout(function() {
+									    	ge.instance_.getOptions().setFlyToSpeed(1);
+									    }, 250);
+								}
+								else {
+									setTimeout( this, 100 );
+								}
+							};
 							
-							//var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
-
-							//lookAt.setTilt(lookAt.getTilt() + options.tilt);
-							//ge.getView().setAbstractView(lookAt);							
+							setTilt();
 						}
+						
 						_this.addOverlays();
-						map.setMapTypeId(GoogleEarth.MAP_TYPE_ID);
+						map.setMapTypeId( GoogleEarth.MAP_TYPE_ID );
 					} );	
 				} } );
 			}
