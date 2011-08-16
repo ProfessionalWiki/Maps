@@ -106,7 +106,6 @@
 	};
 	
 	this.addOverlays = function() {
-		debugger;
 		for ( i in this.markers ) {
 			this.markers[i].setMap( map );
 		}
@@ -230,12 +229,11 @@
 						if ( google.earth.isSupported() ) {
 							var ge = new GoogleEarth( map );
 							
-							var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
+							//var lookAt = ge.getView().copyAsLookAt(ge.ALTITUDE_RELATIVE_TO_GROUND);
 
-							lookAt.setTilt(lookAt.getTilt() + options.tilt);
-							ge.getView().setAbstractView(lookAt);							
+							//lookAt.setTilt(lookAt.getTilt() + options.tilt);
+							//ge.getView().setAbstractView(lookAt);							
 						}
-						debugger;
 						_this.addOverlays();
 					} );	
 				} } );
