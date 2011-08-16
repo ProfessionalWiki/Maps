@@ -235,6 +235,7 @@
 							//ge.getView().setAbstractView(lookAt);							
 						}
 						_this.addOverlays();
+						map.setMapTypeId(GoogleEarth.MAP_TYPE_ID);
 					} );	
 				} } );
 			}
