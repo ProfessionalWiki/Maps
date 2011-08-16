@@ -83,42 +83,34 @@
 		this.markers = [];
 	};
 	
+	/**
+	 * Remove the "earth" type from options.types if it's present.
+	 * 
+	 * @since 1.0.1
+	 */
+	this.removeEarthType = function() {
+		if ( Array.prototype.filter ) {
+			options.types = options.types.filter( function( element, index, array ) { return element != 'earth'; } );
+		}
+		else {
+			// Seems someone is using the o-so-awesome browser that is IE.
+			var types = [];
+			
+			for ( i in options.types ) {
+				if ( options.types[i] != 'earth' ) {
+					types.push( options.types[i] );
+				}
+			}
+			
+			options.types = types;
+		}
+	};
+	
 	var showEarth = $.inArray( 'earth', options.types ); 
 	
 	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 	if ( showEarth ) {
-		// Yay, IE seriously fails. Compat code for IE < 9. 
-		if (!Array.prototype.filter)
-		{
-			Array.prototype.filter = function(fun /*, thisp */)
-			{
-				"use strict";
-
-				if (this === void 0 || this === null)
-					throw new TypeError();
-
-				var t = Object(this);
-				var len = t.length >>> 0;
-				if (typeof fun !== "function")
-					throw new TypeError();
-
-				var res = [];
-				var thisp = arguments[1];
-				for (var i = 0; i < len; i++)
-				{
-					if (i in t)
-					{
-						var val = t[i]; // in case fun mutates this
-						if (fun.call(thisp, val, i, t))
-							res.push(val);
-					}
-				}
-
-				return res;
-			};
-		}
-		
-		options.types.filter( function( element, index, array ) { return element != 'earth'; } );
+		this.removeEarthType();
 	}
 	
 	var mapOptions = {
