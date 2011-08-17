@@ -69,12 +69,6 @@ $messages['af'] = array(
 	'semanticmaps_enteraddresshere' => 'Voer adres hier in',
 );
 
-/** Gheg Albanian (Gegë)
- * @author Mdupont
- */
-$messages['aln'] = array(
-);
-
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -93,7 +87,6 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'semanticmaps_name' => 'خرائط دلالية',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
@@ -582,12 +575,6 @@ för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
 	'semanticmaps-par-template' => 'En Schabloon för der Enhalt vum Finster met de Enfommazjuhne ze jeschtallte',
 );
 
-/** Kurdish (Latin) (Kurdî (Latin))
- * @author George Animal
- */
-$messages['ku-latn'] = array(
-);
-
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -732,12 +719,6 @@ $messages['pms'] = array(
 	'semanticmaps-par-showtitle' => "Smon-e un tìtol ant la fnesta d'anformassion dël marcator opura nò. La disabilitassion ëd sòn a l'é soens ùtil quand as deuvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
 	'semanticmaps-par-centre' => "Ël sènter ëd la carta. Quand a l'é pa dàit, la carta a trovrà automaticament ël sènter otimal për smon-e tùit ij marcador an sla carta.",
 	'semanticmaps-par-template' => "Në stamp da dovré deje a forma ai contnù dla fnesta d'anformassion.",
-);
-
-/** Pashto (پښتو)
- * @author Ahmed-Najib-Biabani-Ibrahimkhel
- */
-$messages['ps'] = array(
 );
 
 /** Portuguese (Português)
@@ -941,12 +922,6 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinat ara',
 	'semanticmaps_enteraddresshere' => 'Adresi buraya girin',
-);
-
-/** Veps (Vepsan kel')
- * @author Игорь Бродский
- */
-$messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
