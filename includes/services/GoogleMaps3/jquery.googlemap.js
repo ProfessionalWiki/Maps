@@ -127,6 +127,8 @@
 		}		
 	};
 	
+	this.options = options;
+	
 	var showEarth = $.inArray( 'earth', options.types ) !== -1; 
 	
 	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
@@ -138,7 +140,6 @@
 		disableDefaultUI: true,
 		mapTypeId: options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : eval( 'google.maps.MapTypeId.' + options.type )
 	};
-	this.options = options;
 	
 	// Map controls
 	mapOptions.panControl = $.inArray( 'pan', options.controls ) != -1;
@@ -258,11 +259,11 @@
 								}
 							};
 							
+							map.setMapTypeId( GoogleEarth.MAP_TYPE_ID );
 							setTilt();
 						}
 						
 						_this.addOverlays();
-						map.setMapTypeId( GoogleEarth.MAP_TYPE_ID );
 					} );	
 				} } );
 			}
