@@ -11,8 +11,6 @@ jQuery(document).ready(function() {
 		}
 	}
 	else {
-		alert( mediaWiki.msg( 'maps-googlemaps3-incompatbrowser' ) );
-		
 		for ( i in window.mwmaps.googlemaps3 ) {
 			jQuery( '#' + i ).text( mediaWiki.msg( 'maps-load-failed' ) + ' ' + mediaWiki.msg( 'maps-googlemaps3-incompatbrowser' ) );
 		}

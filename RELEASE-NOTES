@@ -10,7 +10,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 === Maps 1.0.2 ===
 (2011-08-xx)
 
-* Fixed Google Maps v3 JavaScript issue when using Google Earth on unsuported systems.
+* Fixed Google Maps v3 JavaScript issue when using Google Earth on unsupported systems.
 
 === Maps 1.0.1 ===
 (2011-08-17)
