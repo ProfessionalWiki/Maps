@@ -55,7 +55,8 @@ class MapsDistanceParser {
 	 * @return string
 	 */
 	public static function formatDistance( $meters, $unit = null, $decimals = 2 ) {
-		$meters = round( $meters / self::getUnitRatio( $unit ), $decimals );
+		global $wgContLang;
+		$meters = $wgContLang->formatNum( round( $meters / self::getUnitRatio( $unit ), $decimals ) );
 		return "$meters $unit";
 	}
 	
