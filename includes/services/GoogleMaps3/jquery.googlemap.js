@@ -127,6 +127,17 @@
 		}		
 	};
 	
+	this.getJsApiKey = function() {
+		var key = mw.config.get( 'egGoogleJsApiKey' );
+		
+		// MediaWiki 1.17 returns null for config.get. yaRly/wtf
+		if ( key === null ) {
+			key = window.egGoogleJsApiKey;
+		}
+		
+		return key;
+	};
+	
 	this.options = options;
 	
 	var showEarth = $.inArray( 'earth', options.types ) !== -1; 
@@ -134,7 +145,7 @@
 	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 	if ( showEarth ) {
 		this.removeEarthType();
-		showEarth = mw.config.get( 'egGoogleJsApiKey' ) != '';
+		showEarth = this.getJsApiKey() != '';
 	}
 	
 	var mapOptions = {
@@ -224,7 +235,7 @@
 	
 	if ( showEarth ) {
 		$.getScript(
-			'https://www.google.com/jsapi?key=' + mw.config.get( 'egGoogleJsApiKey' ),
+			'https://www.google.com/jsapi?key=' + this.getJsApiKey(),
 			function( data, textStatus ) {
 				google.load( 'earth', '1', { callback: function() {
 					mw.loader.using( 'ext.maps.gm3.earth', function() {
