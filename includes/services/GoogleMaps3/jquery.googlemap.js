@@ -134,6 +134,7 @@
 	// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 	if ( showEarth ) {
 		this.removeEarthType();
+		showEarth = mw.config.get( 'egGoogleJsApiKey' ) != '';
 	}
 	
 	var mapOptions = {
