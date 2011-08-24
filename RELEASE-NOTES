@@ -8,7 +8,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 1.0.2 ===
-(2011-08-xx)
+(2011-08-24)
 
 * Fixed Google Maps v3 JavaScript issue occuring when using Google Earth on unsupported systems.
 * Fixed Google Maps v3 JavaScript issue occuring on MediaWiki 1.17 due to buggy mw.config.get.
