@@ -45,7 +45,7 @@ if ( version_compare( SMW_VERSION, '1.6 alpha', '<' ) ) {
 	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.6 or above; use Semantic Maps 0.7.x for older versions.' );
 }
 
-define( 'SM_VERSION', '1.0.1' );
+define( 'SM_VERSION', '1.0.2' );
 
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
 	'path' => __FILE__,
