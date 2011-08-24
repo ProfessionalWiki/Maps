@@ -47,6 +47,14 @@ final class MapsGeocoders {
 	private static $globalGeocoderCache = array();	
 	
 	/**
+	 * Can geocoding happen, ie are there any geocoders available.
+	 * 
+	 * @since 1.0.3
+	 * @var boolean
+	 */
+	protected static $canGeocode = false;
+	
+	/**
 	 * Returns if this class can do geocoding operations.
 	 * Ie. if there are any geocoders available.
 	 * 
@@ -55,17 +63,45 @@ final class MapsGeocoders {
 	 * @return boolean
 	 */
 	public static function canGeocode() {
-		static $canGeocode = null;
+		self::init();
+		return self::$canGeocode;
+	}
+	
+	/**
+	 * Gets a list of available geocoders.
+	 * 
+	 * @since 1.0.3
+	 * 
+	 * @return array
+	 */
+	public static function getAvailableGeocoders() {
+		self::init();
+		return array_keys( self::$registeredGeocoders );
+	}
+	
+	/**
+	 * Initiate the geocoding functionality.
+	 * 
+	 * @since 1.0.3
+	 * 
+	 * @return boolean Indicates if init happened
+	 */
+	public static function init() {
+		static $initiated = false;
 		
-		if ( is_null( $canGeocode ) ) {
-			// Register the geocoders.
-			wfRunHooks( 'GeocoderFirstCallInit' );
-			
-			// Determine if there are any geocoders.
-			$canGeocode = count( self::$registeredGeocoders ) > 0;
+		if ( $initiated ) {
+			return false;
 		}
 		
-		return $canGeocode;
+		$initiated = true;
+		
+		// Register the geocoders.
+		wfRunHooks( 'GeocoderFirstCallInit' );
+		
+		// Determine if there are any geocoders.
+		self::$canGeocode = count( self::$registeredGeocoders ) > 0;
+		
+		return true;
 	}
 	
 	/**

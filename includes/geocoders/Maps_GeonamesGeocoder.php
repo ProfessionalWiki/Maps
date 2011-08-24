@@ -62,8 +62,8 @@ final class MapsGeonamesGeocoder extends MapsGeocoder {
 		if ( !$lon || !$lat ) return false;
 
 		return array(
-			'lat' => $lat,
-			'lon' => $lon
+			'lat' => (float)$lat,
+			'lon' => (float)$lon
 		);		
 	}
 	

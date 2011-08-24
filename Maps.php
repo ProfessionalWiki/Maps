@@ -83,7 +83,8 @@ $wgAutoloadClasses['MapsLocation'] 				= $incDir . 'Maps_Location.php';
 $wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 $wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
 $wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';
-//$wgAutoloadClasses['MapsSettings']		 		= $incDir . 'Maps_Settings.php';
+
+$wgAutoloadClasses['ApiGeocode'] 				= $incDir . 'api/ApiGeocode.php';
 
 // Autoload the "includes/criteria/" classes.
 $criDir = $incDir . 'criteria/';
@@ -136,7 +137,9 @@ $wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
 $wgAutoloadClasses['MapsMapsDoc'] 				= $phDir . 'Maps_MapsDoc.php';
 unset( $phDir );
 unset( $incDir );
-	
+
+$wgAPIModules['geocode'] 						= 'ApiGeocode';
+
 $wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
 	
 $wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
@@ -268,6 +271,15 @@ $wgResourceModules['ext.maps.coord'] = array(
 $wgResourceModules['ext.maps.resizable'] = array(
 	'dependencies' => 'jquery.ui.resizable'
 );
+
+$wgAvailableRights[] = 'geocode';
+
+# Users that can manage the surveys.
+$wgGroupPermissions['*'            ]['geocode'] = true;
+$wgGroupPermissions['user'         ]['geocode'] = true;
+$wgGroupPermissions['autoconfirmed']['geocode'] = true;
+$wgGroupPermissions['bot'          ]['geocode'] = true;
+$wgGroupPermissions['sysop'        ]['geocode'] = true;
 
 $egMapsGlobalJSVars = array();
 
