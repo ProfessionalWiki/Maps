@@ -41,6 +41,11 @@ class MapsBasePointMap {
 		
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 		
+		// MediaWiki 1.17 does not play nice with addScript, so add the vars via the globals hook.
+		if ( version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ) {
+			$GLOBALS['egMapsGlobalJSVars'] += $this->service->getConfigVariables();
+		}
+		
 		global $wgTitle;
 		if ( !is_null( $wgTitle ) && $wgTitle->isSpecialPage() ) {
 			global $wgOut;
