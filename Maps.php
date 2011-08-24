@@ -274,15 +274,14 @@ $wgResourceModules['ext.maps.resizable'] = array(
 
 $wgAvailableRights[] = 'geocode';
 
-# Users that can manage the surveys.
-$wgGroupPermissions['*'            ]['geocode'] = true;
-$wgGroupPermissions['user'         ]['geocode'] = true;
-$wgGroupPermissions['autoconfirmed']['geocode'] = true;
-$wgGroupPermissions['bot'          ]['geocode'] = true;
-$wgGroupPermissions['sysop'        ]['geocode'] = true;
+# Users that can geocode. By default the same as those that can edit.
+foreach ( $wgGroupPermissions as $group => $rights ) {
+	if ( array_key_exists( 'edit', $rights ) ) {
+		$wgGroupPermissions[$group]['geocode'] = $wgGroupPermissions[$group]['edit'];
+	}
+}
 
 $egMapsGlobalJSVars = array();
-
 
 /**
  * Initialization function for the Maps extension.

@@ -16,6 +16,9 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://mapping.referata.com/wiki/Examples demos])",
+	
+	'right-geocode' => 'Geocode',
+	
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
 	'maps-load-failed' => 'Could not load the map!',
