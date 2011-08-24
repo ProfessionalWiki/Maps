@@ -773,6 +773,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
+	'right-geocode' => 'Georeferenzieren',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
 	'maps-load-failed' => 'Die Karte konnte nicht geladen werden.',
@@ -2468,6 +2469,7 @@ $messages['lv'] = array(
  */
 $messages['mk'] = array(
 	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([http://mapping.referata.com/wiki/Maps_examples мостри])',
+	'right-geocode' => 'Геокод',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Ја вчитувам картата...',
 	'maps-load-failed' => 'Не можев да ја вчитам картата!',
@@ -2829,6 +2831,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Event
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
@@ -2852,6 +2855,8 @@ $messages['no'] = array(
 	'validation-error-invalid-layers' => 'Parameter $1 må være et eller flere gyldige lag.',
 	'maps-layer-of-type' => 'Lagtype $1',
 	'maps-layer-type-supported-by' => 'Denne lagtypen kan bare brukes med {{PLURAL:$2|karttjenesten $1|disse karttjenestene: $1}}.',
+	'maps-coordinates-description' => 'Parser-hook for å formatere koordinater, fra og til vilkårlige av de støttede formatene.',
+	'maps-displaymap-description' => 'Vis geografiske kart uten wiki-spesifiserte markører.',
 	'validation-error-invalid-location' => 'Parameter $1 må være en gyldig lokasjon.',
 	'validation-error-invalid-locations' => 'Parameter $1 må være en eller flere gyldige lokasjoner.',
 	'validation-error-invalid-width' => 'Parameter $1 må være en gyldig bredde.',
