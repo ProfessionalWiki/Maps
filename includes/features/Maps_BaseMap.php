@@ -65,6 +65,10 @@ class MapsBaseMap {
 		
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 		
+		if ( version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ) {
+			$GLOBALS['egMapsGlobalJSVars'] += $this->service->getConfigVariables();
+		}
+		
 		global $wgTitle;
 		if ( !is_null( $wgTitle ) && $wgTitle->isSpecialPage() ) {
 			global $wgOut;

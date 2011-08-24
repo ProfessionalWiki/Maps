@@ -41,7 +41,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.<br />' );
 }
 
-define( 'Maps_VERSION', '1.0.2' );
+define( 'Maps_VERSION', '1.0.3 alpha' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
@@ -268,6 +268,8 @@ $wgResourceModules['ext.maps.coord'] = array(
 $wgResourceModules['ext.maps.resizable'] = array(
 	'dependencies' => 'jquery.ui.resizable'
 );
+
+$egMapsGlobalJSVars = array();
 
 
 /**

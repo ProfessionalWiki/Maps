@@ -75,7 +75,11 @@ final class MapsHooks {
 	 * @return true
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
+		global $egMapsGlobalJSVars;
+		
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
+		
+		$vars += $egMapsGlobalJSVars;
 		
 		return true;
 	}
