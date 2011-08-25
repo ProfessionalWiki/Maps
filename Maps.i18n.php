@@ -377,6 +377,7 @@ $messages['bar'] = array(
  */
 $messages['be-tarask'] = array(
 	'maps-desc' => 'Забясьпечвае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі, геаграфічнага кадаваньня адрасоў і іншыя геаграфічныя апэрацыі. ([http://mapping.referata.com/wiki/Examples Прыклады])',
+	'right-geocode' => 'геаграфічнае кадаваньне',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Загрузка мапы…',
 	'maps-load-failed' => 'Немагчыма загрузіць мапу!',
@@ -1155,6 +1156,7 @@ $1',
 /** French (Français)
  * @author Brunoperel
  * @author Crochet.david
+ * @author Gomoko
  * @author Hashar
  * @author IAlex
  * @author Jean-Frédéric
@@ -1167,6 +1169,7 @@ $1',
  */
 $messages['fr'] = array(
 	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://mapping.referata.com/wiki/Examples démonstration])",
+	'right-geocode' => 'Géocode',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
 	'maps-load-failed' => 'Impossible de charger la carte !',
@@ -1191,6 +1194,9 @@ $messages['fr'] = array(
 	'maps-finddestination-description' => "Trouver une destination avec un point de départ donné (qui peuvent être dans n'importe lequel des formats supportés), une orientation initiale et une distance.",
 	'maps-geocode-description' => "Permet le géocodage d'adresses, en d'autres termes, la transformation des positions humainement lisible en ensembles de coordonnées. Plusieurs services de géocodage sont pris en charge, qui ne doivent pas être confondu avec les services de cartographie.",
 	'maps-geodistance-description' => "Calculer la distance géographique entre deux points, depuis et vers n'importe quel format pris en charge.",
+	'maps-mapsdoc-description' => 'Affiche une table avec les paramètres pour un service de cartographie spécifié, avec leurs valeurs par défaut et leur description.',
+	'maps-mapsdoc-par-service' => 'Le service de cartographie pour afficher la document concernant les paramètres.',
+	'maps-mapsdoc-par-language' => "La langue dans laquelle afficher la documentation. Si aucune traduction n'est disponible, l'anglais sera utilisé à la place.",
 	'maps-coordinates-par-location' => 'Les coordonnées que vous souhaitez formater.',
 	'maps-coordinates-par-format' => 'Le format cible pour les coordonnées.',
 	'maps-coordinates-par-directional' => 'Indique si les coordonnées doivent être imprimées directionnellement ou non.',
@@ -1291,7 +1297,9 @@ $1",
 	'maps-googlemaps3-par-typestyle' => 'Style du contrôle de type.',
 	'maps-googlemaps3-par-autoinfowindows' => "Ouvrir automatiquement toutes les fenêtres d'information après le chargement de la page.",
 	'maps-googlemaps3-par-kml' => 'Fichiers KML à charger sur la carte.',
+	'maps-googlemaps3-par-gkml' => 'Les fichiers KML hébergés par Google à charger sur la carte.',
 	'maps-googlemaps3-par-fusiontables' => 'ID des tables de Google Fusion qui devrait être chargées sur la carte.',
+	'maps-googlemaps3-par-tilt' => "Inclinaison de la carte lors de l'utilisation de Google Maps.",
 	'maps-openlayers-par-controls' => 'Les contrôles à placer sur la carte.',
 	'maps-openlayers-par-layers' => 'Les couches qui seront disponibles dans le sélecteur de couche. La première couche sera affichée lors du chargement de la carte.',
 	'maps-osm-par-thumbs' => 'Afficher des miniatures',
@@ -2664,6 +2672,7 @@ $messages['nah'] = array(
  */
 $messages['nl'] = array(
 	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo])',
+	'right-geocode' => 'Geocoderen',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
 	'maps-load-failed' => 'De kaart kon niet geladen worden!',
@@ -2857,6 +2866,22 @@ $messages['no'] = array(
 	'maps-layer-type-supported-by' => 'Denne lagtypen kan bare brukes med {{PLURAL:$2|karttjenesten $1|disse karttjenestene: $1}}.',
 	'maps-coordinates-description' => 'Parser-hook for å formatere koordinater, fra og til vilkårlige av de støttede formatene.',
 	'maps-displaymap-description' => 'Vis geografiske kart uten wiki-spesifiserte markører.',
+	'maps-displaypoint-description' => 'Vis geografiske kart med en eller flere wiki-spesifiserte markører.',
+	'maps-distance-description' => 'Gjør om en distanse basert på en viss støttet enhet til tilsvarende verdi i en annen enhet.',
+	'maps-finddestination-description' => 'Finn et mål med gitt startpunkt (som kan være i ett av de støttede formatene), en initial retning og distanse.',
+	'maps-geocode-description' => 'Gjør tilgjengelig geokoding av adresser, dvs. gjør menneskelesbare lokasjoner til koordinatsett. Det finnes støtte for flere geokodingstjenester, som ikke må forveksles med mappingtjenester.',
+	'maps-geodistance-description' => 'Beregn den geografiske avstanden mellom to punkter, fra og til et vilkårlig av de støttede formatene.',
+	'maps-mapsdoc-description' => 'Vis en tabell med parametrene for en spesifisert mappingstjeneste sammen med deres standardverdier og beskrivelser.',
+	'maps-mapsdoc-par-service' => 'Mappingstjenesten for å vise parameterdokumentasjon.',
+	'maps-mapsdoc-par-language' => 'Språket for å vise dokumentasjonen. Hvis ingen slik oversettelse er tilgjengelig, blir engelsk brukt.',
+	'maps-coordinates-par-location' => 'Koordinatene du ønsker å formatere.',
+	'maps-coordinates-par-format' => 'Målformatet for koordinatene.',
+	'maps-coordinates-par-directional' => 'Angir om koordinatene burde vises med retning eller ikke.',
+	'maps-distance-par-distance' => 'Avstanden som skal omregnes til en bestemt enhet.',
+	'maps-distance-par-decimals' => 'Maksimalt antall desimalsifre som skal brukes for resulterende verdi.',
+	'maps-distance-par-unit' => 'Enhet for visning av avstand.',
+	'maps-finddestination-par-location' => 'Opprinnelig lokasjon.',
+	'maps-finddestination-par-distance' => 'Reiseavstand',
 	'validation-error-invalid-location' => 'Parameter $1 må være en gyldig lokasjon.',
 	'validation-error-invalid-locations' => 'Parameter $1 må være en eller flere gyldige lokasjoner.',
 	'validation-error-invalid-width' => 'Parameter $1 må være en gyldig bredde.',
@@ -3557,6 +3582,7 @@ $messages['sr-el'] = array(
  */
 $messages['sv'] = array(
 	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([http://mapping.referata.com/wiki/Maps_examples Demo]).',
+	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
 	'maps-load-failed' => 'Kunde inte läsa in karta!',
@@ -3569,10 +3595,15 @@ $messages['sv'] = array(
 	'maps-layer-errors' => 'Fel',
 	'maps-error-invalid-layerdef' => 'Denna lagerdefinition är inte giltigt.',
 	'maps-error-invalid-layertype' => 'Det finns inga lager av typen "$1". Endast {{PLURAL:$3|denna typ|denna typer}} stöds: $2',
+	'maps-error-no-layertype' => 'Du måste ange lagertypen. {{PLURAL:$2|Endast denna typ|Dessa typer}} stöds: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 måste vara ett giltig lager.',
 	'validation-error-invalid-layers' => 'Parameter $1 måste vara ett eller flera giltiga lager.',
 	'maps-layer-of-type' => 'Lagertyp $1',
+	'maps-layer-type-supported-by' => 'Denna lagertyp kan endast användas med {{PLURAL:$2|kartläggningstjänsten $1|dessa kartläggningstjänster: $1}}.',
+	'maps-mapsdoc-par-service' => 'Kartläggningstjänsten för att visa parameterdokumentation.',
+	'maps-mapsdoc-par-language' => 'Språket som du vill visa dokumentationen i. Om det finns någon sådan översättning kommer engelska att användas istället.',
 	'maps-geocode-par-location' => 'Adressen som du vill geokoda.',
+	'maps-geocode-par-mappingservice' => 'Geokodningstjänsten du vill använda. Se de tillgängliga geokodningtjänsterna.',
 	'validation-error-invalid-location' => 'Parameter $1 måste vara en giltig plats.',
 	'validation-error-invalid-locations' => 'Parameter $1 måste vara en eller flera giltiga platser.',
 	'validation-error-invalid-width' => 'Parameter $1 måste vara en giltig bredd.',
