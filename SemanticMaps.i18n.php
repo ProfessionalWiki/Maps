@@ -665,12 +665,22 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'semanticmaps-desc' => 'Tilbyr muligheten til å se og endre koordinatdata lagret gjennom Semantic MediaWiki-utvidelsen ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Tilbyr muligheten til å se på og endre koordinatdata lagret ved hjelp av Semantic MediaWiki-utvidelsen ([http://mapping.referata.com/wiki/Examples demo]).',
 	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'semanticmaps-kml-link' => 'Vis KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Vis siden $1',
+	'semanticmaps-loading-forminput' => 'Laster inndata for kartskjema...',
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressen her',
+	'semanticmaps-updatemap' => 'Oppdater kart',
+	'semanticmaps-forminput-remove' => 'Fjern',
+	'semanticmaps-forminput-add' => 'Legg til',
+	'semanticmaps-forminput-locations' => 'Lokasjoner',
+	'semanticmaps-par-staticlocations' => 'En lokasjonsliste til å legge inn i kartet sammen med data fra spørringen. Som med display_points, kan du legge inn en tittel, en beskrivelse og et ikon per lokasjon med tilde "~" som skilletegn.',
+	'semanticmaps-par-forceshow' => 'Vil du vise kartet selv når det ikke er noen lokasjoner med?',
+	'semanticmaps-par-showtitle' => 'Vise tittel i markørinfovinduet eller ikke. Deaktivering er ofte nyttig når en bruker en mal for å formatere innholdet i infovinduet.',
+	'semanticmaps-par-centre' => 'Kartets sentrum. Hvis dette ikke er angitt, vil kartet automatisk velge det optimale senteret for å vise alle kartmarkørene.',
+	'semanticmaps-par-template' => 'Mal som brukes for å formatere innholdet i infovinduet.',
 );
 
 /** Occitan (Occitan)
