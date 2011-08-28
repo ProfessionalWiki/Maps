@@ -231,7 +231,9 @@
 						if ( google.earth.isSupported() ) {
 							var ge = new GoogleEarth( map );
 							var setTilt = function() {
+								
 								if ( ge.getInstance() !== undefined ) {
+								
 									 var center = map.getCenter();
 									  var lookAt = ge.instance_.createLookAt('');
 									  var range = Math.pow(2, GoogleEarth.MAX_EARTH_ZOOM_ - map.getZoom());
@@ -254,14 +256,20 @@
 									    window.setTimeout(function() {
 									    	ge.instance_.getOptions().setFlyToSpeed(1);
 									    }, 250);
+										
 								}
 								else {
-									setTimeout( this, 100 );
+									setTimeout( function() { setTilt(); }, 100 );
 								}
 							};
 							
-							map.setMapTypeId( GoogleEarth.MAP_TYPE_ID );
-							setTilt();
+							if ( options.type == 'earth' ) {
+								map.setMapTypeId( GoogleEarth.MAP_TYPE_ID );
+								setTilt();
+							}
+							else {
+								google.maps.event.addListenerOnce( map, 'maptypeid_changed', function() { setTilt(); } );
+							}
 						}
 						
 						_this.addOverlays();
