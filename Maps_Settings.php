@@ -162,6 +162,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsDefaultLabel = '';
 	
 	$egMapsResizableByDefault = false;
+	
+	$egMapsRezoomForKML = false;
 
 
 	

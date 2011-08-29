@@ -12,6 +12,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * Added API module for geocoding.
 * Added 'geocoding' right.
+* Added kmlrezoom parameter for Google Maps v3 and general $egMapsRezoomForKML setting.
 * Fixed Google Maps v3 JavaScript issue occuring on MediaWiki 1.17.
 
 === Maps 1.0.2 ===

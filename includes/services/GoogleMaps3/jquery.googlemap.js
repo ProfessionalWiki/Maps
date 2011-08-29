@@ -118,7 +118,7 @@
 		// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 		if ( options.kml.length != 0 ) {
 			mw.loader.using( 'ext.maps.gm3.geoxml', function() {
-				var geoXml = new geoXML3.parser( { map: map } );
+				var geoXml = new geoXML3.parser( { map: map, zoom: options.kmlrezoom } );
 				
 				for ( i = options.kml.length - 1; i >= 0; i-- ) {
 					geoXml.parse( options.kml[i] );

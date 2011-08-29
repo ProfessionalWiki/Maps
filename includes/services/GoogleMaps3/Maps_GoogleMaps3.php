@@ -148,6 +148,10 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['tilt'] = new Parameter( 'tilt', Parameter::TYPE_INTEGER );
 		$params['tilt']->setDefault( $egMapsGMaps3DefaultTilt, false );
 		$params['tilt']->setMessage( 'maps-googlemaps3-par-tilt' );
+		
+		$params['kmlrezoom'] = new Parameter( 'kmlrezoom', Parameter::TYPE_BOOLEAN );
+		$params['kmlrezoom']->setDefault( $GLOBALS['egMapsRezoomForKML'], false );
+		$params['kmlrezoom']->setMessage( 'maps-googlemaps3-par-kmlrezoom' );
 	}
 	
 	/**
