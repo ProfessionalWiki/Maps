@@ -966,9 +966,11 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'semanticmaps_lookupcoordinates' => '查找坐标',
+	'semanticmaps-forminput-add' => '添加',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
