@@ -37,7 +37,9 @@ $messages['en'] = array(
 	'semanticmaps-par-forceshow'		=> 'Show the map even when there are no locations to display?',
 	'semanticmaps-par-showtitle'		=> 'Show a title in the marker info window or not. Disabling this is often usefull when using a template to format the info window content.',
 	'semanticmaps-par-centre'		=> 'The centre of the map. When not provided, the map will automatically pick the optimal centre to display all markers on the map.',
-	'semanticmaps-par-template'		=> 'A template to use to format the info window contents.'
+	'semanticmaps-par-template'		=> 'A template to use to format the info window contents.',
+	
+	'semanticmaps-par-geocodecontrol'		=> 'Show the geocoding control.',
 );
 
 /** Message documentation (Message documentation)

@@ -78,6 +78,10 @@ class SMFormInput {
 		$manipulation->toJSONObj = true;
 		$params['locations']->addManipulations( $manipulation );		
 		
+		$params['geocodecontrol'] = new Parameter( 'geocodecontrol', Parameter::TYPE_BOOLEAN );
+		$params['geocodecontrol']->setDefault( true, false );
+		$params['geocodecontrol']->setMessage( 'semanticmaps-par-geocodecontrol' );
+		
 		return $params;
 	}
 	

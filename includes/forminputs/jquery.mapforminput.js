@@ -125,7 +125,7 @@
 		this.html( $( '<p />' ).append( this.input ).append( updateButton ) );
 	}
 	
-	if ( this.geocodeAddress ) {
+	if ( options.geocodecontrol && this.geocodeAddress ) {
 		this.append( $( '<p />' ).append( this.geofield ).append( geoButton ) );			
 	}
 
