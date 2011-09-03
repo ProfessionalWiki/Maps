@@ -276,8 +276,7 @@ $messages['aln'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'maps-desc' => 'يعطي إمكانية عرض معلومات التنسيق في الخرائط وعناوين الترميز الجغرافي ([http://mapping.referata.com/wiki/Maps_examples تجربة]).
-خدمات الخرائط المتوفرة: $1',
+	'maps-desc' => 'يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى. ([http://mapping.referata.com/wiki/Examples تجارب])',
 	'maps_map' => 'خريطة',
 	'maps-loading-map' => 'تحميل الخريطة...',
 	'maps-load-failed' => 'لا يمكن تحميل الخريطة!',
@@ -1899,6 +1898,7 @@ $1',
  */
 $messages['ia'] = array(
 	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://mapping.referata.com/wiki/Maps_examples demonstrationes])',
+	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
 	'maps-load-failed' => 'Non poteva cargar le carta!',
@@ -2030,6 +2030,7 @@ $1',
 	'maps-googlemaps3-par-gkml' => 'KML files albergate per Google a cargar sur le carta.',
 	'maps-googlemaps3-par-fusiontables' => 'IDs de tabellas de Google Fusion que debe esser cargate in le carta.',
 	'maps-googlemaps3-par-tilt' => 'Inclination del carta durante le uso de Google Maps.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Rezoomar le carta post le cargamento del stratos KML.',
 	'maps-openlayers-par-controls' => 'Le controlos a placiar super le carta.',
 	'maps-openlayers-par-layers' => 'Le stratos que essera disponibile in le selector de stratos. Le prime strato essera monstrate durante le cargamento del carta.',
 	'maps-osm-par-thumbs' => 'Monstrar miniaturas',
