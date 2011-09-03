@@ -252,6 +252,7 @@ $messages['de'] = array(
 	'semanticmaps-par-showtitle' => 'Anzeige eines Titels im Informationsfenster der Kennzeichnung oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.',
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
+	'semanticmaps-par-geocodecontrol' => 'Zeige die Steuerungsseite zum Geokodieren.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -612,6 +613,7 @@ $messages['mk'] = array(
 	'semanticmaps-par-showtitle' => 'Дали да се прикажува насловот на инфопрозорецот на ознаката. Оневозможете го кога користите шаблон за форматирање на содржината на инфопрозорецот.',
 	'semanticmaps-par-centre' => 'Средиштето на картата. Ако не е укажано, картата автоматски ќе го одбере средиштето кајшто оптимално ќе се прикажат сите одбележувачи на картата.',
 	'semanticmaps-par-template' => 'Шаблон за форматирање на содржината на инфопрозорецот.',
+	'semanticmaps-par-geocodecontrol' => 'Прикажи геокодни котроли.',
 );
 
 /** Malayalam (മലയാളം)
@@ -651,6 +653,7 @@ $messages['nl'] = array(
 	'semanticmaps-par-showtitle' => 'Een naam weergeven in het gegevensvenster van de markering of niet. Dit uitschakelen is vaak handig als er een sjabloon wordt gebruikt om de inhoud van het gegevensvenster vorm te geven.',
 	'semanticmaps-par-centre' => 'Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.',
 	'semanticmaps-par-template' => 'Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.',
+	'semanticmaps-par-geocodecontrol' => 'Besturingselement voor geocodering weergeven.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -823,6 +826,7 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Lesko987
  */
 $messages['sl'] = array(
@@ -842,6 +846,7 @@ $messages['sl'] = array(
 	'semanticmaps-par-showtitle' => 'Prikaži naslov v oknu ali ne. Onemogočanje tega je pogosto uporabno, če uporabljate predloge za oblikovanje vsebine info okno.',
 	'semanticmaps-par-centre' => 'Sredini zemljevida. Če ne podana, bo zemljevid samodejno izbral optimalno lokacijo za prikaz vseh oznak na zemljevidu.',
 	'semanticmaps-par-template' => 'Predloga za oblikovanje vsebine info okna.',
+	'semanticmaps-par-geocodecontrol' => 'Prikaži nadzor geokodiranja.',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
