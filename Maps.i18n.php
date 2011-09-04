@@ -220,7 +220,7 @@ $messages['qqq'] = array(
 	'maps_map' => '{{Identical|Map}}',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-layer-property' => '{{Identical|Property}}',
-	'maps-layer-value' => '{{identical|Value}}',
+	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
 	'maps-latitude' => '{{Identical|Latitude}}',
 	'maps-longitude' => '{{Identical|Longitude}}',
@@ -3044,7 +3044,7 @@ $1',
  * @author McDutchie
  */
 $messages['pms'] = array(
-	'maps-desc' => "A abìlita l'anseriment ëd mape ant le pagine wiki, adrësse geocode e àutre operassion geogràfiche ([http://mapping.referata.com/wiki/Examples demo]).",
+	'maps-desc' => "A abìlita l'anseriment ëd carte ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([http://mapping.referata.com/wiki/Esempi dimostrassion]).",
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
 	'maps-markers' => 'Marcador',
