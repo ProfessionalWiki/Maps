@@ -386,6 +386,7 @@ $messages['gl'] = array(
 	'semanticmaps-par-showtitle' => 'Mostrar ou non un título na ventá de información do marcador. Frecuentemente, desactivar isto é útil ao utilizar un modelo para dar formato ao contido da ventá de información.',
 	'semanticmaps-par-centre' => 'O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.',
 	'semanticmaps-par-template' => 'Un modelo a empregar para dar formato ao contido da ventá de información.',
+	'semanticmaps-par-geocodecontrol' => 'Mostrar o control de xeocodificación.',
 );
 
 /** Swiss German (Alemannisch)
@@ -536,16 +537,27 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
+ * @author Schu
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する ([http://mapping.referata.com/wiki/Examples 実演])。',
+	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供します 。( [http://mapping.referata.com/wiki/Examples デモ] )',
 	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps-kml-link' => 'KMLファイルを閲覧',
 	'semanticmaps-default-kml-pagelink' => 'ページ$1を表示',
-	'semanticmaps_lookupcoordinates' => '座標を調べる',
-	'semanticmaps_enteraddresshere' => '住所をここに入力します',
+	'semanticmaps-loading-forminput' => 'フォーム入力からマップをローディングしています...',
+	'semanticmaps_lookupcoordinates' => '座標を検索',
+	'semanticmaps_enteraddresshere' => '住所をここに入力',
 	'semanticmaps-updatemap' => '地図を更新',
+	'semanticmaps-forminput-remove' => '削除',
+	'semanticmaps-forminput-add' => '追加',
+	'semanticmaps-forminput-locations' => 'ロケーション',
+	'semanticmaps-par-staticlocations' => '問い合わせしたデータと一緒に地図に追加するロケーションのリスト。 display_pointsと同様に、区切り文字としてチルダ "〜" を使って場所ごとにタイトル、説明、およびアイコンを追加することができます。',
+	'semanticmaps-par-forceshow' => '表示する場所がない場合でも、地図を表示しますか？',
+	'semanticmaps-par-showtitle' => 'マーカーの情報ウィンドウのタイトルを表示するかどうか。情報ウィンドウのコンテンツをフォーマットするためにテンプレートを使用するとき、これを無効にすると便利です。',
+	'semanticmaps-par-centre' => '地図の中心。提供されていないときは、自動的に地図上のすべてのマーカーを表示するための最適な中心が選択されます。',
+	'semanticmaps-par-template' => '情報ウィンドウのコンテンツをフォーマットするために使われるテンプレート。',
+	'semanticmaps-par-geocodecontrol' => 'ジオコーディングコントロールを表示します。',
 );
 
 /** Khmer (ភាសាខ្មែរ)
