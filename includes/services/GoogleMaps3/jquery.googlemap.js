@@ -112,7 +112,13 @@
 		
 		// Add the Google KML/KMZ layers.
 		for ( i = options.gkml.length - 1; i >= 0; i-- ) {
-			var kmlLayer = new google.maps.KmlLayer( options.gkml[i], { map: map } );
+			var kmlLayer = new google.maps.KmlLayer(
+				options.gkml[i],
+				{
+					map: map,
+					preserveViewport: !options.kmlrezoom
+				}
+			);
 		}
 		
 		// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
