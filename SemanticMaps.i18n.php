@@ -322,6 +322,7 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author Crochet.david
+ * @author Gomoko
  * @author Grondin
  * @author Hashar
  * @author IAlex
@@ -348,6 +349,7 @@ $messages['fr'] = array(
 	'semanticmaps-par-showtitle' => "Afficher un titre dans la fenêtre d'informations des marqueurs ou non. La désactivation de ceci est souvent utile lorsque vous utilisez un modèle pour formater le contenu de la fenêtre d'informations.",
 	'semanticmaps-par-centre' => "Le centre de la carte. Lorsqu'il n'est pas fourni, la carte va choisir automatiquement le centre optimal pour afficher tous les marqueurs sur la carte.",
 	'semanticmaps-par-template' => "Un modèle à utiliser pour mettre en forme le contenu de la fenêtre d'informations.",
+	'semanticmaps-par-geocodecontrol' => 'Afficher le contrôle de géocodage.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -489,6 +491,7 @@ $messages['ia'] = array(
 	'semanticmaps-par-showtitle' => 'Monstrar un titulo in le fenestra de information de marcator o non. Disactivar isto es sovente utile si un patrono es usate pro formatar le contento del fenestra de information.',
 	'semanticmaps-par-centre' => 'Le centro del carta. Si non specificate, le systema selige automaticamente le centro optimal pro monstrar tote le marcatores in le carta.',
 	'semanticmaps-par-template' => 'Un patrono a usar pro formatar le contento del fenestra de information.',
+	'semanticmaps-par-geocodecontrol' => 'Monstrar le controlo de geocodification.',
 );
 
 /** Indonesian (Bahasa Indonesia)
