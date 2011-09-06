@@ -749,6 +749,7 @@ $messages['pms'] = array(
 	'semanticmaps-par-showtitle' => "Smon-e un tìtol ant la fnesta d'anformassion dël marcator opura nò. La disabilitassion ëd sòn a l'é soens ùtil quand as deuvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
 	'semanticmaps-par-centre' => "Ël sènter ëd la carta. Quand a l'é pa dàit, la carta a trovrà automaticament ël sènter otimal për smon-e tùit ij marcador an sla carta.",
 	'semanticmaps-par-template' => "Në stamp da dovré deje a forma ai contnù dla fnesta d'anformassion.",
+	'semanticmaps-par-geocodecontrol' => 'Mosta ël contròl geocoding.',
 );
 
 /** Portuguese (Português)
