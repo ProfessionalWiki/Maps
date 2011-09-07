@@ -749,7 +749,7 @@ $messages['pms'] = array(
 	'semanticmaps-par-showtitle' => "Smon-e un tìtol ant la fnesta d'anformassion dël marcator opura nò. La disabilitassion ëd sòn a l'é soens ùtil quand as deuvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
 	'semanticmaps-par-centre' => "Ël sènter ëd la carta. Quand a l'é pa dàit, la carta a trovrà automaticament ël sènter otimal për smon-e tùit ij marcador an sla carta.",
 	'semanticmaps-par-template' => "Në stamp da dovré deje a forma ai contnù dla fnesta d'anformassion.",
-	'semanticmaps-par-geocodecontrol' => 'Mosta ël contròl geocoding.',
+	'semanticmaps-par-geocodecontrol' => 'Smon-e ël contròl ëd geocodìfica.',
 );
 
 /** Portuguese (Português)
@@ -978,6 +978,7 @@ $messages['vi'] = array(
 	'semanticmaps-par-showtitle' => 'Tên tùy chọn của cửa sổ thông tin đánh dấu. Có thể để trống để định dạng nội dung cửa sổ thông tin dùng bản mẫu.',
 	'semanticmaps-par-centre' => 'Trung tâm của bản đồ. Nếu không có, bản đồ sẽ tự động chọn trung tâm tối ưu bao gồm tất cả các dấu trên bản đồ.',
 	'semanticmaps-par-template' => 'Bản đồ dùng để định dạng nội dung của cửa sổ thông tin.',
+	'semanticmaps-par-geocodecontrol' => 'Hiện điều khiển mã hóa địa lý.',
 );
 
 /** Volapük (Volapük)
