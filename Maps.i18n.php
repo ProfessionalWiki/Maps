@@ -3900,6 +3900,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://mapping.referata.com/wiki/Examples thử xem])',
+	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
 	'maps-load-failed' => 'Không thể tải bản đồ!',
