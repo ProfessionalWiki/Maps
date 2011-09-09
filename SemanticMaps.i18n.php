@@ -93,6 +93,13 @@ $messages['arz'] = array(
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
 
+/** Azerbaijani (Azərbaycanca)
+ * @author Cekli829
+ */
+$messages['az'] = array(
+	'semanticmaps-forminput-add' => 'Əlavə et',
+);
+
 /** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
