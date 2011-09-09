@@ -356,10 +356,14 @@ $messages['arz'] = array(
  * @author Cekli829
  */
 $messages['az'] = array(
+	'maps_map' => 'Xəritə',
+	'maps-loading-map' => 'Xəritə yüklənir...',
 	'maps-layer-errors' => 'Xətalar',
 	'maps-abb-north' => 'Şm',
 	'maps-abb-east' => 'C',
 	'maps-abb-west' => 'Q',
+	'maps_photos' => 'Şəkillər',
+	'maps_videos' => 'Videolar',
 	'maps_wikipedia' => 'Vikipediya',
 );
 
