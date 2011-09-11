@@ -3543,6 +3543,7 @@ Dostupné mapovacie služby: $1',
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Lesko987
  */
 $messages['sl'] = array(
@@ -3561,6 +3562,10 @@ $messages['sl'] = array(
 	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_osm' => 'OpenStreetMap',
+	'maps_photos' => 'Fotografije',
+	'maps_videos' => 'Videoposnetki',
+	'maps_wikipedia' => 'Wikipedija',
+	'maps_webcams' => 'Spletne kamere',
 );
 
 /** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
@@ -3625,6 +3630,7 @@ $messages['sv'] = array(
 	'maps-layer-type-supported-by' => 'Denna lagertyp kan endast användas med {{PLURAL:$2|kartläggningstjänsten $1|dessa kartläggningstjänster: $1}}.',
 	'maps-mapsdoc-par-service' => 'Kartläggningstjänsten för att visa parameterdokumentation.',
 	'maps-mapsdoc-par-language' => 'Språket som du vill visa dokumentationen i. Om det finns någon sådan översättning kommer engelska att användas istället.',
+	'maps-finddestination-par-distance' => 'Reseavståndet.',
 	'maps-geocode-par-location' => 'Adressen som du vill geokoda.',
 	'maps-geocode-par-mappingservice' => 'Geokodningstjänsten du vill använda. Se de tillgängliga geokodningtjänsterna.',
 	'validation-error-invalid-location' => 'Parameter $1 måste vara en giltig plats.',
@@ -3654,6 +3660,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
 	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_centred_on' => 'Karta centrerad på $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v2.',
 	'maps_overlays' => 'Överlägg',
 	'maps_photos' => 'Foton',
 	'maps_videos' => 'Videoklipp',
