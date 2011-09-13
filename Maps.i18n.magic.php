@@ -1,4 +1,10 @@
 <?php
+/**
+ * Internationalisation file for Maps extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $magicWords = array();
 
@@ -50,6 +56,12 @@ $magicWords['br'] = array(
 $magicWords['ce'] = array(
 	'display_point' => array( 0, 'гайта_тlадам', 'показать_точку', 'display_point', 'display_points' ),
 	'geocode' => array( 0, 'геагишар', 'геокод', 'geocode' ),
+);
+
+/** Esperanto (Esperanto) */
+$magicWords['eo'] = array(
+	'coordinates' => array( 0, 'koordinatoj' ),
+	'distance' => array( 0, 'distanco' ),
 );
 
 /** Spanish (Español) */
@@ -118,6 +130,16 @@ $magicWords['ml'] = array(
 	'distance' => array( 0, 'ദൂരം' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
+$magicWords['nds-nl'] = array(
+	'display_map' => array( 0, 'kaorte_weergeven' ),
+	'geocode' => array( 0, 'geokoderen' ),
+	'geodistance' => array( 0, 'geo-aofstaand' ),
+	'finddestination' => array( 0, 'bestemmingzeuken' ),
+	'coordinates' => array( 0, 'koordinaoten' ),
+	'distance' => array( 0, 'aofstaand' ),
+);
+
 /** Dutch (Nederlands) */
 $magicWords['nl'] = array(
 	'display_map' => array( 0, 'kaart_weergeven' ),
@@ -127,6 +149,13 @@ $magicWords['nl'] = array(
 	'finddestination' => array( 0, 'bestemmingzoeken' ),
 	'coordinates' => array( 0, 'coordinaten' ),
 	'distance' => array( 0, 'afstand' ),
+);
+
+/** Polish (Polski) */
+$magicWords['pl'] = array(
+	'display_map' => array( 0, 'wyświetl_mapę' ),
+	'coordinates' => array( 0, 'współrzędne' ),
+	'distance' => array( 0, 'odległość' ),
 );
 
 /** Pashto (پښتو) */
@@ -163,7 +192,7 @@ $magicWords['si'] = array(
 	'distance' => array( 0, 'දුර', 'distance' ),
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'display_map' => array( 0, 'прикажи_мапу' ),
 	'display_point' => array( 0, 'прикажи_тачку', 'прикажи_тачке' ),
