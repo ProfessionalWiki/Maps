@@ -27,11 +27,7 @@ class MapsOSMDispMap extends MapsBaseMap {
 			'iframe',
 			array(
 				'id' => $mapName,
-				'style' => array(
-					'width' => $params['width'],
-					'height' => $params['height'],
-					'clear' => 'both'
-				),
+				'style' => "width: {$params['width']}; height: {$params['height']}; clear: both;",
 				'src' => "http://toolserver.org/~kolossos/openlayers/kml-on-ol.php?zoom={$params['zoom']}&lat={$params['centre']['lat']}&lon={$params['centre']['lon']}&lang=$lang&thumbs=$thumbs&photo=$photos"
 			),
 			wfMsg( 'maps-loading-map' )

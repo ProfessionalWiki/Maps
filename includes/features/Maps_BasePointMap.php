@@ -76,12 +76,7 @@ class MapsBasePointMap {
 			'div',
 			array(
 				'id' => $mapName,
-				'style' => array(
-					'width' => $params['width'],
-					'height' => $params['height'],
-					'background-color' => '#cccccc',
-					'overflow' => 'hidden'
-				)
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
 		);
