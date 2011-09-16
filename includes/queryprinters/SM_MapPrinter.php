@@ -207,7 +207,12 @@ class SMMapPrinter extends SMWResultPrinter {
 			'div',
 			array(
 				'id' => $mapName,
-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+				'style' => array(
+					'width' => $params['width'],
+					'height' => $params['height'],
+					'background-color' => '#cccccc',
+					'overflow' => 'hidden'
+				)
 			),
 			wfMsg( 'maps-loading-map' )
 		);
