@@ -28,7 +28,6 @@ class MapsParamGeoService extends ItemParameterManipulation {
 	 */
 	public function __construct( $mappingServiceParam = false ) {
 		parent::__construct();
-		
 		$this->mappingServiceParam = $mappingServiceParam;		
 	}
 	
@@ -49,7 +48,9 @@ class MapsParamGeoService extends ItemParameterManipulation {
 		$value = $this->getMainIndentifier( $value );	
 		
 		// Override the defaulting.
-		if ( $parameter->wasSetToDefault() && $this->mappingServiceParam !== false ) {
+		if ( $parameter->wasSetToDefault() 
+			&& is_string( $this->mappingServiceParam )
+			&& array_key_exists( $this->mappingServiceParam, $parameters ) ) {
 			$value = self::resolveOverrides( $value, $parameters[$this->mappingServiceParam]->getValue() );
 		}
 		
