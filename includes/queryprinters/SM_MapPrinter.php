@@ -48,30 +48,6 @@ class SMMapPrinter extends SMWResultPrinter {
 	}
 
 	/**
-	 * (non-PHPdoc)
-	 * @see SMWResultPrinter::readParameters()
-	 */
-	protected function readParameters( /* array */ $params, $outputmode ) {
-		parent::readParameters( $params, $outputmode );
-
-		$validator = new Validator( $this->getName(), false );
-		$validator->setParameters( $params, $this->getParameterInfo() );
-		$validator->validateParameters();
-		
-		$fatalError  = $validator->hasFatalError();
-		
-		if ( $fatalError === false ) {
-			$this->parameters = $validator->getParameterValues();
-		}
-		else {
-			$this->fatalErrorMsg =
-				'<span class="errorbox">' .
-				htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $fatalError->getMessage() ) ) . 
-				'</span>';			
-		}	
-	}
-	
-	/**
 	 * Returns an array containing the parameter info.
 	 * 
 	 * @since 1.0
@@ -174,7 +150,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		if ( $this->fatalErrorMsg === false ) {
 			global $wgParser;
 			
-			$params = $this->parameters;
+			$params = $this->m_params;
 			
 			$queryHandler = new SMQueryHandler( $res, $outputmode );
 			$queryHandler->setShowSubject( $params['showtitle'] );
