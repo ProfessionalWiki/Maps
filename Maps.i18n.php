@@ -587,6 +587,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'maps-desc' => "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all. ([http://mapping.referata.com/wiki/Examples Diskouezadenn])",
+	'right-geocode' => 'Geokod',
 	'maps_map' => 'Kartenn',
 	'maps-loading-map' => 'O kargañ ar gartenn...',
 	'maps-load-failed' => "N'eus ket bet gallet kargañ ar gartenn !",
