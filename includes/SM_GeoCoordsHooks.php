@@ -32,15 +32,13 @@ final class SMGeoCoordsHooks {
 		if ( $format === false ) {
 			// Only apply when there is more then one print request.
 			// This way requests comming from #show are ignored. 
-			if ( count( $printRequests ) > 1 ) {
+			if ( count( $printRequests ) > 0 ) {
 				$allCoords = true;
-				$first = true;
 				
 				// Loop through the print requests to determine their types.
-				foreach( $printRequests as $printRequest ) {
+				foreach( $printRequests as /* SMWPrintRequest */ $printRequest ) {
 					// Skip the first request, as it's the object.
-					if ( $first ) {
-						$first = false;
+					if ( $printRequest->getMode() == SMWPrintRequest::PRINT_THIS ) {
 						continue;
 					}
 					
