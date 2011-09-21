@@ -33,7 +33,8 @@ final class SMGeoCoordsHooks {
 			// Only apply when there is more then one print request.
 			// This way requests comming from #show are ignored. 
 			if ( count( $printRequests ) > 0 ) {
-				$allCoords = true;
+				$allValid = true;
+				$hasCoords = false;
 				
 				// Loop through the print requests to determine their types.
 				foreach( $printRequests as /* SMWPrintRequest */ $printRequest ) {
@@ -43,15 +44,18 @@ final class SMGeoCoordsHooks {
 					}
 					
 					$typeId = $printRequest->getTypeID();
-						
-					if ( $typeId != '_geo' ) {
-						$allCoords = false;
+					
+					if ( $typeId == '_geo' ) {
+						$hasCoords = true;
+					}
+					else {
+						$allValid = false;
 						break;
 					}
 				}
 	
 				// If they are all coordinates, set the result format to 'map'.
-				if ( $allCoords ) {
+				if ( $allValid && $hasCoords ) {
 					$format = 'map';
 				}				
 			}
