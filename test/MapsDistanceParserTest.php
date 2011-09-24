@@ -92,9 +92,10 @@ class MapsDistanceParserTest extends MediaWikiTestCase {
 		);
 		
 		foreach( array_merge( $conversions, array_reverse( $conversions ) ) as $source => $target ) {
+			global $wgContLang;
 			$unit = explode( ' ', $target, 2 );
 			$unit = $unit[1];
-			$this->assertEquals( $target, MapsDistanceParser::parseAndFormat( $source, $unit ), "'$source' was not parsed and formatted to '$target':" );
+			$this->assertEquals( $wgContLang->formatNum( $target ), MapsDistanceParser::parseAndFormat( $source, $unit ), "'$source' was not parsed and formatted to '$target':" );
 		}
 	}
 	
