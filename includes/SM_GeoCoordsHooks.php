@@ -32,7 +32,7 @@ final class SMGeoCoordsHooks {
 		if ( $format === false ) {
 			// Only apply when there is more then one print request.
 			// This way requests comming from #show are ignored. 
-			if ( count( $printRequests ) > 0 ) {
+			if ( count( $printRequests ) > 1 ) {
 				$allValid = true;
 				$hasCoords = false;
 				

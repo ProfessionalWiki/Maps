@@ -306,9 +306,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @return array
 	 */
 	public final function getResult( SMWQueryResult $results, array $params, $outputmode ) {
-		// Skip checks, results with 0 entries are normal.
-		$this->readParameters( $params, $outputmode );
-		
+		$this->handleParameters( $params, $outputmode );
 		return $this->getResultText( $results, SMW_OUTPUT_HTML );
 	}
 
