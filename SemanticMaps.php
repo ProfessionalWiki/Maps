@@ -45,6 +45,10 @@ if ( version_compare( SMW_VERSION, '1.6 alpha', '<' ) ) {
 	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.6 or above; use Semantic Maps 0.7.x for older versions.' );
 }
 
+if ( version_compare( SMW_VERSION, '1.6.2 alpha', '<' ) ) {
+	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.6.3 or above; use Semantic Maps 1.0 to 1.0.3 for SMW 1.6 to 1.6.1.' );
+}
+
 define( 'SM_VERSION', '1.0.4 alpha' );
 
 $wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][] = array(
