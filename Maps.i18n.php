@@ -213,10 +213,12 @@ $1',
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Umherirrender
  * @author Тест
  */
 $messages['qqq'] = array(
 	'maps-desc' => '{{desc}}',
+	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-layer-property' => '{{Identical|Property}}',
