@@ -93,14 +93,14 @@
 	 */
 	this.removeEarthType = function() {
 		if ( Array.prototype.filter ) {
-			options.types = options.types.filter( function( element, index, array ) { return element != 'earth'; } );
+			options.types = options.types.filter( function( element, index, array ) { return element !== 'earth'; } );
 		}
 		else {
 			// Seems someone is using the o-so-awesome browser that is IE.
 			var types = [];
 			
 			for ( i in options.types ) {
-				if ( options.types[i] != 'earth' ) {
+				if ( typeof( options.types[i] ) !== 'function' && options.types[i] !== 'earth' ) {
 					types.push( options.types[i] );
 				}
 			}
@@ -110,10 +110,6 @@
 	};
 	
 	this.addOverlays = function() {
-//		for ( i in this.markers ) {
-//			this.markers[i].setMap( map );
-//		}
-		
 		// Add the Google KML/KMZ layers.
 		for ( i = options.gkml.length - 1; i >= 0; i-- ) {
 			var kmlLayer = new google.maps.KmlLayer(
@@ -159,7 +155,9 @@
 		mapOptions.streetViewControl = $.inArray( 'streetview', options.controls ) != -1;
 
 		for ( i in options.types ) {
-			options.types[i] = eval( 'google.maps.MapTypeId.' + options.types[i] );
+			if ( typeof( options.types[i] ) !== 'function' ) {
+				options.types[i] = eval( 'google.maps.MapTypeId.' + options.types[i] );
+			}
 		}
 		
 		// Map control styles
