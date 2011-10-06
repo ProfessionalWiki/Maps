@@ -209,6 +209,7 @@ $messages['ca'] = array(
 	'semanticmaps-par-showtitle' => "Es mostra o no un títol en la finestra d'informació del marcador. Inhabilitar-ho sovint és útil quan s'utilitza una plantilla per donar format al contingut de la finestra d'informació.",
 	'semanticmaps-par-centre' => 'El centre del mapa. Quan no es proporciona, el map triarà automàticament el centre òptim per mostrar tots els marcadors al mapa.',
 	'semanticmaps-par-template' => "Una plantilla que s'utilitza per dona format al contingut de la finestra d'informació.",
+	'semanticmaps-par-geocodecontrol' => 'Mostra el control de geocodificació.',
 );
 
 /** Czech (Česky)
