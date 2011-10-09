@@ -3571,7 +3571,8 @@ $messages['sl'] = array(
 	'maps_webcams' => 'Spletne kamere',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -3583,6 +3584,11 @@ $messages['sr-ec'] = array(
 	'maps-abb-west' => 'З',
 	'maps-latitude' => 'Географска ширина:',
 	'maps-longitude' => 'Географска дужина:',
+	'maps_googlemaps2' => 'Гугл мапе, друго издање',
+	'maps_googlemaps3' => 'Гугл мапе, треће издање',
+	'maps_yahoomaps' => 'Јаху мапе',
+	'maps_openlayers' => 'Опенлејерс',
+	'maps_osm' => 'Опенстритмап',
 	'maps_photos' => 'Фотографије',
 	'maps_videos' => 'Видео снимци',
 	'maps_webcams' => 'Веб-камере',
