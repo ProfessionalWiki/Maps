@@ -234,6 +234,7 @@ $messages['cy'] = array(
 	'semanticmaps-forminput-remove' => 'Tynner oddi ar y map',
 	'semanticmaps-forminput-add' => 'Ychwaneger',
 	'semanticmaps-forminput-locations' => 'Lleoliadau',
+	'semanticmaps-par-forceshow' => "Dangos y map, hyd yn oed pe nad oes mannau i'w dangos?",
 );
 
 /** German (Deutsch)
@@ -875,11 +876,13 @@ $messages['sl'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Prikaži nadzor geokodiranja.',
 );
 
-/** Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Вредност $1 није исправно растојање.',
+	'semanticmaps-kml' => 'KML',
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 );
 
