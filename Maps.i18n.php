@@ -3400,6 +3400,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Adata80
  * @author Haffman
  * @author Lockal
  * @author MaxSem
@@ -3501,6 +3502,7 @@ $1',
 	'maps_videos' => 'Видео',
 	'maps_wikipedia' => 'Википедия',
 	'maps_webcams' => 'Веб-камеры',
+	'maps-googlemaps2-par-kml' => 'KML файлы для загрузки на карту.',
 	'maps-googlemaps3-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v3.',
 );
 
