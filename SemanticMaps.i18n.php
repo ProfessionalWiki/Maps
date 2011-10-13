@@ -712,6 +712,7 @@ $messages['no'] = array(
 	'semanticmaps-par-showtitle' => 'Vise tittel i markørinfovinduet eller ikke. Deaktivering er ofte nyttig når en bruker en mal for å formatere innholdet i infovinduet.',
 	'semanticmaps-par-centre' => 'Kartets sentrum. Hvis dette ikke er angitt, vil kartet automatisk velge det optimale senteret for å vise alle kartmarkørene.',
 	'semanticmaps-par-template' => 'Mal som brukes for å formatere innholdet i infovinduet.',
+	'semanticmaps-par-geocodecontrol' => 'Vis geokodingsstyringen',
 );
 
 /** Occitan (Occitan)
