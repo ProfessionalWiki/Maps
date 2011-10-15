@@ -8,9 +8,9 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 
 === Semantic Maps 1.0.4 ===
-(2011-0x-xx)
+(2011-10-15)
 
-* Added compatibility with SMW 1.6.2 and later.
+* Added compatibility with SMW 1.7 and later.
 * Removed compatibility with SMW 1.6.1 and earlier.
 * Improved default map format handling.
 
