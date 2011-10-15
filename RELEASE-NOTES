@@ -8,7 +8,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 1.0.4 ===
-(2011-0x-xx)
+(2011-10-15)
 
 * Updated OpenLayers from 2.10 to 2.11.
 * Fixed bug in adding adittional markers for Google Maps v3 (mainly affecting the Semantic Maps form input).
