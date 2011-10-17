@@ -604,6 +604,14 @@ för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
 	'semanticmaps-par-geocodecontrol' => "Donn dat Bedeenelemänt aanzeije för de Ko'odinaate op de Ääd ze beärbeide",
 );
 
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author Gomada
+ */
+$messages['ku-latn'] = array(
+	'semanticmaps-forminput-remove' => 'Jê bibe',
+	'semanticmaps-forminput-locations' => 'Cih',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
