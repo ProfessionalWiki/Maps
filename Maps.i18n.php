@@ -1324,6 +1324,7 @@ $1",
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'right-geocode' => 'G·eocode',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Chargement de la mapa...',
 	'maps-load-failed' => 'Empossiblo de chargiér la mapa !',
