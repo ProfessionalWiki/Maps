@@ -751,6 +751,7 @@ $messages['ce'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'right-geocode' => 'Geokódování',
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
