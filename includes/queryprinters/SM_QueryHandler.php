@@ -367,7 +367,7 @@ class SMQueryHandler {
 		if ( $this->linkAbsolute ) {
 			$t = Title::newFromText( $printRequest->getHTMLText( NULL ), SMW_NS_PROPERTY );
 
-			if ( $t->exists() ) {
+			if ( $t instanceof Title && $t->exists() ) {
 				$propertyName = $propertyName = Html::element(
 					'a',
 					array( 'href' => $t->getFullUrl() ),
