@@ -402,6 +402,7 @@ $messages['gl'] = array(
 );
 
 /** Swiss German (Alemannisch)
+ * @author Als-Chlämens
  * @author Als-Holder
  */
 $messages['gsw'] = array(
@@ -416,6 +417,12 @@ $messages['gsw'] = array(
 	'semanticmaps-forminput-remove' => 'Uuseneh',
 	'semanticmaps-forminput-add' => 'Zuefiege',
 	'semanticmaps-forminput-locations' => 'Standort',
+	'semanticmaps-par-staticlocations' => 'E Lischt vo Standört, wo zämme mit de Date, wo aabgfrogt werde, uff de Charte dezuegno werde sölle. Analog zue de Aazeigpünkt, chönne zue jedem Standort mit de Tilde „~“ als Trennzeiche, e Titel, Beschrybig un Symbol dezuegno werde.',
+	'semanticmaps-par-forceshow' => 'Die Charte au aazeige, wänn es kei Standört zum Aazeige git?',
+	'semanticmaps-par-showtitle' => 'E Titel im Informationsfenschter vo de Kennzeichnig aazeige oder nit. Des z deaktiviere isch vilmool nützlig, wänn e Vorlag zur Formatierig vum Inhalt vum Informationsfenschter bruucht wird.',
+	'semanticmaps-par-centre' => "S Zentrum vo de Chart. Wänn's nit andersch aagee isch, wird automatisch s optimali Zentrum zur Darstellig vo allene Kennzeichnige uff de Chart ussgwäält.",
+	'semanticmaps-par-template' => 'E Vorlag, wo zur Formatierig vum Inhalt vum Informationsfenschter bruucht wird.',
+	'semanticmaps-par-geocodecontrol' => 'D Stüürigssyte zum Geokodiere aazeige.',
 );
 
 /** Hebrew (עברית)
