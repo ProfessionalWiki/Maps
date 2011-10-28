@@ -66,14 +66,17 @@ class SMKMLPrinter extends SMWResultPrinter {
 		$params = array_merge( parent::getParameters(), $this->exportFormatParameters() );
 
 		$params['text'] = new Parameter( 'text', Parameter::TYPE_STRING, $egMapsDefaultLabel );
-		//$params['text']->setDescription();
+		$params['text']->setMessage( 'semanticmaps-kml-text' );
 
 		$params['title'] = new Parameter( 'title', Parameter::TYPE_STRING, $egMapsDefaultTitle );
+		$params['title']->setMessage( 'semanticmaps-kml-title' );
 
-		$params[] = new Parameter( 'linkabsolute', Parameter::TYPE_BOOLEAN, true );
+		$params['linkabsolute'] = new Parameter( 'linkabsolute', Parameter::TYPE_BOOLEAN, true );
+		$params['linkabsolute']->setMessage( 'semanticmaps-kml-linkabsolute' );
 
 		$params['pagelinktext'] = new Parameter( 'pagelinktext', Parameter::TYPE_STRING, wfMsg( 'semanticmaps-default-kml-pagelink' ) );
-
+		$params['pagelinktext']->setMessage( 'semanticmaps-kml-pagelinktext' );
+		
 		return $params;
 	}
 
@@ -115,6 +118,14 @@ class SMKMLPrinter extends SMWResultPrinter {
 		$link->setParameter( 'kml', 'format' );
 		$link->setParameter( $this->m_params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
 		$link->setParameter( $this->m_params['pagelinktext'], 'pagelinktext' );
+		
+		if ( $this->m_params['title'] !== '' ) {
+			$link->setParameter( $this->m_params['title'], 'title' );
+		}
+		
+		if ( $this->m_params['text'] !== '' ) {
+			$link->setParameter( $this->m_params['text'], 'text' );
+		}
 
 		if ( array_key_exists( 'limit', $this->m_params ) ) {
 			$link->setParameter( $this->m_params['limit'], 'limit' );

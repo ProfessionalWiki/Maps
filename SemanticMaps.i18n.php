@@ -40,6 +40,11 @@ $messages['en'] = array(
 	'semanticmaps-par-template'		=> 'A template to use to format the info window contents.',
 	
 	'semanticmaps-par-geocodecontrol'		=> 'Show the geocoding control.',
+	
+	'semanticmaps-kml-text' => 'The text associates with each page. Overriden by the aditional queried properties if any.',
+	'semanticmaps-kml-title' => 'The default title for results',
+	'semanticmaps-kml-linkabsolute' => 'Should links be absolute or not (ie relative)',
+	'semanticmaps-kml-pagelinktext' => 'The text to use for the links to the page, in which $1 will be replaced by the page title',
 );
 
 /** Message documentation (Message documentation)
