@@ -268,6 +268,10 @@ $messages['de'] = array(
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Zeige die Steuerungsseite zum Geokodieren.',
+	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
+	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
+	'semanticmaps-kml-linkabsolute' => 'Sollen die Links absolut sein oder nicht (nämlich relativ)',
+	'semanticmaps-kml-pagelinktext' => 'Der Text, der für die Links zur Seite genutzt werden soll. $1 wird dabei durch den Namen der Seite ersetzt.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -660,6 +664,10 @@ $messages['mk'] = array(
 	'semanticmaps-par-centre' => 'Средиштето на картата. Ако не е укажано, картата автоматски ќе го одбере средиштето кајшто оптимално ќе се прикажат сите одбележувачи на картата.',
 	'semanticmaps-par-template' => 'Шаблон за форматирање на содржината на инфопрозорецот.',
 	'semanticmaps-par-geocodecontrol' => 'Прикажи геокодни котроли.',
+	'semanticmaps-kml-text' => 'Текстот на секоја страница. Се презапишува ако има дополнителни барани својства.',
+	'semanticmaps-kml-title' => 'Стандарден наслов за резултатите',
+	'semanticmaps-kml-linkabsolute' => 'Дали врските да бидат апсолутни',
+	'semanticmaps-kml-pagelinktext' => 'Текстот на врските на страницата, каде $1 ќе се замени со насловот на страницата',
 );
 
 /** Malayalam (മലയാളം)
@@ -680,6 +688,7 @@ $messages['ms'] = array(
 
 /** Dutch (Nederlands)
  * @author Jeroen De Dauw
+ * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -700,6 +709,9 @@ $messages['nl'] = array(
 	'semanticmaps-par-centre' => 'Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.',
 	'semanticmaps-par-template' => 'Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.',
 	'semanticmaps-par-geocodecontrol' => 'Besturingselement voor geocodering weergeven.',
+	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
+	'semanticmaps-kml-linkabsolute' => 'Moeten verwijzingen absoluut zijn of niet (d.w.z. relatief)',
+	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de verwijzingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
