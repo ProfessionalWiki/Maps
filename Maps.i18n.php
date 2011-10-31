@@ -354,6 +354,40 @@ $messages['arz'] = array(
 	'maps_yahoomaps' => 'خرايط ياهو',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([http://mapping.referata.com/wiki/Examples Demos])',
+	'right-geocode' => 'Xeocódigu',
+	'maps_map' => 'Mapa',
+	'maps-loading-map' => "Cargando'l mapa...",
+	'maps-load-failed' => '¡Nun se pudo cargar el mapa!',
+	'maps-markers' => 'Marcadores',
+	'maps-others' => 'otros',
+	'maps-ns-layer' => 'Capa',
+	'maps-ns-layer-talk' => 'Alderique de capa',
+	'maps-layer-property' => 'Propiedá',
+	'maps-layer-value' => 'Valor',
+	'maps-layer-errors' => 'Errores',
+	'maps-error-invalid-layerdef' => 'Esta definición de capa nun ye válida.',
+	'maps-error-invalid-layertype' => 'Nun hai capes de tipu "$1". Sólo {{PLURAL:$3|tien sofitu esti tipu|tienen sofitu estos tipos}}: $2',
+	'maps-error-no-layertype' => "Tienes d'especificar la triba de capa. {{PLURAL:$2|Sólo tien sofitu esta triba|Tienen sofitu estes tribes}}: $1",
+	'validation-error-invalid-layer' => 'El parámetru $1 tien de ser una capa válida.',
+	'validation-error-invalid-layers' => 'El parámetru $1 tien de ser una o más capes válides.',
+	'maps-layer-of-type' => 'Capa de tipu $1',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Llatitú:',
+	'maps-longitude' => 'Llonxitú:',
+	'maps_overlays' => 'Superposiciones',
+	'maps_photos' => 'Semeyes',
+	'maps_videos' => 'Videos',
+	'maps_wikipedia' => 'Uiquipedia',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
