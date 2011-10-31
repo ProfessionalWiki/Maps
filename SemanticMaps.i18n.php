@@ -369,6 +369,10 @@ $messages['fr'] = array(
 	'semanticmaps-par-centre' => "Le centre de la carte. Lorsqu'il n'est pas fourni, la carte va choisir automatiquement le centre optimal pour afficher tous les marqueurs sur la carte.",
 	'semanticmaps-par-template' => "Un modèle à utiliser pour mettre en forme le contenu de la fenêtre d'informations.",
 	'semanticmaps-par-geocodecontrol' => 'Afficher le contrôle de géocodage.',
+	'semanticmaps-kml-text' => "Le texte associé avec chaque page. Remplacé par des propriétés récupérées supplémentaires s'il y en a.",
+	'semanticmaps-kml-title' => 'Le titre par défaut pour les résultats',
+	'semanticmaps-kml-linkabsolute' => 'Si les titres doivent être absolus ou non (c.à.d. relatifs)',
+	'semanticmaps-kml-pagelinktext' => 'Le texte à utiliser pour les liens vers la page, dans lesquels $1 sera remplacé par le titre de la page',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -520,6 +524,10 @@ $messages['ia'] = array(
 	'semanticmaps-par-centre' => 'Le centro del carta. Si non specificate, le systema selige automaticamente le centro optimal pro monstrar tote le marcatores in le carta.',
 	'semanticmaps-par-template' => 'Un patrono a usar pro formatar le contento del fenestra de information.',
 	'semanticmaps-par-geocodecontrol' => 'Monstrar le controlo de geocodification.',
+	'semanticmaps-kml-text' => 'Le texto associate con cata pagina. Es supplantate per le additional proprietates consultate, si existe.',
+	'semanticmaps-kml-title' => 'Le titulo predefinite pro resultatos',
+	'semanticmaps-kml-linkabsolute' => 'Debe ligamines esser absolute o non (i.e. relative)',
+	'semanticmaps-kml-pagelinktext' => 'Le texto a usar pro le ligamines al pagina, in le quales $1 essera reimplaciate per le titulo de pagina',
 );
 
 /** Indonesian (Bahasa Indonesia)
