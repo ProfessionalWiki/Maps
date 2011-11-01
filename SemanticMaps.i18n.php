@@ -412,7 +412,9 @@ $messages['gl'] = array(
 	'semanticmaps-par-centre' => 'O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.',
 	'semanticmaps-par-template' => 'Un modelo a empregar para dar formato ao contido da ventá de información.',
 	'semanticmaps-par-geocodecontrol' => 'Mostrar o control de xeocodificación.',
+	'semanticmaps-kml-text' => 'O texto asociado a cada páxina. Substituído polas propiedades pescudadas adicionais, se existen.',
 	'semanticmaps-kml-title' => 'O título por defecto para os resultados',
+	'semanticmaps-kml-linkabsolute' => 'Se os títulos deberían ser absolutos ou non (por exemplo, relativos)',
 	'semanticmaps-kml-pagelinktext' => 'O texto a usar para as ligazóns cara á páxina, nas que "$1" será substituído polo título da páxina',
 );
 
