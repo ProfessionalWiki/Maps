@@ -2490,6 +2490,7 @@ $1',
 	'maps-googlemaps3-par-kml' => "KML-Fichieren déi op d'Kaart musse geluede ginn.",
 	'maps-osm-par-thumbs' => 'Miniaturbiller weisen',
 	'maps-osm-par-photos' => 'Fotoe weisen',
+	'maps-yahoomaps-par-type' => 'Den Typ vu Kaart den am Ufank gewise gëtt.',
 );
 
 /** Lithuanian (Lietuvių)
