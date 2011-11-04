@@ -98,6 +98,24 @@ $messages['arz'] = array(
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
 
+/** Asturian (Asturianu)
+ * @author Xuacu
+ */
+$messages['ast'] = array(
+	'semanticmaps-desc' => 'Ufre la capacidá de ver y editar los datos de coordenaes guardaos cola estensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples exemplos]).',
+	'semanticmaps-unrecognizeddistance' => 'El valor $1 nun ye una distancia válida.',
+	'semanticmaps-kml-link' => 'Ver el ficheru KML',
+	'semanticmaps-default-kml-pagelink' => 'Ver la páxina "$1"',
+	'semanticmaps-loading-forminput' => "Cargando'l formulariu d'entrada del mapa...",
+	'semanticmaps_lookupcoordinates' => 'Consultar les coordenaes',
+	'semanticmaps_enteraddresshere' => 'Escribi la direición equí',
+	'semanticmaps-updatemap' => 'Anovar el mapa',
+	'semanticmaps-forminput-remove' => 'Desaniciar',
+	'semanticmaps-forminput-add' => 'Amestar',
+	'semanticmaps-forminput-locations' => 'Llugares',
+	'semanticmaps-par-staticlocations' => 'Llista de llugares p\'amestar al mapa xunto colos datos consultaos. Como con display_points, pues amestar un títulu, una descripción y un iconu pa cada llugar usando\'l signu "~" como separador.',
+);
+
 /** Azerbaijani (Azərbaycanca)
  * @author Cekli829
  */
@@ -278,7 +296,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'semanticmaps-desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://mapping.referata.com/wiki/Examples pśikłady]).',
 	'semanticmaps-unrecognizeddistance' => 'Gódnota $1 njejo płaśiwa distanca.',
 	'semanticmaps-kml-link' => 'KML-dataju se woglědaś',
 	'semanticmaps-default-kml-pagelink' => 'Bok $1 se woglědaś',
@@ -721,6 +739,7 @@ $messages['nl'] = array(
 	'semanticmaps-par-centre' => 'Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.',
 	'semanticmaps-par-template' => 'Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.',
 	'semanticmaps-par-geocodecontrol' => 'Besturingselement voor geocodering weergeven.',
+	'semanticmaps-kml-text' => 'De tekst die gekoppeld is aan iedere pagina. Als er extra opgevraagde eigenschappen zijn, wordt deze tekst daardoor overschreven.',
 	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
 	'semanticmaps-kml-linkabsolute' => 'Moeten verwijzingen absoluut zijn of niet (d.w.z. relatief)',
 	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de verwijzingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
