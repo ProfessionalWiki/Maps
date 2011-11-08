@@ -275,7 +275,7 @@ class SMMapPrinter extends SMWResultPrinter {
 				$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
 				$jsonObj['text'] = $parser->parse( $jsonObj['text'], $parser->getTitle(), new ParserOptions() )->getText();
 				
-				$hasTitleAndtext = $jsonObj['title'] != '' && $jsonObj['text'] != '';
+				$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
 				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
 				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
 				

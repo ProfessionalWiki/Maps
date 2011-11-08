@@ -30,7 +30,7 @@
 		
 		var text = coord.dms( normalProjectionLocation.lat, normalProjectionLocation.lon );
 		
-		if ( title != '' ) {
+		if ( title !== '' ) {
 			text = '<b>' + title + '</b><hr />' + text;
 		}
 		
@@ -60,7 +60,7 @@
 		this.projectAndShowLocation( new OpenLayers.LonLat( coordinate.lon, coordinate.lat ), '' );
 	};
 	
-	if ( options.geonamesusername != '' ) {
+	if ( options.geonamesusername !== '' ) {
 		this.geocodeAddress = function( address ) {
 			$.getJSON(
 				'http://api.geonames.org/searchJSON?callback=?',

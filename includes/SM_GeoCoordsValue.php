@@ -78,7 +78,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 		$comparator = SMW_CMP_EQ;
 
-		if ( $value == '' ) {
+		if ( $value === '' ) {
 			$this->addError( wfMsg( 'smw_novalues' ) );
 		} else {
 			SMWDataValue::prepareValue( $value, $comparator );

@@ -90,7 +90,7 @@
 	} );
 	
 	this.geofield.blur( function() {
-		if ( this.value == '' ) {
+		if ( this.value === '' ) {
 			this.value = mw.msg( 'semanticmaps_enteraddresshere' );
 			$( this ).css( 'color', 'darkgray' );
 		}

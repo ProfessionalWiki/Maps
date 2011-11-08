@@ -132,7 +132,7 @@ class SMQueryHandler {
 	 * @param string $template
 	 */
 	public function setTemplate( $template ) {
-		$this->template = $template == '' ? false : $template;
+		$this->template = $template === '' ? false : $template;
 	}
 
 	/**
@@ -285,7 +285,7 @@ class SMQueryHandler {
 			}
 		}
 
-		if ( count( $properties ) > 0 && $text != '' ) {
+		if ( count( $properties ) > 0 && $text !== '' ) {
 			$text .= $this->subjectSeparator;
 		}
 
@@ -329,7 +329,7 @@ class SMQueryHandler {
 			if ( $this->titleLinkSeperate ) {
                 $txt = $object->getTitle()->getText();
 
-                if ( $this->pageLinkText != '' ) {
+                if ( $this->pageLinkText !== '' ) {
                     $txt = str_replace( '$1', $txt, $this->pageLinkText );
                 }
 				$text .= Html::element(
@@ -405,7 +405,7 @@ class SMQueryHandler {
 			$propertyValue = $object->getLongText( $this->outputmode, $wgUser->getSkin() );
 		}
 
-		return $propertyName . ( $propertyName == '' ? '' : ': ' ) . $propertyValue;
+		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
 	}
 
 	/**
@@ -483,7 +483,7 @@ class SMQueryHandler {
 				}
 			}
 		} // Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here
-		elseif ( $this->icon != '' ) {
+		elseif ( $this->icon !== '' ) {
 			$icon = MapsMapper::getFileUrl( $this->icon );
 		}
 
