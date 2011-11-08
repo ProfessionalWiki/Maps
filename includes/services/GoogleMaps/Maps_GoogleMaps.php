@@ -251,7 +251,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	public static function validateGoogleMapsKey() {
 		global $egGoogleMapsKey, $wgGoogleMapsKey;
 		
-		if ( isset( $wgGoogleMapsKey ) && trim( $egGoogleMapsKey ) == '' ) {
+		if ( isset( $wgGoogleMapsKey ) &&  $egGoogleMapsKey !== '' ) {
 			$egGoogleMapsKey = $wgGoogleMapsKey;
 		}
 	}

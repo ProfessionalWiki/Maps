@@ -16,7 +16,7 @@
 			marker = new OpenLayers.Marker( markerData.lonlat );
 		}
 
-		if ( markerData.text != '' ) {
+		if ( markerData.text !== '' ) {
 			// This is the handler for the mousedown event on the marker, and displays the popup.
 			marker.events.register('mousedown', marker,
 				function( evt ) { 

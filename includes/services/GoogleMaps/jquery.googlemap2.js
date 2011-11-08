@@ -149,7 +149,7 @@
 	function createGMarker( markerData ) {
     	var marker;
     	
-    	if ( markerData.icon != '' ) {
+    	if ( markerData.icon !== '' ) {
     		var iconObj = new GIcon( G_DEFAULT_ICON );
     		iconObj.image = markerData.icon;
     		
@@ -176,7 +176,7 @@
     		marker = new GMarker( markerData.point );
     	}
     	
-    	if ( markerData.text != '' ) {
+    	if ( markerData.text !== '' ) {
     		GEvent.addListener(marker, 'click',
     			function() {
     				marker.openInfoWindowHtml(

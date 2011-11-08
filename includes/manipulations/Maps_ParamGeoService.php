@@ -54,7 +54,7 @@ class MapsParamGeoService extends ItemParameterManipulation {
 			$value = self::resolveOverrides( $value, $parameters[$this->mappingServiceParam]->getValue() );
 		}
 		
-		if ( $value == '' || !array_key_exists( $value, MapsGeocoders::$registeredGeocoders ) ) {
+		if ( $value === '' || !array_key_exists( $value, MapsGeocoders::$registeredGeocoders ) ) {
 			if ( !$validatedDefault ) {
 				if ( !array_key_exists( $egMapsDefaultGeoService, MapsGeocoders::$registeredGeocoders ) ) {
 					$egMapsDefaultGeoService = array_shift( array_keys( MapsGeocoders::$registeredGeocoders ) );

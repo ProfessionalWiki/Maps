@@ -31,7 +31,7 @@
 			title: markerData.title
 		};
 		
-		if ( markerData.icon != '' ) {
+		if ( markerData.icon !== '' ) {
 			markerOptions.icon = markerData.icon; 
 		}
 		
@@ -39,7 +39,7 @@
 		
 		marker.openWindow = false;
 		
-		if ( markerData.text != '' ) {
+		if ( markerData.text !== '' ) {
 			marker.text = markerData.text;
 			google.maps.event.addListener( marker, 'click', function() {
 				if ( this.openWindow !== false ) {
@@ -139,7 +139,7 @@
 		// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 		if ( showEarth ) {
 			this.removeEarthType();
-			showEarth = mw.config.get( 'egGoogleJsApiKey' ) != '';
+			showEarth = mw.config.get( 'egGoogleJsApiKey' ) !== '';
 		}
 		
 		var mapOptions = {

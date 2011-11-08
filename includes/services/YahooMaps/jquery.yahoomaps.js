@@ -98,7 +98,7 @@
 	function createYMarker(geoPoint, title, text, icon){
 		var newMarker;
 		
-		if ( icon != '' ) {
+		if ( icon !== '' ) {
 			// Determine size of icon and pass it in.
 			var newimg = new Image();
 			newimg.src = icon;
@@ -107,7 +107,7 @@
 			newMarker = new YMarker( geoPoint );
 		}	
 		
-		if ( text != '' ) {
+		if ( text !== '' ) {
 			YEvent.Capture(newMarker, EventsList.MouseClick, 
 				function() {
 					newMarker.openSmartWindow( text );

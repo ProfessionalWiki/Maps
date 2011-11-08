@@ -141,7 +141,7 @@ class MapsBasePointMap {
 				$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
 				$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
 				
-				$hasTitleAndtext = $jsonObj['title'] != '' && $jsonObj['text'] != '';
+				$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
 				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
 				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
 				

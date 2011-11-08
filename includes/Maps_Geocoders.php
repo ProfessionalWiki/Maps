@@ -347,7 +347,7 @@ final class MapsGeocoders {
 		global $egMapsDefaultGeoService, $egMapsUserGeoOverrides;
 		static $validatedDefault = false;
 		
-		if ( $geocoderIdentifier == '' || !array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
+		if ( $geocoderIdentifier === '' || !array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
 			if ( !$validatedDefault ) {
 				if ( !array_key_exists( $egMapsDefaultGeoService, self::$registeredGeocoders ) ) {
 					$egMapsDefaultGeoService = array_shift( array_keys( self::$registeredGeocoders ) );

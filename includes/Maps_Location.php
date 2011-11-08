@@ -317,7 +317,7 @@ class MapsLocation {
 	 * @return boolean
 	 */
 	public function hasIcon() {
-		return $this->icon != '';
+		return $this->icon !== '';
 	}		
 	
 	/**
@@ -339,7 +339,7 @@ class MapsLocation {
 	 * @return boolean
 	 */
 	public function hasTitle() {
-		return $this->title != '';
+		return $this->title !== '';
 	}	
 	
 	/**
@@ -361,7 +361,7 @@ class MapsLocation {
 	 * @return boolean
 	 */
 	public function hasText() {
-		return $this->text != '';
+		return $this->text !== '';
 	}
 	
 	/**

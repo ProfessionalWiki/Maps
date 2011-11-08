@@ -28,7 +28,7 @@ final class MapsGeonamesOldGeocoder extends MapsGeocoder {
 	public static function register() {
 		global $egMapsGeoNamesUser;
 		
-		MapsGeocoders::registerGeocoder( $egMapsGeoNamesUser == '' ? 'geonames' : 'geonamesold', __CLASS__ );
+		MapsGeocoders::registerGeocoder( $egMapsGeoNamesUser === '' ? 'geonames' : 'geonamesold', __CLASS__ );
 		
 		return true;
 	}	
