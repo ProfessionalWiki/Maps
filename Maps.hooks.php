@@ -84,4 +84,10 @@ final class MapsHooks {
 		return true;
 	}
 	
+
+	public static function onCanonicalNamespaces( &$list ) {
+		$list[Maps_NS_LAYER] = 'Layer';
+		$list[Maps_NS_LAYER_TALK] = 'Layer_talk';
+		return true;
+	}
 } 

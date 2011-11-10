@@ -24,6 +24,7 @@ $messages['en'] = array(
 	'maps-load-failed' => 'Could not load the map!',
 	'maps-markers' => 'Markers',
 	'maps-others' => 'others',
+	//TODO: move to namespaces i18n
 	'maps-ns-layer' => 'Layer',
 	'maps-ns-layer-talk' => 'Layer talk',
 	'maps-layer-property' => 'Property',

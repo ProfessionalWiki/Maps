@@ -141,8 +141,8 @@ unset( $incDir );
 $wgAPIModules['geocode'] 						= 'ApiGeocode';
 
 $wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
-	
 $wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
+$wgExtensionMessagesFiles['MapsNamespaces'] = $egMapsDir . 'Maps.i18n.namespaces.php';
 
 // Register the initialization function of Maps.
 $wgExtensionFunctions[] = 'efMapsSetup';
@@ -158,6 +158,9 @@ $wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';
 
 // Since 1.0
 $wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
+
+// Since ??
+$wgHooks['CanonicalNamespaces'][] = 'MapsHooks::onCanonicalNamespaces';
 
 $egMapsFeatures = array();
 
@@ -291,22 +294,6 @@ $egMapsGlobalJSVars = array();
  * @return true
  */
 function efMapsSetup() {
-	global $wgExtraNamespaces, $wgNamespaceAliases;
-
-	if ( is_null( $wgExtraNamespaces ) ) {
-		$wgExtraNamespaces = array();
-	}
-	
-	$wgExtraNamespaces += array(
-		Maps_NS_LAYER => 'Layer',
-		Maps_NS_LAYER_TALK => 'Layer talk'
-	);
-	
-	$wgNamespaceAliases += array(
-		wfMsg( 'maps-ns-layer' ) => Maps_NS_LAYER,
-		wfMsg( 'maps-ns-layer-talk' ) => Maps_NS_LAYER_TALK
-	);
-	
 	wfRunHooks( 'MappingServiceLoad' );
 	wfRunHooks( 'MappingFeatureLoad' );
 
