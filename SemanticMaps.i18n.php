@@ -938,6 +938,10 @@ $messages['sl'] = array(
 	'semanticmaps-par-centre' => 'Sredini zemljevida. Če ne podana, bo zemljevid samodejno izbral optimalno lokacijo za prikaz vseh oznak na zemljevidu.',
 	'semanticmaps-par-template' => 'Predloga za oblikovanje vsebine info okna.',
 	'semanticmaps-par-geocodecontrol' => 'Prikaži nadzor geokodiranja.',
+	'semanticmaps-kml-text' => 'Besedilo, povezano z vsako stranjo. Preglašeno z dodatnimi možnostmi poizvedbe, če obstajajo.',
+	'semanticmaps-kml-title' => 'Privzeti naslov za rezultate',
+	'semanticmaps-kml-linkabsolute' => 'Naj bodo povezave absolutne ali ne (tj. relativne)',
+	'semanticmaps-kml-pagelinktext' => 'Besedilo za povezave do strani, v katerih bo $1 zamenjan z naslovom strani',
 );
 
 /** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
