@@ -677,6 +677,7 @@ $1",
 $1",
 	'maps_map_cannot_be_displayed' => "N'hall ket ar gartenn bezañ diskwelet.",
 	'maps-geocoder-not-available' => "N'haller ket ober gant arc'hwel geokodañ ar c'hartennoù. N'haller ket geokodañ ho lec'hiadur.",
+	'maps_yahoomaps' => 'Yahoo! Kartennoù',
 	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
 	'maps_centred_on' => 'Kartenn kreizet war $1, $2.',
 	'maps-googlemaps2-incompatbrowser' => "N'eo ket kenglotus ho merdeer gant Google Maps v2.",
@@ -963,7 +964,7 @@ $1',
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps-desc' => 'Bitujo móžnosć koordinatowe daty w geografiskich kórtach zwobrazniś a adrese geokoděrowaś. ([http://mapping.referata.com/wiki/Maps_examples demo])',
+	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://mapping.referata.com/wiki/Examples pśikłady])',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
 	'maps-markers' => 'Marki',
@@ -3161,11 +3162,15 @@ $messages['or'] = array(
 	'maps-layer-value' => 'ମୂଲ୍ୟ',
 );
 
-/** Deitsch (Deitsch) */
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
 $messages['pdc'] = array(
 	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
+	'maps_wikipedia' => 'Wikipedia',
 );
 
 /** Polish (Polski)
