@@ -284,13 +284,15 @@ class MapsCoordinateParser {
 			case Maps_COORDS_DD:
 				return $coordinate . self::SYMBOL_DEG;
 			case Maps_COORDS_DM:
-				$isNegative = $coordinate < 0;
 				$coordinate = abs( $coordinate );
+				$degrees = floor( $coordinate );
 				
-				$result = floor( $coordinate ) . self::SYMBOL_DEG . ' ' . ( $coordinate - floor( $coordinate ) ) * 60 . self::SYMBOL_MIN;
-				if ( $isNegative ) $result = '-' . $result;
-				
-				return $result;
+				return sprintf(
+					"%s%d%s %0.3f%s",
+					$coordinate < 0 ? '-' : '',
+					$degrees, self::SYMBOL_DEG,
+					( $coordinate - $degrees ) * 60, self::SYMBOL_MIN
+				);
 			default:
 				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
 		}
