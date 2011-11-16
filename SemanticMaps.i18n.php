@@ -776,6 +776,10 @@ $messages['no'] = array(
 	'semanticmaps-par-centre' => 'Kartets sentrum. Hvis dette ikke er angitt, vil kartet automatisk velge det optimale senteret for å vise alle kartmarkørene.',
 	'semanticmaps-par-template' => 'Mal som brukes for å formatere innholdet i infovinduet.',
 	'semanticmaps-par-geocodecontrol' => 'Vis geokodingsstyringen',
+	'semanticmaps-kml-text' => 'Teksten knyttes til hver side. Overstyrt av spørringer på ekstra egenskaper, om noen.',
+	'semanticmaps-kml-title' => 'Standard resultatoverskrift',
+	'semanticmaps-kml-linkabsolute' => 'Skal lenker være absolutte eller ikke (dvs. relative)',
+	'semanticmaps-kml-pagelinktext' => 'Teksten som skal brukes for lenker til siden, der $1 erstattes av sidetittelen',
 );
 
 /** Occitan (Occitan)
