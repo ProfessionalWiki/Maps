@@ -575,7 +575,7 @@ $messages['bg'] = array(
 	'maps_webcams' => 'Уебкамери',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
+/** Banjar (Bahasa Banjar)
  * @author Ezagren
  */
 $messages['bjn'] = array(
@@ -2283,9 +2283,11 @@ Servizi di cartografia disponibili: $1",
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => '地図上に座標データを表示し、住所を座標データに変換する機能を提供する ([http://mapping.referata.com/wiki/Maps_examples 実演])。次の地図サービスに対応します: $1',
+	'maps-desc' => 'ウィキページへの動的な地図の組み込み、住所の座標データへの変換などの地図関連操作を可能にする。([http://mapping.referata.com/wiki/Examples 実演])',
+	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中…',
+	'maps-load-failed' => '地図を読み込めませんでした。',
 	'maps-markers' => 'マーカー',
 	'maps-others' => 'その他',
 	'maps-ns-layer' => 'レイヤー',
@@ -2295,15 +2297,15 @@ $messages['ja'] = array(
 	'maps-layer-errors' => 'エラー',
 	'maps-error-invalid-layerdef' => 'このレイヤー定義は不正です。',
 	'maps-error-invalid-layertype' => '種類「$1」のレイヤーが存在しません。{{PLURAL:$3|この|これら}}の種類のサポート：$2',
-	'maps-error-no-layertype' => 'レイヤーの種類を指定する必要があります。{{PLURAL:$2|この種類のみ|これらの種類}}のサポート：$1',
+	'maps-error-no-layertype' => 'レイヤーの種類を指定する必要があります。{{PLURAL:$2|この種類のみ|これらの種類}}に対応しています: $1',
 	'validation-error-invalid-layer' => '引数$1は有効なレイヤーでなければなりません。',
 	'validation-error-invalid-layers' => '引数$1は1つ以上の有効なレイヤーでなければなりません。',
 	'maps-layer-of-type' => '種類$1のレイヤー',
 	'maps-layer-type-supported-by' => 'このレイヤー種は、{{PLURAL:$2|$1地図サービスでのみ利用可能です|以下の地図サービスで利用可能です：$1}}。',
-	'validation-error-invalid-location' => 'パラメータ$1は有効な場所でなければなりません。',
+	'validation-error-invalid-location' => '引数$1は有効な場所でなければなりません。',
 	'validation-error-invalid-locations' => '引数$1は、1つそれ以上有効な場所でなければなりません。',
-	'validation-error-invalid-width' => 'パラメータ$1は有効な幅でなければなりません。',
-	'validation-error-invalid-height' => 'パラメータ$1は有効な高さでなければなりません。',
+	'validation-error-invalid-width' => '引数$1は有効な幅でなければなりません。',
+	'validation-error-invalid-height' => '引数$1は有効な高さでなければなりません。',
 	'validation-error-invalid-distance' => '引数$1は有効な距離でなければなりません。',
 	'validation-error-invalid-distances' => '引数$1は、1つ以上の有効な距離でなければなりません。',
 	'validation-error-invalid-image' => '引数$1は有効な画像でなければなりません。',
@@ -2327,6 +2329,7 @@ $1',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
 	'maps_click_to_activate' => 'クリックして地図をアクティブに',
 	'maps_centred_on' => '地図の中心は $1、$2。',
+	'maps-googlemaps2-incompatbrowser' => 'あなたのブラウザーは Google Maps v2 と互換性がありません。',
 	'maps_overlays' => 'オーバーレイ',
 	'maps_photos' => '写真',
 	'maps_videos' => '動画',
@@ -3779,7 +3782,7 @@ $messages['sr-ec'] = array(
 	'maps_webcams' => 'Веб-камере',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavanje mape...',
@@ -4043,7 +4046,7 @@ $messages['tr'] = array(
 	'maps_webcams' => 'Web kameraları',
 );
 
-/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+/** Tatar (Cyrillic script) (Татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
