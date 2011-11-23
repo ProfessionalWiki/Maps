@@ -967,7 +967,7 @@ $messages['sr-ec'] = array(
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 );
 
-/** Serbian Latin ekavian (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪Srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
