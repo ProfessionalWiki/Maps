@@ -229,6 +229,11 @@ $messages['qqq'] = array(
 	'maps-longitude' => '{{Identical|Longitude}}',
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
+	'maps_googlemaps2' => '{{optional}}',
+	'maps_googlemaps3' => '{{optional}}',
+	'maps_yahoomaps' => '{{optional}}',
+	'maps_openlayers' => '{{optional}}',
+	'maps_osm' => '{{optional}}',
 	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
 );
 
