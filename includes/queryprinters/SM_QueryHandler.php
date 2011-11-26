@@ -60,7 +60,7 @@ class SMQueryHandler {
 	 *
 	 * @var boolean
 	 */
-	public $titleLinkSeperate;
+	public $titleLinkSeparate;
 
 	/**
 	 * Should link targets be made absolute (instead of relative)?
@@ -115,13 +115,13 @@ class SMQueryHandler {
 	 * @param SMWQueryResult $queryResult
 	 * @param integer $outputmode
 	 */
-	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeperate = false ) {
+	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeparate = false ) {
 		$this->queryResult = $queryResult;
 		$this->outputmode = $outputmode;
 
 		$this->linkAbsolute = $linkAbsolute;
 		$this->pageLinkText = $pageLinkText;
-		$this->titleLinkSeperate = $titleLinkSeperate;
+		$this->titleLinkSeparate = $titleLinkSeparate;
 	}
 
 	/**
@@ -269,10 +269,14 @@ class SMQueryHandler {
 				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
 					list( $title, $text ) = $this->handleResultSubject( $dataValue );
 				}
-				elseif ( $dataValue->getTypeID() != '_geo' && $i != 0 ) {
+				else if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
+					$title = $dataValue->getLongText( $this->outputmode, null );
+					$text = $dataValue->getLongText( $this->outputmode, $GLOBALS['wgUser']->getSkin() );
+				}
+				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 ) {
 					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 				}
-				elseif ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
+				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
 					$dataItem = $dataValue->getDataItem();
 
 					$location = MapsLocation::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
@@ -295,23 +299,23 @@ class SMQueryHandler {
 	}
 
 	/**
-	 * Handles a SMWDataValue subject value.
+	 * Handles a SMWWikiPageValue subject value.
 	 * Gets the plain text title and creates the HTML text with headers and the like.
 	 *
 	 * @since 1.0
 	 *
-	 * @param SMWDataValue $object
+	 * @param SMWWikiPageValue $object
 	 *
 	 * @return array with title and text
 	 */
-	protected function handleResultSubject( SMWDataValue $object ) {
+	protected function handleResultSubject( SMWWikiPageValue $object ) {
 		global $wgUser;
 
 		$title = $object->getLongText( $this->outputmode, null );
 		$text = '';
 
 		if ( $this->showSubject ) {
-			if ( !$this->titleLinkSeperate && $this->linkAbsolute ) {
+			if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
 				$text = Html::element(
 					'a',
 					array( 'href' => $object->getTitle()->getFullUrl() ),
@@ -326,7 +330,7 @@ class SMQueryHandler {
 				$text = '<b>' . $text . '</b>';
 			}
 
-			if ( $this->titleLinkSeperate ) {
+			if ( $this->titleLinkSeparate ) {
                 $txt = $object->getTitle()->getText();
 
                 if ( $this->pageLinkText !== '' ) {
