@@ -8,7 +8,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
 === Maps 1.0.5 ===
-(trunk)
+(2011-11-30)
 
 * Fixed display of attribution control for OpenLayers.
 * Fixed to big precision of geographic coordinates in decimal minutes format (bug 32407).
