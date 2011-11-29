@@ -22,6 +22,10 @@ $messages['en'] = array(
 	'semanticmaps-kml' => 'KML',
 	'semanticmaps-default-kml-pagelink' => 'View page $1',
 
+	'semanticmaps-latitude' => 'Latitude: $1',
+	'semanticmaps-longitude' => 'Longitude: $1',
+	'semanticmaps-altitude' => 'Altitude: $1',
+
 	// Forms
 	'semanticmaps-loading-forminput'	=> 'Loading map form input...',
 	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',
