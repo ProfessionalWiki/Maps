@@ -8,9 +8,10 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 
 
 === Semantic Maps 1.0.5 ===
-(201x-xx-xx)
+(2011-11-30)
 
 * Allow properties of type string to be used as title. (bug 32632)
+* Fixed error occuring when parsing invalid coordinates.
 
 === Semantic Maps 1.0.4 ===
 (2011-10-15)
