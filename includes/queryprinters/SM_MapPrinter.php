@@ -143,7 +143,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		if ( $this->fatalErrorMsg === false ) {
 			global $wgParser;
 			
-			$params = $this->m_params;
+			$params = $this->params;
 			
 			$queryHandler = new SMQueryHandler( $res, $outputmode );
 			$queryHandler->setShowSubject( $params['showtitle'] );
@@ -176,8 +176,10 @@ class SMMapPrinter extends SMWResultPrinter {
 					SMWOutputs::requireResource( $resourceModule );
 				}
 				
+				$result = $this->getMapHTML( $params, $wgParser, $mapName ) . $this->getJSON( $params, $wgParser, $mapName );
+				
 				return array(
-					$this->getMapHTML( $params, $wgParser, $mapName ) . $this->getJSON( $params, $wgParser, $mapName ),
+					$result,
 					'noparse' => true, 
 					'isHTML' => true
 				);				

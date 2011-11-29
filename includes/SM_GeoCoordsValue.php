@@ -102,7 +102,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 				$this->m_dataitem = new SMWDIGeoCoord( $parsedCoords );
 			} else {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $coordinates, 1 ) );
-				$this->m_dataitem = new SMWDIGeoCoord( array(0, 0) ); // make sure this is always set
+				
+				 // Make sure this is always set
+				 // TODO: Why is this needed?!
+				$this->m_dataitem = new SMWDIGeoCoord( array( 'lat' => 0, 'lon' => 0 ) );
 			}
 		}
 
