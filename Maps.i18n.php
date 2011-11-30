@@ -2972,8 +2972,8 @@ Als dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderst
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'Z',
 	'maps-abb-west' => 'W',
-	'maps-latitude' => 'Breedte:',
-	'maps-longitude' => 'Lengte:',
+	'maps-latitude' => 'Breedtegraad:',
+	'maps-longitude' => 'Lengtegraad:',
 	'maps-invalid-coordinates' => 'De waarde "$1" is niet herkend als geldige coördinaten.',
 	'maps_coordinates_missing' => 'Er zijn geen coördinaten opgegeven voor de kaart.',
 	'maps_geocoding_failed' => 'Voor {{PLURAL:$2|het volgende adres|de volgende adressen}} was geocodering niet mogelijk: $1
