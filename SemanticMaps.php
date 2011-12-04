@@ -27,8 +27,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-if ( version_compare( $wgVersion, '1.17', '<' ) ) {
-	die( '<b>Error:</b> This version of Semantic Maps requires MediaWiki 1.17 or above; use Semantic Maps 0.7.x for older versions.' );
+if ( version_compare( $wgVersion, '1.18c', '<' ) ) {
+	die( '<b>Error:</b> This version of Semantic Maps requires MediaWiki 1.18 or above; use Semantic Maps 1.0.x for MediaWiki 1.17 and Semantic Maps 0.7.x for older versions.' );
 }
 
 // Show a warning if Maps is not loaded.
@@ -41,15 +41,11 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
 }
 
-if ( version_compare( SMW_VERSION, '1.6 alpha', '<' ) ) {
-	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.6 or above; use Semantic Maps 0.7.x for older versions.' );
-}
-
 if ( version_compare( SMW_VERSION, '1.6.2 alpha', '<' ) ) {
 	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.7 or above; use Semantic Maps 1.0 to 1.0.3 for SMW 1.6 to 1.6.1.' );
 }
 
-define( 'SM_VERSION', '1.0.5' );
+define( 'SM_VERSION', '1.1 alpha' );
 
 $wgExtensionCredits['semantic'][] = array(
 	'path' => __FILE__,
