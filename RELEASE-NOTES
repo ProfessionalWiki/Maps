@@ -7,10 +7,12 @@ version of Maps. You can find the most up-do-date version at
 http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 
-=== Maps 1.1 ===
+=== Maps 1.1 alpha ===
 (trunk)
 
-* ...
+* Changed minimun PHP version from 5.2 to 5.3.
+* Changed minimun MediaWiki version from 1.17 to 1.18.
+* Removed support for the deprecated Google Maps v2 API.
 
 === Maps 1.0.5 ===
 (2011-11-30)

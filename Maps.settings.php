@@ -19,7 +19,6 @@ $s = array(
 	new Setting(
 		'services',
 		array(
-			'googlemaps2',
 			'googlemaps3',
 			'yahoomaps',
 			'openlayers',

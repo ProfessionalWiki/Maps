@@ -221,9 +221,6 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
 	# Include the mapping services that should be loaded into Maps.
 	# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
 	
-	# Google Maps API v2
-	include_once $egMapsDir . 'includes/services/GoogleMaps/GoogleMaps.php';
-	
 	# Google Maps API v3
 	include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
 	

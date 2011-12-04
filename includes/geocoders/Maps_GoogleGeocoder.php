@@ -72,7 +72,7 @@ final class MapsGoogleGeocoder extends MapsGeocoder {
 	 * @return array
 	 */
 	public static function getOverrides() {
-		return array( 'googlemaps2', 'googlemaps3' );
+		return array( 'googlemaps3' );
 	}
 	
 }

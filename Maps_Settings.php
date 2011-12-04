@@ -25,7 +25,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
 	$egMapsAvailableServices = array(
-		'googlemaps2',
 		'googlemaps3',
 		'yahoomaps',
 		'openlayers',
