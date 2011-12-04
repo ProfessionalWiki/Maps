@@ -7,14 +7,17 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
-=== Semantic Maps 1.0.5 ===
+=== Semantic Maps 1.1 alpha ===
 (trunk)
 
-* ...
+* Changed minimun PHP version from 5.2 to 5.3.
+* Changed minimun MediaWiki version from 1.17 to 1.18.
+* Removed support for the deprecated Google Maps v2 API.
 
 === Semantic Maps 1.0.5 ===
 (2011-11-30)
 
+* Changed minimun Semantic MediaWiki version from 1.6.1 to 1.7.
 * Allow properties of type string to be used as title. (bug 32632)
 * Fixed error occuring when parsing invalid coordinates.
 
