@@ -27,8 +27,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-if ( version_compare( $wgVersion, '1.17', '<' ) ) {
-	die( '<b>Error:</b> This version of Maps requires MediaWiki 1.17 or above; use Maps 0.7.x for older versions.' );
+if ( version_compare( $wgVersion, '1.18c', '<' ) ) {
+	die( '<b>Error:</b> This version of Maps requires MediaWiki 1.18 or above; use Maps 1.0.x for MediaWiki 1.17 and Maps 0.7.x for older versions.' );
 }
 
 // Include the Validator extension if that hasn't been done yet, since it's required for Maps to work.
@@ -41,7 +41,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.<br />' );
 }
 
-define( 'Maps_VERSION', '1.0.5' );
+define( 'Maps_VERSION', '1.1 alpha' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
