@@ -3783,7 +3783,7 @@ $messages['sr-ec'] = array(
 	'maps_openlayers' => 'Опенлејерс',
 	'maps_osm' => 'Опенстритмап',
 	'maps_photos' => 'Фотографије',
-	'maps_videos' => 'Видео снимци',
+	'maps_videos' => 'Видео-снимци',
 	'maps_webcams' => 'Веб-камере',
 );
 
