@@ -789,10 +789,17 @@ $messages['nl'] = array(
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
+ * @author Njardarlogar
  */
 $messages['nn'] = array(
+	'semanticmaps-kml-link' => 'Sjå KML-fila',
+	'semanticmaps-default-kml-pagelink' => 'Sjå sida $1',
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinatar',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressa her',
+	'semanticmaps-updatemap' => 'Oppdater kart',
+	'semanticmaps-forminput-remove' => 'Fjerna',
+	'semanticmaps-forminput-add' => 'Legg til',
+	'semanticmaps-forminput-locations' => 'Stader',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
