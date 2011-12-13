@@ -3,6 +3,7 @@
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  * 
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+ * @author Daniel Werner
  */
 
 (function( $ ){ $.fn.openlayers = function( mapElementId, options ) {
@@ -13,7 +14,7 @@
 		if ( markerData.icon != "" ) {
 			marker = new OpenLayers.Marker( markerData.lonlat, new OpenLayers.Icon( markerData.icon ) );
 		} else {
-			marker = new OpenLayers.Marker( markerData.lonlat );
+			marker = new OpenLayers.Marker( markerData.lonlat, new OpenLayers.Icon( markerLayer.defaultIcon ) );
 		}
 
 		if ( markerData.text !== '' ) {
@@ -36,26 +37,44 @@
 			options.locations = [];
 		}
 		
+		var locations = options.locations;		
 		var bounds = null;
-		
-		// Layer to hold the markers.
-		var markerLayer = new OpenLayers.Layer.Markers( mediaWiki.msg( 'maps-markers' ) );
-		markerLayer.id= 'markerLayer';
-		map.addLayer( markerLayer );
-		
-		if ( options.locations.length > 1 && ( options.centre === false || options.zoom === false ) ) {
+				
+		if ( locations.length > 1 && ( options.centre === false || options.zoom === false ) ) {
 			bounds = new OpenLayers.Bounds();
 		}
 		
-		for ( i = options.locations.length - 1; i >= 0; i-- ) {
-			options.locations[i].lonlat = new OpenLayers.LonLat( options.locations[i].lon, options.locations[i].lat );
+		var groupLayers = new Object();
+		var groups = 0;
+		
+		for ( i = locations.length - 1; i >= 0; i-- ) {
 			
-			if ( !hasImageLayer ) {
-				options.locations[i].lonlat.transform( new OpenLayers.Projection( "EPSG:4326" ), new OpenLayers.Projection( "EPSG:900913" ) );
+			var location = locations[i];
+			
+			// Create a own marker-layer for the marker group:
+			if( ! groupLayers[ location.group ] ) {
+				// in case no group is specified, use default marker layer:				
+				var layerName = location.group != '' ? location.group : mediaWiki.msg( 'maps-markers' );
+				var curLayer = new OpenLayers.Layer.Markers( layerName );
+				groups++;
+				curLayer.id = 'markerLayer' + groups;
+				// define default icon, one of ten in different colors, if more than ten layers, colors will repeat:
+				curLayer.defaultIcon = egMapsScriptPath + '/includes/services/OpenLayers/OpenLayers/img/marker' + ( ( groups + 10 ) % 10 ) + '.png';
+				map.addLayer( curLayer );
+				groupLayers[ location.group ] = curLayer;				
+			} else {
+				// if markers of this group exist already, they have an own layer already
+				var curLayer = groupLayers[ location.group ];
 			}
 			
-			if ( bounds != null ) bounds.extend( options.locations[i].lonlat ); // Extend the bounds when no center is set.
-			markerLayer.addMarker( this.getOLMarker( markerLayer, options.locations[i] ) ); // Create and add the marker.
+			location.lonlat = new OpenLayers.LonLat( location.lon, location.lat );
+			
+			if ( !hasImageLayer ) {
+				location.lonlat.transform( new OpenLayers.Projection( "EPSG:4326" ), new OpenLayers.Projection( "EPSG:900913" ) );
+			}
+			
+			if ( bounds != null ) bounds.extend( location.lonlat ); // Extend the bounds when no center is set.
+			curLayer.addMarker( this.getOLMarker( curLayer, location ) ); // Create and add the marker.
 		}
 		
 		if ( bounds != null ) map.zoomToExtent( bounds ); // If a bounds object has been created, use it to set the zoom and center.

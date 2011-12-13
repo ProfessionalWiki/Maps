@@ -10,6 +10,7 @@
  * @ingroup ParameterManipulations
  * 
  * @author Jeroen De Dauw
+ * @author Daniel Werner
  */
 class MapsParamLocation extends ItemParameterManipulation {
 	
@@ -63,6 +64,10 @@ class MapsParamLocation extends ItemParameterManipulation {
 
 		if ( $icon = array_shift( $parts ) ) {
 			$value->setIcon( $icon );
+		}
+		
+		if ( $group = array_shift( $parts ) ) {
+			$value->setGroup( $group );
 		}
 		
 		if ( $this->toJSONObj ) {

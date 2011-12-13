@@ -9,6 +9,7 @@
  * @ingroup Maps
  * 
  * @author Jeroen De Dauw
+ * @author Daniel Werner
  */
 class MapsLocation {
 	
@@ -61,6 +62,12 @@ class MapsLocation {
 	 */		
 	protected $icon = '';
 	
+	/**
+	 * @since 1.1
+	 * 
+	 * @var string
+	 */	
+	protected $group = '';
 	
 	/**
 	 * @since 0.7.1
@@ -295,7 +302,7 @@ class MapsLocation {
 	 * @param string $title
 	 */
 	public function setTitle( $title ) {
-		$this->title = $title;
+		$this->title = trim( $title );
 	}
 
 	/**
@@ -306,7 +313,7 @@ class MapsLocation {
 	 * @param string $text
 	 */
 	public function setText( $text ) {
-		$this->text = $text;
+		$this->text = trim( $text );
 	}	
 	
 	/**
@@ -328,8 +335,19 @@ class MapsLocation {
 	 * @param string $icon
 	 */
 	public function setIcon( $icon ) {
-		$this->icon = $icon;
-	}	
+		$this->icon = trim( $icon );
+	}
+	
+	/**
+	 * Sets the group
+	 * 
+	 * @since 1.1
+	 * 
+	 * @param string $group
+	 */
+	public function setGroup( $group ) {
+		$this->group = trim( $group );
+	}
 	
 	/**
 	 * Returns if there is any title.
@@ -387,13 +405,35 @@ class MapsLocation {
 	}
 	
 	/**
+	 * Returns the group.
+	 * 
+	 * @since 1.1
+	 * 
+	 * @return string
+	 */
+	public function getGroup() {
+		return $this->group;
+	}
+	
+	/**
+	 * Returns whether Location is asigned to a group.
+	 * 
+	 * @since 1.1
+	 * 
+	 * @return string
+	 */
+	public function hasGroup() {
+		return $this->group != '';
+	}
+	
+	/**
 	 * Returns an object that can directly be converted to JS using json_encode or similar.
 	 * 
 	 * @since 1.0
 	 * 
 	 * @return object
 	 */
-	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '' ) {
+	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '' ) {
 		return array(
 			'lat' => $this->getLatitude(),
 			'lon' => $this->getLongitude(),
@@ -401,7 +441,8 @@ class MapsLocation {
 			'text' => $this->hasText() ? $this->getText() : $defText,
 			'title' => $this->hasTitle() ? $this->getTitle() : $defTitle,
 			'address' => $this->getAddress( false ),
-			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl
+			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
+			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup
 		);
 	}
 	

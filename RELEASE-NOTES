@@ -14,6 +14,8 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 * Changed minimun MediaWiki version from 1.17 to 1.18.
 * Removed support for the deprecated Google Maps v2 API.
 
+* 'display_points' locations have a fifth parameter for defining a group for the location.
+
 === Maps 1.0.5 ===
 (2011-11-30)
 
