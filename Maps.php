@@ -50,7 +50,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'author' => array(
 		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
 	),
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Maps',
 	'descriptionmsg' => 'maps-desc'
 );
 
