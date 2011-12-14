@@ -271,7 +271,7 @@ class SMQueryHandler {
 				}
 				else if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
 					$title = $dataValue->getLongText( $this->outputmode, null );
-					$text = $dataValue->getLongText( $this->outputmode, $GLOBALS['wgUser']->getSkin() );
+					$text = $dataValue->getLongText( $this->outputmode, smwfGetLinker() );
 				}
 				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 ) {
 					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
@@ -323,7 +323,7 @@ class SMQueryHandler {
 				);
 			}
 			else {
-				$text = $object->getLongText( $this->outputmode, $wgUser->getSkin() );
+				$text = $object->getLongText( $this->outputmode, smwfGetLinker() );
 			}
 
 			if ( $this->boldSubject ) {
@@ -383,7 +383,7 @@ class SMQueryHandler {
 			}
 		}
 		else {
-			$propertyName = $printRequest->getHTMLText( $wgUser->getSkin() );
+			$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
 		}
 
 		if ( $this->linkAbsolute ) {
@@ -406,7 +406,7 @@ class SMQueryHandler {
 			}
 		}
 		else {
-			$propertyValue = $object->getLongText( $this->outputmode, $wgUser->getSkin() );
+			$propertyValue = $object->getLongText( $this->outputmode, smwfGetLinker() );
 		}
 
 		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
