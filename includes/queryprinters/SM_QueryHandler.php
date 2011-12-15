@@ -331,15 +331,15 @@ class SMQueryHandler {
 			}
 
 			if ( $this->titleLinkSeparate ) {
-                $txt = $object->getTitle()->getText();
+				$txt = $object->getTitle()->getText();
 
-                if ( $this->pageLinkText !== '' ) {
-                    $txt = str_replace( '$1', $txt, $this->pageLinkText );
-                }
+				if ( $this->pageLinkText !== '' ) {
+					$txt = str_replace( '$1', $txt, $this->pageLinkText );
+				}
 				$text .= Html::element(
 					'a',
 					array( 'href' => $object->getTitle()->getFullUrl() ),
-                    $txt
+					$txt
 				);
 			}
 		}
@@ -468,7 +468,7 @@ class SMQueryHandler {
 		$legend_labels = array();
 
 		// Look for display_options field, which can be set by Semantic Compound Queries
-        // the location of this field changed in SMW 1.5
+		// the location of this field changed in SMW 1.5
 		$display_location = method_exists( $row[0], 'getResultSubject' ) ? $row[0]->getResultSubject() : $row[0];
 
 		if ( property_exists( $display_location, 'display_options' ) && is_array( $display_location->display_options ) ) {
