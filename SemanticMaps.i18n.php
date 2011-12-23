@@ -1015,6 +1015,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Vrednost $1 nije ispravno rastojanje.',
+	'semanticmaps-kml' => 'KML',
 	'semanticmaps_enteraddresshere' => 'Unesi adresu ovde',
 );
 
@@ -1130,6 +1131,7 @@ $messages['vo'] = array(
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
+	'semanticmaps-default-kml-pagelink' => '检视页面 $1',
 	'semanticmaps_lookupcoordinates' => '查找坐标',
 	'semanticmaps-forminput-add' => '添加',
 );
@@ -1143,5 +1145,6 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'semanticmaps-default-kml-pagelink' => '檢視頁面 $1',
 	'semanticmaps_lookupcoordinates' => '尋找座標',
+	'semanticmaps-forminput-add' => '添加',
 );
 
