@@ -58,6 +58,17 @@ $magicWords['ce'] = array(
 	'geocode' => array( 0, 'геагишар', 'геокод', 'geocode' ),
 );
 
+/** German (Deutsch) */
+$magicWords['de'] = array(
+	'display_map' => array( 0, 'zeige_karte' ),
+	'display_point' => array( 0, 'zeige_punkt' ),
+	'geocode' => array( 0, 'geokodiere' ),
+	'geodistance' => array( 0, 'geoentfernung' ),
+	'finddestination' => array( 0, 'finde_ziel' ),
+	'coordinates' => array( 0, 'koodinaten' ),
+	'distance' => array( 0, 'entfernung' ),
+);
+
 /** Esperanto (Esperanto) */
 $magicWords['eo'] = array(
 	'coordinates' => array( 0, 'koordinatoj' ),
@@ -66,8 +77,8 @@ $magicWords['eo'] = array(
 
 /** Spanish (Español) */
 $magicWords['es'] = array(
-	'display_point' => array( 0, 'mostrar_punto', 'display_point', 'display_points' ),
-	'geocode' => array( 0, 'geocodificar', 'geocode' ),
+	'display_point' => array( 0, 'mostrar_punto' ),
+	'geocode' => array( 0, 'geocodificar' ),
 );
 
 /** French (Français) */
@@ -199,6 +210,17 @@ $magicWords['sr-ec'] = array(
 	'finddestination' => array( 0, 'пронађиодредиште', 'пронађи_одредиште' ),
 	'coordinates' => array( 0, 'координате' ),
 	'distance' => array( 0, 'раздаљина' ),
+);
+
+/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+$magicWords['sr-el'] = array(
+	'display_map' => array( 0, 'prikaži_mapu' ),
+	'display_point' => array( 0, 'prikaži_tačku', 'prikaži_tačke' ),
+	'geocode' => array( 0, 'geografski_kod' ),
+	'geodistance' => array( 0, 'geografska_razdaljina' ),
+	'finddestination' => array( 0, 'pronađi_odredište' ),
+	'coordinates' => array( 0, 'koordinate' ),
+	'distance' => array( 0, 'razdaljina' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
