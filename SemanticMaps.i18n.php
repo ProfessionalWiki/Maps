@@ -807,7 +807,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  * @author Nghtwlkr
  */
-$messages['no'] = array(
+$messages['nb'] = array(
 	'semanticmaps-desc' => 'Tilbyr muligheten til å se på og endre koordinatdata lagret ved hjelp av Semantic MediaWiki-utvidelsen ([http://mapping.referata.com/wiki/Examples demo]).',
 	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'semanticmaps-kml-link' => 'Vis KML-filen',
