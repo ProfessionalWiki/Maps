@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all OpenLayers related files of the Semantic Maps extension.
+ * This group contains all OpenLayers related files of the Semantic Maps extension.
  * 
  * @defgroup SMOpenLayers OpenLayers
  * @ingroup SemanticMaps
@@ -13,7 +13,8 @@
  * @file SM_OpenLayers.php
  * @ingroup SMOpenLayers
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Yahoo! Maps related files of the Semantic Maps extension.
+ * This group contains all Yahoo! Maps related files of the Semantic Maps extension.
  * 
  * @defgroup SMYahooMaps Yahoo! Maps
  * @ingroup SemanticMaps
@@ -13,7 +13,8 @@
  * @file SM_YahooMaps.php
  * @ingroup SMYahooMaps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

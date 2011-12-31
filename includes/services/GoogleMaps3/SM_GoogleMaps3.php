@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Google Maps v3 related files of the Semantic Maps extension.
+ * This group contains all Google Maps v3 related files of the Semantic Maps extension.
  * 
  * @defgroup SMGoogleMaps3 Google Maps v3
  * @ingroup SMGoogleMaps3
