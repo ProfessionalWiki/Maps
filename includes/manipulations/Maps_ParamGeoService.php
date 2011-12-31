@@ -9,8 +9,9 @@
  * @file Maps_ParamGeoService.php
  * @ingroup Maps
  * @ingroup ParameterManipulations
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsParamGeoService extends ItemParameterManipulation {
 	

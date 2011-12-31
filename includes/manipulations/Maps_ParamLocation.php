@@ -8,8 +8,9 @@
  * @file Maps_ParamLocation.php
  * @ingroup Maps
  * @ingroup ParameterManipulations
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
 class MapsParamLocation extends ItemParameterManipulation {
@@ -17,7 +18,7 @@ class MapsParamLocation extends ItemParameterManipulation {
 	/**
 	 * In some usecases, the parameter values will contain extra location
 	 * metadata, which should be ignored here. This field holds the delimiter
-	 * used to seperata this data from the actual location. 
+	 * used to separate this data from the actual location.
 	 * 
 	 * @since 0.7.2
 	 * 

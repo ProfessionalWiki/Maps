@@ -1,15 +1,16 @@
 <?php
 
 /**
- * Parameter manipulation ensuring the service is valid and loading adittional parameter definitions.
+ * Parameter manipulation ensuring the service is valid and loading additional parameter definitions.
  * 
  * @since 0.7
  * 
  * @file Maps_ParamService.php
  * @ingroup Maps
  * @ingroup ParameterManipulations
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsParamService extends ItemParameterManipulation {
 	
@@ -24,7 +25,9 @@ class MapsParamService extends ItemParameterManipulation {
 	
 	/**
 	 * Constructor.
-	 * 
+	 *
+	 * @param string $feature
+	 *
 	 * @since 0.7
 	 */
 	public function __construct( $feature ) {
