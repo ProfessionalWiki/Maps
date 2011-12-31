@@ -7,8 +7,9 @@
  * 
  * @file SemanticMaps.hooks.php
  * @ingroup SemanticMaps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 final class SemanticMapsHooks {
 
@@ -16,7 +17,9 @@ final class SemanticMapsHooks {
 	 * Adds a link to Admin Links page.
 	 * 
 	 * @since 0.7
-	 * 
+	 *
+	 * @param array $admin_links_tree
+	 *
 	 * @return true
 	 */
 	public static function addToAdminLinks( &$admin_links_tree ) {	

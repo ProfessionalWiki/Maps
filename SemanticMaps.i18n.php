@@ -6,7 +6,8 @@
  * @file SemanticMaps.i18n.php
  * @ingroup Semantic Maps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com
  */
 
 $messages = array();

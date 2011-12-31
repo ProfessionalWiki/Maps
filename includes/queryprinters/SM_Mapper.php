@@ -61,22 +61,26 @@ final class SMMapper {
 	}
 	
 	/**
-	 * Explcitly define this method, so method_exists returns true in SMW.
+	 * Explicitly define this method, so method_exists returns true in SMW.
 	 * 
 	 * @see SMWResultPrinter::getParameters
 	 * 
 	 * @since 1.0
+	 *
+	 * @return array
 	 */
 	public function getParameters() {
 		return $this->queryPrinter->getParameters();
 	}
 	
 	/**
-	 * Explcitly define this method, so method_exists returns true in SMW.
+	 * Explicitly define this method, so method_exists returns true in SMW.
 	 * 
 	 * @see SMWResultPrinter::getParameters
 	 * 
 	 * @since 1.0
+	 *
+	 * @return array
 	 */
 	public function getValidatorParameters() {
 		return $this->queryPrinter->getValidatorParameters();
@@ -84,12 +88,14 @@ final class SMMapper {
 	
 	/**
 	 * SMW thinks this class is a SMWResultPrinter, and calls methods that should
-	 * be forewarded to $this->queryPrinter on it.
+	 * be forward to $this->queryPrinter on it.
 	 * 
 	 * @since 1.0
 	 * 
 	 * @param string $name
 	 * @param array $arguments
+	 *
+	 * @return mixed|void
 	 */
 	public function __call( $name, array $arguments ) {
 		return call_user_func_array( array( $this->queryPrinter, $name ), $arguments );

@@ -8,7 +8,8 @@
  * @file SM_KMLPrinter.php
  * @ingroup SemanticMaps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class SMKMLPrinter extends SMWResultPrinter {
 	/**
@@ -91,12 +92,12 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * @return string
 	 */
 	protected function getKML( SMWQueryResult $res, $outputmode ) {
-		$queryHandler = new SMQueryHandler( $res, $outputmode, $this->m_params['linkabsolute'], $this->m_params['pagelinktext'], false );
-		$queryHandler->setText( $this->m_params['text'] );
-		$queryHandler->setTitle( $this->m_params['title'] );
+		$queryHandler = new SMQueryHandler( $res, $outputmode, $this->params['linkabsolute'], $this->params['pagelinktext'], false );
+		$queryHandler->setText( $this->params['text'] );
+		$queryHandler->setTitle( $this->params['title'] );
 		$queryHandler->setSubjectSeparator( '' );
 
-		$formatter = new MapsKMLFormatter( $this->m_params );
+		$formatter = new MapsKMLFormatter( $this->params );
 		$formatter->addPlacemarks( $queryHandler->getLocations() );
 
 		return $formatter->getKML();
@@ -116,19 +117,19 @@ class SMKMLPrinter extends SMWResultPrinter {
 		$searchLabel = $this->getSearchLabel( $outputmode );
 		$link = $res->getQueryLink( $searchLabel ? $searchLabel : wfMsgForContent( 'semanticmaps-kml-link' ) );
 		$link->setParameter( 'kml', 'format' );
-		$link->setParameter( $this->m_params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
-		$link->setParameter( $this->m_params['pagelinktext'], 'pagelinktext' );
+		$link->setParameter( $this->params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
+		$link->setParameter( $this->params['pagelinktext'], 'pagelinktext' );
 		
-		if ( $this->m_params['title'] !== '' ) {
-			$link->setParameter( $this->m_params['title'], 'title' );
+		if ( $this->params['title'] !== '' ) {
+			$link->setParameter( $this->params['title'], 'title' );
 		}
 		
-		if ( $this->m_params['text'] !== '' ) {
-			$link->setParameter( $this->m_params['text'], 'text' );
+		if ( $this->params['text'] !== '' ) {
+			$link->setParameter( $this->params['text'], 'text' );
 		}
 
-		if ( array_key_exists( 'limit', $this->m_params ) ) {
-			$link->setParameter( $this->m_params['limit'], 'limit' );
+		if ( array_key_exists( 'limit', $this->params ) ) {
+			$link->setParameter( $this->params['limit'], 'limit' );
 		} else { // Use a reasonable default limit.
 			$link->setParameter( 20, 'limit' );
 		}

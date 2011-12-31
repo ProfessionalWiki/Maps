@@ -2,7 +2,7 @@
 
 /**
  * Description of a geographical area defined by a coordinates set and a distance to the bounds.
- * The bounds are a 'rectangle' (but bend due to the earhs curvature), as the resulting query
+ * The bounds are a 'rectangle' (but bend due to the earths curvature), as the resulting query
  * would otherwise be to resource intensive.
  *
  * @since 0.6
@@ -10,7 +10,8 @@
  * @file SM_AreaValueDescription.php
  * @ingroup SemanticMaps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com
  * 
  * TODO: would be awesome to use Spatial Extensions to select coordinates
  */
@@ -63,10 +64,11 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * 
 	 * @since 0.6
 	 * 
-	 * @param Boolean $asvalue
+	 * @param Boolean $asValue
 	 */
 	public function getQueryString( $asValue = false ) {
 		if ( $this->getDataItem() !== null ) {
+			// FIXME
 			$queryString = SMWDataValueFactory::newDataItemValue( $this->getDataItem() )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
@@ -154,7 +156,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @since 0.6
 	 * 
 	 * @param array $centerCoordinates Array containing non-directional float coordinates with lat and lon keys. 
-	 * @param float $circleRadius The radidus of the circle to create a bounding box for, in m.
+	 * @param float $circleRadius The radius of the circle to create a bounding box for, in m.
 	 * 
 	 * @return An associative array containing the limits with keys north, east, south and west.
 	 */

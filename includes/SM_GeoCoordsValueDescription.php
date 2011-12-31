@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of one data value of type Goegraphical Coordinates.
+ * Description of one data value of type Geographical Coordinates.
  * 
  * @since 0.6
  * @file SM_GeoCoordsValueDescription.php

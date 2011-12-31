@@ -6,7 +6,8 @@
  * @file SM_FormInputs.php
  * @ingroup SemanticMaps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -77,7 +78,7 @@ final class SMFormInputs {
 	 * Adds a mapping service's form hook.
 	 *
 	 * @param string $inputName The name of the form input.
-	 * @param strig $mainName
+	 * @param string $mainName
 	 */
 	private static function initFormHook( $inputName, $mainName = '' ) {
 		global $sfgFormPrinter;

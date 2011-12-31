@@ -6,7 +6,8 @@
  * @file SM_QueryPrinters.php
  * @ingroup SemanticMaps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -88,13 +89,7 @@ final class SMQueryPrinters {
 	 */
 	private static function addFormatQP( $format, $class ) {
 		global $smwgResultFormats;
-		
-		if ( isset( $smwgResultFormats ) ) {
-			$smwgResultFormats[$format] = $class;
-		}
-		else { // BC with some old SMW version
-			SMWQueryProcessor::$formats[$format] = $class;
-		}
+		$smwgResultFormats[$format] = $class;
 	}
 	
 }

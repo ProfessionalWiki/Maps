@@ -2,7 +2,7 @@
 
 /**
  * Query printer for maps. Is invoked via SMMapper.
- * Can be overriden per service to have custom output.
+ * Can be overridden per service to have custom output.
  *
  * @file SM_MapPrinter.php
  * @ingroup SemanticMaps

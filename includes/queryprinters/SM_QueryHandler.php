@@ -8,7 +8,8 @@
  * @ingroup SemanticMaps
  * @file SM_QueryHandler.php
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class SMQueryHandler {
 
@@ -81,7 +82,7 @@ class SMQueryHandler {
 	protected $pageLinkText;
 
 	/**
-	 * A separator to use beteen the subject and properties in the text field.
+	 * A separator to use between the subject and properties in the text field.
 	 *
 	 * @since 1.0
 	 *
@@ -114,6 +115,9 @@ class SMQueryHandler {
 	 *
 	 * @param SMWQueryResult $queryResult
 	 * @param integer $outputmode
+	 * @param boolean $linkAbsolute
+	 * @param string $pageLinkText
+	 * @param boolean $titleLinkSeparate
 	 */
 	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeparate = false ) {
 		$this->queryResult = $queryResult;

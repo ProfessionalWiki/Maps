@@ -72,6 +72,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * 
 	 * @param $value String
 	 * @param $asQuery Boolean
+	 *
+	 * @return SMWDescription
 	 */
 	protected function parseUserValueOrQuery( $value, $asQuery = false ) {
 		$this->wikiValue = $value;
