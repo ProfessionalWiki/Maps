@@ -58,7 +58,9 @@ class MapsParamGeoService extends ItemParameterManipulation {
 		if ( $value === '' || !array_key_exists( $value, MapsGeocoders::$registeredGeocoders ) ) {
 			if ( !$validatedDefault ) {
 				if ( !array_key_exists( $egMapsDefaultGeoService, MapsGeocoders::$registeredGeocoders ) ) {
-					$egMapsDefaultGeoService = array_shift( array_keys( MapsGeocoders::$registeredGeocoders ) );
+					$geoServices = array_keys( MapsGeocoders::$registeredGeocoders );
+					$egMapsDefaultGeoService = array_shift( $geoServices );
+
 					if ( is_null( $egMapsDefaultGeoService ) ) {
 						throw new Exception( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
 					}
