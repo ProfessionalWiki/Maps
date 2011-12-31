@@ -88,7 +88,7 @@ final class SMMapper {
 	
 	/**
 	 * SMW thinks this class is a SMWResultPrinter, and calls methods that should
-	 * be forward to $this->queryPrinter on it.
+	 * be forwarded to $this->queryPrinter on it.
 	 * 
 	 * @since 1.0
 	 * 
