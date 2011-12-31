@@ -9,7 +9,8 @@
  * @file Maps_MappingService.php
  * @ingroup Maps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class MapsMappingService implements iMappingService {
 

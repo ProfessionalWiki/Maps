@@ -311,9 +311,9 @@ abstract class ExtensionSettings {
 	 * 
 	 * @since ?
 	 * 
-	 * @param name $group
+	 * @param string $groupName
 	 */
-	protected static function ivalidateCachesForGroup( $group ) {
+	protected static function ivalidateCachesForGroup( $groupName ) {
 		foreach ( array_keys( static::$mergedCaches ) as $cacheName ) {
 			if ( in_array( $groupName, explode( '|', $cacheName ) ) ) {
 				unset( static::$mergedCaches[$cacheName] );

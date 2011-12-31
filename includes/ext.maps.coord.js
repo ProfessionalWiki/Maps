@@ -33,7 +33,7 @@ window.coord = new ( function( $ ) {
 		coords = coords.split( this.DELIMITER );
 		for ( i in coords ) coords[i] = coords[i].trim(); 
 		return coords;
-	}
+	};
 	
 	/**
 	 * Returns the provided coordinates joined in a string.
@@ -42,7 +42,7 @@ window.coord = new ( function( $ ) {
 	 */	
 	this.join = function( coords ) {
 		return coords.join( this.DELIMITER + ' ' );
-	}
+	};
 	
 	/**
 	 * Returns a string with the directional DMS representatation of the provided latitude and longitude.

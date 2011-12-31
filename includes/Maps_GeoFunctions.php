@@ -11,7 +11,8 @@ define( 'Maps_EARTH_RADIUS', 6371000 );
  * @file Maps_GeoFunctions.php
  * @ingroup Maps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Pnelnik
  * @author Matěj Grabovský
  */

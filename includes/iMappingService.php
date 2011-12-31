@@ -7,8 +7,9 @@
  * 
  * @file iMappingService.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 interface iMappingService {
 	

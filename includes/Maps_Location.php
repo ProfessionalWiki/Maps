@@ -7,8 +7,9 @@
  * 
  * @file Maps_Location.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
 class MapsLocation {

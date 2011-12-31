@@ -7,8 +7,9 @@
  * 
  * @file Maps_Mapper.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 final class MapsMapper {
 	
