@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Abstract class MapsBaseMap provides the scafolding for classes handling display_map
+ * Abstract class MapsBaseMap provides the scaffolding for classes handling display_map
  * calls for a specific mapping service. It inherits from MapsMapFeature and therefore
- * forces inheriting classes to implement sereveral methods.
+ * forces inheriting classes to implement several methods.
  *
  * @file Maps_BaseMap.php
  * @ingroup Maps
@@ -29,7 +29,7 @@ class MapsBaseMap {
 	/**
 	 * Constructor.
 	 * 
-	 * @param MapsMappingService $service
+	 * @param iMappingService $service
 	 */
 	public function __construct( iMappingService $service ) {
 		$this->service = $service;
@@ -37,6 +37,8 @@ class MapsBaseMap {
 	
 	/**
 	 * @since 0.7.3
+	 *
+	 * @param array $params
 	 */	
 	public function addParameterInfo( array &$params ) {
 	}

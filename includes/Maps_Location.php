@@ -98,16 +98,16 @@ class MapsLocation {
 	 * @var string
 	 */	
 	protected $separator;
-	
+
 	/**
 	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @param float $lat
 	 * @param float $lon
-	 * @param integer $format
-	 * 
+	 * @param string $format
+	 *
 	 * @return MapsLocation
 	 */
 	public static function newFromLatLon( $lat, $lon, $format = Maps_COORDS_FLOAT ) {
@@ -120,7 +120,7 @@ class MapsLocation {
 	 * @since 1.0
 	 * 
 	 * @param string $address
-	 * @param integer $format
+	 * @param string $format
 	 * 
 	 * @return MapsLocation
 	 */
@@ -132,7 +132,7 @@ class MapsLocation {
 	 * Constructor.
 	 * 
 	 * @param mixed $coordsOrAddress string or array with lat and lon
-	 * @param integer $format
+	 * @param string $format
 	 * @param boolean $directional
 	 * @param string $separator
 	 * 
@@ -431,7 +431,12 @@ class MapsLocation {
 	 * Returns an object that can directly be converted to JS using json_encode or similar.
 	 * 
 	 * @since 1.0
-	 * 
+	 *
+	 * @param string $defText
+	 * @param string $defTitle
+	 * @param string $defIconUrl
+	 * @param string $defGroup
+	 *
 	 * @return object
 	 */
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '' ) {

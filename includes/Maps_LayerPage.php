@@ -197,7 +197,9 @@ class MapsLayerPage extends Article {
 	 * Returns if the layer definition in the page is valid.
 	 * 
 	 * @since 0.7.1
-	 * 
+	 *
+	 * @param string|null $service
+	 *
 	 * @return boolean
 	 */
 	public function hasValidDefinition( $service = null ) {

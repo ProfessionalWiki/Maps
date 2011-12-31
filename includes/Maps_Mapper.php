@@ -26,6 +26,8 @@ final class MapsMapper {
 	 * @since 0.7.1
 	 * 
 	 * @param mixed $value
+	 *
+	 * @return tring
 	 */
 	public static function encodeJsVar( $value ) {
 		if ( is_bool( $value ) ) {
@@ -69,7 +71,7 @@ final class MapsMapper {
 	 * @return array
 	 */
 	public static function getCommonParameters() {
-		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
+		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
 
 		$params = array();
 		
@@ -144,6 +146,8 @@ final class MapsMapper {
 	 * @since 1.0
 	 * 
 	 * @param string $serviceName
+	 *
+	 * @return string
 	 */
 	public static function getBaseMapJSON( $serviceName ) {
 		static $baseInit = false;

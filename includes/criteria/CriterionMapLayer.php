@@ -17,8 +17,10 @@ class CriterionMapLayer extends ItemParameterCriterion {
 	
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @since 0.7
+	 *
+	 * @param string $service
 	 */
 	public function __construct( $service ) {
 		parent::__construct();

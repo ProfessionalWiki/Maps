@@ -15,7 +15,7 @@
 final class MapsYahooGeocoder extends MapsGeocoder {
 	
 	/**
-	 * Registeres the geocoder.
+	 * Registers the geocoder.
 	 * 
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.

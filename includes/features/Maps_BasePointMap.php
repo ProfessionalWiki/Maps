@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Abstract class MapsBasePointMap provides the scafolding for classes handling display_point(s)
+ * Abstract class MapsBasePointMap provides the scaffolding for classes handling display_point(s)
  * calls for a specific mapping service. It inherits from MapsMapFeature and therefore forces
- * inheriting classes to implement sereveral methods.
+ * inheriting classes to implement several methods.
  *
  * @file Maps_BasePointMap.php
  * @ingroup Maps

@@ -66,7 +66,7 @@ final class MapsGeoFunctions {
 	 * @param float $bearing The initial bearing in degrees.
 	 * @param float $distance The distance to travel in km.
 	 * 
-	 * @return array The desitination coordinates, as non-directional floats in an array with lat and lon keys.
+	 * @return array The destination coordinates, as non-directional floats in an array with lat and lon keys.
 	 */
 	public static function findDestination( array $startingCoordinates, $bearing, $distance ) {
 		$startingCoordinates['lat'] = deg2rad( (float)$startingCoordinates['lat'] );
