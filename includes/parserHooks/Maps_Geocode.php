@@ -8,8 +8,9 @@
  * 
  * @file Maps_Geocode.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsGeocode extends ParserHook {
 	
@@ -52,8 +53,8 @@ class MapsGeocode extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsAvailableCoordNotations;
-		global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
+		global $egMapsAvailableGeoServices, $egMapsAvailableCoordNotations;
+		global $egMapsDefaultGeoService, $egMapsCoordinateNotation;
 		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
 		
 		$params = array();

@@ -7,8 +7,9 @@
  * 
  * @file Maps_DisplayPoint.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsDisplayPoint extends ParserHook {
 	
@@ -51,7 +52,7 @@ class MapsDisplayPoint extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsDefaultMapCentre;
+		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
 		$params = MapsMapper::getCommonParameters();
 		
@@ -142,7 +143,7 @@ class MapsDisplayPoint extends ParserHook {
 	}
 	
 	/**
-	 * Returns the parser function otpions.
+	 * Returns the parser function options.
 	 * @see ParserHook::getFunctionOptions
 	 * 
 	 * @since 0.7

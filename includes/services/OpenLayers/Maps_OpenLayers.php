@@ -1,15 +1,16 @@
 <?php
 
 /**
- * Class holding information and functionallity specific to OpenLayers.
- * This infomation and features can be used by any mapping feature. 
+ * Class holding information and functionality specific to OpenLayers.
+ * This information and features can be used by any mapping feature.
  * 
  * @since 0.1
  * 
  * @file Maps_OpenLayers.php
  * @ingroup MapsOpenLayers
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsOpenLayers extends MapsMappingService {
 	
@@ -103,7 +104,9 @@ class MapsOpenLayers extends MapsMappingService {
 
 	/**
 	 * Returns the names of all supported dynamic layers.
-	 * 
+	 *
+	 * @param boolean $includeGroups
+	 *
 	 * @return array
 	 */
 	public static function getLayerNames( $includeGroups = false ) {

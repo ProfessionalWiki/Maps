@@ -8,8 +8,9 @@
  * 
  * @file Maps_Distance.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsDistance extends ParserHook {
 	

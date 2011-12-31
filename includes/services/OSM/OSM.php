@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all OSM related files of the Maps extension.
+ * This group contains all OSM related files of the Maps extension.
  * 
  * @defgroup OSM OpenStreetMap
  * @ingroup Maps
@@ -13,7 +13,8 @@
  * @file OSM.php
  * @ingroup OSM
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

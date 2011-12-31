@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Yahoo! Maps related files of the Maps extension.
+ * This group contains all Yahoo! Maps related files of the Maps extension.
  * 
  * @defgroup MapsYahooMaps Yahoo! Maps
  * @ingroup Maps
@@ -13,7 +13,8 @@
  * @file YahooMaps.php
  * @ingroup MapsYahooMaps
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

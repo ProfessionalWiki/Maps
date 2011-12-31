@@ -7,8 +7,9 @@
  * 
  * @file Maps_OSMDispMap.php
  * @ingroup OSM
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsOSMDispMap extends MapsBaseMap {
 	

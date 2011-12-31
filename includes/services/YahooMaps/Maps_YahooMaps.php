@@ -1,13 +1,14 @@
 <?php
 
 /**
- * Class holding information and functionallity specific to Yahoo! Maps.
- * This infomation and features can be used by any mapping feature. 
+ * Class holding information and functionality specific to Yahoo! Maps.
+ * This information and features can be used by any mapping feature.
  * 
  * @file Maps_YahooMaps.php
  * @ingroup MapsYahooMaps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsYahooMaps extends MapsMappingService {
 

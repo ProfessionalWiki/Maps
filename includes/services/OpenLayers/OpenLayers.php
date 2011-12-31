@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all OpenLayers related files of the Maps extension.
+ * This group contains all OpenLayers related files of the Maps extension.
  * 
  * @defgroup MapsOpenLayers OpenLayers
  * @ingroup Maps
@@ -13,7 +13,8 @@
  * @file OpenLayers.php
  * @ingroup MapsOpenLayers
  *
- * @author Jeroen De Dauw
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

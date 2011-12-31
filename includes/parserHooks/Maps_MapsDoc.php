@@ -111,11 +111,11 @@ class MapsMapsDoc extends ParserHook {
 	 * @since 1.0.1
 	 *
 	 * @param string $key
-	 * @param array $args
+	 * @param ... $args
 	 *
 	 * @return string
 	 */
-	protected function msg( $key ) {
+	protected function msg() {
 		$args = func_get_args();
 		$key = array_shift( $args );
 		return wfMsgReal( $key, $args, true, $this->language );
@@ -169,9 +169,6 @@ class MapsMapsDoc extends ParserHook {
 	 * @return string
 	 */
 	protected function getDescriptionRow( Parameter $parameter ) {
-//		$aliases = $parameter->getAliases();
-//		$aliases = count( $aliases ) > 0 ? implode( ', ', $aliases ) : '-';
-
 		$description = $parameter->getMessage();
 		if ( $description === false ) {
 			$description = $parameter->getDescription();

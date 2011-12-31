@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Class holding information and functionallity specific to Google Maps v3.
- * This infomation and features can be used by any mapping feature. 
+ * Class holding information and functionality specific to Google Maps v3.
+ * This information and features can be used by any mapping feature.
  * 
  * @since 0.7
  * 
@@ -43,7 +43,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'bicycling'
 	);	
 	
-	public static $tyepControlStyles = array(
+	public static $typeControlStyles = array(
 		'default' => 'DEFAULT',
 		'horizontal' => 'HORIZONTAL_BAR',
 		'dropdown' => 'DROPDOWN_MENU'
@@ -121,7 +121,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		
 		$params['typestyle'] = new Parameter( 'typestyle' );
 		$params['typestyle']->setDefault( $egMapsGMaps3DefTypeStyle );
-		$params['typestyle']->addCriteria( new CriterionInArray( array_keys( self::$tyepControlStyles ) ) );
+		$params['typestyle']->addCriteria( new CriterionInArray( array_keys( self::$typeControlStyles ) ) );
 		$params['typestyle']->addManipulations( new MapsParamGMap3Typestyle() );
 		$params['typestyle']->setMessage( 'maps-googlemaps3-par-typestyle' );
 

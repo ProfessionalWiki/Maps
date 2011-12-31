@@ -8,8 +8,9 @@
  * 
  * @file Maps_Coordinates.php
  * @ingroup Maps
- * 
- * @author Jeroen De Dauw
+ *
+ * @licence GNU GPL v3
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsCoordinates extends ParserHook {
 	
@@ -52,9 +53,9 @@ class MapsCoordinates extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsAvailableServices, $egMapsAvailableCoordNotations;
-		global $egMapsDefaultServices, $egMapsDefaultGeoService, $egMapsCoordinateNotation;
-		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
+		global $egMapsAvailableCoordNotations;
+		global $egMapsCoordinateNotation;
+		global $egMapsCoordinateDirectional;
 		
 		$params = array();
 		
