@@ -352,7 +352,8 @@ final class MapsGeocoders {
 		if ( $geocoderIdentifier === '' || !array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
 			if ( !$validatedDefault ) {
 				if ( !array_key_exists( $egMapsDefaultGeoService, self::$registeredGeocoders ) ) {
-					$egMapsDefaultGeoService = array_shift( array_keys( self::$registeredGeocoders ) );
+					$services = array_keys( self::$registeredGeocoders );
+					$egMapsDefaultGeoService = array_shift( $services );
 					if ( is_null( $egMapsDefaultGeoService ) ) {
 						throw new Exception( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
 					}

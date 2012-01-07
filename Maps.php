@@ -287,8 +287,8 @@ $egMapsGlobalJSVars = array();
  * @return true
  */
 function efMapsSetup() {
+	global $wgLogRestrictions;
 	wfRunHooks( 'MappingServiceLoad' );
 	wfRunHooks( 'MappingFeatureLoad' );
-
 	return true;
 }
