@@ -1892,25 +1892,33 @@ $messages['ht'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Dj
  * @author Glanthor Reviol
  * @author Misibacsi
  */
 $messages['hu'] = array(
-	'maps-desc' => 'Lehetővé teszi koordinátaadatok és geokódolt címek megjelenítését térképeken ([http://mapping.referata.com/wiki/Maps_examples demó]). Elérhető térképszolgáltatások: $1',
+	'maps-desc' => 'Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket. ([http://mapping.referata.com/wiki/Maps_examples demók]).',
+	'right-geocode' => 'Geokód',
 	'maps_map' => 'Térkép',
 	'maps-loading-map' => 'Térkép betöltése…',
 	'maps-load-failed' => 'Nem sikerült betölteni a térképet!',
 	'maps-markers' => 'Markerek',
+	'maps-others' => 'egyebek',
 	'maps-ns-layer' => 'Réteg',
 	'maps-ns-layer-talk' => 'Rétegvita',
 	'maps-layer-property' => 'Tulajdonság',
 	'maps-layer-value' => 'Érték',
 	'maps-layer-errors' => 'Hibák',
-	'maps-error-invalid-layerdef' => 'A rétegdefiníció érvénytelen.',
+	'maps-error-invalid-layerdef' => 'Ez a rétegdefiníció érvénytelen.',
+	'maps-error-invalid-layertype' => 'Nincs „$1” típusú réteg. Csak {{PLURAL:$3|ez a réteg támogatott|ezek a rétegek támogatottak}}: $2',
+	'maps-error-no-layertype' => 'Meg kell adnod egy réteg típust. {{PLURAL:$2|Csak ez a réteg támogatott|Ezek a rétegek támogatottak}}: $1',
+	'validation-error-invalid-layer' => '$1 paraméternek egy érvényes réteg típusnak kell lennie.',
+	'validation-error-invalid-layers' => '$1 paraméternek egy vagy több érvényes réted típusnak kell lennie.',
+	'maps-layer-of-type' => '$1 típusú réteg',
 	'validation-error-invalid-location' => 'A $1 paraméternek valós helynek kell lennie.',
 	'validation-error-invalid-width' => 'A $1 paraméternek valós szélességnek kell lennie.',
 	'validation-error-invalid-height' => 'A $1 paraméternek valós magasságnak kell lennie.',
-	'validation-error-invalid-distance' => 'A $1 paraméter nem valós távolság.',
+	'validation-error-invalid-distance' => '$1 paraméter érvényes távolságnak kell lennie.',
 	'validation-error-invalid-image' => 'A(z) $1 paraméter csak érvényes kép lehet.',
 	'validation-error-invalid-images' => 'A(z) $1 paraméter csak egy vagy több érvényes kép lehet.',
 	'validation-error-invalid-goverlay' => 'A(z) $1 paraméter csak érvényes réteg lehet.',
