@@ -866,6 +866,9 @@ $messages['pms'] = array(
 	'semanticmaps-unrecognizeddistance' => "Ël valor $1 a l'é pa na distansa bon-a.",
 	'semanticmaps-kml-link' => "Vëdde l'archivi KML",
 	'semanticmaps-default-kml-pagelink' => 'Lese la pàgina $1',
+	'semanticmaps-latitude' => 'Latitùdin: $1',
+	'semanticmaps-longitude' => 'Longitùdin: $1',
+	'semanticmaps-altitude' => 'Autitùdin: $1',
 	'semanticmaps-loading-forminput' => 'Carié ël formolari për anserì la carta...',
 	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
 	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
@@ -879,6 +882,10 @@ $messages['pms'] = array(
 	'semanticmaps-par-centre' => "Ël sènter ëd la carta. Quand a l'é pa dàit, la carta a trovrà automaticament ël sènter otimal për smon-e tùit ij marcador an sla carta.",
 	'semanticmaps-par-template' => "Në stamp da dovré deje a forma ai contnù dla fnesta d'anformassion.",
 	'semanticmaps-par-geocodecontrol' => 'Smon-e ël contròl ëd geocodìfica.',
+	'semanticmaps-kml-text' => "Ël test associà con minca pagina. Coatà da le propietà adissionaj ciamà s'a-i në j'é.",
+	'semanticmaps-kml-title' => "Ël tìtol predefinì për j'arzultà",
+	'semanticmaps-kml-linkabsolute' => 'Ij colegament a dovrìo esse assolù o nò (visadì relativ)',
+	'semanticmaps-kml-pagelinktext' => 'Ël test da dovré për colegament a la pagina, dont $1 a sarà rimpiassà da tìtol ëd pagina',
 );
 
 /** Portuguese (Português)
