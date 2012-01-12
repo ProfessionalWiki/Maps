@@ -884,8 +884,8 @@ $messages['pms'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Smon-e ël contròl ëd geocodìfica.',
 	'semanticmaps-kml-text' => "Ël test associà con minca pagina. Coatà da le propietà adissionaj ciamà s'a-i në j'é.",
 	'semanticmaps-kml-title' => "Ël tìtol predefinì për j'arzultà",
-	'semanticmaps-kml-linkabsolute' => 'Ij colegament a dovrìo esse assolù o nò (visadì relativ)',
-	'semanticmaps-kml-pagelinktext' => 'Ël test da dovré për colegament a la pagina, dont $1 a sarà rimpiassà da tìtol ëd pagina',
+	'semanticmaps-kml-linkabsolute' => 'Si le liure a devo esse assolùe o nò (visadì relativ)',
+	'semanticmaps-kml-pagelinktext' => "Ël test da dovré për le liure a la pàgina, dont $1 a sarà rimpiassà da 'l tìtol ëd la pàgina",
 );
 
 /** Portuguese (Português)
