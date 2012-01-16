@@ -44,7 +44,7 @@
 	 */	
 	this.updateInput = function( locations ) {
 		this.input.attr( 'value', this.buildInputValue( locations ) );
-	}	
+	};
 	
 	this.input = $( '<input />' ).attr( {
 		'type': 'text',
