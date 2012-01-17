@@ -1832,6 +1832,7 @@ $messages['hsb'] = array(
 	'maps-coordinates-par-format' => 'Cilowy format za koordinaty.',
 	'maps-coordinates-par-directional' => 'Podawa, hač koordinaty maja směrowe podaće měć abo nic.',
 	'maps-distance-par-distance' => 'Zdalenosć, kotraž ma so do jeje ekwiwalenta z podatej jednotku konwertować.',
+	'maps-distance-par-decimals' => 'Maksimalna ličba městnow zady komy, kotraž ma so we wuslědku wužiwać.',
 	'maps-distance-par-unit' => 'Jednotka za wudawanje zdalenosće.',
 	'maps-finddestination-par-location' => 'Wuchadźišćo.',
 	'maps-finddestination-par-bearing' => 'Wuchadne nasměrjenje.',
@@ -1847,6 +1848,7 @@ $messages['hsb'] = array(
 	'maps-geodistance-par-location1' => 'Prěni dypk z dweju dypkow, mjez kotrymajž ma so zdalenosć wuličić.',
 	'maps-geodistance-par-location2' => 'Druhi dypk z dweju dypkow, mjez kotrymajž ma so zdalenosć wuličić.',
 	'maps-geodistance-par-unit' => 'Jednotka, w kotrejž so zdalenosć podawa.',
+	'maps-geodistance-par-decimals' => 'Maksimalna ličba městnow zady komy, kotraž ma so we wuslědku wužiwać.',
 	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
 	'maps-displaymap-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
 	'maps-displaymap-par-coordinates' => 'Městno, na kotrež mapa ma so spočatnje centrować.',
@@ -1886,9 +1888,14 @@ $messages['hsb'] = array(
 	'maps_videos' => 'Wideja',
 	'maps_wikipedia' => 'Wikipedija',
 	'maps_webcams' => 'Webcamy',
+	'maps-googlemaps2-par-type' => 'Kartowy typ, kotryž ma so na spočatku pokazać.',
+	'maps-googlemaps2-par-autozoom' => 'Kulenje z pomocu koleska myše zmóžnić.',
 	'maps-googlemaps3-incompatbrowser' => 'Twój wobhladowak njeje kompatibelny z Google Maps v3.',
+	'maps-googlemaps3-par-type' => 'Kartowy typ, kotryž ma so na spočatku pokazać.',
 	'maps-osm-par-thumbs' => 'Miniaturne wobrazki pokazać',
 	'maps-osm-par-photos' => 'Fotografije pokazać',
+	'maps-yahoomaps-par-type' => 'Kartowy typ, kotryž ma so na spočatku pokazać.',
+	'maps-yahoomaps-par-autozoom' => 'Kulenje z pomocu koleska myše zmóžnić.',
 );
 
 /** Haitian (Kreyòl ayisyen) */
