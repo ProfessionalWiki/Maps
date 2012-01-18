@@ -17,6 +17,7 @@ $magicWords['en'] = array(
 	'finddestination' => array( 0, 'finddestination' ),
 	'coordinates' => array( 0, 'coordinates' ),
 	'distance' => array( 0, 'distance' ),
+	'mapsdoc' => array( 0, 'mapsdoc' ),
 );
 
 /** Afrikaans (Afrikaans) */
