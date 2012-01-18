@@ -1,5 +1,4 @@
 <?php
-
 /**
  * File defining the settings for the Maps extension.
  * Changing one of these settings can be done by assigning to $egMapsSettings.
