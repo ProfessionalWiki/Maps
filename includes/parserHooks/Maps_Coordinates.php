@@ -13,16 +13,6 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsCoordinates extends ParserHook {
-	
-	/**
-	 * No LSB in pre-5.3 PHP *sigh*.
-	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
-	 */
-	public static function staticMagic( array &$magicWords, $langCode ) {
-		$instance = new self;
-		return $instance->magic( $magicWords, $langCode );
-	}
-	
 	/**
 	 * No LSB in pre-5.3 PHP *sigh*.
 	 * This is to be refactored as soon as php >=5.3 becomes acceptable.

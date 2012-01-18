@@ -170,28 +170,20 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayPoint::initialize';
 
 	# Required for #coordinates.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsCoordinates::staticMagic';
 	# Required for #display_map.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsDisplayMap::staticMagic';	
 	# Required for #display_point.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayPoint::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsDisplayPoint::staticMagic';				
 	# Required for #distance.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsDistance::staticMagic';
 	# Required for #finddestination.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsFinddestination::staticMagic';
 	# Required for #geocode.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsGeocode::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsGeocode::staticMagic';		
 	# Required for #geodistance.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsGeodistance::staticMagic';
 	# Required for #mapsdoc.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsMapsDoc::staticInit';
-	$wgHooks['LanguageGetMagic'][] = 'MapsMapsDoc::staticMagic';
 	
 # Geocoders
 	
