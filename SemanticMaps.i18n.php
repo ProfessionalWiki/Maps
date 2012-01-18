@@ -705,12 +705,14 @@ $messages['lb'] = array(
 	'semanticmaps-unrecognizeddistance' => 'De Wäert $1 ass keng valabel Distanz.',
 	'semanticmaps-kml-link' => 'KML-Fichier weisen',
 	'semanticmaps-default-kml-pagelink' => 'Säit $1 weisen',
+	'semanticmaps-altitude' => 'Héicht: $1',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticmaps_enteraddresshere' => 'Adress hei aginn',
 	'semanticmaps-updatemap' => 'Kaart aktualiséieren',
 	'semanticmaps-forminput-remove' => 'Ewechhuelen',
 	'semanticmaps-forminput-add' => 'Derbäisetzen',
 	'semanticmaps-forminput-locations' => 'Plazen',
+	'semanticmaps-kml-title' => 'De Standard-Titel fir Resultater',
 );
 
 /** Macedonian (Македонски)
