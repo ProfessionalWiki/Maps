@@ -3617,6 +3617,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Adata80
  * @author Haffman
+ * @author KPu3uC B Poccuu
  * @author Lockal
  * @author MaxSem
  * @author McDutchie
@@ -3624,7 +3625,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps-desc' => 'позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://mapping.referata.com/wiki/Examples Примеры исползования])',
+	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://mapping.referata.com/wiki/Examples Примеры использования])',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
 	'maps-load-failed' => 'Невозможно загрузить карту!',
