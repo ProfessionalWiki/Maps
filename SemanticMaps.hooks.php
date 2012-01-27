@@ -18,11 +18,11 @@ final class SemanticMapsHooks {
 	 * 
 	 * @since 0.7
 	 *
-	 * @param array $admin_links_tree
+	 * @param ALTree $admin_links_tree
 	 *
 	 * @return true
 	 */
-	public static function addToAdminLinks( &$admin_links_tree ) {	
+	public static function addToAdminLinks( ALTree &$admin_links_tree ) {
 	    $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
 	
 	    // Escape if SMW hasn't added links.
