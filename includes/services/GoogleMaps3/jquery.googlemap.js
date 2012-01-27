@@ -115,7 +115,7 @@
 			var kmlLayer = new google.maps.KmlLayer(
 				options.gkml[i],
 				{
-					map: map,
+					map: this.map,
 					preserveViewport: !options.kmlrezoom
 				}
 			);
@@ -124,7 +124,7 @@
 		// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 		if ( options.kml.length != 0 ) {
 			mw.loader.using( 'ext.maps.gm3.geoxml', function() {
-				var geoXml = new geoXML3.parser( { map: map, zoom: options.kmlrezoom } );
+				var geoXml = new geoXML3.parser( { map: this.map, zoom: options.kmlrezoom } );
 				
 				for ( i = options.kml.length - 1; i >= 0; i-- ) {
 					geoXml.parse( options.kml[i] );

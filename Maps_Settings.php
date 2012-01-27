@@ -221,6 +221,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		$egMapsGMaps3AutoInfoWindows = false;
 		
 		# Array. Layers to load by default.
+		# traffic and bicycling
 		$egMapsGMaps3Layers = array();
 		
 		# Integer. Default tilt when using Google Maps.
