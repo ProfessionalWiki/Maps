@@ -896,6 +896,7 @@ $messages['pms'] = array(
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Indech
+ * @author Luckas Blade
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -903,6 +904,9 @@ $messages['pt'] = array(
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
 	'semanticmaps-kml-link' => 'Ver o ficheiro KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver a página $1',
+	'semanticmaps-latitude' => 'Latitude: $1',
+	'semanticmaps-longitude' => 'Longitude: $1',
+	'semanticmaps-altitude' => 'Altitude: $1',
 	'semanticmaps-loading-forminput' => 'A carregar o formulário de entrada do mapa...',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
