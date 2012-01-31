@@ -544,8 +544,11 @@ $messages['hsb'] = array(
 	'semanticmaps-forminput-add' => 'Přidać',
 	'semanticmaps-forminput-locations' => 'Městna',
 	'semanticmaps-par-forceshow' => 'Kartu tež potom pokazać, hdyž městna za zwobraznjenje njejsu?',
+	'semanticmaps-par-template' => 'Předłoha, kotraž ma so za formatowanje wobsaha infowokna wužiwać,',
+	'semanticmaps-par-geocodecontrol' => 'Geokodowanske wodźenje pokazać',
 	'semanticmaps-kml-title' => 'Standardny titul za wuslědki',
 	'semanticmaps-kml-linkabsolute' => 'Hač wotkazy maja absolutne być abo nic (t.r. relatiwne)',
+	'semanticmaps-kml-pagelinktext' => 'Tekst, kotryž ma so za wotkazy k tej stronje wužiwać, w kotrejž $1 so přez titul strony naruna',
 );
 
 /** Hungarian (Magyar)
