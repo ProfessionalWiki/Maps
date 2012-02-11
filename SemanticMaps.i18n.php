@@ -1163,12 +1163,13 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
  * @author Mark85296341
+ * @author Oapbtommy
  * @author Sheepy
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'semanticmaps-default-kml-pagelink' => '檢視頁面 $1',
 	'semanticmaps_lookupcoordinates' => '尋找座標',
-	'semanticmaps-forminput-add' => '添加',
+	'semanticmaps-forminput-add' => '新增',
 );
 
