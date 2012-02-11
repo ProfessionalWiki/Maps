@@ -571,13 +571,17 @@ $1',
  */
 $messages['bg'] = array(
 	'maps_map' => 'Карта',
+	'maps-layer-errors' => 'Грешки',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ю',
 	'maps-abb-west' => 'З',
+	'maps-latitude' => 'Географска ширина:',
+	'maps-longitude' => 'Географска дължина:',
 	'maps_photos' => 'Снимки',
 	'maps_wikipedia' => 'Уикипедия',
 	'maps_webcams' => 'Уебкамери',
+	'maps-googlemaps3-incompatbrowser' => 'Вашият браузър не е съвместим с Google Maps v3.',
 );
 
 /** Banjar (Bahasa Banjar)
