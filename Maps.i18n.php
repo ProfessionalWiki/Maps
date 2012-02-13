@@ -4056,14 +4056,30 @@ $1',
 );
 
 /** Turkish (Türkçe)
+ * @author Emperyan
  * @author Joseph
  * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
+	'right-geocode' => 'Coğrafi kod',
 	'maps_map' => 'Harita',
 	'maps-loading-map' => 'Harita yükleniyor...',
-	'validation-error-invalid-distance' => '$1 değeri geçerli bir mesafe değeri değildir.',
+	'maps-load-failed' => 'Harita yüklenemiyor!',
+	'maps-others' => 'diğerleri',
+	'maps-ns-layer' => 'Katman',
+	'maps-ns-layer-talk' => 'Katman tartışması',
+	'maps-layer-property' => 'Özellik',
+	'maps-layer-value' => 'Değer',
+	'maps-layer-errors' => 'Hatalar',
+	'validation-error-invalid-location' => '$1 parametresi geçerli bir konum olmalıdır.',
+	'validation-error-invalid-locations' => '$1 parametresi geçerli bir (veya daha fazla) konum olmalıdır.',
+	'validation-error-invalid-width' => '$1 parametresi geçerli bir genişlik olmalıdır.',
+	'validation-error-invalid-height' => '$1 parametresi geçerli bir yükseklik olmalıdır.',
+	'validation-error-invalid-distance' => '$1 parametresi geçerli bir mesafe değeri olmalıdır.',
+	'validation-error-invalid-distances' => '$1 parametresi geçerli bir (veya daha fazla) mesafe değeri olmalıdır.',
+	'validation-error-invalid-image' => '$1 parametresi geçerli bir resim olmalıdır.',
+	'validation-error-invalid-images' => '$1 parametresi geçerli bir (veya daha fazla) resim olmalıdır.',
 	'maps-abb-north' => 'K',
 	'maps-abb-east' => 'D',
 	'maps-abb-south' => 'G',
@@ -4072,12 +4088,13 @@ $messages['tr'] = array(
 	'maps-longitude' => 'Boylam:',
 	'maps-invalid-coordinates' => '$1 değeri geçerli bir koordinat olarak algılanmadı.',
 	'maps_coordinates_missing' => 'Harita için koordinat girilmedi.',
-	'maps_geocoding_failed' => 'Takip eden {{PLURAL:$2|adres|adresler}} coğrafi olarak kodlanmaıyor: $1',
+	'maps_geocoding_failed' => 'Takip eden {{PLURAL:$2|adres|adresler}} coğrafi olarak kodlanamadı: $1',
 	'maps_unrecognized_coords' => 'Şu {{PLURAL:$2|koordinat|koordinatlar}} tanınamadı: $1',
 	'maps_map_cannot_be_displayed' => 'Harita görüntülenemiyor.',
 	'maps-geocoder-not-available' => 'Haritanın coğrafi kodlama özelliği etkin değil. Konumunuz kodlanamıyor.',
 	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
+	'maps-googlemaps2-incompatbrowser' => 'Tarayıcınız Google Haritalar s2 ile uyumlu değil.',
 	'maps_overlays' => 'Katmanlar',
 	'maps_photos' => 'Fotoğraflar',
 	'maps_videos' => 'Videolar',
