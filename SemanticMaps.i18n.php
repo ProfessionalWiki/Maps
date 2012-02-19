@@ -1152,12 +1152,34 @@ $messages['vo'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Linforest
  * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
+	'semanticmaps-desc' => '提供对采用Semantic MediaWiki扩展所存储坐标数据的查看和编辑能力（[http://mapping.referata.com/wiki/Examples 演示]）。',
+	'semanticmaps-unrecognizeddistance' => '取值$1不是有效的距离。',
+	'semanticmaps-kml-link' => '查看KML文件',
 	'semanticmaps-default-kml-pagelink' => '检视页面 $1',
+	'semanticmaps-latitude' => '纬度：$1',
+	'semanticmaps-longitude' => '经度：$1',
+	'semanticmaps-altitude' => '绝对海拔高度：$1',
+	'semanticmaps-loading-forminput' => '加载地图表单输入……',
 	'semanticmaps_lookupcoordinates' => '查找坐标',
+	'semanticmaps_enteraddresshere' => '在此处输入地址',
+	'semanticmaps-updatemap' => '更新地图',
+	'semanticmaps-forminput-remove' => '删除',
 	'semanticmaps-forminput-add' => '添加',
+	'semanticmaps-forminput-locations' => '位置',
+	'semanticmaps-par-staticlocations' => '要与所查询数据一起添加到地图的一系列位置。就像display_points那样，可以采用波浪号"~"作为分隔符，为每个位置添加标题、描述及图标。',
+	'semanticmaps-par-forceshow' => '甚至在没有要显示的位置的情况下也显示地图吗？',
+	'semanticmaps-par-showtitle' => '是否在标记信息窗口之中显示标题。当采用模板对信息窗口内容进行格式编排的时候，关闭此项往往会有所帮助。',
+	'semanticmaps-par-centre' => '地图的中心。当未加提供的时候，地图会自动挑选最佳的中心，从而在地图上显示所有的标记。',
+	'semanticmaps-par-template' => '用来对信息窗口内容进行格式编排的模板。',
+	'semanticmaps-par-geocodecontrol' => '显示地理编码控件。',
+	'semanticmaps-kml-text' => '与每个页面相关联的文本。会被额外的查询属性（如果有的话）所覆盖。',
+	'semanticmaps-kml-title' => '结果的默认标题',
+	'semanticmaps-kml-linkabsolute' => '链接究竟应当是绝对地址还是相对地址',
+	'semanticmaps-kml-pagelinktext' => '用于那些指向该页面的链接的文本；其中，页面标题将取代$1',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
