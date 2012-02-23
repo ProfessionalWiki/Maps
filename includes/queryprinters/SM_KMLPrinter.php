@@ -20,7 +20,6 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 */
 	public function __construct( $format, $inline ) {
 		parent::__construct( $format, $inline );
-		$this->useValidator = true;
 	}
 
 	/**
@@ -51,7 +50,7 @@ class SMKMLPrinter extends SMWResultPrinter {
 	 * @param $outputmode
 	 */
 	protected function handleParameters( array $params, $outputmode ) {
-		$this->m_params = $params;
+		$this->params = $params;
 	}
 
 	/**
