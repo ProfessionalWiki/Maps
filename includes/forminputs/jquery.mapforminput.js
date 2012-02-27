@@ -1,5 +1,5 @@
 /**
- * JavasSript for the form inputs of the Semantic Maps extension.
+ * JavaScript for the form inputs of the Semantic Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Semantic_Maps
  * 
  * This jQuery plugin creates a simple interface consisting out of

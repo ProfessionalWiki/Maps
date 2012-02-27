@@ -1,5 +1,5 @@
 /**
- * JavasSript for the Yahoo! Maps form input of the Semantic Maps extension.
+ * JavaScript for the Yahoo! Maps form input of the Semantic Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Semantic_Maps
  * 
  * @since 1.0
