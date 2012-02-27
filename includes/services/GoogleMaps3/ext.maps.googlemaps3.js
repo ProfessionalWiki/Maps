@@ -1,5 +1,5 @@
 /**
- * JavasSript for Google Maps v3 maps in the Maps extension.
+ * JavaScript for Google Maps v3 maps in the Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  * 
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>

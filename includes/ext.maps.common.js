@@ -1,5 +1,5 @@
 /**
- * JavasSript for  the Maps extension.
+ * JavaScript for  the Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  * 
  * @since 1.0

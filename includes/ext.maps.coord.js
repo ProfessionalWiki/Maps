@@ -1,5 +1,5 @@
 /**
- * JavasSript for coordinate handling in the Maps extension.
+ * JavaScript for coordinate handling in the Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  * 
  * @since 1.0
