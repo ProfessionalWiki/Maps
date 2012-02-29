@@ -1078,6 +1078,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Armando-Martin
  * @author Crazymadlover
  * @author Dferg
  * @author Diego Grez
@@ -1090,17 +1091,46 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'maps-desc' => 'Habilita inserción de mapas dinámicos en página wiki, geocodificación de direcciones y otras operaciones geográficas. ([http://mapping.referata.com/wiki/Examples demos])',
+	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
+	'maps-load-failed' => '¡No se pudo cargar el mapa!',
 	'maps-markers' => 'Marcadores',
+	'maps-others' => 'otros',
 	'maps-ns-layer' => 'Capa',
 	'maps-ns-layer-talk' => 'Discusión de capa',
 	'maps-layer-property' => 'Propiedad',
 	'maps-layer-value' => 'Valor',
 	'maps-layer-errors' => 'Errores',
 	'maps-error-invalid-layerdef' => 'Esta definición de la capa no es válida.',
+	'maps-error-invalid-layertype' => 'No hay capas de tipo "$1". Sólo  {{PLURAL:$3|este tipo es compatible|estos tipos son compatibles}} :$2',
+	'maps-error-no-layertype' => 'Es necesario especificar el tipo de capa.  {{PLURAL:$2| Solo este tipo es compatible|Estos tipos son compatibles}}:$1',
 	'validation-error-invalid-layer' => 'El parámetro $1 debe ser una capa válida.',
 	'validation-error-invalid-layers' => 'El parámetro $1 debe ser una o más capas válidas.',
+	'maps-layer-of-type' => 'Capa de tipo $1',
+	'maps-layer-type-supported-by' => 'Este tipo de capa solo puede ser utilizado con  {{PLURAL:$2|el servicio de mapas  $1|estos servicios de mapas:  $1 }}.',
+	'maps-coordinates-description' => 'Marcador del analizador para formatear las coordenadas, desde y hacia cualquiera de los formatos compatibles.',
+	'maps-displaymap-description' => 'Mostrar mapas geográficos sin ningún marcador definido por el wiki sobre ellos.',
+	'maps-displaypoint-description' => 'Mostrar mapas geográficos con uno o más marcadores wiki en ellos.',
+	'maps-distance-description' => 'Convertir una distancia usando un cierta unidad soportada a su equivalente utilizando otra unidad.',
+	'maps-finddestination-description' => 'Encontrar un destino dado un punto de partida (que puede estar en cualquiera de los formatos compatibles), un orientación inicial y una distancia.',
+	'maps-geocode-description' => 'Permite la geocodificación de direcciones, en otras palabras, transformando las ubicaciones legibles por humanos en conjuntos de coordenadas. No hay soporte para varios servicios de geocodificación, que no deben confundirse con servicios de mapas.',
+	'maps-geodistance-description' => 'Calcular la distancia geográfica entre dos puntos, desde y hacia cualquiera de los formatos compatibles.',
+	'maps-mapsdoc-description' => 'Mostrar una tabla con los parámetros para un servicio de mapas especificado junto con sus valores predeterminados y descripciones.',
+	'maps-mapsdoc-par-service' => 'El servicio de mapas desde el que mostrar la documentación del parámetro.',
+	'maps-mapsdoc-par-language' => 'El idioma en el que mostrar la documentación. Si dicha traducción no está disponible, se utilizará el inglés en su lugar.',
+	'maps-coordinates-par-location' => 'Las coordenadas a las que desee dar formato.',
+	'maps-coordinates-par-format' => 'El formato de destino de las coordenadas.',
+	'maps-coordinates-par-directional' => 'Indica si las coordenadas deben producirse con formato direccional o no.',
+	'maps-distance-par-distance' => 'La distancia a convertir en su equivalente con una unidad especificada.',
+	'maps-distance-par-decimals' => 'El número máximo de dígitos fraccionarios a usar en el valor resultante.',
+	'maps-distance-par-unit' => 'La unidad en la que mostrar la distancia.',
+	'maps-finddestination-par-location' => 'La ubicación inicial.',
+	'maps-finddestination-par-bearing' => 'La orientación inicial.',
+	'maps-finddestination-par-distance' => 'La distancia a recorrer.',
+	'maps-finddestination-par-format' => 'El formato en el que mostrar el destino.',
+	'maps-finddestination-par-directional' => 'Indica si el formato de destino debe ser direccional o no.',
+	'maps-finddestination-par-allowcoordinates' => 'Indica si deben permitirse las coordenadas. Si se define como no, sólo serán aceptadas las direcciones.',
 	'validation-error-invalid-location' => 'El parámetro $1 deber ser una ubicación válida.',
 	'validation-error-invalid-locations' => 'Parámetro $1 debe ser una o más ubicaciones válidas.',
 	'validation-error-invalid-width' => 'El parámetro $1 debe ser un ancho válido.',
@@ -3210,6 +3240,7 @@ $messages['pdc'] = array(
 );
 
 /** Polish (Polski)
+ * @author BeginaFelicysym
  * @author Sp5uhe
  * @author Yarl
  */
@@ -3217,6 +3248,7 @@ $messages['pl'] = array(
 	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://mapping.referata.com/wiki/Examples demo])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
+	'maps-load-failed' => 'Nie można załadować mapy!',
 	'maps-markers' => 'Zaznaczenia',
 	'maps-others' => 'inne',
 	'maps-ns-layer' => 'Warstwa',
@@ -3231,6 +3263,11 @@ $messages['pl'] = array(
 	'validation-error-invalid-layers' => 'Parametr $1 musi wskazywać jedną lub więcej prawidłowych warstw.',
 	'maps-layer-of-type' => 'Warstwa typu $1',
 	'maps-layer-type-supported-by' => 'Tego typu warstwa może być używana wyłącznie z {{PLURAL:$2|serwisem map|serwisami map:}} $1.',
+	'maps-coordinates-description' => 'Przechwycenie analizatora  do formatowania współrzędnych z i na dowolny z obsługiwanych formatów.',
+	'maps-displaymap-description' => 'Wyświetlanie map geograficznych bez żadnych naniesionych na nich znaczników na wiki.',
+	'maps-displaypoint-description' => 'Wyświetlanie map geograficznych z naniesionym jednym lub więcej określonych na wiki znaczników.',
+	'maps-distance-description' => 'Konwertuj odległości za pomocą pewnych obsługiwanych jednostek do ich odpowiedników w innych jednostkach.',
+	'maps-finddestination-description' => 'Znajdź drogę do celu z podanego punktu początkowego, (który może być w dowolnym z obsługiwanych formatów), początkowy namiar i odległości.',
 	'validation-error-invalid-location' => 'Parametr $1 musi wskazywać prawidłową lokalizację.',
 	'validation-error-invalid-locations' => 'Parametr $1 musi wskazywać jedną lub więcej prawidłowych lokalizacji.',
 	'validation-error-invalid-width' => 'Parametr $1 musi określać prawidłową szerokość.',
@@ -3259,11 +3296,35 @@ $1',
 	'maps-geocoder-not-available' => 'Funkcja geokodowania map nie jest dostępna. Lokalizacja nie może zostać zakodowana.',
 	'maps_click_to_activate' => 'Kliknij, aby aktywować mapę',
 	'maps_centred_on' => 'Środek mapy – $1, $2.',
+	'maps-googlemaps2-incompatbrowser' => 'Twoja przeglądarka nie jest zgodna z Google Maps v2.',
 	'maps_overlays' => 'Nakładki',
 	'maps_photos' => 'Zdjęcia',
 	'maps_videos' => 'Filmy',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Kamery internetowe',
+	'maps-googlemaps2-par-type' => 'Typ mapy do wyświetlenia na początku.',
+	'maps-googlemaps2-par-types' => 'Typy map, które będą dostępne za pośrednictwem formantu typu.',
+	'maps-googlemaps2-par-controls' => 'Formanty do umieszczenia na mapie.',
+	'maps-googlemaps2-par-autozoom' => 'Włącz przewijanie przy użyciu rolki myszki.',
+	'maps-googlemaps2-par-kml' => 'Pliki KML do załadowania na mapie.',
+	'maps-googlemaps2-par-overlays' => 'Nakładki, które użytkownik może włączyć.',
+	'maps-googlemaps3-incompatbrowser' => 'Twoja przeglądarka nie jest zgodna z Google Maps v3.',
+	'maps-googlemaps3-par-type' => 'Typ mapy do wyświetlenia na początku.',
+	'maps-googlemaps3-par-types' => 'Typy map, które będą dostępne za pośrednictwem formantu typu.',
+	'maps-googlemaps3-par-layers' => 'Specjalne warstwy do załadowania na mapie.',
+	'maps-googlemaps3-par-controls' => 'Formanty do umieszczenia na mapie.',
+	'maps-googlemaps3-par-zoomstyle' => 'Styl formantu powiększenia.',
+	'maps-googlemaps3-par-typestyle' => 'Styl formantu typu.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Automatycznie otwórz wszystkie okna informacyjne po załadowaniu strony.',
+	'maps-googlemaps3-par-kml' => 'Pliki KML do załadowania na mapie.',
+	'maps-googlemaps3-par-gkml' => 'Pliki KML udostępniane przez serwery Google do załadowania na mapie.',
+	'maps-openlayers-par-controls' => 'Formanty do umieszczenia na mapie.',
+	'maps-osm-par-thumbs' => 'Pokaż miniatury',
+	'maps-osm-par-photos' => 'Pokaż zdjęcia',
+	'maps-yahoomaps-par-type' => 'Typ mapy do wyświetlenia na początku.',
+	'maps-yahoomaps-par-types' => 'Typy map, które będą dostępne za pośrednictwem formantu typu.',
+	'maps-yahoomaps-par-controls' => 'Formanty do umieszczenia na mapie.',
+	'maps-yahoomaps-par-autozoom' => 'Włącz przewijanie przy użyciu rolki myszki.',
 );
 
 /** Piedmontese (Piemontèis)
