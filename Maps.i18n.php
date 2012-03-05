@@ -1259,15 +1259,38 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Mjbmr
+ * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'maps_map' => 'نقشه',
+	'maps-loading-map' => 'در حال بارگذاری نقشه...',
+	'maps-load-failed' => 'قادر به بارگیری نقشه نبود!',
+	'maps-markers' => 'نشانگرها',
+	'maps-others' => 'دیگران',
+	'maps-ns-layer' => 'لایه',
+	'maps-ns-layer-talk' => 'بحث لایه',
+	'maps-layer-property' => 'خاصیت',
+	'maps-layer-value' => 'مقدار',
+	'maps-layer-errors' => 'خطاها',
+	'maps-error-invalid-layerdef' => 'تعریف این لایه معتبر نیست.',
+	'maps-error-invalid-layertype' => 'هیچ لایه‌ای از نوع «$1» وجود ندارد. فقط {{PLURAL:$3|این نوع|این نوع‌ها}} پشتیبانی می‌شوند: $2',
+	'maps-error-no-layertype' => 'باید نوع لایه را مشخص کنید. {{PLURAL:$2|فقط این نوع پشتیبانی می‌شود|این نوع‌ها پشتیبانی می‌شوند}}: $1',
+	'validation-error-invalid-layer' => 'پارامتر $1 باید یک لایهٔ معتبر باشد.',
+	'validation-error-invalid-layers' => 'پارامتر $1 باید یک یا چند لایهٔ معتبر باشد.',
+	'maps-finddestination-par-location' => 'مکان اولیه.',
 	'maps-abb-north' => 'شمال',
 	'maps-abb-east' => 'شرق',
 	'maps-abb-south' => 'جنوب',
 	'maps-abb-west' => 'غرب',
 	'maps-latitude' => 'عرض جغرافیایی:',
 	'maps-longitude' => 'طول جغرافیایی:',
+	'maps_overlays' => 'پوشش‌ها',
+	'maps_photos' => 'تصاویر',
+	'maps_videos' => 'ویدیو‌ها',
+	'maps_wikipedia' => 'ویکی‌پدیا',
+	'maps_webcams' => 'وب‌کم‌ها',
+	'maps-googlemaps2-par-type' => 'نوع نقشه برای نمایش اولیه.',
+	'maps-googlemaps2-par-overlays' => 'پوشش‌هایی که کاربر می‌تواند فعال کند.',
 );
 
 /** Finnish (Suomi)
