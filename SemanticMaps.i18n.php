@@ -346,6 +346,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Armando-Martin
  * @author Crazymadlover
  * @author Fitoschido
  * @author Imre
@@ -357,6 +358,9 @@ $messages['es'] = array(
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no es una distancia válida.',
 	'semanticmaps-kml-link' => 'Ver el archivo KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver página $1',
+	'semanticmaps-latitude' => 'Latitud: $1',
+	'semanticmaps-longitude' => 'Longitud: $1',
+	'semanticmaps-altitude' => 'Altitud: $1',
 	'semanticmaps-loading-forminput' => 'Cargando mapa de formulario de entrada...',
 	'semanticmaps_lookupcoordinates' => 'Buscar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduce aquí la dirección',
@@ -364,7 +368,16 @@ $messages['es'] = array(
 	'semanticmaps-forminput-remove' => 'Quitar',
 	'semanticmaps-forminput-add' => 'Añadir',
 	'semanticmaps-forminput-locations' => 'Ubicaciones',
+	'semanticmaps-par-staticlocations' => 'Una lista de localizaciones para añadir al mapa junto a los datos consultados. De forma similar a display_points, puede añadir un título, una descripción o un icono por localización usando el signo "~" como separador.',
 	'semanticmaps-par-forceshow' => '¿Mostrar el mapa incluso cuando no hay ubicaciones que mostrar?',
+	'semanticmaps-par-showtitle' => 'Mostrar o no mostrar un título en la ventana de información del marcador. La desactivación de esto es frecuentemente útil al utilizar una plantilla para dar formato al contenido de la ventana de información.',
+	'semanticmaps-par-centre' => 'El centro del mapa. Cuando no se proporciona, el mapa escogerá automáticamente el mejor centro para mostrar todos los marcadores en el mapa.',
+	'semanticmaps-par-template' => 'Una plantilla a usar para dar formato al contenido de la ventana de información.',
+	'semanticmaps-par-geocodecontrol' => 'Mostrar el control de geocodificación.',
+	'semanticmaps-kml-text' => 'El texto asociado a cada página. Es substituído por las propiedades recuperadas adicionales, si existen.',
+	'semanticmaps-kml-title' => 'El título por defecto para los resultados',
+	'semanticmaps-kml-linkabsolute' => 'Los títulos deberían ser absolutos o no (es decir, relativos)',
+	'semanticmaps-kml-pagelinktext' => 'El texto a usar para los enlaces a la página, en las que $1 será substituído por el título de la página',
 );
 
 /** Basque (Euskara)
