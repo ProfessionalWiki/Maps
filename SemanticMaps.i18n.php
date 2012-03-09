@@ -1060,6 +1060,7 @@ $messages['sr-el'] = array(
  * @author Boivie
  * @author Najami
  * @author Per
+ * @author Rotsee
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
@@ -1067,6 +1068,9 @@ $messages['sv'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Värdet $1 är inte ett giltigt avstånd.',
 	'semanticmaps-kml-link' => 'Visa KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Visa sida $1',
+	'semanticmaps-latitude' => 'Breddgrad: $1',
+	'semanticmaps-longitude' => 'Längdgrad: $1',
+	'semanticmaps-altitude' => 'Höjd över havet: $1',
 	'semanticmaps-loading-forminput' => 'Läser in karta från indata...',
 	'semanticmaps_lookupcoordinates' => 'Kolla upp koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv in adress här',
