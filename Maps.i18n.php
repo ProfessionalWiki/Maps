@@ -3995,6 +3995,7 @@ $messages['sr-el'] = array(
  * @author Fader
  * @author Fluff
  * @author Per
+ * @author Rotsee
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
@@ -4002,7 +4003,7 @@ $messages['sv'] = array(
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
-	'maps-load-failed' => 'Kunde inte läsa in karta!',
+	'maps-load-failed' => 'Kunde inte läsa in kartan!',
 	'maps-markers' => 'Markörer',
 	'maps-others' => 'andra',
 	'maps-ns-layer' => 'Lager',
@@ -4010,15 +4011,20 @@ $messages['sv'] = array(
 	'maps-layer-property' => 'Egenskap',
 	'maps-layer-value' => 'Värde',
 	'maps-layer-errors' => 'Fel',
-	'maps-error-invalid-layerdef' => 'Denna lagerdefinition är inte giltigt.',
+	'maps-error-invalid-layerdef' => 'Denna lagerdefinition är inte giltig.',
 	'maps-error-invalid-layertype' => 'Det finns inga lager av typen "$1". Endast {{PLURAL:$3|denna typ|denna typer}} stöds: $2',
 	'maps-error-no-layertype' => 'Du måste ange lagertypen. {{PLURAL:$2|Endast denna typ|Dessa typer}} stöds: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 måste vara ett giltig lager.',
 	'validation-error-invalid-layers' => 'Parameter $1 måste vara ett eller flera giltiga lager.',
 	'maps-layer-of-type' => 'Lagertyp $1',
 	'maps-layer-type-supported-by' => 'Denna lagertyp kan endast användas med {{PLURAL:$2|kartläggningstjänsten $1|dessa kartläggningstjänster: $1}}.',
+	'maps-distance-description' => 'Konvertera ett avstånd mätt i en giltig enhet till en annan enhet.',
+	'maps-finddestination-description' => 'Hitta ett mål utifrån en given startpunkt (på något giltigt format), en inledande bäring och ett avstånd.',
 	'maps-mapsdoc-par-service' => 'Kartläggningstjänsten för att visa parameterdokumentation.',
 	'maps-mapsdoc-par-language' => 'Språket som du vill visa dokumentationen i. Om det finns någon sådan översättning kommer engelska att användas istället.',
+	'maps-coordinates-par-location' => 'Koordinaterna du vill formatera.',
+	'maps-finddestination-par-location' => 'Startplats',
+	'maps-finddestination-par-bearing' => 'Inledande bäring.',
 	'maps-finddestination-par-distance' => 'Reseavståndet.',
 	'maps-geocode-par-location' => 'Adressen som du vill geokoda.',
 	'maps-geocode-par-mappingservice' => 'Geokodningstjänsten du vill använda. Se de tillgängliga geokodningtjänsterna.',
@@ -4030,8 +4036,8 @@ $messages['sv'] = array(
 	'validation-error-invalid-distances' => 'Parameter $1 måste vara en eller flera giltiga avstånd.',
 	'validation-error-invalid-image' => 'Parameter $1 måste vara en giltig bild.',
 	'validation-error-invalid-images' => 'Parameter $1 måste vara en eller flera giltiga bilder.',
-	'validation-error-invalid-goverlay' => 'Parameter $1 måste vara ett giltigt överlägg.',
-	'validation-error-invalid-goverlays' => 'Parameter $1 måste vara en eller flera giltiga överlägg.',
+	'validation-error-invalid-goverlay' => 'Parameter $1 måste vara ett giltigt lager.',
+	'validation-error-invalid-goverlays' => 'Parameter $1 måste vara en eller flera giltiga lager.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ö',
 	'maps-abb-south' => 'S',
@@ -4050,7 +4056,7 @@ $1',
 	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_centred_on' => 'Karta centrerad på $1, $2.',
 	'maps-googlemaps2-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v2.',
-	'maps_overlays' => 'Överlägg',
+	'maps_overlays' => 'Lager',
 	'maps_photos' => 'Foton',
 	'maps_videos' => 'Videoklipp',
 	'maps_wikipedia' => 'Wikipedia',
