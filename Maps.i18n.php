@@ -192,7 +192,7 @@ $1',
 	'maps-googlemaps3-par-fusiontables' => 'IDs of Google Fusion Tables which should be loaded onto the map.',
 	'maps-googlemaps3-par-tilt' => 'Tilt for the Map when using Google Maps.',
 	'maps-googlemaps3-par-kmlrezoom' => 'Rezoom the map after the KML layers have been loaded.',
-	'maps-googlemaps3-par-poi' => 'Show points of intesrt.',
+	'maps-googlemaps3-par-poi' => 'Show points of interest.',
 
 	// OpenLayers
 	'maps-openlayers-par-controls' => 'The controls to place on the map.',
