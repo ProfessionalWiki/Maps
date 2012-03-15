@@ -231,6 +231,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Can be obtained at: https://code.google.com/apis/loader/signup.html
 		# This key is needed when using Google Earth.
 		$egGoogleJsApiKey = '';
+
+		# Show points of interest or not.
+		$egMapsShowPOI = true;
 		
 		
 	# Google Maps

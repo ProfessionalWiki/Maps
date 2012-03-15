@@ -169,6 +169,17 @@
 
 		var map = new google.maps.Map( this.get( 0 ), mapOptions );
 		this.map = map;
+
+		if ( options.poi === false ) {
+			map.setOptions( { styles: [
+				{
+					featureType: "poi",
+					stylers: [
+						{ visibility: "off" }
+					]
+				}
+			] } );
+		}
 		
 		if ( !options.locations ) {
 			options.locations = [];

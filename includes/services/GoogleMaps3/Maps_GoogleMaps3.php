@@ -152,6 +152,10 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['kmlrezoom'] = new Parameter( 'kmlrezoom', Parameter::TYPE_BOOLEAN );
 		$params['kmlrezoom']->setDefault( $GLOBALS['egMapsRezoomForKML'], false );
 		$params['kmlrezoom']->setMessage( 'maps-googlemaps3-par-kmlrezoom' );
+
+		$params['poi'] = new Parameter( 'poi', Parameter::TYPE_BOOLEAN );
+		$params['poi']->setDefault( $GLOBALS['egMapsShowPOI'], false );
+		$params['poi']->setMessage( 'maps-googlemaps3-par-poi' );
 	}
 	
 	/**
