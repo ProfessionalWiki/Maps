@@ -236,6 +236,20 @@ $messages['qqq'] = array(
 	'maps_openlayers' => '{{optional}}',
 	'maps_osm' => '{{optional}}',
 	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
+
+	'maps-googlemaps3-par-type' => '{{maps-par|googlemaps3|type}}',
+	'maps-googlemaps3-par-types' => '{{maps-par|googlemaps3|types}}',
+	'maps-googlemaps3-par-layers' => '{{maps-par|googlemaps3|layers}}',
+	'maps-googlemaps3-par-controls' => '{{maps-par|googlemaps3|controls}}',
+	'maps-googlemaps3-par-zoomstyle' => '{{maps-par|googlemaps3|zoomstyle}}',
+	'maps-googlemaps3-par-typestyle' => '{{maps-par|googlemaps3|typestyle}}',
+	'maps-googlemaps3-par-autoinfowindows' => '{{maps-par|googlemaps3|autoinfowindows}}',
+	'maps-googlemaps3-par-kml' => '{{maps-par|googlemaps3|kml}}',
+	'maps-googlemaps3-par-gkml' => '{{maps-par|googlemaps3|gkml}}',
+	'maps-googlemaps3-par-fusiontables' => '{{maps-par|googlemaps3|fusiontables}}',
+	'maps-googlemaps3-par-tilt' => '{{maps-par|googlemaps3|tilt}}',
+	'maps-googlemaps3-par-kmlrezoom' => '{{maps-par|googlemaps3|kmlrezoom}}',
+	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
 );
 
 /** Afrikaans (Afrikaans)
