@@ -4102,6 +4102,7 @@ $1',
 	'maps-googlemaps2-par-autozoom' => 'Aktivera rullning med mushjulet.',
 	'maps-googlemaps2-par-overlays' => 'Överlägg användaren kan aktivera.',
 	'maps-googlemaps3-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v3.',
+	'maps-osm-par-thumbs' => 'Visa miniatyrer',
 	'maps-osm-par-photos' => 'Visa foton',
 	'maps-yahoomaps-par-autozoom' => 'Aktivera rullning med mushjulet.',
 );
