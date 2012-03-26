@@ -7,7 +7,7 @@
  */
 
 (function( $ ){ $.fn.openlayers = function( mapElementId, options ) {
-	
+
 	this.getOLMarker = function( markerLayer, markerData ) {
 		var marker;
 		
@@ -103,6 +103,28 @@
 		
 		map.addControl( new OpenLayers.Control.Attribution() ); 
 	}
+
+    this.addLine = function(properties){
+        var pos = new Array();
+        for(var x = 0; x < properties.pos.length; x++){
+            var point = new OpenLayers.Geometry.Point(properties.pos[x].lon,properties.pos[x].lat);
+            point.transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+            );
+            pos.push(point);
+        }
+
+        var style = {
+            'strokeColor':properties.strokeColor,
+            'strokeWidth': properties.strokeWeight,
+            'strokeOpacity': properties.strokeOpacity
+        }
+
+        var line = new OpenLayers.Geometry.LineString(pos);
+        var lineFeature = new OpenLayers.Feature.Vector(line, null, style);
+        this.lineLayer.addFeatures([lineFeature]);
+    }
 	
 	/**
 	 * Gets a valid control name (with excat lower and upper case letters),
@@ -154,7 +176,7 @@
 		mapOptions.maxResolution = 156543.0339;
 		mapOptions.maxExtent = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
 	}
-	
+
 	this.map = new OpenLayers.Map( mapElementId, mapOptions );
 	var map = this.map;
 	this.addControls( map, options.controls, this.get( 0 ) );
@@ -195,7 +217,59 @@
 		mw.loader.using( 'ext.maps.resizable', function() {
 			_this.resizable();
 		} );
-	}	
+	}
+
+    if(options.lines){
+        this.lineLayer = new OpenLayers.Layer.Vector("Line Layer");
+        map.addLayer(this.lineLayer);
+        map.addControl(new OpenLayers.Control.DrawFeature(this.lineLayer, OpenLayers.Handler.Path));
+
+        for ( var i = 0; i < options.lines.length; i++ ) {
+            this.addLine(options.lines[i]);
+        }
+    }
+
+    if(options.copycoords){
+        map.div.oncontextmenu = function(){return false;};
+        OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
+            defaultHandlerOptions: {
+                'single': true,
+                'double': false,
+                'pixelTolerance': 0,
+                'stopSingle': false,
+                'stopDouble': false
+            },
+            handleRightClicks:true,
+
+            initialize: function(options) {
+                this.handlerOptions = OpenLayers.Util.extend(
+                    {}, this.defaultHandlerOptions
+                );
+                OpenLayers.Control.prototype.initialize.apply(
+                    this, arguments
+                );
+                this.handler = new OpenLayers.Handler.Click(
+                    this, this.eventMethods, this.handlerOptions
+                );
+            }
+
+        })
+        var click = new OpenLayers.Control.Click({
+            eventMethods:{
+                'rightclick': function(e){
+                    var lonlat = map.getLonLatFromViewPortPx(e.xy);
+                    lonlat = lonlat.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
+                    prompt("CTRL+C, ENTER",lonlat.lat+','+lonlat.lon);
+                }
+            }
+        });
+        map.addControl(click);
+        click.activate();
+    }
+
+    if(options.markercluster){
+        alert('no support for clustering in openlayers');
+    }
 	
 	return this;
 	

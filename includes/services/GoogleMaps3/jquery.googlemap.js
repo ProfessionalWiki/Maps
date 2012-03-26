@@ -10,6 +10,7 @@
 	var _this = this;
 	
 	this.map = null;
+    this.markercluster = null;
 	this.options = options;
 	
 	/**
@@ -19,6 +20,13 @@
 	 */
 	this.markers = [];
 	
+	/**
+     * All Polylines currently on the map,
+     * @type {Array}
+     * @private
+     */
+    this.lines = [];
+
 	/**
 	 * Creates a new marker with the provided data,
 	 * adds it to the map, and returns it.
@@ -133,6 +141,55 @@
 		}		
 	};
 	
+    this.addLine = function(properties){
+        var paths = new google.maps.MVCArray();
+        for(var x = 0; x < properties.pos.length; x++){
+            paths.push(new google.maps.LatLng( properties.pos[x].lat , properties.pos[x].lon ));
+        }
+
+        var line = new google.maps.Polyline({
+                map:this.map,
+                path:paths,
+                strokeColor:properties.strokeColor,
+                strokeOpacity:properties.strokeOpacity,
+                strokeWeight:properties.strokeWeight
+        });
+        this.lines.push(line);
+
+        google.maps.event.addListener(line,"click", function(event){
+            if (this.openWindow != undefined) {
+                this.openWindow.close();
+            }
+            this.openWindow = new google.maps.InfoWindow();
+            this.openWindow.content = properties.text;
+            this.openWindow.position = event.latLng;
+            this.openWindow.closeclick = function() {
+                line.openWindow = undefined;
+            };
+            this.openWindow.open(_this.map);
+        });
+    };
+
+    this.removeLine = function(line){
+        line.setMap( null );
+
+        for ( var i = this.line.length - 1; i >= 0; i-- ) {
+            if ( this.line[i] === line ) {
+                delete this.line[i];
+                break;
+            }
+        }
+
+        delete line;
+    };
+
+    this.removeLines = function(){
+        for ( var i = this.lines.length - 1; i >= 0; i-- ) {
+            this.lines[i].setMap( null );
+        }
+        this.lines = [];
+    }
+
 	this.setup = function() {
 		var showEarth = $.inArray( 'earth', options.types ) !== -1; 
 		
@@ -311,8 +368,48 @@
 				_this.resizable();
 			} );
 		}		
+
+        /**
+         * used in display_line functionality
+         * draws paths between markers
+         */
+        if(options.lines){
+            for ( var i = 0; i < options.lines.length; i++ ) {
+                this.addLine(options.lines[i]);
+            }
+        }
+
+        /**
+         * used in display_line functionality
+         * allows the copy to clipboard of coordinates
+         */
+        if(options.copycoords){
+            function addRightClickListener(object){
+                google.maps.event.addListener( object, 'rightclick', function(event) {
+                    prompt("CTRL+C, ENTER",event.latLng.Sa+','+event.latLng.Ta);
+                });
+            }
+
+            for(var x = 0; x < this.markers.length; x++){
+                addRightClickListener(this.markers[x]);
+            }
+
+            for(var x = 0; x < this.lines.length; x++){
+                addRightClickListener(this.lines[x]);
+            }
+
+            addRightClickListener(this.map);
+        }
+
+        /**
+         * used in display_line functionality
+         * allows grouping of markers
+         */
+        if(options.markercluster){
+            this.markercluster = new MarkerClusterer(this.map,this.markers);
+        }
+
 	};
-	
 	this.setup();
 	
 	return this;

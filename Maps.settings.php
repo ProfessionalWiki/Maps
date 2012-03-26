@@ -31,7 +31,8 @@ $s = array(
 		'defaultServices',
 			array(
 			'display_point' => 'googlemaps3',
-			'display_map' => 'googlemaps3'
+			'display_map' => 'googlemaps3',
+            'display_line' => 'googlemaps3'
 		)
 	),
 	

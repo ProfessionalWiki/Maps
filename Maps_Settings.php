@@ -44,7 +44,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# for, since it's used as a fallback mechanism.
 	$egMapsDefaultServices = array(
 		'display_point' => $egMapsDefaultService,
-		'display_map' => $egMapsDefaultService
+		'display_map' => $egMapsDefaultService,
+        'display_line' => $egMapsDefaultService
 	);
 
 

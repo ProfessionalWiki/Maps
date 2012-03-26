@@ -13,6 +13,7 @@ $magicWords['en'] = array(
 	'display_map' => array( 0, 'display_map' ),
 	'display_point' => array( 0, 'display_point' ),
 	'display_points' => array( 0, 'display_points' ),
+    'display_line' => array( 0, 'display_line' ),
 	'geocode' => array( 0, 'geocode' ),
 	'geodistance' => array( 0, 'geodistance' ),
 	'finddestination' => array( 0, 'finddestination' ),
