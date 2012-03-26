@@ -386,7 +386,7 @@
         if(options.copycoords){
             function addRightClickListener(object){
                 google.maps.event.addListener( object, 'rightclick', function(event) {
-                    prompt("CTRL+C, ENTER",event.latLng.Sa+','+event.latLng.Ta);
+                    prompt("CTRL+C, ENTER",event.latLng.lat()+','+event.latLng.lng());
                 });
             }
 
