@@ -122,7 +122,7 @@
         }
 
         var line = new OpenLayers.Geometry.LineString(pos);
-        var lineFeature = new OpenLayers.Feature.Vector(line, null, style);
+        var lineFeature = new OpenLayers.Feature.Vector(line, {text:properties.text,title:properties.title}, style);
         this.lineLayer.addFeatures([lineFeature]);
     }
 	
@@ -180,15 +180,58 @@
 	this.map = new OpenLayers.Map( mapElementId, mapOptions );
 	var map = this.map;
 	this.addControls( map, options.controls, this.get( 0 ) );
-	
+
 	// Add the base layers.
 	for ( i = 0, n = options.layers.length; i < n; i++ ) {
 		map.addLayer( eval( options.layers[i] ) );
 	}
 
+    //Add markers
 	this.addMarkers( map, options );
 	var centre = false;
-	
+
+    //Add line layer if applicable
+    if(options.lines && options.lines.length > 0){
+        this.lineLayer = new OpenLayers.Layer.Vector("Line Layer");
+        this.lineLayer.events.on({
+            'featureselected':function(feature){
+                if(feature.feature.attributes.text != undefined && feature.feature.attributes.text != ''){
+                    var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy
+                    var lonlat = map.getLonLatFromPixel(mousePos);
+                    var popup = new OpenLayers.Popup(null,lonlat, null, feature.feature.attributes.text, true,function(){
+                        map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
+                        map.removePopup(this);
+                    })
+                    this.map.addPopup( popup );
+                }
+            },
+            'featureunselected':function(feature){
+                //do nothing
+            }
+        });
+
+        var controls = {
+            select: new OpenLayers.Control.SelectFeature(this.lineLayer,{
+                clickout: true, toggle: false,
+                multiple: true, hover: false
+            })
+        };
+
+        for(key in controls){
+            var control = controls[key];
+            map.addControl(control);
+            control.activate();
+        }
+
+        map.addLayer(this.lineLayer);
+        map.raiseLayer(this.lineLayer,-1);
+        map.resetLayersZIndex();
+
+        for ( var i = 0; i < options.lines.length; i++ ) {
+            this.addLine(options.lines[i]);
+        }
+    }
+
 	if ( options.centre === false ) {
 		if ( options.locations.length == 1 ) {
 			centre = new OpenLayers.LonLat( options.locations[0].lon, options.locations[0].lat );
@@ -218,16 +261,6 @@
 			_this.resizable();
 		} );
 	}
-
-    if(options.lines){
-        this.lineLayer = new OpenLayers.Layer.Vector("Line Layer");
-        map.addLayer(this.lineLayer);
-        map.addControl(new OpenLayers.Control.DrawFeature(this.lineLayer, OpenLayers.Handler.Path));
-
-        for ( var i = 0; i < options.lines.length; i++ ) {
-            this.addLine(options.lines[i]);
-        }
-    }
 
     if(options.copycoords){
         map.div.oncontextmenu = function(){return false;};
