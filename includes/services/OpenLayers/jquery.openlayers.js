@@ -122,7 +122,7 @@
         }
 
         var line = new OpenLayers.Geometry.LineString(pos);
-        var lineFeature = new OpenLayers.Feature.Vector(line, {text:properties.text,title:properties.title}, style);
+        var lineFeature = new OpenLayers.Feature.Vector(line, {text:properties.text}, style);
         this.lineLayer.addFeatures([lineFeature]);
     }
 	
