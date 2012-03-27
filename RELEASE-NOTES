@@ -16,6 +16,10 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 * 'display_points' locations have a fifth parameter for defining a group for the location.
 
+* 'display_line' new parser function which has the parameter lines where one can specify coordinates/locations where a line should be drawn between, lines color. Currently supported with googlemaps and openlayers.
+* 'display_line' new parameter copycoords, when set to "on" will give right clicks on map a prompt of longitude and latitude coordinates
+* 'display_line' new parameter markercluster, when set to "on" will cluster closely adjacent markers together.
+
 === Maps 1.0.5 ===
 (2011-11-30)
 
