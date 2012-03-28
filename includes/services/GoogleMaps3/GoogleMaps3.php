@@ -32,7 +32,8 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
 		'ext.maps.googlemaps3.js'
 	),
 	'messages' => array(
-		'maps-googlemaps3-incompatbrowser'
+		'maps-googlemaps3-incompatbrowser',
+        'maps-copycoords-prompt'
 	)
 );
 

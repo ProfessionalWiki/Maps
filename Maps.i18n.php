@@ -126,6 +126,7 @@ When used together with label, the title will be bold and underlined.',
 
 	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
+    'validation-error-invalid-line-param' => 'Invalid "lines" parameter specified.',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
