@@ -292,7 +292,7 @@
                 'rightclick': function(e){
                     var lonlat = map.getLonLatFromViewPortPx(e.xy);
                     lonlat = lonlat.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
-                    prompt("CTRL+C, ENTER",lonlat.lat+','+lonlat.lon);
+                    prompt(mediaWiki.msg( 'maps-copycoords-prompt' ),lonlat.lat+','+lonlat.lon);
                 }
             }
         });
@@ -301,7 +301,7 @@
     }
 
     if(options.markercluster){
-        alert('no support for clustering in openlayers');
+        alert(mediaWiki.msg('maps-clustering-unsupportedservice'));
     }
 	
 	return this;

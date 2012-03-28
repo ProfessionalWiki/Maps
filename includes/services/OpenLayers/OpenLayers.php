@@ -36,7 +36,9 @@ $wgResourceModules['ext.maps.openlayers'] = array(
 		'OpenLayers/theme/default/style.css'
 	),
 	'messages' => array(
-		'maps-markers'
+		'maps-markers',
+        'maps-copycoords-prompt',
+        'maps-clustering-unsupportedservice'
 	)			
 );
 

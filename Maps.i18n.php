@@ -23,6 +23,8 @@ $messages['en'] = array(
 	'maps-loading-map' => 'Loading map...',
 	'maps-load-failed' => 'Could not load the map!',
 	'maps-markers' => 'Markers',
+    'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+    'maps-clustering-unsupportedservice' => 'This service doesn\'t support clustering of markers',
 	'maps-others' => 'others',
 	//TODO: move to namespaces i18n
 	'maps-ns-layer' => 'Layer',
