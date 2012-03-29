@@ -81,6 +81,7 @@ $wgAutoloadClasses['MapsLayerPage'] 			= $incDir . 'Maps_LayerPage.php';
 $wgAutoloadClasses['MapsLayers'] 				= $incDir . 'Maps_Layers.php';
 $wgAutoloadClasses['MapsLocation'] 				= $incDir . 'Maps_Location.php';
 $wgAutoloadClasses['MapsLine'] 				    = $incDir . 'Maps_Line.php';
+$wgAutoloadClasses['MapsPolygon'] 				= $incDir . 'Maps_Polygon.php';
 $wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 $wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
 $wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';
@@ -95,6 +96,7 @@ $wgAutoloadClasses['CriterionIsLocation'] 		= $criDir . 'CriterionIsLocation.php
 $wgAutoloadClasses['CriterionMapDimension'] 	= $criDir . 'CriterionMapDimension.php';
 $wgAutoloadClasses['CriterionMapLayer'] 		= $criDir . 'CriterionMapLayer.php';
 $wgAutoloadClasses['CriterionLine'] 	    	= $criDir . 'CriterionLine.php';
+$wgAutoloadClasses['CriterionPolygon'] 	    	= $criDir . 'CriterionPolygon.php';
 unset( $criDir );
 
 // Autoload the "includes/features/" classes.
@@ -126,6 +128,7 @@ $wgAutoloadClasses['MapsParamLocation'] 		= $manDir . 'Maps_ParamLocation.php';
 $wgAutoloadClasses['MapsParamService'] 			= $manDir . 'Maps_ParamService.php';
 $wgAutoloadClasses['MapsParamZoom'] 			= $manDir . 'Maps_ParamZoom.php';
 $wgAutoloadClasses['MapsParamLine'] 			= $manDir . 'Maps_ParamLine.php';
+$wgAutoloadClasses['MapsParamPolygon'] 			= $manDir . 'Maps_ParamPolygon.php';
 unset( $manDir );
 
 // Autoload the "includes/parserHooks/" classes.

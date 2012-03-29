@@ -68,6 +68,11 @@ class MapsDisplayLine extends MapsDisplayPoint {
         $params['lines']->addCriteria(new CriterionLine());
         $params['lines']->addManipulations( new MapsParamLine() );
 
+        $params['polygons'] = new ListParameter( 'polygons', ';' );
+        $params['polygons']->setDefault(array());
+        $params['polygons']->addCriteria(new CriterionPolygon());
+        $params['polygons']->addManipulations( new MapsParamPolygon() );
+
         $params['copycoords'] = new Parameter(
             'copycoords',
             Parameter::TYPE_BOOLEAN
@@ -95,6 +100,6 @@ class MapsDisplayLine extends MapsDisplayPoint {
      * @return array
      */
     protected function getDefaultParameters( $type ) {
-        return array( 'coordinates','lines' );
+        return array( 'coordinates','lines','polygons' );
     }
 }

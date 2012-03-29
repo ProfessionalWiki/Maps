@@ -125,6 +125,30 @@
         var lineFeature = new OpenLayers.Feature.Vector(line, {text:properties.text}, style);
         this.lineLayer.addFeatures([lineFeature]);
     }
+
+    this.addPolygon = function(properties){
+        var pos = new Array();
+        for(var x = 0; x < properties.pos.length; x++){
+            var point = new OpenLayers.Geometry.Point(properties.pos[x].lon,properties.pos[x].lat);
+            point.transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+            );
+            pos.push(point);
+        }
+
+        var style = {
+            'strokeColor':properties.strokeColor,
+            'strokeWidth': properties.strokeWeight,
+            'strokeOpacity': properties.strokeOpacity,
+            'fillColor': properties.fillColor,
+            'fillOpacity': properties.fillOpacity
+        }
+
+        var polygon = new OpenLayers.Geometry.LinearRing(pos);
+        var polygonFeature = new OpenLayers.Feature.Vector(polygon, {text:properties.text}, style);
+        this.polygonLayer.addFeatures([polygonFeature]);
+    }
 	
 	/**
 	 * Gets a valid control name (with excat lower and upper case letters),
@@ -229,6 +253,47 @@
 
         for ( var i = 0; i < options.lines.length; i++ ) {
             this.addLine(options.lines[i]);
+        }
+    }
+
+    if(options.polygons && options.polygons.length > 0){
+        this.polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer");
+        this.polygonLayer.events.on({
+            'featureselected':function(feature){
+                if(feature.feature.attributes.text != undefined && feature.feature.attributes.text != ''){
+                    var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy
+                    var lonlat = map.getLonLatFromPixel(mousePos);
+                    var popup = new OpenLayers.Popup(null,lonlat, null, feature.feature.attributes.text, true,function(){
+                        map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
+                        map.removePopup(this);
+                    })
+                    this.map.addPopup( popup );
+                }
+            },
+            'featureunselected':function(feature){
+                //do nothing
+            }
+        });
+
+        var controls = {
+            select: new OpenLayers.Control.SelectFeature(this.polygonLayer,{
+                clickout: true, toggle: false,
+                multiple: true, hover: false
+            })
+        };
+
+        for(key in controls){
+            var control = controls[key];
+            map.addControl(control);
+            control.activate();
+        }
+
+        map.addLayer(this.polygonLayer);
+        map.raiseLayer(this.polygonLayer,-1);
+        map.resetLayersZIndex();
+
+        for ( var i = 0; i < options.polygons.length; i++ ) {
+            this.addPolygon(options.polygons[i]);
         }
     }
 

@@ -27,6 +27,11 @@
      */
     this.lines = [];
 
+    /**
+     * All polygons currently on the map,
+     */
+    this.polygons = [];
+
 	/**
 	 * Creates a new marker with the provided data,
 	 * adds it to the map, and returns it.
@@ -188,7 +193,58 @@
             this.lines[i].setMap( null );
         }
         this.lines = [];
-    }
+    };
+
+    this.addPolygon = function(properties){
+        var paths = new google.maps.MVCArray();
+        for(var x = 0; x < properties.pos.length; x++){
+            paths.push(new google.maps.LatLng( properties.pos[x].lat , properties.pos[x].lon ));
+        }
+
+        var polygon = new google.maps.Polygon({
+            map:this.map,
+            path:paths,
+            strokeColor:properties.strokeColor,
+            strokeOpacity:properties.strokeOpacity,
+            strokeWeight:properties.strokeWeight,
+            fillColor:properties.fillColor,
+            fillOpacity: properties.fillOpacity
+        });
+        this.polygons.push(polygon);
+
+        google.maps.event.addListener(polygon,"click", function(event){
+            if (this.openWindow != undefined) {
+                this.openWindow.close();
+            }
+            this.openWindow = new google.maps.InfoWindow();
+            this.openWindow.content = properties.text;
+            this.openWindow.position = event.latLng;
+            this.openWindow.closeclick = function() {
+                polygon.openWindow = undefined;
+            };
+            this.openWindow.open(_this.map);
+        });
+    };
+
+    this.removePolygon = function(polygon){
+        polygon.setMap( null );
+
+        for ( var i = this.polygon.length - 1; i >= 0; i-- ) {
+            if ( this.polygon[i] === polygon ) {
+                delete this.polygon[i];
+                break;
+            }
+        }
+
+        delete polygon;
+    };
+
+    this.removePolygons = function(){
+        for ( var i = this.polygon.length - 1; i >= 0; i-- ) {
+            this.polygon[i].setMap( null );
+        }
+        this.polygon = [];
+    };
 
 	this.setup = function() {
 		var showEarth = $.inArray( 'earth', options.types ) !== -1; 
@@ -376,6 +432,15 @@
         if(options.lines){
             for ( var i = 0; i < options.lines.length; i++ ) {
                 this.addLine(options.lines[i]);
+            }
+        }
+
+        /**
+         * used in display_line to draw polygons
+         */
+        if(options.polygons){
+            for ( var i = 0; i < options.polygons.length; i++ ) {
+                this.addPolygon(options.polygons[i]);
             }
         }
 

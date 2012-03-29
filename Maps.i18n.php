@@ -16,7 +16,9 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://mapping.referata.com/wiki/Examples demos])",
+	
 	'right-geocode' => 'Geocode',
+	
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
 	'maps-load-failed' => 'Could not load the map!',
@@ -51,7 +53,7 @@ $messages['en'] = array(
 	// Mapsdoc parser hook
 	'maps-mapsdoc-par-service' => 'The mapping service to display parameter documentation for.',
 	'maps-mapsdoc-par-language' => 'The language in which to display the documentation. If no such translation is available, English will be used instead.',
-
+	
 	// Coordinates parser hook
 	'maps-coordinates-par-location' => 'The coordinates you want to format.',
 	'maps-coordinates-par-format' => 'The target format for the coordinates.',
@@ -124,7 +126,8 @@ When used together with label, the title will be bold and underlined.',
 
 	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
-	'validation-error-invalid-line-param' => 'Invalid "lines" parameter specified.',
+    	'validation-error-invalid-line-param' => 'Invalid "lines" parameter specified.',
+    	'validation-error-invalid-polyline-param' => 'Invalid "polylines" parameter specified.',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
@@ -250,9 +253,6 @@ $messages['qqq'] = array(
 	'maps-googlemaps3-par-tilt' => '{{maps-par|googlemaps3|tilt}}',
 	'maps-googlemaps3-par-kmlrezoom' => '{{maps-par|googlemaps3|kmlrezoom}}',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
-	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
-	'maps-clustering-unsupportedservice' => 'text describing that the chosen maps service doesn\'t support clustering of markers',
-	'validation-error-invalid-line-param' => 'validation text indicating that there is something wrong with the "lines" parameter'
 );
 
 /** Afrikaans (Afrikaans)
