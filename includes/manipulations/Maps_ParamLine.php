@@ -3,11 +3,12 @@ class MapsParamLine extends ItemParameterManipulation {
 
 
 
-    /**
-     * Constructor
-     */
-    public function __construct() {
+    protected $metaDataSeparator;
+
+    public function __construct( $metaDataSeparator ) {
         parent::__construct();
+
+        $this->metaDataSeparator = $metaDataSeparator;
     }
 
     /**
@@ -23,8 +24,8 @@ class MapsParamLine extends ItemParameterManipulation {
      */
     public function doManipulation(&$value, Parameter $parameter, array &$parameters)
     {
-      $parts = preg_split('/[\|]+/',$value);
-      $lineCoords = preg_split('/[:]/',$parts[0]);
+      $parts = explode($this->metaDataSeparator,$value);
+      $lineCoords = explode(':',$parts[0]);
 
       $value = new MapsLine($lineCoords);
       $value->setTitle( isset($parts[1]) ? $parts[1] : '' );

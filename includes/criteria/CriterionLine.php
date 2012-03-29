@@ -15,6 +15,15 @@
 class CriterionLine extends ItemParameterCriterion
 {
 
+    protected $metaDataSeparator;
+
+    public function __construct( $metaDataSeparator ) {
+        parent::__construct();
+
+        $this->metaDataSeparator = $metaDataSeparator;
+    }
+
+
     /**
      * Returns true if the parameter value contains atleast 1 comma
      * meaning that there are atleast two enpoints on which to draw a line.
@@ -43,9 +52,9 @@ class CriterionLine extends ItemParameterCriterion
         }
 
         //strip away line parameters and check for valid locations
-        $parts = preg_split('/[:]/', $value);
+        $parts = explode(':', $value);
         foreach ($parts as $part) {
-            $toIndex = strpos($part, '|');
+            $toIndex = strpos($part, $this->metaDataSeparator);
             if ($toIndex != false) {
                 $part = substr($part, 0, $toIndex);
             }

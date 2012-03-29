@@ -65,13 +65,13 @@ class MapsDisplayLine extends MapsDisplayPoint {
 
         $params['lines'] = new ListParameter( 'lines', ';' );
         $params['lines']->setDefault(array());
-        $params['lines']->addCriteria(new CriterionLine());
-        $params['lines']->addManipulations( new MapsParamLine() );
+        $params['lines']->addCriteria(new CriterionLine($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
+        $params['lines']->addManipulations(new MapsParamLine($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
 
         $params['polygons'] = new ListParameter( 'polygons', ';' );
         $params['polygons']->setDefault(array());
-        $params['polygons']->addCriteria(new CriterionPolygon());
-        $params['polygons']->addManipulations( new MapsParamPolygon() );
+        $params['polygons']->addCriteria(new CriterionPolygon($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
+        $params['polygons']->addManipulations(new MapsParamPolygon($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
 
         $params['copycoords'] = new Parameter(
             'copycoords',

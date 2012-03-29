@@ -24,6 +24,16 @@ class MapsBasePointLineMap extends MapsBasePointMap{
             $line['text'] = ( $hasTitleAndtext ? '<b>' . $line['title'] . '</b><hr />' : $line['title'] ) . $line['text'];
             $line['title'] = strip_tags( $line['title'] );
         }
+
+        foreach($params['polygons'] as &$polygon){
+
+            $polygon['title'] = $parserClone->parse( $polygon['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
+            $polygon['text'] = $parserClone->parse( $polygon['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
+
+            $hasTitleAndtext = $polygon['title'] !== '' && $polygon['text'] !== '';
+            $polygon['text'] = ( $hasTitleAndtext ? '<b>' . $polygon['title'] . '</b><hr />' : $polygon['title'] ) . $polygon['text'];
+            $polygon['title'] = strip_tags( $polygon['title'] );
+        }
     }
 
 

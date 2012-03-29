@@ -15,6 +15,14 @@
 class CriterionPolygon extends ItemParameterCriterion
 {
 
+    protected $metaDataSeparator;
+
+    public function __construct( $metaDataSeparator ) {
+        parent::__construct();
+
+        $this->metaDataSeparator = $metaDataSeparator;
+    }
+
     /**
      * Returns true if the parameter value contains atleast 1 colon
      * meaning that there are atleast two enpoints on which to draw a polygon.
@@ -43,10 +51,10 @@ class CriterionPolygon extends ItemParameterCriterion
             $mappingService = $parameter->hasDependency('mappingservice') ? $parameters['mappingservice']->getValue() : false;
         }
 
-        //strip away line parameters and check for valid locations
-        $parts = preg_split('/[:]/', $value);
+        //strip away polygon parameters and check for valid locations
+        $parts = explode(':', $value);
         foreach ($parts as $part) {
-            $toIndex = strpos($part, '|');
+            $toIndex = strpos($part, $this->metaDataSeparator);
             if ($toIndex != false) {
                 $part = substr($part, 0, $toIndex);
             }

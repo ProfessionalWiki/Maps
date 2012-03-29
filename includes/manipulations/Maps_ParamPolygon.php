@@ -1,11 +1,12 @@
 <?php
 class MapsParamPolygon extends ItemParameterManipulation {
 
-    /**
-     * Constructor
-     */
-    public function __construct() {
+    protected $metaDataSeparator;
+
+    public function __construct( $metaDataSeparator ) {
         parent::__construct();
+
+        $this->metaDataSeparator = $metaDataSeparator;
     }
 
     /**
@@ -21,8 +22,8 @@ class MapsParamPolygon extends ItemParameterManipulation {
      */
     public function doManipulation(&$value, Parameter $parameter, array &$parameters)
     {
-      $parts = preg_split('/[\|]+/',$value);
-      $polygonCoords = preg_split('/[:]/',$parts[0]);
+      $parts = explode($this->metaDataSeparator,$value);
+      $polygonCoords = explode(':',$parts[0]);
 
       $value = new MapsPolygon($polygonCoords);
       $value->setTitle( isset($parts[1]) ? $parts[1] : '' );
