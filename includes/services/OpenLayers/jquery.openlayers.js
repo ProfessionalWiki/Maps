@@ -92,7 +92,7 @@
 				control = getValidControlName( controls[i] );
 				
 				if ( control ) {
-					eval(' map.addControl( new OpenLayers.Control.' + control + '() ); ');
+                    map.addControl(eval('new OpenLayers.Control.' + control + '() '));
 				}
 			}
 			else {
@@ -178,21 +178,22 @@
 	// Remove the loading map message.
 	this.text( '' );
 	
-	var hasImageLayer = false;
-	for ( i = 0, n = options.layers.length; i < n; i++ ) {
-		// Idieally this would check if the objecct is of type OpenLayers.layer.image
-		if ( options.layers[i].options && options.layers[i].options.isImage === true ) {
-			hasImageLayer = true;
-			break;
-		}
-	}	
-	
 	// Create a new OpenLayers map with without any controls on it.
 	var mapOptions = {
 		controls: []
 	};
-	
-	if ( !hasImageLayer ) {
+
+    var hasImageLayer = false;
+    for ( i = 0, n = options.layers.length; i < n; i++ ) {
+        // Idieally this would check if the objecct is of type OpenLayers.layer.image
+        options.layers[i] = eval(options.layers[i])
+        if ( options.layers[i].options && options.layers[i].options.isImage === true ) {
+            hasImageLayer = true;
+            break;
+        }
+    }
+
+    if ( !hasImageLayer ) {
 		mapOptions.projection = new OpenLayers.Projection("EPSG:900913");
 		mapOptions.displayProjection = new OpenLayers.Projection("EPSG:4326");
 		mapOptions.units = "m";
@@ -207,7 +208,7 @@
 
 	// Add the base layers.
 	for ( i = 0, n = options.layers.length; i < n; i++ ) {
-		map.addLayer( eval( options.layers[i] ) );
+		map.addLayer(options.layers[i] );
 	}
 
     //Add markers
@@ -297,6 +298,10 @@
         }
     }
 
+    if ( options.zoom !== false ) {
+        map.zoomTo( options.zoom );
+    }
+
 	if ( options.centre === false ) {
 		if ( options.locations.length == 1 ) {
 			centre = new OpenLayers.LonLat( options.locations[0].lon, options.locations[0].lat );
@@ -312,13 +317,10 @@
 	if ( centre !== false ) {
 		if ( !hasImageLayer ) {
 			centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
-		}		
-		
-		map.setCenter( centre );		
-	}
-	
-	if ( options.zoom !== false ) {
-		map.zoomTo( options.zoom );
+            map.setCenter( centre );
+		}else{
+            map.zoomToMaxExtent();
+        }
 	}
 	
 	if ( options.resizable ) {
@@ -368,7 +370,6 @@
     if(options.markercluster){
         alert(mediaWiki.msg('maps-clustering-unsupportedservice'));
     }
-	
 	return this;
 	
 }; })( jQuery );
