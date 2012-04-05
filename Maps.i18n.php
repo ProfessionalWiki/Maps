@@ -388,6 +388,8 @@ $messages['ast'] = array(
 	'maps-loading-map' => "Cargando'l mapa...",
 	'maps-load-failed' => '¡Nun se pudo cargar el mapa!',
 	'maps-markers' => 'Marcadores',
+	'maps-copycoords-prompt' => 'CTRL+C, Intro',
+	'maps-clustering-unsupportedservice' => 'Esti serviciu nun tien sofitu pa clusters de marcadores',
 	'maps-others' => 'otros',
 	'maps-ns-layer' => 'Capa',
 	'maps-ns-layer-talk' => 'Alderique de capa',
@@ -400,6 +402,12 @@ $messages['ast'] = array(
 	'validation-error-invalid-layer' => 'El parámetru $1 tien de ser una capa válida.',
 	'validation-error-invalid-layers' => 'El parámetru $1 tien de ser una o más capes válides.',
 	'maps-layer-of-type' => 'Capa de tipu $1',
+	'maps-layer-type-supported-by' => 'Esta triba de capa pue emplegase {{PLURAL:$2|namái col serviciu de mapes $1|con estos servicios de mapes: $1}}.',
+	'maps-coordinates-description' => 'Asociador del analizador pa dar formatu a les coordenaes, dende y a cualesquiera de los formatos sofitaos.',
+	'maps-displaymap-description' => 'Amosar mapes xeográficos ensin dengún marcador definíu na wiki nellos.',
+	'maps-displaypoint-description' => 'Amosar mapes xeográficos con unu o más marcadores definíos na wiki nellos.',
+	'maps-distance-description' => 'Convertir una distancia usando cierta unidá sofitada al equivalente utilizando otra unidá.',
+	'maps-finddestination-description' => 'Alcontrar un destín dende un puntu de partida (que pue tar en cualesquiera de los formatos compatibles), una orientación inicial y una distancia.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -410,6 +418,10 @@ $messages['ast'] = array(
 	'maps_photos' => 'Semeyes',
 	'maps_videos' => 'Videos',
 	'maps_wikipedia' => 'Uiquipedia',
+	'maps-googlemaps3-par-poi' => "Amosar puntos d'interés.",
+	'maps-openlayers-par-controls' => 'Controles a poner nel mapa.',
+	'maps-openlayers-par-layers' => "Les capes que tarán disponibles nel selector de capes. La primera capa s'amosará al cargar el mapa.",
+	'maps-osm-par-thumbs' => 'Amosar miniatures',
 );
 
 /** Azerbaijani (Azərbaycanca)
@@ -842,6 +854,7 @@ $messages['da'] = array(
  * @author DaSch
  * @author Imre
  * @author Kghbln
+ * @author Metalhead64
  * @author Purodha
  * @author The Evil IP address
  */
@@ -849,13 +862,15 @@ $messages['de'] = array(
 	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
 	'right-geocode' => 'Georeferenzieren',
 	'maps_map' => 'Karte',
-	'maps-loading-map' => 'Die Karte wird gerade geladen …',
+	'maps-loading-map' => 'Die Karte wird geladen …',
 	'maps-load-failed' => 'Die Karte konnte nicht geladen werden.',
 	'maps-markers' => 'Markierungen',
+	'maps-copycoords-prompt' => 'STRG+C, ENTER',
+	'maps-clustering-unsupportedservice' => 'Dieser Dienst unterstützt nicht das Gruppieren von Markierungen',
 	'maps-others' => 'andere',
 	'maps-ns-layer' => 'Ebene',
 	'maps-ns-layer-talk' => 'Ebene Diskussion',
-	'maps-layer-property' => 'Eigenschaft',
+	'maps-layer-property' => 'Attribut',
 	'maps-layer-value' => 'Wert',
 	'maps-layer-errors' => 'Fehler',
 	'maps-error-invalid-layerdef' => 'Die Angaben zu dieser Ebene sind ungültig.',
@@ -930,6 +945,8 @@ Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markier
 	'validation-error-invalid-images' => 'Parameter $1 muss einem oder mehreren gültigen Bildern entsprechen.',
 	'validation-error-invalid-goverlay' => 'Parameter $1 muss einer gültigen Überlagerung entsprechen.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 muss einer oder mehreren gültigen Überlagerungen entsprechen.',
+	'validation-error-invalid-line-param' => 'Der Parameter „lines“ wurde falsch angegeben.',
+	'validation-error-invalid-polyline-param' => 'Der Parameter „polylines“ wurde falsch angegeben.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
@@ -1116,6 +1133,8 @@ $messages['es'] = array(
 	'maps-loading-map' => 'Cargando mapa...',
 	'maps-load-failed' => '¡No se pudo cargar el mapa!',
 	'maps-markers' => 'Marcadores',
+	'maps-copycoords-prompt' => 'CTRL + C, ESCRIBA',
+	'maps-clustering-unsupportedservice' => 'Este servicio no es compatible con clústeres de marcadores',
 	'maps-others' => 'otros',
 	'maps-ns-layer' => 'Capa',
 	'maps-ns-layer-talk' => 'Discusión de capa',
@@ -1195,6 +1214,8 @@ Cuando se utiliza junto con la etiqueta, el título aparecerá en negrita y subr
 	'validation-error-invalid-images' => 'El parámetro $1 debe ser una o más imágenes válidas.',
 	'validation-error-invalid-goverlay' => 'El parámetro $1 debe ser una superposición válida.',
 	'validation-error-invalid-goverlays' => 'El parámetro $1 debe ser una o más superposiciones válidas.',
+	'validation-error-invalid-line-param' => 'Parámetro especificado "lines" no válido.',
+	'validation-error-invalid-polyline-param' => 'El parámetro "polylines" especificado no es válido',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1373,6 +1394,8 @@ $messages['fr'] = array(
 	'maps-loading-map' => 'Chargement de la carte...',
 	'maps-load-failed' => 'Impossible de charger la carte !',
 	'maps-markers' => 'Marqueurs',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTRÉE',
+	'maps-clustering-unsupportedservice' => 'Ce service ne supporte pas le regroupement de marqueurs',
 	'maps-others' => 'autres',
 	'maps-ns-layer' => 'Couche',
 	'maps-ns-layer-talk' => 'Discussion couche',
@@ -1452,6 +1475,8 @@ Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
 	'validation-error-invalid-images' => 'Le paramètre $1 doit être une ou plusieurs image(s) valide(s).',
 	'validation-error-invalid-goverlay' => 'Le paramètre $1 doit être un recouvrement valide.',
 	'validation-error-invalid-goverlays' => 'Le paramètre $1 doit être un ou plusieurs recouvrement(s) valide(s).',
+	'validation-error-invalid-line-param' => 'Paramètre "lines" non valide spécifié.',
+	'validation-error-invalid-polyline-param' => 'Paramètre "polylines" spécifié non valide',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -2129,6 +2154,8 @@ $messages['ia'] = array(
 	'maps-loading-map' => 'Cargamento del carta…',
 	'maps-load-failed' => 'Non poteva cargar le carta!',
 	'maps-markers' => 'Marcatores',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-clustering-unsupportedservice' => 'Iste servicio non supporta le aggruppamento de marcatores',
 	'maps-others' => 'alteres',
 	'maps-ns-layer' => 'Strato',
 	'maps-ns-layer-talk' => 'Discussion Strato',
@@ -2208,6 +2235,8 @@ Si usate con un etiquetta, le titulo essera monstrate in litteras grasse e subli
 	'validation-error-invalid-images' => 'Le parametro $1 debe esser un o plus imagines valide.',
 	'validation-error-invalid-goverlay' => 'Le parametro $1 debe esser un superposition valide.',
 	'validation-error-invalid-goverlays' => 'Le parametro $1 debe esser un o plus superpositiones valide.',
+	'validation-error-invalid-line-param' => 'Le parametro "lines" specificate es invalide.',
+	'validation-error-invalid-polyline-param' => 'Le parametro "polylines" specificate es invalide.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -2728,6 +2757,8 @@ $messages['mk'] = array(
 	'maps-loading-map' => 'Ја вчитувам картата...',
 	'maps-load-failed' => 'Не можев да ја вчитам картата!',
 	'maps-markers' => 'Обележувачи',
+	'maps-copycoords-prompt' => 'Стиснете CTRL+C, па ENTER',
+	'maps-clustering-unsupportedservice' => 'Оваа служба не поддржува групирање на бележници',
 	'maps-others' => 'други',
 	'maps-ns-layer' => 'Слој',
 	'maps-ns-layer-talk' => 'Разговор за слој',
@@ -2806,6 +2837,8 @@ $messages['mk'] = array(
 	'validation-error-invalid-images' => 'Параметарот $1 мора да биде една или повеќе важечки слики.',
 	'validation-error-invalid-goverlay' => 'Параметарот $1 мора да претставува важечка облога.',
 	'validation-error-invalid-goverlays' => 'Параметарот $1 мора да претставува една или повеќе важечки облоги.',
+	'validation-error-invalid-line-param' => 'Укажан е погрешен параметар за „редови“.',
+	'validation-error-invalid-polyline-param' => 'Укажан е погрешен параметар за „polylines“.',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ј',
@@ -3133,6 +3166,7 @@ $1',
 );
 
 /** Dutch (Nederlands)
+ * @author AvatarTeam
  * @author Kjell
  * @author SPQRobin
  * @author Siebrand
@@ -3144,6 +3178,7 @@ $messages['nl'] = array(
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
 	'maps-load-failed' => 'De kaart kon niet geladen worden!',
 	'maps-markers' => 'Markeringen',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'anderen',
 	'maps-ns-layer' => 'Laag',
 	'maps-ns-layer-talk' => 'Overleg_laag',
