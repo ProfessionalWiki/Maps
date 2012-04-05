@@ -646,6 +646,9 @@ $messages['it'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Il valore $1 non è una distanza valida.',
 	'semanticmaps-kml-link' => 'Visualizza il file KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualizza la pagina $1',
+	'semanticmaps-latitude' => 'Latitudine: $1',
+	'semanticmaps-longitude' => 'Longitudine: $1',
+	'semanticmaps-altitude' => 'Altitudine: $1',
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
 	'semanticmaps-updatemap' => 'Aggiorna mappa',
@@ -733,6 +736,7 @@ $messages['lb'] = array(
 	'semanticmaps-forminput-add' => 'Derbäisetzen',
 	'semanticmaps-forminput-locations' => 'Plazen',
 	'semanticmaps-kml-title' => 'De Standard-Titel fir Resultater',
+	'semanticmaps-kml-linkabsolute' => 'Solle Linken absolut sinn oder net (d.h. relativ)',
 );
 
 /** Macedonian (Македонски)
