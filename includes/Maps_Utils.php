@@ -7,9 +7,10 @@ class MapsUtils {
 	 * @static
 	 * @param $url
 	 * @return mixed
+	 * @since 1.1
 	 */
-	static function isValidURL($url){
-		return filter_var($url, FILTER_VALIDATE_URL,FILTER_FLAG_SCHEME_REQUIRED);
+	public static function isValidURL( $url ) {
+		return filter_var( $url , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED );
 	}
 
 
@@ -18,10 +19,11 @@ class MapsUtils {
 	 * @static
 	 * @param $link
 	 * @return bool|string
+	 * @since 1.1
 	 */
-	static function isLinkParameter($link){
-		if(self::strStartsWith($link,'link:')){
-			return substr($link,5);
+	public static function isLinkParameter( $link ) {
+		if ( self::strStartsWith( $link , 'link:' ) ) {
+			return substr( $link , 5 );
 		}
 		return false;
 	}
@@ -32,8 +34,9 @@ class MapsUtils {
 	 * @param $haystack
 	 * @param $needle
 	 * @return bool
+	 * @since 1.1
 	 */
-	static function strStartsWith($haystack, $needle){
-		return strpos($haystack, $needle) === 0;
+	public static function strStartsWith( $haystack , $needle ) {
+		return strpos( $haystack , $needle ) === 0;
 	}
 }
