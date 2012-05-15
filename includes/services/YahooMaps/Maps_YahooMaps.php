@@ -45,7 +45,7 @@ class MapsYahooMaps extends MapsMappingService {
 	 */		
 	public function addParameterInfo( array &$params ) {
 		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes;
-		global $egMapsYahooMapsZoom, $egMapsYMapControls, $egMapsResizableByDefault;
+		global $egMapsYMapControls, $egMapsResizableByDefault;
 		
 		$params['zoom']->addCriteria( new CriterionInRange( 1, 13 ) );
 		$params['zoom']->setDefault( self::getDefaultZoom() );		

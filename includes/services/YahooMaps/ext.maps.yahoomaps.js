@@ -12,7 +12,7 @@
 
 		$( '.maps-yahoomaps' ).each( function() {
 			var $this = $( this );
-			$this.yahoomaps( jQuery.parseJSON( $this.find( 'div').text() ) );
+			$this.yahoomaps( $this.attr( 'id' ), jQuery.parseJSON( $this.find( 'div').text() ) );
 		} );
 
 	} );

@@ -147,5 +147,16 @@ class MapsOpenLayers extends MapsMappingService {
 			array( 'ext.maps.openlayers' )
 		);
 	}
+
+	/**
+	 * Returns a list of all config variables that should be passed to the JS.
+	 *
+	 * @since 1.0.1
+	 *
+	 * @return array
+	 */
+	public function getConfigVariables() {
+		return array_merge( parent::getConfigVariables(), array( 'egMapsScriptPath' => $GLOBALS['egMapsScriptPath'] ) );
+	}
 	
 }

@@ -38,7 +38,7 @@ class MapsParamGeoService extends ItemParameterManipulation {
 	 * @since 0.7.5
 	 */	
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
-		global $egMapsDefaultGeoService, $egMapsUserGeoOverrides;
+		global $egMapsDefaultGeoService;
 		static $validatedDefault = false;		
 
 		if ( !MapsGeocoders::canGeocode() ) {
