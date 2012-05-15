@@ -952,14 +952,33 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  * @author Giro720
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
-	'semanticmaps-desc' => 'Provê a possibilidade de ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://mapping.referata.com/wiki/Examples demonstração]).',
+	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://mapping.referata.com/wiki/Examples exemplos]).',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
 	'semanticmaps-kml-link' => 'Ver o arquivo KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver a página $1',
+	'semanticmaps-latitude' => 'Latitude: $1',
+	'semanticmaps-longitude' => 'Longitude: $1',
+	'semanticmaps-altitude' => 'Altitude: $1',
+	'semanticmaps-loading-forminput' => 'Abrindo formulário de entrada de dados no mapa...',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
-	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
+	'semanticmaps_enteraddresshere' => 'Insira aqui um endereço',
+	'semanticmaps-updatemap' => 'Atualizar o mapa',
+	'semanticmaps-forminput-remove' => 'Remover',
+	'semanticmaps-forminput-add' => 'Adicionar',
+	'semanticmaps-forminput-locations' => 'Locais',
+	'semanticmaps-par-staticlocations' => 'Uma lista de localizações para adicionar ao mapa junto aos dados consultados. Assim como nos pontos a serem exibidos ("display_points"), você pode adicionar um título, descrição e ícone por localização, usando o til ("~") como separador.',
+	'semanticmaps-par-forceshow' => 'Mostrar o mapa mesmo quando não existirem localizações para exibir?',
+	'semanticmaps-par-showtitle' => 'Mostrar, ou não, um título na janela informativa do marcador. É frequentemente desejável desativar este recurso quando estiver usando uma predefinição para formatar o conteúdo da janela informativa.',
+	'semanticmaps-par-centre' => 'O centro do mapa. Quando este não for definido, o mapa escolherá automaticamente o centro ideal para apresentar todos os marcadores do mapa.',
+	'semanticmaps-par-template' => 'Uma predefinição que será usada para formatar o conteúdo da janela informativa.',
+	'semanticmaps-par-geocodecontrol' => 'Exibir o controle de geocodificação.',
+	'semanticmaps-kml-text' => 'O texto associado a cada página. Será substituído quando propriedades adicionais consultadas existirem.',
+	'semanticmaps-kml-title' => 'O título padrão para os resultados',
+	'semanticmaps-kml-linkabsolute' => 'Se os links deverão ser absolutos ou relativos',
+	'semanticmaps-kml-pagelinktext' => 'O texto a ser usado nos links para a página, onde  $1 será substituído pelo título da página',
 );
 
 /** Romanian (Română)
