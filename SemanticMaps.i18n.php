@@ -660,6 +660,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  * @author Mizusumashi
  * @author Schu
+ * @author Shirayuki
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -667,6 +668,8 @@ $messages['ja'] = array(
 	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps-kml-link' => 'KMLファイルを閲覧',
 	'semanticmaps-default-kml-pagelink' => 'ページ$1を表示',
+	'semanticmaps-latitude' => '緯度：$1',
+	'semanticmaps-longitude' => '経度：$1',
 	'semanticmaps-loading-forminput' => 'フォーム入力からマップをローディングしています...',
 	'semanticmaps_lookupcoordinates' => '座標を検索',
 	'semanticmaps_enteraddresshere' => '住所をここに入力',
