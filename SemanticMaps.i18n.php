@@ -1155,11 +1155,13 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Suelnur
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinat ara',
 	'semanticmaps_enteraddresshere' => 'Adresi buraya girin',
+	'semanticmaps-forminput-add' => 'Ekle',
 );
 
 /** Vietnamese (Tiếng Việt)
