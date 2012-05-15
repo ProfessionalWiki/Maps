@@ -475,6 +475,8 @@ $messages['be-tarask'] = array(
 	'maps-loading-map' => 'Загрузка мапы…',
 	'maps-load-failed' => 'Немагчыма загрузіць мапу!',
 	'maps-markers' => 'Пазнакі',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Фільтраваць маркеры',
 	'maps-others' => 'іншыя',
 	'maps-ns-layer' => 'Слой',
 	'maps-ns-layer-talk' => 'Абмеркаваньне слоя',
@@ -3823,10 +3825,10 @@ $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Giro720
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://mapping.referata.com/wiki/Examples exemplos])',
