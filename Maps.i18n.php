@@ -2482,13 +2482,13 @@ $messages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Civvì
  * @author Gianfranco
  * @author HalphaZ
  */
 $messages['it'] = array(
-	'maps-desc' => "Fornisce la possibilità di visualizzare i dati di coordinate su mappe e la geocodifica di indirizzi ([http://wiki.bn2vs.com/wiki/Demo dell'estensione Maps]).
-Servizi di cartografia disponibili: $1",
+	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([http://mapping.referata.com/wiki/Examples demo])',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
 	'maps-markers' => 'Marcatori',
