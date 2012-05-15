@@ -104,6 +104,13 @@ class MapsDisplayLine extends MapsDisplayPoint {
 		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
 		$params['searchmarkers']->setDoManipulationOfDefault( false );
 
+		$params['static'] = new Parameter(
+			'static' ,
+			Parameter::TYPE_BOOLEAN
+		);
+		$params['static']->setDefault( false );
+		$params['static']->setDoManipulationOfDefault( false );
+
 		return $params;
 	}
 
@@ -116,6 +123,6 @@ class MapsDisplayLine extends MapsDisplayPoint {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'coordinates' , 'lines' , 'polygons' );
+		return array( 'coordinates' , 'lines' , 'polygons' , 'circles' , 'rectangles' );
 	}
 }
