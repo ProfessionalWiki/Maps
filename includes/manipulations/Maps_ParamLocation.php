@@ -55,14 +55,24 @@ class MapsParamLocation extends ItemParameterManipulation {
 		$value = array_shift( $parts );
 		$value = new MapsLocation( $value );
 
-		if ( $title = array_shift( $parts ) ) {
-			$value->setTitle( $title );
-		}
+		$linkOrTitle = array_shift( $parts );
 
-		if ( $text = array_shift( $parts ) ) {
-			$value->setText( $text );
-		}
+		if($link = MapsUtils::isLinkParameter($linkOrTitle)){
+			if(MapsUtils::isValidURL($link)){
+				$value->setLink($link);
+			}else{
+				$title = Title::newFromText($link);
+				$value->setLink($title->getFullURL());
+			}
+		}else{
+			if ( $linkOrTitle ) {
+				$value->setTitle( $linkOrTitle );
+			}
 
+			if ( $text = array_shift( $parts ) ) {
+				$value->setText( $text );
+			}
+		}
 		if ( $icon = array_shift( $parts ) ) {
 			$value->setIcon( $icon );
 		}

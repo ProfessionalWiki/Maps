@@ -85,6 +85,7 @@ $wgAutoloadClasses['MapsPolygon'] 				= $incDir . 'Maps_Polygon.php';
 $wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
 $wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
 $wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';
+$wgAutoloadClasses['MapsUtils']                 = $incDir . 'Maps_Utils.php';
 
 $wgAutoloadClasses['ApiGeocode'] 				= $incDir . 'api/ApiGeocode.php';
 
@@ -178,60 +179,60 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayLine::initialize';
 
 # Parser hooks
 
-	# Required for #coordinates.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
-	# Required for #display_map.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
-	# Required for #display_point.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayPoint::staticInit';
-	# Required for #display_line.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayLine::staticInit';
-	# Required for #distance.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
-	# Required for #finddestination.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
-	# Required for #geocode.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsGeocode::staticInit';
-	# Required for #geodistance.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
-	# Required for #mapsdoc.
-	$wgHooks['ParserFirstCallInit'][] = 'MapsMapsDoc::staticInit';
+# Required for #coordinates.
+$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
+# Required for #display_map.
+$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
+# Required for #display_point.
+$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayPoint::staticInit';
+# Required for #display_line.
+$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayLine::staticInit';
+# Required for #distance.
+$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
+# Required for #finddestination.
+$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
+# Required for #geocode.
+$wgHooks['ParserFirstCallInit'][] = 'MapsGeocode::staticInit';
+# Required for #geodistance.
+$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
+# Required for #mapsdoc.
+$wgHooks['ParserFirstCallInit'][] = 'MapsMapsDoc::staticInit';
 
 # Geocoders
 
-	# Registration of the GeoNames service geocoder.
-	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
+# Registration of the GeoNames service geocoder.
+$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
 
-	# Registration of the Google Geocoding (v2) service geocoder.
-	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
+# Registration of the Google Geocoding (v2) service geocoder.
+$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
 
-	# Registration of the Yahoo! Geocoding service geocoder.
-	$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
+# Registration of the Yahoo! Geocoding service geocoder.
+$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
 
 # Layers
 
-	# Registration of the image layer type.
-	$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
+# Registration of the image layer type.
+$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
 
-	# Registration of the KML layer type.
-	$wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
+# Registration of the KML layer type.
+$wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
 
 # Mapping services
 
-	# Include the mapping services that should be loaded into Maps.
-	# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
+# Include the mapping services that should be loaded into Maps.
+# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
 
-	# Google Maps API v3
-	include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
+# Google Maps API v3
+include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
 
-	# OpenLayers API
-	include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
+# OpenLayers API
+include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
 
-	# Yahoo! Maps API
-	include_once $egMapsDir . 'includes/services/YahooMaps/YahooMaps.php';
+# Yahoo! Maps API
+include_once $egMapsDir . 'includes/services/YahooMaps/YahooMaps.php';
 
-	# WMF OSM
-	include_once $egMapsDir . 'includes/services/OSM/OSM.php';
+# WMF OSM
+include_once $egMapsDir . 'includes/services/OSM/OSM.php';
 
 $egMapsSettings = array();
 

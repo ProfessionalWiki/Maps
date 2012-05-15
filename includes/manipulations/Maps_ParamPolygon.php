@@ -1,13 +1,6 @@
 <?php
-class MapsParamPolygon extends ItemParameterManipulation {
+class MapsParamPolygon extends MapsParamLine {
 
-	protected $metaDataSeparator;
-
-	public function __construct( $metaDataSeparator ) {
-		parent::__construct();
-
-		$this->metaDataSeparator = $metaDataSeparator;
-	}
 
 	/**
 	 * Manipulate an actual value.
@@ -22,19 +15,50 @@ class MapsParamPolygon extends ItemParameterManipulation {
 	 */
 	public function doManipulation(&$value, Parameter $parameter, array &$parameters)
 	{
+
 		$parts = explode($this->metaDataSeparator,$value);
-		$polygonCoords = explode(':',$parts[0]);
+		$polygonCoords = explode(':',array_shift($parts));
 
 		$value = new MapsPolygon($polygonCoords);
-		$value->setTitle( isset($parts[1]) ? $parts[1] : '' );
-		$value->setText( isset($parts[2]) ? $parts[2] : '' );
-		$value->setStrokeColor( isset($parts[3]) ? $parts[3] : '' );
-		$value->setStrokeOpacity( isset($parts[4]) ? $parts[4] : '' );
-		$value->setStrokeWeight( isset($parts[5]) ? $parts[5] : '' );
-		$value->setFillColor(isset($parts[6]) ? $parts[6] : '');
-		$value->setFillOpacity(isset($parts[7]) ? $parts[7] : '');
+		$linkOrTitle =  array_shift($parts);
+		if($link = MapsUtils::isLinkParameter($linkOrTitle)){
+			if(MapsUtils::isValidURL($link)){
+				$value->setLink($link);
+			}else{
+				$title = Title::newFromText($link);
+				$value->setLink($title->getFullURL());
+			}
+		}else{
+			//create bubble data
+			if($linkOrTitle){
+				$value->setTitle($linkOrTitle);
+			}
+			if($text = array_shift($parts)){
+				$value->setText($text);
+			}
+		}
 
-		if(isset($parts[8])){
+		if($color = array_shift($parts)){
+			$value->setStrokeColor($color);
+		}
+
+		if($opacity = array_shift($parts)){
+			$value->setStrokeOpacity($opacity);
+		}
+
+		if($weight = array_shift($parts)){
+			$value->setStrokeWeight($weight);
+		}
+
+		if($fillColor = array_shift($parts)){
+			$value->setFillColor($fillColor);
+		}
+
+		if($fillOpacity = array_shift($parts)){
+			$value->setFillOpacity($fillOpacity);
+		}
+
+		if($visibleOnHover = array_shift($parts)){
 			$value->setOnlyVisibleOnHover(filter_var($parts[8], FILTER_VALIDATE_BOOLEAN));
 		}
 

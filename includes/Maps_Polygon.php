@@ -40,11 +40,11 @@ class MapsPolygon extends MapsLine{
 	}
 
 	private function hasFillColor(){
-		return $this->fillColor !== '';
+		return !is_null($this->fillColor) && $this->fillColor !== '';
 	}
 
 	private function hasFillOpacity(){
-		return $this->fillOpacity !== '';
+		return !is_null($this->fillOpacity) && $this->fillOpacity !== '';
 	}
 
 	/**

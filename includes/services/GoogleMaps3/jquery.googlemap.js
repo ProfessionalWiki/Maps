@@ -8,7 +8,6 @@
 (function( $, mw ){ $.fn.googlemaps = function( options ) {
 
 	var _this = this;
-
 	this.map = null;
 	this.markercluster = null;
 	this.options = options;
@@ -38,54 +37,41 @@
 	 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
 	 * @return {google.maps.Marker}
 	 */
-		this.addMarker = function (markerData) {
-			var markerOptions = {
-				position:new google.maps.LatLng(markerData.lat, markerData.lon),
-				title:markerData.title,
-				labelContent:markerData.inlineLabel,
-				labelAnchor:new google.maps.Point(-15, 34),
-				labelClass:'markerwithlabel'
-			};
-
-			if (markerData.icon !== '') {
-				markerOptions.icon = markerData.icon;
-			}
-
-			var marker;
-			if (markerData.inlineLabel === undefined || markerData.inlineLabel.length == 0) {
-				marker = new google.maps.Marker(markerOptions);
-			} else {
-				marker = new MarkerWithLabel(markerOptions);
-			}
-
-			marker.openWindow = false;
-
-			if (markerData.text !== '') {
-				marker.text = markerData.text;
-			}
-
-			google.maps.event.addListener(marker, 'click', function (e) {
-				if (e.target !== undefined && (e.target instanceof HTMLAnchorElement || e.target.tagName == 'A')) {
-					//click link defined in inlinelabel
-					window.location.href = e.target.href;
-				} else if (this.text !== undefined && this.text.length > 0) {
-					//open info window
-					if (this.openWindow !== false) {
-						this.openWindow.close();
-					}
-					this.openWindow = new google.maps.InfoWindow({ content:this.text });
-					this.openWindow.closeclick = function () {
-						marker.openWindow = false;
-					};
-					this.openWindow.open(_this.map, this);
-				}
-			});
-
-			marker.setMap(this.map);
-			this.markers.push(marker);
-
-			return marker;
+	this.addMarker = function (markerData) {
+		var markerOptions = {
+			position:new google.maps.LatLng(markerData.lat, markerData.lon),
+			title:markerData.title,
+			labelContent:markerData.inlineLabel,
+			labelAnchor:new google.maps.Point(-15, 34),
+			labelClass:'markerwithlabel'
 		};
+
+		if (markerData.icon !== '') {
+			markerOptions.icon = markerData.icon;
+		}
+
+		var marker;
+		if (markerData.inlineLabel === undefined || markerData.inlineLabel.length == 0) {
+			marker = new google.maps.Marker(markerOptions);
+		} else {
+			marker = new MarkerWithLabel(markerOptions);
+		}
+
+		//Add onclick listener
+		google.maps.event.addListener( marker, 'click', function(e) {
+			if (e.target !== undefined && (e.target instanceof HTMLAnchorElement || e.target.tagName == 'A')) {
+				//click link defined in inlinelabel
+				window.location.href = e.target.href;
+			}else{
+				openBubbleOrLink.call(this, markerData, e, marker);
+			}
+		} );
+
+		marker.setMap(this.map);
+		this.markers.push(marker);
+
+		return marker;
+	};
 
 	/**
 	 * Removes a single marker from the map.
@@ -165,25 +151,16 @@
 		}
 
 		var line = new google.maps.Polyline({
-				map:this.map,
-				path:paths,
-				strokeColor:properties.strokeColor,
-				strokeOpacity:properties.strokeOpacity,
-				strokeWeight:properties.strokeWeight
+			map:this.map,
+			path:paths,
+			strokeColor:properties.strokeColor,
+			strokeOpacity:properties.strokeOpacity,
+			strokeWeight:properties.strokeWeight
 		});
 		this.lines.push(line);
 
 		google.maps.event.addListener(line,"click", function(event){
-			if (this.openWindow != undefined) {
-				this.openWindow.close();
-			}
-			this.openWindow = new google.maps.InfoWindow();
-			this.openWindow.content = properties.text;
-			this.openWindow.position = event.latLng;
-			this.openWindow.closeclick = function() {
-				line.openWindow = undefined;
-			};
-			this.openWindow.open(_this.map);
+			openBubbleOrLink.call(this, properties, event, line);
 		});
 	};
 
@@ -251,16 +228,7 @@
 
 		//add click event
 		google.maps.event.addListener(polygon,"click", function(event){
-			if (this.openWindow != undefined) {
-				this.openWindow.close();
-			}
-			this.openWindow = new google.maps.InfoWindow();
-			this.openWindow.content = properties.text;
-			this.openWindow.position = event.latLng;
-			this.openWindow.closeclick = function() {
-				polygon.openWindow = undefined;
-			};
-			this.openWindow.open(_this.map);
+			openBubbleOrLink.call(this, properties, event, polygon);
 		});
 	};
 
@@ -403,28 +371,28 @@
 
 									if ( ge.getInstance() !== undefined ) {
 
-										 var center = map.getCenter();
-										  var lookAt = ge.instance_.createLookAt('');
-										  var range = Math.pow(2, GoogleEarth.MAX_EARTH_ZOOM_ - map.getZoom());
-										  lookAt.setRange(range);
-										  lookAt.setLatitude(center.lat());
-										  lookAt.setLongitude(center.lng());
-										  lookAt.setHeading(0);
-										  lookAt.setAltitude(0);
+										var center = map.getCenter();
+										var lookAt = ge.instance_.createLookAt('');
+										var range = Math.pow(2, GoogleEarth.MAX_EARTH_ZOOM_ - map.getZoom());
+										lookAt.setRange(range);
+										lookAt.setLatitude(center.lat());
+										lookAt.setLongitude(center.lng());
+										lookAt.setHeading(0);
+										lookAt.setAltitude(0);
 
-											// Teleport to the pre-tilt view immediately.
-										  ge.instance_.getOptions().setFlyToSpeed(5);
-										  ge.instance_.getView().setAbstractView(lookAt);
-											lookAt.setTilt(options.tilt);
-											// Fly to the tilt at regular speed in 200ms
-											ge.instance_.getOptions().setFlyToSpeed(0.75);
-											window.setTimeout(function() {
-												ge.instance_.getView().setAbstractView(lookAt);
-											}, 200);
-											// Set the flyto speed back to default after the animation starts.
-											window.setTimeout(function() {
-												ge.instance_.getOptions().setFlyToSpeed(1);
-											}, 250);
+										// Teleport to the pre-tilt view immediately.
+										ge.instance_.getOptions().setFlyToSpeed(5);
+										ge.instance_.getView().setAbstractView(lookAt);
+										lookAt.setTilt(options.tilt);
+										// Fly to the tilt at regular speed in 200ms
+										ge.instance_.getOptions().setFlyToSpeed(0.75);
+										window.setTimeout(function() {
+											ge.instance_.getView().setAbstractView(lookAt);
+										}, 200);
+										// Set the flyto speed back to default after the animation starts.
+										window.setTimeout(function() {
+											ge.instance_.getOptions().setFlyToSpeed(1);
+										}, 250);
 
 									}
 									else {
@@ -532,6 +500,28 @@
 		}
 
 	};
+
+	function openBubbleOrLink(properties, event, obj) {
+		if (properties.link) {
+			window.location.href = properties.link;
+		} else if(properties.text !== '') {
+			openBubble.call(this, properties, event, obj);
+		}
+	}
+
+	function openBubble(properties, event, obj) {
+		if (this.openWindow != undefined) {
+			this.openWindow.close();
+		}
+		this.openWindow = new google.maps.InfoWindow();
+		this.openWindow.content = properties.text;
+		this.openWindow.position = event.latLng;
+		this.openWindow.closeclick = function () {
+			obj.openWindow = undefined;
+		};
+		this.openWindow.open(this.map);
+	}
+
 	this.setup();
 
 	return this;

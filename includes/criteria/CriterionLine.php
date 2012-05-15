@@ -38,6 +38,10 @@ class CriterionLine extends ItemParameterCriterion
      */
     protected function doValidation($value, Parameter $parameter, array $parameters)
     {
+	    //fetch locations
+	    $value = explode($this->metaDataSeparator,$value);
+	    $value = $value[0];
+
         //need atleast two points to create a line
         $valid = strpos($value, ':') != false;
         if (!$valid) {
