@@ -211,7 +211,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 */
 	protected function getDependencies() {
 		global $wgLang;
-		global $egMapsStyleVersion, $egMapsScriptPath;
 
 		$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
 		

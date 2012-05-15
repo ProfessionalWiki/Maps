@@ -32,7 +32,7 @@ class MapsDistanceParserTest extends MediaWikiTestCase {
 			'1 m' => 1,
 			'1000 m' => 1000.00,
 			'42.42 m' => 42.42,
-			'42.42 m' => 42.4242,
+			'42.4242 m' => 42.4242,
 		),		
 		'km' => array(
 			//'0.001 km' => 1,
