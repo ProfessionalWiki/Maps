@@ -949,10 +949,10 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Giro720
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://mapping.referata.com/wiki/Examples exemplos]).',
