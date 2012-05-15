@@ -221,6 +221,7 @@ $1',
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Siebrand
  * @author Umherirrender
  * @author Тест
  */
@@ -228,10 +229,15 @@ $messages['qqq'] = array(
 	'maps-desc' => '{{desc}}',
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
+	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
+	'maps-clustering-unsupportedservice' => "text describing that the chosen maps service doesn't support clustering of markers",
 	'maps-others' => '{{Identical|Other}}',
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
+	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}} Validation text indicating that there is something wrong with the "lines" parameter.',
+	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}',
+	'validation-error-invalid-searchmarkers-param' => '{{dic-important|Do not translate "all" and "title".}}',
 	'maps-latitude' => '{{Identical|Latitude}}',
 	'maps-longitude' => '{{Identical|Longitude}}',
 	'maps_geocoding_failed_for' => '* $1 is a list
@@ -3220,6 +3226,8 @@ $messages['nl'] = array(
 	'maps-load-failed' => 'De kaart kon niet geladen worden!',
 	'maps-markers' => 'Markeringen',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Filtermarkeringen',
+	'maps-clustering-unsupportedservice' => 'Deze dienst ondersteunt de clustering van markeringen niet',
 	'maps-others' => 'anderen',
 	'maps-ns-layer' => 'Laag',
 	'maps-ns-layer-talk' => 'Overleg_laag',
@@ -3299,6 +3307,9 @@ Als dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderst
 	'validation-error-invalid-images' => 'Parameter $1 moet een of meer geldige afbeeldingen zijn.',
 	'validation-error-invalid-goverlay' => 'Parameter $1 moet een geldige overlay zijn.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 moet een of meer geldige overlays zijn.',
+	'validation-error-invalid-line-param' => 'De opgegeven waarde voor de parameter "lines" is ongeldig.',
+	'validation-error-invalid-polyline-param' => 'De opgegeven waarde voor de parameter "polylines" is ongeldig.',
+	'validation-error-invalid-searchmarkers-param' => 'Ongeldige waarde voor zoekmarkeringen. Deze moet "all" of "title" zijn',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'Z',
@@ -3364,6 +3375,7 @@ $1.',
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
+ * @author Njardarlogar
  */
 $messages['nn'] = array(
 	'maps_map' => 'Kart',
@@ -4489,7 +4501,7 @@ $1',
 	'maps_webcams' => 'Веб-камери',
 );
 
-/** Veps (Vepsan kel') */
+/** Veps (Vepsän kel’) */
 $messages['vep'] = array(
 	'maps-abb-north' => 'Pohj.',
 	'maps-abb-east' => 'Päivl.',
