@@ -2,7 +2,7 @@
 
 /**
  * Initialization file for the Maps extension.
- * 
+ *
  * On MediaWiki.org: 		http://www.mediawiki.org/wiki/Extension:Maps
  * Official documentation: 	http://mapping.referata.com/wiki/Maps
  * Examples/demo's: 		http://mapping.referata.com/wiki/Maps_examples
@@ -97,6 +97,7 @@ $wgAutoloadClasses['CriterionMapDimension'] 	= $criDir . 'CriterionMapDimension.
 $wgAutoloadClasses['CriterionMapLayer'] 		= $criDir . 'CriterionMapLayer.php';
 $wgAutoloadClasses['CriterionLine'] 	    	= $criDir . 'CriterionLine.php';
 $wgAutoloadClasses['CriterionPolygon'] 	    	= $criDir . 'CriterionPolygon.php';
+$wgAutoloadClasses['CriterionSearchMarkers'] 	= $criDir . 'CriterionSearchMarkers.php';
 unset( $criDir );
 
 // Autoload the "includes/features/" classes.
@@ -159,9 +160,9 @@ $wgHooks['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
 
 // Since 0.6.5
 $wgHooks['UnitTestsList'][] = 'MapsHooks::registerUnitTests';
-	
+
 // Since 0.7.1
-$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';	
+$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';
 
 // Since 1.0
 $wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
@@ -183,8 +184,8 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayLine::initialize';
 	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
 	# Required for #display_point.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayPoint::staticInit';
-    # Required for #display_line.
-    $wgHooks['ParserFirstCallInit'][] = 'MapsDisplayLine::staticInit';
+	# Required for #display_line.
+	$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayLine::staticInit';
 	# Required for #distance.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
 	# Required for #finddestination.
@@ -195,45 +196,45 @@ $egMapsFeatures['pf'][]	= 'MapsDisplayLine::initialize';
 	$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
 	# Required for #mapsdoc.
 	$wgHooks['ParserFirstCallInit'][] = 'MapsMapsDoc::staticInit';
-	
+
 # Geocoders
-	
+
 	# Registration of the GeoNames service geocoder.
-	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';	
+	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
 
 	# Registration of the Google Geocoding (v2) service geocoder.
 	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
-	
+
 	# Registration of the Yahoo! Geocoding service geocoder.
 	$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
-	
+
 # Layers
 
 	# Registration of the image layer type.
 	$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
-	
+
 	# Registration of the KML layer type.
 	$wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
 
 # Mapping services
-	
+
 	# Include the mapping services that should be loaded into Maps.
 	# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
-	
+
 	# Google Maps API v3
 	include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
-	
+
 	# OpenLayers API
 	include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
-	
+
 	# Yahoo! Maps API
 	include_once $egMapsDir . 'includes/services/YahooMaps/YahooMaps.php';
-	
+
 	# WMF OSM
-	include_once $egMapsDir . 'includes/services/OSM/OSM.php';		
+	include_once $egMapsDir . 'includes/services/OSM/OSM.php';
 
 $egMapsSettings = array();
-	
+
 // Include the settings file.
 require_once $egMapsDir . 'Maps_Settings.php';
 
@@ -242,7 +243,7 @@ define( 'Maps_NS_LAYER_TALK', 	$egMapsNamespaceIndex + 1 );
 
 $wgResourceModules['ext.maps.common'] = array(
 	'localBasePath' => dirname( __FILE__ ) . '/includes',
-	'remoteBasePath' => $egMapsScriptPath . '/includes',	
+	'remoteBasePath' => $egMapsScriptPath . '/includes',
 	'group' => 'ext.maps',
 	'messages' => array(
 		'maps-load-failed',
@@ -254,7 +255,7 @@ $wgResourceModules['ext.maps.common'] = array(
 
 $wgResourceModules['ext.maps.coord'] = array(
 	'localBasePath' => dirname( __FILE__ ) . '/includes',
-	'remoteBasePath' => $egMapsScriptPath . '/includes',	
+	'remoteBasePath' => $egMapsScriptPath . '/includes',
 	'group' => 'ext.maps',
 	'messages' => array(
 		'maps-abb-north',
@@ -284,9 +285,9 @@ $egMapsGlobalJSVars = array();
 
 /**
  * Initialization function for the Maps extension.
- * 
+ *
  * @since 0.1
- * 
+ *
  * @return true
  */
 function efMapsSetup() {

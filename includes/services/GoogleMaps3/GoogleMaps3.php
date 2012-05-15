@@ -27,13 +27,14 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3',	
 	'group' => 'ext.maps',
 	'scripts' => array(
-        'markerclusterer.js',
+		'markerclusterer.js',
 		'jquery.googlemap.js',
 		'ext.maps.googlemaps3.js'
 	),
 	'messages' => array(
 		'maps-googlemaps3-incompatbrowser',
-        'maps-copycoords-prompt'
+		'maps-copycoords-prompt',
+		'maps-searchmarkers-text'
 	)
 );
 
@@ -68,7 +69,7 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
  */
 function efMapsInitGoogleMaps3() {
 	global $wgAutoloadClasses;
-	
+
 	$wgAutoloadClasses['MapsGoogleMaps3'] 			= dirname( __FILE__ ) . '/Maps_GoogleMaps3.php';
 	$wgAutoloadClasses['MapsParamGMap3Type']		= dirname( __FILE__ ) . '/Maps_ParamGMap3Type.php';
 	$wgAutoloadClasses['MapsParamGMap3Types']		= dirname( __FILE__ ) . '/Maps_ParamGMap3Types.php';
@@ -78,8 +79,8 @@ function efMapsInitGoogleMaps3() {
 	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );	
 	$googleMaps->addFeature( 'display_map', 'MapsBaseMap' );
-    $googleMaps->addFeature( 'display_point', 'MapsBasePointMap' );
-    $googleMaps->addFeature( 'display_line', 'MapsBasePointLineMap' );
-	
+	$googleMaps->addFeature( 'display_point', 'MapsBasePointMap' );
+	$googleMaps->addFeature( 'display_line', 'MapsBasePointLineMap' );
+
 	return true;
 }

@@ -74,7 +74,12 @@
 			}
 			
 			if ( bounds != null ) bounds.extend( location.lonlat ); // Extend the bounds when no center is set.
-			curLayer.addMarker( this.getOLMarker( curLayer, location ) ); // Create and add the marker.
+            var marker = this.getOLMarker( curLayer, location );
+            this.markers.push({
+                    target: marker,
+                    data:location
+            });
+			curLayer.addMarker( marker ); // Create and add the marker.
 		}
 		
 		if ( bounds != null ) map.zoomToExtent( bounds ); // If a bounds object has been created, use it to set the zoom and center.
@@ -176,6 +181,7 @@
 	}
 
     var _this = this;
+    this.markers = [];
 
 	// Remove the loading map message.
 	this.text( '' );
@@ -393,6 +399,25 @@
 
     if(options.markercluster){
         alert(mediaWiki.msg('maps-clustering-unsupportedservice'));
+    }
+
+    if(options.searchmarkers){
+        var searchBox = $('<div style="text-align: right;">'+mediaWiki.msg( 'maps-searchmarkers-text' )+': <input type="text" /></div>');
+        $(this.map.div).before(searchBox);
+
+        searchBox.find('input').keyup(function(e){
+            for(var i = 0; i < _this.markers.length; i++){
+                var haystack = '';
+                var marker = _this.markers[i];
+                if(options.searchmarkers == 'title'){
+                    haystack = marker.data.title;
+                }else if(options.searchmarkers == 'all'){
+                    haystack = marker.data.title+marker.data.text;
+                }
+
+                marker.target.display(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
+            }
+        });
     }
 	return this;
 	

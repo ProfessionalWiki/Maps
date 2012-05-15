@@ -16,14 +16,15 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://mapping.referata.com/wiki/Examples demos])",
-	
+
 	'right-geocode' => 'Geocode',
-	
+
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
 	'maps-load-failed' => 'Could not load the map!',
 	'maps-markers' => 'Markers',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Filter markers',
 	'maps-clustering-unsupportedservice' => 'This service doesn\'t support clustering of markers',
 	'maps-others' => 'others',
 	//TODO: move to namespaces i18n
@@ -53,7 +54,7 @@ $messages['en'] = array(
 	// Mapsdoc parser hook
 	'maps-mapsdoc-par-service' => 'The mapping service to display parameter documentation for.',
 	'maps-mapsdoc-par-language' => 'The language in which to display the documentation. If no such translation is available, English will be used instead.',
-	
+
 	// Coordinates parser hook
 	'maps-coordinates-par-location' => 'The coordinates you want to format.',
 	'maps-coordinates-par-format' => 'The target format for the coordinates.',
@@ -126,8 +127,9 @@ When used together with label, the title will be bold and underlined.',
 
 	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
-    	'validation-error-invalid-line-param' => 'Invalid "lines" parameter specified.',
-    	'validation-error-invalid-polyline-param' => 'Invalid "polylines" parameter specified.',
+	'validation-error-invalid-line-param' => 'Invalid "lines" parameter specified.',
+	'validation-error-invalid-polyline-param' => 'Invalid "polylines" parameter specified.',
+	'validation-error-invalid-searchmarkers-param' => 'Invalid searchmarkers value, should be either "all" or "title"',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
@@ -167,7 +169,7 @@ $1',
 	'maps-par-zoom' => 'The zoom level for the map. For maps with markers this will default to the most zoomed in level that still shows all markers.',
 	'maps-par-width' => 'Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
 	'maps-par-height' => 'Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
-    
+
 	// Google Maps v2
 	'maps-googlemaps2-incompatbrowser' => 'Your browser is not compatible with Google Maps v2.',
 	'maps_overlays' => 'Overlays',
