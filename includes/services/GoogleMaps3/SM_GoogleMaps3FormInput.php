@@ -20,7 +20,7 @@ class SMGoogleMaps3FormInput extends SMFormInput {
 	 * @return array of string
 	 */
 	protected function getResourceModules() {
-		return array_merge( parent::getResourceModules(), array( 'ext.sm.fi.googlemaps3.single' ) );
+		return array_merge( parent::getResourceModules(), array( 'ext.sm.fi.googlemaps3' ) );
 	}	
 	
 }

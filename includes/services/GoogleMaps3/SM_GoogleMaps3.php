@@ -30,14 +30,19 @@ $moduleTemplate = array(
 );
 
 $wgResourceModules['ext.sm.fi.googlemaps3'] = $moduleTemplate + array(
-	'dependencies' => array( 'ext.maps.googlemaps3', 'ext.sm.forminputs' ),
+	'dependencies' => array(
+		'ext.sm.fi.googlemaps3.single',
+	),
 	'scripts' => array(
-		'ext.sm.googlemapsinput.js'
+		'ext.sm.googlemapsinput.js',
 	),
 );
 
 $wgResourceModules['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
-	'dependencies' => array( 'ext.sm.fi.googlemaps3' ),
+	'dependencies' => array(
+		'ext.maps.googlemaps3',
+		'ext.sm.forminputs',
+	),
 	'scripts' => array(
 		'jquery.googlemapsinput.js',
 	),

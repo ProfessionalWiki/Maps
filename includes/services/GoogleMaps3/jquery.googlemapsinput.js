@@ -8,7 +8,7 @@
  * @licence GNU GPL v3
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
-
+debugger;
 (function( $ ){ $.fn.googlemapsinput = function( mapDivId, options ) {
 
 	var self = this;
