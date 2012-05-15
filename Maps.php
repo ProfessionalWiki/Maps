@@ -120,6 +120,7 @@ $ftDir = $incDir . '/features/';
 $wgAutoloadClasses['MapsBaseMap'] = $ftDir . 'Maps_BaseMap.php';
 $wgAutoloadClasses['MapsBasePointMap'] = $ftDir . 'Maps_BasePointMap.php';
 $wgAutoloadClasses['MapsBasePointLineMap'] = $ftDir . 'Maps_BasePointLineMap.php';
+$wgAutoloadClasses['MapsMapBase'] = $ftDir . 'Maps_MapBase.php';
 unset( $ftDir );
 
 // Autoload the "includes/geocoders/" classes.
