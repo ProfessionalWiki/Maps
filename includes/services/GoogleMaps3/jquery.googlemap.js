@@ -342,6 +342,11 @@
 				mapTypeIds:options.types
 			};
 
+
+			//max/min -zoom
+			mapOptions.maxZoom = options.maxzoom === false ? null : options.maxzoom;
+			mapOptions.minZoom = options.minzoom === false ? null : options.minzoom;
+
 			//static mode
 			if (options['static']) {
 				mapOptions.draggable = false;

@@ -111,6 +111,21 @@ class MapsDisplayLine extends MapsDisplayPoint {
 		$params['static']->setDefault( false );
 		$params['static']->setDoManipulationOfDefault( false );
 
+		$params['maxzoom'] = new Parameter(
+			'maxzoom',
+			Parameter::TYPE_INTEGER
+		);
+		$params['maxzoom']->setDefault( false );
+		$params['maxzoom']->setDoManipulationOfDefault( false );
+		$params['maxzoom']->addDependencies( 'minzoom' );
+
+		$params['minzoom'] = new Parameter(
+			'minzoom',
+			Parameter::TYPE_INTEGER
+		);
+		$params['minzoom']->setDefault( false );
+		$params['minzoom']->setDoManipulationOfDefault( false );
+
 		return $params;
 	}
 

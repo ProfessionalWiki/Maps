@@ -272,6 +272,34 @@
 			this.addControls(map, options.controls, this.get(0));
 		}
 
+        //ugly hack to allow for min/max zoom
+        if (options.maxzoom !== false || options.minzoom !== false) {
+
+            if(options.maxzoom === false){
+                options.maxzoom = mapOptions.numZoomLevels;
+            }
+
+            map.getNumZoomLevels = function () {
+	            var zoomLevels = 1;
+	            zoomLevels += options.maxzoom !== false ? options.maxzoom : 0;
+	            zoomLevels -= options.minzoom !== false ? options.minzoom : 0;
+                return zoomLevels;
+            };
+
+            map.isValidZoomLevel = function (zoomLevel) {
+                var valid = ( (zoomLevel != null) &&
+                    (zoomLevel >= options.minzoom) &&
+                    (zoomLevel <= options.maxzoom) );
+                if (!valid && map.getZoom() == 0) {
+	                var maxzoom = options.maxzoom !== false ? options.maxzoom : 0;
+	                var minzoom = options.minzoom !== false ? options.minzoom : 0;
+	                var zoom =  maxzoom - (maxzoom - minzoom) / 2
+                    map.zoomTo(zoom);
+                }
+                return valid;
+            }
+        }
+
 		// Add the base layers.
 		for (i = 0, n = options.layers.length; i < n; i++) {
 			map.addLayer(options.layers[i]);
