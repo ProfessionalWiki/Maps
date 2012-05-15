@@ -16,7 +16,7 @@
  * @since 1.0
  * @ingroup SemanticMaps
  * 
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 (function( $, mw ){ $.fn.mapforminput = function( mapDivId, options ) {
