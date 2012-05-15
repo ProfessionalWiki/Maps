@@ -27,9 +27,13 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3',	
 	'group' => 'ext.maps',
 	'scripts' => array(
-		'markerclusterer.js',
-		'jquery.googlemap.js',
+		'gm3-util-library/markerclusterer.js',  //the following two js files should at one point be loaded when needed,
+		'gm3-util-library/markerwithlabel.js',  //However, they are both missing a namespace so they cant be reached after
+		'jquery.googlemap.js',                  //invoking resource loader on them. (look at how geoxml is referenced)
 		'ext.maps.googlemaps3.js'
+	),
+	'styles' => array(
+		'gm3-util-library/markerwithlabel.css'
 	),
 	'messages' => array(
 		'maps-googlemaps3-incompatbrowser',

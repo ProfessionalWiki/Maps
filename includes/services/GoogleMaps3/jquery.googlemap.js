@@ -1,7 +1,7 @@
 /**
  * JavaScript for Google Maps v3 maps in the Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Maps
- * 
+ *
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
@@ -38,39 +38,54 @@
 	 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
 	 * @return {google.maps.Marker}
 	 */
-	this.addMarker = function( markerData ) {
-		var markerOptions = {
-			position: new google.maps.LatLng( markerData.lat , markerData.lon ),
-			title: markerData.title
-		};
+		this.addMarker = function (markerData) {
+			var markerOptions = {
+				position:new google.maps.LatLng(markerData.lat, markerData.lon),
+				title:markerData.title,
+				labelContent:markerData.inlineLabel,
+				labelAnchor:new google.maps.Point(-15, 34),
+				labelClass:'markerwithlabel'
+			};
 
-		if ( markerData.icon !== '' ) {
-			markerOptions.icon = markerData.icon; 
-		}
+			if (markerData.icon !== '') {
+				markerOptions.icon = markerData.icon;
+			}
 
-		var marker = new google.maps.Marker( markerOptions );
+			var marker;
+			if (markerData.inlineLabel === undefined || markerData.inlineLabel.length == 0) {
+				marker = new google.maps.Marker(markerOptions);
+			} else {
+				marker = new MarkerWithLabel(markerOptions);
+			}
 
-		marker.openWindow = false;
+			marker.openWindow = false;
 
-		if ( markerData.text !== '' ) {
-			marker.text = markerData.text;
-			google.maps.event.addListener( marker, 'click', function() {
-				if ( this.openWindow !== false ) {
-					this.openWindow.close();
+			if (markerData.text !== '') {
+				marker.text = markerData.text;
+			}
+
+			google.maps.event.addListener(marker, 'click', function (e) {
+				if (e.target !== undefined && (e.target instanceof HTMLAnchorElement || e.target.tagName == 'A')) {
+					//click link defined in inlinelabel
+					window.location.href = e.target.href;
+				} else if (this.text !== undefined && this.text.length > 0) {
+					//open info window
+					if (this.openWindow !== false) {
+						this.openWindow.close();
+					}
+					this.openWindow = new google.maps.InfoWindow({ content:this.text });
+					this.openWindow.closeclick = function () {
+						marker.openWindow = false;
+					};
+					this.openWindow.open(_this.map, this);
 				}
-				this.openWindow = new google.maps.InfoWindow( { content: this.text } );
-				this.openWindow.closeclick = function() {
-					marker.openWindow = false;
-				};
-				this.openWindow.open( _this.map, this );					
-			} );		
-		}
+			});
 
-		marker.setMap( this.map );
-		this.markers.push( marker );
+			marker.setMap(this.map);
+			this.markers.push(marker);
 
-		return marker;
-	};
+			return marker;
+		};
 
 	/**
 	 * Removes a single marker from the map.
@@ -91,7 +106,7 @@
 
 	/**
 	 * Removes all markers from the map.
-	 */		
+	 */
 	this.removeMarkers = function() {
 		for ( var i = this.markers.length - 1; i >= 0; i-- ) {
 			this.markers[i].setMap( null );
@@ -101,7 +116,7 @@
 
 	/**
 	 * Remove the "earth" type from options.types if it's present.
-	 * 
+	 *
 	 * @since 1.0.1
 	 */
 	this.removeEarthType = function() {
@@ -139,8 +154,8 @@
 			mw.loader.using( 'ext.maps.gm3.geoxml', function() {
 				var geoXml = new geoXML3.parser( { map: _this.map, zoom: options.kmlrezoom } );
 				geoXml.parse( options.kml );
-			} );		
-		}		
+			} );
+		}
 	};
 
 	this.addLine = function(properties){
@@ -205,7 +220,7 @@
 			strokeOpacity:properties.strokeOpacity,
 			strokeWeight:properties.strokeWeight,
 			fillColor:properties.fillColor,
-			fillOpacity: properties.fillOpacity
+			fillOpacity:properties.fillOpacity
 		});
 		this.polygons.push(polygon);
 
@@ -270,7 +285,7 @@
 	};
 
 	this.setup = function() {
-		var showEarth = $.inArray( 'earth', options.types ) !== -1; 
+		var showEarth = $.inArray( 'earth', options.types ) !== -1;
 
 		// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 		if ( showEarth ) {
@@ -338,7 +353,7 @@
 		for ( i = options.layers.length - 1; i >= 0; i-- ) {
 			var layer = eval( layerMapping[options.layers[i]] );
 			layer.setMap( map );
-		}	
+		}
 
 		var bounds;
 
@@ -427,7 +442,7 @@
 							}
 
 							_this.addOverlays();
-						} );	
+						} );
 					} } );
 				}
 			);
@@ -439,14 +454,14 @@
 		if ( options.autoinfowindows ) {
 			for ( var i = this.markers.length - 1; i >= 0; i-- ) {
 				google.maps.event.trigger( this.markers[i], 'click' );
-			}		
+			}
 		}
 
 		if ( options.resizable ) {
 			mw.loader.using( 'ext.maps.resizable', function() {
 				_this.resizable();
 			} );
-		}		
+		}
 
 		/**
 		 * used in display_line functionality

@@ -13,14 +13,14 @@
  * @author Daniel Werner
  */
 class MapsLocation {
-	
+
 	/**
 	 * @since 0.7.1
 	 * 
 	 * @var float
 	 */	
 	protected $latitude;
-	
+
 	/**
 	 * @since 0.7.1
 	 * 
@@ -34,7 +34,7 @@ class MapsLocation {
 	 * @var float
 	 */	
 	protected $altitude = 0;	
-	
+
 	/**
 	 * @since 0.7.1
 	 * 
@@ -55,49 +55,54 @@ class MapsLocation {
 	 * @var string
 	 */		
 	protected $text = '';
-	
+
 	/**
 	 * @since 0.7.2
 	 * 
 	 * @var string
 	 */		
 	protected $icon = '';
-	
+
 	/**
 	 * @since 1.1
 	 * 
 	 * @var string
 	 */	
 	protected $group = '';
-	
+
 	/**
 	 * @since 0.7.1
 	 * 
 	 * @var boolean
 	 */
 	protected $isValid = false;
-	
-	
+
+
 	/**
 	 * @since 0.7.1
 	 * 
 	 * @var string Element of the Maps_COORDS_ enum
 	 */
 	protected $format;
-	
+
 	/**
 	 * @since 0.7.1
 	 * 
 	 * @var boolean
 	 */
 	protected $directional;
-	
+
 	/**
 	 * @since 0.7.1
 	 * 
 	 * @var string
 	 */	
 	protected $separator;
+
+	/**
+	 * @var string
+	 */
+	protected $inlineLabel;
 
 	/**
 	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
@@ -113,7 +118,7 @@ class MapsLocation {
 	public static function newFromLatLon( $lat, $lon, $format = Maps_COORDS_FLOAT ) {
 		return new self( $lat . ',' . $lon, $format );
 	}
-	
+
 	/**
 	 * Creates and returns a new instance of a MapsLocation from an address.
 	 * 
@@ -127,7 +132,7 @@ class MapsLocation {
 	public static function newFromAddress( $address, $format = Maps_COORDS_FLOAT ) {
 		return new self( $address, $format );
 	}
-	
+
 	/**
 	 * Constructor.
 	 * 
@@ -142,7 +147,7 @@ class MapsLocation {
 		$this->format = $format;
 		$this->directional = $directional;
 		$this->separator = $separator;
-		
+
 		if ( !is_null( $coordsOrAddress ) ) {
 			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
 				$this->setCoordinates( $coordsOrAddress );
@@ -152,7 +157,7 @@ class MapsLocation {
 			}
 		}
 	}
-	
+
 	/**
 	 * Sets the location to a set of coordinates. You can provide a string
 	 * of raw coordinates, an array with lat and lon values and false.
@@ -166,13 +171,13 @@ class MapsLocation {
 	public function setCoordinates( $coordinates ) {
 		$coordSet = MapsCoordinateParser::parseCoordinates( $coordinates );
 		$this->isValid = $coordSet !== false;
-		
+
 		$this->latitude = $coordSet['lat'];
 		$this->longitude = $coordSet['lon'];
-		
+
 		return $this->isValid;
 	}
-	
+
 	/**
 	 * Sets the location to an address.
 	 * 
@@ -187,12 +192,12 @@ class MapsLocation {
 		if ( $asActualLocation ) {
 			$this->setCoordinates( MapsGeocoders::geocode( $address ) );
 		}
-		
+
 		$this->address = $address;
-		
+
 		return $this->isValid;
 	}
-	
+
 	/**
 	 * Returns if the location is valid.
 	 * 
@@ -203,7 +208,7 @@ class MapsLocation {
 	public function isValid() {
 		return $this->isValid;
 	}
-	
+
 	/**
 	 * Returns the locations latitude.
 	 * 
@@ -217,7 +222,7 @@ class MapsLocation {
 		}
 		return $this->latitude;
 	}
-	
+
 	/**
 	 * Returns the locations longitude.
 	 * 
@@ -231,7 +236,7 @@ class MapsLocation {
 		}
 		return $this->longitude;
 	}
-	
+
 	/**
 	 * Returns the locations altitude.
 	 * 
@@ -245,7 +250,7 @@ class MapsLocation {
 		}
 		return $this->altitude;
 	}	
-	
+
 	/**
 	 * Returns the locations coordinates formatted in the specified notation.
 	 * 
@@ -268,7 +273,7 @@ class MapsLocation {
 			is_null( $separator ) ? $this->separator : $separator
 		);
 	}
-	
+
 	/**
 	 * Returns the address corresponding to this location.
 	 * If there is none, and empty sting is returned.
@@ -283,15 +288,15 @@ class MapsLocation {
 		if ( !$this->isValid() ) {
 			throw new Exception( 'Attempt to get the address of an invalid location' );
 		}
-		
+
 		if ( is_null( $this->address ) ) {
 			if ( $geocodeIfEmpty ) {
 				// TODO: attempt to reverse-geocode
 			}
-			
+
 			$this->address = '';
 		}
-		
+
 		return $this->address;
 	}
 
@@ -316,7 +321,7 @@ class MapsLocation {
 	public function setText( $text ) {
 		$this->text = trim( $text );
 	}	
-	
+
 	/**
 	 * Returns if there is any icon.
 	 * 
@@ -327,7 +332,7 @@ class MapsLocation {
 	public function hasIcon() {
 		return $this->icon !== '';
 	}		
-	
+
 	/**
 	 * Sets the icon
 	 * 
@@ -338,7 +343,7 @@ class MapsLocation {
 	public function setIcon( $icon ) {
 		$this->icon = trim( $icon );
 	}
-	
+
 	/**
 	 * Sets the group
 	 * 
@@ -349,7 +354,7 @@ class MapsLocation {
 	public function setGroup( $group ) {
 		$this->group = trim( $group );
 	}
-	
+
 	/**
 	 * Returns if there is any title.
 	 * 
@@ -360,7 +365,7 @@ class MapsLocation {
 	public function hasTitle() {
 		return $this->title !== '';
 	}	
-	
+
 	/**
 	 * Returns the title.
 	 * 
@@ -371,7 +376,7 @@ class MapsLocation {
 	public function getTitle() {
 		return $this->title;
 	}
-	
+
 	/**
 	 * Returns if there is any text.
 	 * 
@@ -382,7 +387,7 @@ class MapsLocation {
 	public function hasText() {
 		return $this->text !== '';
 	}
-	
+
 	/**
 	 * Returns the text.
 	 * 
@@ -393,7 +398,7 @@ class MapsLocation {
 	public function getText() {
 		return $this->text;
 	}
-	
+
 	/**
 	 * Returns the icon.
 	 * 
@@ -404,7 +409,7 @@ class MapsLocation {
 	public function getIcon() {
 		return $this->icon;
 	}
-	
+
 	/**
 	 * Returns the group.
 	 * 
@@ -415,7 +420,7 @@ class MapsLocation {
 	public function getGroup() {
 		return $this->group;
 	}
-	
+
 	/**
 	 * Returns whether Location is asigned to a group.
 	 * 
@@ -426,7 +431,28 @@ class MapsLocation {
 	public function hasGroup() {
 		return $this->group != '';
 	}
-	
+
+	/**
+	 * @return string
+	 */
+	public function getInlineLabel(){
+		return $this->inlineLabel;
+	}
+
+	/**
+	 * @param $label
+	 */
+	public function setInlineLabel($label){
+		$this->inlineLabel = $label;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function hasInlineLabel(){
+		return $this->inlineLabel != '';
+	}
+
 	/**
 	 * Returns an object that can directly be converted to JS using json_encode or similar.
 	 * 
@@ -436,10 +462,11 @@ class MapsLocation {
 	 * @param string $defTitle
 	 * @param string $defIconUrl
 	 * @param string $defGroup
+	 * @param string $defInlineLabel
 	 *
 	 * @return object
 	 */
-	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '' ) {
+	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '' ) {
 		return array(
 			'lat' => $this->getLatitude(),
 			'lon' => $this->getLongitude(),
@@ -448,8 +475,9 @@ class MapsLocation {
 			'title' => $this->hasTitle() ? $this->getTitle() : $defTitle,
 			'address' => $this->getAddress( false ),
 			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
-			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup
+			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
+			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel
 		);
 	}
-	
+
 }
