@@ -129,7 +129,7 @@ class SMFormInput {
 			
 			$params['inputname'] = $input_name;
 			
-			$output = $this->getInputHTML( $params, $wgParser, $mapName ) . $this->getJSON( $params, $wgParser, $mapName );
+			$output = $this->getInputHTML( $params, $wgParser, $mapName );
 			
 			$this->service->addResourceModules( $this->getResourceModules() );
 			
@@ -171,37 +171,19 @@ class SMFormInput {
 	 * @return string
 	 */
 	protected function getInputHTML( array $params, Parser $parser, $mapName ) {
-		return Html::element(
+		return Html::rawElement(
 			'div',
 			array(
 				'id' => $mapName . '_forminput',
-				'style' => 'display: inline'
+				'style' => 'display: inline',
+				'class' => 'sminput sminput-' . $this->service->getName()
 			),
-			wfMsg( 'semanticmaps-loading-forminput' )
-		);
-	}
-
-	/**
-	 * Returns the JSON with the maps data.
-	 *
-	 * @since 1.0
-	 *
-	 * @param array $params
-	 * @param Parser $parser
-	 * @param string $mapName
-	 * 
-	 * @return string
-	 */	
-	protected function getJSON( array $params, Parser $parser, $mapName ) {
-		$object = $this->getJSONObject( $params, $parser );
-		
-		if ( $object === false ) {
-			return '';
-		}
-		
-		return Html::inlineScript(
-			MapsMapper::getBaseMapJSON( $this->service->getName() . '_forminputs' )
-			. "mwmaps.{$this->service->getName()}_forminputs.{$mapName}=" . FormatJson::encode( $object ) . ';'
+			wfMsgHtml( 'semanticmaps-loading-forminput' ) .
+				Html::element(
+					'div',
+					array( 'style' => 'display:none', 'class' => 'sminputdata' ),
+					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
+				)
 		);
 	}
 	
