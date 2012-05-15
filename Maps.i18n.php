@@ -2495,6 +2495,7 @@ Servizi di cartografia disponibili: $1",
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Shirayuki
  * @author Yanajin66
  * @author 青子守歌
  */
@@ -2543,6 +2544,9 @@ $messages['ja'] = array(
 $1',
 	'maps_map_cannot_be_displayed' => 'この地図は表示できません。',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
+	'maps_googlemaps2' => 'Google マップ v2',
+	'maps_googlemaps3' => 'Google マップ v3',
+	'maps_yahoomaps' => 'Yahoo! 地図',
 	'maps_click_to_activate' => 'クリックして地図をアクティブに',
 	'maps_centred_on' => '地図の中心は $1、$2。',
 	'maps-googlemaps2-incompatbrowser' => 'あなたのブラウザーは Google Maps v2 と互換性がありません。',
