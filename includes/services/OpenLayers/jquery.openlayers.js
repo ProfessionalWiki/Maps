@@ -140,13 +140,13 @@
         var style = {
             'strokeColor':properties.strokeColor,
             'strokeWidth': properties.strokeWeight,
-            'strokeOpacity': properties.strokeOpacity,
+            'strokeOpacity': properties.onlyVisibleOnHover === true ? 0 : properties.strokeOpacity,
             'fillColor': properties.fillColor,
-            'fillOpacity': properties.fillOpacity
+            'fillOpacity': properties.onlyVisibleOnHover === true ? 0 : properties.fillOpacity
         }
 
         var polygon = new OpenLayers.Geometry.LinearRing(pos);
-        var polygonFeature = new OpenLayers.Feature.Vector(polygon, {text:properties.text}, style);
+        var polygonFeature = new OpenLayers.Feature.Vector(polygon, properties, style);
         this.polygonLayer.addFeatures([polygonFeature]);
     }
 	
@@ -173,8 +173,10 @@
 		}
 		
 		return false;
-	}	
-	
+	}
+
+    var _this = this;
+
 	// Remove the loading map message.
 	this.text( '' );
 	
@@ -201,6 +203,7 @@
 		mapOptions.maxResolution = 156543.0339;
 		mapOptions.maxExtent = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
 	}
+
 
 	this.map = new OpenLayers.Map( mapElementId, mapOptions );
 	var map = this.map;
@@ -259,27 +262,48 @@
 
     if(options.polygons && options.polygons.length > 0){
         this.polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer");
-        this.polygonLayer.events.on({
-            'featureselected':function(feature){
-                if(feature.feature.attributes.text != undefined && feature.feature.attributes.text != ''){
-                    var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy
-                    var lonlat = map.getLonLatFromPixel(mousePos);
-                    var popup = new OpenLayers.Popup(null,lonlat, null, feature.feature.attributes.text, true,function(){
-                        map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
-                        map.removePopup(this);
-                    })
-                    this.map.addPopup( popup );
-                }
-            },
-            'featureunselected':function(feature){
-                //do nothing
-            }
-        });
 
         var controls = {
             select: new OpenLayers.Control.SelectFeature(this.polygonLayer,{
                 clickout: true, toggle: false,
-                multiple: true, hover: false
+                multiple: true, hover: true,
+                callbacks: {
+                    'over':function(feature){
+                        if(feature.attributes.onlyVisibleOnHover === true){
+                            var style = {
+                                'strokeColor':feature.attributes.strokeColor,
+                                'strokeWidth': feature.attributes.strokeWeight,
+                                'strokeOpacity': feature.attributes.strokeOpacity,
+                                'fillColor': feature.attributes.fillColor,
+                                'fillOpacity': feature.attributes.fillOpacity
+                            }
+                            _this.polygonLayer.drawFeature(feature,style);
+                        }
+                    },
+                    'out':function(feature){
+                        if(feature.attributes.onlyVisibleOnHover === true && _this.map.popups.length === 0){
+                            var style = {
+                                'strokeColor':feature.attributes.strokeColor,
+                                'strokeWidth': feature.attributes.strokeWeight,
+                                'strokeOpacity': 0,
+                                'fillColor': feature.attributes.fillColor,
+                                'fillOpacity': 0
+                            }
+                            _this.polygonLayer.drawFeature(feature,style);
+                        }
+                    },
+                    'click':function(feature){
+                        if(feature.attributes.text != undefined && feature.attributes.text != ''){
+                            var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy
+                            var lonlat = map.getLonLatFromPixel(mousePos);
+                            var popup = new OpenLayers.Popup(null,lonlat, null, feature.attributes.text, true,function(){
+                                map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
+                                map.removePopup(this);
+                            })
+                            this.map.addPopup( popup );
+                        }
+                    }
+                }
             })
         };
 

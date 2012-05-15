@@ -209,6 +209,32 @@
         });
         this.polygons.push(polygon);
 
+        //add hover event/effect
+        if(properties.onlyVisibleOnHover === true){
+
+            function hidePolygon(polygon) {
+                polygon.setOptions({
+                    fillOpacity:0,
+                    strokeOpacity:0
+                });
+            }
+
+            hidePolygon(polygon);
+
+            google.maps.event.addListener(polygon,"mouseover",function(){
+                this.setOptions({
+                    fillOpacity: properties.fillOpacity,
+                    strokeOpacity:properties.strokeOpacity
+                });
+            });
+
+            google.maps.event.addListener(polygon,"mouseout",function(){
+                hidePolygon(this);
+            });
+
+        }
+
+        //add click event
         google.maps.event.addListener(polygon,"click", function(event){
             if (this.openWindow != undefined) {
                 this.openWindow.close();
