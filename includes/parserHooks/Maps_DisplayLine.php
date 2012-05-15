@@ -2,12 +2,12 @@
 
 /**
  * Class for the 'display_line' parser hooks.
- * 
+ *
  * @since 0.7
- * 
+ *
  * @file Maps_DisplayLine.php
  * @ingroup Maps
- * 
+ *
  * @author Kim Eik
  */
 class MapsDisplayLine extends MapsDisplayPoint {
@@ -29,7 +29,7 @@ class MapsDisplayLine extends MapsDisplayPoint {
 	 *
 	 * @return string or array of string
 	 */
-	protected function getName(){
+	protected function getName() {
 		return 'display_line';
 	}
 
@@ -39,12 +39,12 @@ class MapsDisplayLine extends MapsDisplayPoint {
 	 */
 	public function render( array $parameters ) {
 		// Get the instance of the service class.
-		$service = MapsMappingServices::getServiceInstance($parameters['mappingservice']);
+		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'] );
 
 		// Get an instance of the class handling the current parser hook and service.
 		$mapClass = $service->getFeatureInstance( $this->getName() );
 
-		return $mapClass->renderMap( $parameters, $this->parser );
+		return $mapClass->renderMap( $parameters , $this->parser );
 	}
 
 	/**
@@ -58,42 +58,50 @@ class MapsDisplayLine extends MapsDisplayPoint {
 	protected function getParameterInfo( $type ) {
 		global $egMapsDefaultServices;
 
-		$params = parent::getParameterInfo($type);
+		$params = parent::getParameterInfo( $type );
 
 		$params['mappingservice']->setDefault( $egMapsDefaultServices[$this->getName()] );
 		$params['mappingservice']->addManipulations( new MapsParamService( $this->getName() ) );
 
-		$params['lines'] = new ListParameter( 'lines', ';' );
-		$params['lines']->setDefault(array());
-		$params['lines']->addCriteria(new CriterionLine($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
-		$params['lines']->addManipulations(new MapsParamLine($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
+		$params['lines'] = new ListParameter( 'lines' , ';' );
+		$params['lines']->setDefault( array() );
+		$params['lines']->addCriteria( new CriterionLine( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
+		$params['lines']->addManipulations( new MapsParamLine( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
 
-		$params['polygons'] = new ListParameter( 'polygons', ';' );
-		$params['polygons']->setDefault(array());
-		$params['polygons']->addCriteria(new CriterionPolygon($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
-		$params['polygons']->addManipulations(new MapsParamPolygon($type === ParserHook::TYPE_FUNCTION ? '~' : '|' ));
+		$params['polygons'] = new ListParameter( 'polygons' , ';' );
+		$params['polygons']->setDefault( array() );
+		$params['polygons']->addCriteria( new CriterionPolygon( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
+		$params['polygons']->addManipulations( new MapsParamPolygon( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
+
+		$params['circles'] = new ListParameter( 'circles' , ';' );
+		$params['circles']->setDefault( array() );
+		$params['circles']->addManipulations( new MapsParamCircle( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
+
+		$params['rectangles'] = new ListParameter( 'rectangles' , ';' );
+		$params['rectangles']->setDefault( array() );
+		$params['rectangles']->addManipulations( new MapsParamRectangle( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );
 
 		$params['copycoords'] = new Parameter(
-			'copycoords',
+			'copycoords' ,
 			Parameter::TYPE_BOOLEAN
 		);
-		$params['copycoords']->setDefault(false);
+		$params['copycoords']->setDefault( false );
 		$params['copycoords']->setDoManipulationOfDefault( false );
 
 
 		$params['markercluster'] = new Parameter(
-			'markercluster',
+			'markercluster' ,
 			Parameter::TYPE_BOOLEAN
 		);
-		$params['markercluster']->setDefault(false);
+		$params['markercluster']->setDefault( false );
 		$params['markercluster']->setDoManipulationOfDefault( false );
 
 		$params['searchmarkers'] = new Parameter(
-			'searchmarkers',
+			'searchmarkers' ,
 			Parameter::TYPE_STRING
 		);
-		$params['searchmarkers']->setDefault('');
-		$params['searchmarkers']->addCriteria(new CriterionSearchMarkers());
+		$params['searchmarkers']->setDefault( '' );
+		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
 		$params['searchmarkers']->setDoManipulationOfDefault( false );
 
 		return $params;
@@ -108,6 +116,6 @@ class MapsDisplayLine extends MapsDisplayPoint {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'coordinates','lines','polygons' );
+		return array( 'coordinates' , 'lines' , 'polygons' );
 	}
 }

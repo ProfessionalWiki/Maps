@@ -10,8 +10,7 @@
  * @licence GNU GPL v3
  * @author Kim Eik < kim@heldig.org >
  */
-class MapsLine{
-
+class MapsLine extends MapsBaseStrokableElement {
 
 	/**
 	 * @var
@@ -19,181 +18,34 @@ class MapsLine{
 	protected $lineCoords;
 
 	/**
-	 * @var
-	 */
-	protected $title;
-
-	/**
-	 * @var
-	 */
-	protected $text;
-
-	/**
-	 * @var
-	 */
-	protected $strokeColor;
-	/**
-	 * @var
-	 */
-	protected $strokeOpacity;
-	/**
-	 * @var
-	 */
-	protected $strokeWeight;
-
-	/**
-	 * @var
-	 */
-	protected $link;
-
-	/**
 	 *
 	 */
-	function __construct($coords)
-	{
-		$this->setLineCoords($coords);
+	function __construct( $coords ) {
+		$this->setLineCoords( $coords );
 	}
 
-	/**
-	 * @param \text $text
-	 */
-	public function setText($text)
-	{
-		$this->text = $text;
-	}
 
-	/**
-	 * @return \text
-	 */
-	public function getText()
-	{
-		return $this->text;
-	}
-
-	/**
-	 * @param \title $title
-	 */
-	public function setTitle($title)
-	{
-		$this->title = $title;
-	}
-
-	/**
-	 * @return \title
-	 */
-	public function getTitle()
-	{
-		return $this->title;
-	}
-
-	protected function setLineCoords($lineCoords)
-	{
-		foreach($lineCoords as $lineCoord){
-			$this->lineCoords[] = new MapsLocation($lineCoord);
+	protected function setLineCoords( $lineCoords ) {
+		foreach ( $lineCoords as $lineCoord ) {
+			$this->lineCoords[] = new MapsLocation( $lineCoord );
 		}
 	}
 
-	protected function getLineCoords()
-	{
+	protected function getLineCoords() {
 		return $this->lineCoords;
 	}
 
-	public function getJSONObject( $defText = '', $defTitle = '') {
+	public function getJSONObject( $defText = '' , $defTitle = '' ) {
+		$parentArray = parent::getJSONObject( $defText , $defTitle );
 		$posArray = array();
-		foreach ($this->lineCoords as $mapLocation){
+		foreach ( $this->lineCoords as $mapLocation ) {
 			$posArray[] = array(
-				'lat' => $mapLocation->getLatitude(),
+				'lat' => $mapLocation->getLatitude() ,
 				'lon' => $mapLocation->getLongitude()
 			);
 		}
+		$posArray = array( 'pos' => $posArray );
 
-		return array(
-			'pos' => $posArray,
-			'text' => $this->hasText() ? $this->getText() : $defText,
-			'title' => $this->hasTitle() ? $this->getTitle() : $defTitle,
-			'link' => $this->getLink(),
-			'strokeColor' => $this->hasStrokeColor() ? $this->getStrokeColor() : '#FF0000',
-			'strokeOpacity' => $this->hasStrokeOpacity() ? $this->getStrokeOpacity() : '1',
-			'strokeWeight' => $this->hasStrokeWeight() ? $this->getStrokeWeight() : '2'
-		);
-	}
-
-
-	/**
-	 * @param  $strokeColor
-	 */
-	public function setStrokeColor($strokeColor)
-	{
-		$this->strokeColor = $strokeColor;
-	}
-
-	/**
-	 * @return
-	 */
-	public function getStrokeColor()
-	{
-		return $this->strokeColor;
-	}
-
-	/**
-	 * @param  $strokeOpacity
-	 */
-	public function setStrokeOpacity($strokeOpacity)
-	{
-		$this->strokeOpacity = $strokeOpacity;
-	}
-
-	/**
-	 * @return
-	 */
-	public function getStrokeOpacity()
-	{
-		return $this->strokeOpacity;
-	}
-
-	/**
-	 * @param  $strokeWeight
-	 */
-	public function setStrokeWeight($strokeWeight)
-	{
-		$this->strokeWeight = $strokeWeight;
-	}
-
-	/**
-	 * @return
-	 */
-	public function getStrokeWeight()
-	{
-		return $this->strokeWeight;
-	}
-
-	public function setLink($link){
-		$this->link = $link;
-	}
-
-	public function getLink(){
-		return $this->link;
-	}
-
-
-	public function hasText(){
-		return !is_null($this->text) && $this->text !== '';
-	}
-
-	public function hasTitle(){
-		return !is_null($this->title) && $this->title !== '';
-	}
-
-	public function hasStrokeColor(){
-		return !is_null($this->strokeColor) && $this->strokeColor !== '';
-	}
-
-	public function hasStrokeOpacity(){
-		return !is_null($this->strokeOpacity) && $this->strokeOpacity !== '';
-	}
-
-
-	public function hasStrokeWeight(){
-		return !is_null($this->strokeWeight) && $this->strokeWeight !== '';
+		return array_merge( $parentArray , $posArray );
 	}
 }

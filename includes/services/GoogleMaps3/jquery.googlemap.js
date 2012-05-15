@@ -31,6 +31,18 @@
 	 */
 	this.polygons = [];
 
+
+	/**
+	 * All circles on the map
+	 */
+	this.circles = [];
+
+
+	/**
+	 * All rectangles on the map
+	 */
+	this.rectangles = [];
+
 	/**
 	 * Creates a new marker with the provided data,
 	 * adds it to the map, and returns it.
@@ -231,6 +243,47 @@
 			openBubbleOrLink.call(this, properties, event, polygon);
 		});
 	};
+
+	this.addCircle = function(properties){
+		var circle = new google.maps.Circle({
+			map:this.map,
+			center:new google.maps.LatLng(properties.centre.lat,properties.centre.lon),
+			radius: properties.radius,
+			fillColor: properties.fillColor,
+			fillOpacity: properties.fillOpacity,
+			strokeColor: properties.strokeColor,
+			strokeOpacity: properties.strokeOpacity,
+			strokeWeight: properties.strokeWeight
+		});
+		this.circles.push(circle);
+
+		//add click event
+		google.maps.event.addListener(circle,"click", function(event){
+			openBubbleOrLink.call(this, properties, event, circle);
+		});
+	};
+
+
+	this.addRectangle = function(properties){
+		var rectangle = new google.maps.Rectangle({
+			map: this.map,
+			bounds: new google.maps.LatLngBounds(
+				new google.maps.LatLng(properties.sw.lat,properties.sw.lon), //sw
+				new google.maps.LatLng(properties.ne.lat,properties.ne.lon)  //ne
+			),
+			fillColor: properties.fillColor,
+			fillOpacity: properties.fillOpacity,
+			strokeColor: properties.strokeColor,
+			strokeOpacity: properties.strokeOpacity,
+			strokeWeight: properties.strokeWeight
+		})
+		this.rectangles.push(rectangle);
+
+		//add click event
+		google.maps.event.addListener(rectangle,"click", function(event){
+			openBubbleOrLink.call(this, properties, event, rectangle);
+		});
+	}
 
 	this.removePolygon = function(polygon){
 		polygon.setMap( null );
@@ -447,6 +500,24 @@
 		if(options.polygons){
 			for ( var i = 0; i < options.polygons.length; i++ ) {
 				this.addPolygon(options.polygons[i]);
+			}
+		}
+
+		/**
+		 * used in display_line to draw circles
+		 */
+		if(options.circles){
+			for ( var i = 0; i < options.circles.length; i++ ) {
+				this.addCircle(options.circles[i]);
+			}
+		}
+
+		/**
+		 * used in display_line to draw rectangles
+		 */
+		if(options.rectangles){
+			for ( var i = 0; i < options.rectangles.length; i++ ) {
+				this.addRectangle(options.rectangles[i]);
 			}
 		}
 

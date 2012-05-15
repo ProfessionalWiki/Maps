@@ -15,20 +15,6 @@ class MapsUtils {
 
 
 	/**
-	 * Checks if a string is prefixed with link:
-	 * @static
-	 * @param $link
-	 * @return bool|string
-	 * @since 1.1
-	 */
-	public static function isLinkParameter( $link ) {
-		if ( self::strStartsWith( $link , 'link:' ) ) {
-			return substr( $link , 5 );
-		}
-		return false;
-	}
-
-	/**
 	 * Helper function that returns true if a $haystack (string) starts with $needle
 	 * @static
 	 * @param $haystack

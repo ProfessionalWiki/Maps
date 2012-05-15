@@ -1,6 +1,5 @@
 <?php
-class MapsParamLine extends MapsCommonParameterManipulation {
-
+class MapsParamRectangle extends MapsCommonParameterManipulation {
 
 	protected $metaDataSeparator;
 
@@ -21,11 +20,12 @@ class MapsParamLine extends MapsCommonParameterManipulation {
 	 *
 	 * @return mixed
 	 */
-	public function doManipulation( &$value , Parameter $parameter , array &$parameters ) {
+	protected function doManipulation( &$value , Parameter $parameter , array &$parameters ) {
 		$parts = explode( $this->metaDataSeparator , $value );
-		$lineCoords = explode( ':' , array_shift( $parts ) );
+		$rectData = explode( ':' , array_shift( $parts ) );
 
-		$value = new MapsLine( $lineCoords );
+		$value = new MapsRectangle( $rectData[0] , $rectData[1] );
+
 		$this->handleCommonParams( $parts , $value );
 
 		$value = $value->getJSONObject();

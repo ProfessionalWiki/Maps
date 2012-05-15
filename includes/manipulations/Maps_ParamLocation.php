@@ -2,9 +2,9 @@
 
 /**
  * Parameter manipulation turning the value into a MapsLocation object.
- * 
+ *
  * @since 0.7.2
- * 
+ *
  * @file Maps_ParamLocation.php
  * @ingroup Maps
  * @ingroup ParameterManipulations
@@ -13,66 +13,50 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
-class MapsParamLocation extends ItemParameterManipulation {
+class MapsParamLocation extends MapsCommonParameterManipulation {
 
 	/**
 	 * In some usecases, the parameter values will contain extra location
 	 * metadata, which should be ignored here. This field holds the delimiter
 	 * used to separate this data from the actual location.
-	 * 
+	 *
 	 * @since 0.7.2
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $metaDataSeparator;
 
 	/**
 	 * Should the location be turned into a JSON object.
-	 * 
+	 *
 	 * @var boolean
 	 */
 	public $toJSONObj = false;
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @since 0.7.2
 	 */
 	public function __construct( $metaDataSeparator = false ) {
 		parent::__construct();
 
-		$this->metaDataSeparator = $metaDataSeparator;		
+		$this->metaDataSeparator = $metaDataSeparator;
 	}
 
 	/**
 	 * @see ItemParameterManipulation::doManipulation
-	 * 
+	 *
 	 * @since 0.7.2
-	 */	
-	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
-		$parts = $this->metaDataSeparator === false ? array( $value ) : explode( $this->metaDataSeparator, $value ); 
+	 */
+	public function doManipulation( &$value , Parameter $parameter , array &$parameters ) {
+		$parts = $this->metaDataSeparator === false ? array( $value ) : explode( $this->metaDataSeparator , $value );
 
 		$value = array_shift( $parts );
 		$value = new MapsLocation( $value );
 
-		$linkOrTitle = array_shift( $parts );
+		$this->handleCommonParams( $parts , $value );
 
-		if($link = MapsUtils::isLinkParameter($linkOrTitle)){
-			if(MapsUtils::isValidURL($link)){
-				$value->setLink($link);
-			}else{
-				$title = Title::newFromText($link);
-				$value->setLink($title->getFullURL());
-			}
-		}else{
-			if ( $linkOrTitle ) {
-				$value->setTitle( $linkOrTitle );
-			}
-
-			if ( $text = array_shift( $parts ) ) {
-				$value->setText( $text );
-			}
-		}
 		if ( $icon = array_shift( $parts ) ) {
 			$value->setIcon( $icon );
 		}
@@ -81,13 +65,12 @@ class MapsParamLocation extends ItemParameterManipulation {
 			$value->setGroup( $group );
 		}
 
-		if( $inlineLabel = array_shift( $parts ) ){
-			$value->setInlineLabel($inlineLabel);
+		if ( $inlineLabel = array_shift( $parts ) ) {
+			$value->setInlineLabel( $inlineLabel );
 		}
 
 		if ( $this->toJSONObj ) {
 			$value = $value->getJSONObject();
 		}
 	}
-
 }

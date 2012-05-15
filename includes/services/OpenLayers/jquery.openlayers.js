@@ -157,6 +157,58 @@
 		this.polygonLayer.addFeatures([polygonFeature]);
 	}
 
+	this.addCircle = function(properties){
+		var style = {
+			'strokeColor':properties.strokeColor,
+			'strokeWidth': properties.strokeWeight,
+			'strokeOpacity': properties.onlyVisibleOnHover === true ? 0 : properties.strokeOpacity,
+			'fillColor': properties.fillColor,
+			'fillOpacity': properties.onlyVisibleOnHover === true ? 0 : properties.fillOpacity
+		}
+
+		var point = new OpenLayers.Geometry.Point(properties.centre.lon,properties.centre.lat);
+		point.transform(
+			new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+			map.getProjectionObject() // to Spherical Mercator Projection
+		);
+		var circle = OpenLayers.Geometry.Polygon.createRegularPolygon(
+			point,
+			properties.radius,
+			30
+		);
+		var circleFeature = new OpenLayers.Feature.Vector(circle,properties,style);
+		this.circleLayer.addFeatures([circleFeature])
+	}
+
+	this.addRectangle = function(properties){
+		var style = {
+			'strokeColor':properties.strokeColor,
+			'strokeWidth': properties.strokeWeight,
+			'strokeOpacity': properties.onlyVisibleOnHover === true ? 0 : properties.strokeOpacity,
+			'fillColor': properties.fillColor,
+			'fillOpacity': properties.onlyVisibleOnHover === true ? 0 : properties.fillOpacity
+		}
+
+		var point1 = new OpenLayers.Geometry.Point(properties.ne.lon,properties.ne.lat);
+		var point2 = new OpenLayers.Geometry.Point(properties.sw.lon,properties.sw.lat);
+		point1.transform(
+			new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+			map.getProjectionObject() // to Spherical Mercator Projection
+		);
+		point2.transform(
+			new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+			map.getProjectionObject() // to Spherical Mercator Projection
+		);
+
+		var bounds = new OpenLayers.Bounds();
+		bounds.extend(point1);
+		bounds.extend(point2);
+
+		var rectangle = bounds.toGeometry();
+		var rectangleFeature = new OpenLayers.Feature.Vector(rectangle,properties,style);
+		this.rectangleLayer.addFeatures([rectangleFeature])
+	}
+
 	/**
 	 * Gets a valid control name (with excat lower and upper case letters),
 	 * or returns false when the control is not allowed.
@@ -308,6 +360,67 @@
 
 		for ( var i = 0; i < options.polygons.length; i++ ) {
 			this.addPolygon(options.polygons[i]);
+		}
+	}
+
+	if(options.circles && options.circles.length > 0){
+		this.circleLayer = new OpenLayers.Layer.Vector("Circle Layer");
+
+		var controls = {
+			select: new OpenLayers.Control.SelectFeature(this.circleLayer,{
+				clickout: true, toggle: false,
+				multiple: true, hover: true,
+				callbacks: {
+					'click':function(feature){
+						openBubbleOrLink(feature.attributes);
+					}
+				}
+			})
+		};
+
+		for(key in controls){
+			var control = controls[key];
+			map.addControl(control);
+			control.activate();
+		}
+
+		map.addLayer(this.circleLayer);
+		map.raiseLayer(this.circleLayer,-1);
+		map.resetLayersZIndex();
+
+		for ( var i = 0; i < options.circles.length; i++ ) {
+			this.addCircle(options.circles[i]);
+		}
+	}
+
+
+	if(options.rectangles && options.rectangles.length > 0){
+		this.rectangleLayer = new OpenLayers.Layer.Vector("Rectangle Layer");
+
+		var controls = {
+			select: new OpenLayers.Control.SelectFeature(this.rectangleLayer,{
+				clickout: true, toggle: false,
+				multiple: true, hover: true,
+				callbacks: {
+					'click':function(feature){
+						openBubbleOrLink(feature.attributes);
+					}
+				}
+			})
+		};
+
+		for(key in controls){
+			var control = controls[key];
+			map.addControl(control);
+			control.activate();
+		}
+
+		map.addLayer(this.rectangleLayer);
+		map.raiseLayer(this.rectangleLayer,-1);
+		map.resetLayersZIndex();
+
+		for ( var i = 0; i < options.rectangles.length; i++ ) {
+			this.addRectangle(options.rectangles[i]);
 		}
 	}
 

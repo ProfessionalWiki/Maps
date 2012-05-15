@@ -10,87 +10,66 @@
  * @licence GNU GPL v3
  * @author Kim Eik < kim@heldig.org >
  */
-class MapsPolygon extends MapsLine{
-
-
-	/**
-	 * @var
-	 */
-	protected $fillColor;
+class MapsPolygon extends MapsBaseFillableElement implements iHoverableMapElement {
 
 	/**
 	 * @var
 	 */
-	protected $fillOpacity;
+	protected $polygonCoords;
 
 	/**
 	 * @var
 	 */
 	protected $onlyVisibleOnHover = false;
 
-
-	public function getJSONObject( $defText = '', $defTitle = '') {
-		$parentArray = parent::getJSONObject($defText,$defTitle);
-		$array = array(
-			'fillColor' => $this->hasFillColor() ? $this->getFillColor() : '#FF0000',
-			'fillOpacity' => $this->hasFillOpacity() ? $this->getFillOpacity() : 0.5,
-			'onlyVisibleOnHover' => $this->isOnlyVisibleOnHover(),
-		);
-		return array_merge($parentArray,$array);
-	}
-
-	private function hasFillColor(){
-		return !is_null($this->fillColor) && $this->fillColor !== '';
-	}
-
-	private function hasFillOpacity(){
-		return !is_null($this->fillOpacity) && $this->fillOpacity !== '';
-	}
-
 	/**
-	 * @return
+	 *
 	 */
-	public function getFillOpacity()
-	{
-		return $this->fillOpacity;
+	function __construct( $coords ) {
+		$this->setPolygonCoords( $coords );
 	}
 
-	/**
-	 * @param  $fillOpacity
-	 */
-	public function setFillOpacity($fillOpacity)
-	{
-		$this->fillOpacity = $fillOpacity;
+	protected function setPolygonCoords( $polygonCoords ) {
+		foreach ( $polygonCoords as $polygonCoord ) {
+			$this->polygonCoords[] = new MapsLocation( $polygonCoord );
+		}
 	}
 
-	/**
-	 * @return
-	 */
-	public function getFillColor()
-	{
-		return $this->fillColor;
-	}
-
-	/**
-	 * @param  $fillColor
-	 */
-	public function setFillColor($fillColor)
-	{
-		$this->fillColor = $fillColor;
+	protected function getPolygonCoords() {
+		return $this->polygonCoords;
 	}
 
 	/**
 	 * @param $visible
 	 */
-	public function setOnlyVisibleOnHover($visible){
+	public function setOnlyVisibleOnHover( $visible ) {
 		$this->onlyVisibleOnHover = $visible;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function isOnlyVisibleOnHover(){
+	public function isOnlyVisibleOnHover() {
 		return $this->onlyVisibleOnHover;
 	}
 
+	public function getJSONObject( $defText = '' , $defTitle = '' ) {
+
+		$parentArray = parent::getJSONObject( $defText , $defTitle );
+		$posArray = array();
+
+		foreach ( $this->polygonCoords as $mapLocation ) {
+			$posArray[] = array(
+				'lat' => $mapLocation->getLatitude() ,
+				'lon' => $mapLocation->getLongitude()
+			);
+		}
+
+		$array = array(
+			'pos' => $posArray ,
+			'onlyVisibleOnHover' => $this->isOnlyVisibleOnHover() ,
+		);
+
+		return array_merge( $parentArray , $array );
+	}
 }

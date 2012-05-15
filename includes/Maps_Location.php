@@ -12,7 +12,7 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
-class MapsLocation {
+class MapsLocation extends MapsBaseElement {
 
 	/**
 	 * @since 0.7.1
@@ -41,20 +41,6 @@ class MapsLocation {
 	 * @var string
 	 */
 	protected $address;
-
-	/**
-	 * @since 0.7.2
-	 *
-	 * @var string
-	 */
-	protected $title = '';
-
-	/**
-	 * @since 0.7.2
-	 *
-	 * @var string
-	 */
-	protected $text = '';
 
 	/**
 	 * @since 0.7.2
@@ -103,11 +89,6 @@ class MapsLocation {
 	 * @var string
 	 */
 	protected $inlineLabel;
-
-	/**
-	 * @var
-	 */
-	protected $link;
 
 	/**
 	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
@@ -305,27 +286,6 @@ class MapsLocation {
 		return $this->address;
 	}
 
-	/**
-	 * Sets the title.
-	 *
-	 * @since 0.7.2
-	 *
-	 * @param string $title
-	 */
-	public function setTitle( $title ) {
-		$this->title = trim( $title );
-	}
-
-	/**
-	 * Sets the text.
-	 *
-	 * @since 0.7.2
-	 *
-	 * @param string $text
-	 */
-	public function setText( $text ) {
-		$this->text = trim( $text );
-	}
 
 	/**
 	 * Returns if there is any icon.
@@ -361,50 +321,6 @@ class MapsLocation {
 	}
 
 	/**
-	 * Returns if there is any title.
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function hasTitle() {
-		return $this->title !== '';
-	}
-
-	/**
-	 * Returns the title.
-	 *
-	 * @since 0.7.2
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
-
-	/**
-	 * Returns if there is any text.
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function hasText() {
-		return $this->text !== '';
-	}
-
-	/**
-	 * Returns the text.
-	 *
-	 * @since 0.7.2
-	 *
-	 * @return string
-	 */
-	public function getText() {
-		return $this->text;
-	}
-
-	/**
 	 * Returns the icon.
 	 *
 	 * @since 0.7.2
@@ -435,23 +351,6 @@ class MapsLocation {
 	 */
 	public function hasGroup() {
 		return $this->group != '';
-	}
-
-
-	/**
-	 * @return
-	 */
-	public function getLink()
-	{
-		return $this->link;
-	}
-
-	/**
-	 * @param  $link
-	 */
-	public function setLink($link)
-	{
-		$this->link = $link;
 	}
 
 	/**
@@ -489,18 +388,17 @@ class MapsLocation {
 	 * @return object
 	 */
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '' ) {
-		return array(
+		$parentArray = parent::getJSONObject( $defText , $defTitle );
+		$array = array(
 			'lat' => $this->getLatitude(),
 			'lon' => $this->getLongitude(),
 			'alt' => $this->getAltitude(),
-			'text' => $this->hasText() ? $this->getText() : $defText,
-			'title' => $this->hasTitle() ? $this->getTitle() : $defTitle,
 			'address' => $this->getAddress( false ),
 			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
-			'link' => $this->getLink(),
 		);
+		return array_merge( $parentArray , $array );
 	}
 
 }
