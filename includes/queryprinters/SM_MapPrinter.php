@@ -60,10 +60,10 @@ class SMMapPrinter extends SMWResultPrinter {
 		$params['staticlocations'] = new ListParameter( 'staticlocations', ';' );
 		$params['staticlocations']->addAliases( 'locations' );
 		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
-		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );		
+		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );
 		$params['staticlocations']->setDefault( array() );
 		$params['staticlocations']->setMessage( 'semanticmaps-par-staticlocations' );
-		
+
 		$params['centre'] = new Parameter( 'centre' );
 		$params['centre']->setDefault( false );
 		$params['centre']->addAliases( 'center' );
