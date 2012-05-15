@@ -132,6 +132,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['kml'] = new ListParameter( 'kml' );
 		$params['kml']->setDefault( array() );
 		$params['kml']->setMessage( 'maps-googlemaps3-par-kml' );
+		$params['kml']->addManipulations(new MapsParamFile());
 		
 		$params['gkml'] = new ListParameter( 'gkml' );
 		$params['gkml']->setDefault( array() );
