@@ -575,7 +575,9 @@
 			 * allows grouping of markers
 			 */
 			if (options.markercluster) {
-				this.markercluster = new MarkerClusterer(this.map, this.markers);
+				this.markercluster = new MarkerClusterer(this.map, this.markers,{
+					averageCenter:true
+				});
 			}
 
 			if (options.searchmarkers) {
