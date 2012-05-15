@@ -33,16 +33,21 @@ if ( version_compare( $wgVersion, '1.18c', '<' ) ) {
 
 // Show a warning if Maps is not loaded.
 if ( ! defined( 'Maps_VERSION' ) ) {
-	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
+	die( '<b>Error:</b> You need to have <a href="https://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
 }
 
 // Show a warning if Semantic MediaWiki is not loaded.
 if ( ! defined( 'SMW_VERSION' ) ) {
-	die( '<b>Error:</b> You need to have <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
+	die( '<b>Error:</b> You need to have <a href="https://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
 }
 
-if ( version_compare( SMW_VERSION, '1.6.2 alpha', '<' ) ) {
-	die( '<b>Error:</b> This version of Semantic Maps requires Semantic MediaWiki 1.7 or above; use Semantic Maps 1.0 to 1.0.3 for SMW 1.6 to 1.6.1.' );
+// Version check for SMW, which needs to be at 1.8 or greater.
+if ( version_compare( SMW_VERSION, '1.8c', '<' ) ) {
+	die(
+		'<b>Error:</b> This version of Semantic Maps needs <a href="https://semantic-mediawiki.org/wiki/Semantic_MediaWiki">Semantic MediaWiki</a> 1.8 or later.
+		You are currently using version ' . SMW_VERSION . '.
+	 	If for any reason you are stuck at SMW 1.7.x or 1.6.x, you can use Semantic Maps 1.0.x instead.<br />'
+	);
 }
 
 define( 'SM_VERSION', '1.1 alpha' );
