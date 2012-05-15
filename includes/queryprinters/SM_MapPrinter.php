@@ -176,7 +176,7 @@ class SMMapPrinter extends SMWResultPrinter {
 					SMWOutputs::requireResource( $resourceModule );
 				}
 				
-				$result = $this->getMapHTML( $params, $wgParser, $mapName ) . $this->getJSON( $params, $wgParser, $mapName );
+				$result = $this->getMapHTML( $params, $wgParser, $mapName );
 				
 				return array(
 					$result,
@@ -192,66 +192,48 @@ class SMMapPrinter extends SMWResultPrinter {
 			return $this->fatalErrorMsg;
 		}
 	}
-	
+
 	/**
 	 * Returns the HTML to display the map.
-	 * 
-	 * @since 1.0
-	 * 
+	 *
+	 * @since 1.1
+	 *
 	 * @param array $params
 	 * @param Parser $parser
 	 * @param string $mapName
-	 * 
+	 *
 	 * @return string
 	 */
 	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
-		return Html::element(
+		return Html::rawElement(
 			'div',
 			array(
 				'id' => $mapName,
 				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+				'class' => 'maps-map maps-' . $this->service->getName()
 			),
-			wfMsg( 'maps-loading-map' )
-		);
-	}	
-	
-	/**
-	 * Returns the JSON with the maps data.
-	 *
-	 * @since 1.0
-	 *
-	 * @param array $params
-	 * @param Parser $parser
-	 * @param string $mapName
-	 * 
-	 * @return string
-	 */	
-	protected function getJSON( array $params, Parser $parser, $mapName ) {
-		$object = $this->getJSONObject( $params, $parser );
-		
-		if ( $object === false ) {
-			return '';
-		}
-		
-		return Html::inlineScript(
-			MapsMapper::getBaseMapJSON( $this->service->getName() )
-			. "mwmaps.{$this->service->getName()}.{$mapName}=" . json_encode( $object ) . ';'
+			wfMsgHtml( 'maps-loading-map' ) .
+				Html::element(
+					'div',
+					array( 'style' => 'display:none', 'class' => 'mapdata' ),
+					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
+				)
 		);
 	}
-	
+
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 1.0
+	 * @since 1.1
 	 *
 	 * @param array $params
 	 * @param Parser $parser
-	 * 
+	 *
 	 * @return mixed
-	 */	
+	 */
 	protected function getJSONObject( array $params, Parser $parser ) {
 		return $params;
-	}	
+	}
 	
 	/**
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
