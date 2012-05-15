@@ -8,7 +8,7 @@
  * @file Maps_Settings.php
  * @ingroup Maps
  * 
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 final class MapsSettings extends ExtensionSettings {
@@ -119,7 +119,7 @@ final class MapsSettings extends ExtensionSettings {
  * 
  * @since ?
  * 
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class ExtensionSettings {
@@ -331,7 +331,7 @@ abstract class ExtensionSettings {
  * 
  * @since ?
  * 
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class Setting {

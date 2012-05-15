@@ -7,7 +7,7 @@
  * @file Maps_Circle.php
  * @ingroup Maps
  *
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */
 class MapsCircle extends MapsBaseFillableElement {

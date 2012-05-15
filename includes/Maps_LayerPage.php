@@ -8,7 +8,7 @@
  * @file Maps_LayerPage.php
  * @ingroup Maps
  *
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * 
  * TODO: check for the page being not created yet (then it's not invalid if there is nothing there...)

@@ -9,7 +9,7 @@
  * @ingroup Maps
  * @ingroup Geocoders
  *
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Sergey Chernyshev
  * @author Desiree Gennaro

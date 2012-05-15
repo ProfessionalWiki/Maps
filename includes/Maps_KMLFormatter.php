@@ -8,7 +8,7 @@
  * @file Maps_KMLFormatter.php
  * @ingroup Maps
  *
- * @licence GNU GPL v3
+ * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsKMLFormatter {

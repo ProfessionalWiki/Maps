@@ -5,7 +5,7 @@
  * @since 1.0
  * @ingroup Maps
  * 
- * @licence GNU GPL v3+
+ * @licence GNU GPL v2++
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 window.coord = new ( function( $ ) {
