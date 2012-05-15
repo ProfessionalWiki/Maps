@@ -1,0 +1,25 @@
+From 1a5cd27e8751a8c30ca068e51da3d39e44bfef84 Mon Sep 17 00:00:00 2001
+From: Demon <chadh@wikimedia.org>
+Date: Fri, 6 Apr 2012 13:46:28 -0400
+Subject: [PATCH 01/14] Adding .gitreview
+
+Change-Id: I2f4bf4030d3773d583152ff0d379a39a481661ed
+---
+ .gitreview |    5 +++++
+ 1 file changed, 5 insertions(+)
+ create mode 100644 .gitreview
+
+diff --git a/.gitreview b/.gitreview
+new file mode 100644
+index 0000000..aede7f2
+--- /dev/null
++++ b/.gitreview
+@@ -0,0 +1,5 @@
++[gerrit]
++host=gerrit.wikimedia.org
++port=29418
++project=mediawiki/extensions/SemanticMaps.git
++defaultbranch=master
+-- 
+1.7.9.5
+

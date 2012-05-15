@@ -1,0 +1,53 @@
+From 29f106d2151461f6e3e979defeffd9e00dad2483 Mon Sep 17 00:00:00 2001
+From: jeroendedauw <jeroendedauw@gmail.com>
+Date: Tue, 15 May 2012 00:57:43 +0200
+Subject: [PATCH 11/14] added extra version check
+
+Change-Id: I7a3336a7646974bb942ecf5c1a1304ed79c36ebc
+---
+ SemanticMaps.php                         |   11 ++++++++++-
+ includes/queryprinters/SM_MapPrinter.php |    4 ++--
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/SemanticMaps.php b/SemanticMaps.php
+index b9df493..dd6746f 100644
+--- a/SemanticMaps.php
++++ b/SemanticMaps.php
+@@ -33,7 +33,16 @@ if ( version_compare( $wgVersion, '1.18c', '<' ) ) {
+ 
+ // Show a warning if Maps is not loaded.
+ if ( ! defined( 'Maps_VERSION' ) ) {
+-	die( '<b>Error:</b> You need to have <a href="https://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
++	die( '<b>Error:</b> You need to have <a href="https://www.mediawiki.org/wiki/Extension:Maps">Maps</a> installed in order to use <a href="https://www.mediawiki.org/wiki/Extension:Semantic Maps">Semantic Maps</a>.<br />' );
++}
++
++// Version check for SMW, which needs to be at 1.8 or greater.
++if ( version_compare( Maps_VERSION, '1.1c', '<' ) ) {
++	die(
++		'<b>Error:</b> This version of Semantic Maps needs <a href="https://semantic-mediawiki.org/wiki/Maps">Maps</a> 1.1 or later.
++		You are currently using version ' . Maps_VERSION . '.
++	 	If for any reason you are stuck at Maps 1.0.x, you can use Semantic Maps 1.0.x instead.<br />'
++	);
+ }
+ 
+ // Show a warning if Semantic MediaWiki is not loaded.
+diff --git a/includes/queryprinters/SM_MapPrinter.php b/includes/queryprinters/SM_MapPrinter.php
+index e36c5b8..09fa7ca 100644
+--- a/includes/queryprinters/SM_MapPrinter.php
++++ b/includes/queryprinters/SM_MapPrinter.php
+@@ -60,10 +60,10 @@ class SMMapPrinter extends SMWResultPrinter {
+ 		$params['staticlocations'] = new ListParameter( 'staticlocations', ';' );
+ 		$params['staticlocations']->addAliases( 'locations' );
+ 		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
+-		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );		
++		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );
+ 		$params['staticlocations']->setDefault( array() );
+ 		$params['staticlocations']->setMessage( 'semanticmaps-par-staticlocations' );
+-		
++
+ 		$params['centre'] = new Parameter( 'centre' );
+ 		$params['centre']->setDefault( false );
+ 		$params['centre']->addAliases( 'center' );
+-- 
+1.7.9.5
+

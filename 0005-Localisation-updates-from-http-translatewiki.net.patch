@@ -1,0 +1,29 @@
+From 183f725c9e81a4b0886e0277e3411045eb69955b Mon Sep 17 00:00:00 2001
+From: Translation updater bot <l10n-bot@translatewiki.net>
+Date: Sun, 6 May 2012 18:59:48 +0000
+Subject: [PATCH 05/14] Localisation updates from http://translatewiki.net.
+
+Change-Id: Ieccc5fcae087854335f4ce9e0bdd8d04d4af949e
+---
+ SemanticMaps.i18n.php |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/SemanticMaps.i18n.php b/SemanticMaps.i18n.php
+index 8771a51..2c2dc89 100644
+--- a/SemanticMaps.i18n.php
++++ b/SemanticMaps.i18n.php
+@@ -949,10 +949,10 @@ $messages['pt'] = array(
+ );
+ 
+ /** Brazilian Portuguese (Português do Brasil)
++ * @author 555
+  * @author Eduardo.mps
+  * @author Giro720
+  * @author Luckas Blade
+- * @author 555
+  */
+ $messages['pt-br'] = array(
+ 	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://mapping.referata.com/wiki/Examples exemplos]).',
+-- 
+1.7.9.5
+
