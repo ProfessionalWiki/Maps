@@ -1675,6 +1675,9 @@ $messages['gl'] = array(
 	'maps-loading-map' => 'Cargando o mapa...',
 	'maps-load-failed' => 'Non se puido cargar o mapa!',
 	'maps-markers' => 'Marcadores',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Filtrar os marcadores',
+	'maps-clustering-unsupportedservice' => 'Este servizo non soporta o agrupamento de marcadores',
 	'maps-others' => 'outros',
 	'maps-ns-layer' => 'Capa',
 	'maps-ns-layer-talk' => 'Conversa capa',
@@ -1754,6 +1757,9 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'validation-error-invalid-images' => 'O parámetro $1 debe ser unha ou máis imaxes válidas.',
 	'validation-error-invalid-goverlay' => 'O parámetro $1 debe ser unha capa de superposición válida.',
 	'validation-error-invalid-goverlays' => 'O parámetro $1 debe ser unha ou máis capas de superposición válidas.',
+	'validation-error-invalid-line-param' => 'O parámetro "lines" especificado non é válido.',
+	'validation-error-invalid-polyline-param' => 'O parámetro "polylines" especificado non é válido.',
+	'validation-error-invalid-searchmarkers-param' => 'O valor dos marcadores de procura non é válido; debe ser "all" ou "title"',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'S',
@@ -4146,8 +4152,7 @@ $messages['si'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'maps-desc' => 'Poskytuje možnosť zobrazovať údaje súradníc na mapách a tvoriť geografické adresy lokalít ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Dostupné mapovacie služby: $1',
+	'maps-desc' => 'Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie. ([http://mapping.referata.com/wiki/Examples demo])',
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
