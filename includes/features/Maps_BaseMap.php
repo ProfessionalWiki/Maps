@@ -161,7 +161,7 @@ class MapsBaseMap {
 			$centre = MapsGeocoders::attemptToGeocode( $egMapsDefaultMapCentre, $params['geoservice'], $this->service->getName() );
 			
 			if ( $centre === false ) {
-				throw new Exception( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
+				throw new MWException( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
 			}
 			else {
 				$params['centre'] = $centre;

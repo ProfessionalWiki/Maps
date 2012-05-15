@@ -204,7 +204,7 @@ class MapsLocation extends MapsBaseElement {
 	 */
 	public function getLatitude() {
 		if ( !$this->isValid() ) {
-			throw new Exception( 'Attempt to get the latitude of an invalid location' );
+			throw new MWException( 'Attempt to get the latitude of an invalid location' );
 		}
 		return $this->latitude;
 	}
@@ -218,7 +218,7 @@ class MapsLocation extends MapsBaseElement {
 	 */
 	public function getLongitude() {
 		if ( !$this->isValid() ) {
-			throw new Exception( 'Attempt to get the longitude of an invalid location' );
+			throw new MWException( 'Attempt to get the longitude of an invalid location' );
 		}
 		return $this->longitude;
 	}
@@ -232,7 +232,7 @@ class MapsLocation extends MapsBaseElement {
 	 */
 	public function getAltitude() {
 		if ( !$this->isValid() ) {
-			throw new Exception( 'Attempt to get the altitude of an invalid location' );
+			throw new MWException( 'Attempt to get the altitude of an invalid location' );
 		}
 		return $this->altitude;
 	}
@@ -250,7 +250,7 @@ class MapsLocation extends MapsBaseElement {
 	 */
 	public function getCoordinates( $format = null, $directional = null, $separator = null ) {
 		if ( !$this->isValid() ) {
-			throw new Exception( 'Attempt to get the coordinates for an invalid location' );
+			throw new MWException( 'Attempt to get the coordinates for an invalid location' );
 		}
 		return MapsCoordinateParser::formatCoordinates(
 			array( 'lat' => $this->latitude, 'lon' => $this->longitude ),
@@ -272,7 +272,7 @@ class MapsLocation extends MapsBaseElement {
 	 */
 	public function getAddress( $geocodeIfEmpty = true ) {
 		if ( !$this->isValid() ) {
-			throw new Exception( 'Attempt to get the address of an invalid location' );
+			throw new MWException( 'Attempt to get the address of an invalid location' );
 		}
 
 		if ( is_null( $this->address ) ) {

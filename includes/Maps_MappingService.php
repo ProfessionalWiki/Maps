@@ -195,7 +195,7 @@ abstract class MapsMappingService implements iMappingService {
 		$className = $this->getFeature( $featureName );
 
 		if ( $className === false || !class_exists( $className ) ) {
-			throw new Exception( 'Could not create a mapping feature class instance' );
+			throw new MWException( 'Could not create a mapping feature class instance' );
 		}
 
 		return new $className( $this );

@@ -111,7 +111,7 @@ class MapsCoordinates extends ParserHook {
 			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
 		} else {
 			// The coordinates should be valid when this method gets called.
-			throw new Exception( 'Attempt to format an invalid set of coordinates' );
+			throw new MWException( 'Attempt to format an invalid set of coordinates' );
 		}
 		
 		return $output;		

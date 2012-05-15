@@ -180,7 +180,7 @@ final class MapsGeocoders {
 	 */
 	public static function geocode( $address, $geoService = '', $mappingService = false ) {
 		if ( !is_string( $address ) ) {
-			throw new Exception( 'Parameter $address must be a string at ' . __METHOD__ );
+			throw new MWException( 'Parameter $address must be a string at ' . __METHOD__ );
 		}		
 		
 		if ( !self::canGeocode() ) {
@@ -322,11 +322,11 @@ final class MapsGeocoders {
 					self::$geocoders[$geocoderIdentifier] = $geocoder;
 				//}
 				//else {
-				//	throw new Exception( 'The geocoder linked to identifier ' . $geocoderIdentifier . ' does not implement .' );
+				//	throw new MWException( 'The geocoder linked to identifier ' . $geocoderIdentifier . ' does not implement .' );
 				//}
 			}
 			else {
-				throw new Exception( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
+				throw new MWException( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
 			}
 		}
 
@@ -355,7 +355,7 @@ final class MapsGeocoders {
 					$services = array_keys( self::$registeredGeocoders );
 					$egMapsDefaultGeoService = array_shift( $services );
 					if ( is_null( $egMapsDefaultGeoService ) ) {
-						throw new Exception( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
+						throw new MWException( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
 					}
 				}
 			}

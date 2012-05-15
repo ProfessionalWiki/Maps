@@ -162,7 +162,7 @@ class MapsFinddestination extends ParserHook {
 			$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
 		} else {
 			// The location should be valid when this method gets called.
-			throw new Exception( 'Attempt to find a destination from an invalid location' );
+			throw new MWException( 'Attempt to find a destination from an invalid location' );
 		}
 			
 		return $output;

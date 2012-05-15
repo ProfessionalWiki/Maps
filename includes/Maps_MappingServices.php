@@ -95,11 +95,11 @@ final class MapsMappingServices {
 					self::$services[$serviceIdentifier] = $service;
 				}
 				else {
-					throw new Exception( 'The service object linked to service identifier ' . $serviceIdentifier . ' does not implement iMappingService.' );
+					throw new MWException( 'The service object linked to service identifier ' . $serviceIdentifier . ' does not implement iMappingService.' );
 				}
 			}
 			else {
-				throw new Exception( 'There is no service object linked to service identifier ' . $serviceIdentifier . '.' );
+				throw new MWException( 'There is no service object linked to service identifier ' . $serviceIdentifier . '.' );
 			}
 		}
 
