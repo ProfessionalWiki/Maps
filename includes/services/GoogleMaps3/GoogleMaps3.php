@@ -43,6 +43,7 @@ $wgResourceModules['ext.maps.gm3.geoxml'] = array(
 	'group' => 'ext.maps',
 	'scripts' => array(
 		'geoxml3.js',
+		'ZipFile.complete.js', //kmz handling
 	),
 );
 
