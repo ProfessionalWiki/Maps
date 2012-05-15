@@ -1,0 +1,493 @@
+From 84fbee2da582d5a9ea70d78e808d1abd0f75f52b Mon Sep 17 00:00:00 2001
+From: jeroendedauw <jeroendedauw@gmail.com>
+Date: Tue, 15 May 2012 00:34:47 +0200
+Subject: [PATCH 26/32] improve script loading by putting the json in a hidden
+ div inside the map div instead of more complex and
+ britte js global vars
+
+Change-Id: I5023b60e99d485ff5b0436d821a099df2eaff112
+---
+ Maps.php                                           |    1 +
+ includes/features/Maps_BaseMap.php                 |  104 ++------------------
+ includes/features/Maps_BasePointMap.php            |   73 ++------------
+ includes/features/Maps_MapBase.php                 |   75 ++++++++++++++
+ .../services/GoogleMaps3/ext.maps.googlemaps3.js   |   30 +++---
+ .../services/OpenLayers/ext.maps.openlayers.js     |   39 ++++----
+ includes/services/YahooMaps/ext.maps.yahoomaps.js  |   31 +++---
+ 7 files changed, 140 insertions(+), 213 deletions(-)
+ create mode 100644 includes/features/Maps_MapBase.php
+
+diff --git a/Maps.php b/Maps.php
+index 82e8c18..c730723 100644
+--- a/Maps.php
++++ b/Maps.php
+@@ -120,6 +120,7 @@ $ftDir = $incDir . '/features/';
+ $wgAutoloadClasses['MapsBaseMap'] = $ftDir . 'Maps_BaseMap.php';
+ $wgAutoloadClasses['MapsBasePointMap'] = $ftDir . 'Maps_BasePointMap.php';
+ $wgAutoloadClasses['MapsBasePointLineMap'] = $ftDir . 'Maps_BasePointLineMap.php';
++$wgAutoloadClasses['MapsMapBase'] = $ftDir . 'Maps_MapBase.php';
+ unset( $ftDir );
+ 
+ // Autoload the "includes/geocoders/" classes.
+diff --git a/includes/features/Maps_BaseMap.php b/includes/features/Maps_BaseMap.php
+index 03525b3..ae4d699 100644
+--- a/includes/features/Maps_BaseMap.php
++++ b/includes/features/Maps_BaseMap.php
+@@ -1,47 +1,15 @@
+ <?php
+ 
+ /**
+- * Abstract class MapsBaseMap provides the scaffolding for classes handling display_map
+- * calls for a specific mapping service. It inherits from MapsMapFeature and therefore
+- * forces inheriting classes to implement several methods.
++ * Class handling the #display_map rendering.
+  *
+- * @file Maps_BaseMap.php
++ * @file
+  * @ingroup Maps
+  *
+- * @author Jeroen De Dauw
++ * @licence GNU GPL v2+
++ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+-class MapsBaseMap {
+-	
+-	/**
+-	 * @since 0.6.x
+-	 * 
+-	 * @var iMappingService
+-	 */	
+-	protected $service;
+-
+-	/**
+-	 * @since 0.7.3
+-	 * 
+-	 * @var array
+-	 */
+-	protected $properties = array();
+-	
+-	/**
+-	 * Constructor.
+-	 * 
+-	 * @param iMappingService $service
+-	 */
+-	public function __construct( iMappingService $service ) {
+-		$this->service = $service;
+-	}
+-	
+-	/**
+-	 * @since 0.7.3
+-	 *
+-	 * @param array $params
+-	 */	
+-	public function addParameterInfo( array &$params ) {
+-	}
++class MapsBaseMap extends MapsMapBase {
+ 	
+ 	/**
+ 	 * Handles the request from the parser hook by doing the work that's common for all
+@@ -63,7 +31,7 @@ class MapsBaseMap {
+ 		
+ 		$mapName = $this->service->getMapId();
+ 		
+-		$output = $this->getMapHTML( $params, $parser, $mapName ) . $this->getJSON( $params, $parser, $mapName );
++		$output = $this->getMapHTML( $params, $parser, $mapName );
+ 		
+ 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
+ 		
+@@ -87,66 +55,6 @@ class MapsBaseMap {
+ 	}
+ 	
+ 	/**
+-	 * Returns the HTML to display the map.
+-	 * 
+-	 * @since 1.0
+-	 * 
+-	 * @param array $params
+-	 * @param Parser $parser
+-	 * @param string $mapName
+-	 * 
+-	 * @return string
+-	 */
+-	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
+-		return Html::element(
+-			'div',
+-			array(
+-				'id' => $mapName,
+-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+-			),
+-			wfMsg( 'maps-loading-map' )
+-		);
+-	}		
+-	
+-	/**
+-	 * Returns the JSON with the maps data.
+-	 *
+-	 * @since 0.7.3
+-	 *
+-	 * @param array $params
+-	 * @param Parser $parser
+-	 * @param string $mapName
+-	 * 
+-	 * @return string
+-	 */	
+-	protected function getJSON( array $params, Parser $parser, $mapName ) {
+-		$object = $this->getJSONObject( $params, $parser );
+-		
+-		if ( $object === false ) {
+-			return '';
+-		}
+-		
+-		return Html::inlineScript(
+-			MapsMapper::getBaseMapJSON( $this->service->getName() )
+-			. "mwmaps.{$this->service->getName()}.{$mapName}=" . FormatJson::encode( $object ) . ';'
+-		);
+-	}
+-	
+-	/**
+-	 * Returns a PHP object to encode to JSON with the map data.
+-	 *
+-	 * @since 0.7.3
+-	 *
+-	 * @param array $params
+-	 * @param Parser $parser
+-	 * 
+-	 * @return mixed
+-	 */	
+-	protected function getJSONObject( array $params, Parser $parser ) {
+-		return $params;
+-	}
+-	
+-	/**
+ 	 * Translates the coordinates field to the centre field and makes sure it's set to it's default when invalid. 
+ 	 * 
+ 	 * @since 1.0
+diff --git a/includes/features/Maps_BasePointMap.php b/includes/features/Maps_BasePointMap.php
+index b0a5fd1..d422b79 100644
+--- a/includes/features/Maps_BasePointMap.php
++++ b/includes/features/Maps_BasePointMap.php
+@@ -1,16 +1,15 @@
+ <?php
+ 
+ /**
+- * Abstract class MapsBasePointMap provides the scaffolding for classes handling display_point(s)
+- * calls for a specific mapping service. It inherits from MapsMapFeature and therefore forces
+- * inheriting classes to implement several methods.
++ * Class handling the #display_points rendering.
+  *
+- * @file Maps_BasePointMap.php
++ * @file
+  * @ingroup Maps
+  *
+- * @author Jeroen De Dauw
++ * @licence GNU GPL v2+
++ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+-class MapsBasePointMap {
++class MapsBasePointMap extends MapsMapBase {
+ 
+ 	/**
+ 	 * @since 0.6.x
+@@ -37,7 +36,7 @@ class MapsBasePointMap {
+ 
+ 		$mapName = $this->service->getMapId();
+ 
+-		$output = $this->getMapHTML( $params, $parser, $mapName ) . $this->getJSON( $params, $parser, $mapName );
++		$output = $this->getMapHTML( $params, $parser, $mapName );
+ 
+ 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
+ 
+@@ -61,66 +60,6 @@ class MapsBasePointMap {
+ 	}
+ 
+ 	/**
+-	 * Returns the HTML to display the map.
+-	 * 
+-	 * @since 1.0
+-	 * 
+-	 * @param array $params
+-	 * @param Parser $parser
+-	 * @param string $mapName
+-	 * 
+-	 * @return string
+-	 */
+-	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
+-		return Html::element(
+-			'div',
+-			array(
+-				'id' => $mapName,
+-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+-			),
+-			wfMsg( 'maps-loading-map' )
+-		);
+-	}		
+-
+-	/**
+-	 * Returns the JSON with the maps data.
+-	 *
+-	 * @since 1.0
+-	 *
+-	 * @param array $params
+-	 * @param Parser $parser
+-	 * @param string $mapName
+-	 * 
+-	 * @return string
+-	 */	
+-	protected function getJSON( array $params, Parser $parser, $mapName ) {
+-		$object = $this->getJSONObject( $params, $parser );
+-
+-		if ( $object === false ) {
+-			return '';
+-		}
+-
+-		return Html::inlineScript(
+-			MapsMapper::getBaseMapJSON( $this->service->getName() )
+-			. "mwmaps.{$this->service->getName()}.{$mapName}=" . FormatJson::encode( $object ) . ';'
+-		);
+-	}
+-
+-	/**
+-	 * Returns a PHP object to encode to JSON with the map data.
+-	 *
+-	 * @since 1.0
+-	 *
+-	 * @param array $params
+-	 * @param Parser $parser
+-	 * 
+-	 * @return mixed
+-	 */	
+-	protected function getJSONObject( array $params, Parser $parser ) {
+-		return $params;
+-	}	
+-
+-	/**
+ 	 * Converts the data in the coordinates parameter to JSON-ready objects.
+ 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
+ 	 * 
+diff --git a/includes/features/Maps_MapBase.php b/includes/features/Maps_MapBase.php
+new file mode 100644
+index 0000000..35483c1
+--- /dev/null
++++ b/includes/features/Maps_MapBase.php
+@@ -0,0 +1,75 @@
++<?php
++
++/**
++ * Base class holding common code for MapsBaseMap and MapsBasePointMap.
++ * TODO: all this stuff should just be folded into a single parser function.
++ *
++ * @since 1.1
++ *
++ * @file
++ * @ingroup Maps
++ *
++ * @licence GNU GPL v2+
++ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
++ */
++abstract class MapsMapBase {
++
++	/**
++	 * @since 1.1
++	 *
++	 * @var iMappingService
++	 */
++	protected $service;
++
++	/**
++	 * Constructor.
++	 *
++	 * @param iMappingService $service
++	 */
++	public function __construct( iMappingService $service ) {
++		$this->service = $service;
++	}
++
++	/**
++	 * Returns the HTML to display the map.
++	 *
++	 * @since 1.1
++	 *
++	 * @param array $params
++	 * @param Parser $parser
++	 * @param string $mapName
++	 *
++	 * @return string
++	 */
++	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
++		return Html::rawElement(
++			'div',
++			array(
++				'id' => $mapName,
++				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
++				'class' => 'maps-map maps-' . $this->service->getName()
++			),
++			wfMsgHtml( 'maps-loading-map' ) .
++				Html::element(
++					'div',
++					array( 'style' => 'display:none', 'class' => 'mapdata' ),
++					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
++				)
++		);
++	}
++
++	/**
++	 * Returns a PHP object to encode to JSON with the map data.
++	 *
++	 * @since 1.1
++	 *
++	 * @param array $params
++	 * @param Parser $parser
++	 *
++	 * @return mixed
++	 */
++	protected function getJSONObject( array $params, Parser $parser ) {
++		return $params;
++	}
++
++}
+\ No newline at end of file
+diff --git a/includes/services/GoogleMaps3/ext.maps.googlemaps3.js b/includes/services/GoogleMaps3/ext.maps.googlemaps3.js
+index 40581ce..e2773d1 100644
+--- a/includes/services/GoogleMaps3/ext.maps.googlemaps3.js
++++ b/includes/services/GoogleMaps3/ext.maps.googlemaps3.js
+@@ -1,18 +1,24 @@
+ /**
+  * JavaScript for Google Maps v3 maps in the Maps extension.
+- * @see http://www.mediawiki.org/wiki/Extension:Maps
+- * 
++ * @see https://www.mediawiki.org/wiki/Extension:Maps
++ *
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+  */
+-jQuery(document).ready(function() {
+-	if ( typeof google != 'undefined' ) {
+-		for ( i in window.mwmaps.googlemaps3 ) {
+-			jQuery( '#' + i ).googlemaps( window.mwmaps.googlemaps3[i] );
++(function( $ ) {
++
++	$( document ).ready( function() {
++
++		if ( typeof google === 'undefined' ) {
++			alert( mediaWiki.msg( 'maps-load-failed' ) + ' ' + mediaWiki.msg( 'maps-googlemaps3-incompatbrowser' ) );
+ 		}
+-	}
+-	else {
+-		for ( i in window.mwmaps.googlemaps3 ) {
+-			jQuery( '#' + i ).text( mediaWiki.msg( 'maps-load-failed' ) + ' ' + mediaWiki.msg( 'maps-googlemaps3-incompatbrowser' ) );
++		else {
++			$( '.maps-googlemaps3' ).each( function() {
++				var $this = $( this );
++				$this.googlemaps( jQuery.parseJSON( $this.find( 'div').text() ) );
++			} );
+ 		}
+-	}	
+-});
++
++	} );
++
++})( window.jQuery );
+\ No newline at end of file
+diff --git a/includes/services/OpenLayers/ext.maps.openlayers.js b/includes/services/OpenLayers/ext.maps.openlayers.js
+index f40b292..8b8a770 100644
+--- a/includes/services/OpenLayers/ext.maps.openlayers.js
++++ b/includes/services/OpenLayers/ext.maps.openlayers.js
+@@ -1,15 +1,18 @@
+ /**
+  * JavaScript for OpenLayers maps in the Maps extension.
+- * @see http://www.mediawiki.org/wiki/Extension:Maps
+- * 
++ * @see https://www.mediawiki.org/wiki/Extension:Maps
++ *
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+  */
+ 
+-jQuery(document).ready(function() {
+-	if ( true ) {
++(function( $ ) {
++
++	$( document ).ready( function() {
++
+ 		OpenLayers.ImgPath = egMapsScriptPath + '/includes/services/OpenLayers/OpenLayers/img/';
+-	    OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+-	    OpenLayers.Util.onImageLoadErrorColor = 'transparent';
++		OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
++		OpenLayers.Util.onImageLoadErrorColor = 'transparent';
+ 		OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(
+ 			OpenLayers.Popup.FramedCloud,
+ 			{
+@@ -17,18 +20,14 @@ jQuery(document).ready(function() {
+ 				'minSize': new OpenLayers.Size( 200, 100 )
+ 			}
+ 		);
+-		
++
+ 		// OpenLayers.Lang.setCode( params.langCode );
+-		
+-		for ( i in window.mwmaps.openlayers ) {
+-			jQuery( '#' + i ).openlayers( i, window.mwmaps.openlayers[i] );
+-		}
+-	}
+-	else {
+-		alert( mediaWiki.msg( 'maps-openlayers-incompatbrowser' ) );
+-		
+-		for ( i in window.mwmaps.googlemaps3 ) {
+-			jQuery( '#' + i ).text( mediaWiki.msg( 'maps-load-failed' ) );
+-		}
+-	}	
+-});
++
++		$( '.maps-openlayers' ).each( function() {
++			var $this = $( this );
++			$this.openlayers( jQuery.parseJSON( $this.find( 'div').text() ) );
++		} );
++
++	} );
++
++})( window.jQuery );
+diff --git a/includes/services/YahooMaps/ext.maps.yahoomaps.js b/includes/services/YahooMaps/ext.maps.yahoomaps.js
+index 4b79bf5..6e8af3e 100644
+--- a/includes/services/YahooMaps/ext.maps.yahoomaps.js
++++ b/includes/services/YahooMaps/ext.maps.yahoomaps.js
+@@ -1,21 +1,20 @@
+ /**
+  * JavaScript for Yahoo! Maps maps in the Maps extension.
+- * @see http://www.mediawiki.org/wiki/Extension:Maps
+- * 
++ * @see https://www.mediawiki.org/wiki/Extension:Maps
++ *
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+  */
+ 
+-jQuery(document).ready(function() {
+-	if ( true ) {
+-		for ( i in window.mwmaps.yahoomaps ) {
+-			jQuery( '#' + i ).yahoomaps( i, window.mwmaps.yahoomaps[i] );
+-		}
+-	}
+-	else {
+-		alert( mediaWiki.msg( 'maps-openlayers-incompatbrowser' ) );
+-		
+-		for ( i in window.mwmaps.googlemaps3 ) {
+-			jQuery( '#' + i ).text( mediaWiki.msg( 'maps-load-failed' ) );
+-		}
+-	}	
+-});
++(function( $ ) {
++
++	$( document ).ready( function() {
++
++		$( '.maps-yahoomaps' ).each( function() {
++			var $this = $( this );
++			$this.yahoomaps( jQuery.parseJSON( $this.find( 'div').text() ) );
++		} );
++
++	} );
++
++})( window.jQuery );
+\ No newline at end of file
+-- 
+1.7.9.5
+

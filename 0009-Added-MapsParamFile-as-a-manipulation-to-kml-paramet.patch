@@ -1,0 +1,30 @@
+From 8a40e33c6596138c829fc151f3c53368c659811b Mon Sep 17 00:00:00 2001
+From: Kim Eik <kim@heldig.org>
+Date: Tue, 24 Apr 2012 09:56:15 +0200
+Subject: [PATCH 09/32] Added MapsParamFile as a manipulation to kml parameter
+
+This wil allow for referencing to local files through;
+kml=File:KmlFile.kml
+or even
+kml=KmlFile.kml
+
+Change-Id: I5d7fccc3890e20ed331666e12c515f41f18d7d33
+---
+ includes/services/GoogleMaps3/Maps_GoogleMaps3.php |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/includes/services/GoogleMaps3/Maps_GoogleMaps3.php b/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
+index 41071af..a42329d 100644
+--- a/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
++++ b/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
+@@ -132,6 +132,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
+ 		$params['kml'] = new ListParameter( 'kml' );
+ 		$params['kml']->setDefault( array() );
+ 		$params['kml']->setMessage( 'maps-googlemaps3-par-kml' );
++		$params['kml']->addManipulations(new MapsParamFile());
+ 		
+ 		$params['gkml'] = new ListParameter( 'gkml' );
+ 		$params['gkml']->setDefault( array() );
+-- 
+1.7.9.5
+

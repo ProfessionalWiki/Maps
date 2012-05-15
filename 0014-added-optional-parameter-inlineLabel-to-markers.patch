@@ -1,0 +1,4638 @@
+From 534ccea842f1955e45beb1f74470484ff11346cb Mon Sep 17 00:00:00 2001
+From: Kim Eik <kim@heldig.org>
+Date: Wed, 25 Apr 2012 12:38:01 +0200
+Subject: [PATCH 14/32] added optional parameter inlineLabel to markers.
+
+This parameter will create floating text right of marker which can contain html
+tags <a> and <img>, if the root element is an <a> then when clicked will move to
+the page defined by the href property of the <a> tag. if not, then will open
+assosciated info window, if there is text assosciated with the marker.
+
+* added javascript libraries needed for this functionality
+* added readme to tell where to find these js libraries
+* converted indentation to tabs in jquery.googlemap.js
+
+Limitation in mediawiki resource loader prevents me to create a separate
+resource module for the added js libraries. I've added a comment on this
+in the source code. This has to do with that neither libraries has a
+js namespace associated. And resource loader does not provide functionality
+to surround a js library with a user-defined namespace. Another solution would
+be to manually go into each third party library and change the code so a
+namespace is added. However, this is very unmaintanable over time.
+
+Change-Id: Ibe42e589b775856f5f9066f0478a4220a797e5eb
+---
+ .gitignore                                         |    1 +
+ includes/Maps_Location.php                         |  112 +-
+ includes/features/Maps_BasePointMap.php            |   39 +-
+ includes/manipulations/Maps_ParamLocation.php      |   26 +-
+ includes/services/GoogleMaps3/GoogleMaps3.php      |    8 +-
+ .../services/GoogleMaps3/gm3-util-library/README   |    2 +
+ .../gm3-util-library/markerclusterer.js            | 1596 ++++++++++++++++++++
+ .../gm3-util-library/markerwithlabel.css           |   13 +
+ .../gm3-util-library/markerwithlabel.js            |  566 +++++++
+ includes/services/GoogleMaps3/jquery.googlemap.js  |   89 +-
+ includes/services/GoogleMaps3/markerclusterer.js   | 1596 --------------------
+ 11 files changed, 2341 insertions(+), 1707 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 includes/services/GoogleMaps3/gm3-util-library/README
+ create mode 100644 includes/services/GoogleMaps3/gm3-util-library/markerclusterer.js
+ create mode 100644 includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.css
+ create mode 100644 includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.js
+ delete mode 100644 includes/services/GoogleMaps3/markerclusterer.js
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..485dee6
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1 @@
++.idea
+diff --git a/includes/Maps_Location.php b/includes/Maps_Location.php
+index d2b60b3..9219aac 100644
+--- a/includes/Maps_Location.php
++++ b/includes/Maps_Location.php
+@@ -13,14 +13,14 @@
+  * @author Daniel Werner
+  */
+ class MapsLocation {
+-	
++
+ 	/**
+ 	 * @since 0.7.1
+ 	 * 
+ 	 * @var float
+ 	 */	
+ 	protected $latitude;
+-	
++
+ 	/**
+ 	 * @since 0.7.1
+ 	 * 
+@@ -34,7 +34,7 @@ class MapsLocation {
+ 	 * @var float
+ 	 */	
+ 	protected $altitude = 0;	
+-	
++
+ 	/**
+ 	 * @since 0.7.1
+ 	 * 
+@@ -55,43 +55,43 @@ class MapsLocation {
+ 	 * @var string
+ 	 */		
+ 	protected $text = '';
+-	
++
+ 	/**
+ 	 * @since 0.7.2
+ 	 * 
+ 	 * @var string
+ 	 */		
+ 	protected $icon = '';
+-	
++
+ 	/**
+ 	 * @since 1.1
+ 	 * 
+ 	 * @var string
+ 	 */	
+ 	protected $group = '';
+-	
++
+ 	/**
+ 	 * @since 0.7.1
+ 	 * 
+ 	 * @var boolean
+ 	 */
+ 	protected $isValid = false;
+-	
+-	
++
++
+ 	/**
+ 	 * @since 0.7.1
+ 	 * 
+ 	 * @var string Element of the Maps_COORDS_ enum
+ 	 */
+ 	protected $format;
+-	
++
+ 	/**
+ 	 * @since 0.7.1
+ 	 * 
+ 	 * @var boolean
+ 	 */
+ 	protected $directional;
+-	
++
+ 	/**
+ 	 * @since 0.7.1
+ 	 * 
+@@ -100,6 +100,11 @@ class MapsLocation {
+ 	protected $separator;
+ 
+ 	/**
++	 * @var string
++	 */
++	protected $inlineLabel;
++
++	/**
+ 	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
+ 	 *
+ 	 * @since 1.0
+@@ -113,7 +118,7 @@ class MapsLocation {
+ 	public static function newFromLatLon( $lat, $lon, $format = Maps_COORDS_FLOAT ) {
+ 		return new self( $lat . ',' . $lon, $format );
+ 	}
+-	
++
+ 	/**
+ 	 * Creates and returns a new instance of a MapsLocation from an address.
+ 	 * 
+@@ -127,7 +132,7 @@ class MapsLocation {
+ 	public static function newFromAddress( $address, $format = Maps_COORDS_FLOAT ) {
+ 		return new self( $address, $format );
+ 	}
+-	
++
+ 	/**
+ 	 * Constructor.
+ 	 * 
+@@ -142,7 +147,7 @@ class MapsLocation {
+ 		$this->format = $format;
+ 		$this->directional = $directional;
+ 		$this->separator = $separator;
+-		
++
+ 		if ( !is_null( $coordsOrAddress ) ) {
+ 			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
+ 				$this->setCoordinates( $coordsOrAddress );
+@@ -152,7 +157,7 @@ class MapsLocation {
+ 			}
+ 		}
+ 	}
+-	
++
+ 	/**
+ 	 * Sets the location to a set of coordinates. You can provide a string
+ 	 * of raw coordinates, an array with lat and lon values and false.
+@@ -166,13 +171,13 @@ class MapsLocation {
+ 	public function setCoordinates( $coordinates ) {
+ 		$coordSet = MapsCoordinateParser::parseCoordinates( $coordinates );
+ 		$this->isValid = $coordSet !== false;
+-		
++
+ 		$this->latitude = $coordSet['lat'];
+ 		$this->longitude = $coordSet['lon'];
+-		
++
+ 		return $this->isValid;
+ 	}
+-	
++
+ 	/**
+ 	 * Sets the location to an address.
+ 	 * 
+@@ -187,12 +192,12 @@ class MapsLocation {
+ 		if ( $asActualLocation ) {
+ 			$this->setCoordinates( MapsGeocoders::geocode( $address ) );
+ 		}
+-		
++
+ 		$this->address = $address;
+-		
++
+ 		return $this->isValid;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns if the location is valid.
+ 	 * 
+@@ -203,7 +208,7 @@ class MapsLocation {
+ 	public function isValid() {
+ 		return $this->isValid;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the locations latitude.
+ 	 * 
+@@ -217,7 +222,7 @@ class MapsLocation {
+ 		}
+ 		return $this->latitude;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the locations longitude.
+ 	 * 
+@@ -231,7 +236,7 @@ class MapsLocation {
+ 		}
+ 		return $this->longitude;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the locations altitude.
+ 	 * 
+@@ -245,7 +250,7 @@ class MapsLocation {
+ 		}
+ 		return $this->altitude;
+ 	}	
+-	
++
+ 	/**
+ 	 * Returns the locations coordinates formatted in the specified notation.
+ 	 * 
+@@ -268,7 +273,7 @@ class MapsLocation {
+ 			is_null( $separator ) ? $this->separator : $separator
+ 		);
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the address corresponding to this location.
+ 	 * If there is none, and empty sting is returned.
+@@ -283,15 +288,15 @@ class MapsLocation {
+ 		if ( !$this->isValid() ) {
+ 			throw new Exception( 'Attempt to get the address of an invalid location' );
+ 		}
+-		
++
+ 		if ( is_null( $this->address ) ) {
+ 			if ( $geocodeIfEmpty ) {
+ 				// TODO: attempt to reverse-geocode
+ 			}
+-			
++
+ 			$this->address = '';
+ 		}
+-		
++
+ 		return $this->address;
+ 	}
+ 
+@@ -316,7 +321,7 @@ class MapsLocation {
+ 	public function setText( $text ) {
+ 		$this->text = trim( $text );
+ 	}	
+-	
++
+ 	/**
+ 	 * Returns if there is any icon.
+ 	 * 
+@@ -327,7 +332,7 @@ class MapsLocation {
+ 	public function hasIcon() {
+ 		return $this->icon !== '';
+ 	}		
+-	
++
+ 	/**
+ 	 * Sets the icon
+ 	 * 
+@@ -338,7 +343,7 @@ class MapsLocation {
+ 	public function setIcon( $icon ) {
+ 		$this->icon = trim( $icon );
+ 	}
+-	
++
+ 	/**
+ 	 * Sets the group
+ 	 * 
+@@ -349,7 +354,7 @@ class MapsLocation {
+ 	public function setGroup( $group ) {
+ 		$this->group = trim( $group );
+ 	}
+-	
++
+ 	/**
+ 	 * Returns if there is any title.
+ 	 * 
+@@ -360,7 +365,7 @@ class MapsLocation {
+ 	public function hasTitle() {
+ 		return $this->title !== '';
+ 	}	
+-	
++
+ 	/**
+ 	 * Returns the title.
+ 	 * 
+@@ -371,7 +376,7 @@ class MapsLocation {
+ 	public function getTitle() {
+ 		return $this->title;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns if there is any text.
+ 	 * 
+@@ -382,7 +387,7 @@ class MapsLocation {
+ 	public function hasText() {
+ 		return $this->text !== '';
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the text.
+ 	 * 
+@@ -393,7 +398,7 @@ class MapsLocation {
+ 	public function getText() {
+ 		return $this->text;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the icon.
+ 	 * 
+@@ -404,7 +409,7 @@ class MapsLocation {
+ 	public function getIcon() {
+ 		return $this->icon;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the group.
+ 	 * 
+@@ -415,7 +420,7 @@ class MapsLocation {
+ 	public function getGroup() {
+ 		return $this->group;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns whether Location is asigned to a group.
+ 	 * 
+@@ -426,7 +431,28 @@ class MapsLocation {
+ 	public function hasGroup() {
+ 		return $this->group != '';
+ 	}
+-	
++
++	/**
++	 * @return string
++	 */
++	public function getInlineLabel(){
++		return $this->inlineLabel;
++	}
++
++	/**
++	 * @param $label
++	 */
++	public function setInlineLabel($label){
++		$this->inlineLabel = $label;
++	}
++
++	/**
++	 * @return bool
++	 */
++	public function hasInlineLabel(){
++		return $this->inlineLabel != '';
++	}
++
+ 	/**
+ 	 * Returns an object that can directly be converted to JS using json_encode or similar.
+ 	 * 
+@@ -436,10 +462,11 @@ class MapsLocation {
+ 	 * @param string $defTitle
+ 	 * @param string $defIconUrl
+ 	 * @param string $defGroup
++	 * @param string $defInlineLabel
+ 	 *
+ 	 * @return object
+ 	 */
+-	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '' ) {
++	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '' ) {
+ 		return array(
+ 			'lat' => $this->getLatitude(),
+ 			'lon' => $this->getLongitude(),
+@@ -448,8 +475,9 @@ class MapsLocation {
+ 			'title' => $this->hasTitle() ? $this->getTitle() : $defTitle,
+ 			'address' => $this->getAddress( false ),
+ 			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
+-			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup
++			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
++			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel
+ 		);
+ 	}
+-	
++
+ }
+diff --git a/includes/features/Maps_BasePointMap.php b/includes/features/Maps_BasePointMap.php
+index 799fde9..b0a5fd1 100644
+--- a/includes/features/Maps_BasePointMap.php
++++ b/includes/features/Maps_BasePointMap.php
+@@ -11,18 +11,18 @@
+  * @author Jeroen De Dauw
+  */
+ class MapsBasePointMap {
+-	
++
+ 	/**
+ 	 * @since 0.6.x
+ 	 * 
+ 	 * @var iMappingService
+ 	 */
+ 	protected $service;
+-	
++
+ 	public function __construct( iMappingService $service ) {
+ 		$this->service = $service;
+ 	}
+-	
++
+ 	/**
+ 	 * Handles the request from the parser hook by doing the work that's common for all
+ 	 * mapping services, calling the specific methods and finally returning the resulting output.
+@@ -34,18 +34,18 @@ class MapsBasePointMap {
+ 	 */
+ 	public final function renderMap( array $params, Parser $parser ) {
+ 		$this->handleMarkerData( $params, $parser );
+-		
++
+ 		$mapName = $this->service->getMapId();
+-		
++
+ 		$output = $this->getMapHTML( $params, $parser, $mapName ) . $this->getJSON( $params, $parser, $mapName );
+-		
++
+ 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
+-		
++
+ 		// MediaWiki 1.17 does not play nice with addScript, so add the vars via the globals hook.
+ 		if ( version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ) {
+ 			$GLOBALS['egMapsGlobalJSVars'] += $this->service->getConfigVariables();
+ 		}
+-		
++
+ 		global $wgTitle;
+ 		if ( !is_null( $wgTitle ) && $wgTitle->isSpecialPage() ) {
+ 			global $wgOut;
+@@ -56,10 +56,10 @@ class MapsBasePointMap {
+ 			$this->service->addDependencies( $parser );
+ 			$parser->getOutput()->addHeadItem( $configVars );			
+ 		}
+-		
++
+ 		return $output;
+ 	}
+-	
++
+ 	/**
+ 	 * Returns the HTML to display the map.
+ 	 * 
+@@ -81,7 +81,7 @@ class MapsBasePointMap {
+ 			wfMsg( 'maps-loading-map' )
+ 		);
+ 	}		
+-	
++
+ 	/**
+ 	 * Returns the JSON with the maps data.
+ 	 *
+@@ -95,17 +95,17 @@ class MapsBasePointMap {
+ 	 */	
+ 	protected function getJSON( array $params, Parser $parser, $mapName ) {
+ 		$object = $this->getJSONObject( $params, $parser );
+-		
++
+ 		if ( $object === false ) {
+ 			return '';
+ 		}
+-		
++
+ 		return Html::inlineScript(
+ 			MapsMapper::getBaseMapJSON( $this->service->getName() )
+ 			. "mwmaps.{$this->service->getName()}.{$mapName}=" . FormatJson::encode( $object ) . ';'
+ 		);
+ 	}
+-	
++
+ 	/**
+ 	 * Returns a PHP object to encode to JSON with the map data.
+ 	 *
+@@ -119,7 +119,7 @@ class MapsBasePointMap {
+ 	protected function getJSONObject( array $params, Parser $parser ) {
+ 		return $params;
+ 	}	
+-	
++
+ 	/**
+ 	 * Converts the data in the coordinates parameter to JSON-ready objects.
+ 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
+@@ -137,18 +137,19 @@ class MapsBasePointMap {
+ 		foreach ( $params['coordinates'] as $location ) {
+ 			if ( $location->isValid() ) {
+ 				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl );
+-				
++
+ 				$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
+ 				$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
+-				
++				$jsonObj['inlineLabel'] = strip_tags($parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),'<a><img>');
++
+ 				$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
+ 				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
+ 				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+-				
++
+ 				$params['locations'][] = $jsonObj;				
+ 			}
+ 		}
+-		
++
+ 		unset( $params['coordinates'] );
+ 	}
+ 
+diff --git a/includes/manipulations/Maps_ParamLocation.php b/includes/manipulations/Maps_ParamLocation.php
+index b444412..b08b58f 100644
+--- a/includes/manipulations/Maps_ParamLocation.php
++++ b/includes/manipulations/Maps_ParamLocation.php
+@@ -14,7 +14,7 @@
+  * @author Daniel Werner
+  */
+ class MapsParamLocation extends ItemParameterManipulation {
+-	
++
+ 	/**
+ 	 * In some usecases, the parameter values will contain extra location
+ 	 * metadata, which should be ignored here. This field holds the delimiter
+@@ -25,14 +25,14 @@ class MapsParamLocation extends ItemParameterManipulation {
+ 	 * @var string
+ 	 */
+ 	protected $metaDataSeparator;
+-	
++
+ 	/**
+ 	 * Should the location be turned into a JSON object.
+ 	 * 
+ 	 * @var boolean
+ 	 */
+ 	public $toJSONObj = false;
+-	
++
+ 	/**
+ 	 * Constructor.
+ 	 * 
+@@ -40,10 +40,10 @@ class MapsParamLocation extends ItemParameterManipulation {
+ 	 */
+ 	public function __construct( $metaDataSeparator = false ) {
+ 		parent::__construct();
+-		
++
+ 		$this->metaDataSeparator = $metaDataSeparator;		
+ 	}
+-	
++
+ 	/**
+ 	 * @see ItemParameterManipulation::doManipulation
+ 	 * 
+@@ -51,14 +51,14 @@ class MapsParamLocation extends ItemParameterManipulation {
+ 	 */	
+ 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
+ 		$parts = $this->metaDataSeparator === false ? array( $value ) : explode( $this->metaDataSeparator, $value ); 
+-		
++
+ 		$value = array_shift( $parts );
+ 		$value = new MapsLocation( $value );
+-		
++
+ 		if ( $title = array_shift( $parts ) ) {
+ 			$value->setTitle( $title );
+ 		}
+-		
++
+ 		if ( $text = array_shift( $parts ) ) {
+ 			$value->setText( $text );
+ 		}
+@@ -66,14 +66,18 @@ class MapsParamLocation extends ItemParameterManipulation {
+ 		if ( $icon = array_shift( $parts ) ) {
+ 			$value->setIcon( $icon );
+ 		}
+-		
++
+ 		if ( $group = array_shift( $parts ) ) {
+ 			$value->setGroup( $group );
+ 		}
+-		
++
++		if( $inlineLabel = array_shift( $parts ) ){
++			$value->setInlineLabel($inlineLabel);
++		}
++
+ 		if ( $this->toJSONObj ) {
+ 			$value = $value->getJSONObject();
+ 		}
+ 	}
+-	
++
+ }
+\ No newline at end of file
+diff --git a/includes/services/GoogleMaps3/GoogleMaps3.php b/includes/services/GoogleMaps3/GoogleMaps3.php
+index feeda06..d249585 100644
+--- a/includes/services/GoogleMaps3/GoogleMaps3.php
++++ b/includes/services/GoogleMaps3/GoogleMaps3.php
+@@ -27,10 +27,14 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
+ 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3',	
+ 	'group' => 'ext.maps',
+ 	'scripts' => array(
+-		'markerclusterer.js',
+-		'jquery.googlemap.js',
++		'gm3-util-library/markerclusterer.js',  //the following two js files should at one point be loaded when needed,
++		'gm3-util-library/markerwithlabel.js',  //However, they are both missing a namespace so they cant be reached after
++		'jquery.googlemap.js',                  //invoking resource loader on them. (look at how geoxml is referenced)
+ 		'ext.maps.googlemaps3.js'
+ 	),
++	'styles' => array(
++		'gm3-util-library/markerwithlabel.css'
++	),
+ 	'messages' => array(
+ 		'maps-googlemaps3-incompatbrowser',
+ 		'maps-copycoords-prompt',
+diff --git a/includes/services/GoogleMaps3/gm3-util-library/README b/includes/services/GoogleMaps3/gm3-util-library/README
+new file mode 100644
+index 0000000..e6cb45c
+--- /dev/null
++++ b/includes/services/GoogleMaps3/gm3-util-library/README
+@@ -0,0 +1,2 @@
++==markerclusterer.js and markerwithlabel.js==
++Is fetched from trunk @ http://google-maps-utility-library-v3.googlecode.com
+diff --git a/includes/services/GoogleMaps3/gm3-util-library/markerclusterer.js b/includes/services/GoogleMaps3/gm3-util-library/markerclusterer.js
+new file mode 100644
+index 0000000..32a543c
+--- /dev/null
++++ b/includes/services/GoogleMaps3/gm3-util-library/markerclusterer.js
+@@ -0,0 +1,1596 @@
++/*jslint browser: true, confusion: true, sloppy: true, vars: true, nomen: false, plusplus: false, indent: 2 */
++/*global window,google */
++
++/**
++ * @name MarkerClustererPlus for Google Maps V3
++ * @version 2.0.9 [February 20, 2012]
++ * @author Gary Little
++ * @fileoverview
++ * The library creates and manages per-zoom-level clusters for large amounts of markers.
++ * <p>
++ * This is an enhanced V3 implementation of the
++ * <a href="http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/"
++ * >V2 MarkerClusterer</a> by Xiaoxi Wu. It is based on the
++ * <a href="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/"
++ * >V3 MarkerClusterer</a> port by Luke Mahe. MarkerClustererPlus was created by Gary Little.
++ * <p>
++ * v2.0 release: MarkerClustererPlus v2.0 is backward compatible with MarkerClusterer v1.0. It
++ *  adds support for the <code>ignoreHidden</code>, <code>title</code>, <code>printable</code>,
++ *  <code>batchSizeIE</code>, and <code>calculator</code> properties as well as support for
++ *  four more events. It also allows greater control over the styling of the text that appears
++ *  on the cluster marker. The documentation has been significantly improved and the overall
++ *  code has been simplified and polished. Very large numbers of markers can now be managed
++ *  without causing Javascript timeout errors on Internet Explorer. Note that the name of the
++ *  <code>clusterclick</code> event has been deprecated. The new name is <code>click</code>,
++ *  so please change your application code now.
++ */
++
++/**
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++
++/**
++ * @name ClusterIconStyle
++ * @class This class represents the object for values in the <code>styles</code> array passed
++ *  to the {@link MarkerClusterer} constructor. The element in this array that is used to
++ *  style the cluster icon is determined by calling the <code>calculator</code> function.
++ *
++ * @property {string} url The URL of the cluster icon image file. Required.
++ * @property {number} height The height (in pixels) of the cluster icon. Required.
++ * @property {number} width The width (in pixels) of the cluster icon. Required.
++ * @property {Array} [anchor] The anchor position (in pixels) of the label text to be shown on
++ *  the cluster icon, relative to the top left corner of the icon.
++ *  The format is <code>[yoffset, xoffset]</code>. The <code>yoffset</code> must be positive
++ *  and less than <code>height</code> and the <code>xoffset</code> must be positive and less
++ *  than <code>width</code>. The default is to anchor the label text so that it is centered
++ *  on the icon.
++ * @property {Array} [anchorIcon] The anchor position (in pixels) of the cluster icon. This is the
++ *  spot on the cluster icon that is to be aligned with the cluster position. The format is
++ *  <code>[yoffset, xoffset]</code> where <code>yoffset</code> increases as you go down and
++ *  <code>xoffset</code> increases to the right. The default anchor position is the center of the
++ *  cluster icon.
++ * @property {string} [textColor="black"] The color of the label text shown on the
++ *  cluster icon.
++ * @property {number} [textSize=11] The size (in pixels) of the label text shown on the
++ *  cluster icon.
++ * @property {number} [textDecoration="none"] The value of the CSS <code>text-decoration</code>
++ *  property for the label text shown on the cluster icon.
++ * @property {number} [fontWeight="bold"] The value of the CSS <code>font-weight</code>
++ *  property for the label text shown on the cluster icon.
++ * @property {number} [fontStyle="normal"] The value of the CSS <code>font-style</code>
++ *  property for the label text shown on the cluster icon.
++ * @property {number} [fontFamily="Arial,sans-serif"] The value of the CSS <code>font-family</code>
++ *  property for the label text shown on the cluster icon.
++ * @property {string} [backgroundPosition="0 0"] The position of the cluster icon image
++ *  within the image defined by <code>url</code>. The format is <code>"xpos ypos"</code>
++ *  (the same format as for the CSS <code>background-position</code> property). You must set
++ *  this property appropriately when the image defined by <code>url</code> represents a sprite
++ *  containing multiple images.
++ */
++/**
++ * @name ClusterIconInfo
++ * @class This class is an object containing general information about a cluster icon. This is
++ *  the object that a <code>calculator</code> function returns.
++ *
++ * @property {string} text The text of the label to be shown on the cluster icon.
++ * @property {number} index The index plus 1 of the element in the <code>styles</code>
++ *  array to be used to style the cluster icon.
++ */
++/**
++ * A cluster icon.
++ *
++ * @constructor
++ * @extends google.maps.OverlayView
++ * @param {Cluster} cluster The cluster with which the icon is to be associated.
++ * @param {Array} [styles] An array of {@link ClusterIconStyle} defining the cluster icons
++ *  to use for various cluster sizes.
++ * @private
++ */
++function ClusterIcon(cluster, styles) {
++    cluster.getMarkerClusterer().extend(ClusterIcon, google.maps.OverlayView);
++
++    this.cluster_ = cluster;
++    this.styles_ = styles;
++    this.center_ = null;
++    this.div_ = null;
++    this.sums_ = null;
++    this.visible_ = false;
++
++    this.setMap(cluster.getMap()); // Note: this causes onAdd to be called
++}
++
++
++/**
++ * Adds the icon to the DOM.
++ */
++ClusterIcon.prototype.onAdd = function () {
++    var cClusterIcon = this;
++    var cMouseDownInCluster;
++    var cDraggingMapByCluster;
++
++    this.div_ = document.createElement("div");
++    if (this.visible_) {
++        this.show();
++    }
++
++    this.getPanes().overlayMouseTarget.appendChild(this.div_);
++
++    // Fix for Issue 157
++    google.maps.event.addListener(this.getMap(), "bounds_changed", function () {
++        cDraggingMapByCluster = cMouseDownInCluster;
++    });
++
++    google.maps.event.addDomListener(this.div_, "mousedown", function () {
++        cMouseDownInCluster = true;
++        cDraggingMapByCluster = false;
++    });
++
++    google.maps.event.addDomListener(this.div_, "click", function (e) {
++        cMouseDownInCluster = false;
++        if (!cDraggingMapByCluster) {
++            var mz;
++            var mc = cClusterIcon.cluster_.getMarkerClusterer();
++            /**
++             * This event is fired when a cluster marker is clicked.
++             * @name MarkerClusterer#click
++             * @param {Cluster} c The cluster that was clicked.
++             * @event
++             */
++            google.maps.event.trigger(mc, "click", cClusterIcon.cluster_);
++            google.maps.event.trigger(mc, "clusterclick", cClusterIcon.cluster_); // deprecated name
++
++            // The default click handler follows. Disable it by setting
++            // the zoomOnClick property to false.
++            if (mc.getZoomOnClick()) {
++                // Zoom into the cluster.
++                mz = mc.getMaxZoom();
++                mc.getMap().fitBounds(cClusterIcon.cluster_.getBounds());
++                // Don't zoom beyond the max zoom level
++                if (mz !== null && (mc.getMap().getZoom() > mz)) {
++                    mc.getMap().setZoom(mz + 1);
++                }
++            }
++
++            // Prevent event propagation to the map:
++            e.cancelBubble = true;
++            if (e.stopPropagation) {
++                e.stopPropagation();
++            }
++        }
++    });
++
++    google.maps.event.addDomListener(this.div_, "mouseover", function () {
++        var mc = cClusterIcon.cluster_.getMarkerClusterer();
++        /**
++         * This event is fired when the mouse moves over a cluster marker.
++         * @name MarkerClusterer#mouseover
++         * @param {Cluster} c The cluster that the mouse moved over.
++         * @event
++         */
++        google.maps.event.trigger(mc, "mouseover", cClusterIcon.cluster_);
++    });
++
++    google.maps.event.addDomListener(this.div_, "mouseout", function () {
++        var mc = cClusterIcon.cluster_.getMarkerClusterer();
++        /**
++         * This event is fired when the mouse moves out of a cluster marker.
++         * @name MarkerClusterer#mouseout
++         * @param {Cluster} c The cluster that the mouse moved out of.
++         * @event
++         */
++        google.maps.event.trigger(mc, "mouseout", cClusterIcon.cluster_);
++    });
++};
++
++
++/**
++ * Removes the icon from the DOM.
++ */
++ClusterIcon.prototype.onRemove = function () {
++    if (this.div_ && this.div_.parentNode) {
++        this.hide();
++        google.maps.event.clearInstanceListeners(this.div_);
++        this.div_.parentNode.removeChild(this.div_);
++        this.div_ = null;
++    }
++};
++
++
++/**
++ * Draws the icon.
++ */
++ClusterIcon.prototype.draw = function () {
++    if (this.visible_) {
++        var pos = this.getPosFromLatLng_(this.center_);
++        this.div_.style.top = pos.y + "px";
++        this.div_.style.left = pos.x + "px";
++    }
++};
++
++
++/**
++ * Hides the icon.
++ */
++ClusterIcon.prototype.hide = function () {
++    if (this.div_) {
++        this.div_.style.display = "none";
++    }
++    this.visible_ = false;
++};
++
++
++/**
++ * Positions and shows the icon.
++ */
++ClusterIcon.prototype.show = function () {
++    if (this.div_) {
++        var pos = this.getPosFromLatLng_(this.center_);
++        this.div_.style.cssText = this.createCss(pos);
++        if (this.cluster_.printable_) {
++            // (Would like to use "width: inherit;" below, but doesn't work with MSIE)
++            this.div_.innerHTML = "<img src='" + this.url_ + "'><div style='position: absolute; top: 0px; left: 0px; width: " + this.width_ + "px;'>" + this.sums_.text + "</div>";
++        } else {
++            this.div_.innerHTML = this.sums_.text;
++        }
++        this.div_.title = this.cluster_.getMarkerClusterer().getTitle();
++        this.div_.style.display = "";
++    }
++    this.visible_ = true;
++};
++
++
++/**
++ * Sets the icon styles to the appropriate element in the styles array.
++ *
++ * @param {ClusterIconInfo} sums The icon label text and styles index.
++ */
++ClusterIcon.prototype.useStyle = function (sums) {
++    this.sums_ = sums;
++    var index = Math.max(0, sums.index - 1);
++    index = Math.min(this.styles_.length - 1, index);
++    var style = this.styles_[index];
++    this.url_ = style.url;
++    this.height_ = style.height;
++    this.width_ = style.width;
++    this.anchor_ = style.anchor;
++    this.anchorIcon_ = style.anchorIcon || [parseInt(this.height_ / 2, 10), parseInt(this.width_ / 2, 10)];
++    this.textColor_ = style.textColor || "black";
++    this.textSize_ = style.textSize || 11;
++    this.textDecoration_ = style.textDecoration || "none";
++    this.fontWeight_ = style.fontWeight || "bold";
++    this.fontStyle_ = style.fontStyle || "normal";
++    this.fontFamily_ = style.fontFamily || "Arial,sans-serif";
++    this.backgroundPosition_ = style.backgroundPosition || "0 0";
++};
++
++
++/**
++ * Sets the position at which to center the icon.
++ *
++ * @param {google.maps.LatLng} center The latlng to set as the center.
++ */
++ClusterIcon.prototype.setCenter = function (center) {
++    this.center_ = center;
++};
++
++
++/**
++ * Creates the cssText style parameter based on the position of the icon.
++ *
++ * @param {google.maps.Point} pos The position of the icon.
++ * @return {string} The CSS style text.
++ */
++ClusterIcon.prototype.createCss = function (pos) {
++    var style = [];
++    if (!this.cluster_.printable_) {
++        style.push('background-image:url(' + this.url_ + ');');
++        style.push('background-position:' + this.backgroundPosition_ + ';');
++    }
++
++    if (typeof this.anchor_ === 'object') {
++        if (typeof this.anchor_[0] === 'number' && this.anchor_[0] > 0 &&
++            this.anchor_[0] < this.height_) {
++            style.push('height:' + (this.height_ - this.anchor_[0]) +
++                'px; padding-top:' + this.anchor_[0] + 'px;');
++        } else {
++            style.push('height:' + this.height_ + 'px; line-height:' + this.height_ +
++                'px;');
++        }
++        if (typeof this.anchor_[1] === 'number' && this.anchor_[1] > 0 &&
++            this.anchor_[1] < this.width_) {
++            style.push('width:' + (this.width_ - this.anchor_[1]) +
++                'px; padding-left:' + this.anchor_[1] + 'px;');
++        } else {
++            style.push('width:' + this.width_ + 'px; text-align:center;');
++        }
++    } else {
++        style.push('height:' + this.height_ + 'px; line-height:' +
++            this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
++    }
++
++    style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
++        pos.x + 'px; color:' + this.textColor_ + '; position:absolute; font-size:' +
++        this.textSize_ + 'px; font-family:' + this.fontFamily_ + '; font-weight:' +
++        this.fontWeight_ + '; font-style:' + this.fontStyle_ + '; text-decoration:' +
++        this.textDecoration_ + ';');
++
++    return style.join("");
++};
++
++
++/**
++ * Returns the position at which to place the DIV depending on the latlng.
++ *
++ * @param {google.maps.LatLng} latlng The position in latlng.
++ * @return {google.maps.Point} The position in pixels.
++ */
++ClusterIcon.prototype.getPosFromLatLng_ = function (latlng) {
++    var pos = this.getProjection().fromLatLngToDivPixel(latlng);
++    pos.x -= this.anchorIcon_[1];
++    pos.y -= this.anchorIcon_[0];
++    return pos;
++};
++
++
++/**
++ * Creates a single cluster that manages a group of proximate markers.
++ *  Used internally, do not call this constructor directly.
++ * @constructor
++ * @param {MarkerClusterer} mc The <code>MarkerClusterer</code> object with which this
++ *  cluster is associated.
++ */
++function Cluster(mc) {
++    this.markerClusterer_ = mc;
++    this.map_ = mc.getMap();
++    this.gridSize_ = mc.getGridSize();
++    this.minClusterSize_ = mc.getMinimumClusterSize();
++    this.averageCenter_ = mc.getAverageCenter();
++    this.printable_ = mc.getPrintable();
++    this.markers_ = [];
++    this.center_ = null;
++    this.bounds_ = null;
++    this.clusterIcon_ = new ClusterIcon(this, mc.getStyles());
++}
++
++
++/**
++ * Returns the number of markers managed by the cluster. You can call this from
++ * a <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler
++ * for the <code>MarkerClusterer</code> object.
++ *
++ * @return {number} The number of markers in the cluster.
++ */
++Cluster.prototype.getSize = function () {
++    return this.markers_.length;
++};
++
++
++/**
++ * Returns the array of markers managed by the cluster. You can call this from
++ * a <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler
++ * for the <code>MarkerClusterer</code> object.
++ *
++ * @return {Array} The array of markers in the cluster.
++ */
++Cluster.prototype.getMarkers = function () {
++    return this.markers_;
++};
++
++
++/**
++ * Returns the center of the cluster. You can call this from
++ * a <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler
++ * for the <code>MarkerClusterer</code> object.
++ *
++ * @return {google.maps.LatLng} The center of the cluster.
++ */
++Cluster.prototype.getCenter = function () {
++    return this.center_;
++};
++
++
++/**
++ * Returns the map with which the cluster is associated.
++ *
++ * @return {google.maps.Map} The map.
++ * @ignore
++ */
++Cluster.prototype.getMap = function () {
++    return this.map_;
++};
++
++
++/**
++ * Returns the <code>MarkerClusterer</code> object with which the cluster is associated.
++ *
++ * @return {MarkerClusterer} The associated marker clusterer.
++ * @ignore
++ */
++Cluster.prototype.getMarkerClusterer = function () {
++    return this.markerClusterer_;
++};
++
++
++/**
++ * Returns the bounds of the cluster.
++ *
++ * @return {google.maps.LatLngBounds} the cluster bounds.
++ * @ignore
++ */
++Cluster.prototype.getBounds = function () {
++    var i;
++    var bounds = new google.maps.LatLngBounds(this.center_, this.center_);
++    var markers = this.getMarkers();
++    for (i = 0; i < markers.length; i++) {
++        bounds.extend(markers[i].getPosition());
++    }
++    return bounds;
++};
++
++
++/**
++ * Removes the cluster from the map.
++ *
++ * @ignore
++ */
++Cluster.prototype.remove = function () {
++    this.clusterIcon_.setMap(null);
++    this.markers_ = [];
++    delete this.markers_;
++};
++
++
++/**
++ * Adds a marker to the cluster.
++ *
++ * @param {google.maps.Marker} marker The marker to be added.
++ * @return {boolean} True if the marker was added.
++ * @ignore
++ */
++Cluster.prototype.addMarker = function (marker) {
++    var i;
++    var mCount;
++    var mz;
++
++    if (this.isMarkerAlreadyAdded_(marker)) {
++        return false;
++    }
++
++    if (!this.center_) {
++        this.center_ = marker.getPosition();
++        this.calculateBounds_();
++    } else {
++        if (this.averageCenter_) {
++            var l = this.markers_.length + 1;
++            var lat = (this.center_.lat() * (l - 1) + marker.getPosition().lat()) / l;
++            var lng = (this.center_.lng() * (l - 1) + marker.getPosition().lng()) / l;
++            this.center_ = new google.maps.LatLng(lat, lng);
++            this.calculateBounds_();
++        }
++    }
++
++    marker.isAdded = true;
++    this.markers_.push(marker);
++
++    mCount = this.markers_.length;
++    mz = this.markerClusterer_.getMaxZoom();
++    if (mz !== null && this.map_.getZoom() > mz) {
++        // Zoomed in past max zoom, so show the marker.
++        if (marker.getMap() !== this.map_) {
++            marker.setMap(this.map_);
++        }
++    } else if (mCount < this.minClusterSize_) {
++        // Min cluster size not reached so show the marker.
++        if (marker.getMap() !== this.map_) {
++            marker.setMap(this.map_);
++        }
++    } else if (mCount === this.minClusterSize_) {
++        // Hide the markers that were showing.
++        for (i = 0; i < mCount; i++) {
++            this.markers_[i].setMap(null);
++        }
++    } else {
++        marker.setMap(null);
++    }
++
++    this.updateIcon_();
++    return true;
++};
++
++
++/**
++ * Determines if a marker lies within the cluster's bounds.
++ *
++ * @param {google.maps.Marker} marker The marker to check.
++ * @return {boolean} True if the marker lies in the bounds.
++ * @ignore
++ */
++Cluster.prototype.isMarkerInClusterBounds = function (marker) {
++    return this.bounds_.contains(marker.getPosition());
++};
++
++
++/**
++ * Calculates the extended bounds of the cluster with the grid.
++ */
++Cluster.prototype.calculateBounds_ = function () {
++    var bounds = new google.maps.LatLngBounds(this.center_, this.center_);
++    this.bounds_ = this.markerClusterer_.getExtendedBounds(bounds);
++};
++
++
++/**
++ * Updates the cluster icon.
++ */
++Cluster.prototype.updateIcon_ = function () {
++    var mCount = this.markers_.length;
++    var mz = this.markerClusterer_.getMaxZoom();
++
++    if (mz !== null && this.map_.getZoom() > mz) {
++        this.clusterIcon_.hide();
++        return;
++    }
++
++    if (mCount < this.minClusterSize_) {
++        // Min cluster size not yet reached.
++        this.clusterIcon_.hide();
++        return;
++    }
++
++    var numStyles = this.markerClusterer_.getStyles().length;
++    var sums = this.markerClusterer_.getCalculator()(this.markers_, numStyles);
++    this.clusterIcon_.setCenter(this.center_);
++    this.clusterIcon_.useStyle(sums);
++    this.clusterIcon_.show();
++};
++
++
++/**
++ * Determines if a marker has already been added to the cluster.
++ *
++ * @param {google.maps.Marker} marker The marker to check.
++ * @return {boolean} True if the marker has already been added.
++ */
++Cluster.prototype.isMarkerAlreadyAdded_ = function (marker) {
++    var i;
++    if (this.markers_.indexOf) {
++        return this.markers_.indexOf(marker) !== -1;
++    } else {
++        for (i = 0; i < this.markers_.length; i++) {
++            if (marker === this.markers_[i]) {
++                return true;
++            }
++        }
++    }
++    return false;
++};
++
++
++/**
++ * @name MarkerClustererOptions
++ * @class This class represents the optional parameter passed to
++ *  the {@link MarkerClusterer} constructor.
++ * @property {number} [gridSize=60] The grid size of a cluster in pixels. The grid is a square.
++ * @property {number} [maxZoom=null] The maximum zoom level at which clustering is enabled or
++ *  <code>null</code> if clustering is to be enabled at all zoom levels.
++ * @property {boolean} [zoomOnClick=true] Whether to zoom the map when a cluster marker is
++ *  clicked. You may want to set this to <code>false</code> if you have installed a handler
++ *  for the <code>click</code> event and it deals with zooming on its own.
++ * @property {boolean} [averageCenter=false] Whether the position of a cluster marker should be
++ *  the average position of all markers in the cluster. If set to <code>false</code>, the
++ *  cluster marker is positioned at the location of the first marker added to the cluster.
++ * @property {number} [minimumClusterSize=2] The minimum number of markers needed in a cluster
++ *  before the markers are hidden and a cluster marker appears.
++ * @property {boolean} [ignoreHidden=false] Whether to ignore hidden markers in clusters. You
++ *  may want to set this to <code>true</code> to ensure that hidden markers are not included
++ *  in the marker count that appears on a cluster marker (this count is the value of the
++ *  <code>text</code> property of the result returned by the default <code>calculator</code>).
++ *  If set to <code>true</code> and you change the visibility of a marker being clustered, be
++ *  sure to also call <code>MarkerClusterer.repaint()</code>.
++ * @property {boolean} [printable=false] Whether to make the cluster icons printable. Do not
++ *  set to <code>true</code> if the <code>url</code> fields in the <code>styles</code> array
++ *  refer to image sprite files.
++ * @property {string} [title=""] The tooltip to display when the mouse moves over a cluster
++ *  marker.
++ * @property {function} [calculator=MarkerClusterer.CALCULATOR] The function used to determine
++ *  the text to be displayed on a cluster marker and the index indicating which style to use
++ *  for the cluster marker. The input parameters for the function are (1) the array of markers
++ *  represented by a cluster marker and (2) the number of cluster icon styles. It returns a
++ *  {@link ClusterIconInfo} object. The default <code>calculator</code> returns a
++ *  <code>text</code> property which is the number of markers in the cluster and an
++ *  <code>index</code> property which is one higher than the lowest integer such that
++ *  <code>10^i</code> exceeds the number of markers in the cluster, or the size of the styles
++ *  array, whichever is less. The <code>styles</code> array element used has an index of
++ *  <code>index</code> minus 1. For example, the default <code>calculator</code> returns a
++ *  <code>text</code> value of <code>"125"</code> and an <code>index</code> of <code>3</code>
++ *  for a cluster icon representing 125 markers so the element used in the <code>styles</code>
++ *  array is <code>2</code>.
++ * @property {Array} [styles] An array of {@link ClusterIconStyle} elements defining the styles
++ *  of the cluster markers to be used. The element to be used to style a given cluster marker
++ *  is determined by the function defined by the <code>calculator</code> property.
++ *  The default is an array of {@link ClusterIconStyle} elements whose properties are derived
++ *  from the values for <code>imagePath</code>, <code>imageExtension</code>, and
++ *  <code>imageSizes</code>.
++ * @property {number} [batchSize=MarkerClusterer.BATCH_SIZE] Set this property to the
++ *  number of markers to be processed in a single batch when using a browser other than
++ *  Internet Explorer (for Internet Explorer, use the batchSizeIE property instead).
++ * @property {number} [batchSizeIE=MarkerClusterer.BATCH_SIZE_IE] When Internet Explorer is
++ *  being used, markers are processed in several batches with a small delay inserted between
++ *  each batch in an attempt to avoid Javascript timeout errors. Set this property to the
++ *  number of markers to be processed in a single batch; select as high a number as you can
++ *  without causing a timeout error in the browser. This number might need to be as low as 100
++ *  if 15,000 markers are being managed, for example.
++ * @property {string} [imagePath=MarkerClusterer.IMAGE_PATH]
++ *  The full URL of the root name of the group of image files to use for cluster icons.
++ *  The complete file name is of the form <code>imagePath</code>n.<code>imageExtension</code>
++ *  where n is the image file number (1, 2, etc.).
++ * @property {string} [imageExtension=MarkerClusterer.IMAGE_EXTENSION]
++ *  The extension name for the cluster icon image files (e.g., <code>"png"</code> or
++ *  <code>"jpg"</code>).
++ * @property {Array} [imageSizes=MarkerClusterer.IMAGE_SIZES]
++ *  An array of numbers containing the widths of the group of
++ *  <code>imagePath</code>n.<code>imageExtension</code> image files.
++ *  (The images are assumed to be square.)
++ */
++/**
++ * Creates a MarkerClusterer object with the options specified in {@link MarkerClustererOptions}.
++ * @constructor
++ * @extends google.maps.OverlayView
++ * @param {google.maps.Map} map The Google map to attach to.
++ * @param {Array.<google.maps.Marker>} [opt_markers] The markers to be added to the cluster.
++ * @param {MarkerClustererOptions} [opt_options] The optional parameters.
++ */
++function MarkerClusterer(map, opt_markers, opt_options) {
++    // MarkerClusterer implements google.maps.OverlayView interface. We use the
++    // extend function to extend MarkerClusterer with google.maps.OverlayView
++    // because it might not always be available when the code is defined so we
++    // look for it at the last possible moment. If it doesn't exist now then
++    // there is no point going ahead :)
++    this.extend(MarkerClusterer, google.maps.OverlayView);
++
++    opt_markers = opt_markers || [];
++    opt_options = opt_options || {};
++
++    this.markers_ = [];
++    this.clusters_ = [];
++    this.listeners_ = [];
++    this.activeMap_ = null;
++    this.ready_ = false;
++
++    this.gridSize_ = opt_options.gridSize || 60;
++    this.minClusterSize_ = opt_options.minimumClusterSize || 2;
++    this.maxZoom_ = opt_options.maxZoom || null;
++    this.styles_ = opt_options.styles || [];
++    this.title_ = opt_options.title || "";
++    this.zoomOnClick_ = true;
++    if (opt_options.zoomOnClick !== undefined) {
++        this.zoomOnClick_ = opt_options.zoomOnClick;
++    }
++    this.averageCenter_ = false;
++    if (opt_options.averageCenter !== undefined) {
++        this.averageCenter_ = opt_options.averageCenter;
++    }
++    this.ignoreHidden_ = false;
++    if (opt_options.ignoreHidden !== undefined) {
++        this.ignoreHidden_ = opt_options.ignoreHidden;
++    }
++    this.printable_ = false;
++    if (opt_options.printable !== undefined) {
++        this.printable_ = opt_options.printable;
++    }
++    this.imagePath_ = opt_options.imagePath || MarkerClusterer.IMAGE_PATH;
++    this.imageExtension_ = opt_options.imageExtension || MarkerClusterer.IMAGE_EXTENSION;
++    this.imageSizes_ = opt_options.imageSizes || MarkerClusterer.IMAGE_SIZES;
++    this.calculator_ = opt_options.calculator || MarkerClusterer.CALCULATOR;
++    this.batchSize_ = opt_options.batchSize || MarkerClusterer.BATCH_SIZE;
++    this.batchSizeIE_ = opt_options.batchSizeIE || MarkerClusterer.BATCH_SIZE_IE;
++
++    if (navigator.userAgent.toLowerCase().indexOf("msie") !== -1) {
++        // Try to avoid IE timeout when processing a huge number of markers:
++        this.batchSize_ = this.batchSizeIE_;
++    }
++
++    this.setupStyles_();
++
++    this.addMarkers(opt_markers, true);
++    this.setMap(map); // Note: this causes onAdd to be called
++}
++
++
++/**
++ * Implementation of the onAdd interface method.
++ * @ignore
++ */
++MarkerClusterer.prototype.onAdd = function () {
++    var cMarkerClusterer = this;
++
++    this.activeMap_ = this.getMap();
++    this.ready_ = true;
++
++    this.repaint();
++
++    // Add the map event listeners
++    this.listeners_ = [
++        google.maps.event.addListener(this.getMap(), "zoom_changed", function () {
++            cMarkerClusterer.resetViewport_(false);
++            // Workaround for this Google bug: when map is at level 0 and "-" of
++            // zoom slider is clicked, a "zoom_changed" event is fired even though
++            // the map doesn't zoom out any further. In this situation, no "idle"
++            // event is triggered so the cluster markers that have been removed
++            // do not get redrawn.
++            if (this.getZoom() === 0) {
++                google.maps.event.trigger(this, "idle");
++            }
++        }),
++        google.maps.event.addListener(this.getMap(), "idle", function () {
++            cMarkerClusterer.redraw_();
++        })
++    ];
++};
++
++
++/**
++ * Implementation of the onRemove interface method.
++ * Removes map event listeners and all cluster icons from the DOM.
++ * All managed markers are also put back on the map.
++ * @ignore
++ */
++MarkerClusterer.prototype.onRemove = function () {
++    var i;
++
++    // Put all the managed markers back on the map:
++    for (i = 0; i < this.markers_.length; i++) {
++        this.markers_[i].setMap(this.activeMap_);
++    }
++
++    // Remove all clusters:
++    for (i = 0; i < this.clusters_.length; i++) {
++        this.clusters_[i].remove();
++    }
++    this.clusters_ = [];
++
++    // Remove map event listeners:
++    for (i = 0; i < this.listeners_.length; i++) {
++        google.maps.event.removeListener(this.listeners_[i]);
++    }
++    this.listeners_ = [];
++
++    this.activeMap_ = null;
++    this.ready_ = false;
++};
++
++
++/**
++ * Implementation of the draw interface method.
++ * @ignore
++ */
++MarkerClusterer.prototype.draw = function () {};
++
++
++/**
++ * Sets up the styles object.
++ */
++MarkerClusterer.prototype.setupStyles_ = function () {
++    var i, size;
++    if (this.styles_.length > 0) {
++        return;
++    }
++
++    for (i = 0; i < this.imageSizes_.length; i++) {
++        size = this.imageSizes_[i];
++        this.styles_.push({
++            url: this.imagePath_ + (i + 1) + "." + this.imageExtension_,
++            height: size,
++            width: size
++        });
++    }
++};
++
++
++/**
++ *  Fits the map to the bounds of the markers managed by the clusterer.
++ */
++MarkerClusterer.prototype.fitMapToMarkers = function () {
++    var i;
++    var markers = this.getMarkers();
++    var bounds = new google.maps.LatLngBounds();
++    for (i = 0; i < markers.length; i++) {
++        bounds.extend(markers[i].getPosition());
++    }
++
++    this.getMap().fitBounds(bounds);
++};
++
++
++/**
++ * Returns the value of the <code>gridSize</code> property.
++ *
++ * @return {number} The grid size.
++ */
++MarkerClusterer.prototype.getGridSize = function () {
++    return this.gridSize_;
++};
++
++
++/**
++ * Sets the value of the <code>gridSize</code> property.
++ *
++ * @param {number} gridSize The grid size.
++ */
++MarkerClusterer.prototype.setGridSize = function (gridSize) {
++    this.gridSize_ = gridSize;
++};
++
++
++/**
++ * Returns the value of the <code>minimumClusterSize</code> property.
++ *
++ * @return {number} The minimum cluster size.
++ */
++MarkerClusterer.prototype.getMinimumClusterSize = function () {
++    return this.minClusterSize_;
++};
++
++/**
++ * Sets the value of the <code>minimumClusterSize</code> property.
++ *
++ * @param {number} minimumClusterSize The minimum cluster size.
++ */
++MarkerClusterer.prototype.setMinimumClusterSize = function (minimumClusterSize) {
++    this.minClusterSize_ = minimumClusterSize;
++};
++
++
++/**
++ *  Returns the value of the <code>maxZoom</code> property.
++ *
++ *  @return {number} The maximum zoom level.
++ */
++MarkerClusterer.prototype.getMaxZoom = function () {
++    return this.maxZoom_;
++};
++
++
++/**
++ *  Sets the value of the <code>maxZoom</code> property.
++ *
++ *  @param {number} maxZoom The maximum zoom level.
++ */
++MarkerClusterer.prototype.setMaxZoom = function (maxZoom) {
++    this.maxZoom_ = maxZoom;
++};
++
++
++/**
++ *  Returns the value of the <code>styles</code> property.
++ *
++ *  @return {Array} The array of styles defining the cluster markers to be used.
++ */
++MarkerClusterer.prototype.getStyles = function () {
++    return this.styles_;
++};
++
++
++/**
++ *  Sets the value of the <code>styles</code> property.
++ *
++ *  @param {Array.<ClusterIconStyle>} styles The array of styles to use.
++ */
++MarkerClusterer.prototype.setStyles = function (styles) {
++    this.styles_ = styles;
++};
++
++
++/**
++ * Returns the value of the <code>title</code> property.
++ *
++ * @return {string} The content of the title text.
++ */
++MarkerClusterer.prototype.getTitle = function () {
++    return this.title_;
++};
++
++
++/**
++ *  Sets the value of the <code>title</code> property.
++ *
++ *  @param {string} title The value of the title property.
++ */
++MarkerClusterer.prototype.setTitle = function (title) {
++    this.title_ = title;
++};
++
++
++/**
++ * Returns the value of the <code>zoomOnClick</code> property.
++ *
++ * @return {boolean} True if zoomOnClick property is set.
++ */
++MarkerClusterer.prototype.getZoomOnClick = function () {
++    return this.zoomOnClick_;
++};
++
++
++/**
++ *  Sets the value of the <code>zoomOnClick</code> property.
++ *
++ *  @param {boolean} zoomOnClick The value of the zoomOnClick property.
++ */
++MarkerClusterer.prototype.setZoomOnClick = function (zoomOnClick) {
++    this.zoomOnClick_ = zoomOnClick;
++};
++
++
++/**
++ * Returns the value of the <code>averageCenter</code> property.
++ *
++ * @return {boolean} True if averageCenter property is set.
++ */
++MarkerClusterer.prototype.getAverageCenter = function () {
++    return this.averageCenter_;
++};
++
++
++/**
++ *  Sets the value of the <code>averageCenter</code> property.
++ *
++ *  @param {boolean} averageCenter The value of the averageCenter property.
++ */
++MarkerClusterer.prototype.setAverageCenter = function (averageCenter) {
++    this.averageCenter_ = averageCenter;
++};
++
++
++/**
++ * Returns the value of the <code>ignoreHidden</code> property.
++ *
++ * @return {boolean} True if ignoreHidden property is set.
++ */
++MarkerClusterer.prototype.getIgnoreHidden = function () {
++    return this.ignoreHidden_;
++};
++
++
++/**
++ *  Sets the value of the <code>ignoreHidden</code> property.
++ *
++ *  @param {boolean} ignoreHidden The value of the ignoreHidden property.
++ */
++MarkerClusterer.prototype.setIgnoreHidden = function (ignoreHidden) {
++    this.ignoreHidden_ = ignoreHidden;
++};
++
++
++/**
++ * Returns the value of the <code>imageExtension</code> property.
++ *
++ * @return {string} The value of the imageExtension property.
++ */
++MarkerClusterer.prototype.getImageExtension = function () {
++    return this.imageExtension_;
++};
++
++
++/**
++ *  Sets the value of the <code>imageExtension</code> property.
++ *
++ *  @param {string} imageExtension The value of the imageExtension property.
++ */
++MarkerClusterer.prototype.setImageExtension = function (imageExtension) {
++    this.imageExtension_ = imageExtension;
++};
++
++
++/**
++ * Returns the value of the <code>imagePath</code> property.
++ *
++ * @return {string} The value of the imagePath property.
++ */
++MarkerClusterer.prototype.getImagePath = function () {
++    return this.imagePath_;
++};
++
++
++/**
++ *  Sets the value of the <code>imagePath</code> property.
++ *
++ *  @param {string} imagePath The value of the imagePath property.
++ */
++MarkerClusterer.prototype.setImagePath = function (imagePath) {
++    this.imagePath_ = imagePath;
++};
++
++
++/**
++ * Returns the value of the <code>imageSizes</code> property.
++ *
++ * @return {Array} The value of the imageSizes property.
++ */
++MarkerClusterer.prototype.getImageSizes = function () {
++    return this.imageSizes_;
++};
++
++
++/**
++ *  Sets the value of the <code>imageSizes</code> property.
++ *
++ *  @param {Array} imageSizes The value of the imageSizes property.
++ */
++MarkerClusterer.prototype.setImageSizes = function (imageSizes) {
++    this.imageSizes_ = imageSizes;
++};
++
++
++/**
++ * Returns the value of the <code>calculator</code> property.
++ *
++ * @return {function} the value of the calculator property.
++ */
++MarkerClusterer.prototype.getCalculator = function () {
++    return this.calculator_;
++};
++
++
++/**
++ * Sets the value of the <code>calculator</code> property.
++ *
++ * @param {function(Array.<google.maps.Marker>, number)} calculator The value
++ *  of the calculator property.
++ */
++MarkerClusterer.prototype.setCalculator = function (calculator) {
++    this.calculator_ = calculator;
++};
++
++
++/**
++ * Returns the value of the <code>printable</code> property.
++ *
++ * @return {boolean} the value of the printable property.
++ */
++MarkerClusterer.prototype.getPrintable = function () {
++    return this.printable_;
++};
++
++
++/**
++ * Sets the value of the <code>printable</code> property.
++ *
++ *  @param {boolean} printable The value of the printable property.
++ */
++MarkerClusterer.prototype.setPrintable = function (printable) {
++    this.printable_ = printable;
++};
++
++
++/**
++ * Returns the value of the <code>batchSizeIE</code> property.
++ *
++ * @return {number} the value of the batchSizeIE property.
++ */
++MarkerClusterer.prototype.getBatchSizeIE = function () {
++    return this.batchSizeIE_;
++};
++
++
++/**
++ * Sets the value of the <code>batchSizeIE</code> property.
++ *
++ *  @param {number} batchSizeIE The value of the batchSizeIE property.
++ */
++MarkerClusterer.prototype.setBatchSizeIE = function (batchSizeIE) {
++    this.batchSizeIE_ = batchSizeIE;
++};
++
++
++/**
++ *  Returns the array of markers managed by the clusterer.
++ *
++ *  @return {Array} The array of markers managed by the clusterer.
++ */
++MarkerClusterer.prototype.getMarkers = function () {
++    return this.markers_;
++};
++
++
++/**
++ *  Returns the number of markers managed by the clusterer.
++ *
++ *  @return {number} The number of markers.
++ */
++MarkerClusterer.prototype.getTotalMarkers = function () {
++    return this.markers_.length;
++};
++
++
++/**
++ * Returns the current array of clusters formed by the clusterer.
++ *
++ * @return {Array} The array of clusters formed by the clusterer.
++ */
++MarkerClusterer.prototype.getClusters = function () {
++    return this.clusters_;
++};
++
++
++/**
++ * Returns the number of clusters formed by the clusterer.
++ *
++ * @return {number} The number of clusters formed by the clusterer.
++ */
++MarkerClusterer.prototype.getTotalClusters = function () {
++    return this.clusters_.length;
++};
++
++
++/**
++ * Adds a marker to the clusterer. The clusters are redrawn unless
++ *  <code>opt_nodraw</code> is set to <code>true</code>.
++ *
++ * @param {google.maps.Marker} marker The marker to add.
++ * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
++ */
++MarkerClusterer.prototype.addMarker = function (marker, opt_nodraw) {
++    this.pushMarkerTo_(marker);
++    if (!opt_nodraw) {
++        this.redraw_();
++    }
++};
++
++
++/**
++ * Adds an array of markers to the clusterer. The clusters are redrawn unless
++ *  <code>opt_nodraw</code> is set to <code>true</code>.
++ *
++ * @param {Array.<google.maps.Marker>} markers The markers to add.
++ * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
++ */
++MarkerClusterer.prototype.addMarkers = function (markers, opt_nodraw) {
++    var i;
++    for (i = 0; i < markers.length; i++) {
++        this.pushMarkerTo_(markers[i]);
++    }
++    if (!opt_nodraw) {
++        this.redraw_();
++    }
++};
++
++
++/**
++ * Pushes a marker to the clusterer.
++ *
++ * @param {google.maps.Marker} marker The marker to add.
++ */
++MarkerClusterer.prototype.pushMarkerTo_ = function (marker) {
++    // If the marker is draggable add a listener so we can update the clusters on the dragend:
++    if (marker.getDraggable()) {
++        var cMarkerClusterer = this;
++        google.maps.event.addListener(marker, "dragend", function () {
++            if (cMarkerClusterer.ready_) {
++                this.isAdded = false;
++                cMarkerClusterer.repaint();
++            }
++        });
++    }
++    marker.isAdded = false;
++    this.markers_.push(marker);
++};
++
++
++/**
++ * Removes a marker from the cluster.  The clusters are redrawn unless
++ *  <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if the
++ *  marker was removed from the clusterer.
++ *
++ * @param {google.maps.Marker} marker The marker to remove.
++ * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
++ * @return {boolean} True if the marker was removed from the clusterer.
++ */
++MarkerClusterer.prototype.removeMarker = function (marker, opt_nodraw) {
++    var removed = this.removeMarker_(marker);
++
++    if (!opt_nodraw && removed) {
++        this.repaint();
++    }
++
++    return removed;
++};
++
++
++/**
++ * Removes an array of markers from the cluster. The clusters are redrawn unless
++ *  <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if markers
++ *  were removed from the clusterer.
++ *
++ * @param {Array.<google.maps.Marker>} markers The markers to remove.
++ * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
++ * @return {boolean} True if markers were removed from the clusterer.
++ */
++MarkerClusterer.prototype.removeMarkers = function (markers, opt_nodraw) {
++    var i, r;
++    var removed = false;
++
++    for (i = 0; i < markers.length; i++) {
++        r = this.removeMarker_(markers[i]);
++        removed = removed || r;
++    }
++
++    if (!opt_nodraw && removed) {
++        this.repaint();
++    }
++
++    return removed;
++};
++
++
++/**
++ * Removes a marker and returns true if removed, false if not.
++ *
++ * @param {google.maps.Marker} marker The marker to remove
++ * @return {boolean} Whether the marker was removed or not
++ */
++MarkerClusterer.prototype.removeMarker_ = function (marker) {
++    var i;
++    var index = -1;
++    if (this.markers_.indexOf) {
++        index = this.markers_.indexOf(marker);
++    } else {
++        for (i = 0; i < this.markers_.length; i++) {
++            if (marker === this.markers_[i]) {
++                index = i;
++                break;
++            }
++        }
++    }
++
++    if (index === -1) {
++        // Marker is not in our list of markers, so do nothing:
++        return false;
++    }
++
++    marker.setMap(null);
++    this.markers_.splice(index, 1); // Remove the marker from the list of managed markers
++    return true;
++};
++
++
++/**
++ * Removes all clusters and markers from the map and also removes all markers
++ *  managed by the clusterer.
++ */
++MarkerClusterer.prototype.clearMarkers = function () {
++    this.resetViewport_(true);
++    this.markers_ = [];
++};
++
++
++/**
++ * Recalculates and redraws all the marker clusters from scratch.
++ *  Call this after changing any properties.
++ */
++MarkerClusterer.prototype.repaint = function () {
++    var oldClusters = this.clusters_.slice();
++    this.clusters_ = [];
++    this.resetViewport_(false);
++    this.redraw_();
++
++    // Remove the old clusters.
++    // Do it in a timeout to prevent blinking effect.
++    setTimeout(function () {
++        var i;
++        for (i = 0; i < oldClusters.length; i++) {
++            oldClusters[i].remove();
++        }
++    }, 0);
++};
++
++
++/**
++ * Returns the current bounds extended by the grid size.
++ *
++ * @param {google.maps.LatLngBounds} bounds The bounds to extend.
++ * @return {google.maps.LatLngBounds} The extended bounds.
++ * @ignore
++ */
++MarkerClusterer.prototype.getExtendedBounds = function (bounds) {
++    var projection = this.getProjection();
++
++    // Turn the bounds into latlng.
++    var tr = new google.maps.LatLng(bounds.getNorthEast().lat(),
++        bounds.getNorthEast().lng());
++    var bl = new google.maps.LatLng(bounds.getSouthWest().lat(),
++        bounds.getSouthWest().lng());
++
++    // Convert the points to pixels and the extend out by the grid size.
++    var trPix = projection.fromLatLngToDivPixel(tr);
++    trPix.x += this.gridSize_;
++    trPix.y -= this.gridSize_;
++
++    var blPix = projection.fromLatLngToDivPixel(bl);
++    blPix.x -= this.gridSize_;
++    blPix.y += this.gridSize_;
++
++    // Convert the pixel points back to LatLng
++    var ne = projection.fromDivPixelToLatLng(trPix);
++    var sw = projection.fromDivPixelToLatLng(blPix);
++
++    // Extend the bounds to contain the new bounds.
++    bounds.extend(ne);
++    bounds.extend(sw);
++
++    return bounds;
++};
++
++
++/**
++ * Redraws all the clusters.
++ */
++MarkerClusterer.prototype.redraw_ = function () {
++    this.createClusters_(0);
++};
++
++
++/**
++ * Removes all clusters from the map. The markers are also removed from the map
++ *  if <code>opt_hide</code> is set to <code>true</code>.
++ *
++ * @param {boolean} [opt_hide] Set to <code>true</code> to also remove the markers
++ *  from the map.
++ */
++MarkerClusterer.prototype.resetViewport_ = function (opt_hide) {
++    var i, marker;
++    // Remove all the clusters
++    for (i = 0; i < this.clusters_.length; i++) {
++        this.clusters_[i].remove();
++    }
++    this.clusters_ = [];
++
++    // Reset the markers to not be added and to be removed from the map.
++    for (i = 0; i < this.markers_.length; i++) {
++        marker = this.markers_[i];
++        marker.isAdded = false;
++        if (opt_hide) {
++            marker.setMap(null);
++        }
++    }
++};
++
++
++/**
++ * Calculates the distance between two latlng locations in km.
++ *
++ * @param {google.maps.LatLng} p1 The first lat lng point.
++ * @param {google.maps.LatLng} p2 The second lat lng point.
++ * @return {number} The distance between the two points in km.
++ * @see http://www.movable-type.co.uk/scripts/latlong.html
++ */
++MarkerClusterer.prototype.distanceBetweenPoints_ = function (p1, p2) {
++    var R = 6371; // Radius of the Earth in km
++    var dLat = (p2.lat() - p1.lat()) * Math.PI / 180;
++    var dLon = (p2.lng() - p1.lng()) * Math.PI / 180;
++    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
++        Math.cos(p1.lat() * Math.PI / 180) * Math.cos(p2.lat() * Math.PI / 180) *
++            Math.sin(dLon / 2) * Math.sin(dLon / 2);
++    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
++    var d = R * c;
++    return d;
++};
++
++
++/**
++ * Determines if a marker is contained in a bounds.
++ *
++ * @param {google.maps.Marker} marker The marker to check.
++ * @param {google.maps.LatLngBounds} bounds The bounds to check against.
++ * @return {boolean} True if the marker is in the bounds.
++ */
++MarkerClusterer.prototype.isMarkerInBounds_ = function (marker, bounds) {
++    return bounds.contains(marker.getPosition());
++};
++
++
++/**
++ * Adds a marker to a cluster, or creates a new cluster.
++ *
++ * @param {google.maps.Marker} marker The marker to add.
++ */
++MarkerClusterer.prototype.addToClosestCluster_ = function (marker) {
++    var i, d, cluster, center;
++    var distance = 40000; // Some large number
++    var clusterToAddTo = null;
++    for (i = 0; i < this.clusters_.length; i++) {
++        cluster = this.clusters_[i];
++        center = cluster.getCenter();
++        if (center) {
++            d = this.distanceBetweenPoints_(center, marker.getPosition());
++            if (d < distance) {
++                distance = d;
++                clusterToAddTo = cluster;
++            }
++        }
++    }
++
++    if (clusterToAddTo && clusterToAddTo.isMarkerInClusterBounds(marker)) {
++        clusterToAddTo.addMarker(marker);
++    } else {
++        cluster = new Cluster(this);
++        cluster.addMarker(marker);
++        this.clusters_.push(cluster);
++    }
++};
++
++
++/**
++ * Creates the clusters. This is done in batches to avoid timeout errors
++ *  in some browsers when there is a huge number of markers.
++ *
++ * @param {number} iFirst The index of the first marker in the batch of
++ *  markers to be added to clusters.
++ */
++MarkerClusterer.prototype.createClusters_ = function (iFirst) {
++    var i, marker;
++    var mapBounds;
++    var cMarkerClusterer = this;
++    if (!this.ready_) {
++        return;
++    }
++
++    // Cancel previous batch processing if we're working on the first batch:
++    if (iFirst === 0) {
++        /**
++         * This event is fired when the <code>MarkerClusterer</code> begins
++         *  clustering markers.
++         * @name MarkerClusterer#clusteringbegin
++         * @param {MarkerClusterer} mc The MarkerClusterer whose markers are being clustered.
++         * @event
++         */
++        google.maps.event.trigger(this, "clusteringbegin", this);
++
++        if (typeof this.timerRefStatic !== "undefined") {
++            clearTimeout(this.timerRefStatic);
++            delete this.timerRefStatic;
++        }
++    }
++
++    // Get our current map view bounds.
++    // Create a new bounds object so we don't affect the map.
++    //
++    // See Comments 9 & 11 on Issue 3651 relating to this workaround for a Google Maps bug:
++    if (this.getMap().getZoom() > 3) {
++        mapBounds = new google.maps.LatLngBounds(this.getMap().getBounds().getSouthWest(),
++            this.getMap().getBounds().getNorthEast());
++    } else {
++        mapBounds = new google.maps.LatLngBounds(new google.maps.LatLng(85.02070771743472, -178.48388434375), new google.maps.LatLng(-85.08136444384544, 178.00048865625));
++    }
++    var bounds = this.getExtendedBounds(mapBounds);
++
++    var iLast = Math.min(iFirst + this.batchSize_, this.markers_.length);
++
++    for (i = iFirst; i < iLast; i++) {
++        marker = this.markers_[i];
++        if (!marker.isAdded && this.isMarkerInBounds_(marker, bounds)) {
++            if (!this.ignoreHidden_ || (this.ignoreHidden_ && marker.getVisible())) {
++                this.addToClosestCluster_(marker);
++            }
++        }
++    }
++
++    if (iLast < this.markers_.length) {
++        this.timerRefStatic = setTimeout(function () {
++            cMarkerClusterer.createClusters_(iLast);
++        }, 0);
++    } else {
++        delete this.timerRefStatic;
++
++        /**
++         * This event is fired when the <code>MarkerClusterer</code> stops
++         *  clustering markers.
++         * @name MarkerClusterer#clusteringend
++         * @param {MarkerClusterer} mc The MarkerClusterer whose markers are being clustered.
++         * @event
++         */
++        google.maps.event.trigger(this, "clusteringend", this);
++    }
++};
++
++
++/**
++ * Extends an object's prototype by another's.
++ *
++ * @param {Object} obj1 The object to be extended.
++ * @param {Object} obj2 The object to extend with.
++ * @return {Object} The new extended object.
++ * @ignore
++ */
++MarkerClusterer.prototype.extend = function (obj1, obj2) {
++    return (function (object) {
++        var property;
++        for (property in object.prototype) {
++            this.prototype[property] = object.prototype[property];
++        }
++        return this;
++    }).apply(obj1, [obj2]);
++};
++
++
++/**
++ * The default function for determining the label text and style
++ * for a cluster icon.
++ *
++ * @param {Array.<google.maps.Marker>} markers The array of markers represented by the cluster.
++ * @param {number} numStyles The number of marker styles available.
++ * @return {ClusterIconInfo} The information resource for the cluster.
++ * @constant
++ * @ignore
++ */
++MarkerClusterer.CALCULATOR = function (markers, numStyles) {
++    var index = 0;
++    var count = markers.length.toString();
++
++    var dv = count;
++    while (dv !== 0) {
++        dv = parseInt(dv / 10, 10);
++        index++;
++    }
++
++    index = Math.min(index, numStyles);
++    return {
++        text: count,
++        index: index
++    };
++};
++
++
++/**
++ * The number of markers to process in one batch.
++ *
++ * @type {number}
++ * @constant
++ */
++MarkerClusterer.BATCH_SIZE = 2000;
++
++
++/**
++ * The number of markers to process in one batch (IE only).
++ *
++ * @type {number}
++ * @constant
++ */
++MarkerClusterer.BATCH_SIZE_IE = 500;
++
++
++/**
++ * The default root name for the marker cluster images.
++ *
++ * @type {string}
++ * @constant
++ */
++MarkerClusterer.IMAGE_PATH = "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/images/m";
++
++
++/**
++ * The default extension name for the marker cluster images.
++ *
++ * @type {string}
++ * @constant
++ */
++MarkerClusterer.IMAGE_EXTENSION = "png";
++
++
++/**
++ * The default array of sizes for the marker cluster images.
++ *
++ * @type {Array.<number>}
++ * @constant
++ */
++MarkerClusterer.IMAGE_SIZES = [53, 56, 66, 78, 90];
+\ No newline at end of file
+diff --git a/includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.css b/includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.css
+new file mode 100644
+index 0000000..5ba559d
+--- /dev/null
++++ b/includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.css
+@@ -0,0 +1,13 @@
++.markerwithlabel {
++    color: black;
++    background-color: white;
++    font-family: "Lucida Grande", "Arial", sans-serif;
++    font-size: 12px;
++    text-align: center;
++    white-space: nowrap;
++    padding: 3px;
++    border-radius: 4px;
++    -moz-border-radius: 4px;
++    -webkit-border-radius: 4px;
++    border: 1px solid darkred;
++}
+\ No newline at end of file
+diff --git a/includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.js b/includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.js
+new file mode 100644
+index 0000000..4b61af6
+--- /dev/null
++++ b/includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.js
+@@ -0,0 +1,566 @@
++/**
++ * @name MarkerWithLabel for V3
++ * @version 1.1.5 [July 11, 2011]
++ * @author Gary Little (inspired by code from Marc Ridey of Google).
++ * @copyright Copyright 2010 Gary Little [gary at luxcentral.com]
++ * @fileoverview MarkerWithLabel extends the Google Maps JavaScript API V3
++ *  <code>google.maps.Marker</code> class.
++ *  <p>
++ *  MarkerWithLabel allows you to define markers with associated labels. As you would expect,
++ *  if the marker is draggable, so too will be the label. In addition, a marker with a label
++ *  responds to all mouse events in the same manner as a regular marker. It also fires mouse
++ *  events and "property changed" events just as a regular marker would. Version 1.1 adds
++ *  support for the raiseOnDrag feature introduced in API V3.3.
++ *  <p>
++ *  If you drag a marker by its label, you can cancel the drag and return the marker to its
++ *  original position by pressing the <code>Esc</code> key. This doesn't work if you drag the marker
++ *  itself because this feature is not (yet) supported in the <code>google.maps.Marker</code> class.
++ */
++
++/*!
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *       http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/*jslint browser:true */
++/*global document,google */
++
++/**
++ * This constructor creates a label and associates it with a marker.
++ * It is for the private use of the MarkerWithLabel class.
++ * @constructor
++ * @param {Marker} marker The marker with which the label is to be associated.
++ * @param {string} crossURL The URL of the cross image =.
++ * @param {string} handCursor The URL of the hand cursor.
++ * @private
++ */
++function MarkerLabel_(marker, crossURL, handCursorURL) {
++  this.marker_ = marker;
++  this.handCursorURL_ = marker.handCursorURL;
++
++  this.labelDiv_ = document.createElement("div");
++  this.labelDiv_.style.cssText = "position: absolute; overflow: hidden;";
++
++  // Set up the DIV for handling mouse events in the label. This DIV forms a transparent veil
++  // in the "overlayMouseTarget" pane, a veil that covers just the label. This is done so that
++  // events can be captured even if the label is in the shadow of a google.maps.InfoWindow.
++  // Code is included here to ensure the veil is always exactly the same size as the label.
++  this.eventDiv_ = document.createElement("div");
++  this.eventDiv_.style.cssText = this.labelDiv_.style.cssText;
++
++  // This is needed for proper behavior on MSIE:
++  this.eventDiv_.setAttribute("onselectstart", "return false;");
++  this.eventDiv_.setAttribute("ondragstart", "return false;");
++
++  // Get the DIV for the "X" to be displayed when the marker is raised.
++  this.crossDiv_ = MarkerLabel_.getSharedCross(crossURL);
++}
++
++// MarkerLabel_ inherits from OverlayView:
++MarkerLabel_.prototype = new google.maps.OverlayView();
++
++/**
++ * Returns the DIV for the cross used when dragging a marker when the
++ * raiseOnDrag parameter set to true. One cross is shared with all markers.
++ * @param {string} crossURL The URL of the cross image =.
++ * @private
++ */
++MarkerLabel_.getSharedCross = function (crossURL) {
++  var div;
++  if (typeof MarkerLabel_.getSharedCross.crossDiv === "undefined") {
++    div = document.createElement("img");
++    div.style.cssText = "position: absolute; z-index: 1000002; display: none;";
++    // Hopefully Google never changes the standard "X" attributes:
++    div.style.marginLeft = "-8px";
++    div.style.marginTop = "-9px";
++    div.src = crossURL;
++    MarkerLabel_.getSharedCross.crossDiv = div;
++  }
++  return MarkerLabel_.getSharedCross.crossDiv;
++};
++
++/**
++ * Adds the DIV representing the label to the DOM. This method is called
++ * automatically when the marker's <code>setMap</code> method is called.
++ * @private
++ */
++MarkerLabel_.prototype.onAdd = function () {
++  var me = this;
++  var cMouseIsDown = false;
++  var cDraggingLabel = false;
++  var cSavedZIndex;
++  var cLatOffset, cLngOffset;
++  var cIgnoreClick;
++  var cRaiseEnabled;
++  var cStartPosition;
++  var cStartCenter;
++  // Constants:
++  var cRaiseOffset = 20;
++  var cDraggingCursor = "url(" + this.handCursorURL_ + ")";
++
++  // Stops all processing of an event.
++  //
++  var cAbortEvent = function (e) {
++    if (e.preventDefault) {
++      e.preventDefault();
++    }
++    e.cancelBubble = true;
++    if (e.stopPropagation) {
++      e.stopPropagation();
++    }
++  };
++
++  var cStopBounce = function () {
++    me.marker_.setAnimation(null);
++  };
++
++  this.getPanes().overlayImage.appendChild(this.labelDiv_);
++  this.getPanes().overlayMouseTarget.appendChild(this.eventDiv_);
++  // One cross is shared with all markers, so only add it once:
++  if (typeof MarkerLabel_.getSharedCross.processed === "undefined") {
++    this.getPanes().overlayImage.appendChild(this.crossDiv_);
++    MarkerLabel_.getSharedCross.processed = true;
++  }
++
++  this.listeners_ = [
++    google.maps.event.addDomListener(this.eventDiv_, "mouseover", function (e) {
++      if (me.marker_.getDraggable() || me.marker_.getClickable()) {
++        this.style.cursor = "pointer";
++        google.maps.event.trigger(me.marker_, "mouseover", e);
++      }
++    }),
++    google.maps.event.addDomListener(this.eventDiv_, "mouseout", function (e) {
++      if ((me.marker_.getDraggable() || me.marker_.getClickable()) && !cDraggingLabel) {
++        this.style.cursor = me.marker_.getCursor();
++        google.maps.event.trigger(me.marker_, "mouseout", e);
++      }
++    }),
++    google.maps.event.addDomListener(this.eventDiv_, "mousedown", function (e) {
++      cDraggingLabel = false;
++      if (me.marker_.getDraggable()) {
++        cMouseIsDown = true;
++        this.style.cursor = cDraggingCursor;
++      }
++      if (me.marker_.getDraggable() || me.marker_.getClickable()) {
++        google.maps.event.trigger(me.marker_, "mousedown", e);
++        cAbortEvent(e); // Prevent map pan when starting a drag on a label
++      }
++    }),
++    google.maps.event.addDomListener(document, "mouseup", function (mEvent) {
++      var position;
++      if (cMouseIsDown) {
++        cMouseIsDown = false;
++        me.eventDiv_.style.cursor = "pointer";
++        google.maps.event.trigger(me.marker_, "mouseup", mEvent);
++      }
++      if (cDraggingLabel) {
++        if (cRaiseEnabled) { // Lower the marker & label
++          position = me.getProjection().fromLatLngToDivPixel(me.marker_.getPosition());
++          position.y += cRaiseOffset;
++          me.marker_.setPosition(me.getProjection().fromDivPixelToLatLng(position));
++          // This is not the same bouncing style as when the marker portion is dragged,
++          // but it will have to do:
++          try { // Will fail if running Google Maps API earlier than V3.3
++            me.marker_.setAnimation(google.maps.Animation.BOUNCE);
++            setTimeout(cStopBounce, 1406);
++          } catch (e) {}
++        }
++        me.crossDiv_.style.display = "none";
++        me.marker_.setZIndex(cSavedZIndex);
++        cIgnoreClick = true; // Set flag to ignore the click event reported after a label drag
++        cDraggingLabel = false;
++        mEvent.latLng = me.marker_.getPosition();
++        google.maps.event.trigger(me.marker_, "dragend", mEvent);
++      }
++    }),
++    google.maps.event.addListener(me.marker_.getMap(), "mousemove", function (mEvent) {
++      var position;
++      if (cMouseIsDown) {
++        if (cDraggingLabel) {
++          // Change the reported location from the mouse position to the marker position:
++          mEvent.latLng = new google.maps.LatLng(mEvent.latLng.lat() - cLatOffset, mEvent.latLng.lng() - cLngOffset);
++          position = me.getProjection().fromLatLngToDivPixel(mEvent.latLng);
++          if (cRaiseEnabled) {
++            me.crossDiv_.style.left = position.x + "px";
++            me.crossDiv_.style.top = position.y + "px";
++            me.crossDiv_.style.display = "";
++            position.y -= cRaiseOffset;
++          }
++          me.marker_.setPosition(me.getProjection().fromDivPixelToLatLng(position));
++          if (cRaiseEnabled) { // Don't raise the veil; this hack needed to make MSIE act properly
++            me.eventDiv_.style.top = (position.y + cRaiseOffset) + "px";
++          }
++          google.maps.event.trigger(me.marker_, "drag", mEvent);
++        } else {
++          // Calculate offsets from the click point to the marker position:
++          cLatOffset = mEvent.latLng.lat() - me.marker_.getPosition().lat();
++          cLngOffset = mEvent.latLng.lng() - me.marker_.getPosition().lng();
++          cSavedZIndex = me.marker_.getZIndex();
++          cStartPosition = me.marker_.getPosition();
++          cStartCenter = me.marker_.getMap().getCenter();
++          cRaiseEnabled = me.marker_.get("raiseOnDrag");
++          cDraggingLabel = true;
++          me.marker_.setZIndex(1000000); // Moves the marker & label to the foreground during a drag
++          mEvent.latLng = me.marker_.getPosition();
++          google.maps.event.trigger(me.marker_, "dragstart", mEvent);
++        }
++      }
++    }),
++    google.maps.event.addDomListener(document, "keydown", function (e) {
++      if (cDraggingLabel) {
++        if (e.keyCode === 27) { // Esc key
++          cRaiseEnabled = false;
++          me.marker_.setPosition(cStartPosition);
++          me.marker_.getMap().setCenter(cStartCenter);
++          google.maps.event.trigger(document, "mouseup", e);
++        }
++      }
++    }),
++    google.maps.event.addDomListener(this.eventDiv_, "click", function (e) {
++      if (me.marker_.getDraggable() || me.marker_.getClickable()) {
++        if (cIgnoreClick) { // Ignore the click reported when a label drag ends
++          cIgnoreClick = false;
++        } else {
++          google.maps.event.trigger(me.marker_, "click", e);
++          cAbortEvent(e); // Prevent click from being passed on to map
++        }
++      }
++    }),
++    google.maps.event.addDomListener(this.eventDiv_, "dblclick", function (e) {
++      if (me.marker_.getDraggable() || me.marker_.getClickable()) {
++        google.maps.event.trigger(me.marker_, "dblclick", e);
++        cAbortEvent(e); // Prevent map zoom when double-clicking on a label
++      }
++    }),
++    google.maps.event.addListener(this.marker_, "dragstart", function (mEvent) {
++      if (!cDraggingLabel) {
++        cRaiseEnabled = this.get("raiseOnDrag");
++      }
++    }),
++    google.maps.event.addListener(this.marker_, "drag", function (mEvent) {
++      if (!cDraggingLabel) {
++        if (cRaiseEnabled) {
++          me.setPosition(cRaiseOffset);
++          // During a drag, the marker's z-index is temporarily set to 1000000 to
++          // ensure it appears above all other markers. Also set the label's z-index
++          // to 1000000 (plus or minus 1 depending on whether the label is supposed
++          // to be above or below the marker).
++          me.labelDiv_.style.zIndex = 1000000 + (this.get("labelInBackground") ? -1 : +1);
++        }
++      }
++    }),
++    google.maps.event.addListener(this.marker_, "dragend", function (mEvent) {
++      if (!cDraggingLabel) {
++        if (cRaiseEnabled) {
++          me.setPosition(0); // Also restores z-index of label
++        }
++      }
++    }),
++    google.maps.event.addListener(this.marker_, "position_changed", function () {
++      me.setPosition();
++    }),
++    google.maps.event.addListener(this.marker_, "zindex_changed", function () {
++      me.setZIndex();
++    }),
++    google.maps.event.addListener(this.marker_, "visible_changed", function () {
++      me.setVisible();
++    }),
++    google.maps.event.addListener(this.marker_, "labelvisible_changed", function () {
++      me.setVisible();
++    }),
++    google.maps.event.addListener(this.marker_, "title_changed", function () {
++      me.setTitle();
++    }),
++    google.maps.event.addListener(this.marker_, "labelcontent_changed", function () {
++      me.setContent();
++    }),
++    google.maps.event.addListener(this.marker_, "labelanchor_changed", function () {
++      me.setAnchor();
++    }),
++    google.maps.event.addListener(this.marker_, "labelclass_changed", function () {
++      me.setStyles();
++    }),
++    google.maps.event.addListener(this.marker_, "labelstyle_changed", function () {
++      me.setStyles();
++    })
++  ];
++};
++
++/**
++ * Removes the DIV for the label from the DOM. It also removes all event handlers.
++ * This method is called automatically when the marker's <code>setMap(null)</code>
++ * method is called.
++ * @private
++ */
++MarkerLabel_.prototype.onRemove = function () {
++  var i;
++  this.labelDiv_.parentNode.removeChild(this.labelDiv_);
++  this.eventDiv_.parentNode.removeChild(this.eventDiv_);
++
++  // Remove event listeners:
++  for (i = 0; i < this.listeners_.length; i++) {
++    google.maps.event.removeListener(this.listeners_[i]);
++  }
++};
++
++/**
++ * Draws the label on the map.
++ * @private
++ */
++MarkerLabel_.prototype.draw = function () {
++  this.setContent();
++  this.setTitle();
++  this.setStyles();
++};
++
++/**
++ * Sets the content of the label.
++ * The content can be plain text or an HTML DOM node.
++ * @private
++ */
++MarkerLabel_.prototype.setContent = function () {
++  var content = this.marker_.get("labelContent");
++  if (typeof content.nodeType === "undefined") {
++    this.labelDiv_.innerHTML = content;
++    this.eventDiv_.innerHTML = this.labelDiv_.innerHTML;
++  } else {
++    this.labelDiv_.innerHTML = ""; // Remove current content
++    this.labelDiv_.appendChild(content);
++    content = content.cloneNode(true);
++    this.eventDiv_.appendChild(content);
++  }
++};
++
++/**
++ * Sets the content of the tool tip for the label. It is
++ * always set to be the same as for the marker itself.
++ * @private
++ */
++MarkerLabel_.prototype.setTitle = function () {
++  this.eventDiv_.title = this.marker_.getTitle() || "";
++};
++
++/**
++ * Sets the style of the label by setting the style sheet and applying
++ * other specific styles requested.
++ * @private
++ */
++MarkerLabel_.prototype.setStyles = function () {
++  var i, labelStyle;
++
++  // Apply style values from the style sheet defined in the labelClass parameter:
++  this.labelDiv_.className = this.marker_.get("labelClass");
++  this.eventDiv_.className = this.labelDiv_.className;
++
++  // Clear existing inline style values:
++  this.labelDiv_.style.cssText = "";
++  this.eventDiv_.style.cssText = "";
++  // Apply style values defined in the labelStyle parameter:
++  labelStyle = this.marker_.get("labelStyle");
++  for (i in labelStyle) {
++    if (labelStyle.hasOwnProperty(i)) {
++      this.labelDiv_.style[i] = labelStyle[i];
++      this.eventDiv_.style[i] = labelStyle[i];
++    }
++  }
++  this.setMandatoryStyles();
++};
++
++/**
++ * Sets the mandatory styles to the DIV representing the label as well as to the
++ * associated event DIV. This includes setting the DIV position, z-index, and visibility.
++ * @private
++ */
++MarkerLabel_.prototype.setMandatoryStyles = function () {
++  this.labelDiv_.style.position = "absolute";
++  this.labelDiv_.style.overflow = "hidden";
++  // Make sure the opacity setting causes the desired effect on MSIE:
++  if (typeof this.labelDiv_.style.opacity !== "undefined" && this.labelDiv_.style.opacity !== "") {
++    this.labelDiv_.style.filter = "alpha(opacity=" + (this.labelDiv_.style.opacity * 100) + ")";
++  }
++
++  this.eventDiv_.style.position = this.labelDiv_.style.position;
++  this.eventDiv_.style.overflow = this.labelDiv_.style.overflow;
++  this.eventDiv_.style.opacity = 0.01; // Don't use 0; DIV won't be clickable on MSIE
++  this.eventDiv_.style.filter = "alpha(opacity=1)"; // For MSIE
++
++  this.setAnchor();
++  this.setPosition(); // This also updates z-index, if necessary.
++  this.setVisible();
++};
++
++/**
++ * Sets the anchor point of the label.
++ * @private
++ */
++MarkerLabel_.prototype.setAnchor = function () {
++  var anchor = this.marker_.get("labelAnchor");
++  this.labelDiv_.style.marginLeft = -anchor.x + "px";
++  this.labelDiv_.style.marginTop = -anchor.y + "px";
++  this.eventDiv_.style.marginLeft = -anchor.x + "px";
++  this.eventDiv_.style.marginTop = -anchor.y + "px";
++};
++
++/**
++ * Sets the position of the label. The z-index is also updated, if necessary.
++ * @private
++ */
++MarkerLabel_.prototype.setPosition = function (yOffset) {
++  var position = this.getProjection().fromLatLngToDivPixel(this.marker_.getPosition());
++  if (typeof yOffset === "undefined") {
++    yOffset = 0;
++  }
++  this.labelDiv_.style.left = Math.round(position.x) + "px";
++  this.labelDiv_.style.top = Math.round(position.y - yOffset) + "px";
++  this.eventDiv_.style.left = this.labelDiv_.style.left;
++  this.eventDiv_.style.top = this.labelDiv_.style.top;
++
++  this.setZIndex();
++};
++
++/**
++ * Sets the z-index of the label. If the marker's z-index property has not been defined, the z-index
++ * of the label is set to the vertical coordinate of the label. This is in keeping with the default
++ * stacking order for Google Maps: markers to the south are in front of markers to the north.
++ * @private
++ */
++MarkerLabel_.prototype.setZIndex = function () {
++  var zAdjust = (this.marker_.get("labelInBackground") ? -1 : +1);
++  if (typeof this.marker_.getZIndex() === "undefined") {
++    this.labelDiv_.style.zIndex = parseInt(this.labelDiv_.style.top, 10) + zAdjust;
++    this.eventDiv_.style.zIndex = this.labelDiv_.style.zIndex;
++  } else {
++    this.labelDiv_.style.zIndex = this.marker_.getZIndex() + zAdjust;
++    this.eventDiv_.style.zIndex = this.labelDiv_.style.zIndex;
++  }
++};
++
++/**
++ * Sets the visibility of the label. The label is visible only if the marker itself is
++ * visible (i.e., its visible property is true) and the labelVisible property is true.
++ * @private
++ */
++MarkerLabel_.prototype.setVisible = function () {
++  if (this.marker_.get("labelVisible")) {
++    this.labelDiv_.style.display = this.marker_.getVisible() ? "block" : "none";
++  } else {
++    this.labelDiv_.style.display = "none";
++  }
++  this.eventDiv_.style.display = this.labelDiv_.style.display;
++};
++
++/**
++ * @name MarkerWithLabelOptions
++ * @class This class represents the optional parameter passed to the {@link MarkerWithLabel} constructor.
++ *  The properties available are the same as for <code>google.maps.Marker</code> with the addition
++ *  of the properties listed below. To change any of these additional properties after the labeled
++ *  marker has been created, call <code>google.maps.Marker.set(propertyName, propertyValue)</code>.
++ *  <p>
++ *  When any of these properties changes, a property changed event is fired. The names of these
++ *  events are derived from the name of the property and are of the form <code>propertyname_changed</code>.
++ *  For example, if the content of the label changes, a <code>labelcontent_changed</code> event
++ *  is fired.
++ *  <p>
++ * @property {string|Node} [labelContent] The content of the label (plain text or an HTML DOM node).
++ * @property {Point} [labelAnchor] By default, a label is drawn with its anchor point at (0,0) so
++ *  that its top left corner is positioned at the anchor point of the associated marker. Use this
++ *  property to change the anchor point of the label. For example, to center a 50px-wide label
++ *  beneath a marker, specify a <code>labelAnchor</code> of <code>google.maps.Point(25, 0)</code>.
++ *  (Note: x-values increase to the right and y-values increase to the top.)
++ * @property {string} [labelClass] The name of the CSS class defining the styles for the label.
++ *  Note that style values for <code>position</code>, <code>overflow</code>, <code>top</code>,
++ *  <code>left</code>, <code>zIndex</code>, <code>display</code>, <code>marginLeft</code>, and
++ *  <code>marginTop</code> are ignored; these styles are for internal use only.
++ * @property {Object} [labelStyle] An object literal whose properties define specific CSS
++ *  style values to be applied to the label. Style values defined here override those that may
++ *  be defined in the <code>labelClass</code> style sheet. If this property is changed after the
++ *  label has been created, all previously set styles (except those defined in the style sheet)
++ *  are removed from the label before the new style values are applied.
++ *  Note that style values for <code>position</code>, <code>overflow</code>, <code>top</code>,
++ *  <code>left</code>, <code>zIndex</code>, <code>display</code>, <code>marginLeft</code>, and
++ *  <code>marginTop</code> are ignored; these styles are for internal use only.
++ * @property {boolean} [labelInBackground] A flag indicating whether a label that overlaps its
++ *  associated marker should appear in the background (i.e., in a plane below the marker).
++ *  The default is <code>false</code>, which causes the label to appear in the foreground.
++ * @property {boolean} [labelVisible] A flag indicating whether the label is to be visible.
++ *  The default is <code>true</code>. Note that even if <code>labelVisible</code> is
++ *  <code>true</code>, the label will <i>not</i> be visible unless the associated marker is also
++ *  visible (i.e., unless the marker's <code>visible</code> property is <code>true</code>).
++ * @property {boolean} [raiseOnDrag] A flag indicating whether the label and marker are to be
++ *  raised when the marker is dragged. The default is <code>true</code>. If a draggable marker is
++ *  being created and a version of Google Maps API earlier than V3.3 is being used, this property
++ *  must be set to <code>false</code>.
++ * @property {boolean} [optimized] A flag indicating whether rendering is to be optimized for the
++ *  marker. <b>Important: The optimized rendering technique is not supported by MarkerWithLabel,
++ *  so the value of this parameter is always forced to <code>false</code>.
++ * @property {string} [crossImage="http://maps.gstatic.com/intl/en_us/mapfiles/drag_cross_67_16.png"]
++ *  The URL of the cross image to be displayed while dragging a marker.
++ * @property {string} [handCursor="http://maps.gstatic.com/intl/en_us/mapfiles/closedhand_8_8.cur"]
++ *  The URL of the cursor to be displayed while dragging a marker.
++ */
++/**
++ * Creates a MarkerWithLabel with the options specified in {@link MarkerWithLabelOptions}.
++ * @constructor
++ * @param {MarkerWithLabelOptions} [opt_options] The optional parameters.
++ */
++function MarkerWithLabel(opt_options) {
++  opt_options = opt_options || {};
++  opt_options.labelContent = opt_options.labelContent || "";
++  opt_options.labelAnchor = opt_options.labelAnchor || new google.maps.Point(0, 0);
++  opt_options.labelClass = opt_options.labelClass || "markerLabels";
++  opt_options.labelStyle = opt_options.labelStyle || {};
++  opt_options.labelInBackground = opt_options.labelInBackground || false;
++  if (typeof opt_options.labelVisible === "undefined") {
++    opt_options.labelVisible = true;
++  }
++  if (typeof opt_options.raiseOnDrag === "undefined") {
++    opt_options.raiseOnDrag = true;
++  }
++  if (typeof opt_options.clickable === "undefined") {
++    opt_options.clickable = true;
++  }
++  if (typeof opt_options.draggable === "undefined") {
++    opt_options.draggable = false;
++  }
++  if (typeof opt_options.optimized === "undefined") {
++    opt_options.optimized = false;
++  }
++  opt_options.crossImage = opt_options.crossImage || "http://maps.gstatic.com/intl/en_us/mapfiles/drag_cross_67_16.png";
++  opt_options.handCursor = opt_options.handCursor || "http://maps.gstatic.com/intl/en_us/mapfiles/closedhand_8_8.cur";
++  opt_options.optimized = false; // Optimized rendering is not supported
++
++  this.label = new MarkerLabel_(this, opt_options.crossImage, opt_options.handCursor); // Bind the label to the marker
++
++  // Call the parent constructor. It calls Marker.setValues to initialize, so all
++  // the new parameters are conveniently saved and can be accessed with get/set.
++  // Marker.set triggers a property changed event (called "propertyname_changed")
++  // that the marker label listens for in order to react to state changes.
++  google.maps.Marker.apply(this, arguments);
++}
++
++// MarkerWithLabel inherits from <code>Marker</code>:
++MarkerWithLabel.prototype = new google.maps.Marker();
++
++/**
++ * Overrides the standard Marker setMap function.
++ * @param {Map} marker The map to which the marker is to be added.
++ * @private
++ */
++MarkerWithLabel.prototype.setMap = function (theMap) {
++
++  // Call the inherited function...
++  google.maps.Marker.prototype.setMap.apply(this, arguments);
++
++  // ... then deal with the label:
++  this.label.setMap(theMap);
++};
+\ No newline at end of file
+diff --git a/includes/services/GoogleMaps3/jquery.googlemap.js b/includes/services/GoogleMaps3/jquery.googlemap.js
+index 833b85f..31ba163 100644
+--- a/includes/services/GoogleMaps3/jquery.googlemap.js
++++ b/includes/services/GoogleMaps3/jquery.googlemap.js
+@@ -1,7 +1,7 @@
+ /**
+  * JavaScript for Google Maps v3 maps in the Maps extension.
+  * @see http://www.mediawiki.org/wiki/Extension:Maps
+- * 
++ *
+  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+  */
+ 
+@@ -38,39 +38,54 @@
+ 	 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
+ 	 * @return {google.maps.Marker}
+ 	 */
+-	this.addMarker = function( markerData ) {
+-		var markerOptions = {
+-			position: new google.maps.LatLng( markerData.lat , markerData.lon ),
+-			title: markerData.title
+-		};
++		this.addMarker = function (markerData) {
++			var markerOptions = {
++				position:new google.maps.LatLng(markerData.lat, markerData.lon),
++				title:markerData.title,
++				labelContent:markerData.inlineLabel,
++				labelAnchor:new google.maps.Point(-15, 34),
++				labelClass:'markerwithlabel'
++			};
+ 
+-		if ( markerData.icon !== '' ) {
+-			markerOptions.icon = markerData.icon; 
+-		}
++			if (markerData.icon !== '') {
++				markerOptions.icon = markerData.icon;
++			}
+ 
+-		var marker = new google.maps.Marker( markerOptions );
++			var marker;
++			if (markerData.inlineLabel === undefined || markerData.inlineLabel.length == 0) {
++				marker = new google.maps.Marker(markerOptions);
++			} else {
++				marker = new MarkerWithLabel(markerOptions);
++			}
+ 
+-		marker.openWindow = false;
++			marker.openWindow = false;
+ 
+-		if ( markerData.text !== '' ) {
+-			marker.text = markerData.text;
+-			google.maps.event.addListener( marker, 'click', function() {
+-				if ( this.openWindow !== false ) {
+-					this.openWindow.close();
++			if (markerData.text !== '') {
++				marker.text = markerData.text;
++			}
++
++			google.maps.event.addListener(marker, 'click', function (e) {
++				if (e.target !== undefined && (e.target instanceof HTMLAnchorElement || e.target.tagName == 'A')) {
++					//click link defined in inlinelabel
++					window.location.href = e.target.href;
++				} else if (this.text !== undefined && this.text.length > 0) {
++					//open info window
++					if (this.openWindow !== false) {
++						this.openWindow.close();
++					}
++					this.openWindow = new google.maps.InfoWindow({ content:this.text });
++					this.openWindow.closeclick = function () {
++						marker.openWindow = false;
++					};
++					this.openWindow.open(_this.map, this);
+ 				}
+-				this.openWindow = new google.maps.InfoWindow( { content: this.text } );
+-				this.openWindow.closeclick = function() {
+-					marker.openWindow = false;
+-				};
+-				this.openWindow.open( _this.map, this );					
+-			} );		
+-		}
++			});
+ 
+-		marker.setMap( this.map );
+-		this.markers.push( marker );
++			marker.setMap(this.map);
++			this.markers.push(marker);
+ 
+-		return marker;
+-	};
++			return marker;
++		};
+ 
+ 	/**
+ 	 * Removes a single marker from the map.
+@@ -91,7 +106,7 @@
+ 
+ 	/**
+ 	 * Removes all markers from the map.
+-	 */		
++	 */
+ 	this.removeMarkers = function() {
+ 		for ( var i = this.markers.length - 1; i >= 0; i-- ) {
+ 			this.markers[i].setMap( null );
+@@ -101,7 +116,7 @@
+ 
+ 	/**
+ 	 * Remove the "earth" type from options.types if it's present.
+-	 * 
++	 *
+ 	 * @since 1.0.1
+ 	 */
+ 	this.removeEarthType = function() {
+@@ -139,8 +154,8 @@
+ 			mw.loader.using( 'ext.maps.gm3.geoxml', function() {
+ 				var geoXml = new geoXML3.parser( { map: _this.map, zoom: options.kmlrezoom } );
+ 				geoXml.parse( options.kml );
+-			} );		
+-		}		
++			} );
++		}
+ 	};
+ 
+ 	this.addLine = function(properties){
+@@ -205,7 +220,7 @@
+ 			strokeOpacity:properties.strokeOpacity,
+ 			strokeWeight:properties.strokeWeight,
+ 			fillColor:properties.fillColor,
+-			fillOpacity: properties.fillOpacity
++			fillOpacity:properties.fillOpacity
+ 		});
+ 		this.polygons.push(polygon);
+ 
+@@ -270,7 +285,7 @@
+ 	};
+ 
+ 	this.setup = function() {
+-		var showEarth = $.inArray( 'earth', options.types ) !== -1; 
++		var showEarth = $.inArray( 'earth', options.types ) !== -1;
+ 
+ 		// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
+ 		if ( showEarth ) {
+@@ -338,7 +353,7 @@
+ 		for ( i = options.layers.length - 1; i >= 0; i-- ) {
+ 			var layer = eval( layerMapping[options.layers[i]] );
+ 			layer.setMap( map );
+-		}	
++		}
+ 
+ 		var bounds;
+ 
+@@ -427,7 +442,7 @@
+ 							}
+ 
+ 							_this.addOverlays();
+-						} );	
++						} );
+ 					} } );
+ 				}
+ 			);
+@@ -439,14 +454,14 @@
+ 		if ( options.autoinfowindows ) {
+ 			for ( var i = this.markers.length - 1; i >= 0; i-- ) {
+ 				google.maps.event.trigger( this.markers[i], 'click' );
+-			}		
++			}
+ 		}
+ 
+ 		if ( options.resizable ) {
+ 			mw.loader.using( 'ext.maps.resizable', function() {
+ 				_this.resizable();
+ 			} );
+-		}		
++		}
+ 
+ 		/**
+ 		 * used in display_line functionality
+diff --git a/includes/services/GoogleMaps3/markerclusterer.js b/includes/services/GoogleMaps3/markerclusterer.js
+deleted file mode 100644
+index 32a543c..0000000
+--- a/includes/services/GoogleMaps3/markerclusterer.js
++++ /dev/null
+@@ -1,1596 +0,0 @@
+-/*jslint browser: true, confusion: true, sloppy: true, vars: true, nomen: false, plusplus: false, indent: 2 */
+-/*global window,google */
+-
+-/**
+- * @name MarkerClustererPlus for Google Maps V3
+- * @version 2.0.9 [February 20, 2012]
+- * @author Gary Little
+- * @fileoverview
+- * The library creates and manages per-zoom-level clusters for large amounts of markers.
+- * <p>
+- * This is an enhanced V3 implementation of the
+- * <a href="http://gmaps-utility-library-dev.googlecode.com/svn/tags/markerclusterer/"
+- * >V2 MarkerClusterer</a> by Xiaoxi Wu. It is based on the
+- * <a href="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/"
+- * >V3 MarkerClusterer</a> port by Luke Mahe. MarkerClustererPlus was created by Gary Little.
+- * <p>
+- * v2.0 release: MarkerClustererPlus v2.0 is backward compatible with MarkerClusterer v1.0. It
+- *  adds support for the <code>ignoreHidden</code>, <code>title</code>, <code>printable</code>,
+- *  <code>batchSizeIE</code>, and <code>calculator</code> properties as well as support for
+- *  four more events. It also allows greater control over the styling of the text that appears
+- *  on the cluster marker. The documentation has been significantly improved and the overall
+- *  code has been simplified and polished. Very large numbers of markers can now be managed
+- *  without causing Javascript timeout errors on Internet Explorer. Note that the name of the
+- *  <code>clusterclick</code> event has been deprecated. The new name is <code>click</code>,
+- *  so please change your application code now.
+- */
+-
+-/**
+- * Licensed under the Apache License, Version 2.0 (the "License");
+- * you may not use this file except in compliance with the License.
+- * You may obtain a copy of the License at
+- *
+- *     http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS,
+- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- * See the License for the specific language governing permissions and
+- * limitations under the License.
+- */
+-
+-
+-/**
+- * @name ClusterIconStyle
+- * @class This class represents the object for values in the <code>styles</code> array passed
+- *  to the {@link MarkerClusterer} constructor. The element in this array that is used to
+- *  style the cluster icon is determined by calling the <code>calculator</code> function.
+- *
+- * @property {string} url The URL of the cluster icon image file. Required.
+- * @property {number} height The height (in pixels) of the cluster icon. Required.
+- * @property {number} width The width (in pixels) of the cluster icon. Required.
+- * @property {Array} [anchor] The anchor position (in pixels) of the label text to be shown on
+- *  the cluster icon, relative to the top left corner of the icon.
+- *  The format is <code>[yoffset, xoffset]</code>. The <code>yoffset</code> must be positive
+- *  and less than <code>height</code> and the <code>xoffset</code> must be positive and less
+- *  than <code>width</code>. The default is to anchor the label text so that it is centered
+- *  on the icon.
+- * @property {Array} [anchorIcon] The anchor position (in pixels) of the cluster icon. This is the
+- *  spot on the cluster icon that is to be aligned with the cluster position. The format is
+- *  <code>[yoffset, xoffset]</code> where <code>yoffset</code> increases as you go down and
+- *  <code>xoffset</code> increases to the right. The default anchor position is the center of the
+- *  cluster icon.
+- * @property {string} [textColor="black"] The color of the label text shown on the
+- *  cluster icon.
+- * @property {number} [textSize=11] The size (in pixels) of the label text shown on the
+- *  cluster icon.
+- * @property {number} [textDecoration="none"] The value of the CSS <code>text-decoration</code>
+- *  property for the label text shown on the cluster icon.
+- * @property {number} [fontWeight="bold"] The value of the CSS <code>font-weight</code>
+- *  property for the label text shown on the cluster icon.
+- * @property {number} [fontStyle="normal"] The value of the CSS <code>font-style</code>
+- *  property for the label text shown on the cluster icon.
+- * @property {number} [fontFamily="Arial,sans-serif"] The value of the CSS <code>font-family</code>
+- *  property for the label text shown on the cluster icon.
+- * @property {string} [backgroundPosition="0 0"] The position of the cluster icon image
+- *  within the image defined by <code>url</code>. The format is <code>"xpos ypos"</code>
+- *  (the same format as for the CSS <code>background-position</code> property). You must set
+- *  this property appropriately when the image defined by <code>url</code> represents a sprite
+- *  containing multiple images.
+- */
+-/**
+- * @name ClusterIconInfo
+- * @class This class is an object containing general information about a cluster icon. This is
+- *  the object that a <code>calculator</code> function returns.
+- *
+- * @property {string} text The text of the label to be shown on the cluster icon.
+- * @property {number} index The index plus 1 of the element in the <code>styles</code>
+- *  array to be used to style the cluster icon.
+- */
+-/**
+- * A cluster icon.
+- *
+- * @constructor
+- * @extends google.maps.OverlayView
+- * @param {Cluster} cluster The cluster with which the icon is to be associated.
+- * @param {Array} [styles] An array of {@link ClusterIconStyle} defining the cluster icons
+- *  to use for various cluster sizes.
+- * @private
+- */
+-function ClusterIcon(cluster, styles) {
+-    cluster.getMarkerClusterer().extend(ClusterIcon, google.maps.OverlayView);
+-
+-    this.cluster_ = cluster;
+-    this.styles_ = styles;
+-    this.center_ = null;
+-    this.div_ = null;
+-    this.sums_ = null;
+-    this.visible_ = false;
+-
+-    this.setMap(cluster.getMap()); // Note: this causes onAdd to be called
+-}
+-
+-
+-/**
+- * Adds the icon to the DOM.
+- */
+-ClusterIcon.prototype.onAdd = function () {
+-    var cClusterIcon = this;
+-    var cMouseDownInCluster;
+-    var cDraggingMapByCluster;
+-
+-    this.div_ = document.createElement("div");
+-    if (this.visible_) {
+-        this.show();
+-    }
+-
+-    this.getPanes().overlayMouseTarget.appendChild(this.div_);
+-
+-    // Fix for Issue 157
+-    google.maps.event.addListener(this.getMap(), "bounds_changed", function () {
+-        cDraggingMapByCluster = cMouseDownInCluster;
+-    });
+-
+-    google.maps.event.addDomListener(this.div_, "mousedown", function () {
+-        cMouseDownInCluster = true;
+-        cDraggingMapByCluster = false;
+-    });
+-
+-    google.maps.event.addDomListener(this.div_, "click", function (e) {
+-        cMouseDownInCluster = false;
+-        if (!cDraggingMapByCluster) {
+-            var mz;
+-            var mc = cClusterIcon.cluster_.getMarkerClusterer();
+-            /**
+-             * This event is fired when a cluster marker is clicked.
+-             * @name MarkerClusterer#click
+-             * @param {Cluster} c The cluster that was clicked.
+-             * @event
+-             */
+-            google.maps.event.trigger(mc, "click", cClusterIcon.cluster_);
+-            google.maps.event.trigger(mc, "clusterclick", cClusterIcon.cluster_); // deprecated name
+-
+-            // The default click handler follows. Disable it by setting
+-            // the zoomOnClick property to false.
+-            if (mc.getZoomOnClick()) {
+-                // Zoom into the cluster.
+-                mz = mc.getMaxZoom();
+-                mc.getMap().fitBounds(cClusterIcon.cluster_.getBounds());
+-                // Don't zoom beyond the max zoom level
+-                if (mz !== null && (mc.getMap().getZoom() > mz)) {
+-                    mc.getMap().setZoom(mz + 1);
+-                }
+-            }
+-
+-            // Prevent event propagation to the map:
+-            e.cancelBubble = true;
+-            if (e.stopPropagation) {
+-                e.stopPropagation();
+-            }
+-        }
+-    });
+-
+-    google.maps.event.addDomListener(this.div_, "mouseover", function () {
+-        var mc = cClusterIcon.cluster_.getMarkerClusterer();
+-        /**
+-         * This event is fired when the mouse moves over a cluster marker.
+-         * @name MarkerClusterer#mouseover
+-         * @param {Cluster} c The cluster that the mouse moved over.
+-         * @event
+-         */
+-        google.maps.event.trigger(mc, "mouseover", cClusterIcon.cluster_);
+-    });
+-
+-    google.maps.event.addDomListener(this.div_, "mouseout", function () {
+-        var mc = cClusterIcon.cluster_.getMarkerClusterer();
+-        /**
+-         * This event is fired when the mouse moves out of a cluster marker.
+-         * @name MarkerClusterer#mouseout
+-         * @param {Cluster} c The cluster that the mouse moved out of.
+-         * @event
+-         */
+-        google.maps.event.trigger(mc, "mouseout", cClusterIcon.cluster_);
+-    });
+-};
+-
+-
+-/**
+- * Removes the icon from the DOM.
+- */
+-ClusterIcon.prototype.onRemove = function () {
+-    if (this.div_ && this.div_.parentNode) {
+-        this.hide();
+-        google.maps.event.clearInstanceListeners(this.div_);
+-        this.div_.parentNode.removeChild(this.div_);
+-        this.div_ = null;
+-    }
+-};
+-
+-
+-/**
+- * Draws the icon.
+- */
+-ClusterIcon.prototype.draw = function () {
+-    if (this.visible_) {
+-        var pos = this.getPosFromLatLng_(this.center_);
+-        this.div_.style.top = pos.y + "px";
+-        this.div_.style.left = pos.x + "px";
+-    }
+-};
+-
+-
+-/**
+- * Hides the icon.
+- */
+-ClusterIcon.prototype.hide = function () {
+-    if (this.div_) {
+-        this.div_.style.display = "none";
+-    }
+-    this.visible_ = false;
+-};
+-
+-
+-/**
+- * Positions and shows the icon.
+- */
+-ClusterIcon.prototype.show = function () {
+-    if (this.div_) {
+-        var pos = this.getPosFromLatLng_(this.center_);
+-        this.div_.style.cssText = this.createCss(pos);
+-        if (this.cluster_.printable_) {
+-            // (Would like to use "width: inherit;" below, but doesn't work with MSIE)
+-            this.div_.innerHTML = "<img src='" + this.url_ + "'><div style='position: absolute; top: 0px; left: 0px; width: " + this.width_ + "px;'>" + this.sums_.text + "</div>";
+-        } else {
+-            this.div_.innerHTML = this.sums_.text;
+-        }
+-        this.div_.title = this.cluster_.getMarkerClusterer().getTitle();
+-        this.div_.style.display = "";
+-    }
+-    this.visible_ = true;
+-};
+-
+-
+-/**
+- * Sets the icon styles to the appropriate element in the styles array.
+- *
+- * @param {ClusterIconInfo} sums The icon label text and styles index.
+- */
+-ClusterIcon.prototype.useStyle = function (sums) {
+-    this.sums_ = sums;
+-    var index = Math.max(0, sums.index - 1);
+-    index = Math.min(this.styles_.length - 1, index);
+-    var style = this.styles_[index];
+-    this.url_ = style.url;
+-    this.height_ = style.height;
+-    this.width_ = style.width;
+-    this.anchor_ = style.anchor;
+-    this.anchorIcon_ = style.anchorIcon || [parseInt(this.height_ / 2, 10), parseInt(this.width_ / 2, 10)];
+-    this.textColor_ = style.textColor || "black";
+-    this.textSize_ = style.textSize || 11;
+-    this.textDecoration_ = style.textDecoration || "none";
+-    this.fontWeight_ = style.fontWeight || "bold";
+-    this.fontStyle_ = style.fontStyle || "normal";
+-    this.fontFamily_ = style.fontFamily || "Arial,sans-serif";
+-    this.backgroundPosition_ = style.backgroundPosition || "0 0";
+-};
+-
+-
+-/**
+- * Sets the position at which to center the icon.
+- *
+- * @param {google.maps.LatLng} center The latlng to set as the center.
+- */
+-ClusterIcon.prototype.setCenter = function (center) {
+-    this.center_ = center;
+-};
+-
+-
+-/**
+- * Creates the cssText style parameter based on the position of the icon.
+- *
+- * @param {google.maps.Point} pos The position of the icon.
+- * @return {string} The CSS style text.
+- */
+-ClusterIcon.prototype.createCss = function (pos) {
+-    var style = [];
+-    if (!this.cluster_.printable_) {
+-        style.push('background-image:url(' + this.url_ + ');');
+-        style.push('background-position:' + this.backgroundPosition_ + ';');
+-    }
+-
+-    if (typeof this.anchor_ === 'object') {
+-        if (typeof this.anchor_[0] === 'number' && this.anchor_[0] > 0 &&
+-            this.anchor_[0] < this.height_) {
+-            style.push('height:' + (this.height_ - this.anchor_[0]) +
+-                'px; padding-top:' + this.anchor_[0] + 'px;');
+-        } else {
+-            style.push('height:' + this.height_ + 'px; line-height:' + this.height_ +
+-                'px;');
+-        }
+-        if (typeof this.anchor_[1] === 'number' && this.anchor_[1] > 0 &&
+-            this.anchor_[1] < this.width_) {
+-            style.push('width:' + (this.width_ - this.anchor_[1]) +
+-                'px; padding-left:' + this.anchor_[1] + 'px;');
+-        } else {
+-            style.push('width:' + this.width_ + 'px; text-align:center;');
+-        }
+-    } else {
+-        style.push('height:' + this.height_ + 'px; line-height:' +
+-            this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
+-    }
+-
+-    style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
+-        pos.x + 'px; color:' + this.textColor_ + '; position:absolute; font-size:' +
+-        this.textSize_ + 'px; font-family:' + this.fontFamily_ + '; font-weight:' +
+-        this.fontWeight_ + '; font-style:' + this.fontStyle_ + '; text-decoration:' +
+-        this.textDecoration_ + ';');
+-
+-    return style.join("");
+-};
+-
+-
+-/**
+- * Returns the position at which to place the DIV depending on the latlng.
+- *
+- * @param {google.maps.LatLng} latlng The position in latlng.
+- * @return {google.maps.Point} The position in pixels.
+- */
+-ClusterIcon.prototype.getPosFromLatLng_ = function (latlng) {
+-    var pos = this.getProjection().fromLatLngToDivPixel(latlng);
+-    pos.x -= this.anchorIcon_[1];
+-    pos.y -= this.anchorIcon_[0];
+-    return pos;
+-};
+-
+-
+-/**
+- * Creates a single cluster that manages a group of proximate markers.
+- *  Used internally, do not call this constructor directly.
+- * @constructor
+- * @param {MarkerClusterer} mc The <code>MarkerClusterer</code> object with which this
+- *  cluster is associated.
+- */
+-function Cluster(mc) {
+-    this.markerClusterer_ = mc;
+-    this.map_ = mc.getMap();
+-    this.gridSize_ = mc.getGridSize();
+-    this.minClusterSize_ = mc.getMinimumClusterSize();
+-    this.averageCenter_ = mc.getAverageCenter();
+-    this.printable_ = mc.getPrintable();
+-    this.markers_ = [];
+-    this.center_ = null;
+-    this.bounds_ = null;
+-    this.clusterIcon_ = new ClusterIcon(this, mc.getStyles());
+-}
+-
+-
+-/**
+- * Returns the number of markers managed by the cluster. You can call this from
+- * a <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler
+- * for the <code>MarkerClusterer</code> object.
+- *
+- * @return {number} The number of markers in the cluster.
+- */
+-Cluster.prototype.getSize = function () {
+-    return this.markers_.length;
+-};
+-
+-
+-/**
+- * Returns the array of markers managed by the cluster. You can call this from
+- * a <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler
+- * for the <code>MarkerClusterer</code> object.
+- *
+- * @return {Array} The array of markers in the cluster.
+- */
+-Cluster.prototype.getMarkers = function () {
+-    return this.markers_;
+-};
+-
+-
+-/**
+- * Returns the center of the cluster. You can call this from
+- * a <code>click</code>, <code>mouseover</code>, or <code>mouseout</code> event handler
+- * for the <code>MarkerClusterer</code> object.
+- *
+- * @return {google.maps.LatLng} The center of the cluster.
+- */
+-Cluster.prototype.getCenter = function () {
+-    return this.center_;
+-};
+-
+-
+-/**
+- * Returns the map with which the cluster is associated.
+- *
+- * @return {google.maps.Map} The map.
+- * @ignore
+- */
+-Cluster.prototype.getMap = function () {
+-    return this.map_;
+-};
+-
+-
+-/**
+- * Returns the <code>MarkerClusterer</code> object with which the cluster is associated.
+- *
+- * @return {MarkerClusterer} The associated marker clusterer.
+- * @ignore
+- */
+-Cluster.prototype.getMarkerClusterer = function () {
+-    return this.markerClusterer_;
+-};
+-
+-
+-/**
+- * Returns the bounds of the cluster.
+- *
+- * @return {google.maps.LatLngBounds} the cluster bounds.
+- * @ignore
+- */
+-Cluster.prototype.getBounds = function () {
+-    var i;
+-    var bounds = new google.maps.LatLngBounds(this.center_, this.center_);
+-    var markers = this.getMarkers();
+-    for (i = 0; i < markers.length; i++) {
+-        bounds.extend(markers[i].getPosition());
+-    }
+-    return bounds;
+-};
+-
+-
+-/**
+- * Removes the cluster from the map.
+- *
+- * @ignore
+- */
+-Cluster.prototype.remove = function () {
+-    this.clusterIcon_.setMap(null);
+-    this.markers_ = [];
+-    delete this.markers_;
+-};
+-
+-
+-/**
+- * Adds a marker to the cluster.
+- *
+- * @param {google.maps.Marker} marker The marker to be added.
+- * @return {boolean} True if the marker was added.
+- * @ignore
+- */
+-Cluster.prototype.addMarker = function (marker) {
+-    var i;
+-    var mCount;
+-    var mz;
+-
+-    if (this.isMarkerAlreadyAdded_(marker)) {
+-        return false;
+-    }
+-
+-    if (!this.center_) {
+-        this.center_ = marker.getPosition();
+-        this.calculateBounds_();
+-    } else {
+-        if (this.averageCenter_) {
+-            var l = this.markers_.length + 1;
+-            var lat = (this.center_.lat() * (l - 1) + marker.getPosition().lat()) / l;
+-            var lng = (this.center_.lng() * (l - 1) + marker.getPosition().lng()) / l;
+-            this.center_ = new google.maps.LatLng(lat, lng);
+-            this.calculateBounds_();
+-        }
+-    }
+-
+-    marker.isAdded = true;
+-    this.markers_.push(marker);
+-
+-    mCount = this.markers_.length;
+-    mz = this.markerClusterer_.getMaxZoom();
+-    if (mz !== null && this.map_.getZoom() > mz) {
+-        // Zoomed in past max zoom, so show the marker.
+-        if (marker.getMap() !== this.map_) {
+-            marker.setMap(this.map_);
+-        }
+-    } else if (mCount < this.minClusterSize_) {
+-        // Min cluster size not reached so show the marker.
+-        if (marker.getMap() !== this.map_) {
+-            marker.setMap(this.map_);
+-        }
+-    } else if (mCount === this.minClusterSize_) {
+-        // Hide the markers that were showing.
+-        for (i = 0; i < mCount; i++) {
+-            this.markers_[i].setMap(null);
+-        }
+-    } else {
+-        marker.setMap(null);
+-    }
+-
+-    this.updateIcon_();
+-    return true;
+-};
+-
+-
+-/**
+- * Determines if a marker lies within the cluster's bounds.
+- *
+- * @param {google.maps.Marker} marker The marker to check.
+- * @return {boolean} True if the marker lies in the bounds.
+- * @ignore
+- */
+-Cluster.prototype.isMarkerInClusterBounds = function (marker) {
+-    return this.bounds_.contains(marker.getPosition());
+-};
+-
+-
+-/**
+- * Calculates the extended bounds of the cluster with the grid.
+- */
+-Cluster.prototype.calculateBounds_ = function () {
+-    var bounds = new google.maps.LatLngBounds(this.center_, this.center_);
+-    this.bounds_ = this.markerClusterer_.getExtendedBounds(bounds);
+-};
+-
+-
+-/**
+- * Updates the cluster icon.
+- */
+-Cluster.prototype.updateIcon_ = function () {
+-    var mCount = this.markers_.length;
+-    var mz = this.markerClusterer_.getMaxZoom();
+-
+-    if (mz !== null && this.map_.getZoom() > mz) {
+-        this.clusterIcon_.hide();
+-        return;
+-    }
+-
+-    if (mCount < this.minClusterSize_) {
+-        // Min cluster size not yet reached.
+-        this.clusterIcon_.hide();
+-        return;
+-    }
+-
+-    var numStyles = this.markerClusterer_.getStyles().length;
+-    var sums = this.markerClusterer_.getCalculator()(this.markers_, numStyles);
+-    this.clusterIcon_.setCenter(this.center_);
+-    this.clusterIcon_.useStyle(sums);
+-    this.clusterIcon_.show();
+-};
+-
+-
+-/**
+- * Determines if a marker has already been added to the cluster.
+- *
+- * @param {google.maps.Marker} marker The marker to check.
+- * @return {boolean} True if the marker has already been added.
+- */
+-Cluster.prototype.isMarkerAlreadyAdded_ = function (marker) {
+-    var i;
+-    if (this.markers_.indexOf) {
+-        return this.markers_.indexOf(marker) !== -1;
+-    } else {
+-        for (i = 0; i < this.markers_.length; i++) {
+-            if (marker === this.markers_[i]) {
+-                return true;
+-            }
+-        }
+-    }
+-    return false;
+-};
+-
+-
+-/**
+- * @name MarkerClustererOptions
+- * @class This class represents the optional parameter passed to
+- *  the {@link MarkerClusterer} constructor.
+- * @property {number} [gridSize=60] The grid size of a cluster in pixels. The grid is a square.
+- * @property {number} [maxZoom=null] The maximum zoom level at which clustering is enabled or
+- *  <code>null</code> if clustering is to be enabled at all zoom levels.
+- * @property {boolean} [zoomOnClick=true] Whether to zoom the map when a cluster marker is
+- *  clicked. You may want to set this to <code>false</code> if you have installed a handler
+- *  for the <code>click</code> event and it deals with zooming on its own.
+- * @property {boolean} [averageCenter=false] Whether the position of a cluster marker should be
+- *  the average position of all markers in the cluster. If set to <code>false</code>, the
+- *  cluster marker is positioned at the location of the first marker added to the cluster.
+- * @property {number} [minimumClusterSize=2] The minimum number of markers needed in a cluster
+- *  before the markers are hidden and a cluster marker appears.
+- * @property {boolean} [ignoreHidden=false] Whether to ignore hidden markers in clusters. You
+- *  may want to set this to <code>true</code> to ensure that hidden markers are not included
+- *  in the marker count that appears on a cluster marker (this count is the value of the
+- *  <code>text</code> property of the result returned by the default <code>calculator</code>).
+- *  If set to <code>true</code> and you change the visibility of a marker being clustered, be
+- *  sure to also call <code>MarkerClusterer.repaint()</code>.
+- * @property {boolean} [printable=false] Whether to make the cluster icons printable. Do not
+- *  set to <code>true</code> if the <code>url</code> fields in the <code>styles</code> array
+- *  refer to image sprite files.
+- * @property {string} [title=""] The tooltip to display when the mouse moves over a cluster
+- *  marker.
+- * @property {function} [calculator=MarkerClusterer.CALCULATOR] The function used to determine
+- *  the text to be displayed on a cluster marker and the index indicating which style to use
+- *  for the cluster marker. The input parameters for the function are (1) the array of markers
+- *  represented by a cluster marker and (2) the number of cluster icon styles. It returns a
+- *  {@link ClusterIconInfo} object. The default <code>calculator</code> returns a
+- *  <code>text</code> property which is the number of markers in the cluster and an
+- *  <code>index</code> property which is one higher than the lowest integer such that
+- *  <code>10^i</code> exceeds the number of markers in the cluster, or the size of the styles
+- *  array, whichever is less. The <code>styles</code> array element used has an index of
+- *  <code>index</code> minus 1. For example, the default <code>calculator</code> returns a
+- *  <code>text</code> value of <code>"125"</code> and an <code>index</code> of <code>3</code>
+- *  for a cluster icon representing 125 markers so the element used in the <code>styles</code>
+- *  array is <code>2</code>.
+- * @property {Array} [styles] An array of {@link ClusterIconStyle} elements defining the styles
+- *  of the cluster markers to be used. The element to be used to style a given cluster marker
+- *  is determined by the function defined by the <code>calculator</code> property.
+- *  The default is an array of {@link ClusterIconStyle} elements whose properties are derived
+- *  from the values for <code>imagePath</code>, <code>imageExtension</code>, and
+- *  <code>imageSizes</code>.
+- * @property {number} [batchSize=MarkerClusterer.BATCH_SIZE] Set this property to the
+- *  number of markers to be processed in a single batch when using a browser other than
+- *  Internet Explorer (for Internet Explorer, use the batchSizeIE property instead).
+- * @property {number} [batchSizeIE=MarkerClusterer.BATCH_SIZE_IE] When Internet Explorer is
+- *  being used, markers are processed in several batches with a small delay inserted between
+- *  each batch in an attempt to avoid Javascript timeout errors. Set this property to the
+- *  number of markers to be processed in a single batch; select as high a number as you can
+- *  without causing a timeout error in the browser. This number might need to be as low as 100
+- *  if 15,000 markers are being managed, for example.
+- * @property {string} [imagePath=MarkerClusterer.IMAGE_PATH]
+- *  The full URL of the root name of the group of image files to use for cluster icons.
+- *  The complete file name is of the form <code>imagePath</code>n.<code>imageExtension</code>
+- *  where n is the image file number (1, 2, etc.).
+- * @property {string} [imageExtension=MarkerClusterer.IMAGE_EXTENSION]
+- *  The extension name for the cluster icon image files (e.g., <code>"png"</code> or
+- *  <code>"jpg"</code>).
+- * @property {Array} [imageSizes=MarkerClusterer.IMAGE_SIZES]
+- *  An array of numbers containing the widths of the group of
+- *  <code>imagePath</code>n.<code>imageExtension</code> image files.
+- *  (The images are assumed to be square.)
+- */
+-/**
+- * Creates a MarkerClusterer object with the options specified in {@link MarkerClustererOptions}.
+- * @constructor
+- * @extends google.maps.OverlayView
+- * @param {google.maps.Map} map The Google map to attach to.
+- * @param {Array.<google.maps.Marker>} [opt_markers] The markers to be added to the cluster.
+- * @param {MarkerClustererOptions} [opt_options] The optional parameters.
+- */
+-function MarkerClusterer(map, opt_markers, opt_options) {
+-    // MarkerClusterer implements google.maps.OverlayView interface. We use the
+-    // extend function to extend MarkerClusterer with google.maps.OverlayView
+-    // because it might not always be available when the code is defined so we
+-    // look for it at the last possible moment. If it doesn't exist now then
+-    // there is no point going ahead :)
+-    this.extend(MarkerClusterer, google.maps.OverlayView);
+-
+-    opt_markers = opt_markers || [];
+-    opt_options = opt_options || {};
+-
+-    this.markers_ = [];
+-    this.clusters_ = [];
+-    this.listeners_ = [];
+-    this.activeMap_ = null;
+-    this.ready_ = false;
+-
+-    this.gridSize_ = opt_options.gridSize || 60;
+-    this.minClusterSize_ = opt_options.minimumClusterSize || 2;
+-    this.maxZoom_ = opt_options.maxZoom || null;
+-    this.styles_ = opt_options.styles || [];
+-    this.title_ = opt_options.title || "";
+-    this.zoomOnClick_ = true;
+-    if (opt_options.zoomOnClick !== undefined) {
+-        this.zoomOnClick_ = opt_options.zoomOnClick;
+-    }
+-    this.averageCenter_ = false;
+-    if (opt_options.averageCenter !== undefined) {
+-        this.averageCenter_ = opt_options.averageCenter;
+-    }
+-    this.ignoreHidden_ = false;
+-    if (opt_options.ignoreHidden !== undefined) {
+-        this.ignoreHidden_ = opt_options.ignoreHidden;
+-    }
+-    this.printable_ = false;
+-    if (opt_options.printable !== undefined) {
+-        this.printable_ = opt_options.printable;
+-    }
+-    this.imagePath_ = opt_options.imagePath || MarkerClusterer.IMAGE_PATH;
+-    this.imageExtension_ = opt_options.imageExtension || MarkerClusterer.IMAGE_EXTENSION;
+-    this.imageSizes_ = opt_options.imageSizes || MarkerClusterer.IMAGE_SIZES;
+-    this.calculator_ = opt_options.calculator || MarkerClusterer.CALCULATOR;
+-    this.batchSize_ = opt_options.batchSize || MarkerClusterer.BATCH_SIZE;
+-    this.batchSizeIE_ = opt_options.batchSizeIE || MarkerClusterer.BATCH_SIZE_IE;
+-
+-    if (navigator.userAgent.toLowerCase().indexOf("msie") !== -1) {
+-        // Try to avoid IE timeout when processing a huge number of markers:
+-        this.batchSize_ = this.batchSizeIE_;
+-    }
+-
+-    this.setupStyles_();
+-
+-    this.addMarkers(opt_markers, true);
+-    this.setMap(map); // Note: this causes onAdd to be called
+-}
+-
+-
+-/**
+- * Implementation of the onAdd interface method.
+- * @ignore
+- */
+-MarkerClusterer.prototype.onAdd = function () {
+-    var cMarkerClusterer = this;
+-
+-    this.activeMap_ = this.getMap();
+-    this.ready_ = true;
+-
+-    this.repaint();
+-
+-    // Add the map event listeners
+-    this.listeners_ = [
+-        google.maps.event.addListener(this.getMap(), "zoom_changed", function () {
+-            cMarkerClusterer.resetViewport_(false);
+-            // Workaround for this Google bug: when map is at level 0 and "-" of
+-            // zoom slider is clicked, a "zoom_changed" event is fired even though
+-            // the map doesn't zoom out any further. In this situation, no "idle"
+-            // event is triggered so the cluster markers that have been removed
+-            // do not get redrawn.
+-            if (this.getZoom() === 0) {
+-                google.maps.event.trigger(this, "idle");
+-            }
+-        }),
+-        google.maps.event.addListener(this.getMap(), "idle", function () {
+-            cMarkerClusterer.redraw_();
+-        })
+-    ];
+-};
+-
+-
+-/**
+- * Implementation of the onRemove interface method.
+- * Removes map event listeners and all cluster icons from the DOM.
+- * All managed markers are also put back on the map.
+- * @ignore
+- */
+-MarkerClusterer.prototype.onRemove = function () {
+-    var i;
+-
+-    // Put all the managed markers back on the map:
+-    for (i = 0; i < this.markers_.length; i++) {
+-        this.markers_[i].setMap(this.activeMap_);
+-    }
+-
+-    // Remove all clusters:
+-    for (i = 0; i < this.clusters_.length; i++) {
+-        this.clusters_[i].remove();
+-    }
+-    this.clusters_ = [];
+-
+-    // Remove map event listeners:
+-    for (i = 0; i < this.listeners_.length; i++) {
+-        google.maps.event.removeListener(this.listeners_[i]);
+-    }
+-    this.listeners_ = [];
+-
+-    this.activeMap_ = null;
+-    this.ready_ = false;
+-};
+-
+-
+-/**
+- * Implementation of the draw interface method.
+- * @ignore
+- */
+-MarkerClusterer.prototype.draw = function () {};
+-
+-
+-/**
+- * Sets up the styles object.
+- */
+-MarkerClusterer.prototype.setupStyles_ = function () {
+-    var i, size;
+-    if (this.styles_.length > 0) {
+-        return;
+-    }
+-
+-    for (i = 0; i < this.imageSizes_.length; i++) {
+-        size = this.imageSizes_[i];
+-        this.styles_.push({
+-            url: this.imagePath_ + (i + 1) + "." + this.imageExtension_,
+-            height: size,
+-            width: size
+-        });
+-    }
+-};
+-
+-
+-/**
+- *  Fits the map to the bounds of the markers managed by the clusterer.
+- */
+-MarkerClusterer.prototype.fitMapToMarkers = function () {
+-    var i;
+-    var markers = this.getMarkers();
+-    var bounds = new google.maps.LatLngBounds();
+-    for (i = 0; i < markers.length; i++) {
+-        bounds.extend(markers[i].getPosition());
+-    }
+-
+-    this.getMap().fitBounds(bounds);
+-};
+-
+-
+-/**
+- * Returns the value of the <code>gridSize</code> property.
+- *
+- * @return {number} The grid size.
+- */
+-MarkerClusterer.prototype.getGridSize = function () {
+-    return this.gridSize_;
+-};
+-
+-
+-/**
+- * Sets the value of the <code>gridSize</code> property.
+- *
+- * @param {number} gridSize The grid size.
+- */
+-MarkerClusterer.prototype.setGridSize = function (gridSize) {
+-    this.gridSize_ = gridSize;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>minimumClusterSize</code> property.
+- *
+- * @return {number} The minimum cluster size.
+- */
+-MarkerClusterer.prototype.getMinimumClusterSize = function () {
+-    return this.minClusterSize_;
+-};
+-
+-/**
+- * Sets the value of the <code>minimumClusterSize</code> property.
+- *
+- * @param {number} minimumClusterSize The minimum cluster size.
+- */
+-MarkerClusterer.prototype.setMinimumClusterSize = function (minimumClusterSize) {
+-    this.minClusterSize_ = minimumClusterSize;
+-};
+-
+-
+-/**
+- *  Returns the value of the <code>maxZoom</code> property.
+- *
+- *  @return {number} The maximum zoom level.
+- */
+-MarkerClusterer.prototype.getMaxZoom = function () {
+-    return this.maxZoom_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>maxZoom</code> property.
+- *
+- *  @param {number} maxZoom The maximum zoom level.
+- */
+-MarkerClusterer.prototype.setMaxZoom = function (maxZoom) {
+-    this.maxZoom_ = maxZoom;
+-};
+-
+-
+-/**
+- *  Returns the value of the <code>styles</code> property.
+- *
+- *  @return {Array} The array of styles defining the cluster markers to be used.
+- */
+-MarkerClusterer.prototype.getStyles = function () {
+-    return this.styles_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>styles</code> property.
+- *
+- *  @param {Array.<ClusterIconStyle>} styles The array of styles to use.
+- */
+-MarkerClusterer.prototype.setStyles = function (styles) {
+-    this.styles_ = styles;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>title</code> property.
+- *
+- * @return {string} The content of the title text.
+- */
+-MarkerClusterer.prototype.getTitle = function () {
+-    return this.title_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>title</code> property.
+- *
+- *  @param {string} title The value of the title property.
+- */
+-MarkerClusterer.prototype.setTitle = function (title) {
+-    this.title_ = title;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>zoomOnClick</code> property.
+- *
+- * @return {boolean} True if zoomOnClick property is set.
+- */
+-MarkerClusterer.prototype.getZoomOnClick = function () {
+-    return this.zoomOnClick_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>zoomOnClick</code> property.
+- *
+- *  @param {boolean} zoomOnClick The value of the zoomOnClick property.
+- */
+-MarkerClusterer.prototype.setZoomOnClick = function (zoomOnClick) {
+-    this.zoomOnClick_ = zoomOnClick;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>averageCenter</code> property.
+- *
+- * @return {boolean} True if averageCenter property is set.
+- */
+-MarkerClusterer.prototype.getAverageCenter = function () {
+-    return this.averageCenter_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>averageCenter</code> property.
+- *
+- *  @param {boolean} averageCenter The value of the averageCenter property.
+- */
+-MarkerClusterer.prototype.setAverageCenter = function (averageCenter) {
+-    this.averageCenter_ = averageCenter;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>ignoreHidden</code> property.
+- *
+- * @return {boolean} True if ignoreHidden property is set.
+- */
+-MarkerClusterer.prototype.getIgnoreHidden = function () {
+-    return this.ignoreHidden_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>ignoreHidden</code> property.
+- *
+- *  @param {boolean} ignoreHidden The value of the ignoreHidden property.
+- */
+-MarkerClusterer.prototype.setIgnoreHidden = function (ignoreHidden) {
+-    this.ignoreHidden_ = ignoreHidden;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>imageExtension</code> property.
+- *
+- * @return {string} The value of the imageExtension property.
+- */
+-MarkerClusterer.prototype.getImageExtension = function () {
+-    return this.imageExtension_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>imageExtension</code> property.
+- *
+- *  @param {string} imageExtension The value of the imageExtension property.
+- */
+-MarkerClusterer.prototype.setImageExtension = function (imageExtension) {
+-    this.imageExtension_ = imageExtension;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>imagePath</code> property.
+- *
+- * @return {string} The value of the imagePath property.
+- */
+-MarkerClusterer.prototype.getImagePath = function () {
+-    return this.imagePath_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>imagePath</code> property.
+- *
+- *  @param {string} imagePath The value of the imagePath property.
+- */
+-MarkerClusterer.prototype.setImagePath = function (imagePath) {
+-    this.imagePath_ = imagePath;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>imageSizes</code> property.
+- *
+- * @return {Array} The value of the imageSizes property.
+- */
+-MarkerClusterer.prototype.getImageSizes = function () {
+-    return this.imageSizes_;
+-};
+-
+-
+-/**
+- *  Sets the value of the <code>imageSizes</code> property.
+- *
+- *  @param {Array} imageSizes The value of the imageSizes property.
+- */
+-MarkerClusterer.prototype.setImageSizes = function (imageSizes) {
+-    this.imageSizes_ = imageSizes;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>calculator</code> property.
+- *
+- * @return {function} the value of the calculator property.
+- */
+-MarkerClusterer.prototype.getCalculator = function () {
+-    return this.calculator_;
+-};
+-
+-
+-/**
+- * Sets the value of the <code>calculator</code> property.
+- *
+- * @param {function(Array.<google.maps.Marker>, number)} calculator The value
+- *  of the calculator property.
+- */
+-MarkerClusterer.prototype.setCalculator = function (calculator) {
+-    this.calculator_ = calculator;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>printable</code> property.
+- *
+- * @return {boolean} the value of the printable property.
+- */
+-MarkerClusterer.prototype.getPrintable = function () {
+-    return this.printable_;
+-};
+-
+-
+-/**
+- * Sets the value of the <code>printable</code> property.
+- *
+- *  @param {boolean} printable The value of the printable property.
+- */
+-MarkerClusterer.prototype.setPrintable = function (printable) {
+-    this.printable_ = printable;
+-};
+-
+-
+-/**
+- * Returns the value of the <code>batchSizeIE</code> property.
+- *
+- * @return {number} the value of the batchSizeIE property.
+- */
+-MarkerClusterer.prototype.getBatchSizeIE = function () {
+-    return this.batchSizeIE_;
+-};
+-
+-
+-/**
+- * Sets the value of the <code>batchSizeIE</code> property.
+- *
+- *  @param {number} batchSizeIE The value of the batchSizeIE property.
+- */
+-MarkerClusterer.prototype.setBatchSizeIE = function (batchSizeIE) {
+-    this.batchSizeIE_ = batchSizeIE;
+-};
+-
+-
+-/**
+- *  Returns the array of markers managed by the clusterer.
+- *
+- *  @return {Array} The array of markers managed by the clusterer.
+- */
+-MarkerClusterer.prototype.getMarkers = function () {
+-    return this.markers_;
+-};
+-
+-
+-/**
+- *  Returns the number of markers managed by the clusterer.
+- *
+- *  @return {number} The number of markers.
+- */
+-MarkerClusterer.prototype.getTotalMarkers = function () {
+-    return this.markers_.length;
+-};
+-
+-
+-/**
+- * Returns the current array of clusters formed by the clusterer.
+- *
+- * @return {Array} The array of clusters formed by the clusterer.
+- */
+-MarkerClusterer.prototype.getClusters = function () {
+-    return this.clusters_;
+-};
+-
+-
+-/**
+- * Returns the number of clusters formed by the clusterer.
+- *
+- * @return {number} The number of clusters formed by the clusterer.
+- */
+-MarkerClusterer.prototype.getTotalClusters = function () {
+-    return this.clusters_.length;
+-};
+-
+-
+-/**
+- * Adds a marker to the clusterer. The clusters are redrawn unless
+- *  <code>opt_nodraw</code> is set to <code>true</code>.
+- *
+- * @param {google.maps.Marker} marker The marker to add.
+- * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
+- */
+-MarkerClusterer.prototype.addMarker = function (marker, opt_nodraw) {
+-    this.pushMarkerTo_(marker);
+-    if (!opt_nodraw) {
+-        this.redraw_();
+-    }
+-};
+-
+-
+-/**
+- * Adds an array of markers to the clusterer. The clusters are redrawn unless
+- *  <code>opt_nodraw</code> is set to <code>true</code>.
+- *
+- * @param {Array.<google.maps.Marker>} markers The markers to add.
+- * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
+- */
+-MarkerClusterer.prototype.addMarkers = function (markers, opt_nodraw) {
+-    var i;
+-    for (i = 0; i < markers.length; i++) {
+-        this.pushMarkerTo_(markers[i]);
+-    }
+-    if (!opt_nodraw) {
+-        this.redraw_();
+-    }
+-};
+-
+-
+-/**
+- * Pushes a marker to the clusterer.
+- *
+- * @param {google.maps.Marker} marker The marker to add.
+- */
+-MarkerClusterer.prototype.pushMarkerTo_ = function (marker) {
+-    // If the marker is draggable add a listener so we can update the clusters on the dragend:
+-    if (marker.getDraggable()) {
+-        var cMarkerClusterer = this;
+-        google.maps.event.addListener(marker, "dragend", function () {
+-            if (cMarkerClusterer.ready_) {
+-                this.isAdded = false;
+-                cMarkerClusterer.repaint();
+-            }
+-        });
+-    }
+-    marker.isAdded = false;
+-    this.markers_.push(marker);
+-};
+-
+-
+-/**
+- * Removes a marker from the cluster.  The clusters are redrawn unless
+- *  <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if the
+- *  marker was removed from the clusterer.
+- *
+- * @param {google.maps.Marker} marker The marker to remove.
+- * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
+- * @return {boolean} True if the marker was removed from the clusterer.
+- */
+-MarkerClusterer.prototype.removeMarker = function (marker, opt_nodraw) {
+-    var removed = this.removeMarker_(marker);
+-
+-    if (!opt_nodraw && removed) {
+-        this.repaint();
+-    }
+-
+-    return removed;
+-};
+-
+-
+-/**
+- * Removes an array of markers from the cluster. The clusters are redrawn unless
+- *  <code>opt_nodraw</code> is set to <code>true</code>. Returns <code>true</code> if markers
+- *  were removed from the clusterer.
+- *
+- * @param {Array.<google.maps.Marker>} markers The markers to remove.
+- * @param {boolean} [opt_nodraw] Set to <code>true</code> to prevent redrawing.
+- * @return {boolean} True if markers were removed from the clusterer.
+- */
+-MarkerClusterer.prototype.removeMarkers = function (markers, opt_nodraw) {
+-    var i, r;
+-    var removed = false;
+-
+-    for (i = 0; i < markers.length; i++) {
+-        r = this.removeMarker_(markers[i]);
+-        removed = removed || r;
+-    }
+-
+-    if (!opt_nodraw && removed) {
+-        this.repaint();
+-    }
+-
+-    return removed;
+-};
+-
+-
+-/**
+- * Removes a marker and returns true if removed, false if not.
+- *
+- * @param {google.maps.Marker} marker The marker to remove
+- * @return {boolean} Whether the marker was removed or not
+- */
+-MarkerClusterer.prototype.removeMarker_ = function (marker) {
+-    var i;
+-    var index = -1;
+-    if (this.markers_.indexOf) {
+-        index = this.markers_.indexOf(marker);
+-    } else {
+-        for (i = 0; i < this.markers_.length; i++) {
+-            if (marker === this.markers_[i]) {
+-                index = i;
+-                break;
+-            }
+-        }
+-    }
+-
+-    if (index === -1) {
+-        // Marker is not in our list of markers, so do nothing:
+-        return false;
+-    }
+-
+-    marker.setMap(null);
+-    this.markers_.splice(index, 1); // Remove the marker from the list of managed markers
+-    return true;
+-};
+-
+-
+-/**
+- * Removes all clusters and markers from the map and also removes all markers
+- *  managed by the clusterer.
+- */
+-MarkerClusterer.prototype.clearMarkers = function () {
+-    this.resetViewport_(true);
+-    this.markers_ = [];
+-};
+-
+-
+-/**
+- * Recalculates and redraws all the marker clusters from scratch.
+- *  Call this after changing any properties.
+- */
+-MarkerClusterer.prototype.repaint = function () {
+-    var oldClusters = this.clusters_.slice();
+-    this.clusters_ = [];
+-    this.resetViewport_(false);
+-    this.redraw_();
+-
+-    // Remove the old clusters.
+-    // Do it in a timeout to prevent blinking effect.
+-    setTimeout(function () {
+-        var i;
+-        for (i = 0; i < oldClusters.length; i++) {
+-            oldClusters[i].remove();
+-        }
+-    }, 0);
+-};
+-
+-
+-/**
+- * Returns the current bounds extended by the grid size.
+- *
+- * @param {google.maps.LatLngBounds} bounds The bounds to extend.
+- * @return {google.maps.LatLngBounds} The extended bounds.
+- * @ignore
+- */
+-MarkerClusterer.prototype.getExtendedBounds = function (bounds) {
+-    var projection = this.getProjection();
+-
+-    // Turn the bounds into latlng.
+-    var tr = new google.maps.LatLng(bounds.getNorthEast().lat(),
+-        bounds.getNorthEast().lng());
+-    var bl = new google.maps.LatLng(bounds.getSouthWest().lat(),
+-        bounds.getSouthWest().lng());
+-
+-    // Convert the points to pixels and the extend out by the grid size.
+-    var trPix = projection.fromLatLngToDivPixel(tr);
+-    trPix.x += this.gridSize_;
+-    trPix.y -= this.gridSize_;
+-
+-    var blPix = projection.fromLatLngToDivPixel(bl);
+-    blPix.x -= this.gridSize_;
+-    blPix.y += this.gridSize_;
+-
+-    // Convert the pixel points back to LatLng
+-    var ne = projection.fromDivPixelToLatLng(trPix);
+-    var sw = projection.fromDivPixelToLatLng(blPix);
+-
+-    // Extend the bounds to contain the new bounds.
+-    bounds.extend(ne);
+-    bounds.extend(sw);
+-
+-    return bounds;
+-};
+-
+-
+-/**
+- * Redraws all the clusters.
+- */
+-MarkerClusterer.prototype.redraw_ = function () {
+-    this.createClusters_(0);
+-};
+-
+-
+-/**
+- * Removes all clusters from the map. The markers are also removed from the map
+- *  if <code>opt_hide</code> is set to <code>true</code>.
+- *
+- * @param {boolean} [opt_hide] Set to <code>true</code> to also remove the markers
+- *  from the map.
+- */
+-MarkerClusterer.prototype.resetViewport_ = function (opt_hide) {
+-    var i, marker;
+-    // Remove all the clusters
+-    for (i = 0; i < this.clusters_.length; i++) {
+-        this.clusters_[i].remove();
+-    }
+-    this.clusters_ = [];
+-
+-    // Reset the markers to not be added and to be removed from the map.
+-    for (i = 0; i < this.markers_.length; i++) {
+-        marker = this.markers_[i];
+-        marker.isAdded = false;
+-        if (opt_hide) {
+-            marker.setMap(null);
+-        }
+-    }
+-};
+-
+-
+-/**
+- * Calculates the distance between two latlng locations in km.
+- *
+- * @param {google.maps.LatLng} p1 The first lat lng point.
+- * @param {google.maps.LatLng} p2 The second lat lng point.
+- * @return {number} The distance between the two points in km.
+- * @see http://www.movable-type.co.uk/scripts/latlong.html
+- */
+-MarkerClusterer.prototype.distanceBetweenPoints_ = function (p1, p2) {
+-    var R = 6371; // Radius of the Earth in km
+-    var dLat = (p2.lat() - p1.lat()) * Math.PI / 180;
+-    var dLon = (p2.lng() - p1.lng()) * Math.PI / 180;
+-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+-        Math.cos(p1.lat() * Math.PI / 180) * Math.cos(p2.lat() * Math.PI / 180) *
+-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+-    var d = R * c;
+-    return d;
+-};
+-
+-
+-/**
+- * Determines if a marker is contained in a bounds.
+- *
+- * @param {google.maps.Marker} marker The marker to check.
+- * @param {google.maps.LatLngBounds} bounds The bounds to check against.
+- * @return {boolean} True if the marker is in the bounds.
+- */
+-MarkerClusterer.prototype.isMarkerInBounds_ = function (marker, bounds) {
+-    return bounds.contains(marker.getPosition());
+-};
+-
+-
+-/**
+- * Adds a marker to a cluster, or creates a new cluster.
+- *
+- * @param {google.maps.Marker} marker The marker to add.
+- */
+-MarkerClusterer.prototype.addToClosestCluster_ = function (marker) {
+-    var i, d, cluster, center;
+-    var distance = 40000; // Some large number
+-    var clusterToAddTo = null;
+-    for (i = 0; i < this.clusters_.length; i++) {
+-        cluster = this.clusters_[i];
+-        center = cluster.getCenter();
+-        if (center) {
+-            d = this.distanceBetweenPoints_(center, marker.getPosition());
+-            if (d < distance) {
+-                distance = d;
+-                clusterToAddTo = cluster;
+-            }
+-        }
+-    }
+-
+-    if (clusterToAddTo && clusterToAddTo.isMarkerInClusterBounds(marker)) {
+-        clusterToAddTo.addMarker(marker);
+-    } else {
+-        cluster = new Cluster(this);
+-        cluster.addMarker(marker);
+-        this.clusters_.push(cluster);
+-    }
+-};
+-
+-
+-/**
+- * Creates the clusters. This is done in batches to avoid timeout errors
+- *  in some browsers when there is a huge number of markers.
+- *
+- * @param {number} iFirst The index of the first marker in the batch of
+- *  markers to be added to clusters.
+- */
+-MarkerClusterer.prototype.createClusters_ = function (iFirst) {
+-    var i, marker;
+-    var mapBounds;
+-    var cMarkerClusterer = this;
+-    if (!this.ready_) {
+-        return;
+-    }
+-
+-    // Cancel previous batch processing if we're working on the first batch:
+-    if (iFirst === 0) {
+-        /**
+-         * This event is fired when the <code>MarkerClusterer</code> begins
+-         *  clustering markers.
+-         * @name MarkerClusterer#clusteringbegin
+-         * @param {MarkerClusterer} mc The MarkerClusterer whose markers are being clustered.
+-         * @event
+-         */
+-        google.maps.event.trigger(this, "clusteringbegin", this);
+-
+-        if (typeof this.timerRefStatic !== "undefined") {
+-            clearTimeout(this.timerRefStatic);
+-            delete this.timerRefStatic;
+-        }
+-    }
+-
+-    // Get our current map view bounds.
+-    // Create a new bounds object so we don't affect the map.
+-    //
+-    // See Comments 9 & 11 on Issue 3651 relating to this workaround for a Google Maps bug:
+-    if (this.getMap().getZoom() > 3) {
+-        mapBounds = new google.maps.LatLngBounds(this.getMap().getBounds().getSouthWest(),
+-            this.getMap().getBounds().getNorthEast());
+-    } else {
+-        mapBounds = new google.maps.LatLngBounds(new google.maps.LatLng(85.02070771743472, -178.48388434375), new google.maps.LatLng(-85.08136444384544, 178.00048865625));
+-    }
+-    var bounds = this.getExtendedBounds(mapBounds);
+-
+-    var iLast = Math.min(iFirst + this.batchSize_, this.markers_.length);
+-
+-    for (i = iFirst; i < iLast; i++) {
+-        marker = this.markers_[i];
+-        if (!marker.isAdded && this.isMarkerInBounds_(marker, bounds)) {
+-            if (!this.ignoreHidden_ || (this.ignoreHidden_ && marker.getVisible())) {
+-                this.addToClosestCluster_(marker);
+-            }
+-        }
+-    }
+-
+-    if (iLast < this.markers_.length) {
+-        this.timerRefStatic = setTimeout(function () {
+-            cMarkerClusterer.createClusters_(iLast);
+-        }, 0);
+-    } else {
+-        delete this.timerRefStatic;
+-
+-        /**
+-         * This event is fired when the <code>MarkerClusterer</code> stops
+-         *  clustering markers.
+-         * @name MarkerClusterer#clusteringend
+-         * @param {MarkerClusterer} mc The MarkerClusterer whose markers are being clustered.
+-         * @event
+-         */
+-        google.maps.event.trigger(this, "clusteringend", this);
+-    }
+-};
+-
+-
+-/**
+- * Extends an object's prototype by another's.
+- *
+- * @param {Object} obj1 The object to be extended.
+- * @param {Object} obj2 The object to extend with.
+- * @return {Object} The new extended object.
+- * @ignore
+- */
+-MarkerClusterer.prototype.extend = function (obj1, obj2) {
+-    return (function (object) {
+-        var property;
+-        for (property in object.prototype) {
+-            this.prototype[property] = object.prototype[property];
+-        }
+-        return this;
+-    }).apply(obj1, [obj2]);
+-};
+-
+-
+-/**
+- * The default function for determining the label text and style
+- * for a cluster icon.
+- *
+- * @param {Array.<google.maps.Marker>} markers The array of markers represented by the cluster.
+- * @param {number} numStyles The number of marker styles available.
+- * @return {ClusterIconInfo} The information resource for the cluster.
+- * @constant
+- * @ignore
+- */
+-MarkerClusterer.CALCULATOR = function (markers, numStyles) {
+-    var index = 0;
+-    var count = markers.length.toString();
+-
+-    var dv = count;
+-    while (dv !== 0) {
+-        dv = parseInt(dv / 10, 10);
+-        index++;
+-    }
+-
+-    index = Math.min(index, numStyles);
+-    return {
+-        text: count,
+-        index: index
+-    };
+-};
+-
+-
+-/**
+- * The number of markers to process in one batch.
+- *
+- * @type {number}
+- * @constant
+- */
+-MarkerClusterer.BATCH_SIZE = 2000;
+-
+-
+-/**
+- * The number of markers to process in one batch (IE only).
+- *
+- * @type {number}
+- * @constant
+- */
+-MarkerClusterer.BATCH_SIZE_IE = 500;
+-
+-
+-/**
+- * The default root name for the marker cluster images.
+- *
+- * @type {string}
+- * @constant
+- */
+-MarkerClusterer.IMAGE_PATH = "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/images/m";
+-
+-
+-/**
+- * The default extension name for the marker cluster images.
+- *
+- * @type {string}
+- * @constant
+- */
+-MarkerClusterer.IMAGE_EXTENSION = "png";
+-
+-
+-/**
+- * The default array of sizes for the marker cluster images.
+- *
+- * @type {Array.<number>}
+- * @constant
+- */
+-MarkerClusterer.IMAGE_SIZES = [53, 56, 66, 78, 90];
+\ No newline at end of file
+-- 
+1.7.9.5
+

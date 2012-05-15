@@ -1,0 +1,71 @@
+From e8262ae46424d580fbb12a18f83b47cccf2fd3bb Mon Sep 17 00:00:00 2001
+From: Translation updater bot <l10n-bot@translatewiki.net>
+Date: Mon, 7 May 2012 20:42:34 +0000
+Subject: [PATCH 16/32] Localisation updates from http://translatewiki.net.
+
+Change-Id: I9d228f173934d08d1f2cf295bbd31f7680babf24
+---
+ Maps.i18n.php |    9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/Maps.i18n.php b/Maps.i18n.php
+index a41c818..f1c21d3 100644
+--- a/Maps.i18n.php
++++ b/Maps.i18n.php
+@@ -475,6 +475,8 @@ $messages['be-tarask'] = array(
+ 	'maps-loading-map' => 'Загрузка мапы…',
+ 	'maps-load-failed' => 'Немагчыма загрузіць мапу!',
+ 	'maps-markers' => 'Пазнакі',
++	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
++	'maps-searchmarkers-text' => 'Фільтраваць маркеры',
+ 	'maps-others' => 'іншыя',
+ 	'maps-ns-layer' => 'Слой',
+ 	'maps-ns-layer-talk' => 'Абмеркаваньне слоя',
+@@ -1236,6 +1238,7 @@ Cuando se utiliza junto con la etiqueta, el título aparecerá en negrita y subr
+ 	'validation-error-invalid-goverlays' => 'El parámetro $1 debe ser una o más superposiciones válidas.',
+ 	'validation-error-invalid-line-param' => 'Parámetro especificado "lines" no válido.',
+ 	'validation-error-invalid-polyline-param' => 'El parámetro "polylines" especificado no es válido',
++	'validation-error-invalid-searchmarkers-param' => 'Valor inválido de los marcadores de búsqueda; debería ser "all" o "title"',
+ 	'maps-abb-north' => 'N',
+ 	'maps-abb-east' => 'E',
+ 	'maps-abb-south' => 'S',
+@@ -1415,6 +1418,7 @@ $messages['fr'] = array(
+ 	'maps-load-failed' => 'Impossible de charger la carte !',
+ 	'maps-markers' => 'Marqueurs',
+ 	'maps-copycoords-prompt' => 'CTRL+C, ENTRÉE',
++	'maps-searchmarkers-text' => 'Marqueurs de filtre',
+ 	'maps-clustering-unsupportedservice' => 'Ce service ne supporte pas le regroupement de marqueurs',
+ 	'maps-others' => 'autres',
+ 	'maps-ns-layer' => 'Couche',
+@@ -1497,6 +1501,7 @@ Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
+ 	'validation-error-invalid-goverlays' => 'Le paramètre $1 doit être un ou plusieurs recouvrement(s) valide(s).',
+ 	'validation-error-invalid-line-param' => 'Paramètre "lines" non valide spécifié.',
+ 	'validation-error-invalid-polyline-param' => 'Paramètre "polylines" spécifié non valide',
++	'validation-error-invalid-searchmarkers-param' => 'Valeur des marqueurs de recherche invalide; ce devrait être "all" ou "title"',
+ 	'maps-abb-north' => 'N',
+ 	'maps-abb-east' => 'E',
+ 	'maps-abb-south' => 'S',
+@@ -2066,6 +2071,8 @@ $messages['hsb'] = array(
+ 	'validation-error-invalid-images' => 'Parameter $1 dyrbi jedyn wobraz abo wjacore wobrazy być.',
+ 	'validation-error-invalid-goverlay' => 'Parameter $1 dyrbi płaćiwa woršta być.',
+ 	'validation-error-invalid-goverlays' => 'Parameter $1 dyrbi jedna woršta abo wjacore woršty być.',
++	'validation-error-invalid-line-param' => 'Njepłaćiwy parameter "lines" podaty.',
++	'validation-error-invalid-polyline-param' => 'Njepłaćiwy parameter "polylines" podaty.',
+ 	'maps-abb-north' => 'S',
+ 	'maps-abb-east' => 'W',
+ 	'maps-abb-south' => 'J',
+@@ -3823,10 +3830,10 @@ $1',
+ );
+ 
+ /** Brazilian Portuguese (Português do Brasil)
++ * @author 555
+  * @author Eduardo.mps
+  * @author Giro720
+  * @author Luckas Blade
+- * @author 555
+  */
+ $messages['pt-br'] = array(
+ 	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://mapping.referata.com/wiki/Examples exemplos])',
+-- 
+1.7.9.5
+

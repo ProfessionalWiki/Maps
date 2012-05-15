@@ -1,0 +1,91 @@
+From d0902d13f6ff677165821018e93cbfd1ba77991d Mon Sep 17 00:00:00 2001
+From: jeroendedauw <jeroendedauw@gmail.com>
+Date: Tue, 15 May 2012 00:46:28 +0200
+Subject: [PATCH 28/32] scipr loading fixes for openlayers and yahoomaps + rem
+ dead globals
+
+Change-Id: I8f01d478ae368ce0c9bdedfd8b2b509d09699838
+---
+ includes/manipulations/Maps_ParamGeoService.php    |    2 +-
+ includes/services/OpenLayers/Maps_OpenLayers.php   |   11 +++++++++++
+ .../services/OpenLayers/ext.maps.openlayers.js     |    2 +-
+ includes/services/YahooMaps/Maps_YahooMaps.php     |    2 +-
+ includes/services/YahooMaps/ext.maps.yahoomaps.js  |    2 +-
+ 5 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/includes/manipulations/Maps_ParamGeoService.php b/includes/manipulations/Maps_ParamGeoService.php
+index 755e027..70add95 100644
+--- a/includes/manipulations/Maps_ParamGeoService.php
++++ b/includes/manipulations/Maps_ParamGeoService.php
+@@ -38,7 +38,7 @@ class MapsParamGeoService extends ItemParameterManipulation {
+ 	 * @since 0.7.5
+ 	 */	
+ 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
+-		global $egMapsDefaultGeoService, $egMapsUserGeoOverrides;
++		global $egMapsDefaultGeoService;
+ 		static $validatedDefault = false;		
+ 
+ 		if ( !MapsGeocoders::canGeocode() ) {
+diff --git a/includes/services/OpenLayers/Maps_OpenLayers.php b/includes/services/OpenLayers/Maps_OpenLayers.php
+index d0bc0eb..23ab0ab 100644
+--- a/includes/services/OpenLayers/Maps_OpenLayers.php
++++ b/includes/services/OpenLayers/Maps_OpenLayers.php
+@@ -147,5 +147,16 @@ class MapsOpenLayers extends MapsMappingService {
+ 			array( 'ext.maps.openlayers' )
+ 		);
+ 	}
++
++	/**
++	 * Returns a list of all config variables that should be passed to the JS.
++	 *
++	 * @since 1.0.1
++	 *
++	 * @return array
++	 */
++	public function getConfigVariables() {
++		return array_merge( parent::getConfigVariables(), array( 'egMapsScriptPath' => $GLOBALS['egMapsScriptPath'] ) );
++	}
+ 	
+ }
+diff --git a/includes/services/OpenLayers/ext.maps.openlayers.js b/includes/services/OpenLayers/ext.maps.openlayers.js
+index 8b8a770..79eeae9 100644
+--- a/includes/services/OpenLayers/ext.maps.openlayers.js
++++ b/includes/services/OpenLayers/ext.maps.openlayers.js
+@@ -25,7 +25,7 @@
+ 
+ 		$( '.maps-openlayers' ).each( function() {
+ 			var $this = $( this );
+-			$this.openlayers( jQuery.parseJSON( $this.find( 'div').text() ) );
++			$this.openlayers( $this.attr( 'id' ), jQuery.parseJSON( $this.find( 'div').text() ) );
+ 		} );
+ 
+ 	} );
+diff --git a/includes/services/YahooMaps/Maps_YahooMaps.php b/includes/services/YahooMaps/Maps_YahooMaps.php
+index c0a41e5..7e86ee5 100644
+--- a/includes/services/YahooMaps/Maps_YahooMaps.php
++++ b/includes/services/YahooMaps/Maps_YahooMaps.php
+@@ -45,7 +45,7 @@ class MapsYahooMaps extends MapsMappingService {
+ 	 */		
+ 	public function addParameterInfo( array &$params ) {
+ 		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes;
+-		global $egMapsYahooMapsZoom, $egMapsYMapControls, $egMapsResizableByDefault;
++		global $egMapsYMapControls, $egMapsResizableByDefault;
+ 		
+ 		$params['zoom']->addCriteria( new CriterionInRange( 1, 13 ) );
+ 		$params['zoom']->setDefault( self::getDefaultZoom() );		
+diff --git a/includes/services/YahooMaps/ext.maps.yahoomaps.js b/includes/services/YahooMaps/ext.maps.yahoomaps.js
+index 6e8af3e..9708386 100644
+--- a/includes/services/YahooMaps/ext.maps.yahoomaps.js
++++ b/includes/services/YahooMaps/ext.maps.yahoomaps.js
+@@ -12,7 +12,7 @@
+ 
+ 		$( '.maps-yahoomaps' ).each( function() {
+ 			var $this = $( this );
+-			$this.yahoomaps( jQuery.parseJSON( $this.find( 'div').text() ) );
++			$this.yahoomaps( $this.attr( 'id' ), jQuery.parseJSON( $this.find( 'div').text() ) );
+ 		} );
+ 
+ 	} );
+-- 
+1.7.9.5
+

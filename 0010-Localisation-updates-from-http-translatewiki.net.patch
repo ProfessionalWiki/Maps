@@ -1,0 +1,38 @@
+From 17b3a52de573b090f7f29909c1f523474a3247f1 Mon Sep 17 00:00:00 2001
+From: Translation updater bot <l10n-bot@translatewiki.net>
+Date: Fri, 27 Apr 2012 20:02:03 +0000
+Subject: [PATCH 10/32] Localisation updates from http://translatewiki.net.
+
+Change-Id: Idf77cf99fcf6a1e3e305b71424dedda6b082f4f6
+---
+ Maps.i18n.php |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Maps.i18n.php b/Maps.i18n.php
+index 0dd2f8f..9252738 100644
+--- a/Maps.i18n.php
++++ b/Maps.i18n.php
+@@ -2518,10 +2518,10 @@ $messages['ja'] = array(
+ 	'maps-desc' => 'ウィキページへの動的な地図の組み込み、住所の座標データへの変換などの地図関連操作を可能にする。([http://mapping.referata.com/wiki/Examples 実演])',
+ 	'right-geocode' => 'ジオコーディング',
+ 	'maps_map' => '地図',
+-	'maps-loading-map' => '地図を読み込み中…',
++	'maps-loading-map' => '地図を読み込み中...',
+ 	'maps-load-failed' => '地図を読み込めませんでした。',
+ 	'maps-markers' => 'マーカー',
+-	'maps-copycoords-prompt' => 'Ctrl+C, Enter',
++	'maps-copycoords-prompt' => 'Ctrl+C、Enter',
+ 	'maps-others' => 'その他',
+ 	'maps-ns-layer' => 'レイヤー',
+ 	'maps-ns-layer-talk' => 'レイヤー・トーク',
+@@ -2535,6 +2535,7 @@ $messages['ja'] = array(
+ 	'validation-error-invalid-layers' => '引数$1は1つ以上の有効なレイヤーでなければなりません。',
+ 	'maps-layer-of-type' => '種類$1のレイヤー',
+ 	'maps-layer-type-supported-by' => 'このレイヤー種は、{{PLURAL:$2|$1地図サービスでのみ利用可能です|以下の地図サービスで利用可能です：$1}}。',
++	'maps-distance-par-unit' => '距離を出力する単位です。',
+ 	'validation-error-invalid-location' => '引数$1は有効な場所でなければなりません。',
+ 	'validation-error-invalid-locations' => '引数$1は、1つそれ以上有効な場所でなければなりません。',
+ 	'validation-error-invalid-width' => '引数$1は有効な幅でなければなりません。',
+-- 
+1.7.9.5
+

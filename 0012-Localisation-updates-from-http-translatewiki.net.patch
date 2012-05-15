@@ -1,0 +1,140 @@
+From 4b4205c67af469bf0d0c0233a00f49cfabe338bd Mon Sep 17 00:00:00 2001
+From: Translation updater bot <l10n-bot@translatewiki.net>
+Date: Sat, 5 May 2012 09:36:29 +0000
+Subject: [PATCH 12/32] Localisation updates from http://translatewiki.net.
+
+Change-Id: Ib84cb47d559535acd9ebb2422df038999d2bf9e0
+---
+ Maps.i18n.php |   48 +++++++++++++++++++++++++++---------------------
+ 1 file changed, 27 insertions(+), 21 deletions(-)
+
+diff --git a/Maps.i18n.php b/Maps.i18n.php
+index 721f21f..a41c818 100644
+--- a/Maps.i18n.php
++++ b/Maps.i18n.php
+@@ -883,6 +883,7 @@ $messages['de'] = array(
+ 	'maps-load-failed' => 'Die Karte konnte nicht geladen werden.',
+ 	'maps-markers' => 'Markierungen',
+ 	'maps-copycoords-prompt' => 'STRG+C, ENTER',
++	'maps-searchmarkers-text' => 'Markierungen zum Filtern',
+ 	'maps-clustering-unsupportedservice' => 'Dieser Dienst unterstützt nicht das Gruppieren von Markierungen',
+ 	'maps-others' => 'andere',
+ 	'maps-ns-layer' => 'Ebene',
+@@ -964,6 +965,7 @@ Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markier
+ 	'validation-error-invalid-goverlays' => 'Parameter $1 muss einer oder mehreren gültigen Überlagerungen entsprechen.',
+ 	'validation-error-invalid-line-param' => 'Der Parameter „lines“ wurde falsch angegeben.',
+ 	'validation-error-invalid-polyline-param' => 'Der Parameter „polylines“ wurde falsch angegeben.',
++	'validation-error-invalid-searchmarkers-param' => 'Ungültiger Wert für die Markierungen zum Filtern. Er sollte entweder „all“ oder „title“ lauten.',
+ 	'maps-abb-north' => 'N',
+ 	'maps-abb-east' => 'O',
+ 	'maps-abb-south' => 'S',
+@@ -1151,6 +1153,7 @@ $messages['es'] = array(
+ 	'maps-load-failed' => '¡No se pudo cargar el mapa!',
+ 	'maps-markers' => 'Marcadores',
+ 	'maps-copycoords-prompt' => 'CTRL + C, ESCRIBA',
++	'maps-searchmarkers-text' => 'Marcadores de filtro',
+ 	'maps-clustering-unsupportedservice' => 'Este servicio no es compatible con clústeres de marcadores',
+ 	'maps-others' => 'otros',
+ 	'maps-ns-layer' => 'Capa',
+@@ -2179,6 +2182,7 @@ $messages['ia'] = array(
+ 	'maps-load-failed' => 'Non poteva cargar le carta!',
+ 	'maps-markers' => 'Marcatores',
+ 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
++	'maps-searchmarkers-text' => 'Filtrar marcatores',
+ 	'maps-clustering-unsupportedservice' => 'Iste servicio non supporta le aggruppamento de marcatores',
+ 	'maps-others' => 'alteres',
+ 	'maps-ns-layer' => 'Strato',
+@@ -2261,6 +2265,7 @@ Si usate con un etiquetta, le titulo essera monstrate in litteras grasse e subli
+ 	'validation-error-invalid-goverlays' => 'Le parametro $1 debe esser un o plus superpositiones valide.',
+ 	'validation-error-invalid-line-param' => 'Le parametro "lines" specificate es invalide.',
+ 	'validation-error-invalid-polyline-param' => 'Le parametro "polylines" specificate es invalide.',
++	'validation-error-invalid-searchmarkers-param' => 'Valor "searchmarkers" invalide, debe esser "all" o "title"',
+ 	'maps-abb-north' => 'N',
+ 	'maps-abb-east' => 'E',
+ 	'maps-abb-south' => 'S',
+@@ -2790,6 +2795,7 @@ $messages['mk'] = array(
+ 	'maps-load-failed' => 'Не можев да ја вчитам картата!',
+ 	'maps-markers' => 'Обележувачи',
+ 	'maps-copycoords-prompt' => 'Стиснете CTRL+C, па ENTER',
++	'maps-searchmarkers-text' => 'Филтрирање на одбележувачи',
+ 	'maps-clustering-unsupportedservice' => 'Оваа служба не поддржува групирање на бележници',
+ 	'maps-others' => 'други',
+ 	'maps-ns-layer' => 'Слој',
+@@ -2869,8 +2875,9 @@ $messages['mk'] = array(
+ 	'validation-error-invalid-images' => 'Параметарот $1 мора да биде една или повеќе важечки слики.',
+ 	'validation-error-invalid-goverlay' => 'Параметарот $1 мора да претставува важечка облога.',
+ 	'validation-error-invalid-goverlays' => 'Параметарот $1 мора да претставува една или повеќе важечки облоги.',
+-	'validation-error-invalid-line-param' => 'Укажан е погрешен параметар за „редови“.',
+-	'validation-error-invalid-polyline-param' => 'Укажан е погрешен параметар за „polylines“.',
++	'validation-error-invalid-line-param' => 'Укажан е погрешен параметар „lines“.',
++	'validation-error-invalid-polyline-param' => 'Укажан е погрешен параметар „polylines“.',
++	'validation-error-invalid-searchmarkers-param' => 'Неважечка вредност на одбележувачите за филтрирање. Треба да биде „all“ или „title“',
+ 	'maps-abb-north' => 'С',
+ 	'maps-abb-east' => 'И',
+ 	'maps-abb-south' => 'Ј',
+@@ -3819,10 +3826,10 @@ $1',
+  * @author Eduardo.mps
+  * @author Giro720
+  * @author Luckas Blade
++ * @author 555
+  */
+ $messages['pt-br'] = array(
+-	'maps-desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://mapping.referata.com/wiki/Maps_examples demonstração]).
+-Serviços de mapeamento disponíveis: $1',
++	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://mapping.referata.com/wiki/Examples exemplos])',
+ 	'maps_map' => 'Mapa',
+ 	'maps-loading-map' => 'Carregando mapa...',
+ 	'maps-markers' => 'Marcadores',
+@@ -3832,23 +3839,23 @@ Serviços de mapeamento disponíveis: $1',
+ 	'maps-layer-property' => 'Propriedade',
+ 	'maps-layer-value' => 'Valor',
+ 	'maps-layer-errors' => 'Erros',
+-	'maps-error-invalid-layerdef' => 'A definição desta camada não é válida.',
++	'maps-error-invalid-layerdef' => 'A definição desta camada é inválida.',
+ 	'maps-error-invalid-layertype' => 'Não existem camadas do tipo "$1". Só {{PLURAL:$3|é suportado o tipo|são suportados os tipos}}: $2',
+-	'maps-error-no-layertype' => 'Você precisa especificar o tipo da camada. {{PLURAL:$2|Só é suportado o tipo|São suportados os tipos}}: $1',
+-	'validation-error-invalid-layer' => 'O parâmetro $1 deve ser uma camada válida.',
+-	'validation-error-invalid-layers' => 'O parâmetro $1 deve ser uma ou mais camadas válidas.',
++	'maps-error-no-layertype' => 'Você precisa especificar o tipo de camada. {{PLURAL:$2|Só é suportado o tipo|São suportados os tipos}}: $1',
++	'validation-error-invalid-layer' => 'O parâmetro $1 precisa ser uma camada válida.',
++	'validation-error-invalid-layers' => 'O parâmetro $1 precisa ser uma ou mais camada(s) válida(s).',
+ 	'maps-layer-of-type' => 'Camada de tipo $1',
+ 	'maps-layer-type-supported-by' => 'Este tipo de camada só pode ser usado com {{PLURAL:$2|o serviço de cartografia $1|os serviços de cartografia: $1}}.',
+-	'validation-error-invalid-location' => 'O parâmetro $1 deve ser uma localização válida.',
+-	'validation-error-invalid-locations' => 'O parâmetro $1 deve ser uma localização válida.',
+-	'validation-error-invalid-width' => 'O parâmetro $1 deve ser uma largura válida.',
+-	'validation-error-invalid-height' => 'O parâmetro $1 deve ser uma altura válida.',
+-	'validation-error-invalid-distance' => 'O parâmetro $1 deve ser uma distância válida.',
+-	'validation-error-invalid-distances' => 'O parâmetro $1 deve ser uma ou mais distâncias válidas.',
+-	'validation-error-invalid-image' => 'O parâmetro $1 deve ser uma imagem válida.',
+-	'validation-error-invalid-images' => 'O parâmetro $1 deve ser uma ou mais imagens válidas.',
+-	'validation-error-invalid-goverlay' => 'O parâmetro $1 deve ser uma sobreposição válida.',
+-	'validation-error-invalid-goverlays' => 'O parâmetro $1 deve ser uma ou mais sobreposições válidas.',
++	'validation-error-invalid-location' => 'O parâmetro $1 precisa ser uma localização válida.',
++	'validation-error-invalid-locations' => 'O parâmetro $1 precisa ser uma ou mais localização(ões) válida(s).',
++	'validation-error-invalid-width' => 'O parâmetro $1 precisa ser uma largura válida.',
++	'validation-error-invalid-height' => 'O parâmetro $1 precisa ser uma altura válida.',
++	'validation-error-invalid-distance' => 'O parâmetro $1 precisa ser uma distância válida.',
++	'validation-error-invalid-distances' => 'O parâmetro $1 deve ser uma ou mais distância(s) válida(s).',
++	'validation-error-invalid-image' => 'O parâmetro $1 precisa ser uma imagem válida.',
++	'validation-error-invalid-images' => 'O parâmetro $1 precisa ser uma ou mais imagem(ns) válida(s).',
++	'validation-error-invalid-goverlay' => 'O parâmetro $1 precisa ser uma sobreposição válida.',
++	'validation-error-invalid-goverlays' => 'O parâmetro $1 precisa ser uma ou mais sobreposição(ões) válida(s).',
+ 	'maps-abb-north' => 'N',
+ 	'maps-abb-east' => 'L',
+ 	'maps-abb-south' => 'S',
+@@ -3856,9 +3863,8 @@ Serviços de mapeamento disponíveis: $1',
+ 	'maps-latitude' => 'Latitude:',
+ 	'maps-longitude' => 'Longitude:',
+ 	'maps-invalid-coordinates' => 'O valor $1 não foi reconhecido como um conjunto de coordenadas válido.',
+-	'maps_coordinates_missing' => 'Nenhuma coordenada fornecida para o mapa',
+-	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado|geocodificados}}: $1.
+-O mapa não pode ser exibido.',
++	'maps_coordinates_missing' => 'Não foram fornecidas coordenadas para o mapa.',
++	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado|geocodificados}}: $1.',
+ 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado e foi omitido|geocodificados e foram omitidos}} do mapa:
+ $1',
+ 	'maps_unrecognized_coords' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida|As seguintes coordenadas não foram reconhecidas}}: $1.',
+-- 
+1.7.9.5
+

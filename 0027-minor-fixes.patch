@@ -1,0 +1,39 @@
+From 5a69078dc76f98e598b43482a0b2e8d9d19886b5 Mon Sep 17 00:00:00 2001
+From: jeroendedauw <jeroendedauw@gmail.com>
+Date: Tue, 15 May 2012 00:37:47 +0200
+Subject: [PATCH 27/32] minor fixes
+
+Change-Id: If9b792119945839323c05466a1ae5bfb7a6190df
+---
+ includes/services/GoogleMaps3/Maps_GoogleMaps3.php |    1 -
+ test/MapsDistanceParserTest.php                    |    2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/includes/services/GoogleMaps3/Maps_GoogleMaps3.php b/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
+index a67f7c2..ce0f84b 100644
+--- a/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
++++ b/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
+@@ -211,7 +211,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
+ 	 */
+ 	protected function getDependencies() {
+ 		global $wgLang;
+-		global $egMapsStyleVersion, $egMapsScriptPath;
+ 
+ 		$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
+ 		
+diff --git a/test/MapsDistanceParserTest.php b/test/MapsDistanceParserTest.php
+index 28e1e5d..455eebb 100644
+--- a/test/MapsDistanceParserTest.php
++++ b/test/MapsDistanceParserTest.php
+@@ -32,7 +32,7 @@ class MapsDistanceParserTest extends MediaWikiTestCase {
+ 			'1 m' => 1,
+ 			'1000 m' => 1000.00,
+ 			'42.42 m' => 42.42,
+-			'42.42 m' => 42.4242,
++			'42.4242 m' => 42.4242,
+ 		),		
+ 		'km' => array(
+ 			//'0.001 km' => 1,
+-- 
+1.7.9.5
+

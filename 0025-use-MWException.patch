@@ -1,0 +1,252 @@
+From f755b95fd74ac00d4bdff391f777b62d6ee0d688 Mon Sep 17 00:00:00 2001
+From: jeroendedauw <jeroendedauw@gmail.com>
+Date: Mon, 14 May 2012 23:25:19 +0200
+Subject: [PATCH 25/32] use MWException
+
+Change-Id: If483964ee342c7d5603e4d03d05db366179aa50d
+---
+ includes/Maps_CoordinateParser.php              |    6 +++---
+ includes/Maps_Geocoders.php                     |    8 ++++----
+ includes/Maps_Location.php                      |   10 +++++-----
+ includes/Maps_MappingService.php                |    2 +-
+ includes/Maps_MappingServices.php               |    4 ++--
+ includes/features/Maps_BaseMap.php              |    2 +-
+ includes/manipulations/Maps_ParamGeoService.php |    6 +++---
+ includes/parserHooks/Maps_Coordinates.php       |    2 +-
+ includes/parserHooks/Maps_Finddestination.php   |    2 +-
+ includes/parserHooks/Maps_Geodistance.php       |    2 +-
+ 10 files changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/includes/Maps_CoordinateParser.php b/includes/Maps_CoordinateParser.php
+index 712a01e..4ae9396 100644
+--- a/includes/Maps_CoordinateParser.php
++++ b/includes/Maps_CoordinateParser.php
+@@ -295,7 +295,7 @@ class MapsCoordinateParser {
+ 					( $coordinate - $degrees ) * 60, self::SYMBOL_MIN
+ 				);
+ 			default:
+-				throw new Exception( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
++				throw new MWException( __METHOD__ . " does not support formatting of coordinates to the $targetFormat notation." );
+ 		}
+ 	}
+ 	
+@@ -320,7 +320,7 @@ class MapsCoordinateParser {
+ 			case Maps_COORDS_DMS:
+ 				return self::parseDMSCoordinate( $coordinate );
+ 			default:
+-				throw new Exception( __METHOD__ . " does not support parsing of the $coordType coordinate type." );
++				throw new MWException( __METHOD__ . " does not support parsing of the $coordType coordinate type." );
+ 		}
+ 	}
+ 	
+@@ -530,7 +530,7 @@ class MapsCoordinateParser {
+ 	 */
+ 	protected static function parseDMSCoordinate( $coordinate ) {
+ 		if ( !is_string( $coordinate ) ) {
+-			throw new Exception( 'Parameter $coordinate must be a string at ' . __METHOD__ );
++			throw new MWException( 'Parameter $coordinate must be a string at ' . __METHOD__ );
+ 		}
+ 		
+ 		$isNegative = $coordinate{0} == '-';
+diff --git a/includes/Maps_Geocoders.php b/includes/Maps_Geocoders.php
+index a62e562..591cc60 100644
+--- a/includes/Maps_Geocoders.php
++++ b/includes/Maps_Geocoders.php
+@@ -180,7 +180,7 @@ final class MapsGeocoders {
+ 	 */
+ 	public static function geocode( $address, $geoService = '', $mappingService = false ) {
+ 		if ( !is_string( $address ) ) {
+-			throw new Exception( 'Parameter $address must be a string at ' . __METHOD__ );
++			throw new MWException( 'Parameter $address must be a string at ' . __METHOD__ );
+ 		}		
+ 		
+ 		if ( !self::canGeocode() ) {
+@@ -322,11 +322,11 @@ final class MapsGeocoders {
+ 					self::$geocoders[$geocoderIdentifier] = $geocoder;
+ 				//}
+ 				//else {
+-				//	throw new Exception( 'The geocoder linked to identifier ' . $geocoderIdentifier . ' does not implement .' );
++				//	throw new MWException( 'The geocoder linked to identifier ' . $geocoderIdentifier . ' does not implement .' );
+ 				//}
+ 			}
+ 			else {
+-				throw new Exception( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
++				throw new MWException( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
+ 			}
+ 		}
+ 
+@@ -355,7 +355,7 @@ final class MapsGeocoders {
+ 					$services = array_keys( self::$registeredGeocoders );
+ 					$egMapsDefaultGeoService = array_shift( $services );
+ 					if ( is_null( $egMapsDefaultGeoService ) ) {
+-						throw new Exception( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
++						throw new MWException( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
+ 					}
+ 				}
+ 			}
+diff --git a/includes/Maps_Location.php b/includes/Maps_Location.php
+index aab6ba9..bcfdc4b 100644
+--- a/includes/Maps_Location.php
++++ b/includes/Maps_Location.php
+@@ -204,7 +204,7 @@ class MapsLocation extends MapsBaseElement {
+ 	 */
+ 	public function getLatitude() {
+ 		if ( !$this->isValid() ) {
+-			throw new Exception( 'Attempt to get the latitude of an invalid location' );
++			throw new MWException( 'Attempt to get the latitude of an invalid location' );
+ 		}
+ 		return $this->latitude;
+ 	}
+@@ -218,7 +218,7 @@ class MapsLocation extends MapsBaseElement {
+ 	 */
+ 	public function getLongitude() {
+ 		if ( !$this->isValid() ) {
+-			throw new Exception( 'Attempt to get the longitude of an invalid location' );
++			throw new MWException( 'Attempt to get the longitude of an invalid location' );
+ 		}
+ 		return $this->longitude;
+ 	}
+@@ -232,7 +232,7 @@ class MapsLocation extends MapsBaseElement {
+ 	 */
+ 	public function getAltitude() {
+ 		if ( !$this->isValid() ) {
+-			throw new Exception( 'Attempt to get the altitude of an invalid location' );
++			throw new MWException( 'Attempt to get the altitude of an invalid location' );
+ 		}
+ 		return $this->altitude;
+ 	}
+@@ -250,7 +250,7 @@ class MapsLocation extends MapsBaseElement {
+ 	 */
+ 	public function getCoordinates( $format = null, $directional = null, $separator = null ) {
+ 		if ( !$this->isValid() ) {
+-			throw new Exception( 'Attempt to get the coordinates for an invalid location' );
++			throw new MWException( 'Attempt to get the coordinates for an invalid location' );
+ 		}
+ 		return MapsCoordinateParser::formatCoordinates(
+ 			array( 'lat' => $this->latitude, 'lon' => $this->longitude ),
+@@ -272,7 +272,7 @@ class MapsLocation extends MapsBaseElement {
+ 	 */
+ 	public function getAddress( $geocodeIfEmpty = true ) {
+ 		if ( !$this->isValid() ) {
+-			throw new Exception( 'Attempt to get the address of an invalid location' );
++			throw new MWException( 'Attempt to get the address of an invalid location' );
+ 		}
+ 
+ 		if ( is_null( $this->address ) ) {
+diff --git a/includes/Maps_MappingService.php b/includes/Maps_MappingService.php
+index c44bb63..7f25b37 100644
+--- a/includes/Maps_MappingService.php
++++ b/includes/Maps_MappingService.php
+@@ -195,7 +195,7 @@ abstract class MapsMappingService implements iMappingService {
+ 		$className = $this->getFeature( $featureName );
+ 
+ 		if ( $className === false || !class_exists( $className ) ) {
+-			throw new Exception( 'Could not create a mapping feature class instance' );
++			throw new MWException( 'Could not create a mapping feature class instance' );
+ 		}
+ 
+ 		return new $className( $this );
+diff --git a/includes/Maps_MappingServices.php b/includes/Maps_MappingServices.php
+index 8d0d479..d04db58 100644
+--- a/includes/Maps_MappingServices.php
++++ b/includes/Maps_MappingServices.php
+@@ -95,11 +95,11 @@ final class MapsMappingServices {
+ 					self::$services[$serviceIdentifier] = $service;
+ 				}
+ 				else {
+-					throw new Exception( 'The service object linked to service identifier ' . $serviceIdentifier . ' does not implement iMappingService.' );
++					throw new MWException( 'The service object linked to service identifier ' . $serviceIdentifier . ' does not implement iMappingService.' );
+ 				}
+ 			}
+ 			else {
+-				throw new Exception( 'There is no service object linked to service identifier ' . $serviceIdentifier . '.' );
++				throw new MWException( 'There is no service object linked to service identifier ' . $serviceIdentifier . '.' );
+ 			}
+ 		}
+ 
+diff --git a/includes/features/Maps_BaseMap.php b/includes/features/Maps_BaseMap.php
+index d0afa97..03525b3 100644
+--- a/includes/features/Maps_BaseMap.php
++++ b/includes/features/Maps_BaseMap.php
+@@ -161,7 +161,7 @@ class MapsBaseMap {
+ 			$centre = MapsGeocoders::attemptToGeocode( $egMapsDefaultMapCentre, $params['geoservice'], $this->service->getName() );
+ 			
+ 			if ( $centre === false ) {
+-				throw new Exception( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
++				throw new MWException( 'Failed to parse the default centre for the map. Please check the value of $egMapsDefaultMapCentre.' );
+ 			}
+ 			else {
+ 				$params['centre'] = $centre;
+diff --git a/includes/manipulations/Maps_ParamGeoService.php b/includes/manipulations/Maps_ParamGeoService.php
+index 3d90050..755e027 100644
+--- a/includes/manipulations/Maps_ParamGeoService.php
++++ b/includes/manipulations/Maps_ParamGeoService.php
+@@ -42,7 +42,7 @@ class MapsParamGeoService extends ItemParameterManipulation {
+ 		static $validatedDefault = false;		
+ 
+ 		if ( !MapsGeocoders::canGeocode() ) {
+-			throw new Exception( 'There are no geocoders registered, so no geocoding can happen.' );
++			throw new MWException( 'There are no geocoders registered, so no geocoding can happen.' );
+ 		}
+ 		
+ 		// Get rid of any aliases.
+@@ -62,7 +62,7 @@ class MapsParamGeoService extends ItemParameterManipulation {
+ 					$egMapsDefaultGeoService = array_shift( $geoServices );
+ 
+ 					if ( is_null( $egMapsDefaultGeoService ) ) {
+-						throw new Exception( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
++						throw new MWException( 'Tried to geocode while there are no geocoders available at ' . __METHOD__  );
+ 					}
+ 				}
+ 			}
+@@ -71,7 +71,7 @@ class MapsParamGeoService extends ItemParameterManipulation {
+ 				$value = $egMapsDefaultGeoService;
+ 			}
+ 			else {
+-				throw new Exception( 'Attempt to use the default geocoder while it does not exist.' );
++				throw new MWException( 'Attempt to use the default geocoder while it does not exist.' );
+ 			}
+ 		}		
+ 	}
+diff --git a/includes/parserHooks/Maps_Coordinates.php b/includes/parserHooks/Maps_Coordinates.php
+index d0407c8..a704af0 100644
+--- a/includes/parserHooks/Maps_Coordinates.php
++++ b/includes/parserHooks/Maps_Coordinates.php
+@@ -111,7 +111,7 @@ class MapsCoordinates extends ParserHook {
+ 			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
+ 		} else {
+ 			// The coordinates should be valid when this method gets called.
+-			throw new Exception( 'Attempt to format an invalid set of coordinates' );
++			throw new MWException( 'Attempt to format an invalid set of coordinates' );
+ 		}
+ 		
+ 		return $output;		
+diff --git a/includes/parserHooks/Maps_Finddestination.php b/includes/parserHooks/Maps_Finddestination.php
+index 26eddc3..49fd4af 100644
+--- a/includes/parserHooks/Maps_Finddestination.php
++++ b/includes/parserHooks/Maps_Finddestination.php
+@@ -162,7 +162,7 @@ class MapsFinddestination extends ParserHook {
+ 			$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
+ 		} else {
+ 			// The location should be valid when this method gets called.
+-			throw new Exception( 'Attempt to find a destination from an invalid location' );
++			throw new MWException( 'Attempt to find a destination from an invalid location' );
+ 		}
+ 			
+ 		return $output;
+diff --git a/includes/parserHooks/Maps_Geodistance.php b/includes/parserHooks/Maps_Geodistance.php
+index b1a9ca3..2d16598 100644
+--- a/includes/parserHooks/Maps_Geodistance.php
++++ b/includes/parserHooks/Maps_Geodistance.php
+@@ -152,7 +152,7 @@ class MapsGeodistance extends ParserHook {
+ 			$output = MapsDistanceParser::formatDistance( MapsGeoFunctions::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
+ 		} else {
+ 			// The locations should be valid when this method gets called.
+-			throw new Exception( 'Attempt to find the distance between locations of at least one is invalid' );
++			throw new MWException( 'Attempt to find the distance between locations of at least one is invalid' );
+ 		}
+ 
+ 		return $output;
+-- 
+1.7.9.5
+

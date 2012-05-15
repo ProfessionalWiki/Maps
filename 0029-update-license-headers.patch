@@ -1,0 +1,856 @@
+From 7078516518a6af3ac3c99a3a74ba49a9ac8ae4e9 Mon Sep 17 00:00:00 2001
+From: jeroendedauw <jeroendedauw@gmail.com>
+Date: Tue, 15 May 2012 00:50:46 +0200
+Subject: [PATCH 29/32] update license headers
+
+Change-Id: I3eb31c94f63278da7f3ee78dbb402770683dd636
+---
+ Maps.hooks.php                                     |    2 +-
+ Maps.php                                           |    2 +-
+ Maps.settings.php                                  |    2 +-
+ includes/Maps_Circle.php                           |    2 +-
+ includes/Maps_CoordinateParser.php                 |    2 +-
+ includes/Maps_DistanceParser.php                   |    2 +-
+ includes/Maps_GeoFunctions.php                     |    2 +-
+ includes/Maps_Geocoder.php                         |    2 +-
+ includes/Maps_Geocoders.php                        |    2 +-
+ includes/Maps_KMLFormatter.php                     |    2 +-
+ includes/Maps_Layer.php                            |    2 +-
+ includes/Maps_LayerPage.php                        |    2 +-
+ includes/Maps_Layers.php                           |    2 +-
+ includes/Maps_Line.php                             |    2 +-
+ includes/Maps_Location.php                         |    2 +-
+ includes/Maps_Mapper.php                           |    2 +-
+ includes/Maps_MappingService.php                   |    2 +-
+ includes/Maps_MappingServices.php                  |    2 +-
+ includes/Maps_Polygon.php                          |    2 +-
+ includes/Maps_Rectangle.php                        |    2 +-
+ includes/Maps_Settings.php                         |    6 +++---
+ includes/api/ApiGeocode.php                        |    2 +-
+ includes/ext.maps.common.js                        |    2 +-
+ includes/ext.maps.coord.js                         |    2 +-
+ includes/geocoders/Maps_GeonamesGeocoder.php       |    2 +-
+ includes/geocoders/Maps_GoogleGeocoder.php         |    2 +-
+ includes/geocoders/Maps_YahooGeocoder.php          |    2 +-
+ includes/iMappingService.php                       |    2 +-
+ includes/layers/Maps_ImageLayer.php                |    2 +-
+ includes/layers/Maps_KMLLayer.php                  |    2 +-
+ includes/manipulations/Maps_ParamDimension.php     |    2 +-
+ includes/manipulations/Maps_ParamFile.php          |    2 +-
+ includes/manipulations/Maps_ParamGeoService.php    |    2 +-
+ includes/manipulations/Maps_ParamLocation.php      |    2 +-
+ includes/manipulations/Maps_ParamService.php       |    2 +-
+ includes/manipulations/Maps_ParamZoom.php          |    2 +-
+ includes/parserHooks/Maps_Coordinates.php          |    2 +-
+ includes/parserHooks/Maps_DisplayMap.php           |    2 +-
+ includes/parserHooks/Maps_DisplayPoint.php         |    2 +-
+ includes/parserHooks/Maps_Distance.php             |    2 +-
+ includes/parserHooks/Maps_Finddestination.php      |    2 +-
+ includes/parserHooks/Maps_Geocode.php              |    2 +-
+ includes/parserHooks/Maps_Geodistance.php          |    2 +-
+ includes/parserHooks/Maps_MapsDoc.php              |    2 +-
+ includes/services/GoogleMaps3/GoogleMaps3.php      |    2 +-
+ includes/services/GoogleMaps3/Maps_GoogleMaps3.php |    2 +-
+ .../services/GoogleMaps3/Maps_ParamGMap3Types.php  |    2 +-
+ includes/services/OSM/Maps_OSM.php                 |    2 +-
+ includes/services/OSM/Maps_OSMDispMap.php          |    2 +-
+ includes/services/OSM/OSM.php                      |    2 +-
+ includes/services/OpenLayers/CriterionOLLayer.php  |    2 +-
+ includes/services/OpenLayers/Maps_OpenLayers.php   |    2 +-
+ .../services/OpenLayers/Maps_ParamOLLayers.php     |    2 +-
+ includes/services/OpenLayers/OpenLayers.php        |    2 +-
+ includes/services/YahooMaps/Maps_ParamYMapType.php |    2 +-
+ includes/services/YahooMaps/Maps_YahooMaps.php     |    2 +-
+ includes/services/YahooMaps/YahooMaps.php          |    2 +-
+ test/MapsCoordinateParserTest.php                  |    2 +-
+ test/MapsDistanceParserTest.php                    |    2 +-
+ 59 files changed, 61 insertions(+), 61 deletions(-)
+
+diff --git a/Maps.hooks.php b/Maps.hooks.php
+index 98a6546..fae35b3 100644
+--- a/Maps.hooks.php
++++ b/Maps.hooks.php
+@@ -8,7 +8,7 @@
+  * @file Maps.hooks.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ final class MapsHooks {
+diff --git a/Maps.php b/Maps.php
+index c730723..f672c15 100644
+--- a/Maps.php
++++ b/Maps.php
+@@ -10,7 +10,7 @@
+  * @file Maps.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ 
+diff --git a/Maps.settings.php b/Maps.settings.php
+index eb15041..1afdbd7 100644
+--- a/Maps.settings.php
++++ b/Maps.settings.php
+@@ -9,7 +9,7 @@
+  * @file Maps.settings.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3+
++ * @licence GNU GPL v2++
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ 
+diff --git a/includes/Maps_Circle.php b/includes/Maps_Circle.php
+index ee76e17..c531401 100644
+--- a/includes/Maps_Circle.php
++++ b/includes/Maps_Circle.php
+@@ -7,7 +7,7 @@
+  * @file Maps_Circle.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Kim Eik < kim@heldig.org >
+  */
+ class MapsCircle extends MapsBaseFillableElement {
+diff --git a/includes/Maps_CoordinateParser.php b/includes/Maps_CoordinateParser.php
+index 4ae9396..9576678 100644
+--- a/includes/Maps_CoordinateParser.php
++++ b/includes/Maps_CoordinateParser.php
+@@ -18,7 +18,7 @@
+  * @file Maps_CoordinateParser.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsCoordinateParser {
+diff --git a/includes/Maps_DistanceParser.php b/includes/Maps_DistanceParser.php
+index e10b3ed..0f4e136 100644
+--- a/includes/Maps_DistanceParser.php
++++ b/includes/Maps_DistanceParser.php
+@@ -8,7 +8,7 @@
+  * 
+  * @since 0.6
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsDistanceParser {
+diff --git a/includes/Maps_GeoFunctions.php b/includes/Maps_GeoFunctions.php
+index 65bf447..1017686 100644
+--- a/includes/Maps_GeoFunctions.php
++++ b/includes/Maps_GeoFunctions.php
+@@ -11,7 +11,7 @@ define( 'Maps_EARTH_RADIUS', 6371000 );
+  * @file Maps_GeoFunctions.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  * @author Pnelnik
+  * @author Matěj Grabovský
+diff --git a/includes/Maps_Geocoder.php b/includes/Maps_Geocoder.php
+index 2db0834..19d2a18 100644
+--- a/includes/Maps_Geocoder.php
++++ b/includes/Maps_Geocoder.php
+@@ -8,7 +8,7 @@
+  * @file Maps_Geocoder.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ abstract class MapsGeocoder {
+diff --git a/includes/Maps_Geocoders.php b/includes/Maps_Geocoders.php
+index 591cc60..e84b767 100644
+--- a/includes/Maps_Geocoders.php
++++ b/includes/Maps_Geocoders.php
+@@ -8,7 +8,7 @@
+  * @file Maps_Geocoders.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ final class MapsGeocoders {
+diff --git a/includes/Maps_KMLFormatter.php b/includes/Maps_KMLFormatter.php
+index 5b2fe6e..0a4a350 100644
+--- a/includes/Maps_KMLFormatter.php
++++ b/includes/Maps_KMLFormatter.php
+@@ -8,7 +8,7 @@
+  * @file Maps_KMLFormatter.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsKMLFormatter {
+diff --git a/includes/Maps_Layer.php b/includes/Maps_Layer.php
+index ee738d2..56a379c 100644
+--- a/includes/Maps_Layer.php
++++ b/includes/Maps_Layer.php
+@@ -8,7 +8,7 @@
+  * @file Maps_Layer.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ abstract class MapsLayer {
+diff --git a/includes/Maps_LayerPage.php b/includes/Maps_LayerPage.php
+index ee8d71d..a2049ec 100644
+--- a/includes/Maps_LayerPage.php
++++ b/includes/Maps_LayerPage.php
+@@ -8,7 +8,7 @@
+  * @file Maps_LayerPage.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  * 
+  * TODO: check for the page being not created yet (then it's not invalid if there is nothing there...)
+diff --git a/includes/Maps_Layers.php b/includes/Maps_Layers.php
+index de61a06..8b38c9e 100644
+--- a/includes/Maps_Layers.php
++++ b/includes/Maps_Layers.php
+@@ -8,7 +8,7 @@
+  * @file Maps_Layers.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsLayers {
+diff --git a/includes/Maps_Line.php b/includes/Maps_Line.php
+index 08512d7..3cf705e 100644
+--- a/includes/Maps_Line.php
++++ b/includes/Maps_Line.php
+@@ -7,7 +7,7 @@
+  * @file Maps_Line.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Kim Eik < kim@heldig.org >
+  */
+ class MapsLine extends MapsBaseStrokableElement {
+diff --git a/includes/Maps_Location.php b/includes/Maps_Location.php
+index bcfdc4b..877c4fa 100644
+--- a/includes/Maps_Location.php
++++ b/includes/Maps_Location.php
+@@ -8,7 +8,7 @@
+  * @file Maps_Location.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  * @author Daniel Werner
+  */
+diff --git a/includes/Maps_Mapper.php b/includes/Maps_Mapper.php
+index b0c7af7..7db9c7c 100644
+--- a/includes/Maps_Mapper.php
++++ b/includes/Maps_Mapper.php
+@@ -8,7 +8,7 @@
+  * @file Maps_Mapper.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ final class MapsMapper {
+diff --git a/includes/Maps_MappingService.php b/includes/Maps_MappingService.php
+index 7f25b37..ae39158 100644
+--- a/includes/Maps_MappingService.php
++++ b/includes/Maps_MappingService.php
+@@ -9,7 +9,7 @@
+  * @file Maps_MappingService.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ abstract class MapsMappingService implements iMappingService {
+diff --git a/includes/Maps_MappingServices.php b/includes/Maps_MappingServices.php
+index d04db58..3aaed5c 100644
+--- a/includes/Maps_MappingServices.php
++++ b/includes/Maps_MappingServices.php
+@@ -8,7 +8,7 @@
+  * @file Maps_MappingServices.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ final class MapsMappingServices {
+diff --git a/includes/Maps_Polygon.php b/includes/Maps_Polygon.php
+index ee3bfd7..b0d3042 100644
+--- a/includes/Maps_Polygon.php
++++ b/includes/Maps_Polygon.php
+@@ -7,7 +7,7 @@
+  * @file Maps_Polygon.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Kim Eik < kim@heldig.org >
+  */
+ class MapsPolygon extends MapsBaseFillableElement implements iHoverableMapElement {
+diff --git a/includes/Maps_Rectangle.php b/includes/Maps_Rectangle.php
+index 222abfe..e99db7d 100644
+--- a/includes/Maps_Rectangle.php
++++ b/includes/Maps_Rectangle.php
+@@ -7,7 +7,7 @@
+  * @file Maps_Rectangle.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Kim Eik < kim@heldig.org >
+  */
+ class MapsRectangle extends MapsBaseFillableElement {
+diff --git a/includes/Maps_Settings.php b/includes/Maps_Settings.php
+index 7be7674..4444e93 100644
+--- a/includes/Maps_Settings.php
++++ b/includes/Maps_Settings.php
+@@ -8,7 +8,7 @@
+  * @file Maps_Settings.php
+  * @ingroup Maps
+  * 
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ final class MapsSettings extends ExtensionSettings {
+@@ -119,7 +119,7 @@ final class MapsSettings extends ExtensionSettings {
+  * 
+  * @since ?
+  * 
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ abstract class ExtensionSettings {
+@@ -331,7 +331,7 @@ abstract class ExtensionSettings {
+  * 
+  * @since ?
+  * 
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class Setting {
+diff --git a/includes/api/ApiGeocode.php b/includes/api/ApiGeocode.php
+index 4a29fa4..e7d5ee0 100644
+--- a/includes/api/ApiGeocode.php
++++ b/includes/api/ApiGeocode.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup API
+  *
+- * @licence GNU GPL v3+
++ * @licence GNU GPL v2++
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class ApiGeocode extends ApiBase {
+diff --git a/includes/ext.maps.common.js b/includes/ext.maps.common.js
+index d74d5c8..2dab2a4 100644
+--- a/includes/ext.maps.common.js
++++ b/includes/ext.maps.common.js
+@@ -5,7 +5,7 @@
+  * @since 1.0
+  * @ingroup Maps
+  * 
+- * @licence GNU GPL v3+
++ * @licence GNU GPL v2++
+  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+  */
+ window.maps = new ( function( $, mw ) {
+diff --git a/includes/ext.maps.coord.js b/includes/ext.maps.coord.js
+index e4cf2bc..d568f67 100644
+--- a/includes/ext.maps.coord.js
++++ b/includes/ext.maps.coord.js
+@@ -5,7 +5,7 @@
+  * @since 1.0
+  * @ingroup Maps
+  * 
+- * @licence GNU GPL v3+
++ * @licence GNU GPL v2++
+  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+  */
+ window.coord = new ( function( $ ) {
+diff --git a/includes/geocoders/Maps_GeonamesGeocoder.php b/includes/geocoders/Maps_GeonamesGeocoder.php
+index b1c5ee6..398554f 100644
+--- a/includes/geocoders/Maps_GeonamesGeocoder.php
++++ b/includes/geocoders/Maps_GeonamesGeocoder.php
+@@ -8,7 +8,7 @@
+  * @ingroup Maps
+  * @ingroup Geocoders
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ final class MapsGeonamesGeocoder extends MapsGeocoder {
+diff --git a/includes/geocoders/Maps_GoogleGeocoder.php b/includes/geocoders/Maps_GoogleGeocoder.php
+index 968da44..9431413 100644
+--- a/includes/geocoders/Maps_GoogleGeocoder.php
++++ b/includes/geocoders/Maps_GoogleGeocoder.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup Geocoders
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  * @author Sergey Chernyshev
+  * @author Desiree Gennaro
+diff --git a/includes/geocoders/Maps_YahooGeocoder.php b/includes/geocoders/Maps_YahooGeocoder.php
+index 8291f3e..e74e161 100644
+--- a/includes/geocoders/Maps_YahooGeocoder.php
++++ b/includes/geocoders/Maps_YahooGeocoder.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup Geocoders
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ final class MapsYahooGeocoder extends MapsGeocoder {
+diff --git a/includes/iMappingService.php b/includes/iMappingService.php
+index 157b709..476d8fa 100644
+--- a/includes/iMappingService.php
++++ b/includes/iMappingService.php
+@@ -8,7 +8,7 @@
+  * @file iMappingService.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ interface iMappingService {
+diff --git a/includes/layers/Maps_ImageLayer.php b/includes/layers/Maps_ImageLayer.php
+index 8c001c1..c4dae69 100644
+--- a/includes/layers/Maps_ImageLayer.php
++++ b/includes/layers/Maps_ImageLayer.php
+@@ -8,7 +8,7 @@
+  * @file Maps_ImageLayer.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsImageLayer extends MapsLayer {
+diff --git a/includes/layers/Maps_KMLLayer.php b/includes/layers/Maps_KMLLayer.php
+index 0628125..907813f 100644
+--- a/includes/layers/Maps_KMLLayer.php
++++ b/includes/layers/Maps_KMLLayer.php
+@@ -8,7 +8,7 @@
+  * @file Maps_KMLLayer.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsKMLLayer extends MapsLayer {
+diff --git a/includes/manipulations/Maps_ParamDimension.php b/includes/manipulations/Maps_ParamDimension.php
+index b9a0ae9..b4a1cd2 100644
+--- a/includes/manipulations/Maps_ParamDimension.php
++++ b/includes/manipulations/Maps_ParamDimension.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup ParameterManipulations
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamDimension extends ItemParameterManipulation {
+diff --git a/includes/manipulations/Maps_ParamFile.php b/includes/manipulations/Maps_ParamFile.php
+index b27e45d..b8bb9ea 100644
+--- a/includes/manipulations/Maps_ParamFile.php
++++ b/includes/manipulations/Maps_ParamFile.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup ParameterManipulations
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamFile extends ItemParameterManipulation {
+diff --git a/includes/manipulations/Maps_ParamGeoService.php b/includes/manipulations/Maps_ParamGeoService.php
+index 70add95..35b81d4 100644
+--- a/includes/manipulations/Maps_ParamGeoService.php
++++ b/includes/manipulations/Maps_ParamGeoService.php
+@@ -10,7 +10,7 @@
+  * @ingroup Maps
+  * @ingroup ParameterManipulations
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamGeoService extends ItemParameterManipulation {
+diff --git a/includes/manipulations/Maps_ParamLocation.php b/includes/manipulations/Maps_ParamLocation.php
+index 8582c38..431f1ae 100644
+--- a/includes/manipulations/Maps_ParamLocation.php
++++ b/includes/manipulations/Maps_ParamLocation.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup ParameterManipulations
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  * @author Daniel Werner
+  */
+diff --git a/includes/manipulations/Maps_ParamService.php b/includes/manipulations/Maps_ParamService.php
+index 64e73d4..756c6d1 100644
+--- a/includes/manipulations/Maps_ParamService.php
++++ b/includes/manipulations/Maps_ParamService.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup ParameterManipulations
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamService extends ItemParameterManipulation {
+diff --git a/includes/manipulations/Maps_ParamZoom.php b/includes/manipulations/Maps_ParamZoom.php
+index cc3e17d..01d2ca2 100644
+--- a/includes/manipulations/Maps_ParamZoom.php
++++ b/includes/manipulations/Maps_ParamZoom.php
+@@ -9,7 +9,7 @@
+  * @ingroup Maps
+  * @ingroup ParameterManipulations
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamZoom extends ItemParameterManipulation {
+diff --git a/includes/parserHooks/Maps_Coordinates.php b/includes/parserHooks/Maps_Coordinates.php
+index a704af0..7a4619d 100644
+--- a/includes/parserHooks/Maps_Coordinates.php
++++ b/includes/parserHooks/Maps_Coordinates.php
+@@ -9,7 +9,7 @@
+  * @file Maps_Coordinates.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsCoordinates extends ParserHook {
+diff --git a/includes/parserHooks/Maps_DisplayMap.php b/includes/parserHooks/Maps_DisplayMap.php
+index f73eed2..f6ff99e 100644
+--- a/includes/parserHooks/Maps_DisplayMap.php
++++ b/includes/parserHooks/Maps_DisplayMap.php
+@@ -8,7 +8,7 @@
+  * @file Maps_DisplayMap.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsDisplayMap extends ParserHook {
+diff --git a/includes/parserHooks/Maps_DisplayPoint.php b/includes/parserHooks/Maps_DisplayPoint.php
+index 6d57957..0bc6b42 100644
+--- a/includes/parserHooks/Maps_DisplayPoint.php
++++ b/includes/parserHooks/Maps_DisplayPoint.php
+@@ -8,7 +8,7 @@
+  * @file Maps_DisplayPoint.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsDisplayPoint extends ParserHook {
+diff --git a/includes/parserHooks/Maps_Distance.php b/includes/parserHooks/Maps_Distance.php
+index 304deca..429bb06 100644
+--- a/includes/parserHooks/Maps_Distance.php
++++ b/includes/parserHooks/Maps_Distance.php
+@@ -9,7 +9,7 @@
+  * @file Maps_Distance.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsDistance extends ParserHook {
+diff --git a/includes/parserHooks/Maps_Finddestination.php b/includes/parserHooks/Maps_Finddestination.php
+index 49fd4af..f51ccdc 100644
+--- a/includes/parserHooks/Maps_Finddestination.php
++++ b/includes/parserHooks/Maps_Finddestination.php
+@@ -9,7 +9,7 @@
+  * @file Maps_Finddestination.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsFinddestination extends ParserHook {
+diff --git a/includes/parserHooks/Maps_Geocode.php b/includes/parserHooks/Maps_Geocode.php
+index 314e5a1..616f0e5 100644
+--- a/includes/parserHooks/Maps_Geocode.php
++++ b/includes/parserHooks/Maps_Geocode.php
+@@ -9,7 +9,7 @@
+  * @file Maps_Geocode.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsGeocode extends ParserHook {
+diff --git a/includes/parserHooks/Maps_Geodistance.php b/includes/parserHooks/Maps_Geodistance.php
+index 2d16598..e1f0986 100644
+--- a/includes/parserHooks/Maps_Geodistance.php
++++ b/includes/parserHooks/Maps_Geodistance.php
+@@ -9,7 +9,7 @@
+  * @file Maps_Geodistance.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsGeodistance extends ParserHook {
+diff --git a/includes/parserHooks/Maps_MapsDoc.php b/includes/parserHooks/Maps_MapsDoc.php
+index c4dbfab..105f82b 100644
+--- a/includes/parserHooks/Maps_MapsDoc.php
++++ b/includes/parserHooks/Maps_MapsDoc.php
+@@ -9,7 +9,7 @@
+  * @file Maps_MapsDoc.php
+  * @ingroup Maps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsMapsDoc extends ParserHook {
+diff --git a/includes/services/GoogleMaps3/GoogleMaps3.php b/includes/services/GoogleMaps3/GoogleMaps3.php
+index d249585..5a50c99 100644
+--- a/includes/services/GoogleMaps3/GoogleMaps3.php
++++ b/includes/services/GoogleMaps3/GoogleMaps3.php
+@@ -13,7 +13,7 @@
+  * @file GoogleMaps3.php
+  * @ingroup MapsGoogleMaps3
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ 
+diff --git a/includes/services/GoogleMaps3/Maps_GoogleMaps3.php b/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
+index ce0f84b..48f67a5 100644
+--- a/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
++++ b/includes/services/GoogleMaps3/Maps_GoogleMaps3.php
+@@ -9,7 +9,7 @@
+  * @file Maps_GoogleMaps3.php
+  * @ingroup MapsGoogleMaps3
+  * 
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsGoogleMaps3 extends MapsMappingService {
+diff --git a/includes/services/GoogleMaps3/Maps_ParamGMap3Types.php b/includes/services/GoogleMaps3/Maps_ParamGMap3Types.php
+index 06832a0..3372ba3 100644
+--- a/includes/services/GoogleMaps3/Maps_ParamGMap3Types.php
++++ b/includes/services/GoogleMaps3/Maps_ParamGMap3Types.php
+@@ -10,7 +10,7 @@
+  * @ingroup ParameterManipulations
+  * @ingroup MapsGoogleMaps
+  * 
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamGMap3Types extends ListParameterManipulation {
+diff --git a/includes/services/OSM/Maps_OSM.php b/includes/services/OSM/Maps_OSM.php
+index 43e5221..3174d6b 100644
+--- a/includes/services/OSM/Maps_OSM.php
++++ b/includes/services/OSM/Maps_OSM.php
+@@ -9,7 +9,7 @@
+  * @file Maps_OSM.php
+  * @ingroup OSM
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsOSM extends MapsMappingService {
+diff --git a/includes/services/OSM/Maps_OSMDispMap.php b/includes/services/OSM/Maps_OSMDispMap.php
+index b838f42..3df5bcf 100644
+--- a/includes/services/OSM/Maps_OSMDispMap.php
++++ b/includes/services/OSM/Maps_OSMDispMap.php
+@@ -8,7 +8,7 @@
+  * @file Maps_OSMDispMap.php
+  * @ingroup OSM
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsOSMDispMap extends MapsBaseMap {
+diff --git a/includes/services/OSM/OSM.php b/includes/services/OSM/OSM.php
+index 9c2da80..e853100 100644
+--- a/includes/services/OSM/OSM.php
++++ b/includes/services/OSM/OSM.php
+@@ -13,7 +13,7 @@
+  * @file OSM.php
+  * @ingroup OSM
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ 
+diff --git a/includes/services/OpenLayers/CriterionOLLayer.php b/includes/services/OpenLayers/CriterionOLLayer.php
+index 409ef91..432595d 100644
+--- a/includes/services/OpenLayers/CriterionOLLayer.php
++++ b/includes/services/OpenLayers/CriterionOLLayer.php
+@@ -10,7 +10,7 @@
+  * @ingroup Criteria
+  * @ingroup MapsOpenLayers
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class CriterionOLLayer extends CriterionMapLayer {
+diff --git a/includes/services/OpenLayers/Maps_OpenLayers.php b/includes/services/OpenLayers/Maps_OpenLayers.php
+index 23ab0ab..1f17c40 100644
+--- a/includes/services/OpenLayers/Maps_OpenLayers.php
++++ b/includes/services/OpenLayers/Maps_OpenLayers.php
+@@ -9,7 +9,7 @@
+  * @file Maps_OpenLayers.php
+  * @ingroup MapsOpenLayers
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsOpenLayers extends MapsMappingService {
+diff --git a/includes/services/OpenLayers/Maps_ParamOLLayers.php b/includes/services/OpenLayers/Maps_ParamOLLayers.php
+index fa82e28..96fff3f 100644
+--- a/includes/services/OpenLayers/Maps_ParamOLLayers.php
++++ b/includes/services/OpenLayers/Maps_ParamOLLayers.php
+@@ -10,7 +10,7 @@
+  * @ingroup ParameterManipulations
+  * @ingroup MapsOpenLayers
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamOLLayers extends ListParameterManipulation {
+diff --git a/includes/services/OpenLayers/OpenLayers.php b/includes/services/OpenLayers/OpenLayers.php
+index 8a2305b..1d1130b 100644
+--- a/includes/services/OpenLayers/OpenLayers.php
++++ b/includes/services/OpenLayers/OpenLayers.php
+@@ -13,7 +13,7 @@
+  * @file OpenLayers.php
+  * @ingroup MapsOpenLayers
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ 
+diff --git a/includes/services/YahooMaps/Maps_ParamYMapType.php b/includes/services/YahooMaps/Maps_ParamYMapType.php
+index 45924af..1a087a5 100644
+--- a/includes/services/YahooMaps/Maps_ParamYMapType.php
++++ b/includes/services/YahooMaps/Maps_ParamYMapType.php
+@@ -10,7 +10,7 @@
+  * @ingroup ParameterManipulations
+  * @ingroup MapsYahooMaps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsParamYMapType extends ItemParameterManipulation {
+diff --git a/includes/services/YahooMaps/Maps_YahooMaps.php b/includes/services/YahooMaps/Maps_YahooMaps.php
+index 7e86ee5..a92bc24 100644
+--- a/includes/services/YahooMaps/Maps_YahooMaps.php
++++ b/includes/services/YahooMaps/Maps_YahooMaps.php
+@@ -7,7 +7,7 @@
+  * @file Maps_YahooMaps.php
+  * @ingroup MapsYahooMaps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsYahooMaps extends MapsMappingService {
+diff --git a/includes/services/YahooMaps/YahooMaps.php b/includes/services/YahooMaps/YahooMaps.php
+index e45f7bc..7f9a652 100644
+--- a/includes/services/YahooMaps/YahooMaps.php
++++ b/includes/services/YahooMaps/YahooMaps.php
+@@ -13,7 +13,7 @@
+  * @file YahooMaps.php
+  * @ingroup MapsYahooMaps
+  *
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ 
+diff --git a/test/MapsCoordinateParserTest.php b/test/MapsCoordinateParserTest.php
+index a418cc8..1edd1ec 100644
+--- a/test/MapsCoordinateParserTest.php
++++ b/test/MapsCoordinateParserTest.php
+@@ -6,7 +6,7 @@
+  * @ingroup Maps
+  * @since 0.6.5
+  * 
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsCoordinateParserTest extends MediaWikiTestCase {
+diff --git a/test/MapsDistanceParserTest.php b/test/MapsDistanceParserTest.php
+index 455eebb..6a93d73 100644
+--- a/test/MapsDistanceParserTest.php
++++ b/test/MapsDistanceParserTest.php
+@@ -6,7 +6,7 @@
+  * @ingroup Maps
+  * @since 0.6.5
+  * 
+- * @licence GNU GPL v3
++ * @licence GNU GPL v2+
+  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+  */
+ class MapsDistanceParserTest extends MediaWikiTestCase {
+-- 
+1.7.9.5
+

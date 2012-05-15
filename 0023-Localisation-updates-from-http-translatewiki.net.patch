@@ -1,0 +1,79 @@
+From def690800f5d3a94a540d0b428a98720c38f9690 Mon Sep 17 00:00:00 2001
+From: Translation updater bot <l10n-bot@translatewiki.net>
+Date: Sun, 13 May 2012 19:51:54 +0000
+Subject: [PATCH 23/32] Localisation updates from http://translatewiki.net.
+
+Change-Id: I46bc005592af90be065f764ed840768d289685c3
+---
+ Maps.i18n.php |   48 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/Maps.i18n.php b/Maps.i18n.php
+index 2d10043..3bda599 100644
+--- a/Maps.i18n.php
++++ b/Maps.i18n.php
+@@ -397,6 +397,7 @@ $messages['ast'] = array(
+ 	'maps-load-failed' => '¡Nun se pudo cargar el mapa!',
+ 	'maps-markers' => 'Marcadores',
+ 	'maps-copycoords-prompt' => 'CTRL+C, Intro',
++	'maps-searchmarkers-text' => 'Peñerar marcadores',
+ 	'maps-clustering-unsupportedservice' => 'Esti serviciu nun tien sofitu pa clusters de marcadores',
+ 	'maps-others' => 'otros',
+ 	'maps-ns-layer' => 'Capa',
+@@ -431,6 +432,53 @@ $messages['ast'] = array(
+ 	'maps-finddestination-par-bearing' => "La orientación d'aniciu.",
+ 	'maps-finddestination-par-distance' => 'La distancia a percorrer.',
+ 	'maps-finddestination-par-format' => "El formatu nel qu'amosar el destín.",
++	'maps-finddestination-par-directional' => "Indica si'l formatu de destín tien de ser direicional o non.",
++	'maps-finddestination-par-allowcoordinates' => "Indica si deben permitise les coordenaes. Si se configura como non, sólo s'aceutarán direiciones.",
++	'maps-finddestination-par-geoservice' => 'El serviciu de xeocodificación a usar para xeocodificar el valor en casu de ser una direición.',
++	'maps-finddestination-par-mappingservice' => "Parámetru pa indicar el serviciu de mapes a usar con esta función.
++Esto permitirá a los mapes sustituir el valor predetermináu del parámetru del serviciu pol que seya meyor pal serviciu de mapes.
++(Exemplu: nel casu de Google Maps, s'utilizará'l xeocodificador de Google.)",
++	'maps-geocode-par-location' => 'La direición que quies xeocodificar.',
++	'maps-geocode-par-mappingservice' => 'El serviciu de xeocodificación que quies utilizar. Consulta los servicios de xeocodificación disponibles.',
++	'maps-geocode-par-geoservice' => "Esti parámetru te permite indicar que vas a usar esta solicitú de xeocodificación en combinación con un serviciu de mapes específicu.
++Cada serviciu de mapes pue sustituir el valor predetermináu pal serviciu de xeocodificación. Esto ye pola mor de cuestiones xurídiques, darréu que nun pues usar el serviciu de xeocodificación de Google más que xunto con Google Maps.
++Configurar esti parámetru, y non el parámetru del serviciu, t'asegurará que nun tas usando una combinación inválida.",
++	'maps-geocode-par-allowcoordinates' => 'Permite desactivar el sofitu pa coordenaes nesta función. Debe ser sí o non.
++Si ye «non», se xeocodificarán tolos valores, incluyendo les coordenaes válides.',
++	'maps-geocode-par-format' => 'El formatu pa les coordenaes resultantes.',
++	'maps-geocode-par-directional' => 'Indica si les coordenaes tienen de sacase con formatu direicional o non.',
++	'maps-geodistance-par-location1' => 'El primer puntu del conxuntu pa calcular la distancia.',
++	'maps-geodistance-par-location2' => 'El segundu puntu del conxuntu pa calcular la distancia.',
++	'maps-geodistance-par-unit' => 'La unidá na que sacar la distancia.',
++	'maps-geodistance-par-decimals' => 'El númberu máximu de díxitos fraccionarios a usar nel valor resultante.',
++	'maps-geodistance-par-mappingservice' => 'El serviciu de xeocodificación a usar pa xeocodificar cualesquier direición.',
++	'maps-geodistance-par-geoservice' => "El serviciu de mapes que s'usa xunto con esto.
++Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
++	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
++	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
++	'maps-displaypoints-par-zoom' => "Permite configurar el nivel de zoom do mapa.
++Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
++	'maps-displaypoints-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
++	'maps-displaypoints-par-coordinates' => "Un llugar o más pa amosar nel mapa. S'indicarán con un marcador.",
++	'maps-displaypoints-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
++Almite tanto direiciones como coordenaes.
++Cuando nun se da esta propiedá, el mapa centraráse nel marcador proporcionáu, o entre los marcadores proporcionaos.',
++	'maps-displaypoints-par-title' => "Permite configurar el testu qu'apaecerá nes ventanes emerxentes de tolos marcadores que nun tengan un títulu propiu.
++Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
++	'maps-displaypoints-par-label' => "Permite configurar el testu qu'apaecerá nes ventanes emerxentes de tolos marcadores que nun tengan un títulu propiu.",
++	'maps-displaypoints-par-icon' => "Permite configurar l'iconu qu'usen tolos marcadores.",
++	'validation-error-invalid-location' => 'El parámetru $1 tien de ser un llugar válidu.',
++	'validation-error-invalid-locations' => 'El parámetru $1 tien de ser un o más llugares válidos.',
++	'validation-error-invalid-width' => 'El parámetru $1 tien de ser un anchor válidu.',
++	'validation-error-invalid-height' => 'El parámetru $1 tien de ser un altor válidu.',
++	'validation-error-invalid-distance' => 'El parámetru $1 tien de ser una distancia válida.',
++	'validation-error-invalid-distances' => 'El parámetru $1 tien de ser una o más distancies válides.',
++	'validation-error-invalid-image' => 'El parámetru $1 tien de ser una imaxe válida.',
++	'validation-error-invalid-images' => 'El parámetru $1 tien de ser una o más imaxes válides.',
++	'validation-error-invalid-goverlay' => 'El parámetru $1 tien de ser una superposición válida.',
++	'validation-error-invalid-goverlays' => 'El parámetru $1 tien de ser una o más superposiciones válides.',
++	'validation-error-invalid-line-param' => 'S\'especificó un parámetru "lines" inválidu.',
++	'validation-error-invalid-polyline-param' => 'S\'especificó un parámetru "polylines" inválidu.',
+ 	'maps-abb-north' => 'N',
+ 	'maps-abb-east' => 'E',
+ 	'maps-abb-south' => 'S',
+-- 
+1.7.9.5
+

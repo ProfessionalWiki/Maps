@@ -1,0 +1,25 @@
+From f35522de058a222b89f0f27e02a45dc1e9d21615 Mon Sep 17 00:00:00 2001
+From: Demon <chadh@wikimedia.org>
+Date: Fri, 6 Apr 2012 13:45:46 -0400
+Subject: [PATCH 01/32] Adding .gitreview
+
+Change-Id: Ib21af13e2d70bddb01cc65f60dbde1be65f70a22
+---
+ .gitreview |    5 +++++
+ 1 file changed, 5 insertions(+)
+ create mode 100644 .gitreview
+
+diff --git a/.gitreview b/.gitreview
+new file mode 100644
+index 0000000..a4240ea
+--- /dev/null
++++ b/.gitreview
+@@ -0,0 +1,5 @@
++[gerrit]
++host=gerrit.wikimedia.org
++port=29418
++project=mediawiki/extensions/Maps.git
++defaultbranch=master
+-- 
+1.7.9.5
+

@@ -1,0 +1,59 @@
+From 17671abdc5a564c64a8c060a2458f8c587c1e803 Mon Sep 17 00:00:00 2001
+From: Kim Eik <kim@heldig.org>
+Date: Tue, 15 May 2012 10:24:21 +0200
+Subject: [PATCH 32/32] added proper centering of markercluster
+
+If you have two markers on a map, illustrated textually as:
+
+|-------|
+| x     |
+|       |
+|     x |
+|-------|
+
+now if you enable markercluster on the map  then you will see that the map now looks like this:
+
+|-------|
+|       |
+|       |
+|    2x |
+|-------|
+
+while i would expect the cluster point to center itself between the two points as so:
+
+|-------|
+|       |
+|  2x   |
+|       |
+|-------|
+
+solution:
+
+Adding the property "averageCenter" to marker cluster constructor with a value of "true"
+
+Hardcoded this value to true, as i don't see the need for a parameter to
+customize this.
+
+Change-Id: I13faa25298ec0f5b5985de16483b2e9e47e8f713
+---
+ includes/services/GoogleMaps3/jquery.googlemap.js |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/includes/services/GoogleMaps3/jquery.googlemap.js b/includes/services/GoogleMaps3/jquery.googlemap.js
+index 0ac5c7e..79cb1a3 100644
+--- a/includes/services/GoogleMaps3/jquery.googlemap.js
++++ b/includes/services/GoogleMaps3/jquery.googlemap.js
+@@ -570,7 +570,9 @@
+ 			 * allows grouping of markers
+ 			 */
+ 			if (options.markercluster) {
+-				this.markercluster = new MarkerClusterer(this.map, this.markers);
++				this.markercluster = new MarkerClusterer(this.map, this.markers,{
++					averageCenter:true
++				});
+ 			}
+ 
+ 			if (options.searchmarkers) {
+-- 
+1.7.9.5
+
