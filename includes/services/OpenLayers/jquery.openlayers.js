@@ -286,7 +286,6 @@
                 return zoomLevels;
             };
 
-			/* FIXME: this causes infinite recursion
             map.isValidZoomLevel = function (zoomLevel) {
                 var valid = ( (zoomLevel != null) &&
                     (zoomLevel >= options.minzoom) &&
@@ -294,12 +293,11 @@
                 if (!valid && map.getZoom() == 0) {
 	                var maxzoom = options.maxzoom !== false ? options.maxzoom : 0;
 	                var minzoom = options.minzoom !== false ? options.minzoom : 0;
-	                var zoom =  maxzoom - (maxzoom - minzoom) / 2
+	                var zoom =  Math.round(maxzoom - (maxzoom - minzoom) / 2);
                     map.zoomTo(zoom);
                 }
                 return valid;
             }
-            */
         }
 
 		// Add the base layers.
