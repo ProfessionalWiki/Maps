@@ -438,7 +438,7 @@ class SMQueryHandler {
 			$text .= implode( '<br />', $properties );
 		}
 
-		foreach ( $locations as $location ) {
+		foreach ( $locations as &$location ) {
 			if ( $this->template ) {
 				$segments = array_merge(
 					array( $this->template, 'title=' . $title, 'latitude=' . $location->getLatitude(), 'longitude=' . $location->getLongitude() ),
@@ -451,8 +451,6 @@ class SMQueryHandler {
 			$location->setTitle( $title );
 			$location->setText( $text );
 			$location->setIcon( $icon );
-
-			$locations[] = $location;
 		}
 
 		return $locations;
