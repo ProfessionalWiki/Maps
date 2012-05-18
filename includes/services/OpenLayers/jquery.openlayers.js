@@ -62,7 +62,7 @@
 					groups++;
 					curLayer.id = 'markerLayer' + groups;
 					// define default icon, one of ten in different colors, if more than ten layers, colors will repeat:
-					curLayer.defaultIcon = egMapsScriptPath + '/includes/services/OpenLayers/OpenLayers/img/marker' + ( ( groups + 10 ) % 10 ) + '.png';
+					curLayer.defaultIcon = mw.config.get( 'egMapsScriptPath' ) + '/includes/services/OpenLayers/OpenLayers/img/marker' + ( ( groups + 10 ) % 10 ) + '.png';
 					map.addLayer(curLayer);
 					groupLayers[ location.group ] = curLayer;
 				} else {
