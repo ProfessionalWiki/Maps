@@ -287,7 +287,6 @@
                 return zoomLevels;
             };
 
-			/* FIXME: this causes infinite recursion and crashes FireFox
             map.isValidZoomLevel = function (zoomLevel) {
                 var valid = ( (zoomLevel != null) &&
                     (zoomLevel >= options.minzoom) &&
@@ -300,7 +299,6 @@
                 }
                 return valid;
             }
-            */
         }
 
 		// Add the base layers.
