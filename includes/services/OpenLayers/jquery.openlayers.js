@@ -273,7 +273,8 @@
 		}
 
         //ugly hack to allow for min/max zoom
-        if (options.maxzoom !== false || options.minzoom !== false) {
+        if (options.maxzoom !== false && options.maxzoom !== undefined ||
+            options.minzoom !== false && options.minzoom !== undefined) {
 
             if(options.maxzoom === false){
                 options.maxzoom = mapOptions.numZoomLevels;
