@@ -1081,6 +1081,13 @@ $1',
 	'maps-yahoomaps-par-autozoom' => 'Den Bildlauf mithilfe des Mausrads aktivieren.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'maps-layer-value' => 'Deger',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
