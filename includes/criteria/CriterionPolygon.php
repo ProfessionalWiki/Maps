@@ -79,10 +79,6 @@ class CriterionPolygon extends ItemParameterCriterion
             }
         }
 
-        if(MapsCoordinateParser::parseAndFormat($parts[0]) != MapsCoordinateParser::parseAndFormat($parts[sizeof($parts)-1])){
-            $valid = false;
-        }
-
         return $valid;
     }
 
