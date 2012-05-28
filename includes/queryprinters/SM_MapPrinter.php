@@ -175,14 +175,10 @@ class SMMapPrinter extends SMWResultPrinter {
 				foreach ( $this->service->getResourceModules() as $resourceModule ) {
 					SMWOutputs::requireResource( $resourceModule );
 				}
-				
-				$result = $this->getMapHTML( $params, $wgParser, $mapName );
-				
-				return array(
-					$result,
-					'noparse' => true, 
-					'isHTML' => true
-				);				
+
+				$this->isHTML = true;
+
+				return $this->getMapHTML( $params, $wgParser, $mapName );
 			}
 			else {
 				return '';
@@ -278,20 +274,6 @@ class SMMapPrinter extends SMWResultPrinter {
 		}
 		
 		unset( $params['staticlocations'] );
-	}	
-	
-	/**
-	 * Reads the parameters and gets the query printers output.
-	 * 
-	 * @param SMWQueryResult $results
-	 * @param array $params
-	 * @param $outputmode
-	 * 
-	 * @return array
-	 */
-	public final function getResult( SMWQueryResult $results, array $params, $outputmode ) {
-		$this->handleParameters( $params, $outputmode );
-		return $this->getResultText( $results, SMW_OUTPUT_HTML );
 	}
 
 	/**
