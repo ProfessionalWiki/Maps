@@ -26,7 +26,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Array of String. Array containing all the mapping services that will be made available to the user.
 	$egMapsAvailableServices = array(
 		'googlemaps3',
-		'yahoomaps',
 		'openlayers',
 		'osm'
 	);
@@ -54,7 +53,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 	# Array of String. Array containing all the geocoding services that will be
 	# made available to the user. Currently Maps provides the following services:
-	# geonames, google, yahoo
+	# geonames, google
     # It is recommended that when using GeoNames you get a GeoNames webservice account
     # at http://www.geonames.org/login and set the username to $egMapsGeoNamesUser below.
     # Not doing this will result into a legacy service being used, which might be
@@ -62,7 +61,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsAvailableGeoServices = array(
 		'geonames',
 		'google',
-		'yahoo'
 	);
 
 	# String. The default geocoding service, which will be used when no service is
@@ -289,45 +287,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'wikipedia',
 			'webcams'
 		);
-		
-	
-	
-	# Yahoo! Maps
-	
-		# Your Yahoo! Maps API key. Required for displaying Yahoo! Maps.
-		# Haven't got an API key yet? Get it here: https://developer.yahoo.com/wsregapp/
-		$egYahooMapsKey = '';
-		
-		# Array of String. The Google Maps default map types. This value will only be
-		# used when the user does not provide one.
-		$egMapsYahooMapsTypes = array(
-			'normal',
-			'satellite',
-			'hybrid'
-		);
-		
-		# String. The default map type. This value will only be used when the user does
-		# not provide one.
-		$egMapsYahooMapsType = 'normal';
-		
-		# Integer. The default zoom of a map. This value will only be used when the
-		# user does not provide one.
-		$egMapsYahooMapsZoom = 4;
-		
-		# Boolean. The default value for enabling or disabling the autozoom of a map.
-		# This value will only be used when the user does not provide one.
-		$egMapsYahooAutozoom = true;
-		
-		# Array of String. The default controls for Yahoo! Maps. This value will only
-		# be used when the user does not provide one.
-		# Available values: type, pan, zoom, zoom-short, auto-zoom
-		$egMapsYMapControls = array(
-			'type',
-			'pan',
-			'auto-zoom'
-		);
-	
-	
+
 	
 	# OpenLayers
 		

@@ -41,7 +41,7 @@ if ( !defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.<br />' );
 }
 
-define( 'Maps_VERSION' , '1.1 alpha' );
+define( 'Maps_VERSION' , '2.0 alpha' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__ ,
@@ -127,7 +127,6 @@ unset( $ftDir );
 $geoDir = $incDir . 'geocoders/';
 $wgAutoloadClasses['MapsGeonamesGeocoder'] = $geoDir . 'Maps_GeonamesGeocoder.php';
 $wgAutoloadClasses['MapsGoogleGeocoder'] = $geoDir . 'Maps_GoogleGeocoder.php';
-$wgAutoloadClasses['MapsYahooGeocoder'] = $geoDir . 'Maps_YahooGeocoder.php';
 unset( $geoDir );
 
 // Autoload the "includes/layers/" classes.
@@ -224,9 +223,6 @@ $wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
 # Registration of the Google Geocoding (v2) service geocoder.
 $wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
 
-# Registration of the Yahoo! Geocoding service geocoder.
-$wgHooks['GeocoderFirstCallInit'][] = 'MapsYahooGeocoder::register';
-
 # Layers
 
 # Registration of the image layer type.
@@ -245,9 +241,6 @@ include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
 
 # OpenLayers API
 include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
-
-# Yahoo! Maps API
-include_once $egMapsDir . 'includes/services/YahooMaps/YahooMaps.php';
 
 # WMF OSM
 include_once $egMapsDir . 'includes/services/OSM/OSM.php';

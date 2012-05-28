@@ -156,7 +156,6 @@ $1',
 	// Mapping services
 	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_googlemaps3' => 'Google Maps v3',
-	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_osm' => 'OpenStreetMap',
 
@@ -207,12 +206,6 @@ $1',
 	// OSM
 	'maps-osm-par-thumbs' => 'Show thumbs',
 	'maps-osm-par-photos' => 'Show photos',
-
-	// Yahoo! Maps
-	'maps-yahoomaps-par-type' => 'The map type to initially show.',
-	'maps-yahoomaps-par-types' => 'The map types that will be available via the type control.',
-	'maps-yahoomaps-par-controls' => 'The controls to place on the map.',
-	'maps-yahoomaps-par-autozoom' => 'Enable scrolling using the mousewheel.',
 );
 
 /** Message documentation (Message documentation)

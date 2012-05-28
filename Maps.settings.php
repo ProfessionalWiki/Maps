@@ -19,7 +19,6 @@ $s = array(
 		'services',
 		array(
 			'googlemaps3',
-			'yahoomaps',
 			'openlayers',
 			'osm'
 		)
@@ -41,7 +40,6 @@ $s = array(
 		array(
 			'geonames',
 			'google',
-			'yahoo'
 		)
 	),
 	
