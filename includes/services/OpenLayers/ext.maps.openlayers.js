@@ -6,7 +6,7 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
 
-(function( $ ) {
+(function( $, mw ) {
 
 	$( document ).ready( function() {
 
@@ -25,9 +25,9 @@
 
 		$( '.maps-openlayers' ).each( function() {
 			var $this = $( this );
-			$this.openlayers( $this.attr( 'id' ), jQuery.parseJSON( $this.find( 'div').text() ) );
+			$this.openlayers( $this.attr( 'id' ), $.parseJSON( $this.find( 'div').text() ) );
 		} );
 
 	} );
 
-})( window.jQuery );
+})( window.jQuery, mediaWiki );

@@ -5,20 +5,20 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  */
-(function( $ ) {
+(function( $, mw ) {
 
 	$( document ).ready( function() {
 
 		if ( typeof google === 'undefined' ) {
-			alert( mediaWiki.msg( 'maps-load-failed' ) + ' ' + mediaWiki.msg( 'maps-googlemaps3-incompatbrowser' ) );
+			alert( mw.msg( 'maps-load-failed' ) + ' ' + mw.msg( 'maps-googlemaps3-incompatbrowser' ) );
 		}
 		else {
 			$( '.maps-googlemaps3' ).each( function() {
-				var $this = $( this );
-				$this.googlemaps( jQuery.parseJSON( $this.find( 'div').text() ) );
+				var $this = $( this);
+				$this.googlemaps( $.parseJSON( $this.find( 'div').text() ) );
 			} );
 		}
 
 	} );
 
-})( window.jQuery );
+})( window.jQuery, mediaWiki );
