@@ -176,8 +176,6 @@ class SMMapPrinter extends SMWResultPrinter {
 					SMWOutputs::requireResource( $resourceModule );
 				}
 
-				$this->isHTML = true;
-
 				return $this->getMapHTML( $params, $wgParser, $mapName );
 			}
 			else {

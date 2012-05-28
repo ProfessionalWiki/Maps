@@ -313,8 +313,6 @@ class SMQueryHandler {
 	 * @return array with title and text
 	 */
 	protected function handleResultSubject( SMWWikiPageValue $object ) {
-		global $wgUser;
-
 		$title = $object->getLongText( $this->outputmode, null );
 		$text = '';
 
@@ -327,7 +325,7 @@ class SMQueryHandler {
 				);
 			}
 			else {
-				$text = $object->getLongText( $this->outputmode, smwfGetLinker() );
+				$text = $object->getLongHTMLText( smwfGetLinker() );
 			}
 
 			if ( $this->boldSubject ) {
@@ -362,8 +360,6 @@ class SMQueryHandler {
 	 * @return string
 	 */
 	protected function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
-		global $wgUser;
-
 		if ( $this->template ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getTitle()->getPrefixedText();
