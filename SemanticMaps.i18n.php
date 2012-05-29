@@ -514,6 +514,9 @@ $messages['he'] = array(
 	'semanticmaps-unrecognizeddistance' => 'הערך $1 אינו מרחק תקין.',
 	'semanticmaps-kml-link' => 'הצגת קובץ KML',
 	'semanticmaps-default-kml-pagelink' => 'הצגת הדף $1',
+	'semanticmaps-latitude' => 'קו־רוחב: $1',
+	'semanticmaps-longitude' => 'קו־אורך: $1',
+	'semanticmaps-altitude' => 'גובה: $1',
 	'semanticmaps-loading-forminput' => 'טעינת המפה מהקלט...',
 	'semanticmaps_lookupcoordinates' => 'חיפוש קואורדינטות',
 	'semanticmaps_enteraddresshere' => 'כתבו כתובת כאן',
@@ -526,6 +529,11 @@ $messages['he'] = array(
 	'semanticmaps-par-showtitle' => 'להציג את הכותרת בחלון המידע על הסמן או לא. הכיבוי של זה שימושי לעתים קרובות כאשר נעשה שימוש בתבנית לעיצוב חלון המידע.',
 	'semanticmaps-par-centre' => 'מרכז המפה. אם לא ניתן, המפה תבחר בעצמה את המרכז המיטבי להצגת כל הסמנים על המפה.',
 	'semanticmaps-par-template' => 'תבנית לעיצוב תוכן חלון המידע.',
+	'semanticmaps-par-geocodecontrol' => 'הצגת בקר קידוד גאוגרפי.',
+	'semanticmaps-kml-text' => 'הטקסט משויך לכל עמוד ועמוד. נדרס במאפיינים אחרים שנעשית עליהם שאילתה, אם יש כאלה.',
+	'semanticmaps-kml-title' => 'כותרת לתוצאות לפי בררת המחדל.',
+	'semanticmaps-kml-linkabsolute' => 'האם הקישורים צריכים להיות מוחלטים או יחסיים',
+	'semanticmaps-kml-pagelinktext' => 'הטקסט שישמש לקישורים לדף, כאשר $1 יוחלף בכותרת הדף',
 );
 
 /** Croatian (Hrvatski)
