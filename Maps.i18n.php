@@ -660,10 +660,6 @@ $1',
 	'maps-openlayers-par-layers' => 'Слаі, якія будуць даступныя падчас выбару слаёў. Першы слой будзе паказаны пасьля загрузкі мапы.',
 	'maps-osm-par-thumbs' => 'Паказваць мініятуры',
 	'maps-osm-par-photos' => 'Паказваць выявы',
-	'maps-yahoomaps-par-type' => 'Тып мапы, які будзе паказвацца ў пачатку.',
-	'maps-yahoomaps-par-types' => 'Тыпы мапаў, якія будуць даступныя праз элемэнт кіраваньня тыпамі.',
-	'maps-yahoomaps-par-controls' => 'Элемэнты кіраваньня, якія будуць разьмешчаныя на мапе.',
-	'maps-yahoomaps-par-autozoom' => 'Дазваляе пракрутку праз кола мышкі.',
 );
 
 /** Bulgarian (Български)
@@ -2685,6 +2681,14 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'maps_wikipedia' => 'ವಿಕಿಪೀಡಿಯ',
+);
+
+/** Korean (한국어)
+ * @author 아라
+ */
+$messages['ko'] = array(
+	'maps_googlemaps2' => 'Google 지도 v2',
+	'maps_googlemaps3' => 'Google 지도 v3',
 );
 
 /** Colognian (Ripoarisch)
