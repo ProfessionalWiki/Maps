@@ -1953,7 +1953,7 @@ $messages['he'] = array(
 	'maps-geodistance-par-location1' => 'הנקודה הראשונה בקבוצה לחישוב מרחק.',
 	'maps-geodistance-par-location2' => 'הנקודה השנייה בקבוצה לחישוב מרחק.',
 	'maps-geodistance-par-unit' => 'באילו יחידות לפלוט את המרחק.',
-	'maps-geodistance-par-decimals' => 'המספר המירבי של ספרות בשבר בתוצאה.',
+	'maps-geodistance-par-decimals' => 'המספר המרבי של ספרות בשבר בתוצאה.',
 	'maps-geodistance-par-mappingservice' => 'שירות הקידוד הגאוגרפי שיקודד כתובות כלשהן.',
 	'maps-geodistance-par-geoservice' => 'שירות המיפוי שבו משתמשים בזה.
 זה יכול להשפיע על ערך ברירת המחדל של שירות הקידוד הגאוגרפי.',
@@ -2036,10 +2036,6 @@ $1',
 	'maps-openlayers-par-layers' => 'אילו שכבות יהיו זמינות בבוחר השכבות. השכבה הראשונה תוצג כאשר המפה נטענת.',
 	'maps-osm-par-thumbs' => 'להציג תמונות ממוזערות.',
 	'maps-osm-par-photos' => 'להציג צילומים',
-	'maps-yahoomaps-par-type' => 'איזה סוג מפה להציג תחילה.',
-	'maps-yahoomaps-par-types' => 'סוגי המפה שיהיו זמינים דרך בקר הסוג.',
-	'maps-yahoomaps-par-controls' => 'אילו בקרים להציב על המפה.',
-	'maps-yahoomaps-par-autozoom' => 'להפעיל גלילה באמצעות גלגל העכבר.',
 );
 
 /** Hindi (हिन्दी) */
