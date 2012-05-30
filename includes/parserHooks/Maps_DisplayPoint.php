@@ -60,7 +60,8 @@ class MapsDisplayPoint extends ParserHook {
 		$params['coordinates']->addManipulations( new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ) );		
 		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
 		$params['coordinates']->setMessage( 'maps-displaypoints-par-coordinates' );
-		
+		$params['coordinates']->setDefault( array() );
+
 		$params['centre'] = new Parameter( 'centre' );
 		$params['centre']->setDefault( false );
 		$params['centre']->addAliases( 'center' );
