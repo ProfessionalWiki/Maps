@@ -67,8 +67,8 @@ abstract class MapsCommonParameterManipulation extends ItemParameterManipulation
 		}
 
 		//handle hover parameter
-		if ( $params instanceof iHoverableMapElement ) {
-			if ( $visibleOnHover = array_shift( $parts ) ) {
+		if ( $model instanceof iHoverableMapElement ) {
+			if ( $visibleOnHover = array_shift( $params ) ) {
 				$model->setOnlyVisibleOnHover( filter_var( $visibleOnHover , FILTER_VALIDATE_BOOLEAN ) );
 			}
 		}
