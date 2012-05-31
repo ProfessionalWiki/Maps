@@ -161,6 +161,12 @@ $wgAutoloadClasses['MapsFinddestination'] = $phDir . 'Maps_Finddestination.php';
 $wgAutoloadClasses['MapsGeocode'] = $phDir . 'Maps_Geocode.php';
 $wgAutoloadClasses['MapsGeodistance'] = $phDir . 'Maps_Geodistance.php';
 $wgAutoloadClasses['MapsMapsDoc'] = $phDir . 'Maps_MapsDoc.php';
+
+// Load the special pages
+$wgAutoloadClasses['SpecialMapEditor'] = $egMapsDir . 'SpecialMapEditor.php';
+$wgSpecialPages['MapEditor'] = 'SpecialMapEditor';
+$wgSpecialPageGroups['MapEditor'] = 'maps';
+
 unset( $phDir );
 unset( $incDir );
 
@@ -169,6 +175,7 @@ $wgAPIModules['geocode'] = 'ApiGeocode';
 $wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
 $wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
 $wgExtensionMessagesFiles['MapsNamespaces'] = $egMapsDir . 'Maps.i18n.namespaces.php';
+
 
 // Register the initialization function of Maps.
 $wgExtensionFunctions[] = 'efMapsSetup';
@@ -282,6 +289,32 @@ $wgResourceModules['ext.maps.coord'] = array(
 
 $wgResourceModules['ext.maps.resizable'] = array(
 	'dependencies' => 'jquery.ui.resizable'
+);
+
+$wgResourceModules['mapeditor'] = array(
+	'dependencies' => array( 'ext.maps.common','jquery.ui.autocomplete','jquery.ui.slider', 'jquery.ui.dialog' ),
+	'localBasePath' => dirname( __FILE__ ) . '/includes/editor/',
+	'remoteBasePath' => $egMapsScriptPath.  '/includes/editor/',
+	'group' => 'mapeditor',
+	'scripts' => array(
+		'js/jquery.miniColors.js',
+		'js/mapeditor.js',
+	),
+	'styles' => array(
+		'css/jquery.miniColors.css',
+		'css/mapeditor.css'
+	),
+	'messages' => array(
+		'mapeditor-parser-error',
+		'mapeditor-none-text',
+		'mapeditor-done-button',
+		'mapeditor-remove-button',
+		'mapeditor-import-button',
+		'mapeditor-export-button',
+		'mapeditor-import-button2',
+		'mapeditor-mapparam-button',
+		'mapeditor-clear-button',
+	)
 );
 
 $wgAvailableRights[] = 'geocode';
