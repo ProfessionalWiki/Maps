@@ -606,6 +606,7 @@ $messages['be-tarask'] = array(
 	'validation-error-invalid-goverlays' => 'Парамэтар $1 мусіць быць адным ці болей слушнымі слаямі.',
 	'validation-error-invalid-line-param' => 'Няслушна пазначаны парамэтар «lines».',
 	'validation-error-invalid-polyline-param' => 'Няслушна пазначаны парамэтар «polylines».',
+	'validation-error-invalid-searchmarkers-param' => 'Няслушнае значэньне searchmarkers, мусіць быць «all» або «title»',
 	'maps-abb-north' => 'Пн.',
 	'maps-abb-east' => 'У.',
 	'maps-abb-south' => 'Пд.',
