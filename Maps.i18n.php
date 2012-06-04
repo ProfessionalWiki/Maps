@@ -210,11 +210,11 @@ $1',
 	//Special page
 	'mapeditor' => 'Map editor',
 	'specialpages-group-maps' => 'Maps',
-	'mapeditor-parser-error' => 'An error occured when parsing metadata. ignoring user input.',
+	'mapeditor-parser-error' => 'An error occured when parsing metadata. Ignoring user input.',
 	'mapeditor-none-text' => 'None',
 	'mapeditor-done-button' => 'Done',
 	'mapeditor-remove-button' => 'Remove',
-	'' => 'Import',
+	#'' => 'Import', // FIXME message key
 	'mapeditor-export-button' => 'Export to wiki code',
 	'mapeditor-import-button' => 'Import from wiki code',
 	'mapeditor-mapparam-button' => 'Edit map parameters',
@@ -223,7 +223,7 @@ $1',
 	'mapeditor-import-title' => 'Import wiki code',
 	'mapeditor-import-note' => 'Please note that the parser expects a very strict format on the wiki code. The code inputted here should match code outputted by the export functionality.',
 	'mapeditor-form-title' => 'Edit details',
-	'mapeditor-link-title-switcher-popup-text' => 'Popup w/text',
+	'mapeditor-link-title-switcher-popup-text' => 'Popup with text',
 	'mapeditor-link-title-switcher-link-text' => 'Link',
 	'mapeditor-form-field-title' => 'Title',
 	'mapeditor-form-field-text' => 'Text',
@@ -239,15 +239,6 @@ $1',
 	'mapeditor-form-field-showonhover' => 'Show only on hover',
 	'mapeditor-mapparam-title' => 'Edit map parameters',
 	'mapeditor-mapparam-defoption' => '-Select parameter-'
-
-
-
-
-
-
-
-
-
 );
 
 /** Message documentation (Message documentation)
@@ -302,7 +293,7 @@ $messages['qqq'] = array(
 	'mapeditor-none-text' => 'Text showing when no value is set (None)',
 	'mapeditor-done-button' => 'Button text describing that editing details is completed',
 	'mapeditor-remove-button' => 'Button text that describes that the given map object should be removed',
-	'' => 'Button text that describes that the process of importing',
+	#'' => 'Button text that describes that the process of importing', // FIXME message key
 	'mapeditor-export-button' => 'Button text that describes that the process of exporting',
 	'mapeditor-import-button' => 'Button text that opens import dialogue',
 	'mapeditor-mapparam-button' => 'Button text that opens map parameter dialogue',
