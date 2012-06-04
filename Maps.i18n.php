@@ -206,6 +206,48 @@ $1',
 	// OSM
 	'maps-osm-par-thumbs' => 'Show thumbs',
 	'maps-osm-par-photos' => 'Show photos',
+
+	//Special page
+	'mapeditor' => 'Map editor',
+	'specialpages-group-maps' => 'Maps',
+	'mapeditor-parser-error' => 'An error occured when parsing metadata. ignoring user input.',
+	'mapeditor-none-text' => 'None',
+	'mapeditor-done-button' => 'Done',
+	'mapeditor-remove-button' => 'Remove',
+	'' => 'Import',
+	'mapeditor-export-button' => 'Export to wiki code',
+	'mapeditor-import-button' => 'Import from wiki code',
+	'mapeditor-mapparam-button' => 'Edit map parameters',
+	'mapeditor-clear-button' => 'Clear map',
+	'mapeditor-code-title' => 'Wiki code',
+	'mapeditor-import-title' => 'Import wiki code',
+	'mapeditor-import-note' => 'Please note that the parser expects a very strict format on the wiki code. The code inputted here should match code outputted by the export functionality.',
+	'mapeditor-form-title' => 'Edit details',
+	'mapeditor-link-title-switcher-popup-text' => 'Popup w/text',
+	'mapeditor-link-title-switcher-link-text' => 'Link',
+	'mapeditor-form-field-title' => 'Title',
+	'mapeditor-form-field-text' => 'Text',
+	'mapeditor-form-field-link' => 'Link',
+	'mapeditor-form-field-icon' => 'Icon',
+	'mapeditor-form-field-group' => 'Group',
+	'mapeditor-form-field-inlinelabel' => 'Inline label',
+	'mapeditor-form-field-strokecolor' => 'Stroke color',
+	'mapeditor-form-field-strokeopacity' => 'Stroke opacity',
+	'mapeditor-form-field-strokeweight' => 'Stroke weight',
+	'mapeditor-form-field-fillcolor' => 'Fill color',
+	'mapeditor-form-field-fillopcaity' => 'Fill opacity',
+	'mapeditor-form-field-showonhover' => 'Show only on hover',
+	'mapeditor-mapparam-title' => 'Edit map parameters',
+	'mapeditor-mapparam-defoption' => '-Select parameter-'
+
+
+
+
+
+
+
+
+
 );
 
 /** Message documentation (Message documentation)
@@ -254,6 +296,38 @@ $messages['qqq'] = array(
 	'maps-googlemaps3-par-tilt' => '{{maps-par|googlemaps3|tilt}}',
 	'maps-googlemaps3-par-kmlrezoom' => '{{maps-par|googlemaps3|kmlrezoom}}',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
+	'mapeditor' => 'title of the special page Special:MapEditor',
+	'specialpages-group-maps' => 'The special page group "maps" text',
+	'mapeditor-parser-error' => 'Error message when parsing error occurs',
+	'mapeditor-none-text' => 'Text showing when no value is set (None)',
+	'mapeditor-done-button' => 'Button text describing that editing details is completed',
+	'mapeditor-remove-button' => 'Button text that describes that the given map object should be removed',
+	'' => 'Button text that describes that the process of importing',
+	'mapeditor-export-button' => 'Button text that describes that the process of exporting',
+	'mapeditor-import-button' => 'Button text that opens import dialogue',
+	'mapeditor-mapparam-button' => 'Button text that opens map parameter dialogue',
+	'mapeditor-clear-button' => 'Button text that clears the map',
+	'mapeditor-code-title' => 'Title of dialogue',
+	'mapeditor-import-title' => 'Title of dialogue',
+	'mapeditor-import-note' => 'Import note',
+	'mapeditor-form-title' => 'Title of dialogue',
+	'mapeditor-link-title-switcher-popup-text' => 'Text for switch w/popup',
+	'mapeditor-link-title-switcher-link-text' => 'Text for switch w/link',
+	'mapeditor-form-field-title' => 'Form field name',
+	'mapeditor-form-field-text' => 'Form field name',
+	'mapeditor-form-field-link' => 'Form field name',
+	'mapeditor-form-field-icon' => 'Form field name',
+	'mapeditor-form-field-group' => 'Form field name',
+	'mapeditor-form-field-inlinelabel' => 'Form field name',
+	'mapeditor-form-field-strokecolor' => 'Form field name',
+	'mapeditor-form-field-strokeopacity' => 'Form field name',
+	'mapeditor-form-field-strokeweight' => 'Form field name',
+	'mapeditor-form-field-fillcolor' => 'Form field name',
+	'mapeditor-form-field-fillopcaity' => 'Form field name',
+	'mapeditor-form-field-showonhover' => 'Checkbox text',
+	'mapeditor-mapparam-title' => 'Title of dialogue',
+	'mapeditor-mapparam-defoption' => 'Default option in map parameters select list'
+
 );
 
 /** Afrikaans (Afrikaans)
@@ -3199,6 +3273,7 @@ $messages['nah'] = array(
  * @author Event
  * @author Jon Harald Søby
  * @author Nghtwlkr
+ * @author Kim Eik
  */
 $messages['nb'] = array(
 	'maps-desc' => 'Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner.
@@ -3271,6 +3346,37 @@ $1',
 	'maps_videos' => 'Videoer',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webkamera',
+	'mapeditor' => 'Kart tegner',
+	'specialpages-group-maps' => 'Kart',
+	'mapeditor-parser-error' => 'En feil oppstod under parsing av data.',
+	'mapeditor-none-text' => 'Ingen',
+	'mapeditor-done-button' => 'Ferdig',
+	'mapeditor-remove-button' => 'Fjern',
+	'' => 'Importer',
+	'mapeditor-export-button' => 'Eksporter til wiki kode',
+	'mapeditor-import-button' => 'Importer fra wiki kode',
+	'mapeditor-mapparam-button' => 'Rediger kart parametere',
+	'mapeditor-clear-button' => 'Tøm kart',
+	'mapeditor-code-title' => 'Wiki kode',
+	'mapeditor-import-title' => 'Importer wiki kode',
+	'mapeditor-import-note' => 'Vennligst merk at tolkeren krever veldig streng format på wiki koden. Koden bør være lik i struktur som ved eksport funksjonaliteten.',
+	'mapeditor-form-title' => 'Rediger detaljer',
+	'mapeditor-link-title-switcher-popup-text' => 'Popup m/tekst',
+	'mapeditor-link-title-switcher-link-text' => 'Lenke',
+	'mapeditor-form-field-title' => 'Tittel',
+	'mapeditor-form-field-text' => 'Tekst',
+	'mapeditor-form-field-link' => 'Lenke',
+	'mapeditor-form-field-icon' => 'Ikon',
+	'mapeditor-form-field-group' => 'Gruppe',
+	'mapeditor-form-field-inlinelabel' => 'Merkelapp',
+	'mapeditor-form-field-strokecolor' => 'Kant farge',
+	'mapeditor-form-field-strokeopacity' => 'Kant gjennomsiktighet',
+	'mapeditor-form-field-strokeweight' => 'Kant tykkelse',
+	'mapeditor-form-field-fillcolor' => 'Fyll farge',
+	'mapeditor-form-field-fillopcaity' => 'Fyll gjennomsiktighet',
+	'mapeditor-form-field-showonhover' => 'Vis bare når peker er over.',
+	'mapeditor-mapparam-title' => 'Rediger kart parametere',
+	'mapeditor-mapparam-defoption' => '-Velg parameter-'
 );
 
 /** Dutch (Nederlands)
