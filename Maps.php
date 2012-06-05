@@ -300,6 +300,7 @@ $wgResourceModules['mapeditor'] = array(
 	'group' => 'mapeditor',
 	'scripts' => array(
 		'js/jquery.miniColors.js',
+		'js/mapeditor.iefixes.js',
 		'js/mapeditor.js',
 	),
 	'styles' => array(
