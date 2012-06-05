@@ -131,6 +131,24 @@ class SpecialMapEditor extends SpecialPage{
             </div>
         </form>
     </div>
+    <div id="imageoverlay-form" title="%22\$s">
+        <div class="link-title-switcher">
+            <input type="radio" name="switch" value="text" /> %5\$s
+            <input type="radio" name="switch" value="link" /> %6\$s
+        </div>
+        <form class="mapeditor-dialog-form">
+            <fieldset>
+                <label for="i-title">%7\$s</label>
+                <input type="text" name="title" id="i-title" class="text ui-widget-content ui-corner-all"/>
+                <label for="i-text">%8\$s</label>
+                <input type="text" name="text" id="i-text" class="text ui-widget-content ui-corner-all"/>
+                <label for="i-link">%9\$s</label>
+                <input type="text" name="link" id="i-link" class="text ui-widget-content ui-corner-all"/>
+                <label for="i-image">%21\$s</label>
+                <input type="text" name="image" id="i-image" class="text ui-widget-content ui-corner-all"/>
+            </fieldset>
+        </form>
+    </div>
 </div>
 EOT;
 		$output = sprintf($output,
@@ -153,7 +171,9 @@ EOT;
 			wfMessage('mapeditor-form-field-fillopcaity'),
 			wfMessage('mapeditor-form-field-showonhover'),
 			wfMessage('mapeditor-mapparam-title'),
-			wfMessage('mapeditor-mapparam-defoption')
+			wfMessage('mapeditor-mapparam-defoption'),
+			wfMessage('mapeditor-form-field-image'),
+			wfMessage('mapeditor-imageoverlay-title')
 		);
 
 		$outputPage->addHTML($output);

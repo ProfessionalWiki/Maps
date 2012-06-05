@@ -214,7 +214,7 @@ $1',
 	'mapeditor-none-text' => 'None',
 	'mapeditor-done-button' => 'Done',
 	'mapeditor-remove-button' => 'Remove',
-	#'' => 'Import', // FIXME message key
+	'mapeditor-import-button2' => 'Import',
 	'mapeditor-export-button' => 'Export to wiki code',
 	'mapeditor-import-button' => 'Import from wiki code',
 	'mapeditor-mapparam-button' => 'Edit map parameters',
@@ -238,7 +238,11 @@ $1',
 	'mapeditor-form-field-fillopcaity' => 'Fill opacity',
 	'mapeditor-form-field-showonhover' => 'Show only on hover',
 	'mapeditor-mapparam-title' => 'Edit map parameters',
-	'mapeditor-mapparam-defoption' => '-Select parameter-'
+	'mapeditor-mapparam-defoption' => '-Select parameter-',
+	'mapeditor-imageoverlay-button' => 'Add image overlay',
+	'mapeditor-form-field-image' => 'Image',
+	'mapeditor-imageoverlay-title' => 'Image overlay details'
+
 );
 
 /** Message documentation (Message documentation)
@@ -294,6 +298,7 @@ $messages['qqq'] = array(
 	'mapeditor-remove-button' => 'Button text that describes that the given map object should be removed',
 	'mapeditor-export-button' => 'Button text that describes that the process of exporting',
 	'mapeditor-import-button' => 'Button text that opens import dialogue',
+	'mapeditor-import-button2' => 'Button text that finishes import process',
 	'mapeditor-mapparam-button' => 'Button text that opens map parameter dialogue',
 	'mapeditor-clear-button' => 'Button text that clears the map',
 	'mapeditor-code-title' => 'Title of dialogue',
@@ -316,6 +321,9 @@ $messages['qqq'] = array(
 	'mapeditor-form-field-showonhover' => 'Checkbox text',
 	'mapeditor-mapparam-title' => 'Title of dialogue',
 	'mapeditor-mapparam-defoption' => 'Default option in map parameters select list',
+	'mapeditor-imageoverlay-button' => 'Button text that starts the "add image overlay process"',
+	'mapeditor-form-field-image' => 'Form field name',
+	'mapeditor-imageoverlay-title' => 'Title of dialogue'
 );
 
 /** Afrikaans (Afrikaans)
@@ -3387,7 +3395,7 @@ $1',
 	'mapeditor-none-text' => 'Ingen',
 	'mapeditor-done-button' => 'Ferdig',
 	'mapeditor-remove-button' => 'Fjern',
-	'' => 'Importer',
+	'mapeditor-import-button2' => 'Importer',
 	'mapeditor-export-button' => 'Eksporter til wiki kode',
 	'mapeditor-import-button' => 'Importer fra wiki kode',
 	'mapeditor-mapparam-button' => 'Rediger kart parametere',
@@ -3411,7 +3419,10 @@ $1',
 	'mapeditor-form-field-fillopcaity' => 'Fyll gjennomsiktighet',
 	'mapeditor-form-field-showonhover' => 'Vis bare når peker er over.',
 	'mapeditor-mapparam-title' => 'Rediger kart parametere',
-	'mapeditor-mapparam-defoption' => '-Velg parameter-'
+	'mapeditor-mapparam-defoption' => '-Velg parameter-',
+	'mapeditor-imageoverlay-button' => 'Legg til bilde',
+	'mapeditor-form-field-image' => 'Bilde',
+	'mapeditor-imageoverlay-title' => 'Bilde lag detaljer'
 );
 
 /** Dutch (Nederlands)

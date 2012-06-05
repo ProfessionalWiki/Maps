@@ -157,6 +157,10 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['poi'] = new Parameter( 'poi', Parameter::TYPE_BOOLEAN );
 		$params['poi']->setDefault( $GLOBALS['egMapsShowPOI'], false );
 		$params['poi']->setMessage( 'maps-googlemaps3-par-poi' );
+
+		$params['imageoverlays'] = new ListParameter( 'imageoverlays' , ';' );
+		$params['imageoverlays']->setDefault( array() );
+		$params['imageoverlays']->addManipulations( new MapsParamImageOverlay('~'));
 	}
 	
 	/**

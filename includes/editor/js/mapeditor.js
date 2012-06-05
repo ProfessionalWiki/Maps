@@ -1,5 +1,6 @@
 mapEditor = {
     __map:null,
+    __drawingManager:null,
     __mapObjects:[],
     __controlsDiv:null,
     __options:{
@@ -39,8 +40,14 @@ mapEditor = {
             fillColor:'#FF0000',
             fillOpacity:0.5,
             editable:true
+        },
+        imageoverlay:{
+            strokeWeight:1,
+            strokeOpacity:0.5,
+            strokeColor:'#000',
+            fillOpacity:0.0,
+            editable:true
         }
-
     },
     __mapParameters:{ //TODO look into getting this list from server dynamically
         mappingservice: {
@@ -122,6 +129,57 @@ mapEditor = {
             values:['on','off']
         }
     },
+    __addMapObject:function(o){
+        var idx = this.__mapObjects.indexOf(o);
+        if(idx === -1){
+            this.__mapObjects.push(o);
+            o.overlay.setMap(this.__map);
+        }
+    },
+    __removeMapObject:function(o){
+        var idx = this.__mapObjects.indexOf(o);
+        if(idx !== -1){
+            this.__mapObjects[idx].overlay.setMap(null);
+            this.__mapObjects.splice(idx,1);
+        }
+    },
+    __createOrUpdateImageOverlay:function(e,imageUrl){
+        //remove old image overlay if exists
+        this.__removeMapObject(e.imageoverlay);
+
+        //set to new type so it doesn't collide with rectangle
+        e.type = 'imageoverlaybounds'
+
+        //add map objects
+        this.__addMapObject(e);
+        var image = new google.maps.GroundOverlay(imageUrl, e.overlay.getBounds());
+        var imageOverlay = {
+            overlay:image,
+            type:'imageoverlay'
+        };
+        this.__addMapObject(imageOverlay);
+        e.imageoverlay = imageOverlay;
+        imageOverlay.metadata = e.metadata;
+
+        //register right click listener if not already done
+        if(e.rightClickListener !== true){
+            google.maps.event.addListener(e.overlay, 'rightclick', function () {
+                mapEditor.__options.onRightClick(e);
+            });
+            e.rightClickListener = true;
+        }
+
+        //register bounds change listener if not already done
+        if(e.boundsChangedListener !== true){
+            google.maps.event.addListener(e.overlay, 'bounds_changed', function () {
+                //destroy and recreate imageoverlay (due to no e.imageoverlay.setBounds() method)
+                mapEditor.__createOrUpdateImageOverlay(e, e.imageoverlay.overlay.getUrl());
+            });
+            e.boundsChangedListener = true;
+        }
+
+        return imageOverlay;
+    },
     __initControls:function(){
         //Create root controls element
         var controlDiv = this.__controlsDiv = document.createElement('div');
@@ -140,7 +198,7 @@ mapEditor = {
         this.__map = new google.maps.Map(document.getElementById(this.__options.canvas),myOptions);
 
         //noinspection JSUnresolvedVariable
-        var drawingManager = new google.maps.drawing.DrawingManager({
+        var drawingManager = this.__drawingManager = new google.maps.drawing.DrawingManager({
             drawingMode:null,
             drawingControl:true,
             drawingControlOptions:{
@@ -155,15 +213,15 @@ mapEditor = {
         drawingManager.setMap(this.__map);
 
         google.maps.event.addListener(drawingManager, 'overlaycomplete', function (e) {
-            mapEditor.__mapObjects.push(e);
+            mapEditor.__addMapObject(e);
             mapEditor.__registerRightClickListener(e);
             google.maps.event.trigger(e.overlay, 'rightclick');
         });
     },
-    __handleMetaData:function(e){
+    __readMapObjectOptionsFromMetadata:function(e){
         var options = $.extend({},this.__mapObjectOptions[e.type]);
-        for(var x = 0; x < e.metadata.length; x++){
-            var data = e.metadata[x];
+        for(var key in e.metadata){
+            var data = e.metadata[key];
             if(data.value.trim() !== ''){
                 options[data.name] = data.value;
             }
@@ -174,6 +232,9 @@ mapEditor = {
         }catch(e){
             return false;
         }
+    },
+    __writeMetaDataToMapObject:function(e,metadata){
+        e.metadata = this.__arrayToObject(metadata);
     },
     __convertPositionalParametersToMetaData:function(positionalArray){
         var positionalNames = [
@@ -200,7 +261,13 @@ mapEditor = {
                 value:positionalArray[x].trim()
             }
         }
-        return positionalArray;
+        return this.__arrayToObject(positionalArray);
+    },
+    __arrayToObject:function(arr){
+        var o = {};
+        for (var i = 0; i < arr.length; ++i)
+            o[i] = arr[i];
+        return o;
     },
     __registerRightClickListener:function(e){
         google.maps.event.addListener(e.overlay, 'rightclick', function () {
@@ -215,6 +282,7 @@ mapEditor = {
         var polygons = '';
         var lines = '';
         var rectangles = '';
+        var imageoverlays = '';
 
         for(var x = 0; x < this.__mapObjects.length; x++){
             var mapObject = this.__mapObjects[x].overlay;
@@ -224,14 +292,17 @@ mapEditor = {
             var metadata = '';
             if(mapObjectMeta !== undefined){
                 var delimiterPosition = '';
-                for(var i = 0; i < mapObjectMeta.length; i++){
+                for(var key in mapObjectMeta){
+                    var data = mapObjectMeta[key];
                     delimiterPosition += delimiterPosition.length > 0 ? ' ~' : '~';
-                    if(mapObjectMeta[i].value !== ''){
-                        if(mapObjectMeta[i].name == 'link' && mapObjectMeta[i].value.indexOf('link:') == -1){
-                            mapObjectMeta[i].value = 'link:'+mapObjectMeta[i].value;
+                    if(data.value !== ''){
+                        if(data.name === 'link' && data.value.indexOf('link:') == -1){
+                            data.value = 'link:'+data.value;
                         }
-                        metadata += delimiterPosition+mapObjectMeta[i].value
-                        delimiterPosition = '';
+                        if(!(mapObjectType === 'imageoverlay' && data.name === 'image')){
+                            metadata += delimiterPosition+data.value
+                            delimiterPosition = '';
+                        }
                     }
                 }
             }
@@ -247,6 +318,8 @@ mapEditor = {
                 lines += lines === '' ? data : '; '+data;
             } else if (mapObjectType === 'rectangle') {
                 rectangles += rectangles === '' ? data : '; '+data;
+            }else if(mapObjectType === 'imageoverlay'){
+                imageoverlays += imageoverlays === '' ? data : '; '+data;
             }
         }
 
@@ -255,6 +328,7 @@ mapEditor = {
         code += polygons !== '' ? '\n|polygons='+polygons : '';
         code += lines !== '' ? '\n|lines='+lines : '';
         code += rectangles !== '' ? '\n|rectangles='+rectangles : '';
+        code += imageoverlays !== '' ? '\n|imageoverlays='+imageoverlays : '';
 
         //add map parameters
         for(var param in this.__mapParameters){
@@ -280,6 +354,7 @@ mapEditor = {
                     circle:/\|\s*circles=(.*)/i,
                     polygon:/\|\s*polygons=(.*)/i,
                     rectangle:/\|\s*rectangles=(.*)/i,
+                    imageoverlay:/\|\s*imageoverlays=(.*)/i,
                     parameter:/\|\s*(.*)=(.*)/i
                 };
                 var mapObjects = [];
@@ -299,6 +374,7 @@ mapEditor = {
                                         if(metadata.length > 0){
                                             data[i] = data[i].substring(0,data[i].indexOf('~'));
                                         }
+                                        metadata = this.__convertPositionalParametersToMetaData(metadata);
 
                                         var options = this.__mapObjectOptions[key];
                                         var mapObject = null;
@@ -354,19 +430,47 @@ mapEditor = {
                                                 bounds: new google.maps.LatLngBounds(sw,ne)
                                             },options);
                                             mapObject = new google.maps.Rectangle(options);
-                                        }
-                                        if(mapObject !== null){
-                                            mapObject.setMap(this.__map);
+                                        }else if (key === 'imageoverlay'){
+                                            var parts = data[i].split(':');
+                                            var ne = parts[0].split(',');
+                                            var sw = parts[1].split(',');
+                                            var imageUrl = parts[2];
+                                            sw = new google.maps.LatLng(sw[0],sw[1]);
+                                            ne = new google.maps.LatLng(ne[0],ne[1]);
 
-                                            mapObject = {
-                                                type:key,
-                                                overlay:mapObject,
-                                                metadata:this.__convertPositionalParametersToMetaData(metadata)
+                                            options = $.extend({
+                                                bounds: new google.maps.LatLngBounds(sw,ne)
+                                            },options);
+                                            var rectangle = new google.maps.Rectangle(options);
+
+                                            //add image url as metadata entry
+                                            metadata['image'] = {
+                                                name:'image',value:imageUrl
                                             };
 
-                                            this.__registerRightClickListener(mapObject);
-                                            this.__mapObjects.push(mapObject);
-                                            this.__handleMetaData(mapObject);
+                                            mapObject = {
+                                                type:'imageoverlaybounds',
+                                                overlay:rectangle,
+                                                metadata:metadata
+                                            };
+
+                                            this.__createOrUpdateImageOverlay(mapObject,imageUrl);
+                                            this.__readMapObjectOptionsFromMetadata(mapObject);
+
+                                        }
+                                        if(mapObject !== null){
+                                            //imageoverlay needs special handling
+                                            if(key != 'imageoverlay' ){
+                                                mapObject = {
+                                                    type:key,
+                                                    overlay:mapObject,
+                                                    metadata:metadata
+                                                };
+
+                                                this.__registerRightClickListener(mapObject);
+                                                this.__addMapObject(mapObject);
+                                                this.__readMapObjectOptionsFromMetadata(mapObject);
+                                            }
 
                                             isMapObject = true;
 
@@ -443,6 +547,13 @@ mapEditor = {
             return lines.substr(1);
         }
 
+        google.maps.GroundOverlay.prototype.toString = function(){
+                var bounds = this.getBounds();
+                var sw = bounds.getSouthWest();
+                var ne = bounds.getNorthEast();
+                return [ne,sw,this.getUrl()].join(':');
+        }
+
         //initialize rest
         this.__initMap();
         this.__initControls();
@@ -450,73 +561,140 @@ mapEditor = {
 }
 
 $(document).ready(function(){
+
+
+    function openDialog(e){
+        if(e.metadata !== undefined){
+            for(var key in e.metadata){
+                var data = e.metadata[key];
+                $(this).find('form input[name="'+data.name+'"]').val(data.value);
+            }
+        }
+        var i18nButtons = {};
+        i18nButtons[mw.msg('mapeditor-done-button')] = function () {
+            var form = $(this).find('form');
+            form.find('.miniColors').each(function(){
+                if($(this).val() === '#'){
+                    $(this).val('');
+                }
+            });
+            mapEditor.__writeMetaDataToMapObject(e,form.serializeArray());
+            $(this).dialog("close");
+            if(!mapEditor.__readMapObjectOptionsFromMetadata(e)){
+                alert(mw.msg('mapeditor-parser-error'));
+            }
+        };
+        i18nButtons[mw.msg('mapeditor-remove-button')] = function () {
+            mapEditor.__removeMapObject(e);
+            $(this).dialog("close");
+        };
+
+        this.dialog({
+            modal:true,
+            buttons:i18nButtons,
+            open:function(){
+                if(e.metadata !== undefined){
+                    var isText = true;
+                    for(var key in e.metadata){
+                        var data = e.metadata[key];
+                        if(data.name === 'link' && data.value.length > 0){
+                            isText = false;
+                            break;
+                        }
+                    }
+                    //depending on existing metadata,
+                    //show either form with title/text fields or just link field
+                    if(isText){
+                        $(this).find('input[value="text"]').trigger('click');
+                    }else{
+                        $(this).find('input[value="link"]').trigger('click');
+                    }
+                }else{
+                    //default trigger click on text radio button
+                    $(this).find('input[value="text"]').trigger('click');
+                }
+
+
+            },
+            beforeClose:function(){
+                //reset the form
+                var form = $(this).find('form');
+                form[0].reset();
+                form.find('.opacity-data-holder').text(mw.msg('mapeditor-none-text'));
+                form.find('.ui-slider').slider('value',-1);
+                form.find('.miniColors').miniColors('value','#fff').val('');
+            }
+        });
+    }
+
+    function openImageOverlayDialog(e,callback){
+
+        var form = $('#imageoverlay-form');
+
+        var i18nButtons = {}
+        i18nButtons[mw.msg('mapeditor-done-button')] = function(){
+            var imageUrl = $(this).find('input[name="image"]').val();
+            mapEditor.__createOrUpdateImageOverlay(e,imageUrl);
+
+            var metadata = form.find('form').serializeArray();
+            mapEditor.__writeMetaDataToMapObject(e,metadata);
+            mapEditor.__writeMetaDataToMapObject(e.imageoverlay,metadata);
+
+            form.dialog("close");
+        };
+
+        i18nButtons[mw.msg('mapeditor-remove-button')] = function () {
+            mapEditor.__removeMapObject(e.imageoverlay);
+            e.imageoverlay = undefined;
+            form.dialog("close");
+        };
+
+        form.dialog({
+            modal:true,
+            buttons:i18nButtons,
+            open:function(){
+                //restore data from previous edits
+                if(e.metadata !== undefined){
+                    var isText = true;
+                    for(var key in e.metadata){
+                        var data = e.metadata[key];
+                        if(data.name === 'link' && data.value.length > 0){
+                            isText = false;
+                        }
+                        form.find('form input[name="'+data.name+'"]').val(data.value);
+                    }
+                    //depending on existing metadata,
+                    //show either form with title/text fields or just link field
+                    if(isText){
+                        form.find('input[value="text"]').trigger('click');
+                    }else{
+                        form.find('input[value="link"]').trigger('click');
+                    }
+                }else{
+                    //default trigger click on text radio button
+                    form.find('input[value="text"]').trigger('click');
+                }
+            },
+            beforeClose:function(){
+                mapEditor.__drawingManager.setMap(mapEditor.__map); //re-enable standard drawing manager
+                if(e.imageoverlay === undefined){
+                    mapEditor.__removeMapObject(e);
+                }
+
+                //reset the form
+                var formElement = form.find('form');
+                formElement[0].reset();
+
+                if(callback !== undefined && typeof(callback) === 'function'){
+                    callback();
+                }
+
+            }
+        });
+    }
+
     mapEditor.setup({
         onRightClick:function(e){
-            function openDialog(e){
-                if(e.metadata !== undefined){
-                    for(var x = 0; x < e.metadata.length; x++){
-                        var data = e.metadata[x];
-                        $(this).find('form input[name="'+data.name+'"]').val(data.value);
-                    }
-                }
-                var i18nButtons = {};
-                i18nButtons[mw.msg('mapeditor-done-button')] = function () {
-                    var form = $(this).find('form');
-                    form.find('.miniColors').each(function(){
-                        if($(this).val() === '#'){
-                            $(this).val('');
-                        }
-                    });
-                    e.metadata = form.serializeArray();
-                    $(this).dialog("close");
-                    if(!mapEditor.__handleMetaData(e)){
-                        alert(mw.msg('mapeditor-parser-error'));
-                    }
-                };
-                i18nButtons[mw.msg('mapeditor-remove-button')] = function () {
-                    e.overlay.setMap(null);
-                    mapEditor.__mapObjects.splice(mapEditor.__mapObjects.indexOf(e.overlay),1);
-                    $(this).dialog("close");
-                };
-
-                this.dialog({
-                    modal:true,
-                    buttons:i18nButtons,
-                    open:function(){
-                        if(e.metadata !== undefined){
-                            var isText = true;
-                            for(var x = 0; x < e.metadata.length; x++){
-                                var data = e.metadata[x];
-                                if(data.name === 'link' && data.value.length > 0){
-                                    isText = false;
-                                    break;
-                                }
-                            }
-                            //depending on existing metadata,
-                            //show either form with title/text fields or just link field
-                            if(isText){
-                                $(this).find('input[value="text"]').trigger('click');
-                            }else{
-                                $(this).find('input[value="link"]').trigger('click');
-                            }
-                        }else{
-                            //default trigger click on text radio button
-                            $(this).find('input[value="text"]').trigger('click');
-                        }
-
-
-                    },
-                    beforeClose:function(){
-                        //reset the form
-                        var form = $(this).find('form');
-                        form[0].reset();
-                        form.find('.opacity-data-holder').text(mw.msg('mapeditor-none-text'));
-                        form.find('.ui-slider').slider('value',-1);
-                        form.find('.miniColors').miniColors('value','#fff').val('');
-                    }
-                });
-            }
-
             if (e.type === 'marker') {
                 openDialog.call($('#marker-form'),e);
             } else if (e.type === 'circle') {
@@ -527,6 +705,8 @@ $(document).ready(function(){
                 openDialog.call($('#strokable-form'),e);
             } else if (e.type === 'rectangle') {
                 openDialog.call($('#fillable-form'),e);
+            } else if (e.type === 'imageoverlaybounds') {
+                openImageOverlayDialog(e);
             }
         }
     });
@@ -543,7 +723,7 @@ $(document).ready(function(){
 
     mapEditor.addControlButton(mw.msg('mapeditor-import-button'), function(){
         var i18nButtons = {}
-        i18nButtons[mw.msg('')] = function () {
+        i18nButtons[mw.msg('mapeditor-import-button2')] = function () {
             var data = $('#code-input').val();
             if(mapEditor.__importWikiCode(data)){
                 $(this).dialog('close');
@@ -583,6 +763,40 @@ $(document).ready(function(){
             mapEditor.__mapParameters[param].value = undefined;
         }
     });
+
+    mapEditor.addControlButton(mw.msg('mapeditor-imageoverlay-button'), function(){
+        var button = $(this);
+        if(button.data('clicked') === true){
+            return; //already clicked, disregard this click
+        }else{
+            button.data('clicked',true);
+        }
+
+        mapEditor.__drawingManager.setMap(null); //disable  current drawing manager
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
+            drawingMode:google.maps.drawing.OverlayType.RECTANGLE,
+            drawingControl:false,
+            rectangleOptions:mapEditor.__mapObjectOptions.imageoverlay
+        });
+        drawingManager.setMap(mapEditor.__map);
+
+        google.maps.event.addListener(drawingManager, 'overlaycomplete', function (e) {
+            mapEditor.__addMapObject(e); //add if it doesn't already exist.
+
+            drawingManager.setMap(null);
+            delete drawingManager;
+
+            openImageOverlayDialog(e,function(){
+                //re-enable button
+                button.data('clicked',false);
+            });
+
+        });
+
+    });
+
+
 
     //init map parameters
     var formselect = $('#map-parameter-form select[name="key"]');

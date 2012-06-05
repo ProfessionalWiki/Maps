@@ -13,7 +13,7 @@ abstract class MapsBaseElement implements iBubbleMapElement , iLinkableMapElemen
 	}
 
 	public function setTitle( $title ) {
-		$this->title = $title;
+		$this->title = trim($title);
 	}
 
 	public function getText() {
@@ -21,7 +21,7 @@ abstract class MapsBaseElement implements iBubbleMapElement , iLinkableMapElemen
 	}
 
 	public function setText( $text ) {
-		$this->text = $text;
+		$this->text = trim($text);
 	}
 
 	public function getLink() {
@@ -29,7 +29,7 @@ abstract class MapsBaseElement implements iBubbleMapElement , iLinkableMapElemen
 	}
 
 	public function setLink( $link ) {
-		$this->link = $link;
+		$this->link = trim($link);
 	}
 
 	public function hasTitle() {

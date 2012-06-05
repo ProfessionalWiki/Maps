@@ -39,12 +39,19 @@
 		this.circles = [];
 
 
-		/**
-		 * All rectangles on the map
-		 */
-		this.rectangles = [];
+        /**
+         * All rectangles on the map
+         */
+        this.rectangles = [];
 
-		/**
+
+        /**
+         * All image overlays on the map
+         */
+        this.imageoverlays = [];
+
+
+        /**
 		 * Creates a new marker with the provided data,
 		 * adds it to the map, and returns it.
 		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
@@ -286,7 +293,25 @@
 			google.maps.event.addListener(rectangle, "click", function (event) {
 				openBubbleOrLink.call(this, properties, event, rectangle);
 			});
-		}
+		};
+
+        this.addImageOverlay = function(properties){
+            var imageBounds = new google.maps.LatLngBounds(
+                new google.maps.LatLng(properties.sw.lat,properties.sw.lon),
+                new google.maps.LatLng(properties.ne.lat,properties.ne.lon)
+            );
+
+            var image = new google.maps.GroundOverlay(properties.image,imageBounds);
+            image.setMap(this.map);
+
+            this.imageoverlays.push(image);
+
+            //add click event
+            google.maps.event.addListener(image, "click", function (event) {
+                openBubbleOrLink.call(this, properties, event, image);
+            });
+        };
+
 
 		this.removePolygon = function (polygon) {
 			polygon.setMap(null);
@@ -599,6 +624,11 @@
 				});
 			}
 
+            if(options.imageoverlays){
+                for (var i = 0; i < options.imageoverlays.length; i++) {
+                    this.addImageOverlay(options.imageoverlays[i]);
+                }
+            }
 		};
 
 		function openBubbleOrLink(properties, event, obj) {

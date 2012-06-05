@@ -18,7 +18,8 @@ class MapsBasePointLineMap extends MapsBasePointMap {
 			&$params['lines'] ,
 			&$params['polygons'] ,
 			&$params['circles'] ,
-			&$params['rectangles']
+			&$params['rectangles'],
+			&$params['imageoverlays'],
 		);
 
 		foreach ( $textContainers as &$textContainer ) {

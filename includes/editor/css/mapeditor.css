@@ -20,6 +20,10 @@
     width: 200px;
 }
 
+.mapeditor-dialog-form fieldset input[type="checkbox"]{
+    width: auto;
+}
+
 .mapeditor-dialog-form fieldset input[name="strokeColor"],.mapeditor-dialog-form fieldset input[name="fillColor"]{
     width: 100px;
 }

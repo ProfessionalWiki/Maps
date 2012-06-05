@@ -84,6 +84,7 @@ $wgAutoloadClasses['MapsLine'] = $incDir . 'Maps_Line.php';
 $wgAutoloadClasses['MapsPolygon'] = $incDir . 'Maps_Polygon.php';
 $wgAutoloadClasses['MapsCircle'] = $incDir . 'Maps_Circle.php';
 $wgAutoloadClasses['MapsRectangle'] = $incDir . 'Maps_Rectangle.php';
+$wgAutoloadClasses['MapsImageOverlay'] = $incDir . 'Maps_ImageOverlay.php';
 $wgAutoloadClasses['iMappingService'] = $incDir . 'iMappingService.php';
 $wgAutoloadClasses['MapsMappingServices'] = $incDir . 'Maps_MappingServices.php';
 $wgAutoloadClasses['MapsMappingService'] = $incDir . 'Maps_MappingService.php';
@@ -148,6 +149,7 @@ $wgAutoloadClasses['MapsParamLine'] = $manDir . 'Maps_ParamLine.php';
 $wgAutoloadClasses['MapsParamPolygon'] = $manDir . 'Maps_ParamPolygon.php';
 $wgAutoloadClasses['MapsParamCircle'] = $manDir . 'Maps_ParamCircle.php';
 $wgAutoloadClasses['MapsParamRectangle'] = $manDir . 'Maps_ParamRectangle.php';
+$wgAutoloadClasses['MapsParamImageOverlay'] = $manDir . 'Maps_ParamImageOverlay.php';
 unset( $manDir );
 
 // Autoload the "includes/parserHooks/" classes.
@@ -175,7 +177,7 @@ $wgAPIModules['geocode'] = 'ApiGeocode';
 $wgExtensionMessagesFiles['MapsMagic'] = $egMapsDir . 'Maps.i18n.magic.php';
 $wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
 $wgExtensionMessagesFiles['MapsNamespaces'] = $egMapsDir . 'Maps.i18n.namespaces.php';
-
+$wgExtensionMessagesFiles['MapsAlias'] = $egMapsDir . 'Maps.i18n.alias.php';
 
 // Register the initialization function of Maps.
 $wgExtensionFunctions[] = 'efMapsSetup';
@@ -314,6 +316,7 @@ $wgResourceModules['mapeditor'] = array(
 		'mapeditor-import-button2',
 		'mapeditor-mapparam-button',
 		'mapeditor-clear-button',
+		'mapeditor-imageoverlay-button'
 	)
 );
 

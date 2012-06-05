@@ -12,7 +12,7 @@ class MapsBaseFillableElement extends MapsBaseStrokableElement implements iFilla
 	}
 
 	public function setFillColor( $fillColor ) {
-		$this->fillColor = $fillColor;
+		$this->fillColor = trim($fillColor);
 	}
 
 	public function getFillOpacity() {
@@ -20,7 +20,7 @@ class MapsBaseFillableElement extends MapsBaseStrokableElement implements iFilla
 	}
 
 	public function setFillOpacity( $fillOpacity ) {
-		$this->fillOpacity = $fillOpacity;
+		$this->fillOpacity = trim($fillOpacity);
 	}
 
 	public function hasFillColor() {

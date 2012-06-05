@@ -13,7 +13,7 @@ class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapE
 	}
 
 	public function setStrokeColor( $strokeColor ) {
-		$this->strokeColor = $strokeColor;
+		$this->strokeColor = trim($strokeColor);
 	}
 
 	public function getStrokeOpacity() {
@@ -21,7 +21,7 @@ class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapE
 	}
 
 	public function setStrokeOpacity( $strokeOpacity ) {
-		$this->strokeOpacity = $strokeOpacity;
+		$this->strokeOpacity = trim($strokeOpacity);
 	}
 
 	public function getStrokeWeight() {
@@ -29,7 +29,7 @@ class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapE
 	}
 
 	public function setStrokeWeight( $strokeWeight ) {
-		$this->strokeWeight = $strokeWeight;
+		$this->strokeWeight = trim($strokeWeight);
 	}
 
 	public function hasText() {
