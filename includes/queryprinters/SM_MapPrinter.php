@@ -49,7 +49,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	 */
 	protected function getParameterInfo() {
 		global $egMapsDefaultLabel, $egMapsDefaultTitle;
-		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate;
+		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
 		
 		$params = MapsMapper::getCommonParameters();
 		$this->service->addParameterInfo( $params );		
@@ -100,7 +100,15 @@ class SMMapPrinter extends SMWResultPrinter {
 			array( 'show title' )
 		);
 		$params['showtitle']->setMessage( 'semanticmaps-par-showtitle' );
-		
+
+		$params['hidenamespace'] = new Parameter(
+			'hidenamespace',
+			Parameter::TYPE_BOOLEAN,
+			$smgQPHideNamespace,
+			array( 'hide namespace' )
+		);
+		$params['hidenamespace']->setMessage( 'semanticmaps-par-hidenamespace' );
+
 		$params['template'] = new Parameter(
 			'template',
 			Parameter::TYPE_STRING,
@@ -148,6 +156,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$queryHandler = new SMQueryHandler( $res, $outputmode );
 			$queryHandler->setShowSubject( $params['showtitle'] );
 			$queryHandler->setTemplate( $params['template'] );
+			$queryHandler->setHideNamespace( $params['hidenamespace'] );
 			
 			$this->handleMarkerData( $params, $queryHandler->getLocations() );
 			$locationAmount = count( $params['locations'] );
