@@ -257,12 +257,23 @@ $messages['ca'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Mostra el control de geocodificació.',
 );
 
-/** Czech (Česky)
+/** Czech (česky)
  * @author Utar
+ * @author XenoPheX
  */
 $messages['cs'] = array(
+	'semanticmaps-desc' => 'Poskytuje možnost zobrazit a upravovat data souřadnic uložená rozšířením Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demos]).',
+	'semanticmaps-unrecognizeddistance' => 'Hodnota  $1  není platná vzdálenost.',
+	'semanticmaps-kml-link' => 'Zobrazit soubor KML',
+	'semanticmaps-default-kml-pagelink' => 'Zobrazit stránku $1',
+	'semanticmaps-latitude' => 'Z. šířka: $1',
+	'semanticmaps-longitude' => 'Z. délka: $1',
+	'semanticmaps-altitude' => 'Nadm. výška: $1',
+	'semanticmaps_enteraddresshere' => 'Sem zadejte adresu',
 	'semanticmaps-forminput-remove' => 'Odebrat',
 	'semanticmaps-forminput-add' => 'Přidat',
+	'semanticmaps-par-forceshow' => 'Zobrazit mapu i pokud nejsou žádná místa k zobrazení?',
+	'semanticmaps-par-centre' => 'Střed mapy. Není-li specifikován, mapa automaticky vybere optimální střed tak, aby byly zobrazeny všechny značky na ní.',
 );
 
 /** Welsh (Cymraeg)
@@ -672,7 +683,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供します 。( [http://mapping.referata.com/wiki/Examples デモ] )',
+	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能で格納された座標データを表示・編集する機能を提供する（[http://mapping.referata.com/wiki/Examples デモ]）',
 	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps-kml-link' => 'KMLファイルを閲覧',
 	'semanticmaps-default-kml-pagelink' => 'ページ$1を表示',
