@@ -38,7 +38,6 @@ $wgResourceModules['ext.maps.openlayers'] = array(
 	'messages' => array(
 		'maps-markers',
         'maps-copycoords-prompt',
-        'maps-clustering-unsupportedservice'
 	)			
 );
 
