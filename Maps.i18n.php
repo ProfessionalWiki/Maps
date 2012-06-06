@@ -1144,6 +1144,7 @@ $1',
 	'mapeditor-none-text' => 'Keine',
 	'mapeditor-done-button' => 'Fertig',
 	'mapeditor-remove-button' => 'Entfernen',
+	'mapeditor-import-button2' => 'Importieren',
 	'mapeditor-export-button' => 'In Wikicode exportieren',
 	'mapeditor-import-button' => 'Aus Wikicode importieren',
 	'mapeditor-mapparam-button' => 'Kartenparameter bearbeiten',
@@ -1168,6 +1169,9 @@ $1',
 	'mapeditor-form-field-showonhover' => 'Nur beim Darüberfahren anzeigen',
 	'mapeditor-mapparam-title' => 'Kartenparameter bearbeiten',
 	'mapeditor-mapparam-defoption' => '-Parameter auswählen-',
+	'mapeditor-imageoverlay-button' => 'Bildeinblendung hinzufügen',
+	'mapeditor-form-field-image' => 'Bild',
+	'mapeditor-imageoverlay-title' => 'Einzelheiten zur Bildeinblendung',
 );
 
 /** Zazaki (Zazaki)
@@ -1447,6 +1451,7 @@ No se puede mostrar el mapa.',
 	'mapeditor-none-text' => 'Ninguno',
 	'mapeditor-done-button' => 'Hecho',
 	'mapeditor-remove-button' => 'Eliminar',
+	'mapeditor-import-button2' => 'Importar',
 	'mapeditor-export-button' => 'Exportar a código wiki',
 	'mapeditor-import-button' => 'Importar desde código wiki',
 	'mapeditor-mapparam-button' => 'Editar parámetros del mapa',
@@ -1471,6 +1476,9 @@ No se puede mostrar el mapa.',
 	'mapeditor-form-field-showonhover' => 'Mostrar sólo al mover el ratón por encima',
 	'mapeditor-mapparam-title' => 'Editar parámetros del mapa',
 	'mapeditor-mapparam-defoption' => '-Seleccionar parámetro-',
+	'mapeditor-imageoverlay-button' => 'Agregar imagen superpuesta',
+	'mapeditor-form-field-image' => 'Imagen',
+	'mapeditor-imageoverlay-title' => 'Detalles de la imagen superpuesta',
 );
 
 /** Estonian (Eesti)
@@ -1738,6 +1746,7 @@ $1",
 	'mapeditor-none-text' => 'Aucun',
 	'mapeditor-done-button' => 'Fait',
 	'mapeditor-remove-button' => 'Supprimer',
+	'mapeditor-import-button2' => 'Importer',
 	'mapeditor-export-button' => 'Exporter en code wiki',
 	'mapeditor-import-button' => 'Importer à partir de code wiki',
 	'mapeditor-mapparam-button' => 'Modifier les paramètres de la carte',
@@ -1762,6 +1771,9 @@ $1",
 	'mapeditor-form-field-showonhover' => 'Montrer seulement au survol',
 	'mapeditor-mapparam-title' => 'Modifier les paramètres de la carte',
 	'mapeditor-mapparam-defoption' => '-Sélectionnez un paramètre-',
+	'mapeditor-imageoverlay-button' => "Ajouter la couverture d'image",
+	'mapeditor-form-field-image' => 'Image',
+	'mapeditor-imageoverlay-title' => "Détails de la couverture d'image",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1971,6 +1983,7 @@ $1',
 	'mapeditor-none-text' => 'Ningún',
 	'mapeditor-done-button' => 'Feito',
 	'mapeditor-remove-button' => 'Eliminar',
+	'mapeditor-import-button2' => 'Importar',
 	'mapeditor-export-button' => 'Exportar en código wiki',
 	'mapeditor-import-button' => 'Importar a partir de código wiki',
 	'mapeditor-mapparam-button' => 'Editar os parámetros do mapa',
@@ -1995,6 +2008,9 @@ $1',
 	'mapeditor-form-field-showonhover' => 'Mostrar unicamente ao pasar o rato por riba',
 	'mapeditor-mapparam-title' => 'Editar os parámetros do mapa',
 	'mapeditor-mapparam-defoption' => '-Seleccione un parámetro-',
+	'mapeditor-imageoverlay-button' => 'Engadir a sobreposición da imaxe',
+	'mapeditor-form-field-image' => 'Imaxe',
+	'mapeditor-imageoverlay-title' => 'Detalles da sobreposición da imaxe',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
@@ -2304,6 +2320,8 @@ $messages['hsb'] = array(
 	'validation-error-invalid-images' => 'Parameter $1 dyrbi jedyn wobraz abo wjacore wobrazy być.',
 	'validation-error-invalid-goverlay' => 'Parameter $1 dyrbi płaćiwa woršta być.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 dyrbi jedna woršta abo wjacore woršty być.',
+	'validation-error-invalid-line-param' => 'Njepłaćiwy parameter "lines" podaty.',
+	'validation-error-invalid-polyline-param' => 'Njepłaćiwy parameter "polylines" podaty.',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'W',
 	'maps-abb-south' => 'J',
@@ -2334,8 +2352,28 @@ $messages['hsb'] = array(
 	'maps-googlemaps3-par-poi' => 'Zajimawosće pokazać.',
 	'maps-osm-par-thumbs' => 'Miniaturne wobrazki pokazać',
 	'maps-osm-par-photos' => 'Fotografije pokazać',
-	'maps-yahoomaps-par-type' => 'Kartowy typ, kotryž ma so na spočatku pokazać.',
-	'maps-yahoomaps-par-autozoom' => 'Kulenje z pomocu koleska myše zmóžnić.',
+	'mapeditor' => 'Kartowy editor',
+	'specialpages-group-maps' => 'Karty',
+	'mapeditor-none-text' => 'Žana',
+	'mapeditor-done-button' => 'Dokónčeny',
+	'mapeditor-remove-button' => 'Wotstronić',
+	'mapeditor-import-button2' => 'Importować',
+	'mapeditor-export-button' => 'Do wikikoda eksportować',
+	'mapeditor-import-button' => 'Z wikikoda importować',
+	'mapeditor-mapparam-button' => 'Kartowe parametry wobdźěłać',
+	'mapeditor-code-title' => 'Wikikod',
+	'mapeditor-import-title' => 'Wikikod importować',
+	'mapeditor-form-title' => 'Podrobnosće wobdźěłać',
+	'mapeditor-link-title-switcher-popup-text' => 'Wuskakowanski meni z tekstom',
+	'mapeditor-link-title-switcher-link-text' => 'Wotkaz',
+	'mapeditor-form-field-title' => 'Titul',
+	'mapeditor-form-field-text' => 'Tekst',
+	'mapeditor-form-field-link' => 'Wotkaz',
+	'mapeditor-form-field-icon' => 'Symbol',
+	'mapeditor-form-field-group' => 'Skupina',
+	'mapeditor-form-field-fillcolor' => 'Pjelnjenska barba',
+	'mapeditor-mapparam-defoption' => '-Parameter wubrać-',
+	'mapeditor-form-field-image' => 'Wobraz',
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -2760,7 +2798,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => 'ウィキページへの動的な地図の組み込み、住所の座標データへの変換などの地図関連操作を可能にする。([http://mapping.referata.com/wiki/Examples 実演])',
+	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする（[http://mapping.referata.com/wiki/Examples デモ]）',
 	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中...',
@@ -2808,7 +2846,6 @@ $1',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
 	'maps_googlemaps2' => 'Google マップ v2',
 	'maps_googlemaps3' => 'Google マップ v3',
-	'maps_yahoomaps' => 'Yahoo! 地図',
 	'maps_click_to_activate' => 'クリックして地図をアクティブに',
 	'maps_centred_on' => '地図の中心は $1、$2。',
 	'maps-googlemaps2-incompatbrowser' => 'あなたのブラウザーは Google マップ v2 と互換性がありません。',
@@ -2910,6 +2947,18 @@ $1',
 	'maps_videos' => 'Viddejos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webkammeras',
+);
+
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'maps_map' => 'Nexşe',
+	'mapeditor-link-title-switcher-link-text' => 'Girêdan',
+	'mapeditor-form-field-title' => 'Sernav',
+	'mapeditor-form-field-link' => 'Girêdan',
+	'mapeditor-form-field-group' => 'Kom',
+	'mapeditor-form-field-image' => 'Wêne',
 );
 
 /** Ladino (Ladino)
@@ -3186,6 +3235,7 @@ $1',
 	'mapeditor-none-text' => 'Нема',
 	'mapeditor-done-button' => 'Готово',
 	'mapeditor-remove-button' => 'Отстрани',
+	'mapeditor-import-button2' => 'Увези',
 	'mapeditor-export-button' => 'Извези во викикод',
 	'mapeditor-import-button' => 'Увези од викикод',
 	'mapeditor-mapparam-button' => 'Уреди параметри на картата',
@@ -3210,6 +3260,9 @@ $1',
 	'mapeditor-form-field-showonhover' => 'Прикажи само при минување врз него',
 	'mapeditor-mapparam-title' => 'Уреди параметри на картата',
 	'mapeditor-mapparam-defoption' => '-Изберете параметар-',
+	'mapeditor-imageoverlay-button' => 'Додај облога од слика',
+	'mapeditor-form-field-image' => 'Слика',
+	'mapeditor-imageoverlay-title' => 'Поединости за облога од слика',
 );
 
 /** Malayalam (മലയാളം) */
