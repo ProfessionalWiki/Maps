@@ -793,7 +793,7 @@ $messages['bn'] = array(
 	'maps-osm-par-photos' => 'ছবি দেখাও',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fohanno
  * @author Fulup
  * @author Y-M D
@@ -805,6 +805,7 @@ $messages['br'] = array(
 	'maps-loading-map' => 'O kargañ ar gartenn...',
 	'maps-load-failed' => "N'eus ket bet gallet kargañ ar gartenn !",
 	'maps-markers' => 'Merkerioù',
+	'maps-copycoords-prompt' => 'CTRL+C, KAS',
 	'maps-others' => 're all',
 	'maps-ns-layer' => 'Gwiskad',
 	'maps-ns-layer-talk' => 'Kaozeadenn ar gwiskad',
@@ -853,7 +854,6 @@ $1",
 $1",
 	'maps_map_cannot_be_displayed' => "N'hall ket ar gartenn bezañ diskwelet.",
 	'maps-geocoder-not-available' => "N'haller ket ober gant arc'hwel geokodañ ar c'hartennoù. N'haller ket geokodañ ho lec'hiadur.",
-	'maps_yahoomaps' => 'Yahoo! Kartennoù',
 	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
 	'maps_centred_on' => 'Kartenn kreizet war $1, $2.',
 	'maps-googlemaps2-incompatbrowser' => "N'eo ket kenglotus ho merdeer gant Google Maps v2.",
@@ -870,7 +870,15 @@ $1",
 	'maps-googlemaps3-par-kml' => 'Restroù KML da gargañ war ar gartenn.',
 	'maps-osm-par-thumbs' => 'Diskouez ar munudoù',
 	'maps-osm-par-photos' => 'Diskouez ar skeudennoù',
-	'maps-yahoomaps-par-autozoom' => 'Aotren an dibunañ war-bouez rodig al logodenn.',
+	'mapeditor-remove-button' => 'Dilemel',
+	'mapeditor-import-button2' => 'Enporzhiañ',
+	'mapeditor-link-title-switcher-link-text' => 'Liamm',
+	'mapeditor-form-field-title' => 'Titl',
+	'mapeditor-form-field-text' => 'Testenn',
+	'mapeditor-form-field-link' => 'Liamm',
+	'mapeditor-form-field-icon' => 'Arlun',
+	'mapeditor-form-field-group' => 'Strollad',
+	'mapeditor-form-field-image' => 'Skeudenn',
 );
 
 /** Bosnian (Bosanski)
@@ -1178,7 +1186,19 @@ $1',
  * @author Erdemaslancan
  */
 $messages['diq'] = array(
+	'maps_map' => 'Xerita',
 	'maps-layer-value' => 'Deger',
+	'maps_coordinates_missing' => 'Qan dê xerita koordinat nêdebya.',
+	'maps_googlemaps2' => 'Google Maps v2',
+	'maps_googlemaps3' => 'Google Maps v3',
+	'maps_openlayers' => 'OpenLayers',
+	'maps_overlays' => 'Tebeqey',
+	'maps_photos' => 'Fotrafi',
+	'maps_videos' => 'Vidyoy',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Kameray webi',
+	'mapeditor' => 'Vurnerê Xerita',
+	'specialpages-group-maps' => 'Xeritey',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3724,12 +3744,14 @@ $1.',
 	'mapeditor-none-text' => 'Geen',
 	'mapeditor-done-button' => 'Afgerond',
 	'mapeditor-remove-button' => 'Verwijderen',
+	'mapeditor-import-button2' => 'Importeren',
 	'mapeditor-export-button' => 'Exporteren naar wikicode',
 	'mapeditor-import-button' => 'Importeren vanuit wikicode',
 	'mapeditor-mapparam-button' => 'Kaartparameters bewerken',
 	'mapeditor-clear-button' => 'Kaartmarkeringen wissen',
 	'mapeditor-code-title' => 'Wikicode',
 	'mapeditor-import-title' => 'Wikicode importeren',
+	'mapeditor-import-note' => 'Let op: de parser verwacht een strikte opmaak van de wikicode. De hier opgegeven code moet gelijk zijn aan de code die wordt uitgevoerd door de exportfunctie.',
 	'mapeditor-form-title' => 'Details bewerken',
 	'mapeditor-link-title-switcher-popup-text' => 'Pop-up met tekst',
 	'mapeditor-link-title-switcher-link-text' => 'Verwijzing',
@@ -3739,6 +3761,17 @@ $1.',
 	'mapeditor-form-field-icon' => 'Icoon',
 	'mapeditor-form-field-group' => 'Groep',
 	'mapeditor-form-field-inlinelabel' => 'Inline label',
+	'mapeditor-form-field-strokecolor' => 'Lijnkleur',
+	'mapeditor-form-field-strokeopacity' => 'Lijndoorzichtigheid',
+	'mapeditor-form-field-strokeweight' => 'Lijngewicht',
+	'mapeditor-form-field-fillcolor' => 'Opvulkleur',
+	'mapeditor-form-field-fillopcaity' => 'Opvulkleurdoorzichtigheid',
+	'mapeditor-form-field-showonhover' => 'Alleen weergeven bij erboven zweven',
+	'mapeditor-mapparam-title' => 'Kaartparameters bewerken',
+	'mapeditor-mapparam-defoption' => '- Selecteer een parameter -',
+	'mapeditor-imageoverlay-button' => 'Afbeeldingslaag toevoegen',
+	'mapeditor-form-field-image' => 'Afbeelding',
+	'mapeditor-imageoverlay-title' => 'Gegevens over afbeeldingslaag',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
