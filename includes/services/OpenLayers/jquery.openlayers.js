@@ -527,10 +527,6 @@
 			click.activate();
 		}
 
-		if (options.markercluster) {
-			alert(mediaWiki.msg('maps-clustering-unsupportedservice'));
-		}
-
 		if (options.searchmarkers) {
 			var searchBox = $('<div style="text-align: right;">' + mediaWiki.msg('maps-searchmarkers-text') + ': <input type="text" /></div>');
 			$(this.map.div).before(searchBox);

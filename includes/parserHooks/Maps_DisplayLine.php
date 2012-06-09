@@ -88,14 +88,6 @@ class MapsDisplayLine extends MapsDisplayPoint {
 		$params['copycoords']->setDefault( false );
 		$params['copycoords']->setDoManipulationOfDefault( false );
 
-
-		$params['markercluster'] = new Parameter(
-			'markercluster' ,
-			Parameter::TYPE_BOOLEAN
-		);
-		$params['markercluster']->setDefault( false );
-		$params['markercluster']->setDoManipulationOfDefault( false );
-
 		$params['searchmarkers'] = new Parameter(
 			'searchmarkers' ,
 			Parameter::TYPE_STRING

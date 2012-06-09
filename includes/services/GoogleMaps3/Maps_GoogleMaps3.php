@@ -161,6 +161,13 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['imageoverlays'] = new ListParameter( 'imageoverlays' , ';' );
 		$params['imageoverlays']->setDefault( array() );
 		$params['imageoverlays']->addManipulations( new MapsParamImageOverlay('~'));
+
+		$params['markercluster'] = new Parameter(
+			'markercluster' ,
+			Parameter::TYPE_BOOLEAN
+		);
+		$params['markercluster']->setDefault( false );
+		$params['markercluster']->setDoManipulationOfDefault( false );
 	}
 	
 	/**
