@@ -48,7 +48,7 @@ $magicWords['arz'] = array(
 	'coordinates' => array( 0, 'إحداثيات', 'coordinates' ),
 );
 
-/** Breton (Brezhoneg) */
+/** Breton (brezhoneg) */
 $magicWords['br'] = array(
 	'coordinates' => array( 0, 'daveennoù' ),
 	'distance' => array( 0, 'hed' ),
@@ -79,13 +79,13 @@ $magicWords['eo'] = array(
 	'distance' => array( 0, 'distanco' ),
 );
 
-/** Spanish (Español) */
+/** Spanish (español) */
 $magicWords['es'] = array(
 	'display_point' => array( 0, 'mostrar_punto' ),
 	'geocode' => array( 0, 'geocodificar' ),
 );
 
-/** French (Français) */
+/** French (français) */
 $magicWords['fr'] = array(
 	'finddestination' => array( 0, 'trouverdestination' ),
 	'coordinates' => array( 0, 'coordonnées' ),
@@ -96,7 +96,7 @@ $magicWords['ig'] = array(
 	'display_map' => array( 0, 'zí_otúzọr', 'display_map' ),
 );
 
-/** Italian (Italiano) */
+/** Italian (italiano) */
 $magicWords['it'] = array(
 	'display_map' => array( 0, 'mostra_mappa' ),
 	'display_point' => array( 0, 'mostra_punto', 'mostra_punti' ),
@@ -121,6 +121,20 @@ $magicWords['ka'] = array(
 	'coordinates' => array( 0, 'კოორდინატები' ),
 );
 
+/** Korean (한국어) */
+$magicWords['ko'] = array(
+	'display_map' => array( 0, '지도_표시' ),
+	'display_point' => array( 0, '포인트_표시' ),
+	'display_points' => array( 0, '포인트목록_표시' ),
+	'display_line' => array( 0, '선_표시' ),
+	'geocode' => array( 0, '지리코드' ),
+	'geodistance' => array( 0, '지리거리' ),
+	'finddestination' => array( 0, '목적지찾기' ),
+	'coordinates' => array( 0, '좌표' ),
+	'distance' => array( 0, '거리' ),
+	'mapsdoc' => array( 0, '지도문서' ),
+);
+
 /** Ladino (Ladino) */
 $magicWords['lad'] = array(
 	'distance' => array( 0, 'distancia', 'distance' ),
@@ -132,15 +146,18 @@ $magicWords['lb'] = array(
 	'distance' => array( 0, 'Distanz' ),
 );
 
-/** Macedonian (Македонски) */
+/** Macedonian (македонски) */
 $magicWords['mk'] = array(
 	'display_map' => array( 0, 'прикажи_карта' ),
-	'display_point' => array( 0, 'прикажи_точка', 'прикажи_точки' ),
+	'display_point' => array( 0, 'прикажи_точка' ),
+	'display_points' => array( 0, 'прикажи_точки' ),
+	'display_line' => array( 0, 'прикажи_линија' ),
 	'geocode' => array( 0, 'геокод' ),
 	'geodistance' => array( 0, 'георастојание' ),
 	'finddestination' => array( 0, 'најдиодредница' ),
 	'coordinates' => array( 0, 'координати' ),
 	'distance' => array( 0, 'растојание' ),
+	'mapsdoc' => array( 0, 'докумкарти' ),
 );
 
 /** Malayalam (മലയാളം) */
@@ -178,7 +195,7 @@ $magicWords['nl'] = array(
 	'mapsdoc' => array( 0, 'kaartdoc' ),
 );
 
-/** Polish (Polski) */
+/** Polish (polski) */
 $magicWords['pl'] = array(
 	'display_map' => array( 0, 'wyświetl_mapę' ),
 	'coordinates' => array( 0, 'współrzędne' ),
@@ -190,7 +207,7 @@ $magicWords['ps'] = array(
 	'distance' => array( 0, 'واټن', 'distance' ),
 );
 
-/** Portuguese (Português) */
+/** Portuguese (português) */
 $magicWords['pt'] = array(
 	'display_map' => array( 0, 'mostrar_mapa', 'display_map' ),
 	'display_point' => array( 0, 'mostrar_ponto', 'mostrar_pontos' ),
@@ -202,7 +219,7 @@ $magicWords['pt'] = array(
 	'distance' => array( 0, 'distância', 'distance' ),
 );
 
-/** Russian (Русский) */
+/** Russian (русский) */
 $magicWords['ru'] = array(
 	'display_map' => array( 0, 'показать_карту' ),
 	'display_point' => array( 0, 'показать_точку' ),
@@ -220,7 +237,7 @@ $magicWords['si'] = array(
 	'distance' => array( 0, 'දුර', 'distance' ),
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬) */
 $magicWords['sr-ec'] = array(
 	'display_map' => array( 0, 'прикажи_мапу' ),
 	'display_point' => array( 0, 'прикажи_тачку', 'прикажи_тачке' ),
@@ -229,7 +246,7 @@ $magicWords['sr-ec'] = array(
 	'distance' => array( 0, 'раздаљина' ),
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪srpski (latinica)‬) */
 $magicWords['sr-el'] = array(
 	'display_map' => array( 0, 'prikaži_mapu' ),
 	'display_point' => array( 0, 'prikaži_tačku', 'prikaži_tačke' ),
@@ -238,6 +255,17 @@ $magicWords['sr-el'] = array(
 	'finddestination' => array( 0, 'pronađi_odredište' ),
 	'coordinates' => array( 0, 'koordinate' ),
 	'distance' => array( 0, 'razdaljina' ),
+);
+
+/** Ukrainian (українська) */
+$magicWords['uk'] = array(
+	'display_map' => array( 0, 'показати_карту' ),
+	'display_point' => array( 0, 'показати_точку' ),
+	'display_points' => array( 0, 'показати_точки' ),
+	'geodistance' => array( 0, 'геовідстань' ),
+	'finddestination' => array( 0, 'знайти_місцезнаходження' ),
+	'coordinates' => array( 0, 'координати' ),
+	'distance' => array( 0, 'відстань' ),
 );
 
 /** Vietnamese (Tiếng Việt) */
