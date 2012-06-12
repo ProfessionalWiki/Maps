@@ -88,14 +88,6 @@ class MapsDisplayLine extends MapsDisplayPoint {
 		$params['copycoords']->setDefault( false );
 		$params['copycoords']->setDoManipulationOfDefault( false );
 
-		$params['searchmarkers'] = new Parameter(
-			'searchmarkers' ,
-			Parameter::TYPE_STRING
-		);
-		$params['searchmarkers']->setDefault( '' );
-		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
-		$params['searchmarkers']->setDoManipulationOfDefault( false );
-
 		$params['static'] = new Parameter(
 			'static' ,
 			Parameter::TYPE_BOOLEAN
