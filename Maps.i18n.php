@@ -5018,6 +5018,13 @@ $messages['vo'] = array(
 	'maps-longitude' => 'Lunet:',
 );
 
+/** Walloon (walon)
+ * @author Srtxg
+ */
+$messages['wa'] = array(
+	'specialpages-group-maps' => 'Mapes',
+);
+
 /** Chinese (China) (‪中文(中国大陆)‬) */
 $messages['zh-cn'] = array(
 	'maps-latitude' => '纬度：',
