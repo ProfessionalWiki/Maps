@@ -109,6 +109,13 @@ class SMQueryHandler {
 	protected $showSubject = true;
 
 	/**
+	 * Hide the namepsace or not.
+	 *
+	 * @var boolean
+	 */
+	protected $hideNamespace = false;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.7.3
@@ -119,13 +126,14 @@ class SMQueryHandler {
 	 * @param string $pageLinkText
 	 * @param boolean $titleLinkSeparate
 	 */
-	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeparate = false ) {
+	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeparate = false, $hideNamespace = false ) {
 		$this->queryResult = $queryResult;
 		$this->outputmode = $outputmode;
 
 		$this->linkAbsolute = $linkAbsolute;
 		$this->pageLinkText = $pageLinkText;
 		$this->titleLinkSeparate = $titleLinkSeparate;
+		$this->hideNamespace = $hideNamespace;
 	}
 
 	/**
@@ -299,7 +307,7 @@ class SMQueryHandler {
 
 		$icon = $this->getLocationIcon( $row );
 
-		return $this->buildLocationsList( $locations, $title, $text, $icon, $properties );
+		return $this->buildLocationsList( $locations, Title::newFromText( $title ), $text, $icon, $properties );
 	}
 
 	/**
@@ -425,7 +433,7 @@ class SMQueryHandler {
 	 *
 	 * @return array of MapsLocation
 	 */
-	protected function buildLocationsList( array $locations, $title, $text, $icon, array $properties ) {
+	protected function buildLocationsList( array $locations, Title $title, $text, $icon, array $properties ) {
 		if ( $this->template ) {
 			global $wgParser;
 			$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
@@ -434,17 +442,19 @@ class SMQueryHandler {
 			$text .= implode( '<br />', $properties );
 		}
 
+		$titleOutput = $this->hideNamespace ? $title->getText() : $title->getFullText();
+
 		foreach ( $locations as &$location ) {
 			if ( $this->template ) {
 				$segments = array_merge(
-					array( $this->template, 'title=' . $title, 'latitude=' . $location->getLatitude(), 'longitude=' . $location->getLongitude() ),
+					array( $this->template, 'title=' . $titleOutput, 'latitude=' . $location->getLatitude(), 'longitude=' . $location->getLongitude() ),
 					$properties
 				);
 
 				$text .= $parser->parse( '{{' . implode( '|', $segments ) . '}}', $parser->getTitle(), new ParserOptions() )->getText();
 			}
 
-			$location->setTitle( $title );
+			$location->setTitle( $titleOutput );
 			$location->setText( $text );
 			$location->setIcon( $icon );
 		}
@@ -490,6 +500,20 @@ class SMQueryHandler {
 		}
 
 		return $icon;
+	}
+
+	/**
+	 * @param boolean $hideNamespace
+	 */
+	public function setHideNamespace( $hideNamespace ) {
+		$this->hideNamespace = $hideNamespace;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getHideNamespace() {
+		return $this->hideNamespace;
 	}
 
 }
