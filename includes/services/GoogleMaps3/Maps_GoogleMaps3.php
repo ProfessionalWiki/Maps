@@ -168,6 +168,15 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		);
 		$params['markercluster']->setDefault( false );
 		$params['markercluster']->setDoManipulationOfDefault( false );
+
+		$params['searchmarkers'] = new Parameter(
+			'searchmarkers' ,
+			Parameter::TYPE_STRING
+		);
+		$params['searchmarkers']->setDefault( '' );
+		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
+		$params['searchmarkers']->setDoManipulationOfDefault( false );
+
 	}
 	
 	/**

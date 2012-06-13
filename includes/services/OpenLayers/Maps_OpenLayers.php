@@ -54,7 +54,15 @@ class MapsOpenLayers extends MapsMappingService {
 		
 		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
 		$params['resizable']->setDefault( $egMapsResizableByDefault, false );	
-		$params['resizable']->setMessage( 'maps-par-resizable' );	
+		$params['resizable']->setMessage( 'maps-par-resizable' );
+
+		$params['searchmarkers'] = new Parameter(
+			'searchmarkers' ,
+			Parameter::TYPE_STRING
+		);
+		$params['searchmarkers']->setDefault( '' );
+		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
+		$params['searchmarkers']->setDoManipulationOfDefault( false );
 	}
 	
 	/**
