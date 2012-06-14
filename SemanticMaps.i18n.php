@@ -331,10 +331,11 @@ $messages['de'] = array(
 	'semanticmaps-forminput-locations' => 'Standort',
 	'semanticmaps-par-staticlocations' => 'Die Listen von Standorten, die zusammen mit den abgefragten Daten, der Karte hinzugefügt werden sollen. Analog zu den Anzeigepunkten können je Standort Titel, Beschreibung und Symbol, unter Verwendung einer Tilde „~“ als Trennzeichen, hinzugefügt werden.',
 	'semanticmaps-par-forceshow' => 'Die Karte auch dann anzeigen, wenn es keine Standorte zum Anzeigen gibt?',
-	'semanticmaps-par-showtitle' => 'Einen Titel im Informationsfenster der Kennzeichnung anzeigen oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.',
+	'semanticmaps-par-showtitle' => 'Den Titel im Informationsfenster der Kennzeichnung anzeigen oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.',
+	'semanticmaps-par-hidenamespace' => 'Den Namen des Namensraums im Informationsfenster der Kennzeichnung anzeigen oder nicht.',
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
-	'semanticmaps-par-geocodecontrol' => 'Zeige die Steuerungsseite zum Geokodieren.',
+	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Sollen die Links absolut sein oder nicht (nämlich relativ)',
@@ -369,7 +370,7 @@ $messages['eo'] = array(
 	'semanticmaps_enteraddresshere' => 'Enigu adreson ĉi tie',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  * @author Crazymadlover
  * @author Fitoschido
@@ -395,6 +396,7 @@ $messages['es'] = array(
 	'semanticmaps-par-staticlocations' => 'Una lista de localizaciones para añadir al mapa junto a los datos consultados. De forma similar a display_points, puede añadir un título, una descripción o un icono por localización usando el signo "~" como separador.',
 	'semanticmaps-par-forceshow' => '¿Mostrar el mapa incluso cuando no hay ubicaciones que mostrar?',
 	'semanticmaps-par-showtitle' => 'Mostrar o no mostrar un título en la ventana de información del marcador. La desactivación de esto es frecuentemente útil al utilizar una plantilla para dar formato al contenido de la ventana de información.',
+	'semanticmaps-par-hidenamespace' => 'Mostrar o no mostrar el título del espacio de nombres en la ventana de información del marcador.',
 	'semanticmaps-par-centre' => 'El centro del mapa. Cuando no se proporciona, el mapa escogerá automáticamente el mejor centro para mostrar todos los marcadores en el mapa.',
 	'semanticmaps-par-template' => 'Una plantilla a usar para dar formato al contenido de la ventana de información.',
 	'semanticmaps-par-geocodecontrol' => 'Mostrar el control de geocodificación.',
@@ -495,6 +497,7 @@ $messages['gl'] = array(
 	'semanticmaps-par-staticlocations' => 'Unha lista de localizacións para engadir ao mapa xunto aos datos consultados. Como con display_points, pode engadir un título, unha descrición e mais unha icona por localización mediante o signo "~" como separador.',
 	'semanticmaps-par-forceshow' => 'Quere mostrar o mapa, mesmo cando non haxa localizacións que presentar?',
 	'semanticmaps-par-showtitle' => 'Mostrar ou non un título na ventá de información do marcador. Frecuentemente, desactivar isto é útil ao utilizar un modelo para dar formato ao contido da ventá de información.',
+	'semanticmaps-par-hidenamespace' => 'Mostrar ou non o título do espazo de nomes na ventá de información do marcador.',
 	'semanticmaps-par-centre' => 'O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.',
 	'semanticmaps-par-template' => 'Un modelo a empregar para dar formato ao contido da ventá de información.',
 	'semanticmaps-par-geocodecontrol' => 'Mostrar o control de xeocodificación.',
@@ -591,6 +594,7 @@ $messages['hsb'] = array(
 	'semanticmaps-par-staticlocations' => 'Lisćina městnow, kotrež maja so zhromadnje z naprašowanymi datami karće přidać. Kaž pola zwobraznjenskich dypkow móžeš titul. wopisanje a symbol na městno z pomocu tildy "~" jako dźělatko přidać.',
 	'semanticmaps-par-forceshow' => 'Kartu tež potom pokazać, hdyž městna za zwobraznjenje njejsu?',
 	'semanticmaps-par-showtitle' => 'Titul w iformaciskim woknje woznamjenjenja pokazać abo nic. Je husto wužitne, tutu opciju znjemóžnić, hdyž so předłoha wužiwa, zo by so wobsah informaciskeho wokna formatował.',
+	'semanticmaps-par-hidenamespace' => 'Mjeno mjenoweho ruma w informaciskim woknje woznamjenjenja pokazać abo nic.',
 	'semanticmaps-par-centre' => 'Srjedźišćo karty. Jeli je njepodate, budźe so karta awtomatisce optimalne srjedźišćo wuběrać, zo bychu so wšě woznamjenjenja na karće pokazali.',
 	'semanticmaps-par-template' => 'Předłoha, kotraž ma so za formatowanje wobsaha infowokna wužiwać,',
 	'semanticmaps-par-geocodecontrol' => 'Geokodowanske wodźenje pokazać',
@@ -774,7 +778,7 @@ $messages['lb'] = array(
 	'semanticmaps-kml-linkabsolute' => 'Solle Linken absolut sinn oder net (d.h. relativ)',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
@@ -795,6 +799,7 @@ $messages['mk'] = array(
 	'semanticmaps-par-staticlocations' => 'Список на места за додавање во картатата заедно со побараните податоци. Како и со „display_points“, тука можете да додадете наслов, опис и икона за секое место, користејќи тилда (~) како одделувач.',
 	'semanticmaps-par-forceshow' => 'Да ја прикажувам картата дури и ако нема места за приказ?',
 	'semanticmaps-par-showtitle' => 'Дали да се прикажува насловот на инфопрозорецот на ознаката. Оневозможете го кога користите шаблон за форматирање на содржината на инфопрозорецот.',
+	'semanticmaps-par-hidenamespace' => 'Дали да се прикажува називот на именскиот простор во инфопрозорецот за ознаката.',
 	'semanticmaps-par-centre' => 'Средиштето на картата. Ако не е укажано, картата автоматски ќе го одбере средиштето кајшто оптимално ќе се прикажат сите одбележувачи на картата.',
 	'semanticmaps-par-template' => 'Шаблон за форматирање на содржината на инфопрозорецот.',
 	'semanticmaps-par-geocodecontrol' => 'Прикажи геокодни котроли.',
@@ -943,6 +948,7 @@ $messages['pms'] = array(
 	'semanticmaps-par-staticlocations' => 'Na lista ëd locassion da gionté a la carta ansema ai dat ciamà. Com con dispay_points, a peul gionté un tìtol, na descrission e na plancia për locassion an dovrand la tilde "~" com separator.',
 	'semanticmaps-par-forceshow' => 'Mostré la carta ëdcò quand a-i son pa ëd locassion da mostré?',
 	'semanticmaps-par-showtitle' => "Smon-e un tìtol ant la fnesta d'anformassion dël marcator opura nò. La disabilitassion ëd sòn a l'é soens ùtil quand as deuvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
+	'semanticmaps-par-hidenamespace' => "Mosté o nò ël tìtol dlë spassi nominal ant la fnesta d'anformassion dël marcador.",
 	'semanticmaps-par-centre' => "Ël sènter ëd la carta. Quand a l'é pa dàit, la carta a trovrà automaticament ël sènter otimal për smon-e tùit ij marcador an sla carta.",
 	'semanticmaps-par-template' => "Në stamp da dovré deje a forma ai contnù dla fnesta d'anformassion.",
 	'semanticmaps-par-geocodecontrol' => 'Smon-e ël contròl ëd geocodìfica.',
