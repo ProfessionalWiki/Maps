@@ -106,7 +106,7 @@ $messages['arz'] = array(
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
 );
 
-/** Asturian (Asturianu)
+/** Asturian (asturianu)
  * @author Xuacu
  */
 $messages['ast'] = array(
@@ -136,7 +136,7 @@ $messages['ast'] = array(
 	'semanticmaps-kml-pagelinktext' => 'El testu a usar pa los enllaces a la páxina, onde "$1" se sustituye pol títulu de la páxina',
 );
 
-/** Azerbaijani (Azərbaycanca)
+/** Azerbaijani (azərbaycanca)
  * @author Cekli829
  */
 $messages['az'] = array(
@@ -168,7 +168,7 @@ $messages['be-tarask'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Паказаць элемэнты кіраваньня геаграфічным кадаваньнем.',
 );
 
-/** Bulgarian (Български)
+/** Bulgarian (български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
@@ -189,7 +189,7 @@ $messages['bn'] = array(
 	'semanticmaps-forminput-locations' => 'অবস্থান',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fohanno
  * @author Fulup
  * @author Y-M D
@@ -213,7 +213,7 @@ $messages['br'] = array(
 	'semanticmaps-par-template' => "Ur patrom d'ober gantañ da furmadiñ boued ar prenestr titouriñ.",
 );
 
-/** Bosnian (Bosanski)
+/** Bosnian (bosanski)
  * @author CERminator
  * @author Palapa
  */
@@ -231,7 +231,7 @@ $messages['bs'] = array(
 	'semanticmaps-forminput-locations' => 'Lokacije',
 );
 
-/** Catalan (Català)
+/** Catalan (català)
  * @author Dvdgmz
  * @author Paucabot
  * @author SMP
@@ -406,14 +406,14 @@ $messages['es'] = array(
 	'semanticmaps-kml-pagelinktext' => 'El texto a usar para los enlaces a la página, en las que $1 será substituído por el título de la página',
 );
 
-/** Basque (Euskara)
+/** Basque (euskara)
  * @author An13sa
  */
 $messages['eu'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordenatuak bilatu',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Crt
  * @author Str4nd
  */
@@ -421,7 +421,7 @@ $messages['fi'] = array(
 	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
 );
 
-/** French (Français)
+/** French (français)
  * @author Crochet.david
  * @author Gomoko
  * @author Grondin
@@ -460,7 +460,7 @@ $messages['fr'] = array(
 	'semanticmaps-kml-pagelinktext' => 'Le texte à utiliser pour les liens vers la page, dans lesquels $1 sera remplacé par le titre de la page',
 );
 
-/** Franco-Provençal (Arpetan)
+/** Franco-Provençal (arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
@@ -563,7 +563,7 @@ $messages['he'] = array(
 	'semanticmaps-kml-pagelinktext' => 'הטקסט שישמש לקישורים לדף, כאשר $1 יוחלף בכותרת הדף',
 );
 
-/** Croatian (Hrvatski)
+/** Croatian (hrvatski)
  * @author Tivek
  */
 $messages['hr'] = array(
@@ -604,7 +604,7 @@ $messages['hsb'] = array(
 	'semanticmaps-kml-pagelinktext' => 'Tekst, kotryž ma so za wotkazy k tej stronje wužiwać, w kotrejž $1 so přez titul strony naruna',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dani
  * @author Glanthor Reviol
  */
@@ -616,7 +616,7 @@ $messages['hu'] = array(
 	'semanticmaps-forminput-locations' => 'Helyszínek',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -671,7 +671,7 @@ $messages['id'] = array(
 	'semanticmaps-par-template' => 'Ttemplat yang digunakan untuk memformat isi jendela info.',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Beta16
  * @author Civvì
  * @author Darth Kule
@@ -886,7 +886,7 @@ $messages['nl'] = array(
 	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de verwijzingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -901,7 +901,7 @@ $messages['nn'] = array(
 	'semanticmaps-forminput-locations' => 'Stader',
 );
 
-/** Occitan (Occitan)
+/** Occitan (occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
@@ -910,7 +910,7 @@ $messages['oc'] = array(
 	'semanticmaps_enteraddresshere' => 'Picatz aicí l’adreça',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author Deejay1
  * @author Derbeth
  * @author Leinad
@@ -958,7 +958,7 @@ $messages['pms'] = array(
 	'semanticmaps-kml-pagelinktext' => "Ël test da dovré për le liure a la pàgina, dont $1 a sarà rimpiassà da 'l tìtol ëd la pàgina",
 );
 
-/** Portuguese (Português)
+/** Portuguese (português)
  * @author Hamilton Abreu
  * @author Indech
  * @author Luckas Blade
@@ -986,7 +986,7 @@ $messages['pt'] = array(
 	'semanticmaps-par-template' => 'Uma predefinição que será usada para formatar o conteúdo da janela informativa.',
 );
 
-/** Brazilian Portuguese (Português do Brasil)
+/** Brazilian Portuguese (português do Brasil)
  * @author 555
  * @author Eduardo.mps
  * @author Giro720
@@ -1019,14 +1019,14 @@ $messages['pt-br'] = array(
 	'semanticmaps-kml-pagelinktext' => 'O texto a ser usado nos links para a página, onde  $1 será substituído pelo título da página',
 );
 
-/** Romanian (Română)
+/** Romanian (română)
  * @author Firilacroco
  */
 $messages['ro'] = array(
 	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
 );
 
-/** Tarandíne (Tarandíne)
+/** tarandíne (tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
@@ -1039,7 +1039,7 @@ $messages['roa-tara'] = array(
 	'semanticmaps-forminput-add' => 'Aggiunge',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Eugene Mednikov
  * @author Lockal
  * @author Александр Сигачёв
@@ -1061,7 +1061,7 @@ $messages['ru'] = array(
 	'semanticmaps-par-template' => 'Шаблон для форматирования содержимого окна информация.',
 );
 
-/** Slovak (Slovenčina)
+/** Slovak (slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
@@ -1070,7 +1070,7 @@ $messages['sk'] = array(
 	'semanticmaps_enteraddresshere' => 'Sem zadajte emailovú adresu',
 );
 
-/** Slovenian (Slovenščina)
+/** Slovenian (slovenščina)
  * @author Dbc334
  * @author Lesko987
  */
@@ -1101,7 +1101,7 @@ $messages['sl'] = array(
 	'semanticmaps-kml-pagelinktext' => 'Besedilo za povezave do strani, v katerih bo $1 zamenjan z naslovom strani',
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1111,7 +1111,7 @@ $messages['sr-ec'] = array(
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬)
+/** Serbian (Latin script) (‪srpski (latinica)‬)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1120,7 +1120,7 @@ $messages['sr-el'] = array(
 	'semanticmaps_enteraddresshere' => 'Unesi adresu ovde',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author Boivie
  * @author Najami
  * @author Per
@@ -1167,7 +1167,7 @@ $messages['te'] = array(
 	'semanticmaps-forminput-add' => 'చేర్చు',
 );
 
-/** Tetum (Tetun)
+/** Tetum (tetun)
  * @author MF-Warburg
  */
 $messages['tet'] = array(
@@ -1233,7 +1233,7 @@ $messages['vo'] = array(
 	'semanticmaps_lookupcoordinates' => 'Tuvön koordinatis',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文（简体）‬)
  * @author Gzdavidwong
  * @author Linforest
  * @author Xiaomingyan
@@ -1265,7 +1265,7 @@ $messages['zh-hans'] = array(
 	'semanticmaps-kml-pagelinktext' => '用于那些指向该页面的链接的文本；其中，页面标题将取代$1',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文（繁體）‬)
  * @author Gzdavidwong
  * @author Mark85296341
  * @author Oapbtommy
