@@ -405,7 +405,6 @@ $1',
 	'maps_map_cannot_be_displayed' => 'الخريطة لا يمكن عرضها.',
 	'maps_googlemaps2' => 'خرائط جوجل v2',
 	'maps_googlemaps3' => 'خرائط جوجل v3',
-	'maps_yahoomaps' => 'خرائط ياهو!',
 	'maps_openlayers' => 'أوبن لايرز',
 	'maps_osm' => 'أوبن ستريت ماب',
 	'maps_click_to_activate' => 'اضغط لتنشيط الخريطة',
@@ -444,10 +443,9 @@ $messages['arz'] = array(
 	'maps-latitude' => 'دوائر العرض:',
 	'maps-longitude' => 'خطوط الطول:',
 	'maps_googlemaps2' => 'خرايط جوجل',
-	'maps_yahoomaps' => 'خرايط ياهو',
 );
 
-/** Asturian (Asturianu)
+/** Asturian (asturianu)
  * @author Xuacu
  */
 $messages['ast'] = array(
@@ -555,7 +553,7 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-osm-par-thumbs' => 'Amosar miniatures',
 );
 
-/** Azerbaijani (Azərbaycanca)
+/** Azerbaijani (azərbaycanca)
  * @author Cekli829
  */
 $messages['az'] = array(
@@ -744,7 +742,7 @@ $1',
 	'mapeditor-form-title' => 'Рэдагаваньне падрабязнасьцяў',
 );
 
-/** Bulgarian (Български)
+/** Bulgarian (български)
  * @author DCLXVI
  */
 $messages['bg'] = array(
@@ -897,7 +895,7 @@ $1",
 	'mapeditor-form-field-image' => 'Skeudenn',
 );
 
-/** Bosnian (Bosanski)
+/** Bosnian (bosanski)
  * @author CERminator
  */
 $messages['bs'] = array(
@@ -954,7 +952,7 @@ $1',
 	'maps_webcams' => 'Web kamere',
 );
 
-/** Catalan (Català)
+/** Catalan (català)
  * @author Paucabot
  * @author PerroVerd
  */
@@ -983,7 +981,7 @@ $messages['ce'] = array(
 	'maps_wikipedia' => 'Википедийа',
 );
 
-/** Czech (Česky)
+/** Czech (česky)
  * @author Mormegil
  */
 $messages['cs'] = array(
@@ -999,7 +997,7 @@ $messages['cs'] = array(
 	'maps_wikipedia' => 'Wikipedie',
 );
 
-/** Danish (Dansk)
+/** Danish (dansk)
  * @author Peter Alberti
  */
 $messages['da'] = array(
@@ -1515,7 +1513,7 @@ No se puede mostrar el mapa.',
 	'mapeditor-imageoverlay-title' => 'Detalles de la imagen superpuesta',
 );
 
-/** Estonian (Eesti)
+/** Estonian (eesti)
  * @author Hendrik
  */
 $messages['et'] = array(
@@ -1527,7 +1525,7 @@ $messages['et'] = array(
 	'maps-longitude' => 'Pikkuskraad:',
 );
 
-/** Basque (Euskara)
+/** Basque (euskara)
  * @author Kobazulo
  */
 $messages['eu'] = array(
@@ -1576,7 +1574,7 @@ $messages['fa'] = array(
 	'maps-googlemaps2-par-overlays' => 'پوشش‌هایی که کاربر می‌تواند فعال کند.',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
@@ -1809,7 +1807,7 @@ $1",
 	'mapeditor-imageoverlay-title' => "Détails de la couverture d'image",
 );
 
-/** Franco-Provençal (Arpetan)
+/** Franco-Provençal (arpetan)
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
@@ -1847,7 +1845,7 @@ $messages['frp'] = array(
 	'maps-osm-par-photos' => 'Fâre vêre des fotôs',
 );
 
-/** Friulian (Furlan)
+/** Friulian (furlan)
  * @author Klenje
  */
 $messages['fur'] = array(
@@ -2287,7 +2285,7 @@ $messages['hi'] = array(
 	'maps-longitude' => 'रेखांश:',
 );
 
-/** Croatian (Hrvatski)
+/** Croatian (hrvatski)
  * @author Ex13
  */
 $messages['hr'] = array(
@@ -2428,7 +2426,7 @@ $messages['ht'] = array(
 	'maps-abb-west' => 'W',
 );
 
-/** Hungarian (Magyar)
+/** Hungarian (magyar)
  * @author Dani
  * @author Dj
  * @author Glanthor Reviol
@@ -2488,10 +2486,9 @@ $1',
 	'maps-googlemaps3-par-kml' => 'Betöltendő KML fájlok.',
 	'maps-osm-par-thumbs' => 'Bélyegképek megjelenítése',
 	'maps-osm-par-photos' => 'Fényképek megjelenítése',
-	'maps-yahoomaps-par-type' => 'A kezdetben megjelenítendő térképtípus.',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -2639,10 +2636,6 @@ $1',
 	'maps-openlayers-par-layers' => 'Le stratos que essera disponibile in le selector de stratos. Le prime strato essera monstrate durante le cargamento del carta.',
 	'maps-osm-par-thumbs' => 'Monstrar miniaturas',
 	'maps-osm-par-photos' => 'Monstrar photos',
-	'maps-yahoomaps-par-type' => 'Le typo de carta a monstrar initialmente.',
-	'maps-yahoomaps-par-types' => 'Le typos de carta que essera disponibile via le controlo de typo.',
-	'maps-yahoomaps-par-controls' => 'Le controlos a placiar super le carta.',
-	'maps-yahoomaps-par-autozoom' => 'Permitte rolar usante le rota del mus.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2782,10 +2775,6 @@ $1',
 	'maps-openlayers-par-layers' => 'Lapisan yang akan tersedia pada pemilih lapisan. Lapisan pertama akan ditampilkan ketika peta dimuat.',
 	'maps-osm-par-thumbs' => 'Tampilkan gambar mini',
 	'maps-osm-par-photos' => 'Tampilkan foto',
-	'maps-yahoomaps-par-type' => 'Jenis peta yang ditampilkan saat awal.',
-	'maps-yahoomaps-par-types' => 'Jenis peta yang akan tersedia melalui jenis kontrol.',
-	'maps-yahoomaps-par-controls' => 'Kontrol yang akan ditempatkan pada peta.',
-	'maps-yahoomaps-par-autozoom' => 'Mengaktifkan fitur gulir dengan menggunakan mousewheel.',
 );
 
 /** Igbo (Igbo)
@@ -2798,7 +2787,7 @@ $messages['ig'] = array(
 	'maps_wikipedia' => 'Wikipedia',
 );
 
-/** Italian (Italiano)
+/** Italian (italiano)
  * @author Beta16
  * @author Civvì
  * @author Gianfranco
@@ -3080,10 +3069,9 @@ $1',
 	'maps-googlemaps3-par-kml' => "KML-Fichieren déi op d'Kaart musse geluede ginn.",
 	'maps-osm-par-thumbs' => 'Miniaturbiller weisen',
 	'maps-osm-par-photos' => 'Fotoe weisen',
-	'maps-yahoomaps-par-type' => 'Den Typ vu Kaart den am Ufank gewise gëtt.',
 );
 
-/** Lithuanian (Lietuvių)
+/** Lithuanian (lietuvių)
  * @author Hugo.arg
  */
 $messages['lt'] = array(
@@ -3110,7 +3098,7 @@ Katrografavimo paslaugos pasiekiamos: $1',
 	'maps_webcams' => 'Interneto kameros',
 );
 
-/** Latvian (Latviešu)
+/** Latvian (latviešu)
  * @author GreenZeb
  */
 $messages['lv'] = array(
@@ -3471,10 +3459,6 @@ $1',
 	'maps-openlayers-par-layers' => 'Lapisan-lapisan yang akan tersedia pada pemilih lapisan. Lapisan pertama akan dipaparkan apabila peta dimuatkan.',
 	'maps-osm-par-thumbs' => 'Tunjukkan gambar kenit (thumbnail)',
 	'maps-osm-par-photos' => 'Tunjukkan gambar',
-	'maps-yahoomaps-par-type' => 'Jenis peta untuk dipaparkan pada mulanya.',
-	'maps-yahoomaps-par-types' => 'Jenis-jenis peta yang tersedia melalui kawalan jenis.',
-	'maps-yahoomaps-par-controls' => 'Alat kawalan untuk diletakkan pada peta.',
-	'maps-yahoomaps-par-autozoom' => 'Membolehkan penatalan dengan roda tetikus.',
 );
 
 /** Erzya (Эрзянь) */
@@ -3796,7 +3780,7 @@ $1.',
 	'mapeditor-imageoverlay-title' => 'Gegevens over afbeeldingslaag',
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -3819,7 +3803,7 @@ $messages['nn'] = array(
 	'maps_webcams' => 'Webkamera',
 );
 
-/** Occitan (Occitan)
+/** Occitan (occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
@@ -3931,7 +3915,7 @@ $1',
 	'maps-osm-par-photos' => 'Fodografieje zaische',
 );
 
-/** Polish (Polski)
+/** Polish (polski)
  * @author BeginaFelicysym
  * @author Sp5uhe
  * @author Yarl
@@ -4028,10 +4012,6 @@ $1',
 	'maps-openlayers-par-controls' => 'Formanty do umieszczenia na mapie.',
 	'maps-osm-par-thumbs' => 'Pokaż miniatury',
 	'maps-osm-par-photos' => 'Pokaż zdjęcia',
-	'maps-yahoomaps-par-type' => 'Typ mapy do wyświetlenia na początku.',
-	'maps-yahoomaps-par-types' => 'Typy map, które będą dostępne za pośrednictwem formantu typu.',
-	'maps-yahoomaps-par-controls' => 'Formanty do umieszczenia na mapie.',
-	'maps-yahoomaps-par-autozoom' => 'Włącz przewijanie przy użyciu rolki myszki.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -4108,7 +4088,7 @@ $messages['ps'] = array(
 	'maps_webcams' => 'وېبکامرې',
 );
 
-/** Portuguese (Português)
+/** Portuguese (português)
  * @author Alchimista
  * @author Giro720
  * @author GoEThe
@@ -4252,13 +4232,9 @@ $1',
 	'maps-openlayers-par-layers' => 'As camadas que estarão disponíveis no selector de camadas. A primeira camada será apresentada quando o mapa for carregado.',
 	'maps-osm-par-thumbs' => 'Mostrar miniaturas',
 	'maps-osm-par-photos' => 'Mostrar fotografias',
-	'maps-yahoomaps-par-type' => 'O tipo de mapa que será apresentado inicialmente.',
-	'maps-yahoomaps-par-types' => 'Os tipos de mapas que estarão disponíveis através do controlo de tipos.',
-	'maps-yahoomaps-par-controls' => 'Os controlos que serão colocados no mapa.',
-	'maps-yahoomaps-par-autozoom' => 'Permitir deslizar usando a roda de deslizamento do rato.',
 );
 
-/** Brazilian Portuguese (Português do Brasil)
+/** Brazilian Portuguese (português do Brasil)
  * @author 555
  * @author Eduardo.mps
  * @author Giro720
@@ -4317,7 +4293,7 @@ $1',
 	'maps_webcams' => 'Webcams',
 );
 
-/** Romanian (Română)
+/** Romanian (română)
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Minisarm
@@ -4366,7 +4342,7 @@ $1',
 	'maps_webcams' => 'Camere web',
 );
 
-/** Tarandíne (Tarandíne)
+/** tarandíne (tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
@@ -4385,7 +4361,7 @@ $messages['roa-tara'] = array(
 	'maps_wikipedia' => 'Uicchipèdie',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Adata80
  * @author Haffman
  * @author KPu3uC B Poccuu
@@ -4516,7 +4492,7 @@ $messages['si'] = array(
 	'maps-abb-west' => 'බ',
 );
 
-/** Slovak (Slovenčina)
+/** Slovak (slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
@@ -4533,7 +4509,7 @@ $messages['sk'] = array(
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
 );
 
-/** Slovenian (Slovenščina)
+/** Slovenian (slovenščina)
  * @author Dbc334
  * @author Lesko987
  */
@@ -4550,7 +4526,6 @@ $messages['sl'] = array(
 	'maps-longitude' => 'Zemljepisna dolžina:',
 	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_googlemaps3' => 'Google Maps v3',
-	'maps_yahoomaps' => 'Yahoo! Maps',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_osm' => 'OpenStreetMap',
 	'maps_photos' => 'Fotografije',
@@ -4559,7 +4534,7 @@ $messages['sl'] = array(
 	'maps_webcams' => 'Spletne kamere',
 );
 
-/** Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -4574,7 +4549,6 @@ $messages['sr-ec'] = array(
 	'maps-longitude' => 'Географска дужина:',
 	'maps_googlemaps2' => 'Гугл мапе, друго издање',
 	'maps_googlemaps3' => 'Гугл мапе, треће издање',
-	'maps_yahoomaps' => 'Јаху мапе',
 	'maps_openlayers' => 'Опенлејерс',
 	'maps_osm' => 'Опенстритмап',
 	'maps_photos' => 'Фотографије',
@@ -4582,7 +4556,7 @@ $messages['sr-ec'] = array(
 	'maps_webcams' => 'Веб-камере',
 );
 
-/** Serbian (Latin script) (‪Srpski (latinica)‬) */
+/** Serbian (Latin script) (‪srpski (latinica)‬) */
 $messages['sr-el'] = array(
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavanje mape...',
@@ -4594,7 +4568,6 @@ $messages['sr-el'] = array(
 	'maps-longitude' => 'Geografska dužina:',
 	'maps_googlemaps2' => 'Gugl mape, drugo izdanje',
 	'maps_googlemaps3' => 'Gugl mape, treće izdanje',
-	'maps_yahoomaps' => 'Jahu mape',
 	'maps_openlayers' => 'Openlejers',
 	'maps_osm' => 'Openstritmap',
 	'maps_photos' => 'Fotografije',
@@ -4602,7 +4575,7 @@ $messages['sr-el'] = array(
 	'maps_webcams' => 'Veb-kamere',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author Ainali
  * @author Dafer45
  * @author Fader
@@ -4679,7 +4652,6 @@ $1',
 	'maps-googlemaps3-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v3.',
 	'maps-osm-par-thumbs' => 'Visa miniatyrer',
 	'maps-osm-par-photos' => 'Visa foton',
-	'maps-yahoomaps-par-autozoom' => 'Aktivera rullning med mushjulet.',
 );
 
 /** Telugu (తెలుగు)
@@ -4822,10 +4794,6 @@ $1',
 	'maps-openlayers-par-layers' => 'Ang mga patong ay magiging makukuha sa loob ng pilian ng patong. Ang unang patong ay ipapakita kapag kumarga na ang mapa.',
 	'maps-osm-par-thumbs' => 'Ipakita ang mga kagyat',
 	'maps-osm-par-photos' => 'Ipakita ang mga larawan',
-	'maps-yahoomaps-par-type' => 'Ang uri ng mapa na unang ipapakita.',
-	'maps-yahoomaps-par-types' => 'Ang mga uri ng mapa na magiging makukuha sa pamamagitan ng pantaban ng uri.',
-	'maps-yahoomaps-par-controls' => 'Ang mga pantaban na ilalagay sa ibabaw ng mapa.',
-	'maps-yahoomaps-par-autozoom' => 'Paganahin ang pagbabalumbon na ginagamit ang gulong ng daga-dagaan.',
 );
 
 /** Turkish (Türkçe)
@@ -4876,14 +4844,14 @@ $messages['tr'] = array(
 	'maps_webcams' => 'Web kameraları',
 );
 
-/** Tatar (Cyrillic script) (Татарча)
+/** Tatar (Cyrillic script) (татарча)
  * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
 	'maps_wikipedia' => 'Википедия',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author Arturyatsko
  * @author Тест
  */
@@ -5031,7 +4999,7 @@ $messages['zh-cn'] = array(
 	'maps-longitude' => '经度：',
 );
 
-/** Simplified Chinese (‪中文(简体)‬)
+/** Simplified Chinese (‪中文（简体）‬)
  * @author Hydra
  * @author PhiLiP
  */
@@ -5075,7 +5043,7 @@ $messages['zh-hans'] = array(
 	'maps-osm-par-photos' => '显示图片',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬)
+/** Traditional Chinese (‪中文（繁體）‬)
  * @author Horacewai2
  * @author Mark85296341
  * @author Waihorace
