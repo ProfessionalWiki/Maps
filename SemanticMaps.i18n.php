@@ -432,6 +432,7 @@ $messages['fi'] = array(
  * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
+ * @author Wyz
  */
 $messages['fr'] = array(
 	'semanticmaps-desc' => "Permet d'afficher et de modifier les données de coordonnées stockées par l'extension Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).",
@@ -451,6 +452,7 @@ $messages['fr'] = array(
 	'semanticmaps-par-staticlocations' => 'Une liste des endroits à ajouter à la carte avec les données demandées. Comme avec display_points, vous pouvez ajouter un titre, une description et une icône par emplacement en utilisant le tilde « ~ » comme séparateur.',
 	'semanticmaps-par-forceshow' => "Afficher la carte même quand il n'y a pas d'emplacement à afficher ?",
 	'semanticmaps-par-showtitle' => "Afficher un titre dans la fenêtre d'informations des marqueurs ou non. La désactivation de ceci est souvent utile lorsque vous utilisez un modèle pour formater le contenu de la fenêtre d'informations.",
+	'semanticmaps-par-hidenamespace' => 'Afficher ou non le titre de l’espace de noms dans la fenêtre d’information du marqueur.',
 	'semanticmaps-par-centre' => "Le centre de la carte. Lorsqu'il n'est pas fourni, la carte va choisir automatiquement le centre optimal pour afficher tous les marqueurs sur la carte.",
 	'semanticmaps-par-template' => "Un modèle à utiliser pour mettre en forme le contenu de la fenêtre d'informations.",
 	'semanticmaps-par-geocodecontrol' => 'Afficher le contrôle de géocodage.',
@@ -690,6 +692,9 @@ $messages['it'] = array(
 	'semanticmaps-updatemap' => 'Aggiorna mappa',
 	'semanticmaps-forminput-remove' => 'Rimuovi',
 	'semanticmaps-forminput-add' => 'Aggiungi',
+	'semanticmaps-forminput-locations' => 'Luoghi',
+	'semanticmaps-par-staticlocations' => 'Un elenco di luoghi da aggiungere alla mappa unitamente ai dati interrogati. Come con display_points, si può aggiungere un titolo, la descrizione e l\'icona per ogni posizione utilizzando la tilde "~" come separatore.',
+	'semanticmaps-par-forceshow' => "Mostra la mappa anche quando non c'è alcun luogo da visualizzare?",
 );
 
 /** Japanese (日本語)
@@ -877,6 +882,7 @@ $messages['nl'] = array(
 	'semanticmaps-par-staticlocations' => 'Een lijst met aan de kaart toe te voegen locaties samen met de opgevraagde gegevens. Zoals bij display_points, kunt u een naam, beschrijving en icoon per locatie toevoegen door de tilde ("~") als scheidingsteken te gebruiken.',
 	'semanticmaps-par-forceshow' => 'De kaart zelfs weergeven als er geen weer te geven locaties zijn?',
 	'semanticmaps-par-showtitle' => 'Een naam weergeven in het gegevensvenster van de markering of niet. Dit uitschakelen is vaak handig als er een sjabloon wordt gebruikt om de inhoud van het gegevensvenster vorm te geven.',
+	'semanticmaps-par-hidenamespace' => 'De naamruimtenaam in het informatievenster van de marker weergeven of verbergen.',
 	'semanticmaps-par-centre' => 'Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.',
 	'semanticmaps-par-template' => 'Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.',
 	'semanticmaps-par-geocodecontrol' => 'Besturingselement voor geocodering weergeven.',
