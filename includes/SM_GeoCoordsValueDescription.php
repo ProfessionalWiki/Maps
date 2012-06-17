@@ -10,17 +10,6 @@
  * @author Jeroen De Dauw
  */
 class SMGeoCoordsValueDescription extends SMWValueDescription {
-	
-	/**
-	 * Constructor.
-	 * 
-	 * @since 0.8
-	 * 
-	 * @param SMWDataItem $dataItem
-	 */
-	public function __construct( SMWDataItem $dataItem, $comparator ) {
-		parent::__construct( $dataItem, $comparator );	
-	}
 
 	/**
 	 * @see SMWDescription::getQueryString
