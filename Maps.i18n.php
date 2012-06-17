@@ -5002,8 +5002,10 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文（简体）‬)
  * @author Hydra
  * @author PhiLiP
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
+	'right-geocode' => '地理编码',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入地图中……',
 	'maps-load-failed' => '无法加载地图！',
@@ -5041,6 +5043,7 @@ $messages['zh-hans'] = array(
 	'maps_webcams' => '网络摄像机',
 	'maps-osm-par-thumbs' => '显示大拇指',
 	'maps-osm-par-photos' => '显示图片',
+	'mapeditor' => '地图编辑器',
 );
 
 /** Traditional Chinese (‪中文（繁體）‬)
