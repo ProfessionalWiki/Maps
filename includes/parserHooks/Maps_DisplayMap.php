@@ -36,6 +36,17 @@ class MapsDisplayMap extends ParserHook {
 	protected function getName() {
 		return 'display_map';
 	}
+
+	/**
+	 * @see ParserHook::getNames()
+	 *
+	 * @since 2.0
+	 *
+	 * @return array
+	 */
+	protected function getNames() {
+		return array( $this->getName(), 'display_point', 'display_points', 'display_line' );
+	}
 	
 	/**
 	 * Returns an array containing the parameter info.
