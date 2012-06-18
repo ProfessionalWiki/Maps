@@ -10,11 +10,11 @@
 	$( document ).ready( function() {
 
 		if ( typeof google === 'undefined' ) {
-			alert( mw.msg( 'maps-load-failed' ) + ' ' + mw.msg( 'maps-googlemaps3-incompatbrowser' ) );
+			$( '.maps-googlemaps3' ).text( mw.msg( 'maps-googlemaps3-incompatbrowser' ) );
 		}
 		else {
 			$( '.maps-googlemaps3' ).each( function() {
-				var $this = $( this);
+				var $this = $( this );
 				$this.googlemaps( $.parseJSON( $this.find( 'div').text() ) );
 			} );
 		}

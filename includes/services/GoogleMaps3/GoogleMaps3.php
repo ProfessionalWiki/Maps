@@ -27,13 +27,8 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3',	
 	'group' => 'ext.maps',
 	'scripts' => array(
-		'gm3-util-library/markerclusterer.js',  //the following two js files should at one point be loaded when needed,
-		'gm3-util-library/markerwithlabel.js',  //However, they are both missing a namespace so they cant be reached after
-		'jquery.googlemap.js',                  //invoking resource loader on them. (look at how geoxml is referenced)
+		'jquery.googlemap.js',
 		'ext.maps.googlemaps3.js'
-	),
-	'styles' => array(
-		'gm3-util-library/markerwithlabel.css'
 	),
 	'messages' => array(
 		'maps-googlemaps3-incompatbrowser',
@@ -42,9 +37,30 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
 	)
 );
 
+$wgResourceModules['ext.maps.gm3.markercluster'] = array(
+	'localBasePath' => dirname( __FILE__ ) . '/gm3-util-library',
+	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
+	'group' => 'ext.maps',
+	'scripts' => array(
+		'markerclusterer.js',
+	),
+);
+
+$wgResourceModules['ext.maps.gm3.markerwithlabel'] = array(
+	'localBasePath' => dirname( __FILE__ ) . '/gm3-util-library',
+	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
+	'group' => 'ext.maps',
+	'scripts' => array(
+		'markerwithlabel.js',
+	),
+	'styles' => array(
+		'markerwithlabel.css',
+	),
+);
+
 $wgResourceModules['ext.maps.gm3.geoxml'] = array(
 	'localBasePath' => dirname( __FILE__ ) . '/geoxml3',
-	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/geoxml3',	
+	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/geoxml3',
 	'group' => 'ext.maps',
 	'scripts' => array(
 		'geoxml3.js',
@@ -82,9 +98,7 @@ function efMapsInitGoogleMaps3() {
 
 	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );	
-	$googleMaps->addFeature( 'display_map', 'MapsBaseMap' );
-	$googleMaps->addFeature( 'display_point', 'MapsBasePointMap' );
-	$googleMaps->addFeature( 'display_line', 'MapsBasePointLineMap' );
+	$googleMaps->addFeature( 'display_map', 'MapsDisplayMapRenderer' );
 
 	return true;
 }

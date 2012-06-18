@@ -40,29 +40,125 @@ class MapsDisplayMap extends ParserHook {
 	/**
 	 * Returns an array containing the parameter info.
 	 * @see ParserHook::getParameterInfo
+	 *
+	 * TODO: migrate stuff
 	 * 
 	 * @since 0.7
 	 * 
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultServices;
+		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
 		$params = MapsMapper::getCommonParameters();
-		
-		$params['mappingservice']->setDefault( $egMapsDefaultServices['display_map'] );
-		$params['mappingservice']->addManipulations( new MapsParamService( 'display_map' ) );
-		$params['mappingservice']->setMessage( 'maps-displaymap-par-mappingservice' );
-		
-		$params['coordinates'] = new Parameter( 'coordinates' );
-		$params['coordinates']->addAliases( 'coords', 'location', 'address' );
-		$params['coordinates']->addCriteria( new CriterionIsLocation() );
-		$params['coordinates']->addDependencies( 'mappingservice', 'geoservice' );
-		$params['coordinates']->setMessage( 'maps-displaymap-par-coordinates' );
-		$params['coordinates']->setDoManipulationOfDefault( false );
+
+		$params['mappingservice']['default'] = $egMapsDefaultServices['display_map'];
+		$params['mappingservice']['manipulations'] = new MapsParamService( 'display_point' );
+
+		$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
+		$params['zoom']['manipulations'] = new MapsParamZoom();
+
+		$params['coordinates'] = array(
+			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations' ),
+			'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'dependencies' => array( 'mappingservice', 'geoservice' ),
+			'default' => array(),
+			'islist' => true,
+			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
+			'message' => 'maps-displaypoints-par-coordinates', // TODO
+		);
+
 		$manipulation = new MapsParamLocation();
 		$manipulation->toJSONObj = true;
-		$params['coordinates']->addManipulations( $manipulation );		
+
+		$params['centre'] = array(
+			'aliases' => array( 'center' ),
+			'criteria' => new CriterionIsLocation(),
+			'manipulations' => $manipulation,
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaypoints-par-centre', // TODO
+		);
+
+		$params['title'] = array(
+			'name' => 'title',
+			'default' => $egMapsDefaultTitle,
+			'message' => 'maps-displaypoints-par-title', // TODO
+		);
+
+		$params['label'] = array(
+			'default' => $egMapsDefaultLabel,
+			'message' => 'maps-displaypoints-par-label', // TODO
+			'aliases' => 'text',
+		);
+
+		$params['icon'] = array( // TODO: image param
+			'default' => '', // TODO
+			'message' => 'maps-displaypoints-par-icon', // TODO
+		);
+
+		$params['lines'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-lines', // TODO
+			'criteria' => new CriterionLine( '~' ),
+			'manipulations' => new MapsParamLine( '~' ),
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['polygons'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-polygons', // TODO
+			'criteria' => new CriterionPolygon( '~' ),
+			'manipulations' => new MapsParamPolygon( '~' ),
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['circles'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-circles', // TODO
+			'manipulations' => new MapsParamCircle( '~' ),
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['rectangles'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-rectangles', // TODO
+			'manipulations' => new MapsParamRectangle( '~' ),
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['copycoords'] = array(
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-displaypoints-par-copycoords', // TODO
+		);
+
+		$params['copycoords'] = array(
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-displaypoints-par-static', // TODO
+		);
+
+		$params['maxzoom'] = array(
+			'type' => 'integer',
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaypoints-par-maxzoom', // TODO
+			'dependencies' => 'minzoom',
+		);
+
+		$params['minzoom'] = array(
+			'type' => 'integer',
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaypoints-par-minzoom', // TODO
+			'lowerbound' => 0,
+		);
 		
 		return $params;
 	}

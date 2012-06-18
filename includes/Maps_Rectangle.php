@@ -2,63 +2,84 @@
 /**
  * Class that holds metadata on rectangles made up by locations on map.
  *
- * @since 1.1
+ * @since 2.0
  *
  * @file Maps_Rectangle.php
  * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsRectangle extends MapsBaseFillableElement {
 
-
 	/**
-	 * @var
+	 * @since 2.0
+	 * @var MapsLocation
 	 */
 	protected $rectangleNorthEast;
 
 	/**
-	 * @var
+	 * @since 2.0
+	 * @var MapsLocation
 	 */
 	protected $rectangleSouthWest;
 
 	/**
+	 * @since 2.0
 	 *
+	 * @param $rectangleNorthEast
+	 * @param $rectangleSouthWest
 	 */
-	function __construct( $rectangleNorthEast , $rectangleSouthWest ) {
+	public function __construct( $rectangleNorthEast , $rectangleSouthWest ) {
 		$this->setRectangleNorthEast( $rectangleNorthEast );
 		$this->setRectangleSouthWest( $rectangleSouthWest );
 	}
 
 	/**
-	 * @return
+	 * @since 2.0
+	 *
+	 * @return MapsLocation
 	 */
 	public function getRectangleNorthEast() {
 		return $this->rectangleNorthEast;
 	}
 
 	/**
-	 * @param  $rectangleNorthEast
-	 */
-	public function setRectangleNorthEast( $rectangleNorthEast ) {
-		$this->rectangleNorthEast = new MapsLocation( $rectangleNorthEast );
-	}
-
-	/**
-	 * @return
+	 * @since 2.0
+	 *
+	 * @return MapsLocation
 	 */
 	public function getRectangleSouthWest() {
 		return $this->rectangleSouthWest;
 	}
 
 	/**
-	 * @param  $rectangleSouthWest
+	 * @since 2.0
+	 *
+	 * @param $rectangleSouthWest
 	 */
 	public function setRectangleSouthWest( $rectangleSouthWest ) {
 		$this->rectangleSouthWest = new MapsLocation( $rectangleSouthWest );
 	}
 
+	/**
+	 * @since 2.0
+	 *
+	 * @param $rectangleNorthEast
+	 */
+	public function setRectangleNorthEast( $rectangleNorthEast ) {
+		$this->rectangleNorthEast = new MapsLocation( $rectangleNorthEast );
+	}
+
+	/**
+	 * @since 2.0
+	 *
+	 * @param string $defText
+	 * @param string $defTitle
+	 *
+	 * @return array
+	 */
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
@@ -75,4 +96,16 @@ class MapsRectangle extends MapsBaseFillableElement {
 
 		return array_merge( $parentArray , $array );
 	}
+
+	/**
+	 * Returns if the rectangle is valid.
+	 *
+	 * @since 2.0
+	 *
+	 * @return boolean
+	 */
+	public function isValid() {
+		return $this->rectangleSouthWest->isValid() && $this->rectangleNorthEast->isValid();
+	}
+
 }

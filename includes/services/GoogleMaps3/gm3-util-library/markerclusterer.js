@@ -1594,3 +1594,5 @@ MarkerClusterer.IMAGE_EXTENSION = "png";
  * @constant
  */
 MarkerClusterer.IMAGE_SIZES = [53, 56, 66, 78, 90];
+
+window.MarkerClusterer = MarkerClusterer;

@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsAvailableServices = array(
 		'googlemaps3',
 		'openlayers',
-		'osm'
+		//'osm'
 	);
 
 	# String. The default mapping service, which will be used when no default
@@ -42,9 +42,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Note: The default service needs to be available for the feature you set it
 	# for, since it's used as a fallback mechanism.
 	$egMapsDefaultServices = array(
-		'display_point' => $egMapsDefaultService,
 		'display_map' => $egMapsDefaultService,
-        'display_line' => $egMapsDefaultService
 	);
 
 
@@ -233,62 +231,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 		# Show points of interest or not.
 		$egMapsShowPOI = true;
-		
-		
-	# Google Maps
-	
+
 		# Your Google Maps API key. Required for displaying Google Maps, and using the
 		# Google Geocoder services.
-		$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
+		$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html // TODO
 		
-		# If your wiki is accessable via multiple urls, you'll need multiple keys.
-		# Example: $egGoogleMapsKeys['http://yourdomain.tld/something'] = 'your key';
-		$egGoogleMapsKeys = array();
-		
-		# Integer. The default zoom of a map. This value will only be used when the
-		# user does not provide one.
-		$egMapsGoogleMapsZoom = 14;
-		
-		# Array of String. The Google Maps v2 default map types. This value will only
-		# be used when the user does not provide one.
-		$egMapsGoogleMapsTypes = array(
-			'normal',
-			'satellite',
-			'hybrid',
-			'physical'
-		);
-	
-		# String. The default map type. This value will only be used when the user does
-		# not provide one.
-		$egMapsGoogleMapsType = 'normal';
-		
-		# Boolean. The default value for enabling or disabling the autozoom of a map.
-		# This value will only be used when the user does not provide one.
-		$egMapsGoogleAutozoom = true;
-		
-		# Array of String. The default controls for Google Maps v2. This value will
-		# only be used when the user does not provide one.
-		# Available values: auto, large, small, large-original, small-original, zoom,
-		# type, type-menu, overview-map, scale, nav-label, overlays
-		$egMapsGMapControls = array(
-			'auto',
-			'scale',
-			'type',
-			'overlays'
-		);
-		
-		# Array. The default overlays for the Google Maps v2 overlays control, and
-		# whether they should be shown at pageload. This value will only be used when
-		# the user does not provide one.
-		# Available values: photos, videos, wikipedia, webcams
-		$egMapsGMapOverlays = array(
-			'photos',
-			'videos',
-			'wikipedia',
-			'webcams'
-		);
 
-	
+
 	# OpenLayers
 		
 		# Integer. The default zoom of a map. This value will only be used when the

@@ -1,25 +1,73 @@
 <?php
 
 /**
- * Class handling the #display_points rendering.
+ * Class handling the #display_map rendering.
  *
  * @file
  * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Kim Eik
  */
-class MapsBasePointMap extends MapsMapBase {
+class MapsDisplayMapRenderer {
 
 	/**
-	 * @since 0.6.x
-	 * 
+	 * @since 1.1
+	 *
 	 * @var iMappingService
 	 */
 	protected $service;
 
+	/**
+	 * Constructor.
+	 *
+	 * @param iMappingService $service
+	 */
 	public function __construct( iMappingService $service ) {
 		$this->service = $service;
+	}
+
+	/**
+	 * Returns the HTML to display the map.
+	 *
+	 * @since 1.1
+	 *
+	 * @param array $params
+	 * @param Parser $parser
+	 * @param string $mapName
+	 *
+	 * @return string
+	 */
+	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
+		return Html::rawElement(
+			'div',
+			array(
+				'id' => $mapName,
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+				'class' => 'maps-map maps-' . $this->service->getName()
+			),
+			wfMsgHtml( 'maps-loading-map' ) .
+				Html::element(
+					'div',
+					array( 'style' => 'display:none', 'class' => 'mapdata' ),
+					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
+				)
+		);
+	}
+
+	/**
+	 * Returns a PHP object to encode to JSON with the map data.
+	 *
+	 * @since 1.1
+	 *
+	 * @param array $params
+	 * @param Parser $parser
+	 *
+	 * @return mixed
+	 */
+	protected function getJSONObject( array $params, Parser $parser ) {
+		return $params;
 	}
 
 	/**
@@ -28,7 +76,7 @@ class MapsBasePointMap extends MapsMapBase {
 	 *
 	 * @param array $params
 	 * @param Parser $parser
-	 * 
+	 *
 	 * @return html
 	 */
 	public final function renderMap( array $params, Parser $parser ) {
@@ -40,21 +88,8 @@ class MapsBasePointMap extends MapsMapBase {
 
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 
-		// MediaWiki 1.17 does not play nice with addScript, so add the vars via the globals hook.
-		if ( version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ) {
-			$GLOBALS['egMapsGlobalJSVars'] += $this->service->getConfigVariables();
-		}
-
-		global $wgTitle;
-		if ( !is_null( $wgTitle ) && $wgTitle->isSpecialPage() ) {
-			global $wgOut;
-			$this->service->addDependencies( $wgOut );
-			$wgOut->addScript( $configVars );
-		}
-		else {
-			$this->service->addDependencies( $parser );
-			$parser->getOutput()->addHeadItem( $configVars );			
-		}
+		$this->service->addDependencies( $parser );
+		$parser->getOutput()->addHeadItem( $configVars );
 
 		return $output;
 	}
@@ -62,9 +97,9 @@ class MapsBasePointMap extends MapsMapBase {
 	/**
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @param array &$params
 	 * @param Parser $parser
 	 */
@@ -85,11 +120,30 @@ class MapsBasePointMap extends MapsMapBase {
 				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
 				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
 
-				$params['locations'][] = $jsonObj;				
+				$params['locations'][] = $jsonObj;
 			}
 		}
 
 		unset( $params['coordinates'] );
-	}
 
+		$textContainers = array(
+			&$params['lines'] ,
+			&$params['polygons'] ,
+			&$params['circles'] ,
+			&$params['rectangles'],
+			&$params['imageoverlays'],
+		);
+
+		foreach ( $textContainers as &$textContainer ) {
+			foreach ( $textContainer as &$obj ) {
+				$obj['title'] = $parserClone->parse( $obj['title'] , $parserClone->getTitle() , new ParserOptions() )->getText();
+				$obj['text'] = $parserClone->parse( $obj['text'] , $parserClone->getTitle() , new ParserOptions() )->getText();
+
+				$hasTitleAndtext = $obj['title'] !== '' && $obj['text'] !== '';
+				$obj['text'] = ( $hasTitleAndtext ? '<b>' . $obj['title'] . '</b><hr />' : $obj['title'] ) . $obj['text'];
+				$obj['title'] = strip_tags( $obj['title'] );
+			}
+		}
+	}
+	
 }
