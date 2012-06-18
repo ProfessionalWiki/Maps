@@ -51,9 +51,7 @@ function efMapsInitOpenLayers() {
 		'openlayers',
 		'MapsOpenLayers',
 		array(
-			'display_point' => 'MapsBasePointMap',
-			'display_map' => 'MapsBaseMap',
-            'display_line' => 'MapsBasePointLineMap'
+			'display_map' => 'MapsDisplayMapRenderer',
 		)
 	);
 	

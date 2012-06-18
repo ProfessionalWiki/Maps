@@ -27,7 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsAvailableServices = array(
 		'googlemaps3',
 		'openlayers',
-		'osm'
+		//'osm'
 	);
 
 	# String. The default mapping service, which will be used when no default
@@ -42,9 +42,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Note: The default service needs to be available for the feature you set it
 	# for, since it's used as a fallback mechanism.
 	$egMapsDefaultServices = array(
-		'display_point' => $egMapsDefaultService,
 		'display_map' => $egMapsDefaultService,
-        'display_line' => $egMapsDefaultService
 	);
 
 

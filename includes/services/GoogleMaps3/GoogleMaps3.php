@@ -82,9 +82,7 @@ function efMapsInitGoogleMaps3() {
 
 	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );	
-	$googleMaps->addFeature( 'display_map', 'MapsBaseMap' );
-	$googleMaps->addFeature( 'display_point', 'MapsBasePointMap' );
-	$googleMaps->addFeature( 'display_line', 'MapsBasePointLineMap' );
+	$googleMaps->addFeature( 'display_map', 'MapsDisplayMapRenderer' );
 
 	return true;
 }

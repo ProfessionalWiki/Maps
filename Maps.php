@@ -92,6 +92,7 @@ $wgAutoloadClasses['MapsUtils'] = $incDir . 'Maps_Utils.php';
 $wgAutoloadClasses['MapsBaseElement'] = $incDir . 'Maps_BaseElement.php';
 $wgAutoloadClasses['MapsBaseFillableElement'] = $incDir . 'Maps_BaseFillableElement.php';
 $wgAutoloadClasses['MapsBaseStrokableElement'] = $incDir . 'Maps_BaseStrokableElement.php';
+$wgAutoloadClasses['MapsDisplayMapRenderer'] = $incDir . 'Maps_DisplayMapRenderer.php';
 
 $wgAutoloadClasses['ApiGeocode'] = $incDir . 'api/ApiGeocode.php';
 
@@ -105,6 +106,7 @@ $wgAutoloadClasses['iStrokableMapElement'] = $propDir . 'iStrokableMapElement.ph
 
 
 // Autoload the "includes/criteria/" classes.
+// TODO: migrate to Params
 $criDir = $incDir . 'criteria/';
 $wgAutoloadClasses['CriterionIsDistance'] = $criDir . 'CriterionIsDistance.php';
 $wgAutoloadClasses['CriterionIsImage'] = $criDir . 'CriterionIsImage.php';
@@ -115,14 +117,6 @@ $wgAutoloadClasses['CriterionLine'] = $criDir . 'CriterionLine.php';
 $wgAutoloadClasses['CriterionPolygon'] = $criDir . 'CriterionPolygon.php';
 $wgAutoloadClasses['CriterionSearchMarkers'] = $criDir . 'CriterionSearchMarkers.php';
 unset( $criDir );
-
-// Autoload the "includes/features/" classes.
-$ftDir = $incDir . '/features/';
-$wgAutoloadClasses['MapsBaseMap'] = $ftDir . 'Maps_BaseMap.php';
-$wgAutoloadClasses['MapsBasePointMap'] = $ftDir . 'Maps_BasePointMap.php';
-$wgAutoloadClasses['MapsBasePointLineMap'] = $ftDir . 'Maps_BasePointLineMap.php';
-$wgAutoloadClasses['MapsMapBase'] = $ftDir . 'Maps_MapBase.php';
-unset( $ftDir );
 
 // Autoload the "includes/geocoders/" classes.
 $geoDir = $incDir . 'geocoders/';
@@ -137,6 +131,7 @@ $wgAutoloadClasses['MapsKMLLayer'] = $lyrDir . 'Maps_KMLLayer.php';
 unset( $lyrDir );
 
 // Autoload the "includes/manipulations/" classes.
+// TODO: migrate to Params
 $manDir = $incDir . 'manipulations/';
 $wgAutoloadClasses['MapsCommonParameterManipulation'] = $manDir . 'Maps_CommonParameterManipulation.php';
 $wgAutoloadClasses['MapsParamDimension'] = $manDir . 'Maps_ParamDimension.php';
@@ -156,8 +151,6 @@ unset( $manDir );
 $phDir = $incDir . '/parserHooks/';
 $wgAutoloadClasses['MapsCoordinates'] = $phDir . 'Maps_Coordinates.php';
 $wgAutoloadClasses['MapsDisplayMap'] = $phDir . 'Maps_DisplayMap.php';
-$wgAutoloadClasses['MapsDisplayPoint'] = $phDir . 'Maps_DisplayPoint.php';
-$wgAutoloadClasses['MapsDisplayLine'] = $phDir . 'Maps_DisplayLine.php';
 $wgAutoloadClasses['MapsDistance'] = $phDir . 'Maps_Distance.php';
 $wgAutoloadClasses['MapsFinddestination'] = $phDir . 'Maps_Finddestination.php';
 $wgAutoloadClasses['MapsGeocode'] = $phDir . 'Maps_Geocode.php';
@@ -197,22 +190,12 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScrip
 // Since ??
 $wgHooks['CanonicalNamespaces'][] = 'MapsHooks::onCanonicalNamespaces';
 
-$egMapsFeatures = array();
-
-$egMapsFeatures['pf'][] = 'MapsDisplayMap::initialize';
-$egMapsFeatures['pf'][] = 'MapsDisplayPoint::initialize';
-$egMapsFeatures['pf'][] = 'MapsDisplayLine::initialize';
-
 # Parser hooks
 
 # Required for #coordinates.
 $wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
 # Required for #display_map.
 $wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
-# Required for #display_point.
-$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayPoint::staticInit';
-# Required for #display_line.
-$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayLine::staticInit';
 # Required for #distance.
 $wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
 # Required for #finddestination.
@@ -252,7 +235,8 @@ include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
 include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
 
 # WMF OSM
-include_once $egMapsDir . 'includes/services/OSM/OSM.php';
+// TODO
+//include_once $egMapsDir . 'includes/services/OSM/OSM.php';
 
 $egMapsSettings = array();
 
