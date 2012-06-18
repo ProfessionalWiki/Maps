@@ -57,7 +57,6 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
 		$params['zoom']['manipulations'] = new MapsParamZoom();
-		$params['zoom']['default'] = 7; // FIXME
 
 		$params['coordinates'] = array(
 			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations' ),
