@@ -101,8 +101,8 @@ class MapsDisplayMap extends ParserHook {
 		$params['lines'] = array(
 			'default' => array(),
 			'message' => 'maps-displaypoints-par-lines', // TODO
-			'criteria' => new CriterionLine( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
-			'manipulations' => new MapsParamLine( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'criteria' => new CriterionLine( '~' ),
+			'manipulations' => new MapsParamLine( '~' ),
 			'delimiter' => ';',
 			'islist' => true,
 		);
@@ -110,8 +110,8 @@ class MapsDisplayMap extends ParserHook {
 		$params['polygons'] = array(
 			'default' => array(),
 			'message' => 'maps-displaypoints-par-polygons', // TODO
-			'criteria' => new CriterionPolygon( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
-			'manipulations' => new MapsParamPolygon( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'criteria' => new CriterionPolygon( '~' ),
+			'manipulations' => new MapsParamPolygon( '~' ),
 			'delimiter' => ';',
 			'islist' => true,
 		);
@@ -119,7 +119,7 @@ class MapsDisplayMap extends ParserHook {
 		$params['circles'] = array(
 			'default' => array(),
 			'message' => 'maps-displaypoints-par-circles', // TODO
-			'manipulations' => new MapsParamCircle( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'manipulations' => new MapsParamCircle( '~' ),
 			'delimiter' => ';',
 			'islist' => true,
 		);
@@ -127,7 +127,7 @@ class MapsDisplayMap extends ParserHook {
 		$params['rectangles'] = array(
 			'default' => array(),
 			'message' => 'maps-displaypoints-par-rectangles', // TODO
-			'manipulations' => new MapsParamRectangle( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			'manipulations' => new MapsParamRectangle( '~' ),
 			'delimiter' => ';',
 			'islist' => true,
 		);
