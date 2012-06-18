@@ -234,7 +234,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 		# Your Google Maps API key. Required for displaying Google Maps, and using the
 		# Google Geocoder services.
-		$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html
+		$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html // TODO
 		
 
 
