@@ -138,7 +138,6 @@ $wgAutoloadClasses['MapsParamDimension'] = $manDir . 'Maps_ParamDimension.php';
 $wgAutoloadClasses['MapsParamFile'] = $manDir . 'Maps_ParamFile.php';
 $wgAutoloadClasses['MapsParamGeoService'] = $manDir . 'Maps_ParamGeoService.php';
 $wgAutoloadClasses['MapsParamLocation'] = $manDir . 'Maps_ParamLocation.php';
-$wgAutoloadClasses['MapsParamService'] = $manDir . 'Maps_ParamService.php';
 $wgAutoloadClasses['MapsParamZoom'] = $manDir . 'Maps_ParamZoom.php';
 $wgAutoloadClasses['MapsParamLine'] = $manDir . 'Maps_ParamLine.php';
 $wgAutoloadClasses['MapsParamPolygon'] = $manDir . 'Maps_ParamPolygon.php';
@@ -146,6 +145,10 @@ $wgAutoloadClasses['MapsParamCircle'] = $manDir . 'Maps_ParamCircle.php';
 $wgAutoloadClasses['MapsParamRectangle'] = $manDir . 'Maps_ParamRectangle.php';
 $wgAutoloadClasses['MapsParamImageOverlay'] = $manDir . 'Maps_ParamImageOverlay.php';
 unset( $manDir );
+
+$paramDir = $incDir . 'params/';
+$wgAutoloadClasses['MapsServiceParam'] = $paramDir . 'Maps_ServiceParam.php';
+unset( $paramDir );
 
 // Autoload the "includes/parserHooks/" classes.
 $phDir = $incDir . '/parserHooks/';
@@ -328,3 +331,5 @@ function efMapsSetup() {
 	wfRunHooks( 'MappingFeatureLoad' );
 	return true;
 }
+
+$egParamDefinitions['mappingservice'] = 'MapsServiceParam';

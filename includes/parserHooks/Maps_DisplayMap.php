@@ -59,12 +59,11 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsDefaultServices, $egMapsDefaultTitle, $egMapsDefaultLabel;
+		global $egMapsDefaultTitle, $egMapsDefaultLabel;
 		
 		$params = MapsMapper::getCommonParameters();
 
-		$params['mappingservice']['default'] = $egMapsDefaultServices['display_map'];
-		$params['mappingservice']['manipulations'] = new MapsParamService( 'display_point' );
+		$params['mappingservice']['feature'] = 'display_map';
 
 		$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
 		$params['zoom']['manipulations'] = new MapsParamZoom();

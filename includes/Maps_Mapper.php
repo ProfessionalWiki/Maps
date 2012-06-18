@@ -76,9 +76,8 @@ final class MapsMapper {
 		$params = array();
 
 		$params['mappingservice'] = array(
+			'type' => 'mappingservice',
 			'aliases' => 'service',
-			'default' => $egMapsDefaultService,
-			'values' => MapsMappingServices::getAllServiceValues(),
 		);
 
 		$params['geoservice'] = array(
