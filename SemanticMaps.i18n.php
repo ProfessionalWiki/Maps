@@ -687,6 +687,7 @@ $messages['it'] = array(
 	'semanticmaps-latitude' => 'Latitudine: $1',
 	'semanticmaps-longitude' => 'Longitudine: $1',
 	'semanticmaps-altitude' => 'Altitudine: $1',
+	'semanticmaps-loading-forminput' => 'Caricamento del modulo input per mappe...',
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
 	'semanticmaps-updatemap' => 'Aggiorna mappa',
@@ -695,6 +696,15 @@ $messages['it'] = array(
 	'semanticmaps-forminput-locations' => 'Luoghi',
 	'semanticmaps-par-staticlocations' => 'Un elenco di luoghi da aggiungere alla mappa unitamente ai dati interrogati. Come con display_points, si può aggiungere un titolo, la descrizione e l\'icona per ogni posizione utilizzando la tilde "~" come separatore.',
 	'semanticmaps-par-forceshow' => "Mostra la mappa anche quando non c'è alcun luogo da visualizzare?",
+	'semanticmaps-par-showtitle' => "Mostrare oppure no un titolo nella finestra informazioni per l'indicatore. Disattivarlo è spesso utile quando si utilizza un template per la formattazione del contenuto della finestra informazioni.",
+	'semanticmaps-par-hidenamespace' => "Mostrare oppure no il namespace del titolo nella finestra informazioni per l'indicatore.",
+	'semanticmaps-par-centre' => 'Il centro della mappa. Quando non indicato, la mappa sceglierà automaticamente il centro ottimale per visualizzare tutti gli indicatori sulla mappa.',
+	'semanticmaps-par-template' => 'Un template da utilizzare per formattare il contenuto della finestra informazioni.',
+	'semanticmaps-par-geocodecontrol' => 'Mostra il controllo per geocodifica.',
+	'semanticmaps-kml-text' => "Il testo associato per ogni pagina. Sovrascritto dall'eventuale proprietà dell'interrogazione aggiuntiva.",
+	'semanticmaps-kml-title' => 'Il titolo predefinito per i risultati',
+	'semanticmaps-kml-linkabsolute' => 'I collegamenti dovranno essere assoluti o no (ovvero relativi)',
+	'semanticmaps-kml-pagelinktext' => 'Il testo da utilizzare per i collegamenti alla pagina, in cui $1 verrà sostituito dal titolo della pagina',
 );
 
 /** Japanese (日本語)
@@ -917,6 +927,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (polski)
+ * @author BeginaFelicysym
  * @author Deejay1
  * @author Derbeth
  * @author Leinad
@@ -928,8 +939,17 @@ $messages['pl'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Wartość $1 nie jest poprawną odległością.',
 	'semanticmaps-kml-link' => 'Wyświetla plik KML',
 	'semanticmaps-default-kml-pagelink' => 'Pokaż stronę $1',
+	'semanticmaps-latitude' => 'Szerokość geograficzna: $1',
+	'semanticmaps-longitude' => 'Długość geograficzna: $1',
+	'semanticmaps-altitude' => 'Wysokość: $1',
+	'semanticmaps-loading-forminput' => 'Ładowanie mapy formularza wprowadzania danych...',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
+	'semanticmaps-updatemap' => 'Aktualizacja mapy',
+	'semanticmaps-forminput-remove' => 'Usuń',
+	'semanticmaps-forminput-add' => 'Dodaj',
+	'semanticmaps-forminput-locations' => 'Miejsca',
+	'semanticmaps-par-forceshow' => 'Wyświetlać mapę nawet wtedy, gdy nie ma miejsc do pokazania?',
 );
 
 /** Piedmontese (Piemontèis)
