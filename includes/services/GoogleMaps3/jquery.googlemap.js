@@ -70,27 +70,36 @@
 				markerOptions.icon = markerData.icon;
 			}
 
+			var addToMapAndHandlers = function( marker ) {
+				//Add onclick listener
+				google.maps.event.addListener(marker, 'click', function (e) {
+					if (e.target !== undefined && (e.target instanceof HTMLAnchorElement || e.target.tagName == 'A')) {
+						//click link defined in inlinelabel
+						window.location.href = e.target.href;
+					} else {
+						openBubbleOrLink.call(this, markerData, e, marker);
+					}
+				});
+
+				marker.setMap( _this.map );
+				_this.markers.push( marker );
+
+				return marker;
+			};
+
 			var marker;
 			if (markerData.inlineLabel === undefined || markerData.inlineLabel.length == 0) {
-				marker = new google.maps.Marker(markerOptions);
+				marker = new google.maps.Marker( markerOptions );
+				return addToMapAndHandlers( marker );
 			} else {
-				marker = new MarkerWithLabel(markerOptions);
+				mw.loader.using(
+					'ext.maps.gm3.markerwithlabel',
+					function() {
+						marker = new MarkerWithLabel( markerOptions );
+						return addToMapAndHandlers( marker );
+					}
+				);
 			}
-
-			//Add onclick listener
-			google.maps.event.addListener(marker, 'click', function (e) {
-				if (e.target !== undefined && (e.target instanceof HTMLAnchorElement || e.target.tagName == 'A')) {
-					//click link defined in inlinelabel
-					window.location.href = e.target.href;
-				} else {
-					openBubbleOrLink.call(this, markerData, e, marker);
-				}
-			});
-
-			marker.setMap(this.map);
-			this.markers.push(marker);
-
-			return marker;
 		};
 
 		/**
@@ -596,16 +605,20 @@
 			}
 
 			/**
-			 * used in display_line functionality
-			 * allows grouping of markers
+			 * Allows grouping of markers.
 			 */
-			if (options.markercluster) {
-				this.markercluster = new MarkerClusterer(this.map, this.markers,{
-					averageCenter:true
-				});
+			if ( options.markercluster ) {
+				mw.loader.using(
+					'ext.maps.gm3.markercluster',
+					function() {
+						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
+							averageCenter: true
+						} );
+					}
+				);
 			}
 
-			if (options.searchmarkers) {
+			if ( options.searchmarkers ) {
 				var searchBox = $('<div style="text-align: right;">' + mediaWiki.msg('maps-searchmarkers-text') + ': <input type="text" /></div>');
 				$(this.map.getDiv()).before(searchBox);
 

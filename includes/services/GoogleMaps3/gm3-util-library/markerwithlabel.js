@@ -564,3 +564,5 @@ MarkerWithLabel.prototype.setMap = function (theMap) {
   // ... then deal with the label:
   this.label.setMap(theMap);
 };
+
+window.MarkerWithLabel = MarkerWithLabel;
