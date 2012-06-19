@@ -19,13 +19,17 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 
 ; New features
 
+* Added support for defining an inline label to markers to GoogleMaps.
 * Added support for marker clustering to Google Maps.
 * Added support for grouping locations.
+* Added support for defining image overlays (ground overlays) in Google Maps.
 * Added support for defining lines, polygons, rectangles and circles using wikitext for Google Maps and OpenLayers.
 * Added a graphical map editing tool that allows exporting to and importing from simple wikitext.
 * Added "copycoords" parameter to Google Maps and OpenLayers that allows copying coordinates after right clicking a location on a map.
 * Added "minzoom" and "maxzoom" parameters to #display_map.
 * Added support for using the Google JS API key with Google Maps (for increased map display and geocoding call limits).
+* Added support for searching markers (searchmarkers=all/title) in Google Maps and OpenLayers
+* Added support for creating static maps in OpenLayers and GoogleMaps (static=on)
 
 ; Other improvements
 
