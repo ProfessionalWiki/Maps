@@ -30,6 +30,9 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 * Added support for using the Google JS API key with Google Maps (for increased map display and geocoding call limits).
 * Added support for searching markers (searchmarkers=all/title) in Google Maps and OpenLayers
 * Added support for creating static maps in OpenLayers and GoogleMaps (static=on)
+* Added positional parameter to show polygons only on hover.
+* Added an optional link parameter as an alternative to popup bubble with text and title
+
 
 ; Other improvements
 
@@ -40,6 +43,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 ; Bug fixes
 
 * Fixed JavaScript error on some special pages due to incorrect order of map initialization.
+* Fixed broken kml functionality
 
 === Maps 1.0.5 ===
 (2011-11-30)
