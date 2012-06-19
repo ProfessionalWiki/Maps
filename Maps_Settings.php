@@ -226,16 +226,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 		# Google JavaScript Loader API key.
 		# Can be obtained at: https://code.google.com/apis/loader/signup.html
-		# This key is needed when using Google Earth.
+		# This key is needed when using Google Earth or when using extended
+		# limits for displaying maps or geocoding calls.
 		$egGoogleJsApiKey = '';
 
 		# Show points of interest or not.
 		$egMapsShowPOI = true;
 
-		# Your Google Maps API key. Required for displaying Google Maps, and using the
-		# Google Geocoder services.
-		$egGoogleMapsKey = ''; # http://code.google.com/apis/maps/signup.html // TODO
-		
 
 
 	# OpenLayers

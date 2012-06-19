@@ -230,19 +230,19 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		global $wgLang, $egGoogleMapsKey;
+		global $wgLang, $egGoogleJsApiKey;
 
 		$urlArgs = array(
 			'language' => self::getMappedLanguageCode( $wgLang->getCode() ),
 			'sensor' => 'false'
 		);
 
-		if ( $egGoogleMapsKey !== '' ) {
-			$urlArgs[] = $egGoogleMapsKey; // TODO
+		if ( $egGoogleJsApiKey !== '' ) {
+			$urlArgs['key'] = $egGoogleJsApiKey;
 		}
 
 		return array(
-			Html::linkedScript( 'http://maps.google.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) )
+			Html::linkedScript( 'http://maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) )
 		);
 	}
 	
