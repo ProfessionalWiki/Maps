@@ -478,7 +478,7 @@ $messages['frp'] = array(
 	'semanticmaps-forminput-locations' => 'Emplacements',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
