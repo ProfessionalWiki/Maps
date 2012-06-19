@@ -276,7 +276,7 @@ var mapEditor = {
         });
     },
     __generateWikiCode:function(){
-        var code = '{{#display_line: ';
+        var code = '{{#display_map: ';
 
         var markers = '';
         var circles = '';
@@ -344,13 +344,13 @@ var mapEditor = {
         return code;
     },
     __importWikiCode:function(rawData){
-        var syntaxPattern = /^\{\{#display_line:[\s\S]*\}\}[\s\n]*$/i;
+        var syntaxPattern = /^\{\{#display_map:[\s\S]*\}\}[\s\n]*$/i;
         if(rawData.match(syntaxPattern) === null){ //NO MATCH
             return false;
         }else{
             try{
                 var patterns = {
-                    marker: /^\{\{#display_line:\s*(.*)/i,
+                    marker: /^\{\{#display_map:\s*(.*)/i,
                     polyline: /\|\s*lines=(.*)/i,
                     circle:/\|\s*circles=(.*)/i,
                     polygon:/\|\s*polygons=(.*)/i,
