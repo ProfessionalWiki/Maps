@@ -86,7 +86,7 @@ abstract class MapsMappingService implements iMappingService {
 	 *
 	 * @since 0.7
 	 *
-	 * @param array $parameterInfo
+	 * @param $parameterInfo array of IParam
 	 */
 	public function addParameterInfo( array &$parameterInfo ) {
 	}
