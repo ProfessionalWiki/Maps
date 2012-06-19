@@ -528,22 +528,32 @@
 		}
 
 		if (options.searchmarkers) {
-			var searchBox = $('<div style="text-align: right;">' + mediaWiki.msg('maps-searchmarkers-text') + ': <input type="text" /></div>');
-			$(this.map.div).before(searchBox);
+			var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
+			var searchBoxContainer = $('<div style="text-align: right;"><input type="text" value="' + searchBoxValue + '" /></div>');
+			$(this.map.div).before(searchBoxContainer);
 
-			searchBox.find('input').keyup(function (e) {
-				for (var i = 0; i < _this.markers.length; i++) {
-					var haystack = '';
-					var marker = _this.markers[i];
-					if (options.searchmarkers == 'title') {
-						haystack = marker.data.title;
-					} else if (options.searchmarkers == 'all') {
-						haystack = marker.data.title + marker.data.text;
+			searchBoxContainer.find('input').on('keyup', function (e) {
+					for (var i = 0; i < _this.markers.length; i++) {
+						var haystack = '';
+						var marker = _this.markers[i];
+						if (options.searchmarkers == 'title') {
+							haystack = marker.data.title;
+						} else if (options.searchmarkers == 'all') {
+							haystack = marker.data.title + marker.data.text;
+						}
+
+						marker.target.display(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
 					}
+				}).on('focusin', function () {
+					if ($(this).val() === searchBoxValue) {
+						$(this).val('');
+					}
+				}).on('focusout', function () {
+					if ($(this).val() === '') {
+						$(this).val(searchBoxValue);
+					}
+				});
 
-					marker.target.display(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
-				}
-			});
 		}
 
 		function openBubbleOrLink(properties) {

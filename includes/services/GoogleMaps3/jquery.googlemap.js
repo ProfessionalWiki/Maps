@@ -618,23 +618,32 @@
 				);
 			}
 
-			if ( options.searchmarkers ) {
-				var searchBox = $('<div style="text-align: right;">' + mediaWiki.msg('maps-searchmarkers-text') + ': <input type="text" /></div>');
-				$(this.map.getDiv()).before(searchBox);
+            if (options.searchmarkers) {
+				var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
+				var searchBoxContainer = $('<div style="text-align: right;"><input type="text" value="' + searchBoxValue + '" /></div>');
+				$(this.map.getDiv()).before(searchBoxContainer);
 
-				searchBox.find('input').keyup(function (e) {
-					for (var i = 0; i < _this.markers.length; i++) {
-						var haystack = '';
-						var marker = _this.markers[i];
-						if (options.searchmarkers == 'title') {
-							haystack = marker.title;
-						} else if (options.searchmarkers == 'all') {
-							haystack = marker.title + marker.text;
+				searchBoxContainer.find('input').on('keyup', function (e) {
+						for (var i = 0; i < _this.markers.length; i++) {
+							var haystack = '';
+							var marker = _this.markers[i];
+							if (options.searchmarkers == 'title') {
+								haystack = marker.title;
+							} else if (options.searchmarkers == 'all') {
+								haystack = marker.title + marker.text;
+							}
+
+							marker.setVisible(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
 						}
-
-						marker.setVisible(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
-					}
-				});
+					}).on('focusin', function () {
+						if ($(this).val() === searchBoxValue) {
+							$(this).val('');
+						}
+					}).on('focusout', function () {
+						if ($(this).val() === '') {
+							$(this).val(searchBoxValue);
+						}
+					});
 			}
 
             if(options.imageoverlays){
