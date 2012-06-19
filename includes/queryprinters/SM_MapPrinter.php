@@ -51,8 +51,9 @@ class SMMapPrinter extends SMWResultPrinter {
 		global $egMapsDefaultLabel, $egMapsDefaultTitle;
 		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
 		
-		$params = MapsMapper::getCommonParameters();
-		$this->service->addParameterInfo( $params );		
+		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
+
+		$this->service->addParameterInfo( $params );
 		
 		$params['zoom']->setDefault( false );		
 		$params['zoom']->setDoManipulationOfDefault( false );		
