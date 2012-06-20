@@ -1195,6 +1195,7 @@ $1',
 	'mapeditor-imageoverlay-button' => 'Bildeinblendung hinzufügen',
 	'mapeditor-form-field-image' => 'Bild',
 	'mapeditor-imageoverlay-title' => 'Einzelheiten zur Bildeinblendung',
+	'mapeditor-form-field-visitedicon' => 'Symbol für besucht',
 );
 
 /** Zazaki (Zazaki)
