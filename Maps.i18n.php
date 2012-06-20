@@ -1808,6 +1808,7 @@ $1",
 	'mapeditor-imageoverlay-button' => "Ajouter la couverture d'image",
 	'mapeditor-form-field-image' => 'Image',
 	'mapeditor-imageoverlay-title' => "Détails de la couverture d'image",
+	'mapeditor-form-field-visitedicon' => 'Icône visité',
 );
 
 /** Franco-Provençal (arpetan)
@@ -3816,6 +3817,7 @@ $1.',
 	'mapeditor-imageoverlay-button' => 'Afbeeldingslaag toevoegen',
 	'mapeditor-form-field-image' => 'Afbeelding',
 	'mapeditor-imageoverlay-title' => 'Gegevens over afbeeldingslaag',
+	'mapeditor-form-field-visitedicon' => 'Icoon voor bezocht',
 );
 
 /** Norwegian Nynorsk (‪norsk (nynorsk)‬)
