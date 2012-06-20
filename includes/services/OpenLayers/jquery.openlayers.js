@@ -535,32 +535,43 @@
 		}
 
 		if (options.searchmarkers) {
-			var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
-			var searchBoxContainer = $('<div style="text-align: right;"><input type="text" value="' + searchBoxValue + '" /></div>');
-			$(this.map.div).before(searchBoxContainer);
+			OpenLayers.Control.SearchField = OpenLayers.Class(OpenLayers.Control, {
+				draw:function (px) {
+					OpenLayers.Control.prototype.draw.apply(this, arguments);
+					var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
+					var searchBoxContainer = document.createElement('div');
+					this.div.style.top = "5px";
+					this.div.style.right = "5px";
+					var searchBox = $('<input type="text" value="' + searchBoxValue + '" />');
+					searchBox.appendTo(searchBoxContainer);
 
-			searchBoxContainer.find('input').on('keyup', function (e) {
-					for (var i = 0; i < _this.markers.length; i++) {
-						var haystack = '';
-						var marker = _this.markers[i];
-						if (options.searchmarkers == 'title') {
-							haystack = marker.data.title;
-						} else if (options.searchmarkers == 'all') {
-							haystack = marker.data.title + marker.data.text;
+					searchBox.on('keyup',function (e) {
+						for (var i = 0; i < _this.markers.length; i++) {
+							var haystack = '';
+							var marker = _this.markers[i];
+							if (options.searchmarkers == 'title') {
+								haystack = marker.data.title;
+							} else if (options.searchmarkers == 'all') {
+								haystack = marker.data.title + marker.data.text;
+							}
+
+							marker.target.display(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
 						}
-
-						marker.target.display(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
-					}
-				}).on('focusin', function () {
-					if ($(this).val() === searchBoxValue) {
-						$(this).val('');
-					}
-				}).on('focusout', function () {
-					if ($(this).val() === '') {
-						$(this).val(searchBoxValue);
-					}
-				});
-
+					}).on('focusin',function () {
+						if ($(this).val() === searchBoxValue) {
+							$(this).val('');
+						}
+					}).on('focusout', function () {
+						if ($(this).val() === '') {
+							$(this).val(searchBoxValue);
+						}
+					});
+					this.div.appendChild(searchBoxContainer);
+					return this.div;
+				}
+			});
+			var searchBox = new OpenLayers.Control.SearchField();
+			map.addControl(searchBox);
 		}
 
 		function openBubbleOrLink(properties) {

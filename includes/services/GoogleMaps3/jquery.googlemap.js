@@ -627,13 +627,17 @@
 				);
 			}
 
-            if (options.searchmarkers) {
+			if (options.searchmarkers) {
 				var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
-				var searchBoxContainer = $('<div style="text-align: right;"><input type="text" value="' + searchBoxValue + '" /></div>');
-				$(this.map.getDiv()).before(searchBoxContainer);
+				var searchBox = $('<input type="text" value="' + searchBoxValue + '" />');
+				var searchContainer = document.createElement('div');
+				searchContainer.style.padding = '5px';
+				searchContainer.index = 1;
+				searchBox.appendTo(searchContainer);
+				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(searchContainer);
 
-				searchBoxContainer.find('input').on('keyup', function (e) {
-						for (var i = 0; i < _this.markers.length; i++) {
+				searchBox.on('keyup',function (e) {
+					for (var i = 0; i < _this.markers.length; i++) {
 							var haystack = '';
 							var marker = _this.markers[i];
 							if (options.searchmarkers == 'title') {
