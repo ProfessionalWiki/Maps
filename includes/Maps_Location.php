@@ -87,11 +87,13 @@ class MapsLocation extends MapsBaseElement {
 
 	/**
 	 * @var string
+	 * @since 2.0
 	 */
 	protected $inlineLabel;
 
 	/**
-	 * @var
+	 * @var string
+	 * @since 2.0
 	 */
 	protected $visitedIcon;
 
@@ -355,11 +357,12 @@ class MapsLocation extends MapsBaseElement {
 	 * @return string
 	 */
 	public function hasGroup() {
-		return $this->group != '';
+		return $this->group !== '';
 	}
 
 	/**
 	 * @return string
+	 * @since 2.0
 	 */
 	public function getInlineLabel(){
 		return $this->inlineLabel;
@@ -367,6 +370,7 @@ class MapsLocation extends MapsBaseElement {
 
 	/**
 	 * @param $label
+	 * @since 2.0
 	 */
 	public function setInlineLabel($label){
 		$this->inlineLabel = $label;
@@ -374,13 +378,15 @@ class MapsLocation extends MapsBaseElement {
 
 	/**
 	 * @return bool
+	 * @since 2.0
 	 */
 	public function hasInlineLabel(){
-		return $this->inlineLabel != '';
+		return $this->inlineLabel !== '';
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
+	 * @since 2.0
 	 */
 	public function getVisitedIcon() {
 		return $this->visitedIcon;
@@ -388,6 +394,7 @@ class MapsLocation extends MapsBaseElement {
 
 	/**
 	 * @param $visitedIcon
+	 * @since 2.0
 	 */
 	public function setVisitedIcon( $visitedIcon ) {
 		$this->visitedIcon = trim($visitedIcon);
@@ -395,9 +402,10 @@ class MapsLocation extends MapsBaseElement {
 
 	/**
 	 * @return bool
+	 * @since 2.0
 	 */
 	public function hasVisitedIcon(){
-		return $this->visitedIcon != '';
+		return $this->visitedIcon !== '';
 	}
 
 	/**
