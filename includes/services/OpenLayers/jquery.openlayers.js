@@ -523,7 +523,9 @@
 				eventMethods:{
 					'rightclick':function (e) {
 						var lonlat = map.getLonLatFromViewPortPx(e.xy);
-						lonlat = lonlat.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
+						if (!hasImageLayer) {
+							lonlat = lonlat.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
+						}
 						prompt(mediaWiki.msg('maps-copycoords-prompt'), lonlat.lat + ',' + lonlat.lon);
 					}
 				}
