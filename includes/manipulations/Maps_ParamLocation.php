@@ -69,6 +69,10 @@ class MapsParamLocation extends MapsCommonParameterManipulation {
 			$value->setInlineLabel( $inlineLabel );
 		}
 
+		if ( $visitedIcon = array_shift( $parts ) ) {
+			$value->setVisitedIcon( $visitedIcon );
+		}
+
 		if ( $this->toJSONObj ) {
 			$value = $value->getJSONObject();
 		}

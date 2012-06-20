@@ -91,6 +91,11 @@ class MapsLocation extends MapsBaseElement {
 	protected $inlineLabel;
 
 	/**
+	 * @var
+	 */
+	protected $visitedIcon;
+
+	/**
 	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
 	 *
 	 * @since 1.0
@@ -375,6 +380,27 @@ class MapsLocation extends MapsBaseElement {
 	}
 
 	/**
+	 * @return mixed
+	 */
+	public function getVisitedIcon() {
+		return $this->visitedIcon;
+	}
+
+	/**
+	 * @param $visitedIcon
+	 */
+	public function setVisitedIcon( $visitedIcon ) {
+		$this->visitedIcon = trim($visitedIcon);
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function hasVisitedIcon(){
+		return $this->visitedIcon != '';
+	}
+
+	/**
 	 * Returns an object that can directly be converted to JS using json_encode or similar.
 	 *
 	 * @since 1.0
@@ -387,7 +413,7 @@ class MapsLocation extends MapsBaseElement {
 	 *
 	 * @return object
 	 */
-	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '' ) {
+	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 		$array = array(
 			'lat' => $this->getLatitude(),
@@ -397,6 +423,7 @@ class MapsLocation extends MapsBaseElement {
 			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
+			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
 		);
 		return array_merge( $parentArray , $array );
 	}

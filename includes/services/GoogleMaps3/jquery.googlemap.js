@@ -70,6 +70,10 @@
 				markerOptions.icon = markerData.icon;
 			}
 
+			if (markerData.visitedicon !== '') {
+				markerOptions.visitedicon = markerData.visitedicon;
+			}
+
 			var addToMapAndHandlers = function( marker ) {
 				//Add onclick listener
 				google.maps.event.addListener(marker, 'click', function (e) {
@@ -78,6 +82,11 @@
 						window.location.href = e.target.href;
 					} else {
 						openBubbleOrLink.call(this, markerData, e, marker);
+					}
+
+					if (markerOptions.visitedicon) {
+						marker.setIcon(markerOptions.visitedicon);
+						markerOptions.visitedicon = undefined;
 					}
 				});
 

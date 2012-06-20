@@ -32,6 +32,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 * Added support for creating static maps in OpenLayers and GoogleMaps (static=on)
 * Added positional parameter to show polygons only on hover.
 * Added an optional link parameter as an alternative to popup bubble with text and title
+* Added an optional visitedicon parameter (both global and marker parameter), that will change the icon of a marker on click.
 
 
 ; Other improvements

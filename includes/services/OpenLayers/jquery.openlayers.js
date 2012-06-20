@@ -29,6 +29,11 @@
 						markerLayer.map.addPopup(popup);
 						OpenLayers.Event.stop(evt); // Stop the event.
 					}
+
+					if (markerData.visitedicon && markerData.visitedicon !== '') {
+						marker.setUrl(markerData.visitedicon);
+						markerData.visitedicon = undefined;
+					}
 				}
 			);
 

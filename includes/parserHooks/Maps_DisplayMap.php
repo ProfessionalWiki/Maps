@@ -108,6 +108,11 @@ class MapsDisplayMap extends ParserHook {
 			'message' => 'maps-displaypoints-par-icon', // TODO
 		);
 
+		$params['visitedicon'] = array(
+			'default' => '', //TODO: image param
+			'message' => 'maps-displaypmap-par-visitedicon', //TODO
+		);
+
 		$params['lines'] = array(
 			'default' => array(),
 			'message' => 'maps-displaypoints-par-lines', // TODO

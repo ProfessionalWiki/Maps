@@ -60,7 +60,7 @@ var mapEditor = {
             values:['on','off']
         },
         searchmarkers:{
-            values:[]
+            values:['title','all']
         },
         'static':{
             values:['on','off']
@@ -127,6 +127,9 @@ var mapEditor = {
         },
         poi:{
             values:['on','off']
+        },
+        visitedicon:{
+            values:[]
         }
     },
     __addMapObject:function(o){

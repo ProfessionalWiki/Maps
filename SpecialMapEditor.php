@@ -40,6 +40,8 @@ class SpecialMapEditor extends SpecialPage{
                 <input type="text" name="group" id="m-group" class="text ui-widget-content ui-corner-all"/>
                 <label for="m-inlinelabel">%12\$s</label>
                 <input type="text" name="inlinelabel" id="m-inlinelabel" class="text ui-widget-content ui-corner-all"/>
+                <label for="m-visitedicon">%23\$s</label>
+                <input type="text" name="visitedicon" id="m-visitedicon" class="text ui-widget-content ui-corner-all"/>
             </fieldset>
         </form>
     </div>
@@ -173,7 +175,8 @@ EOT;
 			wfMessage('mapeditor-mapparam-title'),
 			wfMessage('mapeditor-mapparam-defoption'),
 			wfMessage('mapeditor-form-field-image'),
-			wfMessage('mapeditor-imageoverlay-title')
+			wfMessage('mapeditor-imageoverlay-title'),
+			wfMessage('mapeditor-form-field-visitedicon')
 		);
 
 		$outputPage->addHTML($output);

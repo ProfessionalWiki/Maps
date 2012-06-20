@@ -240,7 +240,8 @@ $1',
 	'mapeditor-mapparam-defoption' => '-Select parameter-',
 	'mapeditor-imageoverlay-button' => 'Add image overlay',
 	'mapeditor-form-field-image' => 'Image',
-	'mapeditor-imageoverlay-title' => 'Image overlay details'
+	'mapeditor-imageoverlay-title' => 'Image overlay details',
+	'mapeditor-form-field-visitedicon' => 'Visited icon',
 
 );
 
@@ -322,6 +323,7 @@ $messages['qqq'] = array(
 	'mapeditor-imageoverlay-button' => 'Button text that starts the "add image overlay process"',
 	'mapeditor-form-field-image' => 'Form field name',
 	'mapeditor-imageoverlay-title' => 'Title of dialogue',
+	'mapeditor-form-field-visitedicon' => 'Form field name',
 );
 
 /** Afrikaans (Afrikaans)
@@ -3622,7 +3624,8 @@ $1',
 	'mapeditor-mapparam-defoption' => '-Velg parameter-',
 	'mapeditor-imageoverlay-button' => 'Legg til bilde',
 	'mapeditor-form-field-image' => 'Bilde',
-	'mapeditor-imageoverlay-title' => 'Bilde lag detaljer'
+	'mapeditor-imageoverlay-title' => 'Bilde lag detaljer',
+	'mapeditor-form-field-visitedicon' => 'Besøkt ikon',
 );
 
 /** Dutch (Nederlands)
