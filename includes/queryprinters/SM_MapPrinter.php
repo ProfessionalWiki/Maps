@@ -74,7 +74,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		$manipulation->toJSONObj = true;
 		$params['centre']->addManipulations( $manipulation );
 		$params['centre']->setMessage( 'semanticmaps-par-centre' );
-		
+
 		$params['icon'] = new Parameter(
 			'icon',
 			Parameter::TYPE_STRING,
@@ -85,6 +85,17 @@ class SMMapPrinter extends SMWResultPrinter {
 			)
 		);
 		$params['icon']->setMessage( 'maps-displaypoints-par-icon' );
+
+		$params['visitedicon'] = new Parameter(
+			'visitedicon',
+			Parameter::TYPE_STRING,
+			'',
+			array(),
+			array(
+				New CriterionNotEmpty()
+			)
+		);
+		$params['visitedicon']->setMessage( 'maps-displaymap-par-visitedicon' );
 		
 		$params['forceshow'] = new Parameter(
 			'forceshow',
@@ -254,11 +265,12 @@ class SMMapPrinter extends SMWResultPrinter {
 		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
 		
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
+		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
 		$params['locations'] = array();
 
 		foreach ( $params['staticlocations'] as $location ) {
 			if ( $location->isValid() ) {
-				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl );
+				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 				
 				$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
 				$jsonObj['text'] = $parser->parse( $jsonObj['text'], $parser->getTitle(), new ParserOptions() )->getText();
@@ -273,7 +285,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		
 		foreach ( $queryLocations as $location ) {
 			if ( $location->isValid() ) {
-				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl );
+				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 				
 				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
 				

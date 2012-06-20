@@ -17,6 +17,7 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 * Removed support for the now unsorted Yahoo! Maps API and associated geocoding service.
 * Improved script loading.
 * Updates parameter definitions from Validator 0.4.x to Validator 0.5.x.
+* Added visitedicon parameter from Maps extension
 
 === Semantic Maps 1.0.5 ===
 (2011-11-30)
