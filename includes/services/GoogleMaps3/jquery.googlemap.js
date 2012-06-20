@@ -97,7 +97,7 @@
 			};
 
 			var marker;
-			if (markerData.inlineLabel === undefined || markerData.inlineLabel.length == 0) {
+			if (markerData.inlineLabel === undefined || markerData.inlineLabel === null || markerData.inlineLabel.length == 0) {
 				marker = new google.maps.Marker( markerOptions );
 				return addToMapAndHandlers( marker );
 			} else {
