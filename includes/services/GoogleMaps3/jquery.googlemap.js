@@ -69,9 +69,15 @@
 			if (markerData.icon !== '') {
 				markerOptions.icon = markerData.icon;
 			}
+			console.log(mw.config.get('wgScriptPath'));
 
 			if (markerData.visitedicon !== '') {
-				markerOptions.visitedicon = markerData.visitedicon;
+				if(markerData.visitedicon === 'on'){
+					//when keyword 'on' is set, set visitedicon to a default official marker
+					markerOptions.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/GoogleMaps3/img/blue-dot.png';
+				}else{
+					markerOptions.visitedicon = markerData.visitedicon;
+				}
 			}
 
 			var addToMapAndHandlers = function( marker ) {

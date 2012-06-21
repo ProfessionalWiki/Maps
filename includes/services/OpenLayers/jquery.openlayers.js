@@ -31,6 +31,10 @@
 					}
 
 					if (markerData.visitedicon && markerData.visitedicon !== '') {
+						if(markerData.visitedicon === 'on'){
+							//when keyword 'on' is set, set visitedicon to a default official marker
+							markerData.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/OpenLayers/OpenLayers/img/marker3.png';
+						}
 						marker.setUrl(markerData.visitedicon);
 						markerData.visitedicon = undefined;
 					}
