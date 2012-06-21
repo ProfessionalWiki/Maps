@@ -1863,7 +1863,7 @@ La mape no pues jessi mostrade.',
 $1',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Gallaecio
  * @author Toliño
  */
@@ -2045,6 +2045,7 @@ $1',
 	'mapeditor-imageoverlay-button' => 'Engadir a sobreposición da imaxe',
 	'mapeditor-form-field-image' => 'Imaxe',
 	'mapeditor-imageoverlay-title' => 'Detalles da sobreposición da imaxe',
+	'mapeditor-form-field-visitedicon' => 'Icona visitada',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
@@ -3332,6 +3333,7 @@ $1',
 	'mapeditor-imageoverlay-button' => 'Додај облога од слика',
 	'mapeditor-form-field-image' => 'Слика',
 	'mapeditor-imageoverlay-title' => 'Поединости за облога од слика',
+	'mapeditor-form-field-visitedicon' => 'Икона за посетено',
 );
 
 /** Malayalam (മലയാളം) */
