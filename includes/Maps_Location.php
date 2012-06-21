@@ -89,13 +89,13 @@ class MapsLocation extends MapsBaseElement {
 	 * @var string
 	 * @since 2.0
 	 */
-	protected $inlineLabel;
+	protected $inlineLabel = '';
 
 	/**
 	 * @var string
 	 * @since 2.0
 	 */
-	protected $visitedIcon;
+	protected $visitedIcon = '';
 
 	/**
 	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
