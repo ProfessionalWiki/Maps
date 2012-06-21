@@ -47,8 +47,9 @@ class SMFormInput {
 	 */
 	protected function getParameterInfo() {
 		global $smgFIMulti, $smgFIFieldSize;
-		
-		$params = MapsMapper::getCommonParameters();
+
+		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
+
 		$this->service->addParameterInfo( $params );
 		
 		$params['zoom']->setDefault( false, false );		
@@ -59,24 +60,23 @@ class SMFormInput {
 		$params['fieldsize'] = new Parameter( 'fieldsize', Parameter::TYPE_INTEGER );
 		$params['fieldsize']->setDefault( $smgFIFieldSize, false );
 		$params['fieldsize']->addCriteria( new CriterionInRange( 5, 100 ) );
-		
-		$params['centre'] = new Parameter( 'centre' );
-		$params['centre']->setDefault( false, false );
-		$params['centre']->addAliases( 'center' );
-		$params['centre']->addCriteria( new CriterionIsLocation() );
-		$manipulation = new MapsParamLocation();
-		$manipulation->toJSONObj = true;
-		$params['centre']->addManipulations( $manipulation );
 
 		$params['icon'] = new Parameter( 'icon' );
 		$params['icon']->setDefault( '' );
 		$params['icon']->addCriteria( New CriterionNotEmpty() );
-		
-		$params['locations'] = new ListParameter( 'locations', self::SEPARATOR );
-		$params['locations']->addCriteria( new CriterionIsLocation() );
+
 		$manipulation = new MapsParamLocation();
 		$manipulation->toJSONObj = true;
-		$params['locations']->addManipulations( $manipulation );		
+
+		$params['locations'] = array(
+			'aliases' => array( 'points' ),
+			'criteria' => new CriterionIsLocation(),
+			'manipulations' => $manipulation,
+			'default' => array(),
+			'islist' => true,
+			'delimiter' => self::SEPARATOR,
+			'message' => 'semanticmaps-par-locations', // TODO
+		);
 		
 		$params['geocodecontrol'] = new Parameter( 'geocodecontrol', Parameter::TYPE_BOOLEAN );
 		$params['geocodecontrol']->setDefault( true, false );
@@ -101,13 +101,15 @@ class SMFormInput {
 	public function getInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
 		$parameters = array();
 		foreach ( $params as $key => $value ) {
-			if ( !is_array( $value ) && !is_object( $value ) ) {
+			if ( !is_array( $value ) && !is_object( $value ) && !is_null( $value ) ) {
 				$parameters[$key] = $value;
 			}
 		}
 
-		$parameters['locations'] = $coordinates;
-		
+		if ( !is_null( $coordinates ) ) {
+			$parameters['locations'] = $coordinates;
+		}
+
 		$validator = new Validator( wfMsg( 'maps_' . $this->service->getName() ), false );
 		$validator->setParameters( $parameters, $this->getParameterInfo() );
 		$validator->validateParameters();

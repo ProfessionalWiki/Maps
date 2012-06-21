@@ -59,21 +59,11 @@ class SMMapPrinter extends SMWResultPrinter {
 		$params['zoom']->setDoManipulationOfDefault( false );		
 		
 		$params['staticlocations'] = new ListParameter( 'staticlocations', ';' );
-		$params['staticlocations']->addAliases( 'locations' );
+		$params['staticlocations']->addAliases( 'locations', 'points' );
 		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
 		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );
 		$params['staticlocations']->setDefault( array() );
 		$params['staticlocations']->setMessage( 'semanticmaps-par-staticlocations' );
-
-		$params['centre'] = new Parameter( 'centre' );
-		$params['centre']->setDefault( false );
-		$params['centre']->addAliases( 'center' );
-		$params['centre']->addCriteria( new CriterionIsLocation() );
-		$params['centre']->setDoManipulationOfDefault( false );
-		$manipulation = new MapsParamLocation();
-		$manipulation->toJSONObj = true;
-		$params['centre']->addManipulations( $manipulation );
-		$params['centre']->setMessage( 'semanticmaps-par-centre' );
 
 		$params['icon'] = new Parameter(
 			'icon',
