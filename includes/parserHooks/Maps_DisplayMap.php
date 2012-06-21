@@ -69,7 +69,7 @@ class MapsDisplayMap extends ParserHook {
 		$params['zoom']['manipulations'] = new MapsParamZoom();
 
 		$params['coordinates'] = array(
-			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations' ),
+			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
 			'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
 			'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
@@ -77,18 +77,6 @@ class MapsDisplayMap extends ParserHook {
 			'islist' => true,
 			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
 			'message' => 'maps-displaypoints-par-coordinates', // TODO
-		);
-
-		$manipulation = new MapsParamLocation();
-		$manipulation->toJSONObj = true;
-
-		$params['centre'] = array(
-			'aliases' => array( 'center' ),
-			'criteria' => new CriterionIsLocation(),
-			'manipulations' => $manipulation,
-			'default' => false,
-			'manipulatedefault' => false,
-			'message' => 'maps-displaypoints-par-centre', // TODO
 		);
 
 		$params['title'] = array(

@@ -103,6 +103,17 @@ final class MapsMapper {
 			'manipulations' => new MapsParamDimension( 'height' ),
 		);
 
+		$manipulation = new MapsParamLocation();
+		$manipulation->toJSONObj = true;
+
+		$params['centre'] = array(
+			'aliases' => array( 'center' ),
+			'criteria' => new CriterionIsLocation(),
+			'manipulations' => $manipulation,
+			'default' => false,
+			'manipulatedefault' => false,
+		);
+
 		foreach ( $params as $name => &$data ) {
 			$data['name'] = $name;
 			$data['message'] = 'map-par-' . $name;
