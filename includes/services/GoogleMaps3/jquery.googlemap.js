@@ -61,6 +61,7 @@
 			var markerOptions = {
 				position:new google.maps.LatLng(markerData.lat, markerData.lon),
 				title:markerData.title,
+				text:$(markerData.text).text(),
 				labelContent:markerData.inlineLabel,
 				labelAnchor:new google.maps.Point(-15, 34),
 				labelClass:'markerwithlabel'

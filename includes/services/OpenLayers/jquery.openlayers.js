@@ -556,7 +556,7 @@
 							if (options.searchmarkers == 'title') {
 								haystack = marker.data.title;
 							} else if (options.searchmarkers == 'all') {
-								haystack = marker.data.title + marker.data.text;
+								haystack = marker.data.title + $(marker.data.text).text();
 							}
 
 							marker.target.display(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
