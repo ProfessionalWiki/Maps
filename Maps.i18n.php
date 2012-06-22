@@ -2675,6 +2675,7 @@ $1',
 	'mapeditor-imageoverlay-button' => 'Adder un imagine superponite',
 	'mapeditor-form-field-image' => 'Imagine',
 	'mapeditor-imageoverlay-title' => 'Detalios del imagine superponite',
+	'mapeditor-form-field-visitedicon' => 'Icone visitate',
 );
 
 /** Indonesian (Bahasa Indonesia)
