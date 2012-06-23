@@ -120,7 +120,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				case $distance !== false :
 					return new SMAreaValueDescription( $this->getDataItem(), $comparator, $distance );
 				default :
-					return new SMGeoCoordsValueDescription( $this->getDataItem(), $comparator );
+					return new SMGeoCoordsValueDescription( $this->getDataItem(), null, $comparator );
 			}
 		}
 	}
