@@ -639,6 +639,7 @@ $messages['ia'] = array(
 	'semanticmaps-par-staticlocations' => 'Un lista de locos a adder al carta con le datos resultante del consulta. Como con display_points, tu pote adder un titulo, description e icone per loco usante le tilde "~" como separator.',
 	'semanticmaps-par-forceshow' => 'Monstrar le carta mesmo si il non ha locos a monstrar?',
 	'semanticmaps-par-showtitle' => 'Monstrar un titulo in le fenestra de information de marcator o non. Disactivar isto es sovente utile si un patrono es usate pro formatar le contento del fenestra de information.',
+	'semanticmaps-par-hidenamespace' => 'Monstrar o celar le titulo del spatio de nomines in le fenestra de information del marcator.',
 	'semanticmaps-par-centre' => 'Le centro del carta. Si non specificate, le systema selige automaticamente le centro optimal pro monstrar tote le marcatores in le carta.',
 	'semanticmaps-par-template' => 'Un patrono a usar pro formatar le contento del fenestra de information.',
 	'semanticmaps-par-geocodecontrol' => 'Monstrar le controlo de geocodification.',
