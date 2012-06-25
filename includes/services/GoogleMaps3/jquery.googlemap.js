@@ -70,7 +70,6 @@
 			if (markerData.icon !== '') {
 				markerOptions.icon = markerData.icon;
 			}
-			console.log(mw.config.get('wgScriptPath'));
 
 			if (markerData.visitedicon !== '') {
 				if(markerData.visitedicon === 'on'){
