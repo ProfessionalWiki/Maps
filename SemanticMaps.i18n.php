@@ -127,6 +127,7 @@ $messages['ast'] = array(
 	'semanticmaps-par-staticlocations' => 'Llista de llugares p\'amestar al mapa xunto colos datos consultaos. Como con display_points, pues amestar un títulu, una descripción y un iconu pa cada llugar usando\'l signu "~" como separador.',
 	'semanticmaps-par-forceshow' => "¿Ver el mapa tamién cuando nun hai llugares qu'amosar?",
 	'semanticmaps-par-showtitle' => "Amosar o non un títulu na ventana d'información del marcador. De vezu, desactivalo ye útil cuando s'utiliza una plantía pa dar formatu al conteníu de la ventana d'información.",
+	'semanticmaps-par-hidenamespace' => "Amosar o non el títulu del espaciu de nomes na ventana d'información del marcador.",
 	'semanticmaps-par-centre' => "El centru del mapa. Cuando nun se proporciona, el mapa escoyerá automáticamente'l meyor centru p'amosar tolos marcadores del mapa.",
 	'semanticmaps-par-template' => "Una plantía que s'utiliza pa dar formatu al conteníu de la ventana d'información.",
 	'semanticmaps-par-geocodecontrol' => 'Amosar el control de xeocodificación.',
