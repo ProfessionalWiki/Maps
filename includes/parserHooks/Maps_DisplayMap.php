@@ -141,7 +141,7 @@ class MapsDisplayMap extends ParserHook {
 			'message' => 'maps-displaypoints-par-copycoords', // TODO
 		);
 
-		$params['copycoords'] = array(
+		$params['static'] = array(
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-displaypoints-par-static', // TODO
