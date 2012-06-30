@@ -31,12 +31,15 @@ $magicWords['af'] = array(
 /** Arabic (العربية) */
 $magicWords['ar'] = array(
 	'display_map' => array( 0, 'عرض_الخريطة' ),
-	'display_point' => array( 0, 'نقطة_العرض', 'نقاط_العرض' ),
+	'display_point' => array( 0, 'نقطة_العرض' ),
+	'display_points' => array( 0, 'نقاط_العرض' ),
+	'display_line' => array( 0, 'خط_العرض' ),
 	'geocode' => array( 0, 'كود_جغرافي' ),
 	'geodistance' => array( 0, 'مسافة_جغرافية' ),
 	'finddestination' => array( 0, 'إيجاد_الوجهة' ),
 	'coordinates' => array( 0, 'إحداثيات' ),
 	'distance' => array( 0, 'مسافة' ),
+	'mapsdoc' => array( 0, 'توثيق_الخرائط' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -46,6 +49,11 @@ $magicWords['arz'] = array(
 	'geodistance' => array( 0, 'مسافه_جغرافيه', 'مسافة_جغرافية', 'geodistance' ),
 	'finddestination' => array( 0, 'إيجاد_الوجهه', 'إيجاد_الوجهة', 'finddestination' ),
 	'coordinates' => array( 0, 'إحداثيات', 'coordinates' ),
+);
+
+/** Assamese (অসমীয়া) */
+$magicWords['as'] = array(
+	'display_point' => array( 0, 'মানচিত্ৰ_প্ৰদৰ্শন' ),
 );
 
 /** Breton (brezhoneg) */
@@ -71,6 +79,17 @@ $magicWords['de'] = array(
 	'coordinates' => array( 0, 'koordinaten' ),
 	'distance' => array( 0, 'entfernung' ),
 	'mapsdoc' => array( 0, 'mapsdok' ),
+);
+
+/** Zazaki (Zazaki) */
+$magicWords['diq'] = array(
+	'display_map' => array( 0, 'asengiya_xerita' ),
+	'display_point' => array( 0, 'asengiya_dewti' ),
+	'display_points' => array( 0, 'asengiya_dawıtan' ),
+	'display_line' => array( 0, 'asengiya_xeter' ),
+	'geocode' => array( 0, 'herunkodi' ),
+	'coordinates' => array( 0, 'koordinati' ),
+	'mapsdoc' => array( 0, 'pelgeyêxerita' ),
 );
 
 /** Esperanto (Esperanto) */
@@ -255,6 +274,11 @@ $magicWords['sr-el'] = array(
 	'finddestination' => array( 0, 'pronađi_odredište' ),
 	'coordinates' => array( 0, 'koordinate' ),
 	'distance' => array( 0, 'razdaljina' ),
+);
+
+/** толышә зывон (толышә зывон) */
+$magicWords['tly'] = array(
+	'display_map' => array( 0, 'хәритә_нишо_дој' ),
 );
 
 /** Ukrainian (українська) */
