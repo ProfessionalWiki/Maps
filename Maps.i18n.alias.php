@@ -36,3 +36,8 @@ $specialPageAliases['ko'] = array(
 $specialPageAliases['mk'] = array(
 	'MapEditor' => array( 'УредникНаКарти' ),
 );
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'MapEditor' => array( 'Kaarteditor' ),
+);

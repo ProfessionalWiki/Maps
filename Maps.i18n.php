@@ -577,7 +577,7 @@ $messages['bar'] = array(
 	'maps-loading-map' => 'Korten werd gloon ...',
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -1217,7 +1217,7 @@ $messages['diq'] = array(
 	'specialpages-group-maps' => 'Xeritey',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
@@ -2303,7 +2303,7 @@ Karta ne može biti prikazana.',
 $1',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -3156,6 +3156,14 @@ $1',
 	'maps-googlemaps3-par-kml' => "KML-Fichieren déi op d'Kaart musse geluede ginn.",
 	'maps-osm-par-thumbs' => 'Miniaturbiller weisen',
 	'maps-osm-par-photos' => 'Fotoe weisen',
+	'specialpages-group-maps' => 'Kaarten',
+	'mapeditor-done-button' => 'Fäerdeg',
+	'mapeditor-import-button2' => 'Importéieren',
+	'mapeditor-form-title' => 'Detailer änneren',
+	'mapeditor-link-title-switcher-link-text' => 'Link',
+	'mapeditor-form-field-title' => 'Titel',
+	'mapeditor-form-field-group' => 'Grupp',
+	'mapeditor-form-field-image' => 'Bild',
 );
 
 /** Lithuanian (lietuvių)
@@ -4598,7 +4606,7 @@ $1',
 	'maps-googlemaps3-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v3.',
 );
 
-/** Rusyn (Русиньскый)
+/** Rusyn (русиньскый)
  * @author Gazeb
  */
 $messages['rue'] = array(
