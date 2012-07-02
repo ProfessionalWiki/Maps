@@ -578,6 +578,13 @@
 			map.addControl(searchBox);
 		}
 
+		if (options.wmsoverlay) {
+			var layer = new OpenLayers.Layer.WMS( "WMSLayer", options.wmsoverlay.wmsServerUrl, { layers: options.wmsoverlay.wmsLayerName });
+			map.addLayer(layer);
+			map.setBaseLayer(layer);
+		}
+
+
 		function openBubbleOrLink(properties) {
 			if (properties.link) {
 				window.location.href = properties.link;

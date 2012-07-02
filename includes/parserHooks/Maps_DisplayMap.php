@@ -147,6 +147,14 @@ class MapsDisplayMap extends ParserHook {
 			'message' => 'maps-displaypoints-par-static', // TODO
 		);
 
+		$params['wmsoverlay'] = array(
+			'type' => 'string',
+			'default' => false,
+			'message' => 'maps-displaylines-par-wmsoverlay',
+			'manipulations' => new MapsParamWmsOverlay( ' ' ),
+			'delimiter' => ';',
+		);
+
 		$params['maxzoom'] = array(
 			'type' => 'integer',
 			'default' => false,

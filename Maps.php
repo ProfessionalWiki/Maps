@@ -89,6 +89,7 @@ $wgAutoloadClasses['iMappingService'] = $incDir . 'iMappingService.php';
 $wgAutoloadClasses['MapsMappingServices'] = $incDir . 'Maps_MappingServices.php';
 $wgAutoloadClasses['MapsMappingService'] = $incDir . 'Maps_MappingService.php';
 $wgAutoloadClasses['MapsUtils'] = $incDir . 'Maps_Utils.php';
+$wgAutoloadClasses['MapsWmsOverlay'] = $incDir . 'Maps_WmsOverlay.php';
 $wgAutoloadClasses['MapsBaseElement'] = $incDir . 'Maps_BaseElement.php';
 $wgAutoloadClasses['MapsBaseFillableElement'] = $incDir . 'Maps_BaseFillableElement.php';
 $wgAutoloadClasses['MapsBaseStrokableElement'] = $incDir . 'Maps_BaseStrokableElement.php';
@@ -144,6 +145,7 @@ $wgAutoloadClasses['MapsParamPolygon'] = $manDir . 'Maps_ParamPolygon.php';
 $wgAutoloadClasses['MapsParamCircle'] = $manDir . 'Maps_ParamCircle.php';
 $wgAutoloadClasses['MapsParamRectangle'] = $manDir . 'Maps_ParamRectangle.php';
 $wgAutoloadClasses['MapsParamImageOverlay'] = $manDir . 'Maps_ParamImageOverlay.php';
+$wgAutoloadClasses['MapsParamWmsOverlay'] = $manDir . 'Maps_ParamWmsOverlay.php';
 unset( $manDir );
 
 $paramDir = $incDir . 'params/';

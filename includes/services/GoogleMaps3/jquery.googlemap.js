@@ -670,6 +670,49 @@
                     this.addImageOverlay(options.imageoverlays[i]);
                 }
             }
+
+			if (options.wmsoverlay) {
+				var wmsOptions = {
+					alt: "OpenLayers",
+					getTileUrl:function (tile, zoom) {
+						var projection = _this.map.getProjection();
+						var zpow = Math.pow(2, zoom);
+						var ul = new google.maps.Point(tile.x * 256.0 / zpow, (tile.y + 1) * 256.0 / zpow);
+						var lr = new google.maps.Point((tile.x + 1) * 256.0 / zpow, (tile.y) * 256.0 / zpow);
+						var ulw = projection.fromPointToLatLng(ul);
+						var lrw = projection.fromPointToLatLng(lr);
+						//The user will enter the address to the public WMS layer here.  The data must be in WGS84
+						var baseURL = options.wmsoverlay.wmsServerUrl;
+						//The layer ID.  Can be found when using the layers properties tool in ArcMap or from the WMS settings
+						var layers = options.wmsoverlay.wmsLayerName;
+						//With the 1.3.0 version the coordinates are read in LatLon, as opposed to LonLat in previous versions
+						var bbox = ulw.lat() + "," + ulw.lng() + "," + lrw.lat() + "," + lrw.lng();
+						//Establish the baseURL.  Several elements, including &EXCEPTIONS=INIMAGE and &Service are unique to openLayers addresses.
+						var url = baseURL + "version=1.3.0&EXCEPTIONS=INIMAGE&Service=WMS" +
+							"&request=GetMap&Styles=default&format=image%2Fjpeg&CRS=EPSG:4326" +
+							"&width=256&height=256" + "&Layers=" + layers + "&BBOX=" + bbox;
+						return url;
+					},
+					isPng: false,
+					maxZoom: 17,
+					minZoom: 1,
+					name: "OpenLayers",
+					tileSize: new google.maps.Size(256, 256)
+
+				};
+
+
+
+				//Creating the object to create the ImageMapType that will call the WMS Layer Options.
+
+				openlayersWMS = new google.maps.ImageMapType(wmsOptions);
+
+
+				//Layers to appear on Map A.  The first string will give the map the map a name in the dropdown and the second object calls the map type
+
+				map.mapTypes.set('OpenLayers', openlayersWMS);
+				map.setMapTypeId('OpenLayers');
+			}
 		};
 
 		function openBubbleOrLink(properties, event, obj) {
@@ -692,6 +735,8 @@
 			};
 			this.openWindow.open(this.map);
 		}
+
+		//Complete path to OpenLayers WMS layer
 
 		this.setup();
 
