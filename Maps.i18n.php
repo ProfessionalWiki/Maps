@@ -2304,6 +2304,7 @@ $1',
 );
 
 /** Upper Sorbian (hornjoserbsce)
+ * @author J budissin
  * @author Michawiki
  */
 $messages['hsb'] = array(
@@ -2354,7 +2355,7 @@ $messages['hsb'] = array(
 	'maps-geodistance-par-decimals' => 'Maksimalna ličba městnow zady komy, kotraž ma so we wuslědku wužiwać.',
 	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
 	'maps-displaymap-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
-	'maps-displaymap-par-coordinates' => 'Městno, na kotrež mapa ma so spočatnje centrować.',
+	'maps-displaymap-par-coordinates' => 'Městno, na kotrež ma so karta spočatnje centrować.',
 	'maps-displaypoints-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
 	'maps-displaypoints-par-coordinates' => 'Jedne městno abo wjace městnow, kotrež maja so na karće zwobraznić. Woznamjenjeja so z marku.',
 	'maps-displaypoints-par-icon' => 'Zmóžnja postajenje symbola, kotryž ma so za wšě marki wužiwać.',
