@@ -22,6 +22,11 @@ $specialPageAliases['as'] = array(
 	'MapEditor' => array( 'মানচিত্ৰ_সম্পাদক' ),
 );
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = array(
+	'MapEditor' => array( 'Karteneditor' ),
+);
+
 /** Zazaki (Zazaki) */
 $specialPageAliases['diq'] = array(
 	'MapEditor' => array( 'VurnerêXerita' ),
