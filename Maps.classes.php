@@ -17,7 +17,6 @@ $classes['MapsLayers'] 					= __DIR__ . '/includes/Maps_Layers.php';
 $classes['iMappingService'] 			= __DIR__ . '/includes/iMappingService.php';
 $classes['MapsMappingServices'] 		= __DIR__ . '/includes/Maps_MappingServices.php';
 $classes['MapsMappingService'] 			= __DIR__ . '/includes/Maps_MappingService.php';
-$classes['MapsWmsOverlay'] 				= __DIR__ . '/includes/Maps_WmsOverlay.php';
 $classes['MapsBaseFillableElement'] 	= __DIR__ . '/includes/Maps_BaseFillableElement.php';
 $classes['MapsBaseStrokableElement'] 	= __DIR__ . '/includes/Maps_BaseStrokableElement.php';
 $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRenderer.php';
@@ -31,6 +30,7 @@ $classes['Maps\Line'] 					= __DIR__ . '/includes/elements/Line.php';
 $classes['Maps\Location'] 				= __DIR__ . '/includes/elements/Location.php';
 $classes['Maps\Polygon'] 				= __DIR__ . '/includes/elements/Polygon.php';
 $classes['Maps\Rectangle'] 				= __DIR__ . '/includes/elements/Rectangle.php';
+$classes['Maps\WmsOverlay'] 			= __DIR__ . '/includes/elements/WmsOverlay.php';
 
 
 $classes['Maps\Api\Geocode'] 			= __DIR__ . '/includes/api/ApiGeocode.php';
@@ -49,6 +49,7 @@ $classes['Maps\DistanceParser'] 		= __DIR__ . '/includes/parsers/DistanceParser.
 $classes['Maps\LineParser'] 			= __DIR__ . '/includes/parsers/LineParser.php';
 $classes['Maps\LocationParser'] 		= __DIR__ . '/includes/parsers/LocationParser.php';
 $classes['Maps\PolygonParser'] 			= __DIR__ . '/includes/parsers/PolygonParser.php';
+$classes['Maps\WmsOverlayParser']       = __DIR__ . '/includes/parsers/WmsOverlayParser.php';
 
 $classes['iBubbleMapElement'] 			= __DIR__ . '/includes/properties/iBubbleMapElement.php';
 $classes['iFillableMapElement'] 		= __DIR__ . '/includes/properties/iFillableMapElement.php';

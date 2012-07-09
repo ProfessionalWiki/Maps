@@ -117,6 +117,10 @@ class MapsDisplayMapRenderer {
 			$line = $line->getJSONObject();
 		}
 
+		if ( is_object( $params['wmsoverlay'] ) ) {
+			$params['wmsoverlay'] = $params['wmsoverlay']->getJSONObject();
+		}
+
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
 		$params['locations'] = array();

@@ -212,3 +212,7 @@ $wgParamDefinitions['mapspolygon'] = array(
 $wgParamDefinitions['distance'] = array(
 	'string-parser' => 'Maps\DistanceParser',
 );
+
+$wgParamDefinitions['wmsoverlay'] = array(
+	'string-parser' => 'Maps\WmsOverlayParser',
+);

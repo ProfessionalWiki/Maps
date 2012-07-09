@@ -69,6 +69,7 @@ final class MapsHooks {
 			'parsers/DistanceParser',
 			'parsers/LineParser',
 			'parsers/LocationParser',
+			'parsers/WmsOverlayParser',
 
 			'Element',
 			'MapsDistanceParser',
