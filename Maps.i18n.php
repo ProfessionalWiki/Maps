@@ -975,7 +975,7 @@ $messages['ca'] = array(
 	'maps_webcams' => 'Cámeres web',
 );
 
-/** Chechen (Нохчийн)
+/** Chechen (нохчийн)
  * @author Sasan700
  */
 $messages['ce'] = array(
@@ -2315,6 +2315,7 @@ $messages['hsb'] = array(
 	'maps-load-failed' => 'Karta njeda so začitać!',
 	'maps-markers' => 'Marki',
 	'maps-copycoords-prompt' => 'STRG+C, ENTER',
+	'maps-searchmarkers-text' => 'Filtrowy marki',
 	'maps-others' => 'druhe',
 	'maps-ns-layer' => 'Runina',
 	'maps-ns-layer-talk' => 'Diskusija runiny',
@@ -2410,6 +2411,7 @@ $messages['hsb'] = array(
 	'mapeditor-export-button' => 'Do wikikoda eksportować',
 	'mapeditor-import-button' => 'Z wikikoda importować',
 	'mapeditor-mapparam-button' => 'Kartowe parametry wobdźěłać',
+	'mapeditor-clear-button' => 'Kartu wuprózdnić',
 	'mapeditor-code-title' => 'Wikikod',
 	'mapeditor-import-title' => 'Wikikod importować',
 	'mapeditor-form-title' => 'Podrobnosće wobdźěłać',
@@ -2420,9 +2422,15 @@ $messages['hsb'] = array(
 	'mapeditor-form-field-link' => 'Wotkaz',
 	'mapeditor-form-field-icon' => 'Symbol',
 	'mapeditor-form-field-group' => 'Skupina',
+	'mapeditor-form-field-strokecolor' => 'Barba smužkow',
+	'mapeditor-form-field-strokeopacity' => 'Opaknosć smužkow',
+	'mapeditor-form-field-strokeweight' => 'Smužkowa tołstosć',
 	'mapeditor-form-field-fillcolor' => 'Pjelnjenska barba',
+	'mapeditor-form-field-fillopcaity' => 'Opaknosć pjelnjenja',
+	'mapeditor-mapparam-title' => 'Kartowe parametry wobdźěłać',
 	'mapeditor-mapparam-defoption' => '-Parameter wubrać-',
 	'mapeditor-form-field-image' => 'Wobraz',
+	'mapeditor-form-field-visitedicon' => 'Symbol za wopytany',
 );
 
 /** Haitian (Kreyòl ayisyen) */
@@ -3665,7 +3673,7 @@ $1',
 	'mapeditor-form-field-visitedicon' => 'Ikon dikunjungi',
 );
 
-/** Erzya (Эрзянь) */
+/** Erzya (эрзянь) */
 $messages['myv'] = array(
 	'maps-abb-north' => 'Веньэльйонкс',
 	'maps-abb-east' => 'Чилисемайонкс',
@@ -3682,15 +3690,15 @@ $messages['nah'] = array(
 	'maps-abb-south' => 'H',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+/** Norwegian Bokmål (‪norsk (bokmål)‬)
  * @author Event
- * @author Jon Harald Søby
- * @author Nghtwlkr
  * @author Kim Eik
+ * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'maps-desc' => 'Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner.
 ([http://mapping.referata.com/wiki/Examples demoer]).',
+	'right-geocode' => 'Geokode',
 	'maps_map' => 'Kart',
 	'maps-loading-map' => 'Laster kart...',
 	'maps-load-failed' => 'Kunne ikke laste kartet.',
@@ -3725,7 +3733,17 @@ $messages['nb'] = array(
 	'maps-distance-par-decimals' => 'Maksimalt antall desimalsifre som skal brukes for resulterende verdi.',
 	'maps-distance-par-unit' => 'Enhet for visning av avstand.',
 	'maps-finddestination-par-location' => 'Opprinnelig lokasjon.',
+	'maps-finddestination-par-bearing' => 'Startpeiling.',
 	'maps-finddestination-par-distance' => 'Reiseavstand',
+	'maps-finddestination-par-format' => 'Utdataformat for målposisjonen.',
+	'maps-finddestination-par-directional' => 'Angir om formatet for målposisjonen skal være retningsbasert eller ikke.',
+	'maps-finddestination-par-allowcoordinates' => 'Angir om koordinater skal være tillatt. Hvis satt til Nei, vil bare adresser tillates.',
+	'maps-finddestination-par-geoservice' => 'Geokodetjeneste som brukes for å geokode verdien der denne er en adresse.',
+	'maps-finddestination-par-mappingservice' => 'Parameter for å angi mappetjenesten som skal brukes for denne funksjonen.
+Dette vil tillate kart å overstyre standardverdien av tjenesteparameteren med den som er optimal for mappetjenesten.
+(Eksempel: For Google Maps vil Google geocoder brukes.)',
+	'maps-geocode-par-location' => 'Adressen du ønsker å geokode.',
+	'maps-geocode-par-mappingservice' => 'Geokodetjenesten du ønsker å bruke. Sjekk de tilgjengelige geokodetjenestene.',
 	'validation-error-invalid-location' => 'Parameter $1 må være en gyldig lokasjon.',
 	'validation-error-invalid-locations' => 'Parameter $1 må være en eller flere gyldige lokasjoner.',
 	'validation-error-invalid-width' => 'Parameter $1 må være en gyldig bredde.',
@@ -5096,7 +5114,7 @@ $1',
 	'maps_webcams' => 'Веб-камери',
 );
 
-/** Veps (Vepsän kel’) */
+/** Veps (vepsän kel’) */
 $messages['vep'] = array(
 	'maps-abb-north' => 'Pohj.',
 	'maps-abb-east' => 'Päivl.',

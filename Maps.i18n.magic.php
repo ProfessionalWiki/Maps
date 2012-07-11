@@ -62,7 +62,7 @@ $magicWords['br'] = array(
 	'distance' => array( 0, 'hed' ),
 );
 
-/** Chechen (Нохчийн) */
+/** Chechen (нохчийн) */
 $magicWords['ce'] = array(
 	'geocode' => array( 0, 'геагишар', 'геокод', 'geocode' ),
 );
