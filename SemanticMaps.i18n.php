@@ -842,9 +842,8 @@ $messages['ms'] = array(
 	'semanticmaps-forminput-locations' => 'Lokasi',
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+/** Norwegian Bokmål (‪norsk (bokmål)‬)
  * @author Event
- * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
@@ -852,6 +851,9 @@ $messages['nb'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'semanticmaps-kml-link' => 'Vis KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Vis siden $1',
+	'semanticmaps-latitude' => 'Breddegrad: $1',
+	'semanticmaps-longitude' => 'Lengdegrad: $1',
+	'semanticmaps-altitude' => 'Høyde over havet: $1',
 	'semanticmaps-loading-forminput' => 'Laster inndata for kartskjema...',
 	'semanticmaps_lookupcoordinates' => 'Sjekk koordinater',
 	'semanticmaps_enteraddresshere' => 'Skriv inn adressen her',
