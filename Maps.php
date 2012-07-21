@@ -164,8 +164,6 @@ $wgAutoloadClasses['MapsMapsDoc'] = $phDir . 'Maps_MapsDoc.php';
 
 // Load the special pages
 $wgAutoloadClasses['SpecialMapEditor'] = $egMapsDir . 'includes/specials/SpecialMapEditor.php';
-$wgSpecialPages['MapEditor'] = 'SpecialMapEditor';
-$wgSpecialPageGroups['MapEditor'] = 'maps';
 
 unset( $phDir );
 unset( $incDir );
@@ -331,6 +329,14 @@ $egMapsGlobalJSVars = array();
 function efMapsSetup() {
 	wfRunHooks( 'MappingServiceLoad' );
 	wfRunHooks( 'MappingFeatureLoad' );
+
+	if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
+		global $wgSpecialPages, $wgSpecialPageGroups;
+
+		$wgSpecialPages['MapEditor'] = 'SpecialMapEditor';
+		$wgSpecialPageGroups['MapEditor'] = 'maps';
+	}
+
 	return true;
 }
 

@@ -230,20 +230,27 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		global $wgLang, $egGoogleJsApiKey;
+		return array(
+			self::getApiScript( $GLOBALS['wgLang']->getCode() ),
+		);
+	}
 
-		$urlArgs = array(
-			'language' => self::getMappedLanguageCode( $wgLang->getCode() ),
-			'sensor' => 'false'
+	public static function getApiScript( $langCode, array $urlArgs = array() ) {
+		global $egGoogleJsApiKey;
+
+		$urlArgs = array_merge(
+			array(
+				'language' => self::getMappedLanguageCode( $langCode ),
+				'sensor' => 'false'
+			),
+			$urlArgs
 		);
 
 		if ( $egGoogleJsApiKey !== '' ) {
 			$urlArgs['key'] = $egGoogleJsApiKey;
 		}
 
-		return array(
-			Html::linkedScript( 'http://maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) )
-		);
+		return Html::linkedScript( 'http://maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
 	}
 	
 	/**
