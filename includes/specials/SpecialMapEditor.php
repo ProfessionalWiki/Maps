@@ -42,7 +42,6 @@ class SpecialMapEditor extends SpecialPage{
 
 		$outputPage->addModules( 'mapeditor' );
 
-		//as requested
 		$output = <<<EOT
 <div id="map-canvas"></div>
 <div style="display: none;">
@@ -183,33 +182,35 @@ class SpecialMapEditor extends SpecialPage{
     </div>
 </div>
 EOT;
-		$output = sprintf($output,
-			wfMessage('mapeditor-code-title'),
-			wfMessage('mapeditor-import-title'),
-			wfMessage('mapeditor-import-note'),
-			wfMessage('mapeditor-form-title'),
-			wfMessage('mapeditor-link-title-switcher-popup-text'),
-			wfMessage('mapeditor-link-title-switcher-link-text'),
-			wfMessage('mapeditor-form-field-title'),
-			wfMessage('mapeditor-form-field-text'),
-			wfMessage('mapeditor-form-field-link'),
-			wfMessage('mapeditor-form-field-icon'),
-			wfMessage('mapeditor-form-field-group'),
-			wfMessage('mapeditor-form-field-inlinelabel'),
-			wfMessage('mapeditor-form-field-strokecolor'),
-			wfMessage('mapeditor-form-field-strokeopacity'),
-			wfMessage('mapeditor-form-field-strokeweight'),
-			wfMessage('mapeditor-form-field-fillcolor'),
-			wfMessage('mapeditor-form-field-fillopcaity'),
-			wfMessage('mapeditor-form-field-showonhover'),
-			wfMessage('mapeditor-mapparam-title'),
-			wfMessage('mapeditor-mapparam-defoption'),
-			wfMessage('mapeditor-form-field-image'),
-			wfMessage('mapeditor-imageoverlay-title'),
-			wfMessage('mapeditor-form-field-visitedicon')
+
+		$html = sprintf(
+			$output,
+			wfMessage( 'mapeditor-code-title' ),
+			wfMessage( 'mapeditor-import-title' ),
+			wfMessage( 'mapeditor-import-note' ),
+			wfMessage( 'mapeditor-form-title' ),
+			wfMessage( 'mapeditor-link-title-switcher-popup-text' ),
+			wfMessage( 'mapeditor-link-title-switcher-link-text' ),
+			wfMessage( 'mapeditor-form-field-title' ),
+			wfMessage( 'mapeditor-form-field-text' ),
+			wfMessage( 'mapeditor-form-field-link' ),
+			wfMessage( 'mapeditor-form-field-icon' ),
+			wfMessage( 'mapeditor-form-field-group' ),
+			wfMessage( 'mapeditor-form-field-inlinelabel' ),
+			wfMessage( 'mapeditor-form-field-strokecolor' ),
+			wfMessage( 'mapeditor-form-field-strokeopacity' ),
+			wfMessage( 'mapeditor-form-field-strokeweight' ),
+			wfMessage( 'mapeditor-form-field-fillcolor' ),
+			wfMessage( 'mapeditor-form-field-fillopcaity' ),
+			wfMessage( 'mapeditor-form-field-showonhover' ),
+			wfMessage( 'mapeditor-mapparam-title' ),
+			wfMessage( 'mapeditor-mapparam-defoption' ),
+			wfMessage( 'mapeditor-form-field-image' ),
+			wfMessage( 'mapeditor-imageoverlay-title' ),
+			wfMessage( 'mapeditor-form-field-visitedicon' )
 		);
 
-		$outputPage->addHTML($output);
+		$outputPage->addHTML( $html );
 	}
 
 }
