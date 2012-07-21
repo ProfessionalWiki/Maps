@@ -163,7 +163,7 @@ $wgAutoloadClasses['MapsGeodistance'] = $phDir . 'Maps_Geodistance.php';
 $wgAutoloadClasses['MapsMapsDoc'] = $phDir . 'Maps_MapsDoc.php';
 
 // Load the special pages
-$wgAutoloadClasses['SpecialMapEditor'] = $egMapsDir . 'SpecialMapEditor.php';
+$wgAutoloadClasses['SpecialMapEditor'] = $egMapsDir . 'includes/specials/SpecialMapEditor.php';
 $wgSpecialPages['MapEditor'] = 'SpecialMapEditor';
 $wgSpecialPageGroups['MapEditor'] = 'maps';
 
