@@ -1,10 +1,7 @@
-Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Maps
-Documentation and examples: http://mapping.referata.com/wiki/Maps
+These are the release notes for the Maps extension.
 
-== Maps change log ==
-This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every
-version of Maps. You can find the most up-do-date version at
-http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
+Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=RELEASE-NOTES
 
 
 === Maps 2.0 alpha ===
@@ -25,7 +22,7 @@ http://mapping.referata.com/wiki/Maps/Version_history#Maps_change_log
 * Added support for grouping locations.
 * Added support for defining image overlays (ground overlays) in Google Maps.
 * Added support for defining lines, polygons, rectangles and circles using wikitext for Google Maps and OpenLayers.
-* Added a graphical map editing tool that allows exporting to and importing from simple wikitext.
+* Added a graphical map editing tool that allows exporting to and importing from simple wikitext (Google Maps only).
 * Added "copycoords" parameter to Google Maps and OpenLayers that allows copying coordinates after right clicking a location on a map.
 * Added "minzoom" and "maxzoom" parameters to #display_map.
 * Added support for using the Google JS API key with Google Maps (for increased map display and geocoding call limits).

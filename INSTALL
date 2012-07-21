@@ -1,7 +1,7 @@
 This is the install file for the Maps extension.
 	
 Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
-Latest version of the install file: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/Maps/INSTALL?view=co
+Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=INSTALL
 
 
 == Requirements ==

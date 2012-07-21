@@ -1,3 +1,8 @@
+These is the readme file for the Maps extension.
+
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
+Latest version of the readme file: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=README
+
 == About ==
 
 Maps is the MediaWiki extension that provides the ability to visualize geographic data
