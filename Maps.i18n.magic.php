@@ -83,10 +83,10 @@ $magicWords['de'] = array(
 
 /** Zazaki (Zazaki) */
 $magicWords['diq'] = array(
-	'display_map' => array( 0, 'asengiya_xerita' ),
-	'display_point' => array( 0, 'asengiya_dewti' ),
-	'display_points' => array( 0, 'asengiya_dawıtan' ),
-	'display_line' => array( 0, 'asengiya_xeter' ),
+	'display_map' => array( 0, 'aseniya_xerita' ),
+	'display_point' => array( 0, 'aseniya_dewti' ),
+	'display_points' => array( 0, 'aseniya_dawıtan' ),
+	'display_line' => array( 0, 'aseniya_xeter' ),
 	'geocode' => array( 0, 'herunkodi' ),
 	'coordinates' => array( 0, 'koordinati' ),
 	'mapsdoc' => array( 0, 'pelgeyêxerita' ),

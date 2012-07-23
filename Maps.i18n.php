@@ -4913,10 +4913,13 @@ $messages['tl'] = array(
 	'maps-desc' => 'Nagpapagana ng pagbabaon ng gumagalaw na mga mapa papaloob sa mga pahina ng wiki, pagkokodigong pangheograpiya ng mga tirahan at ibang mga gawaing pangheograpiya. ([http://mapping.referata.com/wiki/Examples mga pagpapatunghay])
 
 kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])',
+	'right-geocode' => 'Kodigong pangheograpiya',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Ikinakarga ang mapa...',
 	'maps-load-failed' => 'Hindi maikarga ang mapa!',
 	'maps-markers' => 'Mga palatandaan',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Mga pangmarka ng pansala',
 	'maps-others' => 'iba pa',
 	'maps-ns-layer' => 'Patong',
 	'maps-ns-layer-talk' => 'Usapan sa patong',
@@ -4933,6 +4936,7 @@ kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga tria
 	'maps-coordinates-description' => 'Kawint ng banghay upang maianyo ang mga tugmaang-pampook, magmula at papunta sa anuman sa tinatangkilik na mga anyo.',
 	'maps-displaymap-description' => 'Ipakita ang mga mapang pangheograpiya na walang anumang tinukoy na pangwiking mga pananda sa ibabaw nila.',
 	'maps-displaypoint-description' => 'Ipakita ang mga mapang pangheograpiya na may isa o higit pang tinukoy na pangwiking mga pananda sa ibabaw nila.',
+	'maps-distance-description' => 'Palitan ang isang kalayuan na ginagamit ang isang partikular na sinusuportahang yunit papunta sa katumbas nito na ginagamit ang isa pang yunit.',
 	'maps-finddestination-description' => 'Maghanap ng isang patutunguhan na binigyan ng tuldok ng pagsisimula (na maaaring nasa loob ng anuman sa tinatangkilik na mga anyo), isang paunang kapupuntahan at isang layo.',
 	'maps-geodistance-description' => 'Tuusin ang pangheograpiyang layo sa pagitan ng dalawang mga tuldok, magmula at papunta sa anumang tinatangkilik na mga anyo.',
 	'maps-coordinates-par-location' => 'Ang mga tugmaang-pampook na nais mong iayos ang anyo.',
