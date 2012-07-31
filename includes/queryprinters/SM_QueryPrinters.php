@@ -25,7 +25,6 @@ final class SMQueryPrinters {
 		global $wgAutoloadClasses;
 		
 		$wgAutoloadClasses['SMQueryHandler']	= dirname( __FILE__ ) . '/SM_QueryHandler.php';
-		$wgAutoloadClasses['SMMapper'] 			= dirname( __FILE__ ) . '/SM_Mapper.php';
 		$wgAutoloadClasses['SMMapPrinter'] 		= dirname( __FILE__ ) . '/SM_MapPrinter.php';
 		$wgAutoloadClasses['SMKMLPrinter'] 		= dirname( __FILE__ ) . '/SM_KMLPrinter.php';
 		
@@ -47,12 +46,12 @@ final class SMQueryPrinters {
 			
 			// Initiate the format.
 			$aliases = $service->getAliases();
-			self::initFormat( $service->getName(), 'SMMapper' /* $QPClass */, $aliases );
+			self::initFormat( $service->getName(), 'SMMapPrinter', $aliases );
 		}
 
 		// Add the 'map' result format if there are mapping services that have QP's loaded.
 		if ( $hasQueryPrinters ) {
-			self::initFormat( 'map', 'SMMapper' );
+			self::initFormat( 'map', 'SMMapPrinter' );
 		}
 		
 		return true;
@@ -66,30 +65,12 @@ final class SMQueryPrinters {
 	 * @param array $aliases
 	 */
 	private static function initFormat( $format, $formatClass, array $aliases = array() ) {
-		global $smwgResultAliases;
+		global $smwgResultAliases, $smwgResultFormats;
 
 		// Add the QP to SMW.
-		self::addFormatQP( $format, $formatClass );
+		$smwgResultFormats[$format] = $formatClass;
 
-		// If SMW supports aliasing, add the aliases to $smwgResultAliases.
-		if ( isset( $smwgResultAliases ) ) {
-			$smwgResultAliases[$format] = $aliases;
-		}
-		else { // If SMW does not support aliasing, add every alias as a format.
-			foreach ( $aliases as $alias ) self::addFormatQP( $alias, $formatClass );
-		}
+		$smwgResultAliases[$format] = $aliases;
 	}
 
-	/**
-	 * Adds a QP to SMW's $smwgResultFormats array or SMWQueryProcessor
-	 * depending on if SMW supports $smwgResultFormats.
-	 * 
-	 * @param string $format
-	 * @param string $class
-	 */
-	private static function addFormatQP( $format, $class ) {
-		global $smwgResultFormats;
-		$smwgResultFormats[$format] = $class;
-	}
-	
 }

@@ -31,13 +31,11 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * 
 	 * @param $format String
 	 * @param $inline
-	 * @param $service iMappingService
 	 */
-	public function __construct( $format, $inline, iMappingService $service ) {
-		$this->service = $service;
+	public function __construct( $format, $inline ) {
+		$this->service = MapsMappingServices::getValidServiceInstance( $format, 'qp' );
 		
 		parent::__construct( $format, $inline );
-		$this->useValidator = true;
 	}
 
 	/**
