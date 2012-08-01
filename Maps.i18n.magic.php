@@ -88,8 +88,11 @@ $magicWords['diq'] = array(
 	'display_points' => array( 0, 'aseniya_dawıtan' ),
 	'display_line' => array( 0, 'aseniya_xeter' ),
 	'geocode' => array( 0, 'herunkodi' ),
+	'geodistance' => array( 0, 'heruna_mesafi' ),
+	'finddestination' => array( 0, 'menzilvinayış' ),
 	'coordinates' => array( 0, 'koordinati' ),
-	'mapsdoc' => array( 0, 'pelgeyêxerita' ),
+	'distance' => array( 0, 'mesafe' ),
+	'mapsdoc' => array( 0, 'dokumanêxerita' ),
 );
 
 /** Esperanto (Esperanto) */
@@ -138,6 +141,7 @@ $magicWords['ja'] = array(
 /** Georgian (ქართული) */
 $magicWords['ka'] = array(
 	'coordinates' => array( 0, 'კოორდინატები' ),
+	'distance' => array( 0, 'მანძილი' ),
 );
 
 /** Korean (한국어) */
