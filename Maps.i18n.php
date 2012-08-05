@@ -1204,7 +1204,7 @@ $1',
 $messages['diq'] = array(
 	'maps_map' => 'Xerita',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
-	'maps-layer-value' => 'Deger',
+	'maps-layer-value' => 'Erc',
 	'maps-abb-north' => 'Z',
 	'maps-abb-east' => 'A',
 	'maps-abb-south' => 'V',
