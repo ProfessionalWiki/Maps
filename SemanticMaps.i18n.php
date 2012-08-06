@@ -1213,6 +1213,7 @@ $messages['tl'] = array(
 	'semanticmaps-desc' => 'Nagbibigay ng kakayahang matingnan at baguhin ang dato ng tugmaang pampook na nakaimbak sa pamamagitan ng dugtong ng Semantikong MediaWiki ([http://mapping.referata.com/wiki/Examples pagpapamalas]).',
 	'semanticmaps-unrecognizeddistance' => 'Hindi isang tanggap na layo ang halagang $1.',
 	'semanticmaps-kml-link' => 'Tingnan ang talaksang KML',
+	'semanticmaps-kml' => 'KML',
 	'semanticmaps-default-kml-pagelink' => 'Tingnan ang pahinang $1',
 	'semanticmaps-latitude' => 'Latitud: $1',
 	'semanticmaps-longitude' => 'Longhitud: $1',
