@@ -742,6 +742,12 @@ $1',
 	'mapeditor-import-title' => 'Імпарт вікі-коду',
 	'mapeditor-import-note' => 'Заўважце, калі ласка, што парсэр апрацоўвае толькі карэктны вікі-код. Імпартаваны код на ўваходзе мусіць супадаць з экспартаваным кодам.',
 	'mapeditor-form-title' => 'Рэдагаваньне падрабязнасьцяў',
+	'mapeditor-link-title-switcher-link-text' => 'Спасылка',
+	'mapeditor-form-field-title' => 'Назва',
+	'mapeditor-form-field-text' => 'Тэкст',
+	'mapeditor-form-field-link' => 'Спасылка',
+	'mapeditor-form-field-icon' => 'Ікона',
+	'mapeditor-form-field-group' => 'Група',
 );
 
 /** Bulgarian (български)
