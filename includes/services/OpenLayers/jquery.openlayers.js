@@ -12,7 +12,7 @@
 		this.getOLMarker = function (markerLayer, markerData) {
 			var marker;
 
-			if (markerData.icon != "") {
+			if (markerData.icon !== "") {
 				marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerData.icon));
 			} else {
 				marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerLayer.defaultIcon));
@@ -42,7 +42,7 @@
 			);
 
 			return marker;
-		}
+		};
 
 		this.addMarkers = function (map, options) {
 			if (!options.locations) {
@@ -59,7 +59,7 @@
 			var groupLayers = new Object();
 			var groups = 0;
 
-			for (i = locations.length - 1; i >= 0; i--) {
+			for (var i = locations.length - 1; i >= 0; i--) {
 
 				var location = locations[i];
 
@@ -95,7 +95,7 @@
 			}
 
 			if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center.
-		}
+		};
 
 		this.addControls = function (map, controls, mapElement) {
 			// Add the controls.
@@ -119,7 +119,7 @@
 			}
 
 			map.addControl(new OpenLayers.Control.Attribution());
-		}
+		};
 
 		this.addLine = function (properties) {
 			var pos = new Array();
@@ -136,12 +136,12 @@
 				'strokeColor':properties.strokeColor,
 				'strokeWidth':properties.strokeWeight,
 				'strokeOpacity':properties.strokeOpacity
-			}
+			};
 
 			var line = new OpenLayers.Geometry.LineString(pos);
 			var lineFeature = new OpenLayers.Feature.Vector(line, properties, style);
 			this.lineLayer.addFeatures([lineFeature]);
-		}
+		};
 
 		this.addPolygon = function (properties) {
 			var pos = new Array();
@@ -160,12 +160,12 @@
 				'strokeOpacity':properties.onlyVisibleOnHover === true ? 0 : properties.strokeOpacity,
 				'fillColor':properties.fillColor,
 				'fillOpacity':properties.onlyVisibleOnHover === true ? 0 : properties.fillOpacity
-			}
+			};
 
 			var polygon = new OpenLayers.Geometry.LinearRing(pos);
 			var polygonFeature = new OpenLayers.Feature.Vector(polygon, properties, style);
 			this.polygonLayer.addFeatures([polygonFeature]);
-		}
+		};
 
 		this.addCircle = function (properties) {
 			var style = {
@@ -174,7 +174,7 @@
 				'strokeOpacity':properties.onlyVisibleOnHover === true ? 0 : properties.strokeOpacity,
 				'fillColor':properties.fillColor,
 				'fillOpacity':properties.onlyVisibleOnHover === true ? 0 : properties.fillOpacity
-			}
+			};
 
 			var point = new OpenLayers.Geometry.Point(properties.centre.lon, properties.centre.lat);
 			point.transform(
@@ -188,7 +188,7 @@
 			);
 			var circleFeature = new OpenLayers.Feature.Vector(circle, properties, style);
 			this.circleLayer.addFeatures([circleFeature])
-		}
+		};
 
 		this.addRectangle = function (properties) {
 			var style = {
@@ -197,7 +197,7 @@
 				'strokeOpacity':properties.onlyVisibleOnHover === true ? 0 : properties.strokeOpacity,
 				'fillColor':properties.fillColor,
 				'fillOpacity':properties.onlyVisibleOnHover === true ? 0 : properties.fillOpacity
-			}
+			};
 
 			var point1 = new OpenLayers.Geometry.Point(properties.ne.lon, properties.ne.lat);
 			var point2 = new OpenLayers.Geometry.Point(properties.sw.lon, properties.sw.lat);
@@ -217,7 +217,7 @@
 			var rectangle = bounds.toGeometry();
 			var rectangleFeature = new OpenLayers.Feature.Vector(rectangle, properties, style);
 			this.rectangleLayer.addFeatures([rectangleFeature])
-		}
+		};
 
 		/**
 		 * Gets a valid control name (with excat lower and upper case letters),
@@ -335,7 +335,7 @@
 				})
 			};
 
-			for (key in controls) {
+			for (var key in controls) {
 				var control = controls[key];
 				map.addControl(control);
 				control.activate();
@@ -389,7 +389,7 @@
 				})
 			};
 
-			for (key in controls) {
+			for (var key in controls) {
 				var control = controls[key];
 				map.addControl(control);
 				control.activate();
@@ -450,7 +450,7 @@
 				})
 			};
 
-			for (key in controls) {
+			for (var key in controls) {
 				var control = controls[key];
 				map.addControl(control);
 				control.activate();
@@ -495,6 +495,8 @@
 				_this.resizable();
 			});
 		}
+
+
 
 		if (options.copycoords) {
 			map.div.oncontextmenu = function () {

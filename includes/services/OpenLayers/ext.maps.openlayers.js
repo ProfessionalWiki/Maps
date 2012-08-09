@@ -25,6 +25,7 @@
 
 		$( '.maps-openlayers' ).each( function() {
 			var $this = $( this );
+
 			$this.openlayers( $this.attr( 'id' ), $.parseJSON( $this.find( 'div').text() ) );
 		} );
 
