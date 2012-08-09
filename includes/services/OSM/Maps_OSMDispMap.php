@@ -17,8 +17,6 @@ class MapsOSMDispMap extends MapsBaseMap {
 	 * @see MapsBaseMap::getMapHTML()
 	 */
 	public function getMapHTML( array $params, Parser $parser, $mapName ) {	
-		global $wgLang;
-		
 		$thumbs = $params['thumbs'] ? 'yes' : 'no';
 		$photos = $params['photos'] ? 'yes' : 'no';
 
