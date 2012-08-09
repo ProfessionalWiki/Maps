@@ -1600,6 +1600,20 @@ $messages['fa'] = array(
 	'maps_webcams' => 'وب‌کم‌ها',
 	'maps-googlemaps2-par-type' => 'نوع نقشه برای نمایش اولیه.',
 	'maps-googlemaps2-par-overlays' => 'پوشش‌هایی که کاربر می‌تواند فعال کند.',
+	'mapeditor' => 'تدوین‌گر نقشه',
+	'specialpages-group-maps' => 'نقشه‌ها',
+	'mapeditor-none-text' => 'هیچ کدام',
+	'mapeditor-done-button' => 'انجام شد',
+	'mapeditor-remove-button' => 'حذف',
+	'mapeditor-import-button2' => 'درون‌ریزی',
+	'mapeditor-code-title' => 'کد ویکی',
+	'mapeditor-link-title-switcher-link-text' => 'پیوند',
+	'mapeditor-form-field-title' => 'عنوان',
+	'mapeditor-form-field-text' => 'متن',
+	'mapeditor-form-field-link' => 'پیوند',
+	'mapeditor-form-field-icon' => 'شمایل',
+	'mapeditor-form-field-group' => 'گروه',
+	'mapeditor-form-field-image' => 'تصویر',
 );
 
 /** Finnish (suomi)
@@ -2864,6 +2878,7 @@ $messages['ig'] = array(
 /** Italian (italiano)
  * @author Beta16
  * @author Civvì
+ * @author Darth Kule
  * @author Gianfranco
  * @author HalphaZ
  */
@@ -2885,15 +2900,26 @@ $messages['it'] = array(
 	'maps-error-invalid-layertype' => 'Non c\'è alcun livello di tipo "$1". Solo {{PLURAL:$3|questo tipo è supportato|questi tipi sono supportati}}: $2',
 	'maps-error-no-layertype' => 'È necessario specificare il tipo di livello. Solo {{PLURAL:$2|questo tipo è supportato|questi tipi sono supportati}}: $1',
 	'validation-error-invalid-layer' => 'Il parametro $1 deve essere un livello valido.',
-	'validation-error-invalid-layers' => 'Il parametro $1 deve essere uno o più livello valido.',
+	'validation-error-invalid-layers' => 'Il parametro $1 deve essere uno o più livelli validi.',
 	'maps-layer-of-type' => 'Livello di tipo $1',
 	'maps-layer-type-supported-by' => 'Questo tipo di livello può essere usato solo con {{PLURAL:$2|il servizio di mappe $1|questi servizi di mappe: $1}}.',
+	'maps-coordinates-description' => 'Hook del parser per formattare le coordinate, da e verso i formati supportati.',
+	'maps-distance-description' => "Convertire una distanza utilizzando una certa unità supportata nel suo equivalente utilizzando un'altra unità.",
+	'maps-coordinates-par-location' => 'Le coordinate che si desidera formattare.',
+	'maps-coordinates-par-format' => 'Il formato di destinazione per le coordinate.',
+	'maps-finddestination-par-location' => 'La posizione iniziale.',
+	'maps-finddestination-par-distance' => 'La distanza da percorrere.',
+	'maps-geocode-par-format' => 'Il formato per le coordinate risultanti.',
+	'validation-error-invalid-location' => 'Il parametro $1 deve essere una posizione valida.',
+	'validation-error-invalid-locations' => 'Il parametro $1 deve essere una o più posizioni valide.',
 	'validation-error-invalid-width' => 'Il parametro $1 deve essere una larghezza valida.',
 	'validation-error-invalid-height' => "Il parametro $1 deve essere un'altezza valida.",
 	'validation-error-invalid-distance' => 'Il parametro $1 deve essere una distanza valida.',
 	'validation-error-invalid-distances' => 'Il parametro $1 deve essere una o più distanze valide.',
 	'validation-error-invalid-image' => "Il parametro $1 deve essere un'immagine valida.",
 	'validation-error-invalid-images' => 'Il parametro $1 deve essere una o più immagini valide.',
+	'validation-error-invalid-line-param' => 'Parametro "lines" specificato non valido.',
+	'validation-error-invalid-polyline-param' => 'Parametro "polylines" specificato non valido.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -2910,16 +2936,30 @@ $messages['it'] = array(
 	'maps-geocoder-not-available' => "La funzionalità di geocodifica dell'estensione Maps non è disponibile. La tua posizione non può essere geocodificata.",
 	'maps_click_to_activate' => 'Clicca per attivare la mappa.',
 	'maps_centred_on' => 'Mappa centrata su $1, $2.',
-	'maps-googlemaps2-incompatbrowser' => 'Il tuo browser non è compatibile con Google Maps v2.',
+	'maps-googlemaps2-incompatbrowser' => 'Si sta utilizzando un browser non compatibile con Google Maps v2.',
 	'maps_overlays' => 'Overlay',
 	'maps_photos' => 'Foto',
 	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webcam',
+	'maps-googlemaps2-par-type' => 'Il tipo di mappa da mostrare inizialmente.',
+	'maps-googlemaps2-par-controls' => 'I controlli da posizionare sulla mappa.',
+	'maps-googlemaps2-par-autozoom' => 'Abilitare lo scorrimento utilizzando la rotellina del mouse.',
+	'maps-googlemaps2-par-kml' => 'File KML da caricare sulla mappa.',
+	'maps-googlemaps3-incompatbrowser' => 'Si sta utilizzando un browser non compatibile con Google Maps v3.',
+	'maps-googlemaps3-par-type' => 'Il tipo di mappa da mostrare inizialmente.',
+	'maps-googlemaps3-par-layers' => 'Livelli speciali da caricare sulla mappa.',
+	'maps-googlemaps3-par-controls' => 'I controlli da posizionare sulla mappa.',
+	'maps-googlemaps3-par-zoomstyle' => 'Lo stile del controllo dello zoom.',
+	'maps-googlemaps3-par-kml' => 'File KML da caricare sulla mappa.',
+	'maps-googlemaps3-par-gkml' => 'File KML ospitati da Google da caricare sulla mappa.',
 	'maps-googlemaps3-par-poi' => 'Mostra punti di interesse.',
+	'maps-openlayers-par-controls' => 'I controlli da posizionare sulla mappa.',
+	'maps-osm-par-thumbs' => 'Visualizza miniature',
 	'maps-osm-par-photos' => 'Mostra foto',
 	'mapeditor' => 'Editor della mappa',
 	'specialpages-group-maps' => 'Mappe',
+	'mapeditor-parser-error' => "Si verificato un errore durante l'analisi dei metadati. Ignorato l'input dell'utente.",
 	'mapeditor-none-text' => 'Nessuno',
 	'mapeditor-done-button' => 'Fatto',
 	'mapeditor-remove-button' => 'Rimuovi',
@@ -2937,6 +2977,9 @@ $messages['it'] = array(
 	'mapeditor-form-field-link' => 'Collegamento',
 	'mapeditor-form-field-icon' => 'Icona',
 	'mapeditor-form-field-group' => 'Gruppo',
+	'mapeditor-form-field-showonhover' => 'Visualizza solo al passaggio del mouse',
+	'mapeditor-mapparam-title' => 'Modifica i parametri della mappa',
+	'mapeditor-mapparam-defoption' => '-Selezionare parametro-',
 	'mapeditor-form-field-image' => 'Immagine',
 	'mapeditor-imageoverlay-title' => 'Dettagli di sovrapposizione di immagini',
 	'mapeditor-form-field-visitedicon' => 'Icona visitato',
@@ -4588,6 +4631,11 @@ $1',
 	'maps_videos' => 'Filme',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Camere web',
+	'mapeditor-link-title-switcher-link-text' => 'Legătură',
+	'mapeditor-form-field-title' => 'Titlu',
+	'mapeditor-form-field-text' => 'Text',
+	'mapeditor-form-field-link' => 'Legătură',
+	'mapeditor-form-field-group' => 'Grup',
 );
 
 /** tarandíne (tarandíne)
@@ -4731,13 +4779,23 @@ $messages['rue'] = array(
 
 /** Sinhala (සිංහල)
  * @author තඹරු විජේසේකර
+ * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'maps_map' => 'සිතියම',
 	'maps-loading-map' => 'සිතියම පුරණය වෙමින් පවතී...',
+	'maps-layer-property' => 'ගුණාංගය',
+	'maps-layer-value' => 'අගය',
+	'maps-layer-errors' => 'දෝෂ',
 	'maps-abb-north' => 'උ',
 	'maps-abb-east' => 'නැ',
 	'maps-abb-south' => 'ද',
 	'maps-abb-west' => 'බ',
+	'mapeditor-none-text' => 'කිසිවක් නොමැත',
+	'mapeditor-done-button' => 'හරි',
+	'mapeditor-remove-button' => 'ඉවත් කරන්න',
+	'mapeditor-form-field-group' => 'කාණ්ඩය',
+	'mapeditor-form-field-image' => 'පිංතූරය',
 );
 
 /** Slovak (slovenčina)
@@ -4789,6 +4847,14 @@ $messages['sl'] = array(
 $messages['sr-ec'] = array(
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Учитавање мапе...',
+	'validation-error-invalid-location' => 'Параметар $1 мора бити валидна локација',
+	'validation-error-invalid-locations' => 'Параметар $1 мора бити једна или више валидних локација.',
+	'validation-error-invalid-width' => 'Параметар $1 мора бити валидна ширина.',
+	'validation-error-invalid-height' => 'Параметар $1 мора бити валидна висина.',
+	'validation-error-invalid-distance' => 'Параметар $1 мора бити валидно растојање.',
+	'validation-error-invalid-distances' => 'Параметар $1 мора бити једно или више валидних растојања.',
+	'validation-error-invalid-image' => 'Параметар $1 мора бити валидна слика.',
+	'validation-error-invalid-images' => 'Параметар $1 мора бити једна или више валидних слика.',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ј',
@@ -5371,6 +5437,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文（繁體）‬)
  * @author Horacewai2
  * @author Mark85296341
+ * @author Simon Shek
  * @author Waihorace
  */
 $messages['zh-hant'] = array(
@@ -5411,6 +5478,17 @@ $messages['zh-hant'] = array(
 	'maps_webcams' => '網路攝影機',
 	'maps-osm-par-thumbs' => '顯示大拇指',
 	'maps-osm-par-photos' => '顯示圖片',
+	'mapeditor' => '地圖編輯器',
+	'specialpages-group-maps' => '地圖',
+	'mapeditor-none-text' => '無',
+	'mapeditor-done-button' => '完成',
+	'mapeditor-import-button2' => '匯入',
+	'mapeditor-export-button' => '匯出到 wiki 代碼',
+	'mapeditor-link-title-switcher-link-text' => '連結',
+	'mapeditor-form-field-title' => '標題',
+	'mapeditor-form-field-text' => '文字',
+	'mapeditor-form-field-link' => '連結',
+	'mapeditor-form-field-image' => '圖片',
 );
 
 /** Chinese (Taiwan) (‪中文(台灣)‬) */
