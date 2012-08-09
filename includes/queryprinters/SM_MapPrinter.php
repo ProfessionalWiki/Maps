@@ -215,7 +215,7 @@ class SMMapPrinter extends SMWResultPrinter {
 				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
 				'class' => 'maps-map maps-' . $this->service->getName()
 			),
-			wfMsgHtml( 'maps-loading-map' ) .
+			wfMessage( 'maps-loading-map' )->inLanguage( $parser->getOptions()->getTargetLanguage() )->escaped() .
 				Html::element(
 					'div',
 					array( 'style' => 'display:none', 'class' => 'mapdata' ),
