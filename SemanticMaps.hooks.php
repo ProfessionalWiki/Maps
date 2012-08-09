@@ -20,13 +20,15 @@ final class SemanticMapsHooks {
 	 *
 	 * @param ALTree $admin_links_tree
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public static function addToAdminLinks( ALTree &$admin_links_tree ) {
 	    $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
 	
 	    // Escape if SMW hasn't added links.
-	    if ( is_null( $displaying_data_section ) ) return true;
+	    if ( is_null( $displaying_data_section ) ) {
+			return true;
+		}
 	
 	    $smw_docu_row = $displaying_data_section->getRow( 'smw' );
 	
@@ -34,6 +36,29 @@ final class SemanticMapsHooks {
 	    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Semantic_Maps', $sm_docu_label ) );
 	
 	    return true;		
+	}
+
+	/**
+	 * Hook to add PHPUnit test cases.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
+	 *
+	 * @since 2.0
+	 *
+	 * @param array $files
+	 *
+	 * @return boolean
+	 */
+	public static function registerUnitTests( array &$files ) {
+		$testFiles = array(
+			'printers/KMLPrinter',
+			'printers/MapPrinter',
+		);
+
+		foreach ( $testFiles as $file ) {
+			$files[] = dirname( __FILE__ ) . '/tests/phpunit/' . $file . 'Test.php';
+		}
+
+		return true;
 	}
 	
 }

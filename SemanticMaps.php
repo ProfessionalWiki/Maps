@@ -119,4 +119,6 @@ $wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsHooks::initGeoCoordsType';
 $wgHooks['SMWResultFormat'][] = 'SMGeoCoordsHooks::addGeoCoordsDefaultFormat';	
 
 // Hook for adding a Semantic Maps links to the Admin Links extension.
-$wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';	
+$wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
+
+$wgHooks['UnitTestsList'][] = 'SemanticMapsHooks::registerUnitTests';
