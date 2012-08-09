@@ -310,27 +310,5 @@ class SMMapPrinter extends SMWResultPrinter {
 
 		return $params;
     }
-    
-    /**
-     * Takes in an element of the Parameter::TYPE_ enum and turns it into an SMW type (string) indicator.
-     * 
-     * @since 1.0
-     * 
-     * @param Parameter::TYPE_ $type
-     * 
-     * @return string
-     */
-    protected function getMappedParamType( $type ) {
-    	static $typeMap = array(
-    		Parameter::TYPE_STRING => 'string',
-    		Parameter::TYPE_BOOLEAN => 'boolean',
-    		Parameter::TYPE_CHAR => 'int',
-    		Parameter::TYPE_FLOAT => 'int',
-    		Parameter::TYPE_INTEGER => 'int',
-    		Parameter::TYPE_NUMBER => 'int',
-    	);
-    	
-    	return $typeMap[$type];
-    }
 	
 }
