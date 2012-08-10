@@ -414,6 +414,15 @@ $messages['eu'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordenatuak bilatu',
 );
 
+/** Persian (فارسی)
+ * @author Mjbmr
+ */
+$messages['fa'] = array(
+	'semanticmaps-forminput-remove' => 'حذف',
+	'semanticmaps-forminput-add' => 'افزودن',
+	'semanticmaps-forminput-locations' => 'مکان‌ها',
+);
+
 /** Finnish (suomi)
  * @author Crt
  * @author Str4nd
