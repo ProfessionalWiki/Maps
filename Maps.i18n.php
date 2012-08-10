@@ -209,7 +209,7 @@ $1',
 	//Special page
 	'mapeditor' => 'Map editor',
 	'specialpages-group-maps' => 'Maps',
-	'mapeditor-parser-error' => 'An error occured when parsing metadata. Ignoring user input.',
+	'mapeditor-parser-error' => 'An error occurred when parsing metadata. Ignoring user input.',
 	'mapeditor-none-text' => 'None',
 	'mapeditor-done-button' => 'Done',
 	'mapeditor-remove-button' => 'Remove',
@@ -865,7 +865,7 @@ $messages['br'] = array(
 	'maps_coordinates_missing' => "N'eus bet spisaet daveenn ebet evit ar gartenn.",
 	'maps_geocoding_failed' => "N'eus ket bet gallet geokodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul : $1.
 N'haller ket diskwel ar gartenn.",
-	'maps_geocoding_failed_for' => "N'eus ket bet gallet geokodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul, setu {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn : 
+	'maps_geocoding_failed_for' => "N'eus ket bet gallet geokodañ ar {{PLURAL:$2|chomlec'h|chomlec'h}} da-heul, setu {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn :
 $1",
 	'maps_unrecognized_coords' => "N'eo ket bet anavezet an {{PLURAL:$2|daveenn|daveennoù}} da-heul : $1.",
 	'maps_unrecognized_coords_for' => "N'eo ket bet anavezet an {{PLURAL:$2|daveenn|daveennoù}} da-heul ha {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn :
@@ -1719,7 +1719,7 @@ Cela permettra aux cartes de remplacer la valeur par défaut du paramètre de se
 (Exemple : Dans le cas de Google Maps, le géocodage Google sera utilisé.)',
 	'maps-geocode-par-location' => "L'adresse que vous souhaitez géocoder.",
 	'maps-geocode-par-mappingservice' => 'Le service de géocodage que vous souhaitez utiliser. Consultez les services de géocodage disponibles.',
-	'maps-geocode-par-geoservice' => "Ce paramètre vous permet d'indiquer que vous utilisez cette demande de géocodage en combinaison avec un service de cartographie spécifique. 
+	'maps-geocode-par-geoservice' => "Ce paramètre vous permet d'indiquer que vous utilisez cette demande de géocodage en combinaison avec un service de cartographie spécifique.
 Chaque service de cartographie peut écraser la valeur par défaut pour le service de géocodage.
 Cette démarche est liée à des raisons juridiques, puisque vous ne pouvez pas utiliser le service de géocodage de Google, sauf avec Google Maps.
 Indiquer ce paramètre et non le paramètre pour le service veillera à ce que vous n'utilisiez pas une combinaison non valide.",
@@ -2797,8 +2797,8 @@ Ini dapat memengaruhi nilai bawaan layanan geokode.',
 Jika tidak diberikan dan beberapa penanda ada pada peta, akan dipilih pembesaran yang paling muat, bukan bawaan yang disetel.',
 	'maps-displaypoints-par-mappingservice' => 'Memungkinkan pengaturan layanan pemetaan yang akan digunakan untuk menghasilkan peta.',
 	'maps-displaypoints-par-coordinates' => 'Satu atau beberapa lokasi akan ditampilkan pada peta. Lokasi tersebut akan ditunjukkan dengan penanda.',
-	'maps-displaypoints-par-centre' => 'Memungkinkan pengaturan koordinat pusat peta untuk display_point. 
-Dapat menerima alamat maupun koordinat. 
+	'maps-displaypoints-par-centre' => 'Memungkinkan pengaturan koordinat pusat peta untuk display_point.
+Dapat menerima alamat maupun koordinat.
 Jika tidak diberikan, peta akan menentukan pusatnya pada penanda yang ada atau di antara penanda yang diberikan.',
 	'maps-displaypoints-par-title' => 'Memungkinkan pengaturan teks yang akan ditampilkan pada munculan dari semua penanda yang tidak memiliki judul tertentu.
 Jika digunakan bersama dengan label, judul akan ditebalkan dan memiliki garis bawah.',
@@ -2822,7 +2822,7 @@ Jika digunakan bersama dengan label, judul akan ditebalkan dan memiliki garis ba
 	'maps-longitude' => 'Bujur:',
 	'maps-invalid-coordinates' => 'Nilai $1 tidak dikenali sebagai rangkaian koordinat yang sah.',
 	'maps_coordinates_missing' => 'Tidak koordinat yang disediakan bagi peta.',
-	'maps_geocoding_failed' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode: $1. 
+	'maps_geocoding_failed' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode: $1.
 Peta tidak dapat ditampilkan.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|alamat|alamat}} berikut tidak dapat di Geocode dan  {{PLURAL:$2|telah|telah}} dihilangkan dari peta: $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Koordinat|Koordinat}} berikut tidak dikenali: $1.',
@@ -4099,7 +4099,7 @@ $messages['nn'] = array(
  */
 $messages['oc'] = array(
 	'maps-desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocodadas
-([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://mapping.referata.com/wiki/Maps_examples demonstracion]). 
+([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://mapping.referata.com/wiki/Maps_examples demonstracion]).
 Servicis de cartografia disponibles : $1",
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'N',
@@ -4350,7 +4350,7 @@ $messages['pms'] = array(
 La mapa a peul pa esse visualisà.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adrëssa|J'adrësse}} sì sota a peula pa esse sota geocode e a {{PLURAL:$2|l'é pa stàita|son pa stàite}}  butà ant la mapa: $1",
 	'maps_unrecognized_coords' => "{{PLURAL:$2|La coordinà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}: $1.",
-	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta: 
+	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta:
 $1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
 	'maps-geocoder-not-available' => "La possibilità ëd geocodìfica dle carte a l'é pa disponìbil. Soa locassion a peul pa esse geocodificà.",
@@ -4706,12 +4706,12 @@ $messages['ru'] = array(
 	'maps-finddestination-par-directional' => 'Указывает, должен ли формат назначения быть направленным или нет.',
 	'maps-finddestination-par-allowcoordinates' => 'Указывает, разрешены ли координаты. Если установлено значение «нет», будут приниматься только адреса.',
 	'maps-finddestination-par-geoservice' => 'Сервис геокодирования для географического преобразования значения в случае, если оно является адресом.',
-	'maps-finddestination-par-mappingservice' => 'Параметр для указания картографической службы для использования с этой функцией. 
+	'maps-finddestination-par-mappingservice' => 'Параметр для указания картографической службы для использования с этой функцией.
 Позволяет карте переопределить значение служебного параметра по умолчанию службы на оптимальное для картографической службы.
 (Например, для карт Google, использовать геокодирование Google.)',
 	'maps-geocode-par-location' => 'Адрес, который вы желаете геокодировать.',
 	'maps-geocode-par-mappingservice' => 'Служба геокодирования, которую вы хотите использовать. См. список доступных служб геокодирования.',
-	'maps-geocode-par-geoservice' => 'Этот параметр позволяет указать, что вы используете этот запрос геокодирования в сочетании с конкретной картографической службой. 
+	'maps-geocode-par-geoservice' => 'Этот параметр позволяет указать, что вы используете этот запрос геокодирования в сочетании с конкретной картографической службой.
 Каждая картографическая служба может иметь переопределение службы геокодирования по умолчанию.
 Это делается из юридических соображений, так как вы можете использовать службу геокодирования Google только вместе с картами Google.
 Установка этого параметра, а не параметра для службы, будет гарантировать, что вы не используете недопустимое сочетание.',

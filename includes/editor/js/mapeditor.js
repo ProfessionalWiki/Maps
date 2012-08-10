@@ -490,7 +490,7 @@ var mapEditor = {
                     }
                 }
             }catch(e){
-                console.log('an error occured when parsing data');
+                console.log('An error occurred when parsing data');
                 return false;
             }
             return true;
