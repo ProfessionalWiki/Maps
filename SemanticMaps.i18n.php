@@ -619,13 +619,26 @@ $messages['hsb'] = array(
 /** Hungarian (magyar)
  * @author Dani
  * @author Glanthor Reviol
+ * @author TK-999
  */
 $messages['hu'] = array(
-	'semanticmaps-desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztés segítségével tárolt koordinátaadatok megtekintését és szerkesztését ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Lehetővé teszi a szemantikus MediaWiki kiterjesztéssel tárolt koordinátaadatok megtekintését és szerkesztését ([http://mapping.referata.com/wiki/Examples bemutató]).',
+	'semanticmaps-unrecognizeddistance' => 'A(z) $1 érték nem egy érvényes távolság.',
+	'semanticmaps-kml-link' => 'KML fájl megtekintése',
+	'semanticmaps-default-kml-pagelink' => 'A(z) $1 lap megtekintése',
+	'semanticmaps-latitude' => 'Szélesség: $1',
+	'semanticmaps-longitude' => 'Hosszúság: $1',
+	'semanticmaps-altitude' => 'Tengerszint feletti magasság: $1',
+	'semanticmaps-loading-forminput' => 'Térkép űrlapjának betöltése&hellip;',
 	'semanticmaps_lookupcoordinates' => 'Koordináták felkeresése',
 	'semanticmaps_enteraddresshere' => 'Add meg a címet itt',
+	'semanticmaps-updatemap' => 'Térkép frissítése',
+	'semanticmaps-forminput-remove' => 'Eltávolítás',
 	'semanticmaps-forminput-add' => 'Hozzáadás',
 	'semanticmaps-forminput-locations' => 'Helyszínek',
+	'semanticmaps-par-staticlocations' => 'A térképre a lekérdezett adatok mellett felveendő helyek listája. Akárcsak a megjelenítési pontokkal, minden helyhez megadhatsz címet, leírást és ikont hullámvonal ("~") elválasztóval.',
+	'semanticmaps-par-forceshow' => 'Megjelenítsem a térképet akkor is, ha nincsenek megjeleníthető helyek?',
+	'semanticmaps-par-showtitle' => 'Megjelenítse a címet a jelző információs ablakában, vagy ne? Ennek kikapcsolás hasznos lehet, ha sablonnal formázod az információs ablak tartalmát.',
 );
 
 /** Interlingua (interlingua)
