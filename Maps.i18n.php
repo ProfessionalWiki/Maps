@@ -287,7 +287,9 @@ $messages['qqq'] = array(
 	'maps-googlemaps3-par-gkml' => '{{maps-par|googlemaps3|gkml}}',
 	'maps-googlemaps3-par-fusiontables' => '{{maps-par|googlemaps3|fusiontables}}',
 	'maps-googlemaps3-par-tilt' => '{{maps-par|googlemaps3|tilt}}',
-	'maps-googlemaps3-par-kmlrezoom' => '{{maps-par|googlemaps3|kmlrezoom}}',
+	'maps-googlemaps3-par-kmlrezoom' => '{{maps-par|googlemaps3|kmlrezoom}}
+
+KML may mean the [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
 	'mapeditor' => 'title of the special page Special:MapEditor',
 	'specialpages-group-maps' => 'The special page group "maps" text',
@@ -2437,11 +2439,13 @@ $messages['hsb'] = array(
 	'maps-googlemaps2-par-autozoom' => 'Kulenje z pomocu koleska myše zmóžnić.',
 	'maps-googlemaps3-incompatbrowser' => 'Twój wobhladowak njeje kompatibelny z Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'Kartowy typ, kotryž ma so na spočatku pokazać.',
+	'maps-googlemaps3-par-layers' => 'Wosebite runiny, kotrež maja so na kartu začitać.',
 	'maps-googlemaps3-par-poi' => 'Zajimawosće pokazać.',
 	'maps-osm-par-thumbs' => 'Miniaturne wobrazki pokazać',
 	'maps-osm-par-photos' => 'Fotografije pokazać',
 	'mapeditor' => 'Kartowy editor',
 	'specialpages-group-maps' => 'Karty',
+	'mapeditor-parser-error' => 'Při parsowanju metadatow je so zmylk wustupił. Zapodaća wužiwarja so ignoruja.',
 	'mapeditor-none-text' => 'Žana',
 	'mapeditor-done-button' => 'Dokónčeny',
 	'mapeditor-remove-button' => 'Wotstronić',
@@ -3249,6 +3253,7 @@ $1',
 	'maps_videos' => 'Viddejos',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webkammeras',
+	'maps-googlemaps3-par-kmlrezoom' => 'Donn di Kaat norr_ens zoome, nohdäm de  layers vum KLM jelaade sin.',
 );
 
 /** Kurdish (Latin script) (‪Kurdî (latînî)‬)
