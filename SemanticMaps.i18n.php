@@ -760,6 +760,22 @@ $messages['ja'] = array(
 	'semanticmaps-par-geocodecontrol' => 'ジオコーディングコントロールを表示します。',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'semanticmaps-kml-link' => 'KML ფაილის ხილვა',
+	'semanticmaps-default-kml-pagelink' => 'გვერდი $1 ხილვა',
+	'semanticmaps-latitude' => 'განედი: $1',
+	'semanticmaps-longitude' => 'გრძედი: $1',
+	'semanticmaps-altitude' => 'სიმაღლე: $1',
+	'semanticmaps_enteraddresshere' => 'შეიყვანეთ მისამართი',
+	'semanticmaps-updatemap' => 'რუკის განახლება',
+	'semanticmaps-forminput-remove' => 'წაშლა',
+	'semanticmaps-forminput-add' => 'დამატება',
+	'semanticmaps-forminput-locations' => 'მდებარეობები',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Thearith
  */
@@ -1010,6 +1026,15 @@ $messages['pms'] = array(
 	'semanticmaps-kml-pagelinktext' => "Ël test da dovré për le liure a la pàgina, dont $1 a sarà rimpiassà da 'l tìtol ëd la pàgina",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'semanticmaps-forminput-remove' => 'غورځول',
+	'semanticmaps-forminput-add' => 'ورګډول',
+	'semanticmaps-forminput-locations' => 'استوګنځي',
+);
+
 /** Portuguese (português)
  * @author Hamilton Abreu
  * @author Indech
@@ -1216,6 +1241,9 @@ $messages['sw'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'semanticmaps-latitude' => 'అక్షాంశం: $1',
+	'semanticmaps-longitude' => 'రేఖాంశం: $1',
+	'semanticmaps-altitude' => 'సముద్రమట్టం: $1',
 	'semanticmaps_enteraddresshere' => 'చిరునామాని ఇక్కడ ఇవ్వండి',
 	'semanticmaps-forminput-add' => 'చేర్చు',
 );
