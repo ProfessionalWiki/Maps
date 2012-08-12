@@ -33,7 +33,7 @@ if ( version_compare( $wgVersion , '1.18c' , '<' ) ) {
 
 // Include the Validator extension if that hasn't been done yet, since it's required for Maps to work.
 if ( !defined( 'Validator_VERSION' ) ) {
-	@include_once( dirname( __FILE__ ) . '/../Validator/Validator.php' );
+	@include_once( __DIR__ . '/../Validator/Validator.php' );
 }
 
 // Only initialize the extension when all dependencies are present.
@@ -61,14 +61,14 @@ define( 'Maps_COORDS_DM' , 'dm' );
 define( 'Maps_COORDS_DD' , 'dd' );
 
 $egMapsScriptPath = ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/Maps';
-$egMapsDir = dirname( __FILE__ ) . '/';
+$egMapsDir = __DIR__ . '/';
 
 $egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
-$wgAutoloadClasses['MapsHooks'] = dirname( __FILE__ ) . '/Maps.hooks.php';
+$wgAutoloadClasses['MapsHooks'] = __DIR__ . '/Maps.hooks.php';
 
 // Autoload the "includes/" classes and interfaces.
-$incDir = dirname( __FILE__ ) . '/includes/';
+$incDir = __DIR__ . '/includes/';
 $wgAutoloadClasses['MapsMapper'] = $incDir . 'Maps_Mapper.php';
 $wgAutoloadClasses['MapsCoordinateParser'] = $incDir . 'Maps_CoordinateParser.php';
 $wgAutoloadClasses['MapsDistanceParser'] = $incDir . 'Maps_DistanceParser.php';
@@ -98,7 +98,7 @@ $wgAutoloadClasses['MapsDisplayMapRenderer'] = $incDir . 'Maps_DisplayMapRendere
 $wgAutoloadClasses['ApiGeocode'] = $incDir . 'api/ApiGeocode.php';
 
 // Autoload includes/properties interfaces
-$propDir = dirname( __FILE__ ) . '/includes/properties/';
+$propDir = __DIR__ . '/includes/properties/';
 $wgAutoloadClasses['iBubbleMapElement'] = $propDir . 'iBubbleMapElement.php';
 $wgAutoloadClasses['iFillableMapElement'] = $propDir . 'iFillableMapElement.php';
 $wgAutoloadClasses['iHoverableMapElement'] = $propDir . 'iHoverableMapElement.php';
@@ -250,7 +250,7 @@ define( 'Maps_NS_LAYER' , $egMapsNamespaceIndex + 0 );
 define( 'Maps_NS_LAYER_TALK' , $egMapsNamespaceIndex + 1 );
 
 $wgResourceModules['ext.maps.common'] = array(
-	'localBasePath' => dirname( __FILE__ ) . '/includes' ,
+	'localBasePath' => __DIR__ . '/includes' ,
 	'remoteBasePath' => $egMapsScriptPath . '/includes' ,
 	'group' => 'ext.maps' ,
 	'messages' => array(
@@ -262,7 +262,7 @@ $wgResourceModules['ext.maps.common'] = array(
 );
 
 $wgResourceModules['ext.maps.coord'] = array(
-	'localBasePath' => dirname( __FILE__ ) . '/includes' ,
+	'localBasePath' => __DIR__ . '/includes' ,
 	'remoteBasePath' => $egMapsScriptPath . '/includes' ,
 	'group' => 'ext.maps' ,
 	'messages' => array(
@@ -282,7 +282,7 @@ $wgResourceModules['ext.maps.resizable'] = array(
 
 $wgResourceModules['mapeditor'] = array(
 	'dependencies' => array( 'ext.maps.common','jquery.ui.autocomplete','jquery.ui.slider', 'jquery.ui.dialog' ),
-	'localBasePath' => dirname( __FILE__ ) . '/includes/editor/',
+	'localBasePath' => __DIR__ . '/includes/editor/',
 	'remoteBasePath' => $egMapsScriptPath.  '/includes/editor/',
 	'group' => 'mapeditor',
 	'scripts' => array(

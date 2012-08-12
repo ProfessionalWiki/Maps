@@ -23,7 +23,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgResourceModules['ext.maps.googlemaps3'] = array(
 	'dependencies' => array( 'ext.maps.common' ),
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => __DIR__,
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3',	
 	'group' => 'ext.maps',
 	'scripts' => array(
@@ -38,7 +38,7 @@ $wgResourceModules['ext.maps.googlemaps3'] = array(
 );
 
 $wgResourceModules['ext.maps.gm3.markercluster'] = array(
-	'localBasePath' => dirname( __FILE__ ) . '/gm3-util-library',
+	'localBasePath' => __DIR__ . '/gm3-util-library',
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
 	'group' => 'ext.maps',
 	'scripts' => array(
@@ -47,7 +47,7 @@ $wgResourceModules['ext.maps.gm3.markercluster'] = array(
 );
 
 $wgResourceModules['ext.maps.gm3.markerwithlabel'] = array(
-	'localBasePath' => dirname( __FILE__ ) . '/gm3-util-library',
+	'localBasePath' => __DIR__ . '/gm3-util-library',
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
 	'group' => 'ext.maps',
 	'scripts' => array(
@@ -59,7 +59,7 @@ $wgResourceModules['ext.maps.gm3.markerwithlabel'] = array(
 );
 
 $wgResourceModules['ext.maps.gm3.geoxml'] = array(
-	'localBasePath' => dirname( __FILE__ ) . '/geoxml3',
+	'localBasePath' => __DIR__ . '/geoxml3',
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/geoxml3',
 	'group' => 'ext.maps',
 	'scripts' => array(
@@ -69,7 +69,7 @@ $wgResourceModules['ext.maps.gm3.geoxml'] = array(
 );
 
 $wgResourceModules['ext.maps.gm3.earth'] = array(
-	'localBasePath' => dirname( __FILE__ ) . '/earth',
+	'localBasePath' => __DIR__ . '/earth',
 	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/earth',	
 	'group' => 'ext.maps',
 	'scripts' => array(
@@ -90,11 +90,11 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
 function efMapsInitGoogleMaps3() {
 	global $wgAutoloadClasses;
 
-	$wgAutoloadClasses['MapsGoogleMaps3'] 			= dirname( __FILE__ ) . '/Maps_GoogleMaps3.php';
-	$wgAutoloadClasses['MapsParamGMap3Type']		= dirname( __FILE__ ) . '/Maps_ParamGMap3Type.php';
-	$wgAutoloadClasses['MapsParamGMap3Types']		= dirname( __FILE__ ) . '/Maps_ParamGMap3Types.php';
-	$wgAutoloadClasses['MapsParamGMap3Typestyle']	= dirname( __FILE__ ) . '/Maps_ParamGMap3Typestyle.php';
-	$wgAutoloadClasses['MapsParamGMap3Zoomstyle']	= dirname( __FILE__ ) . '/Maps_ParamGMap3Zoomstyle.php';
+	$wgAutoloadClasses['MapsGoogleMaps3'] 			= __DIR__ . '/Maps_GoogleMaps3.php';
+	$wgAutoloadClasses['MapsParamGMap3Type']		= __DIR__ . '/Maps_ParamGMap3Type.php';
+	$wgAutoloadClasses['MapsParamGMap3Types']		= __DIR__ . '/Maps_ParamGMap3Types.php';
+	$wgAutoloadClasses['MapsParamGMap3Typestyle']	= __DIR__ . '/Maps_ParamGMap3Typestyle.php';
+	$wgAutoloadClasses['MapsParamGMap3Zoomstyle']	= __DIR__ . '/Maps_ParamGMap3Zoomstyle.php';
 
 	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );	

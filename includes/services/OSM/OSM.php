@@ -34,8 +34,8 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitOSM';
 function efMapsInitOSM() {
 	global $wgAutoloadClasses;
 	
-	$wgAutoloadClasses['MapsOSM'] = dirname( __FILE__ ) . '/Maps_OSM.php';
-	$wgAutoloadClasses['MapsOSMDispMap'] = dirname( __FILE__ ) . '/Maps_OSMDispMap.php';
+	$wgAutoloadClasses['MapsOSM'] = __DIR__ . '/Maps_OSM.php';
+	$wgAutoloadClasses['MapsOSMDispMap'] = __DIR__ . '/Maps_OSMDispMap.php';
 	
 	MapsMappingServices::registerService( 
 		'osm',
