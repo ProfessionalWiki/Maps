@@ -1,0 +1,11 @@
+This is the roadmap and release schedule for the Maps extension.
+
+Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
+Latest version of the roadmap: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=ROADMAP
+
+== Maps 2.0 ==
+
+September 2012
+
+* Migrate parameters to Validator 0.5.x style definitions
+* Fix several broken param description messages
