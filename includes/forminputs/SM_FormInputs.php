@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgResourceModules['ext.sm.forminputs'] = array(
 	'dependencies' => array( 'ext.maps.coord' ),
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => __DIR__,
 	'remoteBasePath' => $smgScriptPath .  '/includes/forminputs',	
 	'group' => 'ext.semanticmaps',
 	'scripts' => array(
@@ -43,7 +43,7 @@ final class SMFormInputs {
 		// check to not run into problems when people mess up the settings.
 		if ( !defined( 'SF_VERSION' ) ) return true;
 		
-		$wgAutoloadClasses['SMFormInput'] = dirname( __FILE__ ) . '/SM_FormInput.php';
+		$wgAutoloadClasses['SMFormInput'] = __DIR__ . '/SM_FormInput.php';
 		
 		$hasFormInputs = false;
 		

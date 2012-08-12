@@ -73,7 +73,7 @@ $wgExtensionCredits['semantic'][] = array(
 );
 
 $smgScriptPath 	= ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/SemanticMaps';	
-$smgDir 		= dirname( __FILE__ ) . '/';
+$smgDir 		= __DIR__ . '/';
 
 $smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
 
@@ -99,7 +99,7 @@ require_once 'SM_Settings.php';
 
 $wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
 
-$incDir = dirname( __FILE__ ) . '/includes/';
+$incDir = __DIR__ . '/includes/';
 
 $wgAutoloadClasses['SMGeoCoordsHooks'] 				= $incDir . 'SM_GeoCoordsHooks.php';
 
@@ -110,7 +110,7 @@ $wgAutoloadClasses['SMGeoCoordsValue'] 				= $incDir . 'SM_GeoCoordsValue.php';
 $wgAutoloadClasses['SMGeoCoordsValueDescription'] 	= $incDir . 'SM_GeoCoordsValueDescription.php';
 $wgAutoloadClasses['SMAreaValueDescription'] 		= $incDir . 'SM_AreaValueDescription.php';
 
-$wgAutoloadClasses['SemanticMapsHooks'] 			= dirname( __FILE__ ) . '/SemanticMaps.hooks.php';
+$wgAutoloadClasses['SemanticMapsHooks'] 			= __DIR__ . '/SemanticMaps.hooks.php';
 
 // Hook for initializing the Geographical Coordinate type.
 $wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsHooks::initGeoCoordsType';

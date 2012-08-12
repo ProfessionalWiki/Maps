@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $moduleTemplate = array(
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => __DIR__,
 	'remoteBasePath' => $smgScriptPath .  '/includes/services/GoogleMaps3',	
 	'group' => 'ext.semanticmaps',
 );
@@ -52,7 +52,7 @@ $wgResourceModules['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
 /*
 $wgResourceModules['ext.sm.fi.googlemaps3.multi'] = $moduleTemplate + array(
 	'dependencies' => array( 'ext.sm.fi.googlemaps3', 'jquery.ui.button', 'jquery.ui.dialog' ),
-	'localBasePath' => dirname( __FILE__ ),
+	'localBasePath' => __DIR__,
 	'scripts' => array(
 		'jquery.gmapsmultiinput.js',
 	),
@@ -70,8 +70,8 @@ $wgHooks['MappingServiceLoad'][] = 'smfInitGoogleMaps3';
 function smfInitGoogleMaps3() {
 	global $wgAutoloadClasses, $sfgFormPrinter;
 	
-	$wgAutoloadClasses['SMGoogleMaps3FormInput'] = dirname( __FILE__ ) . '/SM_GoogleMaps3FormInput.php';
-	//$wgAutoloadClasses['SMGoogleMaps3MultiInput'] = dirname( __FILE__ ) . '/SM_GoogleMaps3MultiInput.php';
+	$wgAutoloadClasses['SMGoogleMaps3FormInput'] = __DIR__ . '/SM_GoogleMaps3FormInput.php';
+	//$wgAutoloadClasses['SMGoogleMaps3MultiInput'] = __DIR__ . '/SM_GoogleMaps3MultiInput.php';
 	
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'qp', 'SMMapPrinter' );
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'fi', 'SMGoogleMaps3FormInput' );

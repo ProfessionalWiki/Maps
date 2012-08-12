@@ -55,7 +55,7 @@ final class SemanticMapsHooks {
 		);
 
 		foreach ( $testFiles as $file ) {
-			$files[] = dirname( __FILE__ ) . '/tests/phpunit/' . $file . 'Test.php';
+			$files[] = __DIR__ . '/tests/phpunit/' . $file . 'Test.php';
 		}
 
 		return true;
