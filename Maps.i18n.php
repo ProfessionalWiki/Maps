@@ -350,6 +350,13 @@ $1.',
 	'maps_videos' => "Video's",
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Webkameras',
+	'specialpages-group-maps' => 'Kaarte',
+	'mapeditor-none-text' => 'Geen',
+	'mapeditor-link-title-switcher-link-text' => 'Skakel',
+	'mapeditor-form-field-title' => 'Titel',
+	'mapeditor-form-field-text' => 'Teks',
+	'mapeditor-form-field-icon' => 'Ikoon',
+	'mapeditor-form-field-group' => 'Groep',
 );
 
 /** Gheg Albanian (Gegë)
@@ -3202,6 +3209,7 @@ $messages['ko'] = array(
 	'mapeditor-form-field-fillcolor' => '채우기 색',
 	'mapeditor-form-field-fillopcaity' => '채우기 투명도',
 	'mapeditor-form-field-showonhover' => '가리켰을 때에만 표시',
+	'mapeditor-mapparam-title' => '지도 변수 편집',
 	'mapeditor-mapparam-defoption' => '-변수 선택-',
 	'mapeditor-imageoverlay-button' => '그림 배치 추가',
 	'mapeditor-form-field-image' => '그림',
@@ -3782,6 +3790,15 @@ $1',
 	'mapeditor-form-field-image' => 'Imej',
 	'mapeditor-imageoverlay-title' => 'Butiran tindihan imej',
 	'mapeditor-form-field-visitedicon' => 'Ikon dikunjungi',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'maps_photos' => 'Ritratti',
+	'maps_videos' => 'Vidjos',
+	'maps_wikipedia' => 'Wikipedija',
 );
 
 /** Erzya (эрзянь) */
@@ -4846,6 +4863,7 @@ $messages['rue'] = array(
 $messages['si'] = array(
 	'maps_map' => 'සිතියම',
 	'maps-loading-map' => 'සිතියම පුරණය වෙමින් පවතී...',
+	'maps-others' => 'අනෙකුන්',
 	'maps-layer-property' => 'ගුණාංගය',
 	'maps-layer-value' => 'අගය',
 	'maps-layer-errors' => 'දෝෂ',
@@ -5039,6 +5057,62 @@ $1',
 	'maps-googlemaps3-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v3.',
 	'maps-osm-par-thumbs' => 'Visa miniatyrer',
 	'maps-osm-par-photos' => 'Visa foton',
+);
+
+/** Tamil (தமிழ்)
+ * @author Karthi.dr
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'maps-loading-map' => 'வரைபடத்தை ஏற்றுகிறது....',
+	'maps-load-failed' => 'வரைபடத்தை ஏற்ற இயலவில்லை!',
+	'maps-layer-errors' => 'பிழைகள்',
+	'validation-error-invalid-location' => 'அளவுரு $1 ஒரு செல்லத்தக்க இடமாக இருக்க வேண்டும்.',
+	'validation-error-invalid-locations' => 'அளவுரு $1 ஒன்று அல்லது அதற்கு மேற்பட்ட செல்லத்தக்க இடங்களாக இருக்க வேண்டும்.',
+	'validation-error-invalid-width' => 'அளவுரு $1 ஒரு செல்லத்தக்க அகலமாக இருக்க வேண்டும்.',
+	'validation-error-invalid-height' => 'அளவுரு $1 ஒரு செல்லத்தக்க உயரமாக இருக்க வேண்டும்.',
+	'validation-error-invalid-distance' => 'அளவுரு $1 ஒரு செல்லத்தக்க தூரமாக இருக்க வேண்டும்.',
+	'validation-error-invalid-distances' => 'அளவுரு $1 ஒன்று அல்லது அதற்கு மேற்பட்ட செல்லத்தக்க தூரங்களாக இருக்க வேண்டும்.',
+	'validation-error-invalid-image' => 'அளவுரு $1 ஒரு செல்லத்தக்க படிமமாக இருக்க வேண்டும்.',
+	'validation-error-invalid-images' => 'அளவுரு $1 ஒன்று அல்லது அதற்கு மேற்பட்ட படிமங்களாக இருக்க வேண்டும்.',
+	'maps-abb-north' => 'வ',
+	'maps-abb-east' => 'கி',
+	'maps-abb-south' => 'தெ',
+	'maps-abb-west' => 'மே',
+	'maps-latitude' => 'அட்சரேகை:',
+	'maps-longitude' => 'தீர்க்க ரேகை:',
+	'maps_map_cannot_be_displayed' => 'வரைபடத்தைக் காட்ட இயலவில்லை.',
+	'maps_photos' => 'புகைப்படங்கள்',
+	'maps_videos' => 'காணொளிகள்',
+	'maps_wikipedia' => 'விக்கிப்பீடியா',
+	'maps_webcams' => 'வலைப்படக்கருவிகள்',
+	'maps-googlemaps2-par-type' => 'ஆரம்பத்தில் காண்பிக்க வேண்டிய வரைபட வகை',
+	'maps-googlemaps2-par-types' => 'வகை கட்டுப்பாடு வழியாக உள்ள வரைபட வகைகள்.',
+	'maps-googlemaps2-par-controls' => 'வரைபடைத்தின் மேல் அமைக்கப்பட வேண்டிய கட்டுப்பாடுகள்',
+	'maps-osm-par-thumbs' => 'சிறு உருவப்படங்களை காண்பி',
+	'maps-osm-par-photos' => 'படிமங்களிக் காண்பி',
+	'mapeditor' => 'வரைபட தொகுப்பாளர்',
+	'specialpages-group-maps' => 'வரைபடங்கள்',
+	'mapeditor-parser-error' => 'மேல்நிலைத் தரவைப் பாகுபடுத்தலில் பிழை ஏற்பட்டுள்ளது. பயனர் உள்ளீடு புறக்கணிக்கப்படுகிறது.',
+	'mapeditor-none-text' => 'எதுவுமில்லை',
+	'mapeditor-done-button' => 'முடிந்தது',
+	'mapeditor-remove-button' => 'நீக்குக',
+	'mapeditor-import-button2' => 'இறக்குமதி',
+	'mapeditor-export-button' => 'விக்கி குறியீட்டிற்கு ஏற்றுமதி செய்',
+	'mapeditor-import-button' => 'விக்கி குறியீட்டிலிருந்து இறக்குமதி செய்',
+	'mapeditor-mapparam-button' => 'வரைபட அளவுருக்களை தொகுக்கவும்',
+	'mapeditor-clear-button' => 'வரைபடத்தை வெறுமையாக்கு',
+	'mapeditor-code-title' => 'விக்கி குறியீடு',
+	'mapeditor-import-title' => 'விக்கி குறியீடு இறக்குமதி',
+	'mapeditor-import-note' => 'பாகுபடுத்தி ( parser) மிகவும் சரியான விக்கி குறியீடு வடிவமைப்பை எதிர்பார்க்கும் என்பதை குறித்துக் கொள்ளவும். இங்கு உள்ளிடப்பட்ட குறியீடு ஏற்றுமதி செயல்பாடு மூலம் வெளியிடப்பட்ட குறியீட்டுடன் ஒத்துப்போக வேண்டும்.',
+	'mapeditor-form-title' => 'தொகுப்பு விவரங்கள்',
+	'mapeditor-link-title-switcher-popup-text' => 'உரையுடன் உலாவல் சட்டம்',
+	'mapeditor-link-title-switcher-link-text' => 'இணைப்பு',
+	'mapeditor-form-field-title' => 'தலைப்பு',
+	'mapeditor-form-field-text' => 'உரை',
+	'mapeditor-form-field-link' => 'இணைப்பு',
+	'mapeditor-form-field-icon' => 'படவுரு',
+	'mapeditor-form-field-group' => 'குழு',
 );
 
 /** Telugu (తెలుగు)
