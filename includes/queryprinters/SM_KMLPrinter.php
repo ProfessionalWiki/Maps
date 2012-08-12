@@ -11,16 +11,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SMKMLPrinter extends SMWResultPrinter {
-	/**
-	 * Constructor.
-	 *
-	 * @param $format String
-	 * @param $inline
-	 */
-	public function __construct( $format, $inline ) {
-		parent::__construct( $format, $inline );
-	}
+class SMKMLPrinter extends SMWExportPrinter {
 
 	/**
 	 * Handler of the print request.
@@ -139,17 +130,28 @@ class SMKMLPrinter extends SMWResultPrinter {
 	}
 
 	/**
-	 * @see SMWResultPrinter::getMimeType()
+	 * @see SMWIExportPrinter::getMimeType
+	 *
+	 * @since 2.0
+	 *
+	 * @param SMWQueryResult $queryResult
+	 *
+	 * @return string
 	 */
-	public function getMimeType( $res ) {
+	public function getMimeType( SMWQueryResult $queryResult ) {
 		return 'application/vnd.google-earth.kml+xml';
 	}
 
 	/**
-	 * @see SMWResultPrinter::getFileName()
+	 * @see SMWIExportPrinter::getFileName
+	 *
+	 * @since 2.0
+	 *
+	 * @param SMWQueryResult $queryResult
+	 *
+	 * @return string|boolean
 	 */
-	public function getFileName( $res ) {
-		// @TODO FIXME
+	public function getFileName( SMWQueryResult $queryResult ) {
 		return 'kml.kml';
 	}
 
