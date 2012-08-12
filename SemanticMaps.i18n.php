@@ -566,6 +566,7 @@ $messages['he'] = array(
 	'semanticmaps-par-staticlocations' => 'רשימת מיקומים להוסיף למפה יחד עם הנתונים המבוקשים בשאילתה. כמו עם display_points, אפשר להוסיף כאן כותרת, תיאור וסמל לכל מיקום עם טילדה (~) בתור תו מפריד.',
 	'semanticmaps-par-forceshow' => 'להציג מפה גם כשאין מיקומים להצגה?',
 	'semanticmaps-par-showtitle' => 'להציג את הכותרת בחלון המידע על הסמן או לא. הכיבוי של זה שימושי לעתים קרובות כאשר נעשה שימוש בתבנית לעיצוב חלון המידע.',
+	'semanticmaps-par-hidenamespace' => 'האם להציג או לא להציג את שם המרחב בחלון המידע על סמן.',
 	'semanticmaps-par-centre' => 'מרכז המפה. אם לא ניתן, המפה תבחר בעצמה את המרכז המיטבי להצגת כל הסמנים על המפה.',
 	'semanticmaps-par-template' => 'תבנית לעיצוב תוכן חלון המידע.',
 	'semanticmaps-par-geocodecontrol' => 'הצגת בקר קידוד גאוגרפי.',
@@ -880,6 +881,23 @@ $messages['ms'] = array(
 	'semanticmaps-forminput-locations' => 'Lokasi',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'semanticmaps-kml-link' => 'Ara l-fajl KML',
+	'semanticmaps-latitude' => 'Latitudni: $1',
+	'semanticmaps-longitude' => 'Lonġitudini: $1',
+	'semanticmaps-altitude' => 'Altitudni: $1',
+	'semanticmaps_lookupcoordinates' => 'Fittex il-koordinati',
+	'semanticmaps_enteraddresshere' => 'Daħħal l-indirizz hawnhekk',
+	'semanticmaps-updatemap' => 'Aġġorna l-mappa',
+	'semanticmaps-forminput-remove' => 'Neħħi',
+	'semanticmaps-forminput-add' => 'Żid',
+	'semanticmaps-forminput-locations' => 'Postijiet',
+	'semanticmaps-par-forceshow' => "Uri l-mappa anke jekk m'hemm l-ebda post x'turi?",
+);
+
 /** Norwegian Bokmål (‪norsk (bokmål)‬)
  * @author Event
  * @author Nghtwlkr
@@ -1138,6 +1156,15 @@ $messages['ru'] = array(
 	'semanticmaps-par-template' => 'Шаблон для форматирования содержимого окна информация.',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'semanticmaps-forminput-remove' => 'ඉවත් කරන්න',
+	'semanticmaps-forminput-add' => 'එක් කරන්න',
+	'semanticmaps-forminput-locations' => 'ස්ථාන',
+);
+
 /** Slovak (slovenčina)
  * @author Helix84
  */
@@ -1235,6 +1262,17 @@ $messages['sw'] = array(
 	'semanticmaps-forminput-remove' => 'Ondoa',
 	'semanticmaps-forminput-add' => 'Ongeza',
 	'semanticmaps-forminput-locations' => 'Mahali',
+);
+
+/** Tamil (தமிழ்)
+ * @author Shanmugamp7
+ */
+$messages['ta'] = array(
+	'semanticmaps_enteraddresshere' => 'இங்கு முகவரியை உள்ளிடவும்',
+	'semanticmaps-updatemap' => 'வரைபடத்தை புதுப்பி',
+	'semanticmaps-forminput-remove' => 'நீக்குக',
+	'semanticmaps-forminput-add' => 'சேர்',
+	'semanticmaps-forminput-locations' => 'இடங்கள்',
 );
 
 /** Telugu (తెలుగు)
