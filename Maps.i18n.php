@@ -1551,6 +1551,7 @@ No se puede mostrar el mapa.',
 );
 
 /** Estonian (eesti)
+ * @author Avjoska
  * @author Hendrik
  */
 $messages['et'] = array(
@@ -1560,6 +1561,16 @@ $messages['et'] = array(
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'Laiuskraad:',
 	'maps-longitude' => 'Pikkuskraad:',
+	'maps_photos' => 'Fotod',
+	'maps_videos' => 'Videod',
+	'maps_wikipedia' => 'Vikipeedia',
+	'maps_webcams' => 'Veebikaamerad',
+	'mapeditor-link-title-switcher-popup-text' => 'Hüpikaken tekstiga',
+	'mapeditor-form-field-title' => 'Pealkiri',
+	'mapeditor-form-field-text' => 'Tekst',
+	'mapeditor-form-field-link' => 'Link',
+	'mapeditor-form-field-icon' => 'Ikoon',
+	'mapeditor-form-field-group' => 'Rühm',
 );
 
 /** Basque (euskara)
@@ -3300,10 +3311,12 @@ $messages['lb'] = array(
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-load-failed' => "D'Kaart konnt net geluede ginn!",
 	'maps-markers' => 'Markéierungen',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'anerer',
 	'maps-layer-property' => 'Eegeschaft',
 	'maps-layer-value' => 'Wäert',
 	'maps-layer-errors' => 'Feeler',
+	'maps-mapsdoc-par-language' => "D'Sprooch an där d'Dokumentatioun gewise gi soll. Wann déi Iwwersetzung net disponibel ass, da gëtt Englesch an där Plaz benotzt.",
 	'maps-coordinates-par-location' => "D'Koordinaten déi Dir formatéiere wëllt.",
 	'maps-coordinates-par-format' => "D'Zilformat vun de Koordinaten.",
 	'maps-finddestination-par-location' => 'Déi initial Plaz.',
@@ -3353,11 +3366,20 @@ $1',
 	'maps-osm-par-thumbs' => 'Miniaturbiller weisen',
 	'maps-osm-par-photos' => 'Fotoe weisen',
 	'specialpages-group-maps' => 'Kaarten',
+	'mapeditor-none-text' => 'Keen',
 	'mapeditor-done-button' => 'Fäerdeg',
+	'mapeditor-remove-button' => 'Ewechhuelen',
 	'mapeditor-import-button2' => 'Importéieren',
+	'mapeditor-export-button' => 'A Wikicode exportéieren',
+	'mapeditor-clear-button' => 'Kaart eidelmaachen',
+	'mapeditor-code-title' => 'Wikicode',
+	'mapeditor-import-title' => 'Wikicode importéieren',
 	'mapeditor-form-title' => 'Detailer änneren',
+	'mapeditor-link-title-switcher-popup-text' => 'Popup mat Text',
 	'mapeditor-link-title-switcher-link-text' => 'Link',
 	'mapeditor-form-field-title' => 'Titel',
+	'mapeditor-form-field-text' => 'Text',
+	'mapeditor-form-field-link' => 'Link',
 	'mapeditor-form-field-group' => 'Grupp',
 	'mapeditor-form-field-image' => 'Bild',
 );
