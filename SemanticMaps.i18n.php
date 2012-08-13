@@ -407,6 +407,17 @@ $messages['es'] = array(
 	'semanticmaps-kml-pagelinktext' => 'El texto a usar para los enlaces a la página, en las que $1 será substituído por el título de la página',
 );
 
+/** Estonian (eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'semanticmaps-latitude' => 'Laiuskraad:$1',
+	'semanticmaps-longitude' => 'Pikkuskraad:$1',
+	'semanticmaps-updatemap' => 'Uuenda kaart',
+	'semanticmaps-forminput-remove' => 'Eemalda',
+	'semanticmaps-forminput-add' => 'Lisa',
+);
+
 /** Basque (euskara)
  * @author An13sa
  */
