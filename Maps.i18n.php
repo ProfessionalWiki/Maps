@@ -4756,6 +4756,14 @@ $messages['roa-tara'] = array(
 	'maps_photos' => 'Foto',
 	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Uicchipèdie',
+	'specialpages-group-maps' => 'Mappe',
+	'mapeditor-none-text' => 'Ninde',
+	'mapeditor-done-button' => 'Fatte',
+	'mapeditor-remove-button' => 'Live',
+	'mapeditor-import-button2' => "'Mborte",
+	'mapeditor-link-title-switcher-link-text' => 'Collegamende',
+	'mapeditor-form-field-title' => 'Titole',
+	'mapeditor-form-field-text' => 'Teste',
 );
 
 /** Russian (русский)
@@ -5084,11 +5092,15 @@ $1',
 /** Tamil (தமிழ்)
  * @author Karthi.dr
  * @author Shanmugamp7
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
 	'maps-loading-map' => 'வரைபடத்தை ஏற்றுகிறது....',
 	'maps-load-failed' => 'வரைபடத்தை ஏற்ற இயலவில்லை!',
+	'maps-copycoords-prompt' => 'கட்டுப்பாட்டு விசை+C, உள்வழி விசை',
+	'maps-others' => 'ஏனையவை',
 	'maps-layer-errors' => 'பிழைகள்',
+	'maps-finddestination-par-distance' => 'பயணிக்க வேண்டிய தூரம்.',
 	'validation-error-invalid-location' => 'அளவுரு $1 ஒரு செல்லத்தக்க இடமாக இருக்க வேண்டும்.',
 	'validation-error-invalid-locations' => 'அளவுரு $1 ஒன்று அல்லது அதற்கு மேற்பட்ட செல்லத்தக்க இடங்களாக இருக்க வேண்டும்.',
 	'validation-error-invalid-width' => 'அளவுரு $1 ஒரு செல்லத்தக்க அகலமாக இருக்க வேண்டும்.',
