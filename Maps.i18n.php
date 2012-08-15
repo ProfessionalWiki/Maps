@@ -1922,6 +1922,13 @@ La mape no pues jessi mostrade.',
 $1',
 );
 
+/** Irish (Gaeilge)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ga'] = array(
+	'mapeditor-none-text' => 'Tada',
+);
+
 /** Galician (galego)
  * @author Gallaecio
  * @author Toliño
@@ -4746,6 +4753,8 @@ $messages['roa-tara'] = array(
 	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://mapping.referata.com/wiki/Maps_examples demo])",
 	'maps_map' => 'Mappe',
 	'maps-loading-map' => "Stoche a careche 'a mappe...",
+	'maps-markers' => 'Marcature',
+	'maps-copycoords-prompt' => 'CTRL+C, INVIE',
 	'maps-others' => 'otre',
 	'maps-layer-value' => 'Valore',
 	'maps-layer-errors' => 'Errore',
@@ -4753,6 +4762,8 @@ $messages['roa-tara'] = array(
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'O',
+	'maps-latitude' => 'Latitudine:',
+	'maps-longitude' => 'Longitudine:',
 	'maps_photos' => 'Foto',
 	'maps_videos' => 'Video',
 	'maps_wikipedia' => 'Uicchipèdie',
