@@ -1575,8 +1575,14 @@ $messages['et'] = array(
 
 /** Basque (euskara)
  * @author Kobazulo
+ * @author පසිඳු කාවින්ද
  */
 $messages['eu'] = array(
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-others' => 'Bestelakoak',
+	'maps-layer-property' => 'Propietatea',
+	'maps-layer-value' => 'Balioa',
+	'maps-layer-errors' => 'Erroreak',
 	'maps-abb-north' => 'I',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'H',
@@ -1584,6 +1590,14 @@ $messages['eu'] = array(
 	'maps-latitude' => 'Latitudea:',
 	'maps-longitude' => 'Longitudea:',
 	'maps_coordinates_missing' => 'Ez dago koordenaturik maparentzat.',
+	'mapeditor-none-text' => 'Bat ere ez',
+	'mapeditor-done-button' => 'Egina',
+	'mapeditor-remove-button' => 'Kendu',
+	'mapeditor-import-button2' => 'Inportatu',
+	'mapeditor-form-field-title' => 'Izenburua',
+	'mapeditor-form-field-text' => 'Testua',
+	'mapeditor-form-field-group' => 'Taldea',
+	'mapeditor-form-field-image' => 'Irudi',
 );
 
 /** Persian (فارسی)
@@ -1879,6 +1893,8 @@ $messages['frp'] = array(
 	'maps-loading-map' => 'Chargement de la mapa...',
 	'maps-load-failed' => 'Empossiblo de chargiér la mapa !',
 	'maps-markers' => 'Marcors',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTRÂ',
+	'maps-searchmarkers-text' => 'Marquiors de filtro',
 	'maps-others' => 'ôtros',
 	'maps-ns-layer' => 'Cuche',
 	'maps-ns-layer-talk' => 'Discussion cuche',
@@ -1906,6 +1922,39 @@ $messages['frp'] = array(
 	'maps_webcams' => 'Camères vouèbe',
 	'maps-osm-par-thumbs' => 'Fâre vêre des figures',
 	'maps-osm-par-photos' => 'Fâre vêre des fotôs',
+	'mapeditor' => 'Changior de mapa',
+	'specialpages-group-maps' => 'Mapes',
+	'mapeditor-none-text' => 'Nion',
+	'mapeditor-done-button' => 'Fêt',
+	'mapeditor-remove-button' => 'Enlevar',
+	'mapeditor-import-button2' => 'Importar',
+	'mapeditor-export-button' => 'Èxportar en code vouiqui',
+	'mapeditor-import-button' => 'Importar dês lo code vouiqui',
+	'mapeditor-mapparam-button' => 'Changiér los paramètros de la mapa',
+	'mapeditor-clear-button' => 'Èfaciér la mapa',
+	'mapeditor-code-title' => 'Code vouiqui',
+	'mapeditor-import-title' => 'Importar lo code vouiqui',
+	'mapeditor-form-title' => 'Changiér los dètalys',
+	'mapeditor-link-title-switcher-popup-text' => 'Popup avouéc tèxto',
+	'mapeditor-link-title-switcher-link-text' => 'Lim',
+	'mapeditor-form-field-title' => 'Titro',
+	'mapeditor-form-field-text' => 'Tèxto',
+	'mapeditor-form-field-link' => 'Lim',
+	'mapeditor-form-field-icon' => 'Icôna',
+	'mapeditor-form-field-group' => 'Groupo',
+	'mapeditor-form-field-inlinelabel' => 'Lambél en legne',
+	'mapeditor-form-field-strokecolor' => 'Color de trèt',
+	'mapeditor-form-field-strokeopacity' => 'Opacitât du trèt',
+	'mapeditor-form-field-strokeweight' => 'Pêds du trèt',
+	'mapeditor-form-field-fillcolor' => 'Color de remplissâjo',
+	'mapeditor-form-field-fillopcaity' => 'Opacitât de remplissâjo',
+	'mapeditor-form-field-showonhover' => 'Fâre vêre solament u survôlo',
+	'mapeditor-mapparam-title' => 'Changiér los paramètros de la mapa',
+	'mapeditor-mapparam-defoption' => '-Chouèsésséd un paramètro-',
+	'mapeditor-imageoverlay-button' => 'Apondre la cuvèrta d’émâge',
+	'mapeditor-form-field-image' => 'Émâge',
+	'mapeditor-imageoverlay-title' => 'Dètalys de la cuvèrta d’émâge',
+	'mapeditor-form-field-visitedicon' => 'Icôna visitâ',
 );
 
 /** Friulian (furlan)
@@ -2913,6 +2962,7 @@ $messages['ig'] = array(
  */
 $messages['it'] = array(
 	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([http://mapping.referata.com/wiki/Examples demo])',
+	'right-geocode' => 'Effettua la geocodifica',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
 	'maps-load-failed' => 'Impossibile caricare la mappa!',
@@ -3029,6 +3079,7 @@ $messages['ja'] = array(
 	'maps-load-failed' => '地図を読み込めませんでした。',
 	'maps-markers' => 'マーカー',
 	'maps-copycoords-prompt' => 'Ctrl+C、Enter',
+	'maps-searchmarkers-text' => 'マーカーを絞り込む',
 	'maps-others' => 'その他',
 	'maps-ns-layer' => 'レイヤー',
 	'maps-ns-layer-talk' => 'レイヤー・トーク',
@@ -3043,6 +3094,8 @@ $messages['ja'] = array(
 	'maps-layer-of-type' => '種類$1のレイヤー',
 	'maps-layer-type-supported-by' => 'このレイヤー種は、{{PLURAL:$2|$1地図サービスでのみ利用可能です|以下の地図サービスで利用可能です：$1}}。',
 	'maps-distance-par-unit' => '距離を出力する単位です。',
+	'maps-finddestination-par-distance' => '移動距離です。',
+	'maps-geodistance-par-unit' => '距離を出力する単位です。',
 	'validation-error-invalid-location' => '引数$1は有効な場所でなければなりません。',
 	'validation-error-invalid-locations' => '引数$1は、1つそれ以上有効な場所でなければなりません。',
 	'validation-error-invalid-width' => '引数$1は有効な幅でなければなりません。',
@@ -3070,6 +3123,7 @@ $1',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
 	'maps_googlemaps2' => 'Google マップ v2',
 	'maps_googlemaps3' => 'Google マップ v3',
+	'maps_openlayers' => 'OpenLayers',
 	'maps_click_to_activate' => 'クリックして地図をアクティブに',
 	'maps_centred_on' => '地図の中心は $1、$2。',
 	'maps-googlemaps2-incompatbrowser' => 'あなたのブラウザーは Google マップ v2 と互換性がありません。',
@@ -3078,8 +3132,41 @@ $1',
 	'maps_videos' => '動画',
 	'maps_wikipedia' => 'ウィキペディア',
 	'maps_webcams' => 'ウェブカメラ',
+	'maps-googlemaps3-incompatbrowser' => 'あなたのブラウザーは Google マップ v3 と互換性がありません。',
 	'maps-osm-par-thumbs' => '縮小版を表示',
 	'maps-osm-par-photos' => '写真を表示',
+	'mapeditor' => '地図の編集',
+	'specialpages-group-maps' => '地図',
+	'mapeditor-parser-error' => 'メタデータの構文解析でエラーが発生しました。利用者の入力を無視しています。',
+	'mapeditor-none-text' => 'なし',
+	'mapeditor-done-button' => '完了',
+	'mapeditor-remove-button' => '除去',
+	'mapeditor-import-button2' => '取り込み',
+	'mapeditor-export-button' => 'ウィキコードに書き出し',
+	'mapeditor-import-button' => 'ウィキコードから取り込み',
+	'mapeditor-mapparam-button' => '地図のパラメーターを編集',
+	'mapeditor-clear-button' => '地図を消去',
+	'mapeditor-code-title' => 'ウィキコード',
+	'mapeditor-import-title' => 'ウィキコードの取り込み',
+	'mapeditor-form-title' => '詳細を編集',
+	'mapeditor-link-title-switcher-link-text' => 'リンク',
+	'mapeditor-form-field-title' => 'タイトル',
+	'mapeditor-form-field-text' => 'テキスト',
+	'mapeditor-form-field-link' => 'リンク',
+	'mapeditor-form-field-icon' => 'アイコン',
+	'mapeditor-form-field-group' => 'グループ',
+	'mapeditor-form-field-inlinelabel' => 'インライン ラベル',
+	'mapeditor-form-field-strokecolor' => '線の色',
+	'mapeditor-form-field-strokeopacity' => '線の透明度',
+	'mapeditor-form-field-strokeweight' => '線幅',
+	'mapeditor-form-field-fillcolor' => '塗りつぶしの色',
+	'mapeditor-form-field-fillopcaity' => '塗りつぶしの透明度',
+	'mapeditor-mapparam-title' => '地図のパラメーターの編集',
+	'mapeditor-mapparam-defoption' => '-パラメーターを選択-',
+	'mapeditor-imageoverlay-button' => '画像オーバーレイを追加',
+	'mapeditor-form-field-image' => '画像',
+	'mapeditor-imageoverlay-title' => '画像オーバーレイの詳細',
+	'mapeditor-form-field-visitedicon' => '訪問済みアイコン',
 );
 
 /** Javanese (Basa Jawa) */
@@ -5578,6 +5665,16 @@ $messages['vo'] = array(
  */
 $messages['wa'] = array(
 	'specialpages-group-maps' => 'Mapes',
+);
+
+/** Yiddish (ייִדיש)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['yi'] = array(
+	'maps-layer-value' => 'ווערט',
+	'mapeditor-remove-button' => 'אַראָפּנעמען',
+	'mapeditor-import-button2' => 'אימפארט',
+	'mapeditor-form-field-group' => 'גרופע',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬) */
