@@ -490,6 +490,9 @@ $messages['frp'] = array(
 	'semanticmaps-unrecognizeddistance' => 'La valor $1 est pas una distance valida.',
 	'semanticmaps-kml-link' => 'Vêre lo fichiér KML',
 	'semanticmaps-default-kml-pagelink' => 'Vêre la pâge $1',
+	'semanticmaps-latitude' => 'Latituda : $1',
+	'semanticmaps-longitude' => 'Longituda : $1',
+	'semanticmaps-altitude' => 'Hôtior : $1',
 	'semanticmaps-loading-forminput' => 'Chargement du formulèro d’entrâ de la mapa...',
 	'semanticmaps_lookupcoordinates' => 'Èstimar les coordonâs',
 	'semanticmaps_enteraddresshere' => 'Buchiéd l’adrèce ique',
@@ -1380,6 +1383,13 @@ $messages['vi'] = array(
  */
 $messages['vo'] = array(
 	'semanticmaps_lookupcoordinates' => 'Tuvön koordinatis',
+);
+
+/** Yiddish (ייִדיש)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['yi'] = array(
+	'semanticmaps-forminput-remove' => 'אַראָפּנעמען',
 );
 
 /** Simplified Chinese (‪中文（简体）‬)
