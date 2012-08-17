@@ -1651,6 +1651,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (suomi)
+ * @author Beluga
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
@@ -1662,6 +1663,10 @@ $messages['fi'] = array(
 Käytettävissä olevat karttapalvelut: $1',
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
+	'maps-others' => 'muut',
+	'maps-layer-property' => 'Ominaisuus',
+	'maps-layer-value' => 'Arvo',
+	'maps-layer-errors' => 'Virheet',
 	'maps-distance-par-unit' => 'Etäisyyden näyttämiseen käytettävä yksikkö.',
 	'maps-abb-north' => 'Pohj.',
 	'maps-abb-east' => 'It.',
@@ -1685,6 +1690,19 @@ $1',
 	'maps_videos' => 'Videot',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Web-kamerat',
+	'specialpages-group-maps' => 'Kartat',
+	'mapeditor-none-text' => 'Ei mitään',
+	'mapeditor-done-button' => 'Valmis',
+	'mapeditor-remove-button' => 'Poista',
+	'mapeditor-import-button2' => 'Tuo',
+	'mapeditor-link-title-switcher-link-text' => 'Linkki',
+	'mapeditor-form-field-title' => 'Otsikko',
+	'mapeditor-form-field-text' => 'Teksti',
+	'mapeditor-form-field-link' => 'Linkki',
+	'mapeditor-form-field-icon' => 'Kuvake',
+	'mapeditor-form-field-group' => 'Ryhmä',
+	'mapeditor-form-field-fillcolor' => 'Täyttöväri',
+	'mapeditor-form-field-image' => 'Kuva',
 );
 
 /** French (français)
@@ -2234,6 +2252,7 @@ $1',
  * @author Rotemliss
  * @author YaronSh
  * @author Yonidebest
+ * @author ערן
  */
 $messages['he'] = array(
 	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.
@@ -2393,6 +2412,21 @@ $1',
 	'mapeditor-clear-button' => 'ניקוי מפה',
 	'mapeditor-code-title' => 'קוד ויקי',
 	'mapeditor-import-title' => 'ייבוא קוד ויקי',
+	'mapeditor-form-title' => 'עריכת פרטים',
+	'mapeditor-link-title-switcher-link-text' => 'קישור',
+	'mapeditor-form-field-title' => 'כותרת',
+	'mapeditor-form-field-text' => 'טקסט',
+	'mapeditor-form-field-link' => 'קישור',
+	'mapeditor-form-field-icon' => 'אייקון',
+	'mapeditor-form-field-group' => 'קבוצה',
+	'mapeditor-form-field-strokecolor' => 'צבע קו',
+	'mapeditor-form-field-strokeopacity' => 'אטימות קו',
+	'mapeditor-form-field-strokeweight' => 'עובי קו',
+	'mapeditor-form-field-fillcolor' => 'צבע מילוי',
+	'mapeditor-form-field-fillopcaity' => 'שקיפות מילוי:',
+	'mapeditor-mapparam-title' => 'עריכת הפרמטרים של המפה',
+	'mapeditor-mapparam-defoption' => '-בחירת פרמטר-',
+	'mapeditor-form-field-image' => 'תמונה',
 );
 
 /** Hindi (हिन्दी) */
@@ -2957,6 +2991,7 @@ $messages['ig'] = array(
  * @author Beta16
  * @author Civvì
  * @author Darth Kule
+ * @author F. Cosoleto
  * @author Gianfranco
  * @author HalphaZ
  */
@@ -3049,6 +3084,7 @@ $messages['it'] = array(
 	'mapeditor-clear-button' => 'Pulisci mappa',
 	'mapeditor-code-title' => 'Codice wiki',
 	'mapeditor-import-title' => 'Importa codice wiki',
+	'mapeditor-import-note' => 'Da notare che il parser si aspetta un formato molto rigoroso per il codice wiki. Il codice immesso qui dovrebbe corrispondere al codice emesso dalla funzionalità di esportazione.',
 	'mapeditor-form-title' => 'Modifica dettagli',
 	'mapeditor-link-title-switcher-link-text' => 'Collegamento',
 	'mapeditor-form-field-title' => 'Titolo',
@@ -3056,6 +3092,8 @@ $messages['it'] = array(
 	'mapeditor-form-field-link' => 'Collegamento',
 	'mapeditor-form-field-icon' => 'Icona',
 	'mapeditor-form-field-group' => 'Gruppo',
+	'mapeditor-form-field-fillcolor' => 'Colore di riempimento',
+	'mapeditor-form-field-fillopcaity' => 'Opacità riempimento',
 	'mapeditor-form-field-showonhover' => 'Visualizza solo al passaggio del mouse',
 	'mapeditor-mapparam-title' => 'Modifica i parametri della mappa',
 	'mapeditor-mapparam-defoption' => '-Selezionare parametro-',
@@ -3161,6 +3199,7 @@ $1',
 	'mapeditor-form-field-strokeweight' => '線幅',
 	'mapeditor-form-field-fillcolor' => '塗りつぶしの色',
 	'mapeditor-form-field-fillopcaity' => '塗りつぶしの透明度',
+	'mapeditor-form-field-showonhover' => 'ホバー時のみ表示',
 	'mapeditor-mapparam-title' => '地図のパラメーターの編集',
 	'mapeditor-mapparam-defoption' => '-パラメーターを選択-',
 	'mapeditor-imageoverlay-button' => '画像オーバーレイを追加',
@@ -5562,6 +5601,47 @@ $1',
 	'maps_videos' => 'Відео',
 	'maps_wikipedia' => 'Вікіпедія',
 	'maps_webcams' => 'Веб-камери',
+);
+
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'maps_map' => 'نقشہ',
+	'maps-loading-map' => 'نقشہ لوڈ ہو رہا ہے...',
+	'maps-markers' => 'مارکر',
+	'maps-searchmarkers-text' => 'فلٹر مارکر',
+	'maps-others' => 'دوسروں',
+	'maps-ns-layer' => 'تہہ',
+	'maps-layer-property' => 'پراپرٹی',
+	'maps-layer-value' => 'قدر',
+	'maps-layer-errors' => 'غلطیاں',
+	'maps-error-invalid-layerdef' => 'اس تہہ کی تعریف صحیح نہیں ہے.',
+	'maps-mapsdoc-par-service' => 'کے لئے پیرامیٹر کی دستاویزات کو ظاہر کرنے کے لئے تعریفیں سروس.',
+	'maps-coordinates-par-location' => 'نقاط آپ تشکيل کرنے کے لئے چاہتے ہیں.',
+	'maps-distance-par-distance' => 'ایک مخصوص یونٹ کے ساتھ اس کے برابر کرنے کے لئے تبدیل کرنے کے لئے مسافت.',
+	'maps_map_cannot_be_displayed' => 'نقشے کو دکھایا جائے نہیں کر سکتے ہیں.',
+	'maps_click_to_activate' => 'نقشہ کو چالو کرنے کے لئے کلک کریں',
+	'maps-googlemaps3-par-type' => 'ابتدائی طور پر ظاہر کرنے کے لئے نقشہ قسم.',
+	'maps-googlemaps3-par-controls' => 'نقشے پر جگہ کنٹرول.',
+	'maps-googlemaps3-par-zoomstyle' => 'زوم کے کنٹرول کے انداز.',
+	'maps-googlemaps3-par-typestyle' => 'قسم کے کنٹرول کے انداز.',
+	'maps-googlemaps3-par-poi' => 'دلچسپی کے پوائنٹس دکھائیں ۔',
+	'maps-openlayers-par-layers' => 'کی تہوں ہے کہ پرت کے رکھیں میں دستیاب ہو جائے گا. کے پرت کے سب سے پہلے دکھایا جائے گا جب نقشہ بوجھ.',
+	'maps-osm-par-photos' => 'شو کی تصاویر',
+	'mapeditor' => 'ایڈیٹر کا نقشہ',
+	'specialpages-group-maps' => 'نقشہ جات',
+	'mapeditor-none-text' => 'کوئی بھی نہیں',
+	'mapeditor-done-button' => 'کیا کیا',
+	'mapeditor-remove-button' => 'حذف کریں',
+	'mapeditor-import-button2' => 'درآمد',
+	'mapeditor-clear-button' => 'واضح نقشہ',
+	'mapeditor-form-title' => 'تفصیلات میں ترمیم کریں',
+	'mapeditor-form-field-title' => 'عنوان',
+	'mapeditor-form-field-text' => 'ٹیکسٹ',
+	'mapeditor-form-field-link' => 'لنک',
+	'mapeditor-form-field-group' => 'گروپ',
+	'mapeditor-form-field-image' => 'تصویر',
 );
 
 /** Veps (vepsän kel’) */
