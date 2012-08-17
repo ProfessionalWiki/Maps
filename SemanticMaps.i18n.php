@@ -435,11 +435,15 @@ $messages['fa'] = array(
 );
 
 /** Finnish (suomi)
+ * @author Beluga
  * @author Crt
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
+	'semanticmaps-forminput-remove' => 'Poista',
+	'semanticmaps-forminput-add' => 'Lisää',
+	'semanticmaps-forminput-locations' => 'Sijainnit',
 );
 
 /** French (français)
@@ -1352,6 +1356,15 @@ $messages['tr'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinat ara',
 	'semanticmaps_enteraddresshere' => 'Adresi buraya girin',
 	'semanticmaps-forminput-add' => 'Ekle',
+);
+
+/** Urdu (اردو)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['ur'] = array(
+	'semanticmaps-forminput-remove' => 'حذف کریں',
+	'semanticmaps-forminput-add' => 'شامل کریں',
+	'semanticmaps-forminput-locations' => 'مقامات',
 );
 
 /** Vietnamese (Tiếng Việt)
