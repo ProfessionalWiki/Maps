@@ -121,7 +121,7 @@ $magicWords['ig'] = array(
 /** Italian (italiano) */
 $magicWords['it'] = array(
 	'display_map' => array( 0, 'mostra_mappa' ),
-	'display_point' => array( 0, 'mostra_punto', 'mostra_punti' ),
+	'display_point' => array( 0, 'mostra_punto' ),
 	'display_points' => array( 0, 'mostra_punti' ),
 	'coordinates' => array( 0, 'coordinate' ),
 	'distance' => array( 0, 'distanza' ),
