@@ -110,7 +110,7 @@ class SMFormInput {
 			$parameters['locations'] = $coordinates;
 		}
 
-		$validator = new Validator( wfMsg( 'maps_' . $this->service->getName() ), false );
+		$validator = new Validator( wfMessage( 'maps_' . $this->service->getName() )->text(), false );
 		$validator->setParameters( $parameters, $this->getParameterInfo() );
 		$validator->validateParameters();
 		
@@ -156,7 +156,7 @@ class SMFormInput {
 		else {
 			return
 				'<span class="errorbox">' .
-				htmlspecialchars( wfMsgExt( 'validator-fatal-error', 'parsemag', $fatalError->getMessage() ) ) . 
+				htmlspecialchars( wfMessage( 'validator-fatal-error', $fatalError->getMessage() )->text() ) .
 				'</span>';			
 		}			
 	}
@@ -180,7 +180,7 @@ class SMFormInput {
 				'style' => 'display: inline',
 				'class' => 'sminput sminput-' . $this->service->getName()
 			),
-			wfMsgHtml( 'semanticmaps-loading-forminput' ) .
+			wfMessage( 'semanticmaps-loading-forminput' )->escaped() .
 				Html::element(
 					'div',
 					array( 'style' => 'display:none', 'class' => 'sminputdata' ),

@@ -222,7 +222,7 @@
 					document.getElementById('matches').offsetTop;
 				selected = resultNum;
 			}
-		}
+		};
 			
 		for (var i = 0; i < results.length; i++) {
 			var icon = new google.maps.MarkerImage(

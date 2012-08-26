@@ -68,7 +68,7 @@ unset( $moduleTemplate );
 $wgHooks['MappingServiceLoad'][] = 'smfInitGoogleMaps3';
 
 function smfInitGoogleMaps3() {
-	global $wgAutoloadClasses, $sfgFormPrinter;
+	global $wgAutoloadClasses;
 	
 	$wgAutoloadClasses['SMGoogleMaps3FormInput'] = __DIR__ . '/SM_GoogleMaps3FormInput.php';
 	//$wgAutoloadClasses['SMGoogleMaps3MultiInput'] = __DIR__ . '/SM_GoogleMaps3MultiInput.php';

@@ -36,13 +36,13 @@
 		var location = { lat: latLng.lat(), lon: latLng.lng() };
 		this.showCoordinate( location );
 		this.updateInput( [ location ] );		
-	}
+	};
 	
 	this.setupGeocoder = function() {
 		if ( geocoder === false ) {
 			geocoder = new google.maps.Geocoder();
 		}
-	}	
+	};
 	
 	this.geocodeAddress = function( address ) {
 		this.setupGeocoder();

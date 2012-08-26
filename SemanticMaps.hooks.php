@@ -23,7 +23,7 @@ final class SemanticMapsHooks {
 	 * @return boolean
 	 */
 	public static function addToAdminLinks( ALTree &$admin_links_tree ) {
-	    $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
+	    $displaying_data_section = $admin_links_tree->getSection( wfMessage( 'smw_adminlinks_displayingdata' )->text() );
 	
 	    // Escape if SMW hasn't added links.
 	    if ( is_null( $displaying_data_section ) ) {
@@ -32,7 +32,7 @@ final class SemanticMapsHooks {
 	
 	    $smw_docu_row = $displaying_data_section->getRow( 'smw' );
 	
-	    $sm_docu_label = wfMsg( 'adminlinks_documentation', 'Semantic Maps' );
+	    $sm_docu_label = wfMessage( 'adminlinks_documentation', 'Semantic Maps' )->text();
 	    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Semantic_Maps', $sm_docu_label ) );
 	
 	    return true;		

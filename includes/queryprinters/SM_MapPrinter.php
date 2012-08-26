@@ -290,7 +290,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @return string
 	 */
 	public final function getName() {
-		return wfMsg( 'maps_' . $this->service->getName() );
+		return wfMessage( 'maps_' . $this->service->getName() )->text();
 	}
 	
 	/**
@@ -310,5 +310,4 @@ class SMMapPrinter extends SMWResultPrinter {
 
 		return $params;
     }
-	
 }

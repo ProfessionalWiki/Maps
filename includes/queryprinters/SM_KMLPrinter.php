@@ -65,7 +65,7 @@ class SMKMLPrinter extends SMWExportPrinter {
 		$params['linkabsolute'] = new Parameter( 'linkabsolute', Parameter::TYPE_BOOLEAN, true );
 		$params['linkabsolute']->setMessage( 'semanticmaps-kml-linkabsolute' );
 
-		$params['pagelinktext'] = new Parameter( 'pagelinktext', Parameter::TYPE_STRING, wfMsg( 'semanticmaps-default-kml-pagelink' ) );
+		$params['pagelinktext'] = new Parameter( 'pagelinktext', Parameter::TYPE_STRING, wfMessage( 'semanticmaps-default-kml-pagelink' )->text() );
 		$params['pagelinktext']->setMessage( 'semanticmaps-kml-pagelinktext' );
 		
 		return $params;
@@ -105,7 +105,7 @@ class SMKMLPrinter extends SMWExportPrinter {
 	 */
 	protected function getLink( SMWQueryResult $res, $outputmode ) {
 		$searchLabel = $this->getSearchLabel( $outputmode );
-		$link = $res->getQueryLink( $searchLabel ? $searchLabel : wfMsgForContent( 'semanticmaps-kml-link' ) );
+		$link = $res->getQueryLink( $searchLabel ? $searchLabel : wfMessage( 'semanticmaps-kml-link' )->inContentLanguage()->text() );
 		$link->setParameter( 'kml', 'format' );
 		$link->setParameter( $this->params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
 		$link->setParameter( $this->params['pagelinktext'], 'pagelinktext' );
@@ -159,6 +159,6 @@ class SMKMLPrinter extends SMWExportPrinter {
 	 * @see SMWResultPrinter::getName()
 	 */
 	public final function getName() {
-		return wfMsg( 'semanticmaps-kml' );
+		return wfMessage( 'semanticmaps-kml' )->text();
 	}
 }
