@@ -1,1 +1,7 @@
-.idea
+.*
+*~
+*.kate-swp
+.*.swp
+
+!.gitignore
+!.gitreview
