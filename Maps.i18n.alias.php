@@ -51,3 +51,8 @@ $specialPageAliases['mk'] = array(
 $specialPageAliases['nl'] = array(
 	'MapEditor' => array( 'Kaarteditor' ),
 );
+
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = array(
+	'MapEditor' => array( 'HaritaDüzenleyici', 'HaritaEditörü' ),
+);
