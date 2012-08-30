@@ -37,20 +37,29 @@ final class MapsHooks {
 
 	/**
 	 * Hook to add PHPUnit test cases.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
 	 *
 	 * @since 0.7
 	 *
-	 * @param array $files
+	 * @param array &$files
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public static function registerUnitTests( array &$files ) {
-		$testDir = __DIR__ . '/test/';
+		// @codeCoverageIgnoreStart
+		$testFiles = array(
+			'parserhooks/MapsCoordinates',
 
-		$files[] = $testDir . 'MapsCoordinateParserTest.php';
-		$files[] = $testDir . 'MapsDistanceParserTest.php';
+			'MapsCoordinateParser',
+			'MapsDistanceParser',
+		);
+
+		foreach ( $testFiles as $file ) {
+			$files[] = __DIR__ . '/tests/phpunit/' . $file . 'Test.php';
+		}
 
 		return true;
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
