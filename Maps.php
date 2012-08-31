@@ -121,7 +121,7 @@ $wgAutoloadClasses['MapsKMLLayer'] 				= __DIR__ . '/includes/layers/Maps_KMLLay
 
 // Autoload the "includes/manipulations/" classes.
 // TODO: migrate to Params
-$manDir = __DIR__ . '/manipulations/';
+$manDir = __DIR__ . '/includes/manipulations/';
 $wgAutoloadClasses['MapsCommonParameterManipulation'] = $manDir . 'Maps_CommonParameterManipulation.php';
 $wgAutoloadClasses['MapsParamDimension'] = $manDir . 'Maps_ParamDimension.php';
 $wgAutoloadClasses['MapsParamFile'] = $manDir . 'Maps_ParamFile.php';
@@ -136,7 +136,7 @@ $wgAutoloadClasses['MapsParamImageOverlay'] = $manDir . 'Maps_ParamImageOverlay.
 $wgAutoloadClasses['MapsParamWmsOverlay'] = $manDir . 'Maps_ParamWmsOverlay.php';
 unset( $manDir );
 
-$paramDir = __DIR__ . '/params/';
+$paramDir = __DIR__ . '/includes/params/';
 $wgAutoloadClasses['MapsServiceParam'] = $paramDir . 'Maps_ServiceParam.php';
 unset( $paramDir );
 

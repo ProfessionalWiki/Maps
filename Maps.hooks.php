@@ -20,13 +20,16 @@ final class MapsHooks {
 	 *
 	 * @param ALTree $admin_links_tree
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public static function addToAdminLinks( ALTree &$admin_links_tree ) {
 		$displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );
 
 		// Escape if SMW hasn't added links.
-		if ( is_null( $displaying_data_section ) ) return true;
+		if ( is_null( $displaying_data_section ) ) {
+			return true;
+		}
+
 		$smw_docu_row = $displaying_data_section->getRow( 'smw' );
 
 		$maps_docu_label = wfMsg( 'adminlinks_documentation', 'Maps' );
@@ -48,7 +51,13 @@ final class MapsHooks {
 	public static function registerUnitTests( array &$files ) {
 		// @codeCoverageIgnoreStart
 		$testFiles = array(
-			'parserhooks/MapsCoordinates',
+			'parserhooks/Coordinates',
+			'parserhooks/DisplayMap',
+			'parserhooks/Distance',
+			'parserhooks/Finddestination',
+			'parserhooks/Geocode',
+			'parserhooks/Geodistance',
+			'parserhooks/MapsDoc',
 
 			'MapsCoordinateParser',
 			'MapsDistanceParser',
@@ -68,7 +77,7 @@ final class MapsHooks {
 	 * @param $title: Title
 	 * @param $article: Article or null
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public static function onArticleFromTitle( Title &$title, /* Article */ &$article ) {
 		if ( $title->getNamespace() == Maps_NS_LAYER ) {
@@ -85,7 +94,7 @@ final class MapsHooks {
 	 *
 	 * @param array &$vars
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
 		global $egMapsGlobalJSVars;
@@ -102,7 +111,7 @@ final class MapsHooks {
 	 *
 	 * @param array $list
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public static function onCanonicalNamespaces( array &$list ) {
 		$list[Maps_NS_LAYER] = 'Layer';

@@ -3,7 +3,7 @@
 namespace Maps\Test;
 
 /**
- * Tests for the MapsCoordinates class.
+ * Tests for the Maps\Geodistance class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ namespace Maps\Test;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsCoordinatesTest extends ParserHookTest {
+class GeodistanceTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::getInstance
@@ -40,7 +40,7 @@ class MapsCoordinatesTest extends ParserHookTest {
 	 * @return \ParserHook
 	 */
 	protected function getInstance() {
-		return new \MapsCoordinates();
+		return new \MapsGeodistance();
 	}
 
 	/**
@@ -48,10 +48,10 @@ class MapsCoordinatesTest extends ParserHookTest {
 	 * @since 2.0
 	 * @return array
 	 */
-	protected function parametersProvider() {
+	public function parametersProvider() {
 		$paramLists = array();
 
-		$paramLists[] = array( 'location' => '4,2' );
+		$paramLists[] = array( '4,2', '42,0' );
 
 		return $this->arrayWrap( $paramLists );
 	}

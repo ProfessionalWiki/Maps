@@ -112,7 +112,7 @@ class MapsCoordinateParserTest extends \MediaWikiTestCase {
 	 * @var array
 	 */	
 	public static $fakeCoordinates = array(
-		'IN YOUR CODE, BEING TOTALLY REDICULOUSE',
+		'IN YOUR CODE, BEING TOTALLY RIDICULOUS',
 		'55.7557860 E, 37.6176330 W',
 		'55.7557860 N, 37.6176330 N',
 		'55.7557860 S, 37.6176330 N',

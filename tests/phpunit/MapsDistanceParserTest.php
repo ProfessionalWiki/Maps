@@ -75,7 +75,7 @@ class MapsDistanceParserTest extends \MediaWikiTestCase {
 	 * @var array
 	 */	
 	public static $fakeDistances = array(	
-		'IN YOUR CODE, BEING TOTALLY REDICULOUSE',
+		'IN YOUR CODE, BEING TOTALLY RIDICULOUS',
 		'0x20 km',
 		'km 42',
 		'42 42 km',

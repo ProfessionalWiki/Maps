@@ -105,10 +105,14 @@ class MapsDisplayMapRenderer {
 	 */
 	protected function handleMarkerData( array &$params, Parser $parser ) {
 		$parserClone = clone $parser;
+
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
 		$params['locations'] = array();
 
+		/**
+		 * @var MapsLocation $location
+		 */
 		foreach ( $params['coordinates'] as $location ) {
 			if ( $location->isValid() ) {
 				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '',$visitedIconUrl);

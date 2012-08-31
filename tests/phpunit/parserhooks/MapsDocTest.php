@@ -3,7 +3,7 @@
 namespace Maps\Test;
 
 /**
- * Tests for the MapsCoordinates class.
+ * Tests for the Maps\MapsDoc class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,35 +32,28 @@ namespace Maps\Test;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParserHookTest extends \MediaWikiTestCase {
+class MapsDocTest extends ParserHookTest {
 
 	/**
+	 * @see ParserHookTest::getInstance
 	 * @since 2.0
 	 * @return \ParserHook
 	 */
-	protected abstract function getInstance();
+	protected function getInstance() {
+		return new \MapsMapsDoc();
+	}
 
 	/**
+	 * @see ParserHookTest::parametersProvider
 	 * @since 2.0
 	 * @return array
 	 */
-	public abstract function parametersProvider();
+	public function parametersProvider() {
+		$paramLists = array();
 
-	/**
-	 * @dataProvider parametersProvider
-	 * @since 2.0
-	 * @param array $parameters
-	 */
-	public function testRender( array $parameters ) {
-		$parserHook = $this->getInstance();
+		$paramLists[] = array();
 
-		$parser = new \Parser();
-		$parser->mOptions = new \ParserOptions();
-		$parser->clearState();
-		$parser->setTitle( \Title::newMainPage() );
-
-		$renderResult = $parserHook->renderTag( null, $parameters, $parser );
-		$this->assertInternalType( 'string', $renderResult );
+		return $this->arrayWrap( $paramLists );
 	}
 
 }
