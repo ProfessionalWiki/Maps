@@ -88,95 +88,118 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		$params['zoom']->setRange( 0, 20 );
 		$params['zoom']->setDefault( self::getDefaultZoom() );
-		
-		$params['type'] = new Parameter( 'type' );
-		$params['type']->setDefault( $egMapsGMaps3Type );
-		$params['type']->addCriteria( new CriterionInArray( self::getTypeNames() ) );
-		$params['type']->addManipulations( new MapsParamGMap3Type() );
-		$params['type']->setMessage( 'maps-googlemaps3-par-type' );
-		
-		$params['types'] = new ListParameter( 'types' );
-		$params['types']->addDependencies( 'type' );
-		$params['types']->setDefault( $egMapsGMaps3Types );
-		$params['types']->addCriteria( new CriterionInArray( self::getTypeNames() ) );		
-		$params['types']->addManipulations( new MapsParamGMap3Type(), new MapsParamGMap3Types() );
-		$params['types']->setMessage( 'maps-googlemaps3-par-types' );
-		
-		$params['layers'] = new ListParameter( 'layers' );
-		$params['layers']->setDefault( $egMapsGMaps3Layers );
-		$params['layers']->addCriteria( new CriterionInArray( self::getLayerNames() ) );
-		$params['layers']->setMessage( 'maps-googlemaps3-par-layers' );	
-		
-		$params['controls'] = new ListParameter( 'controls' );
-		$params['controls']->setDefault( $egMapsGMaps3Controls );
-		$params['controls']->addCriteria( new CriterionInArray( self::$controlNames ) );
-		$params['controls']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['controls']->setMessage( 'maps-googlemaps3-par-controls' );
-		
-		$params['zoomstyle'] = new Parameter( 'zoomstyle' );
-		$params['zoomstyle']->setDefault( $egMapsGMaps3DefZoomStyle );
-		$params['zoomstyle']->addCriteria( new CriterionInArray( 'default', 'small', 'large' ) );
-		$params['zoomstyle']->addManipulations( new MapsParamGMap3Zoomstyle() );
-		$params['zoomstyle']->setMessage( 'maps-googlemaps3-par-zoomstyle' );
-		
-		$params['typestyle'] = new Parameter( 'typestyle' );
-		$params['typestyle']->setDefault( $egMapsGMaps3DefTypeStyle );
-		$params['typestyle']->addCriteria( new CriterionInArray( array_keys( self::$typeControlStyles ) ) );
-		$params['typestyle']->addManipulations( new MapsParamGMap3Typestyle() );
-		$params['typestyle']->setMessage( 'maps-googlemaps3-par-typestyle' );
 
-		$params['autoinfowindows'] = new Parameter( 'autoinfowindows', Parameter::TYPE_BOOLEAN );
-		$params['autoinfowindows']->setDefault( $egMapsGMaps3AutoInfoWindows );
-		$params['autoinfowindows']->setMessage( 'maps-googlemaps3-par-autoinfowindows' );
-		
-		$params['kml'] = new ListParameter( 'kml' );
-		$params['kml']->setDefault( array() );
-		$params['kml']->setMessage( 'maps-googlemaps3-par-kml' );
-		$params['kml']->addManipulations(new MapsParamFile());
-		
-		$params['gkml'] = new ListParameter( 'gkml' );
-		$params['gkml']->setDefault( array() );
-		$params['gkml']->setMessage( 'maps-googlemaps3-par-gkml' );
-
-		$params['fusiontables'] = new ListParameter( 'fusiontables' );
-		$params['fusiontables']->setDefault( array() );
-		$params['fusiontables']->setMessage( 'maps-googlemaps3-par-fusiontables' );
-
-		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
-		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
-		$params['resizable']->setMessage( 'maps-par-resizable' );
-		
-		$params['tilt'] = new Parameter( 'tilt', Parameter::TYPE_INTEGER );
-		$params['tilt']->setDefault( $egMapsGMaps3DefaultTilt, false );
-		$params['tilt']->setMessage( 'maps-googlemaps3-par-tilt' );
-		
-		$params['kmlrezoom'] = new Parameter( 'kmlrezoom', Parameter::TYPE_BOOLEAN );
-		$params['kmlrezoom']->setDefault( $GLOBALS['egMapsRezoomForKML'], false );
-		$params['kmlrezoom']->setMessage( 'maps-googlemaps3-par-kmlrezoom' );
-
-		$params['poi'] = new Parameter( 'poi', Parameter::TYPE_BOOLEAN );
-		$params['poi']->setDefault( $GLOBALS['egMapsShowPOI'], false );
-		$params['poi']->setMessage( 'maps-googlemaps3-par-poi' );
-
-		$params['imageoverlays'] = new ListParameter( 'imageoverlays' , ';' );
-		$params['imageoverlays']->setDefault( array() );
-		$params['imageoverlays']->addManipulations( new MapsParamImageOverlay('~'));
-
-		$params['markercluster'] = new Parameter(
-			'markercluster' ,
-			Parameter::TYPE_BOOLEAN
+		$params['type'] = array(
+			'default' => $egMapsGMaps3Type,
+			'values' => self::getTypeNames(),
+			'message' => 'maps-googlemaps3-par-type',
+			// new MapsParamGMap3Type() // FIXME
 		);
-		$params['markercluster']->setDefault( false );
-		$params['markercluster']->setDoManipulationOfDefault( false );
 
-		$params['searchmarkers'] = new Parameter(
-			'searchmarkers' ,
-			Parameter::TYPE_STRING
+		$params['types'] = array(
+			'dependencies' => 'type',
+			'default' => $egMapsGMaps3Types,
+			'values' => self::getTypeNames(),
+			'message' => 'maps-googlemaps3-par-types',
+			// new MapsParamGMap3Type(), new MapsParamGMap3Types() // FIXME
 		);
-		$params['searchmarkers']->setDefault( '' );
-		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
-		$params['searchmarkers']->setDoManipulationOfDefault( false );
 
+		$params['layers'] = array(
+			'default' => $egMapsGMaps3Layers,
+			'values' => self::getLayerNames(),
+			'message' => 'maps-googlemaps3-par-layers',
+		);
+
+		$params['controls'] = array(
+			'default' => $egMapsGMaps3Controls,
+			'values' => self::$controlNames,
+			'message' => 'maps-googlemaps3-par-controls',
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+		);
+
+		$params['zoomstyle'] = array(
+			'default' => $egMapsGMaps3DefZoomStyle,
+			'values' => array( 'default', 'small', 'large' ),
+			'message' => 'maps-googlemaps3-par-zoomstyle',
+			// new MapsParamGMap3Zoomstyle() FIXME
+		);
+
+		$params['typestyle'] = array(
+			'default' => $egMapsGMaps3DefTypeStyle,
+			'values' => array_keys( self::$typeControlStyles ),
+			'message' => 'maps-googlemaps3-par-typestyle',
+			// new MapsParamGMap3Typestyle() FIXME
+		);
+
+		$params['autoinfowindows'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsGMaps3AutoInfoWindows,
+			'message' => 'maps-googlemaps3-par-autoinfowindows',
+		);
+
+		$params['resizable'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsResizableByDefault,
+			'message' => 'maps-googlemaps3-par-resizable',
+		);
+
+		$params['kmlrezoom'] = array(
+			'type' => 'boolean',
+			'default' => $GLOBALS['egMapsRezoomForKML'],
+			'message' => 'maps-googlemaps3-par-kmlrezoom',
+		);
+
+		$params['poi'] = array(
+			'type' => 'boolean',
+			'default' => $GLOBALS['egMapsShowPOI'],
+			'message' => 'maps-googlemaps3-par-poi',
+		);
+
+		$params['markercluster'] = array(
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-googlemaps3-par-markercluster',
+		);
+
+		$params['tilt'] = array(
+			'type' => 'integer',
+			'default' => $egMapsGMaps3DefaultTilt,
+			'message' => 'maps-googlemaps3-par-tilt',
+		);
+
+		$params['imageoverlays'] = array(
+			'type' => 'integer',
+			'default' => array(),
+			'message' => 'maps-googlemaps3-par-imageoverlays',
+			'islist' => true,
+			'delimiter' => ';',
+			// new MapsParamImageOverlay('~') FIXME
+		);
+
+		$params['kml'] = array(
+			'default' => array(),
+			'message' => 'maps-googlemaps3-par-kml',
+			'islist' => true,
+			// new MapsParamFile() FIXME
+		);
+
+		$params['gkml'] = array(
+			'default' => array(),
+			'message' => 'maps-googlemaps3-par-gkml',
+			'islist' => true,
+		);
+
+		$params['fusiontables'] = array(
+			'default' => array(),
+			'message' => 'maps-googlemaps3-par-fusiontables',
+			'islist' => true,
+		);
+
+		$params['searchmarkers'] = array(
+			'default' => '',
+			'message' => 'maps-googlemaps3-par-searchmarkers',
+			// new CriterionSearchMarkers() FIXME
+		);
 	}
 	
 	/**
