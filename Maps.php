@@ -69,66 +69,66 @@ $wgAutoloadClasses['MapsHooks'] = __DIR__ . '/Maps.hooks.php';
 
 // Autoload the "includes/" classes and interfaces.
 $incDir = __DIR__ . '/includes/';
-$wgAutoloadClasses['MapsMapper'] = $incDir . 'Maps_Mapper.php';
-$wgAutoloadClasses['MapsCoordinateParser'] = $incDir . 'Maps_CoordinateParser.php';
-$wgAutoloadClasses['MapsDistanceParser'] = $incDir . 'Maps_DistanceParser.php';
-$wgAutoloadClasses['MapsGeoFunctions'] = $incDir . 'Maps_GeoFunctions.php';
-$wgAutoloadClasses['MapsGeocoders'] = $incDir . 'Maps_Geocoders.php';
-$wgAutoloadClasses['MapsGeocoder'] = $incDir . 'Maps_Geocoder.php';
-$wgAutoloadClasses['MapsKMLFormatter'] = $incDir . 'Maps_KMLFormatter.php';
-$wgAutoloadClasses['MapsLayer'] = $incDir . 'Maps_Layer.php';
-$wgAutoloadClasses['MapsLayerPage'] = $incDir . 'Maps_LayerPage.php';
-$wgAutoloadClasses['MapsLayers'] = $incDir . 'Maps_Layers.php';
-$wgAutoloadClasses['MapsLocation'] = $incDir . 'Maps_Location.php';
-$wgAutoloadClasses['MapsLine'] = $incDir . 'Maps_Line.php';
-$wgAutoloadClasses['MapsPolygon'] = $incDir . 'Maps_Polygon.php';
-$wgAutoloadClasses['MapsCircle'] = $incDir . 'Maps_Circle.php';
-$wgAutoloadClasses['MapsRectangle'] = $incDir . 'Maps_Rectangle.php';
-$wgAutoloadClasses['MapsImageOverlay'] = $incDir . 'Maps_ImageOverlay.php';
-$wgAutoloadClasses['iMappingService'] = $incDir . 'iMappingService.php';
-$wgAutoloadClasses['MapsMappingServices'] = $incDir . 'Maps_MappingServices.php';
-$wgAutoloadClasses['MapsMappingService'] = $incDir . 'Maps_MappingService.php';
-$wgAutoloadClasses['MapsUtils'] = $incDir . 'Maps_Utils.php';
-$wgAutoloadClasses['MapsWmsOverlay'] = $incDir . 'Maps_WmsOverlay.php';
-$wgAutoloadClasses['MapsBaseElement'] = $incDir . 'Maps_BaseElement.php';
-$wgAutoloadClasses['MapsBaseFillableElement'] = $incDir . 'Maps_BaseFillableElement.php';
-$wgAutoloadClasses['MapsBaseStrokableElement'] = $incDir . 'Maps_BaseStrokableElement.php';
-$wgAutoloadClasses['MapsDisplayMapRenderer'] = $incDir . 'Maps_DisplayMapRenderer.php';
+$wgAutoloadClasses['MapsMapper'] 				= $incDir . 'Maps_Mapper.php';
+$wgAutoloadClasses['MapsCoordinateParser'] 		= $incDir . 'Maps_CoordinateParser.php';
+$wgAutoloadClasses['MapsDistanceParser'] 		= $incDir . 'Maps_DistanceParser.php';
+$wgAutoloadClasses['MapsGeoFunctions'] 			= $incDir . 'Maps_GeoFunctions.php';
+$wgAutoloadClasses['MapsGeocoders'] 			= $incDir . 'Maps_Geocoders.php';
+$wgAutoloadClasses['MapsGeocoder'] 				= $incDir . 'Maps_Geocoder.php';
+$wgAutoloadClasses['MapsKMLFormatter'] 			= $incDir . 'Maps_KMLFormatter.php';
+$wgAutoloadClasses['MapsLayer'] 				= $incDir . 'Maps_Layer.php';
+$wgAutoloadClasses['MapsLayerPage'] 			= $incDir . 'Maps_LayerPage.php';
+$wgAutoloadClasses['MapsLayers'] 				= $incDir . 'Maps_Layers.php';
+$wgAutoloadClasses['MapsLocation'] 				= $incDir . 'Maps_Location.php';
+$wgAutoloadClasses['MapsLine'] 					= $incDir . 'Maps_Line.php';
+$wgAutoloadClasses['MapsPolygon'] 				= $incDir . 'Maps_Polygon.php';
+$wgAutoloadClasses['MapsCircle'] 				= $incDir . 'Maps_Circle.php';
+$wgAutoloadClasses['MapsRectangle'] 			= $incDir . 'Maps_Rectangle.php';
+$wgAutoloadClasses['MapsImageOverlay'] 			= $incDir . 'Maps_ImageOverlay.php';
+$wgAutoloadClasses['iMappingService'] 			= $incDir . 'iMappingService.php';
+$wgAutoloadClasses['MapsMappingServices'] 		= $incDir . 'Maps_MappingServices.php';
+$wgAutoloadClasses['MapsMappingService'] 		= $incDir . 'Maps_MappingService.php';
+$wgAutoloadClasses['MapsUtils'] 				= $incDir . 'Maps_Utils.php';
+$wgAutoloadClasses['MapsWmsOverlay'] 			= $incDir . 'Maps_WmsOverlay.php';
+$wgAutoloadClasses['MapsBaseElement']			= $incDir . 'Maps_BaseElement.php';
+$wgAutoloadClasses['MapsBaseFillableElement'] 	= $incDir . 'Maps_BaseFillableElement.php';
+$wgAutoloadClasses['MapsBaseStrokableElement'] 	= $incDir . 'Maps_BaseStrokableElement.php';
+$wgAutoloadClasses['MapsDisplayMapRenderer'] 	= $incDir . 'Maps_DisplayMapRenderer.php';
 
-$wgAutoloadClasses['ApiGeocode'] = $incDir . 'api/ApiGeocode.php';
+$wgAutoloadClasses['ApiGeocode'] 				= $incDir . 'api/ApiGeocode.php';
 
 // Autoload includes/properties interfaces
 $propDir = __DIR__ . '/includes/properties/';
-$wgAutoloadClasses['iBubbleMapElement'] = $propDir . 'iBubbleMapElement.php';
-$wgAutoloadClasses['iFillableMapElement'] = $propDir . 'iFillableMapElement.php';
-$wgAutoloadClasses['iHoverableMapElement'] = $propDir . 'iHoverableMapElement.php';
-$wgAutoloadClasses['iLinkableMapElement'] = $propDir . 'iLinkableMapElement.php';
-$wgAutoloadClasses['iStrokableMapElement'] = $propDir . 'iStrokableMapElement.php';
+$wgAutoloadClasses['iBubbleMapElement'] 		= $propDir . 'iBubbleMapElement.php';
+$wgAutoloadClasses['iFillableMapElement'] 		= $propDir . 'iFillableMapElement.php';
+$wgAutoloadClasses['iHoverableMapElement'] 		= $propDir . 'iHoverableMapElement.php';
+$wgAutoloadClasses['iLinkableMapElement'] 		= $propDir . 'iLinkableMapElement.php';
+$wgAutoloadClasses['iStrokableMapElement'] 		= $propDir . 'iStrokableMapElement.php';
 
 
 // Autoload the "includes/criteria/" classes.
 // TODO: migrate to Params
 $criDir = $incDir . 'criteria/';
-$wgAutoloadClasses['CriterionIsDistance'] = $criDir . 'CriterionIsDistance.php';
-$wgAutoloadClasses['CriterionIsImage'] = $criDir . 'CriterionIsImage.php';
-$wgAutoloadClasses['CriterionIsLocation'] = $criDir . 'CriterionIsLocation.php';
-$wgAutoloadClasses['CriterionMapDimension'] = $criDir . 'CriterionMapDimension.php';
-$wgAutoloadClasses['CriterionMapLayer'] = $criDir . 'CriterionMapLayer.php';
-$wgAutoloadClasses['CriterionLine'] = $criDir . 'CriterionLine.php';
-$wgAutoloadClasses['CriterionPolygon'] = $criDir . 'CriterionPolygon.php';
-$wgAutoloadClasses['CriterionSearchMarkers'] = $criDir . 'CriterionSearchMarkers.php';
+$wgAutoloadClasses['CriterionIsDistance'] 		= $criDir . 'CriterionIsDistance.php';
+$wgAutoloadClasses['CriterionIsImage'] 			= $criDir . 'CriterionIsImage.php';
+$wgAutoloadClasses['CriterionIsLocation'] 		= $criDir . 'CriterionIsLocation.php';
+$wgAutoloadClasses['CriterionMapDimension'] 	= $criDir . 'CriterionMapDimension.php';
+$wgAutoloadClasses['CriterionMapLayer'] 		= $criDir . 'CriterionMapLayer.php';
+$wgAutoloadClasses['CriterionLine'] 			= $criDir . 'CriterionLine.php';
+$wgAutoloadClasses['CriterionPolygon'] 			= $criDir . 'CriterionPolygon.php';
+$wgAutoloadClasses['CriterionSearchMarkers'] 	= $criDir . 'CriterionSearchMarkers.php';
 unset( $criDir );
 
 // Autoload the "includes/geocoders/" classes.
 $geoDir = $incDir . 'geocoders/';
-$wgAutoloadClasses['MapsGeonamesGeocoder'] = $geoDir . 'Maps_GeonamesGeocoder.php';
-$wgAutoloadClasses['MapsGoogleGeocoder'] = $geoDir . 'Maps_GoogleGeocoder.php';
+$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= $geoDir . 'Maps_GeonamesGeocoder.php';
+$wgAutoloadClasses['MapsGoogleGeocoder'] 		= $geoDir . 'Maps_GoogleGeocoder.php';
 unset( $geoDir );
 
 // Autoload the "includes/layers/" classes.
 $lyrDir = $incDir . 'layers/';
-$wgAutoloadClasses['MapsImageLayer'] = $lyrDir . 'Maps_ImageLayer.php';
-$wgAutoloadClasses['MapsKMLLayer'] = $lyrDir . 'Maps_KMLLayer.php';
+$wgAutoloadClasses['MapsImageLayer'] 			= $lyrDir . 'Maps_ImageLayer.php';
+$wgAutoloadClasses['MapsKMLLayer'] 				= $lyrDir . 'Maps_KMLLayer.php';
 unset( $lyrDir );
 
 // Autoload the "includes/manipulations/" classes.
@@ -154,20 +154,20 @@ unset( $paramDir );
 
 // Autoload the "includes/parserHooks/" classes.
 $phDir = $incDir . '/parserHooks/';
-$wgAutoloadClasses['MapsCoordinates'] = $phDir . 'Maps_Coordinates.php';
-$wgAutoloadClasses['MapsDisplayMap'] = $phDir . 'Maps_DisplayMap.php';
-$wgAutoloadClasses['MapsDistance'] = $phDir . 'Maps_Distance.php';
-$wgAutoloadClasses['MapsFinddestination'] = $phDir . 'Maps_Finddestination.php';
-$wgAutoloadClasses['MapsGeocode'] = $phDir . 'Maps_Geocode.php';
-$wgAutoloadClasses['MapsGeodistance'] = $phDir . 'Maps_Geodistance.php';
-$wgAutoloadClasses['MapsMapsDoc'] = $phDir . 'Maps_MapsDoc.php';
+$wgAutoloadClasses['MapsCoordinates'] 			= $phDir . 'Maps_Coordinates.php';
+$wgAutoloadClasses['MapsDisplayMap'] 			= $phDir . 'Maps_DisplayMap.php';
+$wgAutoloadClasses['MapsDistance'] 				= $phDir . 'Maps_Distance.php';
+$wgAutoloadClasses['MapsFinddestination'] 		= $phDir . 'Maps_Finddestination.php';
+$wgAutoloadClasses['MapsGeocode'] 				= $phDir . 'Maps_Geocode.php';
+$wgAutoloadClasses['MapsGeodistance'] 			= $phDir . 'Maps_Geodistance.php';
+$wgAutoloadClasses['MapsMapsDoc'] 				= $phDir . 'Maps_MapsDoc.php';
 
 // Load the special pages
-$wgAutoloadClasses['SpecialMapEditor'] = $egMapsDir . 'includes/specials/SpecialMapEditor.php';
+$wgAutoloadClasses['SpecialMapEditor'] 			= $egMapsDir . 'includes/specials/SpecialMapEditor.php';
 
 unset( $phDir );
 
-$wgAutoloadClasses['Maps\Test\ParserHookTest'] = $egMapsDir . 'tests/phpunit/parserhooks/ParserHookTest.php';
+$wgAutoloadClasses['Maps\Test\ParserHookTest'] 	= $egMapsDir . 'tests/phpunit/parserhooks/ParserHookTest.php';
 
 unset( $incDir );
 
