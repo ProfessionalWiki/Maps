@@ -166,6 +166,9 @@ $wgAutoloadClasses['MapsMapsDoc'] = $phDir . 'Maps_MapsDoc.php';
 $wgAutoloadClasses['SpecialMapEditor'] = $egMapsDir . 'includes/specials/SpecialMapEditor.php';
 
 unset( $phDir );
+
+$wgAutoloadClasses['Maps\Test\ParserHookTest'] = $egMapsDir . 'tests/phpunit/parserhooks/ParserHookTest.php';
+
 unset( $incDir );
 
 $wgAPIModules['geocode'] = 'ApiGeocode';

@@ -32,28 +32,30 @@ namespace Maps\Test;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsCoordinatesTest extends ParserHookTest {
+abstract class ParserHookTest extends \MediaWikiTestCase {
 
 	/**
-	 * @see ParserHookTest::getInstance
 	 * @since 2.0
 	 * @return \ParserHook
 	 */
-	protected function getInstance() {
-		return new \MapsCoordinates();
-	}
+	protected abstract function getInstance();
 
 	/**
-	 * @see ParserHookTest::parametersProvider
 	 * @since 2.0
 	 * @return array
 	 */
-	protected function parametersProvider() {
-		$paramLists = array();
+	protected abstract function parametersProvider();
 
-		$paramLists[] = array( 'location' => '4,2' );
-
-		return $this->arrayWrap( $paramLists );
+	/**
+	 * @dataProvider parametersProvider
+	 * @since 2.0
+	 * @param array $parameters
+	 * @param int $hookType
+	 */
+	public function testRender( array $parameters, $hookType = \ParserHook::TYPE_FUNCTION ) {
+		$parserHook = $this->getInstance();
+		$renderResult = $parserHook->validateAndRender( $parameters, $hookType );
+		$this->assertInternalType( 'string', $renderResult );
 	}
 
 }
