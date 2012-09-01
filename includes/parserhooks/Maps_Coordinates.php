@@ -48,37 +48,28 @@ class MapsCoordinates extends ParserHook {
 		global $egMapsCoordinateDirectional;
 		
 		$params = array();
-		
-		$params['location'] = new Parameter(
-			'location',
-			Parameter::TYPE_STRING,
-			null,
-			array(),
-			array(
-				new CriterionIsLocation(),
-			)	
+
+		$params['location'] = array(
+			'default' => null,
+			// new CriterionIsLocation() FIXME
 		);
-		$params['location']->setMessage( 'maps-coordinates-par-location' );
-		
-		$params['format'] = new Parameter(
-			'format',
-			Parameter::TYPE_STRING,
-			$egMapsCoordinateNotation,
-			array( 'notation' ),
-			array(
-				new CriterionInArray( $egMapsAvailableCoordNotations ),
-			)			
-		);	
-		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['format']->setMessage( 'maps-coordinates-par-format' );
-		
-		$params['directional'] = new Parameter(
-			'directional',
-			Parameter::TYPE_BOOLEAN,
-			$egMapsCoordinateDirectional			
+
+		$params['format'] = array(
+			'default' => $egMapsCoordinateNotation,
+			'values' => $egMapsAvailableCoordNotations,
+			'aliases' => 'notation',
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
-		$params['directional']->setMessage( 'maps-coordinates-par-directional' );
-		
+
+		$params['directional'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsCoordinateDirectional,
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['message'] = 'maps-coordinates-par-' . $name;
+		}
+
 		return $params;
 	}
 	
