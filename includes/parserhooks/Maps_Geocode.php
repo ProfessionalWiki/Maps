@@ -48,62 +48,46 @@ class MapsGeocode extends ParserHook {
 		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
 		
 		$params = array();
-		
-		$params['location'] = new Parameter( 'location' );
-		$params['location']->addDependencies( 'mappingservice', 'geoservice' );
-		$params['location']->addCriteria( new CriterionIsLocation() );	
-		$params['location']->setMessage( 'maps-geocode-par-location' );
-		
-		$params['mappingservice'] = new Parameter(
-			'mappingservice', 
-			Parameter::TYPE_STRING,
-			'', // TODO
-			array(),
-			array(
-				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
-			)
+
+		$params['location'] = array(
+			'dependencies' => array( 'mappingservice', 'geoservice' ),
+			// new CriterionIsLocation() FIXME
 		);
-		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['mappingservice']->setMessage( 'maps-geocode-par-mappingservice' );
-		
-		$params['geoservice'] = new Parameter(
-			'geoservice', 
-			Parameter::TYPE_STRING,
-			$egMapsDefaultGeoService,
-			array( 'service' ),
-			array(
-				new CriterionInArray( $egMapsAvailableGeoServices ),
-			)
-		);	
-		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
-		$params['geoservice']->setMessage( 'maps-geocode-par-geoservice' );
-		
-		$params['allowcoordinates'] = new Parameter(
-			'allowcoordinates', 
-			Parameter::TYPE_BOOLEAN,
-			$egMapsAllowCoordsGeocoding
+
+		$params['mappingservice'] = array(
+			'default' => '',
+			'values' => MapsMappingServices::getAllServiceValues(),
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
-		$params['allowcoordinates']->setMessage( 'maps-geocode-par-allowcoordinates' );
-		
-		$params['format'] = new Parameter(
-			'format',
-			Parameter::TYPE_STRING,
-			$egMapsCoordinateNotation,
-			array( 'notation' ),
-			array(
-				new CriterionInArray( $egMapsAvailableCoordNotations ),
-			)	
+
+		$params['geoservice'] = array(
+			'default' => $egMapsDefaultGeoService,
+			'aliases' => 'service',
+			'values' => $egMapsAvailableGeoServices,
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
-		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );		
-		$params['format']->setMessage( 'maps-geocode-par-format' );
-		
-		$params['directional'] = new Parameter(
-			'directional',
-			Parameter::TYPE_BOOLEAN,
-			$egMapsCoordinateDirectional			
-		);		
-		$params['directional']->setMessage( 'maps-geocode-par-directional' );
-		
+
+		$params['allowcoordinates'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsAllowCoordsGeocoding,
+		);
+
+		$params['format'] = array(
+			'default' => $egMapsCoordinateNotation,
+			'values' => $egMapsAvailableCoordNotations,
+			'aliases' => 'notation',
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+		);
+
+		$params['directional'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsCoordinateDirectional,
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['message'] = 'maps-geocode-par-' . $name;
+		}
+
 		return $params;
 	}
 	
