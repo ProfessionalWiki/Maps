@@ -58,23 +58,21 @@ class MapsOSM extends MapsMappingService {
 	 */		
 	public function addParameterInfo( array &$params ) {
 		global $egMapsOSMThumbs, $egMapsOSMPhotos;
-		
-		$params['zoom']->addCriteria( new CriterionInRange( 1, 18 ) );
+
+		$params['zoom']->setRange( 1, 18 );
 		$params['zoom']->setDefault( self::getDefaultZoom() );
 
-		$params['thumbs'] = new Parameter(
-			'thumbs',
-			Parameter::TYPE_BOOLEAN,
-			$egMapsOSMThumbs
+		$params['thumbs'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsOSMThumbs,
+			'message' => 'maps-osm-par-thumbs',
 		);
-		$params['thumbs']->setMessage( 'maps-osm-par-thumbs' );
 
-		$params['photos'] = new Parameter(
-			'photos',
-			Parameter::TYPE_BOOLEAN,
-			$egMapsOSMPhotos
+		$params['photos'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsOSMPhotos,
+			'message' => 'maps-osm-par-photos',
 		);
-		$params['photos']->setMessage( 'maps-osm-par-photos' );	
-	}	
+	}
 	
 }
