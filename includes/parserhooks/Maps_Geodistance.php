@@ -46,74 +46,46 @@ class MapsGeodistance extends ParserHook {
 		global $egMapsDistanceUnit, $egMapsDistanceDecimals, $egMapsAvailableGeoServices, $egMapsDefaultGeoService; 
 		
 		$params = array();
-		
-		$params['location1'] = new Parameter(
-			'location1',
-			Parameter::TYPE_STRING,
-			null,
-			array( 'from' ),
-			array(
-				new CriterionIsLocation(),
-			)			
+
+		$params['mappingservice'] = array(
+			'default' => '',
+			'values' => MapsMappingServices::getAllServiceValues(),
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
-		$params['location1']->addDependencies( 'mappingservice', 'geoservice' );
-		$params['location1']->setMessage( 'maps-geodistance-par-location1' );
-		
-		$params['location2'] = new Parameter(
-			'location2',
-			Parameter::TYPE_STRING,
-			null,
-			array( 'to' ),
-			array(
-				new CriterionIsLocation(),
-			)			
+
+		$params['geoservice'] = array(
+			'default' => $egMapsDefaultGeoService,
+			'aliases' => 'service',
+			'values' => $egMapsAvailableGeoServices,
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
-		$params['location2']->addDependencies( 'mappingservice', 'geoservice' );			
-		$params['location2']->setMessage( 'maps-geodistance-par-location2' );
-		
-		$params['unit'] = new Parameter(
-			'unit',
-			Parameter::TYPE_STRING,
-			$egMapsDistanceUnit,
-			array(),
-			array(
-				new CriterionInArray( MapsDistanceParser::getUnits() ),
-			)
+
+		$params['unit'] = array(
+			'default' => $egMapsDistanceUnit,
+			'values' => MapsDistanceParser::getUnits(),
 		);
-		$params['unit']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['unit']->setMessage( 'maps-geodistance-par-unit' );
-		
-		$params['decimals'] = new Parameter(
-			'decimals',
-			Parameter::TYPE_INTEGER,
-			$egMapsDistanceDecimals
-		);			
-		$params['decimals']->setMessage( 'maps-geodistance-par-decimals' );
-		
-		$params['mappingservice'] = new Parameter(
-			'mappingservice', 
-			Parameter::TYPE_STRING,
-			'', // TODO
-			array(),
-			array(
-				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
-			)
+
+		$params['decimals'] = array(
+			'type' => 'integer',
+			'default' => $egMapsDistanceDecimals,
 		);
-		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['mappingservice']->setMessage( 'maps-geodistance-par-mappingservice' );
-		
-		$params['geoservice'] = new Parameter(
-			'geoservice', 
-			Parameter::TYPE_STRING,
-			$egMapsDefaultGeoService,
-			array( 'service' ),
-			array(
-				new CriterionInArray( $egMapsAvailableGeoServices ),
-			)
+
+		$params['location1'] = array(
+			'aliases' => 'from',
+			'dependencies' => array( 'mappingservice', 'geoservice' ),
+			// FIXME new CriterionIsLocation()
 		);
-		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );	
-		$params['geoservice']->setMessage( 'maps-geodistance-par-geoservice' );
-		
+
+		$params['location2'] = array(
+			'aliases' => 'to',
+			'dependencies' => array( 'mappingservice', 'geoservice' ),
+			// FIXME new CriterionIsLocation()
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['message'] = 'maps-geodistance-par-' . $name;
+		}
+
 		return $params;
 	}
 	
