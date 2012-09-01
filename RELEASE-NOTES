@@ -37,11 +37,12 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 * Merged display_map and display_point(s) into a single parser function: display_map (display_points is now an alias).
 * Updates parameter definitions from Validator 0.4.x to Validator 0.5.x.
 * Improved script loading.
+* Added various unit tests that caught some bugs and will now prevent regressions.
 
 ; Bug fixes
 
 * Fixed JavaScript error on some special pages due to incorrect order of map initialization.
-* Fixed broken kml functionality
+* Fixed partially broken kml functionality.
 
 === Maps 1.0.5 ===
 (2011-11-30)
