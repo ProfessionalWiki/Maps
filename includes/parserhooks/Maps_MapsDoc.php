@@ -55,13 +55,18 @@ class MapsMapsDoc extends ParserHook {
 	protected function getParameterInfo( $type ) {
 		$params = array();
 
-		$params['service'] = new Parameter( 'service' );
-		$params['service']->addCriteria( new CriterionInArray( $GLOBALS['egMapsAvailableServices'] ) );
-		$params['service']->setMessage( 'maps-mapsdoc-par-service' );
+		$params['service'] = array(
+			'values' => $GLOBALS['egMapsAvailableServices'],
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+		);
 
-		$params['language'] = new Parameter( 'language' );
-		$params['language']->setDefault( $GLOBALS['wgLanguageCode'] );
-		$params['language']->setMessage( 'maps-mapsdoc-par-language' );
+		$params['language'] = array(
+			'default' => $GLOBALS['wgLanguageCode'],
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['message'] = 'maps-geocode-par-' . $name;
+		}
 
 		return $params;
 	}
@@ -194,8 +199,10 @@ EOT;
 
 		$params = array();
 
-		$params['zoom'] = new Parameter( 'zoom',  Parameter::TYPE_INTEGER );
-		$params['zoom']->setMessage( 'maps-par-zoom' );
+		$params['zoom'] = array(
+			'type' => 'integer',
+			'message' => 'maps-par-zoom',
+		);
 
 		$service->addParameterInfo( $params );
 
