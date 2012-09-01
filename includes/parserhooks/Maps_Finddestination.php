@@ -47,73 +47,55 @@ class MapsFinddestination extends ParserHook {
 		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;	 
 		
 		$params = array();
-		
-		$params['location'] = new Parameter( 'location' );
-		$params['location']->addCriteria( new CriterionIsLocation() );
-		$params['location']->addDependencies( 'mappingservice', 'geoservice' );
-		$params['location']->setMessage( 'maps-finddestination-par-location' );
-		
-		$params['bearing'] = new Parameter(
-			'bearing',
-			Parameter::TYPE_FLOAT
+
+		$params['location'] = array(
+			'dependencies' => array( 'mappingservice', 'geoservice' ),
+			// new CriterionIsLocation() FIXME
 		);
-		$params['bearing']->setMessage( 'maps-finddestination-par-bearing' );
-		
-		$params['distance'] = new Parameter( 'distance' );
-		$params['distance']->addCriteria( new CriterionIsDistance() );
-		$params['distance']->setMessage( 'maps-finddestination-par-distance' );
-		// TODO: manipulate to distance object
-		
-		$params['mappingservice'] = new Parameter(
-			'mappingservice', 
-			Parameter::TYPE_STRING,
-			'', // TODO
-			array(),
-			array(
-				new CriterionInArray( MapsMappingServices::getAllServiceValues() ),
-			)
+
+		$params['format'] = array(
+			'default' => $egMapsCoordinateNotation,
+			'values' => $egMapsAvailableCoordNotations,
+			'aliases' => 'notation',
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
-		$params['mappingservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['mappingservice']->setMessage( 'maps-finddestination-par-mappingservice' );
-		
-		$params['geoservice'] = new Parameter(
-			'geoservice', 
-			Parameter::TYPE_STRING,
-			$egMapsDefaultGeoService,
-			array( 'service' ),
-			array(
-				new CriterionInArray( $egMapsAvailableGeoServices ),
-			)
+
+		$params['directional'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsCoordinateDirectional,
 		);
-		$params['geoservice']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['geoservice']->setMessage( 'maps-finddestination-par-geoservice' );
-		
-		$params['allowcoordinates'] = new Parameter(
-			'allowcoordinates', 
-			Parameter::TYPE_BOOLEAN,
-			$egMapsAllowCoordsGeocoding
-		);			
-		$params['allowcoordinates']->setMessage( 'maps-finddestination-par-allowcoordinates' );
-		
-		$params['format'] = new Parameter(
-			'format',
-			Parameter::TYPE_STRING,
-			$egMapsCoordinateNotation,
-			array( 'notation' ),
-			array(
-				new CriterionInArray( $egMapsAvailableCoordNotations ),
-			)			
+
+		$params['bearing'] = array(
+			'type' => 'float',
 		);
-		$params['format']->addManipulations( new ParamManipulationFunctions( 'strtolower' ) );
-		$params['format']->setMessage( 'maps-finddestination-par-format' );
-		
-		$params['directional'] = new Parameter(
-			'directional',
-			Parameter::TYPE_BOOLEAN,
-			$egMapsCoordinateDirectional
-		);			
-		$params['directional']->setMessage( 'maps-finddestination-par-directional' );
-		
+
+		$params['distance'] = array(
+			'type' => 'float',
+			// new CriterionIsDistance() FIXME
+		);
+
+		$params['mappingservice'] = array(
+			'default' => '',
+			'values' => MapsMappingServices::getAllServiceValues(),
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+		);
+
+		$params['geoservice'] = array(
+			'default' => $egMapsDefaultGeoService,
+			'aliases' => 'service',
+			'values' => $egMapsAvailableGeoServices,
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+		);
+
+		$params['directional'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsAllowCoordsGeocoding,
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['message'] = 'maps-finddestination-par-' . $name;
+		}
+
 		return $params;
 	}
 	

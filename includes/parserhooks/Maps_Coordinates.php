@@ -50,7 +50,6 @@ class MapsCoordinates extends ParserHook {
 		$params = array();
 
 		$params['location'] = array(
-			'default' => null,
 			// new CriterionIsLocation() FIXME
 		);
 
