@@ -136,9 +136,7 @@ $wgAutoloadClasses['MapsParamImageOverlay'] = $manDir . 'Maps_ParamImageOverlay.
 $wgAutoloadClasses['MapsParamWmsOverlay'] = $manDir . 'Maps_ParamWmsOverlay.php';
 unset( $manDir );
 
-$paramDir = __DIR__ . '/includes/params/';
-$wgAutoloadClasses['MapsServiceParam'] = $paramDir . 'Maps_ServiceParam.php';
-unset( $paramDir );
+$wgAutoloadClasses['Maps\ServiceParam'] 		= __DIR__ . '/includes/definitions/ServiceParam.php';
 
 // Autoload the "includes/parserhooks/" classes.
 $wgAutoloadClasses['MapsCoordinates'] 			= __DIR__ . '/includes/parserhooks/Maps_Coordinates.php';
@@ -327,4 +325,4 @@ function efMapsSetup() {
 	return true;
 }
 
-$egParamDefinitions['mappingservice'] = 'MapsServiceParam';
+$egParamDefinitions['mappingservice'] = 'Maps\ServiceParam';
