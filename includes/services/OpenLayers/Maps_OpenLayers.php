@@ -36,33 +36,34 @@ class MapsOpenLayers extends MapsMappingService {
 		
 		$params['zoom']->setRange( 0, 19 );
 		$params['zoom']->setDefault( self::getDefaultZoom() );
-		
-		$params['controls'] = new ListParameter( 'controls' );
-		$params['controls']->setDefault( $egMapsOLControls );
-		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
-		$params['controls']->addManipulations(
-			new ParamManipulationFunctions( 'strtolower' )
-		);
-		$params['controls']->setMessage( 'maps-openlayers-par-controls' );
-		
-		$params['layers'] = new ListParameter( 'layers' );
-		$params['layers']->addManipulations( new MapsParamOLLayers() );
-		$params['layers']->setDoManipulationOfDefault( true );
-		$params['layers']->addCriteria( new CriterionOLLayer() );
-		$params['layers']->setDefault( $egMapsOLLayers );
-		$params['layers']->setMessage( 'maps-openlayers-par-layers' );
-		
-		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
-		$params['resizable']->setDefault( $egMapsResizableByDefault, false );	
-		$params['resizable']->setMessage( 'maps-par-resizable' );
 
-		$params['searchmarkers'] = new Parameter(
-			'searchmarkers' ,
-			Parameter::TYPE_STRING
+		$params['controls'] = array(
+			'default' => $egMapsOLControls,
+			'values' => self::getControlNames(),
+			'message' =>'maps-openlayers-par-controls',
+			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
-		$params['searchmarkers']->setDefault( '' );
-		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
-		$params['searchmarkers']->setDoManipulationOfDefault( false );
+
+		$params['layers'] = array(
+			'default' => $egMapsOLLayers,
+			'message' =>'maps-openlayers-par-layers',
+			'manipulatedefault' => true,
+
+			// new MapsParamOLLayers() FIXME
+			// FIXME new CriterionOLLayer()
+		);
+
+		$params['resizable'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsResizableByDefault,
+			'message' => 'maps-par-resizable',
+		);
+
+		$params['searchmarkers'] = array(
+			'default' => '',
+			'message' => 'maps-openlayers-par-searchmarkers',
+			// new CriterionSearchMarkers() FIXME
+		);
 	}
 	
 	/**
