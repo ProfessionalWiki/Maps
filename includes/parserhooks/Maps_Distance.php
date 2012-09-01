@@ -46,29 +46,25 @@ class MapsDistance extends ParserHook {
 		global $egMapsDistanceUnit, $egMapsDistanceDecimals; 
 		
 		$params = array();
-		
-		$params['distance'] = new Parameter( 'distance' );
-		$params['distance']->addCriteria( new CriterionIsDistance() );
-		$params['distance']->setMessage( 'maps-distance-par-distance' );
-		
-		$params['unit'] = new Parameter(
-			'unit',
-			Parameter::TYPE_STRING,
-			$egMapsDistanceUnit,
-			array(),
-			array(
-				new CriterionInArray( MapsDistanceParser::getUnits() ),
-			)
-		);
-		$params['unit']->setMessage( 'maps-distance-par-unit' );
 
-		$params['decimals'] = new Parameter(
-			'decimals',
-			Parameter::TYPE_INTEGER,
-			$egMapsDistanceDecimals
+		$params['distance'] = array(
+			// new CriterionIsDistance() FIXME
 		);
-		$params['decimals']->setMessage( 'maps-distance-par-decimals' );
-		
+
+		$params['unit'] = array(
+			'default' => $egMapsDistanceUnit,
+			'values' => MapsDistanceParser::getUnits(),
+		);
+
+		$params['decimals'] = array(
+			'type' => 'integer',
+			'default' => $egMapsDistanceDecimals,
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['message'] = 'maps-distance-par-' . $name;
+		}
+
 		return $params;
 	}
 	
