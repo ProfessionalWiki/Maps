@@ -1372,7 +1372,7 @@ $messages['ur'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples thử xem]).',
+	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng MediaWiki Ngữ nghĩa ([http://mapping.referata.com/wiki/Examples?uselang=vi xem thử]).',
 	'semanticmaps-unrecognizeddistance' => 'Giá trị $1 không phải là tầm hợp lệ.',
 	'semanticmaps-kml-link' => 'Xem tập tin KML',
 	'semanticmaps-default-kml-pagelink' => 'Xem trang $1',
