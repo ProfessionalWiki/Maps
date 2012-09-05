@@ -186,7 +186,9 @@ $magicWords['mk'] = array(
 /** Malayalam (മലയാളം) */
 $magicWords['ml'] = array(
 	'display_map' => array( 0, 'ഭൂപടം_പ്രദർശിപ്പിക്കുക' ),
-	'display_point' => array( 0, 'ബിന്ദു_പ്രദർശിപ്പിക്കുക', 'ബിന്ദുക്കൾ_പ്രദർശിപ്പിക്കുക' ),
+	'display_point' => array( 0, 'ബിന്ദു_പ്രദർശിപ്പിക്കുക' ),
+	'display_points' => array( 0, 'ബിന്ദുക്കൾ_പ്രദർശിപ്പിക്കുക' ),
+	'display_line' => array( 0, 'രേഖ_പ്രദർശിപ്പിക്കുക' ),
 	'geocode' => array( 0, 'ജിയോകോഡ്' ),
 	'geodistance' => array( 0, 'ഭൗമദൂരം' ),
 	'finddestination' => array( 0, 'ലക്ഷ്യംതിരയുക' ),

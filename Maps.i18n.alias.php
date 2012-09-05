@@ -47,6 +47,11 @@ $specialPageAliases['mk'] = array(
 	'MapEditor' => array( 'УредникНаКарти' ),
 );
 
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'MapEditor' => array( 'ഭൂപടതിരുത്തലുപാധി' ),
+);
+
 /** Dutch (Nederlands) */
 $specialPageAliases['nl'] = array(
 	'MapEditor' => array( 'Kaarteditor' ),
