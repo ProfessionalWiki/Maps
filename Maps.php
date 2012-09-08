@@ -104,8 +104,6 @@ $wgAutoloadClasses['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/i
 
 
 // TODO: migrate to Params
-$wgAutoloadClasses['CriterionIsDistance'] 		= __DIR__ . '/includes/criteria/CriterionIsDistance.php';
-$wgAutoloadClasses['CriterionIsImage'] 			= __DIR__ . '/includes/criteria/CriterionIsImage.php';
 $wgAutoloadClasses['CriterionIsLocation'] 		= __DIR__ . '/includes/criteria/CriterionIsLocation.php';
 $wgAutoloadClasses['CriterionMapDimension'] 	= __DIR__ . '/includes/criteria/CriterionMapDimension.php';
 $wgAutoloadClasses['CriterionMapLayer'] 		= __DIR__ . '/includes/criteria/CriterionMapLayer.php';
