@@ -2,7 +2,7 @@
 /**
  * Class that holds metadata on circles made up by locations on map.
  *
- * @since 1.1
+ * @since 2.0
  *
  * @file Maps_Circle.php
  * @ingroup Maps

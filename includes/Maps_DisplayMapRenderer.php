@@ -13,7 +13,7 @@
 class MapsDisplayMapRenderer {
 
 	/**
-	 * @since 1.1
+	 * @since 2.0
 	 *
 	 * @var iMappingService
 	 */
@@ -31,7 +31,7 @@ class MapsDisplayMapRenderer {
 	/**
 	 * Returns the HTML to display the map.
 	 *
-	 * @since 1.1
+	 * @since 2.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
@@ -59,7 +59,7 @@ class MapsDisplayMapRenderer {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 1.1
+	 * @since 2.0
 	 *
 	 * @param array $params
 	 * @param Parser $parser
