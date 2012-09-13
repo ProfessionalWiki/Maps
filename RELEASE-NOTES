@@ -8,7 +8,7 @@ version of Semantic Maps. You can find the most upt-do-date version at
 http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
 
 
-=== Semantic Maps 2.0 alpha ===
+=== Semantic Maps 2.0 ===
 (trunk)
 
 ; Compatibility changes
@@ -24,6 +24,7 @@ http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_M
 ; New features
 
 * Added support for the visitedicon parameter to the map result formats.
+* Many new functionality that got added in Maps 2.0 (see the Maps release notes).
 
 ; Other improvements
 
