@@ -87,7 +87,6 @@ $wgAutoloadClasses['MapsImageOverlay'] 			= __DIR__ . '/includes/Maps_ImageOverl
 $wgAutoloadClasses['iMappingService'] 			= __DIR__ . '/includes/iMappingService.php';
 $wgAutoloadClasses['MapsMappingServices'] 		= __DIR__ . '/includes/Maps_MappingServices.php';
 $wgAutoloadClasses['MapsMappingService'] 		= __DIR__ . '/includes/Maps_MappingService.php';
-$wgAutoloadClasses['MapsUtils'] 				= __DIR__ . '/includes/Maps_Utils.php';
 $wgAutoloadClasses['MapsWmsOverlay'] 			= __DIR__ . '/includes/Maps_WmsOverlay.php';
 $wgAutoloadClasses['MapsBaseElement']			= __DIR__ . '/includes/Maps_BaseElement.php';
 $wgAutoloadClasses['MapsBaseFillableElement'] 	= __DIR__ . '/includes/Maps_BaseFillableElement.php';

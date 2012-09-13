@@ -84,7 +84,7 @@ abstract class MapsCommonParameterManipulation extends ItemParameterManipulation
 	}
 
 	private function setLinkFromParameter( &$model , $link ) {
-		if ( MapsUtils::isValidURL( $link ) ) {
+		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
 			$model->setLink( $link );
 		} else {
 			$title = Title::newFromText( $link );
