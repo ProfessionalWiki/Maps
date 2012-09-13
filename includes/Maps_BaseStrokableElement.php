@@ -1,6 +1,6 @@
 <?php
 /**
- * @since 1.1
+ * @since 2.0
  */
 class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapElement {
 

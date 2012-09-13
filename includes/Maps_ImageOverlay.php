@@ -2,7 +2,7 @@
 /**
  * Class that holds metadata on an image overlay.
  *
- * @since 1.1
+ * @since 2.0
  *
  * @file Maps_Rectangle.php
  * @ingroup Maps

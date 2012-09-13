@@ -50,7 +50,7 @@ class MapsLocation extends MapsBaseElement {
 	protected $icon = '';
 
 	/**
-	 * @since 1.1
+	 * @since 2.0
 	 *
 	 * @var string
 	 */
@@ -319,7 +319,7 @@ class MapsLocation extends MapsBaseElement {
 	/**
 	 * Sets the group
 	 *
-	 * @since 1.1
+	 * @since 2.0
 	 *
 	 * @param string $group
 	 */
@@ -341,7 +341,7 @@ class MapsLocation extends MapsBaseElement {
 	/**
 	 * Returns the group.
 	 *
-	 * @since 1.1
+	 * @since 2.0
 	 *
 	 * @return string
 	 */
@@ -352,7 +352,7 @@ class MapsLocation extends MapsBaseElement {
 	/**
 	 * Returns whether Location is asigned to a group.
 	 *
-	 * @since 1.1
+	 * @since 2.0
 	 *
 	 * @return string
 	 */

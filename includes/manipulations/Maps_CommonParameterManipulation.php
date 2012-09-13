@@ -97,7 +97,7 @@ abstract class MapsCommonParameterManipulation extends ItemParameterManipulation
 	 * @static
 	 * @param $link
 	 * @return bool|string
-	 * @since 1.1
+	 * @since 2.0
 	 */
 	private function isLinkParameter( $link ) {
 		if ( strpos( $link , 'link:' ) === 0 ) {
