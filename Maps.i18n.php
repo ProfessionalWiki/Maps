@@ -154,7 +154,6 @@ $1',
 	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',
 
 	// Mapping services
-	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_googlemaps3' => 'Google Maps v3',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_osm' => 'OpenStreetMap',
@@ -169,20 +168,6 @@ $1',
 	'maps-par-width' => 'Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
 	'maps-par-height' => 'Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
     'maps-par-centre' => 'The location on which the map should be centred',
-
-	// Google Maps v2
-	'maps-googlemaps2-incompatbrowser' => 'Your browser is not compatible with Google Maps v2.',
-	'maps_overlays' => 'Overlays',
-	'maps_photos' => 'Photos',
-	'maps_videos' => 'Videos',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webcams',
-	'maps-googlemaps2-par-type' => 'The map type to initially show.',
-	'maps-googlemaps2-par-types' => 'The map types that will be available via the type control.',
-	'maps-googlemaps2-par-controls' => 'The controls to place on the map.',
-	'maps-googlemaps2-par-autozoom' => 'Enable scrolling using the mousewheel.',
-	'maps-googlemaps2-par-kml' => 'KML files to load onto the map.',
-	'maps-googlemaps2-par-overlays' => 'Overlays the user can turn on.',
 
 	// Google Maps v3
 	'maps-googlemaps3-incompatbrowser' => 'Your browser is not compatible with Google Maps v3.',
@@ -273,7 +258,6 @@ $messages['qqq'] = array(
 	'maps-longitude' => '{{Identical|Longitude}}',
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
-	'maps_googlemaps2' => '{{optional}}',
 	'maps_googlemaps3' => '{{optional}}',
 	'maps_openlayers' => '{{optional}}',
 	'maps_osm' => '{{optional}}',
