@@ -76,34 +76,28 @@ class MapsDisplayMap extends ParserHook {
 			'default' => array(),
 			'islist' => true,
 			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
-			'message' => 'maps-displaypoints-par-coordinates', // TODO
 		);
 
 		$params['title'] = array(
 			'name' => 'title',
 			'default' => $egMapsDefaultTitle,
-			'message' => 'maps-displaypoints-par-title', // TODO
 		);
 
 		$params['label'] = array(
 			'default' => $egMapsDefaultLabel,
-			'message' => 'maps-displaypoints-par-label', // TODO
 			'aliases' => 'text',
 		);
 
 		$params['icon'] = array( // TODO: image param
 			'default' => '', // TODO
-			'message' => 'maps-displaypoints-par-icon', // TODO
 		);
 
 		$params['visitedicon'] = array(
 			'default' => '', //TODO: image param
-			'message' => 'maps-displaypmap-par-visitedicon', //TODO
 		);
 
 		$params['lines'] = array(
 			'default' => array(),
-			'message' => 'maps-displaypoints-par-lines', // TODO
 			'criteria' => new CriterionLine( '~' ),
 			'manipulations' => new MapsParamLine( '~' ),
 			'delimiter' => ';',
@@ -112,7 +106,6 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['polygons'] = array(
 			'default' => array(),
-			'message' => 'maps-displaypoints-par-polygons', // TODO
 			'criteria' => new CriterionPolygon( '~' ),
 			'manipulations' => new MapsParamPolygon( '~' ),
 			'delimiter' => ';',
@@ -121,7 +114,6 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['circles'] = array(
 			'default' => array(),
-			'message' => 'maps-displaypoints-par-circles', // TODO
 			'manipulations' => new MapsParamCircle( '~' ),
 			'delimiter' => ';',
 			'islist' => true,
@@ -129,7 +121,6 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['rectangles'] = array(
 			'default' => array(),
-			'message' => 'maps-displaypoints-par-rectangles', // TODO
 			'manipulations' => new MapsParamRectangle( '~' ),
 			'delimiter' => ';',
 			'islist' => true,
@@ -138,19 +129,16 @@ class MapsDisplayMap extends ParserHook {
 		$params['copycoords'] = array(
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-displaypoints-par-copycoords', // TODO
 		);
 
 		$params['static'] = array(
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-displaypoints-par-static', // TODO
 		);
 
 		$params['wmsoverlay'] = array(
 			'type' => 'string',
 			'default' => false,
-			'message' => 'maps-displaylines-par-wmsoverlay',
 			'manipulations' => new MapsParamWmsOverlay( ' ' ),
 			'delimiter' => ';',
 		);
@@ -159,7 +147,6 @@ class MapsDisplayMap extends ParserHook {
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
-			'message' => 'maps-displaypoints-par-maxzoom', // TODO
 			'dependencies' => 'minzoom',
 		);
 
@@ -167,9 +154,14 @@ class MapsDisplayMap extends ParserHook {
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
-			'message' => 'maps-displaypoints-par-minzoom', // TODO
 			'lowerbound' => 0,
 		);
+
+		foreach ( $params as $name => &$param ) {
+			if ( !array_key_exists( 'message', $param ) ) {
+				$param['message'] = 'maps-displaymap-par-' . $name;
+			}
+		}
 		
 		return $params;
 	}

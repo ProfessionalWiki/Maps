@@ -103,17 +103,17 @@ This can affect the default geocoding service value.',
 	'maps-displaymap-par-visitedicon' => 'The local of a file to use as visited icon',
 
 	// display_points parser hook
-	'maps-displaypoints-par-zoom' => 'Allows setting the zoom level of the map.
+	'maps-displaymap-par-zoom' => 'Allows setting the zoom level of the map.
 When not provided and multiple markers are present on the map, the best fitting zoom will be taken, not the configurable default.',
-	'maps-displaypoints-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
-	'maps-displaypoints-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
-	'maps-displaypoints-par-centre' => "Allows setting the coordinates of the map's centre for display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
+	'maps-displaymap-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
+	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's centre for display_point(s).
 Accepts both addresses and coordinates.
 When this property is not provided, the map will centre itself on the provided marker, or between the provided markers.",
-	'maps-displaypoints-par-title' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific title.
+	'maps-displaymap-par-title' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific title.
 When used together with label, the title will be bold and underlined.',
-	'maps-displaypoints-par-label' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific label.',
-	'maps-displaypoints-par-icon' => 'Allows setting the icon used for all markers.',
+	'maps-displaymap-par-label' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific label.',
+	'maps-displaymap-par-icon' => 'Allows setting the icon used for all markers.',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
@@ -511,17 +511,17 @@ Si ye «non», se xeocodificarán tolos valores, incluyendo les coordenaes váli
 Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
 	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
 	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
-	'maps-displaypoints-par-zoom' => "Permite configurar el nivel de zoom do mapa.
+	'maps-displaymap-par-zoom' => "Permite configurar el nivel de zoom do mapa.
 Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
-	'maps-displaypoints-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
-	'maps-displaypoints-par-coordinates' => "Un llugar o más pa amosar nel mapa. S'indicarán con un marcador.",
-	'maps-displaypoints-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
+	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
+	'maps-displaymap-par-coordinates' => "Un llugar o más pa amosar nel mapa. S'indicarán con un marcador.",
+	'maps-displaymap-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
 Almite tanto direiciones como coordenaes.
 Cuando nun se da esta propiedá, el mapa centraráse nel marcador proporcionáu, o entre los marcadores proporcionaos.',
-	'maps-displaypoints-par-title' => "Permite configurar el testu qu'apaecerá nes ventanes emerxentes de tolos marcadores que nun tengan un títulu propiu.
+	'maps-displaymap-par-title' => "Permite configurar el testu qu'apaecerá nes ventanes emerxentes de tolos marcadores que nun tengan un títulu propiu.
 Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
-	'maps-displaypoints-par-label' => "Permite configurar el testu qu'apaecerá nes ventanes emerxentes de tolos marcadores que nun tengan un títulu propiu.",
-	'maps-displaypoints-par-icon' => "Permite configurar l'iconu qu'usen tolos marcadores.",
+	'maps-displaymap-par-label' => "Permite configurar el testu qu'apaecerá nes ventanes emerxentes de tolos marcadores que nun tengan un títulu propiu.",
+	'maps-displaymap-par-icon' => "Permite configurar l'iconu qu'usen tolos marcadores.",
 	'validation-error-invalid-location' => 'El parámetru $1 tien de ser un llugar válidu.',
 	'validation-error-invalid-locations' => 'El parámetru $1 tien de ser un o más llugares válidos.',
 	'validation-error-invalid-width' => 'El parámetru $1 tien de ser un anchor válidu.',
@@ -644,17 +644,17 @@ $messages['be-tarask'] = array(
 Гэта ўплывае на значэньне сэрвісу геаграфічнай кадыроўкі па змоўчваньні.',
 	'maps-displaymap-par-mappingservice' => 'Дазваляе ўстанаўліваць сэрвіс мапаў, які будзе выкарыстоўвацца для стварэньня мапы.',
 	'maps-displaymap-par-coordinates' => 'Месцазнаходжаньне, на якім мапа будзе цэнтравацца.',
-	'maps-displaypoints-par-zoom' => 'Дазваляе зьмяняць павелічэньне мапы.
+	'maps-displaymap-par-zoom' => 'Дазваляе зьмяняць павелічэньне мапы.
 Калі гэта немагчыма, ці на мапе ёсьць некалькі маркераў, замест пазначанага ў наладах будзе выбранае найбольш слушнае павелічэньне.',
-	'maps-displaypoints-par-mappingservice' => 'Дазваляе ўстанаўліваць сэрвіс мапаў, які будзе выкарыстоўвацца для стварэньня мапы.',
-	'maps-displaypoints-par-coordinates' => 'Адно ці болей месцазнаходжаньняў для паказу на мапе. Яны будуць паказаныя маркерамі.',
-	'maps-displaypoints-par-centre' => 'Дазваляе ўстанаўліваць каардынаты цэнтру мапы для display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Дазваляе ўстанаўліваць сэрвіс мапаў, які будзе выкарыстоўвацца для стварэньня мапы.',
+	'maps-displaymap-par-coordinates' => 'Адно ці болей месцазнаходжаньняў для паказу на мапе. Яны будуць паказаныя маркерамі.',
+	'maps-displaymap-par-centre' => 'Дазваляе ўстанаўліваць каардынаты цэнтру мапы для display_point(s).
 Прымаюцца адрасы і каардынаты.
 Калі гэтая ўласьцівасьць не пададзеная, мапа будзе цэнтравацца на пададзеным маркеры ці паміж пададзенымі маркерамі.',
-	'maps-displaypoints-par-title' => 'Дазваляе ўстанаўліваць тэкст, які будзе паказаны ў разгортваемым тэксьце тых маркераў, якія ня маюць асобных назваў.
+	'maps-displaymap-par-title' => 'Дазваляе ўстанаўліваць тэкст, які будзе паказаны ў разгортваемым тэксьце тых маркераў, якія ня маюць асобных назваў.
 Калі выкарыстоўваецца з меткамі, назва будзе паказаная тлустым тэкстам і падкрэсьленая.',
-	'maps-displaypoints-par-label' => 'Дазваляе ўстанаўліваць тэкст, які будзе паказаны ў разгортваемым тэксьце тых маркераў, якія ня маюць асобных метак.',
-	'maps-displaypoints-par-icon' => 'Дазваляе ўстанаўліваць выявы для ўсіх маркераў.',
+	'maps-displaymap-par-label' => 'Дазваляе ўстанаўліваць тэкст, які будзе паказаны ў разгортваемым тэксьце тых маркераў, якія ня маюць асобных метак.',
+	'maps-displaymap-par-icon' => 'Дазваляе ўстанаўліваць выявы для ўсіх маркераў.',
 	'validation-error-invalid-location' => 'Парамэтар $1 мусіць быць слушным знаходжаньнем.',
 	'validation-error-invalid-locations' => 'Парамэтар $1 мусіць быць адным ці болей слушнымі знаходжаньнямі.',
 	'validation-error-invalid-width' => 'Парамэтар $1 мусіць быць слушнай шырынёй.',
@@ -1100,16 +1100,16 @@ Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordi
 Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.',
 	'maps-displaymap-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll',
-	'maps-displaypoints-par-zoom' => 'Der Detaillierungsgrad (Zoom) der Karte.
+	'maps-displaymap-par-zoom' => 'Der Detaillierungsgrad (Zoom) der Karte.
 Sofern keiner angegeben wurde und mehrerer Markierungen auf der Karte vorhanden sind, wird der für deren gemeinsame Darstellung passende Zoom verwendet und nicht der Standardwert des Kartografiediensts',
-	'maps-displaypoints-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
-	'maps-displaypoints-par-coordinates' => 'Der oder die Standorte, die auf der Karte angezeigt werden sollen. Sie werden mit einer Markierung versehen sein.',
-	'maps-displaypoints-par-centre' => 'Die Koordinaten, die zur Zentrierung der Karte verwendet werden sollen.
+	'maps-displaymap-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
+	'maps-displaymap-par-coordinates' => 'Der oder die Standorte, die auf der Karte angezeigt werden sollen. Sie werden mit einer Markierung versehen sein.',
+	'maps-displaymap-par-centre' => 'Die Koordinaten, die zur Zentrierung der Karte verwendet werden sollen.
 Sowohl die direkte Angabe von Koordinaten wie auch die indirekte Angabe einer Adresse ist möglich.
 Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markierung, bzw. zwischen den darzustellenden Markierungen zentrieren.',
-	'maps-displaypoints-par-title' => 'Der Text, der in den Pop-up-Fenstern zu den Markierungen angezeigt werden soll, die über keinen eigenständigen Titel verfügen. Sofern dieser zusammen mit einer Beschriftung genutzt wird, wird der Titel in Fettschrift und unterstrichen angezeigt.',
-	'maps-displaypoints-par-label' => 'Der Text, der in den Pop-up-Fenstern der Markierungen angezeigt werden soll, die über keine eigenständige Beschriftung verfügen',
-	'maps-displaypoints-par-icon' => 'Das Symbol, das für alle Markierungen genutzt werden soll',
+	'maps-displaymap-par-title' => 'Der Text, der in den Pop-up-Fenstern zu den Markierungen angezeigt werden soll, die über keinen eigenständigen Titel verfügen. Sofern dieser zusammen mit einer Beschriftung genutzt wird, wird der Titel in Fettschrift und unterstrichen angezeigt.',
+	'maps-displaymap-par-label' => 'Der Text, der in den Pop-up-Fenstern der Markierungen angezeigt werden soll, die über keine eigenständige Beschriftung verfügen',
+	'maps-displaymap-par-icon' => 'Das Symbol, das für alle Markierungen genutzt werden soll',
 	'validation-error-invalid-location' => 'Parameter $1 muss einem gültigen Standort entsprechen.',
 	'validation-error-invalid-locations' => 'Parameter $1 muss einem oder mehreren gültigen Standorten entsprechen.',
 	'validation-error-invalid-width' => 'Parameter $1 muss einer gültigen Breite entsprechen.',
@@ -1437,17 +1437,17 @@ Cuando sea "no", todos los valores serán geocodificados, incluso si son coorden
 Esto puede afectar al valor predeterminado del servicio de geocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar el servicio de cartografía que se utilizará para generar el mapa.',
 	'maps-displaymap-par-coordinates' => 'La localización respecto de la cual el mapa aparecerá inicialmente centrado.',
-	'maps-displaypoints-par-zoom' => 'Permite configurar el nivel de zoom del mapa.
+	'maps-displaymap-par-zoom' => 'Permite configurar el nivel de zoom del mapa.
 Cuando no se proporciona y varios marcadores están presentes en el mapa, se tomará el mejor ajuste de zoom, y no el valor configurado por defecto.',
-	'maps-displaypoints-par-mappingservice' => 'Permite configurar el servicio de cartografía que se utilizará para generar el mapa.',
-	'maps-displaypoints-par-coordinates' => 'Una o más ubicaciones a mostrar en el mapa. Se indicarán con un marcador.',
-	'maps-displaypoints-par-centre' => 'Permite establecer las coordenadas del centro del mapa mediante display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Permite configurar el servicio de cartografía que se utilizará para generar el mapa.',
+	'maps-displaymap-par-coordinates' => 'Una o más ubicaciones a mostrar en el mapa. Se indicarán con un marcador.',
+	'maps-displaymap-par-centre' => 'Permite establecer las coordenadas del centro del mapa mediante display_point(s).
 Acepta tanto direcciones como coordenadas.
 Cuando esta propiedad no se indica, el mapa se centrará en torno al marcador proporcionado, o entre los marcadores proporcionados.',
-	'maps-displaypoints-par-title' => 'Permite configurar el texto que se mostrará en las ventanas emergentes de todos los marcadores que no tienen un título específico.
+	'maps-displaymap-par-title' => 'Permite configurar el texto que se mostrará en las ventanas emergentes de todos los marcadores que no tienen un título específico.
 Cuando se utiliza junto con la etiqueta, el título aparecerá en negrita y subrayado.',
-	'maps-displaypoints-par-label' => 'Permite establecer el texto que se mostrará en las ventanas emergentes de todos los marcadores que no tienen una etiqueta específica.',
-	'maps-displaypoints-par-icon' => 'Permite configurar el icono utilizado para todos los marcadores.',
+	'maps-displaymap-par-label' => 'Permite establecer el texto que se mostrará en las ventanas emergentes de todos los marcadores que no tienen una etiqueta específica.',
+	'maps-displaymap-par-icon' => 'Permite configurar el icono utilizado para todos los marcadores.',
 	'validation-error-invalid-location' => 'El parámetro $1 deber ser una ubicación válida.',
 	'validation-error-invalid-locations' => 'Parámetro $1 debe ser una o más ubicaciones válidas.',
 	'validation-error-invalid-width' => 'El parámetro $1 debe ser un ancho válido.',
@@ -1788,17 +1788,17 @@ Si cette valeur est « non », chacune des valeurs sera géocodée, même s'il s
 Cela peut affecter la valeur par défaut du service de géocodage.',
 	'maps-displaymap-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
 	'maps-displaymap-par-coordinates' => "L'emplacement sur lequel la carte sera initialement centrée.",
-	'maps-displaypoints-par-zoom' => "Permet de définir le niveau de zoom de la carte.
+	'maps-displaymap-par-zoom' => "Permet de définir le niveau de zoom de la carte.
 Lorsqu'il n'est pas fourni et que plusieurs marqueurs sont présents sur la carte, le meilleur zoom sera pris, et non pas la valeur par défaut configurable.",
-	'maps-displaypoints-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
-	'maps-displaypoints-par-coordinates' => 'Un ou plusieurs emplacements à afficher sur la carte. Ils seront indiqués avec un marqueur.',
-	'maps-displaypoints-par-centre' => "Permet de définir les coordonnées du centre de la carte pour display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
+	'maps-displaymap-par-coordinates' => 'Un ou plusieurs emplacements à afficher sur la carte. Ils seront indiqués avec un marqueur.',
+	'maps-displaymap-par-centre' => "Permet de définir les coordonnées du centre de la carte pour display_point(s).
 Accepte les adresses et les coordonnées.!
 Lorsque cette propriété n'est pas fournie, la carte se recentre sur le marqueur fourni, ou entre les marqueurs fournis.",
-	'maps-displaypoints-par-title' => "Permet de définir le texte qui sera affiché dans les pop-ups de tous les marqueurs qui ne disposent pas d'un titre spécifique.
+	'maps-displaymap-par-title' => "Permet de définir le texte qui sera affiché dans les pop-ups de tous les marqueurs qui ne disposent pas d'un titre spécifique.
 Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
-	'maps-displaypoints-par-label' => "Permet de définir le texte qui sera affiché dans les fenêtres surgissantes de tous les marqueurs qui n'ont pas une étiquette spécifique.",
-	'maps-displaypoints-par-icon' => "Permet de définir l'icône utilisée pour tous les marqueurs.",
+	'maps-displaymap-par-label' => "Permet de définir le texte qui sera affiché dans les fenêtres surgissantes de tous les marqueurs qui n'ont pas une étiquette spécifique.",
+	'maps-displaymap-par-icon' => "Permet de définir l'icône utilisée pour tous les marqueurs.",
 	'validation-error-invalid-location' => 'Le paramètre $1 doit être un emplacement valide.',
 	'validation-error-invalid-locations' => 'Le paramètre $1 doit être un ou plusieurs emplacement(s) valide(s).',
 	'validation-error-invalid-width' => 'Le paramètre $1 doit être une largeur valide.',
@@ -2067,17 +2067,17 @@ Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenad
 Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'A localización do mapa que aparecerá inicialmente.',
-	'maps-displaypoints-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
+	'maps-displaymap-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
 Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
-	'maps-displaypoints-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
-	'maps-displaypoints-par-coordinates' => 'Unha ou máis localización a mostrar no mapa. Indicaranse cun marcador.',
-	'maps-displaypoints-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
+	'maps-displaymap-par-coordinates' => 'Unha ou máis localización a mostrar no mapa. Indicaranse cun marcador.',
+	'maps-displaymap-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
 Admite tanto enderezos como coordenadas.
 Cando non se indica esa propiedade, o mapa centrarase no marcador proporcionado ou entre os marcadores proporcionados.',
-	'maps-displaypoints-par-title' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen un título específico.
+	'maps-displaymap-par-title' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen un título específico.
 Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliñado.',
-	'maps-displaypoints-par-label' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen unha etiqueta específica.',
-	'maps-displaypoints-par-icon' => 'Permite configurar a icona usada para todos os marcadores.',
+	'maps-displaymap-par-label' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen unha etiqueta específica.',
+	'maps-displaymap-par-icon' => 'Permite configurar a icona usada para todos os marcadores.',
 	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
 	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
 	'validation-error-invalid-width' => 'O parámetro $1 debe ser un largo válido.',
@@ -2322,17 +2322,17 @@ $messages['he'] = array(
 זה יכול להשפיע על ערך ברירת המחדל של שירות הקידוד הגאוגרפי.',
 	'maps-displaymap-par-mappingservice' => 'לאפשר להגדיר שירות מיפוי שישמש ליצרת המפה.',
 	'maps-displaymap-par-coordinates' => 'באיזה מיקום המפה תתמרכז בתחילה.',
-	'maps-displaypoints-par-zoom' => 'מאפשר קביעת קמת התקריב של המפה.
+	'maps-displaymap-par-zoom' => 'מאפשר קביעת קמת התקריב של המפה.
 כאשר נתון זה לא מסופק וסמנים שונים נמצאים על המפה, יילקח התקריב המתאים ביותר, לא ברירת המחדל הניתנת להגדרה.',
-	'maps-displaypoints-par-mappingservice' => 'מאפשר קביעת שירות המיפוי שיחולל את המפה.',
-	'maps-displaypoints-par-coordinates' => 'מיקום אחד או יותר להצגה על המפה. הם יסומנו על המפה בסמנים.',
-	'maps-displaypoints-par-centre' => 'מאפשר קביעת נקודות ציון של מרכז המפה עבור מופעי display_point.
+	'maps-displaymap-par-mappingservice' => 'מאפשר קביעת שירות המיפוי שיחולל את המפה.',
+	'maps-displaymap-par-coordinates' => 'מיקום אחד או יותר להצגה על המפה. הם יסומנו על המפה בסמנים.',
+	'maps-displaymap-par-centre' => 'מאפשר קביעת נקודות ציון של מרכז המפה עבור מופעי display_point.
 מקבל כתובות ונקודות ציון.
 כאשר המאפיין הזה לא מצוין, המפה תמרכז את עצמה על הסמן שצוין או בין סמנים שצוינו.',
-	'maps-displaypoints-par-title' => 'מאפשר קביעת טקסט שיוצג בחלונות קופצים על כל הסמנים שאין להם כותרת מוגדרת.
+	'maps-displaymap-par-title' => 'מאפשר קביעת טקסט שיוצג בחלונות קופצים על כל הסמנים שאין להם כותרת מוגדרת.
 כאשר נעשה שימוש בזה יחד עם תווית, הכותרת תהיה בולטת ועם קו תחתי.',
-	'maps-displaypoints-par-label' => 'מאפשר להציב מלל שיוצג בכל החלונות הקופצים של כל הסמנים שאין להם תווית מסוימת.',
-	'maps-displaypoints-par-icon' => 'לאפשר להציב סמל לכל הסמנים.',
+	'maps-displaymap-par-label' => 'מאפשר להציב מלל שיוצג בכל החלונות הקופצים של כל הסמנים שאין להם תווית מסוימת.',
+	'maps-displaymap-par-icon' => 'לאפשר להציב סמל לכל הסמנים.',
 	'validation-error-invalid-location' => 'הערך $1 צריך להיות מיקום תקין.',
 	'validation-error-invalid-locations' => 'הערך $1 צריך להיות מיקום תקין אחד או יותר.',
 	'validation-error-invalid-width' => 'הערך $1 צריך להיות רוחב תקין.',
@@ -2512,9 +2512,9 @@ $messages['hsb'] = array(
 	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
 	'maps-displaymap-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
 	'maps-displaymap-par-coordinates' => 'Městno, na kotrež ma so karta spočatnje centrować.',
-	'maps-displaypoints-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
-	'maps-displaypoints-par-coordinates' => 'Jedne městno abo wjace městnow, kotrež maja so na karće zwobraznić. Woznamjenjeja so z marku.',
-	'maps-displaypoints-par-icon' => 'Zmóžnja postajenje symbola, kotryž ma so za wšě marki wužiwać.',
+	'maps-displaymap-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
+	'maps-displaymap-par-coordinates' => 'Jedne městno abo wjace městnow, kotrež maja so na karće zwobraznić. Woznamjenjeja so z marku.',
+	'maps-displaymap-par-icon' => 'Zmóžnja postajenje symbola, kotryž ma so za wšě marki wužiwać.',
 	'validation-error-invalid-location' => 'Parameter $1 dyrbi płaćiwe městno być.',
 	'validation-error-invalid-locations' => 'Parameter $1 dyrbi jedne městno abo wjacore městna być.',
 	'validation-error-invalid-width' => 'Parameter $1 dyrbi płaćiwa šěrokosć być.',
@@ -2730,17 +2730,17 @@ Si es "no", cata valor essera geocodificate, mesmo le coordinatas valide.',
 Isto pote influentiar le valor predefinite de servicio de geocodification.',
 	'maps-displaymap-par-mappingservice' => 'Permitte definir le servicio cartographic a usar pro generar le carta.',
 	'maps-displaymap-par-coordinates' => 'Le loco in le qual le carta essera initialmente centrate.',
-	'maps-displaypoints-par-zoom' => 'Permitte definir le nivello de zoom del carta.
+	'maps-displaymap-par-zoom' => 'Permitte definir le nivello de zoom del carta.
 Si isto non es fornite, e multiple marcatores es presente in le cata, le zoom que los arrangia melio essera prendite, non le predefinition configurabile.',
-	'maps-displaypoints-par-mappingservice' => 'Permitte definir le servicio cartographic a usar pro generar le carta.',
-	'maps-displaypoints-par-coordinates' => 'Un o plus locos a monstrar in le carta. Illos essera indicate con un marcator.',
-	'maps-displaypoints-par-centre' => 'Permitte definir le coordinatas del centro del carta pro display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Permitte definir le servicio cartographic a usar pro generar le carta.',
+	'maps-displaymap-par-coordinates' => 'Un o plus locos a monstrar in le carta. Illos essera indicate con un marcator.',
+	'maps-displaymap-par-centre' => 'Permitte definir le coordinatas del centro del carta pro display_point(s).
 Accepta e adresses e coordinatas.
 Si iste proprietate non es fornite, le carta se centrara in le marcator fornite, o inter le marcatores fornite.',
-	'maps-displaypoints-par-title' => 'Permitte definir texto que essera monstrate in le pop-ups de tote le marcatores que non ha un titulo specific.
+	'maps-displaymap-par-title' => 'Permitte definir texto que essera monstrate in le pop-ups de tote le marcatores que non ha un titulo specific.
 Si usate con un etiquetta, le titulo essera monstrate in litteras grasse e sublineate.',
-	'maps-displaypoints-par-label' => 'Permitte definir texto que essera monstrate in le pop-ups de tote le marcatores que non ha un etiquetta specific.',
-	'maps-displaypoints-par-icon' => 'Permitte definir le icone usate pro tote le marcatores.',
+	'maps-displaymap-par-label' => 'Permitte definir texto que essera monstrate in le pop-ups de tote le marcatores que non ha un etiquetta specific.',
+	'maps-displaymap-par-icon' => 'Permitte definir le icone usate pro tote le marcatores.',
 	'validation-error-invalid-location' => 'Le parametro $1 debe esser un loco valide.',
 	'validation-error-invalid-locations' => 'Le parametro $1 debe esser un o plus locos valide.',
 	'validation-error-invalid-width' => 'Le parametro $1 debe esser un latitude valide.',
@@ -2912,17 +2912,17 @@ Jika tidak, setiap nilai akan diubah menjadi geokode, bahkan koordinat yang sah.
 Ini dapat memengaruhi nilai bawaan layanan geokode.',
 	'maps-displaymap-par-mappingservice' => 'Memungkinkan pengaturan layanan pemetaan yang akan digunakan untuk menghasilkan peta.',
 	'maps-displaymap-par-coordinates' => 'Lokasi pusat awal dari peta.',
-	'maps-displaypoints-par-zoom' => 'Memungkinkan pengaturan tingkat pembesaran peta.
+	'maps-displaymap-par-zoom' => 'Memungkinkan pengaturan tingkat pembesaran peta.
 Jika tidak diberikan dan beberapa penanda ada pada peta, akan dipilih pembesaran yang paling muat, bukan bawaan yang disetel.',
-	'maps-displaypoints-par-mappingservice' => 'Memungkinkan pengaturan layanan pemetaan yang akan digunakan untuk menghasilkan peta.',
-	'maps-displaypoints-par-coordinates' => 'Satu atau beberapa lokasi akan ditampilkan pada peta. Lokasi tersebut akan ditunjukkan dengan penanda.',
-	'maps-displaypoints-par-centre' => 'Memungkinkan pengaturan koordinat pusat peta untuk display_point.
+	'maps-displaymap-par-mappingservice' => 'Memungkinkan pengaturan layanan pemetaan yang akan digunakan untuk menghasilkan peta.',
+	'maps-displaymap-par-coordinates' => 'Satu atau beberapa lokasi akan ditampilkan pada peta. Lokasi tersebut akan ditunjukkan dengan penanda.',
+	'maps-displaymap-par-centre' => 'Memungkinkan pengaturan koordinat pusat peta untuk display_point.
 Dapat menerima alamat maupun koordinat.
 Jika tidak diberikan, peta akan menentukan pusatnya pada penanda yang ada atau di antara penanda yang diberikan.',
-	'maps-displaypoints-par-title' => 'Memungkinkan pengaturan teks yang akan ditampilkan pada munculan dari semua penanda yang tidak memiliki judul tertentu.
+	'maps-displaymap-par-title' => 'Memungkinkan pengaturan teks yang akan ditampilkan pada munculan dari semua penanda yang tidak memiliki judul tertentu.
 Jika digunakan bersama dengan label, judul akan ditebalkan dan memiliki garis bawah.',
-	'maps-displaypoints-par-label' => 'Memungkinkan pengaturan teks yang akan ditampilkan pada munculan dari semua tanda yang tidak memiliki label tertentu.',
-	'maps-displaypoints-par-icon' => 'Memungkinkan pengaturan ikon yang digunakan semua penanda.',
+	'maps-displaymap-par-label' => 'Memungkinkan pengaturan teks yang akan ditampilkan pada munculan dari semua tanda yang tidak memiliki label tertentu.',
+	'maps-displaymap-par-icon' => 'Memungkinkan pengaturan ikon yang digunakan semua penanda.',
 	'validation-error-invalid-location' => 'Parameter $1 harus merupakan lokasi yang sah.',
 	'validation-error-invalid-locations' => 'Parameter $1 harus berupa satu atau lebih lokasi yang sah.',
 	'validation-error-invalid-width' => 'Parameter $1 harus merupakan lebar yang sah.',
@@ -3389,7 +3389,7 @@ $messages['ksh'] = array(
 	'maps-layer-errors' => 'Fähler',
 	'maps-distance-par-unit' => 'De Einheit för der Afschtand dren ußzejävve.',
 	'maps-displaymap-par-coordinates' => 'Dä Plaz, dä aanfänglesch en de Medde vun dä Kaat lijje sull.',
-	'maps-displaypoints-par-icon' => 'Määd et müjjelesch, e Minni_Belldsche faßzelääje, waoh met all de Makeerunge jezeish wääde.',
+	'maps-displaymap-par-icon' => 'Määd et müjjelesch, e Minni_Belldsche faßzelääje, waoh met all de Makeerunge jezeish wääde.',
 	'validation-error-invalid-location' => 'Dä Parameeter $1 mos ene jölteje Plaz sin.',
 	'validation-error-invalid-locations' => 'Dä Parameeter $1 moß eine jölteje Plaz udder an Aanzahl jöltijje Pläz sin.',
 	'validation-error-invalid-width' => 'Dä Parameeter $1 mos en jölteje Breedt sin.',
@@ -3640,17 +3640,17 @@ $messages['mk'] = array(
 Ова може да влијае на основната вредност за служба за геокодирање.',
 	'maps-displaymap-par-mappingservice' => 'Овозможува задавање на картографска служба што ќе се користи за создавање на картата.',
 	'maps-displaymap-par-coordinates' => 'На кое место картата ќе биде првично сосредоточена.',
-	'maps-displaypoints-par-zoom' => 'Овозможува задавање на приближеност на картата.
+	'maps-displaymap-par-zoom' => 'Овозможува задавање на приближеност на картата.
 Ако ова не е зададено, а на картата има повеќе обележувачи, тогаш ќе ви се прикаже приближеноста што најмногу одговара на екранот, наместо прилагодливата стандардна приближеност.',
-	'maps-displaypoints-par-mappingservice' => 'Овозможува назначување на картографска служба што ќе се користи за создавање на картата.',
-	'maps-displaypoints-par-coordinates' => 'Едно или повеќе места за приказ на картата. Ќе бидат означени со обележувач.',
-	'maps-displaypoints-par-centre' => 'Овозможува укажување на координати на средиштето на картата за display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Овозможува назначување на картографска служба што ќе се користи за создавање на картата.',
+	'maps-displaymap-par-coordinates' => 'Едно или повеќе места за приказ на картата. Ќе бидат означени со обележувач.',
+	'maps-displaymap-par-centre' => 'Овозможува укажување на координати на средиштето на картата за display_point(s).
 Се прифаќаат и адреси и координати.
 Ако ова не е зададено, тогаш картата ќе се сосредоточи во дадениот обележувач, или помеѓу дадените обележувачи.',
-	'maps-displaypoints-par-title' => 'Овозможува задавање на текст што ќе се прикажува во скокачките прозорчиња на сите обележувачи што немаат конкретен наслов.
+	'maps-displaymap-par-title' => 'Овозможува задавање на текст што ќе се прикажува во скокачките прозорчиња на сите обележувачи што немаат конкретен наслов.
 Ако се користат заедно со ознака, насловот ќе биде задебелен и ќе има линија под него.',
-	'maps-displaypoints-par-label' => 'Овозможува задавање на текст што ќе се прикажува во скокачките прозорчиња на сите обележувачи што немаат конкретна ознака.',
-	'maps-displaypoints-par-icon' => 'Овозможува задавање на икона што ќе се користи за сите обележувачи.',
+	'maps-displaymap-par-label' => 'Овозможува задавање на текст што ќе се прикажува во скокачките прозорчиња на сите обележувачи што немаат конкретна ознака.',
+	'maps-displaymap-par-icon' => 'Овозможува задавање на икона што ќе се користи за сите обележувачи.',
 	'validation-error-invalid-location' => 'Параметарот $1 мора да претставува важечка местоположба.',
 	'validation-error-invalid-locations' => 'Параметарот $1 мора да претставува една или повеќе важечки местоположби.',
 	'validation-error-invalid-width' => 'Параметарот $1 мора да претставува важечка ширина.',
@@ -3847,17 +3847,17 @@ Jika tidak, semua nilai akan ditukar menjadi geokod, termasuk koordinat yang sah
 Ini boleh mempengaruhi nilai asali perkhidmatan geokod.',
 	'maps-displaymap-par-mappingservice' => 'Membolehkan penetapan perkhidmatan pemetaan yang akan digunakan untuk menghasilkan peta.',
 	'maps-displaymap-par-coordinates' => 'Lokasi yang akan dijadikan pusat peta pada mulanya.',
-	'maps-displaypoints-par-zoom' => 'Membolehkan penetapan tahap zum peta.
+	'maps-displaymap-par-zoom' => 'Membolehkan penetapan tahap zum peta.
 Apabila tidak diberikan sementara wujudnya berbilang penanda pada peta, zom yang paling muat akan diambil, bukan nilai asali yang terkonfigurasi.',
-	'maps-displaypoints-par-mappingservice' => 'Membolehkan penetapan perkhidmatan pemetaan yang akan digunakan untuk menghasilkan peta.',
-	'maps-displaypoints-par-coordinates' => 'Sekurang-kurangnya satu lokasi untuk dipaparkan pada peta. Ini akan ditunjukkan dengan penanda.',
-	'maps-displaypoints-par-centre' => 'Membolehkan penetapan koordinat pusat peta untuk display_point.
+	'maps-displaymap-par-mappingservice' => 'Membolehkan penetapan perkhidmatan pemetaan yang akan digunakan untuk menghasilkan peta.',
+	'maps-displaymap-par-coordinates' => 'Sekurang-kurangnya satu lokasi untuk dipaparkan pada peta. Ini akan ditunjukkan dengan penanda.',
+	'maps-displaymap-par-centre' => 'Membolehkan penetapan koordinat pusat peta untuk display_point.
 Menerima alamat dan koordinat sekali.
 Apabila sifat ini tidak dinyatakan, peta akan menentukan pusatnya sendiri pada penanda yang diberikan, ataupun di antara penanda-penanda yang diberikan.',
-	'maps-displaypoints-par-title' => 'Membolehkan penetapan teks yang akan dipaparkan dalam tetimbul semua penanda yang tiada tajuk tertentu.
+	'maps-displaymap-par-title' => 'Membolehkan penetapan teks yang akan dipaparkan dalam tetimbul semua penanda yang tiada tajuk tertentu.
 Apabila digunakan bersama label, tajuknya akan berupa tebal dan bergaris bawah.',
-	'maps-displaypoints-par-label' => 'Membolehkan penetapan teks yang akan dipaparkan dalam tetimbul semua penanda yang tiada label tertentu.',
-	'maps-displaypoints-par-icon' => 'Membolehkan penetapan ikon yang digunakan untuk semua penanda.',
+	'maps-displaymap-par-label' => 'Membolehkan penetapan teks yang akan dipaparkan dalam tetimbul semua penanda yang tiada label tertentu.',
+	'maps-displaymap-par-icon' => 'Membolehkan penetapan ikon yang digunakan untuk semua penanda.',
 	'validation-error-invalid-location' => 'Parameter $1 mestilah lokasi yang sah.',
 	'validation-error-invalid-locations' => 'Parameter $1 mestilah sekurang-kurangnya satu lokasi yang sah.',
 	'validation-error-invalid-width' => 'Parameter $1 mestilah lebar yang sah.',
@@ -4184,17 +4184,17 @@ Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coörd
 Dit kan invloed hebben op de standaardwaarde voor de geocoderingsdienst.',
 	'maps-displaymap-par-mappingservice' => 'Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.',
 	'maps-displaymap-par-coordinates' => 'De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.',
-	'maps-displaypoints-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
+	'maps-displaymap-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
 Als deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.',
-	'maps-displaypoints-par-mappingservice' => 'Maakt het mogelijk de kaartdienst in te stellen die de kaart levert.',
-	'maps-displaypoints-par-coordinates' => 'Een of meer weer te geven locaties op de kaart. Deze worden met een marker aangegeven.',
-	'maps-displaypoints-par-centre' => 'Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Maakt het mogelijk de kaartdienst in te stellen die de kaart levert.',
+	'maps-displaymap-par-coordinates' => 'Een of meer weer te geven locaties op de kaart. Deze worden met een marker aangegeven.',
+	'maps-displaymap-par-centre' => 'Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).
 Kan ingesteld worden met adressen en coördinaten.
 Als deze waarde niet wordt ingesteld, wordt de kaart gecentreerd op of tussen de opgegeven marker(s).',
-	'maps-displaypoints-par-title' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.
+	'maps-displaymap-par-title' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.
 Als dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderstreept weergegeven.',
-	'maps-displaypoints-par-label' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.',
-	'maps-displaypoints-par-icon' => 'Maakt het mogelijk het icoon voor alle markers in te stellen.',
+	'maps-displaymap-par-label' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.',
+	'maps-displaymap-par-icon' => 'Maakt het mogelijk het icoon voor alle markers in te stellen.',
 	'validation-error-invalid-location' => 'Parameter $1 moet een geldige locatie zijn.',
 	'validation-error-invalid-locations' => 'Parameter $1 moet een of meer geldige locaties zijn.',
 	'validation-error-invalid-width' => 'Parameter $1 moet een geldige breedte zijn.',
@@ -4694,17 +4694,17 @@ Quando for não, todos os valores serão geocodificados, mesmo coordenadas váli
 Isto pode afectar o valor padrão do serviço de geocodificação.',
 	'maps-displaymap-par-mappingservice' => 'Permite definir o serviço de cartografia que será usado para gerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'A localização na qual o mapa será inicialmente centrado.',
-	'maps-displaypoints-par-zoom' => 'Permite definir o nível de aproximação do mapa.
+	'maps-displaymap-par-zoom' => 'Permite definir o nível de aproximação do mapa.
 Quando este não for fornecido e existirem vários marcadores no mapa, será usada a aproximação que resulte no melhor dimensionamento, não o valor padrão configurado.',
-	'maps-displaypoints-par-mappingservice' => 'Permite definir o serviço de cartografia que será usado para gerar o mapa.',
-	'maps-displaypoints-par-coordinates' => 'Uma ou mais localizações a mostrar no mapa. Estas serão indicadas com um marcador.',
-	'maps-displaypoints-par-centre' => 'Permite definir as coordenadas do centro do mapa para display_point(s).
+	'maps-displaymap-par-mappingservice' => 'Permite definir o serviço de cartografia que será usado para gerar o mapa.',
+	'maps-displaymap-par-coordinates' => 'Uma ou mais localizações a mostrar no mapa. Estas serão indicadas com um marcador.',
+	'maps-displaymap-par-centre' => 'Permite definir as coordenadas do centro do mapa para display_point(s).
 Aceita tanto endereços como coordenadas.
 Quando esta propriedade não for fornecida, o mapa será centrado no marcador fornecido, ou entre os marcadores fornecidos.',
-	'maps-displaypoints-par-title' => 'Permite a configuração do texto que será apresentado nos pop-ups de todos os marcadores que não têm um título específico.
+	'maps-displaymap-par-title' => 'Permite a configuração do texto que será apresentado nos pop-ups de todos os marcadores que não têm um título específico.
 Quando usado em conjunto com um rótulo, o título aparecerá a negrito e sublinhado.',
-	'maps-displaypoints-par-label' => 'Permite a configuração do texto que será apresentado nos pop-ups de todos os marcadores que não têm um rótulo específico.',
-	'maps-displaypoints-par-icon' => 'Permite configurar o ícone usado para todos os marcadores.',
+	'maps-displaymap-par-label' => 'Permite a configuração do texto que será apresentado nos pop-ups de todos os marcadores que não têm um rótulo específico.',
+	'maps-displaymap-par-icon' => 'Permite configurar o ícone usado para todos os marcadores.',
 	'validation-error-invalid-location' => 'O parâmetro $1 tem de ser uma localização válida.',
 	'validation-error-invalid-locations' => 'O parâmetro $1 tem de ser uma ou mais localizações válidas.',
 	'validation-error-invalid-width' => 'O parâmetro $1 tem de ser uma largura válida.',
@@ -4987,7 +4987,7 @@ $messages['ru'] = array(
 	'maps-geodistance-par-decimals' => 'Наибольшее количество цифр в дробной части результата.',
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
-	'maps-displaypoints-par-mappingservice' => 'Позволяет указывать сервис карт, который будет использоваться.',
+	'maps-displaymap-par-mappingservice' => 'Позволяет указывать сервис карт, который будет использоваться.',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
 	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
@@ -5442,17 +5442,17 @@ Kapag huwag, ang bawat isang halaga ay ikokodigo na pangheograpiya, pati na ang 
 Makakaapekto ito sa likas na nakatakdang halaga ng paglilingkod na pangheograpiya.',
 	'maps-displaymap-par-mappingservice' => 'Nagpapahintulot na maitakda ang palingkuran ng pagmamapa na gagamitin upang likhain ang mapa.',
 	'maps-displaymap-par-coordinates' => 'Ang kinalalagyan na paunang pagpapagitnaan ng mapa.',
-	'maps-displaypoints-par-zoom' => 'Nagpapahintulot sa pagtatakda ng antas ng paglapit ng mapa.
+	'maps-displaymap-par-zoom' => 'Nagpapahintulot sa pagtatakda ng antas ng paglapit ng mapa.
 Kapag hindi ibinigay at mayroong maramihang mga pananda sa ibabaw ng mapa, kukunin ang pinakaangkop na paglapit, hindi ang maiaayos na likas na katakdaan.',
-	'maps-displaypoints-par-mappingservice' => 'Nagpapahintulot na maitakda ang palingkuran ng pagmamapa na gagamitin upang likhain ang mapa.',
-	'maps-displaypoints-par-coordinates' => 'Isa o marami pang mga kinalalagyan na ipapakita sa mapa. Ipapahiwatig ang mga ito sa pamamagitan ng isang pananda.',
-	'maps-displaypoints-par-centre' => 'Nagbibigay-daan sa pagtatakda ng mga tugmaang pampook ng gitna ng mapa para sa (mga) tuldok_na_ipapakita.
+	'maps-displaymap-par-mappingservice' => 'Nagpapahintulot na maitakda ang palingkuran ng pagmamapa na gagamitin upang likhain ang mapa.',
+	'maps-displaymap-par-coordinates' => 'Isa o marami pang mga kinalalagyan na ipapakita sa mapa. Ipapahiwatig ang mga ito sa pamamagitan ng isang pananda.',
+	'maps-displaymap-par-centre' => 'Nagbibigay-daan sa pagtatakda ng mga tugmaang pampook ng gitna ng mapa para sa (mga) tuldok_na_ipapakita.
 Tumatanggap kapwa ng mga tirahan o mga tugmaang pampook.
 Kapag hindi ibinigay ang pag-aaring ito, igigitna ng mapa ang kanyang sarili sa ibinigay na pangmarka, o sa gitna ng ibinigay na mga pananda.',
-	'maps-displaypoints-par-title' => 'Nagpapahintulot sa pagtatakda ng teksto na ipapakita sa loob ng mga pagsulpot ng lahat ng mga pangmarka na walang tiyak na pamagat.
+	'maps-displaymap-par-title' => 'Nagpapahintulot sa pagtatakda ng teksto na ipapakita sa loob ng mga pagsulpot ng lahat ng mga pangmarka na walang tiyak na pamagat.
 Kapag ginamit na kasama ng katatakan, ang pamagat ay magiging makapal at mayroong salungguhit.',
-	'maps-displaypoints-par-label' => 'Nagpapahintulot sa pagtatakda ng teksto na ipapakita sa loob ng mga pagsulpot ng lahat ng mga pangmarka na walang tiyak na katatakan.',
-	'maps-displaypoints-par-icon' => 'Nagpapahintulot sa pagtatakda ng ginagamit na kinatawang larawang para sa lahat ng mga pananda.',
+	'maps-displaymap-par-label' => 'Nagpapahintulot sa pagtatakda ng teksto na ipapakita sa loob ng mga pagsulpot ng lahat ng mga pangmarka na walang tiyak na katatakan.',
+	'maps-displaymap-par-icon' => 'Nagpapahintulot sa pagtatakda ng ginagamit na kinatawang larawang para sa lahat ng mga pananda.',
 	'validation-error-invalid-location' => 'Ang parametrong $1 ay dapat na isang tanggap na lokasyon.',
 	'validation-error-invalid-locations' => 'Ang parametrong $1 ay dapat na isa o mahigit pang tanggap na mga lokasyon.',
 	'validation-error-invalid-width' => 'Ang parametrong $1 ay dapat na isang tanggap na lapad.',
