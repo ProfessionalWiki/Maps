@@ -100,6 +100,7 @@ This can affect the default geocoding service value.',
 	// display_map parser hook
 	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
 	'maps-displaymap-par-coordinates' => 'The location the map will initially be centred on.',
+	'maps-displaymap-par-visitedicon' => 'The local of a file to use as visited icon',
 
 	// display_points parser hook
 	'maps-displaypoints-par-zoom' => 'Allows setting the zoom level of the map.
@@ -167,6 +168,7 @@ $1',
 	'maps-par-zoom' => 'The zoom level for the map. For maps with markers this will default to the most zoomed in level that still shows all markers.',
 	'maps-par-width' => 'Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
 	'maps-par-height' => 'Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
+    'maps-par-centre' => 'The location on which the map should be centred',
 
 	// Google Maps v2
 	'maps-googlemaps2-incompatbrowser' => 'Your browser is not compatible with Google Maps v2.',
@@ -206,7 +208,7 @@ $1',
 	'maps-osm-par-thumbs' => 'Show thumbs',
 	'maps-osm-par-photos' => 'Show photos',
 
-	//Special page
+	// Special:MapEditor
 	'mapeditor' => 'Map editor',
 	'specialpages-group-maps' => 'Maps',
 	'mapeditor-parser-error' => 'An error occurred when parsing metadata. Ignoring user input.',

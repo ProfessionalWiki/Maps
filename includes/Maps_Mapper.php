@@ -116,7 +116,7 @@ final class MapsMapper {
 
 		foreach ( $params as $name => &$data ) {
 			$data['name'] = $name;
-			$data['message'] = 'map-par-' . $name;
+			$data['message'] = 'maps-par-' . $name;
 		}
 
 		return $params;
