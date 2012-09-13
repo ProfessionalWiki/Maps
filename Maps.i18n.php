@@ -4613,6 +4613,7 @@ $1",
 $messages['ps'] = array(
 	'maps_map' => 'نخشه',
 	'maps-others' => 'نور',
+	'maps-layer-property' => 'ځانتيا',
 	'maps-layer-value' => 'ارزښت',
 	'maps-layer-errors' => 'تېروتنې',
 	'maps-abb-north' => 'سهـ',
