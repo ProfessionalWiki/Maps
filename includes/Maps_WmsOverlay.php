@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class that holds metadata on WMS overlay layers on map
  *
@@ -10,8 +11,7 @@
  * @licence GNU GPL v2+
  * @author Mathias Lidal < mathiaslidal@gmail.com >
  */
-class MapsWmsOverlay
-{
+class MapsWmsOverlay {
 
 	/**
 	 * @since 2.0
@@ -25,48 +25,63 @@ class MapsWmsOverlay
 	 */
 	protected $wmsLayerName;
 
-	public function __construct( $wmsServerUrl, $wmsLayerName ) {
-		$this->setWmsServerUrl($wmsServerUrl);
-		$this->setWmsLayerName($wmsLayerName);
+	/**
+	 * @since 2.0
+	 *
+	 * @param string $wmsServerUrl
+	 * @param string $wmsLayerName
+	 */
+	public function __construct( $wmsServerUrl, $wmsLayerName  ) {
+		$this->setWmsServerUrl( $wmsServerUrl );
+		$this->setWmsLayerName( $wmsLayerName );
 	}
 
 	/**
+	 * @since 2.0
+	 *
 	 * @param String $wmsLayerName
 	 */
-	public function setWmsLayerName($wmsLayerName)
-	{
+	public function setWmsLayerName( $wmsLayerName ) {
 		$this->wmsLayerName = $wmsLayerName;
 	}
 
 	/**
+	 * @since 2.0
+	 *
 	 * @return String
 	 */
-	public function getWmsLayerName()
-	{
+	public function getWmsLayerName() {
 		return $this->wmsLayerName;
 	}
 
 	/**
+	 * @since 2.0
+	 *
 	 * @param String $wmsServerUrl
 	 */
-	public function setWmsServerUrl($wmsServerUrl)
-	{
+	public function setWmsServerUrl( $wmsServerUrl ) {
 		$this->wmsServerUrl = $wmsServerUrl;
 	}
 
 	/**
+	 * @since 2.0
+	 *
 	 * @return String
 	 */
-	public function getWmsServerUrl()
-	{
+	public function getWmsServerUrl() {
 		return $this->wmsServerUrl;
 	}
 
-	public function getJSONObject () {
-		$array = array (
-			'wmsServerUrl' => $this->getWmsServerUrl() ,
-			'wmsLayerName' => $this->getWmsLayerName()
+	/**
+	 * @since 2.0
+	 *
+	 * @return array
+	 */
+	public function getJSONObject() {
+		return array(
+			'wmsServerUrl' => $this->getWmsServerUrl(),
+			'wmsLayerName' => $this->getWmsLayerName(),
 		);
-		return $array;
 	}
+
 }
