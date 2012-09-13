@@ -2,6 +2,10 @@
 /**
  * Class with public static methods to handle shared parameter definitions
  * based on interfaces.
+ *
+ * @since 2.0
+ *
+ * @deprecated This needs to be refactored away since ItemParameterManipulation is deprecated
  */
 abstract class MapsCommonParameterManipulation extends ItemParameterManipulation {
 
