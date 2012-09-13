@@ -7,5 +7,10 @@ Latest version of the roadmap: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki
 
 September 2012
 
-* Migrate parameters to Validator 0.5.x style definitions
 * Fix several broken param description messages
+
+== Maps 2.1 ==
+
+End 2012
+
+* Migrate parameters to Validator >=0.5 style definitions
