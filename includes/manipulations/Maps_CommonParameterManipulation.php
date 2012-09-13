@@ -100,9 +100,10 @@ abstract class MapsCommonParameterManipulation extends ItemParameterManipulation
 	 * @since 1.1
 	 */
 	private function isLinkParameter( $link ) {
-		if ( MapsUtils::strStartsWith( $link , 'link:' ) ) {
+		if ( strpos( $link , 'link:' ) === 0 ) {
 			return substr( $link , 5 );
 		}
+
 		return false;
 	}
 }
