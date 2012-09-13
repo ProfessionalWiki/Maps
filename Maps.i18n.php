@@ -101,11 +101,8 @@ This can affect the default geocoding service value.',
 	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
 	'maps-displaymap-par-coordinates' => 'The location the map will initially be centred on.',
 	'maps-displaymap-par-visitedicon' => 'The local of a file to use as visited icon',
-
-	// display_points parser hook
 	'maps-displaymap-par-zoom' => 'Allows setting the zoom level of the map.
 When not provided and multiple markers are present on the map, the best fitting zoom will be taken, not the configurable default.',
-	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
 	'maps-displaymap-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
 	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's centre for display_point(s).
 Accepts both addresses and coordinates.
@@ -114,6 +111,15 @@ When this property is not provided, the map will centre itself on the provided m
 When used together with label, the title will be bold and underlined.',
 	'maps-displaymap-par-label' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific label.',
 	'maps-displaymap-par-icon' => 'Allows setting the icon used for all markers.',
+	'maps-displaymap-par-circles' => 'Circles to display',
+	'maps-displaymap-par-copycoords' => 'If a dialog from which the coordinates of a location should be shown when clicking something',
+	'maps-displaymap-par-lines' => 'Lines to display',
+	'maps-displaymap-par-maxzoom' => 'The maximum zoom level',
+	'maps-displaymap-par-minzoom' => 'The minimum zoom level',
+	'maps-displaymap-par-polygons' => 'Polygons to display',
+	'maps-displaymap-par-rectangles' => 'Rectangles to display',
+	'maps-displaymap-par-static' => 'If the map should be static',
+	'maps-displaymap-par-wmsoverlay' => 'Use a WMS overlay',
 
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
@@ -162,6 +168,8 @@ $1',
 	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centered on $1, $2.',
 
+    // Params common to all mapping features (ie display_map, query printers, form inputs)
+    'maps-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
 	'maps-par-resizable' => 'Makes the map resizable by dragging at it\'s lower right corner.',
 	'maps-par-geoservice' => 'The geocoding service to use to make translations between addresses and coordinates.',
 	'maps-par-zoom' => 'The zoom level for the map. For maps with markers this will default to the most zoomed in level that still shows all markers.',

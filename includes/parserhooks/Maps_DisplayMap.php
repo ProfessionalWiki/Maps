@@ -60,7 +60,7 @@ class MapsDisplayMap extends ParserHook {
 	 */
 	protected function getParameterInfo( $type ) {
 		global $egMapsDefaultTitle, $egMapsDefaultLabel;
-		
+
 		$params = MapsMapper::getCommonParameters();
 
 		$params['mappingservice']['feature'] = 'display_map';
@@ -98,30 +98,30 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['lines'] = array(
 			'default' => array(),
-			'criteria' => new CriterionLine( '~' ),
-			'manipulations' => new MapsParamLine( '~' ),
+			'criteria' => new CriterionLine( '~' ), // TODO
+			'manipulations' => new MapsParamLine( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['polygons'] = array(
 			'default' => array(),
-			'criteria' => new CriterionPolygon( '~' ),
-			'manipulations' => new MapsParamPolygon( '~' ),
+			'criteria' => new CriterionPolygon( '~' ), // TODO
+			'manipulations' => new MapsParamPolygon( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['circles'] = array(
 			'default' => array(),
-			'manipulations' => new MapsParamCircle( '~' ),
+			'manipulations' => new MapsParamCircle( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['rectangles'] = array(
 			'default' => array(),
-			'manipulations' => new MapsParamRectangle( '~' ),
+			'manipulations' => new MapsParamRectangle( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
@@ -139,7 +139,7 @@ class MapsDisplayMap extends ParserHook {
 		$params['wmsoverlay'] = array(
 			'type' => 'string',
 			'default' => false,
-			'manipulations' => new MapsParamWmsOverlay( ' ' ),
+			'manipulations' => new MapsParamWmsOverlay( ' ' ), // TODO
 			'delimiter' => ';',
 		);
 
