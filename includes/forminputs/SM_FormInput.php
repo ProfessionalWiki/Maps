@@ -211,5 +211,36 @@ class SMFormInput {
 	protected function getResourceModules() {
 		return array( 'ext.sm.forminputs' );
 	}
+
+	/**
+	 * @since 2.0 alspha
+	 * 
+	 * @param string $coordinates
+	 * @param string $input_name
+	 * @param boolean $is_mandatory
+	 * @param boolean $is_disabled
+	 * @param array $field_args
+	 * 
+	 * @return string
+	 */
+	public function getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
+		global $wgOut;
+		$parameters = array();
+		$wgOut->addHtml( MapsGoogleMaps3::getApiScript(
+			'en',
+			array( 'libraries' => 'drawing' )
+		) );
+
+		$wgOut->addModules( 'polygoneditor' );
+
+		$output = <<<EOT
+		<div >
+			<textarea id="map-polygon" name="$input_name" cols="4" rows="2"></textarea>
+		</div>
+		<div id="map-canvas" style= "width:600px; height:400px">
+		</div>
+EOT;
+	return $output;
+	}
 	
 }

@@ -69,7 +69,10 @@ final class SMFormInputs {
 		}
 		
 		// Add the 'map' form input type if there are mapping services that have FI's loaded.
-		if ( $hasFormInputs ) self::initFormHook( 'map' );
+		if ( $hasFormInputs ) {
+			self::initFormHook( 'map' );
+		}
+		self::initFormHook( 'googlemapsEditor' );
 
 		return true;
 	}
@@ -91,8 +94,12 @@ final class SMFormInputs {
 		}
 		
 		//$sfgFormPrinter->registerInputType( 'SMMapInput' );
-		
-		$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectFormInputHTML', $field_args );
+
+		if( $inputName == 'googlemapsEditor') {
+			$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectEditorFormInputHTML', $field_args );
+		} else {
+			$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectFormInputHTML', $field_args );
+		}
 	}
 	
 }
@@ -120,4 +127,28 @@ function smfSelectFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_d
     
     // Get and return the form input HTML from the hook corresponding with the provided service.
     return $formInput->getInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args );
+}
+
+/**
+ * Calls the relevant form Editor input class depending on the provided service.
+ * NOTE: Currently only GoogleMaps is supported
+ *
+ * @param string $coordinates
+ * @param string $input_name
+ * @param boolean $is_mandatory
+ * @param boolean $is_disabled
+ * @param array $field_args
+ * 
+ * @return array
+ */
+function smfSelectEditorFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, array $field_args ) {
+	// Get the service name from the field_args, and set it to null if it doesn't exist.
+	$serviceName = array_key_exists( 'service_name', $field_args ) ? $field_args['service_name'] : null;
+	// Get the instance of the service class.
+	$service = MapsMappingServices::getValidServiceInstance( $serviceName, 'fi' );
+	
+	// Get an instance of the class handling the current form input and service.
+	$formInput = $service->getFeatureInstance( 'fi' );    
+    // Get and return the form input HTML from the hook corresponding with the provided service.
+    return $formInput->getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args );
 }

@@ -122,3 +122,27 @@ $wgHooks['SMWResultFormat'][] = 'SMGeoCoordsHooks::addGeoCoordsDefaultFormat';
 $wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
 
 $wgHooks['UnitTestsList'][] = 'SemanticMapsHooks::registerUnitTests';
+
+//Resources for polygon editor
+$wgResourceModules['polygoneditor'] = array(
+	'dependencies' => array( 'ext.maps.common','jquery.ui.autocomplete','jquery.ui.slider', 'jquery.ui.dialog' ),
+	'localBasePath' => __DIR__ . '/includes/polygoneditor/',
+	'remoteBasePath' => $smgScriptPath . '/includes/polygoneditor/',
+	'group' => 'polygon-editor',
+	'scripts' => array(
+		'js/polygon-editor.js',
+	),
+	'styles' => array(
+		'css/jquery.miniColors.css',
+		'css/mapeditor.css'
+	),
+	'messages' => array(
+		'editor-parser-error',
+		'mapeditor-none-text',
+		'mapeditor-done-button',
+		'mapeditor-remove-button',
+		'mapeditor-export-button',
+		'mapeditor-clear-button',
+		'polygon-select-button',
+	)
+);
