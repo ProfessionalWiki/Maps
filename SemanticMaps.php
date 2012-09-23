@@ -2,7 +2,7 @@
 
 /**
  * Initialization file for the Maps extension.
- * 
+ *
  * On MediaWiki.org: 		http://www.mediawiki.org/wiki/Extension:Semantic_Maps
  * Official documentation: 	http://mapping.referata.com/wiki/Semantic_Maps
  * Examples/demo's: 		http://mapping.referata.com/wiki/Semantic_Maps_examples
@@ -17,9 +17,9 @@
 /**
  * This documenation group collects source code files belonging to Semantic Maps.
  *
- * Please do not use this group name for other code. If you have an extension to 
+ * Please do not use this group name for other code. If you have an extension to
  * Semantic Maps, please use your own group definition.
- * 
+ *
  * @defgroup SemanticMaps Semantic Maps
  */
 
@@ -72,7 +72,7 @@ $wgExtensionCredits['semantic'][] = array(
 	'descriptionmsg' => 'semanticmaps-desc'
 );
 
-$smgScriptPath 	= ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/SemanticMaps';	
+$smgScriptPath 	= ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/SemanticMaps';
 $smgDir 		= __DIR__ . '/';
 
 $smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
@@ -86,14 +86,14 @@ require_once 'SM_Settings.php';
 	# Query printers
 	include_once $smgDir . 'includes/queryprinters/SM_QueryPrinters.php';
 	# Form imputs
-	include_once $smgDir . 'includes/forminputs/SM_FormInputs.php'; 
+	include_once $smgDir . 'includes/forminputs/SM_FormInputs.php';
 
-# Include the mapping services that should be loaded into Semantic Maps. 
+# Include the mapping services that should be loaded into Semantic Maps.
 # Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
-	
+
 	# Google Maps API v3
 	include_once $smgDir . 'includes/services/GoogleMaps3/SM_GoogleMaps3.php';
-	
+
 	# OpenLayers API
 	include_once $smgDir . 'includes/services/OpenLayers/SM_OpenLayers.php';
 
@@ -101,10 +101,9 @@ $wgExtensionMessagesFiles['SemanticMaps'] = $smgDir . 'SemanticMaps.i18n.php';
 
 $incDir = __DIR__ . '/includes/';
 
-$wgAutoloadClasses['SMGeoCoordsHooks'] 				= $incDir . 'SM_GeoCoordsHooks.php';
-
 // Data values
 $wgAutoloadClasses['SMGeoCoordsValue'] 				= $incDir . 'SM_GeoCoordsValue.php';
+$wgAutoloadClasses['SMGeoPolygonsValue'] 				= $incDir . 'SM_GeoPolygonsValue.php';
 
 // Value descriptions
 $wgAutoloadClasses['SMGeoCoordsValueDescription'] 	= $incDir . 'SM_GeoCoordsValueDescription.php';
@@ -112,11 +111,11 @@ $wgAutoloadClasses['SMAreaValueDescription'] 		= $incDir . 'SM_AreaValueDescript
 
 $wgAutoloadClasses['SemanticMapsHooks'] 			= __DIR__ . '/SemanticMaps.hooks.php';
 
-// Hook for initializing the Geographical Coordinate type.
-$wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsHooks::initGeoCoordsType';
+// Hook for initializing the Geographical Data types.
+$wgHooks['smwInitDatatypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
 
 // Hook for defining the default query printer for queries that ask for geographical coordinates.
-$wgHooks['SMWResultFormat'][] = 'SMGeoCoordsHooks::addGeoCoordsDefaultFormat';	
+$wgHooks['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefaultFormat';
 
 // Hook for adding a Semantic Maps links to the Admin Links extension.
 $wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
