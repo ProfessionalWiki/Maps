@@ -319,6 +319,7 @@ $messages['de'] = array(
 	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit Semantic MediaWiki gespeichert werden ([http://mapping.referata.com/wiki/Examples Demonstrationsseite])',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps-kml-link' => 'KML-Datei ansehen',
+	'semanticmaps-kml' => 'Export (KML)',
 	'semanticmaps-default-kml-pagelink' => 'Artikel $1 ansehen',
 	'semanticmaps-latitude' => 'Breitengrad: $1',
 	'semanticmaps-longitude' => 'Längengrad: $1',
