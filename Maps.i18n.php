@@ -2072,7 +2072,7 @@ Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenad
 	'maps-geodistance-par-geoservice' => 'O servizo de cartografía a usar en conxunto.
 Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
-	'maps-displaymap-par-coordinates' => 'A localización do mapa que aparecerá inicialmente.',
+	'maps-displaymap-par-coordinates' => 'Unha ou máis localizacións a mostrar no mapa. Indicaranse cun marcador.',
 	'maps-displaymap-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
 Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
@@ -2089,6 +2089,7 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'maps-displaymap-par-polygons' => 'Polígonos a mostrar',
 	'maps-displaymap-par-rectangles' => 'Rectángulos a mostrar',
 	'maps-displaymap-par-static' => 'Se o mapa debe ser estático',
+	'maps-displaymap-par-wmsoverlay' => 'Utilizar unha sobreposición WMS',
 	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
 	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
 	'validation-error-invalid-width' => 'O parámetro $1 debe ser un largo válido.',
