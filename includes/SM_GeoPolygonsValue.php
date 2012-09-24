@@ -40,6 +40,10 @@ class SMGeoPolygonsValue extends SMWDataValue {
 		if ( $value === '' ) {
 			$this->addError( wfMsgForContent( 'smw_emptystring' ) );
 		}
+		$polyHandler = new PolygonHandler ( $value );
+		foreach( $polyHandler->getValidationErrors() as $errMsg ) {
+			$this->addError( $errMsg );
+		}
 		$this->m_dataitem = new SMWDIBlob( $value, $this->m_typeid );
 	}
 

@@ -135,9 +135,43 @@ class SMMapPrinter extends SMWResultPrinter {
 			array( 'text' )
 		);
 		$params['label']->setMessage( 'maps-displaypoints-par-label' );
+
+		$params['lines'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-lines', // TODO
+			'criteria' => new CriterionLine( '~' ),
+			'manipulations' => new MapsParamLine( '~' ),
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['polygons'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-polygons', // TODO
+			'criteria' => new CriterionPolygon( '~' ), // TODO
+			'manipulations' => new MapsParamPolygon( '~' ), // TODO
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['circles'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-circles', // TODO
+			'manipulations' => new MapsParamCircle( '~' ), // TODO
+			'delimiter' => ';',
+			'islist' => true,
+		);
+
+		$params['rectangles'] = array(
+			'default' => array(),
+			'message' => 'maps-displaypoints-par-rectangles', // TODO
+			'manipulations' => new MapsParamRectangle( '~' ), // TODO
+			'delimiter' => ';',
+			'islist' => true,
+		);
 		
 		return $params;
-	}	
+	}
 	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
@@ -158,7 +192,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			$queryHandler->setTemplate( $params['template'] );
 			$queryHandler->setHideNamespace( $params['hidenamespace'] );
 			
-			$this->handleMarkerData( $params, $queryHandler->getLocations() );
+			$this->handleMarkerData( $params, $queryHandler );
 			$locationAmount = count( $params['locations'] );
 			
 			if ( $params['forceshow'] || $locationAmount > 0 ) {
@@ -245,9 +279,10 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @since 1.0
 	 * 
 	 * @param array &$params
-	 * @param array $queryLocations
+	 * @param $queryHandler
 	 */
-	protected function handleMarkerData( array &$params, array $queryLocations ) {
+	protected function handleMarkerData( array &$params, $queryHandler ) {
+		$queryShapes = $queryHandler->getShapes();
 		global $wgParser;
 
 		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
@@ -271,7 +306,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			}
 		}
 		
-		foreach ( $queryLocations as $location ) {
+		foreach ( $queryShapes['locations'] as $location ) {
 			if ( $location->isValid() ) {
 				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 				
@@ -280,8 +315,17 @@ class SMMapPrinter extends SMWResultPrinter {
 				$params['locations'][] = $jsonObj;				
 			}
 		}
-		
 		unset( $params['staticlocations'] );
+		foreach ( $queryShapes['lines'] as $line ) {
+			$jsonObj = $line->getJSONObject( $params['title'], $params['label'] );
+			$params['lines'][] = $jsonObj;				
+		}
+		foreach ( $queryShapes['polygons'] as $polygon ) {
+			$jsonObj = $polygon->getJSONObject( $params['title'], $params['label'] );
+			$params['polygons'][] = $jsonObj;				
+		}
+
+
 	}
 
 	/**
