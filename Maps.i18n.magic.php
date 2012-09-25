@@ -262,7 +262,7 @@ $magicWords['si'] = array(
 	'distance' => array( 0, 'දුර', 'distance' ),
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬) */
+/** Serbian (Cyrillic script) (српски (ћирилица)‎) */
 $magicWords['sr-ec'] = array(
 	'display_map' => array( 0, 'прикажи_мапу' ),
 	'display_point' => array( 0, 'прикажи_тачку', 'прикажи_тачке' ),
@@ -271,7 +271,7 @@ $magicWords['sr-ec'] = array(
 	'distance' => array( 0, 'раздаљина' ),
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬) */
+/** Serbian (Latin script) (srpski (latinica)‎) */
 $magicWords['sr-el'] = array(
 	'display_map' => array( 0, 'prikaži_mapu' ),
 	'display_point' => array( 0, 'prikaži_tačku', 'prikaži_tačke' ),
