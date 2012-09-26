@@ -1438,7 +1438,7 @@ $messages['zh-hans'] = array(
 	'semanticmaps-kml-pagelinktext' => '用于那些指向该页面的链接的文本；其中，页面标题将取代$1',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Gzdavidwong
  * @author Mark85296341
  * @author Oapbtommy
@@ -1446,8 +1446,29 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'semanticmaps-desc' => '提供對採用Semantic MediaWiki擴展所存儲坐標數據的查看和編輯能力（[http://mapping.referata.com/wiki/Examples 演示]）。',
+	'semanticmaps-unrecognizeddistance' => '取值$1不是有效的距離。',
+	'semanticmaps-kml-link' => '查看KML文件',
 	'semanticmaps-default-kml-pagelink' => '檢視頁面 $1',
+	'semanticmaps-latitude' => '緯度：$1',
+	'semanticmaps-longitude' => '經度：$1',
+	'semanticmaps-altitude' => '絕對海拔高度：$1',
+	'semanticmaps-loading-forminput' => '加載地圖表單輸入……',
 	'semanticmaps_lookupcoordinates' => '尋找座標',
+	'semanticmaps_enteraddresshere' => '在此處輸入地址',
+	'semanticmaps-updatemap' => '更新地圖',
+	'semanticmaps-forminput-remove' => '刪除',
 	'semanticmaps-forminput-add' => '新增',
+	'semanticmaps-forminput-locations' => '位置',
+	'semanticmaps-par-staticlocations' => '要與所查詢數據一起添加到地圖的一系列位置。就像display_points那樣，可以採用波浪號"~"作為分隔符，為每個位置添加標題、描述及圖標。',
+	'semanticmaps-par-forceshow' => '甚至在沒有要顯示的位置的情況下也顯示地圖嗎？',
+	'semanticmaps-par-showtitle' => '是否在標記信息窗口之中顯示標題。當採用模板對信息窗口內容進行格式編排的時候，關閉此項往往會有所幫助。',
+	'semanticmaps-par-centre' => '地圖的中心。當未加提供的時候，地圖會自動挑選最佳的中心，從而在地圖上顯示所有的標記。',
+	'semanticmaps-par-template' => '用來對信息窗口內容進行格式編排的模板。',
+	'semanticmaps-par-geocodecontrol' => '顯示地理編碼控件。',
+	'semanticmaps-kml-text' => '與每個頁面相關聯的文本。會被額外的查詢屬性（如果有的話）所覆蓋。',
+	'semanticmaps-kml-title' => '結果的默認標題',
+	'semanticmaps-kml-linkabsolute' => '鏈接究竟應當是絕對地址還是相對地址',
+	'semanticmaps-kml-pagelinktext' => '用於那些指向該頁面的鏈接的文本；其中，頁面標題將取代$1',
 );
 
