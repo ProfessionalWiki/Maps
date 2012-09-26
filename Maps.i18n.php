@@ -5160,23 +5160,27 @@ $messages['sr-ec'] = array(
 	'maps_webcams' => 'Веб-камере',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬) */
+/** Serbian (Latin script) (srpski (latinica)‎) */
 $messages['sr-el'] = array(
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavanje mape...',
+	'validation-error-invalid-location' => 'Parametar $1 mora biti validna lokacija',
+	'validation-error-invalid-locations' => 'Parametar $1 mora biti jedna ili više važećih lokacija.',
+	'validation-error-invalid-width' => 'Parametar $1 mora biti validna širina.',
+	'validation-error-invalid-height' => 'Parametar $1 mora biti validna visina.',
+	'validation-error-invalid-distance' => 'Parametar $1 mora biti validno rastojanje.',
+	'validation-error-invalid-distances' => 'Parametar $1 mora biti jedno ili više validnih rastojanja.',
+	'validation-error-invalid-image' => 'Parametar $1 mora biti validna slika.',
+	'validation-error-invalid-images' => 'Parametar $1 mora biti jedna ili više validnih slika.',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'I',
 	'maps-abb-south' => 'J',
 	'maps-abb-west' => 'Z',
 	'maps-latitude' => 'Geografska širina:',
 	'maps-longitude' => 'Geografska dužina:',
-	'maps_googlemaps2' => 'Gugl mape, drugo izdanje',
 	'maps_googlemaps3' => 'Gugl mape, treće izdanje',
 	'maps_openlayers' => 'Openlejers',
 	'maps_osm' => 'Openstritmap',
-	'maps_photos' => 'Fotografije',
-	'maps_videos' => 'Video snimci',
-	'maps_webcams' => 'Veb-kamere',
 );
 
 /** Swedish (svenska)
@@ -5822,7 +5826,7 @@ $messages['zh-cn'] = array(
 	'maps-longitude' => '经度：',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Hydra
  * @author PhiLiP
  * @author Xiaomingyan
@@ -5859,23 +5863,29 @@ $messages['zh-hans'] = array(
 	'maps-latitude' => '纬度：',
 	'maps-longitude' => '经度：',
 	'maps_map_cannot_be_displayed' => '该地图无法显示。',
-	'maps_overlays' => '叠加',
-	'maps_photos' => '照片',
-	'maps_videos' => '视频',
-	'maps_wikipedia' => '维基百科',
-	'maps_webcams' => '网络摄像机',
 	'maps-osm-par-thumbs' => '显示大拇指',
 	'maps-osm-par-photos' => '显示图片',
 	'mapeditor' => '地图编辑器',
+	'specialpages-group-maps' => '地图',
+	'mapeditor-none-text' => '无',
+	'mapeditor-done-button' => '完成',
+	'mapeditor-import-button2' => '汇入',
+	'mapeditor-export-button' => '汇出到 wiki 代码',
+	'mapeditor-link-title-switcher-link-text' => '连结',
+	'mapeditor-form-field-title' => '标题',
+	'mapeditor-form-field-text' => '文字',
+	'mapeditor-form-field-link' => '连结',
+	'mapeditor-form-field-image' => '图片',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Horacewai2
  * @author Mark85296341
  * @author Simon Shek
  * @author Waihorace
  */
 $messages['zh-hant'] = array(
+	'right-geocode' => '地理編碼',
 	'maps_map' => '地圖',
 	'maps-loading-map' => '載入中...',
 	'maps-load-failed' => '無法加載地圖！',
@@ -5906,11 +5916,6 @@ $messages['zh-hant'] = array(
 	'maps-latitude' => '緯度：',
 	'maps-longitude' => '經度：',
 	'maps_map_cannot_be_displayed' => '該地圖無法顯示。',
-	'maps_overlays' => '重疊',
-	'maps_photos' => '照片',
-	'maps_videos' => '影片',
-	'maps_wikipedia' => '維基百科',
-	'maps_webcams' => '網路攝影機',
 	'maps-osm-par-thumbs' => '顯示大拇指',
 	'maps-osm-par-photos' => '顯示圖片',
 	'mapeditor' => '地圖編輯器',
