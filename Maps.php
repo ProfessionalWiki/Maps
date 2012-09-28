@@ -101,7 +101,15 @@ $wgAutoloadClasses['iHoverableMapElement'] 		= __DIR__ . '/includes/properties/i
 $wgAutoloadClasses['iLinkableMapElement'] 		= __DIR__ . '/includes/properties/iLinkableMapElement.php';
 $wgAutoloadClasses['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/iStrokableMapElement.php';
 
+// Autoload Geo Validators
+$wgAutoloadClasses['GeoValidator'] 				= __DIR__ . '/includes/validators/GeoValidator.php';
+$wgAutoloadClasses['LocationValidator'] 		= __DIR__ . '/includes/validators/LocationValidator.php';
+$wgAutoloadClasses['LineValidator'] 			= __DIR__ . '/includes/validators/LineValidator.php';
+$wgAutoloadClasses['PolygonValidator'] 			= __DIR__ . '/includes/validators/PolygonValidator.php';
+$wgAutoloadClasses['RectangleValidator'] 		= __DIR__ . '/includes/validators/RectangleValidator.php';
+$wgAutoloadClasses['CircleValidator'] 			= __DIR__ . '/includes/validators/CircleValidator.php';
 
+// Autoload the "includes/criteria/" classes.
 // TODO: migrate to Params
 $wgAutoloadClasses['CriterionIsDistance'] 		= __DIR__ . '/includes/criteria/CriterionIsDistance.php';
 $wgAutoloadClasses['CriterionIsImage'] 			= __DIR__ . '/includes/criteria/CriterionIsImage.php';
@@ -327,3 +335,4 @@ function efMapsSetup() {
 }
 
 $egParamDefinitions['mappingservice'] = 'MapsServiceParam';
+
