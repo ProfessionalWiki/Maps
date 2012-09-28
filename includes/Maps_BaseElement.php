@@ -33,11 +33,11 @@ abstract class MapsBaseElement implements iBubbleMapElement , iLinkableMapElemen
 	}
 
 	public function hasTitle() {
-		return $this->title !== '';
+		return !is_null($this->title) && $this->title !== '';
 	}
 
 	public function hasText() {
-		return $this->text !== '';
+		return !is_null($this->text) && $this->text !== '';
 	}
 
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
