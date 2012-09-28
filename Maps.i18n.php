@@ -3140,7 +3140,7 @@ $messages['ja'] = array(
 	'maps-others' => 'その他',
 	'maps-ns-layer' => 'レイヤー',
 	'maps-ns-layer-talk' => 'レイヤー・トーク',
-	'maps-layer-property' => '属性',
+	'maps-layer-property' => 'プロパティ',
 	'maps-layer-value' => '値',
 	'maps-layer-errors' => 'エラー',
 	'maps-error-invalid-layerdef' => 'このレイヤー定義は正しくありません。',
@@ -3185,7 +3185,7 @@ $messages['ja'] = array(
 	'maps_unrecognized_coords' => '以下の{{PLURAL:$2|座標}}は認識されませんでした: $1',
 	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}は認識されなかったため、地図から省かれています:
 $1',
-	'maps_map_cannot_be_displayed' => 'この地図は表示できません。',
+	'maps_map_cannot_be_displayed' => '地図を表示できません。',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
 	'maps_googlemaps3' => 'Google マップ v3',
 	'maps_openlayers' => 'OpenLayers',
