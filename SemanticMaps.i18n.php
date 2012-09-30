@@ -340,7 +340,7 @@ $messages['de'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
-	'semanticmaps-kml-linkabsolute' => 'Sollen die Links absolut sein oder nicht (nämlich relativ)',
+	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein oder nicht (nämlich relativ)',
 	'semanticmaps-kml-pagelinktext' => 'Der Text, der für die Links zur Seite genutzt werden soll. $1 wird dabei durch den Namen der Seite ersetzt.',
 );
 
