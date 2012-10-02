@@ -144,7 +144,7 @@ $messages['az'] = array(
 	'semanticmaps-forminput-add' => 'Əlavə et',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -831,7 +831,7 @@ för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
 	'semanticmaps-par-geocodecontrol' => "Donn dat Bedeenelemänt aanzeije för de Ko'odinaate op de Ääd ze beärbeide",
 );
 
-/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
  * @author Gomada
  */
 $messages['ku-latn'] = array(
@@ -921,7 +921,7 @@ $messages['mt'] = array(
 	'semanticmaps-par-forceshow' => "Uri l-mappa anke jekk m'hemm l-ebda post x'turi?",
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬)
+/** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Event
  * @author Nghtwlkr
  */
@@ -985,7 +985,7 @@ $messages['nl'] = array(
 	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de verwijzingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -1229,7 +1229,7 @@ $messages['sl'] = array(
 	'semanticmaps-kml-pagelinktext' => 'Besedilo za povezave do strani, v katerih bo $1 zamenjan z naslovom strani',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -1239,7 +1239,7 @@ $messages['sr-ec'] = array(
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 );
 
-/** Serbian (Latin script) (‪srpski (latinica)‬)
+/** Serbian (Latin script) (srpski (latinica)‎)
  * @author Michaello
  */
 $messages['sr-el'] = array(
@@ -1406,7 +1406,7 @@ $messages['yi'] = array(
 	'semanticmaps-forminput-remove' => 'אַראָפּנעמען',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Gzdavidwong
  * @author Linforest
  * @author Xiaomingyan
