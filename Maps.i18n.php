@@ -340,10 +340,6 @@ $1.',
 	'maps_map_cannot_be_displayed' => 'Die kaart kan nie vertoon word nie.',
 	'maps_click_to_activate' => 'Kliek om die kaart te aktiveer',
 	'maps_centred_on' => 'Kaart gesentreer op $1, $2.',
-	'maps_photos' => "Foto's",
-	'maps_videos' => "Video's",
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webkameras',
 	'specialpages-group-maps' => 'Kaarte',
 	'mapeditor-none-text' => 'Geen',
 	'mapeditor-link-title-switcher-link-text' => 'Skakel',
@@ -408,17 +404,11 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|الإحداثي التالي|الإحداثيات التالية}} لم يتم التعرف عليها و {{PLURAL:$2|تمت|تمت}} إزالتها من الخريطة:
 $1',
 	'maps_map_cannot_be_displayed' => 'الخريطة لا يمكن عرضها.',
-	'maps_googlemaps2' => 'خرائط جوجل v2',
 	'maps_googlemaps3' => 'خرائط جوجل v3',
 	'maps_openlayers' => 'أوبن لايرز',
 	'maps_osm' => 'أوبن ستريت ماب',
 	'maps_click_to_activate' => 'اضغط لتنشيط الخريطة',
 	'maps_centred_on' => 'الخريطة مركزها في $1، $2.',
-	'maps_overlays' => 'الطبقات الإضافية',
-	'maps_photos' => 'صور',
-	'maps_videos' => 'فيديوهات',
-	'maps_wikipedia' => 'ويكيبيديا',
-	'maps_webcams' => 'كاميرات الويب',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -432,9 +422,6 @@ $messages['arc'] = array(
 	'maps-abb-east' => 'ܡܕܢܚܐ',
 	'maps-abb-south' => 'ܬܝܡܢܐ',
 	'maps-abb-west' => 'ܡܥܪܒܐ',
-	'maps_photos' => 'ܨܘܪ̈ܬܐ',
-	'maps_videos' => 'ܒܝܕ̈ܝܘ',
-	'maps_wikipedia' => 'ܘܝܩܝܦܕܝܐ',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -447,7 +434,6 @@ $messages['arz'] = array(
 	'maps-abb-west' => 'غرب',
 	'maps-latitude' => 'دوائر العرض:',
 	'maps-longitude' => 'خطوط الطول:',
-	'maps_googlemaps2' => 'خرايط جوجل',
 );
 
 /** Asturian (asturianu)
@@ -521,8 +507,6 @@ Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
 	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
 	'maps-displaymap-par-zoom' => "Permite configurar el nivel de zoom do mapa.
 Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
-	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
-	'maps-displaymap-par-coordinates' => "Un llugar o más pa amosar nel mapa. S'indicarán con un marcador.",
 	'maps-displaymap-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
 Almite tanto direiciones como coordenaes.
 Cuando nun se da esta propiedá, el mapa centraráse nel marcador proporcionáu, o entre los marcadores proporcionaos.',
@@ -548,10 +532,6 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Llatitú:',
 	'maps-longitude' => 'Llonxitú:',
-	'maps_overlays' => 'Superposiciones',
-	'maps_photos' => 'Semeyes',
-	'maps_videos' => 'Videos',
-	'maps_wikipedia' => 'Uiquipedia',
 	'maps-googlemaps3-par-poi' => "Amosar puntos d'interés.",
 	'maps-openlayers-par-controls' => 'Controles a poner nel mapa.',
 	'maps-openlayers-par-layers' => "Les capes que tarán disponibles nel selector de capes. La primera capa s'amosará al cargar el mapa.",
@@ -568,9 +548,6 @@ $messages['az'] = array(
 	'maps-abb-north' => 'Şm',
 	'maps-abb-east' => 'C',
 	'maps-abb-west' => 'Q',
-	'maps_photos' => 'Şəkillər',
-	'maps_videos' => 'Videolar',
-	'maps_wikipedia' => 'Vikipediya',
 );
 
 /** Bavarian (Boarisch)
@@ -580,7 +557,7 @@ $messages['bar'] = array(
 	'maps-loading-map' => 'Korten werd gloon ...',
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
@@ -654,8 +631,6 @@ $messages['be-tarask'] = array(
 	'maps-displaymap-par-coordinates' => 'Месцазнаходжаньне, на якім мапа будзе цэнтравацца.',
 	'maps-displaymap-par-zoom' => 'Дазваляе зьмяняць павелічэньне мапы.
 Калі гэта немагчыма, ці на мапе ёсьць некалькі маркераў, замест пазначанага ў наладах будзе выбранае найбольш слушнае павелічэньне.',
-	'maps-displaymap-par-mappingservice' => 'Дазваляе ўстанаўліваць сэрвіс мапаў, які будзе выкарыстоўвацца для стварэньня мапы.',
-	'maps-displaymap-par-coordinates' => 'Адно ці болей месцазнаходжаньняў для паказу на мапе. Яны будуць паказаныя маркерамі.',
 	'maps-displaymap-par-centre' => 'Дазваляе ўстанаўліваць каардынаты цэнтру мапы для display_point(s).
 Прымаюцца адрасы і каардынаты.
 Калі гэтая ўласьцівасьць не пададзеная, мапа будзе цэнтравацца на пададзеным маркеры ці паміж пададзенымі маркерамі.',
@@ -700,18 +675,6 @@ $1',
 	'maps-par-zoom' => 'Маштаб мапы. Для мапаў з пазначэньнямі маштаб будзе такім, пры якім яшчэ будуць паказвацца ўсе пазначэньні.',
 	'maps-par-width' => 'Дазваляе наладжваць шырыню мапы. Па змоўчваньні піксэлі выкарыстоўваюцца як адзінкі вымярэньня, але Вы можаце непасрэдна вызначыць адну з гэтых адзінак вымярэньня: px, ex, em, %.',
 	'maps-par-height' => 'Дазваляе наладжваць вышыню мапы. Па змоўчваньні піксэлі выкарыстоўваюцца як адзінкі вымярэньня, але Вы можаце непасрэдна вызначыць адну з гэтых адзінак вымярэньня: px, ex, em, %.',
-	'maps-googlemaps2-incompatbrowser' => 'Ваш браўзэр не сумяшчальны з Google Maps v2.',
-	'maps_overlays' => 'Слаі',
-	'maps_photos' => 'Фотаздымкі',
-	'maps_videos' => 'Відэа',
-	'maps_wikipedia' => 'Вікіпэдыя',
-	'maps_webcams' => 'Ўэб-камэры',
-	'maps-googlemaps2-par-type' => 'Тып мапы, які будзе паказвацца ў пачатку.',
-	'maps-googlemaps2-par-types' => 'Тыпы мапаў, якія будуць даступныя праз элемэнт кіраваньня тыпамі.',
-	'maps-googlemaps2-par-controls' => 'Элемэнты кіраваньня, якія будуць разьмешчаныя на мапе.',
-	'maps-googlemaps2-par-autozoom' => 'Уключае пракрутку праз кола мышкі.',
-	'maps-googlemaps2-par-kml' => 'KML-файлы для загрузкі ў мапу.',
-	'maps-googlemaps2-par-overlays' => 'Слаі, якія ўдзельнік можа ўключыць.',
 	'maps-googlemaps3-incompatbrowser' => 'Ваш браўзэр не сумяшчальны з Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'Тып мапы, які будзе паказвацца ў пачатку.',
 	'maps-googlemaps3-par-types' => 'Тыпы мапаў, якія будуць даступныя праз элемэнт кіраваньня тыпамі.',
@@ -779,9 +742,6 @@ $messages['bg'] = array(
 	'maps-abb-west' => 'З',
 	'maps-latitude' => 'Географска ширина:',
 	'maps-longitude' => 'Географска дължина:',
-	'maps_photos' => 'Снимки',
-	'maps_wikipedia' => 'Уикипедия',
-	'maps_webcams' => 'Уебкамери',
 	'maps-googlemaps3-incompatbrowser' => 'Вашият браузър не е съвместим с Google Maps v3.',
 );
 
@@ -793,7 +753,6 @@ $messages['bjn'] = array(
 	'maps-abb-east' => 'T',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'B',
-	'maps_wikipedia' => 'Wikipidia',
 );
 
 /** Bengali (বাংলা)
@@ -819,10 +778,6 @@ $messages['bn'] = array(
 	'maps_map_cannot_be_displayed' => 'এই মানচিত্রটি প্রদর্শন করা সম্ভব নয়।',
 	'maps_click_to_activate' => 'মানচিত্র চালু করতে ক্লিক করুন',
 	'maps_centred_on' => 'মানচিত্র $1, $2-এ কেন্দ্রীভূত।',
-	'maps_photos' => 'ছবি',
-	'maps_videos' => 'ভিডিও',
-	'maps_wikipedia' => 'উইকিপিডিয়া',
-	'maps_webcams' => 'ওয়েবক্যাম',
 	'maps-osm-par-thumbs' => 'থাম্ব দেখাও',
 	'maps-osm-par-photos' => 'ছবি দেখাও',
 );
@@ -891,13 +846,6 @@ $1",
 	'maps-geocoder-not-available' => "N'haller ket ober gant arc'hwel geokodañ ar c'hartennoù. N'haller ket geokodañ ho lec'hiadur.",
 	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
 	'maps_centred_on' => 'Kartenn kreizet war $1, $2.',
-	'maps-googlemaps2-incompatbrowser' => "N'eo ket kenglotus ho merdeer gant Google Maps v2.",
-	'maps_overlays' => 'Dreistlakadennoù',
-	'maps_photos' => "Luc'hskeudennoù",
-	'maps_videos' => 'Videoioù',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Kameraoù web',
-	'maps-googlemaps2-par-kml' => 'Restroù KML da gargañ war ar gartenn.',
 	'maps-googlemaps3-incompatbrowser' => "N'eo ket kenglotus ho merdeer gant Google Maps v3.",
 	'maps-googlemaps3-par-zoomstyle' => 'Stil kontroll ar zoum.',
 	'maps-googlemaps3-par-typestyle' => 'Stil kontroll ar seurt.',
@@ -970,11 +918,6 @@ $1',
 	'maps-geocoder-not-available' => 'Mogućnost geokodiranja na Mapama nije dostupna. Vaša lokacija ne može biti geokodirana.',
 	'maps_click_to_activate' => 'Kliknite da aktivirate kartu',
 	'maps_centred_on' => 'Karta centrirana na $1, $2.',
-	'maps_overlays' => 'Slojevi',
-	'maps_photos' => 'Fotografije',
-	'maps_videos' => 'Video snimci',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Web kamere',
 );
 
 /** Catalan (català)
@@ -991,19 +934,6 @@ $messages['ca'] = array(
 	'maps-longitude' => 'Longitud:',
 	'maps_coordinates_missing' => "No s'han proporcionat coordenades pel mapa.",
 	'maps_centred_on' => 'Mapa centrat en $1, $2.',
-	'maps_overlays' => 'Capes addicionals',
-	'maps_photos' => 'Fotos',
-	'maps_videos' => 'Videos',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Cámeres web',
-);
-
-/** Chechen (нохчийн)
- * @author Sasan700
- */
-$messages['ce'] = array(
-	'maps_photos' => 'Сурт',
-	'maps_wikipedia' => 'Википедийа',
 );
 
 /** Czech (česky)
@@ -1018,8 +948,6 @@ $messages['cs'] = array(
 	'maps-abb-west' => 'Z',
 	'maps-latitude' => 'Zeměpisná šířka:',
 	'maps-longitude' => 'Zeměpisná délka:',
-	'maps_overlays' => 'Překryvné vrstvy',
-	'maps_wikipedia' => 'Wikipedie',
 );
 
 /** Danish (dansk)
@@ -1235,14 +1163,8 @@ $messages['diq'] = array(
 	'maps-latitude' => 'Heralem:',
 	'maps-longitude' => 'Lemen',
 	'maps_coordinates_missing' => 'Qan dê xerita koordinat nêdebya.',
-	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_googlemaps3' => 'Google Maps v3',
 	'maps_openlayers' => 'OpenLayers',
-	'maps_overlays' => 'Tebeqey',
-	'maps_photos' => 'Fotrafi',
-	'maps_videos' => 'Vidyoy',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Kameray webi',
 	'mapeditor' => 'Vurnerê Xerita',
 	'specialpages-group-maps' => 'Xeritey',
 	'mapeditor-none-text' => 'Çıniyo',
@@ -1312,11 +1234,6 @@ $messages['dsb'] = array(
 	'maps-geocoder-not-available' => 'Funkcija geokoděrowanja Kórtow njestoj k dispoziciji, twójo městno njedajo se geokoděrowaś.',
 	'maps_click_to_activate' => 'Klikni, aby kórtu aktiwěrował',
 	'maps_centred_on' => 'Kórta na $1, $2 centrěrowana.',
-	'maps_overlays' => 'Pśekšyśa',
-	'maps_photos' => 'Fota',
-	'maps_videos' => 'Wideo',
-	'maps_wikipedia' => 'Wikipedija',
-	'maps_webcams' => 'Webcamy',
 );
 
 /** Greek (Ελληνικά)
@@ -1331,9 +1248,6 @@ $messages['el'] = array(
 	'maps-latitude' => 'Γεωγραφικό πλάτος:',
 	'maps-longitude' => 'Γεωγραφικό μήκος:',
 	'maps_coordinates_missing' => 'Καμία συντεταγμένη δεν παρασχέθηκε για τον χάρτη.',
-	'maps_photos' => 'Φωτογραφίες',
-	'maps_videos' => 'Βίντεο',
-	'maps_wikipedia' => 'Βικιπαίδεια',
 );
 
 /** British English (British English)
@@ -1362,8 +1276,6 @@ $messages['eo'] = array(
 	'maps-longitude' => 'Longitudo:',
 	'maps_map_cannot_be_displayed' => 'La mapo ne esti montrebla.',
 	'maps_click_to_activate' => 'Klaku aktivigi mapon',
-	'maps_photos' => 'Fotoj',
-	'maps_wikipedia' => 'Vikipedio',
 );
 
 /** Spanish (español)
@@ -1567,10 +1479,6 @@ $messages['et'] = array(
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'Laiuskraad:',
 	'maps-longitude' => 'Pikkuskraad:',
-	'maps_photos' => 'Fotod',
-	'maps_videos' => 'Videod',
-	'maps_wikipedia' => 'Vikipeedia',
-	'maps_webcams' => 'Veebikaamerad',
 	'mapeditor-link-title-switcher-popup-text' => 'Hüpikaken tekstiga',
 	'mapeditor-form-field-title' => 'Pealkiri',
 	'mapeditor-form-field-text' => 'Tekst',
@@ -1633,13 +1541,6 @@ $messages['fa'] = array(
 	'maps-abb-west' => 'غرب',
 	'maps-latitude' => 'عرض جغرافیایی:',
 	'maps-longitude' => 'طول جغرافیایی:',
-	'maps_overlays' => 'پوشش‌ها',
-	'maps_photos' => 'تصاویر',
-	'maps_videos' => 'ویدیو‌ها',
-	'maps_wikipedia' => 'ویکی‌پدیا',
-	'maps_webcams' => 'وب‌کم‌ها',
-	'maps-googlemaps2-par-type' => 'نوع نقشه برای نمایش اولیه.',
-	'maps-googlemaps2-par-overlays' => 'پوشش‌هایی که کاربر می‌تواند فعال کند.',
 	'mapeditor' => 'تدوین‌گر نقشه',
 	'specialpages-group-maps' => 'نقشه‌ها',
 	'mapeditor-none-text' => 'هیچ کدام',
@@ -1691,11 +1592,6 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Karttaa ei voida näyttää.',
 	'maps_click_to_activate' => 'Napsauta aktivoidaksesi kartan',
 	'maps_centred_on' => 'Kartta keskitetty kohtaan $1, $2.',
-	'maps_overlays' => 'Kerrokset',
-	'maps_photos' => 'Kuvat',
-	'maps_videos' => 'Videot',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Web-kamerat',
 	'specialpages-group-maps' => 'Kartat',
 	'mapeditor-none-text' => 'Ei mitään',
 	'mapeditor-done-button' => 'Valmis',
@@ -1796,8 +1692,6 @@ Cela peut affecter la valeur par défaut du service de géocodage.',
 	'maps-displaymap-par-coordinates' => "L'emplacement sur lequel la carte sera initialement centrée.",
 	'maps-displaymap-par-zoom' => "Permet de définir le niveau de zoom de la carte.
 Lorsqu'il n'est pas fourni et que plusieurs marqueurs sont présents sur la carte, le meilleur zoom sera pris, et non pas la valeur par défaut configurable.",
-	'maps-displaymap-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
-	'maps-displaymap-par-coordinates' => 'Un ou plusieurs emplacements à afficher sur la carte. Ils seront indiqués avec un marqueur.',
 	'maps-displaymap-par-centre' => "Permet de définir les coordonnées du centre de la carte pour display_point(s).
 Accepte les adresses et les coordonnées.!
 Lorsque cette propriété n'est pas fournie, la carte se recentre sur le marqueur fourni, ou entre les marqueurs fournis.",
@@ -1841,18 +1735,6 @@ $1",
 	'maps-par-zoom' => 'Le niveau de zoom de la carte. Pour les cartes avec des marqueurs la valeur par défaut le plus grand zoom qui montre encore tous les marqueurs.',
 	'maps-par-width' => 'Permet de définir la largeur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.',
 	'maps-par-height' => 'Permet de définir la hauteur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.',
-	'maps-googlemaps2-incompatbrowser' => "Votre navigateur n'est pas compatible avec Google Maps v2.",
-	'maps_overlays' => 'Superpositions',
-	'maps_photos' => 'Photos',
-	'maps_videos' => 'Vidéos',
-	'maps_wikipedia' => 'Wikipédia',
-	'maps_webcams' => 'Webcams',
-	'maps-googlemaps2-par-type' => 'Le type de carte à afficher initialement.',
-	'maps-googlemaps2-par-types' => 'Les types de carte qui seront disponibles via le contrôle de type.',
-	'maps-googlemaps2-par-controls' => 'Les contrôles à placer sur la carte.',
-	'maps-googlemaps2-par-autozoom' => "Activer le défilement à l'aide de la molette de la souris.",
-	'maps-googlemaps2-par-kml' => 'Fichiers KML à charger sur la carte.',
-	'maps-googlemaps2-par-overlays' => "Superpositions que l'utilisateur peut activer.",
 	'maps-googlemaps3-incompatbrowser' => "Votre navigateur n'est pas compatible avec Google Maps v3.",
 	'maps-googlemaps3-par-type' => 'Le type de carte à afficher initialement.',
 	'maps-googlemaps3-par-types' => 'Les types de carte qui seront disponibles via le contrôle de type.',
@@ -1939,11 +1821,6 @@ $messages['frp'] = array(
 	'maps-longitude' => 'Longituda :',
 	'maps_click_to_activate' => 'Clicâd por activar la mapa',
 	'maps_centred_on' => 'Mapa centrâ dessus $1, $2.',
-	'maps_overlays' => 'Supèrposicions',
-	'maps_photos' => 'Fotôs',
-	'maps_videos' => 'Vidèôs',
-	'maps_wikipedia' => 'Vouiquipèdia',
-	'maps_webcams' => 'Camères vouèbe',
 	'maps-osm-par-thumbs' => 'Fâre vêre des figures',
 	'maps-osm-par-photos' => 'Fâre vêre des fotôs',
 	'mapeditor' => 'Changior de mapa',
@@ -2241,11 +2118,6 @@ $1',
 	'maps-geocoder-not-available' => 'S Geokodierigs-Feature vu däre Charte isch nit verfiegbar, Dyy Ort cha nit geokodiert wäre.',
 	'maps_click_to_activate' => 'Klick go d Charte aktiviere',
 	'maps_centred_on' => 'Charte zäntriert uf $1, $2.',
-	'maps_overlays' => 'Overlay',
-	'maps_photos' => 'Foto',
-	'maps_videos' => 'Video',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webcam',
 );
 
 /** Hebrew (עברית)
@@ -2326,8 +2198,6 @@ $messages['he'] = array(
 	'maps-displaymap-par-coordinates' => 'באיזה מיקום המפה תתמרכז בתחילה.',
 	'maps-displaymap-par-zoom' => 'מאפשר קביעת קמת התקריב של המפה.
 כאשר נתון זה לא מסופק וסמנים שונים נמצאים על המפה, יילקח התקריב המתאים ביותר, לא ברירת המחדל הניתנת להגדרה.',
-	'maps-displaymap-par-mappingservice' => 'מאפשר קביעת שירות המיפוי שיחולל את המפה.',
-	'maps-displaymap-par-coordinates' => 'מיקום אחד או יותר להצגה על המפה. הם יסומנו על המפה בסמנים.',
 	'maps-displaymap-par-centre' => 'מאפשר קביעת נקודות ציון של מרכז המפה עבור מופעי display_point.
 מקבל כתובות ונקודות ציון.
 כאשר המאפיין הזה לא מצוין, המפה תמרכז את עצמה על הסמן שצוין או בין סמנים שצוינו.',
@@ -2371,18 +2241,6 @@ $1',
 	'maps-par-zoom' => 'רמת התקריב של המפה. למפות עם סמנים ברירת המחדל תהיה רמת תקריב גבוהה ביותר שמציגה את כל הסמנים.',
 	'maps-par-width' => 'לאפשר הגדרת רוחב המפה. ברירת המחדל היא שהיחידה תהיה פיקסל, אבל אפשר להגדיר במפורש אחת מהיחידות הבאות: px, ex, em, %.',
 	'maps-par-height' => 'לאפשר הגדרת גובה המפה. ברירת המחדל היא שהיחידה תהיה פיקסל, אבל אפשר להגדיר במפורש אחת מהיחידות הבאות: px, ex, em, %.',
-	'maps-googlemaps2-incompatbrowser' => 'הדפדפן שלך לא תומך בגוגל מפות גרסה 2.',
-	'maps_overlays' => 'שכבות כיסוי',
-	'maps_photos' => 'תמונות',
-	'maps_videos' => 'סרטוני וידאו',
-	'maps_wikipedia' => 'ויקיפדיה',
-	'maps_webcams' => 'מצלמות אינטרנט',
-	'maps-googlemaps2-par-type' => 'איזה סוג מפה להציג תחילה.',
-	'maps-googlemaps2-par-types' => 'סוגי המפות שיהיו זמינים דרך בקר הסוג.',
-	'maps-googlemaps2-par-controls' => 'אילו בקרים להציב על המפה.',
-	'maps-googlemaps2-par-autozoom' => 'להפעיל גלילה באמצעות גלגל העכבר.',
-	'maps-googlemaps2-par-kml' => 'אילו קבצי KML לטעון אל המפה.',
-	'maps-googlemaps2-par-overlays' => 'אילו שכבות כיסוי המשתמש יכול להפעיל.',
 	'maps-googlemaps3-incompatbrowser' => 'הדפדפן שלך לא תומך בגוגל מפות גרסה 3.',
 	'maps-googlemaps3-par-type' => 'סוג המפה שיוצג תחילה.',
 	'maps-googlemaps3-par-types' => 'סוגי המפה שיהיו זמינים דרך בקר הסוג.',
@@ -2661,11 +2519,6 @@ $1',
 	'maps-geocoder-not-available' => 'A térképek kiterjesztés geokódoló funkciója nem elérhető. A tartózkodási helyed nem geokódolható.',
 	'maps_click_to_activate' => 'Kattints a térkép aktiválásához',
 	'maps_centred_on' => 'Térkép középre igazítva a következő koordináták alapján: $1, $2.',
-	'maps_overlays' => 'Rétegek',
-	'maps_photos' => 'Fényképek',
-	'maps_videos' => 'Videók',
-	'maps_wikipedia' => 'Wikipédia',
-	'maps_webcams' => 'Webkamerák',
 	'maps-googlemaps3-par-zoomstyle' => 'A nagyítás irányításának stílusa.',
 	'maps-googlemaps3-par-kml' => 'Betöltendő KML fájlok.',
 	'maps-osm-par-thumbs' => 'Bélyegképek megjelenítése',
@@ -2744,8 +2597,6 @@ Isto pote influentiar le valor predefinite de servicio de geocodification.',
 	'maps-displaymap-par-coordinates' => 'Le loco in le qual le carta essera initialmente centrate.',
 	'maps-displaymap-par-zoom' => 'Permitte definir le nivello de zoom del carta.
 Si isto non es fornite, e multiple marcatores es presente in le cata, le zoom que los arrangia melio essera prendite, non le predefinition configurabile.',
-	'maps-displaymap-par-mappingservice' => 'Permitte definir le servicio cartographic a usar pro generar le carta.',
-	'maps-displaymap-par-coordinates' => 'Un o plus locos a monstrar in le carta. Illos essera indicate con un marcator.',
 	'maps-displaymap-par-centre' => 'Permitte definir le coordinatas del centro del carta pro display_point(s).
 Accepta e adresses e coordinatas.
 Si iste proprietate non es fornite, le carta se centrara in le marcator fornite, o inter le marcatores fornite.',
@@ -2790,18 +2641,6 @@ $1',
 	'maps-par-zoom' => 'Le nivello de zoom pro le carta. Pro cartas con marcatores isto es predefinite como le nivello de zoom le plus alte que ancora monstra tote le marcatores.',
 	'maps-par-width' => 'Permitte fixar le latitude del carta. Le unitate assumite es pixels, ma tu pote specificar un de iste unitates: px, ex, em, %.',
 	'maps-par-height' => 'Permitte fixar le altitude del carta. Le unitate assumite es pixels, ma tu pote specificar un de iste unitates: px, ex, em, %.',
-	'maps-googlemaps2-incompatbrowser' => 'Tu navigator del web non es compatibile con Google Maps version 2.',
-	'maps_overlays' => 'Superpositiones',
-	'maps_photos' => 'Photos',
-	'maps_videos' => 'Videos',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Cameras web',
-	'maps-googlemaps2-par-type' => 'Le typo de carta a monstrar initialmente.',
-	'maps-googlemaps2-par-types' => 'Le typos de carta que essera disponibile via le controlo de typo.',
-	'maps-googlemaps2-par-controls' => 'Le controlos a placiar super le carta.',
-	'maps-googlemaps2-par-autozoom' => 'Permitte rolar usante le rota del mus.',
-	'maps-googlemaps2-par-kml' => 'Files KML pro cargar in le carta.',
-	'maps-googlemaps2-par-overlays' => 'Superpositiones que le usator pote activar.',
 	'maps-googlemaps3-incompatbrowser' => 'Tu navigator de web non es compatibile con Google Maps version 3.',
 	'maps-googlemaps3-par-type' => 'Le typo de carta a monstrar initialmente.',
 	'maps-googlemaps3-par-types' => 'Le typos de carta que essera disponibile via le controlo de typo.',
@@ -2926,8 +2765,6 @@ Ini dapat memengaruhi nilai bawaan layanan geokode.',
 	'maps-displaymap-par-coordinates' => 'Lokasi pusat awal dari peta.',
 	'maps-displaymap-par-zoom' => 'Memungkinkan pengaturan tingkat pembesaran peta.
 Jika tidak diberikan dan beberapa penanda ada pada peta, akan dipilih pembesaran yang paling muat, bukan bawaan yang disetel.',
-	'maps-displaymap-par-mappingservice' => 'Memungkinkan pengaturan layanan pemetaan yang akan digunakan untuk menghasilkan peta.',
-	'maps-displaymap-par-coordinates' => 'Satu atau beberapa lokasi akan ditampilkan pada peta. Lokasi tersebut akan ditunjukkan dengan penanda.',
 	'maps-displaymap-par-centre' => 'Memungkinkan pengaturan koordinat pusat peta untuk display_point.
 Dapat menerima alamat maupun koordinat.
 Jika tidak diberikan, peta akan menentukan pusatnya pada penanda yang ada atau di antara penanda yang diberikan.',
@@ -2968,18 +2805,6 @@ $1',
 	'maps-par-zoom' => 'Tingkat pembesaran peta. Secara bawaan, peta bertanda akan mengambil tingkat pembesaran yang masih menunjukkan semua tanda.',
 	'maps-par-width' => 'Memungkinkan pengaturan lebar peta. Secara bawaan, piksel akan dianggap sebagai unit, tetapi Anda dapat menentukan secara eksplisit salah satu unit berikut: px, ex, em, %.',
 	'maps-par-height' => 'Memungkinkan pengaturan tinggi peta. Secara bawaan, piksel akan dianggap sebagai unit, tetapi Anda dapat menentukan secara eksplisit salah satu unit berikut: px, ex, em, %.',
-	'maps-googlemaps2-incompatbrowser' => 'Peramban Anda tidak kompatibel dengan Google Maps v2.',
-	'maps_overlays' => 'Hamparan',
-	'maps_photos' => 'Foto',
-	'maps_videos' => 'Video',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Kamera web',
-	'maps-googlemaps2-par-type' => 'Jenis peta yang ditampilkan saat awal.',
-	'maps-googlemaps2-par-types' => 'Jenis peta yang akan tersedia melalui kontrol jenis.',
-	'maps-googlemaps2-par-controls' => 'Kontrol yang akan ditempatkan pada peta.',
-	'maps-googlemaps2-par-autozoom' => 'Mengaktifkan fitur gulir dengan menggunakan mousewheel.',
-	'maps-googlemaps2-par-kml' => 'Berkas KML yang akan dimuat ke dalam peta.',
-	'maps-googlemaps2-par-overlays' => 'Hamparan yang dapat diaktifkan pengguna.',
 	'maps-googlemaps3-incompatbrowser' => 'Peramban Anda tidak kompatibel dengan Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'Jenis peta yang ditampilkan saat awal.',
 	'maps-googlemaps3-par-types' => 'Jenis peta yang akan tersedia melalui kontrol jenis.',
@@ -3001,9 +2826,6 @@ $1',
  */
 $messages['ig'] = array(
 	'maps_map' => 'Otú Uzọr',
-	'maps_photos' => 'Onyònyò',
-	'maps_videos' => 'Enyónyó-na-jé',
-	'maps_wikipedia' => 'Wikipedia',
 );
 
 /** Italian (italiano)
@@ -3069,16 +2891,6 @@ $messages['it'] = array(
 	'maps-geocoder-not-available' => "La funzionalità di geocodifica dell'estensione Maps non è disponibile. La tua posizione non può essere geocodificata.",
 	'maps_click_to_activate' => 'Clicca per attivare la mappa.',
 	'maps_centred_on' => 'Mappa centrata su $1, $2.',
-	'maps-googlemaps2-incompatbrowser' => 'Si sta utilizzando un browser non compatibile con Google Maps v2.',
-	'maps_overlays' => 'Overlay',
-	'maps_photos' => 'Foto',
-	'maps_videos' => 'Video',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webcam',
-	'maps-googlemaps2-par-type' => 'Il tipo di mappa da mostrare inizialmente.',
-	'maps-googlemaps2-par-controls' => 'I controlli da posizionare sulla mappa.',
-	'maps-googlemaps2-par-autozoom' => 'Abilitare lo scorrimento utilizzando la rotellina del mouse.',
-	'maps-googlemaps2-par-kml' => 'File KML da caricare sulla mappa.',
 	'maps-googlemaps3-incompatbrowser' => 'Si sta utilizzando un browser non compatibile con Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'Il tipo di mappa da mostrare inizialmente.',
 	'maps-googlemaps3-par-layers' => 'Livelli speciali da caricare sulla mappa.',
@@ -3262,11 +3074,6 @@ $messages['ka'] = array(
 	'maps-abb-west' => 'დ',
 	'maps-latitude' => 'განედი:',
 	'maps-longitude' => 'გრძედი:',
-	'maps_overlays' => 'ფენები',
-	'maps_photos' => 'ფოტო',
-	'maps_videos' => 'ვიდეოები',
-	'maps_wikipedia' => 'ვიკიპედია',
-	'maps_webcams' => 'ვებ-კამერები',
 	'maps-osm-par-thumbs' => 'მინიატიურის ჩვენება',
 	'maps-osm-par-photos' => 'ფოტოს ჩვენება',
 	'mapeditor' => 'რუკის რედაქტორი',
@@ -3297,13 +3104,6 @@ $messages['km'] = array(
 	'maps-abb-west' => 'ល',
 	'maps-latitude' => 'រយៈទទឹង៖',
 	'maps-longitude' => 'រយៈបណ្តោយ៖',
-);
-
-/** Kannada (ಕನ್ನಡ)
- * @author Nayvik
- */
-$messages['kn'] = array(
-	'maps_wikipedia' => 'ವಿಕಿಪೀಡಿಯ',
 );
 
 /** Korean (한국어)
@@ -3432,20 +3232,14 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Di Kaat künne mer nit aanzeije.',
 	'maps_click_to_activate' => 'Donn klecke, öm op di Kaat ze jonn',
 	'maps_centred_on' => 'De Kaat met $1, $2 en de Medde.',
-	'maps_overlays' => 'Enbländunge',
-	'maps_photos' => 'Fottos',
-	'maps_videos' => 'Viddejos',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webkammeras',
 	'maps-googlemaps3-par-kmlrezoom' => 'Donn di Kaat norr_ens zoome, nohdäm de  layers vum KLM jelaade sin.',
 );
 
-/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
  * @author George Animal
  */
 $messages['ku-latn'] = array(
 	'maps_map' => 'Nexşe',
-	'maps_wikipedia' => 'Wîkîpediya',
 	'mapeditor-link-title-switcher-link-text' => 'Girêdan',
 	'mapeditor-form-field-title' => 'Sernav',
 	'mapeditor-form-field-link' => 'Girêdan',
@@ -3463,8 +3257,6 @@ $messages['lad'] = array(
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'O',
-	'maps_photos' => 'Fotoggrafías',
-	'maps_wikipedia' => 'Vikipedya',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3566,10 +3358,6 @@ Katrografavimo paslaugos pasiekiamos: $1',
 	'maps_map_cannot_be_displayed' => 'Žemėlapis negal būti parodytas.',
 	'maps_click_to_activate' => 'Spustelėkite, norėdami įjungti žemėlapį',
 	'maps_centred_on' => 'Žemėlapis centruotas link $1, $2.',
-	'maps_photos' => 'Nuotraukos',
-	'maps_videos' => 'Vaizdo klipai',
-	'maps_wikipedia' => 'Vikipedija',
-	'maps_webcams' => 'Interneto kameros',
 );
 
 /** Latvian (latviešu)
@@ -3970,15 +3758,6 @@ $1',
 	'mapeditor-form-field-visitedicon' => 'Ikon dikunjungi',
 );
 
-/** Maltese (Malti)
- * @author Chrisportelli
- */
-$messages['mt'] = array(
-	'maps_photos' => 'Ritratti',
-	'maps_videos' => 'Vidjos',
-	'maps_wikipedia' => 'Wikipedija',
-);
-
 /** Erzya (эрзянь) */
 $messages['myv'] = array(
 	'maps-abb-north' => 'Веньэльйонкс',
@@ -3996,7 +3775,7 @@ $messages['nah'] = array(
 	'maps-abb-south' => 'H',
 );
 
-/** Norwegian Bokmål (‪norsk (bokmål)‬)
+/** Norwegian Bokmål (norsk (bokmål)‎)
  * @author Event
  * @author Kim Eik
  * @author Nghtwlkr
@@ -4078,11 +3857,6 @@ $1',
 	'maps-geocoder-not-available' => 'Geokodingsfunksjonen i Maps er ikke tilgjengelig. Din plassering kan ikke geokodes.',
 	'maps_click_to_activate' => 'Klikk for å aktivere kartet',
 	'maps_centred_on' => 'Kart sentrert om $1, $2.',
-	'maps_overlays' => 'Transparenter',
-	'maps_photos' => 'Foto',
-	'maps_videos' => 'Videoer',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webkamera',
 	'mapeditor' => 'Kart tegner',
 	'specialpages-group-maps' => 'Kart',
 	'mapeditor-parser-error' => 'En feil oppstod under parsing av data.',
@@ -4298,7 +4072,7 @@ $1.',
 	'mapeditor-form-field-visitedicon' => 'Icoon voor bezocht',
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -4315,10 +4089,6 @@ $messages['nn'] = array(
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikkje verta vist.',
 	'maps_click_to_activate' => 'Trykk for å aktivera kartet',
 	'maps_centred_on' => 'Kart sentrert på $1, $2.',
-	'maps_photos' => 'Bilete',
-	'maps_videos' => 'Videoar',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webkamera',
 );
 
 /** Occitan (occitan)
@@ -4345,11 +4115,6 @@ $1',
 	'maps_map_cannot_be_displayed' => 'La mapa pòt pas èsser afichada.',
 	'maps_click_to_activate' => 'Clicar per activar la mapa',
 	'maps_centred_on' => 'Mapa centrada sus $1, $2.',
-	'maps_overlays' => 'Superposicions',
-	'maps_photos' => 'Fòtos',
-	'maps_videos' => 'Vidèos',
-	'maps_wikipedia' => 'Wikipèdia',
-	'maps_webcams' => 'Webcams',
 );
 
 /** Oriya (ଓଡ଼ିଆ)
@@ -4369,7 +4134,6 @@ $messages['pdc'] = array(
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
-	'maps_wikipedia' => 'Wikipedia',
 );
 
 /** Pälzisch (Pälzisch)
@@ -4425,10 +4189,6 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Die Kaad komma ned zaische.',
 	'maps_click_to_activate' => 'Um die Kaad oazuschalde, mugschd druffdrigge',
 	'maps_centred_on' => 'Die Kaad isch uff $1, $2 inde Midd.',
-	'maps_photos' => 'Fodos',
-	'maps_videos' => 'Wideos',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webcams',
 	'maps-googlemaps3-par-kmlrezoom' => 'Nomol die Kaad vagreeßere, wonn die KML-Ewene druff glaade worre sin.',
 	'maps-osm-par-photos' => 'Fodografieje zaische',
 );
@@ -4572,11 +4332,6 @@ $1",
 	'maps-geocoder-not-available' => "La possibilità ëd geocodìfica dle carte a l'é pa disponìbil. Soa locassion a peul pa esse geocodificà.",
 	'maps_click_to_activate' => 'Sgnaca për ativé la carta',
 	'maps_centred_on' => 'Carta sentrà su $1, $2.',
-	'maps_overlays' => 'Sovraposission',
-	'maps_photos' => 'Fòto',
-	'maps_videos' => 'Filmà',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webcam',
 );
 
 /** Pashto (پښتو)
@@ -4678,8 +4433,6 @@ Isto pode afectar o valor padrão do serviço de geocodificação.',
 	'maps-displaymap-par-coordinates' => 'A localização na qual o mapa será inicialmente centrado.',
 	'maps-displaymap-par-zoom' => 'Permite definir o nível de aproximação do mapa.
 Quando este não for fornecido e existirem vários marcadores no mapa, será usada a aproximação que resulte no melhor dimensionamento, não o valor padrão configurado.',
-	'maps-displaymap-par-mappingservice' => 'Permite definir o serviço de cartografia que será usado para gerar o mapa.',
-	'maps-displaymap-par-coordinates' => 'Uma ou mais localizações a mostrar no mapa. Estas serão indicadas com um marcador.',
 	'maps-displaymap-par-centre' => 'Permite definir as coordenadas do centro do mapa para display_point(s).
 Aceita tanto endereços como coordenadas.
 Quando esta propriedade não for fornecida, o mapa será centrado no marcador fornecido, ou entre os marcadores fornecidos.',
@@ -4721,18 +4474,6 @@ $1',
 	'maps-par-zoom' => 'O nível de aproximação do mapa. Nos mapas com marcadores será usada a maior aproximação que, mesmo assim, mostre todos os marcadores.',
 	'maps-par-width' => 'Permite definir a largura do mapa. A unidade por omissão é o pixel, mas pode defini-la explicitamente como: px, ex, em, %.',
 	'maps-par-height' => 'Permite definir a altura do mapa. A unidade por omissão é o pixel, mas pode defini-la explicitamente como: px, ex, em, %.',
-	'maps-googlemaps2-incompatbrowser' => 'O seu browser não é compatível com o Google Maps v2.',
-	'maps_overlays' => 'Sobreposições',
-	'maps_photos' => 'Fotografias',
-	'maps_videos' => 'Vídeos',
-	'maps_wikipedia' => 'Wikipédia',
-	'maps_webcams' => 'Câmaras Web',
-	'maps-googlemaps2-par-type' => 'O tipo de mapa que será apresentado inicialmente.',
-	'maps-googlemaps2-par-types' => 'Os tipos de mapas que estarão disponíveis através do controlo de tipos.',
-	'maps-googlemaps2-par-controls' => 'Os controlos que serão colocados no mapa.',
-	'maps-googlemaps2-par-autozoom' => 'Permitir deslizar usando a roda de deslizamento do rato.',
-	'maps-googlemaps2-par-kml' => 'Ficheiros KML que serão carregados no mapa.',
-	'maps-googlemaps2-par-overlays' => 'Sobreposições que o utilizador pode activar.',
 	'maps-googlemaps3-incompatbrowser' => 'O seu browser não é compatível com o Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'O tipo de mapa que será apresentado inicialmente.',
 	'maps-googlemaps3-par-types' => 'Os tipos de mapas que estarão disponíveis através do controlo de tipos.',
@@ -4802,11 +4543,6 @@ $1',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para ativar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
-	'maps_overlays' => 'Sobreposições',
-	'maps_photos' => 'Fotos',
-	'maps_videos' => 'Vídeos',
-	'maps_wikipedia' => 'Wikipédia',
-	'maps_webcams' => 'Webcams',
 );
 
 /** Romanian (română)
@@ -4853,11 +4589,6 @@ $1',
 	'maps-geocoder-not-available' => 'Opțiunea de geocodare pentru Hărți nu este disponibilă. Locația dumneavoastră nu a putut fi geocodată.',
 	'maps_click_to_activate' => 'Apăsați pentru a activa harta',
 	'maps_centred_on' => 'Hartă centrată la $1, $2.',
-	'maps_overlays' => 'Straturi',
-	'maps_photos' => 'Fotografii',
-	'maps_videos' => 'Filme',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Camere web',
 	'mapeditor' => 'Editor de hărți',
 	'specialpages-group-maps' => 'Hărți',
 	'mapeditor-done-button' => 'Realizat',
@@ -4887,9 +4618,6 @@ $messages['roa-tara'] = array(
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Latitudine:',
 	'maps-longitude' => 'Longitudine:',
-	'maps_photos' => 'Foto',
-	'maps_videos' => 'Video',
-	'maps_wikipedia' => 'Uicchipèdie',
 	'specialpages-group-maps' => 'Mappe',
 	'mapeditor-none-text' => 'Ninde',
 	'mapeditor-done-button' => 'Fatte',
@@ -4969,7 +4697,6 @@ $messages['ru'] = array(
 	'maps-geodistance-par-decimals' => 'Наибольшее количество цифр в дробной части результата.',
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
-	'maps-displaymap-par-mappingservice' => 'Позволяет указывать сервис карт, который будет использоваться.',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
 	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
@@ -4999,13 +4726,6 @@ $1',
 	'maps-geocoder-not-available' => 'Функция геокодирования карт недоступна, ваше местоположение не может быть геокодировано.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
 	'maps_centred_on' => 'Центр карты — $1, $2.',
-	'maps-googlemaps2-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v2.',
-	'maps_overlays' => 'Слои',
-	'maps_photos' => 'Фото',
-	'maps_videos' => 'Видео',
-	'maps_wikipedia' => 'Википедия',
-	'maps_webcams' => 'Веб-камеры',
-	'maps-googlemaps2-par-kml' => 'KML файлы для загрузки на карту.',
 	'maps-googlemaps3-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v3.',
 	'mapeditor' => 'Редактор карт',
 	'specialpages-group-maps' => 'Карты',
@@ -5071,9 +4791,6 @@ $messages['si'] = array(
 	'maps-abb-east' => 'නැ',
 	'maps-abb-south' => 'ද',
 	'maps-abb-west' => 'බ',
-	'maps_photos' => 'ඡායාරූප',
-	'maps_videos' => 'වීඩියෝ',
-	'maps_wikipedia' => 'විකිපීඩියා',
 	'specialpages-group-maps' => 'සිතියම්',
 	'mapeditor-none-text' => 'කිසිවක් නොමැත',
 	'mapeditor-done-button' => 'හරි',
@@ -5120,17 +4837,12 @@ $messages['sl'] = array(
 	'maps-abb-west' => 'Z',
 	'maps-latitude' => 'Zemljepisna širina:',
 	'maps-longitude' => 'Zemljepisna dolžina:',
-	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_googlemaps3' => 'Google Maps v3',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_osm' => 'OpenStreetMap',
-	'maps_photos' => 'Fotografije',
-	'maps_videos' => 'Videoposnetki',
-	'maps_wikipedia' => 'Wikipedija',
-	'maps_webcams' => 'Spletne kamere',
 );
 
-/** Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -5151,13 +4863,9 @@ $messages['sr-ec'] = array(
 	'maps-abb-west' => 'З',
 	'maps-latitude' => 'Географска ширина:',
 	'maps-longitude' => 'Географска дужина:',
-	'maps_googlemaps2' => 'Гугл мапе, друго издање',
 	'maps_googlemaps3' => 'Гугл мапе, треће издање',
 	'maps_openlayers' => 'Опенлејерс',
 	'maps_osm' => 'Опенстритмап',
-	'maps_photos' => 'Фотографије',
-	'maps_videos' => 'Видео-снимци',
-	'maps_webcams' => 'Веб-камере',
 );
 
 /** Serbian (Latin script) (srpski (latinica)‎) */
@@ -5250,14 +4958,6 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
 	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_centred_on' => 'Karta centrerad på $1, $2.',
-	'maps-googlemaps2-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v2.',
-	'maps_overlays' => 'Lager',
-	'maps_photos' => 'Foton',
-	'maps_videos' => 'Videoklipp',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webbkameror',
-	'maps-googlemaps2-par-autozoom' => 'Aktivera rullning med mushjulet.',
-	'maps-googlemaps2-par-overlays' => 'Överlägg användaren kan aktivera.',
 	'maps-googlemaps3-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v3.',
 	'maps-osm-par-thumbs' => 'Visa miniatyrer',
 	'maps-osm-par-photos' => 'Visa foton',
@@ -5290,13 +4990,6 @@ $messages['ta'] = array(
 	'maps-latitude' => 'அட்சரேகை:',
 	'maps-longitude' => 'தீர்க்க ரேகை:',
 	'maps_map_cannot_be_displayed' => 'வரைபடத்தைக் காட்ட இயலவில்லை.',
-	'maps_photos' => 'புகைப்படங்கள்',
-	'maps_videos' => 'காணொளிகள்',
-	'maps_wikipedia' => 'விக்கிப்பீடியா',
-	'maps_webcams' => 'வலைப்படக்கருவிகள்',
-	'maps-googlemaps2-par-type' => 'ஆரம்பத்தில் காண்பிக்க வேண்டிய வரைபட வகை',
-	'maps-googlemaps2-par-types' => 'வகை கட்டுப்பாடு வழியாக உள்ள வரைபட வகைகள்.',
-	'maps-googlemaps2-par-controls' => 'வரைபடைத்தின் மேல் அமைக்கப்பட வேண்டிய கட்டுப்பாடுகள்',
 	'maps-osm-par-thumbs' => 'சிறு உருவப்படங்களை காண்பி',
 	'maps-osm-par-photos' => 'படிமங்களிக் காண்பி',
 	'mapeditor' => 'வரைபட தொகுப்பாளர்',
@@ -5338,9 +5031,6 @@ $messages['te'] = array(
 	'maps-abb-west' => 'ప',
 	'maps-latitude' => 'అక్షాంశం:',
 	'maps-longitude' => 'రేఖాంశం:',
-	'maps_photos' => 'చిత్రాలు',
-	'maps_videos' => 'దృశ్యకాలు',
-	'maps_wikipedia' => 'వికీపీడియా',
 	'specialpages-group-maps' => 'పటములు',
 	'mapeditor-none-text' => 'ఏమీలేదు',
 	'mapeditor-link-title-switcher-link-text' => 'లంకె',
@@ -5430,8 +5120,6 @@ Makakaapekto ito sa likas na nakatakdang halaga ng paglilingkod na pangheograpiy
 	'maps-displaymap-par-coordinates' => 'Ang kinalalagyan na paunang pagpapagitnaan ng mapa.',
 	'maps-displaymap-par-zoom' => 'Nagpapahintulot sa pagtatakda ng antas ng paglapit ng mapa.
 Kapag hindi ibinigay at mayroong maramihang mga pananda sa ibabaw ng mapa, kukunin ang pinakaangkop na paglapit, hindi ang maiaayos na likas na katakdaan.',
-	'maps-displaymap-par-mappingservice' => 'Nagpapahintulot na maitakda ang palingkuran ng pagmamapa na gagamitin upang likhain ang mapa.',
-	'maps-displaymap-par-coordinates' => 'Isa o marami pang mga kinalalagyan na ipapakita sa mapa. Ipapahiwatig ang mga ito sa pamamagitan ng isang pananda.',
 	'maps-displaymap-par-centre' => 'Nagbibigay-daan sa pagtatakda ng mga tugmaang pampook ng gitna ng mapa para sa (mga) tuldok_na_ipapakita.
 Tumatanggap kapwa ng mga tirahan o mga tugmaang pampook.
 Kapag hindi ibinigay ang pag-aaring ito, igigitna ng mapa ang kanyang sarili sa ibinigay na pangmarka, o sa gitna ng ibinigay na mga pananda.',
@@ -5468,7 +5156,6 @@ $1',
 $1',
 	'maps_map_cannot_be_displayed' => 'Hindi maipapakita ang mapa.',
 	'maps-geocoder-not-available' => 'Wala ang katangiang-kasangkapang pang-geokodigo ng Mga Mapa.  Hindi mageokodigo ang lokasyon mo.',
-	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_googlemaps3' => 'Google Maps v3',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_osm' => 'OpenStreetMap',
@@ -5479,18 +5166,6 @@ $1',
 	'maps-par-zoom' => 'Ang antas ng paglapit para sa mapa. Para sa mga mapang mayroong mga pangmarka, ito ay likas na nakatakda sa pinaka malapit na antas ng pagkakatutok na nagpapakita pa rin ng lahat ng mga pangmarka.',
 	'maps-par-width' => 'Nagpapahintulot ng pagtatakda ng lapad ng mapa. Ayon sa likas na pagkakatakda, ang mga piksel ay ipapalagay bilang yunit, subalit maaari mong maliwanag na tukuyin ang isa sa mga yunit na ito: px, ex, em, %.',
 	'maps-par-height' => 'Nagpapahintulot ng pagtatakda ng taas ng mapa. Ayon sa likas na pagkakatakda, ang mga piksel ay ipapalagay bilang yunit, subalit maaari mong maliwanag na tukuyin ang isa sa mga yunit na ito: px, ex, em, %.',
-	'maps-googlemaps2-incompatbrowser' => 'Ang pantingin-tingin mo ay hindi kalapat sa Mga Mapa ng Google v2.',
-	'maps_overlays' => 'Mga patong',
-	'maps_photos' => 'Mga larawan',
-	'maps_videos' => 'Mga bidyo',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Mga webkam',
-	'maps-googlemaps2-par-type' => 'Ang uri ng mapa na unang ipapakita.',
-	'maps-googlemaps2-par-types' => 'Ang mga uri ng mapa na magiging makukuha sa pamamagitan ng pantaban ng uri.',
-	'maps-googlemaps2-par-controls' => 'Ang mga pantaban na ilalagay sa ibabaw ng mapa.',
-	'maps-googlemaps2-par-autozoom' => 'Paganahin ang pagpapagulong sa pamamagitan ng gulong ng daga-dagaan.',
-	'maps-googlemaps2-par-kml' => 'Mga talaksan ng Wikang Pangmarka ng Butas ng Susian (Keyhole Markup Language, KML) na ikakarga sa ibabaw ng mapa.',
-	'maps-googlemaps2-par-overlays' => 'Mga patong na pang-ibabaw na mabubuhay ng tagagamit.',
 	'maps-googlemaps3-incompatbrowser' => 'Ang pantingin-tingin mo ay hindi katambal ng Mga Mapa ng Google v3.',
 	'maps-googlemaps3-par-type' => 'Ang uri ng mapa na unang ipapakita.',
 	'maps-googlemaps3-par-types' => 'Ang mga uri ng mapa na magiging makukuha sa pamamagitan ng pantaban ng uri.',
@@ -5586,19 +5261,6 @@ $messages['tr'] = array(
 	'maps-geocoder-not-available' => 'Haritanın coğrafi kodlama özelliği etkin değil. Konumunuz kodlanamıyor.',
 	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
-	'maps-googlemaps2-incompatbrowser' => 'Tarayıcınız Google Haritalar s2 ile uyumlu değil.',
-	'maps_overlays' => 'Katmanlar',
-	'maps_photos' => 'Fotoğraflar',
-	'maps_videos' => 'Videolar',
-	'maps_wikipedia' => 'Vikipedi',
-	'maps_webcams' => 'Web kameraları',
-);
-
-/** Tatar (Cyrillic script) (татарча)
- * @author Ильнар
- */
-$messages['tt-cyrl'] = array(
-	'maps_wikipedia' => 'Википедия',
 );
 
 /** Ukrainian (українська)
@@ -5633,11 +5295,6 @@ $1',
 	'maps-geocoder-not-available' => 'Функція геокодування мап недоступна. Ваше місце розташування не може бути геокодоване.',
 	'maps_click_to_activate' => 'Натисність щоб активувати мапу',
 	'maps_centred_on' => 'Центр мапи — $1, $2.',
-	'maps_overlays' => 'Шари',
-	'maps_photos' => 'Фото',
-	'maps_videos' => 'Відео',
-	'maps_wikipedia' => 'Вікіпедія',
-	'maps_webcams' => 'Веб-камери',
 );
 
 /** Urdu (اردو)
@@ -5755,12 +5412,6 @@ $1',
 	'maps_osm' => 'OpenStreetMap',
 	'maps_click_to_activate' => 'Nhấn chuột vào bản đồ để kích hoạt',
 	'maps_centred_on' => 'Bản đồ với trung tậm tại $1, $2.',
-	'maps-googlemaps2-incompatbrowser' => 'Trình duyệt của bạn không tương tích với Google Bản đồ v2.',
-	'maps_overlays' => 'Lấp',
-	'maps_photos' => 'Hình ảnh',
-	'maps_videos' => 'Video',
-	'maps_wikipedia' => 'Wikipedia',
-	'maps_webcams' => 'Webcam',
 	'maps-openlayers-par-controls' => 'Các điều khiển đặt trên bản đồ.',
 	'maps-openlayers-par-layers' => 'Các lớp sẽ có sẵn trong hộp chọn lớp. Lớp đầu tiên là lớp mặc định.',
 	'maps-osm-par-thumbs' => 'Hiện hình thu nhỏ',
