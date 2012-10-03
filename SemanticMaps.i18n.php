@@ -1139,8 +1139,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
+	'semanticmaps-desc' => 'Permite vizualizarea și modificarea datelor de coordonate stocate cu extensia Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demonstrații]).',
 	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
 );
 
