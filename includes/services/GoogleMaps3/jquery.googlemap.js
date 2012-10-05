@@ -51,7 +51,29 @@
         this.imageoverlays = [];
 
 
-        /**
+		var getBounds = function() {
+			if (( options.centre === false || options.zoom === false ) && options.locations.length > 1) {
+				bounds = new google.maps.LatLngBounds();
+
+				for (var i = _this.markers.length - 1; i >= 0; i--) {
+					bounds.extend(_this.markers[i].getPosition());
+				}
+				return bounds;
+			}
+			return null;
+		};
+
+		var setZoom = function(bounds) {
+				if (options.zoom === false) {
+				_this.map.fitBounds(bounds);
+			}
+			else {
+				_this.map.setZoom(options.zoom);
+			}
+		};
+
+
+		/**
 		 * Creates a new marker with the provided data,
 		 * adds it to the map, and returns it.
 		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
@@ -111,7 +133,8 @@
 					'ext.maps.gm3.markerwithlabel',
 					function() {
 						marker = new MarkerWithLabel( markerOptions );
-						return addToMapAndHandlers( marker );
+						addToMapAndHandlers( marker );
+						setZoom(getBounds());
 					}
 				);
 			}
@@ -446,22 +469,9 @@
 				layer.setMap(map);
 			}
 
-			var bounds;
+			var bounds = getBounds();
 
-			if (( options.centre === false || options.zoom === false ) && options.locations.length > 1) {
-				bounds = new google.maps.LatLngBounds();
-
-				for (var i = this.markers.length - 1; i >= 0; i--) {
-					bounds.extend(this.markers[i].getPosition());
-				}
-			}
-
-			if (options.zoom === false) {
-				map.fitBounds(bounds);
-			}
-			else {
-				map.setZoom(options.zoom);
-			}
+			setZoom(bounds);
 
 			var centre;
 
