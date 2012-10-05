@@ -1,15 +1,18 @@
+These are the release notes for the Semantic Maps extension.
+
 Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Semantic_Maps
 Documentation and examples: http://mapping.referata.com/wiki/Semantic_Maps
 
-== Semantic Maps change log ==
 
-This change log contains a list of completed to-do's (new features, bug fixes, refactoring) for every
-version of Semantic Maps. You can find the most upt-do-date version at
-http://www.mediawiki.org/wiki/Extension:Semantic_Maps/Version_history#Semantic_Maps_change_log
+=== Semantic Maps 2.1 ===
+(dev)
 
+; Other improvements
+
+* The map printer has been replaced by an alias to whatever is the printer of the default mapping service.
 
 === Semantic Maps 2.0 ===
-(trunk)
+(2012-10-??)
 
 ; Compatibility changes
 
