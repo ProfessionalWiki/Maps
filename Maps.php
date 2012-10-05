@@ -41,7 +41,7 @@ if ( !defined( 'Validator_VERSION' ) ) {
 	die( '<b>Error:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.<br />' );
 }
 
-define( 'Maps_VERSION' , '2.0 rc1' );
+define( 'Maps_VERSION' , '2.1 alpha' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__ ,
@@ -101,7 +101,15 @@ $wgAutoloadClasses['iHoverableMapElement'] 		= __DIR__ . '/includes/properties/i
 $wgAutoloadClasses['iLinkableMapElement'] 		= __DIR__ . '/includes/properties/iLinkableMapElement.php';
 $wgAutoloadClasses['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/iStrokableMapElement.php';
 
+// Autoload Geo Validators
+$wgAutoloadClasses['GeoValidator'] 				= __DIR__ . '/includes/validators/GeoValidator.php';
+$wgAutoloadClasses['LocationValidator'] 		= __DIR__ . '/includes/validators/LocationValidator.php';
+$wgAutoloadClasses['LineValidator'] 			= __DIR__ . '/includes/validators/LineValidator.php';
+$wgAutoloadClasses['PolygonValidator'] 			= __DIR__ . '/includes/validators/PolygonValidator.php';
+$wgAutoloadClasses['RectangleValidator'] 		= __DIR__ . '/includes/validators/RectangleValidator.php';
+$wgAutoloadClasses['CircleValidator'] 			= __DIR__ . '/includes/validators/CircleValidator.php';
 
+// Autoload the "includes/criteria/" classes.
 // TODO: migrate to Params
 $wgAutoloadClasses['CriterionIsLocation'] 		= __DIR__ . '/includes/criteria/CriterionIsLocation.php';
 $wgAutoloadClasses['CriterionMapDimension'] 	= __DIR__ . '/includes/criteria/CriterionMapDimension.php';
@@ -322,4 +330,6 @@ function efMapsSetup() {
 	return true;
 }
 
+
 $egParamDefinitions['mappingservice'] = 'Maps\ServiceParam';
+

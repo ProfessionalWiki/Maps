@@ -548,11 +548,16 @@
 				});
 			}
 
-			if (options.autoinfowindows) {
-				for (var i = this.markers.length - 1; i >= 0; i--) {
-					google.maps.event.trigger(this.markers[i], 'click');
-				}
-			}
+			setTimeout(
+				function() {
+					if ( options.autoinfowindows ) {
+						for ( var i = _this.markers.length - 1; i >= 0; i-- ) {
+							google.maps.event.trigger( _this.markers[i], 'click', {} );
+						}
+					}
+				},
+				500 // If we wait a bit, the map will re-position to accommodate for the info windows.
+			);
 
 			if (options.resizable) {
 				mw.loader.using('ext.maps.resizable', function () {
@@ -723,17 +728,28 @@
 			}
 		}
 
-		function openBubble(properties, event, obj) {
-			if (this.openWindow != undefined) {
+		function openBubble( properties, event, obj ) {
+			if ( this.openWindow !== undefined ) {
 				this.openWindow.close();
 			}
+
 			this.openWindow = new google.maps.InfoWindow();
 			this.openWindow.content = properties.text;
-			this.openWindow.position = event.latLng;
+
+			if ( event.latLng !== undefined ) {
+				this.openWindow.position = event.latLng;
+			}
+
 			this.openWindow.closeclick = function () {
 				obj.openWindow = undefined;
 			};
-			this.openWindow.open(this.map);
+
+			if ( event.latLng === undefined ) {
+				this.openWindow.open( this.map, this );
+			}
+			else {
+				this.openWindow.open( this.map );
+			}
 		}
 
 		//Complete path to OpenLayers WMS layer
