@@ -1252,6 +1252,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (svenska)
  * @author Boivie
+ * @author Martinwiss
  * @author Najami
  * @author Per
  * @author Rotsee
@@ -1272,7 +1273,17 @@ $messages['sv'] = array(
 	'semanticmaps-forminput-remove' => 'Ta bort',
 	'semanticmaps-forminput-add' => 'Lägg till',
 	'semanticmaps-forminput-locations' => 'Platser',
+	'semanticmaps-par-staticlocations' => 'En lista med platser som man kan placera på kartan tillsammans med efterfrågad data. Precis som för display_points, så kan du lägga till en titel, en beskrivning och en ikon för varje plats med hjälp av tilde "~" som avgränsare.',
 	'semanticmaps-par-forceshow' => 'Visa kartan även om det inte finns några platser att visa?',
+	'semanticmaps-par-showtitle' => 'Visa en titel i markörens informationsruta eller inte. Det är ofta lämpligt att inte använda denna funktion när en mall används för informationsrutans innehåll.',
+	'semanticmaps-par-hidenamespace' => 'Visa namnrymdens titel i markörens informationsruta eller inte.',
+	'semanticmaps-par-centre' => 'Kartans mitt. Om inte angiven så kommer kartan automatiskt att hitta markörernas mittpunkt.',
+	'semanticmaps-par-template' => 'En mall som ska användas för informationsrutorna.',
+	'semanticmaps-par-geocodecontrol' => 'Visa formulär för geokodning.',
+	'semanticmaps-kml-text' => 'Texten som hör ihop med varje sida. Om det finns efterfrågade egenskaper så tar de överhand.',
+	'semanticmaps-kml-title' => 'Förvald titel för resultaten',
+	'semanticmaps-kml-linkabsolute' => 'Ska länkar vara absoluta eller relativa',
+	'semanticmaps-kml-pagelinktext' => 'Texten som ska användas för länkar till sidan, där $1 kommer att bytas ut med sidtiteln',
 );
 
 /** Swahili (Kiswahili)
