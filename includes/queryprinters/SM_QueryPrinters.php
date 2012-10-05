@@ -22,7 +22,7 @@ final class SMQueryPrinters {
 	 * Initialization function for Maps query printer functionality.
 	 */
 	public static function initialize() {
-		global $wgAutoloadClasses;
+		global $wgAutoloadClasses, $egMapsDefaultServices;
 		
 		$wgAutoloadClasses['SMQueryHandler']	= __DIR__ . '/SM_QueryHandler.php';
 		$wgAutoloadClasses['SMMapPrinter'] 		= __DIR__ . '/SM_MapPrinter.php';
@@ -30,8 +30,6 @@ final class SMQueryPrinters {
 		
 		self::initFormat( 'kml', 'SMKMLPrinter' );
 		
-		$hasQueryPrinters = false;
-
 		foreach ( MapsMappingServices::getServiceIdentifiers() as $serviceIdentifier ) {
 			$service = MapsMappingServices::getServiceInstance( $serviceIdentifier );	
 				
@@ -39,21 +37,21 @@ final class SMQueryPrinters {
 			$QPClass = $service->getFeature( 'qp' );
 			
 			// If the service has no QP, skipt it and continue with the next one.
-			if ( $QPClass === false ) continue;
-			
-			// At least one query printer will be enabled when this point is reached.
-			$hasQueryPrinters = true;
-			
+			if ( $QPClass === false ) {
+				continue;
+			}
+
 			// Initiate the format.
 			$aliases = $service->getAliases();
+
+			// Add the 'map' result format if there are mapping services that have QP's loaded.
+			if ( $egMapsDefaultServices['qp'] == $serviceIdentifier ) {
+				$aliases[] = 'map';
+			}
+
 			self::initFormat( $service->getName(), 'SMMapPrinter', $aliases );
 		}
 
-		// Add the 'map' result format if there are mapping services that have QP's loaded.
-		if ( $hasQueryPrinters ) {
-			self::initFormat( 'map', 'SMMapPrinter' );
-		}
-		
 		return true;
 	}
 	
