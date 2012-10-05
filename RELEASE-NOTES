@@ -7,7 +7,9 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 === Maps 2.1 ===
 (dev)
 
-*
+; Bug fixes
+
+* Fixed autoinfowindows functionality.
 
 === Maps 2.0 ===
 (2012-10-05)
