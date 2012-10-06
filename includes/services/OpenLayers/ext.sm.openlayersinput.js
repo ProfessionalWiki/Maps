@@ -9,7 +9,7 @@
 
 	$( document ).ready( function() {
 
-		$( '.sminput-googlemaps3' ).each( function() {
+		$( '.sminput-openlayers' ).each( function() {
 			var $this = $( this );
 			$this.openlayersinput( $this.attr( 'id' ), jQuery.parseJSON( $this.find( 'div').text() ) );
 		} );

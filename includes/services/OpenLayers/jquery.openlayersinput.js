@@ -10,7 +10,7 @@
  */
 
 (function( $ ){ $.fn.openlayersinput = function( mapDivId, options ) {
-	
+
 	var self = this;
 	
 	/**
@@ -86,7 +86,7 @@
 			);		
 		};		
 	}
-	
+
 	this.mapforminput( mapDivId, options );
 	
 	this.mapDiv.openlayers( mapDivId, options );		
@@ -119,9 +119,10 @@
 		}
 
 	}))();
+
 	this.mapDiv.map.addControl( clickControl );
 	clickControl.activate();
-	
+	;
 	return this;
 	
 }; })( jQuery );
