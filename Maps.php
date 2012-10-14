@@ -296,6 +296,7 @@ $wgResourceModules['mapeditor'] = array(
 		'mapeditor-import-button',
 		'mapeditor-export-button',
 		'mapeditor-import-button2',
+		'mapeditor-select-button',
 		'mapeditor-mapparam-button',
 		'mapeditor-clear-button',
 		'mapeditor-imageoverlay-button'

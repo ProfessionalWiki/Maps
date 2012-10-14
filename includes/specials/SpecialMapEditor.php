@@ -43,7 +43,7 @@ class SpecialMapEditor extends SpecialPage{
 		$outputPage->addModules( 'mapeditor' );
 
 		$output = <<<EOT
-<div id="map-canvas"></div>
+<div id="map-canvas" context="specialMapEditor"></div>
 <div style="display: none;">
     <pre id="code-output" title="%1\$s"></pre>
     <div id="code-input-container" title="%2\$s" >
