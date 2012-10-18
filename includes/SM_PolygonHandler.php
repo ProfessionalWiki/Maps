@@ -51,7 +51,9 @@ class PolygonHandler {
 	protected $validatorClasses = array(
 		'locations' => 'LocationValidator',
 		'lines' => 'LineValidator',
-		'polygons' => 'PolygonValidator'
+		'polygons' => 'PolygonValidator',
+		'circles' => 'CircleValidator',
+		'rectangles' => 'RectangleValidator'
 	);
 
 	/**
@@ -64,7 +66,25 @@ class PolygonHandler {
 	protected $geoClasses = array(
 		'locations' => 'MapsLocation',
 		'lines' => 'MapsLine',
-		'polygons' => 'MapsPolygon'
+		'polygons' => 'MapsPolygon',
+		'circles' => 'MapsCircle',
+		'rectangles' => 'MapsRectanlge'
+	);
+
+	/**
+	 * NOTE: These need to be changed as Manipulations are depreceated.
+	 * Array of classes for param handling of different Geographic shapes.
+	 *
+	 * @since sm.polygons
+	 *
+	 * @var array
+	 */
+	protected $paramClasses = array(
+		'locations' => 'MapsParamLocation',
+		'lines' => 'MapsParamLine',
+		'polygons' => 'MapsParamPolygon',
+		'circles' => 'MapsParamCircle',
+		'rectangles' => 'MapsParamRectangle'
 	);
 
 	/**
@@ -100,9 +120,13 @@ class PolygonHandler {
 	}
 
 	public function shapeFromText() {
-		$parts = explode( '=', $this->text );
-		if( array_key_exists( $parts[0] , $this->geoClasses ) ) {
-			$geoClass = new $this->geoClasses[ $parts[0] ]( explode( ':' , $parts[1] ) );
+		$parts = explode( '~' , $this->text );
+		$shape = explode( '=', array_shift( $parts ) );
+		if( array_key_exists( $shape[0] , $this->geoClasses ) ) {
+			$geoClass = new $this->geoClasses[ $shape[0] ]( explode( ':' , $shape[1] ) );
+			$paramClass = new $this->paramClasses[ $shape[0] ]( '~' );
+			$paramClass->handleCommonParams( $parts , $geoClass );
+
 			return $geoClass;
 		} else {
 			return false;
