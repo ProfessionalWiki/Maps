@@ -814,7 +814,11 @@ $messages['ksh'] = array(
 	'semanticmaps-desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di mem „Semantesch Mediawiki“ faßjehallde woode sin. ([http://mapping.referata.com/wiki/Examples Beijshpöll för et vörzemaache])',
 	'semanticmaps-unrecognizeddistance' => 'Dä Wäät „$1“ es keine jölteje Afschtand.',
 	'semanticmaps-kml-link' => 'De KML-Dattei belooere',
+	'semanticmaps-kml' => 'Äxpoot als KML',
 	'semanticmaps-default-kml-pagelink' => 'De Sigg „$1“ belooere',
+	'semanticmaps-latitude' => 'Dä Breedejrad om Jloobos: $1',
+	'semanticmaps-longitude' => 'Dä Längejraad om Jloobos: $1',
+	'semanticmaps-altitude' => 'De Hühde: $1',
 	'semanticmaps-loading-forminput' => 'Mer sin de Enjaabe vum Fommulaa for die Kaat aam laade&nbsp;…',
 	'semanticmaps_lookupcoordinates' => 'Koordinate nohkike',
 	'semanticmaps_enteraddresshere' => 'Donn hee de Address enjäve',
@@ -826,9 +830,14 @@ $messages['ksh'] = array(
 för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
 	'semanticmaps-par-forceshow' => 'Donn de Kaat aanzeije, selvs wann kein Pläz drop ze zeije sin?',
 	'semanticmaps-par-showtitle' => 'Donn en Övverschreff en däm Finster met Infomazjuhne övver de Makeerong aanzeije udder nit. De Övverschreff afzeschallde es öff joot, wam_mer en Schabloon nemmp för dä Enhallt vum Finster zerääsch ze possumenteere.',
+	'semanticmaps-par-hidenamespace' => 'Zeisch dä Name vum Appachtemang em  marker info Finster udder nit.',
 	'semanticmaps-par-centre' => 'Der Meddelpunk vun dä Kaat. Wann keine aanjejovve_n_es jeiht dä automattesch op der optesche Meddelpunk vun all dä Makeerunge en dä Kaat.',
 	'semanticmaps-par-template' => 'En Schabloon för der Enhalt vum Finster met de Enfommazjuhne ze jeschtallte',
 	'semanticmaps-par-geocodecontrol' => "Donn dat Bedeenelemänt aanzeije för de Ko'odinaate op de Ääd ze beärbeide",
+	'semanticmaps-kml-text' => 'Dä Täx, dä met jeder Sigg aanjezeisch weed. Wann extra Eijeschaffte afjefroocht wääde, kumme di schtatt däm Täx.',
+	'semanticmaps-kml-title' => 'Dä Schtandatttittel för wad eruß küt.',
+	'semanticmaps-kml-linkabsolute' => 'Sulle Lenks absoluud udder relatief sin?',
+	'semanticmaps-kml-pagelinktext' => 'Ene Täx, dä för Lenks op di Sigg jebuch weed. $1 schteiht dobei för dä Sigg iere Tittel.',
 );
 
 /** Kurdish (Latin script) (Kurdî (latînî)‎)
