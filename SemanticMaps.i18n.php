@@ -14,10 +14,11 @@ $messages = array();
 
 /** English
  * @author Jeroen De Dauw
+ * @author Karsten Hoffmeyer (kghbln)
  */
 $messages['en'] = array(
 	// General
-	'semanticmaps-desc' => "Provides the ability to view and edit coordinate data stored with the Semantic MediaWiki extension ([http://mapping.referata.com/wiki/Examples demos]).",
+	'semanticmaps-desc' => "Provides the ability to view and edit coordinate data stored with the Semantic MediaWiki extension ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps more info...]).",
 	'semanticmaps-unrecognizeddistance' => 'The value $1 is not a valid distance.',
 	'semanticmaps-kml-link' => 'View the KML file',
 	'semanticmaps-kml' => 'KML',
@@ -31,25 +32,24 @@ $messages['en'] = array(
 	'semanticmaps-loading-forminput'	=> 'Loading map form input...',
 	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',
 	'semanticmaps_enteraddresshere' 	=> 'Enter address here',
-	'semanticmaps-updatemap' 			=> 'Update map',
+	'semanticmaps-updatemap' 		=> 'Update map',
 	'semanticmaps-forminput-remove'		=> 'Remove',
 	'semanticmaps-forminput-add'		=> 'Add',
 	'semanticmaps-forminput-locations'	=> 'Locations',
 	
 	// Parameter descriptions
-	
 	'semanticmaps-par-staticlocations'	=> 'A list of locations to add to the map together with the queried data. Like with display_points, you can add a title, description and icon per location using the tilde "~" as separator.',
 	'semanticmaps-par-forceshow'		=> 'Show the map even when there are no locations to display?',
 	'semanticmaps-par-showtitle'		=> 'Show a title in the marker info window or not. Disabling this is often usefull when using a template to format the info window content.',
-	'semanticmaps-par-hidenamespace'    => 'Show the namespace title in the marker info window or not.',
+	'semanticmaps-par-hidenamespace'	=> 'Show the namespace title in the marker info window',
 	'semanticmaps-par-centre'		=> 'The centre of the map. When not provided, the map will automatically pick the optimal centre to display all markers on the map.',
 	'semanticmaps-par-template'		=> 'A template to use to format the info window contents.',
 	
-	'semanticmaps-par-geocodecontrol'		=> 'Show the geocoding control.',
-	
-	'semanticmaps-kml-text' => 'The text associates with each page. Overriden by the aditional queried properties if any.',
+	'semanticmaps-par-geocodecontrol'	=> 'Show the geocoding control.',
+
+	'semanticmaps-kml-text' => 'The text associated with each page. Overriden by the aditional queried properties if any.',
 	'semanticmaps-kml-title' => 'The default title for results',
-	'semanticmaps-kml-linkabsolute' => 'Should links be absolute or not (ie relative)',
+	'semanticmaps-kml-linkabsolute' => 'Should links be absolute (as opposed to relative)',
 	'semanticmaps-kml-pagelinktext' => 'The text to use for the links to the page, in which $1 will be replaced by the page title',
 );
 
