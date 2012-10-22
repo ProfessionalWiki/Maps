@@ -78,7 +78,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'semanticmaps-desc' => 'Bied die vermoë om koördinaatdata met behulp van die Semantiese MediaWiki-uitbreiding te sien en te wysig ([http://mapping.referata.com/wiki/Examples demo]).',
+	'semanticmaps-desc' => 'Bied die vermoë om koördinaatdata met behulp van die Semantiese MediaWiki-uitbreiding te sien en te wysig ([http://mapping.referata.com/wiki/Examples demo]).', # Fuzzy
 	'semanticmaps-unrecognizeddistance' => 'Die waarde "$1" is nie \'n geldige afstand nie.',
 	'semanticmaps_lookupcoordinates' => 'Soek koördinate op',
 	'semanticmaps_enteraddresshere' => 'Voer adres hier in',
@@ -89,7 +89,7 @@ $messages['af'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'semanticmaps-desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://mapping.referata.com/wiki/Examples تجربة]).',
+	'semanticmaps-desc' => 'يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([http://mapping.referata.com/wiki/Examples تجربة]).', # Fuzzy
 	'semanticmaps-kml' => 'كيه إم إل',
 	'semanticmaps_lookupcoordinates' => 'ابحث عن الإحداثيات',
 	'semanticmaps_enteraddresshere' => 'أدخل العنوان هنا',
@@ -599,7 +599,7 @@ $messages['he'] = array(
  * @author Tivek
  */
 $messages['hr'] = array(
-	'semanticmaps-desc' => "Pruža pregledavanje i uređivanje koordinata spremljenih koristeći Semantic MediaWiki ekstenziju ([http://mapping.referata.com/wiki/Examples demo's]).",
+	'semanticmaps-desc' => "Pruža pregledavanje i uređivanje koordinata spremljenih koristeći Semantic MediaWiki ekstenziju ([http://mapping.referata.com/wiki/Examples demo's]).", # Fuzzy
 	'semanticmaps-unrecognizeddistance' => 'Vrijednost $1 nije valjana udaljenost.',
 	'semanticmaps_lookupcoordinates' => 'Potraži koordinate',
 	'semanticmaps_enteraddresshere' => 'Unesite adresu ovdje',
@@ -830,7 +830,7 @@ $messages['ksh'] = array(
 för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
 	'semanticmaps-par-forceshow' => 'Donn de Kaat aanzeije, selvs wann kein Pläz drop ze zeije sin?',
 	'semanticmaps-par-showtitle' => 'Donn en Övverschreff en däm Finster met Infomazjuhne övver de Makeerong aanzeije udder nit. De Övverschreff afzeschallde es öff joot, wam_mer en Schabloon nemmp för dä Enhallt vum Finster zerääsch ze possumenteere.',
-	'semanticmaps-par-hidenamespace' => 'Zeisch dä Name vum Appachtemang em  marker info Finster udder nit.',
+	'semanticmaps-par-hidenamespace' => 'Zeisch dä Name vum Appachtemang em  marker info Finster udder nit.', # Fuzzy
 	'semanticmaps-par-centre' => 'Der Meddelpunk vun dä Kaat. Wann keine aanjejovve_n_es jeiht dä automattesch op der optesche Meddelpunk vun all dä Makeerunge en dä Kaat.',
 	'semanticmaps-par-template' => 'En Schabloon för der Enhalt vum Finster met de Enfommazjuhne ze jeschtallte',
 	'semanticmaps-par-geocodecontrol' => "Donn dat Bedeenelemänt aanzeije för de Ko'odinaate op de Ääd ze beärbeide",
@@ -1013,7 +1013,7 @@ $messages['nn'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'semanticmaps-desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentacion]. [http://mapping.referata.com/wiki/Examples Demo]",
+	'semanticmaps-desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. [http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentacion]. [http://mapping.referata.com/wiki/Examples Demo]", # Fuzzy
 	'semanticmaps_lookupcoordinates' => 'Estimar las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Picatz aicí l’adreça',
 );
@@ -1114,10 +1114,10 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
- * @author 555
  * @author Eduardo.mps
  * @author Giro720
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([http://mapping.referata.com/wiki/Examples exemplos]).',
@@ -1299,11 +1299,11 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
-	'semanticmaps-kml-link' => 'Tazama faili la KML',
-	'semanticmaps-default-kml-pagelink' => 'Tazama ukurasa $1',
-	'semanticmaps-loading-forminput' => 'Fomu ya kuingiza ramani inapakiwa...',
+	'semanticmaps-kml-link' => 'Tazama faili la KML', # Fuzzy
+	'semanticmaps-default-kml-pagelink' => 'Tazama ukurasa $1', # Fuzzy
+	'semanticmaps-loading-forminput' => 'Fomu ya kuingiza ramani inapakiwa...', # Fuzzy
 	'semanticmaps_enteraddresshere' => 'Ingiza anwani hapa',
-	'semanticmaps-updatemap' => 'Sasisha ramani',
+	'semanticmaps-updatemap' => 'Sasisha ramani', # Fuzzy
 	'semanticmaps-forminput-remove' => 'Ondoa',
 	'semanticmaps-forminput-add' => 'Ongeza',
 	'semanticmaps-forminput-locations' => 'Mahali',
@@ -1493,4 +1493,3 @@ $messages['zh-hant'] = array(
 	'semanticmaps-kml-linkabsolute' => '鏈接究竟應當是絕對地址還是相對地址',
 	'semanticmaps-kml-pagelinktext' => '用於那些指向該頁面的鏈接的文本；其中，頁面標題將取代$1',
 );
-
