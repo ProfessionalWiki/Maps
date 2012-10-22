@@ -398,13 +398,13 @@ $messages['es'] = array(
 	'semanticmaps-par-staticlocations' => 'Una lista de localizaciones para añadir al mapa junto a los datos consultados. De forma similar a display_points, puede añadir un título, una descripción o un icono por localización usando el signo "~" como separador.',
 	'semanticmaps-par-forceshow' => '¿Mostrar el mapa incluso cuando no hay ubicaciones que mostrar?',
 	'semanticmaps-par-showtitle' => 'Mostrar o no mostrar un título en la ventana de información del marcador. La desactivación de esto es frecuentemente útil al utilizar una plantilla para dar formato al contenido de la ventana de información.',
-	'semanticmaps-par-hidenamespace' => 'Mostrar o no mostrar el título del espacio de nombres en la ventana de información del marcador.',
+	'semanticmaps-par-hidenamespace' => 'Mostrar el título del espacio de nombres en la ventana de información del marcador.',
 	'semanticmaps-par-centre' => 'El centro del mapa. Cuando no se proporciona, el mapa escogerá automáticamente el mejor centro para mostrar todos los marcadores en el mapa.',
 	'semanticmaps-par-template' => 'Una plantilla a usar para dar formato al contenido de la ventana de información.',
 	'semanticmaps-par-geocodecontrol' => 'Mostrar el control de geocodificación.',
 	'semanticmaps-kml-text' => 'El texto asociado a cada página. Es substituído por las propiedades recuperadas adicionales, si existen.',
 	'semanticmaps-kml-title' => 'El título por defecto para los resultados',
-	'semanticmaps-kml-linkabsolute' => 'Los títulos deberían ser absolutos o no (es decir, relativos)',
+	'semanticmaps-kml-linkabsolute' => 'Los enlaces deberían ser absolutos (lo opuesto de relativos)',
 	'semanticmaps-kml-pagelinktext' => 'El texto a usar para los enlaces a la página, en las que $1 será substituído por el título de la página',
 );
 
@@ -830,7 +830,7 @@ $messages['ksh'] = array(
 för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
 	'semanticmaps-par-forceshow' => 'Donn de Kaat aanzeije, selvs wann kein Pläz drop ze zeije sin?',
 	'semanticmaps-par-showtitle' => 'Donn en Övverschreff en däm Finster met Infomazjuhne övver de Makeerong aanzeije udder nit. De Övverschreff afzeschallde es öff joot, wam_mer en Schabloon nemmp för dä Enhallt vum Finster zerääsch ze possumenteere.',
-	'semanticmaps-par-hidenamespace' => 'Zeisch dä Name vum Appachtemang em  marker info Finster udder nit.', # Fuzzy
+	'semanticmaps-par-hidenamespace' => 'Zeisch dä Name vum Appachtemang em  marker info Finster udder nit.',
 	'semanticmaps-par-centre' => 'Der Meddelpunk vun dä Kaat. Wann keine aanjejovve_n_es jeiht dä automattesch op der optesche Meddelpunk vun all dä Makeerunge en dä Kaat.',
 	'semanticmaps-par-template' => 'En Schabloon för der Enhalt vum Finster met de Enfommazjuhne ze jeschtallte',
 	'semanticmaps-par-geocodecontrol' => "Donn dat Bedeenelemänt aanzeije för de Ko'odinaate op de Ääd ze beärbeide",
