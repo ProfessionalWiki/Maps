@@ -528,13 +528,13 @@ $messages['gl'] = array(
 	'semanticmaps-par-staticlocations' => 'Unha lista de localizacións para engadir ao mapa xunto aos datos consultados. Como con display_points, pode engadir un título, unha descrición e mais unha icona por localización mediante o signo "~" como separador.',
 	'semanticmaps-par-forceshow' => 'Quere mostrar o mapa, mesmo cando non haxa localizacións que presentar?',
 	'semanticmaps-par-showtitle' => 'Mostrar ou non un título na ventá de información do marcador. Frecuentemente, desactivar isto é útil ao utilizar un modelo para dar formato ao contido da ventá de información.',
-	'semanticmaps-par-hidenamespace' => 'Mostrar ou non o título do espazo de nomes na ventá de información do marcador.',
+	'semanticmaps-par-hidenamespace' => 'Mostrar o título do espazo de nomes na ventá de información do marcador',
 	'semanticmaps-par-centre' => 'O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.',
 	'semanticmaps-par-template' => 'Un modelo a empregar para dar formato ao contido da ventá de información.',
 	'semanticmaps-par-geocodecontrol' => 'Mostrar o control de xeocodificación.',
 	'semanticmaps-kml-text' => 'O texto asociado a cada páxina. Substituído polas propiedades pescudadas adicionais, se existen.',
 	'semanticmaps-kml-title' => 'O título por defecto para os resultados',
-	'semanticmaps-kml-linkabsolute' => 'Se os títulos deberían ser absolutos ou non (por exemplo, relativos)',
+	'semanticmaps-kml-linkabsolute' => 'Se as ligazóns deberían ser absolutas (contrario a relativas)',
 	'semanticmaps-kml-pagelinktext' => 'O texto a usar para as ligazóns cara á páxina, nas que "$1" será substituído polo título da páxina',
 );
 
@@ -759,7 +759,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能で格納された座標データを表示・編集する機能を提供する（[http://mapping.referata.com/wiki/Examples デモ]）',
+	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能で格納された座標データを表示・編集する機能を提供する ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps 詳細情報...])',
 	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps-kml-link' => 'KMLファイルを閲覧',
 	'semanticmaps-default-kml-pagelink' => 'ページ$1を表示',
@@ -776,11 +776,12 @@ $messages['ja'] = array(
 	'semanticmaps-par-staticlocations' => '問い合わせたデータと共に地図に追加する場所の列挙です。display_points と同様に、区切り文字としてチルダ "~" を使用して、場所ごとにタイトル、説明、アイコンを追加できます。',
 	'semanticmaps-par-forceshow' => '表示する場所がない場合でも、地図を表示しますか？',
 	'semanticmaps-par-showtitle' => 'マーカーの情報ウィンドウのタイトルを表示するかどうか。情報ウィンドウのコンテンツをフォーマットするためにテンプレートを使用するとき、これを無効にすると便利です。',
-	'semanticmaps-par-hidenamespace' => 'マーカー情報ウィンドウに名前空間名を表示するかどうかです。',
+	'semanticmaps-par-hidenamespace' => 'マーカー情報ウィンドウに名前空間名を表示する',
 	'semanticmaps-par-centre' => '地図の中心。提供されていないときは、自動的に地図上のすべてのマーカーを表示するための最適な中心が選択されます。',
 	'semanticmaps-par-template' => '情報ウィンドウのコンテンツの整形に使用するテンプレートです。',
 	'semanticmaps-par-geocodecontrol' => 'ジオコーディングコントロールを表示します。',
 	'semanticmaps-kml-title' => '結果の既定のタイトル',
+	'semanticmaps-kml-linkabsolute' => 'リンクは絶対表記 (= 相対表記の対義語) にしてください。',
 	'semanticmaps-kml-pagelinktext' => 'ページへのリンクに使用するテキスト ($1 はページ名に置換される)',
 );
 
