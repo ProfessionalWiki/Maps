@@ -12,10 +12,11 @@ $messages = array();
 
 /** English
  * @author Jeroen De Dauw
+ * @author Karsten Hoffmeyer (kghbln)
  */
 $messages['en'] = array(
 	// General
-	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://mapping.referata.com/wiki/Examples demos])",
+	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])",
 
 	'right-geocode' => 'Geocode',
 
