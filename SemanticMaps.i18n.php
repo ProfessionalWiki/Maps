@@ -311,6 +311,7 @@ $messages['cy'] = array(
  * @author DaSch
  * @author Imre
  * @author Kghbln
+ * @author Metalhead64
  * @author Pill
  * @author The Evil IP address
  * @author Umherirrender
@@ -334,13 +335,13 @@ $messages['de'] = array(
 	'semanticmaps-par-staticlocations' => 'Die Listen von Standorten, die zusammen mit den abgefragten Daten, der Karte hinzugefügt werden sollen. Analog zu den Anzeigepunkten können je Standort Titel, Beschreibung und Symbol, unter Verwendung einer Tilde „~“ als Trennzeichen, hinzugefügt werden.',
 	'semanticmaps-par-forceshow' => 'Die Karte auch dann anzeigen, wenn es keine Standorte zum Anzeigen gibt?',
 	'semanticmaps-par-showtitle' => 'Den Titel im Informationsfenster der Kennzeichnung anzeigen oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.',
-	'semanticmaps-par-hidenamespace' => 'Den Namen des Namensraums im Informationsfenster der Kennzeichnung anzeigen oder nicht.',
+	'semanticmaps-par-hidenamespace' => 'Den Namen des Namensraums im Informationsfenster der Kennzeichnung anzeigen',
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
-	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein oder nicht (nämlich relativ)',
+	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
 	'semanticmaps-kml-pagelinktext' => 'Der Text, der für die Links zur Seite genutzt werden soll. $1 wird dabei durch den Namen der Seite ersetzt.',
 );
 
