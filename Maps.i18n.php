@@ -1155,6 +1155,7 @@ $1',
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Mirzali
  */
 $messages['diq'] = array(
 	'maps_map' => 'Xerita',
@@ -1180,7 +1181,7 @@ $messages['diq'] = array(
 	'mapeditor-form-field-text' => 'Metın',
 	'mapeditor-form-field-link' => 'Gıre',
 	'mapeditor-form-field-icon' => 'Ikon',
-	'mapeditor-form-field-group' => 'Grub',
+	'mapeditor-form-field-group' => 'Grube',
 	'mapeditor-form-field-image' => 'Resim',
 );
 
