@@ -29,11 +29,7 @@ class MapsCoordinateParser {
 	const SYMBOL_MIN = "'";
 	const SYMBOL_SEC = '"';	
 	
-	protected static $separators = array( ',', ';' );
-	protected static $separatorsRegex = false;
-	
-	protected static $i18nDirections = false; // Cache for localised direction labels
-	protected static $directions; // Cache for English direction labels
+
 	
 	/**
 	 * Takes in a set of coordinates and checks if they are a supported format.
@@ -48,31 +44,31 @@ class MapsCoordinateParser {
 	 */
 	public static function parseCoordinates() {
 		$params = func_get_args();
-		
+
 		if ( count( $params ) == 0 ) {
 			return false;
 		}
-		
+
 		$coordinates = $params[0];
-		
+
 		if ( $coordinates === false ) {
 			return false;
 		}
-		
+
 		if ( count( $params ) > 1 ) {
 			$coordinates = $params;
-		}		
-		
+		}
+
 		if ( is_array( $coordinates ) ) {
 			$coordinates = implode( self::$separators[0], $coordinates );
 		}
-		
+
 		// Handle i18n notations.
 		$coordinates = self::handleI18nLabels( $coordinates );
-		
+
 		// Normalize the coordinates string.
 		$coordinates = self::normalizeCoordinates( $coordinates );
-		
+
 		// Determine what notation the coordinates are in.
 		$coordsType = self::getCoordinatesType( $coordinates, false );
 
@@ -80,13 +76,13 @@ class MapsCoordinateParser {
 		if ( $coordsType === false ) {
 			return false;
 		}
-		
+
 		// Split the coodrinates string into a lat and lon part.
 		foreach ( self::$separators as $separator ) {
 			$split = explode( $separator, $coordinates );
 			if ( count( $split ) == 2 ) break;
 		}
-		
+
 		// This should not happen, as the validity of the coordinate set is already ensured by the regexes,
 		// but do the check anyway, and return false if it fails.
 		if ( count( $split ) != 2 ) {
@@ -97,7 +93,7 @@ class MapsCoordinateParser {
 			'lat' => trim( $split[0] ),
 			'lon' => trim( $split[1] ),
 		);
-		
+
 		// Ensure the coordinates are in non-directional notation.
 		$coordinates = self::resolveAngles( $coordinates );
 		

@@ -1,5 +1,7 @@
 <?php
 
+use DataValues\GeoCoordinateValue;
+
 /**
  * Class for geocoder functionality of the Maps extension. 
  * 
@@ -121,8 +123,19 @@ final class MapsGeocoders {
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
-			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
-				return MapsCoordinateParser::parseCoordinates( $coordsOrAddress );
+			$coordinateParser = new ValueParsers\GeoCoordinateParser();
+			$parseResult = $coordinateParser->parse( $coordsOrAddress );
+
+			if ( $parseResult->isValid() ) {
+				/**
+				 * @var GeoCoordinateValue $coords
+				 */
+				$coords = $parseResult->getDataValue();
+
+				return array(
+					'lat' => $coords->getLatitude(),
+					'lon' => $coords->getLongitude(),
+				);
 			} else {
 				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
 			}

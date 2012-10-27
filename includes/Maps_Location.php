@@ -142,7 +142,10 @@ class MapsLocation extends MapsBaseElement {
 		$this->separator = $separator;
 
 		if ( !is_null( $coordsOrAddress ) ) {
-			if ( MapsCoordinateParser::areCoordinates( $coordsOrAddress ) ) {
+			$coordinateParser = new ValueParsers\GeoCoordinateParser();
+			$parseResult = $coordinateParser->parse( $coordsOrAddress );
+
+			if ( $parseResult->isValid() ) {
 				$this->setCoordinates( $coordsOrAddress );
 			}
 			else {
