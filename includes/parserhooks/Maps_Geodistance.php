@@ -15,15 +15,7 @@ use ValueParsers\GeoCoordinateParser;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsGeodistance extends ParserHook {
-	/**
-	 * No LSB in pre-5.3 PHP *sigh*.
-	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
-	 */	
-	public static function staticInit( Parser &$parser ) {
-		$instance = new self;
-		return $instance->init( $parser );
-	}	
-	
+
 	/**
 	 * Gets the name of the parser hook.
 	 * @see ParserHook::getName

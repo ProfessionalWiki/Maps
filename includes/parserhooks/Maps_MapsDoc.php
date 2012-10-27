@@ -24,15 +24,6 @@ class MapsMapsDoc extends ParserHook {
 	protected $language;
 
 	/**
-	 * No LSB in pre-5.3 PHP *sigh*.
-	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
-	 */
-	public static function staticInit( Parser &$parser ) {
-		$instance = new self;
-		return $instance->init( $parser );
-	}
-
-	/**
 	 * Gets the name of the parser hook.
 	 * @see ParserHook::getName
 	 *
@@ -164,7 +155,7 @@ class MapsMapsDoc extends ParserHook {
 	 *
 	 * @return string
 	 */
-	protected function getDescriptionRow( Parameter $parameter ) {
+	protected function getDescriptionRow( Parameter $parameter ) { // TODO
 		$description = $parameter->getMessage();
 		if ( $description === false ) {
 			$description = $parameter->getDescription();

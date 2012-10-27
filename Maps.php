@@ -107,19 +107,40 @@ $wgHooks['CanonicalNamespaces'][] = 'MapsHooks::onCanonicalNamespaces';
 # Parser hooks
 
 # Required for #coordinates.
-$wgHooks['ParserFirstCallInit'][] = 'MapsCoordinates::staticInit';
-# Required for #display_map.
-$wgHooks['ParserFirstCallInit'][] = 'MapsDisplayMap::staticInit';
-# Required for #distance.
-$wgHooks['ParserFirstCallInit'][] = 'MapsDistance::staticInit';
-# Required for #finddestination.
-$wgHooks['ParserFirstCallInit'][] = 'MapsFinddestination::staticInit';
-# Required for #geocode.
-$wgHooks['ParserFirstCallInit'][] = 'MapsGeocode::staticInit';
-# Required for #geodistance.
-$wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
-# Required for #mapsdoc.
-$wgHooks['ParserFirstCallInit'][] = 'MapsMapsDoc::staticInit';
+$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+	$instance = new MapsCoordinates();
+	return $instance->init( $parser );
+};
+
+$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+	$instance = new MapsDisplayMap();
+	return $instance->init( $parser );
+};
+
+$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+	$instance = new MapsDistance();
+	return $instance->init( $parser );
+};
+
+$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+	$instance = new MapsFinddestination();
+	return $instance->init( $parser );
+};
+
+$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+	$instance = new MapsGeocode();
+	return $instance->init( $parser );
+};
+
+$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+	$instance = new MapsGeodistance();
+	return $instance->init( $parser );
+};
+
+$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+	$instance = new MapsMapsDoc();
+	return $instance->init( $parser );
+};
 
 # Geocoders
 
