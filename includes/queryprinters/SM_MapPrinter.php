@@ -32,7 +32,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @param $format String
 	 * @param $inline
 	 */
-	public function __construct( $format, $inline ) {
+	public function __construct( $format, $inline = true ) {
 		$this->service = MapsMappingServices::getValidServiceInstance( $format, 'qp' );
 		
 		parent::__construct( $format, $inline );
