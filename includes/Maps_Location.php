@@ -1,7 +1,11 @@
 <?php
 
+use DataValues\GeoCoordinateValue;
+
 /**
  * Class describing a single location (geographical point).
+ *
+ * TODO: rethink the design of this class after deciding on what actual role it has
  *
  * @since 0.7.1
  *
@@ -15,25 +19,11 @@
 class MapsLocation extends MapsBaseElement {
 
 	/**
-	 * @since 0.7.1
+	 * @since 3.0
 	 *
-	 * @var float
+	 * @var GeoCoordinateValue
 	 */
-	protected $latitude;
-
-	/**
-	 * @since 0.7.1
-	 *
-	 * @var float
-	 */
-	protected $longitude;
-
-	/**
-	 * @since 0.7.2
-	 *
-	 * @var float
-	 */
-	protected $altitude = 0;
+	protected $coordinates;
 
 	/**
 	 * @since 0.7.1
@@ -55,14 +45,6 @@ class MapsLocation extends MapsBaseElement {
 	 * @var string
 	 */
 	protected $group = '';
-
-	/**
-	 * @since 0.7.1
-	 *
-	 * @var boolean
-	 */
-	protected $isValid = false;
-
 
 	/**
 	 * @since 0.7.1
@@ -109,7 +91,7 @@ class MapsLocation extends MapsBaseElement {
 	 * @return MapsLocation
 	 */
 	public static function newFromLatLon( $lat, $lon, $format = Maps_COORDS_FLOAT ) {
-		return new self( $lat . ',' . $lon, $format );
+		return new self( new GeoCoordinateValue( $lat, $lon ), $format );
 	}
 
 	/**
@@ -123,55 +105,37 @@ class MapsLocation extends MapsBaseElement {
 	 * @return MapsLocation
 	 */
 	public static function newFromAddress( $address, $format = Maps_COORDS_FLOAT ) {
+		// TODO: geocode $address
 		return new self( $address, $format );
 	}
 
 	/**
 	 * Constructor.
 	 *
-	 * @param mixed $coordsOrAddress string or array with lat and lon
+	 * @param GeoCoordinateValue $coordinates
 	 * @param string $format
 	 * @param boolean $directional
 	 * @param string $separator
 	 *
-	 * @since 0.7.1
+	 * @since 3.0
 	 */
-	public function __construct( $coordsOrAddress = null, $format = Maps_COORDS_FLOAT, $directional = false, $separator = ',' ) {
+	public function __construct( GeoCoordinateValue $coordinates, $format = Maps_COORDS_FLOAT, $directional = false, $separator = ',' ) {
 		$this->format = $format;
 		$this->directional = $directional;
 		$this->separator = $separator;
-
-		if ( !is_null( $coordsOrAddress ) ) {
-			$coordinateParser = new ValueParsers\GeoCoordinateParser();
-			$parseResult = $coordinateParser->parse( $coordsOrAddress );
-
-			if ( $parseResult->isValid() ) {
-				$this->setCoordinates( $coordsOrAddress );
-			}
-			else {
-				$this->setAddress( $coordsOrAddress );
-			}
-		}
+		$this->coordinates = $coordinates;
 	}
 
 	/**
 	 * Sets the location to a set of coordinates. You can provide a string
 	 * of raw coordinates, an array with lat and lon values and false.
 	 *
-	 * @since 0.7.1
+	 * @since 3.0
 	 *
-	 * @param mixed $coordinates
-	 *
-	 * @return boolean Success indicator
+	 * @param GeoCoordinateValue $coordinates
 	 */
-	public function setCoordinates( $coordinates ) {
-		$coordSet = MapsCoordinateParser::parseCoordinates( $coordinates );
-		$this->isValid = $coordSet !== false;
-
-		$this->latitude = $coordSet['lat'];
-		$this->longitude = $coordSet['lon'];
-
-		return $this->isValid;
+	public function setCoordinates( GeoCoordinateValue $coordinates ) {
+		$this->coordinates = $coordinates;
 	}
 
 	/**
@@ -186,88 +150,29 @@ class MapsLocation extends MapsBaseElement {
 	 */
 	public function setAddress( $address, $asActualLocation = true ) {
 		if ( $asActualLocation ) {
-			$this->setCoordinates( MapsGeocoders::geocode( $address ) );
+			$coordinates = MapsGeocoders::geocode( $address );
+
+			if ( $coordinates === false ) {
+				return false;
+			}
+
+			$this->setCoordinates( $coordinates );
 		}
 
 		$this->address = $address;
 
-		return $this->isValid;
+		return true;
 	}
 
 	/**
-	 * Returns if the location is valid.
+	 * Returns the locations coordinates.
 	 *
-	 * @since 0.7.1
+	 * @since 3.0
 	 *
-	 * @return boolean
+	 * @return GeoCoordinateValue
 	 */
-	public function isValid() {
-		return $this->isValid;
-	}
-
-	/**
-	 * Returns the locations latitude.
-	 *
-	 * @since 0.7.1
-	 *
-	 * @return float
-	 */
-	public function getLatitude() {
-		if ( !$this->isValid() ) {
-			throw new MWException( 'Attempt to get the latitude of an invalid location' );
-		}
-		return $this->latitude;
-	}
-
-	/**
-	 * Returns the locations longitude.
-	 *
-	 * @since 0.7.1
-	 *
-	 * @return float
-	 */
-	public function getLongitude() {
-		if ( !$this->isValid() ) {
-			throw new MWException( 'Attempt to get the longitude of an invalid location' );
-		}
-		return $this->longitude;
-	}
-
-	/**
-	 * Returns the locations altitude.
-	 *
-	 * @since 0.7.3
-	 *
-	 * @return float
-	 */
-	public function getAltitude() {
-		if ( !$this->isValid() ) {
-			throw new MWException( 'Attempt to get the altitude of an invalid location' );
-		}
-		return $this->altitude;
-	}
-
-	/**
-	 * Returns the locations coordinates formatted in the specified notation.
-	 *
-	 * @since 0.7.1
-	 *
-	 * @param string $format Element of the Maps_COORDS_ enum
-	 * @param boolean $directional
-	 * @param string $separator
-	 *
-	 * @return string
-	 */
-	public function getCoordinates( $format = null, $directional = null, $separator = null ) {
-		if ( !$this->isValid() ) {
-			throw new MWException( 'Attempt to get the coordinates for an invalid location' );
-		}
-		return MapsCoordinateParser::formatCoordinates(
-			array( 'lat' => $this->latitude, 'lon' => $this->longitude ),
-			is_null( $format ) ? $this->format : $format,
-			is_null( $directional ) ? $this->directional : $directional,
-			is_null( $separator ) ? $this->separator : $separator
-		);
+	public function getCoordinates() {
+		return $this->coordinates;
 	}
 
 	/**
@@ -281,10 +186,6 @@ class MapsLocation extends MapsBaseElement {
 	 * @return string
 	 */
 	public function getAddress( $geocodeIfEmpty = true ) {
-		if ( !$this->isValid() ) {
-			throw new MWException( 'Attempt to get the address of an invalid location' );
-		}
-
 		if ( is_null( $this->address ) ) {
 			if ( $geocodeIfEmpty ) {
 				// TODO: attempt to reverse-geocode
@@ -421,15 +322,16 @@ class MapsLocation extends MapsBaseElement {
 	 * @param string $defIconUrl
 	 * @param string $defGroup
 	 * @param string $defInlineLabel
+	 * @param string $defVisitedIcon
 	 *
-	 * @return object
+	 * @return array
 	 */
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 		$array = array(
-			'lat' => $this->getLatitude(),
-			'lon' => $this->getLongitude(),
-			'alt' => $this->getAltitude(),
+			'lat' => $this->coordinates->getLongitude(),
+			'lon' => $this->coordinates->getLongitude(),
+			'alt' => $this->coordinates->getAltitude(),
 			'address' => $this->getAddress( false ),
 			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,

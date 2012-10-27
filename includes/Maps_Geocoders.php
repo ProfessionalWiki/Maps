@@ -4,7 +4,9 @@ use DataValues\GeoCoordinateValue;
 
 /**
  * Class for geocoder functionality of the Maps extension. 
- * 
+ *
+ * FIXME: this is procedural spaghetti
+ *
  * @since 0.4
  * 
  * @file Maps_Geocoders.php
@@ -193,13 +195,12 @@ final class MapsGeocoders {
 	 *
 	 * @param string $address
 	 * @param string $geoService
-	 * @param string $mappingService
+	 * @param string|false $mappingService
 	 * 
-	 * @return array with coordinates or false
+	 * @return GeoCoordinateValue|false
+	 * @throws MWException
 	 */
 	public static function geocode( $address, $geoService = '', $mappingService = false ) {
-		// TODO: return geovalue
-
 		if ( !is_string( $address ) ) {
 			throw new MWException( 'Parameter $address must be a string at ' . __METHOD__ );
 		}		
@@ -237,7 +238,10 @@ final class MapsGeocoders {
 			self::cacheWrite( $address, $coordinates );
 		}
 		
-		return $coordinates;
+		return new GeoCoordinateValue(
+			$coordinates['lat'],
+			$coordinates['lon']
+		);
 	}
 	
 	/**
@@ -276,24 +280,6 @@ final class MapsGeocoders {
 		if ( $egMapsEnableGeoCache && $coordinates ) {
 			self::$globalGeocoderCache[$address] = $coordinates;
 		}
-	}
-	
-	/**
-	 * Does the same as Geocode, but also formats the result into a string.
-	 * 
-	 * @since 0.7
-	 * 
-	 * @param string $coordsOrAddress
-	 * @param string $service
-	 * @param string $mappingService
-	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
-	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
-	 * 
-	 * @return formatted coordinates string or false
-	 */
-	public static function geocodeToString( $address, $service = '', $mappingService = false, $targetFormat = Maps_COORDS_FLOAT, $directional = false  ) {
-		$coordinates = self::geocode( $address, $service, $mappingService );
-		return $coordinates ?  MapsCoordinateParser::formatCoordinates( $coordinates, $targetFormat, $directional ) : false;
 	}
 	
 	/**

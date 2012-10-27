@@ -16,11 +16,12 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 
 ; Breaking internal changes
 
+* Moved classes into Maps namespace
 * Removed all Criteria classes
 * Removed all Manipulation classes
 * Removed MapsCoordinateParser
-* Moved classes into Maps namespace
 * Geocoding interfaces changed
+* MapsLocation interface changed
 
 ; Bug fixes
 
