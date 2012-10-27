@@ -60,9 +60,7 @@ class LocationParser extends StringValueParser {
 
 		$location = new \MapsLocation( $parseResult->getDataValue() );
 
-		// TODO: result needs a DV
-
-		return ResultObject::newSuccess( $location );
+		return ResultObject::newSuccess( new \DataValues\UnknownValue( $location ) );
 	}
 
 }
