@@ -1,5 +1,7 @@
 <?php
 
+use ValueParsers\GeoCoordinateParser;
+
 /**
  *
  * Class to validate Rectangles by parsing content and validating locations
@@ -10,12 +12,11 @@
  *
  * @author Nischay Nahata
  */
-
 class RectangleValidator implements GeoValidator {
 
     protected $metaDataSeparator;
 
-    public function __construct( $metaDataSeparator ) {
+    public function __construct( $metaDataSeparator = false ) {
         $this->metaDataSeparator = $metaDataSeparator;
     }
 
@@ -33,7 +34,7 @@ class RectangleValidator implements GeoValidator {
 			return false;
 		}
         foreach ($parts as $part) {
-            $valid = MapsCoordinateParser::areCoordinates($part);
+            $valid = GeoCoordinateParser::areCoordinates($part);
 
             if(!$valid){
                 break;

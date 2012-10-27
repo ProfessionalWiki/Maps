@@ -1,5 +1,7 @@
 <?php
 
+use ValueParsers\GeoCoordinateParser;
+
 /**
  * Class to validate circles by parsing content and validating radius and centre
  * @since 2.0
@@ -37,7 +39,7 @@ class CircleValidator implements GeoValidator {
 		if( count( $parts ) != 2 ) {
 			return false;
 		}
-		return $parts[1] > 0 ? MapsCoordinateParser::areCoordinates( $parts[0] ) : false;
+		return $parts[1] > 0 ? GeoCoordinateParser::areCoordinates( $parts[0] ) : false;
 
 	}
 }

@@ -1,5 +1,7 @@
 <?php
 
+use ValueParsers\GeoCoordinateParser;
+
 /**
  * Class for the 'geodistance' parser hooks, which can
  * calculate the geographical distance between two points.
@@ -94,6 +96,8 @@ class MapsGeodistance extends ParserHook {
 	 * @see ParserHook::getDefaultParameters
 	 * 
 	 * @since 0.7
+	 *
+	 * @param $type
 	 * 
 	 * @return array
 	 */
@@ -110,18 +114,22 @@ class MapsGeodistance extends ParserHook {
 	 * @param array $parameters
 	 * 
 	 * @return string
+	 * @throws MWException
 	 */
 	public function render( array $parameters ) {
 		if ( MapsGeocoders::canGeocode() ) {
 			$start = MapsGeocoders::attemptToGeocode( $parameters['location1'], $parameters['geoservice'], $parameters['mappingservice'] );
 			$end = MapsGeocoders::attemptToGeocode( $parameters['location2'], $parameters['geoservice'], $parameters['mappingservice'] );
 		} else {
-			$start = MapsCoordinateParser::parseCoordinates( $parameters['location1'] );
-			$end = MapsCoordinateParser::parseCoordinates( $parameters['location2'] );
+			$parser = new GeoCoordinateParser();
+
+			$start = $parser->parse( $parameters['location1'] );
+			$end = $parser->parse( $parameters['location2'] );
 		}
 		
-		if ( $start && $end ) {
-			$output = MapsDistanceParser::formatDistance( MapsGeoFunctions::calculateDistance( $start, $end ), $parameters['unit'], $parameters['decimals'] );
+		if ( $start->isValid() && $end->isValid() ) {
+			$distance = MapsGeoFunctions::calculateDistance( $start->getDataValue(), $end->getDataValue() );
+			$output = MapsDistanceParser::formatDistance( $distance, $parameters['unit'], $parameters['decimals'] );
 		} else {
 			// The locations should be valid when this method gets called.
 			throw new MWException( 'Attempt to find the distance between locations of at least one is invalid' );
@@ -131,7 +139,7 @@ class MapsGeodistance extends ParserHook {
 	}
 
 	/**
-	 * @see ParserHook::getMessage()
+	 * @see ParserHook::getMessage
 	 * 
 	 * @since 1.0
 	 */

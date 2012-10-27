@@ -1,5 +1,7 @@
 <?php
 
+use ValueParsers\GeoCoordinateParser;
+
 /**
  *
  * Class to validate locations by parsing content
@@ -30,7 +32,7 @@ class LocationValidator implements GeoValidator {
 	/**
 	 * @see GeoValidator::doValidation
 	 */
-	protected function doValidation( $value ) {
+	public function doValidation( $value ) {
 		//Empty string. e.g no coordinates given
 		if(empty($value)){
 			return true;
@@ -40,7 +42,7 @@ class LocationValidator implements GeoValidator {
 			$parts = explode( $this->metaDataSeparator, $value );
 			$value = $parts[0];
 		}
-		return MapsCoordinateParser::areCoordinates( $value );
+		return GeoCoordinateParser::areCoordinates( $value );
 	}
 
 }

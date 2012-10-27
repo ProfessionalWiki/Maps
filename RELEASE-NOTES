@@ -4,8 +4,23 @@ Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
 Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=RELEASE-NOTES
 
 
-=== Maps 2.1 ===
+=== Maps 3.0 ===
 (dev)
+
+; Compatibility changes
+
+* Changed minimum Validator version from 0.5 to 1.0.
+* DataValues is now required. Version 0.1 or later.
+* ValueParsers is now required. Version 0.1 or later.
+* ValueFormatters is now required. Version 0.1 or later.
+
+; Breaking internal changes
+
+* Removed all Criteria classes
+* Removed all Manipulation classes
+* Removed MapsCoordinateParser
+* Moved classes into Maps namespace
+* Geocoding interfaces changed
 
 ; Bug fixes
 

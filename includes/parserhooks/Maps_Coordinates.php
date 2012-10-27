@@ -95,10 +95,18 @@ class MapsCoordinates extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
-		
-		if ( $parsedCoords ) {
-			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] );
+		$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+		$parseResult = $coordinateParser->parse( $parameters['location'] );
+
+		if ( $parseResult->isValid() ) {
+			$coordinateFormatter = new \ValueFormatters\GeoCoordinateFormatter();
+
+			$options = new \ValueFormatters\GeoFormatterOptions();
+			$options->setFormat( $parameters['format'] );
+			// TODO $options->setFormat( $parameters['directional'] );
+			$coordinateFormatter->setOptions( $options );
+
+			$output = $coordinateFormatter->format( $parseResult->getDataValue() )->getValue();
 		} else {
 			// The coordinates should be valid when this method gets called.
 			throw new MWException( 'Attempt to format an invalid set of coordinates' );

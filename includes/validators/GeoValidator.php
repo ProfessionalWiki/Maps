@@ -17,7 +17,7 @@ interface GeoValidator {
 	 *
 	 * @since 2.0
 	 */
-	public function __construct( $metaDataSeparator );
+	public function __construct( $metaDataSeparator = false );
 
 	/**
 	 * Returns a boolean indicating if the given string is a proper representation

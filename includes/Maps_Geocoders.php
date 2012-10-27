@@ -119,7 +119,7 @@ final class MapsGeocoders {
 	 * @param string|false $mappingService
 	 * @param boolean $checkForCoords
 	 *
-	 * @return array or false
+	 * @return GeoCoordinateValue|false
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
@@ -127,15 +127,7 @@ final class MapsGeocoders {
 			$parseResult = $coordinateParser->parse( $coordsOrAddress );
 
 			if ( $parseResult->isValid() ) {
-				/**
-				 * @var GeoCoordinateValue $coords
-				 */
-				$coords = $parseResult->getDataValue();
-
-				return array(
-					'lat' => $coords->getLatitude(),
-					'lon' => $coords->getLongitude(),
-				);
+				return $parseResult->getDataValue();
 			} else {
 				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
 			}
@@ -172,11 +164,25 @@ final class MapsGeocoders {
 	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * 
-	 * @return formatted coordinates string or false
+	 * @return string|false
 	 */
 	public static function attemptToGeocodeToString( $coordsOrAddress, $service = '', $mappingService = false, $checkForCoords = true, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
-		$geoValues = self::attemptToGeocode( $coordsOrAddress, $service, $mappingService, $checkForCoords );
-		return $geoValues ?  MapsCoordinateParser::formatCoordinates( $geoValues, $targetFormat, $directional ) : false;
+		$geoCoordinate = self::attemptToGeocode( $coordsOrAddress, $service, $mappingService, $checkForCoords );
+
+		if ( $geoCoordinate === false ) {
+			return false;
+		}
+
+		$formatter = new \ValueFormatters\GeoCoordinateFormatter();
+
+		$options = new \ValueFormatters\GeoFormatterOptions();
+		$options->setFormat( $targetFormat );
+		// TODO $options->setFormat( $directional );
+		$formatter->setOptions( $options );
+
+		$formattingResult = $formatter->format( $geoCoordinate );
+
+		return $formattingResult->isValid() ? $formattingResult->getValue() : false;
 	}
 
 	/**
@@ -192,6 +198,8 @@ final class MapsGeocoders {
 	 * @return array with coordinates or false
 	 */
 	public static function geocode( $address, $geoService = '', $mappingService = false ) {
+		// TODO: return geovalue
+
 		if ( !is_string( $address ) ) {
 			throw new MWException( 'Parameter $address must be a string at ' . __METHOD__ );
 		}		

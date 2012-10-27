@@ -1,5 +1,7 @@
 <?php
 
+use ValueParsers\GeoCoordinateParser;
+
 /**
  *
  * Class to validate Lines by parsing content and validating points
@@ -44,7 +46,7 @@ class LineValidator implements GeoValidator {
                 $part = substr($part, 0, $toIndex);
             }
 
-			$valid = MapsCoordinateParser::areCoordinates($part);
+			$valid = GeoCoordinateParser::areCoordinates($part);
 
             if(!$valid){
                 break;

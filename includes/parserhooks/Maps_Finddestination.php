@@ -1,5 +1,7 @@
 <?php
 
+use DataValues\GeoCoordinateValue;
+
 /**
  * Class for the 'finddestination' parser hooks, which can find a
  * destination given a starting point, an initial bearing and a distance.
@@ -131,7 +133,23 @@ class MapsFinddestination extends ParserHook {
 				$parameters['mappingservice']
 			);
 		} else {
-			$location = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
+			$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+			$parseResult = $coordinateParser->parse( $parameters['location'] );
+
+			if ( $parseResult->isValid() ) {
+				/**
+				 * @var GeoCoordinateValue $coords
+				 */
+				$coords = $parseResult->getDataValue();
+
+				$location = array(
+					'lat' => $coords->getLatitude(),
+					'lon' => $coords->getLongitude(),
+				);
+			}
+			else {
+				$location = false;
+			}
 		}
 		
 		// TODO
@@ -141,7 +159,16 @@ class MapsFinddestination extends ParserHook {
 				$parameters['bearing'],
 				MapsDistanceParser::parseDistance( $parameters['distance'] )
 			);
-			$output = MapsCoordinateParser::formatCoordinates( $destination, $parameters['format'], $parameters['directional'] );
+
+			$formatter = new \ValueFormatters\GeoCoordinateFormatter();
+
+			$options = new \ValueFormatters\GeoFormatterOptions();
+			$options->setFormat( $parameters['format'] );
+			// TODO $options->setFormat( $parameters['directional'] );
+			$formatter->setOptions( $options );
+
+			$geoCoords = new \DataValues\GeoCoordinateValue( $destination['lat'], $destination['lon'] );
+			$output = $formatter->format( $geoCoords )->getValue();
 		} else {
 			// The location should be valid when this method gets called.
 			throw new MWException( 'Attempt to find a destination from an invalid location' );

@@ -1,5 +1,7 @@
 <?php
 
+use ValueParsers\GeoCoordinateParser;
+
 /**
  *
  * Class to validate polygons by parsing content and validating points
@@ -11,12 +13,11 @@
  * @author Kim Eik
  * @author Nischay Nahata
  */
-
 class PolygonValidator implements GeoValidator {
 
     protected $metaDataSeparator;
 
-    public function __construct( $metaDataSeparator ) {
+    public function __construct( $metaDataSeparator = false ) {
         $this->metaDataSeparator = $metaDataSeparator;
     }
 
@@ -42,7 +43,7 @@ class PolygonValidator implements GeoValidator {
             if ($toIndex != false) {
                 $part = substr($part, 0, $toIndex);
             }
-            $valid = MapsCoordinateParser::areCoordinates($part);
+            $valid = GeoCoordinateParser::areCoordinates($part);
 
             if(!$valid){
                 break;
