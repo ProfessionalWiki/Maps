@@ -69,7 +69,6 @@ $wgAutoloadClasses['MapsHooks'] = __DIR__ . '/Maps.hooks.php';
 
 // Autoload the "includes/" classes and interfaces.
 $wgAutoloadClasses['MapsMapper'] 				= __DIR__ . '/includes/Maps_Mapper.php';
-$wgAutoloadClasses['MapsCoordinateParser'] 		= __DIR__ . '/includes/Maps_CoordinateParser.php';
 $wgAutoloadClasses['MapsDistanceParser'] 		= __DIR__ . '/includes/Maps_DistanceParser.php';
 $wgAutoloadClasses['MapsGeoFunctions'] 			= __DIR__ . '/includes/Maps_GeoFunctions.php';
 $wgAutoloadClasses['MapsGeocoders'] 			= __DIR__ . '/includes/Maps_Geocoders.php';

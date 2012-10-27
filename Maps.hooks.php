@@ -59,7 +59,6 @@ final class MapsHooks {
 			'parserhooks/Geodistance',
 			'parserhooks/MapsDoc',
 
-			'MapsCoordinateParser',
 			'MapsDistanceParser',
 		);
 
