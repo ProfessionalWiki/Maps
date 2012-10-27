@@ -14,6 +14,7 @@
  * usecases. The different seperator support could also be made nice.
  * 
  * @since 0.6
+ * @deprecated
  * 
  * @file Maps_CoordinateParser.php
  * @ingroup Maps
