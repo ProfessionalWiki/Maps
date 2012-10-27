@@ -100,14 +100,6 @@ $wgAutoloadClasses['iHoverableMapElement'] 		= __DIR__ . '/includes/properties/i
 $wgAutoloadClasses['iLinkableMapElement'] 		= __DIR__ . '/includes/properties/iLinkableMapElement.php';
 $wgAutoloadClasses['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/iStrokableMapElement.php';
 
-// Autoload Geo Validators
-$wgAutoloadClasses['GeoValidator'] 				= __DIR__ . '/includes/validators/GeoValidator.php';
-$wgAutoloadClasses['LocationValidator'] 		= __DIR__ . '/includes/validators/LocationValidator.php';
-$wgAutoloadClasses['LineValidator'] 			= __DIR__ . '/includes/validators/LineValidator.php';
-$wgAutoloadClasses['PolygonValidator'] 			= __DIR__ . '/includes/validators/PolygonValidator.php';
-$wgAutoloadClasses['RectangleValidator'] 		= __DIR__ . '/includes/validators/RectangleValidator.php';
-$wgAutoloadClasses['CircleValidator'] 			= __DIR__ . '/includes/validators/CircleValidator.php';
-
 $wgAutoloadClasses['MapsGeonamesGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GeonamesGeocoder.php';
 $wgAutoloadClasses['MapsGoogleGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GoogleGeocoder.php';
 
