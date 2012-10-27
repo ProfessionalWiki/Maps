@@ -280,6 +280,12 @@ var mapEditor = {
     },
     __generateWikiCode:function(){
         var code = '{{#display_map: ';
+        code += mapEditor.__generateCode();
+        code += '\n}}\n';
+        return code;
+    },
+    __generateCode:function(){
+        var code = '';
 
         var markers = '';
         var circles = '';
@@ -343,7 +349,7 @@ var mapEditor = {
             code += '\n|'+param+'='+value;
         }
 
-        code += '\n}}\n';
+        code += '';
         return code;
     },
     __importWikiCode:function(rawData){
@@ -715,35 +721,46 @@ $(document).ready(function(){
     });
 
     //add custom controls
-    mapEditor.addControlButton(mw.msg('mapeditor-export-button'),function(){
-        var code = mapEditor.__generateWikiCode();
-        if(navigator.appName == 'Microsoft Internet Explorer'){
-            //if IE replace /n with /r/n so it is displayed properly
-            code = code.split('\n').join('\r\n');
-        }
-        $('#code-output').text(code);
-        $('#code-output').dialog({
-            modal:true,
-            width:'80%'
-        });
-    });
+	if( $('#map-canvas').attr('context') != 'forminput' ) { //for Special:MapEditor
+		mapEditor.addControlButton(mw.msg('mapeditor-export-button'),function(){
+			var code = mapEditor.__generateWikiCode();
+			if(navigator.appName == 'Microsoft Internet Explorer'){
+				//if IE replace /n with /r/n so it is displayed properly
+				code = code.split('\n').join('\r\n');
+			}
+			$('#code-output').text(code);
+			$('#code-output').dialog({
+				modal:true,
+				width:'80%'
+			});
+		});
 
-    mapEditor.addControlButton(mw.msg('mapeditor-import-button'), function(){
-        var i18nButtons = {};
-        i18nButtons[mw.msg('mapeditor-import-button2')] = function () {
-            var data = $('#code-input').val();
-            if(mapEditor.__importWikiCode(data)){
-                $(this).dialog('close');
-            }else{
-                alert('Could not parse input! make sure the input has the same structure as exported wiki code');
-            }
-        };
-        $('#code-input-container').dialog({
-            modal:true,
-            width:'80%',
-            buttons: i18nButtons
-        });
-    });
+		mapEditor.addControlButton(mw.msg('mapeditor-import-button'), function(){
+			var i18nButtons = {};
+			i18nButtons[mw.msg('mapeditor-import-button2')] = function () {
+				var data = $('#code-input').val();
+				if(mapEditor.__importWikiCode(data)){
+					$(this).dialog('close');
+				}else{
+					alert('Could not parse input! make sure the input has the same structure as exported wiki code');
+				}
+			};
+			$('#code-input-container').dialog({
+				modal:true,
+				width:'80%',
+				buttons: i18nButtons
+			});
+		});
+	} else { //for form input
+		mapEditor.addControlButton(mw.msg('mapeditor-select-button'),function(){
+			var code = mapEditor.__generateCode();
+			if(navigator.appName == 'Microsoft Internet Explorer'){
+				//if IE replace /n with /r/n so it is displayed properly
+				code = code.split('\n').join('\r\n');
+			}
+			$('#map-polygon').text(code);
+		});
+	}
 
     mapEditor.addControlButton(mw.msg('mapeditor-mapparam-button'), function(){
         var i18nButtons = {};
