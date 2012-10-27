@@ -109,37 +109,8 @@ $wgAutoloadClasses['PolygonValidator'] 			= __DIR__ . '/includes/validators/Poly
 $wgAutoloadClasses['RectangleValidator'] 		= __DIR__ . '/includes/validators/RectangleValidator.php';
 $wgAutoloadClasses['CircleValidator'] 			= __DIR__ . '/includes/validators/CircleValidator.php';
 
-// Autoload the "includes/criteria/" classes.
-// TODO: migrate to Params
-$wgAutoloadClasses['CriterionIsLocation'] 		= __DIR__ . '/includes/criteria/CriterionIsLocation.php';
-$wgAutoloadClasses['CriterionMapDimension'] 	= __DIR__ . '/includes/criteria/CriterionMapDimension.php';
-$wgAutoloadClasses['CriterionMapLayer'] 		= __DIR__ . '/includes/criteria/CriterionMapLayer.php';
-$wgAutoloadClasses['CriterionLine'] 			= __DIR__ . '/includes/criteria/CriterionLine.php';
-$wgAutoloadClasses['CriterionPolygon'] 			= __DIR__ . '/includes/criteria/CriterionPolygon.php';
-$wgAutoloadClasses['CriterionSearchMarkers'] 	= __DIR__ . '/includes/criteria/CriterionSearchMarkers.php';
-
 $wgAutoloadClasses['MapsGeonamesGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GeonamesGeocoder.php';
 $wgAutoloadClasses['MapsGoogleGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GoogleGeocoder.php';
-
-$wgAutoloadClasses['MapsImageLayer'] 			= __DIR__ . '/includes/layers/Maps_ImageLayer.php';
-$wgAutoloadClasses['MapsKMLLayer'] 				= __DIR__ . '/includes/layers/Maps_KMLLayer.php';
-
-// Autoload the "includes/manipulations/" classes.
-// TODO: migrate to Params
-$manDir = __DIR__ . '/includes/manipulations/';
-$wgAutoloadClasses['MapsCommonParameterManipulation'] = $manDir . 'Maps_CommonParameterManipulation.php';
-$wgAutoloadClasses['MapsParamDimension'] = $manDir . 'Maps_ParamDimension.php';
-$wgAutoloadClasses['MapsParamFile'] = $manDir . 'Maps_ParamFile.php';
-$wgAutoloadClasses['MapsParamGeoService'] = $manDir . 'Maps_ParamGeoService.php';
-$wgAutoloadClasses['MapsParamLocation'] = $manDir . 'Maps_ParamLocation.php';
-$wgAutoloadClasses['MapsParamZoom'] = $manDir . 'Maps_ParamZoom.php';
-$wgAutoloadClasses['MapsParamLine'] = $manDir . 'Maps_ParamLine.php';
-$wgAutoloadClasses['MapsParamPolygon'] = $manDir . 'Maps_ParamPolygon.php';
-$wgAutoloadClasses['MapsParamCircle'] = $manDir . 'Maps_ParamCircle.php';
-$wgAutoloadClasses['MapsParamRectangle'] = $manDir . 'Maps_ParamRectangle.php';
-$wgAutoloadClasses['MapsParamImageOverlay'] = $manDir . 'Maps_ParamImageOverlay.php';
-$wgAutoloadClasses['MapsParamWmsOverlay'] = $manDir . 'Maps_ParamWmsOverlay.php';
-unset( $manDir );
 
 $wgAutoloadClasses['Maps\ServiceParam'] 		= __DIR__ . '/includes/definitions/ServiceParam.php';
 

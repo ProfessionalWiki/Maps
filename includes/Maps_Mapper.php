@@ -85,7 +85,7 @@ final class MapsMapper {
 			'default' => $egMapsDefaultGeoService,
 			'values' => $egMapsAvailableGeoServices,
 			'dependencies' => 'mappingservice',
-			'manipulations' => new MapsParamGeoService( 'mappingservice' ),
+			// TODO 'manipulations' => new MapsParamGeoService( 'mappingservice' ),
 		);
 
 		$params['zoom'] = array(
@@ -94,23 +94,23 @@ final class MapsMapper {
 
 		$params['width'] = array(
 			'default' => $egMapsMapWidth,
-			'criteria' => new CriterionMapDimension( 'width' ),
-			'manipulations' => new MapsParamDimension( 'width' ),
+			// 'criteria' => new CriterionMapDimension( 'width' ),// TODO
+			// TODO 'manipulations' => new MapsParamDimension( 'width' ),
 		);
 
 		$params['height'] = array(
 			'default' => $egMapsMapHeight,
-			'criteria' => new CriterionMapDimension( 'height' ),
-			'manipulations' => new MapsParamDimension( 'height' ),
+			// TODO 'criteria' => new CriterionMapDimension( 'height' ),
+			// TODO 'manipulations' => new MapsParamDimension( 'height' ),
 		);
 
-		$manipulation = new MapsParamLocation();
-		$manipulation->toJSONObj = true;
+		// TODO$manipulation = new MapsParamLocation();
+		// TODO$manipulation->toJSONObj = true;
 
 		$params['centre'] = array(
 			'aliases' => array( 'center' ),
-			'criteria' => new CriterionIsLocation(),
-			'manipulations' => $manipulation,
+			//'criteria' => new CriterionIsLocation(), // TODO
+			// TODO 	'manipulations' => $manipulation,
 			'default' => false,
 			'manipulatedefault' => false,
 		);

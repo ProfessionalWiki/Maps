@@ -66,12 +66,12 @@ class MapsDisplayMap extends ParserHook {
 		$params['mappingservice']['feature'] = 'display_map';
 
 		$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
-		$params['zoom']['manipulations'] = new MapsParamZoom();
+		// TODO$params['zoom']['manipulations'] = new MapsParamZoom();
 
 		$params['coordinates'] = array(
 			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
-			'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
-			'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			// TODO	'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
+			// TODO	'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
 			'default' => array(),
 			'islist' => true,
@@ -98,30 +98,30 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['lines'] = array(
 			'default' => array(),
-			'criteria' => new CriterionLine( '~' ), // TODO
-			'manipulations' => new MapsParamLine( '~' ), // TODO
+			// TODO	'criteria' => new CriterionLine( '~' ), // TODO
+			// TODO	'manipulations' => new MapsParamLine( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['polygons'] = array(
 			'default' => array(),
-			'criteria' => new CriterionPolygon( '~' ), // TODO
-			'manipulations' => new MapsParamPolygon( '~' ), // TODO
+			// TODO	'criteria' => new CriterionPolygon( '~' ), // TODO
+			// TODO	'manipulations' => new MapsParamPolygon( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['circles'] = array(
 			'default' => array(),
-			'manipulations' => new MapsParamCircle( '~' ), // TODO
+			// TODO	'manipulations' => new MapsParamCircle( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['rectangles'] = array(
 			'default' => array(),
-			'manipulations' => new MapsParamRectangle( '~' ), // TODO
+			// TODO	'manipulations' => new MapsParamRectangle( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
@@ -139,7 +139,7 @@ class MapsDisplayMap extends ParserHook {
 		$params['wmsoverlay'] = array(
 			'type' => 'string',
 			'default' => false,
-			'manipulations' => new MapsParamWmsOverlay( ' ' ), // TODO
+			// TODO 'manipulations' => new MapsParamWmsOverlay( ' ' ), // TODO
 			'delimiter' => ';',
 		);
 

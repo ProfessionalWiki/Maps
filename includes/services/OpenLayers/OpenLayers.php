@@ -42,9 +42,7 @@ $wgResourceModules['ext.maps.openlayers'] = array(
 	)			
 );
 
-$wgAutoloadClasses['CriterionOLLayer']	 			= __DIR__ . '/CriterionOLLayer.php';
 $wgAutoloadClasses['MapsOpenLayers'] 				= __DIR__ . '/Maps_OpenLayers.php';
-$wgAutoloadClasses['MapsParamOLLayers'] 			= __DIR__ . '/Maps_ParamOLLayers.php';
 
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 function efMapsInitOpenLayers() {
