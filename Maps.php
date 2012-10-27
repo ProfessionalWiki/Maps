@@ -198,5 +198,13 @@ $wgParamDefinitions['mappingservice'] = array(
 );
 
 $wgParamDefinitions['mapslocation'] = array(
-	'definition' => 'Maps\LocationParam',
+	'string-parser' => 'Maps\LocationParser',
+);
+
+$wgParamDefinitions['mapsline'] = array(
+	'string-parser' => 'Maps\LineParser',
+);
+
+$wgParamDefinitions['mapspolygon'] = array(
+	'string-parser' => 'Maps\PolygonParser',
 );

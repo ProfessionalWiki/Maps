@@ -1,5 +1,7 @@
 <?php
 
+$classes = array();
+
 $classes['MapsHooks'] = __DIR__ . '/Maps.hooks.php';
 
 $classes['MapsMapper'] 					= __DIR__ . '/includes/Maps_Mapper.php';
@@ -28,15 +30,6 @@ $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRende
 
 $classes['ApiGeocode'] 					= __DIR__ . '/includes/api/ApiGeocode.php';
 
-$classes['iBubbleMapElement'] 			= __DIR__ . '/includes/properties/iBubbleMapElement.php';
-$classes['iFillableMapElement'] 		= __DIR__ . '/includes/properties/iFillableMapElement.php';
-$classes['iHoverableMapElement'] 		= __DIR__ . '/includes/properties/iHoverableMapElement.php';
-$classes['iLinkableMapElement'] 		= __DIR__ . '/includes/properties/iLinkableMapElement.php';
-$classes['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/iStrokableMapElement.php';
-
-$classes['MapsGeonamesGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GeonamesGeocoder.php';
-$classes['MapsGoogleGeocoder'] 			= __DIR__ . '/includes/geocoders/Maps_GoogleGeocoder.php';
-
 $classes['Maps\ServiceParam'] 			= __DIR__ . '/includes/definitions/ServiceParam.php';
 
 $classes['MapsCoordinates'] 			= __DIR__ . '/includes/parserhooks/Maps_Coordinates.php';
@@ -46,6 +39,20 @@ $classes['MapsFinddestination'] 		= __DIR__ . '/includes/parserhooks/Maps_Findde
 $classes['MapsGeocode'] 				= __DIR__ . '/includes/parserhooks/Maps_Geocode.php';
 $classes['MapsGeodistance'] 			= __DIR__ . '/includes/parserhooks/Maps_Geodistance.php';
 $classes['MapsMapsDoc'] 				= __DIR__ . '/includes/parserhooks/Maps_MapsDoc.php';
+
+$classes['Maps\DistanceParser'] 		= __DIR__ . '/includes/parsers/DistanceParser.php';
+$classes['Maps\LineParser'] 			= __DIR__ . '/includes/parsers/LineParser.php';
+$classes['Maps\LocationParser'] 		= __DIR__ . '/includes/parsers/LocationParser.php';
+$classes['Maps\PolygonParser'] 			= __DIR__ . '/includes/parsers/PolygonParser.php';
+
+$classes['iBubbleMapElement'] 			= __DIR__ . '/includes/properties/iBubbleMapElement.php';
+$classes['iFillableMapElement'] 		= __DIR__ . '/includes/properties/iFillableMapElement.php';
+$classes['iHoverableMapElement'] 		= __DIR__ . '/includes/properties/iHoverableMapElement.php';
+$classes['iLinkableMapElement'] 		= __DIR__ . '/includes/properties/iLinkableMapElement.php';
+$classes['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/iStrokableMapElement.php';
+
+$classes['MapsGeonamesGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GeonamesGeocoder.php';
+$classes['MapsGoogleGeocoder'] 			= __DIR__ . '/includes/geocoders/Maps_GoogleGeocoder.php';
 
 $classes['SpecialMapEditor'] 			= __DIR__ . '/includes/specials/SpecialMapEditor.php';
 
