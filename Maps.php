@@ -198,6 +198,5 @@ $wgParamDefinitions['mappingservice'] = array(
 );
 
 $wgParamDefinitions['mapslocation'] = array(
-	'string-parser' => '\ValueParsers\BoolParser',
-	'validation-callback' => 'is_bool',
+	'definition' => 'Maps\LocationParam',
 );

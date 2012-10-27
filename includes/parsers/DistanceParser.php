@@ -1,7 +1,9 @@
 <?php
 
 namespace Maps;
-use StringValueParser, ValueParserResult, ValueParserResultObject;
+use ValueParsers\StringValueParser;
+use ValueParsers\Result;
+use ValueParsers\ResultObject;
 
 /**
  * ValueParser that parses the string representation of a distance.
@@ -21,7 +23,7 @@ use StringValueParser, ValueParserResult, ValueParserResultObject;
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @since 2.0
+ * @since 3.0
  *
  * @file
  * @ingroup Maps
@@ -35,11 +37,11 @@ class DistanceParser extends StringValueParser {
 	/**
 	 * @see StringValueParser::stringParse
 	 *
-	 * @since 0.1
+	 * @since 3.0
 	 *
 	 * @param string $value
 	 *
-	 * @return ValueParserResult
+	 * @return Result
 	 */
 	public function stringParse( $value ) {
 		$distance = \MapsDistanceParser::parseDistance( $value );
@@ -48,7 +50,7 @@ class DistanceParser extends StringValueParser {
 			return $this->newErrorResult( 'Not a distance' );
 		}
 		else {
-			return ValueParserResultObject::newSuccess( $value );
+			return ResultObject::newSuccess( $value );
 		}
 	}
 
