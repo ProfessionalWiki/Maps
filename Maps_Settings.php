@@ -295,18 +295,3 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
 		);
-			
-
-	
-	
-	# OpenStreetMap
-	
-		# Integer. The default zoom of a map. This value will only be used when the
-		# user does not provide one.
-		$egMapsOSMZoom = 13;		
-		
-		# Boolean. Thumbnail pictures on or off.
-		$egMapsOSMThumbs = false;
-		
-		# Boolean. Photos in article pop-ups on or off.
-		$egMapsOSMPhotos = false;		
