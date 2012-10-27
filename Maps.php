@@ -65,70 +65,29 @@ $egMapsDir = __DIR__ . '/';
 
 $egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
-$wgAutoloadClasses['MapsHooks'] = __DIR__ . '/Maps.hooks.php';
-
-// Autoload the "includes/" classes and interfaces.
-$wgAutoloadClasses['MapsMapper'] 				= __DIR__ . '/includes/Maps_Mapper.php';
-$wgAutoloadClasses['MapsDistanceParser'] 		= __DIR__ . '/includes/Maps_DistanceParser.php';
-$wgAutoloadClasses['MapsGeoFunctions'] 			= __DIR__ . '/includes/Maps_GeoFunctions.php';
-$wgAutoloadClasses['MapsGeocoders'] 			= __DIR__ . '/includes/Maps_Geocoders.php';
-$wgAutoloadClasses['MapsGeocoder'] 				= __DIR__ . '/includes/Maps_Geocoder.php';
-$wgAutoloadClasses['MapsKMLFormatter'] 			= __DIR__ . '/includes/Maps_KMLFormatter.php';
-$wgAutoloadClasses['MapsLayer'] 				= __DIR__ . '/includes/Maps_Layer.php';
-$wgAutoloadClasses['MapsLayerPage'] 			= __DIR__ . '/includes/Maps_LayerPage.php';
-$wgAutoloadClasses['MapsLayers'] 				= __DIR__ . '/includes/Maps_Layers.php';
-$wgAutoloadClasses['MapsLocation'] 				= __DIR__ . '/includes/Maps_Location.php';
-$wgAutoloadClasses['MapsLine'] 					= __DIR__ . '/includes/Maps_Line.php';
-$wgAutoloadClasses['MapsPolygon'] 				= __DIR__ . '/includes/Maps_Polygon.php';
-$wgAutoloadClasses['MapsCircle'] 				= __DIR__ . '/includes/Maps_Circle.php';
-$wgAutoloadClasses['MapsRectangle'] 			= __DIR__ . '/includes/Maps_Rectangle.php';
-$wgAutoloadClasses['MapsImageOverlay'] 			= __DIR__ . '/includes/Maps_ImageOverlay.php';
-$wgAutoloadClasses['iMappingService'] 			= __DIR__ . '/includes/iMappingService.php';
-$wgAutoloadClasses['MapsMappingServices'] 		= __DIR__ . '/includes/Maps_MappingServices.php';
-$wgAutoloadClasses['MapsMappingService'] 		= __DIR__ . '/includes/Maps_MappingService.php';
-$wgAutoloadClasses['MapsWmsOverlay'] 			= __DIR__ . '/includes/Maps_WmsOverlay.php';
-$wgAutoloadClasses['MapsBaseElement']			= __DIR__ . '/includes/Maps_BaseElement.php';
-$wgAutoloadClasses['MapsBaseFillableElement'] 	= __DIR__ . '/includes/Maps_BaseFillableElement.php';
-$wgAutoloadClasses['MapsBaseStrokableElement'] 	= __DIR__ . '/includes/Maps_BaseStrokableElement.php';
-$wgAutoloadClasses['MapsDisplayMapRenderer'] 	= __DIR__ . '/includes/Maps_DisplayMapRenderer.php';
-
-$wgAutoloadClasses['ApiGeocode'] 				= __DIR__ . '/includes/api/ApiGeocode.php';
-
-$wgAutoloadClasses['iBubbleMapElement'] 		= __DIR__ . '/includes/properties/iBubbleMapElement.php';
-$wgAutoloadClasses['iFillableMapElement'] 		= __DIR__ . '/includes/properties/iFillableMapElement.php';
-$wgAutoloadClasses['iHoverableMapElement'] 		= __DIR__ . '/includes/properties/iHoverableMapElement.php';
-$wgAutoloadClasses['iLinkableMapElement'] 		= __DIR__ . '/includes/properties/iLinkableMapElement.php';
-$wgAutoloadClasses['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/iStrokableMapElement.php';
-
-$wgAutoloadClasses['MapsGeonamesGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GeonamesGeocoder.php';
-$wgAutoloadClasses['MapsGoogleGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GoogleGeocoder.php';
-
-$wgAutoloadClasses['Maps\ServiceParam'] 		= __DIR__ . '/includes/definitions/ServiceParam.php';
-
-// Autoload the "includes/parserhooks/" classes.
-$wgAutoloadClasses['MapsCoordinates'] 			= __DIR__ . '/includes/parserhooks/Maps_Coordinates.php';
-$wgAutoloadClasses['MapsDisplayMap'] 			= __DIR__ . '/includes/parserhooks/Maps_DisplayMap.php';
-$wgAutoloadClasses['MapsDistance'] 				= __DIR__ . '/includes/parserhooks/Maps_Distance.php';
-$wgAutoloadClasses['MapsFinddestination'] 		= __DIR__ . '/includes/parserhooks/Maps_Finddestination.php';
-$wgAutoloadClasses['MapsGeocode'] 				= __DIR__ . '/includes/parserhooks/Maps_Geocode.php';
-$wgAutoloadClasses['MapsGeodistance'] 			= __DIR__ . '/includes/parserhooks/Maps_Geodistance.php';
-$wgAutoloadClasses['MapsMapsDoc'] 				= __DIR__ . '/includes/parserhooks/Maps_MapsDoc.php';
-
-// Load the special pages
-$wgAutoloadClasses['SpecialMapEditor'] 			= __DIR__ . '/includes/specials/SpecialMapEditor.php';
-
-$wgAutoloadClasses['Maps\Test\ParserHookTest'] 	= __DIR__ . '/tests/phpunit/parserhooks/ParserHookTest.php';
-
 $wgExtensionMessagesFiles['Maps'] 				= __DIR__ . '/Maps.i18n.php';
 $wgExtensionMessagesFiles['MapsMagic'] 			= __DIR__ . '/Maps.i18n.magic.php';
 $wgExtensionMessagesFiles['MapsNamespaces'] 	= __DIR__ . '/Maps.i18n.namespaces.php';
 $wgExtensionMessagesFiles['MapsAlias'] 			= __DIR__ . '/Maps.i18n.alias.php';
 
+$wgAutoloadClasses = array_merge( $wgAutoloadClasses, include 'Maps.classes.php' );
 
 $wgAPIModules['geocode'] = 'ApiGeocode';
 
 // Register the initialization function of Maps.
-$wgExtensionFunctions[] = 'efMapsSetup';
+$wgExtensionFunctions[] = function () {
+	wfRunHooks( 'MappingServiceLoad' );
+	wfRunHooks( 'MappingFeatureLoad' );
+
+	if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
+		global $wgSpecialPages, $wgSpecialPageGroups;
+
+		$wgSpecialPages['MapEditor'] = 'SpecialMapEditor';
+		$wgSpecialPageGroups['MapEditor'] = 'maps';
+	}
+
+	return true;
+};
 
 // Since 0.2
 $wgHooks['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
@@ -271,28 +230,6 @@ foreach ( $wgGroupPermissions as $group => $rights ) {
 }
 
 $egMapsGlobalJSVars = array();
-
-/**
- * Initialization function for the Maps extension.
- *
- * @since 0.1
- *
- * @return true
- */
-function efMapsSetup() {
-	wfRunHooks( 'MappingServiceLoad' );
-	wfRunHooks( 'MappingFeatureLoad' );
-
-	if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
-		global $wgSpecialPages, $wgSpecialPageGroups;
-
-		$wgSpecialPages['MapEditor'] = 'SpecialMapEditor';
-		$wgSpecialPageGroups['MapEditor'] = 'maps';
-	}
-
-	return true;
-}
-
 
 $egParamDefinitions['mappingservice'] = 'Maps\ServiceParam';
 
