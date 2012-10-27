@@ -72,6 +72,8 @@ $wgExtensionMessagesFiles['MapsAlias'] 			= __DIR__ . '/Maps.i18n.alias.php';
 
 $wgAutoloadClasses = array_merge( $wgAutoloadClasses, include 'Maps.classes.php' );
 
+$wgResourceModules = array_merge( $wgResourceModules, include 'Maps.resources.php' );
+
 $wgAPIModules['geocode'] = 'ApiGeocode';
 
 // Register the initialization function of Maps.
@@ -104,9 +106,9 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScrip
 // Since ??
 $wgHooks['CanonicalNamespaces'][] = 'MapsHooks::onCanonicalNamespaces';
 
-# Parser hooks
+// Parser hooks
 
-# Required for #coordinates.
+// Required for #coordinates.
 $wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
 	$instance = new MapsCoordinates();
 	return $instance->init( $parser );
@@ -142,36 +144,35 @@ $wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
 	return $instance->init( $parser );
 };
 
-# Geocoders
+// Geocoders
 
-# Registration of the GeoNames service geocoder.
+// Registration of the GeoNames service geocoder.
 $wgHooks['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
 
-# Registration of the Google Geocoding (v2) service geocoder.
+// Registration of the Google Geocoding (v2) service geocoder.
 $wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
 
-# Layers
+// Layers
 
-# Registration of the image layer type.
+// Registration of the image layer type.
 $wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
 
-# Registration of the KML layer type.
+// Registration of the KML layer type.
 $wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
 
-# Mapping services
+// Mapping services
 
-# Include the mapping services that should be loaded into Maps.
-# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
+// Include the mapping services that should be loaded into Maps.
+// Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
 
-# Google Maps API v3
+// Google Maps API v3
+// TODO: improve loading mechanism
 include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
 
-# OpenLayers API
+// OpenLayers API
+// TODO: improve loading mechanism
 include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
 
-# WMF OSM
-// TODO
-//include_once $egMapsDir . 'includes/services/OSM/OSM.php';
 
 $egMapsSettings = array();
 
@@ -181,69 +182,9 @@ require_once $egMapsDir . 'Maps_Settings.php';
 define( 'Maps_NS_LAYER' , $egMapsNamespaceIndex + 0 );
 define( 'Maps_NS_LAYER_TALK' , $egMapsNamespaceIndex + 1 );
 
-$wgResourceModules['ext.maps.common'] = array(
-	'localBasePath' => __DIR__ . '/includes' ,
-	'remoteBasePath' => $egMapsScriptPath . '/includes' ,
-	'group' => 'ext.maps' ,
-	'messages' => array(
-		'maps-load-failed' ,
-	) ,
-	'scripts' => array(
-		'ext.maps.common.js'
-	)
-);
-
-$wgResourceModules['ext.maps.coord'] = array(
-	'localBasePath' => __DIR__ . '/includes' ,
-	'remoteBasePath' => $egMapsScriptPath . '/includes' ,
-	'group' => 'ext.maps' ,
-	'messages' => array(
-		'maps-abb-north' ,
-		'maps-abb-east' ,
-		'maps-abb-south' ,
-		'maps-abb-west' ,
-	) ,
-	'scripts' => array(
-		'ext.maps.coord.js'
-	)
-);
-
-$wgResourceModules['ext.maps.resizable'] = array(
-	'dependencies' => 'jquery.ui.resizable'
-);
-
-$wgResourceModules['mapeditor'] = array(
-	'dependencies' => array( 'ext.maps.common','jquery.ui.autocomplete','jquery.ui.slider', 'jquery.ui.dialog' ),
-	'localBasePath' => __DIR__ . '/includes/editor/',
-	'remoteBasePath' => $egMapsScriptPath.  '/includes/editor/',
-	'group' => 'mapeditor',
-	'scripts' => array(
-		'js/jquery.miniColors.js',
-		'js/mapeditor.iefixes.js',
-		'js/mapeditor.js',
-	),
-	'styles' => array(
-		'css/jquery.miniColors.css',
-		'css/mapeditor.css'
-	),
-	'messages' => array(
-		'mapeditor-parser-error',
-		'mapeditor-none-text',
-		'mapeditor-done-button',
-		'mapeditor-remove-button',
-		'mapeditor-import-button',
-		'mapeditor-export-button',
-		'mapeditor-import-button2',
-		'mapeditor-select-button',
-		'mapeditor-mapparam-button',
-		'mapeditor-clear-button',
-		'mapeditor-imageoverlay-button'
-	)
-);
-
 $wgAvailableRights[] = 'geocode';
 
-# Users that can geocode. By default the same as those that can edit.
+// Users that can geocode. By default the same as those that can edit.
 foreach ( $wgGroupPermissions as $group => $rights ) {
 	if ( array_key_exists( 'edit' , $rights ) ) {
 		$wgGroupPermissions[$group]['geocode'] = $wgGroupPermissions[$group]['edit'];
@@ -252,5 +193,11 @@ foreach ( $wgGroupPermissions as $group => $rights ) {
 
 $egMapsGlobalJSVars = array();
 
-$egParamDefinitions['mappingservice'] = 'Maps\ServiceParam';
+$wgParamDefinitions['mappingservice'] = array(
+	'definition'=> 'Maps\ServiceParam',
+);
 
+$wgParamDefinitions['mapslocation'] = array(
+	'string-parser' => '\ValueParsers\BoolParser',
+	'validation-callback' => 'is_bool',
+);
