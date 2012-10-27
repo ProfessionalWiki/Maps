@@ -37,6 +37,11 @@ $specialPageAliases['gl'] = array(
 	'MapEditor' => array( 'Editor_do_mapa' ),
 );
 
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'MapEditor' => array( '地図編集', 'マップ編集' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'MapEditor' => array( '지도편집기' ),
