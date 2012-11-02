@@ -1968,6 +1968,7 @@ Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenad
 Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'Unha ou máis localizacións a mostrar no mapa. Indicaranse cun marcador.',
+	'maps-displaymap-par-visitedicon' => 'O elemento local dun ficheiro a utilizar como icona de visitado',
 	'maps-displaymap-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
 Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
@@ -1978,6 +1979,7 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'maps-displaymap-par-label' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen unha etiqueta específica.',
 	'maps-displaymap-par-icon' => 'Permite configurar a icona usada para todos os marcadores.',
 	'maps-displaymap-par-circles' => 'Círculos a mostrar',
+	'maps-displaymap-par-copycoords' => 'Se un diálogo coas coordenadas dunha localización se debe mostrar ao premer nalgures',
 	'maps-displaymap-par-lines' => 'Liñas a mostrar',
 	'maps-displaymap-par-maxzoom' => 'O nivel máximo de zoom',
 	'maps-displaymap-par-minzoom' => 'O nivel mínimo de zoom',
@@ -5304,16 +5306,30 @@ $messages['tr'] = array(
 
 /** Ukrainian (українська)
  * @author Arturyatsko
+ * @author Base
  * @author Тест
  */
 $messages['uk'] = array(
 	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://mapping.referata.com/wiki/Examples demos]).',
+	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
+	'maps-load-failed' => 'Неможливо завантажити карту!',
 	'maps-markers' => 'Відмітки',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Фільтрувати маркери',
+	'maps-others' => 'інші',
+	'maps-ns-layer' => 'Шар',
+	'maps-ns-layer-talk' => 'Обговорення шару',
 	'maps-layer-property' => 'Властивість',
 	'maps-layer-value' => 'Значення',
 	'maps-layer-errors' => 'Помилки',
+	'maps-error-invalid-layerdef' => 'Це визначення шару невірне.',
+	'maps-error-invalid-layertype' => 'Не існують шари типу «$1». {{PLURAL:$3|Підтримується лише наступний тип|Підтримуються лише наступні типи}}: $2',
+	'maps-error-no-layertype' => 'Вам потрібно вказати тип шару. {{PLURAL:$2|Тільки такий тип|Такі типи}} підтримуються: $1',
+	'validation-error-invalid-layer' => 'Параметр $1 повинен бути коректним шаром.',
+	'validation-error-invalid-layers' => 'Параметри $1 повинні містити один чи більше коректних шарів.',
+	'maps-layer-of-type' => 'Шар типу $1',
 	'validation-error-invalid-distance' => 'Параметр $1 повинен бути дійсною відстанню.',
 	'maps-abb-north' => 'П',
 	'maps-abb-east' => 'С',
