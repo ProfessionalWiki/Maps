@@ -6,7 +6,7 @@
  * of Polygons to concrete structures.
  * Also acts as a factory class for polygons
  *
- * @since sm.polygons
+ * @since 2.1
  *
  * @file SM_PolygonHandler.php
  *
@@ -17,7 +17,7 @@ class PolygonHandler {
 	/**
 	 * The string used to store this value as a string in SMW.
 	 *
-	 * @since sm.polygons
+	 * @since 2.1
 	 *
 	 * @var string
 	 */
@@ -26,7 +26,7 @@ class PolygonHandler {
 	/**
 	 * The string used to store this value as an object.
 	 *
-	 * @since sm.polygons
+	 * @since 2.1
 	 *
 	 * @var object or null
 	 */
@@ -35,7 +35,7 @@ class PolygonHandler {
 	/**
 	 * The array of error messages occured in parsing.
 	 *
-	 * @since sm.polygons
+	 * @since 2.1
 	 *
 	 * @var array
 	 */
@@ -44,7 +44,7 @@ class PolygonHandler {
 	/**
 	 * Array of classes used to validate different Geographic shapes.
 	 *
-	 * @since sm.polygons
+	 * @since 2.1
 	 *
 	 * @var array
 	 */
@@ -59,7 +59,7 @@ class PolygonHandler {
 	/**
 	 * Array of classes of different Geographic shapes.
 	 *
-	 * @since sm.polygons
+	 * @since 2.1
 	 *
 	 * @var array
 	 */
@@ -75,7 +75,7 @@ class PolygonHandler {
 	 * NOTE: These need to be changed as Manipulations are depreceated.
 	 * Array of classes for param handling of different Geographic shapes.
 	 *
-	 * @since sm.polygons
+	 * @since 2.1
 	 *
 	 * @var array
 	 */
@@ -90,7 +90,7 @@ class PolygonHandler {
 	/**
 	 * Constructor.
 	 *
-	 * @since sm.polygons
+	 * @since 2.1
 	 *
 	 * @param string $text
 	 */
@@ -119,6 +119,11 @@ class PolygonHandler {
 		}
 	}
 
+	/**
+	 * Gets an object of the model class the string represents.
+	 *
+	 * @since 2.1
+	 */
 	public function shapeFromText() {
 		$parts = explode( '~' , $this->text );
 		$shape = explode( '=', array_shift( $parts ) );
