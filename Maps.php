@@ -158,6 +158,7 @@ $wgAutoloadClasses['MapsMapsDoc'] 				= __DIR__ . '/includes/parserhooks/Maps_Ma
 
 // Load the special pages
 $wgAutoloadClasses['SpecialMapEditor'] 			= __DIR__ . '/includes/specials/SpecialMapEditor.php';
+$wgAutoloadClasses['MapEditor'] 				= __DIR__ . '/includes/editor/EditorHtml.php';
 
 $wgAutoloadClasses['Maps\Test\ParserHookTest'] 	= __DIR__ . '/tests/phpunit/parserhooks/ParserHookTest.php';
 
