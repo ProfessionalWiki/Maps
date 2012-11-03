@@ -21,7 +21,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	 * @return boolean
 	 */
 	protected function loadDataItem( SMWDataItem $dataItem ) {
-		if ( $dataItem->getDIType() == SMWDataItem::TYPE_BLOB ) {
+		if ( $dataItem instanceof SMWDIBlob ) {
 			$this->m_dataitem = $dataItem;
 			return true;
 		} else {
@@ -74,7 +74,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	 *
 	 * @since sm.polygons
 	 */
-	public function getLongWikiText( $linked = null ) {
+	public function getLongWikiText( $linker = null ) {
 		return $this->getShortWikiText( $linker );
 	}
 
