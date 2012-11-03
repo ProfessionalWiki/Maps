@@ -419,6 +419,7 @@ $1',
  */
 $messages['arc'] = array(
 	'maps_map' => 'ܨܘܪܬ ܥܠܡܐ',
+	'maps-layer-property' => 'ܕܝܠܝܬܐ',
 	'maps-layer-value' => 'ܛܝܡܐ',
 	'maps-layer-errors' => 'ܦܘܕ̈ܐ',
 	'maps-abb-north' => 'ܓܪܒܝܐ',
