@@ -124,8 +124,6 @@ class PolygonHandler {
 		$shape = explode( '=', array_shift( $parts ) );
 		if( array_key_exists( $shape[0] , $this->geoClasses ) ) {
 			$geoClass = new $this->geoClasses[ $shape[0] ]( explode( ':' , $shape[1] ) );
-			$paramClass = new $this->paramClasses[ $shape[0] ]( '~' );
-			$paramClass->handleCommonParams( $parts , $geoClass );
 
 			return $geoClass;
 		} else {
