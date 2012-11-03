@@ -22,6 +22,8 @@ $classes['MapsBaseFillableElement'] 	= __DIR__ . '/includes/Maps_BaseFillableEle
 $classes['MapsBaseStrokableElement'] 	= __DIR__ . '/includes/Maps_BaseStrokableElement.php';
 $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRenderer.php';
 
+$classes['EditorHtml']					= __DIR__ . '/includes/editor/EditorHtml.php';
+
 $classes['Maps\BaseElement']			= __DIR__ . '/includes/elements/BaseElement.php';
 $classes['Maps\Circle'] 				= __DIR__ . '/includes/elements/Circle.php';
 $classes['Maps\ImageOverlay'] 			= __DIR__ . '/includes/elements/ImageOverlay.php';
