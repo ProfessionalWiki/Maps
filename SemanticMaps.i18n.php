@@ -51,6 +51,11 @@ $messages['en'] = array(
 	'semanticmaps-kml-title' => 'The default title for results',
 	'semanticmaps-kml-linkabsolute' => 'Should links be absolute or not (ie relative)',
 	'semanticmaps-kml-pagelinktext' => 'The text to use for the links to the page, in which $1 will be replaced by the page title',
+
+	//Validation Errors
+	'semanticmaps-shapes-improperformat' => 'Improper formatting of $1, please see documentation for formatting',
+	'semanticmaps-shapes-missingshape' => 'No shapes found for $1, Please see documentation for available shapes',
+
 );
 
 /** Message documentation (Message documentation)
@@ -72,6 +77,10 @@ $messages['qqq'] = array(
 	'semanticmaps-forminput-remove' => '{{Identical|Remove}}',
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
+
+	//Validation Errors
+	'semanticmaps-shapes-improperformat' => 'Message displayed when the wikitext formatting of a shape is erroneous',
+	'semanticmaps-shapes-missingshape' => 'Message displayed when there is no such defined shape as $1',
 );
 
 /** Afrikaans (Afrikaans)

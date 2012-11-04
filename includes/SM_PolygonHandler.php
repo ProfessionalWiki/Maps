@@ -113,9 +113,9 @@ class PolygonHandler {
 		if( array_key_exists( $parts[0], $this->validatorClasses ) ) {
 			$validatorClass = new $this->validatorClasses[ $parts[0] ]( '~' );
 			if ( !$validatorClass->doValidation( $parts[1] ) )
-				$this->errors[] = 'Improper formatting of $parts[0]';
+				$this->errors[] = wfMessage( 'semanticmaps-shapes-improperformat', $this->text )->escaped();
 		} else {
-			$this->errors[] = 'No matching geo Shape found';
+			$this->errors[] = wfMessage( 'semanticmaps-shapes-missingshape', $parts[0] )->escaped();
 		}
 	}
 
