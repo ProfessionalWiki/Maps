@@ -211,9 +211,10 @@ EOT;
      * @since 2.1
      */
     public function getCanvasDiv(){
-        return HTML::element(
+        return Html::element(
             'div',
             $this->attribs
         );
     }
+	
 }
