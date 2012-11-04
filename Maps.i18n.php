@@ -5354,6 +5354,7 @@ $1',
 );
 
 /** Urdu (اردو)
+ * @author Tahir mq
  * @author පසිඳු කාවින්ද
  */
 $messages['ur'] = array(
@@ -5370,6 +5371,8 @@ $messages['ur'] = array(
 	'maps-mapsdoc-par-service' => 'کے لئے پیرامیٹر کی دستاویزات کو ظاہر کرنے کے لئے تعریفیں سروس.',
 	'maps-coordinates-par-location' => 'نقاط آپ تشکيل کرنے کے لئے چاہتے ہیں.',
 	'maps-distance-par-distance' => 'ایک مخصوص یونٹ کے ساتھ اس کے برابر کرنے کے لئے تبدیل کرنے کے لئے مسافت.',
+	'maps-latitude' => 'عرض البلد:',
+	'maps-longitude' => 'طول البلد:',
 	'maps_map_cannot_be_displayed' => 'نقشے کو دکھایا جائے نہیں کر سکتے ہیں.',
 	'maps_click_to_activate' => 'نقشہ کو چالو کرنے کے لئے کلک کریں',
 	'maps-googlemaps3-par-type' => 'ابتدائی طور پر ظاہر کرنے کے لئے نقشہ قسم.',
