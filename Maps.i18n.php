@@ -5419,6 +5419,7 @@ $messages['vi'] = array(
 	'maps-loading-map' => 'Đang tải bản đồ…',
 	'maps-load-failed' => 'Không thể tải bản đồ!',
 	'maps-markers' => 'Chú thích',
+	'maps-copycoords-prompt' => 'Ctrl+C, Enter (⌘C ↩ trên Mac)',
 	'maps-others' => 'khác',
 	'maps-ns-layer' => 'Lớp',
 	'maps-ns-layer-talk' => 'Thảo luận Lớp',
