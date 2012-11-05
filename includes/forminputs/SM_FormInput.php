@@ -233,8 +233,8 @@ class SMFormInput {
 
 		$wgOut->addModules( 'mapeditor' );
 
-		$html = '<div><textarea id="map-polygon" name="$input_name" cols="4" rows="2"></textarea></div>' . 
-			MapEditor::getEditorHtml( $this->getDivHTML() );
+        $editor = new MapEditor( $this->getAttribs() );
+		$html = $editor->getEditorHtml();
 
 		return $html;
 	}
@@ -244,11 +244,12 @@ class SMFormInput {
 	 *
 	 * @return string
 	 */
-	protected function getDivHTML(){
-		return HTML::element(
-				'div',
-				array( 'id' => 'map-canvas', 'context' => 'forminput', 'style' => 'width:600px; height:400px' )
-			);
+	protected function getAttribs(){
+		return array(
+			'id' => 'map-canvas',
+			'context' => 'forminput',
+			'style' => 'width:600px; height:400px'
+		);
 	}
 
 }
