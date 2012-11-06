@@ -586,13 +586,13 @@ $messages['he'] = array(
 	'semanticmaps-par-staticlocations' => 'רשימת מיקומים להוסיף למפה יחד עם הנתונים המבוקשים בשאילתה. כמו עם display_points, אפשר להוסיף כאן כותרת, תיאור וסמל לכל מיקום עם טילדה (~) בתור תו מפריד.',
 	'semanticmaps-par-forceshow' => 'להציג מפה גם כשאין מיקומים להצגה?',
 	'semanticmaps-par-showtitle' => 'להציג את הכותרת בחלון המידע על הסמן או לא. הכיבוי של זה שימושי לעתים קרובות כאשר נעשה שימוש בתבנית לעיצוב חלון המידע.',
-	'semanticmaps-par-hidenamespace' => 'האם להציג או לא להציג את שם המרחב בחלון המידע על סמן.',
+	'semanticmaps-par-hidenamespace' => 'האם להציג את שם המרחב בחלון המידע על סמן.',
 	'semanticmaps-par-centre' => 'מרכז המפה. אם לא ניתן, המפה תבחר בעצמה את המרכז המיטבי להצגת כל הסמנים על המפה.',
 	'semanticmaps-par-template' => 'תבנית לעיצוב תוכן חלון המידע.',
 	'semanticmaps-par-geocodecontrol' => 'הצגת בקר קידוד גאוגרפי.',
 	'semanticmaps-kml-text' => 'הטקסט משויך לכל עמוד ועמוד. נדרס במאפיינים אחרים שנעשית עליהם שאילתה, אם יש כאלה.',
 	'semanticmaps-kml-title' => 'כותרת לתוצאות לפי בררת המחדל.',
-	'semanticmaps-kml-linkabsolute' => 'האם הקישורים צריכים להיות מוחלטים או יחסיים',
+	'semanticmaps-kml-linkabsolute' => 'האם הקישורים צריכים להיות מוחלטים (או יחסיים)',
 	'semanticmaps-kml-pagelinktext' => 'הטקסט שישמש לקישורים לדף, כאשר $1 יוחלף בכותרת הדף',
 );
 
