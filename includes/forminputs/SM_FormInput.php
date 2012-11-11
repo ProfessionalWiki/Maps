@@ -233,8 +233,13 @@ class SMFormInput {
 
 		$wgOut->addModules( 'mapeditor' );
 
-        $editor = new MapEditor( $this->getAttribs() );
-		$html = $editor->getEditorHtml();
+		$html = '
+			<div >
+				<textarea id="map-polygon" name="' . htmlspecialchars( $input_name ) . '" cols="4" rows="2"></textarea>
+			</div>';
+
+		$editor = new MapEditor( $this->getAttribs() );
+		$html = $html . $editor->getEditorHtml();
 
 		return $html;
 	}
