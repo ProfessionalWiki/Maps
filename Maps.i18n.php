@@ -5316,6 +5316,13 @@ $messages['tr'] = array(
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
 );
 
+/** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
+ * @author Tifinaghes
+ */
+$messages['tzm'] = array(
+	'maps_map' => 'ⵜⴰⴽⵔⵟⴰ',
+);
+
 /** Ukrainian (українська)
  * @author Arturyatsko
  * @author Base
