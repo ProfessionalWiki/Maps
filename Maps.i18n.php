@@ -375,7 +375,7 @@ $messages['aln'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'maps-desc' => 'يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى. ([http://mapping.referata.com/wiki/Examples تجارب])',
+	'maps-desc' => 'يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى. ([http://mapping.referata.com/wiki/Examples تجارب])', # Fuzzy
 	'maps_map' => 'خريطة',
 	'maps-loading-map' => 'تحميل الخريطة...',
 	'maps-load-failed' => 'لا يمكن تحميل الخريطة!',
@@ -444,7 +444,7 @@ $messages['arz'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
-	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([http://mapping.referata.com/wiki/Examples Demos])',
+	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([http://mapping.referata.com/wiki/Examples Demos])', # Fuzzy
 	'right-geocode' => 'Xeocódigu',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => "Cargando'l mapa...",
@@ -567,7 +567,7 @@ $messages['bar'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'maps-desc' => 'Забясьпечвае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі, геаграфічнага кадаваньня адрасоў і іншыя геаграфічныя апэрацыі. ([http://mapping.referata.com/wiki/Examples Прыклады])',
+	'maps-desc' => 'Забясьпечвае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі, геаграфічнага кадаваньня адрасоў і іншыя геаграфічныя апэрацыі. ([http://mapping.referata.com/wiki/Examples Прыклады])', # Fuzzy
 	'right-geocode' => 'геаграфічнае кадаваньне',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Загрузка мапы…',
@@ -792,7 +792,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'maps-desc' => "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all. ([http://mapping.referata.com/wiki/Examples Diskouezadenn])",
+	'maps-desc' => "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all. ([http://mapping.referata.com/wiki/Examples Diskouezadenn])", # Fuzzy
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Kartenn',
 	'maps-loading-map' => 'O kargañ ar gartenn...',
@@ -876,7 +876,7 @@ $1",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'maps-desc' => 'Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije.  ([http://mapping.referata.com/wiki/Examples primeri])',
+	'maps-desc' => 'Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije.  ([http://mapping.referata.com/wiki/Examples primeri])', # Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavam kartu...',
 	'maps-markers' => 'Markeri',
@@ -974,7 +974,7 @@ $messages['da'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
+	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([https://www.semantic-mediawiki.org/wiki/Maps Weitere Informationen …])',
 	'right-geocode' => 'Georeferenzieren',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Die Karte wird geladen …',
@@ -1190,7 +1190,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://mapping.referata.com/wiki/Examples pśikłady])',
+	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://mapping.referata.com/wiki/Examples pśikłady])', # Fuzzy
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
 	'maps-markers' => 'Marki',
@@ -1297,7 +1297,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'maps-desc' => 'Habilita inserción de mapas dinámicos en página wiki, geocodificación de direcciones y otras operaciones geográficas. ([http://mapping.referata.com/wiki/Examples demos])',
+	'maps-desc' => 'Habilita inserción de mapas dinámicos en página wiki, geocodificación de direcciones y otras operaciones geográficas. ([http://mapping.referata.com/wiki/Examples demos])', # Fuzzy
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
@@ -1630,7 +1630,7 @@ $1',
  * @author Wyz
  */
 $messages['fr'] = array(
-	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://mapping.referata.com/wiki/Examples démonstration])",
+	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://mapping.referata.com/wiki/Examples démonstration])", # Fuzzy
 	'right-geocode' => 'Géocode',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
@@ -1903,7 +1903,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'maps-desc' => 'Proporciona a capacidade de mostrar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([http://mapping.referata.com/wiki/Examples demostración])',
+	'maps-desc' => 'Proporciona a capacidade de mostrar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([http://mapping.referata.com/wiki/Examples demostración])', # Fuzzy
 	'right-geocode' => 'Xeocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
@@ -2153,7 +2153,7 @@ $1',
  */
 $messages['he'] = array(
 	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.
-([http://mapping.referata.com/wiki/Maps_examples הדגמות])',
+([http://mapping.referata.com/wiki/Maps_examples הדגמות])', # Fuzzy
 	'right-geocode' => 'לעשות קידוד גאוגרפי',
 	'maps_map' => 'מפה',
 	'maps-loading-map' => 'המפה נטענת...',
@@ -2347,7 +2347,7 @@ $1',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([http://mapping.referata.com/wiki/Examples přikłady])',
+	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([http://mapping.referata.com/wiki/Examples přikłady])', # Fuzzy
 	'right-geocode' => 'Geokodowanje',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Karta so začituje...',
@@ -2500,7 +2500,7 @@ $messages['ht'] = array(
  * @author Misibacsi
  */
 $messages['hu'] = array(
-	'maps-desc' => 'Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket. ([http://mapping.referata.com/wiki/Maps_examples demók]).',
+	'maps-desc' => 'Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket. ([http://mapping.referata.com/wiki/Maps_examples demók]).', # Fuzzy
 	'right-geocode' => 'Geokód',
 	'maps_map' => 'Térkép',
 	'maps-loading-map' => 'Térkép betöltése…',
@@ -2554,7 +2554,7 @@ $1',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://mapping.referata.com/wiki/Maps_examples demonstrationes])',
+	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://mapping.referata.com/wiki/Maps_examples demonstrationes])', # Fuzzy
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
@@ -2729,7 +2729,7 @@ $1',
  */
 $messages['id'] = array(
 	'maps-desc' => 'Mengaktifkan penyertaan peta dinamis dalam halaman wiki, pembuatan geokode alamat, dan operasi geografi lain.
-([http://mapping.referata.com/wiki/Examples demo])',
+([http://mapping.referata.com/wiki/Examples demo])', # Fuzzy
 	'maps_map' => 'Peta',
 	'maps-loading-map' => 'Memuat peta...',
 	'maps-load-failed' => 'Peta tidak dapat dimuat!',
@@ -2862,7 +2862,7 @@ $messages['ig'] = array(
  * @author HalphaZ
  */
 $messages['it'] = array(
-	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([http://mapping.referata.com/wiki/Examples demo])',
+	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([http://mapping.referata.com/wiki/Examples demo])', # Fuzzy
 	'right-geocode' => 'Effettua la geocodifica',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
@@ -2977,7 +2977,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([http://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])',
+	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([http://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])', # Fuzzy
 	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中...',
@@ -3244,7 +3244,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'maps-desc' => 'Määt et müjjelesch, bewääschlesche Landkaate en Sigge em Wiki aanzezeije, Addräße en Koodinaate op de Ääd ömzerääschne, un ander esu en Funxjuhne. ([http://mapping.referata.com/wiki/Examples E paa Beispöll])',
+	'maps-desc' => 'Määt et müjjelesch, bewääschlesche Landkaate en Sigge em Wiki aanzezeije, Addräße en Koodinaate op de Ääd ömzerääschne, un ander esu en Funxjuhne. ([http://mapping.referata.com/wiki/Examples E paa Beispöll])', # Fuzzy
 	'maps_map' => 'Kaat',
 	'maps-loading-map' => 'Mer sen en Kaat aam laade&nbsp;…',
 	'maps-markers' => 'Makeeronge',
@@ -3310,7 +3310,7 @@ $messages['lad'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen [http://mapping.referata.com/wiki/Examples Démo] ze weisen",
+	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen [http://mapping.referata.com/wiki/Examples Démo] ze weisen", # Fuzzy
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-load-failed' => "D'Kaart konnt net geluede ginn!",
@@ -3424,7 +3424,7 @@ $messages['lv'] = array(
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([http://mapping.referata.com/wiki/Maps_examples мостри])',
+	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([http://www.semantic-mediawiki.org/wiki/Maps?uselang=mk повеќе информации...])',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Ја вчитувам картата...',
@@ -3630,7 +3630,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi. ([http://mapping.referata.com/wiki/Examples tunjuk cara])',
+	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi. ([http://mapping.referata.com/wiki/Examples tunjuk cara])', # Fuzzy
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Peta',
 	'maps-loading-map' => 'Peta sedang dimuatkan...',
@@ -3834,7 +3834,7 @@ $messages['nah'] = array(
  */
 $messages['nb'] = array(
 	'maps-desc' => 'Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner.
-([http://mapping.referata.com/wiki/Examples demoer]).',
+([http://mapping.referata.com/wiki/Examples demoer]).', # Fuzzy
 	'right-geocode' => 'Geokode',
 	'maps_map' => 'Kart',
 	'maps-loading-map' => 'Laster kart...',
@@ -3953,7 +3953,7 @@ $1',
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo])',
+	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo])', # Fuzzy
 	'right-geocode' => 'Geocoderen',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
@@ -4251,7 +4251,7 @@ $1',
  * @author Yarl
  */
 $messages['pl'] = array(
-	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://mapping.referata.com/wiki/Examples demo])',
+	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://mapping.referata.com/wiki/Examples demo])', # Fuzzy
 	'right-geocode' => 'Geokodowanie',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
@@ -4339,7 +4339,7 @@ $1',
  * @author McDutchie
  */
 $messages['pms'] = array(
-	'maps-desc' => "A abìlita l'anseriment ëd carte ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([http://mapping.referata.com/wiki/Esempi dimostrassion]).",
+	'maps-desc' => "A abìlita l'anseriment ëd carte ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([http://mapping.referata.com/wiki/Esempi dimostrassion]).", # Fuzzy
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
 	'maps-markers' => 'Marcador',
@@ -4420,7 +4420,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'maps-desc' => 'Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas ([http://mapping.referata.com/wiki/Examples demonstração])',
+	'maps-desc' => 'Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas ([http://mapping.referata.com/wiki/Examples demonstração])', # Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'A carregar o mapa...',
 	'maps-load-failed' => 'Não foi possível carregar o mapa!',
@@ -4550,7 +4550,7 @@ $1',
  * @author 555
  */
 $messages['pt-br'] = array(
-	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://mapping.referata.com/wiki/Examples exemplos])',
+	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://mapping.referata.com/wiki/Examples exemplos])', # Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
 	'maps-markers' => 'Marcadores',
@@ -4604,7 +4604,7 @@ $1',
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'maps-desc' => 'Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic ([http://mapping.referata.com/wiki/Examples demonstrație]).',
+	'maps-desc' => 'Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic ([http://mapping.referata.com/wiki/Examples demonstrație]).', # Fuzzy
 	'maps_map' => 'Hartă',
 	'maps-loading-map' => 'Se încarcă harta...',
 	'maps-markers' => 'Marcatori',
@@ -4656,7 +4656,7 @@ $1',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://mapping.referata.com/wiki/Maps_examples demo])",
+	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://mapping.referata.com/wiki/Maps_examples demo])", # Fuzzy
 	'maps_map' => 'Mappe',
 	'maps-loading-map' => "Stoche a careche 'a mappe...",
 	'maps-markers' => 'Marcature',
@@ -4692,7 +4692,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://mapping.referata.com/wiki/Examples Примеры использования])',
+	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://mapping.referata.com/wiki/Examples Примеры использования])', # Fuzzy
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
 	'maps-load-failed' => 'Невозможно загрузить карту!',
@@ -4861,7 +4861,7 @@ $messages['si'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'maps-desc' => 'Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie. ([http://mapping.referata.com/wiki/Examples demo])',
+	'maps-desc' => 'Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie. ([http://mapping.referata.com/wiki/Examples demo])', # Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
@@ -4879,7 +4879,7 @@ $messages['sk'] = array(
  * @author Lesko987
  */
 $messages['sl'] = array(
-	'maps-desc' => 'Omogoča vključevanje dinamičnih zemljevidov na wiki strani, geokodiranje naslovov in drugih geografskih operacij. ([http://mapping.referata.com/wiki/Examples Primeri])',
+	'maps-desc' => 'Omogoča vključevanje dinamičnih zemljevidov na wiki strani, geokodiranje naslovov in drugih geografskih operacij. ([http://mapping.referata.com/wiki/Examples Primeri])', # Fuzzy
 	'maps_map' => 'Zemljevid',
 	'maps-loading-map' => 'Nakladanje zemljevida...',
 	'maps-load-failed' => 'Zemljevid ni bilo mogoče naložiti.',
@@ -4954,7 +4954,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([http://mapping.referata.com/wiki/Maps_examples Demo]).',
+	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([http://mapping.referata.com/wiki/Maps_examples Demo]).', # Fuzzy
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
@@ -5108,7 +5108,7 @@ $messages['th'] = array(
 $messages['tl'] = array(
 	'maps-desc' => 'Nagpapagana ng pagbabaon ng gumagalaw na mga mapa papaloob sa mga pahina ng wiki, pagkokodigong pangheograpiya ng mga tirahan at ibang mga gawaing pangheograpiya. ([http://mapping.referata.com/wiki/Examples mga pagpapatunghay])
 
-kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])',
+kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])', # Fuzzy
 	'right-geocode' => 'Kodigong pangheograpiya',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Ikinakarga ang mapa...',
@@ -5329,7 +5329,7 @@ $messages['tzm'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://mapping.referata.com/wiki/Examples demos]).',
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://mapping.referata.com/wiki/Examples demos]).', # Fuzzy
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
@@ -5431,7 +5431,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://mapping.referata.com/wiki/Examples thử xem])',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://mapping.referata.com/wiki/Examples thử xem])', # Fuzzy
 	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
