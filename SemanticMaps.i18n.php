@@ -110,7 +110,7 @@ $messages['arz'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
-	'semanticmaps-desc' => 'Ufre la capacidá de ver y editar los datos de coordenaes guardaos cola estensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples exemplos]).', # Fuzzy
+	'semanticmaps-desc' => 'Ufre la capacidá de ver y editar los datos de coordenaes guardaos cola estensión Semantic MediaWiki ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps más información...]).',
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 nun ye una distancia válida.',
 	'semanticmaps-kml-link' => 'Ver el ficheru KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver la páxina "$1"',
@@ -512,7 +512,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'semanticmaps-desc' => 'Proporciona a capacidade de ollar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demostración]).', # Fuzzy
+	'semanticmaps-desc' => 'Proporciona a capacidade de ollar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps máis información...]).',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 non é unha distancia válida.',
 	'semanticmaps-kml-link' => 'Ollar o ficheiro KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver a páxina "$1"',
@@ -610,7 +610,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'semanticmaps-desc' => 'Zmóžnja zwobraznjenje a wobdźěłanje koordinatowych datow, kotrež su so z rozšěrjenjom Semantic MediaWiki składowali ([http://mapping.referata.com/wiki/Examples přikłady]).', # Fuzzy
+	'semanticmaps-desc' => 'Zmóžnja zwobraznjenje a wobdźěłanje koordinatowych datow, kotrež su so z rozšěrjenjom Semantic MediaWiki składowali ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps dalše informacije...]).',
 	'semanticmaps-unrecognizeddistance' => 'Hódnota $1 płaćiwa distanca njeje.',
 	'semanticmaps-kml-link' => 'KML-dataju sej wobhladać',
 	'semanticmaps-default-kml-pagelink' => 'Nastawk $1 sej wobhladać',
@@ -725,7 +725,7 @@ $messages['id'] = array(
  * @author HalphaZ
  */
 $messages['it'] = array(
-	'semanticmaps-desc' => "Fornisce la possibilità di visualizzare e modificare le coordinate memorizzate con l'estensione Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).", # Fuzzy
+	'semanticmaps-desc' => "Fornisce la possibilità di visualizzare e modificare le coordinate memorizzate con l'estensione Semantic MediaWiki  ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps ulteriori informazioni]).",
 	'semanticmaps-unrecognizeddistance' => 'Il valore $1 non è una distanza valida.',
 	'semanticmaps-kml-link' => 'Visualizza il file KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualizza la pagina $1',
@@ -1153,7 +1153,7 @@ $messages['pt-br'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'semanticmaps-desc' => 'Permite vizualizarea și modificarea datelor de coordonate stocate cu extensia Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demonstrații]).', # Fuzzy
+	'semanticmaps-desc' => 'Permite vizualizarea și modificarea datelor despre coordonate stocate cu extensia Semantic MediaWiki ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps mai multe informații...]).',
 	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
 );
 
@@ -1464,13 +1464,14 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎)
  * @author Gzdavidwong
+ * @author Justincheng12345
  * @author Mark85296341
  * @author Oapbtommy
  * @author Sheepy
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'semanticmaps-desc' => '提供對採用Semantic MediaWiki擴展所存儲坐標數據的查看和編輯能力（[http://mapping.referata.com/wiki/Examples 演示]）。', # Fuzzy
+	'semanticmaps-desc' => '提供對採用Semantic MediaWiki擴展所存儲坐標數據的查看和編輯能力（[http://www.semantic-mediawiki.org/wiki/Semantic_Maps 更多資訊]）。',
 	'semanticmaps-unrecognizeddistance' => '取值$1不是有效的距離。',
 	'semanticmaps-kml-link' => '查看KML文件',
 	'semanticmaps-default-kml-pagelink' => '檢視頁面 $1',
