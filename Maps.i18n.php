@@ -1306,7 +1306,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'maps-desc' => 'Habilita inserción de mapas dinámicos en página wiki, geocodificación de direcciones y otras operaciones geográficas. ([http://mapping.referata.com/wiki/Examples demos])', # Fuzzy
+	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([http://www.semantic-mediawiki.org/wiki/Maps Más información...])',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
