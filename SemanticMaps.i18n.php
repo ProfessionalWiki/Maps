@@ -382,7 +382,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'semanticmaps-desc' => 'Proporciona la posibilidad de ver y editar datos de coordenadas almacenados con la extensión Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demos]).', # Fuzzy
+	'semanticmaps-desc' => 'Proporciona la posibilidad de ver y editar datos de coordenadas almacenados con la extensión Semantic MediaWiki (Más información.).',
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no es una distancia válida.',
 	'semanticmaps-kml-link' => 'Ver el archivo KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver página $1',
