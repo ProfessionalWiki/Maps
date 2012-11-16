@@ -77,8 +77,6 @@ $messages['qqq'] = array(
 	'semanticmaps-forminput-remove' => '{{Identical|Remove}}',
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
-
-	//Validation Errors
 	'semanticmaps-shapes-improperformat' => 'Message displayed when the wikitext formatting of a shape is erroneous',
 	'semanticmaps-shapes-missingshape' => 'Message displayed when there is no such defined shape as $1',
 );
@@ -352,13 +350,15 @@ $messages['de'] = array(
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
 	'semanticmaps-kml-pagelinktext' => 'Der Text, der für die Links zur Seite genutzt werden soll. $1 wird dabei durch den Namen der Seite ersetzt.',
+	'semanticmaps-shapes-improperformat' => 'Falsche Formatierung von $1. Zur Formatierung bitte die Dokumentation beachten.',
+	'semanticmaps-shapes-missingshape' => 'Keine Formen für $1 gefunden. Für verfügbare Formen bitte die Dokumentation beachten.',
 );
 
 /** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'semanticmaps-desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://mapping.referata.com/wiki/Examples pśikłady]).', # Fuzzy
+	'semanticmaps-desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps dalšne informacije...]).',
 	'semanticmaps-unrecognizeddistance' => 'Gódnota $1 njejo płaśiwa distanca.',
 	'semanticmaps-kml-link' => 'KML-dataju se woglědaś',
 	'semanticmaps-default-kml-pagelink' => 'Bok $1 se woglědaś',
@@ -416,6 +416,8 @@ $messages['es'] = array(
 	'semanticmaps-kml-title' => 'El título por defecto para los resultados',
 	'semanticmaps-kml-linkabsolute' => 'Los enlaces deberían ser absolutos (lo opuesto de relativos)',
 	'semanticmaps-kml-pagelinktext' => 'El texto a usar para los enlaces a la página, en las que $1 será substituído por el título de la página',
+	'semanticmaps-shapes-improperformat' => 'Formateo incorrecto de $1, por favor consulta la documentación sobre formateo',
+	'semanticmaps-shapes-missingshape' => 'No se ha encontrado ninguna forma para $1, por favor consulta la documentación sobre formas disponibles',
 );
 
 /** Estonian (eesti)
