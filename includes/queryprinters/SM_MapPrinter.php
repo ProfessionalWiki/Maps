@@ -222,7 +222,7 @@ class SMMapPrinter extends SMWResultPrinter {
 				return $this->getMapHTML( $params, $wgParser, $mapName );
 			}
 			else {
-				return '';
+				return $params['default'];
 			}
 		}
 		else {
