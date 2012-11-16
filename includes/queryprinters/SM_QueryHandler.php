@@ -16,7 +16,11 @@ class SMQueryHandler {
 	protected $queryResult;
 	protected $outputmode;
 
-	protected $locations = false;
+	protected $geoShapes = array(
+		'lines' => array(),
+		'locations' => array(),
+		'polygons' => array()
+	);
 
 	/**
 	 * The template to use for the text, or false if there is none.
@@ -224,36 +228,15 @@ class SMQueryHandler {
 		$this->pageLinkText = $text;
 	}
 
-	/**
-	 * Gets the query result as a list of locations.
-	 *
-	 * @since 0.7.3
-	 *
-	 * @return array of MapsLocation
-	 */
-	public function getLocations() {
-		if ( $this->locations === false ) {
-			$this->locations = $this->findLocations();
-		}
-
-		return $this->locations;
+	public function getShapes() {
+		$this->findShapes();
+		return $this->geoShapes;
 	}
 
-	/**
-	 * Gets the query result as a list of locations.
-	 *
-	 * @since 0.7.3
-	 *
-	 * @return array of MapsLocation
-	 */
-	protected function findLocations() {
-		$locations = array();
-
+	protected function findShapes() {
 		while ( ( $row = $this->queryResult->getNext() ) !== false ) {
-			$locations = array_merge( $locations, $this->handleResultRow( $row ) );
+			$this->handleResultRow( $row );
 		}
-
-		return $locations;
 	}
 
 	/**
@@ -285,6 +268,11 @@ class SMQueryHandler {
 					$title = $dataValue->getLongText( $this->outputmode, null );
 					$text = $dataValue->getLongText( $this->outputmode, smwfGetLinker() );
 				}
+				else if ( $dataValue->getTypeID() == '_gpo' ) {
+					$dataItem = $dataValue->getDataItem();
+					$polyHandler = new PolygonHandler ( $dataItem->getString() );
+					$this->geoShapes[ $polyHandler->getGeoType() ][] = $polyHandler->shapeFromText();
+				}
 				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 ) {
 					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 				}
@@ -306,8 +294,7 @@ class SMQueryHandler {
 		}
 
 		$icon = $this->getLocationIcon( $row );
-
-		return $this->buildLocationsList( $locations, Title::newFromText( $title ), $text, $icon, $properties );
+		$this->geoShapes['locations'] = array_merge( $this->geoShapes['locations'], $this->buildLocationsList( $locations, Title::newFromText( $title ), $text, $icon, $properties ) );
 	}
 
 	/**

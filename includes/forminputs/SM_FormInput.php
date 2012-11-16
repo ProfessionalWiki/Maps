@@ -211,5 +211,50 @@ class SMFormInput {
 	protected function getResourceModules() {
 		return array( 'ext.sm.forminputs' );
 	}
-	
+
+	/**
+	 * @since 2.0 alspha
+	 * 
+	 * @param string $coordinates
+	 * @param string $input_name
+	 * @param boolean $is_mandatory
+	 * @param boolean $is_disabled
+	 * @param array $field_args
+	 * 
+	 * @return string
+	 */
+	public function getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
+		global $wgOut;
+		$parameters = array();
+		$wgOut->addHtml( MapsGoogleMaps3::getApiScript(
+			'en',
+			array( 'libraries' => 'drawing' )
+		) );
+
+		$wgOut->addModules( 'mapeditor' );
+
+		$html = '
+			<div >
+				<textarea id="map-polygon" name="' . htmlspecialchars( $input_name ) . '" cols="4" rows="2"></textarea>
+			</div>';
+
+		$editor = new MapEditor( $this->getAttribs() );
+		$html = $html . $editor->getEditorHtml();
+
+		return $html;
+	}
+
+	/**
+	 * @since 2.1
+	 *
+	 * @return string
+	 */
+	protected function getAttribs(){
+		return array(
+			'id' => 'map-canvas',
+			'context' => 'forminput',
+			'style' => 'width:600px; height:400px'
+		);
+	}
+
 }
