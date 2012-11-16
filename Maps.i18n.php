@@ -1199,7 +1199,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://mapping.referata.com/wiki/Examples pśikłady])', # Fuzzy
+	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://www.semantic-mediawiki.org/wiki/Maps dalšne informacije...])',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
 	'maps-markers' => 'Marki',
