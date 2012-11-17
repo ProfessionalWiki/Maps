@@ -51,6 +51,8 @@ class ServiceParam extends StringParam {
 		global $egMapsDefaultService, $egMapsDefaultServices;
 
 		$this->setDefault( array_key_exists( $this->feature, $egMapsDefaultServices ) ? $egMapsDefaultServices[$this->feature] : $egMapsDefaultService );
+
+		// FIXME
 		$this->allowedValues = MapsMappingServices::getAllServiceValues();
 	}
 
