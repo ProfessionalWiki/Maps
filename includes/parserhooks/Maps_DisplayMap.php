@@ -61,6 +61,7 @@ class MapsDisplayMap extends ParserHook {
 		// TODO$params['zoom']['manipulations'] = new MapsParamZoom();
 
 		$params['coordinates'] = array(
+			'type' => 'coordinate',
 			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
 			// TODO	'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
 			// TODO	'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),

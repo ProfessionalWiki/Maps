@@ -132,7 +132,7 @@ class MapsFinddestination extends ParserHook {
 				/**
 				 * @var GeoCoordinateValue $coords
 				 */
-				$coords = $parseResult->getDataValue();
+				$coords = $parseResult->getValue();
 
 				$location = array(
 					'lat' => $coords->getLatitude(),

@@ -42,7 +42,7 @@ class MapsCoordinates extends ParserHook {
 		$params = array();
 
 		$params['location'] = array(
-			// new CriterionIsLocation() FIXME
+			'type' => 'mapslocation',
 		);
 
 		$params['format'] = array(
@@ -98,7 +98,7 @@ class MapsCoordinates extends ParserHook {
 			// TODO $options->setFormat( $parameters['directional'] );
 			$coordinateFormatter->setOptions( $options );
 
-			$output = $coordinateFormatter->format( $parseResult->getDataValue() )->getValue();
+			$output = $coordinateFormatter->format( $parseResult->getValue() )->getValue();
 		} else {
 			// The coordinates should be valid when this method gets called.
 			throw new MWException( 'Attempt to format an invalid set of coordinates' );

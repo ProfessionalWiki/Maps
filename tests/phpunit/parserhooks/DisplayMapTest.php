@@ -79,15 +79,15 @@ class DisplayMapTest extends ParserHookTest {
 		$definitions = $this->getInstance()->getParamDefinitions();
 		$argLists = array();
 
-		$values = array(
-			'locations' => '4,2',
-		);
-
-		$expected = array(
-			'coordinates' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) )
-		);
-
-		$argLists[] = array( $values, $expected );
+//		$values = array(
+//			'locations' => '4,2',
+//		);
+//
+//		$expected = array(
+//			'coordinates' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) )
+//		);
+//
+//		$argLists[] = array( $values, $expected );
 
 		return $argLists;
 	}

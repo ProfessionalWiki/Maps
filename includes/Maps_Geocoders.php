@@ -129,7 +129,7 @@ final class MapsGeocoders {
 			$parseResult = $coordinateParser->parse( $coordsOrAddress );
 
 			if ( $parseResult->isValid() ) {
-				return $parseResult->getDataValue();
+				return $parseResult->getValue();
 			} else {
 				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
 			}

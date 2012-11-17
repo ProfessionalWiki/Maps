@@ -52,13 +52,13 @@ class LocationParser extends StringValueParser {
 		$location = array_shift( $metaData );
 
 		$parser = new GeoCoordinateParser();
-		$parseResult =  $parser->parse( $location );
+		$parseResult = $parser->parse( $location );
 
 		if ( !$parseResult->isValid() ) {
 			return ResultObject::newError( $parseResult->getError() );
 		}
 
-		$location = new \MapsLocation( $parseResult->getDataValue() );
+		$location = new \MapsLocation( $parseResult->getValue() );
 
 		return ResultObject::newSuccess( new \DataValues\UnknownValue( $location ) );
 	}

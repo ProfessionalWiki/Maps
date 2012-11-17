@@ -28,6 +28,7 @@ namespace Maps\Test;
  *
  * @group Maps
  * @group ParserHook
+ * @group CoordinatesTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -55,5 +56,27 @@ class CoordinatesTest extends ParserHookTest {
 
 		return $this->arrayWrap( $paramLists );
 	}
+
+//	/**
+//	 * @see ParserHookTest::processingProvider
+//	 * @since 0.3
+//	 * @return array
+//	 */
+//	public function processingProvider() {
+//		$definitions = $this->getInstance()->getParamDefinitions();
+//		$argLists = array();
+//
+//		$values = array(
+//			'location' => '4,2',
+//		);
+//
+//		$expected = array(
+//			'location' => new \DataValues\GeoCoordinateValue( 4, 2 )
+//		);
+//
+//		$argLists[] = array( $values, $expected );
+//
+//		return $argLists;
+//	}
 
 }

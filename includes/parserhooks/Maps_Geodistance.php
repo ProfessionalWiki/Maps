@@ -120,7 +120,7 @@ class MapsGeodistance extends ParserHook {
 		}
 		
 		if ( $start->isValid() && $end->isValid() ) {
-			$distance = MapsGeoFunctions::calculateDistance( $start->getDataValue(), $end->getDataValue() );
+			$distance = MapsGeoFunctions::calculateDistance( $start->getValue(), $end->getValue() );
 			$output = MapsDistanceParser::formatDistance( $distance, $parameters['unit'], $parameters['decimals'] );
 		} else {
 			// The locations should be valid when this method gets called.
