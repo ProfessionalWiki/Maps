@@ -88,10 +88,6 @@ final class MapsMapper {
 			// TODO 'manipulations' => new MapsParamGeoService( 'mappingservice' ),
 		);
 
-		$params['zoom'] = array(
-			'type' => 'integer',
-		);
-
 		$params['width'] = array(
 			'default' => $egMapsMapWidth,
 			// 'criteria' => new CriterionMapDimension( 'width' ),// TODO

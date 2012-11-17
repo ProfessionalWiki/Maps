@@ -28,6 +28,7 @@ namespace Maps\Test;
  *
  * @group Maps
  * @group ParserHook
+ * @group DisplayMapTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -51,7 +52,7 @@ class DisplayMapTest extends ParserHookTest {
 	public function parametersProvider() {
 		$paramLists = array();
 
-		$paramLists[] = array( 'location' => '4,2' );
+		$paramLists[] = array( 'coordinates' => '4,2' );
 
 		return $this->arrayWrap( $paramLists );
 	}

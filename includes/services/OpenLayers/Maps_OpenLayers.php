@@ -33,9 +33,13 @@ class MapsOpenLayers extends MapsMappingService {
 	 */	
 	public function addParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsResizableByDefault;
-		
-		$params['zoom']->setRange( 0, 19 );
-		$params['zoom']->setDefault( self::getDefaultZoom() );
+
+		$params['zoom'] = array(
+			'type' => 'integer',
+			'range' => array( 0, 19 ),
+			'default' => self::getDefaultZoom(),
+			'message' => 'maps-openlayers-par-zoom',
+		);
 
 		$params['controls'] = array(
 			'default' => $egMapsOLControls,

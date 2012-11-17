@@ -86,8 +86,12 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
 		global $egMapsResizableByDefault, $egMapsGMaps3DefaultTilt;
 
-		$params['zoom']->setRange( 0, 20 );
-		$params['zoom']->setDefault( self::getDefaultZoom() );
+		$params['zoom'] = array(
+			'type' => 'integer',
+			'range' => array( 0, 20 ),
+			'default' => self::getDefaultZoom(),
+			'message' => 'maps-googlemaps3-par-zoom',
+		);
 
 		$params['type'] = array(
 			'default' => $egMapsGMaps3Type,

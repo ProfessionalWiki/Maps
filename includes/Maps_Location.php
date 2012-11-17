@@ -6,6 +6,7 @@ use DataValues\GeoCoordinateValue;
  * Class describing a single location (geographical point).
  *
  * TODO: rethink the design of this class after deciding on what actual role it has
+ * TODO: make use of GeoCoordinateValue
  *
  * @since 0.7.1
  *

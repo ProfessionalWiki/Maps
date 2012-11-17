@@ -30,7 +30,7 @@ $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRende
 
 $classes['ApiGeocode'] 					= __DIR__ . '/includes/api/ApiGeocode.php';
 
-$classes['Maps\ServiceParam'] 			= __DIR__ . '/includes/definitions/ServiceParam.php';
+$classes['Maps\ServiceParam'] 			= __DIR__ . '/includes/ServiceParam.php';
 
 $classes['MapsCoordinates'] 			= __DIR__ . '/includes/parserhooks/Maps_Coordinates.php';
 $classes['MapsDisplayMap'] 				= __DIR__ . '/includes/parserhooks/Maps_DisplayMap.php';

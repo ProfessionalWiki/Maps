@@ -78,6 +78,8 @@ class ServiceParam extends StringParam {
 		// Add the service specific service parameters.
 		$serviceObject->addParameterInfo( $definitions );
 
+		$definitions = \ParamDefinition::getCleanDefinitions( $definitions );
+
 		return $value;
 	}
 
