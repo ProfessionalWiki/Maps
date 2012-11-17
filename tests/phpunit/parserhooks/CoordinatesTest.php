@@ -57,26 +57,42 @@ class CoordinatesTest extends ParserHookTest {
 		return $this->arrayWrap( $paramLists );
 	}
 
-//	/**
-//	 * @see ParserHookTest::processingProvider
-//	 * @since 0.3
-//	 * @return array
-//	 */
-//	public function processingProvider() {
-//		$definitions = $this->getInstance()->getParamDefinitions();
-//		$argLists = array();
-//
-//		$values = array(
-//			'location' => '4,2',
-//		);
-//
-//		$expected = array(
-//			'location' => new \DataValues\GeoCoordinateValue( 4, 2 )
-//		);
-//
-//		$argLists[] = array( $values, $expected );
-//
-//		return $argLists;
-//	}
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 0.3
+	 * @return array
+	 */
+	public function processingProvider() {
+		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$argLists = array();
+
+		$values = array(
+			'location' => '4,2',
+		);
+
+		$expected = array(
+			'location' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
+			'directional' => $definitions['directional']->getDefault(),
+			'format' => $definitions['format']->getDefault(),
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		$values = array(
+			'location' => '4,2',
+			'directional' => $definitions['directional']->getDefault() ? 'no' : 'yes',
+			'format' => 'dd',
+		);
+
+		$expected = array(
+			'location' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
+			'directional' => !$definitions['directional']->getDefault(),
+			'format' => Maps_COORDS_DD,
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		return $argLists;
+	}
 
 }
