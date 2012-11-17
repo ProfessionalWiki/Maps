@@ -81,6 +81,11 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 		$processor->setParameters( $parameters, $definitions );
 
 		$processor->validateParameters();
+
+		if ( $processor->hasFatalError() ) {
+			throw new \MWException( 'Fatal error occurred during the param processing: ' . $processor->hasFatalError()->getMessage() );
+		}
+
 		$actual = $processor->getParameterValues();
 
 		foreach ( $expectedValues as $name => $expected ) {

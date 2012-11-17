@@ -28,6 +28,7 @@ namespace Maps\Test;
  *
  * @group Maps
  * @group ParserHook
+ * @group MapsDistanceTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -65,7 +66,7 @@ class DistanceTest extends ParserHookTest {
 		$paramLists = array();
 
 		foreach ( array_keys( self::$distances ) as $distance ) {
-			$paramLists[] = array( 'distance' => $distance );
+			$paramLists[] = array( 'distance' => (string)$distance );
 		}
 
 		return $this->arrayWrap( $paramLists );
@@ -82,7 +83,7 @@ class DistanceTest extends ParserHookTest {
 
 		foreach ( self::$distances as $input => $output ) {
 			$values = array(
-				'distance' => $input,
+				'distance' => (string)$input,
 			);
 
 			$expected = array(
