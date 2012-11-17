@@ -42,7 +42,7 @@ class MapsCoordinates extends ParserHook {
 		$params = array();
 
 		$params['location'] = array(
-			'type' => 'mapslocation',
+			'type' => 'coordinate',
 		);
 
 		$params['format'] = array(
@@ -94,7 +94,7 @@ class MapsCoordinates extends ParserHook {
 		// TODO $options->setFormat( $parameters['directional'] );
 		$coordinateFormatter->setOptions( $options );
 
-		$output = $coordinateFormatter->format( $parameters['location']->getCoordinates() )->getValue();
+		$output = $coordinateFormatter->format( $parameters['location'] )->getValue();
 
 		return $output;		
 	}

@@ -53,6 +53,7 @@ class CoordinatesTest extends ParserHookTest {
 		$paramLists = array();
 
 		$paramLists[] = array( 'location' => '4,2' );
+		$paramLists[] = array( 'location' => '55 S, 37.6176330 W' );
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -71,7 +72,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
+			'location' => new \DataValues\GeoCoordinateValue( 4, 2 ),
 			'directional' => $definitions['directional']->getDefault(),
 			'format' => $definitions['format']->getDefault(),
 		);
@@ -85,7 +86,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
+			'location' => new \DataValues\GeoCoordinateValue( 4, 2 ),
 			'directional' => !$definitions['directional']->getDefault(),
 			'format' => Maps_COORDS_DD,
 		);
