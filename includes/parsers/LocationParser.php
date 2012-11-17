@@ -48,7 +48,7 @@ class LocationParser extends StringValueParser {
 	public function stringParse( $value ) {
 		$separator = '~';
 
-		$metaData = explode( $separator, $separator );
+		$metaData = explode( $separator, $value );
 		$location = array_shift( $metaData );
 
 		$parser = new GeoCoordinateParser();
@@ -60,7 +60,7 @@ class LocationParser extends StringValueParser {
 
 		$location = new \MapsLocation( $parseResult->getValue() );
 
-		return ResultObject::newSuccess( new \DataValues\UnknownValue( $location ) );
+		return ResultObject::newSuccess( $location );
 	}
 
 }

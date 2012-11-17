@@ -27,6 +27,7 @@ use ValueParsers\ResultObject;
  *
  * @group ValueParsers
  * @group Maps
+ * @group LocationParserTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -70,6 +71,17 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 */
 	protected function getParserClass() {
 		return 'Maps\LocationParser';
+	}
+
+	/**
+	 * @see ValueParserTestBase::requireDataValue
+	 *
+	 * @since 0.1
+	 *
+	 * @return boolean
+	 */
+	protected function requireDataValue() {
+		return false;
 	}
 
 }
