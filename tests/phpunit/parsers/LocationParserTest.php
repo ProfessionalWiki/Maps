@@ -59,6 +59,11 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 			$argLists[] = array( (string)$value, ResultObject::newSuccess( $expected ) );
 		}
 
+		$location = new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) );
+		$location->setTitle( 'Title' );
+		$location->setText( 'some description' );
+		$argLists[] = array( '4,2~Title~some description', ResultObject::newSuccess( $location ) );
+
 		return array_merge( $argLists, parent::parseProvider() );
 	}
 

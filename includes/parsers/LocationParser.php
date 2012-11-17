@@ -60,6 +60,18 @@ class LocationParser extends StringValueParser {
 
 		$location = new \MapsLocation( $parseResult->getValue() );
 
+		if ( $metaData !== array() ) {
+			$location->setTitle( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== array() ) {
+			$location->setText( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== array() ) {
+			$location->setIcon( array_shift( $metaData ) );
+		}
+
 		return ResultObject::newSuccess( $location );
 	}
 
