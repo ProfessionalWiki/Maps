@@ -208,3 +208,7 @@ $wgParamDefinitions['mapsline'] = array(
 $wgParamDefinitions['mapspolygon'] = array(
 	'string-parser' => 'Maps\PolygonParser',
 );
+
+$wgParamDefinitions['distance'] = array(
+	'string-parser' => 'Maps\DistanceParser',
+);

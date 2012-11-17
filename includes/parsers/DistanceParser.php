@@ -50,7 +50,7 @@ class DistanceParser extends StringValueParser {
 			return $this->newErrorResult( 'Not a distance' );
 		}
 		else {
-			return ResultObject::newSuccess( $value );
+			return ResultObject::newSuccess( $distance );
 		}
 	}
 

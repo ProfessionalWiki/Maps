@@ -44,6 +44,19 @@ class DistanceTest extends ParserHookTest {
 	}
 
 	/**
+	 * @since 0.3
+	 * @var array
+	 */
+	protected static $distances = array(
+		'42' => 42,
+		'42m' => 42,
+		'42 m' => 42,
+		'42 km' => 42000,
+		'4.2 km' => 4200,
+		'4.2 m' => 4.2,
+	);
+
+	/**
 	 * @see ParserHookTest::parametersProvider
 	 * @since 2.0
 	 * @return array
@@ -51,9 +64,65 @@ class DistanceTest extends ParserHookTest {
 	public function parametersProvider() {
 		$paramLists = array();
 
-		$paramLists[] = array( 'distance' => '42' );
+		foreach ( array_keys( self::$distances ) as $distance ) {
+			$paramLists[] = array( 'distance' => $distance );
+		}
 
 		return $this->arrayWrap( $paramLists );
+	}
+
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 0.3
+	 * @return array
+	 */
+	public function processingProvider() {
+		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$argLists = array();
+
+		foreach ( self::$distances as $input => $output ) {
+			$values = array(
+				'distance' => $input,
+			);
+
+			$expected = array(
+				'distance' => $output,
+				'unit' => $definitions['unit']->getDefault(),
+				'decimals' => $definitions['decimals']->getDefault(),
+			);
+
+			$argLists[] = array( $values, $expected );
+		}
+
+		$values = array(
+			'distance' => '42m',
+			'unit' => 'km',
+			'decimals' => '1',
+		);
+
+		$expected = array(
+			'distance' => 42,
+			'unit' => 'km',
+			'decimals' => 1,
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		$values = array(
+			'distance' => '42m',
+			'unit' => '~=[,,_,,]:3',
+			'decimals' => 'foobar',
+		);
+
+		$expected = array(
+			'distance' => 42,
+			'unit' => $definitions['unit']->getDefault(),
+			'decimals' => $definitions['decimals']->getDefault(),
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		return $argLists;
 	}
 
 }

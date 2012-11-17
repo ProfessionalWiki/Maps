@@ -40,7 +40,7 @@ class MapsDistance extends ParserHook {
 		$params = array();
 
 		$params['distance'] = array(
-			// new CriterionIsDistance() FIXME
+			'type' => 'distance',
 		);
 
 		$params['unit'] = array(
@@ -65,6 +65,8 @@ class MapsDistance extends ParserHook {
 	 * @see ParserHook::getDefaultParameters
 	 * 
 	 * @since 0.7
+	 *
+	 * @param $type
 	 * 
 	 * @return array
 	 */
@@ -83,8 +85,11 @@ class MapsDistance extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$distanceInMeters = MapsDistanceParser::parseDistance( $parameters['distance'] );
-		return MapsDistanceParser::formatDistance( $distanceInMeters, $parameters['unit'], $parameters['decimals'] );
+		return MapsDistanceParser::formatDistance(
+			$parameters['distance'],
+			$parameters['unit'],
+			$parameters['decimals']
+		);
 	}
 
 	/**
