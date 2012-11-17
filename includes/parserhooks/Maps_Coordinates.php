@@ -87,23 +87,15 @@ class MapsCoordinates extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$coordinateParser = new \ValueParsers\GeoCoordinateParser();
-		$parseResult = $coordinateParser->parse( $parameters['location'] );
+		$coordinateFormatter = new \ValueFormatters\GeoCoordinateFormatter();
 
-		if ( $parseResult->isValid() ) {
-			$coordinateFormatter = new \ValueFormatters\GeoCoordinateFormatter();
+		$options = new \ValueFormatters\GeoFormatterOptions();
+		$options->setFormat( $parameters['format'] );
+		// TODO $options->setFormat( $parameters['directional'] );
+		$coordinateFormatter->setOptions( $options );
 
-			$options = new \ValueFormatters\GeoFormatterOptions();
-			$options->setFormat( $parameters['format'] );
-			// TODO $options->setFormat( $parameters['directional'] );
-			$coordinateFormatter->setOptions( $options );
+		$output = $coordinateFormatter->format( $parameters['location']->getCoordinates() )->getValue();
 
-			$output = $coordinateFormatter->format( $parseResult->getValue() )->getValue();
-		} else {
-			// The coordinates should be valid when this method gets called.
-			throw new MWException( 'Attempt to format an invalid set of coordinates' );
-		}
-		
 		return $output;		
 	}
 	
