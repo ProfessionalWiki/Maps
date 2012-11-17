@@ -340,7 +340,7 @@ $messages['de'] = array(
 	'semanticmaps-forminput-add' => 'Hinzufügen',
 	'semanticmaps-forminput-locations' => 'Standort',
 	'semanticmaps-par-staticlocations' => 'Die Listen von Standorten, die zusammen mit den abgefragten Daten, der Karte hinzugefügt werden sollen. Analog zu den Anzeigepunkten können je Standort Titel, Beschreibung und Symbol, unter Verwendung einer Tilde „~“ als Trennzeichen, hinzugefügt werden.',
-	'semanticmaps-par-forceshow' => 'Die Karte auch dann anzeigen, wenn es keine Standorte zum Anzeigen gibt?',
+	'semanticmaps-par-forceshow' => 'Die Karte auch dann anzeigen, wenn es keine anzuzeigenden Standorte gibt',
 	'semanticmaps-par-showtitle' => 'Den Titel im Informationsfenster der Kennzeichnung anzeigen oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.',
 	'semanticmaps-par-hidenamespace' => 'Den Namen des Namensraums im Informationsfenster der Kennzeichnung anzeigen',
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
@@ -771,7 +771,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能で格納された座標データを表示・編集する機能を提供する ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps 詳細情報...])', # Fuzzy
+	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能で格納された座標データを表示・編集する機能を提供する ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps 詳細情報...])',
 	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps-kml-link' => 'KMLファイルを閲覧',
 	'semanticmaps-default-kml-pagelink' => 'ページ$1を表示',
@@ -792,9 +792,12 @@ $messages['ja'] = array(
 	'semanticmaps-par-centre' => '地図の中心。提供されていないときは、自動的に地図上のすべてのマーカーを表示するための最適な中心が選択されます。',
 	'semanticmaps-par-template' => '情報ウィンドウのコンテンツの整形に使用するテンプレートです。',
 	'semanticmaps-par-geocodecontrol' => 'ジオコーディングコントロールを表示します。',
+	'semanticmaps-kml-text' => '各ページに関連付けられたテキストです。クエリに追加的なプロパティがある場合は上書きされます。',
 	'semanticmaps-kml-title' => '結果の既定のタイトル',
 	'semanticmaps-kml-linkabsolute' => 'リンクは絶対表記 (= 相対表記の対義語) にしてください。',
 	'semanticmaps-kml-pagelinktext' => 'ページへのリンクに使用するテキスト ($1 はページ名に置換される)',
+	'semanticmaps-shapes-improperformat' => '$1 を不適切な形式に整形しようとしました。整形のドキュメントを参照してください。',
+	'semanticmaps-shapes-missingshape' => '$1 の図形が見つかりません。利用できる図形についてドキュメントを参照してください。',
 );
 
 /** Georgian (ქართული)
@@ -908,6 +911,8 @@ $messages['mk'] = array(
 	'semanticmaps-kml-title' => 'Стандарден наслов за резултатите',
 	'semanticmaps-kml-linkabsolute' => 'Дали врските да бидат апсолутни',
 	'semanticmaps-kml-pagelinktext' => 'Текстот на врските на страницата, каде $1 ќе се замени со насловот на страницата',
+	'semanticmaps-shapes-improperformat' => 'Несоодветно форматирање на $1. Погледајте во документацијата како треба да се форматира.',
+	'semanticmaps-shapes-missingshape' => 'Не пронајдов облици за $1. Погледајте во документацијата кои облици ви се на располагање.',
 );
 
 /** Malayalam (മലയാളം)
