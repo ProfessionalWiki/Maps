@@ -248,12 +248,13 @@ $1',
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Shirayuki
  * @author Siebrand
  * @author Umherirrender
  * @author Тест
  */
 $messages['qqq'] = array(
-	'maps-desc' => '{{desc}}',
+	'maps-desc' => '{{desc|name=Maps|url=http://www.mediawiki.org/wiki/Extension:Maps}}',
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
@@ -285,7 +286,7 @@ $messages['qqq'] = array(
 	'maps-googlemaps3-par-tilt' => '{{maps-par|googlemaps3|tilt}}',
 	'maps-googlemaps3-par-kmlrezoom' => '{{maps-par|googlemaps3|kmlrezoom}}
 
-KML may mean the [[w:Keyhole Markup Language|Keyhole Markup Language]].',
+KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
 	'mapeditor' => 'title of the special page Special:MapEditor',
 	'specialpages-group-maps' => 'The special page group "maps" text',
@@ -1117,10 +1118,10 @@ $1',
 	'maps-googlemaps3-par-autoinfowindows' => 'Die Informationsfenster nach dem Laden der Seite automatisch öffnen oder nicht',
 	'maps-googlemaps3-par-kml' => 'Die auf die Karte zu ladenden KML-Dateien.',
 	'maps-googlemaps3-par-gkml' => 'Die von Google gehosteten KML-Dateien, die auf die Karte geladen werden sollen',
-	'maps-googlemaps3-par-fusiontables' => 'Die Kennungen von Google Fusion Tables, die auf die Karte geladen werden sollen.',
+	'maps-googlemaps3-par-fusiontables' => 'Die Kennungen der Google Fusion Tables, die auf die Karte geladen werden sollen',
 	'maps-googlemaps3-par-tilt' => 'Die Neigung der Karte bei der Nutzung von Google Maps.',
 	'maps-googlemaps3-par-kmlrezoom' => 'Die Karte erneut zoomen, nachdem die KML-Ebenen geladen wurden.',
-	'maps-googlemaps3-par-poi' => 'Sehenswürdigkeiten anzeigen',
+	'maps-googlemaps3-par-poi' => 'Die Sehenswürdigkeiten anzeigen',
 	'maps-openlayers-par-controls' => 'Die auf der Karte anzuzeigenden Steuerelemente.',
 	'maps-openlayers-par-layers' => 'Die Ebenen, die über die Ebenenauswahl verfügbar sein sollen. Die erste Ebene wird während des Ladens der Karten angezeigt.',
 	'maps-osm-par-thumbs' => 'Miniaturansichten anzeigen',
@@ -2986,7 +2987,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([http://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])', # Fuzzy
+	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([http://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])',
 	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中...',
