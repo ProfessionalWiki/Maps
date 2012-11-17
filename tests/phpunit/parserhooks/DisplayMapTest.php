@@ -54,7 +54,42 @@ class DisplayMapTest extends ParserHookTest {
 
 		$paramLists[] = array( 'coordinates' => '4,2' );
 
+		$paramLists[] = array( 'location' => '4,2' );
+
+		$paramLists[] = array( 'location' => 'new york city' );
+
+		$paramLists[] = array(
+			'service' => 'googlemaps',
+			'location' => 'new york city',
+			'zoom' => '10',
+			'minzoom' => '5',
+			'maxzoom' => '7',
+			'autozoom' => 'off',
+		);
+
 		return $this->arrayWrap( $paramLists );
+	}
+
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 0.3
+	 * @return array
+	 */
+	public function processingProvider() {
+		$definitions = $this->getInstance()->getParamDefinitions();
+		$argLists = array();
+
+		$values = array(
+			'locations' => '4,2',
+		);
+
+		$expected = array(
+			'coordinates' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) )
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		return $argLists;
 	}
 
 }

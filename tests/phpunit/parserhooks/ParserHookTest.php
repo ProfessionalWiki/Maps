@@ -47,6 +47,9 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 	public abstract function parametersProvider();
 
 	/**
+	 * Triggers the render process with different sets of parameters to see if
+	 * no errors or notices are thrown and the result indeed is a string.
+	 *
 	 * @dataProvider parametersProvider
 	 * @since 2.0
 	 * @param array $parameters
@@ -61,6 +64,34 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 
 		$renderResult = $parserHook->renderTag( null, $parameters, $parser );
 		$this->assertInternalType( 'string', $renderResult );
+	}
+
+	public function processingProvider() {
+		return array();
+	}
+
+	/**
+	 * @dataProvider processingProvider
+	 * @since 0.3
+	 */
+	public function testParamProcessing( array $parameters, array $expectedValues ) {
+		$definitions = $this->getInstance()->getParamDefinitions();
+
+		$processor = \ParamProcessor\Processor::newDefault();
+		$processor->setParameters( $parameters, $definitions );
+
+		$processor->validateParameters();
+		$actual = $processor->getParameterValues();
+
+		foreach ( $expectedValues as $name => $expected ) {
+			$this->assertArrayHasKey( $name, $actual );
+
+			$this->assertEquals(
+				$expected,
+				$actual[$name],
+				'Expected ' . var_export( $expected, true ) . ' should match actual ' . var_export( $actual[$name], true )
+			);
+		}
 	}
 
 }

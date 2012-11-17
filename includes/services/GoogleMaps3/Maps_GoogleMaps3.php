@@ -105,7 +105,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'default' => $egMapsGMaps3Types,
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-types',
-			'is-list' => true,
+			'islist' => true,
 			// new MapsParamGMap3Type(), new MapsParamGMap3Types() // FIXME
 		);
 
@@ -113,14 +113,14 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'default' => $egMapsGMaps3Layers,
 			'values' => self::getLayerNames(),
 			'message' => 'maps-googlemaps3-par-layers',
-			'is-list' => true,
+			'islist' => true,
 		);
 
 		$params['controls'] = array(
 			'default' => $egMapsGMaps3Controls,
 			'values' => self::$controlNames,
 			'message' => 'maps-googlemaps3-par-controls',
-			'is-list' => true,
+			'islist' => true,
 			// new ParamManipulationFunctions( 'strtolower' ) FIXME
 		);
 
