@@ -48,7 +48,7 @@ class MapsMapsDoc extends ParserHook {
 
 		$params['service'] = array(
 			'values' => $GLOBALS['egMapsAvailableServices'],
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['language'] = array(

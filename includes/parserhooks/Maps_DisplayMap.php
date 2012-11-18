@@ -44,8 +44,6 @@ class MapsDisplayMap extends ParserHook {
 	 * Returns an array containing the parameter info.
 	 * @see ParserHook::getParameterInfo
 	 *
-	 * TODO: migrate stuff
-	 * 
 	 * @since 0.7
 	 * 
 	 * @return array
@@ -61,7 +59,7 @@ class MapsDisplayMap extends ParserHook {
 		// TODO$params['zoom']['manipulations'] = new MapsParamZoom();
 
 		$params['coordinates'] = array(
-			'type' => 'coordinate',
+			'type' => 'mapslocation',
 			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
 			// TODO	'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
 			// TODO	'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
