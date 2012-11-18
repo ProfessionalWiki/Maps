@@ -44,14 +44,14 @@ class MapsFinddestination extends ParserHook {
 
 		$params['location'] = array(
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
-			// new CriterionIsLocation() FIXME
+			'type' => 'mapslocation',
 		);
 
 		$params['format'] = array(
 			'default' => $egMapsCoordinateNotation,
 			'values' => $egMapsAvailableCoordNotations,
 			'aliases' => 'notation',
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['directional'] = array(
@@ -64,21 +64,20 @@ class MapsFinddestination extends ParserHook {
 		);
 
 		$params['distance'] = array(
-			'type' => 'float',
-			// new CriterionIsDistance() FIXME
+			'type' => 'distance',
 		);
 
 		$params['mappingservice'] = array(
 			'default' => '',
 			'values' => MapsMappingServices::getAllServiceValues(),
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['geoservice'] = array(
 			'default' => $egMapsDefaultGeoService,
 			'aliases' => 'service',
 			'values' => $egMapsAvailableGeoServices,
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['directional'] = array(
@@ -116,56 +115,22 @@ class MapsFinddestination extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$canGeocode = MapsGeocoders::canGeocode();
-			
-		if ( $canGeocode ) {
-			$location = MapsGeocoders::attemptToGeocode(
-				$parameters['location'],
-				$parameters['geoservice'],
-				$parameters['mappingservice']
-			);
-		} else {
-			$coordinateParser = new \ValueParsers\GeoCoordinateParser();
-			$parseResult = $coordinateParser->parse( $parameters['location'] );
+		$destination = MapsGeoFunctions::findDestination(
+			$parameters['location']->getCoordinates(),
+			$parameters['bearing'],
+			$parameters['distance']
+		);
 
-			if ( $parseResult->isValid() ) {
-				/**
-				 * @var GeoCoordinateValue $coords
-				 */
-				$coords = $parseResult->getValue();
+		$formatter = new \ValueFormatters\GeoCoordinateFormatter();
 
-				$location = array(
-					'lat' => $coords->getLatitude(),
-					'lon' => $coords->getLongitude(),
-				);
-			}
-			else {
-				$location = false;
-			}
-		}
-		
-		// TODO
-		if ( $location ) {
-			$destination = MapsGeoFunctions::findDestination(
-				$location,
-				$parameters['bearing'],
-				MapsDistanceParser::parseDistance( $parameters['distance'] )
-			);
+		$options = new \ValueFormatters\GeoFormatterOptions();
+		$options->setFormat( $parameters['format'] );
+		// TODO $options->setFormat( $parameters['directional'] );
+		$formatter->setOptions( $options );
 
-			$formatter = new \ValueFormatters\GeoCoordinateFormatter();
+		$geoCoords = new \DataValues\GeoCoordinateValue( $destination['lat'], $destination['lon'] );
+		$output = $formatter->format( $geoCoords )->getValue();
 
-			$options = new \ValueFormatters\GeoFormatterOptions();
-			$options->setFormat( $parameters['format'] );
-			// TODO $options->setFormat( $parameters['directional'] );
-			$formatter->setOptions( $options );
-
-			$geoCoords = new \DataValues\GeoCoordinateValue( $destination['lat'], $destination['lon'] );
-			$output = $formatter->format( $geoCoords )->getValue();
-		} else {
-			// The location should be valid when this method gets called.
-			throw new MWException( 'Attempt to find a destination from an invalid location' );
-		}
-			
 		return $output;
 	}
 

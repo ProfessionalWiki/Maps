@@ -28,6 +28,7 @@ namespace Maps\Test;
  *
  * @group Maps
  * @group ParserHook
+ * @group MapsFinddestinationTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -51,7 +52,11 @@ class FinddestinationTest extends ParserHookTest {
 	public function parametersProvider() {
 		$paramLists = array();
 
-		$paramLists[] = array( 'location' => '4,2', 'bearing' => '1', 'distance' => '42' );
+		$paramLists[] = array(
+			'location' => '4,2',
+			'bearing' => '1',
+			'distance' => '42 km'
+		);
 
 		return $this->arrayWrap( $paramLists );
 	}

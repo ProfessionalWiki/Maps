@@ -5,6 +5,8 @@ use ValueParsers\StringValueParser;
 use ValueParsers\Result;
 use ValueParsers\ResultObject;
 use ValueParsers\GeoCoordinateParser;
+use ValueParsers\Error;
+use DataValues\GeoCoordinateValue;
 use MWException;
 
 /**
@@ -35,6 +37,9 @@ use MWException;
  */
 class LocationParser extends StringValueParser {
 
+	// TODO
+	protected $supportGeocoding = true;
+
 	/**
 	 * @see StringValueParser::stringParse
 	 *
@@ -49,16 +54,14 @@ class LocationParser extends StringValueParser {
 		$separator = '~';
 
 		$metaData = explode( $separator, $value );
-		$location = array_shift( $metaData );
 
-		$parser = new GeoCoordinateParser();
-		$parseResult = $parser->parse( $location );
+		$coordinates = $this->getCoordinates( array_shift( $metaData ) );
 
-		if ( !$parseResult->isValid() ) {
-			return ResultObject::newError( $parseResult->getError() );
+		if ( $coordinates instanceof Error ) {
+			return ResultObject::newError( $coordinates );
 		}
 
-		$location = new \MapsLocation( $parseResult->getValue() );
+		$location = new \MapsLocation( $coordinates );
 
 		if ( $metaData !== array() ) {
 			$location->setTitle( array_shift( $metaData ) );
@@ -73,6 +76,34 @@ class LocationParser extends StringValueParser {
 		}
 
 		return ResultObject::newSuccess( $location );
+	}
+
+	/**
+	 * @since 3.0
+	 *
+	 * @param string $location
+	 *
+	 * @return GeoCoordinateValue|Error
+	 */
+	protected function getCoordinates( $location ) {
+		if ( $this->supportGeocoding && \MapsGeocoders::canGeocode() ) {
+			$location = \MapsGeocoders::attemptToGeocode( $location );
+
+			if ( $location === false ) {
+				return $this->newErrorResult( 'Geocoding failed' )->getError();
+			}
+
+			return $location;
+		}
+
+		$parser = new GeoCoordinateParser();
+		$parseResult = $parser->parse( $location );
+
+		if ( !$parseResult->isValid() ) {
+			return $parseResult->getError();
+		}
+
+		return $parseResult->getValue();
 	}
 
 }
