@@ -13,9 +13,9 @@ abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMap
 
 	/**
 	 * @since 3.0
-	 * @var ElementOptions
+	 * @var ElementOptions|null
 	 */
-	protected $options;
+	protected $options = null;
 
 	public function getTitle() {
 		return $this->title;
@@ -82,6 +82,10 @@ abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMap
 	 * @return ElementOptions
 	 */
 	public function getOptions() {
+		if ( $this->options === null ) {
+			$this->options = new ElementOptions();
+		}
+
 		return $this->options;
 	}
 

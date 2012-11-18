@@ -63,6 +63,7 @@ final class MapsHooks {
 			'parsers/LineParser',
 			'parsers/LocationParser',
 
+			'Element',
 			'MapsDistanceParser',
 		);
 

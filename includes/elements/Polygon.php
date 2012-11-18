@@ -13,7 +13,7 @@ namespace Maps;
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */
-class Polygon extends \MapsBaseFillableElement implements \iHoverableMapElement {
+class Polygon extends Line implements \iHoverableMapElement {
 
 	/**
 	 * @var
@@ -28,7 +28,7 @@ class Polygon extends \MapsBaseFillableElement implements \iHoverableMapElement 
 	/**
 	 *
 	 */
-	function __construct( $coords ) {
+	public function __construct( $coords ) {
 		$this->setPolygonCoords( $coords );
 	}
 

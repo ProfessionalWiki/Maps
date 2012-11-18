@@ -51,6 +51,7 @@ class Rectangle extends \MapsBaseFillableElement {
 	 * @param GeoCoordinateValue $rectangleSouthWest
 	 */
 	public function __construct( GeoCoordinateValue $rectangleNorthEast, GeoCoordinateValue $rectangleSouthWest ) {
+		// TODO: validate bounds are correct, if not, flip
 		$this->setRectangleNorthEast( $rectangleNorthEast );
 		$this->setRectangleSouthWest( $rectangleSouthWest );
 	}

@@ -25,7 +25,7 @@ $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRende
 
 $classes['Maps\BaseElement']			= __DIR__ . '/includes/elements/BaseElement.php';
 $classes['Maps\Circle'] 				= __DIR__ . '/includes/elements/Circle.php';
-$classes['Maps\ImageOverlay'] 			= __DIR__ . '/includes/ImageOverlay.php';
+$classes['Maps\ImageOverlay'] 			= __DIR__ . '/includes/elements/ImageOverlay.php';
 $classes['Maps\Line'] 					= __DIR__ . '/includes/elements/Line.php';
 $classes['Maps\Polygon'] 				= __DIR__ . '/includes/elements/Polygon.php';
 $classes['Maps\Rectangle'] 				= __DIR__ . '/includes/elements/Rectangle.php';
