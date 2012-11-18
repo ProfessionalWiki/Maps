@@ -42,21 +42,21 @@ class MapsGeocode extends ParserHook {
 		$params = array();
 
 		$params['location'] = array(
+			'type' => 'mapslocation',
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
-			// new CriterionIsLocation() FIXME
 		);
 
 		$params['mappingservice'] = array(
 			'default' => '',
 			'values' => MapsMappingServices::getAllServiceValues(),
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['geoservice'] = array(
 			'default' => $egMapsDefaultGeoService,
 			'aliases' => 'service',
 			'values' => $egMapsAvailableGeoServices,
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['allowcoordinates'] = array(
@@ -68,7 +68,7 @@ class MapsGeocode extends ParserHook {
 			'default' => $egMapsCoordinateNotation,
 			'values' => $egMapsAvailableCoordNotations,
 			'aliases' => 'notation',
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['directional'] = array(
@@ -106,23 +106,25 @@ class MapsGeocode extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		if ( MapsGeocoders::canGeocode() ) {
-			$geovalues = MapsGeocoders::attemptToGeocodeToString(
-				$parameters['location'],
-				$parameters['geoservice'],
-				$parameters['mappingservice'],
-				$parameters['allowcoordinates'],
-				$parameters['format'],
-				$parameters['directional']
-			);
-			
-			$output = $geovalues ? $geovalues : '';
-		}
-		else {
-			$output = htmlspecialchars( wfMsg( 'maps-geocoder-not-available' ) );
+		/**
+		 * @var \DataValues\GeoCoordinateValue $coordinates
+		 */
+		$coordinates = $parameters['location']->getCoordinates();
+
+		$options = new \ValueFormatters\GeoFormatterOptions();
+		$options->setFormat( $parameters['format'] );
+		// TODO $parameters['directional']
+
+		$formatter = new \ValueFormatters\GeoCoordinateFormatter();
+		$formatter->setOptions( $options );
+
+		$result = $formatter->format( $coordinates );
+
+		if ( !$result->isValid() ) {
+			throw new MWException( 'Could not format the coordinates' );
 		}
 
-		return $output;		
+		return $result->getValue();
 	}
 
 	/**

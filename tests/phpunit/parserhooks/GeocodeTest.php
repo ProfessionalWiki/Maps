@@ -56,4 +56,27 @@ class GeocodeTest extends ParserHookTest {
 		return $this->arrayWrap( $paramLists );
 	}
 
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 3.0
+	 * @return array
+	 */
+	public function processingProvider() {
+		$argLists = array();
+
+		$values = array(
+			'location' => '4,2',
+			'allowcoordinates' => 'yes',
+		);
+
+		$expected = array(
+			'location' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
+			'allowcoordinates' => true,
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		return $argLists;
+	}
+
 }

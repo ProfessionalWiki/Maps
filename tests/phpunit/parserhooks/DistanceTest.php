@@ -78,7 +78,6 @@ class DistanceTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
 		$argLists = array();
 
 		foreach ( $this->distances as $input => $output ) {
@@ -88,8 +87,6 @@ class DistanceTest extends ParserHookTest {
 
 			$expected = array(
 				'distance' => $output,
-				'unit' => $definitions['unit']->getDefault(),
-				'decimals' => $definitions['decimals']->getDefault(),
 			);
 
 			$argLists[] = array( $values, $expected );
@@ -117,8 +114,6 @@ class DistanceTest extends ParserHookTest {
 
 		$expected = array(
 			'distance' => 42,
-			'unit' => $definitions['unit']->getDefault(),
-			'decimals' => $definitions['decimals']->getDefault(),
 		);
 
 		$argLists[] = array( $values, $expected );

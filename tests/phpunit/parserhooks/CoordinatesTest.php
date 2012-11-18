@@ -73,8 +73,6 @@ class CoordinatesTest extends ParserHookTest {
 
 		$expected = array(
 			'location' => new \DataValues\GeoCoordinateValue( 4, 2 ),
-			'directional' => $definitions['directional']->getDefault(),
-			'format' => $definitions['format']->getDefault(),
 		);
 
 		$argLists[] = array( $values, $expected );
