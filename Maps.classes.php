@@ -14,10 +14,7 @@ $classes['MapsLayer'] 					= __DIR__ . '/includes/Maps_Layer.php';
 $classes['MapsLayerPage'] 				= __DIR__ . '/includes/Maps_LayerPage.php';
 $classes['MapsLayers'] 					= __DIR__ . '/includes/Maps_Layers.php';
 $classes['MapsLocation'] 				= __DIR__ . '/includes/Maps_Location.php';
-$classes['Maps\Line'] 					= __DIR__ . '/includes/Line.php';
 $classes['MapsPolygon'] 				= __DIR__ . '/includes/Maps_Polygon.php';
-$classes['MapsCircle'] 					= __DIR__ . '/includes/Maps_Circle.php';
-$classes['Maps\Rectangle'] 				= __DIR__ . '/includes/Rectangle.php';
 $classes['MapsImageOverlay'] 			= __DIR__ . '/includes/Maps_ImageOverlay.php';
 $classes['iMappingService'] 			= __DIR__ . '/includes/iMappingService.php';
 $classes['MapsMappingServices'] 		= __DIR__ . '/includes/Maps_MappingServices.php';
@@ -27,6 +24,10 @@ $classes['MapsBaseElement']				= __DIR__ . '/includes/Maps_BaseElement.php';
 $classes['MapsBaseFillableElement'] 	= __DIR__ . '/includes/Maps_BaseFillableElement.php';
 $classes['MapsBaseStrokableElement'] 	= __DIR__ . '/includes/Maps_BaseStrokableElement.php';
 $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRenderer.php';
+
+$classes['Maps\Circle'] 				= __DIR__ . '/includes/elements/Circle.php';
+$classes['Maps\Line'] 					= __DIR__ . '/includes/elements/Line.php';
+$classes['Maps\Rectangle'] 				= __DIR__ . '/includes/elements/Rectangle.php';
 
 $classes['ApiGeocode'] 					= __DIR__ . '/includes/api/ApiGeocode.php';
 
