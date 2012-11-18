@@ -16,34 +16,12 @@ namespace Maps;
 class Polygon extends Line implements \iHoverableMapElement {
 
 	/**
-	 * @var
-	 */
-	protected $polygonCoords;
-
-	/**
-	 * @var
+	 * @var boolean
 	 */
 	protected $onlyVisibleOnHover = false;
 
 	/**
-	 *
-	 */
-	public function __construct( $coords ) {
-		$this->setPolygonCoords( $coords );
-	}
-
-	protected function setPolygonCoords( $polygonCoords ) {
-		foreach ( $polygonCoords as $polygonCoord ) {
-			$this->polygonCoords[] = new \MapsLocation( $polygonCoord );
-		}
-	}
-
-	protected function getPolygonCoords() {
-		return $this->polygonCoords;
-	}
-
-	/**
-	 * @param $visible
+	 * @param boolean $visible
 	 */
 	public function setOnlyVisibleOnHover( $visible ) {
 		$this->onlyVisibleOnHover = $visible;
@@ -56,23 +34,6 @@ class Polygon extends Line implements \iHoverableMapElement {
 		return $this->onlyVisibleOnHover;
 	}
 
-	public function getJSONObject( $defText = '' , $defTitle = '' ) {
+	// TODO: 'onlyVisibleOnHover' => $this->isOnlyVisibleOnHover()
 
-		$parentArray = parent::getJSONObject( $defText , $defTitle );
-		$posArray = array();
-
-		foreach ( $this->polygonCoords as $mapLocation ) {
-			$posArray[] = array(
-				'lat' => $mapLocation->getLatitude() ,
-				'lon' => $mapLocation->getLongitude()
-			);
-		}
-
-		$array = array(
-			'pos' => $posArray ,
-			'onlyVisibleOnHover' => $this->isOnlyVisibleOnHover() ,
-		);
-
-		return array_merge( $parentArray , $array );
-	}
 }

@@ -104,6 +104,17 @@ class OptionsObject {
 		return $this->options[$name];
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @param string $name
+	 *
+	 * @return boolean
+	 */
+	public function hasOption( $name ) {
+		return array_key_exists( $name, $this->options );
+	}
+
 }
 
 class ElementOptions extends OptionsObject {

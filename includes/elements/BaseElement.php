@@ -3,50 +3,118 @@
 namespace Maps;
 
 /**
- * @since 2.0
+ * Base class for objects implementing the @see Element interface.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @since 3.0
+ *
+ * @ingroup Maps
+ *
+ * @licence GNU GPL v2+
+ * @author Kim Eik < kim@heldig.org >
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMapElement {
 
-	protected $title;
-	protected $text;
-	protected $link;
+	/**
+	 * @since 3.0
+	 * @var ElementOptions
+	 */
+	protected $options;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since 3.0
+	 */
+	public function __construct() {
+		$this->options = new ElementOptions();
+	}
 
 	/**
 	 * @since 3.0
-	 * @var ElementOptions|null
+	 * 
+	 * @return string
 	 */
-	protected $options = null;
-
 	public function getTitle() {
-		return $this->title;
+		return $this->options->getOption( 'title' );
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @param string $title
+	 */
 	public function setTitle( $title ) {
-		$this->title = trim($title);
+		$this->options->setOption( 'title', $title );
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
 	public function getText() {
-		return $this->text;
+		return $this->options->getOption( 'text' );
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @param string $text
+	 */
 	public function setText( $text ) {
-		$this->text = trim($text);
+		$this->options->setOption( 'text', $text );
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
 	public function getLink() {
-		return $this->link;
+		return $this->options->getOption( 'link' );
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @param string $link
+	 */
 	public function setLink( $link ) {
-		$this->link = trim($link);
+		$this->options->setOption( 'link', $link );
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @return boolean
+	 */
 	public function hasTitle() {
-		return !is_null($this->title) && $this->title !== '';
+		return $this->options->hasOption( 'title' );
 	}
 
+	/**
+	 * @since 3.0
+	 *
+	 * @return boolean
+	 */
 	public function hasText() {
-		return !is_null($this->text) && $this->text !== '';
+		return $this->options->hasOption( 'text' );
 	}
 
 	/**
@@ -82,10 +150,6 @@ abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMap
 	 * @return ElementOptions
 	 */
 	public function getOptions() {
-		if ( $this->options === null ) {
-			$this->options = new ElementOptions();
-		}
-
 		return $this->options;
 	}
 

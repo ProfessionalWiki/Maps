@@ -47,6 +47,8 @@ class Circle extends \MapsBaseFillableElement {
 	 * @param integer|float $circleRadius
 	 */
 	public function __construct( GeoCoordinateValue $circleCentre , $circleRadius ) {
+		parent::__construct();
+
 		$this->setCircleCentre( $circleCentre );
 		$this->setCircleRadius( $circleRadius );
 	}

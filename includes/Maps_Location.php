@@ -121,6 +121,8 @@ class MapsLocation extends \Maps\BaseElement {
 	 * @since 3.0
 	 */
 	public function __construct( GeoCoordinateValue $coordinates, $format = Maps_COORDS_FLOAT, $directional = false, $separator = ',' ) {
+		parent::__construct();
+
 		$this->format = $format;
 		$this->directional = $directional;
 		$this->separator = $separator;
