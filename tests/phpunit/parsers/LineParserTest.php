@@ -2,6 +2,7 @@
 
 namespace Maps\Test;
 use ValueParsers\ResultObject;
+use Maps\Line;
 
 /**
  * Unit tests for the Maps\LineParser class.
@@ -83,7 +84,7 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 			$input = implode( ':', $input );
 
-			$argLists[] = array( $input, ResultObject::newSuccess( new \MapsLine( $output ) ) );
+			$argLists[] = array( $input, ResultObject::newSuccess( new Line( $output ) ) );
 		}
 
 		return array_merge( $argLists, parent::parseProvider() );

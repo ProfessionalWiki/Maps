@@ -2,7 +2,7 @@
 /**
  * @since 2.0
  */
-abstract class MapsBaseElement implements iBubbleMapElement , iLinkableMapElement {
+abstract class MapsBaseElement implements iBubbleMapElement, iLinkableMapElement {
 
 	protected $title;
 	protected $text;

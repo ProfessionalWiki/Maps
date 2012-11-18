@@ -5,7 +5,7 @@ use ValueParsers\StringValueParser;
 use ValueParsers\Result;
 use ValueParsers\ResultObject;
 
-use iBubbleMapElement, iLinkableMapElement, iStrokableMapElement, iFillableMapElement, iHoverableMapElement;
+use iFillableMapElement, iHoverableMapElement;
 
 /**
  * ValueParser that parses the string representation of a line.
@@ -52,14 +52,28 @@ class LineParser extends StringValueParser {
 	public function stringParse( $value ) {
 		if ( $this->canBeParsed( $value ) ) {
 			$parts = explode( $this->metaDataSeparator , $value );
-			$lineCoords = explode( ':' , array_shift( $parts ) );
 
-			$value = new \MapsLine( $lineCoords );
-			$this->handleCommonParams( $parts , $value );
+			$coordinateStrings = explode( ':' , array_shift( $parts ) );
 
-			$value = $value->getJSONObject();
+			$coordinates = array();
+			$coordinateParser = new \ValueParsers\GeoCoordinateParser();
 
-			return ResultObject::newSuccess( $value );
+			foreach ( $coordinateStrings as $coordinateString ) {
+				$parseResult = $coordinateParser->parse( $coordinateString );
+
+				if ( $parseResult->isValid() ) {
+					$coordinates[] = $parseResult->getValue();
+				}
+				else {
+					// TODO
+				}
+			}
+
+			$line = new Line( $coordinates );
+
+			$this->handleCommonParams( $parts, $line );
+
+			return ResultObject::newSuccess( $line->getJSONObject() );
 		}
 		else {
 			return ResultObject::newErrorText( 'Not a line' ); // TODO
@@ -72,7 +86,7 @@ class LineParser extends StringValueParser {
 		$value = explode( $this->metaDataSeparator, $value );
 		$value = $value[0];
 
-		$parts = explode(':', $value);
+		$parts = explode( ':', $value );
 
 		// Need at least two points to create a line.
 		if ( count( $parts ) < 2 ) {
@@ -113,66 +127,70 @@ class LineParser extends StringValueParser {
 	 * 2. Stroke data (three parameters)
 	 * 3. Fill data (two parameters)
 	 * e.g ...title~text~strokeColor~strokeOpacity~strokeWeight~fillColor~fillOpacity
-	 * @static
-	 * @param $obj
-	 * @param $metadataParams
+	 *
+	 * @since 3.0
+	 *
+	 * @param array $params
+	 * @param Line $line
 	 */
-	protected function handleCommonParams( array &$params, &$model ) {
-
+	protected function handleCommonParams( array &$params, Line &$line ) {
 		//Handle bubble and link parameters
-		if ( $model instanceof iBubbleMapElement && $model instanceof iLinkableMapElement ) {
-			//create link data
-			$linkOrTitle = array_shift( $params );
-			if ( $link = $this->isLinkParameter( $linkOrTitle ) ) {
-				$this->setLinkFromParameter( $model , $link );
-			} else {
-				//create bubble data
-				$this->setBubbleDataFromParameter( $model , $params , $linkOrTitle );
-			}
-		} else if ( $model instanceof iLinkableMapElement ) {
-			//only supports links
-			$link = array_shift( $params );
-			if ( $link = $this->isLinkParameter( $link ) ) {
-				$this->setLinkFromParameter( $model , $link );
-			}
-		} else if ( $model instanceof iBubbleMapElement ) {
-			//only supports bubbles
-			$title = array_shift( $params );
-			$this->setBubbleDataFromParameter( $model , $params , $title );
+
+		//create link data
+		$linkOrTitle = array_shift( $params );
+		if ( $link = $this->isLinkParameter( $linkOrTitle ) ) {
+			$this->setLinkFromParameter( $line , $link );
+		} else {
+			//create bubble data
+			$this->setBubbleDataFromParameter( $line , $params , $linkOrTitle );
 		}
+
 
 		//handle stroke parameters
-		if ( $model instanceof iStrokableMapElement ) {
-			if ( $color = array_shift( $params ) ) {
-				$model->setStrokeColor( $color );
-			}
-
-			if ( $opacity = array_shift( $params ) ) {
-				$model->setStrokeOpacity( $opacity );
-			}
-
-			if ( $weight = array_shift( $params ) ) {
-				$model->setStrokeWeight( $weight );
-			}
+		if ( $color = array_shift( $params ) ) {
+			$line->setStrokeColor( $color );
 		}
 
-		//handle fill parameters
-		if ( $model instanceof iFillableMapElement ) {
-			if ( $fillColor = array_shift( $params ) ) {
-				$model->setFillColor( $fillColor );
-			}
-
-			if ( $fillOpacity = array_shift( $params ) ) {
-				$model->setFillOpacity( $fillOpacity );
-			}
+		if ( $opacity = array_shift( $params ) ) {
+			$line->setStrokeOpacity( $opacity );
 		}
 
-		//handle hover parameter
-		if ( $model instanceof iHoverableMapElement ) {
-			if ( $visibleOnHover = array_shift( $params ) ) {
-				$model->setOnlyVisibleOnHover( filter_var( $visibleOnHover , FILTER_VALIDATE_BOOLEAN ) );
-			}
+		if ( $weight = array_shift( $params ) ) {
+			$line->setStrokeWeight( $weight );
 		}
+	}
+
+	protected function setBubbleDataFromParameter( Line &$line , &$params , $title ) {
+		if ( $title ) {
+			$line->setTitle( $title );
+		}
+		if ( $text = array_shift( $params ) ) {
+			$line->setText( $text );
+		}
+	}
+
+	protected function setLinkFromParameter( Line &$line , $link ) {
+		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
+			$line->setLink( $link );
+		} else {
+			$title = \Title::newFromText( $link );
+			$line->setLink( $title->getFullURL() );
+		}
+	}
+
+	/**
+	 * Checks if a string is prefixed with link:
+	 * @static
+	 * @param $link
+	 * @return bool|string
+	 * @since 2.0
+	 */
+	private function isLinkParameter( $link ) {
+		if ( strpos( $link , 'link:' ) === 0 ) {
+			return substr( $link , 5 );
+		}
+
+		return false;
 	}
 
 }
