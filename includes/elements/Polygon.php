@@ -1,4 +1,7 @@
 <?php
+
+namespace Maps;
+
 /**
  * Class that holds metadata on polygons made up by locations on map.
  *
@@ -10,7 +13,7 @@
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */
-class MapsPolygon extends MapsBaseFillableElement implements iHoverableMapElement {
+class Polygon extends \MapsBaseFillableElement implements \iHoverableMapElement {
 
 	/**
 	 * @var
@@ -31,7 +34,7 @@ class MapsPolygon extends MapsBaseFillableElement implements iHoverableMapElemen
 
 	protected function setPolygonCoords( $polygonCoords ) {
 		foreach ( $polygonCoords as $polygonCoord ) {
-			$this->polygonCoords[] = new MapsLocation( $polygonCoord );
+			$this->polygonCoords[] = new \MapsLocation( $polygonCoord );
 		}
 	}
 

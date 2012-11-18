@@ -11,7 +11,7 @@
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */
-class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapElement {
+class MapsBaseStrokableElement extends \Maps\BaseElement implements iStrokableMapElement {
 
 	protected $strokeColor;
 	protected $strokeOpacity;

@@ -4,6 +4,7 @@ $classes = array();
 
 $classes['MapsHooks'] = __DIR__ . '/Maps.hooks.php';
 
+$classes['Maps\Element'] 				= __DIR__ . '/includes/Element.php';
 $classes['MapsMapper'] 					= __DIR__ . '/includes/Maps_Mapper.php';
 $classes['MapsDistanceParser'] 			= __DIR__ . '/includes/Maps_DistanceParser.php';
 $classes['MapsGeoFunctions'] 			= __DIR__ . '/includes/Maps_GeoFunctions.php';
@@ -14,20 +15,21 @@ $classes['MapsLayer'] 					= __DIR__ . '/includes/Maps_Layer.php';
 $classes['MapsLayerPage'] 				= __DIR__ . '/includes/Maps_LayerPage.php';
 $classes['MapsLayers'] 					= __DIR__ . '/includes/Maps_Layers.php';
 $classes['MapsLocation'] 				= __DIR__ . '/includes/Maps_Location.php';
-$classes['MapsPolygon'] 				= __DIR__ . '/includes/Maps_Polygon.php';
-$classes['MapsImageOverlay'] 			= __DIR__ . '/includes/Maps_ImageOverlay.php';
 $classes['iMappingService'] 			= __DIR__ . '/includes/iMappingService.php';
 $classes['MapsMappingServices'] 		= __DIR__ . '/includes/Maps_MappingServices.php';
 $classes['MapsMappingService'] 			= __DIR__ . '/includes/Maps_MappingService.php';
 $classes['MapsWmsOverlay'] 				= __DIR__ . '/includes/Maps_WmsOverlay.php';
-$classes['MapsBaseElement']				= __DIR__ . '/includes/Maps_BaseElement.php';
 $classes['MapsBaseFillableElement'] 	= __DIR__ . '/includes/Maps_BaseFillableElement.php';
 $classes['MapsBaseStrokableElement'] 	= __DIR__ . '/includes/Maps_BaseStrokableElement.php';
 $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRenderer.php';
 
+$classes['Maps\BaseElement']			= __DIR__ . '/includes/elements/BaseElement.php';
 $classes['Maps\Circle'] 				= __DIR__ . '/includes/elements/Circle.php';
+$classes['Maps\ImageOverlay'] 			= __DIR__ . '/includes/ImageOverlay.php';
 $classes['Maps\Line'] 					= __DIR__ . '/includes/elements/Line.php';
+$classes['Maps\Polygon'] 				= __DIR__ . '/includes/elements/Polygon.php';
 $classes['Maps\Rectangle'] 				= __DIR__ . '/includes/elements/Rectangle.php';
+
 
 $classes['ApiGeocode'] 					= __DIR__ . '/includes/api/ApiGeocode.php';
 

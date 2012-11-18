@@ -17,7 +17,7 @@ use DataValues\GeoCoordinateValue;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
-class MapsLocation extends MapsBaseElement {
+class MapsLocation extends \Maps\BaseElement {
 
 	/**
 	 * @since 3.0
