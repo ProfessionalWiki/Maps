@@ -60,6 +60,7 @@ final class MapsHooks {
 			'parserhooks/MapsDoc',
 
 			'parsers/DistanceParser',
+			'parsers/LineParser',
 			'parsers/LocationParser',
 
 			'MapsDistanceParser',

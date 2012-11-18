@@ -58,11 +58,10 @@ class MapsDisplayMap extends ParserHook {
 		//$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
 		// TODO$params['zoom']['manipulations'] = new MapsParamZoom();
 
+		// TODO: $type === ParserHook::TYPE_FUNCTION ? '~' : '|'
 		$params['coordinates'] = array(
 			'type' => 'mapslocation',
 			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
-			// TODO	'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
-			// TODO	'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
 			'default' => array(),
 			'islist' => true,
@@ -79,8 +78,8 @@ class MapsDisplayMap extends ParserHook {
 			'aliases' => 'text',
 		);
 
-		$params['icon'] = array( // TODO: image param
-			'default' => '', // TODO
+		$params['icon'] = array(
+			'default' => '', // TODO: image param
 		);
 
 		$params['visitedicon'] = array(
@@ -88,17 +87,15 @@ class MapsDisplayMap extends ParserHook {
 		);
 
 		$params['lines'] = array(
+			'type' => 'mapsline',
 			'default' => array(),
-			// TODO	'criteria' => new CriterionLine( '~' ), // TODO
-			// TODO	'manipulations' => new MapsParamLine( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['polygons'] = array(
+			// TODO 'type' => 'mapspolygon',
 			'default' => array(),
-			// TODO	'criteria' => new CriterionPolygon( '~' ), // TODO
-			// TODO	'manipulations' => new MapsParamPolygon( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);

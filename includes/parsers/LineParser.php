@@ -38,7 +38,7 @@ use iBubbleMapElement, iLinkableMapElement, iStrokableMapElement, iFillableMapEl
 class LineParser extends StringValueParser {
 
 	// TODO: use options
-	protected $metaDataSeparator;
+	protected $metaDataSeparator = '~';
 
 	/**
 	 * @see StringValueParser::stringParse
@@ -59,7 +59,7 @@ class LineParser extends StringValueParser {
 
 			$value = $value->getJSONObject();
 
-			return ResultObject::newSuccess( new \DataValues\UnknownValue( $value ) );
+			return ResultObject::newSuccess( $value );
 		}
 		else {
 			return ResultObject::newErrorText( 'Not a line' ); // TODO
@@ -117,7 +117,7 @@ class LineParser extends StringValueParser {
 	 * @param $obj
 	 * @param $metadataParams
 	 */
-	protected function handleCommonParams( array &$params , &$model ) {
+	protected function handleCommonParams( array &$params, &$model ) {
 
 		//Handle bubble and link parameters
 		if ( $model instanceof iBubbleMapElement && $model instanceof iLinkableMapElement ) {

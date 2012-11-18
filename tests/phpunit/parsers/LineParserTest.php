@@ -4,7 +4,7 @@ namespace Maps\Test;
 use ValueParsers\ResultObject;
 
 /**
- * Unit tests for the Maps\DistanceParser class.
+ * Unit tests for the Maps\LineParser class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,12 +27,12 @@ use ValueParsers\ResultObject;
  *
  * @group ValueParsers
  * @group Maps
- * @group DistanceParserTest
+ * @group LineParserTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class DistanceParserTest extends \ValueParsers\Test\StringValueParserTest {
+class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
 	 * @see ValueParserTestBase::parseProvider
@@ -44,16 +44,46 @@ class DistanceParserTest extends \ValueParsers\Test\StringValueParserTest {
 	public function parseProvider() {
 		$argLists = array();
 
-		$valid = array(
-			'1' => 1,
-			'1m' => 1,
-			'42 km' => 42000,
-			'4.2 km' => 4200,
-			'4.2 m' => 4.2,
+		$valid = array();
+
+		$valid[] = array(
+			array(
+				42,
+				4.2
+			),
 		);
 
-		foreach ( $valid as $value => $expected ) {
-			$argLists[] = array( (string)$value, ResultObject::newSuccess( $expected ) );
+		$valid[] = array(
+			array(
+				49.83798245308486,
+				2.724609375
+			),
+			array(
+				52.05249047600102,
+				8.26171875
+			),
+			array(
+				46.37725420510031,
+				6.15234375
+			),
+			array(
+				49.83798245308486,
+				2.724609375
+			),
+		);
+
+		foreach ( $valid as $values ) {
+			$input = array();
+			$output = array();
+
+			foreach ( $values as $value ) {
+				$input[] = implode( ',', $value );
+				$output[] = new \DataValues\GeoCoordinateValue( $value[0], $value[1] );
+			}
+
+			$input = implode( ':', $input );
+
+			$argLists[] = array( $input, ResultObject::newSuccess( new \MapsLine( $output ) ) );
 		}
 
 		return array_merge( $argLists, parent::parseProvider() );
@@ -67,7 +97,7 @@ class DistanceParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 * @return string
 	 */
 	protected function getParserClass() {
-		return 'Maps\DistanceParser';
+		return 'Maps\LineParser';
 	}
 
 	/**

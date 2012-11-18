@@ -1,6 +1,15 @@
 <?php
+
 /**
+ *
+ *
  * @since 2.0
+ *
+ * @file Maps_Line.php
+ * @ingroup Maps
+ *
+ * @licence GNU GPL v2+
+ * @author Kim Eik < kim@heldig.org >
  */
 class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapElement {
 

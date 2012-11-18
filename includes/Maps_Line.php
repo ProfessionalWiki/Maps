@@ -1,10 +1,12 @@
 <?php
+
+use DataValues\GeoCoordinateValue;
+
 /**
  * Class that holds metadata on lines made up by locations on map.
  *
- * @since 0.7.2
+ * @since 2.0
  *
- * @file Maps_Line.php
  * @ingroup Maps
  *
  * @licence GNU GPL v2+
@@ -13,39 +15,52 @@
 class MapsLine extends MapsBaseStrokableElement {
 
 	/**
-	 * @var
+	 * @since 2.0
+	 *
+	 * @var GeoCoordinateValue[]
 	 */
-	protected $lineCoords;
+	protected $coordinates;
 
 	/**
+	 * @since 2.0
 	 *
+	 * @param GeoCoordinateValue[] $coordinates
 	 */
-	function __construct( $coords ) {
-		$this->setLineCoords( $coords );
+	public function __construct( array $coordinates = array() ) {
+		$this->coordinates = $coordinates;
 	}
 
-
-	protected function setLineCoords( $lineCoords ) {
-		foreach ( $lineCoords as $lineCoord ) {
-			$this->lineCoords[] = new MapsLocation( $lineCoord );
-		}
+	/**
+	 * @since 3.0
+	 *
+	 * @return GeoCoordinateValue[]
+	 */
+	public function getLineCoordinates() {
+		return $this->coordinates;
 	}
 
-	protected function getLineCoords() {
-		return $this->lineCoords;
-	}
-
+	/**
+	 * @since 2.0
+	 *
+	 * @param string $defText
+	 * @param string $defTitle
+	 *
+	 * @return array
+	 */
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 		$posArray = array();
-		foreach ( $this->lineCoords as $mapLocation ) {
+
+		foreach ( $this->coordinates as $mapLocation ) {
 			$posArray[] = array(
 				'lat' => $mapLocation->getLatitude() ,
 				'lon' => $mapLocation->getLongitude()
 			);
 		}
+
 		$posArray = array( 'pos' => $posArray );
 
 		return array_merge( $parentArray , $posArray );
 	}
+
 }

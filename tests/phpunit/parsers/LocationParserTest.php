@@ -81,7 +81,7 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	/**
 	 * @see ValueParserTestBase::requireDataValue
 	 *
-	 * @since 0.1
+	 * @since 3.0
 	 *
 	 * @return boolean
 	 */
