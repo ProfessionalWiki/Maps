@@ -44,14 +44,14 @@ class MapsGeodistance extends ParserHook {
 		$params['mappingservice'] = array(
 			'default' => '',
 			'values' => MapsMappingServices::getAllServiceValues(),
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['geoservice'] = array(
 			'default' => $egMapsDefaultGeoService,
 			'aliases' => 'service',
 			'values' => $egMapsAvailableGeoServices,
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['unit'] = array(
@@ -65,15 +65,15 @@ class MapsGeodistance extends ParserHook {
 		);
 
 		$params['location1'] = array(
+			'type' => 'mapslocation',
 			'aliases' => 'from',
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
-			// FIXME new CriterionIsLocation()
 		);
 
 		$params['location2'] = array(
+			'type' => 'mapslocation',
 			'aliases' => 'to',
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
-			// FIXME new CriterionIsLocation()
 		);
 
 		foreach ( $params as $name => &$param ) {

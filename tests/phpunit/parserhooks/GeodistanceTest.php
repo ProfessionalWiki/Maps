@@ -56,4 +56,42 @@ class GeodistanceTest extends ParserHookTest {
 		return $this->arrayWrap( $paramLists );
 	}
 
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 3.0
+	 * @return array
+	 */
+	public function processingProvider() {
+		$argLists = array();
+
+		$values = array(
+			'location1' => '4,2',
+			'location2' => '42,0',
+		);
+
+		$expected = array(
+			'location1' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
+			'location2' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 42, 0 ) ),
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		$values = array(
+			'location1' => '4,2',
+			'location2' => '42,0',
+			'unit' => '~=[,,_,,]:3',
+			'decimals' => '1',
+		);
+
+		$expected = array(
+			'location1' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
+			'location2' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 42, 0 ) ),
+			'decimals' => 1,
+		);
+
+		$argLists[] = array( $values, $expected );
+
+		return $argLists;
+	}
+
 }

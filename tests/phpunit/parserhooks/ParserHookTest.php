@@ -88,6 +88,8 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 
 		$actual = $processor->getParameterValues();
 
+		$expectedValues = array_merge( $this->getDefaultValues(), $expectedValues );
+
 		foreach ( $expectedValues as $name => $expected ) {
 			$this->assertArrayHasKey( $name, $actual );
 
@@ -97,6 +99,27 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 				'Expected ' . var_export( $expected, true ) . ' should match actual ' . var_export( $actual[$name], true )
 			);
 		}
+	}
+
+	/**
+	 * Returns an array with the default values of the parameters.
+	 *
+	 * @since 3.0
+	 *
+	 * @return array
+	 */
+	protected function getDefaultValues() {
+		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+
+		$defaults = array();
+
+		foreach ( $definitions as $definition ) {
+			if ( !$definition->isRequired() ) {
+				$defaults[$definition->getName()] = $definition->getDefault();
+			}
+		}
+
+		return $defaults;
 	}
 
 }
