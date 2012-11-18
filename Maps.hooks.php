@@ -51,6 +51,8 @@ final class MapsHooks {
 	public static function registerUnitTests( array &$files ) {
 		// @codeCoverageIgnoreStart
 		$testFiles = array(
+			'elements/Circle',
+
 			'parserhooks/Coordinates',
 			'parserhooks/DisplayMap',
 			'parserhooks/Distance',
