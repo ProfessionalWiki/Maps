@@ -123,8 +123,12 @@ $magicWords['it'] = array(
 	'display_map' => array( 0, 'mostra_mappa' ),
 	'display_point' => array( 0, 'mostra_punto' ),
 	'display_points' => array( 0, 'mostra_punti' ),
+	'geocode' => array( 0, 'geocodice' ),
+	'geodistance' => array( 0, 'geodistanza' ),
+	'finddestination' => array( 0, 'trovadestinazione' ),
 	'coordinates' => array( 0, 'coordinate' ),
 	'distance' => array( 0, 'distanza' ),
+	'mapsdoc' => array( 0, 'docmappe' ),
 );
 
 /** Japanese (日本語) */
