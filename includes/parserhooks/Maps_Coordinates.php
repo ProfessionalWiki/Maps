@@ -49,7 +49,7 @@ class MapsCoordinates extends ParserHook {
 			'default' => $egMapsCoordinateNotation,
 			'values' => $egMapsAvailableCoordNotations,
 			'aliases' => 'notation',
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'tolower' => true,
 		);
 
 		$params['directional'] = array(

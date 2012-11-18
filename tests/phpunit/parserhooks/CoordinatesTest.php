@@ -93,6 +93,20 @@ class CoordinatesTest extends ParserHookTest {
 
 		$argLists[] = array( $values, $expected );
 
+		$values = array(
+			'location' => '4,2',
+			'directional' => $definitions['directional']->getDefault() ? 'NO' : 'YES',
+			'format' => ' DD ',
+		);
+
+		$expected = array(
+			'location' => new \DataValues\GeoCoordinateValue( 4, 2 ),
+			'directional' => !$definitions['directional']->getDefault(),
+			'format' => Maps_COORDS_DD,
+		);
+
+		$argLists[] = array( $values, $expected );
+
 		return $argLists;
 	}
 
