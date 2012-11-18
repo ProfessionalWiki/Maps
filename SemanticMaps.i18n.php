@@ -350,8 +350,8 @@ $messages['de'] = array(
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
 	'semanticmaps-kml-pagelinktext' => 'Der Text, der für die Links zur Seite genutzt werden soll. $1 wird dabei durch den Namen der Seite ersetzt.',
-	'semanticmaps-shapes-improperformat' => 'Falsche Formatierung von $1. Zur Formatierung bitte die Dokumentation beachten.',
-	'semanticmaps-shapes-missingshape' => 'Keine Formen für $1 gefunden. Für verfügbare Formen bitte die Dokumentation beachten.',
+	'semanticmaps-shapes-improperformat' => '$1 ist falsch formatiert. Siehe hierzu die Dokumention bezüglich Formatierungen.',
+	'semanticmaps-shapes-missingshape' => 'Für $1 wurden keine Formen. Siehe hierzu die Dokumention bezüglich verfügbarer Formen.',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -982,6 +982,7 @@ $messages['nb'] = array(
 /** Dutch (Nederlands)
  * @author Jeroen De Dauw
  * @author SPQRobin
+ * @author Saruman
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1010,6 +1011,8 @@ $messages['nl'] = array(
 	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
 	'semanticmaps-kml-linkabsolute' => 'Moeten verwijzingen absoluut zijn of niet (d.w.z. relatief)', # Fuzzy
 	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de verwijzingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
+	'semanticmaps-shapes-improperformat' => 'Onjuiste opmaak van  $1 , raadpleeg de documentatie voor de juiste opmaak',
+	'semanticmaps-shapes-missingshape' => 'Geen vormen gevonden voor $1, raadpleeg de documentatie voor beschikbare vormen',
 );
 
 /** Norwegian Nynorsk (norsk (nynorsk)‎)
