@@ -1,8 +1,13 @@
 <?php
+
+namespace Maps;
+use MapsLocation;
+use DataValues\GeoCoordinateValue;
+
 /**
  * Class that holds metadata on rectangles made up by locations on map.
  *
- * @since 2.0
+ * @since 3.0
  *
  * @file Maps_Rectangle.php
  * @ingroup Maps
@@ -11,69 +16,69 @@
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsRectangle extends MapsBaseFillableElement {
+class Rectangle extends \MapsBaseFillableElement {
 
 	/**
-	 * @since 2.0
-	 * @var MapsLocation
+	 * @since 3.0
+	 * @var GeoCoordinateValue
 	 */
 	protected $rectangleNorthEast;
 
 	/**
-	 * @since 2.0
-	 * @var MapsLocation
+	 * @since 3.0
+	 * @var GeoCoordinateValue
 	 */
 	protected $rectangleSouthWest;
 
 	/**
-	 * @since 2.0
+	 * @since 3.0
 	 *
-	 * @param $rectangleNorthEast
-	 * @param $rectangleSouthWest
+	 * @param GeoCoordinateValue $rectangleNorthEast
+	 * @param GeoCoordinateValue $rectangleSouthWest
 	 */
-	public function __construct( $rectangleNorthEast , $rectangleSouthWest ) {
+	public function __construct( GeoCoordinateValue $rectangleNorthEast, GeoCoordinateValue $rectangleSouthWest ) {
 		$this->setRectangleNorthEast( $rectangleNorthEast );
 		$this->setRectangleSouthWest( $rectangleSouthWest );
 	}
 
 	/**
-	 * @since 2.0
+	 * @since 3.0
 	 *
-	 * @return MapsLocation
+	 * @return GeoCoordinateValue
 	 */
 	public function getRectangleNorthEast() {
 		return $this->rectangleNorthEast;
 	}
 
 	/**
-	 * @since 2.0
+	 * @since 3.0
 	 *
-	 * @return MapsLocation
+	 * @return GeoCoordinateValue
 	 */
 	public function getRectangleSouthWest() {
 		return $this->rectangleSouthWest;
 	}
 
 	/**
-	 * @since 2.0
+	 * @since 3.0
 	 *
-	 * @param $rectangleSouthWest
+	 * @param GeoCoordinateValue $rectangleSouthWest
 	 */
-	public function setRectangleSouthWest( $rectangleSouthWest ) {
-		$this->rectangleSouthWest = new MapsLocation( $rectangleSouthWest );
+	public function setRectangleSouthWest( GeoCoordinateValue $rectangleSouthWest ) {
+		$this->rectangleSouthWest = $rectangleSouthWest;
 	}
 
 	/**
-	 * @since 2.0
+	 * @since 3.0
 	 *
-	 * @param $rectangleNorthEast
+	 * @param GeoCoordinateValue $rectangleNorthEast
 	 */
-	public function setRectangleNorthEast( $rectangleNorthEast ) {
-		$this->rectangleNorthEast = new MapsLocation( $rectangleNorthEast );
+	public function setRectangleNorthEast( GeoCoordinateValue $rectangleNorthEast ) {
+		$this->rectangleNorthEast = $rectangleNorthEast;
 	}
 
 	/**
-	 * @since 2.0
+	 * @since 3.0
 	 *
 	 * @param string $defText
 	 * @param string $defTitle
@@ -85,13 +90,13 @@ class MapsRectangle extends MapsBaseFillableElement {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 		$array = array(
 			'ne' => array(
-				'lon' => $this->getRectangleNorthEast()->getLongitude() ,
+				'lon' => $this->getRectangleNorthEast()->getLongitude(),
 				'lat' => $this->getRectangleNorthEast()->getLatitude()
-			) ,
+			),
 			'sw' => array(
-				'lon' => $this->getRectangleSouthWest()->getLongitude() ,
+				'lon' => $this->getRectangleSouthWest()->getLongitude(),
 				'lat' => $this->getRectangleSouthWest()->getLatitude()
-			) ,
+			),
 		);
 
 		return array_merge( $parentArray , $array );
@@ -100,12 +105,12 @@ class MapsRectangle extends MapsBaseFillableElement {
 	/**
 	 * Returns if the rectangle is valid.
 	 *
-	 * @since 2.0
+	 * @since 3.0
 	 *
 	 * @return boolean
 	 */
 	public function isValid() {
-		return $this->rectangleSouthWest->isValid() && $this->rectangleNorthEast->isValid();
+		return true;
 	}
 
 }
