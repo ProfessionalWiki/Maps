@@ -106,6 +106,13 @@ class MapsDisplayMapRenderer {
 	protected function handleMarkerData( array &$params, Parser $parser ) {
 		$parserClone = clone $parser;
 
+		/**
+		 * @var \Maps\Line $line
+		 */
+		foreach ( $params['lines'] as &$line ) {
+			$line = $line->getJSONObject();
+		}
+
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
 		$params['locations'] = array();

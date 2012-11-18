@@ -4,8 +4,7 @@ namespace Maps;
 use ValueParsers\StringValueParser;
 use ValueParsers\Result;
 use ValueParsers\ResultObject;
-
-use iFillableMapElement, iHoverableMapElement;
+use DataValues\GeoCoordinateValue;
 
 /**
  * ValueParser that parses the string representation of a line.
@@ -40,6 +39,8 @@ class LineParser extends StringValueParser {
 	// TODO: use options
 	protected $metaDataSeparator = '~';
 
+	protected $supportGeocoding = true;
+
 	/**
 	 * @see StringValueParser::stringParse
 	 *
@@ -50,15 +51,42 @@ class LineParser extends StringValueParser {
 	 * @return Result
 	 */
 	public function stringParse( $value ) {
-		if ( $this->canBeParsed( $value ) ) {
-			$parts = explode( $this->metaDataSeparator , $value );
+		$parts = explode( $this->metaDataSeparator , $value );
 
-			$coordinateStrings = explode( ':' , array_shift( $parts ) );
+		$line = new Line( $this->parseCoordinates(
+			explode( ':' , array_shift( $parts ) )
+		) );
 
-			$coordinates = array();
-			$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+		$this->handleCommonParams( $parts, $line );
 
-			foreach ( $coordinateStrings as $coordinateString ) {
+		return ResultObject::newSuccess( $line );
+	}
+
+	/**
+	 * @since 3.0
+	 *
+	 * @param string[] $coordinateStrings
+	 *
+	 * @return GeoCoordinateValue[]
+	 */
+	protected function parseCoordinates( array $coordinateStrings ) {
+		$coordinates = array();
+		$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+
+		$supportsGeocoding = $this->supportGeocoding && \MapsGeocoders::canGeocode();
+
+		foreach ( $coordinateStrings as $coordinateString ) {
+			if ( $supportsGeocoding ) {
+				$coordinate = \MapsGeocoders::attemptToGeocode( $coordinateString );
+
+				if ( $coordinate === false ) {
+					// TODO
+				}
+				else {
+					$coordinates[] = $coordinate;
+				}
+			}
+			else {
 				$parseResult = $coordinateParser->parse( $coordinateString );
 
 				if ( $parseResult->isValid() ) {
@@ -68,57 +96,9 @@ class LineParser extends StringValueParser {
 					// TODO
 				}
 			}
-
-			$line = new Line( $coordinates );
-
-			$this->handleCommonParams( $parts, $line );
-
-			return ResultObject::newSuccess( $line->getJSONObject() );
-		}
-		else {
-			return ResultObject::newErrorText( 'Not a line' ); // TODO
-		}
-	}
-
-	// TODO: integrate with parse, have more specific error and possibly just drop bad points rather then fail completely
-	protected function canBeParsed( $value )  {
-		// Split off meta-data
-		$value = explode( $this->metaDataSeparator, $value );
-		$value = $value[0];
-
-		$parts = explode( ':', $value );
-
-		// Need at least two points to create a line.
-		if ( count( $parts ) < 2 ) {
-			return false;
 		}
 
-		//setup geocode deps
-		$canGeoCode = \MapsGeocoders::canGeocode();
-
-		foreach ( $parts as $part ) {
-			$toIndex = strpos( $part, $this->metaDataSeparator );
-
-			if ( $toIndex !== false ) {
-				$part = substr( $part, 0, $toIndex );
-			}
-
-			if ( $canGeoCode ){
-				$valid = \MapsGeocoders::isLocation(
-					$part,
-					'', // TODO
-					false // TODO
-				);
-			} else {
-				$valid = \ValueParsers\GeoCoordinateParser::areCoordinates( $part );
-			}
-
-			if( !$valid ){
-				return false;
-			}
-		}
-
-		return true;
+		return $coordinates;
 	}
 
 	/**
