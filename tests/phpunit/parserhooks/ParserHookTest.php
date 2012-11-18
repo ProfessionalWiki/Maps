@@ -72,7 +72,7 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 
 	/**
 	 * @dataProvider processingProvider
-	 * @since 0.3
+	 * @since 3.0
 	 */
 	public function testParamProcessing( array $parameters, array $expectedValues ) {
 		$definitions = $this->getInstance()->getParamDefinitions();

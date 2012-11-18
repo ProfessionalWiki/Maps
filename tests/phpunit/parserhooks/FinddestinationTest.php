@@ -36,6 +36,39 @@ namespace Maps\Test;
 class FinddestinationTest extends ParserHookTest {
 
 	/**
+	 * @since 3.0
+	 * @var string[]
+	 */
+	protected $locations = array(
+		'4,2',
+		'4.2,-42',
+	);
+
+	/**
+	 * @since 3.0
+	 * @var array
+	 */
+	protected $bearings = array(
+		1,
+		42,
+		-42,
+		0,
+		4.2,
+	);
+
+	/**
+	 * @since 3.0
+	 * @var string[]
+	 */
+	protected $distances = array(
+		'42' => 42,
+		'0' => 0,
+		'42 m' => 42,
+		'42 km' => 42000,
+		'4.2 km' => 4200,
+	);
+
+	/**
 	 * @see ParserHookTest::getInstance
 	 * @since 2.0
 	 * @return \ParserHook
@@ -59,6 +92,39 @@ class FinddestinationTest extends ParserHookTest {
 		);
 
 		return $this->arrayWrap( $paramLists );
+	}
+
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 3.0
+	 * @return array
+	 */
+	public function processingProvider() {
+		$argLists = array();
+
+		$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+
+		foreach ( $this->distances as $distance => $expectedDistance ) {
+			foreach ( $this->bearings as $bearing ) {
+				foreach ( $this->locations as $location ) {
+					$values = array(
+						'distance' => (string)$distance,
+						'bearing' => (string)$bearing,
+						'location' => (string)$location,
+					);
+
+					$expected = array(
+						'distance' => $expectedDistance,
+						'bearing' => (float)$bearing,
+						'location' => new \MapsLocation( $coordinateParser->parse( $location )->getValue() ),
+					);
+
+					$argLists[] = array( $values, $expected );
+				}
+			}
+		}
+
+		return $argLists;
 	}
 
 }

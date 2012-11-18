@@ -60,7 +60,7 @@ class CoordinatesTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::processingProvider
-	 * @since 0.3
+	 * @since 3.0
 	 * @return array
 	 */
 	public function processingProvider() {

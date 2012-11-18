@@ -45,10 +45,10 @@ class DistanceTest extends ParserHookTest {
 	}
 
 	/**
-	 * @since 0.3
+	 * @since 3.0
 	 * @var array
 	 */
-	protected static $distances = array(
+	protected $distances = array(
 		'42' => 42,
 		'42m' => 42,
 		'42 m' => 42,
@@ -65,7 +65,7 @@ class DistanceTest extends ParserHookTest {
 	public function parametersProvider() {
 		$paramLists = array();
 
-		foreach ( array_keys( self::$distances ) as $distance ) {
+		foreach ( array_keys( $this->distances ) as $distance ) {
 			$paramLists[] = array( 'distance' => (string)$distance );
 		}
 
@@ -74,14 +74,14 @@ class DistanceTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::processingProvider
-	 * @since 0.3
+	 * @since 3.0
 	 * @return array
 	 */
 	public function processingProvider() {
 		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
 		$argLists = array();
 
-		foreach ( self::$distances as $input => $output ) {
+		foreach ( $this->distances as $input => $output ) {
 			$values = array(
 				'distance' => (string)$input,
 			);
