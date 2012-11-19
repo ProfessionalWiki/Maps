@@ -350,8 +350,8 @@ $messages['de'] = array(
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
 	'semanticmaps-kml-pagelinktext' => 'Der Text, der für die Links zur Seite genutzt werden soll. $1 wird dabei durch den Namen der Seite ersetzt.',
-	'semanticmaps-shapes-improperformat' => '$1 ist falsch formatiert. Siehe hierzu die Dokumention bezüglich Formatierungen.',
-	'semanticmaps-shapes-missingshape' => 'Für $1 wurden keine Formen. Siehe hierzu die Dokumention bezüglich verfügbarer Formen.',
+	'semanticmaps-shapes-improperformat' => '$1 ist falsch formatiert. Siehe hierzu die Dokumentation bezüglich Formatierungen.',
+	'semanticmaps-shapes-missingshape' => 'Für $1 wurden keine Formen gefunden. Siehe hierzu die Dokumentation bezüglich verfügbarer Formen.',
 );
 
 /** Lower Sorbian (dolnoserbski)
@@ -473,7 +473,7 @@ $messages['fi'] = array(
  * @author Wyz
  */
 $messages['fr'] = array(
-	'semanticmaps-desc' => "Permet d'afficher et de modifier les données de coordonnées stockées par l'extension Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples demo]).", # Fuzzy
+	'semanticmaps-desc' => "Permet d'afficher et de modifier les données de coordonnées stockées par l'extension Semantic MediaWiki ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps more info...]).",
 	'semanticmaps-unrecognizeddistance' => "La valeur $1 n'est pas une distance valide",
 	'semanticmaps-kml-link' => 'Voir le fichier KML',
 	'semanticmaps-default-kml-pagelink' => 'Voir l’article $1',
@@ -498,6 +498,8 @@ $messages['fr'] = array(
 	'semanticmaps-kml-title' => 'Le titre par défaut pour les résultats',
 	'semanticmaps-kml-linkabsolute' => 'Si les titres doivent être absolus ou non (c.à.d. relatifs)',
 	'semanticmaps-kml-pagelinktext' => 'Le texte à utiliser pour les liens vers la page, dans lesquels $1 sera remplacé par le titre de la page',
+	'semanticmaps-shapes-improperformat' => 'Format de $1 incorrect, veuillez vous reporter à la documentation pour le format attendu',
+	'semanticmaps-shapes-missingshape' => 'Aucune forme trouvée pour $1; veuillez voir dans la documentation les formes disponibles',
 );
 
 /** Franco-Provençal (arpetan)
@@ -548,6 +550,8 @@ $messages['gl'] = array(
 	'semanticmaps-kml-title' => 'O título por defecto para os resultados',
 	'semanticmaps-kml-linkabsolute' => 'Se as ligazóns deberían ser absolutas (contrario a relativas)',
 	'semanticmaps-kml-pagelinktext' => 'O texto a usar para as ligazóns cara á páxina, nas que "$1" será substituído polo título da páxina',
+	'semanticmaps-shapes-improperformat' => 'Formato incorrecto de "$1"; consulte a documentación sobre os formatos',
+	'semanticmaps-shapes-missingshape' => 'Non se atopou forma ningunha para "$1"; consulte a documentación sobre as formas dispoñibles',
 );
 
 /** Swiss German (Alemannisch)
