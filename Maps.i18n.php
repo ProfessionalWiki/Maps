@@ -1640,7 +1640,7 @@ $1',
  * @author Wyz
  */
 $messages['fr'] = array(
-	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://mapping.referata.com/wiki/Examples démonstration])", # Fuzzy
+	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])",
 	'right-geocode' => 'Géocode',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
