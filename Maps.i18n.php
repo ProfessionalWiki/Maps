@@ -1187,6 +1187,8 @@ $messages['diq'] = array(
 	'mapeditor-done-button' => 'Qeyd ke',
 	'mapeditor-remove-button' => 'Wedarne',
 	'mapeditor-import-button2' => 'Azare de',
+	'mapeditor-code-title' => 'Wiki kode',
+	'mapeditor-form-title' => 'Detaya timar ke',
 	'mapeditor-link-title-switcher-link-text' => 'Gıre',
 	'mapeditor-form-field-title' => 'Sername',
 	'mapeditor-form-field-text' => 'Metın',
@@ -3963,7 +3965,7 @@ $1',
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo])', # Fuzzy
+	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://www.semantic-mediawiki.org/wiki/Maps meer...])',
 	'right-geocode' => 'Geocoderen',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
@@ -4040,7 +4042,12 @@ Als dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderst
 	'maps-displaymap-par-icon' => 'Maakt het mogelijk het icoon voor alle markers in te stellen.',
 	'maps-displaymap-par-circles' => 'Weer te geven cirkels',
 	'maps-displaymap-par-lines' => 'Weer te geven regels',
+	'maps-displaymap-par-maxzoom' => 'Het maximale zoomniveau',
+	'maps-displaymap-par-minzoom' => 'Het minimale zoomniveau',
+	'maps-displaymap-par-polygons' => 'Weer te geven polygonen',
+	'maps-displaymap-par-rectangles' => 'Weer te geven rechthoeken',
 	'maps-displaymap-par-static' => 'Of de kaart statisch moet zijn',
+	'maps-displaymap-par-wmsoverlay' => 'WMS-overlay gebruiken',
 	'validation-error-invalid-location' => 'Parameter $1 moet een geldige locatie zijn.',
 	'validation-error-invalid-locations' => 'Parameter $1 moet een of meer geldige locaties zijn.',
 	'validation-error-invalid-width' => 'Parameter $1 moet een geldige breedte zijn.',
