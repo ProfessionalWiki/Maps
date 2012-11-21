@@ -16,6 +16,11 @@ class SMQueryHandler {
 	protected $queryResult;
 	protected $outputmode;
 
+	/**
+	 * @since 2.0
+	 *
+	 * @var array
+	 */
 	protected $geoShapes = array(
 		'lines' => array(),
 		'locations' => array(),
@@ -27,7 +32,7 @@ class SMQueryHandler {
 	 *
 	 * @since 0.7.3
 	 *
-	 * @var false or string
+	 * @var string|boolean false
 	 */
 	protected $template = false;
 
@@ -294,7 +299,17 @@ class SMQueryHandler {
 		}
 
 		$icon = $this->getLocationIcon( $row );
-		$this->geoShapes['locations'] = array_merge( $this->geoShapes['locations'], $this->buildLocationsList( $locations, Title::newFromText( $title ), $text, $icon, $properties ) );
+
+		$this->geoShapes['locations'] = array_merge(
+			$this->geoShapes['locations'],
+			$this->buildLocationsList(
+				$locations,
+				$text,
+				$icon,
+				$properties,
+				Title::newFromText( $title )
+			)
+		);
 	}
 
 	/**
@@ -412,29 +427,39 @@ class SMQueryHandler {
 	 *
 	 * @since 1.0
 	 *
-	 * @param array of MapsLocation $locations
-	 * @param string $title
+	 * @param MapsLocation[] $locations
 	 * @param string $text
 	 * @param string $icon
 	 * @param array $properties
+	 * @param Title|null $title
 	 *
-	 * @return array of MapsLocation
+	 * @return MapsLocation[]
 	 */
-	protected function buildLocationsList( array $locations, Title $title, $text, $icon, array $properties ) {
+	protected function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
 		if ( $this->template ) {
 			global $wgParser;
-			$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
+			$parser = $wgParser;
 		}
 		else {
 			$text .= implode( '<br />', $properties );
 		}
 
-		$titleOutput = $this->hideNamespace ? $title->getText() : $title->getFullText();
+		if ( $title === null ) {
+			$titleOutput = '';
+		}
+		else {
+			$titleOutput = $this->hideNamespace ? $title->getText() : $title->getFullText();
+		}
 
 		foreach ( $locations as &$location ) {
 			if ( $this->template ) {
 				$segments = array_merge(
-					array( $this->template, 'title=' . $titleOutput, 'latitude=' . $location->getLatitude(), 'longitude=' . $location->getLongitude() ),
+					array(
+						$this->template,
+						'title=' . $titleOutput,
+						'latitude=' . $location->getLatitude(),
+						'longitude=' . $location->getLongitude()
+					),
 					$properties
 				);
 
