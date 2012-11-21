@@ -1015,8 +1015,8 @@ $messages['nl'] = array(
 	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
 	'semanticmaps-kml-linkabsolute' => 'Moeten verwijzingen absoluut zijn (in tegenstelling tot relatief)',
 	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de verwijzingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
-	'semanticmaps-shapes-improperformat' => 'Onjuiste opmaak van  $1 , raadpleeg de documentatie voor de juiste opmaak',
-	'semanticmaps-shapes-missingshape' => 'Geen vormen gevonden voor $1, raadpleeg de documentatie voor beschikbare vormen',
+	'semanticmaps-shapes-improperformat' => 'Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak',
+	'semanticmaps-shapes-missingshape' => 'Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen',
 );
 
 /** Norwegian Nynorsk (norsk (nynorsk)‎)
