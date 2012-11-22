@@ -67,6 +67,11 @@ $specialPageAliases['nl'] = array(
 	'MapEditor' => array( 'Kaarteditor' ),
 );
 
+/** Sicilian (sicilianu) */
+$specialPageAliases['scn'] = array(
+	'MapEditor' => array( 'EditorMappa' ),
+);
+
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'MapEditor' => array( 'HaritaDüzenleyici', 'HaritaEditörü' ),
