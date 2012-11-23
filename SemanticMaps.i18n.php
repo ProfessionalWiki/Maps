@@ -7,7 +7,7 @@
  * @ingroup Semantic Maps
  *
  * @licence GNU GPL v2+
- * @author Jeroen De Dauw < jeroendedauw@gmail.com
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
 $messages = array();
@@ -53,8 +53,8 @@ $messages['en'] = array(
 	'semanticmaps-kml-pagelinktext' => 'The text to use for the links to the page, in which $1 will be replaced by the page title',
 
 	//Validation Errors
-	'semanticmaps-shapes-improperformat' => 'Improper formatting of $1, please see documentation for formatting',
-	'semanticmaps-shapes-missingshape' => 'No shapes found for $1, Please see documentation for available shapes',
+	'semanticmaps-shapes-improperformat' => 'Improper formatting of $1. Please see documentation for formatting',
+	'semanticmaps-shapes-missingshape' => 'No shapes found for $1. Please see documentation for available shapes',
 
 );
 
