@@ -1238,7 +1238,7 @@ $messages['sk'] = array(
  * @author Lesko987
  */
 $messages['sl'] = array(
-	'semanticmaps-desc' => 'Omogoča ogled in urejanje podatke o lokaciji, shranjene z razširitvijo Semantic MediaWiki ([http://mapping.referata.com/wiki/Examples Primeri]).', # Fuzzy
+	'semanticmaps-desc' => 'Omogoča ogled in urejanje podatkov o lokaciji, shranjenih z razširitvijo Semantic MediaWiki ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps več informacij ...]).',
 	'semanticmaps-unrecognizeddistance' => 'Vrednost $1 ni pravilna razdalja.',
 	'semanticmaps-kml-link' => 'Ogled datoteke KML',
 	'semanticmaps-default-kml-pagelink' => 'Poglej stran $1',
