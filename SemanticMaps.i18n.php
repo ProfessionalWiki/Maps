@@ -650,6 +650,8 @@ $messages['hsb'] = array(
 	'semanticmaps-kml-title' => 'Standardny titul za wuslědki',
 	'semanticmaps-kml-linkabsolute' => 'Hač wotkazy maja absolutne być abo nic (t.r. relatiwne)',
 	'semanticmaps-kml-pagelinktext' => 'Tekst, kotryž ma so za wotkazy k tej stronje wužiwać, w kotrejž $1 so přez titul strony naruna',
+	'semanticmaps-shapes-improperformat' => '$1 je so wopak formatował. Prošu hlej dokumentaciju za formatowanje',
+	'semanticmaps-shapes-missingshape' => 'Žane formy njejsu za $1 namakałi. Prošu hlej dokumentaciju za k dispoziciji stejace formy.',
 );
 
 /** Hungarian (magyar)
