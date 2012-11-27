@@ -1580,14 +1580,17 @@ $messages['fa'] = array(
  * @author Beluga
  * @author Cimon Avaro
  * @author Crt
+ * @author Nedergard
  * @author Nike
  * @author Str4nd
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'maps-desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://mapping.referata.com/wiki/Maps_examples demo]).', # Fuzzy
+	'maps-desc' => 'Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja ([http://www.semantic-mediawiki.org/wiki/Maps lisätietoja]).',
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
+	'maps-load-failed' => 'Karttaa ei voitu ladata.',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'muut',
 	'maps-layer-property' => 'Ominaisuus',
 	'maps-layer-value' => 'Arvo',
