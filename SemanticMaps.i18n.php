@@ -450,13 +450,24 @@ $messages['fa'] = array(
 /** Finnish (suomi)
  * @author Beluga
  * @author Crt
+ * @author Nedergard
  * @author Str4nd
  */
 $messages['fi'] = array(
+	'semanticmaps-desc' => 'Mahdollistaa Semantic MediaWiki -laajennuksen avulla tallennettujen koordinaattitietojen näyttämisen ja muokkaamisen ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps lisätietoja]).',
+	'semanticmaps-unrecognizeddistance' => 'Arvoa  $1  ei ole sallittu etäisyys.',
+	'semanticmaps-kml-link' => 'Näytä KLM-tiedosto',
+	'semanticmaps-default-kml-pagelink' => 'Näytä sivu $1',
+	'semanticmaps-latitude' => 'Leveyspiiri: $1',
+	'semanticmaps-longitude' => 'Pituuspiiri: $1',
+	'semanticmaps-altitude' => 'Korkeus: $1',
 	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
+	'semanticmaps-updatemap' => 'Päivitä kartta',
 	'semanticmaps-forminput-remove' => 'Poista',
 	'semanticmaps-forminput-add' => 'Lisää',
 	'semanticmaps-forminput-locations' => 'Sijainnit',
+	'semanticmaps-kml-title' => 'Tulossivun oletusotsikko',
+	'semanticmaps-shapes-improperformat' => '$1 on muotoiltu väärin. Katso muotoilun dokumentaatiota.',
 );
 
 /** French (français)
