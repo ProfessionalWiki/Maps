@@ -31,7 +31,7 @@ $classes['Maps\Polygon'] 				= __DIR__ . '/includes/elements/Polygon.php';
 $classes['Maps\Rectangle'] 				= __DIR__ . '/includes/elements/Rectangle.php';
 
 
-$classes['ApiGeocode'] 					= __DIR__ . '/includes/api/ApiGeocode.php';
+$classes['Maps\Api\Geocode'] 			= __DIR__ . '/includes/api/ApiGeocode.php';
 
 $classes['Maps\ServiceParam'] 			= __DIR__ . '/includes/ServiceParam.php';
 

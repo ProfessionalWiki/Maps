@@ -1,18 +1,20 @@
 <?php
 
+namespace Maps\Api;
+use ApiBase;
+
 /**
  * API module for geocoding.
  *
  * @since 1.0.3
  *
- * @file ApiGeocode.php
  * @ingroup Maps
  * @ingroup API
  *
  * @licence GNU GPL v2++
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ApiGeocode extends ApiBase {
+class Geocode extends ApiBase {
 	
 	public function __construct( $main, $action ) {
 		parent::__construct( $main, $action );
@@ -97,7 +99,7 @@ class ApiGeocode extends ApiBase {
 	}	
 	
 	public function getVersion() {
-		return __CLASS__ . ': $Id$';
+		return __CLASS__ . '-' . Maps_VERSION;
 	}		
 	
 }

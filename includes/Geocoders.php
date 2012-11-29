@@ -29,9 +29,9 @@ final class Geocoders {
 	 * 
 	 * @since 0.7
 	 * 
-	 * @var array of string => \Maps\Geocoder
+	 * @var Geocoder[]
 	 */
-	protected static $geocoders = array();	
+	protected static $geocoders = array();
 	
 	/**
 	 * Associative with geoservice identifiers as keys containing the class
@@ -51,7 +51,7 @@ final class Geocoders {
 	 *
 	 * @var array
 	 */
-	private static $globalGeocoderCache = array();	
+	private static $globalGeocoderCache = array();
 	
 	/**
 	 * Can geocoding happen, ie are there any geocoders available.
