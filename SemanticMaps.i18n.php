@@ -461,6 +461,7 @@ $messages['fi'] = array(
 	'semanticmaps-latitude' => 'Leveyspiiri: $1',
 	'semanticmaps-longitude' => 'Pituuspiiri: $1',
 	'semanticmaps-altitude' => 'Korkeus: $1',
+	'semanticmaps_lookupcoordinates' => 'Hae koordinaatit',
 	'semanticmaps_enteraddresshere' => 'Kirjoita osoite tähän',
 	'semanticmaps-updatemap' => 'Päivitä kartta',
 	'semanticmaps-forminput-remove' => 'Poista',
