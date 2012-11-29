@@ -122,7 +122,7 @@
 		};
 
 		this.addLine = function (properties) {
-			var pos = new Array();
+			var pos = [];
 			for (var x = 0; x < properties.pos.length; x++) {
 				var point = new OpenLayers.Geometry.Point(properties.pos[x].lon, properties.pos[x].lat);
 				point.transform(
@@ -144,7 +144,7 @@
 		};
 
 		this.addPolygon = function (properties) {
-			var pos = new Array();
+			var pos = [];
 			for (var x = 0; x < properties.pos.length; x++) {
 				var point = new OpenLayers.Geometry.Point(properties.pos[x].lon, properties.pos[x].lat);
 				point.transform(
