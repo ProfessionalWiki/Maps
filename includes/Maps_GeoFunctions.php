@@ -56,7 +56,11 @@ final class MapsGeoFunctions {
 
 		$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
 
-		return 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );	
+		$distance = 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
+
+		assert( $distance >= 0 );
+
+		return $distance;
 	}
 	
 	/**
