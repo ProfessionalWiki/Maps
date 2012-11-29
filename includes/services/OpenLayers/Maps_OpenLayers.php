@@ -45,13 +45,16 @@ class MapsOpenLayers extends MapsMappingService {
 			'default' => $egMapsOLControls,
 			'values' => self::getControlNames(),
 			'message' =>'maps-openlayers-par-controls',
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'islist' => true,
+			'tolower' => true,
 		);
 
 		$params['layers'] = array(
 			'default' => $egMapsOLLayers,
 			'message' =>'maps-openlayers-par-layers',
 			'manipulatedefault' => true,
+			'islist' => true,
+			'tolower' => true,
 
 			// new MapsParamOLLayers() FIXME
 			// FIXME new CriterionOLLayer()
@@ -66,7 +69,8 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['searchmarkers'] = array(
 			'default' => '',
 			'message' => 'maps-openlayers-par-searchmarkers',
-			// new CriterionSearchMarkers() FIXME
+			'values' => array( 'title', 'all', '' ),
+			'tolower' => true,
 		);
 	}
 	
