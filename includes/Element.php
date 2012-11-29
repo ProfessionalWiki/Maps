@@ -67,7 +67,7 @@ class OptionsObject {
 	 *
 	 * @var array
 	 */
-	protected $options;
+	protected $options = array();
 
 	/**
 	 * @since 3.0

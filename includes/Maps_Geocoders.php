@@ -129,7 +129,9 @@ final class MapsGeocoders {
 			$parseResult = $coordinateParser->parse( $coordsOrAddress );
 
 			if ( $parseResult->isValid() ) {
-				return $parseResult->getValue();
+				$value = $parseResult->getValue();
+				assert( $value instanceof GeoCoordinateValue );
+				return $value;
 			} else {
 				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
 			}
@@ -221,6 +223,7 @@ final class MapsGeocoders {
 	
 			// This means the cache returned an already computed set of coordinates.
 			if ( $cacheResult !== false ) {
+				assert( $cacheResult instanceof GeoCoordinateValue );
 				return $cacheResult;
 			}				
 		}
@@ -233,15 +236,19 @@ final class MapsGeocoders {
 		if ( !$coordinates && strpos( $address, ',' ) !== false ) {
 			$coordinates = $geocoder->geocode( str_replace( ',', '', $address ) );
 		}
-		
-		if ( $coordinates !== false ) {
-			self::cacheWrite( $address, $coordinates );
+
+		if ( $coordinates === false ) {
+			return false;
 		}
-		
-		return new GeoCoordinateValue(
+
+		$coordinates = new GeoCoordinateValue(
 			$coordinates['lat'],
 			$coordinates['lon']
 		);
+		
+		self::cacheWrite( $address, $coordinates );
+
+		return $coordinates;
 	}
 	
 	/**
@@ -252,7 +259,7 @@ final class MapsGeocoders {
 	 * 
 	 * @param string $address
 	 * 
-	 * @return array or false
+	 * @return GeoCoordinateValue|boolean false
 	 */
 	protected static function cacheRead( $address ) {
 		global $egMapsEnableGeoCache;
@@ -271,9 +278,9 @@ final class MapsGeocoders {
 	 * @since 0.7
 	 * 
 	 * @param string $address
-	 * @param array $coordinates
+	 * @param GeoCoordinateValue $coordinates
 	 */
-	protected static function cacheWrite( $address, array $coordinates ) {
+	protected static function cacheWrite( $address, GeoCoordinateValue $coordinates ) {
 		global $egMapsEnableGeoCache;
 		
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.

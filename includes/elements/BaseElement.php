@@ -124,11 +124,13 @@ abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMap
 	 * @return array
 	 */
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
-		return array(
-			'text' => $this->hasText() ? $this->getText() : $defText ,
-			'title' => $this->hasTitle() ? $this->getTitle() : $defTitle ,
-			'link' => $this->getLink() ,
-		);
+		$array = array();
+
+		$array['text'] = $this->hasText() ? $this->getText() : $defText;
+		$array['title'] = $this->hasTitle() ? $this->getTitle() : $defTitle;
+		$array['title'] = $this->options->hasOption( 'link' ) ? $this->getLink() : '';
+
+		return $array;
 	}
 
 	/**

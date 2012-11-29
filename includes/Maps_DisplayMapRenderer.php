@@ -121,19 +121,17 @@ class MapsDisplayMapRenderer {
 		 * @var MapsLocation $location
 		 */
 		foreach ( $params['coordinates'] as $location ) {
-			if ( $location->isValid() ) {
-				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '',$visitedIconUrl);
+			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '',$visitedIconUrl);
 
-				$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
-				$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
-				$jsonObj['inlineLabel'] = strip_tags($parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),'<a><img>');
+			$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
+			$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
+			$jsonObj['inlineLabel'] = strip_tags($parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),'<a><img>');
 
-				$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
-				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
-				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+			$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
+			$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
+			$jsonObj['title'] = strip_tags( $jsonObj['title'] );
 
-				$params['locations'][] = $jsonObj;
-			}
+			$params['locations'][] = $jsonObj;
 		}
 
 		unset( $params['coordinates'] );

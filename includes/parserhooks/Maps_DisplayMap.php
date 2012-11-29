@@ -13,10 +13,6 @@
  */
 class MapsDisplayMap extends ParserHook {
 
-	public static function initialize() {
-		
-	}	
-	
 	/**
 	 * Gets the name of the parser hook.
 	 * @see ParserHook::getName

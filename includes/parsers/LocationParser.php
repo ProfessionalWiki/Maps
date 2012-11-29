@@ -93,6 +93,7 @@ class LocationParser extends StringValueParser {
 				return $this->newErrorResult( 'Geocoding failed' )->getError();
 			}
 
+			assert( $location instanceof GeoCoordinateValue );
 			return $location;
 		}
 
@@ -103,7 +104,9 @@ class LocationParser extends StringValueParser {
 			return $parseResult->getError();
 		}
 
-		return $parseResult->getValue();
+		$location = $parseResult->getValue();
+		assert( $location instanceof GeoCoordinateValue );
+		return $location;
 	}
 
 }
