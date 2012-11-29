@@ -7,6 +7,10 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 === Maps 3.0 ===
 (dev)
 
+In this version a big part of the PHP codebase has been rewritten to decrease technical debt and thus
+facilatete maintenance, new feature delopment and debugging. Many tests have been added and a lot of
+bugs have been found and fixed. No big new features have been added.
+
 ; Compatibility changes
 
 * Changed minimum Validator version from 0.5 to 1.0.
@@ -26,6 +30,7 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 ; Bug fixes
 
 * Fixed autoinfowindows functionality.
+* Fixed various bugs in geocoordinate parsing and formatting.
 
 === Maps 2.0 ===
 (2012-10-05)
