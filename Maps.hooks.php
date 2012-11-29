@@ -52,6 +52,7 @@ final class MapsHooks {
 		// @codeCoverageIgnoreStart
 		$testFiles = array(
 			'elements/Circle',
+			'elements/Line',
 
 			'parserhooks/Coordinates',
 			'parserhooks/DisplayMap',

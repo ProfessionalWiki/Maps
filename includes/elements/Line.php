@@ -43,6 +43,8 @@ class Line extends \MapsBaseStrokableElement {
 	 * @since 3.0
 	 *
 	 * @param GeoCoordinateValue[] $coordinates
+	 *
+	 * @throws MWException
 	 */
 	public function __construct( array $coordinates = array() ) {
 		foreach ( $coordinates as $coordinate ) {
