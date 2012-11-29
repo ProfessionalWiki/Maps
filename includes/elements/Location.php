@@ -2,6 +2,7 @@
 
 namespace Maps;
 use DataValues\GeoCoordinateValue;
+use MWException;
 
 /**
  * Class describing a single location (geographical point).
@@ -47,27 +48,6 @@ class Location extends \Maps\BaseElement {
 	protected $group = '';
 
 	/**
-	 * @since 0.7.1
-	 *
-	 * @var string Element of the Maps_COORDS_ enum
-	 */
-	protected $format;
-
-	/**
-	 * @since 0.7.1
-	 *
-	 * @var boolean
-	 */
-	protected $directional;
-
-	/**
-	 * @since 0.7.1
-	 *
-	 * @var string
-	 */
-	protected $separator;
-
-	/**
 	 * @var string
 	 * @since 2.0
 	 */
@@ -86,12 +66,11 @@ class Location extends \Maps\BaseElement {
 	 *
 	 * @param float $lat
 	 * @param float $lon
-	 * @param string $format
 	 *
 	 * @return Location
 	 */
-	public static function newFromLatLon( $lat, $lon, $format = Maps_COORDS_FLOAT ) {
-		return new self( new GeoCoordinateValue( $lat, $lon ), $format );
+	public static function newFromLatLon( $lat, $lon ) {
+		return new self( new GeoCoordinateValue( $lat, $lon ) );
 	}
 
 	/**
@@ -100,31 +79,30 @@ class Location extends \Maps\BaseElement {
 	 * @since 1.0
 	 *
 	 * @param string $address
-	 * @param string $format
+	 * @deprecated
 	 *
 	 * @return Location
+	 * @throws MWException
 	 */
-	public static function newFromAddress( $address, $format = Maps_COORDS_FLOAT ) {
-		// TODO: geocode $address
-		return new static( $address, $format );
+	public static function newFromAddress( $address ) {
+		$address = \MapsGeocoders::attemptToGeocode( $address );
+
+		if ( $address === false ) {
+			throw new MWException( 'Could not geocode address' );
+		}
+
+		return new static( $address );
 	}
 
 	/**
 	 * Constructor.
 	 *
 	 * @param GeoCoordinateValue $coordinates
-	 * @param string $format
-	 * @param boolean $directional
-	 * @param string $separator
 	 *
 	 * @since 3.0
 	 */
-	public function __construct( GeoCoordinateValue $coordinates, $format = Maps_COORDS_FLOAT, $directional = false, $separator = ',' ) {
+	public function __construct( GeoCoordinateValue $coordinates ) {
 		parent::__construct();
-
-		$this->format = $format;
-		$this->directional = $directional;
-		$this->separator = $separator;
 		$this->coordinates = $coordinates;
 	}
 
