@@ -56,7 +56,7 @@ class PolygonTest extends LineTest {
 		$this->assertTrue( $polygon->isOnlyVisibleOnHover() );
 
 		$polygon->setOnlyVisibleOnHover( false );
-		$this->assertTrue( $polygon->isOnlyVisibleOnHover() );
+		$this->assertFalse( $polygon->isOnlyVisibleOnHover() );
 	}
 
 }

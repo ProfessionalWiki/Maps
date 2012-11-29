@@ -54,6 +54,7 @@ final class MapsHooks {
 			'elements/Circle',
 			'elements/Line',
 			'elements/Polygon',
+			'elements/Rectangle',
 
 			'parserhooks/Coordinates',
 			'parserhooks/DisplayMap',

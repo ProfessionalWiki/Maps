@@ -119,15 +119,4 @@ class Rectangle extends \MapsBaseFillableElement {
 		return array_merge( $parentArray , $array );
 	}
 
-	/**
-	 * Returns if the rectangle is valid.
-	 *
-	 * @since 3.0
-	 *
-	 * @return boolean
-	 */
-	public function isValid() {
-		return true;
-	}
-
 }
