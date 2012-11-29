@@ -1,10 +1,10 @@
 <?php
 
-namespace Maps;
-use MWException;
+namespace Maps\Test;
+use Maps\Polygon;
 
 /**
- * Class representing a polygon.
+ * Unit tests for the Maps\Polygon class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,43 +23,43 @@ use MWException;
  *
  * @since 3.0
  *
- * @ingroup Maps
+ * @ingroup MapsTest
+ *
+ * @group Maps
+ * @group MapsElement
  *
  * @licence GNU GPL v2+
- * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Polygon extends Line implements \iHoverableMapElement {
+class PolygonTest extends LineTest {
 
 	/**
+	 * @see BaseElementTest::getClass
+	 *
 	 * @since 3.0
 	 *
-	 * @var boolean
+	 * @return string
 	 */
-	protected $onlyVisibleOnHover = false;
-
-	/**
-	 * @since 3.0
-	 *
-	 * @param boolean $visible
-	 *
-	 * @throws MWException
-	 */
-	public function setOnlyVisibleOnHover( $visible ) {
-		if ( !is_bool( $visible ) ) {
-			throw new MWException( '$visibel should be a boolean' );
-		}
-
-		$this->onlyVisibleOnHover = $visible;
+	public function getClass() {
+		return 'Maps\Polygon';
 	}
 
 	/**
-	 * @since 3.0
-	 *
-	 * @return boolean
+	 * @dataProvider instanceProvider
+	 * @param \Maps\Polygon $polygon
+	 * @param array $arguments
 	 */
-	public function isOnlyVisibleOnHover() {
-		return $this->onlyVisibleOnHover;
+	public function testSetOnlyVisibleOnHover( Polygon $polygon, array $arguments ) {
+		$this->assertFalse( $polygon->isOnlyVisibleOnHover() );
+
+		$polygon->setOnlyVisibleOnHover( true );
+		$this->assertTrue( $polygon->isOnlyVisibleOnHover() );
+
+		$polygon->setOnlyVisibleOnHover( false );
+		$this->assertTrue( $polygon->isOnlyVisibleOnHover() );
 	}
 
 }
+
+
+

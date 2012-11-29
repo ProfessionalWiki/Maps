@@ -53,6 +53,7 @@ final class MapsHooks {
 		$testFiles = array(
 			'elements/Circle',
 			'elements/Line',
+			'elements/Polygon',
 
 			'parserhooks/Coordinates',
 			'parserhooks/DisplayMap',
