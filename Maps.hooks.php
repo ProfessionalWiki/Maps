@@ -54,6 +54,7 @@ final class MapsHooks {
 			'elements/Circle',
 			'elements/ImageOverlay',
 			'elements/Line',
+			'elements/Location',
 			'elements/Polygon',
 			'elements/Rectangle',
 

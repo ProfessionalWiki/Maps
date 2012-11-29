@@ -58,41 +58,26 @@ class LocationTest extends BaseElementTest {
 		$argLists[] = array( false );
 		$argLists[] = array( false, '' );
 		$argLists[] = array( false, '4,2' );
-		$argLists[] = array( false, new GeoCoordinateValue( 4, 2 ) );
+		$argLists[] = array( false, array() );
+		$argLists[] = array( false, array( new GeoCoordinateValue( 4, 2 ) ) );
 
-		$argLists[] = array( true, array() );
-		$argLists[] = array( true, array( new GeoCoordinateValue( 4, 2 ) ) );
-
-		$argLists[] = array(
-			true,
-			array(
-				new GeoCoordinateValue( 4, 2 ),
-				new GeoCoordinateValue( 2, 4 ),
-				new GeoCoordinateValue( 42, 42 ),
-			)
-		);
-
-		$argLists[] = array( false, array( '~=[,,_,,]:3' ) );
-		$argLists[] = array( false, array( new GeoCoordinateValue( 4, 2 ), '~=[,,_,,]:3' ) );
-		$argLists[] = array( false, array( '~=[,,_,,]:3', new GeoCoordinateValue( 4, 2 ) ) );
+		$argLists[] = array( true, new GeoCoordinateValue( 4, 2 ) );
+		$argLists[] = array( true, new GeoCoordinateValue( 42, 42 ) );
+		$argLists[] = array( true, new GeoCoordinateValue( -4.2, -42 ) );
 
 		return $argLists;
 	}
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Line $line
+	 * @param Location $location
 	 * @param array $arguments
 	 */
-	public function testGetLineCoordinates( Line $line, array $arguments ) {
-		$coordinates = $line->getLineCoordinates();
+	public function testGetLineCoordinates( Location $location, array $arguments ) {
+		$coordinates = $location->getCoordinates();
 
-		$this->assertInternalType( 'array', $coordinates );
-		$this->assertEquals( count( $arguments[0] ), count( $coordinates ) );
-
-		foreach ( $coordinates as $geoCoordinate ) {
-			$this->assertInstanceOf( 'DataValues\GeoCoordinateValue', $geoCoordinate );
-		}
+		$this->assertType( 'DataValues\GeoCoordinateValue', $coordinates );
+		$this->assertTrue( $coordinates->equals( $arguments[0] ) );
 	}
 
 }
