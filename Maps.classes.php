@@ -60,6 +60,9 @@ $classes['MapsGoogleGeocoder'] 			= __DIR__ . '/includes/geocoders/Maps_GoogleGe
 $classes['SpecialMapEditor'] 			= __DIR__ . '/includes/specials/SpecialMapEditor.php';
 
 $classes['Maps\Test\BaseElementTest'] 	= __DIR__ . '/tests/phpunit/elements/BaseElementTest.php';
+$classes['Maps\Test\LineTest'] 			= __DIR__ . '/tests/phpunit/elements/LineTest.php';
+$classes['Maps\Test\RectangleTest'] 	= __DIR__ . '/tests/phpunit/elements/RectangleTest.php';
+
 $classes['Maps\Test\ParserHookTest'] 	= __DIR__ . '/tests/phpunit/parserhooks/ParserHookTest.php';
 
 return $classes;

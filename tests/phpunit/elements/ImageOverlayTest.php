@@ -1,10 +1,10 @@
 <?php
 
-namespace Maps;
-use \DataValues\GeoCoordinateValue;
+namespace Maps\Test;
+use Maps\ImageOverlay;
 
 /**
- * Class representing an image overlay.
+ * Unit tests for the Maps\Rectangle class.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,42 +23,60 @@ use \DataValues\GeoCoordinateValue;
  *
  * @since 3.0
  *
- * @ingroup Maps
+ * @ingroup MapsTest
+ *
+ * @group Maps
+ * @group MapsElement
  *
  * @licence GNU GPL v2+
- * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ImageOverlay extends Rectangle {
+class ImageOverlayTest extends RectangleTest {
 
 	/**
-	 * @since 3.0
+	 * @see BaseElementTest::getClass
 	 *
-	 * @var string
-	 */
-	protected $image;
-
-	/**
-	 * Constructor.
-	 *
-	 * @since 3.0
-	 *
-	 * @param GeoCoordinateValue $boundsNorthEast
-	 * @param GeoCoordinateValue $boundsSouthWest
-	 * @param string $image
-	 */
-	public function __construct( GeoCoordinateValue $boundsNorthEast, GeoCoordinateValue $boundsSouthWest, $image ) {
-		parent::__construct( $boundsNorthEast, $boundsSouthWest );
-		$this->image = $image;
-	}
-
-	/**
 	 * @since 3.0
 	 *
 	 * @return string
 	 */
-	public function getImage() {
-		return $this->image;
+	public function getClass() {
+		return 'Maps\ImageOverlay';
+	}
+
+	/**
+	 * @see BaseElementTest::constructorProvider
+	 *
+	 * @since 3.0
+	 *
+	 * @return array
+	 */
+	public function constructorProvider() {
+		$argLists = array();
+
+		foreach ( parent::constructorProvider() as $argList ) {
+			$argList[0] = false;
+			$argLists[] = $argList;
+		}
+
+		foreach ( parent::constructorProvider() as $argList ) {
+			$argList[] = 'Foo.png';
+			$argLists[] = $argList;
+		}
+
+		return $argLists;
+	}
+
+	/**
+	 * @dataProvider instanceProvider
+	 * @param \Maps\ImageOverlay $imageOverlay
+	 * @param array $arguments
+	 */
+	public function testGetImage( ImageOverlay $imageOverlay, array $arguments ) {
+		$this->assertEquals( $arguments[2], $imageOverlay->getImage() );
 	}
 
 }
+
+
+
