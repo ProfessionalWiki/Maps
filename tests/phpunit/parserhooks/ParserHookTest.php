@@ -53,8 +53,9 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 	 * @dataProvider parametersProvider
 	 * @since 2.0
 	 * @param array $parameters
+	 * @param string|null $expected
 	 */
-	public function testRender( array $parameters ) {
+	public function testRender( array $parameters, $expected = null ) {
 		$parserHook = $this->getInstance();
 
 		$parser = new \Parser();
@@ -64,6 +65,10 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 
 		$renderResult = $parserHook->renderTag( null, $parameters, $parser );
 		$this->assertInternalType( 'string', $renderResult );
+
+		if ( $expected !== null ) {
+			$this->assertEquals( $expected, $renderResult );
+		}
 	}
 
 	public function processingProvider() {

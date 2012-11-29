@@ -52,10 +52,28 @@ class CoordinatesTest extends ParserHookTest {
 	public function parametersProvider() {
 		$paramLists = array();
 
-		$paramLists[] = array( 'location' => '4,2' );
-		$paramLists[] = array( 'location' => '55 S, 37.6176330 W' );
+		$paramLists[] = array(
+			array(
+				'location' => '4,2'
+			),
+			'4° 0\' 0", 2° 0\' 0"'
+		);
+		$paramLists[] = array(
+			array(
+				'location' => '55 S, 37.6176330 W'
+			),
+			'-55° 0\' 0", -37° 37\' 3.4788"'
+		);
 
-		return $this->arrayWrap( $paramLists );
+		$paramLists[] = array(
+			array(
+				'location' => '4,2',
+				'format' => 'float',
+			),
+			'4, 2'
+		);
+
+		return $paramLists;
 	}
 
 	/**
