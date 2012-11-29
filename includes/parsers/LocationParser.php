@@ -86,8 +86,8 @@ class LocationParser extends StringValueParser {
 	 * @return GeoCoordinateValue|Error
 	 */
 	protected function getCoordinates( $location ) {
-		if ( $this->supportGeocoding && \MapsGeocoders::canGeocode() ) {
-			$location = \MapsGeocoders::attemptToGeocode( $location );
+		if ( $this->supportGeocoding && \Maps\Geocoders::canGeocode() ) {
+			$location = \Maps\Geocoders::attemptToGeocode( $location );
 
 			if ( $location === false ) {
 				return $this->newErrorResult( 'Geocoding failed' )->getError();

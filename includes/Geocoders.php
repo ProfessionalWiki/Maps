@@ -1,6 +1,8 @@
 <?php
 
+namespace Maps;
 use DataValues\GeoCoordinateValue;
+use MWException;
 
 /**
  * Class for geocoder functionality of the Maps extension. 
@@ -15,7 +17,7 @@ use DataValues\GeoCoordinateValue;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class MapsGeocoders {
+final class Geocoders {
 	
 	/**
 	 * Associative with geoservice identifiers as keys containing instances of
@@ -27,7 +29,7 @@ final class MapsGeocoders {
 	 * 
 	 * @since 0.7
 	 * 
-	 * @var array of string => MapsGeocoder
+	 * @var array of string => \Maps\Geocoder
 	 */
 	protected static $geocoders = array();	
 	
@@ -125,7 +127,7 @@ final class MapsGeocoders {
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
-			$coordinateParser = new ValueParsers\GeoCoordinateParser();
+			$coordinateParser = new \ValueParsers\GeoCoordinateParser();
 			$parseResult = $coordinateParser->parse( $coordsOrAddress );
 
 			if ( $parseResult->isValid() ) {
@@ -310,7 +312,7 @@ final class MapsGeocoders {
 	 * 
 	 * @param string $geocoderIdentifier
 	 * 
-	 * @return MapsGeocoder or false
+	 * @return \Maps\Geocoder or false
 	 */
 	protected static function getValidGeocoderInstance( $geocoderIdentifier ) {
 		return self::getGeocoderInstance( self::getValidGeocoderIdentifier( $geocoderIdentifier ) );
@@ -325,7 +327,7 @@ final class MapsGeocoders {
 	 * 
 	 * @param string $geocoderIdentifier
 	 * 
-	 * @return MapsGeocoder or false
+	 * @return \Maps\Geocoder or false
 	 */
 	protected static function getGeocoderInstance( $geocoderIdentifier ) {
 		if ( !array_key_exists( $geocoderIdentifier, self::$geocoders ) ) {

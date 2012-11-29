@@ -109,9 +109,9 @@ class MapsGeodistance extends ParserHook {
 	 * @throws MWException
 	 */
 	public function render( array $parameters ) {
-		if ( MapsGeocoders::canGeocode() ) {
-			$start = MapsGeocoders::attemptToGeocode( $parameters['location1'], $parameters['geoservice'], $parameters['mappingservice'] );
-			$end = MapsGeocoders::attemptToGeocode( $parameters['location2'], $parameters['geoservice'], $parameters['mappingservice'] );
+		if ( \Maps\Geocoders::canGeocode() ) {
+			$start = \Maps\Geocoders::attemptToGeocode( $parameters['location1'], $parameters['geoservice'], $parameters['mappingservice'] );
+			$end = \Maps\Geocoders::attemptToGeocode( $parameters['location2'], $parameters['geoservice'], $parameters['mappingservice'] );
 		} else {
 			$parser = new GeoCoordinateParser();
 

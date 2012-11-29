@@ -1,5 +1,7 @@
 <?php
 
+namespace Maps;
+
 /**
  * Base geocoder class to be inherited by classes with a specific geocding implementation. 
  * 
@@ -11,7 +13,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class MapsGeocoder {
+abstract class Geocoder {
 
 	/**
 	 * The internal name of the geocoder.
@@ -111,7 +113,7 @@ abstract class MapsGeocoder {
 	 * @return array or false
 	 */
 	public function geocode( $address ) {
-		$response = Http::get( $this->getRequestUrl( $address ) );
+		$response = \Http::get( $this->getRequestUrl( $address ) );
 		
 		if ( $response === false ) {
 			return false;

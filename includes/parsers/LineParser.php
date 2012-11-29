@@ -73,11 +73,11 @@ class LineParser extends StringValueParser {
 		$coordinates = array();
 		$coordinateParser = new \ValueParsers\GeoCoordinateParser();
 
-		$supportsGeocoding = $this->supportGeocoding && \MapsGeocoders::canGeocode();
+		$supportsGeocoding = $this->supportGeocoding && \Maps\Geocoders::canGeocode();
 
 		foreach ( $coordinateStrings as $coordinateString ) {
 			if ( $supportsGeocoding ) {
-				$coordinate = \MapsGeocoders::attemptToGeocode( $coordinateString );
+				$coordinate = \Maps\Geocoders::attemptToGeocode( $coordinateString );
 
 				if ( $coordinate === false ) {
 					// TODO

@@ -30,7 +30,7 @@ class ApiGeocode extends ApiBase {
 		$results = array();
 		
 		foreach ( array_unique( $params['locations'] ) as $location ) {
-			$result = MapsGeocoders::geocode( $location, $params['service'] );
+			$result = \Maps\Geocoders::geocode( $location, $params['service'] );
 			
 			$results[$location] = array(
 				'count' => $result === false ? 0 : 1,
@@ -59,7 +59,7 @@ class ApiGeocode extends ApiBase {
 				ApiBase::PARAM_ISMULTI => true,
 			),
 			'service' => array(
-				ApiBase::PARAM_TYPE => MapsGeocoders::getAvailableGeocoders(),
+				ApiBase::PARAM_TYPE => \Maps\Geocoders::getAvailableGeocoders(),
 			),
 			'props' => array(
 				ApiBase::PARAM_ISMULTI => true,

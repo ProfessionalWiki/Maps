@@ -85,7 +85,7 @@ class Location extends \Maps\BaseElement {
 	 * @throws MWException
 	 */
 	public static function newFromAddress( $address ) {
-		$address = \MapsGeocoders::attemptToGeocode( $address );
+		$address = Geocoders::attemptToGeocode( $address );
 
 		if ( $address === false ) {
 			throw new MWException( 'Could not geocode address' );
@@ -130,7 +130,7 @@ class Location extends \Maps\BaseElement {
 	 */
 	public function setAddress( $address, $asActualLocation = true ) {
 		if ( $asActualLocation ) {
-			$coordinates = \MapsGeocoders::geocode( $address );
+			$coordinates = \Maps\Geocoders::geocode( $address );
 
 			if ( $coordinates === false ) {
 				return false;
