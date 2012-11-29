@@ -84,7 +84,7 @@ class DisplayMapTest extends ParserHookTest {
 //		);
 //
 //		$expected = array(
-//			'coordinates' => new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) )
+//			'coordinates' => new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) )
 //		);
 //
 //		$argLists[] = array( $values, $expected );

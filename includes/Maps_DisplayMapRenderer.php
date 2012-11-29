@@ -118,7 +118,7 @@ class MapsDisplayMapRenderer {
 		$params['locations'] = array();
 
 		/**
-		 * @var MapsLocation $location
+		 * @var \Maps\Location $location
 		 */
 		foreach ( $params['coordinates'] as $location ) {
 			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '',$visitedIconUrl);

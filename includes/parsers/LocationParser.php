@@ -61,7 +61,7 @@ class LocationParser extends StringValueParser {
 			return ResultObject::newError( $coordinates );
 		}
 
-		$location = new \MapsLocation( $coordinates );
+		$location = new \Maps\Location( $coordinates );
 
 		if ( $metaData !== array() ) {
 			$location->setTitle( array_shift( $metaData ) );

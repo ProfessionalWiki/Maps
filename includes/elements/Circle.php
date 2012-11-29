@@ -1,7 +1,7 @@
 <?php
 
 namespace Maps;
-use MapsLocation;
+use \Maps\Location;
 use DataValues\GeoCoordinateValue;
 
 /**

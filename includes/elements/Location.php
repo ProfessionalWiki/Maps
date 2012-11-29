@@ -1,23 +1,22 @@
 <?php
 
+namespace Maps;
 use DataValues\GeoCoordinateValue;
 
 /**
  * Class describing a single location (geographical point).
  *
  * TODO: rethink the design of this class after deciding on what actual role it has
- * TODO: make use of GeoCoordinateValue
  *
- * @since 0.7.1
+ * @since 3.0
  *
- * @file Maps_Location.php
  * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
-class MapsLocation extends \Maps\BaseElement {
+class Location extends \Maps\BaseElement {
 
 	/**
 	 * @since 3.0
@@ -81,7 +80,7 @@ class MapsLocation extends \Maps\BaseElement {
 	protected $visitedIcon = '';
 
 	/**
-	 * Creates and returns a new instance of a MapsLocation from a latitude and longitude.
+	 * Creates and returns a new instance of a \Maps\Location from a latitude and longitude.
 	 *
 	 * @since 1.0
 	 *
@@ -89,25 +88,25 @@ class MapsLocation extends \Maps\BaseElement {
 	 * @param float $lon
 	 * @param string $format
 	 *
-	 * @return MapsLocation
+	 * @return Location
 	 */
 	public static function newFromLatLon( $lat, $lon, $format = Maps_COORDS_FLOAT ) {
 		return new self( new GeoCoordinateValue( $lat, $lon ), $format );
 	}
 
 	/**
-	 * Creates and returns a new instance of a MapsLocation from an address.
+	 * Creates and returns a new instance of a \Maps\Location from an address.
 	 *
 	 * @since 1.0
 	 *
 	 * @param string $address
 	 * @param string $format
 	 *
-	 * @return MapsLocation
+	 * @return Location
 	 */
 	public static function newFromAddress( $address, $format = Maps_COORDS_FLOAT ) {
 		// TODO: geocode $address
-		return new self( $address, $format );
+		return new static( $address, $format );
 	}
 
 	/**
@@ -153,7 +152,7 @@ class MapsLocation extends \Maps\BaseElement {
 	 */
 	public function setAddress( $address, $asActualLocation = true ) {
 		if ( $asActualLocation ) {
-			$coordinates = MapsGeocoders::geocode( $address );
+			$coordinates = \MapsGeocoders::geocode( $address );
 
 			if ( $coordinates === false ) {
 				return false;
@@ -336,7 +335,7 @@ class MapsLocation extends \Maps\BaseElement {
 			'lon' => $this->coordinates->getLongitude(),
 			'alt' => $this->coordinates->getAltitude(),
 			'address' => $this->getAddress( false ),
-			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
+			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
 			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,

@@ -14,7 +14,6 @@ $classes['MapsKMLFormatter'] 			= __DIR__ . '/includes/Maps_KMLFormatter.php';
 $classes['MapsLayer'] 					= __DIR__ . '/includes/Maps_Layer.php';
 $classes['MapsLayerPage'] 				= __DIR__ . '/includes/Maps_LayerPage.php';
 $classes['MapsLayers'] 					= __DIR__ . '/includes/Maps_Layers.php';
-$classes['MapsLocation'] 				= __DIR__ . '/includes/Maps_Location.php';
 $classes['iMappingService'] 			= __DIR__ . '/includes/iMappingService.php';
 $classes['MapsMappingServices'] 		= __DIR__ . '/includes/Maps_MappingServices.php';
 $classes['MapsMappingService'] 			= __DIR__ . '/includes/Maps_MappingService.php';
@@ -27,6 +26,7 @@ $classes['Maps\BaseElement']			= __DIR__ . '/includes/elements/BaseElement.php';
 $classes['Maps\Circle'] 				= __DIR__ . '/includes/elements/Circle.php';
 $classes['Maps\ImageOverlay'] 			= __DIR__ . '/includes/elements/ImageOverlay.php';
 $classes['Maps\Line'] 					= __DIR__ . '/includes/elements/Line.php';
+$classes['Maps\Location'] 				= __DIR__ . '/includes/elements/Location.php';
 $classes['Maps\Polygon'] 				= __DIR__ . '/includes/elements/Polygon.php';
 $classes['Maps\Rectangle'] 				= __DIR__ . '/includes/elements/Rectangle.php';
 

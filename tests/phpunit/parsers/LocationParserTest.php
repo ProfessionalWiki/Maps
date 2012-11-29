@@ -55,11 +55,11 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 		);
 
 		foreach ( $valid as $value => $expected ) {
-			$expected = new \MapsLocation( new \DataValues\GeoCoordinateValue( $expected[0], $expected[1] ) );
+			$expected = new \Maps\Location( new \DataValues\GeoCoordinateValue( $expected[0], $expected[1] ) );
 			$argLists[] = array( (string)$value, ResultObject::newSuccess( $expected ) );
 		}
 
-		$location = new \MapsLocation( new \DataValues\GeoCoordinateValue( 4, 2 ) );
+		$location = new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) );
 		$location->setTitle( 'Title' );
 		$location->setText( 'some description' );
 		$argLists[] = array( '4,2~Title~some description', ResultObject::newSuccess( $location ) );

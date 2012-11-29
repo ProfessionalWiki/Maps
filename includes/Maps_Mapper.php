@@ -5,8 +5,8 @@
  * 
  * @since 0.1
  * 
- * @file Maps_Mapper.php
  * @ingroup Maps
+ * @deprecated
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -24,6 +24,7 @@ final class MapsMapper {
 	 * which fixes incorrect behaviour with floats.
 	 * 
 	 * @since 0.7.1
+	 * @deprecated
 	 * 
 	 * @param mixed $value
 	 *
@@ -67,6 +68,8 @@ final class MapsMapper {
 	
 	/**
 	 * This function returns the definitions for the parameters used by every map feature.
+	 *
+	 * @deprecated
 	 *
 	 * @return array
 	 */
@@ -123,6 +126,7 @@ final class MapsMapper {
 	 * Resolves the url of images provided as wiki page; leaves others alone.
 	 * 
 	 * @since 1.0
+	 * @deprecated
 	 * 
 	 * @param string $file
 	 * 
@@ -143,6 +147,7 @@ final class MapsMapper {
 	 * Returns JS to init the vars to hold the map data when they are not there already.
 	 * 
 	 * @since 1.0
+	 * @deprecated
 	 * 
 	 * @param string $serviceName
 	 *

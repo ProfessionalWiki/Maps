@@ -23,7 +23,7 @@ class MapsKMLFormatter {
 	/**
 	 * @since 0.7.3
 	 * 
-	 * @var array of MapsLocation
+	 * @var array of \Maps\Location
 	 */
 	protected $placemarks;
 	
@@ -65,9 +65,9 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param MapsLocation $placemark
+	 * @param \Maps\Location $placemark
 	 */	
-	public function addPlacemark( MapsLocation $placemark ) {
+	public function addPlacemark( \Maps\Location $placemark ) {
 		$this->placemarks[] = $placemark;
 	}
 	
@@ -76,7 +76,7 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param array of MapsLocation $placemark
+	 * @param array of \Maps\Location $placemark
 	 */		
 	public function addPlacemarks( array $placemarks ) {
 		foreach ( $placemarks as $placemark ) {
@@ -140,11 +140,11 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param MapsLocation $location
+	 * @param \Maps\Location $location
 	 * 
 	 * @return string
 	 */		
-	protected function getKMLForLocation( MapsLocation $location ) {
+	protected function getKMLForLocation( \Maps\Location $location ) {
 		$name = '<name><![CDATA[ ' . $location->getTitle() . ']]></name>';
 		
 		$description = '<description><![CDATA[ ' . $location->getText() . ']]></description>';

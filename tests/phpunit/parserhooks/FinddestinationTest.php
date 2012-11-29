@@ -116,7 +116,7 @@ class FinddestinationTest extends ParserHookTest {
 					$expected = array(
 						'distance' => $expectedDistance,
 						'bearing' => (float)$bearing,
-						'location' => new \MapsLocation( $coordinateParser->parse( $location )->getValue() ),
+						'location' => new \Maps\Location( $coordinateParser->parse( $location )->getValue() ),
 					);
 
 					$argLists[] = array( $values, $expected );
