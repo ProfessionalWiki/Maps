@@ -1016,7 +1016,7 @@ $messages['nb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'semanticmaps-desc' => 'Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in Semantic MediaWiki te bewerken en te bekijken', # Fuzzy
+	'semanticmaps-desc' => 'Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in Semantic MediaWiki te bewerken en te bekijken ([http://www.semantic-mediawiki.org/wiki/Semantic_Maps meer informatie])',
 	'semanticmaps-unrecognizeddistance' => 'De waarde "$1" is geen geldige afstand.',
 	'semanticmaps-kml-link' => 'KML-bestand bekijken',
 	'semanticmaps-default-kml-pagelink' => 'Pagina $1 bekijken',
