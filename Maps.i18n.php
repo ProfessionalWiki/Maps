@@ -1255,17 +1255,79 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Glavkos
  * @author Omnipaedista
+ * @author Protnet
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'maps-desc' => 'Επιτρέπει την ενσωμάτωση δυναμικών χαρτών σε σελίδες wiki, γεωκωδικοποίηση διευθύνσεων και άλλες γεωγραφικές λειτουργίες. ([http://www.semantic-mediawiki.org/wiki/Maps περισσότερες πληροφορίες...])',
+	'maps_map' => 'Χάρτης',
+	'maps-loading-map' => 'Φόρτωση χάρτη...',
+	'maps-load-failed' => 'Δεν ήταν δυνατή η φόρτωση του χάρτη!',
+	'maps-markers' => 'Δείκτες',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Φιλτράρισμα δεικτών',
+	'maps-layer-property' => 'Ιδιότητα',
+	'maps-layer-value' => 'Τιμή',
+	'maps-layer-errors' => 'Σφάλματα',
+	'maps-finddestination-par-location' => 'Η αρχική τοποθεσία.',
+	'maps-geocode-par-location' => 'Η διεύθυνση που θέλετε να γεωκωδικοποιήσετε.',
+	'maps-displaymap-par-wmsoverlay' => 'Χρήση μιας υπέρθεσης WMS',
+	'validation-error-invalid-location' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη τοποθεσία.',
+	'validation-error-invalid-locations' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες τοποθεσίες.',
+	'validation-error-invalid-width' => 'Η παράμετρος $1 πρέπει να είναι ένα έγκυρο πλάτος.',
+	'validation-error-invalid-height' => 'Η παράμετρος $1 πρέπει να είναι ένα έγκυρο ύψος.',
+	'validation-error-invalid-distance' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη απόσταση.',
+	'validation-error-invalid-distances' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες αποστάσεις.',
+	'validation-error-invalid-image' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη εικόνα.',
+	'validation-error-invalid-images' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες εικόνες.',
+	'validation-error-invalid-goverlay' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη υπέρθεση.',
+	'validation-error-invalid-goverlays' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες υπερθέσεις.',
 	'maps-abb-north' => 'Β',
 	'maps-abb-east' => 'Α',
 	'maps-abb-south' => 'Ν',
 	'maps-abb-west' => 'Δ',
 	'maps-latitude' => 'Γεωγραφικό πλάτος:',
 	'maps-longitude' => 'Γεωγραφικό μήκος:',
-	'maps_coordinates_missing' => 'Καμία συντεταγμένη δεν παρασχέθηκε για τον χάρτη.',
+	'maps_coordinates_missing' => 'Δεν δόθηκαν συντεταγμένες για τον χάρτη.',
+	'maps_map_cannot_be_displayed' => 'Ο χάρτης δεν μπορεί να προβληθεί.',
+	'maps_click_to_activate' => 'Κάντε κλικ για να ενεργοποιήσετε το χάρτη',
+	'maps_centred_on' => 'Ο χάρτης είναι κεντραρισμένος σε  $1 , $2.',
+	'maps-googlemaps3-incompatbrowser' => 'Το πρόγραμμα περιήγησης δεν είναι συμβατό με την έκδοση 3 των Χαρτών Google.',
+	'maps-googlemaps3-par-poi' => 'Εμφάνιση σημείων ενδιαφέροντος.',
+	'maps-osm-par-thumbs' => 'Εμφάνιση μικρογραφιών',
+	'maps-osm-par-photos' => 'Εμφάνιση φωτογραφιών',
+	'mapeditor' => 'Πρόγραμμα επεξεργασίας χαρτών',
+	'specialpages-group-maps' => 'Χάρτες',
+	'mapeditor-done-button' => 'Ολοκληρώθηκε',
+	'mapeditor-remove-button' => 'Αφαίρεση',
+	'mapeditor-import-button2' => 'Εισαγωγή',
+	'mapeditor-export-button' => 'Εξαγωγή κώδικα wiki',
+	'mapeditor-import-button' => 'Εισαγωγή από κώδικα wiki',
+	'mapeditor-select-button' => 'Επιλογή αυτού του πολυγώνου',
+	'mapeditor-mapparam-button' => 'Επεξεργασία παραμέτρων χάρτη',
+	'mapeditor-code-title' => 'Κώδικας wiki',
+	'mapeditor-import-title' => 'Εισαγωγή κώδικα wiki',
+	'mapeditor-form-title' => 'Επεξεργασία λεπτομερειών',
+	'mapeditor-link-title-switcher-popup-text' => 'Αναδυόμενο με κείμενο',
+	'mapeditor-link-title-switcher-link-text' => 'Σύνδεσμος',
+	'mapeditor-form-field-title' => 'Τίτλος',
+	'mapeditor-form-field-text' => 'Κείμενο',
+	'mapeditor-form-field-link' => 'Σύνδεσμος',
+	'mapeditor-form-field-icon' => 'Εικονίδιο',
+	'mapeditor-form-field-group' => 'Ομάδα',
+	'mapeditor-form-field-strokecolor' => 'Χρώμα περιγράμματος',
+	'mapeditor-form-field-strokeopacity' => 'Αδιαφάνεια περιγράμματος',
+	'mapeditor-form-field-strokeweight' => 'Πάχος περιγράμματος',
+	'mapeditor-form-field-fillcolor' => 'Χρώμα γεμίσματος',
+	'mapeditor-form-field-fillopcaity' => 'Αδιαφάνεια γεμίσματος',
+	'mapeditor-form-field-showonhover' => 'Εμφάνιση μόνο με την κατάδειξη',
+	'mapeditor-mapparam-title' => 'Επεξεργασία παραμέτρων χάρτη',
+	'mapeditor-mapparam-defoption' => '-Επιλογή παραμέτρου-',
+	'mapeditor-imageoverlay-button' => 'Προσθήκη υπέρθεσης εικόνας',
+	'mapeditor-form-field-image' => 'Εικόνα',
+	'mapeditor-imageoverlay-title' => 'Λεπτομέρειες υπέρθεσης εικόνας',
 );
 
 /** British English (British English)
@@ -4734,6 +4796,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (русский)
  * @author Adata80
+ * @author Base
  * @author Haffman
  * @author KPu3uC B Poccuu
  * @author Kalan
@@ -4761,7 +4824,7 @@ $messages['ru'] = array(
 	'validation-error-invalid-layer' => 'Параметр $1 должен быть корректным слоем.',
 	'validation-error-invalid-layers' => 'Параметр $1 должен содержать один или несколько корректных слоёв.',
 	'maps-layer-of-type' => 'Слой типа $1',
-	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|только с картографической службой $1|только со следующими картографическими службами}}: $1',
+	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|только с картографической службой|только со следующими картографическими службами:}} $1',
 	'maps-coordinates-description' => 'Перехватчик синтаксического анализатора для форматирования координат из любого и в любой поддерживаемый формат.',
 	'maps-displaymap-description' => 'Отображение географических карт без каких-либо вики-маркеров на них.',
 	'maps-displaypoint-description' => 'Отображение географических карт с одним или несколькими вики-маркерами на них.',
@@ -5382,7 +5445,7 @@ $messages['tzm'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://mapping.referata.com/wiki/Examples demos]).', # Fuzzy
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. (([http://www.semantic-mediawiki.org/wiki/Maps more info... детальніше])).',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
@@ -5402,6 +5465,9 @@ $messages['uk'] = array(
 	'validation-error-invalid-layer' => 'Параметр $1 повинен бути коректним шаром.',
 	'validation-error-invalid-layers' => 'Параметри $1 повинні містити один чи більше коректних шарів.',
 	'maps-layer-of-type' => 'Шар типу $1',
+	'maps-layer-type-supported-by' => 'Цей тип шару може бути використано {{PLURAL:$2|лише із картографічним сервісом|лише із наступними картографічними сервісами:}} $1',
+	'maps-coordinates-description' => 'Перехопиник парсеру для форматування координат із будь-якого у будьякий формат, що підтримується.',
+	'maps-displaymap-description' => 'Відображення географічних карт без жодних вікі-маркерів на них.',
 	'validation-error-invalid-distance' => 'Параметр $1 повинен бути дійсною відстанню.',
 	'maps-abb-north' => 'П',
 	'maps-abb-east' => 'С',
