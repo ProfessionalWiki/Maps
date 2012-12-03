@@ -1649,30 +1649,38 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'maps-desc' => 'Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja ([http://www.semantic-mediawiki.org/wiki/Maps lisätietoja]).',
+	'right-geocode' => 'Geokoodata',
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
 	'maps-load-failed' => 'Karttaa ei voitu ladata.',
+	'maps-markers' => 'Kohdemerkit',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Suodatuksen kohdemerkit',
 	'maps-others' => 'muut',
 	'maps-layer-property' => 'Ominaisuus',
 	'maps-layer-value' => 'Arvo',
 	'maps-layer-errors' => 'Virheet',
+	'maps-mapsdoc-par-language' => 'Dokumentaation näyttämiseen käytettävä kieli. Jos käännöstä ei ole, sen sijaan käytetään englantia.',
+	'maps-coordinates-par-location' => 'Muoltoiltavat koordinaatit',
+	'maps-coordinates-par-format' => 'Koordinaattien kohdemuoto.',
 	'maps-distance-par-unit' => 'Etäisyyden näyttämiseen käytettävä yksikkö.',
+	'maps-geocode-par-location' => 'Geokoodattava osoite.',
+	'maps-geodistance-par-unit' => 'Etäisyyden näyttämiseen käytettävä yksikkö.',
 	'maps-abb-north' => 'Pohj.', # Fuzzy
 	'maps-abb-east' => 'It.', # Fuzzy
 	'maps-abb-south' => 'Etel.', # Fuzzy
 	'maps-abb-west' => 'Länt.', # Fuzzy
-	'maps-latitude' => 'Korkeusaste:', # Fuzzy
-	'maps-longitude' => 'Pituuspiiri:', # Fuzzy
+	'maps-latitude' => 'Leveyspiiri',
+	'maps-longitude' => 'Pituuspiiri',
 	'maps-invalid-coordinates' => 'Arvoa $1 ei tunnistettu oikeaksi koordinaattisarjaksi.',
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
-	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
-Karttaa ei voida näyttää.',
-	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|on|ovat}} jätetty kartalta: $1',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|se|ne}} on jätetty pois kartasta: $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu ja {{PLURAL:$2|se|ne}} on jätetty pois kartasta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Karttaa ei voida näyttää.',
+	'maps-geocoder-not-available' => 'Karttojen geokoodausominaisuus ei ole käytössä. Sijaintia ei voitu geokoodata.',
 	'maps_click_to_activate' => 'Napsauta aktivoidaksesi kartan',
 	'maps_centred_on' => 'Kartta keskitetty kohtaan $1, $2.',
 	'maps-osm-par-photos' => 'Näytä valokuvat',
@@ -1683,6 +1691,8 @@ $1',
 	'mapeditor-import-button2' => 'Tuo',
 	'mapeditor-export-button' => 'Vie wikikoodiin',
 	'mapeditor-import-button' => 'Tuo wikikoodista',
+	'mapeditor-mapparam-button' => 'Muokkaa kartan parametreja',
+	'mapeditor-clear-button' => 'Tyhjennä kartta',
 	'mapeditor-code-title' => 'Wikikoodi',
 	'mapeditor-import-title' => 'Tuo wikikoodi',
 	'mapeditor-link-title-switcher-link-text' => 'Linkki',
@@ -1692,6 +1702,7 @@ $1',
 	'mapeditor-form-field-icon' => 'Kuvake',
 	'mapeditor-form-field-group' => 'Ryhmä',
 	'mapeditor-form-field-fillcolor' => 'Täyttöväri',
+	'mapeditor-mapparam-title' => 'Muokkaa kartan parametreja',
 	'mapeditor-form-field-image' => 'Kuva',
 );
 
