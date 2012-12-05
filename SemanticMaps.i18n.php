@@ -64,10 +64,11 @@ $messages['en'] = array(
  * @author Lloffiwr
  * @author Purodha
  * @author Raymond
+ * @author Shirayuki
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'semanticmaps-desc' => '{{desc}}',
+	'semanticmaps-desc' => '{{desc|name=Semantic Maps|url=http://www.mediawiki.org/wiki/Extension:Semantic_Maps}}',
 	'semanticmaps-kml' => '{{optional}}',
 	'semanticmaps-default-kml-pagelink' => '$1 is probably a page title.',
 	'semanticmaps-loading-forminput' => 'Message displayed during a computer action',
@@ -1100,7 +1101,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'semanticmaps-desc' => "A dà la possibilità ëd vardé e modifiché ij dat ëd le coordinà memorisà con l'estension Semantic MediaWiki ([https://mapping.referata.com/wiki/Demo d'esempi]).", # Fuzzy
+	'semanticmaps-desc' => "A dà la possibilità ëd vardé e modifiché ij dat ëd le coordinà memorisà con l'estension Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps për savèjne ëd pì...])",
 	'semanticmaps-unrecognizeddistance' => "Ël valor $1 a l'é pa na distansa bon-a.",
 	'semanticmaps-kml-link' => "Vëdde l'archivi KML",
 	'semanticmaps-default-kml-pagelink' => 'Lese la pàgina $1',
