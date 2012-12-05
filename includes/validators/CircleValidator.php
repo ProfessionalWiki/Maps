@@ -38,4 +38,5 @@ class CircleValidator implements GeoValidator {
 			return false;
 		}
 		return $parts[1] > 0 ? MapsCoordinateParser::areCoordinates( $parts[0] ) : false;
+	}
 }
