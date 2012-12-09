@@ -248,10 +248,13 @@ $messages['bs'] = array(
  * @author Toniher
  */
 $messages['ca'] = array(
-	'semanticmaps-desc' => "Ofereix l'habilitat de visualitzar i editar dades de coordenades emmagatzemades a través de l'extensió Semantic MediaWiki ([https://mapping.referata.com/wiki/Examples alguns exemples]).", # Fuzzy
+	'semanticmaps-desc' => "Ofereix l'habilitat de visualitzar i editar dades de coordenades emmagatzemades a través de l'extensió Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps més informació...]).",
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no és un valor de distància.',
 	'semanticmaps-kml-link' => 'Visualitza el fitxer KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualitza la pàgina $1',
+	'semanticmaps-latitude' => 'Latitud: $1',
+	'semanticmaps-longitude' => 'Longitud: $1',
+	'semanticmaps-altitude' => 'Altitud: $1',
 	'semanticmaps-loading-forminput' => "Carregant formulari d'entrada del mapa...",
 	'semanticmaps_lookupcoordinates' => 'Consulta les coordenades',
 	'semanticmaps_enteraddresshere' => 'Introduïu una adreça a continuació',
