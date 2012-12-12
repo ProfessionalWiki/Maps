@@ -744,10 +744,10 @@
 			}
 
 			this.openWindow = new google.maps.InfoWindow();
-			this.openWindow.content = properties.text;
+			this.openWindow.setContent( properties.text );
 
 			if ( event.latLng !== undefined ) {
-				this.openWindow.position = event.latLng;
+				this.openWindow.setPosition( event.latLng );
 			}
 
 			this.openWindow.closeclick = function () {
