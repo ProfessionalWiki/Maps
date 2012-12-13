@@ -143,6 +143,8 @@ $messages['ast'] = array(
 	'semanticmaps-kml-title' => 'El títulu predetermináu pa los resultaos',
 	'semanticmaps-kml-linkabsolute' => 'Si los títulos tienen de ser absolutos o non (esto ye, relativos)',
 	'semanticmaps-kml-pagelinktext' => 'El testu a usar pa los enllaces a la páxina, onde "$1" se sustituye pol títulu de la páxina',
+	'semanticmaps-shapes-improperformat' => 'Formatu incorreutu de $1. Por favor, consulta la documentación sobre formatos',
+	'semanticmaps-shapes-missingshape' => "Nun s'alcontraron formes pa $1. Por favor, consulta la documentación de les formes disponibles",
 );
 
 /** Azerbaijani (azərbaycanca)
