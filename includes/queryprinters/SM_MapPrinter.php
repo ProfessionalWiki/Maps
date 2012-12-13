@@ -186,7 +186,7 @@ class SMMapPrinter extends SMWResultPrinter {
 			global $wgParser;
 			
 			$params = $this->params;
-
+			
 			$queryHandler = new SMQueryHandler( $res, $outputmode );
 			$queryHandler->setShowSubject( $params['showtitle'] );
 			$queryHandler->setTemplate( $params['template'] );
@@ -290,7 +290,7 @@ class SMMapPrinter extends SMWResultPrinter {
 		global $wgParser;
 
 		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
-
+		
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
 		$params['locations'] = array();
