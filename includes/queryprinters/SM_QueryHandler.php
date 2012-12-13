@@ -287,7 +287,7 @@ class SMQueryHandler {
 					$location = MapsLocation::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
 
 					if ( $location->isValid() ) {
-						$this->geoShapes[ 'locations' ][] = $location;
+						$locations[] = $location;
 					}
 
 				}
@@ -300,7 +300,16 @@ class SMQueryHandler {
 
 		$icon = $this->getLocationIcon( $row );
 
-		$this->addMetadata( $this->geoShapes, $text, $icon, $properties, Title::newFromText( $title ) );
+		$this->geoShapes['locations'] = array_merge(
+			$this->geoShapes['locations'],
+			$this->buildLocationsList(
+				$locations,
+				$text,
+				$icon,
+				$properties,
+				Title::newFromText( $title )
+			)
+		);
 	}
 
 	/**
@@ -361,16 +370,6 @@ class SMQueryHandler {
 	 * @return string
 	 */
 	protected function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
-		// hack to display images
-		// TODO Make a better structure here
-		if ( $object->getTypeID() == '_wpg' && $object->getNamespace() == NS_FILE ) {
-			$file = RepoGroup::singleton()->getLocalRepo()->newFile( $object->getDBkey() );
-			return  Html::element(
-				'img',
-				array( 'src' => $file->getUrl(), 'height' => 100, 'width' => 80, 'align' => 'right' )
-				);
-		}
-
 		if ( $this->template ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getTitle()->getPrefixedText();
@@ -424,58 +423,55 @@ class SMQueryHandler {
 	}
 
 	/**
-	 * Adds metadata to the given shapes with the provided title, text and icon.
-	 * So it can be displayed as pop-up
+	 * Builds a set of locations with the provided title, text and icon.
 	 *
 	 * @since 1.0
 	 *
-	 * @param array of type => array of geo-shapes
+	 * @param MapsLocation[] $locations
 	 * @param string $text
 	 * @param string $icon
 	 * @param array $properties
 	 * @param Title|null $title
 	 *
+	 * @return MapsLocation[]
 	 */
-	protected function addMetadata( array &$geoShapes, $text, $icon, array $properties, Title $title = null ) {
+	protected function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
 		if ( $this->template ) {
 			global $wgParser;
 			$parser = $wgParser;
-		} else {
+		}
+		else {
 			$text .= implode( '<br />', $properties );
 		}
 
 		if ( $title === null ) {
 			$titleOutput = '';
-		} else {
+		}
+		else {
 			$titleOutput = $this->hideNamespace ? $title->getText() : $title->getFullText();
 		}
 
-		foreach ( $geoShapes as $type => &$shapes ) {
-			if( $type === 'locations' ) {
-				foreach ( $shapes as &$location ) {
-					if ( $this->template ) {
-						$segments = array_merge(
-							array(
-								$this->template,
-								"title=$titleOutput",
-								"latitude=$location->getLatitude()",
-								"longitude=$location->getLongitude()"
-							),
-							$properties
-						);
-						$text .= $parser->parse( '{{' . implode( '|', $segments ) . '}}', $parser->getTitle(), new ParserOptions() )->getText();
-					}
-					$location->setTitle( $titleOutput );
-					$location->setText( $text );
-					$location->setIcon( $icon );
-				}
-			} else {
-				foreach ( $shapes as &$shape ) {
-					$shape->setTitle( $titleOutput );
-					$shape->setText( $text );
-				}
+		foreach ( $locations as &$location ) {
+			if ( $this->template ) {
+				$segments = array_merge(
+					array(
+						$this->template,
+						'title=' . $titleOutput,
+						'latitude=' . $location->getLatitude(),
+						'longitude=' . $location->getLongitude()
+					),
+					$properties
+				);
+
+				$text .= $parser->parse( '{{' . implode( '|', $segments ) . '}}', $parser->getTitle(), new ParserOptions() )->getText();
 			}
+
+			$location->setTitle( $titleOutput );
+			$location->setText( $text );
+			$location->setIcon( $icon );
 		}
+
+		return $locations;
 	}
 
 	/**
