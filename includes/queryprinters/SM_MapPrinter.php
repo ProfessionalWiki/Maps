@@ -219,6 +219,10 @@ class SMMapPrinter extends SMWResultPrinter {
 					SMWOutputs::requireResource( $resourceModule );
 				}
 
+				if ( array_key_exists( 'source', $params ) ) {
+					unset( $params['source'] );
+				}
+
 				return $this->getMapHTML( $params, $wgParser, $mapName );
 			}
 			else {

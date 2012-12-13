@@ -59,7 +59,7 @@ if ( version_compare( SMW_VERSION, '1.8c', '<' ) ) {
 	);
 }
 
-define( 'SM_VERSION', '2.0.1' );
+define( 'SM_VERSION', '2.0.1.1' );
 
 $wgExtensionCredits['semantic'][] = array(
 	'path' => __FILE__,
