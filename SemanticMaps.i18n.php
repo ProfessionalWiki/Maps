@@ -373,11 +373,27 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Protnet
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'semanticmaps-unrecognizeddistance' => 'Η τιμή $1 δεν είναι έγκυρη απόσταση.',
+	'semanticmaps-kml-link' => 'Προβολή του αρχείου KML',
+	'semanticmaps-default-kml-pagelink' => 'Προβολή σελίδας $1',
+	'semanticmaps-latitude' => 'Γεωγραφικό πλάτος: $1',
+	'semanticmaps-longitude' => 'Γεωγραφικό μήκος: $1',
+	'semanticmaps-altitude' => 'Υψόμετρο: $1',
 	'semanticmaps_lookupcoordinates' => 'Επιθεώρηση συντεταγμένων',
 	'semanticmaps_enteraddresshere' => 'Εισαγωγή διεύθυνσης εδώ',
+	'semanticmaps-updatemap' => 'Ενημέρωση χάρτη',
+	'semanticmaps-forminput-add' => 'Προσθήκη',
+	'semanticmaps-forminput-locations' => 'Τοποθεσίες',
+	'semanticmaps-par-forceshow' => 'Παρουσίαση του χάρτη ακόμα και όταν υπάρχουν τοποθεσίες προς εμφάνιση;',
+	'semanticmaps-par-template' => 'Πρότυπο για να το χρησιμοποιήσετε για τη μορφοποίηση των περιεχομένων του παραθύρου πληροφοριών.',
+	'semanticmaps-kml-title' => 'Ο προεπιλεγμένος τίτλος για αποτελέσματα',
+	'semanticmaps-kml-linkabsolute' => 'Να είναι οι σύνδεσμοι απόλυτοι (ως αντιπαράθεση με τους σχετικούς)',
+	'semanticmaps-shapes-improperformat' => 'Εσφαλμένη μορφοποίηση του  $1, ανατρέξτε στην τεκμηρίωση περί μορφοποίησης',
+	'semanticmaps-shapes-missingshape' => 'Δεν βρέθηκαν σχήματα για το $1, ανατρέξτε στην τεκμηρίωση για διαθέσιμα σχήματα',
 );
 
 /** Esperanto (Esperanto)
