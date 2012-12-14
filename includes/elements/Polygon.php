@@ -47,7 +47,7 @@ class Polygon extends Line implements \iHoverableMapElement {
 	 */
 	public function setOnlyVisibleOnHover( $visible ) {
 		if ( !is_bool( $visible ) ) {
-			throw new MWException( '$visibel should be a boolean' );
+			throw new MWException( '$visible should be a boolean' );
 		}
 
 		$this->onlyVisibleOnHover = $visible;
