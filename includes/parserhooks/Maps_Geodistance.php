@@ -113,7 +113,7 @@ class MapsGeodistance extends ParserHook {
 			$start = \Maps\Geocoders::attemptToGeocode( $parameters['location1'], $parameters['geoservice'], $parameters['mappingservice'] );
 			$end = \Maps\Geocoders::attemptToGeocode( $parameters['location2'], $parameters['geoservice'], $parameters['mappingservice'] );
 		} else {
-			$parser = new GeoCoordinateParser();
+			$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 
 			$start = $parser->parse( $parameters['location1'] );
 			$end = $parser->parse( $parameters['location2'] );

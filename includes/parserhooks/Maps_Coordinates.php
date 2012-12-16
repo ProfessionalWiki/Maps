@@ -87,12 +87,12 @@ class MapsCoordinates extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$coordinateFormatter = new \ValueFormatters\GeoCoordinateFormatter();
+		$options = new \ValueFormatters\FormatterOptions( array(
+			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
+			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+		) );
 
-		$options = new \ValueFormatters\GeoFormatterOptions();
-		$options->setFormat( $parameters['format'] );
-		// TODO $options->setFormat( $parameters['directional'] );
-		$coordinateFormatter->setOptions( $options );
+		$coordinateFormatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
 		$output = $coordinateFormatter->format( $parameters['location'] )->getValue();
 

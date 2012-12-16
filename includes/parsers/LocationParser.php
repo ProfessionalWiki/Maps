@@ -97,7 +97,7 @@ class LocationParser extends StringValueParser {
 			return $location;
 		}
 
-		$parser = new GeoCoordinateParser();
+		$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 		$parseResult = $parser->parse( $location );
 
 		if ( !$parseResult->isValid() ) {

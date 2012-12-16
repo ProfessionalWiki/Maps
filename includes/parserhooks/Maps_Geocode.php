@@ -111,12 +111,12 @@ class MapsGeocode extends ParserHook {
 		 */
 		$coordinates = $parameters['location']->getCoordinates();
 
-		$options = new \ValueFormatters\GeoFormatterOptions();
-		$options->setFormat( $parameters['format'] );
-		// TODO $parameters['directional']
+		$options = new \ValueFormatters\FormatterOptions( array(
+			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
+			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+		) );
 
-		$formatter = new \ValueFormatters\GeoCoordinateFormatter();
-		$formatter->setOptions( $options );
+		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
 		$result = $formatter->format( $coordinates );
 

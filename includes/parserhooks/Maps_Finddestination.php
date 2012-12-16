@@ -121,12 +121,12 @@ class MapsFinddestination extends ParserHook {
 			$parameters['distance']
 		);
 
-		$formatter = new \ValueFormatters\GeoCoordinateFormatter();
+		$options = new \ValueFormatters\FormatterOptions( array(
+			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
+			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+		) );
 
-		$options = new \ValueFormatters\GeoFormatterOptions();
-		$options->setFormat( $parameters['format'] );
-		// TODO $options->setFormat( $parameters['directional'] );
-		$formatter->setOptions( $options );
+		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
 		$geoCoords = new \DataValues\GeoCoordinateValue( $destination['lat'], $destination['lon'] );
 		$output = $formatter->format( $geoCoords )->getValue();

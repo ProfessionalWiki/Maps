@@ -127,7 +127,7 @@ final class Geocoders {
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
-			$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+			$coordinateParser = new \ValueParsers\GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 			$parseResult = $coordinateParser->parse( $coordsOrAddress );
 
 			if ( $parseResult->isValid() ) {
@@ -179,12 +179,12 @@ final class Geocoders {
 			return false;
 		}
 
-		$formatter = new \ValueFormatters\GeoCoordinateFormatter();
+		$options = new \ValueFormatters\FormatterOptions( array(
+			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
+			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional
+		) );
 
-		$options = new \ValueFormatters\GeoFormatterOptions();
-		$options->setFormat( $targetFormat );
-		// TODO $options->setFormat( $directional );
-		$formatter->setOptions( $options );
+		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
 		$formattingResult = $formatter->format( $geoCoordinate );
 

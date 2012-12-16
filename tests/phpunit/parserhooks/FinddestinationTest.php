@@ -102,7 +102,7 @@ class FinddestinationTest extends ParserHookTest {
 	public function processingProvider() {
 		$argLists = array();
 
-		$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+		$coordinateParser = new \ValueParsers\GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 
 		foreach ( $this->distances as $distance => $expectedDistance ) {
 			foreach ( $this->bearings as $bearing ) {

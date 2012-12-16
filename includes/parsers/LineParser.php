@@ -71,7 +71,7 @@ class LineParser extends StringValueParser {
 	 */
 	protected function parseCoordinates( array $coordinateStrings ) {
 		$coordinates = array();
-		$coordinateParser = new \ValueParsers\GeoCoordinateParser();
+		$coordinateParser = new \ValueParsers\GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 
 		$supportsGeocoding = $this->supportGeocoding && \Maps\Geocoders::canGeocode();
 
