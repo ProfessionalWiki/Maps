@@ -309,7 +309,7 @@ class Location extends \Maps\BaseElement {
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 		$array = array(
-			'lat' => $this->coordinates->getLongitude(),
+			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
 			'alt' => $this->coordinates->getAltitude(),
 			'address' => $this->getAddress( false ),

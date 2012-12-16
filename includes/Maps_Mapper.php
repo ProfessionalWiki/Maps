@@ -106,9 +106,8 @@ final class MapsMapper {
 		// TODO$manipulation->toJSONObj = true;
 
 		$params['centre'] = array(
+			'type' => 'mapslocation',
 			'aliases' => array( 'center' ),
-			//'criteria' => new CriterionIsLocation(), // TODO
-			// TODO 	'manipulations' => $manipulation,
 			'default' => false,
 			'manipulatedefault' => false,
 		);
