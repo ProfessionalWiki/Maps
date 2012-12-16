@@ -97,7 +97,9 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'default' => $egMapsGMaps3Type,
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-type',
-			// new MapsParamGMap3Type() // FIXME
+			'post-format' => function( $value ) {
+				return MapsGoogleMaps3::$mapTypes[strtolower( $value )];
+			},
 		);
 
 		$params['types'] = array(
@@ -106,7 +108,13 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-types',
 			'islist' => true,
-			// new MapsParamGMap3Type(), new MapsParamGMap3Types() // FIXME
+			'post-format' => function( array $value ) {
+				foreach ( $value as &$part ) {
+					$part = MapsGoogleMaps3::$mapTypes[strtolower( $part )];
+				}
+
+				return $value;
+			},
 		);
 
 		$params['layers'] = array(
@@ -121,21 +129,25 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'values' => self::$controlNames,
 			'message' => 'maps-googlemaps3-par-controls',
 			'islist' => true,
-			// new ParamManipulationFunctions( 'strtolower' ) FIXME
+			'post-format' => function( $value ) {
+				return array_map( 'strtolower', $value );
+			},
 		);
 
 		$params['zoomstyle'] = array(
 			'default' => $egMapsGMaps3DefZoomStyle,
 			'values' => array( 'default', 'small', 'large' ),
 			'message' => 'maps-googlemaps3-par-zoomstyle',
-			// new MapsParamGMap3Zoomstyle() FIXME
+			'post-format' => 'strtoupper',
 		);
 
 		$params['typestyle'] = array(
 			'default' => $egMapsGMaps3DefTypeStyle,
 			'values' => array_keys( self::$typeControlStyles ),
 			'message' => 'maps-googlemaps3-par-typestyle',
-			// new MapsParamGMap3Typestyle() FIXME
+			'post-format' => function( $value ) {
+				return MapsGoogleMaps3::$typeControlStyles[strtolower( $value )];
+			},
 		);
 
 		$params['autoinfowindows'] = array(

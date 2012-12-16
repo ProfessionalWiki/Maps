@@ -380,7 +380,7 @@
 
 			for (i in options.types) {
 				if (typeof( options.types[i] ) !== 'function') {
-					options.types[i] = eval('google.maps.MapTypeId.' + options.types[i]);
+					options.types[i] = eval('google.maps.MapTypeId.' + options.types[i].toUpperCase() );
 				}
 			}
 

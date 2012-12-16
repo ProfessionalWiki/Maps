@@ -91,10 +91,6 @@ function efMapsInitGoogleMaps3() {
 	global $wgAutoloadClasses;
 
 	$wgAutoloadClasses['MapsGoogleMaps3'] 			= __DIR__ . '/Maps_GoogleMaps3.php';
-	$wgAutoloadClasses['MapsParamGMap3Type']		= __DIR__ . '/Maps_ParamGMap3Type.php';
-	$wgAutoloadClasses['MapsParamGMap3Types']		= __DIR__ . '/Maps_ParamGMap3Types.php';
-	$wgAutoloadClasses['MapsParamGMap3Typestyle']	= __DIR__ . '/Maps_ParamGMap3Typestyle.php';
-	$wgAutoloadClasses['MapsParamGMap3Zoomstyle']	= __DIR__ . '/Maps_ParamGMap3Zoomstyle.php';
 
 	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );	
