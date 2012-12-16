@@ -92,15 +92,14 @@ final class MapsMapper {
 		);
 
 		$params['width'] = array(
+			'type' => 'dimension',
+			'allowauto' => true,
 			'default' => $egMapsMapWidth,
-			// 'criteria' => new CriterionMapDimension( 'width' ),// TODO
-			// TODO 'manipulations' => new MapsParamDimension( 'width' ),
 		);
 
 		$params['height'] = array(
+			'type' => 'dimension',
 			'default' => $egMapsMapHeight,
-			// TODO 'criteria' => new CriterionMapDimension( 'height' ),
-			// TODO 'manipulations' => new MapsParamDimension( 'height' ),
 		);
 
 		// TODO$manipulation = new MapsParamLocation();
