@@ -1001,11 +1001,12 @@ $messages['mt'] = array(
 );
 
 /** Norwegian Bokmål (norsk (bokmål)‎)
+ * @author EvenT
  * @author Event
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
-	'semanticmaps-desc' => 'Tilbyr muligheten til å se på og endre koordinatdata lagret ved hjelp av Semantic MediaWiki-utvidelsen ([https://mapping.referata.com/wiki/Examples demo]).', # Fuzzy
+	'semanticmaps-desc' => 'Gir muligheten til å se på og endre koordinatdata lagret ved hjelp av utvidelsen Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps se her...]).',
 	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'semanticmaps-kml-link' => 'Vis KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Vis siden $1',
@@ -1022,6 +1023,7 @@ $messages['nb'] = array(
 	'semanticmaps-par-staticlocations' => 'En lokasjonsliste til å legge inn i kartet sammen med data fra spørringen. Som med display_points, kan du legge inn en tittel, en beskrivelse og et ikon per lokasjon med tilde "~" som skilletegn.',
 	'semanticmaps-par-forceshow' => 'Vil du vise kartet selv når det ikke er noen lokasjoner med?',
 	'semanticmaps-par-showtitle' => 'Vise tittel i markørinfovinduet eller ikke. Deaktivering er ofte nyttig når en bruker en mal for å formatere innholdet i infovinduet.',
+	'semanticmaps-par-hidenamespace' => 'Vis tittelen for navnerommet i markørens informasjonsboks',
 	'semanticmaps-par-centre' => 'Kartets sentrum. Hvis dette ikke er angitt, vil kartet automatisk velge det optimale senteret for å vise alle kartmarkørene.',
 	'semanticmaps-par-template' => 'Mal som brukes for å formatere innholdet i infovinduet.',
 	'semanticmaps-par-geocodecontrol' => 'Vis geokodingsstyringen',
@@ -1029,6 +1031,8 @@ $messages['nb'] = array(
 	'semanticmaps-kml-title' => 'Standard resultatoverskrift',
 	'semanticmaps-kml-linkabsolute' => 'Skal lenker være absolutte eller ikke (dvs. relative)',
 	'semanticmaps-kml-pagelinktext' => 'Teksten som skal brukes for lenker til siden, der $1 erstattes av sidetittelen',
+	'semanticmaps-shapes-improperformat' => 'Ulovlig formatering av $1. Vennligst les dokumentasjonen for å korrigere',
+	'semanticmaps-shapes-missingshape' => 'Ingen figurer funnet for $1. Vennlig bruk tilgjengelige figurer fra dokumentasjonen',
 );
 
 /** Dutch (Nederlands)
@@ -1452,6 +1456,14 @@ $messages['tr'] = array(
 	'semanticmaps_lookupcoordinates' => 'Koordinat ara',
 	'semanticmaps_enteraddresshere' => 'Adresi buraya girin',
 	'semanticmaps-forminput-add' => 'Ekle',
+);
+
+/** Ukrainian (українська)
+ * @author Steve.rusyn
+ */
+$messages['uk'] = array(
+	'semanticmaps-forminput-remove' => 'Вилучити',
+	'semanticmaps-forminput-add' => 'Додати',
 );
 
 /** Urdu (اردو)
