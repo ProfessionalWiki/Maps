@@ -77,6 +77,11 @@ $specialPageAliases['tr'] = array(
 	'MapEditor' => array( 'HaritaDüzenleyici', 'HaritaEditörü' ),
 );
 
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'MapEditor' => array( 'Sửa_đổi_bản_đồ' ),
+);
+
 /** Simplified Chinese (中文（简体）‎) */
 $specialPageAliases['zh-hans'] = array(
 	'MapEditor' => array( '地图编辑器' ),
