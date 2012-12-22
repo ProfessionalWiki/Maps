@@ -99,7 +99,9 @@ class SMKMLPrinter extends SMWExportPrinter {
 		$queryHandler->setSubjectSeparator( '' );
 
 		$formatter = new MapsKMLFormatter( $this->params );
-		$formatter->addPlacemarks( $queryHandler->getLocations() );
+
+		$shapes = $queryHandler->getShapes();
+		$formatter->addPlacemarks( $shapes['locations'] );
 
 		return $formatter->getKML();
 	}
