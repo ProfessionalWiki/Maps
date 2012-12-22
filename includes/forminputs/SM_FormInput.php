@@ -52,36 +52,40 @@ class SMFormInput {
 
 		$this->service->addParameterInfo( $params );
 		
-		$params['zoom']->setDefault( false, false );		
-		
-		$params['multi'] = new Parameter( 'multi', Parameter::TYPE_BOOLEAN );
-		$params['multi']->setDefault( $smgFIMulti, false );
-		
-		$params['fieldsize'] = new Parameter( 'fieldsize', Parameter::TYPE_INTEGER );
-		$params['fieldsize']->setDefault( $smgFIFieldSize, false );
-		$params['fieldsize']->addCriteria( new CriterionInRange( 5, 100 ) );
+		$params['zoom']->setDefault( false, false );
 
-		$params['icon'] = new Parameter( 'icon' );
-		$params['icon']->setDefault( '' );
-		$params['icon']->addCriteria( New CriterionNotEmpty() );
+		$params['multi'] = array(
+			'type' => 'boolean',
+			'default' => $smgFIMulti,
+		);
 
-		$manipulation = new MapsParamLocation();
-		$manipulation->toJSONObj = true;
+		$params['fieldsize'] = array(
+			'type' => 'integer',
+			'default' => $smgFIFieldSize,
+			'range' => array( 5, 100 ),
+		);
+
+		$params['icon'] = array(
+			'default' => '',
+		);
 
 		$params['locations'] = array(
+			'type' => 'mapslocation',
 			'aliases' => array( 'points' ),
-			'criteria' => new CriterionIsLocation(),
-			'manipulations' => $manipulation,
 			'default' => array(),
 			'islist' => true,
 			'delimiter' => self::SEPARATOR,
-			'message' => 'semanticmaps-par-locations', // TODO
 		);
-		
-		$params['geocodecontrol'] = new Parameter( 'geocodecontrol', Parameter::TYPE_BOOLEAN );
-		$params['geocodecontrol']->setDefault( true, false );
-		$params['geocodecontrol']->setMessage( 'semanticmaps-par-geocodecontrol' );
-		
+
+		$params['geocodecontrol'] = array(
+			'type' => 'boolean',
+			'default' => true,
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['message'] = 'semanticmaps-par-' . $name;
+		}
+
 		return $params;
 	}
 	
