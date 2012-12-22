@@ -23,7 +23,7 @@ class SMFormInput {
 	 * 
 	 * @since 1.0
 	 * 
-	 * @var char
+	 * @var string
 	 */
 	const SEPARATOR = ';';
 	

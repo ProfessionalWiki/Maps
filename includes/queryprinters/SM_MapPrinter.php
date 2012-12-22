@@ -22,7 +22,7 @@ class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * @since 1.0
 	 * 
-	 * @var false or string
+	 * @var string|boolean false
 	 */
 	protected $fatalErrorMsg = false;
 	
