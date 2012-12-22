@@ -1,13 +1,12 @@
 <?php
 
 /**
- * Initialization file for the Maps extension.
+ * Initialization file for the Semantic Maps extension.
  *
  * On MediaWiki.org: 		http://www.mediawiki.org/wiki/Extension:Semantic_Maps
  * Official documentation: 	http://mapping.referata.com/wiki/Semantic_Maps
  * Examples/demo's: 		http://mapping.referata.com/wiki/Semantic_Maps_examples
  *
- * @file SemanticMaps.php
  * @ingroup SemanticMaps
  *
  * @licence GNU GPL v2+
@@ -15,7 +14,7 @@
  */
 
 /**
- * This documenation group collects source code files belonging to Semantic Maps.
+ * This documentation group collects source code files belonging to Semantic Maps.
  *
  * Please do not use this group name for other code. If you have an extension to
  * Semantic Maps, please use your own group definition.
@@ -37,11 +36,11 @@ if ( ! defined( 'Maps_VERSION' ) ) {
 }
 
 // Version check for SMW, which needs to be at 1.8 or greater.
-if ( version_compare( Maps_VERSION, '1.1c', '<' ) ) {
+if ( version_compare( Maps_VERSION, '3.0c', '<' ) ) {
 	die(
-		'<b>Error:</b> This version of Semantic Maps needs <a href="https://semantic-mediawiki.org/wiki/Maps">Maps</a> 2.0 or later.
+		'<b>Error:</b> This version of Semantic Maps needs <a href="https://semantic-mediawiki.org/wiki/Maps">Maps</a> 3.0 or later.
 		You are currently using version ' . Maps_VERSION . '.
-	 	If for any reason you are stuck at Maps 1.0.x, you can use Semantic Maps 1.0.x instead.<br />'
+	 	If for any reason you are stuck at Maps 2.0.x, you can use Semantic Maps 2.0.x instead.<br />'
 	);
 }
 
@@ -59,7 +58,7 @@ if ( version_compare( SMW_VERSION, '1.8c', '<' ) ) {
 	);
 }
 
-define( 'SM_VERSION', '2.0.1.2' );
+define( 'SM_VERSION', '3.0 alpha' );
 
 $wgExtensionCredits['semantic'][] = array(
 	'path' => __FILE__,
