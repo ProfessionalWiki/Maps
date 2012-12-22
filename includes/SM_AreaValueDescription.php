@@ -114,11 +114,11 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * 
 	 * @param string $tableName
 	 * @param array $fieldNames
-	 * @param DatabaseBase or Database $dbs
+	 * @param DatabaseBase $dbs
 	 * 
 	 * @return string or false
 	 */
-	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
 		if ( $this->getDataItem()->getDIType() != SMWDataItem::TYPE_GEO
@@ -158,7 +158,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @param array $centerCoordinates Array containing non-directional float coordinates with lat and lon keys. 
 	 * @param float $circleRadius The radius of the circle to create a bounding box for, in m.
 	 * 
-	 * @return An associative array containing the limits with keys north, east, south and west.
+	 * @return float[] An associative array containing the limits with keys north, east, south and west.
 	 */
 	protected static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
 		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
