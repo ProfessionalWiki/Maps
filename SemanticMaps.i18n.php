@@ -464,6 +464,8 @@ $messages['eu'] = array(
  * @author Mjbmr
  */
 $messages['fa'] = array(
+	'semanticmaps-default-kml-pagelink' => 'مشاهده صفحهٔ $1',
+	'semanticmaps-updatemap' => 'به روز رسانی نقشه',
 	'semanticmaps-forminput-remove' => 'حذف',
 	'semanticmaps-forminput-add' => 'افزودن',
 	'semanticmaps-forminput-locations' => 'مکان‌ها',
@@ -1066,7 +1068,7 @@ $messages['nl'] = array(
 	'semanticmaps-kml-text' => 'De tekst die gekoppeld is aan iedere pagina. Als er extra opgevraagde eigenschappen zijn, wordt deze tekst daardoor overschreven.',
 	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
 	'semanticmaps-kml-linkabsolute' => 'Moeten verwijzingen absoluut zijn (in tegenstelling tot relatief)',
-	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de verwijzingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
+	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
 	'semanticmaps-shapes-improperformat' => 'Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak',
 	'semanticmaps-shapes-missingshape' => 'Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen',
 );
@@ -1271,6 +1273,11 @@ $messages['ru'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'semanticmaps-default-kml-pagelink' => '$1 පිටුව නරඹන්න',
+	'semanticmaps-latitude' => 'අක්ෂාංශය: $1',
+	'semanticmaps-longitude' => 'දේශාංශය: $1',
+	'semanticmaps-altitude' => 'උන්නතාංශය: $1',
+	'semanticmaps-updatemap' => 'සිතියම යාවත්කාලීන කරන්න',
 	'semanticmaps-forminput-remove' => 'ඉවත් කරන්න',
 	'semanticmaps-forminput-add' => 'එක් කරන්න',
 	'semanticmaps-forminput-locations' => 'ස්ථාන',
