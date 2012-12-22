@@ -2,8 +2,9 @@
 
 namespace Maps;
 use MapsMappingServices;
-use ParamProcessor\IParam;
+use IParam;
 use ParamProcessor\StringParam;
+use ParamProcessor\IParamDefinition;
 
 /**
  * Parameter definition for mapping service parameters.
@@ -61,10 +62,10 @@ class ServiceParam extends StringParam {
 	 *
 	 * @since 2.0
 	 *
-	 * @param $value mixed
-	 * @param $param IParam
-	 * @param $definitions array of IParamDefinition
-	 * @param $params array of IParam
+	 * @param mixed $value
+	 * @param IParam $param
+	 * @param IParamDefinition[] $definitions
+	 * @param IParam[] $params
 	 *
 	 * @return mixed
 	 */
