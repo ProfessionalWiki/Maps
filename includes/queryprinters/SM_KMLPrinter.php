@@ -45,28 +45,39 @@ class SMKMLPrinter extends SMWExportPrinter {
 	}
 
 	/**
-	 * Returns a list of parameter definitions.
+	 * @see SMWResultPrinter::getParamDefinitions
 	 *
-	 * @since 0.7.4
+	 * @since 3.0
 	 *
-	 * @return array
+	 * @param IParamDefinition[] $definitions
+	 *
+	 * @return array of IParamDefinition|array
 	 */
-	public function getParameters() {
+	public function getParamDefinitions( array $definitions ) {
 		global $egMapsDefaultLabel, $egMapsDefaultTitle;
 
-		$params = array_merge( parent::getParameters(), $this->exportFormatParameters() );
+		$params = parent::getParamDefinitions( $definitions );
 
-		$params['text'] = new Parameter( 'text', Parameter::TYPE_STRING, $egMapsDefaultLabel );
-		$params['text']->setMessage( 'semanticmaps-kml-text' );
+		$params['text'] = array(
+			'default' => $egMapsDefaultLabel,
+		);
 
-		$params['title'] = new Parameter( 'title', Parameter::TYPE_STRING, $egMapsDefaultTitle );
-		$params['title']->setMessage( 'semanticmaps-kml-title' );
+		$params['title'] = array(
+			'default' => $egMapsDefaultTitle,
+		);
 
-		$params['linkabsolute'] = new Parameter( 'linkabsolute', Parameter::TYPE_BOOLEAN, true );
-		$params['linkabsolute']->setMessage( 'semanticmaps-kml-linkabsolute' );
+		$params['linkabsolute'] = array(
+			'type' => 'boolean',
+			'default' => true,
+		);
 
-		$params['pagelinktext'] = new Parameter( 'pagelinktext', Parameter::TYPE_STRING, wfMessage( 'semanticmaps-default-kml-pagelink' )->text() );
-		$params['pagelinktext']->setMessage( 'semanticmaps-kml-pagelinktext' );
+		$params['pagelinktext'] = array(
+			'default' => wfMessage( 'semanticmaps-default-kml-pagelink' )->text(),
+		);
+
+		foreach ( $params as $name => &$param ) {
+			$param['name'] = 'semanticmaps-kml-' . $name;
+		}
 
 		return $params;
 	}
