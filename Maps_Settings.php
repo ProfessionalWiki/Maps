@@ -21,71 +21,71 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 
-# Mapping services configuration
+// Mapping services configuration
 
-	# Array of String. Array containing all the mapping services that will be made available to the user.
+	// Array of String. Array containing all the mapping services that will be made available to the user.
 	$egMapsAvailableServices = array(
 		'googlemaps3',
 		'openlayers',
 		//'osm'
 	);
 
-	# String. The default mapping service, which will be used when no default
-	# service is present in the $egMapsDefaultServices array for a certain feature.
-	# A service that supports all features is recommended. This service needs to be
-	# enabled, if not, the first one from the available services will be taken.
+	// String. The default mapping service, which will be used when no default
+	// service is present in the $egMapsDefaultServices array for a certain feature.
+	// A service that supports all features is recommended. This service needs to be
+	// enabled, if not, the first one from the available services will be taken.
 	$egMapsDefaultService = 'googlemaps3';
 	
-	# Array of String. The default mapping service for each feature, which will be
-	# used when no valid service is provided by the user. Each service needs to be
-	# enabled, if not, the first one from the available services will be taken.
-	# Note: The default service needs to be available for the feature you set it
-	# for, since it's used as a fallback mechanism.
+	// Array of String. The default mapping service for each feature, which will be
+	// used when no valid service is provided by the user. Each service needs to be
+	// enabled, if not, the first one from the available services will be taken.
+	// Note: The default service needs to be available for the feature you set it
+	// for, since it's used as a fallback mechanism.
 	$egMapsDefaultServices = array(
 		'display_map' => $egMapsDefaultService,
 	);
 
 
 	
-# Geocoding
+// Geocoding
 
-	# Array of String. Array containing all the geocoding services that will be
-	# made available to the user. Currently Maps provides the following services:
-	# geonames, google
-    # It is recommended that when using GeoNames you get a GeoNames webservice account
-    # at http://www.geonames.org/login and set the username to $egMapsGeoNamesUser below.
-    # Not doing this will result into a legacy service being used, which might be
-    # disabled at some future point.
+	// Array of String. Array containing all the geocoding services that will be
+	// made available to the user. Currently Maps provides the following services:
+	// geonames, google
+    // It is recommended that when using GeoNames you get a GeoNames webservice account
+    // at http://www.geonames.org/login and set the username to $egMapsGeoNamesUser below.
+    // Not doing this will result into a legacy service being used, which might be
+    // disabled at some future point.
 	$egMapsAvailableGeoServices = array(
 		'geonames',
 		'google',
 	);
 
-	# String. The default geocoding service, which will be used when no service is
-	# is provided by the user. This service needs to be enabled, if not, the first
-	# one from the available services will be taken.
+	// String. The default geocoding service, which will be used when no service is
+	// is provided by the user. This service needs to be enabled, if not, the first
+	// one from the available services will be taken.
 	$egMapsDefaultGeoService = 'geonames';
 	
-	# Boolean. Indicates if geocoders can override the default geoservice based on
-	# the used mapping service.
+	// Boolean. Indicates if geocoders can override the default geoservice based on
+	// the used mapping service.
 	$egMapsUserGeoOverrides = true;
 	
-	# Boolean. Sets if coordinates should be allowed in geocoding calls.
+	// Boolean. Sets if coordinates should be allowed in geocoding calls.
 	$egMapsAllowCoordsGeocoding = true;
 	
-	# Boolean. Sets if geocoded addresses should be stored in a cache.
+	// Boolean. Sets if geocoded addresses should be stored in a cache.
 	$egMapsEnableGeoCache = true;
 	
-	# String. GeoNames API user/application name.
-	# Obtain an account here: http://www.geonames.org/login
-	# Do not forget to activate your account for API usage!
+	// String. GeoNames API user/application name.
+	// Obtain an account here: http://www.geonames.org/login
+	// Do not forget to activate your account for API usage!
 	$egMapsGeoNamesUser = '';
 
 
 
-# Coordinate configuration
+// Coordinate configuration
 
-	# The coordinate notations that should be available.
+	// The coordinate notations that should be available.
 	$egMapsAvailableCoordNotations = array(
 		Maps_COORDS_FLOAT,
 		Maps_COORDS_DMS,
@@ -93,23 +93,23 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		Maps_COORDS_DD
 	);
 	
-	# Enum. The default output format of coordinates.
-	# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
+	// Enum. The default output format of coordinates.
+	// Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
 	$egMapsCoordinateNotation = Maps_COORDS_DMS;
 	
-	# Boolean. Indicates if coordinates should be outputted in directional notation by default.
-	# Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
+	// Boolean. Indicates if coordinates should be outputted in directional notation by default.
+	// Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
 	$egMapsCoordinateDirectional = true;
 	
-	# Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
+	// Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
 	$egMapsInternatDirectionLabels = true;
 
 
 
-# Distance configuration
+// Distance configuration
 	
-	# Array. A list of units (keys) and how many meters they represent (value).
-	# No spaces! If the unit consists out of multiple words, just write them together.
+	// Array. A list of units (keys) and how many meters they represent (value).
+	// No spaces! If the unit consists out of multiple words, just write them together.
 	$egMapsDistanceUnits = array(
 		'm' => 1,
 		'meter' => 1,
@@ -125,35 +125,35 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		'nauticalmiles' => 1852,
 	);
 	
-	# String. The default unit for distances.
+	// String. The default unit for distances.
 	$egMapsDistanceUnit = 'm';
 	
-	# Integer. The default amount of fractal digits in a distance.
+	// Integer. The default amount of fractal digits in a distance.
 	$egMapsDistanceDecimals = 2;	
 	
 	
 	
-# General map configuration
+// General map configuration
 
-	# Integer or string. The default width and height of a map. These values will
-	# only be used when the user does not provide them.
+	// Integer or string. The default width and height of a map. These values will
+	// only be used when the user does not provide them.
 	$egMapsMapWidth = 'auto';
 	$egMapsMapHeight = 350;
 
-	# Array. The minimum and maximum width and height for all maps. First min and
-	# max for absolute values, then min and max for percentage values. When the
-	# height or width exceed their limits, they will be changed to the closest
-	# allowed value.
+	// Array. The minimum and maximum width and height for all maps. First min and
+	// max for absolute values, then min and max for percentage values. When the
+	// height or width exceed their limits, they will be changed to the closest
+	// allowed value.
 	$egMapsSizeRestrictions = array(
 		'width'  => array( 50, 1020, 1, 100 ),
 		'height' => array( 50, 1000, 1, 100 ),
 	);
 	
-	# String. The default centre for maps. Can be either a set of coordinates or an address.
+	// String. The default centre for maps. Can be either a set of coordinates or an address.
 	$egMapsDefaultMapCentre = '0, 0';
 	
-	# Strings. The default content for all pop-ups. This value will only be used
-	# when the user does not provide one.
+	// Strings. The default content for all pop-ups. This value will only be used
+	// when the user does not provide one.
 	$egMapsDefaultTitle = '';
 	$egMapsDefaultLabel = '';
 	
@@ -163,29 +163,29 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 	
-# Other general configuration
+// Other general configuration
 	
-	# When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
+	// When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
 	$egMapsDebugJS = false;
 	
-	# Namespace index start of the mapping namespaces.
+	// Namespace index start of the mapping namespaces.
 	$egMapsNamespaceIndex = 420;
 	
-	# Boolean. Controls if you can specify images using a full path in layers.
+	// Boolean. Controls if you can specify images using a full path in layers.
 	$egMapsAllowExternalImages = true;
 	
 	
 	
-# Specific mapping service configuration
+// Specific mapping service configuration
 
-	# Google Maps v3
+	// Google Maps v3
 	
-		# Integer. The default zoom of a map. This value will only be used when the
-		# user does not provide one.
+		// Integer. The default zoom of a map. This value will only be used when the
+		// user does not provide one.
 		$egMapsGMaps3Zoom = 14;
 		
-		# Array of String. The Google Maps v3 default map types. This value will only
-		# be used when the user does not provide one.
+		// Array of String. The Google Maps v3 default map types. This value will only
+		// be used when the user does not provide one.
 		$egMapsGMaps3Types = array(
 			'roadmap',
 			'satellite',
@@ -193,11 +193,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'terrain'
 		);
 		
-		# String. The default map type. This value will only be used when the user
-		# does not provide one.
+		// String. The default map type. This value will only be used when the user
+		// does not provide one.
 		$egMapsGMaps3Type = 'roadmap';
 		
-		# Array. List of controls to display onto maps by default.
+		// Array. List of controls to display onto maps by default.
 		$egMapsGMaps3Controls = array(
 			'pan',
 			'zoom',
@@ -206,45 +206,45 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'streetview'			
 		);
 		
-		# String. The default style for the type control.
-		# horizontal, vertical or default
+		// String. The default style for the type control.
+		// horizontal, vertical or default
 		$egMapsGMaps3DefTypeStyle = 'default';
 
-		# String. The default style for the zoom control.
-		# small, large or default
+		// String. The default style for the zoom control.
+		// small, large or default
 		$egMapsGMaps3DefZoomStyle = 'default';
 		
-		# Boolean. Open the info windows on load by default?
+		// Boolean. Open the info windows on load by default?
 		$egMapsGMaps3AutoInfoWindows = false;
 		
-		# Array. Layers to load by default.
-		# traffic and bicycling
+		// Array. Layers to load by default.
+		// traffic and bicycling
 		$egMapsGMaps3Layers = array();
 		
-		# Integer. Default tilt when using Google Maps.
+		// Integer. Default tilt when using Google Maps.
 		$egMapsGMaps3DefaultTilt = 0;
 		
-		# Google JavaScript Loader API key.
-		# Can be obtained at: https://code.google.com/apis/loader/signup.html
-		# This key is needed when using Google Earth or when using extended
-		# limits for displaying maps or geocoding calls.
+		// Google JavaScript Loader API key.
+		// Can be obtained at: https://code.google.com/apis/loader/signup.html
+		// This key is needed when using Google Earth or when using extended
+		// limits for displaying maps or geocoding calls.
 		$egGoogleJsApiKey = '';
 
-		# Show points of interest or not.
+		// Show points of interest or not.
 		$egMapsShowPOI = true;
 
 
 
-	# OpenLayers
+	// OpenLayers
 		
-		# Integer. The default zoom of a map. This value will only be used when the
-		# user does not provide one.
+		// Integer. The default zoom of a map. This value will only be used when the
+		// user does not provide one.
 		$egMapsOpenLayersZoom = 13;
 		
-		# Array of String. The default controls for Open Layers. This value will only
-		# be used when the user does not provide one.
-		# Available values: layerswitcher, mouseposition, autopanzoom, panzoom,
-		# panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
+		// Array of String. The default controls for Open Layers. This value will only
+		// be used when the user does not provide one.
+		// Available values: layerswitcher, mouseposition, autopanzoom, panzoom,
+		// panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
 		$egMapsOLControls = array(
 			'layerswitcher',
 			'mouseposition',
@@ -253,15 +253,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'navigation'
 		);
 		
-		# Array of String. The default layers for Open Layers. This value will only be
-		# used when the user does not provide one.
+		// Array of String. The default layers for Open Layers. This value will only be
+		// used when the user does not provide one.
 		$egMapsOLLayers = array(
 			'osm-mapnik',
 			'osm-cyclemap',
 			'osmarender'
 		);
 		
-		# The difinitions for the layers that should be available for the user.
+		// The difinitions for the layers that should be available for the user.
 		$egMapsOLAvailableLayers = array(
 			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
 		
@@ -281,15 +281,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 				{layers: "landsat7", "sphericalMercator":true} )',
 		);
 		
-		# Layer group definitions. Group names must be different from layer names, and
-		# must only contain layers that are present in $egMapsOLAvailableLayers.
+		// Layer group definitions. Group names must be different from layer names, and
+		// must only contain layers that are present in $egMapsOLAvailableLayers.
 		$egMapsOLLayerGroups = array(
 			'yahoo' => array( 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid' ),
 			'bing' => array( 'bing-normal', 'bing-satellite', 'bing-hybrid' ),
 			'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
 		);
 		
-		# Layer dependencies
+		// Layer dependencies
 		$egMapsOLLayerDependencies = array(
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",

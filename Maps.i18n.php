@@ -338,7 +338,7 @@ $messages['af'] = array(
 	'maps-latitude' => 'Breedte:',
 	'maps-longitude' => 'Lengte:',
 	'maps_coordinates_missing' => 'Geen koördinate is vir die kaart verskaf nie.',
-	'maps_unrecognized_coords' => 'Die volgende koördinate is nie herken nie: $1.', # Fuzzy
+	'maps_unrecognized_coords' => 'Die volgende koördinate is nie herken nie: $1.', // Fuzzy
 	'maps_unrecognized_coords_for' => 'Die volgende {{PLURAL:$2|koördinaat|koördinate}} is nie herken nie en is uit die kaart weggelaat:
 $1.',
 	'maps_map_cannot_be_displayed' => 'Die kaart kan nie vertoon word nie.',
@@ -357,7 +357,7 @@ $1.',
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'maps-desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://mapping.referata.com/wiki/Maps_examples demo]). Hartës shërbimet në dispozicion: $1', # Fuzzy
+	'maps-desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://mapping.referata.com/wiki/Maps_examples demo]). Hartës shërbimet në dispozicion: $1', // Fuzzy
 	'maps_map' => 'Hartë',
 	'maps-loading-map' => 'Loading Harta ...',
 	'maps-abb-north' => 'N',
@@ -1262,7 +1262,7 @@ $messages['el'] = array(
  */
 $messages['en-gb'] = array(
 	'maps-desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Available mapping services: $1', # Fuzzy
+Available mapping services: $1', // Fuzzy
 	'maps-invalid-coordinates' => 'The value $1 was not recognised as a valid set of coordinates.',
 	'maps_unrecognized_coords' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised: $1.',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised and {{PLURAL:$2|has|have}} been omitted from the map:
@@ -1573,7 +1573,7 @@ $messages['fa'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'maps-desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://mapping.referata.com/wiki/Maps_examples demo]).', # Fuzzy
+	'maps-desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://mapping.referata.com/wiki/Maps_examples demo]).', // Fuzzy
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
 	'maps-others' => 'muut',
@@ -1581,12 +1581,12 @@ $messages['fi'] = array(
 	'maps-layer-value' => 'Arvo',
 	'maps-layer-errors' => 'Virheet',
 	'maps-distance-par-unit' => 'Etäisyyden näyttämiseen käytettävä yksikkö.',
-	'maps-abb-north' => 'Pohj.', # Fuzzy
-	'maps-abb-east' => 'It.', # Fuzzy
-	'maps-abb-south' => 'Etel.', # Fuzzy
-	'maps-abb-west' => 'Länt.', # Fuzzy
-	'maps-latitude' => 'Korkeusaste:', # Fuzzy
-	'maps-longitude' => 'Pituuspiiri:', # Fuzzy
+	'maps-abb-north' => 'Pohj.', // Fuzzy
+	'maps-abb-east' => 'It.', // Fuzzy
+	'maps-abb-south' => 'Etel.', // Fuzzy
+	'maps-abb-west' => 'Länt.', // Fuzzy
+	'maps-latitude' => 'Korkeusaste:', // Fuzzy
+	'maps-longitude' => 'Pituuspiiri:', // Fuzzy
 	'maps-invalid-coordinates' => 'Arvoa $1 ei tunnistettu oikeaksi koordinaattisarjaksi.',
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
@@ -1869,7 +1869,7 @@ $messages['frp'] = array(
  */
 $messages['fur'] = array(
 	'maps-desc' => 'Al furnìs la possibilitât di mostrâ i dâts de coordinadis e lis direzions geocodificadis intune mape ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Servizis di mapis disponibii: $1', # Fuzzy
+Servizis di mapis disponibii: $1', // Fuzzy
 	'maps_map' => 'Mape',
 	'maps_coordinates_missing' => 'Nissune coordenade furnide pe mape.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|La direzion ca sot no pues jessi geocodificade|Lis direzions ca sot no puedin jessi geocodificadis}}: $1.
@@ -2082,7 +2082,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'maps-desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://mapping.referata.com/wiki/Maps_examples Demo]', # Fuzzy
+	'maps-desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://mapping.referata.com/wiki/Maps_examples Demo]', // Fuzzy
 	'maps_map' => 'Charte',
 	'maps-loading-map' => 'Am Lade vu dr Charte ...',
 	'maps-markers' => 'Markierige',
@@ -2319,7 +2319,7 @@ $messages['hi'] = array(
  * @author Ex13
  */
 $messages['hr'] = array(
-	'maps-desc' => 'Pruža mogućnost prikaza podataka o koordinatama na kartama, te geokodiranih adresa ([http://mapping.referata.com/wiki/Maps_examples demo]). Dostupne usluge kartiranja: $1', # Fuzzy
+	'maps-desc' => 'Pruža mogućnost prikaza podataka o koordinatama na kartama, te geokodiranih adresa ([http://mapping.referata.com/wiki/Maps_examples demo]). Dostupne usluge kartiranja: $1', // Fuzzy
 	'maps_coordinates_missing' => 'Za kartu nisu dostupne koordinate.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Sljedeća adresa ne može biti geokodirana|Sljedeće adrese ne mogu biti geokodirane}}: $1.
 Karta ne može biti prikazana.',
@@ -3247,13 +3247,13 @@ $messages['ksh'] = array(
 	'maps_coordinates_missing' => 'Mer han kein Koodinaate för di Kaat.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Di Koodinaat|De Koodinaate|Kein Koodinaat}} om Jlobus för di {{PLURAL:$2|aanjejovve Adräß wohr|aanjejovve Adräße wohre|kein aanjejovve Adräß wohr}} Kappes: $1. Di Kaat künne mer su nit aanzeije.',
 	'maps_geocoding_failed_for' => 'De Koodinaate om Jlobus för {{PLURAL:$2|ein|paa|kein}} vun dä aanjejovve Adräße {{PLURAL:$2|es|wohre|Fähler!}} Kappes. Di {{PLURAL:$2|es|sin|Fähler!}} dröm nit op dä Kaat. De fottjelohße {{PLURAL:$2|es|sin|Fähler!}}: $1',
-	'maps_unrecognized_coords' => 'He di Koordinate kunnte mer nit verschtonn: $1.', # Fuzzy
+	'maps_unrecognized_coords' => 'He di Koordinate kunnte mer nit verschtonn: $1.', // Fuzzy
 	'maps_unrecognized_coords_for' => 'He di {{PLURAL:$2|Koordinat kunnt|Koordinate kunnte}} mer nit verschtonn un dröm {{PLURAL:$2|es|sin}} se nit en de Kaat opjenumme woode:
 $1',
 	'maps_map_cannot_be_displayed' => 'Di Kaat künne mer nit aanzeije.',
 	'maps_click_to_activate' => 'Donn klecke, öm op di Kaat ze jonn',
 	'maps_centred_on' => 'De Kaat met $1, $2 en de Medde.',
-	'maps-googlemaps3-par-kmlrezoom' => 'Donn di Kaat norr_ens zoome, nohdäm de  layers vum KLM jelaade sin.', # Fuzzy
+	'maps-googlemaps3-par-kmlrezoom' => 'Donn di Kaat norr_ens zoome, nohdäm de  layers vum KLM jelaade sin.', // Fuzzy
 );
 
 /** Kurdish (Latin script) (Kurdî (latînî)‎)
@@ -3363,7 +3363,7 @@ $1',
  */
 $messages['lt'] = array(
 	'maps-desc' => 'Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Katrografavimo paslaugos pasiekiamos: $1', # Fuzzy
+Katrografavimo paslaugos pasiekiamos: $1', // Fuzzy
 	'maps_map' => 'Žemėlapis',
 	'maps-loading-map' => 'Kraunamas žemėlapis ...',
 	'maps-abb-north' => 'Š',
@@ -3372,7 +3372,7 @@ Katrografavimo paslaugos pasiekiamos: $1', # Fuzzy
 	'maps-abb-west' => 'V',
 	'maps-latitude' => 'Platuma:',
 	'maps-longitude' => 'Ilguma:',
-	'maps-invalid-coordinates' => 'Vertė $ 1 nepripažįstama kaip galiojanti koordinatė.', # Fuzzy
+	'maps-invalid-coordinates' => 'Vertė $ 1 nepripažįstama kaip galiojanti koordinatė.', // Fuzzy
 	'maps_coordinates_missing' => 'Nesudarytos koordinatės žemėlapiui.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Šis adresas|Šie adresai}} negali būti kartografuoti: $1.',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Ši koordinatė|Šios koordinatės}} nebuvo atpažintos: $1.',
@@ -4111,7 +4111,7 @@ $messages['nn'] = array(
 	'maps-latitude' => 'Breiddegrad:',
 	'maps-longitude' => 'Lengdegrad:',
 	'maps_coordinates_missing' => 'Ingen koordinatar vart oppgjevne for kartet.',
-	'maps_unrecognized_coords' => 'Dei fylgjande koordinatane vart ikkje kjende att: $1.', # Fuzzy
+	'maps_unrecognized_coords' => 'Dei fylgjande koordinatane vart ikkje kjende att: $1.', // Fuzzy
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikkje verta vist.',
 	'maps_click_to_activate' => 'Trykk for å aktivera kartet',
 	'maps_centred_on' => 'Kart sentrert på $1, $2.',
@@ -4123,7 +4123,7 @@ $messages['nn'] = array(
 $messages['oc'] = array(
 	'maps-desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocodadas
 ([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://mapping.referata.com/wiki/Maps_examples demonstracion]).
-Servicis de cartografia disponibles : $1", # Fuzzy
+Servicis de cartografia disponibles : $1", // Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
@@ -4135,7 +4135,7 @@ Servicis de cartografia disponibles : $1", # Fuzzy
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} : $1.
 Lo plan pòt pas èsser afichat.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} e {{PLURAL:$2|es pas afichada|son pas afichadas}} sul plan : $1",
-	'maps_unrecognized_coords' => 'Las coordenadas seguentas son pas estadas reconegudas : $1.', # Fuzzy
+	'maps_unrecognized_coords' => 'Las coordenadas seguentas son pas estadas reconegudas : $1.', // Fuzzy
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada seguenta es pas estada reconeguda|Las coordenadas seguentas son pas estadas reconegudas}} e {{PLURAL:$2|es estada omesa|son estadas omesas}} sus la mapa :
 $1',
 	'maps_map_cannot_be_displayed' => 'La mapa pòt pas èsser afichada.',
@@ -5072,7 +5072,7 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'maps-desc' => 'ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://mapping.referata.com/wiki/Maps_examples demo]).
-<br />บริการแผนที่ที่มีอยู่: $1', # Fuzzy
+<br />บริการแผนที่ที่มีอยู่: $1', // Fuzzy
 	'maps_coordinates_missing' => 'ไม่ได้กำหนดพิกัดของแผนที่มาให้',
 );
 
