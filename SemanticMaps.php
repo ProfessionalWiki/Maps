@@ -102,7 +102,7 @@ $incDir = __DIR__ . '/includes/';
 
 // Data values
 $wgAutoloadClasses['SMGeoCoordsValue'] 				= $incDir . 'SM_GeoCoordsValue.php';
-$wgAutoloadClasses['SMGeoPolygonsValue'] 				= $incDir . 'SM_GeoPolygonsValue.php';
+$wgAutoloadClasses['SMGeoPolygonsValue'] 			= $incDir . 'SM_GeoPolygonsValue.php';
 $wgAutoloadClasses['PolygonHandler'] 				= $incDir . 'SM_PolygonHandler.php';
 
 // Value descriptions

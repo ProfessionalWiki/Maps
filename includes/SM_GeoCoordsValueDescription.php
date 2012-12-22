@@ -34,11 +34,11 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * 
 	 * @param string $tableName
 	 * @param array $fieldNames
-	 * @param DatabaseBase or Database $dbs
+	 * @param DatabaseBase $dbs
 	 * 
-	 * @return true
+	 * @return boolean
 	 */
-	public function getSQLCondition( $tableName, array $fieldNames, $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		$dataItem = $this->getDataItem();
 		
 		// Only execute the query when the description's type is geographical coordinates,

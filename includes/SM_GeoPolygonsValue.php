@@ -3,7 +3,7 @@
 /**
  * Implementation of datavalues that are geographic shapes.
  *
- * @since sm.polygons
+ * @since 2.0
  *
  * @file SM_GeoPolgonValue.php
  * @ingroup SemanticMaps
@@ -34,7 +34,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	 * TODO: Stores as a Blob, use better data structure
 	 * @see SMWDataValue::parseUserValue
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 */
 	protected function parseUserValue( $value ) {
 		if ( $value === '' ) {
@@ -50,7 +50,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getShortWikiText
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 */
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() ) {
@@ -63,7 +63,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getShortHTMLText
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 */
 	public function getShortHTMLText( $linker = null ) {
 		return $this->getShortWikiText( $linker );
@@ -72,7 +72,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getLongWikiText
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 */
 	public function getLongWikiText( $linker = null ) {
 		return $this->getShortWikiText( $linker );
@@ -81,7 +81,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getLongHTMLText
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 */
 	public function getLongHTMLText( $linker = null ) {
 		return $this->getLongWikiText( $linker );
@@ -90,7 +90,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getWikiValue
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 */
 	public function getWikiValue() {
 		return $this->m_dataitem->getString();
@@ -99,7 +99,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getExportData
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 */
 	public function getExportData() {
 		return null;
