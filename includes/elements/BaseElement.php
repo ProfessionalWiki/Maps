@@ -128,7 +128,7 @@ abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMap
 
 		$array['text'] = $this->hasText() ? $this->getText() : $defText;
 		$array['title'] = $this->hasTitle() ? $this->getTitle() : $defTitle;
-		$array['title'] = $this->options->hasOption( 'link' ) ? $this->getLink() : '';
+		$array['link'] = $this->options->hasOption( 'link' ) ? $this->getLink() : '';
 
 		return $array;
 	}
