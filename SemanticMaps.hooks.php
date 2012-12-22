@@ -5,7 +5,6 @@
  *
  * @since 0.7
  *
- * @file SemanticMaps.hooks.php
  * @ingroup SemanticMaps
  *
  * @licence GNU GPL v2+
@@ -64,9 +63,9 @@ final class SemanticMapsHooks {
 	/**
 	 * Adds support for the geographical coordinates and shapes data type to Semantic MediaWiki.
 	 *
-	 * @since sm.polygons
+	 * @since 2.0
 	 *
-	 * @return true
+	 * @return boolean
 	 */
 	public static function initGeoDataTypes() {
 		SMWDataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', SMWDataItem::TYPE_GEO );
@@ -86,7 +85,7 @@ final class SemanticMapsHooks {
 	 * @param $printRequests Array: The print requests made
 	 * @param $params Array: The parameters for the query printer
 	 * 
-	 * @return true
+	 * @return boolean
 	 */
 	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests, array $params ) {
 		// Only set the format when not set yet. This allows other extensions to override the Semantic Maps behaviour. 
