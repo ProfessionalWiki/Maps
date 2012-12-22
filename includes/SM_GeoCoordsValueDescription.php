@@ -4,7 +4,6 @@
  * Description of one data value of type Geographical Coordinates.
  * 
  * @since 0.6
- * @file SM_GeoCoordsValueDescription.php
  * @ingroup SemanticMaps
  * 
  * @author Jeroen De Dauw
@@ -16,7 +15,7 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * 
 	 * @since 0.6
 	 * 
-	 * @param Boolean $asvalue
+	 * @param boolean $asValue
 	 */
 	public function getQueryString( $asValue = false ) {
 		if ( $this->m_dataItem !== null ) {
@@ -43,31 +42,27 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 		
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( $dataItem->getDIType() != SMWDataItem::TYPE_GEO ) return false;
+		if ( $dataItem instanceof SMWDIGeoCoord ) {
+			switch ( $this->getComparator() ) {
+				case SMW_CMP_EQ: $comparator = '='; break;
+				case SMW_CMP_LEQ: $comparator = '<='; break;
+				case SMW_CMP_GEQ: $comparator = '>='; break;
+				case SMW_CMP_NEQ: $comparator = '!='; break;
+				default: return false;
+			}
 
-		$comparator = false;
-		
-		switch ( $this->getComparator() ) {
-			case SMW_CMP_EQ: $comparator = '='; break;
-			case SMW_CMP_LEQ: $comparator = '<='; break;
-			case SMW_CMP_GEQ: $comparator = '>='; break;
-			case SMW_CMP_NEQ: $comparator = '!='; break;
-		}
-		
-		if ( $comparator ) {
 			$lat = $dbs->addQuotes( $dataItem->getLatitude() );
 			$lon = $dbs->addQuotes( $dataItem->getLongitude() );
-			
+
 			$conditions = array();
-				
-            $conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
-            $conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";
-			
-			return implode( ' && ', $conditions );			
+
+			$conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
+			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";
+
+			return implode( ' && ', $conditions );
 		}
-		else {
-			return false;
-		}
+
+		return false;
 	}
 	
 }

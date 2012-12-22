@@ -1,5 +1,8 @@
 <?php
 
+use DataValues\GeoCoordinateValue;
+use ValueFormatters\GeoCoordinateFormatter;
+
 /**
  * Implementation of datavalues that are geographic coordinates.
  * 
@@ -27,18 +30,51 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @return boolean
 	 */
 	protected function loadDataItem( SMWDataItem $dataItem ) {
-		if ( $dataItem->getDIType() == SMWDataItem::TYPE_GEO ) {
-			$this->m_dataitem = $dataItem;
+		if ( $dataItem instanceof SMWDIGeoCoord ) {
+			 $formattedValue = $this->getFormattedCoord( $dataItem );
 
-			global $smgQPCoodFormat, $smgQPCoodDirectional;
-			$this->wikiValue = MapsCoordinateParser::formatCoordinates(
-				$dataItem->getCoordinateSet(),
-				$smgQPCoodFormat,
-				$smgQPCoodDirectional
-			);
-			return true;
-		} else {
-			return false;
+			if ( $formattedValue !== null ) {
+				$this->wikiValue = $formattedValue;
+				$this->m_dataitem = $dataItem;
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * @since 3.0
+	 *
+	 * @param SMWDIGeoCoord $dataItem
+	 * @param string|null $format
+	 *
+	 * @return string|null
+	 */
+	protected function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
+		global $smgQPCoodFormat;
+
+		$options = new \ValueFormatters\FormatterOptions( array(
+			GeoCoordinateFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
+		) );
+
+		// TODO: $smgQPCoodDirectional
+
+		$coordinateFormatter = new GeoCoordinateFormatter( $options );
+
+		$value = new GeoCoordinateValue(
+			$dataItem->getLatitude(),
+			$dataItem->getLongitude(),
+			$dataItem->getAltitude()
+		);
+
+		$formatterResult = $coordinateFormatter->format( $value );
+
+		if ( $formatterResult->isValid() ) {
+			return $formatterResult->getValue();
+		}
+		else {
+			return null;
 		}
 	}
 	
@@ -99,14 +135,22 @@ class SMGeoCoordsValue extends SMWDataValue {
 				}
 			}
 
-			$parsedCoords = MapsCoordinateParser::parseCoordinates( $coordinates );
-			if ( $parsedCoords ) {
-				$this->m_dataitem = new SMWDIGeoCoord( $parsedCoords );
+			$options = new \ValueParsers\ParserOptions();
+			$parser = new \ValueParsers\GeoCoordinateParser( $options );
+			$parsedCoords = $parser->parse($coordinates  );
+
+			if ( $parsedCoords->isValid() ) {
+				/**
+				 * @var GeoCoordinateValue $value
+				 */
+				$value = $parsedCoords->getValue();
+				$this->m_dataitem = new SMWDIGeoCoord( $value->getLatitude(), $value->getLongitude() );
+
 			} else {
 				$this->addError( wfMessage( 'maps_unrecognized_coords', $coordinates, 1 )->text() );
-				
-				 // Make sure this is always set
-				 // TODO: Why is this needed?!
+
+				// Make sure this is always set
+				// TODO: Why is this needed?!
 				$this->m_dataitem = new SMWDIGeoCoord( array( 'lat' => 0, 'lon' => 0 ) );
 			}
 		}
@@ -133,8 +177,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() ) {
 			if ( $this->m_caption === false ) {
-				global $smgQPCoodFormat, $smgQPCoodDirectional;
-				return MapsCoordinateParser::formatCoordinates( $this->m_dataitem->getCoordinateSet(), $smgQPCoodFormat, $smgQPCoodDirectional );
+				return $this->getFormattedCoord( $this->m_dataitem );
 			}
 			else {
 				return $this->m_caption; 
@@ -166,8 +209,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 			// TODO: fix lang keys so they include the space and coordinates.
 			$coordinateSet = $this->m_dataitem->getCoordinateSet();
 			
-			global $smgQPCoodFormat, $smgQPCoodDirectional;
-			$text = MapsCoordinateParser::formatCoordinates( $coordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
+			$text = $this->getFormattedCoord( $this->m_dataitem );
 
 			$lines = array(
 				wfMessage( 'semanticmaps-latitude', $coordinateSet['lat'] )->inContentLanguage()->escaped(),
@@ -211,9 +253,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
-			global $smgQPCoodFormat, $smgQPCoodDirectional;
 			$lit = new SMWExpLiteral(
-				MapsCoordinateParser::formatCoordinates( $this->m_dataitem->getCoordinateSet(), $smgQPCoodFormat, $smgQPCoodDirectional ),
+				$this->getFormattedCoord( $this->m_dataitem ),
 				$this,
 				'http://www.w3.org/2001/XMLSchema#string'
 			);
@@ -239,8 +280,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected function getServiceLinkParams() {
 		$coordinateSet = $this->m_dataitem->getCoordinateSet();
 		return array(
-			MapsCoordinateParser::formatCoordinates( $coordinateSet, 'float', false ),
-			MapsCoordinateParser::formatCoordinates( $coordinateSet, 'dms', true ),
+			$this->getFormattedCoord( $this->m_dataitem, 'float' ), // TODO
+			$this->getFormattedCoord( $coordinateSet, 'dms' ), // TODO
 			$coordinateSet['lat'],
 			$coordinateSet['lon']
 		);
