@@ -45,8 +45,6 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsDefaultTitle, $egMapsDefaultLabel;
-
 		$params = MapsMapper::getCommonParameters();
 
 		$params['mappingservice']['feature'] = 'display_map';
@@ -62,7 +60,22 @@ class MapsDisplayMap extends ParserHook {
 			'default' => array(),
 			'islist' => true,
 			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
+			'message' => 'maps-displaymap-par-coordinates',
 		);
+
+		$params = array_merge( $params, self::getCommonMapParams() );
+		
+		return $params;
+	}
+
+	/**
+	 * Temporary hack. Do not rely upon.
+	 * @since 3.0
+	 * @deprecated
+	 * @return array
+	 */
+	public static function getCommonMapParams() {
+		global $egMapsDefaultTitle, $egMapsDefaultLabel;
 
 		$params['title'] = array(
 			'name' => 'title',
@@ -110,16 +123,6 @@ class MapsDisplayMap extends ParserHook {
 			'islist' => true,
 		);
 
-		$params['copycoords'] = array(
-			'type' => 'boolean',
-			'default' => false,
-		);
-
-		$params['static'] = array(
-			'type' => 'boolean',
-			'default' => false,
-		);
-
 		$params['wmsoverlay'] = array(
 			'type' => 'string',
 			'default' => false,
@@ -141,12 +144,22 @@ class MapsDisplayMap extends ParserHook {
 			'lowerbound' => 0,
 		);
 
+		$params['copycoords'] = array(
+			'type' => 'boolean',
+			'default' => false,
+		);
+
+		$params['static'] = array(
+			'type' => 'boolean',
+			'default' => false,
+		);
+
 		foreach ( $params as $name => &$param ) {
 			if ( !array_key_exists( 'message', $param ) ) {
 				$param['message'] = 'maps-displaymap-par-' . $name;
 			}
 		}
-		
+
 		return $params;
 	}
 	
