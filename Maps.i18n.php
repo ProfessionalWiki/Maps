@@ -633,6 +633,18 @@ $messages['az'] = array(
 	'maps-abb-west' => 'Q',
 );
 
+/** Bashkir (башҡортса)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'mapeditor-form-title' => 'Үҙгәртеү мәғлүмәттәре',
+	'mapeditor-link-title-switcher-link-text' => 'Һылтанма',
+	'mapeditor-form-field-title' => 'Исем',
+	'mapeditor-form-field-text' => 'Текст',
+	'mapeditor-form-field-link' => 'Һылтанма',
+	'mapeditor-form-field-group' => 'Төркөм',
+);
+
 /** Bavarian (Boarisch)
  * @author Mucalexx
  */
@@ -815,9 +827,11 @@ $1',
 
 /** Bulgarian (български)
  * @author DCLXVI
+ * @author පසිඳු කාවින්ද
  */
 $messages['bg'] = array(
 	'maps_map' => 'Карта',
+	'maps-layer-value' => 'Стойност',
 	'maps-layer-errors' => 'Грешки',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
@@ -826,6 +840,13 @@ $messages['bg'] = array(
 	'maps-latitude' => 'Географска ширина:',
 	'maps-longitude' => 'Географска дължина:',
 	'maps-googlemaps3-incompatbrowser' => 'Вашият браузър не е съвместим с Google Maps v3.',
+	'mapeditor-remove-button' => 'Премахване',
+	'mapeditor-import-button2' => 'Внасяне',
+	'mapeditor-link-title-switcher-link-text' => 'Препратка',
+	'mapeditor-form-field-title' => 'Заглавие',
+	'mapeditor-form-field-text' => 'Текст',
+	'mapeditor-form-field-link' => 'Препратка',
+	'mapeditor-form-field-group' => 'Група',
 );
 
 /** Banjar (Bahasa Banjar)
@@ -1653,10 +1674,11 @@ No se puede mostrar el mapa.',
 /** Estonian (eesti)
  * @author Avjoska
  * @author Hendrik
+ * @author Pikne
  */
 $messages['et'] = array(
 	'maps_map' => 'Kaart',
-	'maps-loading-map' => 'Laen kaarti...',
+	'maps-loading-map' => 'Kaardi laadimine...',
 	'maps-others' => 'teised',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
@@ -3011,6 +3033,7 @@ $1',
  * @author Farras
  * @author Irwangatot
  * @author IvanLanin
+ * @author පසිඳු කාවින්ද
  */
 $messages['id'] = array(
 	'maps-desc' => 'Mengaktifkan penyertaan peta dinamis dalam halaman wiki, pembuatan geokode alamat, dan operasi geografi lain.
@@ -3019,6 +3042,7 @@ $messages['id'] = array(
 	'maps-loading-map' => 'Memuat peta...',
 	'maps-load-failed' => 'Peta tidak dapat dimuat!',
 	'maps-markers' => 'Tanda',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'lainnya',
 	'maps-ns-layer' => 'Lapisan',
 	'maps-ns-layer-talk' => 'Pembicaraan lapisan',
@@ -3129,6 +3153,18 @@ $1',
 	'maps-openlayers-par-layers' => 'Lapisan yang akan tersedia pada pemilih lapisan. Lapisan pertama akan ditampilkan ketika peta dimuat.',
 	'maps-osm-par-thumbs' => 'Tampilkan gambar mini',
 	'maps-osm-par-photos' => 'Tampilkan foto',
+	'mapeditor' => 'Penyunting peta',
+	'specialpages-group-maps' => 'Peta',
+	'mapeditor-none-text' => 'Tidak ada',
+	'mapeditor-done-button' => 'Selesai',
+	'mapeditor-remove-button' => 'Hapus',
+	'mapeditor-import-button2' => 'Impor',
+	'mapeditor-export-button' => 'Ekspor ke kode wiki',
+	'mapeditor-import-button' => 'Impor dari kode wiki',
+	'mapeditor-select-button' => 'Pilih poligon ini',
+	'mapeditor-mapparam-button' => 'Sunting parameter peta',
+	'mapeditor-clear-button' => 'Hapus peta',
+	'mapeditor-code-title' => 'Kode wiki',
 	'mapeditor-import-title' => 'Impor kode wiki',
 	'mapeditor-form-title' => 'Sunting rincian',
 	'mapeditor-link-title-switcher-link-text' => 'Tautan',
@@ -3722,6 +3758,7 @@ $messages['lt'] = array(
 Katrografavimo paslaugos pasiekiamos: $1', # Fuzzy
 	'maps_map' => 'Žemėlapis',
 	'maps-loading-map' => 'Kraunamas žemėlapis ...',
+	'maps-others' => 'kita',
 	'maps-abb-north' => 'Š',
 	'maps-abb-east' => 'R',
 	'maps-abb-south' => 'P',
@@ -5031,7 +5068,7 @@ $1',
 	'mapeditor-form-field-fillopcaity' => 'Opacitatea umplerii',
 	'mapeditor-form-field-showonhover' => 'Arată numai când mausul este deasupra',
 	'mapeditor-mapparam-title' => 'Modificare parametrii hartă',
-	'mapeditor-mapparam-defoption' => '-Selectați parametrul-',
+	'mapeditor-mapparam-defoption' => '-Alegeți parametrul-',
 	'mapeditor-imageoverlay-button' => 'Adaugă suprapunerea de imagine',
 	'mapeditor-form-field-image' => 'Imagine',
 	'mapeditor-imageoverlay-title' => 'Detalii suprapunere imagine',
