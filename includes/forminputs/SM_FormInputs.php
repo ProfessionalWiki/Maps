@@ -95,7 +95,7 @@ final class SMFormInputs {
 		
 		//$sfgFormPrinter->registerInputType( 'SMMapInput' );
 
-		if( $inputName == 'googlemapsEditor') {
+		if( $inputName == 'googlemapsEditor' ) {
 			$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectEditorFormInputHTML', $field_args );
 		} else {
 			$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectFormInputHTML', $field_args );
@@ -132,6 +132,8 @@ function smfSelectFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_d
 /**
  * Calls the relevant form Editor input class depending on the provided service.
  * NOTE: Currently only GoogleMaps is supported
+ *
+ * @since 2.0
  *
  * @param string $coordinates
  * @param string $input_name
