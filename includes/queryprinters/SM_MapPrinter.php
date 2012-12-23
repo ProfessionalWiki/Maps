@@ -88,8 +88,9 @@ class SMMapPrinter extends SMWResultPrinter {
 		);
 
 		foreach ( $params as $name => &$data ) {
-			$data['name'] = $name;
-			$data['message'] = 'semanticmaps-par-' . $name;
+			if ( is_array( $data ) && !array_key_exists( 'message', $data ) ) {
+				$data['message'] = 'semanticmaps-par-' . $name;
+			}
 		}
 
 		$params = array_merge( $params, MapsDisplayMap::getCommonMapParams() );
@@ -220,28 +221,24 @@ class SMMapPrinter extends SMWResultPrinter {
 		$params['locations'] = array();
 
 		foreach ( $params['staticlocations'] as $location ) {
-			if ( $location->isValid() ) {
-				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
-				
-				$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
-				$jsonObj['text'] = $parser->parse( $jsonObj['text'], $parser->getTitle(), new ParserOptions() )->getText();
-				
-				$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
-				$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
-				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
-				
-				$params['locations'][] = $jsonObj;					
-			}
+			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
+
+			$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
+			$jsonObj['text'] = $parser->parse( $jsonObj['text'], $parser->getTitle(), new ParserOptions() )->getText();
+
+			$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
+			$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
+			$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+
+			$params['locations'][] = $jsonObj;
 		}
 		
 		foreach ( $queryShapes['locations'] as $location ) {
-			if ( $location->isValid() ) {
-				$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
-				
-				$jsonObj['title'] = strip_tags( $jsonObj['title'] );
-				
-				$params['locations'][] = $jsonObj;				
-			}
+			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
+
+			$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+
+			$params['locations'][] = $jsonObj;
 		}
 		unset( $params['staticlocations'] );
 		foreach ( $queryShapes['lines'] as $line ) {
