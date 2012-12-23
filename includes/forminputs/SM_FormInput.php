@@ -229,7 +229,7 @@ class SMFormInput {
 	 */
 	public function getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
 		global $wgOut;
-		$parameters = array();
+
 		$wgOut->addHtml( MapsGoogleMaps3::getApiScript(
 			'en',
 			array( 'libraries' => 'drawing' )
