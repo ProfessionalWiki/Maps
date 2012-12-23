@@ -46,129 +46,53 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @return array
 	 */
 	protected function getParameterInfo() {
-		global $egMapsDefaultLabel, $egMapsDefaultTitle;
 		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
 		
 		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
 
 		$this->service->addParameterInfo( $params );
-		
-		$params['zoom']->setDefault( false );		
-		$params['zoom']->setDoManipulationOfDefault( false );		
-		
-		$params['staticlocations'] = new ListParameter( 'staticlocations', ';' );
-		$params['staticlocations']->addAliases( 'locations', 'points' );
-		$params['staticlocations']->addCriteria( new CriterionIsLocation( '~' ) );
-		$params['staticlocations']->addManipulations( new MapsParamLocation( '~' ) );
-		$params['staticlocations']->setDefault( array() );
-		$params['staticlocations']->setMessage( 'semanticmaps-par-staticlocations' );
 
-		$params['icon'] = new Parameter(
-			'icon',
-			Parameter::TYPE_STRING,
-			'',
-			array(),
-			array(
-				New CriterionNotEmpty()
-			)
-		);
-		$params['icon']->setMessage( 'maps-displaypoints-par-icon' );
+		// TODO
+//		$params['zoom']->setDefault( false );
+//		$params['zoom']->setDoManipulationOfDefault( false );
 
-		$params['visitedicon'] = new Parameter(
-			'visitedicon',
-			Parameter::TYPE_STRING,
-			'',
-			array(),
-			array(
-				New CriterionNotEmpty()
-			)
-		);
-		$params['visitedicon']->setMessage( 'maps-displaymap-par-visitedicon' );
-		
-		$params['forceshow'] = new Parameter(
-			'forceshow',
-			Parameter::TYPE_BOOLEAN,
-			$smgQPForceShow,
-			array( 'force show' )
-		);
-		$params['forceshow']->setMessage( 'semanticmaps-par-forceshow' );
-
-		$params['showtitle'] = new Parameter(
-			'showtitle',
-			Parameter::TYPE_BOOLEAN,
-			$smgQPShowTitle,
-			array( 'show title' )
-		);
-		$params['showtitle']->setMessage( 'semanticmaps-par-showtitle' );
-
-		$params['hidenamespace'] = new Parameter(
-			'hidenamespace',
-			Parameter::TYPE_BOOLEAN,
-			$smgQPHideNamespace,
-			array( 'hide namespace' )
-		);
-		$params['hidenamespace']->setMessage( 'semanticmaps-par-hidenamespace' );
-
-		$params['template'] = new Parameter(
-			'template',
-			Parameter::TYPE_STRING,
-			$smgQPTemplate,
-			array(),
-			array(
-				New CriterionNotEmpty()
-			)
-		);
-		$params['template']->setDoManipulationOfDefault( false );
-		$params['template']->setMessage( 'semanticmaps-par-template' );
-		
-		$params['title'] = new Parameter(
-			'title',
-			Parameter::TYPE_STRING,
-			$egMapsDefaultTitle
-		);
-		$params['title']->setMessage( 'maps-displaypoints-par-title' );
-		
-		$params['label'] = new Parameter(
-			'label',
-			Parameter::TYPE_STRING,
-			$egMapsDefaultLabel,
-			array( 'text' )
-		);
-		$params['label']->setMessage( 'maps-displaypoints-par-label' );
-
-		$params['lines'] = array(
+		$params['staticlocations'] = array(
+			'type' => 'mapslocation',
+			'aliases' => array( 'locations', 'points' ),
 			'default' => array(),
-			'message' => 'maps-displaypoints-par-lines', // TODO
-			'criteria' => new CriterionLine( '~' ),
-			'manipulations' => new MapsParamLine( '~' ),
-			'delimiter' => ';',
 			'islist' => true,
+			'delimiter' => ';',
+			'message' => 'semanticmaps-par-staticlocations',
 		);
 
-		$params['polygons'] = array(
-			'default' => array(),
-			'message' => 'maps-displaypoints-par-polygons', // TODO
-			'criteria' => new CriterionPolygon( '~' ), // TODO
-			'manipulations' => new MapsParamPolygon( '~' ), // TODO
-			'delimiter' => ';',
-			'islist' => true,
+		$params['forceshow'] = array(
+			'type' => 'boolean',
+			'aliases' => 'force show',
+			'default' => $smgQPForceShow,
 		);
 
-		$params['circles'] = array(
-			'default' => array(),
-			'message' => 'maps-displaypoints-par-circles', // TODO
-			'manipulations' => new MapsParamCircle( '~' ), // TODO
-			'delimiter' => ';',
-			'islist' => true,
+		$params['showtitle'] = array(
+			'type' => 'boolean',
+			'aliases' => 'show title',
+			'default' => $smgQPShowTitle,
 		);
 
-		$params['rectangles'] = array(
-			'default' => array(),
-			'message' => 'maps-displaypoints-par-rectangles', // TODO
-			'manipulations' => new MapsParamRectangle( '~' ), // TODO
-			'delimiter' => ';',
-			'islist' => true,
+		$params['hidenamespace'] = array(
+			'type' => 'boolean',
+			'aliases' => 'hide namespace',
+			'default' => $smgQPHideNamespace,
 		);
+
+		$params['template'] = array(
+			'default' => $smgQPTemplate,
+		);
+
+		foreach ( $params as $name => &$data ) {
+			$data['name'] = $name;
+			$data['message'] = 'semanticmaps-par-' . $name;
+		}
+
+		$params = array_merge( $params, MapsDisplayMap::getCommonMapParams() );
 		
 		return $params;
 	}
