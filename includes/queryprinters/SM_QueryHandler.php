@@ -1,5 +1,7 @@
 <?php
 
+use Maps\Location;
+
 /**
  * Class for handling geographical SMW queries.
  *
@@ -118,7 +120,7 @@ class SMQueryHandler {
 	protected $showSubject = true;
 
 	/**
-	 * Hide the namepsace or not.
+	 * Hide the namespace or not.
 	 *
 	 * @var boolean
 	 */
@@ -233,11 +235,19 @@ class SMQueryHandler {
 		$this->pageLinkText = $text;
 	}
 
+	/**
+	 * @since 2.0
+	 *
+	 * @return array
+	 */
 	public function getShapes() {
 		$this->findShapes();
 		return $this->geoShapes;
 	}
 
+	/**
+	 * @since 2.0
+	 */
 	protected function findShapes() {
 		while ( ( $row = $this->queryResult->getNext() ) !== false ) {
 			$this->handleResultRow( $row );
@@ -249,22 +259,20 @@ class SMQueryHandler {
 	 *
 	 * @since 0.7.3
 	 *
-	 * @param array $row Array of SMWResultArray
-	 *
-	 * @return array of MapsLocation
+	 * @param SMWResultArray[] $row
 	 */
-	protected function handleResultRow( array /* of SMWResultArray */ $row ) {
+	protected function handleResultRow( array $row ) {
 		$locations = array();
 		$properties = array();
 
 		$title = '';
 		$text = '';
 
-		// Loop throught all fields of the record.
+		// Loop through all fields of the record.
 		foreach ( $row as $i => $resultArray ) {
 			/* SMWPrintRequest */ $printRequest = $resultArray->getPrintRequest();
 
-			// Loop throught all the parts of the field value.
+			// Loop through all the parts of the field value.
 			while ( ( /* SMWDataValue */ $dataValue = $resultArray->getNextDataValue() ) !== false ) {
 				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
 					list( $title, $text ) = $this->handleResultSubject( $dataValue );
@@ -284,12 +292,9 @@ class SMQueryHandler {
 				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
 					$dataItem = $dataValue->getDataItem();
 
-					$location = MapsLocation::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
+					$location = Location::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
 
-					if ( $location->isValid() ) {
-						$locations[] = $location;
-					}
-
+					$locations[] = $location;
 				}
 			}
 		}
@@ -401,7 +406,7 @@ class SMQueryHandler {
 
 			if ( $hasPage ) {
 				$t = Title::newFromText( $object->getLongText( $this->outputmode, NULL ), NS_MAIN );
-				$hasPage = $t->exists();
+				$hasPage = $t !== null && $t->exists();
 			}
 
 			if ( $hasPage ) {
@@ -427,13 +432,13 @@ class SMQueryHandler {
 	 *
 	 * @since 1.0
 	 *
-	 * @param MapsLocation[] $locations
+	 * @param Location[] $locations
 	 * @param string $text
 	 * @param string $icon
 	 * @param array $properties
 	 * @param Title|null $title
 	 *
-	 * @return MapsLocation[]
+	 * @return Location[]
 	 */
 	protected function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
 		if ( $this->template ) {
@@ -457,8 +462,8 @@ class SMQueryHandler {
 					array(
 						$this->template,
 						'title=' . $titleOutput,
-						'latitude=' . $location->getLatitude(),
-						'longitude=' . $location->getLongitude()
+						'latitude=' . $location->getCoordinates()->getLatitude(),
+						'longitude=' . $location->getCoordinates()->getLongitude(),
 					),
 					$properties
 				);
