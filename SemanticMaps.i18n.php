@@ -1352,7 +1352,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med Semantic MediaWiki-utvidgningen ([https://mapping.referata.com/wiki/Examples Demo]).', # Fuzzy
+	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med Semantic MediaWiki-utvidgningen ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mer information...])',
 	'semanticmaps-unrecognizeddistance' => 'Värdet $1 är inte ett giltigt avstånd.',
 	'semanticmaps-kml-link' => 'Visa KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Visa sida $1',
@@ -1469,6 +1469,9 @@ $messages['tr'] = array(
  * @author Steve.rusyn
  */
 $messages['uk'] = array(
+	'semanticmaps_lookupcoordinates' => 'Знайти координати',
+	'semanticmaps_enteraddresshere' => 'Введіть адресу',
+	'semanticmaps-updatemap' => 'Оновити карту',
 	'semanticmaps-forminput-remove' => 'Вилучити',
 	'semanticmaps-forminput-add' => 'Додати',
 );
