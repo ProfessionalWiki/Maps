@@ -1153,6 +1153,8 @@ $messages['pms'] = array(
 	'semanticmaps-kml-title' => "Ël tìtol predefinì për j'arzultà",
 	'semanticmaps-kml-linkabsolute' => 'Si le liure a devo esse assolùe o nò (visadì relativ)',
 	'semanticmaps-kml-pagelinktext' => "Ël test da dovré për le liure a la pàgina, dont $1 a sarà rimpiassà da 'l tìtol ëd la pàgina",
+	'semanticmaps-shapes-improperformat' => 'Formatassion ëd $1 pa pròpia. Për piasì varda la documentassion për formaté',
+	'semanticmaps-shapes-missingshape' => 'Pa gnun-e forme trovà për $1. Për piasì varda la documentassion për forme disponibij',
 );
 
 /** Pashto (پښتو)
@@ -1228,10 +1230,13 @@ $messages['pt-br'] = array(
 /** Romanian (română)
  * @author Firilacroco
  * @author Minisarm
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'semanticmaps-desc' => 'Permite vizualizarea și modificarea datelor despre coordonate stocate cu extensia Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mai multe informații...]).',
 	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
+	'semanticmaps-updatemap' => 'Actualizează harta',
+	'semanticmaps-forminput-locations' => 'Locuri',
 );
 
 /** tarandíne (tarandíne)
