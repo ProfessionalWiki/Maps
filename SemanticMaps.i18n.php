@@ -448,6 +448,7 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'semanticmaps-latitude' => 'Laiuskraad:$1',
 	'semanticmaps-longitude' => 'Pikkuskraad:$1',
+	'semanticmaps_enteraddresshere' => 'Sisesta aadress siia',
 	'semanticmaps-updatemap' => 'Uuenda kaart',
 	'semanticmaps-forminput-remove' => 'Eemalda',
 	'semanticmaps-forminput-add' => 'Lisa',
@@ -1255,6 +1256,7 @@ $messages['roa-tara'] = array(
 /** Russian (русский)
  * @author Eugene Mednikov
  * @author Lockal
+ * @author Pastakhov
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1262,6 +1264,9 @@ $messages['ru'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Значение $1 не является допустимым расстоянием.',
 	'semanticmaps-kml-link' => 'Просмотреть файл KML',
 	'semanticmaps-default-kml-pagelink' => 'Просмотреть страницу $1',
+	'semanticmaps-latitude' => 'Широта: $1',
+	'semanticmaps-longitude' => 'Долгота: $1',
+	'semanticmaps-altitude' => 'Высота: $1',
 	'semanticmaps-loading-forminput' => 'Загрузка карты…',
 	'semanticmaps_lookupcoordinates' => 'Найти координаты',
 	'semanticmaps_enteraddresshere' => 'Введите адрес',
@@ -1271,7 +1276,11 @@ $messages['ru'] = array(
 	'semanticmaps-forminput-locations' => 'Места',
 	'semanticmaps-par-staticlocations' => 'Список мест для добавления на карту вместе с запрашиваемыми данными. Например, к display_points можно добавить название, описание и значок, используя тильду ~ в качестве разделителя.',
 	'semanticmaps-par-forceshow' => 'Показывать карту даже тогда, когда нет мест для отображения?',
+	'semanticmaps-par-hidenamespace' => 'Показывать название пространства имен в информационном окне маркера',
+	'semanticmaps-par-centre' => 'Центр карты. Если не задан, карта автоматически выберет оптимальный центр, позволяющий отобразить все маркеры на карте.',
 	'semanticmaps-par-template' => 'Шаблон для форматирования содержимого окна информация.',
+	'semanticmaps-par-geocodecontrol' => 'Показать панель управления геокодированием.',
+	'semanticmaps-kml-title' => 'Заголовок по умолчанию для результатов',
 );
 
 /** Sinhala (සිංහල)
