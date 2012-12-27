@@ -86,3 +86,8 @@ $specialPageAliases['vi'] = array(
 $specialPageAliases['zh-hans'] = array(
 	'MapEditor' => array( '地图编辑器' ),
 );
+
+/** Traditional Chinese (中文（繁體）‎) */
+$specialPageAliases['zh-hant'] = array(
+	'MapEditor' => array( '地圖編輯器' ),
+);

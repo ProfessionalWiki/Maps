@@ -1703,7 +1703,7 @@ $messages['et'] = array(
 	'maps-osm-par-photos' => 'Näita fotosid',
 	'mapeditor' => 'Kaardi toimetaja',
 	'specialpages-group-maps' => 'Kaardid',
-	'mapeditor-none-text' => 'Ei midagi',
+	'mapeditor-none-text' => 'Puudub',
 	'mapeditor-done-button' => 'Valmis',
 	'mapeditor-remove-button' => 'Eemalda',
 	'mapeditor-import-button2' => 'Impordi',
@@ -2834,6 +2834,7 @@ $messages['hu'] = array(
 	'maps-loading-map' => 'Térkép betöltése…',
 	'maps-load-failed' => 'Nem sikerült betölteni a térképet!',
 	'maps-markers' => 'Markerek',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'egyebek',
 	'maps-ns-layer' => 'Réteg',
 	'maps-ns-layer-talk' => 'Rétegvita',
@@ -5174,12 +5175,13 @@ $1',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://mapping.referata.com/wiki/Maps_examples demo])", # Fuzzy
+	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://www.semantic-mediawiki.org/wiki/Maps cchiù 'mbormaziune...])",
 	'maps_map' => 'Mappe',
 	'maps-loading-map' => "Stoche a careche 'a mappe...",
 	'maps-markers' => 'Marcature',
 	'maps-copycoords-prompt' => 'CTRL+C, INVIE',
 	'maps-others' => 'otre',
+	'maps-layer-property' => 'Probbietà',
 	'maps-layer-value' => 'Valore',
 	'maps-layer-errors' => 'Errore',
 	'maps-abb-north' => 'N',
