@@ -1244,8 +1244,11 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'semanticmaps-desc' => "Dèje l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([https://mapping.referata.com/wiki/Examples demo]).", # Fuzzy
+	'semanticmaps-desc' => "Dèje l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps cchiù 'mbormaziune...])",
 	'semanticmaps-default-kml-pagelink' => "Vide 'a pàgene $1",
+	'semanticmaps-latitude' => 'Latitudine: $1',
+	'semanticmaps-longitude' => 'Longitudine: $1',
+	'semanticmaps-altitude' => 'Iertezze: $1',
 	'semanticmaps_lookupcoordinates' => 'Ingroce le coordinate',
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
 	'semanticmaps-updatemap' => "Aggiorne 'a mappe",
@@ -1411,6 +1414,10 @@ $messages['sw'] = array(
  * @author Shanmugamp7
  */
 $messages['ta'] = array(
+	'semanticmaps-default-kml-pagelink' => 'பக்கம் $1 ஐ காண்க',
+	'semanticmaps-latitude' => 'அட்சரேகை: $1',
+	'semanticmaps-longitude' => 'தீர்க்கரேகை: $1',
+	'semanticmaps-altitude' => 'குத்துயரம்: $1',
 	'semanticmaps_enteraddresshere' => 'இங்கு முகவரியை உள்ளிடவும்',
 	'semanticmaps-updatemap' => 'வரைபடத்தை புதுப்பி',
 	'semanticmaps-forminput-remove' => 'நீக்குக',
