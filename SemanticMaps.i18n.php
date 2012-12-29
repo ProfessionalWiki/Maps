@@ -1290,10 +1290,13 @@ $messages['ru'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'semanticmaps-kml-link' => 'KML ගොනුව නරඹන්න',
 	'semanticmaps-default-kml-pagelink' => '$1 පිටුව නරඹන්න',
 	'semanticmaps-latitude' => 'අක්ෂාංශය: $1',
 	'semanticmaps-longitude' => 'දේශාංශය: $1',
 	'semanticmaps-altitude' => 'උන්නතාංශය: $1',
+	'semanticmaps_lookupcoordinates' => 'ඛණ්ඩාංක බලන්න',
+	'semanticmaps_enteraddresshere' => 'ලිපිනය මෙහි යොදන්න',
 	'semanticmaps-updatemap' => 'සිතියම යාවත්කාලීන කරන්න',
 	'semanticmaps-forminput-remove' => 'ඉවත් කරන්න',
 	'semanticmaps-forminput-add' => 'එක් කරන්න',
@@ -1490,11 +1493,17 @@ $messages['tr'] = array(
  * @author Steve.rusyn
  */
 $messages['uk'] = array(
+	'semanticmaps-default-kml-pagelink' => 'Переглянути сторінку $1',
+	'semanticmaps-latitude' => 'Широта: $1',
+	'semanticmaps-longitude' => 'Довгота: $1',
+	'semanticmaps-altitude' => 'Висота над рівнем моря: $1',
+	'semanticmaps-loading-forminput' => 'Завантаження карти...',
 	'semanticmaps_lookupcoordinates' => 'Знайти координати',
 	'semanticmaps_enteraddresshere' => 'Введіть адресу',
 	'semanticmaps-updatemap' => 'Оновити карту',
 	'semanticmaps-forminput-remove' => 'Вилучити',
 	'semanticmaps-forminput-add' => 'Додати',
+	'semanticmaps-forminput-locations' => 'Місця',
 );
 
 /** Urdu (اردو)
