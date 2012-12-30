@@ -1295,12 +1295,15 @@ $messages['si'] = array(
 	'semanticmaps-latitude' => 'අක්ෂාංශය: $1',
 	'semanticmaps-longitude' => 'දේශාංශය: $1',
 	'semanticmaps-altitude' => 'උන්නතාංශය: $1',
+	'semanticmaps-loading-forminput' => 'ආදානයෙන් සිතියම පූරණය කරමින්...',
 	'semanticmaps_lookupcoordinates' => 'ඛණ්ඩාංක බලන්න',
 	'semanticmaps_enteraddresshere' => 'ලිපිනය මෙහි යොදන්න',
 	'semanticmaps-updatemap' => 'සිතියම යාවත්කාලීන කරන්න',
 	'semanticmaps-forminput-remove' => 'ඉවත් කරන්න',
 	'semanticmaps-forminput-add' => 'එක් කරන්න',
 	'semanticmaps-forminput-locations' => 'ස්ථාන',
+	'semanticmaps-par-geocodecontrol' => 'භූකේතීකරණ පාලකය පෙන්වන්න.',
+	'semanticmaps-kml-title' => 'ප්‍රතිඑල සඳහා සාමාන්‍ය ශීර්ෂය',
 );
 
 /** Slovak (slovenčina)
