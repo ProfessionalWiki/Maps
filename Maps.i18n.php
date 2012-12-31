@@ -1047,16 +1047,46 @@ $messages['ca'] = array(
 $messages['cs'] = array(
 	'right-geocode' => 'Geokódování',
 	'maps_map' => 'Mapa',
+	'maps-markers' => 'Značky',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-others' => 'ostatní',
+	'maps-ns-layer' => 'Vrstva',
+	'maps-ns-layer-talk' => 'Diskuse k vrstvě',
 	'maps-layer-property' => 'Vlastnost',
 	'maps-layer-value' => 'Hodnota',
 	'maps-layer-errors' => 'Chyby',
+	'maps-error-invalid-layerdef' => 'Definice této vrstvy je neplatná.',
+	'maps-layer-of-type' => 'Vrstvy typu $1',
+	'maps-finddestination-par-location' => 'Původní umístění.',
+	'maps-displaymap-par-circles' => 'Kruhy pro zobrazení',
+	'maps-displaymap-par-lines' => 'Kruhy ke zobrazení',
+	'maps-displaymap-par-maxzoom' => 'Maximální přiblížení',
+	'maps-displaymap-par-minzoom' => 'Minimální přiblížení',
+	'maps-displaymap-par-polygons' => 'Mnohoúhelníky ke zobrazení',
+	'maps-displaymap-par-rectangles' => 'Obdélníky ke zobrazení',
+	'validation-error-invalid-location' => 'Parametr $1 musí být platné umístění.',
+	'validation-error-invalid-locations' => 'Parametr $1 musí být jedeno nebo více platných umístění.',
+	'validation-error-invalid-width' => 'Parametr $1 musí být platná šířka.',
+	'validation-error-invalid-height' => 'Parametr $1 musí být platná výška.',
+	'validation-error-invalid-distance' => 'Parametr $1 musí být platná vzdálenost.',
+	'validation-error-invalid-distances' => 'Parametr $1 musí být jedna nebo více platných vzdáleností.',
+	'validation-error-invalid-image' => 'Parametr $1 musí být platný obrázek.',
+	'validation-error-invalid-images' => 'Parametr $1 musí být jeden nebo více platných obrázků.',
+	'validation-error-invalid-line-param' => 'Zadaný parametr "lines" není platný.',
+	'validation-error-invalid-polyline-param' => 'Zadaný parametr "polylines" není platný.',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
 	'maps-abb-south' => 'J',
 	'maps-abb-west' => 'Z',
 	'maps-latitude' => 'Zeměpisná šířka:',
 	'maps-longitude' => 'Zeměpisná délka:',
+	'maps_map_cannot_be_displayed' => 'Nelze zobrazit mapu.',
+	'maps_click_to_activate' => 'Mapu aktivujete kliknutím',
+	'maps-googlemaps3-par-poi' => 'Zobrazit body zájmu.',
+	'maps-osm-par-thumbs' => 'Zobrazit náhledy',
+	'maps-osm-par-photos' => 'Zobrazit fotografie',
+	'mapeditor' => 'Editor map',
+	'specialpages-group-maps' => 'Mapy',
 	'mapeditor-none-text' => 'Nic',
 	'mapeditor-done-button' => 'Hotovo',
 	'mapeditor-remove-button' => 'Odstranit',
@@ -1065,14 +1095,24 @@ $messages['cs'] = array(
 	'mapeditor-import-button' => 'Import z wiki kódu',
 	'mapeditor-select-button' => 'Vyberte tento mnohoúhelník',
 	'mapeditor-mapparam-button' => 'Upravit parametry mapy',
+	'mapeditor-clear-button' => 'Vyprázdnit mapu',
 	'mapeditor-code-title' => 'Kód wiki',
+	'mapeditor-import-title' => 'Importovat wiki kód',
+	'mapeditor-form-title' => 'Upravit podrobnosti',
 	'mapeditor-link-title-switcher-link-text' => 'Odkaz',
 	'mapeditor-form-field-title' => 'Oslovení',
 	'mapeditor-form-field-text' => 'Text',
 	'mapeditor-form-field-link' => 'Odkaz',
 	'mapeditor-form-field-icon' => 'Ikona',
 	'mapeditor-form-field-group' => 'Skupina',
+	'mapeditor-form-field-strokecolor' => 'Barva tahu',
+	'mapeditor-form-field-strokeopacity' => 'Krytí tahu',
+	'mapeditor-form-field-strokeweight' => 'Váha tahu',
+	'mapeditor-form-field-fillcolor' => 'Barva výplně',
+	'mapeditor-form-field-fillopcaity' => 'Krytí výplně',
+	'mapeditor-form-field-showonhover' => 'Zobrazit pouze pod myší',
 	'mapeditor-form-field-image' => 'Obrázek',
+	'mapeditor-form-field-visitedicon' => 'Navštívená ikona',
 );
 
 /** Danish (dansk)
@@ -2162,6 +2202,14 @@ $messages['frp'] = array(
 	'maps-finddestination-par-location' => 'Lo premiér emplacement.',
 	'maps-finddestination-par-bearing' => 'La premiére dirèccion.',
 	'maps-finddestination-par-distance' => 'La distance a parcorir.',
+	'maps-displaymap-par-circles' => 'Cèrcllos a fâre vêre',
+	'maps-displaymap-par-lines' => 'Legnes a fâre vêre',
+	'maps-displaymap-par-maxzoom' => 'Lo nivél maximon de zoome',
+	'maps-displaymap-par-minzoom' => 'Lo nivél minimon de zoome',
+	'maps-displaymap-par-polygons' => 'Poligonos a fâre vêre',
+	'maps-displaymap-par-rectangles' => 'Rèctangllos a fâre vêre',
+	'maps-displaymap-par-static' => 'Se la mapa dêt étre statica',
+	'maps-displaymap-par-wmsoverlay' => 'Empleyér na supèrposicion WMS',
 	'maps-abb-north' => 'B',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'M',
@@ -2170,6 +2218,8 @@ $messages['frp'] = array(
 	'maps-longitude' => 'Longituda :',
 	'maps_click_to_activate' => 'Clicâd por activar la mapa',
 	'maps_centred_on' => 'Mapa centrâ dessus $1, $2.',
+	'maps-googlemaps3-par-poi' => 'Montrar los pouents d’entèrèt.',
+	'maps-openlayers-par-controls' => 'Los contrôlos a placiér sur la mapa.',
 	'maps-osm-par-thumbs' => 'Fâre vêre des figures',
 	'maps-osm-par-photos' => 'Fâre vêre des fotôs',
 	'mapeditor' => 'Changior de mapa',
@@ -2180,6 +2230,7 @@ $messages['frp'] = array(
 	'mapeditor-import-button2' => 'Importar',
 	'mapeditor-export-button' => 'Èxportar en code vouiqui',
 	'mapeditor-import-button' => 'Importar dês lo code vouiqui',
+	'mapeditor-select-button' => 'Chouèsir ceti poligono',
 	'mapeditor-mapparam-button' => 'Changiér los paramètros de la mapa',
 	'mapeditor-clear-button' => 'Èfaciér la mapa',
 	'mapeditor-code-title' => 'Code vouiqui',
@@ -2650,14 +2701,24 @@ $1',
 );
 
 /** Hindi (हिन्दी)
+ * @author Ansumang
  */
 $messages['hi'] = array(
+	'maps_map' => 'मानचित्र',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'अक्षांश:',
 	'maps-longitude' => 'रेखांश:',
+	'specialpages-group-maps' => 'मानचित्र',
+	'mapeditor-none-text' => 'कोई नहीं',
+	'mapeditor-remove-button' => 'निकालें',
+	'mapeditor-import-button2' => 'आयात',
+	'mapeditor-form-field-title' => 'शीर्षक',
+	'mapeditor-form-field-text' => 'पाठ',
+	'mapeditor-form-field-icon' => 'आइकन',
+	'mapeditor-form-field-image' => 'छवि',
 );
 
 /** Croatian (hrvatski)
@@ -3839,6 +3900,18 @@ $messages['lv'] = array(
 	'maps-longitude' => 'Garums:',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'maps-abb-north' => 'L',
+	'maps-abb-east' => 'W',
+	'maps-abb-south' => 'Kdl',
+	'maps-abb-west' => 'Kln',
+	'maps-latitude' => 'Latituda:',
+	'maps-longitude' => 'Longituda:',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  * @author McDutchie
@@ -4581,10 +4654,10 @@ $1.',
 	'mapeditor-import-note' => 'Let op: de parser verwacht een strikte opmaak van de wikicode. De hier opgegeven code moet gelijk zijn aan de code die wordt uitgevoerd door de exportfunctie.',
 	'mapeditor-form-title' => 'Details bewerken',
 	'mapeditor-link-title-switcher-popup-text' => 'Pop-up met tekst',
-	'mapeditor-link-title-switcher-link-text' => 'Verwijzing',
+	'mapeditor-link-title-switcher-link-text' => 'Koppeling',
 	'mapeditor-form-field-title' => 'Titel',
 	'mapeditor-form-field-text' => 'Tekst',
-	'mapeditor-form-field-link' => 'Verwijzing',
+	'mapeditor-form-field-link' => 'Koppeling',
 	'mapeditor-form-field-icon' => 'Icoon',
 	'mapeditor-form-field-group' => 'Groep',
 	'mapeditor-form-field-inlinelabel' => 'Inline label',
@@ -4600,6 +4673,17 @@ $1.',
 	'mapeditor-form-field-image' => 'Afbeelding',
 	'mapeditor-imageoverlay-title' => 'Gegevens over afbeeldingslaag',
 	'mapeditor-form-field-visitedicon' => 'Icoon voor bezocht',
+);
+
+/** Nederlands (informeel)‎ (Nederlands (informeel)‎)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'maps-error-no-layertype' => 'Je moet het laagtype opgeven. Alleen {{PLURAL:$2|dit type wordt|deze typen worden}} ondersteund: $1',
+	'maps-geocoder-not-available' => 'Geocoderen via Maps is niet beschikbaar. Het geocoderen van je locatie is niet mogelijk.',
+	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar je kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
+	'maps-par-height' => 'Maakt het mogelijk om de hoogte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar je kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
+	'maps-googlemaps3-incompatbrowser' => 'Je browser kan niet werken met Google Maps v3.',
 );
 
 /** Norwegian Nynorsk (norsk (nynorsk)‎)
@@ -5504,6 +5588,8 @@ $messages['si'] = array(
 	'maps-layer-property' => 'ගුණාංගය',
 	'maps-layer-value' => 'අගය',
 	'maps-layer-errors' => 'දෝෂ',
+	'maps-error-invalid-layerdef' => 'ස්ථර නිර්වචනය වලංගු නොවේ.',
+	'validation-error-invalid-layer' => '$1 පරාමිතිය වලංගු ස්ථරයක් විය යුතුය.',
 	'maps-layer-of-type' => '$1 වර්ගයේ ස්තරය',
 	'maps-coordinates-par-location' => 'ඔබට ආකෘතිකරණය කල යුතු ඛණ්ඩාංක.',
 	'maps-coordinates-par-format' => 'ඛණ්ඩාංක සඳහා ඉලක්කගත ආකෘතිය.',
@@ -5528,6 +5614,8 @@ $messages['si'] = array(
 	'validation-error-invalid-images' => '$1 පරාමිතිය එක් හෝ තවත් වලංගු පින්තූරයක් විය යුතුය.',
 	'validation-error-invalid-goverlay' => '$1 පරාමිතිය වලංගු වසාලනයක් විය යුතුය.',
 	'validation-error-invalid-goverlays' => '$1 පරාමිතිය එක් හෝ තවත් වලංගු වසාලනයක් විය යුතුය.',
+	'validation-error-invalid-line-param' => 'වලංගු නොවන "lines" පරාමිතියක් විශේෂණය කර ඇත.',
+	'validation-error-invalid-polyline-param' => 'වලංගු නොවන "polylines" පරාමිතියක් විශේෂණය කර ඇත.',
 	'maps-abb-north' => 'උ',
 	'maps-abb-east' => 'නැ',
 	'maps-abb-south' => 'ද',
@@ -5538,6 +5626,10 @@ $messages['si'] = array(
 	'maps_map_cannot_be_displayed' => 'සිතියම සංදර්ශනය කල නොහැක.',
 	'maps_click_to_activate' => 'සිතියම සක්‍රිය කිරීම සඳහා ක්ලික් කරන්න',
 	'maps_centred_on' => '$1 හිදී සිතියම මධ්‍යගත වේ, $2.',
+	'maps-googlemaps3-par-type' => 'ආරම්භක වශයෙන් පෙන්විය යුතු සිතියම් වර්ගය.',
+	'maps-googlemaps3-par-layers' => 'සිතියම මත පැටවිය යුතු විශේෂ ස්ථර.',
+	'maps-googlemaps3-par-zoomstyle' => 'විශාලන පාලකයේ ශෛලිය.',
+	'maps-googlemaps3-par-kml' => 'සිතියම මත පැටවිය යුතු KML ගොනු.',
 	'maps-googlemaps3-par-poi' => 'අභිරුචි ලක්ෂ්‍ය පෙන්වන්න.',
 	'maps-osm-par-thumbs' => 'සංක්ෂිප්ත පෙන්වන්න',
 	'maps-osm-par-photos' => 'ඡායාරූප පෙන්වන්න',
@@ -5555,6 +5647,7 @@ $messages['si'] = array(
 	'mapeditor-code-title' => 'විකි කේතය',
 	'mapeditor-import-title' => 'විකිකේතය ආයාත කරන්න',
 	'mapeditor-form-title' => 'විස්තර සංස්කරණය කරන්න',
+	'mapeditor-link-title-switcher-popup-text' => 'පාඨයක් සමඟ Popup',
 	'mapeditor-link-title-switcher-link-text' => 'සබැඳුම',
 	'mapeditor-form-field-title' => 'ශීර්ෂය',
 	'mapeditor-form-field-text' => 'පෙළ',
@@ -5567,9 +5660,12 @@ $messages['si'] = array(
 	'mapeditor-form-field-strokeweight' => 'ආඝාත බර',
 	'mapeditor-form-field-fillcolor' => 'පිරවුම් වර්ණය',
 	'mapeditor-form-field-fillopcaity' => 'පිරවුම් පාරාන්ධතාව',
+	'mapeditor-form-field-showonhover' => 'ගැවසෙන විට පමණක් පෙන්වන්න',
 	'mapeditor-mapparam-title' => 'සිතියම් පරාමිතීන් සංස්කරණය කරන්න',
 	'mapeditor-mapparam-defoption' => '-පරාමිතිය තෝරාගන්න-',
+	'mapeditor-imageoverlay-button' => 'පින්තූර වසාලනයක් එක් කරන්න',
 	'mapeditor-form-field-image' => 'පිංතූරය',
+	'mapeditor-imageoverlay-title' => 'පින්තූර වසාලන විස්තර',
 	'mapeditor-form-field-visitedicon' => 'ගොඩ වැදුණු අයිකනය',
 );
 
