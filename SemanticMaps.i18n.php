@@ -1068,7 +1068,7 @@ $messages['nl'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Besturingselement voor geocodering weergeven.',
 	'semanticmaps-kml-text' => 'De tekst die gekoppeld is aan iedere pagina. Als er extra opgevraagde eigenschappen zijn, wordt deze tekst daardoor overschreven.',
 	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
-	'semanticmaps-kml-linkabsolute' => 'Moeten verwijzingen absoluut zijn (in tegenstelling tot relatief)',
+	'semanticmaps-kml-linkabsolute' => 'Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)',
 	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
 	'semanticmaps-shapes-improperformat' => 'Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak',
 	'semanticmaps-shapes-missingshape' => 'Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen',
@@ -1237,6 +1237,8 @@ $messages['ro'] = array(
 	'semanticmaps-desc' => 'Permite vizualizarea și modificarea datelor despre coordonate stocate cu extensia Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mai multe informații...]).',
 	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
 	'semanticmaps-updatemap' => 'Actualizează harta',
+	'semanticmaps-forminput-remove' => 'Eliminare',
+	'semanticmaps-forminput-add' => 'Adăugare',
 	'semanticmaps-forminput-locations' => 'Locuri',
 );
 
@@ -1290,6 +1292,7 @@ $messages['ru'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'semanticmaps-unrecognizeddistance' => '$1 අගය වලංගු දුර ප්‍රමාණයක් නොවේ.',
 	'semanticmaps-kml-link' => 'KML ගොනුව නරඹන්න',
 	'semanticmaps-default-kml-pagelink' => '$1 පිටුව නරඹන්න',
 	'semanticmaps-latitude' => 'අක්ෂාංශය: $1',
