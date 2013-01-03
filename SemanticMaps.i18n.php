@@ -1154,8 +1154,8 @@ $messages['pms'] = array(
 	'semanticmaps-kml-title' => "Ël tìtol predefinì për j'arzultà",
 	'semanticmaps-kml-linkabsolute' => 'Si le liure a devo esse assolùe o nò (visadì relativ)',
 	'semanticmaps-kml-pagelinktext' => "Ël test da dovré për le liure a la pàgina, dont $1 a sarà rimpiassà da 'l tìtol ëd la pàgina",
-	'semanticmaps-shapes-improperformat' => 'Formatassion ëd $1 pa pròpia. Për piasì varda la documentassion për formaté',
-	'semanticmaps-shapes-missingshape' => 'Pa gnun-e forme trovà për $1. Për piasì varda la documentassion për forme disponibij',
+	'semanticmaps-shapes-improperformat' => "Formatà ëd $1 nen bon. Për piasì, ch'a fasa arferiment a la documentassion për ël formà vorsù",
+	'semanticmaps-shapes-missingshape' => "Gnun-e forme trovà për $1. Për piasì, ch'a varda la documentassion për le forme disponìbij",
 );
 
 /** Pashto (پښتو)
