@@ -1348,6 +1348,8 @@ $messages['sl'] = array(
 	'semanticmaps-kml-title' => 'Privzeti naslov za rezultate',
 	'semanticmaps-kml-linkabsolute' => 'Naj bodo povezave absolutne ali ne (tj. relativne)',
 	'semanticmaps-kml-pagelinktext' => 'Besedilo za povezave do strani, v katerih bo $1 zamenjan z naslovom strani',
+	'semanticmaps-shapes-improperformat' => 'Neustrezno oblikovanje $1. Prosimo, oglejte si dokumentacijo za oblikovanje',
+	'semanticmaps-shapes-missingshape' => 'Za $1 nisem našel nobenih oblik. Prosimo, oglejte si dokumentacijo za oblike, ki so na voljo',
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
