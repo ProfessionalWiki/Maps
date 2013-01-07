@@ -49,20 +49,7 @@ $wgResourceModules['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
 	'messages' => array(
 	)
 );
-/*
-$wgResourceModules['ext.sm.fi.googlemaps3.multi'] = $moduleTemplate + array(
-	'dependencies' => array( 'ext.sm.fi.googlemaps3', 'jquery.ui.button', 'jquery.ui.dialog' ),
-	'localBasePath' => __DIR__,
-	'scripts' => array(
-		'jquery.gmapsmultiinput.js',
-	),
-	'messages' => array(
-		'semanticmaps-forminput-remove',
-		'semanticmaps-forminput-add',
-		'semanticmaps-forminput-locations'
-	)
-);
-*/
+
 unset( $moduleTemplate );
 
 $wgHooks['MappingServiceLoad'][] = 'smfInitGoogleMaps3';

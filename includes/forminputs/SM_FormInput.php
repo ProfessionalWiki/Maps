@@ -57,14 +57,9 @@ class SMFormInput {
 	}
 
 	protected function getParameterDefinitions() {
-		global $smgFIMulti, $smgFIFieldSize;
+		global $smgFIFieldSize;
 
 		$params = array();
-
-		$params['multi'] = array(
-			'type' => 'boolean',
-			'default' => $smgFIMulti,
-		);
 
 		$params['fieldsize'] = array(
 			'type' => 'integer',
