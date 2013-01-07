@@ -200,7 +200,7 @@ $magicWords['ml'] = array(
 	'distance' => array( 0, 'ദൂരം' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
+/** Nedersaksies (Nedersaksies) */
 $magicWords['nds-nl'] = array(
 	'display_map' => array( 0, 'kaorte_weergeven' ),
 	'geocode' => array( 0, 'geokoderen' ),

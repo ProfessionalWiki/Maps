@@ -67,7 +67,27 @@ $specialPageAliases['nl'] = array(
 	'MapEditor' => array( 'Kaarteditor' ),
 );
 
+/** Sicilian (sicilianu) */
+$specialPageAliases['scn'] = array(
+	'MapEditor' => array( 'EditorMappa' ),
+);
+
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = array(
 	'MapEditor' => array( 'HaritaDüzenleyici', 'HaritaEditörü' ),
+);
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'MapEditor' => array( 'Sửa_đổi_bản_đồ' ),
+);
+
+/** Simplified Chinese (中文（简体）‎) */
+$specialPageAliases['zh-hans'] = array(
+	'MapEditor' => array( '地图编辑器' ),
+);
+
+/** Traditional Chinese (中文（繁體）‎) */
+$specialPageAliases['zh-hant'] = array(
+	'MapEditor' => array( '地圖編輯器' ),
 );
