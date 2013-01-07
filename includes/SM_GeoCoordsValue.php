@@ -281,7 +281,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$coordinateSet = $this->m_dataitem->getCoordinateSet();
 		return array(
 			$this->getFormattedCoord( $this->m_dataitem, 'float' ), // TODO
-			$this->getFormattedCoord( $coordinateSet, 'dms' ), // TODO
+			$this->getFormattedCoord( $this->m_dataitem, 'dms' ), // TODO
 			$coordinateSet['lat'],
 			$coordinateSet['lon']
 		);
