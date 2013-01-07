@@ -117,7 +117,7 @@ abstract class MapsMappingService implements iMappingService {
 			$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
 		}
 		elseif ( $parserOrOut instanceof OutputPage ) {
-			if ( $dependencies ) {
+			if ( $dependencies !== false ) {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
 			}
 
@@ -154,7 +154,7 @@ abstract class MapsMappingService implements iMappingService {
 		}
 
 		// If there are dependencies, put them all together in a string, otherwise return false.
-		return count( $dependencies ) > 0 ? implode( '', $dependencies ) : false;
+		return $dependencies !== array() ? implode( '', $dependencies ) : false;
 	}
 
 	/**
