@@ -46,13 +46,20 @@ class SMFormInput {
 	 * @return array
 	 */
 	protected function getParameterInfo() {
-		global $smgFIMulti, $smgFIFieldSize;
-
 		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
 
 		$this->service->addParameterInfo( $params );
-		
-		$params['zoom']->setDefault( false, false );
+
+		$params['zoom']['default'] = false;
+		$params['zoom']['manipulatedefault'] = false;
+
+		return array_merge( $params, $this->getParameterDefinitions() );
+	}
+
+	protected function getParameterDefinitions() {
+		global $smgFIMulti, $smgFIFieldSize;
+
+		$params = array();
 
 		$params['multi'] = array(
 			'type' => 'boolean',
@@ -204,6 +211,13 @@ class SMFormInput {
 	 * @return mixed
 	 */	
 	protected function getJSONObject( array $params, Parser $parser ) {
+		/**
+		 * @var Maps\Location $location
+		 */
+		foreach ( $params['locations'] as &$location ) {
+			$location = $location->getJSONObject();
+		}
+
 		return $params;
 	}
 	
