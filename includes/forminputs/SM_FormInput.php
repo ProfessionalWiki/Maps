@@ -143,20 +143,17 @@ class SMFormInput {
 			
 			$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 			
-			// MediaWiki 1.17 does not play nice with addScript, so add the vars via the globals hook.
-			if ( version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ) {
-				$GLOBALS['egMapsGlobalJSVars'] += $this->service->getConfigVariables();
-			}
-			
 			if ( true /* !is_null( $wgTitle ) && $wgTitle->isSpecialPage() */ ) { // TODO
 				global $wgOut;
+
 				$this->service->addDependencies( $wgOut );
+
 				$wgOut->addScript( $configVars );
 			}
 			else {
 				$this->service->addDependencies( $wgParser );			
-			}			
-			
+			}
+
 			return $output;
 		}
 		else {
@@ -165,6 +162,38 @@ class SMFormInput {
 				htmlspecialchars( wfMessage( 'validator-fatal-error', $fatalError->getMessage() )->text() ) .
 				'</span>';			
 		}			
+	}
+
+	/**
+	 * @since 2.0
+	 *
+	 * @param string $coordinates
+	 * @param string $input_name
+	 * @param boolean $is_mandatory
+	 * @param boolean $is_disabled
+	 * @param array $field_args
+	 *
+	 * @return string
+	 */
+	public function getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
+		global $wgOut;
+
+		$wgOut->addHTML( MapsGoogleMaps3::getApiScript(
+			'en',
+			array( 'libraries' => 'drawing' )
+		) );
+
+		$wgOut->addModules( 'mapeditor' );
+
+		$html = '
+			<div >
+				<textarea id="map-polygon" name="' . htmlspecialchars( $input_name ) . '" cols="4" rows="2"></textarea>
+			</div>';
+
+		$editor = new MapEditor( $this->getAttribs() );
+		$html = $html . $editor->getEditorHtml();
+
+		return $html;
 	}
 	
 	/**
@@ -223,38 +252,6 @@ class SMFormInput {
 	 */
 	protected function getResourceModules() {
 		return array( 'ext.sm.forminputs' );
-	}
-
-	/**
-	 * @since 2.0 alspha
-	 * 
-	 * @param string $coordinates
-	 * @param string $input_name
-	 * @param boolean $is_mandatory
-	 * @param boolean $is_disabled
-	 * @param array $field_args
-	 * 
-	 * @return string
-	 */
-	public function getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
-		global $wgOut;
-
-		$wgOut->addHtml( MapsGoogleMaps3::getApiScript(
-			'en',
-			array( 'libraries' => 'drawing' )
-		) );
-
-		$wgOut->addModules( 'mapeditor' );
-
-		$html = '
-			<div >
-				<textarea id="map-polygon" name="' . htmlspecialchars( $input_name ) . '" cols="4" rows="2"></textarea>
-			</div>';
-
-		$editor = new MapEditor( $this->getAttribs() );
-		$html = $html . $editor->getEditorHtml();
-
-		return $html;
 	}
 
 	/**
