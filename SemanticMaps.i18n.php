@@ -448,6 +448,7 @@ $messages['es'] = array(
 $messages['et'] = array(
 	'semanticmaps-latitude' => 'Laiuskraad:$1',
 	'semanticmaps-longitude' => 'Pikkuskraad:$1',
+	'semanticmaps_enteraddresshere' => 'Sisesta aadress siia',
 	'semanticmaps-updatemap' => 'Uuenda kaart',
 	'semanticmaps-forminput-remove' => 'Eemalda',
 	'semanticmaps-forminput-add' => 'Lisa',
@@ -1067,7 +1068,7 @@ $messages['nl'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Besturingselement voor geocodering weergeven.',
 	'semanticmaps-kml-text' => 'De tekst die gekoppeld is aan iedere pagina. Als er extra opgevraagde eigenschappen zijn, wordt deze tekst daardoor overschreven.',
 	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
-	'semanticmaps-kml-linkabsolute' => 'Moeten verwijzingen absoluut zijn (in tegenstelling tot relatief)',
+	'semanticmaps-kml-linkabsolute' => 'Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)',
 	'semanticmaps-kml-pagelinktext' => 'De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginatitel',
 	'semanticmaps-shapes-improperformat' => 'Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak',
 	'semanticmaps-shapes-missingshape' => 'Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen',
@@ -1153,6 +1154,8 @@ $messages['pms'] = array(
 	'semanticmaps-kml-title' => "Ël tìtol predefinì për j'arzultà",
 	'semanticmaps-kml-linkabsolute' => 'Si le liure a devo esse assolùe o nò (visadì relativ)',
 	'semanticmaps-kml-pagelinktext' => "Ël test da dovré për le liure a la pàgina, dont $1 a sarà rimpiassà da 'l tìtol ëd la pàgina",
+	'semanticmaps-shapes-improperformat' => "Formatà ëd $1 nen bon. Për piasì, ch'a fasa arferiment a la documentassion për ël formà vorsù",
+	'semanticmaps-shapes-missingshape' => "Gnun-e forme trovà për $1. Për piasì, ch'a varda la documentassion për le forme disponìbij",
 );
 
 /** Pashto (پښتو)
@@ -1228,18 +1231,26 @@ $messages['pt-br'] = array(
 /** Romanian (română)
  * @author Firilacroco
  * @author Minisarm
+ * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'semanticmaps-desc' => 'Permite vizualizarea și modificarea datelor despre coordonate stocate cu extensia Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mai multe informații...]).',
 	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
+	'semanticmaps-updatemap' => 'Actualizează harta',
+	'semanticmaps-forminput-remove' => 'Eliminare',
+	'semanticmaps-forminput-add' => 'Adăugare',
+	'semanticmaps-forminput-locations' => 'Locuri',
 );
 
 /** tarandíne (tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'semanticmaps-desc' => "Dèje l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([https://mapping.referata.com/wiki/Examples demo]).", # Fuzzy
+	'semanticmaps-desc' => "Dèje l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps cchiù 'mbormaziune...])",
 	'semanticmaps-default-kml-pagelink' => "Vide 'a pàgene $1",
+	'semanticmaps-latitude' => 'Latitudine: $1',
+	'semanticmaps-longitude' => 'Longitudine: $1',
+	'semanticmaps-altitude' => 'Iertezze: $1',
 	'semanticmaps_lookupcoordinates' => 'Ingroce le coordinate',
 	'semanticmaps_enteraddresshere' => "Scaffe l'indirizze aqquà",
 	'semanticmaps-updatemap' => "Aggiorne 'a mappe",
@@ -1250,6 +1261,7 @@ $messages['roa-tara'] = array(
 /** Russian (русский)
  * @author Eugene Mednikov
  * @author Lockal
+ * @author Pastakhov
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1257,6 +1269,9 @@ $messages['ru'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Значение $1 не является допустимым расстоянием.',
 	'semanticmaps-kml-link' => 'Просмотреть файл KML',
 	'semanticmaps-default-kml-pagelink' => 'Просмотреть страницу $1',
+	'semanticmaps-latitude' => 'Широта: $1',
+	'semanticmaps-longitude' => 'Долгота: $1',
+	'semanticmaps-altitude' => 'Высота: $1',
 	'semanticmaps-loading-forminput' => 'Загрузка карты…',
 	'semanticmaps_lookupcoordinates' => 'Найти координаты',
 	'semanticmaps_enteraddresshere' => 'Введите адрес',
@@ -1266,21 +1281,32 @@ $messages['ru'] = array(
 	'semanticmaps-forminput-locations' => 'Места',
 	'semanticmaps-par-staticlocations' => 'Список мест для добавления на карту вместе с запрашиваемыми данными. Например, к display_points можно добавить название, описание и значок, используя тильду ~ в качестве разделителя.',
 	'semanticmaps-par-forceshow' => 'Показывать карту даже тогда, когда нет мест для отображения?',
+	'semanticmaps-par-hidenamespace' => 'Показывать название пространства имен в информационном окне маркера',
+	'semanticmaps-par-centre' => 'Центр карты. Если не задан, карта автоматически выберет оптимальный центр, позволяющий отобразить все маркеры на карте.',
 	'semanticmaps-par-template' => 'Шаблон для форматирования содержимого окна информация.',
+	'semanticmaps-par-geocodecontrol' => 'Показать панель управления геокодированием.',
+	'semanticmaps-kml-title' => 'Заголовок по умолчанию для результатов',
 );
 
 /** Sinhala (සිංහල)
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'semanticmaps-unrecognizeddistance' => '$1 අගය වලංගු දුර ප්‍රමාණයක් නොවේ.',
+	'semanticmaps-kml-link' => 'KML ගොනුව නරඹන්න',
 	'semanticmaps-default-kml-pagelink' => '$1 පිටුව නරඹන්න',
 	'semanticmaps-latitude' => 'අක්ෂාංශය: $1',
 	'semanticmaps-longitude' => 'දේශාංශය: $1',
 	'semanticmaps-altitude' => 'උන්නතාංශය: $1',
+	'semanticmaps-loading-forminput' => 'ආදානයෙන් සිතියම පූරණය කරමින්...',
+	'semanticmaps_lookupcoordinates' => 'ඛණ්ඩාංක බලන්න',
+	'semanticmaps_enteraddresshere' => 'ලිපිනය මෙහි යොදන්න',
 	'semanticmaps-updatemap' => 'සිතියම යාවත්කාලීන කරන්න',
 	'semanticmaps-forminput-remove' => 'ඉවත් කරන්න',
 	'semanticmaps-forminput-add' => 'එක් කරන්න',
 	'semanticmaps-forminput-locations' => 'ස්ථාන',
+	'semanticmaps-par-geocodecontrol' => 'භූකේතීකරණ පාලකය පෙන්වන්න.',
+	'semanticmaps-kml-title' => 'ප්‍රතිඑල සඳහා සාමාන්‍ය ශීර්ෂය',
 );
 
 /** Slovak (slovenčina)
@@ -1322,6 +1348,8 @@ $messages['sl'] = array(
 	'semanticmaps-kml-title' => 'Privzeti naslov za rezultate',
 	'semanticmaps-kml-linkabsolute' => 'Naj bodo povezave absolutne ali ne (tj. relativne)',
 	'semanticmaps-kml-pagelinktext' => 'Besedilo za povezave do strani, v katerih bo $1 zamenjan z naslovom strani',
+	'semanticmaps-shapes-improperformat' => 'Neustrezno oblikovanje $1. Prosimo, oglejte si dokumentacijo za oblikovanje',
+	'semanticmaps-shapes-missingshape' => 'Za $1 nisem našel nobenih oblik. Prosimo, oglejte si dokumentacijo za oblike, ki so na voljo',
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
@@ -1352,7 +1380,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med Semantic MediaWiki-utvidgningen ([https://mapping.referata.com/wiki/Examples Demo]).', # Fuzzy
+	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med Semantic MediaWiki-utvidgningen ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mer information...])',
 	'semanticmaps-unrecognizeddistance' => 'Värdet $1 är inte ett giltigt avstånd.',
 	'semanticmaps-kml-link' => 'Visa KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Visa sida $1',
@@ -1397,6 +1425,10 @@ $messages['sw'] = array(
  * @author Shanmugamp7
  */
 $messages['ta'] = array(
+	'semanticmaps-default-kml-pagelink' => 'பக்கம் $1 ஐ காண்க',
+	'semanticmaps-latitude' => 'அட்சரேகை: $1',
+	'semanticmaps-longitude' => 'தீர்க்கரேகை: $1',
+	'semanticmaps-altitude' => 'குத்துயரம்: $1',
 	'semanticmaps_enteraddresshere' => 'இங்கு முகவரியை உள்ளிடவும்',
 	'semanticmaps-updatemap' => 'வரைபடத்தை புதுப்பி',
 	'semanticmaps-forminput-remove' => 'நீக்குக',
@@ -1469,8 +1501,17 @@ $messages['tr'] = array(
  * @author Steve.rusyn
  */
 $messages['uk'] = array(
+	'semanticmaps-default-kml-pagelink' => 'Переглянути сторінку $1',
+	'semanticmaps-latitude' => 'Широта: $1',
+	'semanticmaps-longitude' => 'Довгота: $1',
+	'semanticmaps-altitude' => 'Висота над рівнем моря: $1',
+	'semanticmaps-loading-forminput' => 'Завантаження карти...',
+	'semanticmaps_lookupcoordinates' => 'Знайти координати',
+	'semanticmaps_enteraddresshere' => 'Введіть адресу',
+	'semanticmaps-updatemap' => 'Оновити карту',
 	'semanticmaps-forminput-remove' => 'Вилучити',
 	'semanticmaps-forminput-add' => 'Додати',
+	'semanticmaps-forminput-locations' => 'Місця',
 );
 
 /** Urdu (اردو)
