@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Class to Handle HTML generation for MapEditor
+ * Class to Handle HTML generation for Special:MapEditor
  *
  * @since 2.1
  *
- * @file EditorHtml.php
+ * @file MapEditorHtml.php
  * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Nischayn22
  */
-class MapEditor extends ContextSource{
+class MapEditorHtml extends ContextSource{
 
     /**
      * Array holding the additional attributes for the canvas div.

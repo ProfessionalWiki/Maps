@@ -41,8 +41,8 @@ class SpecialMapEditor extends SpecialPage{
 		) );
 
 		$outputPage->addModules( 'mapeditor' );
-        $editor = new MapEditor( $this->getAttribs() );
-		$html = $editor->getEditorHtml();
+        $editorHtml = new MapEditorHtml( $this->getAttribs() );
+		$html = $editorHtml->getEditorHtml();
 		$outputPage->addHTML( $html );
 	}
 
