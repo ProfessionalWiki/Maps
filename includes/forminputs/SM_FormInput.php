@@ -190,8 +190,8 @@ class SMFormInput {
 				<textarea id="map-polygon" name="' . htmlspecialchars( $input_name ) . '" cols="4" rows="2"></textarea>
 			</div>';
 
-		$editor = new MapEditor( $this->getAttribs() );
-		$html = $html . $editor->getEditorHtml();
+		$editorHtml = new MapEditorHtml( $this->getAttribs() );
+		$html = $html . $editorHtml->getEditorHtml();
 
 		return $html;
 	}
