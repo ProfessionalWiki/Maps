@@ -74,7 +74,7 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses, include 'Maps.classes.php'
 
 $wgResourceModules = array_merge( $wgResourceModules, include 'Maps.resources.php' );
 
-$wgAPIModules['geocode'] = 'ApiGeocode';
+$wgAPIModules['geocode'] = 'Maps\Api\Geocode';
 
 // Register the initialization function of Maps.
 $wgExtensionFunctions[] = function () {
