@@ -4856,8 +4856,10 @@ $messages['roa-tara'] = array(
 
 /** Russian (русский)
  * @author Adata80
+ * @author Base
  * @author Haffman
  * @author KPu3uC B Poccuu
+ * @author Kaganer
  * @author Kalan
  * @author Lockal
  * @author MaxSem
@@ -4866,7 +4868,8 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://mapping.referata.com/wiki/Examples Примеры использования])',
+	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://www.semantic-mediawiki.org/wiki/Maps подробнее...])',
+	'right-geocode' => 'геокодирование',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
 	'maps-load-failed' => 'Невозможно загрузить карту!',
@@ -4883,7 +4886,7 @@ $messages['ru'] = array(
 	'validation-error-invalid-layer' => 'Параметр $1 должен быть корректным слоем.',
 	'validation-error-invalid-layers' => 'Параметр $1 должен содержать один или несколько корректных слоёв.',
 	'maps-layer-of-type' => 'Слой типа $1',
-	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|только с картографической службой $1|только со следующими картографическими службами}}: $1',
+	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|только с картографической службой|только со следующими картографическими службами:}} $1',
 	'maps-coordinates-description' => 'Перехватчик синтаксического анализатора для форматирования координат из любого и в любой поддерживаемый формат.',
 	'maps-displaymap-description' => 'Отображение географических карт без каких-либо вики-маркеров на них.',
 	'maps-displaypoint-description' => 'Отображение географических карт с одним или несколькими вики-маркерами на них.',
