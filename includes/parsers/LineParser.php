@@ -3,7 +3,6 @@
 namespace Maps;
 use ValueParsers\StringValueParser;
 use ValueParsers\Result;
-use ValueParsers\ResultObject;
 use DataValues\GeoCoordinateValue;
 
 /**
@@ -59,7 +58,7 @@ class LineParser extends StringValueParser {
 
 		$this->handleCommonParams( $parts, $line );
 
-		return ResultObject::newSuccess( $line );
+		return Result::newSuccess( $line );
 	}
 
 	/**

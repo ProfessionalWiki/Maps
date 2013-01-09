@@ -1,7 +1,7 @@
 <?php
 
 namespace Maps\Test;
-use ValueParsers\ResultObject;
+use ValueParsers\Result;
 use Maps\Line;
 
 /**
@@ -84,7 +84,7 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 			$input = implode( ':', $input );
 
-			$argLists[] = array( $input, ResultObject::newSuccess( new Line( $output ) ) );
+			$argLists[] = array( $input, Result::newSuccess( new Line( $output ) ) );
 		}
 
 		return array_merge( $argLists, parent::parseProvider() );

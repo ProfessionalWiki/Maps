@@ -3,7 +3,6 @@
 namespace Maps;
 use ValueParsers\StringValueParser;
 use ValueParsers\Result;
-use ValueParsers\ResultObject;
 use ValueParsers\GeoCoordinateParser;
 use ValueParsers\Error;
 use DataValues\GeoCoordinateValue;
@@ -58,7 +57,7 @@ class LocationParser extends StringValueParser {
 		$coordinates = $this->getCoordinates( array_shift( $metaData ) );
 
 		if ( $coordinates instanceof Error ) {
-			return ResultObject::newError( $coordinates );
+			return Result::newError( $coordinates );
 		}
 
 		$location = new \Maps\Location( $coordinates );
@@ -75,7 +74,7 @@ class LocationParser extends StringValueParser {
 			$location->setIcon( array_shift( $metaData ) );
 		}
 
-		return ResultObject::newSuccess( $location );
+		return Result::newSuccess( $location );
 	}
 
 	/**
