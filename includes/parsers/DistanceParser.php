@@ -3,7 +3,6 @@
 namespace Maps;
 use ValueParsers\StringValueParser;
 use ValueParsers\Result;
-use ValueParsers\ResultObject;
 
 /**
  * ValueParser that parses the string representation of a distance.
@@ -50,7 +49,7 @@ class DistanceParser extends StringValueParser {
 			return $this->newErrorResult( 'Not a distance' );
 		}
 		else {
-			return ResultObject::newSuccess( $distance );
+			return Result::newSuccess( $distance );
 		}
 	}
 

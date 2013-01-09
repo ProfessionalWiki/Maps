@@ -1,7 +1,7 @@
 <?php
 
 namespace Maps\Test;
-use ValueParsers\ResultObject;
+use ValueParsers\Result;
 
 /**
  * Unit tests for the Maps\LocationParser class.
@@ -56,13 +56,13 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 		foreach ( $valid as $value => $expected ) {
 			$expected = new \Maps\Location( new \DataValues\GeoCoordinateValue( $expected[0], $expected[1] ) );
-			$argLists[] = array( (string)$value, ResultObject::newSuccess( $expected ) );
+			$argLists[] = array( (string)$value, Result::newSuccess( $expected ) );
 		}
 
 		$location = new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) );
 		$location->setTitle( 'Title' );
 		$location->setText( 'some description' );
-		$argLists[] = array( '4,2~Title~some description', ResultObject::newSuccess( $location ) );
+		$argLists[] = array( '4,2~Title~some description', Result::newSuccess( $location ) );
 
 		return array_merge( $argLists, parent::parseProvider() );
 	}

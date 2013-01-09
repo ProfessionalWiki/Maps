@@ -1,7 +1,7 @@
 <?php
 
 namespace Maps\Test;
-use ValueParsers\ResultObject;
+use ValueParsers\Result;
 
 /**
  * Unit tests for the Maps\DistanceParser class.
@@ -53,7 +53,7 @@ class DistanceParserTest extends \ValueParsers\Test\StringValueParserTest {
 		);
 
 		foreach ( $valid as $value => $expected ) {
-			$argLists[] = array( (string)$value, ResultObject::newSuccess( $expected ) );
+			$argLists[] = array( (string)$value, Result::newSuccess( $expected ) );
 		}
 
 		return array_merge( $argLists, parent::parseProvider() );
