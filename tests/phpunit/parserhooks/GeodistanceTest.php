@@ -28,6 +28,7 @@ namespace Maps\Test;
  *
  * @group Maps
  * @group ParserHook
+ * @group GeodistanceTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -51,7 +52,10 @@ class GeodistanceTest extends ParserHookTest {
 	public function parametersProvider() {
 		$paramLists = array();
 
-		$paramLists[] = array( '4,2', '42,0' );
+		$paramLists[] = array(
+			'location1' => '4,2',
+			'location2' => '42,0',
+		);
 
 		return $this->arrayWrap( $paramLists );
 	}
