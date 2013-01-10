@@ -63,11 +63,16 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 		$parser->clearState();
 		$parser->setTitle( \Title::newMainPage() );
 
-		$renderResult = $parserHook->renderTag( null, $parameters, $parser );
-		$this->assertInternalType( 'string', $renderResult );
+		$renderResult = call_user_func_array(
+			array( $parserHook, 'renderFunction' ),
+			array_merge( array( &$parser ), $parameters )
+		);
+
+		$this->assertInternalType( 'array', $renderResult );
+		$this->assertInternalType( 'string', $renderResult[0] );
 
 		if ( $expected !== null ) {
-			$this->assertEquals( $expected, $renderResult );
+			$this->assertEquals( $expected, $renderResult[0] );
 		}
 	}
 

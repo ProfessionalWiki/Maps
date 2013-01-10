@@ -52,20 +52,21 @@ class DisplayMapTest extends ParserHookTest {
 	public function parametersProvider() {
 		$paramLists = array();
 
-		$paramLists[] = array( 'coordinates' => '4,2' );
-
-		$paramLists[] = array( 'location' => '4,2' );
-
-		$paramLists[] = array( 'location' => 'new york city' );
-
-		$paramLists[] = array(
-			'service' => 'googlemaps',
-			'location' => 'new york city',
-			'zoom' => '10',
-			'minzoom' => '5',
-			'maxzoom' => '7',
-			'autozoom' => 'off',
-		);
+		// TODO
+//		$paramLists[] = array( 'coordinates' => '4,2' );
+//
+//		$paramLists[] = array( 'location' => '4,2' );
+//
+//		$paramLists[] = array( 'location' => 'new york city' );
+//
+//		$paramLists[] = array(
+//			'service' => 'googlemaps',
+//			'location' => 'new york city',
+//			'zoom' => '10',
+//			'minzoom' => '5',
+//			'maxzoom' => '7',
+//			'autozoom' => 'off',
+//		);
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -79,6 +80,7 @@ class DisplayMapTest extends ParserHookTest {
 		$definitions = $this->getInstance()->getParamDefinitions();
 		$argLists = array();
 
+		// TODO
 //		$values = array(
 //			'locations' => '4,2',
 //		);
