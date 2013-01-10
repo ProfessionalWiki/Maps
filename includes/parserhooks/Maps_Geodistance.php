@@ -109,23 +109,15 @@ class MapsGeodistance extends ParserHook {
 	 * @throws MWException
 	 */
 	public function render( array $parameters ) {
-		if ( \Maps\Geocoders::canGeocode() ) {
-			$start = \Maps\Geocoders::attemptToGeocode( $parameters['location1'], $parameters['geoservice'], $parameters['mappingservice'] );
-			$end = \Maps\Geocoders::attemptToGeocode( $parameters['location2'], $parameters['geoservice'], $parameters['mappingservice'] );
-		} else {
-			$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+		/**
+		 * @var \DataValues\GeoCoordinateValue $coordinates1
+		 * @var \DataValues\GeoCoordinateValue $coordinates2
+		 */
+		$coordinates1 = $parameters['location1']->getCoordinates();
+		$coordinates2 = $parameters['location2']->getCoordinates();
 
-			$start = $parser->parse( $parameters['location1'] );
-			$end = $parser->parse( $parameters['location2'] );
-		}
-		
-		if ( $start->isValid() && $end->isValid() ) {
-			$distance = MapsGeoFunctions::calculateDistance( $start->getValue(), $end->getValue() );
-			$output = MapsDistanceParser::formatDistance( $distance, $parameters['unit'], $parameters['decimals'] );
-		} else {
-			// The locations should be valid when this method gets called.
-			throw new MWException( 'Attempt to find the distance between locations of at least one is invalid' );
-		}
+		$distance = MapsGeoFunctions::calculateDistance( $coordinates1, $coordinates2 );
+		$output = MapsDistanceParser::formatDistance( $distance, $parameters['unit'], $parameters['decimals'] );
 
 		return $output;
 	}
