@@ -57,6 +57,11 @@ class GeodistanceTest extends ParserHookTest {
 			'location2' => '42,0',
 		);
 
+		$paramLists[] = array(
+			'4,2',
+			'42,0',
+		);
+
 		return $this->arrayWrap( $paramLists );
 	}
 
