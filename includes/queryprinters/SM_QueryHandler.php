@@ -367,16 +367,20 @@ class SMQueryHandler {
 
 		if ( $this->showSubject ) {
 			if( !$this->showArticleLink()){
-				$text = $object->getText();
+				$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
 			}else if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
 				$text = Html::element(
 					'a',
 					array( 'href' => $object->getTitle()->getFullUrl() ),
-					$object->getTitle()->getText()
+					$this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText()
 				);
 			}
 			else {
-				$text = $object->getLongHTMLText( smwfGetLinker() );
+				if($this->hideNamespace){
+					$text = $object->getShortHTMLText(smwfGetLinker());
+				}else{
+					$text = $object->getLongHTMLText( smwfGetLinker() );
+				}
 			}
 
 			if ( $this->boldSubject ) {
