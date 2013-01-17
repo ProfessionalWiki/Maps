@@ -31,7 +31,7 @@
 	this.buildInputValue = function( locations ) {
 		var floats = [];
 		
-		for ( i in locations ) {
+		for ( var i in locations ) {
 			floats.push( coord.float( locations[i].lat, locations[i].lon ) );
 		}
 		
@@ -68,7 +68,7 @@
 	} );
 	
 	this.input.keypress( function( event ) {
-		if ( event.which == '13' ) {
+		if ( event.which === '13' ) {
 			event.preventDefault();
 			updateButton.click();
 		}
@@ -83,7 +83,7 @@
 	} );
 	
 	this.geofield.focus( function() {
-		if ( this.value == mw.msg( 'semanticmaps_enteraddresshere' ) ) {
+		if ( this.value === mw.msg( 'semanticmaps_enteraddresshere' ) ) {
 			this.value = '';
 			$( this ).css( 'color', '' );
 		}
@@ -104,7 +104,7 @@
 	} );
 	
 	this.geofield.keypress( function( event ) {
-		if ( event.which == '13' ) {
+		if ( event.which === '13' ) {
 			event.preventDefault();
 			geoButton.click();
 		}

@@ -122,7 +122,7 @@
 
 	this.mapDiv.map.addControl( clickControl );
 	clickControl.activate();
-	;
+
 	return this;
 	
 }; })( jQuery );
