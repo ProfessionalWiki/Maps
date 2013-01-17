@@ -126,6 +126,20 @@ class SMQueryHandler {
 	 */
 	protected $hideNamespace = false;
 
+
+	/**
+	 * Defines which article names in the result are hyperlinked, all normally is the default
+	 * none, subject, all
+	 */
+	protected $linkStyle = 'all';
+
+	/*
+	 * Show headers (with links), show headers (just text) or hide them. show is default
+	 * show, plain, hide
+	 */
+	protected $headerStyle = 'show';
+
+
 	/**
 	 * Constructor.
 	 *
@@ -236,6 +250,26 @@ class SMQueryHandler {
 	}
 
 	/**
+	 *
+	 * @since 2.0.1
+	 *
+	 * @param boolean $link
+	 */
+	public function setLinkStyle ( $link ) {
+		$this->linkStyle = $link;
+	}
+
+	/**
+	 *
+	 * @since 2.0.1
+	 *
+	 * @param boolean $headers
+	 */
+	public function setHeaderStyle ( $headers ) {
+		$this->headerStyle = $headers;
+	}
+
+	/**
 	 * @since 2.0
 	 *
 	 * @return array
@@ -286,7 +320,7 @@ class SMQueryHandler {
 					$polyHandler = new PolygonHandler ( $dataItem->getString() );
 					$this->geoShapes[ $polyHandler->getGeoType() ][] = $polyHandler->shapeFromText();
 				}
-				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 ) {
+				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide()) {
 					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 				}
 				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
@@ -332,7 +366,9 @@ class SMQueryHandler {
 		$text = '';
 
 		if ( $this->showSubject ) {
-			if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
+			if( !$this->showArticleLink()){
+				$text = $object->getText();
+			}else if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
 				$text = Html::element(
 					'a',
 					array( 'href' => $object->getTitle()->getFullUrl() ),
@@ -364,6 +400,10 @@ class SMQueryHandler {
 		return array( $title, $text );
 	}
 
+	protected function showArticleLink(){
+		return $this->linkStyle !== 'none';
+	}
+
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
 	 *
@@ -375,6 +415,10 @@ class SMQueryHandler {
 	 * @return string
 	 */
 	protected function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
+		if($this->isHeadersHide()){
+			return '';
+		}
+
 		if ( $this->template ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getTitle()->getPrefixedText();
@@ -384,9 +428,10 @@ class SMQueryHandler {
 		}
 
 		if ( $this->linkAbsolute ) {
-			$t = Title::newFromText( $printRequest->getHTMLText( NULL ), SMW_NS_PROPERTY );
+			$titleText = $printRequest->getText( NULL );
+			$t = Title::newFromText($titleText , SMW_NS_PROPERTY );
 
-			if ( $t instanceof Title && $t->exists() ) {
+			if ($this->isHeadersShow() && $t instanceof Title && $t->exists() ) {
 				$propertyName = $propertyName = Html::element(
 					'a',
 					array( 'href' => $t->getFullUrl() ),
@@ -394,11 +439,15 @@ class SMQueryHandler {
 				);
 			}
 			else {
-				$propertyName = $printRequest->getHTMLText( NULL );
+				$propertyName = $titleText;
 			}
 		}
 		else {
-			$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
+			if($this->isHeadersShow()){
+				$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
+			}else if($this->isHeadersPlain()){
+				$propertyName = $printRequest->getText(NULL);
+			}
 		}
 
 		if ( $this->linkAbsolute ) {
@@ -425,6 +474,19 @@ class SMQueryHandler {
 		}
 
 		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
+	}
+
+
+	protected function isHeadersShow(){
+		return $this->headerStyle === 'show';
+	}
+
+	protected function isHeadersHide(){
+		return $this->headerStyle === 'hide';
+	}
+
+	protected function isHeadersPlain(){
+		return $this->headerStyle === 'plain';
 	}
 
 	/**

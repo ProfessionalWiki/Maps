@@ -113,6 +113,8 @@ class SMMapPrinter extends SMWResultPrinter {
 			$params = $this->params;
 			
 			$queryHandler = new SMQueryHandler( $res, $outputmode );
+			$queryHandler->setLinkStyle($params['link']);
+			$queryHandler->setHeaderStyle($params['headers']);
 			$queryHandler->setShowSubject( $params['showtitle'] );
 			$queryHandler->setTemplate( $params['template'] );
 			$queryHandler->setHideNamespace( $params['hidenamespace'] );
