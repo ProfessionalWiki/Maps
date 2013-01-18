@@ -32,11 +32,13 @@ interface iMappingService {
 	function addDependencies( &$parserOrOut );
 	
 	/**
-	 * Adds service-specific parameter definitions to the porvided parameter list.
+	 * Adds service-specific parameter definitions to the provided parameter list.
 	 * 
 	 * @since 0.7
-	 * 
-	 * @return array of IParam
+	 *
+	 * @param array $parameterInfo
+	 *
+	 * @return array
 	 */
 	function addParameterInfo( array &$parameterInfo );
 	
