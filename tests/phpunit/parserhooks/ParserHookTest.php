@@ -68,8 +68,13 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 			array_merge( array( &$parser ), $parameters )
 		);
 
-		$this->assertInternalType( 'array', $renderResult );
-		$this->assertInternalType( 'string', $renderResult[0] );
+		if ( is_string( $renderResult ) ) {
+			$this->assertTrue( true );
+		}
+		else {
+			$this->assertInternalType( 'array', $renderResult );
+			$this->assertInternalType( 'string', $renderResult[0] );
+		}
 
 		if ( $expected !== null ) {
 			$this->assertEquals( $expected, $renderResult[0] );

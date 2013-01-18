@@ -56,4 +56,28 @@ class MapsDocTest extends ParserHookTest {
 		return $this->arrayWrap( $paramLists );
 	}
 
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 3.0
+	 * @return array
+	 */
+	public function processingProvider() {
+		$argLists = array();
+
+		$values = array( 'service' => 'googlemaps3' );
+
+		$expected = array( 'service' => 'googlemaps3' );
+
+		$argLists[] = array( $values, $expected );
+
+
+		$values = array( 'service' => 'GOOGLEmaps3' );
+
+		$expected = array( 'service' => 'googlemaps3' );
+
+		$argLists[] = array( $values, $expected );
+
+		return $argLists;
+	}
+
 }

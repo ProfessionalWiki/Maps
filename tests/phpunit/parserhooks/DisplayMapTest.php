@@ -53,20 +53,20 @@ class DisplayMapTest extends ParserHookTest {
 		$paramLists = array();
 
 		// TODO
-//		$paramLists[] = array( 'coordinates' => '4,2' );
-//
-//		$paramLists[] = array( 'location' => '4,2' );
-//
-//		$paramLists[] = array( 'location' => 'new york city' );
-//
-//		$paramLists[] = array(
-//			'service' => 'googlemaps',
-//			'location' => 'new york city',
-//			'zoom' => '10',
-//			'minzoom' => '5',
-//			'maxzoom' => '7',
-//			'autozoom' => 'off',
-//		);
+		$paramLists[] = array( 'coordinates' => '4,2' );
+
+		$paramLists[] = array( 'location' => '4,2' );
+
+		$paramLists[] = array( 'location' => 'new york city' );
+
+		$paramLists[] = array(
+			'service' => 'googlemaps',
+			'location' => 'new york city',
+			'zoom' => '10',
+			'minzoom' => '5',
+			'maxzoom' => '7',
+			'autozoom' => 'off',
+		);
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -81,15 +81,19 @@ class DisplayMapTest extends ParserHookTest {
 		$argLists = array();
 
 		// TODO
-//		$values = array(
-//			'locations' => '4,2',
-//		);
-//
-//		$expected = array(
-//			'coordinates' => new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) )
-//		);
-//
-//		$argLists[] = array( $values, $expected );
+		$values = array(
+			'locations' => '4,2',
+			'width' => '420',
+			'height' => '420',
+		);
+
+		$expected = array(
+			'coordinates' => array( new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) ) ),
+			'width' => '420px',
+			'height' => '420px',
+		);
+
+		$argLists[] = array( $values, $expected );
 
 		return $argLists;
 	}
