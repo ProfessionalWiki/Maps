@@ -59,25 +59,25 @@ class SMKMLPrinter extends SMWExportPrinter {
 		$params = parent::getParamDefinitions( $definitions );
 
 		$params['text'] = array(
+			'message' => 'semanticmaps-kml-text',
 			'default' => $egMapsDefaultLabel,
 		);
 
 		$params['title'] = array(
+			'message' => 'semanticmaps-kml-title',
 			'default' => $egMapsDefaultTitle,
 		);
 
 		$params['linkabsolute'] = array(
+			'message' => 'semanticmaps-kml-linkabsolute',
 			'type' => 'boolean',
 			'default' => true,
 		);
 
 		$params['pagelinktext'] = array(
+			'message' => 'semanticmaps-kml-pagelinktext',
 			'default' => wfMessage( 'semanticmaps-default-kml-pagelink' )->text(),
 		);
-
-		foreach ( $params as $name => &$param ) {
-			$param['name'] = 'semanticmaps-kml-' . $name;
-		}
 
 		return $params;
 	}
