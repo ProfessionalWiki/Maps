@@ -48,10 +48,7 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 function efMapsInitOpenLayers() {
 	MapsMappingServices::registerService( 
 		'openlayers',
-		'MapsOpenLayers',
-		array(
-			'display_map' => 'MapsDisplayMapRenderer',
-		)
+		'MapsOpenLayers'
 	);
 	
 	return true;

@@ -85,7 +85,7 @@ $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
  * @since 0.6.3
  * @ingroup MapsGoogleMaps3
  * 
- * @return true
+ * @return boolean true
  */
 function efMapsInitGoogleMaps3() {
 	global $wgAutoloadClasses;
@@ -93,7 +93,9 @@ function efMapsInitGoogleMaps3() {
 	$wgAutoloadClasses['MapsGoogleMaps3'] 			= __DIR__ . '/Maps_GoogleMaps3.php';
 
 	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
-	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );	
+
+	// TODO: kill below code
+	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
 	$googleMaps->addFeature( 'display_map', 'MapsDisplayMapRenderer' );
 
 	return true;

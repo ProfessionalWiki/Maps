@@ -77,7 +77,7 @@ class MapsDisplayMapRenderer {
 	 * @param array $params
 	 * @param Parser $parser
 	 *
-	 * @return html
+	 * @return string
 	 */
 	public final function renderMap( array $params, Parser $parser ) {
 		$this->handleMarkerData( $params, $parser );

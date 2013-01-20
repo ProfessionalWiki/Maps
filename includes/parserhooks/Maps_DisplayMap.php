@@ -49,10 +49,6 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['mappingservice']['feature'] = 'display_map';
 
-		//$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
-		// TODO$params['zoom']['manipulations'] = new MapsParamZoom();
-
-		// TODO: $type === ParserHook::TYPE_FUNCTION ? '~' : '|'
 		$params['coordinates'] = array(
 			'type' => 'mapslocation',
 			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
@@ -189,8 +185,13 @@ class MapsDisplayMap extends ParserHook {
 		// Get the instance of the service class.
 		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
 		
-		// Get an instance of the class handling the current parser hook and service. 
-		$mapClass = $service->getFeatureInstance( $this->getName() );
+		$mapClass = new MapsDisplayMapRenderer( $service );
+
+		$fullParams = $this->validator->getParameters();
+
+		if ( array_key_exists( 'zoom', $fullParams ) && $fullParams['zoom']->wasSetToDefault() && count( $parameters['coordinates'] ) > 1 ) {
+			$parameters['zoom'] = false;
+		}
 
 		return $mapClass->renderMap( $parameters, $this->parser );
 	}
