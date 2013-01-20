@@ -10,7 +10,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SMMapPrinter extends SMWResultPrinter {
+class SMMapPrinter extends SMW\ResultPrinter {
 	
 	/**
 	 * @since 0.6
@@ -51,10 +51,6 @@ class SMMapPrinter extends SMWResultPrinter {
 		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
 
 		$this->service->addParameterInfo( $params );
-
-		// TODO
-//		$params['zoom']->setDefault( false );
-//		$params['zoom']->setDoManipulationOfDefault( false );
 
 		$params['staticlocations'] = array(
 			'type' => 'mapslocation',
@@ -107,57 +103,59 @@ class SMMapPrinter extends SMWResultPrinter {
 	 * @return array or string
 	 */
 	public final function getResultText( SMWQueryResult $res, $outputmode ) {
-		if ( $this->fatalErrorMsg === false ) {
-			global $wgParser;
-			
-			$params = $this->params;
-			
-			$queryHandler = new SMQueryHandler( $res, $outputmode );
-			$queryHandler->setLinkStyle($params['link']);
-			$queryHandler->setHeaderStyle($params['headers']);
-			$queryHandler->setShowSubject( $params['showtitle'] );
-			$queryHandler->setTemplate( $params['template'] );
-			$queryHandler->setHideNamespace( $params['hidenamespace'] );
-			
-			$this->handleMarkerData( $params, $queryHandler );
-			$locationAmount = count( $params['locations'] );
-			
-			if ( $params['forceshow'] || $locationAmount > 0 ) {
-				// We can only take care of the zoom defaulting here, 
-				// as not all locations are available in whats passed to Validator.
-				if ( $params['zoom'] === false && $locationAmount <= 1 ) {
-					$params['zoom'] = $this->service->getDefaultZoom();
-				}
-				
-				$mapName = $this->service->getMapId();
-				
-				// MediaWiki 1.17 does not play nice with addScript, so add the vars via the globals hook.
-				if ( version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ) {
-					$GLOBALS['egMapsGlobalJSVars'] += $this->service->getConfigVariables();
-				}
-				
-				SMWOutputs::requireHeadItem(
-					$mapName,
-					$this->service->getDependencyHtml() . 
-					$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() )
-				);
-				
-				foreach ( $this->service->getResourceModules() as $resourceModule ) {
-					SMWOutputs::requireResource( $resourceModule );
-				}
+		if ( $this->fatalErrorMsg !== false ) {
+			return $this->fatalErrorMsg;
+		}
 
-				if ( array_key_exists( 'source', $params ) ) {
-					unset( $params['source'] );
-				}
+		/**
+		 * @var Parser $wgParser
+		 */
+		global $wgParser;
 
-				return $this->getMapHTML( $params, $wgParser, $mapName );
+		$params = $this->params;
+
+		$queryHandler = new SMQueryHandler( $res, $outputmode );
+		$queryHandler->setLinkStyle($params['link']);
+		$queryHandler->setHeaderStyle($params['headers']);
+		$queryHandler->setShowSubject( $params['showtitle'] );
+		$queryHandler->setTemplate( $params['template'] );
+		$queryHandler->setHideNamespace( $params['hidenamespace'] );
+
+		$this->handleMarkerData( $params, $queryHandler );
+		$locationAmount = count( $params['locations'] );
+
+		if ( $params['forceshow'] || $locationAmount > 0 ) {
+			// We can only take care of the zoom defaulting here,
+			// as not all locations are available in whats passed to Validator.
+			if ( $this->fullParams['zoom']->wasSetToDefault() && $locationAmount > 1 ) {
+				$params['zoom'] = false;
 			}
-			else {
-				return $params['default'];
+
+			$mapName = $this->service->getMapId();
+
+			// MediaWiki 1.17 does not play nice with addScript, so add the vars via the globals hook.
+			if ( version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ) {
+				$GLOBALS['egMapsGlobalJSVars'] += $this->service->getConfigVariables();
 			}
+
+			SMWOutputs::requireHeadItem(
+				$mapName,
+				$this->service->getDependencyHtml() .
+				$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() )
+			);
+
+			foreach ( $this->service->getResourceModules() as $resourceModule ) {
+				SMWOutputs::requireResource( $resourceModule );
+			}
+
+			if ( array_key_exists( 'source', $params ) ) {
+				unset( $params['source'] );
+			}
+
+			return $this->getMapHTML( $params, $wgParser, $mapName );
 		}
 		else {
-			return $this->fatalErrorMsg;
+			return $params['default'];
 		}
 	}
 
