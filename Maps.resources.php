@@ -64,13 +64,13 @@ return call_user_func( function() {
 
 		'mapeditor' => $moduleTemplate + array(
 			'scripts' => array(
-				'js/jquery.miniColors.js',
-				'js/mapeditor.iefixes.js',
-				'js/mapeditor.js',
+				'editor/js/jquery.miniColors.js',
+				'editor/js/mapeditor.iefixes.js',
+				'editor/js/mapeditor.js',
 			),
 			'styles' => array(
-				'css/jquery.miniColors.css',
-				'css/mapeditor.css',
+				'editor/css/jquery.miniColors.css',
+				'editor/css/mapeditor.css',
 			),
 			'messages' => array(
 				'mapeditor-parser-error',
