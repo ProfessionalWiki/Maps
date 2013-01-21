@@ -49,9 +49,9 @@ var mapEditor = {
             editable:true
         }
     },
-    __mapParameters:{ //TODO look into getting this list from server dynamically
+    __mapParameters:{
         mappingservice: {
-            values:['googlemaps','openlayers']
+            values:mw.config.get( 'egMapsAvailableServices' )
         },
         copycoords: {
             values:['on','off']
