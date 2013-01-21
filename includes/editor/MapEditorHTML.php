@@ -5,7 +5,7 @@
  *
  * @since 2.1
  *
- * @file MapEditorHtml.php
+ * @file MapEditorHTML.php
  * @ingroup Maps
  *
  * @licence GNU GPL v2+

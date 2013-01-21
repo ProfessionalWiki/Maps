@@ -22,7 +22,7 @@ $classes['MapsBaseFillableElement'] 	= __DIR__ . '/includes/Maps_BaseFillableEle
 $classes['MapsBaseStrokableElement'] 	= __DIR__ . '/includes/Maps_BaseStrokableElement.php';
 $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRenderer.php';
 
-$classes['MapEditorHtml']					= __DIR__ . '/includes/editor/MapEditorHtml.php';
+$classes['MapEditorHtml']					= __DIR__ . '/includes/editor/MapEditorHTML.php';
 
 $classes['Maps\BaseElement']			= __DIR__ . '/includes/elements/BaseElement.php';
 $classes['Maps\Circle'] 				= __DIR__ . '/includes/elements/Circle.php';
