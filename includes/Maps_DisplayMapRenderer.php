@@ -104,6 +104,10 @@ class MapsDisplayMapRenderer {
 	 * @param Parser $parser
 	 */
 	protected function handleMarkerData( array &$params, Parser $parser ) {
+		if ( is_object( $params['centre'] ) ) {
+			$params['centre'] = $params['centre']->getJSONObject();
+		}
+
 		$parserClone = clone $parser;
 
 		/**
