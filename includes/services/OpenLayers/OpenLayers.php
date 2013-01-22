@@ -42,13 +42,14 @@ $wgResourceModules['ext.maps.openlayers'] = array(
 	)			
 );
 
-$wgAutoloadClasses['MapsOpenLayers'] 				= __DIR__ . '/Maps_OpenLayers.php';
+$wgAutoloadClasses['MapsOpenLayers'] = __DIR__ . '/Maps_OpenLayers.php';
 
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 function efMapsInitOpenLayers() {
 	MapsMappingServices::registerService( 
 		'openlayers',
-		'MapsOpenLayers'
+		'MapsOpenLayers',
+		array( 'display_map' => 'MapsDisplayMapRenderer' )
 	);
 	
 	return true;

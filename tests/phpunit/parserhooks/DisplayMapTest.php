@@ -71,6 +71,10 @@ class DisplayMapTest extends ParserHookTest {
 		return $this->arrayWrap( $paramLists );
 	}
 
+	public function testForSomeReasonPhpSegfaultsIfThereIsOneMethodLess() {
+		$this->assertTrue( (bool)'This is fucking weird' );
+	}
+
 	/**
 	 * @see ParserHookTest::processingProvider
 	 * @since 3.0
@@ -85,12 +89,14 @@ class DisplayMapTest extends ParserHookTest {
 			'locations' => '4,2',
 			'width' => '420',
 			'height' => '420',
+			'service' => 'openlayers',
 		);
 
 		$expected = array(
 			'coordinates' => array( new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) ) ),
 			'width' => '420px',
 			'height' => '420px',
+			'mappingservice' => 'openlayers',
 		);
 
 		$argLists[] = array( $values, $expected );
