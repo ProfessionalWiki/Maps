@@ -206,7 +206,13 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @param $queryHandler
 	 */
 	protected function handleMarkerData( array &$params, $queryHandler ) {
-		$queryShapes = $queryHandler->getShapes();
+		if ( is_object( $params['centre'] ) ) {
+			$params['centre'] = $params['centre']->getJSONObject();
+		}
+
+		/**
+		 * @var Parser $wgParser
+		 */
 		global $wgParser;
 
 		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
@@ -227,6 +233,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 			$params['locations'][] = $jsonObj;
 		}
+
+		unset( $params['staticlocations'] );
+
+		$queryShapes = $queryHandler->getShapes();
 		
 		foreach ( $queryShapes['locations'] as $location ) {
 			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
@@ -235,7 +245,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 			$params['locations'][] = $jsonObj;
 		}
-		unset( $params['staticlocations'] );
+
 		foreach ( $queryShapes['lines'] as $line ) {
 			$jsonObj = $line->getJSONObject( $params['title'], $params['label'] );
 			$params['lines'][] = $jsonObj;				
