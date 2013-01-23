@@ -120,10 +120,9 @@ class MapsDisplayMap extends ParserHook {
 		);
 
 		$params['wmsoverlay'] = array(
-			'type' => 'string',
+			'type' => 'wmsoverlay',
 			'default' => false,
-			// TODO 'manipulations' => new MapsParamWmsOverlay( ' ' ), // TODO
-			'delimiter' => ';',
+			'delimiter' => ' ',
 		);
 
 		$params['maxzoom'] = array(
