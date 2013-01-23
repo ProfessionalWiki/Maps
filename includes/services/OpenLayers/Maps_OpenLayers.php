@@ -55,9 +55,7 @@ class MapsOpenLayers extends MapsMappingService {
 			'manipulatedefault' => true,
 			'islist' => true,
 			'tolower' => true,
-
-			// new MapsParamOLLayers() FIXME
-			// FIXME new CriterionOLLayer()
+			// TODO: validation
 		);
 
 		$params['resizable'] = array(

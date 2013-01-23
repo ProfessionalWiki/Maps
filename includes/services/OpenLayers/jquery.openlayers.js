@@ -258,7 +258,7 @@
 		var hasImageLayer = false;
 		for (i = 0, n = options.layers.length; i < n; i++) {
 			// Idieally this would check if the objecct is of type OpenLayers.layer.image
-			options.layers[i] = eval(options.layers[i])
+			options.layers[i] = eval(options.layers[i]);
 			if (options.layers[i].options && options.layers[i].options.isImage === true) {
 				hasImageLayer = true;
 				break;
