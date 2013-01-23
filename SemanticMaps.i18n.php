@@ -377,6 +377,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'semanticmaps-desc' => 'Παρέχει τη δυνατότητα προβολής και επεξεργασίας δεδομένων γεωγραφικών συντεταγμένων που έχουν αποθηκευτεί με την επέκταση Σημασιολογικό MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps περισσότερες πληροφορίες...])',
 	'semanticmaps-unrecognizeddistance' => 'Η τιμή $1 δεν είναι έγκυρη απόσταση.',
 	'semanticmaps-kml-link' => 'Προβολή του αρχείου KML',
 	'semanticmaps-default-kml-pagelink' => 'Προβολή σελίδας $1',
@@ -388,7 +389,7 @@ $messages['el'] = array(
 	'semanticmaps-updatemap' => 'Ενημέρωση χάρτη',
 	'semanticmaps-forminput-add' => 'Προσθήκη',
 	'semanticmaps-forminput-locations' => 'Τοποθεσίες',
-	'semanticmaps-par-forceshow' => 'Παρουσίαση του χάρτη ακόμα και όταν υπάρχουν τοποθεσίες προς εμφάνιση;',
+	'semanticmaps-par-forceshow' => 'Παρουσίαση του χάρτη ακόμα και όταν δεν υπάρχουν τοποθεσίες προς εμφάνιση;',
 	'semanticmaps-par-template' => 'Πρότυπο για να το χρησιμοποιήσετε για τη μορφοποίηση των περιεχομένων του παραθύρου πληροφοριών.',
 	'semanticmaps-par-geocodecontrol' => 'Εμφάνιση στοιχείου ελέγχου γεωκωδικοποίησης.',
 	'semanticmaps-kml-title' => 'Προεπιλεγμένος τίτλος για αποτελέσματα',
@@ -1566,6 +1567,7 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  * @author Linforest
  * @author Xiaomingyan
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'semanticmaps-desc' => '提供对采用Semantic MediaWiki扩展所存储坐标数据的查看和编辑能力（[https://mapping.referata.com/wiki/Examples 演示]）。', # Fuzzy
@@ -1585,6 +1587,7 @@ $messages['zh-hans'] = array(
 	'semanticmaps-par-staticlocations' => '要与所查询数据一起添加到地图的一系列位置。就像display_points那样，可以采用波浪号"~"作为分隔符，为每个位置添加标题、描述及图标。',
 	'semanticmaps-par-forceshow' => '甚至在没有要显示的位置的情况下也显示地图吗？',
 	'semanticmaps-par-showtitle' => '是否在标记信息窗口之中显示标题。当采用模板对信息窗口内容进行格式编排的时候，关闭此项往往会有所帮助。',
+	'semanticmaps-par-hidenamespace' => '在标记信息窗口中显示命名空间标题',
 	'semanticmaps-par-centre' => '地图的中心。当未加提供的时候，地图会自动挑选最佳的中心，从而在地图上显示所有的标记。',
 	'semanticmaps-par-template' => '用来对信息窗口内容进行格式编排的模板。',
 	'semanticmaps-par-geocodecontrol' => '显示地理编码控件。',
@@ -1592,6 +1595,7 @@ $messages['zh-hans'] = array(
 	'semanticmaps-kml-title' => '结果的默认标题',
 	'semanticmaps-kml-linkabsolute' => '链接究竟应当是绝对地址还是相对地址',
 	'semanticmaps-kml-pagelinktext' => '用于那些指向该页面的链接的文本；其中，页面标题将取代$1',
+	'semanticmaps-shapes-improperformat' => '$1 的格式不正确。请参阅文档格式',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
