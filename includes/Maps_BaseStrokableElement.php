@@ -41,14 +41,6 @@ class MapsBaseStrokableElement extends \Maps\BaseElement implements iStrokableMa
 		$this->strokeWeight = trim($strokeWeight);
 	}
 
-	public function hasText() {
-		return !is_null( $this->text ) && $this->text !== '';
-	}
-
-	public function hasTitle() {
-		return !is_null( $this->title ) && $this->title !== '';
-	}
-
 	public function hasStrokeColor() {
 		return !is_null( $this->strokeColor ) && $this->strokeColor !== '';
 	}

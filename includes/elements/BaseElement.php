@@ -100,24 +100,6 @@ abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMap
 	}
 
 	/**
-	 * @since 3.0
-	 *
-	 * @return boolean
-	 */
-	public function hasTitle() {
-		return $this->options->hasOption( 'title' );
-	}
-
-	/**
-	 * @since 3.0
-	 *
-	 * @return boolean
-	 */
-	public function hasText() {
-		return $this->options->hasOption( 'text' );
-	}
-
-	/**
 	 * @deprecated
 	 * @param string $defText
 	 * @param string $defTitle
@@ -126,8 +108,8 @@ abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMap
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$array = array();
 
-		$array['text'] = $this->hasText() ? $this->getText() : $defText;
-		$array['title'] = $this->hasTitle() ? $this->getTitle() : $defTitle;
+		$array['text'] = $this->options->hasOption( 'text' ) ? $this->getText() : $defText;
+		$array['title'] = $this->options->hasOption( 'title' ) ? $this->getTitle() : $defTitle;
 		$array['link'] = $this->options->hasOption( 'link' ) ? $this->getLink() : '';
 
 		return $array;
