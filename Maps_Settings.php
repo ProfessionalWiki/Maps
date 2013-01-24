@@ -27,6 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsAvailableServices = array(
 		'googlemaps3',
 		'openlayers',
+                'leaflet',
 		//'osm'
 	);
 
@@ -295,3 +296,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
 		);
+
+	// Leaflet
+
+		// Integer. The default zoom of a map. This value will only be used when the
+		// user does not provide one.
+		$egMapsLeafletZoom = 14;

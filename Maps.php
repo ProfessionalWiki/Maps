@@ -173,6 +173,10 @@ include_once $egMapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
 // TODO: improve loading mechanism
 include_once $egMapsDir . 'includes/services/OpenLayers/OpenLayers.php';
 
+// Leaflet API
+// TODO: improve loading mechanism
+include_once $egMapsDir . 'includes/services/Leaflet/Leaflet.php';
+
 
 $egMapsSettings = array();
 
