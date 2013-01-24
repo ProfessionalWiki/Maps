@@ -18,6 +18,10 @@ bugs have been found and fixed. No big new features have been added.
 * ValueParsers is now required. Version 0.1 or later.
 * ValueFormatters is now required. Version 0.1 or later.
 
+; New features
+
+* Added leaflet service
+
 ; Breaking internal changes
 
 * Moved classes into Maps namespace

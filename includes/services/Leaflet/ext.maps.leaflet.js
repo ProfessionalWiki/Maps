@@ -7,12 +7,12 @@
  */
 (function( $, mw ) {
 
-    $( document ).ready( function() {
+	$( document ).ready( function() {
 
-        $( '.maps-leaflet' ).each( function() {
-            var $this = $( this );
-            $this.leafletmaps( $.parseJSON( $this.find( 'div').text() ) );
-        } );
-    } );
+		$( '.maps-leaflet' ).each( function() {
+			var $this = $( this );
+			$this.leafletmaps( $.parseJSON( $this.find( 'div').text() ) );
+		} );
+	} );
 
 })( window.jQuery, mediaWiki );
