@@ -4851,12 +4851,13 @@ $1',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://mapping.referata.com/wiki/Maps_examples demo])",
+	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://www.semantic-mediawiki.org/wiki/Maps cchiù 'mbormaziune...])",
 	'maps_map' => 'Mappe',
 	'maps-loading-map' => "Stoche a careche 'a mappe...",
 	'maps-markers' => 'Marcature',
 	'maps-copycoords-prompt' => 'CTRL+C, INVIE',
 	'maps-others' => 'otre',
+	'maps-layer-property' => 'Probbietà',
 	'maps-layer-value' => 'Valore',
 	'maps-layer-errors' => 'Errore',
 	'maps-abb-north' => 'N',
@@ -4873,6 +4874,10 @@ $messages['roa-tara'] = array(
 	'mapeditor-link-title-switcher-link-text' => 'Collegamende',
 	'mapeditor-form-field-title' => 'Titole',
 	'mapeditor-form-field-text' => 'Teste',
+	'mapeditor-form-field-link' => 'Collegamende',
+	'mapeditor-form-field-icon' => 'Icone',
+	'mapeditor-form-field-group' => 'Gruppe',
+	'mapeditor-form-field-image' => 'Immaggine',
 );
 
 /** Russian (русский)
