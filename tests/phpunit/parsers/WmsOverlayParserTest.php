@@ -41,8 +41,7 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 *
 	 * @return array
 	 */
-	public function parseProvider()
-	{
+	public function parseProvider() {
 		$argLists = array();
 
 		$valid = array(
@@ -71,8 +70,7 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 *
 	 * @return string
 	 */
-	protected function getParserClass()
-	{
+	protected function getParserClass() {
 		return 'Maps\WmsOverlayParser';
 	}
 

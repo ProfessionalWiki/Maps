@@ -88,16 +88,14 @@ class WmsOverlay extends \Maps\BaseElement {
 	 *
 	 * @param String $wmsStyleName
 	 */
-	public function setWmsStyleName( $wmsStyleName )
-	{
+	public function setWmsStyleName( $wmsStyleName ) {
 		$this->wmsStyleName = $wmsStyleName;
 	}
 
 	/**
 	 * @return String
 	 */
-	public function getWmsStyleName()
-	{
+	public function getWmsStyleName() {
 		return $this->wmsStyleName;
 	}
 	/**
