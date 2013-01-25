@@ -4883,6 +4883,7 @@ $messages['roa-tara'] = array(
 /** Russian (русский)
  * @author Adata80
  * @author Base
+ * @author DCamer
  * @author Haffman
  * @author KPu3uC B Poccuu
  * @author Kaganer
@@ -4900,6 +4901,7 @@ $messages['ru'] = array(
 	'maps-loading-map' => 'Идёт загрузка карты…',
 	'maps-load-failed' => 'Невозможно загрузить карту!',
 	'maps-markers' => 'Отметки',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'другие',
 	'maps-ns-layer' => 'Слой',
 	'maps-ns-layer-talk' => 'Обсуждение слоя',
@@ -4952,6 +4954,12 @@ $messages['ru'] = array(
 	'maps-geodistance-par-decimals' => 'Наибольшее количество цифр в дробной части результата.',
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
+	'maps-displaymap-par-icon' => 'Позволяет установить значок, используемый для всех маркеров.',
+	'maps-displaymap-par-circles' => 'Кружки для отображения',
+	'maps-displaymap-par-lines' => 'Линии для отображения',
+	'maps-displaymap-par-maxzoom' => 'Максимальный уровень масштабирования',
+	'maps-displaymap-par-minzoom' => 'Минимальный уровень масштабирования',
+	'maps-displaymap-par-static' => 'Если карта должна быть статичной',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
 	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
@@ -4981,7 +4989,14 @@ $1',
 	'maps-geocoder-not-available' => 'Функция геокодирования карт недоступна, ваше местоположение не может быть геокодировано.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
 	'maps_centred_on' => 'Центр карты — $1, $2.',
+	'maps-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-googlemaps3-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v3.',
+	'maps-googlemaps3-par-layers' => 'Специальные слои для загрузки на карту.',
+	'maps-googlemaps3-par-kml' => 'KML файлы для загрузки на карту.',
+	'maps-googlemaps3-par-gkml' => 'KML файлы, хранящиеся в Google для загрузки на карту.',
+	'maps-googlemaps3-par-poi' => 'Показать достопримечательности.',
+	'maps-osm-par-thumbs' => 'Показать превью',
+	'maps-osm-par-photos' => 'Показать фото',
 	'mapeditor' => 'Редактор карт',
 	'specialpages-group-maps' => 'Карты',
 	'mapeditor-parser-error' => 'Произошла ошибка обработки метаданных. Введённые данные проигнорированы.',
