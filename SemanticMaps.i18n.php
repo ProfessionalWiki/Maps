@@ -148,9 +148,20 @@ $messages['ast'] = array(
 );
 
 /** Azerbaijani (azərbaycanca)
+ * @author AZISS
  * @author Cekli829
  */
 $messages['az'] = array(
+	'semanticmaps-unrecognizeddistance' => '$1 rəqəmi mümkün olmayan məsafədir.',
+	'semanticmaps-kml-link' => 'KML faylına bax',
+	'semanticmaps-default-kml-pagelink' => '$1 səhifəyə bax',
+	'semanticmaps-latitude' => 'En dairəsi: $1',
+	'semanticmaps-longitude' => 'Uzunluq dairəsi: $1',
+	'semanticmaps-altitude' => 'Hündürlük: $1',
+	'semanticmaps_lookupcoordinates' => 'Koordinatları tap',
+	'semanticmaps_enteraddresshere' => 'Adresi buraya yaz',
+	'semanticmaps-updatemap' => 'Xəritəni yenilə',
+	'semanticmaps-forminput-remove' => 'Sil',
 	'semanticmaps-forminput-add' => 'Əlavə et',
 );
 
