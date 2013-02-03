@@ -1,5 +1,7 @@
 <?php
 
+use ParamProcessor\ParamDefinition;
+
 /**
  * Class for the 'mapsdoc' parser hooks,
  * which displays documentation for a specified mapping service.
@@ -120,6 +122,8 @@ class MapsMapsDoc extends ParserHook {
 	protected function getParameterTable( array $parameters ) {
 		$tableRows = array();
 
+		$parameters = ParamDefinition::getCleanDefinitions( $parameters );
+
 		foreach ( $parameters as $parameter ) {
 			$tableRows[] = $this->getDescriptionRow( $parameter );
 		}
@@ -151,19 +155,12 @@ class MapsMapsDoc extends ParserHook {
 	 *
 	 * @since 1.0
 	 *
-	 * @param Parameter $parameter
+	 * @param ParamDefinition $parameter
 	 *
 	 * @return string
 	 */
-	protected function getDescriptionRow( Parameter $parameter ) { // TODO
-		$description = $parameter->getMessage();
-		if ( $description === false ) {
-			$description = $parameter->getDescription();
-			if ( $description === false ) $description = '-';
-		}
-		else {
-			$description = $this->msg( $description );
-		}
+	protected function getDescriptionRow( ParamDefinition $parameter ) {
+		$description = $this->msg( $parameter->getMessage() );
 
 		$type = $parameter->getTypeMessage();
 
