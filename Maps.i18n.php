@@ -291,7 +291,8 @@ KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'mapeditor' => 'title of the special page Special:MapEditor',
 	'specialpages-group-maps' => 'The special page group "maps" text',
 	'mapeditor-parser-error' => 'Error message when parsing error occurs',
-	'mapeditor-none-text' => 'Text showing when no value is set (None)',
+	'mapeditor-none-text' => 'Text showing when no value is set (None).
+{{Identical|None}}',
 	'mapeditor-done-button' => 'Button text describing that editing details is completed',
 	'mapeditor-remove-button' => 'Button text that describes that the given map object should be removed',
 	'mapeditor-import-button2' => 'Button text that finishes import process.
@@ -5100,8 +5101,8 @@ $1",
 	'mapeditor-mapparam-defoption' => "-Ch'a selession-a un paràmetr-",
 	'mapeditor-imageoverlay-button' => 'Gionté la dzorposission ëd plancia',
 	'mapeditor-form-field-image' => 'Figura',
-	'mapeditor-imageoverlay-title' => 'Detaj dla sovraposission ëd figure',
-	'mapeditor-form-field-visitedicon' => 'Icon-a visità',
+	'mapeditor-imageoverlay-title' => 'Detaj dla dzorposission ëd plancia',
+	'mapeditor-form-field-visitedicon' => 'Plancia visità',
 );
 
 /** Pashto (پښتو)
