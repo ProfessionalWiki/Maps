@@ -877,11 +877,14 @@ $messages['ka'] = array(
 	'semanticmaps-latitude' => 'განედი: $1',
 	'semanticmaps-longitude' => 'გრძედი: $1',
 	'semanticmaps-altitude' => 'სიმაღლე: $1',
+	'semanticmaps-loading-forminput' => 'რუკის ჩატვირთვა...',
+	'semanticmaps_lookupcoordinates' => 'კოორდინატების პოვნა',
 	'semanticmaps_enteraddresshere' => 'შეიყვანეთ მისამართი',
 	'semanticmaps-updatemap' => 'რუკის განახლება',
 	'semanticmaps-forminput-remove' => 'წაშლა',
 	'semanticmaps-forminput-add' => 'დამატება',
 	'semanticmaps-forminput-locations' => 'მდებარეობები',
+	'semanticmaps-kml-title' => 'საწყისი სათაური შედეგებისათვის',
 );
 
 /** Khmer (ភាសាខ្មែរ)
