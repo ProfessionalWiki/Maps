@@ -3679,6 +3679,7 @@ $messages['ko'] = array(
 	'validation-error-invalid-layer' => '$1 변수는 올바른 레이어여야 합니다.',
 	'validation-error-invalid-layers' => '$1 변수는 하나 이상의 올바른 레이어여야 합니다.',
 	'maps-layer-of-type' => '$1 종류의 레이어',
+	'maps-layer-type-supported-by' => '이 레이어 유형은 {{PLURAL:$2|$1 매핑 서비스에서만 사용할 수 있습니다.|다음 매핑 서비스에서 사용할 수 있습니다: $1}}',
 	'maps-finddestination-description' => '시작 지점, 초기 베어링과 거리가 주어진 대상을 찾으세요. (즉 지원하는 형식으로 찾을 수 있습니다)',
 	'maps-geodistance-description' => '지원하는 형식으로 두 지점 사이의 지리적 거리를 계산합니다.',
 	'maps-coordinates-par-location' => '형식을 지정할 좌표입니다.',
