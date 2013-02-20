@@ -6557,6 +6557,7 @@ $messages['zh-hans'] = array(
 	'maps-loading-map' => '载入地图中……',
 	'maps-load-failed' => '无法加载地图！',
 	'maps-markers' => '标记',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => '其他',
 	'maps-ns-layer' => '图层',
 	'maps-ns-layer-talk' => '图层讨论',
