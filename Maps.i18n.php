@@ -252,6 +252,7 @@ $1',
  * @author Siebrand
  * @author Umherirrender
  * @author Тест
+ * @author 아라
  */
 $messages['qqq'] = array(
 	'maps-desc' => '{{desc|name=Maps|url=http://www.mediawiki.org/wiki/Extension:Maps}}',
@@ -264,7 +265,7 @@ $messages['qqq'] = array(
 	'maps-layer-errors' => '{{Identical|Error}}',
 	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}} Validation text indicating that there is something wrong with the "lines" parameter.',
 	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}',
-	'validation-error-invalid-searchmarkers-param' => '{{dic-important|Do not translate "all" and "title".}}',
+	'validation-error-invalid-searchmarkers-param' => '{{doc-important|Do not translate "all" and "title".}}',
 	'maps-latitude' => '{{Identical|Latitude}}',
 	'maps-longitude' => '{{Identical|Longitude}}',
 	'maps_geocoding_failed_for' => '* $1 is a list
@@ -3660,7 +3661,7 @@ $messages['km'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표 데이터로 변환하고 다른 지도 관련 작업을 하도록 허용합니다. ([http://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
+	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표 데이터로 변환하고 다른 지도 관련 작업을 할 수 있습니다. ([http://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
 	'right-geocode' => '위치 정보',
 	'maps_map' => '지도',
 	'maps-loading-map' => '지도를 불러오는 중...',
@@ -3692,10 +3693,20 @@ $messages['ko'] = array(
 	'maps-finddestination-par-format' => '목적지를 출력할 형식입니다.',
 	'maps-geodistance-par-location1' => '집합에서 사이의 거리를 계산하는 첫번째 지점입니다.',
 	'maps-geodistance-par-location2' => '집합에서 사이의 거리를 계산하는 두번째 지점입니다.',
+	'maps-displaymap-par-zoom' => '지도의 확대 수준을 설정할 수 있습니다.
+제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.',
+	'maps-displaymap-par-centre' => 'display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.
+주소와 좌표를 모두 사용할 수 있습니다.
+이 속성이 제공되어 있지 않은 경우 지도는 제공한 표시에 대한 자체 중심에 있거나 제공한 표시 사이에 있습니다.',
+	'maps-displaymap-par-title' => '특정 제목이 없는 모든 표시의 팝업에 보여줄 텍스트를 설정할 수 있습니다.
+레이블과 함께 사용하면 제목은 굵고 밑줄이 그어집니다.',
+	'maps-displaymap-par-label' => '특정 레이블이 없는 마든 표시의 팝업에 보여줄 텍스트를 설정할 수 있습니다.',
+	'maps-displaymap-par-icon' => '모든 표시에 사용하는 아이콘을 설정할 수 있습니다.',
 	'maps-displaymap-par-circles' => '보여줄 동그라미',
+	'maps-displaymap-par-copycoords' => '무언가를 클릭할 때 대화 상자에 위키의 좌표를 보여줄 때',
 	'maps-displaymap-par-lines' => '보여줄 선',
-	'maps-displaymap-par-maxzoom' => '최대 줌 수준',
-	'maps-displaymap-par-minzoom' => '최소 줌 수준',
+	'maps-displaymap-par-maxzoom' => '최대 확대 수준',
+	'maps-displaymap-par-minzoom' => '최소 확대 수준',
 	'maps-displaymap-par-polygons' => '보여줄 다각형',
 	'maps-displaymap-par-rectangles' => '보려줄 네모',
 	'maps-displaymap-par-static' => '지도는 정적이어야 할 때',
@@ -3710,12 +3721,16 @@ $messages['ko'] = array(
 	'validation-error-invalid-images' => '$1 변수는 하나 이상의 올바른 그림이어야 합니다.',
 	'validation-error-invalid-goverlay' => '$1 변수는 올바른 오버레이여야 합니다.',
 	'validation-error-invalid-goverlays' => '$1 변수는 하나 이상의 올바른 오버레이여야 합니다.',
+	'validation-error-invalid-line-param' => '"lines" 변수를 잘못 지정했습니다.',
+	'validation-error-invalid-polyline-param' => '"polylines" 변수를 잘못 지정했습니다.',
+	'validation-error-invalid-searchmarkers-param' => '찾기표시 값이 잘못되었으며 "all"이나 "title" 중 하나여야 합니다',
 	'maps-abb-north' => '북',
 	'maps-abb-east' => '동',
 	'maps-abb-south' => '남',
 	'maps-abb-west' => '서',
 	'maps-latitude' => '위도:',
 	'maps-longitude' => '경도:',
+	'maps-invalid-coordinates' => '$1 값은 죄표의 올바른 값으로 인식되지 않았습니다.',
 	'maps_coordinates_missing' => '지도에 제공한 좌표가 없습니다.',
 	'maps_map_cannot_be_displayed' => '지도를 보여줄 수 없습니다.',
 	'maps_googlemaps3' => 'Google 지도 v3',
@@ -3725,6 +3740,9 @@ $messages['ko'] = array(
 	'maps-googlemaps3-incompatbrowser' => '브라우저는 Google 지도 v3와 호환되지 않습니다.',
 	'maps-googlemaps3-par-zoomstyle' => '줌 컨트롤의 스타일입니다.',
 	'maps-googlemaps3-par-typestyle' => '종류 컨트롤의 스타일입니다.',
+	'maps-googlemaps3-par-kml' => '지도에 불러올 KML 파일입니다.',
+	'maps-googlemaps3-par-gkml' => '지도에 불러올 Google이 호스트하는 KML 파일입니다.',
+	'maps-googlemaps3-par-fusiontables' => '지도에 불러와야 할 Google 퓨전 테이블의 ID입니다.',
 	'maps-googlemaps3-par-tilt' => 'Google 지도를 사용할 때의 기울기입니다.',
 	'maps-googlemaps3-par-poi' => '관심 지점을 보여줍니다.',
 	'maps-openlayers-par-controls' => '지도에 놓을 컨트롤입니다.',
