@@ -897,6 +897,26 @@ $messages['km'] = array(
 	'semanticmaps_lookupcoordinates' => 'ក្រឡេក​មើល​កូអរដោនេ',
 );
 
+/** Korean (한국어)
+ * @author 아라
+ */
+$messages['ko'] = array(
+	'semanticmaps-unrecognizeddistance' => '$1 값은 올바른 거리가 아닙니다.',
+	'semanticmaps-kml-link' => 'KML 파일 보기',
+	'semanticmaps-default-kml-pagelink' => '$1 문서 보기',
+	'semanticmaps-latitude' => '위도: $1',
+	'semanticmaps-longitude' => '경도: $1',
+	'semanticmaps-altitude' => '고도: $1',
+	'semanticmaps-loading-forminput' => '양식에 입력한 지도를 불러오는 중...',
+	'semanticmaps_lookupcoordinates' => '좌표 찾기',
+	'semanticmaps_enteraddresshere' => '여기에 주소를 입력',
+	'semanticmaps-updatemap' => '지도 업데이트',
+	'semanticmaps-forminput-remove' => '제거',
+	'semanticmaps-forminput-add' => '추가',
+	'semanticmaps-forminput-locations' => '위치',
+	'semanticmaps-par-forceshow' => '보여줄 위치가 없을 때 지도를 보이겠습니까?',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
