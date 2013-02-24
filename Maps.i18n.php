@@ -263,6 +263,9 @@ $messages['qqq'] = array(
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
+	'maps-error-invalid-layertype' => 'Parameters:
+* $1 - a layer type
+* $2 - list of available layer types',
 	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}} Validation text indicating that there is something wrong with the "lines" parameter.',
 	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}',
 	'validation-error-invalid-searchmarkers-param' => '{{doc-important|Do not translate "all" and "title".}}',
@@ -3466,7 +3469,7 @@ $messages['ja'] = array(
 	'maps-layer-value' => '値',
 	'maps-layer-errors' => 'エラー',
 	'maps-error-invalid-layerdef' => 'このレイヤー定義は正しくありません。',
-	'maps-error-invalid-layertype' => '種類「$1」のレイヤーが存在しません。{{PLURAL:$3|この|これら}}の種類のサポート：$2',
+	'maps-error-invalid-layertype' => '種類「$1」のレイヤーはありません。{{PLURAL:$3|以下の}}種類のみに対応しています: $2',
 	'maps-error-no-layertype' => 'レイヤーの種類を指定する必要があります。{{PLURAL:$2|この種類のみ|これらの種類}}に対応しています: $1',
 	'validation-error-invalid-layer' => '引数 $1 には有効なレイヤーを指定してください。',
 	'validation-error-invalid-layers' => '引数 $1 には有効なレイヤーを 1 つ以上指定してください。',
