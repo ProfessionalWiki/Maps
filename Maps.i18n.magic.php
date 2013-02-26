@@ -302,6 +302,11 @@ $magicWords['uk'] = array(
 	'distance' => array( 0, 'відстань' ),
 );
 
+/** Uzbek (oʻzbekcha) */
+$magicWords['uz'] = array(
+	'coordinates' => array( 0, 'koordinatalar' ),
+);
+
 /** Vietnamese (Tiếng Việt) */
 $magicWords['vi'] = array(
 	'coordinates' => array( 0, 'tọađộ' ),
