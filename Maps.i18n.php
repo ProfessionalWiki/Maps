@@ -6266,10 +6266,11 @@ $messages['tzm'] = array(
 /** Ukrainian (українська)
  * @author Arturyatsko
  * @author Base
+ * @author Ата
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. (([http://www.semantic-mediawiki.org/wiki/Maps more info... детальніше])).',
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://www.semantic-mediawiki.org/wiki/Maps детальніше...])',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
@@ -6295,12 +6296,29 @@ $messages['uk'] = array(
 	'maps-displaypoint-description' => 'Показ географічних карт із одією або декількома вікі-позначками на них.',
 	'maps-distance-description' => 'Перетворення відстані, вираженої в одних одиницях, у їх еквівалент у інших одиницях.',
 	'maps-finddestination-description' => 'Знаходить місце призначення від заданої початкової точки (може бути у будь якому із підтримуваних форматів), початкового нарямку і відстані.',
+	'maps-geocode-description' => 'Дозволяє геокодування адрес, іншими словами перетворює зрозумілі для людини розташування у набори координат. Підтримується декілька сервісів геокодування, які не варто плутати з сервісами картографування.',
+	'maps-geodistance-description' => 'Розрахувати географічну відстань між двома точками, з будь-якого і у будь-який підтримуваний формат.',
+	'maps-mapsdoc-description' => 'Відобразити таблицю параметрів вказаного сервісу картографування з їх стандартними значеннями і описом.',
+	'maps-mapsdoc-par-service' => 'Сервіс картографування, для якого відобразиться документація параметрів.',
 	'maps-mapsdoc-par-language' => 'Мова, якою показувати документацію. Якщо перекладу на таку немає, буде використано англійську.',
 	'maps-coordinates-par-location' => 'Координати, які Ви бажаєте відформатувати.',
 	'maps-coordinates-par-format' => 'Цільовий формат координат.',
+	'maps-coordinates-par-directional' => 'Вказує на те, чи координати повинні бути виведені безпосередньо, чи ні.',
+	'maps-distance-par-distance' => 'Відстань для перетворення на еквівалентну у вказаних одиницях.',
+	'maps-distance-par-decimals' => 'Максимальна кількість цифр дробової частини у значенні результату.',
+	'maps-distance-par-unit' => 'Одиниці, в яких буде наведено відстань.',
 	'maps-finddestination-par-location' => 'Початкове розташування.',
 	'maps-finddestination-par-bearing' => 'Початковий напрямок.',
 	'maps-finddestination-par-distance' => 'Протяжність подорожі.',
+	'maps-finddestination-par-format' => 'Формат, у якому буде виведено місце призначення.',
+	'maps-finddestination-par-directional' => 'Вказує, чи має формат місця призначення має бути спрямованим, чи ні.',
+	'maps-finddestination-par-allowcoordinates' => 'Вказує, чи дозволені координати. Зі значенням «ні» прийматимуться лише адреси.',
+	'maps-finddestination-par-geoservice' => 'Сервіс геокодування для перетворення значення, якщо воно є адресою.',
+	'maps-finddestination-par-mappingservice' => 'Параметр для позначення сервісу картографування для використання з цією функцією.
+Це дозволить картам замінити стандартне значення сервісного параметра на оптимальний для сервісу картографування.
+(Приклад: для карт Google Maps використовувати геокодер Google.)',
+	'maps-geocode-par-location' => 'Адреса, яку Ви хочете геокодувати.',
+	'maps-geocode-par-mappingservice' => 'Сервіс геокодування, який Ви хочете використовувати. Див. список доступних сервісів геокодування.',
 	'maps-displaymap-par-maxzoom' => 'Максимальний рівень наближення',
 	'maps-displaymap-par-minzoom' => 'Мінімальний рівень наближення',
 	'maps-displaymap-par-polygons' => 'Багатокутники для показу',
@@ -6317,10 +6335,13 @@ $messages['uk'] = array(
 	'validation-error-invalid-images' => 'Параметр $1 повинен бути одним або більше коректними зображеннями.',
 	'validation-error-invalid-goverlay' => 'Параметр $1 повинен бути коректним накладенням.',
 	'validation-error-invalid-goverlays' => 'Параметр $1 повинен бути одним або більше коректних накладень.',
-	'maps-abb-north' => 'П',
-	'maps-abb-east' => 'С',
-	'maps-abb-south' => 'П',
-	'maps-abb-west' => 'З',
+	'validation-error-invalid-line-param' => 'Вказано недопустимий параметр "lines".',
+	'validation-error-invalid-polyline-param' => 'Вказано недопустимий параметр "polylines".',
+	'validation-error-invalid-searchmarkers-param' => 'Недопустиме значення маркерів пошуку, має бути "all" або "title"',
+	'maps-abb-north' => 'Пн',
+	'maps-abb-east' => 'Сх',
+	'maps-abb-south' => 'Пд',
+	'maps-abb-west' => 'Зх',
 	'maps-latitude' => 'Широта:',
 	'maps-longitude' => 'Довгота:',
 	'maps-invalid-coordinates' => 'Значення $1 не є дійсним набором координат.',
