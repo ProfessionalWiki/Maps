@@ -28,7 +28,9 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	
 	/**
 	 * @see SMWDescription::getSQLCondition
-	 * 
+	 *
+	 * FIXME: store specific code should be in the store component
+	 *
 	 * @since 0.6
 	 * 
 	 * @param string $tableName
@@ -56,8 +58,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 
 			$conditions = array();
 
-			$conditions[] = "{$tableName}.$fieldNames[0] $comparator $lat";
-			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lon";
+			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lat";
+			$conditions[] = "{$tableName}.$fieldNames[2] $comparator $lon";
 
 			return implode( ' && ', $conditions );
 		}
