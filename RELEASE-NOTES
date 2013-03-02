@@ -4,6 +4,22 @@ Extension page on mediawiki.org: http://www.mediawiki.org/wiki/Extension:Semanti
 Documentation and examples: http://mapping.referata.com/wiki/Semantic_Maps
 
 
+=== Semantic Maps 3.0 ===
+(dev)
+
+; Compatibility changes
+
+* Changed minimum Maps version from 2.0.x to 3.0.
+* Changed minimum Semantic MediaWiki version from 1.8 to 1.9.
+
+; New features
+
+; Bug fixes
+
+* Fixed compatibility with SMWs SQLStore3 (bug 44933, fixed by kvolden)
+
+; Internal improvements
+
 === Semantic Maps 2.0.1 ===
 (2012-12-13)
 
