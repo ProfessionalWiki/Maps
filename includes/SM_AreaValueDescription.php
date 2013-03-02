@@ -109,7 +109,9 @@ class SMAreaValueDescription extends SMWValueDescription {
 	
 	/**
 	 * @see SMWDescription::getSQLCondition
-	 * 
+	 *
+	 * FIXME: store specific code should be in the store component
+	 *
 	 * @since 0.6
 	 * 
 	 * @param string $tableName
@@ -140,10 +142,10 @@ class SMAreaValueDescription extends SMWValueDescription {
         $biggerThen = $isEq ? '>' : '<=';
         $joinCond = $isEq ? 'AND' : 'OR';
 
-        $conditions[] = "{$tableName}.$fieldNames[0] $smallerThen $north";
-        $conditions[] = "{$tableName}.$fieldNames[0] $biggerThen $south";
-        $conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $east";
-        $conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $west";
+        $conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $north";
+        $conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $south";
+        $conditions[] = "{$tableName}.$fieldNames[2] $smallerThen $east";
+        $conditions[] = "{$tableName}.$fieldNames[2] $biggerThen $west";
 
         $sql = implode( " $joinCond ", $conditions );
 
