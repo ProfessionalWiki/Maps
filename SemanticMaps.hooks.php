@@ -88,7 +88,7 @@ final class SemanticMapsHooks {
 	 * @return boolean
 	 */
 	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests, array $params ) {
-		// Only set the format when not set yet. This allows other extensions to override the Semantic Maps behaviour. 
+		// Only set the format when not set yet. This allows other extensions to override the Semantic Maps behavior.
 		if ( $format === false ) {
 			// Only apply when there is more then one print request.
 			// This way requests comming from #show are ignored. 
