@@ -100,14 +100,14 @@ This can affect the default geocoding service value.',
 
 	// display_map parser hook
 	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
-	'maps-displaymap-par-coordinates' => 'The location the map will initially be centred on.',
+	'maps-displaymap-par-coordinates' => 'The location the map will initially be centered on.',
 	'maps-displaymap-par-visitedicon' => 'The local of a file to use as visited icon',
 	'maps-displaymap-par-zoom' => 'Allows setting the zoom level of the map.
 When not provided and multiple markers are present on the map, the best fitting zoom will be taken, not the configurable default.',
 	'maps-displaymap-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
-	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's centre for display_point(s).
+	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's center for display_point(s).
 Accepts both addresses and coordinates.
-When this property is not provided, the map will centre itself on the provided marker, or between the provided markers.",
+When this property is not provided, the map will center itself on the provided marker, or between the provided markers.",
 	'maps-displaymap-par-title' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific title.
 When used together with label, the title will be bold and underlined.',
 	'maps-displaymap-par-label' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific label.',
@@ -176,7 +176,7 @@ $1',
 	'maps-par-zoom' => 'The zoom level for the map. For maps with markers this will default to the most zoomed in level that still shows all markers.',
 	'maps-par-width' => 'Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
 	'maps-par-height' => 'Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
-    'maps-par-centre' => 'The location on which the map should be centred',
+    'maps-par-centre' => 'The location on which the map should be centered',
 
 	// Google Maps v3
 	'maps-googlemaps3-incompatbrowser' => 'Your browser is not compatible with Google Maps v3.',
