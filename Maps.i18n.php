@@ -1533,11 +1533,15 @@ $1',
 
 /** British English (British English)
  * @author Bruce89
+ * @author Lloffiwr
  * @author Reedy
  */
 $messages['en-gb'] = array(
 	'maps-desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demo]).
 Available mapping services: $1', # Fuzzy
+	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's centre for display_point(s).
+Accepts both addresses and coordinates.
+When this property is not provided, the map will centre itself on the provided marker, or between the provided markers.",
 	'maps-invalid-coordinates' => 'The value $1 was not recognised as a valid set of coordinates.',
 	'maps_unrecognized_coords' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised: $1.',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised and {{PLURAL:$2|has|have}} been omitted from the map:
