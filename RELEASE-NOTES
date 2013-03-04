@@ -570,7 +570,7 @@ Changes in 0.4.2 discussed on the authors blog:
 
 * Added overlays to Google Maps. This includes both an 'overlay' control, and a new parameter to choose the available and default loaded overlays.
 
-* Added specific handling for the coordinates= and addresses= parameters for both display_map and display_point(s). You can now specify you do not want anything that's not a coordinate on your map (so no geocoding) with the coordinates= parameter, or let Maps know everything is an address with the addresses= parameter, causing everything to be geocoded. Also modified the error messages for wrong addresses and coordinates to fit this new behaviour.
+* Added specific handling for the coordinates= and addresses= parameters for both display_map and display_point(s). You can now specify you do not want anything that's not a coordinate on your map (so no geocoding) with the coordinates= parameter, or let Maps know everything is an address with the addresses= parameter, causing everything to be geocoded. Also modified the error messages for wrong addresses and coordinates to fit this new behavior.
 
 ==== Refactoring ====
 
@@ -610,7 +610,7 @@ Changes in 0.4 discussed on the authors blog:
 
 * Added parsing of marker-specific title and label values.
 
-* Added geocoding support for the centre parameter. This is based on automatic detection of non-coordinates to see if geocoding is required, similar to the modified behaviour of display_point(s).
+* Added geocoding support for the centre parameter. This is based on automatic detection of non-coordinates to see if geocoding is required, similar to the modified behavior of display_point(s).
 
 * Added minimum and maximum map size restrictions, like done in SlippyMap.
 
