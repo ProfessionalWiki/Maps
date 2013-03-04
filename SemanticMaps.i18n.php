@@ -283,6 +283,13 @@ $messages['ca'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Mostra el control de geocodificació.',
 );
 
+/** Sorani Kurdish (کوردی)
+ * @author Calak
+ */
+$messages['ckb'] = array(
+	'semanticmaps-forminput-add' => 'زیاد بکە',
+);
+
 /** Czech (česky)
  * @author Utar
  * @author XenoPheX
@@ -856,7 +863,7 @@ $messages['ja'] = array(
 	'semanticmaps-forminput-remove' => '除去',
 	'semanticmaps-forminput-add' => '追加',
 	'semanticmaps-forminput-locations' => '場所',
-	'semanticmaps-par-staticlocations' => '問い合わせたデータと共に地図に追加する場所の列挙です。display_points と同様に、区切り文字としてチルダ "~" を使用して、場所ごとにタイトル、説明、アイコンを追加できます。',
+	'semanticmaps-par-staticlocations' => '問い合わせたデータと共に地図に追加する場所の列挙です。display_points と同様に、区切り文字としてチルダ「~」を使用して、場所ごとにタイトル、説明、アイコンを追加できます。',
 	'semanticmaps-par-forceshow' => '表示する場所がない場合でも、地図を表示しますか?',
 	'semanticmaps-par-showtitle' => 'マーカーの情報ウィンドウのタイトルを表示するかどうか。情報ウィンドウのコンテンツをフォーマットするためにテンプレートを使用するとき、これを無効にすると便利です。',
 	'semanticmaps-par-hidenamespace' => 'マーカー情報ウィンドウに名前空間名を表示する',
