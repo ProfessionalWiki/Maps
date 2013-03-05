@@ -292,7 +292,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			$urlArgs['key'] = $egGoogleJsApiKey;
 		}
 
-		return Html::linkedScript( 'http://maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
+		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
 	}
 	
 	/**
