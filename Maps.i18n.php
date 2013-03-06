@@ -323,7 +323,8 @@ KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'mapeditor-form-field-strokecolor' => 'Form field name',
 	'mapeditor-form-field-strokeopacity' => 'Form field name',
 	'mapeditor-form-field-strokeweight' => 'Form field name',
-	'mapeditor-form-field-fillcolor' => 'Form field name',
+	'mapeditor-form-field-fillcolor' => 'Form field name.
+{{Identical|Fill color}}',
 	'mapeditor-form-field-fillopcaity' => 'Form field name',
 	'mapeditor-form-field-showonhover' => 'Checkbox text',
 	'mapeditor-mapparam-title' => 'Title of dialogue',
@@ -1535,6 +1536,7 @@ $1',
  * @author Bruce89
  * @author Lloffiwr
  * @author Reedy
+ * @author Shirayuki
  */
 $messages['en-gb'] = array(
 	'maps-desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demo]).
@@ -1547,6 +1549,9 @@ When this property is not provided, the map will centre itself on the provided m
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 	'maps_centred_on' => 'Map centred on $1, $2.',
+	'maps-par-centre' => 'The location on which the map should be centred',
+	'mapeditor-form-field-strokecolor' => 'Stroke colour',
+	'mapeditor-form-field-fillcolor' => 'Fill colour',
 );
 
 /** Esperanto (Esperanto)
