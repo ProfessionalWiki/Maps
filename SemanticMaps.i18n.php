@@ -419,6 +419,13 @@ $messages['el'] = array(
 	'semanticmaps-shapes-missingshape' => 'Δεν βρέθηκαν σχήματα για το $1, ανατρέξτε στην τεκμηρίωση για διαθέσιμα σχήματα',
 );
 
+/** British English (British English)
+ * @author Shirayuki
+ */
+$messages['en-gb'] = array(
+	'semanticmaps-par-centre' => 'The centre of the map. When not provided, the map will automatically pick the optimal centre to display all markers on the map.',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
