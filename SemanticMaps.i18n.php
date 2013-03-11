@@ -233,6 +233,7 @@ $messages['br'] = array(
 	'semanticmaps-forminput-locations' => "Lec'hiadurioù",
 	'semanticmaps-par-forceshow' => "Diskouez ar gartenn ha pa ne vefe lec'h ebet da welet ?",
 	'semanticmaps-par-template' => "Ur patrom d'ober gantañ da furmadiñ boued ar prenestr titouriñ.",
+	'semanticmaps-kml-title' => "Titl dre ziouer evit an disoc'hoù",
 );
 
 /** Bosnian (bosanski)
