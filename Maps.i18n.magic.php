@@ -113,6 +113,11 @@ $magicWords['fr'] = array(
 	'coordinates' => array( 0, 'coordonnées' ),
 );
 
+/** Hebrew (עברית) */
+$magicWords['he'] = array(
+	'distance' => array( 0, 'מרחק' ),
+);
+
 /** Igbo (Igbo) */
 $magicWords['ig'] = array(
 	'display_map' => array( 0, 'zí_otúzọr', 'display_map' ),
