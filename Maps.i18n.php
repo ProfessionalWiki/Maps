@@ -266,6 +266,14 @@ $messages['qqq'] = array(
 	'maps-error-invalid-layertype' => 'Parameters:
 * $1 - a layer type
 * $2 - list of available layer types',
+	'maps-error-no-layertype' => 'Used as error message. Parameters:
+* $1 - list of available layer types
+* $2 - number of available layer types',
+	'maps-layer-of-type' => 'Used as <code><nowiki><h3></nowiki></code> heading. Parameters:
+* $1 - layer type',
+	'maps-layer-type-supported-by' => 'Parameters:
+* $1 - list of supported services (geonames and/or google). not localized.
+* $2 - number of supported services',
 	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}} Validation text indicating that there is something wrong with the "lines" parameter.',
 	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}',
 	'validation-error-invalid-searchmarkers-param' => '{{doc-important|Do not translate "all" and "title".}}',
