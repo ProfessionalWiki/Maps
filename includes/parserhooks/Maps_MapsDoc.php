@@ -57,6 +57,8 @@ class MapsMapsDoc extends ParserHook {
 			'default' => $GLOBALS['wgLanguageCode'],
 		);
 
+		// Give grep a chance to find the usages:
+		// maps-geocode-par-service, maps-geocode-par-language
 		foreach ( $params as $name => &$param ) {
 			$param['message'] = 'maps-geocode-par-' . $name;
 		}

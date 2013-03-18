@@ -76,6 +76,10 @@ class MapsGeodistance extends ParserHook {
 			'dependencies' => array( 'mappingservice', 'geoservice' ),
 		);
 
+		// Give grep a chance to find the usages:
+		// maps-geodistance-par-mappingservice, maps-geodistance-par-geoservice,
+		// maps-geodistance-par-unit, maps-geodistance-par-decimals,
+		// maps-geodistance-par-location1, maps-geodistance-par-location2
 		foreach ( $params as $name => &$param ) {
 			$param['message'] = 'maps-geodistance-par-' . $name;
 		}

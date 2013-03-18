@@ -57,6 +57,8 @@ class MapsCoordinates extends ParserHook {
 			'default' => $egMapsCoordinateDirectional,
 		);
 
+		// Give grep a chance to find the usages:
+		// maps-coordinates-par-location, maps-coordinates-par-format, maps-coordinates-par-directional
 		foreach ( $params as $name => &$param ) {
 			$param['message'] = 'maps-coordinates-par-' . $name;
 		}

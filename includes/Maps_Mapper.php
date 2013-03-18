@@ -59,6 +59,9 @@ final class MapsMapper {
 			'manipulatedefault' => false,
 		);
 
+		// Give grep a chance to find the usages:
+		// maps-par-mappingservice, maps-par-geoservice, maps-par-width,
+		// maps-par-height, maps-par-centre
 		foreach ( $params as $name => &$data ) {
 			$data['name'] = $name;
 			$data['message'] = 'maps-par-' . $name;
