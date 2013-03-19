@@ -269,18 +269,67 @@ $messages['qqq'] = array(
 	'maps-error-no-layertype' => 'Used as error message. Parameters:
 * $1 - list of available layer types
 * $2 - number of available layer types',
+	'validation-error-invalid-layer' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-layers' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
 	'maps-layer-of-type' => 'Used as <code><nowiki><h3></nowiki></code> heading. Parameters:
 * $1 - layer type',
 	'maps-layer-type-supported-by' => 'Parameters:
 * $1 - list of supported services (geonames and/or google). not localized.
 * $2 - number of supported services',
-	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}} Validation text indicating that there is something wrong with the "lines" parameter.',
-	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}',
-	'validation-error-invalid-searchmarkers-param' => '{{doc-important|Do not translate "all" and "title".}}',
+	'validation-error-invalid-location' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-locations' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-width' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-height' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-distance' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-distances' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-image' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-images' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-goverlay' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-goverlays' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}}
+Validation text indicating that there is something wrong with the "lines" parameter.
+{{Related|Maps-validation}}',
+	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}
+{{Related|Maps-validation}}',
+	'validation-error-invalid-searchmarkers-param' => '{{doc-important|Do not translate "all" and "title".}}
+{{Related|Maps-validation}}',
 	'maps-latitude' => '{{Identical|Latitude}}',
 	'maps-longitude' => '{{Identical|Longitude}}',
+	'maps-invalid-coordinates' => 'Unused at this time. Parameters:
+* $1 - value',
+	'maps_geocoding_failed' => 'Unused at this time. Parameters:
+* $1 - list of addresses
+* $2 - number of addresses',
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
+	'maps_unrecognized_coords' => '以下の{{PLURAL:$2|座標}}を認識できませんでした: $1',
+	'maps_unrecognized_coords_for' => 'Unused at this time. Parameters:
+* $1 - list of coordinates
+* $2 - number of coordinates',
 	'maps_googlemaps3' => '{{optional}}',
 	'maps_openlayers' => '{{optional}}',
 	'maps_osm' => '{{optional}}',
@@ -3534,10 +3583,10 @@ $messages['ja'] = array(
 	'maps-longitude' => '経度:',
 	'maps-invalid-coordinates' => '値 $1 は座標の有効な組み合わせとして認識されませんでした。',
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
-	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
+	'maps_geocoding_failed' => '以下の{{PLURAL:$2|住所}}を座標に変換できませんでした: $1',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
 	'maps_unrecognized_coords' => '以下の{{PLURAL:$2|座標}}は認識されませんでした: $1',
-	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}は認識されなかったため、地図から省かれています:
+	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}を認識できなかったため、地図に表示して{{PLURAL:$2|いません}}:
 $1',
 	'maps_map_cannot_be_displayed' => '地図を表示できません。',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
@@ -4592,6 +4641,7 @@ $1',
 /** Dutch (Nederlands)
  * @author AvatarTeam
  * @author Kjell
+ * @author Konovalov
  * @author SPQRobin
  * @author Siebrand
  */
@@ -4662,6 +4712,7 @@ Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coörd
 Dit kan invloed hebben op de standaardwaarde voor de geocoderingsdienst.',
 	'maps-displaymap-par-mappingservice' => 'Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.',
 	'maps-displaymap-par-coordinates' => 'De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.',
+	'maps-displaymap-par-visitedicon' => 'De locatie van een bestand om te gebruiken als bezocht pictogram',
 	'maps-displaymap-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
 Als deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.',
 	'maps-displaymap-par-centre' => 'Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).
