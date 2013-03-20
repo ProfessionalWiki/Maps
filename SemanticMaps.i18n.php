@@ -69,8 +69,27 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'semanticmaps-desc' => '{{desc|name=Semantic Maps|url=http://www.mediawiki.org/wiki/Extension:Semantic_Maps}}',
+	'semanticmaps-unrecognizeddistance' => 'Used as error message. Parameters:
+* $1 - distance',
 	'semanticmaps-kml' => '{{optional}}',
 	'semanticmaps-default-kml-pagelink' => '$1 is probably a page title.',
+	'semanticmaps-latitude' => 'Parameters:
+* $1 - latitude
+See also:
+* {{msg-mw|Semanticmaps-longitude}}
+* {{msg-mw|Semanticmaps-altitude}}
+{{Identical|Latitude}}',
+	'semanticmaps-longitude' => 'Parameters:
+* $1 - longitude
+See also:
+* {{msg-mw|Semanticmaps-latitude}}
+* {{msg-mw|Semanticmaps-altitude}}
+{{Identical|Longitude}}',
+	'semanticmaps-altitude' => 'Parameters:
+* $1 - altitude
+See also:
+* {{msg-mw|Semanticmaps-latitude}}
+* {{msg-mw|Semanticmaps-longitude}}',
 	'semanticmaps-loading-forminput' => 'Message displayed during a computer action',
 	'semanticmaps_lookupcoordinates' => 'Submit button next to input box. The box contains the hint {{msg-mw|Semanticmaps_enteraddresshere}}',
 	'semanticmaps_enteraddresshere' => 'Hint provided in an input box. The submit button next to the input box is {{msg-mw|Semanticmaps_lookupcoordinates}}',
@@ -78,6 +97,10 @@ $messages['qqq'] = array(
 	'semanticmaps-forminput-remove' => '{{Identical|Remove}}',
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
+	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext".
+
+See also:
+* {{msg-mw|semanticmaps-default-kml-pagelink}}',
 	'semanticmaps-shapes-improperformat' => 'Message displayed when the wikitext formatting of a shape is erroneous',
 	'semanticmaps-shapes-missingshape' => 'Message displayed when there is no such defined shape as $1',
 );
