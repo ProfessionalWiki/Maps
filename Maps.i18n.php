@@ -350,7 +350,8 @@ Validation text indicating that there is something wrong with the "lines" parame
 KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
 	'mapeditor' => 'title of the special page [[Special:MapEditor]].',
-	'specialpages-group-maps' => 'The special page group "maps" text',
+	'specialpages-group-maps' => '{{doc-special-group|like=[[Special:MapEditor]]}}
+{{Identical|Map}}',
 	'mapeditor-parser-error' => 'Error message when parsing error occurs',
 	'mapeditor-none-text' => 'Text showing when no value is set (None).
 {{Identical|None}}',
