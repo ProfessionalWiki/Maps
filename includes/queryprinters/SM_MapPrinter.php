@@ -83,6 +83,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			'default' => $smgQPTemplate,
 		);
 
+		// Give grep a chance to find the usages:
+		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
+		// semanticmaps-par-hidenamespace, semanticmaps-par-centre, semanticmaps-par-template,
+		// semanticmaps-par-geocodecontrol
 		foreach ( $params as $name => &$data ) {
 			if ( is_array( $data ) && !array_key_exists( 'message', $data ) ) {
 				$data['message'] = 'semanticmaps-par-' . $name;
