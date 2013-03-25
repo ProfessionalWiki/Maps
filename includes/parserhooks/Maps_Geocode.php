@@ -76,6 +76,9 @@ class MapsGeocode extends ParserHook {
 			'default' => $egMapsCoordinateDirectional,
 		);
 
+		// Give grep a chance to find the usages:
+		// maps-geocode-par-location, maps-geocode-par-mappingservice, maps-geocode-par-geoservice,
+		// maps-geocode-par-allowcoordinates, maps-geocode-par-format, maps-geocode-par-directional
 		foreach ( $params as $name => &$param ) {
 			$param['message'] = 'maps-geocode-par-' . $name;
 		}

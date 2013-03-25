@@ -53,6 +53,8 @@ class MapsDistance extends ParserHook {
 			'default' => $egMapsDistanceDecimals,
 		);
 
+		// Give grep a chance to find the usages:
+		// maps-distance-par-distance, maps-distance-par-unit, maps-distance-par-decimals
 		foreach ( $params as $name => &$param ) {
 			$param['message'] = 'maps-distance-par-' . $name;
 		}

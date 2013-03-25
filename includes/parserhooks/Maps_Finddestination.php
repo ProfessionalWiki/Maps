@@ -80,11 +80,16 @@ class MapsFinddestination extends ParserHook {
 			'tolower' => true,
 		);
 
-		$params['directional'] = array(
+		$params['allowcoordinates'] = array(
 			'type' => 'boolean',
 			'default' => $egMapsAllowCoordsGeocoding,
 		);
 
+		// Give grep a chance to find the usages:
+		// maps-finddestination-par-location, maps-finddestination-par-format,
+		// maps-finddestination-par-directional, maps-finddestination-par-bearing,
+		// maps-finddestination-par-distance, maps-finddestination-par-mappingservice,
+		// maps-finddestination-par-geoservice, maps-finddestination-par-allowcoordinates
 		foreach ( $params as $name => &$param ) {
 			$param['message'] = 'maps-finddestination-par-' . $name;
 		}
