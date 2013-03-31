@@ -3630,10 +3630,10 @@ $1',
 	'mapeditor-form-field-group' => 'グループ',
 	'mapeditor-form-field-inlinelabel' => 'インライン ラベル',
 	'mapeditor-form-field-strokecolor' => '線の色',
-	'mapeditor-form-field-strokeopacity' => '線の透明度',
+	'mapeditor-form-field-strokeopacity' => '線の不透明度',
 	'mapeditor-form-field-strokeweight' => '線幅',
 	'mapeditor-form-field-fillcolor' => '塗りつぶしの色',
-	'mapeditor-form-field-fillopcaity' => '塗りつぶしの透明度',
+	'mapeditor-form-field-fillopcaity' => '塗りつぶしの不透明度',
 	'mapeditor-form-field-showonhover' => 'ホバー時のみ表示',
 	'mapeditor-mapparam-title' => '地図のパラメーターの編集',
 	'mapeditor-mapparam-defoption' => '-パラメーターを選択-',
@@ -4985,6 +4985,7 @@ $1',
 
 /** Polish (polski)
  * @author BeginaFelicysym
+ * @author Chrumps
  * @author Sp5uhe
  * @author Yarl
  */
@@ -5028,6 +5029,7 @@ $messages['pl'] = array(
 	'maps-finddestination-par-location' => 'Położenie początkowe.',
 	'maps-finddestination-par-bearing' => 'Kierunek początkowy.',
 	'maps-finddestination-par-distance' => 'Odległość podróży.',
+	'maps-geocode-par-location' => 'Adres, który chcesz geokodować.',
 	'validation-error-invalid-location' => 'Parametr $1 musi wskazywać prawidłową lokalizację.',
 	'validation-error-invalid-locations' => 'Parametr $1 musi wskazywać jedną lub więcej prawidłowych lokalizacji.',
 	'validation-error-invalid-width' => 'Parametr $1 musi określać prawidłową szerokość.',
@@ -5069,6 +5071,16 @@ $1',
 	'maps-openlayers-par-controls' => 'Formanty do umieszczenia na mapie.',
 	'maps-osm-par-thumbs' => 'Pokaż miniatury',
 	'maps-osm-par-photos' => 'Pokaż zdjęcia',
+	'mapeditor' => 'Edytor map',
+	'specialpages-group-maps' => 'Mapy',
+	'mapeditor-done-button' => 'Gotowe',
+	'mapeditor-remove-button' => 'Usuń',
+	'mapeditor-form-field-title' => 'Tytuł',
+	'mapeditor-form-field-text' => 'Tekst',
+	'mapeditor-form-field-icon' => 'Ikona',
+	'mapeditor-form-field-group' => 'Grupa',
+	'mapeditor-form-field-showonhover' => 'Pokaż tylko po najechaniu',
+	'mapeditor-form-field-image' => 'Grafika',
 );
 
 /** Piedmontese (Piemontèis)
