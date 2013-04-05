@@ -1575,9 +1575,11 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Base
  * @author Steve.rusyn
  */
 $messages['uk'] = array(
+	'semanticmaps-kml-link' => 'Переглянути KML-файл',
 	'semanticmaps-default-kml-pagelink' => 'Переглянути сторінку $1',
 	'semanticmaps-latitude' => 'Широта: $1',
 	'semanticmaps-longitude' => 'Довгота: $1',
