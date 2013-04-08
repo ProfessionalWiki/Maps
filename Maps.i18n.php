@@ -4704,7 +4704,7 @@ $messages['nl'] = array(
 	'maps-coordinates-par-location' => 'De op te maken coördinaten.',
 	'maps-coordinates-par-format' => 'Gewenste notatie voor de coördinaten.',
 	'maps-coordinates-par-directional' => 'Geeft aan of de coördinaten wel of niet directioneel uitgestuurd moeten worden.',
-	'maps-distance-par-distance' => 'De afstand om te converteren naar haar equivalent in een aangegeven eenheid.',
+	'maps-distance-par-distance' => 'De afstand om te converteren naar haar equivalent in een opgegeven eenheid.',
 	'maps-distance-par-decimals' => 'Het maximale aantal te gebruiken decimalen in de resultaatwaarde.',
 	'maps-distance-par-unit' => 'De eenheid waarin de afstand weergegeven moet worden.',
 	'maps-finddestination-par-location' => 'De initiële locatie.',
@@ -4792,8 +4792,8 @@ $1.',
 	'maps-par-resizable' => 'Maakt het mogelijk de afmetingen van de kaart te wijzigen door aan de rechter onderhoek te trekken.',
 	'maps-par-geoservice' => 'De te gebruiken geocoderingsdienst om tussen adressen en coördinaten te wisselen.',
 	'maps-par-zoom' => 'Het zoomniveau van de kaart. Voor kaarten met markers is dit standaard op de meest ingezoomde niveau waarop nog steeds alle markers zichtbaar zijn.',
-	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
-	'maps-par-height' => 'Maakt het mogelijk om de hoogte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
+	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden opgeven: px, ex, em, %.',
+	'maps-par-height' => 'Maakt het mogelijk om de hoogte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden opgeven: px, ex, em, %.',
 	'maps-par-centre' => 'De locatie waar de kaart op gecentreerd moet worden',
 	'maps-googlemaps3-incompatbrowser' => 'Uw browser kan niet werken met Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'Het initieel weer te geven kaarttype.',
@@ -4857,7 +4857,7 @@ $1.',
 $messages['nl-informal'] = array(
 	'maps-error-no-layertype' => 'Je moet het laagtype opgeven. Alleen {{PLURAL:$2|dit type wordt|deze typen worden}} ondersteund: $1',
 	'maps-geocoder-not-available' => 'Geocoderen via Maps is niet beschikbaar. Het geocoderen van je locatie is niet mogelijk.',
-	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar je kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
+	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar je kunt expliciet een van deze eenheden opgeven: px, ex, em, %.',
 	'maps-par-height' => 'Maakt het mogelijk om de hoogte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar je kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
 	'maps-googlemaps3-incompatbrowser' => 'Je browser kan niet werken met Google Maps v3.',
 );
@@ -6724,6 +6724,7 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (中文（简体）‎)
  * @author Hydra
+ * @author Kuailong
  * @author PhiLiP
  * @author Xiaomingyan
  * @author Yfdyh000
@@ -6770,10 +6771,12 @@ $messages['zh-hans'] = array(
 	'mapeditor-done-button' => '完成',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
+	'mapeditor-form-title' => '编辑详情',
 	'mapeditor-link-title-switcher-link-text' => '连结',
 	'mapeditor-form-field-title' => '标题',
 	'mapeditor-form-field-text' => '文字',
 	'mapeditor-form-field-link' => '连结',
+	'mapeditor-form-field-icon' => '图标',
 	'mapeditor-form-field-image' => '图片',
 );
 
