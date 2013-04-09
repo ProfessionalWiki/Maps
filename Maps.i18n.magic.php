@@ -51,7 +51,7 @@ $magicWords['arz'] = array(
 	'coordinates' => array( 0, 'إحداثيات', 'coordinates' ),
 );
 
-/** Assamese (অসমীয়া) */
+/** Assamese (অসমীয়া) */
 $magicWords['as'] = array(
 	'display_point' => array( 0, 'মানচিত্ৰ_প্ৰদৰ্শন' ),
 );

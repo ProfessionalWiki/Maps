@@ -17,7 +17,7 @@ $specialPageAliases['ar'] = array(
 	'MapEditor' => array( 'محرر_الخريطة' ),
 );
 
-/** Assamese (অসমীয়া) */
+/** Assamese (অসমীয়া) */
 $specialPageAliases['as'] = array(
 	'MapEditor' => array( 'মানচিত্ৰ_সম্পাদক' ),
 );
