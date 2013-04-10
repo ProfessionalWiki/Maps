@@ -1,7 +1,5 @@
 <?php
 
-use ParamProcessor\ParamDefinition;
-
 /**
  * Class for the 'mapsdoc' parser hooks,
  * which displays documentation for a specified mapping service.
@@ -14,6 +12,8 @@ use ParamProcessor\ParamDefinition;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+use ParamProcessor\ParamDefinition;
+
 class MapsMapsDoc extends ParserHook {
 
 	/**

@@ -1,8 +1,9 @@
 <?php
 
 namespace Maps;
-use \Maps\Location;
+
 use DataValues\GeoCoordinateValue;
+use Maps\Location;
 
 /**
  * Class representing a rectangle.

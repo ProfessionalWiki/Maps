@@ -1,6 +1,7 @@
 <?php
 
 namespace Maps\Api;
+
 use ApiBase;
 
 /**

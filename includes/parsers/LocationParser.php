@@ -1,12 +1,13 @@
 <?php
 
 namespace Maps;
-use ValueParsers\StringValueParser;
-use ValueParsers\Result;
-use ValueParsers\GeoCoordinateParser;
-use ValueParsers\Error;
+
 use DataValues\GeoCoordinateValue;
 use MWException;
+use ValueParsers\Error;
+use ValueParsers\GeoCoordinateParser;
+use ValueParsers\Result;
+use ValueParsers\StringValueParser;
 
 /**
  * ValueParser that parses the string representation of a location.

@@ -1,7 +1,5 @@
 <?php
 
-use DataValues\GeoCoordinateValue;
-
 /**
  * Class for the 'finddestination' parser hooks, which can find a
  * destination given a starting point, an initial bearing and a distance.
@@ -14,6 +12,8 @@ use DataValues\GeoCoordinateValue;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+use DataValues\GeoCoordinateValue;
+
 class MapsFinddestination extends ParserHook {
 
 	/**

@@ -1,7 +1,8 @@
 <?php
 
 namespace Maps;
-use \DataValues\GeoCoordinateValue;
+
+use DataValues\GeoCoordinateValue;
 
 /**
  * Class representing an image overlay.

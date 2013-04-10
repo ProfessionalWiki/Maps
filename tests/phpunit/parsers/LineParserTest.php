@@ -1,8 +1,9 @@
 <?php
 
 namespace Maps\Test;
-use ValueParsers\Result;
+
 use Maps\Line;
+use ValueParsers\Result;
 
 /**
  * Unit tests for the Maps\LineParser class.

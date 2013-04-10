@@ -1,6 +1,7 @@
 <?php
 
 namespace Maps;
+
 use DataValues\GeoCoordinateValue;
 use MWException;
 

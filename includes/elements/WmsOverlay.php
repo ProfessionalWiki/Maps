@@ -1,7 +1,8 @@
 <?php
 
 namespace Maps;
-use \Maps\Location;
+
+use Maps\Location;
 
 /**
  * Class that holds metadata on WMS overlay layers on map

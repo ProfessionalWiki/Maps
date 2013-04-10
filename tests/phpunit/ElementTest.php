@@ -1,8 +1,5 @@
 <?php
 
-use Maps\Element;
-use DataValues\GeoCoordinateValue;
-
 /**
  * Unit tests for the Maps\Element implementing classes.
  *
@@ -31,6 +28,9 @@ use DataValues\GeoCoordinateValue;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+use DataValues\GeoCoordinateValue;
+use Maps\Element;
+
 class ElementTest extends \MediaWikiTestCase {
 
 	public function elementProvider() {

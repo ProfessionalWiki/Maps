@@ -1,8 +1,5 @@
 <?php
 
-use \Maps\Location;
-use DataValues\GeoCoordinateValue;
-
 /**
  * Class to format geographical data to KML.
  * 
@@ -14,6 +11,8 @@ use DataValues\GeoCoordinateValue;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+use Maps\Location;
+
 class MapsKMLFormatter {
 
 	/**

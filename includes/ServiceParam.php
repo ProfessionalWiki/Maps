@@ -1,10 +1,11 @@
 <?php
 
 namespace Maps;
-use MapsMappingServices;
+
 use IParam;
-use ParamProcessor\StringParam;
+use MapsMappingServices;
 use ParamProcessor\IParamDefinition;
+use ParamProcessor\StringParam;
 
 /**
  * Parameter definition for mapping service parameters.

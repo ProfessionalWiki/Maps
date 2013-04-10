@@ -1,9 +1,9 @@
 <?php
 
 namespace Maps;
-use ValueParsers\StringValueParser;
+
 use ValueParsers\Result;
-use ValueParsers\ResultObject;
+use ValueParsers\StringValueParser;
 
 /**
  * ValueParser that parses the string representation of a polygon.
