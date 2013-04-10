@@ -1,7 +1,8 @@
 <?php
 
 namespace SM\Test;
-use \SMW\Tests\ResultPrinterTest as ResultPrinterTest;
+
+use SMW\Tests\ResultPrinterTest as ResultPrinterTest;
 
 /**
  *  Tests for the SM\MapPrinter class.

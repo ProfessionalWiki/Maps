@@ -1,7 +1,5 @@
 <?php
 
-use Maps\Location;
-
 /**
  * Class for handling geographical SMW queries.
  *
@@ -13,6 +11,8 @@ use Maps\Location;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+use Maps\Location;
+
 class SMQueryHandler {
 
 	protected $queryResult;
@@ -427,19 +427,19 @@ class SMQueryHandler {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getTitle()->getPrefixedText();
 			} else {
-				return $object->getLongText( SMW_OUTPUT_WIKI, NULL );
+				return $object->getLongText( SMW_OUTPUT_WIKI, null );
 			}
 		}
 
 		if ( $this->linkAbsolute ) {
-			$titleText = $printRequest->getText( NULL );
+			$titleText = $printRequest->getText( null );
 			$t = Title::newFromText($titleText , SMW_NS_PROPERTY );
 
 			if ($this->isHeadersShow() && $t instanceof Title && $t->exists() ) {
 				$propertyName = $propertyName = Html::element(
 					'a',
 					array( 'href' => $t->getFullUrl() ),
-					$printRequest->getHTMLText( NULL )
+					$printRequest->getHTMLText( null )
 				);
 			}
 			else {
@@ -450,7 +450,7 @@ class SMQueryHandler {
 			if($this->isHeadersShow()){
 				$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
 			}else if($this->isHeadersPlain()){
-				$propertyName = $printRequest->getText(NULL);
+				$propertyName = $printRequest->getText(null);
 			}
 		}
 
@@ -458,7 +458,7 @@ class SMQueryHandler {
 			$hasPage = $object->getTypeID() == '_wpg';
 
 			if ( $hasPage ) {
-				$t = Title::newFromText( $object->getLongText( $this->outputmode, NULL ), NS_MAIN );
+				$t = Title::newFromText( $object->getLongText( $this->outputmode, null ), NS_MAIN );
 				$hasPage = $t !== null && $t->exists();
 			}
 
@@ -466,11 +466,11 @@ class SMQueryHandler {
 				$propertyValue = Html::element(
 					'a',
 					array( 'href' => $t->getFullUrl() ),
-					$object->getLongText( $this->outputmode, NULL )
+					$object->getLongText( $this->outputmode, null )
 				);
 			}
 			else {
-				$propertyValue = $object->getLongText( $this->outputmode, NULL );
+				$propertyValue = $object->getLongText( $this->outputmode, null );
 			}
 		}
 		else {

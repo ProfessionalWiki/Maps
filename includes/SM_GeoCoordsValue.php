@@ -1,8 +1,5 @@
 <?php
 
-use DataValues\GeoCoordinateValue;
-use ValueFormatters\GeoCoordinateFormatter;
-
 /**
  * Implementation of datavalues that are geographic coordinates.
  * 
@@ -16,6 +13,9 @@ use ValueFormatters\GeoCoordinateFormatter;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Markus Krötzsch
  */
+use DataValues\GeoCoordinateValue;
+use ValueFormatters\GeoCoordinateFormatter;
+
 class SMGeoCoordsValue extends SMWDataValue {
 
 	protected $wikiValue;
@@ -131,7 +131,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 				
 				if ( !MapsDistanceParser::isDistance( $distance ) ) {
 					$this->addError( wfMessage( 'semanticmaps-unrecognizeddistance', $distance )->text() );
-					$distance = false;							
+					$distance = false;
 				}
 			}
 
