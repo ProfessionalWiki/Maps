@@ -121,13 +121,7 @@ class MapsGeocode extends ParserHook {
 
 		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
-		$result = $formatter->format( $coordinates );
-
-		if ( !$result->isValid() ) {
-			throw new MWException( 'Could not format the coordinates' );
-		}
-
-		return $result->getValue();
+		return $formatter->format( $coordinates );
 	}
 
 	/**

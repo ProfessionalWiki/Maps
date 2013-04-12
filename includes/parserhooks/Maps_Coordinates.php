@@ -96,7 +96,7 @@ class MapsCoordinates extends ParserHook {
 
 		$coordinateFormatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
-		$output = $coordinateFormatter->format( $parameters['location'] )->getValue();
+		$output = $coordinateFormatter->format( $parameters['location'] );
 
 		return $output;		
 	}

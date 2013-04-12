@@ -134,7 +134,7 @@ class MapsFinddestination extends ParserHook {
 		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
 		$geoCoords = new \DataValues\GeoCoordinateValue( $destination['lat'], $destination['lon'] );
-		$output = $formatter->format( $geoCoords )->getValue();
+		$output = $formatter->format( $geoCoords );
 
 		return $output;
 	}

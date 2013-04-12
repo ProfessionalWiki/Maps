@@ -185,10 +185,7 @@ final class Geocoders {
 		) );
 
 		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
-
-		$formattingResult = $formatter->format( $geoCoordinate );
-
-		return $formattingResult->isValid() ? $formattingResult->getValue() : false;
+		return $formatter->format( $geoCoordinate );
 	}
 
 	/**
