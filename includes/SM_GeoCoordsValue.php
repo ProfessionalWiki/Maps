@@ -68,14 +68,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 			$dataItem->getAltitude()
 		);
 
-		$formatterResult = $coordinateFormatter->format( $value );
-
-		if ( $formatterResult->isValid() ) {
-			return $formatterResult->getValue();
-		}
-		else {
-			return null;
-		}
+		return $coordinateFormatter->format( $value );
 	}
 	
 	/**
