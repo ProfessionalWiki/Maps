@@ -15,6 +15,7 @@
  */
 use DataValues\GeoCoordinateValue;
 use ValueFormatters\GeoCoordinateFormatter;
+use ValueParsers\ParseException;
 
 class SMGeoCoordsValue extends SMWDataValue {
 
@@ -130,16 +131,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 			$options = new \ValueParsers\ParserOptions();
 			$parser = new \ValueParsers\GeoCoordinateParser( $options );
-			$parsedCoords = $parser->parse($coordinates  );
 
-			if ( $parsedCoords->isValid() ) {
-				/**
-				 * @var GeoCoordinateValue $value
-				 */
-				$value = $parsedCoords->getValue();
+			try {
+				$value = $parser->parse($coordinates  );
 				$this->m_dataitem = new SMWDIGeoCoord( $value->getLatitude(), $value->getLongitude() );
-
-			} else {
+			}
+			catch ( ParseException $parseException ) {
 				$this->addError( wfMessage( 'maps_unrecognized_coords', $coordinates, 1 )->text() );
 
 				// Make sure this is always set
