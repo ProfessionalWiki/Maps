@@ -2,8 +2,6 @@
 
 namespace Maps\Test;
 
-use ValueParsers\Result;
-
 /**
  * Unit tests for the Maps\DistanceParser class.
  *
@@ -36,13 +34,13 @@ use ValueParsers\Result;
 class DistanceParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
-	 * @see ValueParserTestBase::parseProvider
+	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @since 3.0
 	 *
 	 * @return array
 	 */
-	public function parseProvider() {
+	public function validInputProvider() {
 		$argLists = array();
 
 		$valid = array(
@@ -54,10 +52,10 @@ class DistanceParserTest extends \ValueParsers\Test\StringValueParserTest {
 		);
 
 		foreach ( $valid as $value => $expected ) {
-			$argLists[] = array( (string)$value, Result::newSuccess( $expected ) );
+			$argLists[] = array( (string)$value, $expected );
 		}
 
-		return array_merge( $argLists, parent::parseProvider() );
+		return $argLists;
 	}
 
 	/**

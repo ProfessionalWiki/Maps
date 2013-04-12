@@ -4,6 +4,7 @@ namespace Maps;
 
 use DataValues\GeoCoordinateValue;
 use MWException;
+use ValueParsers\ParseException;
 
 /**
  * Class for geocoder functionality of the Maps extension. 
@@ -129,13 +130,11 @@ final class Geocoders {
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
 			$coordinateParser = new \ValueParsers\GeoCoordinateParser( new \ValueParsers\ParserOptions() );
-			$parseResult = $coordinateParser->parse( $coordsOrAddress );
 
-			if ( $parseResult->isValid() ) {
-				$value = $parseResult->getValue();
-				assert( $value instanceof GeoCoordinateValue );
-				return $value;
-			} else {
+			try {
+				return $coordinateParser->parse( $coordsOrAddress );
+			}
+			catch ( ParseException $parseException ) {
 				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
 			}
 		} else {

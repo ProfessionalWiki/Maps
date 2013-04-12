@@ -2,8 +2,8 @@
 
 namespace Maps\Test;
 
+use DataValues\GeoCoordinateValue;
 use Maps\Line;
-use ValueParsers\Result;
 
 /**
  * Unit tests for the Maps\LineParser class.
@@ -37,13 +37,13 @@ use ValueParsers\Result;
 class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
-	 * @see ValueParserTestBase::parseProvider
+	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @since 3.0
 	 *
 	 * @return array
 	 */
-	public function parseProvider() {
+	public function validInputProvider() {
 		$argLists = array();
 
 		$valid = array();
@@ -80,15 +80,15 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 			foreach ( $values as $value ) {
 				$input[] = implode( ',', $value );
-				$output[] = new \DataValues\GeoCoordinateValue( $value[0], $value[1] );
+				$output[] = new GeoCoordinateValue( $value[0], $value[1] );
 			}
 
 			$input = implode( ':', $input );
 
-			$argLists[] = array( $input, Result::newSuccess( new Line( $output ) ) );
+			$argLists[] = array( $input, new Line( $output ) );
 		}
 
-		return array_merge( $argLists, parent::parseProvider() );
+		return $argLists;
 	}
 
 	/**

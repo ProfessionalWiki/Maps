@@ -2,7 +2,8 @@
 
 namespace Maps\Test;
 
-use ValueParsers\Result;
+use DataValues\GeoCoordinateValue;
+use Maps\Location;
 
 /**
  * Unit tests for the Maps\LocationParser class.
@@ -36,13 +37,13 @@ use ValueParsers\Result;
 class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
-	 * @see ValueParserTestBase::parseProvider
+	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @since 3.0
 	 *
 	 * @return array
 	 */
-	public function parseProvider() {
+	public function validInputProvider() {
 		$argLists = array();
 
 		$valid = array(
@@ -56,16 +57,16 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 		);
 
 		foreach ( $valid as $value => $expected ) {
-			$expected = new \Maps\Location( new \DataValues\GeoCoordinateValue( $expected[0], $expected[1] ) );
-			$argLists[] = array( (string)$value, Result::newSuccess( $expected ) );
+			$expected = new Location( new GeoCoordinateValue( $expected[0], $expected[1] ) );
+			$argLists[] = array( (string)$value, $expected );
 		}
 
-		$location = new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) );
+		$location = new Location( new GeoCoordinateValue( 4, 2 ) );
 		$location->setTitle( 'Title' );
 		$location->setText( 'some description' );
-		$argLists[] = array( '4,2~Title~some description', Result::newSuccess( $location ) );
+		$argLists[] = array( '4,2~Title~some description', $location );
 
-		return array_merge( $argLists, parent::parseProvider() );
+		return $argLists;
 	}
 
 	/**

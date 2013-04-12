@@ -2,7 +2,6 @@
 
 namespace Maps;
 
-use ValueParsers\Result;
 use ValueParsers\StringValueParser;
 
 /**
@@ -41,7 +40,7 @@ class PolygonParser extends StringValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return Result
+	 * @return Polygon
 	 */
 	public function stringParse( $value ) {
 		// TODO

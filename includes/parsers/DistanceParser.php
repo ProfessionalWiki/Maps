@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use ValueParsers\Result;
+use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 
 /**
@@ -41,17 +41,17 @@ class DistanceParser extends StringValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return Result
+	 * @return float
+	 * @throws ParseException
 	 */
 	public function stringParse( $value ) {
 		$distance = \MapsDistanceParser::parseDistance( $value );
 
 		if ( $distance === false ) {
-			return $this->newErrorResult( 'Not a distance' );
+			throw new ParseException( 'Not a distance' );
 		}
-		else {
-			return Result::newSuccess( $distance );
-		}
+
+		return $distance;
 	}
 
 }

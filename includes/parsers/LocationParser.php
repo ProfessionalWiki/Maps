@@ -4,9 +4,8 @@ namespace Maps;
 
 use DataValues\GeoCoordinateValue;
 use MWException;
-use ValueParsers\Error;
 use ValueParsers\GeoCoordinateParser;
-use ValueParsers\Result;
+use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 
 /**
@@ -47,7 +46,7 @@ class LocationParser extends StringValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return Result
+	 * @return Location
 	 * @throws MWException
 	 */
 	public function stringParse( $value ) {
@@ -57,11 +56,7 @@ class LocationParser extends StringValueParser {
 
 		$coordinates = $this->getCoordinates( array_shift( $metaData ) );
 
-		if ( $coordinates instanceof Error ) {
-			return Result::newError( $coordinates );
-		}
-
-		$location = new \Maps\Location( $coordinates );
+		$location = new Location( $coordinates );
 
 		if ( $metaData !== array() ) {
 			$location->setTitle( array_shift( $metaData ) );
@@ -75,7 +70,7 @@ class LocationParser extends StringValueParser {
 			$location->setIcon( array_shift( $metaData ) );
 		}
 
-		return Result::newSuccess( $location );
+		return $location;
 	}
 
 	/**
@@ -83,14 +78,15 @@ class LocationParser extends StringValueParser {
 	 *
 	 * @param string $location
 	 *
-	 * @return GeoCoordinateValue|Error
+	 * @return GeoCoordinateValue
+	 * @throws ParseException
 	 */
 	protected function getCoordinates( $location ) {
 		if ( $this->supportGeocoding && \Maps\Geocoders::canGeocode() ) {
 			$location = \Maps\Geocoders::attemptToGeocode( $location );
 
 			if ( $location === false ) {
-				return $this->newErrorResult( 'Geocoding failed' )->getError();
+				throw new ParseException( 'Failed to parse or geocode' );
 			}
 
 			assert( $location instanceof GeoCoordinateValue );
@@ -98,15 +94,7 @@ class LocationParser extends StringValueParser {
 		}
 
 		$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
-		$parseResult = $parser->parse( $location );
-
-		if ( !$parseResult->isValid() ) {
-			return $parseResult->getError();
-		}
-
-		$location = $parseResult->getValue();
-		assert( $location instanceof GeoCoordinateValue );
-		return $location;
+		return $parser->parse( $location );
 	}
 
 }

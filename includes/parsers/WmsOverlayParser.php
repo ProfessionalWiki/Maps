@@ -4,7 +4,7 @@ namespace Maps;
 
 use MWException;
 use ValueParsers\GeoCoordinateParser;
-use ValueParsers\Result;
+use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 
 /**
@@ -42,22 +42,21 @@ class WmsOverlayParser extends StringValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return Result
+	 * @return WmsOverlay
 	 */
 	protected function stringParse( $value ) {
 		$separator = " ";
 		$metaData = explode($separator, $value);
 
 		if ( count( $metaData ) >= 2 ) {
-			$wmsOverlay = new \Maps\WmsOverlay( $metaData[0], $metaData[1] );
+			$wmsOverlay = new WmsOverlay( $metaData[0], $metaData[1] );
 			if ( count( $metaData ) == 3) {
 				$wmsOverlay->setWmsStyleName( $metaData[2] );
 			}
 
-			return Result::newSuccess( $wmsOverlay );
-
-		} else {
-			return $this->newErrorResult( "Need at least two parameters, url to WMS server and map layer name" );
+			return $wmsOverlay;
 		}
+
+		throw new ParseException( 'Need at least two parameters, url to WMS server and map layer name' );
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use ValueParsers\Result;
+use Maps\WmsOverlay;
 
 /**
  * Unit tests for the Maps\WmsOverlayParser class.
@@ -36,13 +36,13 @@ use ValueParsers\Result;
 class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
-	 * @see ValueParserTestBase::parseProvider
+	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @since 3.0
 	 *
 	 * @return array
 	 */
-	public function parseProvider() {
+	public function validInputProvider() {
 		$argLists = array();
 
 		$valid = array(
@@ -53,14 +53,16 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 		);
 
 		foreach ( $valid as $value => $expected ) {
-			$expectedOverlay = new \Maps\WmsOverlay( $expected[0], $expected[1] );
+			$expectedOverlay = new WmsOverlay( $expected[0], $expected[1] );
+
 			if ( count( $expected ) == 3 ) {
 				$expectedOverlay->setWmsStyleName( $expected[2] );
 			}
-			$argLists[] = array( (string)$value, Result::newSuccess( $expectedOverlay ) );
+
+			$argLists[] = array( (string)$value, $expectedOverlay );
 		}
 
-		return array_merge( $argLists, parent::parseProvider() );
+		return $argLists;
 	}
 
 
