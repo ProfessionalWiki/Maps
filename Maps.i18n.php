@@ -6772,10 +6772,10 @@ $messages['zh-hans'] = array(
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
 	'mapeditor-form-title' => '编辑详情',
-	'mapeditor-link-title-switcher-link-text' => '连结',
+	'mapeditor-link-title-switcher-link-text' => '链接',
 	'mapeditor-form-field-title' => '标题',
 	'mapeditor-form-field-text' => '文字',
-	'mapeditor-form-field-link' => '连结',
+	'mapeditor-form-field-link' => '链接',
 	'mapeditor-form-field-icon' => '图标',
 	'mapeditor-form-field-image' => '图片',
 );
