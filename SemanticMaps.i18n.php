@@ -307,6 +307,13 @@ $messages['ca'] = array(
 	'semanticmaps-par-geocodecontrol' => 'Mostra el control de geocodificació.',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'semanticmaps-forminput-remove' => 'ДӀаяккха',
+);
+
 /** Sorani Kurdish (کوردی)
  * @author Calak
  */
