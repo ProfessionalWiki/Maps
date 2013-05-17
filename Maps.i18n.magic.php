@@ -205,6 +205,11 @@ $magicWords['ml'] = array(
 	'distance' => array( 0, 'ദൂരം' ),
 );
 
+/** Marathi (मराठी) */
+$magicWords['mr'] = array(
+	'distance' => array( 0, 'अंतर' ),
+);
+
 /** Low Saxon (Netherlands) (Nedersaksies) */
 $magicWords['nds-nl'] = array(
 	'display_map' => array( 0, 'kaorte_weergeven' ),
