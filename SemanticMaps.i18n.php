@@ -966,7 +966,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'semanticmaps-desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di mem „Semantesch Mediawiki“ faßjehallde woode sin. ([https://mapping.referata.com/wiki/Examples Beijshpöll för et vörzemaache])', # Fuzzy
+	'semanticmaps-desc' => 'Määt et müjjelesch, Koodinaate ze beloore un ze ändere, di mem „Semantesch Mediawiki“ faßjehallde woode sin. ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps Mieh Aanjaabe{{int:ellipsis}}])',
 	'semanticmaps-unrecognizeddistance' => 'Dä Wäät „$1“ es keine jölteje Afschtand.',
 	'semanticmaps-kml-link' => 'De KML-Dattei belooere',
 	'semanticmaps-kml' => 'Äxpoot als KML',
@@ -993,6 +993,8 @@ för jeede Plaz aanjävve, med enem Schlängelsche (~) doh zwesche.',
 	'semanticmaps-kml-title' => 'Dä Schtandatttittel för wad eruß küt.',
 	'semanticmaps-kml-linkabsolute' => 'Sulle Lenks absoluud udder relatief sin?',
 	'semanticmaps-kml-pagelinktext' => 'Ene Täx, dä för Lenks op di Sigg jebuch weed. $1 schteiht dobei för dä Sigg iere Tittel.',
+	'semanticmaps-shapes-improperformat' => 'dat Fommaat för $1 paß nit. Loor em Handbooch noh de Fommaate.',
+	'semanticmaps-shapes-missingshape' => 'Mer han kein Forme för $1 jefonge. Loor en et Handbooch, doh schtonn de Forme dren.',
 );
 
 /** Kurdish (Latin script) (Kurdî (latînî)‎)
