@@ -64,7 +64,7 @@ $magicWords['br'] = array(
 
 /** Chechen (нохчийн) */
 $magicWords['ce'] = array(
-	'geocode' => array( 0, 'геагишар', 'геокод', 'geocode' ),
+	'geocode' => array( 0, 'геагишар', 'геокод' ),
 );
 
 /** German (Deutsch) */
