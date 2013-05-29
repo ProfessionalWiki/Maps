@@ -248,14 +248,14 @@ $magicWords['ps'] = array(
 
 /** Portuguese (português) */
 $magicWords['pt'] = array(
-	'display_map' => array( 0, 'mostrar_mapa', 'display_map' ),
-	'display_point' => array( 0, 'mostrar_ponto', 'mostrar_pontos' ),
+	'display_map' => array( 0, 'mostrar_mapa' ),
+	'display_point' => array( 0, 'mostrar_ponto' ),
 	'display_points' => array( 0, 'mostrar_pontos' ),
-	'geocode' => array( 0, 'geocódigo', 'geocode' ),
-	'geodistance' => array( 0, 'geodistância', 'geodistance' ),
-	'finddestination' => array( 0, 'encontrardestino', 'finddestination' ),
-	'coordinates' => array( 0, 'coordenadas', 'coordinates' ),
-	'distance' => array( 0, 'distância', 'distance' ),
+	'geocode' => array( 0, 'geocódigo' ),
+	'geodistance' => array( 0, 'geodistância' ),
+	'finddestination' => array( 0, 'encontrardestino' ),
+	'coordinates' => array( 0, 'coordenadas' ),
+	'distance' => array( 0, 'distância' ),
 );
 
 /** Russian (русский) */

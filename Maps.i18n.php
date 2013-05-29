@@ -5429,6 +5429,7 @@ $1',
 /** Brazilian Portuguese (português do Brasil)
  * @author Eduardo.mps
  * @author Giro720
+ * @author Luckas
  * @author Luckas Blade
  * @author 555
  */
@@ -5478,6 +5479,10 @@ $1',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para ativar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
+	'mapeditor' => 'Editor de mapas',
+	'mapeditor-mapparam-button' => 'Editar parâmetros do mapa',
+	'mapeditor-form-title' => 'Editar detalhes',
+	'mapeditor-mapparam-title' => 'Editar parâmetros do mapa',
 );
 
 /** Romanian (română)
