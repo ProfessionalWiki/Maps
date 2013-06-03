@@ -1642,6 +1642,7 @@ $messages['eo'] = array(
  * @author Diego Grez
  * @author Imre
  * @author Locos epraix
+ * @author MarcoAurelio
  * @author Pertile
  * @author Peter17
  * @author Sanbec
@@ -4520,7 +4521,7 @@ $messages['nah'] = array(
 	'maps-abb-south' => 'H',
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎)
+/** Norwegian Bokmål (norsk bokmål)
  * @author Event
  * @author Kim Eik
  * @author Nghtwlkr
@@ -4862,7 +4863,7 @@ $messages['nl-informal'] = array(
 	'maps-googlemaps3-incompatbrowser' => 'Je browser kan niet werken met Google Maps v3.',
 );
 
-/** Norwegian Nynorsk (norsk (nynorsk)‎)
+/** Norwegian Nynorsk (norsk nynorsk)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -4907,7 +4908,7 @@ $1',
 	'maps_centred_on' => 'Mapa centrada sus $1, $2.',
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
  */
 $messages['or'] = array(
