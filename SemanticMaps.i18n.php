@@ -1090,7 +1090,7 @@ $messages['mt'] = array(
 	'semanticmaps-par-forceshow' => "Uri l-mappa anke jekk m'hemm l-ebda post x'turi?",
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎)
+/** Norwegian Bokmål (norsk bokmål)
  * @author EvenT
  * @author Event
  * @author Nghtwlkr
@@ -1161,7 +1161,7 @@ $messages['nl'] = array(
 	'semanticmaps-shapes-missingshape' => 'Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen',
 );
 
-/** Norwegian Nynorsk (norsk (nynorsk)‎)
+/** Norwegian Nynorsk (norsk nynorsk)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -1257,6 +1257,7 @@ $messages['ps'] = array(
 /** Portuguese (português)
  * @author Hamilton Abreu
  * @author Indech
+ * @author Luckas
  * @author Luckas Blade
  * @author Malafaya
  */
