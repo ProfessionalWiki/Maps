@@ -6810,17 +6810,20 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎)
  * @author Horacewai2
+ * @author Justincheng12345
  * @author Mark85296341
  * @author Shirayuki
  * @author Simon Shek
  * @author Waihorace
  */
 $messages['zh-hant'] = array(
+	'maps-desc' => '容許嵌入動態地圖到維基頁面、地址地理編碼及其他地理操作。（[http://www.semantic-mediawiki.org/wiki/Maps 更多資訊…]）',
 	'right-geocode' => '地理編碼',
 	'maps_map' => '地圖',
 	'maps-loading-map' => '載入中...',
 	'maps-load-failed' => '無法加載地圖！',
 	'maps-markers' => '標記',
+	'maps-copycoords-prompt' => 'CTRL+C，ENTER',
 	'maps-others' => '其他',
 	'maps-ns-layer' => '圖層',
 	'maps-ns-layer-talk' => '圖層討論',
