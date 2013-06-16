@@ -38,14 +38,12 @@ $wgHooks['MappingServiceLoad'][] = 'smfInitOpenLayers';
 
 function smfInitOpenLayers() {
 	global $wgAutoloadClasses;
-	
-	$wgAutoloadClasses['SMOpenLayersQP'] = __DIR__ . '/SM_OpenLayersQP.php';
-	
+
 	// TODO: the if should not be needed, but when omitted, a fatal error occurs cause the class that's extended by this one is not found.
 	if ( defined( 'SF_VERSION' ) ) $wgAutoloadClasses['SMOpenLayersFormInput'] = __DIR__ . '/SM_OpenLayersFormInput.php';
-	
+
 	MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', 'SMMapPrinter' );
-	MapsMappingServices::registerServiceFeature( 'openlayers', 'fi', 'SMOpenLayersFormInput' );	
-	
+	MapsMappingServices::registerServiceFeature( 'openlayers', 'fi', 'SMOpenLayersFormInput' );
+
 	return true;
 }
