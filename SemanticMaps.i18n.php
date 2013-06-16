@@ -1020,6 +1020,7 @@ $messages['lb'] = array(
 	'semanticmaps-forminput-remove' => 'Ewechhuelen',
 	'semanticmaps-forminput-add' => 'Derbäisetzen',
 	'semanticmaps-forminput-locations' => 'Plazen',
+	'semanticmaps-par-forceshow' => "D'Kaart och weise wa keng Plazen drop sinn déi solle gewise ginn?",
 	'semanticmaps-kml-title' => 'De Standard-Titel fir Resultater',
 	'semanticmaps-kml-linkabsolute' => 'Solle Linken absolut sinn oder net (d.h. relativ)',
 );
