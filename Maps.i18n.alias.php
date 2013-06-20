@@ -32,6 +32,11 @@ $specialPageAliases['diq'] = array(
 	'MapEditor' => array( 'VurnerêXerita' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'MapEditor' => array( 'ویرایشگر_نقشه' ),
+);
+
 /** Galician (galego) */
 $specialPageAliases['gl'] = array(
 	'MapEditor' => array( 'Editor_do_mapa' ),
