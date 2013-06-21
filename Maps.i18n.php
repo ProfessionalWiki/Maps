@@ -3959,6 +3959,7 @@ $messages['lb'] = array(
 	'maps-finddestination-par-distance' => "D'Distanz vun der Rees.",
 	'maps-geocode-par-location' => "D'Adress déi Dir geocodéiere wëllt.",
 	'maps-geocode-par-format' => "De Format fir d'Koordinaten.",
+	'maps-geodistance-par-location1' => 'Den éischte Punkt vun deem aus eng Distanz berechent gi soll.',
 	'maps-geodistance-par-unit' => "D'Eenheet fir d'Distanz.",
 	'maps-geodistance-par-decimals' => 'Déi maximal Zuel vu Kommastellen déi am Resultat benotzt gi soll.',
 	'maps-displaymap-par-coordinates' => "Déi Plaz op déi d'Kaart am Ufank zentréiert gëtt.",
