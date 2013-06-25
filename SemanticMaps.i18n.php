@@ -1264,7 +1264,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([https://mapping.referata.com/wiki/Examples demonstração]).', # Fuzzy
+	'semanticmaps-desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mais informação...])',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
 	'semanticmaps-kml-link' => 'Ver o ficheiro KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver a página $1',
