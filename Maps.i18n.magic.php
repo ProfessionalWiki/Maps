@@ -167,6 +167,11 @@ $magicWords['ko'] = array(
 	'mapsdoc' => array( 0, '지도문서' ),
 );
 
+/** Kurdish (Latin script) (Kurdî (latînî)‎) */
+$magicWords['ku-latn'] = array(
+	'coordinates' => array( 0, 'koordînat' ),
+);
+
 /** Ladino (Ladino) */
 $magicWords['lad'] = array(
 	'distance' => array( 0, 'distancia', 'distance' ),

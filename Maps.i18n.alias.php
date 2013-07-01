@@ -29,7 +29,7 @@ $specialPageAliases['de'] = array(
 
 /** Zazaki (Zazaki) */
 $specialPageAliases['diq'] = array(
-	'MapEditor' => array( 'VurnerêXerita' ),
+	'MapEditor' => array( 'VırneréXerita' ),
 );
 
 /** Persian (فارسی) */
@@ -55,6 +55,11 @@ $specialPageAliases['ja'] = array(
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'MapEditor' => array( '지도편집기' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'MapEditor' => array( 'Kaartenediteur' ),
 );
 
 /** Macedonian (македонски) */
