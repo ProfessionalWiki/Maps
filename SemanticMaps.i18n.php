@@ -72,7 +72,9 @@ $messages['qqq'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Used as error message. Parameters:
 * $1 - distance',
 	'semanticmaps-kml' => '{{optional}}',
-	'semanticmaps-default-kml-pagelink' => '$1 is probably a page title.',
+	'semanticmaps-default-kml-pagelink' => 'Parameters:
+* $1 - probably a page title
+{{Identical|View page}}',
 	'semanticmaps-latitude' => 'Parameters:
 * $1 - latitude
 See also:
