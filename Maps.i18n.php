@@ -82,7 +82,7 @@ This will allow maps to override the default value of the service parameter by t
 	'maps-geocode-par-mappingservice' => 'The geocoding service you want to use. See the available geocoding services.',
 	'maps-geocode-par-geoservice' => 'This parameter allows you to indicate you are using this geocoding request in combination with a specific mapping service.
 Each mapping service can have overrides over the default value for the geocoding service.
-This is for legal considerations, since you can not use the Google Geocoding service except together with Google Maps.
+This is for legal considerations, since you cannot use the Google Geocoding service except together with Google Maps.
 Setting this parameter and not the parameter for the service, will ensure you are not using an invalid combination.',
 	'maps-geocode-par-allowcoordinates' => 'Allows disabling the support for coordinates in this function. Must be either yes or no.
 When no, every value will be geocoded, even valid coordinates.',
@@ -158,7 +158,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
 	// Geocoding
-	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',
+	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location cannot be geocoded.',
 
 	// Mapping services
 	'maps_googlemaps3' => 'Google Maps v3',
@@ -171,7 +171,7 @@ $1',
 
 	// Params common to all mapping features (ie display_map, query printers, form inputs)
 	'maps-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
-	'maps-par-resizable' => 'Makes the map resizable by dragging at it\'s lower right corner.',
+	'maps-par-resizable' => 'Makes the map resizable by dragging at its lower right corner.',
 	'maps-par-geoservice' => 'The geocoding service to use to make translations between addresses and coordinates.',
 	'maps-par-zoom' => 'The zoom level for the map. For maps with markers this will default to the most zoomed in level that still shows all markers.',
 	'maps-par-width' => 'Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
