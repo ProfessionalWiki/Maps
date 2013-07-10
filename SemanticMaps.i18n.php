@@ -1696,6 +1696,7 @@ $messages['zh-hans'] = array(
  * @author Mark85296341
  * @author Oapbtommy
  * @author Sheepy
+ * @author StephDC
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -1716,6 +1717,7 @@ $messages['zh-hant'] = array(
 	'semanticmaps-par-staticlocations' => '要與所查詢數據一起添加到地圖的一系列位置。就像display_points那樣，可以採用波浪號"~"作為分隔符，為每個位置添加標題、描述及圖標。',
 	'semanticmaps-par-forceshow' => '甚至在沒有要顯示的位置的情況下也顯示地圖嗎？',
 	'semanticmaps-par-showtitle' => '是否在標記信息窗口之中顯示標題。當採用模板對信息窗口內容進行格式編排的時候，關閉此項往往會有所幫助。',
+	'semanticmaps-par-hidenamespace' => '在標記資訊視窗中顯示名字空間的標題',
 	'semanticmaps-par-centre' => '地圖的中心。當未加提供的時候，地圖會自動挑選最佳的中心，從而在地圖上顯示所有的標記。',
 	'semanticmaps-par-template' => '用來對信息窗口內容進行格式編排的模板。',
 	'semanticmaps-par-geocodecontrol' => '顯示地理編碼控件。',
@@ -1723,4 +1725,6 @@ $messages['zh-hant'] = array(
 	'semanticmaps-kml-title' => '結果的默認標題',
 	'semanticmaps-kml-linkabsolute' => '鏈接究竟應當是絕對地址還是相對地址',
 	'semanticmaps-kml-pagelinktext' => '用於那些指向該頁面的鏈接的文本；其中，頁面標題將取代$1',
+	'semanticmaps-shapes-improperformat' => '$1 的格式有誤，請查看格式說明文檔',
+	'semanticmaps-shapes-missingshape' => '沒有 $1 對應的形狀。請查看形狀說明文檔',
 );
