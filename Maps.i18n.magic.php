@@ -109,8 +109,16 @@ $magicWords['es'] = array(
 
 /** French (français) */
 $magicWords['fr'] = array(
+	'display_map' => array( 0, 'afficher_carte' ),
+	'display_point' => array( 0, 'afficher_point' ),
+	'display_points' => array( 0, 'afficher_points' ),
+	'display_line' => array( 0, 'afficher_ligne' ),
+	'geocode' => array( 0, 'codegéo' ),
+	'geodistance' => array( 0, 'distancegéo' ),
 	'finddestination' => array( 0, 'trouverdestination' ),
 	'coordinates' => array( 0, 'coordonnées' ),
+	'distance' => array( 0, 'distance' ),
+	'mapsdoc' => array( 0, 'doccartes' ),
 );
 
 /** Hebrew (עברית) */
