@@ -219,6 +219,12 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'message' => 'maps-googlemaps3-par-searchmarkers',
 			// new CriterionSearchMarkers() FIXME
 		);
+
+		$params['enablefullscreen'] = array(
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-googlemaps3-par-enable-fullscreen',
+		);
 	}
 	
 	/**

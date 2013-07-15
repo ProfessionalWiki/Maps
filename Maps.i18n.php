@@ -123,6 +123,10 @@ When used together with label, the title will be bold and underlined.',
 	'maps-displaymap-par-static' => 'If the map should be static',
 	'maps-displaymap-par-wmsoverlay' => 'Use a WMS overlay',
 
+	'maps-fullscreen-button' => 'Toggle fullscreen',
+	'maps-fullscreen-button-tooltip' => 'View the map as fullscreen/embedded.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Enable fullscreen button',
+
 	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
@@ -260,6 +264,8 @@ $messages['qqq'] = array(
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
+	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view',
+	'maps-fullscreen-button-tooltip' => 'Text displayed when hovering over "maps-fullscreen-button"',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-layer-property' => '{{Identical|Property}}',
@@ -361,6 +367,7 @@ See also:
 
 KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
+	'maps-googlemaps3-par-enable-fullscreen' => '{{maps-par|googlemaps3|enablefullscreen}}',
 	'mapeditor' => 'title of the special page [[Special:MapEditor]].',
 	'specialpages-group-maps' => '{{doc-special-group|like=[[Special:MapEditor]]}}
 {{Identical|Map}}',

@@ -37,6 +37,8 @@ call_user_func( function() {
 			'maps-googlemaps3-incompatbrowser',
 			'maps-copycoords-prompt',
 			'maps-searchmarkers-text',
+			'maps-fullscreen-button',
+			'maps-fullscreen-button-tooltip',
 		)
 	);
 

@@ -39,19 +39,19 @@
 		this.circles = [];
 
 
-        /**
-         * All rectangles on the map
-         */
-        this.rectangles = [];
+		/**
+		 * All rectangles on the map
+		 */
+		this.rectangles = [];
 
 
-        /**
-         * All image overlays on the map
-         */
-        this.imageoverlays = [];
+		/**
+		 * All image overlays on the map
+		 */
+		this.imageoverlays = [];
 
 
-        /**
+		/**
 		 * Creates a new marker with the provided data,
 		 * adds it to the map, and returns it.
 		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
@@ -373,22 +373,22 @@
 			});
 		};
 
-        this.addImageOverlay = function(properties){
-            var imageBounds = new google.maps.LatLngBounds(
-                new google.maps.LatLng(properties.sw.lat,properties.sw.lon),
-                new google.maps.LatLng(properties.ne.lat,properties.ne.lon)
-            );
+		this.addImageOverlay = function(properties){
+			var imageBounds = new google.maps.LatLngBounds(
+				new google.maps.LatLng(properties.sw.lat,properties.sw.lon),
+				new google.maps.LatLng(properties.ne.lat,properties.ne.lon)
+			);
 
-            var image = new google.maps.GroundOverlay(properties.image,imageBounds);
-            image.setMap(this.map);
+			var image = new google.maps.GroundOverlay(properties.image,imageBounds);
+			image.setMap(this.map);
 
-            this.imageoverlays.push(image);
+			this.imageoverlays.push(image);
 
-            //add click event
-            google.maps.event.addListener(image, "click", function (event) {
-                openBubbleOrLink.call(this, properties, event, image);
-            });
-        };
+			//add click event
+			google.maps.event.addListener(image, "click", function (event) {
+				openBubbleOrLink.call(this, properties, event, image);
+			});
+		};
 
 
 		this.removePolygon = function (polygon) {
@@ -703,11 +703,11 @@
 					});
 			}
 
-            if(options.imageoverlays){
-                for (var i = 0; i < options.imageoverlays.length; i++) {
-                    this.addImageOverlay(options.imageoverlays[i]);
-                }
-            }
+			if(options.imageoverlays){
+				for (var i = 0; i < options.imageoverlays.length; i++) {
+					this.addImageOverlay(options.imageoverlays[i]);
+				}
+			}
 
 			if (options.copycoords) {
 
@@ -766,7 +766,65 @@
 				map.mapTypes.set('OpenLayers', openlayersWMS);
 				map.setMapTypeId('OpenLayers');
 			}
+
+			//Add custom controls
+			// - Fullscreen
+			if(options.enablefullscreen){
+				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl(this.map));
+			}
 		};
+
+		function FullscreenControl(map) {
+
+			var controlDiv = document.createElement('div');
+			controlDiv.style.padding = '5px';
+			controlDiv.index = 1;
+
+			var controlUI = document.createElement('div');
+			controlUI.style.backgroundColor = 'white';
+			controlUI.style.borderStyle = 'solid';
+			controlUI.style.borderWidth = '1px';
+			controlUI.style.cursor = 'pointer';
+			controlUI.style.textAlign = 'center';
+			controlUI.title = mediaWiki.msg('maps-fullscreen-button-tooltip');
+			controlDiv.appendChild(controlUI);
+
+			var controlText = document.createElement('div');
+			controlText.style.fontFamily = 'Arial,sans-serif';
+			controlText.style.fontSize = '12px';
+			controlText.style.paddingLeft = '4px';
+			controlText.style.paddingRight = '4px';
+			controlText.innerHTML = mediaWiki.msg('maps-fullscreen-button');
+			controlUI.appendChild(controlText);
+
+			google.maps.event.addDomListener(controlUI, 'click', function() {
+				var mapDiv = $(map.getDiv());
+				if(mapDiv.data('preFullscreenCss') != null){
+					mapDiv.css(mapDiv.data('preFullscreenCss'));
+					mapDiv.removeData('preFullscreenCss');
+				}else{
+					var fullscreenCss = {
+						position:'fixed',
+						top: 0,
+						left:0,
+						width:'100%',
+						height:'100%',
+						zIndex:10000
+					};
+					var oldState = {};
+					for(var cssProp in fullscreenCss){
+						oldState[cssProp] = mapDiv.css(cssProp);
+					}
+					mapDiv.data('preFullscreenCss',oldState);
+					mapDiv.css(fullscreenCss);
+				}
+
+
+			});
+
+			return controlDiv;
+		}
+
 
 		function openBubbleOrLink(properties, event, obj) {
 			if (properties.link) {
