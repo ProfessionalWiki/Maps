@@ -5387,6 +5387,7 @@ $messages['ps'] = array(
  * @author GoEThe
  * @author Hamilton Abreu
  * @author Lijealso
+ * @author Luckas
  * @author Waldir
  */
 $messages['pt'] = array(
@@ -5450,7 +5451,7 @@ Quando for não, todos os valores serão geocodificados, mesmo coordenadas váli
 	'maps-geodistance-par-decimals' => 'O número máximo de casas decimais a usar no valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'O serviço de geocodificação que será usado para geocodificar qualquer endereço.',
 	'maps-geodistance-par-geoservice' => 'O serviço de cartografia a utilizar em conjunto.
-Isto pode afectar o valor padrão do serviço de geocodificação.',
+Isto pode afetar o valor padrão do serviço de geocodificação.',
 	'maps-displaymap-par-mappingservice' => 'Permite definir o serviço de cartografia que será usado para gerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'A localização na qual o mapa será inicialmente centrado.',
 	'maps-displaymap-par-zoom' => 'Permite definir o nível de aproximação do mapa.
