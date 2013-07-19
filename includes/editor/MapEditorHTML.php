@@ -38,7 +38,9 @@ class MapEditorHtml extends ContextSource{
 
 	$output = <<<EOT
 	{$this->getCanvasDiv()}<div style="display: none;">
-	<pre id="code-output" title="%1\$s"></pre>
+	<div id="code-output-container" title="%1\$s">
+		<textarea id="code-output" rows="15" readonly></textarea>
+	</div>
 	<div id="code-input-container" title="%2\$s" >
 		<p>%3\$s</p>
 		<textarea id="code-input" rows="15"></textarea>
