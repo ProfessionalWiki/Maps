@@ -1193,6 +1193,13 @@ $messages['cs'] = array(
 	'mapeditor-form-field-visitedicon' => 'Navštívená ikona',
 );
 
+/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'maps-layer-errors' => 'блаꙁнꙑ',
+);
+
 /** Danish (dansk)
  * @author Peter Alberti
  */
@@ -1647,6 +1654,7 @@ $messages['eo'] = array(
  * @author Peter17
  * @author Sanbec
  * @author Translationista
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
 	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([http://www.semantic-mediawiki.org/wiki/Maps Más información...])',
@@ -1804,7 +1812,7 @@ No se puede mostrar el mapa.',
 	'mapeditor-code-title' => 'Código wiki',
 	'mapeditor-import-title' => 'Importar código wiki',
 	'mapeditor-import-note' => 'Tenga en cuenta que el analizador espera un formato muy estricto en el código wiki. El código introducido aquí debe coincidir con el código producido por la funcionalidad de exportación.',
-	'mapeditor-form-title' => 'Editar detalles',
+	'mapeditor-form-title' => 'Editar los detalles',
 	'mapeditor-link-title-switcher-popup-text' => 'Ventana emergente con texto',
 	'mapeditor-link-title-switcher-link-text' => 'Enlace',
 	'mapeditor-form-field-title' => 'Título',
