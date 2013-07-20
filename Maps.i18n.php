@@ -5449,7 +5449,7 @@ Isto permite que os mapas substituam o valor padrão do parâmetro do serviço p
 Para cada serviço de cartografia é possível substituir o valor padrão do serviço de geocodificação.
 Isto tem uma justificação legal, posto que o serviço de Geocodificação do Google só pode ser usado em conjunto com o Google Maps.
 Definir este parâmetro e não o parâmetro para o serviço, garante que não se está a usar uma combinação inválida.',
-	'maps-geocode-par-allowcoordinates' => 'Permite desactivar o suporte de coordenadas desta função. Tem de ser sim ou não.
+	'maps-geocode-par-allowcoordinates' => 'Permite desativar o suporte de coordenadas desta função. Tem de ser sim ou não.
 Quando for não, todos os valores serão geocodificados, mesmo coordenadas válidas.',
 	'maps-geocode-par-format' => 'O formato das coordenadas resultantes.',
 	'maps-geocode-par-directional' => 'Indica se as coordenadas devem ser produzidas com formato direccional ou não.',
@@ -5498,7 +5498,7 @@ $1.',
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
-	'maps_click_to_activate' => 'Clique para activar o mapa',
+	'maps_click_to_activate' => 'Clique para ativar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
 	'maps-par-resizable' => 'Permite alterar as dimensões do mapa, arrastando o canto inferior direito.',
 	'maps-par-geoservice' => 'O serviço de geocodificação que será usado para fazer a conversão entre endereços e coordenadas.',
