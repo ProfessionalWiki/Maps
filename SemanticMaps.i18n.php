@@ -1282,7 +1282,7 @@ $messages['pt'] = array(
 	'semanticmaps-forminput-locations' => 'Locais',
 	'semanticmaps-par-staticlocations' => 'Uma lista de localizações para acrescentar ao mapa em conjunto com os dados consultados. Tal como nos pontos a apresentar ("display_points"), pode adicionar um título, descrição e ícone por localização, usando o til "~" como separador.',
 	'semanticmaps-par-forceshow' => 'Mostrar o mapa mesmo quando não existem localizações para apresentar?',
-	'semanticmaps-par-showtitle' => 'Mostrar, ou não, um título na janela informativa do marcador. É frequentemente desejável desactivar esta funcionalidade quando usar uma predefinição para formatar o conteúdo da janela informativa.',
+	'semanticmaps-par-showtitle' => 'Mostrar, ou não, um título na janela informativa do marcador. É frequentemente desejável desativar esta funcionalidade quando usar uma predefinição para formatar o conteúdo da janela informativa.',
 	'semanticmaps-par-centre' => 'O centro do mapa. Quando este não for fornecido, o mapa escolherá automaticamente o centro óptimo para apresentar todos os marcadores do mapa.',
 	'semanticmaps-par-template' => 'Uma predefinição que será usada para formatar o conteúdo da janela informativa.',
 );
