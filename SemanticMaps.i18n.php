@@ -315,6 +315,7 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'semanticmaps-altitude' => 'Локхалла: $1',
+	'semanticmaps_lookupcoordinates' => 'Караде координаташ',
 	'semanticmaps-forminput-remove' => 'ДӀаяккха',
 );
 
