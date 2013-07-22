@@ -1118,6 +1118,13 @@ $messages['ca'] = array(
 	'maps_centred_on' => 'Mapa centrat en $1, $2.',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'mapeditor-form-field-title' => 'ЦӀе',
+);
+
 /** Czech (česky)
  * @author Mormegil
  * @author Vks
