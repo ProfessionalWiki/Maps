@@ -369,12 +369,14 @@ KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'mapeditor-import-note' => 'Import note',
 	'mapeditor-form-title' => 'Title of dialogue',
 	'mapeditor-link-title-switcher-popup-text' => 'Text for switch w/popup',
-	'mapeditor-link-title-switcher-link-text' => 'Text for switch w/link',
+	'mapeditor-link-title-switcher-link-text' => 'Text for switch w/link.
+{{Identical|Link}}',
 	'mapeditor-form-field-title' => 'Form field name.
 {{Identical|Title}}',
 	'mapeditor-form-field-text' => 'Form field name.
 {{Identical|Text}}',
-	'mapeditor-form-field-link' => 'Form field name',
+	'mapeditor-form-field-link' => 'Form field name.
+{{Identical|Link}}',
 	'mapeditor-form-field-icon' => 'Form field name',
 	'mapeditor-form-field-group' => 'Form field name.
 {{Identical|Group}}',
