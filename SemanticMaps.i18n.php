@@ -314,6 +314,8 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'semanticmaps-kml-link' => 'Хьажа KML файлан агӀоне',
+	'semanticmaps-default-kml-pagelink' => 'Хьажа агӀоне $1',
 	'semanticmaps-altitude' => 'Локхалла: $1',
 	'semanticmaps_lookupcoordinates' => 'Караде координаташ',
 	'semanticmaps-forminput-remove' => 'ДӀаяккха',
