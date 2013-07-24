@@ -1124,6 +1124,7 @@ $messages['ca'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'maps-layer-value' => 'МаьӀна',
 	'mapeditor-form-field-title' => 'ЦӀе',
 );
 
@@ -6112,6 +6113,7 @@ $messages['sr-el'] = array(
  * @author Dafer45
  * @author Fader
  * @author Fluff
+ * @author Jopparn
  * @author Per
  * @author Rotsee
  * @author WikiPhoenix
@@ -6142,11 +6144,14 @@ $messages['sv'] = array(
 	'maps-mapsdoc-par-service' => 'Kartläggningstjänsten för att visa parameterdokumentation.',
 	'maps-mapsdoc-par-language' => 'Språket som du vill visa dokumentationen i. Om det finns någon sådan översättning kommer engelska att användas istället.',
 	'maps-coordinates-par-location' => 'Koordinaterna du vill formatera.',
+	'maps-coordinates-par-format' => 'Målformatet för koordinaterna.',
 	'maps-finddestination-par-location' => 'Startplats',
 	'maps-finddestination-par-bearing' => 'Inledande bäring.',
 	'maps-finddestination-par-distance' => 'Reseavståndet.',
+	'maps-finddestination-par-allowcoordinates' => 'Indikerar om koordinater bör tillåtas. Om nej anges kommer endast adresser att accepteras.',
 	'maps-geocode-par-location' => 'Adressen som du vill geokoda.',
 	'maps-geocode-par-mappingservice' => 'Geokodningstjänsten du vill använda. Se de tillgängliga geokodningtjänsterna.',
+	'maps-geocode-par-format' => 'Formatet för de resulterande koordinaterna.',
 	'maps-displaymap-par-circles' => 'Cirklar att visa',
 	'maps-displaymap-par-lines' => 'Rader att visa',
 	'maps-displaymap-par-maxzoom' => 'Maximala zoomnivån',
@@ -6182,6 +6187,13 @@ $1',
 	'maps_centred_on' => 'Karta centrerad på $1, $2.',
 	'maps-par-centre' => 'Platsen där kartan ska vara centrerad',
 	'maps-googlemaps3-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v3.',
+	'maps-googlemaps3-par-controls' => 'Kontroller att placera på kartan.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Öppna automatiskt alla informationsfönster när sidan har lästs in.',
+	'maps-googlemaps3-par-kml' => 'KML-filer att ladda upp på kartan.',
+	'maps-googlemaps3-par-tilt' => 'Tilta för karta när du använder Google Maps.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Zooma tillbaka till kartan efter att KML-lager har lästs in.',
+	'maps-googlemaps3-par-poi' => 'Visa platser av intresse.',
+	'maps-openlayers-par-controls' => 'Kontroller att placera på kartan.',
 	'maps-osm-par-thumbs' => 'Visa miniatyrer',
 	'maps-osm-par-photos' => 'Visa foton',
 	'mapeditor' => 'Kartredigerare',
