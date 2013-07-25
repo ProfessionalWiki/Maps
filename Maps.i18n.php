@@ -27,6 +27,7 @@ $messages['en'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => 'Filter markers',
 	'maps-others' => 'others',
+	'maps-kml-parsing-failed' => 'Failed parsing one or more kml files, usually due to retrieval failure or malformed XML.',
 	//TODO: move to namespaces i18n
 	'maps-ns-layer' => 'Layer',
 	'maps-ns-layer-talk' => 'Layer talk',
@@ -259,6 +260,7 @@ $messages['qqq'] = array(
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
+	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',

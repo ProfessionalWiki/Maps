@@ -197,11 +197,48 @@
 						}
 					}
 
+
 					var geoXml = new geoXML3.parser({
 						map:_this.map,
 						zoom:options.kmlrezoom,
-						afterParse: addToCopyCoords
+						failedParse:function(){
+							alert(mediaWiki.msg('maps-kml-parsing-failed'));
+						}
 					});
+					geoXml.options.afterParse = function(docs){
+						//add toggle functionality
+						var toggleDiv = document.createElement('div');
+						toggleDiv.style.backgroundColor = 'white';
+						toggleDiv.style.marginTop = '5px';
+						toggleDiv.style.padding = '5px';
+						toggleDiv.style.border = '1px solid grey';
+						for(var i = docs.length-1; i >= 0; i--){
+							(function(doc){
+								var label = document.createElement('label');
+								label.style.display = 'block';
+								var text = document.createTextNode(doc.baseUrl.substring(doc.baseDir.length));
+								var checkbox = document.createElement('input');
+								checkbox.setAttribute('type','checkbox');
+								checkbox.style.verticalAlign = '-0.2em';
+								checkbox.checked = true;
+								checkbox.onclick = function(){
+									if(this.checked){
+										geoXml.showDocument(doc);
+									}else{
+										geoXml.hideDocument(doc);
+									}
+								};
+								label.appendChild(checkbox);
+								label.appendChild(text);
+
+								toggleDiv.appendChild(label);
+
+								console.log(toggleDiv);
+							})(docs[i]);
+						}
+						_this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
+					};
+
 					geoXml.parse(options.kml);
 				});
 			}

@@ -68,6 +68,7 @@ call_user_func( function() {
 		'scripts' => array(
 			'geoxml3.js',
 			'ZipFile.complete.js', //kmz handling
+			'ProjectedOverlay.js', //Overlay handling
 		),
 	);
 
