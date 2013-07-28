@@ -318,6 +318,7 @@ $messages['ce'] = array(
 	'semanticmaps-default-kml-pagelink' => 'Хьажа агӀоне $1',
 	'semanticmaps-altitude' => 'Локхалла: $1',
 	'semanticmaps_lookupcoordinates' => 'Караде координаташ',
+	'semanticmaps-updatemap' => 'Карладаккха карта',
 	'semanticmaps-forminput-remove' => 'ДӀаяккха',
 );
 
