@@ -2,7 +2,7 @@
 
 namespace SM\Test;
 
-use SMW\Tests\ResultPrinterTest as ResultPrinterTest;
+use SMW\Test\ResultPrinterTestCase as ResultPrinterTestCase;
 
 /**
  *  Tests for the SM\MapPrinter class.
@@ -20,10 +20,10 @@ use SMW\Tests\ResultPrinterTest as ResultPrinterTest;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapPrinterTest extends ResultPrinterTest {
+class MapPrinterTest extends ResultPrinterTestCase {
 
 	/**
-	 * @see ResultPrinterTest::getFormats
+	 * @see ResultPrinterTestCase::getFormats
 	 *
 	 * @since 1.8
 	 *
@@ -34,7 +34,7 @@ class MapPrinterTest extends ResultPrinterTest {
 	}
 
 	/**
-	 * @see ResultPrinterTest::getClass
+	 * @see ResultPrinterTestCase::getClass
 	 *
 	 * @since 1.8
 	 *
