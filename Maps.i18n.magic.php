@@ -126,6 +126,13 @@ $magicWords['he'] = array(
 	'distance' => array( 0, 'מרחק' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
+$magicWords['id'] = array(
+	'finddestination' => array( 0, 'petunjukarah' ),
+	'coordinates' => array( 0, 'koordinat' ),
+	'distance' => array( 0, 'jarak' ),
+);
+
 /** Igbo (Igbo) */
 $magicWords['ig'] = array(
 	'display_map' => array( 0, 'zí_otúzọr', 'display_map' ),
@@ -189,6 +196,13 @@ $magicWords['lad'] = array(
 $magicWords['lb'] = array(
 	'coordinates' => array( 0, 'Koordinaten' ),
 	'distance' => array( 0, 'Distanz' ),
+);
+
+/** Minangkabau (Baso Minangkabau) */
+$magicWords['min'] = array(
+	'finddestination' => array( 0, 'petunjukarah' ),
+	'coordinates' => array( 0, 'koordinat' ),
+	'distance' => array( 0, 'jarak' ),
 );
 
 /** Macedonian (македонски) */

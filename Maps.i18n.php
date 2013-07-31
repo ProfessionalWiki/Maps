@@ -6741,7 +6741,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://mapping.referata.com/wiki/Examples thử xem])',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://www.semantic-mediawiki.org/wiki/Maps?uselang=vi thêm chi tiết])',
 	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
@@ -6771,6 +6771,7 @@ $messages['vi'] = array(
 	'maps-finddestination-par-distance' => 'Tầm xa để chạy.',
 	'maps-finddestination-par-format' => 'Định dạng cho ra nơi đến',
 	'maps-geocode-par-location' => 'Địa chỉ để mã hóa địa lý.',
+	'maps-displaymap-par-wmsoverlay' => 'Sử dụng lớp phủ WMS',
 	'validation-error-invalid-location' => 'Tham số $1 phải là một vị trí hợp lệ.',
 	'validation-error-invalid-locations' => 'Tham số $1 phải là một hoặc nhiều vị trí hợp lệ.',
 	'validation-error-invalid-width' => 'Tham số $1 phải là một chiều rộng hợp lệ.',
@@ -6779,7 +6780,7 @@ $messages['vi'] = array(
 	'validation-error-invalid-distances' => 'Tham số $1 phải là một hoặc nhiều vị trí hợp lệ.',
 	'validation-error-invalid-image' => 'Tham số $1 phải là một hình ảnh hợp lệ.',
 	'validation-error-invalid-images' => 'Tham số $1 phải là một hoặc nhiều hình ảnh hợp lệ.',
-	'validation-error-invalid-goverlay' => 'Tham số $1 phả là một lấp hợp lệ.',
+	'validation-error-invalid-goverlay' => 'Tham số $1 phải là một lớp phủ hợp lệ.',
 	'validation-error-invalid-goverlays' => 'Tham số $1 phải là một hoặc nhiều lấp hợp lệ.',
 	'maps-abb-north' => 'B',
 	'maps-abb-east' => 'Đ',
@@ -6830,7 +6831,9 @@ $1',
 	'mapeditor-form-field-fillcolor' => 'Màu tô đậm',
 	'mapeditor-mapparam-title' => 'Sửa tham số bản đồ',
 	'mapeditor-mapparam-defoption' => '—Chọn tham số—',
+	'mapeditor-imageoverlay-button' => 'Thêm lớp phủ hình ảnh',
 	'mapeditor-form-field-image' => 'Hình ảnh',
+	'mapeditor-imageoverlay-title' => 'Chi tiết lớp phủ hình ảnh',
 );
 
 /** Volapük (Volapük)
