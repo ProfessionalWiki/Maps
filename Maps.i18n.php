@@ -3093,7 +3093,7 @@ $1',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://mapping.referata.com/wiki/Maps_examples demonstrationes])', # Fuzzy
+	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://www.semantic-mediawiki.org/wiki/Maps plus info...])',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
