@@ -239,7 +239,7 @@ $magicWords['mr'] = array(
 
 /** Low Saxon (Netherlands) (Nedersaksies) */
 $magicWords['nds-nl'] = array(
-	'display_map' => array( 0, 'kaorte_weergeven' ),
+	'display_map' => array( 0, 'kaorte_laoten_zien' ),
 	'geocode' => array( 0, 'geokoderen' ),
 	'geodistance' => array( 0, 'geo-aofstaand' ),
 	'finddestination' => array( 0, 'bestemmingzeuken' ),
