@@ -184,7 +184,24 @@
 			// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
 			if (options.kml.length != 0) {
 				mw.loader.using('ext.maps.gm3.geoxml', function () {
-					var geoXml = new geoXML3.parser({ map:_this.map, zoom:options.kmlrezoom });
+
+					function addToCopyCoords(doc){
+						if(options.copycoords){
+							for(var i = 0; i < doc.length; i++){
+								addCopyCoordsOnRightClick([
+									doc[i].gpolygons,
+									doc[i].gpolylines,
+									doc[i].ggroundoverlays
+									]);
+							}
+						}
+					}
+
+					var geoXml = new geoXML3.parser({
+						map:_this.map,
+						zoom:options.kmlrezoom,
+						afterParse: addToCopyCoords
+					});
 					geoXml.parse(options.kml);
 				});
 			}
@@ -358,6 +375,7 @@
 		};
 
 		this.setup = function () {
+
 			var showEarth = $.inArray('earth', options.types) !== -1;
 
 			// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
@@ -603,28 +621,6 @@
 			}
 
 			/**
-			 * used in display_line functionality
-			 * allows the copy to clipboard of coordinates
-			 */
-			if (options.copycoords) {
-				function addRightClickListener(object) {
-					google.maps.event.addListener(object, 'rightclick', function (event) {
-						prompt(mediaWiki.msg('maps-copycoords-prompt'), event.latLng.lat() + ',' + event.latLng.lng());
-					});
-				}
-
-				for (var x = 0; x < this.markers.length; x++) {
-					addRightClickListener(this.markers[x]);
-				}
-
-				for (var x = 0; x < this.lines.length; x++) {
-					addRightClickListener(this.lines[x]);
-				}
-
-				addRightClickListener(this.map);
-			}
-
-			/**
 			 * Allows grouping of markers.
 			 */
 			if ( options.markercluster ) {
@@ -675,6 +671,19 @@
                     this.addImageOverlay(options.imageoverlays[i]);
                 }
             }
+
+			if (options.copycoords) {
+
+				addCopyCoordsOnRightClick([
+					this.lines,
+					this.circles,
+					this.polygons,
+					this.markers,
+					this.rectangles,
+					this.imageoverlays,
+					this.map
+					]);
+			}
 
 			if (options.wmsoverlay) {
 				var wmsOptions = {
@@ -751,6 +760,18 @@
 			}
 			else {
 				this.openWindow.open( this.map );
+			}
+		}
+
+		function addCopyCoordsOnRightClick(object) {
+			if(object instanceof Array){
+				for (var x = 0; x < object.length; x++) {
+					addCopyCoordsOnRightClick(object[x]);
+				}
+			}else{
+				google.maps.event.addListener(object, 'rightclick', function (event) {
+					prompt(mediaWiki.msg('maps-copycoords-prompt'), event.latLng.lat() + ',' + event.latLng.lng());
+				});
 			}
 		}
 
