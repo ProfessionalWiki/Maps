@@ -1,9 +1,6 @@
-These is the readme file for the Maps extension.
+# Maps
 
-Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
-Latest version of the readme file: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=README
-
-== About ==
+[![Build Status](https://secure.travis-ci.org/wikimedia/mediawiki-extensions-Maps.png?branch=master)](http://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
 
 Maps is the MediaWiki extension that provides the ability to visualize geographic data
 with dynamic, JavaScript based, mapping API's such as Google Maps and OpenLayers in your
@@ -18,8 +15,7 @@ Bing maps and others.
 
 Notes on installing Maps are found in the file INSTALL.
 
-
-== Contributing ==
+## Contributing
 
 If you have bug reports or requests, please add them to the Talk page [0]. You can also
 send them to Jeroen De Dauw, jeroendedauw -at- gmail.com, and Yaron Koren, at yaron57 -at-
@@ -29,34 +25,42 @@ gmail.com.
 
 For more info, see http://mapping.referata.com/wiki/Mapping_on_MediaWiki
 
-== Credits to other projects ==
+## Credits to other projects
 
-=== jQuery ===
+### jQuery
 
 This extension uses code from the jQuery library.
-jQuery is dual licensed under the MIT [0] and GPL [1] licenses.
+jQuery is dual licensed under the
+[MIT](http://www.opensource.org/licenses/mit-license.php)
+and
+[GPL](http://www.opensource.org/licenses/gpl-license.php)
+licenses.
 
-=== OpenLayers ===
+### OpenLayers
 
 This extension includes code from the OpenLayers application.
-OpenLayers is an open-source product released under a BSD-style license [2].
+OpenLayers is an open-source product released under a
+[BSD-style license](http://svn.openlayers.org/trunk/openlayers/license.txt).
 
-=== geoxml3 ===
+### geoxml3
 
 This extension includes a copy of the geoxml3 KML processor.
-geoxml3 is released under the Apache License 2.0 license [3].
+geoxml3 is released under the
+[Apache License 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
 
-=== google-maps-utility-library-v3 ===
+### google-maps-utility-library-v3
 
-This extension icnludes code from the google-maps-utility-library-v3 (googleearth.js).
-It is released under the Apache License 2.0 license [3].
+This extension includes code from the google-maps-utility-library-v3 (googleearth.js).
+It is released under the
+[Apache License 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
 
-=== OpenStreetMap.js ===
+### OpenStreetMap.js
 
 This extension includes the OpenStreetMap.js file which can be found here:
 http://www.openstreetmap.org/openlayers/OpenStreetMap.js
 
-[0] http://www.opensource.org/licenses/mit-license.php
-[1] http://www.opensource.org/licenses/gpl-license.php
-[2] http://svn.openlayers.org/trunk/openlayers/license.txt
-[3] http://www.apache.org/licenses/LICENSE-2.0
+## Links
+
+* [Maps on Ohloh](https://www.ohloh.net/p/maps)
+* [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
+* [TravisCI build status](https://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
