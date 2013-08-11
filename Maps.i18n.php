@@ -3759,7 +3759,7 @@ $messages['km'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표 데이터로 변환하고 다른 지도 관련 작업을 할 수 있습니다. ([http://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
+	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 위치 정보 작업과 다른 지리적 작업을 할 수 있습니다. ([http://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
 	'right-geocode' => '위치 정보',
 	'maps_map' => '지도',
 	'maps-loading-map' => '지도를 불러오는 중...',
