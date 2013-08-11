@@ -954,6 +954,7 @@ $messages['km'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
+	'semanticmaps-desc' => '시맨틱 미디어위키 확장 기능으로 저장된 좌표 데이터를 보고 편집할 수 있는 기능을 제공합니다 ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps 자세한 정보...])',
 	'semanticmaps-unrecognizeddistance' => '$1 값은 올바른 거리가 아닙니다.',
 	'semanticmaps-kml-link' => 'KML 파일 보기',
 	'semanticmaps-default-kml-pagelink' => '$1 문서 보기',
@@ -967,7 +968,15 @@ $messages['ko'] = array(
 	'semanticmaps-forminput-remove' => '제거',
 	'semanticmaps-forminput-add' => '추가',
 	'semanticmaps-forminput-locations' => '위치',
+	'semanticmaps-par-staticlocations' => '쿼리된 데이터와 함께 지도를 추가하는 위치의 목록입니다. display_points와 같이, 구분자로 물결표 "~"를 사용하여 위치마다 제목과 설명, 아이콘을 추가할 수 있습니다.',
 	'semanticmaps-par-forceshow' => '보여줄 위치가 없을 때 지도를 보이겠습니까?',
+	'semanticmaps-par-showtitle' => '표시 정보 창에서 제목에 보여주거나 보여주지 않습니다. 정보 창 내용의 형식에 틀을 사용할 때 이를 비활성화하면 편리합니다.',
+	'semanticmaps-par-hidenamespace' => '표시 정보 창의 이름공간 제목 보이기',
+	'semanticmaps-par-centre' => '지도의 가운데입니다. 제공하지 않으면, 지도는 자동으로 지도에서 모든 표시를 보여줄 최적의 가운데를 선택합니다.',
+	'semanticmaps-par-template' => '정보 창 내용을 형식에 사용하는 틀입니다.',
+	'semanticmaps-par-geocodecontrol' => '위치 정보 컨트롤을 보여줍니다.',
+	'semanticmaps-kml-text' => '각 페이지와 관련된 텍스트입니다. 추가적인 쿼리된 속성이 있으면 덮어 씁니다.',
+	'semanticmaps-kml-title' => '결과에 대한 기본 제목',
 );
 
 /** Colognian (Ripoarisch)
