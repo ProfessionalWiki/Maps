@@ -974,9 +974,13 @@ $messages['ko'] = array(
 	'semanticmaps-par-hidenamespace' => '표시 정보 창의 이름공간 제목 보이기',
 	'semanticmaps-par-centre' => '지도의 가운데입니다. 제공하지 않으면, 지도는 자동으로 지도에서 모든 표시를 보여줄 최적의 가운데를 선택합니다.',
 	'semanticmaps-par-template' => '정보 창 내용을 형식에 사용하는 틀입니다.',
-	'semanticmaps-par-geocodecontrol' => '위치 정보 컨트롤을 보여줍니다.',
+	'semanticmaps-par-geocodecontrol' => '좌표화 컨트롤을 보여줍니다.',
 	'semanticmaps-kml-text' => '각 페이지와 관련된 텍스트입니다. 추가적인 쿼리된 속성이 있으면 덮어 씁니다.',
 	'semanticmaps-kml-title' => '결과에 대한 기본 제목',
+	'semanticmaps-kml-linkabsolute' => '링크는 (상대적와 반대인) 절대적이어야 합니다',
+	'semanticmaps-kml-pagelinktext' => '$1 문서는 문서 제목으로 바뀔 문서의 링크에 사용하는 텍스트',
+	'semanticmaps-shapes-improperformat' => '$1의 부적절한 형식입니다. 형식에 대해서는 설명서를 참고하세요.',
+	'semanticmaps-shapes-missingshape' => '$1에 대한 모양을 찾을 수 없습니다. 사용할 수 있는 모양에 대해서는 설명서를 참고하세요',
 );
 
 /** Colognian (Ripoarisch)
