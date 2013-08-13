@@ -18,3 +18,5 @@ basic commands:
    git merge hldev (merge changes to grazwiki)
    git checkout hldev (return to development version)
 
+--
+
