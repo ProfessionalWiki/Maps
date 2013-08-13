@@ -1,0 +1,9 @@
+Notes on development in GrazWiki Project:
+
+branching model:
+  master ..... official releases
+    grazwiki .... for use at GrazWiki
+      hldev .... development HelmutLeitner
+
+grazwiki and hldev are based on version (tag) 2.0.1
+
