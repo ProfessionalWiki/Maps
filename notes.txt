@@ -7,3 +7,14 @@ branching model:
 
 grazwiki and hldev are based on version (tag) 2.0.1
 
+basic commands:
+   git branch (show branches, asterix with current)
+   git checkout hldev
+   (develop in hldev)
+   git add file
+   git commit -m "description of commit"
+
+   git checkout grazwiki
+   git merge hldev (merge changes to grazwiki)
+   git checkout hldev (return to development version)
+
