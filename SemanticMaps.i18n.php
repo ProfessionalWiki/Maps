@@ -93,8 +93,12 @@ See also:
 * {{msg-mw|Semanticmaps-latitude}}
 * {{msg-mw|Semanticmaps-longitude}}',
 	'semanticmaps-loading-forminput' => 'Message displayed during a computer action',
-	'semanticmaps_lookupcoordinates' => 'Submit button next to input box. The box contains the hint {{msg-mw|Semanticmaps_enteraddresshere}}',
-	'semanticmaps_enteraddresshere' => 'Hint provided in an input box. The submit button next to the input box is {{msg-mw|Semanticmaps_lookupcoordinates}}',
+	'semanticmaps_lookupcoordinates' => 'Submit button next to input box.
+
+The box contains the hint {{msg-mw|Semanticmaps enteraddresshere}}.',
+	'semanticmaps_enteraddresshere' => 'Hint provided in an input box.
+
+The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinates}}.',
 	'semanticmaps-updatemap' => 'Submit button label',
 	'semanticmaps-forminput-remove' => '{{Identical|Remove}}',
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
