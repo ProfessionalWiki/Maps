@@ -1611,10 +1611,14 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Andriykopanytsia
  * @author Base
  * @author Steve.rusyn
+ * @author SteveR
  */
 $messages['uk'] = array(
+	'semanticmaps-desc' => 'Надає можливість перегляду і редагування координат даних, збережених за допомогою Семантичного розширення Медіавікі ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps докладніше...])',
+	'semanticmaps-unrecognizeddistance' => 'Значення $1 є недопустимою відстанню.',
 	'semanticmaps-kml-link' => 'Переглянути KML-файл',
 	'semanticmaps-default-kml-pagelink' => 'Переглянути сторінку $1',
 	'semanticmaps-latitude' => 'Широта: $1',
@@ -1627,6 +1631,19 @@ $messages['uk'] = array(
 	'semanticmaps-forminput-remove' => 'Вилучити',
 	'semanticmaps-forminput-add' => 'Додати',
 	'semanticmaps-forminput-locations' => 'Місця',
+	'semanticmaps-par-staticlocations' => 'Перелік місць для додавання на карту разом із запитуваними даними. Наприклад, до display_points можна додати назву, опис та піктограму, використовуючи тильду „~“ в якості роздільника.',
+	'semanticmaps-par-forceshow' => 'Показати карту, навіть коли немає місця для відображення?',
+	'semanticmaps-par-showtitle' => 'Показує чи не показує заголовок в інформаційному вікні маркера. Вимикання цього корисне при використанні шаблону для форматування інформаційного вмісту вікна.',
+	'semanticmaps-par-hidenamespace' => 'Показувати заголовок простору імен у інформаційному вікні маркера',
+	'semanticmaps-par-centre' => 'Центр карти. Якщо не задано, то карта автоматично вибере оптимальний центр, який дозволяє відобразити всі маркери на карті.',
+	'semanticmaps-par-template' => 'Шаблон для форматування вмісту інформаційного вікна.',
+	'semanticmaps-par-geocodecontrol' => 'Показати управління геокодуваням.',
+	'semanticmaps-kml-text' => "Текст, пов'язаний з кожною сторінкою. Нехтується запитаними додатковими властивостями, якщо такі є.",
+	'semanticmaps-kml-title' => 'Типовий заголовок для результатів',
+	'semanticmaps-kml-linkabsolute' => 'Посилання мають бути абсолютними (на відміну від відносних)',
+	'semanticmaps-kml-pagelinktext' => 'Текст, який використовується для посилань на сторінку, в яких $1 буде замінено на назву сторінки',
+	'semanticmaps-shapes-improperformat' => 'Неправильне форматування з  $1. Будь ласка, дивіться документацію для форматування',
+	'semanticmaps-shapes-missingshape' => 'Немає форм для $1, див. документацію за доступними формами',
 );
 
 /** Urdu (اردو)
