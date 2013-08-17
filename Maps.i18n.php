@@ -326,11 +326,16 @@ Validation text indicating that there is something wrong with the "lines" parame
 * $2 - number of addresses',
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
-	'maps_unrecognized_coords' => '* $1 is a list
-* $2 is the number of list items for PLURAL use.',
+	'maps_unrecognized_coords' => 'Unused at this time. Parameters:
+* $1 - list of coordinates
+* $2 - number of coordinates
+See also:
+* {{msg-mw|Maps unrecognized coords for}}',
 	'maps_unrecognized_coords_for' => 'Unused at this time. Parameters:
 * $1 - list of coordinates
-* $2 - number of coordinates',
+* $2 - number of coordinates
+See also:
+* {{msg-mw|Maps unrecognized coords}}',
 	'maps_googlemaps3' => '{{optional}}',
 	'maps_openlayers' => '{{optional}}',
 	'maps_osm' => '{{optional}}',
@@ -3608,7 +3613,7 @@ $messages['ja'] = array(
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
 	'maps_geocoding_failed' => '以下の{{PLURAL:$2|住所}}を座標に変換できませんでした: $1',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
-	'maps_unrecognized_coords' => '以下の{{PLURAL:$2|座標}}は認識されませんでした: $1',
+	'maps_unrecognized_coords' => '以下の{{PLURAL:$2|座標}}を認識できませんでした: $1',
 	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}を認識できなかったため、地図に表示して{{PLURAL:$2|いません}}:
 $1',
 	'maps_map_cannot_be_displayed' => '地図を表示できません。',
