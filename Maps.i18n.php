@@ -6122,6 +6122,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Milicevic01
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -6144,10 +6145,11 @@ $messages['sr-ec'] = array(
 	'maps-longitude' => 'Географска дужина:',
 	'maps_googlemaps3' => 'Гугл мапе, треће издање',
 	'maps_openlayers' => 'Опенлејерс',
-	'maps_osm' => 'Опенстритмап',
+	'maps_osm' => 'OpenStreetMap',
 );
 
 /** Serbian (Latin script) (srpski (latinica)‎)
+ * @author Milicevic01
  */
 $messages['sr-el'] = array(
 	'maps_map' => 'Mapa',
@@ -6168,7 +6170,7 @@ $messages['sr-el'] = array(
 	'maps-longitude' => 'Geografska dužina:',
 	'maps_googlemaps3' => 'Gugl mape, treće izdanje',
 	'maps_openlayers' => 'Openlejers',
-	'maps_osm' => 'Openstritmap',
+	'maps_osm' => 'OpenStreetMap',
 );
 
 /** Swedish (svenska)
