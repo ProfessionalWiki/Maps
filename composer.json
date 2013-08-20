@@ -1,0 +1,29 @@
+{
+	"name": "mediawiki/maps",
+	"description": "Adds various mapping features to MediaWiki",
+	"keywords": ["MediaWiki", "Semantic MediaWiki", "Maps", "Google Maps", "OpenLayers", "OSM", "OpenStreetMap"],
+	"homepage": "https://www.mediawiki.org/wiki/Extension:Maps",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Jeroen De Dauw",
+			"email": "jeroendedauw@gmail.com",
+			"homepage": "http://jeroendedauw.com",
+			"role": "Creator and lead developer"
+		}
+	],
+	"support": {
+		"email": "semediawiki-user@lists.sourceforge.net",
+		"issues": "https://bugzilla.wikimedia.org/",
+		"irc": "irc://irc.freenode.net/mediawiki",
+		"forum": "https://www.mediawiki.org/wiki/Extension_talk:Maps",
+		"wiki": "https://www.mediawiki.org/wiki/Extension:Maps",
+		"source": "https://github.com/wikimedia/mediawiki-extensions-Maps"
+	},
+	"require": {
+		"php": ">=5.3.0",
+		"param-processor/param-processor": "dev-master",
+		"data-values/data-values": "dev-master"
+	},
+	"minimum-stability" : "dev"
+}

@@ -19,7 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-
+global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices;
 
 // Mapping services configuration
 
@@ -27,8 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$egMapsAvailableServices = array(
 		'googlemaps3',
 		'openlayers',
-                'leaflet',
-		//'osm'
+		'leaflet',
 	);
 
 	// String. The default mapping service, which will be used when no default
@@ -49,6 +48,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 	
 // Geocoding
+
+global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsUserGeoOverrides;
+global $egMapsAllowCoordsGeocoding, $egMapsEnableGeoCache, $egMapsGeoNamesUser;
 
 	// Array of String. Array containing all the geocoding services that will be
 	// made available to the user. Currently Maps provides the following services:
@@ -86,6 +88,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Coordinate configuration
 
+global $egMapsAvailableCoordNotations, $egMapsCoordinateNotation, $egMapsCoordinateDirectional;
+global $egMapsInternatDirectionLabels;
+
 	// The coordinate notations that should be available.
 	$egMapsAvailableCoordNotations = array(
 		Maps_COORDS_FLOAT,
@@ -108,7 +113,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 // Distance configuration
-	
+
+global $egMapsDistanceUnits, $egMapsDistanceUnit, $egMapsDistanceDecimals;
+
 	// Array. A list of units (keys) and how many meters they represent (value).
 	// No spaces! If the unit consists out of multiple words, just write them together.
 	$egMapsDistanceUnits = array(
@@ -135,6 +142,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	
 	
 // General map configuration
+
+global $egMapsMapWidth, $egMapsMapHeight, $egMapsSizeRestrictions, $egMapsDefaultMapCentre;
+global $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsResizableByDefault, $egMapsRezoomForKML;
 
 	// Integer or string. The default width and height of a map. These values will
 	// only be used when the user does not provide them.
@@ -165,7 +175,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 	
 // Other general configuration
-	
+
+global $egMapsDebugJS, $egMapsNamespaceIndex, $egMapsAllowExternalImages;
+
 	// When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
 	$egMapsDebugJS = false;
 	
@@ -180,7 +192,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Specific mapping service configuration
 
 	// Google Maps v3
-	
+
+global $egMapsGMaps3Zoom, $egMapsGMaps3Types, $egMapsGMaps3Type, $egMapsGMaps3Controls;
+global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
+global $egMapsGMaps3Layers, $egMapsGMaps3DefaultTilt, $egGoogleJsApiKey, $egMapsShowPOI;
+
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
 		$egMapsGMaps3Zoom = 14;
@@ -237,7 +253,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 	// OpenLayers
-		
+
+global $egMapsOpenLayersZoom, $egMapsOLControls, $egMapsOLLayers, $egMapsOLAvailableLayers;
+global $egMapsOLLayerGroups, $egMapsOLLayerDependencies;
+
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
 		$egMapsOpenLayersZoom = 13;
@@ -289,7 +308,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'bing' => array( 'bing-normal', 'bing-satellite', 'bing-hybrid' ),
 			'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
 		);
-		
+
+		global $wgJsMimeType;
+
 		// Layer dependencies
 		$egMapsOLLayerDependencies = array(
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
@@ -299,6 +320,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 	// Leaflet
 
+global $egMapsLeafletZoom;
+
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
 		$egMapsLeafletZoom = 14;
+
+
+global $egMapsGlobalJSVars;
+$egMapsGlobalJSVars = array();

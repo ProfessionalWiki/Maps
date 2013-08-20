@@ -22,30 +22,34 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is an extension to MediaWiki and thus not a valid entry point.' );
 }
 
-// Specify the function that will initialize the parser function.
-$wgHooks['MappingServiceLoad'][] = 'efMapsInitLeaflet';
+call_user_func( function() {
+	global $wgHooks, $wgResourceModules, $egMapsScriptPath;
 
-$wgResourceModules['ext.maps.leaflet'] = array(
-	'dependencies' => array( 'ext.maps.common' ),
-	'localBasePath' => __DIR__,
-	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/Leaflet',
-	'group' => 'ext.maps',
-	'scripts' => array(
-		'leaflet/leaflet.js',
-		'jquery.leaflet.js',
-		'ext.maps.leaflet.js',
+	// Specify the function that will initialize the parser function.
+	$wgHooks['MappingServiceLoad'][] = 'efMapsInitLeaflet';
+
+	$wgResourceModules['ext.maps.leaflet'] = array(
+		'dependencies' => array( 'ext.maps.common' ),
+		'localBasePath' => __DIR__,
+		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/Leaflet',
+		'group' => 'ext.maps',
+		'scripts' => array(
+			'leaflet/leaflet.js',
+			'jquery.leaflet.js',
+			'ext.maps.leaflet.js',
 		),
-	'styles' => array(
-		'leaflet/leaflet.css',
-		'leaflet/leaflet.ie.css',
-	),
-	'messages' => array(
-		'maps-markers',
-		'maps-copycoords-prompt',
-		'maps-searchmarkers-text',
-	),
-);
-	
+		'styles' => array(
+			'leaflet/leaflet.css',
+			'leaflet/leaflet.ie.css',
+		),
+		'messages' => array(
+			'maps-markers',
+			'maps-copycoords-prompt',
+			'maps-searchmarkers-text',
+		),
+	);
+} );
+
 /**
  * Initialization function for the Leaflet service.
  *

@@ -1,7 +1,5 @@
 # Maps
 
-[![Build Status](https://secure.travis-ci.org/wikimedia/mediawiki-extensions-Maps.png?branch=master)](http://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
-
 Maps is the MediaWiki extension that provides the ability to visualize geographic data
 with dynamic, JavaScript based, mapping API's such as Google Maps and OpenLayers in your
 wiki pages. It has build in support for geocoding, displaying maps, displaying markers,
@@ -13,17 +11,23 @@ a single map property! These mapping services include Google Maps, Yahoo! Maps, 
 and OpenStreetMap. These also allow you to display maps with Google Earth, OpenStreetMaps,
 Bing maps and others.
 
+[![Build Status](https://secure.travis-ci.org/wikimedia/mediawiki-extensions-Maps.png?branch=master)](http://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
+[![Coverage Status](https://coveralls.io/repos/wikimedia/mediawiki-extensions-Maps/badge.png?branch=master)](https://coveralls.io/r/wikimedia/mediawiki-extensions-Maps?branch=master)
+[![Dependency Status](https://www.versioneye.com/php/mediawiki:maps/dev-master/badge.png)](https://www.versioneye.com/php/mediawiki:maps/dev-master)
+
+On [Packagist](https://packagist.org/packages/mediawiki/maps):
+[![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
+[![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
+
 Notes on installing Maps are found in the file INSTALL.
 
 ## Contributing
 
-If you have bug reports or requests, please add them to the Talk page [0]. You can also
-send them to Jeroen De Dauw, jeroendedauw -at- gmail.com, and Yaron Koren, at yaron57 -at-
-gmail.com.
+If you have bug reports or requests, please add them to
+[the Talk page](https://www.mediawiki.org/wiki/Extension_talk:Maps).
+You can also send them to Jeroen De Dauw, jeroendedauw -at- gmail.com,
+and Yaron Koren, at yaron57 -at- gmail.com.
 
-[0] http://www.mediawiki.org/w/index.php?title=Extension_talk:Maps
-
-For more info, see http://mapping.referata.com/wiki/Mapping_on_MediaWiki
 
 ## Credits to other projects
 
@@ -64,3 +68,4 @@ http://www.openstreetmap.org/openlayers/OpenStreetMap.js
 * [Maps on Ohloh](https://www.ohloh.net/p/maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [TravisCI build status](https://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
+* [Semantic Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Semantic_Maps)
