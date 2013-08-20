@@ -6,7 +6,8 @@ originalDirectory=$(pwd)
 
 cd ..
 
-git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git phase3 --depth 1
+git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git phase3
+git checkout 1.21.1
 
 cd phase3
 
@@ -17,7 +18,7 @@ cd extensions
 cp -r $originalDirectory/* Maps
 
 cd Maps
-composer require satooshi/php-coveralls
+composer require satooshi/php-coveralls:dev-master
 cd ..
 
 echo 'require_once( __DIR__ . "/extensions/Maps/Maps.php" );' >> LocalSettings.php
