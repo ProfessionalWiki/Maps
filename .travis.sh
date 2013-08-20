@@ -20,12 +20,12 @@ cd Maps
 composer require satooshi/php-coveralls:dev-master
 cd ../..
 
-echo 'require_once( __DIR__ . "/extensions/Maps/Maps.php" );' >> LocalSettings.php
-
 echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
 echo 'ini_set("display_errors", 1);' >> LocalSettings.php
 echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
 echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
 echo "putenv( 'MW_INSTALL_PATH=$(pwd)' );" >> LocalSettings.php
+
+echo 'require_once( __DIR__ . "/extensions/Maps/Maps.php" );' >> LocalSettings.php
 
 php maintenance/update.php --quick
