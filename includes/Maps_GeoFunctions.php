@@ -1,7 +1,7 @@
 <?php
 
 // The approximate radius of the earth in meters, according to http://en.wikipedia.org/wiki/Earth_radius.
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 
 define( 'Maps_EARTH_RADIUS', 6371000 );
 
@@ -26,12 +26,12 @@ final class MapsGeoFunctions {
 	 * 
 	 * @since 2.0
 	 * 
-	 * @param GeoCoordinateValue $start
-	 * @param GeoCoordinateValue $end
+	 * @param LatLongValue $start
+	 * @param LatLongValue $end
 	 * 
 	 * @return float Distance in m.
 	 */
-	public static function calculateDistance( GeoCoordinateValue $start, GeoCoordinateValue $end ) {
+	public static function calculateDistance( LatLongValue $start, LatLongValue $end ) {
 		$northRad1 = deg2rad( $start->getLatitude() );
 		$eastRad1 = deg2rad( $start->getLongitude() );
 
@@ -68,13 +68,13 @@ final class MapsGeoFunctions {
 	 * 
 	 * @since 2.0
 	 * 
-	 * @param GeoCoordinateValue $startingCoordinates
+	 * @param LatLongValue $startingCoordinates
 	 * @param float $bearing The initial bearing in degrees.
 	 * @param float $distance The distance to travel in km.
 	 * 
 	 * @return array The destination coordinates, as non-directional floats in an array with lat and lon keys.
 	 */
-	public static function findDestination( GeoCoordinateValue $startingCoordinates, $bearing, $distance ) {
+	public static function findDestination( LatLongValue $startingCoordinates, $bearing, $distance ) {
 		$startingCoordinates = array(
 			'lat' => deg2rad( $startingCoordinates->getLatitude() ),
 			'lon' => deg2rad( $startingCoordinates->getLongitude() ),

@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use MWException;
 use ValueParsers\ParseException;
 
@@ -20,7 +20,7 @@ use ValueParsers\ParseException;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 final class Geocoders {
-	
+
 	/**
 	 * Associative with geoservice identifiers as keys containing instances of
 	 * the geocoder classes. 
@@ -125,7 +125,7 @@ final class Geocoders {
 	 * @param string|false $mappingService
 	 * @param boolean $checkForCoords
 	 *
-	 * @return GeoCoordinateValue|false
+	 * @return LatLongValue|false
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
@@ -198,7 +198,7 @@ final class Geocoders {
 	 * @param string $geoService
 	 * @param string|false $mappingService
 	 * 
-	 * @return GeoCoordinateValue|false
+	 * @return LatLongValue|false
 	 * @throws MWException
 	 */
 	public static function geocode( $address, $geoService = '', $mappingService = false ) {
@@ -222,7 +222,7 @@ final class Geocoders {
 	
 			// This means the cache returned an already computed set of coordinates.
 			if ( $cacheResult !== false ) {
-				assert( $cacheResult instanceof GeoCoordinateValue );
+				assert( $cacheResult instanceof LatLongValue );
 				return $cacheResult;
 			}				
 		}
@@ -240,7 +240,7 @@ final class Geocoders {
 			return false;
 		}
 
-		$coordinates = new GeoCoordinateValue(
+		$coordinates = new LatLongValue(
 			$coordinates['lat'],
 			$coordinates['lon']
 		);
@@ -258,7 +258,7 @@ final class Geocoders {
 	 * 
 	 * @param string $address
 	 * 
-	 * @return GeoCoordinateValue|boolean false
+	 * @return LatLongValue|boolean false
 	 */
 	protected static function cacheRead( $address ) {
 		global $egMapsEnableGeoCache;
@@ -277,9 +277,9 @@ final class Geocoders {
 	 * @since 0.7
 	 * 
 	 * @param string $address
-	 * @param GeoCoordinateValue $coordinates
+	 * @param LatLongValue $coordinates
 	 */
-	protected static function cacheWrite( $address, GeoCoordinateValue $coordinates ) {
+	protected static function cacheWrite( $address, LatLongValue $coordinates ) {
 		global $egMapsEnableGeoCache;
 		
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.

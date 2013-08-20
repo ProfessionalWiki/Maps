@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Location;
 
 /**
@@ -35,23 +35,23 @@ class Rectangle extends \MapsBaseFillableElement {
 
 	/**
 	 * @since 3.0
-	 * @var GeoCoordinateValue
+	 * @var LatLongValue
 	 */
 	protected $rectangleNorthEast;
 
 	/**
 	 * @since 3.0
-	 * @var GeoCoordinateValue
+	 * @var LatLongValue
 	 */
 	protected $rectangleSouthWest;
 
 	/**
 	 * @since 3.0
 	 *
-	 * @param GeoCoordinateValue $rectangleNorthEast
-	 * @param GeoCoordinateValue $rectangleSouthWest
+	 * @param LatLongValue $rectangleNorthEast
+	 * @param LatLongValue $rectangleSouthWest
 	 */
-	public function __construct( GeoCoordinateValue $rectangleNorthEast, GeoCoordinateValue $rectangleSouthWest ) {
+	public function __construct( LatLongValue $rectangleNorthEast, LatLongValue $rectangleSouthWest ) {
 		parent::__construct();
 
 		// TODO: validate bounds are correct, if not, flip
@@ -62,7 +62,7 @@ class Rectangle extends \MapsBaseFillableElement {
 	/**
 	 * @since 3.0
 	 *
-	 * @return GeoCoordinateValue
+	 * @return LatLongValue
 	 */
 	public function getRectangleNorthEast() {
 		return $this->rectangleNorthEast;
@@ -71,7 +71,7 @@ class Rectangle extends \MapsBaseFillableElement {
 	/**
 	 * @since 3.0
 	 *
-	 * @return GeoCoordinateValue
+	 * @return LatLongValue
 	 */
 	public function getRectangleSouthWest() {
 		return $this->rectangleSouthWest;
@@ -80,18 +80,18 @@ class Rectangle extends \MapsBaseFillableElement {
 	/**
 	 * @since 3.0
 	 *
-	 * @param GeoCoordinateValue $rectangleSouthWest
+	 * @param LatLongValue $rectangleSouthWest
 	 */
-	public function setRectangleSouthWest( GeoCoordinateValue $rectangleSouthWest ) {
+	public function setRectangleSouthWest( LatLongValue $rectangleSouthWest ) {
 		$this->rectangleSouthWest = $rectangleSouthWest;
 	}
 
 	/**
 	 * @since 3.0
 	 *
-	 * @param GeoCoordinateValue $rectangleNorthEast
+	 * @param LatLongValue $rectangleNorthEast
 	 */
-	public function setRectangleNorthEast( GeoCoordinateValue $rectangleNorthEast ) {
+	public function setRectangleNorthEast( LatLongValue $rectangleNorthEast ) {
 		$this->rectangleNorthEast = $rectangleNorthEast;
 	}
 

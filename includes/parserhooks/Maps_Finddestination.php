@@ -12,7 +12,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 
 class MapsFinddestination extends ParserHook {
 
@@ -133,7 +133,7 @@ class MapsFinddestination extends ParserHook {
 
 		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
 
-		$geoCoords = new \DataValues\GeoCoordinateValue( $destination['lat'], $destination['lon'] );
+		$geoCoords = new \DataValues\LatLongValue( $destination['lat'], $destination['lon'] );
 		$output = $formatter->format( $geoCoords );
 
 		return $output;

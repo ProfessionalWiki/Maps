@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use ValueParsers\StringValueParser;
 
 /**
@@ -66,7 +66,7 @@ class LineParser extends StringValueParser {
 	 *
 	 * @param string[] $coordinateStrings
 	 *
-	 * @return GeoCoordinateValue[]
+	 * @return LatLongValue[]
 	 */
 	protected function parseCoordinates( array $coordinateStrings ) {
 		$coordinates = array();

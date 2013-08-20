@@ -79,8 +79,8 @@ class GeodistanceTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location1' => new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
-			'location2' => new \Maps\Location( new \DataValues\GeoCoordinateValue( 42, 0 ) ),
+			'location1' => new \Maps\Location( new \DataValues\LatLongValue( 4, 2 ) ),
+			'location2' => new \Maps\Location( new \DataValues\LatLongValue( 42, 0 ) ),
 		);
 
 		$argLists[] = array( $values, $expected );
@@ -93,8 +93,8 @@ class GeodistanceTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location1' => new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) ),
-			'location2' => new \Maps\Location( new \DataValues\GeoCoordinateValue( 42, 0 ) ),
+			'location1' => new \Maps\Location( new \DataValues\LatLongValue( 4, 2 ) ),
+			'location2' => new \Maps\Location( new \DataValues\LatLongValue( 42, 0 ) ),
 			'decimals' => 1,
 		);
 

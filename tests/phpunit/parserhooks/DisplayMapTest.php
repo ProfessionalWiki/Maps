@@ -93,7 +93,7 @@ class DisplayMapTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'coordinates' => array( new \Maps\Location( new \DataValues\GeoCoordinateValue( 4, 2 ) ) ),
+			'coordinates' => array( new \Maps\Location( new \DataValues\LatLongValue( 4, 2 ) ) ),
 			'width' => '420px',
 			'height' => '420px',
 			'mappingservice' => 'openlayers',

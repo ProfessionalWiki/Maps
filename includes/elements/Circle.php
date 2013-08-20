@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Location;
 
 /**
@@ -34,7 +34,7 @@ use Maps\Location;
 class Circle extends \MapsBaseFillableElement {
 
 	/**
-	 * @var GeoCoordinateValue
+	 * @var LatLongValue
 	 */
 	protected $circleCentre;
 
@@ -44,10 +44,10 @@ class Circle extends \MapsBaseFillableElement {
 	protected $circleRadius;
 
 	/**
-	 * @param GeoCoordinateValue $circleCentre
+	 * @param LatLongValue $circleCentre
 	 * @param integer|float $circleRadius
 	 */
-	public function __construct( GeoCoordinateValue $circleCentre , $circleRadius ) {
+	public function __construct( LatLongValue $circleCentre , $circleRadius ) {
 		parent::__construct();
 
 		$this->setCircleCentre( $circleCentre );
@@ -55,16 +55,16 @@ class Circle extends \MapsBaseFillableElement {
 	}
 
 	/**
-	 * @return GeoCoordinateValue
+	 * @return LatLongValue
 	 */
 	public function getCircleCentre() {
 		return $this->circleCentre;
 	}
 
 	/**
-	 * @param GeoCoordinateValue $circleCentre
+	 * @param LatLongValue $circleCentre
 	 */
-	public function setCircleCentre( GeoCoordinateValue $circleCentre ) {
+	public function setCircleCentre( LatLongValue $circleCentre ) {
 		$this->circleCentre = $circleCentre;
 	}
 

@@ -2,11 +2,11 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use MWException;
 
 /**
- * Class representing a collection of GeoCoordinateValue objects forming a line.
+ * Class representing a collection of LatLongValue objects forming a line.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,21 +36,21 @@ class Line extends \MapsBaseStrokableElement {
 	/**
 	 * @since 3.0
 	 *
-	 * @var GeoCoordinateValue[]
+	 * @var LatLongValue[]
 	 */
 	protected $coordinates;
 
 	/**
 	 * @since 3.0
 	 *
-	 * @param GeoCoordinateValue[] $coordinates
+	 * @param LatLongValue[] $coordinates
 	 *
 	 * @throws MWException
 	 */
 	public function __construct( array $coordinates = array() ) {
 		foreach ( $coordinates as $coordinate ) {
-			if ( !( $coordinate instanceof GeoCoordinateValue ) ) {
-				throw new MWException( 'Can only construct Maps\Line with DataValues\GeoCoordinateValue objects' );
+			if ( !( $coordinate instanceof LatLongValue ) ) {
+				throw new MWException( 'Can only construct Maps\Line with DataValues\LatLongValue objects' );
 			}
 		}
 
@@ -62,7 +62,7 @@ class Line extends \MapsBaseStrokableElement {
 	/**
 	 * @since 3.0
 	 *
-	 * @return GeoCoordinateValue[]
+	 * @return LatLongValue[]
 	 */
 	public function getLineCoordinates() {
 		return $this->coordinates;

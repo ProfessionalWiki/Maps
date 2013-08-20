@@ -90,7 +90,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\GeoCoordinateValue( 4, 2 ),
+			'location' => new \DataValues\LatLongValue( 4, 2 ),
 		);
 
 		$argLists[] = array( $values, $expected );
@@ -102,7 +102,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\GeoCoordinateValue( 4, 2 ),
+			'location' => new \DataValues\LatLongValue( 4, 2 ),
 			'directional' => !$definitions['directional']->getDefault(),
 			'format' => Maps_COORDS_DD,
 		);
@@ -116,7 +116,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\GeoCoordinateValue( 4, 2 ),
+			'location' => new \DataValues\LatLongValue( 4, 2 ),
 			'directional' => !$definitions['directional']->getDefault(),
 			'format' => Maps_COORDS_DD,
 		);

@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Line;
 
 /**
@@ -80,7 +80,7 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 			foreach ( $values as $value ) {
 				$input[] = implode( ',', $value );
-				$output[] = new GeoCoordinateValue( $value[0], $value[1] );
+				$output[] = new LatLongValue( $value[0], $value[1] );
 			}
 
 			$input = implode( ':', $input );

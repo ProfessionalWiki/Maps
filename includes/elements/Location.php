@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use MWException;
 
 /**
@@ -23,7 +23,7 @@ class Location extends \Maps\BaseElement {
 	/**
 	 * @since 3.0
 	 *
-	 * @var GeoCoordinateValue
+	 * @var LatLongValue
 	 */
 	protected $coordinates;
 
@@ -71,7 +71,7 @@ class Location extends \Maps\BaseElement {
 	 * @return Location
 	 */
 	public static function newFromLatLon( $lat, $lon ) {
-		return new self( new GeoCoordinateValue( $lat, $lon ) );
+		return new self( new LatLongValue( $lat, $lon ) );
 	}
 
 	/**
@@ -98,11 +98,11 @@ class Location extends \Maps\BaseElement {
 	/**
 	 * Constructor.
 	 *
-	 * @param GeoCoordinateValue $coordinates
+	 * @param LatLongValue $coordinates
 	 *
 	 * @since 3.0
 	 */
-	public function __construct( GeoCoordinateValue $coordinates ) {
+	public function __construct( LatLongValue $coordinates ) {
 		parent::__construct();
 		$this->coordinates = $coordinates;
 	}
@@ -113,9 +113,9 @@ class Location extends \Maps\BaseElement {
 	 *
 	 * @since 3.0
 	 *
-	 * @param GeoCoordinateValue $coordinates
+	 * @param LatLongValue $coordinates
 	 */
-	public function setCoordinates( GeoCoordinateValue $coordinates ) {
+	public function setCoordinates( LatLongValue $coordinates ) {
 		$this->coordinates = $coordinates;
 	}
 
@@ -150,7 +150,7 @@ class Location extends \Maps\BaseElement {
 	 *
 	 * @since 3.0
 	 *
-	 * @return GeoCoordinateValue
+	 * @return LatLongValue
 	 */
 	public function getCoordinates() {
 		return $this->coordinates;
@@ -312,7 +312,7 @@ class Location extends \Maps\BaseElement {
 		$array = array(
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
-			'alt' => $this->coordinates->getAltitude(),
+			'alt' => 0,
 			'address' => $this->getAddress( false ),
 			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,

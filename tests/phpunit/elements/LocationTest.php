@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Location;
 
 /**
@@ -60,11 +60,11 @@ class LocationTest extends BaseElementTest {
 		$argLists[] = array( false, '' );
 		$argLists[] = array( false, '4,2' );
 		$argLists[] = array( false, array() );
-		$argLists[] = array( false, array( new GeoCoordinateValue( 4, 2 ) ) );
+		$argLists[] = array( false, array( new LatLongValue( 4, 2 ) ) );
 
-		$argLists[] = array( true, new GeoCoordinateValue( 4, 2 ) );
-		$argLists[] = array( true, new GeoCoordinateValue( 42, 42 ) );
-		$argLists[] = array( true, new GeoCoordinateValue( -4.2, -42 ) );
+		$argLists[] = array( true, new LatLongValue( 4, 2 ) );
+		$argLists[] = array( true, new LatLongValue( 42, 42 ) );
+		$argLists[] = array( true, new LatLongValue( -4.2, -42 ) );
 
 		return $argLists;
 	}
@@ -77,7 +77,7 @@ class LocationTest extends BaseElementTest {
 	public function testGetLineCoordinates( Location $location, array $arguments ) {
 		$coordinates = $location->getCoordinates();
 
-		$this->assertType( 'DataValues\GeoCoordinateValue', $coordinates );
+		$this->assertType( 'DataValues\LatLongValue', $coordinates );
 		$this->assertTrue( $coordinates->equals( $arguments[0] ) );
 	}
 

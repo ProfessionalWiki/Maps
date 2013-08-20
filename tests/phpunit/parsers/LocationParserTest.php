@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Location;
 
 /**
@@ -57,11 +57,11 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 		);
 
 		foreach ( $valid as $value => $expected ) {
-			$expected = new Location( new GeoCoordinateValue( $expected[0], $expected[1] ) );
+			$expected = new Location( new LatLongValue( $expected[0], $expected[1] ) );
 			$argLists[] = array( (string)$value, $expected );
 		}
 
-		$location = new Location( new GeoCoordinateValue( 4, 2 ) );
+		$location = new Location( new LatLongValue( 4, 2 ) );
 		$location->setTitle( 'Title' );
 		$location->setText( 'some description' );
 		$argLists[] = array( '4,2~Title~some description', $location );

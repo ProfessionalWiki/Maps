@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Rectangle;
 
 /**
@@ -59,14 +59,14 @@ class RectangleTest extends BaseElementTest {
 		$argLists[] = array( false );
 		$argLists[] = array( false, '' );
 		$argLists[] = array( false, '4,2' );
-		$argLists[] = array( false, new GeoCoordinateValue( 4, 2 ) );
+		$argLists[] = array( false, new LatLongValue( 4, 2 ) );
 		$argLists[] = array( false, array() );
-		$argLists[] = array( false, array( new GeoCoordinateValue( 4, 2 ) ) );
-		$argLists[] = array( false, new GeoCoordinateValue( 4, 2 ), 'foobar' );
-		$argLists[] = array( false, 'foobar', new GeoCoordinateValue( 4, 2 ) );
+		$argLists[] = array( false, array( new LatLongValue( 4, 2 ) ) );
+		$argLists[] = array( false, new LatLongValue( 4, 2 ), 'foobar' );
+		$argLists[] = array( false, 'foobar', new LatLongValue( 4, 2 ) );
 
-		$argLists[] = array( true, new GeoCoordinateValue( 4, 2 ), new GeoCoordinateValue( 4, 2 ) );
-		$argLists[] = array( true, new GeoCoordinateValue( 4, 2 ), new GeoCoordinateValue( -4, -2 ) );
+		$argLists[] = array( true, new LatLongValue( 4, 2 ), new LatLongValue( 4, 2 ) );
+		$argLists[] = array( true, new LatLongValue( 4, 2 ), new LatLongValue( -4, -2 ) );
 
 		return $argLists;
 	}
@@ -88,8 +88,8 @@ class RectangleTest extends BaseElementTest {
 	 */
 	public function testSetCorners( Rectangle $rectangle, array $arguments ) {
 		$coordinates = array(
-			new GeoCoordinateValue( 42, 42 ),
-			new GeoCoordinateValue( 0, 0 )
+			new LatLongValue( 42, 42 ),
+			new LatLongValue( 0, 0 )
 		);
 
 		foreach ( $coordinates as $coordinate ) {

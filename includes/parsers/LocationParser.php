@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use MWException;
 use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
@@ -78,7 +78,7 @@ class LocationParser extends StringValueParser {
 	 *
 	 * @param string $location
 	 *
-	 * @return GeoCoordinateValue
+	 * @return LatLongValue
 	 * @throws ParseException
 	 */
 	protected function getCoordinates( $location ) {
@@ -89,7 +89,7 @@ class LocationParser extends StringValueParser {
 				throw new ParseException( 'Failed to parse or geocode' );
 			}
 
-			assert( $location instanceof GeoCoordinateValue );
+			assert( $location instanceof LatLongValue );
 			return $location;
 		}
 

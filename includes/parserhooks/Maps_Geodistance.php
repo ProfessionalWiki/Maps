@@ -114,8 +114,8 @@ class MapsGeodistance extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		/**
-		 * @var \DataValues\GeoCoordinateValue $coordinates1
-		 * @var \DataValues\GeoCoordinateValue $coordinates2
+		 * @var \DataValues\LatLongValue $coordinates1
+		 * @var \DataValues\LatLongValue $coordinates2
 		 */
 		$coordinates1 = $parameters['location1']->getCoordinates();
 		$coordinates2 = $parameters['location2']->getCoordinates();

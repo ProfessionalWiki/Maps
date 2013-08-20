@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 
 /**
  * Class representing an image overlay.
@@ -44,11 +44,11 @@ class ImageOverlay extends Rectangle {
 	 *
 	 * @since 3.0
 	 *
-	 * @param GeoCoordinateValue $boundsNorthEast
-	 * @param GeoCoordinateValue $boundsSouthWest
+	 * @param LatLongValue $boundsNorthEast
+	 * @param LatLongValue $boundsSouthWest
 	 * @param string $image
 	 */
-	public function __construct( GeoCoordinateValue $boundsNorthEast, GeoCoordinateValue $boundsSouthWest, $image ) {
+	public function __construct( LatLongValue $boundsNorthEast, LatLongValue $boundsSouthWest, $image ) {
 		parent::__construct( $boundsNorthEast, $boundsSouthWest );
 		$this->image = $image;
 	}

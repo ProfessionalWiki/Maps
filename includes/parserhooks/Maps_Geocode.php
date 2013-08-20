@@ -110,7 +110,7 @@ class MapsGeocode extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		/**
-		 * @var \DataValues\GeoCoordinateValue $coordinates
+		 * @var \DataValues\LatLongValue $coordinates
 		 */
 		$coordinates = $parameters['location']->getCoordinates();
 

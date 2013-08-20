@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 
 /**
  * Unit tests for the Maps\Circle class.
@@ -58,10 +58,10 @@ class CircleTest extends BaseElementTest {
 		$argLists[] = array( false );
 		$argLists[] = array( false, '' );
 		$argLists[] = array( false, '4,2' );
-		$argLists[] = array( false, new GeoCoordinateValue( 4, 2 ) );
+		$argLists[] = array( false, new LatLongValue( 4, 2 ) );
 
-		$argLists[] = array( true, new GeoCoordinateValue( 4, 2 ), 42 );
-		$argLists[] = array( true, new GeoCoordinateValue( 42, 2.2 ), 9000.1 );
+		$argLists[] = array( true, new LatLongValue( 4, 2 ), 42 );
+		$argLists[] = array( true, new LatLongValue( 42, 2.2 ), 9000.1 );
 
 		$argLists[] = array( false, '~=[,,_,,]:3', 9000.1 );
 

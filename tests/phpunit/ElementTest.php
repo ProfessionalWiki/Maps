@@ -28,7 +28,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Element;
 
 class ElementTest extends \MediaWikiTestCase {
@@ -36,11 +36,11 @@ class ElementTest extends \MediaWikiTestCase {
 	public function elementProvider() {
 		$elements = array();
 
-		$elements[] = new \Maps\Rectangle( new GeoCoordinateValue( 4, 2 ), new GeoCoordinateValue( 5, 6 ) );
-		$elements[] = new \Maps\ImageOverlay( new GeoCoordinateValue( 4, 2 ), new GeoCoordinateValue( 5, 6 ), 'foo' );
-		$elements[] = new \Maps\Circle( new GeoCoordinateValue( 4, 2 ), 42 );
-		$elements[] = new \Maps\Line( array( new GeoCoordinateValue( 4, 2 ), new GeoCoordinateValue( 5, 6 ) ) );
-		//$elements[] = new \Maps\Polygon( array( new GeoCoordinateValue( 4, 2 ), new GeoCoordinateValue( 5, 6 ) ) );
+		$elements[] = new \Maps\Rectangle( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) );
+		$elements[] = new \Maps\ImageOverlay( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ), 'foo' );
+		$elements[] = new \Maps\Circle( new LatLongValue( 4, 2 ), 42 );
+		$elements[] = new \Maps\Line( array( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) ) );
+		//$elements[] = new \Maps\Polygon( array( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) ) );
 		// TODO: location
 
 		return $this->arrayWrap( $elements );

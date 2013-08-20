@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use DataValues\GeoCoordinateValue;
+use DataValues\LatLongValue;
 use Maps\Line;
 
 /**
@@ -59,23 +59,23 @@ class LineTest extends BaseElementTest {
 		$argLists[] = array( false );
 		$argLists[] = array( false, '' );
 		$argLists[] = array( false, '4,2' );
-		$argLists[] = array( false, new GeoCoordinateValue( 4, 2 ) );
+		$argLists[] = array( false, new LatLongValue( 4, 2 ) );
 
 		$argLists[] = array( true, array() );
-		$argLists[] = array( true, array( new GeoCoordinateValue( 4, 2 ) ) );
+		$argLists[] = array( true, array( new LatLongValue( 4, 2 ) ) );
 
 		$argLists[] = array(
 			true,
 			array(
-				new GeoCoordinateValue( 4, 2 ),
-				new GeoCoordinateValue( 2, 4 ),
-				new GeoCoordinateValue( 42, 42 ),
+				new LatLongValue( 4, 2 ),
+				new LatLongValue( 2, 4 ),
+				new LatLongValue( 42, 42 ),
 			)
 		);
 
 		$argLists[] = array( false, array( '~=[,,_,,]:3' ) );
-		$argLists[] = array( false, array( new GeoCoordinateValue( 4, 2 ), '~=[,,_,,]:3' ) );
-		$argLists[] = array( false, array( '~=[,,_,,]:3', new GeoCoordinateValue( 4, 2 ) ) );
+		$argLists[] = array( false, array( new LatLongValue( 4, 2 ), '~=[,,_,,]:3' ) );
+		$argLists[] = array( false, array( '~=[,,_,,]:3', new LatLongValue( 4, 2 ) ) );
 
 		return $argLists;
 	}
@@ -92,7 +92,7 @@ class LineTest extends BaseElementTest {
 		$this->assertEquals( count( $arguments[0] ), count( $coordinates ) );
 
 		foreach ( $coordinates as $geoCoordinate ) {
-			$this->assertInstanceOf( 'DataValues\GeoCoordinateValue', $geoCoordinate );
+			$this->assertInstanceOf( 'DataValues\LatLongValue', $geoCoordinate );
 		}
 	}
 
