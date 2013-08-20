@@ -6,7 +6,7 @@ php:
   - 5.5
 
 before_script:
-  - ./.travis.sh
+  - bash .travis.sh
 
 script:
   - phpunit --coverage-clover build/logs/clover.xml
