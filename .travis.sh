@@ -14,7 +14,7 @@ mysql -e 'create database its_a_mw;'
 php maintenance/install.php --dbtype mysql --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
 
 cd extensions
-cp -r $originalDirectory/* Maps
+cp -r $originalDirectory Maps
 
 cd Maps
 composer require satooshi/php-coveralls:dev-master
