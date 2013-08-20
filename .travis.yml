@@ -10,7 +10,7 @@ before_script:
 
 script:
   - cd ../phase3/tests/phpunit
-  - php phpunit.php --coverage-clover build/logs/clover.xml
+  - php phpunit.php --group Maps --coverage-clover build/logs/clover.xml
 
 after_script:
   - php vendor/bin/coveralls -v
