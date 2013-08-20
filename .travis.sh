@@ -6,13 +6,12 @@ originalDirectory=$(pwd)
 
 cd ..
 
-git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git phase3
-git checkout 1.21.1
+git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git phase3 --depth 1
 
 cd phase3
 
 mysql -e 'create database its_a_mw;'
-php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
+php maintenance/install.php --dbtype mysql --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
 
 cd extensions
 cp -r $originalDirectory/* Maps
