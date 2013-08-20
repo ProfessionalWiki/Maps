@@ -20,6 +20,9 @@ cd Maps
 composer require satooshi/php-coveralls:dev-master
 cd ../..
 
+pwd
+ls -lap
+
 echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
 echo 'ini_set("display_errors", 1);' >> LocalSettings.php
 echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
