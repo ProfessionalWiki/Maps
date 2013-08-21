@@ -13,6 +13,7 @@ script:
   - php phpunit.php --group Maps --coverage-clover build/logs/clover.xml
 
 after_script:
+  - cd ../../extensions/Maps
   - php vendor/bin/coveralls -v
 
 notifications:
