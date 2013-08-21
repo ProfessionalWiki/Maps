@@ -65,7 +65,9 @@ http://www.openstreetmap.org/openlayers/OpenStreetMap.js
 
 ## Links
 
+* [Maps examples](https://semantic-mediawiki.org/wiki/Maps_examples)
 * [Maps on Ohloh](https://www.ohloh.net/p/maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
+* [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)
 * [TravisCI build status](https://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
 * [Semantic Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Semantic_Maps)
