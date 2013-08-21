@@ -2,6 +2,8 @@
 
 namespace Maps\Test;
 
+use Maps\Elements\Location;
+
 /**
  * Tests for the Maps\Finddestination class.
  *
@@ -101,7 +103,7 @@ class FinddestinationTest extends ParserHookTest {
 					$expected = array(
 						'distance' => $expectedDistance,
 						'bearing' => (float)$bearing,
-						'location' => new \Maps\Location( $coordinateParser->parse( $location )->getValue() ),
+						'location' => new Location( $coordinateParser->parse( $location )->getValue() ),
 					);
 
 					$argLists[] = array( $values, $expected );

@@ -1,13 +1,10 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
-use Maps\Location;
 
 /**
- * Class representing a circle.
- *
  * @since 3.0
  *
  * @ingroup Maps

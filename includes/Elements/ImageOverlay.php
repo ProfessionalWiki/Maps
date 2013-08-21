@@ -1,12 +1,10 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
 
 /**
- * Class representing an image overlay.
- *
  * @since 3.0
  *
  * @ingroup Maps

@@ -3,14 +3,12 @@
 namespace Maps\Test;
 
 use DataValues\LatLongValue;
-use Maps\Line;
+use Maps\Elements\Line;
 
 /**
- * Unit tests for the Maps\LineParser class.
+ * @covers Maps\LineParser
  *
  * @since 3.0
- *
- * @ingroup MapsTest
  *
  * @group ValueParsers
  * @group Maps

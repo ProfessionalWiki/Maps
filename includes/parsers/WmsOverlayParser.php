@@ -2,6 +2,7 @@
 
 namespace Maps;
 
+use Maps\Elements\WmsOverlay;
 use MWException;
 use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
@@ -11,9 +12,6 @@ use ValueParsers\StringValueParser;
  * ValueParser that parses the string representation of a WMS layer
  *
  * @since 3.0
- *
- * @file
- * @ingroup ValueParsers
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

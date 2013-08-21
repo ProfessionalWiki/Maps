@@ -1,6 +1,9 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
+
+use Maps\Element;
+use Maps\ElementOptions;
 
 /**
  * Base class for objects implementing the @see Element interface.

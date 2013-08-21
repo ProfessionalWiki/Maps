@@ -1,4 +1,6 @@
 <?php
+use Maps\Elements\Line;
+use Maps\Elements\Location;
 
 /**
  * Class handling the #display_map rendering.
@@ -111,7 +113,7 @@ class MapsDisplayMapRenderer {
 		$parserClone = clone $parser;
 
 		/**
-		 * @var \Maps\Line $line
+		 * @var Line $line
 		 */
 		foreach ( $params['lines'] as &$line ) {
 			$line = $line->getJSONObject();
@@ -126,7 +128,7 @@ class MapsDisplayMapRenderer {
 		$params['locations'] = array();
 
 		/**
-		 * @var \Maps\Location $location
+		 * @var Location $location
 		 */
 		foreach ( $params['coordinates'] as $location ) {
 			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '',$visitedIconUrl);

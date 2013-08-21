@@ -1,11 +1,11 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
-use Maps\Polygon;
+use Maps\Elements\Polygon;
 
 /**
- * Unit tests for the Maps\Polygon class.
+ * @covers Maps\Elements\Polygon
  *
  * @since 3.0
  *
@@ -27,12 +27,12 @@ class PolygonTest extends LineTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Polygon';
+		return 'Maps\Elements\Polygon';
 	}
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Polygon $polygon
+	 * @param Polygon $polygon
 	 * @param array $arguments
 	 */
 	public function testSetOnlyVisibleOnHover( Polygon $polygon, array $arguments ) {

@@ -1,12 +1,10 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use MWException;
 
 /**
- * Class representing a polygon.
- *
  * @since 3.0
  *
  * @ingroup Maps

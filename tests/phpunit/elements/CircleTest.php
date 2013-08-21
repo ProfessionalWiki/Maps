@@ -1,11 +1,12 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
 use DataValues\LatLongValue;
+use Maps\Elements\Circle;
 
 /**
- * Unit tests for the Maps\Circle class.
+ * @covers Maps\Elements\Circle
  *
  * @since 3.0
  *
@@ -27,7 +28,7 @@ class CircleTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Circle';
+		return 'Maps\Elements\Circle';
 	}
 
 	/**
@@ -55,10 +56,10 @@ class CircleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Circle $circle
+	 * @param Circle $circle
 	 * @param array $arguments
 	 */
-	public function testGetCircleCentre( \Maps\Circle $circle, array $arguments ) {
+	public function testGetCircleCentre( Circle $circle, array $arguments ) {
 		$this->assertTrue( $circle->getCircleCentre()->equals( $arguments[0] ) );
 	}
 

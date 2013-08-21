@@ -1,12 +1,12 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
 use DataValues\LatLongValue;
-use Maps\Rectangle;
+use Maps\Elements\Rectangle;
 
 /**
- * Unit tests for the Maps\Rectangle class.
+ * @covers Maps\Elements\Rectangle
  *
  * @since 3.0
  *
@@ -28,7 +28,7 @@ class RectangleTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Rectangle';
+		return 'Maps\Elements\Rectangle';
 	}
 
 	/**
@@ -58,7 +58,7 @@ class RectangleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Rectangle $rectangle
+	 * @param Rectangle $rectangle
 	 * @param array $arguments
 	 */
 	public function testGetCorners( Rectangle $rectangle, array $arguments ) {
@@ -68,7 +68,7 @@ class RectangleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Rectangle $rectangle
+	 * @param Rectangle $rectangle
 	 * @param array $arguments
 	 */
 	public function testSetCorners( Rectangle $rectangle, array $arguments ) {

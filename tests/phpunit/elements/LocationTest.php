@@ -1,12 +1,12 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
 use DataValues\LatLongValue;
-use Maps\Location;
+use Maps\Elements\Location;
 
 /**
- * Unit tests for the Maps\Location class.
+ * @covers Maps\Elements\Location
  *
  * @since 3.0
  *
@@ -28,7 +28,7 @@ class LocationTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Location';
+		return 'Maps\Elements\Location';
 	}
 
 	/**

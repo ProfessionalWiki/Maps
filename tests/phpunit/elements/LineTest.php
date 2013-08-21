@@ -1,12 +1,12 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
 use DataValues\LatLongValue;
-use Maps\Line;
+use Maps\Elements\Line;
 
 /**
- * Unit tests for the Maps\Line class.
+ * @covers Maps\Elements\Line
  *
  * @since 3.0
  *
@@ -28,7 +28,7 @@ class LineTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Line';
+		return 'Maps\Elements\Line';
 	}
 
 	/**
@@ -67,7 +67,7 @@ class LineTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Line $line
+	 * @param Line $line
 	 * @param array $arguments
 	 */
 	public function testGetLineCoordinates( Line $line, array $arguments ) {

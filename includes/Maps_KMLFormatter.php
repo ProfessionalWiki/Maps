@@ -1,18 +1,15 @@
 <?php
 
+use Maps\Elements\Location;
+
 /**
  * Class to format geographical data to KML.
  * 
  * @since 0.7.3
- * 
- * @file Maps_KMLFormatter.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-use Maps\Location;
-
 class MapsKMLFormatter {
 
 	/**

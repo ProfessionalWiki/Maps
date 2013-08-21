@@ -3,16 +3,13 @@
 namespace Maps;
 
 use DataValues\LatLongValue;
+use Maps\Elements\Line;
 use ValueParsers\StringValueParser;
 
 /**
  * ValueParser that parses the string representation of a line.
  *
  * @since 3.0
- *
- * @file
- * @ingroup Maps
- * @ingroup ValueParser
  *
  * @licence GNU GPL v2+
  * @author Kim Eik

@@ -3,14 +3,12 @@
 namespace Maps\Test;
 
 use DataValues\LatLongValue;
-use Maps\Location;
+use Maps\Elements\Location;
 
 /**
- * Unit tests for the Maps\LocationParser class.
+ * @covers Maps\LocationParser
  *
  * @since 3.0
- *
- * @ingroup MapsTest
  *
  * @group ValueParsers
  * @group Maps

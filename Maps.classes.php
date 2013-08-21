@@ -23,16 +23,6 @@ $classes['MapsDisplayMapRenderer'] 		= __DIR__ . '/includes/Maps_DisplayMapRende
 
 $classes['MapEditorHtml']					= __DIR__ . '/includes/editor/MapEditorHTML.php';
 
-$classes['Maps\BaseElement']			= __DIR__ . '/includes/elements/BaseElement.php';
-$classes['Maps\Circle'] 				= __DIR__ . '/includes/elements/Circle.php';
-$classes['Maps\ImageOverlay'] 			= __DIR__ . '/includes/elements/ImageOverlay.php';
-$classes['Maps\Line'] 					= __DIR__ . '/includes/elements/Line.php';
-$classes['Maps\Location'] 				= __DIR__ . '/includes/elements/Location.php';
-$classes['Maps\Polygon'] 				= __DIR__ . '/includes/elements/Polygon.php';
-$classes['Maps\Rectangle'] 				= __DIR__ . '/includes/elements/Rectangle.php';
-$classes['Maps\WmsOverlay'] 			= __DIR__ . '/includes/elements/WmsOverlay.php';
-
-
 $classes['Maps\Api\Geocode'] 			= __DIR__ . '/includes/api/ApiGeocode.php';
 
 $classes['Maps\ServiceParam'] 			= __DIR__ . '/includes/ServiceParam.php';
@@ -62,9 +52,9 @@ $classes['MapsGoogleGeocoder'] 			= __DIR__ . '/includes/geocoders/Maps_GoogleGe
 
 $classes['SpecialMapEditor'] 			= __DIR__ . '/includes/specials/SpecialMapEditor.php';
 
-$classes['Maps\Test\BaseElementTest'] 	= __DIR__ . '/tests/phpunit/elements/BaseElementTest.php';
-$classes['Maps\Test\LineTest'] 			= __DIR__ . '/tests/phpunit/elements/LineTest.php';
-$classes['Maps\Test\RectangleTest'] 	= __DIR__ . '/tests/phpunit/elements/RectangleTest.php';
+$classes['Maps\Tests\Elements\BaseElementTest'] 	= __DIR__ . '/tests/phpunit/elements/BaseElementTest.php';
+$classes['Maps\Tests\Elements\LineTest'] 			= __DIR__ . '/tests/phpunit/elements/LineTest.php';
+$classes['Maps\Tests\Elements\RectangleTest'] 	= __DIR__ . '/tests/phpunit/elements/RectangleTest.php';
 
 $classes['Maps\Test\ParserHookTest'] 	= __DIR__ . '/tests/phpunit/parserhooks/ParserHookTest.php';
 

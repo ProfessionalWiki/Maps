@@ -1,11 +1,11 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
-use Maps\ImageOverlay;
+use Maps\Elements\ImageOverlay;
 
 /**
- * Unit tests for the Maps\Rectangle class.
+ * @covers Maps\Elements\ImageOverlay
  *
  * @since 3.0
  *
@@ -27,7 +27,7 @@ class ImageOverlayTest extends RectangleTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\ImageOverlay';
+		return 'Maps\Elements\ImageOverlay';
 	}
 
 	/**
@@ -55,7 +55,7 @@ class ImageOverlayTest extends RectangleTest {
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\ImageOverlay $imageOverlay
+	 * @param ImageOverlay $imageOverlay
 	 * @param array $arguments
 	 */
 	public function testGetImage( ImageOverlay $imageOverlay, array $arguments ) {

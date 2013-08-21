@@ -63,6 +63,28 @@ if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
 	throw new Exception( 'This version of Maps requires MediaWiki 1.18 or above; use Maps 1.0.x for MediaWiki 1.17 and Maps 0.7.x for older versions.' );
 }
 
+spl_autoload_register( function ( $className ) {
+	$className = ltrim( $className, '\\' );
+	$fileName = '';
+	$namespace = '';
+
+	if ( $lastNsPos = strripos( $className, '\\') ) {
+		$namespace = substr( $className, 0, $lastNsPos );
+		$className = substr( $className, $lastNsPos + 1 );
+		$fileName  = str_replace( '\\', '/', $namespace ) . '/';
+	}
+
+	$fileName .= str_replace( '_', '/', $className ) . '.php';
+
+	$namespaceSegments = explode( '\\', $namespace );
+
+	if ( $namespaceSegments[0] === 'Maps' ) {
+		if ( count( $namespaceSegments ) > 1 && $namespaceSegments[1] === 'Elements' ) {
+			require_once __DIR__ . '/includes/' . substr( $fileName, 5 );
+		}
+	}
+} );
+
 call_user_func( function() {
 	global $wgExtensionCredits, $wgExtensionAssetsPath, $wgScriptPath, $wgAutoloadClasses;
 	global $wgResourceModules, $wgGroupPermissions, $egMapsNamespaceIndex, $wgStyleVersion;

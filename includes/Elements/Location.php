@@ -1,8 +1,9 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
+use Maps\Geocoders;
 use MWException;
 
 /**
@@ -12,13 +13,11 @@ use MWException;
  *
  * @since 3.0
  *
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
-class Location extends \Maps\BaseElement {
+class Location extends BaseElement {
 
 	/**
 	 * @since 3.0
@@ -61,7 +60,7 @@ class Location extends \Maps\BaseElement {
 	protected $visitedIcon = '';
 
 	/**
-	 * Creates and returns a new instance of a \Maps\Location from a latitude and longitude.
+	 * Creates and returns a new instance of a Location from a latitude and longitude.
 	 *
 	 * @since 1.0
 	 *
@@ -75,7 +74,7 @@ class Location extends \Maps\BaseElement {
 	}
 
 	/**
-	 * Creates and returns a new instance of a \Maps\Location from an address.
+	 * Creates and returns a new instance of a Location from an address.
 	 *
 	 * @since 1.0
 	 *
