@@ -1,5 +1,7 @@
 <?php
 
+use SMW\FileExportPrinter;
+
 /**
  * SMWResultPrinter class for printing a query result as KML.
  *
@@ -11,7 +13,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SMKMLPrinter extends SMWExportPrinter {
+class SMKMLPrinter extends FileExportPrinter {
 
 	/**
 	 * Handler of the print request.
