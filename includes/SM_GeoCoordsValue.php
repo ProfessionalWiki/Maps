@@ -1,5 +1,9 @@
 <?php
 
+use DataValues\LatLongValue;
+use ValueFormatters\GeoCoordinateFormatter;
+use ValueParsers\ParseException;
+
 /**
  * Implementation of datavalues that are geographic coordinates.
  * 
@@ -13,10 +17,6 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Markus Krötzsch
  */
-use DataValues\GeoCoordinateValue;
-use ValueFormatters\GeoCoordinateFormatter;
-use ValueParsers\ParseException;
-
 class SMGeoCoordsValue extends SMWDataValue {
 
 	protected $wikiValue;
@@ -63,10 +63,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 		$coordinateFormatter = new GeoCoordinateFormatter( $options );
 
-		$value = new GeoCoordinateValue(
+		$value = new LatLongValue(
 			$dataItem->getLatitude(),
-			$dataItem->getLongitude(),
-			$dataItem->getAltitude()
+			$dataItem->getLongitude()
 		);
 
 		return $coordinateFormatter->format( $value );

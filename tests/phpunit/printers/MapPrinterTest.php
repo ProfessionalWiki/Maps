@@ -2,10 +2,10 @@
 
 namespace SM\Test;
 
-use SMW\Test\ResultPrinterTestCase as ResultPrinterTestCase;
+use SMW\Test\QueryPrinterTestCase;
 
 /**
- *  Tests for the SM\MapPrinter class.
+ * @covers SMMapPrinter
  *
  * @file
  * @since 1.8
@@ -20,7 +20,7 @@ use SMW\Test\ResultPrinterTestCase as ResultPrinterTestCase;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapPrinterTest extends ResultPrinterTestCase {
+class MapPrinterTest extends QueryPrinterTestCase {
 
 	/**
 	 * @see ResultPrinterTestCase::getFormats

@@ -120,4 +120,17 @@ $wgHooks['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefaultFormat';
 // Hook for adding a Semantic Maps links to the Admin Links extension.
 $wgHooks['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
 
-$wgHooks['UnitTestsList'][] = 'SemanticMapsHooks::registerUnitTests';
+$wgHooks['UnitTestsList'][]	= function( array &$files ) {
+	$directoryIterator = new RecursiveDirectoryIterator( __DIR__ . '/tests/phpunit/' );
+
+	/**
+	 * @var SplFileInfo $fileInfo
+	 */
+	foreach ( new RecursiveIteratorIterator( $directoryIterator ) as $fileInfo ) {
+		if ( substr( $fileInfo->getFilename(), -8 ) === 'Test.php' ) {
+			$files[] = $fileInfo->getPathname();
+		}
+	}
+
+	return true;
+};

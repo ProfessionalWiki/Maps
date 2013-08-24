@@ -1,5 +1,7 @@
 <?php
 
+use SMW\DataValueFactory;
+
 /**
  * Static class for hooks handled by the Semantic Maps extension.
  *
@@ -38,29 +40,6 @@ final class SemanticMapsHooks {
 	}
 
 	/**
-	 * Hook to add PHPUnit test cases.
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
-	 *
-	 * @since 2.0
-	 *
-	 * @param array $files
-	 *
-	 * @return boolean
-	 */
-	public static function registerUnitTests( array &$files ) {
-		$testFiles = array(
-			'printers/KMLPrinter',
-			'printers/MapPrinter',
-		);
-
-		foreach ( $testFiles as $file ) {
-			$files[] = __DIR__ . '/tests/phpunit/' . $file . 'Test.php';
-		}
-
-		return true;
-	}
-
-	/**
 	 * Adds support for the geographical coordinates and shapes data type to Semantic MediaWiki.
 	 *
 	 * @since 2.0
@@ -68,8 +47,8 @@ final class SemanticMapsHooks {
 	 * @return boolean
 	 */
 	public static function initGeoDataTypes() {
-		SMWDataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', SMWDataItem::TYPE_GEO );
-		SMWDataValueFactory::registerDatatype( '_gpo', 'SMGeoPolygonsValue', SMWDataItem::TYPE_BLOB );
+		DataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', SMWDataItem::TYPE_GEO );
+		DataValueFactory::registerDatatype( '_gpo', 'SMGeoPolygonsValue', SMWDataItem::TYPE_BLOB );
 		return true;
 	}
 
