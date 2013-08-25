@@ -1304,7 +1304,7 @@ Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordi
 Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.',
 	'maps-displaymap-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll',
-	'maps-displaymap-par-visitedicon' => 'Der Speicherort der Datei des Symbols, das Angeklicktes markiert',
+	'maps-displaymap-par-visitedicon' => 'Der Name eines Bildes, das für Markersymbole nach dem Anklicken verwendet werden soll.',
 	'maps-displaymap-par-zoom' => 'Der Anzeigestufe (Zoom) der Karte.
 Sofern keine angegeben wurde und mehrerer Markierungen auf der Karte vorhanden sind, wird die für deren gemeinsame Darstellung passende Anzeigestufe verwendet und nicht der Standardwert des Kartografiediensts.',
 	'maps-displaymap-par-centre' => 'Die Koordinaten, die zur Zentrierung der Karte verwendet werden sollen.
