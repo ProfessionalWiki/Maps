@@ -72,8 +72,10 @@ $messages['qqq'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Used as error message. Parameters:
 * $1 - distance',
 	'semanticmaps-kml' => '{{optional}}',
-	'semanticmaps-default-kml-pagelink' => 'Parameters:
-* $1 - probably a page title
+	'semanticmaps-default-kml-pagelink' => '<code>$1</code> is not a parameter, but it will be replaced by the page title.
+
+See also:
+* {{msg-mw|Semanticmaps-kml-pagelinktext}}
 {{Identical|View page}}',
 	'semanticmaps-latitude' => 'Parameters:
 * $1 - latitude
@@ -105,9 +107,14 @@ The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinat
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
 	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext".
 
+<code>$1</code> is not a parameter.
+
 See also:
-* {{msg-mw|semanticmaps-default-kml-pagelink}}',
-	'semanticmaps-shapes-improperformat' => 'Message displayed when the wikitext formatting of a shape is erroneous',
+* {{msg-mw|Semanticmaps-default-kml-pagelink}}',
+	'semanticmaps-shapes-improperformat' => 'Message displayed when the wikitext formatting of a shape is erroneous.
+
+Parameters:
+* $1 - text',
 	'semanticmaps-shapes-missingshape' => 'Message displayed when there is no such defined shape as $1',
 );
 
