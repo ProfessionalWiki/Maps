@@ -2197,7 +2197,7 @@ Si cette valeur est « non », chacune des valeurs sera géocodée, même s'il s
 Cela peut affecter la valeur par défaut du service de géocodage.',
 	'maps-displaymap-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
 	'maps-displaymap-par-coordinates' => "L'emplacement sur lequel la carte sera initialement centrée.",
-	'maps-displaymap-par-visitedicon' => "L'élément local d'un fichier à utiliser en tant qu'icône visité",
+	'maps-displaymap-par-visitedicon' => 'Le nom d’une image à utiliser comme icônes de marquage une fois qu’elles ont été cliquées',
 	'maps-displaymap-par-zoom' => "Permet de définir le niveau de zoom de la carte.
 Lorsqu'il n'est pas fourni et que plusieurs marqueurs sont présents sur la carte, le meilleur zoom sera pris, et non pas la valeur par défaut configurable.",
 	'maps-displaymap-par-centre' => "Permet de définir les coordonnées du centre de la carte pour display_point(s).
@@ -3584,6 +3584,7 @@ $messages['ja'] = array(
 	'maps-finddestination-par-distance' => '移動距離です。',
 	'maps-geodistance-par-unit' => '距離を出力する単位です。',
 	'maps-displaymap-par-coordinates' => '地図に表示する 1 か所以上の場所です。これらの場所にはマーカーが付きます。',
+	'maps-displaymap-par-visitedicon' => 'マーカー アイコンがクリックされた後に使用される画像の名前',
 	'maps-displaymap-par-circles' => '表示する円形',
 	'maps-displaymap-par-lines' => '表示する線',
 	'maps-displaymap-par-maxzoom' => '最大ズーム レベル',
@@ -6681,7 +6682,7 @@ $messages['uk'] = array(
 Це може вплинути на значення типової служби геокодування.',
 	'maps-displaymap-par-mappingservice' => 'Дозволяє налаштувати картографічний сервіс, який буде використовуватися для генерації карти.',
 	'maps-displaymap-par-coordinates' => "Один або більше об'єктів для відображення на карті. Вони будуть помічені маркером.",
-	'maps-displaymap-par-visitedicon' => 'Локальний файл для використання як значок відвідин',
+	'maps-displaymap-par-visitedicon' => 'Назва зображення, яке буде використовуватися для позначення значків після того, як вони були натиснені',
 	'maps-displaymap-par-zoom' => 'Дозволяє встановити рівень масштабування карти.
 Коли не передбачено і кілька маркери присутні на карті, буде вибрано найкращий і найбільш відповідний масштаб, який не конфігурується за замовчуванням.',
 	'maps-displaymap-par-centre' => 'Дозволяє задати координати центру карти для display_point(s).
