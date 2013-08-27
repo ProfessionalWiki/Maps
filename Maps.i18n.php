@@ -263,9 +263,10 @@ $messages['qqq'] = array(
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
-	'maps-error-invalid-layertype' => 'Parameters:
+	'maps-error-invalid-layertype' => 'Used as error message. Parameters:
 * $1 - a layer type
-* $2 - list of available layer types',
+* $2 - list of available layer types
+* $3 - number of available layer types',
 	'maps-error-no-layertype' => 'Used as error message. Parameters:
 * $1 - list of available layer types
 * $2 - number of available layer types',
@@ -4229,7 +4230,7 @@ $messages['mk'] = array(
 Ова може да влијае на основната вредност за служба за геокодирање.',
 	'maps-displaymap-par-mappingservice' => 'Овозможува задавање на картографска служба што ќе се користи за создавање на картата.',
 	'maps-displaymap-par-coordinates' => 'На кое место картата ќе биде првично сосредоточена.',
-	'maps-displaymap-par-visitedicon' => 'Местото на податотека што ќе се користи како икона за посетено',
+	'maps-displaymap-par-visitedicon' => 'Името на сликата што ќе се користи на обележувачите откако ќе стиснете на нив',
 	'maps-displaymap-par-zoom' => 'Овозможува задавање на приближеност на картата.
 Ако ова не е зададено, а на картата има повеќе обележувачи, тогаш ќе ви се прикаже приближеноста што најмногу одговара на екранот, наместо прилагодливата стандардна приближеност.',
 	'maps-displaymap-par-centre' => 'Овозможува укажување на координати на средиштето на картата за display_point(s).
