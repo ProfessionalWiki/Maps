@@ -2482,7 +2482,7 @@ Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenad
 Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'Unha ou máis localizacións a mostrar no mapa. Indicaranse cun marcador.',
-	'maps-displaymap-par-visitedicon' => 'O elemento local dun ficheiro a utilizar como icona de visitado',
+	'maps-displaymap-par-visitedicon' => 'O nome dunha imaxe a utilizar como iconas de marcador despois de premer nelas',
 	'maps-displaymap-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
 Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
