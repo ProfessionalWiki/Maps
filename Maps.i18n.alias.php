@@ -32,6 +32,11 @@ $specialPageAliases['diq'] = array(
 	'MapEditor' => array( 'VırneréXerita' ),
 );
 
+/** Greek (Ελληνικά) */
+$specialPageAliases['el'] = array(
+	'MapEditor' => array( 'ΕπεξεργαστήςΧαρτών' ),
+);
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = array(
 	'MapEditor' => array( 'ویرایشگر_نقشه' ),
