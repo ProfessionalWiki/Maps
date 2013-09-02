@@ -44,8 +44,8 @@ $messages['en'] = array(
 	'semanticmaps-par-hidenamespace'	=> 'Show the namespace title in the marker info window',
 	'semanticmaps-par-centre'		=> 'The center of the map. When not provided, the map will automatically pick the optimal center to display all markers on the map.',
 	'semanticmaps-par-template'		=> 'A template to use to format the info window contents.',
-	
 	'semanticmaps-par-geocodecontrol'	=> 'Show the geocoding control.',
+	'semanticmaps-par-activeicon'		=> 'Icon to be displayed instead of default marker, when active page is equal to query result',
 
 	'semanticmaps-kml-text' => 'The text associated with each page. Overridden by the additional queried properties if any.',
 	'semanticmaps-kml-title' => 'The default title for results',
@@ -116,6 +116,7 @@ See also:
 Parameters:
 * $1 - text',
 	'semanticmaps-shapes-missingshape' => 'Message displayed when there is no such defined shape as $1',
+	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}'
 );
 
 /** Afrikaans (Afrikaans)

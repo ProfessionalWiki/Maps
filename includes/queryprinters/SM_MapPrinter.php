@@ -83,6 +83,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			'default' => $smgQPTemplate,
 		);
 
+		$params['activeicon'] = array (
+			'type' => 'string',
+		);
+
 		// Give grep a chance to find the usages:
 		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
 		// semanticmaps-par-hidenamespace, semanticmaps-par-centre, semanticmaps-par-template,
@@ -124,6 +128,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		$queryHandler->setShowSubject( $params['showtitle'] );
 		$queryHandler->setTemplate( $params['template'] );
 		$queryHandler->setHideNamespace( $params['hidenamespace'] );
+		$queryHandler->setActiveIcon( $params['activeicon'] );
 
 		$this->handleMarkerData( $params, $queryHandler );
 		$locationAmount = count( $params['locations'] );
