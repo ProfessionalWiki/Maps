@@ -868,6 +868,7 @@ $messages['id'] = array(
  * @author Beta16
  * @author Civvì
  * @author Darth Kule
+ * @author Gianfranco
  * @author HalphaZ
  */
 $messages['it'] = array(
@@ -896,6 +897,8 @@ $messages['it'] = array(
 	'semanticmaps-kml-title' => 'Il titolo predefinito per i risultati',
 	'semanticmaps-kml-linkabsolute' => 'I collegamenti dovranno essere assoluti o no (ovvero relativi)',
 	'semanticmaps-kml-pagelinktext' => 'Il testo da utilizzare per i collegamenti alla pagina, in cui $1 verrà sostituito dal titolo della pagina',
+	'semanticmaps-shapes-improperformat' => 'Formattazione impropria di $1. Per favore controlla la documentazione sulla formattazione',
+	'semanticmaps-shapes-missingshape' => 'Nessuna forma trovata per $1. Per favore controlla la documentazione sulle forme disponibili',
 );
 
 /** Japanese (日本語)
