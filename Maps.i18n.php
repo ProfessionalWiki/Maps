@@ -340,7 +340,9 @@ See also:
 	'maps_googlemaps3' => '{{optional}}',
 	'maps_openlayers' => '{{optional}}',
 	'maps_osm' => '{{optional}}',
-	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
+	'maps_centred_on' => 'Parameters:
+* $1 - latitude
+* $2 - longitude',
 	'maps-googlemaps3-par-type' => '{{maps-par|googlemaps3|type}}',
 	'maps-googlemaps3-par-types' => '{{maps-par|googlemaps3|types}}',
 	'maps-googlemaps3-par-layers' => '{{maps-par|googlemaps3|layers}}',
@@ -5598,6 +5600,7 @@ $1',
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Eduardo.mps
  * @author Giro720
  * @author Luckas
@@ -5605,7 +5608,7 @@ $1',
  * @author 555
  */
 $messages['pt-br'] = array(
-	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://mapping.referata.com/wiki/Examples exemplos])', # Fuzzy
+	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://www.semantic-mediawiki.org/wiki/Maps mais informações...])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
 	'maps-markers' => 'Marcadores',
