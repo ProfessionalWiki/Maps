@@ -325,8 +325,9 @@ Validation text indicating that there is something wrong with the "lines" parame
 	'maps_geocoding_failed' => 'Unused at this time. Parameters:
 * $1 - list of addresses
 * $2 - number of addresses',
-	'maps_geocoding_failed_for' => '* $1 is a list
-* $2 is the number of list items for PLURAL use.',
+	'maps_geocoding_failed_for' => 'Parameters:
+* $1 - list of items
+* $2 - number of items, for PLURAL support',
 	'maps_unrecognized_coords' => 'Unused at this time. Parameters:
 * $1 - list of coordinates
 * $2 - number of coordinates
