@@ -4985,10 +4985,19 @@ $messages['nn'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'maps-desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocodadas
-([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://mapping.referata.com/wiki/Maps_examples demonstracion]).
-Servicis de cartografia disponibles : $1", # Fuzzy
+	'maps-desc' => "Permet d'afichar de mapas dinamicas dins las paginas del wiki, d'adreças geoencodadas e d'autras operacions geograficas. ([http://www.semantic-mediawiki.org/wiki/Maps mai d'info...])",
+	'right-geocode' => 'Geocòde',
 	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Cargament de la mapa...',
+	'maps-load-failed' => 'Impossible de cargar la mapa !',
+	'maps-markers' => 'Marcadors',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTRADA',
+	'maps-searchmarkers-text' => 'Marcadors de filtre',
+	'maps-others' => 'autres',
+	'maps-ns-layer' => 'Jaç',
+	'maps-ns-layer-talk' => 'Discussion jaç',
+	'maps-layer-property' => 'Proprietat',
+	'maps-layer-value' => 'Valor',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
