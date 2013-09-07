@@ -1215,9 +1215,20 @@ $messages['nn'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'semanticmaps-desc' => "Permet de veire e modificar las donadas de coordenadas estocadas a travèrs l'extension Semantic MediaWiki. [https://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentacion]. [https://mapping.referata.com/wiki/Examples Demo]", # Fuzzy
+	'semanticmaps-desc' => "Permet d'afichar e de modificar las donadas de coordenadas emmagazinadas per l'extension Semantic MediaWiki. ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mai d'info...]).",
+	'semanticmaps-unrecognizeddistance' => 'La valor $1 es pas una distància valida',
+	'semanticmaps-kml-link' => 'Veire lo fichièr KML',
+	'semanticmaps-default-kml-pagelink' => 'Veire l’article $1',
+	'semanticmaps-latitude' => 'Latitud : $1',
+	'semanticmaps-longitude' => 'Longitud : $1',
+	'semanticmaps-altitude' => 'Altitud : $1',
+	'semanticmaps-loading-forminput' => "Cargament del formulari d'entrada de la mapa...",
 	'semanticmaps_lookupcoordinates' => 'Estimar las coordenadas',
 	'semanticmaps_enteraddresshere' => 'Picatz aicí l’adreça',
+	'semanticmaps-updatemap' => 'Mesa a jorn de la mapa',
+	'semanticmaps-forminput-remove' => 'Levar',
+	'semanticmaps-forminput-add' => 'Apondre',
+	'semanticmaps-forminput-locations' => 'Emplaçaments',
 );
 
 /** Polish (polski)
@@ -1319,6 +1330,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Eduardo.mps
  * @author Giro720
  * @author Luckas Blade
@@ -1342,6 +1354,7 @@ $messages['pt-br'] = array(
 	'semanticmaps-par-staticlocations' => 'Uma lista de localizações para adicionar ao mapa junto aos dados consultados. Assim como nos pontos a serem exibidos ("display_points"), você pode adicionar um título, descrição e ícone por localização, usando o til ("~") como separador.',
 	'semanticmaps-par-forceshow' => 'Mostrar o mapa mesmo quando não existirem localizações para exibir?',
 	'semanticmaps-par-showtitle' => 'Mostrar, ou não, um título na janela informativa do marcador. É frequentemente desejável desativar este recurso quando estiver usando uma predefinição para formatar o conteúdo da janela informativa.',
+	'semanticmaps-par-hidenamespace' => 'Mostrar o título do domínio na janela de informações do marcador',
 	'semanticmaps-par-centre' => 'O centro do mapa. Quando este não for definido, o mapa escolherá automaticamente o centro ideal para apresentar todos os marcadores do mapa.',
 	'semanticmaps-par-template' => 'Uma predefinição que será usada para formatar o conteúdo da janela informativa.',
 	'semanticmaps-par-geocodecontrol' => 'Exibir o controle de geocodificação.',
@@ -1349,6 +1362,7 @@ $messages['pt-br'] = array(
 	'semanticmaps-kml-title' => 'O título padrão para os resultados',
 	'semanticmaps-kml-linkabsolute' => 'Se os links deverão ser absolutos ou relativos',
 	'semanticmaps-kml-pagelinktext' => 'O texto a ser usado nos links para a página, onde  $1 será substituído pelo título da página',
+	'semanticmaps-shapes-improperformat' => 'Formatação imprópria em $1. Por favor, veja a documentação para formatação',
 );
 
 /** Romanian (română)
