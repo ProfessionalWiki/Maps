@@ -1229,6 +1229,10 @@ $messages['oc'] = array(
 	'semanticmaps-forminput-remove' => 'Levar',
 	'semanticmaps-forminput-add' => 'Apondre',
 	'semanticmaps-forminput-locations' => 'Emplaçaments',
+	'semanticmaps-par-staticlocations' => "Una lista dels endreches d'apondre a la mapa amb las donadas demandadas. Coma amb display_points, podètz apondre un títol, una descripcion e una icòna per emplaçament en utilizant la tilda « ~ » coma separador.",
+	'semanticmaps-par-forceshow' => "Afichar la mapa quitament quand i a pas d'emplaçament d'afichar ?",
+	'semanticmaps-par-geocodecontrol' => 'Afichar lo contraròtle de geoencodatge.',
+	'semanticmaps-kml-title' => 'Lo títol per defaut pels resultats',
 );
 
 /** Polish (polski)
