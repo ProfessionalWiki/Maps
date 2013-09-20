@@ -2,7 +2,7 @@
 
 namespace SM\Test;
 
-use SMW\Test\QueryPrinterTestCase;
+use SMW\Test\QueryPrinterRegistryTestCase;
 
 /**
  * @covers SMMapPrinter
@@ -20,7 +20,7 @@ use SMW\Test\QueryPrinterTestCase;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapPrinterTest extends QueryPrinterTestCase {
+class MapPrinterTest extends QueryPrinterRegistryTestCase {
 
 	/**
 	 * @see ResultPrinterTestCase::getFormats
