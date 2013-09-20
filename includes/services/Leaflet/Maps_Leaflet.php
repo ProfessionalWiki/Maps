@@ -86,4 +86,14 @@ class MapsLeaflet extends MapsMappingService {
 			array( 'ext.maps.leaflet' )
 		);
 	}
+
+	protected function getDependencies() {
+		$leafletPath = $GLOBALS['egMapsScriptPath'] . '/includes/services/Leaflet/leaflet';
+		return array(
+			Html::linkedStyle( "$leafletPath/leaflet.css" ),
+			'<!--[if lte IE 8]>' . Html::linkedStyle( "$leafletPath/leaflet.ie.css" ). '<![endif]-->',
+			Html::linkedScript( "$leafletPath/leaflet.js" ),
+		);
+	}
+
 }
