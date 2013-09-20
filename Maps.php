@@ -45,8 +45,18 @@ if ( !defined( 'ParamProcessor_VERSION' ) && file_exists( __DIR__ . '/../Validat
 }
 
 // Attempt to include the DataValues lib if that has not been loaded yet.
-if ( !defined( 'DataValues_VERSION' ) && file_exists( __DIR__ . '/../DataValues/DataValues.php' ) ) {
+if ( !defined( 'DATAVALUES_VERSION' ) && is_readable( __DIR__ . '/../DataValues/DataValues.php' ) ) {
 	include_once( __DIR__ . '/../DataValues/DataValues.php' );
+}
+
+// Include the DataValuesInterfaces library if that hasn't been done yet.
+if ( !defined( 'DATAVALUES_INTERFACES_VERSION' ) ) {
+	@include_once( __DIR__ . '/../DataValues/DataValuesInterfaces/DataValuesInterfaces.php' );
+}
+
+// Include the DataValuesCommon library if that hasn't been done yet.
+if ( !defined( 'DATAVALUES_COMMON_VERSION' ) ) {
+	@include_once( __DIR__ . '/../DataValues/DataValuesCommon/DataValuesCommon.php' );
 }
 
 // Only initialize the extension when all dependencies are present.
@@ -55,8 +65,18 @@ if ( !defined( 'ParamProcessor_VERSION' ) ) {
 }
 
 // Only initialize the extension when all dependencies are present.
-if ( !defined( 'DataValues_VERSION' ) ) {
-	throw new Exception( 'You need to have DataValues installed in order to use Maps' );
+if ( !defined( 'DATAVALUES_VERSION' ) ) {
+	throw new Exception( 'You need to have DataValues loaded in order to use Maps' );
+}
+
+// Only initialize the extension when all dependencies are present.
+if ( !defined( 'DATAVALUES_INTERFACES_VERSION' ) ) {
+	throw new Exception( 'You need to have DataValuesInterfaces loaded in order to use Maps' );
+}
+
+// Only initialize the extension when all dependencies are present.
+if ( !defined( 'DATAVALUES_COMMON_VERSION' ) ) {
+	throw new Exception( 'You need to have DataValuesCommon loaded in order to use Maps' );
 }
 
 if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
