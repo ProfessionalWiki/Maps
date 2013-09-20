@@ -1,5 +1,7 @@
 <?php
 
+use SMW\DataValueFactory;
+
 /**
  * Description of one data value of type Geographical Coordinates.
  * 
@@ -19,7 +21,7 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 */
 	public function getQueryString( $asValue = false ) {
 		if ( $this->m_dataItem !== null ) {
-			$queryString = SMWDataValueFactory::newDataItemValue( $this->m_dataItem, $this->m_property )->getWikiValue();
+			$queryString = DataValueFactory::newDataItemValue( $this->m_dataItem, $this->m_property )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
 			return $asValue ? '+' : '';

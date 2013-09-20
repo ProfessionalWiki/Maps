@@ -1,10 +1,9 @@
 <?php
 
+use Maps\Elements\Location;
+
 /**
  * Base form input class.
- *
- * @file SM_FormInput.php
- * @ingroup SemanticMaps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -240,7 +239,7 @@ class SMFormInput {
 	 */	
 	protected function getJSONObject( array $params, Parser $parser ) {
 		/**
-		 * @var Maps\Location $location
+		 * @var Location $location
 		 */
 		foreach ( $params['locations'] as &$location ) {
 			$location = $location->getJSONObject();

@@ -5,13 +5,10 @@
  *
  * @since 0.7.3
  *
- * @ingroup SemanticMaps
- * @file SM_QueryHandler.php
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-use Maps\Location;
+use Maps\Elements\Location;
 
 class SMQueryHandler {
 

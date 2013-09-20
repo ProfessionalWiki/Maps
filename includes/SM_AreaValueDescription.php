@@ -1,14 +1,13 @@
 <?php
 
+use SMW\DataValueFactory;
+
 /**
  * Description of a geographical area defined by a coordinates set and a distance to the bounds.
  * The bounds are a 'rectangle' (but bend due to the earths curvature), as the resulting query
  * would otherwise be to resource intensive.
  *
  * @since 0.6
- *
- * @file SM_AreaValueDescription.php
- * @ingroup SemanticMaps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com
@@ -69,7 +68,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 */
 	public function getQueryString( $asValue = false ) {
 		if ( $this->getDataItem() !== null ) {
-			$queryString = SMWDataValueFactory::newDataItemValue( $this->getDataItem(), $this->m_property )->getWikiValue();
+			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->m_property )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
 			return $asValue ? '+' : '';
