@@ -175,7 +175,7 @@ class SMFormInput {
 	 * @param string $input_name
 	 * @param boolean $is_mandatory
 	 * @param boolean $is_disabled
-	 * @param array $field_args
+	 * @param array $params
 	 *
 	 * @return string
 	 */
@@ -189,10 +189,16 @@ class SMFormInput {
 
 		$wgOut->addModules( 'mapeditor' );
 
-		$html = '
-			<div >
-				<textarea id="map-polygon" name="' . htmlspecialchars( $input_name ) . '" cols="4" rows="2"></textarea>
-			</div>';
+		$html = Html::element(
+			'div',
+			array(
+				'id' => 'map-polygon',
+				'name' => $input_name,
+				'cols' => 4,
+				'rows' => 2,
+			),
+			$coordinates
+		);
 
 		$editorHtml = new MapEditorHtml( $this->getAttribs() );
 		$html = $html . $editorHtml->getEditorHtml();
