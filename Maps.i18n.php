@@ -260,8 +260,8 @@ $messages['qqq'] = array(
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
-	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-others' => '{{Identical|Other}}',
+	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
@@ -593,7 +593,7 @@ Si ye «non», se xeocodificarán tolos valores, incluyendo les coordenaes váli
 Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
 	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
 	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
-	'maps-displaymap-par-visitedicon' => "El llocal d'un ficheru a usar como iconu de visitáu",
+	'maps-displaymap-par-visitedicon' => "El llocal d'un ficheru a usar como iconu de visitáu", # Fuzzy
 	'maps-displaymap-par-zoom' => "Permite configurar el nivel de zoom do mapa.
 Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
 	'maps-displaymap-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
@@ -1253,6 +1253,7 @@ $messages['de'] = array(
 	'maps-copycoords-prompt' => 'STRG+C, ENTER',
 	'maps-searchmarkers-text' => 'Markierungen zum Filtern',
 	'maps-others' => 'andere',
+	'maps-kml-parsing-failed' => 'Das Parsen einer oder mehrerer KML-Dateien ist fehlgeschlagen, normalerweise aufgrund eines Abfragefehlers oder aufgrund von fehlerhaftem XML.',
 	'maps-ns-layer' => 'Ebene',
 	'maps-ns-layer-talk' => 'Ebene Diskussion',
 	'maps-layer-property' => 'Attribut',
@@ -1747,7 +1748,7 @@ Cuando sea "no", todos los valores serán geocodificados, incluso si son coorden
 Esto puede afectar al valor predeterminado del servicio de geocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar el servicio de cartografía que se utilizará para generar el mapa.',
 	'maps-displaymap-par-coordinates' => 'La localización respecto de la cual el mapa aparecerá inicialmente centrado.',
-	'maps-displaymap-par-visitedicon' => 'El disco local de un archivo para ser utilizado como icono visitado',
+	'maps-displaymap-par-visitedicon' => 'El disco local de un archivo para ser utilizado como icono visitado', # Fuzzy
 	'maps-displaymap-par-zoom' => 'Permite configurar el nivel de zoom del mapa.
 Cuando no se proporciona y varios marcadores están presentes en el mapa, se tomará el mejor ajuste de zoom, y no el valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite establecer las coordenadas del centro del mapa mediante display_point(s).
@@ -2925,7 +2926,7 @@ $messages['hsb'] = array(
 	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
 	'maps-displaymap-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
 	'maps-displaymap-par-coordinates' => 'Městno, na kotrež ma so karta spočatnje centrować.',
-	'maps-displaymap-par-visitedicon' => 'Městno dataje ze symbolom za wopytane wotkazy',
+	'maps-displaymap-par-visitedicon' => 'Městno dataje ze symbolom za wopytane wotkazy', # Fuzzy
 	'maps-displaymap-par-icon' => 'Zmóžnja postajenje symbola, kotryž ma so za wšě marki wužiwać.',
 	'maps-displaymap-par-circles' => 'Kruhi, kotrejž maja so zwobraznić',
 	'maps-displaymap-par-lines' => 'Linije, kotrež maja so zwobraznić',
@@ -3477,7 +3478,7 @@ $messages['it'] = array(
 	'maps-finddestination-par-distance' => 'La distanza da percorrere.',
 	'maps-geocode-par-format' => 'Il formato per le coordinate risultanti.',
 	'maps-displaymap-par-coordinates' => 'Uno o più luoghi da mostrare sulla mappa. Verranno indicati con un marcatore.',
-	'maps-displaymap-par-visitedicon' => 'Il locale di un file da utilizzare come icona visitata',
+	'maps-displaymap-par-visitedicon' => 'Il locale di un file da utilizzare come icona visitata', # Fuzzy
 	'maps-displaymap-par-lines' => 'Linee da visualizzare',
 	'maps-displaymap-par-maxzoom' => 'Il livello massimo di zoom',
 	'maps-displaymap-par-minzoom' => 'Il livello minimo di zoom',
@@ -3839,7 +3840,7 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 기본 좌표화 서비스 값에 영향을 줄 수 있습니다.',
 	'maps-displaymap-par-mappingservice' => '지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.',
 	'maps-displaymap-par-coordinates' => '지도에 보여줄 하나 이상의 위치입니다. 표시로 표시됩니다.',
-	'maps-displaymap-par-visitedicon' => '방문한 아이콘으로 사용할 파일의 로컬',
+	'maps-displaymap-par-visitedicon' => '방문한 아이콘으로 사용할 파일의 로컬', # Fuzzy
 	'maps-displaymap-par-zoom' => '지도의 확대 수준을 설정할 수 있습니다.
 제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.',
 	'maps-displaymap-par-centre' => 'display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.
@@ -4442,7 +4443,7 @@ Jika tidak, semua nilai akan ditukar menjadi geokod, termasuk koordinat yang sah
 Ini boleh mempengaruhi nilai asali perkhidmatan geokod.',
 	'maps-displaymap-par-mappingservice' => 'Membolehkan penetapan perkhidmatan pemetaan yang akan digunakan untuk menghasilkan peta.',
 	'maps-displaymap-par-coordinates' => 'Lokasi yang akan dijadikan pusat peta pada mulanya.',
-	'maps-displaymap-par-visitedicon' => 'Lokal fail untuk digunakan sebagai ikon dilawat',
+	'maps-displaymap-par-visitedicon' => 'Lokal fail untuk digunakan sebagai ikon dilawat', # Fuzzy
 	'maps-displaymap-par-zoom' => 'Membolehkan penetapan tahap zum peta.
 Apabila tidak diberikan sementara wujudnya berbilang penanda pada peta, zom yang paling muat akan diambil, bukan nilai asali yang terkonfigurasi.',
 	'maps-displaymap-par-centre' => 'Membolehkan penetapan koordinat pusat peta untuk display_point.
@@ -4838,7 +4839,7 @@ Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coörd
 Dit kan invloed hebben op de standaardwaarde voor de geocoderingsdienst.',
 	'maps-displaymap-par-mappingservice' => 'Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.',
 	'maps-displaymap-par-coordinates' => 'De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.',
-	'maps-displaymap-par-visitedicon' => 'De locatie van een bestand om te gebruiken als bezocht pictogram',
+	'maps-displaymap-par-visitedicon' => 'De locatie van een bestand om te gebruiken als bezocht pictogram', # Fuzzy
 	'maps-displaymap-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
 Als deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.',
 	'maps-displaymap-par-centre' => 'Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).
@@ -5340,7 +5341,7 @@ S'a l'é nò, minca valor a sarà geocodificà, ëdcò le coordinà bon-e.",
 Sòn a peul anfluensé ël valor dël sërvissi ëd geocodìfica predefinì.",
 	'maps-displaymap-par-mappingservice' => "A përmët d'amposté ël sërvissi ëd cartografìa che a sarà dovrà për generé la carta.",
 	'maps-displaymap-par-coordinates' => 'Un-a o pi locassion da smon-e an sla carta. A saran mostrà con na marca.',
-	'maps-displaymap-par-visitedicon' => "L'element local ëd n'archivi da dovré com plancia visità",
+	'maps-displaymap-par-visitedicon' => "L'element local ëd n'archivi da dovré com plancia visità", # Fuzzy
 	'maps-displaymap-par-zoom' => "A përmët d'amposté ël livel d'angrandiment ëd la carta.
 Quand nen dàit e pi marche a son presente an sla carta, a sarà dovrà ël mej angrandiment, pa la configurassion predefinìa.",
 	'maps-displaymap-par-centre' => "A përmët d'amposté le coordinà dël sénter ëd la carta për display_point(s).
