@@ -27,7 +27,7 @@ $messages['en'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => 'Filter markers',
 	'maps-others' => 'others',
-	'maps-kml-parsing-failed' => 'Failed parsing one or more kml files, usually due to retrieval failure or malformed XML.',
+	'maps-kml-parsing-failed' => 'Failed parsing one or more KML files, usually due to retrieval failure or malformed XML.',
 	//TODO: move to namespaces i18n
 	'maps-ns-layer' => 'Layer',
 	'maps-ns-layer-talk' => 'Layer talk',
