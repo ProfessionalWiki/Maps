@@ -16,7 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])",
+	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])",
 
 	'right-geocode' => 'Geocode',
 
@@ -528,7 +528,7 @@ $messages['arz'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
-	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([http://www.semantic-mediawiki.org/wiki/Maps más información...])',
+	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([https://www.semantic-mediawiki.org/wiki/Maps más información...])',
 	'right-geocode' => 'Xeocódigu',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => "Cargando'l mapa...",
@@ -1462,7 +1462,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://www.semantic-mediawiki.org/wiki/Maps dalšne informacije...])',
+	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([https://www.semantic-mediawiki.org/wiki/Maps dalšne informacije...])',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
 	'maps-markers' => 'Marki',
@@ -1521,7 +1521,7 @@ $messages['dsb'] = array(
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'maps-desc' => 'Επιτρέπει την ενσωμάτωση δυναμικών χαρτών σε σελίδες wiki, γεωκωδικοποίηση διευθύνσεων και άλλες γεωγραφικές λειτουργίες. ([http://www.semantic-mediawiki.org/wiki/Maps περισσότερες πληροφορίες...])',
+	'maps-desc' => 'Επιτρέπει την ενσωμάτωση δυναμικών χαρτών σε σελίδες wiki, γεωκωδικοποίηση διευθύνσεων και άλλες γεωγραφικές λειτουργίες. ([https://www.semantic-mediawiki.org/wiki/Maps περισσότερες πληροφορίες...])',
 	'right-geocode' => 'Γεωκωδικοποίηση',
 	'maps_map' => 'Χάρτης',
 	'maps-loading-map' => 'Φόρτωση χάρτη...',
@@ -1681,7 +1681,7 @@ $messages['eo'] = array(
  * @author Vivaelcelta
  */
 $messages['es'] = array(
-	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([http://www.semantic-mediawiki.org/wiki/Maps Más información...])',
+	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps Más información...])',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
@@ -1978,7 +1978,7 @@ $messages['fa'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'maps-desc' => 'Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja ([http://www.semantic-mediawiki.org/wiki/Maps lisätietoja]).',
+	'maps-desc' => 'Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja ([https://www.semantic-mediawiki.org/wiki/Maps lisätietoja]).',
 	'right-geocode' => 'Geokoodata',
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
@@ -2137,7 +2137,7 @@ $1',
  * @author Wyz
  */
 $messages['fr'] = array(
-	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])",
+	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])",
 	'right-geocode' => 'Géocode',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
@@ -2421,7 +2421,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'maps-desc' => 'Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([http://www.semantic-mediawiki.org/wiki/Maps máis información...])',
+	'maps-desc' => 'Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([https://www.semantic-mediawiki.org/wiki/Maps máis información...])',
 	'right-geocode' => 'Xeocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
@@ -2876,7 +2876,7 @@ $1',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([http://www.semantic-mediawiki.org/wiki/Maps dalše informacije...])',
+	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([https://www.semantic-mediawiki.org/wiki/Maps dalše informacije...])',
 	'right-geocode' => 'Geokodowanje',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Karta so začituje...',
@@ -3107,7 +3107,7 @@ $1',
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://www.semantic-mediawiki.org/wiki/Maps plus info...])',
+	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([https://www.semantic-mediawiki.org/wiki/Maps plus info...])',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
@@ -3446,7 +3446,7 @@ $messages['ig'] = array(
  * @author Viscontino
  */
 $messages['it'] = array(
-	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([http://www.semantic-mediawiki.org/wiki/Maps maggiori informazioni...])',
+	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([https://www.semantic-mediawiki.org/wiki/Maps maggiori informazioni...])',
 	'right-geocode' => 'Effettua la geocodifica',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
@@ -3563,7 +3563,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([http://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])',
+	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([https://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])',
 	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中...',
@@ -3774,7 +3774,7 @@ $messages['km'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다. ([http://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
+	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다. ([https://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
 	'right-geocode' => '좌표화',
 	'maps_map' => '지도',
 	'maps-loading-map' => '지도를 불러오는 중...',
@@ -4026,7 +4026,7 @@ $messages['lad'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geografesch Operatiounen ze weisen. ([http://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])",
+	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geografesch Operatiounen ze weisen. ([https://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])",
 	'right-geocode' => 'Geocode',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
@@ -4170,7 +4170,7 @@ $messages['map-bms'] = array(
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([http://www.semantic-mediawiki.org/wiki/Maps?uselang=mk повеќе информации...])',
+	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([https://www.semantic-mediawiki.org/wiki/Maps?uselang=mk повеќе информации...])',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Ја вчитувам картата...',
@@ -4376,7 +4376,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi. ([http://www.semantic-mediawiki.org/wiki/Maps maklumat lanjut...])',
+	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi. ([https://www.semantic-mediawiki.org/wiki/Maps maklumat lanjut...])',
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Peta',
 	'maps-loading-map' => 'Peta sedang dimuatkan...',
@@ -4772,7 +4772,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://www.semantic-mediawiki.org/wiki/Maps meer...])',
+	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([https://www.semantic-mediawiki.org/wiki/Maps meer...])',
 	'right-geocode' => 'Geocoderen',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
@@ -4987,7 +4987,7 @@ $messages['nn'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'maps-desc' => "Permet d'afichar de mapas dinamicas dins las paginas del wiki, d'adreças geoencodadas e d'autras operacions geograficas. ([http://www.semantic-mediawiki.org/wiki/Maps mai d'info...])",
+	'maps-desc' => "Permet d'afichar de mapas dinamicas dins las paginas del wiki, d'adreças geoencodadas e d'autras operacions geograficas. ([https://www.semantic-mediawiki.org/wiki/Maps mai d'info...])",
 	'right-geocode' => 'Geocòde',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargament de la mapa...',
@@ -5174,7 +5174,7 @@ $1',
  * @author Yarl
  */
 $messages['pl'] = array(
-	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])',
+	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])',
 	'right-geocode' => 'Geokodowanie',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
@@ -5274,7 +5274,7 @@ $1',
  * @author පසිඳු කාවින්ද
  */
 $messages['pms'] = array(
-	'maps-desc' => "A abìlita l'anseriment ëd carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([http://www.semantic-mediawiki.org/wiki/Maps për savèjne ëd pi...])",
+	'maps-desc' => "A abìlita l'anseriment ëd carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([https://www.semantic-mediawiki.org/wiki/Maps për savèjne ëd pi...])",
 	'right-geocode' => 'Geocodìfica',
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
@@ -5620,7 +5620,7 @@ $1',
  * @author 555
  */
 $messages['pt-br'] = array(
-	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://www.semantic-mediawiki.org/wiki/Maps mais informações...])',
+	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps mais informações...])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
 	'maps-markers' => 'Marcadores',
@@ -5697,7 +5697,7 @@ $1',
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'maps-desc' => 'Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic. ([http://www.semantic-mediawiki.org/wiki/Maps mai multe informații...])',
+	'maps-desc' => 'Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic. ([https://www.semantic-mediawiki.org/wiki/Maps mai multe informații...])',
 	'right-geocode' => 'Geocod',
 	'maps_map' => 'Hartă',
 	'maps-loading-map' => 'Se încarcă harta...',
@@ -5792,7 +5792,7 @@ $1',
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://www.semantic-mediawiki.org/wiki/Maps cchiù 'mbormaziune...])",
+	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([https://www.semantic-mediawiki.org/wiki/Maps cchiù 'mbormaziune...])",
 	'right-geocode' => 'Geocodece',
 	'maps_map' => 'Mappe',
 	'maps-loading-map' => "Stoche a careche 'a mappe...",
@@ -5843,7 +5843,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://www.semantic-mediawiki.org/wiki/Maps подробнее...])',
+	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([https://www.semantic-mediawiki.org/wiki/Maps подробнее...])',
 	'right-geocode' => 'геокодирование',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
@@ -6122,7 +6122,7 @@ $messages['sk'] = array(
  * @author Lesko987
  */
 $messages['sl'] = array(
-	'maps-desc' => 'Omogoča vključevanje dinamičnih zemljevidov na wikistrani, geokodiranje naslovov in druge geografske operacije. ([http://www.semantic-mediawiki.org/wiki/Maps Več informacij ...])',
+	'maps-desc' => 'Omogoča vključevanje dinamičnih zemljevidov na wikistrani, geokodiranje naslovov in druge geografske operacije. ([https://www.semantic-mediawiki.org/wiki/Maps Več informacij ...])',
 	'right-geocode' => 'Geokodiranje',
 	'maps_map' => 'Zemljevid',
 	'maps-loading-map' => 'Nakladanje zemljevida...',
@@ -6201,7 +6201,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([http://www.semantic-mediawiki.org/wiki/Maps mer information...]).',
+	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([https://www.semantic-mediawiki.org/wiki/Maps mer information...]).',
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
@@ -6632,7 +6632,7 @@ $messages['tzm'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://www.semantic-mediawiki.org/wiki/Maps детальніше...])',
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([https://www.semantic-mediawiki.org/wiki/Maps детальніше...])',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
@@ -6873,7 +6873,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://www.semantic-mediawiki.org/wiki/Maps?uselang=vi thêm chi tiết])',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([https://www.semantic-mediawiki.org/wiki/Maps?uselang=vi thêm chi tiết])',
 	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
@@ -7010,7 +7010,7 @@ $messages['zh-cn'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[http://www.semantic-mediawiki.org/wiki/地图更多信息...]）',
+	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[https://www.semantic-mediawiki.org/wiki/地图更多信息...]）',
 	'right-geocode' => '地理编码',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入地图中……',
@@ -7069,7 +7069,7 @@ $messages['zh-hans'] = array(
  * @author Waihorace
  */
 $messages['zh-hant'] = array(
-	'maps-desc' => '容許嵌入動態地圖到維基頁面、地址地理編碼及其他地理操作。（[http://www.semantic-mediawiki.org/wiki/Maps 更多資訊…]）',
+	'maps-desc' => '容許嵌入動態地圖到維基頁面、地址地理編碼及其他地理操作。（[https://www.semantic-mediawiki.org/wiki/Maps 更多資訊…]）',
 	'right-geocode' => '地理編碼',
 	'maps_map' => '地圖',
 	'maps-loading-map' => '載入中...',
