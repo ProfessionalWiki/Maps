@@ -1402,11 +1402,12 @@ $messages['roa-tara'] = array(
 /** Russian (русский)
  * @author Eugene Mednikov
  * @author Lockal
+ * @author Okras
  * @author Pastakhov
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'semanticmaps-desc' => 'Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в семантическом расширении MediaWiki ([https://mapping.referata.com/wiki/Examples примеры]).', # Fuzzy
+	'semanticmaps-desc' => 'Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в семантическом расширении MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps подробнее…]).',
 	'semanticmaps-unrecognizeddistance' => 'Значение $1 не является допустимым расстоянием.',
 	'semanticmaps-kml-link' => 'Просмотреть файл KML',
 	'semanticmaps-default-kml-pagelink' => 'Просмотреть страницу $1',
