@@ -1988,6 +1988,7 @@ $messages['fi'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => 'Suodatuksen kohdemerkit', # Fuzzy
 	'maps-others' => 'muut',
+	'maps-kml-parsing-failed' => 'Yhden tai useamman kml-tiedoston jäsentäminen epäonnistui. Todennäköinen syy on lataamisen epäonnistuminen tai viallinen XML-syntaksi.',
 	'maps-ns-layer' => 'Taso',
 	'maps-ns-layer-talk' => 'Keskustelu tasosta',
 	'maps-layer-property' => 'Ominaisuus',
@@ -3573,6 +3574,7 @@ $messages['ja'] = array(
 	'maps-copycoords-prompt' => 'Ctrl+C、Enter',
 	'maps-searchmarkers-text' => 'マーカーを絞り込む',
 	'maps-others' => 'その他',
+	'maps-kml-parsing-failed' => '1 件以上の kml ファイルを構文解析できませんでした。これは通常、取得失敗または XML の破損で発生します。',
 	'maps-ns-layer' => 'レイヤー',
 	'maps-ns-layer-talk' => 'レイヤー・トーク',
 	'maps-layer-property' => 'プロパティ',
@@ -4180,6 +4182,7 @@ $messages['mk'] = array(
 	'maps-copycoords-prompt' => 'Стиснете CTRL+C, па ENTER',
 	'maps-searchmarkers-text' => 'Филтрирање на одбележувачи',
 	'maps-others' => 'други',
+	'maps-kml-parsing-failed' => 'Не можев да испарсирам една или повеќе KML-податотеки. Ова обично се должи на нивна недопстапност или лошо обликуван XML.',
 	'maps-ns-layer' => 'Слој',
 	'maps-ns-layer-talk' => 'Разговор за слој',
 	'maps-layer-property' => 'Својство',
@@ -5172,6 +5175,7 @@ $1',
  * @author BeginaFelicysym
  * @author Chrumps
  * @author Sp5uhe
+ * @author Ty221
  * @author Yarl
  */
 $messages['pl'] = array(
@@ -5183,6 +5187,7 @@ $messages['pl'] = array(
 	'maps-markers' => 'Zaznaczenia',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'inne',
+	'maps-kml-parsing-failed' => 'Błąd podczas parsowania jednego lub więcej plików KML, najczęściej jest to wynik błędnego XML',
 	'maps-ns-layer' => 'Warstwa',
 	'maps-ns-layer-talk' => 'Dyskusja warstwy',
 	'maps-layer-property' => 'Własność',
@@ -6642,6 +6647,7 @@ $messages['uk'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => 'Фільтрувати маркери',
 	'maps-others' => 'інші',
+	'maps-kml-parsing-failed' => 'Помилка аналізу одного або декількох файлів kml, як правило, через отриманий несправний або некоректний XML.',
 	'maps-ns-layer' => 'Шар',
 	'maps-ns-layer-talk' => 'Обговорення шару',
 	'maps-layer-property' => 'Властивість',
