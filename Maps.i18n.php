@@ -2148,6 +2148,7 @@ $messages['fr'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, ENTRÉE',
 	'maps-searchmarkers-text' => 'Marqueurs de filtre',
 	'maps-others' => 'autres',
+	'maps-kml-parsing-failed' => 'Échec de l’analyse d’un ou plusieurs fichiers KML, le plus souvent à cause d’échecs de récupération ou de XML mal formé.',
 	'maps-ns-layer' => 'Couche',
 	'maps-ns-layer-talk' => 'Discussion couche',
 	'maps-layer-property' => 'Propriété',
@@ -5280,7 +5281,7 @@ $1',
  * @author පසිඳු කාවින්ද
  */
 $messages['pms'] = array(
-	'maps-desc' => "A abìlita l'anseriment ëd carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([https://www.semantic-mediawiki.org/wiki/Maps për savèjne ëd pi...])",
+	'maps-desc' => "A abìlita l'anseriment dle carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([https://www.semantic-mediawiki.org/wiki/Maps për savèjne ëd pi...])",
 	'right-geocode' => 'Geocodìfica',
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
