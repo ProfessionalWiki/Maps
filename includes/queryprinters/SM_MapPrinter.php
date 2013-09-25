@@ -1,5 +1,9 @@
 <?php
 
+use Maps\Elements\Location;
+use Maps\Element;
+use Maps\Elements\BaseElement;
+
 /**
  * Query printer for maps. Is invoked via SMMapper.
  * Can be overridden per service to have custom output.
@@ -212,59 +216,122 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @since 1.0
 	 * 
 	 * @param array &$params
-	 * @param $queryHandler
+	 * @param SMQueryHandler $queryHandler
 	 */
-	protected function handleMarkerData( array &$params, $queryHandler ) {
+	protected function handleMarkerData( array &$params, SMQueryHandler $queryHandler ) {
 		if ( is_object( $params['centre'] ) ) {
 			$params['centre'] = $params['centre']->getJSONObject();
 		}
 
+		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
+		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
+
+		$params['locations'] = $this->getJsonForStaticLocations(
+			$params['staticlocations'],
+			$params,
+			$iconUrl,
+			$visitedIconUrl
+		);
+
+		unset( $params['staticlocations'] );
+
+		$this->addShapeData( $queryHandler->getShapes(), $params, $iconUrl, $visitedIconUrl );
+	}
+
+	protected function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
 		/**
 		 * @var Parser $wgParser
 		 */
 		global $wgParser;
 
 		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
-		
-		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
-		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
-		$params['locations'] = array();
 
-		foreach ( $params['staticlocations'] as $location ) {
+		$locationsJson = array();
+
+		foreach ( $staticLocations as $location ) {
+			$locationsJson[] = $this->getJsonForStaticLocation(
+				$location,
+				$params,
+				$iconUrl,
+				$visitedIconUrl,
+				$parser
+			);
+		}
+
+		return $locationsJson;
+	}
+
+	protected function getJsonForStaticLocation( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parser ) {
+		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
+
+		$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
+		$jsonObj['text'] = $parser->parse( $jsonObj['text'], $parser->getTitle(), new ParserOptions() )->getText();
+
+		$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
+		$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
+		$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+
+		return $jsonObj;
+	}
+
+	/**
+	 * @param Element[] $queryShapes
+	 * @param array $params
+	 * @param string $iconUrl
+	 * @param string $visitedIconUrl
+	 */
+	protected function addShapeData( array $queryShapes, array &$params, $iconUrl, $visitedIconUrl ) {
+		$params['locations'] = array_merge(
+			$params['locations'],
+			$this->getJsonForLocations(
+				$queryShapes['locations'],
+				$params,
+				$iconUrl,
+				$visitedIconUrl
+			)
+		);
+
+		$params['lines'] = $this->getElementJsonArray( $queryShapes['lines'], $params );
+		$params['polygons'] = $this->getElementJsonArray( $queryShapes['polygons'], $params );
+	}
+
+	/**
+	 * @param Location[] $locations
+	 * @param array $params
+	 * @param string $iconUrl
+	 * @param string $visitedIconUrl
+	 *
+	 * @return array
+	 */
+	protected function getJsonForLocations( array $locations, array $params, $iconUrl, $visitedIconUrl ) {
+		$locationsJson = array();
+
+		foreach ( $locations as $location ) {
 			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 
-			$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
-			$jsonObj['text'] = $parser->parse( $jsonObj['text'], $parser->getTitle(), new ParserOptions() )->getText();
-
-			$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
-			$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
 			$jsonObj['title'] = strip_tags( $jsonObj['title'] );
 
-			$params['locations'][] = $jsonObj;
+			$locationsJson[] = $jsonObj;
 		}
 
-		unset( $params['staticlocations'] );
+		return $locationsJson;
+	}
 
-		$queryShapes = $queryHandler->getShapes();
-		
-		foreach ( $queryShapes['locations'] as $location ) {
-			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
+	/**
+	 * @param BaseElement[] $elements
+	 * @param array $params
+	 *
+	 * @return array
+	 */
+	protected function getElementJsonArray( array $elements, array $params ) {
+		$elementsJson = array();
 
-			$jsonObj['title'] = strip_tags( $jsonObj['title'] );
-
-			$params['locations'][] = $jsonObj;
+		foreach ( $elements as $element ) {
+			$jsonObj = $element->getJSONObject( $params['title'], $params['label'] );
+			$elementsJson[] = $jsonObj;
 		}
 
-		foreach ( $queryShapes['lines'] as $line ) {
-			$jsonObj = $line->getJSONObject( $params['title'], $params['label'] );
-			$params['lines'][] = $jsonObj;				
-		}
-		foreach ( $queryShapes['polygons'] as $polygon ) {
-			$jsonObj = $polygon->getJSONObject( $params['title'], $params['label'] );
-			$params['polygons'][] = $jsonObj;				
-		}
-
-
+		return $elementsJson;
 	}
 
 	/**

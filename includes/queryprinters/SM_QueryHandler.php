@@ -567,7 +567,7 @@ class SMQueryHandler {
 		//Check for activeicon parameter
 
 		if( isset( $this->activeIcon )&& $wgTitle->equals( $row[0]->getResultSubject()->getTitle() ) ){
-			$icon =  MapsMapper::getFileUrl( $this->activeIcon );
+			$icon = MapsMapper::getFileUrl( $this->activeIcon );
 		}
 
 		// Look for display_options field, which can be set by Semantic Compound Queries
