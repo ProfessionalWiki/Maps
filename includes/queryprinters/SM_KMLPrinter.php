@@ -133,6 +133,15 @@ class SMKMLPrinter extends FileExportPrinter {
 			$link->setParameter( $this->params['text'], 'text' );
 		}
 
+		// Fix for offset-error in getQueryLink()
+		// (getQueryLink by default sets offset to point to the next 
+		// result set, fix by setting it to 0 if now explicitly set)
+		if ( array_key_exists( 'offset', $this->params ) ) {
+			$link->setParameter( $this->params['offset'], 'offset' );
+		} else {
+			$link->setParameter( 0, 'offset' );
+		}
+
 		if ( array_key_exists( 'limit', $this->params ) ) {
 			$link->setParameter( $this->params['limit'], 'limit' );
 		} else { // Use a reasonable default limit.
