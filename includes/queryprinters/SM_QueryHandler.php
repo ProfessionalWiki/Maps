@@ -136,6 +136,12 @@ class SMQueryHandler {
 	 */
 	protected $headerStyle = 'show';
 
+	/**
+	 * Marker icon to show when marker equals active page
+	 *
+	 * @var string
+	 */
+	protected $activeIcon;
 
 	/**
 	 * Constructor.
@@ -147,8 +153,9 @@ class SMQueryHandler {
 	 * @param boolean $linkAbsolute
 	 * @param string $pageLinkText
 	 * @param boolean $titleLinkSeparate
+	 * @param string $activeIcon
 	 */
-	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeparate = false, $hideNamespace = false ) {
+	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeparate = false, $hideNamespace = false, $activeIcon = null ) {
 		$this->queryResult = $queryResult;
 		$this->outputmode = $outputmode;
 
@@ -156,6 +163,7 @@ class SMQueryHandler {
 		$this->pageLinkText = $pageLinkText;
 		$this->titleLinkSeparate = $titleLinkSeparate;
 		$this->hideNamespace = $hideNamespace;
+		$this->activeIcon = $activeIcon;
 	}
 
 	/**
@@ -552,8 +560,15 @@ class SMQueryHandler {
 	 * @return string
 	 */
 	protected function getLocationIcon( array $row ) {
+		global $wgTitle;
 		$icon = '';
 		$legend_labels = array();
+
+		//Check for activeicon parameter
+
+		if( isset( $this->activeIcon )&& $wgTitle->equals( $row[0]->getResultSubject()->getTitle() ) ){
+			$icon =  MapsMapper::getFileUrl( $this->activeIcon );
+		}
 
 		// Look for display_options field, which can be set by Semantic Compound Queries
 		// the location of this field changed in SMW 1.5
@@ -594,6 +609,20 @@ class SMQueryHandler {
 	 */
 	public function getHideNamespace() {
 		return $this->hideNamespace;
+	}
+
+	/**
+	 * @param string $activeIcon
+	 */
+	public function setActiveIcon( $activeIcon ){
+		$this->activeIcon = $activeIcon;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getActiveIcon( ){
+		return $this->activeIcon;
 	}
 
 }
