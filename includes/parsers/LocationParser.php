@@ -53,6 +53,14 @@ class LocationParser extends StringValueParser {
 			$location->setIcon( array_shift( $metaData ) );
 		}
 
+		if ( $metaData !== array() ) {
+			$location->setGroup( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== array() ) {
+			$location->setInlineLabel( array_shift( $metaData ) );
+		}
+
 		return $location;
 	}
 
