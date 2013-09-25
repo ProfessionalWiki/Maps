@@ -34,13 +34,8 @@ call_user_func( function() {
 		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/Leaflet',
 		'group' => 'ext.maps',
 		'scripts' => array(
-			'leaflet/leaflet.js',
 			'jquery.leaflet.js',
 			'ext.maps.leaflet.js',
-		),
-		'styles' => array(
-			'leaflet/leaflet.css',
-			'leaflet/leaflet.ie.css',
 		),
 		'messages' => array(
 			'maps-markers',
