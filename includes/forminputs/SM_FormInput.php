@@ -83,10 +83,10 @@ class SMFormInput {
 			'default' => true,
 		);
 
-		// Give grep a chance to find the usages:
+		// Messages:
 		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
 		// semanticmaps-par-hidenamespace, semanticmaps-par-centre, semanticmaps-par-template,
-		// semanticmaps-par-geocodecontrol
+		// semanticmaps-par-geocodecontrol, semanticmaps-par-activeicon
 		foreach ( $params as $name => &$param ) {
 			$param['message'] = 'semanticmaps-par-' . $name;
 		}
