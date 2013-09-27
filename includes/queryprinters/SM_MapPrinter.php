@@ -89,6 +89,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$params['activeicon'] = array (
 			'type' => 'string',
+			'default' => '',
 		);
 
 		// Messages:
