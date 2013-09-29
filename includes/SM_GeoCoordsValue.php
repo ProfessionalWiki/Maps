@@ -87,7 +87,32 @@ class SMGeoCoordsValue extends SMWDataValue {
 			throw new InvalidArgumentException( '$value needs to be a string' );
 		}
 
-		return $this->parseUserValueOrQuery( $value, true );
+		list( $distance, $comparator ) = $this->parseUserValue( $value );
+		$distance = $this->parserDistance( $distance );
+
+		$this->setUserValue( $value );
+
+		switch ( true ) {
+			case !$this->isValid() :
+				return new SMWThingDescription();
+			case $distance !== false :
+				return new SMAreaValueDescription( $this->getDataItem(), $comparator, $distance );
+			default :
+				return new SMGeoCoordsValueDescription( $this->getDataItem(), null, $comparator );
+		}
+	}
+
+	protected function parserDistance( $distance ) {
+		if ( $distance !== false ) {
+			$distance = substr( trim( $distance ), 0, -1 );
+
+			if ( !MapsDistanceParser::isDistance( $distance ) ) {
+				$this->addError( wfMessage( 'semanticmaps-unrecognizeddistance', $distance )->text() );
+				$distance = false;
+			}
+		}
+
+		return $distance;
 	}
 
 	/**
@@ -100,70 +125,50 @@ class SMGeoCoordsValue extends SMWDataValue {
 			throw new InvalidArgumentException( '$value needs to be a string' );
 		}
 
-		$this->parseUserValueOrQuery( $value );
-	}
-	
-	/**
-	 * Parses the value into the coordinates and any meta data provided, such as distance.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param string $value
-	 * @param boolean $asQuery
-	 *
-	 * @return SMWDescription
-	 */
-	protected function parseUserValueOrQuery( $value, $asQuery = false ) {
 		$this->wikiValue = $value;
 
 		$comparator = SMW_CMP_EQ;
+		$distance = false;
 
 		if ( $value === '' ) {
 			$this->addError( wfMessage( 'smw_novalues' )->text() );
 		} else {
 			SMWDataValue::prepareValue( $value, $comparator );
 
-			$parts = explode( '(', $value );
-			
-			$coordinates = trim( array_shift( $parts ) );
-			$distance = count( $parts ) > 0 ? trim( array_shift( $parts ) ) : false;
+			list( $coordinates, $distance ) = $this->findValueParts( $value );
 
-			if ( $distance !== false ) {
-				$distance = substr( trim( $distance ), 0, -1 );
-				
-				if ( !MapsDistanceParser::isDistance( $distance ) ) {
-					$this->addError( wfMessage( 'semanticmaps-unrecognizeddistance', $distance )->text() );
-					$distance = false;
-				}
-			}
-
-			$options = new \ValueParsers\ParserOptions();
-			$parser = new \ValueParsers\GeoCoordinateParser( $options );
-
-			try {
-				$value = $parser->parse($coordinates  );
-				$this->m_dataitem = new SMWDIGeoCoord( $value->getLatitude(), $value->getLongitude() );
-			}
-			catch ( ParseException $parseException ) {
-				$this->addError( wfMessage( 'maps_unrecognized_coords', $coordinates, 1 )->text() );
-
-				// Make sure this is always set
-				// TODO: Why is this needed?!
-				$this->m_dataitem = new SMWDIGeoCoord( array( 'lat' => 0, 'lon' => 0 ) );
-			}
+			$this->tryParseAndSetDataItem( $coordinates );
 		}
 
-		if ( $asQuery ) {
-			$this->setUserValue( $value );
+		return array( $distance, $comparator );
+	}
 
-			switch ( true ) {
-				case !$this->isValid() :
-					return new SMWThingDescription();
-				case $distance !== false :
-					return new SMAreaValueDescription( $this->getDataItem(), $comparator, $distance );
-				default :
-					return new SMGeoCoordsValueDescription( $this->getDataItem(), null, $comparator );
-			}
+	protected function findValueParts( $value ) {
+		$parts = explode( '(', $value );
+
+		$coordinates = trim( array_shift( $parts ) );
+		$distance = count( $parts ) > 0 ? trim( array_shift( $parts ) ) : false;
+
+		return array( $coordinates, $distance );
+	}
+
+	/**
+	 * @param string $coordinates
+	 */
+	protected function tryParseAndSetDataItem( $coordinates ) {
+		$options = new \ValueParsers\ParserOptions();
+		$parser = new \ValueParsers\GeoCoordinateParser( $options );
+
+		try {
+			$value = $parser->parse( $coordinates );
+			$this->m_dataitem = new SMWDIGeoCoord( $value->getLatitude(), $value->getLongitude() );
+		}
+		catch ( ParseException $parseException ) {
+			$this->addError( wfMessage( 'maps_unrecognized_coords', $coordinates, 1 )->text() );
+
+			// Make sure this is always set
+			// TODO: Why is this needed?!
+			$this->m_dataitem = new SMWDIGeoCoord( array( 'lat' => 0, 'lon' => 0 ) );
 		}
 	}
 

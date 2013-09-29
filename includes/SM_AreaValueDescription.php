@@ -1,5 +1,6 @@
 <?php
 
+use DataValues\LatLongValue;
 use SMW\DataValueFactory;
 
 /**
@@ -26,39 +27,44 @@ class SMAreaValueDescription extends SMWValueDescription {
 	protected $bounds = false;
 
 	/**
+	 * @since 3.0
+	 *
+	 * @var SMWDIGeoCoord
+	 */
+	protected $center;
+
+	/**
+	 * @since 3.0
+	 *
+	 * @var string
+	 */
+	protected $radius;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @since 0.6
 	 * 
-	 * @param SMWDataItem $dataItem
+	 * @param SMWDataItem $areaCenter
 	 * @param string $comparator
 	 * @param string $radius
 	 * @param SMWDIProperty $property
+	 *
+	 * @throws InvalidArgumentException
 	 */
-	public function __construct( SMWDataItem $dataItem, $comparator, $radius, SMWDIProperty $property = null ) {
-		parent::__construct( $dataItem, $property, $comparator );
-
-		// Only if the MapsGeoFunctions class is  loaded, we can create the bounding box.
-		if ( self::geoFunctionsAreAvailable() ) {
-			$this->calculateBounds( $dataItem, $radius );
+	public function __construct( SMWDataItem $areaCenter, $comparator, $radius, SMWDIProperty $property = null ) {
+		if ( !( $areaCenter instanceof SMWDIGeoCoord ) ) {
+			throw new InvalidArgumentException( '$areaCenter needs to be a SMWDIGeoCoord' );
 		}
+
+		parent::__construct( $areaCenter, $property, $comparator );
+
+		$this->radius = MapsDistanceParser::parseDistance( $radius );
+		$this->center = $areaCenter;
+
+		$this->bounds = $this->getBoundingBox();
 	}
 
-	/**
-	 * Sets the bounds fields to an array returned by SMAreaValueDescription::getBoundingBox.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param SMWDIGeoCoord $dataItem
-	 * @param string $radius
-	 */
-	protected function calculateBounds( SMWDIGeoCoord $dataItem, $radius ) {
-		$this->bounds = self::getBoundingBox(
-			array( 'lat' => $dataItem->getLatitude(), 'lon' => $dataItem->getLongitude() ),
-			MapsDistanceParser::parseDistance( $radius )
-		);		
-	}
-	
 	/**
 	 * @see SMWDescription:getQueryString
 	 * 
@@ -152,20 +158,18 @@ class SMAreaValueDescription extends SMWValueDescription {
 	}
 
 	/**
-	 * Returns the lat and lon limits of a bounding box around a circle defined by the provided parameters.
-	 * 
-	 * @since 0.6
-	 * 
-	 * @param array $centerCoordinates Array containing non-directional float coordinates with lat and lon keys. 
-	 * @param float $circleRadius The radius of the circle to create a bounding box for, in m.
-	 * 
 	 * @return float[] An associative array containing the limits with keys north, east, south and west.
 	 */
-	protected static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
-		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
-		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
-		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
-		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
+	protected function getBoundingBox() {
+		$center = new LatLongValue(
+			$this->center->getLatitude(),
+			$this->center->getLongitude()
+		);
+
+		$north = MapsGeoFunctions::findDestination( $center, 0, $this->radius );
+		$east = MapsGeoFunctions::findDestination( $center, 90, $this->radius );
+		$south = MapsGeoFunctions::findDestination( $center, 180, $this->radius );
+		$west = MapsGeoFunctions::findDestination( $center, 270, $this->radius );
 
 		return array(
 			'north' => $north['lat'],
@@ -182,7 +186,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * 
 	 * @return boolean
 	 */
-	protected static function geoFunctionsAreAvailable() {
+	protected function geoFunctionsAreAvailable() {
 		return class_exists( 'MapsGeoFunctions' );
 	}	
 	
