@@ -250,24 +250,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	}
 
 	/**
-	 * @see SMWDataValue::getExportData
-	 * 
-	 * @since 0.6
-	 */
-	public function getExportData() {
-		if ( $this->isValid() ) {
-			$lit = new SMWExpLiteral(
-				$this->getFormattedCoord( $this->m_dataitem ),
-				$this,
-				'http://www.w3.org/2001/XMLSchema#string'
-			);
-			return new SMWExpData( $lit );
-		} else {
-			return null;
-		}
-	}
-
-	/**
 	 * Create links to mapping services based on a wiki-editable message. The parameters
 	 * available to the message are:
 	 * 
