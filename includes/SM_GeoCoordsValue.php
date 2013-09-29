@@ -22,11 +22,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected $wikiValue;
 
 	/**
-	 * @see SMWDataValue::setDataItem()
+	 * @see SMWDataValue::setDataItem
 	 * 
 	 * @since 1.0
 	 * 
-	 * @param $dataitem SMWDataItem
+	 * @param SMWDataItem $dataItem
 	 * 
 	 * @return boolean
 	 */
@@ -72,15 +72,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	}
 	
 	/**
-	 * @see SMWDataValue::parseUserValue
-	 * 
-	 * @since 0.6
-	 */
-	protected function parseUserValue( $value ) {
-		$this->parseUserValueOrQuery( $value );
-	}
-	
-	/**
 	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
 	 * comparators between all values.
 	 * 
@@ -89,18 +80,32 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @param string $value
 	 * 
 	 * @return SMWDescription
+	 * @throws InvalidArgumentException
 	 */
 	public function getQueryDescription( $value ) {
+		if ( !is_string( $value ) ) {
+			throw new InvalidArgumentException( '$value needs to be a string' );
+		}
+
 		return $this->parseUserValueOrQuery( $value, true );
-	}	
+	}
+
+	/**
+	 * @see SMWDataValue::parseUserValue
+	 *
+	 * @since 0.6
+	 */
+	protected function parseUserValue( $value ) {
+		$this->parseUserValueOrQuery( $value );
+	}
 	
 	/**
 	 * Parses the value into the coordinates and any meta data provided, such as distance.
 	 * 
 	 * @since 0.6
 	 * 
-	 * @param $value String
-	 * @param $asQuery Boolean
+	 * @param string $value
+	 * @param boolean $asQuery
 	 *
 	 * @return SMWDescription
 	 */
