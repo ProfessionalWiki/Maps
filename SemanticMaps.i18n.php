@@ -105,6 +105,7 @@ The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinat
 	'semanticmaps-forminput-remove' => '{{Identical|Remove}}',
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
+	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}',
 	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext".
 
 <code>$1</code> is not a parameter.
@@ -116,7 +117,6 @@ See also:
 Parameters:
 * $1 - text',
 	'semanticmaps-shapes-missingshape' => 'Message displayed when there is no such defined shape as $1',
-	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}'
 );
 
 /** Afrikaans (Afrikaans)
@@ -424,6 +424,7 @@ $messages['de'] = array(
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
+	'semanticmaps-par-activeicon' => 'Symbol, das anstelle der Standardkennzeichnung angezeigt wird, wenn die aktive Seite dem Abfrageergebnis entspricht.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
@@ -624,6 +625,7 @@ $messages['fr'] = array(
 	'semanticmaps-par-centre' => "Le centre de la carte. Lorsqu'il n'est pas fourni, la carte va choisir automatiquement le centre optimal pour afficher tous les marqueurs sur la carte.",
 	'semanticmaps-par-template' => "Un modèle à utiliser pour mettre en forme le contenu de la fenêtre d'informations.",
 	'semanticmaps-par-geocodecontrol' => 'Afficher le contrôle de géocodage.',
+	'semanticmaps-par-activeicon' => 'Icône à afficher à la place du marqueur par défaut, quand la page active est égale au résultat de la recherche',
 	'semanticmaps-kml-text' => "Le texte associé avec chaque page. Remplacé par des propriétés récupérées supplémentaires s'il y en a.",
 	'semanticmaps-kml-title' => 'Le titre par défaut pour les résultats',
 	'semanticmaps-kml-linkabsolute' => 'Si les titres doivent être absolus ou non (c.à.d. relatifs)',
@@ -676,6 +678,7 @@ $messages['gl'] = array(
 	'semanticmaps-par-centre' => 'O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.',
 	'semanticmaps-par-template' => 'Un modelo a empregar para dar formato ao contido da ventá de información.',
 	'semanticmaps-par-geocodecontrol' => 'Mostrar o control de xeocodificación.',
+	'semanticmaps-par-activeicon' => 'Icona a mostrar no canto do marcador predeterminado, cando a páxina é igual ao resultado da pescuda',
 	'semanticmaps-kml-text' => 'O texto asociado a cada páxina. Substituído polas propiedades pescudadas adicionais, se existen.',
 	'semanticmaps-kml-title' => 'O título por defecto para os resultados',
 	'semanticmaps-kml-linkabsolute' => 'Se as ligazóns deberían ser absolutas (contrario a relativas)',
@@ -931,6 +934,7 @@ $messages['ja'] = array(
 	'semanticmaps-par-centre' => '地図の中心。提供されていないときは、自動的に地図上のすべてのマーカーを表示するための最適な中心が選択されます。',
 	'semanticmaps-par-template' => '情報ウィンドウのコンテンツの整形に使用するテンプレートです。',
 	'semanticmaps-par-geocodecontrol' => 'ジオコーディングコントロールを表示します。',
+	'semanticmaps-par-activeicon' => 'アクティブなページがクエリ結果と等しい場合に、デフォルトのアイコンの代わりに表示されるアイコン',
 	'semanticmaps-kml-text' => '各ページに関連付けられたテキストです。クエリに追加的なプロパティがある場合は上書きされます。',
 	'semanticmaps-kml-title' => '結果の既定のタイトル',
 	'semanticmaps-kml-linkabsolute' => 'リンクは絶対表記 (= 相対表記の対義語) にしてください。',
@@ -1057,7 +1061,7 @@ $messages['lb'] = array(
 	'semanticmaps-forminput-locations' => 'Plazen',
 	'semanticmaps-par-forceshow' => "D'Kaart och weise wa keng Plazen drop sinn déi solle gewise ginn?",
 	'semanticmaps-kml-title' => 'De Standard-Titel fir Resultater',
-	'semanticmaps-kml-linkabsolute' => 'Solle Linken absolut sinn oder net (d.h. relativ)',
+	'semanticmaps-kml-linkabsolute' => 'Solle Linken absolut sinn (am Géigesaz zu relativ)',
 );
 
 /** Macedonian (македонски)
@@ -1085,6 +1089,7 @@ $messages['mk'] = array(
 	'semanticmaps-par-centre' => 'Средиштето на картата. Ако не е укажано, картата автоматски ќе го одбере средиштето кајшто оптимално ќе се прикажат сите одбележувачи на картата.',
 	'semanticmaps-par-template' => 'Шаблон за форматирање на содржината на инфопрозорецот.',
 	'semanticmaps-par-geocodecontrol' => 'Прикажи геокодни котроли.',
+	'semanticmaps-par-activeicon' => 'Икона за приказ наместо стандардниот бележник, кога активна страница се совпаѓа со бараното',
 	'semanticmaps-kml-text' => 'Текстот на секоја страница. Се презапишува ако има дополнителни барани својства.',
 	'semanticmaps-kml-title' => 'Стандарден наслов за резултатите',
 	'semanticmaps-kml-linkabsolute' => 'Дали врските да бидат апсолутни',
@@ -1670,6 +1675,7 @@ $messages['uk'] = array(
 	'semanticmaps-par-centre' => 'Центр карти. Якщо не задано, то карта автоматично вибере оптимальний центр, який дозволяє відобразити всі маркери на карті.',
 	'semanticmaps-par-template' => 'Шаблон для форматування вмісту інформаційного вікна.',
 	'semanticmaps-par-geocodecontrol' => 'Показати управління геокодуваням.',
+	'semanticmaps-par-activeicon' => 'Піктограма, яка буде відображатися замість типового маркера, коли активна сторінка рівна результату запиту',
 	'semanticmaps-kml-text' => "Текст, пов'язаний з кожною сторінкою. Нехтується запитаними додатковими властивостями, якщо такі є.",
 	'semanticmaps-kml-title' => 'Типовий заголовок для результатів',
 	'semanticmaps-kml-linkabsolute' => 'Посилання мають бути абсолютними (на відміну від відносних)',
@@ -1728,6 +1734,7 @@ $messages['yi'] = array(
 /** Simplified Chinese (中文（简体）‎)
  * @author Gzdavidwong
  * @author Linforest
+ * @author Liuxinyu970226
  * @author Xiaomingyan
  * @author Yfdyh000
  */
@@ -1753,6 +1760,7 @@ $messages['zh-hans'] = array(
 	'semanticmaps-par-centre' => '地图的中心。当未加提供的时候，地图会自动挑选最佳的中心，从而在地图上显示所有的标记。',
 	'semanticmaps-par-template' => '用来对信息窗口内容进行格式编排的模板。',
 	'semanticmaps-par-geocodecontrol' => '显示地理编码控件。',
+	'semanticmaps-par-activeicon' => '当活跃页面等于查询结果时将显示选定标记而不是默认标记',
 	'semanticmaps-kml-text' => '与每个页面相关联的文本。会被额外的查询属性（如果有的话）所覆盖。',
 	'semanticmaps-kml-title' => '结果的默认标题',
 	'semanticmaps-kml-linkabsolute' => '链接究竟应当是绝对地址还是相对地址',
