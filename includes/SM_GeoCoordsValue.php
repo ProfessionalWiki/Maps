@@ -96,6 +96,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @since 0.6
 	 */
 	protected function parseUserValue( $value ) {
+		if ( !is_string( $value ) ) {
+			throw new InvalidArgumentException( '$value needs to be a string' );
+		}
+
 		$this->parseUserValueOrQuery( $value );
 	}
 	
