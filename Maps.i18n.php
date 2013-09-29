@@ -264,8 +264,6 @@ $messages['qqq'] = array(
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
-	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view',
-	'maps-fullscreen-button-tooltip' => 'Text displayed when hovering over "maps-fullscreen-button"',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-layer-property' => '{{Identical|Property}}',
@@ -289,6 +287,9 @@ $messages['qqq'] = array(
 	'maps-layer-type-supported-by' => 'Parameters:
 * $1 - list of supported services (geonames and/or google). not localized.
 * $2 - number of supported services',
+	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view',
+	'maps-fullscreen-button-tooltip' => 'Text displayed when hovering over "maps-fullscreen-button"',
+	'maps-googlemaps3-par-enable-fullscreen' => '{{maps-par|googlemaps3|enablefullscreen}}',
 	'validation-error-invalid-location' => 'Parameters:
 * $1 - parameter name
 {{Related|Maps-validation}}',
@@ -367,7 +368,6 @@ See also:
 
 KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
-	'maps-googlemaps3-par-enable-fullscreen' => '{{maps-par|googlemaps3|enablefullscreen}}',
 	'mapeditor' => 'title of the special page [[Special:MapEditor]].',
 	'specialpages-group-maps' => '{{doc-special-group|like=[[Special:MapEditor]]}}
 {{Identical|Map}}',
@@ -1336,6 +1336,9 @@ Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markier
 	'maps-displaymap-par-rectangles' => 'Anzuzeigende Rechtecke',
 	'maps-displaymap-par-static' => 'Soll die Karte statisch sein',
 	'maps-displaymap-par-wmsoverlay' => 'Eine WMS-Überlagerung verwenden',
+	'maps-fullscreen-button' => 'Auf Vollbild umschalten',
+	'maps-fullscreen-button-tooltip' => 'Die Karte als Vollbild darstellen/eingebettet.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Vollbildbutton aktivieren',
 	'validation-error-invalid-location' => 'Parameter $1 muss einem gültigen Standort entsprechen.',
 	'validation-error-invalid-locations' => 'Parameter $1 muss einem oder mehreren gültigen Standorten entsprechen.',
 	'validation-error-invalid-width' => 'Parameter $1 muss einer gültigen Breite entsprechen.',
@@ -2440,6 +2443,7 @@ $messages['gl'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => 'Filtrar os marcadores',
 	'maps-others' => 'outros',
+	'maps-kml-parsing-failed' => 'Erro ao analizar un ou máis ficheiros KML. Normalmente, isto débese a un erro de recuperación ou a que o XML non ten o formato axeitado.',
 	'maps-ns-layer' => 'Capa',
 	'maps-ns-layer-talk' => 'Conversa capa',
 	'maps-layer-property' => 'Propiedade',
@@ -3487,7 +3491,7 @@ $messages['it'] = array(
 	'maps-finddestination-par-distance' => 'La distanza da percorrere.',
 	'maps-geocode-par-format' => 'Il formato per le coordinate risultanti.',
 	'maps-displaymap-par-coordinates' => 'Uno o più luoghi da mostrare sulla mappa. Verranno indicati con un marcatore.',
-	'maps-displaymap-par-visitedicon' => 'Il locale di un file da utilizzare come icona visitata', # Fuzzy
+	'maps-displaymap-par-visitedicon' => "Il nome di un'immagine da utilizzare come icone per i marcatori dopo che sono stati selezionati",
 	'maps-displaymap-par-lines' => 'Linee da visualizzare',
 	'maps-displaymap-par-maxzoom' => 'Il livello massimo di zoom',
 	'maps-displaymap-par-minzoom' => 'Il livello minimo di zoom',
@@ -6732,6 +6736,9 @@ $messages['uk'] = array(
 	'maps-displaymap-par-rectangles' => 'Прямокутники для показу',
 	'maps-displaymap-par-static' => 'Якщо карта повинна бути нерухомою',
 	'maps-displaymap-par-wmsoverlay' => 'Використовувати накладення WMS',
+	'maps-fullscreen-button' => 'Перемкнути повноекранний режим',
+	'maps-fullscreen-button-tooltip' => 'Переглянути мапу на весь екран/як вбудовану.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Увімкнути кнопку повноекранного режиму',
 	'validation-error-invalid-location' => 'Параметр $1 повинен бути коректним місцем розташування.',
 	'validation-error-invalid-locations' => 'Параметр $1 повинен бути одним або більше коректних місць розташування.',
 	'validation-error-invalid-width' => 'Параметр $1 повинен бути коректною шириною.',
