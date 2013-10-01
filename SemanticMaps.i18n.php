@@ -176,6 +176,7 @@ $messages['ast'] = array(
 	'semanticmaps-par-centre' => "El centru del mapa. Cuando nun se proporciona, el mapa escoyerá automáticamente'l meyor centru p'amosar tolos marcadores del mapa.",
 	'semanticmaps-par-template' => "Una plantía que s'utiliza pa dar formatu al conteníu de la ventana d'información.",
 	'semanticmaps-par-geocodecontrol' => 'Amosar el control de xeocodificación.',
+	'semanticmaps-par-activeicon' => 'Iconu a amosar en llugar del marcador predetermináu, cuando la páxina activa ye igual al resultáu de la consulta',
 	'semanticmaps-kml-text' => 'El testu asociáu con cada páxina. Sustituyíu poles otres propiedaes consultaes, si esisten.',
 	'semanticmaps-kml-title' => 'El títulu predetermináu pa los resultaos',
 	'semanticmaps-kml-linkabsolute' => 'Si los títulos tienen de ser absolutos o non (esto ye, relativos)',
@@ -1698,7 +1699,7 @@ $messages['ur'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng MediaWiki Ngữ nghĩa ([https://mapping.referata.com/wiki/Examples?uselang=vi xem thử]).', # Fuzzy
+	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng MediaWiki Ngữ nghĩa ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps?uselang=vi thêm thông tin…]).',
 	'semanticmaps-unrecognizeddistance' => 'Giá trị $1 không phải là tầm hợp lệ.',
 	'semanticmaps-kml-link' => 'Xem tập tin KML',
 	'semanticmaps-default-kml-pagelink' => 'Xem trang $1',
