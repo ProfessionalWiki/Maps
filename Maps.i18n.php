@@ -287,8 +287,10 @@ $messages['qqq'] = array(
 	'maps-layer-type-supported-by' => 'Parameters:
 * $1 - list of supported services (geonames and/or google). not localized.
 * $2 - number of supported services',
-	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view',
-	'maps-fullscreen-button-tooltip' => 'Text displayed when hovering over "maps-fullscreen-button"',
+	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view.
+
+Tooltip for this button is {{msg-mw|Maps-fullscreen-button-tooltip}}.',
+	'maps-fullscreen-button-tooltip' => 'Text displayed when hovering over the button which is labeled {{msg-mw|Maps-fullscreen-button}}.',
 	'maps-googlemaps3-par-enable-fullscreen' => '{{maps-par|googlemaps3|enablefullscreen}}',
 	'validation-error-invalid-location' => 'Parameters:
 * $1 - parameter name
@@ -544,6 +546,7 @@ $messages['ast'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, Intro',
 	'maps-searchmarkers-text' => 'Peñerar marcadores',
 	'maps-others' => 'otros',
+	'maps-kml-parsing-failed' => "Falló l'analís d'un ficheru KML o más, de vezu debío a un fallu na recuperación o a un XML con mal formatu.",
 	'maps-ns-layer' => 'Capa',
 	'maps-ns-layer-talk' => 'Alderique de capa',
 	'maps-layer-property' => 'Propiedá',
@@ -600,7 +603,7 @@ Si ye «non», se xeocodificarán tolos valores, incluyendo les coordenaes váli
 Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
 	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
 	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
-	'maps-displaymap-par-visitedicon' => "El llocal d'un ficheru a usar como iconu de visitáu", # Fuzzy
+	'maps-displaymap-par-visitedicon' => "El nome d'una imaxe a usar pa los iconos de marcador dempués de facer clic nellos",
 	'maps-displaymap-par-zoom' => "Permite configurar el nivel de zoom do mapa.
 Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
 	'maps-displaymap-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
@@ -619,6 +622,9 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-displaymap-par-rectangles' => 'Rectángulos a amosar',
 	'maps-displaymap-par-static' => "Si'l mapa tien de ser estáticu",
 	'maps-displaymap-par-wmsoverlay' => 'Usar una superposición WMS',
+	'maps-fullscreen-button' => 'Conmutar pantalla completa',
+	'maps-fullscreen-button-tooltip' => 'Ver el mapa como pantalla completa/incrustáu.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Activar el botón de pantalla completa',
 	'validation-error-invalid-location' => 'El parámetru $1 tien de ser un llugar válidu.',
 	'validation-error-invalid-locations' => 'El parámetru $1 tien de ser un o más llugares válidos.',
 	'validation-error-invalid-width' => 'El parámetru $1 tien de ser un anchor válidu.',
@@ -2053,6 +2059,9 @@ Jos sitä ei ole asetettu ja kartalla on kohdemerkkejä, loitonnustasoksi valita
 	'maps-displaymap-par-polygons' => 'Näytettävät monikulmiot',
 	'maps-displaymap-par-rectangles' => 'Näytettävät suorakulmiot',
 	'maps-displaymap-par-static' => 'Onko kartan on oltava staattinen',
+	'maps-fullscreen-button' => 'Koko näytön tila',
+	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Koko näytön tila -painike',
 	'validation-error-invalid-location' => 'Parametrin $1 on oltava sallittu sijainti.',
 	'validation-error-invalid-locations' => 'Parametrin $1 on oltava yksi tai useampi sallittu sijainti.',
 	'validation-error-invalid-width' => 'Parametrin $1 on oltava sallittu leveys.',
@@ -2235,6 +2244,9 @@ Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
 	'maps-displaymap-par-rectangles' => 'Rectangles à afficher',
 	'maps-displaymap-par-static' => 'Si la carte doit être statique',
 	'maps-displaymap-par-wmsoverlay' => 'Utiliser une superposition WMS',
+	'maps-fullscreen-button' => 'Basculer en plein écran',
+	'maps-fullscreen-button-tooltip' => 'Afficher la carte en plein écran/incorporé',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Activer le bouton plein écran',
 	'validation-error-invalid-location' => 'Le paramètre $1 doit être un emplacement valide.',
 	'validation-error-invalid-locations' => 'Le paramètre $1 doit être un ou plusieurs emplacement(s) valide(s).',
 	'validation-error-invalid-width' => 'Le paramètre $1 doit être une largeur valide.',
@@ -3613,6 +3625,9 @@ $messages['ja'] = array(
 	'maps-displaymap-par-polygons' => '表示する多角形',
 	'maps-displaymap-par-rectangles' => '表示する矩形',
 	'maps-displaymap-par-wmsoverlay' => 'WMS オーバーレイを使用',
+	'maps-fullscreen-button' => '全画面表示を切り替え',
+	'maps-fullscreen-button-tooltip' => '地図の表示を全画面または埋め込みに切り替えます。',
+	'maps-googlemaps3-par-enable-fullscreen' => '全画面表示のボタンを有効にする',
 	'validation-error-invalid-location' => '引数 $1 には有効な場所を指定してください。',
 	'validation-error-invalid-locations' => '引数 $1 には有効な場所を 1 つ以上指定してください。',
 	'validation-error-invalid-width' => '引数 $1 には有効な幅を指定してください。',
@@ -4039,9 +4054,10 @@ $messages['lad'] = array(
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
+ * @author Soued031
  */
 $messages['lb'] = array(
-	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geografesch Operatiounen ze weisen. ([https://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])",
+	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen. ([https://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])",
 	'right-geocode' => 'Geocode',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
@@ -4053,7 +4069,7 @@ $messages['lb'] = array(
 	'maps-layer-property' => 'Eegeschaft',
 	'maps-layer-value' => 'Wäert',
 	'maps-layer-errors' => 'Feeler',
-	'maps-geodistance-description' => 'Déi geografesch Distanz tëschent zwee Punkte berechnen, vun an an iergend eent vun den ënnerstëtzte Formater.',
+	'maps-geodistance-description' => 'Déi geographesch Distanz tëscht zwéi Punkte berechnen, vun an an iergendeent vun den ënnerstëtzte Formater.',
 	'maps-mapsdoc-par-language' => "D'Sprooch an där d'Dokumentatioun gewise gi soll. Wann déi Iwwersetzung net disponibel ass, da gëtt Englesch an där Plaz benotzt.",
 	'maps-coordinates-par-location' => "D'Koordinaten déi Dir formatéiere wëllt.",
 	'maps-coordinates-par-format' => "D'Zilformat vun de Koordinaten.",
@@ -4096,7 +4112,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Dës {{PLURAL:$2|Koordinate|Koordinate}} goufen net erkannt a vun der Kaart ignoréiert:
 $1',
 	'maps_map_cannot_be_displayed' => "D'Kaart kann net gewise ginn.",
-	'maps-geocoder-not-available' => "D'Fonctioun vun der Geocodéierung vu Kaarten ass net disponibel. Äre Standuert konnt net geocodéiert ginn.",
+	'maps-geocoder-not-available' => "D'Funktioun vun der Geocodéierung vu Kaarten ass net disponibel. Äre Standuert konnt net geocodéiert ginn.",
 	'maps_click_to_activate' => "Klickt fir d'kaart z'aktivéieren",
 	'maps_centred_on' => "D'Kaart ass zentréiert op $1, $2",
 	'maps-googlemaps3-incompatbrowser' => 'Äre Browser ass net mat Google Maps v3 kompatibel.',
@@ -4270,6 +4286,9 @@ $messages['mk'] = array(
 	'maps-displaymap-par-rectangles' => 'Правоаголници за приказ',
 	'maps-displaymap-par-static' => 'Дали картата да биде неподвижна',
 	'maps-displaymap-par-wmsoverlay' => 'Користи WMS-облога',
+	'maps-fullscreen-button' => 'Префрли на широк екран',
+	'maps-fullscreen-button-tooltip' => 'Поглед на картата на цел екран/вгнездено',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Овозможи копче за цел екран',
 	'validation-error-invalid-location' => 'Параметарот $1 мора да претставува важечка местоположба.',
 	'validation-error-invalid-locations' => 'Параметарот $1 мора да претставува една или повеќе важечки местоположби.',
 	'validation-error-invalid-width' => 'Параметарот $1 мора да претставува важечка ширина.',
@@ -5926,6 +5945,7 @@ $messages['ru'] = array(
 	'maps-displaymap-par-maxzoom' => 'Максимальный уровень масштабирования',
 	'maps-displaymap-par-minzoom' => 'Минимальный уровень масштабирования',
 	'maps-displaymap-par-static' => 'Если карта должна быть статичной',
+	'maps-fullscreen-button' => 'Переключить полноэкранный режим',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
 	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
