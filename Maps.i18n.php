@@ -6157,6 +6157,7 @@ $messages['sk'] = array(
 
 /** Slovenian (slovenščina)
  * @author Dbc334
+ * @author Eleassar
  * @author Lesko987
  */
 $messages['sl'] = array(
@@ -6165,6 +6166,10 @@ $messages['sl'] = array(
 	'maps_map' => 'Zemljevid',
 	'maps-loading-map' => 'Nakladanje zemljevida...',
 	'maps-load-failed' => 'Zemljevid ni bilo mogoče naložiti.',
+	'maps-kml-parsing-failed' => 'Razčlenjevanje ene ali več datotek KML ni uspelo. Navadno je vzrok neuspešen priklic ali slabo oblikovan XML.',
+	'maps-fullscreen-button' => 'Vklopi celozaslonski prikaz',
+	'maps-fullscreen-button-tooltip' => 'Celozaslonski/vključeni prikaz zemljevida.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Omogoči gumb za celozaslonski prikaz',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
 	'maps-abb-south' => 'J',
@@ -7046,6 +7051,7 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (中文（简体）‎)
  * @author Hydra
+ * @author Hzy980512
  * @author Kuailong
  * @author PhiLiP
  * @author Xiaomingyan
@@ -7068,6 +7074,7 @@ $messages['zh-hans'] = array(
 	'maps-error-invalid-layerdef' => '这一层定义不是有效的。',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
+	'maps-googlemaps3-par-enable-fullscreen' => '启用全屏按钮',
 	'validation-error-invalid-location' => '参数 $1 必须是一个有效的位置。',
 	'validation-error-invalid-locations' => '参数 $1 必须有一个或多个有效的位置。',
 	'validation-error-invalid-width' => '参数 $1 必须是一个有效的宽度。',
@@ -7103,6 +7110,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (中文（繁體）‎)
+ * @author Cwlin0416
  * @author Horacewai2
  * @author Justincheng12345
  * @author Mark85296341
@@ -7127,6 +7135,9 @@ $messages['zh-hant'] = array(
 	'maps-error-invalid-layerdef' => '這一層定義不是有效的。',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影響。',
+	'maps-fullscreen-button' => '切換全螢幕',
+	'maps-fullscreen-button-tooltip' => '檢視地圖使用全螢幕或嵌入式',
+	'maps-googlemaps3-par-enable-fullscreen' => '開啟全螢幕的按鈕',
 	'validation-error-invalid-location' => '參數 $1 必須是一個有效的位置。',
 	'validation-error-invalid-locations' => '參數 $1 必須有一個或多個有效的位置。',
 	'validation-error-invalid-width' => '參數 $1 必須是一個有效的寬度。',
