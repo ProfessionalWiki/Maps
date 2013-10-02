@@ -680,6 +680,12 @@
 				searchBox.appendTo(searchContainer);
 				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(searchContainer);
 
+				//prevents markers and other map objects to be placed beneath searchfield
+				google.maps.event.addListenerOnce(map, 'bounds_changed', function () {
+					map.panBy(0,-30);
+				});
+
+
 				searchBox.on('keyup',function (e) {
 					for (var i = 0; i < _this.markers.length; i++) {
 							var haystack = '';
