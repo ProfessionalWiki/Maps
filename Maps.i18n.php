@@ -124,7 +124,7 @@ When used together with label, the title will be bold and underlined.',
 	'maps-displaymap-par-wmsoverlay' => 'Use a WMS overlay',
 
 	'maps-fullscreen-button' => 'Toggle fullscreen',
-	'maps-fullscreen-button-tooltip' => 'View the map as fullscreen/embedded.',
+	'maps-fullscreen-button-tooltip' => 'View the map as fullscreen or embedded.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Enable fullscreen button',
 
 	// Validation
