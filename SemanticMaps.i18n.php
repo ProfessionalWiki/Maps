@@ -1307,7 +1307,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'semanticmaps-forminput-remove' => 'غورځول',
-	'semanticmaps-forminput-add' => 'ورګډول',
+	'semanticmaps-forminput-add' => 'ورگډول',
 	'semanticmaps-forminput-locations' => 'استوګنځي',
 );
 
