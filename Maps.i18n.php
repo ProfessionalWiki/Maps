@@ -10,16 +10,13 @@
 
 $messages = array();
 
-/** English
+/** English (English)
  * @author Jeroen De Dauw
  * @author Karsten Hoffmeyer (kghbln)
  */
 $messages['en'] = array(
-	// General
-	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])",
-
+	'maps-desc' => 'Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])',
 	'right-geocode' => 'Geocode',
-
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
 	'maps-load-failed' => 'Could not load the map!',
@@ -28,7 +25,6 @@ $messages['en'] = array(
 	'maps-searchmarkers-text' => 'Filter markers',
 	'maps-others' => 'others',
 	'maps-kml-parsing-failed' => 'Failed parsing one or more KML files, usually due to retrieval failure or malformed XML.',
-	//TODO: move to namespaces i18n
 	'maps-ns-layer' => 'Layer',
 	'maps-ns-layer-talk' => 'Layer talk',
 	'maps-layer-property' => 'Property',
@@ -41,44 +37,32 @@ $messages['en'] = array(
 	'validation-error-invalid-layers' => 'Parameter $1 must be one or more valid layers.',
 	'maps-layer-of-type' => 'Layer of type $1',
 	'maps-layer-type-supported-by' => 'This layer type can {{PLURAL:$2|only be used with the $1 mapping service|be used with these mapping services: $1}}.',
-
-	// Parser function descriptions
 	'maps-coordinates-description' => 'Parser hook to format coordinates, from and to any of the supported formats.',
 	'maps-displaymap-description' => 'Display geographical maps without any wiki-defined markers on them.',
 	'maps-displaypoint-description' => 'Display geographical maps with one or more wiki-defined markers on them.',
-	'maps-distance-description' => "Convert a distance using a certain supported unit to its equivalent using another unit.",
+	'maps-distance-description' => 'Convert a distance using a certain supported unit to its equivalent using another unit.',
 	'maps-finddestination-description' => 'Find a destination given a starting point (that can be in any of the supported formats), an initial bearing and a distance.',
 	'maps-geocode-description' => 'Enables the geocoding of addresses, in other words, turning human readable locations into sets of coordinates. There is support for several geocoding services, which should not be confused with mapping services.',
 	'maps-geodistance-description' => 'Calculate the geographical distance between two points, from and to any of the supported formats.',
 	'maps-mapsdoc-description' => 'Display a table with the parameters for a specified mapping service together with their default values and descriptions.',
-
-	// Mapsdoc parser hook
 	'maps-mapsdoc-par-service' => 'The mapping service to display parameter documentation for.',
 	'maps-mapsdoc-par-language' => 'The language in which to display the documentation. If no such translation is available, English will be used instead.',
-
-	// Coordinates parser hook
 	'maps-coordinates-par-location' => 'The coordinates you want to format.',
 	'maps-coordinates-par-format' => 'The target format for the coordinates.',
 	'maps-coordinates-par-directional' => 'Indicates if the coordinates should be outputted directional or not.',
-
-	// Distance parser hook
-	'maps-distance-par-distance' => "The distance to convert to its equivalent with a specified unit.",
+	'maps-distance-par-distance' => 'The distance to convert to its equivalent with a specified unit.',
 	'maps-distance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
 	'maps-distance-par-unit' => 'The unit to output the distance in.',
-
-	// Finddestination paser hook
 	'maps-finddestination-par-location' => 'The initial location.',
 	'maps-finddestination-par-bearing' => 'The initial bearing.',
 	'maps-finddestination-par-distance' => 'The distance to travel.',
 	'maps-finddestination-par-format' => 'The format in which to output the destination.',
 	'maps-finddestination-par-directional' => 'Indicates if the format of the destination should be directional or not.',
 	'maps-finddestination-par-allowcoordinates' => 'Indicates if coordinates should be allowed. If set to no, only addresses will be accepted.',
-	'maps-finddestination-par-geoservice' => "The geocoding service to use to geocode the value in case it is an address.",
-	'maps-finddestination-par-mappingservice' => "Parameter to indicate the mapping service to use with this function.
+	'maps-finddestination-par-geoservice' => 'The geocoding service to use to geocode the value in case it is an address.',
+	'maps-finddestination-par-mappingservice' => 'Parameter to indicate the mapping service to use with this function.
 This will allow maps to override the default value of the service parameter by the one that is optimal for the mapping service.
-(Example: In case of Google Maps, the Google geocoder will be used.)",
-
-	// Geocode parser hook
+(Example: In case of Google Maps, the Google geocoder will be used.)',
 	'maps-geocode-par-location' => 'The address you want to geocode.',
 	'maps-geocode-par-mappingservice' => 'The geocoding service you want to use. See the available geocoding services.',
 	'maps-geocode-par-geoservice' => 'This parameter allows you to indicate you are using this geocoding request in combination with a specific mapping service.
@@ -89,8 +73,6 @@ Setting this parameter and not the parameter for the service, will ensure you ar
 When no, every value will be geocoded, even valid coordinates.',
 	'maps-geocode-par-format' => 'The format for the resulting coordinates.',
 	'maps-geocode-par-directional' => 'Indicates if the coordinates should be outputted directional or not.',
-
-	// Geodistance parser hook
 	'maps-geodistance-par-location1' => 'The first point in the set to calculate the distance between.',
 	'maps-geodistance-par-location2' => 'The second point in the set to calculate the distance between.',
 	'maps-geodistance-par-unit' => 'The unit to output the distance in.',
@@ -98,14 +80,11 @@ When no, every value will be geocoded, even valid coordinates.',
 	'maps-geodistance-par-mappingservice' => 'The geocoding service to use to geocode any addresses.',
 	'maps-geodistance-par-geoservice' => 'The mapping service this is used together with.
 This can affect the default geocoding service value.',
-
-	// display_map parser hook
 	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
-	'maps-displaymap-par-coordinates' => 'The location the map will initially be centered on.',
+	'maps-displaymap-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
 	'maps-displaymap-par-visitedicon' => 'The name of an image to be used for marker icons after they have been clicked',
 	'maps-displaymap-par-zoom' => 'Allows setting the zoom level of the map.
 When not provided and multiple markers are present on the map, the best fitting zoom will be taken, not the configurable default.',
-	'maps-displaymap-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
 	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's center for display_point(s).
 Accepts both addresses and coordinates.
 When this property is not provided, the map will center itself on the provided marker, or between the provided markers.",
@@ -122,12 +101,9 @@ When used together with label, the title will be bold and underlined.',
 	'maps-displaymap-par-rectangles' => 'Rectangles to display',
 	'maps-displaymap-par-static' => 'If the map should be static',
 	'maps-displaymap-par-wmsoverlay' => 'Use a WMS overlay',
-
 	'maps-fullscreen-button' => 'Toggle fullscreen',
 	'maps-fullscreen-button-tooltip' => 'View the map as fullscreen or embedded.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Enable fullscreen button',
-
-	// Validation
 	'validation-error-invalid-location' => 'Parameter $1 must be a valid location.',
 	'validation-error-invalid-locations' => 'Parameter $1 must be one or more valid locations.',
 	'validation-error-invalid-width' => 'Parameter $1 must be a valid width.',
@@ -136,22 +112,17 @@ When used together with label, the title will be bold and underlined.',
 	'validation-error-invalid-distances' => 'Parameter $1 must be one or more valid distances.',
 	'validation-error-invalid-image' => 'Parameter $1 must be a valid image.',
 	'validation-error-invalid-images' => 'Parameter $1 must be one or more valid images.',
-
 	'validation-error-invalid-goverlay' => 'Parameter $1 must be a valid overlay.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 must be one or more valid overlays.',
 	'validation-error-invalid-line-param' => 'Invalid "lines" parameter specified.',
 	'validation-error-invalid-polyline-param' => 'Invalid "polylines" parameter specified.',
 	'validation-error-invalid-searchmarkers-param' => 'Invalid searchmarkers value, should be either "all" or "title"',
-
-	// Coordinate handling
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
-	'maps-latitude'  => 'Latitude:',
+	'maps-latitude' => 'Latitude:',
 	'maps-longitude' => 'Longitude:',
-
-	// Coordinate errors
 	'maps-invalid-coordinates' => 'The value $1 was not recognized as a valid set of coordinates.',
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
 	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.',
@@ -161,20 +132,12 @@ $1',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognized and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
-
-	// Geocoding
 	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location cannot be geocoded.',
-
-	// Mapping services
 	'maps_googlemaps3' => 'Google Maps v3',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_osm' => 'OpenStreetMap',
-
-	// Static maps
 	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centered on $1, $2.',
-
-	// Params common to all mapping features (ie display_map, query printers, form inputs)
 	'maps-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
 	'maps-par-resizable' => 'Makes the map resizable by dragging at its lower right corner.',
 	'maps-par-geoservice' => 'The geocoding service to use to make translations between addresses and coordinates.',
@@ -182,8 +145,6 @@ $1',
 	'maps-par-width' => 'Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
 	'maps-par-height' => 'Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
 	'maps-par-centre' => 'The location on which the map should be centered',
-
-	// Google Maps v3
 	'maps-googlemaps3-incompatbrowser' => 'Your browser is not compatible with Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'The map type to initially show.',
 	'maps-googlemaps3-par-types' => 'The map types that will be available via the type control.',
@@ -198,16 +159,10 @@ $1',
 	'maps-googlemaps3-par-tilt' => 'Tilt for the Map when using Google Maps.',
 	'maps-googlemaps3-par-kmlrezoom' => 'Rezoom the map after the KML layers have been loaded.',
 	'maps-googlemaps3-par-poi' => 'Show points of interest.',
-
-	// OpenLayers
 	'maps-openlayers-par-controls' => 'The controls to place on the map.',
 	'maps-openlayers-par-layers' => 'The layers that will be available in the layer selector. The first layer will be shown when the map loads.',
-
-	// OSM
 	'maps-osm-par-thumbs' => 'Show thumbs',
 	'maps-osm-par-photos' => 'Show photos',
-
-	// Special:MapEditor
 	'mapeditor' => 'Map editor',
 	'specialpages-group-maps' => 'Maps',
 	'mapeditor-parser-error' => 'An error occurred when parsing metadata. Ignoring user input.',
@@ -244,7 +199,6 @@ $1',
 	'mapeditor-form-field-image' => 'Image',
 	'mapeditor-imageoverlay-title' => 'Image overlay details',
 	'mapeditor-form-field-visitedicon' => 'Visited icon',
-
 );
 
 /** Message documentation (Message documentation)
@@ -266,6 +220,7 @@ $messages['qqq'] = array(
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
+	'maps-ns-layer' => '{{Identical|Layer}}',
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
@@ -623,7 +578,7 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-displaymap-par-static' => "Si'l mapa tien de ser estáticu",
 	'maps-displaymap-par-wmsoverlay' => 'Usar una superposición WMS',
 	'maps-fullscreen-button' => 'Conmutar pantalla completa',
-	'maps-fullscreen-button-tooltip' => 'Ver el mapa como pantalla completa/incrustáu.',
+	'maps-fullscreen-button-tooltip' => 'Ver el mapa como pantalla completa/incrustáu.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activar el botón de pantalla completa',
 	'validation-error-invalid-location' => 'El parámetru $1 tien de ser un llugar válidu.',
 	'validation-error-invalid-locations' => 'El parámetru $1 tien de ser un o más llugares válidos.',
@@ -1343,7 +1298,7 @@ Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markier
 	'maps-displaymap-par-static' => 'Soll die Karte statisch sein',
 	'maps-displaymap-par-wmsoverlay' => 'Eine WMS-Überlagerung verwenden',
 	'maps-fullscreen-button' => 'Auf Vollbild umschalten',
-	'maps-fullscreen-button-tooltip' => 'Die Karte als Vollbild darstellen/eingebettet.',
+	'maps-fullscreen-button-tooltip' => 'Die Karte als Vollbild oder eingebettet darstellen.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Vollbildbutton aktivieren',
 	'validation-error-invalid-location' => 'Parameter $1 muss einem gültigen Standort entsprechen.',
 	'validation-error-invalid-locations' => 'Parameter $1 muss einem oder mehreren gültigen Standorten entsprechen.',
@@ -2060,7 +2015,7 @@ Jos sitä ei ole asetettu ja kartalla on kohdemerkkejä, loitonnustasoksi valita
 	'maps-displaymap-par-rectangles' => 'Näytettävät suorakulmiot',
 	'maps-displaymap-par-static' => 'Onko kartan on oltava staattinen',
 	'maps-fullscreen-button' => 'Koko näytön tila',
-	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.',
+	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Koko näytön tila -painike',
 	'validation-error-invalid-location' => 'Parametrin $1 on oltava sallittu sijainti.',
 	'validation-error-invalid-locations' => 'Parametrin $1 on oltava yksi tai useampi sallittu sijainti.',
@@ -2245,7 +2200,7 @@ Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
 	'maps-displaymap-par-static' => 'Si la carte doit être statique',
 	'maps-displaymap-par-wmsoverlay' => 'Utiliser une superposition WMS',
 	'maps-fullscreen-button' => 'Basculer en plein écran',
-	'maps-fullscreen-button-tooltip' => 'Afficher la carte en plein écran/incorporé',
+	'maps-fullscreen-button-tooltip' => 'Visualiser la carte en plein écran ou incorporé.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activer le bouton plein écran',
 	'validation-error-invalid-location' => 'Le paramètre $1 doit être un emplacement valide.',
 	'validation-error-invalid-locations' => 'Le paramètre $1 doit être un ou plusieurs emplacement(s) valide(s).',
@@ -2533,7 +2488,7 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'maps-displaymap-par-static' => 'Se o mapa debe ser estático',
 	'maps-displaymap-par-wmsoverlay' => 'Utilizar unha sobreposición WMS',
 	'maps-fullscreen-button' => 'Activar ou desactivar a pantalla completa',
-	'maps-fullscreen-button-tooltip' => 'Mostrar o mapa en pantalla completa/incrustado.',
+	'maps-fullscreen-button-tooltip' => 'Mostrar o mapa en pantalla completa/incrustado.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activar o botón de pantalla completa',
 	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
 	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
@@ -4290,7 +4245,7 @@ $messages['mk'] = array(
 	'maps-displaymap-par-static' => 'Дали картата да биде неподвижна',
 	'maps-displaymap-par-wmsoverlay' => 'Користи WMS-облога',
 	'maps-fullscreen-button' => 'Префрли на широк екран',
-	'maps-fullscreen-button-tooltip' => 'Поглед на картата на цел екран/вгнездено',
+	'maps-fullscreen-button-tooltip' => 'Поглед на картата на цел екран или вгнездено.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Овозможи копче за цел екран',
 	'validation-error-invalid-location' => 'Параметарот $1 мора да претставува важечка местоположба.',
 	'validation-error-invalid-locations' => 'Параметарот $1 мора да претставува една или повеќе важечки местоположби.',
@@ -6171,7 +6126,7 @@ $messages['sl'] = array(
 	'maps-load-failed' => 'Zemljevid ni bilo mogoče naložiti.',
 	'maps-kml-parsing-failed' => 'Razčlenjevanje ene ali več datotek KML ni uspelo. Navadno je vzrok neuspešen priklic ali slabo oblikovan XML.',
 	'maps-fullscreen-button' => 'Vklopi celozaslonski prikaz',
-	'maps-fullscreen-button-tooltip' => 'Celozaslonski/vključeni prikaz zemljevida.',
+	'maps-fullscreen-button-tooltip' => 'Celozaslonski/vključeni prikaz zemljevida.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Omogoči gumb za celozaslonski prikaz',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
@@ -6765,7 +6720,7 @@ $messages['uk'] = array(
 	'maps-displaymap-par-static' => 'Якщо карта повинна бути нерухомою',
 	'maps-displaymap-par-wmsoverlay' => 'Використовувати накладення WMS',
 	'maps-fullscreen-button' => 'Перемкнути повноекранний режим',
-	'maps-fullscreen-button-tooltip' => 'Переглянути мапу на весь екран/як вбудовану.',
+	'maps-fullscreen-button-tooltip' => 'Переглянути мапу на весь екран або як вбудовану.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Увімкнути кнопку повноекранного режиму',
 	'validation-error-invalid-location' => 'Параметр $1 повинен бути коректним місцем розташування.',
 	'validation-error-invalid-locations' => 'Параметр $1 повинен бути одним або більше коректних місць розташування.',
@@ -7056,6 +7011,7 @@ $messages['zh-cn'] = array(
  * @author Hydra
  * @author Hzy980512
  * @author Kuailong
+ * @author Liuxinyu970226
  * @author PhiLiP
  * @author Xiaomingyan
  * @author Yfdyh000
@@ -7077,6 +7033,7 @@ $messages['zh-hans'] = array(
 	'maps-error-invalid-layerdef' => '这一层定义不是有效的。',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
+	'maps-fullscreen-button' => '切换全屏显示',
 	'maps-googlemaps3-par-enable-fullscreen' => '启用全屏按钮',
 	'validation-error-invalid-location' => '参数 $1 必须是一个有效的位置。',
 	'validation-error-invalid-locations' => '参数 $1 必须有一个或多个有效的位置。',
@@ -7095,12 +7052,15 @@ $messages['zh-hans'] = array(
 	'maps-latitude' => '纬度：',
 	'maps-longitude' => '经度：',
 	'maps_map_cannot_be_displayed' => '该地图无法显示。',
+	'maps_click_to_activate' => '点击激活地图',
+	'maps-googlemaps3-incompatbrowser' => '您的浏览器不兼容Google Maps v3。',
 	'maps-osm-par-thumbs' => '显示大拇指',
 	'maps-osm-par-photos' => '显示图片',
 	'mapeditor' => '地图编辑器',
 	'specialpages-group-maps' => '地图',
 	'mapeditor-none-text' => '无',
 	'mapeditor-done-button' => '完成',
+	'mapeditor-remove-button' => '移除',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
 	'mapeditor-form-title' => '编辑详情',
@@ -7139,7 +7099,7 @@ $messages['zh-hant'] = array(
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影響。',
 	'maps-fullscreen-button' => '切換全螢幕',
-	'maps-fullscreen-button-tooltip' => '檢視地圖使用全螢幕或嵌入式',
+	'maps-fullscreen-button-tooltip' => '檢視地圖使用全螢幕或嵌入式', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => '開啟全螢幕的按鈕',
 	'validation-error-invalid-location' => '參數 $1 必須是一個有效的位置。',
 	'validation-error-invalid-locations' => '參數 $1 必須有一個或多個有效的位置。',

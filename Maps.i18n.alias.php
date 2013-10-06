@@ -4,6 +4,7 @@ $specialPageAliases = array();
 /** English
  * @author netbrain
  */
+// @codingStandardsIgnoreFile
 
 $specialPageAliases = array();
 
