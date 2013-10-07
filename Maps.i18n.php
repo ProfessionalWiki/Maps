@@ -3805,6 +3805,7 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Hym411
  * @author 아라
  */
 $messages['ko'] = array(
@@ -3892,6 +3893,7 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 	'maps-displaymap-par-rectangles' => '보려줄 네모',
 	'maps-displaymap-par-static' => '지도는 정적이어야 할 때',
 	'maps-displaymap-par-wmsoverlay' => 'WMS 오버레이 사용',
+	'maps-googlemaps3-par-enable-fullscreen' => '전체 화면 버튼 활성화',
 	'validation-error-invalid-location' => '$1 변수는 올바른 위치여야 합니다.',
 	'validation-error-invalid-locations' => '$1 변수는 하나 이상의 올바른 위치여야 합니다.',
 	'validation-error-invalid-width' => '$1 변수는 올바른 너비여야 합니다.',
