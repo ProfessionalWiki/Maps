@@ -266,6 +266,7 @@ $messages['qqq'] = array(
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
+	'maps-ns-layer' => '{{Identical|Layer}}',
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
@@ -623,7 +624,7 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-displaymap-par-static' => "Si'l mapa tien de ser estáticu",
 	'maps-displaymap-par-wmsoverlay' => 'Usar una superposición WMS',
 	'maps-fullscreen-button' => 'Conmutar pantalla completa',
-	'maps-fullscreen-button-tooltip' => 'Ver el mapa como pantalla completa/incrustáu.',
+	'maps-fullscreen-button-tooltip' => 'Ver el mapa como pantalla completa/incrustáu.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activar el botón de pantalla completa',
 	'validation-error-invalid-location' => 'El parámetru $1 tien de ser un llugar válidu.',
 	'validation-error-invalid-locations' => 'El parámetru $1 tien de ser un o más llugares válidos.',
@@ -1343,7 +1344,7 @@ Sofern nichts angegeben wurde, wird sich die Karte um die darzustellende Markier
 	'maps-displaymap-par-static' => 'Soll die Karte statisch sein',
 	'maps-displaymap-par-wmsoverlay' => 'Eine WMS-Überlagerung verwenden',
 	'maps-fullscreen-button' => 'Auf Vollbild umschalten',
-	'maps-fullscreen-button-tooltip' => 'Die Karte als Vollbild darstellen/eingebettet.',
+	'maps-fullscreen-button-tooltip' => 'Die Karte als Vollbild oder eingebettet darstellen.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Vollbildbutton aktivieren',
 	'validation-error-invalid-location' => 'Parameter $1 muss einem gültigen Standort entsprechen.',
 	'validation-error-invalid-locations' => 'Parameter $1 muss einem oder mehreren gültigen Standorten entsprechen.',
@@ -2060,7 +2061,7 @@ Jos sitä ei ole asetettu ja kartalla on kohdemerkkejä, loitonnustasoksi valita
 	'maps-displaymap-par-rectangles' => 'Näytettävät suorakulmiot',
 	'maps-displaymap-par-static' => 'Onko kartan on oltava staattinen',
 	'maps-fullscreen-button' => 'Koko näytön tila',
-	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.',
+	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Koko näytön tila -painike',
 	'validation-error-invalid-location' => 'Parametrin $1 on oltava sallittu sijainti.',
 	'validation-error-invalid-locations' => 'Parametrin $1 on oltava yksi tai useampi sallittu sijainti.',
@@ -2245,7 +2246,7 @@ Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
 	'maps-displaymap-par-static' => 'Si la carte doit être statique',
 	'maps-displaymap-par-wmsoverlay' => 'Utiliser une superposition WMS',
 	'maps-fullscreen-button' => 'Basculer en plein écran',
-	'maps-fullscreen-button-tooltip' => 'Afficher la carte en plein écran/incorporé',
+	'maps-fullscreen-button-tooltip' => 'Visualiser la carte en plein écran ou incorporé.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activer le bouton plein écran',
 	'validation-error-invalid-location' => 'Le paramètre $1 doit être un emplacement valide.',
 	'validation-error-invalid-locations' => 'Le paramètre $1 doit être un ou plusieurs emplacement(s) valide(s).',
@@ -2533,7 +2534,7 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'maps-displaymap-par-static' => 'Se o mapa debe ser estático',
 	'maps-displaymap-par-wmsoverlay' => 'Utilizar unha sobreposición WMS',
 	'maps-fullscreen-button' => 'Activar ou desactivar a pantalla completa',
-	'maps-fullscreen-button-tooltip' => 'Mostrar o mapa en pantalla completa/incrustado.',
+	'maps-fullscreen-button-tooltip' => 'Mostrar o mapa en pantalla completa/incrustado.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activar o botón de pantalla completa',
 	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
 	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
@@ -4290,7 +4291,7 @@ $messages['mk'] = array(
 	'maps-displaymap-par-static' => 'Дали картата да биде неподвижна',
 	'maps-displaymap-par-wmsoverlay' => 'Користи WMS-облога',
 	'maps-fullscreen-button' => 'Префрли на широк екран',
-	'maps-fullscreen-button-tooltip' => 'Поглед на картата на цел екран/вгнездено',
+	'maps-fullscreen-button-tooltip' => 'Поглед на картата на цел екран или вгнездено.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Овозможи копче за цел екран',
 	'validation-error-invalid-location' => 'Параметарот $1 мора да претставува важечка местоположба.',
 	'validation-error-invalid-locations' => 'Параметарот $1 мора да претставува една или повеќе важечки местоположби.',
@@ -4876,7 +4877,7 @@ Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coörd
 Dit kan invloed hebben op de standaardwaarde voor de geocoderingsdienst.',
 	'maps-displaymap-par-mappingservice' => 'Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.',
 	'maps-displaymap-par-coordinates' => 'De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.',
-	'maps-displaymap-par-visitedicon' => 'De locatie van een bestand om te gebruiken als bezocht pictogram', # Fuzzy
+	'maps-displaymap-par-visitedicon' => 'De naam van een te gebruiken afbeeldingen voor markeericonen nadat ze zijn aangeklikt',
 	'maps-displaymap-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
 Als deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.',
 	'maps-displaymap-par-centre' => 'Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).
@@ -6171,7 +6172,7 @@ $messages['sl'] = array(
 	'maps-load-failed' => 'Zemljevid ni bilo mogoče naložiti.',
 	'maps-kml-parsing-failed' => 'Razčlenjevanje ene ali več datotek KML ni uspelo. Navadno je vzrok neuspešen priklic ali slabo oblikovan XML.',
 	'maps-fullscreen-button' => 'Vklopi celozaslonski prikaz',
-	'maps-fullscreen-button-tooltip' => 'Celozaslonski/vključeni prikaz zemljevida.',
+	'maps-fullscreen-button-tooltip' => 'Celozaslonski/vključeni prikaz zemljevida.', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => 'Omogoči gumb za celozaslonski prikaz',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
@@ -6765,7 +6766,7 @@ $messages['uk'] = array(
 	'maps-displaymap-par-static' => 'Якщо карта повинна бути нерухомою',
 	'maps-displaymap-par-wmsoverlay' => 'Використовувати накладення WMS',
 	'maps-fullscreen-button' => 'Перемкнути повноекранний режим',
-	'maps-fullscreen-button-tooltip' => 'Переглянути мапу на весь екран/як вбудовану.',
+	'maps-fullscreen-button-tooltip' => 'Переглянути мапу на весь екран або як вбудовану.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Увімкнути кнопку повноекранного режиму',
 	'validation-error-invalid-location' => 'Параметр $1 повинен бути коректним місцем розташування.',
 	'validation-error-invalid-locations' => 'Параметр $1 повинен бути одним або більше коректних місць розташування.',
@@ -7056,6 +7057,7 @@ $messages['zh-cn'] = array(
  * @author Hydra
  * @author Hzy980512
  * @author Kuailong
+ * @author Liuxinyu970226
  * @author PhiLiP
  * @author Xiaomingyan
  * @author Yfdyh000
@@ -7077,6 +7079,7 @@ $messages['zh-hans'] = array(
 	'maps-error-invalid-layerdef' => '这一层定义不是有效的。',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
+	'maps-fullscreen-button' => '切换全屏显示',
 	'maps-googlemaps3-par-enable-fullscreen' => '启用全屏按钮',
 	'validation-error-invalid-location' => '参数 $1 必须是一个有效的位置。',
 	'validation-error-invalid-locations' => '参数 $1 必须有一个或多个有效的位置。',
@@ -7095,12 +7098,15 @@ $messages['zh-hans'] = array(
 	'maps-latitude' => '纬度：',
 	'maps-longitude' => '经度：',
 	'maps_map_cannot_be_displayed' => '该地图无法显示。',
+	'maps_click_to_activate' => '点击激活地图',
+	'maps-googlemaps3-incompatbrowser' => '您的浏览器不兼容Google Maps v3。',
 	'maps-osm-par-thumbs' => '显示大拇指',
 	'maps-osm-par-photos' => '显示图片',
 	'mapeditor' => '地图编辑器',
 	'specialpages-group-maps' => '地图',
 	'mapeditor-none-text' => '无',
 	'mapeditor-done-button' => '完成',
+	'mapeditor-remove-button' => '移除',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
 	'mapeditor-form-title' => '编辑详情',
@@ -7139,7 +7145,7 @@ $messages['zh-hant'] = array(
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影響。',
 	'maps-fullscreen-button' => '切換全螢幕',
-	'maps-fullscreen-button-tooltip' => '檢視地圖使用全螢幕或嵌入式',
+	'maps-fullscreen-button-tooltip' => '檢視地圖使用全螢幕或嵌入式', # Fuzzy
 	'maps-googlemaps3-par-enable-fullscreen' => '開啟全螢幕的按鈕',
 	'validation-error-invalid-location' => '參數 $1 必須是一個有效的位置。',
 	'validation-error-invalid-locations' => '參數 $1 必須有一個或多個有效的位置。',
