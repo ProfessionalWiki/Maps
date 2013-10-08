@@ -1024,6 +1024,7 @@ $messages['br'] = array(
 	'maps-displaymap-par-maxzoom' => 'Live zoum uhelañ',
 	'maps-displaymap-par-minzoom' => 'Live zoum izelañ',
 	'maps-displaymap-par-polygons' => 'Lieskornegoù da ziskwel',
+	'maps-fullscreen-button' => 'Gweredekaat ar skramm leun',
 	'validation-error-invalid-location' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh.",
 	'validation-error-invalid-locations' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh, da nebeutañ.",
 	'validation-error-invalid-width' => 'Rankout a ra an arventenn $1 bezañ evit ul ledander reizh.',
