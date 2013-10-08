@@ -4812,6 +4812,7 @@ $messages['nds'] = array(
  * @author Konovalov
  * @author SPQRobin
  * @author Siebrand
+ * @author Sjoerddebruin
  */
 $messages['nl'] = array(
 	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([https://www.semantic-mediawiki.org/wiki/Maps meer...])',
@@ -4899,6 +4900,9 @@ Als dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderst
 	'maps-displaymap-par-rectangles' => 'Weer te geven rechthoeken',
 	'maps-displaymap-par-static' => 'Of de kaart statisch moet zijn',
 	'maps-displaymap-par-wmsoverlay' => 'WMS-overlay gebruiken',
+	'maps-fullscreen-button' => 'Volledig scherm in- of uitschakelen',
+	'maps-fullscreen-button-tooltip' => 'De kaart als volledig scherm of ingesloten bekijken.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Knop voor volledig scherm inschakelen',
 	'validation-error-invalid-location' => 'Parameter $1 moet een geldige locatie zijn.',
 	'validation-error-invalid-locations' => 'Parameter $1 moet een of meer geldige locaties zijn.',
 	'validation-error-invalid-width' => 'Parameter $1 moet een geldige breedte zijn.',
@@ -5883,6 +5887,7 @@ $messages['roa-tara'] = array(
  * @author Lockal
  * @author MaxSem
  * @author McDutchie
+ * @author Okras
  * @author Yuriy Apostol
  * @author Александр Сигачёв
  */
@@ -5953,6 +5958,7 @@ $messages['ru'] = array(
 	'maps-displaymap-par-minzoom' => 'Минимальный уровень масштабирования',
 	'maps-displaymap-par-static' => 'Если карта должна быть статичной',
 	'maps-fullscreen-button' => 'Переключить полноэкранный режим',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Включить кнопку полноэкранного режима',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
 	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
