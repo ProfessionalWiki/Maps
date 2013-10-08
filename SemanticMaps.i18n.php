@@ -940,8 +940,8 @@ $messages['ja'] = array(
 	'semanticmaps-kml-title' => '結果の既定のタイトル',
 	'semanticmaps-kml-linkabsolute' => 'リンクは絶対表記 (= 相対表記の対義語) にしてください。',
 	'semanticmaps-kml-pagelinktext' => 'ページへのリンクに使用するテキスト ($1 はページ名に置換される)',
-	'semanticmaps-shapes-improperformat' => '$1 を不適切な形式に整形しようとしました。整形のドキュメントを参照してください。',
-	'semanticmaps-shapes-missingshape' => '$1 の図形が見つかりません。利用できる図形についてドキュメントを参照してください。',
+	'semanticmaps-shapes-improperformat' => '$1 を不適切な形式に整形しようとしました。整形の説明文書を参照してください。',
+	'semanticmaps-shapes-missingshape' => '$1 の図形が見つかりません。利用できる図形について説明文書を参照してください。',
 );
 
 /** Georgian (ქართული)
