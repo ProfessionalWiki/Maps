@@ -1240,9 +1240,11 @@ $messages['cu'] = array(
 );
 
 /** Danish (dansk)
+ * @author Christian List
  * @author Peter Alberti
  */
 $messages['da'] = array(
+	'maps-ns-layer' => 'Lag',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ø',
 	'maps-abb-south' => 'S',
@@ -7068,6 +7070,7 @@ $messages['zh-cn'] = array(
  * @author Kuailong
  * @author Liuxinyu970226
  * @author PhiLiP
+ * @author Qiyue2001
  * @author Xiaomingyan
  * @author Yfdyh000
  */
@@ -7088,6 +7091,14 @@ $messages['zh-hans'] = array(
 	'maps-error-invalid-layerdef' => '这一层定义不是有效的。',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
+	'maps-geodistance-par-unit' => '要输出的距离单位。',
+	'maps-displaymap-par-lines' => '要显示的行',
+	'maps-displaymap-par-maxzoom' => '最大缩放级别',
+	'maps-displaymap-par-minzoom' => '最小缩放级别',
+	'maps-displaymap-par-polygons' => '要显示的多边形',
+	'maps-displaymap-par-rectangles' => '要显示的矩形',
+	'maps-displaymap-par-static' => '如果地图应该是静态',
+	'maps-displaymap-par-wmsoverlay' => '使用一个WMS覆盖',
 	'maps-fullscreen-button' => '切换全屏显示',
 	'maps-googlemaps3-par-enable-fullscreen' => '启用全屏按钮',
 	'validation-error-invalid-location' => '参数 $1 必须是一个有效的位置。',
@@ -7100,6 +7111,7 @@ $messages['zh-hans'] = array(
 	'validation-error-invalid-images' => '参数 $1 必须是一个或多个有效的图像。',
 	'validation-error-invalid-goverlay' => '参数 $1 必须是一个有效的重叠。',
 	'validation-error-invalid-goverlays' => '参数 $1 必须是一个或多个有效重叠。',
+	'validation-error-invalid-line-param' => '指定了无效的“线”参数。',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '东',
 	'maps-abb-south' => '南',
@@ -7118,12 +7130,22 @@ $messages['zh-hans'] = array(
 	'mapeditor-remove-button' => '移除',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
+	'mapeditor-code-title' => '维基代码',
+	'mapeditor-import-title' => '导入维基代码',
 	'mapeditor-form-title' => '编辑详情',
 	'mapeditor-link-title-switcher-link-text' => '链接',
 	'mapeditor-form-field-title' => '标题',
 	'mapeditor-form-field-text' => '文字',
 	'mapeditor-form-field-link' => '链接',
 	'mapeditor-form-field-icon' => '图标',
+	'mapeditor-form-field-group' => '组',
+	'mapeditor-form-field-inlinelabel' => '内联标签',
+	'mapeditor-form-field-strokecolor' => '描边颜色',
+	'mapeditor-form-field-strokeopacity' => '描线不透明度',
+	'mapeditor-form-field-strokeweight' => '描边粗细',
+	'mapeditor-form-field-fillcolor' => '填充颜色',
+	'mapeditor-form-field-fillopcaity' => '填充不透明度',
+	'mapeditor-mapparam-title' => '编辑地图参数',
 	'mapeditor-form-field-image' => '图片',
 );
 
