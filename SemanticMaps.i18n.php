@@ -391,6 +391,26 @@ $messages['cy'] = array(
 	'semanticmaps-forminput-add' => 'Ychwaneger',
 	'semanticmaps-forminput-locations' => 'Lleoliadau',
 	'semanticmaps-par-forceshow' => "Dangos y map, hyd yn oed pe nad oes mannau i'w dangos?",
+	'semanticmaps-kml-title' => "Y teitl diofyn i'r canlyniadau",
+);
+
+/** Danish (dansk)
+ * @author Christian List
+ */
+$messages['da'] = array(
+	'semanticmaps-desc' => 'Giver mulighed for at få vist og redigere koordinatdata gemt med Semantic MediaWiki udvidelsen ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mere info...])',
+	'semanticmaps-unrecognizeddistance' => 'Værdien $1 er ikke en gyldig afstand.',
+	'semanticmaps-kml-link' => 'Vis KML-filen',
+	'semanticmaps-default-kml-pagelink' => 'Se siden $1',
+	'semanticmaps-latitude' => 'Breddegrad: $1',
+	'semanticmaps-longitude' => 'Længdegrad: $1',
+	'semanticmaps-altitude' => 'Højde: $1',
+	'semanticmaps_lookupcoordinates' => 'Slå koordinater op',
+	'semanticmaps_enteraddresshere' => 'Indtast adresse her',
+	'semanticmaps-updatemap' => 'Opdater kort',
+	'semanticmaps-forminput-remove' => 'Fjern',
+	'semanticmaps-forminput-add' => 'Tilføj',
+	'semanticmaps-forminput-locations' => 'Steder',
 );
 
 /** German (Deutsch)
