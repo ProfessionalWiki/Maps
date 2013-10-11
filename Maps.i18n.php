@@ -1155,6 +1155,8 @@ $messages['ce'] = array(
 	'mapeditor-link-title-switcher-link-text' => 'Хьажориг',
 	'mapeditor-form-field-title' => 'ЦӀе',
 	'mapeditor-form-field-link' => 'Хьажориг',
+	'mapeditor-form-field-image' => 'Сурт',
+	'mapeditor-imageoverlay-title' => 'Сурт',
 );
 
 /** Czech (česky)
@@ -2537,7 +2539,7 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'maps-displaymap-par-static' => 'Se o mapa debe ser estático',
 	'maps-displaymap-par-wmsoverlay' => 'Utilizar unha sobreposición WMS',
 	'maps-fullscreen-button' => 'Activar ou desactivar a pantalla completa',
-	'maps-fullscreen-button-tooltip' => 'Mostrar o mapa en pantalla completa/incrustado.', # Fuzzy
+	'maps-fullscreen-button-tooltip' => 'Mostrar o mapa en pantalla completa ou incrustado.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activar o botón de pantalla completa',
 	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
 	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
