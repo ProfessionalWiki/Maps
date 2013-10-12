@@ -46,6 +46,7 @@ $messages['en'] = array(
 	'semanticmaps-par-template'		=> 'A template to use to format the info window contents.',
 	'semanticmaps-par-geocodecontrol'	=> 'Show the geocoding control.',
 	'semanticmaps-par-activeicon'		=> 'Icon to be displayed instead of default marker, when active page is equal to query result',
+	'semanticmaps-par-pagelabel'		=> 'When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker',
 
 	'semanticmaps-kml-text' => 'The text associated with each page. Overridden by the additional queried properties if any.',
 	'semanticmaps-kml-title' => 'The default title for results',
@@ -106,6 +107,7 @@ The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinat
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
 	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}',
+	'semanticmaps-par-pagelabel' => 'Text explaning query parameter "pagelabel". When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker',
 	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext".
 
 <code>$1</code> is not a parameter.

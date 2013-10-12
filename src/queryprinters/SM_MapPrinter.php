@@ -92,10 +92,15 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			'default' => '',
 		);
 
+		$params['pagelabel'] = array (
+			'type' => 'boolean',
+			'default' => false,
+		);
+
 		// Messages:
 		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
 		// semanticmaps-par-hidenamespace, semanticmaps-par-centre, semanticmaps-par-template,
-		// semanticmaps-par-geocodecontrol, semanticmaps-par-activeicon
+		// semanticmaps-par-geocodecontrol, semanticmaps-par-activeicon semanticmaps-par-markerlabel
 		foreach ( $params as $name => &$data ) {
 			if ( is_array( $data ) && !array_key_exists( 'message', $data ) ) {
 				$data['message'] = 'semanticmaps-par-' . $name;
@@ -271,6 +276,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
 		$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
 		$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+
+		if ( $params['pagelabel'] ) {
+			$jsonObj['inlineLabel'] = Linker::link( Title::newFromText( $jsonObj['title'] ) );
+		}
 
 		return $jsonObj;
 	}
