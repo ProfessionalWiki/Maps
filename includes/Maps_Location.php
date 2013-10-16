@@ -426,13 +426,28 @@ class MapsLocation extends MapsBaseElement {
 		$array = array(
 			'lat' => $this->getLatitude(),
 			'lon' => $this->getLongitude(),
-			'alt' => $this->getAltitude(),
-			'address' => $this->getAddress( false ),
 			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
-			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
-			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
-			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
 		);
+                $val=$this->getAltitude();
+                if(!empty($val)) {
+			$array['alt']=$val;
+                }
+                $val=$this->getAddress( false );
+                if(!empty($val)) {
+  			$array['address']=$val;
+                }
+                $val= $this->hasGroup() ?  $this->getGroup() : $defGroup;
+                if(!empty($val)) {
+  			$array['group']=$val;
+                }
+                $val=$this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel;
+                if(!empty($val)) {
+  			$array['inlineLabel']=$val;
+                }
+                $val=$this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon;
+                if(!empty($val)) {
+  			$array['visitedicon']=$val;
+                }
 		return array_merge( $parentArray , $array );
 	}
 
