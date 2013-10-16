@@ -426,13 +426,28 @@ class MapsLocation extends MapsBaseElement {
 		$array = array(
 			'lat' => $this->getLatitude(),
 			'lon' => $this->getLongitude(),
-			'alt' => $this->getAltitude(),
-			'address' => $this->getAddress( false ),
 			'icon' => $this->hasIcon() ? MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
-			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
-			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
-			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
 		);
+                $val=$this->getAltitude();
+                if($val != 0) {
+			$array['alt']=$val;
+                }
+                $val=$this->getAddress( false );
+                if($val !== "" and $val !== null) {
+  			$array['address']=$val;
+                }
+                $val= $this->hasGroup() ?  $this->getGroup() : $defGroup;
+                if($val !== "" and $val !== null) {
+  			$array['group']=$val;
+                }
+                $val=$this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel;
+                if($val !== "" and $val !== null) {
+  			$array['inlineLabel']=$val;
+                }
+                $val=$this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon;
+                if($val !== "" and $val !== null) {
+  			$array['visitedicon']=$val;
+                }
 		return array_merge( $parentArray , $array );
 	}
 
