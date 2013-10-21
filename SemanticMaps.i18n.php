@@ -1762,7 +1762,7 @@ $messages['yi'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'semanticmaps-desc' => '提供对采用Semantic MediaWiki扩展所存储坐标数据的查看和编辑能力（[https://mapping.referata.com/wiki/Examples 演示]）。', # Fuzzy
+	'semanticmaps-desc' => '提供对采用Semantic MediaWiki扩展所存储坐标数据的查看和编辑能力（[https://www.semantic-mediawiki.org/wiki/Semantic_Maps 更多信息......]）。',
 	'semanticmaps-unrecognizeddistance' => '取值$1不是有效的距离。',
 	'semanticmaps-kml-link' => '查看KML文件',
 	'semanticmaps-default-kml-pagelink' => '检视页面 $1',
