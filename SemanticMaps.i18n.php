@@ -1755,6 +1755,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (中文（简体）‎)
+ * @author Byfserag
  * @author Gzdavidwong
  * @author Linforest
  * @author Liuxinyu970226
