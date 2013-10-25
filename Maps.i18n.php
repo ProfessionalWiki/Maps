@@ -1154,9 +1154,9 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'maps-layer-value' => 'МаьӀна',
-	'mapeditor-link-title-switcher-link-text' => 'Хьажориг',
+	'mapeditor-link-title-switcher-link-text' => 'Хьажораг',
 	'mapeditor-form-field-title' => 'ЦӀе',
-	'mapeditor-form-field-link' => 'Хьажориг',
+	'mapeditor-form-field-link' => 'Хьажораг',
 	'mapeditor-form-field-image' => 'Сурт',
 	'mapeditor-imageoverlay-title' => 'Сурт',
 );
