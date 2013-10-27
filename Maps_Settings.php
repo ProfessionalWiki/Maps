@@ -62,6 +62,7 @@ global $egMapsAllowCoordsGeocoding, $egMapsEnableGeoCache, $egMapsGeoNamesUser;
 	$egMapsAvailableGeoServices = array(
 		'geonames',
 		'google',
+		'geocoderus',
 	);
 
 	// String. The default geocoding service, which will be used when no service is

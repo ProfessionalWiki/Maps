@@ -49,6 +49,7 @@ $classes['iStrokableMapElement'] 		= __DIR__ . '/includes/properties/iStrokableM
 
 $classes['MapsGeonamesGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GeonamesGeocoder.php';
 $classes['MapsGoogleGeocoder'] 			= __DIR__ . '/includes/geocoders/Maps_GoogleGeocoder.php';
+$classes['MapsGeocoderusGeocoder'] 			= __DIR__ . '/includes/geocoders/Maps_GeocoderusGeocoder.php';
 
 $classes['SpecialMapEditor'] 			= __DIR__ . '/includes/specials/SpecialMapEditor.php';
 

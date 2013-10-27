@@ -210,6 +210,9 @@ call_user_func( function() {
 	// Registration of the Google Geocoding (v2) service geocoder.
 	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
 
+	// Registration of the geocoder.us service geocoder.
+	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
+
 	// Layers
 
 	// Registration of the image layer type.
