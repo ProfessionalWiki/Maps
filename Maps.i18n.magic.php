@@ -348,6 +348,6 @@ $magicWords['uz'] = array(
 
 /** Vietnamese (Tiếng Việt) */
 $magicWords['vi'] = array(
-	'geocode' => array( 0, 'mãhóađịalý', 'mãhoáđịalý', 'mãhóađịalí', 'mãhoáđịalí' ),
-	'coordinates' => array( 0, 'tọađộ' ),
+	'geocode' => array( 0, 'mã_hóa_địa_lý', 'mãhóađịalý', 'mã_hoá_địa_lý', 'mãhoáđịalý', 'mã_hóa_địa_lí', 'mãhóađịalí', 'mã_hoá_địa_lí', 'mãhoáđịalí' ),
+	'coordinates' => array( 0, 'tọa_độ', 'tọađộ' ),
 );
