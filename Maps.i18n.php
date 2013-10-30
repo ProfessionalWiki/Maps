@@ -1951,12 +1951,13 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mjbmr
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
 	'maps_map' => 'نقشه',
-	'maps-loading-map' => 'در حال بارگذاری نقشه...',
+	'maps-loading-map' => 'در حال بارگیری نقشه...',
 	'maps-load-failed' => 'قادر به بارگیری نقشه نبود!',
 	'maps-markers' => 'نشانگرها',
 	'maps-others' => 'دیگران',
