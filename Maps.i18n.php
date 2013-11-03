@@ -1540,6 +1540,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Evropi
  * @author Glavkos
  * @author Omnipaedista
  * @author Protnet
@@ -1555,6 +1556,7 @@ $messages['el'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => 'Φιλτράρισμα σημαδιών',
 	'maps-others' => 'άλλοι',
+	'maps-ns-layer' => 'Στρώμα',
 	'maps-layer-property' => 'Ιδιότητα',
 	'maps-layer-value' => 'Τιμή',
 	'maps-layer-errors' => 'Σφάλματα',
