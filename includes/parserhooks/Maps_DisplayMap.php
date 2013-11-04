@@ -198,11 +198,12 @@ class MapsDisplayMap extends ParserHook {
 			$parameters['zoom'] = false;
 		}
 
+		$this->parser->addTrackingCategory( 'maps-tracking-category' );
 		return $mapClass->renderMap( $parameters, $this->parser );
 	}
 	
 	/**
-	 * Returns the parser function otpions.
+	 * Returns the parser function options.
 	 * @see ParserHook::getFunctionOptions
 	 * 
 	 * @since 0.7

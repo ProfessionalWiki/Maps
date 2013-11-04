@@ -21,6 +21,7 @@ $messages['en'] = array(
 	'right-geocode' => 'Geocode',
 
 	'maps_map' => 'Map',
+	'maps-tracking-category' => 'Pages with a map rendered by the Maps extension',
 	'maps-loading-map' => 'Loading map...',
 	'maps-load-failed' => 'Could not load the map!',
 	'maps-markers' => 'Markers',
@@ -263,6 +264,7 @@ $messages['qqq'] = array(
 	'maps-desc' => '{{desc|name=Maps|url=http://www.mediawiki.org/wiki/Extension:Maps}}',
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
+	'maps-tracking-category' => 'The name of a category for all pages which use the <code><nowiki>display_map<nowiki><code> parser extension function or tag. The category is automatically added unless the feature is disabled.',
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
