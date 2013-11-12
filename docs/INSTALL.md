@@ -54,7 +54,7 @@ The package name is "mediawiki/maps", so your composer.json file should look as 
 {
 	"require": {
 		// ...
-		"mediawiki/maps": ">=1.0"
+		"mediawiki/maps": ">=3.0"
 	},
 	"minimum-stability" : "dev"
 }
