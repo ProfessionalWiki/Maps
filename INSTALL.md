@@ -46,8 +46,12 @@ The package name is "mediawiki/maps", so your composer.json file should look as 
 		// ...
 		"mediawiki/maps": ">=1.0"
 	},
+	"minimum-stability" : "dev"
 }
 ```
+
+The "minimum-stability" section needs to be added as well for now.
+This need for this will be removed when Maps 3.0 is released.
 
 ### Manual installation
 
