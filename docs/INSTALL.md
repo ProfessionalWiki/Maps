@@ -14,7 +14,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th>Maps 3.x</th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.x</a></th>
 		<td>Development version</td>
 		<td>Future</td>
 		<td>5.3.2+</td>
@@ -22,7 +22,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th>Maps 2.0.x</th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-20-2012-10-05">Maps 2.0.x</a></th>
 		<td>Stable release</td>
 		<td>2012</td>
 		<td>5.3.2+</td>
@@ -30,7 +30,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/2.0.x">2.0.x</a></td>
 	</tr>
 	<tr>
-		<th>Maps 1.0.5</th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-105-2011-11-30">Maps 1.0.5</a></th>
 		<td>Legacy release</td>
 		<td>2011-11-30</td>
 		<td>5.2+</td>
@@ -38,6 +38,8 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/1.0.5">1.0.5</a></td>
 	</tr>
 </table>
+
+
 
 ## Download and installation
 
