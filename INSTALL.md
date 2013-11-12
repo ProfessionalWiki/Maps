@@ -29,7 +29,7 @@ These are the installation and configuration instructions for the [Maps extensio
 	<tr>
 		<th>Maps 1.0.5</th>
 		<td>Legacy release</td>
-		<td>2011</td>
+		<td>2011-11-30</td>
 		<td>5.2+</td>
 		<td>1.17+</td>
 	</tr>
