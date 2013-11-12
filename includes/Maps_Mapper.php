@@ -5,7 +5,6 @@
  * 
  * @since 0.1
  * 
- * @ingroup Maps
  * @deprecated
  *
  * @licence GNU GPL v2+

@@ -4,14 +4,10 @@
  * This group contains all OpenLayers related files of the Maps extension.
  * 
  * @defgroup MapsOpenLayers OpenLayers
- * @ingroup Maps
  */
 
 /**
  * This file holds the hook and initialization for the OpenLayers service. 
- *
- * @file OpenLayers.php
- * @ingroup MapsOpenLayers
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

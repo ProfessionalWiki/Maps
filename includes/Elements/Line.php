@@ -10,7 +10,6 @@ use InvalidArgumentException;
  *
  * @since 3.0
  *
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >

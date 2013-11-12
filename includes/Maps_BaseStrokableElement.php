@@ -5,9 +5,6 @@ use Maps\Elements\BaseElement;
 /**
  * @since 2.0
  *
- * @file Maps_Line.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */

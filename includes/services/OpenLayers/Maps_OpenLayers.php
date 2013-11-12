@@ -6,9 +6,6 @@
  * 
  * @since 0.1
  * 
- * @file Maps_OpenLayers.php
- * @ingroup MapsOpenLayers
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

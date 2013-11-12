@@ -4,14 +4,10 @@
  * This groupe contains all Leaflet related files of the Maps extension.
  *
  * @defgroup Leaflet
- * @ingroup Maps
  */
 
 /**
  * This file holds the hook and initialization for the Leaflet service.
- *
- * @file
- * @ingroup Leaflet
  *
  * @licence GNU GPL v2+
  * @author Pavel Astakhov < pastakhov@yandex.ru >

@@ -4,14 +4,10 @@
  * This groupe contains all Google Maps v3 related files of the Maps extension.
  * 
  * @defgroup MapsGoogleMaps3 Google Maps v3
- * @ingroup Maps
  */
 
 /**
  * This file holds the hook and initialization for the Google Maps v3 service. 
- *
- * @file GoogleMaps3.php
- * @ingroup MapsGoogleMaps3
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

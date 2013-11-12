@@ -4,9 +4,6 @@
  * Static class for layer functionality.
  *
  * @since 0.7.2
- * 
- * @file Maps_Layers.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

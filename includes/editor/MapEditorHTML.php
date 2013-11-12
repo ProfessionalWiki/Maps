@@ -5,9 +5,6 @@
  *
  * @since 2.1
  *
- * @file MapEditorHTML.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Nischayn22
  */

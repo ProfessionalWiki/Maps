@@ -12,9 +12,6 @@ use ValueParsers\ParseException;
  * FIXME: this is procedural spaghetti
  *
  * @since 0.4
- * 
- * @file Maps_Geocoders.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

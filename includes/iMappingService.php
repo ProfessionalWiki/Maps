@@ -4,9 +4,6 @@
  * Interface that should be implemented by all mapping feature classes.
  * 
  * @since 0.6.3
- * 
- * @file iMappingService.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

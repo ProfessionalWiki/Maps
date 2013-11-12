@@ -3,11 +3,6 @@
 /**
  * Class for geocoding requests with geocoder.us Service.
  *
- *
- * @file Maps_GeocoderusGeocoder.php
- * @ingroup Maps
- * @ingroup Geocoders
- *
  * @licence GNU GPL v2+
  */
 final class MapsGeocoderusGeocoder extends \Maps\Geocoder {

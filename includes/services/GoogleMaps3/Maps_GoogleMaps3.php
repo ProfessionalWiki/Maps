@@ -6,9 +6,6 @@
  * 
  * @since 0.7
  * 
- * @file Maps_GoogleMaps3.php
- * @ingroup MapsGoogleMaps3
- * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

@@ -9,7 +9,6 @@ use ApiBase;
  *
  * @since 1.0.3
  *
- * @ingroup Maps
  * @ingroup API
  *
  * @licence GNU GPL v2++

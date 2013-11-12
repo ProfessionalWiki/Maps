@@ -7,9 +7,6 @@
  * Changing one of these settings can be done by copieng or cutting it,
  * and placing it in LocalSettings.php, AFTER the inclusion of Maps.
  *
- * @file Maps_Settings.php
- * @ingroup Maps
- *
  * @author Jeroen De Dauw
  *
  * TODO: clean up, update docs

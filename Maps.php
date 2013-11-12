@@ -7,9 +7,6 @@
  * Official documentation:     http://mapping.referata.com/wiki/Maps
  * Examples/demo's:         http://mapping.referata.com/wiki/Maps_examples
  *
- * @file Maps.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

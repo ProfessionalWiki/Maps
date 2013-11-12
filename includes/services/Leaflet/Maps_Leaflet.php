@@ -4,9 +4,6 @@
  * Class holding information and functionality specific to Leaflet.
  * This information and features can be used by any mapping feature.
  *
- * @file Maps_Leaflet.php
- * @ingroup Leaflet
- *
  * @licence GNU GPL v2+
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  */

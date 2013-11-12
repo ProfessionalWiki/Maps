@@ -4,9 +4,6 @@
  * Special handling for image description pages
  *
  * @since 0.7.1
- * 
- * @file Maps_LayerPage.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

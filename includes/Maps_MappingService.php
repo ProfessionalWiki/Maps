@@ -6,9 +6,6 @@
  *
  * @since 0.6.3
  *
- * @file Maps_MappingService.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

@@ -10,10 +10,7 @@ use ParamProcessor\StringParam;
 /**
  * Parameter definition for mapping service parameters.
  *
- * @file
  * @since 2.0
- *
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

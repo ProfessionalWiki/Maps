@@ -5,10 +5,6 @@
  * 
  * Webservice documentation: http://code.google.com/apis/maps/documentation/geocoding/
  *
- * @file Maps_GoogleGeocoder.php
- * @ingroup Maps
- * @ingroup Geocoders
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Sergey Chernyshev

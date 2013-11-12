@@ -1,9 +1,7 @@
 <?php
+
 /**
  * Internationalisation file for Maps extension.
- *
- * @file
- * @ingroup Extensions
  */
 
 $magicWords = array();
