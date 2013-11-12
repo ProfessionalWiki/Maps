@@ -14,6 +14,7 @@ Features:
 ** Finding a destination given a starting point, bearing and distance with #finddestination
 * Distance formatting and format conversion via the #distance parser function.
 * Visual map editor (Special:MapEditor) to edit #display_map wikitext.
+* Structured data support provided by the [Semantic Maps extension](https://www.mediawiki.org/wiki/Extension:Semantic_Maps).
 
 View the [release notes](docs/RELEASE-NOTES.md) for recent changes to Maps.
 
