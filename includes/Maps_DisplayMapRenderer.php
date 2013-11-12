@@ -97,6 +97,8 @@ class MapsDisplayMapRenderer {
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 *
+	 * FIXME: complexity
+	 *
 	 * @since 1.0
 	 *
 	 * @param array &$params
@@ -143,6 +145,14 @@ class MapsDisplayMapRenderer {
 
 		unset( $params['coordinates'] );
 
+		$this->handleShapeData( $params, $parserClone );
+
+		if ( $params['mappingservice'] === 'openlayers' ) {
+			$params['layers'] = $this->evilOpenLayersHack( $params['layers'] );
+		}
+	}
+
+	protected function handleShapeData( array &$params, Parser $parserClone ) {
 		$textContainers = array(
 			&$params['lines'] ,
 			&$params['polygons'] ,
@@ -162,10 +172,6 @@ class MapsDisplayMapRenderer {
 					$obj['title'] = strip_tags( $obj['title'] );
 				}
 			}
-		}
-
-		if ( $params['mappingservice'] === 'openlayers' ) {
-			$params['layers'] = $this->evilOpenLayersHack( $params['layers'] );
 		}
 	}
 
