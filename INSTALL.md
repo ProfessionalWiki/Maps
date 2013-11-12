@@ -25,6 +25,7 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 		<th>Maps 3.x</th>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
+		<td>1.0+</td>
 		<td>0.1+</td>
 	</tr>
 	<tr>
