@@ -11,6 +11,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Release date</th>
 		<th>PHP</th>
 		<th>MediaWiki</th>
+		<th>Git branch</th>
 	</tr>
 	<tr>
 		<th>Maps 3.x</th>
@@ -18,13 +19,15 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td>Future</td>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
+		<td>[master](https://github.com/JeroenDeDauw/Maps/tree/master)</td>
 	</tr>
 	<tr>
-		<th>Maps 2.x</th>
+		<th>Maps 2.0.x</th>
 		<td>Stable release</td>
 		<td>2012</td>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
+		<td>[2.0.x](https://github.com/JeroenDeDauw/Maps/tree/2.0.x)</td>
 	</tr>
 	<tr>
 		<th>Maps 1.0.5</th>
@@ -32,6 +35,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td>2011-11-30</td>
 		<td>5.2+</td>
 		<td>1.17+</td>
+		<td>[1.0.5](https://github.com/JeroenDeDauw/Maps/tree/1.0.5)</td>
 	</tr>
 </table>
 
