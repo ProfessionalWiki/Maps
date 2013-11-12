@@ -11,13 +11,14 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 		<th></th>
 		<th>PHP</th>
 		<th>MediaWiki</th>
-		<th>ParamProcessor</th>
+		<th>ParamProcessor (Validator)</th>
 		<th>DataValues</th>
 	</tr>
 	<tr>
 		<th>Maps 2.x</th>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
+		<td>0.5.x</td>
 		<td>Not needed</td>
 	</tr>
 	<tr>
@@ -30,6 +31,7 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 		<th>Maps 1.0.5</th>
 		<td>5.2+</td>
 		<td>1.17+</td>
+		<td>0.4.12+ &lt;1.0</td>
 		<td>Not needed</td>
 	</tr>
 </table>
