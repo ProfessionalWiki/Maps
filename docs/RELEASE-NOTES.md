@@ -3,17 +3,17 @@ These are the release notes for the [Maps extension](../README.md).
 ## Maps 3.0 (dev)
 
 In this version a big part of the PHP codebase has been rewritten to decrease technical debt and thus
-facilatete maintenance, new feature delopment and debugging. Many tests have been added and a lot of
+facilitate maintenance, new feature deployment and debugging. Many tests have been added and a lot of
 bugs have been found and fixed. No big new features have been added.
 
-; Compatibility changes
+#### Compatibility changes
 
 * Changed minimum Validator version from 0.5 to 1.0.
 * DataValues is now required. Version 0.1 or later.
 * ValueParsers is now required. Version 0.1 or later.
 * ValueFormatters is now required. Version 0.1 or later.
 
-; New features
+#### New features
 
 * Added leaflet service
 * Added Geocoder.us geoservice support
@@ -27,7 +27,7 @@ bugs have been found and fixed. No big new features have been added.
 * Geocoding interfaces changed
 * MapsLocation interface changed
 
-; Bug fixes
+#### Bug fixes
 
 * Fixed autoinfowindows functionality.
 * Fixed various bugs in geocoordinate parsing and formatting.
@@ -80,18 +80,18 @@ bugs have been found and fixed. No big new features have been added.
 ## Maps 1.0.4 (2011-10-15)
 
 * Updated OpenLayers from 2.10 to 2.11.
-* Fixed bug in adding adittional markers for Google Maps v3 (mainly affecting the Semantic Maps form input).
+* Fixed bug in adding additional markers for Google Maps v3 (mainly affecting the Semantic Maps form input).
 
 ## Maps 1.0.3 (2011-09-14)
 
 * Added API module for geocoding.
 * Added 'geocoding' right.
 * Added kmlrezoom parameter for Google Maps v3 and general $egMapsRezoomForKML setting.
-* Fixed Google Maps v3 JavaScript issue occuring on MediaWiki 1.17.
+* Fixed Google Maps v3 JavaScript issue occurring on MediaWiki 1.17.
 
 ## Maps 1.0.2 (2011-08-24)
 
-* Fixed Google Maps v3 JavaScript issue occuring when using Google Earth on unsupported systems.
+* Fixed Google Maps v3 JavaScript issue occurring when using Google Earth on unsupported systems.
 * Fixed internationalization of distances (bug 30467).
 
 ## Maps 1.0.1 (2011-08-17)
@@ -182,7 +182,7 @@ This version branched from Maps 0.7.x at version 0.7.3.
 
 * Fixed incompatibility with MW 1.15.x.
 
-* Fixed incorect parsing of certain DM and DMS coordinates.
+* Fixed incorrect parsing of certain DM and DMS coordinates.
 
 * Fixed small layout issue with pop-ups in Google Maps.
 
@@ -368,50 +368,39 @@ service interaction.
 
 ==== New features ====
 
-* Added support for width and height in px, ex, em and %, instead of only px, allowing for maps that adjust their size to the screen width and other content.
-
-* Added full support for both directional and non-directional coordinate notations in DMS, DD, DM and float notation.
-
+* Added support for width and height in px, ex, em and %, instead of only px, allowing for maps that
+adjust their size to the screen width and other content.
+* Added full support for both directional and non-directional coordinate notations in DMS, DD, DM
+and float notation.
 * Added #coordinates parser function which allows rewformatting of coordinates to all supported notations.
-
-* Rewrote the #geocode parser function to work with named parameters and added support for smart geocoding. Now takes in all supported coordinate notations, and is able to output in all of them as well.
-
+* Rewrote the #geocode parser function to work with named parameters and added support for smart
+geocoding. Now takes in all supported coordinate notations, and is able to output in all of them as well.
 * Added #geodistance function (based on the one in MathFunctions) with smart geocoding support.
-
 * Added #finddestination function with smart geocoding support.
 
 ==== Refactoring ====
 
-* Rewrote the handling of the display_map and display_point(s) parser functions, esp the way the service parameter is getting determined and acted upon.
-
+* Rewrote the handling of the display_map and display_point(s) parser functions, esp the way the
+service parameter is getting determined and acted upon.
 * Removed the MapsMapFeature class to make the base classes for the features more independent and flexible.
-
 * Restructured the directory structure to make what the services and features are more clear.
-
 * Rewrote map divs and added loading message for each map.
-
 * Rewrote individual map JS to be added to the page header.
-
-* Mayor clean up of the coordinate handling, to allow for coordinate formatting and to facilitate better integration by the GeoCoords data type in Semantic Maps. All this code is now located in MapsCoordinateParser.
-
+* Mayor clean up of the coordinate handling, to allow for coordinate formatting and to facilitate
+better integration by the GeoCoords data type in Semantic Maps. All this code is now located in MapsCoordinateParser.
 * Use native MW hook system for mapping services and features if possible.
-
 * Updated the magic words to mw >=1.16 style, and retained backward compatibility.
-
 * Updated the OpenLayers version from 2.8 to 2.9.
-
 * Rewrote the parameter definitions to work with Validator 0.3.
-
 * Rewrote the resource inclusion html to make the code cleaner and more secure.
 
 ==== Bug fixes ====
 
-* Changed parsing of parameters so that '=' signs in values don't cause themselves and proceeding characters to be omitted.
-
-* Add mapping to the language codes that are send to the Google Maps API to null the naming differences between MW and the API.
-
+* Changed parsing of parameters so that '=' signs in values don't cause themselves and
+proceeding characters to be omitted.
+* Add mapping to the language codes that are send to the Google Maps API to null the naming
+differences between MW and the API.
 * Added automatic icon image sizing for Google Maps and Yahoo! Maps markers.
-
 * Fixed conflict with prototype library that caused compatibility problems with the Halo extension.
 
 === Maps 0.5.5. ===
@@ -424,9 +413,7 @@ service interaction.
 ==== Bug fixes ====
 
 * Fixed issue with scrollbar in pop-ups on Google Maps maps.
-
 * Fixed Google Maps key issue with OpenLayers that arose from the new OpenLayers layer definition system.
-
 * Fixed JS issue with Google Maps default overlays.
 
 === Maps 0.5.4 ===
@@ -435,7 +422,6 @@ service interaction.
 ==== New features ====
 
 * Added the ability to define the layers (and their dependencies) that can be added by users to an OpenLayers map.
-
 * Added the ability to define "layer groups" for OpenLayers layers.
 
 ==== Refactoring ====
@@ -445,9 +431,7 @@ service interaction.
 ==== Bug fixes ====
 
 * Fixed bug causing the default zoom for each mapping service to be off.
-
 * Fixed potential xss vectors.
-
 * Fixed minor JS error that was present for all maps except OSM.
 
 === Maps 0.5.3 ===
@@ -470,7 +454,8 @@ service interaction.
 
 ==== New features ====
 
-* Added icon parameter to display_point(s), allowing you to set the icon for all markers that do not have a specific icon assigned.
+* Added icon parameter to display_point(s), allowing you to set the icon for all markers that do not
+have a specific icon assigned.
 
 ==== Refactoring ====
 
@@ -479,7 +464,6 @@ service interaction.
 ==== Bug fixes ====
 
 * Fixed escaping issue causing wikitext in the title and label parameters not to be displayed correctly.
-
 * Fixed file path for location specific icons.
 
 === Maps 0.5.1 ===
@@ -487,18 +471,16 @@ service interaction.
 
 ==== New features ====
 
-* Integrated further with Validator by holding into account the error level for coordinate validation in the display_ parser functions.
+* Integrated further with Validator by holding into account the error level for coordinate validation
+in the display_ parser functions.
 
 * Added activatable= parameter to the static map support.
 
 ==== Refactoring ====
 
 * Cleaned up the static map code for OSM display_map.
-
 * Modified the parameter definitions to work with Validator 0.2
-
 * Removed redundant (because of Validator 0.2) utility function calls from the mapping classes.
-
 * Removed redundant (because of Validator 0.2) utility functions from the mapping service files.
 
 ==== Bug fixes ====
@@ -511,29 +493,26 @@ service interaction.
 ==== New features ====
 
 * Added strict parameter validation.
-
 * Added smart 'autopanzoom' like control for Google Maps and Yahoo! Maps.
-
 * Added internationalization to the OSM service, and an extra parameter to define per-map languages.
-
 * Static map support, similar and based upon SlippyMap.
 
 ==== Refactoring ====
 
 * Rewrite the parameter handling to be more centralized and modular.
-** Make it possible to override the info of parameters for mapping services, including their aliases, default values and criteria.
-** Make it possible to add and override parameters in each segment of Maps, instead of only the mapping services.
+** Make it possible to override the info of parameters for mapping services, including
+their aliases, default values and criteria.
+** Make it possible to add and override parameters in each segment of Maps, instead of only
+the mapping services.
 
 * Cleaned up and centralized parser function code.
-
-* Refactored the marker specific data handling code in every display point class up to a central location.
-
+* Refactored the marker specific data handling code in every display point class up to
+a central location.
 * Removed backward compatibility (to 0.2.x and earlier) of the earth parameter.
-
 * Removed support for Google Map API map type names for Google Maps.
-
-* Added code to unload any services from the service hook that are not present in the list of allowed services. This ensures they don't get initialized, and makes any check to see if the service is one of the allowed ones further on unneeded.
-
+* Added code to unload any services from the service hook that are not present in the list of
+allowed services. This ensures they don't get initialized, and makes any check to see if the
+service is one of the allowed ones further on unneeded.
 * Added checks for extension dependencies that need to be present for Maps to be initialized.
 
 ==== Bug fixes ====
@@ -543,39 +522,41 @@ service interaction.
 ==== Documenting ====
 
 * Created screencast demonstrating display_map usage.
-
 * Creates screencast demonstrating display_point usage.
-
-* Updated the developer documentation about hooking into and extending Maps to be useful for the current version.
+* Updated the developer documentation about hooking into and extending Maps to be useful
+for the current version.
 
 ===Maps 0.4.2===
 (2009-11-15)
 
 Changes in 0.4.2 discussed on the authors blog:
 
-* [http://blog.bn2vs.com/2009/11/16/maps-and-semantic-maps-0-4-2/ Maps and Semantic Maps 0.4.2 released]
-* [http://blog.bn2vs.com/2009/11/12/new-in-maps-0-4-2/ New in Maps 0.4.2]
+* [Maps and Semantic Maps 0.4.2 released](http://blog.bn2vs.com/2009/11/16/maps-and-semantic-maps-0-4-2/)
+* [New in Maps 0.4.2](http://blog.bn2vs.com/2009/11/12/new-in-maps-0-4-2/)
 
 ==== New features ====
 
-* Added overlays to Google Maps. This includes both an 'overlay' control, and a new parameter to choose the available and default loaded overlays.
-
-* Added specific handling for the coordinates= and addresses= parameters for both display_map and display_point(s). You can now specify you do not want anything that's not a coordinate on your map (so no geocoding) with the coordinates= parameter, or let Maps know everything is an address with the addresses= parameter, causing everything to be geocoded. Also modified the error messages for wrong addresses and coordinates to fit this new behavior.
+* Added overlays to Google Maps. This includes both an 'overlay' control, and a new parameter
+to choose the available and default loaded overlays.
+* Added specific handling for the coordinates= and addresses= parameters for both display_map
+and display_point(s). You can now specify you do not want anything that's not a coordinate on
+your map (so no geocoding) with the coordinates= parameter, or let Maps know everything is
+an address with the addresses= parameter, causing everything to be geocoded. Also modified
+the error messages for wrong addresses and coordinates to fit this new behavior.
 
 ==== Refactoring ====
 
-* Added the version of Maps to the JS files call, to prevent issues when functions or calls are changed in new versions.
-
-* Changed the JavaScript map parameters for Google Maps from individual parameters to a groupe.
+* Added the version of Maps to the JS files call, to prevent issues when functions or calls
+are changed in new versions.
+* Changed the JavaScript map parameters for Google Maps from individual parameters to a group.
 
 ==== Bug fixes ====
 
 * Fixed inclusion path to the OSM JS file. This bug prevented any OSM maps from showing up.
-
-* Fixed display_map and the centre parameter of display_point(s). Both are unusable by a bug introduced in 0.4.1.
-
-* Fixed bug causing to many decimal digits in some coordinate notations, making them unrecognisable for Maps.
-
+* Fixed display_map and the centre parameter of display_point(s). Both are unusable by a bug
+introduced in 0.4.1.
+* Fixed bug causing to many decimal digits in some coordinate notations, making them unrecognisable
+for Maps.
 * Fixed bug causing a form of DD notation not to get recognized.
 
 ===Maps 0.4.1===
@@ -583,108 +564,104 @@ Changes in 0.4.2 discussed on the authors blog:
 
 ==== Bug fixes ====
 
-* Fixed problems with the ° sign, caused by wrong file encodings, resulting into problems with the DMS notation.
-
-* Fixed flaw in DMS to float translation, resulting into a map being displayed when the values where not separated by a comma.
+* Fixed problems with the ° sign, caused by wrong file encodings, resulting into problems with
+the DMS notation.
+* Fixed flaw in DMS to float translation, resulting into a map being displayed when the values
+where not separated by a comma.
 
 === Maps 0.4 ===
 (2009-11-03)
 
 Changes in 0.4 discussed on the authors blog:
 
-* [http://blog.bn2vs.com/2009/11/03/finally-maps-and-semantic-maps-0-4/ Finally! Maps and Semantic Maps 0.4!]
+* [Finally! Maps and Semantic Maps 0.4!](http://blog.bn2vs.com/2009/11/03/finally-maps-and-semantic-maps-0-4/)
 
 ==== New features ====
 
 * Added display_map parser function, to display maps without any markers.
-
 * Added parsing of marker-specific title and label values.
-
-* Added geocoding support for the centre parameter. This is based on automatic detection of non-coordinates to see if geocoding is required, similar to the modified behavior of display_point(s).
-
+* Added geocoding support for the centre parameter. This is based on automatic detection of
+non-coordinates to see if geocoding is required, similar to the modified behavior of display_point(s).
 * Added minimum and maximum map size restrictions, like done in SlippyMap.
-
 * Added OSM mapping service, which uses OL, but only allows OSM layers and is optimized for OSM.
-
-* Added smart 'autopanzoom' control to OL and OSM services. It will determine for itself if a panzoom, panzoombar, or no control should be displayed, depending on the maps height.
-
+* Added smart 'autopanzoom' control to OL and OSM services. It will determine for itself if a
+panzoom, panzoombar, or no control should be displayed, depending on the maps height.
 * Added support for DM and DD coordinate notations.
 
 ==== Refactoring ====
 
-* Created a hook system for the parser functions, allowing the adding or removing of additional parser function support.
-
+* Created a hook system for the parser functions, allowing the adding or removing of additional
+parser function support.
 * Removed redundant absolute script path variable. This absolute value caused problems for some installations.
-
 * Changed the geocoding functionality into a true feature hook element, enabling easy removal.
-
 * Created service hook for the geocoding feature, loose from the mapping services hook.
-
-* Changed display_point(s) and display_address(es) to display_point(s), with auto detect functionality to see if the provided value are coordinates or addresses. display_address and display_addresses have been retained for backward compatibility, but will be removed from the docs. Backward compatibility will be removed at some point, so the use of these functions is discouraged.
+* Changed display_point(s) and display_address(es) to display_point(s), with auto detect
+functionality to see if the provided value are coordinates or addresses. display_address and
+display_addresses have been retained for backward compatibility, but will be removed from the docs.
+Backward compatibility will be removed at some point, so the use of these functions is discouraged.
 
 ==== Bug fixes ====
 
 * Fixed issue with the default parameter for the display_address(es) parser functions.
-
-* Fixed major bug in the initialization method causing hook code to get executed at a probably wrong moment. This bug can be the cause of some weird problems that surfaced since 0.3.3.
-
-* Fixed issue with size of pop-ups in Google Maps. They did not stretch far enough vertically for large contents.
+* Fixed major bug in the initialization method causing hook code to get executed at a probably
+wrong moment. This bug can be the cause of some weird problems that surfaced since 0.3.3.
+* Fixed issue with size of pop-ups in Google Maps. They did not stretch far enough vertically
+for large contents.
 
 ===Maps 0.3.4===
 (2009-09-12)
 
 Changes in 0.3.4 discussed on the authors blog:
 
-* [http://blog.bn2vs.com/2009/09/12/maps-and-semantic-maps-0-3-4-released/ Maps and Semantic Maps 0.3.4 released]
+* [Maps and Semantic Maps 0.3.4 released](http://blog.bn2vs.com/2009/09/12/maps-and-semantic-maps-0-3-4-released/)
 
 ====New features====
 
-* Created hook system for features, which now also allows you to specify which features should be enabled and which not.
+* Created hook system for features, which now also allows you to specify which features
+should be enabled and which not.
 
 ====Refactoring====
 
-* Added old style geocoding request again for people who do not have cURL enabled, plus a more consistent fall-back mechanism.
-
+* Added old style geocoding request again for people who do not have cURL enabled, plus a
+more consistent fall-back mechanism.
 * Added internationalization for the mapping service names.
-
 * Added internationalized list notations.
-
 * Restructured the parser function handling code to work with the new feature hook system.
-
 * Improved structure of geocoding classes.
-
 * Moved Semantic Maps JavaScript code from the Maps JS files to new SM JS files.
-
 * Fixed tiny performance issues all over the code.
 
 ====Bug fixes====
 
-* Fixed issue with empty parameters (par=value||par2=value2) that caused the default parameter (coordinate(s)/address(es)) to be overridden if it occurred after the default one was set.
-
-* Fixed wrong error message when you provide a coordinate(s)/address(es) parameter without any value (ie |coordinates=|)
+* Fixed issue with empty parameters (par=value||par2=value2) that caused the default parameter
+(coordinate(s)/address(es)) to be overridden if it occurred after the default one was set.
+* Fixed wrong error message when you provide a coordinate(s)/address(es) parameter without
+any value (ie |coordinates=|)
 
 ===Maps 0.3.3===
 (2009-08-25)
 
 Changes in 0.3.3 discussed on the authors blog:
 
-* [http://blog.bn2vs.com/2009/08/25/maps-and-semantic-maps-0-3-3/ Maps and Semantic Maps 0.3.3]
+* [Maps and Semantic Maps 0.3.3](http://blog.bn2vs.com/2009/08/25/maps-and-semantic-maps-0-3-3/)
 
 ====New features====
 
-*Added [http://www.geonames.org GeoNames] geocoding support. This is an open source geocoding service, that does not require a licence. It has been made the default geocoding service.
-
-* Added wiki-text rendering to the values of the title and label parameters, allowing users to pass along links, images, and more.
+*Added [http://www.geonames.org GeoNames] geocoding support. This is an open source geocoding
+service, that does not require a licence. It has been made the default geocoding service.
+* Added wiki-text rendering to the values of the title and label parameters, allowing users
+to pass along links, images, and more.
 
 ====Refactoring====
 
 * Refactored some common functionality of the geocoder classes up to MapsBaseGeocoder.
-
-* Minor issue - the OpenLayers default zoom should be closer, when displaying one point - see the last map in [http://discoursedb.org/wiki/One-point_map the same page].
+* Minor issue - the OpenLayers default zoom should be closer, when displaying one
+point - see the last map in [http://discoursedb.org/wiki/One-point_map the same page].
 
 ====Bug fixes====
 
-* Fixed small bug in MapsMapper::inParamAliases that caused the determination of the geoservice to fail in some cases, and set it to the default.
+* Fixed small bug in MapsMapper::inParamAliases that caused the determination of the
+geoservice to fail in some cases, and set it to the default.
 
 ===Maps 0.3.2===
 (2009-08-18)
@@ -701,100 +678,100 @@ Release for consistency. Only changes to Semantic Maps where made in 0.3.2.
 ====Refactoring====
 
 * Added check to see if the classes array is present in a mapping service info array.
-
-* Added check to see if a mapping service has handling for parser functions. In 0.3, Maps assumed it had, preventing the adding of mapping services that only have a form input or/and query printer.
-
-* The getValidService function now holds into account that not every service has support for both parser functions, query printers and form inputs.
+* Added check to see if a mapping service has handling for parser functions. In 0.3,
+Maps assumed it had, preventing the adding of mapping services that only have a form input or/and query printer.
+* The getValidService function now holds into account that not every service has support for
+both parser functions, query printers and form inputs.
 
 ====Bug fixes====
 
-* Added path to extension directory to non local class item in a service's info array, since adding the path is impossible in the declaration.
+* Added path to extension directory to non local class item in a service's info array,
+since adding the path is impossible in the declaration.
 
 ===Maps 0.3===
 (2009-08-14)
 
 Changes in 0.3 discussed on the authors blog:
 
-* [http://blog.bn2vs.com/2009/08/13/final-changes-for-maps-and-sm-0-3/ Final changes for Maps and SM 0.3]
-
-* [http://blog.bn2vs.com/2009/08/07/new-features-in-maps-and-sm-0-3/ New features in Maps and SM 0.3]
-
-* [http://blog.bn2vs.com/2009/08/05/structural-changes-for-maps-and-sm-0-3/ Structural changes for Maps and SM 0.3]
+* [Final changes for Maps and SM 0.3](http://blog.bn2vs.com/2009/08/13/final-changes-for-maps-and-sm-0-3/)
+* [New features in Maps and SM 0.3](http://blog.bn2vs.com/2009/08/07/new-features-in-maps-and-sm-0-3/)
+* [Structural changes for Maps and SM 0.3](http://blog.bn2vs.com/2009/08/05/structural-changes-for-maps-and-sm-0-3/)
  
 ====New features====
 
-* Multi location parser functions. Two completely new parser functions have been added that allow the displaying of multiple points on a map.
-
-* Configurable map type controls. Users can now configure the map type controls of Google maps and Yahoo! maps maps. They can set the available map types, and the order they want them to be displayed in the map type control.
-
-* Property names now have aliases. This means you can add several alternative ways to name the same parameter, for instance, you can make so that ‘auto zoom’ and ‘auto-zoom’ will do excellently the same as the main parameter ‘autozoom’. This is particularly handy for parameters such as ‘centre’ (British spelling) and ‘center’ (American spelling).
-
+* Multi location parser functions. Two completely new parser functions have been added that
+allow the displaying of multiple points on a map.
+* Configurable map type controls. Users can now configure the map type controls of Google
+maps and Yahoo! maps maps. They can set the available map types, and the order they want
+them to be displayed in the map type control.
+* Property names now have aliases. This means you can add several alternative ways to name
+the same parameter, for instance, you can make so that ‘auto zoom’ and ‘auto-zoom’ will do
+excellently the same as the main parameter ‘autozoom’. This is particularly handy for
+parameters such as ‘centre’ (British spelling) and ‘center’ (American spelling).
 * Added Google Maps moon, Mars and sky support.
-
-* Controls on both Yahoo! Maps and Google Maps map can now be configured by the user with the controls parameter. Yahoo! Maps maps already have this option for a limited set of controls since version 0.2, but the amount of available controls has now been expanded to what the Yahoo! Maps API offers. For Google Maps the change is significantly larger, since a lot of new controls can now be added. These included an overview map, a scale line, a drop down menu for map types, an automated reverse geocoding location determiner and more.
-
-* Added the ability to specify separate title, label and icon values for each marker in the display_points and display_addresses parser functions.
-
+* Controls on both Yahoo! Maps and Google Maps map can now be configured by the user with
+the controls parameter. Yahoo! Maps maps already have this option for a limited set of
+controls since version 0.2, but the amount of available controls has now been expanded
+to what the Yahoo! Maps API offers. For Google Maps the change is significantly larger,
+since a lot of new controls can now be added. These included an overview map, a scale
+line, a drop down menu for map types, an automated reverse geocoding location determiner
+and more.
+* Added the ability to specify separate title, label and icon values for each marker
+in the display_points and display_addresses parser functions.
 * Added user friendly notices for when geocoding of an address fails.
-
-* A whole list of OpenLayers base layers have been added. These include the satellite, street and hybrid views for Yahoo! Maps and Bing Maps, but also finally the OpenStreetMap layers.
+* A whole list of OpenLayers base layers have been added. These include the satellite,
+street and hybrid views for Yahoo! Maps and Bing Maps, but also finally the OpenStreetMap layers.
 
 ====Refactoring====
 
-* Created hook system for the mapping services. All hard-coded references to mapping services in the core code have been removed. A service is now added by one multi dimensional array in Maps.php (note that this can also be done in the initialization file of another extension!), which holds the name of the parser functions class and it’s location, the aliases for the service name (feature added in 0.2), and their allowed specific parameters and their aliases. This architecture allows other people to create their own mapping extension using the Maps (and Semantic Maps) ‘API’.
-
+* Created hook system for the mapping services. All hard-coded references to mapping
+services in the core code have been removed. A service is now added by one multi dimensional
+array in Maps.php (note that this can also be done in the initialization file of another
+extension!), which holds the name of the parser functions class and it’s location, the
+aliases for the service name (feature added in 0.2), and their allowed specific parameters
+and their aliases. This architecture allows other people to create their own mapping
+extension using the Maps (and Semantic Maps) ‘API’.
 * Created a class that bundles common functionality from MapsBaseMap and SMFormInput.
-
-* Rewrote parts of the geocoder base class. 
-
+* Rewrote parts of the geocoder base class.
 * Added separated handling for default parameter for each mapping service.
-
 * Changed the requests in the geocoder classes to CURL requests to avoid security issues.
-
 * Moved common, parser function specific, functions and variables from MapsMapper to a new MapsParserFunctions class.
-
 * Moved common code within the mapping services out of the parser function class to a new utility classes.
 
 ====Bug fixes====
 
 * Fixed issue preventing the extension description from showing up in 0.2.1 & 0.2.2.
-
 * Fixed bug that caused Bing maps (for open layers) to not work.
 
-===Maps 0.2===
-(2009-07-29)
+## Maps 0.2 (2009-07-29)
 
-====New features====
+#### New features
 
 * Added Backward compatibility by using the $wgGoogleMapsKey when this one is set and $egGoogleMapsKey isn't.
-
 * Added hook for [[Extension:Admin_Links|Admin Links]].
-
 * Added a true aliasing system for service names.
-
-* Created a centre parameter, that will allow you to set a custom map centre (different from the place where the marker will be put).
-
+* Created a centre parameter, that will allow you to set a custom map centre (different from the
+place where the marker will be put).
 * Added pop-ups for the markers with title and label parameters to determine the pop-up contents.
-
-* Changed the OpenLayers control handling. Make it accept all (36) OL controls by using eval() instead of a switch statement in the JavaScript.
-
+* Changed the OpenLayers control handling. Make it accept all (36) OL controls by using eval()
+instead of a switch statement in the JavaScript.
 * Added the 'physical' button in the map type control of Google Maps maps when this map type is set.
-
 * Added Yahoo! geocoder support (for parser functions).
 
-====Refactoring====
+#### Refactoring
 
-* Refactored MapsBaseMap and all it's child classes. This will vastly increase code centralization and decrease redundant logic and definitions.
+* Refactored MapsBaseMap and all it's child classes. This will vastly increase code
+centralization and decrease redundant logic and definitions.
+* Did a major rewrite of the Google Maps and Yahoo! Maps code. The parser function
+classes now only print a call to a JS function with all needed parameters, which then
+does all the logic and creates the map.
 
-* Did a major rewrite of the Google Maps and Yahoo! Maps code. The parser function classes now only print a call to a JS function with all needed parameters, which then does all the logic and creates the map.
+#### Bug fixes
 
-====Bug fixes====
-
-* Fixed issue causing aliases for service names getting turned into the default service since they are not in the allowed services list.
-
+* Fixed issue causing aliases for service names getting turned into the default
+service since they are not in the allowed services list.
 * Removed redundant parts of the OpenLayers library.
 
-===Maps 0.1=== 
-(2009-07-20)
+## Maps 0.1 (2009-07-20)
 
 * Initial release, featuring Google Maps (+ Google Earth), Yahoo! Maps and OpenLayers mapping services.
