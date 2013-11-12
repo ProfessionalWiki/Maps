@@ -7,8 +7,6 @@ use Maps\Elements\WmsOverlay;
 /**
  * @covers Maps\WmsOverlayParser
  *
- * @since 3.0
- *
  * @group ValueParsers
  * @group Maps
  * @group WmsOverlayParserTest

@@ -3,11 +3,7 @@
 namespace Maps\Test;
 
 /**
- * Unit tests for the Maps\DistanceParser class.
- *
- * @since 3.0
- *
- * @ingroup MapsTest
+ * @covers Maps\DistanceParser
  *
  * @group ValueParsers
  * @group Maps

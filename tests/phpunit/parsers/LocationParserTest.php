@@ -8,8 +8,6 @@ use Maps\Elements\Location;
 /**
  * @covers Maps\LocationParser
  *
- * @since 3.0
- *
  * @group ValueParsers
  * @group Maps
  * @group LocationParserTest

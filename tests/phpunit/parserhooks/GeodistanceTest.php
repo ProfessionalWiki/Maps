@@ -8,12 +8,6 @@ use Maps\Elements\Location;
 /**
  * Tests for the Maps\Geodistance class.
  *
- * @file
- * @since 2.0
- *
- * @ingroup Maps
- * @ingroup Test
- *
  * @group Maps
  * @group ParserHook
  * @group GeodistanceTest

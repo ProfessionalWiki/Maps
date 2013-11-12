@@ -5,12 +5,6 @@ namespace Maps\Test;
 /**
  * Tests for the MapsCoordinates class.
  *
- * @file
- * @since 2.0
- *
- * @ingroup Maps
- * @ingroup Test
- *
  * @group Maps
  * @group ParserHook
  *

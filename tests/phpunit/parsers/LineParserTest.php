@@ -8,8 +8,6 @@ use Maps\Elements\Line;
 /**
  * @covers Maps\LineParser
  *
- * @since 3.0
- *
  * @group ValueParsers
  * @group Maps
  * @group LineParserTest
