@@ -40,6 +40,7 @@ class CoordinatesTest extends ParserHookTest {
 			),
 			'4° 0\' 0", 2° 0\' 0"'
 		);
+
 		$paramLists[] = array(
 			array(
 				'location' => '55 S, 37.6176330 W'
@@ -54,6 +55,23 @@ class CoordinatesTest extends ParserHookTest {
 			),
 			'4, 2'
 		);
+
+//		$paramLists[] = array(
+//			array(
+//				'location' => '-4,-2',
+//				'format' => 'float',
+//				'directional' => 'yes',
+//			),
+//			'4 W, 2 S'
+//		);
+//
+//		$paramLists[] = array(
+//			array(
+//				'location' => '55 S, 37.6176330 W',
+//				'directional' => 'yes',
+//			),
+//			'55° 0\' 0" W, 37° 37\' 3.4788" S'
+//		);
 
 		return $paramLists;
 	}
