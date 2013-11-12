@@ -2,22 +2,10 @@
 
 /**
  * Initialization file for the Maps extension.
- *
- * On MediaWiki.org:         http://www.mediawiki.org/wiki/Extension:Maps
- * Official documentation:     http://mapping.referata.com/wiki/Maps
- * Examples/demo's:         http://mapping.referata.com/wiki/Maps_examples
+ * https://github.com/JeroenDeDauw/Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
- */
-
-/**
- * This documentation group collects source code files belonging to Maps.
- *
- * Please do not use this group name for other code. If you have an extension to
- * Maps, please use your own group definition.
- *
- * @defgroup Maps Maps
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -26,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 if ( defined( 'Maps_VERSION' ) ) {
 	// Do not initialize more then once.
-	return;
+	return 1;
 }
 
 define( 'Maps_VERSION' , '3.0 alpha' );
