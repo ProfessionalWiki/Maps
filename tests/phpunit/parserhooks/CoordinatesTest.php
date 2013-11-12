@@ -2,14 +2,11 @@
 
 namespace Maps\Test;
 
+use DataValues\LatLongValue;
+use ParamProcessor\ParamDefinition;
+
 /**
- * Tests for the Maps\Coordinates class.
- *
- * @file
- * @since 2.0
- *
- * @ingroup Maps
- * @ingroup Test
+ * @covers Maps\Coordinates
  *
  * @group Maps
  * @group ParserHook
@@ -67,7 +64,7 @@ class CoordinatesTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
 		$argLists = array();
 
 		$values = array(
@@ -75,7 +72,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\LatLongValue( 4, 2 ),
+			'location' => new LatLongValue( 4, 2 ),
 		);
 
 		$argLists[] = array( $values, $expected );
@@ -87,7 +84,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\LatLongValue( 4, 2 ),
+			'location' => new LatLongValue( 4, 2 ),
 			'directional' => !$definitions['directional']->getDefault(),
 			'format' => Maps_COORDS_DD,
 		);
@@ -101,7 +98,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\LatLongValue( 4, 2 ),
+			'location' => new LatLongValue( 4, 2 ),
 			'directional' => !$definitions['directional']->getDefault(),
 			'format' => Maps_COORDS_DD,
 		);
