@@ -3,8 +3,6 @@
 namespace Maps;
 
 use Maps\Elements\WmsOverlay;
-use MWException;
-use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 
