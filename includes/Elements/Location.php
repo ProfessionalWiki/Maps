@@ -161,16 +161,10 @@ class Location extends BaseElement {
 	 *
 	 * @since 0.7.1
 	 *
-	 * @param boolean $geocodeIfEmpty
-	 *
 	 * @return string
 	 */
-	public function getAddress( $geocodeIfEmpty = true ) {
+	public function getAddress() {
 		if ( is_null( $this->address ) ) {
-			if ( $geocodeIfEmpty ) {
-				// TODO: attempt to reverse-geocode
-			}
-
 			$this->address = '';
 		}
 
