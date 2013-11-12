@@ -37,36 +37,6 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 	</tr>
 </table>
 
-; Legend
-
-<table>
-	<tr>
-		<th>Color</th>
-		<th>Meaning</th>
-		<th>Development</th>
-	</tr>
-	<tr>
-		<td style="background:salmon;">Red</td>
-		<td>Old release</td>
-		<td>New features</td>
-	</tr>
-	<tr>
-		<td>Yellow</td>
-		<td>Stable release</td>
-		<td>Security fixes</td>
-	</tr>
-	<tr>
-		<td>Green</td>
-		<td>Stable release</td>
-		<td>Bug and security fixes</td>
-	</tr>
-	<tr>
-		<td>Blue</td>
-		<td>Future release</td>
-		<td>New features</td>
-	</tr>
-</table>
-
 == Download ==
 
 You can find the current version of Maps on the Google Code download page [0],
