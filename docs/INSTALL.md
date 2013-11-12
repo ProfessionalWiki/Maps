@@ -19,7 +19,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td>Future</td>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
-		<td>[master](https://github.com/JeroenDeDauw/Maps/tree/master)</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
 		<th>Maps 2.0.x</th>
@@ -27,7 +27,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td>2012</td>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
-		<td>[2.0.x](https://github.com/JeroenDeDauw/Maps/tree/2.0.x)</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/2.0.x">master</a></td>
 	</tr>
 	<tr>
 		<th>Maps 1.0.5</th>
@@ -35,7 +35,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td>2011-11-30</td>
 		<td>5.2+</td>
 		<td>1.17+</td>
-		<td>[1.0.5](https://github.com/JeroenDeDauw/Maps/tree/1.0.5)</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/1.0.5">master</a></td>
 	</tr>
 </table>
 
