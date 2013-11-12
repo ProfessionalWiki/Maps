@@ -12,7 +12,7 @@ class MapsLeaflet extends MapsMappingService {
 	/**
 	 * Constructor
 	 */
-	function __construct( $serviceName ) {
+	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
 			array( 'leafletmaps', 'leaflet' )

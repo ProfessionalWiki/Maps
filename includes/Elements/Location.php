@@ -289,6 +289,8 @@ class Location extends BaseElement {
 	/**
 	 * Returns an object that can directly be converted to JS using json_encode or similar.
 	 *
+	 * FIXME: complexity
+	 *
 	 * @since 1.0
 	 *
 	 * @param string $defText
@@ -302,6 +304,7 @@ class Location extends BaseElement {
 	 */
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
+
 		$array = array(
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
@@ -312,6 +315,7 @@ class Location extends BaseElement {
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
 			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
 		);
+
 		return array_merge( $parentArray , $array );
 	}
 

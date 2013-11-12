@@ -16,7 +16,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * 
 	 * @since 0.6.6
 	 */	
-	function __construct( $serviceName ) {
+	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
 			array( 'layers', 'openlayer' )
