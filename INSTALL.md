@@ -8,24 +8,28 @@ These are the installation and configuration instructions for the [Maps extensio
 	<tr>
 		<th></th>
 		<th>Status</th>
+		<th>Release date</th>
 		<th>PHP</th>
 		<th>MediaWiki</th>
 	</tr>
 	<tr>
 		<th>Maps 3.x</th>
 		<td>Development version</td>
+		<td>Future</td>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
 	</tr>
 	<tr>
 		<th>Maps 2.x</th>
 		<td>Stable release</td>
+		<td>2012</td>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
 	</tr>
 	<tr>
 		<th>Maps 1.0.5</th>
 		<td>Legacy release</td>
+		<td>2011</td>
 		<td>5.2+</td>
 		<td>1.17+</td>
 	</tr>
