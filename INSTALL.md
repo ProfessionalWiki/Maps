@@ -46,7 +46,7 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 		<th>Development</th>
 	</tr>
 	<tr>
-		<tr class=foo>Red</tr>
+		<tr>Red</tr>
 		<tr>Old release</tr>
 		<tr>New features</tr>
 	</tr>
