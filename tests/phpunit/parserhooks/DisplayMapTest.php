@@ -5,7 +5,7 @@ namespace Maps\Test;
 use Maps\Elements\Location;
 
 /**
- * Tests for the Maps\DisplayMap class.
+ * @covers MapsDisplayMap
  *
  * @group Maps
  * @group ParserHook

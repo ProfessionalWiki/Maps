@@ -5,7 +5,7 @@ namespace Maps\Test;
 use Maps\Elements\Location;
 
 /**
- * Tests for the Maps\Geocode class.
+ * @covers MapsGeocode
  *
  * @group Maps
  * @group ParserHook

@@ -6,7 +6,7 @@ use DataValues\LatLongValue;
 use Maps\Elements\Location;
 
 /**
- * Tests for the Maps\Geodistance class.
+ * @covers MapsGeodistance
  *
  * @group Maps
  * @group ParserHook

@@ -3,7 +3,7 @@
 namespace Maps\Test;
 
 /**
- * Tests for the Maps\MapsDoc class.
+ * @covers MapsMapsDoc
  *
  * @group Maps
  * @group ParserHook

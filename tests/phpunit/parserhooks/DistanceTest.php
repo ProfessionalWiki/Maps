@@ -3,7 +3,7 @@
 namespace Maps\Test;
 
 /**
- * Tests for the Maps\Distance class.
+ * @covers MapsDistance
  *
  * @group Maps
  * @group ParserHook

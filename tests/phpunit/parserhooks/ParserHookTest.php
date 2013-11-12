@@ -6,8 +6,6 @@ use ParamProcessor\ParamDefinition;
 use ParamProcessor\Processor;
 
 /**
- * Tests for the MapsCoordinates class.
- *
  * @group Maps
  * @group ParserHook
  *
