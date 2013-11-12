@@ -6,7 +6,7 @@ use DataValues\LatLongValue;
 use ParamProcessor\ParamDefinition;
 
 /**
- * @covers Maps\Coordinates
+ * @covers MapsCoordinates
  *
  * @group Maps
  * @group ParserHook
