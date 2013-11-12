@@ -5,20 +5,17 @@ information.
 
 Features:
 
-Maps is the MediaWiki extension that provides the ability to visualize geographic data
-with dynamic, JavaScript based, mapping API's such as Google Maps and OpenLayers in your
-wiki pages. It has build in support for geocoding, displaying maps, displaying markers,
-adding pop-ups, and more. Maps allows extensive customization of your maps, either per
-map, or via a general setting affecting all maps on your wiki.
+* Powerful #display_map parser hook for embedding highly customizable dynamic maps into wiki pages.
+* Support for multiple mapping services: Google Maps, OpenLayers, OpenStreetMap and Leaflet.
+* Coordinate formatting and format conversion via the #coordinates parser function.
+* Geocoding via several supported services with the #geocode parser function.
+* Geospatial operations
+** Calculating the distance between two points with #geodistance
+** Finding a destination given a starting point, bearing and distance with #finddestination
+* Distance formatting and format conversion via the #distance parser function.
+* Visual map editor (Special:MapEditor) to edit #display_map wikitext.
 
-Due to Maps modular build, modifying the mapping service of a map is as easy as changing
-a single map property! These mapping services include Google Maps, Yahoo! Maps, OpenLayers
-and OpenStreetMap. These also allow you to display maps with Google Earth, OpenStreetMaps,
-Bing maps and others.
-
-* ...
-
-View the [release notes](docs/RELEASE-NOTES.md) for recent changes to SubPageList.
+View the [release notes](docs/RELEASE-NOTES.md) for recent changes to Maps.
 
 ### User manual
 
@@ -74,8 +71,8 @@ It is released under the
 
 ### OpenStreetMap.js
 
-This extension includes the OpenStreetMap.js file which can be found here:
-http://www.openstreetmap.org/openlayers/OpenStreetMap.js
+This extension includes the OpenStreetMap.js file which can be found
+[here](http://www.openstreetmap.org/openlayers/OpenStreetMap.js).
 
 ## Links
 
@@ -83,5 +80,5 @@ http://www.openstreetmap.org/openlayers/OpenStreetMap.js
 * [Maps on Ohloh](https://www.ohloh.net/p/maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)
-* [TravisCI build status](https://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
+* [TravisCI build status](https://travis-ci.org/JeroenDeDauw/Maps)
 * [Semantic Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Semantic_Maps)
