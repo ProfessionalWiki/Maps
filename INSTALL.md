@@ -6,17 +6,63 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 
 == Requirements ==
 
-Maps requires:
+<table>
+	<tr>
+		<th></th>
+		<th>PHP</th>
+		<th>MediaWiki</th>
+		<th>ParamProcessor</th>
+		<th>DataValues</th>
+	</tr>
+	<tr>
+		<th>Maps 2.x</th>
+		<td>5.3.2+</td>
+		<td>1.18+</td>
+		<td>Not needed</td>
+	</tr>
+	<tr>
+		<th>Maps 3.x</th>
+		<td>5.3.2+</td>
+		<td>1.18+</td>
+		<td>0.1+</td>
+	</tr>
+	<tr>
+		<th>Maps 1.0.5</th>
+		<td>5.2+</td>
+		<td>1.17+</td>
+		<td>Not needed</td>
+	</tr>
+</table>
 
-* MediaWiki 1.18 or above
-* PHP 5.3 or above
-* Validator 0.4.13 or above
+; Legend
 
-Not up to specs yet? Maybe you can use Maps 1.0.x which requires:
-
-* MediaWiki 1.17 or above
-* PHP 5.2 or above
-* Validator 0.4.11 or above
+<table>
+	<tr>
+		<th>Color</th>
+		<th>Meaning</th>
+		<th>Development</th>
+	</tr>
+	<tr>
+		<tr style="background:salmon;">Red</tr>
+		<tr>Old release</tr>
+		<tr>New features</tr>
+	</tr>
+	<tr>
+		<tr style="background:#FCED77;">Yellow</tr>
+		<tr>Stable release</tr>
+		<tr>Security fixes</tr>
+	</tr>
+	<tr>
+		<tr style="background:#a0e75a;">Green</tr>
+		<tr>Stable release</tr>
+		<tr>Bug and security fixes</tr>
+	</tr>
+	<tr>
+		<tr style="background:skyBlue;">Blue</tr>
+		<tr>Future release</tr>
+		<tr>New features</tr>
+	</tr>
+</table>
 
 == Download ==
 
