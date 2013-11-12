@@ -6,7 +6,8 @@ information.
 Features:
 
 * Powerful #display_map parser hook for embedding highly customizable dynamic maps into wiki pages.
-* Support for multiple mapping services: Google Maps, OpenLayers, OpenStreetMap and Leaflet.
+* Support for multiple mapping services: Google Maps, [OpenLayers](http://www.openlayers.org/),
+[OpenStreetMap](www.openstreetmap.org/) and [Leaflet](http://leafletjs.com/).
 * Coordinate formatting and format conversion via the #coordinates parser function.
 * Geocoding via several supported services with the #geocode parser function.
 * Geospatial operations
@@ -14,7 +15,8 @@ Features:
 ** Finding a destination given a starting point, bearing and distance with #finddestination
 * Distance formatting and format conversion via the #distance parser function.
 * Visual map editor (Special:MapEditor) to edit #display_map wikitext.
-* Structured data support provided by the [Semantic Maps extension](https://www.mediawiki.org/wiki/Extension:Semantic_Maps).
+* Structured data support provided by the [Semantic Maps extension]
+(https://www.mediawiki.org/wiki/Extension:Semantic_Maps).
 
 View the [release notes](docs/RELEASE-NOTES.md) for recent changes to Maps.
 
