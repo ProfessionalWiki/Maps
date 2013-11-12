@@ -164,7 +164,7 @@ final class Geocoders {
 	 * @param string $service
 	 * @param string $mappingService
 	 * @param boolean $checkForCoords
-	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
+	 * @param string $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * 
 	 * @return string|false

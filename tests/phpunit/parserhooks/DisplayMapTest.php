@@ -62,10 +62,8 @@ class DisplayMapTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$definitions = $this->getInstance()->getParamDefinitions();
 		$argLists = array();
 
-		// TODO
 		$values = array(
 			'locations' => '4,2',
 			'width' => '420',
