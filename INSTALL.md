@@ -46,24 +46,24 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 		<th>Development</th>
 	</tr>
 	<tr>
-		<tr>Red</tr>
-		<tr>Old release</tr>
-		<tr>New features</tr>
+		<td style="background:salmon;">Red</td>
+		<td>Old release</td>
+		<td>New features</td>
 	</tr>
 	<tr>
-		<tr>Yellow</tr>
-		<tr>Stable release</tr>
-		<tr>Security fixes</tr>
+		<td>Yellow</td>
+		<td>Stable release</td>
+		<td>Security fixes</td>
 	</tr>
 	<tr>
-		<tr>Green</tr>
-		<tr>Stable release</tr>
-		<tr>Bug and security fixes</tr>
+		<td>Green</td>
+		<td>Stable release</td>
+		<td>Bug and security fixes</td>
 	</tr>
 	<tr>
-		<tr>Blue</tr>
-		<tr>Future release</tr>
-		<tr>New features</tr>
+		<td>Blue</td>
+		<td>Future release</td>
+		<td>New features</td>
 	</tr>
 </table>
 
