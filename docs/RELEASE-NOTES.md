@@ -1,11 +1,6 @@
-These are the release notes for the Maps extension.
+These are the release notes for the [Maps extension](../README.md).
 
-Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
-Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=RELEASE-NOTES
-
-
-=== Maps 3.0 ===
-(dev)
+## Maps 3.0 (dev)
 
 In this version a big part of the PHP codebase has been rewritten to decrease technical debt and thus
 facilatete maintenance, new feature delopment and debugging. Many tests have been added and a lot of
@@ -37,10 +32,9 @@ bugs have been found and fixed. No big new features have been added.
 * Fixed autoinfowindows functionality.
 * Fixed various bugs in geocoordinate parsing and formatting.
 
-=== Maps 2.0 ===
-(2012-10-05)
+## Maps 2.0 (2012-10-05)
 
-; Compatibility changes
+#### Compatibility changes
 
 * Changed minimum PHP version from 5.2 to 5.3.
 * Changed minimum MediaWiki version from 1.17 to 1.18.
@@ -49,7 +43,7 @@ bugs have been found and fixed. No big new features have been added.
 * Removed support for the now unsupported Yahoo! Maps API and associated geocoding service.
 * Temporary disabled OSM service (you can still use OSM with the OpenLayers service).
 
-; New features
+#### New features
 
 * Added support for defining an inline label to markers to GoogleMaps.
 * Added support for marker clustering to Google Maps.
@@ -66,46 +60,42 @@ bugs have been found and fixed. No big new features have been added.
 * Added an optional link parameter as an alternative to popup bubble with text and title
 * Added an optional visitedicon parameter (both global and marker parameter), that will change the icon of a marker on click.
 
-; Other improvements
+#### Other improvements
 
 * Merged display_map and display_point(s) into a single parser function: display_map (display_points is now an alias).
 * Updates parameter definitions from Validator 0.4.x to Validator 0.5.x.
 * Improved script loading.
 * Added various unit tests that caught some bugs and will now prevent regressions.
 
-; Bug fixes
+#### Bug fixes
 
 * Fixed JavaScript error on some special pages due to incorrect order of map initialization.
 * Fixed partially broken kml functionality.
 
-=== Maps 1.0.5 ===
-(2011-11-30)
+## Maps 1.0.5 (2011-11-30)
 
 * Fixed display of attribution control for OpenLayers.
 * Fixed to big precision of geographic coordinates in decimal minutes format (bug 32407).
 
-=== Maps 1.0.4 ===
-(2011-10-15)
+## Maps 1.0.4 (2011-10-15)
 
 * Updated OpenLayers from 2.10 to 2.11.
 * Fixed bug in adding adittional markers for Google Maps v3 (mainly affecting the Semantic Maps form input).
 
-=== Maps 1.0.3 ===
-(2011-09-14)
+## Maps 1.0.3 (2011-09-14)
 
 * Added API module for geocoding.
 * Added 'geocoding' right.
 * Added kmlrezoom parameter for Google Maps v3 and general $egMapsRezoomForKML setting.
 * Fixed Google Maps v3 JavaScript issue occuring on MediaWiki 1.17.
 
-=== Maps 1.0.2 ===
-(2011-08-24)
+## Maps 1.0.2 (2011-08-24)
 
 * Fixed Google Maps v3 JavaScript issue occuring when using Google Earth on unsupported systems.
 * Fixed internationalization of distances (bug 30467).
 
-=== Maps 1.0.1 ===
-(2011-08-17)
+## Maps 1.0.1 (2011-08-17)
+
 
 * Added language parameter to the mapsdoc hook.
 
@@ -119,8 +109,7 @@ bugs have been found and fixed. No big new features have been added.
 
 * Added tilt parameter for Google Earth in Google Maps v3.
 
-=== Maps 1.0 ===
-(2011-07-19)
+## Maps 1.0 (2011-07-19)
 
 This version branched from Maps 0.7.x at version 0.7.3.
 
