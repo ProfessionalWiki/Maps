@@ -27,7 +27,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td>2012</td>
 		<td>5.3.2+</td>
 		<td>1.18+</td>
-		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/2.0.x">master</a></td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/2.0.x">2.0.x</a></td>
 	</tr>
 	<tr>
 		<th>Maps 1.0.5</th>
@@ -35,7 +35,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td>2011-11-30</td>
 		<td>5.2+</td>
 		<td>1.17+</td>
-		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/1.0.5">master</a></td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/1.0.5">1.0.5</a></td>
 	</tr>
 </table>
 
