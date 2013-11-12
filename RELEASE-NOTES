@@ -21,6 +21,7 @@ bugs have been found and fixed. No big new features have been added.
 ; New features
 
 * Added leaflet service
+* Added Geocoder.us geoservice support
 
 ; Breaking internal changes
 
