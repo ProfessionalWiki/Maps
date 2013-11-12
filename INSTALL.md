@@ -49,3 +49,27 @@ The package name is "mediawiki/maps", so your composer.json file should look as 
 }
 ```
 
+### Manual installation
+
+Alternatively you can obtain the Maps code and the code of all its dependencies yourself, and load them all.
+
+The latest version of Maps requires:
+
+* ParamProcessor 1.0 or later
+* DataValuesInterfaces 0.1 or later
+* DataValuesCommon 0.1 or later
+
+You can get the Maps code itself:
+
+* Via git: git clone https://github.com/JeroenDeDauw/Maps.git
+* As Tarball: https://github.com/JeroenDeDauw/Maps/releases
+
+The only remaining step is to include SubPageList in your LocalSettings.php file:
+
+```php
+require_once( "$IP/extensions/Maps/Maps.php" );
+```
+
+## Configuration
+
+See the [Maps settings file](../Maps_Settings.php) for the available configuartion options.
