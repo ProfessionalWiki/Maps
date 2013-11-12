@@ -1,7 +1,15 @@
 {
 	"name": "mediawiki/maps",
 	"description": "Adds various mapping features to MediaWiki",
-	"keywords": ["MediaWiki", "Semantic MediaWiki", "Maps", "Google Maps", "OpenLayers", "OSM", "OpenStreetMap"],
+	"keywords": [
+		"MediaWiki",
+		"Semantic MediaWiki",
+		"Maps",
+		"Google Maps",
+		"OpenLayers",
+		"OSM",
+		"OpenStreetMap"
+	],
 	"homepage": "https://www.mediawiki.org/wiki/Extension:Maps",
 	"license": "GPL-2.0+",
 	"authors": [
@@ -18,10 +26,10 @@
 		"irc": "irc://irc.freenode.net/mediawiki",
 		"forum": "https://www.mediawiki.org/wiki/Extension_talk:Maps",
 		"wiki": "https://www.mediawiki.org/wiki/Extension:Maps",
-		"source": "https://github.com/wikimedia/mediawiki-extensions-Maps"
+		"source": "https://github.com/JeroenDeDauw/Maps"
 	},
 	"require": {
-		"php": ">=5.3.0",
+		"php": ">=5.3.2",
 		"param-processor/param-processor": "dev-master",
 		"data-values/data-values": "dev-master"
 	},
