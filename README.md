@@ -29,6 +29,7 @@ View the [release notes](docs/RELEASE-NOTES.md) for recent changes to Maps.
 
 [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/Maps.png?branch=master)](http://travis-ci.org/JeroenDeDauw/Maps)
 [![Coverage Status](https://coveralls.io/repos/JeroenDeDauw/Maps/badge.png?branch=master)](https://coveralls.io/r/JeroenDeDauw/Maps?branch=master)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/badges/quality-score.png?s=3881a27e63cb64e7511d766bfec2e2db5d39bec3)](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/)
 [![Dependency Status](https://www.versioneye.com/php/mediawiki:maps/dev-master/badge.png)](https://www.versioneye.com/php/mediawiki:maps/dev-master)
 
 On [Packagist](https://packagist.org/packages/mediawiki/maps):
