@@ -51,7 +51,7 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 		<tr>New features</tr>
 	</tr>
 	<tr>
-		<tr style="background:#FCED77">Yellow</tr>
+		<tr>Yellow</tr>
 		<tr>Stable release</tr>
 		<tr>Security fixes</tr>
 	</tr>
