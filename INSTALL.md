@@ -1,10 +1,8 @@
-This is the install file for the Maps extension.
-	
-Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
-Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=INSTALL
+# Maps installation
 
+These are the installation and configuration instructions for the [Maps extension](../README.md).
 
-== Requirements ==
+## Dependencies
 
 <table>
 	<tr>
@@ -41,29 +39,20 @@ Latest version of the install file: https://gerrit.wikimedia.org/r/gitweb?p=medi
 	</tr>
 </table>
 
-== Download ==
+## Download and installation
 
-You can find the current version of Maps on the Google Code download page [0],
-as well as a list of legacy downloads [1].
+### With Composer
 
-[0] https://code.google.com/p/mwmaps/downloads/list
-[1] https://code.google.com/p/mwmaps/downloads/list?can=1
+The recommended way to install Maps is with [Composer](http://getcomposer.org).
+See the [extension installation with Composer](https://www.mediawiki.org/wiki/Composer) instructions.
 
-You can also get the code directly from SVN. Tags can be obtained via
+The package name is "mediawiki/maps", so your composer.json file should look as follows:
 
- svn checkout http://svn.wikimedia.org/svnroot/mediawiki/tags/extensions/Maps/REL_version
-
-Where 'version' is the version number of the tag, such as 0_1
-(see the available tags at http://svn.wikimedia.org/svnroot/mediawiki/tags/extensions/Maps/).
-
-The latest code can be obtained from trunk:
-
- svn checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Maps/
-
-== Installation ==
-
-Once you have downloaded the code, place the ''Maps'' directory within your MediaWiki
-'extensions' directory. Then add the following code to your [[Manual:LocalSettings.php|LocalSettings.php]] file:
-
-# Maps
-require_once( "$IP/extensions/Maps/Maps.php" );
+```javascript
+{
+	"require": {
+		// ...
+		"mediawiki/maps": ">=1.0"
+	},
+}
+```
