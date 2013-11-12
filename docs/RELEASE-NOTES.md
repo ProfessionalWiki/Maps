@@ -110,43 +110,32 @@ This version branched from Maps 0.7.x at version 0.7.3.
 #### New features ####
 
 * Added full Google Maps v3 support and set it as the default mapping service.
-
 * Added new geocoder making use of the new GeoNames API.
-
 * Added support for the auto-documentation features for parser hooks introduced in Validator 0.4.3.
-
 * Added resizeable parameter to all mapping services except OSM.
 
 #### Removed features ####
 
 * Removed compatibility with pre MediaWiki 1.17.
-
 * Removed overlays parameter for Google Maps v2.
-
-* Removed the previously deprecated "display map", "display point" and "display points" parser hooks. Use their underscored equivalents, ie "display_map".
+* Removed the previously deprecated "display map", "display point" and "display points" parser hooks.
+Use their underscored equivalents, ie "display_map".
 
 #### Internal improvements ####
 
 * Usage of the Resource Loader for all scripts and stylesheets.
-
 * Rewrote all the map JavaScript to jQuery plugins.
-
 * Rewrote the way parameters are translated to JavaScript. Now one big PHP object is json_encoded.
-
 * Improved KML formatter.
-
 * Use of Google Maps geocoding service v3 instead of v2.
-
-* Completed coordinate and distance parser/formatter unit tests and made them compliant with the MediaWiki unit testing support.
+* Completed coordinate and distance parser/formatter unit tests and made them compliant with the
+MediaWiki unit testing support.
 
 #### Bug fixes ####
 
 * Fixed geocoding service overriding based on mapping service (merged in from Maps 0.7.5).
-
 * Fixed fatal error occurring when running maintenance/refreshLinks.php.
-
 * Fixed DMS coordinate parsing issue (bug 29419).
-
 * Fixed coordinate normalization issue (bug 29421).
 
 #### Other tweaks ####
@@ -157,9 +146,7 @@ This version branched from Maps 0.7.x at version 0.7.3.
 (2010-11-30)
 
 * Some internal improvements and translation updates.
-
 * Fixed issue occurring when Maps is the only extension adding custom namespaces.
-
 
 ## Maps 0.7.2 ##
 (2010-10-28)
@@ -175,11 +162,8 @@ This version branched from Maps 0.7.x at version 0.7.3.
 #### Bug fixes ####
 
 * Fixed incompatibility with MW 1.15.x.
-
 * Fixed incorrect parsing of certain DM and DMS coordinates.
-
 * Fixed small layout issue with pop-ups in Google Maps.
-
 * Fixed incorrect error on non-existing pages in the Layer namespace.
 
 ## Maps 0.7.1 ##
@@ -192,7 +176,6 @@ This version branched from Maps 0.7.x at version 0.7.3.
 #### Bug fixes ####
 
 * Support for images without namespace prefix in the display points parser hook.
-
 * Fixed layer oder for OpenLayers maps.
 
 #### Internal improvements ####
@@ -210,17 +193,13 @@ This version branched from Maps 0.7.x at version 0.7.3.
 ** Finddestination
 ** Geocode
 ** Geodistance
-
 * Thumbs and photos parameters for the OSM service.
 
 #### Bug fixes ####
 
 * Fixed compatibility with the MW 1.17 resource loader.
-
 * Fixed i18n issue with the overlays control for Google Maps v2 maps.
-
 * Fixed default zoom level for Yahoo! Maps maps.
-
 * Increased the maximum decimals for DMS coordinates from 2 to 20.
 
 #### Removed features ####
@@ -232,13 +211,9 @@ This version branched from Maps 0.7.x at version 0.7.3.
 * Rewrote the geocoding functionality. It's now an integral part of the extension that can not be just pulled out,
 while the reverse is true for individual geocoders. Geocoder interaction now uses the same model as mapping
 service interaction.
-  
 * Use of Validator 0.4, allowing for more robust and consistent error reporting.
-
 * Rewrote the parser hooks to use the ParserHook class provided by Validator.
-
 * Restructured the directory structure of the extension to better match it's architecture.
-
 * Use of OpenLayers 2.10 instead of 2.9.
 
 ## Maps 0.6.6 ##
@@ -247,21 +222,18 @@ service interaction.
 #### New features ####
 
 * Support for geocoding over proxies.
-
 * Added $egMapsInternatDirectionLabels settings, allowing users to disable internationalization of direction labels.
 
 #### Refactoring ####
 
-* Added MapsMappingServices, which serves as factory for MapsPappingService objects and does away with all the globals previously needed for this.
-
+* Added MapsMappingServices, which serves as factory for MapsPappingService objects and does away
+with all the globals previously needed for this.
 * Removed the http/curl request code from the geocoder classes - now using Http:get() instead.
 
 #### Bug fixes ####
 
 * Fixed issue that caused pop-up contents to render incorrectly when it contained wiki markup.
-
 * Fixed coordinate parsing bug (direction labels did not get recognized) that was introduced in 0.6.4.
-
 * Fixed spacing issues with several parser functions.
 
 ## Maps 0.6.5 ##
@@ -270,23 +242,16 @@ service interaction.
 #### Refactoring ####
 
 * Added unit tests for the coordinates parser.
-
 * Created iMappingFeature interface, from which iMapParserFunctions inherits.
-
 * Moved map id creation to the mapping service class for all features.
-
-* Moved marker JavaScript creation for display_points to the mapping service class for all features. 
-
+* Moved marker JavaScript creation for display_points to the mapping service class for all features.
 * Moved default zoom level access method to the mapping service class for all features.
-
 * Improved the way marker data is turned into JavaScript variables.
-
 * Improved coordinate recognition regexes. 
 
 #### Bug fixes ####
 
 * Fixed several small coordinate parsing and formatting issues.
-
 * Fixed a few small distance parsing issues.
 
 ## Maps 0.6.4 ##
@@ -295,11 +260,8 @@ service interaction.
 #### New features ####
 
 * Added new OSM service based on iframe inclusion of toolserver page that renders OpenStreetMap tiles with Wikipedia overlays.
-
 * Added internationalization to the OpenLayers service.
-
 * Added support for including KML files for Google Maps v2.
-
 * Added 'searchbar' control for Google Maps v2.
 
 #### Refactoring ####
@@ -309,9 +271,7 @@ service interaction.
 #### Bug fixes ####
 
 * Fixed bug in the OpenLayers service causing it to display badly in Chrome.
-
 * Fixed issue with with and height validation for % values, also causing backward compatibility problems with pre 0.6 setting definitions.
-
 * Fixed several small bugs in the coordinate parser.
 
 ## Maps 0.6.3 ##
@@ -320,7 +280,6 @@ service interaction.
 #### Refactoring ####
 
 * Mayor refactoring of the mapping service handling, to make the code flow less messy and be able to do mapping service related things in a more consistent fashion.
-
 * Upgrade to OpenLayers 2.9.1.
 
 #### Bug fixes ####
@@ -333,11 +292,8 @@ service interaction.
 #### New features ####
 
 * Added #distance parser function parse distances using any of the supported units and outputting them in any of these.
-
 * Made supported distance units configurable and added setting for the default distance unit.
-
 * Added 'decimals' and 'unit' parameters to #geosiatnce.
-
 * Default parameter handling improvements (via Validator 0.3.2).
 
 #### Bug fixes ####
@@ -350,11 +306,8 @@ service interaction.
 #### Bug fixes ####
 
 * Fixed bug that caused geocoding requests to fail when using display_points
-
 * Fixed bug that had broken the geoservice parameter for display_points and display_map.
-
 * Fixed bug that made OSM layers in the OpenLayers service fail.
-
 * Fixed issue that made custom markers on Google Maps not show up on initial page load and centred them wrongly.
 
 ## Maps 0.6 ##
