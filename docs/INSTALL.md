@@ -2,7 +2,7 @@
 
 These are the installation and configuration instructions for the [Maps extension](../README.md).
 
-## Compatibility
+## Versions
 
 <table>
 	<tr>
