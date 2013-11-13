@@ -14,7 +14,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.x</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.x.x</a></th>
 		<td>Development version</td>
 		<td>Future</td>
 		<td>5.3.2+</td>
