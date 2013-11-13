@@ -35,5 +35,10 @@
 		"param-processor/param-processor": "dev-master",
 		"data-values/data-values": "dev-master"
 	},
-	"minimum-stability" : "dev"
+	"minimum-stability" : "dev",
+	"autoload": {
+		"files" : [
+			"Maps.php"
+		]
+	}
 }
