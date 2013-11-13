@@ -918,6 +918,7 @@ $messages['it'] = array(
 	'semanticmaps-par-centre' => 'Il centro della mappa. Quando non indicato, la mappa sceglierà automaticamente il centro ottimale per visualizzare tutti gli indicatori sulla mappa.',
 	'semanticmaps-par-template' => 'Un template da utilizzare per formattare il contenuto della finestra informazioni.',
 	'semanticmaps-par-geocodecontrol' => 'Mostra il controllo per geocodifica.',
+	'semanticmaps-par-activeicon' => 'Icona da mostrare al posto del marcatore predefinito, quando la pagina attiva è uguale al risultato della query',
 	'semanticmaps-kml-text' => "Il testo associato per ogni pagina. Sovrascritto dall'eventuale proprietà dell'interrogazione aggiuntiva.",
 	'semanticmaps-kml-title' => 'Il titolo predefinito per i risultati',
 	'semanticmaps-kml-linkabsolute' => 'I collegamenti dovranno essere assoluti o no (ovvero relativi)',
