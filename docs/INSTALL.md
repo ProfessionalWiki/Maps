@@ -67,11 +67,7 @@ This need for this will be removed when Maps 3.0 is released.
 
 Alternatively you can obtain the Maps code and the code of all its dependencies yourself, and load them all.
 
-The latest version of Maps requires:
-
-* ParamProcessor 1.0 or later
-* DataValuesInterfaces 0.1 or later
-* DataValuesCommon 0.1 or later
+You can find a list of the dependencies in the "requires" section of the [composer.json file](../composer.json).
 
 You can get the Maps code itself:
 
