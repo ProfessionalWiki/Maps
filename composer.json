@@ -11,7 +11,7 @@
 		"OSM",
 		"OpenStreetMap"
 	],
-	"homepage": "https://www.mediawiki.org/wiki/Extension:Maps",
+	"homepage": "https://github.com/JeroenDeDauw/Maps",
 	"license": "GPL-2.0+",
 	"authors": [
 		{
@@ -31,7 +31,7 @@
 		"php": ">=5.3.2",
 		"composer/installers": ">=1.0.1",
 		"param-processor/param-processor": "dev-master",
-		"data-values/common": "dev-master"
+		"data-values/geo": "*"
 	},
 	"minimum-stability" : "dev",
 	"autoload": {
