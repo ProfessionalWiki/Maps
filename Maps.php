@@ -36,12 +36,12 @@ if ( !defined( 'DATAVALUES_VERSION' ) && is_readable( __DIR__ . '/../DataValues/
 
 // Include the DataValuesInterfaces library if that hasn't been done yet.
 if ( !defined( 'DATAVALUES_INTERFACES_VERSION' ) ) {
-	@include_once( __DIR__ . '/../DataValues/DataValuesInterfaces/DataValuesInterfaces.php' );
+	@include_once( __DIR__ . '/../DataValuesInterfaces/DataValuesInterfaces.php' );
 }
 
 // Include the DataValuesCommon library if that hasn't been done yet.
 if ( !defined( 'DATAVALUES_COMMON_VERSION' ) ) {
-	@include_once( __DIR__ . '/../DataValues/DataValuesCommon/DataValuesCommon.php' );
+	@include_once( __DIR__ . '/../DataValuesCommon/DataValuesCommon.php' );
 }
 
 // Only initialize the extension when all dependencies are present.
