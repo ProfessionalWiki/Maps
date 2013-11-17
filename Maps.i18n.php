@@ -1255,6 +1255,7 @@ $messages['da'] = array(
 	'maps-abb-east' => 'Ø',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'V',
+	'mapeditor-form-field-text' => 'Tekst',
 );
 
 /** German (Deutsch)
