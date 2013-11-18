@@ -264,7 +264,7 @@ $messages['qqq'] = array(
 	'maps-tracking-category' => 'The name of a category for all pages which use the <code><nowiki>display_map</nowiki></code> parser extension function or tag.
 
 The category is automatically added unless the feature is disabled.',
-	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
+	'maps-copycoords-prompt' => 'text displayed in JavaScript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-ns-layer' => '{{Identical|Layer}}',
@@ -543,6 +543,7 @@ $messages['ast'] = array(
 	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([https://www.semantic-mediawiki.org/wiki/Maps más información...])',
 	'right-geocode' => 'Xeocódigu',
 	'maps_map' => 'Mapa',
+	'maps-tracking-category' => 'Páxines con un mapa renderizáu pola estensión Maps',
 	'maps-loading-map' => "Cargando'l mapa...",
 	'maps-load-failed' => '¡Nun se pudo cargar el mapa!',
 	'maps-markers' => 'Marcadores',
@@ -626,7 +627,7 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-displaymap-par-static' => "Si'l mapa tien de ser estáticu",
 	'maps-displaymap-par-wmsoverlay' => 'Usar una superposición WMS',
 	'maps-fullscreen-button' => 'Conmutar pantalla completa',
-	'maps-fullscreen-button-tooltip' => 'Ver el mapa como pantalla completa/incrustáu.', # Fuzzy
+	'maps-fullscreen-button-tooltip' => 'Ver el mapa como pantalla completa o incrustáu.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activar el botón de pantalla completa',
 	'validation-error-invalid-location' => 'El parámetru $1 tien de ser un llugar válidu.',
 	'validation-error-invalid-locations' => 'El parámetru $1 tien de ser un o más llugares válidos.',
@@ -1455,6 +1456,7 @@ $1',
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Gorizon
  * @author Mirzali
  */
 $messages['diq'] = array(
@@ -1474,7 +1476,7 @@ $messages['diq'] = array(
 	'specialpages-group-maps' => 'Xeritey',
 	'mapeditor-none-text' => 'Çıniyo',
 	'mapeditor-done-button' => 'Qeyd ke',
-	'mapeditor-remove-button' => 'Wedarne',
+	'mapeditor-remove-button' => 'Hewad',
 	'mapeditor-import-button2' => 'Azare de',
 	'mapeditor-code-title' => 'Wiki kode',
 	'mapeditor-form-title' => 'Detaya timar ke',
