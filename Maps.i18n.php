@@ -3925,7 +3925,7 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 	'validation-error-invalid-goverlays' => '$1 변수는 하나 이상의 올바른 오버레이여야 합니다.',
 	'validation-error-invalid-line-param' => '"lines" 변수를 잘못 지정했습니다.',
 	'validation-error-invalid-polyline-param' => '"polylines" 변수를 잘못 지정했습니다.',
-	'validation-error-invalid-searchmarkers-param' => '찾기표시 값이 잘못되었으며 "all"이나 "title" 중 하나여야 합니다',
+	'validation-error-invalid-searchmarkers-param' => '검색표시 값이 잘못되었으며 "all"이나 "title" 중 하나여야 합니다',
 	'maps-abb-north' => '북',
 	'maps-abb-east' => '동',
 	'maps-abb-south' => '남',
