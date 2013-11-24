@@ -1704,6 +1704,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  * @author Dferg
  * @author Diego Grez
+ * @author Fitoschido
  * @author Imre
  * @author Locos epraix
  * @author MarcoAurelio
@@ -1717,10 +1718,11 @@ $messages['es'] = array(
 	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps Más información...])',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
-	'maps-loading-map' => 'Cargando mapa...',
-	'maps-load-failed' => '¡No se pudo cargar el mapa!',
+	'maps-tracking-category' => 'Páginas con un mapa de la extensión Maps',
+	'maps-loading-map' => 'Cargando el mapa…',
+	'maps-load-failed' => 'No se pudo cargar el mapa.',
 	'maps-markers' => 'Marcadores',
-	'maps-copycoords-prompt' => 'CTRL + C, ESCRIBA',
+	'maps-copycoords-prompt' => 'Ctrl+C, Intro',
 	'maps-searchmarkers-text' => 'Marcadores de filtro',
 	'maps-others' => 'otros',
 	'maps-ns-layer' => 'Capa',
@@ -1799,6 +1801,9 @@ Cuando se utiliza junto con la etiqueta, el título aparecerá en negrita y subr
 	'maps-displaymap-par-rectangles' => 'Rectángulos a mostrar',
 	'maps-displaymap-par-static' => 'Si el mapa debe ser estático',
 	'maps-displaymap-par-wmsoverlay' => 'Utilizar una superposición WMS',
+	'maps-fullscreen-button' => 'Activar o desactivar pantalla completa',
+	'maps-fullscreen-button-tooltip' => 'Ver el mapa en toda la pantalla o incrustado.',
+	'maps-googlemaps3-par-enable-fullscreen' => 'Activar el botón «Pantalla completa»',
 	'validation-error-invalid-location' => 'El parámetro $1 deber ser una ubicación válida.',
 	'validation-error-invalid-locations' => 'Parámetro $1 debe ser una o más ubicaciones válidas.',
 	'validation-error-invalid-width' => 'El parámetro $1 debe ser un ancho válido.',
