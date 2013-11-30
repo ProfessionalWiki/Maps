@@ -39,7 +39,8 @@ These are the installation and configuration instructions for the [Maps extensio
 	</tr>
 </table>
 
-
+When installing Maps 2.x, see the installation instructions that come bundled with it. Also
+make use of Validator 0.5.x. More revent versions of Validator will not work.
 
 ## Download and installation
 
