@@ -37,8 +37,12 @@
 		"files" : [
 			"Maps.php"
 		],
-		"psr-0": {
-			"Maps\\Elements\\": "src/"
-		}
+		"classmap": [
+			"src/",
+			"includes/",
+			"Maps.hooks.php",
+			"tests/phpunit/elements/",
+			"tests/phpunit/parserhooks/ParserHookTest.php"
+		]
 	}
 }

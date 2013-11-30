@@ -34,7 +34,7 @@ if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
 }
 
 call_user_func( function() {
-	global $wgExtensionCredits, $wgExtensionAssetsPath, $wgScriptPath, $wgAutoloadClasses;
+	global $wgExtensionCredits, $wgExtensionAssetsPath, $wgScriptPath;
 	global $wgResourceModules, $wgGroupPermissions, $egMapsNamespaceIndex, $wgStyleVersion;
 	global $egMapsScriptPath, $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles;
 
@@ -64,8 +64,6 @@ call_user_func( function() {
 	$wgExtensionMessagesFiles['MapsMagic'] 			= __DIR__ . '/Maps.i18n.magic.php';
 	$wgExtensionMessagesFiles['MapsNamespaces'] 	= __DIR__ . '/Maps.i18n.namespaces.php';
 	$wgExtensionMessagesFiles['MapsAlias'] 			= __DIR__ . '/Maps.i18n.alias.php';
-
-	$wgAutoloadClasses = array_merge( $wgAutoloadClasses, include 'Maps.classes.php' );
 
 	$wgResourceModules = array_merge( $wgResourceModules, include 'Maps.resources.php' );
 

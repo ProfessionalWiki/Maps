@@ -4,59 +4,52 @@
  * File defining the settings for the Maps extension.
  *
  *                          NOTICE:
- * Changing one of these settings can be done by copieng or cutting it,
+ * Changing one of these settings can be done by copying or cutting it,
  * and placing it in LocalSettings.php, AFTER the inclusion of Maps.
  *
  * @author Jeroen De Dauw
- *
- * TODO: clean up, update docs
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-global $egMapsAvailableServices, $egMapsDefaultService, $egMapsDefaultServices;
-
 // Mapping services configuration
 
 	// Array of String. Array containing all the mapping services that will be made available to the user.
-	$egMapsAvailableServices = array(
+	$GLOBALS['egMapsAvailableServices'] = array(
 		'googlemaps3',
 		'openlayers',
 		'leaflet',
 	);
 
 	// String. The default mapping service, which will be used when no default
-	// service is present in the $egMapsDefaultServices array for a certain feature.
+	// service is present in the $GLOBALS['egMapsDefaultServices'] array for a certain feature.
 	// A service that supports all features is recommended. This service needs to be
 	// enabled, if not, the first one from the available services will be taken.
-	$egMapsDefaultService = 'googlemaps3';
+	$GLOBALS['egMapsDefaultService'] = 'googlemaps3';
 	
 	// Array of String. The default mapping service for each feature, which will be
 	// used when no valid service is provided by the user. Each service needs to be
 	// enabled, if not, the first one from the available services will be taken.
 	// Note: The default service needs to be available for the feature you set it
 	// for, since it's used as a fallback mechanism.
-	$egMapsDefaultServices = array(
-		'display_map' => $egMapsDefaultService,
+	$GLOBALS['egMapsDefaultServices'] = array(
+		'display_map' => $GLOBALS['egMapsDefaultService'],
 	);
 
 
 	
 // Geocoding
 
-global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsUserGeoOverrides;
-global $egMapsAllowCoordsGeocoding, $egMapsEnableGeoCache, $egMapsGeoNamesUser;
-
 	// Array of String. Array containing all the geocoding services that will be
 	// made available to the user. Currently Maps provides the following services:
 	// geonames, google
     // It is recommended that when using GeoNames you get a GeoNames webservice account
-    // at http://www.geonames.org/login and set the username to $egMapsGeoNamesUser below.
+    // at http://www.geonames.org/login and set the username to $GLOBALS['egMapsGeoNamesUser'] below.
     // Not doing this will result into a legacy service being used, which might be
     // disabled at some future point.
-	$egMapsAvailableGeoServices = array(
+	$GLOBALS['egMapsAvailableGeoServices'] = array(
 		'geonames',
 		'google',
 		'geocoderus',
@@ -65,32 +58,30 @@ global $egMapsAllowCoordsGeocoding, $egMapsEnableGeoCache, $egMapsGeoNamesUser;
 	// String. The default geocoding service, which will be used when no service is
 	// is provided by the user. This service needs to be enabled, if not, the first
 	// one from the available services will be taken.
-	$egMapsDefaultGeoService = 'geonames';
+	$GLOBALS['egMapsDefaultGeoService'] = 'geonames';
 	
 	// Boolean. Indicates if geocoders can override the default geoservice based on
 	// the used mapping service.
-	$egMapsUserGeoOverrides = true;
+	$GLOBALS['egMapsUserGeoOverrides'] = true;
 	
 	// Boolean. Sets if coordinates should be allowed in geocoding calls.
-	$egMapsAllowCoordsGeocoding = true;
+	$GLOBALS['egMapsAllowCoordsGeocoding'] = true;
 	
 	// Boolean. Sets if geocoded addresses should be stored in a cache.
-	$egMapsEnableGeoCache = true;
+	$GLOBALS['egMapsEnableGeoCache'] = true;
 	
 	// String. GeoNames API user/application name.
 	// Obtain an account here: http://www.geonames.org/login
 	// Do not forget to activate your account for API usage!
-	$egMapsGeoNamesUser = '';
+	$GLOBALS['egMapsGeoNamesUser'] = '';
 
 
 
 // Coordinate configuration
 
-global $egMapsAvailableCoordNotations, $egMapsCoordinateNotation, $egMapsCoordinateDirectional;
-global $egMapsInternatDirectionLabels;
 
 	// The coordinate notations that should be available.
-	$egMapsAvailableCoordNotations = array(
+	$GLOBALS['egMapsAvailableCoordNotations'] = array(
 		Maps_COORDS_FLOAT,
 		Maps_COORDS_DMS,
 		Maps_COORDS_DM,
@@ -99,24 +90,23 @@ global $egMapsInternatDirectionLabels;
 	
 	// Enum. The default output format of coordinates.
 	// Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
-	$egMapsCoordinateNotation = Maps_COORDS_DMS;
+	$GLOBALS['egMapsCoordinateNotation'] = Maps_COORDS_DMS;
 	
 	// Boolean. Indicates if coordinates should be outputted in directional notation by default.
 	// Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
-	$egMapsCoordinateDirectional = true;
+	$GLOBALS['egMapsCoordinateDirectional'] = true;
 	
 	// Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
-	$egMapsInternatDirectionLabels = true;
+	$GLOBALS['egMapsInternatDirectionLabels'] = true;
 
 
 
 // Distance configuration
 
-global $egMapsDistanceUnits, $egMapsDistanceUnit, $egMapsDistanceDecimals;
 
 	// Array. A list of units (keys) and how many meters they represent (value).
 	// No spaces! If the unit consists out of multiple words, just write them together.
-	$egMapsDistanceUnits = array(
+	$GLOBALS['egMapsDistanceUnits'] = array(
 		'm' => 1,
 		'meter' => 1,
 		'meters' => 1,
@@ -132,58 +122,53 @@ global $egMapsDistanceUnits, $egMapsDistanceUnit, $egMapsDistanceDecimals;
 	);
 	
 	// String. The default unit for distances.
-	$egMapsDistanceUnit = 'm';
+	$GLOBALS['egMapsDistanceUnit'] = 'm';
 	
 	// Integer. The default amount of fractal digits in a distance.
-	$egMapsDistanceDecimals = 2;	
+	$GLOBALS['egMapsDistanceDecimals'] = 2;	
 	
 	
 	
 // General map configuration
 
-global $egMapsMapWidth, $egMapsMapHeight, $egMapsSizeRestrictions, $egMapsDefaultMapCentre;
-global $egMapsDefaultTitle, $egMapsDefaultLabel, $egMapsResizableByDefault, $egMapsRezoomForKML;
-
 	// Integer or string. The default width and height of a map. These values will
 	// only be used when the user does not provide them.
-	$egMapsMapWidth = 'auto';
-	$egMapsMapHeight = 350;
+	$GLOBALS['egMapsMapWidth'] = 'auto';
+	$GLOBALS['egMapsMapHeight'] = 350;
 
 	// Array. The minimum and maximum width and height for all maps. First min and
 	// max for absolute values, then min and max for percentage values. When the
 	// height or width exceed their limits, they will be changed to the closest
 	// allowed value.
-	$egMapsSizeRestrictions = array(
+	$GLOBALS['egMapsSizeRestrictions'] = array(
 		'width'  => array( 50, 1020, 1, 100 ),
 		'height' => array( 50, 1000, 1, 100 ),
 	);
 	
 	// String. The default centre for maps. Can be either a set of coordinates or an address.
-	$egMapsDefaultMapCentre = '0, 0';
+	$GLOBALS['egMapsDefaultMapCentre'] = '0, 0';
 	
 	// Strings. The default content for all pop-ups. This value will only be used
 	// when the user does not provide one.
-	$egMapsDefaultTitle = '';
-	$egMapsDefaultLabel = '';
+	$GLOBALS['egMapsDefaultTitle'] = '';
+	$GLOBALS['egMapsDefaultLabel'] = '';
 	
-	$egMapsResizableByDefault = false;
+	$GLOBALS['egMapsResizableByDefault'] = false;
 	
-	$egMapsRezoomForKML = false;
+	$GLOBALS['egMapsRezoomForKML'] = false;
 
 
 	
 // Other general configuration
 
-global $egMapsDebugJS, $egMapsNamespaceIndex, $egMapsAllowExternalImages;
-
 	// When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
-	$egMapsDebugJS = false;
+	$GLOBALS['egMapsDebugJS'] = false;
 	
 	// Namespace index start of the mapping namespaces.
-	$egMapsNamespaceIndex = 420;
+	$GLOBALS['egMapsNamespaceIndex'] = 420;
 	
 	// Boolean. Controls if you can specify images using a full path in layers.
-	$egMapsAllowExternalImages = true;
+	$GLOBALS['egMapsAllowExternalImages'] = true;
 	
 	
 	
@@ -191,17 +176,13 @@ global $egMapsDebugJS, $egMapsNamespaceIndex, $egMapsAllowExternalImages;
 
 	// Google Maps v3
 
-global $egMapsGMaps3Zoom, $egMapsGMaps3Types, $egMapsGMaps3Type, $egMapsGMaps3Controls;
-global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
-global $egMapsGMaps3Layers, $egMapsGMaps3DefaultTilt, $egGoogleJsApiKey, $egMapsShowPOI;
-
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
-		$egMapsGMaps3Zoom = 14;
+		$GLOBALS['egMapsGMaps3Zoom'] = 14;
 		
 		// Array of String. The Google Maps v3 default map types. This value will only
 		// be used when the user does not provide one.
-		$egMapsGMaps3Types = array(
+		$GLOBALS['egMapsGMaps3Types'] = array(
 			'roadmap',
 			'satellite',
 			'hybrid',
@@ -210,10 +191,10 @@ global $egMapsGMaps3Layers, $egMapsGMaps3DefaultTilt, $egGoogleJsApiKey, $egMaps
 		
 		// String. The default map type. This value will only be used when the user
 		// does not provide one.
-		$egMapsGMaps3Type = 'roadmap';
+		$GLOBALS['egMapsGMaps3Type'] = 'roadmap';
 		
 		// Array. List of controls to display onto maps by default.
-		$egMapsGMaps3Controls = array(
+		$GLOBALS['egMapsGMaps3Controls'] = array(
 			'pan',
 			'zoom',
 			'type',
@@ -223,47 +204,44 @@ global $egMapsGMaps3Layers, $egMapsGMaps3DefaultTilt, $egGoogleJsApiKey, $egMaps
 		
 		// String. The default style for the type control.
 		// horizontal, vertical or default
-		$egMapsGMaps3DefTypeStyle = 'default';
+		$GLOBALS['egMapsGMaps3DefTypeStyle'] = 'default';
 
 		// String. The default style for the zoom control.
 		// small, large or default
-		$egMapsGMaps3DefZoomStyle = 'default';
+		$GLOBALS['egMapsGMaps3DefZoomStyle'] = 'default';
 		
 		// Boolean. Open the info windows on load by default?
-		$egMapsGMaps3AutoInfoWindows = false;
+		$GLOBALS['egMapsGMaps3AutoInfoWindows'] = false;
 		
 		// Array. Layers to load by default.
 		// traffic and bicycling
-		$egMapsGMaps3Layers = array();
+		$GLOBALS['egMapsGMaps3Layers'] = array();
 		
 		// Integer. Default tilt when using Google Maps.
-		$egMapsGMaps3DefaultTilt = 0;
+		$GLOBALS['egMapsGMaps3DefaultTilt'] = 0;
 		
 		// Google JavaScript Loader API key.
 		// Can be obtained at: https://code.google.com/apis/loader/signup.html
 		// This key is needed when using Google Earth or when using extended
 		// limits for displaying maps or geocoding calls.
-		$egGoogleJsApiKey = '';
+		$GLOBALS['egGoogleJsApiKey'] = '';
 
 		// Show points of interest or not.
-		$egMapsShowPOI = true;
+		$GLOBALS['egMapsShowPOI'] = true;
 
 
 
 	// OpenLayers
 
-global $egMapsOpenLayersZoom, $egMapsOLControls, $egMapsOLLayers, $egMapsOLAvailableLayers;
-global $egMapsOLLayerGroups, $egMapsOLLayerDependencies;
-
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
-		$egMapsOpenLayersZoom = 13;
+		$GLOBALS['egMapsOpenLayersZoom'] = 13;
 		
 		// Array of String. The default controls for Open Layers. This value will only
 		// be used when the user does not provide one.
 		// Available values: layerswitcher, mouseposition, autopanzoom, panzoom,
 		// panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-		$egMapsOLControls = array(
+		$GLOBALS['egMapsOLControls'] = array(
 			'layerswitcher',
 			'mouseposition',
 			'autopanzoom',
@@ -273,14 +251,14 @@ global $egMapsOLLayerGroups, $egMapsOLLayerDependencies;
 		
 		// Array of String. The default layers for Open Layers. This value will only be
 		// used when the user does not provide one.
-		$egMapsOLLayers = array(
+		$GLOBALS['egMapsOLLayers'] = array(
 			'osm-mapnik',
 			'osm-cyclemap',
 			'osmarender'
 		);
 		
 		// The difinitions for the layers that should be available for the user.
-		$egMapsOLAvailableLayers = array(
+		$GLOBALS['egMapsOLAvailableLayers'] = array(
 			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
 		
 			'bing-normal' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ),
@@ -300,8 +278,8 @@ global $egMapsOLLayerGroups, $egMapsOLLayerDependencies;
 		);
 		
 		// Layer group definitions. Group names must be different from layer names, and
-		// must only contain layers that are present in $egMapsOLAvailableLayers.
-		$egMapsOLLayerGroups = array(
+		// must only contain layers that are present in $GLOBALS['egMapsOLAvailableLayers'].
+		$GLOBALS['egMapsOLLayerGroups'] = array(
 			'yahoo' => array( 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid' ),
 			'bing' => array( 'bing-normal', 'bing-satellite', 'bing-hybrid' ),
 			'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
@@ -310,7 +288,7 @@ global $egMapsOLLayerGroups, $egMapsOLLayerDependencies;
 		global $wgJsMimeType;
 
 		// Layer dependencies
-		$egMapsOLLayerDependencies = array(
+		$GLOBALS['egMapsOLLayerDependencies'] = array(
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
@@ -318,12 +296,10 @@ global $egMapsOLLayerGroups, $egMapsOLLayerDependencies;
 
 	// Leaflet
 
-global $egMapsLeafletZoom;
 
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
-		$egMapsLeafletZoom = 14;
+		$GLOBALS['egMapsLeafletZoom'] = 14;
 
 
-global $egMapsGlobalJSVars;
-$egMapsGlobalJSVars = array();
+$GLOBALS['egMapsGlobalJSVars'] = array();

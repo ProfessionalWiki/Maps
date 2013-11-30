@@ -70,7 +70,3 @@ function loadSettings() {
 	$wgCommandLineMode = true;
 	return $settingsFile;
 }
-
-foreach ( $GLOBALS['wgExtensionFunctions'] as $extensionFunction ) {
-	call_user_func( $extensionFunction );
-}
