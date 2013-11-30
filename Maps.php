@@ -17,78 +17,21 @@ if ( defined( 'Maps_VERSION' ) ) {
 	return 1;
 }
 
-define( 'Maps_VERSION' , '3.0 alpha' );
+define( 'Maps_VERSION' , '3.0 beta' );
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	include_once( __DIR__ . '/vendor/autoload.php' );
 }
 
-// Attempt to include the ParamProcessor lib if that has not been loaded yet.
-if ( !defined( 'ParamProcessor_VERSION' ) && file_exists( __DIR__ . '/../Validator/Validator.php' ) ) {
-	include_once( __DIR__ . '/../Validator/Validator.php' );
-}
-
-// Attempt to include the DataValues lib if that has not been loaded yet.
-if ( !defined( 'DATAVALUES_VERSION' ) && is_readable( __DIR__ . '/../DataValues/DataValues.php' ) ) {
-	include_once( __DIR__ . '/../DataValues/DataValues.php' );
-}
-
-// Include the DataValuesInterfaces library if that hasn't been done yet.
-if ( !defined( 'DATAVALUES_INTERFACES_VERSION' ) ) {
-	@include_once( __DIR__ . '/../DataValuesInterfaces/DataValuesInterfaces.php' );
-}
-
-// Include the DataValuesCommon library if that hasn't been done yet.
-if ( !defined( 'DATAVALUES_COMMON_VERSION' ) ) {
-	@include_once( __DIR__ . '/../DataValuesCommon/DataValuesCommon.php' );
-}
-
 // Only initialize the extension when all dependencies are present.
-if ( !defined( 'ParamProcessor_VERSION' ) ) {
-	throw new Exception( 'You need to have ParamProcessor (Validator) 1.0 or later installed in order to use Maps' );
-}
-
-// Only initialize the extension when all dependencies are present.
-if ( !defined( 'DATAVALUES_VERSION' ) ) {
-	throw new Exception( 'You need to have DataValues loaded in order to use Maps' );
-}
-
-// Only initialize the extension when all dependencies are present.
-if ( !defined( 'DATAVALUES_INTERFACES_VERSION' ) ) {
-	throw new Exception( 'You need to have DataValuesInterfaces loaded in order to use Maps' );
-}
-
-// Only initialize the extension when all dependencies are present.
-if ( !defined( 'DATAVALUES_COMMON_VERSION' ) ) {
-	throw new Exception( 'You need to have DataValuesCommon loaded in order to use Maps' );
+if ( !defined( 'Validator_VERSION' ) ) {
+	throw new Exception( 'You need to have Validator installed in order to use Maps' );
 }
 
 if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
 	throw new Exception( 'This version of Maps requires MediaWiki 1.18 or above; use Maps 1.0.x for MediaWiki 1.17 and Maps 0.7.x for older versions.' );
 }
-
-spl_autoload_register( function ( $className ) {
-	$className = ltrim( $className, '\\' );
-	$fileName = '';
-	$namespace = '';
-
-	if ( $lastNsPos = strripos( $className, '\\') ) {
-		$namespace = substr( $className, 0, $lastNsPos );
-		$className = substr( $className, $lastNsPos + 1 );
-		$fileName  = str_replace( '\\', '/', $namespace ) . '/';
-	}
-
-	$fileName .= str_replace( '_', '/', $className ) . '.php';
-
-	$namespaceSegments = explode( '\\', $namespace );
-
-	if ( $namespaceSegments[0] === 'Maps' ) {
-		if ( count( $namespaceSegments ) > 1 && $namespaceSegments[1] === 'Elements' ) {
-			require_once __DIR__ . '/includes/' . substr( $fileName, 5 );
-		}
-	}
-} );
 
 call_user_func( function() {
 	global $wgExtensionCredits, $wgExtensionAssetsPath, $wgScriptPath, $wgAutoloadClasses;

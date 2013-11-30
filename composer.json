@@ -30,12 +30,15 @@
 	"require": {
 		"php": ">=5.3.2",
 		"composer/installers": ">=1.0.1",
-		"mediawiki/validator": "dev-master",
-		"data-values/geo": "~0.1"
+		"mediawiki/validator": "~1.0",
+		"data-values/geo": ">=0.1.1,<1.0"
 	},
 	"autoload": {
 		"files" : [
 			"Maps.php"
-		]
+		],
+		"psr-0": {
+			"Maps\\Elements\\": "src/"
+		}
 	}
 }

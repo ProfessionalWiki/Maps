@@ -9,8 +9,8 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
+echo exec( 'composer update' ) . "\n";
+
 require_once( __DIR__ . '/evilMediaWikiBootstrap.php' );
 
-require_once( __DIR__ . '/../Maps.php' );
-
-//require_once( __DIR__ . '/testLoader.php' );
+// Note: You do need to include Maps.php from your LocalSettings.php file.
