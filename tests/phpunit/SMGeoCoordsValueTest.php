@@ -20,6 +20,8 @@ use SMWDIGeoCoord;
 class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 
 	public function testConstruct() {
+		$GLOBALS['wgHooks'] = $GLOBALS['wtfIsThisShit'];
+
 		$geoDI = new SMWDIGeoCoord( 23, 42 );
 
 		/**

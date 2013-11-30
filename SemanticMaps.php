@@ -68,7 +68,7 @@ require_once 'SM_Settings.php';
 $GLOBALS['wgExtensionMessagesFiles']['SemanticMaps'] = __DIR__ . '/SemanticMaps.i18n.php';
 
 // Hook for initializing the Geographical Data types.
-$GLOBALS['wgHooks']['smwInitDatatypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
+$GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
 
 // Hook for defining the default query printer for queries that ask for geographical coordinates.
 $GLOBALS['wgHooks']['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefaultFormat';

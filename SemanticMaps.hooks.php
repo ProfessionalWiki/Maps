@@ -1,6 +1,6 @@
 <?php
 
-use SMW\DataValueFactory;
+use SMW\DataTypeRegistry;
 
 /**
  * Static class for hooks handled by the Semantic Maps extension.
@@ -47,8 +47,18 @@ final class SemanticMapsHooks {
 	 * @return boolean
 	 */
 	public static function initGeoDataTypes() {
-		DataValueFactory::registerDatatype( '_geo', 'SMGeoCoordsValue', SMWDataItem::TYPE_GEO );
-		DataValueFactory::registerDatatype( '_gpo', 'SMGeoPolygonsValue', SMWDataItem::TYPE_BLOB );
+		DataTypeRegistry::getInstance()->registerDatatype(
+			'_geo',
+			'SMGeoCoordsValue',
+			SMWDataItem::TYPE_GEO
+		);
+
+		DataTypeRegistry::getInstance()->registerDatatype(
+			'_gpo',
+			'SMGeoPolygonsValue',
+			SMWDataItem::TYPE_BLOB
+		);
+
 		return true;
 	}
 
