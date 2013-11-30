@@ -51,18 +51,18 @@ require_once 'SM_Settings.php';
 # Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
 
 	# Query printers
-	include_once __DIR__ . '/includes/queryprinters/SM_QueryPrinters.php';
+	include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 	# Form imputs
-	include_once __DIR__ . '/includes/forminputs/SM_FormInputs.php';
+	include_once __DIR__ . '/src/forminputs/SM_FormInputs.php';
 
 # Include the mapping services that should be loaded into Semantic Maps.
 # Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
 
 	# Google Maps API v3
-	include_once __DIR__ . '/includes/services/GoogleMaps3/SM_GoogleMaps3.php';
+	include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
 
 	# OpenLayers API
-	include_once __DIR__ . '/includes/services/OpenLayers/SM_OpenLayers.php';
+	include_once __DIR__ . '/src/services/OpenLayers/SM_OpenLayers.php';
 
 $GLOBALS['wgExtensionMessagesFiles']['SemanticMaps'] = __DIR__ . '/SemanticMaps.i18n.php';
 
