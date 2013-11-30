@@ -4,6 +4,7 @@ namespace Maps;
 
 use DataValues\LatLongValue;
 use MWException;
+use ValueFormatters\GeoCoordinateFormatter;
 use ValueParsers\ParseException;
 
 /**
@@ -177,11 +178,11 @@ final class Geocoders {
 		}
 
 		$options = new \ValueFormatters\FormatterOptions( array(
-			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
-			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional
+			GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional
 		) );
 
-		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
+		$formatter = new GeoCoordinateFormatter( $options );
 		return $formatter->format( $geoCoordinate );
 	}
 

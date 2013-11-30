@@ -1,4 +1,5 @@
 <?php
+use ValueFormatters\GeoCoordinateFormatter;
 
 /**
  * Class for the 'coordinates' parser hooks, 
@@ -87,11 +88,11 @@ class MapsCoordinates extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		$options = new \ValueFormatters\FormatterOptions( array(
-			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
 		) );
 
-		$coordinateFormatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
+		$coordinateFormatter = new GeoCoordinateFormatter( $options );
 
 		$output = $coordinateFormatter->format( $parameters['location'] );
 
