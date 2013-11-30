@@ -25,11 +25,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $moduleTemplate = array(
 	'localBasePath' => __DIR__,
-	'remoteBasePath' => $smgScriptPath .  '/includes/services/GoogleMaps3',	
+	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/services/GoogleMaps3',
 	'group' => 'ext.semanticmaps',
 );
 
-$wgResourceModules['ext.sm.fi.googlemaps3'] = $moduleTemplate + array(
+$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3'] = $moduleTemplate + array(
 	'dependencies' => array(
 		'ext.sm.fi.googlemaps3.single',
 	),
@@ -38,7 +38,7 @@ $wgResourceModules['ext.sm.fi.googlemaps3'] = $moduleTemplate + array(
 	),
 );
 
-$wgResourceModules['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
+$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
 	'dependencies' => array(
 		'ext.maps.googlemaps3',
 		'ext.sm.forminputs',
@@ -52,7 +52,7 @@ $wgResourceModules['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
 
 unset( $moduleTemplate );
 
-$wgHooks['MappingServiceLoad'][] = 'smfInitGoogleMaps3';
+$GLOBALS['wgHooks']['MappingServiceLoad'][] = 'smfInitGoogleMaps3';
 
 function smfInitGoogleMaps3() {
 	global $wgAutoloadClasses;

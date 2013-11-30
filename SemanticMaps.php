@@ -42,7 +42,8 @@ $wgExtensionCredits['semantic'][] = array(
 	'descriptionmsg' => 'semanticmaps-desc'
 );
 
-$smgScriptPath 	= ( $GLOBALS['wgExtensionAssetsPath'] === false ? $GLOBALS['wgScriptPath'] . '/extensions' : $GLOBALS['wgExtensionAssetsPath'] ) . '/SemanticMaps';
+$GLOBALS['smgScriptPath'] = ( $GLOBALS['wgExtensionAssetsPath'] === false
+		? $GLOBALS['wgScriptPath'] . '/extensions' : $GLOBALS['wgExtensionAssetsPath'] ) . '/SemanticMaps';
 
 // Include the settings file.
 require_once 'SM_Settings.php';

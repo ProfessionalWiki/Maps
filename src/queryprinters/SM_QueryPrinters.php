@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgHooks['MappingFeatureLoad'][] = 'SMQueryPrinters::initialize';
+$GLOBALS['wgHooks']['MappingFeatureLoad'][] = 'SMQueryPrinters::initialize';
 
 final class SMQueryPrinters {
 	

@@ -14,10 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgResourceModules['ext.sm.forminputs'] = array(
+$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
 	'dependencies' => array( 'ext.maps.coord' ),
 	'localBasePath' => __DIR__,
-	'remoteBasePath' => $smgScriptPath .  '/includes/forminputs',	
+	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/forminputs',
 	'group' => 'ext.semanticmaps',
 	'scripts' => array(
 		'jquery.mapforminput.js'
@@ -32,7 +32,7 @@ $wgResourceModules['ext.sm.forminputs'] = array(
 	)
 );
 
-$wgHooks['MappingFeatureLoad'][] = 'SMFormInputs::initialize';
+$GLOBALS['wgHooks']['MappingFeatureLoad'][] = 'SMFormInputs::initialize';
 
 final class SMFormInputs {
 	

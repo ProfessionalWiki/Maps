@@ -21,10 +21,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgResourceModules['ext.sm.fi.openlayers'] = array(
+$GLOBALS['wgResourceModules']['ext.sm.fi.openlayers'] = array(
 	'dependencies' => array( 'ext.maps.openlayers', 'ext.sm.forminputs' ),
 	'localBasePath' => __DIR__,
-	'remoteBasePath' => $smgScriptPath .  '/includes/services/OpenLayers',
+	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/services/OpenLayers',
 	'group' => 'ext.semanticmaps',
 	'scripts' => array(
 		'jquery.openlayersinput.js',
@@ -34,7 +34,7 @@ $wgResourceModules['ext.sm.fi.openlayers'] = array(
 	)
 );
 
-$wgHooks['MappingServiceLoad'][] = 'smfInitOpenLayers';
+$GLOBALS['wgHooks']['MappingServiceLoad'][] = 'smfInitOpenLayers';
 
 function smfInitOpenLayers() {
 	global $wgAutoloadClasses;
