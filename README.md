@@ -1,8 +1,9 @@
-== About ==
+# Semantic Maps
 
-Semantic Maps is an extension that adds semantic capabilities to the Maps extension. This
+Semantic Maps is an extension that adds semantic capabilities to the [Maps extension]
+(https://github.com/JeroenDeDauw/Maps). This
 includes the ability to add, edit, aggregate and visualize coordinate data stored through
-the Semantic MediaWiki extension.
+[Semantic MediaWiki](https://semantic-mediawiki.org/).
 
 Since Semantic Maps uses the Maps API, you can use multiple mapping services. These include
 Google Maps (with Google Earth support), Yahoo! Maps, OpenLayers and OpenStreetMap.
@@ -13,13 +14,7 @@ prerequisite for the Semantic Maps extension; the code will not work without it.
 
 Notes on installing Semantic Maps are found in the file INSTALL.
 
+## Contributing
 
-== Contributing ==
-
-If you have bug reports or requests, please add them to the Talk page [0]. You can also
-send them to Jeroen De Dauw, jeroendedauw -at- gmail.com, and Yaron Koren, at yaron57 -at-
-gmail.com.
-
-[0] http://www.mediawiki.org/w/index.php?title=Extension_talk:Semantic_Maps
-
-For more info, see http://mapping.referata.com/wiki/Mapping_on_MediaWiki
+If you have bug reports or feature requests, please add them to [the talk page]
+(https://semantic-mediawiki.org/wiki/Talk:Semantic_Maps).
