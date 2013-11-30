@@ -1,7 +1,12 @@
-.*
 *~
 *.kate-swp
 .*.swp
 
-!.gitignore
-!.gitreview
+!.*
+.idea/
+
+composer.lock
+composer.phar
+
+vendor/
+extensions/
