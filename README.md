@@ -12,7 +12,14 @@ Both Semantic Maps and Maps are based on Semantic Google Maps and Semantic Layer
 meant to replace these extensions. Having Semantic MediaWiki and Maps installed is a
 prerequisite for the Semantic Maps extension; the code will not work without it.
 
-Notes on installing Semantic Maps are found in the file INSTALL.
+## Project status
+
+[![Build Status](https://secure.travis-ci.org/JeroenDeDauw/SemanticMaps.png?branch=master)](http://travis-ci.org/JeroenDeDauw/SemanticMaps)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/SemanticMaps/badges/quality-score.png?s=f711edad29f01cf68525085f4d7f3630ffe41dee)](https://scrutinizer-ci.com/g/JeroenDeDauw/SemanticMaps/)
+
+On [Packagist](https://packagist.org/packages/mediawiki/semantic-maps):
+[![Latest Stable Version](https://poser.pugx.org/mediawiki/semantic-maps/version.png)](https://packagist.org/packages/mediawiki/semantic-maps)
+[![Download count](https://poser.pugx.org/mediawiki/semantic-maps/d/total.png)](https://packagist.org/packages/mediawiki/semantic-maps)
 
 ## Contributing
 
