@@ -1,52 +1,33 @@
 <?php
 
+namespace SemanticMaps;
+
+use MapsMappingServices;
+use SFFormPrinter;
+
 /**
  * Initialization file for form input functionality in the Maps extension
- *
- * @file SM_FormInputs.php
- * @ingroup SemanticMaps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+class FormInputsSetup {
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
+	public static function run( SFFormPrinter $printer ) {
+		$setup = new FormInputsSetup( $printer );
+		$setup->initialize();
+	}
 
-$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
-	'dependencies' => array( 'ext.maps.coord' ),
-	'localBasePath' => __DIR__,
-	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/forminputs',
-	'group' => 'ext.semanticmaps',
-	'scripts' => array(
-		'jquery.mapforminput.js'
-	),
-	'messages' => array(
-		'semanticmaps_enteraddresshere',
-		'semanticmaps-updatemap',
-		'semanticmaps_lookupcoordinates',
-		'semanticmaps-forminput-remove',
-		'semanticmaps-forminput-add',
-		'semanticmaps-forminput-locations'
-	)
-);
+	private $printer;
 
-$GLOBALS['wgHooks']['MappingFeatureLoad'][] = 'SMFormInputs::initialize';
+	public function __construct( SFFormPrinter $printer ) {
+		$this->printer = $printer;
+		$this->initialize();
+	}
 
-final class SMFormInputs {
-	
-	public static function initialize() {
-		global $wgAutoloadClasses;
-
-		// This code should not get called when SF is not loaded, but let's have this
-		// check to not run into problems when people mess up the settings.
-		if ( !defined( 'SF_VERSION' ) ) return true;
-		
-		$wgAutoloadClasses['SMFormInput'] = __DIR__ . '/SM_FormInput.php';
-		
+	private function initialize() {
 		$hasFormInputs = false;
-		
+
 		foreach ( MapsMappingServices::getServiceIdentifiers() as $serviceIdentifier ) {
 			$service = MapsMappingServices::getServiceInstance( $serviceIdentifier );
 			
@@ -60,19 +41,19 @@ final class SMFormInputs {
 			$hasFormInputs = true;
 
 			// Add the result form input type for the service name.
-			self::initFormHook( $service->getName(), $service->getName() );
+			$this->initFormHook( $service->getName(), $service->getName() );
 			
 			// Loop through the service alliases, and add them as form input types.
 			foreach ( $service->getAliases() as $alias ) {
-				self::initFormHook( $alias, $service->getName() );
+				$this->initFormHook( $alias, $service->getName() );
 			}
 		}
 		
 		// Add the 'map' form input type if there are mapping services that have FI's loaded.
 		if ( $hasFormInputs ) {
-			self::initFormHook( 'map' );
+			$this->initFormHook( 'map' );
 		}
-		self::initFormHook( 'googlemapsEditor' );
+		$this->initFormHook( 'googlemapsEditor' );
 
 		return true;
 	}
@@ -83,22 +64,18 @@ final class SMFormInputs {
 	 * @param string $inputName The name of the form input.
 	 * @param string $mainName
 	 */
-	private static function initFormHook( $inputName, $mainName = '' ) {
-		global $sfgFormPrinter;
-
+	private function initFormHook( $inputName, $mainName = '' ) {
 		// Add the form input hook for the service.
 		$field_args = array();
 		
 		if ( $mainName !== '' ) {
 			$field_args['service_name'] = $mainName;
 		}
-		
-		//$sfgFormPrinter->registerInputType( 'SMMapInput' );
 
 		if( $inputName == 'googlemapsEditor' ) {
-			$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectEditorFormInputHTML', $field_args );
+			$this->printer->setInputTypeHook( $inputName, 'smfSelectEditorFormInputHTML', $field_args );
 		} else {
-			$sfgFormPrinter->setInputTypeHook( $inputName, 'smfSelectFormInputHTML', $field_args );
+			$this->printer->setInputTypeHook( $inputName, 'smfSelectFormInputHTML', $field_args );
 		}
 	}
 	

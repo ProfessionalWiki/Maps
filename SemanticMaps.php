@@ -54,7 +54,24 @@ require_once 'SM_Settings.php';
 	# Query printers
 	include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 	# Form imputs
-	include_once __DIR__ . '/src/forminputs/SM_FormInputs.php';
+
+$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
+	'dependencies' => array( 'ext.maps.coord' ),
+	'localBasePath' => __DIR__,
+	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/forminputs',
+	'group' => 'ext.semanticmaps',
+	'scripts' => array(
+		'jquery.mapforminput.js'
+	),
+	'messages' => array(
+		'semanticmaps_enteraddresshere',
+		'semanticmaps-updatemap',
+		'semanticmaps_lookupcoordinates',
+		'semanticmaps-forminput-remove',
+		'semanticmaps-forminput-add',
+		'semanticmaps-forminput-locations'
+	)
+);
 
 # Include the mapping services that should be loaded into Semantic Maps.
 # Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
@@ -75,3 +92,5 @@ $GLOBALS['wgHooks']['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefau
 
 // Hook for adding a Semantic Maps links to the Admin Links extension.
 $GLOBALS['wgHooks']['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
+
+$GLOBALS['wgHooks']['sfFormPrinterSetup'][] = 'FormInputsSetup::run';
