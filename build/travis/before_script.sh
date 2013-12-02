@@ -6,29 +6,37 @@ originalDirectory=$(pwd)
 
 cd ..
 
-git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git phase3 --depth 1
+if [ "$MW" == "master" ]
+then
+	git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git phase3 --depth 1
+else
+	wget https://github.com/wikimedia/mediawiki-core/archive/$MW.tar.gz
+	tar -zxf $MW.tar.gz
+	mv mediawiki-core-$MW phase3
+fi
 
 cd phase3
 
+git checkout $MW
+
 mysql -e 'create database its_a_mw;'
-php maintenance/install.php --dbtype mysql --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
+php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
 
 cd extensions
+
 cp -r $originalDirectory Maps
 
 cd Maps
-composer require satooshi/php-coveralls:dev-master
+composer install
+
 cd ../..
 
-pwd
-ls -lap
+echo 'require_once( __DIR__ . "/extensions/Maps/Maps.php" );' >> LocalSettings.php
 
 echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
 echo 'ini_set("display_errors", 1);' >> LocalSettings.php
 echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
 echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
 echo "putenv( 'MW_INSTALL_PATH=$(pwd)' );" >> LocalSettings.php
-
-echo 'require_once( __DIR__ . "/extensions/Maps/Maps.php" );' >> LocalSettings.php
 
 php maintenance/update.php --quick
