@@ -42,11 +42,11 @@ $magicWords['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $magicWords['arz'] = array(
-	'display_map' => array( 0, 'عرض_الخريطه', 'عرض_الخريطة', 'display_map' ),
-	'geocode' => array( 0, 'كود_جغرافي', 'geocode' ),
-	'geodistance' => array( 0, 'مسافه_جغرافيه', 'مسافة_جغرافية', 'geodistance' ),
-	'finddestination' => array( 0, 'إيجاد_الوجهه', 'إيجاد_الوجهة', 'finddestination' ),
-	'coordinates' => array( 0, 'إحداثيات', 'coordinates' ),
+	'display_map' => array( 0, 'عرض_الخريطه', 'عرض_الخريطة' ),
+	'geocode' => array( 0, 'كود_جغرافي' ),
+	'geodistance' => array( 0, 'مسافه_جغرافيه', 'مسافة_جغرافية' ),
+	'finddestination' => array( 0, 'إيجاد_الوجهه', 'إيجاد_الوجهة' ),
+	'coordinates' => array( 0, 'إحداثيات' ),
 );
 
 /** Assamese (অসমীয়া) */
