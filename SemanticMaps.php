@@ -93,4 +93,55 @@ $GLOBALS['wgHooks']['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefau
 // Hook for adding a Semantic Maps links to the Admin Links extension.
 $GLOBALS['wgHooks']['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
 
-$GLOBALS['wgHooks']['sfFormPrinterSetup'][] = 'FormInputsSetup::run';
+$GLOBALS['wgHooks']['sfFormPrinterSetup'][] = 'SemanticMaps\FormInputsSetup::run';
+
+/**
+ * Calls the relevant form input class depending on the provided service.
+ *
+ * @param string $coordinates
+ * @param string $input_name
+ * @param boolean $is_mandatory
+ * @param boolean $is_disabled
+ * @param array $field_args
+ *
+ * @return array
+ */
+function smfSelectFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, array $field_args ) {
+	// Get the service name from the field_args, and set it to null if it doesn't exist.
+	$serviceName = array_key_exists( 'service_name', $field_args ) ? $field_args['service_name'] : null;
+
+	// Get the instance of the service class.
+	$service = MapsMappingServices::getValidServiceInstance( $serviceName, 'fi' );
+
+	// Get an instance of the class handling the current form input and service.
+	$formInput = $service->getFeatureInstance( 'fi' );
+
+	// Get and return the form input HTML from the hook corresponding with the provided service.
+	return $formInput->getInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args );
+}
+
+/**
+ * Calls the relevant form Editor input class depending on the provided service.
+ * NOTE: Currently only GoogleMaps is supported
+ *
+ * @since 2.0
+ *
+ * @param string $coordinates
+ * @param string $input_name
+ * @param boolean $is_mandatory
+ * @param boolean $is_disabled
+ * @param array $field_args
+ *
+ * @return array
+ */
+function smfSelectEditorFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, array $field_args ) {
+	// Get the service name from the field_args, and set it to null if it doesn't exist.
+	$serviceName = array_key_exists( 'service_name', $field_args ) ? $field_args['service_name'] : null;
+	// Get the instance of the service class.
+	$service = MapsMappingServices::getValidServiceInstance( $serviceName, 'fi' );
+
+	// Get an instance of the class handling the current form input and service.
+	$formInput = $service->getFeatureInstance( 'fi' );
+	// Get and return the form input HTML from the hook corresponding with the provided service.
+	return $formInput->getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args );
+}
