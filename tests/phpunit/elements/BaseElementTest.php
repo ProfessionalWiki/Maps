@@ -9,15 +9,10 @@ use Maps\Element;
  *
  * @since 3.0
  *
- * @ingroup MapsTest
- *
- * @group Maps
- * @group MapsElement
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class BaseElementTest extends \MediaWikiTestCase {
+abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Returns the name of the concrete class tested by this test.

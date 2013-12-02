@@ -10,11 +10,6 @@ use Maps\Elements\Location;
  *
  * @since 3.0
  *
- * @ingroup MapsTest
- *
- * @group Maps
- * @group MapsElement
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -62,7 +57,7 @@ class LocationTest extends BaseElementTest {
 	public function testGetLineCoordinates( Location $location, array $arguments ) {
 		$coordinates = $location->getCoordinates();
 
-		$this->assertType( 'DataValues\LatLongValue', $coordinates );
+		$this->assertInstanceOf( 'DataValues\LatLongValue', $coordinates );
 		$this->assertTrue( $coordinates->equals( $arguments[0] ) );
 	}
 

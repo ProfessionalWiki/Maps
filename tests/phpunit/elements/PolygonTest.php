@@ -9,11 +9,6 @@ use Maps\Elements\Polygon;
  *
  * @since 3.0
  *
- * @ingroup MapsTest
- *
- * @group Maps
- * @group MapsElement
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
