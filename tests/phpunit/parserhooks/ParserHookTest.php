@@ -12,7 +12,7 @@ use ParamProcessor\Processor;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParserHookTest extends \MediaWikiTestCase {
+abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @since 2.0
@@ -117,6 +117,15 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 		}
 
 		return $defaults;
+	}
+
+	protected function arrayWrap( array $elements ) {
+		return array_map(
+			function ( $element ) {
+				return array( $element );
+			},
+			$elements
+		);
 	}
 
 }
