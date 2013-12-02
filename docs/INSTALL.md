@@ -40,47 +40,49 @@ These are the installation and configuration instructions for the [Maps extensio
 </table>
 
 When installing Maps 2.x, see the installation instructions that come bundled with it. Also
-make use of Validator 0.5.x. More revent versions of Validator will not work.
+make use of Validator 0.5.x. More recent versions of Validator will not work.
 
 ## Download and installation
 
-### With Composer
+The recommended way to download and install Maps is with [Composer](http://getcomposer.org) using
+[MediaWiki 1.22 built-in support for Composer](https://www.mediawiki.org/wiki/Composer). MediaWiki
+versions prior to 1.22 can use Composer via the
+[Extension Installer](https://github.com/JeroenDeDauw/ExtensionInstaller/blob/master/README.md)
+extension.
 
-The recommended way to install Maps is with [Composer](http://getcomposer.org).
-See the [extension installation with Composer](https://www.mediawiki.org/wiki/Composer) instructions.
+#### Step 1
 
-The package name is "mediawiki/maps", so your composer.json file should look as follows:
+If you have MediaWiki 1.22 or later, go to the root directory of your MediaWiki installation,
+and go to step 2. You do not need to install any extensions to support composer.
 
-```javascript
-{
-	"require": {
-		// ...
-		"mediawiki/maps": ">=3.0"
-	},
-	"minimum-stability" : "dev"
-}
-```
+For MediaWiki 1.21.x and earlier you need to install the
+[Extension Installer](https://github.com/JeroenDeDauw/ExtensionInstaller/blob/master/README.md) extension.
 
-The "minimum-stability" section needs to be added as well for now.
-This need for this will be removed when Maps 3.0 is released.
+Once you are done installing the Extension Installer, go to its directory so composer.phar
+is installed in the right place.
 
-### Manual installation
+    cd extensions/ExtensionInstaller
 
-Alternatively you can obtain the Maps code and the code of all its dependencies yourself, and load them all.
+#### Step 2
 
-You can find a list of the dependencies in the "requires" section of the [composer.json file](../composer.json).
+If you have previously installed Composer skip to step 3.
 
-You can get the Maps code itself:
+To install Composer:
 
-* Via git: git clone https://github.com/JeroenDeDauw/Maps.git
-* As Tarball: https://github.com/JeroenDeDauw/Maps/releases
+    wget http://getcomposer.org/composer.phar
 
-The only remaining step is to include SubPageList in your LocalSettings.php file:
+#### Step 3
 
-```php
-require_once( "$IP/extensions/Maps/Maps.php" );
+Now using Composer, install Maps
+
+    php composer.phar require mediawiki/maps *
+
+#### Verify installation success
+
+As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki and verifying the
+Maps extension is listed.
 ```
 
 ## Configuration
 
-See the [Maps settings file](../Maps_Settings.php) for the available configuartion options.
+See the [Maps settings file](../Maps_Settings.php) for the available configuration options.
