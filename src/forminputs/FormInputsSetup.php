@@ -16,6 +16,7 @@ class FormInputsSetup {
 	public static function run( SFFormPrinter $printer ) {
 		$setup = new FormInputsSetup( $printer );
 		$setup->initialize();
+		return true;
 	}
 
 	private $printer;
@@ -54,8 +55,6 @@ class FormInputsSetup {
 			$this->initFormHook( 'map' );
 		}
 		$this->initFormHook( 'googlemapsEditor' );
-
-		return true;
 	}
 	
 	/**
