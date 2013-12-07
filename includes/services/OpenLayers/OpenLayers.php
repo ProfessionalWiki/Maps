@@ -18,12 +18,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgHooks, $wgResourceModules, $egMapsScriptPath, $wgAutoloadClasses;
+	global $wgHooks, $wgResourceModules, $wgAutoloadClasses;
 
 	$wgResourceModules['ext.maps.openlayers'] = array(
 		'dependencies' => array( 'ext.maps.common' ),
 		'localBasePath' => __DIR__,
-		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/OpenLayers',
+		'remoteExtPath' => '/Maps/includes/services/OpenLayers',
 		'group' => 'ext.maps',
 		'scripts' =>   array(
 			'OpenLayers/OpenLayers.js',

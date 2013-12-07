@@ -108,8 +108,6 @@ final class MapsMapper {
 		
 		if ( !$baseInit ) {
 			$baseInit = true;
-			global $egMapsScriptPath;
-			$json .= 'var egMapsScriptPath =' . FormatJson::encode( $egMapsScriptPath ) . ';';
 			$json .= 'var mwmaps={};';
 		}
 		

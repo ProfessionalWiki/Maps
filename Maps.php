@@ -36,7 +36,7 @@ if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
 call_user_func( function() {
 	global $wgExtensionCredits, $wgExtensionAssetsPath, $wgScriptPath;
 	global $wgResourceModules, $wgGroupPermissions, $egMapsNamespaceIndex, $wgStyleVersion;
-	global $egMapsScriptPath, $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles;
+	global $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles;
 
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__ ,
@@ -55,7 +55,6 @@ call_user_func( function() {
 	define( 'Maps_COORDS_DM' , 'dm' );
 	define( 'Maps_COORDS_DD' , 'dd' );
 
-	$egMapsScriptPath = ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/Maps';
 	$egMapsDir = __DIR__ . '/';
 
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;

@@ -19,7 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgHooks, $wgResourceModules, $egMapsScriptPath;
+	global $wgHooks, $wgResourceModules;
 
 	// Specify the function that will initialize the parser function.
 	$wgHooks['MappingServiceLoad'][] = 'efMapsInitLeaflet';
@@ -27,7 +27,7 @@ call_user_func( function() {
 	$wgResourceModules['ext.maps.leaflet'] = array(
 		'dependencies' => array( 'ext.maps.common' ),
 		'localBasePath' => __DIR__,
-		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/Leaflet',
+		'remoteExtPath' => '/Maps/includes/services/Leaflet',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'jquery.leaflet.js',

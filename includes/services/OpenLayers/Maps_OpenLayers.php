@@ -168,7 +168,10 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return array
 	 */
 	public function getConfigVariables() {
-		return array_merge( parent::getConfigVariables(), array( 'egMapsScriptPath' => $GLOBALS['egMapsScriptPath'] ) );
+		return array_merge(
+			parent::getConfigVariables(),
+			array( 'egMapsScriptPath' => $GLOBALS['wgScriptPath'] . '/extensions/Maps/' )
+		);
 	}
 	
 }
