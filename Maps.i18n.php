@@ -1164,7 +1164,7 @@ $messages['ce'] = array(
 	'mapeditor-imageoverlay-title' => 'Сурт',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Mormegil
  * @author Vks
  */
@@ -1239,7 +1239,7 @@ $messages['cs'] = array(
 	'mapeditor-form-field-visitedicon' => 'Navštívená ikona',
 );
 
-/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -2082,7 +2082,7 @@ Jos sitä ei ole asetettu ja kartalla on kohdemerkkejä, loitonnustasoksi valita
 	'maps-displaymap-par-rectangles' => 'Näytettävät suorakulmiot',
 	'maps-displaymap-par-static' => 'Onko kartan on oltava staattinen',
 	'maps-fullscreen-button' => 'Koko näytön tila',
-	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.', # Fuzzy
+	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Koko näytön tila -painike',
 	'validation-error-invalid-location' => 'Parametrin $1 on oltava sallittu sijainti.',
 	'validation-error-invalid-locations' => 'Parametrin $1 on oltava yksi tai useampi sallittu sijainti.',
@@ -4842,6 +4842,7 @@ $messages['nl'] = array(
 	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([https://www.semantic-mediawiki.org/wiki/Maps meer...])',
 	'right-geocode' => 'Geocoderen',
 	'maps_map' => 'Kaart',
+	'maps-tracking-category' => "Pagina's met een kaart die gerenderd is door de uitbreiding Maps",
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
 	'maps-load-failed' => 'De kaart kon niet geladen worden!',
 	'maps-markers' => 'Markeringen',
