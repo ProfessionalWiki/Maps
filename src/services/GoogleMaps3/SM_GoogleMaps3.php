@@ -25,7 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $moduleTemplate = array(
 	'localBasePath' => __DIR__,
-	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/services/GoogleMaps3',
+	'remoteExtPath' => 'SemanticMaps/src/services/GoogleMaps3',
 	'group' => 'ext.semanticmaps',
 );
 
@@ -58,12 +58,9 @@ function smfInitGoogleMaps3() {
 	global $wgAutoloadClasses;
 	
 	$wgAutoloadClasses['SMGoogleMaps3FormInput'] = __DIR__ . '/SM_GoogleMaps3FormInput.php';
-	//$wgAutoloadClasses['SMGoogleMaps3MultiInput'] = __DIR__ . '/SM_GoogleMaps3MultiInput.php';
-	
+
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'qp', 'SMMapPrinter' );
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'fi', 'SMGoogleMaps3FormInput' );
-	
-	//$sfgFormPrinter->setInputTypeHook( 'googlemapsmulti', array( 'SMGoogleMaps3MultiInput', 'onInputRequest' ), array() );
-	
+
 	return true;
 }

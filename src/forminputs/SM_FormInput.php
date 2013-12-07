@@ -141,7 +141,7 @@ class SMFormInput {
 			$params['inputname'] = $input_name;
 			
 			$output = $this->getInputHTML( $params, $wgParser, $mapName );
-			
+
 			$this->service->addResourceModules( $this->getResourceModules() );
 			
 			$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
@@ -154,7 +154,7 @@ class SMFormInput {
 				$wgOut->addScript( $configVars );
 			}
 			else {
-				$this->service->addDependencies( $wgParser );			
+				$this->service->addDependencies( $wgParser );
 			}
 
 			return $output;

@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $GLOBALS['wgResourceModules']['ext.sm.fi.openlayers'] = array(
 	'dependencies' => array( 'ext.maps.openlayers', 'ext.sm.forminputs' ),
 	'localBasePath' => __DIR__,
-	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/services/OpenLayers',
+	'remoteExtPath' => 'SemanticMaps/src/services/OpenLayers',
 	'group' => 'ext.semanticmaps',
 	'scripts' => array(
 		'jquery.openlayersinput.js',

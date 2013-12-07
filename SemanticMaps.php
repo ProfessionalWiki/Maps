@@ -42,23 +42,15 @@ $wgExtensionCredits['semantic'][] = array(
 	'descriptionmsg' => 'semanticmaps-desc'
 );
 
-$GLOBALS['smgScriptPath'] = ( $GLOBALS['wgExtensionAssetsPath'] === false
-		? $GLOBALS['wgScriptPath'] . '/extensions' : $GLOBALS['wgExtensionAssetsPath'] ) . '/SemanticMaps';
-
 // Include the settings file.
 require_once 'SM_Settings.php';
 
-# (named) Array of String. This array contains the available features for Maps.
-# Commenting out the inclusion of any feature will make Maps completely ignore it, and so improve performance.
-
-	# Query printers
-	include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
-	# Form imputs
+include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
 $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
 	'dependencies' => array( 'ext.maps.coord' ),
 	'localBasePath' => __DIR__,
-	'remoteBasePath' => $GLOBALS['smgScriptPath'] .  '/includes/forminputs',
+	'remoteExtPath' => 'SemanticMaps/src/forminputs',
 	'group' => 'ext.semanticmaps',
 	'scripts' => array(
 		'jquery.mapforminput.js'
@@ -73,14 +65,9 @@ $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
 	)
 );
 
-# Include the mapping services that should be loaded into Semantic Maps.
-# Commenting or removing a mapping service will cause Semantic Maps to completely ignore it, and so improve performance.
 
-	# Google Maps API v3
-	include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
-
-	# OpenLayers API
-	include_once __DIR__ . '/src/services/OpenLayers/SM_OpenLayers.php';
+include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
+include_once __DIR__ . '/src/services/OpenLayers/SM_OpenLayers.php';
 
 $GLOBALS['wgExtensionMessagesFiles']['SemanticMaps'] = __DIR__ . '/SemanticMaps.i18n.php';
 
