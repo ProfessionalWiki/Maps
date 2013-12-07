@@ -342,7 +342,7 @@ $messages['ckb'] = array(
 	'semanticmaps-forminput-add' => 'زیاد بکە',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Utar
  * @author XenoPheX
  */
