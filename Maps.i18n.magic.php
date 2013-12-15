@@ -81,16 +81,16 @@ $magicWords['de'] = array(
 
 /** Zazaki (Zazaki) */
 $magicWords['diq'] = array(
-	'display_map' => array( 0, 'aseniya_xerita' ),
+	'display_map' => array( 0, 'aseniya_ğerita' ),
 	'display_point' => array( 0, 'aseniya_dewti' ),
 	'display_points' => array( 0, 'aseniya_dawıtan' ),
-	'display_line' => array( 0, 'aseniya_xeter' ),
+	'display_line' => array( 0, 'aseniya_ğeter' ),
 	'geocode' => array( 0, 'herunkodi' ),
 	'geodistance' => array( 0, 'heruna_mesafi' ),
 	'finddestination' => array( 0, 'menzilvinayış' ),
 	'coordinates' => array( 0, 'koordinati' ),
 	'distance' => array( 0, 'mesafe' ),
-	'mapsdoc' => array( 0, 'dokumanêxerita' ),
+	'mapsdoc' => array( 0, 'dokumanéğerita' ),
 );
 
 /** Esperanto (Esperanto) */
