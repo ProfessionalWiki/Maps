@@ -1164,7 +1164,7 @@ $messages['ce'] = array(
 	'mapeditor-imageoverlay-title' => 'Сурт',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Mormegil
  * @author Vks
  */
@@ -1239,7 +1239,7 @@ $messages['cs'] = array(
 	'mapeditor-form-field-visitedicon' => 'Navštívená ikona',
 );
 
-/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+/** Church Slavic (словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */
 $messages['cu'] = array(
@@ -2082,7 +2082,7 @@ Jos sitä ei ole asetettu ja kartalla on kohdemerkkejä, loitonnustasoksi valita
 	'maps-displaymap-par-rectangles' => 'Näytettävät suorakulmiot',
 	'maps-displaymap-par-static' => 'Onko kartan on oltava staattinen',
 	'maps-fullscreen-button' => 'Koko näytön tila',
-	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.', # Fuzzy
+	'maps-fullscreen-button-tooltip' => 'Näytä kartta koko näytön tilassa tai upotettuna.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Koko näytön tila -painike',
 	'validation-error-invalid-location' => 'Parametrin $1 on oltava sallittu sijainti.',
 	'validation-error-invalid-locations' => 'Parametrin $1 on oltava yksi tai useampi sallittu sijainti.',
@@ -4842,12 +4842,14 @@ $messages['nl'] = array(
 	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([https://www.semantic-mediawiki.org/wiki/Maps meer...])',
 	'right-geocode' => 'Geocoderen',
 	'maps_map' => 'Kaart',
+	'maps-tracking-category' => "Pagina's met een kaart die gerenderd is door de uitbreiding Maps",
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
 	'maps-load-failed' => 'De kaart kon niet geladen worden!',
 	'maps-markers' => 'Markeringen',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => 'Filtermarkeringen',
 	'maps-others' => 'anderen',
+	'maps-kml-parsing-failed' => 'Eén of meer KML-bestanden konden niet verwerkt worden. Dit is meestal te wijten aan het niet kunnen ophalen van het bestand of ongeldige XML.',
 	'maps-ns-layer' => 'Laag',
 	'maps-ns-layer-talk' => 'Overleg_laag',
 	'maps-layer-property' => 'Eigenschap',
@@ -4914,7 +4916,7 @@ Als deze waarde niet wordt ingesteld, wordt de kaart gecentreerd op of tussen de
 	'maps-displaymap-par-title' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerde naam.
 Als dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderstreept weergegeven.',
 	'maps-displaymap-par-label' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.',
-	'maps-displaymap-par-icon' => 'Maakt het mogelijk het icoon voor alle markers in te stellen.',
+	'maps-displaymap-par-icon' => 'Maakt het mogelijk het pictogram voor alle markers in te stellen.',
 	'maps-displaymap-par-circles' => 'Weer te geven cirkels',
 	'maps-displaymap-par-copycoords' => 'Of een dialoog waarvan de coördinaten van een locatie weergegeven moeten worden bij het klikken op iets',
 	'maps-displaymap-par-lines' => 'Weer te geven regels',
@@ -5006,7 +5008,7 @@ $1.',
 	'mapeditor-form-field-title' => 'Titel',
 	'mapeditor-form-field-text' => 'Tekst',
 	'mapeditor-form-field-link' => 'Koppeling',
-	'mapeditor-form-field-icon' => 'Icoon',
+	'mapeditor-form-field-icon' => 'Pictogram',
 	'mapeditor-form-field-group' => 'Groep',
 	'mapeditor-form-field-inlinelabel' => 'Inline label',
 	'mapeditor-form-field-strokecolor' => 'Lijnkleur',
@@ -5020,7 +5022,7 @@ $1.',
 	'mapeditor-imageoverlay-button' => 'Afbeeldingslaag toevoegen',
 	'mapeditor-form-field-image' => 'Afbeelding',
 	'mapeditor-imageoverlay-title' => 'Gegevens over afbeeldingslaag',
-	'mapeditor-form-field-visitedicon' => 'Icoon voor bezocht',
+	'mapeditor-form-field-visitedicon' => 'Pictogram voor bezocht',
 );
 
 /** Nederlands (informeel)‎ (Nederlands (informeel)‎)
