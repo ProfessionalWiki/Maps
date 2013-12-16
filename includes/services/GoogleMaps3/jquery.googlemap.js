@@ -434,6 +434,18 @@
 			this.polygon = [];
 		};
 
+		//Rezoom's the map to show all visible markers.
+		this.reZoom = function(){
+			var bounds = new google.maps.LatLngBounds();
+			for(var x = 0; x < this.markers.length; x++){
+				var marker = this.markers[x];
+				if (marker.getVisible() === true) {
+					bounds.extend(marker.getPosition());
+				}
+			}
+			this.map.fitBounds(bounds);
+		}
+
 		this.setup = function () {
 
 			var showEarth = $.inArray('earth', options.types) !== -1;
@@ -681,6 +693,8 @@
 				);
 			}
 
+
+
 			if (options.searchmarkers) {
 				var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
 				var searchBox = $('<input type="text" value="' + searchBoxValue + '" />');
@@ -698,25 +712,27 @@
 
 				searchBox.on('keyup',function (e) {
 					for (var i = 0; i < _this.markers.length; i++) {
-							var haystack = '';
-							var marker = _this.markers[i];
-							if (options.searchmarkers == 'title') {
-								haystack = marker.title;
-							} else if (options.searchmarkers == 'all') {
-								haystack = marker.title + marker.text;
-							}
-
-							marker.setVisible(haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1);
+						var haystack = '';
+						var marker = _this.markers[i];
+						if (options.searchmarkers == 'title') {
+							haystack = marker.title;
+						} else if (options.searchmarkers == 'all') {
+							haystack = marker.title + marker.text;
 						}
-					}).on('focusin', function () {
+
+						var visible = haystack.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1;
+						marker.setVisible(visible);
+					}
+					_this.reZoom();
+				}).on('focusin',function () {
 						if ($(this).val() === searchBoxValue) {
 							$(this).val('');
 						}
-					}).on('focusout', function () {
+				}).on('focusout', function () {
 						if ($(this).val() === '') {
 							$(this).val(searchBoxValue);
 						}
-					});
+				});
 			}
 
 			if(options.imageoverlays){
