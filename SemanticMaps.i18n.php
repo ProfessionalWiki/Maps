@@ -448,6 +448,7 @@ $messages['de'] = array(
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
 	'semanticmaps-par-activeicon' => 'Symbol, das anstelle der Standardkennzeichnung angezeigt wird, wenn die aktive Seite dem Abfrageergebnis entspricht.',
+	'semanticmaps-par-pagelabel' => 'Falls auf „ja“ gesetzt, haben alle Kennzeichnungen ein „inlineLabel“ mit einem Link zur Seite, die die Koordinaten für die Kennzeichnung enthält.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
