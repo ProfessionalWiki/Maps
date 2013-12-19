@@ -46,6 +46,7 @@ $messages['en'] = array(
 	'semanticmaps-par-template'		=> 'A template to use to format the info window contents.',
 	'semanticmaps-par-geocodecontrol'	=> 'Show the geocoding control.',
 	'semanticmaps-par-activeicon'		=> 'Icon to be displayed instead of default marker, when active page is equal to query result',
+	'semanticmaps-par-pagelabel'		=> 'When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker',
 
 	'semanticmaps-kml-text' => 'The text associated with each page. Overridden by the additional queried properties if any.',
 	'semanticmaps-kml-title' => 'The default title for results',
@@ -106,6 +107,7 @@ The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinat
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
 	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}',
+	'semanticmaps-par-pagelabel' => 'Text explaning query parameter "pagelabel". When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker',
 	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext".
 
 <code>$1</code> is not a parameter.
@@ -342,7 +344,7 @@ $messages['ckb'] = array(
 	'semanticmaps-forminput-add' => 'زیاد بکە',
 );
 
-/** Czech (česky)
+/** Czech (čeština)
  * @author Utar
  * @author XenoPheX
  */
@@ -446,6 +448,7 @@ $messages['de'] = array(
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
 	'semanticmaps-par-activeicon' => 'Symbol, das anstelle der Standardkennzeichnung angezeigt wird, wenn die aktive Seite dem Abfrageergebnis entspricht.',
+	'semanticmaps-par-pagelabel' => 'Falls auf „ja“ gesetzt, haben alle Kennzeichnungen ein „inlineLabel“ mit einem Link zur Seite, die die Koordinaten für die Kennzeichnung enthält.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
@@ -647,6 +650,7 @@ $messages['fr'] = array(
 	'semanticmaps-par-template' => "Un modèle à utiliser pour mettre en forme le contenu de la fenêtre d'informations.",
 	'semanticmaps-par-geocodecontrol' => 'Afficher le contrôle de géocodage.',
 	'semanticmaps-par-activeicon' => 'Icône à afficher à la place du marqueur par défaut, quand la page active est égale au résultat de la recherche',
+	'semanticmaps-par-pagelabel' => 'Quand il vaut « oui », tous les marqueurs auront un « inlineLabel » avec un lien vers la page contenant les coordonnées du marqueur',
 	'semanticmaps-kml-text' => "Le texte associé avec chaque page. Remplacé par des propriétés récupérées supplémentaires s'il y en a.",
 	'semanticmaps-kml-title' => 'Le titre par défaut pour les résultats',
 	'semanticmaps-kml-linkabsolute' => 'Si les titres doivent être absolus ou non (c.à.d. relatifs)',
@@ -957,6 +961,7 @@ $messages['ja'] = array(
 	'semanticmaps-par-template' => '情報ウィンドウのコンテンツの整形に使用するテンプレートです。',
 	'semanticmaps-par-geocodecontrol' => 'ジオコーディングコントロールを表示します。',
 	'semanticmaps-par-activeicon' => 'アクティブなページがクエリ結果と等しい場合に、デフォルトのアイコンの代わりに表示されるアイコン',
+	'semanticmaps-par-pagelabel' => '「はい」に設定すると、マーカーの緯度経度を含むページにリンクされた「インライン ラベル」がすべてのマーカーに付きます。',
 	'semanticmaps-kml-text' => '各ページに関連付けられたテキストです。クエリに追加的なプロパティがある場合は上書きされます。',
 	'semanticmaps-kml-title' => '結果の既定のタイトル',
 	'semanticmaps-kml-linkabsolute' => 'リンクは絶対表記 (= 相対表記の対義語) にしてください。',
@@ -1209,13 +1214,14 @@ $messages['nl'] = array(
 	'semanticmaps-forminput-remove' => 'Verwijderen',
 	'semanticmaps-forminput-add' => 'Toevoegen',
 	'semanticmaps-forminput-locations' => 'Locaties',
-	'semanticmaps-par-staticlocations' => 'Een lijst met aan de kaart toe te voegen locaties samen met de opgegeven gegevens. Zoals bij display_points, kunt u een naam, beschrijving en icoon per locatie toevoegen door de tilde ("~") als scheidingsteken te gebruiken.',
+	'semanticmaps-par-staticlocations' => 'Een lijst met aan de kaart toe te voegen locaties samen met de opgegeven gegevens. Zoals bij display_points, kunt u een naam, beschrijving en pictogram per locatie toevoegen door de tilde ("~") als scheidingsteken te gebruiken.',
 	'semanticmaps-par-forceshow' => 'De kaart zelfs weergeven als er geen weer te geven locaties zijn?',
 	'semanticmaps-par-showtitle' => 'Een naam weergeven in het gegevensvenster van de markering of niet. Dit uitschakelen is vaak handig als er een sjabloon wordt gebruikt om de inhoud van het gegevensvenster vorm te geven.',
 	'semanticmaps-par-hidenamespace' => 'De naamruimtenaam in het informatievenster van de marker weergeven',
 	'semanticmaps-par-centre' => 'Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.',
 	'semanticmaps-par-template' => 'Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.',
 	'semanticmaps-par-geocodecontrol' => 'Besturingselement voor geocodering weergeven.',
+	'semanticmaps-par-activeicon' => 'Pictogram dat wordt weergegeven in plaats van de standaard marker, als de actieve pagina gelijk is aan het zoekresultaat',
 	'semanticmaps-kml-text' => 'De tekst die gekoppeld is aan iedere pagina. Als er extra opgegeven eigenschappen zijn, wordt deze tekst daardoor overschreven.',
 	'semanticmaps-kml-title' => 'De standaard titel voor resultaten',
 	'semanticmaps-kml-linkabsolute' => 'Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)',
