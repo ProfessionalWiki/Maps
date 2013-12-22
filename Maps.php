@@ -34,7 +34,7 @@ if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
 }
 
 call_user_func( function() {
-	global $wgExtensionCredits, $wgExtensionAssetsPath, $wgScriptPath;
+	global $wgExtensionCredits;
 	global $wgResourceModules, $wgGroupPermissions, $egMapsNamespaceIndex, $wgStyleVersion;
 	global $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles;
 
