@@ -265,6 +265,7 @@ $messages['qqq'] = array(
 
 The category is automatically added unless the feature is disabled.',
 	'maps-copycoords-prompt' => 'text displayed in JavaScript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
+	'maps-searchmarkers-text' => 'Used as default value for input box of the Search form. (Looks like placeholder.)',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-ns-layer' => '{{Identical|Layer}}',
