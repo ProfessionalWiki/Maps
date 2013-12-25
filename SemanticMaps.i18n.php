@@ -73,7 +73,10 @@ $messages['qqq'] = array(
 	'semanticmaps-unrecognizeddistance' => 'Used as error message. Parameters:
 * $1 - distance',
 	'semanticmaps-kml' => '{{optional}}',
-	'semanticmaps-default-kml-pagelink' => '<code>$1</code> is not a parameter, but it will be replaced by the page title.
+	'semanticmaps-default-kml-pagelink' => 'Used as default value for "pagelinktext" input box.
+See example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]
+
+<code>$1</code> is not a parameter (appears as is), but it will be replaced by the page title.
 
 See also:
 * {{msg-mw|Semanticmaps-kml-pagelinktext}}
@@ -108,12 +111,12 @@ The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinat
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
 	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}',
 	'semanticmaps-par-pagelabel' => 'Text explaning query parameter "pagelabel". When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker',
-	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext".
+	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext" input box.
+See example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]
 
-<code>$1</code> is not a parameter.
+<code>$1</code> is not a parameter, and appears as is.
 
-See also:
-* {{msg-mw|Semanticmaps-default-kml-pagelink}}',
+Default value for the input box is {{msg-mw|Semanticmaps-default-kml-pagelink}}.',
 	'semanticmaps-shapes-improperformat' => 'Message displayed when the wikitext formatting of a shape is erroneous.
 
 Parameters:
