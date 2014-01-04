@@ -58,6 +58,15 @@ class CircleTest extends BaseElementTest {
 		$this->assertTrue( $circle->getCircleCentre()->equals( $arguments[0] ) );
 	}
 
+	/**
+	 * @dataProvider instanceProvider
+	 * @param Circle $circle
+	 * @param array $arguments
+	 */
+	public function testGetCircleRadius( Circle $circle, array $arguments ) {
+		$this->assertEquals( $arguments[1], $circle->getCircleRadius() );
+	}
+
 }
 
 
