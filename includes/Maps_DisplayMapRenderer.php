@@ -1,4 +1,5 @@
 <?php
+use Maps\Element;
 use Maps\Elements\Line;
 use Maps\Elements\Location;
 
@@ -111,13 +112,6 @@ class MapsDisplayMapRenderer {
 
 		$parserClone = clone $parser;
 
-		/**
-		 * @var Line $line
-		 */
-		foreach ( $params['lines'] as &$line ) {
-			$line = $line->getJSONObject();
-		}
-
 		if ( is_object( $params['wmsoverlay'] ) ) {
 			$params['wmsoverlay'] = $params['wmsoverlay']->getJSONObject();
 		}
@@ -164,6 +158,10 @@ class MapsDisplayMapRenderer {
 		foreach ( $textContainers as &$textContainer ) {
 			if ( is_array( $textContainer ) ) {
 				foreach ( $textContainer as &$obj ) {
+					if ( $obj instanceof Element ) {
+						$obj = $obj->getArrayValue();
+					}
+
 					$obj['title'] = $parserClone->parse( $obj['title'] , $parserClone->getTitle() , new ParserOptions() )->getText();
 					$obj['text'] = $parserClone->parse( $obj['text'] , $parserClone->getTitle() , new ParserOptions() )->getText();
 

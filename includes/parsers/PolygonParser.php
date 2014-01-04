@@ -13,19 +13,12 @@ use ValueParsers\StringValueParser;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class PolygonParser extends StringValueParser {
+class PolygonParser extends LineParser {
 
-	/**
-	 * @see StringValueParser::stringParse
-	 *
-	 * @since 3.0
-	 *
-	 * @param string $value
-	 *
-	 * @return Polygon
-	 */
-	public function stringParse( $value ) {
-		// TODO
+	protected function constructShapeFromLatLongValues( array $locations ) {
+		return new Polygon( $locations );
 	}
+
+	// TODO: handle only visible on hover
 
 }

@@ -34,13 +34,17 @@ class LineParser extends StringValueParser {
 	public function stringParse( $value ) {
 		$parts = explode( $this->metaDataSeparator , $value );
 
-		$line = new Line( $this->parseCoordinates(
+		$line = $this->constructShapeFromLatLongValues( $this->parseCoordinates(
 			explode( ':' , array_shift( $parts ) )
 		) );
 
 		$this->handleCommonParams( $parts, $line );
 
 		return $line;
+	}
+
+	protected function constructShapeFromLatLongValues( array $locations ) {
+		return new Line( $locations );
 	}
 
 	/**

@@ -96,25 +96,25 @@ class MapsDisplayMap extends ParserHook {
 		);
 
 		$params['polygons'] = array(
-			// TODO 'type' => 'mapspolygon',
+			'type' => 'mapspolygon',
 			'default' => array(),
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
-		$params['circles'] = array(
-			'default' => array(),
-			// TODO	'manipulations' => new MapsParamCircle( '~' ), // TODO
-			'delimiter' => ';',
-			'islist' => true,
-		);
-
-		$params['rectangles'] = array(
-			'default' => array(),
-			// TODO	'manipulations' => new MapsParamRectangle( '~' ), // TODO
-			'delimiter' => ';',
-			'islist' => true,
-		);
+//		$params['circles'] = array(
+//			'default' => array(),
+//			// TODO	'manipulations' => new MapsParamCircle( '~' ), // TODO
+//			'delimiter' => ';',
+//			'islist' => true,
+//		);
+//
+//		$params['rectangles'] = array(
+//			'default' => array(),
+//			// TODO	'manipulations' => new MapsParamRectangle( '~' ), // TODO
+//			'delimiter' => ';',
+//			'islist' => true,
+//		);
 
 		$params['wmsoverlay'] = array(
 			'type' => 'wmsoverlay',
