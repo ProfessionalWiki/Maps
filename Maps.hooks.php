@@ -36,51 +36,6 @@ final class MapsHooks {
 	}
 
 	/**
-	 * Hook to add PHPUnit test cases.
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
-	 *
-	 * @since 0.7
-	 *
-	 * @param array &$files
-	 *
-	 * @return boolean
-	 */
-	public static function registerUnitTests( array &$files ) {
-		// @codeCoverageIgnoreStart
-		$testFiles = array(
-			'elements/Circle',
-			'elements/ImageOverlay',
-			'elements/Line',
-			'elements/Location',
-			'elements/Polygon',
-			'elements/Rectangle',
-
-			'parserhooks/Coordinates',
-			'parserhooks/DisplayMap',
-			'parserhooks/Distance',
-			'parserhooks/Finddestination',
-			'parserhooks/Geocode',
-			'parserhooks/Geodistance',
-			'parserhooks/MapsDoc',
-
-			'parsers/DistanceParser',
-			'parsers/LineParser',
-			'parsers/LocationParser',
-			'parsers/WmsOverlayParser',
-
-			'Element',
-			'MapsDistanceParser',
-		);
-
-		foreach ( $testFiles as $file ) {
-			$files[] = __DIR__ . '/tests/phpunit/' . $file . 'Test.php';
-		}
-
-		return true;
-		// @codeCoverageIgnoreEnd
-	}
-
-	/**
 	 * Intercept pages in the Layer namespace to handle them correctly.
 	 *
 	 * @param $title: Title

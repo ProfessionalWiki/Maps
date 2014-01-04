@@ -43,8 +43,12 @@ class CircleTest extends BaseElementTest {
 
 		$argLists[] = array( true, new LatLongValue( 4, 2 ), 42 );
 		$argLists[] = array( true, new LatLongValue( 42, 2.2 ), 9000.1 );
+		$argLists[] = array( true, new LatLongValue( 4, 2 ), 1 );
+		$argLists[] = array( true, new LatLongValue( 4, 2 ), 0.1 );
 
 		$argLists[] = array( false, '~=[,,_,,]:3', 9000.1 );
+//		$argLists[] = array( false, new LatLongValue( 4, 2 ), 0 );
+//		$argLists[] = array( false, new LatLongValue( 4, 2 ), -42 );
 
 		return $argLists;
 	}

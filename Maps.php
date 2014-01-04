@@ -84,7 +84,6 @@ call_user_func( function() {
 	};
 
 	$wgHooks['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
-	$wgHooks['UnitTestsList'][] = 'MapsHooks::registerUnitTests';
 	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';
 	$wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
 	$wgHooks['CanonicalNamespaces'][] = 'MapsHooks::onCanonicalNamespaces';
