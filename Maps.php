@@ -13,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 if ( defined( 'Maps_VERSION' ) ) {
-	// Do not initialize more then once.
+	// Do not initialize more than once.
 	return 1;
 }
 
