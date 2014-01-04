@@ -18,6 +18,11 @@ bugs have been found and fixed. No big new features have been added.
 * Added leaflet service
 * Added Geocoder.us geoservice support
 
+#### Bug fixes
+
+* Fixed autoinfowindows functionality.
+* Fixed various bugs in geocoordinate parsing and formatting.
+
 #### Breaking internal changes
 
 * Moved classes into Maps namespace
@@ -26,11 +31,6 @@ bugs have been found and fixed. No big new features have been added.
 * Removed MapsCoordinateParser
 * Geocoding interfaces changed
 * MapsLocation interface changed
-
-#### Bug fixes
-
-* Fixed autoinfowindows functionality.
-* Fixed various bugs in geocoordinate parsing and formatting.
 
 ## Maps 2.0 (2012-10-05)
 
