@@ -36,6 +36,10 @@ class Circle extends \MapsBaseFillableElement {
 			throw new InvalidArgumentException( '$circleRadius must be a float or int' );
 		}
 
+		if ( $circleRadius <= 0 ) {
+			throw new InvalidArgumentException( '$circleRadius must be greater than zero' );
+		}
+
 		parent::__construct();
 
 		$this->setCircleCentre( $circleCentre );

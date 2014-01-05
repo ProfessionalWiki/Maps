@@ -42,8 +42,8 @@ class CircleTest extends BaseElementTest {
 
 		$argLists[] = array( new LatLongValue( 4, 2 ), 'foo' );
 
-//		$argLists[] = array( new LatLongValue( 4, 2 ), 0 );
-//		$argLists[] = array( new LatLongValue( 4, 2 ), -42 );
+		$argLists[] = array( new LatLongValue( 4, 2 ), 0 );
+		$argLists[] = array( new LatLongValue( 4, 2 ), -42 );
 
 		return $argLists;
 	}
