@@ -9,33 +9,50 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th></th>
 		<th>Status</th>
 		<th>Release date</th>
-		<th>PHP</th>
-		<th>MediaWiki</th>
 		<th>Git branch</th>
 	</tr>
 	<tr>
 		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.0.x</a></th>
 		<td>Development version</td>
 		<td>Future</td>
-		<td>5.3.2+</td>
-		<td>1.18+</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
 		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-20-2012-10-05">Maps 2.0.x</a></th>
 		<td>Stable release</td>
 		<td>2012</td>
-		<td>5.3.2+</td>
-		<td>1.18+</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/2.0.x">2.0.x</a></td>
 	</tr>
 	<tr>
 		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-105-2011-11-30">Maps 1.0.5</a></th>
 		<td>Legacy release</td>
 		<td>2011-11-30</td>
-		<td>5.2+</td>
-		<td>1.17+</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/1.0.5">1.0.5</a></td>
+	</tr>
+</table>
+
+### Platform compatibility
+
+<table>
+	<tr>
+		<th></th>
+		<th>PHP</th>
+		<th>MediaWiki</th>
+	</tr>
+	<tr>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.0.x</a></th>
+		<td>5.3.2 - 5.5.x</td>
+		<td>1.18 - 1.23</td>
+	</tr>
+	<tr>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-20-2012-10-05">Maps 2.0.x</a></th>
+		<td>5.3.2 - 5.5.x</td>
+		<td>1.18 - 1.23</td>
+	</tr>
+	<tr>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-105-2011-11-30">Maps 1.0.5</a></th>
+		<td>5.2.0 - 5.3.x</td>
+		<td>1.17 - 1.19</td>
 	</tr>
 </table>
 
