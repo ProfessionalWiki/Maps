@@ -104,7 +104,7 @@ To install Composer:
 
 Now using Composer, install Maps
 
-    php composer.phar require mediawiki/maps *
+    php composer.phar require mediawiki/maps "*"
 
 #### Verify installation success
 
