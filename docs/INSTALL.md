@@ -110,7 +110,6 @@ Now using Composer, install Maps
 
 As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki and verifying the
 Maps extension is listed.
-```
 
 ## Configuration
 
