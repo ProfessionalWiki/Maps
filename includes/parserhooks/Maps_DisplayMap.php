@@ -102,12 +102,12 @@ class MapsDisplayMap extends ParserHook {
 			'islist' => true,
 		);
 
-//		$params['circles'] = array(
-//			'default' => array(),
-//			// TODO	'manipulations' => new MapsParamCircle( '~' ), // TODO
-//			'delimiter' => ';',
-//			'islist' => true,
-//		);
+		$params['circles'] = array(
+			'type' => 'mapscircle',
+			'default' => array(),
+			'delimiter' => ';',
+			'islist' => true,
+		);
 //
 //		$params['rectangles'] = array(
 //			'default' => array(),

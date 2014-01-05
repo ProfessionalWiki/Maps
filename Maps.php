@@ -191,6 +191,14 @@ call_user_func( function() {
 		'string-parser' => 'Maps\LineParser',
 	);
 
+	$wgParamDefinitions['mapscircle'] = array(
+		'string-parser' => 'Maps\CircleParser',
+	);
+
+//	$wgParamDefinitions['mapsrectangle'] = array(
+//		'string-parser' => 'Maps\RectangleParser',
+//	);
+
 	$wgParamDefinitions['mapspolygon'] = array(
 		'string-parser' => 'Maps\PolygonParser',
 	);

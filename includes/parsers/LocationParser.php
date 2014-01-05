@@ -37,7 +37,7 @@ class LocationParser extends StringValueParser {
 
 		$metaData = explode( $separator, $value );
 
-		$coordinates = $this->getCoordinates( array_shift( $metaData ) );
+		$coordinates = $this->stringToLatLongValue( array_shift( $metaData ) );
 
 		$location = new Location( $coordinates );
 
@@ -72,9 +72,9 @@ class LocationParser extends StringValueParser {
 	 * @return LatLongValue
 	 * @throws ParseException
 	 */
-	protected function getCoordinates( $location ) {
-		if ( $this->supportGeocoding && \Maps\Geocoders::canGeocode() ) {
-			$location = \Maps\Geocoders::attemptToGeocode( $location );
+	protected function stringToLatLongValue( $location ) {
+		if ( $this->supportGeocoding && Geocoders::canGeocode() ) {
+			$location = Geocoders::attemptToGeocode( $location );
 
 			if ( $location === false ) {
 				throw new ParseException( 'Failed to parse or geocode' );

@@ -17,10 +17,10 @@ use ValueParsers\StringValueParser;
  */
 class LineParser extends StringValueParser {
 
+	protected $supportGeocoding = true;
+
 	// TODO: use options
 	protected $metaDataSeparator = '~';
-
-	protected $supportGeocoding = true;
 
 	/**
 	 * @see StringValueParser::stringParse
@@ -41,10 +41,6 @@ class LineParser extends StringValueParser {
 		$this->handleCommonParams( $parts, $line );
 
 		return $line;
-	}
-
-	protected function constructShapeFromLatLongValues( array $locations ) {
-		return new Line( $locations );
 	}
 
 	/**
@@ -77,6 +73,10 @@ class LineParser extends StringValueParser {
 		}
 
 		return $coordinates;
+	}
+
+	protected function constructShapeFromLatLongValues( array $locations ) {
+		return new Line( $locations );
 	}
 
 	/**
@@ -117,6 +117,8 @@ class LineParser extends StringValueParser {
 			$line->setStrokeWeight( $weight );
 		}
 	}
+
+
 
 	protected function setBubbleDataFromParameter( Line &$line , &$params , $title ) {
 		if ( $title ) {
