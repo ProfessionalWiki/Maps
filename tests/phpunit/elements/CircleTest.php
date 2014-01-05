@@ -26,29 +26,24 @@ class CircleTest extends BaseElementTest {
 		return 'Maps\Elements\Circle';
 	}
 
-	/**
-	 * @see BaseElementTest::constructorProvider
-	 *
-	 * @since 3.0
-	 *
-	 * @return array
-	 */
-	public function constructorProvider() {
+	public function validConstructorProvider() {
 		$argLists = array();
 
-		$argLists[] = array( false );
-		$argLists[] = array( false, '' );
-		$argLists[] = array( false, '4,2' );
-		$argLists[] = array( false, new LatLongValue( 4, 2 ) );
+		$argLists[] = array( new LatLongValue( 4, 2 ), 42 );
+		$argLists[] = array( new LatLongValue( 42, 2.2 ), 9000.1 );
+		$argLists[] = array( new LatLongValue( 4, 2 ), 1 );
+		$argLists[] = array( new LatLongValue( 4, 2 ), 0.1 );
 
-		$argLists[] = array( true, new LatLongValue( 4, 2 ), 42 );
-		$argLists[] = array( true, new LatLongValue( 42, 2.2 ), 9000.1 );
-		$argLists[] = array( true, new LatLongValue( 4, 2 ), 1 );
-		$argLists[] = array( true, new LatLongValue( 4, 2 ), 0.1 );
+		return $argLists;
+	}
 
-		$argLists[] = array( false, '~=[,,_,,]:3', 9000.1 );
-//		$argLists[] = array( false, new LatLongValue( 4, 2 ), 0 );
-//		$argLists[] = array( false, new LatLongValue( 4, 2 ), -42 );
+	public function invalidConstructorProvider() {
+		$argLists = array();
+
+		$argLists[] = array( new LatLongValue( 4, 2 ), 'foo' );
+
+//		$argLists[] = array( new LatLongValue( 4, 2 ), 0 );
+//		$argLists[] = array( new LatLongValue( 4, 2 ), -42 );
 
 		return $argLists;
 	}

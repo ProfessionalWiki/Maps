@@ -3,6 +3,7 @@
 namespace Maps\Elements;
 
 use DataValues\LatLongValue;
+use InvalidArgumentException;
 
 /**
  * @since 3.0
@@ -29,8 +30,14 @@ class ImageOverlay extends Rectangle {
 	 * @param LatLongValue $boundsNorthEast
 	 * @param LatLongValue $boundsSouthWest
 	 * @param string $image
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( LatLongValue $boundsNorthEast, LatLongValue $boundsSouthWest, $image ) {
+		if ( !is_string( $image ) ) {
+			throw new InvalidArgumentException( '$image must be a string' );
+		}
+
 		parent::__construct( $boundsNorthEast, $boundsSouthWest );
 		$this->image = $image;
 	}

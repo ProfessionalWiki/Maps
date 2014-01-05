@@ -3,6 +3,7 @@
 namespace Maps\Elements;
 
 use DataValues\LatLongValue;
+use InvalidArgumentException;
 
 /**
  * @since 3.0
@@ -31,8 +32,14 @@ class Rectangle extends \MapsBaseFillableElement {
 	 *
 	 * @param LatLongValue $rectangleNorthEast
 	 * @param LatLongValue $rectangleSouthWest
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( LatLongValue $rectangleNorthEast, LatLongValue $rectangleSouthWest ) {
+		if ( $rectangleNorthEast->equals( $rectangleSouthWest ) ) {
+			throw new InvalidArgumentException( '$rectangleNorthEast cannot be equal to $rectangleSouthWest' );
+		}
+
 		parent::__construct();
 
 		// TODO: validate bounds are correct, if not, flip

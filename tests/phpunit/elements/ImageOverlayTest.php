@@ -25,24 +25,21 @@ class ImageOverlayTest extends RectangleTest {
 		return 'Maps\Elements\ImageOverlay';
 	}
 
-	/**
-	 * @see BaseElementTest::constructorProvider
-	 *
-	 * @since 3.0
-	 *
-	 * @return array
-	 */
-	public function constructorProvider() {
-		$argLists = array();
+	public function validConstructorProvider() {
+		$argLists = parent::validConstructorProvider();
 
-		foreach ( parent::constructorProvider() as $argList ) {
-			$argList[0] = false;
-			$argLists[] = $argList;
+		foreach ( $argLists as &$argList ) {
+			$argList[] = 'Foo.png';
 		}
 
-		foreach ( parent::constructorProvider() as $argList ) {
-			$argList[] = 'Foo.png';
-			$argLists[] = $argList;
+		return $argLists;
+	}
+
+	public function invalidConstructorProvider() {
+		$argLists = parent::validConstructorProvider();
+
+		foreach ( $argLists as &$argList ) {
+			$argList[] = null;
 		}
 
 		return $argLists;
