@@ -3,7 +3,7 @@
 namespace Maps;
 
 use DataValues\LatLongValue;
-use Maps\Elements\Circle;
+use Maps\Elements\Rectangle;
 use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
@@ -15,7 +15,7 @@ use ValueParsers\StringValueParser;
  * @author Kim Eik
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class CircleParser extends StringValueParser {
+class RectangleParser extends StringValueParser {
 
 	protected $supportGeocoding = true;
 
@@ -29,35 +29,38 @@ class CircleParser extends StringValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return Circle
+	 * @return Rectangle
 	 */
 	public function stringParse( $value ) {
 		$metaData = explode( $this->metaDataSeparator , $value );
-		$circleData = explode( ':' , array_shift( $metaData ) );
+		$rectangleData = explode( ':' , array_shift( $metaData ) );
 
-		$circle = new Circle( $this->stringToLatLongValue( $circleData[0] ), (float)$circleData[1] );
+		$rectangle = new Rectangle(
+			$this->stringToLatLongValue( $rectangleData[0] ),
+			$this->stringToLatLongValue( $rectangleData[1] )
+		);
 
 		if ( $metaData !== array() ) {
-			$circle->setTitle( array_shift( $metaData ) );
+			$rectangle->setTitle( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== array() ) {
-			$circle->setText( array_shift( $metaData ) );
+			$rectangle->setText( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== array() ) {
-			$circle->setStrokeColor( array_shift( $metaData ) );
+			$rectangle->setStrokeColor( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== array() ) {
-			$circle->setStrokeOpacity( array_shift( $metaData ) );
+			$rectangle->setStrokeOpacity( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== array() ) {
-			$circle->setStrokeWeight( array_shift( $metaData ) );
+			$rectangle->setStrokeWeight( array_shift( $metaData ) );
 		}
 
-		return $circle;
+		return $rectangle;
 	}
 
 	protected function stringToLatLongValue( $location ) {

@@ -108,13 +108,13 @@ class MapsDisplayMap extends ParserHook {
 			'delimiter' => ';',
 			'islist' => true,
 		);
-//
-//		$params['rectangles'] = array(
-//			'default' => array(),
-//			// TODO	'manipulations' => new MapsParamRectangle( '~' ), // TODO
-//			'delimiter' => ';',
-//			'islist' => true,
-//		);
+
+		$params['rectangles'] = array(
+			'type' => 'mapsrectangle',
+			'default' => array(),
+			'delimiter' => ';',
+			'islist' => true,
+		);
 
 		$params['wmsoverlay'] = array(
 			'type' => 'wmsoverlay',
