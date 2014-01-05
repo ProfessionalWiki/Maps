@@ -38,26 +38,38 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th></th>
 		<th>PHP</th>
 		<th>MediaWiki</th>
+		<th>Composer</th>
+		<th>Validator</th>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.0.x</a></th>
+		<th>Maps 3.0.x</th>
 		<td>5.3.2 - 5.5.x</td>
 		<td>1.18 - 1.23</td>
+		<td>Required</td>
+		<td>1.0.x (handled by Composer)</td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-20-2012-10-05">Maps 2.0.x</a></th>
+		<th>Maps 2.0.x</th>
 		<td>5.3.2 - 5.5.x</td>
 		<td>1.18 - 1.23</td>
+		<td>Not supported</td>
+		<td>0.5.1</td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-105-2011-11-30">Maps 1.0.5</a></th>
+		<th>Maps 1.0.5</th>
 		<td>5.2.0 - 5.3.x</td>
 		<td>1.17 - 1.19</td>
+		<td>Not supported</td>
+		<td>0.4.13 or 0.4.14</td>
 	</tr>
 </table>
 
 When installing Maps 2.x, see the installation instructions that come bundled with it. Also
 make use of Validator 0.5.x. More recent versions of Validator will not work.
+
+### Database support
+
+All current versions of Maps have full support for all databases that can be used with MediaWiki.
 
 ## Download and installation
 
