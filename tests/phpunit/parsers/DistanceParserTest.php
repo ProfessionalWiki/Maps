@@ -4,11 +4,6 @@ namespace Maps\Test;
 
 /**
  * @covers Maps\DistanceParser
- *
- * @group ValueParsers
- * @group Maps
- * @group DistanceParserTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

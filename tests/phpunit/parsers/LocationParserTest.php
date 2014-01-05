@@ -7,11 +7,6 @@ use Maps\Elements\Location;
 
 /**
  * @covers Maps\LocationParser
- *
- * @group ValueParsers
- * @group Maps
- * @group LocationParserTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

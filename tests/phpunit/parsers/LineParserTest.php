@@ -7,11 +7,6 @@ use Maps\Elements\Line;
 
 /**
  * @covers Maps\LineParser
- *
- * @group ValueParsers
- * @group Maps
- * @group LineParserTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

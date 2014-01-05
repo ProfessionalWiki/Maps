@@ -6,11 +6,6 @@ use Maps\Elements\WmsOverlay;
 
 /**
  * @covers Maps\WmsOverlayParser
- *
- * @group ValueParsers
- * @group Maps
- * @group WmsOverlayParserTest
- *
  * @licence GNU GPL v2+
  * @author Mathias Mølster Lidal <mathiaslidal@gmail.com>
  */
