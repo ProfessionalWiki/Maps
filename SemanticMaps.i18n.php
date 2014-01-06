@@ -182,6 +182,7 @@ $messages['ast'] = array(
 	'semanticmaps-par-template' => "Una plantía que s'utiliza pa dar formatu al conteníu de la ventana d'información.",
 	'semanticmaps-par-geocodecontrol' => 'Amosar el control de xeocodificación.',
 	'semanticmaps-par-activeicon' => 'Iconu a amosar en llugar del marcador predetermináu, cuando la páxina activa ye igual al resultáu de la consulta',
+	'semanticmaps-par-pagelabel' => 'Cuando se pon a "si", tolos marcadores tendrán una "inlineLabel" con un enllaz a la páxina que contién les coordenaes del marcador',
 	'semanticmaps-kml-text' => 'El testu asociáu con cada páxina. Sustituyíu poles otres propiedaes consultaes, si esisten.',
 	'semanticmaps-kml-title' => 'El títulu predetermináu pa los resultaos',
 	'semanticmaps-kml-linkabsolute' => 'Si los títulos tienen de ser absolutos o non (esto ye, relativos)',
