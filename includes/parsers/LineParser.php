@@ -118,8 +118,6 @@ class LineParser extends StringValueParser {
 		}
 	}
 
-
-
 	protected function setBubbleDataFromParameter( Line &$line , &$params , $title ) {
 		if ( $title ) {
 			$line->setTitle( $title );

@@ -2,8 +2,8 @@
 
 namespace Maps;
 
+use Maps\Elements\Line;
 use Maps\Elements\Polygon;
-use ValueParsers\StringValueParser;
 
 /**
  * ValueParser that parses the string representation of a polygon.
@@ -19,6 +19,23 @@ class PolygonParser extends LineParser {
 		return new Polygon( $locations );
 	}
 
-	// TODO: handle only visible on hover
+	protected function handleCommonParams( array &$params, Line &$line ) {
+		parent::handleCommonParams( $params, $line );
+		$this->handlePolygonParams( $params, $line );
+	}
+
+	protected function handlePolygonParams( array &$params, Polygon &$polygon ) {
+		if ( $fillColor = array_shift( $params ) ) {
+			// TODO
+		}
+
+		if ( $fillOpacity = array_shift( $params ) ) {
+			// TODO
+		}
+
+		if ( $showOnlyOnHover = array_shift( $params ) ) {
+			$polygon->setOnlyVisibleOnHover( strtolower( trim( $showOnlyOnHover ) ) === 'on' );
+		}
+	}
 
 }

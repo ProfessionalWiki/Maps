@@ -45,4 +45,12 @@ class Polygon extends Line implements \iHoverableMapElement {
 		return $this->onlyVisibleOnHover;
 	}
 
+	public function getJSONObject( $defText = '' , $defTitle = '' ) {
+		$json = parent::getJSONObject( $defText, $defTitle );
+
+		$json['onlyVisibleOnHover'] = $this->isOnlyVisibleOnHover();
+
+		return $json;
+	}
+
 }
