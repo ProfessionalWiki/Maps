@@ -242,6 +242,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		unset( $params['staticlocations'] );
 
 		$this->addShapeData( $queryHandler->getShapes(), $params, $iconUrl, $visitedIconUrl );
+
+		if ( $params['format'] === 'openlayers' ) {
+			$params['layers'] = MapsDisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
+		}
 	}
 
 	protected function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
