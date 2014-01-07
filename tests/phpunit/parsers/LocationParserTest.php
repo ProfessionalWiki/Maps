@@ -4,6 +4,8 @@ namespace Maps\Test;
 
 use DataValues\LatLongValue;
 use Maps\Elements\Location;
+use Maps\LocationParser;
+use Title;
 
 /**
  * @covers Maps\LocationParser
@@ -66,5 +68,76 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	protected function requireDataValue() {
 		return false;
 	}
+
+	/**
+	 * @dataProvider titleProvider
+	 */
+	public function testGivenTitleThatIsNotLink_titleIsSetAndLinkIsNot( $title ) {
+		$parser = new LocationParser();
+		$location = $parser->parse( '4,2~' . $title );
+
+		$this->assertTitleAndLinkAre( $location, $title, '' );
+	}
+
+	public function titleProvider() {
+		return array(
+			array( '' ),
+			array( 'Title' ),
+			array( 'Some title' ),
+			array( 'link' ),
+			array( 'links:foo' ),
+		);
+	}
+
+	protected function assertTitleAndLinkAre( Location $location, $title, $link ) {
+		$this->assertHasJsonKeyWithValue( $location, 'title', $title );
+		$this->assertHasJsonKeyWithValue( $location, 'link', $link );
+	}
+
+	protected function assertHasJsonKeyWithValue( Location $polygon, $key, $value ) {
+		$json = $polygon->getJSONObject();
+
+		$this->assertArrayHasKey( $key, $json );
+		$this->assertEquals(
+			$value,
+			$json[$key]
+		);
+	}
+
+	/**
+	 * @dataProvider linkProvider
+	 */
+	public function testGivenTitleThatIsLink_linkIsSetAndTitleIsNot( $link ) {
+		$parser = new LocationParser();
+		$location = $parser->parse( '4,2~link:' . $link );
+
+		$this->assertTitleAndLinkAre( $location, '', $link );
+	}
+
+	public function linkProvider() {
+		return array(
+			array( 'https://semantic-mediawiki.org' ),
+			array( 'http://www.semantic-mediawiki.org' ),
+			array( 'irc://freenode.net' ),
+		);
+	}
+
+	/**
+	 * @dataProvider titleLinkProvider
+	 */
+//	public function testGivenPageTitleAsLink_pageTitleIsTurnedIntoUrl( $link ) {
+//		$parser = new LocationParser();
+//		$location = $parser->parse( '4,2~link:' . $link );
+//
+//		$linkUrl = Title::newFromText( $link )->getFullURL();
+//		$this->assertTitleAndLinkAre( $location, '', $linkUrl );
+//	}
+//
+//	public function titleLinkProvider() {
+//		return array(
+//			array( 'Foo' ),
+//			array( 'Some_Page' ),
+//		);
+//	}
 
 }

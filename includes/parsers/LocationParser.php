@@ -5,6 +5,7 @@ namespace Maps;
 use DataValues\LatLongValue;
 use Maps\Elements\Location;
 use MWException;
+use Title;
 use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
@@ -42,7 +43,7 @@ class LocationParser extends StringValueParser {
 		$location = new Location( $coordinates );
 
 		if ( $metaData !== array() ) {
-			$location->setTitle( array_shift( $metaData ) );
+			$this->setTitleOrLink( $location, array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== array() ) {
@@ -62,6 +63,38 @@ class LocationParser extends StringValueParser {
 		}
 
 		return $location;
+	}
+
+	protected function setTitleOrLink( Location $location, $titleOrLink ) {
+		if ( $this->isLink( $titleOrLink ) ) {
+			$this->setLink( $location, $titleOrLink );
+		}
+		else {
+			$location->setTitle( $titleOrLink );
+		}
+	}
+
+	protected function isLink( $value ) {
+		return strpos( $value , 'link:' ) === 0;
+	}
+
+	protected function setLink( Location $location, $link ) {
+		$link = substr( $link, 5 );
+		$location->setLink( $this->getExpandedLink( $link ) );
+	}
+
+	protected function getExpandedLink( $link ) {
+		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
+			return $link;
+		}
+
+		$title = Title::newFromText( $link );
+
+		if ( $title === null ) {
+			return '';
+		}
+
+		return $title->getFullUrl();
 	}
 
 	/**
