@@ -27,7 +27,7 @@ call_user_func( function() {
 	$wgResourceModules['ext.maps.leaflet'] = array(
 		'dependencies' => array( 'ext.maps.common' ),
 		'localBasePath' => __DIR__,
-		'remoteExtPath' => '/Maps/includes/services/Leaflet',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ),
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'jquery.leaflet.js',

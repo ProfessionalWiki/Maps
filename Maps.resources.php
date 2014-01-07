@@ -14,7 +14,7 @@ return call_user_func( function() {
 
 	$moduleTemplate = array(
 		'localBasePath' => __DIR__ . '/includes',
-		'remoteExtPath' =>  'Maps/includes',
+		'remoteExtPath' =>  '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/includes',
 		'group' => 'ext.maps'
 	);
 
