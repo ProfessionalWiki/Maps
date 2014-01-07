@@ -142,7 +142,7 @@ class MapsDisplayMapRenderer {
 		$this->handleShapeData( $params, $parserClone );
 
 		if ( $params['mappingservice'] === 'openlayers' ) {
-			$params['layers'] = $this->evilOpenLayersHack( $params['layers'] );
+			$params['layers'] = self::evilOpenLayersHack( $params['layers'] );
 		}
 	}
 
@@ -186,7 +186,7 @@ class MapsDisplayMapRenderer {
 	 *
 	 * @return string[]
 	 */
-	protected function evilOpenLayersHack( $layers ) {
+	public static function evilOpenLayersHack( $layers ) {
 		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers;
 
 		$layerDefs = array();
@@ -252,7 +252,7 @@ class MapsDisplayMapRenderer {
 			}
 		}
 
-		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getLayerDependencies( $layerNames ) );
+		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( self::getLayerDependencies( $layerNames ) );
 
 		return $layerDefs;
 	}
@@ -261,7 +261,7 @@ class MapsDisplayMapRenderer {
 	 * FIXME
 	 * @see evilOpenLayersHack
 	 */
-	protected function getLayerDependencies( array $layerNames ) {
+	private static function getLayerDependencies( array $layerNames ) {
 		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
 
 		$layerDependencies = array();
