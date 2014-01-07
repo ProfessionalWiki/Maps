@@ -2,11 +2,10 @@
 
 namespace Maps\Elements;
 
-use MWException;
+use InvalidArgumentException;
 
 /**
  * @since 3.0
- *
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
@@ -14,23 +13,20 @@ use MWException;
  */
 class Polygon extends Line implements \iHoverableMapElement {
 
-	/**
-	 * @since 3.0
-	 *
-	 * @var boolean
-	 */
 	protected $onlyVisibleOnHover = false;
+	protected $fillOpacity = '0.5';
+	protected $fillColor = '#FF0000';
 
 	/**
 	 * @since 3.0
 	 *
 	 * @param boolean $visible
 	 *
-	 * @throws MWException
+	 * @throws InvalidArgumentException
 	 */
 	public function setOnlyVisibleOnHover( $visible ) {
 		if ( !is_bool( $visible ) ) {
-			throw new MWException( '$visible should be a boolean' );
+			throw new InvalidArgumentException( '$visible should be a boolean' );
 		}
 
 		$this->onlyVisibleOnHover = $visible;
@@ -45,10 +41,28 @@ class Polygon extends Line implements \iHoverableMapElement {
 		return $this->onlyVisibleOnHover;
 	}
 
+	public function setFillOpacity( $fillOpacity ) {
+		if ( !is_string( $fillOpacity ) ) {
+			throw new InvalidArgumentException( '$fillOpacity should be a string' );
+		}
+
+		$this->fillOpacity = $fillOpacity;
+	}
+
+	public function setFillColor( $fillColor ) {
+		if ( !is_string( $fillColor ) ) {
+			throw new InvalidArgumentException( '$fillColor should be a string' );
+		}
+
+		$this->fillColor = $fillColor;
+	}
+
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$json = parent::getJSONObject( $defText, $defTitle );
 
-		$json['onlyVisibleOnHover'] = $this->isOnlyVisibleOnHover();
+		$json['onlyVisibleOnHover'] = $this->onlyVisibleOnHover;
+		$json['fillColor'] = $this->fillColor;
+		$json['fillOpacity'] = $this->fillOpacity;
 
 		return $json;
 	}

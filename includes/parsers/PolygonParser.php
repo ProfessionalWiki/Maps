@@ -26,11 +26,11 @@ class PolygonParser extends LineParser {
 
 	protected function handlePolygonParams( array &$params, Polygon &$polygon ) {
 		if ( $fillColor = array_shift( $params ) ) {
-			// TODO
+			$polygon->setFillColor( $fillColor );
 		}
 
 		if ( $fillOpacity = array_shift( $params ) ) {
-			// TODO
+			$polygon->setFillOpacity( $fillOpacity );
 		}
 
 		if ( $showOnlyOnHover = array_shift( $params ) ) {

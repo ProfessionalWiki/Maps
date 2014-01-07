@@ -40,6 +40,36 @@ class PolygonTest extends LineTest {
 		$this->assertFalse( $polygon->isOnlyVisibleOnHover() );
 	}
 
+	/**
+	 * @dataProvider instanceProvider
+	 * @param Polygon $polygon
+	 * @param array $arguments
+	 */
+	public function testSetFillOpacity( Polygon $polygon, array $arguments ) {
+		$polygon->setFillOpacity( '0.42' );
+		$this->assertHasJsonKeyWithValue( $polygon, 'fillOpacity', '0.42' );
+	}
+
+	protected function assertHasJsonKeyWithValue( Polygon $polygon, $key, $value ) {
+		$json = $polygon->getJSONObject();
+
+		$this->assertArrayHasKey( $key, $json );
+		$this->assertEquals(
+			$value,
+			$json[$key]
+		);
+	}
+
+	/**
+	 * @dataProvider instanceProvider
+	 * @param Polygon $polygon
+	 * @param array $arguments
+	 */
+	public function testSetFillColor( Polygon $polygon, array $arguments ) {
+		$polygon->setFillColor( '#FFCCCC' );
+		$this->assertHasJsonKeyWithValue( $polygon, 'fillColor', '#FFCCCC' );
+	}
+
 }
 
 
