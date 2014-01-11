@@ -1160,6 +1160,7 @@ $messages['ce'] = array(
 	'maps-others' => 'кхин',
 	'maps-layer-value' => 'МаьӀна',
 	'maps-abb-east' => 'Цу',
+	'mapeditor-done-button' => 'Кийчча ю',
 	'mapeditor-link-title-switcher-link-text' => 'Хьажораг',
 	'mapeditor-form-field-title' => 'ЦӀе',
 	'mapeditor-form-field-link' => 'Хьажораг',
@@ -1704,6 +1705,7 @@ $messages['eo'] = array(
 
 /** Spanish (español)
  * @author Armando-Martin
+ * @author Ciencia Al Poder
  * @author Crazymadlover
  * @author Dferg
  * @author Diego Grez
@@ -1785,7 +1787,7 @@ Cuando sea "no", todos los valores serán geocodificados, incluso si son coorden
 Esto puede afectar al valor predeterminado del servicio de geocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar el servicio de cartografía que se utilizará para generar el mapa.',
 	'maps-displaymap-par-coordinates' => 'La localización respecto de la cual el mapa aparecerá inicialmente centrado.',
-	'maps-displaymap-par-visitedicon' => 'El disco local de un archivo para ser utilizado como icono visitado', # Fuzzy
+	'maps-displaymap-par-visitedicon' => 'El nombre de una imagen que será usada como iconos de marca al de hacer clic en ellos',
 	'maps-displaymap-par-zoom' => 'Permite configurar el nivel de zoom del mapa.
 Cuando no se proporciona y varios marcadores están presentes en el mapa, se tomará el mejor ajuste de zoom, y no el valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite establecer las coordenadas del centro del mapa mediante display_point(s).
