@@ -1979,6 +1979,7 @@ $messages['fa'] = array(
 	'maps-loading-map' => 'در حال بارگیری نقشه...',
 	'maps-load-failed' => 'قادر به بارگیری نقشه نبود!',
 	'maps-markers' => 'نشانگرها',
+	'maps-copycoords-prompt' => 'CTRL+C, وارد کنید',
 	'maps-searchmarkers-text' => 'نشانگرهای فیلتر',
 	'maps-others' => 'دیگران',
 	'maps-ns-layer' => 'لایه',
@@ -6765,6 +6766,7 @@ $1',
  * @author Emperyan
  * @author Joseph
  * @author Manco Capac
+ * @author Meelo
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -6801,6 +6803,18 @@ $messages['tr'] = array(
 	'maps-geocoder-not-available' => 'Haritanın coğrafi kodlama özelliği etkin değil. Konumunuz kodlanamıyor.',
 	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
+	'mapeditor' => 'Harita düzenleyici',
+	'mapeditor-export-button' => 'Viki kodu dışa aktar',
+	'mapeditor-import-button' => 'Viki kodunu içe aktar',
+	'mapeditor-mapparam-button' => 'Harita parametrelerini düzenle',
+	'mapeditor-clear-button' => 'Haritayı temizle',
+	'mapeditor-code-title' => 'Viki kodu',
+	'mapeditor-import-title' => 'Viki kodunu içe aktar',
+	'mapeditor-form-title' => 'Ayrıntıları düzenle',
+	'mapeditor-form-field-title' => 'Başlık',
+	'mapeditor-form-field-text' => 'Metin',
+	'mapeditor-mapparam-title' => 'Harita parametrelerini düzenle',
+	'mapeditor-mapparam-defoption' => '-Parametre seçiniz-',
 );
 
 /** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
