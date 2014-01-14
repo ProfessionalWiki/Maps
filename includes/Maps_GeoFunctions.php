@@ -9,9 +9,6 @@ define( 'Maps_EARTH_RADIUS', 6371000 );
  * Static class containing geographical functions.
  *
  * @since 0.6
- * 
- * @file Maps_GeoFunctions.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

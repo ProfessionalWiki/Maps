@@ -5,9 +5,6 @@
  * 
  * @since 0.7
  * 
- * @file Maps_DisplayMap.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -99,22 +96,22 @@ class MapsDisplayMap extends ParserHook {
 		);
 
 		$params['polygons'] = array(
-			// TODO 'type' => 'mapspolygon',
+			'type' => 'mapspolygon',
 			'default' => array(),
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['circles'] = array(
+			'type' => 'mapscircle',
 			'default' => array(),
-			// TODO	'manipulations' => new MapsParamCircle( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
 
 		$params['rectangles'] = array(
+			'type' => 'mapsrectangle',
 			'default' => array(),
-			// TODO	'manipulations' => new MapsParamRectangle( '~' ), // TODO
 			'delimiter' => ';',
 			'islist' => true,
 		);
@@ -198,11 +195,12 @@ class MapsDisplayMap extends ParserHook {
 			$parameters['zoom'] = false;
 		}
 
+		$this->parser->addTrackingCategory( 'maps-tracking-category' );
 		return $mapClass->renderMap( $parameters, $this->parser );
 	}
 	
 	/**
-	 * Returns the parser function otpions.
+	 * Returns the parser function options.
 	 * @see ParserHook::getFunctionOptions
 	 * 
 	 * @since 0.7

@@ -1,13 +1,15 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
+
+use Maps\Element;
+use Maps\ElementOptions;
 
 /**
  * Base class for objects implementing the @see Element interface.
  *
  * @since 3.0
  *
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >

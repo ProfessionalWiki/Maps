@@ -5,9 +5,6 @@
  * using abstract layer templates(in form of a layer class) which are managed via MapsLayerTypes.
  *
  * @since dw1 (Most of the pre dw1 'MapsLayer' class has moved to 'MapsLayerTypes')
- * 
- * @file Maps_Layers.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

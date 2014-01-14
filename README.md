@@ -1,33 +1,49 @@
 # Maps
 
-Maps is the MediaWiki extension that provides the ability to visualize geographic data
-with dynamic, JavaScript based, mapping API's such as Google Maps and OpenLayers in your
-wiki pages. It has build in support for geocoding, displaying maps, displaying markers,
-adding pop-ups, and more. Maps allows extensive customization of your maps, either per
-map, or via a general setting affecting all maps on your wiki.
+Maps is a [MediaWiki](https://www.mediawiki.org) extension to work with and visualise geographical
+information.
 
-Due to Maps modular build, modifying the mapping service of a map is as easy as changing
-a single map property! These mapping services include Google Maps, Yahoo! Maps, OpenLayers
-and OpenStreetMap. These also allow you to display maps with Google Earth, OpenStreetMaps,
-Bing maps and others.
+Features:
 
-[![Build Status](https://secure.travis-ci.org/wikimedia/mediawiki-extensions-Maps.png?branch=master)](http://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
-[![Coverage Status](https://coveralls.io/repos/wikimedia/mediawiki-extensions-Maps/badge.png?branch=master)](https://coveralls.io/r/wikimedia/mediawiki-extensions-Maps?branch=master)
+* Powerful #display_map parser hook for embedding highly customizable dynamic maps into wiki pages.
+* Support for multiple mapping services: Google Maps, [OpenLayers](http://www.openlayers.org/),
+[OpenStreetMap](www.openstreetmap.org/) and [Leaflet](http://leafletjs.com/).
+* Coordinate formatting and format conversion via the #coordinates parser function.
+* Geocoding via several supported services with the #geocode parser function.
+* Geospatial operations
+    * Calculating the distance between two points with #geodistance
+    * Finding a destination given a starting point, bearing and distance with #finddestination
+* Distance formatting and format conversion via the #distance parser function.
+* Visual map editor (Special:MapEditor) to edit #display_map wikitext.
+* Structured data support provided by the [Semantic Maps extension]
+(https://www.mediawiki.org/wiki/Extension:Semantic_Maps).
+
+View the [release notes](docs/RELEASE-NOTES.md) for recent changes to Maps.
+
+### User manual
+
+* [Installation and configuration](docs/INSTALL.md)
+* [Usage instructions and examples](https://semantic-mediawiki.org/wiki/Maps)
+
+## Project status
+
+[![Build Status](https://secure.travis-ci.org/JeroenDeDauw/Maps.png?branch=master)](http://travis-ci.org/JeroenDeDauw/Maps)
+[![Coverage Status](https://coveralls.io/repos/JeroenDeDauw/Maps/badge.png?branch=master)](https://coveralls.io/r/JeroenDeDauw/Maps?branch=master)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/badges/quality-score.png?s=3881a27e63cb64e7511d766bfec2e2db5d39bec3)](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/)
 [![Dependency Status](https://www.versioneye.com/php/mediawiki:maps/dev-master/badge.png)](https://www.versioneye.com/php/mediawiki:maps/dev-master)
 
 On [Packagist](https://packagist.org/packages/mediawiki/maps):
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
 [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
 
-Notes on installing Maps are found in the file INSTALL.
+* [Maps on Ohloh](https://www.ohloh.net/p/maps/)
+* [Blog posts about Maps](http://www.bn2vs.com/blog/tag/maps)
+* [Open bugs and feature requests](https://bugzilla.wikimedia.org/buglist.cgi?list_id=254461&resolution=---&query_format=advanced&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=PATCH_TO_REVIEW&bug_status=REOPENED&component=Maps)
 
 ## Contributing
 
-If you have bug reports or requests, please add them to
-[the Talk page](https://www.mediawiki.org/wiki/Extension_talk:Maps).
-You can also send them to Jeroen De Dauw, jeroendedauw -at- gmail.com,
-and Yaron Koren, at yaron57 -at- gmail.com.
-
+Feel free to fork the [code on GitHub](https://github.com/JeroenDeDauw/Maps) and to submit pull
+requests.
 
 ## Credits to other projects
 
@@ -60,8 +76,8 @@ It is released under the
 
 ### OpenStreetMap.js
 
-This extension includes the OpenStreetMap.js file which can be found here:
-http://www.openstreetmap.org/openlayers/OpenStreetMap.js
+This extension includes the OpenStreetMap.js file which can be found
+[here](http://www.openstreetmap.org/openlayers/OpenStreetMap.js).
 
 ## Links
 
@@ -69,5 +85,5 @@ http://www.openstreetmap.org/openlayers/OpenStreetMap.js
 * [Maps on Ohloh](https://www.ohloh.net/p/maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)
-* [TravisCI build status](https://travis-ci.org/wikimedia/mediawiki-extensions-Maps)
+* [TravisCI build status](https://travis-ci.org/JeroenDeDauw/Maps)
 * [Semantic Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Semantic_Maps)

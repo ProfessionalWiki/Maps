@@ -6,9 +6,6 @@
  * 
  * @since 0.7
  * 
- * @file Maps_GoogleMaps3.php
- * @ingroup MapsGoogleMaps3
- * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -69,7 +66,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * 
 	 * @since 0.6.6
 	 */	
-	function __construct( $serviceName ) {
+	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
 			array( 'googlemaps', 'google' )
@@ -218,6 +215,12 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'default' => '',
 			'message' => 'maps-googlemaps3-par-searchmarkers',
 			// new CriterionSearchMarkers() FIXME
+		);
+
+		$params['enablefullscreen'] = array(
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-googlemaps3-par-enable-fullscreen',
 		);
 	}
 	

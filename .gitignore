@@ -1,13 +1,11 @@
-.*
 *~
 *.kate-swp
 
-!.gitignore
-!.gitreview
+!.*
+.idea/
 
-!.travis.yml
-!.travis.sh
-!.coveralls.yml
+vendor/
+extensions/
 
 composer.phar
 composer.lock

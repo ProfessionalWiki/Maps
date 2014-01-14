@@ -5,9 +5,6 @@
  *
  * @since 2.0
  *
- * @file
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Kim Eik
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

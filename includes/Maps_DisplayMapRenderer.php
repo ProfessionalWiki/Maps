@@ -1,10 +1,10 @@
 <?php
+use Maps\Element;
+use Maps\Elements\Line;
+use Maps\Elements\Location;
 
 /**
  * Class handling the #display_map rendering.
- *
- * @file
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -98,6 +98,8 @@ class MapsDisplayMapRenderer {
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 *
+	 * FIXME: complexity
+	 *
 	 * @since 1.0
 	 *
 	 * @param array &$params
@@ -110,13 +112,6 @@ class MapsDisplayMapRenderer {
 
 		$parserClone = clone $parser;
 
-		/**
-		 * @var \Maps\Line $line
-		 */
-		foreach ( $params['lines'] as &$line ) {
-			$line = $line->getJSONObject();
-		}
-
 		if ( is_object( $params['wmsoverlay'] ) ) {
 			$params['wmsoverlay'] = $params['wmsoverlay']->getJSONObject();
 		}
@@ -126,7 +121,7 @@ class MapsDisplayMapRenderer {
 		$params['locations'] = array();
 
 		/**
-		 * @var \Maps\Location $location
+		 * @var Location $location
 		 */
 		foreach ( $params['coordinates'] as $location ) {
 			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '',$visitedIconUrl);
@@ -144,6 +139,14 @@ class MapsDisplayMapRenderer {
 
 		unset( $params['coordinates'] );
 
+		$this->handleShapeData( $params, $parserClone );
+
+		if ( $params['mappingservice'] === 'openlayers' ) {
+			$params['layers'] = self::evilOpenLayersHack( $params['layers'] );
+		}
+	}
+
+	protected function handleShapeData( array &$params, Parser $parserClone ) {
 		$textContainers = array(
 			&$params['lines'] ,
 			&$params['polygons'] ,
@@ -155,6 +158,10 @@ class MapsDisplayMapRenderer {
 		foreach ( $textContainers as &$textContainer ) {
 			if ( is_array( $textContainer ) ) {
 				foreach ( $textContainer as &$obj ) {
+					if ( $obj instanceof Element ) {
+						$obj = $obj->getArrayValue();
+					}
+
 					$obj['title'] = $parserClone->parse( $obj['title'] , $parserClone->getTitle() , new ParserOptions() )->getText();
 					$obj['text'] = $parserClone->parse( $obj['text'] , $parserClone->getTitle() , new ParserOptions() )->getText();
 
@@ -163,10 +170,6 @@ class MapsDisplayMapRenderer {
 					$obj['title'] = strip_tags( $obj['title'] );
 				}
 			}
-		}
-
-		if ( $params['mappingservice'] === 'openlayers' ) {
-			$params['layers'] = $this->evilOpenLayersHack( $params['layers'] );
 		}
 	}
 
@@ -183,7 +186,7 @@ class MapsDisplayMapRenderer {
 	 *
 	 * @return string[]
 	 */
-	protected function evilOpenLayersHack( $layers ) {
+	public static function evilOpenLayersHack( $layers ) {
 		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers;
 
 		$layerDefs = array();
@@ -278,7 +281,7 @@ class MapsDisplayMapRenderer {
 			}
 		}
 
-		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( $this->getLayerDependencies( $layerNames ) );
+		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( self::getLayerDependencies( $layerNames ) );
 
 //		print_r( $layerDefs );
 //		die();
@@ -289,7 +292,7 @@ class MapsDisplayMapRenderer {
 	 * FIXME
 	 * @see evilOpenLayersHack
 	 */
-	protected function getLayerDependencies( array $layerNames ) {
+	private static function getLayerDependencies( array $layerNames ) {
 		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
 
 		$layerDependencies = array();

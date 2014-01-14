@@ -1,16 +1,13 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
-use Maps\Location;
+use InvalidArgumentException;
 
 /**
- * Class representing a rectangle.
- *
  * @since 3.0
  *
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
@@ -35,8 +32,14 @@ class Rectangle extends \MapsBaseFillableElement {
 	 *
 	 * @param LatLongValue $rectangleNorthEast
 	 * @param LatLongValue $rectangleSouthWest
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( LatLongValue $rectangleNorthEast, LatLongValue $rectangleSouthWest ) {
+		if ( $rectangleNorthEast->equals( $rectangleSouthWest ) ) {
+			throw new InvalidArgumentException( '$rectangleNorthEast cannot be equal to $rectangleSouthWest' );
+		}
+
 		parent::__construct();
 
 		// TODO: validate bounds are correct, if not, flip

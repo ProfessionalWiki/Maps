@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
 use Maps\Element;
 
@@ -9,15 +9,10 @@ use Maps\Element;
  *
  * @since 3.0
  *
- * @ingroup MapsTest
- *
- * @group Maps
- * @group MapsElement
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class BaseElementTest extends \MediaWikiTestCase {
+abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Returns the name of the concrete class tested by this test.
@@ -28,15 +23,11 @@ abstract class BaseElementTest extends \MediaWikiTestCase {
 	 */
 	public abstract function getClass();
 
-	/**
-	 * First element can be a boolean indication if the successive values are valid,
-	 * or a string indicating the type of exception that should be thrown (ie not valid either).
-	 *
-	 * @since 3.0
-	 *
-	 * @return array
-	 */
-	public abstract function constructorProvider();
+	public abstract function validConstructorProvider();
+
+	public function invalidConstructorProvider() {
+		return array();
+	}
 
 	/**
 	 * Creates and returns a new instance of the concrete class.
@@ -60,48 +51,32 @@ abstract class BaseElementTest extends \MediaWikiTestCase {
 	public function instanceProvider() {
 		$phpFails = array( $this, 'newInstance' );
 
-		return array_filter( array_map(
+		return array_map(
 			function( array $args ) use ( $phpFails ) {
-				$isValid = array_shift( $args ) === true;
-
-				if ( $isValid ) {
-					return array( call_user_func_array( $phpFails, $args ), $args );
-				}
-				else {
-					return false;
-				}
+				return array( call_user_func_array( $phpFails, $args ), $args );
 			},
-			$this->constructorProvider()
-		), 'is_array' );
+			$this->validConstructorProvider()
+		);
 	}
 
 	/**
-	 * @dataProvider constructorProvider
+	 * @dataProvider validConstructorProvider
 	 *
 	 * @since 3.0
 	 */
-	public function testConstructor() {
-		$args = func_get_args();
+	public function testGivenValidArguments_constructorDoesNotThrowException() {
+		$instance = call_user_func_array( array( $this, 'newInstance' ), func_get_args() );
+		$this->assertInstanceOf( $this->getClass(), $instance );
+	}
 
-		$valid = array_shift( $args );
-		$pokemons = null;
-
-		try {
-			$instance = call_user_func_array( array( $this, 'newInstance' ), $args );
-			$this->assertInstanceOf( $this->getClass(), $instance );
-		}
-		catch ( \Exception $pokemons ) {
-			if ( $valid === true ) {
-				throw $pokemons;
-			}
-
-			if ( is_string( $valid ) ) {
-				$this->assertEquals( $valid, get_class( $pokemons ) );
-			}
-			else {
-				$this->assertFalse( $valid );
-			}
-		}
+	/**
+	 * @dataProvider invalidConstructorProvider
+	 *
+	 * @since 3.0
+	 */
+	public function testGivenInvalidArguments_constructorThrowsException() {
+		$this->setExpectedException( 'InvalidArgumentException' );
+		call_user_func_array( array( $this, 'newInstance' ), func_get_args() );
 	}
 
 	/**

@@ -5,13 +5,9 @@ namespace Maps\Test;
 use MapsDistanceParser;
 
 /**
- * Tests for the MapsCoordinates class.
+ * @covers MapsCoordinates
  *
- * @file
  * @since 0.6.5
- *
- * @ingroup Maps
- * @ingroup Test
  *
  * @group Maps
  *

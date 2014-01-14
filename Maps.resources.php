@@ -5,9 +5,6 @@
  *
  * @since 3.0
  *
- * @file
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner < daniel.a.r.werner@gmail.com >
@@ -18,7 +15,7 @@ return call_user_func( function() {
 
 	$moduleTemplate = array(
 		'localBasePath' => __DIR__ . '/includes',
-		'remoteExtPath' =>  'Maps/includes',
+		'remoteExtPath' =>  '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/includes',
 		'group' => 'ext.maps'
 	);
 

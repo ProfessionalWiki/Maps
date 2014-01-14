@@ -2,14 +2,11 @@
 
 namespace Maps\Test;
 
+use DataValues\LatLongValue;
+use ParamProcessor\ParamDefinition;
+
 /**
- * Tests for the Maps\Coordinates class.
- *
- * @file
- * @since 2.0
- *
- * @ingroup Maps
- * @ingroup Test
+ * @covers MapsCoordinates
  *
  * @group Maps
  * @group ParserHook
@@ -39,13 +36,18 @@ class CoordinatesTest extends ParserHookTest {
 
 		$paramLists[] = array(
 			array(
-				'location' => '4,2'
+				'location' => '4,2',
+				'format' => 'dms',
+				'directional' => 'no',
 			),
 			'4° 0\' 0", 2° 0\' 0"'
 		);
+
 		$paramLists[] = array(
 			array(
-				'location' => '55 S, 37.6176330 W'
+				'location' => '55 S, 37.6176330 W',
+				'format' => 'dms',
+				'directional' => 'no',
 			),
 			'-55° 0\' 0", -37° 37\' 3.4788"'
 		);
@@ -54,8 +56,26 @@ class CoordinatesTest extends ParserHookTest {
 			array(
 				'location' => '4,2',
 				'format' => 'float',
+				'directional' => 'no',
 			),
 			'4, 2'
+		);
+
+		$paramLists[] = array(
+			array(
+				'location' => '-4,-2',
+				'format' => 'float',
+				'directional' => 'yes',
+			),
+			'4 S, 2 W'
+		);
+
+		$paramLists[] = array(
+			array(
+				'location' => '55 S, 37.6176330 W',
+				'directional' => 'yes',
+			),
+			'55° 0\' 0" S, 37° 37\' 3.4788" W'
 		);
 
 		return $paramLists;
@@ -67,7 +87,7 @@ class CoordinatesTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
 		$argLists = array();
 
 		$values = array(
@@ -75,7 +95,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\LatLongValue( 4, 2 ),
+			'location' => new LatLongValue( 4, 2 ),
 		);
 
 		$argLists[] = array( $values, $expected );
@@ -87,7 +107,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\LatLongValue( 4, 2 ),
+			'location' => new LatLongValue( 4, 2 ),
 			'directional' => !$definitions['directional']->getDefault(),
 			'format' => Maps_COORDS_DD,
 		);
@@ -101,7 +121,7 @@ class CoordinatesTest extends ParserHookTest {
 		);
 
 		$expected = array(
-			'location' => new \DataValues\LatLongValue( 4, 2 ),
+			'location' => new LatLongValue( 4, 2 ),
 			'directional' => !$definitions['directional']->getDefault(),
 			'format' => Maps_COORDS_DD,
 		);

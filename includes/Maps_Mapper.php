@@ -5,7 +5,6 @@
  * 
  * @since 0.1
  * 
- * @ingroup Maps
  * @deprecated
  *
  * @licence GNU GPL v2+
@@ -160,8 +159,6 @@ final class MapsMapper {
 		
 		if ( !$baseInit ) {
 			$baseInit = true;
-			global $egMapsScriptPath;
-			$json .= 'var egMapsScriptPath =' . FormatJson::encode( $egMapsScriptPath ) . ';';
 			$json .= 'var mwmaps={};';
 		}
 		

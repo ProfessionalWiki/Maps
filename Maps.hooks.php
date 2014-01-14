@@ -5,9 +5,6 @@
  *
  * @since 0.7
  *
- * @file Maps.hooks.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
@@ -45,51 +42,6 @@ final class MapsHooks {
 		$smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Maps', $maps_docu_label ) );
 
 		return true;
-	}
-
-	/**
-	 * Hook to add PHPUnit test cases.
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UnitTestsList
-	 *
-	 * @since 0.7
-	 *
-	 * @param array &$files
-	 *
-	 * @return boolean
-	 */
-	public static function registerUnitTests( array &$files ) {
-		// @codeCoverageIgnoreStart
-		$testFiles = array(
-			'elements/Circle',
-			'elements/ImageOverlay',
-			'elements/Line',
-			'elements/Location',
-			'elements/Polygon',
-			'elements/Rectangle',
-
-			'parserhooks/Coordinates',
-			'parserhooks/DisplayMap',
-			'parserhooks/Distance',
-			'parserhooks/Finddestination',
-			'parserhooks/Geocode',
-			'parserhooks/Geodistance',
-			'parserhooks/MapsDoc',
-
-			'parsers/DistanceParser',
-			'parsers/LineParser',
-			'parsers/LocationParser',
-			'parsers/WmsOverlayParser',
-
-			'Element',
-			'MapsDistanceParser',
-		);
-
-		foreach ( $testFiles as $file ) {
-			$files[] = __DIR__ . '/tests/phpunit/' . $file . 'Test.php';
-		}
-
-		return true;
-		// @codeCoverageIgnoreEnd
 	}
 
 	/**

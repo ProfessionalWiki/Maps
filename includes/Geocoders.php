@@ -4,6 +4,7 @@ namespace Maps;
 
 use DataValues\LatLongValue;
 use MWException;
+use ValueFormatters\GeoCoordinateFormatter;
 use ValueParsers\ParseException;
 
 /**
@@ -12,9 +13,6 @@ use ValueParsers\ParseException;
  * FIXME: this is procedural spaghetti
  *
  * @since 0.4
- * 
- * @file Maps_Geocoders.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -167,7 +165,7 @@ final class Geocoders {
 	 * @param string $service
 	 * @param string $mappingService
 	 * @param boolean $checkForCoords
-	 * @param coordinate type $targetFormat The notation to which they should be formatted. Defaults to floats.
+	 * @param string $targetFormat The notation to which they should be formatted. Defaults to floats.
 	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
 	 * 
 	 * @return string|false
@@ -180,17 +178,19 @@ final class Geocoders {
 		}
 
 		$options = new \ValueFormatters\FormatterOptions( array(
-			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
-			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional
+			GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional
 		) );
 
-		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
+		$formatter = new GeoCoordinateFormatter( $options );
 		return $formatter->format( $geoCoordinate );
 	}
 
 	/**
 	 * Geocodes an address with the provided geocoding service and returns the result 
 	 * as an array, or false when the geocoding failed.
+	 *
+	 * FIXME: complexity
 	 *
 	 * @since 0.7
 	 *
@@ -226,26 +226,40 @@ final class Geocoders {
 				return $cacheResult;
 			}				
 		}
-		
-		// Do the actual geocoding via the geocoder.
-		$coordinates = $geocoder->geocode( $address );
-		
-		// If there address could not be geocoded, and contains comma's, try again without the comma's.
-		// This is cause several geocoding services such as geonames do not handle comma's well.
-		if ( !$coordinates && strpos( $address, ',' ) !== false ) {
-			$coordinates = $geocoder->geocode( str_replace( ',', '', $address ) );
-		}
+
+		$coordinates = self::getGeocoded( $geocoder, $address );
 
 		if ( $coordinates === false ) {
 			return false;
 		}
 
-		$coordinates = new LatLongValue(
-			$coordinates['lat'],
-			$coordinates['lon']
-		);
-		
 		self::cacheWrite( $address, $coordinates );
+
+		return $coordinates;
+	}
+
+	private static function getGeocoded( Geocoder $geocoder, $address ) {
+		$coordinates = self::getGeocodedAsArray( $geocoder, $address );
+
+		if ( $coordinates !== false ) {
+			$coordinates = new LatLongValue(
+				$coordinates['lat'],
+				$coordinates['lon']
+			);
+		}
+
+		return $coordinates;
+	}
+
+	private static function getGeocodedAsArray( Geocoder $geocoder, $address ) {
+		// Do the actual geocoding via the geocoder.
+		$coordinates = $geocoder->geocode( $address );
+
+		// If there address could not be geocoded, and contains comma's, try again without the comma's.
+		// This is cause several geocoding services such as geonames do not handle comma's well.
+		if ( !$coordinates && strpos( $address, ',' ) !== false ) {
+			$coordinates = $geocoder->geocode( str_replace( ',', '', $address ) );
+		}
 
 		return $coordinates;
 	}

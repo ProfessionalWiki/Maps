@@ -2,25 +2,10 @@
 
 /**
  * Initialization file for the Maps extension.
- *
- * On MediaWiki.org:         http://www.mediawiki.org/wiki/Extension:Maps
- * Official documentation:     http://mapping.referata.com/wiki/Maps
- * Examples/demo's:         http://mapping.referata.com/wiki/Maps_examples
- *
- * @file Maps.php
- * @ingroup Maps
+ * https://github.com/JeroenDeDauw/Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
- */
-
-/**
- * This documentation group collects source code files belonging to Maps.
- *
- * Please do not use this group name for other code. If you have an extension to
- * Maps, please use your own group definition.
- *
- * @defgroup Maps Maps
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -28,35 +13,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 if ( defined( 'Maps_VERSION' ) ) {
-	// Do not initialize more then once.
-	return;
+	// Do not initialize more than once.
+	return 1;
 }
 
-define( 'Maps_VERSION' , '3.0 alpha' );
+define( 'Maps_VERSION' , '3.0-RC1' );
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	include_once( __DIR__ . '/vendor/autoload.php' );
 }
 
-// Attempt to include the ParamProcessor lib if that has not been loaded yet.
-if ( !defined( 'ParamProcessor_VERSION' ) && file_exists( __DIR__ . '/../Validator/Validator.php' ) ) {
-	include_once( __DIR__ . '/../Validator/Validator.php' );
-}
-
-// Attempt to include the DataValues lib if that has not been loaded yet.
-if ( !defined( 'DataValues_VERSION' ) && file_exists( __DIR__ . '/../DataValues/DataValues.php' ) ) {
-	include_once( __DIR__ . '/../DataValues/DataValues.php' );
-}
-
 // Only initialize the extension when all dependencies are present.
-if ( !defined( 'ParamProcessor_VERSION' ) ) {
-	throw new Exception( 'You need to have ParamProcessor (Validator) 1.0 or later installed in order to use Maps' );
-}
-
-// Only initialize the extension when all dependencies are present.
-if ( !defined( 'DataValues_VERSION' ) ) {
-	throw new Exception( 'You need to have DataValues installed in order to use Maps' );
+if ( !defined( 'Validator_VERSION' ) ) {
+	throw new Exception( 'You need to have Validator installed in order to use Maps' );
 }
 
 if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
@@ -64,9 +34,9 @@ if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
 }
 
 call_user_func( function() {
-	global $wgExtensionCredits, $wgExtensionAssetsPath, $wgScriptPath, $wgAutoloadClasses;
+	global $wgExtensionCredits;
 	global $wgResourceModules, $wgGroupPermissions, $egMapsNamespaceIndex, $wgStyleVersion;
-	global $egMapsScriptPath, $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles;
+	global $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles;
 
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__ ,
@@ -85,7 +55,6 @@ call_user_func( function() {
 	define( 'Maps_COORDS_DM' , 'dm' );
 	define( 'Maps_COORDS_DD' , 'dd' );
 
-	$egMapsScriptPath = ( $wgExtensionAssetsPath === false ? $wgScriptPath . '/extensions' : $wgExtensionAssetsPath ) . '/Maps';
 	$egMapsDir = __DIR__ . '/';
 
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
@@ -94,8 +63,6 @@ call_user_func( function() {
 	$wgExtensionMessagesFiles['MapsMagic'] 			= __DIR__ . '/Maps.i18n.magic.php';
 	$wgExtensionMessagesFiles['MapsNamespaces'] 	= __DIR__ . '/Maps.i18n.namespaces.php';
 	$wgExtensionMessagesFiles['MapsAlias'] 			= __DIR__ . '/Maps.i18n.alias.php';
-
-	$wgAutoloadClasses = array_merge( $wgAutoloadClasses, include 'Maps.classes.php' );
 
 	$wgResourceModules = array_merge( $wgResourceModules, include 'Maps.resources.php' );
 
@@ -116,16 +83,14 @@ call_user_func( function() {
 		return true;
 	};
 
-	$wgHooks['AdminLinks'                ][] = 'MapsHooks::addToAdminLinks';
-	$wgHooks['UnitTestsList'             ][] = 'MapsHooks::registerUnitTests';
-	$wgHooks['ArticleFromTitle'          ][] = 'MapsHooks::onArticleFromTitle';
-	$wgHooks['MakeGlobalVariablesScript' ][] = 'MapsHooks::onMakeGlobalVariablesScript';
-	$wgHooks['CanonicalNamespaces'       ][] = 'MapsHooks::onCanonicalNamespaces';
-	$wgHooks['LoadExtensionSchemaUpdates'][] = 'MapsHooks::onLoadExtensionSchemaUpdates';
-	$wgHooks['ArticlePurge'              ][] = 'MapsHooks::onArticlePurge';
-	$wgHooks['LinksUpdateConstructed'    ][] = 'MapsHooks::onLinksUpdateConstructed';
-	$wgHooks['ParserAfterTidy'           ][] = 'MapsHooks::onParserAfterTidy';
-	$wgHooks['ParserClearState'          ][] = 'MapsHooks::onParserClearState';
+	$wgHooks['AdminLinks'][]                = 'MapsHooks::addToAdminLinks';
+	$wgHooks['ArticleFromTitle'][]          = 'MapsHooks::onArticleFromTitle';
+	$wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
+	$wgHooks['CanonicalNamespaces'][]       = 'MapsHooks::onCanonicalNamespaces';	$wgHooks['LoadExtensionSchemaUpdates'][] = 'MapsHooks::onLoadExtensionSchemaUpdates';
+	$wgHooks['ArticlePurge'][]              = 'MapsHooks::onArticlePurge';
+	$wgHooks['LinksUpdateConstructed'][]    = 'MapsHooks::onLinksUpdateConstructed';
+	$wgHooks['ParserAfterTidy'][]           = 'MapsHooks::onParserAfterTidy';
+	$wgHooks['ParserClearState'][]          = 'MapsHooks::onParserClearState';
 
 	// Parser hooks
 
@@ -178,6 +143,9 @@ call_user_func( function() {
 	// Registration of the Google Geocoding (v2) service geocoder.
 	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
 
+	// Registration of the geocoder.us service geocoder.
+	$wgHooks['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
+
 	// Layers
 
 	// Registration of the image layer type.
@@ -227,6 +195,14 @@ call_user_func( function() {
 
 	$wgParamDefinitions['mapsline'] = array(
 		'string-parser' => 'Maps\LineParser',
+	);
+
+	$wgParamDefinitions['mapscircle'] = array(
+		'string-parser' => 'Maps\CircleParser',
+	);
+
+	$wgParamDefinitions['mapsrectangle'] = array(
+		'string-parser' => 'Maps\RectangleParser',
 	);
 
 	$wgParamDefinitions['mapspolygon'] = array(

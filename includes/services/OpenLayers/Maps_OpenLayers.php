@@ -6,9 +6,6 @@
  * 
  * @since 0.1
  * 
- * @file Maps_OpenLayers.php
- * @ingroup MapsOpenLayers
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -19,7 +16,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * 
 	 * @since 0.6.6
 	 */	
-	function __construct( $serviceName ) {
+	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
 			array( 'layers', 'openlayer' )
@@ -190,7 +187,10 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return array
 	 */
 	public function getConfigVariables() {
-		return array_merge( parent::getConfigVariables(), array( 'egMapsScriptPath' => $GLOBALS['egMapsScriptPath'] ) );
+		return array_merge(
+			parent::getConfigVariables(),
+			array( 'egMapsScriptPath' => $GLOBALS['wgScriptPath'] . '/extensions/Maps/' )
+		);
 	}
 	
 }

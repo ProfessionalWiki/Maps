@@ -1,4 +1,5 @@
 <?php
+use ValueFormatters\GeoCoordinateFormatter;
 
 /**
  * Class for the 'finddestination' parser hooks, which can find a
@@ -6,13 +7,9 @@
  * 
  * @since 0.7
  * 
- * @file Maps_Finddestination.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-use DataValues\LatLongValue;
 
 class MapsFinddestination extends ParserHook {
 
@@ -127,11 +124,11 @@ class MapsFinddestination extends ParserHook {
 		);
 
 		$options = new \ValueFormatters\FormatterOptions( array(
-			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
 		) );
 
-		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
+		$formatter = new GeoCoordinateFormatter( $options );
 
 		$geoCoords = new \DataValues\LatLongValue( $destination['lat'], $destination['lon'] );
 		$output = $formatter->format( $geoCoords );

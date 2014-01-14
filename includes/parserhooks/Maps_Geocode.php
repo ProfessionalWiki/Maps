@@ -1,4 +1,5 @@
 <?php
+use ValueFormatters\GeoCoordinateFormatter;
 
 /**
  * Class for the 'geocode' parser hooks, which can turn
@@ -6,9 +7,6 @@
  * 
  * @since 0.7
  * 
- * @file Maps_Geocode.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -115,11 +113,11 @@ class MapsGeocode extends ParserHook {
 		$coordinates = $parameters['location']->getCoordinates();
 
 		$options = new \ValueFormatters\FormatterOptions( array(
-			\ValueFormatters\GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			// TODO \ValueFormatters\GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
 		) );
 
-		$formatter = new \ValueFormatters\GeoCoordinateFormatter( $options );
+		$formatter = new GeoCoordinateFormatter( $options );
 
 		return $formatter->format( $coordinates );
 	}

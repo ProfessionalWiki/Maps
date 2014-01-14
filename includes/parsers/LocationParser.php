@@ -3,7 +3,9 @@
 namespace Maps;
 
 use DataValues\LatLongValue;
+use Maps\Elements\Location;
 use MWException;
+use Title;
 use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
@@ -12,9 +14,6 @@ use ValueParsers\StringValueParser;
  * ValueParser that parses the string representation of a location.
  *
  * @since 3.0
- *
- * @file
- * @ingroup ValueParsers
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -39,12 +38,12 @@ class LocationParser extends StringValueParser {
 
 		$metaData = explode( $separator, $value );
 
-		$coordinates = $this->getCoordinates( array_shift( $metaData ) );
+		$coordinates = $this->stringToLatLongValue( array_shift( $metaData ) );
 
 		$location = new Location( $coordinates );
 
 		if ( $metaData !== array() ) {
-			$location->setTitle( array_shift( $metaData ) );
+			$this->setTitleOrLink( $location, array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== array() ) {
@@ -55,7 +54,47 @@ class LocationParser extends StringValueParser {
 			$location->setIcon( array_shift( $metaData ) );
 		}
 
+		if ( $metaData !== array() ) {
+			$location->setGroup( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== array() ) {
+			$location->setInlineLabel( array_shift( $metaData ) );
+		}
+
 		return $location;
+	}
+
+	protected function setTitleOrLink( Location $location, $titleOrLink ) {
+		if ( $this->isLink( $titleOrLink ) ) {
+			$this->setLink( $location, $titleOrLink );
+		}
+		else {
+			$location->setTitle( $titleOrLink );
+		}
+	}
+
+	protected function isLink( $value ) {
+		return strpos( $value , 'link:' ) === 0;
+	}
+
+	protected function setLink( Location $location, $link ) {
+		$link = substr( $link, 5 );
+		$location->setLink( $this->getExpandedLink( $link ) );
+	}
+
+	protected function getExpandedLink( $link ) {
+		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
+			return $link;
+		}
+
+		$title = Title::newFromText( $link );
+
+		if ( $title === null ) {
+			return '';
+		}
+
+		return $title->getFullUrl();
 	}
 
 	/**
@@ -66,9 +105,9 @@ class LocationParser extends StringValueParser {
 	 * @return LatLongValue
 	 * @throws ParseException
 	 */
-	protected function getCoordinates( $location ) {
-		if ( $this->supportGeocoding && \Maps\Geocoders::canGeocode() ) {
-			$location = \Maps\Geocoders::attemptToGeocode( $location );
+	protected function stringToLatLongValue( $location ) {
+		if ( $this->supportGeocoding && Geocoders::canGeocode() ) {
+			$location = Geocoders::attemptToGeocode( $location );
 
 			if ( $location === false ) {
 				throw new ParseException( 'Failed to parse or geocode' );

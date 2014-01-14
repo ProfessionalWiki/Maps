@@ -1,17 +1,14 @@
 <?php
 
+use Maps\Elements\BaseElement;
+
 /**
- *
- *
  * @since 2.0
- *
- * @file Maps_Line.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */
-class MapsBaseStrokableElement extends \Maps\BaseElement implements iStrokableMapElement {
+class MapsBaseStrokableElement extends BaseElement implements iStrokableMapElement {
 
 	protected $strokeColor;
 	protected $strokeOpacity;

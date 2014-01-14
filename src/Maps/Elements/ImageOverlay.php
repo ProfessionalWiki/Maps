@@ -1,15 +1,13 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
+use InvalidArgumentException;
 
 /**
- * Class representing an image overlay.
- *
  * @since 3.0
  *
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
@@ -32,8 +30,14 @@ class ImageOverlay extends Rectangle {
 	 * @param LatLongValue $boundsNorthEast
 	 * @param LatLongValue $boundsSouthWest
 	 * @param string $image
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( LatLongValue $boundsNorthEast, LatLongValue $boundsSouthWest, $image ) {
+		if ( !is_string( $image ) ) {
+			throw new InvalidArgumentException( '$image must be a string' );
+		}
+
 		parent::__construct( $boundsNorthEast, $boundsSouthWest );
 		$this->image = $image;
 	}

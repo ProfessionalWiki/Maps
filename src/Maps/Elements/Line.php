@@ -1,16 +1,15 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
-use MWException;
+use InvalidArgumentException;
 
 /**
  * Class representing a collection of LatLongValue objects forming a line.
  *
  * @since 3.0
  *
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
@@ -30,12 +29,12 @@ class Line extends \MapsBaseStrokableElement {
 	 *
 	 * @param LatLongValue[] $coordinates
 	 *
-	 * @throws MWException
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( array $coordinates = array() ) {
 		foreach ( $coordinates as $coordinate ) {
 			if ( !( $coordinate instanceof LatLongValue ) ) {
-				throw new MWException( 'Can only construct Maps\Line with DataValues\LatLongValue objects' );
+				throw new InvalidArgumentException( 'Can only construct Line with LatLongValue objects' );
 			}
 		}
 

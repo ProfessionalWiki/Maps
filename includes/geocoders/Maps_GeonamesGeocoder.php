@@ -4,9 +4,6 @@
  * Class for geocoding requests with the GeoNames webservice.
  * 
  * @since 1.0
- * @file Maps_GeonamesGeocoder.php
- * @ingroup Maps
- * @ingroup Geocoders
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

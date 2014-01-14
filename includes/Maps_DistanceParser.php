@@ -5,9 +5,6 @@
  *
  * TODO: migrate to DataValue, ValueParser and ValueFormatter
  *
- * @file Maps_DistanceParser.php
- * @ingroup Maps
- * 
  * @since 0.6
  *
  * @licence GNU GPL v2+

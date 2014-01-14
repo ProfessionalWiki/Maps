@@ -3,16 +3,7 @@
 namespace Maps\Test;
 
 /**
- * Unit tests for the Maps\DistanceParser class.
- *
- * @since 3.0
- *
- * @ingroup MapsTest
- *
- * @group ValueParsers
- * @group Maps
- * @group DistanceParserTest
- *
+ * @covers Maps\DistanceParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

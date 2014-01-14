@@ -4,14 +4,10 @@
  * This groupe contains all Google Maps v3 related files of the Maps extension.
  * 
  * @defgroup MapsGoogleMaps3 Google Maps v3
- * @ingroup Maps
  */
 
 /**
  * This file holds the hook and initialization for the Google Maps v3 service. 
- *
- * @file GoogleMaps3.php
- * @ingroup MapsGoogleMaps3
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -22,12 +18,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgResourceModules, $egMapsScriptPath, $wgHooks;
+	global $wgResourceModules, $wgHooks;
 
 	$wgResourceModules['ext.maps.googlemaps3'] = array(
 		'dependencies' => array( 'ext.maps.common' ),
 		'localBasePath' => __DIR__,
-		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ),
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'jquery.googlemap.js',
@@ -37,12 +33,14 @@ call_user_func( function() {
 			'maps-googlemaps3-incompatbrowser',
 			'maps-copycoords-prompt',
 			'maps-searchmarkers-text',
+			'maps-fullscreen-button',
+			'maps-fullscreen-button-tooltip',
 		)
 	);
 
 	$wgResourceModules['ext.maps.gm3.markercluster'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . 'gm3-util-library',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'markerclusterer.js',
@@ -51,7 +49,7 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.markerwithlabel'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) .  'gm3-util-library',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'markerwithlabel.js',
@@ -63,17 +61,18 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.geoxml'] = array(
 		'localBasePath' => __DIR__ . '/geoxml3',
-		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/geoxml3',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . 'geoxml3',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'geoxml3.js',
 			'ZipFile.complete.js', //kmz handling
+			'ProjectedOverlay.js', //Overlay handling
 		),
 	);
 
 	$wgResourceModules['ext.maps.gm3.earth'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . 'gm3-util-library',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'googleearth-compiled.js',

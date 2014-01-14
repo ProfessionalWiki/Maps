@@ -2,14 +2,10 @@
 
 namespace Maps\Test;
 
+use Maps\Elements\Location;
+
 /**
- * Tests for the Maps\Finddestination class.
- *
- * @file
- * @since 2.0
- *
- * @ingroup Maps
- * @ingroup Test
+ * @covers MapsFinddestination
  *
  * @group Maps
  * @group ParserHook
@@ -101,7 +97,7 @@ class FinddestinationTest extends ParserHookTest {
 					$expected = array(
 						'distance' => $expectedDistance,
 						'bearing' => (float)$bearing,
-						'location' => new \Maps\Location( $coordinateParser->parse( $location )->getValue() ),
+						'location' => new Location( $coordinateParser->parse( $location )->getValue() ),
 					);
 
 					$argLists[] = array( $values, $expected );

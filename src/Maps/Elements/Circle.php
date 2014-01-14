@@ -1,16 +1,13 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
-use Maps\Location;
+use InvalidArgumentException;
 
 /**
- * Class representing a circle.
- *
  * @since 3.0
  *
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
@@ -31,8 +28,18 @@ class Circle extends \MapsBaseFillableElement {
 	/**
 	 * @param LatLongValue $circleCentre
 	 * @param integer|float $circleRadius
+	 *
+	 * @throws InvalidArgumentException
 	 */
-	public function __construct( LatLongValue $circleCentre , $circleRadius ) {
+	public function __construct( LatLongValue $circleCentre, $circleRadius ) {
+		if ( !is_float( $circleRadius ) && !is_int( $circleRadius ) ) {
+			throw new InvalidArgumentException( '$circleRadius must be a float or int' );
+		}
+
+		if ( $circleRadius <= 0 ) {
+			throw new InvalidArgumentException( '$circleRadius must be greater than zero' );
+		}
+
 		parent::__construct();
 
 		$this->setCircleCentre( $circleCentre );

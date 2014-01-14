@@ -1,8 +1,9 @@
 <?php
 
-namespace Maps;
+namespace Maps\Elements;
 
 use DataValues\LatLongValue;
+use Maps\Geocoders;
 use MWException;
 
 /**
@@ -12,13 +13,11 @@ use MWException;
  *
  * @since 3.0
  *
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner
  */
-class Location extends \Maps\BaseElement {
+class Location extends BaseElement {
 
 	/**
 	 * @since 3.0
@@ -61,7 +60,7 @@ class Location extends \Maps\BaseElement {
 	protected $visitedIcon = '';
 
 	/**
-	 * Creates and returns a new instance of a \Maps\Location from a latitude and longitude.
+	 * Creates and returns a new instance of a Location from a latitude and longitude.
 	 *
 	 * @since 1.0
 	 *
@@ -75,7 +74,7 @@ class Location extends \Maps\BaseElement {
 	}
 
 	/**
-	 * Creates and returns a new instance of a \Maps\Location from an address.
+	 * Creates and returns a new instance of a Location from an address.
 	 *
 	 * @since 1.0
 	 *
@@ -162,16 +161,10 @@ class Location extends \Maps\BaseElement {
 	 *
 	 * @since 0.7.1
 	 *
-	 * @param boolean $geocodeIfEmpty
-	 *
 	 * @return string
 	 */
-	public function getAddress( $geocodeIfEmpty = true ) {
+	public function getAddress() {
 		if ( is_null( $this->address ) ) {
-			if ( $geocodeIfEmpty ) {
-				// TODO: attempt to reverse-geocode
-			}
-
 			$this->address = '';
 		}
 
@@ -296,6 +289,8 @@ class Location extends \Maps\BaseElement {
 	/**
 	 * Returns an object that can directly be converted to JS using json_encode or similar.
 	 *
+	 * FIXME: complexity
+	 *
 	 * @since 1.0
 	 *
 	 * @param string $defText
@@ -309,6 +304,7 @@ class Location extends \Maps\BaseElement {
 	 */
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
+
 		$array = array(
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
@@ -319,6 +315,7 @@ class Location extends \Maps\BaseElement {
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
 			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
 		);
+
 		return array_merge( $parentArray , $array );
 	}
 

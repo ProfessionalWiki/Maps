@@ -2,19 +2,10 @@
 
 namespace Maps\Test;
 
-use Maps\WmsOverlay;
+use Maps\Elements\WmsOverlay;
 
 /**
- * Unit tests for the Maps\WmsOverlayParser class.
- *
- * @since 3.0
- *
- * @ingroup MapsTest
- *
- * @group ValueParsers
- * @group Maps
- * @group WmsOverlayParserTest
- *
+ * @covers Maps\WmsOverlayParser
  * @licence GNU GPL v2+
  * @author Mathias Mølster Lidal <mathiaslidal@gmail.com>
  */

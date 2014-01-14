@@ -1,18 +1,14 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
 use DataValues\LatLongValue;
+use Maps\Elements\Circle;
 
 /**
- * Unit tests for the Maps\Circle class.
+ * @covers Maps\Elements\Circle
  *
  * @since 3.0
- *
- * @ingroup MapsTest
- *
- * @group Maps
- * @group MapsElement
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -27,39 +23,47 @@ class CircleTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Circle';
+		return 'Maps\Elements\Circle';
 	}
 
-	/**
-	 * @see BaseElementTest::constructorProvider
-	 *
-	 * @since 3.0
-	 *
-	 * @return array
-	 */
-	public function constructorProvider() {
+	public function validConstructorProvider() {
 		$argLists = array();
 
-		$argLists[] = array( false );
-		$argLists[] = array( false, '' );
-		$argLists[] = array( false, '4,2' );
-		$argLists[] = array( false, new LatLongValue( 4, 2 ) );
+		$argLists[] = array( new LatLongValue( 4, 2 ), 42 );
+		$argLists[] = array( new LatLongValue( 42, 2.2 ), 9000.1 );
+		$argLists[] = array( new LatLongValue( 4, 2 ), 1 );
+		$argLists[] = array( new LatLongValue( 4, 2 ), 0.1 );
 
-		$argLists[] = array( true, new LatLongValue( 4, 2 ), 42 );
-		$argLists[] = array( true, new LatLongValue( 42, 2.2 ), 9000.1 );
+		return $argLists;
+	}
 
-		$argLists[] = array( false, '~=[,,_,,]:3', 9000.1 );
+	public function invalidConstructorProvider() {
+		$argLists = array();
+
+		$argLists[] = array( new LatLongValue( 4, 2 ), 'foo' );
+
+		$argLists[] = array( new LatLongValue( 4, 2 ), 0 );
+		$argLists[] = array( new LatLongValue( 4, 2 ), -42 );
 
 		return $argLists;
 	}
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Circle $circle
+	 * @param Circle $circle
 	 * @param array $arguments
 	 */
-	public function testGetCircleCentre( \Maps\Circle $circle, array $arguments ) {
+	public function testGetCircleCentre( Circle $circle, array $arguments ) {
 		$this->assertTrue( $circle->getCircleCentre()->equals( $arguments[0] ) );
+	}
+
+	/**
+	 * @dataProvider instanceProvider
+	 * @param Circle $circle
+	 * @param array $arguments
+	 */
+	public function testGetCircleRadius( Circle $circle, array $arguments ) {
+		$this->assertEquals( $arguments[1], $circle->getCircleRadius() );
 	}
 
 }

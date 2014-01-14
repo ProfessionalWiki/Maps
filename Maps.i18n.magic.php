@@ -1,9 +1,7 @@
 <?php
+
 /**
  * Internationalisation file for Maps extension.
- *
- * @file
- * @ingroup Extensions
  */
 
 $magicWords = array();
@@ -44,11 +42,11 @@ $magicWords['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $magicWords['arz'] = array(
-	'display_map' => array( 0, 'عرض_الخريطه', 'عرض_الخريطة', 'display_map' ),
-	'geocode' => array( 0, 'كود_جغرافي', 'geocode' ),
-	'geodistance' => array( 0, 'مسافه_جغرافيه', 'مسافة_جغرافية', 'geodistance' ),
-	'finddestination' => array( 0, 'إيجاد_الوجهه', 'إيجاد_الوجهة', 'finddestination' ),
-	'coordinates' => array( 0, 'إحداثيات', 'coordinates' ),
+	'display_map' => array( 0, 'عرض_الخريطه', 'عرض_الخريطة' ),
+	'geocode' => array( 0, 'كود_جغرافي' ),
+	'geodistance' => array( 0, 'مسافه_جغرافيه', 'مسافة_جغرافية' ),
+	'finddestination' => array( 0, 'إيجاد_الوجهه', 'إيجاد_الوجهة' ),
+	'coordinates' => array( 0, 'إحداثيات' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -83,16 +81,16 @@ $magicWords['de'] = array(
 
 /** Zazaki (Zazaki) */
 $magicWords['diq'] = array(
-	'display_map' => array( 0, 'aseniya_xerita' ),
+	'display_map' => array( 0, 'aseniya_ğerita' ),
 	'display_point' => array( 0, 'aseniya_dewti' ),
 	'display_points' => array( 0, 'aseniya_dawıtan' ),
-	'display_line' => array( 0, 'aseniya_xeter' ),
+	'display_line' => array( 0, 'aseniya_ğeter' ),
 	'geocode' => array( 0, 'herunkodi' ),
 	'geodistance' => array( 0, 'heruna_mesafi' ),
 	'finddestination' => array( 0, 'menzilvinayış' ),
 	'coordinates' => array( 0, 'koordinati' ),
 	'distance' => array( 0, 'mesafe' ),
-	'mapsdoc' => array( 0, 'dokumanêxerita' ),
+	'mapsdoc' => array( 0, 'dokumanéğerita' ),
 );
 
 /** Esperanto (Esperanto) */
@@ -348,6 +346,6 @@ $magicWords['uz'] = array(
 
 /** Vietnamese (Tiếng Việt) */
 $magicWords['vi'] = array(
-	'geocode' => array( 0, 'mãhóađịalý', 'mãhoáđịalý', 'mãhóađịalí', 'mãhoáđịalí' ),
-	'coordinates' => array( 0, 'tọađộ' ),
+	'geocode' => array( 0, 'mã_hóa_địa_lý', 'mãhóađịalý', 'mã_hoá_địa_lý', 'mãhoáđịalý', 'mã_hóa_địa_lí', 'mãhóađịalí', 'mã_hoá_địa_lí', 'mãhoáđịalí' ),
+	'coordinates' => array( 0, 'tọa_độ', 'tọađộ' ),
 );

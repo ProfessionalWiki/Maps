@@ -3,6 +3,7 @@
 namespace Maps;
 
 use DataValues\LatLongValue;
+use Maps\Elements\Line;
 use ValueParsers\StringValueParser;
 
 /**
@@ -10,20 +11,16 @@ use ValueParsers\StringValueParser;
  *
  * @since 3.0
  *
- * @file
- * @ingroup Maps
- * @ingroup ValueParser
- *
  * @licence GNU GPL v2+
  * @author Kim Eik
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class LineParser extends StringValueParser {
 
+	protected $supportGeocoding = true;
+
 	// TODO: use options
 	protected $metaDataSeparator = '~';
-
-	protected $supportGeocoding = true;
 
 	/**
 	 * @see StringValueParser::stringParse
@@ -37,7 +34,7 @@ class LineParser extends StringValueParser {
 	public function stringParse( $value ) {
 		$parts = explode( $this->metaDataSeparator , $value );
 
-		$line = new Line( $this->parseCoordinates(
+		$line = $this->constructShapeFromLatLongValues( $this->parseCoordinates(
 			explode( ':' , array_shift( $parts ) )
 		) );
 
@@ -76,6 +73,10 @@ class LineParser extends StringValueParser {
 		}
 
 		return $coordinates;
+	}
+
+	protected function constructShapeFromLatLongValues( array $locations ) {
+		return new Line( $locations );
 	}
 
 	/**

@@ -1,21 +1,16 @@
 <?php
 
-namespace Maps;
-
-use Maps\Location;
+namespace Maps\Elements;
 
 /**
  * Class that holds metadata on WMS overlay layers on map
  *
  * @since 3.0
  *
- * @file WmsOverlay.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Mathias Lidal < mathiaslidal@gmail.com >
  */
-class WmsOverlay extends \Maps\BaseElement {
+class WmsOverlay extends BaseElement {
 
 	/**
 	 * @since 3.0

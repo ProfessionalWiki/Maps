@@ -4,9 +4,6 @@
  * Class holding information and functionality specific to Leaflet.
  * This information and features can be used by any mapping feature.
  *
- * @file Maps_Leaflet.php
- * @ingroup Leaflet
- *
  * @licence GNU GPL v2+
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  */
@@ -15,7 +12,7 @@ class MapsLeaflet extends MapsMappingService {
 	/**
 	 * Constructor
 	 */
-	function __construct( $serviceName ) {
+	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
 			array( 'leafletmaps', 'leaflet' )
@@ -86,4 +83,14 @@ class MapsLeaflet extends MapsMappingService {
 			array( 'ext.maps.leaflet' )
 		);
 	}
+
+	protected function getDependencies() {
+		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
+		return array(
+			Html::linkedStyle( "$leafletPath/leaflet.css" ),
+			'<!--[if lte IE 8]>' . Html::linkedStyle( "$leafletPath/leaflet.ie.css" ). '<![endif]-->',
+			Html::linkedScript( "$leafletPath/leaflet.js" ),
+		);
+	}
+
 }

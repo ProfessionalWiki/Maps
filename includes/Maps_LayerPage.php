@@ -6,9 +6,6 @@
  *
  * @since dw1 (class with same name in 0.7.1+ but different purpose, 100% rewritten in dw1)
  *
- * @file Maps_LayerPage.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Daniel Werner

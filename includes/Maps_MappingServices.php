@@ -4,9 +4,6 @@
  * Class for interaction with MappingService objects.
  * 
  * @since 0.6.6
- * 
- * @file
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

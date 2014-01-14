@@ -1,23 +1,32 @@
 language: php
 
-php:
-  - 5.3
-  - 5.4
-  - 5.5
+env:
+  - THENEEDFORTHIS=FAIL
 
-before_script:
-  - bash .travis.sh
+matrix:
+  include:
+    - env: DBTYPE=mysql; MW=master
+      php: 5.3
+    - env: DBTYPE=mysql; MW=1.19.0
+      php: 5.4
+    - env: DBTYPE=mysql; MW=1.21.0
+      php: 5.5
+    - env: DBTYPE=sqlite; MW=master
+      php: 5.4
+    - env: DBTYPE=sqlite; MW=1.19.0
+      php: 5.5
+  exclude:
+    - env: THENEEDFORTHIS=FAIL
 
-script:
-  - cd ../phase3/extensions/Maps
-  - phpunit --coverage-clover ../../extensions/Maps/build/logs/clover.xml
+before_script: bash ./build/travis/before_script.sh
 
-after_script:
-  - php vendor/bin/coveralls -v
+script: bash ./build/travis/script.sh
+
+after_success: bash ./build/travis/after_success.sh
 
 notifications:
-  email:
-    recipients:
-      - jeroendedauw@gmail.com
-    on_success: change
+  irc:
+    channels:
+      - "chat.freenode.net#semantic-mediawiki"
+    on_success: never
     on_failure: always

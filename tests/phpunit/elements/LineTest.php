@@ -1,19 +1,14 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Elements;
 
 use DataValues\LatLongValue;
-use Maps\Line;
+use Maps\Elements\Line;
 
 /**
- * Unit tests for the Maps\Line class.
+ * @covers Maps\Elements\Line
  *
  * @since 3.0
- *
- * @ingroup MapsTest
- *
- * @group Maps
- * @group MapsElement
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -28,29 +23,16 @@ class LineTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Line';
+		return 'Maps\Elements\Line';
 	}
 
-	/**
-	 * @see BaseElementTest::constructorProvider
-	 *
-	 * @since 3.0
-	 *
-	 * @return array
-	 */
-	public function constructorProvider() {
+	public function validConstructorProvider() {
 		$argLists = array();
 
-		$argLists[] = array( false );
-		$argLists[] = array( false, '' );
-		$argLists[] = array( false, '4,2' );
-		$argLists[] = array( false, new LatLongValue( 4, 2 ) );
-
-		$argLists[] = array( true, array() );
-		$argLists[] = array( true, array( new LatLongValue( 4, 2 ) ) );
+		$argLists[] = array( array() );
+		$argLists[] = array( array( new LatLongValue( 4, 2 ) ) );
 
 		$argLists[] = array(
-			true,
 			array(
 				new LatLongValue( 4, 2 ),
 				new LatLongValue( 2, 4 ),
@@ -58,16 +40,22 @@ class LineTest extends BaseElementTest {
 			)
 		);
 
-		$argLists[] = array( false, array( '~=[,,_,,]:3' ) );
-		$argLists[] = array( false, array( new LatLongValue( 4, 2 ), '~=[,,_,,]:3' ) );
-		$argLists[] = array( false, array( '~=[,,_,,]:3', new LatLongValue( 4, 2 ) ) );
+		return $argLists;
+	}
+
+	public function invalidConstructorProvider() {
+		$argLists = array();
+
+		$argLists[] = array( array( '~=[,,_,,]:3' ) );
+		$argLists[] = array( array( new LatLongValue( 4, 2 ), '~=[,,_,,]:3' ) );
+		$argLists[] = array( array( '~=[,,_,,]:3', new LatLongValue( 4, 2 ) ) );
 
 		return $argLists;
 	}
 
 	/**
 	 * @dataProvider instanceProvider
-	 * @param \Maps\Line $line
+	 * @param Line $line
 	 * @param array $arguments
 	 */
 	public function testGetLineCoordinates( Line $line, array $arguments ) {

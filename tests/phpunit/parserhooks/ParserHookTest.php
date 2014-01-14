@@ -2,22 +2,17 @@
 
 namespace Maps\Test;
 
+use ParamProcessor\ParamDefinition;
+use ParamProcessor\Processor;
+
 /**
- * Tests for the MapsCoordinates class.
- *
- * @file
- * @since 2.0
- *
- * @ingroup Maps
- * @ingroup Test
- *
  * @group Maps
  * @group ParserHook
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParserHookTest extends \MediaWikiTestCase {
+abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @since 2.0
@@ -77,16 +72,16 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 	public function testParamProcessing( array $parameters, array $expectedValues ) {
 		$definitions = $this->getInstance()->getParamDefinitions();
 
-		$processor = \ParamProcessor\Processor::newDefault();
+		$processor = Processor::newDefault();
 		$processor->setParameters( $parameters, $definitions );
 
-		$processor->validateParameters();
+		$result = $processor->processParameters();
 
-		if ( $processor->hasFatalError() ) {
-			throw new \MWException( 'Fatal error occurred during the param processing: ' . $processor->hasFatalError()->getMessage() );
+		if ( $result->hasFatal() ) {
+			$this->fail( 'Fatal error occurred during the param processing: ' . $processor->hasFatalError()->getMessage() );
 		}
 
-		$actual = $processor->getParameterValues();
+		$actual = $result->getParameters();
 
 		$expectedValues = array_merge( $this->getDefaultValues(), $expectedValues );
 
@@ -95,8 +90,10 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 
 			$this->assertEquals(
 				$expected,
-				$actual[$name],
-				'Expected ' . var_export( $expected, true ) . ' should match actual ' . var_export( $actual[$name], true )
+				$actual[$name]->getValue(),
+				'Expected ' . var_export( $expected, true )
+					. ' should match actual '
+					. var_export( $actual[$name]->getValue(), true )
 			);
 		}
 	}
@@ -109,7 +106,7 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 	 * @return array
 	 */
 	protected function getDefaultValues() {
-		$definitions = \ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
 
 		$defaults = array();
 
@@ -120,6 +117,15 @@ abstract class ParserHookTest extends \MediaWikiTestCase {
 		}
 
 		return $defaults;
+	}
+
+	protected function arrayWrap( array $elements ) {
+		return array_map(
+			function ( $element ) {
+				return array( $element );
+			},
+			$elements
+		);
 	}
 
 }
