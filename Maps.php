@@ -77,6 +77,8 @@ $wgAutoloadClasses['MapsGeocoder'] 				= __DIR__ . '/includes/Maps_Geocoder.php'
 $wgAutoloadClasses['MapsKMLFormatter'] 			= __DIR__ . '/includes/Maps_KMLFormatter.php';
 $wgAutoloadClasses['MapsLayer'] 				= __DIR__ . '/includes/Maps_Layer.php';
 $wgAutoloadClasses['MapsLayerPage'] 			= __DIR__ . '/includes/Maps_LayerPage.php';
+$wgAutoloadClasses['MapsLayerGroup'] 			= __DIR__ . '/includes/Maps_LayerGroup.php';
+$wgAutoloadClasses['MapsLayerTypes'] 			= __DIR__ . '/includes/Maps_LayerTypes.php';
 $wgAutoloadClasses['MapsLayers'] 				= __DIR__ . '/includes/Maps_Layers.php';
 $wgAutoloadClasses['MapsLocation'] 				= __DIR__ . '/includes/Maps_Location.php';
 $wgAutoloadClasses['MapsLine'] 					= __DIR__ . '/includes/Maps_Line.php';
@@ -119,6 +121,7 @@ $wgAutoloadClasses['CriterionMapLayer'] 		= __DIR__ . '/includes/criteria/Criter
 $wgAutoloadClasses['CriterionLine'] 			= __DIR__ . '/includes/criteria/CriterionLine.php';
 $wgAutoloadClasses['CriterionPolygon'] 			= __DIR__ . '/includes/criteria/CriterionPolygon.php';
 $wgAutoloadClasses['CriterionSearchMarkers'] 	= __DIR__ . '/includes/criteria/CriterionSearchMarkers.php';
+$wgAutoloadClasses['CriterionIsNonNumeric'] 	= __DIR__ . '/includes/criteria/CriterionIsNonNumeric.php';
 
 $wgAutoloadClasses['MapsGeonamesGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GeonamesGeocoder.php';
 $wgAutoloadClasses['MapsGoogleGeocoder'] 		= __DIR__ . '/includes/geocoders/Maps_GoogleGeocoder.php';
@@ -141,6 +144,8 @@ $wgAutoloadClasses['MapsParamCircle'] = $manDir . 'Maps_ParamCircle.php';
 $wgAutoloadClasses['MapsParamRectangle'] = $manDir . 'Maps_ParamRectangle.php';
 $wgAutoloadClasses['MapsParamImageOverlay'] = $manDir . 'Maps_ParamImageOverlay.php';
 $wgAutoloadClasses['MapsParamWmsOverlay'] = $manDir . 'Maps_ParamWmsOverlay.php';
+$wgAutoloadClasses['MapsParamLayerDefinition'] = $manDir . 'Maps_ParamLayerDefinition.php';
+$wgAutoloadClasses['MapsParamSwitchIfGreaterThan'] = $manDir . 'Maps_ParamSwitchIfGreaterThan.php';
 unset( $manDir );
 
 $paramDir = __DIR__ . '/includes/params/';
@@ -155,6 +160,7 @@ $wgAutoloadClasses['MapsFinddestination'] 		= __DIR__ . '/includes/parserhooks/M
 $wgAutoloadClasses['MapsGeocode'] 				= __DIR__ . '/includes/parserhooks/Maps_Geocode.php';
 $wgAutoloadClasses['MapsGeodistance'] 			= __DIR__ . '/includes/parserhooks/Maps_Geodistance.php';
 $wgAutoloadClasses['MapsMapsDoc'] 				= __DIR__ . '/includes/parserhooks/Maps_MapsDoc.php';
+$wgAutoloadClasses['MapsLayerDefinition']		= __DIR__ . '/includes/parserhooks/Maps_LayerDefinition.php';
 
 // Load the special pages
 $wgAutoloadClasses['SpecialMapEditor'] 			= __DIR__ . '/includes/specials/SpecialMapEditor.php';
@@ -187,6 +193,15 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScrip
 // Since ??
 $wgHooks['CanonicalNamespaces'][] = 'MapsHooks::onCanonicalNamespaces';
 
+// since dw1:
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'MapsHooks::onLoadExtensionSchemaUpdates';
+$wgHooks['ArticlePurge'              ][] = 'MapsHooks::onArticlePurge';
+$wgHooks['LinksUpdateConstructed'    ][] = 'MapsHooks::onLinksUpdateConstructed';
+$wgHooks['ParserAfterTidy'           ][] = 'MapsHooks::onParserAfterTidy';
+$wgHooks['ParserClearState'          ][] = 'MapsHooks::onParserClearState';
+
+$egMapsFeatures = array();
+
 # Parser hooks
 
 # Required for #coordinates.
@@ -203,7 +218,10 @@ $wgHooks['ParserFirstCallInit'][] = 'MapsGeocode::staticInit';
 $wgHooks['ParserFirstCallInit'][] = 'MapsGeodistance::staticInit';
 # Required for #mapsdoc.
 $wgHooks['ParserFirstCallInit'][] = 'MapsMapsDoc::staticInit';
-
+# Required for #layer.
+$wgHooks['ParserFirstCallInit'][] = 'MapsLayerDefinition::staticInit';
+$wgHooks['LanguageGetMagic'][] = 'MapsLayerDefinition::staticMagic';
+	
 # Geocoders
 
 # Registration of the GeoNames service geocoder.
@@ -272,6 +290,15 @@ $wgResourceModules['ext.maps.coord'] = array(
 
 $wgResourceModules['ext.maps.resizable'] = array(
 	'dependencies' => 'jquery.ui.resizable'
+);
+
+$wgResourceModules['ext.maps.layers'] = array(
+	'localBasePath' => __dir__ . '/includes',
+	'remoteBasePath' => $egMapsScriptPath . '/includes',	
+	'group' => 'ext.maps',
+	'styles' => array(
+		'ext.maps.layers.css'
+	)
 );
 
 $wgResourceModules['mapeditor'] = array(

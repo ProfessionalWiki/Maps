@@ -262,21 +262,24 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		);
 		
 		# The difinitions for the layers that should be available for the user.
-		$egMapsOLAvailableLayers = array(
-			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
-		
-			'bing-normal' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ),
+		$egMapsOLAvailableLayers = array(		
+			'bing-normal'    => array( 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ),
 			'bing-satellite' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing' ),
-			'bing-hybrid' => array( 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing' ),
+			'bing-hybrid'    => array( 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing' ),
 		
-			'yahoo-normal' => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Streets", {"sphericalMercator":true} )', 'yahoo' ),
-			'yahoo-hybrid' => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Hybrid", {"type": YAHOO_MAP_HYB, "sphericalMercator":true} )', 'yahoo' ),
+			'yahoo-normal'    => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Streets", {"sphericalMercator":true} )', 'yahoo' ),
+			'yahoo-hybrid'    => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Hybrid", {"type": YAHOO_MAP_HYB, "sphericalMercator":true} )', 'yahoo' ),
 			'yahoo-satellite' => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Satellite", {"type": YAHOO_MAP_SAT, "sphericalMercator":true} )', 'yahoo' ),
 		
-			'osmarender' => array( 'OpenLayers.Layer.OSM.Osmarender("OSM arender")', 'osm' ),
-			'osm-mapnik' => array( 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ),
+			'osmarender'   => array( 'OpenLayers.Layer.OSM.Osmarender("OSM arender")', 'osm' ),
+			'osm-mapnik'   => array( 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ),
 			'osm-cyclemap' => array( 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm' ),
-		
+
+			'google-normal'    => array( 'OpenLayers.Layer.Google("Google Streets", {type: google.maps.MapTypeId.STREETS, numZoomLevels: 20})', 'google' ),
+			'google-satellite' => array( 'OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22})', 'google' ),
+			'google-hybrid'    => array( 'OpenLayers.Layer.Google("Google Hybrid", {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20})', 'google' ),
+			'google-terrain'  => array( 'OpenLayers.Layer.Google("Google Terrain", {type: google.maps.MapTypeId.TERRAIN, numZoomLevels: 22})', 'google' ),
+
 			'nasa' => 'OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",
 				{layers: "landsat7", "sphericalMercator":true} )',
 		);
@@ -286,6 +289,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		$egMapsOLLayerGroups = array(
 			'yahoo' => array( 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid' ),
 			'bing' => array( 'bing-normal', 'bing-satellite', 'bing-hybrid' ),
+			'google' => array( 'google-normal', 'google-satellite', 'google-terrain', 'google-hybrid' ),
 			'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
 		);
 		
@@ -294,6 +298,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
+			'google' => "<script src='http://maps.google.com/maps/api/js?sensor=false'></script>",
 		);
 			
 

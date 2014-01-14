@@ -47,13 +47,18 @@ class MapsOpenLayers extends MapsMappingService {
 		
 		$params['layers'] = new ListParameter( 'layers' );
 		$params['layers']->addManipulations( new MapsParamOLLayers() );
-		$params['layers']->setDoManipulationOfDefault( true );
-		$params['layers']->addCriteria( new CriterionOLLayer() );
-		$params['layers']->setDefault( $egMapsOLLayers );
+		$params['layers']->addCriteria( new CriterionOLLayer( ';' ) );
+		$params['layers']->setDefault( $egMapsOLLayers, true );
 		$params['layers']->setMessage( 'maps-openlayers-par-layers' );
-		
+
+		$params['overlays'] = new ListParameter( 'overlays' );
+		$params['overlays']->addManipulations( new MapsParamOLLayers() );
+		$params['overlays']->addCriteria( new CriterionOLLayer( ';' ) );
+		$params['overlays']->setDefault( array(), false ); //default empty array will end up in JS just right without manipulation
+		$params['overlays']->setMessage( 'maps-openlayers-par-overlays' );
+
 		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
-		$params['resizable']->setDefault( $egMapsResizableByDefault, false );	
+		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
 		$params['resizable']->setMessage( 'maps-par-resizable' );
 
 		$params['searchmarkers'] = new Parameter(
