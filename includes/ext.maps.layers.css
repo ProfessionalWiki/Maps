@@ -7,6 +7,7 @@
  * @ingroup Maps
  *
  * @licence GNU GPL v3+
+ * @author Daniel Werner < daniel.a.r.werner@gmail.com >
  */
 
 div.mapslayer {
@@ -65,6 +66,5 @@ td.mapslayerpropval {
 }
 
 td.mapslayerpropval .thumb {
-	margin: 0;	
+	margin: 0;
 }
-

@@ -13,6 +13,14 @@
  * @author Daniel Werner
  */
 final class MapsHooks {
+	/**
+	 * Helper flag indicating whether the page has been purged.
+	 * @var bool
+	 *
+	 * TODO: Figure out a better way to do this, not requiring this flag and make sure it works with
+	 *       later MW versions (purging mechanism got changed somewhat around 1.18).
+	 */
+	static $purgedBeforeStore = false;
 
 	/**
 	 * Adds a link to Admin Links page.
@@ -52,6 +60,13 @@ final class MapsHooks {
 	public static function registerUnitTests( array &$files ) {
 		// @codeCoverageIgnoreStart
 		$testFiles = array(
+			'elements/Circle',
+			'elements/ImageOverlay',
+			'elements/Line',
+			'elements/Location',
+			'elements/Polygon',
+			'elements/Rectangle',
+
 			'parserhooks/Coordinates',
 			'parserhooks/DisplayMap',
 			'parserhooks/Distance',
@@ -60,7 +75,12 @@ final class MapsHooks {
 			'parserhooks/Geodistance',
 			'parserhooks/MapsDoc',
 
-			'MapsCoordinateParser',
+			'parsers/DistanceParser',
+			'parsers/LineParser',
+			'parsers/LocationParser',
+			'parsers/WmsOverlayParser',
+
+			'Element',
 			'MapsDistanceParser',
 		);
 
@@ -92,15 +112,16 @@ final class MapsHooks {
 	 * Adds global JavaScript variables.
 	 *
 	 * @since 1.0
-	 *
-	 * @param array &$vars
-	 *
-	 * @return boolean
+         * @see http://www.mediawiki.org/wiki/Manual:Hooks/MakeGlobalVariablesScript
+         * @param array &$vars Variables to be added into the output
+         * @param OutputPage $outputPage OutputPage instance calling the hook
+         * @return boolean true in all cases
 	 */
-	public static function onMakeGlobalVariablesScript( array &$vars ) {
+	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $outputPage ) {
 		global $egMapsGlobalJSVars;
 
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
+                $vars[ 'egMapsAvailableServices' ] = $GLOBALS['egMapsAvailableServices'];
 
 		$vars += $egMapsGlobalJSVars;
 
@@ -181,7 +202,7 @@ final class MapsHooks {
 
 		self::processLayersStoreCandidate( $parser->getOutput(), $title );
 
-		// set helper to false immediately so we won't run into jop-processing weirdness:
+		// Set helper to false immediately so we won't run into job-processing weirdness:
 		self::$purgedBeforeStore = false;
 
 		return true;

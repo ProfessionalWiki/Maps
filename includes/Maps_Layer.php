@@ -223,25 +223,43 @@ abstract class MapsLayer {
 	 * @return array
 	 */
 	protected function getParameterDefinitions() {
-		$params['label'] = new Parameter( 'label' );
-		
+		$params = array();
+
+		$params['label'] = array(
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
 		// units for extent data:
-		$params['units'] = new Parameter( 'units' );
-		$params['units']->setDefault( 'degree' );
-		$params['units']->addCriteria( new CriterionInArray( 'degree', 'm', 'ft', 'km', 'mi', 'inches' ) );
-		
+		$params['units'] = array(
+			'default' => 'degree',
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'values' => array( 'degree', 'm', 'ft', 'km', 'mi', 'inches' ),
+		);
+
 		// zoom information:
-		$params['minscale'] = new Parameter( 'minscale', Parameter::TYPE_FLOAT );
-		$params['minscale']->setDefault( false, false );
-		
-		$params['maxscale'] = new Parameter( 'maxscale', Parameter::TYPE_FLOAT );
-		$params['maxscale']->setDefault( false, false );
-		$params['maxscale']->addDependencies( 'minscale' );
-		$params['maxscale']->addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
-		
-		$params['zoomlevels'] = new Parameter( 'zoomlevels', Parameter::TYPE_INTEGER, false );
-		$params['zoomlevels']->setDefault( false, false );
-		
+		$params['minscale'] = array(
+			'type' => 'float',
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
+		$params['maxscale'] = array(
+			'type' => 'float',
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			// TODO-dw1: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
+		);
+
+		$params['zoomlevels'] = array(
+			'type' => 'integer',
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			// TODO-dw1: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
+		);
+
 		return $params;
 	}
 
@@ -277,7 +295,7 @@ abstract class MapsLayer {
 	}
 
 	/**
-	 * Returns the value of a property value formated for html output
+	 * Returns the value of a property value formatted for html output
 	 *
 	 * @since dw1
 	 *
@@ -298,7 +316,7 @@ abstract class MapsLayer {
 				}
 				break;
 		}
-		
+
 		return htmlspecialchars( $value );
 	}
 

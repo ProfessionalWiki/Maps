@@ -33,41 +33,62 @@ class MapsOpenLayers extends MapsMappingService {
 	 */	
 	public function addParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsResizableByDefault;
-		
-		$params['zoom']->setRange( 0, 19 );
-		$params['zoom']->setDefault( self::getDefaultZoom() );
-		
-		$params['controls'] = new ListParameter( 'controls' );
-		$params['controls']->setDefault( $egMapsOLControls );
-		$params['controls']->addCriteria( new CriterionInArray( self::getControlNames() ) );
-		$params['controls']->addManipulations(
-			new ParamManipulationFunctions( 'strtolower' )
+
+		$params['zoom'] = array(
+			'type' => 'integer',
+			'range' => array( 0, 19 ),
+			'default' => self::getDefaultZoom(),
+			'message' => 'maps-openlayers-par-zoom',
 		);
-		$params['controls']->setMessage( 'maps-openlayers-par-controls' );
-		
-		$params['layers'] = new ListParameter( 'layers' );
-		$params['layers']->addManipulations( new MapsParamOLLayers() );
-		$params['layers']->addCriteria( new CriterionOLLayer( ';' ) );
-		$params['layers']->setDefault( $egMapsOLLayers, true );
-		$params['layers']->setMessage( 'maps-openlayers-par-layers' );
 
-		$params['overlays'] = new ListParameter( 'overlays' );
-		$params['overlays']->addManipulations( new MapsParamOLLayers() );
-		$params['overlays']->addCriteria( new CriterionOLLayer( ';' ) );
-		$params['overlays']->setDefault( array(), false ); //default empty array will end up in JS just right without manipulation
-		$params['overlays']->setMessage( 'maps-openlayers-par-overlays' );
-
-		$params['resizable'] = new Parameter( 'resizable', Parameter::TYPE_BOOLEAN );
-		$params['resizable']->setDefault( $egMapsResizableByDefault, false );
-		$params['resizable']->setMessage( 'maps-par-resizable' );
-
-		$params['searchmarkers'] = new Parameter(
-			'searchmarkers' ,
-			Parameter::TYPE_STRING
+		$params['controls'] = array(
+			'default' => $egMapsOLControls,
+			'values' => self::getControlNames(),
+			'message' =>'maps-openlayers-par-controls',
+			'islist' => true,
+			'tolower' => true,
 		);
-		$params['searchmarkers']->setDefault( '' );
-		$params['searchmarkers']->addCriteria( new CriterionSearchMarkers() );
-		$params['searchmarkers']->setDoManipulationOfDefault( false );
+
+		$params['layers'] = array(
+			'default' => $egMapsOLLayers,
+			'message' =>'maps-openlayers-par-layers',
+			'manipulatedefault' => true,
+			'islist' => true,
+			'tolower' => true,
+			// TODO-dw1: addCriteria( new CriterionOLLayer() );
+		);
+		
+		$params['resizable'] = array(
+			'type' => 'boolean',
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-par-resizable',
+		);
+		
+		$params['overlays'] = array(
+			// Default empty array will end up in JS just right without manipulation.
+			'default' => array(),
+			'manipulatedefault' => false,
+			'message' => 'maps-openlayers-par-overlays',
+
+			// NOTE: code has moved into @see MapsDisplayMapRenderer
+			// TODO-dw1: addCriteria( new CriterionOLLayer( ';' ) );
+
+			// TODO-dw1: addManipulations( new MapsParamOLLayers() );
+		);
+
+		$params['resizable'] = array(
+			'type' => 'boolean',
+			'default' => $egMapsResizableByDefault,
+			'message' => 'maps-par-resizable',
+		);
+
+		$params['searchmarkers'] = array(
+			'default' => '',
+			'message' => 'maps-openlayers-par-searchmarkers',
+			'values' => array( 'title', 'all', '' ),
+			'tolower' => true,
+		);
 	}
 	
 	/**

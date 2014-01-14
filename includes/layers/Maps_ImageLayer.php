@@ -16,48 +16,77 @@ class MapsImageLayer extends MapsLayer {
 
 	/**
 	 * Registers the layer.
-	 * 
+	 *
 	 * @since 0.7.2
 	 */
 	public static function register() {
 		MapsLayerTypes::registerLayerType( 'image', __CLASS__, 'openlayers' );
 		return true;
-	}		
-	
+	}
+
 	/**
 	 * @see MapsLayer::getParameterDefinitions
-	 * 
+	 *
 	 * @since 0.7.2
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getParameterDefinitions() {
 		$params = parent::getParameterDefinitions();
-		
-		// map extent for extents bound object:		
-		$params['topextent'] = new Parameter( 'topextent', Parameter::TYPE_FLOAT );
-		$params['topextent']->addAliases( 'upperbound', 'topbound' );
-		
-		$params['rightextent'] = new Parameter( 'rightextent', Parameter::TYPE_FLOAT );
-		$params['rightextent']->addAliases( 'rightbound' );
-		
-		$params['bottomextent'] = new Parameter( 'bottomextent', Parameter::TYPE_FLOAT );
-		$params['bottomextent']->addAliases( 'lowerbound', 'bottombound' );
 
-		$params['leftextent'] = new Parameter( 'leftextent', Parameter::TYPE_FLOAT );
-		$params['leftextent']->addAliases( 'leftbound' );
+		// map extent for extents bound object:
+		$params['topextent'] = array(
+			'type' => 'float',
+			'aliases' => array( 'upperbound', 'topbound' ),
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
+		$params['rightextent'] = array(
+			'type' => 'float',
+			'aliases' => array( 'rightbound' ),
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
+		$params['bottomextent'] = array(
+			'type' => 'float',
+			'aliases' => array( 'lowerbound', 'bottombound' ),
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
+		$params['leftextent'] = array(
+			'type' => 'float',
+			'aliases' => array( 'leftbound' ),
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
 
 		// image-source information:
-		$params['source'] = new Parameter( 'source' );
-		$params['source']->addCriteria( new CriterionIsImage() );
-		$params['source']->addManipulations( new MapsParamFile() );
-		
-		$params['width' ] = new Parameter( 'width',  Parameter::TYPE_FLOAT );
-		$params['height'] = new Parameter( 'height', Parameter::TYPE_FLOAT );
+		$params['source'] = array(
+			// TODO-dw1: addCriteria( new CriterionIsImage() )
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'post-format' => function( $source ) {
+				$imageUrl = MapsMapper::getFileUrl( $source );
+
+				global $egMapsAllowExternalImages;
+				if( $imageUrl === '' && $egMapsAllowExternalImages ) {
+					return $source;
+				}
+				return $imageUrl;
+			}
+		);
+
+		$params['width'] = array(
+			'type' => 'float',
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
+		$params['height'] = array(
+			'type' => 'float',
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
 
 		return $params;
 	}
-	
+
 	/**
 	 * @see MapsLayer::getPropertyHtmlRepresentation
 	 *
@@ -147,23 +176,23 @@ class MapsImageLayer extends MapsLayer {
 			$options['maxScale'] = $this->properties['maxscale'];
 		}
 		
-		$options = Xml::encodeJsVar( (object)$options ); //js-encode all options
-
+		$options = Xml::encodeJsVar( (object)$options ); //js-encode all options );
 
 		// for non-option params, get JavaScript-encoded config values:
 		foreach( $this->properties as $name => $value ) {
 			${ $name } = MapsMapper::encodeJsVar( $value );
 		}
-		
-		return <<<EOT
-	new OpenLayers.Layer.Image(
-		$label,
-		$source,
-		new OpenLayers.Bounds($leftextent, $bottomextent, $rightextent, $topextent),
-		new OpenLayers.Size($width, $height),
-		{$options}
-	)
-EOT;
+
+		return <<<JavaScript
+new OpenLayers.Layer.Image(
+	$label,
+	$source,
+	new OpenLayers.Bounds($leftextent, $bottomextent, $rightextent, $topextent),
+	new OpenLayers.Size($width, $height),
+	$options
+);
+JavaScript;
+		die();
 	}
-	
+
 }

@@ -33,22 +33,6 @@ class MapsLayerDefinition extends ParserHook {
 		parent::__construct( true, false );
 	}
 	
-	/**
-	 * No LSB in pre-5.3 PHP
-	 */
-	public static function staticMagic( array &$magicWords, $langCode ) {
-		$instance = new self;
-		return $instance->magic( $magicWords, $langCode );
-	}
-	
-	/**
-	 * No LSB in pre-5.3 PHP
-	 */	
-	public static function staticInit( Parser &$parser ) {
-		$instance = new self;
-		return $instance->init( $parser );
-	}
-	
 	public static function initialize() {
 		
 	}
@@ -76,16 +60,28 @@ class MapsLayerDefinition extends ParserHook {
 	protected function getParameterInfo( $type ) {
 		$params = array();
 
-		$params['type'] = new Parameter( 'type' );
-		$params['type']->setDefault( false, false );
-		
-		$params['name'] = new Parameter( 'name' );
-		$params['name']->setDefault( false, false );
-		$params['name']->addCriteria( new CriterionIsNonNumeric );
-		
-		$params['definition'] = new Parameter( 'definition' ); //don't make this a list so we can choose custom keys in manipulation
-		$params['definition']->addManipulations( new MapsParamLayerDefinition() );
-			
+		$params['type'] = array(
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
+		$params['name'] = array(
+			'default' => false,
+			'manipulatedefault' => false,
+			// TODO-dw1: addCriteria( new CriterionIsNonNumeric );
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+		);
+
+		$params['definition'] = array(
+			'default' => false,
+			'manipulatedefault' => false,
+			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'post-format' => function( $value ) {
+				return MapsLayers::parseLayerParameters( $value, "\n", '=' );
+			}
+		);
+
 		return $params;
 	}
 	
@@ -196,7 +192,10 @@ class MapsLayerDefinition extends ParserHook {
 		if( $this->parser->getTitle()->getNamespace() !== Maps_NS_LAYER ) {
 			global $wgContLang;
 			return $this->rawErrorbox(
-				wfMsgExt( 'maps-layerdef-wrong-namespace', array( 'parsemag', 'content' ), $wgContLang->getNsText( Maps_NS_LAYER ) )
+				wfMessage(
+					'maps-layerdef-wrong-namespace',
+					$wgContLang->getNsText( Maps_NS_LAYER )
+				)->inContentLanguage()->text()
 			);
 		}
 		
@@ -208,12 +207,11 @@ class MapsLayerDefinition extends ParserHook {
 			$availableLayerTypes = MapsLayerTypes::getAvailableTypes();
 			
 			$out = $this->rawErrorbox(
-				wfMsgExt(
+				wfMessage(
 					'maps-error-no-layertype',
-					array( 'parsemag', 'content' ),
 					$wgLang->listToText( $availableLayerTypes ),
 					count( $availableLayerTypes )
-				)
+				)->inContentLanguage()->text()
 			);
 		}
 		elseif( MapsLayerTypes::hasType( $type ) ) {
@@ -227,11 +225,11 @@ class MapsLayerDefinition extends ParserHook {
 				} else {
 					// label for unnamed layer:
 					$labelSuffix = '#' . ( count( $this->getLayerStore()->getLayers( MapsLayerGroup::LAYERS_NUMERIC ) ) + 1 );
-				}				
+				}
 				$parameters['definition']['label'] = $this->parser->getTitle()->getText() . ' ' . $labelSuffix;
 			}
-			
-			// new layer from user input (could still be invalid):			
+
+			// new layer from user input (could still be invalid):
 			$layer = MapsLayers::newLayerFromDefinition( $type, $parameters['definition'], $name );
 			
 			$out = $this->renderLayerInfo( $layer );
@@ -242,22 +240,21 @@ class MapsLayerDefinition extends ParserHook {
 			$availableLayerTypes = MapsLayerTypes::getAvailableTypes();
 			
 			$out = $this->rawErrorbox(
-				 wfMsgExt( 
+				wfMessage(
 					'maps-error-invalid-layertype',
-					array( 'parsemag', 'content' ),
 					$this->validator->getParameter('type')->getOriginalValue(),
 					$wgLang->listToText( $availableLayerTypes ),
 					count( $availableLayerTypes )
-				)
+				)->inContentLanguage()->text()
 			);
 		}
-				
+
 		// add the layer to the store after all info has been rendered:
 		$this->addLayerToStore( $layer );
-		
+
 		return $out;
 	}
-	
+
 	/**
 	 * Responsible for actual output on the layer page which gives an overview of the layer definition.
 	 *
@@ -269,30 +266,42 @@ class MapsLayerDefinition extends ParserHook {
 	 */
 	public function renderLayerInfo( MapsLayer $layer ) {
 		global $wgLang;
-		
+
 		// appropriate layer header:
 		if( $layer->getName() !== null ) {
 
 			// if layer with same name is defined on same page already:
 			if( $this->getLayerStore()->getLayerByName( $layer->getName() ) !== null ) {
-				return $this->errorbox( wfMsgExt( 'maps-layerdef-equal-layer-name', array( 'parsemag', 'content' ), $layer->getName() ) );
+				return
+					$this->errorbox(
+						wfMessage(
+							'maps-layerdef-equal-layer-name',
+							$layer->getName()
+						)->inContentLanguage()->text()
+					);
 			}
-			$outHeader = wfMsgExt( 'maps-layer-of-type-and-name', array( 'parsemag', 'content' ), $layer->getType(), $layer->getName() );
+			$outHeader = wfMessage(
+				'maps-layer-of-type-and-name',
+				$layer->getType(),
+				$layer->getName()
+			)->inContentLanguage()->text();
 		}
 		else {
-			$outHeader = wfMsgExt( 'maps-layer-of-type', array( 'parsemag', 'content' ), $layer->getType() );
+			$outHeader = wfMessage(
+				'maps-layer-of-type',
+				$layer->getType()
+			)->inContentLanguage()->text();
 		}
 		$outHeader = "<span class=\"mapslayerhead\">$outHeader</span>";
 
 		// info message about which services are supporting the layer(-type):
 		$supportedServices = MapsLayerTypes::getServicesForType( $layer->getType() );
 		$outServices = '<span class="mapslayersupports">' .
-			wfMsgExt(
+			wfMessage(
 				'maps-layer-type-supported-by',
-				array( 'parsemag', 'content', 'escape' ),
 				$wgLang->listToText( $supportedServices ),
 				count( $supportedServices )
-			) . '</span>';
+			)->inContentLanguage()->escaped() . '</span>';
 
 		$outTable = $this->getLayerDefinitionTable( $layer );
 
@@ -303,7 +312,7 @@ class MapsLayerDefinition extends ParserHook {
 				$outHeader . $outServices . $outTable
 			);
 	}
-	
+
 	/**
 	 * Displays the layer definition as a table.
 	 *
@@ -316,7 +325,7 @@ class MapsLayerDefinition extends ParserHook {
 	protected function getLayerDefinitionTable( MapsLayer $layer ) {
 		$out = '';
 		$outWarning = '';
-		
+
 		// check whether any error occurred during parameter validaton:
 		if ( ! $layer->isValid() ) {
 			$messages = $layer->getErrorMessages();
@@ -330,14 +339,13 @@ class MapsLayerDefinition extends ParserHook {
 			
 			$warnings =
 				'<tr><td class="mapslayerpropname">' .
-				wfMsgExt(
+				wfMessage(
 					'maps-layerdef-invalid' . ( $layer->isOk() ? '' : '-fatal' ),
-					array( 'parsemag', 'content', 'escape' ),
 					count( $messages )
-				) .
+				)->inContentLanguage()->escaped() .
 				"</td><td class=\"mapslayerpropval\">{$warnings}</td></tr>";
-			
-						
+
+
 			//$out .= $this->errorbox( wfMsgHtml( 'maps-error-invalid-layerdef' ) . $warnings );
 			
 			$outWarning .= Html::rawElement(
@@ -345,7 +353,7 @@ class MapsLayerDefinition extends ParserHook {
 					array( 'width' => '100%', 'class' => ( $layer->isOk() ? 'mapslayerwarntable' : 'mapslayererrortable' ) ),
 					$warnings
 			);
-			
+
 			if( ! $layer->isOk() ) {
 				// fatal error occurred, don't print definition table since this would be quite empty since
 				// parameter validation aborted after fatal error parameter!

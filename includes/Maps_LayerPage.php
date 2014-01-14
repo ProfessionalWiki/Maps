@@ -82,7 +82,7 @@ class MapsLayerPage extends Article {
 
 		$titles = $this->getUsageTitles();
 
-		$viewer = new CategoryViewer( $this->mTitle );
+		$viewer = new CategoryViewer( $this->mTitle, $this->getContext() );
 		$viewer->limit = 9999; // just overwrite the default limit of pages displayed in a normal category
 
 		// now add apges in sorted order to category viewer:
@@ -92,12 +92,12 @@ class MapsLayerPage extends Article {
 
 		//$wgOut->addHTML( $viewer->formatList( $viewer->articles, '' ) );
 		$out  = "<div id=\"mw-pages\">\n";
-		$out .= '<h2>' . wfMsg( 'maps-layerpage-usage', $this->mTitle->getText() ) . "</h2>\n";
+		$out .= '<h2>' . wfMessage( 'maps-layerpage-usage', $this->mTitle->getText() )->text() . "</h2>\n";
 
 		if( !empty( $viewer->articles ) ) {
 			$out .= $viewer->formatList( $viewer->articles, $viewer->articles_start_char );
 		} else {
-			$out .= wfMsg( 'maps-layerpage-nousage' );
+			$out .= wfMessage( 'maps-layerpage-nousage' )->text();
 		}
 		$out .= "\n</div>";
 

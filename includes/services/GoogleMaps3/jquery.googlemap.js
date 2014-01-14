@@ -380,7 +380,7 @@
 
 			for (i in options.types) {
 				if (typeof( options.types[i] ) !== 'function') {
-					options.types[i] = eval('google.maps.MapTypeId.' + options.types[i]);
+					options.types[i] = eval('google.maps.MapTypeId.' + options.types[i].toUpperCase() );
 				}
 			}
 
@@ -690,11 +690,13 @@
 						var baseURL = options.wmsoverlay.wmsServerUrl;
 						//The layer ID.  Can be found when using the layers properties tool in ArcMap or from the WMS settings
 						var layers = options.wmsoverlay.wmsLayerName;
+
+						var style = options.wmsoverlay.wmsStyleName;
 						//With the 1.3.0 version the coordinates are read in LatLon, as opposed to LonLat in previous versions
 						var bbox = ulw.lat() + "," + ulw.lng() + "," + lrw.lat() + "," + lrw.lng();
 						//Establish the baseURL.  Several elements, including &EXCEPTIONS=INIMAGE and &Service are unique to openLayers addresses.
 						var url = baseURL + "version=1.3.0&EXCEPTIONS=INIMAGE&Service=WMS" +
-							"&request=GetMap&Styles=default&format=image%2Fjpeg&CRS=EPSG:4326" +
+							"&request=GetMap&Styles=" + encodeURI(style) + "&format=image%2Fjpeg&CRS=EPSG:4326" +
 							"&width=256&height=256" + "&Layers=" + layers + "&BBOX=" + bbox;
 						return url;
 					},
@@ -734,10 +736,10 @@
 			}
 
 			this.openWindow = new google.maps.InfoWindow();
-			this.openWindow.content = properties.text;
+			this.openWindow.setContent( properties.text );
 
 			if ( event.latLng !== undefined ) {
-				this.openWindow.position = event.latLng;
+				this.openWindow.setPosition( event.latLng );
 			}
 
 			this.openWindow.closeclick = function () {

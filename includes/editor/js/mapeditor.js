@@ -49,9 +49,9 @@ var mapEditor = {
             editable:true
         }
     },
-    __mapParameters:{ //TODO look into getting this list from server dynamically
+    __mapParameters:{
         mappingservice: {
-            values:['googlemaps','openlayers']
+            values:mw.config.get( 'egMapsAvailableServices' )
         },
         copycoords: {
             values:['on','off']
@@ -278,14 +278,8 @@ var mapEditor = {
             mapEditor.__options.onRightClick(e);
         });
     },
-    __generateWikiCode:function(){
-        var code = '{{#display_map: ';
-        code += mapEditor.__generateCode();
-        code += '\n}}\n';
-        return code;
-    },
-    __generateCode:function(){
-        var code = '';
+    __generateWikiCode:function( seperators ){
+        var code = seperators.codeStart;
 
         var markers = '';
         var circles = '';
@@ -333,12 +327,13 @@ var mapEditor = {
             }
         }
 
+
         code += markers !== '' ? markers : '';
-        code += circles !== '' ? '\n|circles='+circles : '';
-        code += polygons !== '' ? '\n|polygons='+polygons : '';
-        code += lines !== '' ? '\n|lines='+lines : '';
-        code += rectangles !== '' ? '\n|rectangles='+rectangles : '';
-        code += imageoverlays !== '' ? '\n|imageoverlays='+imageoverlays : '';
+        code += circles !== '' ? seperators.separator+'circles='+circles : '';
+        code += polygons !== '' ? seperators.separator+'polygons='+polygons : '';
+        code += lines !== '' ? seperators.separator+'lines='+lines : '';
+        code += rectangles !== '' ? seperators.separator+'rectangles='+rectangles : '';
+        code += imageoverlays !== '' ? seperators.separator+'imageoverlays='+imageoverlays : '';
 
         //add map parameters
         for(var param in this.__mapParameters){
@@ -349,7 +344,7 @@ var mapEditor = {
             code += '\n|'+param+'='+value;
         }
 
-        code += '';
+        code += seperators.codeEnd;
         return code;
     },
     __importWikiCode:function(rawData){
@@ -722,8 +717,13 @@ $(document).ready(function(){
 
     //add custom controls
 	if( $('#map-canvas').attr('context') != 'forminput' ) { //for Special:MapEditor
+		var editorMarkers = {
+			'codeStart' : '{{#display_map: ',
+			'separator' : '\n|',
+			'codeEnd' : '\n}}\n'
+		};
 		mapEditor.addControlButton(mw.msg('mapeditor-export-button'),function(){
-			var code = mapEditor.__generateWikiCode();
+			var code = mapEditor.__generateWikiCode( editorMarkers );
 			if(navigator.appName == 'Microsoft Internet Explorer'){
 				//if IE replace /n with /r/n so it is displayed properly
 				code = code.split('\n').join('\r\n');
@@ -752,8 +752,13 @@ $(document).ready(function(){
 			});
 		});
 	} else { //for form input
-		mapEditor.addControlButton(mw.msg('mapeditor-select-button'),function(){
-			var code = mapEditor.__generateCode();
+		var forminputMarkers = {
+			'codeStart' : '',
+			'separator' : '',
+			'codeEnd' : ''
+		};
+		mapEditor.addControlButton(mw.msg('mapeditor-export-button'),function(){
+			var code = mapEditor.__generateWikiCode( forminputMarkers );
 			if(navigator.appName == 'Microsoft Internet Explorer'){
 				//if IE replace /n with /r/n so it is displayed properly
 				code = code.split('\n').join('\r\n');

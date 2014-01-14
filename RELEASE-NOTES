@@ -4,12 +4,37 @@ Extension page on mediawiki.org: https://www.mediawiki.org/wiki/Extension:Maps
 Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/extensions/Maps.git;a=blob;f=RELEASE-NOTES
 
 
-=== Maps 2.1 ===
+=== Maps 3.0 ===
 (dev)
+
+In this version a big part of the PHP codebase has been rewritten to decrease technical debt and thus
+facilatete maintenance, new feature delopment and debugging. Many tests have been added and a lot of
+bugs have been found and fixed. No big new features have been added.
+
+; Compatibility changes
+
+* Changed minimum Validator version from 0.5 to 1.0.
+* DataValues is now required. Version 0.1 or later.
+* ValueParsers is now required. Version 0.1 or later.
+* ValueFormatters is now required. Version 0.1 or later.
+
+; New features
+
+* Added leaflet service
+
+; Breaking internal changes
+
+* Moved classes into Maps namespace
+* Removed all Criteria classes
+* Removed all Manipulation classes
+* Removed MapsCoordinateParser
+* Geocoding interfaces changed
+* MapsLocation interface changed
 
 ; Bug fixes
 
 * Fixed autoinfowindows functionality.
+* Fixed various bugs in geocoordinate parsing and formatting.
 
 === Maps 2.0 ===
 (2012-10-05)
@@ -45,11 +70,12 @@ Latest version of the release notes: https://gerrit.wikimedia.org/r/gitweb?p=med
 * Merged display_map and display_point(s) into a single parser function: display_map (display_points is now an alias).
 * Updates parameter definitions from Validator 0.4.x to Validator 0.5.x.
 * Improved script loading.
+* Added various unit tests that caught some bugs and will now prevent regressions.
 
 ; Bug fixes
 
 * Fixed JavaScript error on some special pages due to incorrect order of map initialization.
-* Fixed broken kml functionality
+* Fixed partially broken kml functionality.
 
 === Maps 1.0.5 ===
 (2011-11-30)
@@ -544,7 +570,7 @@ Changes in 0.4.2 discussed on the authors blog:
 
 * Added overlays to Google Maps. This includes both an 'overlay' control, and a new parameter to choose the available and default loaded overlays.
 
-* Added specific handling for the coordinates= and addresses= parameters for both display_map and display_point(s). You can now specify you do not want anything that's not a coordinate on your map (so no geocoding) with the coordinates= parameter, or let Maps know everything is an address with the addresses= parameter, causing everything to be geocoded. Also modified the error messages for wrong addresses and coordinates to fit this new behaviour.
+* Added specific handling for the coordinates= and addresses= parameters for both display_map and display_point(s). You can now specify you do not want anything that's not a coordinate on your map (so no geocoding) with the coordinates= parameter, or let Maps know everything is an address with the addresses= parameter, causing everything to be geocoded. Also modified the error messages for wrong addresses and coordinates to fit this new behavior.
 
 ==== Refactoring ====
 
@@ -584,7 +610,7 @@ Changes in 0.4 discussed on the authors blog:
 
 * Added parsing of marker-specific title and label values.
 
-* Added geocoding support for the centre parameter. This is based on automatic detection of non-coordinates to see if geocoding is required, similar to the modified behaviour of display_point(s).
+* Added geocoding support for the centre parameter. This is based on automatic detection of non-coordinates to see if geocoding is required, similar to the modified behavior of display_point(s).
 
 * Added minimum and maximum map size restrictions, like done in SlippyMap.
 

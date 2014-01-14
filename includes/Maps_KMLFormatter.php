@@ -11,6 +11,8 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+use Maps\Location;
+
 class MapsKMLFormatter {
 
 	/**
@@ -23,7 +25,7 @@ class MapsKMLFormatter {
 	/**
 	 * @since 0.7.3
 	 * 
-	 * @var array of MapsLocation
+	 * @var Location[]
 	 */
 	protected $placemarks;
 	
@@ -65,9 +67,9 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param MapsLocation $placemark
+	 * @param Location $placemark
 	 */	
-	public function addPlacemark( MapsLocation $placemark ) {
+	public function addPlacemark( Location $placemark ) {
 		$this->placemarks[] = $placemark;
 	}
 	
@@ -76,7 +78,7 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param array of MapsLocation $placemark
+	 * @param Location[] $placemarks
 	 */		
 	public function addPlacemarks( array $placemarks ) {
 		foreach ( $placemarks as $placemark ) {
@@ -140,20 +142,22 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param MapsLocation $location
-	 * 
+	 * @param Location $location
+	 *
 	 * @return string
 	 */		
-	protected function getKMLForLocation( MapsLocation $location ) {
+	protected function getKMLForLocation( Location $location ) {
 		$name = '<name><![CDATA[ ' . $location->getTitle() . ']]></name>';
 		
 		$description = '<description><![CDATA[ ' . $location->getText() . ']]></description>';
-		
+
+		$coordinates = $location->getCoordinates();
+
 		// lon,lat[,alt]
 		$coordinates = Xml::element(
 			'coordinates',
 			array(),
-			$location->getLongitude() . ',' . $location->getLatitude() . ',' . $location->getAltitude()
+			$coordinates->getLongitude() . ',' . $coordinates->getLatitude() . ',' . $coordinates->getAltitude()
 		);
 
 		return <<<EOT

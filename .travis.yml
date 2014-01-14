@@ -1,0 +1,23 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+
+before_script:
+  - bash .travis.sh
+
+script:
+  - cd ../phase3/extensions/Maps
+  - phpunit --coverage-clover ../../extensions/Maps/build/logs/clover.xml
+
+after_script:
+  - php vendor/bin/coveralls -v
+
+notifications:
+  email:
+    recipients:
+      - jeroendedauw@gmail.com
+    on_success: change
+    on_failure: always

@@ -5,7 +5,7 @@
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  * @author Daniel Werner
  *
- * @todo this whole JS is very blown up and could use some quality refactoring
+ * @todo This whole JS is very blown up and could use some quality refactoring.
  */
 
 (function ($) {
@@ -124,7 +124,7 @@
 		};
 
 		this.addLine = function (properties) {
-			var pos = new Array();
+			var pos = [];
 			for (var x = 0; x < properties.pos.length; x++) {
 				var point = new OpenLayers.Geometry.Point(properties.pos[x].lon, properties.pos[x].lat);
 				point.transform(
@@ -146,7 +146,7 @@
 		};
 
 		this.addPolygon = function (properties) {
-			var pos = new Array();
+			var pos = [];
 			for (var x = 0; x < properties.pos.length; x++) {
 				var point = new OpenLayers.Geometry.Point(properties.pos[x].lon, properties.pos[x].lat);
 				point.transform(
@@ -272,13 +272,13 @@
 
 		// collect all layers and check for custom image layer:
 		var hasImageLayer = false;
-		var layers = new Array();
+		var layers = [];
 
 		// evaluate base layers:
 		for( i = 0, n = options.layers.length; i < n; i++ ) {
 			layer = eval( options.layers[i] );
 			layer.isBaseLayer = true;
-			// Idieally this would check if the objecct is of type OpenLayers.layer.image
+			// Ideally this would check if the object is of type OpenLayers.layer.image
 			if( layer.isImage === true ) {
 				hasImageLayer = true;
 				layer.transitionEffect = 'resize'; // makes transition smoother

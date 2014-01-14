@@ -12,10 +12,11 @@ $messages = array();
 
 /** English
  * @author Jeroen De Dauw
+ * @author Karsten Hoffmeyer (kghbln)
  */
 $messages['en'] = array(
 	// General
-	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://mapping.referata.com/wiki/Examples demos])",
+	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])",
 
 	'right-geocode' => 'Geocode',
 
@@ -90,7 +91,7 @@ This will allow maps to override the default value of the service parameter by t
 	'maps-geocode-par-mappingservice' => 'The geocoding service you want to use. See the available geocoding services.',
 	'maps-geocode-par-geoservice' => 'This parameter allows you to indicate you are using this geocoding request in combination with a specific mapping service.
 Each mapping service can have overrides over the default value for the geocoding service.
-This is for legal considerations, since you can not use the Google Geocoding service except together with Google Maps.
+This is for legal considerations, since you cannot use the Google Geocoding service except together with Google Maps.
 Setting this parameter and not the parameter for the service, will ensure you are not using an invalid combination.',
 	'maps-geocode-par-allowcoordinates' => 'Allows disabling the support for coordinates in this function. Must be either yes or no.
 When no, every value will be geocoded, even valid coordinates.',
@@ -108,14 +109,14 @@ This can affect the default geocoding service value.',
 
 	// display_map parser hook
 	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
-	'maps-displaymap-par-coordinates' => 'The location the map will initially be centred on.',
-	'maps-displaymap-par-visitedicon' => 'The local of a file to use as visited icon',
+	'maps-displaymap-par-coordinates' => 'The location the map will initially be centered on.',
+	'maps-displaymap-par-visitedicon' => 'The name of an image to be used for marker icons after they have been clicked',
 	'maps-displaymap-par-zoom' => 'Allows setting the zoom level of the map.
 When not provided and multiple markers are present on the map, the best fitting zoom will be taken, not the configurable default.',
 	'maps-displaymap-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
-	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's centre for display_point(s).
+	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's center for display_point(s).
 Accepts both addresses and coordinates.
-When this property is not provided, the map will centre itself on the provided marker, or between the provided markers.",
+When this property is not provided, the map will center itself on the provided marker, or between the provided markers.",
 	'maps-displaymap-par-title' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific title.
 When used together with label, the title will be bold and underlined.',
 	'maps-displaymap-par-label' => 'Allows setting text that will be displayed in the pop-ups of all markers that do not have a specific label.',
@@ -163,7 +164,7 @@ $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
 
 	// Geocoding
-	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',
+	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location cannot be geocoded.',
 
 	// Mapping services
 	'maps_googlemaps3' => 'Google Maps v3',
@@ -174,14 +175,14 @@ $1',
 	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centered on $1, $2.',
 
-    // Params common to all mapping features (ie display_map, query printers, form inputs)
-    'maps-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
-	'maps-par-resizable' => 'Makes the map resizable by dragging at it\'s lower right corner.',
+	// Params common to all mapping features (ie display_map, query printers, form inputs)
+	'maps-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
+	'maps-par-resizable' => 'Makes the map resizable by dragging at its lower right corner.',
 	'maps-par-geoservice' => 'The geocoding service to use to make translations between addresses and coordinates.',
 	'maps-par-zoom' => 'The zoom level for the map. For maps with markers this will default to the most zoomed in level that still shows all markers.',
 	'maps-par-width' => 'Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
 	'maps-par-height' => 'Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.',
-    'maps-par-centre' => 'The location on which the map should be centred',
+	'maps-par-centre' => 'The location on which the map should be centered',
 
 	// Google Maps v3
 	'maps-googlemaps3-incompatbrowser' => 'Your browser is not compatible with Google Maps v3.',
@@ -254,12 +255,14 @@ $1',
  * @author Kghbln
  * @author Purodha
  * @author Raymond
+ * @author Shirayuki
  * @author Siebrand
  * @author Umherirrender
  * @author Тест
+ * @author 아라
  */
 $messages['qqq'] = array(
-	'maps-desc' => '{{desc}}',
+	'maps-desc' => '{{desc|name=Maps|url=http://www.mediawiki.org/wiki/Extension:Maps}}',
 	'right-geocode' => '{{doc-right|geocode}}',
 	'maps_map' => '{{Identical|Map}}',
 	'maps-copycoords-prompt' => 'text displayed in javascript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
@@ -267,17 +270,87 @@ $messages['qqq'] = array(
 	'maps-layer-property' => '{{Identical|Property}}',
 	'maps-layer-value' => '{{Identical|Value}}',
 	'maps-layer-errors' => '{{Identical|Error}}',
-	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}} Validation text indicating that there is something wrong with the "lines" parameter.',
-	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}',
-	'validation-error-invalid-searchmarkers-param' => '{{dic-important|Do not translate "all" and "title".}}',
+	'maps-error-invalid-layertype' => 'Used as error message. Parameters:
+* $1 - a layer type
+* $2 - list of available layer types
+* $3 - number of available layer types',
+	'maps-error-no-layertype' => 'Used as error message. Parameters:
+* $1 - list of available layer types
+* $2 - number of available layer types',
+	'validation-error-invalid-layer' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-layers' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'maps-layer-of-type' => 'Used as <code><nowiki><h3></nowiki></code> heading. Parameters:
+* $1 - layer type',
+	'maps-layer-type-supported-by' => 'Parameters:
+* $1 - list of supported services (geonames and/or google). not localized.
+* $2 - number of supported services',
+	'validation-error-invalid-location' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-locations' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-width' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-height' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-distance' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-distances' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-image' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-images' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-goverlay' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-goverlays' => 'Parameters:
+* $1 - parameter name
+{{Related|Maps-validation}}',
+	'validation-error-invalid-line-param' => '{{doc-important|Do not translate "lines".}}
+Validation text indicating that there is something wrong with the "lines" parameter.
+{{Related|Maps-validation}}',
+	'validation-error-invalid-polyline-param' => '{{doc-important|Do not translate "polylines".}}
+{{Related|Maps-validation}}',
+	'validation-error-invalid-searchmarkers-param' => '{{doc-important|Do not translate "all" and "title".}}
+{{Related|Maps-validation}}',
 	'maps-latitude' => '{{Identical|Latitude}}',
 	'maps-longitude' => '{{Identical|Longitude}}',
-	'maps_geocoding_failed_for' => '* $1 is a list
-* $2 is the number of list items for PLURAL use.',
+	'maps-invalid-coordinates' => 'Unused at this time. Parameters:
+* $1 - value',
+	'maps_geocoding_failed' => 'Unused at this time. Parameters:
+* $1 - list of addresses
+* $2 - number of addresses',
+	'maps_geocoding_failed_for' => 'Parameters:
+* $1 - list of items
+* $2 - number of items, for PLURAL support',
+	'maps_unrecognized_coords' => 'Unused at this time. Parameters:
+* $1 - list of coordinates
+* $2 - number of coordinates
+See also:
+* {{msg-mw|Maps unrecognized coords for}}',
+	'maps_unrecognized_coords_for' => 'Unused at this time. Parameters:
+* $1 - list of coordinates
+* $2 - number of coordinates
+See also:
+* {{msg-mw|Maps unrecognized coords}}',
 	'maps_googlemaps3' => '{{optional}}',
 	'maps_openlayers' => '{{optional}}',
 	'maps_osm' => '{{optional}}',
-	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
+	'maps_centred_on' => 'Parameters:
+* $1 - latitude
+* $2 - longitude',
 	'maps-googlemaps3-par-type' => '{{maps-par|googlemaps3|type}}',
 	'maps-googlemaps3-par-types' => '{{maps-par|googlemaps3|types}}',
 	'maps-googlemaps3-par-layers' => '{{maps-par|googlemaps3|layers}}',
@@ -291,15 +364,18 @@ $messages['qqq'] = array(
 	'maps-googlemaps3-par-tilt' => '{{maps-par|googlemaps3|tilt}}',
 	'maps-googlemaps3-par-kmlrezoom' => '{{maps-par|googlemaps3|kmlrezoom}}
 
-KML may mean the [[w:Keyhole Markup Language|Keyhole Markup Language]].',
+KML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'maps-googlemaps3-par-poi' => '{{maps-par|googlemaps3|poi}}',
-	'mapeditor' => 'title of the special page Special:MapEditor',
-	'specialpages-group-maps' => 'The special page group "maps" text',
+	'mapeditor' => 'title of the special page [[Special:MapEditor]].',
+	'specialpages-group-maps' => '{{doc-special-group|like=[[Special:MapEditor]]}}
+{{Identical|Map}}',
 	'mapeditor-parser-error' => 'Error message when parsing error occurs',
-	'mapeditor-none-text' => 'Text showing when no value is set (None)',
+	'mapeditor-none-text' => 'Text showing when no value is set (None).
+{{Identical|None}}',
 	'mapeditor-done-button' => 'Button text describing that editing details is completed',
 	'mapeditor-remove-button' => 'Button text that describes that the given map object should be removed',
-	'mapeditor-import-button2' => 'Button text that finishes import process',
+	'mapeditor-import-button2' => 'Button text that finishes import process.
+{{Identical|Import}}',
 	'mapeditor-export-button' => 'Button text that describes that the process of exporting',
 	'mapeditor-import-button' => 'Button text that opens import dialogue',
 	'mapeditor-select-button' => 'Button text selects the map object',
@@ -310,23 +386,30 @@ KML may mean the [[w:Keyhole Markup Language|Keyhole Markup Language]].',
 	'mapeditor-import-note' => 'Import note',
 	'mapeditor-form-title' => 'Title of dialogue',
 	'mapeditor-link-title-switcher-popup-text' => 'Text for switch w/popup',
-	'mapeditor-link-title-switcher-link-text' => 'Text for switch w/link',
-	'mapeditor-form-field-title' => 'Form field name',
-	'mapeditor-form-field-text' => 'Form field name',
-	'mapeditor-form-field-link' => 'Form field name',
+	'mapeditor-link-title-switcher-link-text' => 'Text for switch w/link.
+{{Identical|Link}}',
+	'mapeditor-form-field-title' => 'Form field name.
+{{Identical|Title}}',
+	'mapeditor-form-field-text' => 'Form field name.
+{{Identical|Text}}',
+	'mapeditor-form-field-link' => 'Form field name.
+{{Identical|Link}}',
 	'mapeditor-form-field-icon' => 'Form field name',
-	'mapeditor-form-field-group' => 'Form field name',
+	'mapeditor-form-field-group' => 'Form field name.
+{{Identical|Group}}',
 	'mapeditor-form-field-inlinelabel' => 'Form field name',
 	'mapeditor-form-field-strokecolor' => 'Form field name',
 	'mapeditor-form-field-strokeopacity' => 'Form field name',
 	'mapeditor-form-field-strokeweight' => 'Form field name',
-	'mapeditor-form-field-fillcolor' => 'Form field name',
+	'mapeditor-form-field-fillcolor' => 'Form field name.
+{{Identical|Fill color}}',
 	'mapeditor-form-field-fillopcaity' => 'Form field name',
 	'mapeditor-form-field-showonhover' => 'Checkbox text',
 	'mapeditor-mapparam-title' => 'Title of dialogue',
 	'mapeditor-mapparam-defoption' => 'Default option in map parameters select list',
 	'mapeditor-imageoverlay-button' => 'Button text that starts the "add image overlay process"',
-	'mapeditor-form-field-image' => 'Form field name',
+	'mapeditor-form-field-image' => 'Form field name.
+{{Identical|Image}}',
 	'mapeditor-imageoverlay-title' => 'Title of dialogue',
 	'mapeditor-form-field-visitedicon' => 'Form field name',
 );
@@ -343,7 +426,7 @@ $messages['af'] = array(
 	'maps-latitude' => 'Breedte:',
 	'maps-longitude' => 'Lengte:',
 	'maps_coordinates_missing' => 'Geen koördinate is vir die kaart verskaf nie.',
-	'maps_unrecognized_coords' => 'Die volgende koördinate is nie herken nie: $1.',
+	'maps_unrecognized_coords' => 'Die volgende koördinate is nie herken nie: $1.', # Fuzzy
 	'maps_unrecognized_coords_for' => 'Die volgende {{PLURAL:$2|koördinaat|koördinate}} is nie herken nie en is uit die kaart weggelaat:
 $1.',
 	'maps_map_cannot_be_displayed' => 'Die kaart kan nie vertoon word nie.',
@@ -362,7 +445,7 @@ $1.',
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'maps-desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://mapping.referata.com/wiki/Maps_examples demo]). Hartës shërbimet në dispozicion: $1',
+	'maps-desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://mapping.referata.com/wiki/Maps_examples demo]). Hartës shërbimet në dispozicion: $1', # Fuzzy
 	'maps_map' => 'Hartë',
 	'maps-loading-map' => 'Loading Harta ...',
 	'maps-abb-north' => 'N',
@@ -381,7 +464,7 @@ $messages['aln'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'maps-desc' => 'يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى. ([http://mapping.referata.com/wiki/Examples تجارب])',
+	'maps-desc' => 'يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى. ([http://mapping.referata.com/wiki/Examples تجارب])', # Fuzzy
 	'maps_map' => 'خريطة',
 	'maps-loading-map' => 'تحميل الخريطة...',
 	'maps-load-failed' => 'لا يمكن تحميل الخريطة!',
@@ -425,6 +508,7 @@ $1',
  */
 $messages['arc'] = array(
 	'maps_map' => 'ܨܘܪܬ ܥܠܡܐ',
+	'maps-layer-property' => 'ܕܝܠܝܬܐ',
 	'maps-layer-value' => 'ܛܝܡܐ',
 	'maps-layer-errors' => 'ܦܘܕ̈ܐ',
 	'maps-abb-north' => 'ܓܪܒܝܐ',
@@ -449,7 +533,7 @@ $messages['arz'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
-	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([http://mapping.referata.com/wiki/Examples Demos])',
+	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([http://www.semantic-mediawiki.org/wiki/Maps más información...])',
 	'right-geocode' => 'Xeocódigu',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => "Cargando'l mapa...",
@@ -514,6 +598,7 @@ Si ye «non», se xeocodificarán tolos valores, incluyendo les coordenaes váli
 Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
 	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
 	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
+	'maps-displaymap-par-visitedicon' => "El llocal d'un ficheru a usar como iconu de visitáu",
 	'maps-displaymap-par-zoom' => "Permite configurar el nivel de zoom do mapa.
 Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
 	'maps-displaymap-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
@@ -523,6 +608,15 @@ Cuando nun se da esta propiedá, el mapa centraráse nel marcador proporcionáu,
 Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-displaymap-par-label' => "Permite configurar el testu qu'apaecerá nes ventanes emerxentes de tolos marcadores que nun tengan un títulu propiu.",
 	'maps-displaymap-par-icon' => "Permite configurar l'iconu qu'usen tolos marcadores.",
+	'maps-displaymap-par-circles' => 'Círculos a amosar',
+	'maps-displaymap-par-copycoords' => "Si hai qu'amosar un diálogu coles coordenaes d'un llugar al calcar en dalgo",
+	'maps-displaymap-par-lines' => 'Llinies a amosar',
+	'maps-displaymap-par-maxzoom' => "El nivel máximu d'ampliación",
+	'maps-displaymap-par-minzoom' => "El nivel mínimu d'ampliación",
+	'maps-displaymap-par-polygons' => 'Polígonos a amosar',
+	'maps-displaymap-par-rectangles' => 'Rectángulos a amosar',
+	'maps-displaymap-par-static' => "Si'l mapa tien de ser estáticu",
+	'maps-displaymap-par-wmsoverlay' => 'Usar una superposición WMS',
 	'validation-error-invalid-location' => 'El parámetru $1 tien de ser un llugar válidu.',
 	'validation-error-invalid-locations' => 'El parámetru $1 tien de ser un o más llugares válidos.',
 	'validation-error-invalid-width' => 'El parámetru $1 tien de ser un anchor válidu.',
@@ -535,16 +629,84 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'validation-error-invalid-goverlays' => 'El parámetru $1 tien de ser una o más superposiciones válides.',
 	'validation-error-invalid-line-param' => 'S\'especificó un parámetru "lines" inválidu.',
 	'validation-error-invalid-polyline-param' => 'S\'especificó un parámetru "polylines" inválidu.',
+	'validation-error-invalid-searchmarkers-param' => 'Valor inválidu de los marcadores de gueta, tendría de ser "all" o "title"',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Llatitú:',
 	'maps-longitude' => 'Llonxitú:',
+	'maps-invalid-coordinates' => 'El valor $1 nun se reconoció como un conxuntu de coordenaes válidu.',
+	'maps_coordinates_missing' => 'Nun se proporcionaron coordenaes pal mapa.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|La siguiente direición nun se pudo|Les siguientes direiciones nun se pudieron}} xeocodificar: $1.',
+	'maps_geocoding_failed_for' => "{{PLURAL:$2|La siguiente direición nun se pudo|Les siguientes direiciones nun se pudieron}} xeocodificar y {{PLURAL:$2|s'omitió|s'omitieron}} nel mapa: $1",
+	'maps_unrecognized_coords' => 'Nun se {{PLURAL:$2|reconoció la siguiente coordenada|reconocieron les siguientes coordenaes}}: $1.',
+	'maps_unrecognized_coords_for' => "Nun se {{PLURAL:$2|reconoció la siguiente coordenada|reconocieron les siguientes coordenaes}} y {{PLURAL:$2|s'omitió|s'omitieron}} nel mapa: $1",
+	'maps_map_cannot_be_displayed' => 'Nun se pue amosar el mapa.',
+	'maps-geocoder-not-available' => 'La carauterística de xeocodificación de mapes nun ta disponible. Nun se pue xeocodificar la to situación.',
+	'maps_click_to_activate' => "Calca p'activar el mapa",
+	'maps_centred_on' => 'Mapa centráu en $1, $2.',
+	'maps-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
+	'maps-par-resizable' => 'Permite redimensionar el mapa arrastrando de la esquina inferior drecha.',
+	'maps-par-geoservice' => 'El serviciu de xeocodificación a utilizar pa facer traducciones ente direiciones y coordenaes.',
+	'maps-par-zoom' => "Nivel de zoom del mapa. Para los mapes con marcadores el valor predetermináu sedrá el nivel máximu d'ampliación qu'amuese tolos marcadores.",
+	'maps-par-width' => "Permite configurar l'anchor del mapa. De mou predetermináu s'asume el pixel como unidá, pero se pue conseñar esplícitamente una d'estes unidaes: px, ex, em, %.",
+	'maps-par-height' => "Permite configurar l'altor del mapa. De mou predetermináu s'asume el pixel como unidá, pero se pue conseñar esplícitamente una d'estes unidaes: px, ex, em, %.",
+	'maps-par-centre' => 'El llugar nel que se tien de centrar el mapa',
+	'maps-googlemaps3-incompatbrowser' => 'El to navegador nun ye compatible con Google Maps v3.',
+	'maps-googlemaps3-par-type' => 'El tipu de mapa a amosar inicialmente.',
+	'maps-googlemaps3-par-types' => 'Los tipos de mapa que tarán disponibles al traviés del control de tipu.',
+	'maps-googlemaps3-par-layers' => 'Capes especiales a cargar nel mapa.',
+	'maps-googlemaps3-par-controls' => 'Controles a poner nel mapa.',
+	'maps-googlemaps3-par-zoomstyle' => 'El estilu del control de zoom.',
+	'maps-googlemaps3-par-typestyle' => 'El estilo del control de tipu.',
+	'maps-googlemaps3-par-autoinfowindows' => "Abrir automáticamente toles ventanes d'información dempués de que se cargue la páxina.",
+	'maps-googlemaps3-par-kml' => 'Ficheros KML a cargar nel mapa.',
+	'maps-googlemaps3-par-gkml' => 'Ficheros KML agospiaos por Google a cargar nel mapa.',
+	'maps-googlemaps3-par-fusiontables' => 'IDs de les tables de Google Fusion que tienen de cargase nel mapa.',
+	'maps-googlemaps3-par-tilt' => 'Inclinación del mapa al usar Google Maps.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Axustar el nivel de zoom dempués de que carguen les capes KML.',
 	'maps-googlemaps3-par-poi' => "Amosar puntos d'interés.",
 	'maps-openlayers-par-controls' => 'Controles a poner nel mapa.',
 	'maps-openlayers-par-layers' => "Les capes que tarán disponibles nel selector de capes. La primera capa s'amosará al cargar el mapa.",
 	'maps-osm-par-thumbs' => 'Amosar miniatures',
+	'maps-osm-par-photos' => 'Amosar les fotos',
+	'mapeditor' => 'Editor de mapes',
+	'specialpages-group-maps' => 'Mapes',
+	'mapeditor-parser-error' => "Hebo un error al analizar los metadatos. Inorando la entrada d'usuariu.",
+	'mapeditor-none-text' => 'Dengún',
+	'mapeditor-done-button' => 'Fecho',
+	'mapeditor-remove-button' => 'Desaniciar',
+	'mapeditor-import-button2' => 'Importar',
+	'mapeditor-export-button' => 'Esportar a códigu wiki',
+	'mapeditor-import-button' => 'Importar dende códigu wiki',
+	'mapeditor-select-button' => 'Seleicionar esti polígonu',
+	'mapeditor-mapparam-button' => 'Editar los parámetros del mapa',
+	'mapeditor-clear-button' => 'Llimpiar el mapa',
+	'mapeditor-code-title' => 'Códigu wiki',
+	'mapeditor-import-title' => 'Importar códigu wiki',
+	'mapeditor-import-note' => "Ten en cuenta que'l analizador espera un formatu de códigu wiki mui estrictu. El códigu escritu equí debe coincidir col códigu producíu pola funcionalidá d'esportación.",
+	'mapeditor-form-title' => 'Editar detalles',
+	'mapeditor-link-title-switcher-popup-text' => 'Ventana emerxente con testu',
+	'mapeditor-link-title-switcher-link-text' => 'Enllaz',
+	'mapeditor-form-field-title' => 'Títulu',
+	'mapeditor-form-field-text' => 'Testu',
+	'mapeditor-form-field-link' => 'Enllaz',
+	'mapeditor-form-field-icon' => 'Iconu',
+	'mapeditor-form-field-group' => 'Grupu',
+	'mapeditor-form-field-inlinelabel' => 'Etiqueta en llinia',
+	'mapeditor-form-field-strokecolor' => 'Color de trazu',
+	'mapeditor-form-field-strokeopacity' => 'Opacidá del trazu',
+	'mapeditor-form-field-strokeweight' => 'Grosor de trazu',
+	'mapeditor-form-field-fillcolor' => 'Color de rellenu',
+	'mapeditor-form-field-fillopcaity' => 'Opacidá del rellenu',
+	'mapeditor-form-field-showonhover' => 'Amosar sólo al pasar el mur por encima',
+	'mapeditor-mapparam-title' => 'Editar los parámetros del mapa',
+	'mapeditor-mapparam-defoption' => '-Seleicionar parámetru-',
+	'mapeditor-imageoverlay-button' => "Amestar superposición d'imaxe",
+	'mapeditor-form-field-image' => 'Imaxe',
+	'mapeditor-imageoverlay-title' => "Detalles de superposición d'imaxe",
+	'mapeditor-form-field-visitedicon' => 'Iconu visitáu',
 );
 
 /** Azerbaijani (azərbaycanca)
@@ -557,6 +719,18 @@ $messages['az'] = array(
 	'maps-abb-north' => 'Şm',
 	'maps-abb-east' => 'C',
 	'maps-abb-west' => 'Q',
+);
+
+/** Bashkir (башҡортса)
+ * @author Haqmar
+ */
+$messages['ba'] = array(
+	'mapeditor-form-title' => 'Үҙгәртеү мәғлүмәттәре',
+	'mapeditor-link-title-switcher-link-text' => 'Һылтанма',
+	'mapeditor-form-field-title' => 'Исем',
+	'mapeditor-form-field-text' => 'Текст',
+	'mapeditor-form-field-link' => 'Һылтанма',
+	'mapeditor-form-field-group' => 'Төркөм',
 );
 
 /** Bavarian (Boarisch)
@@ -572,7 +746,7 @@ $messages['bar'] = array(
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'maps-desc' => 'Забясьпечвае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі, геаграфічнага кадаваньня адрасоў і іншыя геаграфічныя апэрацыі. ([http://mapping.referata.com/wiki/Examples Прыклады])',
+	'maps-desc' => 'Забясьпечвае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі, геаграфічнага кадаваньня адрасоў і іншыя геаграфічныя апэрацыі. ([http://mapping.referata.com/wiki/Examples Прыклады])', # Fuzzy
 	'right-geocode' => 'геаграфічнае кадаваньне',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Загрузка мапы…',
@@ -711,6 +885,7 @@ $1',
 	'mapeditor-import-button2' => 'Імпартаваць',
 	'mapeditor-export-button' => 'Экспартаваць у вікі-код',
 	'mapeditor-import-button' => 'Імпартаваць зь вікі-коду',
+	'mapeditor-select-button' => 'Выбраць гэты шматкутнік',
 	'mapeditor-mapparam-button' => 'Зьмяніць парамэтры мапы',
 	'mapeditor-clear-button' => 'Ачысьціць мапу',
 	'mapeditor-code-title' => 'Вікі-код',
@@ -741,9 +916,11 @@ $1',
 
 /** Bulgarian (български)
  * @author DCLXVI
+ * @author පසිඳු කාවින්ද
  */
 $messages['bg'] = array(
 	'maps_map' => 'Карта',
+	'maps-layer-value' => 'Стойност',
 	'maps-layer-errors' => 'Грешки',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
@@ -752,6 +929,13 @@ $messages['bg'] = array(
 	'maps-latitude' => 'Географска ширина:',
 	'maps-longitude' => 'Географска дължина:',
 	'maps-googlemaps3-incompatbrowser' => 'Вашият браузър не е съвместим с Google Maps v3.',
+	'mapeditor-remove-button' => 'Премахване',
+	'mapeditor-import-button2' => 'Внасяне',
+	'mapeditor-link-title-switcher-link-text' => 'Препратка',
+	'mapeditor-form-field-title' => 'Заглавие',
+	'mapeditor-form-field-text' => 'Текст',
+	'mapeditor-form-field-link' => 'Препратка',
+	'mapeditor-form-field-group' => 'Група',
 );
 
 /** Banjar (Bahasa Banjar)
@@ -797,7 +981,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'maps-desc' => "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all. ([http://mapping.referata.com/wiki/Examples Diskouezadenn])",
+	'maps-desc' => "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all. ([http://mapping.referata.com/wiki/Examples Diskouezadenn])", # Fuzzy
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Kartenn',
 	'maps-loading-map' => 'O kargañ ar gartenn...',
@@ -826,6 +1010,11 @@ $messages['br'] = array(
 	'maps-geocode-par-location' => "Ar chomlec'h da c'heokodiñ.",
 	'maps-geocode-par-mappingservice' => "Ar servij geokodañ a fell deoc'h ober gantañ. Sellit ouzh ar servijoù geokodañ hegerz.",
 	'maps-geocode-par-format' => 'Furmad an daveennoù savet da-heul.',
+	'maps-displaymap-par-circles' => "Kelc'hioù da ziskwel",
+	'maps-displaymap-par-lines' => 'Linennoù da ziskwel',
+	'maps-displaymap-par-maxzoom' => 'Live zoum uhelañ',
+	'maps-displaymap-par-minzoom' => 'Live zoum izelañ',
+	'maps-displaymap-par-polygons' => 'Lieskornegoù da ziskwel',
 	'validation-error-invalid-location' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh.",
 	'validation-error-invalid-locations' => "Rankout a ra an arventenn $1 bezañ evit ul lec'hiadur reizh, da nebeutañ.",
 	'validation-error-invalid-width' => 'Rankout a ra an arventenn $1 bezañ evit ul ledander reizh.',
@@ -856,17 +1045,20 @@ $1",
 	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
 	'maps_centred_on' => 'Kartenn kreizet war $1, $2.',
 	'maps-googlemaps3-incompatbrowser' => "N'eo ket kenglotus ho merdeer gant Google Maps v3.",
+	'maps-googlemaps3-par-type' => 'Ar seurt kartenn da ziskouez da gentañ.',
 	'maps-googlemaps3-par-zoomstyle' => 'Stil kontroll ar zoum.',
 	'maps-googlemaps3-par-typestyle' => 'Stil kontroll ar seurt.',
 	'maps-googlemaps3-par-autoinfowindows' => 'Digeriñ an holl brenestroù diouzhtu goude bezañ karget ar bajenn.',
 	'maps-googlemaps3-par-kml' => 'Restroù KML da gargañ war ar gartenn.',
 	'maps-osm-par-thumbs' => 'Diskouez ar munudoù',
 	'maps-osm-par-photos' => 'Diskouez ar skeudennoù',
+	'mapeditor' => 'Aozer kartennoù',
 	'specialpages-group-maps' => 'Kartennoù',
 	'mapeditor-none-text' => 'Hini ebet',
 	'mapeditor-done-button' => 'Graet',
 	'mapeditor-remove-button' => 'Dilemel',
 	'mapeditor-import-button2' => 'Enporzhiañ',
+	'mapeditor-form-title' => 'Aozañ ar munudoù',
 	'mapeditor-link-title-switcher-link-text' => 'Liamm',
 	'mapeditor-form-field-title' => 'Titl',
 	'mapeditor-form-field-text' => 'Testenn',
@@ -881,7 +1073,7 @@ $1",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'maps-desc' => 'Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije.  ([http://mapping.referata.com/wiki/Examples primeri])',
+	'maps-desc' => 'Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije.  ([http://mapping.referata.com/wiki/Examples primeri])', # Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavam kartu...',
 	'maps-markers' => 'Markeri',
@@ -945,18 +1137,96 @@ $messages['ca'] = array(
 	'maps_centred_on' => 'Mapa centrat en $1, $2.',
 );
 
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'maps-layer-value' => 'МаьӀна',
+	'mapeditor-link-title-switcher-link-text' => 'Хьажориг',
+	'mapeditor-form-field-title' => 'ЦӀе',
+	'mapeditor-form-field-link' => 'Хьажориг',
+);
+
 /** Czech (česky)
  * @author Mormegil
+ * @author Vks
  */
 $messages['cs'] = array(
 	'right-geocode' => 'Geokódování',
 	'maps_map' => 'Mapa',
+	'maps-markers' => 'Značky',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-others' => 'ostatní',
+	'maps-ns-layer' => 'Vrstva',
+	'maps-ns-layer-talk' => 'Diskuse k vrstvě',
+	'maps-layer-property' => 'Vlastnost',
+	'maps-layer-value' => 'Hodnota',
+	'maps-layer-errors' => 'Chyby',
+	'maps-error-invalid-layerdef' => 'Definice této vrstvy je neplatná.',
+	'maps-layer-of-type' => 'Vrstvy typu $1',
+	'maps-finddestination-par-location' => 'Původní umístění.',
+	'maps-displaymap-par-circles' => 'Kruhy pro zobrazení',
+	'maps-displaymap-par-lines' => 'Kruhy ke zobrazení',
+	'maps-displaymap-par-maxzoom' => 'Maximální přiblížení',
+	'maps-displaymap-par-minzoom' => 'Minimální přiblížení',
+	'maps-displaymap-par-polygons' => 'Mnohoúhelníky ke zobrazení',
+	'maps-displaymap-par-rectangles' => 'Obdélníky ke zobrazení',
+	'validation-error-invalid-location' => 'Parametr $1 musí být platné umístění.',
+	'validation-error-invalid-locations' => 'Parametr $1 musí být jedeno nebo více platných umístění.',
+	'validation-error-invalid-width' => 'Parametr $1 musí být platná šířka.',
+	'validation-error-invalid-height' => 'Parametr $1 musí být platná výška.',
+	'validation-error-invalid-distance' => 'Parametr $1 musí být platná vzdálenost.',
+	'validation-error-invalid-distances' => 'Parametr $1 musí být jedna nebo více platných vzdáleností.',
+	'validation-error-invalid-image' => 'Parametr $1 musí být platný obrázek.',
+	'validation-error-invalid-images' => 'Parametr $1 musí být jeden nebo více platných obrázků.',
+	'validation-error-invalid-line-param' => 'Zadaný parametr "lines" není platný.',
+	'validation-error-invalid-polyline-param' => 'Zadaný parametr "polylines" není platný.',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
 	'maps-abb-south' => 'J',
 	'maps-abb-west' => 'Z',
 	'maps-latitude' => 'Zeměpisná šířka:',
 	'maps-longitude' => 'Zeměpisná délka:',
+	'maps_map_cannot_be_displayed' => 'Nelze zobrazit mapu.',
+	'maps_click_to_activate' => 'Mapu aktivujete kliknutím',
+	'maps-googlemaps3-par-poi' => 'Zobrazit body zájmu.',
+	'maps-osm-par-thumbs' => 'Zobrazit náhledy',
+	'maps-osm-par-photos' => 'Zobrazit fotografie',
+	'mapeditor' => 'Editor map',
+	'specialpages-group-maps' => 'Mapy',
+	'mapeditor-none-text' => 'Nic',
+	'mapeditor-done-button' => 'Hotovo',
+	'mapeditor-remove-button' => 'Odstranit',
+	'mapeditor-import-button2' => 'Importovat',
+	'mapeditor-export-button' => 'Export do wiki kódu',
+	'mapeditor-import-button' => 'Import z wiki kódu',
+	'mapeditor-select-button' => 'Vyberte tento mnohoúhelník',
+	'mapeditor-mapparam-button' => 'Upravit parametry mapy',
+	'mapeditor-clear-button' => 'Vyprázdnit mapu',
+	'mapeditor-code-title' => 'Kód wiki',
+	'mapeditor-import-title' => 'Importovat wiki kód',
+	'mapeditor-form-title' => 'Upravit podrobnosti',
+	'mapeditor-link-title-switcher-link-text' => 'Odkaz',
+	'mapeditor-form-field-title' => 'Oslovení',
+	'mapeditor-form-field-text' => 'Text',
+	'mapeditor-form-field-link' => 'Odkaz',
+	'mapeditor-form-field-icon' => 'Ikona',
+	'mapeditor-form-field-group' => 'Skupina',
+	'mapeditor-form-field-strokecolor' => 'Barva tahu',
+	'mapeditor-form-field-strokeopacity' => 'Krytí tahu',
+	'mapeditor-form-field-strokeweight' => 'Váha tahu',
+	'mapeditor-form-field-fillcolor' => 'Barva výplně',
+	'mapeditor-form-field-fillopcaity' => 'Krytí výplně',
+	'mapeditor-form-field-showonhover' => 'Zobrazit pouze pod myší',
+	'mapeditor-form-field-image' => 'Obrázek',
+	'mapeditor-form-field-visitedicon' => 'Navštívená ikona',
+);
+
+/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'maps-layer-errors' => 'блаꙁнꙑ',
 );
 
 /** Danish (dansk)
@@ -979,7 +1249,7 @@ $messages['da'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([http://mapping.referata.com/wiki/Maps_examples Demonstrationsseite])',
+	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([https://www.semantic-mediawiki.org/wiki/Maps Weitere Informationen …])',
 	'right-geocode' => 'Georeferenzieren',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Die Karte wird geladen …',
@@ -1048,7 +1318,7 @@ Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordi
 Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.',
 	'maps-displaymap-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll',
-	'maps-displaymap-par-visitedicon' => 'Der Speicherort der Datei des Symbols, das Angeklicktes markiert',
+	'maps-displaymap-par-visitedicon' => 'Der Name eines Bildes, das für Markersymbole nach dem Anklicken verwendet werden soll.',
 	'maps-displaymap-par-zoom' => 'Der Anzeigestufe (Zoom) der Karte.
 Sofern keine angegeben wurde und mehrerer Markierungen auf der Karte vorhanden sind, wird die für deren gemeinsame Darstellung passende Anzeigestufe verwendet und nicht der Standardwert des Kartografiediensts.',
 	'maps-displaymap-par-centre' => 'Die Koordinaten, die zur Zentrierung der Karte verwendet werden sollen.
@@ -1116,10 +1386,10 @@ $1',
 	'maps-googlemaps3-par-autoinfowindows' => 'Die Informationsfenster nach dem Laden der Seite automatisch öffnen oder nicht',
 	'maps-googlemaps3-par-kml' => 'Die auf die Karte zu ladenden KML-Dateien.',
 	'maps-googlemaps3-par-gkml' => 'Die von Google gehosteten KML-Dateien, die auf die Karte geladen werden sollen',
-	'maps-googlemaps3-par-fusiontables' => 'Die Kennungen von Google Fusion Tables, die auf die Karte geladen werden sollen.',
+	'maps-googlemaps3-par-fusiontables' => 'Die Kennungen der Google Fusion Tables, die auf die Karte geladen werden sollen',
 	'maps-googlemaps3-par-tilt' => 'Die Neigung der Karte bei der Nutzung von Google Maps.',
 	'maps-googlemaps3-par-kmlrezoom' => 'Die Karte erneut zoomen, nachdem die KML-Ebenen geladen wurden.',
-	'maps-googlemaps3-par-poi' => 'Sehenswürdigkeiten anzeigen',
+	'maps-googlemaps3-par-poi' => 'Die Sehenswürdigkeiten anzeigen',
 	'maps-openlayers-par-controls' => 'Die auf der Karte anzuzeigenden Steuerelemente.',
 	'maps-openlayers-par-layers' => 'Die Ebenen, die über die Ebenenauswahl verfügbar sein sollen. Die erste Ebene wird während des Ladens der Karten angezeigt.',
 	'maps-osm-par-thumbs' => 'Miniaturansichten anzeigen',
@@ -1159,11 +1429,12 @@ $1',
 	'mapeditor-imageoverlay-button' => 'Bildeinblendung hinzufügen',
 	'mapeditor-form-field-image' => 'Bild',
 	'mapeditor-imageoverlay-title' => 'Einzelheiten zur Bildeinblendung',
-	'mapeditor-form-field-visitedicon' => 'Symbol für besucht',
+	'mapeditor-form-field-visitedicon' => 'Symbol sofern besucht',
 );
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Mirzali
  */
 $messages['diq'] = array(
 	'maps_map' => 'Xerita',
@@ -1184,12 +1455,14 @@ $messages['diq'] = array(
 	'mapeditor-done-button' => 'Qeyd ke',
 	'mapeditor-remove-button' => 'Wedarne',
 	'mapeditor-import-button2' => 'Azare de',
+	'mapeditor-code-title' => 'Wiki kode',
+	'mapeditor-form-title' => 'Detaya timar ke',
 	'mapeditor-link-title-switcher-link-text' => 'Gıre',
 	'mapeditor-form-field-title' => 'Sername',
 	'mapeditor-form-field-text' => 'Metın',
 	'mapeditor-form-field-link' => 'Gıre',
 	'mapeditor-form-field-icon' => 'Ikon',
-	'mapeditor-form-field-group' => 'Grub',
+	'mapeditor-form-field-group' => 'Grube',
 	'mapeditor-form-field-image' => 'Resim',
 );
 
@@ -1197,7 +1470,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://mapping.referata.com/wiki/Examples pśikłady])',
+	'maps-desc' => 'Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije. ([http://www.semantic-mediawiki.org/wiki/Maps dalšne informacije...])',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
 	'maps-markers' => 'Marki',
@@ -1250,31 +1523,141 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Glavkos
  * @author Omnipaedista
+ * @author Protnet
  * @author ZaDiak
  */
 $messages['el'] = array(
+	'maps-desc' => 'Επιτρέπει την ενσωμάτωση δυναμικών χαρτών σε σελίδες wiki, γεωκωδικοποίηση διευθύνσεων και άλλες γεωγραφικές λειτουργίες. ([http://www.semantic-mediawiki.org/wiki/Maps περισσότερες πληροφορίες...])',
+	'right-geocode' => 'Γεωκωδικοποίηση',
+	'maps_map' => 'Χάρτης',
+	'maps-loading-map' => 'Φόρτωση χάρτη...',
+	'maps-load-failed' => 'Δεν ήταν δυνατή η φόρτωση του χάρτη!',
+	'maps-markers' => 'Σημάδια',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Φιλτράρισμα σημαδιών',
+	'maps-others' => 'άλλοι',
+	'maps-layer-property' => 'Ιδιότητα',
+	'maps-layer-value' => 'Τιμή',
+	'maps-layer-errors' => 'Σφάλματα',
+	'validation-error-invalid-layer' => 'Η παράμετρος $1 πρέπει να είναι ένα έγκυρο στρώμα.',
+	'validation-error-invalid-layers' => 'Η παράμετρος $1 πρέπει να είναι ένα ή περισσότερα έγκυρα στρώματα.',
+	'maps-layer-of-type' => 'Στρώμα τύπου $1',
+	'maps-layer-type-supported-by' => 'Αυτός ο τύπος στρώματος μπορεί να χρησιμοποιηθεί {{PLURAL:$2|μόνο με την υπηρεσία χαρτογράφησης|με αυτές τις υπηρεσίες χαρτογράφησης:}} $1.',
+	'maps-displaymap-description' => 'Προβολή γεωγραφικών χαρτών χωρίς σημάδια ορισμένα μέσω wiki.',
+	'maps-displaypoint-description' => 'Προβολή γεωγραφικών χαρτών με ένα ή περισσότερα σημάδια ορισμένα μέσω wiki.',
+	'maps-distance-par-unit' => 'Μονάδα μέτρησης με την οποία να εκφράζεται η απόσταση.',
+	'maps-finddestination-par-location' => 'Η αρχική τοποθεσία.',
+	'maps-finddestination-par-format' => 'Μορφή με την οποία να εκφραστεί ο προορισμός.',
+	'maps-finddestination-par-directional' => 'Δηλώνει εάν η μορφή του προορισμού πρέπει να είναι κατευθυντική ή όχι.',
+	'maps-finddestination-par-allowcoordinates' => 'Δηλώνει εάν πρέπει να επιτρέπονται συντεταγμένες. Εάν οριστεί όχι, μόνο διευθύνσεις θα γίνονται δεκτές.',
+	'maps-geocode-par-location' => 'Η διεύθυνση που θέλετε να γεωκωδικοποιήσετε.',
+	'maps-geocode-par-mappingservice' => 'Υπηρεσία γεωκωδικοποίησης που θέλετε να χρησιμοποιήσετε. Δείτε τις διαθέσιμες υπηρεσίες γεωκωδικοποίησης.',
+	'maps-geocode-par-format' => 'Η μορφή για τις συντεταγμένες που προκύπτουν.',
+	'maps-geocode-par-directional' => 'Δηλώνει εάν οι συντεταγμένες πρέπει να εκφραστούν κατευθυντικά ή όχι.',
+	'maps-displaymap-par-coordinates' => 'Μία ή περισσότερες τοποθεσίες προς εμφάνιση στο χάρτη. Θα υποδεικνύονται με σημάδι.',
+	'maps-displaymap-par-icon' => 'Επιτρέπει τον ορισμό του εικονιδίου που χρησιμοποιείται για όλα τα σημάδια.',
+	'maps-displaymap-par-circles' => 'Κύκλοι προς εμφάνιση',
+	'maps-displaymap-par-lines' => 'Γραμμές προς εμφάνιση',
+	'maps-displaymap-par-maxzoom' => 'Το μέγιστο επίπεδο ζουμ',
+	'maps-displaymap-par-minzoom' => 'Το ελάχιστο επίπεδο ζουμ',
+	'maps-displaymap-par-polygons' => 'Πολύγωνα προς εμφάνιση',
+	'maps-displaymap-par-rectangles' => 'Ορθογώνια προς εμφάνιση',
+	'maps-displaymap-par-static' => 'Εάν ο χάρτης πρέπει να είναι στατικός',
+	'maps-displaymap-par-wmsoverlay' => 'Χρήση μιας υπέρθεσης WMS',
+	'validation-error-invalid-location' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη τοποθεσία.',
+	'validation-error-invalid-locations' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες τοποθεσίες.',
+	'validation-error-invalid-width' => 'Η παράμετρος $1 πρέπει να είναι ένα έγκυρο πλάτος.',
+	'validation-error-invalid-height' => 'Η παράμετρος $1 πρέπει να είναι ένα έγκυρο ύψος.',
+	'validation-error-invalid-distance' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη απόσταση.',
+	'validation-error-invalid-distances' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες αποστάσεις.',
+	'validation-error-invalid-image' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη εικόνα.',
+	'validation-error-invalid-images' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες εικόνες.',
+	'validation-error-invalid-goverlay' => 'Η παράμετρος $1 πρέπει να είναι μια έγκυρη υπέρθεση.',
+	'validation-error-invalid-goverlays' => 'Η παράμετρος $1 πρέπει να είναι μία ή περισσότερες έγκυρες υπερθέσεις.',
 	'maps-abb-north' => 'Β',
 	'maps-abb-east' => 'Α',
 	'maps-abb-south' => 'Ν',
 	'maps-abb-west' => 'Δ',
 	'maps-latitude' => 'Γεωγραφικό πλάτος:',
 	'maps-longitude' => 'Γεωγραφικό μήκος:',
-	'maps_coordinates_missing' => 'Καμία συντεταγμένη δεν παρασχέθηκε για τον χάρτη.',
+	'maps-invalid-coordinates' => 'Η τιμή $1 δεν αναγνωρίστηκε ως έγκυρο σύνολο συντεταγμένων.',
+	'maps_coordinates_missing' => 'Δεν δόθηκαν συντεταγμένες για τον χάρτη.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Η ακόλουθη διεύθυνση δεν ήταν δυνατό να γεωκωδικοποιηθεί|Οι ακόλουθες διευθύνσεις δεν ήταν δυνατό να γεωκωδικοποιηθούν}}: $1.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Η ακόλουθη διεύθυνση δεν ήταν δυνατό να γεωκωδικοποιηθεί|Οι ακόλουθες διευθύνσεις δεν ήταν δυνατό να γεωκωδικοποιηθούν}} και {{PLURAL:$2|έχει|έχουν}} παραληφθεί από το χάρτη:
+$1',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Η ακόλουθη συντεταγμένη δεν αναγνωρίστηκε|Οι ακόλουθες συντεταγμένες δεν αναγνωρίστηκαν}}: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Η ακόλουθη συντεταγμένη δεν αναγνωρίστηκε|Οι ακόλουθες συντεταγμένες δεν αναγνωρίστηκαν}} και {{PLURAL:$2|έχει|έχουν}} παραληφθεί από το χάρτη:
+$1',
+	'maps_map_cannot_be_displayed' => 'Ο χάρτης δεν μπορεί να προβληθεί.',
+	'maps_click_to_activate' => 'Κάντε κλικ για να ενεργοποιήσετε το χάρτη',
+	'maps_centred_on' => 'Ο χάρτης είναι κεντραρισμένος στο $1, $2.',
+	'maps-googlemaps3-incompatbrowser' => 'Το πρόγραμμα περιήγησης δεν είναι συμβατό με την έκδοση 3 των Χαρτών Google.',
+	'maps-googlemaps3-par-type' => 'Τύπος χάρτη που να εμφανίζεται αρχικά.',
+	'maps-googlemaps3-par-types' => 'Τύποι χάρτη που θα είναι διαθέσιμοι μέσω της ρύθμισης τύπου.',
+	'maps-googlemaps3-par-controls' => 'Στοιχεία ελέγχου για τοποθέτηση στο χάρτη.',
+	'maps-googlemaps3-par-zoomstyle' => 'Στυλ του στοιχείου ελέγχου του ζουμ.',
+	'maps-googlemaps3-par-typestyle' => 'Στυλ του στοιχείου ελέγχου του τύπου.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Αυτόματο άνοιγμα όλων των παραθύρων πληροφοριών μετά τη φόρτωση της σελίδας.',
+	'maps-googlemaps3-par-kml' => 'Αρχεία KML για φόρτωση στο χάρτη.',
+	'maps-googlemaps3-par-gkml' => 'Αρχεία KML που φιλοξενούνται στη Google για φόρτωση στο χάρτη.',
+	'maps-googlemaps3-par-poi' => 'Εμφάνιση σημείων ενδιαφέροντος.',
+	'maps-osm-par-thumbs' => 'Εμφάνιση μικρογραφιών',
+	'maps-osm-par-photos' => 'Εμφάνιση φωτογραφιών',
+	'mapeditor' => 'Πρόγραμμα επεξεργασίας χαρτών',
+	'specialpages-group-maps' => 'Χάρτες',
+	'mapeditor-none-text' => 'Κανένα',
+	'mapeditor-done-button' => 'Ολοκληρώθηκε',
+	'mapeditor-remove-button' => 'Αφαίρεση',
+	'mapeditor-import-button2' => 'Εισαγωγή',
+	'mapeditor-export-button' => 'Εξαγωγή κώδικα wiki',
+	'mapeditor-import-button' => 'Εισαγωγή από κώδικα wiki',
+	'mapeditor-select-button' => 'Επιλογή αυτού του πολυγώνου',
+	'mapeditor-mapparam-button' => 'Επεξεργασία παραμέτρων χάρτη',
+	'mapeditor-code-title' => 'Κώδικας wiki',
+	'mapeditor-import-title' => 'Εισαγωγή κώδικα wiki',
+	'mapeditor-form-title' => 'Επεξεργασία λεπτομερειών',
+	'mapeditor-link-title-switcher-popup-text' => 'Αναδυόμενο με κείμενο',
+	'mapeditor-link-title-switcher-link-text' => 'Σύνδεσμος',
+	'mapeditor-form-field-title' => 'Τίτλος',
+	'mapeditor-form-field-text' => 'Κείμενο',
+	'mapeditor-form-field-link' => 'Σύνδεσμος',
+	'mapeditor-form-field-icon' => 'Εικονίδιο',
+	'mapeditor-form-field-group' => 'Ομάδα',
+	'mapeditor-form-field-strokecolor' => 'Χρώμα περιγράμματος',
+	'mapeditor-form-field-strokeopacity' => 'Αδιαφάνεια περιγράμματος',
+	'mapeditor-form-field-strokeweight' => 'Πάχος περιγράμματος',
+	'mapeditor-form-field-fillcolor' => 'Χρώμα γεμίσματος',
+	'mapeditor-form-field-fillopcaity' => 'Αδιαφάνεια γεμίσματος',
+	'mapeditor-form-field-showonhover' => 'Εμφάνιση μόνο με την κατάδειξη',
+	'mapeditor-mapparam-title' => 'Επεξεργασία παραμέτρων χάρτη',
+	'mapeditor-mapparam-defoption' => '-Επιλογή παραμέτρου-',
+	'mapeditor-imageoverlay-button' => 'Προσθήκη υπέρθεσης εικόνας',
+	'mapeditor-form-field-image' => 'Εικόνα',
+	'mapeditor-imageoverlay-title' => 'Λεπτομέρειες υπέρθεσης εικόνας',
 );
 
 /** British English (British English)
  * @author Bruce89
+ * @author Lloffiwr
  * @author Reedy
+ * @author Shirayuki
  */
 $messages['en-gb'] = array(
 	'maps-desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Available mapping services: $1',
+Available mapping services: $1', # Fuzzy
+	'maps-displaymap-par-centre' => "Allows setting the coordinates of the map's centre for display_point(s).
+Accepts both addresses and coordinates.
+When this property is not provided, the map will centre itself on the provided marker, or between the provided markers.",
 	'maps-invalid-coordinates' => 'The value $1 was not recognised as a valid set of coordinates.',
 	'maps_unrecognized_coords' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised: $1.',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 	'maps_centred_on' => 'Map centred on $1, $2.',
+	'maps-par-centre' => 'The location on which the map should be centred',
+	'mapeditor-form-field-strokecolor' => 'Stroke colour',
+	'mapeditor-form-field-fillcolor' => 'Fill colour',
 );
 
 /** Esperanto (Esperanto)
@@ -1298,13 +1681,15 @@ $messages['eo'] = array(
  * @author Diego Grez
  * @author Imre
  * @author Locos epraix
+ * @author MarcoAurelio
  * @author Pertile
  * @author Peter17
  * @author Sanbec
  * @author Translationista
+ * @author Vivaelcelta
  */
 $messages['es'] = array(
-	'maps-desc' => 'Habilita inserción de mapas dinámicos en página wiki, geocodificación de direcciones y otras operaciones geográficas. ([http://mapping.referata.com/wiki/Examples demos])',
+	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([http://www.semantic-mediawiki.org/wiki/Maps Más información...])',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
@@ -1459,7 +1844,7 @@ No se puede mostrar el mapa.',
 	'mapeditor-code-title' => 'Código wiki',
 	'mapeditor-import-title' => 'Importar código wiki',
 	'mapeditor-import-note' => 'Tenga en cuenta que el analizador espera un formato muy estricto en el código wiki. El código introducido aquí debe coincidir con el código producido por la funcionalidad de exportación.',
-	'mapeditor-form-title' => 'Editar detalles',
+	'mapeditor-form-title' => 'Editar los detalles',
 	'mapeditor-link-title-switcher-popup-text' => 'Ventana emergente con texto',
 	'mapeditor-link-title-switcher-link-text' => 'Enlace',
 	'mapeditor-form-field-title' => 'Título',
@@ -1485,20 +1870,40 @@ No se puede mostrar el mapa.',
 /** Estonian (eesti)
  * @author Avjoska
  * @author Hendrik
+ * @author Pikne
  */
 $messages['et'] = array(
+	'maps_map' => 'Kaart',
+	'maps-loading-map' => 'Kaardi laadimine...',
+	'maps-others' => 'teised',
+	'maps-geocode-par-location' => 'Geokodeeritav aadress.',
+	'maps-displaymap-par-maxzoom' => 'Maksimaalne suumi tase',
+	'maps-displaymap-par-minzoom' => 'Minimaalne suumi tase',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'Laiuskraad:',
 	'maps-longitude' => 'Pikkuskraad:',
+	'maps_map_cannot_be_displayed' => 'Kaarti ei saa kuvada.',
+	'maps-osm-par-thumbs' => 'Näita pisipilte',
+	'maps-osm-par-photos' => 'Näita fotosid',
+	'mapeditor' => 'Kaardi toimetaja',
+	'specialpages-group-maps' => 'Kaardid',
+	'mapeditor-none-text' => 'Puudub',
+	'mapeditor-done-button' => 'Valmis',
+	'mapeditor-remove-button' => 'Eemalda',
+	'mapeditor-import-button2' => 'Impordi',
+	'mapeditor-clear-button' => 'Tühjenda kaart',
+	'mapeditor-code-title' => 'Viki kood',
+	'mapeditor-form-title' => 'Muuda üksikasju',
 	'mapeditor-link-title-switcher-popup-text' => 'Hüpikaken tekstiga',
 	'mapeditor-form-field-title' => 'Pealkiri',
 	'mapeditor-form-field-text' => 'Tekst',
 	'mapeditor-form-field-link' => 'Link',
 	'mapeditor-form-field-icon' => 'Ikoon',
 	'mapeditor-form-field-group' => 'Rühm',
+	'mapeditor-form-field-image' => 'Pilt',
 );
 
 /** Basque (euskara)
@@ -1575,41 +1980,141 @@ $messages['fa'] = array(
  * @author Beluga
  * @author Cimon Avaro
  * @author Crt
+ * @author Nedergard
  * @author Nike
  * @author Str4nd
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'maps-desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://mapping.referata.com/wiki/Maps_examples demo]).',
+	'maps-desc' => 'Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja ([http://www.semantic-mediawiki.org/wiki/Maps lisätietoja]).',
+	'right-geocode' => 'Geokoodata',
 	'maps_map' => 'Kartta',
 	'maps-loading-map' => 'Ladataan karttaa...',
+	'maps-load-failed' => 'Karttaa ei voitu ladata.',
+	'maps-markers' => 'Kohdemerkit',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Suodatuksen kohdemerkit', # Fuzzy
 	'maps-others' => 'muut',
+	'maps-ns-layer' => 'Taso',
+	'maps-ns-layer-talk' => 'Keskustelu tasosta',
 	'maps-layer-property' => 'Ominaisuus',
 	'maps-layer-value' => 'Arvo',
 	'maps-layer-errors' => 'Virheet',
+	'maps-error-invalid-layerdef' => 'Tämä tasomääritelmä ei kelpaa.',
+	'maps-error-invalid-layertype' => 'Tasotyyppiä ”$1” ei ole. Vain {{PLURAL:$3|tätä tyyppiä|näitä tyyppejä}} tuetaan: $2',
+	'maps-error-no-layertype' => 'Tasotyyppi on määritettävä. Vain {{PLURAL:$2|tätä tyyppiä|näitä tyyppejä}} tuetaan: $1',
+	'validation-error-invalid-layer' => 'Parametrin $1 on oltava sallittu taso.',
+	'validation-error-invalid-layers' => 'Parametrin $1 on oltava yksi tai useampi sallittu taso.',
+	'maps-layer-of-type' => 'Taso, jonka tyyppi on $1',
+	'maps-layer-type-supported-by' => 'Tätä tasotyyppiä voidaan käyttää vain, jos {{PLURAL:$2|karttapalveluna on $1}}.',
+	'maps-coordinates-description' => 'Jäsentimen laajennuskoodi kordinaattien muotoiluun. Mikä tahansa tuettu muoto voi olla lähtö- tai tulomuoto.',
+	'maps-geocode-description' => 'Mahdollistaa osoitteiden geokoodauksen eli muuntaa selkokieliset sijainnit koordinaattisarjaksi. Käytettävissä on joukko geokoodauspalveluja, joita ei pidä kuitenkaan sekoittaa karttapalveluihin.',
+	'maps-mapsdoc-description' => 'Näyttää taulukon, jossa on määritetyn karttapalvelun parametrit, niiden oletusarvot ja kuvaukset.',
+	'maps-mapsdoc-par-service' => 'Karttapalvelu jolle parametridokumentaatio näytetään.',
+	'maps-mapsdoc-par-language' => 'Ohjeistuksen kieli. Jos käännöstä ei ole, näytetään englanninkielinen versio.',
+	'maps-coordinates-par-location' => 'Muotoiltavat koordinaatit',
+	'maps-coordinates-par-format' => 'Koordinaattien tulosmuoto.',
+	'maps-distance-par-decimals' => 'Kohdearvon desimaalien enimmäismäärä.',
 	'maps-distance-par-unit' => 'Etäisyyden näyttämiseen käytettävä yksikkö.',
-	'maps-abb-north' => 'Pohj.',
-	'maps-abb-east' => 'It.',
-	'maps-abb-south' => 'Etel.',
-	'maps-abb-west' => 'Länt.',
-	'maps-latitude' => 'Korkeusaste:',
-	'maps-longitude' => 'Pituuspiiri:',
+	'maps-finddestination-par-location' => 'Aloitussijainti.',
+	'maps-finddestination-par-distance' => 'Kuljettava matka.',
+	'maps-finddestination-par-format' => 'Kohteen tulostusmuoto',
+	'maps-finddestination-par-allowcoordinates' => 'Sallitaanko koordinaatit. Jos ei, vain osoitteet hyväksytään.',
+	'maps-finddestination-par-geoservice' => 'Osoitteiden geokoodauspalvelu.',
+	'maps-finddestination-par-mappingservice' => 'Parametri, joka ilmoittaa tämän toiminnon käyttämän karttapalvelun.
+Tämän avulla kartat ohittavat palveluparametrin oletusarvon ja käyttävät sen sijaan karttapalvelulle sopivinta arvoa.
+(Esimerkki: Google Maps käytetään Google-geokoodaajaa.)',
+	'maps-geocode-par-location' => 'Geokoodattava osoite.',
+	'maps-geocode-par-mappingservice' => 'Käytettävä geokoodauspalvelu. Katso käytettävissä olevat palvelut.',
+	'maps-geocode-par-allowcoordinates' => 'Sallitaanko koordinaatit tässä toiminnossa. Arvon on oltava kyllä tai ei.
+Jos se on ei, kaikki arvot geokoodataan mukaan lukien oikeat koordinaatit.',
+	'maps-geocode-par-format' => 'Tuloskoordinaattien muoto.',
+	'maps-geocode-par-directional' => 'Tulostetaanko koordinatit suuntatiedon kanssa vai ei.',
+	'maps-geodistance-par-location1' => 'Etäisyyden laskemisen ensimmäinen piste.',
+	'maps-geodistance-par-location2' => 'Etäisyyden laskemisen toinen piste.',
+	'maps-geodistance-par-unit' => 'Etäisyyden näyttämiseen käytettävä yksikkö.',
+	'maps-geodistance-par-decimals' => 'Kohdearvon desimaalien enimmäismäärä.',
+	'maps-geodistance-par-mappingservice' => 'Geokoodauspalvelu, jota käytetään osoitteiden geokoodaamiseen.',
+	'maps-geodistance-par-geoservice' => 'Karttapalvelu, jonka kanssa tätä käytetään.
+Tämä voi vaikuttaa geokoodauspalvelun oletusarvoon.',
+	'maps-displaymap-par-mappingservice' => 'Mahdollistaa kartan tuottavan karttapalvelun määrityksen.',
+	'maps-displaymap-par-coordinates' => 'Kartalla on yksi tai useampi kohde. Ne osoitetaan kohdemerkillä.',
+	'maps-displaymap-par-zoom' => 'Mahdollistaa kartan loitonnustason asettamisen.
+Jos sitä ei ole asetettu ja kartalla on kohdemerkkejä, loitonnustasoksi valitaan parhaiten sopiva asetusten oletusarvon sijasta.',
+	'maps-displaymap-par-icon' => 'Mahdollistaa kaikkien kohdemerkkien kuvakkeen asettamisen.',
+	'maps-displaymap-par-circles' => 'Näytettävät ympyrät',
+	'maps-displaymap-par-lines' => 'Näytettävät viivat',
+	'maps-displaymap-par-maxzoom' => 'Suppein loitonnustaso',
+	'maps-displaymap-par-minzoom' => 'Laajin loitonnustaso',
+	'maps-displaymap-par-polygons' => 'Näytettävät monikulmiot',
+	'maps-displaymap-par-rectangles' => 'Näytettävät suorakulmiot',
+	'maps-displaymap-par-static' => 'Onko kartan on oltava staattinen',
+	'validation-error-invalid-location' => 'Parametrin $1 on oltava sallittu sijainti.',
+	'validation-error-invalid-locations' => 'Parametrin $1 on oltava yksi tai useampi sallittu sijainti.',
+	'validation-error-invalid-width' => 'Parametrin $1 on oltava sallittu leveys.',
+	'validation-error-invalid-height' => 'Parametrin $1 on oltava sallittu korkeus.',
+	'validation-error-invalid-distance' => 'Parametrin $1 on oltava sallittu etäisyys.',
+	'validation-error-invalid-distances' => 'Parametrin $1 on oltava yksi tai useampi sallittu etäisyys.',
+	'validation-error-invalid-image' => 'Parametrin $1 on oltava sallittu kuva.',
+	'validation-error-invalid-images' => 'Parametrin $1 on oltava yksi tai useampi sallittu kuva.',
+	'validation-error-invalid-line-param' => 'Virheellinen lines-paramateri.',
+	'validation-error-invalid-polyline-param' => 'Virheellinen polylines-paramateri.',
+	'maps-abb-north' => 'P',
+	'maps-abb-east' => 'I',
+	'maps-abb-south' => 'E',
+	'maps-abb-west' => 'L',
+	'maps-latitude' => 'Leveyspiiri',
+	'maps-longitude' => 'Pituuspiiri',
 	'maps-invalid-coordinates' => 'Arvoa $1 ei tunnistettu oikeaksi koordinaattisarjaksi.',
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
-	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
-Karttaa ei voida näyttää.',
-	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|on|ovat}} jätetty kartalta: $1',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|se|ne}} on jätetty pois kartasta: $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu ja {{PLURAL:$2|se|ne}} on jätetty pois kartasta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Karttaa ei voida näyttää.',
+	'maps-geocoder-not-available' => 'Maps-laajennoksen geokoodausominaisuus ei ole käytössä. Sijaintia ei voitu geokoodata.',
 	'maps_click_to_activate' => 'Napsauta aktivoidaksesi kartan',
 	'maps_centred_on' => 'Kartta keskitetty kohtaan $1, $2.',
+	'maps-par-mappingservice' => 'Mahdollistaa kartan tuottavan karttapalvelun määrityksen.',
+	'maps-par-geoservice' => 'Geokoodauspalvelu, jota käytetään osoitteiden ja koordinaattien muunnossa.',
+	'maps-par-zoom' => 'Kartan loitonnustaso. Jos kartalla on kohdemerkkejä, kartta loitonnetaan oletusarvoisesti niin, että kaikki kohdemerkit näkyvät.',
+	'maps-par-width' => 'Mahdollistaa kartan leveyden asettamisen. Oletusyksikkönä on pikseli, mutta voit erikseen määrittää jonkin seuraavista yksiköistä: px, ex, em, %.',
+	'maps-par-height' => 'Mahdollistaa kartan korkeuden asettamisen. Oletusyksikkönä on pikseli, mutta voit erikseen määrittää jonkin seuraavista yksiköistä: px, ex, em, %.',
+	'maps-par-centre' => 'Sijainti, johon kartta keskitetään',
+	'maps-googlemaps3-incompatbrowser' => 'Selaimesi ei ole yhteensopiva Google Maps v3:n kanssa.',
+	'maps-googlemaps3-par-type' => 'Ensimmäiseksi näytettävä karttatyyppi.',
+	'maps-googlemaps3-par-types' => 'Karttatasovalitsimen käyttämät karttatyypit.',
+	'maps-googlemaps3-par-layers' => 'Kartalle ladattavat erikoistasot.',
+	'maps-googlemaps3-par-controls' => 'Kartalle sijoitettavat ohjaimet.',
+	'maps-googlemaps3-par-zoomstyle' => 'Loitonnusohjaimen tyyli.',
+	'maps-googlemaps3-par-typestyle' => 'Karttatasovalitsimen tyyli.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Avaa automaattisesti kaikki tietoikkunat sen jälkeen, kun sivu on ladattu.',
+	'maps-googlemaps3-par-kml' => 'Kartalle ladattavat KML-tiedostot.',
+	'maps-googlemaps3-par-fusiontables' => 'Google Fusion Tables -tunnukset, joka ladataan karttaan.',
+	'maps-googlemaps3-par-tilt' => 'Kartan kallistus, kun käytössä on Google Maps.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Valitse paras loitonnustaso uudelleen sen jälkeen, kun KML-tasot on ladattu.',
+	'maps-openlayers-par-controls' => 'Kartalle sijoitettavat ohjaimet.',
+	'maps-openlayers-par-layers' => 'Tasot, jotka näytetään karttatasojen valinnassa. Kartan oletustaso on listan ensimmäinen taso.',
+	'maps-osm-par-thumbs' => 'Näytä pienoiskuvat',
+	'maps-osm-par-photos' => 'Näytä valokuvat',
+	'mapeditor' => 'Kartan muokkausohjelma',
 	'specialpages-group-maps' => 'Kartat',
+	'mapeditor-parser-error' => 'Metadatan jäsennys epäonnistui. Käyttäjän antamat tiedot ohitetaan.',
 	'mapeditor-none-text' => 'Ei mitään',
 	'mapeditor-done-button' => 'Valmis',
 	'mapeditor-remove-button' => 'Poista',
 	'mapeditor-import-button2' => 'Tuo',
+	'mapeditor-export-button' => 'Vie wikikoodiin',
+	'mapeditor-import-button' => 'Tuo wikikoodista',
+	'mapeditor-select-button' => 'Valitse tämä monikulmio',
+	'mapeditor-mapparam-button' => 'Muokkaa kartan parametreja',
+	'mapeditor-clear-button' => 'Tyhjennä kartta',
+	'mapeditor-code-title' => 'Wikikoodi',
+	'mapeditor-import-title' => 'Tuo wikikoodi',
+	'mapeditor-import-note' => 'Huomaa, että jäsennin odottaa erittäin täsmällistä wikikoodin muotoa. Kirjoitetun koodin on siksi vastattava vientitoiminnallisuuden tulostamaa koodia.',
+	'mapeditor-form-title' => 'Muokkaa lisätietoja',
+	'mapeditor-link-title-switcher-popup-text' => 'Ponnahdusikkuna tekstillä',
 	'mapeditor-link-title-switcher-link-text' => 'Linkki',
 	'mapeditor-form-field-title' => 'Otsikko',
 	'mapeditor-form-field-text' => 'Teksti',
@@ -1617,6 +2122,9 @@ $1',
 	'mapeditor-form-field-icon' => 'Kuvake',
 	'mapeditor-form-field-group' => 'Ryhmä',
 	'mapeditor-form-field-fillcolor' => 'Täyttöväri',
+	'mapeditor-form-field-showonhover' => 'Näytä työkaluvihjeenä',
+	'mapeditor-mapparam-title' => 'Kartan parametrien muokkaus',
+	'mapeditor-mapparam-defoption' => '-Valitse parametri-',
 	'mapeditor-form-field-image' => 'Kuva',
 );
 
@@ -1637,7 +2145,7 @@ $1',
  * @author Wyz
  */
 $messages['fr'] = array(
-	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://mapping.referata.com/wiki/Examples démonstration])",
+	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])",
 	'right-geocode' => 'Géocode',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
@@ -1703,6 +2211,7 @@ Si cette valeur est « non », chacune des valeurs sera géocodée, même s'il s
 Cela peut affecter la valeur par défaut du service de géocodage.',
 	'maps-displaymap-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
 	'maps-displaymap-par-coordinates' => "L'emplacement sur lequel la carte sera initialement centrée.",
+	'maps-displaymap-par-visitedicon' => 'Le nom d’une image à utiliser comme icônes de marquage une fois qu’elles ont été cliquées',
 	'maps-displaymap-par-zoom' => "Permet de définir le niveau de zoom de la carte.
 Lorsqu'il n'est pas fourni et que plusieurs marqueurs sont présents sur la carte, le meilleur zoom sera pris, et non pas la valeur par défaut configurable.",
 	'maps-displaymap-par-centre' => "Permet de définir les coordonnées du centre de la carte pour display_point(s).
@@ -1712,6 +2221,15 @@ Lorsque cette propriété n'est pas fournie, la carte se recentre sur le marqueu
 Lorsqu'il est utilisé avec le label, le titre sera en gras et souligné.",
 	'maps-displaymap-par-label' => "Permet de définir le texte qui sera affiché dans les fenêtres surgissantes de tous les marqueurs qui n'ont pas une étiquette spécifique.",
 	'maps-displaymap-par-icon' => "Permet de définir l'icône utilisée pour tous les marqueurs.",
+	'maps-displaymap-par-circles' => 'Cercles à afficher',
+	'maps-displaymap-par-copycoords' => "Si une boîte de dialogue avec les coordonnées d'un lieu doit être affichée en cliquant quelque part",
+	'maps-displaymap-par-lines' => 'Lignes à afficher',
+	'maps-displaymap-par-maxzoom' => 'Le niveau maximal de grossissement',
+	'maps-displaymap-par-minzoom' => 'Le niveau minimal de grossissement',
+	'maps-displaymap-par-polygons' => 'Polygones à afficher',
+	'maps-displaymap-par-rectangles' => 'Rectangles à afficher',
+	'maps-displaymap-par-static' => 'Si la carte doit être statique',
+	'maps-displaymap-par-wmsoverlay' => 'Utiliser une superposition WMS',
 	'validation-error-invalid-location' => 'Le paramètre $1 doit être un emplacement valide.',
 	'validation-error-invalid-locations' => 'Le paramètre $1 doit être un ou plusieurs emplacement(s) valide(s).',
 	'validation-error-invalid-width' => 'Le paramètre $1 doit être une largeur valide.',
@@ -1743,11 +2261,13 @@ $1",
 	'maps-geocoder-not-available' => "La fonctionnalité géocodage des cartes n'est pas disponible. Votre emplacement ne peut être géocodé.",
 	'maps_click_to_activate' => 'Cliquer pour activer la carte',
 	'maps_centred_on' => 'Carte centrée sur $1, $2.',
+	'maps-par-mappingservice' => 'Permet de régler le service de cartographie qui sera utilisé pour générer la carte.',
 	'maps-par-resizable' => 'Rendre la carte redimensionnable en faisant glisser son coin inférieur droit.',
 	'maps-par-geoservice' => 'Le service de géocodage à utiliser pour effectuer les traductions entre les adresses et les coordonnées.',
 	'maps-par-zoom' => 'Le niveau de zoom de la carte. Pour les cartes avec des marqueurs la valeur par défaut le plus grand zoom qui montre encore tous les marqueurs.',
 	'maps-par-width' => 'Permet de définir la largeur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.',
 	'maps-par-height' => 'Permet de définir la hauteur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.',
+	'maps-par-centre' => 'Le lieu sur lequel la carte devra être centrée',
 	'maps-googlemaps3-incompatbrowser' => "Votre navigateur n'est pas compatible avec Google Maps v3.",
 	'maps-googlemaps3-par-type' => 'Le type de carte à afficher initialement.',
 	'maps-googlemaps3-par-types' => 'Les types de carte qui seront disponibles via le contrôle de type.',
@@ -1775,6 +2295,7 @@ $1",
 	'mapeditor-import-button2' => 'Importer',
 	'mapeditor-export-button' => 'Exporter en code wiki',
 	'mapeditor-import-button' => 'Importer à partir de code wiki',
+	'mapeditor-select-button' => 'Sélectionner ce polygone',
 	'mapeditor-mapparam-button' => 'Modifier les paramètres de la carte',
 	'mapeditor-clear-button' => 'Effacer la carte',
 	'mapeditor-code-title' => 'Code wiki',
@@ -1826,6 +2347,14 @@ $messages['frp'] = array(
 	'maps-finddestination-par-location' => 'Lo premiér emplacement.',
 	'maps-finddestination-par-bearing' => 'La premiére dirèccion.',
 	'maps-finddestination-par-distance' => 'La distance a parcorir.',
+	'maps-displaymap-par-circles' => 'Cèrcllos a fâre vêre',
+	'maps-displaymap-par-lines' => 'Legnes a fâre vêre',
+	'maps-displaymap-par-maxzoom' => 'Lo nivél maximon de zoome',
+	'maps-displaymap-par-minzoom' => 'Lo nivél minimon de zoome',
+	'maps-displaymap-par-polygons' => 'Poligonos a fâre vêre',
+	'maps-displaymap-par-rectangles' => 'Rèctangllos a fâre vêre',
+	'maps-displaymap-par-static' => 'Se la mapa dêt étre statica',
+	'maps-displaymap-par-wmsoverlay' => 'Empleyér na supèrposicion WMS',
 	'maps-abb-north' => 'B',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'M',
@@ -1834,6 +2363,8 @@ $messages['frp'] = array(
 	'maps-longitude' => 'Longituda :',
 	'maps_click_to_activate' => 'Clicâd por activar la mapa',
 	'maps_centred_on' => 'Mapa centrâ dessus $1, $2.',
+	'maps-googlemaps3-par-poi' => 'Montrar los pouents d’entèrèt.',
+	'maps-openlayers-par-controls' => 'Los contrôlos a placiér sur la mapa.',
 	'maps-osm-par-thumbs' => 'Fâre vêre des figures',
 	'maps-osm-par-photos' => 'Fâre vêre des fotôs',
 	'mapeditor' => 'Changior de mapa',
@@ -1844,6 +2375,7 @@ $messages['frp'] = array(
 	'mapeditor-import-button2' => 'Importar',
 	'mapeditor-export-button' => 'Èxportar en code vouiqui',
 	'mapeditor-import-button' => 'Importar dês lo code vouiqui',
+	'mapeditor-select-button' => 'Chouèsir ceti poligono',
 	'mapeditor-mapparam-button' => 'Changiér los paramètros de la mapa',
 	'mapeditor-clear-button' => 'Èfaciér la mapa',
 	'mapeditor-code-title' => 'Code vouiqui',
@@ -1876,7 +2408,7 @@ $messages['frp'] = array(
  */
 $messages['fur'] = array(
 	'maps-desc' => 'Al furnìs la possibilitât di mostrâ i dâts de coordinadis e lis direzions geocodificadis intune mape ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Servizis di mapis disponibii: $1',
+Servizis di mapis disponibii: $1', # Fuzzy
 	'maps_map' => 'Mape',
 	'maps_coordinates_missing' => 'Nissune coordenade furnide pe mape.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|La direzion ca sot no pues jessi geocodificade|Lis direzions ca sot no puedin jessi geocodificadis}}: $1.
@@ -1897,7 +2429,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'maps-desc' => 'Proporciona a capacidade de mostrar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([http://mapping.referata.com/wiki/Examples demostración])',
+	'maps-desc' => 'Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([http://www.semantic-mediawiki.org/wiki/Maps máis información...])',
 	'right-geocode' => 'Xeocodificar',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
@@ -1963,6 +2495,7 @@ Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenad
 Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'Unha ou máis localizacións a mostrar no mapa. Indicaranse cun marcador.',
+	'maps-displaymap-par-visitedicon' => 'O nome dunha imaxe a utilizar como iconas de marcador despois de premer nelas',
 	'maps-displaymap-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
 Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
@@ -1973,6 +2506,7 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'maps-displaymap-par-label' => 'Permite configurar o texto que aparecerá na ventás emerxentes de todos os marcadores que non teñen unha etiqueta específica.',
 	'maps-displaymap-par-icon' => 'Permite configurar a icona usada para todos os marcadores.',
 	'maps-displaymap-par-circles' => 'Círculos a mostrar',
+	'maps-displaymap-par-copycoords' => 'Se un diálogo coas coordenadas dunha localización se debe mostrar ao premer nalgures',
 	'maps-displaymap-par-lines' => 'Liñas a mostrar',
 	'maps-displaymap-par-maxzoom' => 'O nivel máximo de zoom',
 	'maps-displaymap-par-minzoom' => 'O nivel mínimo de zoom',
@@ -2074,7 +2608,8 @@ $1',
 	'mapeditor-form-field-visitedicon' => 'Icona visitada',
 );
 
-/** Ancient Greek (Ἀρχαία ἑλληνικὴ) */
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ */
 $messages['grc'] = array(
 	'maps-abb-north' => 'Β',
 	'maps-abb-east' => 'Α',
@@ -2088,7 +2623,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'maps-desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://mapping.referata.com/wiki/Maps_examples Demo]',
+	'maps-desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://mapping.referata.com/wiki/Maps_examples Demo]', # Fuzzy
 	'maps_map' => 'Charte',
 	'maps-loading-map' => 'Am Lade vu dr Charte ...',
 	'maps-markers' => 'Markierige',
@@ -2144,7 +2679,7 @@ $1',
  */
 $messages['he'] = array(
 	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.
-([http://mapping.referata.com/wiki/Maps_examples הדגמות])',
+([http://mapping.referata.com/wiki/Maps_examples הדגמות])', # Fuzzy
 	'right-geocode' => 'לעשות קידוד גאוגרפי',
 	'maps_map' => 'מפה',
 	'maps-loading-map' => 'המפה נטענת...',
@@ -2310,21 +2845,33 @@ $1',
 	'mapeditor-form-field-visitedicon' => 'סמל לסימון מקומות שביקרת בהם',
 );
 
-/** Hindi (हिन्दी) */
+/** Hindi (हिन्दी)
+ * @author Ansumang
+ * @author Siddhartha Ghai
+ */
 $messages['hi'] = array(
+	'maps_map' => 'मानचित्र',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'अक्षांश:',
 	'maps-longitude' => 'रेखांश:',
+	'specialpages-group-maps' => 'मानचित्र',
+	'mapeditor-none-text' => 'कोई नहीं',
+	'mapeditor-remove-button' => 'निकालें',
+	'mapeditor-import-button2' => 'आयात करें',
+	'mapeditor-form-field-title' => 'शीर्षक',
+	'mapeditor-form-field-text' => 'पाठ',
+	'mapeditor-form-field-icon' => 'आइकन',
+	'mapeditor-form-field-image' => 'छवि',
 );
 
 /** Croatian (hrvatski)
  * @author Ex13
  */
 $messages['hr'] = array(
-	'maps-desc' => 'Pruža mogućnost prikaza podataka o koordinatama na kartama, te geokodiranih adresa ([http://mapping.referata.com/wiki/Maps_examples demo]). Dostupne usluge kartiranja: $1',
+	'maps-desc' => 'Pruža mogućnost prikaza podataka o koordinatama na kartama, te geokodiranih adresa ([http://mapping.referata.com/wiki/Maps_examples demo]). Dostupne usluge kartiranja: $1', # Fuzzy
 	'maps_coordinates_missing' => 'Za kartu nisu dostupne koordinate.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Sljedeća adresa ne može biti geokodirana|Sljedeće adrese ne mogu biti geokodirane}}: $1.
 Karta ne može biti prikazana.',
@@ -2337,7 +2884,7 @@ $1',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([http://mapping.referata.com/wiki/Examples přikłady])',
+	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([http://www.semantic-mediawiki.org/wiki/Maps dalše informacije...])',
 	'right-geocode' => 'Geokodowanje',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Karta so začituje...',
@@ -2474,7 +3021,8 @@ $messages['hsb'] = array(
 	'mapeditor-form-field-visitedicon' => 'Symbol za wopytany',
 );
 
-/** Haitian (Kreyòl ayisyen) */
+/** Haitian (Kreyòl ayisyen)
+ */
 $messages['ht'] = array(
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
@@ -2489,12 +3037,13 @@ $messages['ht'] = array(
  * @author Misibacsi
  */
 $messages['hu'] = array(
-	'maps-desc' => 'Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket. ([http://mapping.referata.com/wiki/Maps_examples demók]).',
+	'maps-desc' => 'Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket. ([http://mapping.referata.com/wiki/Maps_examples demók]).', # Fuzzy
 	'right-geocode' => 'Geokód',
 	'maps_map' => 'Térkép',
 	'maps-loading-map' => 'Térkép betöltése…',
 	'maps-load-failed' => 'Nem sikerült betölteni a térképet!',
 	'maps-markers' => 'Markerek',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'egyebek',
 	'maps-ns-layer' => 'Réteg',
 	'maps-ns-layer-talk' => 'Rétegvita',
@@ -2533,17 +3082,40 @@ $1',
 	'maps-geocoder-not-available' => 'A térképek kiterjesztés geokódoló funkciója nem elérhető. A tartózkodási helyed nem geokódolható.',
 	'maps_click_to_activate' => 'Kattints a térkép aktiválásához',
 	'maps_centred_on' => 'Térkép középre igazítva a következő koordináták alapján: $1, $2.',
+	'maps-googlemaps3-incompatbrowser' => 'A böngésződ nem kompatibilis a Google Maps v3-mal.',
+	'maps-googlemaps3-par-type' => 'Elsőre megjelenítendő térkép típusa.',
 	'maps-googlemaps3-par-zoomstyle' => 'A nagyítás irányításának stílusa.',
 	'maps-googlemaps3-par-kml' => 'Betöltendő KML fájlok.',
 	'maps-osm-par-thumbs' => 'Bélyegképek megjelenítése',
 	'maps-osm-par-photos' => 'Fényképek megjelenítése',
+	'mapeditor' => 'Térkép szerkesztő',
+	'specialpages-group-maps' => 'Térképek',
+	'mapeditor-none-text' => 'Nincs',
+	'mapeditor-done-button' => 'Kész',
+	'mapeditor-remove-button' => 'Eltávolítás',
+	'mapeditor-import-button2' => 'Importálás',
+	'mapeditor-export-button' => 'Exportálás wikikódba',
+	'mapeditor-import-button' => 'Importálás wikikódból',
+	'mapeditor-select-button' => 'Ezen sokszög kijelelölése',
+	'mapeditor-mapparam-button' => 'Térkép paraméterek szerkesztése',
+	'mapeditor-clear-button' => 'Térkép törlése',
+	'mapeditor-code-title' => 'Wikikód',
+	'mapeditor-form-title' => 'Részletek szerkesztése',
+	'mapeditor-link-title-switcher-link-text' => 'Hivatkozás',
+	'mapeditor-form-field-title' => 'Cím',
+	'mapeditor-form-field-text' => 'Szöveg',
+	'mapeditor-form-field-link' => 'Hivatkozás',
+	'mapeditor-form-field-icon' => 'Ikon',
+	'mapeditor-form-field-group' => 'Csoport',
+	'mapeditor-form-field-inlinelabel' => 'Beágyazott címke',
+	'mapeditor-form-field-image' => 'Kép',
 );
 
 /** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://mapping.referata.com/wiki/Maps_examples demonstrationes])',
+	'maps-desc' => 'Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([http://www.semantic-mediawiki.org/wiki/Maps plus info...])',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
@@ -2715,14 +3287,16 @@ $1',
  * @author Farras
  * @author Irwangatot
  * @author IvanLanin
+ * @author පසිඳු කාවින්ද
  */
 $messages['id'] = array(
 	'maps-desc' => 'Mengaktifkan penyertaan peta dinamis dalam halaman wiki, pembuatan geokode alamat, dan operasi geografi lain.
-([http://mapping.referata.com/wiki/Examples demo])',
+([http://mapping.referata.com/wiki/Examples demo])', # Fuzzy
 	'maps_map' => 'Peta',
 	'maps-loading-map' => 'Memuat peta...',
 	'maps-load-failed' => 'Peta tidak dapat dimuat!',
 	'maps-markers' => 'Tanda',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'lainnya',
 	'maps-ns-layer' => 'Lapisan',
 	'maps-ns-layer-talk' => 'Pembicaraan lapisan',
@@ -2833,6 +3407,34 @@ $1',
 	'maps-openlayers-par-layers' => 'Lapisan yang akan tersedia pada pemilih lapisan. Lapisan pertama akan ditampilkan ketika peta dimuat.',
 	'maps-osm-par-thumbs' => 'Tampilkan gambar mini',
 	'maps-osm-par-photos' => 'Tampilkan foto',
+	'mapeditor' => 'Penyunting peta',
+	'specialpages-group-maps' => 'Peta',
+	'mapeditor-none-text' => 'Tidak ada',
+	'mapeditor-done-button' => 'Selesai',
+	'mapeditor-remove-button' => 'Hapus',
+	'mapeditor-import-button2' => 'Impor',
+	'mapeditor-export-button' => 'Ekspor ke kode wiki',
+	'mapeditor-import-button' => 'Impor dari kode wiki',
+	'mapeditor-select-button' => 'Pilih poligon ini',
+	'mapeditor-mapparam-button' => 'Sunting parameter peta',
+	'mapeditor-clear-button' => 'Hapus peta',
+	'mapeditor-code-title' => 'Kode wiki',
+	'mapeditor-import-title' => 'Impor kode wiki',
+	'mapeditor-form-title' => 'Sunting rincian',
+	'mapeditor-link-title-switcher-link-text' => 'Tautan',
+	'mapeditor-form-field-title' => 'Judul',
+	'mapeditor-form-field-text' => 'Teks',
+	'mapeditor-form-field-link' => 'Tautan',
+	'mapeditor-form-field-icon' => 'Ikon',
+	'mapeditor-form-field-group' => 'Grup',
+	'mapeditor-form-field-strokecolor' => 'Warna pinggiran',
+	'mapeditor-form-field-strokeopacity' => 'Transparansi pinggiran',
+	'mapeditor-form-field-strokeweight' => 'Tebal pinggiran',
+	'mapeditor-form-field-fillcolor' => 'Warna isi',
+	'mapeditor-form-field-fillopcaity' => 'Transparansi isi',
+	'mapeditor-mapparam-title' => 'Sunting parameter peta',
+	'mapeditor-mapparam-defoption' => '-Pilih parameter-',
+	'mapeditor-form-field-image' => 'Gambar',
 );
 
 /** Igbo (Igbo)
@@ -2849,9 +3451,10 @@ $messages['ig'] = array(
  * @author F. Cosoleto
  * @author Gianfranco
  * @author HalphaZ
+ * @author Viscontino
  */
 $messages['it'] = array(
-	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([http://mapping.referata.com/wiki/Examples demo])',
+	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([http://www.semantic-mediawiki.org/wiki/Maps maggiori informazioni...])',
 	'right-geocode' => 'Effettua la geocodifica',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
@@ -2876,9 +3479,19 @@ $messages['it'] = array(
 	'maps-distance-description' => "Convertire una distanza utilizzando una certa unità supportata nel suo equivalente utilizzando un'altra unità.",
 	'maps-coordinates-par-location' => 'Le coordinate che si desidera formattare.',
 	'maps-coordinates-par-format' => 'Il formato di destinazione per le coordinate.',
+	'maps-distance-par-unit' => "L'unità di misura in cui sarà visualizzata la distanza.",
 	'maps-finddestination-par-location' => 'La posizione iniziale.',
+	'maps-finddestination-par-bearing' => 'La direzione iniziale.',
 	'maps-finddestination-par-distance' => 'La distanza da percorrere.',
 	'maps-geocode-par-format' => 'Il formato per le coordinate risultanti.',
+	'maps-displaymap-par-coordinates' => 'Uno o più luoghi da mostrare sulla mappa. Verranno indicati con un marcatore.',
+	'maps-displaymap-par-visitedicon' => 'Il locale di un file da utilizzare come icona visitata',
+	'maps-displaymap-par-lines' => 'Linee da visualizzare',
+	'maps-displaymap-par-maxzoom' => 'Il livello massimo di zoom',
+	'maps-displaymap-par-minzoom' => 'Il livello minimo di zoom',
+	'maps-displaymap-par-polygons' => 'Poligoni da visualizzare',
+	'maps-displaymap-par-rectangles' => 'Rettangoli da visualizzare',
+	'maps-displaymap-par-static' => 'Se la mappa deve essere statica',
 	'validation-error-invalid-location' => 'Il parametro $1 deve essere una posizione valida.',
 	'validation-error-invalid-locations' => 'Il parametro $1 deve essere una o più posizioni valide.',
 	'validation-error-invalid-width' => 'Il parametro $1 deve essere una larghezza valida.',
@@ -2925,18 +3538,21 @@ $messages['it'] = array(
 	'mapeditor-import-button2' => 'Importa',
 	'mapeditor-export-button' => 'Esporta in codice wiki',
 	'mapeditor-import-button' => 'Importa dal codice wiki',
+	'mapeditor-select-button' => 'Seleziona questo poligono',
 	'mapeditor-mapparam-button' => 'Modifica i parametri della mappa',
 	'mapeditor-clear-button' => 'Pulisci mappa',
 	'mapeditor-code-title' => 'Codice wiki',
 	'mapeditor-import-title' => 'Importa codice wiki',
 	'mapeditor-import-note' => 'Da notare che il parser si aspetta un formato molto rigoroso per il codice wiki. Il codice immesso qui dovrebbe corrispondere al codice emesso dalla funzionalità di esportazione.',
 	'mapeditor-form-title' => 'Modifica dettagli',
+	'mapeditor-link-title-switcher-popup-text' => 'Popup con testo',
 	'mapeditor-link-title-switcher-link-text' => 'Collegamento',
 	'mapeditor-form-field-title' => 'Titolo',
 	'mapeditor-form-field-text' => 'Testo',
 	'mapeditor-form-field-link' => 'Collegamento',
 	'mapeditor-form-field-icon' => 'Icona',
 	'mapeditor-form-field-group' => 'Gruppo',
+	'mapeditor-form-field-strokecolor' => 'Colore del tratto',
 	'mapeditor-form-field-fillcolor' => 'Colore di riempimento',
 	'mapeditor-form-field-fillopcaity' => 'Opacità riempimento',
 	'mapeditor-form-field-showonhover' => 'Visualizza solo al passaggio del mouse',
@@ -2955,7 +3571,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする（[http://mapping.referata.com/wiki/Examples デモ]）',
+	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([http://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])',
 	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-loading-map' => '地図を読み込み中...',
@@ -2970,7 +3586,7 @@ $messages['ja'] = array(
 	'maps-layer-value' => '値',
 	'maps-layer-errors' => 'エラー',
 	'maps-error-invalid-layerdef' => 'このレイヤー定義は正しくありません。',
-	'maps-error-invalid-layertype' => '種類「$1」のレイヤーが存在しません。{{PLURAL:$3|この|これら}}の種類のサポート：$2',
+	'maps-error-invalid-layertype' => '種類「$1」のレイヤーはありません。{{PLURAL:$3|以下の}}種類のみに対応しています: $2',
 	'maps-error-no-layertype' => 'レイヤーの種類を指定する必要があります。{{PLURAL:$2|この種類のみ|これらの種類}}に対応しています: $1',
 	'validation-error-invalid-layer' => '引数 $1 には有効なレイヤーを指定してください。',
 	'validation-error-invalid-layers' => '引数 $1 には有効なレイヤーを 1 つ以上指定してください。',
@@ -2982,6 +3598,7 @@ $messages['ja'] = array(
 	'maps-finddestination-par-distance' => '移動距離です。',
 	'maps-geodistance-par-unit' => '距離を出力する単位です。',
 	'maps-displaymap-par-coordinates' => '地図に表示する 1 か所以上の場所です。これらの場所にはマーカーが付きます。',
+	'maps-displaymap-par-visitedicon' => 'マーカー アイコンがクリックされた後に使用される画像の名前',
 	'maps-displaymap-par-circles' => '表示する円形',
 	'maps-displaymap-par-lines' => '表示する線',
 	'maps-displaymap-par-maxzoom' => '最大ズーム レベル',
@@ -3009,10 +3626,10 @@ $messages['ja'] = array(
 	'maps-longitude' => '経度:',
 	'maps-invalid-coordinates' => '値 $1 は座標の有効な組み合わせとして認識されませんでした。',
 	'maps_coordinates_missing' => '地図に座標が指定されていません。',
-	'maps_geocoding_failed' => '指定された{{PLURAL:$2|住所}}の座標への変換に失敗しました。 $1。地図は表示できません。',
+	'maps_geocoding_failed' => '以下の{{PLURAL:$2|住所}}を座標に変換できませんでした: $1',
 	'maps_geocoding_failed_for' => '指定された{{PLURAL:$2|住所|複数の住所}}の座標への変換に失敗したため、それらを地図から除外して表示します。$1',
-	'maps_unrecognized_coords' => '以下の{{PLURAL:$2|座標}}は認識されませんでした: $1',
-	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}は認識されなかったため、地図から省かれています:
+	'maps_unrecognized_coords' => '以下の{{PLURAL:$2|座標}}を認識できませんでした: $1',
+	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}を認識できなかったため、地図に表示して{{PLURAL:$2|いません}}:
 $1',
 	'maps_map_cannot_be_displayed' => '地図を表示できません。',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
@@ -3055,10 +3672,10 @@ $1',
 	'mapeditor-form-field-group' => 'グループ',
 	'mapeditor-form-field-inlinelabel' => 'インライン ラベル',
 	'mapeditor-form-field-strokecolor' => '線の色',
-	'mapeditor-form-field-strokeopacity' => '線の透明度',
+	'mapeditor-form-field-strokeopacity' => '線の不透明度',
 	'mapeditor-form-field-strokeweight' => '線幅',
 	'mapeditor-form-field-fillcolor' => '塗りつぶしの色',
-	'mapeditor-form-field-fillopcaity' => '塗りつぶしの透明度',
+	'mapeditor-form-field-fillopcaity' => '塗りつぶしの不透明度',
 	'mapeditor-form-field-showonhover' => 'ホバー時のみ表示',
 	'mapeditor-mapparam-title' => '地図のパラメーターの編集',
 	'mapeditor-mapparam-defoption' => '-パラメーターを選択-',
@@ -3068,7 +3685,8 @@ $1',
 	'mapeditor-form-field-visitedicon' => '訪問済みアイコン',
 );
 
-/** Javanese (Basa Jawa) */
+/** Javanese (Basa Jawa)
+ */
 $messages['jv'] = array(
 	'maps-abb-north' => 'L',
 	'maps-abb-east' => 'W',
@@ -3083,21 +3701,48 @@ $messages['jv'] = array(
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
+	'right-geocode' => 'გეოკოდირება',
 	'maps_map' => 'რუკა',
 	'maps-loading-map' => 'იტვირთება რუკა...',
+	'maps-load-failed' => 'რუკის ჩატვირთვა შეუძლებელია!',
+	'maps-markers' => 'ნიშნები',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'ნიშნების ფილტრი',
 	'maps-others' => 'სხვები',
 	'maps-ns-layer' => 'ფენა',
 	'maps-ns-layer-talk' => 'ფენის განხილვა',
 	'maps-layer-property' => 'თვისება',
 	'maps-layer-value' => 'მნიშვნელობა',
 	'maps-layer-errors' => 'შეცდომები',
+	'maps-error-invalid-layerdef' => 'ფენის ეს განმარტება არასწორია.',
+	'validation-error-invalid-layer' => 'პარამეტრი $1 უნდა იყოს კორექტული ფენა.',
+	'validation-error-invalid-layers' => 'პარამეტრი $1 უნდა იყოს ერთი ან მეტი კორექტული ფენა.',
+	'maps-layer-of-type' => '$1 ტიპის ფენა',
+	'maps-finddestination-par-location' => 'საწყისი მდებარეობა.',
+	'maps-finddestination-par-bearing' => 'საწყისი მიმართულება.',
+	'maps-finddestination-par-distance' => 'სამოგზაურო მანძილი.',
+	'maps-geocode-par-location' => 'მისამართი რომლის გეოკოდირებაც გსურთ.',
+	'maps-displaymap-par-maxzoom' => 'გადიდების მაქსიმალური დონე',
+	'maps-displaymap-par-minzoom' => 'შემცირების მაქსიმალური დონე',
+	'validation-error-invalid-location' => 'პარამეტრი $1 უნდა იყოს ნამდვილი მდებარეობის.',
+	'validation-error-invalid-locations' => 'პარამეტრი $1 უნდა შეიცავდეს ერთ ან რამდენიმე ნამდვილ მდებარეობას.',
+	'validation-error-invalid-width' => 'პარამეტრი $1 უნდა იყოს ნამდვილი სიგანის.',
+	'validation-error-invalid-height' => 'პარამეტრი $1 უნდა იყოს ნამდვილი სიმაღლის.',
+	'validation-error-invalid-distance' => 'პარამეტრი $1 უნდა იყოს ნამდვილი მანძილი.',
+	'validation-error-invalid-distances' => 'პარამეტრი $1 უნდა შეიცავდეს ერთ ან რამდენიმე ნამდვილ მანძილს.',
+	'validation-error-invalid-image' => 'პარამეტრი $1 უნდა იყოს ნამდვილი სურათი.',
+	'validation-error-invalid-images' => 'პარამეტრი $1 უნდა იყოს ერთი ან მეტი ნამდვილი სურათი.',
 	'maps-abb-north' => 'ჩ',
 	'maps-abb-east' => 'ა',
 	'maps-abb-south' => 'ს',
 	'maps-abb-west' => 'დ',
 	'maps-latitude' => 'განედი:',
 	'maps-longitude' => 'გრძედი:',
+	'maps_coordinates_missing' => 'რუკის კოორდინატები არ არის მითითებული.',
+	'maps_click_to_activate' => 'დააჭირეთ რუკის გასააქტიურებლად',
+	'maps_centred_on' => 'რუკის ცენტრი — $1, $2.',
+	'maps-googlemaps3-incompatbrowser' => 'თქვენი ბრაუზერი არ არის თავსებადი Google Maps v3-თან.',
+	'maps-googlemaps3-par-poi' => 'ღირსშესანიშნაობების ჩვენება.',
 	'maps-osm-par-thumbs' => 'მინიატიურის ჩვენება',
 	'maps-osm-par-photos' => 'ფოტოს ჩვენება',
 	'mapeditor' => 'რუკის რედაქტორი',
@@ -3115,6 +3760,9 @@ $messages['ka'] = array(
 	'mapeditor-form-field-link' => 'ბმული',
 	'mapeditor-form-field-icon' => 'ხატულა',
 	'mapeditor-form-field-group' => 'ჯგუფი',
+	'mapeditor-form-field-showonhover' => 'მხოლოდ მიტანისას ჩვენება',
+	'mapeditor-mapparam-title' => 'რუკის პარამეტრების რედაქტირება',
+	'mapeditor-mapparam-defoption' => '-აირჩიეთ პარამეტრი-',
 	'mapeditor-form-field-image' => 'სურათი',
 );
 
@@ -3134,7 +3782,8 @@ $messages['km'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'right-geocode' => '위치 정보',
+	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다. ([http://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
+	'right-geocode' => '좌표화',
 	'maps_map' => '지도',
 	'maps-loading-map' => '지도를 불러오는 중...',
 	'maps-load-failed' => '지도를 불러올 수 없습니다!',
@@ -3153,12 +3802,70 @@ $messages['ko'] = array(
 	'validation-error-invalid-layer' => '$1 변수는 올바른 레이어여야 합니다.',
 	'validation-error-invalid-layers' => '$1 변수는 하나 이상의 올바른 레이어여야 합니다.',
 	'maps-layer-of-type' => '$1 종류의 레이어',
+	'maps-layer-type-supported-by' => '이 레이어 유형은 {{PLURAL:$2|$1 매핑 서비스에서만 사용할 수 있습니다.|다음 매핑 서비스에서 사용할 수 있습니다: $1}}',
+	'maps-coordinates-description' => '지원되는 좌표 형식간에 서로 변환하는 파서 훅입니다.',
+	'maps-displaymap-description' => '지도에 위키 정의한 표시 없이 지리적 지도를 보여줍니다.',
+	'maps-displaypoint-description' => '지도에 하나 이상의 표시가 있는 지리적 지도를 보여줍니다.',
+	'maps-distance-description' => '다른 단위를 사용하여 해당하는 특정 지원되는 단위를 사용하여 거리를 변환합니다.',
 	'maps-finddestination-description' => '시작 지점, 초기 베어링과 거리가 주어진 대상을 찾으세요. (즉 지원하는 형식으로 찾을 수 있습니다)',
+	'maps-geocode-description' => '주소, 즉 좌표 집합으로 인간이 읽을 수 있는 위치를 전환하는 좌표화를 활성화합니다. 매핑 서비스와 혼동하지 않아야 하는 여러 좌표화 서비스에 대한 지원이 있습니다.',
 	'maps-geodistance-description' => '지원하는 형식으로 두 지점 사이의 지리적 거리를 계산합니다.',
+	'maps-mapsdoc-description' => '기본 값과 설명과 함께 지정된 좌표화 서비스에 대한 변수로 테이블을 보여줍니다.',
+	'maps-mapsdoc-par-service' => '변수 설명문을 보여줄 좌표화 서비스입니다.',
+	'maps-mapsdoc-par-language' => '설명문을 보여줄 언어입니다. 변역을 사용할 수 없으면 영어가 대신 사용됩니다.',
+	'maps-coordinates-par-location' => '형식을 지정할 좌표입니다.',
+	'maps-coordinates-par-format' => '죄표에 대한 대상 형식입니다.',
+	'maps-coordinates-par-directional' => '좌표가 방향이 출력되어야 할 것인지를 나타냅니다.',
+	'maps-distance-par-distance' => '지정된 단위로 해당하는 변환할 거리입니다.',
+	'maps-distance-par-decimals' => '결과 값에 사용할 최대 소수 자릿수입니다.',
+	'maps-distance-par-unit' => '거리를 출력할 단위입니다.',
 	'maps-finddestination-par-location' => '처음 위치입니다.',
 	'maps-finddestination-par-bearing' => '초기 방위입니다.',
+	'maps-finddestination-par-distance' => '이동 거리입니다.',
+	'maps-finddestination-par-format' => '목적지를 출력할 형식입니다.',
+	'maps-finddestination-par-directional' => '대상의 형식이 방향성이 있어야 할 것인지를 나타냅니다.',
+	'maps-finddestination-par-allowcoordinates' => '좌표가 혀용되어야 하는지 나타냅니다. 아니오로 설정하면, 주소만 허용됩니다.',
+	'maps-finddestination-par-geoservice' => '주소인 경우 좌표화 값을 사용하는 좌표화 서비스입니다.',
+	'maps-finddestination-par-mappingservice' => '이 기능으로 사용하는 좌표화 서비스를 나타내는 변수입니다.
+지도가 매핑 서비스에 최적인 하나로 서비스 변수의 기본값을 재정의할 수 있습니다.
+(예: Google 지도의 경우, Google 좌표화가 사용됩니다.)',
+	'maps-geocode-par-location' => '좌표화를 원하는 주소입니다.',
+	'maps-geocode-par-mappingservice' => '사용하려는 좌표화 서비스입니다. 사용할 수 있는 좌표화 서비스를 참고하세요.',
+	'maps-geocode-par-geoservice' => '이 변수는 특정 매핑 서비스와 함께 이 좌표화 요청을 사용하여 나타낼 수 있습니다.
+각 매핑 서비스는 좌표화 서비스에 대한 기본값을 넘어 다시 정의할 수 있습니다.
+Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제외하고는 사용할 수 없으므로, 법적 고려 사항입니다.
+이 변수와 서비스에 대한 변수가 아닌 설정은 잘못된 조합을 사용하지 않는 것을 보장합니다.',
+	'maps-geocode-par-allowcoordinates' => '이 기능에서 좌표에 대한 지원을 비활성화할 수 있습니다. 예나 아니오여야 합니다. 아니오일 때, 모든 값은 올바른 좌표조차 좌표화됩니다.',
+	'maps-geocode-par-format' => '결과 좌표에 대한 형식입니다.',
+	'maps-geocode-par-directional' => '좌표가 방향이 출력되어야 할 것인지를 나타냅니다.',
 	'maps-geodistance-par-location1' => '집합에서 사이의 거리를 계산하는 첫번째 지점입니다.',
 	'maps-geodistance-par-location2' => '집합에서 사이의 거리를 계산하는 두번째 지점입니다.',
+	'maps-geodistance-par-unit' => '거리를 출력할 단위입니다.',
+	'maps-geodistance-par-decimals' => '결과 값에 사용할 최대 소수 자릿수입니다.',
+	'maps-geodistance-par-mappingservice' => '주소를 좌표화로 사용할 좌표화 서비스입니다.',
+	'maps-geodistance-par-geoservice' => '함께 사용될 매핑 서비스입니다.
+기본 좌표화 서비스 값에 영향을 줄 수 있습니다.',
+	'maps-displaymap-par-mappingservice' => '지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.',
+	'maps-displaymap-par-coordinates' => '지도에 보여줄 하나 이상의 위치입니다. 표시로 표시됩니다.',
+	'maps-displaymap-par-visitedicon' => '방문한 아이콘으로 사용할 파일의 로컬',
+	'maps-displaymap-par-zoom' => '지도의 확대 수준을 설정할 수 있습니다.
+제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.',
+	'maps-displaymap-par-centre' => 'display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.
+주소와 좌표를 모두 사용할 수 있습니다.
+이 속성이 제공되어 있지 않은 경우 지도는 제공한 표시에 대한 자체 중심에 있거나 제공한 표시 사이에 있습니다.',
+	'maps-displaymap-par-title' => '특정 제목이 없는 모든 표시의 팝업에 보여줄 텍스트를 설정할 수 있습니다.
+레이블과 함께 사용하면 제목은 굵고 밑줄이 그어집니다.',
+	'maps-displaymap-par-label' => '특정 레이블이 없는 마든 표시의 팝업에 보여줄 텍스트를 설정할 수 있습니다.',
+	'maps-displaymap-par-icon' => '모든 표시에 사용하는 아이콘을 설정할 수 있습니다.',
+	'maps-displaymap-par-circles' => '보여줄 동그라미',
+	'maps-displaymap-par-copycoords' => '무언가를 클릭할 때 대화 상자에 위키의 좌표를 보여줄 때',
+	'maps-displaymap-par-lines' => '보여줄 선',
+	'maps-displaymap-par-maxzoom' => '최대 확대 수준',
+	'maps-displaymap-par-minzoom' => '최소 확대 수준',
+	'maps-displaymap-par-polygons' => '보여줄 다각형',
+	'maps-displaymap-par-rectangles' => '보려줄 네모',
+	'maps-displaymap-par-static' => '지도는 정적이어야 할 때',
+	'maps-displaymap-par-wmsoverlay' => 'WMS 오버레이 사용',
 	'validation-error-invalid-location' => '$1 변수는 올바른 위치여야 합니다.',
 	'validation-error-invalid-locations' => '$1 변수는 하나 이상의 올바른 위치여야 합니다.',
 	'validation-error-invalid-width' => '$1 변수는 올바른 너비여야 합니다.',
@@ -3169,31 +3876,68 @@ $messages['ko'] = array(
 	'validation-error-invalid-images' => '$1 변수는 하나 이상의 올바른 그림이어야 합니다.',
 	'validation-error-invalid-goverlay' => '$1 변수는 올바른 오버레이여야 합니다.',
 	'validation-error-invalid-goverlays' => '$1 변수는 하나 이상의 올바른 오버레이여야 합니다.',
+	'validation-error-invalid-line-param' => '"lines" 변수를 잘못 지정했습니다.',
+	'validation-error-invalid-polyline-param' => '"polylines" 변수를 잘못 지정했습니다.',
+	'validation-error-invalid-searchmarkers-param' => '찾기표시 값이 잘못되었으며 "all"이나 "title" 중 하나여야 합니다',
 	'maps-abb-north' => '북',
 	'maps-abb-east' => '동',
 	'maps-abb-south' => '남',
 	'maps-abb-west' => '서',
 	'maps-latitude' => '위도:',
 	'maps-longitude' => '경도:',
+	'maps-invalid-coordinates' => '$1 값은 죄표의 올바른 값으로 인식되지 않았습니다.',
+	'maps_coordinates_missing' => '지도에 제공한 좌표가 없습니다.',
+	'maps_geocoding_failed' => '다음 {{PLURAL:$2|주소}}는 좌표화할 수 없습니다: $1.',
+	'maps_geocoding_failed_for' => '다음 {{PLURAL:$2|주소}}는 좌표화할 수 없고 지도에서 생략{{PLURAL:$2|되었습니다}}:
+$1',
+	'maps_unrecognized_coords' => '다음 {{PLURAL:$2|좌표}}는 인식할 수 없습니다: $1.',
+	'maps_unrecognized_coords_for' => '다음 {{PLURAL:$2|좌표}}는 인식할 수 없고 지도에서 생략{{PLURAL:$2|되었습니다}}:
+$1',
 	'maps_map_cannot_be_displayed' => '지도를 보여줄 수 없습니다.',
+	'maps-geocoder-not-available' => '지도의 좌표화 기능을 사용할 수 없습니다. 당신의 위치는 좌표화할 수 없습니다.',
 	'maps_googlemaps3' => 'Google 지도 v3',
 	'maps_click_to_activate' => '지도를 활성화하려면 클릭하세요',
 	'maps_centred_on' => '$1, $2 지도 중심',
+	'maps-par-mappingservice' => '지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.',
+	'maps-par-resizable' => '지도의 오른쪽 아래 모서리에 드래그하여 지도 크기를 조절할 수 있도록 합니다.',
+	'maps-par-geoservice' => '주소와 좌표 사이에 변환하기 위해 사용하는 좌표화 서비스입니다.',
+	'maps-par-zoom' => '지도에 대한 확대 수준입니다. 표시로 된 지도에 대해서는 여전히 모든 표시를 보여주는 수준으로 대부분 확대되도록 기본 설정됩니다.',
+	'maps-par-width' => '지도의 너비을 설정할 수 있습니다. 기본적으로 픽셀은 단위로 간주되지만, 명시적으로 이러한 단위 중 하나를 지정할 수 있습니다: px, ex, em, %.',
+	'maps-par-height' => '지도의 높이를 설정할 수 있습니다. 기본적으로 픽셀은 단위로 간주되지만, 명시적으로 이러한 단위 중 하나를 지정할 수 있습니다: px, ex, em, %.',
+	'maps-par-centre' => '지도의 중심으로 할 위치',
+	'maps-googlemaps3-incompatbrowser' => '브라우저는 Google 지도 v3와 호환되지 않습니다.',
+	'maps-googlemaps3-par-type' => '처음 보여줄 지도 종류입니다.',
+	'maps-googlemaps3-par-types' => '종류 컨트롤을 통해 사용할 수 있는 지도 종류입니다.',
+	'maps-googlemaps3-par-layers' => '지도에 불러오는 특수 레이어입니다.',
+	'maps-googlemaps3-par-controls' => '지도에 놓을 컨트롤입니다.',
+	'maps-googlemaps3-par-zoomstyle' => '줌 컨트롤의 스타일입니다.',
+	'maps-googlemaps3-par-typestyle' => '종류 컨트롤의 스타일입니다.',
+	'maps-googlemaps3-par-autoinfowindows' => '문서를 불러오고 나서 모든 정보 창을 자동으로 엽니다.',
+	'maps-googlemaps3-par-kml' => '지도에 불러올 KML 파일입니다.',
+	'maps-googlemaps3-par-gkml' => '지도에 불러올 Google이 호스트하는 KML 파일입니다.',
+	'maps-googlemaps3-par-fusiontables' => '지도에 불러와야 할 Google 퓨전 테이블의 ID입니다.',
+	'maps-googlemaps3-par-tilt' => 'Google 지도를 사용할 때의 기울기입니다.',
+	'maps-googlemaps3-par-kmlrezoom' => 'KML 레이어를 불러오고 나서 지도를 다시 확대합니다.',
 	'maps-googlemaps3-par-poi' => '관심 지점을 보여줍니다.',
+	'maps-openlayers-par-controls' => '지도에 놓을 컨트롤입니다.',
+	'maps-openlayers-par-layers' => '레이서 선택기에서 사용할 수 있는 레이어입니다. 첫 레이어는 지도를 불러올 때 보여줍니다.',
 	'maps-osm-par-thumbs' => '섬네일 보기',
 	'maps-osm-par-photos' => '사진 보기',
 	'mapeditor' => '지도 편집기',
 	'specialpages-group-maps' => '지도',
+	'mapeditor-parser-error' => '메타데이터를 구문 분석하는 동안 오류가 발생했습니다. 사용자 입력을 무시합니다.',
 	'mapeditor-none-text' => '없음',
 	'mapeditor-done-button' => '완료',
 	'mapeditor-remove-button' => '제거',
 	'mapeditor-import-button2' => '가져오기',
 	'mapeditor-export-button' => '위키 코드로 내보내기',
 	'mapeditor-import-button' => '위키 코드에서 가져오기',
+	'mapeditor-select-button' => '이 다각형 선택',
 	'mapeditor-mapparam-button' => '지도 변수 편집',
 	'mapeditor-clear-button' => '지도 지우기',
 	'mapeditor-code-title' => '위키 코드',
 	'mapeditor-import-title' => '위키 코드 가져오기',
+	'mapeditor-import-note' => '파서는 위키 코드에 매우 엄격한 형식을 예상하는 것에 주의하세요. 여기에 입력한 코드는 내보내기 기능으로 출력되는 코드와 일치해야 합니다.',
 	'mapeditor-form-title' => '자세한 사항 편집',
 	'mapeditor-link-title-switcher-popup-text' => '텍스트 팝업',
 	'mapeditor-link-title-switcher-link-text' => '링크',
@@ -3221,7 +3965,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'maps-desc' => 'Määt et müjjelesch, bewääschlesche Landkaate en Sigge em Wiki aanzezeije, Addräße en Koodinaate op de Ääd ömzerääschne, un ander esu en Funxjuhne. ([http://mapping.referata.com/wiki/Examples E paa Beispöll])',
+	'maps-desc' => 'Määt et müjjelesch, bewääschlesche Landkaate en Sigge em Wiki aanzezeije, Addräße en Koodinaate op de Ääd ömzerääschne, un ander esu en Funxjuhne. ([http://mapping.referata.com/wiki/Examples E paa Beispöll])', # Fuzzy
 	'maps_map' => 'Kaat',
 	'maps-loading-map' => 'Mer sen en Kaat aam laade&nbsp;…',
 	'maps-markers' => 'Makeeronge',
@@ -3250,13 +3994,16 @@ $messages['ksh'] = array(
 	'maps_coordinates_missing' => 'Mer han kein Koodinaate för di Kaat.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Di Koodinaat|De Koodinaate|Kein Koodinaat}} om Jlobus för di {{PLURAL:$2|aanjejovve Adräß wohr|aanjejovve Adräße wohre|kein aanjejovve Adräß wohr}} Kappes: $1. Di Kaat künne mer su nit aanzeije.',
 	'maps_geocoding_failed_for' => 'De Koodinaate om Jlobus för {{PLURAL:$2|ein|paa|kein}} vun dä aanjejovve Adräße {{PLURAL:$2|es|wohre|Fähler!}} Kappes. Di {{PLURAL:$2|es|sin|Fähler!}} dröm nit op dä Kaat. De fottjelohße {{PLURAL:$2|es|sin|Fähler!}}: $1',
-	'maps_unrecognized_coords' => 'He di Koordinate kunnte mer nit verschtonn: $1.',
+	'maps_unrecognized_coords' => 'He di Koordinate kunnte mer nit verschtonn: $1.', # Fuzzy
 	'maps_unrecognized_coords_for' => 'He di {{PLURAL:$2|Koordinat kunnt|Koordinate kunnte}} mer nit verschtonn un dröm {{PLURAL:$2|es|sin}} se nit en de Kaat opjenumme woode:
 $1',
 	'maps_map_cannot_be_displayed' => 'Di Kaat künne mer nit aanzeije.',
+	'maps_googlemaps3' => '<i lang="en">Google-Maps-v3</i>-Kaat',
+	'maps_openlayers' => '<i lang="en">OpenLayers</i>-Kaat',
+	'maps_osm' => '<i lang="en">OpenStreetMap</i>-Kaat',
 	'maps_click_to_activate' => 'Donn klecke, öm op di Kaat ze jonn',
 	'maps_centred_on' => 'De Kaat met $1, $2 en de Medde.',
-	'maps-googlemaps3-par-kmlrezoom' => 'Donn di Kaat norr_ens zoome, nohdäm de  layers vum KLM jelaade sin.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Donn di Kaat norr_ens zoome, nohdäm de  layers vum KLM jelaade sin.', # Fuzzy
 );
 
 /** Kurdish (Latin script) (Kurdî (latînî)‎)
@@ -3287,26 +4034,38 @@ $messages['lad'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen [http://mapping.referata.com/wiki/Examples Démo] ze weisen",
+	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geografesch Operatiounen ze weisen. ([http://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])",
+	'right-geocode' => 'Geocode',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-load-failed' => "D'Kaart konnt net geluede ginn!",
 	'maps-markers' => 'Markéierungen',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Markéierunge fir Filteren',
 	'maps-others' => 'anerer',
 	'maps-layer-property' => 'Eegeschaft',
 	'maps-layer-value' => 'Wäert',
 	'maps-layer-errors' => 'Feeler',
+	'maps-geodistance-description' => 'Déi geografesch Distanz tëschent zwee Punkte berechnen, vun an an iergend eent vun den ënnerstëtzte Formater.',
 	'maps-mapsdoc-par-language' => "D'Sprooch an där d'Dokumentatioun gewise gi soll. Wann déi Iwwersetzung net disponibel ass, da gëtt Englesch an där Plaz benotzt.",
 	'maps-coordinates-par-location' => "D'Koordinaten déi Dir formatéiere wëllt.",
 	'maps-coordinates-par-format' => "D'Zilformat vun de Koordinaten.",
+	'maps-distance-par-decimals' => 'Déi maximal Zuel vu Kommastellen déi am Resultat benotzt gi soll.',
 	'maps-finddestination-par-location' => 'Déi initial Plaz.',
 	'maps-finddestination-par-distance' => "D'Distanz vun der Rees.",
 	'maps-geocode-par-location' => "D'Adress déi Dir geocodéiere wëllt.",
 	'maps-geocode-par-format' => "De Format fir d'Koordinaten.",
+	'maps-geodistance-par-location1' => 'Den éischte Punkt vun deem aus eng Distanz berechent gi soll.',
 	'maps-geodistance-par-unit' => "D'Eenheet fir d'Distanz.",
 	'maps-geodistance-par-decimals' => 'Déi maximal Zuel vu Kommastellen déi am Resultat benotzt gi soll.',
 	'maps-displaymap-par-coordinates' => "Déi Plaz op déi d'Kaart am Ufank zentréiert gëtt.",
+	'maps-displaymap-par-circles' => 'Kreesser fir ze weisen',
+	'maps-displaymap-par-lines' => 'Linne fir ze weisen',
+	'maps-displaymap-par-maxzoom' => 'De maximalen Niveau vum Zoom',
+	'maps-displaymap-par-minzoom' => 'De minimalen Niveau vum Zoom',
+	'maps-displaymap-par-polygons' => 'Polygonen fir ze weisen',
+	'maps-displaymap-par-rectangles' => 'Rechtecker fir ze weisen',
+	'maps-displaymap-par-static' => "Ob d'Kaart soll statesch sinn",
 	'validation-error-invalid-location' => 'Parameter $1 muss eng valabel Plaz sinn.',
 	'validation-error-invalid-locations' => 'Parameter $1 muss eng oder méi valabel Plaze sinn.',
 	'validation-error-invalid-width' => 'Parameter $1 muss eng valabel Breet sinn.',
@@ -3356,32 +4115,38 @@ $1',
 	'mapeditor-form-field-link' => 'Link',
 	'mapeditor-form-field-group' => 'Grupp',
 	'mapeditor-form-field-fillcolor' => 'Faarf fir opzefëllen',
+	'mapeditor-form-field-showonhover' => 'Nëmme weise wann een driwwer fiert',
 	'mapeditor-mapparam-title' => 'Parametere  vun der Kaart änneren',
 	'mapeditor-mapparam-defoption' => '-Parameter eraussichen-',
 	'mapeditor-form-field-image' => 'Bild',
 );
 
 /** Lithuanian (lietuvių)
+ * @author Eitvys200
  * @author Hugo.arg
  */
 $messages['lt'] = array(
 	'maps-desc' => 'Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://mapping.referata.com/wiki/Maps_examples demo]).
-Katrografavimo paslaugos pasiekiamos: $1',
+Katrografavimo paslaugos pasiekiamos: $1', # Fuzzy
 	'maps_map' => 'Žemėlapis',
 	'maps-loading-map' => 'Kraunamas žemėlapis ...',
+	'maps-others' => 'kita',
 	'maps-abb-north' => 'Š',
 	'maps-abb-east' => 'R',
 	'maps-abb-south' => 'P',
 	'maps-abb-west' => 'V',
 	'maps-latitude' => 'Platuma:',
 	'maps-longitude' => 'Ilguma:',
-	'maps-invalid-coordinates' => 'Vertė $ 1 nepripažįstama kaip galiojanti koordinatė.',
+	'maps-invalid-coordinates' => 'Vertė $ 1 nepripažįstama kaip galiojanti koordinatė.', # Fuzzy
 	'maps_coordinates_missing' => 'Nesudarytos koordinatės žemėlapiui.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Šis adresas|Šie adresai}} negali būti kartografuoti: $1.',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Ši koordinatė|Šios koordinatės}} nebuvo atpažintos: $1.',
 	'maps_map_cannot_be_displayed' => 'Žemėlapis negal būti parodytas.',
 	'maps_click_to_activate' => 'Spustelėkite, norėdami įjungti žemėlapį',
 	'maps_centred_on' => 'Žemėlapis centruotas link $1, $2.',
+	'mapeditor' => 'Žemėlapio redaktorius',
+	'specialpages-group-maps' => 'Žemėlapiai',
+	'mapeditor-done-button' => 'Atlikta',
 );
 
 /** Latvian (latviešu)
@@ -3396,12 +4161,24 @@ $messages['lv'] = array(
 	'maps-longitude' => 'Garums:',
 );
 
+/** Basa Banyumasan (Basa Banyumasan)
+ * @author StefanusRA
+ */
+$messages['map-bms'] = array(
+	'maps-abb-north' => 'L',
+	'maps-abb-east' => 'W',
+	'maps-abb-south' => 'Kdl',
+	'maps-abb-west' => 'Kln',
+	'maps-latitude' => 'Latituda:',
+	'maps-longitude' => 'Longituda:',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([http://mapping.referata.com/wiki/Maps_examples мостри])',
+	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([http://www.semantic-mediawiki.org/wiki/Maps?uselang=mk повеќе информации...])',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Ја вчитувам картата...',
@@ -3466,7 +4243,7 @@ $messages['mk'] = array(
 Ова може да влијае на основната вредност за служба за геокодирање.',
 	'maps-displaymap-par-mappingservice' => 'Овозможува задавање на картографска служба што ќе се користи за создавање на картата.',
 	'maps-displaymap-par-coordinates' => 'На кое место картата ќе биде првично сосредоточена.',
-	'maps-displaymap-par-visitedicon' => 'Местото на податотека што ќе се користи како икона за посетено',
+	'maps-displaymap-par-visitedicon' => 'Името на сликата што ќе се користи на обележувачите откако ќе стиснете на нив',
 	'maps-displaymap-par-zoom' => 'Овозможува задавање на приближеност на картата.
 Ако ова не е зададено, а на картата има повеќе обележувачи, тогаш ќе ви се прикаже приближеноста што најмногу одговара на екранот, наместо прилагодливата стандардна приближеност.',
 	'maps-displaymap-par-centre' => 'Овозможува укажување на координати на средиштето на картата за display_point(s).
@@ -3581,7 +4358,8 @@ $1',
 	'mapeditor-form-field-visitedicon' => 'Икона за посетено',
 );
 
-/** Malayalam (മലയാളം) */
+/** Malayalam (മലയാളം)
+ */
 $messages['ml'] = array(
 	'maps-abb-north' => 'വടക്ക്',
 	'maps-abb-east' => 'കിഴക്ക്',
@@ -3591,7 +4369,8 @@ $messages['ml'] = array(
 	'maps-longitude' => 'രേഖാംശം:',
 );
 
-/** Marathi (मराठी) */
+/** Marathi (मराठी)
+ */
 $messages['mr'] = array(
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
@@ -3605,7 +4384,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi. ([http://mapping.referata.com/wiki/Examples tunjuk cara])',
+	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi. ([http://www.semantic-mediawiki.org/wiki/Maps maklumat lanjut...])',
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Peta',
 	'maps-loading-map' => 'Peta sedang dimuatkan...',
@@ -3755,6 +4534,7 @@ $1',
 	'mapeditor-import-button2' => 'Import',
 	'mapeditor-export-button' => 'Eksport ke kod wiki',
 	'mapeditor-import-button' => 'Import dari kod wiki',
+	'mapeditor-select-button' => 'Pilih poligon ini',
 	'mapeditor-mapparam-button' => 'Sunting parameter peta',
 	'mapeditor-clear-button' => 'Padamkan peta',
 	'mapeditor-code-title' => 'Kod wiki',
@@ -3783,7 +4563,56 @@ $1',
 	'mapeditor-form-field-visitedicon' => 'Ikon dikunjungi',
 );
 
-/** Erzya (эрзянь) */
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-others' => 'oħrajn',
+	'maps-ns-layer' => 'Livell',
+	'maps-ns-layer-talk' => 'Diskussjoni livell',
+	'maps-layer-property' => 'Proprjetà',
+	'maps-layer-value' => 'Valur',
+	'maps-layer-errors' => 'Żbalji',
+	'maps-error-invalid-layerdef' => 'Id-definizzjoni tal-livell hija ħażina.',
+	'maps-error-invalid-layertype' => 'M\'hemm l-ebda livell tat-tip "$1". {{PLURAL:$3|Dan it-tip biss huwa appoġġjat|Dawn it-tipi biss huma appoġġjati}}: $2',
+	'maps-error-no-layertype' => "Trid tispeċifika t-tip ta' livell. {{PLURAL:$2|Dan it-tip biss huwa appoġġjat|Dawn it-tipi biss huma appoġġjati}}: $1",
+	'validation-error-invalid-layer' => 'Il-parametru $1 irid ikun livell validu.',
+	'validation-error-invalid-layers' => 'Il-parametru $1 irid ikun wieħed jew iktar livelli validi.',
+	'maps-layer-of-type' => 'Livell tat-tip $1',
+	'maps-googlemaps3-incompatbrowser' => "Il-browżer li qiegħed tuża' mhuwiex kompatibbli ma' Google Maps v3.",
+	'maps-googlemaps3-par-controls' => 'Il-kontrolli li trid tpoġġi fuq il-mappa.',
+	'maps-googlemaps3-par-poi' => "Uri l-punti ta' interess.",
+	'maps-osm-par-thumbs' => 'Uri l-minjaturi',
+	'maps-osm-par-photos' => 'Uri r-ritratti',
+	'mapeditor' => 'Editur tal-mappa',
+	'specialpages-group-maps' => 'Mapep',
+	'mapeditor-none-text' => 'L-ebda',
+	'mapeditor-done-button' => 'Lest',
+	'mapeditor-remove-button' => 'Neħħi',
+	'mapeditor-import-button2' => 'Importa',
+	'mapeditor-export-button' => 'Esporta għal kodiċi wiki',
+	'mapeditor-import-button' => 'Importa minn kodiċi wiki',
+	'mapeditor-select-button' => 'Agħżel dan il-poligonu',
+	'mapeditor-mapparam-button' => 'Immodifika l-parametri tal-mappa',
+	'mapeditor-clear-button' => 'Naddaf il-mappa',
+	'mapeditor-code-title' => 'Kodiċi wiki',
+	'mapeditor-import-title' => 'Importa l-kodiċi wiki',
+	'mapeditor-form-title' => 'Immodifika d-dettalji',
+	'mapeditor-link-title-switcher-link-text' => 'Ħolqa',
+	'mapeditor-form-field-title' => 'Titlu',
+	'mapeditor-form-field-text' => 'Test',
+	'mapeditor-form-field-link' => 'Ħolqa',
+	'mapeditor-form-field-icon' => 'Ikona',
+	'mapeditor-form-field-group' => 'Grupp',
+	'mapeditor-form-field-fillcolor' => "Kulur ta' ġewwa",
+	'mapeditor-form-field-fillopcaity' => "Opaċità ta' ġewwa",
+	'mapeditor-mapparam-defoption' => '-Agħżel parametru-',
+	'mapeditor-form-field-image' => 'Stampa',
+);
+
+/** Erzya (эрзянь)
+ */
 $messages['myv'] = array(
 	'maps-abb-north' => 'Веньэльйонкс',
 	'maps-abb-east' => 'Чилисемайонкс',
@@ -3793,21 +4622,22 @@ $messages['myv'] = array(
 	'maps-longitude' => 'Кувалмозо:',
 );
 
-/** Nahuatl (Nāhuatl) */
+/** Nahuatl (Nāhuatl)
+ */
 $messages['nah'] = array(
 	'maps-abb-north' => 'M',
 	'maps-abb-east' => 'T',
 	'maps-abb-south' => 'H',
 );
 
-/** Norwegian Bokmål (norsk (bokmål)‎)
+/** Norwegian Bokmål (norsk bokmål)
  * @author Event
  * @author Kim Eik
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
 	'maps-desc' => 'Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner.
-([http://mapping.referata.com/wiki/Examples demoer]).',
+([http://mapping.referata.com/wiki/Examples demoer]).', # Fuzzy
 	'right-geocode' => 'Geokode',
 	'maps_map' => 'Kart',
 	'maps-loading-map' => 'Laster kart...',
@@ -3919,14 +4749,38 @@ $1',
 	'mapeditor-form-field-visitedicon' => 'Besøkt ikon',
 );
 
+/** Low German (Plattdüütsch)
+ * @author Joachim Mos
+ */
+$messages['nds'] = array(
+	'maps_map' => 'Koort',
+	'maps-layer-property' => 'Egenschop',
+	'maps-layer-errors' => 'Fählers',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'O',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'mapeditor-none-text' => 'Keen',
+	'mapeditor-done-button' => 'Färtig',
+	'mapeditor-code-title' => 'Wikicode',
+	'mapeditor-link-title-switcher-link-text' => 'Lenk',
+	'mapeditor-form-field-title' => 'Titel',
+	'mapeditor-form-field-text' => 'Text',
+	'mapeditor-form-field-link' => 'Lenk',
+	'mapeditor-form-field-icon' => 'Symbool',
+	'mapeditor-form-field-group' => 'Köppel',
+	'mapeditor-form-field-image' => 'Bild',
+);
+
 /** Dutch (Nederlands)
  * @author AvatarTeam
  * @author Kjell
+ * @author Konovalov
  * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo])',
+	'maps-desc' => 'Biedt de mogelijkheid om locatiegegevens weer te geven op kaarten en adressen om te zetten naar coördinaten ([http://www.semantic-mediawiki.org/wiki/Maps meer...])',
 	'right-geocode' => 'Geocoderen',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
@@ -3956,11 +4810,11 @@ $messages['nl'] = array(
 	'maps-geodistance-description' => 'De geografische afstand tussen twee punten berekenen, van en naar alle ondersteunde notaties.',
 	'maps-mapsdoc-description' => 'Een tabel met de parameters voor een bepaalde kaartdienst weergeven samen met hun standaardwaarde en beschrijving.',
 	'maps-mapsdoc-par-service' => 'De kaartdienst waarvoor parameterdocumentatie weergegeven moet worden.',
-	'maps-mapsdoc-par-language' => 'De taal waarin de documentatie wordt weergegeven. Indien er geen vertaling beschikbaar is, wordt Engels in de plaats gebruikt.',
+	'maps-mapsdoc-par-language' => 'De taal waarin de documentatie wordt weergegeven. Indien er geen vertaling beschikbaar is, wordt Engels gebruikt.',
 	'maps-coordinates-par-location' => 'De op te maken coördinaten.',
 	'maps-coordinates-par-format' => 'Gewenste notatie voor de coördinaten.',
 	'maps-coordinates-par-directional' => 'Geeft aan of de coördinaten wel of niet directioneel uitgestuurd moeten worden.',
-	'maps-distance-par-distance' => 'De afstand om te converteren naar haar equivalent in een aangegeven eenheid.',
+	'maps-distance-par-distance' => 'De afstand om te converteren naar haar equivalent in een opgegeven eenheid.',
 	'maps-distance-par-decimals' => 'Het maximale aantal te gebruiken decimalen in de resultaatwaarde.',
 	'maps-distance-par-unit' => 'De eenheid waarin de afstand weergegeven moet worden.',
 	'maps-finddestination-par-location' => 'De initiële locatie.',
@@ -3992,18 +4846,25 @@ Als deze "nee" is, wordt iedere waarde gegeocodeerd, ook als deze geldige coörd
 Dit kan invloed hebben op de standaardwaarde voor de geocoderingsdienst.',
 	'maps-displaymap-par-mappingservice' => 'Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.',
 	'maps-displaymap-par-coordinates' => 'De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.',
+	'maps-displaymap-par-visitedicon' => 'De locatie van een bestand om te gebruiken als bezocht pictogram',
 	'maps-displaymap-par-zoom' => 'Maakt het mogelijk het schaalniveau van de kaart in te stellen.
 Als deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.',
 	'maps-displaymap-par-centre' => 'Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).
 Kan ingesteld worden met adressen en coördinaten.
 Als deze waarde niet wordt ingesteld, wordt de kaart gecentreerd op of tussen de opgegeven marker(s).',
-	'maps-displaymap-par-title' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.
+	'maps-displaymap-par-title' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerde naam.
 Als dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderstreept weergegeven.',
 	'maps-displaymap-par-label' => 'Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.',
 	'maps-displaymap-par-icon' => 'Maakt het mogelijk het icoon voor alle markers in te stellen.',
 	'maps-displaymap-par-circles' => 'Weer te geven cirkels',
+	'maps-displaymap-par-copycoords' => 'Of een dialoog waarvan de coördinaten van een locatie weergegeven moeten worden bij het klikken op iets',
 	'maps-displaymap-par-lines' => 'Weer te geven regels',
+	'maps-displaymap-par-maxzoom' => 'Het maximale zoomniveau',
+	'maps-displaymap-par-minzoom' => 'Het minimale zoomniveau',
+	'maps-displaymap-par-polygons' => 'Weer te geven polygonen',
+	'maps-displaymap-par-rectangles' => 'Weer te geven rechthoeken',
 	'maps-displaymap-par-static' => 'Of de kaart statisch moet zijn',
+	'maps-displaymap-par-wmsoverlay' => 'WMS-overlay gebruiken',
 	'validation-error-invalid-location' => 'Parameter $1 moet een geldige locatie zijn.',
 	'validation-error-invalid-locations' => 'Parameter $1 moet een of meer geldige locaties zijn.',
 	'validation-error-invalid-width' => 'Parameter $1 moet een geldige breedte zijn.',
@@ -4037,11 +4898,13 @@ $1.',
 	'maps_openlayers' => 'OpenLayers',
 	'maps_click_to_activate' => 'Klik om de kaart te activeren',
 	'maps_centred_on' => 'Kaart gecentreerd op $1, $2.',
+	'maps-par-mappingservice' => 'Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.',
 	'maps-par-resizable' => 'Maakt het mogelijk de afmetingen van de kaart te wijzigen door aan de rechter onderhoek te trekken.',
 	'maps-par-geoservice' => 'De te gebruiken geocoderingsdienst om tussen adressen en coördinaten te wisselen.',
 	'maps-par-zoom' => 'Het zoomniveau van de kaart. Voor kaarten met markers is dit standaard op de meest ingezoomde niveau waarop nog steeds alle markers zichtbaar zijn.',
-	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
-	'maps-par-height' => 'Maakt het mogelijk om de hoogte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
+	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden opgeven: px, ex, em, %.',
+	'maps-par-height' => 'Maakt het mogelijk om de hoogte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar u kunt expliciet een van deze eenheden opgeven: px, ex, em, %.',
+	'maps-par-centre' => 'De locatie waar de kaart op gecentreerd moet worden',
 	'maps-googlemaps3-incompatbrowser' => 'Uw browser kan niet werken met Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'Het initieel weer te geven kaarttype.',
 	'maps-googlemaps3-par-types' => 'De kaarttypen die beschikbaar zijn in via het besturingselement type.',
@@ -4069,6 +4932,7 @@ $1.',
 	'mapeditor-import-button2' => 'Importeren',
 	'mapeditor-export-button' => 'Exporteren naar wikicode',
 	'mapeditor-import-button' => 'Importeren vanuit wikicode',
+	'mapeditor-select-button' => 'Deze polygoon selecteren',
 	'mapeditor-mapparam-button' => 'Kaartparameters bewerken',
 	'mapeditor-clear-button' => 'Kaartmarkeringen wissen',
 	'mapeditor-code-title' => 'Wikicode',
@@ -4076,10 +4940,10 @@ $1.',
 	'mapeditor-import-note' => 'Let op: de parser verwacht een strikte opmaak van de wikicode. De hier opgegeven code moet gelijk zijn aan de code die wordt uitgevoerd door de exportfunctie.',
 	'mapeditor-form-title' => 'Details bewerken',
 	'mapeditor-link-title-switcher-popup-text' => 'Pop-up met tekst',
-	'mapeditor-link-title-switcher-link-text' => 'Verwijzing',
+	'mapeditor-link-title-switcher-link-text' => 'Koppeling',
 	'mapeditor-form-field-title' => 'Titel',
 	'mapeditor-form-field-text' => 'Tekst',
-	'mapeditor-form-field-link' => 'Verwijzing',
+	'mapeditor-form-field-link' => 'Koppeling',
 	'mapeditor-form-field-icon' => 'Icoon',
 	'mapeditor-form-field-group' => 'Groep',
 	'mapeditor-form-field-inlinelabel' => 'Inline label',
@@ -4097,7 +4961,18 @@ $1.',
 	'mapeditor-form-field-visitedicon' => 'Icoon voor bezocht',
 );
 
-/** Norwegian Nynorsk (norsk (nynorsk)‎)
+/** Nederlands (informeel)‎ (Nederlands (informeel)‎)
+ * @author Siebrand
+ */
+$messages['nl-informal'] = array(
+	'maps-error-no-layertype' => 'Je moet het laagtype opgeven. Alleen {{PLURAL:$2|dit type wordt|deze typen worden}} ondersteund: $1',
+	'maps-geocoder-not-available' => 'Geocoderen via Maps is niet beschikbaar. Het geocoderen van je locatie is niet mogelijk.',
+	'maps-par-width' => 'Maakt het mogelijk om de breedte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar je kunt expliciet een van deze eenheden opgeven: px, ex, em, %.',
+	'maps-par-height' => 'Maakt het mogelijk om de hoogte van de kaart in te stellen. Standaard worden pixels als eenheid gebruikt, maar je kunt expliciet een van deze eenheden aangeven: px, ex, em, %.',
+	'maps-googlemaps3-incompatbrowser' => 'Je browser kan niet werken met Google Maps v3.',
+);
+
+/** Norwegian Nynorsk (norsk nynorsk)
  * @author Harald Khan
  * @author Njardarlogar
  */
@@ -4110,7 +4985,7 @@ $messages['nn'] = array(
 	'maps-latitude' => 'Breiddegrad:',
 	'maps-longitude' => 'Lengdegrad:',
 	'maps_coordinates_missing' => 'Ingen koordinatar vart oppgjevne for kartet.',
-	'maps_unrecognized_coords' => 'Dei fylgjande koordinatane vart ikkje kjende att: $1.',
+	'maps_unrecognized_coords' => 'Dei fylgjande koordinatane vart ikkje kjende att: $1.', # Fuzzy
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikkje verta vist.',
 	'maps_click_to_activate' => 'Trykk for å aktivera kartet',
 	'maps_centred_on' => 'Kart sentrert på $1, $2.',
@@ -4120,10 +4995,19 @@ $messages['nn'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'maps-desc' => "Permet d'afichar de coordenadas dins de mapas, e mai d'adreça geocodadas
-([http://www.mediawiki.org/wiki/Extension:Maps documentacion], [http://mapping.referata.com/wiki/Maps_examples demonstracion]).
-Servicis de cartografia disponibles : $1",
+	'maps-desc' => "Permet d'afichar de mapas dinamicas dins las paginas del wiki, d'adreças geoencodadas e d'autras operacions geograficas. ([http://www.semantic-mediawiki.org/wiki/Maps mai d'info...])",
+	'right-geocode' => 'Geocòde',
 	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Cargament de la mapa...',
+	'maps-load-failed' => 'Impossible de cargar la mapa !',
+	'maps-markers' => 'Marcadors',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTRADA',
+	'maps-searchmarkers-text' => 'Marcadors de filtre',
+	'maps-others' => 'autres',
+	'maps-ns-layer' => 'Jaç',
+	'maps-ns-layer-talk' => 'Discussion jaç',
+	'maps-layer-property' => 'Proprietat',
+	'maps-layer-value' => 'Valor',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -4134,7 +5018,7 @@ Servicis de cartografia disponibles : $1",
 	'maps_geocoding_failed' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} : $1.
 Lo plan pòt pas èsser afichat.",
 	'maps_geocoding_failed_for' => "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} e {{PLURAL:$2|es pas afichada|son pas afichadas}} sul plan : $1",
-	'maps_unrecognized_coords' => 'Las coordenadas seguentas son pas estadas reconegudas : $1.',
+	'maps_unrecognized_coords' => 'Las coordenadas seguentas son pas estadas reconegudas : $1.', # Fuzzy
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada seguenta es pas estada reconeguda|Las coordenadas seguentas son pas estadas reconegudas}} e {{PLURAL:$2|es estada omesa|son estadas omesas}} sus la mapa :
 $1',
 	'maps_map_cannot_be_displayed' => 'La mapa pòt pas èsser afichada.',
@@ -4142,13 +5026,86 @@ $1',
 	'maps_centred_on' => 'Mapa centrada sus $1, $2.',
 );
 
-/** Oriya (ଓଡ଼ିଆ)
+/** Oriya (ଓଡ଼ିଆ)
  * @author Odisha1
  */
 $messages['or'] = array(
 	'maps-others' => 'ବାକିସବୁ',
 	'maps-ns-layer' => 'ସ୍ତର',
 	'maps-layer-value' => 'ମୂଲ୍ୟ',
+);
+
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Babanwalia
+ */
+$messages['pa'] = array(
+	'right-geocode' => 'ਜੀਓਕੋਡ',
+	'maps_map' => 'ਨਕਸ਼ਾ',
+	'maps-loading-map' => 'ਨਕਸ਼ਾ ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...',
+	'maps-load-failed' => 'ਨਕਸ਼ਾ ਲੋਡ ਨਾ ਹੋ ਸਕਿਆ!',
+	'maps-markers' => 'ਮਾਰਕਰ',
+	'maps-copycoords-prompt' => 'CTRL+C, ਐਂਟਰ',
+	'maps-searchmarkers-text' => 'ਮਾਰਕਰ ਛਾਣੋ',
+	'maps-others' => 'ਹੋਰ',
+	'maps-ns-layer' => 'ਪਰਤ',
+	'maps-ns-layer-talk' => 'ਪਰਤ ਗੱਲਬਾਤ',
+	'maps-layer-property' => 'ਮਲਕੀਅਤ',
+	'maps-layer-value' => 'ਮੁੱਲ',
+	'maps-layer-errors' => 'ਦੋਸ਼',
+	'maps-error-invalid-layerdef' => 'ਇਹ ਪਰਤ ਪਰਿਭਾਸ਼ਾ ਸਹੀ ਨਹੀਂ ਹੈ।',
+	'validation-error-invalid-layer' => 'ਮਾਪਦੰਡ $1 ਇੱਕ ਸਹੀ ਪਰਤ ਹੋਣੀ ਚਾਹੀਦੀ ਹੈ।',
+	'maps-layer-of-type' => '$1 ਕਿਸਮ ਦੀ ਪਰਤ',
+	'maps-distance-par-unit' => 'ਵਿੱਥ ਵਿਖਾਉਣ ਲਈ ਇਕਾਈ',
+	'maps-finddestination-par-location' => 'ਮੁਢਲੀ ਸਥਿਤੀ',
+	'maps-finddestination-par-bearing' => 'ਮੁਢਲੀ ਦਿਸ਼ਾ',
+	'maps-finddestination-par-distance' => 'ਗਾਹੁਣ ਲਈ ਵਿੱਥ',
+	'maps-geocode-par-location' => 'ਉਹ ਪਤਾ ਜਿਹਨੂੰ ਤੁਸੀਂ ਜੀਓਕੋਡ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ',
+	'maps-geodistance-par-unit' => 'ਵਿੱਥ ਵਿਖਾਉਣ ਲਈ ਇਕਾਈ',
+	'maps-displaymap-par-circles' => 'ਵਿਖਾਉਣ ਲਈ ਚੱਕਰ',
+	'maps-displaymap-par-lines' => 'ਵਿਖਾਉਣ ਲਈ ਰੇਖਾਵਾਂ',
+	'maps-displaymap-par-maxzoom' => 'ਵੱਧ ਤੋਂ ਵੱਧ ਜ਼ੂਮ ਪੱਧਰ',
+	'maps-displaymap-par-minzoom' => 'ਘੱਟੋ ਘੱਟ ਜ਼ੂਮ ਪੱਧਰ',
+	'maps-displaymap-par-polygons' => 'ਵਿਖਾਉਣ ਲਈ ਬਹੁਭੁਜ',
+	'maps-displaymap-par-rectangles' => 'ਵਿਖਾਉਣ ਲਈ ਚਤੁਰਭੁਜ',
+	'maps-abb-north' => 'ਉ',
+	'maps-abb-east' => 'ਪੂ',
+	'maps-abb-south' => 'ਦ',
+	'maps-abb-west' => 'ਪ',
+	'maps-latitude' => 'ਅਕਸ਼ਾਂਸ਼:',
+	'maps-longitude' => 'ਰੇਖਾਂਸ਼:',
+	'maps_coordinates_missing' => 'ਇਸ ਨਕਸ਼ੇ ਲਈ ਕੋਈ ਗੁਣਕ ਨਹੀਂ ਹਨ।',
+	'maps_map_cannot_be_displayed' => 'ਇਹ ਨਕਸ਼ਾ ਵਿਖਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।',
+	'maps_click_to_activate' => 'ਨਕਸ਼ਾ ਕਿਰਿਆਸ਼ੀਲ ਬਣਾਉਣ ਲਈ ਕਲਿੱਕ ਕਰੋ',
+	'maps_centred_on' => '$1, $2 ਉੱਤੇ ਕੇਂਦਰਤ ਨਕਸ਼ਾ।',
+	'maps-par-centre' => 'ਉਹ ਥਾਂ ਜਿਸ ਉੱਤੇ ਨਕਸ਼ਾ ਕੇਂਦਰਤ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ',
+	'maps-googlemaps3-incompatbrowser' => 'ਤੁਹਾਡਾ ਬਰਾਊਜ਼ਰ Google Maps v3 ਨਾਲ਼ ਕੰਮ ਕਰਨ ਲਈ ਅਨੁਕੂਲ ਨਹੀਂ ਹੈ।',
+	'maps-googlemaps3-par-layers' => 'ਨਕਸ਼ੇ ਉੱਤੇ ਲੋਡ ਕਰਨ ਲਈ ਖ਼ਾਸ ਪਰਤਾਂ।',
+	'maps-osm-par-photos' => 'ਤਸਵੀਰਾਂ ਵਿਖਾਓ',
+	'mapeditor' => 'ਨਕਸ਼ਾ ਸੰਪਾਦਕ',
+	'specialpages-group-maps' => 'ਨਕਸ਼ੇ',
+	'mapeditor-none-text' => 'ਕੋਈ ਨਹੀਂ',
+	'mapeditor-done-button' => 'ਹੋ ਗਿਆ',
+	'mapeditor-remove-button' => 'ਹਟਾਓ',
+	'mapeditor-import-button2' => 'ਮੰਗਾਓ',
+	'mapeditor-export-button' => 'ਵਿਕੀ ਕੋਡ ਨੂੰ ਭੇਜੋ',
+	'mapeditor-import-button' => 'ਵਿਕੀ ਕੋਡ ਤੋਂ ਮੰਗਾਓ',
+	'mapeditor-select-button' => 'ਇਹ ਬਹੁਭੁਜ ਚੁਣੋ',
+	'mapeditor-mapparam-button' => 'ਨਕਸ਼ੇ ਦੇ ਮਾਪਦੰਡ ਸੋਧੋ',
+	'mapeditor-clear-button' => 'ਨਕਸ਼ਾ ਸਾਫ਼ ਕਰੋ',
+	'mapeditor-code-title' => 'ਵਿਕੀ ਕੋਡ',
+	'mapeditor-import-title' => 'ਵਿਕੀ ਕੋਡ ਮੰਗਾਓ',
+	'mapeditor-form-title' => 'ਸੋਧ ਦਾ ਬਿਉਰਾ',
+	'mapeditor-link-title-switcher-link-text' => 'ਕੜੀ',
+	'mapeditor-form-field-title' => 'ਸਿਰਲੇਖ',
+	'mapeditor-form-field-text' => 'ਲਿਖਤ',
+	'mapeditor-form-field-link' => 'ਕੜੀ',
+	'mapeditor-form-field-icon' => 'ਆਇਕਨ',
+	'mapeditor-form-field-group' => 'ਸਮੂਹ',
+	'mapeditor-form-field-fillcolor' => 'ਰੰਗ ਭਰੋ',
+	'mapeditor-form-field-showonhover' => "ਸਿਰਫ਼ ਉੱਤੇ ਮੰਡਰਾਉਣ 'ਤੇ ਵਿਖਾਓ",
+	'mapeditor-mapparam-title' => 'ਨਕਸ਼ੇ ਦੇ ਮਾਪਦੰਡ ਸੋਧੋ',
+	'mapeditor-mapparam-defoption' => '-ਮਾਪਦੰਡ ਚੁਣੋ-',
+	'mapeditor-form-field-image' => 'ਤਸਵੀਰ',
 );
 
 /** Deitsch (Deitsch)
@@ -4170,7 +5127,7 @@ $messages['pfl'] = array(
 	'maps-load-failed' => 'Die Kaad hod net glaade were kenne.',
 	'maps-markers' => 'Kennzaischnunge',
 	'maps-copycoords-prompt' => 'STRG+C, ENTER',
-	'maps-others' => 'onare',
+	'maps-others' => 'onnare',
 	'maps-ns-layer' => 'Ewene',
 	'maps-layer-property' => 'Aischeschafd',
 	'maps-layer-value' => 'Werd',
@@ -4220,11 +5177,12 @@ $1',
 
 /** Polish (polski)
  * @author BeginaFelicysym
+ * @author Chrumps
  * @author Sp5uhe
  * @author Yarl
  */
 $messages['pl'] = array(
-	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://mapping.referata.com/wiki/Examples demo])',
+	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([http://www.semantic-mediawiki.org/wiki/Maps more info...])',
 	'right-geocode' => 'Geokodowanie',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
@@ -4263,6 +5221,7 @@ $messages['pl'] = array(
 	'maps-finddestination-par-location' => 'Położenie początkowe.',
 	'maps-finddestination-par-bearing' => 'Kierunek początkowy.',
 	'maps-finddestination-par-distance' => 'Odległość podróży.',
+	'maps-geocode-par-location' => 'Adres, który chcesz geokodować.',
 	'validation-error-invalid-location' => 'Parametr $1 musi wskazywać prawidłową lokalizację.',
 	'validation-error-invalid-locations' => 'Parametr $1 musi wskazywać jedną lub więcej prawidłowych lokalizacji.',
 	'validation-error-invalid-width' => 'Parametr $1 musi określać prawidłową szerokość.',
@@ -4304,18 +5263,33 @@ $1',
 	'maps-openlayers-par-controls' => 'Formanty do umieszczenia na mapie.',
 	'maps-osm-par-thumbs' => 'Pokaż miniatury',
 	'maps-osm-par-photos' => 'Pokaż zdjęcia',
+	'mapeditor' => 'Edytor map',
+	'specialpages-group-maps' => 'Mapy',
+	'mapeditor-done-button' => 'Gotowe',
+	'mapeditor-remove-button' => 'Usuń',
+	'mapeditor-form-field-title' => 'Tytuł',
+	'mapeditor-form-field-text' => 'Tekst',
+	'mapeditor-form-field-icon' => 'Ikona',
+	'mapeditor-form-field-group' => 'Grupa',
+	'mapeditor-form-field-showonhover' => 'Pokaż tylko po najechaniu',
+	'mapeditor-form-field-image' => 'Grafika',
 );
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
  * @author McDutchie
+ * @author පසිඳු කාවින්ද
  */
 $messages['pms'] = array(
-	'maps-desc' => "A abìlita l'anseriment ëd carte ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([http://mapping.referata.com/wiki/Esempi dimostrassion]).",
+	'maps-desc' => "A abìlita l'anseriment ëd carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([http://www.semantic-mediawiki.org/wiki/Maps për savèjne ëd pi...])",
+	'right-geocode' => 'Geocodìfica',
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
+	'maps-load-failed' => 'As peul pa cariesse la carta!',
 	'maps-markers' => 'Marcador',
+	'maps-copycoords-prompt' => 'CTRL+C, A CAP',
+	'maps-searchmarkers-text' => 'Marcador ëd filtr',
 	'maps-others' => 'àutri',
 	'maps-ns-layer' => 'Livel',
 	'maps-ns-layer-talk' => 'Ciaciarada ëd livel',
@@ -4329,6 +5303,70 @@ $messages['pms'] = array(
 	'validation-error-invalid-layers' => 'Ël paràmetr $1 a dev esse un o pi livej bon.',
 	'maps-layer-of-type' => 'Livel ëd sòrt $1',
 	'maps-layer-type-supported-by' => 'Costa sòrt ëd livel a peul {{PLURAL:$2|mach esse dovrà con ël servissi ëd cartografìa $1|esse dovrà con sti servissi ëd cartografìa: $1}}.',
+	'maps-coordinates-description' => "Gancio ëd l'analisator për formaté le coordinà, da e vers qualsëssìa dij formà mantnù.",
+	'maps-displaymap-description' => 'Visualisé le carte geogràfiche sensa gnun marcador definì ëd wiki ansima a lor.',
+	'maps-displaypoint-description' => 'Visualisé le carte geogràfiche con un o pi marcador definì ëd wiki ansima.',
+	'maps-distance-description' => "Convertì na distansa dovrand na serta unità mantnùa an sò equivalent dovrand n'àutra unità.",
+	'maps-finddestination-description' => "Trové na destinassion dàit un pont ëd partensa (che a peul esse an qualsëssìa dij formà mantnù), n'orientassion inissial e na distansa.",
+	'maps-geocode-description' => "A abìlita la geocodìfica d'adrësse, an d'àutre paròle, la trasformassion dle posission lesìbij da n'uman an ansema ëd coordinà. Vàire sërvissi ëd geocodìfica a son mantnù, lòn che a dev nen esse confondù con ij sërvissi ëd cartografìa.",
+	'maps-geodistance-description' => 'Calcolé la distansa geogràfica tra doi pont, da e vers qualsëssìa dij formà mantnù.',
+	'maps-mapsdoc-description' => 'Visualisé na tàula con ij paràmetr për un servissi specìfich ëd cartografìa ansema con ij sò valor predefinì e soe descrission.',
+	'maps-mapsdoc-par-service' => 'Ël sërvissi ëd cartografìaa për mostré la documentassion dij paràmetr.',
+	'maps-mapsdoc-par-language' => "La lenga ant la qual mostré la documentassion. Se gnun-a tradussion a l'é disponìbil, al pòst a sarà dovrà l'Anglèis.",
+	'maps-coordinates-par-location' => "Le coordinà ch'it veule formaté.",
+	'maps-coordinates-par-format' => 'Ël formà destinassion për le coordinà.',
+	'maps-coordinates-par-directional' => 'A ìndica se le coordinà a devo esse stampà diressionaj o nò.',
+	'maps-distance-par-distance' => "La distansa da convertì a sò equivalent con n'unità specificà.",
+	'maps-distance-par-decimals' => 'Ël nùmer màssim ëd gifre frassionaj da dovré ant ël valor arzultant.',
+	'maps-distance-par-unit' => "L'unità pr'ëstampé la distansa.",
+	'maps-finddestination-par-location' => 'La locassion inissial.',
+	'maps-finddestination-par-bearing' => 'La posission inissial.',
+	'maps-finddestination-par-distance' => 'La distansa da viagé.',
+	'maps-finddestination-par-format' => 'Ël formà ant ël qual ësmon-e la destinassion.',
+	'maps-finddestination-par-directional' => 'A ìndica se ël formà dla destinassion a dev esse diressional o pa.',
+	'maps-finddestination-par-allowcoordinates' => "A ìndica se le coordinà a devo esse përmëttùe. Se ampostà a nò, mach j'adrësse a saran acetà.",
+	'maps-finddestination-par-geoservice' => "Ël sërvissi ëd geocodìfica da dovré për geocodìfiché ël valor ant ël cas ch'a sia n'adrëssa.",
+	'maps-finddestination-par-mappingservice' => "Paràmetr për ìndiché ël sërvissi ëd cartografìa da dovré con sta funsion.
+Sòn a përmëttrà a le carte ëd rampiassé ij valor predefinì dël paràmetr ëd servissi con col ch'a l'é ël pi bon për ël servissi ëd cartografìa.
+(Esempi: Ant ël cas ëd Google Maps, ël geocodificator Google a sarà dovrà.)",
+	'maps-geocode-par-location' => "L'adrëssa ch'it veule geocodifiché.",
+	'maps-geocode-par-mappingservice' => "Ël sërvissi ëd geocodìfica ch'it veule dovré. Varda ij sërvissi ëd geocodìfica disponìbij.",
+	'maps-geocode-par-geoservice' => "Sto paràmetr a-j përmët d'andiché ch'a deuvra cost'arcesta ëd geocodìfica an combinassion con un sërvissi ëd cartografìa spessìfich.
+Minca sërvissi ëd cartografìa a peul ësganfé ël valor predefinì për ël sërvissi ëd geocodìfica.
+Sòn a l'é për dle considerassion legaj, përchè a peul pa dovré ël sërvissi Google Geocoding gavà che con Google Maps.
+Ampostand sto paràmetr e nen ël paràmetr për ël sërvissi, a lo sigurerà ëd nen dovré na combinassion pa bon-a.",
+	'maps-geocode-par-allowcoordinates' => "A përmët ëd disabilité ël manteniment për le coordinà an costa funsion. A dev esse o sì o nò.
+S'a l'é nò, minca valor a sarà geocodificà, ëdcò le coordinà bon-e.",
+	'maps-geocode-par-format' => 'Ël formà për le coordinà arzultante.',
+	'maps-geocode-par-directional' => 'A ìndica se le coordinà a devo esse stampà diressionaj o nò.',
+	'maps-geodistance-par-location1' => "Ël prim pont ant l'ansema për calcolé la distansa.",
+	'maps-geodistance-par-location2' => "Lë scond pont ant l'ansema për calcolé la distansa.",
+	'maps-geodistance-par-unit' => "L'unità da dovré për mostré la distansa.",
+	'maps-geodistance-par-decimals' => 'Ël nùmer màssim ëd gifre frassionaj da dovré ant ël valor arzultant.',
+	'maps-geodistance-par-mappingservice' => 'Ël sërvissi ëd geocodìfica da dovré për geocodifiché qualsëssìa adrëssa.',
+	'maps-geodistance-par-geoservice' => "Ël sërvissi ëd cartografìa che a l'é dovrà ansema.
+Sòn a peul anfluensé ël valor dël sërvissi ëd geocodìfica predefinì.",
+	'maps-displaymap-par-mappingservice' => "A përmët d'amposté ël sërvissi ëd cartografìa che a sarà dovrà për generé la carta.",
+	'maps-displaymap-par-coordinates' => 'Un-a o pi locassion da smon-e an sla carta. A saran mostrà con na marca.',
+	'maps-displaymap-par-visitedicon' => "L'element local ëd n'archivi da dovré com plancia visità",
+	'maps-displaymap-par-zoom' => "A përmët d'amposté ël livel d'angrandiment ëd la carta.
+Quand nen dàit e pi marche a son presente an sla carta, a sarà dovrà ël mej angrandiment, pa la configurassion predefinìa.",
+	'maps-displaymap-par-centre' => "A përmët d'amposté le coordinà dël sénter ëd la carta për display_point(s).
+A aceta sia adrësse che coordinà.
+Quand sta propietà a l'é pa fornìa, la carta as sentrerà an sla marca dàita, o tra le marche dàite.",
+	'maps-displaymap-par-title' => "A përmët d'amposté dël test che a sarà smonì ant le fnestre ch'as duverto ëd tute le marche che a l'han pa un tìtol specificà.
+Quand a l'é dovrà con la tichëtta, ël tìtol a sarà an grassèt e sotlinià.",
+	'maps-displaymap-par-label' => "A përmët d'amposté dël test che a sarà smonù ant le fnestre ch'as duverto ëd tute le marche che a l'han pa na tichëtta spessìfica.",
+	'maps-displaymap-par-icon' => "A përmët d'amposté la plancia dovrà për tuti ij marcador.",
+	'maps-displaymap-par-circles' => 'Sercc da mostré',
+	'maps-displaymap-par-copycoords' => 'Se na casela ëd diàlogh anté che le coordinà ëd na locassion a devo esse smonùe quand a së sgnaca su quaicòs',
+	'maps-displaymap-par-lines' => 'Linie da smon-e',
+	'maps-displaymap-par-maxzoom' => "Ël livel d'angrandiment màssim",
+	'maps-displaymap-par-minzoom' => "Ël livel d'angrandiment mìnim",
+	'maps-displaymap-par-polygons' => 'Polìgon da smon-e',
+	'maps-displaymap-par-rectangles' => 'Retàngoj da smon-e',
+	'maps-displaymap-par-static' => 'Se la carta a dev esse stàtica',
+	'maps-displaymap-par-wmsoverlay' => 'Dovré na covertura WMS',
 	'validation-error-invalid-location' => 'Ël paràmetr $1 a dev esse na locassion bon-a.',
 	'validation-error-invalid-locations' => 'Ël paràmetr $1 a dev esse un-a o pi locassion bon-e.',
 	'validation-error-invalid-width' => 'Ël paràmetr $1 a dev esse na larghëssa bon-a.',
@@ -4339,6 +5377,9 @@ $messages['pms'] = array(
 	'validation-error-invalid-images' => 'Ël paràmetr $1 a dev esse un-a o pi figure bon-e.',
 	'validation-error-invalid-goverlay' => 'Ël paràmetr $1 a dev esse un coatament bon.',
 	'validation-error-invalid-goverlays' => 'Ël paràmetr $1 a dev esse un o pi coatament bon.',
+	'validation-error-invalid-line-param' => 'Paràmetr "lines" specificà pa bon.',
+	'validation-error-invalid-polyline-param' => 'Paràmetr "polylines" specificà pa bon.',
+	'validation-error-invalid-searchmarkers-param' => "Valor dij marcador d'arserca pa bon, a dovrìa esse o «tut» o «tìtol».",
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -4357,13 +5398,74 @@ $1",
 	'maps-geocoder-not-available' => "La possibilità ëd geocodìfica dle carte a l'é pa disponìbil. Soa locassion a peul pa esse geocodificà.",
 	'maps_click_to_activate' => 'Sgnaca për ativé la carta',
 	'maps_centred_on' => 'Carta sentrà su $1, $2.',
+	'maps-par-mappingservice' => "A përmët d'amposté ël sërvissi ëd cartografìa che a sarà dovrà për generé la carta.",
+	'maps-par-resizable' => 'A rend la carta ridimensionàbil an spostand sò canton an bass a drita.',
+	'maps-par-geoservice' => "Ël sërvissi ëd geocodìfica da dovré për fé le tradussion tra j'adrësse e le coordinà.",
+	'maps-par-zoom' => "Ël livel d'angrandiment për la carta. Për le carte con dij marcador cost-sì as predefinirà al livel pi agrandì che a smon anco' tuti ij marcador.",
+	'maps-par-width' => "A përmët d'amposté la larghëssa dla carta. Për predefinission ij pontin a saran contà com unità, ma a peul specifiché ëd fasson esplìssita un-a ëd coste unità: px, ex, em, %.",
+	'maps-par-height' => "A përmët d'amposté l'autëssa dla carta. Për predefinission ij pontin a saran considerà com unità, ma a peul ëspessifiché ëd fasson esplìssita un-a ëd coste unità: px, ex, em, %.",
+	'maps-par-centre' => 'Ël pòst anté che la carta a dovrà esse sentrà',
+	'maps-googlemaps3-incompatbrowser' => "Tò navigator a l'é pa compatìbil con Google Maps v3.",
+	'maps-googlemaps3-par-type' => 'La sòrt ëd carta da smon-e inissialment.',
+	'maps-googlemaps3-par-types' => 'La sòrt ëd carta che a sarà disponìbil travers al contròl ëd sòrt.',
+	'maps-googlemaps3-par-layers' => 'Seuli speciaj da carié an sla carta.',
+	'maps-googlemaps3-par-controls' => 'Ël control da piassé an sla carta.',
+	'maps-googlemaps3-par-zoomstyle' => "Lë stil dël contròl d'angrandiment.",
+	'maps-googlemaps3-par-typestyle' => 'Lë stil dël contròl ëd sòrt.',
+	'maps-googlemaps3-par-autoinfowindows' => "Duverté automaticament tute le fnestre d'anformassion apress che la pàgina a l'é cariasse.",
+	'maps-googlemaps3-par-kml' => 'Archivi KML da carié dzora a la carta.',
+	'maps-googlemaps3-par-gkml' => 'Archivi KML ospità da Google da carié dzor la carta.',
+	'maps-googlemaps3-par-fusiontables' => "ID ëd le tàule ëd Google Fusion ch'a dovrìa esse carià dzora a la carta.",
+	'maps-googlemaps3-par-tilt' => 'Anclinassion për la Carta quand as deuvra Google Maps.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Angrandì torna la carta na vira che ij seuj KML a son stàit carià.',
+	'maps-googlemaps3-par-poi' => "Smon-e ij pont d'anteresse.",
+	'maps-openlayers-par-controls' => 'Ël control da piassé an sla carta.',
+	'maps-openlayers-par-layers' => 'Ij seuj che a saran disponìbij ant ël seletor ëd seul. Ël prim seul a sarà mostrà quand la carta as caria.',
+	'maps-osm-par-thumbs' => 'Smon-e dle miniadure',
+	'maps-osm-par-photos' => 'Smon-e dle fòto',
+	'mapeditor' => 'Editor ëd carta',
+	'specialpages-group-maps' => 'Carte',
+	'mapeditor-parser-error' => "A l'é capitaje n'eror an analisand dij metadat. Ignorà l'anseriment ëd l'utent.",
+	'mapeditor-none-text' => 'Gnun',
+	'mapeditor-done-button' => 'Fàit',
+	'mapeditor-remove-button' => 'Gava',
+	'mapeditor-import-button2' => 'Ampòrta',
+	'mapeditor-export-button' => 'Esporté an còdes wiki',
+	'mapeditor-import-button' => 'Ampòrta da còdes wiki',
+	'mapeditor-select-button' => 'Selessioné ës polìgon',
+	'mapeditor-mapparam-button' => 'Modifiché ij paràmetr ëd la carta',
+	'mapeditor-clear-button' => 'Scancelé la carta',
+	'mapeditor-code-title' => 'Còdes wiki',
+	'mapeditor-import-title' => 'Amporté ël còdes wiki',
+	'mapeditor-import-note' => "Për piasì, ch'a nòta che l'analisator a së speta un formà motobin limità an sël còdes wiki. Ël còdes anserì ambelessì a dovrìa corisponde al còdes generà da la fonsionalità d'esportassion.",
+	'mapeditor-form-title' => 'Modifiché ij detaj',
+	'mapeditor-link-title-switcher-popup-text' => "Fnestra ch'as duverta con test",
+	'mapeditor-link-title-switcher-link-text' => 'Anliura',
+	'mapeditor-form-field-title' => 'Tìtol',
+	'mapeditor-form-field-text' => 'Test',
+	'mapeditor-form-field-link' => 'Anliura',
+	'mapeditor-form-field-icon' => 'Plancia',
+	'mapeditor-form-field-group' => 'Partìa',
+	'mapeditor-form-field-inlinelabel' => 'Tichëtta an linia',
+	'mapeditor-form-field-strokecolor' => 'Color dël trat',
+	'mapeditor-form-field-strokeopacity' => 'Opassità dël trat',
+	'mapeditor-form-field-strokeweight' => 'Pèis dël trat',
+	'mapeditor-form-field-fillcolor' => "Color d'ampiniment",
+	'mapeditor-form-field-fillopcaity' => "Opassità d'ampiniment",
+	'mapeditor-form-field-showonhover' => 'Mostré mach cand a-i passa ël rat dëdzora',
+	'mapeditor-mapparam-title' => 'Modifiché ij paràmetr ëd la carta',
+	'mapeditor-mapparam-defoption' => "-Ch'a selession-a un paràmetr-",
+	'mapeditor-imageoverlay-button' => 'Gionté la dzorposission ëd plancia',
+	'mapeditor-form-field-image' => 'Figura',
+	'mapeditor-imageoverlay-title' => 'Detaj dla dzorposission ëd plancia',
+	'mapeditor-form-field-visitedicon' => 'Plancia visità',
 );
 
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'maps_map' => 'نخشه',
+	'maps_map' => 'کښېده',
 	'maps-others' => 'نور',
 	'maps-layer-property' => 'ځانتيا',
 	'maps-layer-value' => 'ارزښت',
@@ -4390,10 +5492,11 @@ $messages['ps'] = array(
  * @author GoEThe
  * @author Hamilton Abreu
  * @author Lijealso
+ * @author Luckas
  * @author Waldir
  */
 $messages['pt'] = array(
-	'maps-desc' => 'Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas ([http://mapping.referata.com/wiki/Examples demonstração])',
+	'maps-desc' => 'Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas ([http://mapping.referata.com/wiki/Examples demonstração])', # Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'A carregar o mapa...',
 	'maps-load-failed' => 'Não foi possível carregar o mapa!',
@@ -4428,7 +5531,7 @@ $messages['pt'] = array(
 	'maps-distance-par-decimals' => 'O número máximo de casas decimais a usar no valor resultante.',
 	'maps-distance-par-unit' => 'As unidades em que a distância será produzida.',
 	'maps-finddestination-par-location' => 'A localização inicial.',
-	'maps-finddestination-par-bearing' => 'A direcção inicial.',
+	'maps-finddestination-par-bearing' => 'A direção inicial.',
 	'maps-finddestination-par-distance' => 'A distância a percorrer.',
 	'maps-finddestination-par-format' => 'O formato em que sairá o destino.',
 	'maps-finddestination-par-directional' => 'Indica se o formato do destino deve ser direccional ou não.',
@@ -4443,7 +5546,7 @@ Isto permite que os mapas substituam o valor padrão do parâmetro do serviço p
 Para cada serviço de cartografia é possível substituir o valor padrão do serviço de geocodificação.
 Isto tem uma justificação legal, posto que o serviço de Geocodificação do Google só pode ser usado em conjunto com o Google Maps.
 Definir este parâmetro e não o parâmetro para o serviço, garante que não se está a usar uma combinação inválida.',
-	'maps-geocode-par-allowcoordinates' => 'Permite desactivar o suporte de coordenadas desta função. Tem de ser sim ou não.
+	'maps-geocode-par-allowcoordinates' => 'Permite desativar o suporte de coordenadas desta função. Tem de ser sim ou não.
 Quando for não, todos os valores serão geocodificados, mesmo coordenadas válidas.',
 	'maps-geocode-par-format' => 'O formato das coordenadas resultantes.',
 	'maps-geocode-par-directional' => 'Indica se as coordenadas devem ser produzidas com formato direccional ou não.',
@@ -4453,7 +5556,7 @@ Quando for não, todos os valores serão geocodificados, mesmo coordenadas váli
 	'maps-geodistance-par-decimals' => 'O número máximo de casas decimais a usar no valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'O serviço de geocodificação que será usado para geocodificar qualquer endereço.',
 	'maps-geodistance-par-geoservice' => 'O serviço de cartografia a utilizar em conjunto.
-Isto pode afectar o valor padrão do serviço de geocodificação.',
+Isto pode afetar o valor padrão do serviço de geocodificação.',
 	'maps-displaymap-par-mappingservice' => 'Permite definir o serviço de cartografia que será usado para gerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'A localização na qual o mapa será inicialmente centrado.',
 	'maps-displaymap-par-zoom' => 'Permite definir o nível de aproximação do mapa.
@@ -4492,7 +5595,7 @@ $1.',
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
-	'maps_click_to_activate' => 'Clique para activar o mapa',
+	'maps_click_to_activate' => 'Clique para ativar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
 	'maps-par-resizable' => 'Permite alterar as dimensões do mapa, arrastando o canto inferior direito.',
 	'maps-par-geoservice' => 'O serviço de geocodificação que será usado para fazer a conversão entre endereços e coordenadas.',
@@ -4517,13 +5620,15 @@ $1',
 );
 
 /** Brazilian Portuguese (português do Brasil)
- * @author 555
+ * @author Cainamarques
  * @author Eduardo.mps
  * @author Giro720
+ * @author Luckas
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
-	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://mapping.referata.com/wiki/Examples exemplos])',
+	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([http://www.semantic-mediawiki.org/wiki/Maps mais informações...])',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
 	'maps-markers' => 'Marcadores',
@@ -4568,6 +5673,29 @@ $1',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para ativar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
+	'maps-osm-par-thumbs' => 'Mostrar miniaturas',
+	'maps-osm-par-photos' => 'Mostrar fotos',
+	'mapeditor' => 'Editor de mapas',
+	'specialpages-group-maps' => 'Mapas',
+	'mapeditor-none-text' => 'Nenhum',
+	'mapeditor-done-button' => 'Feito',
+	'mapeditor-remove-button' => 'Remover',
+	'mapeditor-import-button2' => 'Importar',
+	'mapeditor-mapparam-button' => 'Editar parâmetros do mapa',
+	'mapeditor-clear-button' => 'Limpar mapa',
+	'mapeditor-code-title' => 'Código wiki',
+	'mapeditor-import-title' => 'Importar código wiki',
+	'mapeditor-form-title' => 'Editar detalhes',
+	'mapeditor-link-title-switcher-link-text' => 'Link',
+	'mapeditor-form-field-title' => 'Título',
+	'mapeditor-form-field-text' => 'Texto',
+	'mapeditor-form-field-link' => 'Link',
+	'mapeditor-form-field-icon' => 'Ícone',
+	'mapeditor-form-field-group' => 'Grupo',
+	'mapeditor-mapparam-title' => 'Editar parâmetros do mapa',
+	'mapeditor-mapparam-defoption' => '-Selecionar parâmetro-',
+	'mapeditor-form-field-image' => 'Imagem',
+	'mapeditor-form-field-visitedicon' => 'Ícone visitado',
 );
 
 /** Romanian (română)
@@ -4577,10 +5705,14 @@ $1',
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'maps-desc' => 'Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic ([http://mapping.referata.com/wiki/Examples demonstrație]).',
+	'maps-desc' => 'Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic. ([http://www.semantic-mediawiki.org/wiki/Maps mai multe informații...])',
+	'right-geocode' => 'Geocod',
 	'maps_map' => 'Hartă',
 	'maps-loading-map' => 'Se încarcă harta...',
+	'maps-load-failed' => 'Imposibil de încărcat harta!',
 	'maps-markers' => 'Marcatori',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Marcaje pentru filtre',
 	'maps-others' => 'altele',
 	'maps-ns-layer' => 'Strat',
 	'maps-layer-property' => 'Proprietate',
@@ -4593,9 +5725,21 @@ $messages['ro'] = array(
 	'validation-error-invalid-layers' => 'Parametrul $1 trebuie să fie una sau mai multe straturi valide.',
 	'maps-layer-of-type' => 'Strat de tip $1',
 	'maps-finddestination-par-location' => 'Amplasare inițială.',
+	'maps-displaymap-par-circles' => 'Cercuri de afișat',
+	'maps-displaymap-par-lines' => 'Linii de afișat',
+	'maps-displaymap-par-maxzoom' => 'Nivelul maxim de apropiere',
+	'maps-displaymap-par-minzoom' => 'Nivelul minim de apropiere',
+	'maps-displaymap-par-polygons' => 'Poligoane de afișat',
+	'maps-displaymap-par-rectangles' => 'Dreptunghiuri de afișat',
 	'validation-error-invalid-location' => 'Parametrul $1 trebuie să fie o locaţie validă.',
 	'validation-error-invalid-locations' => 'Parametrul $1 trebuie să fie una sau mai multe locaţii valide.',
+	'validation-error-invalid-width' => 'Parametrul $1 trebuie să fie o lățime validă.',
+	'validation-error-invalid-height' => 'Parametrul $1 trebuie să fie o înălțime validă.',
 	'validation-error-invalid-distance' => 'Parametrul $1 trebuie să reprezinte o distanță validă.',
+	'validation-error-invalid-distances' => 'Parametrul $1 trebuie să fie una sau mai multe distanțe valide.',
+	'validation-error-invalid-image' => 'Parametrul $1 trebuie să fie o imagine validă.',
+	'validation-error-invalid-images' => 'Parametrul $1 trebuie să fie una sau mai multe imagini valide.',
+	'validation-error-invalid-goverlay' => 'Parametrul $1 trebuie să fie o suprapunere validă.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -4614,29 +5758,64 @@ $1',
 	'maps-geocoder-not-available' => 'Opțiunea de geocodare pentru Hărți nu este disponibilă. Locația dumneavoastră nu a putut fi geocodată.',
 	'maps_click_to_activate' => 'Apăsați pentru a activa harta',
 	'maps_centred_on' => 'Hartă centrată la $1, $2.',
+	'maps-osm-par-thumbs' => 'Afișează miniaturi',
+	'maps-osm-par-photos' => 'Afișează fotografii',
 	'mapeditor' => 'Editor de hărți',
 	'specialpages-group-maps' => 'Hărți',
+	'mapeditor-none-text' => 'Nimic',
 	'mapeditor-done-button' => 'Realizat',
+	'mapeditor-remove-button' => 'Elimină',
 	'mapeditor-import-button2' => 'Importă',
+	'mapeditor-export-button' => 'Exportare în cod wiki',
+	'mapeditor-import-button' => 'Importare din cod wiki',
+	'mapeditor-select-button' => 'Selectează acest poligon',
+	'mapeditor-mapparam-button' => 'Modifică parametrii hărții',
+	'mapeditor-clear-button' => 'Curăță harta',
+	'mapeditor-code-title' => 'Cod wiki',
+	'mapeditor-import-title' => 'Importare cod wiki',
+	'mapeditor-form-title' => 'Modificare detalii',
+	'mapeditor-link-title-switcher-popup-text' => 'Fereastră popup cu text',
 	'mapeditor-link-title-switcher-link-text' => 'Legătură',
 	'mapeditor-form-field-title' => 'Titlu',
 	'mapeditor-form-field-text' => 'Text',
 	'mapeditor-form-field-link' => 'Legătură',
+	'mapeditor-form-field-icon' => 'Pictogramă',
 	'mapeditor-form-field-group' => 'Grup',
+	'mapeditor-form-field-inlinelabel' => 'Etichetă în linie',
+	'mapeditor-form-field-strokecolor' => 'Culoarea conturului',
+	'mapeditor-form-field-strokeopacity' => 'Opacitatea conturului',
+	'mapeditor-form-field-strokeweight' => 'Grosimea conturului',
+	'mapeditor-form-field-fillcolor' => 'Culoarea umplerii',
+	'mapeditor-form-field-fillopcaity' => 'Opacitatea umplerii',
+	'mapeditor-form-field-showonhover' => 'Arată numai când mausul este deasupra',
+	'mapeditor-mapparam-title' => 'Modificare parametrii hartă',
+	'mapeditor-mapparam-defoption' => '-Alegeți parametrul-',
+	'mapeditor-imageoverlay-button' => 'Adaugă suprapunerea de imagine',
+	'mapeditor-form-field-image' => 'Imagine',
+	'mapeditor-imageoverlay-title' => 'Detalii suprapunere imagine',
+	'mapeditor-form-field-visitedicon' => 'Pictogramă vizitată',
 );
 
 /** tarandíne (tarandíne)
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://mapping.referata.com/wiki/Maps_examples demo])",
+	'maps-desc' => "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([http://www.semantic-mediawiki.org/wiki/Maps cchiù 'mbormaziune...])",
+	'right-geocode' => 'Geocodece',
 	'maps_map' => 'Mappe',
 	'maps-loading-map' => "Stoche a careche 'a mappe...",
+	'maps-load-failed' => "Non ge pozze carecà 'a mappe!",
 	'maps-markers' => 'Marcature',
 	'maps-copycoords-prompt' => 'CTRL+C, INVIE',
 	'maps-others' => 'otre',
+	'maps-ns-layer' => 'Strate',
+	'maps-layer-property' => 'Probbietà',
 	'maps-layer-value' => 'Valore',
 	'maps-layer-errors' => 'Errore',
+	'maps-displaymap-par-maxzoom' => 'Levèlle de zoom massime',
+	'maps-displaymap-par-minzoom' => 'Levèlle de zoom minime',
+	'maps-displaymap-par-polygons' => 'Poligoni da fà vedè',
+	'maps-displaymap-par-rectangles' => 'Rettangole da fà vedè',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -4651,12 +5830,19 @@ $messages['roa-tara'] = array(
 	'mapeditor-link-title-switcher-link-text' => 'Collegamende',
 	'mapeditor-form-field-title' => 'Titole',
 	'mapeditor-form-field-text' => 'Teste',
+	'mapeditor-form-field-link' => 'Collegamende',
+	'mapeditor-form-field-icon' => 'Icone',
+	'mapeditor-form-field-group' => 'Gruppe',
+	'mapeditor-form-field-image' => 'Immaggine',
 );
 
 /** Russian (русский)
  * @author Adata80
+ * @author Base
+ * @author DCamer
  * @author Haffman
  * @author KPu3uC B Poccuu
+ * @author Kaganer
  * @author Kalan
  * @author Lockal
  * @author MaxSem
@@ -4665,11 +5851,13 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://mapping.referata.com/wiki/Examples Примеры использования])',
+	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([http://www.semantic-mediawiki.org/wiki/Maps подробнее...])',
+	'right-geocode' => 'геокодирование',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
 	'maps-load-failed' => 'Невозможно загрузить карту!',
 	'maps-markers' => 'Отметки',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => 'другие',
 	'maps-ns-layer' => 'Слой',
 	'maps-ns-layer-talk' => 'Обсуждение слоя',
@@ -4682,7 +5870,7 @@ $messages['ru'] = array(
 	'validation-error-invalid-layer' => 'Параметр $1 должен быть корректным слоем.',
 	'validation-error-invalid-layers' => 'Параметр $1 должен содержать один или несколько корректных слоёв.',
 	'maps-layer-of-type' => 'Слой типа $1',
-	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|только с картографической службой $1|только со следующими картографическими службами}}: $1',
+	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|только с картографической службой|только со следующими картографическими службами:}} $1',
 	'maps-coordinates-description' => 'Перехватчик синтаксического анализатора для форматирования координат из любого и в любой поддерживаемый формат.',
 	'maps-displaymap-description' => 'Отображение географических карт без каких-либо вики-маркеров на них.',
 	'maps-displaypoint-description' => 'Отображение географических карт с одним или несколькими вики-маркерами на них.',
@@ -4722,6 +5910,12 @@ $messages['ru'] = array(
 	'maps-geodistance-par-decimals' => 'Наибольшее количество цифр в дробной части результата.',
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
+	'maps-displaymap-par-icon' => 'Позволяет установить значок, используемый для всех маркеров.',
+	'maps-displaymap-par-circles' => 'Кружки для отображения',
+	'maps-displaymap-par-lines' => 'Линии для отображения',
+	'maps-displaymap-par-maxzoom' => 'Максимальный уровень масштабирования',
+	'maps-displaymap-par-minzoom' => 'Минимальный уровень масштабирования',
+	'maps-displaymap-par-static' => 'Если карта должна быть статичной',
 	'validation-error-invalid-location' => 'Параметр $1 должен быть корректным местоположением.',
 	'validation-error-invalid-locations' => 'Параметр $1 должен содержать одно или несколько корректных местоположений.',
 	'validation-error-invalid-width' => 'Параметр $1 должен быть корректной шириной.',
@@ -4751,7 +5945,14 @@ $1',
 	'maps-geocoder-not-available' => 'Функция геокодирования карт недоступна, ваше местоположение не может быть геокодировано.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
 	'maps_centred_on' => 'Центр карты — $1, $2.',
+	'maps-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-googlemaps3-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v3.',
+	'maps-googlemaps3-par-layers' => 'Специальные слои для загрузки на карту.',
+	'maps-googlemaps3-par-kml' => 'KML файлы для загрузки на карту.',
+	'maps-googlemaps3-par-gkml' => 'KML файлы, хранящиеся в Google для загрузки на карту.',
+	'maps-googlemaps3-par-poi' => 'Показать достопримечательности.',
+	'maps-osm-par-thumbs' => 'Показать превью',
+	'maps-osm-par-photos' => 'Показать фото',
 	'mapeditor' => 'Редактор карт',
 	'specialpages-group-maps' => 'Карты',
 	'mapeditor-parser-error' => 'Произошла ошибка обработки метаданных. Введённые данные проигнорированы.',
@@ -4806,35 +6007,112 @@ $messages['rue'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'right-geocode' => 'භූකේතය',
 	'maps_map' => 'සිතියම',
 	'maps-loading-map' => 'සිතියම පුරණය වෙමින් පවතී...',
+	'maps-load-failed' => 'සිතියම පූරණය කල නොහැක!',
+	'maps-markers' => 'සලකුණු කාරක',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'පෙරහන් සලකුණු කාරක',
 	'maps-others' => 'අනෙකුන්',
+	'maps-ns-layer' => 'ස්තරය',
+	'maps-ns-layer-talk' => 'ස්තර කතබහ',
 	'maps-layer-property' => 'ගුණාංගය',
 	'maps-layer-value' => 'අගය',
 	'maps-layer-errors' => 'දෝෂ',
+	'maps-error-invalid-layerdef' => 'ස්ථර නිර්වචනය වලංගු නොවේ.',
+	'validation-error-invalid-layer' => '$1 පරාමිතිය වලංගු ස්ථරයක් විය යුතුය.',
+	'validation-error-invalid-layers' => '$1 පරාමිතිය වලංගු එක් හෝ තවත් ස්ථරයක් විය යුතුය.',
+	'maps-layer-of-type' => '$1 වර්ගයේ ස්තරය',
+	'maps-coordinates-par-location' => 'ඔබට ආකෘතිකරණය කල යුතු ඛණ්ඩාංක.',
+	'maps-coordinates-par-format' => 'ඛණ්ඩාංක සඳහා ඉලක්කගත ආකෘතිය.',
+	'maps-finddestination-par-location' => 'ආරම්භක ස්ථානය.',
+	'maps-finddestination-par-bearing' => 'ආරම්භක දිගංශය.',
+	'maps-finddestination-par-distance' => 'ගමන් කිරීමට ඇති දුර.',
+	'maps-finddestination-par-format' => 'ගමනාන්තය ප්‍රතිදානය කල යුතු ආකෘතිය.',
+	'maps-geocode-par-location' => 'ඔබට භූකේතීකරණය කල යුතු ලිපිනය.',
+	'maps-geocode-par-format' => 'එලිත ඛණ්ඩාංක සඳහා ආකෘතිය.',
+	'maps-geodistance-par-mappingservice' => 'භූකේතීකරණ සේවාව ඕනෑම ලිපිනයක් භූකේතීකරණය කිරීමට යොදා ගනී.',
+	'maps-displaymap-par-circles' => 'පෙන්වීමට ඇති වක්‍ර',
+	'maps-displaymap-par-lines' => 'පෙන්වීමට ඇති රේඛා',
+	'maps-displaymap-par-maxzoom' => 'උපරිම විශාලන මට්ටම',
+	'maps-displaymap-par-minzoom' => 'අවම විශාලන මට්ටම',
+	'maps-displaymap-par-polygons' => 'පෙන්වීමට ඇති බහුඅස‍්‍ර',
+	'maps-displaymap-par-rectangles' => 'පෙන්වීමට ඇති ඍජුකෝණාශ්‍ර',
+	'maps-displaymap-par-static' => 'සිතියම ස්ථිතික විය යුතු වුවහොත්',
+	'maps-displaymap-par-wmsoverlay' => 'WMS වසාලනය භාවිතා කරන්න',
+	'validation-error-invalid-location' => '$1 පරාමිතිය වලංගු ස්ථානයක් විය යුතුය.',
+	'validation-error-invalid-locations' => '$1 පරාමිතිය එක් හෝ තවත් වලංගු ස්ථාන විය යුතුය.',
+	'validation-error-invalid-width' => '$1 පරාමිතිය වලංගු පළලක් විය යුතුය.',
+	'validation-error-invalid-height' => '$1 පරාමිතිය වලංගු උසක් විය යුතුය.',
+	'validation-error-invalid-distance' => '$1 පරාමිතිය වලංගු දුරක් විය යුතුය.',
+	'validation-error-invalid-distances' => '$1 පරාමිතිය එක් හෝ තවත් වලංගු දුරක් විය යුතුය.',
+	'validation-error-invalid-image' => '$1 පරාමිතිය වලංගු පින්තූරයක් විය යුතුය.',
+	'validation-error-invalid-images' => '$1 පරාමිතිය එක් හෝ තවත් වලංගු පින්තූරයක් විය යුතුය.',
+	'validation-error-invalid-goverlay' => '$1 පරාමිතිය වලංගු වසාලනයක් විය යුතුය.',
+	'validation-error-invalid-goverlays' => '$1 පරාමිතිය එක් හෝ තවත් වලංගු වසාලනයක් විය යුතුය.',
+	'validation-error-invalid-line-param' => 'වලංගු නොවන "lines" පරාමිතියක් විශේෂණය කර ඇත.',
+	'validation-error-invalid-polyline-param' => 'වලංගු නොවන "polylines" පරාමිතියක් විශේෂණය කර ඇත.',
 	'maps-abb-north' => 'උ',
 	'maps-abb-east' => 'නැ',
 	'maps-abb-south' => 'ද',
 	'maps-abb-west' => 'බ',
+	'maps-latitude' => 'අක්ෂාංශය:',
+	'maps-longitude' => 'දේශාංශය:',
+	'maps_coordinates_missing' => 'සිතියම සඳහා ඛණ්ඩාංක කිසිවක් ඉදිරිපත් කොට නොමැත.',
+	'maps_map_cannot_be_displayed' => 'සිතියම සංදර්ශනය කල නොහැක.',
+	'maps_click_to_activate' => 'සිතියම සක්‍රිය කිරීම සඳහා ක්ලික් කරන්න',
+	'maps_centred_on' => '$1 හිදී සිතියම මධ්‍යගත වේ, $2.',
+	'maps-googlemaps3-par-type' => 'ආරම්භක වශයෙන් පෙන්විය යුතු සිතියම් වර්ගය.',
+	'maps-googlemaps3-par-layers' => 'සිතියම මත පැටවිය යුතු විශේෂ ස්ථර.',
+	'maps-googlemaps3-par-zoomstyle' => 'විශාලන පාලකයේ ශෛලිය.',
+	'maps-googlemaps3-par-typestyle' => 'වර්ග පාලකයේ ශෛලිය.',
+	'maps-googlemaps3-par-kml' => 'සිතියම මත පැටවිය යුතු KML ගොනු.',
+	'maps-googlemaps3-par-poi' => 'අභිරුචි ලක්ෂ්‍ය පෙන්වන්න.',
+	'maps-openlayers-par-controls' => 'සිතියම මත ස්ථානගත විය යුතු පාලක.',
+	'maps-osm-par-thumbs' => 'සංක්ෂිප්ත පෙන්වන්න',
+	'maps-osm-par-photos' => 'ඡායාරූප පෙන්වන්න',
+	'mapeditor' => 'සිතියම් සංස්කාරක',
 	'specialpages-group-maps' => 'සිතියම්',
 	'mapeditor-none-text' => 'කිසිවක් නොමැත',
 	'mapeditor-done-button' => 'හරි',
 	'mapeditor-remove-button' => 'ඉවත් කරන්න',
 	'mapeditor-import-button2' => 'ආයාත කරන්න',
+	'mapeditor-export-button' => 'විකිකේතය වෙත නිර්යාත කරන්න',
+	'mapeditor-import-button' => 'විකිකේතය වෙතින් ආයාත කරන්න',
+	'mapeditor-select-button' => 'මෙම බහුඅස‍්‍රය තෝරාගන්න',
+	'mapeditor-mapparam-button' => 'සිතියම් පරාමිතීන් සංස්කරණය කරන්න',
+	'mapeditor-clear-button' => 'සිතියම හිස් කරන්න',
+	'mapeditor-code-title' => 'විකි කේතය',
+	'mapeditor-import-title' => 'විකිකේතය ආයාත කරන්න',
+	'mapeditor-form-title' => 'විස්තර සංස්කරණය කරන්න',
+	'mapeditor-link-title-switcher-popup-text' => 'පාඨයක් සමඟ Popup',
 	'mapeditor-link-title-switcher-link-text' => 'සබැඳුම',
 	'mapeditor-form-field-title' => 'ශීර්ෂය',
 	'mapeditor-form-field-text' => 'පෙළ',
 	'mapeditor-form-field-link' => 'සබැඳුම',
 	'mapeditor-form-field-icon' => 'අයිකනය',
 	'mapeditor-form-field-group' => 'කාණ්ඩය',
+	'mapeditor-form-field-inlinelabel' => 'එක් තල ලේබලය',
+	'mapeditor-form-field-strokecolor' => 'ආඝාත වර්ණය',
+	'mapeditor-form-field-strokeopacity' => 'ආඝාත පාරාන්ධතාව',
+	'mapeditor-form-field-strokeweight' => 'ආඝාත බර',
+	'mapeditor-form-field-fillcolor' => 'පිරවුම් වර්ණය',
+	'mapeditor-form-field-fillopcaity' => 'පිරවුම් පාරාන්ධතාව',
+	'mapeditor-form-field-showonhover' => 'ගැවසෙන විට පමණක් පෙන්වන්න',
+	'mapeditor-mapparam-title' => 'සිතියම් පරාමිතීන් සංස්කරණය කරන්න',
+	'mapeditor-mapparam-defoption' => '-පරාමිතිය තෝරාගන්න-',
+	'mapeditor-imageoverlay-button' => 'පින්තූර වසාලනයක් එක් කරන්න',
 	'mapeditor-form-field-image' => 'පිංතූරය',
+	'mapeditor-imageoverlay-title' => 'පින්තූර වසාලන විස්තර',
+	'mapeditor-form-field-visitedicon' => 'ගොඩ වැදුණු අයිකනය',
 );
 
 /** Slovak (slovenčina)
  * @author Helix84
  */
 $messages['sk'] = array(
-	'maps-desc' => 'Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie. ([http://mapping.referata.com/wiki/Examples demo])',
+	'maps-desc' => 'Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie. ([http://mapping.referata.com/wiki/Examples demo])', # Fuzzy
 	'maps_map' => 'Mapa',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'V',
@@ -4852,7 +6130,8 @@ $messages['sk'] = array(
  * @author Lesko987
  */
 $messages['sl'] = array(
-	'maps-desc' => 'Omogoča vključevanje dinamičnih zemljevidov na wiki strani, geokodiranje naslovov in drugih geografskih operacij. ([http://mapping.referata.com/wiki/Examples Primeri])',
+	'maps-desc' => 'Omogoča vključevanje dinamičnih zemljevidov na wikistrani, geokodiranje naslovov in druge geografske operacije. ([http://www.semantic-mediawiki.org/wiki/Maps Več informacij ...])',
+	'right-geocode' => 'Geokodiranje',
 	'maps_map' => 'Zemljevid',
 	'maps-loading-map' => 'Nakladanje zemljevida...',
 	'maps-load-failed' => 'Zemljevid ni bilo mogoče naložiti.',
@@ -4868,6 +6147,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Milicevic01
  * @author Rancher
  * @author Михајло Анђелковић
  */
@@ -4890,10 +6170,12 @@ $messages['sr-ec'] = array(
 	'maps-longitude' => 'Географска дужина:',
 	'maps_googlemaps3' => 'Гугл мапе, треће издање',
 	'maps_openlayers' => 'Опенлејерс',
-	'maps_osm' => 'Опенстритмап',
+	'maps_osm' => 'OpenStreetMap',
 );
 
-/** Serbian (Latin script) (srpski (latinica)‎) */
+/** Serbian (Latin script) (srpski (latinica)‎)
+ * @author Milicevic01
+ */
 $messages['sr-el'] = array(
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Učitavanje mape...',
@@ -4913,7 +6195,7 @@ $messages['sr-el'] = array(
 	'maps-longitude' => 'Geografska dužina:',
 	'maps_googlemaps3' => 'Gugl mape, treće izdanje',
 	'maps_openlayers' => 'Openlejers',
-	'maps_osm' => 'Openstritmap',
+	'maps_osm' => 'OpenStreetMap',
 );
 
 /** Swedish (svenska)
@@ -4921,12 +6203,13 @@ $messages['sr-el'] = array(
  * @author Dafer45
  * @author Fader
  * @author Fluff
+ * @author Jopparn
  * @author Per
  * @author Rotsee
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([http://mapping.referata.com/wiki/Maps_examples Demo]).',
+	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([http://www.semantic-mediawiki.org/wiki/Maps mer information...]).',
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
@@ -4951,11 +6234,20 @@ $messages['sv'] = array(
 	'maps-mapsdoc-par-service' => 'Kartläggningstjänsten för att visa parameterdokumentation.',
 	'maps-mapsdoc-par-language' => 'Språket som du vill visa dokumentationen i. Om det finns någon sådan översättning kommer engelska att användas istället.',
 	'maps-coordinates-par-location' => 'Koordinaterna du vill formatera.',
+	'maps-coordinates-par-format' => 'Målformatet för koordinaterna.',
 	'maps-finddestination-par-location' => 'Startplats',
 	'maps-finddestination-par-bearing' => 'Inledande bäring.',
 	'maps-finddestination-par-distance' => 'Reseavståndet.',
+	'maps-finddestination-par-allowcoordinates' => 'Indikerar om koordinater bör tillåtas. Om nej anges kommer endast adresser att accepteras.',
 	'maps-geocode-par-location' => 'Adressen som du vill geokoda.',
 	'maps-geocode-par-mappingservice' => 'Geokodningstjänsten du vill använda. Se de tillgängliga geokodningtjänsterna.',
+	'maps-geocode-par-format' => 'Formatet för de resulterande koordinaterna.',
+	'maps-displaymap-par-circles' => 'Cirklar att visa',
+	'maps-displaymap-par-lines' => 'Rader att visa',
+	'maps-displaymap-par-maxzoom' => 'Maximala zoomnivån',
+	'maps-displaymap-par-minzoom' => 'Minimala zoomnivån',
+	'maps-displaymap-par-polygons' => 'Polygoner att visa',
+	'maps-displaymap-par-rectangles' => 'Rektanglar att visa',
 	'validation-error-invalid-location' => 'Parameter $1 måste vara en giltig plats.',
 	'validation-error-invalid-locations' => 'Parameter $1 måste vara en eller flera giltiga platser.',
 	'validation-error-invalid-width' => 'Parameter $1 måste vara en giltig bredd.',
@@ -4983,9 +6275,48 @@ $1',
 	'maps_map_cannot_be_displayed' => 'Kartan kan inte visas.',
 	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_centred_on' => 'Karta centrerad på $1, $2.',
+	'maps-par-centre' => 'Platsen där kartan ska vara centrerad',
 	'maps-googlemaps3-incompatbrowser' => 'Din webbläsare är inte kompatibel med Google Maps v3.',
+	'maps-googlemaps3-par-controls' => 'Kontroller att placera på kartan.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Öppna automatiskt alla informationsfönster när sidan har lästs in.',
+	'maps-googlemaps3-par-kml' => 'KML-filer att ladda upp på kartan.',
+	'maps-googlemaps3-par-tilt' => 'Tilta för karta när du använder Google Maps.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Zooma tillbaka till kartan efter att KML-lager har lästs in.',
+	'maps-googlemaps3-par-poi' => 'Visa platser av intresse.',
+	'maps-openlayers-par-controls' => 'Kontroller att placera på kartan.',
 	'maps-osm-par-thumbs' => 'Visa miniatyrer',
 	'maps-osm-par-photos' => 'Visa foton',
+	'mapeditor' => 'Kartredigerare',
+	'specialpages-group-maps' => 'Kartor',
+	'mapeditor-none-text' => 'Ingen',
+	'mapeditor-done-button' => 'Klar',
+	'mapeditor-remove-button' => 'Ta bort',
+	'mapeditor-import-button2' => 'Importera',
+	'mapeditor-export-button' => 'Exportera till wikikod',
+	'mapeditor-import-button' => 'Importera från wikikod',
+	'mapeditor-select-button' => 'Välj denna polygon',
+	'mapeditor-mapparam-button' => 'Redigera kartparametrar',
+	'mapeditor-clear-button' => 'Rensa karta',
+	'mapeditor-code-title' => 'Wikikod',
+	'mapeditor-import-title' => 'Importera wikikod',
+	'mapeditor-form-title' => 'Redigera detaljer',
+	'mapeditor-link-title-switcher-popup-text' => 'Poppupp med text',
+	'mapeditor-link-title-switcher-link-text' => 'Länk',
+	'mapeditor-form-field-title' => 'Titel',
+	'mapeditor-form-field-text' => 'Text',
+	'mapeditor-form-field-link' => 'Länk',
+	'mapeditor-form-field-icon' => 'Ikon',
+	'mapeditor-form-field-group' => 'Grupp',
+	'mapeditor-form-field-strokecolor' => 'Linjefärg',
+	'mapeditor-form-field-strokeopacity' => 'Linjegenomskinlighet',
+	'mapeditor-form-field-strokeweight' => 'Linjebredd',
+	'mapeditor-form-field-fillcolor' => 'Fyllningsfärg',
+	'mapeditor-form-field-fillopcaity' => 'Fyllningsgenomskinlighet',
+	'mapeditor-form-field-showonhover' => 'Visa endast vid hovring',
+	'mapeditor-mapparam-title' => 'Redigera kartparametrar',
+	'mapeditor-mapparam-defoption' => '-Välj parameter-',
+	'mapeditor-form-field-image' => 'Bild',
+	'mapeditor-form-field-visitedicon' => 'Besökt ikon',
 );
 
 /** Tamil (தமிழ்)
@@ -4994,12 +6325,17 @@ $1',
  * @author மதனாஹரன்
  */
 $messages['ta'] = array(
+	'maps_map' => 'வரைபடம்',
 	'maps-loading-map' => 'வரைபடத்தை ஏற்றுகிறது....',
 	'maps-load-failed' => 'வரைபடத்தை ஏற்ற இயலவில்லை!',
 	'maps-copycoords-prompt' => 'கட்டுப்பாட்டு விசை+C, உள்வழி விசை',
 	'maps-others' => 'ஏனையவை',
+	'maps-layer-property' => 'உடமை',
+	'maps-layer-value' => 'மதிப்பு',
 	'maps-layer-errors' => 'பிழைகள்',
 	'maps-finddestination-par-distance' => 'பயணிக்க வேண்டிய தூரம்.',
+	'maps-displaymap-par-maxzoom' => 'அதிகபட்ச பெரிதாக்குதல் அளவு',
+	'maps-displaymap-par-minzoom' => 'குறைந்தபட்ச பெரிதாக்குதல் அளவு',
 	'validation-error-invalid-location' => 'அளவுரு $1 ஒரு செல்லத்தக்க இடமாக இருக்க வேண்டும்.',
 	'validation-error-invalid-locations' => 'அளவுரு $1 ஒன்று அல்லது அதற்கு மேற்பட்ட செல்லத்தக்க இடங்களாக இருக்க வேண்டும்.',
 	'validation-error-invalid-width' => 'அளவுரு $1 ஒரு செல்லத்தக்க அகலமாக இருக்க வேண்டும்.',
@@ -5039,6 +6375,7 @@ $messages['ta'] = array(
 	'mapeditor-form-field-link' => 'இணைப்பு',
 	'mapeditor-form-field-icon' => 'படவுரு',
 	'mapeditor-form-field-group' => 'குழு',
+	'mapeditor-form-field-image' => 'படம்',
 );
 
 /** Telugu (తెలుగు)
@@ -5070,7 +6407,7 @@ $messages['te'] = array(
  */
 $messages['th'] = array(
 	'maps-desc' => 'ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://mapping.referata.com/wiki/Maps_examples demo]).
-<br />บริการแผนที่ที่มีอยู่: $1',
+<br />บริการแผนที่ที่มีอยู่: $1', # Fuzzy
 	'maps_coordinates_missing' => 'ไม่ได้กำหนดพิกัดของแผนที่มาให้',
 );
 
@@ -5080,7 +6417,7 @@ $messages['th'] = array(
 $messages['tl'] = array(
 	'maps-desc' => 'Nagpapagana ng pagbabaon ng gumagalaw na mga mapa papaloob sa mga pahina ng wiki, pagkokodigong pangheograpiya ng mga tirahan at ibang mga gawaing pangheograpiya. ([http://mapping.referata.com/wiki/Examples mga pagpapatunghay])
 
-kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])',
+kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])', # Fuzzy
 	'right-geocode' => 'Kodigong pangheograpiya',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Ikinakarga ang mapa...',
@@ -5288,23 +6625,123 @@ $messages['tr'] = array(
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
 );
 
+/** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
+ * @author Tifinaghes
+ */
+$messages['tzm'] = array(
+	'maps_map' => 'ⵜⴰⴽⵔⵟⴰ',
+);
+
 /** Ukrainian (українська)
+ * @author Andriykopanytsia
  * @author Arturyatsko
+ * @author Base
+ * @author Ата
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://mapping.referata.com/wiki/Examples demos]).',
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([http://www.semantic-mediawiki.org/wiki/Maps детальніше...])',
+	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Завантаження мапи...',
+	'maps-load-failed' => 'Неможливо завантажити карту!',
 	'maps-markers' => 'Відмітки',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => 'Фільтрувати маркери',
+	'maps-others' => 'інші',
+	'maps-ns-layer' => 'Шар',
+	'maps-ns-layer-talk' => 'Обговорення шару',
 	'maps-layer-property' => 'Властивість',
 	'maps-layer-value' => 'Значення',
 	'maps-layer-errors' => 'Помилки',
+	'maps-error-invalid-layerdef' => 'Це визначення шару невірне.',
+	'maps-error-invalid-layertype' => 'Не існують шари типу «$1». {{PLURAL:$3|Підтримується лише наступний тип|Підтримуються лише наступні типи}}: $2',
+	'maps-error-no-layertype' => 'Вам потрібно вказати тип шару. {{PLURAL:$2|Тільки такий тип|Такі типи}} підтримуються: $1',
+	'validation-error-invalid-layer' => 'Параметр $1 повинен бути коректним шаром.',
+	'validation-error-invalid-layers' => 'Параметри $1 повинні містити один чи більше коректних шарів.',
+	'maps-layer-of-type' => 'Шар типу $1',
+	'maps-layer-type-supported-by' => 'Цей тип шару може бути використано {{PLURAL:$2|лише із картографічним сервісом|лише із наступними картографічними сервісами:}} $1',
+	'maps-coordinates-description' => 'Перехопиник парсеру для форматування координат із будь-якого у будьякий формат, що підтримується.',
+	'maps-displaymap-description' => 'Відображення географічних карт без жодних вікі-маркерів на них.',
+	'maps-displaypoint-description' => 'Показ географічних карт із одією або декількома вікі-позначками на них.',
+	'maps-distance-description' => 'Перетворення відстані, вираженої в одних одиницях, у їх еквівалент у інших одиницях.',
+	'maps-finddestination-description' => 'Знаходить місце призначення від заданої початкової точки (може бути у будь якому із підтримуваних форматів), початкового нарямку і відстані.',
+	'maps-geocode-description' => 'Дозволяє геокодування адрес, іншими словами перетворює зрозумілі для людини розташування у набори координат. Підтримується декілька сервісів геокодування, які не варто плутати з сервісами картографування.',
+	'maps-geodistance-description' => 'Розрахувати географічну відстань між двома точками, з будь-якого і у будь-який підтримуваний формат.',
+	'maps-mapsdoc-description' => 'Відобразити таблицю параметрів вказаного сервісу картографування з їх стандартними значеннями і описом.',
+	'maps-mapsdoc-par-service' => 'Сервіс картографування, для якого відобразиться документація параметрів.',
+	'maps-mapsdoc-par-language' => 'Мова, якою показувати документацію. Якщо перекладу на таку немає, буде використано англійську.',
+	'maps-coordinates-par-location' => 'Координати, які Ви бажаєте відформатувати.',
+	'maps-coordinates-par-format' => 'Цільовий формат координат.',
+	'maps-coordinates-par-directional' => 'Вказує на те, чи координати повинні бути виведені безпосередньо, чи ні.',
+	'maps-distance-par-distance' => 'Відстань для перетворення на еквівалентну у вказаних одиницях.',
+	'maps-distance-par-decimals' => 'Максимальна кількість цифр дробової частини у значенні результату.',
+	'maps-distance-par-unit' => 'Одиниці, в яких буде наведено відстань.',
+	'maps-finddestination-par-location' => 'Початкове розташування.',
+	'maps-finddestination-par-bearing' => 'Початковий напрямок.',
+	'maps-finddestination-par-distance' => 'Протяжність подорожі.',
+	'maps-finddestination-par-format' => 'Формат, у якому буде виведено місце призначення.',
+	'maps-finddestination-par-directional' => 'Вказує, чи має формат місця призначення має бути спрямованим, чи ні.',
+	'maps-finddestination-par-allowcoordinates' => 'Вказує, чи дозволені координати. Зі значенням «ні» прийматимуться лише адреси.',
+	'maps-finddestination-par-geoservice' => 'Сервіс геокодування для перетворення значення, якщо воно є адресою.',
+	'maps-finddestination-par-mappingservice' => 'Параметр для позначення сервісу картографування для використання з цією функцією.
+Це дозволить картам замінити стандартне значення сервісного параметра на оптимальний для сервісу картографування.
+(Приклад: для карт Google Maps використовувати геокодер Google.)',
+	'maps-geocode-par-location' => 'Адреса, яку Ви хочете геокодувати.',
+	'maps-geocode-par-mappingservice' => 'Сервіс геокодування, який Ви хочете використовувати. Див. список доступних сервісів геокодування.',
+	'maps-geocode-par-geoservice' => 'Цей параметр дає змогу вказати, що ви використовуєте цей запит геокодування в поєднанні з конкретною картографічної службою.
+Кожна картографічна служба може перевизначувати служби геокодування за замовчуванням.
+Це робиться з юридичних міркувань, так як ви можете використовувати службу геокодування Google тільки разом з картами Google.
+Установка цього параметра, а не параметра для служби, буде гарантувати, що ви не використовуєте неприпустиме поєднання.',
+	'maps-geocode-par-allowcoordinates' => 'Дозволяє відключити підтримку координат в цій функції. Повинно бути зазначено «так» або «ні».
+Якщо «ні», то кожне значення буде геокодоване, навіть правильні координати.',
+	'maps-geocode-par-format' => 'Формат кінцевих координат.',
+	'maps-geocode-par-directional' => 'Вказує, якщо координати повинні бути виведені безпосередньо чи ні.',
+	'maps-geodistance-par-location1' => 'Перша точка у наборі для розрахунку відстані.',
+	'maps-geodistance-par-location2' => 'Друга точка у наборі для розрахунку відстані.',
+	'maps-geodistance-par-unit' => 'Одиниця вимірювання відстані.',
+	'maps-geodistance-par-decimals' => 'Найбільша кількість цифр у дробовій частині результату.',
+	'maps-geodistance-par-mappingservice' => 'Служба геокодування, що використовується для кодування будь-якої адреси.',
+	'maps-geodistance-par-geoservice' => 'Картографічний сервіс, який використовується разом.
+Це може вплинути на значення типової служби геокодування.',
+	'maps-displaymap-par-mappingservice' => 'Дозволяє налаштувати картографічний сервіс, який буде використовуватися для генерації карти.',
+	'maps-displaymap-par-coordinates' => "Один або більше об'єктів для відображення на карті. Вони будуть помічені маркером.",
+	'maps-displaymap-par-visitedicon' => 'Назва зображення, яке буде використовуватися для позначення значків після того, як вони були натиснені',
+	'maps-displaymap-par-zoom' => 'Дозволяє встановити рівень масштабування карти.
+Коли не передбачено і кілька маркери присутні на карті, буде вибрано найкращий і найбільш відповідний масштаб, який не конфігурується за замовчуванням.',
+	'maps-displaymap-par-centre' => 'Дозволяє задати координати центру карти для display_point(s).
+Приймає обидві адреси і координати.
+Коли ця властивість не передбачена, карта центруватиметься сама на наданому маркері або між обома маркерами.',
+	'maps-displaymap-par-title' => 'Дозволяє задати текст, який буде відображатися у спливних вікнах всіх маркерів, які не мають конкретної назви.
+Коли використовується спільно з міткою, заголовок буде виділений напівжирним підкресленим шрифтом.',
+	'maps-displaymap-par-label' => 'Дозволяє задати текст, який буде відображатися у спливних вікнах всіх маркерів, які не мають певної мітки.',
+	'maps-displaymap-par-icon' => 'Дозволяє встановити значок, використовуваний для всіх маркерів.',
+	'maps-displaymap-par-circles' => 'Кола для відображення',
+	'maps-displaymap-par-copycoords' => 'Якщо появиться діалогове вікно, в якому координати розташування повинні бути показані при натисканні на що-небудь',
+	'maps-displaymap-par-lines' => 'Лінії для відображення',
+	'maps-displaymap-par-maxzoom' => 'Максимальний рівень наближення',
+	'maps-displaymap-par-minzoom' => 'Мінімальний рівень наближення',
+	'maps-displaymap-par-polygons' => 'Багатокутники для показу',
+	'maps-displaymap-par-rectangles' => 'Прямокутники для показу',
+	'maps-displaymap-par-static' => 'Якщо карта повинна бути нерухомою',
+	'maps-displaymap-par-wmsoverlay' => 'Використовувати накладення WMS',
+	'validation-error-invalid-location' => 'Параметр $1 повинен бути коректним місцем розташування.',
+	'validation-error-invalid-locations' => 'Параметр $1 повинен бути одним або більше коректних місць розташування.',
+	'validation-error-invalid-width' => 'Параметр $1 повинен бути коректною шириною.',
+	'validation-error-invalid-height' => 'Параметр $1 повинен бути коректною висотою.',
 	'validation-error-invalid-distance' => 'Параметр $1 повинен бути дійсною відстанню.',
-	'maps-abb-north' => 'П',
-	'maps-abb-east' => 'С',
-	'maps-abb-south' => 'П',
-	'maps-abb-west' => 'З',
+	'validation-error-invalid-distances' => 'Параметр $1 повинен бути однією або більше коректними відстаннями.',
+	'validation-error-invalid-image' => 'Параметр $1 повинен бути коректним зображенням.',
+	'validation-error-invalid-images' => 'Параметр $1 повинен бути одним або більше коректними зображеннями.',
+	'validation-error-invalid-goverlay' => 'Параметр $1 повинен бути коректним накладенням.',
+	'validation-error-invalid-goverlays' => 'Параметр $1 повинен бути одним або більше коректних накладень.',
+	'validation-error-invalid-line-param' => 'Вказано недопустимий параметр "lines".',
+	'validation-error-invalid-polyline-param' => 'Вказано недопустимий параметр "polylines".',
+	'validation-error-invalid-searchmarkers-param' => 'Недопустиме значення маркерів пошуку, має бути "all" або "title"',
+	'maps-abb-north' => 'Пн',
+	'maps-abb-east' => 'Сх',
+	'maps-abb-south' => 'Пд',
+	'maps-abb-west' => 'Зх',
 	'maps-latitude' => 'Широта:',
 	'maps-longitude' => 'Довгота:',
 	'maps-invalid-coordinates' => 'Значення $1 не є дійсним набором координат.',
@@ -5320,9 +6757,71 @@ $1',
 	'maps-geocoder-not-available' => 'Функція геокодування мап недоступна. Ваше місце розташування не може бути геокодоване.',
 	'maps_click_to_activate' => 'Натисність щоб активувати мапу',
 	'maps_centred_on' => 'Центр мапи — $1, $2.',
+	'maps-par-mappingservice' => 'Дозволяє налаштувати картографічний сервіс, який буде використовуватися для генерації карти.',
+	'maps-par-resizable' => 'Робить карту змінного розміру, перетяганням в правому нижньому куті.',
+	'maps-par-geoservice' => 'Служба геокодування для здійснення перетворень між адресами та координатами.',
+	'maps-par-zoom' => 'Рівень масштабування карти. Для карт з маркерами він типово буде найменшим рівнем, який показує всі маркери.',
+	'maps-par-width' => 'Дозволяє задати ширину карти. За замовчуванням пікселі прийняті як одиниці, але ви можете вибрати одну з цих одиниць: px, ex, em, %.',
+	'maps-par-height' => 'Дозволяє задати висоту карти. За замовчуванням пікселі прийняті як одиниці, але ви можете вибрати одну з цих одиниць: px, ex, em, %.',
+	'maps-par-centre' => 'Місцевість відносно якої карта має центруватися',
+	'maps-googlemaps3-incompatbrowser' => 'Веб-переглядач несумісний із Картами Google версії 3.',
+	'maps-googlemaps3-par-type' => 'Тим карти, який буде показуватись спочатку.',
+	'maps-googlemaps3-par-types' => 'Типи карти, які будуть доступні через керування типом.',
+	'maps-googlemaps3-par-layers' => 'Спеціальні шари для завантаження у карту.',
+	'maps-googlemaps3-par-controls' => 'Елементи керування, які буде розміщено на карті.',
+	'maps-googlemaps3-par-zoomstyle' => 'Стиль елементу керування масштабом.',
+	'maps-googlemaps3-par-typestyle' => 'Стиль елементу керування типом.',
+	'maps-googlemaps3-par-autoinfowindows' => 'Автоматично відкрити всі інформаційні вікна, після завантаження сторінки.',
+	'maps-googlemaps3-par-kml' => 'Файли KML для завантаження на карту.',
+	'maps-googlemaps3-par-gkml' => 'Файли KML, розташовані на серверах Google для завантаження на карту.',
+	'maps-googlemaps3-par-fusiontables' => 'Ідентифікатори таблиць Google Fusion, які повинні бути завантажені на карту.',
+	'maps-googlemaps3-par-tilt' => 'Нахил карти при використанні Карт Google.',
+	'maps-googlemaps3-par-kmlrezoom' => 'Масштабування карти після завантаження KML шарів.',
+	'maps-googlemaps3-par-poi' => "Показати визначні пам'ятки.",
+	'maps-openlayers-par-controls' => 'Елементи керування, які буде розміщено на карті.',
+	'maps-openlayers-par-layers' => 'Шари, які будуть доступні в селекторі шару. Перший шар буде показано під час завантаження карти.',
+	'maps-osm-par-thumbs' => 'Показувати мініатюри',
+	'maps-osm-par-photos' => 'Показувати фото',
+	'mapeditor' => 'Редактор карт',
+	'specialpages-group-maps' => 'Карти',
+	'mapeditor-parser-error' => 'Сталася помилка при обробці метаданих. Ігноруються введені дані.',
+	'mapeditor-none-text' => 'Нічого',
+	'mapeditor-done-button' => 'Готово',
+	'mapeditor-remove-button' => 'Вилучити',
+	'mapeditor-import-button2' => 'Імпортувати',
+	'mapeditor-export-button' => 'Експортувати у вікітекст',
+	'mapeditor-import-button' => 'Імпортувати із вікітексту',
+	'mapeditor-select-button' => 'Обрати багатокутник',
+	'mapeditor-mapparam-button' => 'Редагувати параметри карти',
+	'mapeditor-clear-button' => 'Очистити карту',
+	'mapeditor-code-title' => 'Вікітекст',
+	'mapeditor-import-title' => 'Імпорт вікітексту',
+	'mapeditor-import-note' => 'Зверніть увагу, що обробник очікує дуже строго відформатований вікітекст. Вікітекст, введений тут, повинен точно відповідати тому вікітексту, який був згенерований при експорті.',
+	'mapeditor-form-title' => 'Редагуння деталей',
+	'mapeditor-link-title-switcher-popup-text' => 'Вспливаюча підказка',
+	'mapeditor-link-title-switcher-link-text' => 'Посилання',
+	'mapeditor-form-field-title' => 'Назва',
+	'mapeditor-form-field-text' => 'Текст',
+	'mapeditor-form-field-link' => 'Посилання',
+	'mapeditor-form-field-icon' => 'Іконка',
+	'mapeditor-form-field-group' => 'Група',
+	'mapeditor-form-field-inlinelabel' => 'Текстова мітка',
+	'mapeditor-form-field-strokecolor' => 'Колір контуру',
+	'mapeditor-form-field-strokeopacity' => 'Прозорість контуру',
+	'mapeditor-form-field-strokeweight' => 'Товщина контуру',
+	'mapeditor-form-field-fillcolor' => 'Колір заливки',
+	'mapeditor-form-field-fillopcaity' => 'Прозорість заливки',
+	'mapeditor-form-field-showonhover' => 'Показувати лише при наведенні',
+	'mapeditor-mapparam-title' => 'Редагувати параметри карти',
+	'mapeditor-mapparam-defoption' => '-Оберіть параметр-',
+	'mapeditor-imageoverlay-button' => 'Додати накладення зображення',
+	'mapeditor-form-field-image' => 'Зображення',
+	'mapeditor-imageoverlay-title' => 'Деталі накладання зображення',
+	'mapeditor-form-field-visitedicon' => 'Іконка для відвіданого',
 );
 
 /** Urdu (اردو)
+ * @author Tahir mq
  * @author පසිඳු කාවින්ද
  */
 $messages['ur'] = array(
@@ -5339,6 +6838,8 @@ $messages['ur'] = array(
 	'maps-mapsdoc-par-service' => 'کے لئے پیرامیٹر کی دستاویزات کو ظاہر کرنے کے لئے تعریفیں سروس.',
 	'maps-coordinates-par-location' => 'نقاط آپ تشکيل کرنے کے لئے چاہتے ہیں.',
 	'maps-distance-par-distance' => 'ایک مخصوص یونٹ کے ساتھ اس کے برابر کرنے کے لئے تبدیل کرنے کے لئے مسافت.',
+	'maps-latitude' => 'عرض البلد:',
+	'maps-longitude' => 'طول البلد:',
 	'maps_map_cannot_be_displayed' => 'نقشے کو دکھایا جائے نہیں کر سکتے ہیں.',
 	'maps_click_to_activate' => 'نقشہ کو چالو کرنے کے لئے کلک کریں',
 	'maps-googlemaps3-par-type' => 'ابتدائی طور پر ظاہر کرنے کے لئے نقشہ قسم.',
@@ -5363,7 +6864,8 @@ $messages['ur'] = array(
 	'mapeditor-form-field-image' => 'تصویر',
 );
 
-/** Veps (vepsän kel’) */
+/** Veps (vepsän kel’)
+ */
 $messages['vep'] = array(
 	'maps-abb-north' => 'Pohj.',
 	'maps-abb-east' => 'Päivl.',
@@ -5374,16 +6876,18 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Baonguyen21022003
  * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://mapping.referata.com/wiki/Examples thử xem])',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([http://www.semantic-mediawiki.org/wiki/Maps?uselang=vi thêm chi tiết])',
 	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
 	'maps-load-failed' => 'Không thể tải bản đồ!',
 	'maps-markers' => 'Chú thích',
+	'maps-copycoords-prompt' => 'Ctrl+C, Enter (⌘C ↩ trên Mac)',
 	'maps-others' => 'khác',
 	'maps-ns-layer' => 'Lớp',
 	'maps-ns-layer-talk' => 'Thảo luận Lớp',
@@ -5407,6 +6911,7 @@ $messages['vi'] = array(
 	'maps-finddestination-par-distance' => 'Tầm xa để chạy.',
 	'maps-finddestination-par-format' => 'Định dạng cho ra nơi đến',
 	'maps-geocode-par-location' => 'Địa chỉ để mã hóa địa lý.',
+	'maps-displaymap-par-wmsoverlay' => 'Sử dụng lớp phủ WMS',
 	'validation-error-invalid-location' => 'Tham số $1 phải là một vị trí hợp lệ.',
 	'validation-error-invalid-locations' => 'Tham số $1 phải là một hoặc nhiều vị trí hợp lệ.',
 	'validation-error-invalid-width' => 'Tham số $1 phải là một chiều rộng hợp lệ.',
@@ -5415,7 +6920,7 @@ $messages['vi'] = array(
 	'validation-error-invalid-distances' => 'Tham số $1 phải là một hoặc nhiều vị trí hợp lệ.',
 	'validation-error-invalid-image' => 'Tham số $1 phải là một hình ảnh hợp lệ.',
 	'validation-error-invalid-images' => 'Tham số $1 phải là một hoặc nhiều hình ảnh hợp lệ.',
-	'validation-error-invalid-goverlay' => 'Tham số $1 phả là một lấp hợp lệ.',
+	'validation-error-invalid-goverlay' => 'Tham số $1 phải là một lớp phủ hợp lệ.',
 	'validation-error-invalid-goverlays' => 'Tham số $1 phải là một hoặc nhiều lấp hợp lệ.',
 	'maps-abb-north' => 'B',
 	'maps-abb-east' => 'Đ',
@@ -5466,10 +6971,13 @@ $1',
 	'mapeditor-form-field-fillcolor' => 'Màu tô đậm',
 	'mapeditor-mapparam-title' => 'Sửa tham số bản đồ',
 	'mapeditor-mapparam-defoption' => '—Chọn tham số—',
+	'mapeditor-imageoverlay-button' => 'Thêm lớp phủ hình ảnh',
 	'mapeditor-form-field-image' => 'Hình ảnh',
+	'mapeditor-imageoverlay-title' => 'Chi tiết lớp phủ hình ảnh',
 );
 
-/** Volapük (Volapük) */
+/** Volapük (Volapük)
+ */
 $messages['vo'] = array(
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'L',
@@ -5504,15 +7012,19 @@ $messages['zh-cn'] = array(
 
 /** Simplified Chinese (中文（简体）‎)
  * @author Hydra
+ * @author Kuailong
  * @author PhiLiP
  * @author Xiaomingyan
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
+	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[http://www.semantic-mediawiki.org/wiki/地图更多信息...]）',
 	'right-geocode' => '地理编码',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入地图中……',
 	'maps-load-failed' => '无法加载地图！',
 	'maps-markers' => '标记',
+	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-others' => '其他',
 	'maps-ns-layer' => '图层',
 	'maps-ns-layer-talk' => '图层讨论',
@@ -5547,25 +7059,31 @@ $messages['zh-hans'] = array(
 	'mapeditor-done-button' => '完成',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
-	'mapeditor-link-title-switcher-link-text' => '连结',
+	'mapeditor-form-title' => '编辑详情',
+	'mapeditor-link-title-switcher-link-text' => '链接',
 	'mapeditor-form-field-title' => '标题',
 	'mapeditor-form-field-text' => '文字',
-	'mapeditor-form-field-link' => '连结',
+	'mapeditor-form-field-link' => '链接',
+	'mapeditor-form-field-icon' => '图标',
 	'mapeditor-form-field-image' => '图片',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
  * @author Horacewai2
+ * @author Justincheng12345
  * @author Mark85296341
+ * @author Shirayuki
  * @author Simon Shek
  * @author Waihorace
  */
 $messages['zh-hant'] = array(
+	'maps-desc' => '容許嵌入動態地圖到維基頁面、地址地理編碼及其他地理操作。（[http://www.semantic-mediawiki.org/wiki/Maps 更多資訊…]）',
 	'right-geocode' => '地理編碼',
 	'maps_map' => '地圖',
 	'maps-loading-map' => '載入中...',
 	'maps-load-failed' => '無法加載地圖！',
 	'maps-markers' => '標記',
+	'maps-copycoords-prompt' => 'CTRL+C，ENTER',
 	'maps-others' => '其他',
 	'maps-ns-layer' => '圖層',
 	'maps-ns-layer-talk' => '圖層討論',
@@ -5598,6 +7116,7 @@ $messages['zh-hant'] = array(
 	'specialpages-group-maps' => '地圖',
 	'mapeditor-none-text' => '無',
 	'mapeditor-done-button' => '完成',
+	'mapeditor-remove-button' => '移除',
 	'mapeditor-import-button2' => '匯入',
 	'mapeditor-export-button' => '匯出到 wiki 代碼',
 	'mapeditor-link-title-switcher-link-text' => '連結',
@@ -5616,4 +7135,3 @@ $messages['zh-tw'] = array(
 	'maps-latitude' => '緯度：',
 	'maps-longitude' => '經度：',
 );
-
