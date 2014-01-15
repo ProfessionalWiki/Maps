@@ -7,6 +7,7 @@
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Daniel Werner < daniel.a.r.werner@gmail.com >
  *
  * @codeCoverageIgnoreStart
  */
@@ -26,6 +27,12 @@ return call_user_func( function() {
 			'scripts' => array(
 				'ext.maps.common.js',
 			),
+		),
+
+		'ext.maps.layers' => $moduleTemplate + array(
+			'styles' => array(
+				'ext.maps.layers.css'
+			)
 		),
 
 		'ext.maps.coord' => $moduleTemplate + array(

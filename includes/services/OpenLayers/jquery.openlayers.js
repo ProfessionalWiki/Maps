@@ -1,9 +1,11 @@
 /**
- * JavaScript for OpenLayers maps in the Maps extension.
+ * JavaSript for OpenLayers maps in the Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  *
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  * @author Daniel Werner
+ *
+ * @todo This whole JS is very blown up and could use some quality refactoring.
  */
 
 (function ($) {
@@ -255,23 +257,47 @@
 			controls:[]
 		};
 
+		// Remove the loading map message.
+		this.text( '' );
+
+		/**
+		 * ToDo: That layers being created by 'eval' will deny us the possiblity to
+		 * set certain options. It's possible to set properties of course but they will
+		 * show no effect since they are not passed as options to the constructor.
+		 * With this working we could adjust max/minScale to display overlays independent
+		 * from the specified values in the layer which only make sense if the layer is
+		 * displayed as base layer. On the other hand, it might be intended overlay
+		 * layers are only seen at a certain zoom level.
+		 */
+
+		// collect all layers and check for custom image layer:
 		var hasImageLayer = false;
-		for (i = 0, n = options.layers.length; i < n; i++) {
-			// Idieally this would check if the objecct is of type OpenLayers.layer.image
-			options.layers[i] = eval(options.layers[i]);
-			if (options.layers[i].options && options.layers[i].options.isImage === true) {
+		var layers = [];
+
+		// evaluate base layers:
+		for( i = 0, n = options.layers.length; i < n; i++ ) {
+			layer = eval( options.layers[i] );
+			layer.isBaseLayer = true;
+			// Ideally this would check if the object is of type OpenLayers.layer.image
+			if( layer.isImage === true ) {
 				hasImageLayer = true;
-				break;
+				layer.transitionEffect = 'resize'; // makes transition smoother
 			}
+			layers.push( layer );
 		}
 
-		if (!hasImageLayer) {
-			mapOptions.projection = new OpenLayers.Projection("EPSG:900913");
-			mapOptions.displayProjection = new OpenLayers.Projection("EPSG:4326");
+		// Create a new OpenLayers map with without any controls on it.
+		var mapOptions = {
+			controls: []
+		};
+		//mapOptions.units = "m";
+		if ( !hasImageLayer ) {
+			mapOptions.projection = new OpenLayers.Projection( "EPSG:900913" );
+			mapOptions.displayProjection = new OpenLayers.Projection( "EPSG:4326" );
 			mapOptions.units = "m";
 			mapOptions.numZoomLevels = 18;
 			mapOptions.maxResolution = 156543.0339;
-			mapOptions.maxExtent = new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34);
+			mapOptions.maxExtent = new OpenLayers.Bounds( -20037508, -20037508, 20037508, 20037508 );
 		}
 
 		this.map = new OpenLayers.Map(mapElementId, mapOptions);
@@ -279,6 +305,43 @@
 
 		if (!options['static']) {
 			this.addControls(map, options.controls, this.get(0));
+		}
+
+		map.addLayers( layers ); // Add the base layers
+
+		this.addMarkers( map, options );
+		var centre = false;
+
+		if ( options.centre === false ) {
+			if ( options.locations.length == 1 ) {
+				centre = new OpenLayers.LonLat( options.locations[0].lon, options.locations[0].lat );
+			}
+			else if ( options.locations.length == 0 ) {
+				centre = new OpenLayers.LonLat( 0, 0 );
+			}
+		}
+		else { // When the center is provided, set it.
+			centre = new OpenLayers.LonLat( options.centre.lon, options.centre.lat );
+		}
+
+		if( centre !== false ) {
+			if ( !hasImageLayer ) {
+				centre.transform(
+					new OpenLayers.Projection( "EPSG:4326" ),
+					new OpenLayers.Projection( "EPSG:900913" )
+				);
+			}
+			map.setCenter( centre );
+		}
+
+		if ( options.zoom !== false ) {
+			map.zoomTo( options.zoom );
+		}
+
+		if ( options.resizable ) {
+			mw.loader.using( 'ext.maps.resizable', function() {
+				_this.resizable();
+			} );
 		}
 
         //ugly hack to allow for min/max zoom
@@ -309,11 +372,6 @@
                 return valid;
             }
         }
-
-		// Add the base layers.
-		for (i = 0, n = options.layers.length; i < n; i++) {
-			map.addLayer(options.layers[i]);
-		}
 
 		//Add markers
 		this.addMarkers(map, options);

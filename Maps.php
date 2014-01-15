@@ -83,10 +83,14 @@ call_user_func( function() {
 		return true;
 	};
 
-	$wgHooks['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
-	$wgHooks['ArticleFromTitle'][] = 'MapsHooks::onArticleFromTitle';
+	$wgHooks['AdminLinks'][]                = 'MapsHooks::addToAdminLinks';
+	$wgHooks['ArticleFromTitle'][]          = 'MapsHooks::onArticleFromTitle';
 	$wgHooks['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
-	$wgHooks['CanonicalNamespaces'][] = 'MapsHooks::onCanonicalNamespaces';
+	$wgHooks['CanonicalNamespaces'][]       = 'MapsHooks::onCanonicalNamespaces';	$wgHooks['LoadExtensionSchemaUpdates'][] = 'MapsHooks::onLoadExtensionSchemaUpdates';
+	$wgHooks['ArticlePurge'][]              = 'MapsHooks::onArticlePurge';
+	$wgHooks['LinksUpdateConstructed'][]    = 'MapsHooks::onLinksUpdateConstructed';
+	$wgHooks['ParserAfterTidy'][]           = 'MapsHooks::onParserAfterTidy';
+	$wgHooks['ParserClearState'][]          = 'MapsHooks::onParserClearState';
 
 	// Parser hooks
 
@@ -126,6 +130,11 @@ call_user_func( function() {
 		return $instance->init( $parser );
 	};
 
+	$wgHooks['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$instance = new MapsLayerDefinition();
+		return $instance->init( $parser );
+	};
+
 	// Geocoders
 
 	// Registration of the GeoNames service geocoder.
@@ -141,9 +150,6 @@ call_user_func( function() {
 
 	// Registration of the image layer type.
 	$wgHooks['MappingLayersInitialization'][] = 'MapsImageLayer::register';
-
-	// Registration of the KML layer type.
-	$wgHooks['MappingLayersInitialization'][] = 'MapsKMLLayer::register';
 
 	// Mapping services
 

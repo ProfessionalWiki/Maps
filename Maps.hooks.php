@@ -7,8 +7,17 @@
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Daniel Werner
  */
 final class MapsHooks {
+	/**
+	 * Helper flag indicating whether the page has been purged.
+	 * @var bool
+	 *
+	 * TODO: Figure out a better way to do this, not requiring this flag and make sure it works with
+	 *       later MW versions (purging mechanism got changed somewhat around 1.18).
+	 */
+	static $purgedBeforeStore = false;
 
 	/**
 	 * Adds a link to Admin Links page.
@@ -83,4 +92,130 @@ final class MapsHooks {
 		$list[Maps_NS_LAYER_TALK] = 'Layer_talk';
 		return true;
 	}
+
+	/**
+	 * This will setup database tables for layer functionality.
+	 *
+	 * @since 3.0
+	 *
+	 * @global type $wgDBtype
+	 * @param DatabaseUpdater $updater
+	 *
+	 * @return true 
+	 */
+	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
+		global $wgDBtype;
+
+		switch( $wgDBtype ) {
+			case 'mysql':
+			case 'sqlite':
+				$sqlPath = dirname( __FILE__ ) . '/schema/MapsLayers.sql';
+			break;
+			/** @ToDo: Support for Postgree SQL and others **/
+		}
+		$updater->addExtensionTable( 'maps_layers', $sqlPath );
+
+		return true;
+	}
+
+	/**
+	 * Make sure layer data will be stored into database when purging the page
+	 *
+	 * @since 3.0
+	 *
+	 * @param $article WikiPage|Article (depending on MW version, WikiPage in 1.18+)
+	 * @return type
+	 */
+	public static function onArticlePurge( &$article ) {
+		self::$purgedBeforeStore = true;
+		return true;
+	}
+
+	/**
+	 * At the end of article parsing, in case of layer page, save layers to database
+	 *
+	 * @since 3.0
+	 *
+	 * @param Parser &$parser
+	 * @param string &$text
+	 *
+	 * @return true
+	 */
+	public static function onParserAfterTidy( Parser &$parser, &$text ) {
+
+		$title = $parser->getTitle();
+
+		if( $title === null
+			|| self::$purgedBeforeStore !== true
+		) {
+			// just preprocessing some stuff or no purge
+			return true;
+		}
+
+		self::processLayersStoreCandidate( $parser->getOutput(), $title );
+
+		// Set helper to false immediately so we won't run into job-processing weirdness:
+		self::$purgedBeforeStore = false;
+
+		return true;
+	}
+
+	/**
+	 * After article was edited and parsed, in case of layer page, save layers to database
+	 *
+	 * @since 3.0
+	 *
+	 * @param LinksUpdate &$linksUpdate
+	 *
+	 * @return true
+	 */
+	public static function onLinksUpdateConstructed( LinksUpdate &$linksUpdate ) {
+		$title = $linksUpdate->getTitle();
+
+		self::processLayersStoreCandidate( $linksUpdate->mParserOutput, $title );
+
+		return true;
+	}
+
+	/**
+	 * Checks whether the parser output has some layer data which should be stored of the
+	 * given title and performs the task.
+	 *
+	 * @since 3.0
+	 *
+	 * @param ParserOutput $parserOutput
+	 * @param Title $title 
+	 */
+	protected static function processLayersStoreCandidate( ParserOutput $parserOutput, Title $title ) {
+		
+		// if site which is being parsed is in maps namespace:
+		if( $title->getNamespace() === Maps_NS_LAYER ) {
+
+			if( ! isset( $parserOutput->mExtMapsLayers ) ) {
+				$parserOutput->mExtMapsLayers = new MapsLayerGroup();
+			}
+
+			// get MapsLayerGroup object with layers to be stored:
+			$mapsForStore = $parserOutput->mExtMapsLayers;
+
+			// store layers in database (also deletes previous definitions still in db):
+			MapsLayers::storeLayers( $mapsForStore, $title );
+		}
+	}
+
+	/**
+	 * If a new parser process is getting started, clear collected layer data of the
+	 * previous one.
+	 *
+	 * @since 3.0
+	 *
+	 * @param Parser $parser
+	 *
+	 * @return true
+	 */
+	public static function onParserClearState( Parser &$parser ) {
+		$parser->getOutput()->mExtMapsLayers = null;
+		return true;
+	}
 }
+

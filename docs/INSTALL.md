@@ -111,6 +111,12 @@ Now using Composer, install Maps
 As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki and verifying the
 Maps extension is listed.
 
+#### Custom image layers support (experimental)
+
+For support of the experimental custom image layers feature you have to run the MediaWiki update script.
+
+    php maintenance/update.php
+
 ## Configuration
 
 See the [Maps settings file](../Maps_Settings.php) for the available configuration options.
