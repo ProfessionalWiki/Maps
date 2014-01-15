@@ -1975,7 +1975,9 @@ $messages['eu'] = array(
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
+	'right-geocode' => 'جئوکد',
 	'maps_map' => 'نقشه',
+	'maps-tracking-category' => 'صفحات با نقشهٔ‌ ارائه شده توسط گسترهٔ‌ نقشه‌ها',
 	'maps-loading-map' => 'در حال بارگیری نقشه...',
 	'maps-load-failed' => 'قادر به بارگیری نقشه نبود!',
 	'maps-markers' => 'نشانگرها',
@@ -1993,10 +1995,14 @@ $messages['fa'] = array(
 	'validation-error-invalid-layer' => 'پارامتر $1 باید یک لایهٔ معتبر باشد.',
 	'validation-error-invalid-layers' => 'پارامتر $1 باید یک یا چند لایهٔ معتبر باشد.',
 	'maps-layer-of-type' => 'لایه ای از نوع $1',
+	'maps-displaymap-description' => 'نمایش نقشه‌های جغرافیایی بدون هر نشانگر تعریف شده‌ٔ ویکی بر روی آنها.',
+	'maps-displaypoint-description' => 'نمایش نقشه‌های جغرافیایی بدون هر نشانگر تعریف شده‌ٔ ویکی بر روی آنها.',
+	'maps-mapsdoc-par-service' => 'سرویس نقشه برای نمایش مستندات پارامتر.',
 	'maps-coordinates-par-location' => 'مختصاتی که می‌خواهید شکل‌بندی کنید.',
 	'maps-coordinates-par-format' => 'شکل موردنظر برای مختصات.',
 	'maps-finddestination-par-location' => 'مکان اولیه.',
 	'maps-finddestination-par-distance' => 'مسافت برای مسافرت.',
+	'maps-geocode-par-format' => 'فرمت برای نتیجهٔ مختصات.',
 	'maps-displaymap-par-circles' => 'حوزه‌ها برای نمایش',
 	'maps-displaymap-par-lines' => 'خطوط برای نمایش',
 	'maps-displaymap-par-maxzoom' => 'حداکثر سطح زوم',
