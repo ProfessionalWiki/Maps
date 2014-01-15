@@ -2,9 +2,10 @@ These are the release notes for the [Maps extension](../README.md).
 
 ## Maps 3.0 (dev)
 
-In this version a big part of the PHP codebase has been rewritten to decrease technical debt and thus
-facilitate maintenance, new feature deployment and debugging. Many tests have been added and a lot of
-bugs have been found and fixed. No big new features have been added.
+In this version a big part of the PHP codebase has been rewritten to decrease technical debt and
+thus facilitate maintenance, new feature deployment and debugging. Many tests have been added and a
+lot of bugs have been found and fixed. As an experimental feature, allowing the use of custom image
+layers with OpenLayers has been reintroduced.
 
 #### Compatibility changes
 
@@ -17,6 +18,11 @@ bugs have been found and fixed. No big new features have been added.
 
 * Added leaflet service
 * Added Geocoder.us geoservice support
+* Experimental: Usage of custom image layers defined in "Layer:" namespaced wiki pages.
+  NOTE: This feature has been part of Maps in an old 0.7.x version but got broken shortly after.
+        3.0 reintroduces the feature in a similar way but old layer definitions are probably not
+        fully compatible for the sake of some advanced features of this rewrite.
+  NOTE: Requires running MediaWiki's maintenance/update.php for database schema updates.
 
 #### Bug fixes
 
@@ -31,6 +37,7 @@ bugs have been found and fixed. No big new features have been added.
 * Removed MapsCoordinateParser
 * Geocoding interfaces changed
 * MapsLocation interface changed
+* Custom image layers related classes (previously broken feature) changed
 
 ## Maps 2.0 (2012-10-05)
 
