@@ -15,7 +15,7 @@
 class CriterionMapLayer extends ItemParameterCriterion {
 
 	/**
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @var string
 	 */
@@ -27,7 +27,7 @@ class CriterionMapLayer extends ItemParameterCriterion {
 	 * @param string $groupNameSeparator Separator between layer group and the
 	 *        layers name within the group.
 	 *
-	 * @since 0.7 (meaning of first param changed in dw1)
+	 * @since 0.7 (meaning of first param changed in 3.0)
 	 */
 	public function __construct( $groupNameSeparator = ';' ) {
 		parent::__construct();

@@ -3,7 +3,7 @@
 /**
  * Parameter manipulation for Layer definition keys and values.
  *
- * @since dw1
+ * @since 3.0
  *
  * @file
  * @ingroup Maps
@@ -22,7 +22,7 @@ class MapsParamLayerDefinition extends ItemParameterManipulation {
 	 * @param string $itemSep separator between prameters.
 	 * @param string $keyValueSep separator between parameter name and associated value.  
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function __construct( $itemSep = "\n", $keyValueSep = '=' ) {
 		parent::__construct();
@@ -33,7 +33,7 @@ class MapsParamLayerDefinition extends ItemParameterManipulation {
 	/**
 	 * @see ItemParameterManipulation::doManipulation
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		// string to array describing layer parameters:

@@ -96,7 +96,7 @@ final class MapsHooks {
 	/**
 	 * This will setup database tables for layer functionality.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @global type $wgDBtype
 	 * @param DatabaseUpdater $updater
@@ -121,7 +121,7 @@ final class MapsHooks {
 	/**
 	 * Make sure layer data will be stored into database when purging the page
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param $article WikiPage|Article (depending on MW version, WikiPage in 1.18+)
 	 * @return type
@@ -134,7 +134,7 @@ final class MapsHooks {
 	/**
 	 * At the end of article parsing, in case of layer page, save layers to database
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param Parser &$parser
 	 * @param string &$text
@@ -163,7 +163,7 @@ final class MapsHooks {
 	/**
 	 * After article was edited and parsed, in case of layer page, save layers to database
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param LinksUpdate &$linksUpdate
 	 *
@@ -181,7 +181,7 @@ final class MapsHooks {
 	 * Checks whether the parser output has some layer data which should be stored of the
 	 * given title and performs the task.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param ParserOutput $parserOutput
 	 * @param Title $title 
@@ -207,7 +207,7 @@ final class MapsHooks {
 	 * If a new parser process is getting started, clear collected layer data of the
 	 * previous one.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param Parser $parser
 	 *

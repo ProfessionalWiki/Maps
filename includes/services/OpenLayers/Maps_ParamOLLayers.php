@@ -17,7 +17,7 @@
 class MapsParamOLLayers extends ListParameterManipulation {
 	
 	/**
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @var string
 	 */

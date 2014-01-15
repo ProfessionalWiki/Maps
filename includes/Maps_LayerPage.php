@@ -4,7 +4,7 @@
  * Article in layer namespace with maps layer specific information rendering at
  * beginning and top of the page.
  *
- * @since dw1 (class with same name in 0.7.1+ but different purpose, 100% rewritten in dw1)
+ * @since 3.0 (class with same name in 0.7.1+ but different purpose, 100% rewritten in 3.0)
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -23,7 +23,7 @@ class MapsLayerPage extends Article {
 	 *
 	 * @see Article::view
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function view() {
 		global $wgRequest, $wgUser;
@@ -53,7 +53,7 @@ class MapsLayerPage extends Article {
 	/**
 	 * Function called before page rendering.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	protected function openShowLayer() {
 	}
@@ -61,7 +61,7 @@ class MapsLayerPage extends Article {
 	/**
 	 * Function called at the end of page rendering.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	protected function closeShowLayer() {
 		$this->renderUsage();
@@ -71,7 +71,7 @@ class MapsLayerPage extends Article {
 	 * Renders the category-page like view which shows the usage of this
 	 * layer page in other pages.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function renderUsage() {
 		global $wgOut;
@@ -104,7 +104,7 @@ class MapsLayerPage extends Article {
 	/**
 	 * returns all Titles using this layer page
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return Array
 	 */
@@ -144,7 +144,7 @@ class MapsLayerPage extends Article {
 	 * Returns if the layer page has any layer defined which has a definition that is 'ok',
 	 * meaning, the layer can be used in a map.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $name if set, only for the layer definition with this name will be searched.
 	 * @param string $service if set, only layers supporthing this service will be taken in account.

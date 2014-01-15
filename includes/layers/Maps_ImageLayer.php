@@ -38,31 +38,31 @@ class MapsImageLayer extends MapsLayer {
 		$params['topextent'] = array(
 			'type' => 'float',
 			'aliases' => array( 'upperbound', 'topbound' ),
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		$params['rightextent'] = array(
 			'type' => 'float',
 			'aliases' => array( 'rightbound' ),
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		$params['bottomextent'] = array(
 			'type' => 'float',
 			'aliases' => array( 'lowerbound', 'bottombound' ),
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		$params['leftextent'] = array(
 			'type' => 'float',
 			'aliases' => array( 'leftbound' ),
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		// image-source information:
 		$params['source'] = array(
-			// TODO-dw1: addCriteria( new CriterionIsImage() )
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			// TODO-customMaps: addCriteria( new CriterionIsImage() )
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 			'post-format' => function( $source ) {
 				$imageUrl = MapsMapper::getFileUrl( $source );
 
@@ -76,12 +76,12 @@ class MapsImageLayer extends MapsLayer {
 
 		$params['width'] = array(
 			'type' => 'float',
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		$params['height'] = array(
 			'type' => 'float',
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		return $params;
@@ -90,7 +90,7 @@ class MapsImageLayer extends MapsLayer {
 	/**
 	 * @see MapsLayer::getPropertyHtmlRepresentation
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return array
 	 */
@@ -126,7 +126,7 @@ class MapsImageLayer extends MapsLayer {
 	/**
 	 * @see MapsLayer::doPropertiesHtmlTransform
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return array
 	 */

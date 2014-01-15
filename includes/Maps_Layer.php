@@ -29,7 +29,7 @@ abstract class MapsLayer {
 	protected $properties;
 
 	/**
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @var array
 	 */
@@ -63,7 +63,7 @@ abstract class MapsLayer {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.7.1 ($name since dw1)
+	 * @since 0.7.1 ($name since 3.0)
 	 * 
 	 * @param array $properties
 	 * @param string $name optional name of the layer within its group for being able to select
@@ -111,7 +111,7 @@ abstract class MapsLayer {
 	/**
 	 * Returns the layer type represented by the class of this layer instance.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return string
 	 */
@@ -123,7 +123,7 @@ abstract class MapsLayer {
 	 * Returns the layers name within its group. If not name is defined, this will
 	 * return null
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return string|null
 	 */
@@ -134,7 +134,7 @@ abstract class MapsLayer {
 	/**
 	 * Convenient function for getting mapping services supported by this layer.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return string[]
 	 */
@@ -146,7 +146,7 @@ abstract class MapsLayer {
 	/**
 	 * Convenience function to find out whether the layer is supporting a certain mapping service.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return boolean
 	 */
@@ -196,7 +196,7 @@ abstract class MapsLayer {
 	 * Returns whether the layer can be used as it is defined. Returns true even if errors
 	 * which are non fatal have occurred.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return boolean
 	 */
@@ -215,7 +215,7 @@ abstract class MapsLayer {
 	/**
 	 * Returns an array of parameter definitions.
 	 *
-	 * @since dw1 (and before as abstract function since 0.7.2)
+	 * @since 3.0 (and before as abstract function since 0.7.2)
 	 *
 	 * @return array
 	 */
@@ -223,13 +223,13 @@ abstract class MapsLayer {
 		$params = array();
 
 		$params['label'] = array(
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		// units for extent data:
 		$params['units'] = array(
 			'default' => 'degree',
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 			'values' => array( 'degree', 'm', 'ft', 'km', 'mi', 'inches' ),
 		);
 
@@ -238,23 +238,23 @@ abstract class MapsLayer {
 			'type' => 'float',
 			'default' => false,
 			'manipulatedefault' => false,
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		$params['maxscale'] = array(
 			'type' => 'float',
 			'default' => false,
 			'manipulatedefault' => false,
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
-			// TODO-dw1: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
+			// TODO-customMaps: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
 		);
 
 		$params['zoomlevels'] = array(
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
-			// TODO-dw1: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
+			// TODO-customMaps: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
 		);
 
 		return $params;
@@ -264,7 +264,7 @@ abstract class MapsLayer {
 	 * Returns the value of a property value formated for html output.
 	 * The result contains pure html.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $name Name of the property value
 	 * @param Parser $parser
@@ -294,7 +294,7 @@ abstract class MapsLayer {
 	/**
 	 * Returns the value of a property value formatted for html output
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $name Name of the property value
 	 * @param Parser $parser
@@ -322,7 +322,7 @@ abstract class MapsLayer {
 	 * each single property value is transformed by 'getPropertyHtmlRepresentation()'
 	 * already. This is used to group certain properties for nicer output.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param array &$properties
 	 *

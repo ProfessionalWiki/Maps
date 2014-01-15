@@ -52,7 +52,7 @@ class MapsOpenLayers extends MapsMappingService {
 			'manipulatedefault' => true,
 			'islist' => true,
 			'tolower' => true,
-			// TODO-dw1: addCriteria( new CriterionOLLayer() );
+			// TODO-customMaps: addCriteria( new CriterionOLLayer() );
 		);
 		
 		$params['resizable'] = array(
@@ -69,9 +69,8 @@ class MapsOpenLayers extends MapsMappingService {
 			'message' => 'maps-openlayers-par-overlays',
 
 			// NOTE: code has moved into @see MapsDisplayMapRenderer
-			// TODO-dw1: addCriteria( new CriterionOLLayer( ';' ) );
-
-			// TODO-dw1: addManipulations( new MapsParamOLLayers() );
+			// TODO-customMaps: addCriteria( new CriterionOLLayer( ';' ) );
+			// TODO-customMaps: addManipulations( new MapsParamOLLayers() );
 		);
 
 		$params['resizable'] = array(

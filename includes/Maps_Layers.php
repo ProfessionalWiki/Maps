@@ -4,7 +4,7 @@
  * Static factory class for layers which also keeps track of layers defined in the wiki,
  * using abstract layer templates(in form of a layer class) which are managed via MapsLayerTypes.
  *
- * @since dw1 (Most of the pre dw1 'MapsLayer' class has moved to 'MapsLayerTypes')
+ * @since 3.0 (Most of the pre 3.0 'MapsLayer' class has moved to 'MapsLayerTypes')
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -16,7 +16,7 @@ class MapsLayers {
 	 * Array with layer page site names as keys and MapsLayerGroup
 	 * objects as values.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @var MapsLayerGroup
 	 */
@@ -26,7 +26,7 @@ class MapsLayers {
 	 * Returns a new instance of a layer class for the provided layer type to create
 	 * an actual layer definition based on the basic layer type class.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $type name of the basic layer type.
 	 * @param array  $properties definition describing the layer characteristics.
@@ -51,7 +51,7 @@ class MapsLayers {
 	/**
 	 * Creates a new type specific MapsLayer from a feteched database row.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param object $row
 	 *
@@ -75,7 +75,7 @@ class MapsLayers {
 	 * all parameters as structured data where the key is the parameter name and the
 	 * associated value its value.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $parameters
 	 * @param string $itemSep separator between prameters.
@@ -105,7 +105,7 @@ class MapsLayers {
 	 * name within the group to identify it.
 	 * If the requested layer doesn't exist, this will return null.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param Title $layerPage title of a page with layer definitions
 	 * @param string $name layers name within the group of all layers defined in $layerPage
@@ -121,7 +121,7 @@ class MapsLayers {
 	 * This will load all layers defined on a layer page and return them as
 	 * MapsLayerGroup object.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param Title $layerPage
 	 *
@@ -144,7 +144,7 @@ class MapsLayers {
 	 * Store layers of a page to database. This will remove all previous layers
 	 * of that page from the database first.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayerGroup $layerGroup contains all layers of the page.
 	 * @param Title $title the page title the layers are associated with.
@@ -186,7 +186,7 @@ class MapsLayers {
 	/**
 	 * Return the list of database fields that should be selected to create a new MapsLayer.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public static function databaseFields() {
 		return array(
@@ -201,7 +201,7 @@ class MapsLayers {
 	 * Returns database fields as keys and an associated value taken from a layer as value, ready
 	 * for database insert.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer $layer
 	 * @param integer   $pageId The article id of the page the layer should be associated to.

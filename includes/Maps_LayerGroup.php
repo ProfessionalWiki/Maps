@@ -5,7 +5,7 @@
  * defined on the same layer page. The fatching of layers from the database
  * is also done from within this class.
  *
- * @since dw1
+ * @since 3.0
  * 
  * @file Maps_LayerGroup.php
  * @ingroup Maps
@@ -21,7 +21,7 @@ class MapsLayerGroup {
 	/**
 	 * Members of this group.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @var array
 	 */
@@ -30,7 +30,7 @@ class MapsLayerGroup {
 	/**
 	 * Constructor.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer[]|MapsLayer $layers MapsLayer objects as members of this group. If any
 	 *        of these layers have the same name, only one of them will make it into
@@ -51,7 +51,7 @@ class MapsLayerGroup {
 	 * Returns the layers which are members of this group. An empty array will be
 	 * returned in case no layers belong to this group.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param integer $types bitfield defining whether named, numeric or all layers should be returned.
 	 *        MapsLayerGroup::LAYERS_NAMED, MapsLayerGroup::LAYERS_NUMERIC or MapsLayerGroup::LAYERS_ALL
@@ -86,7 +86,7 @@ class MapsLayerGroup {
 	/**
 	 * Returns the layer with the given name. If the layer doesn't exist, return null.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $name
 	 *
@@ -105,7 +105,7 @@ class MapsLayerGroup {
 	/**
 	 * Returns whether a specific layer exists within the group.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer $layer 
 	 *
@@ -126,7 +126,7 @@ class MapsLayerGroup {
 	 * Does NOT automatically store the layer in the database if the group is loaded
 	 * from a page.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer $layer
 	 *
@@ -165,7 +165,7 @@ class MapsLayerGroup {
 	 * Does NOT automatically store the layer in the database if the group is loaded
 	 * from a page.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer $layer 
 	 *
@@ -185,7 +185,7 @@ class MapsLayerGroup {
 	 * Get a group of layers by the title of the group. If the page doesn't contain
 	 * any layers, the group will be returned anyway but won't contain any layers.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param Title $title
 	 *

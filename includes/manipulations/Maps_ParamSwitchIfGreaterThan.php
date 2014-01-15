@@ -4,7 +4,7 @@
  * Parameter manipulation to switch value with another parameter if its value is
  * lesser than this parameters value.
  *
- * @since dw1
+ * @since 3.0
  *
  * @file Maps_ParamSwitchIfGreaterThan.php
  * @ingroup Maps
@@ -21,7 +21,7 @@ class MapsParamSwitchIfGreaterThan extends ItemParameterManipulation {
 	 *
 	 * @param Parameter &$param parameter to switch value with if lesser than this one.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function __construct( Parameter &$param ) {
 		parent::__construct();
@@ -31,7 +31,7 @@ class MapsParamSwitchIfGreaterThan extends ItemParameterManipulation {
 	/**
 	 * @see ItemParameterManipulation::doManipulation
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function doManipulation( &$value, Parameter $parameter, array &$parameters ) {
 		/*

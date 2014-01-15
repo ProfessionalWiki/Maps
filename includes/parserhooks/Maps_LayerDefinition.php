@@ -2,11 +2,11 @@
 
 /**
  * Class for the 'layer' tag for describing a layer.
- * Most code of 'Maps_LayerPage.php' is reused for this since in dw1 layer
+ * Most code of 'Maps_LayerPage.php' is reused for this since in 3.0 layer
  * pages can contain wikitext and a layer definition must be made through
  * this tag extension.
  *
- * @since dw1
+ * @since 3.0
  *
  * @file Maps_Layer.php
  * @ingroup Maps
@@ -19,7 +19,7 @@ class MapsLayerDefinition extends ParserHook {
 	/**
 	 * The final layer representation of this tag.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @var MapsLayer instance
 	 */
@@ -41,7 +41,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * Gets the name of the parser hook.
 	 * @see ParserHook::getName
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return string
 	 */
@@ -53,7 +53,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * Returns an array containing the parameter info.
 	 * @see ParserHook::getParameterInfo
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return array
 	 */
@@ -63,20 +63,20 @@ class MapsLayerDefinition extends ParserHook {
 		$params['type'] = array(
 			'default' => false,
 			'manipulatedefault' => false,
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		$params['name'] = array(
 			'default' => false,
 			'manipulatedefault' => false,
-			// TODO-dw1: addCriteria( new CriterionIsNonNumeric );
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			// TODO-customMaps: addCriteria( new CriterionIsNonNumeric );
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 		);
 
 		$params['definition'] = array(
 			'default' => false,
 			'manipulatedefault' => false,
-			'message' => 'maps-displaymap-par-coordinates', // TODO-dw1: create a message
+			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 			'post-format' => function( $value ) {
 				return MapsLayers::parseLayerParameters( $value, "\n", '=' );
 			}
@@ -89,7 +89,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * Returns the list of default parameters.
 	 * @see ParserHook::getDefaultParameters
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return array
 	 */
@@ -101,7 +101,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * Returns the parser function otpions.
 	 * @see ParserHook::getFunctionOptions
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return array
 	 */
@@ -115,7 +115,7 @@ class MapsLayerDefinition extends ParserHook {
 	/**
 	 * @see ParserHook::getMessage()
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function getMessage() {
 		return 'maps-layerdefinition-description';
@@ -126,7 +126,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * processed already. If the store is not attached to the parser object yet,
 	 * an empty MapsLayerGroup will be attached as store after calling the function.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @return MapsLayerGroup
 	 */
@@ -147,7 +147,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * $layer will only be stored in case it is a subclass of MapsLayer and its definition
 	 * is at least considered 'ok'.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param type $layer 
 	 *
@@ -179,7 +179,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * Renders and returns the output.
 	 * @see ParserHook::renderTag
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param array $parameters
 	 *
@@ -258,7 +258,7 @@ class MapsLayerDefinition extends ParserHook {
 	/**
 	 * Responsible for actual output on the layer page which gives an overview of the layer definition.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer
 	 *
@@ -316,7 +316,7 @@ class MapsLayerDefinition extends ParserHook {
 	/**
 	 * Displays the layer definition as a table.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer $layer
 	 *
@@ -398,7 +398,7 @@ class MapsLayerDefinition extends ParserHook {
 	/**
 	 * wraps text inside an error box.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string  $text text of the error, html-escaped.
 	 *
@@ -416,7 +416,7 @@ class MapsLayerDefinition extends ParserHook {
 	/**
 	 * wraps text inside an error box.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $text text of the error, NOT html-escaped
 	 *

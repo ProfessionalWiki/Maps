@@ -5,7 +5,7 @@
  * serve as template of a specific layer type to allow defining layers of that type with their
  * custom properties.
  *
- * @since dw1 (previously as MapsLayers since 0.7.2)
+ * @since 3.0 (previously as MapsLayers since 0.7.2)
  *
  * @file Maps_LayerTypes.php
  * @ingroup Maps
@@ -18,7 +18,7 @@ class MapsLayerTypes {
 	/**
 	 * List of maps layer types (keys) to their classes (values).
 	 *
-	 * @since dw1 (available in MapsLayers class in 0.7.2 to dw1)
+	 * @since 3.0 (available in MapsLayers class in 0.7.2 to 3.0)
 	 *
 	 * @var array of string
 	 */
@@ -27,7 +27,7 @@ class MapsLayerTypes {
 	/**
 	 * List of maps layer types (keys) to the services that they support (values).
 	 *
-	 * @since dw1 (available in MapsLayers class in 0.7.2 to dw1)
+	 * @since 3.0 (available in MapsLayers class in 0.7.2 to 3.0)
 	 *
 	 * @var array of array of string
 	 */
@@ -38,7 +38,7 @@ class MapsLayerTypes {
 	 * in the MapsLayer classes thru a static function which can't be defined as abstract in
 	 * the base class.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param MapsLayer $layer Layer to get the associated, registered type of.
 	 *
@@ -52,7 +52,7 @@ class MapsLayerTypes {
 	 * Returns the available layer types, optionally filtered by them requiring the
 	 * support of a specific service.
 	 *
-	 * @since dw1 (previously 'getAvailableLayers' since 0.7.2)
+	 * @since 3.0 (previously 'getAvailableLayers' since 0.7.2)
 	 *
 	 * @param string $service
 	 *
@@ -80,7 +80,7 @@ class MapsLayerTypes {
 	/**
 	 * Returns the mapping services supported by the provided layer type.
 	 *
-	 * @since dw1 (available in MapsLayers class in 0.7.2 to dw1)
+	 * @since 3.0 (available in MapsLayers class in 0.7.2 to 3.0)
 	 *
 	 * @param string $type
 	 *
@@ -94,7 +94,7 @@ class MapsLayerTypes {
 	 * Returns whether the layer type exists (that's the case if the type is associated
 	 * with a layer class).
 	 *
-	 * @since dw1 (previously 'hasLayer' since 0.7.2)
+	 * @since 3.0 (previously 'hasLayer' since 0.7.2)
 	 *
 	 * @param string $type
 	 * @param string $service
@@ -115,7 +115,7 @@ class MapsLayerTypes {
 	/**
 	 * Returns the class of a layer template class or null if the type doesn't exist.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 *
 	 * @param string $type
 	 *
@@ -135,7 +135,7 @@ class MapsLayerTypes {
 	 * @param string $layerClass
 	 * @param string[]|string $serviceIdentifier
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public static function registerLayerType( $type, $layerClass, $serviceIdentifier ) {
 		self::$classes[$type] = $layerClass;
@@ -150,7 +150,7 @@ class MapsLayerTypes {
 	 * Initializes the layers functionality by registering the layer types
 	 * by firing the hook.
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	protected static function initializeTypes() {
 		// only initialize once!

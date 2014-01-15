@@ -3,7 +3,7 @@
 /**
  * Parameter criterion stating that the value must be a non numeric one
  *
- * @since dw1
+ * @since 3.0
  *
  * @file CriterionIsNonNumeric.php
  * @ingroup Maps
@@ -16,7 +16,7 @@ class CriterionIsNonNumeric extends ItemParameterCriterion {
 	/**
 	 * Constructor
 	 *
-	 * @since dw1
+	 * @since 3.0
 	 */
 	public function __construct() {
 		parent::__construct();
