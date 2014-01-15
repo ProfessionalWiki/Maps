@@ -1167,6 +1167,7 @@ $messages['ce'] = array(
 	'maps-others' => 'кхин',
 	'maps-layer-value' => 'МаьӀна',
 	'maps-abb-east' => 'Цу',
+	'mapeditor-done-button' => 'Кийчча ю',
 	'mapeditor-link-title-switcher-link-text' => 'Хьажораг',
 	'mapeditor-form-field-title' => 'ЦӀе',
 	'mapeditor-form-field-link' => 'Хьажораг',
@@ -1714,6 +1715,7 @@ $messages['eo'] = array(
 
 /** Spanish (español)
  * @author Armando-Martin
+ * @author Ciencia Al Poder
  * @author Crazymadlover
  * @author Dferg
  * @author Diego Grez
@@ -1795,7 +1797,7 @@ Cuando sea "no", todos los valores serán geocodificados, incluso si son coorden
 Esto puede afectar al valor predeterminado del servicio de geocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar el servicio de cartografía que se utilizará para generar el mapa.',
 	'maps-displaymap-par-coordinates' => 'La localización respecto de la cual el mapa aparecerá inicialmente centrado.',
-	'maps-displaymap-par-visitedicon' => 'El disco local de un archivo para ser utilizado como icono visitado', # Fuzzy
+	'maps-displaymap-par-visitedicon' => 'El nombre de una imagen que será usada como iconos de marca al de hacer clic en ellos',
 	'maps-displaymap-par-zoom' => 'Permite configurar el nivel de zoom del mapa.
 Cuando no se proporciona y varios marcadores están presentes en el mapa, se tomará el mejor ajuste de zoom, y no el valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite establecer las coordenadas del centro del mapa mediante display_point(s).
@@ -1977,15 +1979,20 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Armin1392
  * @author Ebraminio
  * @author Mjbmr
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
+	'right-geocode' => 'جئوکد',
 	'maps_map' => 'نقشه',
+	'maps-tracking-category' => 'صفحات با نقشهٔ‌ ارائه شده توسط گسترهٔ‌ نقشه‌ها',
 	'maps-loading-map' => 'در حال بارگیری نقشه...',
 	'maps-load-failed' => 'قادر به بارگیری نقشه نبود!',
 	'maps-markers' => 'نشانگرها',
+	'maps-copycoords-prompt' => 'CTRL+C, وارد کنید',
+	'maps-searchmarkers-text' => 'نشانگرهای فیلتر',
 	'maps-others' => 'دیگران',
 	'maps-ns-layer' => 'لایه',
 	'maps-ns-layer-talk' => 'بحث لایه',
@@ -1997,20 +2004,68 @@ $messages['fa'] = array(
 	'maps-error-no-layertype' => 'باید نوع لایه را مشخص کنید. {{PLURAL:$2|فقط این نوع پشتیبانی می‌شود|این نوع‌ها پشتیبانی می‌شوند}}: $1',
 	'validation-error-invalid-layer' => 'پارامتر $1 باید یک لایهٔ معتبر باشد.',
 	'validation-error-invalid-layers' => 'پارامتر $1 باید یک یا چند لایهٔ معتبر باشد.',
+	'maps-layer-of-type' => 'لایه ای از نوع $1',
+	'maps-displaymap-description' => 'نمایش نقشه‌های جغرافیایی بدون هر نشانگر تعریف شده‌ٔ ویکی بر روی آنها.',
+	'maps-displaypoint-description' => 'نمایش نقشه‌های جغرافیایی بدون هر نشانگر تعریف شده‌ٔ ویکی بر روی آنها.',
+	'maps-mapsdoc-par-service' => 'سرویس نقشه برای نمایش مستندات پارامتر.',
+	'maps-coordinates-par-location' => 'مختصاتی که می‌خواهید شکل‌بندی کنید.',
+	'maps-coordinates-par-format' => 'شکل موردنظر برای مختصات.',
 	'maps-finddestination-par-location' => 'مکان اولیه.',
+	'maps-finddestination-par-distance' => 'مسافت برای مسافرت.',
+	'maps-geocode-par-format' => 'فرمت برای نتیجهٔ مختصات.',
+	'maps-displaymap-par-circles' => 'حوزه‌ها برای نمایش',
+	'maps-displaymap-par-lines' => 'خطوط برای نمایش',
+	'maps-displaymap-par-maxzoom' => 'حداکثر سطح زوم',
+	'maps-displaymap-par-minzoom' => 'حداقل سطح زوم',
+	'maps-displaymap-par-polygons' => 'چند ضلعی‌ها برای نمایش',
+	'maps-displaymap-par-rectangles' => 'مستطیل‌ها برای نمایش',
+	'maps-displaymap-par-static' => 'اگر نقشه‌ها ایستا باشد',
+	'maps-displaymap-par-wmsoverlay' => 'استفاده از یک پوشش وی‌ام‌اس',
+	'maps-googlemaps3-par-enable-fullscreen' => 'فعا کردن دکمهٔ تمام صفحه',
+	'validation-error-invalid-location' => 'پارامتر $1 باید یک مکان معتبر باشد.',
+	'validation-error-invalid-locations' => 'پارامتر $1 باید یک مکان یا مکان‌های بیشتر معتبری باشد.',
+	'validation-error-invalid-width' => 'پارامتر $1 باید یک عرض معتبر باشد.',
+	'validation-error-invalid-height' => 'پارامتر $1 باید یک ارتفاع معتبر باشد.',
+	'validation-error-invalid-distance' => 'پارامتر $1 باید یک فاصلهٔ‌ معتبر باشد.',
+	'validation-error-invalid-distances' => 'پارامتر $1 باید یک فاصله یا فاصله‌های بیشتر معتبر باشد.',
+	'validation-error-invalid-image' => 'پارامتر $1 باید یک عکس معتبر باشد.',
+	'validation-error-invalid-images' => 'پارامتر $1 باید یک عکس یا عکس‌های بیشتر باشد.',
+	'validation-error-invalid-goverlay' => 'پارامتر $1 باید یک پوشش معتبر باشد.',
+	'validation-error-invalid-goverlays' => 'پارامتر $1 باید یک پوشش یا پوشش‌های معتبر باشد.',
+	'validation-error-invalid-line-param' => '"خطوط" پارامتر تعیین شدهٔ نامعتبر.',
 	'maps-abb-north' => 'شمال',
 	'maps-abb-east' => 'شرق',
 	'maps-abb-south' => 'جنوب',
 	'maps-abb-west' => 'غرب',
 	'maps-latitude' => 'عرض جغرافیایی:',
 	'maps-longitude' => 'طول جغرافیایی:',
+	'maps_coordinates_missing' => 'هیچ مختصاتی برای نقشه ارائه نشده.',
+	'maps_map_cannot_be_displayed' => 'نقشه نمی‌تواند نمایش داده شود.',
+	'maps_click_to_activate' => 'کلیک کردن برای فعال کردن نقشهٔ.',
+	'maps_centred_on' => 'نقشهٔ متمرکز شده در $1، $2.',
+	'maps-googlemaps3-par-type' => 'نوع نقشه برای ابتدا نشان دادن.',
+	'maps-googlemaps3-par-types' => 'انواع نقشه‌ای که از طریق کنترل نوع در دسترس خواهد بود.',
+	'maps-googlemaps3-par-controls' => 'کنترل‌ها برای قرار دادن بر روی نقشه.',
+	'maps-googlemaps3-par-zoomstyle' => 'سبک کنترل زوم.',
+	'maps-googlemaps3-par-typestyle' => 'سبک کنترل نوع.',
+	'maps-googlemaps3-par-kml' => 'پوشه‌های کا‌ام‌ال برای بارگذاری بر روی نقشه.',
+	'maps-googlemaps3-par-poi' => 'نمایش نقاط مورد علاقه.',
+	'maps-openlayers-par-controls' => 'کنترل‌ها برای قرار دادن بر روی نقشه.',
+	'maps-osm-par-photos' => 'نمایش عکس‌ها',
 	'mapeditor' => 'تدوین‌گر نقشه',
 	'specialpages-group-maps' => 'نقشه‌ها',
 	'mapeditor-none-text' => 'هیچ کدام',
 	'mapeditor-done-button' => 'انجام شد',
 	'mapeditor-remove-button' => 'حذف',
 	'mapeditor-import-button2' => 'درون‌ریزی',
+	'mapeditor-export-button' => 'صادرات به کد ویکی',
+	'mapeditor-import-button' => 'واردات از کد ویکی',
+	'mapeditor-select-button' => 'انتخاب این چندضلعی',
+	'mapeditor-mapparam-button' => 'ویرایش پارامترهای نقشه',
+	'mapeditor-clear-button' => 'واضح کردن نقشه',
 	'mapeditor-code-title' => 'کد ویکی',
+	'mapeditor-import-title' => 'واردات کد ویکی',
+	'mapeditor-form-title' => 'ویرایش جزئیات',
 	'mapeditor-link-title-switcher-link-text' => 'پیوند',
 	'mapeditor-form-field-title' => 'عنوان',
 	'mapeditor-form-field-text' => 'متن',
@@ -2018,6 +2073,7 @@ $messages['fa'] = array(
 	'mapeditor-form-field-icon' => 'شمایل',
 	'mapeditor-form-field-group' => 'گروه',
 	'mapeditor-form-field-image' => 'تصویر',
+	'mapeditor-form-field-visitedicon' => 'نمادهای بازدید شده',
 );
 
 /** Finnish (suomi)
@@ -5969,12 +6025,12 @@ $messages['ru'] = array(
 	'maps-layer-value' => 'Значение',
 	'maps-layer-errors' => 'Ошибки',
 	'maps-error-invalid-layerdef' => 'Это определение слоя неверно.',
-	'maps-error-invalid-layertype' => 'Не существует слоя типа «$1». {{PLURAL:$3|1=Поддерживается только следующий тип|Поддерживаются только следующие типы}}: $2', # Fuzzy
-	'maps-error-no-layertype' => 'Вам нужно указать тип слоя. {{PLURAL:$2|1=Поддерживается только следующий тип|Поддерживаются следующие типы}}: $1', # Fuzzy
+	'maps-error-invalid-layertype' => 'Не существует слоя типа «$1». {{PLURAL:$3|1=Поддерживается только следующий тип|Поддерживаются только следующие типы}}: $2',
+	'maps-error-no-layertype' => 'Вам нужно указать тип слоя. {{PLURAL:$2|1=Поддерживается только следующий тип|Поддерживаются следующие типы}}: $1',
 	'validation-error-invalid-layer' => 'Параметр $1 должен быть корректным слоем.',
 	'validation-error-invalid-layers' => 'Параметр $1 должен содержать один или несколько корректных слоёв.',
 	'maps-layer-of-type' => 'Слой типа $1',
-	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|1=только с картографической службой|только со следующими картографическими службами:}} $1', # Fuzzy
+	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|1=только с картографической службой|только со следующими картографическими службами:}} $1',
 	'maps-coordinates-description' => 'Перехватчик синтаксического анализатора для форматирования координат из любого и в любой поддерживаемый формат.',
 	'maps-displaymap-description' => 'Отображение географических карт без каких-либо вики-маркеров на них.',
 	'maps-displaypoint-description' => 'Отображение географических карт с одним или несколькими вики-маркерами на них.',
@@ -6049,13 +6105,12 @@ $messages['ru'] = array(
 	'maps-longitude' => 'Долгота:',
 	'maps-invalid-coordinates' => 'Значение $1 не признано допустимым набором координат.',
 	'maps_coordinates_missing' => 'Не указаны координаты для карты.',
-	'maps_geocoding_failed' => '{{PLURAL:$2|1=Следующий адрес не может быть геокодирован|Следующие адреса не могут быть геокодированы}}: $1.
-Карта не может быть отображена.', # Fuzzy
+	'maps_geocoding_failed' => '{{PLURAL:$2|1=Следующий адрес не может быть геокодирован|Следующие адреса не могут быть геокодированы}}: $1.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|1=Следующий адрес не может быть геокодирован и был удалён|Следующие адреса не могут быть геокодированы и были удалены}} с карты:
-$1', # Fuzzy
-	'maps_unrecognized_coords' => 'Следующие {{PLURAL:$2|1=координаты|координаты}} не были опознаны: $1.', # Fuzzy
-	'maps_unrecognized_coords_for' => 'Следующие координаты не были опознаны, {{PLURAL:$2|1=они|они}} не показаны на карте:
-$1', # Fuzzy
+$1',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|1=Следующая пара координат не была опознана|Следующие координаты не были опознаны}}: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|1=Следующая пара координат не была опознана, она не показана|Следующие координаты не были опознаны, они не показаны}} на карте:
+$1',
 	'maps_map_cannot_be_displayed' => 'Карта не может быть показана.',
 	'maps-geocoder-not-available' => 'Функция геокодирования карт недоступна, ваше местоположение не может быть геокодировано.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
@@ -6727,6 +6782,7 @@ $1',
  * @author Emperyan
  * @author Joseph
  * @author Manco Capac
+ * @author Meelo
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -6763,6 +6819,18 @@ $messages['tr'] = array(
 	'maps-geocoder-not-available' => 'Haritanın coğrafi kodlama özelliği etkin değil. Konumunuz kodlanamıyor.',
 	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
+	'mapeditor' => 'Harita düzenleyici',
+	'mapeditor-export-button' => 'Viki kodu dışa aktar',
+	'mapeditor-import-button' => 'Viki kodunu içe aktar',
+	'mapeditor-mapparam-button' => 'Harita parametrelerini düzenle',
+	'mapeditor-clear-button' => 'Haritayı temizle',
+	'mapeditor-code-title' => 'Viki kodu',
+	'mapeditor-import-title' => 'Viki kodunu içe aktar',
+	'mapeditor-form-title' => 'Ayrıntıları düzenle',
+	'mapeditor-form-field-title' => 'Başlık',
+	'mapeditor-form-field-text' => 'Metin',
+	'mapeditor-mapparam-title' => 'Harita parametrelerini düzenle',
+	'mapeditor-mapparam-defoption' => '-Parametre seçiniz-',
 );
 
 /** Central Atlas Tamazight (ⵜⴰⵎⴰⵣⵉⵖⵜ)
