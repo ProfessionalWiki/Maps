@@ -6,6 +6,7 @@ These are the release notes for the Semantic Maps extension.
 
 * Changed minimum Maps version from 2.0.x to 3.0.
 * Changed minimum Semantic MediaWiki version from 1.8 to 1.9.
+* Changed minimum Semantic Forms version to 2.6.1.
 
 ; Removed features
 
@@ -22,7 +23,9 @@ These are the release notes for the Semantic Maps extension.
 
 ; Internal improvements
 
+* Make it possible to load Semantic Maps before Semantic Forms.
 * Added various PHPUnit tests.
+* Have the tests run on TravisCI and ScrutinizerCI.
 
 ### Semantic Maps 2.0.1 (2012-12-13) ###
 
