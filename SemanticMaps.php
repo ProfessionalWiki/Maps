@@ -71,6 +71,7 @@ include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
 
 $GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {
 	MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', 'SMMapPrinter' );
+	return true;
 };
 
 
