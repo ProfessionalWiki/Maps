@@ -65,12 +65,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			'message' => 'semanticmaps-par-staticlocations',
 		);
 
-		$params['forceshow'] = array(
-			'type' => 'boolean',
-			'aliases' => 'force show',
-			'default' => $smgQPForceShow,
-		);
-
 		$params['showtitle'] = array(
 			'type' => 'boolean',
 			'aliases' => 'show title',
@@ -143,7 +137,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		$this->handleMarkerData( $params, $queryHandler );
 		$locationAmount = count( $params['locations'] );
 
-		if ( $params['forceshow'] || $locationAmount > 0 ) {
+		if ( $locationAmount > 0 ) {
 			// We can only take care of the zoom defaulting here,
 			// as not all locations are available in whats passed to Validator.
 			if ( $this->fullParams['zoom']->wasSetToDefault() && $locationAmount > 1 ) {

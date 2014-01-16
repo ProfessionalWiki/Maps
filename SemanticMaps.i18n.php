@@ -39,7 +39,6 @@ $messages['en'] = array(
 	
 	// Parameter descriptions
 	'semanticmaps-par-staticlocations'	=> 'A list of locations to add to the map together with the queried data. Like with display_points, you can add a title, description and icon per location using the tilde "~" as separator.',
-	'semanticmaps-par-forceshow'		=> 'Show the map even when there are no locations to display?',
 	'semanticmaps-par-showtitle'		=> 'Show a title in the marker info window or not. Disabling this is often useful when using a template to format the info window content.',
 	'semanticmaps-par-hidenamespace'	=> 'Show the namespace title in the marker info window',
 	'semanticmaps-par-centre'		=> 'The center of the map. When not provided, the map will automatically pick the optimal center to display all markers on the map.',

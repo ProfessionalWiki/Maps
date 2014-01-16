@@ -84,7 +84,7 @@ class SMFormInput {
 		);
 
 		// Messages:
-		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
+		// semanticmaps-par-staticlocations, semanticmaps-par-showtitle,
 		// semanticmaps-par-hidenamespace, semanticmaps-par-centre, semanticmaps-par-template,
 		// semanticmaps-par-geocodecontrol, semanticmaps-par-activeicon
 		foreach ( $params as $name => &$param ) {

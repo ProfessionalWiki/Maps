@@ -25,11 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 # Queries
 
-	# Boolean. The default value for the forceshow parameter. Will force a map to be shown even when there are no query results
-	# when set to true. This value will only be used when the user does not provide one.
-	$GLOBALS['smgQPForceShow'] = true;
-	
-	# Boolean. The default value for the showtitle parameter. Will hide the title in the marker pop-ups when set to true. 
+	# Boolean. The default value for the showtitle parameter. Will hide the title in the marker pop-ups when set to true.
 	# This value will only be used when the user does not provide one.
 	$GLOBALS['smgQPShowTitle'] = true;
 
