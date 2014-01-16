@@ -67,7 +67,12 @@ $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
 
 
 include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
-include_once __DIR__ . '/src/services/OpenLayers/SM_OpenLayers.php';
+
+
+$GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {
+	MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', 'SMMapPrinter' );
+};
+
 
 $GLOBALS['wgExtensionMessagesFiles']['SemanticMaps'] = __DIR__ . '/SemanticMaps.i18n.php';
 
