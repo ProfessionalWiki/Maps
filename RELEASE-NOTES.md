@@ -7,13 +7,22 @@ These are the release notes for the Semantic Maps extension.
 * Changed minimum Maps version from 2.0.x to 3.0.
 * Changed minimum Semantic MediaWiki version from 1.8 to 1.9.
 
+; Removed features
+
+* Dropped the OpenLayers form input, as it was no longer working properly.
+* Dropped the "forceshow" parameter, as SMW 1.8 and later do not allow for this functionality.
+
 ; New features
+
+* Support for installation via the Composer dependency manager.
 
 ; Bug fixes
 
 * Fixed compatibility with SMWs SQLStore3 (bug 44933, fixed by kvolden)
 
 ; Internal improvements
+
+* Added various PHPUnit tests.
 
 ### Semantic Maps 2.0.1 (2012-12-13) ###
 
