@@ -16,7 +16,7 @@ if ( defined( 'SM_VERSION' ) ) {
 	return 1;
 }
 
-define( 'SM_VERSION', '3.0 beta' );
+define( 'SM_VERSION', '3.0-RC2' );
 
 if ( version_compare( $GLOBALS['wgVersion'], '1.19c', '<' ) ) {
 	throw new Exception( 'This version of Semantic Maps requires MediaWiki 1.18 or above;'
