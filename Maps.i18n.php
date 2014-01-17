@@ -1146,9 +1146,20 @@ $1',
 /** Catalan (català)
  * @author Paucabot
  * @author PerroVerd
+ * @author Toniher
  */
 $messages['ca'] = array(
 	'maps_map' => 'Mapa',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Definició no vàlida|Definicions no vàlides}}',
+	'maps-layerdef-wrong-namespace' => "Les definicions de capes només són vàlides en pàgines de l'espai de noms «$1»",
+	'maps-layerpage-nousage' => 'Cap pàgina està utilitzant aquesta capa de moment.',
+	'validation-error-no-non-numerics' => 'El paràmetre «$1» ha de ser una o més cadenes no numèriques.',
+	'maps-layer-of-type-and-name' => 'Capa «$2» de tipus «$1»',
+	'validation-error-invalid-locations' => 'El paràmetre «$1» ha de ser una o més ubicacions vàlides.',
+	'validation-error-invalid-width' => 'El paràmetre «$1» ha de ser una amplada vàlida.',
+	'validation-error-invalid-height' => 'El paràmetre «$1» ha de ser una alçada vàlida.',
+	'validation-error-invalid-distance' => 'El paràmetre «$1» ha de ser una distància vàlida.',
+	'validation-error-invalid-distances' => 'El paràmetre «$1» ha de ser una o més distàncies vàlides.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -7277,7 +7288,8 @@ $messages['zh-hans'] = array(
 	'maps-layer-property' => '属性',
 	'maps-layer-value' => '价值',
 	'maps-layer-errors' => '错误',
-	'maps-error-invalid-layerdef' => '这一层定义不是有效的。',
+	'maps-layerdef-invalid-fatal' => '致命的无效定义',
+	'maps-layer-of-type' => '图层类型“$1”',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
 	'maps-geodistance-par-unit' => '要输出的距离单位。',
@@ -7300,7 +7312,6 @@ $messages['zh-hans'] = array(
 	'validation-error-invalid-images' => '参数 $1 必须是一个或多个有效的图像。',
 	'validation-error-invalid-goverlay' => '参数 $1 必须是一个有效的重叠。',
 	'validation-error-invalid-goverlays' => '参数 $1 必须是一个或多个有效重叠。',
-	'validation-error-invalid-line-param' => '指定了无效的“线”参数。',
 	'maps-abb-north' => '北',
 	'maps-abb-east' => '东',
 	'maps-abb-south' => '南',
