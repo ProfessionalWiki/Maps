@@ -1,6 +1,8 @@
 These are the release notes for the [Maps extension](../README.md).
 
-## Maps 3.0 (dev)
+## Maps 3.0
+
+Released on January 18th, 2014.
 
 In this version a big part of the PHP codebase has been rewritten to decrease technical debt and
 thus facilitate maintenance, new feature deployment and debugging. Many tests have been added and a
@@ -9,10 +11,8 @@ layers with OpenLayers has been reintroduced.
 
 #### Compatibility changes
 
+* The extension now needs to be installed with Composer.
 * Changed minimum Validator version from 0.5 to 1.0.
-* DataValues is now required. Version 0.1 or later.
-* ValueParsers is now required. Version 0.1 or later.
-* ValueFormatters is now required. Version 0.1 or later.
 
 #### New features
 
@@ -38,6 +38,13 @@ layers with OpenLayers has been reintroduced.
 * Geocoding interfaces changed
 * MapsLocation interface changed
 * Custom image layers related classes (previously broken feature) changed
+
+#### Infrastructure
+
+* Maps is now hosted on GitHub at https://github.com/JeroenDeDauw/Maps
+* Maps now has its tests run on TravisCI at https://travis-ci.org/JeroenDeDauw/Maps
+* Maps code quality is now tracked by ScrutinizerCI at https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/
+* Maps is now available on Packagist at https://packagist.org/packages/mediawiki/maps
 
 ## Maps 2.0 (2012-10-05)
 
