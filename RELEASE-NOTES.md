@@ -1,12 +1,15 @@
 These are the release notes for the Semantic Maps extension.
 
-### Semantic Maps 3.0 (dev) ###
+### Semantic Maps 3.0
+
+Released on January 18th, 2014.
 
 ; Compatibility changes
 
 * Changed minimum Maps version from 2.0.x to 3.0.
 * Changed minimum Semantic MediaWiki version from 1.8 to 1.9.
 * Changed minimum Semantic Forms version to 2.6.1.
+* The extension now needs to be installed via Composer.
 
 ; Removed features
 
@@ -27,13 +30,13 @@ These are the release notes for the Semantic Maps extension.
 * Added various PHPUnit tests.
 * Have the tests run on TravisCI and ScrutinizerCI.
 
-### Semantic Maps 2.0.1 (2012-12-13) ###
+### Semantic Maps 2.0.1 (2012-12-13)
 
 * Improved compatibility with SMW 1.8 and 1.9 (including bug 42830)
 * Fixed issue in SMQueryHandler (bug 42250)
 * Make use of the default parameter in the query printers
 
-### Semantic Maps 2.0 (2012-10-05) ###
+### Semantic Maps 2.0 (2012-10-05)
 
 ; Compatibility changes
 
@@ -60,31 +63,31 @@ These are the release notes for the Semantic Maps extension.
 * Fixed display of maps in multiple instance templates in forms.
 * Fixed partial incompatibility with SMW >=1.6.
 
-### Semantic Maps 1.0.5 (2011-11-30) ###
+### Semantic Maps 1.0.5 (2011-11-30)
 
 * Changed minimun Semantic MediaWiki version from 1.6.1 to 1.7.
 * Allow properties of type string to be used as title. (bug 32632)
 * Fixed error occuring when parsing invalid coordinates.
 
-### Semantic Maps 1.0.4 (2011-10-15) ###
+### Semantic Maps 1.0.4 (2011-10-15)
 
 * Added compatibility with SMW 1.7 and later.
 * Removed compatibility with SMW 1.6.1 and earlier.
 * Improved default map format handling.
 
-### Semantic Maps 1.0.3 (2011-09-14) ###
+### Semantic Maps 1.0.3 (2011-09-14)
 
 * Added geocodecontrol parameter for the form inputs.
 
-### Semantic Maps 1.0.2 (2011-08-24) ###
+### Semantic Maps 1.0.2 (2011-08-24)
 
 * Matching Maps 1.0.2 release. 
 
-### Semantic Maps 1.0.1 (2011-08-17) ###
+### Semantic Maps 1.0.1 (2011-08-17)
 
 * Fixed handling of the semantic link caption in the geographical coordinate datavalue class. 
 
-### Semantic Maps 1.0 (2011-07-19) ###
+### Semantic Maps 1.0 (2011-07-19)
 
 This version branched from Semantic Maps 0.7.x at version 0.7.3.
 See the maps release notes for all changes not specific to Semantic Maps.

@@ -12,6 +12,14 @@ Both Semantic Maps and Maps are based on Semantic Google Maps and Semantic Layer
 meant to replace these extensions. Having Semantic MediaWiki and Maps installed is a
 prerequisite for the Semantic Maps extension; the code will not work without it.
 
+## Documentation
+
+* [Usage examples](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples)
+* [Installation instructions](https://www.mediawiki.org/wiki/Extension:Semantic_Maps)
+
+Note that the installation instructions might be out of date. Initiation now is done
+the same way as that of the Maps extension.
+
 ## Project status
 
 [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/SemanticMaps.png?branch=master)](http://travis-ci.org/JeroenDeDauw/SemanticMaps)
@@ -21,7 +29,9 @@ On [Packagist](https://packagist.org/packages/mediawiki/semantic-maps):
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/semantic-maps/version.png)](https://packagist.org/packages/mediawiki/semantic-maps)
 [![Download count](https://poser.pugx.org/mediawiki/semantic-maps/d/total.png)](https://packagist.org/packages/mediawiki/semantic-maps)
 
-## Contributing
+## Contributing and support
 
-If you have bug reports or feature requests, please add them to [the talk page]
-(https://semantic-mediawiki.org/wiki/Talk:Semantic_Maps).
+* [File an issue](https://github.com/JeroenDeDauw/SemanticMaps/issues)
+* [Submit a pull request](https://github.com/JeroenDeDauw/SemanticMaps/pulls)
+* Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
+* Ask a question on the #semantic-mediawiki IRC channel on Freenode.
