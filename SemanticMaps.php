@@ -38,7 +38,7 @@ $wgExtensionCredits['semantic'][] = array(
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
 	),
-	'url' => 'https://semantic-mediawiki.org/wiki/Semantic_Maps',
+	'url' => 'https://github.com/JeroenDeDauw/SemanticMaps/blob/master/README.md#semantic-maps',
 	'descriptionmsg' => 'semanticmaps-desc'
 );
 
