@@ -16,8 +16,8 @@ layers with OpenLayers has been reintroduced.
 
 #### New features
 
-* Added leaflet service
-* Added Geocoder.us geoservice support
+* Added leaflet service (by Pavel Astakhov)
+* Added Geocoder.us geoservice support (Ike Hecht)
 * Experimental: Usage of custom image layers defined in "Layer:" namespaced wiki pages.
   NOTE: This feature has been part of Maps in an old 0.7.x version but got broken shortly after.
         3.0 reintroduces the feature in a similar way but old layer definitions are probably not
