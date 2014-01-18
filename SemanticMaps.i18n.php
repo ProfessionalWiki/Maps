@@ -18,7 +18,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'semanticmaps-desc' => "Provides the ability to view and edit coordinate data stored with the Semantic MediaWiki extension ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps more info...])",
+	'semanticmaps-desc' => "Provides the ability to view and edit coordinate data stored with the [https://www.semantic-mediawiki.org Semantic MediaWiki] extension",
 	'semanticmaps-unrecognizeddistance' => 'The value $1 is not a valid distance.',
 	'semanticmaps-kml-link' => 'View the KML file',
 	'semanticmaps-kml' => 'KML',
