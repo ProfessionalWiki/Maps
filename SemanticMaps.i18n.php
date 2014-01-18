@@ -1472,7 +1472,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'semanticmaps-desc' => 'Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в семантическом расширении MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps подробнее…]).',
+	'semanticmaps-desc' => 'Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в семантическом расширении MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps подробнее…]).', # Fuzzy
 	'semanticmaps-unrecognizeddistance' => 'Значение $1 не является допустимым расстоянием.',
 	'semanticmaps-kml-link' => 'Просмотреть файл KML',
 	'semanticmaps-default-kml-pagelink' => 'Просмотреть страницу $1',
