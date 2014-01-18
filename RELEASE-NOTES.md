@@ -1,44 +1,44 @@
 These are the release notes for the Semantic Maps extension.
 
-### Semantic Maps 3.0
+## Semantic Maps 3.0
 
 Released on January 18th, 2014.
 
-; Compatibility changes
+#### Compatibility changes
 
 * Changed minimum Maps version from 2.0.x to 3.0.
 * Changed minimum Semantic MediaWiki version from 1.8 to 1.9.
 * Changed minimum Semantic Forms version to 2.6.1.
 * The extension now needs to be installed via Composer.
 
-; Removed features
+#### Removed features
 
 * Dropped the OpenLayers form input, as it was no longer working properly.
 * Dropped the "forceshow" parameter, as SMW 1.8 and later do not allow for this functionality.
 
-; New features
+#### New features
 
 * Support for installation via the Composer dependency manager.
 
-; Bug fixes
+#### Bug fixes
 
 * Fixed compatibility with SMWs SQLStore3 (bug 44933, fixed by kvolden)
 
-; Internal improvements
+#### Internal improvements
 
 * Make it possible to load Semantic Maps before Semantic Forms.
 * Added various PHPUnit tests.
 * Have the tests run on TravisCI and ScrutinizerCI.
 
-### Semantic Maps 2.0.1 (2012-12-13)
+## Semantic Maps 2.0.1 (2012-12-13)
 
 * Improved compatibility with SMW 1.8 and 1.9 (including bug 42830)
 * Fixed issue in SMQueryHandler (bug 42250)
 * Make use of the default parameter in the query printers
 
-### Semantic Maps 2.0 (2012-10-05)
+## Semantic Maps 2.0 (2012-10-05)
 
-; Compatibility changes
+#### Compatibility changes
 
 * Changed minimum PHP version from 5.2 to 5.3.
 * Changed minimum MediaWiki version from 1.17 to 1.18.
@@ -48,46 +48,46 @@ Released on January 18th, 2014.
 * Removed support for the deprecated Google Maps v2 API.
 * Removed support for the now unsorted Yahoo! Maps API and associated geocoding service.
 
-; New features
+#### New features
 
 * Added support for the visitedicon parameter to the map result formats.
 * Many new functionality that got added in Maps 2.0 (see the Maps release notes).
 
-; Other improvements
+#### Other improvements
 
 * Improved script loading.
 * Usage of Validator 0.5.x features.
 
-; Bug fixes
+#### Bug fixes
 
 * Fixed display of maps in multiple instance templates in forms.
 * Fixed partial incompatibility with SMW >=1.6.
 
-### Semantic Maps 1.0.5 (2011-11-30)
+## Semantic Maps 1.0.5 (2011-11-30)
 
 * Changed minimun Semantic MediaWiki version from 1.6.1 to 1.7.
 * Allow properties of type string to be used as title. (bug 32632)
 * Fixed error occuring when parsing invalid coordinates.
 
-### Semantic Maps 1.0.4 (2011-10-15)
+## Semantic Maps 1.0.4 (2011-10-15)
 
 * Added compatibility with SMW 1.7 and later.
 * Removed compatibility with SMW 1.6.1 and earlier.
 * Improved default map format handling.
 
-### Semantic Maps 1.0.3 (2011-09-14)
+## Semantic Maps 1.0.3 (2011-09-14)
 
 * Added geocodecontrol parameter for the form inputs.
 
-### Semantic Maps 1.0.2 (2011-08-24)
+## Semantic Maps 1.0.2 (2011-08-24)
 
 * Matching Maps 1.0.2 release. 
 
-### Semantic Maps 1.0.1 (2011-08-17)
+## Semantic Maps 1.0.1 (2011-08-17)
 
 * Fixed handling of the semantic link caption in the geographical coordinate datavalue class. 
 
-### Semantic Maps 1.0 (2011-07-19)
+## Semantic Maps 1.0 (2011-07-19)
 
 This version branched from Semantic Maps 0.7.x at version 0.7.3.
 See the maps release notes for all changes not specific to Semantic Maps.
@@ -108,19 +108,19 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Use of the DataItems introduces in Semantic MediaWiki 1.6.
 
-### Semantic Maps 0.7.3 (2010-11-30) ###
+## Semantic Maps 0.7.3 (2010-11-30) ##
 
 ##### new features #####
 
 * Added KML result format that allows the export of geographical data queried via SMW in the form of .kml files.
 
-### Semantic Maps 0.7.2 (2010-10-28) ###
+## Semantic Maps 0.7.2 (2010-10-28) ##
 
 ##### Bug fixes #####
 
 * Fixed small layout issue in query pop-ups when property names are blank.
 
-### Semantic Maps 0.7.1 (2010-10-20) ###
+## Semantic Maps 0.7.1 (2010-10-20) ##
 
 ##### New features #####
 
@@ -134,7 +134,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed fatal error for Google Maps v2 options on Special:Ask. 
 
-### Semantic Maps 0.7 (2010-10-15) ###
+## Semantic Maps 0.7 (2010-10-15) ##
 
 ##### New features #####
 
@@ -151,7 +151,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Restructured the directory structure of the extension to better match it's architecture.
 
-### Semantic Maps 0.6.6 (2010-08-26) ###
+## Semantic Maps 0.6.6 (2010-08-26) ##
 
 ### New features ###
 
@@ -167,7 +167,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed issue that lowercased template names provided with the template parameter in queries. 
 
-### Semantic Maps 0.6.5 (2010-07-27) ###
+## Semantic Maps 0.6.5 (2010-07-27) ##
 
 ##### New features #####
 
@@ -189,7 +189,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed the default zoom for form inputs and query printers.
 
-### Semantic Maps 0.6.4 (2010-07-08) ###
+## Semantic Maps 0.6.4 (2010-07-08) ##
 
 ##### New features #####
 
@@ -205,7 +205,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed issue that caused result format maps not to load when a centre address was provided that could not be geocoded.
 
-### Semantic Maps 0.6.3 (2010-06-20) ###
+## Semantic Maps 0.6.3 (2010-06-20) ##
 
 ##### Refactoring #####
 
@@ -219,13 +219,13 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed issue that caused a fatal error when doing a query via special:ask with a mapping format, present since 0.6.
 
-### Semantic Maps 0.6.2 (2010-06-07) ###
+## Semantic Maps 0.6.2 (2010-06-07) ##
 
 ##### Bug fixes #####
 
 * Fixed fatal error that occurred when editing a page via a form with a map on it.
 
-### Semantic Maps 0.6.1 (2010-06-04) ###
+## Semantic Maps 0.6.1 (2010-06-04) ##
 
 ##### Bug fixes #####
 
@@ -235,7 +235,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed bug in map form inputs that stored 'west' coordinates as 'south' coordinates, effectively rendering the resulting coordinate set invalid.
 
-### Semantic Maps 0.6 (2010-05-31) ###
+## Semantic Maps 0.6 (2010-05-31) ##
 
 ##### New features #####
 
@@ -261,7 +261,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed conflict with prototype library that caused compatibility problems with the Halo extension.
 
-### Semantic Maps 0.5.5 (2010-03-20) ###
+## Semantic Maps 0.5.5 (2010-03-20) ##
 
 ##### Refactoring #####
 
@@ -275,7 +275,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed escaping issues that caused pop-ups to break when they contained '-signs.
 
-### Semantic Maps 0.5.4 (2010-03-01) ###
+## Semantic Maps 0.5.4 (2010-03-01) ##
 
 ##### Bug fixes #####
 
@@ -285,7 +285,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed i18n issue that caused geocoords not to be recognized on several foreign language wiki's.
 
-### Semantic Maps 0.5.3 (2010-02-01) ###
+## Semantic Maps 0.5.3 (2010-02-01) ##
 
 ##### Bug fixes #####
 
@@ -297,7 +297,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed issue causing a fatal error when executing a query on Special:Ask with the "map" format.
 
-### Semantic Maps 0.5.2 (2010-01-20) ###
+## Semantic Maps 0.5.2 (2010-01-20) ##
 
 ##### New features #####
 
@@ -313,7 +313,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed issue with centre parameter for maps with no results (using forceshow=on).
 
-### Semantic Maps 0.5.1 (2009-12-25) ###
+## Semantic Maps 0.5.1 (2009-12-25) ##
 
 ##### New features #####
 
@@ -333,7 +333,7 @@ See the maps release notes for all changes not specific to Semantic Maps.
 
 * Fixed issue with the query printers causing error messages to be shown for ask specific parameters.
 
-### Semantic Maps 0.5 (2009-12-17) ###
+## Semantic Maps 0.5 (2009-12-17) ##
 
 #####New features#####
 
