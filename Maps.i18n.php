@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])",
+	'maps-desc' => "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations.",
 
 	'right-geocode' => 'Geocode',
 

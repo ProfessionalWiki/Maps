@@ -45,7 +45,7 @@ call_user_func( function() {
 		'author' => array(
 			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
 		) ,
-		'url' => 'https://www.mediawiki.org/wiki/Extension:Maps' ,
+		'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps' ,
 		'descriptionmsg' => 'maps-desc'
 	);
 
