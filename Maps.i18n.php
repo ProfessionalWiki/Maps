@@ -1290,7 +1290,7 @@ $messages['da'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([https://www.semantic-mediawiki.org/wiki/Maps Weitere Informationen …])',
+	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([https://www.semantic-mediawiki.org/wiki/Maps Weitere Informationen …])', # Fuzzy
 	'right-geocode' => 'Georeferenzieren',
 	'maps_map' => 'Karte',
 	'maps-tracking-category' => 'Seiten mit einer von der Maps-Erweiterung gerenderten Karte',
@@ -1742,7 +1742,7 @@ $messages['eo'] = array(
  * @author Vivaelcelta
  */
 $messages['es'] = array(
-	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps Más información...])',
+	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps Más información...])', # Fuzzy
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-tracking-category' => 'Páginas con un mapa de la extensión Maps',
@@ -2255,7 +2255,7 @@ $1',
  * @author Wyz
  */
 $messages['fr'] = array(
-	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])",
+	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])", # Fuzzy
 	'right-geocode' => 'Géocode',
 	'maps_map' => 'Carte',
 	'maps-tracking-category' => 'Pages avec une carte provenant de l’extension Maps',
@@ -3713,7 +3713,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([https://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])',
+	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([https://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])', # Fuzzy
 	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-tracking-category' => 'Maps拡張機能がレンダリングした地図があるページ',
@@ -3924,10 +3924,11 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Hym411
+ * @author Priviet
  * @author 아라
  */
 $messages['ko'] = array(
-	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다. ([https://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
+	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다. ([https://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])', # Fuzzy
 	'right-geocode' => '좌표화',
 	'maps_map' => '지도',
 	'maps-loading-map' => '지도를 불러오는 중...',
@@ -3941,7 +3942,6 @@ $messages['ko'] = array(
 	'maps-layer-property' => '속성',
 	'maps-layer-value' => '값',
 	'maps-layer-errors' => '오류',
-	'maps-error-invalid-layerdef' => '이 레이어 정의가 올바르지 않습니다.',
 	'maps-error-invalid-layertype' => '"$1" 레이어 종류가 없습니다. {{PLURAL:$3|다음 종류}}만 지원합니다: $2',
 	'maps-error-no-layertype' => '레이어 종류를 지정해야 합니다. {{PLURAL:$2|다음 종류만|다음 종류를}} 지원합니다: $1',
 	'validation-error-invalid-layer' => '$1 변수는 올바른 레이어여야 합니다.',
@@ -3992,7 +3992,7 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 기본 좌표화 서비스 값에 영향을 줄 수 있습니다.',
 	'maps-displaymap-par-mappingservice' => '지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.',
 	'maps-displaymap-par-coordinates' => '지도에 보여줄 하나 이상의 위치입니다. 표시로 표시됩니다.',
-	'maps-displaymap-par-visitedicon' => '방문한 아이콘으로 사용할 파일의 로컬', # Fuzzy
+	'maps-displaymap-par-visitedicon' => '마커 아이콘 클릭 이후의 그림 이름',
 	'maps-displaymap-par-zoom' => '지도의 확대 수준을 설정할 수 있습니다.
 제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.',
 	'maps-displaymap-par-centre' => 'display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.
@@ -4022,9 +4022,6 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 	'validation-error-invalid-images' => '$1 변수는 하나 이상의 올바른 그림이어야 합니다.',
 	'validation-error-invalid-goverlay' => '$1 변수는 올바른 오버레이여야 합니다.',
 	'validation-error-invalid-goverlays' => '$1 변수는 하나 이상의 올바른 오버레이여야 합니다.',
-	'validation-error-invalid-line-param' => '"lines" 변수를 잘못 지정했습니다.',
-	'validation-error-invalid-polyline-param' => '"polylines" 변수를 잘못 지정했습니다.',
-	'validation-error-invalid-searchmarkers-param' => '검색표시 값이 잘못되었으며 "all"이나 "title" 중 하나여야 합니다',
 	'maps-abb-north' => '북',
 	'maps-abb-east' => '동',
 	'maps-abb-south' => '남',
@@ -4067,6 +4064,7 @@ $1',
 	'maps-googlemaps3-par-poi' => '관심 지점을 보여줍니다.',
 	'maps-openlayers-par-controls' => '지도에 놓을 컨트롤입니다.',
 	'maps-openlayers-par-layers' => '레이서 선택기에서 사용할 수 있는 레이어입니다. 첫 레이어는 지도를 불러올 때 보여줍니다.',
+	'maps-openlayers-par-overlays' => '레이어 선택기에서 사용 가능하게 될 오버레이 레이어. 이 레이어는 정상 레이어의 맨 위에 일종의 마커처럼 표시될 것입니다.',
 	'maps-osm-par-thumbs' => '섬네일 보기',
 	'maps-osm-par-photos' => '사진 보기',
 	'mapeditor' => '지도 편집기',
@@ -4181,7 +4179,7 @@ $messages['lad'] = array(
  * @author Soued031
  */
 $messages['lb'] = array(
-	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen. ([https://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])",
+	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen. ([https://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])", # Fuzzy
 	'right-geocode' => 'Geocode',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
@@ -4352,7 +4350,7 @@ $messages['mg'] = array(
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([https://www.semantic-mediawiki.org/wiki/Maps?uselang=mk повеќе информации...])',
+	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([https://www.semantic-mediawiki.org/wiki/Maps?uselang=mk повеќе информации...])', # Fuzzy
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Карта',
 	'maps-tracking-category' => 'Страници со карта исцртана со додатокот „Карти“',
@@ -7275,7 +7273,7 @@ $messages['zh-cn'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[https://www.semantic-mediawiki.org/wiki/地图更多信息...]）',
+	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[https://www.semantic-mediawiki.org/wiki/地图更多信息...]）', # Fuzzy
 	'right-geocode' => '地理编码',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入地图中……',
