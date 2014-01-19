@@ -428,7 +428,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit Semantic MediaWiki gespeichert werden ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps Weitere Informationen …]).',
+	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit [https://www.semantic-mediawiki.org/wiki/Semantic_Maps_(de) Semantic MediaWiki] gespeichert werden.',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps-kml-link' => 'KML-Datei ansehen',
 	'semanticmaps-kml' => 'Export (KML)',
@@ -444,7 +444,6 @@ $messages['de'] = array(
 	'semanticmaps-forminput-add' => 'Hinzufügen',
 	'semanticmaps-forminput-locations' => 'Standort',
 	'semanticmaps-par-staticlocations' => 'Die Listen von Standorten, die zusammen mit den abgefragten Daten, der Karte hinzugefügt werden sollen. Analog zu den Anzeigepunkten können je Standort Titel, Beschreibung und Symbol, unter Verwendung einer Tilde „~“ als Trennzeichen, hinzugefügt werden.',
-	'semanticmaps-par-forceshow' => 'Die Karte auch dann anzeigen, wenn es keine anzuzeigenden Standorte gibt',
 	'semanticmaps-par-showtitle' => 'Den Titel im Informationsfenster der Kennzeichnung anzeigen oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.',
 	'semanticmaps-par-hidenamespace' => 'Den Namen des Namensraums im Informationsfenster der Kennzeichnung anzeigen',
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
@@ -967,7 +966,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'semanticmaps-desc' => 'Semantic MediaWiki 拡張機能で格納された座標データを表示・編集する機能を提供する ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps 詳細情報...])',
+	'semanticmaps-desc' => '[https://www.semantic-mediawiki.org Semantic MediaWiki] 拡張機能で格納された座標データを表示・編集する機能を提供する',
 	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps-kml-link' => 'KMLファイルを閲覧',
 	'semanticmaps-default-kml-pagelink' => 'ページ$1を表示',
@@ -982,7 +981,6 @@ $messages['ja'] = array(
 	'semanticmaps-forminput-add' => '追加',
 	'semanticmaps-forminput-locations' => '場所',
 	'semanticmaps-par-staticlocations' => '問い合わせたデータと共に地図に追加する場所の列挙です。display_points と同様に、区切り文字としてチルダ「~」を使用して、場所ごとにタイトル、説明、アイコンを追加できます。',
-	'semanticmaps-par-forceshow' => '表示する場所がない場合でも、地図を表示しますか?',
 	'semanticmaps-par-showtitle' => 'マーカーの情報ウィンドウのタイトルを表示するかどうか。情報ウィンドウのコンテンツをフォーマットするためにテンプレートを使用するとき、これを無効にすると便利です。',
 	'semanticmaps-par-hidenamespace' => 'マーカー情報ウィンドウに名前空間名を表示する',
 	'semanticmaps-par-centre' => '地図の中心。提供されていないときは、自動的に地図上のすべてのマーカーを表示するための最適な中心が選択されます。',
@@ -1025,10 +1023,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Priviet
  * @author 아라
  */
 $messages['ko'] = array(
-	'semanticmaps-desc' => '시맨틱 미디어위키 확장 기능으로 저장된 좌표 데이터를 보고 편집할 수 있는 기능을 제공합니다 ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps 자세한 정보...])',
+	'semanticmaps-desc' => '시맨틱 미디어위키 확장 기능으로 저장된 좌표 데이터를 보고 편집할 수 있는 기능을 제공합니다',
 	'semanticmaps-unrecognizeddistance' => '$1 값은 올바른 거리가 아닙니다.',
 	'semanticmaps-kml-link' => 'KML 파일 보기',
 	'semanticmaps-default-kml-pagelink' => '$1 문서 보기',
@@ -1043,7 +1042,6 @@ $messages['ko'] = array(
 	'semanticmaps-forminput-add' => '추가',
 	'semanticmaps-forminput-locations' => '위치',
 	'semanticmaps-par-staticlocations' => '쿼리된 데이터와 함께 지도를 추가하는 위치의 목록입니다. display_points와 같이, 구분자로 물결표 "~"를 사용하여 위치마다 제목과 설명, 아이콘을 추가할 수 있습니다.',
-	'semanticmaps-par-forceshow' => '보여줄 위치가 없을 때 지도를 보이겠습니까?',
 	'semanticmaps-par-showtitle' => '표시 정보 창에서 제목에 보여주거나 보여주지 않습니다. 정보 창 내용의 형식에 틀을 사용할 때 이를 비활성화하면 편리합니다.',
 	'semanticmaps-par-hidenamespace' => '표시 정보 창의 이름공간 제목 보이기',
 	'semanticmaps-par-centre' => '지도의 가운데입니다. 제공하지 않으면, 지도는 자동으로 지도에서 모든 표시를 보여줄 최적의 가운데를 선택합니다.',
@@ -1125,7 +1123,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'semanticmaps-desc' => 'Овозможува прегледување и уредување на координатни податоци складирани со додатокот Семантички МедијаВики ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps?uselang=mk повеќе информации...]).',
+	'semanticmaps-desc' => 'Овозможува прегледување и уредување на координатни податоци складирани со додатокот [https://www.semantic-mediawiki.org Семантички МедијаВики]',
 	'semanticmaps-unrecognizeddistance' => 'Вредноста $1 не претставува важечко растојание.',
 	'semanticmaps-kml-link' => 'Преглед на KML-податотеката',
 	'semanticmaps-default-kml-pagelink' => 'Преглед на статијата $1',
@@ -1140,7 +1138,6 @@ $messages['mk'] = array(
 	'semanticmaps-forminput-add' => 'Додај',
 	'semanticmaps-forminput-locations' => 'Места',
 	'semanticmaps-par-staticlocations' => 'Список на места за додавање во картатата заедно со побараните податоци. Како и со „display_points“, тука можете да додадете наслов, опис и икона за секое место, користејќи тилда (~) како одделувач.',
-	'semanticmaps-par-forceshow' => 'Да ја прикажувам картата дури и ако нема места за приказ?',
 	'semanticmaps-par-showtitle' => 'Дали да се прикажува насловот на инфопрозорецот на ознаката. Оневозможете го кога користите шаблон за форматирање на содржината на инфопрозорецот.',
 	'semanticmaps-par-hidenamespace' => 'Дали да се прикажува називот на именскиот простор во инфопрозорецот за ознаката.',
 	'semanticmaps-par-centre' => 'Средиштето на картата. Ако не е укажано, картата автоматски ќе го одбере средиштето кајшто оптимално ќе се прикажат сите одбележувачи на картата.',
@@ -1167,6 +1164,7 @@ $messages['ml'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
+	'semanticmaps-desc' => 'Menyediakan kebolehan untuk melihat dan menyunting data koordinat yang disimpan dengan sambungan [https://www.semantic-mediawiki.org Semantic MediaWiki]',
 	'semanticmaps-forminput-remove' => 'Buang',
 	'semanticmaps-forminput-add' => 'Tambahkan',
 	'semanticmaps-forminput-locations' => 'Lokasi',
@@ -1472,7 +1470,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'semanticmaps-desc' => 'Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в семантическом расширении MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps подробнее…]).', # Fuzzy
+	'semanticmaps-desc' => 'Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в расширении [https://www.semantic-mediawiki.org Семантической МедиаВики].',
 	'semanticmaps-unrecognizeddistance' => 'Значение $1 не является допустимым расстоянием.',
 	'semanticmaps-kml-link' => 'Просмотреть файл KML',
 	'semanticmaps-default-kml-pagelink' => 'Просмотреть страницу $1',
@@ -1839,6 +1837,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (中文（繁體）‎)
+ * @author EagerLin
  * @author Gzdavidwong
  * @author Justincheng12345
  * @author Mark85296341
@@ -1848,7 +1847,7 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'semanticmaps-desc' => '提供對採用Semantic MediaWiki擴展所存儲坐標數據的查看和編輯能力（[https://www.semantic-mediawiki.org/wiki/Semantic_Maps 更多資訊]）。',
+	'semanticmaps-desc' => '提供對採用Semantic 維基媒體擴展所存儲坐標數據的查看和編輯能力（[https://www.semantic-mediawiki.org/wiki/Semantic_Maps 更多資訊]）。',
 	'semanticmaps-unrecognizeddistance' => '取值$1不是有效的距離。',
 	'semanticmaps-kml-link' => '查看KML文件',
 	'semanticmaps-default-kml-pagelink' => '檢視頁面 $1',
@@ -1863,7 +1862,6 @@ $messages['zh-hant'] = array(
 	'semanticmaps-forminput-add' => '新增',
 	'semanticmaps-forminput-locations' => '位置',
 	'semanticmaps-par-staticlocations' => '要與所查詢數據一起添加到地圖的一系列位置。就像display_points那樣，可以採用波浪號"~"作為分隔符，為每個位置添加標題、描述及圖標。',
-	'semanticmaps-par-forceshow' => '甚至在沒有要顯示的位置的情況下也顯示地圖嗎？',
 	'semanticmaps-par-showtitle' => '是否在標記信息窗口之中顯示標題。當採用模板對信息窗口內容進行格式編排的時候，關閉此項往往會有所幫助。',
 	'semanticmaps-par-hidenamespace' => '在標記資訊視窗中顯示名字空間的標題',
 	'semanticmaps-par-centre' => '地圖的中心。當未加提供的時候，地圖會自動挑選最佳的中心，從而在地圖上顯示所有的標記。',
