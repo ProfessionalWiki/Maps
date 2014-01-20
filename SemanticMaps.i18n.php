@@ -653,7 +653,7 @@ $messages['fi'] = array(
  * @author Wyz
  */
 $messages['fr'] = array(
-	'semanticmaps-desc' => "Permet d'afficher et de modifier les données de coordonnées stockées par l'extension Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps more info...]).",
+	'semanticmaps-desc' => 'Permet d’afficher et de modifier les données de coordonnées stockées avec l’extension [https://www.semantic-mediawiki.org MédiaWiki Sémantique].',
 	'semanticmaps-unrecognizeddistance' => "La valeur $1 n'est pas une distance valide",
 	'semanticmaps-kml-link' => 'Voir le fichier KML',
 	'semanticmaps-default-kml-pagelink' => 'Voir l’article $1',
@@ -668,7 +668,6 @@ $messages['fr'] = array(
 	'semanticmaps-forminput-add' => 'Ajouter',
 	'semanticmaps-forminput-locations' => 'Emplacements',
 	'semanticmaps-par-staticlocations' => 'Une liste des endroits à ajouter à la carte avec les données demandées. Comme avec display_points, vous pouvez ajouter un titre, une description et une icône par emplacement en utilisant le tilde « ~ » comme séparateur.',
-	'semanticmaps-par-forceshow' => "Afficher la carte même quand il n'y a pas d'emplacement à afficher ?",
 	'semanticmaps-par-showtitle' => "Afficher un titre dans la fenêtre d'informations des marqueurs ou non. La désactivation de ceci est souvent utile lorsque vous utilisez un modèle pour formater le contenu de la fenêtre d'informations.",
 	'semanticmaps-par-hidenamespace' => 'Afficher ou non le titre de l’espace de noms dans la fenêtre d’information du marqueur.',
 	'semanticmaps-par-centre' => "Le centre de la carte. Lorsqu'il n'est pas fourni, la carte va choisir automatiquement le centre optimal pour afficher tous les marqueurs sur la carte.",
