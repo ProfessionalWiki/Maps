@@ -1046,6 +1046,7 @@ $messages['ko'] = array(
 	'semanticmaps-par-centre' => '지도의 가운데입니다. 제공하지 않으면, 지도는 자동으로 지도에서 모든 표시를 보여줄 최적의 가운데를 선택합니다.',
 	'semanticmaps-par-template' => '정보 창 내용을 형식에 사용하는 틀입니다.',
 	'semanticmaps-par-geocodecontrol' => '좌표화 컨트롤을 보여줍니다.',
+	'semanticmaps-par-activeicon' => '활성화된 문서는 쿼리 결과와 같을 때 아이콘이 기본 값 표시기 대신에 표시해야 합니다',
 	'semanticmaps-kml-text' => '각 페이지와 관련된 텍스트입니다. 추가적인 쿼리된 속성이 있으면 덮어 씁니다.',
 	'semanticmaps-kml-title' => '결과에 대한 기본 제목',
 	'semanticmaps-kml-linkabsolute' => '링크는 (상대적와 반대인) 절대적이어야 합니다',
