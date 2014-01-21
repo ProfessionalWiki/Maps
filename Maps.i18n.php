@@ -6934,7 +6934,7 @@ $messages['tzm'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([https://www.semantic-mediawiki.org/wiki/Maps детальніше...])',
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([https://www.semantic-mediawiki.org/wiki/Maps детальніше...])', # Fuzzy
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-tracking-category' => 'Сторінки з картою, створеною розширенням карти',
@@ -6950,7 +6950,9 @@ $messages['uk'] = array(
 	'maps-layer-property' => 'Властивість',
 	'maps-layer-value' => 'Значення',
 	'maps-layer-errors' => 'Помилки',
-	'maps-error-invalid-layerdef' => 'Це визначення шару невірне.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Недопустиме визначення|Недопустимі визначення}}',
+	'maps-layerdef-invalid-fatal' => 'Фатальне недопустиме визначення',
+	'maps-layerdef-wrong-namespace' => 'Визначення шарів дійсні тільки на сторінках простору імен «$1»',
 	'maps-error-invalid-layertype' => 'Не існують шари типу «$1». {{PLURAL:$3|1=Підтримується лише наступний тип|Підтримуються лише наступні типи}}: $2',
 	'maps-error-no-layertype' => 'Вам потрібно вказати тип шару. {{PLURAL:$2|1=Тільки такий тип|Такі типи}} підтримуються: $1',
 	'validation-error-invalid-layer' => 'Параметр $1 повинен бути коректним шаром.',
@@ -7034,9 +7036,6 @@ $messages['uk'] = array(
 	'validation-error-invalid-images' => 'Параметр $1 повинен бути одним або більше коректними зображеннями.',
 	'validation-error-invalid-goverlay' => 'Параметр $1 повинен бути коректним накладенням.',
 	'validation-error-invalid-goverlays' => 'Параметр $1 повинен бути одним або більше коректних накладень.',
-	'validation-error-invalid-line-param' => 'Вказано недопустимий параметр "lines".',
-	'validation-error-invalid-polyline-param' => 'Вказано недопустимий параметр "polylines".',
-	'validation-error-invalid-searchmarkers-param' => 'Недопустиме значення маркерів пошуку, має бути "all" або "title"',
 	'maps-abb-north' => 'Пн',
 	'maps-abb-east' => 'Сх',
 	'maps-abb-south' => 'Пд',
