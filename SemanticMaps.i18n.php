@@ -1047,6 +1047,7 @@ $messages['ko'] = array(
 	'semanticmaps-par-template' => '정보 창 내용을 형식에 사용하는 틀입니다.',
 	'semanticmaps-par-geocodecontrol' => '좌표화 컨트롤을 보여줍니다.',
 	'semanticmaps-par-activeicon' => '활성화된 문서는 쿼리 결과와 같을 때 아이콘이 기본 값 표시기 대신에 표시해야 합니다',
+	'semanticmaps-par-pagelabel' => '"예"로 설정하면, 모든 마커가 마커의 좌표를 포함하는 문서로 연결된 링크와 "inlineLabel"을 가집니다.',
 	'semanticmaps-kml-text' => '각 페이지와 관련된 텍스트입니다. 추가적인 쿼리된 속성이 있으면 덮어 씁니다.',
 	'semanticmaps-kml-title' => '결과에 대한 기본 제목',
 	'semanticmaps-kml-linkabsolute' => '링크는 (상대적와 반대인) 절대적이어야 합니다',
@@ -1300,6 +1301,7 @@ $messages['oc'] = array(
 
 /** Polish (polski)
  * @author BeginaFelicysym
+ * @author Chrumps
  * @author Deejay1
  * @author Derbeth
  * @author Leinad
@@ -1307,7 +1309,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'semanticmaps-desc' => 'Umożliwia przeglądanie oraz edytowanie współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([https://mapping.referata.com/wiki/Examples dema]).', # Fuzzy
+	'semanticmaps-desc' => 'Umożliwia przeglądanie oraz edytowanie współrzędnych zapisanych przez rozszerzenie [https://www.semantic-mediawiki.org Semantic MediaWiki]',
 	'semanticmaps-unrecognizeddistance' => 'Wartość $1 nie jest poprawną odległością.',
 	'semanticmaps-kml-link' => 'Wyświetla plik KML',
 	'semanticmaps-default-kml-pagelink' => 'Pokaż stronę $1',
@@ -1321,7 +1323,6 @@ $messages['pl'] = array(
 	'semanticmaps-forminput-remove' => 'Usuń',
 	'semanticmaps-forminput-add' => 'Dodaj',
 	'semanticmaps-forminput-locations' => 'Miejsca',
-	'semanticmaps-par-forceshow' => 'Wyświetlać mapę nawet wtedy, gdy nie ma miejsc do pokazania?',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1763,9 +1764,10 @@ $messages['ur'] = array(
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran
+ * @author Withoutaname
  */
 $messages['vi'] = array(
-	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng MediaWiki Ngữ nghĩa ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps?uselang=vi thêm thông tin…]).',
+	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps?uselang=vi MediaWiki Ngữ Nghĩa]) .',
 	'semanticmaps-unrecognizeddistance' => 'Giá trị $1 không phải là tầm hợp lệ.',
 	'semanticmaps-kml-link' => 'Xem tập tin KML',
 	'semanticmaps-default-kml-pagelink' => 'Xem trang $1',
@@ -1777,7 +1779,6 @@ $messages['vi'] = array(
 	'semanticmaps-forminput-add' => 'Thêm',
 	'semanticmaps-forminput-locations' => 'Các vị trí',
 	'semanticmaps-par-staticlocations' => 'Danh sách các vị trí để thêm vào bản đồ cùng với dữ liệu được truy vấn. Giống như với display_points, bạn có thể đặt tên, miêu tả, và hình tượng cho mỗi đánh dấu bằng cách phân tách dùng dấu ngã (~).',
-	'semanticmaps-par-forceshow' => 'Hiển thị bản đồ ngay cả khi không có vị trí nào để hiển thị?',
 	'semanticmaps-par-showtitle' => 'Tên tùy chọn của cửa sổ thông tin đánh dấu. Có thể để trống để định dạng nội dung cửa sổ thông tin dùng bản mẫu.',
 	'semanticmaps-par-centre' => 'Trung tâm của bản đồ. Nếu không có, bản đồ sẽ tự động chọn trung tâm tối ưu bao gồm tất cả các dấu trên bản đồ.',
 	'semanticmaps-par-template' => 'Bản đồ dùng để định dạng nội dung của cửa sổ thông tin.',
