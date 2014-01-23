@@ -4237,6 +4237,7 @@ $messages['lb'] = array(
 	'maps-layer-property' => 'Eegeschaft',
 	'maps-layer-value' => 'Wäert',
 	'maps-layer-errors' => 'Feeler',
+	'maps-layerdef-invalid-fatal' => 'Fatal net valabel Definitioun',
 	'maps-layer-of-type' => 'Layer vum Typ "$1"',
 	'maps-geodistance-description' => 'Déi geographesch Distanz tëscht zwéi Punkte berechnen, vun an an iergendeent vun den ënnerstëtzte Formater.',
 	'maps-mapsdoc-par-language' => "D'Sprooch an där d'Dokumentatioun gewise gi soll. Wann déi Iwwersetzung net disponibel ass, da gëtt Englesch an där Plaz benotzt.",
@@ -5415,7 +5416,7 @@ $1',
  * @author Yarl
  */
 $messages['pl'] = array(
-	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])',
+	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych.',
 	'right-geocode' => 'Geokodowanie',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
@@ -5429,7 +5430,6 @@ $messages['pl'] = array(
 	'maps-layer-property' => 'Własność',
 	'maps-layer-value' => 'Wartość',
 	'maps-layer-errors' => 'Błędy',
-	'maps-error-invalid-layerdef' => 'Definicja tej warstwy jest nieprawidłowa.',
 	'maps-error-invalid-layertype' => 'Brak warstw typu „$1”. {{PLURAL:$3|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $2',
 	'maps-error-no-layertype' => 'Musisz określić typ warstwy. {{PLURAL:$2|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $1',
 	'validation-error-invalid-layer' => 'Parametr $1 musi określać prawidłową warstwę.',
@@ -6482,7 +6482,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([https://www.semantic-mediawiki.org/wiki/Maps mer information...]).',
+	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([https://www.semantic-mediawiki.org/wiki/Maps mer information...]).', # Fuzzy
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
@@ -6495,12 +6495,14 @@ $messages['sv'] = array(
 	'maps-layer-property' => 'Egenskap',
 	'maps-layer-value' => 'Värde',
 	'maps-layer-errors' => 'Fel',
-	'maps-error-invalid-layerdef' => 'Denna lagerdefinition är inte giltig.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Ogiltig definition|Ogiltiga definitioner}}',
 	'maps-error-invalid-layertype' => 'Det finns inga lager av typen "$1". Endast {{PLURAL:$3|denna typ|denna typer}} stöds: $2',
 	'maps-error-no-layertype' => 'Du måste ange lagertypen. {{PLURAL:$2|Endast denna typ|Dessa typer}} stöds: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 måste vara ett giltig lager.',
 	'validation-error-invalid-layers' => 'Parameter $1 måste vara ett eller flera giltiga lager.',
+	'validation-error-no-non-numeric' => 'Parametern "$1" måste vara en icke-numerisk sträng.',
 	'maps-layer-of-type' => 'Lagertyp $1',
+	'maps-layer-of-type-and-name' => 'Lager "$2" för typen "$1"',
 	'maps-layer-type-supported-by' => 'Denna lagertyp kan endast användas med {{PLURAL:$2|kartläggningstjänsten $1|dessa kartläggningstjänster: $1}}.',
 	'maps-distance-description' => 'Konvertera ett avstånd mätt i en giltig enhet till en annan enhet.',
 	'maps-finddestination-description' => 'Hitta ett mål utifrån en given startpunkt (på något giltigt format), en inledande bäring och ett avstånd.',
