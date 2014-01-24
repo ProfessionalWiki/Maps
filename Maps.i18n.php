@@ -1187,6 +1187,8 @@ $messages['ce'] = array(
 	'maps-ns-layer-talk' => 'ГӀатан дийцаре',
 	'maps-layer-value' => 'МаьӀна',
 	'maps-abb-east' => 'Цу',
+	'maps-latitude' => 'Шоралла:',
+	'maps-longitude' => 'Дохалла:',
 	'mapeditor-done-button' => 'Кийчча ю',
 	'mapeditor-link-title-switcher-link-text' => 'Хьажораг',
 	'mapeditor-form-field-title' => 'ЦӀе',
@@ -6936,7 +6938,7 @@ $messages['tzm'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([https://www.semantic-mediawiki.org/wiki/Maps детальніше...])', # Fuzzy
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції.',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-tracking-category' => 'Сторінки з картою, створеною розширенням карти',
@@ -6955,11 +6957,17 @@ $messages['uk'] = array(
 	'maps-layerdef-invalid' => '{{PLURAL:$1|Недопустиме визначення|Недопустимі визначення}}',
 	'maps-layerdef-invalid-fatal' => 'Фатальне недопустиме визначення',
 	'maps-layerdef-wrong-namespace' => 'Визначення шарів дійсні тільки на сторінках простору імен «$1»',
+	'maps-layerdef-equal-layer-name' => 'Назви шарів мають бути унікальними у межах однієї сторінки шарів. "$1" вже використано іншим шаром.',
+	'maps-layerpage-usage' => 'Сторінки з картами, які використовують шар "$1"',
+	'maps-layerpage-nousage' => 'Немає сторінок з цим шаром на даний момент.',
 	'maps-error-invalid-layertype' => 'Не існують шари типу «$1». {{PLURAL:$3|1=Підтримується лише наступний тип|Підтримуються лише наступні типи}}: $2',
 	'maps-error-no-layertype' => 'Вам потрібно вказати тип шару. {{PLURAL:$2|1=Тільки такий тип|Такі типи}} підтримуються: $1',
 	'validation-error-invalid-layer' => 'Параметр $1 повинен бути коректним шаром.',
 	'validation-error-invalid-layers' => 'Параметри $1 повинні містити один чи більше коректних шарів.',
+	'validation-error-no-non-numeric' => 'Параметр "$1" повинен бути нечисловим рядком.',
+	'validation-error-no-non-numerics' => 'Параметр "$1" повинен бути одним або декількома нечисловими рядками.',
 	'maps-layer-of-type' => 'Шар типу $1',
+	'maps-layer-of-type-and-name' => 'Шар "$2" типу "$1"',
 	'maps-layer-type-supported-by' => 'Цей тип шару може бути використано {{PLURAL:$2|1=лише із картографічним сервісом|лише із наступними картографічними сервісами:}} $1',
 	'maps-coordinates-description' => 'Перехопиник парсеру для форматування координат із будь-якого у будьякий формат, що підтримується.',
 	'maps-displaymap-description' => 'Відображення географічних карт без жодних вікі-маркерів на них.',
@@ -6969,6 +6977,7 @@ $messages['uk'] = array(
 	'maps-geocode-description' => 'Дозволяє геокодування адрес, іншими словами перетворює зрозумілі для людини розташування у набори координат. Підтримується декілька сервісів геокодування, які не варто плутати з сервісами картографування.',
 	'maps-geodistance-description' => 'Розрахувати географічну відстань між двома точками, з будь-якого і у будь-який підтримуваний формат.',
 	'maps-mapsdoc-description' => 'Відобразити таблицю параметрів вказаного сервісу картографування з їх стандартними значеннями і описом.',
+	'maps-layerdefinition-description' => 'Описує користувацький шар, який може бути відображений з іншими функціями карти.',
 	'maps-mapsdoc-par-service' => 'Сервіс картографування, для якого відобразиться документація параметрів.',
 	'maps-mapsdoc-par-language' => 'Мова, якою показувати документацію. Якщо перекладу на таку немає, буде використано англійську.',
 	'maps-coordinates-par-location' => 'Координати, які Ви бажаєте відформатувати.',
@@ -7080,6 +7089,7 @@ $1',
 	'maps-googlemaps3-par-poi' => "Показати визначні пам'ятки.",
 	'maps-openlayers-par-controls' => 'Елементи керування, які буде розміщено на карті.',
 	'maps-openlayers-par-layers' => 'Шари, які будуть доступні в селекторі шару. Перший шар буде показано під час завантаження карти.',
+	'maps-openlayers-par-overlays' => 'Накладання шарів, які будуть доступні у селекторі шару. Ці шари відображаються поверх звичайного шару на кшталт маркеру.',
 	'maps-osm-par-thumbs' => 'Показувати мініатюри',
 	'maps-osm-par-photos' => 'Показувати фото',
 	'mapeditor' => 'Редактор карт',
@@ -7179,9 +7189,10 @@ $messages['vep'] = array(
  * @author Baonguyen21022003
  * @author Minh Nguyen
  * @author Vinhtantran
+ * @author Withoutaname
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([https://www.semantic-mediawiki.org/wiki/Maps?uselang=vi thêm chi tiết])',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác.',
 	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
@@ -7194,7 +7205,6 @@ $messages['vi'] = array(
 	'maps-layer-property' => 'Thuộc tính',
 	'maps-layer-value' => 'Giá trị',
 	'maps-layer-errors' => 'Lỗi',
-	'maps-error-invalid-layerdef' => 'Định nghĩa lớp này không hợp lệ.',
 	'maps-error-invalid-layertype' => 'Không có lớp nào kiểu “$1”. Chỉ có {{PLURAL:$3|loại|các loại}} này được hỗ trợ: $2',
 	'maps-error-no-layertype' => 'Cần phải định rõ kiểu lớp. {{PLURAL:$2|Kiểu|Các kiểu}} này được hỗ trợ: $1',
 	'validation-error-invalid-layer' => 'Tham số $1 phải là một lớp hợp lệ.',
