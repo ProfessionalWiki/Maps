@@ -1,10 +1,12 @@
 <?php
-
 /**
  * Initialization file for the Maps extension.
- * https://github.com/JeroenDeDauw/Maps
+ * 
+ * @links https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps Documentation
+ * @links https://github.com/JeroenDeDauw/Maps/issues Support
+ * @links https://github.com/JeroenDeDauw/Maps Source code
  *
- * @licence GNU GPL v2+
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
@@ -43,7 +45,7 @@ call_user_func( function() {
 		'name' => 'Maps' ,
 		'version' => Maps_VERSION ,
 		'author' => array(
-			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
+			'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
 		) ,
 		'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps' ,
 		'descriptionmsg' => 'maps-desc'
