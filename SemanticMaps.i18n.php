@@ -1721,7 +1721,7 @@ $messages['tr'] = array(
  * @author SteveR
  */
 $messages['uk'] = array(
-	'semanticmaps-desc' => 'Надає можливість перегляду і редагування координат даних, збережених за допомогою Семантичного розширення Медіавікі ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps докладніше...])',
+	'semanticmaps-desc' => 'Надає можливість перегляду і редагування координатних даних, збережених за допомогою розширення [https://www.semantic-mediawiki.org Семантичної Медіавікі]',
 	'semanticmaps-unrecognizeddistance' => 'Значення $1 є недопустимою відстанню.',
 	'semanticmaps-kml-link' => 'Переглянути KML-файл',
 	'semanticmaps-default-kml-pagelink' => 'Переглянути сторінку $1',
@@ -1736,7 +1736,6 @@ $messages['uk'] = array(
 	'semanticmaps-forminput-add' => 'Додати',
 	'semanticmaps-forminput-locations' => 'Місця',
 	'semanticmaps-par-staticlocations' => 'Перелік місць для додавання на карту разом із запитуваними даними. Наприклад, до display_points можна додати назву, опис та піктограму, використовуючи тильду „~“ в якості роздільника.',
-	'semanticmaps-par-forceshow' => 'Показати карту, навіть коли немає місця для відображення?',
 	'semanticmaps-par-showtitle' => 'Показує чи не показує заголовок в інформаційному вікні маркера. Вимикання цього корисне при використанні шаблону для форматування інформаційного вмісту вікна.',
 	'semanticmaps-par-hidenamespace' => 'Показувати заголовок простору імен у інформаційному вікні маркера',
 	'semanticmaps-par-centre' => 'Центр карти. Якщо не задано, то карта автоматично вибере оптимальний центр, який дозволяє відобразити всі маркери на карті.',
