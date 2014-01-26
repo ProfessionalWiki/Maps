@@ -6,17 +6,6 @@ use SMW\Test\QueryPrinterRegistryTestCase;
 
 /**
  * @covers SMKMLPrinter
- *
- * @file
- * @since 1.8
- *
- * @ingroup SemanticMaps
- * @ingroup Test
- *
- * @group SemanticMaps
- * @group SMWExtension
- * @group ResultPrinters
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
