@@ -6873,6 +6873,7 @@ $1',
  * @author Joseph
  * @author Manco Capac
  * @author Meelo
+ * @author Trncmvsr
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -6887,6 +6888,7 @@ $messages['tr'] = array(
 	'maps-layer-property' => 'Özellik',
 	'maps-layer-value' => 'Değer',
 	'maps-layer-errors' => 'Hatalar',
+	'maps-layerdef-invalid' => 'Hatalı tanımlama{{PLURAL:$1||lar}}',
 	'validation-error-invalid-location' => '$1 parametresi geçerli bir konum olmalıdır.',
 	'validation-error-invalid-locations' => '$1 parametresi geçerli bir (veya daha fazla) konum olmalıdır.',
 	'validation-error-invalid-width' => '$1 parametresi geçerli bir genişlik olmalıdır.',
