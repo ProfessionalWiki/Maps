@@ -593,14 +593,22 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Armin1392
  * @author Mjbmr
  */
 $messages['fa'] = array(
+	'semanticmaps-kml-link' => 'مشاهدهٔ پوشهٔ کا‌ام‌ال',
 	'semanticmaps-default-kml-pagelink' => 'مشاهده صفحهٔ $1',
+	'semanticmaps-latitude' => 'عرض جغرافیایی: $1',
+	'semanticmaps-longitude' => 'طول جغرافیایی: $1',
+	'semanticmaps-altitude' => 'ارتفاع: $1',
+	'semanticmaps_enteraddresshere' => 'آدرس را اینجا وارد کنید',
 	'semanticmaps-updatemap' => 'به روز رسانی نقشه',
 	'semanticmaps-forminput-remove' => 'حذف',
 	'semanticmaps-forminput-add' => 'افزودن',
 	'semanticmaps-forminput-locations' => 'مکان‌ها',
+	'semanticmaps-par-geocodecontrol' => 'نشان دادن کنترل جئوکدینگ.',
+	'semanticmaps-kml-title' => 'عنوان پیش‌زمینه برای نتایج',
 );
 
 /** Finnish (suomi)
@@ -706,7 +714,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'semanticmaps-desc' => 'Proporciona a capacidade de ollar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps máis información...]).',
+	'semanticmaps-desc' => 'Proporciona a capacidade de ollar e modificar os datos de coordenadas gardados a través da extensión [https://www.semantic-mediawiki.org Semantic MediaWiki]',
 	'semanticmaps-unrecognizeddistance' => 'O valor $1 non é unha distancia válida.',
 	'semanticmaps-kml-link' => 'Ollar o ficheiro KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver a páxina "$1"',
@@ -721,13 +729,13 @@ $messages['gl'] = array(
 	'semanticmaps-forminput-add' => 'Engadir',
 	'semanticmaps-forminput-locations' => 'Localizacións',
 	'semanticmaps-par-staticlocations' => 'Unha lista de localizacións para engadir ao mapa xunto aos datos consultados. Como con display_points, pode engadir un título, unha descrición e mais unha icona por localización mediante o signo "~" como separador.',
-	'semanticmaps-par-forceshow' => 'Quere mostrar o mapa, mesmo cando non haxa localizacións que presentar?',
 	'semanticmaps-par-showtitle' => 'Mostrar ou non un título na ventá de información do marcador. Frecuentemente, desactivar isto é útil ao utilizar un modelo para dar formato ao contido da ventá de información.',
 	'semanticmaps-par-hidenamespace' => 'Mostrar o título do espazo de nomes na ventá de información do marcador',
 	'semanticmaps-par-centre' => 'O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.',
 	'semanticmaps-par-template' => 'Un modelo a empregar para dar formato ao contido da ventá de información.',
 	'semanticmaps-par-geocodecontrol' => 'Mostrar o control de xeocodificación.',
 	'semanticmaps-par-activeicon' => 'Icona a mostrar no canto do marcador predeterminado, cando a páxina é igual ao resultado da pescuda',
+	'semanticmaps-par-pagelabel' => 'Ao definirse en "si", todos os macadores terán un "inlineLabel" cunha ligazón cara á páxina que conten as coordenadas do marcador',
 	'semanticmaps-kml-text' => 'O texto asociado a cada páxina. Substituído polas propiedades pescudadas adicionais, se existen.',
 	'semanticmaps-kml-title' => 'O título por defecto para os resultados',
 	'semanticmaps-kml-linkabsolute' => 'Se as ligazóns deberían ser absolutas (contrario a relativas)',
@@ -1194,7 +1202,7 @@ $messages['mt'] = array(
  * @author Nghtwlkr
  */
 $messages['nb'] = array(
-	'semanticmaps-desc' => 'Gir muligheten til å se på og endre koordinatdata lagret ved hjelp av utvidelsen Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps se her...]).',
+	'semanticmaps-desc' => 'Gir muligheten til å se på og endre koordinatdata lagret ved hjelp av utvidelsen ([https://www.semantic-mediawiki.org Semantic MediaWiki]).',
 	'semanticmaps-unrecognizeddistance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'semanticmaps-kml-link' => 'Vis KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Vis siden $1',
@@ -1209,12 +1217,13 @@ $messages['nb'] = array(
 	'semanticmaps-forminput-add' => 'Legg til',
 	'semanticmaps-forminput-locations' => 'Lokasjoner',
 	'semanticmaps-par-staticlocations' => 'En lokasjonsliste til å legge inn i kartet sammen med data fra spørringen. Som med display_points, kan du legge inn en tittel, en beskrivelse og et ikon per lokasjon med tilde "~" som skilletegn.',
-	'semanticmaps-par-forceshow' => 'Vil du vise kartet selv når det ikke er noen lokasjoner med?',
 	'semanticmaps-par-showtitle' => 'Vise tittel i markørinfovinduet eller ikke. Deaktivering er ofte nyttig når en bruker en mal for å formatere innholdet i infovinduet.',
 	'semanticmaps-par-hidenamespace' => 'Vis tittelen for navnerommet i markørens informasjonsboks',
 	'semanticmaps-par-centre' => 'Kartets sentrum. Hvis dette ikke er angitt, vil kartet automatisk velge det optimale senteret for å vise alle kartmarkørene.',
 	'semanticmaps-par-template' => 'Mal som brukes for å formatere innholdet i infovinduet.',
 	'semanticmaps-par-geocodecontrol' => 'Vis geokodingsstyringen',
+	'semanticmaps-par-activeicon' => 'Ikon som vises istedenfor standardmarkøren, når aktiv side er lik resultatet av spørringen',
+	'semanticmaps-par-pagelabel' => 'Når satt til "ja", vil alle markører ha en "inlineLabel" med en lenke til siden som inneholder markørens koordinater',
 	'semanticmaps-kml-text' => 'Teksten knyttes til hver side. Overstyrt av spørringer på ekstra egenskaper, om noen.',
 	'semanticmaps-kml-title' => 'Standard resultatoverskrift',
 	'semanticmaps-kml-linkabsolute' => 'Skal lenker være absolutte eller ikke (dvs. relative)',
