@@ -86,7 +86,7 @@ make use of Validator 0.5.x as stated above. More recent versions of Validator w
 
 ### Database support
 
-All current versions of Semantic Maps have full support for all databases that can be used with MediaWiki.
+All current versions of Semantic Maps have full support for all databases that can be used with Semantic MediaWiki.
 
 ## Download and installation
 
