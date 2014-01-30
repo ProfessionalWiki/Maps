@@ -46,13 +46,13 @@ These are the installation and configuration instructions for the [SemanticMaps]
 		<th></th>
 		<th>PHP</th>
 		<th>MediaWiki</th>
-		<th>Semantic<br />MediaWiki</th>
+		<th>SMW</th>
 		<th>Maps</th>
 		<th>Composer</th>
 		<th>Validator</th>
 	</tr>
 	<tr>
-		<th>Semantic Maps<br />3.0.x</th>
+		<th>S. Maps 3.0.x</th>
 		<td>5.3.2 - 5.5.x</td>
 		<td>1.18 - 1.23</td>
 		<td>1.9.x</td>
@@ -61,7 +61,7 @@ These are the installation and configuration instructions for the [SemanticMaps]
 		<td>1.0.x (handled by Composer)</td>
 	</tr>
 	<tr>
-		<th>Semantic Maps<br />2.0.x</th>
+		<th>S. Maps 2.0.x</th>
 		<td>5.3.2 - 5.5.x</td>
 		<td>1.18 - 1.23</td>
 		<td>1.8.x</td>
@@ -70,7 +70,7 @@ These are the installation and configuration instructions for the [SemanticMaps]
 		<td>0.5.1</td>
 	</tr>
 	<tr>
-		<th>Semantic Maps<br />1.0.5</th>
+		<th>S. Maps 1.0.5</th>
 		<td>5.2.0 - 5.3.x</td>
 		<td>1.17 - 1.19</td>
 		<td>1.7.x</td>
