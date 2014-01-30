@@ -2,7 +2,7 @@
 
 ## Installation
 
-These are the installation and configuration instructions for the [SemanticMaps extension](../README.md).
+These are the installation and configuration instructions for the [SemanticMaps](../README.md) extension.
 
 ## Versions
 
@@ -29,7 +29,7 @@ These are the installation and configuration instructions for the [SemanticMaps 
 		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/2.0.x/RELEASE-NOTES">Semantic Maps 1.0.5</a></th>
 		<td>Legacy release</td>
 		<td>2011-11-30</td>
-		<td></td>
+		<td>-/-</td>
 	</tr>
 </table>
 
@@ -75,7 +75,7 @@ These are the installation and configuration instructions for the [SemanticMaps 
 </table>
 
 When installing Semantic Maps 2.x, see the installation instructions that come bundled with it. Also
-make use of Validator 0.5.x. More recent versions of Validator will not work.
+make use of Validator 0.5.x as stated above. More recent versions of Validator will not work.
 
 
 ### Database support
@@ -90,17 +90,17 @@ versions prior to 1.22 can use Composer via the
 [Extension Installer](https://github.com/JeroenDeDauw/ExtensionInstaller/blob/master/README.md)
 extension.
 
-Note that [Semantic MediaWiki](https://semantic-mediawiki.org/wiki/Help:Installation) needs to be installed first for this extension to work.
+Note that the [Semantic MediaWiki](https://semantic-mediawiki.org/wiki/Help:Installation) extension as well as the  [Maps](https://github.com/JeroenDeDauw/Maps/blob/master/docs/INSTALL.md) extension need to be installed first for this extension to work.
 
 #### Step 1
 
-If you have MediaWiki 1.22 or later, go to the root directory of your MediaWiki installation,
-and go to step 2. You do not need to install any extensions to support composer.
+If you use MediaWiki 1.22 or later, go to the root directory of your MediaWiki installation,
+and skip to step 2. You do not need to install any extensions to support Composer.
 
 For MediaWiki 1.21.x and earlier you need to install the
-[Extension Installer](https://github.com/JeroenDeDauw/ExtensionInstaller/blob/master/README.md) extension.
+[Extension Installer](https://github.com/JeroenDeDauw/ExtensionInstaller/blob/master/README.md) extension first.
 
-Once you are done installing the Extension Installer, go to its directory so composer.phar
+Once you are done installing the Extension Installer extension, go to its directory so the "composer.phar" file
 is installed in the right place.
 
     cd extensions/ExtensionInstaller
@@ -109,19 +109,19 @@ is installed in the right place.
 
 If you have previously installed Composer skip to step 3.
 
-To install Composer:
+To install Composer run:
 
     wget http://getcomposer.org/composer.phar
 
 #### Step 3
 
-Now using Composer, install Semantic Maps
+Now using Composer, install Semantic Maps by running
 
     php composer.phar require mediawiki/semantic-maps "*"
 
 #### Verify installation success
 
-As final step, you can verify Semantic Maps got installed by looking at the "Special:Version" page on your wiki and verifying the Semantic Maps extension is listed.
+As final step, you can verify Semantic Maps got installed by looking at the "Special:Version" page on your wiki and verifying the Semantic Maps extension is listed in the "Semantic extensions" section.
 
 
 ## Configuration
