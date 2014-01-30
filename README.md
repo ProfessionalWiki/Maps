@@ -1,7 +1,7 @@
 # Semantic Maps
 
 [![Build Status](https://secure.travis-ci.org/SemanticMediaWiki/SemanticMaps.png?branch=master)](http://travis-ci.org/SemanticMediaWiki/SemanticMaps)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticMaps/badges/quality-score.png?s=f711edad29f01cf68525085f4d7f3630ffe41dee)](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticMaps/)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticMaps/badges/quality-score.png?s=2e92028475bc897409f8dbb40ce897d6cc88240e)](https://scrutinizer-ci.com/g/SemanticMediaWiki/SemanticMaps/)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/semantic-maps/version.png)](https://packagist.org/packages/mediawiki/semantic-maps)
 [![Download count](https://poser.pugx.org/mediawiki/semantic-maps/d/total.png)](https://packagist.org/packages/mediawiki/semantic-maps)
 
