@@ -1750,11 +1750,12 @@ $messages['eo'] = array(
  * @author Pertile
  * @author Peter17
  * @author Sanbec
+ * @author Sethladan
  * @author Translationista
  * @author Vivaelcelta
  */
 $messages['es'] = array(
-	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps Más información...])', # Fuzzy
+	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas.',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-tracking-category' => 'Páginas con un mapa de la extensión Maps',
@@ -3633,10 +3634,11 @@ $messages['ig'] = array(
  * @author F. Cosoleto
  * @author Gianfranco
  * @author HalphaZ
+ * @author Rosh
  * @author Viscontino
  */
 $messages['it'] = array(
-	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([https://www.semantic-mediawiki.org/wiki/Maps maggiori informazioni...])',
+	'maps-desc' => 'Consenti la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodificazione degli indirizzi ed altre operazioni geografiche.',
 	'right-geocode' => 'Effettua la geocodifica',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
@@ -3650,7 +3652,6 @@ $messages['it'] = array(
 	'maps-layer-property' => 'Proprietà',
 	'maps-layer-value' => 'Valore',
 	'maps-layer-errors' => 'Errori',
-	'maps-error-invalid-layerdef' => 'La definizione del livello non è valida.',
 	'maps-error-invalid-layertype' => 'Non c\'è alcun livello di tipo "$1". Solo {{PLURAL:$3|questo tipo è supportato|questi tipi sono supportati}}: $2',
 	'maps-error-no-layertype' => 'È necessario specificare il tipo di livello. Solo {{PLURAL:$2|questo tipo è supportato|questi tipi sono supportati}}: $1',
 	'validation-error-invalid-layer' => 'Il parametro $1 deve essere un livello valido.',
@@ -3682,8 +3683,6 @@ $messages['it'] = array(
 	'validation-error-invalid-distances' => 'Il parametro $1 deve essere una o più distanze valide.',
 	'validation-error-invalid-image' => "Il parametro $1 deve essere un'immagine valida.",
 	'validation-error-invalid-images' => 'Il parametro $1 deve essere una o più immagini valide.',
-	'validation-error-invalid-line-param' => 'Parametro "lines" specificato non valido.',
-	'validation-error-invalid-polyline-param' => 'Parametro "polylines" specificato non valido.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -7203,7 +7202,7 @@ $messages['vep'] = array(
  * @author Withoutaname
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác.',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác.',
 	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
