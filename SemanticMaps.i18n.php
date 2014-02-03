@@ -936,7 +936,7 @@ $messages['id'] = array(
  * @author Rosh
  */
 $messages['it'] = array(
-	'semanticmaps-desc' => "Consente la possibilità di visualizzare e modificare le coordinate memorizzate con l'estensione [https://www.semantic-mediawiki.org Semantic MediaWiki]",
+	'semanticmaps-desc' => "Consente di visualizzare e modificare le coordinate memorizzate con l'estensione [https://www.semantic-mediawiki.org Semantic MediaWiki]",
 	'semanticmaps-unrecognizeddistance' => 'Il valore $1 non è una distanza valida.',
 	'semanticmaps-kml-link' => 'Visualizza il file KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualizza la pagina $1',
