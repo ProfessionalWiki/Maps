@@ -2844,13 +2844,13 @@ $1',
  * @author Ex-Diktator
  * @author Rotemliss
  * @author YaronSh
+ * @author Yona b
  * @author Yonidebest
  * @author ערן
  * @author תומר ט
  */
 $messages['he'] = array(
-	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.
-([http://mapping.referata.com/wiki/Maps_examples הדגמות])', # Fuzzy
+	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.',
 	'right-geocode' => 'לעשות קידוד גאוגרפי',
 	'maps_map' => 'מפה',
 	'maps-loading-map' => 'המפה נטענת...',
@@ -3638,7 +3638,7 @@ $messages['ig'] = array(
  * @author Viscontino
  */
 $messages['it'] = array(
-	'maps-desc' => 'Consenti la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodificazione degli indirizzi ed altre operazioni geografiche.',
+	'maps-desc' => 'Consenti di includere mappe dinamiche nelle pagine wiki, la geocodificazione degli indirizzi ed altre operazioni geografiche.',
 	'right-geocode' => 'Effettua la geocodifica',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
