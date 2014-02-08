@@ -44,5 +44,10 @@
 			"tests/phpunit/elements/",
 			"tests/phpunit/parserhooks/ParserHookTest.php"
 		]
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "3.x-dev"
+		}
 	}
 }
