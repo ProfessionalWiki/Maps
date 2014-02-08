@@ -45,5 +45,10 @@
 			"src/",
 			"SemanticMaps.hooks.php"
 		]
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "3.x-dev"
+		}
 	}
 }
