@@ -428,7 +428,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit [https://www.semantic-mediawiki.org/wiki/Semantic_Maps_(de) Semantic MediaWiki] gespeichert werden.',
+	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit [https://www.semantic-mediawiki.org/wiki/Semantic_Maps_(de) Semantic MediaWiki] gespeichert werden',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps-kml-link' => 'KML-Datei ansehen',
 	'semanticmaps-kml' => 'Export (KML)',
@@ -449,8 +449,8 @@ $messages['de'] = array(
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
-	'semanticmaps-par-activeicon' => 'Symbol, das anstelle der Standardkennzeichnung angezeigt wird, wenn die aktive Seite dem Abfrageergebnis entspricht.',
-	'semanticmaps-par-pagelabel' => 'Falls auf „ja“ gesetzt, haben alle Kennzeichnungen ein „inlineLabel“ mit einem Link zur Seite, die die Koordinaten für die Kennzeichnung enthält.',
+	'semanticmaps-par-activeicon' => 'Das Symbol, das anstelle der Standardmarkierung angezeigt wird, sofern die aktive Seite dem Abfrageergebnis entspricht.',
+	'semanticmaps-par-pagelabel' => 'Sofern auf „ja“ gesetzt, verfügen alle Markierungen über eine eingebettete Anzeige mit einem Link zur entsprechenden Seite sowie den entsprechenden Koordinaten.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
