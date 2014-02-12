@@ -103,7 +103,7 @@ When no, every value will be geocoded, even valid coordinates.',
 	'maps-geodistance-par-unit' => 'The unit to output the distance in.',
 	'maps-geodistance-par-decimals' => 'The maximum number of fractional digits to use in the resulting value.',
 	'maps-geodistance-par-mappingservice' => 'The geocoding service to use to geocode any addresses.',
-	'maps-geodistance-par-geoservice' => 'The mapping service this is used together with.
+	'maps-geodistance-par-geoservice' => 'The mapping service this parser function is used together with.
 This can affect the default geocoding service value.',
 
 	// display_map parser hook
