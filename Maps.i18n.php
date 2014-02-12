@@ -303,6 +303,9 @@ The category is automatically added unless the feature is disabled.',
 	'maps-layer-type-supported-by' => 'Parameters:
 * $1 - list of supported services (geonames and/or google). not localized.
 * $2 - number of supported services',
+	'maps-geocode-par-allowcoordinates' => '{{maps-par|geocode|allowcoordinates}}
+
+{{doc-important|Do not translate the parameter values "yes" and "no".}}',
 	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view.
 
 Tooltip for this button is {{msg-mw|Maps-fullscreen-button-tooltip}}.',
