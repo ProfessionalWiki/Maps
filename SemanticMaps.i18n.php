@@ -61,6 +61,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Kghbln
  * @author Lloffiwr
  * @author Purodha
  * @author Raymond
@@ -109,7 +110,9 @@ The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinat
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
 	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}',
-	'semanticmaps-par-pagelabel' => 'Text explaning query parameter "pagelabel". When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker',
+	'semanticmaps-par-pagelabel' => 'Text explaining query parameter "pagelabel". When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker
+
+{{doc-important|Do not translate the parameter value "yes".}}',
 	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext" input box.
 See example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]
 
@@ -450,7 +453,7 @@ $messages['de'] = array(
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
 	'semanticmaps-par-activeicon' => 'Das Symbol, das anstelle der Standardmarkierung angezeigt wird, sofern die aktive Seite dem Abfrageergebnis entspricht.',
-	'semanticmaps-par-pagelabel' => 'Sofern auf „ja“ gesetzt, verfügen alle Markierungen über eine eingebettete Anzeige mit einem Link zur entsprechenden Seite sowie den entsprechenden Koordinaten.',
+	'semanticmaps-par-pagelabel' => 'Sofern mit „yes“ (ja) festgelegt, verfügen alle Markierungen über eine eingebettete Anzeige mit einem Link zur entsprechenden Seite sowie den entsprechenden Koordinaten.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
