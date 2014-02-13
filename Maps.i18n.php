@@ -306,6 +306,8 @@ The category is automatically added unless the feature is disabled.',
 	'maps-geocode-par-allowcoordinates' => '{{maps-par|geocode|allowcoordinates}}
 
 {{doc-important|Do not translate the parameter values "yes" and "no".}}',
+	'maps-geodistance-par-geoservice' => '{{Maps-par|geodistance|geoservice}}',
+	'maps-displaymap-par-visitedicon' => '{{Maps-par|displaymap|visitedicon}}',
 	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view.
 
 Tooltip for this button is {{msg-mw|Maps-fullscreen-button-tooltip}}.',
@@ -1375,8 +1377,8 @@ Dadurch können die Standardwerte der Funktion durch die für den Kartografiedie
 Jeder Kartografiedienst kann über eigenständige Standardwerte für die Georeferenzierung verfügen.
 Diese Einstellung hat rechtliche Gründe, da man bspw. den Google Georeferenzierungsdienst nur zusammen mit Google Maps nutzen kann.
 Diesen Parameter anstatt dem zum Georeferenzierungsdienst einzustellen, verhindert eine unzulässige Kombination bei der Nutzung der Dienste.',
-	'maps-geocode-par-allowcoordinates' => 'Ermöglicht die Deaktivierung der Unterstützung von Koordinaten. Entweder Ja oder Nein angeben.
-Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordinaten.',
+	'maps-geocode-par-allowcoordinates' => 'Ermöglicht die Deaktivierung der Unterstützung von Koordinaten. Entweder mit „yes“ (ja) oder „no“ (nein) festlegen.
+Sofern man „no“ setzt, werden alle Koodiantenwerte geokodiert – sogar gültige Koordinaten.',
 	'maps-geocode-par-format' => 'Das Ausgabeformat für die Koordinaten.',
 	'maps-geocode-par-directional' => 'Gibt an, ob die Koordinaten eine Richtungsangabe haben sollen oder nicht.',
 	'maps-geodistance-par-location1' => 'Der erste von zwei Punkten zwischen denen die Entfernung berechnet werden soll.',
@@ -1388,7 +1390,7 @@ Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordi
 Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.',
 	'maps-displaymap-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll',
-	'maps-displaymap-par-visitedicon' => 'Der Name eines Bildes, das für Markersymbole nach dem Anklicken verwendet werden soll.',
+	'maps-displaymap-par-visitedicon' => 'Der Dateiname des Symbols, das anstelle der ursprünglichen Markierung angezeigt werden soll, sobald dieses angeklickt wurde',
 	'maps-displaymap-par-zoom' => 'Der Anzeigestufe (Zoom) der Karte.
 Sofern keine angegeben wurde und mehrerer Markierungen auf der Karte vorhanden sind, wird die für deren gemeinsame Darstellung passende Anzeigestufe verwendet und nicht der Standardwert des Kartografiediensts.',
 	'maps-displaymap-par-centre' => 'Die Koordinaten, die zur Zentrierung der Karte verwendet werden sollen.
