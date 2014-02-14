@@ -109,7 +109,7 @@ This can affect the default geocoding service value.',
 	// display_map parser hook
 	'maps-displaymap-par-mappingservice' => 'Allows setting the mapping service that will be used to generate the map.',
 	'maps-displaymap-par-coordinates' => 'The location the map will initially be centered on.',
-	'maps-displaymap-par-visitedicon' => 'The name of an image to be used for marker icons after they have been clicked',
+	'maps-displaymap-par-visitedicon' => 'The filename of an image to be used for marker icons after the original markers have been clicked',
 	'maps-displaymap-par-zoom' => 'Allows setting the zoom level of the map.
 When not provided and multiple markers are present on the map, the best fitting zoom will be taken, not the configurable default.',
 	'maps-displaymap-par-coordinates' => 'One or more locations to display on the map. They will be indicated with a marker.',
