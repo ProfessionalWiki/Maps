@@ -23,7 +23,7 @@ $messages['en'] = array(
 	'maps-load-failed' => 'Could not load the map!',
 	'maps-markers' => 'Markers',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
-	'maps-searchmarkers-text' => 'Filter markers',
+	'maps-searchmarkers-text' => 'Filter by markers',
 	'maps-others' => 'others',
 	'maps-kml-parsing-failed' => 'Failed parsing one or more KML files, usually due to retrieval failure or malformed XML.',
 	//TODO: move to namespaces i18n
