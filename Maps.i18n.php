@@ -272,7 +272,8 @@ $messages['qqq'] = array(
 
 The category is automatically added unless the feature is disabled.',
 	'maps-copycoords-prompt' => 'text displayed in JavaScript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
-	'maps-searchmarkers-text' => 'Used as default value for input box of the Search form. (Looks like placeholder.)',
+	'maps-searchmarkers-text' => '{{doc-important|Translate "Filter" as being a word.}}
+This message is located within an input box to assist users with the input. This fuctionality allows to filter the markers based on the input one provides. See the [https://semantic-mediawiki.org/wiki/Maps_examples/OpenLayers_searchmarkers live example].',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-ns-layer' => '{{Identical|Layer}}',
@@ -1321,7 +1322,7 @@ $messages['de'] = array(
 	'maps-load-failed' => 'Die Karte konnte nicht geladen werden.',
 	'maps-markers' => 'Markierungen',
 	'maps-copycoords-prompt' => 'STRG+C, ENTER',
-	'maps-searchmarkers-text' => 'Markierungen zum Filtern',
+	'maps-searchmarkers-text' => 'Markierungen filtern',
 	'maps-others' => 'andere',
 	'maps-kml-parsing-failed' => 'Das Parsen einer oder mehrerer KML-Dateien ist fehlgeschlagen, normalerweise aufgrund eines Abfragefehlers oder aufgrund von fehlerhaftem XML.',
 	'maps-ns-layer' => 'Ebene',
@@ -6217,6 +6218,9 @@ $messages['ru'] = array(
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-displaymap-par-coordinates' => 'Одно или несколько мест для отображения на карте. Они будут обозначаться маркером.',
 	'maps-displaymap-par-visitedicon' => 'Имя изображения, которое будет используется для значков-маркеров после того, как на них нажмут',
+	'maps-displaymap-par-title' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенного заголовка.
+При использовании совместно с подписью, название будет выделено жирным шрифтом и подчеркнуто.',
+	'maps-displaymap-par-label' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенных подписей.',
 	'maps-displaymap-par-icon' => 'Позволяет установить значок, используемый для всех маркеров.',
 	'maps-displaymap-par-circles' => 'Кружки для отображения',
 	'maps-displaymap-par-copycoords' => 'Показывать ли диалоговое окно, в котором должны быть показаны координаты местоположения, при нажатии на что-нибудь',
