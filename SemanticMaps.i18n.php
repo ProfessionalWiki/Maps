@@ -61,6 +61,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Kghbln
  * @author Lloffiwr
  * @author Purodha
  * @author Raymond
@@ -109,7 +110,9 @@ The submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinat
 	'semanticmaps-forminput-add' => '{{Identical|Add}}',
 	'semanticmaps-forminput-locations' => '{{Identical|Location}}',
 	'semanticmaps-par-activeicon' => 'See: {{msg-mw|Semanticmaps-par-activeicon}}',
-	'semanticmaps-par-pagelabel' => 'Text explaning query parameter "pagelabel". When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker',
+	'semanticmaps-par-pagelabel' => 'Text explaining query parameter "pagelabel". When set to "yes", all markers will have an "inlineLabel" with a link to the page containing the coordinates for the marker
+
+{{doc-important|Do not translate the parameter value "yes".}}',
 	'semanticmaps-kml-pagelinktext' => 'Used as description for "pagelinktext" input box.
 See example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]
 
@@ -428,7 +431,7 @@ $messages['da'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit [https://www.semantic-mediawiki.org/wiki/Semantic_Maps_(de) Semantic MediaWiki] gespeichert werden.',
+	'semanticmaps-desc' => 'Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit [https://www.semantic-mediawiki.org/wiki/Semantic_Maps_(de) Semantic MediaWiki] gespeichert werden',
 	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps-kml-link' => 'KML-Datei ansehen',
 	'semanticmaps-kml' => 'Export (KML)',
@@ -449,8 +452,8 @@ $messages['de'] = array(
 	'semanticmaps-par-centre' => 'Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.',
 	'semanticmaps-par-template' => 'Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.',
 	'semanticmaps-par-geocodecontrol' => 'Die Steuerungsseite zum Geokodieren anzeigen.',
-	'semanticmaps-par-activeicon' => 'Symbol, das anstelle der Standardkennzeichnung angezeigt wird, wenn die aktive Seite dem Abfrageergebnis entspricht.',
-	'semanticmaps-par-pagelabel' => 'Falls auf „ja“ gesetzt, haben alle Kennzeichnungen ein „inlineLabel“ mit einem Link zur Seite, die die Koordinaten für die Kennzeichnung enthält.',
+	'semanticmaps-par-activeicon' => 'Das Symbol, das anstelle der Standardmarkierung angezeigt wird, sofern die aktive Seite dem Abfrageergebnis entspricht.',
+	'semanticmaps-par-pagelabel' => 'Sofern mit „yes“ (ja) festgelegt, verfügen alle Markierungen über eine eingebettete Anzeige mit einem Link zur entsprechenden Seite sowie den entsprechenden Koordinaten.',
 	'semanticmaps-kml-text' => 'Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.',
 	'semanticmaps-kml-title' => 'Der Standardtitel für die Ergebnisse',
 	'semanticmaps-kml-linkabsolute' => 'Die Links sollen absolut sein (anstatt relativ)',
@@ -541,10 +544,11 @@ $messages['eo'] = array(
  * @author Fitoschido
  * @author Imre
  * @author Locos epraix
+ * @author Sethladan
  * @author Translationista
  */
 $messages['es'] = array(
-	'semanticmaps-desc' => 'Proporciona la posibilidad de ver y editar datos de coordenadas almacenados con la extensión Semantic MediaWiki (Más información.).',
+	'semanticmaps-desc' => 'Proporciona la posibilidad de ver y editar datos de coordenadas almacenados con la extensión [https://www.semantic-mediawiki.org Semantic MediaWiki].',
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no es una distancia válida.',
 	'semanticmaps-kml-link' => 'Ver el archivo KML',
 	'semanticmaps-default-kml-pagelink' => 'Ver página $1',
@@ -559,7 +563,6 @@ $messages['es'] = array(
 	'semanticmaps-forminput-add' => 'Añadir',
 	'semanticmaps-forminput-locations' => 'Ubicaciones',
 	'semanticmaps-par-staticlocations' => 'Una lista de localizaciones para añadir al mapa junto a los datos consultados. De forma similar a display_points, puede añadir un título, una descripción o un icono por localización usando el signo "~" como separador.',
-	'semanticmaps-par-forceshow' => '¿Mostrar el mapa incluso cuando no hay ubicaciones que mostrar?',
 	'semanticmaps-par-showtitle' => 'Mostrar o no mostrar un título en la ventana de información del marcador. La desactivación de esto es frecuentemente útil al utilizar una plantilla para dar formato al contenido de la ventana de información.',
 	'semanticmaps-par-hidenamespace' => 'Mostrar el título del espacio de nombres en la ventana de información del marcador.',
 	'semanticmaps-par-centre' => 'El centro del mapa. Cuando no se proporciona, el mapa escogerá automáticamente el mejor centro para mostrar todos los marcadores en el mapa.',
@@ -933,9 +936,10 @@ $messages['id'] = array(
  * @author Darth Kule
  * @author Gianfranco
  * @author HalphaZ
+ * @author Rosh
  */
 $messages['it'] = array(
-	'semanticmaps-desc' => "Fornisce la possibilità di visualizzare e modificare le coordinate memorizzate con l'estensione Semantic MediaWiki  ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps ulteriori informazioni]).",
+	'semanticmaps-desc' => "Consente di visualizzare e modificare le coordinate memorizzate con l'estensione [https://www.semantic-mediawiki.org Semantic MediaWiki]",
 	'semanticmaps-unrecognizeddistance' => 'Il valore $1 non è una distanza valida.',
 	'semanticmaps-kml-link' => 'Visualizza il file KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualizza la pagina $1',
@@ -950,7 +954,6 @@ $messages['it'] = array(
 	'semanticmaps-forminput-add' => 'Aggiungi',
 	'semanticmaps-forminput-locations' => 'Luoghi',
 	'semanticmaps-par-staticlocations' => 'Un elenco di luoghi da aggiungere alla mappa unitamente ai dati interrogati. Come con display_points, si può aggiungere un titolo, la descrizione e l\'icona per ogni posizione utilizzando la tilde "~" come separatore.',
-	'semanticmaps-par-forceshow' => "Mostra la mappa anche quando non c'è alcun luogo da visualizzare?",
 	'semanticmaps-par-showtitle' => "Mostrare oppure no un titolo nella finestra informazioni per l'indicatore. Disattivarlo è spesso utile quando si utilizza un template per la formattazione del contenuto della finestra informazioni.",
 	'semanticmaps-par-hidenamespace' => "Mostrare oppure no il namespace del titolo nella finestra informazioni per l'indicatore.",
 	'semanticmaps-par-centre' => 'Il centro della mappa. Quando non indicato, la mappa sceglierà automaticamente il centro ottimale per visualizzare tutti gli indicatori sulla mappa.',
@@ -1546,7 +1549,7 @@ $messages['sk'] = array(
  * @author Lesko987
  */
 $messages['sl'] = array(
-	'semanticmaps-desc' => 'Omogoča ogled in urejanje podatkov o lokaciji, shranjenih z razširitvijo Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps več informacij ...]).',
+	'semanticmaps-desc' => 'Omogoča ogled in urejanje podatkov o lokaciji, shranjenih z razširitvijo [https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki].',
 	'semanticmaps-unrecognizeddistance' => 'Vrednost $1 ni pravilna razdalja.',
 	'semanticmaps-kml-link' => 'Ogled datoteke KML',
 	'semanticmaps-default-kml-pagelink' => 'Poglej stran $1',
@@ -1561,13 +1564,13 @@ $messages['sl'] = array(
 	'semanticmaps-forminput-add' => 'Dodaj',
 	'semanticmaps-forminput-locations' => 'Lokacije',
 	'semanticmaps-par-staticlocations' => 'Seznam lokacij za dodajanje na zemljevid skupaj z rezultati poizvedb. Tako kot z display_points, lahko dodate naslov, opis in ikono za vsako lokacijo z uporabo "~" kot ločilo.',
-	'semanticmaps-par-forceshow' => 'Prikaži zemljevid tudi če ni lokacij za prikaz?',
 	'semanticmaps-par-showtitle' => 'Prikaži naslov v oknu ali ne. Onemogočanje tega je pogosto uporabno, če uporabljate predloge za oblikovanje vsebine info okno.',
 	'semanticmaps-par-hidenamespace' => 'Ali naj prikaže naslov imenskega prostora v označevalnem informacijskem oknu.',
 	'semanticmaps-par-centre' => 'Sredini zemljevida. Če ne podana, bo zemljevid samodejno izbral optimalno lokacijo za prikaz vseh oznak na zemljevidu.',
 	'semanticmaps-par-template' => 'Predloga za oblikovanje vsebine info okna.',
 	'semanticmaps-par-geocodecontrol' => 'Prikaži nadzor geokodiranja.',
 	'semanticmaps-par-activeicon' => 'Ikona za prikaz namesto privzete oznake, kadar je aktivna stran enaka rezultatu poizvedbe.',
+	'semanticmaps-par-pagelabel' => 'Ko nastavite na »da«, bodo imele vse oznake »inlineLabel« s povezavo na stran, ki vsebuje koordinate oznake',
 	'semanticmaps-kml-text' => 'Besedilo, povezano z vsako stranjo. Preglašeno z dodatnimi možnostmi poizvedbe, če obstajajo.',
 	'semanticmaps-kml-title' => 'Privzeti naslov za rezultate',
 	'semanticmaps-kml-linkabsolute' => 'Naj bodo povezave absolutne ali ne (tj. relativne)',
@@ -1775,7 +1778,7 @@ $messages['ur'] = array(
  * @author Withoutaname
  */
 $messages['vi'] = array(
-	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps?uselang=vi MediaWiki Ngữ Nghĩa]) .',
+	'semanticmaps-desc' => 'Cung cấp khả năng xem và sửa đổi dữ liệu tọa độ được lưu bởi phần mở rộng [https://www.semantic-mediawiki.org/wiki/Semantic_Maps?uselang=vi MediaWiki Ngữ nghĩa].',
 	'semanticmaps-unrecognizeddistance' => 'Giá trị $1 không phải là tầm hợp lệ.',
 	'semanticmaps-kml-link' => 'Xem tập tin KML',
 	'semanticmaps-default-kml-pagelink' => 'Xem trang $1',
