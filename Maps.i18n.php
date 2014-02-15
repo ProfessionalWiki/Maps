@@ -272,7 +272,8 @@ $messages['qqq'] = array(
 
 The category is automatically added unless the feature is disabled.',
 	'maps-copycoords-prompt' => 'text displayed in JavaScript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt',
-	'maps-searchmarkers-text' => 'Used as default value for input box of the Search form. (Looks like placeholder.)',
+	'maps-searchmarkers-text' => '{{doc-important|Translate "Filter" as being a word.}}
+This message is located within an input box to assist users with the input. This fuctionality allows to filter the markers based on the input one provides. See the [https://semantic-mediawiki.org/wiki/Maps_examples/OpenLayers_searchmarkers live example].',
 	'maps-others' => '{{Identical|Other}}',
 	'maps-kml-parsing-failed' => 'text displayed in the event of parsing failure of kml file(s).',
 	'maps-ns-layer' => '{{Identical|Layer}}',
@@ -303,6 +304,11 @@ The category is automatically added unless the feature is disabled.',
 	'maps-layer-type-supported-by' => 'Parameters:
 * $1 - list of supported services (geonames and/or google). not localized.
 * $2 - number of supported services',
+	'maps-geocode-par-allowcoordinates' => '{{maps-par|geocode|allowcoordinates}}
+
+{{doc-important|Do not translate the parameter values "yes" and "no".}}',
+	'maps-geodistance-par-geoservice' => '{{Maps-par|geodistance|geoservice}}',
+	'maps-displaymap-par-visitedicon' => '{{Maps-par|displaymap|visitedicon}}',
 	'maps-fullscreen-button' => 'Text displayed in the map as a button to toggle fullscreen view.
 
 Tooltip for this button is {{msg-mw|Maps-fullscreen-button-tooltip}}.',
@@ -547,7 +553,7 @@ $messages['arz'] = array(
  * @author Xuacu
  */
 $messages['ast'] = array(
-	'maps-desc' => 'Activa inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques. ([https://www.semantic-mediawiki.org/wiki/Maps más información...])',
+	'maps-desc' => 'Permite inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques.',
 	'right-geocode' => 'Xeocódigu',
 	'maps_map' => 'Mapa',
 	'maps-tracking-category' => 'Páxines con un mapa renderizáu pola estensión Maps',
@@ -563,12 +569,20 @@ $messages['ast'] = array(
 	'maps-layer-property' => 'Propiedá',
 	'maps-layer-value' => 'Valor',
 	'maps-layer-errors' => 'Errores',
-	'maps-error-invalid-layerdef' => 'Esta definición de capa nun ye válida.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Definición inválida|Definiciones inválides}}',
+	'maps-layerdef-invalid-fatal' => 'Definición inválida fatal',
+	'maps-layerdef-wrong-namespace' => 'Les definiciones de capes namái son válides nes páxines del espaciu de nomes «$1»',
+	'maps-layerdef-equal-layer-name' => 'Los nomes de capa tienen de ser únicos dientro de la mesma páxina de capes. Otra capa yá ta usando «$1».',
+	'maps-layerpage-usage' => "Páxines con mapes qu'usen la capa «$1»",
+	'maps-layerpage-nousage' => 'Nesti momentu denguna páxina ta usando esta capa.',
 	'maps-error-invalid-layertype' => 'Nun hai capes de tipu "$1". Sólo {{PLURAL:$3|tien sofitu esti tipu|tienen sofitu estos tipos}}: $2',
 	'maps-error-no-layertype' => "Tienes d'especificar la triba de capa. {{PLURAL:$2|Sólo tien sofitu esta triba|Tienen sofitu estes tribes}}: $1",
 	'validation-error-invalid-layer' => 'El parámetru $1 tien de ser una capa válida.',
 	'validation-error-invalid-layers' => 'El parámetru $1 tien de ser una o más capes válides.',
+	'validation-error-no-non-numeric' => 'El parámetru «$1» tien de ser una cadena non-numbérica.',
+	'validation-error-no-non-numerics' => 'El parámetru «$1» tien de ser una o más cadenes non-numbériques.',
 	'maps-layer-of-type' => 'Capa de tipu $1',
+	'maps-layer-of-type-and-name' => 'Capa «$2» de tipu «$1»',
 	'maps-layer-type-supported-by' => 'Esta triba de capa pue emplegase {{PLURAL:$2|namái col serviciu de mapes $1|con estos servicios de mapes: $1}}.',
 	'maps-coordinates-description' => 'Asociador del analizador pa dar formatu a les coordenaes, dende y a cualesquiera de los formatos sofitaos.',
 	'maps-displaymap-description' => 'Amosar mapes xeográficos ensin dengún marcador definíu na wiki nellos.',
@@ -578,6 +592,7 @@ $messages['ast'] = array(
 	'maps-geocode-description' => "Activa la xeocodificación de direiciones; n'otres pallabres, tresformar llugares lleíbles por humanos en conxuntos de coordenaes. Hai sofitu pa dellos servicios de xeocodificación, que nun tienen de confundise con servicios de mapes.",
 	'maps-geodistance-description' => 'Calcular la distancia xeográfica ente dos puntos, dende y a cualesquiera de los formatos compatibles.',
 	'maps-mapsdoc-description' => "Amosar una tabla colos parámetros d'un serviciu de mapes específicu, xunto colos valores y descripciones predeterminaos.",
+	'maps-layerdefinition-description' => 'Describe una capa personalizada que se pue amosar con otres funciones de Mapa.',
 	'maps-mapsdoc-par-service' => 'El serviciu de mapes del que se quier amosar la documentación de parámetros.',
 	'maps-mapsdoc-par-language' => "La llingua na que presentar la documentación. Si esa traducción nun tuviera disponible, s'usará la versión n'inglés nel so llugar.",
 	'maps-coordinates-par-location' => 'Les coordenaes a les que quies dar formatu.',
@@ -646,9 +661,6 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'validation-error-invalid-images' => 'El parámetru $1 tien de ser una o más imaxes válides.',
 	'validation-error-invalid-goverlay' => 'El parámetru $1 tien de ser una superposición válida.',
 	'validation-error-invalid-goverlays' => 'El parámetru $1 tien de ser una o más superposiciones válides.',
-	'validation-error-invalid-line-param' => 'S\'especificó un parámetru "lines" inválidu.',
-	'validation-error-invalid-polyline-param' => 'S\'especificó un parámetru "polylines" inválidu.',
-	'validation-error-invalid-searchmarkers-param' => 'Valor inválidu de los marcadores de gueta, tendría de ser "all" o "title"',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -688,6 +700,7 @@ Cuando s'usa xunto cola etiqueta, el títulu tará en negrina y sorrayáu.",
 	'maps-googlemaps3-par-poi' => "Amosar puntos d'interés.",
 	'maps-openlayers-par-controls' => 'Controles a poner nel mapa.',
 	'maps-openlayers-par-layers' => "Les capes que tarán disponibles nel selector de capes. La primera capa s'amosará al cargar el mapa.",
+	'maps-openlayers-par-overlays' => "Capes superpuestes que tarán disponibles nel selector de capes. Eses capes veránse enriba d'una capa normal, de mou asemeyáu a un marcador.",
 	'maps-osm-par-thumbs' => 'Amosar miniatures',
 	'maps-osm-par-photos' => 'Amosar les fotos',
 	'mapeditor' => 'Editor de mapes',
@@ -970,6 +983,7 @@ $messages['bjn'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Tauhid16
  * @author Wikitanvir
  */
 $messages['bn'] = array(
@@ -982,7 +996,8 @@ $messages['bn'] = array(
 	'maps-layer-property' => 'সম্পত্তি',
 	'maps-layer-value' => 'মান',
 	'maps-layer-errors' => 'ত্রুটি',
-	'maps-error-invalid-layerdef' => 'পর্বের এই সংজ্ঞাটি গ্রহণযোগ্য নয়।',
+	'maps-layer-of-type' => '"$1" ধরণের লেয়ার',
+	'validation-error-invalid-location' => 'স্থিতিমাপ "$1" একটি বৈধ অবস্থান হতে হবে।',
 	'maps-abb-north' => 'উ',
 	'maps-abb-east' => 'পূ',
 	'maps-abb-south' => 'দ',
@@ -1175,8 +1190,17 @@ $messages['ca'] = array(
  */
 $messages['ce'] = array(
 	'maps-others' => 'кхин',
+	'maps-ns-layer-talk' => 'ГӀатан дийцаре',
 	'maps-layer-value' => 'МаьӀна',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Ца магийна билгалдакхар|Ца магийна билгалдакхарш}}',
+	'maps-layerpage-usage' => 'Картанаш долу агӀоно лелош ю «$1»',
+	'validation-error-invalid-layer' => 'Параметр $1 нийса хила еза.',
+	'maps-layer-of-type' => 'Тайпан $1 чкъор',
+	'maps-layer-of-type-and-name' => 'Тайпан «$1» «$2» чкъор',
+	'validation-error-invalid-image' => 'Параметр $1 хила еза нийса сурт.',
 	'maps-abb-east' => 'Цу',
+	'maps-latitude' => 'Шоралла:',
+	'maps-longitude' => 'Дохалла:',
 	'mapeditor-done-button' => 'Кийчча ю',
 	'mapeditor-link-title-switcher-link-text' => 'Хьажораг',
 	'mapeditor-form-field-title' => 'ЦӀе',
@@ -1290,7 +1314,7 @@ $messages['da'] = array(
  * @author The Evil IP address
  */
 $messages['de'] = array(
-	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen ([https://www.semantic-mediawiki.org/wiki/Maps Weitere Informationen …])',
+	'maps-desc' => 'Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen.',
 	'right-geocode' => 'Georeferenzieren',
 	'maps_map' => 'Karte',
 	'maps-tracking-category' => 'Seiten mit einer von der Maps-Erweiterung gerenderten Karte',
@@ -1298,7 +1322,7 @@ $messages['de'] = array(
 	'maps-load-failed' => 'Die Karte konnte nicht geladen werden.',
 	'maps-markers' => 'Markierungen',
 	'maps-copycoords-prompt' => 'STRG+C, ENTER',
-	'maps-searchmarkers-text' => 'Markierungen zum Filtern',
+	'maps-searchmarkers-text' => 'Markierungen filtern',
 	'maps-others' => 'andere',
 	'maps-kml-parsing-failed' => 'Das Parsen einer oder mehrerer KML-Dateien ist fehlgeschlagen, normalerweise aufgrund eines Abfragefehlers oder aufgrund von fehlerhaftem XML.',
 	'maps-ns-layer' => 'Ebene',
@@ -1354,8 +1378,8 @@ Dadurch können die Standardwerte der Funktion durch die für den Kartografiedie
 Jeder Kartografiedienst kann über eigenständige Standardwerte für die Georeferenzierung verfügen.
 Diese Einstellung hat rechtliche Gründe, da man bspw. den Google Georeferenzierungsdienst nur zusammen mit Google Maps nutzen kann.
 Diesen Parameter anstatt dem zum Georeferenzierungsdienst einzustellen, verhindert eine unzulässige Kombination bei der Nutzung der Dienste.',
-	'maps-geocode-par-allowcoordinates' => 'Ermöglicht die Deaktivierung der Unterstützung von Koordinaten. Entweder Ja oder Nein angeben.
-Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordinaten.',
+	'maps-geocode-par-allowcoordinates' => 'Ermöglicht die Deaktivierung der Unterstützung von Koordinaten. Entweder mit „yes“ (ja) oder „no“ (nein) festlegen.
+Sofern man „no“ setzt, werden alle Koodiantenwerte geokodiert – sogar gültige Koordinaten.',
 	'maps-geocode-par-format' => 'Das Ausgabeformat für die Koordinaten.',
 	'maps-geocode-par-directional' => 'Gibt an, ob die Koordinaten eine Richtungsangabe haben sollen oder nicht.',
 	'maps-geodistance-par-location1' => 'Der erste von zwei Punkten zwischen denen die Entfernung berechnet werden soll.',
@@ -1367,7 +1391,7 @@ Sofern Nein angegeben wurde, werden alle Werte geokodiert, sogar gültige Koordi
 Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.',
 	'maps-displaymap-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll',
-	'maps-displaymap-par-visitedicon' => 'Der Name eines Bildes, das für Markersymbole nach dem Anklicken verwendet werden soll.',
+	'maps-displaymap-par-visitedicon' => 'Der Dateiname des Symbols, das anstelle der ursprünglichen Markierung angezeigt werden soll, sobald dieses angeklickt wurde',
 	'maps-displaymap-par-zoom' => 'Der Anzeigestufe (Zoom) der Karte.
 Sofern keine angegeben wurde und mehrerer Markierungen auf der Karte vorhanden sind, wird die für deren gemeinsame Darstellung passende Anzeigestufe verwendet und nicht der Standardwert des Kartografiediensts.',
 	'maps-displaymap-par-centre' => 'Die Koordinaten, die zur Zentrierung der Karte verwendet werden sollen.
@@ -1738,11 +1762,12 @@ $messages['eo'] = array(
  * @author Pertile
  * @author Peter17
  * @author Sanbec
+ * @author Sethladan
  * @author Translationista
  * @author Vivaelcelta
  */
 $messages['es'] = array(
-	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps Más información...])',
+	'maps-desc' => 'Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas.',
 	'right-geocode' => 'Geocodificar',
 	'maps_map' => 'Mapa',
 	'maps-tracking-category' => 'Páginas con un mapa de la extensión Maps',
@@ -1757,6 +1782,7 @@ $messages['es'] = array(
 	'maps-layer-property' => 'Propiedad',
 	'maps-layer-value' => 'Valor',
 	'maps-layer-errors' => 'Errores',
+	'maps-layerdef-invalid-fatal' => 'Definición no válida fatal',
 	'maps-error-invalid-layertype' => 'No hay capas de tipo "$1". Sólo  {{PLURAL:$3|este tipo es compatible|estos tipos son compatibles}} :$2',
 	'maps-error-no-layertype' => 'Es necesario especificar el tipo de capa.  {{PLURAL:$2| Solo este tipo es compatible|Estos tipos son compatibles}}:$1',
 	'validation-error-invalid-layer' => 'El parámetro $1 debe ser una capa válida.',
@@ -1993,6 +2019,7 @@ $messages['eu'] = array(
  * @author ZxxZxxZ
  */
 $messages['fa'] = array(
+	'maps-desc' => 'فعال کردن قرار دادن نقشه‌های پویا در صفحات ویکی، رمزگذاری جغرافیایی آدرس‌ها و دیگر عملیات جغرافیایی.',
 	'right-geocode' => 'جئوکد',
 	'maps_map' => 'نقشه',
 	'maps-tracking-category' => 'صفحات با نقشهٔ‌ ارائه شده توسط گسترهٔ‌ نقشه‌ها',
@@ -2002,24 +2029,48 @@ $messages['fa'] = array(
 	'maps-copycoords-prompt' => 'CTRL+C, وارد کنید',
 	'maps-searchmarkers-text' => 'نشانگرهای فیلتر',
 	'maps-others' => 'دیگران',
+	'maps-kml-parsing-failed' => 'عدم موفقیت تجزیهٔ یک یا چند پوشهٔ کا‌ام‌ال، اغلب به علت عدم بازیابی یا ایکس‌ام‌ال ناقص.',
 	'maps-ns-layer' => 'لایه',
 	'maps-ns-layer-talk' => 'بحث لایه',
 	'maps-layer-property' => 'خاصیت',
 	'maps-layer-value' => 'مقدار',
 	'maps-layer-errors' => 'خطاها',
+	'maps-layerdef-invalid' => 'تعریف نامعتبر{{PLURAL:$1||s}}',
+	'maps-layerdef-invalid-fatal' => 'تعریف نامعتبر مهلک',
+	'maps-layerdef-wrong-namespace' => 'تعاریف لایه فقط در صفحات فضای نام "$1" معتبر هستند',
+	'maps-layerdef-equal-layer-name' => 'نام‌های لایه باید داخل صفحهٔ‌ لایهٔ مشابه منحصر به فرد باشد. "$1" در حال حاضر توسط لایهٔ دیگری استفاده شده‌.',
+	'maps-layerpage-usage' => 'صفحات دارای نقشه از لایهٔ‌ "$1" استفاده می‌کند',
+	'maps-layerpage-nousage' => 'هیچ صفحه‌ای در حال حاضر از این لایه استفاده نمی‌کند.',
 	'maps-error-invalid-layertype' => 'هیچ لایه‌ای از نوع «$1» وجود ندارد. فقط {{PLURAL:$3|این نوع|این نوع‌ها}} پشتیبانی می‌شوند: $2',
 	'maps-error-no-layertype' => 'باید نوع لایه را مشخص کنید. {{PLURAL:$2|فقط این نوع پشتیبانی می‌شود|این نوع‌ها پشتیبانی می‌شوند}}: $1',
 	'validation-error-invalid-layer' => 'پارامتر $1 باید یک لایهٔ معتبر باشد.',
 	'validation-error-invalid-layers' => 'پارامتر $1 باید یک یا چند لایهٔ معتبر باشد.',
+	'validation-error-no-non-numeric' => 'پارامتر "$1" باید یک مجموعهٔ غیرعددی باشد.',
+	'validation-error-no-non-numerics' => 'پارامتر "$1" باید یک یا چند مجموعهٔ‌ غیرعددی باشد.',
 	'maps-layer-of-type' => 'لایه ای از نوع $1',
+	'maps-layer-of-type-and-name' => 'لایهٔ "$2" از نوع "$1"',
+	'maps-layer-type-supported-by' => 'این نوع لایه می‌تواند {{PLURAL:$2|فقط با سرویس نقشه‌برداری $1 استفاده شود|با این سرویس‌های نقشه‌برداری استفاده شود: $1}}.',
+	'maps-coordinates-description' => 'قلاب تجزیه کننده برای فرمت مختصات، از و به هر فرمت پشتیبانی شده.',
 	'maps-displaymap-description' => 'نمایش نقشه‌های جغرافیایی بدون هر نشانگر تعریف شده‌ٔ ویکی بر روی آنها.',
 	'maps-displaypoint-description' => 'نمایش نقشه‌های جغرافیایی بدون هر نشانگر تعریف شده‌ٔ ویکی بر روی آنها.',
+	'maps-distance-description' => 'تبدیل یک فاصله با استفاده از یک واحد مشخص پشتیبانی شده برابر با استفاده از واحد دیگری.',
+	'maps-finddestination-description' => 'پیدا کردن یک مقصد که یک نقطهٔ شروع داده (که می‌تواند در هر فرمت پشتیبانی شده‌ای باشد)، وضع اولیه و یک فاصله.',
+	'maps-geodistance-description' => 'محاسبهٔ فاصلهٔ جغرافیایی بین دو نقطه، از و به هر فرمت پشتیبانی شده.',
+	'maps-mapsdoc-description' => 'نمایش یک جدول با پارامتر‌ها برای سرویس نقشه‌برداری تعیین شده باهم با مقادیر پیش‌فرض آنها و توصیفات.',
 	'maps-mapsdoc-par-service' => 'سرویس نقشه برای نمایش مستندات پارامتر.',
 	'maps-coordinates-par-location' => 'مختصاتی که می‌خواهید شکل‌بندی کنید.',
 	'maps-coordinates-par-format' => 'شکل موردنظر برای مختصات.',
+	'maps-distance-par-unit' => 'بخشی برای عرضه کردن فاصله.',
 	'maps-finddestination-par-location' => 'مکان اولیه.',
 	'maps-finddestination-par-distance' => 'مسافت برای مسافرت.',
+	'maps-geocode-par-location' => 'آدرسی را که برای جئوکد می‌خواهید.',
+	'maps-geocode-par-mappingservice' => 'سرویس جئوکدینگی که می‌خواهید مشاهده کنید. سرویس‌های جئوکدینگ در دسترس را مشاهده کنید.',
+	'maps-geocode-par-allowcoordinates' => 'اجازهٔ غیرفعال کردن پشتیبانی برای مختصات در این عملیات. یا باید بله باشد یا نه.
+هنگامی که نه است، هر مقداری حتی مختصات معتبر، جئوکد خواهد بود.',
 	'maps-geocode-par-format' => 'فرمت برای نتیجهٔ مختصات.',
+	'maps-geodistance-par-location1' => 'اولین نکته در مجموعه برای برای محاسبهٔ‌ بین فاصله‌ها.',
+	'maps-geodistance-par-location2' => 'دومین نکته در مجموعه برای برای محاسبهٔ‌ بین فاصله‌ها.',
+	'maps-geodistance-par-unit' => 'بخشی برای عرضه کردن فاصله.',
 	'maps-displaymap-par-circles' => 'حوزه‌ها برای نمایش',
 	'maps-displaymap-par-lines' => 'خطوط برای نمایش',
 	'maps-displaymap-par-maxzoom' => 'حداکثر سطح زوم',
@@ -2028,6 +2079,8 @@ $messages['fa'] = array(
 	'maps-displaymap-par-rectangles' => 'مستطیل‌ها برای نمایش',
 	'maps-displaymap-par-static' => 'اگر نقشه‌ها ایستا باشد',
 	'maps-displaymap-par-wmsoverlay' => 'استفاده از یک پوشش وی‌ام‌اس',
+	'maps-fullscreen-button' => 'ضامن تمام صفحه',
+	'maps-fullscreen-button-tooltip' => 'مشاهدهٔ‌ نقشه به عنوان تمام صفحه یا تعبیه شده.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'فعا کردن دکمهٔ تمام صفحه',
 	'validation-error-invalid-location' => 'پارامتر $1 باید یک مکان معتبر باشد.',
 	'validation-error-invalid-locations' => 'پارامتر $1 باید یک مکان یا مکان‌های بیشتر معتبری باشد.',
@@ -2045,15 +2098,29 @@ $messages['fa'] = array(
 	'maps-abb-west' => 'غرب',
 	'maps-latitude' => 'عرض جغرافیایی:',
 	'maps-longitude' => 'طول جغرافیایی:',
+	'maps-invalid-coordinates' => 'مقدار $1 به عنوان یک تنظیم مختصات معتبر شناخته نشده.',
 	'maps_coordinates_missing' => 'هیچ مختصاتی برای نقشه ارائه نشده.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|آدرس|آدرس‌های}} زیر نتوانستند رمزگذاری جغرافیایی شوند: $1.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|آدرس|آدرس‌های}} زیر نتوانستند رمزگذاری جغرافیایی شوند و {{PLURAL:$2|has|have}} از نقشه حذف شده‌است: 
+$1',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|مختصات بود|مختصات بودند}} زیر شناخته شده نبودند:‌ $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|مختصات بود|مختصات بودند}} زیر نتوانستند شناخته شوند و {{PLURAL:$2|has|have}} از نقشه حذف شده‌است: 
+$1',
 	'maps_map_cannot_be_displayed' => 'نقشه نمی‌تواند نمایش داده شود.',
+	'maps-geocoder-not-available' => 'رمزگداری ویژگی نقشه در دسترس نیست. مکان شما نمی‌تواند رمزگذاری جغرافیایی شود.',
 	'maps_click_to_activate' => 'کلیک کردن برای فعال کردن نقشهٔ.',
 	'maps_centred_on' => 'نقشهٔ متمرکز شده در $1، $2.',
+	'maps-par-mappingservice' => 'اجازهٔ تنظیم سرویس نقشه‌برداری که برای تولید نقشه استفاده خواهد شد.',
+	'maps-par-resizable' => 'درست کردن نقشه‌ای که توسط کشیدن در گوشهٔ پایین سمت راست دوباره قابل ملاحظه باشد.',
+	'maps-par-centre' => 'مکانی که در نقشه باید مرکز باشد',
+	'maps-googlemaps3-incompatbrowser' => 'مرورگر شما با نقشه‌های گوگل وی۳ سازگار نیست.',
 	'maps-googlemaps3-par-type' => 'نوع نقشه برای ابتدا نشان دادن.',
 	'maps-googlemaps3-par-types' => 'انواع نقشه‌ای که از طریق کنترل نوع در دسترس خواهد بود.',
+	'maps-googlemaps3-par-layers' => 'لایه‌های ویژه برای بارگذاری برروی نقشه.',
 	'maps-googlemaps3-par-controls' => 'کنترل‌ها برای قرار دادن بر روی نقشه.',
 	'maps-googlemaps3-par-zoomstyle' => 'سبک کنترل زوم.',
 	'maps-googlemaps3-par-typestyle' => 'سبک کنترل نوع.',
+	'maps-googlemaps3-par-autoinfowindows' => 'به طور خودکار باز شدن همهٔ صفحات اطلاعات، پس از بارگذاری صفحات.',
 	'maps-googlemaps3-par-kml' => 'پوشه‌های کا‌ام‌ال برای بارگذاری بر روی نقشه.',
 	'maps-googlemaps3-par-poi' => 'نمایش نقاط مورد علاقه.',
 	'maps-openlayers-par-controls' => 'کنترل‌ها برای قرار دادن بر روی نقشه.',
@@ -2072,13 +2139,25 @@ $messages['fa'] = array(
 	'mapeditor-code-title' => 'کد ویکی',
 	'mapeditor-import-title' => 'واردات کد ویکی',
 	'mapeditor-form-title' => 'ویرایش جزئیات',
+	'mapeditor-link-title-switcher-popup-text' => 'پوپاپ با متن',
 	'mapeditor-link-title-switcher-link-text' => 'پیوند',
 	'mapeditor-form-field-title' => 'عنوان',
 	'mapeditor-form-field-text' => 'متن',
 	'mapeditor-form-field-link' => 'پیوند',
 	'mapeditor-form-field-icon' => 'شمایل',
 	'mapeditor-form-field-group' => 'گروه',
+	'mapeditor-form-field-inlinelabel' => 'برچسب اینلاین',
+	'mapeditor-form-field-strokecolor' => 'رنگ استروک',
+	'mapeditor-form-field-strokeopacity' => 'کدری استروک',
+	'mapeditor-form-field-strokeweight' => 'وزن استروک',
+	'mapeditor-form-field-fillcolor' => 'پر کردن رنگ',
+	'mapeditor-form-field-fillopcaity' => 'پر کردن کدری',
+	'mapeditor-form-field-showonhover' => 'نمایش فقط در شناور',
+	'mapeditor-mapparam-title' => 'ویرایش پارامترهای نقشه',
+	'mapeditor-mapparam-defoption' => '-انتخاب پارامتر-',
+	'mapeditor-imageoverlay-button' => 'افزودن روی هم قرار دادن عکس',
 	'mapeditor-form-field-image' => 'تصویر',
+	'mapeditor-imageoverlay-title' => 'جزئیات روی هم قرار دادن عکس',
 	'mapeditor-form-field-visitedicon' => 'نمادهای بازدید شده',
 );
 
@@ -2255,7 +2334,7 @@ $1',
  * @author Wyz
  */
 $messages['fr'] = array(
-	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])",
+	'maps-desc' => "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques.",
 	'right-geocode' => 'Géocode',
 	'maps_map' => 'Carte',
 	'maps-tracking-category' => 'Pages avec une carte provenant de l’extension Maps',
@@ -2551,7 +2630,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'maps-desc' => 'Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas ([https://www.semantic-mediawiki.org/wiki/Maps máis información...])',
+	'maps-desc' => 'Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas nas páxinas do wiki',
 	'right-geocode' => 'Xeocodificar',
 	'maps_map' => 'Mapa',
 	'maps-tracking-category' => 'Páxinas cun mapa renderizado coa extensión Maps',
@@ -2567,12 +2646,20 @@ $messages['gl'] = array(
 	'maps-layer-property' => 'Propiedade',
 	'maps-layer-value' => 'Valor',
 	'maps-layer-errors' => 'Erros',
-	'maps-error-invalid-layerdef' => 'A definición desta capa non é válida.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Definición non válida|Definicións non válidas}}',
+	'maps-layerdef-invalid-fatal' => 'Definición non válida fatal',
+	'maps-layerdef-wrong-namespace' => 'As definicións das capas son válidas unicamente nas páxinas do espazo de nomes "$1"',
+	'maps-layerdef-equal-layer-name' => 'Os nomes das capas deben ser únicos dentro da mesma páxina de capa. "$1" xa está en uso noutra capa.',
+	'maps-layerpage-usage' => 'Páxinas con mapas que usan a capa "$1"',
+	'maps-layerpage-nousage' => 'Nestes intres non hai ningunha páxina que use esta capa.',
 	'maps-error-invalid-layertype' => 'Non existen capas do tipo "$1". Só {{PLURAL:$3|está soportado este tipo|están soportados estes tipos}}: $2',
 	'maps-error-no-layertype' => 'Cómpre especificar o tipo de capa. {{PLURAL:$3|Só está soportado este tipo|Están soportados estes tipos}}: $1',
-	'validation-error-invalid-layer' => 'O parámetro $1 debe ser unha capa válida.',
-	'validation-error-invalid-layers' => 'O parámetro $1 debe ser unha ou máis capas válidas.',
-	'maps-layer-of-type' => 'Capa de tipo $1',
+	'validation-error-invalid-layer' => 'O parámetro "$1" debe ser unha capa válida.',
+	'validation-error-invalid-layers' => 'O parámetro "$1" debe ser unha ou máis capas válidas.',
+	'validation-error-no-non-numeric' => 'O parámetro "$1" debe ser unha cadea non numérica.',
+	'validation-error-no-non-numerics' => 'O parámetro "$1" debe ser unha ou máis cadeas non numéricas.',
+	'maps-layer-of-type' => 'Capa de tipo "$1"',
+	'maps-layer-of-type-and-name' => 'Capa "$2" de tipo "$1"',
 	'maps-layer-type-supported-by' => 'Este tipo de capa só se pode empregar {{PLURAL:$2|co servizo de mapas $1|con estes servizos de mapas: $1}}.',
 	'maps-coordinates-description' => 'Asociador do analizador para dar formato ás coordenadas, desde e cara a calquera formato soportado.',
 	'maps-displaymap-description' => 'Mostrar os mapas xeográficos sen marcadores wiki sobre eles.',
@@ -2582,6 +2669,7 @@ $messages['gl'] = array(
 	'maps-geocode-description' => 'Permite a xeocodificación de enderezos; noutras palabras, transformar as localizacións lexibles por humanos en conxuntos de coordenadas. Hai soporte para diversos servizos de xeocodificación, que non se deben confundir cos servizos de cartografía.',
 	'maps-geodistance-description' => 'Calcular a distancia xeográfica entre dous puntos, desde e cara a calquera dos formatos soportados.',
 	'maps-mapsdoc-description' => 'Mostar unha táboa cos parámetros para un servizo de mapas específico, cos seus valores por defecto e as súas descricións.',
+	'maps-layerdefinition-description' => 'Describe unha capa personalizada que se pode mostrar con outras funcións de mapa.',
 	'maps-mapsdoc-par-service' => 'O servizo de cartografía do que mostrar a documentación do parámetro.',
 	'maps-mapsdoc-par-language' => 'A lingua na que mostrar a documentación. Se non houbera tradución dispoñible, mostrarase a versión en inglés.',
 	'maps-coordinates-par-location' => 'As coordenadas ás que quere dar formato.',
@@ -2641,19 +2729,16 @@ Ao empregalo conxuntamente coa etiqueta, o título aparecerá en negra e suliña
 	'maps-fullscreen-button' => 'Activar ou desactivar a pantalla completa',
 	'maps-fullscreen-button-tooltip' => 'Mostrar o mapa en pantalla completa ou incrustado.',
 	'maps-googlemaps3-par-enable-fullscreen' => 'Activar o botón de pantalla completa',
-	'validation-error-invalid-location' => 'O parámetro $1 debe ser unha localización válida.',
-	'validation-error-invalid-locations' => 'O parámetro $1 debe ser unha ou máis localizacións válidas.',
-	'validation-error-invalid-width' => 'O parámetro $1 debe ser un largo válido.',
-	'validation-error-invalid-height' => 'O parámetro $1 debe ser unha altura válida.',
-	'validation-error-invalid-distance' => 'O parámetro $1 debe ser unha distancia válida.',
-	'validation-error-invalid-distances' => 'O parámetro $1 debe ser unha ou máis distancias válidas.',
-	'validation-error-invalid-image' => 'O parámetro $1 debe ser unha imaxe válida.',
-	'validation-error-invalid-images' => 'O parámetro $1 debe ser unha ou máis imaxes válidas.',
-	'validation-error-invalid-goverlay' => 'O parámetro $1 debe ser unha capa de superposición válida.',
-	'validation-error-invalid-goverlays' => 'O parámetro $1 debe ser unha ou máis capas de superposición válidas.',
-	'validation-error-invalid-line-param' => 'O parámetro "lines" especificado non é válido.',
-	'validation-error-invalid-polyline-param' => 'O parámetro "polylines" especificado non é válido.',
-	'validation-error-invalid-searchmarkers-param' => 'O valor dos marcadores de procura non é válido; debe ser "all" ou "title"',
+	'validation-error-invalid-location' => 'O parámetro "$1" debe ser unha localización válida.',
+	'validation-error-invalid-locations' => 'O parámetro "$1" debe ser unha ou máis localizacións válidas.',
+	'validation-error-invalid-width' => 'O parámetro "$1" debe ser un largo válido.',
+	'validation-error-invalid-height' => 'O parámetro "$1" debe ser unha altura válida.',
+	'validation-error-invalid-distance' => 'O parámetro "$1" debe ser unha distancia válida.',
+	'validation-error-invalid-distances' => 'O parámetro "$1" debe ser unha ou máis distancias válidas.',
+	'validation-error-invalid-image' => 'O parámetro "$1" debe ser unha imaxe válida.',
+	'validation-error-invalid-images' => 'O parámetro "$1" debe ser unha ou máis imaxes válidas.',
+	'validation-error-invalid-goverlay' => 'O parámetro "$1" debe ser unha capa de sobreposición válida.',
+	'validation-error-invalid-goverlays' => 'O parámetro "$1" debe ser unha ou máis capas de sobreposición válidas.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'S',
@@ -2695,6 +2780,7 @@ $1',
 	'maps-googlemaps3-par-poi' => 'Mostrar os puntos de interese.',
 	'maps-openlayers-par-controls' => 'Os controis que incluír no mapa.',
 	'maps-openlayers-par-layers' => 'As capas que estarán dispoñibles no selector de capas. A primeira capa aparecerá cando o mapa acabe de cargar.',
+	'maps-openlayers-par-overlays' => 'As capas de sobreposición que estarán dispoñibles no selector de capas. Estas capas han mostrarse por riba da capa normal, como un marcador.',
 	'maps-osm-par-thumbs' => 'Mostrar as miniaturas',
 	'maps-osm-par-photos' => 'Mostrar as fotos',
 	'mapeditor' => 'Editor de mapa',
@@ -2801,12 +2887,13 @@ $1',
  * @author Ex-Diktator
  * @author Rotemliss
  * @author YaronSh
+ * @author Yona b
  * @author Yonidebest
  * @author ערן
+ * @author תומר ט
  */
 $messages['he'] = array(
-	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.
-([http://mapping.referata.com/wiki/Maps_examples הדגמות])', # Fuzzy
+	'maps-desc' => 'הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות.',
 	'right-geocode' => 'לעשות קידוד גאוגרפי',
 	'maps_map' => 'מפה',
 	'maps-loading-map' => 'המפה נטענת...',
@@ -2820,11 +2907,11 @@ $messages['he'] = array(
 	'maps-layer-property' => 'מאפיין',
 	'maps-layer-value' => 'ערך',
 	'maps-layer-errors' => 'שגיאות',
-	'maps-error-invalid-layerdef' => 'הגדרת השכבה הזאת אינה תקינה.',
 	'maps-error-invalid-layertype' => 'אין שכבות מסוג "$1". רק {{PLURAL:$3|הסוג הזה נתמך|הסוגים האלה נתמכים}}: $2.',
 	'maps-error-no-layertype' => 'יש להקליד את סוג השכבה. {{PLURAL:$2|רק הסוג הזה נתמך|הסוגים הנתמכים}}: $1',
 	'validation-error-invalid-layer' => 'הפרמטר $1 צריך להיות שכבה תקינה.',
 	'validation-error-invalid-layers' => 'הפרמטר $1 צריך להיות שכבה תקינה אחת או יותר.',
+	'validation-error-no-non-numeric' => 'הפרמטר "$1" חייב להיות מחרוזת שאינה מספרית.',
 	'maps-layer-of-type' => 'שכבה מסוג $1',
 	'maps-layer-type-supported-by' => 'השכבה הזאת יכולה לעבוד רק עם {{PLURAL:$2|שירות המפות הבא|שירותי המפות הבאים}}: $1.',
 	'maps-coordinates-description' => 'מילת הפעלה לעיצוב נקודות ציון, מכל תסדיר נתמך לכל תסדיר נתמך.',
@@ -2891,9 +2978,6 @@ $messages['he'] = array(
 	'validation-error-invalid-images' => 'הערך $1 צריך להיות קובץ תמונה תקין אחד או יותר.',
 	'validation-error-invalid-goverlay' => 'הערך $1 צריך להיות שכבת כיסוי תקינה.',
 	'validation-error-invalid-goverlays' => 'הערך $1 צריך להיות שכבת כיסוי תקינה אחת או יותר.',
-	'validation-error-invalid-line-param' => 'ניתן פרמטר "lines" שגוי.',
-	'validation-error-invalid-polyline-param' => 'ניתן פרמטר "polylines" שגוי.',
-	'validation-error-invalid-searchmarkers-param' => 'ערך searchmarkers בלתי־תקין. צריך להיות "all" או "title"',
 	'maps-abb-north' => 'צפ׳',
 	'maps-abb-east' => 'מז׳',
 	'maps-abb-south' => 'דר׳',
@@ -3593,10 +3677,11 @@ $messages['ig'] = array(
  * @author F. Cosoleto
  * @author Gianfranco
  * @author HalphaZ
+ * @author Rosh
  * @author Viscontino
  */
 $messages['it'] = array(
-	'maps-desc' => 'Fornisce la possibilità di includere mappe dinamiche nelle pagine wiki, la geocodifica di indirizzi ed altre operazioni geografiche. ([https://www.semantic-mediawiki.org/wiki/Maps maggiori informazioni...])',
+	'maps-desc' => 'Consenti di includere mappe dinamiche nelle pagine wiki, la geocodificazione degli indirizzi ed altre operazioni geografiche.',
 	'right-geocode' => 'Effettua la geocodifica',
 	'maps_map' => 'Mappa',
 	'maps-loading-map' => 'Caricamento mappa ...',
@@ -3610,7 +3695,6 @@ $messages['it'] = array(
 	'maps-layer-property' => 'Proprietà',
 	'maps-layer-value' => 'Valore',
 	'maps-layer-errors' => 'Errori',
-	'maps-error-invalid-layerdef' => 'La definizione del livello non è valida.',
 	'maps-error-invalid-layertype' => 'Non c\'è alcun livello di tipo "$1". Solo {{PLURAL:$3|questo tipo è supportato|questi tipi sono supportati}}: $2',
 	'maps-error-no-layertype' => 'È necessario specificare il tipo di livello. Solo {{PLURAL:$2|questo tipo è supportato|questi tipi sono supportati}}: $1',
 	'validation-error-invalid-layer' => 'Il parametro $1 deve essere un livello valido.',
@@ -3642,8 +3726,6 @@ $messages['it'] = array(
 	'validation-error-invalid-distances' => 'Il parametro $1 deve essere una o più distanze valide.',
 	'validation-error-invalid-image' => "Il parametro $1 deve essere un'immagine valida.",
 	'validation-error-invalid-images' => 'Il parametro $1 deve essere una o più immagini valide.',
-	'validation-error-invalid-line-param' => 'Parametro "lines" specificato non valido.',
-	'validation-error-invalid-polyline-param' => 'Parametro "polylines" specificato non valido.',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -3713,7 +3795,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする ([https://www.semantic-mediawiki.org/wiki/Maps 詳細情報...])',
+	'maps-desc' => 'ウィキページへの動的な地図の埋め込み、住所の座標データへの変換、その他の地図関連の操作ができるようにする。',
 	'right-geocode' => 'ジオコーディング',
 	'maps_map' => '地図',
 	'maps-tracking-category' => 'Maps拡張機能がレンダリングした地図があるページ',
@@ -3924,29 +4006,41 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Hym411
+ * @author Jskang
+ * @author Priviet
  * @author 아라
  */
 $messages['ko'] = array(
-	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다. ([https://www.semantic-mediawiki.org/wiki/Maps 자세한 정보...])',
+	'maps-desc' => '위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다.',
 	'right-geocode' => '좌표화',
 	'maps_map' => '지도',
+	'maps-tracking-category' => '지도를 지도 확장 기능으로 표시하는 문서',
 	'maps-loading-map' => '지도를 불러오는 중...',
 	'maps-load-failed' => '지도를 불러올 수 없습니다!',
 	'maps-markers' => '표시',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
 	'maps-searchmarkers-text' => '표시를 필터',
 	'maps-others' => '기타',
+	'maps-kml-parsing-failed' => '가져오기 실패나 XML이 손상되어 하나 혹은 그 이상의 KML 파일을 구문 분석하는 데 실패했습니다.',
 	'maps-ns-layer' => '레이어',
 	'maps-ns-layer-talk' => '레이어 토론',
 	'maps-layer-property' => '속성',
 	'maps-layer-value' => '값',
 	'maps-layer-errors' => '오류',
-	'maps-error-invalid-layerdef' => '이 레이어 정의가 올바르지 않습니다.',
+	'maps-layerdef-invalid' => '유효하지 않은 정의{{PLURAL:$1|}}',
+	'maps-layerdef-invalid-fatal' => '치명적으로 잘못된 정의',
+	'maps-layerdef-wrong-namespace' => '레이어 정의가 "$1" 이름공간의 문서에만 유효하지 않습니다',
+	'maps-layerdef-equal-layer-name' => '같은 레이어 페이지 내에서 레이어 이름은 고유해야 합니다. "$1"은 이미 다른 레이어의 이름으로 사용되고 있습니다.',
+	'maps-layerpage-usage' => '"$1" 레이어를 사용하는 지도와 문서',
+	'maps-layerpage-nousage' => '현재 이 레이어를 사용하는 문서가 없습니다.',
 	'maps-error-invalid-layertype' => '"$1" 레이어 종류가 없습니다. {{PLURAL:$3|다음 종류}}만 지원합니다: $2',
 	'maps-error-no-layertype' => '레이어 종류를 지정해야 합니다. {{PLURAL:$2|다음 종류만|다음 종류를}} 지원합니다: $1',
 	'validation-error-invalid-layer' => '$1 변수는 올바른 레이어여야 합니다.',
 	'validation-error-invalid-layers' => '$1 변수는 하나 이상의 올바른 레이어여야 합니다.',
+	'validation-error-no-non-numeric' => '"$1" 매개변수는 숫자를 포함하지 않는 문자열이어야 합니다.',
+	'validation-error-no-non-numerics' => '"$1" 매개변수는 하나 또는 그 이상의 숫자가 아닌 문자열이어야 합니다.',
 	'maps-layer-of-type' => '$1 종류의 레이어',
+	'maps-layer-of-type-and-name' => '"$1" 형식의 "$2" 레이어',
 	'maps-layer-type-supported-by' => '이 레이어 유형은 {{PLURAL:$2|$1 매핑 서비스에서만 사용할 수 있습니다.|다음 매핑 서비스에서 사용할 수 있습니다: $1}}',
 	'maps-coordinates-description' => '지원되는 좌표 형식간에 서로 변환하는 파서 훅입니다.',
 	'maps-displaymap-description' => '지도에 위키 정의한 표시 없이 지리적 지도를 보여줍니다.',
@@ -3956,6 +4050,7 @@ $messages['ko'] = array(
 	'maps-geocode-description' => '주소, 즉 좌표 집합으로 인간이 읽을 수 있는 위치를 전환하는 좌표화를 활성화합니다. 매핑 서비스와 혼동하지 않아야 하는 여러 좌표화 서비스에 대한 지원이 있습니다.',
 	'maps-geodistance-description' => '지원하는 형식으로 두 지점 사이의 지리적 거리를 계산합니다.',
 	'maps-mapsdoc-description' => '기본 값과 설명과 함께 지정된 좌표화 서비스에 대한 변수로 테이블을 보여줍니다.',
+	'maps-layerdefinition-description' => '지도기능으로 표시할 수 있는 사용자 정의 레이어를 설명하세요.',
 	'maps-mapsdoc-par-service' => '변수 설명문을 보여줄 좌표화 서비스입니다.',
 	'maps-mapsdoc-par-language' => '설명문을 보여줄 언어입니다. 변역을 사용할 수 없으면 영어가 대신 사용됩니다.',
 	'maps-coordinates-par-location' => '형식을 지정할 좌표입니다.',
@@ -3992,7 +4087,7 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 기본 좌표화 서비스 값에 영향을 줄 수 있습니다.',
 	'maps-displaymap-par-mappingservice' => '지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.',
 	'maps-displaymap-par-coordinates' => '지도에 보여줄 하나 이상의 위치입니다. 표시로 표시됩니다.',
-	'maps-displaymap-par-visitedicon' => '방문한 아이콘으로 사용할 파일의 로컬', # Fuzzy
+	'maps-displaymap-par-visitedicon' => '마커 아이콘 클릭 이후의 그림 이름',
 	'maps-displaymap-par-zoom' => '지도의 확대 수준을 설정할 수 있습니다.
 제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.',
 	'maps-displaymap-par-centre' => 'display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.
@@ -4011,6 +4106,8 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 	'maps-displaymap-par-rectangles' => '보려줄 네모',
 	'maps-displaymap-par-static' => '지도는 정적이어야 할 때',
 	'maps-displaymap-par-wmsoverlay' => 'WMS 오버레이 사용',
+	'maps-fullscreen-button' => '전체화면으로 전환',
+	'maps-fullscreen-button-tooltip' => '지도를 전체 화면 또는 삽입된 형태로 보기',
 	'maps-googlemaps3-par-enable-fullscreen' => '전체 화면 버튼 활성화',
 	'validation-error-invalid-location' => '$1 변수는 올바른 위치여야 합니다.',
 	'validation-error-invalid-locations' => '$1 변수는 하나 이상의 올바른 위치여야 합니다.',
@@ -4022,9 +4119,6 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 	'validation-error-invalid-images' => '$1 변수는 하나 이상의 올바른 그림이어야 합니다.',
 	'validation-error-invalid-goverlay' => '$1 변수는 올바른 오버레이여야 합니다.',
 	'validation-error-invalid-goverlays' => '$1 변수는 하나 이상의 올바른 오버레이여야 합니다.',
-	'validation-error-invalid-line-param' => '"lines" 변수를 잘못 지정했습니다.',
-	'validation-error-invalid-polyline-param' => '"polylines" 변수를 잘못 지정했습니다.',
-	'validation-error-invalid-searchmarkers-param' => '검색표시 값이 잘못되었으며 "all"이나 "title" 중 하나여야 합니다',
 	'maps-abb-north' => '북',
 	'maps-abb-east' => '동',
 	'maps-abb-south' => '남',
@@ -4067,6 +4161,7 @@ $1',
 	'maps-googlemaps3-par-poi' => '관심 지점을 보여줍니다.',
 	'maps-openlayers-par-controls' => '지도에 놓을 컨트롤입니다.',
 	'maps-openlayers-par-layers' => '레이서 선택기에서 사용할 수 있는 레이어입니다. 첫 레이어는 지도를 불러올 때 보여줍니다.',
+	'maps-openlayers-par-overlays' => '레이어 선택기에서 사용 가능하게 될 오버레이 레이어. 이 레이어는 정상 레이어의 맨 위에 일종의 마커처럼 표시될 것입니다.',
 	'maps-osm-par-thumbs' => '섬네일 보기',
 	'maps-osm-par-photos' => '사진 보기',
 	'mapeditor' => '지도 편집기',
@@ -4181,7 +4276,7 @@ $messages['lad'] = array(
  * @author Soued031
  */
 $messages['lb'] = array(
-	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen. ([https://www.semantic-mediawiki.org/wiki/Maps fir méi Informatiounen...])",
+	'maps-desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen.",
 	'right-geocode' => 'Geocode',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => "D'Kaart gëtt gelueden…",
@@ -4193,6 +4288,7 @@ $messages['lb'] = array(
 	'maps-layer-property' => 'Eegeschaft',
 	'maps-layer-value' => 'Wäert',
 	'maps-layer-errors' => 'Feeler',
+	'maps-layerdef-invalid-fatal' => 'Fatal net valabel Definitioun',
 	'maps-layer-of-type' => 'Layer vum Typ "$1"',
 	'maps-geodistance-description' => 'Déi geographesch Distanz tëscht zwéi Punkte berechnen, vun an an iergendeent vun den ënnerstëtzte Formater.',
 	'maps-mapsdoc-par-language' => "D'Sprooch an där d'Dokumentatioun gewise gi soll. Wann déi Iwwersetzung net disponibel ass, da gëtt Englesch an där Plaz benotzt.",
@@ -4352,7 +4448,7 @@ $messages['mg'] = array(
  * @author McDutchie
  */
 $messages['mk'] = array(
-	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции. ([https://www.semantic-mediawiki.org/wiki/Maps?uselang=mk повеќе информации...])',
+	'maps-desc' => 'Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски операции.',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Карта',
 	'maps-tracking-category' => 'Страници со карта исцртана со додатокот „Карти“',
@@ -4570,7 +4666,7 @@ $messages['mr'] = array(
  * @author Anakmalaysia
  */
 $messages['ms'] = array(
-	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi. ([https://www.semantic-mediawiki.org/wiki/Maps maklumat lanjut...])',
+	'maps-desc' => 'Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi.',
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Peta',
 	'maps-loading-map' => 'Peta sedang dimuatkan...',
@@ -4584,12 +4680,14 @@ $messages['ms'] = array(
 	'maps-layer-property' => 'Sifat',
 	'maps-layer-value' => 'Nilai',
 	'maps-layer-errors' => 'Ralat',
-	'maps-error-invalid-layerdef' => 'Takrifan lapisan ini tidak sah.',
+	'maps-layerdef-invalid' => 'Definisi{{PLURAL:$1||-definisi}} tidak sah',
 	'maps-error-invalid-layertype' => 'Tiada lapisan jenis "$1". {{PLURAL:$3|Jenis|Jenis-jenis}} ini sahaja yang disokong: $2',
 	'maps-error-no-layertype' => 'Anda perlu menentukan jenis lapisan. {{PLURAL:$2|Jenis|Jenis-jenis}} ini sahaja yang disokong: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 mestilah lapisan yang sah.',
 	'validation-error-invalid-layers' => 'Parameter $1 mestilah sekurang-kurangnya satu lapisan yang sah.',
+	'validation-error-no-non-numeric' => 'Parameter "$1" mestilah rentetan bukan nombor.',
 	'maps-layer-of-type' => 'Lapisan jenis $1',
+	'maps-layer-of-type-and-name' => 'Lapisan "$2" jenis "$1"',
 	'maps-layer-type-supported-by' => 'Jenis lapisan ini {{PLURAL:$2|hanya boleh digunakan dengan perkhidmatan pemetaan $1|boleh digunakan dengan perkhidmatan-perkhidmatan pemetaan yang berikut: $1}}.',
 	'maps-coordinates-description' => 'Cangkuk penghurai untuk memformatkan koordinat daripada/kepada sebarang format yang disokong.',
 	'maps-displaymap-description' => 'Memaparkan peta geografi tanpa sebarang penanda tentuan wiki padanya.',
@@ -4665,9 +4763,6 @@ Apabila digunakan bersama label, tajuknya akan berupa tebal dan bergaris bawah.'
 	'validation-error-invalid-images' => 'Parameter $1 mestilah sekurang-kurangnya satu imej yang sah.',
 	'validation-error-invalid-goverlay' => 'Parameter $1 mestilah tindanan yang sah.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 mestilah sekurang-kurangnya satu tindanan yang sah.',
-	'validation-error-invalid-line-param' => 'Parameter "lines" yang dinyatakan tidak sah.',
-	'validation-error-invalid-polyline-param' => 'Parameter "polylines" yang dinyatakan tidak sah.',
-	'validation-error-invalid-searchmarkers-param' => 'Nilai penanda carian tidak sah, mesti sama ada "all" atau "title"',
 	'maps-abb-north' => 'U',
 	'maps-abb-east' => 'T',
 	'maps-abb-south' => 'S',
@@ -5375,7 +5470,7 @@ $1',
  * @author Yarl
  */
 $messages['pl'] = array(
-	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych. ([https://www.semantic-mediawiki.org/wiki/Maps more info...])',
+	'maps-desc' => 'Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych.',
 	'right-geocode' => 'Geokodowanie',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
@@ -5389,7 +5484,6 @@ $messages['pl'] = array(
 	'maps-layer-property' => 'Własność',
 	'maps-layer-value' => 'Wartość',
 	'maps-layer-errors' => 'Błędy',
-	'maps-error-invalid-layerdef' => 'Definicja tej warstwy jest nieprawidłowa.',
 	'maps-error-invalid-layertype' => 'Brak warstw typu „$1”. {{PLURAL:$3|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $2',
 	'maps-error-no-layertype' => 'Musisz określić typ warstwy. {{PLURAL:$2|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $1',
 	'validation-error-invalid-layer' => 'Parametr $1 musi określać prawidłową warstwę.',
@@ -6049,7 +6143,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса, выполнять другие географические действия. ([https://www.semantic-mediawiki.org/wiki/Maps подробнее...])',
+	'maps-desc' => 'Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса и выполнять другие географические действия.',
 	'right-geocode' => 'геокодирование',
 	'maps_map' => 'Карта',
 	'maps-tracking-category' => 'Страницы с картой, сгенерированной расширением Maps',
@@ -6065,12 +6159,20 @@ $messages['ru'] = array(
 	'maps-layer-property' => 'Свойство',
 	'maps-layer-value' => 'Значение',
 	'maps-layer-errors' => 'Ошибки',
-	'maps-error-invalid-layerdef' => 'Это определение слоя неверно.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Недопустимое определение|Недопустимые определения}}',
+	'maps-layerdef-invalid-fatal' => 'Фатальное недопустимое определение',
+	'maps-layerdef-wrong-namespace' => 'Определения слоёв действительны только на страницах пространства имён «$1»',
+	'maps-layerdef-equal-layer-name' => 'Имена слоёв должны быть уникальными в пределах одной и той же страницы слоёв. «$1» уже используется другим слоем.',
+	'maps-layerpage-usage' => 'Страницы с картами, использующие слой «$1»',
+	'maps-layerpage-nousage' => 'Нет страниц, использующих этот слой в данный момент.',
 	'maps-error-invalid-layertype' => 'Не существует слоя типа «$1». {{PLURAL:$3|1=Поддерживается только следующий тип|Поддерживаются только следующие типы}}: $2',
 	'maps-error-no-layertype' => 'Вам нужно указать тип слоя. {{PLURAL:$2|1=Поддерживается только следующий тип|Поддерживаются следующие типы}}: $1',
 	'validation-error-invalid-layer' => 'Параметр $1 должен быть корректным слоем.',
 	'validation-error-invalid-layers' => 'Параметр $1 должен содержать один или несколько корректных слоёв.',
+	'validation-error-no-non-numeric' => 'Параметр «$1» должен быть нецифровой строкой.',
+	'validation-error-no-non-numerics' => 'Параметр «$1» должен быть одной или несколькими нецифровыми строками.',
 	'maps-layer-of-type' => 'Слой типа $1',
+	'maps-layer-of-type-and-name' => 'Слой «$2» типа «$1»',
 	'maps-layer-type-supported-by' => 'Этот тип слоя может быть использован {{PLURAL:$2|1=только с картографической службой|только со следующими картографическими службами:}} $1',
 	'maps-coordinates-description' => 'Перехватчик синтаксического анализатора для форматирования координат из любого и в любой поддерживаемый формат.',
 	'maps-displaymap-description' => 'Отображение географических карт без каких-либо вики-маркеров на них.',
@@ -6079,6 +6181,8 @@ $messages['ru'] = array(
 	'maps-finddestination-description' => 'Найти место назначения от заданной начальной точки (может быть в любом формате из поддерживаемых), начальное направление и расстояние.',
 	'maps-geocode-description' => 'Включает геокодирование адресов. Иными словами, преобразует понятные человеку названия мест в наборы координат. Поддерживается несколько сервисов геокодирования, которые не следует путать с картографическими сервисами.',
 	'maps-geodistance-description' => 'Рассчитать географическое расстояние между двумя точками, из любого и в любой поддерживаемый формат.',
+	'maps-mapsdoc-description' => 'Показывает таблицу с параметрами для указанного картографического сервиса вместе с их значениями по умолчанию и описаниями.',
+	'maps-layerdefinition-description' => 'Описывает пользовательский слой, который может отображаться с другими функциями карты.',
 	'maps-mapsdoc-par-language' => 'Язык, на котором отображается документация. Если перевод не доступен, вместо него будет использоваться английский язык.',
 	'maps-coordinates-par-location' => 'Координаты, которые требуется отформатировать.',
 	'maps-coordinates-par-format' => 'Целевой формат координат.',
@@ -6114,8 +6218,12 @@ $messages['ru'] = array(
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-displaymap-par-coordinates' => 'Одно или несколько мест для отображения на карте. Они будут обозначаться маркером.',
 	'maps-displaymap-par-visitedicon' => 'Имя изображения, которое будет используется для значков-маркеров после того, как на них нажмут',
+	'maps-displaymap-par-title' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенного заголовка.
+При использовании совместно с подписью, название будет выделено жирным шрифтом и подчеркнуто.',
+	'maps-displaymap-par-label' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенных подписей.',
 	'maps-displaymap-par-icon' => 'Позволяет установить значок, используемый для всех маркеров.',
 	'maps-displaymap-par-circles' => 'Кружки для отображения',
+	'maps-displaymap-par-copycoords' => 'Показывать ли диалоговое окно, в котором должны быть показаны координаты местоположения, при нажатии на что-нибудь',
 	'maps-displaymap-par-lines' => 'Линии для отображения',
 	'maps-displaymap-par-maxzoom' => 'Максимальный уровень масштабирования',
 	'maps-displaymap-par-minzoom' => 'Минимальный уровень масштабирования',
@@ -6136,8 +6244,6 @@ $messages['ru'] = array(
 	'validation-error-invalid-images' => 'Параметр $1 должен содержать одно или несколько корректных изображений.',
 	'validation-error-invalid-goverlay' => 'Параметр $1 должен быть корректным наложением.',
 	'validation-error-invalid-goverlays' => 'Параметр $1 должен содержать одно или несколько корректных наложений.',
-	'validation-error-invalid-line-param' => 'Указан неверный параметр «lines».',
-	'validation-error-invalid-polyline-param' => 'Указан недопустимый параметр «polylines».',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'В',
 	'maps-abb-south' => 'Ю',
@@ -6158,6 +6264,10 @@ $1',
 	'maps_centred_on' => 'Центр карты — $1, $2.',
 	'maps-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-par-resizable' => 'Даёт возможность изменять размер карты, потащив её за правый нижний угол.',
+	'maps-par-geoservice' => 'Служба геокодирования для того, чтобы делать переводы между адресами и координатами.',
+	'maps-par-zoom' => 'Уровень масштабирования карты. Для карт с маркерами это будет по умолчанию наиболее приближенный уровень, при котором всё ещё будут видны все маркеры.',
+	'maps-par-width' => 'Позволяет задать ширину карты. По умолчанию единицей измерения будет считаться пиксель, но можно явно указать одну из следующих единиц: px, ex, em, %.',
+	'maps-par-height' => 'Позволяет задать высоту карты. По умолчанию единицей измерения будет считаться пиксель, но можно явно указать одну из следующих единиц: px, ex, em, %.',
 	'maps-par-centre' => 'Расположение на карте, по которому она должна быть отцентрована',
 	'maps-googlemaps3-incompatbrowser' => 'Ваш браузер несовместим с Google Maps v3.',
 	'maps-googlemaps3-par-type' => 'Тип карты для начального отображения.',
@@ -6173,6 +6283,8 @@ $1',
 	'maps-googlemaps3-par-kmlrezoom' => 'Перемасштабировать карту после загрузки слоёв KML.',
 	'maps-googlemaps3-par-poi' => 'Показать достопримечательности.',
 	'maps-openlayers-par-controls' => 'Элементы управления для размещения на карте.',
+	'maps-openlayers-par-layers' => 'Слои, которые будут доступны при выборе слоёв. Первый слой будет отображаться при загрузке карты.',
+	'maps-openlayers-par-overlays' => 'Наложенные слои, которые будут доступны при выборе слоёв. Эти слои будут отображаться поверх обычного слоя, аналогично маркерам.',
 	'maps-osm-par-thumbs' => 'Показать превью',
 	'maps-osm-par-photos' => 'Показать фото',
 	'mapeditor' => 'Редактор карт',
@@ -6437,7 +6549,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([https://www.semantic-mediawiki.org/wiki/Maps mer information...]).',
+	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([https://www.semantic-mediawiki.org/wiki/Maps mer information...]).', # Fuzzy
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
@@ -6450,12 +6562,14 @@ $messages['sv'] = array(
 	'maps-layer-property' => 'Egenskap',
 	'maps-layer-value' => 'Värde',
 	'maps-layer-errors' => 'Fel',
-	'maps-error-invalid-layerdef' => 'Denna lagerdefinition är inte giltig.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Ogiltig definition|Ogiltiga definitioner}}',
 	'maps-error-invalid-layertype' => 'Det finns inga lager av typen "$1". Endast {{PLURAL:$3|denna typ|denna typer}} stöds: $2',
 	'maps-error-no-layertype' => 'Du måste ange lagertypen. {{PLURAL:$2|Endast denna typ|Dessa typer}} stöds: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 måste vara ett giltig lager.',
 	'validation-error-invalid-layers' => 'Parameter $1 måste vara ett eller flera giltiga lager.',
+	'validation-error-no-non-numeric' => 'Parametern "$1" måste vara en icke-numerisk sträng.',
 	'maps-layer-of-type' => 'Lagertyp $1',
+	'maps-layer-of-type-and-name' => 'Lager "$2" för typen "$1"',
 	'maps-layer-type-supported-by' => 'Denna lagertyp kan endast användas med {{PLURAL:$2|kartläggningstjänsten $1|dessa kartläggningstjänster: $1}}.',
 	'maps-distance-description' => 'Konvertera ett avstånd mätt i en giltig enhet till en annan enhet.',
 	'maps-finddestination-description' => 'Hitta ett mål utifrån en given startpunkt (på något giltigt format), en inledande bäring och ett avstånd.',
@@ -6824,6 +6938,7 @@ $1',
  * @author Joseph
  * @author Manco Capac
  * @author Meelo
+ * @author Trncmvsr
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -6838,6 +6953,7 @@ $messages['tr'] = array(
 	'maps-layer-property' => 'Özellik',
 	'maps-layer-value' => 'Değer',
 	'maps-layer-errors' => 'Hatalar',
+	'maps-layerdef-invalid' => 'Hatalı tanımlama{{PLURAL:$1||lar}}',
 	'validation-error-invalid-location' => '$1 parametresi geçerli bir konum olmalıdır.',
 	'validation-error-invalid-locations' => '$1 parametresi geçerli bir (veya daha fazla) konum olmalıdır.',
 	'validation-error-invalid-width' => '$1 parametresi geçerli bir genişlik olmalıdır.',
@@ -6889,7 +7005,7 @@ $messages['tzm'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
-	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції. ([https://www.semantic-mediawiki.org/wiki/Maps детальніше...])',
+	'maps-desc' => 'Дає змогу вбудовування динамічних карт у сторінки вікі, геокодування адрес та інші географічні операції.',
 	'right-geocode' => 'Геокод',
 	'maps_map' => 'Мапа',
 	'maps-tracking-category' => 'Сторінки з картою, створеною розширенням карти',
@@ -6905,12 +7021,20 @@ $messages['uk'] = array(
 	'maps-layer-property' => 'Властивість',
 	'maps-layer-value' => 'Значення',
 	'maps-layer-errors' => 'Помилки',
-	'maps-error-invalid-layerdef' => 'Це визначення шару невірне.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Недопустиме визначення|Недопустимі визначення}}',
+	'maps-layerdef-invalid-fatal' => 'Фатальне недопустиме визначення',
+	'maps-layerdef-wrong-namespace' => 'Визначення шарів дійсні тільки на сторінках простору імен «$1»',
+	'maps-layerdef-equal-layer-name' => 'Назви шарів мають бути унікальними у межах однієї сторінки шарів. "$1" вже використано іншим шаром.',
+	'maps-layerpage-usage' => 'Сторінки з картами, які використовують шар "$1"',
+	'maps-layerpage-nousage' => 'Немає сторінок з цим шаром на даний момент.',
 	'maps-error-invalid-layertype' => 'Не існують шари типу «$1». {{PLURAL:$3|1=Підтримується лише наступний тип|Підтримуються лише наступні типи}}: $2',
 	'maps-error-no-layertype' => 'Вам потрібно вказати тип шару. {{PLURAL:$2|1=Тільки такий тип|Такі типи}} підтримуються: $1',
 	'validation-error-invalid-layer' => 'Параметр $1 повинен бути коректним шаром.',
 	'validation-error-invalid-layers' => 'Параметри $1 повинні містити один чи більше коректних шарів.',
+	'validation-error-no-non-numeric' => 'Параметр "$1" повинен бути нечисловим рядком.',
+	'validation-error-no-non-numerics' => 'Параметр "$1" повинен бути одним або декількома нечисловими рядками.',
 	'maps-layer-of-type' => 'Шар типу $1',
+	'maps-layer-of-type-and-name' => 'Шар "$2" типу "$1"',
 	'maps-layer-type-supported-by' => 'Цей тип шару може бути використано {{PLURAL:$2|1=лише із картографічним сервісом|лише із наступними картографічними сервісами:}} $1',
 	'maps-coordinates-description' => 'Перехопиник парсеру для форматування координат із будь-якого у будьякий формат, що підтримується.',
 	'maps-displaymap-description' => 'Відображення географічних карт без жодних вікі-маркерів на них.',
@@ -6920,6 +7044,7 @@ $messages['uk'] = array(
 	'maps-geocode-description' => 'Дозволяє геокодування адрес, іншими словами перетворює зрозумілі для людини розташування у набори координат. Підтримується декілька сервісів геокодування, які не варто плутати з сервісами картографування.',
 	'maps-geodistance-description' => 'Розрахувати географічну відстань між двома точками, з будь-якого і у будь-який підтримуваний формат.',
 	'maps-mapsdoc-description' => 'Відобразити таблицю параметрів вказаного сервісу картографування з їх стандартними значеннями і описом.',
+	'maps-layerdefinition-description' => 'Описує користувацький шар, який може бути відображений з іншими функціями карти.',
 	'maps-mapsdoc-par-service' => 'Сервіс картографування, для якого відобразиться документація параметрів.',
 	'maps-mapsdoc-par-language' => 'Мова, якою показувати документацію. Якщо перекладу на таку немає, буде використано англійську.',
 	'maps-coordinates-par-location' => 'Координати, які Ви бажаєте відформатувати.',
@@ -6989,9 +7114,6 @@ $messages['uk'] = array(
 	'validation-error-invalid-images' => 'Параметр $1 повинен бути одним або більше коректними зображеннями.',
 	'validation-error-invalid-goverlay' => 'Параметр $1 повинен бути коректним накладенням.',
 	'validation-error-invalid-goverlays' => 'Параметр $1 повинен бути одним або більше коректних накладень.',
-	'validation-error-invalid-line-param' => 'Вказано недопустимий параметр "lines".',
-	'validation-error-invalid-polyline-param' => 'Вказано недопустимий параметр "polylines".',
-	'validation-error-invalid-searchmarkers-param' => 'Недопустиме значення маркерів пошуку, має бути "all" або "title"',
 	'maps-abb-north' => 'Пн',
 	'maps-abb-east' => 'Сх',
 	'maps-abb-south' => 'Пд',
@@ -7034,6 +7156,7 @@ $1',
 	'maps-googlemaps3-par-poi' => "Показати визначні пам'ятки.",
 	'maps-openlayers-par-controls' => 'Елементи керування, які буде розміщено на карті.',
 	'maps-openlayers-par-layers' => 'Шари, які будуть доступні в селекторі шару. Перший шар буде показано під час завантаження карти.',
+	'maps-openlayers-par-overlays' => 'Накладання шарів, які будуть доступні у селекторі шару. Ці шари відображаються поверх звичайного шару на кшталт маркеру.',
 	'maps-osm-par-thumbs' => 'Показувати мініатюри',
 	'maps-osm-par-photos' => 'Показувати фото',
 	'mapeditor' => 'Редактор карт',
@@ -7133,9 +7256,10 @@ $messages['vep'] = array(
  * @author Baonguyen21022003
  * @author Minh Nguyen
  * @author Vinhtantran
+ * @author Withoutaname
  */
 $messages['vi'] = array(
-	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác ([https://www.semantic-mediawiki.org/wiki/Maps?uselang=vi thêm chi tiết])',
+	'maps-desc' => 'Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác.',
 	'right-geocode' => 'Mã hóa địa lý',
 	'maps_map' => 'Bản đồ',
 	'maps-loading-map' => 'Đang tải bản đồ…',
@@ -7148,7 +7272,6 @@ $messages['vi'] = array(
 	'maps-layer-property' => 'Thuộc tính',
 	'maps-layer-value' => 'Giá trị',
 	'maps-layer-errors' => 'Lỗi',
-	'maps-error-invalid-layerdef' => 'Định nghĩa lớp này không hợp lệ.',
 	'maps-error-invalid-layertype' => 'Không có lớp nào kiểu “$1”. Chỉ có {{PLURAL:$3|loại|các loại}} này được hỗ trợ: $2',
 	'maps-error-no-layertype' => 'Cần phải định rõ kiểu lớp. {{PLURAL:$2|Kiểu|Các kiểu}} này được hỗ trợ: $1',
 	'validation-error-invalid-layer' => 'Tham số $1 phải là một lớp hợp lệ.',
@@ -7275,7 +7398,7 @@ $messages['zh-cn'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[https://www.semantic-mediawiki.org/wiki/地图更多信息...]）',
+	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[https://www.semantic-mediawiki.org/wiki/地图更多信息...]）', # Fuzzy
 	'right-geocode' => '地理编码',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入地图中……',
@@ -7330,6 +7453,7 @@ $messages['zh-hans'] = array(
 	'mapeditor-remove-button' => '移除',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
+	'mapeditor-clear-button' => '明确地图',
 	'mapeditor-code-title' => '维基代码',
 	'mapeditor-import-title' => '导入维基代码',
 	'mapeditor-form-title' => '编辑详情',
@@ -7351,6 +7475,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎)
  * @author Cwlin0416
+ * @author EagerLin
  * @author Horacewai2
  * @author Justincheng12345
  * @author Mark85296341
@@ -7372,7 +7497,19 @@ $messages['zh-hant'] = array(
 	'maps-layer-property' => '屬性',
 	'maps-layer-value' => '價值',
 	'maps-layer-errors' => '錯誤',
-	'maps-error-invalid-layerdef' => '這一層定義不是有效的。',
+	'maps-layerdef-invalid' => '不正確定義 {{PLURAL:$1| |s}}',
+	'maps-layerdef-invalid-fatal' => '致命的定義無效',
+	'maps-layerdef-wrong-namespace' => '圖層的定義只是有效的命名空間的頁面上"$1"',
+	'maps-layerdef-equal-layer-name' => '圖層名稱必須是在同一層頁面內唯一。" $1 "已被使用的另一層。',
+	'maps-layerpage-usage' => '與使用圖層的地圖頁" $1 "',
+	'maps-layerpage-nousage' => '沒有頁面目前使用的這一圖層。',
+	'validation-error-invalid-layer' => '參數"$1"必須是一個有效的設置。',
+	'validation-error-invalid-layers' => '參數"$1"必須是一個或多個有效的設置。',
+	'validation-error-no-non-numeric' => '參數"$1"必須是一個或多個非數位字串。',
+	'validation-error-no-non-numerics' => '參數"$1"必須是一個或多個非數位字串。',
+	'maps-layer-of-type' => '圖層類型"$1"',
+	'maps-layer-of-type-and-name' => '圖層" $2 "的類型" $1 "',
+	'maps-layerdefinition-description' => '描述自訂圖層，可以顯示其他地圖功能。',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影響。',
 	'maps-fullscreen-button' => '切換全螢幕',
@@ -7395,6 +7532,7 @@ $messages['zh-hant'] = array(
 	'maps-latitude' => '緯度：',
 	'maps-longitude' => '經度：',
 	'maps_map_cannot_be_displayed' => '該地圖無法顯示。',
+	'maps-openlayers-par-overlays' => '將會在圖層選擇器中可用的覆蓋層。這些圖層將顯示在一個正常的圖層，有點像一個標記。',
 	'maps-osm-par-thumbs' => '顯示大拇指',
 	'maps-osm-par-photos' => '顯示圖片',
 	'mapeditor' => '地圖編輯器',
