@@ -1388,10 +1388,10 @@ Sofern man „no“ setzt, werden alle Koodiantenwerte geokodiert – sogar gül
 	'maps-geodistance-par-decimals' => 'Die bei der Ergebnisausgabe zu verwendende Höchstzahl an Nachkommastellen.',
 	'maps-geodistance-par-mappingservice' => 'Der Kartografiedienst der für alle Adressen genutzt werden soll.',
 	'maps-geodistance-par-geoservice' => 'Der Kartografiedienst mit dem dies genutzt wird.
-Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.',
+Dies kann Auswirkungen auf die Standardwerte des Georeferenzierungsdiensts haben.', # Fuzzy
 	'maps-displaymap-par-mappingservice' => 'Der Kartografiedienst, der zur Generierung der Karte genutzt werden soll',
 	'maps-displaymap-par-coordinates' => 'Die Postion auf welche die Karte zunächst zentriert werden soll',
-	'maps-displaymap-par-visitedicon' => 'Der Dateiname des Symbols, das anstelle der ursprünglichen Markierung angezeigt werden soll, sobald dieses angeklickt wurde',
+	'maps-displaymap-par-visitedicon' => 'Der Dateiname des Symbols, das anstelle der ursprünglichen Markierung angezeigt werden soll, sobald die Originalmarkierungen angeklickt wurden',
 	'maps-displaymap-par-zoom' => 'Der Anzeigestufe (Zoom) der Karte.
 Sofern keine angegeben wurde und mehrerer Markierungen auf der Karte vorhanden sind, wird die für deren gemeinsame Darstellung passende Anzeigestufe verwendet und nicht der Standardwert des Kartografiediensts.',
 	'maps-displaymap-par-centre' => 'Die Koordinaten, die zur Zentrierung der Karte verwendet werden sollen.
@@ -5513,6 +5513,7 @@ $messages['pl'] = array(
 	'maps-geocode-par-format' => 'Format wynikowych współrzędnych.',
 	'maps-displaymap-par-maxzoom' => 'Maksymalny poziom powiększenia',
 	'maps-displaymap-par-minzoom' => 'Minimalny poziom powiększenia',
+	'maps-fullscreen-button' => 'Przełącz na tryb pełnoekranowy',
 	'validation-error-invalid-location' => 'Parametr $1 musi wskazywać prawidłową lokalizację.',
 	'validation-error-invalid-locations' => 'Parametr $1 musi wskazywać jedną lub więcej prawidłowych lokalizacji.',
 	'validation-error-invalid-width' => 'Parametr $1 musi określać prawidłową szerokość.',
@@ -6217,7 +6218,7 @@ $messages['ru'] = array(
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-displaymap-par-coordinates' => 'Одно или несколько мест для отображения на карте. Они будут обозначаться маркером.',
-	'maps-displaymap-par-visitedicon' => 'Имя изображения, которое будет используется для значков-маркеров после того, как на них нажмут',
+	'maps-displaymap-par-visitedicon' => 'Имя изображения, которое будет используется для значков-маркеров после того, как на них нажмут', # Fuzzy
 	'maps-displaymap-par-title' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенного заголовка.
 При использовании совместно с подписью, название будет выделено жирным шрифтом и подчеркнуто.',
 	'maps-displaymap-par-label' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенных подписей.',
