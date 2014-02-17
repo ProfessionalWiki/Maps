@@ -2450,11 +2450,11 @@ Si cette valeur est « non », chacune des valeurs sera géocodée, même s'il s
 	'maps-geodistance-par-unit' => "L'unité à utiliser pour afficher la distance.",
 	'maps-geodistance-par-decimals' => 'Le nombre maximal de chiffres après la virgule à utiliser dans le résultat.',
 	'maps-geodistance-par-mappingservice' => "Le service de géocodage à utiliser pour géocoder n'importe quelle adresse.",
-	'maps-geodistance-par-geoservice' => 'Le service de cartographie à utiliser conjointement.
+	'maps-geodistance-par-geoservice' => 'Le service de cartographie qu’utilise cette fonction de l’analyseur est utilisé de façon associée.
 Cela peut affecter la valeur par défaut du service de géocodage.',
 	'maps-displaymap-par-mappingservice' => 'Permet de définir le service de cartographie qui sera utilisé pour générer la carte.',
 	'maps-displaymap-par-coordinates' => "L'emplacement sur lequel la carte sera initialement centrée.",
-	'maps-displaymap-par-visitedicon' => 'Le nom d’une image à utiliser comme icônes de marquage une fois qu’elles ont été cliquées',
+	'maps-displaymap-par-visitedicon' => 'Le nom de fichier d’une image à utiliser comme icônes de marquage une fois que les marqueurs d’origine  ont été cliqués',
 	'maps-displaymap-par-zoom' => "Permet de définir le niveau de zoom de la carte.
 Lorsqu'il n'est pas fourni et que plusieurs marqueurs sont présents sur la carte, le meilleur zoom sera pris, et non pas la valeur par défaut configurable.",
 	'maps-displaymap-par-centre' => "Permet de définir les coordonnées du centre de la carte pour display_point(s).
@@ -4130,7 +4130,7 @@ Google 좌표화는 서비스는 Google 지도와 함께 사용하는 것을 제
 기본 좌표화 서비스 값에 영향을 줄 수 있습니다.',
 	'maps-displaymap-par-mappingservice' => '지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.',
 	'maps-displaymap-par-coordinates' => '지도에 보여줄 하나 이상의 위치입니다. 표시로 표시됩니다.',
-	'maps-displaymap-par-visitedicon' => '마커 아이콘 클릭 이후의 그림 이름',
+	'maps-displaymap-par-visitedicon' => '원래의 마커가 클릭된 후 마커 아이콘에 사용된 이미지 파일 이름이 클릭되었습니다',
 	'maps-displaymap-par-zoom' => '지도의 확대 수준을 설정할 수 있습니다.
 제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.',
 	'maps-displaymap-par-centre' => 'display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.
@@ -6261,7 +6261,7 @@ $messages['ru'] = array(
 	'maps-geodistance-par-mappingservice' => 'Служба геокодирования, используемая для кодирования любого адреса.',
 	'maps-displaymap-par-mappingservice' => 'Позволяет выбрать сервис карт, который будет использоваться.',
 	'maps-displaymap-par-coordinates' => 'Одно или несколько мест для отображения на карте. Они будут обозначаться маркером.',
-	'maps-displaymap-par-visitedicon' => 'Имя изображения, которое будет используется для значков-маркеров после того, как на них нажмут', # Fuzzy
+	'maps-displaymap-par-visitedicon' => 'Имя файла для изображения, которое будет использоваться для значков-маркеров после того, как на сами маркеры нажмут',
 	'maps-displaymap-par-title' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенного заголовка.
 При использовании совместно с подписью, название будет выделено жирным шрифтом и подчеркнуто.',
 	'maps-displaymap-par-label' => 'Позволяет задать текст, который будет отображаться во всплывающих окнах всех маркеров, у которых нет определенных подписей.',
