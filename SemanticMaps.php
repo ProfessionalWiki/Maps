@@ -16,7 +16,7 @@ if ( defined( 'SM_VERSION' ) ) {
 	return 1;
 }
 
-define( 'SM_VERSION', '3.0.1' );
+define( 'SM_VERSION', '3.0.2' );
 
 if ( version_compare( $GLOBALS['wgVersion'], '1.19c', '<' ) ) {
 	throw new Exception( 'This version of Semantic Maps requires MediaWiki 1.18 or above;'
@@ -31,7 +31,7 @@ if ( !defined( 'Maps_VERSION' ) ) {
 	throw new Exception( 'You need to have Maps installed in order to use Semantic Maps' );
 }
 
-$wgExtensionCredits['semantic'][] = array(
+$GLOBALS['wgExtensionCredits']['semantic'][] = array(
 	'path' => __FILE__,
 	'name' => 'Semantic Maps',
 	'version' => SM_VERSION,
