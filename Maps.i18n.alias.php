@@ -18,6 +18,11 @@ $specialPageAliases['ar'] = array(
 	'MapEditor' => array( 'محرر_الخريطة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'MapEditor' => array( 'محرر_الخريطه' ),
+);
+
 /** Assamese (অসমীয়া) */
 $specialPageAliases['as'] = array(
 	'MapEditor' => array( 'মানচিত্ৰ_সম্পাদক' ),

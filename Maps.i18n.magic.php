@@ -43,10 +43,15 @@ $magicWords['ar'] = array(
 /** Egyptian Spoken Arabic (مصرى) */
 $magicWords['arz'] = array(
 	'display_map' => array( 0, 'عرض_الخريطه', 'عرض_الخريطة' ),
+	'display_point' => array( 0, 'نقطه_العرض' ),
+	'display_points' => array( 0, 'نقط_العرض' ),
+	'display_line' => array( 0, 'خط_العرض' ),
 	'geocode' => array( 0, 'كود_جغرافي' ),
 	'geodistance' => array( 0, 'مسافه_جغرافيه', 'مسافة_جغرافية' ),
 	'finddestination' => array( 0, 'إيجاد_الوجهه', 'إيجاد_الوجهة' ),
 	'coordinates' => array( 0, 'إحداثيات' ),
+	'distance' => array( 0, 'مسافه' ),
+	'mapsdoc' => array( 0, 'توثيق_الخرايط' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -346,6 +351,12 @@ $magicWords['uz'] = array(
 
 /** Vietnamese (Tiếng Việt) */
 $magicWords['vi'] = array(
+	'display_map' => array( 0, 'hiển_thị_bản_đồ', 'hiểnthịbảnđồ' ),
 	'geocode' => array( 0, 'mã_hóa_địa_lý', 'mãhóađịalý', 'mã_hoá_địa_lý', 'mãhoáđịalý', 'mã_hóa_địa_lí', 'mãhóađịalí', 'mã_hoá_địa_lí', 'mãhoáđịalí' ),
 	'coordinates' => array( 0, 'tọa_độ', 'tọađộ' ),
+);
+
+/** Simplified Chinese (中文（简体）‎) */
+$magicWords['zh-hans'] = array(
+	'mapsdoc' => array( 0, '地图文档' ),
 );
