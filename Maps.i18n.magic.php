@@ -358,5 +358,8 @@ $magicWords['vi'] = array(
 
 /** Simplified Chinese (中文（简体）‎) */
 $magicWords['zh-hans'] = array(
+	'display_map' => array( 0, '显示地图' ),
+	'display_point' => array( 0, '显示点' ),
+	'display_line' => array( 0, '显示线' ),
 	'mapsdoc' => array( 0, '地图文档' ),
 );
