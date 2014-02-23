@@ -308,7 +308,7 @@ $messages['bs'] = array(
  * @author Toniher
  */
 $messages['ca'] = array(
-	'semanticmaps-desc' => "Ofereix l'habilitat de visualitzar i editar dades de coordenades emmagatzemades a través de l'extensió Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps més informació...]).",
+	'semanticmaps-desc' => "Ofereix l'habilitat de visualitzar i editar dades de coordenades emmagatzemades amb l'extensió [https://www.semantic-mediawiki.org Semantic MediaWiki]",
 	'semanticmaps-unrecognizeddistance' => 'El valor $1 no és un valor de distància.',
 	'semanticmaps-kml-link' => 'Visualitza el fitxer KML',
 	'semanticmaps-default-kml-pagelink' => 'Visualitza la pàgina $1',
@@ -323,12 +323,18 @@ $messages['ca'] = array(
 	'semanticmaps-forminput-add' => 'Afegeix',
 	'semanticmaps-forminput-locations' => 'Ubicacions',
 	'semanticmaps-par-staticlocations' => "Una llista d'ubicacions per afegir al mapa juntament amb les dades consultades. Com amb 'display_points', s'hi pot afegir un títol, una descripció i una icona per a cada ubicació fent servir el signe \"~\" com a separador.",
-	'semanticmaps-par-forceshow' => 'Es mostra el mapa fins i tot quan no hi ha ubicacions a mostrar?',
 	'semanticmaps-par-showtitle' => "Es mostra o no un títol en la finestra d'informació del marcador. Inhabilitar-ho sovint és útil quan s'utilitza una plantilla per donar format al contingut de la finestra d'informació.",
+	'semanticmaps-par-hidenamespace' => "Mostra el títol de l'espai de noms en la finestra d'informació del marcador",
 	'semanticmaps-par-centre' => 'El centre del mapa. Quan no es proporciona, el map triarà automàticament el centre òptim per mostrar tots els marcadors al mapa.',
 	'semanticmaps-par-template' => "Una plantilla que s'utilitza per dona format al contingut de la finestra d'informació.",
 	'semanticmaps-par-geocodecontrol' => 'Mostra el control de geocodificació.',
+	'semanticmaps-par-activeicon' => 'Icona que es mostrarà en comptes del marcador per defecte quan la pàgina activa sigui igual al resultat de la consulta',
+	'semanticmaps-kml-text' => 'El text associat amb cada pàgina. Sobreescrit si hi ha cap propietat consultada addicional.',
 	'semanticmaps-kml-title' => 'El títol per defecte dels resultats',
+	'semanticmaps-kml-linkabsolute' => 'Si els enllaços haurien de ser absoluts (en comptes de relatius)',
+	'semanticmaps-kml-pagelinktext' => "El text que s'utilitzarà als enllaços de la pàgina, on $1 serà reemplaçat pel títol de la pàgina",
+	'semanticmaps-shapes-improperformat' => 'Format no adequat de $1. Consulteu la documentació sobre com aplicar format',
+	'semanticmaps-shapes-missingshape' => "No s'han trobat formes de $1. Consulteu la documentació de les formes disponibles",
 );
 
 /** Chechen (нохчийн)
