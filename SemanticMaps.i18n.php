@@ -606,11 +606,14 @@ $messages['eu'] = array(
  * @author Mjbmr
  */
 $messages['fa'] = array(
+	'semanticmaps-unrecognizeddistance' => 'مقدار  $1 یک فاصلهٔ معتبر نیست.',
 	'semanticmaps-kml-link' => 'مشاهدهٔ پوشهٔ کا‌ام‌ال',
 	'semanticmaps-default-kml-pagelink' => 'مشاهده صفحهٔ $1',
 	'semanticmaps-latitude' => 'عرض جغرافیایی: $1',
 	'semanticmaps-longitude' => 'طول جغرافیایی: $1',
 	'semanticmaps-altitude' => 'ارتفاع: $1',
+	'semanticmaps-loading-forminput' => 'در حال بارگذاری نقشه از ورودی...',
+	'semanticmaps_lookupcoordinates' => 'نگاه کردن مختصات',
 	'semanticmaps_enteraddresshere' => 'آدرس را اینجا وارد کنید',
 	'semanticmaps-updatemap' => 'به روز رسانی نقشه',
 	'semanticmaps-forminput-remove' => 'حذف',
