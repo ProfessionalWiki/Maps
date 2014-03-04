@@ -1841,7 +1841,7 @@ $messages['yi'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'semanticmaps-desc' => '提供对采用Semantic MediaWiki扩展所存储坐标数据的查看和编辑能力（[https://www.semantic-mediawiki.org/wiki/Semantic_Maps 更多信息......]）。',
+	'semanticmaps-desc' => '提供对采用[https://www.semantic-mediawiki.org Semantic MediaWiki]扩展所存储坐标数据的查看和编辑能力',
 	'semanticmaps-unrecognizeddistance' => '取值$1不是有效的距离。',
 	'semanticmaps-kml-link' => '查看KML文件',
 	'semanticmaps-default-kml-pagelink' => '检视页面 $1',
@@ -1856,7 +1856,6 @@ $messages['zh-hans'] = array(
 	'semanticmaps-forminput-add' => '添加',
 	'semanticmaps-forminput-locations' => '位置',
 	'semanticmaps-par-staticlocations' => '要与所查询数据一起添加到地图的一系列位置。就像display_points那样，可以采用波浪号"~"作为分隔符，为每个位置添加标题、描述及图标。',
-	'semanticmaps-par-forceshow' => '甚至在没有要显示的位置的情况下也显示地图吗？',
 	'semanticmaps-par-showtitle' => '是否在标记信息窗口之中显示标题。当采用模板对信息窗口内容进行格式编排的时候，关闭此项往往会有所帮助。',
 	'semanticmaps-par-hidenamespace' => '在标记信息窗口中显示命名空间标题',
 	'semanticmaps-par-centre' => '地图的中心。当未加提供的时候，地图会自动挑选最佳的中心，从而在地图上显示所有的标记。',
