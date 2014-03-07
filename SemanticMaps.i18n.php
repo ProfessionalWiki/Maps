@@ -1622,6 +1622,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (svenska)
  * @author Boivie
+ * @author Lokal Profil
  * @author Martinwiss
  * @author Najami
  * @author Per
@@ -1629,7 +1630,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med Semantic MediaWiki-utvidgningen ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mer information...])',
+	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med [https://www.semantic-mediawiki.org Semantic MediaWiki]-tillägget',
 	'semanticmaps-unrecognizeddistance' => 'Värdet $1 är inte ett giltigt avstånd.',
 	'semanticmaps-kml-link' => 'Visa KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Visa sida $1',
@@ -1644,7 +1645,6 @@ $messages['sv'] = array(
 	'semanticmaps-forminput-add' => 'Lägg till',
 	'semanticmaps-forminput-locations' => 'Platser',
 	'semanticmaps-par-staticlocations' => 'En lista med platser som man kan placera på kartan tillsammans med efterfrågad data. Precis som för display_points, så kan du lägga till en titel, en beskrivning och en ikon för varje plats med hjälp av tilde "~" som avgränsare.',
-	'semanticmaps-par-forceshow' => 'Visa kartan även om det inte finns några platser att visa?',
 	'semanticmaps-par-showtitle' => 'Visa en titel i markörens informationsruta eller inte. Det är ofta lämpligt att inte använda denna funktion när en mall används för informationsrutans innehåll.',
 	'semanticmaps-par-hidenamespace' => 'Visa namnrymdens titel i markörens informationsruta eller inte.',
 	'semanticmaps-par-centre' => 'Kartans mitt. Om inte angiven så kommer kartan automatiskt att hitta markörernas mittpunkt.',
