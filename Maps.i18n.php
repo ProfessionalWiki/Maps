@@ -7487,6 +7487,7 @@ $messages['zh-hans'] = array(
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
 	'maps-geodistance-par-unit' => '要输出的距离单位。',
+	'maps-displaymap-par-circles' => '圈起以显示',
 	'maps-displaymap-par-lines' => '要显示的行',
 	'maps-displaymap-par-maxzoom' => '最大缩放级别',
 	'maps-displaymap-par-minzoom' => '最小缩放级别',
@@ -7514,6 +7515,7 @@ $messages['zh-hans'] = array(
 	'maps-longitude' => '经度：',
 	'maps_map_cannot_be_displayed' => '该地图无法显示。',
 	'maps_click_to_activate' => '点击激活地图',
+	'maps_centred_on' => '地图居中在$1，$2。',
 	'maps-googlemaps3-incompatbrowser' => '您的浏览器不兼容Google Maps v3。',
 	'maps-osm-par-thumbs' => '显示大拇指',
 	'maps-osm-par-photos' => '显示图片',
@@ -7524,6 +7526,7 @@ $messages['zh-hans'] = array(
 	'mapeditor-remove-button' => '移除',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
+	'mapeditor-select-button' => '选择此多边形',
 	'mapeditor-clear-button' => '明确地图',
 	'mapeditor-code-title' => '维基代码',
 	'mapeditor-import-title' => '导入维基代码',
@@ -7542,6 +7545,7 @@ $messages['zh-hans'] = array(
 	'mapeditor-form-field-fillopcaity' => '填充不透明度',
 	'mapeditor-mapparam-title' => '编辑地图参数',
 	'mapeditor-form-field-image' => '图片',
+	'mapeditor-form-field-visitedicon' => '已浏览图标',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
