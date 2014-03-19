@@ -603,6 +603,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Armin1392
+ * @author Ebraminio
  * @author Mjbmr
  */
 $messages['fa'] = array(
@@ -627,11 +628,11 @@ $messages['fa'] = array(
 	'semanticmaps-par-template' => 'الگو برای استفاده از فرمت محتویات پنجره اطلاعات.',
 	'semanticmaps-par-geocodecontrol' => 'نشان دادن کنترل جئوکدینگ.',
 	'semanticmaps-par-activeicon' => 'نماد به جای نشانگر پیش‌فرض نمایش داده می‌شود هنگامی که صفحه فعال برابر با نتیجه پرس‌و‌جوی است',
-	'semanticmaps-par-pagelabel' => 'هنگامی که به "بله" تنظیم می‌شود، همه نشانگرها، یک "inlineLabel" با یک لینک به صفحه دارند که شامل مختصات برای نشانگر است',
+	'semanticmaps-par-pagelabel' => 'هنگامی که به «بله» تنظیم می‌شود، همه نشانگرها، یک «inlineLabel» با یک پیوند به صفحه دارند که شامل مختصات برای نشانگر است',
 	'semanticmaps-kml-text' => 'متن با هر صفحه مرتبط است. اگر هر خواص پرس‌وجو اضافی وجود داشته باشد، به‌وسیله آن خذف لغو شده.',
 	'semanticmaps-kml-title' => 'عنوان پیش‌زمینه برای نتایج',
-	'semanticmaps-kml-linkabsolute' => 'لینک‌ها باید (به عنوان مخالف به نسبی) مطلق باشند',
-	'semanticmaps-kml-pagelinktext' => 'متن برای استفاده لینک‌ها به صفحه، که در آن توسط عنوان صفحه $1 جایگزین خواهد شد',
+	'semanticmaps-kml-linkabsolute' => 'پیوندها باید (به عنوان مخالف به نسبی) مطلق باشند',
+	'semanticmaps-kml-pagelinktext' => 'متن برای استفاده پیوندها به صفحه، که در آن توسط عنوان صفحه $1 جایگزین خواهد شد',
 	'semanticmaps-shapes-improperformat' => 'شکل‌بندی نادرست $1. لطفاً مستندات را برای شکل‌بندی مشاهده کنید',
 	'semanticmaps-shapes-missingshape' => 'هیچ شکلی برای$1 پیدا نشد. لطفاً مستندات  را برای شکل‌های دردسترس مشاهده کنید',
 );
