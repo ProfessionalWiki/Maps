@@ -1265,7 +1265,7 @@ $messages['nb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'semanticmaps-desc' => 'Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in Semantic MediaWiki te bewerken en te bekijken ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps meer informatie])',
+	'semanticmaps-desc' => 'Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in [[https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki] te bewerken en te bekijken', # Fuzzy
 	'semanticmaps-unrecognizeddistance' => 'De waarde "$1" is geen geldige afstand.',
 	'semanticmaps-kml-link' => 'KML-bestand bekijken',
 	'semanticmaps-default-kml-pagelink' => 'Pagina $1 bekijken',
@@ -1280,7 +1280,6 @@ $messages['nl'] = array(
 	'semanticmaps-forminput-add' => 'Toevoegen',
 	'semanticmaps-forminput-locations' => 'Locaties',
 	'semanticmaps-par-staticlocations' => 'Een lijst met aan de kaart toe te voegen locaties samen met de opgegeven gegevens. Zoals bij display_points, kunt u een naam, beschrijving en pictogram per locatie toevoegen door de tilde ("~") als scheidingsteken te gebruiken.',
-	'semanticmaps-par-forceshow' => 'De kaart zelfs weergeven als er geen weer te geven locaties zijn?',
 	'semanticmaps-par-showtitle' => 'Een naam weergeven in het gegevensvenster van de markering of niet. Dit uitschakelen is vaak handig als er een sjabloon wordt gebruikt om de inhoud van het gegevensvenster vorm te geven.',
 	'semanticmaps-par-hidenamespace' => 'De naamruimtenaam in het informatievenster van de marker weergeven',
 	'semanticmaps-par-centre' => 'Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.',
