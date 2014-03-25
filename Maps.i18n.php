@@ -3144,7 +3144,7 @@ $1',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki ([https://www.semantic-mediawiki.org/wiki/Maps dalše informacije...])',
+	'maps-desc' => 'Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki.',
 	'right-geocode' => 'Geokodowanje',
 	'maps_map' => 'Karta',
 	'maps-tracking-category' => 'Strony z kartu rysowanej přez rozšěrjenje Maps',
@@ -3160,12 +3160,17 @@ $messages['hsb'] = array(
 	'maps-layer-property' => 'Kajkosć',
 	'maps-layer-value' => 'Hódnota',
 	'maps-layer-errors' => 'Zmylki',
-	'maps-error-invalid-layerdef' => 'Definicija tuteje runiny płaćiwa njeje.',
+	'maps-layerdef-invalid' => '{{PLURAL:$1|Njepłaćiwa definicija|Njepłaćiwej definiciji|Njepłaćiwe definicije}}',
+	'maps-layerdef-invalid-fatal' => 'Chutna njepłaćiwa definicija',
+	'maps-layerdef-wrong-namespace' => 'Runinowe definicije su jenož płaćiwe na stronach z mjenowym rumom "$1"',
+	'maps-layerpage-usage' => 'Strony z kartami, kotrež runinu "$1" wužiwaja',
+	'maps-layerpage-nousage' => 'We wokomiku žane strony tutu runinu njewužiwaja.',
 	'maps-error-invalid-layertype' => 'Njejsu žane runiny typa "$1". Jenož {{PLURAL:$3|tutón typ so podpěruje|tutej typaj so podpěrujetej|tute typy so podpěruja|tute typy so podpěruja}}: $2',
 	'maps-error-no-layertype' => 'Dyrbiš typ runiny podać: {{PLURAL:$2|Jenož tutón typ so podpěruje|Tutej typaj so podpěrujetej|Tute typy so podpěruja|Tute typy so podpěruja}}: $1',
 	'validation-error-invalid-layer' => 'Parameter $1 dyrbi płaćiwa runina być.',
 	'validation-error-invalid-layers' => 'Parameter $1 dyrbi jedna runina abo wjacore runiny być.',
 	'maps-layer-of-type' => 'Runina typa $1',
+	'maps-layer-of-type-and-name' => 'Runina "$2" typa "$1"',
 	'maps-layer-type-supported-by' => 'Tutón typ runiny móže so {{PLURAL:$2|jenož z kartografiskej słužbu $1|z tutej kartografiskimaj słužbomaj: $1|z tutymi kartografiskimi słužbami: $1|z tutymi kartografiskimi słužbami: $1}}.wužiwać.',
 	'maps-coordinates-description' => 'Parserowa hóčka za formatowanje koordinatow z a do podpěranych formatow.',
 	'maps-displaymap-description' => 'Geografiske karty bjez we wikiju definowanych markow na nich zwobraznić.',
@@ -3201,7 +3206,7 @@ $messages['hsb'] = array(
 	'maps-geodistance-par-mappingservice' => 'Geokodowanska słužba, kotraž ma so za geokodowanje wšěch adresow wužiwać.',
 	'maps-displaymap-par-mappingservice' => 'Zmóžnja nastajenje kartografiskeje słužby, kotraž ma so za generowanje karty wužiwać,',
 	'maps-displaymap-par-coordinates' => 'Městno, na kotrež ma so karta spočatnje centrować.',
-	'maps-displaymap-par-visitedicon' => 'Mjeno wobraza, kotrež ma so za markowe symbole wužiwać, po tym zo je so na nje kliknyło.',
+	'maps-displaymap-par-visitedicon' => 'Mjeno wobrazoweje dataje, kotrež ma so za markowe symbole wužiwać, po tym zo je so na prěnjotne marki kliknyło.',
 	'maps-displaymap-par-icon' => 'Zmóžnja postajenje symbola, kotryž ma so za wšě marki wužiwać.',
 	'maps-displaymap-par-circles' => 'Kruhi, kotrejž maja so zwobraznić',
 	'maps-displaymap-par-lines' => 'Linije, kotrež maja so zwobraznić',
@@ -3224,9 +3229,6 @@ $messages['hsb'] = array(
 	'validation-error-invalid-images' => 'Parameter $1 dyrbi jedyn wobraz abo wjacore wobrazy być.',
 	'validation-error-invalid-goverlay' => 'Parameter $1 dyrbi płaćiwa woršta być.',
 	'validation-error-invalid-goverlays' => 'Parameter $1 dyrbi jedna woršta abo wjacore woršty być.',
-	'validation-error-invalid-line-param' => 'Njepłaćiwy parameter "lines" podaty.',
-	'validation-error-invalid-polyline-param' => 'Njepłaćiwy parameter "polylines" podaty.',
-	'validation-error-invalid-searchmarkers-param' => 'Njepłaćiwa hódnota za pytanske marki, wona měła pak "all" abo "title" być.',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'W',
 	'maps-abb-south' => 'J',
@@ -6612,12 +6614,13 @@ $messages['sr-el'] = array(
  * @author Fader
  * @author Fluff
  * @author Jopparn
+ * @author Lokal Profil
  * @author Per
  * @author Rotsee
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder. ([https://www.semantic-mediawiki.org/wiki/Maps mer information...]).', # Fuzzy
+	'maps-desc' => 'Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder.',
 	'right-geocode' => 'Geokod',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Laddar karta ...',
@@ -7466,24 +7469,29 @@ $messages['zh-cn'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。（[https://www.semantic-mediawiki.org/wiki/地图更多信息...]）', # Fuzzy
+	'maps-desc' => '允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。',
 	'right-geocode' => '地理编码',
 	'maps_map' => '地图',
 	'maps-loading-map' => '载入地图中……',
 	'maps-load-failed' => '无法加载地图！',
 	'maps-markers' => '标记',
 	'maps-copycoords-prompt' => 'CTRL+C, ENTER',
+	'maps-searchmarkers-text' => '筛选标记',
 	'maps-others' => '其他',
 	'maps-ns-layer' => '图层',
 	'maps-ns-layer-talk' => '图层讨论',
 	'maps-layer-property' => '属性',
 	'maps-layer-value' => '价值',
 	'maps-layer-errors' => '错误',
+	'maps-layerdef-invalid' => '$1个无效定义',
 	'maps-layerdef-invalid-fatal' => '致命的无效定义',
 	'maps-layer-of-type' => '图层类型“$1”',
+	'maps-layer-of-type-and-name' => '类型“$1”的图层“$2”',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
+	'maps-geocode-par-location' => '您希望发送到的地址。',
 	'maps-geodistance-par-unit' => '要输出的距离单位。',
+	'maps-displaymap-par-circles' => '圈起以显示',
 	'maps-displaymap-par-lines' => '要显示的行',
 	'maps-displaymap-par-maxzoom' => '最大缩放级别',
 	'maps-displaymap-par-minzoom' => '最小缩放级别',
@@ -7511,7 +7519,10 @@ $messages['zh-hans'] = array(
 	'maps-longitude' => '经度：',
 	'maps_map_cannot_be_displayed' => '该地图无法显示。',
 	'maps_click_to_activate' => '点击激活地图',
+	'maps_centred_on' => '地图居中在$1，$2。',
 	'maps-googlemaps3-incompatbrowser' => '您的浏览器不兼容Google Maps v3。',
+	'maps-googlemaps3-par-kml' => '加载地图上的KML文件。',
+	'maps-googlemaps3-par-gkml' => '由Google运营的加载地图上的KML文件。',
 	'maps-osm-par-thumbs' => '显示大拇指',
 	'maps-osm-par-photos' => '显示图片',
 	'mapeditor' => '地图编辑器',
@@ -7521,10 +7532,13 @@ $messages['zh-hans'] = array(
 	'mapeditor-remove-button' => '移除',
 	'mapeditor-import-button2' => '汇入',
 	'mapeditor-export-button' => '汇出到 wiki 代码',
+	'mapeditor-import-button' => '从wiki代码导入',
+	'mapeditor-select-button' => '选择此多边形',
 	'mapeditor-clear-button' => '明确地图',
 	'mapeditor-code-title' => '维基代码',
 	'mapeditor-import-title' => '导入维基代码',
 	'mapeditor-form-title' => '编辑详情',
+	'mapeditor-link-title-switcher-popup-text' => '带文本的弹出菜单',
 	'mapeditor-link-title-switcher-link-text' => '链接',
 	'mapeditor-form-field-title' => '标题',
 	'mapeditor-form-field-text' => '文字',
@@ -7537,8 +7551,10 @@ $messages['zh-hans'] = array(
 	'mapeditor-form-field-strokeweight' => '描边粗细',
 	'mapeditor-form-field-fillcolor' => '填充颜色',
 	'mapeditor-form-field-fillopcaity' => '填充不透明度',
+	'mapeditor-form-field-showonhover' => '只在悬停时显示',
 	'mapeditor-mapparam-title' => '编辑地图参数',
 	'mapeditor-form-field-image' => '图片',
+	'mapeditor-form-field-visitedicon' => '已浏览图标',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
