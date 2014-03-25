@@ -603,6 +603,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Armin1392
+ * @author Ebraminio
  * @author Mjbmr
  */
 $messages['fa'] = array(
@@ -627,11 +628,11 @@ $messages['fa'] = array(
 	'semanticmaps-par-template' => 'الگو برای استفاده از فرمت محتویات پنجره اطلاعات.',
 	'semanticmaps-par-geocodecontrol' => 'نشان دادن کنترل جئوکدینگ.',
 	'semanticmaps-par-activeicon' => 'نماد به جای نشانگر پیش‌فرض نمایش داده می‌شود هنگامی که صفحه فعال برابر با نتیجه پرس‌و‌جوی است',
-	'semanticmaps-par-pagelabel' => 'هنگامی که به "بله" تنظیم می‌شود، همه نشانگرها، یک "inlineLabel" با یک لینک به صفحه دارند که شامل مختصات برای نشانگر است',
+	'semanticmaps-par-pagelabel' => 'هنگامی که به «بله» تنظیم می‌شود، همه نشانگرها، یک «inlineLabel» با یک پیوند به صفحه دارند که شامل مختصات برای نشانگر است',
 	'semanticmaps-kml-text' => 'متن با هر صفحه مرتبط است. اگر هر خواص پرس‌وجو اضافی وجود داشته باشد، به‌وسیله آن خذف لغو شده.',
 	'semanticmaps-kml-title' => 'عنوان پیش‌زمینه برای نتایج',
-	'semanticmaps-kml-linkabsolute' => 'لینک‌ها باید (به عنوان مخالف به نسبی) مطلق باشند',
-	'semanticmaps-kml-pagelinktext' => 'متن برای استفاده لینک‌ها به صفحه، که در آن توسط عنوان صفحه $1 جایگزین خواهد شد',
+	'semanticmaps-kml-linkabsolute' => 'پیوندها باید (به عنوان مخالف به نسبی) مطلق باشند',
+	'semanticmaps-kml-pagelinktext' => 'متن برای استفاده پیوندها به صفحه، که در آن توسط عنوان صفحه $1 جایگزین خواهد شد',
 	'semanticmaps-shapes-improperformat' => 'شکل‌بندی نادرست $1. لطفاً مستندات را برای شکل‌بندی مشاهده کنید',
 	'semanticmaps-shapes-missingshape' => 'هیچ شکلی برای$1 پیدا نشد. لطفاً مستندات  را برای شکل‌های دردسترس مشاهده کنید',
 );
@@ -1264,7 +1265,7 @@ $messages['nb'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'semanticmaps-desc' => 'Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in Semantic MediaWiki te bewerken en te bekijken ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps meer informatie])',
+	'semanticmaps-desc' => 'Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in [[https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki] te bewerken en te bekijken', # Fuzzy
 	'semanticmaps-unrecognizeddistance' => 'De waarde "$1" is geen geldige afstand.',
 	'semanticmaps-kml-link' => 'KML-bestand bekijken',
 	'semanticmaps-default-kml-pagelink' => 'Pagina $1 bekijken',
@@ -1279,7 +1280,6 @@ $messages['nl'] = array(
 	'semanticmaps-forminput-add' => 'Toevoegen',
 	'semanticmaps-forminput-locations' => 'Locaties',
 	'semanticmaps-par-staticlocations' => 'Een lijst met aan de kaart toe te voegen locaties samen met de opgegeven gegevens. Zoals bij display_points, kunt u een naam, beschrijving en pictogram per locatie toevoegen door de tilde ("~") als scheidingsteken te gebruiken.',
-	'semanticmaps-par-forceshow' => 'De kaart zelfs weergeven als er geen weer te geven locaties zijn?',
 	'semanticmaps-par-showtitle' => 'Een naam weergeven in het gegevensvenster van de markering of niet. Dit uitschakelen is vaak handig als er een sjabloon wordt gebruikt om de inhoud van het gegevensvenster vorm te geven.',
 	'semanticmaps-par-hidenamespace' => 'De naamruimtenaam in het informatievenster van de marker weergeven',
 	'semanticmaps-par-centre' => 'Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.',
@@ -1622,6 +1622,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (svenska)
  * @author Boivie
+ * @author Lokal Profil
  * @author Martinwiss
  * @author Najami
  * @author Per
@@ -1629,7 +1630,7 @@ $messages['sr-el'] = array(
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
-	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med Semantic MediaWiki-utvidgningen ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mer information...])',
+	'semanticmaps-desc' => 'Ger möjlighet att se och redigera koordinatdata som sparats med [https://www.semantic-mediawiki.org Semantic MediaWiki]-tillägget',
 	'semanticmaps-unrecognizeddistance' => 'Värdet $1 är inte ett giltigt avstånd.',
 	'semanticmaps-kml-link' => 'Visa KML-filen',
 	'semanticmaps-default-kml-pagelink' => 'Visa sida $1',
@@ -1644,7 +1645,6 @@ $messages['sv'] = array(
 	'semanticmaps-forminput-add' => 'Lägg till',
 	'semanticmaps-forminput-locations' => 'Platser',
 	'semanticmaps-par-staticlocations' => 'En lista med platser som man kan placera på kartan tillsammans med efterfrågad data. Precis som för display_points, så kan du lägga till en titel, en beskrivning och en ikon för varje plats med hjälp av tilde "~" som avgränsare.',
-	'semanticmaps-par-forceshow' => 'Visa kartan även om det inte finns några platser att visa?',
 	'semanticmaps-par-showtitle' => 'Visa en titel i markörens informationsruta eller inte. Det är ofta lämpligt att inte använda denna funktion när en mall används för informationsrutans innehåll.',
 	'semanticmaps-par-hidenamespace' => 'Visa namnrymdens titel i markörens informationsruta eller inte.',
 	'semanticmaps-par-centre' => 'Kartans mitt. Om inte angiven så kommer kartan automatiskt att hitta markörernas mittpunkt.',
@@ -1855,7 +1855,7 @@ $messages['zh-hans'] = array(
 	'semanticmaps-forminput-remove' => '删除',
 	'semanticmaps-forminput-add' => '添加',
 	'semanticmaps-forminput-locations' => '位置',
-	'semanticmaps-par-staticlocations' => '要与所查询数据一起添加到地图的一系列位置。就像display_points那样，可以采用波浪号"~"作为分隔符，为每个位置添加标题、描述及图标。',
+	'semanticmaps-par-staticlocations' => '要添加至地图的位置及查询的数据的列表。如同display_points，你可以给每个位置添加标题、说明，用浪纹分隔“~”。',
 	'semanticmaps-par-showtitle' => '是否在标记信息窗口之中显示标题。当采用模板对信息窗口内容进行格式编排的时候，关闭此项往往会有所帮助。',
 	'semanticmaps-par-hidenamespace' => '在标记信息窗口中显示命名空间标题',
 	'semanticmaps-par-centre' => '地图的中心。当未加提供的时候，地图会自动挑选最佳的中心，从而在地图上显示所有的标记。',
