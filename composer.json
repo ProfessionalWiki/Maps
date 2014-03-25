@@ -23,7 +23,6 @@
 	],
 	"support": {
 		"email": "semediawiki-user@lists.sourceforge.net",
-		"issues": "https://bugzilla.wikimedia.org/",
 		"irc": "irc://irc.freenode.net/mediawiki",
 		"source": "https://github.com/JeroenDeDauw/Maps"
 	},
