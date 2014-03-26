@@ -841,7 +841,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'semanticmaps-desc' => 'Zmóžnja zwobraznjenje a wobdźěłanje koordinatowych datow, kotrež su so z rozšěrjenjom Semantic MediaWiki składowali ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps dalše informacije...]).',
+	'semanticmaps-desc' => 'Zmóžnja zwobraznjenje a wobdźěłanje koordinatowych datow, kotrež su so z [https://www.semantic-mediawiki.org rozšěrjenjom Semantic MediaWiki] składowali',
 	'semanticmaps-unrecognizeddistance' => 'Hódnota $1 płaćiwa distanca njeje.',
 	'semanticmaps-kml-link' => 'KML-dataju sej wobhladać',
 	'semanticmaps-default-kml-pagelink' => 'Nastawk $1 sej wobhladać',
@@ -856,7 +856,6 @@ $messages['hsb'] = array(
 	'semanticmaps-forminput-add' => 'Přidać',
 	'semanticmaps-forminput-locations' => 'Městna',
 	'semanticmaps-par-staticlocations' => 'Lisćina městnow, kotrež maja so zhromadnje z naprašowanymi datami karće přidać. Kaž pola zwobraznjenskich dypkow móžeš titul. wopisanje a symbol na městno z pomocu tildy "~" jako dźělatko přidać.',
-	'semanticmaps-par-forceshow' => 'Kartu tež potom pokazać, hdyž městna za zwobraznjenje njejsu?',
 	'semanticmaps-par-showtitle' => 'Titul w informaciskim woknje woznamjenjenja pokazać abo nic. Je husto wužitne, tutu opciju znjemóžnić, hdyž so předłoha wužiwa, zo by so wobsah informaciskeho wokna formatował.',
 	'semanticmaps-par-hidenamespace' => 'Mjeno mjenoweho ruma w informaciskim woknje woznamjenjenja pokazać.',
 	'semanticmaps-par-centre' => 'Srjedźišćo karty. Jeli je njepodate, budźe so karta awtomatisce optimalne srjedźišćo wuběrać, zo bychu so wšě woznamjenjenja na karće pokazali.',
