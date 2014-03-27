@@ -6,7 +6,7 @@ cd ../phase3/extensions/Maps
 
 if [ "$TYPE" == "coverage" ]
 then
-	phpunit --coverage-clover ../../extensions/Maps/build/logs/clover.clover
+	phpunit --coverage-clover ../../extensions/Maps/build/clover.clover
 else
 	phpunit
 fi
