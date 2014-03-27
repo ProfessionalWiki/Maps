@@ -4,9 +4,9 @@ set -x
 
 cd ../phase3/extensions/Maps
 
-if [ "$MW-$DBTYPE" == "master-mysql" ]
+if [ "$TYPE" == "coverage" ]
 then
-	phpunit --coverage-clover ../../extensions/Maps/build/logs/clover.xml
+	phpunit --coverage-clover ../../extensions/Maps/build/logs/clover.clover
 else
 	phpunit
 fi
