@@ -1,5 +1,12 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.0.1
+
+Released on March 27th, 2014.
+
+* Fixed bug that prevented non-px units (%, ex, em) from being used in the width and height parameters.
+* Translation updates
+
 ## Maps 3.0
 
 Released on January 18th, 2014.
