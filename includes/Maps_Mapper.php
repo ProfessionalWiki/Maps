@@ -92,11 +92,13 @@ final class MapsMapper {
 		$params['width'] = array(
 			'type' => 'dimension',
 			'allowauto' => true,
+			'units' => array( 'px', 'ex', 'em', '%', '' ),
 			'default' => $egMapsMapWidth,
 		);
 
 		$params['height'] = array(
 			'type' => 'dimension',
+			'units' => array( 'px', 'ex', 'em', '' ),
 			'default' => $egMapsMapHeight,
 		);
 
