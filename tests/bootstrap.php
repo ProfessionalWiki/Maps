@@ -18,10 +18,16 @@ chdir( __DIR__ . '/..' );
 passthru( 'composer update' );
 chdir( $pwd );
 
-require_once( __DIR__ . '/evilMediaWikiBootstrap.php' );
+$shouldUseMwHack = !defined( 'MEDIAWIKI' );
+
+if ( $shouldUseMwHack ) {
+	require_once( __DIR__ . '/evilMediaWikiBootstrap.php' );
+}
 
 require_once( __DIR__ . '/../vendor/autoload.php' );
 
-foreach ( $GLOBALS['wgExtensionFunctions'] as $extensionFunction ) {
-	call_user_func( $extensionFunction );
+if ( $shouldUseMwHack ) {
+	foreach ( $GLOBALS['wgExtensionFunctions'] as $extensionFunction ) {
+		call_user_func( $extensionFunction );
+	}
 }

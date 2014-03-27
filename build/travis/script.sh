@@ -2,11 +2,13 @@
 
 set -x
 
-cd ../phase3/extensions/Maps
+originalDirectory=$(pwd)
+
+cd ../phase3/tests/phpunit
 
 if [ "$TYPE" == "coverage" ]
 then
-	phpunit --coverage-clover ../../extensions/Maps/build/coverage.clover
+	php phpunit.php --group Maps -c ../../extensions/Maps/phpunit.xml.dist --coverage-clover $originalDirectory/build/coverage.clover
 else
-	phpunit
+	php phpunit.php --group Maps -c ../../extensions/Maps/phpunit.xml.dist
 fi
