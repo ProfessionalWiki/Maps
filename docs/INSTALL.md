@@ -43,7 +43,7 @@ These are the installation and configuration instructions for the [Maps extensio
 	</tr>
 	<tr>
 		<th>Maps 3.0.x</th>
-		<td>5.3.2 - 5.5.x</td>
+		<td>5.3.2 - 5.6.x</td>
 		<td>1.18 - 1.23</td>
 		<td>Required</td>
 		<td>1.0.x (handled by Composer)</td>
