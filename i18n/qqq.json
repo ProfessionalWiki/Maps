@@ -1,0 +1,33 @@
+{
+    "@metadata": {
+        "authors": [
+            "EugeneZelenko",
+            "Fryed-peach",
+            "Kghbln",
+            "Lloffiwr",
+            "Purodha",
+            "Raymond",
+            "Shirayuki",
+            "Umherirrender"
+        ]
+    },
+    "semanticmaps-desc": "{{desc|name=Semantic Maps|url=http://www.mediawiki.org/wiki/Extension:Semantic_Maps}}",
+    "semanticmaps-unrecognizeddistance": "Used as error message. Parameters:\n* $1 - distance",
+    "semanticmaps-kml": "{{optional}}",
+    "semanticmaps-default-kml-pagelink": "Used as default value for \"pagelinktext\" input box.\nSee example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]\n\n<code>$1</code> is not a parameter (appears as is), but it will be replaced by the page title.\n\nSee also:\n* {{msg-mw|Semanticmaps-kml-pagelinktext}}\n{{Identical|View page}}",
+    "semanticmaps-latitude": "Parameters:\n* $1 - latitude\nSee also:\n* {{msg-mw|Semanticmaps-longitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Latitude}}",
+    "semanticmaps-longitude": "Parameters:\n* $1 - longitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Longitude}}",
+    "semanticmaps-altitude": "Parameters:\n* $1 - altitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-longitude}}",
+    "semanticmaps-loading-forminput": "Message displayed during a computer action",
+    "semanticmaps_lookupcoordinates": "Submit button next to input box.\n\nThe box contains the hint {{msg-mw|Semanticmaps enteraddresshere}}.",
+    "semanticmaps_enteraddresshere": "Hint provided in an input box.\n\nThe submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinates}}.",
+    "semanticmaps-updatemap": "Submit button label",
+    "semanticmaps-forminput-remove": "{{Identical|Remove}}",
+    "semanticmaps-forminput-add": "{{Identical|Add}}",
+    "semanticmaps-forminput-locations": "{{Identical|Location}}",
+    "semanticmaps-par-activeicon": "See: {{msg-mw|Semanticmaps-par-activeicon}}",
+    "semanticmaps-par-pagelabel": "Text explaining query parameter \"pagelabel\". When set to \"yes\", all markers will have an \"inlineLabel\" with a link to the page containing the coordinates for the marker\n\n{{doc-important|Do not translate the parameter value \"yes\".}}",
+    "semanticmaps-kml-pagelinktext": "Used as description for \"pagelinktext\" input box.\nSee example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]\n\n<code>$1</code> is not a parameter, and appears as is.\n\nDefault value for the input box is {{msg-mw|Semanticmaps-default-kml-pagelink}}.",
+    "semanticmaps-shapes-improperformat": "Message displayed when the wikitext formatting of a shape is erroneous.\n\nParameters:\n* $1 - text",
+    "semanticmaps-shapes-missingshape": "Message displayed when there is no such defined shape as $1"
+}

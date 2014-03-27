@@ -1,0 +1,39 @@
+{
+    "@metadata": {
+        "authors": [
+            "Beta16",
+            "Civvì",
+            "Darth Kule",
+            "Gianfranco",
+            "HalphaZ",
+            "Rosh"
+        ]
+    },
+    "semanticmaps-desc": "Consente di visualizzare e modificare le coordinate memorizzate con l'estensione [https://www.semantic-mediawiki.org Semantic MediaWiki]",
+    "semanticmaps-unrecognizeddistance": "Il valore $1 non è una distanza valida.",
+    "semanticmaps-kml-link": "Visualizza il file KML",
+    "semanticmaps-default-kml-pagelink": "Visualizza la pagina $1",
+    "semanticmaps-latitude": "Latitudine: $1",
+    "semanticmaps-longitude": "Longitudine: $1",
+    "semanticmaps-altitude": "Altitudine: $1",
+    "semanticmaps-loading-forminput": "Caricamento del modulo input per mappe...",
+    "semanticmaps_lookupcoordinates": "Cerca coordinate",
+    "semanticmaps_enteraddresshere": "Inserisci indirizzo qui",
+    "semanticmaps-updatemap": "Aggiorna mappa",
+    "semanticmaps-forminput-remove": "Rimuovi",
+    "semanticmaps-forminput-add": "Aggiungi",
+    "semanticmaps-forminput-locations": "Luoghi",
+    "semanticmaps-par-staticlocations": "Un elenco di luoghi da aggiungere alla mappa unitamente ai dati interrogati. Come con display_points, si può aggiungere un titolo, la descrizione e l'icona per ogni posizione utilizzando la tilde \"~\" come separatore.",
+    "semanticmaps-par-showtitle": "Mostrare oppure no un titolo nella finestra informazioni per l'indicatore. Disattivarlo è spesso utile quando si utilizza un template per la formattazione del contenuto della finestra informazioni.",
+    "semanticmaps-par-hidenamespace": "Mostrare oppure no il namespace del titolo nella finestra informazioni per l'indicatore.",
+    "semanticmaps-par-centre": "Il centro della mappa. Quando non indicato, la mappa sceglierà automaticamente il centro ottimale per visualizzare tutti gli indicatori sulla mappa.",
+    "semanticmaps-par-template": "Un template da utilizzare per formattare il contenuto della finestra informazioni.",
+    "semanticmaps-par-geocodecontrol": "Mostra il controllo per geocodifica.",
+    "semanticmaps-par-activeicon": "Icona da mostrare al posto del marcatore predefinito, quando la pagina attiva è uguale al risultato della query",
+    "semanticmaps-kml-text": "Il testo associato per ogni pagina. Sovrascritto dall'eventuale proprietà dell'interrogazione aggiuntiva.",
+    "semanticmaps-kml-title": "Il titolo predefinito per i risultati",
+    "semanticmaps-kml-linkabsolute": "I collegamenti dovranno essere assoluti o no (ovvero relativi)",
+    "semanticmaps-kml-pagelinktext": "Il testo da utilizzare per i collegamenti alla pagina, in cui $1 verrà sostituito dal titolo della pagina",
+    "semanticmaps-shapes-improperformat": "Formattazione impropria di $1. Per favore controlla la documentazione sulla formattazione",
+    "semanticmaps-shapes-missingshape": "Nessuna forma trovata per $1. Per favore controlla la documentazione sulle forme disponibili"
+}

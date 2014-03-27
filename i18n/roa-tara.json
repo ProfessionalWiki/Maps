@@ -1,0 +1,17 @@
+{
+    "@metadata": {
+        "authors": [
+            "Joetaras"
+        ]
+    },
+    "semanticmaps-desc": "Dèje l'abbilità a fà vedè e cangià le coordinate reggistrate cu l'estenzione Semandiche de MediaUicchi ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps cchiù 'mbormaziune...])",
+    "semanticmaps-default-kml-pagelink": "Vide 'a pàgene $1",
+    "semanticmaps-latitude": "Latitudine: $1",
+    "semanticmaps-longitude": "Longitudine: $1",
+    "semanticmaps-altitude": "Iertezze: $1",
+    "semanticmaps_lookupcoordinates": "Ingroce le coordinate",
+    "semanticmaps_enteraddresshere": "Scaffe l'indirizze aqquà",
+    "semanticmaps-updatemap": "Aggiorne 'a mappe",
+    "semanticmaps-forminput-remove": "Live",
+    "semanticmaps-forminput-add": "Aggiunge"
+}

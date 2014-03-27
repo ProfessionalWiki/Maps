@@ -1,0 +1,37 @@
+{
+    "@metadata": {
+        "authors": [
+            "Jeroen De Dauw",
+            "SPQRobin",
+            "Saruman",
+            "Siebrand"
+        ]
+    },
+    "semanticmaps-desc": "Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in [[https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki] te bewerken en te bekijken",
+    "semanticmaps-unrecognizeddistance": "De waarde \"$1\" is geen geldige afstand.",
+    "semanticmaps-kml-link": "KML-bestand bekijken",
+    "semanticmaps-default-kml-pagelink": "Pagina $1 bekijken",
+    "semanticmaps-latitude": "Breedtegraad: $1",
+    "semanticmaps-longitude": "Lengtegraad: $1",
+    "semanticmaps-altitude": "Hoogte: $1",
+    "semanticmaps-loading-forminput": "Bezig met het laden van de kaart formulierinvoer...",
+    "semanticmaps_lookupcoordinates": "Coördinaten opzoeken",
+    "semanticmaps_enteraddresshere": "Voer hier het adres in",
+    "semanticmaps-updatemap": "Kaart bijwerken",
+    "semanticmaps-forminput-remove": "Verwijderen",
+    "semanticmaps-forminput-add": "Toevoegen",
+    "semanticmaps-forminput-locations": "Locaties",
+    "semanticmaps-par-staticlocations": "Een lijst met aan de kaart toe te voegen locaties samen met de opgegeven gegevens. Zoals bij display_points, kunt u een naam, beschrijving en pictogram per locatie toevoegen door de tilde (\"~\") als scheidingsteken te gebruiken.",
+    "semanticmaps-par-showtitle": "Een naam weergeven in het gegevensvenster van de markering of niet. Dit uitschakelen is vaak handig als er een sjabloon wordt gebruikt om de inhoud van het gegevensvenster vorm te geven.",
+    "semanticmaps-par-hidenamespace": "De naamruimtenaam in het informatievenster van de marker weergeven",
+    "semanticmaps-par-centre": "Het centrum van de kaart. Als deze waarde niet wordt opgegeven, wordt automatisch een keuze gemaakt voor een centrum op basis van alle markeringen op de kaart.",
+    "semanticmaps-par-template": "Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.",
+    "semanticmaps-par-geocodecontrol": "Besturingselement voor geocodering weergeven.",
+    "semanticmaps-par-activeicon": "Pictogram dat wordt weergegeven in plaats van de standaard marker, als de actieve pagina gelijk is aan het zoekresultaat",
+    "semanticmaps-kml-text": "De tekst die gekoppeld is aan iedere pagina. Als er extra opgegeven eigenschappen zijn, wordt deze tekst daardoor overschreven.",
+    "semanticmaps-kml-title": "De standaard titel voor resultaten",
+    "semanticmaps-kml-linkabsolute": "Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)",
+    "semanticmaps-kml-pagelinktext": "De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginatitel",
+    "semanticmaps-shapes-improperformat": "Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak",
+    "semanticmaps-shapes-missingshape": "Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen"
+}

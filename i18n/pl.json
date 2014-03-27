@@ -1,0 +1,27 @@
+{
+    "@metadata": {
+        "authors": [
+            "BeginaFelicysym",
+            "Chrumps",
+            "Deejay1",
+            "Derbeth",
+            "Leinad",
+            "Odder",
+            "Sp5uhe"
+        ]
+    },
+    "semanticmaps-desc": "Umożliwia przeglądanie oraz edytowanie współrzędnych zapisanych przez rozszerzenie [https://www.semantic-mediawiki.org Semantic MediaWiki]",
+    "semanticmaps-unrecognizeddistance": "Wartość $1 nie jest poprawną odległością.",
+    "semanticmaps-kml-link": "Wyświetla plik KML",
+    "semanticmaps-default-kml-pagelink": "Pokaż stronę $1",
+    "semanticmaps-latitude": "Szerokość geograficzna: $1",
+    "semanticmaps-longitude": "Długość geograficzna: $1",
+    "semanticmaps-altitude": "Wysokość: $1",
+    "semanticmaps-loading-forminput": "Ładowanie mapy formularza wprowadzania danych...",
+    "semanticmaps_lookupcoordinates": "Wyszukaj współrzędne",
+    "semanticmaps_enteraddresshere": "Podaj adres",
+    "semanticmaps-updatemap": "Aktualizacja mapy",
+    "semanticmaps-forminput-remove": "Usuń",
+    "semanticmaps-forminput-add": "Dodaj",
+    "semanticmaps-forminput-locations": "Miejsca"
+}
