@@ -37,7 +37,7 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 
 * [Maps on Ohloh](https://www.ohloh.net/p/maps/)
 * [Blog posts about Maps](http://www.bn2vs.com/blog/tag/maps)
-* [Open bugs and feature requests](https://bugzilla.wikimedia.org/buglist.cgi?list_id=254461&resolution=---&query_format=advanced&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=PATCH_TO_REVIEW&bug_status=REOPENED&component=Maps)
+* [Open bugs and feature requests](https://github.com/JeroenDeDauw/Maps/issues)
 
 ## Contributing
 
