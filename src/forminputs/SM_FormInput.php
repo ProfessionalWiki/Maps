@@ -120,7 +120,7 @@ class SMFormInput {
 		$validator = new Validator( wfMessage( 'maps_' . $this->service->getName() )->text(), false );
 		$validator->setParameters( $parameters, $this->getParameterInfo() );
 		$validator->validateParameters();
-		
+
 		$fatalError  = $validator->hasFatalError();
 		
 		if ( $fatalError === false ) {
@@ -133,6 +133,10 @@ class SMFormInput {
 
 	private function getMapOutput( array $params, $inputName ) {
 		global $wgParser;
+
+		if ( is_object( $params['centre'] ) ) {
+			$params['centre'] = $params['centre']->getJSONObject();
+		}
 
 		// We can only take care of the zoom defaulting here,
 		// as not all locations are available in whats passed to Validator.
