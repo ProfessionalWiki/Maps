@@ -35,6 +35,9 @@
 		"mediawiki/semantic-media-wiki": "1.9.*",
 		"mediawiki/maps": "~3.0"
 	},
+	"suggest": {
+		"mediawiki/semantic-forms": "Allows entering coordinates via a form map input"
+	},
 	"autoload": {
 		"files" : [
 			"SemanticMaps.php"
