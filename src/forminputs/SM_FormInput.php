@@ -95,19 +95,17 @@ class SMFormInput {
 	}
 	
 	/**
-	 * 
-	 * 
 	 * @since 1.0
 	 * 
 	 * @param string $coordinates
-	 * @param string $input_name
-	 * @param boolean $is_mandatory
-	 * @param boolean $is_disabled
-	 * @param array $field_args
+	 * @param string $inputName
+	 * @param boolean $isMandatory
+	 * @param boolean $isDisabled
+	 * @param array $params
 	 * 
 	 * @return string
 	 */
-	public function getInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
+	public function getInputOutput( $coordinates, $inputName, $isMandatory, $isDisabled, array $params ) {
 		$parameters = array();
 		foreach ( $params as $key => $value ) {
 			if ( !is_array( $value ) && !is_object( $value ) && !is_null( $value ) ) {
@@ -126,45 +124,51 @@ class SMFormInput {
 		$fatalError  = $validator->hasFatalError();
 		
 		if ( $fatalError === false ) {
-			global $wgParser;
-			
-			$params = $validator->getParameterValues();
-			
-			// We can only take care of the zoom defaulting here, 
-			// as not all locations are available in whats passed to Validator.
-			if ( $params['zoom'] === false && count( $params['locations'] ) <= 1 ) {
-				$params['zoom'] = $this->service->getDefaultZoom();
-			}			
-			
-			$mapName = $this->service->getMapId();
-			
-			$params['inputname'] = $input_name;
-			
-			$output = $this->getInputHTML( $params, $wgParser, $mapName );
-
-			$this->service->addResourceModules( $this->getResourceModules() );
-			
-			$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
-			
-			if ( true /* !is_null( $wgTitle ) && $wgTitle->isSpecialPage() */ ) { // TODO
-				global $wgOut;
-
-				$this->service->addDependencies( $wgOut );
-
-				$wgOut->addScript( $configVars );
-			}
-			else {
-				$this->service->addDependencies( $wgParser );
-			}
-
-			return $output;
+			return $this->getMapOutput( $validator->getParameterValues(), $inputName );
 		}
 		else {
-			return
-				'<span class="errorbox">' .
-				htmlspecialchars( wfMessage( 'validator-fatal-error', $fatalError->getMessage() )->text() ) .
-				'</span>';			
+			return $this->getFatalOutput( $fatalError );
 		}			
+	}
+
+	private function getMapOutput( array $params, $inputName ) {
+		global $wgParser;
+
+		// We can only take care of the zoom defaulting here,
+		// as not all locations are available in whats passed to Validator.
+		if ( $params['zoom'] === false && count( $params['locations'] ) <= 1 ) {
+			$params['zoom'] = $this->service->getDefaultZoom();
+		}
+
+		$mapName = $this->service->getMapId();
+
+		$params['inputname'] = $inputName;
+
+		$output = $this->getInputHTML( $params, $wgParser, $mapName );
+
+		$this->service->addResourceModules( $this->getResourceModules() );
+
+		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
+
+		if ( true /* !is_null( $wgTitle ) && $wgTitle->isSpecialPage() */ ) { // TODO
+			global $wgOut;
+
+			$this->service->addDependencies( $wgOut );
+
+			$wgOut->addScript( $configVars );
+		}
+		else {
+			$this->service->addDependencies( $wgParser );
+		}
+
+		return $output;
+	}
+
+	private function getFatalOutput( \ParamProcessor\ProcessingError $fatalError ) {
+		return
+			'<span class="errorbox">' .
+			htmlspecialchars( wfMessage( 'validator-fatal-error', $fatalError->getMessage() )->text() ) .
+			'</span>';
 	}
 
 	/**
