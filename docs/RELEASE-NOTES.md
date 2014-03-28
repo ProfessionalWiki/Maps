@@ -1,5 +1,14 @@
 These are the release notes for the Semantic Maps extension.
 
+## Semantic Maps 3.0.3
+
+Released on March 28th, 2014.
+
+* Fixed centre parameter bug in the form inputs
+* Improved installation instructions
+* Translation updates
+* Ensured compatibility with PHP 5.6
+
 ## Semantic Maps 3.0
 
 Released on January 18th, 2014.

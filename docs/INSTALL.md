@@ -53,7 +53,7 @@ These are the installation and configuration instructions for the [SemanticMaps]
 	</tr>
 	<tr>
 		<th>S. Maps 3.0.x</th>
-		<td>5.3.2 - 5.5.x</td>
+		<td>5.3.2 - 5.6.x</td>
 		<td>1.18 - 1.23</td>
 		<td>1.9.x</td>
 		<td>3.0.x</td>
