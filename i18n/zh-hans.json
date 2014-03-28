@@ -1,0 +1,38 @@
+{
+    "@metadata": {
+        "authors": [
+            "Byfserag",
+            "Gzdavidwong",
+            "Linforest",
+            "Liuxinyu970226",
+            "Xiaomingyan",
+            "Yfdyh000"
+        ]
+    },
+    "semanticmaps-desc": "提供对采用[https://www.semantic-mediawiki.org Semantic MediaWiki]扩展所存储坐标数据的查看和编辑能力",
+    "semanticmaps-unrecognizeddistance": "取值$1不是有效的距离。",
+    "semanticmaps-kml-link": "查看KML文件",
+    "semanticmaps-default-kml-pagelink": "检视页面 $1",
+    "semanticmaps-latitude": "纬度：$1",
+    "semanticmaps-longitude": "经度：$1",
+    "semanticmaps-altitude": "绝对海拔高度：$1",
+    "semanticmaps-loading-forminput": "加载地图表单输入……",
+    "semanticmaps_lookupcoordinates": "查找坐标",
+    "semanticmaps_enteraddresshere": "请在这里输入地址",
+    "semanticmaps-updatemap": "更新地图",
+    "semanticmaps-forminput-remove": "删除",
+    "semanticmaps-forminput-add": "添加",
+    "semanticmaps-forminput-locations": "位置",
+    "semanticmaps-par-staticlocations": "要添加至地图的位置及查询的数据的列表。如同display_points，你可以给每个位置添加标题、说明，用浪纹分隔“~”。",
+    "semanticmaps-par-showtitle": "是否在标记信息窗口之中显示标题。当采用模板对信息窗口内容进行格式编排的时候，关闭此项往往会有所帮助。",
+    "semanticmaps-par-hidenamespace": "在标记信息窗口中显示命名空间标题",
+    "semanticmaps-par-centre": "地图的中心。当未加提供的时候，地图会自动挑选最佳的中心，从而在地图上显示所有的标记。",
+    "semanticmaps-par-template": "用来对信息窗口内容进行格式编排的模板。",
+    "semanticmaps-par-geocodecontrol": "显示地理编码控件。",
+    "semanticmaps-par-activeicon": "当活跃页面等于查询结果时将显示选定标记而不是默认标记",
+    "semanticmaps-kml-text": "与每个页面相关联的文本。会被额外的查询属性（如果有的话）所覆盖。",
+    "semanticmaps-kml-title": "结果的默认标题",
+    "semanticmaps-kml-linkabsolute": "链接究竟应当是绝对地址还是相对地址",
+    "semanticmaps-kml-pagelinktext": "用于那些指向该页面的链接的文本；其中，页面标题将取代$1",
+    "semanticmaps-shapes-improperformat": "$1 的格式不正确。请参阅文档格式"
+}

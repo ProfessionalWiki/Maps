@@ -1,0 +1,12 @@
+{
+    "@metadata": {
+        "authors": [
+            "Veeven"
+        ]
+    },
+    "semanticmaps-latitude": "అక్షాంశం: $1",
+    "semanticmaps-longitude": "రేఖాంశం: $1",
+    "semanticmaps-altitude": "సముద్రమట్టం: $1",
+    "semanticmaps_enteraddresshere": "చిరునామాని ఇక్కడ ఇవ్వండి",
+    "semanticmaps-forminput-add": "చేర్చు"
+}

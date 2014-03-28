@@ -1,0 +1,39 @@
+{
+    "@metadata": {
+        "authors": [
+            "Eugene Mednikov",
+            "Lockal",
+            "Okras",
+            "Pastakhov",
+            "Александр Сигачёв"
+        ]
+    },
+    "semanticmaps-desc": "Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в расширении [https://www.semantic-mediawiki.org Семантической МедиаВики].",
+    "semanticmaps-unrecognizeddistance": "Значение $1 не является допустимым расстоянием.",
+    "semanticmaps-kml-link": "Просмотреть файл KML",
+    "semanticmaps-default-kml-pagelink": "Просмотреть страницу $1",
+    "semanticmaps-latitude": "Широта: $1",
+    "semanticmaps-longitude": "Долгота: $1",
+    "semanticmaps-altitude": "Высота: $1",
+    "semanticmaps-loading-forminput": "Загрузка карты…",
+    "semanticmaps_lookupcoordinates": "Найти координаты",
+    "semanticmaps_enteraddresshere": "Введите адрес",
+    "semanticmaps-updatemap": "Обновить карту",
+    "semanticmaps-forminput-remove": "Удалить",
+    "semanticmaps-forminput-add": "Добавить",
+    "semanticmaps-forminput-locations": "Места",
+    "semanticmaps-par-staticlocations": "Список мест для добавления на карту вместе с запрашиваемыми данными. Например, к display_points можно добавить название, описание и значок, используя тильду ~ в качестве разделителя.",
+    "semanticmaps-par-showtitle": "Показывать или нет заголовок в окне информации маркера. Его отключение часто бывает полезно при использовании шаблона для форматирования содержимого окна информация.",
+    "semanticmaps-par-hidenamespace": "Показывать название пространства имен в информационном окне маркера",
+    "semanticmaps-par-centre": "Центр карты. Если не задан, карта автоматически выберет оптимальный центр, позволяющий отобразить все маркеры на карте.",
+    "semanticmaps-par-template": "Шаблон для форматирования содержимого окна информация.",
+    "semanticmaps-par-geocodecontrol": "Показать панель управления геокодированием.",
+    "semanticmaps-par-activeicon": "Значок, который будет отображаться вместо стандартного маркера в случаях, когда активная страница совпадает с результатом запроса",
+    "semanticmaps-par-pagelabel": "Если задано значение «yes» («да»), все маркеры будут иметь «inlineLabel» со ссылкой на страницу, содержащую координаты для маркера",
+    "semanticmaps-kml-text": "Текст, связанный с каждой страницы. Переопределяется дополнительными запрашиваемыми свойствами, если таковые имеются.",
+    "semanticmaps-kml-title": "Заголовок по умолчанию для результатов",
+    "semanticmaps-kml-linkabsolute": "Ссылки должны быть абсолютными (а не относительными)",
+    "semanticmaps-kml-pagelinktext": "Текст, используемый для ссылки на страницу, в которой  $1 будет заменён названием страницы.",
+    "semanticmaps-shapes-improperformat": "Неправильное форматирование $1. Обратитесь к документации по форматированию.",
+    "semanticmaps-shapes-missingshape": "Фигуры для $1 не найдены. Пожалуйста, обратитесь к документации по доступным фигурам"
+}

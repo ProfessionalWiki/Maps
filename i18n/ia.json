@@ -1,0 +1,32 @@
+{
+    "@metadata": {
+        "authors": [
+            "McDutchie"
+        ]
+    },
+    "semanticmaps-desc": "Forni le capacitate de vider e modificar datos de coordinatas immagazinate con le extension Semantic MediaWiki ([https://mapping.referata.com/wiki/Examples demonstrationes]).",
+    "semanticmaps-unrecognizeddistance": "Le valor $1 non es un distantia valide.",
+    "semanticmaps-kml-link": "Vider le file KML",
+    "semanticmaps-default-kml-pagelink": "Vider articulo $1",
+    "semanticmaps-latitude": "Latitude: $1",
+    "semanticmaps-longitude": "Longitude: $1",
+    "semanticmaps-altitude": "Altitude: $1",
+    "semanticmaps-loading-forminput": "Carga datos entrate in formulario...",
+    "semanticmaps_lookupcoordinates": "Cercar coordinatas",
+    "semanticmaps_enteraddresshere": "Entra adresse hic",
+    "semanticmaps-updatemap": "Actualisar carta",
+    "semanticmaps-forminput-remove": "Remover",
+    "semanticmaps-forminput-add": "Adder",
+    "semanticmaps-forminput-locations": "Locos",
+    "semanticmaps-par-staticlocations": "Un lista de locos a adder al carta con le datos resultante del consulta. Como con display_points, tu pote adder un titulo, description e icone per loco usante le tilde \"~\" como separator.",
+    "semanticmaps-par-forceshow": "Monstrar le carta mesmo si il non ha locos a monstrar?",
+    "semanticmaps-par-showtitle": "Monstrar un titulo in le fenestra de information de marcator o non. Disactivar isto es sovente utile si un patrono es usate pro formatar le contento del fenestra de information.",
+    "semanticmaps-par-hidenamespace": "Monstrar o celar le titulo del spatio de nomines in le fenestra de information del marcator.",
+    "semanticmaps-par-centre": "Le centro del carta. Si non specificate, le systema selige automaticamente le centro optimal pro monstrar tote le marcatores in le carta.",
+    "semanticmaps-par-template": "Un patrono a usar pro formatar le contento del fenestra de information.",
+    "semanticmaps-par-geocodecontrol": "Monstrar le controlo de geocodification.",
+    "semanticmaps-kml-text": "Le texto associate con cata pagina. Es supplantate per le additional proprietates consultate, si existe.",
+    "semanticmaps-kml-title": "Le titulo predefinite pro resultatos",
+    "semanticmaps-kml-linkabsolute": "Debe ligamines esser absolute o non (i.e. relative)",
+    "semanticmaps-kml-pagelinktext": "Le texto a usar pro le ligamines al pagina, in le quales $1 essera reimplaciate per le titulo de pagina"
+}

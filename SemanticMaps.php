@@ -74,7 +74,7 @@ $GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {
 	return true;
 };
 
-
+$GLOBALS['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
 $GLOBALS['wgExtensionMessagesFiles']['SemanticMaps'] = __DIR__ . '/SemanticMaps.i18n.php';
 
 // Hook for initializing the Geographical Data types.

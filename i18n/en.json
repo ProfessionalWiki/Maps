@@ -1,0 +1,37 @@
+{
+    "@metadata": {
+        "authors": [
+            "Jeroen De Dauw",
+            "Karsten Hoffmeyer (kghbln)"
+        ]
+    },
+    "semanticmaps-desc": "Provides the ability to view and edit coordinate data stored with the [https://www.semantic-mediawiki.org Semantic MediaWiki] extension",
+    "semanticmaps-unrecognizeddistance": "The value $1 is not a valid distance.",
+    "semanticmaps-kml-link": "View the KML file",
+    "semanticmaps-kml": "KML",
+    "semanticmaps-default-kml-pagelink": "View page $1",
+    "semanticmaps-latitude": "Latitude: $1",
+    "semanticmaps-longitude": "Longitude: $1",
+    "semanticmaps-altitude": "Altitude: $1",
+    "semanticmaps-loading-forminput": "Loading map form input...",
+    "semanticmaps_lookupcoordinates": "Look up coordinates",
+    "semanticmaps_enteraddresshere": "Enter address here",
+    "semanticmaps-updatemap": "Update map",
+    "semanticmaps-forminput-remove": "Remove",
+    "semanticmaps-forminput-add": "Add",
+    "semanticmaps-forminput-locations": "Locations",
+    "semanticmaps-par-staticlocations": "A list of locations to add to the map together with the queried data. Like with display_points, you can add a title, description and icon per location using the tilde \"~\" as separator.",
+    "semanticmaps-par-showtitle": "Show a title in the marker info window or not. Disabling this is often useful when using a template to format the info window content.",
+    "semanticmaps-par-hidenamespace": "Show the namespace title in the marker info window",
+    "semanticmaps-par-centre": "The center of the map. When not provided, the map will automatically pick the optimal center to display all markers on the map.",
+    "semanticmaps-par-template": "A template to use to format the info window contents.",
+    "semanticmaps-par-geocodecontrol": "Show the geocoding control.",
+    "semanticmaps-par-activeicon": "Icon to be displayed instead of default marker, when active page is equal to query result",
+    "semanticmaps-par-pagelabel": "When set to \"yes\", all markers will have an \"inlineLabel\" with a link to the page containing the coordinates for the marker",
+    "semanticmaps-kml-text": "The text associated with each page. Overridden by the additional queried properties if any.",
+    "semanticmaps-kml-title": "The default title for results",
+    "semanticmaps-kml-linkabsolute": "Should links be absolute (as opposed to relative)",
+    "semanticmaps-kml-pagelinktext": "The text to use for the links to the page, in which $1 will be replaced by the page title",
+    "semanticmaps-shapes-improperformat": "Improper formatting of $1. Please see documentation for formatting",
+    "semanticmaps-shapes-missingshape": "No shapes found for $1. Please see documentation for available shapes"
+}

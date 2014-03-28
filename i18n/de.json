@@ -1,0 +1,42 @@
+{
+    "@metadata": {
+        "authors": [
+            "DaSch",
+            "Imre",
+            "Kghbln",
+            "Metalhead64",
+            "Pill",
+            "The Evil IP address",
+            "Umherirrender"
+        ]
+    },
+    "semanticmaps-desc": "Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit [https://www.semantic-mediawiki.org/wiki/Semantic_Maps_(de) Semantic MediaWiki] gespeichert werden",
+    "semanticmaps-unrecognizeddistance": "Der Wert $1 ist keine gültige Distanz.",
+    "semanticmaps-kml-link": "KML-Datei ansehen",
+    "semanticmaps-kml": "Export (KML)",
+    "semanticmaps-default-kml-pagelink": "Artikel $1 ansehen",
+    "semanticmaps-latitude": "Breitengrad: $1",
+    "semanticmaps-longitude": "Längengrad: $1",
+    "semanticmaps-altitude": "Höhe: $1",
+    "semanticmaps-loading-forminput": "Lade die Formulareingaben zur Karte …",
+    "semanticmaps_lookupcoordinates": "Koordinaten nachschlagen",
+    "semanticmaps_enteraddresshere": "Adresse hier eingeben",
+    "semanticmaps-updatemap": "Karte aktualisieren",
+    "semanticmaps-forminput-remove": "Entfernen",
+    "semanticmaps-forminput-add": "Hinzufügen",
+    "semanticmaps-forminput-locations": "Standort",
+    "semanticmaps-par-staticlocations": "Die Listen von Standorten, die zusammen mit den abgefragten Daten, der Karte hinzugefügt werden sollen. Analog zu den Anzeigepunkten können je Standort Titel, Beschreibung und Symbol, unter Verwendung einer Tilde „~“ als Trennzeichen, hinzugefügt werden.",
+    "semanticmaps-par-showtitle": "Den Titel im Informationsfenster der Kennzeichnung anzeigen oder nicht. Diese Option zu deaktivieren ist oftmals dann nützlich, sofern eine Vorlage zur Formatierung des Informationsfensterinhalts verwendet wird.",
+    "semanticmaps-par-hidenamespace": "Den Namen des Namensraums im Informationsfenster der Kennzeichnung anzeigen",
+    "semanticmaps-par-centre": "Das Zentrum der Karte. Sofern nicht angegeben wird automatisch das optimale Zentrum zur Darstellung aller Kennzeichnungen auf der Karte gewählt.",
+    "semanticmaps-par-template": "Die zur Formatierung des Informationsfensterinhalts zu verwendende Vorlage.",
+    "semanticmaps-par-geocodecontrol": "Die Steuerungsseite zum Geokodieren anzeigen.",
+    "semanticmaps-par-activeicon": "Das Symbol, das anstelle der Standardmarkierung angezeigt wird, sofern die aktive Seite dem Abfrageergebnis entspricht.",
+    "semanticmaps-par-pagelabel": "Sofern mit „yes“ (ja) festgelegt, verfügen alle Markierungen über eine eingebettete Anzeige mit einem Link zur entsprechenden Seite sowie den entsprechenden Koordinaten.",
+    "semanticmaps-kml-text": "Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.",
+    "semanticmaps-kml-title": "Der Standardtitel für die Ergebnisse",
+    "semanticmaps-kml-linkabsolute": "Die Links sollen absolut sein (anstatt relativ)",
+    "semanticmaps-kml-pagelinktext": "Der Text, der für die Links zur Seite genutzt werden soll. $1 wird dabei durch den Namen der Seite ersetzt.",
+    "semanticmaps-shapes-improperformat": "$1 ist falsch formatiert. Siehe hierzu die Dokumentation bezüglich Formatierungen.",
+    "semanticmaps-shapes-missingshape": "Für $1 wurden keine Formen gefunden. Siehe hierzu die Dokumentation bezüglich verfügbarer Formen."
+}

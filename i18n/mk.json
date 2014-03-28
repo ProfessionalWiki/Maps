@@ -1,0 +1,35 @@
+{
+    "@metadata": {
+        "authors": [
+            "Bjankuloski06"
+        ]
+    },
+    "semanticmaps-desc": "Овозможува прегледување и уредување на координатни податоци складирани со додатокот [https://www.semantic-mediawiki.org Семантички МедијаВики]",
+    "semanticmaps-unrecognizeddistance": "Вредноста $1 не претставува важечко растојание.",
+    "semanticmaps-kml-link": "Преглед на KML-податотеката",
+    "semanticmaps-default-kml-pagelink": "Преглед на статијата $1",
+    "semanticmaps-latitude": "Геог. ширина: $1",
+    "semanticmaps-longitude": "Геог. должина: $1",
+    "semanticmaps-altitude": "Надм. вис: $1",
+    "semanticmaps-loading-forminput": "Вчитувам карти од внесеното...",
+    "semanticmaps_lookupcoordinates": "Дај координати",
+    "semanticmaps_enteraddresshere": "Внесете адреса",
+    "semanticmaps-updatemap": "Поднови карта",
+    "semanticmaps-forminput-remove": "Отстрани",
+    "semanticmaps-forminput-add": "Додај",
+    "semanticmaps-forminput-locations": "Места",
+    "semanticmaps-par-staticlocations": "Список на места за додавање во картатата заедно со побараните податоци. Како и со „display_points“, тука можете да додадете наслов, опис и икона за секое место, користејќи тилда (~) како одделувач.",
+    "semanticmaps-par-showtitle": "Дали да се прикажува насловот на инфопрозорецот на ознаката. Оневозможете го кога користите шаблон за форматирање на содржината на инфопрозорецот.",
+    "semanticmaps-par-hidenamespace": "Дали да се прикажува називот на именскиот простор во инфопрозорецот за ознаката.",
+    "semanticmaps-par-centre": "Средиштето на картата. Ако не е укажано, картата автоматски ќе го одбере средиштето кајшто оптимално ќе се прикажат сите одбележувачи на картата.",
+    "semanticmaps-par-template": "Шаблон за форматирање на содржината на инфопрозорецот.",
+    "semanticmaps-par-geocodecontrol": "Прикажи геокодни котроли.",
+    "semanticmaps-par-activeicon": "Икона за приказ наместо стандардниот бележник, кога активна страница се совпаѓа со бараното",
+    "semanticmaps-par-pagelabel": "Ако му е зададено „да“, сите обележувачи ќе имаат „inlineLabel“ со врска до страницата што ги содржат координатите за обележувачот",
+    "semanticmaps-kml-text": "Текстот на секоја страница. Се презапишува ако има дополнителни барани својства.",
+    "semanticmaps-kml-title": "Стандарден наслов за резултатите",
+    "semanticmaps-kml-linkabsolute": "Дали врските да бидат апсолутни",
+    "semanticmaps-kml-pagelinktext": "Текстот на врските на страницата, каде $1 ќе се замени со насловот на страницата",
+    "semanticmaps-shapes-improperformat": "Несоодветно форматирање на $1. Погледајте во документацијата како треба да се форматира.",
+    "semanticmaps-shapes-missingshape": "Не пронајдов облици за $1. Погледајте во документацијата кои облици ви се на располагање."
+}

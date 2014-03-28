@@ -1,0 +1,35 @@
+{
+    "@metadata": {
+        "authors": [
+            "Toliño"
+        ]
+    },
+    "semanticmaps-desc": "Proporciona a capacidade de ollar e modificar os datos de coordenadas gardados a través da extensión [https://www.semantic-mediawiki.org Semantic MediaWiki]",
+    "semanticmaps-unrecognizeddistance": "O valor $1 non é unha distancia válida.",
+    "semanticmaps-kml-link": "Ollar o ficheiro KML",
+    "semanticmaps-default-kml-pagelink": "Ver a páxina \"$1\"",
+    "semanticmaps-latitude": "Latitude: $1",
+    "semanticmaps-longitude": "Lonxitude: $1",
+    "semanticmaps-altitude": "Altitude: $1",
+    "semanticmaps-loading-forminput": "Cargando o formulario de entrada do mapa...",
+    "semanticmaps_lookupcoordinates": "Ver as coordenadas",
+    "semanticmaps_enteraddresshere": "Introduza o enderezo aquí",
+    "semanticmaps-updatemap": "Actualizar o mapa",
+    "semanticmaps-forminput-remove": "Eliminar",
+    "semanticmaps-forminput-add": "Engadir",
+    "semanticmaps-forminput-locations": "Localizacións",
+    "semanticmaps-par-staticlocations": "Unha lista de localizacións para engadir ao mapa xunto aos datos consultados. Como con display_points, pode engadir un título, unha descrición e mais unha icona por localización mediante o signo \"~\" como separador.",
+    "semanticmaps-par-showtitle": "Mostrar ou non un título na ventá de información do marcador. Frecuentemente, desactivar isto é útil ao utilizar un modelo para dar formato ao contido da ventá de información.",
+    "semanticmaps-par-hidenamespace": "Mostrar o título do espazo de nomes na ventá de información do marcador",
+    "semanticmaps-par-centre": "O centro do mapa. Cando non se proporciona, o mapa ha escoller automaticamente o mellor centro para mostrar todos os marcadores no mapa.",
+    "semanticmaps-par-template": "Un modelo a empregar para dar formato ao contido da ventá de información.",
+    "semanticmaps-par-geocodecontrol": "Mostrar o control de xeocodificación.",
+    "semanticmaps-par-activeicon": "Icona a mostrar no canto do marcador predeterminado, cando a páxina é igual ao resultado da pescuda",
+    "semanticmaps-par-pagelabel": "Ao definirse en \"si\", todos os macadores terán un \"inlineLabel\" cunha ligazón cara á páxina que conten as coordenadas do marcador",
+    "semanticmaps-kml-text": "O texto asociado a cada páxina. Substituído polas propiedades pescudadas adicionais, se existen.",
+    "semanticmaps-kml-title": "O título por defecto para os resultados",
+    "semanticmaps-kml-linkabsolute": "Se as ligazóns deberían ser absolutas (contrario a relativas)",
+    "semanticmaps-kml-pagelinktext": "O texto a usar para as ligazóns cara á páxina, nas que \"$1\" será substituído polo título da páxina",
+    "semanticmaps-shapes-improperformat": "Formato incorrecto de \"$1\"; consulte a documentación sobre os formatos",
+    "semanticmaps-shapes-missingshape": "Non se atopou forma ningunha para \"$1\"; consulte a documentación sobre as formas dispoñibles"
+}
