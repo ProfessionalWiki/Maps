@@ -626,10 +626,10 @@ Si ye «non», se xeocodificarán tolos valores, incluyendo les coordenaes váli
 	'maps-geodistance-par-decimals' => 'El númberu máximu de díxitos fraccionarios a usar nel valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'El serviciu de xeocodificación a usar pa xeocodificar cualesquier direición.',
 	'maps-geodistance-par-geoservice' => "El serviciu de mapes que s'usa xunto con esto.
-Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
+Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.", # Fuzzy
 	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
 	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
-	'maps-displaymap-par-visitedicon' => "El nome d'una imaxe a usar pa los iconos de marcador dempués de facer clic nellos",
+	'maps-displaymap-par-visitedicon' => "El nome d'una imaxe a usar pa los iconos de marcador dempués de facer clic nellos", # Fuzzy
 	'maps-displaymap-par-zoom' => "Permite configurar el nivel de zoom do mapa.
 Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
 	'maps-displaymap-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
@@ -1831,10 +1831,10 @@ Cuando sea "no", todos los valores serán geocodificados, incluso si son coorden
 	'maps-geodistance-par-decimals' => 'El número máximo de dígitos fraccionarios a usar en el valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'El servicio de geocodificación a utilizar para geocodificar todas las direcciones.',
 	'maps-geodistance-par-geoservice' => 'El servicio de cartografía a usar conjuntamente.
-Esto puede afectar al valor predeterminado del servicio de geocodificación.',
+Esto puede afectar al valor predeterminado del servicio de geocodificación.', # Fuzzy
 	'maps-displaymap-par-mappingservice' => 'Permite configurar el servicio de cartografía que se utilizará para generar el mapa.',
 	'maps-displaymap-par-coordinates' => 'La localización respecto de la cual el mapa aparecerá inicialmente centrado.',
-	'maps-displaymap-par-visitedicon' => 'El nombre de una imagen que será usada como iconos de marca al de hacer clic en ellos',
+	'maps-displaymap-par-visitedicon' => 'El nombre de una imagen que será usada como iconos de marca al de hacer clic en ellos', # Fuzzy
 	'maps-displaymap-par-zoom' => 'Permite configurar el nivel de zoom del mapa.
 Cuando no se proporciona y varios marcadores están presentes en el mapa, se tomará el mejor ajuste de zoom, y no el valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite establecer las coordenadas del centro del mapa mediante display_point(s).
@@ -2753,10 +2753,10 @@ Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenad
 	'maps-geodistance-par-decimals' => 'O número máximo de díxitos fraccionarios a utilizar no valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'O servizo de xeocodificación a usar para xeocodificar todos os enderezos.',
 	'maps-geodistance-par-geoservice' => 'O servizo de cartografía a usar en conxunto.
-Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
+Isto pode afectar ao valor por defecto do servizo de xeocodificación.', # Fuzzy
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'Unha ou máis localizacións a mostrar no mapa. Indicaranse cun marcador.',
-	'maps-displaymap-par-visitedicon' => 'O nome dunha imaxe a utilizar como iconas de marcador despois de premer nelas',
+	'maps-displaymap-par-visitedicon' => 'O nome dunha imaxe a utilizar como iconas de marcador despois de premer nelas', # Fuzzy
 	'maps-displaymap-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
 Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
@@ -3005,7 +3005,7 @@ $messages['he'] = array(
 	'maps-geodistance-par-decimals' => 'המספר המרבי של ספרות בשבר בתוצאה.',
 	'maps-geodistance-par-mappingservice' => 'שירות הקידוד הגאוגרפי שיקודד כתובות כלשהן.',
 	'maps-geodistance-par-geoservice' => 'שירות המיפוי שבו משתמשים בזה.
-זה יכול להשפיע על ערך ברירת המחדל של שירות הקידוד הגאוגרפי.',
+זה יכול להשפיע על ערך ברירת המחדל של שירות הקידוד הגאוגרפי.', # Fuzzy
 	'maps-displaymap-par-mappingservice' => 'לאפשר להגדיר שירות מיפוי שישמש ליצרת המפה.',
 	'maps-displaymap-par-coordinates' => 'באיזה מיקום המפה תתמרכז בתחילה.',
 	'maps-displaymap-par-zoom' => 'מאפשר קביעת קמת התקריב של המפה.
@@ -3762,7 +3762,7 @@ $messages['it'] = array(
 	'maps-finddestination-par-distance' => 'La distanza da percorrere.',
 	'maps-geocode-par-format' => 'Il formato per le coordinate risultanti.',
 	'maps-displaymap-par-coordinates' => 'Uno o più luoghi da mostrare sulla mappa. Verranno indicati con un marcatore.',
-	'maps-displaymap-par-visitedicon' => "Il nome di un'immagine da utilizzare come icone per i marcatori dopo che sono stati selezionati",
+	'maps-displaymap-par-visitedicon' => "Il nome di un'immagine da utilizzare come icone per i marcatori dopo che sono stati selezionati", # Fuzzy
 	'maps-displaymap-par-lines' => 'Linee da visualizzare',
 	'maps-displaymap-par-maxzoom' => 'Il livello massimo di zoom',
 	'maps-displaymap-par-minzoom' => 'Il livello minimo di zoom',
@@ -4782,7 +4782,7 @@ Jika tidak, semua nilai akan ditukar menjadi geokod, termasuk koordinat yang sah
 	'maps-geodistance-par-decimals' => 'Bilangan maksimum angka pecahan untuk digunakan dalam nilai hasil.',
 	'maps-geodistance-par-mappingservice' => 'Perkhidmatan geokod yang digunakan untuk membuat geokod alamat.',
 	'maps-geodistance-par-geoservice' => 'Perkhidmatan pemetaan yang digunakan bersama yang ini.
-Ini boleh mempengaruhi nilai asali perkhidmatan geokod.',
+Ini boleh mempengaruhi nilai asali perkhidmatan geokod.', # Fuzzy
 	'maps-displaymap-par-mappingservice' => 'Membolehkan penetapan perkhidmatan pemetaan yang akan digunakan untuk menghasilkan peta.',
 	'maps-displaymap-par-coordinates' => 'Lokasi yang akan dijadikan pusat peta pada mulanya.',
 	'maps-displaymap-par-visitedicon' => 'Lokal fail untuk digunakan sebagai ikon dilawat', # Fuzzy
@@ -5971,7 +5971,7 @@ $1',
  * @author 555
  */
 $messages['pt-br'] = array(
-	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas. ([https://www.semantic-mediawiki.org/wiki/Maps mais informações...])',
+	'maps-desc' => 'Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas.',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
 	'maps-markers' => 'Marcadores',
@@ -5981,7 +5981,6 @@ $messages['pt-br'] = array(
 	'maps-layer-property' => 'Propriedade',
 	'maps-layer-value' => 'Valor',
 	'maps-layer-errors' => 'Erros',
-	'maps-error-invalid-layerdef' => 'A definição desta camada é inválida.',
 	'maps-error-invalid-layertype' => 'Não existem camadas do tipo "$1". Só {{PLURAL:$3|é suportado o tipo|são suportados os tipos}}: $2',
 	'maps-error-no-layertype' => 'Você precisa especificar o tipo de camada. {{PLURAL:$2|Só é suportado o tipo|São suportados os tipos}}: $1',
 	'validation-error-invalid-layer' => 'O parâmetro $1 precisa ser uma camada válida.',
@@ -7489,6 +7488,7 @@ $messages['zh-hans'] = array(
 	'maps-layer-of-type-and-name' => '类型“$1”的图层“$2”',
 	'maps-finddestination-par-location' => '初始位置。',
 	'maps-finddestination-par-bearing' => '最初的影响。',
+	'maps-finddestination-par-distance' => '旅行的距离。',
 	'maps-geocode-par-location' => '您希望发送到的地址。',
 	'maps-geodistance-par-unit' => '要输出的距离单位。',
 	'maps-displaymap-par-circles' => '圈起以显示',
@@ -7553,6 +7553,7 @@ $messages['zh-hans'] = array(
 	'mapeditor-form-field-fillopcaity' => '填充不透明度',
 	'mapeditor-form-field-showonhover' => '只在悬停时显示',
 	'mapeditor-mapparam-title' => '编辑地图参数',
+	'mapeditor-mapparam-defoption' => '-选择参数-',
 	'mapeditor-form-field-image' => '图片',
 	'mapeditor-form-field-visitedicon' => '已浏览图标',
 );
