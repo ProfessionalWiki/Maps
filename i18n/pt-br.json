@@ -30,7 +30,7 @@
     "semanticmaps-par-geocodecontrol": "Exibir o controle de geocodificação.",
     "semanticmaps-kml-text": "O texto associado a cada página. Será substituído quando propriedades adicionais consultadas existirem.",
     "semanticmaps-kml-title": "O título padrão para os resultados",
-    "semanticmaps-kml-linkabsolute": "!!FUZZY!!Se os links deverão ser absolutos ou relativos",
+    "semanticmaps-kml-linkabsolute": "Se os links deverão ser absolutos ou relativos",
     "semanticmaps-kml-pagelinktext": "O texto a ser usado nos links para a página, onde  $1 será substituído pelo título da página",
     "semanticmaps-shapes-improperformat": "Formatação imprópria em $1. Por favor, veja a documentação para formatação"
 }
