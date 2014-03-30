@@ -625,11 +625,11 @@ Si ye «non», se xeocodificarán tolos valores, incluyendo les coordenaes váli
 	'maps-geodistance-par-unit' => 'La unidá na que sacar la distancia.',
 	'maps-geodistance-par-decimals' => 'El númberu máximu de díxitos fraccionarios a usar nel valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'El serviciu de xeocodificación a usar pa xeocodificar cualesquier direición.',
-	'maps-geodistance-par-geoservice' => "El serviciu de mapes que s'usa xunto con esto.
-Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.", # Fuzzy
+	'maps-geodistance-par-geoservice' => "El serviciu de mapes que s'usa xunto con esta función d'analís.
+Esto pue afeutar al valor predetermináu del serviciu de xeocodificación.",
 	'maps-displaymap-par-mappingservice' => "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
 	'maps-displaymap-par-coordinates' => "El llugar onde apaecerá'l centru'l mapa nel aniciu.",
-	'maps-displaymap-par-visitedicon' => "El nome d'una imaxe a usar pa los iconos de marcador dempués de facer clic nellos", # Fuzzy
+	'maps-displaymap-par-visitedicon' => "El nome de ficheru d'una imaxe a usar pa los iconos de marcador dempués de facer clic nos marcadores orixinales",
 	'maps-displaymap-par-zoom' => "Permite configurar el nivel de zoom do mapa.
 Cuando nun se da y hai múltiples marcadores presentes nel mapa, se tomará'l zoom que meyor axuste, non el valor configurable predetermináu.",
 	'maps-displaymap-par-centre' => 'Permite configurar les coordenaes del centru do mapa pa display_point(s).
@@ -2752,11 +2752,11 @@ Cando sexa "non", todos os valores serán xeocodificados, mesmo se son coordenad
 	'maps-geodistance-par-unit' => 'A unidade na que mostrar a distancia.',
 	'maps-geodistance-par-decimals' => 'O número máximo de díxitos fraccionarios a utilizar no valor resultante.',
 	'maps-geodistance-par-mappingservice' => 'O servizo de xeocodificación a usar para xeocodificar todos os enderezos.',
-	'maps-geodistance-par-geoservice' => 'O servizo de cartografía a usar en conxunto.
-Isto pode afectar ao valor por defecto do servizo de xeocodificación.', # Fuzzy
+	'maps-geodistance-par-geoservice' => 'O servizo de cartografía co que se utiliza esta función analítica.
+Isto pode afectar ao valor por defecto do servizo de xeocodificación.',
 	'maps-displaymap-par-mappingservice' => 'Permite configurar o servizo de mapas que se empregará para xerar o mapa.',
 	'maps-displaymap-par-coordinates' => 'Unha ou máis localizacións a mostrar no mapa. Indicaranse cun marcador.',
-	'maps-displaymap-par-visitedicon' => 'O nome dunha imaxe a utilizar como iconas de marcador despois de premer nelas', # Fuzzy
+	'maps-displaymap-par-visitedicon' => 'O nome de ficheiro dunha imaxe a utilizar como iconas de marcador despois de premer nos marcadores orixinais',
 	'maps-displaymap-par-zoom' => 'Permite configurar o nivel de zoom do mapa.
 Se non se proporciona e hai presentes no mapa múltiples marcadores, tomarase o mellor axuste de zoom e non o valor configurado por defecto.',
 	'maps-displaymap-par-centre' => 'Permite configurar as coordenadas do centro do mapa para display_point(s).
