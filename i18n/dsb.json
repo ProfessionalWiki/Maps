@@ -4,7 +4,7 @@
             "Michawiki"
         ]
     },
-    "semanticmaps-desc": "Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps dalšne informacije...]).",
+    "semanticmaps-desc": "Zmóžnja zwobraznjenje a wobźěłowanje koordinatowych datow, kótarež su se z [https://www.semantic-mediawiki.org rozšyrjenim Semantic MediaWiki] składowali",
     "semanticmaps-unrecognizeddistance": "Gódnota $1 njejo płaśiwa distanca.",
     "semanticmaps-kml-link": "KML-dataju se woglědaś",
     "semanticmaps-default-kml-pagelink": "Bok $1 se woglědaś",
@@ -19,7 +19,6 @@
     "semanticmaps-forminput-add": "Pśidaś",
     "semanticmaps-forminput-locations": "Městna",
     "semanticmaps-par-staticlocations": "Lisćina městnow, kótarež maju se zgromadnje z napšašowanymi datami kórśe pśidaś. Ako pla zwobraznjeńskich dypkow móžoš titel, wopisanje a symbol na městno z pomocu tildy \"~\" ako źěleńske znamuško pśidaś.",
-    "semanticmaps-par-forceshow": "Kórtu teke pótom pokazaś, gaž městna za zwobraznjenje se njedaju?",
     "semanticmaps-par-showtitle": "Titel w informaciskem woknje marki pokazaś abo nic. Jo cesto wužytne, toś to nastajenje znjemóžniś, gaž pśedłoga se wužywa, aby se wopśimjeśe informaciskego wokna formatěrowało.",
     "semanticmaps-par-hidenamespace": "Titel mjenjowego ruma w informaciskem woknje marki pokazaś",
     "semanticmaps-par-centre": "Srjejźišćo kórty. Jolic njejo pódane, buźo kórta awtomatiski optimane srjejźišć wubraś, aby wšykne marki na kórśe zwobrazniła.",
