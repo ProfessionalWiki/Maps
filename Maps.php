@@ -1,7 +1,7 @@
 <?php
 /**
  * Initialization file for the Maps extension.
- * 
+ *
  * @links https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps Documentation
  * @links https://github.com/JeroenDeDauw/Maps/issues Support
  * @links https://github.com/JeroenDeDauw/Maps Source code
@@ -19,7 +19,7 @@ if ( defined( 'Maps_VERSION' ) ) {
 	return 1;
 }
 
-define( 'Maps_VERSION' , '3.0.1' );
+define( 'Maps_VERSION' , '3.1.0' );
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -38,7 +38,7 @@ if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
 call_user_func( function() {
 	global $wgExtensionCredits;
 	global $wgResourceModules, $wgGroupPermissions, $egMapsNamespaceIndex, $wgStyleVersion;
-	global $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles;
+	global $egMapsStyleVersion, $wgHooks, $wgExtensionMessagesFiles, $wgMessagesDirs;
 
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__ ,
@@ -61,6 +61,7 @@ call_user_func( function() {
 
 	$egMapsStyleVersion = $wgStyleVersion . '-' . Maps_VERSION;
 
+	$wgMessagesDirs['Maps']							= __DIR__ . '/i18n';
 	$wgExtensionMessagesFiles['Maps'] 				= __DIR__ . '/Maps.i18n.php';
 	$wgExtensionMessagesFiles['MapsMagic'] 			= __DIR__ . '/Maps.i18n.magic.php';
 	$wgExtensionMessagesFiles['MapsNamespaces'] 	= __DIR__ . '/Maps.i18n.namespaces.php';

@@ -1,0 +1,25 @@
+{
+    "@metadata": {
+        "authors": [
+            "Умар"
+        ]
+    },
+    "maps-others": "кхин",
+    "maps-ns-layer-talk": "ГӀатан дийцаре",
+    "maps-layer-value": "МаьӀна",
+    "maps-layerdef-invalid": "{{PLURAL:$1|Ца магийна билгалдакхар|Ца магийна билгалдакхарш}}",
+    "maps-layerpage-usage": "Картанаш долу агӀоно лелош ю «$1»",
+    "validation-error-invalid-layer": "Параметр $1 нийса хила еза.",
+    "maps-layer-of-type": "Тайпан $1 чкъор",
+    "maps-layer-of-type-and-name": "Тайпан «$1» «$2» чкъор",
+    "validation-error-invalid-image": "Параметр $1 хила еза нийса сурт.",
+    "maps-abb-east": "Цу",
+    "maps-latitude": "Шоралла:",
+    "maps-longitude": "Дохалла:",
+    "mapeditor-done-button": "Кийчча ю",
+    "mapeditor-link-title-switcher-link-text": "Хьажораг",
+    "mapeditor-form-field-title": "ЦӀе",
+    "mapeditor-form-field-link": "Хьажораг",
+    "mapeditor-form-field-image": "Сурт",
+    "mapeditor-imageoverlay-title": "Сурт"
+}

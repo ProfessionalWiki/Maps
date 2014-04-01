@@ -1,0 +1,11 @@
+{
+    "@metadata": {
+        "authors": []
+    },
+    "maps-abb-north": "N",
+    "maps-abb-east": "L",
+    "maps-abb-south": "S",
+    "maps-abb-west": "V",
+    "maps-latitude": "Videt:",
+    "maps-longitude": "Lunet:"
+}
