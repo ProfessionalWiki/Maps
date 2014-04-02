@@ -1,5 +1,7 @@
 <?php
 
+use Maps\Elements\Location;
+
 /**
  * Class for handling geographical SMW queries.
  *
@@ -8,8 +10,6 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-use Maps\Elements\Location;
-
 class SMQueryHandler {
 
 	protected $queryResult;
@@ -560,13 +560,12 @@ class SMQueryHandler {
 	 * @return string
 	 */
 	protected function getLocationIcon( array $row ) {
-		global $wgTitle;
 		$icon = '';
 		$legend_labels = array();
 
 		//Check for activeicon parameter
 
-		if( isset( $this->activeIcon )&& $wgTitle->equals( $row[0]->getResultSubject()->getTitle() ) ){
+		if ( $this->shouldGetActiveIconUrlFor( $row[0]->getResultSubject()->getTitle() ) ){
 			$icon = MapsMapper::getFileUrl( $this->activeIcon );
 		}
 
@@ -595,6 +594,13 @@ class SMQueryHandler {
 		}
 
 		return $icon;
+	}
+
+	private function shouldGetActiveIconUrlFor( Title $title ) {
+		global $wgTitle;
+
+		return isset( $this->activeIcon ) && is_object( $wgTitle )
+			&& $wgTitle->equals( $title );
 	}
 
 	/**
