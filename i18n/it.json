@@ -41,7 +41,7 @@
     "maps-finddestination-par-distance": "La distanza da percorrere.",
     "maps-geocode-par-format": "Il formato per le coordinate risultanti.",
     "maps-displaymap-par-coordinates": "Uno o più luoghi da mostrare sulla mappa. Verranno indicati con un marcatore.",
-    "maps-displaymap-par-visitedicon": "Il nome di un'immagine da utilizzare come icone per i marcatori dopo che sono stati selezionati",
+    "maps-displaymap-par-visitedicon": "Il nome del file di un'immagine da utilizzare come icone per i marcatori dopo che quelli originali sono stati selezionati",
     "maps-displaymap-par-lines": "Linee da visualizzare",
     "maps-displaymap-par-maxzoom": "Il livello massimo di zoom",
     "maps-displaymap-par-minzoom": "Il livello minimo di zoom",
