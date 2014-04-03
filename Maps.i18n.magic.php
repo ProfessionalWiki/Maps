@@ -358,10 +358,11 @@ $magicWords['vi'] = array(
 
 /** Simplified Chinese (中文（简体）‎) */
 $magicWords['zh-hans'] = array(
-	'display_map' => array( 0, '显示_地图' ),
-	'display_point' => array( 0, '显示_点' ),
-	'display_line' => array( 0, '显示_线' ),
+	'display_map' => array( 0, '显示地图' ),
+	'display_point' => array( 0, '显示点' ),
+	'display_line' => array( 0, '显示线' ),
 	'geocode' => array( 0, '地理编码' ),
 	'geodistance' => array( 0, '地理距离' ),
+	'coordinates' => array( 0, '坐标' ),
 	'mapsdoc' => array( 0, '地图文档' ),
 );
