@@ -1,5 +1,11 @@
 These are the release notes for the Semantic Maps extension.
 
+## Semantic Maps 3.0.4
+
+Released on April 3rd, 2014.
+
+* Fixed bug in SM_QueryHandler.php that was causing a fatal error in some cases.
+
 ## Semantic Maps 3.0.3
 
 Released on March 28th, 2014.
