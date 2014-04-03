@@ -3,10 +3,11 @@
         "authors": [
             "Amire80",
             "Rotemliss",
-            "YaronSh"
+            "YaronSh",
+            "Inkbug"
         ]
     },
-    "semanticmaps-desc": "הוספת האפשרות לצפייה בנתוני הקואורדינטות המאוחסנים ולעריכתם באמצעות ההרחבה מדיה־ויקי סמנטית ([https://mapping.referata.com/wiki/Examples הדגמות]).",
+    "semanticmaps-desc": "הוספת האפשרות לצפייה בנתוני הקואורדינטות המאוחסנים ולעריכתם באמצעות ההרחבה [https://www.semantic-mediawiki.org מדיה־ויקי סמנטית]",
     "semanticmaps-unrecognizeddistance": "הערך $1 אינו מרחק תקין.",
     "semanticmaps-kml-link": "הצגת קובץ KML",
     "semanticmaps-default-kml-pagelink": "הצגת הדף $1",
@@ -21,7 +22,6 @@
     "semanticmaps-forminput-add": "הוספה",
     "semanticmaps-forminput-locations": "מיקומים",
     "semanticmaps-par-staticlocations": "רשימת מיקומים להוסיף למפה יחד עם הנתונים המבוקשים בשאילתה. כמו עם display_points, אפשר להוסיף כאן כותרת, תיאור וסמל לכל מיקום עם טילדה (~) בתור תו מפריד.",
-    "semanticmaps-par-forceshow": "להציג מפה גם כשאין מיקומים להצגה?",
     "semanticmaps-par-showtitle": "להציג את הכותרת בחלון המידע על הסמן או לא. הכיבוי של זה שימושי לעתים קרובות כאשר נעשה שימוש בתבנית לעיצוב חלון המידע.",
     "semanticmaps-par-hidenamespace": "האם להציג את שם המרחב בחלון המידע על סמן.",
     "semanticmaps-par-centre": "מרכז המפה. אם לא ניתן, המפה תבחר בעצמה את המרכז המיטבי להצגת כל הסמנים על המפה.",
