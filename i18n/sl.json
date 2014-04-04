@@ -6,7 +6,7 @@
             "Lesko987"
         ]
     },
-    "maps-desc": "Omogoča vključevanje dinamičnih zemljevidov na wikistrani, geokodiranje naslovov in druge geografske operacije. ([https://www.semantic-mediawiki.org/wiki/Maps Več informacij ...])",
+    "maps-desc": "Omogoča vključevanje dinamičnih zemljevidov na wikistrani, geokodiranje naslovov in druge geografske posege.",
     "right-geocode": "Geokodiranje",
     "maps_map": "Zemljevid",
     "maps-loading-map": "Nakladanje zemljevida...",
