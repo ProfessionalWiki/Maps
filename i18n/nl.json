@@ -7,7 +7,7 @@
             "Siebrand"
         ]
     },
-    "semanticmaps-desc": "Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in [[https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki] te bewerken en te bekijken",
+    "semanticmaps-desc": "Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in [https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki] te bewerken en te bekijken",
     "semanticmaps-unrecognizeddistance": "De waarde \"$1\" is geen geldige afstand.",
     "semanticmaps-kml-link": "KML-bestand bekijken",
     "semanticmaps-default-kml-pagelink": "Pagina $1 bekijken",
