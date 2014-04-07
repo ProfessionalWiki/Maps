@@ -360,6 +360,7 @@ $magicWords['vi'] = array(
 $magicWords['zh-hans'] = array(
 	'display_map' => array( 0, '显示地图' ),
 	'display_point' => array( 0, '显示点' ),
+	'display_points' => array( 0, '显示多个点' ),
 	'display_line' => array( 0, '显示线' ),
 	'geocode' => array( 0, '地理编码' ),
 	'geodistance' => array( 0, '地理距离' ),
