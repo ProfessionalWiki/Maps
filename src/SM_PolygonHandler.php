@@ -33,7 +33,7 @@ class PolygonHandler {
 	protected $value = null;
 
 	/**
-	 * The array of error messages occured in parsing.
+	 * The array of error messages occurred in parsing.
 	 *
 	 * @since 2.1
 	 *
