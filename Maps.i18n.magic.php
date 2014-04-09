@@ -108,6 +108,7 @@ $magicWords['eo'] = array(
 $magicWords['es'] = array(
 	'display_point' => array( 0, 'mostrar_punto' ),
 	'geocode' => array( 0, 'geocodificar' ),
+	'distance' => array( 0, 'distancia' ),
 );
 
 /** French (français) */
