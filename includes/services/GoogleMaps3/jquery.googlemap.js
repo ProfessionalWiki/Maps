@@ -446,15 +446,7 @@
 			this.map.fitBounds(bounds);
 		}
 
-		this.setup = function () {
-
-			var showEarth = $.inArray('earth', options.types) !== -1 || options.type == 'earth';
-
-			// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
-			if (showEarth) {
-				this.removeEarthType();
-			}
-
+		this.initializeMap = function () {
 			var mapOptions = {
 				disableDefaultUI:true,
 				mapTypeId:options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : eval('google.maps.MapTypeId.' + options.type)
@@ -499,6 +491,12 @@
 			}
 
 			var map = new google.maps.Map(this.get(0), mapOptions);
+
+			google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
+				_this.addOverlays();
+			});
+
+
 			this.map = map;
 
 			if (options.poi === false) {
@@ -557,72 +555,6 @@
 			}
 
 			map.setCenter(centre);
-
-			if (showEarth) {
-				$.getScript(
-					'https://www.google.com/jsapi',
-					function (data, textStatus) {
-						google.load('earth', '1', { callback:function () {
-							mw.loader.using('ext.maps.gm3.earth', function () {
-								if (google.earth.isSupported()) {
-									var ge = new GoogleEarth(map);
-									var setTilt = function () {
-
-										if (ge.getInstance() !== undefined) {
-
-											var center = map.getCenter();
-											var lookAt = ge.instance_.createLookAt('');
-											var range = Math.pow(2, GoogleEarth.MAX_EARTH_ZOOM_ - map.getZoom());
-											lookAt.setRange(range);
-											lookAt.setLatitude(center.lat());
-											lookAt.setLongitude(center.lng());
-											lookAt.setHeading(0);
-											lookAt.setAltitude(0);
-
-											// Teleport to the pre-tilt view immediately.
-											ge.instance_.getOptions().setFlyToSpeed(5);
-											ge.instance_.getView().setAbstractView(lookAt);
-											lookAt.setTilt(options.tilt);
-											// Fly to the tilt at regular speed in 200ms
-											ge.instance_.getOptions().setFlyToSpeed(0.75);
-											window.setTimeout(function () {
-												ge.instance_.getView().setAbstractView(lookAt);
-											}, 200);
-											// Set the flyto speed back to default after the animation starts.
-											window.setTimeout(function () {
-												ge.instance_.getOptions().setFlyToSpeed(1);
-											}, 250);
-
-										}
-										else {
-											setTimeout(function () {
-												setTilt();
-											}, 100);
-										}
-									};
-
-									if (options.type == 'earth') {
-										map.setMapTypeId(GoogleEarth.MAP_TYPE_ID);
-										setTilt();
-									}
-									else {
-										google.maps.event.addListenerOnce(map, 'maptypeid_changed', function () {
-											setTilt();
-										});
-									}
-								}
-
-								_this.addOverlays();
-							});
-						} });
-					}
-				);
-			}
-			else {
-				google.maps.event.addListenerOnce(map, 'tilesloaded', function () {
-					_this.addOverlays();
-				});
-			}
 
 			setTimeout(
 				function() {
@@ -724,13 +656,13 @@
 					}
 					_this.reZoom();
 				}).on('focusin',function () {
-						if ($(this).val() === searchBoxValue) {
-							$(this).val('');
-						}
+					if ($(this).val() === searchBoxValue) {
+						$(this).val('');
+					}
 				}).on('focusout', function () {
-						if ($(this).val() === '') {
-							$(this).val(searchBoxValue);
-						}
+					if ($(this).val() === '') {
+						$(this).val(searchBoxValue);
+					}
 				});
 			}
 
@@ -750,7 +682,7 @@
 					this.rectangles,
 					this.imageoverlays,
 					this.map
-					]);
+				]);
 			}
 
 			if (options.wmsoverlay) {
@@ -803,6 +735,33 @@
 			if(options.enablefullscreen){
 				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl(this.map));
 			}
+		};
+
+		this.setup = function () {
+
+			var showEarth = $.inArray('earth', options.types) !== -1 || options.type == 'earth';
+
+			// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
+			if (showEarth) {
+				this.removeEarthType();
+				$.getScript(
+					'https://www.google.com/jsapi',
+					function (data, textStatus) {
+						google.load('earth', '1', { callback:function () {
+							mw.loader.using('ext.maps.gm3.earth', function () {
+								_this.initializeMap();
+								if (google.earth.isSupported()) {
+									_this.ge = new GoogleEarth(_this.map);
+								}
+							});
+						} });
+					}
+				);
+			}else{
+				this.initializeMap();
+			}
+
+
 		};
 
 		function FullscreenControl(map) {

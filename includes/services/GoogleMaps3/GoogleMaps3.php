@@ -40,7 +40,7 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.markercluster'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . 'gm3-util-library',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/gm3-util-library',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'markerclusterer.js',
@@ -49,7 +49,7 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.markerwithlabel'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) .  'gm3-util-library',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) .  '/gm3-util-library',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'markerwithlabel.js',
@@ -61,7 +61,7 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.geoxml'] = array(
 		'localBasePath' => __DIR__ . '/geoxml3',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . 'geoxml3',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/geoxml3',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'geoxml3.js',
@@ -72,7 +72,7 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.earth'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . 'gm3-util-library',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/gm3-util-library',
 		'group' => 'ext.maps',
 		'scripts' => array(
 			'googleearth-compiled.js',
