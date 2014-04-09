@@ -219,12 +219,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 		// Integer. Default tilt when using Google Maps.
 		$GLOBALS['egMapsGMaps3DefaultTilt'] = 0;
-		
-		// Google JavaScript Loader API key.
-		// Can be obtained at: https://code.google.com/apis/loader/signup.html
-		// This key is needed when using Google Earth or when using extended
-		// limits for displaying maps or geocoding calls.
-		$GLOBALS['egGoogleJsApiKey'] = '';
 
 		// Show points of interest or not.
 		$GLOBALS['egMapsShowPOI'] = true;

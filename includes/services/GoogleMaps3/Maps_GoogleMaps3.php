@@ -281,8 +281,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	public static function getApiScript( $langCode, array $urlArgs = array() ) {
-		global $egGoogleJsApiKey;
-
 		$urlArgs = array_merge(
 			array(
 				'language' => self::getMappedLanguageCode( $langCode ),
@@ -290,10 +288,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			),
 			$urlArgs
 		);
-
-		if ( $egGoogleJsApiKey !== '' ) {
-			$urlArgs['key'] = $egGoogleJsApiKey;
-		}
 
 		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
 	}
@@ -332,19 +326,4 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			array( 'ext.maps.googlemaps3' )
 		);
 	}
-
-	/**
-	 * Returns a list of all config variables that should be passed to the JS.
-	 * 
-	 * @since 1.0.1
-	 * 
-	 * @return array
-	 */
-	public final function getConfigVariables() {
-		return parent::getConfigVariables() 
-			+ array(
-				'egGoogleJsApiKey' => $GLOBALS['egGoogleJsApiKey']
-			);
-	}
-	
 }
