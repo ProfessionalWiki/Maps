@@ -366,5 +366,6 @@ $magicWords['zh-hans'] = array(
 	'geocode' => array( 0, '地理编码' ),
 	'geodistance' => array( 0, '地理距离' ),
 	'coordinates' => array( 0, '坐标' ),
+	'distance' => array( 0, '距离' ),
 	'mapsdoc' => array( 0, '地图文档' ),
 );
