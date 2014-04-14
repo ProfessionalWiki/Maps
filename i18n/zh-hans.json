@@ -30,9 +30,11 @@
     "semanticmaps-par-template": "用来对信息窗口内容进行格式编排的模板。",
     "semanticmaps-par-geocodecontrol": "显示地理编码控件。",
     "semanticmaps-par-activeicon": "当活跃页面等于查询结果时将显示选定标记而不是默认标记",
+    "semanticmaps-par-pagelabel": "当您设置为“yes”时，所有标记将拥有一个“inlineLabel”带有一个链接至包含坐标标记的页面",
     "semanticmaps-kml-text": "与每个页面相关联的文本。会被额外的查询属性（如果有的话）所覆盖。",
     "semanticmaps-kml-title": "结果的默认标题",
     "semanticmaps-kml-linkabsolute": "链接究竟应当是绝对地址还是相对地址",
     "semanticmaps-kml-pagelinktext": "用于那些指向该页面的链接的文本；其中，页面标题将取代$1",
-    "semanticmaps-shapes-improperformat": "$1 的格式不正确。请参阅文档格式"
+    "semanticmaps-shapes-improperformat": "$1 的格式不正确。请参阅文档格式",
+    "semanticmaps-shapes-missingshape": "找不到用于$1的形状。请参见文档以查看可用形状"
 }
