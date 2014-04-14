@@ -71,6 +71,7 @@
     "maps-googlemaps3-par-typestyle": "类型控制的样式。",
     "maps-googlemaps3-par-kml": "加载地图上的KML文件。",
     "maps-googlemaps3-par-gkml": "由Google运营的加载地图上的KML文件。",
+    "maps-googlemaps3-par-fusiontables": "应加载至地图的Google融合表的ID。",
     "maps-osm-par-thumbs": "显示大拇指",
     "maps-osm-par-photos": "显示图片",
     "mapeditor": "地图编辑器",
