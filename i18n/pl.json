@@ -22,6 +22,7 @@
     "maps-layer-property": "Własność",
     "maps-layer-value": "Wartość",
     "maps-layer-errors": "Błędy",
+    "maps-layerdef-invalid": "{{PLURAL:$1|Nieprawidłowa definicja|Nieprawidłowe definicje}}",
     "maps-error-invalid-layertype": "Brak warstw typu „$1”. {{PLURAL:$3|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $2",
     "maps-error-no-layertype": "Musisz określić typ warstwy. {{PLURAL:$2|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $1",
     "validation-error-invalid-layer": "Parametr $1 musi określać prawidłową warstwę.",
@@ -95,10 +96,12 @@
     "specialpages-group-maps": "Mapy",
     "mapeditor-done-button": "Gotowe",
     "mapeditor-remove-button": "Usuń",
+    "mapeditor-clear-button": "Wyczyść mapę",
     "mapeditor-form-field-title": "Tytuł",
     "mapeditor-form-field-text": "Tekst",
     "mapeditor-form-field-icon": "Ikona",
     "mapeditor-form-field-group": "Grupa",
     "mapeditor-form-field-showonhover": "Pokaż tylko po najechaniu",
+    "mapeditor-mapparam-defoption": "-Wybierz parametr-",
     "mapeditor-form-field-image": "Grafika"
 }
