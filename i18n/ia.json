@@ -20,12 +20,12 @@
 	"semanticmaps-forminput-locations": "Locos",
 	"semanticmaps-par-staticlocations": "Un lista de locos a adder al carta con le datos resultante del consulta. Como con display_points, tu pote adder un titulo, description e icone per loco usante le tilde \"~\" como separator.",
 	"semanticmaps-par-showtitle": "Monstrar un titulo in le fenestra de information de marcator o non. Disactivar isto es sovente utile si un patrono es usate pro formatar le contento del fenestra de information.",
-	"semanticmaps-par-hidenamespace": "!!FUZZY!!Monstrar o celar le titulo del spatio de nomines in le fenestra de information del marcator.",
+	"semanticmaps-par-hidenamespace": "Monstrar o celar le titulo del spatio de nomines in le fenestra de information del marcator.",
 	"semanticmaps-par-centre": "Le centro del carta. Si non specificate, le systema selige automaticamente le centro optimal pro monstrar tote le marcatores in le carta.",
 	"semanticmaps-par-template": "Un patrono a usar pro formatar le contento del fenestra de information.",
 	"semanticmaps-par-geocodecontrol": "Monstrar le controlo de geocodification.",
 	"semanticmaps-kml-text": "Le texto associate con cata pagina. Es supplantate per le additional proprietates consultate, si existe.",
 	"semanticmaps-kml-title": "Le titulo predefinite pro resultatos",
-	"semanticmaps-kml-linkabsolute": "!!FUZZY!!Debe ligamines esser absolute o non (i.e. relative)",
+	"semanticmaps-kml-linkabsolute": "Debe ligamines esser absolute o non (i.e. relative)",
 	"semanticmaps-kml-pagelinktext": "Le texto a usar pro le ligamines al pagina, in le quales $1 essera reimplaciate per le titulo de pagina"
 }

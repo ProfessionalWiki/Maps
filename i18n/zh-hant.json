@@ -33,7 +33,7 @@
 	"semanticmaps-par-geocodecontrol": "顯示地理編碼控件。",
 	"semanticmaps-kml-text": "與每個頁面相關聯的文本。會被額外的查詢屬性（如果有的話）所覆蓋。",
 	"semanticmaps-kml-title": "結果的默認標題",
-	"semanticmaps-kml-linkabsolute": "!!FUZZY!!鏈接究竟應當是絕對地址還是相對地址",
+	"semanticmaps-kml-linkabsolute": "鏈接究竟應當是絕對地址還是相對地址",
 	"semanticmaps-kml-pagelinktext": "用於那些指向該頁面的鏈接的文本；其中，頁面標題將取代$1",
 	"semanticmaps-shapes-improperformat": "$1 的格式有誤，請查看格式說明文檔",
 	"semanticmaps-shapes-missingshape": "沒有 $1 對應的形狀。請查看形狀說明文檔"

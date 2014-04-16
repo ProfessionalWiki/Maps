@@ -30,7 +30,7 @@
 	"semanticmaps-forminput-locations": "Emplacements",
 	"semanticmaps-par-staticlocations": "Une liste des endroits à ajouter à la carte avec les données demandées. Comme avec display_points, vous pouvez ajouter un titre, une description et une icône par emplacement en utilisant le tilde « ~ » comme séparateur.",
 	"semanticmaps-par-showtitle": "Afficher un titre dans la fenêtre d'informations des marqueurs ou non. La désactivation de ceci est souvent utile lorsque vous utilisez un modèle pour formater le contenu de la fenêtre d'informations.",
-	"semanticmaps-par-hidenamespace": "!!FUZZY!!Afficher ou non le titre de l’espace de noms dans la fenêtre d’information du marqueur.",
+	"semanticmaps-par-hidenamespace": "Afficher ou non le titre de l’espace de noms dans la fenêtre d’information du marqueur.",
 	"semanticmaps-par-centre": "Le centre de la carte. Lorsqu'il n'est pas fourni, la carte va choisir automatiquement le centre optimal pour afficher tous les marqueurs sur la carte.",
 	"semanticmaps-par-template": "Un modèle à utiliser pour mettre en forme le contenu de la fenêtre d'informations.",
 	"semanticmaps-par-geocodecontrol": "Afficher le contrôle de géocodage.",
@@ -38,7 +38,7 @@
 	"semanticmaps-par-pagelabel": "Quand il vaut « oui », tous les marqueurs auront un « inlineLabel » avec un lien vers la page contenant les coordonnées du marqueur",
 	"semanticmaps-kml-text": "Le texte associé avec chaque page. Remplacé par des propriétés récupérées supplémentaires s'il y en a.",
 	"semanticmaps-kml-title": "Le titre par défaut pour les résultats",
-	"semanticmaps-kml-linkabsolute": "!!FUZZY!!Si les titres doivent être absolus ou non (c.à.d. relatifs)",
+	"semanticmaps-kml-linkabsolute": "Si les titres doivent être absolus ou non (c.à.d. relatifs)",
 	"semanticmaps-kml-pagelinktext": "Le texte à utiliser pour les liens vers la page, dans lesquels $1 sera remplacé par le titre de la page",
 	"semanticmaps-shapes-improperformat": "Format de $1 incorrect, veuillez vous reporter à la documentation pour le format attendu",
 	"semanticmaps-shapes-missingshape": "Aucune forme trouvée pour $1; veuillez voir dans la documentation les formes disponibles"

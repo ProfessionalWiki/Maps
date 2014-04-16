@@ -26,6 +26,6 @@
 	"semanticmaps-par-geocodecontrol": "Zobrazit ovladač geocodingu.",
 	"semanticmaps-kml-text": "Text je přidružený ke každé stránce. Je přepsán dodatečnými dotazovanými vlastnostmi, jsou-li nějaké.",
 	"semanticmaps-kml-title": "Výchozí titulek pro výsledky",
-	"semanticmaps-kml-linkabsolute": "!!FUZZY!!Mají být odkazy absolutní či ne (tj. relativní)",
+	"semanticmaps-kml-linkabsolute": "Mají být odkazy absolutní či ne (tj. relativní)",
 	"semanticmaps-kml-pagelinktext": "Text, který bude použit pro odkazy na stránku, ve kterém bude $1 nahrazeno názvem stránky"
 }

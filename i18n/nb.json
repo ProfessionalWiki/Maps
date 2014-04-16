@@ -30,7 +30,7 @@
 	"semanticmaps-par-pagelabel": "Når satt til \"ja\", vil alle markører ha en \"inlineLabel\" med en lenke til siden som inneholder markørens koordinater",
 	"semanticmaps-kml-text": "Teksten knyttes til hver side. Overstyrt av spørringer på ekstra egenskaper, om noen.",
 	"semanticmaps-kml-title": "Standard resultatoverskrift",
-	"semanticmaps-kml-linkabsolute": "!!FUZZY!!Skal lenker være absolutte eller ikke (dvs. relative)",
+	"semanticmaps-kml-linkabsolute": "Skal lenker være absolutte eller ikke (dvs. relative)",
 	"semanticmaps-kml-pagelinktext": "Teksten som skal brukes for lenker til siden, der $1 erstattes av sidetittelen",
 	"semanticmaps-shapes-improperformat": "Ulovlig formatering av $1. Vennligst les dokumentasjonen for å korrigere",
 	"semanticmaps-shapes-missingshape": "Ingen figurer funnet for $1. Vennlig bruk tilgjengelige figurer fra dokumentasjonen"
