@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "DCLXVI"
-        ]
-    },
-    "semanticmaps-forminput-remove": "Премахване",
-    "semanticmaps-forminput-add": "Добавяне"
+	"@metadata": {
+		"authors": [
+			"DCLXVI"
+		]
+	},
+	"semanticmaps-forminput-remove": "Премахване",
+	"semanticmaps-forminput-add": "Добавяне"
 }
