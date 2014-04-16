@@ -1,11 +1,9 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "maps-abb-north": "Pohj.",
-    "maps-abb-east": "Päivl.",
-    "maps-abb-south": "Suvi",
-    "maps-abb-west": "Päivn.",
-    "maps-latitude": "Leveduz:",
-    "maps-longitude": "Piduz:"
+	"@metadata": [],
+	"maps-abb-north": "Pohj.",
+	"maps-abb-east": "Päivl.",
+	"maps-abb-south": "Suvi",
+	"maps-abb-west": "Päivn.",
+	"maps-latitude": "Leveduz:",
+	"maps-longitude": "Piduz:"
 }

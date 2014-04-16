@@ -1,9 +1,7 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "maps-abb-north": "N",
-    "maps-abb-east": "E",
-    "maps-abb-south": "S",
-    "maps-abb-west": "W"
+	"@metadata": [],
+	"maps-abb-north": "N",
+	"maps-abb-east": "E",
+	"maps-abb-south": "S",
+	"maps-abb-west": "W"
 }
