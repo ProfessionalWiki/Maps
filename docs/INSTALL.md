@@ -25,7 +25,7 @@ These are the installation and configuration instructions for the [Maps extensio
 	</tr>
 	<tr>
 		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-20-2012-10-05">Maps 2.0.x</a></th>
-		<td>Stable release</td>
+		<td>Legacy release</td>
 		<td>2012</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/2.0.x">2.0.x</a></td>
 	</tr>
