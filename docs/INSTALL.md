@@ -21,7 +21,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-30">Maps 3.0.0</a></th>
 		<td>Stable release</td>
 		<td>2014-01-18</td>
-		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.0.0">3.0.0</a></td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.0">3.0</a></td>
 	</tr>
 	<tr>
 		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-20-2012-10-05">Maps 2.0.x</a></th>
