@@ -63,6 +63,7 @@
 	"maps-abb-west": "西",
 	"maps-latitude": "纬度：",
 	"maps-longitude": "经度：",
+	"maps_geocoding_failed": "以下$2个地址无法编码：$1。",
 	"maps_map_cannot_be_displayed": "该地图无法显示。",
 	"maps_click_to_activate": "点击激活地图",
 	"maps_centred_on": "地图居中在$1，$2。",
