@@ -10,7 +10,7 @@
 			"Umherirrender"
 		]
 	},
-	"semanticmaps-desc": "Ermöglicht das Anzeigen und Bearbeiten von Daten zu Koordinaten, die mit [https://www.semantic-mediawiki.org/wiki/Semantic_Maps_(de) Semantic MediaWiki] gespeichert werden",
+	"semanticmaps-desc": "Ermöglicht die Nutzung von Koordinaten",
 	"semanticmaps-unrecognizeddistance": "Der Wert $1 ist keine gültige Distanz.",
 	"semanticmaps-kml-link": "KML-Datei ansehen",
 	"semanticmaps-kml": "Export (KML)",
