@@ -99,7 +99,7 @@
 	"mapeditor-form-field-title": "Form field name.\n{{Identical|Title}}",
 	"mapeditor-form-field-text": "Form field name.\n{{Identical|Text}}",
 	"mapeditor-form-field-link": "Form field name.\n{{Identical|Link}}",
-	"mapeditor-form-field-icon": "Form field name",
+	"mapeditor-form-field-icon": "Form field name.\n{{Identical|Icon}}",
 	"mapeditor-form-field-group": "Form field name.\n{{Identical|Group}}",
 	"mapeditor-form-field-inlinelabel": "Form field name",
 	"mapeditor-form-field-strokecolor": "Form field name",
