@@ -22,7 +22,7 @@ cd extensions
 cp -r $originalDirectory Maps
 
 cd Maps
-composer install
+composer install --prefer-source
 
 cd ../..
 
