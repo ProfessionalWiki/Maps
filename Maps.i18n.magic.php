@@ -108,6 +108,7 @@ $magicWords['eo'] = array(
 $magicWords['es'] = array(
 	'display_point' => array( 0, 'mostrar_punto' ),
 	'geocode' => array( 0, 'geocodificar' ),
+	'distance' => array( 0, 'distancia' ),
 );
 
 /** French (français) */
@@ -360,6 +361,11 @@ $magicWords['vi'] = array(
 $magicWords['zh-hans'] = array(
 	'display_map' => array( 0, '显示地图' ),
 	'display_point' => array( 0, '显示点' ),
+	'display_points' => array( 0, '显示多个点' ),
 	'display_line' => array( 0, '显示线' ),
+	'geocode' => array( 0, '地理编码' ),
+	'geodistance' => array( 0, '地理距离' ),
+	'coordinates' => array( 0, '坐标' ),
+	'distance' => array( 0, '距离' ),
 	'mapsdoc' => array( 0, '地图文档' ),
 );
