@@ -69,9 +69,14 @@
 	"mapeditor-remove-button": "移除",
 	"mapeditor-import-button2": "匯入",
 	"mapeditor-export-button": "匯出到 wiki 代碼",
+	"mapeditor-code-title": "Wiki 代碼",
+	"mapeditor-import-title": "匯入 Wiki 代碼",
+	"mapeditor-form-title": "編輯詳細資料",
 	"mapeditor-link-title-switcher-link-text": "連結",
 	"mapeditor-form-field-title": "標題",
 	"mapeditor-form-field-text": "文字",
 	"mapeditor-form-field-link": "連結",
+	"mapeditor-form-field-icon": "圖示",
+	"mapeditor-form-field-group": "群組",
 	"mapeditor-form-field-image": "圖片"
 }
