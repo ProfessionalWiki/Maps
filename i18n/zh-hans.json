@@ -73,6 +73,7 @@
 	"maps-googlemaps3-par-kml": "加载地图上的KML文件。",
 	"maps-googlemaps3-par-gkml": "由Google运营的加载地图上的KML文件。",
 	"maps-googlemaps3-par-fusiontables": "应加载至地图的Google融合表的ID。",
+	"maps-googlemaps3-par-tilt": "使用Google地图时的地图标题。",
 	"maps-googlemaps3-par-poi": "显示感兴趣的点。",
 	"maps-osm-par-thumbs": "显示大拇指",
 	"maps-osm-par-photos": "显示图片",
