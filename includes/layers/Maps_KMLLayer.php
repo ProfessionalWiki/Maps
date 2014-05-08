@@ -19,7 +19,7 @@ class MapsKMLLayer extends MapsLayer {
 	 * @since 0.7.2
 	 */
 	public static function register() {
-		MapsLayers::registerLayer( 'kml', __CLASS__, 'openlayers' );
+		MapsLayerTypes::registerLayerType( 'kml', __CLASS__, 'openlayers' );
 		return true;
 	}		
 	
@@ -30,14 +30,14 @@ class MapsKMLLayer extends MapsLayer {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterDefinitions( array $params ) {
-		$params['label'] = new Parameter( 'label' );
+	protected function getParameterDefinitions() {
+		$params = parent::getParameterDefinitions();
 		
 		$params['source'] = new Parameter( 'source' );
 		$params['source']->addCriteria( new CriterionIsImage() );
 		$params['source']->addManipulations( new MapsParamFile() );
 		
-		$params[] = new Parameter( 'maxdepth', Parameter::TYPE_INTEGER, 2 );
+		$params['maxdepth'] = new Parameter( 'maxdepth', Parameter::TYPE_INTEGER, 2 );
 		
 		return $params;
 	}
