@@ -25,6 +25,7 @@
 	"maps-layer-property": "Eigenschap",
 	"maps-layer-value": "Waarde",
 	"maps-layer-errors": "Fouten",
+	"maps-layerdef-invalid": "Ongeldige definitie{{PLURAL:$1||s}}",
 	"maps-error-invalid-layertype": "Er zijn geen lagen van het type \"$1\". Alleen {{PLURAL:$3|dit type wordt|deze typen worden}} ondersteund: $2",
 	"maps-error-no-layertype": "U moet het laagtype opgeven. Alleen {{PLURAL:$2|dit type wordt|deze typen worden}} ondersteund: $1",
 	"validation-error-invalid-layer": "Parameter $1 moet een geldige laag zijn.",
