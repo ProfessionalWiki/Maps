@@ -38,8 +38,9 @@ $GLOBALS['wgExtensionCredits']['semantic'][] = array(
 	'author' => array(
 		'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
 	),
-	'url' => 'https://github.com/JeroenDeDauw/SemanticMaps/blob/master/README.md#semantic-maps',
-	'descriptionmsg' => 'semanticmaps-desc'
+	'url' => 'https://github.com/SemanticMediaWiki/SemanticMaps/blob/master/README.md#semantic-maps',
+	'descriptionmsg' => 'semanticmaps-desc',
+	'license-name'   => 'GPL-2.0+'
 );
 
 // Include the settings file.
