@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Anakmalaysia"
+			"Anakmalaysia",
+			"Pizza1016"
 		]
 	},
 	"maps-desc": "Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi.",
@@ -35,8 +36,8 @@
 	"maps-geocode-description": "Membolehkan pembuatan geokod alamat, iaitu menukar lokasi yang boleh dibaca oleh manusia kepada peranggu koordinat. Wujudnya sokongan untuk beberapa perkhidmatan geokod yang tidak boleh disamakan dengan perkhidmatan pemetaan.",
 	"maps-geodistance-description": "Menghitung jarak geografi antara dua titik, daripada/kepada sebarang format yang disokong.",
 	"maps-mapsdoc-description": "Memaparkan jadual parameter untuk perkhidmatan pemetaan tertentu bersama nilai-nilai asali dan keterangannya.",
-	"maps-mapsdoc-par-service": "Perkhidmatan pemetaan untuk memaparkan dokumentasi parameter.",
-	"maps-mapsdoc-par-language": "Bahasa untuk memaparkan dokumentasi. Jika tiada terjemahannya, Bahasa Inggeris digunakan pula.",
+	"maps-mapsdoc-par-service": "Perkhidmatan pemetaan untuk memaparkan pendokumenan parameter.",
+	"maps-mapsdoc-par-language": "Bahasa untuk memaparkan pendokumenan. Jika tiada terjemahannya, Bahasa Inggeris digunakan pula.",
 	"maps-coordinates-par-location": "Koordinat yang ingin diformatkan.",
 	"maps-coordinates-par-format": "Format sasaran untuk koordinat.",
 	"maps-coordinates-par-directional": "Menunjukkan sama ada koordinat wajar ditunjukkan berarah atau tidak.",
