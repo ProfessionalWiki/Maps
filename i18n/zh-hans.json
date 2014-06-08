@@ -33,6 +33,7 @@
 	"validation-error-invalid-layers": "参数“$1”必须是一个或多个有效图层。",
 	"maps-layer-of-type": "图层类型“$1”",
 	"maps-layer-of-type-and-name": "类型“$1”的图层“$2”",
+	"maps-coordinates-par-location": "您希望格式化的坐标。",
 	"maps-finddestination-par-location": "初始位置。",
 	"maps-finddestination-par-bearing": "最初的影响。",
 	"maps-finddestination-par-distance": "旅行的距离。",
