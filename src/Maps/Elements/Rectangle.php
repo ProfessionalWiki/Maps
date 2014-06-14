@@ -92,7 +92,6 @@ class Rectangle extends \MapsBaseFillableElement {
 	 * @return array
 	 */
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
-
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 		$array = array(
 			'ne' => array(
