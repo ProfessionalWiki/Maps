@@ -21,7 +21,7 @@ use ValueParsers\StringValueParser;
 class LocationParser extends StringValueParser {
 
 	// TODO
-	protected $supportGeocoding = true;
+	private $supportGeocoding = true;
 
 	/**
 	 * @see StringValueParser::stringParse
@@ -65,7 +65,7 @@ class LocationParser extends StringValueParser {
 		return $location;
 	}
 
-	protected function setTitleOrLink( Location $location, $titleOrLink ) {
+	private function setTitleOrLink( Location $location, $titleOrLink ) {
 		if ( $this->isLink( $titleOrLink ) ) {
 			$this->setLink( $location, $titleOrLink );
 		}
@@ -74,16 +74,16 @@ class LocationParser extends StringValueParser {
 		}
 	}
 
-	protected function isLink( $value ) {
+	private function isLink( $value ) {
 		return strpos( $value , 'link:' ) === 0;
 	}
 
-	protected function setLink( Location $location, $link ) {
+	private function setLink( Location $location, $link ) {
 		$link = substr( $link, 5 );
 		$location->setLink( $this->getExpandedLink( $link ) );
 	}
 
-	protected function getExpandedLink( $link ) {
+	private function getExpandedLink( $link ) {
 		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
 			return $link;
 		}
@@ -98,14 +98,12 @@ class LocationParser extends StringValueParser {
 	}
 
 	/**
-	 * @since 3.0
-	 *
 	 * @param string $location
 	 *
 	 * @return LatLongValue
 	 * @throws ParseException
 	 */
-	protected function stringToLatLongValue( $location ) {
+	private function stringToLatLongValue( $location ) {
 		if ( $this->supportGeocoding && Geocoders::canGeocode() ) {
 			$location = Geocoders::attemptToGeocode( $location );
 

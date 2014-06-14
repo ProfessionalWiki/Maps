@@ -24,6 +24,7 @@ class WmsOverlayParser extends StringValueParser {
 	 * @param string $value
 	 *
 	 * @return WmsOverlay
+	 * @throws ParseException
 	 */
 	protected function stringParse( $value ) {
 		$separator = " ";

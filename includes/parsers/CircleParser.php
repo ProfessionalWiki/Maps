@@ -17,10 +17,10 @@ use ValueParsers\StringValueParser;
  */
 class CircleParser extends StringValueParser {
 
-	protected $supportGeocoding = true;
+	private $supportGeocoding = true;
 
 	// TODO: use options
-	protected $metaDataSeparator = '~';
+	private $metaDataSeparator = '~';
 
 	/**
 	 * @see StringValueParser::stringParse
@@ -68,7 +68,7 @@ class CircleParser extends StringValueParser {
 		return $circle;
 	}
 
-	protected function stringToLatLongValue( $location ) {
+	private function stringToLatLongValue( $location ) {
 		if ( $this->supportGeocoding && Geocoders::canGeocode() ) {
 			$location = Geocoders::attemptToGeocode( $location );
 
