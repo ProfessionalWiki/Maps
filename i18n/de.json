@@ -10,7 +10,7 @@
 			"The Evil IP address"
 		]
 	},
-	"maps-desc": "Ermöglicht die Einbindung dynamischer Karten in Wikiseiten, die Georeferenzierung von Adressen und andere geographische Operationen.",
+	"maps-desc": "Ermöglicht das Einbinden dynamischer Karten, die Georeferenzierung von Adressen und andere geographische Operationen",
 	"right-geocode": "Georeferenzieren",
 	"maps_map": "Karte",
 	"maps-tracking-category": "Seiten mit einer von der Maps-Erweiterung gerenderten Karte",

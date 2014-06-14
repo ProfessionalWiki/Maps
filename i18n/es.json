@@ -35,6 +35,7 @@
 	"maps-layer-errors": "Errores",
 	"maps-layerdef-invalid": "{{PLURAL:$1|Definición no válida|Definiciones no válidas}}",
 	"maps-layerdef-invalid-fatal": "Definición no válida fatal",
+	"maps-layerdef-wrong-namespace": "Las definiciones de capas solo son válidas en el espacio de nombres «$1».",
 	"maps-layerpage-usage": "Páginas con mapas que usan la capa «$1»",
 	"maps-layerpage-nousage": "No hay páginas que usen esta capa en este momento.",
 	"maps-error-invalid-layertype": "No hay capas de tipo \"$1\". Sólo  {{PLURAL:$3|este tipo es compatible|estos tipos son compatibles}} :$2",
