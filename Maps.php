@@ -219,4 +219,8 @@ call_user_func( function() {
 	$wgParamDefinitions['wmsoverlay'] = array(
 		'string-parser' => 'Maps\WmsOverlayParser',
 	);
+
+	$wgParamDefinitions['mapsimageoverlay'] = array(
+		'string-parser' => 'Maps\ImageOverlayParser',
+	);
 } );

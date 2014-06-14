@@ -184,12 +184,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		);
 
 		$params['imageoverlays'] = array(
-			'type' => 'integer',
+			'type' => 'mapsimageoverlay',
 			'default' => array(),
-			'message' => 'maps-googlemaps3-par-imageoverlays',
-			'islist' => true,
 			'delimiter' => ';',
-			// new MapsParamImageOverlay('~') FIXME
+			'islist' => true,
+			'message' => 'maps-googlemaps3-par-imageoverlays',
 		);
 
 		$params['kml'] = array(

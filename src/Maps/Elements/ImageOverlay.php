@@ -16,11 +16,9 @@ use InvalidArgumentException;
 class ImageOverlay extends Rectangle {
 
 	/**
-	 * @since 3.0
-	 *
 	 * @var string
 	 */
-	protected $image;
+	private $imageUrl;
 
 	/**
 	 * Constructor.
@@ -39,7 +37,7 @@ class ImageOverlay extends Rectangle {
 		}
 
 		parent::__construct( $boundsNorthEast, $boundsSouthWest );
-		$this->image = $image;
+		$this->imageUrl = $image;
 	}
 
 	/**
@@ -48,7 +46,23 @@ class ImageOverlay extends Rectangle {
 	 * @return string
 	 */
 	public function getImage() {
-		return $this->image;
+		return $this->imageUrl;
+	}
+
+	/**
+	 * @since 3.0
+	 *
+	 * @param string $defText
+	 * @param string $defTitle
+	 *
+	 * @return array
+	 */
+	public function getJSONObject( $defText = '' , $defTitle = '' ) {
+		$data = parent::getJSONObject( $defText , $defTitle );
+
+		$data['image'] = $this->imageUrl;
+
+		return $data;
 	}
 
 }
