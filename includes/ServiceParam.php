@@ -2,10 +2,11 @@
 
 namespace Maps;
 
-use IParam;
 use MapsMappingServices;
+use ParamProcessor\Definition\StringParam;
+use ParamProcessor\IParam;
 use ParamProcessor\IParamDefinition;
-use ParamProcessor\StringParam;
+use ParamProcessor\ParamDefinition;
 
 /**
  * Parameter definition for mapping service parameters.
@@ -62,7 +63,7 @@ class ServiceParam extends StringParam {
 		// Add the service specific service parameters.
 		$serviceObject->addParameterInfo( $definitions );
 
-		$definitions = \ParamDefinition::getCleanDefinitions( $definitions );
+		$definitions = ParamDefinition::getCleanDefinitions( $definitions );
 
 		return $value;
 	}
