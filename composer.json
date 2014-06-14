@@ -36,8 +36,10 @@
 		"files" : [
 			"Maps.php"
 		],
+		"psr-4": {
+			"Maps\\": "src/Maps/"
+		},
 		"classmap": [
-			"src/",
 			"includes/",
 			"Maps.hooks.php",
 			"tests/phpunit/elements/",
