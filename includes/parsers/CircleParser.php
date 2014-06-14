@@ -57,6 +57,14 @@ class CircleParser extends StringValueParser {
 			$circle->setStrokeWeight( array_shift( $metaData ) );
 		}
 
+		if ( $metaData !== array() ) {
+			$circle->setFillColor( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== array() ) {
+			$circle->setFillOpacity( array_shift( $metaData ) );
+		}
+
 		return $circle;
 	}
 

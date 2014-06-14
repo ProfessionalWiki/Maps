@@ -5,6 +5,7 @@ These are the release notes for the [Maps extension](../README.md).
 * Re added Google Earth support
 * Removed support for the deprecated Google JavaScript API
 * Updated the translations to use the new MediaWiki JSON format
+* Re added support for fill color and fill opacity parameters for circles
 
 ## Maps 3.0.1
 
