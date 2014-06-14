@@ -1,5 +1,7 @@
 <?php
 
+use ParamProcessor\Processor;
+
 /**
  * Class for describing map layers.
  *
@@ -147,6 +149,7 @@ abstract class MapsLayer {
 	 * Convenience function to find out whether the layer is supporting a certain mapping service.
 	 *
 	 * @since 3.0
+	 * @param string $service
 	 *
 	 * @return boolean
 	 */
@@ -166,7 +169,7 @@ abstract class MapsLayer {
 		}
 		$this->hasValidated = true;
 		
-		$validator = new Validator();
+		$validator = Processor::newDefault();
 		
 		$validator->setParameters( $this->properties, $this->getParameterDefinitions() );
 		$validator->validateParameters();
