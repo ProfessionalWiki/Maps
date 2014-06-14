@@ -12,16 +12,16 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.0.x</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.1.x</a></th>
 		<td>Development version</td>
 		<td>Future</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-30">Maps 3.0.0</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-301">Maps 3.0.1</a></th>
 		<td>Stable release</td>
-		<td>2014-01-18</td>
-		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.0">3.0</a></td>
+		<td>2014-03-27</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.0.1">3.0.1</a></td>
 	</tr>
 	<tr>
 		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-20-2012-10-05">Maps 2.0.x</a></th>
@@ -48,11 +48,18 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Validator</th>
 	</tr>
 	<tr>
+		<th>Maps 3.1.x</th>
+		<td>5.3.2 - 5.6.x</td>
+		<td>1.18 - 1.23</td>
+		<td>Required</td>
+		<td>2.x (handled by Composer)</td>
+	</tr>
+	<tr>
 		<th>Maps 3.0.x</th>
 		<td>5.3.2 - 5.6.x</td>
 		<td>1.18 - 1.23</td>
 		<td>Required</td>
-		<td>1.0.x (handled by Composer)</td>
+		<td>1.x (handled by Composer)</td>
 	</tr>
 	<tr>
 		<th>Maps 2.0.x</th>
