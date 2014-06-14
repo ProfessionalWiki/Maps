@@ -1,5 +1,10 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.1 (dev)
+
+* Re added Google Earth support
+* Removed support for the deprecated Google JavaScript API
+
 ## Maps 3.0.1
 
 Released on March 27th, 2014.
