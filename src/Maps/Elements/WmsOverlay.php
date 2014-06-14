@@ -13,28 +13,26 @@ namespace Maps\Elements;
 class WmsOverlay extends BaseElement {
 
 	/**
-	 * @since 3.0
 	 * @var String Base url to WMS server
 	 */
-	protected $wmsServerUrl;
+	private $wmsServerUrl;
 
 	/**
-	 * @since 3.0
 	 * @var String WMS Layer name
 	 */
-	protected $wmsLayerName;
+	private $wmsLayerName;
 
 	/**
-	 * @since 3.0
 	 * @var String WMS Stype name (default value: 'default')
 	 */
-	protected $wmsStyleName;
+	private $wmsStyleName;
 
 	/**
 	 * @since 3.0
 	 *
 	 * @param string $wmsServerUrl
 	 * @param string $wmsLayerName
+	 * @param string $wmsStyleName
 	 */
 	public function __construct( $wmsServerUrl, $wmsLayerName, $wmsStyleName="default" ) {
 		parent::__construct();
@@ -94,11 +92,7 @@ class WmsOverlay extends BaseElement {
 	public function getWmsStyleName() {
 		return $this->wmsStyleName;
 	}
-	/**
-	 * @since 3.0
-	 *
-	 * @return array
-	 */
+
 	public function getJSONObject ( $defText = "", $defTitle = "" ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 
