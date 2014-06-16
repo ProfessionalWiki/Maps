@@ -15,7 +15,8 @@
 			"Sanbec",
 			"Sethladan",
 			"Translationista",
-			"Vivaelcelta"
+			"Vivaelcelta",
+			"Macofe"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas.",
@@ -85,7 +86,7 @@
 	"maps-geodistance-par-geoservice": "El servicio de cartografía a usar conjuntamente.\nEsto puede afectar al valor predeterminado del servicio de geocodificación.",
 	"maps-displaymap-par-mappingservice": "Permite configurar el servicio de cartografía que se utilizará para generar el mapa.",
 	"maps-displaymap-par-coordinates": "La localización respecto de la cual el mapa aparecerá inicialmente centrado.",
-	"maps-displaymap-par-visitedicon": "El nombre de una imagen que será usada como iconos de marca al de hacer clic en ellos",
+	"maps-displaymap-par-visitedicon": "El nombre de archivo de una imagen que será usada como iconos de marca luego de hacer clic en los marcadores originales",
 	"maps-displaymap-par-zoom": "Permite configurar el nivel de zoom del mapa.\nCuando no se proporciona y varios marcadores están presentes en el mapa, se tomará el mejor ajuste de zoom, y no el valor configurado por defecto.",
 	"maps-displaymap-par-centre": "Permite establecer las coordenadas del centro del mapa mediante display_point(s).\nAcepta tanto direcciones como coordenadas.\nCuando esta propiedad no se indica, el mapa se centrará en torno al marcador proporcionado, o entre los marcadores proporcionados.",
 	"maps-displaymap-par-title": "Permite configurar el texto que se mostrará en las ventanas emergentes de todos los marcadores que no tienen un título específico.\nCuando se utiliza junto con la etiqueta, el título aparecerá en negrita y subrayado.",
