@@ -16,7 +16,8 @@
 			"Sethladan",
 			"Translationista",
 			"Vivaelcelta",
-			"Macofe"
+			"Macofe",
+			"Themasterriot"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas.",
@@ -83,7 +84,7 @@
 	"maps-geodistance-par-unit": "La unidad en la que mostrar la distancia.",
 	"maps-geodistance-par-decimals": "El número máximo de dígitos fraccionarios a usar en el valor resultante.",
 	"maps-geodistance-par-mappingservice": "El servicio de geocodificación a utilizar para geocodificar todas las direcciones.",
-	"maps-geodistance-par-geoservice": "El servicio de cartografía a usar conjuntamente.\nEsto puede afectar al valor predeterminado del servicio de geocodificación.",
+	"maps-geodistance-par-geoservice": "El servicio de cartografía que usa conjuntamente este analizador.\nEsto puede afectar al valor predeterminado del servicio de geocodificación.",
 	"maps-displaymap-par-mappingservice": "Permite configurar el servicio de cartografía que se utilizará para generar el mapa.",
 	"maps-displaymap-par-coordinates": "La localización respecto de la cual el mapa aparecerá inicialmente centrado.",
 	"maps-displaymap-par-visitedicon": "El nombre de archivo de una imagen que será usada como iconos de marca luego de hacer clic en los marcadores originales",
