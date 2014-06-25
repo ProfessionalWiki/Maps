@@ -98,22 +98,20 @@ final class MapsHooks {
 	 *
 	 * @since 3.0
 	 *
-	 * @global type $wgDBtype
 	 * @param DatabaseUpdater $updater
 	 *
 	 * @return true 
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
-		global $wgDBtype;
-
-		switch( $wgDBtype ) {
+		switch( $GLOBALS['wgDBtype'] ) {
 			case 'mysql':
 			case 'sqlite':
-				$sqlPath = dirname( __FILE__ ) . '/schema/MapsLayers.sql';
-			break;
-			/** @ToDo: Support for Postgree SQL and others **/
+				$updater->addExtensionTable( 'maps_layers', __DIR__ . '/schema/MapsLayers.sql' );
+				break;
+			case 'postgres':
+				$updater->addExtensionTable( 'maps_layers', __DIR__ . '/schema/MapsLayers-postgres.sql' );
+				break;
 		}
-		$updater->addExtensionTable( 'maps_layers', $sqlPath );
 
 		return true;
 	}
