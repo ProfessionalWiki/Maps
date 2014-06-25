@@ -14,8 +14,14 @@ cd phase3
 
 git checkout $MW
 
-mysql -e 'create database its_a_mw;'
-php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
+if [ "$DB" == "postgres" ]
+then
+	psql -c 'create database its_a_mw;' -U postgres
+	php maintenance/install.php --dbtype $DBTYPE --dbuser postgres --dbname its_a_mw --pass nyan TravisWiki admin --scriptpath /TravisWiki
+else
+	mysql -e 'create database its_a_mw;'
+	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin --scriptpath /TravisWiki
+fi
 
 cd extensions
 
