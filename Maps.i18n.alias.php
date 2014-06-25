@@ -53,6 +53,11 @@ $specialPageAliases['gl'] = array(
 	'MapEditor' => array( 'Editor_do_mapa' ),
 );
 
+/** Upper Sorbian (hornjoserbsce) */
+$specialPageAliases['hsb'] = array(
+	'MapEditor' => array( 'Kartowy_editor' ),
+);
+
 /** Italian (italiano) */
 $specialPageAliases['it'] = array(
 	'MapEditor' => array( 'EditorMappa' ),
