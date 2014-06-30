@@ -1,5 +1,6 @@
 <?php
 
+use ParamProcessor\ParamDefinition;
 use SMW\FileExportPrinter;
 
 /**
@@ -51,9 +52,9 @@ class SMKMLPrinter extends FileExportPrinter {
 	 *
 	 * @since 3.0
 	 *
-	 * @param IParamDefinition[] $definitions
+	 * @param ParamDefinition[] $definitions
 	 *
-	 * @return array of IParamDefinition|array
+	 * @return array of ParamDefinition|array
 	 */
 	public function getParamDefinitions( array $definitions ) {
 		global $egMapsDefaultLabel, $egMapsDefaultTitle;

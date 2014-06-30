@@ -3,6 +3,7 @@
 use Maps\Elements\Location;
 use Maps\Element;
 use Maps\Elements\BaseElement;
+use ParamProcessor\ParamDefinition;
 
 /**
  * Query printer for maps. Is invoked via SMMapper.

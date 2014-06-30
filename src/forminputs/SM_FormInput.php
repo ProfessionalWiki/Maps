@@ -1,6 +1,7 @@
 <?php
 
 use Maps\Elements\Location;
+use ParamProcessor\ParamDefinition;
 
 /**
  * Base form input class.
