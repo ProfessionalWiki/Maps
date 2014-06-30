@@ -32,3 +32,8 @@ the same way as that of the Maps extension.
 * [Submit a pull request](https://github.com/SemanticMediaWiki/SemanticMaps/pulls)
 * Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
 * Ask a question on the #semantic-mediawiki IRC channel on Freenode.
+
+You can run the PHPUnit tests by changing into the `tests/phpunit` directory of your MediaWiki
+install and running
+
+    php phpunit.php -c ../../extensions/SemanticMaps/
