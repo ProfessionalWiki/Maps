@@ -44,6 +44,11 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 Feel free to fork the [code on GitHub](https://github.com/JeroenDeDauw/Maps) and to submit pull
 requests.
 
+You can run the PHPUnit tests by changing into the `tests/phpunit` directory of your MediaWiki
+install and running
+
+    php phpunit.php -c ../../extensions/Maps/
+
 ## Credits to other projects
 
 ### jQuery
