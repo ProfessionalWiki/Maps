@@ -34,7 +34,7 @@
 		"composer/installers": "1.*,>=1.0.1",
 		"mediawiki/maps": "~3.0",
 		"mediawiki/semantic-media-wiki": "1.9.*",
-		"mediawiki/validator": "2.*|1.*"
+		"mediawiki/validator": ">=1.0,<3.0"
 	},
 	"suggest": {
 		"mediawiki/semantic-forms": "Allows entering coordinates via a form map input"
