@@ -26,7 +26,7 @@
 	"maps-layerdef-invalid": "유효하지 않은 정의{{PLURAL:$1|}}",
 	"maps-layerdef-invalid-fatal": "치명적으로 잘못된 정의",
 	"maps-layerdef-wrong-namespace": "레이어 정의가 \"$1\" 이름공간의 문서에만 유효하지 않습니다",
-	"maps-layerdef-equal-layer-name": "같은 레이어 페이지 내에서 레이어 이름은 고유해야 합니다. \"$1\"은 이미 다른 레이어의 이름으로 사용되고 있습니다.",
+	"maps-layerdef-equal-layer-name": "같은 레이어 문서 안에서 레이어 이름은 고유해야 합니다. \"$1\"은 이미 다른 레이어의 이름으로 사용되고 있습니다.",
 	"maps-layerpage-usage": "\"$1\" 레이어를 사용하는 지도와 문서",
 	"maps-layerpage-nousage": "현재 이 레이어를 사용하는 문서가 없습니다.",
 	"maps-error-invalid-layertype": "\"$1\" 레이어 종류가 없습니다. {{PLURAL:$3|다음 종류}}만 지원합니다: $2",
