@@ -31,7 +31,7 @@ final class SMQueryPrinters {
 		self::initFormat( 'kml', 'SMKMLPrinter' );
 		
 		foreach ( MapsMappingServices::getServiceIdentifiers() as $serviceIdentifier ) {
-			$service = MapsMappingServices::getServiceInstance( $serviceIdentifier );	
+			$service = MapsMappingServices::getServiceInstance( $serviceIdentifier );
 				
 			// Check if the service has a query printer.
 			$QPClass = $service->getFeature( 'qp' );

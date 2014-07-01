@@ -2,6 +2,8 @@
 
 use Maps\Elements\Location;
 use ParamProcessor\ParamDefinition;
+use ParamProcessor\ProcessingError;
+use ParamProcessor\Processor;
 
 /**
  * Base form input class.
@@ -118,17 +120,15 @@ class SMFormInput {
 			$parameters['locations'] = $coordinates;
 		}
 
-		$validator = new Validator( wfMessage( 'maps_' . $this->service->getName() )->text(), false );
+		$validator = Processor::newDefault();
 		$validator->setParameters( $parameters, $this->getParameterInfo() );
-		$validator->validateParameters();
+		$processingResult = $validator->processParameters();
 
-		$fatalError  = $validator->hasFatalError();
-		
-		if ( $fatalError === false ) {
-			return $this->getMapOutput( $validator->getParameterValues(), $inputName );
+		if ( $processingResult->hasFatal() ) {
+			return $this->getFatalOutput( $validator->getErrors() );
 		}
 		else {
-			return $this->getFatalOutput( $fatalError );
+			return $this->getMapOutput( $validator->getParameterValues(), $inputName );
 		}			
 	}
 
@@ -169,10 +169,27 @@ class SMFormInput {
 		return $output;
 	}
 
-	private function getFatalOutput( \ParamProcessor\ProcessingError $fatalError ) {
+	/**
+	 * @param ProcessingError[] $errors
+	 *
+	 * @return string
+	 */
+	private function getFatalOutput( array $errors ) {
+		$html = '';
+
+		foreach ( $errors as $error ) {
+			if ( $error->isFatal() ) {
+				$html .= $this->errorToHtml( $error );
+			}
+		}
+
+		return $html;
+	}
+
+	private function errorToHtml( ProcessingError $error ) {
 		return
 			'<span class="errorbox">' .
-			htmlspecialchars( wfMessage( 'validator-fatal-error', $fatalError->getMessage() )->text() ) .
+			htmlspecialchars( wfMessage( 'validator-fatal-error', $error->getMessage() )->text() ) .
 			'</span>';
 	}
 
