@@ -83,7 +83,7 @@
 	"maps-displaymap-par-minzoom": "Het minimale zoomniveau",
 	"maps-displaymap-par-polygons": "Weer te geven polygonen",
 	"maps-displaymap-par-rectangles": "Weer te geven rechthoeken",
-	"maps-displaymap-par-static": "Of de kaart statisch moet zijn",
+	"maps-displaymap-par-static": "Maak de kaart statisch",
 	"maps-displaymap-par-wmsoverlay": "WMS-overlay gebruiken",
 	"maps-fullscreen-button": "Volledig scherm in- of uitschakelen",
 	"maps-fullscreen-button-tooltip": "De kaart als volledig scherm of ingesloten bekijken.",
