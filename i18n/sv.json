@@ -30,8 +30,12 @@
 	"semanticmaps-par-centre": "Kartans mitt. Om inte angiven så kommer kartan automatiskt att hitta markörernas mittpunkt.",
 	"semanticmaps-par-template": "En mall som ska användas för informationsrutorna.",
 	"semanticmaps-par-geocodecontrol": "Visa formulär för geokodning.",
+	"semanticmaps-par-activeicon": "Ikon som bör visas istället för standardmarkören när den aktiva sidan är samma som resultatet från förfrågan",
+	"semanticmaps-par-pagelabel": "När satt till \"yes\" (ja), kommer alla markörer att ha en \"inlineLabel\" med en länk till sidan som innehåller koordinaterna för den markören",
 	"semanticmaps-kml-text": "Texten som hör ihop med varje sida. Om det finns efterfrågade egenskaper så tar de överhand.",
 	"semanticmaps-kml-title": "Förvald titel för resultaten",
 	"semanticmaps-kml-linkabsolute": "Ska länkar vara absoluta (i motsats till relativa)",
-	"semanticmaps-kml-pagelinktext": "Texten som ska användas för länkar till sidan, där $1 kommer att bytas ut med sidtiteln"
+	"semanticmaps-kml-pagelinktext": "Texten som ska användas för länkar till sidan, där $1 kommer att bytas ut med sidtiteln",
+	"semanticmaps-shapes-improperformat": "Felaktig formatering av $1. Se dokumentationen för formatering",
+	"semanticmaps-shapes-missingshape": "Inga former hittade för $1. Se dokumentationen för tillgängliga former"
 }
