@@ -222,6 +222,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 		// Show points of interest or not.
 		$GLOBALS['egMapsShowPOI'] = true;
+		
+		// Integer. Default Marker Cluster max zoom when using Google Maps.
+		$GLOBALS['egMapsGMaps3DefMarkerClusterMaxZoom'] = 12;
 
 
 

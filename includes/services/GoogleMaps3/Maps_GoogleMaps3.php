@@ -81,7 +81,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public function addParameterInfo( array &$params ) {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
-		global $egMapsResizableByDefault, $egMapsGMaps3DefaultTilt;
+		global $egMapsResizableByDefault, $egMapsGMaps3DefaultTilt, $egMapsGMaps3DefMarkerClusterMaxZoom;
 
 		$params['zoom'] = array(
 			'type' => 'integer',
@@ -175,6 +175,12 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-googlemaps3-par-markercluster',
+		);
+
+		$params['markerclustermaxzoom'] = array(
+			'type' => 'integer',
+			'default' => $egMapsGMaps3DefMarkerClusterMaxZoom,
+			'message' => 'maps-googlemaps3-par-markerclustermaxzoom',
 		);
 
 		$params['tilt'] = array(
