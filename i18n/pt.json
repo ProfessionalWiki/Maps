@@ -7,7 +7,8 @@
 			"Hamilton Abreu",
 			"Lijealso",
 			"Luckas",
-			"Waldir"
+			"Waldir",
+			"Vitorvicentevalente"
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas ([http://mapping.referata.com/wiki/Examples demonstração])",
@@ -21,6 +22,7 @@
 	"maps-layer-property": "Propriedade",
 	"maps-layer-value": "Valor",
 	"maps-layer-errors": "Erros",
+	"maps-layerdef-invalid": "{{PLURAL:$1|definição inválida|definições inválidas}}",
 	"maps-error-invalid-layertype": "Não existem camadas do tipo \"$1\". Só {{PLURAL:$3|é suportado o tipo|são suportados os tipos}}: $2",
 	"maps-error-no-layertype": "Tem de especificar o tipo da camada. Só {{PLURAL:$2|é suportado o tipo|são suportados os tipos}}: $1",
 	"validation-error-invalid-layer": "O parâmetro $1 tem de ser uma camada válida.",
@@ -70,6 +72,8 @@
 	"maps-displaymap-par-title": "Permite a configuração do texto que será apresentado nos pop-ups de todos os marcadores que não têm um título específico.\nQuando usado em conjunto com um rótulo, o título aparecerá a negrito e sublinhado.",
 	"maps-displaymap-par-label": "Permite a configuração do texto que será apresentado nos pop-ups de todos os marcadores que não têm um rótulo específico.",
 	"maps-displaymap-par-icon": "Permite configurar o ícone usado para todos os marcadores.",
+	"maps-displaymap-par-copycoords": "Mostra uma caixa de diálogo com as coordenadas de uma localização quando clica em algo",
+	"maps-displaymap-par-static": "Tornar o mapa estático",
 	"validation-error-invalid-location": "O parâmetro $1 tem de ser uma localização válida.",
 	"validation-error-invalid-locations": "O parâmetro $1 tem de ser uma ou mais localizações válidas.",
 	"validation-error-invalid-width": "O parâmetro $1 tem de ser uma largura válida.",
