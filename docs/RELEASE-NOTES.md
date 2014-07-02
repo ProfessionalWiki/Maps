@@ -1,5 +1,9 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.2 (dev)
+
+* 
+
 ## Maps 3.1
 
 Released on June 30th, 2014.
