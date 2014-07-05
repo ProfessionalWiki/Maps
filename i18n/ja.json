@@ -18,7 +18,7 @@
 	"maps-copycoords-prompt": "Ctrl+C、Enter",
 	"maps-searchmarkers-text": "マーカーを絞り込む",
 	"maps-others": "その他",
-	"maps-kml-parsing-failed": "1 件以上の kml ファイルを構文解析できませんでした。これは通常、取得失敗または XML の破損で発生します。",
+	"maps-kml-parsing-failed": "1 件以上の KML ファイルを構文解析できませんでした。これは通常、取得失敗または XML の破損で発生します。",
 	"maps-ns-layer": "レイヤー",
 	"maps-ns-layer-talk": "レイヤー・トーク",
 	"maps-layer-property": "プロパティ",
