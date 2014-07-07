@@ -16,10 +16,17 @@
 	"maps-abb-east": "Цу",
 	"maps-latitude": "Шоралла:",
 	"maps-longitude": "Дохалла:",
+	"mapeditor": "Картанаш тадерг",
 	"mapeditor-done-button": "Кийчча ю",
+	"mapeditor-export-button": "Экспорт ян викийоза сана",
+	"mapeditor-import-button": "Импорт ян викийозанах",
+	"mapeditor-mapparam-button": "Картан параметраш нисъе",
+	"mapeditor-clear-button": "ЦӀанде карта",
 	"mapeditor-link-title-switcher-link-text": "Хьажораг",
 	"mapeditor-form-field-title": "ЦӀе",
 	"mapeditor-form-field-link": "Хьажораг",
+	"mapeditor-mapparam-title": "Картан параметраш нисъе",
+	"mapeditor-imageoverlay-button": "ТӀетоха сурт тӀе диллар",
 	"mapeditor-form-field-image": "Сурт",
 	"mapeditor-imageoverlay-title": "Сурт"
 }

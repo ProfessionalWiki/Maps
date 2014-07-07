@@ -17,6 +17,7 @@
 	"maps-layer-property": "Eegeschaft",
 	"maps-layer-value": "Wäert",
 	"maps-layer-errors": "Feeler",
+	"maps-layerdef-invalid": "Net valabel {{PLURAL:$1|Definitioun|Definitiounen}}",
 	"maps-layerdef-invalid-fatal": "Fatal net valabel Definitioun",
 	"maps-layer-of-type": "Layer vum Typ \"$1\"",
 	"maps-geodistance-description": "Déi geographesch Distanz tëscht zwéi Punkte berechnen, vun an an iergendeent vun den ënnerstëtzte Formater.",
