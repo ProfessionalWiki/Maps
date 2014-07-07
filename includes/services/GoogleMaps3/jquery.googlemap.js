@@ -53,7 +53,7 @@
 		/**
 		/* this is used to change the color of spiderable markers
 		*/
-		this.spiderfyMarkers = [];
+		this.spiderMarkers = [];
 
 		/**
 		/* this global tracks the last infowindow opened so we can close it to spiderfy overlapping markers
@@ -64,6 +64,7 @@
 		/* icon for spiderable markers
 		*/
 		_this.spiderMarkerIcon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/GoogleMaps3/img/yellow-dot.png';
+		_this.spiderNumberedIcon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/GoogleMaps3/img/num-markers/';
 
 
 
@@ -658,46 +659,44 @@
 							_this.oms.addMarker(_this.markers[i]);
 						}
 
-						//Add oms spiderfy listener to close the last infowindow when we spiderfy
+						//Add oms spiderfy listener to close the last infowindow when we spiderfy, and to show the count of spiderfied markers
 						_this.oms.addListener('spiderfy', function (markers) {
 							lastInfoWindow.close();
+							var i;
+							for	(i = 0; i < markers.length - 1; i++) {
+						    	markers[i].setIcon(_this.spiderNumberedIcon + 'yellow/marker' + ( i<98 ? (i+1) : '99plus') + '.png');
+							}
+							// make the marker holding the count of spiderfied markers green
+							markers[i].setIcon(_this.spiderNumberedIcon + 'green/marker' + ( i<98 ? (i+1) : '99plus') + '.png');
 						});
 
 						google.maps.event.addListener(_this.map, 'zoom_changed', function() {
-
 							// check if we're at the right zoom level where spidermarkers are visible
 							if (_this.map.getZoom()+1 < options.markerclustermaxzoom && _this.clusterOn) return;
-
 							setTimeout(function() {
-
-							    this.spiderfyMarkers = _this.oms.markersNearAnyOtherMarker();
-
-								for	(var i = 0; i < this.spiderfyMarkers.length; i++) {
-								    this.spiderfyMarkers[i].setIcon(_this.spiderMarkerIcon);
-								    //this.spiderfyMarkers[i].setAnimation(google.maps.Animation.DROP);
+							    this.spiderMarkers = _this.oms.markersNearAnyOtherMarker();
+								for	(var i = 0; i < this.spiderMarkers.length; i++) {
+									var currIcon = this.spiderMarkers[i].getIcon();
+									if (typeof currIcon === 'string' && currIcon.indexOf(_this.spiderNumberedIcon) == 0) continue;
+								    this.spiderMarkers[i].setIcon(_this.spiderMarkerIcon);
 								}
 							}, 500);
 						});
 
 						google.maps.event.addListener(_this.map, 'dragend', function() {
-
 							// check if we're at the right zoom level where spidermarkers are visible
-							if (_this.map.getZoom()+1 < options.markerclustermaxzoom && _this.clusterOn ) return;
-
+							if (_this.map.getZoom()+1 < options.markerclustermaxzoom && _this.clusterOn) return;
 							setTimeout(function() {
-
-							    this.spiderfyMarkers = _this.oms.markersNearAnyOtherMarker();
-
-								for	(var i = 0; i < this.spiderfyMarkers.length; i++) {
-								    this.spiderfyMarkers[i].setIcon(_this.spiderMarkerIcon);
-								    //this.spiderfyMarkers[i].setAnimation(google.maps.Animation.DROP);
-								}
+							    this.spiderMarkers = _this.oms.markersNearAnyOtherMarker();
+								for	(var i = 0; i < this.spiderMarkers.length; i++) {
+									var currIcon = this.spiderMarkers[i].getIcon();
+									if (typeof currIcon === 'string' && currIcon.indexOf(_this.spiderNumberedIcon) == 0) continue;
+								    this.spiderMarkers[i].setIcon(_this.spiderMarkerIcon);								}
 							}, 500);
 						});
 					}
 				);
 			}
-
 
 			if (options.searchmarkers) {
 				var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
@@ -726,7 +725,7 @@
 					    if ($this.is(':checked')) {
 					        // recluster 
 							for (var i = 0; i < _this.markers.length; i++) { 
-								_this.markers[i].setIcon("");
+								_this.markers[i].setIcon('');
 					        }
 					        _this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
 								averageCenter: false,
@@ -741,10 +740,8 @@
 								_this.markers[i].setOptions({map: _this.map, visible:true});
 					        }
 					        _this.clusterOn = false;
-					        document.getElementById("searchBoxGMap").value = '';
-					        //searchBox.event.trigger('keyup');
+					        document.getElementById('searchBoxGMap').value = '';
 					        google.maps.event.trigger(map, 'zoom_changed');
-					        //searchBox.event.trigger('keyup');
 					    }
 					});
 				}
