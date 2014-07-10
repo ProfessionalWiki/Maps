@@ -6,7 +6,6 @@ These are the release notes for the [Maps extension](../README.md).
 * added numbered spidered markers
 * upgraded MarkerClustererPlus from 2.0.9 (Feb 2012) to 2.1.2 (May 2014)
 * made searchmarkers markercluster-aware
-* added markercluster toggling
 
 ## Maps 3.1
 
