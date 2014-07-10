@@ -68,7 +68,7 @@
 	"maps-displaymap-par-minzoom": "Minimala zoomnivån",
 	"maps-displaymap-par-polygons": "Polygoner att visa",
 	"maps-displaymap-par-rectangles": "Rektanglar att visa",
-	"maps-displaymap-par-static": "Om kartan borde vara statisk",
+	"maps-displaymap-par-static": "Gör kartan statisk",
 	"maps-fullscreen-button": "Växla fullskärmsläge",
 	"maps-fullscreen-button-tooltip": "Visa kartan i helskärm eller som inbäddad.",
 	"maps-googlemaps3-par-enable-fullscreen": "Aktivera helskärmsknappen",

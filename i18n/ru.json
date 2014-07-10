@@ -99,7 +99,7 @@
 	"maps-displaymap-par-minzoom": "Минимальный уровень масштабирования",
 	"maps-displaymap-par-polygons": "Полигоны для отображения",
 	"maps-displaymap-par-rectangles": "Прямоугольники для отображения",
-	"maps-displaymap-par-static": "Если карта должна быть статичной",
+	"maps-displaymap-par-static": "Сделать карту статичной",
 	"maps-displaymap-par-wmsoverlay": "Использовать слой WMS",
 	"maps-fullscreen-button": "Переключить полноэкранный режим",
 	"maps-fullscreen-button-tooltip": "Посмотреть карту в полноэкранном или встроенном  режиме.",
