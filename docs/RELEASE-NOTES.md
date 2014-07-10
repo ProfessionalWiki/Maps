@@ -2,7 +2,10 @@ These are the release notes for the [Maps extension](../README.md).
 
 ## Maps 3.2 (dev)
 
-* 
+* added OverlappingMarkerSpiderfier functionality when markercluster=on
+* added numbered spidered markers
+* upgraded MarkerClustererPlus from 2.0.9 (Feb 2012) to 2.1.2 (May 2014)
+* made searchmarkers markercluster-aware
 
 ## Maps 3.1
 
