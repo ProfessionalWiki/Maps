@@ -47,7 +47,7 @@
 	"maps-displaymap-par-minzoom": "Il livello minimo di zoom",
 	"maps-displaymap-par-polygons": "Poligoni da visualizzare",
 	"maps-displaymap-par-rectangles": "Rettangoli da visualizzare",
-	"maps-displaymap-par-static": "Se la mappa deve essere statica",
+	"maps-displaymap-par-static": "Rendi la mappa statica",
 	"validation-error-invalid-location": "Il parametro $1 deve essere una posizione valida.",
 	"validation-error-invalid-locations": "Il parametro $1 deve essere una o più posizioni valide.",
 	"validation-error-invalid-width": "Il parametro $1 deve essere una larghezza valida.",
