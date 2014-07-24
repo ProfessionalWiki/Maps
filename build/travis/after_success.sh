@@ -2,9 +2,13 @@
 
 set -x
 
-if [ "$MW-$DBTYPE" == "master-mysql" ]
+originalDirectory=$(pwd)
+
+if [ "$TYPE" == "coverage" ]
 then
-	cd ../../extensions/SemanticMaps
-	composer require satooshi/php-coveralls:dev-master
-	php vendor/bin/coveralls -v
+	wget https://scrutinizer-ci.com/ocular.phar
+	du -hs $originalDirectory/build/coverage.clover
+	ls -lap $originalDirectory
+	ls -lap $originalDirectory/build
+	php ocular.phar code-coverage:upload --format=php-clover $originalDirectory/build/coverage.clover
 fi

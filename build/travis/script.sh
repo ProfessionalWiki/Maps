@@ -2,11 +2,13 @@
 
 set -x
 
-cd ../phase3/extensions/SemanticMaps
+originalDirectory=$(pwd)
 
-if [ "$MW-$DBTYPE" == "master-mysql" ]
+cd ../phase3/tests/phpunit
+
+if [ "$TYPE" == "coverage" ]
 then
-	phpunit --coverage-clover ../../extensions/SemanticMaps/build/logs/clover.xml
+	php phpunit.php -c ../../extensions/SemanticMaps/ --coverage-clover $originalDirectory/build/coverage.clover
 else
-	phpunit
+	php phpunit.php -c ../../extensions/SemanticMaps/
 fi
