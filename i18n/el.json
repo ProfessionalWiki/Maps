@@ -5,7 +5,7 @@
 			"ZaDiak"
 		]
 	},
-	"semanticmaps-desc": "Παρέχει τη δυνατότητα προβολής και επεξεργασίας δεδομένων γεωγραφικών συντεταγμένων που έχουν αποθηκευτεί με την επέκταση Σημασιολογικό MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps περισσότερες πληροφορίες...])",
+	"semanticmaps-desc": "Παρέχει τη δυνατότητα προβολής και επεξεργασίας δεδομένων γεωγραφικών συντεταγμένων που έχουν αποθηκευτεί με την επέκταση [https://www.semantic-mediawiki.org Σημασιολογικό MediaWiki]",
 	"semanticmaps-unrecognizeddistance": "Η τιμή $1 δεν είναι έγκυρη απόσταση.",
 	"semanticmaps-kml-link": "Προβολή του αρχείου KML",
 	"semanticmaps-default-kml-pagelink": "Προβολή σελίδας $1",
@@ -15,6 +15,7 @@
 	"semanticmaps_lookupcoordinates": "Επιθεώρηση συντεταγμένων",
 	"semanticmaps_enteraddresshere": "Εισαγωγή διεύθυνσης εδώ",
 	"semanticmaps-updatemap": "Ενημέρωση χάρτη",
+	"semanticmaps-forminput-remove": "Αφαίρεση",
 	"semanticmaps-forminput-add": "Προσθήκη",
 	"semanticmaps-forminput-locations": "Τοποθεσίες",
 	"semanticmaps-par-template": "Πρότυπο για να το χρησιμοποιήσετε για τη μορφοποίηση των περιεχομένων του παραθύρου πληροφοριών.",
