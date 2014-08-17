@@ -98,6 +98,7 @@
 	"maps-osm-par-photos": "显示图片",
 	"mapeditor": "地图编辑器",
 	"specialpages-group-maps": "地图",
+	"mapeditor-parser-error": "解析元数据时出错。忽略用户输入。",
 	"mapeditor-none-text": "无",
 	"mapeditor-done-button": "完成",
 	"mapeditor-remove-button": "移除",
