@@ -24,7 +24,7 @@
 	"maps-ns-layer": "图层",
 	"maps-ns-layer-talk": "图层讨论",
 	"maps-layer-property": "属性",
-	"maps-layer-value": "价值",
+	"maps-layer-value": "值",
 	"maps-layer-errors": "错误",
 	"maps-layerdef-invalid": "$1个无效定义",
 	"maps-layerdef-invalid-fatal": "致命的无效定义",

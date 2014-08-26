@@ -10,13 +10,15 @@
 			"Siebrand",
 			"Umherirrender",
 			"Тест",
-			"아라"
+			"아라",
+			"Liuxinyu970226"
 		]
 	},
 	"maps-desc": "{{desc|name=Maps|url=http://www.mediawiki.org/wiki/Extension:Maps}}",
 	"right-geocode": "{{doc-right|geocode}}",
 	"maps_map": "{{Identical|Map}}",
 	"maps-tracking-category": "The name of a category for all pages which use the <code><nowiki>display_map</nowiki></code> parser extension function or tag.\n\nThe category is automatically added unless the feature is disabled.",
+	"maps-markers": "{{Identical|Marker}}",
 	"maps-copycoords-prompt": "text displayed in JavaScript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt",
 	"maps-searchmarkers-text": "{{doc-important|Translate \"Filter\" as being a word.}}\nThis message is located within an input box to assist users with the input. This fuctionality allows to filter the markers based on the input one provides. See the [https://semantic-mediawiki.org/wiki/Maps_examples/OpenLayers_searchmarkers live example].",
 	"maps-others": "{{Identical|Other}}",

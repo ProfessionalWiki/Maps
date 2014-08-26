@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"DCLXVI",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"StanProg"
 		]
 	},
 	"maps_map": "Карта",
@@ -15,6 +16,8 @@
 	"maps-latitude": "Географска ширина:",
 	"maps-longitude": "Географска дължина:",
 	"maps-googlemaps3-incompatbrowser": "Вашият браузър не е съвместим с Google Maps v3.",
+	"mapeditor": "Редактор на карти",
+	"specialpages-group-maps": "Карти",
 	"mapeditor-done-button": "Готово",
 	"mapeditor-remove-button": "Премахване",
 	"mapeditor-import-button2": "Внасяне",
