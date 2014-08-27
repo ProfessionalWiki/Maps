@@ -89,7 +89,7 @@
 	"maps-displaymap-par-label": "מאפשר להציב מלל שיוצג בכל החלונות הקופצים של כל הסמנים שאין להם תווית מסוימת.",
 	"maps-displaymap-par-icon": "לאפשר להציב סמל לכל הסמנים.",
 	"maps-displaymap-par-circles": "אילו עיגולים להציג",
-	"maps-displaymap-par-copycoords": "להציג תיבת דו־שיח לבחירות נקודות הציון של המקום בעת לחיצה על משהו",
+	"maps-displaymap-par-copycoords": "להציג תיבת דו־שיח בעת לחיצה על מיקום שממנו אפשר להעתיק את נקודות הציון שלו",
 	"maps-displaymap-par-lines": "כמה קווים להציג",
 	"maps-displaymap-par-maxzoom": "רמת התקריב המרבית",
 	"maps-displaymap-par-minzoom": "רמת התקריב המזערית",
