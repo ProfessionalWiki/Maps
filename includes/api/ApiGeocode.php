@@ -84,12 +84,6 @@ class Geocode extends ApiBase {
 		);
 	}
 
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'locations' ),
-		) );
-	}
-
 	protected function getExamples() {
 		return array(
 			'api.php?action=geocode&locations=new york',
