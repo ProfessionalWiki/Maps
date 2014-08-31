@@ -4,7 +4,8 @@
 			"Armin1392",
 			"Ebraminio",
 			"Mjbmr",
-			"ZxxZxxZ"
+			"ZxxZxxZ",
+			"Alirezaaa"
 		]
 	},
 	"maps-desc": "فعال کردن قرار دادن نقشه‌های پویا در صفحات ویکی، رمزگذاری جغرافیایی آدرس‌ها و دیگر عملیات جغرافیایی.",
@@ -84,7 +85,7 @@
 	"maps-displaymap-par-label": "اجازهٔ تنظیم متنی که در پاپ آپس همهٔ علامت‌هایی که یک برچسب خاص ندارند، نمایش داده خواهد شد.",
 	"maps-displaymap-par-icon": "اجازهٔ تنظیم آیکون مورد استفاده برای همهٔ علامت‌ها.",
 	"maps-displaymap-par-circles": "حوزه‌ها برای نمایش",
-	"maps-displaymap-par-copycoords": "اینکه یک گفتگو از مختصات یک مکان باید هنگام  کلیک کردن چیزی ،نمایش داده شده باشد.",
+	"maps-displaymap-par-copycoords": "نمایش یک پنجره محاوره‌ای هنگام کلیک روی یک موقعیت که از مختصاتش می‌تواند نسخه‌برداری شود",
 	"maps-displaymap-par-lines": "خطوط برای نمایش",
 	"maps-displaymap-par-maxzoom": "حداکثر سطح زوم",
 	"maps-displaymap-par-minzoom": "حداقل سطح زوم",
