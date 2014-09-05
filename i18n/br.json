@@ -21,6 +21,7 @@
 	"maps-layer-value": "Talvoudenn",
 	"maps-layer-errors": "Fazioù",
 	"maps-layerdef-invalid": "{{PLURAL:$1|Termenadur|Termenadurioù}} direizh",
+	"maps-layerpage-usage": "Pajennoù gant kartennoù hag a implij ar gwiskad \"$1\"",
 	"maps-layerpage-nousage": "N'eus pajenn ebet hag a implij ar gwiskad-mañ evit poent.",
 	"maps-error-invalid-layertype": "N'eus ket a wiskad a seurt gant \"$1\". N'eo skoret nemet ar {{PLURAL:$3|seurt-mañ|seurtoù-mañ}} : $2",
 	"maps-error-no-layertype": "Ret eo deoc'h spisaat ar seurt gwiskad. N'eo skoret nemet ar {{PLURAL:$2|seurt-mañ|seurtoù-mañ}} : $1",
