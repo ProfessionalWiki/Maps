@@ -17,7 +17,8 @@
 			"Translationista",
 			"Vivaelcelta",
 			"Macofe",
-			"Themasterriot"
+			"Themasterriot",
+			"Mor"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas.",
@@ -94,7 +95,7 @@
 	"maps-displaymap-par-label": "Permite establecer el texto que se mostrará en las ventanas emergentes de todos los marcadores que no tienen una etiqueta específica.",
 	"maps-displaymap-par-icon": "Permite configurar el icono utilizado para todos los marcadores.",
 	"maps-displaymap-par-circles": "Círculos que mostrar",
-	"maps-displaymap-par-copycoords": "Mostrar un cuadro de diálogo desde el que se indicarán las coordenadas de un lugar al hacer clic en algo",
+	"maps-displaymap-par-copycoords": "Mostrar un cuadro de diálogo haciendo clic en una ubicación desde el que podrán ser copiadas sus coordenadas",
 	"maps-displaymap-par-lines": "Líneas que mostrar",
 	"maps-displaymap-par-maxzoom": "El nivel máximo de zoom",
 	"maps-displaymap-par-minzoom": "El nivel mínimo de zoom",
