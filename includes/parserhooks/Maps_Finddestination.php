@@ -1,5 +1,5 @@
 <?php
-use ValueFormatters\GeoCoordinateFormatter;
+use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 
 /**
  * Class for the 'finddestination' parser hooks, which can find a

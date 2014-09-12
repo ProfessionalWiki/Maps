@@ -19,7 +19,7 @@ if ( defined( 'Maps_VERSION' ) ) {
 	return 1;
 }
 
-define( 'Maps_VERSION' , '3.2 alpha' );
+define( 'Maps_VERSION' , '3.2' );
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -187,6 +187,10 @@ call_user_func( function() {
 	}
 
 	global $wgParamDefinitions;
+
+	$wgParamDefinitions['coordinate'] = array(
+		'string-parser' => 'DataValues\Geo\Parsers\GeoCoordinateParser',
+	);
 
 	$wgParamDefinitions['mappingservice'] = array(
 		'definition'=> 'Maps\ServiceParam',

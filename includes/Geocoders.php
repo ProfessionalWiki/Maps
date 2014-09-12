@@ -2,9 +2,10 @@
 
 namespace Maps;
 
-use DataValues\LatLongValue;
+use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Values\LatLongValue;
 use MWException;
-use ValueFormatters\GeoCoordinateFormatter;
 use ValueParsers\ParseException;
 
 /**
@@ -127,7 +128,7 @@ final class Geocoders {
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
-			$coordinateParser = new \ValueParsers\GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+			$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 
 			try {
 				return $coordinateParser->parse( $coordsOrAddress );

@@ -2,7 +2,7 @@ These are the release notes for the [Maps extension](../README.md).
 
 ## Maps 3.2 (dev)
 
-* 
+* Enhanced compatibility with MediaWiki 1.24
 
 ## Maps 3.1
 

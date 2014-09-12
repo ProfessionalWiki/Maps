@@ -2,9 +2,9 @@
 
 namespace Maps;
 
+use DataValues\Geo\Parsers\GeoCoordinateParser;
 use Maps\Elements\ImageOverlay;
 use Maps\Elements\WmsOverlay;
-use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 

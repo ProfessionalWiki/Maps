@@ -2,9 +2,9 @@
 
 namespace Maps;
 
-use DataValues\LatLongValue;
+use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Circle;
-use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 

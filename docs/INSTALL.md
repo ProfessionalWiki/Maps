@@ -12,14 +12,20 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.2.x</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.3.x</a></th>
 		<td>Development version</td>
 		<td>Future</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-31">Maps 3.1</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-32">Maps 3.2</a></th>
 		<td>Stable release</td>
+		<td>2014-09-12</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.2">3.2</a></td>
+	</tr>
+	<tr>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-31">Maps 3.1</a></th>
+		<td>Legacy release</td>
 		<td>2014-06-30</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.1">3.1</a></td>
 	</tr>
@@ -52,6 +58,13 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>MediaWiki</th>
 		<th>Composer</th>
 		<th>Validator</th>
+	</tr>
+	<tr>
+		<th>Maps 3.3.x</th>
+		<td>5.3.2 - 5.6.x</td>
+		<td>1.18 - 1.24</td>
+		<td>Required</td>
+		<td>2.x (handled by Composer)</td>
 	</tr>
 	<tr>
 		<th>Maps 3.1.x & 3.2.x</th>
