@@ -1,8 +1,12 @@
 These are the release notes for the [Maps extension](../README.md).
 
-## Maps 3.2 (dev)
+## Maps 3.2
+
+Released on September 12th, 2014.
 
 * Enhanced compatibility with MediaWiki 1.24
+* Improved the translations
+* Switched to using DataValue Geo 1.x
 
 ## Maps 3.1
 
