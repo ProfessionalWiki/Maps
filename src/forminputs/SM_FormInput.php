@@ -198,13 +198,13 @@ class SMFormInput {
 	 *
 	 * @param string $coordinates
 	 * @param string $input_name
-	 * @param boolean $is_mandatory
-	 * @param boolean $is_disabled
+	 * @param boolean $isMandatory
+	 * @param boolean $isDisabled
 	 * @param array $params
 	 *
 	 * @return string
 	 */
-	public function getEditorInputOutput( $coordinates, $input_name, $is_mandatory, $is_disabled, array $params ) {
+	public function getEditorInputOutput( $coordinates, $input_name, $isMandatory, $isDisabled, array $params ) {
 		global $wgOut;
 
 		$wgOut->addHTML( MapsGoogleMaps3::getApiScript(
