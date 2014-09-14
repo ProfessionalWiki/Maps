@@ -12,7 +12,7 @@
          stopOnSkipped="false"
          verbose="true">
     <testsuites>
-        <testsuite name="SemanicResultFormats">
+        <testsuite name="SemanicMaps">
             <directory>tests/phpunit</directory>
         </testsuite>
     </testsuites>
