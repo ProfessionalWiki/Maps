@@ -23,15 +23,15 @@ else
 	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin --scriptpath /TravisWiki
 fi
 
-cd extensions
-
-cp -r $originalDirectory SemanticMaps
-
-cd SemanticMaps
 composer install --prefer-source
 composer require 'phpunit/phpunit=3.7.*' --prefer-source
 
-cd ../..
+cd extensions
+
+rm -rf SemanticMaps
+cp -r $originalDirectory SemanticMaps
+
+cd ..
 
 echo 'require_once( __DIR__ . "/extensions/SemanticMaps/SemanticMaps.php" );' >> LocalSettings.php
 
