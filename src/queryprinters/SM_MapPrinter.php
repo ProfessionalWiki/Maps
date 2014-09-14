@@ -51,7 +51,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @return array
 	 */
 	protected function getParameterInfo() {
-		global $smgQPForceShow, $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
+		global $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
 		
 		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
 
