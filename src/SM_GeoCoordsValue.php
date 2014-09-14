@@ -1,7 +1,8 @@
 <?php
 
-use DataValues\LatLongValue;
-use ValueFormatters\GeoCoordinateFormatter;
+use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Values\LatLongValue;
 use ValueParsers\ParseException;
 
 /**
@@ -157,7 +158,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	protected function tryParseAndSetDataItem( $coordinates ) {
 		$options = new \ValueParsers\ParserOptions();
-		$parser = new \ValueParsers\GeoCoordinateParser( $options );
+		$parser = new GeoCoordinateParser( $options );
 
 		try {
 			$value = $parser->parse( $coordinates );

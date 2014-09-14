@@ -1,6 +1,6 @@
 <?php
 
-use DataValues\LatLongValue;
+use DataValues\Geo\Values\LatLongValue;
 use SMW\DataValueFactory;
 
 /**
