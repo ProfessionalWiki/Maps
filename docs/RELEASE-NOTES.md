@@ -1,7 +1,10 @@
 These are the release notes for the Semantic Maps extension.
 
-## Semantic Maps 3.1 (dev)
+## Semantic Maps 3.1
 
+Released on August 5th, 2014.
+
+* Added compatibility with Semantic MediaWiki 2.x
 * Added compatibility with Validator 2.x.
 
 ## Semantic Maps 3.0.4

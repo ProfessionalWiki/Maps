@@ -10,5 +10,5 @@ if ( is_readable( $path = __DIR__ . '/../../SemanticMediaWiki/tests/autoloader.p
 	die( 'The SemanticMediaWiki test autoloader is not available' );
 }
 
-$autoloader = require $path;
+require $path;
 
