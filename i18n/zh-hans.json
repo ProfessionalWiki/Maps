@@ -41,6 +41,7 @@
 	"maps-layer-of-type-and-name": "类型“$1”的图层“$2”",
 	"maps-layer-type-supported-by": "此图层类型只能与{{PLURAL:$2|此|这些}}映射服务使用：$1。",
 	"maps-coordinates-par-location": "您希望格式化的坐标。",
+	"maps-coordinates-par-format": "目标坐标的格式。",
 	"maps-finddestination-par-location": "初始位置。",
 	"maps-finddestination-par-bearing": "最初的影响。",
 	"maps-finddestination-par-distance": "旅行的距离。",
