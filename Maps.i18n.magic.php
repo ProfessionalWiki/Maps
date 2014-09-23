@@ -330,7 +330,7 @@ $magicWords['sr-el'] = array(
 	'distance' => array( 0, 'razdaljina' ),
 );
 
-/** толышә зывон (толышә зывон) */
+/** Talysh (толышә зывон) */
 $magicWords['tly'] = array(
 	'display_map' => array( 0, 'хәритә_нишо_дој' ),
 );

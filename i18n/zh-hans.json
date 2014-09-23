@@ -78,6 +78,7 @@
 	"maps-abb-west": "西",
 	"maps-latitude": "纬度：",
 	"maps-longitude": "经度：",
+	"maps-invalid-coordinates": "值$1未视作有效的坐标值集。",
 	"maps_coordinates_missing": "地图上没有提供坐标。",
 	"maps_geocoding_failed": "以下$2个地址无法编码：$1。",
 	"maps_geocoding_failed_for": "以下$2个地址不能编码并且已在地图中忽略：\n$1",
