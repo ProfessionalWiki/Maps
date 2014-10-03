@@ -128,7 +128,8 @@ is installed in the right place.
 
 If you have previously installed Composer skip to step 3.
 
-To install Composer:
+To install Composer, just download http://getcomposer.org/composer.phar into your
+current directory.
 
     wget http://getcomposer.org/composer.phar
 
