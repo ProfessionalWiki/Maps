@@ -2,9 +2,9 @@ These are the release notes for the Semantic Maps extension.
 
 ## Semantic Maps 3.1.1
 
-* Prevent installation with incompatible dependencies
-
 Released on September 14th, 2014.
+
+* Prevent installation with incompatible dependencies
 
 ## Semantic Maps 3.1
 
