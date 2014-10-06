@@ -43,6 +43,7 @@
 	"maps-geocode-par-allowcoordinates": "{{maps-par|geocode|allowcoordinates}}\n\n{{doc-important|Do not translate the parameter values \"yes\" and \"no\".}}",
 	"maps-geodistance-par-geoservice": "{{Maps-par|geodistance|geoservice}}",
 	"maps-displaymap-par-visitedicon": "{{Maps-par|displaymap|visitedicon}}",
+	"maps-displaymap-par-copycoords": "{{doc-paramdesc|copycoords}}",
 	"maps-fullscreen-button": "Text displayed in the map as a button to toggle fullscreen view.\n\nTooltip for this button is {{msg-mw|Maps-fullscreen-button-tooltip}}.",
 	"maps-fullscreen-button-tooltip": "Text displayed when hovering over the button which is labeled {{msg-mw|Maps-fullscreen-button}}.",
 	"maps-googlemaps3-par-enable-fullscreen": "{{maps-par|googlemaps3|enablefullscreen}}",
