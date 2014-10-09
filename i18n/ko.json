@@ -4,7 +4,8 @@
 			"Hym411",
 			"Jskang",
 			"Priviet",
-			"아라"
+			"아라",
+			"Revi"
 		]
 	},
 	"maps-desc": "위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다.",
@@ -17,7 +18,7 @@
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
 	"maps-searchmarkers-text": "표시를 필터",
 	"maps-others": "기타",
-	"maps-kml-parsing-failed": "가져오기 실패나 XML이 손상되어 하나 혹은 그 이상의 KML 파일을 구문 분석하는 데 실패했습니다.",
+	"maps-kml-parsing-failed": "하나 이상의 KML 파일을 구문 분석하는 데 실패했습니다. 일반적으로 이것은 얻기 실패나 잘못된 형식의 XML이기 때문에 일어납니다.",
 	"maps-ns-layer": "레이어",
 	"maps-ns-layer-talk": "레이어 토론",
 	"maps-layer-property": "속성",
