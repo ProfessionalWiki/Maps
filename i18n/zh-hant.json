@@ -10,7 +10,8 @@
 			"StephDC",
 			"Wrightbus",
 			"LNDDYL",
-			"Cwlin0416"
+			"Cwlin0416",
+			"Liuxinyu970226"
 		]
 	},
 	"semanticmaps-desc": "可提供檢視與編輯 [https://www.semantic-mediawiki.org 語意 MediaWiki] 擴充套件中所儲存的座標資料。",
@@ -35,7 +36,7 @@
 	"semanticmaps-par-geocodecontrol": "顯示地理編碼控制元件。",
 	"semanticmaps-par-activeicon": "當使用的頁面為查詢結果時，用來替代預設標記要顯示的圖示",
 	"semanticmaps-par-pagelabel": "當設為 \"是\" 時，所有的標記會有 \"inlineLabel\" 並連結至含有標記座標的頁面。",
-	"semanticmaps-kml-text": "與每個頁面關聯的文字。 可被額外的查詢屬性所覆蓋 (若有設定)。",
+	"semanticmaps-kml-text": "與每個頁面關聯的文字。可被額外的查詢屬性所覆蓋 (若有設定)。",
 	"semanticmaps-kml-title": "查詢結果的預設標題",
 	"semanticmaps-kml-linkabsolute": "連結應為絕對位址 (相反於相對位址)",
 	"semanticmaps-kml-pagelinktext": "連結至頁面要使用的文字，文字中的 $1 會取代為頁面標題",
