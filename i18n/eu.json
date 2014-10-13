@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Kobazulo",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Subi"
 		]
 	},
+	"maps_map": "Mapa",
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
 	"maps-others": "Bestelakoak",
+	"maps-ns-layer": "Geruza",
 	"maps-layer-property": "Propietatea",
 	"maps-layer-value": "Balioa",
 	"maps-layer-errors": "Erroreak",
