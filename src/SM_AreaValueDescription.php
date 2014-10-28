@@ -74,7 +74,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 */
 	public function getQueryString( $asValue = false ) {
 		if ( $this->getDataItem() !== null ) {
-			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->m_property )->getWikiValue();
+			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getProperty() )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
 			return $asValue ? '+' : '';
