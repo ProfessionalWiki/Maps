@@ -20,8 +20,8 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * @param boolean $asValue
 	 */
 	public function getQueryString( $asValue = false ) {
-		if ( $this->m_dataItem !== null ) {
-			$queryString = DataValueFactory::newDataItemValue( $this->m_dataItem, $this->m_property )->getWikiValue();
+		if ( $this->getDataItem() !== null ) {
+			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getProperty() )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
 			return $asValue ? '+' : '';
