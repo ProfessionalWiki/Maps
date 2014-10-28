@@ -58,13 +58,31 @@ These are the installation and configuration instructions for the [SemanticMaps]
 		<th>Validator</th>
 	</tr>
 	<tr>
-		<th>S. Maps 3.0.x & 3.1.x</th>
+		<th>S. Maps 3.2.x</th>
+		<td>5.3.2 - 5.6.x</td>
+		<td>1.19 - 1.24</td>
+		<td>2.x >= 2.1</td>
+		<td>3.x</td>
+		<td>Required</td>
+		<td>2.x (handled by Composer)</td>
+	</tr>
+	<tr>
+		<th>S. Maps 3.1.x</th>
+		<td>5.3.2 - 5.6.x</td>
+		<td>1.19 - 1.23</td>
+		<td>2.x</td>
+		<td>3.x</td>
+		<td>Required</td>
+		<td>2.x (handled by Composer)</td>
+	</tr>
+	<tr>
+		<th>S. Maps 3.0.x</th>
 		<td>5.3.2 - 5.6.x</td>
 		<td>1.18 - 1.23</td>
 		<td>1.9.x</td>
-		<td>3.0.x</td>
+		<td>3.x</td>
 		<td>Required</td>
-		<td>1.0.x (handled by Composer)</td>
+		<td>1.x (handled by Composer)</td>
 	</tr>
 	<tr>
 		<th>S. Maps 2.0.x</th>
