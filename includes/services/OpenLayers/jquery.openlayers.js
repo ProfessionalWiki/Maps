@@ -287,12 +287,10 @@
 		}
 
 		// Create KML layer and push it to layers
-		//var kmlFile = '../uploads/20140905-20140906_MtFuji.kml'; // Too heavy...
-		var kmlFile = '../uploads/mapperz-kml-example.kml';
 		var kmllayer = new OpenLayers.Layer.Vector("KML Layer", {
 			strategies: [new OpenLayers.Strategy.Fixed()],
 			protocol: new OpenLayers.Protocol.HTTP({
-				url: kmlFile,
+				url: options.kml,
 			format: new OpenLayers.Format.KML({
 				extractStyles: true, 
 			extractAttributes: true,
