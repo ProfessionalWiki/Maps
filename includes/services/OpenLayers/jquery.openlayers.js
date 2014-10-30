@@ -287,20 +287,22 @@
 		}
 
 		// Create KML layer and push it to layers
-		var kmllayer = new OpenLayers.Layer.Vector("KML Layer", {
-			strategies: [new OpenLayers.Strategy.Fixed()],
-			protocol: new OpenLayers.Protocol.HTTP({
-				url: options.kml,
-			format: new OpenLayers.Format.KML({
-				extractStyles: true, 
-			extractAttributes: true,
-			maxDepth: 2,
-			'internalProjection': new OpenLayers.Projection( "EPSG:900913" ), //EPSG:3785/900913
-			'externalProjection': new OpenLayers.Projection( "EPSG:4326" ) //EPSG:4326
-			})
-			})
-		});
-		layers.push( kmllayer );
+		if ( options.kml ) {
+			var kmllayer = new OpenLayers.Layer.Vector("KML Layer", {
+				strategies: [new OpenLayers.Strategy.Fixed()],
+				protocol: new OpenLayers.Protocol.HTTP({
+					url: options.kml,
+				format: new OpenLayers.Format.KML({
+					extractStyles: true, 
+				extractAttributes: true,
+				maxDepth: 2,
+				'internalProjection': new OpenLayers.Projection( "EPSG:900913" ), //EPSG:3785/900913
+				'externalProjection': new OpenLayers.Projection( "EPSG:4326" ) //EPSG:4326
+				})
+				})
+			});
+			layers.push( kmllayer );
+		}
 
 		// Create a new OpenLayers map with without any controls on it.
 		var mapOptions = {
