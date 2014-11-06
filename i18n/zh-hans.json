@@ -21,6 +21,7 @@
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
 	"maps-searchmarkers-text": "筛选标记",
 	"maps-others": "其他",
+	"maps-kml-parsing-failed": "解析一个或更多KML文件失败。这通常是因为检索失败或格式不正确的XML。",
 	"maps-ns-layer": "图层",
 	"maps-ns-layer-talk": "图层讨论",
 	"maps-layer-property": "属性",
