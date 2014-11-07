@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robin0van0der0vliet"
+		]
+	},
+	"semanticmaps-latitude": "Breedtegraad: $1",
+	"semanticmaps-longitude": "Lingtegraad: $1",
+	"semanticmaps-forminput-locations": "Lokaasjes"
+}
