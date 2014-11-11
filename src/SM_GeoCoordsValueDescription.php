@@ -18,14 +18,19 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 	 * @since 0.6
 	 * 
 	 * @param boolean $asValue
+	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
 		if ( $this->getDataItem() !== null ) {
-			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getProperty() )->getWikiValue();
+			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
 			return $asValue ? $queryString : "[[$queryString]]";
 		} else {
 			return $asValue ? '+' : '';
 		}
+	}
+
+	private function getPropertyCompat() {
+		return method_exists( $this, 'getProperty' ) ? $this->getProperty() : $this->m_property;
 	}
 	
 	/**

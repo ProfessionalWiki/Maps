@@ -1,5 +1,11 @@
 These are the release notes for the Semantic Maps extension.
 
+## Semantic Maps 3.1.3
+
+Released on November 11th, 2014.
+
+* Restored compatibility with SMW 2.0.x (broken in SM 3.1.2)
+
 ## Semantic Maps 3.1.2
 
 Released on November 11th, 2014.
