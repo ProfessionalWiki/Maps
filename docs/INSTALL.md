@@ -20,10 +20,10 @@ These are the installation and configuration instructions for the [SemanticMaps]
 		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.1.1</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.1.2</a></th>
 		<td>Stable release</td>
-		<td>2014-09-14</td>
-		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.1.1">3.1.1</a></td>
+		<td>2014-11-11</td>
+		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.1.2">3.1.2</a></td>
 	</tr>
 	<tr>
 		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.0.0</a></th>

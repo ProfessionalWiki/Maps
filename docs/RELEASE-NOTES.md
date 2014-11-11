@@ -1,5 +1,12 @@
 These are the release notes for the Semantic Maps extension.
 
+## Semantic Maps 3.1.2
+
+Released on November 11th, 2014.
+
+* Updated dependencies to latest versions.
+* Improved compatibility with Semantic MediaWiki 2.1.x.
+
 ## Semantic Maps 3.1.1
 
 Released on September 14th, 2014.
