@@ -27,7 +27,7 @@
 		"irc": "irc://irc.freenode.net/semantic-mediawiki",
 		"forum": "https://semantic-mediawiki.org/wiki/semantic-mediawiki.org_talk:Community_portal",
 		"wiki": "https://semantic-mediawiki.org/wiki/",
-		"source": "https://github.com/JeroenDeDauw/SemanticMaps"
+		"source": "https://github.com/SemanticMediaWiki/SemanticMaps"
 	},
 	"require": {
 		"php": ">=5.3.0",
