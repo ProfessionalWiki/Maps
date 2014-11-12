@@ -32,7 +32,7 @@
 	"semanticmaps-par-showtitle": "是否在標記資訊視窗之中顯示標題。當使用樣版對資訊視窗內容進行格式編排的時，關閉此選項通常會有所幫助。",
 	"semanticmaps-par-hidenamespace": "在標記資訊視窗中顯示命名空間的標題",
 	"semanticmaps-par-centre": "地圖的中心位置。若不指定，地圖會自動挑選可顯示所有標記於地圖上的最佳中心位置。",
-	"semanticmaps-par-template": "用來對資訊視窗內容進行格式編排的樣版。",
+	"semanticmaps-par-template": "用來對資訊視窗內容進行格式編排的樣板。",
 	"semanticmaps-par-geocodecontrol": "顯示地理編碼控制元件。",
 	"semanticmaps-par-activeicon": "當使用的頁面為查詢結果時，用來替代預設標記要顯示的圖示",
 	"semanticmaps-par-pagelabel": "當設為 \"是\" 時，所有的標記會有 \"inlineLabel\" 並連結至含有標記座標的頁面。",
