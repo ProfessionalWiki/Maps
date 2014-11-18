@@ -14,6 +14,9 @@ cd phase3
 
 git checkout $MW
 
+composer install --prefer-source
+composer require 'phpunit/phpunit=3.7.*' --prefer-source
+
 if [ "$DB" == "postgres" ]
 then
 	psql -c 'create database its_a_mw;' -U postgres
@@ -23,8 +26,6 @@ else
 	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin --scriptpath /TravisWiki
 fi
 
-composer install --prefer-source
-composer require 'phpunit/phpunit=3.7.*' --prefer-source
 composer require 'mediawiki/semantic-maps=dev-master' --prefer-source
 
 cd extensions
