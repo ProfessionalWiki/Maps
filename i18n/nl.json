@@ -77,7 +77,7 @@
 	"maps-displaymap-par-label": "Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerd label.",
 	"maps-displaymap-par-icon": "Maakt het mogelijk het pictogram voor alle markers in te stellen.",
 	"maps-displaymap-par-circles": "Weer te geven cirkels",
-	"maps-displaymap-par-copycoords": "Toon een dialoogvenster waarin de coördinaten van een locatie worden weergeven nadat er op iets wordt geklikt",
+	"maps-displaymap-par-copycoords": "Dialoogvenster weergeven na klikken op een locatie waarvan de coördinaten gekopieerd kunnen worden",
 	"maps-displaymap-par-lines": "Weer te geven regels",
 	"maps-displaymap-par-maxzoom": "Het maximale zoomniveau",
 	"maps-displaymap-par-minzoom": "Het minimale zoomniveau",
