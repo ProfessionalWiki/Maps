@@ -287,7 +287,7 @@
 		}
 
 		// Create KML layer and push it to layers
-		if ( options.kml ) {
+		if (options.kml.length>0) { 
 			var kmllayer = new OpenLayers.Layer.Vector("KML Layer", {
 				strategies: [new OpenLayers.Strategy.Fixed()],
 				protocol: new OpenLayers.Protocol.HTTP({
@@ -303,7 +303,6 @@
 			});
 			layers.push( kmllayer );
 		}
-
 		// Create a new OpenLayers map with without any controls on it.
 		var mapOptions = {
 			controls: []
