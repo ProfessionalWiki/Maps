@@ -68,7 +68,7 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lat";
 			$conditions[] = "{$tableName}.$fieldNames[2] $comparator $lon";
 
-			return implode( ' && ', $conditions );
+			return implode( ' AND ', $conditions );
 		}
 
 		return false;
