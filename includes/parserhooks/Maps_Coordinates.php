@@ -89,7 +89,8 @@ class MapsCoordinates extends ParserHook {
 	public function render( array $parameters ) {
 		$options = new \ValueFormatters\FormatterOptions( array(
 			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
+			GeoCoordinateFormatter::OPT_PRECISION => 1 / 36000000
 		) );
 
 		$coordinateFormatter = new GeoCoordinateFormatter( $options );

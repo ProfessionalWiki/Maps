@@ -125,7 +125,8 @@ class MapsFinddestination extends ParserHook {
 
 		$options = new \ValueFormatters\FormatterOptions( array(
 			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
+			GeoCoordinateFormatter::OPT_PRECISION => 1 / 36000000
 		) );
 
 		$formatter = new GeoCoordinateFormatter( $options );
