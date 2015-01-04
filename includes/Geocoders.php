@@ -180,7 +180,8 @@ final class Geocoders {
 
 		$options = new \ValueFormatters\FormatterOptions( array(
 			GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional,
+			GeoCoordinateFormatter::OPT_PRECISION => 1 / 36000000
 		) );
 
 		$formatter = new GeoCoordinateFormatter( $options );
