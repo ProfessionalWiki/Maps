@@ -177,7 +177,7 @@ call_user_func( function() {
 	define( 'Maps_NS_LAYER' , $egMapsNamespaceIndex + 0 );
 	define( 'Maps_NS_LAYER_TALK' , $egMapsNamespaceIndex + 1 );
 
-	$wgAvailableRights[] = 'geocode';
+	$GLOBALS['wgAvailableRights'][] = 'geocode';
 
 	// Users that can geocode. By default the same as those that can edit.
 	foreach ( $wgGroupPermissions as $group => $rights ) {
