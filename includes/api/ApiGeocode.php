@@ -92,8 +92,4 @@ class Geocode extends ApiBase {
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . '-' . Maps_VERSION;
-	}
-
 }
