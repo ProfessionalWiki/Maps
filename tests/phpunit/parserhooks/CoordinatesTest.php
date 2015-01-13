@@ -40,7 +40,7 @@ class CoordinatesTest extends ParserHookTest {
 				'format' => 'dms',
 				'directional' => 'no',
 			),
-			'4° 0\' 0.0000", 2° 0\' 0.0000"'
+			'4° 0\' 0.00", 2° 0\' 0.00"'
 		);
 
 		$paramLists[] = array(
@@ -49,7 +49,7 @@ class CoordinatesTest extends ParserHookTest {
 				'format' => 'dms',
 				'directional' => 'no',
 			),
-			'-55° 0\' 0.0000", -37° 37\' 3.4788"'
+			'-55° 0\' 0.00", -37° 37\' 3.4788"'
 		);
 
 		$paramLists[] = array(
@@ -75,7 +75,7 @@ class CoordinatesTest extends ParserHookTest {
 				'location' => '55 S, 37.6176330 W',
 				'directional' => 'yes',
 			),
-			'55° 0\' 0.0000" S, 37° 37\' 3.4788" W'
+			'55° 0\' 0.00" S, 37° 37\' 3.4788" W'
 		);
 
 		return $paramLists;
