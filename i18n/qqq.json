@@ -16,6 +16,7 @@
 	},
 	"maps-desc": "{{desc|name=Maps|url=http://www.mediawiki.org/wiki/Extension:Maps}}",
 	"right-geocode": "{{doc-right|geocode}}",
+	"action-geocode": "{{doc-action|geocode}}",
 	"maps_map": "{{Identical|Map}}",
 	"maps-tracking-category": "The name of a category for all pages which use the <code><nowiki>display_map</nowiki></code> parser extension function or tag.\n\nThe category is automatically added unless the feature is disabled.",
 	"maps-markers": "{{Identical|Marker}}",
