@@ -12,6 +12,7 @@
 	},
 	"maps-desc": "Ermöglicht das Einbinden dynamischer Karten, die Georeferenzierung von Adressen und andere geographische Operationen",
 	"right-geocode": "Georeferenzieren",
+	"action-geocode": "Geocoding auf diesem Wiki auszuführen",
 	"maps_map": "Karte",
 	"maps-tracking-category": "Seiten mit einer von der Maps-Erweiterung gerenderten Karte",
 	"maps-loading-map": "Die Karte wird geladen …",
