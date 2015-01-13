@@ -19,7 +19,7 @@ if ( defined( 'Maps_VERSION' ) ) {
 	return 1;
 }
 
-define( 'Maps_VERSION' , '3.2' );
+define( 'Maps_VERSION' , '3.2.1' );
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {

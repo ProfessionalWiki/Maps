@@ -2,6 +2,8 @@ These are the release notes for the [Maps extension](../README.md).
 
 ## Maps 3.2.1
 
+Released on January 13th, 2015.
+
 * Fixed `geocde` right
 * Fixed coordinate precision issue after breaking changes in DataValues Geo 
 
