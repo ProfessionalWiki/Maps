@@ -7,6 +7,7 @@
 	},
 	"maps-desc": "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen.",
 	"right-geocode": "Geocode",
+	"action-geocode": "Geocoding op dëser Wiki maachen",
 	"maps_map": "Kaart",
 	"maps-loading-map": "D'Kaart gëtt gelueden…",
 	"maps-load-failed": "D'Kaart konnt net geluede ginn!",
