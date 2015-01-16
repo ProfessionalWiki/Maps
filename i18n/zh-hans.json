@@ -13,6 +13,7 @@
 	},
 	"maps-desc": "允许嵌入动态地图到wiki页面、地址的地理编码等地理学操作。",
 	"right-geocode": "地理编码",
+	"action-geocode": "在此wiki进行地理编码",
 	"maps_map": "地图",
 	"maps-tracking-category": "带有由地图拓展映射得到的地图页面",
 	"maps-loading-map": "载入地图中……",
