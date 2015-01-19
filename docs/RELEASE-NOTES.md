@@ -1,5 +1,11 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.2.2
+
+Released on January 19th, 2015.
+
+* Fixed fatal error in the KML formatter
+
 ## Maps 3.2.1
 
 Released on January 13th, 2015.
