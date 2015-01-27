@@ -14,11 +14,13 @@
 			"PieRRoMaN",
 			"Sherbrooke",
 			"Verdy p",
-			"Wyz"
+			"Wyz",
+			"Weft"
 		]
 	},
 	"maps-desc": "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques.",
 	"right-geocode": "Géocode",
+	"action-geocode": "géocoder sur ce wiki",
 	"maps_map": "Carte",
 	"maps-tracking-category": "Pages avec une carte provenant de l’extension Maps",
 	"maps-loading-map": "Chargement de la carte...",
