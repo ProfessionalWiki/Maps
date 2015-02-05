@@ -57,7 +57,7 @@
 	var updateButton = $( '<button />' ).text( mw.msg( 'semanticmaps-updatemap' ) );
 	
 	updateButton.click( function() {
-		var locations = coord.split( self.input.attr( 'value' ) );
+		var locations = coord.split( self.input.val() );
 		var location = coord.parse( locations[0] );
 		
 		if ( location !== false ) {
@@ -99,7 +99,7 @@
 	var geoButton = $( '<button />' ).text( mw.msg( 'semanticmaps_lookupcoordinates' ) );
 	
 	geoButton.click( function() {
-		self.geocodeAddress( self.geofield.attr( 'value' ) );
+		self.geocodeAddress( self.geofield.val() );
 		return false;
 	} );
 	
