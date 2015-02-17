@@ -346,7 +346,7 @@ $magicWords['uk'] = array(
 	'distance' => array( 0, 'відстань' ),
 );
 
-/** Uzbek (oʻzbekcha) */
+/** Uzbek (oʻzbekcha/ўзбекча) */
 $magicWords['uz'] = array(
 	'coordinates' => array( 0, 'koordinatalar' ),
 );
