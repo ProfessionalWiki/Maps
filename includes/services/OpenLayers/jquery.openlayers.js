@@ -20,28 +20,28 @@
 				marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerLayer.defaultIcon));
 			}
 
-			// This is the handler for the mousedown event on the marker, and displays the popup.
-			marker.events.register('mousedown', marker,
-				function (evt) {
-					if (markerData.link) {
-						window.location.href = markerData.link;
-					} else if (markerData.text !== '') {
-						var popup = new OpenLayers.Feature(markerLayer, markerData.lonlat).createPopup(true);
-						popup.setContentHTML(markerData.text);
-						markerLayer.map.addPopup(popup);
-						OpenLayers.Event.stop(evt); // Stop the event.
-					}
-
-					if (markerData.visitedicon && markerData.visitedicon !== '') {
-						if(markerData.visitedicon === 'on'){
-							//when keyword 'on' is set, set visitedicon to a default official marker
-							markerData.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/OpenLayers/OpenLayers/img/marker3.png';
-						}
-						marker.setUrl(markerData.visitedicon);
-						markerData.visitedicon = undefined;
-					}
+			// This is the handler for the mousedown/touchstart event on the marker, and displays the popup.
+			function handleClickEvent(evt) {
+				if (markerData.link) {
+					window.location.href = markerData.link;
+				} else if (markerData.text !== '') {
+					var popup = new OpenLayers.Feature(markerLayer, markerData.lonlat).createPopup(true);
+					popup.setContentHTML(markerData.text);
+					markerLayer.map.addPopup(popup);
+					OpenLayers.Event.stop(evt); // Stop the event.
 				}
-			);
+
+				if (markerData.visitedicon && markerData.visitedicon !== '') {
+					if(markerData.visitedicon === 'on'){
+						//when keyword 'on' is set, set visitedicon to a default official marker
+						markerData.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/OpenLayers/OpenLayers/img/marker3.png';
+					}
+					marker.setUrl(markerData.visitedicon);
+					markerData.visitedicon = undefined;
+				}
+			}
+			marker.events.register('mousedown', marker, handleClickEvent);
+			marker.events.register('touchstart', marker, handleClickEvent);
 
 			return marker;
 		};
