@@ -53,6 +53,11 @@ $specialPageAliases['gl'] = array(
 	'MapEditor' => array( 'Editor_do_mapa' ),
 );
 
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'MapEditor' => array( 'עורך_מפה' ),
+);
+
 /** Upper Sorbian (hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'MapEditor' => array( 'Kartowy_editor' ),
