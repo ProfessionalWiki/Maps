@@ -14,7 +14,7 @@
 			"Liuxinyu970226"
 		]
 	},
-	"maps-desc": "{{desc|name=Maps|url=http://www.mediawiki.org/wiki/Extension:Maps}}",
+	"maps-desc": "{{desc|name=Maps|url=https://www.mediawiki.org/wiki/Extension:Maps}}",
 	"right-geocode": "{{doc-right|geocode}}",
 	"action-geocode": "{{doc-action|geocode}}",
 	"maps_map": "{{Identical|Map}}",

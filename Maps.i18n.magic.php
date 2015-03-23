@@ -371,3 +371,17 @@ $magicWords['zh-hans'] = array(
 	'distance' => array( 0, '距离' ),
 	'mapsdoc' => array( 0, '地图文档' ),
 );
+
+/** Traditional Chinese (中文（繁體）‎) */
+$magicWords['zh-hant'] = array(
+	'display_map' => array( 0, '顯示地圖' ),
+	'display_point' => array( 0, '顯示位置' ),
+	'display_points' => array( 0, '顯示多個位置' ),
+	'display_line' => array( 0, '顯示線' ),
+	'geocode' => array( 0, '地理編碼' ),
+	'geodistance' => array( 0, '地理距離' ),
+	'finddestination' => array( 0, '搜尋目的地' ),
+	'coordinates' => array( 0, '坐標' ),
+	'distance' => array( 0, '距離' ),
+	'mapsdoc' => array( 0, '地圖檔案' ),
+);
