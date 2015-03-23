@@ -1,5 +1,12 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.2.3
+
+Released on March 23rd, 2015.
+
+* Protocol relative URLs are now used, avoiding HTTPS related problems
+* Selecting OpenLayers markers now works on touch devices
+
 ## Maps 3.2.2
 
 Released on January 19th, 2015.
