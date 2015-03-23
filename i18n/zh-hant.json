@@ -41,5 +41,5 @@
 	"semanticmaps-kml-linkabsolute": "連結應為絕對位址 (相反於相對位址)",
 	"semanticmaps-kml-pagelinktext": "連結至頁面要使用的文字，文字中的 $1 會取代為頁面標題",
 	"semanticmaps-shapes-improperformat": "$1 的格式有誤，請參考格式說明文件",
-	"semanticmaps-shapes-missingshape": "查無 $1 的形狀。請查看說明文件了解可用的形狀"
+	"semanticmaps-shapes-missingshape": "查無 $1 的形狀。請查看說明文件瞭解可用的形狀"
 }
