@@ -11,7 +11,7 @@
 			"Umherirrender"
 		]
 	},
-	"semanticmaps-desc": "{{desc|name=Semantic Maps|url=http://www.mediawiki.org/wiki/Extension:Semantic_Maps}}",
+	"semanticmaps-desc": "{{desc|name=Semantic Maps|url=https://www.mediawiki.org/wiki/Extension:Semantic_Maps}}",
 	"semanticmaps-unrecognizeddistance": "Used as error message. Parameters:\n* $1 - distance",
 	"semanticmaps-kml": "{{optional}}",
 	"semanticmaps-default-kml-pagelink": "Used as default value for \"pagelinktext\" input box.\nSee example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]\n\n<code>$1</code> is not a parameter (appears as is), but it will be replaced by the page title.\n\nSee also:\n* {{msg-mw|Semanticmaps-kml-pagelinktext}}\n{{Identical|View page}}",
