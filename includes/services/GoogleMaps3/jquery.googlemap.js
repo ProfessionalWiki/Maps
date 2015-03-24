@@ -809,7 +809,7 @@
 					mapDiv.css(fullscreenCss);
 				}
 
-
+				google.maps.event.trigger(map, "resize");
 			});
 
 			return controlDiv;
