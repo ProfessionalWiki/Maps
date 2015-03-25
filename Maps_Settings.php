@@ -247,8 +247,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		// used when the user does not provide one.
 		$GLOBALS['egMapsOLLayers'] = array(
 			'osm-mapnik',
-			'osm-cyclemap',
-			'osmarender'
+			'osm-cyclemap'
 		);
 		
 		// The difinitions for the layers that should be available for the user.
