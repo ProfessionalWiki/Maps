@@ -247,8 +247,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		// used when the user does not provide one.
 		$GLOBALS['egMapsOLLayers'] = array(
 			'osm-mapnik',
-			'osm-cyclemap',
-			'osmarender'
+			'osm-cyclemap'
 		);
 		
 		// The difinitions for the layers that should be available for the user.
@@ -263,7 +262,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo-hybrid'    => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Hybrid", {"type": YAHOO_MAP_HYB, "sphericalMercator":true} )', 'yahoo' ),
 			'yahoo-satellite' => array( 'OpenLayers.Layer.Yahoo( "Yahoo! Satellite", {"type": YAHOO_MAP_SAT, "sphericalMercator":true} )', 'yahoo' ),
 		
-			'osmarender'   => array( 'OpenLayers.Layer.OSM.Osmarender("OSM arender")', 'osm' ),
 			'osm-mapnik'   => array( 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ),
 			'osm-cyclemap' => array( 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm' ),
 
@@ -282,7 +280,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo' => array( 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid' ),
 			'bing' => array( 'bing-normal', 'bing-satellite', 'bing-hybrid' ),
 			'google' => array( 'google-normal', 'google-satellite', 'google-terrain', 'google-hybrid' ),
-			'osm' => array( 'osmarender', 'osm-mapnik', 'osm-cyclemap' ),
+			'osm' => array( 'osm-mapnik', 'osm-cyclemap' ),
 		);
 
 		global $wgJsMimeType;
