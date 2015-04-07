@@ -28,6 +28,11 @@ $specialPageAliases['as'] = array(
 	'MapEditor' => array( 'মানচিত্ৰ_সম্পাদক' ),
 );
 
+/** Western Balochi (بلوچی رخشانی) */
+$specialPageAliases['bgn'] = array(
+	'MapEditor' => array( 'نخشه_ئی_ایڈیٹگر' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'MapEditor' => array( 'Karteneditor' ),
