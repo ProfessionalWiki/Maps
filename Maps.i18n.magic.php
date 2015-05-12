@@ -40,7 +40,7 @@ $magicWords['ar'] = array(
 	'mapsdoc' => array( 0, 'توثيق_الخرائط' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $magicWords['arz'] = array(
 	'display_map' => array( 0, 'عرض_الخريطه', 'عرض_الخريطة' ),
 	'display_point' => array( 0, 'نقطه_العرض' ),

@@ -18,7 +18,7 @@ $specialPageAliases['ar'] = array(
 	'MapEditor' => array( 'محرر_الخريطة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'MapEditor' => array( 'محرر_الخريطه' ),
 );
