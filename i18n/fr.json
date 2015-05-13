@@ -15,7 +15,8 @@
 			"Sherbrooke",
 			"Verdy p",
 			"Wyz",
-			"Weft"
+			"Weft",
+			"Jonathan1"
 		]
 	},
 	"maps-desc": "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques.",
@@ -141,6 +142,8 @@
 	"maps-par-height": "Permet de définir la hauteur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.",
 	"maps-par-centre": "Le lieu sur lequel la carte devra être centrée",
 	"maps-googlemaps3-incompatbrowser": "Votre navigateur n'est pas compatible avec Google Maps v3.",
+	"maps-googlemaps3-par-imageoverlays": "Permet d'ajouter une image à l'emplacement indiqué sur la carte.",
+	"maps-googlemaps3-par-markercluster": "Autoriser la fusion de plusieurs repères à proximité en un seul repère",
 	"maps-googlemaps3-par-type": "Le type de carte à afficher initialement.",
 	"maps-googlemaps3-par-types": "Les types de carte qui seront disponibles via le contrôle de type.",
 	"maps-googlemaps3-par-layers": "Couches spéciales à charger sur la carte.",
