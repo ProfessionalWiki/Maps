@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Avjoska"
+			"Avjoska",
+			"Pikne"
 		]
 	},
-	"semanticmaps-latitude": "Laiuskraad:$1",
-	"semanticmaps-longitude": "Pikkuskraad:$1",
+	"semanticmaps-latitude": "Laius: $1",
+	"semanticmaps-longitude": "Pikkus: $1",
+	"semanticmaps-altitude": "Kõrgus: $1",
 	"semanticmaps_enteraddresshere": "Sisesta aadress siia",
 	"semanticmaps-updatemap": "Uuenda kaart",
 	"semanticmaps-forminput-remove": "Eemalda",
