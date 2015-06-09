@@ -58,6 +58,7 @@
 	"validation-error-invalid-images": "Parameters:\n* $1 - parameter name\n{{Related|Maps-validation}}",
 	"validation-error-invalid-goverlay": "Parameters:\n* $1 - parameter name\n{{Related|Maps-validation}}",
 	"validation-error-invalid-goverlays": "Parameters:\n* $1 - parameter name\n{{Related|Maps-validation}}",
+	"maps-abb-north": "Symbol for representing \"north\" in geolocation coordinates.",
 	"maps-latitude": "{{Identical|Latitude}}",
 	"maps-longitude": "{{Identical|Longitude}}",
 	"maps-invalid-coordinates": "Unused at this time. Parameters:\n* $1 - value",

@@ -18,7 +18,7 @@ $specialPageAliases['ar'] = array(
 	'MapEditor' => array( 'محرر_الخريطة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'MapEditor' => array( 'محرر_الخريطه' ),
 );
@@ -26,6 +26,11 @@ $specialPageAliases['arz'] = array(
 /** Assamese (অসমীয়া) */
 $specialPageAliases['as'] = array(
 	'MapEditor' => array( 'মানচিত্ৰ_সম্পাদক' ),
+);
+
+/** Western Balochi (بلوچی رخشانی) */
+$specialPageAliases['bgn'] = array(
+	'MapEditor' => array( 'نخشه_ئی_ایڈیٹگر' ),
 );
 
 /** German (Deutsch) */
