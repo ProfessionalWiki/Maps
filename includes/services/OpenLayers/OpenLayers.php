@@ -20,10 +20,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 call_user_func( function() {
 	global $wgHooks, $wgResourceModules, $wgAutoloadClasses;
 
+	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+
 	$wgResourceModules['ext.maps.openlayers'] = array(
 		'dependencies' => array( 'ext.maps.common' ),
 		'localBasePath' => __DIR__,
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ),
+		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
 		'scripts' =>   array(
 			'OpenLayers/OpenLayers.js',
