@@ -1,5 +1,14 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.2.4
+
+Released on June 21st, 2015.
+
+* Map reside is now triggered when going fullscreen
+* Improved styling of the fullscreen button
+* Removed no longer working osmarender layer
+* Fixed resource paths for some installation configurations
+
 ## Maps 3.2.3
 
 Released on March 23rd, 2015.
