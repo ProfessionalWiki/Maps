@@ -18,7 +18,7 @@ final class MapsMappingServices {
 	 * 
 	 * @var string[]
 	 */
-	protected static $registeredServices = array();
+	private static $registeredServices = array();
 	
 	/**
 	 * Associative with service identifiers as keys containing instances of
@@ -32,7 +32,7 @@ final class MapsMappingServices {
 	 * 
 	 * @var iMappingService[]
 	 */
-	protected static $services = array();
+	private static $services = array();
 	
 	/**
 	 * Registers a service class linked to an identifier.
@@ -82,8 +82,9 @@ final class MapsMappingServices {
 	 * @param $serviceIdentifier String: internal service identifier
 	 * 
 	 * @return iMappingService
+	 * @throws MWException
 	 */
-	public static function getServiceInstance( $serviceIdentifier ) {
+	private static function getServiceInstance( $serviceIdentifier ) {
 		if ( !array_key_exists( $serviceIdentifier, self::$services ) ) {
 			if ( array_key_exists( $serviceIdentifier, self::$registeredServices ) ) {
 				$service = new self::$registeredServices[$serviceIdentifier]( $serviceIdentifier );
@@ -182,7 +183,7 @@ final class MapsMappingServices {
 	 * 
 	 * @return string
 	 */
-	protected static function getMainServiceName( $serviceName ) {
+	private static function getMainServiceName( $serviceName ) {
 		if ( !array_key_exists( $serviceName, self::$services ) ) {
 			foreach ( self::getServiceIdentifiers() as $serviceIdentifier ) {
 				$service = self::getServiceInstance( $serviceIdentifier );

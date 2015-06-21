@@ -25,7 +25,7 @@ class ServiceParam extends StringParam {
 	 *
 	 * @var string
 	 */
-	protected $feature;
+	private $feature;
 
 	/**
 	 * @see ParamDefinition::postConstruct()
