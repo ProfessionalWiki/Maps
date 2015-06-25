@@ -170,7 +170,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// Boolean. Controls if you can specify images using a full path in layers.
 	$GLOBALS['egMapsAllowExternalImages'] = true;
 	
-	
+	// Boolean. Sets if pages with maps should be put in special category
+	$GLOBALS['egMapsEnableCategory'] = true;
 	
 // Specific mapping service configuration
 
