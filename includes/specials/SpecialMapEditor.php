@@ -55,4 +55,7 @@ class SpecialMapEditor extends SpecialPage{
         );
 	}
 
+	protected function getGroupName() {
+		return 'maps';
+	}
 }
