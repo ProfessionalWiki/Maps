@@ -74,6 +74,7 @@ call_user_func( function() {
 
 		if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
 			$GLOBALS['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';
+			$GLOBALS['wgSpecialPageGroups']['MapEditor'] = 'maps';
 		}
 
 		return true;
