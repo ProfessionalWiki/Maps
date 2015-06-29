@@ -4,7 +4,8 @@ These are the release notes for the [Maps extension](../README.md).
 
 (Under development)
 
-* 
+* Added `$egMapsEnableCategory` setting
+* Fixed OpenLayers specific path issue
 
 ## Maps 3.2.4
 
