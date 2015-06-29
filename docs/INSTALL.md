@@ -18,8 +18,14 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-32">Maps 3.2</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.3</a></th>
 		<td>Stable release</td>
+		<td>2015-06-29</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">3.3.0</a></td>
+	</tr>
+	<tr>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md#maps-32">Maps 3.2</a></th>
+		<td>Legacy release</td>
 		<td>2014-09-12</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.2">3.2</a></td>
 	</tr>
@@ -62,14 +68,14 @@ These are the installation and configuration instructions for the [Maps extensio
 	<tr>
 		<th>Maps 3.3.x</th>
 		<td>5.3.2 - 5.6.x</td>
-		<td>1.18 - 1.24</td>
+		<td>1.18 - 1.25</td>
 		<td>Required</td>
 		<td>2.x (handled by Composer)</td>
 	</tr>
 	<tr>
 		<th>Maps 3.1.x & 3.2.x</th>
 		<td>5.3.2 - 5.6.x</td>
-		<td>1.18 - 1.23</td>
+		<td>1.18 - 1.24</td>
 		<td>Required</td>
 		<td>2.x (handled by Composer)</td>
 	</tr>
