@@ -33,7 +33,7 @@ Released on January 19th, 2015.
 
 Released on January 13th, 2015.
 
-* Fixed `geocde` right
+* Fixed `geocode` right
 * Fixed coordinate precision issue after breaking changes in DataValues Geo 
 
 ## Maps 3.2
