@@ -1,12 +1,19 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.3
+
+Released on June 29th, 2015.
+
+* Added `$egMapsEnableCategory` setting (by Bernhard Krabina)
+* Fixed OpenLayers specific path issue (by Simon Heimler)
+
 ## Maps 3.2.4
 
 Released on June 21st, 2015.
 
-* Map reside is now triggered when going fullscreen
-* Improved styling of the fullscreen button
-* Removed no longer working osmarender layer
+* Map reside is now triggered when going fullscreen (by Kjetil Volden)
+* Improved styling of the fullscreen button (by Kjetil Volden)
+* Removed no longer working osmarender layer (by Karsten Hoffmeyer)
 * Fixed resource paths for some installation configurations
 
 ## Maps 3.2.3
@@ -26,7 +33,7 @@ Released on January 19th, 2015.
 
 Released on January 13th, 2015.
 
-* Fixed `geocde` right
+* Fixed `geocode` right
 * Fixed coordinate precision issue after breaking changes in DataValues Geo 
 
 ## Maps 3.2
