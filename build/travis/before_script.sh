@@ -2,6 +2,8 @@
 
 set -x
 
+composer self-update
+
 originalDirectory=$(pwd)
 
 cd ..

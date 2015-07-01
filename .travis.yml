@@ -18,7 +18,7 @@ matrix:
   exclude:
     - env: THENEEDFORTHIS=FAIL
   allow_failures:
-    - env: DBTYPE=sqlite; MW=1.24.0
+    - env: DBTYPE=sqlite; MW=1.25.0
 
 before_script: bash ./build/travis/before_script.sh
 
