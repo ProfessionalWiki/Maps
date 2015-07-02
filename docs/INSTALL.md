@@ -14,19 +14,19 @@ These are the installation and configuration instructions for the [SemanticMaps]
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.2.x</a></th>
-		<td>Development version</td>
-		<td>Future</td>
+		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.2.0</a></th>
+		<td>Stable release</td>
+		<td>2015-07-02</td>
 		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.1.2</a></th>
-		<td>Stable release</td>
+		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.1.x</a></th>
+		<td>Legacy release</td>
 		<td>2014-11-11</td>
 		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.1.2">3.1.2</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.0.0</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.0.x</a></th>
 		<td>Legacy release</td>
 		<td>2014-01-18</td>
 		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.0">3.0</a></td>
@@ -60,7 +60,7 @@ These are the installation and configuration instructions for the [SemanticMaps]
 	<tr>
 		<th>S. Maps 3.2.x</th>
 		<td>5.3.2 - 5.6.x</td>
-		<td>1.19 - 1.24</td>
+		<td>1.19 - 1.25</td>
 		<td>2.x >= 2.1</td>
 		<td>3.x</td>
 		<td>Required</td>
