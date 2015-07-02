@@ -2,9 +2,9 @@ These are the release notes for the Semantic Maps extension.
 
 ## Semantic Maps 3.2
 
-(dev version)
+Released on July 2nd, 2015.
 
-* Added Leaflet result format
+* Added Leaflet result format (by Bernhard Krabina)
 
 ## Semantic Maps 3.1.3
 

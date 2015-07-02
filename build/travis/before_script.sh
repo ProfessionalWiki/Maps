@@ -2,7 +2,7 @@
 
 set -x
 
-composer self-update
+travis_retry composer self-update
 
 originalDirectory=$(pwd)
 
