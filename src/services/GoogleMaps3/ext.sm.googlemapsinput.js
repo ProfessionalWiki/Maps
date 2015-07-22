@@ -11,7 +11,11 @@
 
 		$( '.sminput-googlemaps3' ).each( function() {
 			var $this = $( this );
-			$this.googlemapsinput( $this.attr( 'id' ), jQuery.parseJSON( $this.find( 'div').text() ) );
+
+			$this.googlemapsinput(
+				$this.attr( 'id' ),
+				jQuery.parseJSON( $this.find( 'div.sminputdata' ).text() )
+			);
 		} );
 
 	} );
