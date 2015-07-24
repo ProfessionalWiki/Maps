@@ -2,7 +2,7 @@
 
 set -x
 
-composer self-update
+travis_retry composer self-update
 
 originalDirectory=$(pwd)
 
@@ -16,7 +16,7 @@ cd phase3
 
 git checkout $MW
 
-composer install --prefer-source
+travis_retry composer install --prefer-source
 
 if [ "$DB" == "postgres" ]
 then
