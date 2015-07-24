@@ -18,8 +18,14 @@ These are the installation and configuration instructions for the [Maps extensio
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.3</a></th>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.4</a></th>
 		<td>Stable release</td>
+		<td>2015-07-25</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">3.4.0</a></td>
+	</tr>
+	<tr>
+		<th><a href="https://github.com/JeroenDeDauw/Maps/blob/master/docs/RELEASE-NOTES.md">Maps 3.3</a></th>
+		<td>Legacy release</td>
 		<td>2015-06-29</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">3.3.0</a></td>
 	</tr>
@@ -66,7 +72,7 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Validator</th>
 	</tr>
 	<tr>
-		<th>Maps 3.3.x</th>
+		<th>Maps 3.3.x & 3.4.x</th>
 		<td>5.3.2 - 5.6.x</td>
 		<td>1.18 - 1.25</td>
 		<td>Required</td>

@@ -2,6 +2,8 @@ These are the release notes for the [Maps extension](../README.md).
 
 ## Maps 3.4
 
+Released on July 25th, 2015.
+
 * Added KML support for OpenLayers via a new `kml` parameter (by akionux)
 * Fixed Google Maps HTTPS support issues (by Karsten Hoffmeyer)
 
