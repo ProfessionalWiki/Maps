@@ -2,8 +2,6 @@
 
 set -x
 
-travis_retry composer self-update
-
 originalDirectory=$(pwd)
 
 cd ..
@@ -14,7 +12,7 @@ mv mediawiki-$MW phase3
 
 cd phase3
 
-travis_retry composer install --prefer-source
+composer install --prefer-source
 
 if [ "$DB" == "postgres" ]
 then
