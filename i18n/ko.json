@@ -31,6 +31,6 @@
 	"semanticmaps-kml-title": "결과에 대한 기본 제목",
 	"semanticmaps-kml-linkabsolute": "링크는 (상대적와 반대인) 절대적이어야 합니다",
 	"semanticmaps-kml-pagelinktext": "$1 문서는 문서 제목으로 바뀔 문서의 링크에 사용하는 텍스트",
-	"semanticmaps-shapes-improperformat": "$1의 부적절한 형식입니다. 형식에 대해서는 설명서를 참고하세요.",
-	"semanticmaps-shapes-missingshape": "$1에 대한 모양을 찾을 수 없습니다. 사용할 수 있는 모양에 대해서는 설명서를 참고하세요"
+	"semanticmaps-shapes-improperformat": "$1의 부적절한 형식입니다. 형식에 대해서는 설명서를 참조하세요.",
+	"semanticmaps-shapes-missingshape": "$1에 대한 모양을 찾을 수 없습니다. 사용할 수 있는 모양에 대해서는 설명서를 참조하세요"
 }
