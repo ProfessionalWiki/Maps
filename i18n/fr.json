@@ -136,6 +136,7 @@
 	"maps_centred_on": "Carte centrée sur $1, $2.",
 	"maps-par-mappingservice": "Permet de régler le service de cartographie qui sera utilisé pour générer la carte.",
 	"maps-par-resizable": "Rendre la carte redimensionnable en faisant glisser son coin inférieur droit.",
+	"maps-par-searchmarkers": "Permet de rechercher des marqueurs spécifiques via un champ inclus dans la carte.",
 	"maps-par-geoservice": "Le service de géocodage à utiliser pour effectuer les traductions entre les adresses et les coordonnées.",
 	"maps-par-zoom": "Le niveau de zoom de la carte. Pour les cartes avec des marqueurs la valeur par défaut le plus grand zoom qui montre encore tous les marqueurs.",
 	"maps-par-width": "Permet de définir la largeur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.",
