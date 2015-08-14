@@ -18,7 +18,8 @@
 			"Vivaelcelta",
 			"Macofe",
 			"Themasterriot",
-			"Mor"
+			"Mor",
+			"Rafael.minuesa"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas.",
@@ -58,6 +59,7 @@
 	"maps-geocode-description": "Permite la geocodificación de direcciones, en otras palabras, transformando las ubicaciones legibles por humanos en conjuntos de coordenadas. No hay soporte para varios servicios de geocodificación, que no deben confundirse con servicios de mapas.",
 	"maps-geodistance-description": "Calcular la distancia geográfica entre dos puntos, desde y hacia cualquiera de los formatos compatibles.",
 	"maps-mapsdoc-description": "Mostrar una tabla con los parámetros para un servicio de mapas especificado junto con sus valores predeterminados y descripciones.",
+	"maps-layerdefinition-description": "Describe una capa personalizada que puede ser visualizada con otras funciones del Mapa.",
 	"maps-mapsdoc-par-service": "El servicio de mapas desde el que mostrar la documentación del parámetro.",
 	"maps-mapsdoc-par-language": "El idioma en el que mostrar la documentación. Si dicha traducción no está disponible, se utilizará el inglés en su lugar.",
 	"maps-coordinates-par-location": "Las coordenadas a las que desee dar formato.",
@@ -158,6 +160,7 @@
 	"maps-googlemaps3-par-poi": "Mostrar puntos de interés.",
 	"maps-openlayers-par-controls": "Los controles a colocar en el mapa.",
 	"maps-openlayers-par-layers": "Las capas que estarán disponibles en el selector de capas. La primera capa se mostrará cuando se cargue el mapa.",
+	"maps-openlayers-par-overlays": "Capas superposicionadas que estarán disponibles en el selector de capas. Estas capas serán mostradas sobre la parte superior de una capa normal, como si fuera una especie de marcador.",
 	"maps-osm-par-thumbs": "Mostrar las miniaturas",
 	"maps-osm-par-photos": "Mostrar las fotos",
 	"mapeditor": "Editor de mapas",
