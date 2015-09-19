@@ -38,5 +38,7 @@
 	"maps_openlayers": "أوبن لايرز",
 	"maps_osm": "أوبن ستريت ماب",
 	"maps_click_to_activate": "اضغط لتنشيط الخريطة",
-	"maps_centred_on": "الخريطة مركزها في $1، $2."
+	"maps_centred_on": "الخريطة مركزها في $1، $2.",
+	"mapeditor": "محرر الخرائط",
+	"specialpages-group-maps": "الخرائط"
 }
