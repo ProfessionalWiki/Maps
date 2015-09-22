@@ -130,7 +130,7 @@
 	"maps_geocoding_failed": "Las siguientes {{PLURAL:$2|dirección|direcciones}}  no han podido ser geocodificadas: $1.\nNo se puede mostrar el mapa.",
 	"maps_geocoding_failed_for": "No fue posible geocodificar {{PLURAL:$2|la siguiente dirección, que ha sido omitida|las siguientes direcciones, que han sido omitidas}} del mapa:$1.",
 	"maps_unrecognized_coords": "{{PLURAL:$2|La siguiente coordenada no fue reconocida|Las siguientes coordenadas no fueron reconocidas}}: $1.",
-	"maps_unrecognized_coords_for": "{{PLURAL:$2|La coordenada siguiente no es reconocida|Las coordenadas siguientes no son reconocidas}} y PLURAL:$2|{{han sido omitidas|han sido omitidas}} del mapa :$1",
+	"maps_unrecognized_coords_for": "{{PLURAL:$2|La coordenada siguiente no se reconoce y se ha|Las coordenadas siguientes no se reconocen y se han}} omitido del mapa:\n$1",
 	"maps_map_cannot_be_displayed": "No se puede mostrar el mapa.",
 	"maps-geocoder-not-available": "La funcionalidad de geocodificación de Maps no está disponible. Su ubicación no puede ser geocodificada.",
 	"maps_click_to_activate": "Haz clic para activar el mapa",
