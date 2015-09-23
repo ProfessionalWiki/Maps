@@ -5,11 +5,12 @@
 			"Lockal",
 			"Okras",
 			"Pastakhov",
-			"Александр Сигачёв"
+			"Александр Сигачёв",
+			"Kaganer"
 		]
 	},
 	"semanticmaps-desc": "Обеспечивает возможность просмотра и редактирования координатных данных, хранящихся в расширении [https://www.semantic-mediawiki.org Семантической МедиаВики].",
-	"semanticmaps-unrecognizeddistance": "Значение $1 не является допустимым расстоянием.",
+	"semanticmaps-unrecognizeddistance": "Значение $1 — это недопустимое расстояние.",
 	"semanticmaps-kml-link": "Просмотреть файл KML",
 	"semanticmaps-default-kml-pagelink": "Просмотреть страницу $1",
 	"semanticmaps-latitude": "Широта: $1",
