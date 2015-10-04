@@ -53,5 +53,11 @@
 		"branch-alias": {
 			"dev-master": "3.2.x-dev"
 		}
+	},
+	"config": {
+		"process-timeout": 0
+	},
+	"scripts":{
+		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
 	}
 }

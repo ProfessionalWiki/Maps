@@ -2,8 +2,6 @@
 
 set -x
 
-travis_retry composer self-update
-
 originalDirectory=$(pwd)
 
 cd ..
@@ -16,8 +14,13 @@ cd phase3
 
 git checkout $MW
 
-composer install --prefer-source
-composer require 'phpunit/phpunit=3.7.*' --prefer-source
+## MW 1.25 requires Psr\Logger
+if [ -f composer.json ]
+then
+	composer install --prefer-source
+else
+	composer require 'phpunit/phpunit=3.7.*' --prefer-source
+fi
 
 if [ "$DB" == "postgres" ]
 then
