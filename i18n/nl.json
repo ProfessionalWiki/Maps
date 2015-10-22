@@ -33,7 +33,7 @@
 	"semanticmaps-kml-text": "De tekst die gekoppeld is aan iedere pagina. Als er extra opgegeven eigenschappen zijn, wordt deze tekst daardoor overschreven.",
 	"semanticmaps-kml-title": "De standaard titel voor resultaten",
 	"semanticmaps-kml-linkabsolute": "Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)",
-	"semanticmaps-kml-pagelinktext": "De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginatitel",
+	"semanticmaps-kml-pagelinktext": "De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginanaam",
 	"semanticmaps-shapes-improperformat": "Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak",
 	"semanticmaps-shapes-missingshape": "Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen"
 }
