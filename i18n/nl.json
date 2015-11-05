@@ -5,7 +5,8 @@
 			"SPQRobin",
 			"Saruman",
 			"Siebrand",
-			"Esketti"
+			"Esketti",
+			"Rcdeboer"
 		]
 	},
 	"semanticmaps-desc": "Biedt de mogelijkheid om locatiegegevens die opgeslagen zijn in [https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki] te bewerken en te bekijken",
@@ -29,11 +30,11 @@
 	"semanticmaps-par-template": "Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.",
 	"semanticmaps-par-geocodecontrol": "Besturingselement voor geocodering weergeven.",
 	"semanticmaps-par-activeicon": "Pictogram dat wordt weergegeven in plaats van de standaard marker, als de actieve pagina gelijk is aan het zoekresultaat",
-	"semanticmaps-par-pagelabel": "Wanneer dit is ingesteld op \"ja\", alle markers hebben een \"inlineLabel\" met een link naar de pagina met de coördinaten voor de marker",
+	"semanticmaps-par-pagelabel": "Wanneer dit is ingesteld op \"yes\", krijgen alle markers een \"inlineLabel\" met een link naar de pagina waarop de coördinaten voor de marker staan",
 	"semanticmaps-kml-text": "De tekst die gekoppeld is aan iedere pagina. Als er extra opgegeven eigenschappen zijn, wordt deze tekst daardoor overschreven.",
 	"semanticmaps-kml-title": "De standaard titel voor resultaten",
 	"semanticmaps-kml-linkabsolute": "Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)",
-	"semanticmaps-kml-pagelinktext": "De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginatitel",
+	"semanticmaps-kml-pagelinktext": "De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginanaam",
 	"semanticmaps-shapes-improperformat": "Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak",
 	"semanticmaps-shapes-missingshape": "Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen"
 }
