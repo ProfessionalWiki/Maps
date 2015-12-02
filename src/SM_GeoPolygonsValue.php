@@ -38,7 +38,7 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	 */
 	protected function parseUserValue( $value ) {
 		if ( $value === '' ) {
-			$this->addError( wfMsgForContent( 'smw_emptystring' ) );
+			$this->addError( wfMessage( 'smw_emptystring' )->inContentLanguage()->text() );
 		}
 		$polyHandler = new PolygonHandler ( $value );
 		foreach( $polyHandler->getValidationErrors() as $errMsg ) {
