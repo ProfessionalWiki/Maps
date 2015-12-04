@@ -69,8 +69,8 @@ call_user_func( function() {
 
 	// Register the initialization function of Maps.
 	$GLOBALS['wgExtensionFunctions'][] = function () {
-		wfRunHooks( 'MappingServiceLoad' );
-		wfRunHooks( 'MappingFeatureLoad' );
+		Hooks::run( 'MappingServiceLoad' );
+		Hooks::run( 'MappingFeatureLoad' );
 
 		if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
 			$GLOBALS['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';

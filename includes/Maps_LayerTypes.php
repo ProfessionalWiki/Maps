@@ -155,7 +155,7 @@ class MapsLayerTypes {
 	protected static function initializeTypes() {
 		// only initialize once!
 		if( empty( self::$classes ) ) {
-			wfRunHooks( 'MappingLayersInitialization' );
+			Hooks::run( 'MappingLayersInitialization' );
 		}
 	}
 }

@@ -3,14 +3,15 @@
 		"authors": [
 			"Event",
 			"Kim Eik",
-			"Nghtwlkr"
+			"Nghtwlkr",
+			"Danmichaelo"
 		]
 	},
 	"maps-desc": "Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner.\n([http://mapping.referata.com/wiki/Examples demoer]).",
 	"right-geocode": "Geokode",
 	"maps_map": "Kart",
 	"maps-loading-map": "Laster kart...",
-	"maps-load-failed": "Kunne ikke laste kartet.",
+	"maps-load-failed": "Klarte ikke laste kartet.",
 	"maps-markers": "Markører",
 	"maps-others": "andre",
 	"maps-ns-layer": "Lag",
