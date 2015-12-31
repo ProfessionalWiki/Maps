@@ -1,5 +1,11 @@
 These are the release notes for the [Maps extension](../README.md).
 
+## Maps 3.5
+
+(In development)
+
+* Fixed Open Street Map HTTPS support issues (by Karsten Hoffmeyer)
+
 ## Maps 3.4
 
 Released on July 25th, 2015.
