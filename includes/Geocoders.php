@@ -104,7 +104,7 @@ final class Geocoders {
 		$initiated = true;
 		
 		// Register the geocoders.
-		Hooks::run( 'GeocoderFirstCallInit' );
+		\Hooks::run( 'GeocoderFirstCallInit' );
 		
 		// Determine if there are any geocoders.
 		self::$canGeocode = count( self::$registeredGeocoders ) > 0;
