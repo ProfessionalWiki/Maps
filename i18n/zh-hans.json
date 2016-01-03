@@ -58,6 +58,7 @@
 	"maps-geodistance-par-unit": "要输出的距离单位。",
 	"maps-geodistance-par-geoservice": "映射服务与此解析器函数一起工作。这会影响默认的地理编码服务值。",
 	"maps-displaymap-par-mappingservice": "允许设置将被用于生成地图的映射服务。",
+	"maps-displaymap-par-coordinates": "要在地图上显示的一个或多个位置。它们将以标记显示。",
 	"maps-displaymap-par-icon": "允许设置图标用于所有标记。",
 	"maps-displaymap-par-circles": "圈起以显示",
 	"maps-displaymap-par-copycoords": "当点击可以复制坐标的位置时显示对话框",
