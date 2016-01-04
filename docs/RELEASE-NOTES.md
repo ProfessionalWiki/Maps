@@ -5,6 +5,7 @@ These are the release notes for the [Maps extension](../README.md).
 (In development)
 
 * Fixed Open Street Map HTTPS support issues (by Karsten Hoffmeyer)
+* Migrated remaining wfMsg* to wfMessage (by Florian Schmidt)
 
 ## Maps 3.4
 
