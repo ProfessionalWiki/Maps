@@ -6,6 +6,7 @@ Released on January 30th, 2016.
 
 * Fixed Open Street Map HTTPS support issues (by Karsten Hoffmeyer)
 * Migrated remaining wfMsg* to wfMessage (by Florian Schmidt)
+* Migrated wfRunHooks to Hooks::run (by Adam Shorland)
 
 ## Maps 3.4
 
