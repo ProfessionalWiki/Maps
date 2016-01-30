@@ -1,8 +1,8 @@
 These are the release notes for the [Maps extension](../README.md).
 
-## Maps 3.5
+## Maps 3.4.1
 
-(In development)
+Released on January 30th, 2016.
 
 * Fixed Open Street Map HTTPS support issues (by Karsten Hoffmeyer)
 * Migrated remaining wfMsg* to wfMessage (by Florian Schmidt)
