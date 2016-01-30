@@ -79,7 +79,7 @@ These are the installation and configuration instructions for the [Maps extensio
 	</tr>
 <tr>
 		<th>3.4.x</th>
-		<td>5.3.2 - 5.6.x</td>
+		<td>5.3.2 - 7.x</td>
 		<td>1.18 - 1.27</td>
 		<td>Required</td>
 		<td>2.x (handled by Composer)</td>
