@@ -144,6 +144,11 @@ class SMQueryHandler {
 	protected $activeIcon;
 
 	/**
+	 * @var string
+	 */
+	protected $userParam = '';
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.7.3
@@ -175,6 +180,15 @@ class SMQueryHandler {
 	 */
 	public function setTemplate( $template ) {
 		$this->template = $template === '' ? false : $template;
+	}
+
+	/**
+	 * @since 3.2
+	 *
+	 * @param string $userParam
+	 */
+	public function setUserParam( $userParam ) {
+		$this->userParam = $userParam;
 	}
 
 	/**
@@ -535,6 +549,7 @@ class SMQueryHandler {
 						'title=' . $titleOutput,
 						'latitude=' . $location->getCoordinates()->getLatitude(),
 						'longitude=' . $location->getCoordinates()->getLongitude(),
+						'userparam=' . $this->userParam
 					),
 					$properties
 				);
