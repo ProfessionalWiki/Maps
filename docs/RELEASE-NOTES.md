@@ -1,5 +1,13 @@
 These are the release notes for the [Maps extension](../README.md).
 
+
+## Maps 3.5
+
+Not yet released.
+
+* Added `egMapsGMaps3Language` setting (by James Hong Kong)
+
+
 ## Maps 3.4.1
 
 Released on January 30th, 2016.

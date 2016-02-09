@@ -276,7 +276,10 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 */
 	protected function getDependencies() {
 		return array(
-			self::getApiScript( $GLOBALS['wgContLang']->getCode() ),
+			self::getApiScript(
+				 $GLOBALS['egMapsGMaps3Language'] instanceof \Language ?
+				 $GLOBALS['egMapsGMaps3Language']->getCode() : $GLOBALS['egMapsGMaps3Language']
+			 ),
 		);
 	}
 
