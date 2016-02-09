@@ -5,7 +5,7 @@ These are the release notes for the [Maps extension](../README.md).
 
 Not yet released.
 
-* Added `egMapsGMaps3Language` setting (by James Hong Kong)
+* Added `egMapsGMaps3Language` setting (by James Hong Kong and Karsten Hoffmeyer)
 
 
 ## Maps 3.4.1
