@@ -100,7 +100,7 @@ final class MapsHooks {
 	 *
 	 * @param DatabaseUpdater $updater
 	 *
-	 * @return true 
+	 * @return true
 	 */
 	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ) {
 		switch( $GLOBALS['wgDBtype'] ) {
@@ -182,10 +182,10 @@ final class MapsHooks {
 	 * @since 3.0
 	 *
 	 * @param ParserOutput $parserOutput
-	 * @param Title $title 
+	 * @param Title $title
 	 */
 	protected static function processLayersStoreCandidate( ParserOutput $parserOutput, Title $title ) {
-		
+
 		// if site which is being parsed is in maps namespace:
 		if( $title->getNamespace() === Maps_NS_LAYER ) {
 

@@ -5,7 +5,7 @@
 			"Karsten Hoffmeyer (kghbln)"
 		]
 	},
-	"maps-desc": "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations.",
+	"maps-desc": "Enables embedding of dynamic maps into wiki pages, geocoding of addresses and other geographical operations",
 	"right-geocode": "Geocode",
 	"action-geocode": "do geocoding on this wiki",
 	"maps_map": "Map",
