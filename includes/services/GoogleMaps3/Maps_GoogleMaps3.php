@@ -3,19 +3,20 @@
 /**
  * Class holding information and functionality specific to Google Maps v3.
  * This information and features can be used by any mapping feature.
- * 
+ *
  * @since 0.7
- * 
+ *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
+
 class MapsGoogleMaps3 extends MapsMappingService {
-	
+
 	/**
-	 * List of map types (keys) and their internal values (values). 
-	 * 
+	 * List of map types (keys) and their internal values (values).
+	 *
 	 * @since 0.7
-	 * 
+	 *
 	 * @var array
 	 */
 	public static $mapTypes = array(
@@ -27,30 +28,30 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'physical' => 'TERRAIN',
 		'earth' => 'earth'
 	);
-	
+
 	/**
-	 * List of supported map layers. 
-	 * 
+	 * List of supported map layers.
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @var array
 	 */
 	protected static $mapLayers = array(
 		'traffic',
 		'bicycling'
-	);	
-	
+	);
+
 	public static $typeControlStyles = array(
 		'default' => 'DEFAULT',
 		'horizontal' => 'HORIZONTAL_BAR',
 		'dropdown' => 'DROPDOWN_MENU'
 	);
-	
+
 	/**
 	 * List of supported control names.
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @var array
 	 */
 	protected static $controlNames = array(
@@ -59,25 +60,25 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'type',
 		'scale',
 		'streetview'
-	);		
-	
+	);
+
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @since 0.6.6
-	 */	
+	 */
 	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
 			array( 'googlemaps', 'google' )
 		);
 	}
-	
+
 	/**
 	 * @see MapsMappingService::addParameterInfo
-	 * 
+	 *
 	 * @since 0.7
-	 */	
+	 */
 	public function addParameterInfo( array &$params ) {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
@@ -222,60 +223,63 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'message' => 'maps-googlemaps3-par-enable-fullscreen',
 		);
 	}
-	
+
 	/**
 	 * @see iMappingService::getDefaultZoom
-	 * 
+	 *
 	 * @since 0.6.5
-	 */	
+	 */
 	public function getDefaultZoom() {
 		global $egMapsGMaps3Zoom;
 		return $egMapsGMaps3Zoom;
-	}	
-	
+	}
+
 	/**
 	 * @see MapsMappingService::getMapId
-	 * 
+	 *
 	 * @since 0.6.5
 	 */
 	public function getMapId( $increment = true ) {
 		static $mapsOnThisPage = 0;
-		
+
 		if ( $increment ) {
 			$mapsOnThisPage++;
 		}
-		
+
 		return 'map_google3_' . $mapsOnThisPage;
-	}	
-	
+	}
+
 	/**
 	 * Returns the names of all supported map types.
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getTypeNames() {
 		return array_keys( self::$mapTypes );
 	}
-	
+
 	/**
 	 * Returns the names of all supported map layers.
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @return array
 	 */
 	public static function getLayerNames() {
 		return self::$mapLayers;
-	}	
-	
+	}
+
 	/**
 	 * @see MapsMappingService::getDependencies
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getDependencies() {
 		return array(
-			self::getApiScript( $GLOBALS['wgLang']->getCode() ),
+			self::getApiScript(
+				is_string( $GLOBALS['egMapsGMaps3Language'] ) ?
+				$GLOBALS['egMapsGMaps3Language'] : $GLOBALS['egMapsGMaps3Language']->getCode()
+			 )
 		);
 	}
 
@@ -290,12 +294,12 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
 	}
-	
+
 	/**
 	 * Maps language codes to Google Maps API v3 compatible values.
-	 * 
+	 *
 	 * @param string $code
-	 * 
+	 *
 	 * @return string The mapped code
 	 */
 	protected static function getMappedLanguageCode( $code ) {
@@ -304,19 +308,19 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	         'he' => 'iw',      // iw is googlish for hebrew
 	         'fj' => 'fil',     // google does not support Fijian - use Filipino as close(?) supported relative
 		);
-		
+
 		if ( array_key_exists( $code, $mappings ) ) {
 			$code = $mappings[$code];
 		}
-		
+
 		return $code;
 	}
-	
+
 	/**
 	 * @see MapsMappingService::getResourceModules
-	 * 
+	 *
 	 * @since 1.0
-	 * 
+	 *
 	 * @return array of string
 	 */
 	public function getResourceModules() {
