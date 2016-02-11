@@ -6,7 +6,7 @@ These are the release notes for the [Maps extension](../README.md).
 Not yet released.
 
 * Added `egMapsGMaps3Language` setting (by James Hong Kong and Karsten Hoffmeyer)
-
+* Added license lable to display on "Special:Version" (by Karsten Hoffmeyer)
 
 ## Maps 3.4.1
 
