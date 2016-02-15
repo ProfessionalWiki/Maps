@@ -152,7 +152,7 @@
 	"maps-googlemaps3-par-poi": "Interessante plaatsen weergeven.",
 	"maps-openlayers-par-controls": "De op de kaart te plaatsen besturingselementen.",
 	"maps-openlayers-par-layers": "De lagen die beschikbaar zijn in het selectievak. De eerste laag worden weergegeven als de kaart wordt geladen.",
-	"maps-openlayers-par-overlays": "Overlay lagen, die verkrijgbaar zal zijn in de laag kiezen. Deze lagen worden weergegeven op de top van een normale laag, net zoiets als een marker.",
+	"maps-openlayers-par-overlays": "Overlaylagen die beschikbaar zijn in de lagenselector. Deze lagen worden bovenop een normale laag weergegeven, ongeveer zoals een marker.",
 	"maps-osm-par-thumbs": "Miniaturen weergeven",
 	"maps-osm-par-photos": "Afbeeldingen weergeven",
 	"mapeditor": "Kaarteditor",
