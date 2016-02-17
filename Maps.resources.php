@@ -83,6 +83,22 @@ return call_user_func( function() {
 				'jquery.ui.dialog',
 			),
 		),
+
+		'ext.maps.services' => $moduleTemplate + array(
+			'group' => 'ext.maps',
+			'scripts' => array(
+				'ext.maps.services.js',
+			),
+			'dependencies' => array(
+				'ext.maps.common',
+				'ext.maps.layers',
+				'ext.maps.coord'
+			),
+			'targets' => array(
+				'mobile',
+				'desktop'
+			)
+		)
 	);
 
 } );
