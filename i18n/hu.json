@@ -4,11 +4,12 @@
 			"Dani",
 			"Dj",
 			"Glanthor Reviol",
-			"Misibacsi"
+			"Misibacsi",
+			"Máté"
 		]
 	},
 	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket. ([http://mapping.referata.com/wiki/Maps_examples demók]).",
-	"right-geocode": "Geokód",
+	"right-geocode": "geokód",
 	"maps_map": "Térkép",
 	"maps-loading-map": "Térkép betöltése…",
 	"maps-load-failed": "Nem sikerült betölteni a térképet!",

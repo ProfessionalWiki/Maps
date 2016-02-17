@@ -3,10 +3,13 @@
 		"authors": [
 			"DCLXVI",
 			"පසිඳු කාවින්ද",
-			"StanProg"
+			"StanProg",
+			"Plamen"
 		]
 	},
 	"maps_map": "Карта",
+	"maps-copycoords-prompt": "CTRL+C, ENTER",
+	"maps-ns-layer": "Слой",
 	"maps-layer-value": "Стойност",
 	"maps-layer-errors": "Грешки",
 	"maps-abb-north": "С",
