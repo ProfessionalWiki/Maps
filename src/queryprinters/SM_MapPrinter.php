@@ -82,6 +82,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			'default' => $smgQPTemplate,
 		);
 
+		$params['userparam'] = array(
+			'default' => '',
+		);
+
 		$params['activeicon'] = array (
 			'type' => 'string',
 			'default' => '',
@@ -132,6 +136,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		$queryHandler->setHeaderStyle($params['headers']);
 		$queryHandler->setShowSubject( $params['showtitle'] );
 		$queryHandler->setTemplate( $params['template'] );
+		$queryHandler->setUserParam( $params['userparam'] );
 		$queryHandler->setHideNamespace( $params['hidenamespace'] );
 		$queryHandler->setActiveIcon( $params['activeicon'] );
 
