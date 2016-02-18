@@ -11,7 +11,7 @@
 			"Viscontino"
 		]
 	},
-	"maps-desc": "Consenti di includere mappe dinamiche nelle pagine wiki, la geocodificazione degli indirizzi ed altre operazioni geografiche.",
+	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki, la geocodifica degli indirizzi ed altre operazioni geografiche",
 	"right-geocode": "Effettua la geocodifica",
 	"maps_map": "Mappa",
 	"maps-loading-map": "Caricamento mappa ...",

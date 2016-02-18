@@ -10,7 +10,7 @@
 			"Esketti"
 		]
 	},
-	"maps-desc": "Laat het insluiten van dynamische kaarten in de wiki pagina ' s, geocoding van adressen en andere geografische activiteiten.",
+	"maps-desc": "Maakt het insluiten van dynamische kaarten in de wikipagina's, het geocoderen van adressen en andere geografische activiteiten mogelijk",
 	"right-geocode": "Geocoderen",
 	"action-geocode": "doen geocoding op deze wiki",
 	"maps_map": "Kaart",
