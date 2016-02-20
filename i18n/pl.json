@@ -6,10 +6,11 @@
 			"Sp5uhe",
 			"Ty221",
 			"Yarl",
-			"Alan ffm"
+			"Alan ffm",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych.",
+	"maps-desc": "Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych",
 	"right-geocode": "Geokodowanie",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Wczytywanie mapy…",

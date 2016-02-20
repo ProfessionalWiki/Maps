@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Cedric31"
+			"Cedric31",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Permet d'afichar de mapas dinamicas dins las paginas del wiki, d'adreças geoencodadas e d'autras operacions geograficas. ([https://www.semantic-mediawiki.org/wiki/Maps mai d'info...])",
+	"maps-desc": "Permet d'afichar de mapas dinamicas dins las paginas del wiki, d'adreças geoencodadas e d'autras operacions geograficas",
 	"right-geocode": "Geocòde",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Cargament de la mapa...",

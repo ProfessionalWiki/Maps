@@ -22,7 +22,7 @@
 			"Rafael.minuesa"
 		]
 	},
-	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas.",
+	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
 	"right-geocode": "Geocodificar",
 	"action-geocode": "hacer geocodificación en este wiki",
 	"maps_map": "Mapa",

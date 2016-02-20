@@ -12,7 +12,7 @@
 			"Macofe"
 		]
 	},
-	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas.",
+	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas",
 	"maps_map": "Mapa",
 	"maps-loading-map": "A carregar o mapa...",
 	"maps-load-failed": "Não foi possível carregar o mapa!",

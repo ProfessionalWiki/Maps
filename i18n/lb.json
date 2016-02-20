@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen.",
+	"maps-desc": "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen",
 	"right-geocode": "Geocode",
 	"action-geocode": "Geocoding op dëser Wiki maachen",
 	"maps_map": "Kaart",

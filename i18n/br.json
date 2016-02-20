@@ -3,10 +3,11 @@
 		"authors": [
 			"Fohanno",
 			"Fulup",
-			"Y-M D"
+			"Y-M D",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all. ([http://mapping.referata.com/wiki/Examples Diskouezadenn])",
+	"maps-desc": "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all",
 	"right-geocode": "Geokod",
 	"maps_map": "Kartenn",
 	"maps-loading-map": "O kargañ ar gartenn...",

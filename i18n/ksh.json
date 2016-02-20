@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Purodha"
+			"Purodha",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Määt et müjjelesch, bewääschlesche Landkaate en Sigge em Wiki aanzezeije, Addräße en Koodinaate op de Ääd ömzerääschne, un ander esu en Funxjuhne. ([http://mapping.referata.com/wiki/Examples E paa Beispöll])",
+	"maps-desc": "Määt et müjjelesch, bewääschlesche Landkaate en Sigge em Wiki aanzezeije, Addräße en Koodinaate op de Ääd ömzerääschne, un ander esu en Funxjuhne",
 	"maps_map": "Kaat",
 	"maps-loading-map": "Mer sen en Kaat aam lahde&nbsp;…",
 	"maps-markers": "Makeeronge",

@@ -4,10 +4,11 @@
 			"Borichèt",
 			"Dragonòt",
 			"McDutchie",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Macofe"
 		]
 	},
-	"maps-desc": "A abìlita l'anseriment dle carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche ([https://www.semantic-mediawiki.org/wiki/Maps për savèjne ëd pi...])",
+	"maps-desc": "A abìlita l'anseriment dle carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche",
 	"right-geocode": "Geocodìfica",
 	"maps_map": "Pian",
 	"maps-loading-map": "Cariament ëd la carta...",

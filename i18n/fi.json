@@ -7,10 +7,11 @@
 			"Nedergard",
 			"Nike",
 			"Str4nd",
-			"ZeiP"
+			"ZeiP",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja ([https://www.semantic-mediawiki.org/wiki/Maps lisätietoja]).",
+	"maps-desc": "Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja",
 	"right-geocode": "Geokoodata",
 	"maps_map": "Kartta",
 	"maps-loading-map": "Ladataan karttaa...",

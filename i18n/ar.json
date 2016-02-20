@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Imksa",
-			"Meno25"
+			"Meno25",
+			"Macofe"
 		]
 	},
-	"maps-desc": "يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى. ([http://mapping.referata.com/wiki/Examples تجارب])",
+	"maps-desc": "يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى",
 	"maps_map": "خريطة",
 	"maps-loading-map": "تحميل الخريطة...",
 	"maps-load-failed": "لا يمكن تحميل الخريطة!",

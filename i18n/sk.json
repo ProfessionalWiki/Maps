@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Helix84"
+			"Helix84",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie. ([http://mapping.referata.com/wiki/Examples demo])",
+	"maps-desc": "Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie",
 	"maps_map": "Mapa",
 	"maps-abb-north": "S",
 	"maps-abb-east": "V",

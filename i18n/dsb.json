@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Michawiki"
+			"Michawiki",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije.",
+	"maps-desc": "Zmóžnijo zasajźowanje dynamiskich kórtow do wikibokow, geokoděrowanje adresow a druge geografiske akcije",
 	"maps_map": "Karta",
 	"maps-loading-map": "Kórta se zacytujo...",
 	"maps-markers": "Marki",
