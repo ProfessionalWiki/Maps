@@ -30,7 +30,7 @@
 	"semanticmaps-par-template": "Een te gebruiken sjabloon om de inhoud van het gegevensvenster op te maken.",
 	"semanticmaps-par-geocodecontrol": "Besturingselement voor geocodering weergeven.",
 	"semanticmaps-par-activeicon": "Pictogram dat wordt weergegeven in plaats van de standaard marker, als de actieve pagina gelijk is aan het zoekresultaat",
-	"semanticmaps-par-pagelabel": "Wanneer dit is ingesteld op \"yes\", krijgen alle markers een \"inlineLabel\" met een link naar de pagina waarop de coördinaten voor de marker staan",
+	"semanticmaps-par-pagelabel": "Wanneer dit is ingesteld op \"yes\", krijgen alle markers een \"inlineLabel\" met een koppeling naar de pagina waarop de coördinaten voor de marker staan",
 	"semanticmaps-kml-text": "De tekst die gekoppeld is aan iedere pagina. Als er extra opgegeven eigenschappen zijn, wordt deze tekst daardoor overschreven.",
 	"semanticmaps-kml-title": "De standaard titel voor resultaten",
 	"semanticmaps-kml-linkabsolute": "Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)",
