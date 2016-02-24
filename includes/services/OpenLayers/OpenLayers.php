@@ -27,6 +27,10 @@ call_user_func( function() {
 		'localBasePath' => __DIR__,
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' =>   array(
 			'OpenLayers/OpenLayers.js',
 			'OSM/OpenStreetMap.js',

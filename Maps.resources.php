@@ -18,7 +18,11 @@ return call_user_func( function() {
 	$moduleTemplate = array(
 		'localBasePath' => __DIR__ . '/includes',
 		'remoteExtPath' =>  end( $pathParts ) . '/includes',
-		'group' => 'ext.maps'
+		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		)
 	);
 
 	return array(
@@ -93,10 +97,6 @@ return call_user_func( function() {
 				'ext.maps.common',
 				'ext.maps.layers',
 				'ext.maps.coord'
-			),
-			'targets' => array(
-				'mobile',
-				'desktop'
 			)
 		)
 	);

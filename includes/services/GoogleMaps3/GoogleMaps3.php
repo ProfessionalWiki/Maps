@@ -27,6 +27,10 @@ call_user_func( function() {
 		'localBasePath' => __DIR__,
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'jquery.googlemap.js',
 			'ext.maps.googlemaps3.js'
@@ -44,6 +48,10 @@ call_user_func( function() {
 		'localBasePath' => __DIR__ . '/gm3-util-library',
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'markerclusterer.js',
 		),
@@ -53,6 +61,10 @@ call_user_func( function() {
 		'localBasePath' => __DIR__ . '/gm3-util-library',
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'markerwithlabel.js',
 		),
@@ -65,6 +77,10 @@ call_user_func( function() {
 		'localBasePath' => __DIR__ . '/geoxml3',
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'geoxml3.js',
 			'ZipFile.complete.js', //kmz handling
@@ -76,6 +92,10 @@ call_user_func( function() {
 		'localBasePath' => __DIR__ . '/gm3-util-library',
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'googleearth-compiled.js',
 		),
