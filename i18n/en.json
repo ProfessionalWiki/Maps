@@ -119,6 +119,7 @@
 	"maps_map_cannot_be_displayed": "The map cannot be displayed.",
 	"maps-geocoder-not-available": "The geocoding feature of Maps is not available. Your location cannot be geocoded.",
 	"maps_googlemaps3": "Google Maps v3",
+	"maps_leaflet": "Leaflet",
 	"maps_openlayers": "OpenLayers",
 	"maps_osm": "OpenStreetMap",
 	"maps_click_to_activate": "Click to activate map",
