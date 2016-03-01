@@ -5,10 +5,11 @@
 			"Jskang",
 			"Priviet",
 			"아라",
-			"Revi"
+			"Revi",
+			"Macofe"
 		]
 	},
-	"maps-desc": "위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다.",
+	"maps-desc": "위키 문서에 동적 지도를 포함하고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다",
 	"right-geocode": "좌표화",
 	"maps_map": "지도",
 	"maps-tracking-category": "지도를 지도 확장 기능으로 표시하는 문서",

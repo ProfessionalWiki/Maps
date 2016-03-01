@@ -4,10 +4,11 @@
 			"Event",
 			"Kim Eik",
 			"Nghtwlkr",
-			"Danmichaelo"
+			"Danmichaelo",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner.\n([http://mapping.referata.com/wiki/Examples demoer]).",
+	"maps-desc": "Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner",
 	"right-geocode": "Geokode",
 	"maps_map": "Kart",
 	"maps-loading-map": "Laster kart...",

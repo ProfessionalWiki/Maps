@@ -9,10 +9,11 @@
 			"Lokal Profil",
 			"Per",
 			"Rotsee",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder.",
+	"maps-desc": "Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder",
 	"right-geocode": "Geokod",
 	"maps_map": "Karta",
 	"maps-tracking-category": "Sidor med en karta som renderats med Karttillägget",

@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Anakmalaysia",
-			"Pizza1016"
+			"Pizza1016",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi.",
+	"maps-desc": "Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi",
 	"right-geocode": "Geokod",
 	"maps_map": "Peta",
 	"maps-loading-map": "Peta sedang dimuatkan...",

@@ -16,10 +16,11 @@
 			"Verdy p",
 			"Wyz",
 			"Weft",
-			"Jonathan1"
+			"Jonathan1",
+			"Lbayle"
 		]
 	},
-	"maps-desc": "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques.",
+	"maps-desc": "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géo-codées et d'autres opérations géographiques.",
 	"right-geocode": "Géocode",
 	"action-geocode": "géocoder sur ce wiki",
 	"maps_map": "Carte",

@@ -5,10 +5,11 @@
 			"Dj",
 			"Glanthor Reviol",
 			"Misibacsi",
-			"Máté"
+			"Máté",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket. ([http://mapping.referata.com/wiki/Maps_examples demók]).",
+	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket",
 	"right-geocode": "geokód",
 	"maps_map": "Térkép",
 	"maps-loading-map": "Térkép betöltése…",

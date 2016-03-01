@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Permite inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques.",
+	"maps-desc": "Permite inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques",
 	"right-geocode": "Xeocódigu",
 	"action-geocode": "xeocodificar nesta wiki",
 	"maps_map": "Mapa",

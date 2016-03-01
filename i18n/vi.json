@@ -5,10 +5,11 @@
 			"Minh Nguyen",
 			"Vinhtantran",
 			"Withoutaname",
-			"Dinhxuanduyet"
+			"Dinhxuanduyet",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác.",
+	"maps-desc": "Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác",
 	"right-geocode": "Mã hóa địa lý",
 	"maps_map": "Bản đồ",
 	"maps-loading-map": "Đang tải bản đồ…",

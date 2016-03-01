@@ -4,10 +4,11 @@
 			"Firilacroco",
 			"KlaudiuMihaila",
 			"Minisarm",
-			"Stelistcristi"
+			"Stelistcristi",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic. ([https://www.semantic-mediawiki.org/wiki/Maps mai multe informații...])",
+	"maps-desc": "Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic",
 	"right-geocode": "Geocod",
 	"maps_map": "Hartă",
 	"maps-loading-map": "Se încarcă harta...",

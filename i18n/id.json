@@ -5,10 +5,11 @@
 			"Farras",
 			"Irwangatot",
 			"IvanLanin",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Mengaktifkan penyertaan peta dinamis dalam halaman wiki, pembuatan geokode alamat, dan operasi geografi lain.\n([http://mapping.referata.com/wiki/Examples demo])",
+	"maps-desc": "Mengaktifkan penyertaan peta dinamis dalam halaman wiki, pembuatan geokode alamat, dan operasi geografi lain",
 	"maps_map": "Peta",
 	"maps-loading-map": "Memuat peta...",
 	"maps-load-failed": "Peta tidak dapat dimuat!",

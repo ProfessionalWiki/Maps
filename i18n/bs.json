@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"CERminator",
-			"KWiki"
+			"KWiki",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije.  ([http://mapping.referata.com/wiki/Examples primeri])",
+	"maps-desc": "Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Učitavam kartu...",
 	"maps-markers": "Markeri",
