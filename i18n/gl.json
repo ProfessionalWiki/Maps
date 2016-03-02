@@ -120,6 +120,7 @@
 	"maps_unrecognized_coords_for": "Non se {{PLURAL:$2|recoñeceu a seguinte coordenada|recoñeceron as seguintes coordenadas}} e {{PLURAL:$2|foi omitida|foron omitidas}} do mapa:\n$1",
 	"maps_map_cannot_be_displayed": "O mapa non se pode mostrar.",
 	"maps-geocoder-not-available": "A funcionalidade de xeocodificación de mapas non está dispoñible; non se pode xeocodificar a súa situación.",
+	"maps_leaflet": "Folleto",
 	"maps_click_to_activate": "Prema para activar o mapa",
 	"maps_centred_on": "Mapa centrado en $1, $2.",
 	"maps-par-mappingservice": "Permite configurar o servizo de mapas que se empregará para xerar o mapa.",

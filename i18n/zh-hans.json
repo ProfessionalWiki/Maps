@@ -97,6 +97,7 @@
 	"maps_unrecognized_coords_for": "以下$2个坐标不被认可并{{PLURAL:$2|已}}被地图忽略：$1。",
 	"maps_map_cannot_be_displayed": "该地图无法显示。",
 	"maps-geocoder-not-available": "地图的地理编码功能不可用。您所在地区不能被编码。",
+	"maps_leaflet": "Leaflet",
 	"maps_click_to_activate": "点击激活地图",
 	"maps_centred_on": "地图居中在$1，$2。",
 	"maps-par-searchmarkers": "允许通过嵌入在地图中的字段搜索特定标记。",

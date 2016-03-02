@@ -124,7 +124,7 @@
 	"maps_map_cannot_be_displayed": "Diese Karte kann nicht angezeigt werden.",
 	"maps-geocoder-not-available": "Die Funktion zum Georeferenzierung von Karten ist nicht verfügbar. Der Standort kann nicht georeferenziert werden.",
 	"maps_googlemaps3": "Karte (Google Maps v3)",
-	"maps_leaflet": "Leaflet",
+	"maps_leaflet": "Karte (Leaflet)",
 	"maps_openlayers": "Karte (OpenLayers)",
 	"maps_click_to_activate": "Klicken, um die Karte zu aktivieren.",
 	"maps_centred_on": "Karte ist auf $1, $2 zentriert.",
