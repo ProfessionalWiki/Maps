@@ -26,7 +26,7 @@ final class MapsMapper {
 	 *
 	 * @param mixed $value
 	 *
-	 * @return tring
+	 * @return string
 	 */
 	public static function encodeJsVar( $value ) {
 		if ( is_bool( $value ) ) {
