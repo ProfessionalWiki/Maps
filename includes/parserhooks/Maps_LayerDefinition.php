@@ -98,7 +98,7 @@ class MapsLayerDefinition extends ParserHook {
 	}
 	
 	/**
-	 * Returns the parser function otpions.
+	 * Returns the parser function options.
 	 * @see ParserHook::getFunctionOptions
 	 *
 	 * @since 3.0
