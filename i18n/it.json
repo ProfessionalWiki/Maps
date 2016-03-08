@@ -70,6 +70,7 @@
 	"maps_unrecognized_coords_for": "{{PLURAL:$2|La seguente coordinata|Le seguenti coordinate}} {{PLURAL:$2|non è stata riconosciuta ed è stata omessa|non sono state riconosciute e sono state omesse}} dalla mappa: $1.",
 	"maps_map_cannot_be_displayed": "La mappa non può essere visualizzata.",
 	"maps-geocoder-not-available": "La funzionalità di geocodifica dell'estensione Maps non è disponibile. La tua posizione non può essere geocodificata.",
+	"maps_leaflet": "Volantino",
 	"maps_click_to_activate": "Clicca per attivare la mappa.",
 	"maps_centred_on": "Mappa centrata su $1, $2.",
 	"maps-googlemaps3-incompatbrowser": "Si sta utilizzando un browser non compatibile con Google Maps v3.",

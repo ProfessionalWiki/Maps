@@ -133,6 +133,7 @@
 	"maps_unrecognized_coords_for": "{{PLURAL:$2|La coordonnée suivante n'a pas été reconnue|Les coordonnées suivantes n'ont pas été reconnues}} et {{PLURAL:$2|a été omise|ont été omises}} sur la carte :\n$1",
 	"maps_map_cannot_be_displayed": "La carte ne peut pas être affichée.",
 	"maps-geocoder-not-available": "La fonctionnalité géocodage des cartes n'est pas disponible. Votre emplacement ne peut être géocodé.",
+	"maps_leaflet": "Dépliant",
 	"maps_click_to_activate": "Cliquer pour activer la carte",
 	"maps_centred_on": "Carte centrée sur $1, $2.",
 	"maps-par-mappingservice": "Permet de régler le service de cartographie qui sera utilisé pour générer la carte.",
