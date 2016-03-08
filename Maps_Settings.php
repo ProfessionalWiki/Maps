@@ -260,6 +260,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 			'osm-mapnik'   => array( 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ),
 			'osm-cyclemap' => array( 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm' ),
+			'osm-mapquest' => array( 'OpenLayers.Layer.OSM.Mapquest("Mapquest OSM")', 'osm' ),
 
 			'google-normal'    => array( 'OpenLayers.Layer.Google("Google Streets", {type: google.maps.MapTypeId.STREETS, numZoomLevels: 20})', 'google' ),
 			'google-satellite' => array( 'OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22})', 'google' ),
