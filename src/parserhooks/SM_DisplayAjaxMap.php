@@ -20,7 +20,7 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
      * @return string
      */
     protected function getName() {
-        return 'display_map_ajax';
+        return 'display_ajax_map';
     }
 
     /**
@@ -34,7 +34,7 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
     protected function getParameterInfo( $type ) {
         $params = MapsMapper::getCommonParameters();
 
-        $params['mappingservice']['feature'] = 'display_map_ajax';
+        $params['mappingservice']['feature'] = 'display_ajax_map';
 
         $params['coordinates'] = array(
             //'type' => 'mapslocation',

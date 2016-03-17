@@ -8,5 +8,5 @@ $magicWords = array();
 
 /** English (English) */
 $magicWords['en'] = array(
-	'display_map_ajax' => array( 0, 'display_map_ajax' ),
+	'display_ajax_map' => array( 0, 'display_ajax_map' ),
 );
