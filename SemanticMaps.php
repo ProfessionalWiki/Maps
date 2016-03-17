@@ -88,7 +88,7 @@ $GLOBALS['wgExtensionMessagesFiles']['SemanticMaps'] = __DIR__ . '/SemanticMaps.
 $GLOBALS['wgExtensionMessagesFiles']['SemanticMapsMagic'] = __DIR__ . '/SemanticMaps.i18n.magic.php';
 
 include_once __DIR__ . '/src/api/ApiCoordinates.php';
-$GLOBALS['wgAPIModules']['coordinates'] = 'Maps\Api\Coordinates';
+$GLOBALS['wgAPIModules']['coordinates'] = 'SMW\MediaWiki\Api\Coordinates';
 
 // Hook for initializing the Geographical Data types.
 $GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';

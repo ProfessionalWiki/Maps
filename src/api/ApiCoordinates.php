@@ -1,8 +1,11 @@
 <?php
 
-namespace Maps\Api;
+namespace SMW\MediaWiki\Api;
 
 use ApiBase;
+use SMWQueryProcessor;
+use SMW\Query\PrintRequest;
+use SMWPropertyValue;
 
 /**
  * API module for coordinates.
@@ -15,7 +18,7 @@ use ApiBase;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-class Coordinates extends ApiBase {
+class Coordinates extends Query {
 
     public function __construct( $main, $action ) {
         parent::__construct( $main, $action );
@@ -23,7 +26,36 @@ class Coordinates extends ApiBase {
 
 
     public function execute() {
-        $params = $this->extractRequestParams();
+        $parameterFormatter = new ApiRequestParameterFormatter( $this->extractRequestParams() );
+        $outputFormat = 'json';
+
+        $conditions = $parameterFormatter->getAskArgsApiParameter( 'conditions' );
+        $conditions .= '[[Has coordinates::+]]';
+
+        $printouts = $parameterFormatter->getAskArgsApiParameter( 'printouts' );
+        $printouts[] = new PrintRequest(
+            PrintRequest::PRINT_PROP,
+            'Has coordinates',
+            SMWPropertyValue::makeUserProperty( 'Has coordinates' )
+        );
+
+        $parameters = $parameterFormatter->getAskArgsApiParameter( 'parameters' );
+
+        $queryResult = $this->getQueryResult( $this->getQuery(
+            $conditions,
+            $printouts,
+            $parameters
+        ) );
+
+        if ( $this->getMain()->getPrinter() instanceof \ApiFormatXml ) {
+            $outputFormat = 'xml';
+        }
+
+        // todo filter by bounding box
+
+        $this->addQueryResult( $queryResult, $outputFormat );
+
+        /*$params = $this->extractRequestParams();
 
         $locations = array(
             array(
@@ -49,43 +81,50 @@ class Coordinates extends ApiBase {
                 $result['locations'][] = $locations[$i];
             }
         }
-        return $this->getResult()->addValue(null, 'results', $result);
+        return $this->getResult()->addValue(null, 'results', $result);*/
     }
 
     public function getAllowedParams() {
         return array(
-            'locations' => array(
+            'conditions' => array(
                 ApiBase::PARAM_TYPE => 'string',
-                //ApiBase::PARAM_REQUIRED => true,
+                ApiBase::PARAM_ISMULTI => true,
+                ApiBase::PARAM_REQUIRED => true,
+            ),
+            'printouts' => array(
+                ApiBase::PARAM_TYPE => 'string',
+                ApiBase::PARAM_DFLT => '',
+                ApiBase::PARAM_ISMULTI => true,
+            ),
+            'parameters' => array(
+                ApiBase::PARAM_TYPE => 'string',
+                ApiBase::PARAM_DFLT => '',
                 ApiBase::PARAM_ISMULTI => true,
             ),
             'bbSouth' => array(
-
+                ApiBase::PARAM_REQUIRED => true
             ),
             'bbWest' => array(
-
+                ApiBase::PARAM_REQUIRED => true
             ),
             'bbNorth' => array(
-
+                ApiBase::PARAM_REQUIRED => true
             ),
             'bbEast' => array(
-
-            ),
-            'service' => array(
-                ApiBase::PARAM_TYPE => \Maps\Geocoders::getAvailableGeocoders(),
-            ),
-            'props' => array(
-                ApiBase::PARAM_ISMULTI => true,
-                ApiBase::PARAM_TYPE => array( 'lat', 'lon', 'alt' ),
-                ApiBase::PARAM_DFLT => 'lat|lon',
-            ),
+                ApiBase::PARAM_REQUIRED => true
+            )
         );
     }
 
     public function getParamDescription() {
         return array(
-            'locations' => 'The locations to geocode',
-            'service' => 'The geocoding service to use',
+            'conditions' => 'The query conditions, i.e. the requirements for a subject to be included',
+            'printouts'  => 'The query printouts, i.e. the properties to show per subject',
+            'parameters' => 'The query parameters, i.e. all non-condition and non-printout arguments',
+            'bbSouth' => 'Bounding box South',
+            'bbWest' => 'Bounding box West',
+            'bbNorth' => 'Bounding box North',
+            'bbEast' => 'Bounding box East'
         );
     }
 
@@ -97,9 +136,7 @@ class Coordinates extends ApiBase {
 
     protected function getExamples() {
         return array(
-            'api.php?action=coordinates&locations=new york',
-            'api.php?action=coordinates&locations=new york|brussels|london',
-            'api.php?action=coordinates&locations=new york&service=geonames',
+            'api.php?action=coordinates&conditions=Category:Locations&printouts=&parameters=&bbSouth=-100&bbWest=-100&bbNorth=100&bbEast=100',
         );
     }
 
