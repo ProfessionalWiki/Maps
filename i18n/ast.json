@@ -118,6 +118,7 @@
 	"maps_unrecognized_coords_for": "Nun se {{PLURAL:$2|reconoció la siguiente coordenada|reconocieron les siguientes coordenaes}} y {{PLURAL:$2|s'omitió|s'omitieron}} nel mapa: $1",
 	"maps_map_cannot_be_displayed": "Nun se pue amosar el mapa.",
 	"maps-geocoder-not-available": "La carauterística de xeocodificación de mapes nun ta disponible. Nun se pue xeocodificar la to situación.",
+	"maps_leaflet": "Leaflet",
 	"maps_click_to_activate": "Calca p'activar el mapa",
 	"maps_centred_on": "Mapa centráu en $1, $2.",
 	"maps-par-mappingservice": "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
