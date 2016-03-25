@@ -39,6 +39,7 @@
                     }).done(function(data) {
                         // todo: don't add the same marker multiple times
                         // maybe remove all old markers
+                        $this.googlemaps.removeMarkers();
                         for (var property in data.query.results) {
                             if (data.query.results.hasOwnProperty(property)) {
                                 var location = data.query.results[property];
