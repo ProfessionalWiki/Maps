@@ -9,7 +9,7 @@
 function ajaxUpdateMarker(googlemaps) {
     var bounds = googlemaps.map.getBounds();
 
-    var query = '[[Category:Locations]]' + ' ';
+    var query = googlemaps.options.coordinates.join(' ') + ' ';
     query += '[[Has coordinates::+]] ';
     query += '[[Has coordinates::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
     query += '[[Has coordinates::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
@@ -25,6 +25,8 @@ function ajaxUpdateMarker(googlemaps) {
         },
         dataType: 'json'
     }).done(function(data) {
+        // todo: don't remove and recreate all markers..
+        // only add new ones.
         googlemaps.removeMarkers();
         for (var property in data.query.results) {
             if (data.query.results.hasOwnProperty(property)) {
