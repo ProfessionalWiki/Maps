@@ -69,26 +69,20 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
      */
     public function render( array $parameters ) {
         // Get the instance of the service class.
-        /*$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
-
-        $mapClass = new MapsDisplayMapRenderer( $service );
-
-        $fullParams = $this->validator->getParameters();
-
-        if ( array_key_exists( 'zoom', $fullParams ) && $fullParams['zoom']->wasSetToDefault() && count( $parameters['coordinates'] ) > 1 ) {
-            $parameters['zoom'] = false;
-        }
-
-        $this->parser->addTrackingCategory( 'maps-tracking-category' );
-        return $mapClass->renderMap( $parameters, $this->parser );*/
-
         $service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
         $mapName = $service->getMapId();
 
         $fullParams = $this->validator->getParameters();
 
+        $configVars = Skin::makeVariablesScript( $service->getConfigVariables() );
         $service->addDependencies( $this->parser );
         $this->parser->getOutput()->addHeadItem( $configVars );
+
+        /*if ( array_key_exists( 'zoom', $fullParams ) && $fullParams['zoom']->wasSetToDefault() && count( $parameters['coordinates'] ) > 1 ) {
+            $parameters['zoom'] = false;
+        }
+
+        $this->parser->addTrackingCategory( 'maps-tracking-category' );*/
 
         return Html::rawElement(
             'div',
@@ -104,8 +98,6 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
                 FormatJson::encode( $parameters )
             )
         );
-
-        //return FormatJson::encode( $parameters );
     }
 
 }
