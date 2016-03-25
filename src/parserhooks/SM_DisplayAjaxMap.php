@@ -87,6 +87,9 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
 
         $fullParams = $this->validator->getParameters();
 
+        $service->addDependencies( $this->parser );
+        $this->parser->getOutput()->addHeadItem( $configVars );
+
         return Html::rawElement(
             'div',
             array(

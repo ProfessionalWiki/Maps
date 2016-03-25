@@ -29,6 +29,15 @@ $moduleTemplate = array(
 	'group' => 'ext.semanticmaps',
 );
 
+$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3ajax'] = $moduleTemplate + array(
+	'dependencies' => array(
+		'ext.maps.googlemaps3'
+	),
+	'scripts' => array(
+		'ext.sm.googlemaps3ajax.js'
+	)
+);
+
 $GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3'] = $moduleTemplate + array(
 	'dependencies' => array(
 		'ext.sm.fi.googlemaps3.single',
@@ -61,6 +70,10 @@ function smfInitGoogleMaps3() {
 
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'qp', 'SMMapPrinter' );
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'fi', 'SMGoogleMaps3FormInput' );
+
+	/* @var MapsMappingService $googleMaps */
+	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+	$googleMaps->addResourceModules(array( 'ext.sm.fi.googlemaps3ajax' ));
 
 	return true;
 }
