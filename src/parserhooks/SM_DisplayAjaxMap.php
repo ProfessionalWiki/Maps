@@ -69,10 +69,10 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
      */
     public function render( array $parameters ) {
         // Get the instance of the service class.
-        $service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
+        $service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'] );
         $mapName = $service->getMapId();
 
-        $fullParams = $this->validator->getParameters();
+        //$fullParams = $this->validator->getParameters();
 
         $configVars = Skin::makeVariablesScript( $service->getConfigVariables() );
         $service->addDependencies( $this->parser );
