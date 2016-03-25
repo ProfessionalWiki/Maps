@@ -9,7 +9,7 @@
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		$.fn.leafletmaps.map = null;
-		this.options = options;
+		$.fn.leafletmaps.options = options;
 
 		/**
 		 * array point of all map elements (markers, lines, polygons, etc.)

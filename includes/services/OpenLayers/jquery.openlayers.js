@@ -11,6 +11,8 @@
 (function ($) {
 	$.fn.openlayers = function (mapElementId, options) {
 
+		$.fn.openlayers.options = options;
+
 		OpenLayers._getScriptLocation = function() {
 			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
 		};

@@ -11,7 +11,7 @@
 		var _this = this;
 		$.fn.googlemaps.map = null;
 		this.markercluster = null;
-		this.options = options;
+		$.fn.googlemaps.options = options;
 
 		/**
 		 * All markers that are currently on the map.
