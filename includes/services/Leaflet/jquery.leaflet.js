@@ -8,7 +8,7 @@
 (function ($, mw) {
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
-		this.map = null;
+		$.fn.leafletmaps.map = null;
 		this.options = options;
 
 		/**
@@ -23,8 +23,8 @@
 		* @param {Object} markerData Contains the fields lat, lon, title, text and icon
 		* @return {L.Marker}
 		*/
-		this.addMarker = function (properties) {
-			this.points.push( new L.LatLng(properties.lat, properties.lon) );
+		$.fn.leafletmaps.addMarker = function (properties) {
+			_this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
 			if (properties.icon === '') {
 				var icon = new L.Icon.Default();
@@ -39,7 +39,7 @@
 				icon:icon
 			};
 
-			var marker = L.marker( [properties.lat, properties.lon], markerOptions ).addTo( this.map );
+			var marker = L.marker( [properties.lat, properties.lon], markerOptions ).addTo( $.fn.leafletmaps.map );
 			if( properties.text.length > 0 ) marker.bindPopup( properties.text );
 		};
 
@@ -56,7 +56,7 @@
 				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
 			}
 
-			L.polyline(latlngs, options).addTo(this.map);
+			L.polyline(latlngs, options).addTo($.fn.leafletmaps.map);
 		};
 
 		/**
@@ -78,7 +78,7 @@
 				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
 			}
 
-			L.Polygon(latlngs, options).addTo(this.map);
+			L.Polygon(latlngs, options).addTo($.fn.leafletmaps.map);
 		};
 
 		/**
@@ -97,7 +97,7 @@
 				fillOpacity:properties.fillOpacity
 			};
 
-			L.Circle([properties.centre.lat, properties.centre.lon], properties.radius, options).addTo(this.map);
+			L.Circle([properties.centre.lat, properties.centre.lon], properties.radius, options).addTo($.fn.leafletmaps.map);
 		};
 
 		/**
@@ -118,7 +118,7 @@
 
 			var bounds = [[properties.sw.lat, properties.sw.lon], [properties.ne.lat, properties.ne.lon]];
 
-			L.rectangle( bounds, options ).addTo(this.map);
+			L.rectangle( bounds, options ).addTo($.fn.leafletmaps.map);
 		};
 
 		this.setup = function () {
@@ -128,7 +128,7 @@
 			if (options.maxzoom !== false ) mapOptions.maxZoom = options.maxzoom;
 
 			var map = L.map( this.get(0), mapOptions ).fitWorld();
-			this.map = map;
+			$.fn.leafletmaps.map = map;
 
 			// add an OpenStreetMap tile layer
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -146,7 +146,7 @@
 			}
 			// Add the markers.
 			for (var i = options.locations.length - 1; i >= 0; i--) {
-				this.addMarker(options.locations[i]);
+				$.fn.leafletmaps.addMarker(options.locations[i]);
 			}
 
 			// Add lines

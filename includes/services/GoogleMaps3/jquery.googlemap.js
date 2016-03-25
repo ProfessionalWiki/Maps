@@ -9,7 +9,7 @@
 	$.fn.googlemaps = function (options) {
 
 		var _this = this;
-		this.map = null;
+		$.fn.googlemaps.map = null;
 		this.markercluster = null;
 		this.options = options;
 
@@ -64,11 +64,11 @@
 		};
 
 		var setZoom = function(bounds) {
-				if (options.zoom === false) {
-				_this.map.fitBounds(bounds);
+			if (options.zoom === false) {
+				$.fn.googlemaps.map.fitBounds(bounds);
 			}
 			else {
-				_this.map.setZoom(options.zoom);
+				$.fn.googlemaps.map.setZoom(options.zoom);
 			}
 		};
 
@@ -79,7 +79,7 @@
 		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
 		 * @return {google.maps.Marker}
 		 */
-		this.addMarker = function (markerData) {
+		$.fn.googlemaps.addMarker = function (markerData) {
 			var markerOptions = {
 				position:new google.maps.LatLng(markerData.lat, markerData.lon),
 				title:markerData.title,
@@ -118,7 +118,7 @@
 					}
 				});
 
-				marker.setMap( _this.map );
+				marker.setMap( $.fn.googlemaps.map );
 				_this.markers.push( marker );
 
 				return marker;
@@ -130,12 +130,12 @@
 				return addToMapAndHandlers( marker );
 			} else {
 				mw.loader.using(
-					'ext.maps.gm3.markerwithlabel',
-					function() {
-						marker = new MarkerWithLabel( markerOptions );
-						addToMapAndHandlers( marker );
-						setZoom(getBounds());
-					}
+						'ext.maps.gm3.markerwithlabel',
+						function() {
+							marker = new MarkerWithLabel( markerOptions );
+							addToMapAndHandlers( marker );
+							setZoom(getBounds());
+						}
 				);
 			}
 		};
@@ -144,12 +144,12 @@
 		 * Removes a single marker from the map.
 		 * @param {google.maps.Marker} marker The marker to remove.
 		 */
-		this.removeMarker = function (marker) {
+		$.fn.googlemaps.removeMarker = function (marker) {
 			marker.setMap(null);
 
-			for (var i = this.markers.length - 1; i >= 0; i--) {
-				if (this.markers[i] === marker) {
-					delete this.markers[i];
+			for (var i = _this.markers.length - 1; i >= 0; i--) {
+				if (_this.markers[i] === marker) {
+					delete _this.markers[i];
 					break;
 				}
 			}
@@ -160,11 +160,11 @@
 		/**
 		 * Removes all markers from the map.
 		 */
-		this.removeMarkers = function () {
-			for (var i = this.markers.length - 1; i >= 0; i--) {
-				this.markers[i].setMap(null);
+		$.fn.googlemaps.removeMarkers = function () {
+			for (var i = _this.markers.length - 1; i >= 0; i--) {
+				_this.markers[i].setMap(null);
 			}
-			this.markers = [];
+			_this.markers = [];
 		};
 
 		/**
@@ -198,7 +198,7 @@
 				var kmlLayer = new google.maps.KmlLayer(
 					options.gkml[i],
 					{
-						map:this.map,
+						map:$.fn.googlemaps.map,
 						preserveViewport:!options.kmlrezoom
 					}
 				);
@@ -215,14 +215,14 @@
 									doc[i].gpolygons,
 									doc[i].gpolylines,
 									doc[i].ggroundoverlays
-									]);
+								]);
 							}
 						}
 					}
 
 
 					var geoXml = new geoXML3.parser({
-						map:_this.map,
+						map:$.fn.googlemaps.map,
 						zoom:options.kmlrezoom,
 						failedParse:function(){
 							alert(mediaWiki.msg('maps-kml-parsing-failed'));
@@ -259,7 +259,7 @@
 								console.log(toggleDiv);
 							})(docs[i]);
 						}
-						_this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
+						$.fn.googlemaps.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
 					};
 
 					geoXml.parse(options.kml);
@@ -274,7 +274,7 @@
 			}
 
 			var line = new google.maps.Polyline({
-				map:this.map,
+				map:$.fn.googlemaps.map,
 				path:paths,
 				strokeColor:properties.strokeColor,
 				strokeOpacity:properties.strokeOpacity,
@@ -314,7 +314,7 @@
 			}
 
 			var polygon = new google.maps.Polygon({
-				map:this.map,
+				map:$.fn.googlemaps.map,
 				path:paths,
 				strokeColor:properties.strokeColor,
 				strokeOpacity:properties.strokeOpacity,
@@ -357,7 +357,7 @@
 
 		this.addCircle = function (properties) {
 			var circle = new google.maps.Circle({
-				map:this.map,
+				map:$.fn.googlemaps.map,
 				center:new google.maps.LatLng(properties.centre.lat, properties.centre.lon),
 				radius:properties.radius,
 				fillColor:properties.fillColor,
@@ -377,7 +377,7 @@
 
 		this.addRectangle = function (properties) {
 			var rectangle = new google.maps.Rectangle({
-				map:this.map,
+				map:$.fn.googlemaps.map,
 				bounds:new google.maps.LatLngBounds(
 					new google.maps.LatLng(properties.sw.lat, properties.sw.lon), //sw
 					new google.maps.LatLng(properties.ne.lat, properties.ne.lon)  //ne
@@ -403,7 +403,7 @@
 			);
 
 			var image = new google.maps.GroundOverlay(properties.image,imageBounds);
-			image.setMap(this.map);
+			image.setMap($.fn.googlemaps.map);
 
 			this.imageoverlays.push(image);
 
@@ -443,8 +443,8 @@
 					bounds.extend(marker.getPosition());
 				}
 			}
-			this.map.fitBounds(bounds);
-		}
+			$.fn.googlemaps.map.fitBounds(bounds);
+		};
 
 		this.initializeMap = function () {
 			var mapOptions = {
@@ -497,7 +497,7 @@
 			});
 
 
-			this.map = map;
+			$.fn.googlemaps.map = map;
 
 			if (options.poi === false) {
 				map.setOptions({ styles:[
@@ -516,7 +516,7 @@
 
 			// Add the markers.
 			for (var i = options.locations.length - 1; i >= 0; i--) {
-				this.addMarker(options.locations[i]);
+				$.fn.googlemaps.addMarker(options.locations[i]);
 			}
 
 			for (i = options.fusiontables.length - 1; i >= 0; i--) {
@@ -617,7 +617,7 @@
 				mw.loader.using(
 					'ext.maps.gm3.markercluster',
 					function() {
-						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
+						_this.markercluster = new MarkerClusterer( $.fn.googlemaps.map, _this.markers, {
 							averageCenter: true
 						} );
 					}
@@ -681,7 +681,7 @@
 					this.markers,
 					this.rectangles,
 					this.imageoverlays,
-					this.map
+					$.fn.googlemaps.map
 				]);
 			}
 
@@ -689,7 +689,7 @@
 				var wmsOptions = {
 					alt: "OpenLayers",
 					getTileUrl:function (tile, zoom) {
-						var projection = _this.map.getProjection();
+						var projection = $.fn.googlemaps.map.getProjection();
 						var zpow = Math.pow(2, zoom);
 						var ul = new google.maps.Point(tile.x * 256.0 / zpow, (tile.y + 1) * 256.0 / zpow);
 						var lr = new google.maps.Point((tile.x + 1) * 256.0 / zpow, (tile.y) * 256.0 / zpow);
@@ -733,7 +733,7 @@
 			//Add custom controls
 			// - Fullscreen
 			if(options.enablefullscreen){
-				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl(this.map));
+				$.fn.googlemaps.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl($.fn.googlemaps.map));
 			}
 		};
 
@@ -751,7 +751,7 @@
 							mw.loader.using('ext.maps.gm3.earth', function () {
 								_this.initializeMap();
 								if (google.earth.isSupported()) {
-									_this.ge = new GoogleEarth(_this.map);
+									_this.ge = new GoogleEarth($.fn.googlemaps.map);
 								}
 							});
 						} });
@@ -846,10 +846,10 @@
 			};
 
 			if ( event.latLng === undefined ) {
-				this.openWindow.open( this.map, this );
+				this.openWindow.open( $.fn.googlemaps.map, this );
 			}
 			else {
-				this.openWindow.open( this.map );
+				this.openWindow.open( $.fn.googlemaps.map );
 			}
 		}
 

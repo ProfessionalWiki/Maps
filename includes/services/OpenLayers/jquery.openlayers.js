@@ -13,7 +13,7 @@
 
 		OpenLayers._getScriptLocation = function() {
 			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
-		}
+		};
 
 		this.getOLMarker = function (markerLayer, markerData) {
 			var marker;
@@ -50,7 +50,7 @@
 			return marker;
 		};
 
-		this.addMarkers = function (map, options) {
+		$.fn.openlayers.addMarkers = function (map, options) {
 			if (!options.locations) {
 				options.locations = [];
 			}
@@ -92,8 +92,8 @@
 				}
 
 				if (bounds != null) bounds.extend(location.lonlat); // Extend the bounds when no center is set.
-				var marker = this.getOLMarker(curLayer, location);
-				this.markers.push({
+				var marker = _this.getOLMarker(curLayer, location);
+				_this.markers.push({
 					target:marker,
 					data:location
 				});
@@ -321,8 +321,8 @@
 			mapOptions.maxExtent = new OpenLayers.Bounds( -20037508, -20037508, 20037508, 20037508 );
 		}
 
-		this.map = new OpenLayers.Map(mapElementId, mapOptions);
-		var map = this.map;
+		$.fn.openlayers.map = new OpenLayers.Map(mapElementId, mapOptions);
+		var map = $.fn.openlayers.map;
 
 		if (!options['static']) {
 			this.addControls(map, options.controls, this.get(0));
@@ -330,7 +330,7 @@
 
 		map.addLayers( layers ); // Add the base layers
 
-		this.addMarkers( map, options );
+		$.fn.openlayers.addMarkers( map, options );
 		var centre = false;
 
 		if ( options.centre === false ) {
@@ -395,7 +395,7 @@
         }
 
 		//Add markers
-		this.addMarkers(map, options);
+		$.fn.openlayers.addMarkers(map, options);
 		var centre = false;
 
 		//Add line layer if applicable
@@ -450,7 +450,7 @@
 							}
 						},
 						'out':function (feature) {
-							if (feature.attributes.onlyVisibleOnHover === true && _this.map.popups.length === 0) {
+							if (feature.attributes.onlyVisibleOnHover === true && $.fn.openlayers.map.popups.length === 0) {
 								var style = {
 									'strokeColor':feature.attributes.strokeColor,
 									'strokeWidth':feature.attributes.strokeWeight,
@@ -680,8 +680,8 @@
 			var popup = new OpenLayers.Popup(null, lonlat, null, properties.text, true, function () {
 				map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
 				map.removePopup(this);
-			})
-			_this.map.addPopup(popup);
+			});
+			$.fn.openlayers.map.addPopup(popup);
 		}
 
 		return this;
