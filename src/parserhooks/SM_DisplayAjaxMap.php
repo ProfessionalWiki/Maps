@@ -52,6 +52,11 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
             'message' => 'maps-displaymap-par-ajax',
         );
 
+        $params['coordinatesproperty'] = array(
+            'default' => 'Has coordinates',
+            'message' => 'maps-displaymap-par-coordinatesproperty',
+        );
+
         $params = array_merge( $params, self::getCommonMapParams() );
 
         return $params;

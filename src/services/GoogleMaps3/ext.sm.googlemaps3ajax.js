@@ -9,11 +9,13 @@
 function ajaxUpdateMarker(googlemaps) {
     var bounds = googlemaps.map.getBounds();
 
+    var coordinatesproperty = googlemaps.options.coordinatesproperty;
+
     var query = googlemaps.options.coordinates.join(' ') + ' ';
-    query += '[[Has coordinates::+]] ';
-    query += '[[Has coordinates::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
-    query += '[[Has coordinates::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
-    query += '|?Has coordinates';
+    query += '[[' + coordinatesproperty + '::+]] ';
+    query += '[[' + coordinatesproperty + '::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
+    query += '[[' + coordinatesproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
+    query += '|?' + coordinatesproperty;
 
     $.ajax({
         method: 'GET',
@@ -31,7 +33,7 @@ function ajaxUpdateMarker(googlemaps) {
         for (var property in data.query.results) {
             if (data.query.results.hasOwnProperty(property)) {
                 var location = data.query.results[property];
-                var coordinates = location.printouts['Has coordinates'][0];
+                var coordinates = location.printouts[coordinatesproperty][0];
                 googlemaps.addMarker(coordinates);
             }
         }
