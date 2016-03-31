@@ -44,17 +44,19 @@ function ajaxUpdateMarker(googlemaps) {
             $( '.maps-googlemaps3' ).each( function() {
                 var $this = $( this );
 
-                // todo: remove timeout
-                setTimeout(function() {
-                    ajaxUpdateMarker($this.googlemaps);
-                }, 100);
+                if ($this.googlemaps.options.ajax) {
+                    // todo: remove timeout
+                    setTimeout(function() {
+                        ajaxUpdateMarker($this.googlemaps);
+                    }, 100);
 
-                google.maps.event.addListener($this.googlemaps.map, 'dragend', function () {
-                    ajaxUpdateMarker($this.googlemaps);
-                });
-                google.maps.event.addListener($this.googlemaps.map, 'zoom_changed', function () {
-                    ajaxUpdateMarker($this.googlemaps);
-                });
+                    google.maps.event.addListener($this.googlemaps.map, 'dragend', function () {
+                        ajaxUpdateMarker($this.googlemaps);
+                    });
+                    google.maps.event.addListener($this.googlemaps.map, 'zoom_changed', function () {
+                        ajaxUpdateMarker($this.googlemaps);
+                    });
+                }
 
             });
         }
