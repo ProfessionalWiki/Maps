@@ -16,6 +16,7 @@ return call_user_func( function() {
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
 	$moduleTemplate = array(
+		'position' => 'top',
 		'localBasePath' => __DIR__ . '/includes',
 		'remoteExtPath' =>  end( $pathParts ) . '/includes',
 		'group' => 'ext.maps',
