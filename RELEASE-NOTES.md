@@ -3,7 +3,7 @@ These are the release notes for the [Maps extension](../README.md).
 
 ## Maps 3.5
 
-Released on April 1st, 2016.
+Released on April 2nd, 2016.
 
 * Added `egMapsGMaps3Language` setting (by James Hong Kong and Karsten Hoffmeyer)
 * Added `osm-mapquest` layer for OpenLayers (by Bernhard Krabina)
