@@ -28,6 +28,7 @@
 	"semanticmaps-par-geocodecontrol": "Show the geocoding control.",
 	"semanticmaps-par-activeicon": "Icon to be displayed instead of default marker, when active page is equal to query result",
 	"semanticmaps-par-pagelabel": "When set to \"yes\", all markers will have an \"inlineLabel\" with a link to the page containing the coordinates for the marker",
+	"semanticmaps-par-userparam": "A value passed into each template call, if a template is used",
 	"semanticmaps-kml-text": "The text associated with each page. Overridden by the additional queried properties if any.",
 	"semanticmaps-kml-title": "The default title for results",
 	"semanticmaps-kml-linkabsolute": "Should links be absolute (as opposed to relative)",
