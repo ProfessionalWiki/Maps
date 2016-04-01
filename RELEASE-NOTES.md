@@ -1,5 +1,13 @@
 These are the release notes for the Semantic Maps extension.
 
+## Semantic Maps 3.3
+
+Released on April 1st, 2016.
+
+* Added `userparam` support for the map result formats (by James Hong Kong)
+* Made Google Maps initialization more robust (by Karlpietsch)
+* Added missing system messages (by Karsten Hoffmeyer)
+
 ## Semantic Maps 3.2
 
 Released on July 2nd, 2015.
