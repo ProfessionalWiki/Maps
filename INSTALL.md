@@ -2,7 +2,7 @@
 
 ## Installation
 
-These are the installation and configuration instructions for the [SemanticMaps](../README.md) extension.
+These are the installation and configuration instructions for the [SemanticMaps](README.md) extension.
 
 ## Versions
 
@@ -14,19 +14,19 @@ These are the installation and configuration instructions for the [SemanticMaps]
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.2.0</a></th>
+		<th><a href="RELEASE-NOTES.md">Semantic Maps 3.2.0</a></th>
 		<td>Stable release</td>
 		<td>2015-07-02</td>
 		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.1.x</a></th>
+		<th><a href="RELEASE-NOTES.md">Semantic Maps 3.1.x</a></th>
 		<td>Legacy release</td>
 		<td>2014-11-11</td>
 		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.1.2">3.1.2</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/master/docs/RELEASE-NOTES.md">Semantic Maps 3.0.x</a></th>
+		<th><a href="RELEASE-NOTES.md">Semantic Maps 3.0.x</a></th>
 		<td>Legacy release</td>
 		<td>2014-01-18</td>
 		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.0">3.0</a></td>
@@ -120,7 +120,9 @@ versions prior to 1.22 can use Composer via the
 [Extension Installer](https://github.com/JeroenDeDauw/ExtensionInstaller/blob/master/README.md)
 extension.
 
-Note that the [Semantic MediaWiki](https://semantic-mediawiki.org/wiki/Help:Installation) extension as well as the  [Maps](https://github.com/JeroenDeDauw/Maps/blob/master/docs/INSTALL.md) extension need to be installed first for this extension to work.
+Note that the [Semantic MediaWiki](https://semantic-mediawiki.org/wiki/Help:Installation) extension as
+well as the  [Maps](https://github.com/JeroenDeDauw/Maps/blob/master/docs/INSTALL.md) extension need
+to be installed first for this extension to work.
 
 #### Step 1
 
@@ -151,9 +153,10 @@ Now using Composer, install Semantic Maps by running
 
 #### Verify installation success
 
-As final step, you can verify Semantic Maps got installed by looking at the "Special:Version" page on your wiki and verifying the Semantic Maps extension is listed in the "Semantic extensions" section.
+As final step, you can verify Semantic Maps got installed by looking at the "Special:Version" page on
+your wiki and verifying the Semantic Maps extension is listed in the "Semantic extensions" section.
 
 
 ## Configuration
 
-See the [Semantic Maps settings file](../SM_Settings.php) for the available configuration options.
+See the [Semantic Maps settings file](SM_Settings.php) for the available configuration options.
