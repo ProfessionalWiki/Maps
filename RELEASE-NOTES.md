@@ -3,10 +3,13 @@ These are the release notes for the [Maps extension](../README.md).
 
 ## Maps 3.5
 
-Not yet released.
+Released on April 1st, 2016.
 
 * Added `egMapsGMaps3Language` setting (by James Hong Kong and Karsten Hoffmeyer)
+* Added `osm-mapquest` layer for OpenLayers (by Bernhard Krabina)
 * Added license lable to display on "Special:Version" (by Karsten Hoffmeyer)
+* Improved Mobile Frontend support (by James Hong Kong)
+* Added missing Leaflet system messages (by Karsten Hoffmeyer)
 
 ## Maps 3.4.1
 
