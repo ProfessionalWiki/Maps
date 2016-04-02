@@ -16,11 +16,13 @@ if ( defined( 'SM_VERSION' ) ) {
 	return 1;
 }
 
-define( 'SM_VERSION', '3.3' );
+define( 'SM_VERSION', '3.4.0-alpha' );
 
-if ( version_compare( $GLOBALS['wgVersion'], '1.19c', '<' ) ) {
-	throw new Exception( 'This version of Semantic Maps requires MediaWiki 1.18 or above;'
-		. 'use Semantic Maps 1.0.x for MediaWiki 1.17 and Semantic Maps 0.7.x for older versions.' );
+if ( version_compare( $GLOBALS['wgVersion'], '1.23c', '<' ) ) {
+	throw new Exception(
+		'This version of Semantic Maps requires MediaWiki 1.23 or above; use Semantic Maps 3.3.x for older versions.'
+		. ' See https://github.com/SemanticMediaWiki/SemanticMaps/blob/master/INSTALL.md for more info.'
+	);
 }
 
 if ( !defined( 'Maps_VERSION' ) && is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
