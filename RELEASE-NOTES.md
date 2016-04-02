@@ -1,6 +1,13 @@
 These are the release notes for the [Maps extension](../README.md).
 
 
+## Maps 3.6
+
+Development version
+
+* Dropped support for MediaWiki older than 1.23
+* Dropped support for PHP older than 5.5
+
 ## Maps 3.5
 
 Released on April 2nd, 2016.
