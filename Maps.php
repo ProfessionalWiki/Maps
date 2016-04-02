@@ -19,7 +19,7 @@ if ( defined( 'Maps_VERSION' ) ) {
 	return 1;
 }
 
-define( 'Maps_VERSION' , '3.5.0' );
+define( 'Maps_VERSION' , '3.6.0-alpha' );
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -31,8 +31,11 @@ if ( !defined( 'Validator_VERSION' ) ) {
 	throw new Exception( 'You need to have Validator installed in order to use Maps' );
 }
 
-if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
-	throw new Exception( 'This version of Maps requires MediaWiki 1.18 or above; use Maps 1.0.x for MediaWiki 1.17 and Maps 0.7.x for older versions.' );
+if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
+	throw new Exception(
+		'This version of Maps requires MediaWiki 1.23 or above; use Maps 3.5.x for older versions.'
+		. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
+	);
 }
 
 call_user_func( function() {
