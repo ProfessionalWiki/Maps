@@ -84,14 +84,14 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Validator</th>
 	</tr>
 	<tr>
-		<th>3.5.x</th>
+		<th>Maps 3.5.x</th>
 		<td>5.3.2 - 7.x</td>
 		<td>1.18 - 1.27</td>
 		<td>Required</td>
 		<td>2.x (handled by Composer)</td>
 	</tr>
 	<tr>
-		<th>3.4.x</th>
+		<th>Maps 3.4.x</th>
 		<td>5.3.2 - 7.x</td>
 		<td>1.18 - 1.27</td>
 		<td>Required</td>
