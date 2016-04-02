@@ -16,35 +16,35 @@ These are the installation and configuration instructions for the [SemanticMaps]
 	<tr>
 		<th><a href="RELEASE-NOTES.md">Semantic Maps 3.3.0</a></th>
 		<td>Stable release</td>
-		<td>2016-04-01</td>
-		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/master">master</a></td>
+		<td>2016-04-02</td>
+		<td><a href="https://github.com/SemanticMediaWiki/SemanticMaps/tree/3.3.0">3.3.0</a></td>
 	</tr>
 	<tr>
 		<th><a href="RELEASE-NOTES.md">Semantic Maps 3.2.0</a></th>
 		<td>Legacy release</td>
 		<td>2015-07-02</td>
-		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/master">3.2.0</a></td>
+		<td><a href="https://github.com/SemanticMediaWiki/SemanticMaps/tree/3.2.0">3.2.0</a></td>
 	</tr>
 	<tr>
 		<th><a href="RELEASE-NOTES.md">Semantic Maps 3.1.x</a></th>
 		<td>Legacy release</td>
 		<td>2014-11-11</td>
-		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.1.2">3.1.2</a></td>
+		<td><a href="https://github.com/SemanticMediaWiki/SemanticMaps/tree/3.1.2">3.1.2</a></td>
 	</tr>
 	<tr>
 		<th><a href="RELEASE-NOTES.md">Semantic Maps 3.0.x</a></th>
 		<td>Legacy release</td>
 		<td>2014-01-18</td>
-		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/3.0">3.0</a></td>
+		<td><a href="https://github.com/SemanticMediaWiki/SemanticMaps/tree/3.0">3.0</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/2.0.x/RELEASE-NOTES">Semantic Maps 2.0.x</a></th>
+		<th><a href="https://github.com/SemanticMediaWiki/SemanticMaps/blob/2.0.x/RELEASE-NOTES">Semantic Maps 2.0.x</a></th>
 		<td>Legacy release</td>
 		<td>2012-12-13</td>
-		<td><a href="https://github.com/JeroenDeDauw/SemanticMaps/tree/2.0.x">2.0.x</a></td>
+		<td><a href="https://github.com/SemanticMediaWiki/SemanticMaps/tree/2.0.x">2.0.x</a></td>
 	</tr>
 	<tr>
-		<th><a href="https://github.com/JeroenDeDauw/SemanticMaps/blob/2.0.x/RELEASE-NOTES">Semantic Maps 1.0.5</a></th>
+		<th><a href="https://github.com/SemanticMediaWiki/SemanticMaps/blob/2.0.x/RELEASE-NOTES">Semantic Maps 1.0.5</a></th>
 		<td>Legacy release</td>
 		<td>2011-11-30</td>
 		<td>-/-</td>
