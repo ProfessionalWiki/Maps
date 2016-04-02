@@ -50,6 +50,7 @@ include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
 $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
 	'dependencies' => array( 'ext.maps.coord' ),
+	'position' => 'bottom',
 	'localBasePath' => __DIR__ . '/src/forminputs',
 	'remoteExtPath' => 'SemanticMaps/src/forminputs',
 	'group' => 'ext.semanticmaps',
