@@ -11,7 +11,8 @@
 			"PieRRoMaN",
 			"Sherbrooke",
 			"Urhixidur",
-			"Wyz"
+			"Wyz",
+			"Wladek92"
 		]
 	},
 	"semanticmaps-desc": "Permet d’afficher et de modifier les données de coordonnées stockées avec l’extension [https://www.semantic-mediawiki.org MédiaWiki Sémantique].",
@@ -36,6 +37,7 @@
 	"semanticmaps-par-geocodecontrol": "Afficher le contrôle de géocodage.",
 	"semanticmaps-par-activeicon": "Icône à afficher à la place du marqueur par défaut, quand la page active est égale au résultat de la recherche",
 	"semanticmaps-par-pagelabel": "Quand il vaut « oui », tous les marqueurs auront un « inlineLabel » avec un lien vers la page contenant les coordonnées du marqueur",
+	"semanticmaps-par-userparam": "Une valeur passée dans chaque appel de modèle, si un modèle est utilisé",
 	"semanticmaps-kml-text": "Le texte associé avec chaque page. Remplacé par des propriétés récupérées supplémentaires s'il y en a.",
 	"semanticmaps-kml-title": "Le titre par défaut pour les résultats",
 	"semanticmaps-kml-linkabsolute": "Si les titres doivent être absolus (au contraire de relatifs)",

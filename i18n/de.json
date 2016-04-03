@@ -33,6 +33,7 @@
 	"semanticmaps-par-geocodecontrol": "Die Steuerungsseite zum Geokodieren anzeigen.",
 	"semanticmaps-par-activeicon": "Das Symbol, das anstelle der Standardmarkierung angezeigt wird, sofern die aktive Seite dem Abfrageergebnis entspricht.",
 	"semanticmaps-par-pagelabel": "Sofern mit „yes“ (ja) festgelegt, verfügen alle Markierungen über eine eingebettete Anzeige mit einem Link zur entsprechenden Seite sowie den entsprechenden Koordinaten.",
+	"semanticmaps-par-userparam": "Ein in jedem Vorlagenaufruf übergebener Wert, falls eine Vorlage verwendet wird.",
 	"semanticmaps-kml-text": "Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.",
 	"semanticmaps-kml-title": "Der Standardtitel für die Ergebnisse",
 	"semanticmaps-kml-linkabsolute": "Die Links sollen absolut sein (anstatt relativ)",
