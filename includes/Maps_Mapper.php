@@ -26,7 +26,7 @@ final class MapsMapper {
 	 *
 	 * @param mixed $value
 	 *
-	 * @return string
+	 * @return tring
 	 */
 	public static function encodeJsVar( $value ) {
 		if ( is_bool( $value ) ) {
@@ -54,12 +54,12 @@ final class MapsMapper {
 				if ( $s != '{' ) {
 					$s .= ', ';
 				}
-				$s .= '"' . Xml::encodeJsVar( $name ) . '": ' .
+				$s .= '"' . Xml::escapeJsString( $name ) . '": ' .
 					self::encodeJsVar( $elt );
 			}
 			$s .= '}';
 		} else {
-			$s = '"' . Xml::encodeJsVar( $value ) . '"';
+			$s = '"' . Xml::escapeJsString( $value ) . '"';
 		}
 		return $s;
 	}

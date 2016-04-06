@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use DataValues\Geo\Values\LatLongValue;
+use DataValues\LatLongValue;
 use ParamProcessor\ParamDefinition;
 
 /**
@@ -40,7 +40,7 @@ class CoordinatesTest extends ParserHookTest {
 				'format' => 'dms',
 				'directional' => 'no',
 			),
-			'4° 0\' 0.00", 2° 0\' 0.00"'
+			'4° 0\' 0", 2° 0\' 0"'
 		);
 
 		$paramLists[] = array(
@@ -49,7 +49,7 @@ class CoordinatesTest extends ParserHookTest {
 				'format' => 'dms',
 				'directional' => 'no',
 			),
-			'-55° 0\' 0.00", -37° 37\' 3.48"'
+			'-55° 0\' 0", -37° 37\' 3.4788"'
 		);
 
 		$paramLists[] = array(
@@ -75,7 +75,7 @@ class CoordinatesTest extends ParserHookTest {
 				'location' => '55 S, 37.6176330 W',
 				'directional' => 'yes',
 			),
-			'55° 0\' 0.00" S, 37° 37\' 3.48" W'
+			'55° 0\' 0" S, 37° 37\' 3.4788" W'
 		);
 
 		return $paramLists;

@@ -35,7 +35,7 @@ class MapsLayerPage extends Article {
 			return parent::view();
 		}
 
-		if( !Hooks::run( 'MapsLayerPageView', array( &$this ) ) ) {
+		if( !wfRunHooks( 'MapsLayerPageView', array( &$this ) ) ) {
 			return;
 		}
 

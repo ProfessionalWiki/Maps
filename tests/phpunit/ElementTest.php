@@ -1,6 +1,6 @@
 <?php
 
-use DataValues\Geo\Values\LatLongValue;
+use DataValues\LatLongValue;
 use Maps\Element;
 use Maps\Elements\Circle;
 use Maps\Elements\ImageOverlay;

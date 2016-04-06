@@ -11,10 +11,6 @@
 (function ($) {
 	$.fn.openlayers = function (mapElementId, options) {
 
-		OpenLayers._getScriptLocation = function() {
-			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
-		}
-
 		this.getOLMarker = function (markerLayer, markerData) {
 			var marker;
 
@@ -24,28 +20,28 @@
 				marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerLayer.defaultIcon));
 			}
 
-			// This is the handler for the mousedown/touchstart event on the marker, and displays the popup.
-			function handleClickEvent(evt) {
-				if (markerData.link) {
-					window.location.href = markerData.link;
-				} else if (markerData.text !== '') {
-					var popup = new OpenLayers.Feature(markerLayer, markerData.lonlat).createPopup(true);
-					popup.setContentHTML(markerData.text);
-					markerLayer.map.addPopup(popup);
-					OpenLayers.Event.stop(evt); // Stop the event.
-				}
-
-				if (markerData.visitedicon && markerData.visitedicon !== '') {
-					if(markerData.visitedicon === 'on'){
-						//when keyword 'on' is set, set visitedicon to a default official marker
-						markerData.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/OpenLayers/OpenLayers/img/marker3.png';
+			// This is the handler for the mousedown event on the marker, and displays the popup.
+			marker.events.register('mousedown', marker,
+				function (evt) {
+					if (markerData.link) {
+						window.location.href = markerData.link;
+					} else if (markerData.text !== '') {
+						var popup = new OpenLayers.Feature(markerLayer, markerData.lonlat).createPopup(true);
+						popup.setContentHTML(markerData.text);
+						markerLayer.map.addPopup(popup);
+						OpenLayers.Event.stop(evt); // Stop the event.
 					}
-					marker.setUrl(markerData.visitedicon);
-					markerData.visitedicon = undefined;
+
+					if (markerData.visitedicon && markerData.visitedicon !== '') {
+						if(markerData.visitedicon === 'on'){
+							//when keyword 'on' is set, set visitedicon to a default official marker
+							markerData.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/OpenLayers/OpenLayers/img/marker3.png';
+						}
+						marker.setUrl(markerData.visitedicon);
+						markerData.visitedicon = undefined;
+					}
 				}
-			}
-			marker.events.register('mousedown', marker, handleClickEvent);
-			marker.events.register('touchstart', marker, handleClickEvent);
+			);
 
 			return marker;
 		};
@@ -290,23 +286,6 @@
 			layers.push( layer );
 		}
 
-		// Create KML layer and push it to layers
-		if (options.kml.length>0) { 
-			var kmllayer = new OpenLayers.Layer.Vector("KML Layer", {
-				strategies: [new OpenLayers.Strategy.Fixed()],
-				protocol: new OpenLayers.Protocol.HTTP({
-					url: options.kml,
-				format: new OpenLayers.Format.KML({
-					extractStyles: true, 
-				extractAttributes: true,
-				maxDepth: 2,
-				'internalProjection': new OpenLayers.Projection( "EPSG:900913" ), //EPSG:3785/900913
-				'externalProjection': new OpenLayers.Projection( "EPSG:4326" ) //EPSG:4326
-				})
-				})
-			});
-			layers.push( kmllayer );
-		}
 		// Create a new OpenLayers map with without any controls on it.
 		var mapOptions = {
 			controls: []

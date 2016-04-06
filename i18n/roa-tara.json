@@ -1,11 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joetaras",
-			"Macofe"
+			"Joetaras"
 		]
 	},
-	"maps-desc": "Abbilite 'u 'ngapsulamende de le mappe dinameche jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche",
+	"maps-desc": "Dèje l'abbilità a sckaffà le mappe dinameche 'ngapsulate jndr'à le pàggene de Uicchi, geocodificate e indirizzate a otre operaziune sciugrafeche. ([https://www.semantic-mediawiki.org/wiki/Maps cchiù 'mbormaziune...])",
 	"right-geocode": "Geocodece",
 	"maps_map": "Mappe",
 	"maps-loading-map": "Stoche a careche 'a mappe...",

@@ -195,10 +195,7 @@ class MapsDisplayMap extends ParserHook {
 			$parameters['zoom'] = false;
 		}
 
-		global $egMapsEnableCategory;
-		if ($egMapsEnableCategory) {
-			$this->parser->addTrackingCategory( 'maps-tracking-category' );
-		}
+		$this->parser->addTrackingCategory( 'maps-tracking-category' );
 		return $mapClass->renderMap( $parameters, $this->parser );
 	}
 	

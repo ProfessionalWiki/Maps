@@ -3,7 +3,6 @@
 namespace Maps\Test;
 
 use Maps\Elements\WmsOverlay;
-use Maps\WmsOverlayParser;
 
 /**
  * @covers Maps\WmsOverlayParser
@@ -14,6 +13,8 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
 	 * @see ValueParserTestBase::validInputProvider
+	 *
+	 * @since 3.0
 	 *
 	 * @return array
 	 */
@@ -40,17 +41,27 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 		return $argLists;
 	}
 
+
+	/**
+	 * @see ValueParserTestBase::getParserClass
+	 *
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
+	protected function getParserClass() {
+		return 'Maps\WmsOverlayParser';
+	}
+
 	/**
 	 * @see ValueParserTestBase::requireDataValue
+	 *
+	 * @since 3.0
 	 *
 	 * @return boolean
 	 */
 	protected function requireDataValue() {
 		return false;
-	}
-
-	protected function getInstance() {
-		return new WmsOverlayParser();
 	}
 
 }

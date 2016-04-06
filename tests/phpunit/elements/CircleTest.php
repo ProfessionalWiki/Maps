@@ -2,7 +2,7 @@
 
 namespace Maps\Tests\Elements;
 
-use DataValues\Geo\Values\LatLongValue;
+use DataValues\LatLongValue;
 use Maps\Elements\Circle;
 
 /**

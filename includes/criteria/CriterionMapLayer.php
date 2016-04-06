@@ -61,14 +61,14 @@ class CriterionMapLayer extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMessage( 'validation-error-invalid-layer', $parameter->getOriginalName() )->parse();
+		return wfMsgExt( 'validation-error-invalid-layer', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 	/**
 	 * @see ItemParameterCriterion::getFullListErrorMessage
 	 */
 	protected function getFullListErrorMessage( Parameter $parameter ) {
-		return wfMessage( 'validation-error-invalid-layers', $parameter->getOriginalName() )->parse();
+		return wfMsgExt( 'validation-error-invalid-layers', 'parsemag', $parameter->getOriginalName() );
 	}
 	
 }

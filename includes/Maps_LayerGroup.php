@@ -249,6 +249,6 @@ class MapsLayerGroup {
 			$conditions,
 			__METHOD__
 		);
-		return $res;
+		return $db->resultObject( $res );
 	}
 }
