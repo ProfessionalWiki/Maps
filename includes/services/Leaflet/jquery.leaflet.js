@@ -1,6 +1,6 @@
 /**
  * JavaScript for Leaflet in the Maps extension.
- * @see http://www.mediawiki.org/wiki/Extension:Maps
+ * @see https://www.mediawiki.org/wiki/Extension:Maps
  *
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  */
@@ -131,8 +131,8 @@
 			this.map = map;
 
 			// add an OpenStreetMap tile layer
-			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 
 			if (options.resizable) {

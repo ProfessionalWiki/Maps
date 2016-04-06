@@ -2,11 +2,11 @@
 
 namespace Maps;
 
-use DataValues\LatLongValue;
+use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 use MWException;
 use Title;
-use ValueParsers\GeoCoordinateParser;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 

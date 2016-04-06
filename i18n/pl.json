@@ -5,10 +5,12 @@
 			"Chrumps",
 			"Sp5uhe",
 			"Ty221",
-			"Yarl"
+			"Yarl",
+			"Alan ffm",
+			"Macofe"
 		]
 	},
-	"maps-desc": "Umożliwia zamieszczanie na stronach wiki dynamicznych map, geograficznie kodowanych adresów i innych danych geograficznych.",
+	"maps-desc": "Umożliwia zamieszczanie na stronach wiki map dynamicznych, geokodowanych adresów i innych danych geograficznych",
 	"right-geocode": "Geokodowanie",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Wczytywanie mapy…",
@@ -97,6 +99,7 @@
 	"mapeditor-done-button": "Gotowe",
 	"mapeditor-remove-button": "Usuń",
 	"mapeditor-clear-button": "Wyczyść mapę",
+	"mapeditor-code-title": "Kod wiki",
 	"mapeditor-form-field-title": "Tytuł",
 	"mapeditor-form-field-text": "Tekst",
 	"mapeditor-form-field-icon": "Ikona",

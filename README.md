@@ -5,25 +5,25 @@ information.
 
 Features:
 
-* Powerful #display_map parser hook for embedding highly customizable dynamic maps into wiki pages.
+* Powerful `#display_map` parser hook for embedding highly customizable dynamic maps into wiki pages.
 * Support for multiple mapping services: Google Maps, [OpenLayers](http://www.openlayers.org/),
 [OpenStreetMap](www.openstreetmap.org/) and [Leaflet](http://leafletjs.com/).
-* Coordinate formatting and format conversion via the #coordinates parser function.
-* Geocoding via several supported services with the #geocode parser function.
+* Coordinate formatting and format conversion via the `#coordinates` parser function.
+* Geocoding via several supported services with the `#geocode` parser function.
 * Geospatial operations
-    * Calculating the distance between two points with #geodistance
-    * Finding a destination given a starting point, bearing and distance with #finddestination
-* Distance formatting and format conversion via the #distance parser function.
-* Visual map editor (Special:MapEditor) to edit #display_map wikitext.
+    * Calculating the distance between two points with `#geodistance`
+    * Finding a destination given a starting point, bearing and distance with `#finddestination`
+* Distance formatting and format conversion via the `#distance` parser function.
+* Visual map editor (Special:MapEditor) to edit `#display_map` wikitext.
 * Structured data support provided by the [Semantic Maps extension]
 (https://www.mediawiki.org/wiki/Extension:Semantic_Maps).
 
-View the [release notes](docs/RELEASE-NOTES.md) for recent changes to Maps.
+View the [release notes](RELEASE-NOTES.md) for recent changes to Maps.
 
 ### User manual
 
-* [Installation and configuration](docs/INSTALL.md)
-* [Usage instructions and examples](https://semantic-mediawiki.org/wiki/Maps)
+* [Installation and configuration](INSTALL.md)
+* [Usage instructions and examples](https://www.semantic-mediawiki.org/wiki/Maps)
 
 ## Project status
 
@@ -35,9 +35,9 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
 [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
 
-* [Maps on Ohloh](https://www.ohloh.net/p/maps/)
-* [Blog posts about Maps](http://www.bn2vs.com/blog/tag/maps)
 * [Open bugs and feature requests](https://github.com/JeroenDeDauw/Maps/issues)
+* [Maps on Ohloh](https://www.ohloh.net/p/maps/)
+* [Blog posts about Maps](https://www.entropywins.wtf/blog/tag/maps/)
 
 ## Contributing
 
@@ -85,7 +85,7 @@ This extension includes the OpenStreetMap.js file which can be found
 
 ## Links
 
-* [Maps examples](https://semantic-mediawiki.org/wiki/Maps_examples)
+* [Maps examples](https://www.semantic-mediawiki.org/wiki/Maps_examples)
 * [Maps on Ohloh](https://www.ohloh.net/p/maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)

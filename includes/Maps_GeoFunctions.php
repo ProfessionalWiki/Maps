@@ -1,7 +1,7 @@
 <?php
 
 // The approximate radius of the earth in meters, according to http://en.wikipedia.org/wiki/Earth_radius.
-use DataValues\LatLongValue;
+use DataValues\Geo\Values\LatLongValue;
 
 define( 'Maps_EARTH_RADIUS', 6371000 );
 

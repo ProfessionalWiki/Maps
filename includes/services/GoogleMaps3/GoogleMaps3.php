@@ -20,11 +20,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 call_user_func( function() {
 	global $wgResourceModules, $wgHooks;
 
+	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+
 	$wgResourceModules['ext.maps.googlemaps3'] = array(
 		'dependencies' => array( 'ext.maps.common' ),
 		'localBasePath' => __DIR__,
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ),
+		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'jquery.googlemap.js',
 			'ext.maps.googlemaps3.js'
@@ -40,8 +46,12 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.markercluster'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/gm3-util-library',
+		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'markerclusterer.js',
 		),
@@ -49,8 +59,12 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.markerwithlabel'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) .  '/gm3-util-library',
+		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'markerwithlabel.js',
 		),
@@ -61,8 +75,12 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.geoxml'] = array(
 		'localBasePath' => __DIR__ . '/geoxml3',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/geoxml3',
+		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'geoxml3.js',
 			'ZipFile.complete.js', //kmz handling
@@ -72,8 +90,12 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.gm3.earth'] = array(
 		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/gm3-util-library',
+		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'googleearth-compiled.js',
 		),

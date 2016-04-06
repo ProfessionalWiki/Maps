@@ -2,7 +2,7 @@
 
 namespace Maps\Elements;
 
-use DataValues\LatLongValue;
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Geocoders;
 use MWException;
 

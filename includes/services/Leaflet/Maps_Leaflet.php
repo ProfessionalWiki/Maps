@@ -29,20 +29,20 @@ class MapsLeaflet extends MapsMappingService {
 			'type' => 'integer',
 			'range' => array( 0, 20 ),
 			'default' => false,
-			'message' => 'maps-leaflet-par-zoom', //TODO
+			'message' => 'maps-leaflet-par-zoom'
 		);
 
 		$params['defzoom'] = array(
 			'type' => 'integer',
 			'range' => array( 0, 20 ),
 			'default' => self::getDefaultZoom(),
-			'message' => 'maps-leaflet-par-defzoom', //TODO
+			'message' => 'maps-leaflet-par-defzoom'
 		);
 
 		$params['resizable'] = array(
 			'type' => 'boolean',
 			'default' => $GLOBALS['egMapsResizableByDefault'],
-			'message' => 'maps-leaflet-par-resizable', //TODO
+			'message' => 'maps-leaflet-par-resizable'
 		);
 	}
 

@@ -773,17 +773,22 @@
 			var controlUI = document.createElement('div');
 			controlUI.style.backgroundColor = 'white';
 			controlUI.style.borderStyle = 'solid';
+			controlUI.style.borderColor = 'rgba(0, 0, 0, 0.14902)';
 			controlUI.style.borderWidth = '1px';
+			controlUI.style.borderRadius = '2px';
 			controlUI.style.cursor = 'pointer';
 			controlUI.style.textAlign = 'center';
+			controlUI.style.boxShadow = 'rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px';
+			controlUI.style.backgroundClip = 'padding-box';
 			controlUI.title = mediaWiki.msg('maps-fullscreen-button-tooltip');
 			controlDiv.appendChild(controlUI);
 
 			var controlText = document.createElement('div');
-			controlText.style.fontFamily = 'Arial,sans-serif';
-			controlText.style.fontSize = '12px';
-			controlText.style.paddingLeft = '4px';
-			controlText.style.paddingRight = '4px';
+			controlText.style.fontFamily = 'Roboto, Arial, sans-serif';
+			controlText.style.fontSize = '11px';
+			controlText.style.fontWeight = '400';
+			controlText.style.color = 'rgb(86, 86, 86)';
+			controlText.style.padding = '1px 6px';
 			controlText.innerHTML = mediaWiki.msg('maps-fullscreen-button');
 			controlUI.appendChild(controlText);
 
@@ -809,7 +814,7 @@
 					mapDiv.css(fullscreenCss);
 				}
 
-
+				google.maps.event.trigger(map, "resize");
 			});
 
 			return controlDiv;

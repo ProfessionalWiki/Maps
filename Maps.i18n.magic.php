@@ -40,7 +40,7 @@ $magicWords['ar'] = array(
 	'mapsdoc' => array( 0, 'توثيق_الخرائط' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $magicWords['arz'] = array(
 	'display_map' => array( 0, 'عرض_الخريطه', 'عرض_الخريطة' ),
 	'display_point' => array( 0, 'نقطه_العرض' ),
@@ -108,6 +108,7 @@ $magicWords['eo'] = array(
 $magicWords['es'] = array(
 	'display_point' => array( 0, 'mostrar_punto' ),
 	'geocode' => array( 0, 'geocodificar' ),
+	'coordinates' => array( 0, 'coordenadas' ),
 	'distance' => array( 0, 'distancia' ),
 );
 
@@ -329,7 +330,7 @@ $magicWords['sr-el'] = array(
 	'distance' => array( 0, 'razdaljina' ),
 );
 
-/** толышә зывон (толышә зывон) */
+/** Talysh (толышә зывон) */
 $magicWords['tly'] = array(
 	'display_map' => array( 0, 'хәритә_нишо_дој' ),
 );
@@ -345,7 +346,7 @@ $magicWords['uk'] = array(
 	'distance' => array( 0, 'відстань' ),
 );
 
-/** Uzbek (oʻzbekcha) */
+/** Uzbek (oʻzbekcha/ўзбекча) */
 $magicWords['uz'] = array(
 	'coordinates' => array( 0, 'koordinatalar' ),
 );
@@ -369,4 +370,18 @@ $magicWords['zh-hans'] = array(
 	'coordinates' => array( 0, '坐标' ),
 	'distance' => array( 0, '距离' ),
 	'mapsdoc' => array( 0, '地图文档' ),
+);
+
+/** Traditional Chinese (中文（繁體）‎) */
+$magicWords['zh-hant'] = array(
+	'display_map' => array( 0, '顯示地圖' ),
+	'display_point' => array( 0, '顯示位置' ),
+	'display_points' => array( 0, '顯示多個位置' ),
+	'display_line' => array( 0, '顯示線' ),
+	'geocode' => array( 0, '地理編碼' ),
+	'geodistance' => array( 0, '地理距離' ),
+	'finddestination' => array( 0, '搜尋目的地' ),
+	'coordinates' => array( 0, '坐標' ),
+	'distance' => array( 0, '距離' ),
+	'mapsdoc' => array( 0, '地圖檔案' ),
 );

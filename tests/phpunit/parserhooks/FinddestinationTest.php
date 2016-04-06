@@ -2,6 +2,7 @@
 
 namespace Maps\Test;
 
+use DataValues\Geo\Parsers\GeoCoordinateParser;
 use Maps\Elements\Location;
 
 /**
@@ -83,7 +84,7 @@ class FinddestinationTest extends ParserHookTest {
 	public function processingProvider() {
 		$argLists = array();
 
-		$coordinateParser = new \ValueParsers\GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+		$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 
 		foreach ( $this->distances as $distance => $expectedDistance ) {
 			foreach ( $this->bearings as $bearing ) {

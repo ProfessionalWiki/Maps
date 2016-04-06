@@ -154,7 +154,7 @@ EOT;
 		$coordinates = Xml::element(
 			'coordinates',
 			array(),
-			$coordinates->getLongitude() . ',' . $coordinates->getLatitude() . ',' . $coordinates->getAltitude()
+			$coordinates->getLongitude() . ',' . $coordinates->getLatitude() . ',0'
 		);
 
 		return <<<EOT

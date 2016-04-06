@@ -8,11 +8,11 @@ cd ..
 
 wget https://github.com/wikimedia/mediawiki-core/archive/$MW.tar.gz
 tar -zxf $MW.tar.gz
-mv mediawiki-core-$MW phase3
+mv mediawiki-$MW phase3
 
 cd phase3
 
-git checkout $MW
+composer install --prefer-source
 
 if [ "$DB" == "postgres" ]
 then

@@ -24,11 +24,17 @@ call_user_func( function() {
 	// Specify the function that will initialize the parser function.
 	$wgHooks['MappingServiceLoad'][] = 'efMapsInitLeaflet';
 
+	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+
 	$wgResourceModules['ext.maps.leaflet'] = array(
 		'dependencies' => array( 'ext.maps.common' ),
 		'localBasePath' => __DIR__,
-		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ),
+		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
+		'targets' => array(
+			'mobile',
+			'desktop'
+		),
 		'scripts' => array(
 			'jquery.leaflet.js',
 			'ext.maps.leaflet.js',

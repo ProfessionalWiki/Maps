@@ -27,10 +27,13 @@
 		"source": "https://github.com/JeroenDeDauw/Maps"
 	},
 	"require": {
-		"php": ">=5.3.2",
-		"composer/installers": "1.*,>=1.0.1",
-		"mediawiki/validator": "2.*,>=2.0.2",
-		"data-values/geo": "0.*,>=0.1.1"
+		"php": ">=5.5",
+		"composer/installers": "^1.0.1",
+		"mediawiki/validator": "^2.0.2",
+		"data-values/geo": "~1.0"
+	},
+	"require-dev": {
+		"data-values/common": "~0.3.1"
 	},
 	"autoload": {
 		"files" : [
@@ -48,7 +51,13 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "3.2.x-dev"
+			"dev-master": "3.6.x-dev"
 		}
+	},
+	"config": {
+		"process-timeout": 0
+	},
+	"scripts":{
+		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
 	}
 }

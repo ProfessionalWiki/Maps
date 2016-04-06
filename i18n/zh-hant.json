@@ -8,10 +8,12 @@
 			"Mark85296341",
 			"Shirayuki",
 			"Simon Shek",
-			"Waihorace"
+			"Waihorace",
+			"LNDDYL",
+			"Macofe"
 		]
 	},
-	"maps-desc": "可讓 Wiki 頁面嵌入動態地圖，支援使用地理編碼標記位置，以及地理相關操作。",
+	"maps-desc": "可讓 Wiki 頁面嵌入動態地圖，支援使用地理編碼標記位置，以及地理相關操作",
 	"right-geocode": "地理編碼",
 	"maps_map": "地圖",
 	"maps-tracking-category": "使用地圖擴充套件顯示地圖的頁面",
@@ -118,6 +120,6 @@
 	"mapeditor-mapparam-defoption": "-請選擇參數-",
 	"mapeditor-imageoverlay-button": "新增圖片圖層",
 	"mapeditor-form-field-image": "圖片",
-	"mapeditor-imageoverlay-title": "圖片圖層詳細資訊",
+	"mapeditor-imageoverlay-title": "圖片圖層詳細資料",
 	"mapeditor-form-field-visitedicon": "已瀏覽的圖示"
 }

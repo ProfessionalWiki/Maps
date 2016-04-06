@@ -1,8 +1,81 @@
 These are the release notes for the [Maps extension](../README.md).
 
-## Maps 3.2 (dev)
 
-* 
+## Maps 3.6
+
+Development version
+
+* Dropped support for MediaWiki older than 1.23
+* Dropped support for PHP older than 5.5
+
+## Maps 3.5
+
+Released on April 2nd, 2016.
+
+* Added `egMapsGMaps3Language` setting (by James Hong Kong and Karsten Hoffmeyer)
+* Added `osm-mapquest` layer for OpenLayers (by Bernhard Krabina)
+* Added license lable to display on "Special:Version" (by Karsten Hoffmeyer)
+* Improved Mobile Frontend support (by James Hong Kong)
+* Added missing Leaflet system messages (by Karsten Hoffmeyer)
+
+## Maps 3.4.1
+
+Released on January 30th, 2016.
+
+* Fixed Open Street Map HTTPS support issues (by Karsten Hoffmeyer)
+* Migrated remaining wfMsg* to wfMessage (by Florian Schmidt)
+* Migrated wfRunHooks to Hooks::run (by Adam Shorland)
+
+## Maps 3.4
+
+Released on July 25th, 2015.
+
+* Added KML support for OpenLayers via a new `kml` parameter (by akionux)
+* Fixed Google Maps HTTPS support issues (by Karsten Hoffmeyer)
+
+## Maps 3.3
+
+Released on June 29th, 2015.
+
+* Added `$egMapsEnableCategory` setting (by Bernhard Krabina)
+* Fixed OpenLayers specific path issue (by Simon Heimler)
+
+## Maps 3.2.4
+
+Released on June 21st, 2015.
+
+* Map reside is now triggered when going fullscreen (by Kjetil Volden)
+* Improved styling of the fullscreen button (by Kjetil Volden)
+* Removed no longer working osmarender layer (by Karsten Hoffmeyer)
+* Fixed resource paths for some installation configurations
+
+## Maps 3.2.3
+
+Released on March 23rd, 2015.
+
+* Protocol relative URLs are now used, avoiding HTTPS related problems
+* Selecting OpenLayers markers now works on touch devices
+
+## Maps 3.2.2
+
+Released on January 19th, 2015.
+
+* Fixed fatal error in the KML formatter
+
+## Maps 3.2.1
+
+Released on January 13th, 2015.
+
+* Fixed `geocode` right
+* Fixed coordinate precision issue after breaking changes in DataValues Geo 
+
+## Maps 3.2
+
+Released on September 12th, 2014.
+
+* Enhanced compatibility with MediaWiki 1.24
+* Improved the translations
+* Switched to using DataValue Geo 1.x
 
 ## Maps 3.1
 

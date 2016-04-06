@@ -98,7 +98,7 @@ class MapsLayerDefinition extends ParserHook {
 	}
 	
 	/**
-	 * Returns the parser function otpions.
+	 * Returns the parser function options.
 	 * @see ParserHook::getFunctionOptions
 	 *
 	 * @since 3.0
@@ -344,9 +344,6 @@ class MapsLayerDefinition extends ParserHook {
 					count( $messages )
 				)->inContentLanguage()->escaped() .
 				"</td><td class=\"mapslayerpropval\">{$warnings}</td></tr>";
-
-
-			//$out .= $this->errorbox( wfMsgHtml( 'maps-error-invalid-layerdef' ) . $warnings );
 			
 			$outWarning .= Html::rawElement(
 					'table',

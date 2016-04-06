@@ -1,5 +1,5 @@
 <?php
-use ValueFormatters\GeoCoordinateFormatter;
+use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 
 /**
  * Class for the 'geocode' parser hooks, which can turn
@@ -114,7 +114,8 @@ class MapsGeocode extends ParserHook {
 
 		$options = new \ValueFormatters\FormatterOptions( array(
 			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
+			GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
 		) );
 
 		$formatter = new GeoCoordinateFormatter( $options );

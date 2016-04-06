@@ -2,7 +2,7 @@
 
 namespace Maps\Tests\Elements;
 
-use DataValues\LatLongValue;
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Rectangle;
 
 /**

@@ -2,10 +2,11 @@
 
 namespace Maps\Test;
 
-use DataValues\LatLongValue;
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 use Maps\LocationParser;
 use Title;
+use ValueParsers\ValueParser;
 
 /**
  * @covers Maps\LocationParser
@@ -45,17 +46,6 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 		$argLists[] = array( '4,2~Title~some description', $location );
 
 		return $argLists;
-	}
-
-	/**
-	 * @see ValueParserTestBase::getParserClass
-	 *
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	protected function getParserClass() {
-		return 'Maps\LocationParser';
 	}
 
 	/**
@@ -139,5 +129,9 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 //			array( 'Some_Page' ),
 //		);
 //	}
+
+	protected function getInstance() {
+		return new LocationParser();
+	}
 
 }

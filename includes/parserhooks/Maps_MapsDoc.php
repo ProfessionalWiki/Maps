@@ -106,7 +106,7 @@ class MapsMapsDoc extends ParserHook {
 	protected function msg() {
 		$args = func_get_args();
 		$key = array_shift( $args );
-		return wfMsgReal( $key, $args, true, $this->language );
+		return wfMessage( $key, $args )->inLanguage( $this->language )->text();
 	}
 
 	/**
