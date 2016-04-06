@@ -1,5 +1,5 @@
 <?php
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use ValueFormatters\GeoCoordinateFormatter;
 
 /**
  * Class for the 'finddestination' parser hooks, which can find a
@@ -125,8 +125,7 @@ class MapsFinddestination extends ParserHook {
 
 		$options = new \ValueFormatters\FormatterOptions( array(
 			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
-			GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional']
 		) );
 
 		$formatter = new GeoCoordinateFormatter( $options );

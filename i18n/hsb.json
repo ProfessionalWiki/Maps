@@ -2,11 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"J budissin",
-			"Michawiki",
-			"Macofe"
+			"Michawiki"
 		]
 	},
-	"maps-desc": "Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki",
+	"maps-desc": "Zmóžnja zasadźenje dynamiskich kartow do wikistronow, geokodowanje adresow a druhe geografiske podawki.",
 	"right-geocode": "Geokodowanje",
 	"maps_map": "Karta",
 	"maps-tracking-category": "Strony z kartu rysowanej přez rozšěrjenje Maps",

@@ -85,13 +85,6 @@ class MapsOpenLayers extends MapsMappingService {
 			'values' => array( 'title', 'all', '' ),
 			'tolower' => true,
 		);
-
-		$params['kml'] = array(
-			'default' => array(),
-			'message' => 'maps-openlayers-par-kml',
-			'islist' => true,
-			// new MapsParamFile() FIXME
-		);
 	}
 	
 	/**

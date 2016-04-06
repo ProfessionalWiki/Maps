@@ -2,10 +2,9 @@
 
 namespace Maps;
 
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
-use DataValues\Geo\Parsers\GeoCoordinateParser;
-use DataValues\Geo\Values\LatLongValue;
+use DataValues\LatLongValue;
 use MWException;
+use ValueFormatters\GeoCoordinateFormatter;
 use ValueParsers\ParseException;
 
 /**
@@ -104,7 +103,7 @@ final class Geocoders {
 		$initiated = true;
 		
 		// Register the geocoders.
-		\Hooks::run( 'GeocoderFirstCallInit' );
+		wfRunHooks( 'GeocoderFirstCallInit' );
 		
 		// Determine if there are any geocoders.
 		self::$canGeocode = count( self::$registeredGeocoders ) > 0;
@@ -128,7 +127,7 @@ final class Geocoders {
 	 */
 	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
 		if ( $checkForCoords ) {
-			$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+			$coordinateParser = new \ValueParsers\GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 
 			try {
 				return $coordinateParser->parse( $coordsOrAddress );
@@ -180,8 +179,7 @@ final class Geocoders {
 
 		$options = new \ValueFormatters\FormatterOptions( array(
 			GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional,
-			GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
+			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional
 		) );
 
 		$formatter = new GeoCoordinateFormatter( $options );

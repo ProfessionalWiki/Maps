@@ -1,0 +1,369 @@
+{
+	"name": "Maps",
+	"version": "3.2 alpha",
+	"author": [
+		"[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]"
+	],
+	"url": "https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps",
+	"descriptionmsg": "maps-desc",
+	"type": "parserhook",
+	"GroupPermissions": {
+		"*": {
+			"createaccount": true,
+			"read": true,
+			"edit": true,
+			"createpage": true,
+			"createtalk": true,
+			"writeapi": true,
+			"editmyusercss": true,
+			"editmyuserjs": true,
+			"viewmywatchlist": true,
+			"editmywatchlist": true,
+			"viewmyprivateinfo": true,
+			"editmyprivateinfo": true,
+			"editmyoptions": true,
+			"geocode": true
+		},
+		"user": {
+			"move": true,
+			"move-subpages": true,
+			"move-rootuserpages": true,
+			"move-categorypages": true,
+			"movefile": true,
+			"read": true,
+			"edit": true,
+			"createpage": true,
+			"createtalk": true,
+			"writeapi": true,
+			"upload": true,
+			"reupload": true,
+			"reupload-shared": true,
+			"minoredit": true,
+			"purge": true,
+			"sendemail": true,
+			"applychangetags": true,
+			"changetags": true,
+			"geocode": true
+		},
+		"autoconfirmed": {
+			"autoconfirmed": true,
+			"editsemiprotected": true
+		},
+		"bot": {
+			"bot": true,
+			"autoconfirmed": true,
+			"editsemiprotected": true,
+			"nominornewtalk": true,
+			"autopatrol": true,
+			"suppressredirect": true,
+			"apihighlimits": true,
+			"writeapi": true
+		},
+		"sysop": {
+			"block": true,
+			"createaccount": true,
+			"delete": true,
+			"bigdelete": true,
+			"deletedhistory": true,
+			"deletedtext": true,
+			"undelete": true,
+			"editinterface": true,
+			"editusercss": true,
+			"edituserjs": true,
+			"editcontentmodel": true,
+			"import": true,
+			"importupload": true,
+			"move": true,
+			"move-subpages": true,
+			"move-rootuserpages": true,
+			"move-categorypages": true,
+			"patrol": true,
+			"autopatrol": true,
+			"protect": true,
+			"editprotected": true,
+			"rollback": true,
+			"upload": true,
+			"reupload": true,
+			"reupload-shared": true,
+			"unwatchedpages": true,
+			"autoconfirmed": true,
+			"editsemiprotected": true,
+			"ipblock-exempt": true,
+			"blockemail": true,
+			"markbotedits": true,
+			"apihighlimits": true,
+			"browsearchive": true,
+			"noratelimit": true,
+			"movefile": true,
+			"unblockself": true,
+			"suppressredirect": true,
+			"mergehistory": true,
+			"managechangetags": true
+		},
+		"bureaucrat": {
+			"userrights": true,
+			"noratelimit": true
+		}
+	},
+    "requires": {
+        "MediaWiki": ">= 1.27.0"
+    },
+	"AvailableRights": [
+		"geocode"
+	],
+	"callback": "MapsHooks::onExtensionCallback",
+	"ExtensionFunctions": [
+		"MapsHooks::onExtensionFunction"
+	],
+	"APIModules": {
+		"geocode": "Maps\\Api\\Geocode"
+	},
+	"MessagesDirs": {
+		"Maps": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"MapsMagic": "Maps.i18n.magic.php",
+		"MapsNamespaces": "Maps.i18n.namespaces.php",
+		"MapsAlias": "Maps.i18n.alias.php"
+	},
+	"AutoloadClasses": {
+		"MapsOpenLayers": "includes/services/OpenLayers/Maps_OpenLayers.php"
+	},
+	"ResourceModules": {
+		"ext.maps.common": {
+			"group": "ext.maps",
+			"messages": [
+				"maps-load-failed"
+			],
+			"scripts": [
+				"includes/ext.maps.common.js"
+			]
+		},
+		"ext.maps.layers": {
+			"group": "ext.maps",
+			"styles": [
+				"includes/ext.maps.layers.css"
+			]
+		},
+		"ext.maps.coord": {
+			"group": "ext.maps",
+			"messages": [
+				"maps-abb-north",
+				"maps-abb-east",
+				"maps-abb-south",
+				"maps-abb-west"
+			],
+			"scripts": [
+				"includes/ext.maps.coord.js"
+			]
+		},
+		"ext.maps.resizable": {
+			"group": "ext.maps",
+			"dependencies": "jquery.ui.resizable"
+		},
+		"mapeditor": {
+			"group": "ext.maps",
+			"scripts": [
+				"includes/editor/js/jquery.miniColors.js",
+				"includes/editor/js/mapeditor.iefixes.js",
+				"includes/editor/js/mapeditor.js"
+			],
+			"styles": [
+				"includes/editor/css/jquery.miniColors.css",
+				"includes/editor/css/mapeditor.css"
+			],
+			"messages": [
+				"mapeditor-parser-error",
+				"mapeditor-none-text",
+				"mapeditor-done-button",
+				"mapeditor-remove-button",
+				"mapeditor-import-button",
+				"mapeditor-export-button",
+				"mapeditor-import-button2",
+				"mapeditor-select-button",
+				"mapeditor-mapparam-button",
+				"mapeditor-clear-button",
+				"mapeditor-imageoverlay-button"
+			],
+			"dependencies": [
+				"ext.maps.common",
+				"jquery.ui.autocomplete",
+				"jquery.ui.slider",
+				"jquery.ui.dialog"
+			]
+		},
+		"ext.maps.googlemaps3": {
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/GoogleMaps3/jquery.googlemap.js",
+				"includes/services/GoogleMaps3/ext.maps.googlemaps3.js"
+			],
+			"messages": [
+				"maps-googlemaps3-incompatbrowser",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text",
+				"maps-fullscreen-button",
+				"maps-fullscreen-button-tooltip"
+			]
+		},
+		"ext.maps.gm3.markercluster": {
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/GoogleMaps3/gm3-util-library/markerclusterer.js"
+			]
+		},
+		"ext.maps.gm3.markerwithlabel": {
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.js"
+			],
+			"styles": [
+				"includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.css"
+			]
+		},
+		"ext.maps.gm3.geoxml": {
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/GoogleMaps3/geoxml3/geoxml3.js",
+				"includes/services/GoogleMaps3/geoxml3/ZipFile.complete.js",
+				"includes/services/GoogleMaps3/geoxml3/ProjectedOverlay.js"
+			]
+		},
+		"ext.maps.gm3.earth": {
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/GoogleMaps3/googleearth-compiled.js"
+			]
+		},
+		"ext.maps.openlayers": {
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/OpenLayers/OpenLayers/OpenLayers.js",
+				"includes/services/OpenLayers/OSM/OpenStreetMap.js",
+				"includes/services/OpenLayers/jquery.openlayers.js",
+				"includes/services/OpenLayers/ext.maps.openlayers.js"
+			],
+			"styles": [
+				"includes/services/OpenLayers/OpenLayers/theme/default/style.css"
+			],
+			"messages": [
+				"maps-markers",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text"
+			]
+		},
+		"ext.maps.leaflet": {
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/Leaflet/jquery.leaflet.js",
+				"includes/services/Leaflet/ext.maps.leaflet.js"
+			],
+			"messages": [
+				"maps-markers",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Maps"
+	},
+	"Hooks": {
+		"AdminLinks": [
+			"MapsHooks::addToAdminLinks"
+		],
+		"ArticleFromTitle": [
+			"MapsHooks::onArticleFromTitle"
+		],
+		"MakeGlobalVariablesScript": [
+			"MapsHooks::onMakeGlobalVariablesScript"
+		],
+		"CanonicalNamespaces": [
+			"MapsHooks::onCanonicalNamespaces"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"MapsHooks::onLoadExtensionSchemaUpdates"
+		],
+		"ArticlePurge": [
+			"MapsHooks::onArticlePurge"
+		],
+		"LinksUpdateConstructed": [
+			"MapsHooks::onLinksUpdateConstructed"
+		],
+		"ParserAfterTidy": [
+			"MapsHooks::onParserAfterTidy"
+		],
+		"ParserClearState": [
+			"MapsHooks::onParserClearState"
+		],
+		"ParserFirstCallInit": [
+			"MapsHooks::onParserFirstCallInit1",
+			"MapsHooks::onParserFirstCallInit2",
+			"MapsHooks::onParserFirstCallInit3",
+			"MapsHooks::onParserFirstCallInit4",
+			"MapsHooks::onParserFirstCallInit5",
+			"MapsHooks::onParserFirstCallInit6",
+			"MapsHooks::onParserFirstCallInit7",
+			"MapsHooks::onParserFirstCallInit8"
+		],
+		"GeocoderFirstCallInit": [
+			"MapsGeonamesGeocoder::register",
+			"MapsGoogleGeocoder::register",
+			"MapsGeocoderusGeocoder::register"
+		],
+		"MappingLayersInitialization": [
+			"MapsImageLayer::register"
+		],
+		"MappingServiceLoad": [
+			"MapsHooks::efMapsInitGoogleMaps3",
+			"MapsHooks::efMapsInitOpenLayers",
+			"MapsHooks::efMapsInitLeaflet"
+		]
+	},
+	"config": {
+		"StyleVersion": "303",
+		"ParamDefinitions": {
+			"mappingservice": {
+				"definition": "Maps\\ServiceParam"
+			},
+			"mapslocation": {
+				"string-parser": "Maps\\LocationParser"
+			},
+			"mapsline": {
+				"string-parser": "Maps\\LineParser"
+			},
+			"mapscircle": {
+				"string-parser": "Maps\\CircleParser"
+			},
+			"mapsrectangle": {
+				"string-parser": "Maps\\RectangleParser"
+			},
+			"mapspolygon": {
+				"string-parser": "Maps\\PolygonParser"
+			},
+			"distance": {
+				"string-parser": "Maps\\DistanceParser"
+			},
+			"wmsoverlay": {
+				"string-parser": "Maps\\WmsOverlayParser"
+			},
+			"mapsimageoverlay": {
+				"string-parser": "Maps\\ImageOverlayParser"
+			}
+		}
+	},
+	"load_composer_autoloader": true,
+	"manifest_version": 1
+}

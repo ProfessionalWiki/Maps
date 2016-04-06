@@ -1,12 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"CERminator",
-			"KWiki",
-			"Macofe"
+			"CERminator"
 		]
 	},
-	"maps-desc": "Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije",
+	"maps-desc": "Daje umetanje dinamičkih mapa u wiki stranice, geokodiranje adresa i druge geografske operacije.  ([http://mapping.referata.com/wiki/Examples primeri])",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Učitavam kartu...",
 	"maps-markers": "Markeri",
@@ -21,7 +19,7 @@
 	"validation-error-invalid-layer": "Parametar $1 mora biti valjani sloj.",
 	"validation-error-invalid-layers": "Parametar $1 mora biti jedan ili više valjanih slojeva.",
 	"maps-layer-of-type": "Sloj tipa $1",
-	"maps-layer-type-supported-by": "Ovaj tip sloja može biti korišten {{PLURAL:$2|samo s $1 uslugom kartografiranja|s ovim uslugama kartografiranja: $1}}.",
+	"maps-layer-type-supported-by": "Ovaj tip sloja može biti korišten {{PLURAL:$2|samo sa $1 uslugom kartografiranja|sa ovim uslugama kartografiranja: $1}}.",
 	"validation-error-invalid-location": "Parametar $1 mora biti valjana lokacija.",
 	"validation-error-invalid-locations": "Parametar $1 mora biti jedna ili više valjanih lokacija.",
 	"validation-error-invalid-width": "Parametar $1 mora biti valjana širina.",

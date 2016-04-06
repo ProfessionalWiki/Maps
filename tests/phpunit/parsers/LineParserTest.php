@@ -2,10 +2,8 @@
 
 namespace Maps\Test;
 
-use DataValues\Geo\Values\LatLongValue;
+use DataValues\LatLongValue;
 use Maps\Elements\Line;
-use Maps\LineParser;
-use ValueParsers\ValueParser;
 
 /**
  * @covers Maps\LineParser
@@ -70,6 +68,17 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 	}
 
 	/**
+	 * @see ValueParserTestBase::getParserClass
+	 *
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
+	protected function getParserClass() {
+		return 'Maps\LineParser';
+	}
+
+	/**
 	 * @see ValueParserTestBase::requireDataValue
 	 *
 	 * @since 3.0
@@ -78,15 +87,6 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 */
 	protected function requireDataValue() {
 		return false;
-	}
-
-	/**
-	 * @since 0.1
-	 *
-	 * @return ValueParser
-	 */
-	protected function getInstance() {
-		return new LineParser();
 	}
 
 }

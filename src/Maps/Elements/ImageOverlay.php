@@ -2,7 +2,7 @@
 
 namespace Maps\Elements;
 
-use DataValues\Geo\Values\LatLongValue;
+use DataValues\LatLongValue;
 use InvalidArgumentException;
 
 /**

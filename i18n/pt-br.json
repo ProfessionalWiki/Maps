@@ -6,11 +6,10 @@
 			"Giro720",
 			"Luckas",
 			"Luckas Blade",
-			"555",
-			"Macofe"
+			"555"
 		]
 	},
-	"maps-desc": "Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas",
+	"maps-desc": "Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas.",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Carregando mapa...",
 	"maps-markers": "Marcadores",

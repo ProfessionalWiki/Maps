@@ -2,11 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Imksa",
-			"Meno25",
-			"Macofe"
+			"Meno25"
 		]
 	},
-	"maps-desc": "يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى",
+	"maps-desc": "يسمح بتضمين خرائط ديناميكية إلى صفحات الويكي، كود العناوين وعمليات جغرافية أخرى. ([http://mapping.referata.com/wiki/Examples تجارب])",
 	"maps_map": "خريطة",
 	"maps-loading-map": "تحميل الخريطة...",
 	"maps-load-failed": "لا يمكن تحميل الخريطة!",
@@ -39,8 +38,5 @@
 	"maps_openlayers": "أوبن لايرز",
 	"maps_osm": "أوبن ستريت ماب",
 	"maps_click_to_activate": "اضغط لتنشيط الخريطة",
-	"maps_centred_on": "الخريطة مركزها في $1، $2.",
-	"mapeditor": "محرر الخرائط",
-	"specialpages-group-maps": "الخرائط",
-	"mapeditor-form-field-title": "العنوان"
+	"maps_centred_on": "الخريطة مركزها في $1، $2."
 }

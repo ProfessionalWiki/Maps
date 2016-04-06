@@ -33,7 +33,7 @@ class CriterionIsNonNumeric extends ItemParameterCriterion {
 	 * @see ItemParameterCriterion::getItemErrorMessage
 	 */
 	protected function getItemErrorMessage( Parameter $parameter ) {
-		return wfMessage( 'validation-error-no-non-numeric', $parameter->getOriginalName() )->parse();
+		return wfMsgExt( 'validation-error-no-non-numeric', 'parsemag', $parameter->getOriginalName() );
 	}
 
 	/**
@@ -41,6 +41,6 @@ class CriterionIsNonNumeric extends ItemParameterCriterion {
 	 */
 	protected function getFullListErrorMessage( Parameter $parameter ) {
 		global $wgLang;
-		return wfMessage( 'validation-error-no-non-numerics', $parameter->getOriginalName() )->parse();
+		return wfMsgExt( 'validation-error-no-non-numerics', 'parsemag', $parameter->getOriginalName() );
 	}
 }

@@ -1,11 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie",
-			"Macofe"
+			"McDutchie"
 		]
 	},
-	"maps-desc": "Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic",
+	"maps-desc": "Permitte le incorporation de cartas dynamic in paginas wiki, le geocodification de adresses e altere operationes geographic. ([https://www.semantic-mediawiki.org/wiki/Maps plus info...])",
 	"right-geocode": "Geocodificar",
 	"maps_map": "Carta",
 	"maps-loading-map": "Cargamento del carta…",
