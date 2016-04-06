@@ -1,5 +1,7 @@
 language: php
 
+sudo: false
+
 matrix:
   include:
     - env: DBTYPE=mysql; MW=1.25.0
