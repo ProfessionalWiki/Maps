@@ -101,6 +101,15 @@ call_user_func( function() {
 		),
 	);
 
+	$wgResourceModules['ext.maps.gm3.oms'] = array(
+		'localBasePath' => __DIR__ . '/gm3-util-library',
+		'remoteExtPath' => '..' . substr( __DIR__, strlen( $GLOBALS['IP'] ) ) . '/gm3-util-library',
+		'group' => 'ext.maps',
+		'scripts' => array(
+			'oms.min.js',
+		),
+	);
+
 	$wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
 } );
 
