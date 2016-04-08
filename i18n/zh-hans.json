@@ -105,6 +105,7 @@
 	"maps-leaflet-par-resizable": "允许地图通过拖放右下角改变大小。",
 	"maps_click_to_activate": "点击激活地图",
 	"maps_centred_on": "地图居中在$1，$2。",
+	"maps-par-mappingservice": "允许设置将被用于生成地图的映射服务。",
 	"maps-par-searchmarkers": "允许通过嵌入在地图中的字段搜索特定标记。",
 	"maps-par-width": "允许设置地图宽度。默认情况下像素将被假定为单位，但您可以明确指定这些单位之一：px、ex、em、%。",
 	"maps-par-height": "允许设置地图高度。默认情况下像素将被假定为单位，但您可以明确指定这些单位之一：px、ex、em、%。",

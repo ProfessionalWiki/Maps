@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"AnakngAraw"
+			"AnakngAraw",
+			"Jojit fb"
 		]
 	},
 	"maps-desc": "Nagpapagana ng pagbabaon ng gumagalaw na mga mapa papaloob sa mga pahina ng wiki, pagkokodigong pangheograpiya ng mga tirahan at ibang mga gawaing pangheograpiya. ([http://mapping.referata.com/wiki/Examples mga pagpapatunghay])\n\nkakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])",
@@ -135,10 +136,10 @@
 	"mapeditor-import-note": "Paki tandaan na ang pambanghay ay umaasa ng isang napaka higpit na kaanyuan sa kodigo ng wiki. Ang ipinasok na kodigo rito ay dapat na tumugma sa kodigong inilibas ng panunungkulan ng pagluluwas.",
 	"mapeditor-form-title": "Baguhin ang mga detalye",
 	"mapeditor-link-title-switcher-popup-text": "Pagsulpot na mayroong teksto",
-	"mapeditor-link-title-switcher-link-text": "Kawing",
+	"mapeditor-link-title-switcher-link-text": "Link",
 	"mapeditor-form-field-title": "Pamagat",
 	"mapeditor-form-field-text": "Teksto",
-	"mapeditor-form-field-link": "Kawing",
+	"mapeditor-form-field-link": "Link",
 	"mapeditor-form-field-icon": "Kinatawang larawan",
 	"mapeditor-form-field-group": "Pangkat",
 	"mapeditor-form-field-inlinelabel": "Katatakang nasa guhit",
