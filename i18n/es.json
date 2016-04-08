@@ -8,7 +8,8 @@
 			"Locos epraix",
 			"Sethladan",
 			"Translationista",
-			"Macofe"
+			"Macofe",
+			"AlvaroMolina"
 		]
 	},
 	"semanticmaps-desc": "Proporciona la posibilidad de ver y editar datos de coordenadas almacenados con la extensión [https://www.semantic-mediawiki.org Semantic MediaWiki].",
@@ -31,6 +32,7 @@
 	"semanticmaps-par-centre": "El centro del mapa. Cuando no se proporciona, el mapa escogerá automáticamente el mejor centro para mostrar todos los marcadores en el mapa.",
 	"semanticmaps-par-template": "Una plantilla a usar para dar formato al contenido de la ventana de información.",
 	"semanticmaps-par-geocodecontrol": "Mostrar el control de geocodificación.",
+	"semanticmaps-par-userparam": "Un valor pasado en cada llamada de plantilla,si una plantilla es usada",
 	"semanticmaps-kml-text": "El texto asociado a cada página. Es substituído por las propiedades recuperadas adicionales, si existen.",
 	"semanticmaps-kml-title": "El título predeterminado de los resultados",
 	"semanticmaps-kml-linkabsolute": "Los enlaces deberían ser absolutos (lo opuesto de relativos)",
