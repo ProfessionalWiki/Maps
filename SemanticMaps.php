@@ -33,41 +33,41 @@ if ( !defined( 'Maps_VERSION' ) ) {
 	throw new Exception( 'You need to have Maps installed in order to use Semantic Maps' );
 }
 
-$GLOBALS['wgExtensionCredits']['semantic'][] = array(
+$GLOBALS['wgExtensionCredits']['semantic'][] = [
 	'path' => __FILE__,
 	'name' => 'Semantic Maps',
 	'version' => SM_VERSION,
-	'author' => array(
+	'author' => [
 		'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
-	),
+	],
 	'url' => 'https://github.com/SemanticMediaWiki/SemanticMaps/blob/master/README.md#semantic-maps',
 	'descriptionmsg' => 'semanticmaps-desc',
 	'license-name'   => 'GPL-2.0+'
-);
+];
 
 // Include the settings file.
 require_once 'SM_Settings.php';
 
 include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
-$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
-	'dependencies' => array( 'ext.maps.coord' ),
+$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = [
+	'dependencies' => [ 'ext.maps.coord' ],
 	'position' => 'bottom',
 	'localBasePath' => __DIR__ . '/src/forminputs',
 	'remoteExtPath' => 'SemanticMaps/src/forminputs',
 	'group' => 'ext.semanticmaps',
-	'scripts' => array(
+	'scripts' => [
 		'jquery.mapforminput.js'
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'semanticmaps_enteraddresshere',
 		'semanticmaps-updatemap',
 		'semanticmaps_lookupcoordinates',
 		'semanticmaps-forminput-remove',
 		'semanticmaps-forminput-add',
 		'semanticmaps-forminput-locations'
-	)
-);
+	]
+];
 
 
 include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';

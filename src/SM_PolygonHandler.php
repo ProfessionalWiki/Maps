@@ -39,7 +39,7 @@ class PolygonHandler {
 	 *
 	 * @var array
 	 */
-	protected $errors = array();
+	protected $errors = [];
 
 	/**
 	 * Array of classes used to validate different Geographic shapes.
@@ -48,13 +48,13 @@ class PolygonHandler {
 	 *
 	 * @var array
 	 */
-	protected $validatorClasses = array(
+	protected $validatorClasses = [
 		'locations' => 'LocationValidator',
 		'lines' => 'LineValidator',
 		'polygons' => 'PolygonValidator',
 		'circles' => 'CircleValidator',
 		'rectangles' => 'RectangleValidator'
-	);
+	];
 
 	/**
 	 * Array of classes of different Geographic shapes.
@@ -63,13 +63,13 @@ class PolygonHandler {
 	 *
 	 * @var array
 	 */
-	protected $geoClasses = array(
+	protected $geoClasses = [
 		'locations' => 'MapsLocation',
 		'lines' => 'MapsLine',
 		'polygons' => 'MapsPolygon',
 		'circles' => 'MapsCircle',
 		'rectangles' => 'MapsRectanlge'
-	);
+	];
 
 	/**
 	 * NOTE: These need to be changed as Manipulations are depreceated.
@@ -79,13 +79,13 @@ class PolygonHandler {
 	 *
 	 * @var array
 	 */
-	protected $paramClasses = array(
+	protected $paramClasses = [
 		'locations' => 'MapsParamLocation',
 		'lines' => 'MapsParamLine',
 		'polygons' => 'MapsParamPolygon',
 		'circles' => 'MapsParamCircle',
 		'rectangles' => 'MapsParamRectangle'
-	);
+	];
 
 	/**
 	 * Constructor.

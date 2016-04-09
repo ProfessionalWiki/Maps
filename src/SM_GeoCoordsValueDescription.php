@@ -63,7 +63,7 @@ class SMGeoCoordsValueDescription extends SMWValueDescription {
 			$lat = $dbs->addQuotes( $dataItem->getLatitude() );
 			$lon = $dbs->addQuotes( $dataItem->getLongitude() );
 
-			$conditions = array();
+			$conditions = [];
 
 			$conditions[] = "{$tableName}.$fieldNames[1] $comparator $lat";
 			$conditions[] = "{$tableName}.$fieldNames[2] $comparator $lon";

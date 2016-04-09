@@ -19,7 +19,7 @@ class KMLPrinterTest extends QueryPrinterRegistryTestCase {
 	 * @return array
 	 */
 	public function getFormats() {
-		return array( 'kml' );
+		return [ 'kml' ];
 	}
 
 	/**

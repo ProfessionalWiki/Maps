@@ -19,7 +19,7 @@ class MapPrinterTest extends QueryPrinterRegistryTestCase {
 	 * @return array
 	 */
 	public function getFormats() {
-		return array( 'map' );
+		return [ 'map' ];
 	}
 
 	/**

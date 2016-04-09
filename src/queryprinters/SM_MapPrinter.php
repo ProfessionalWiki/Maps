@@ -57,44 +57,44 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$this->service->addParameterInfo( $params );
 
-		$params['staticlocations'] = array(
+		$params['staticlocations'] = [
 			'type' => 'mapslocation',
-			'aliases' => array( 'locations', 'points' ),
-			'default' => array(),
+			'aliases' => [ 'locations', 'points' ],
+			'default' => [],
 			'islist' => true,
 			'delimiter' => ';',
 			'message' => 'semanticmaps-par-staticlocations',
-		);
+		];
 
-		$params['showtitle'] = array(
+		$params['showtitle'] = [
 			'type' => 'boolean',
 			'aliases' => 'show title',
 			'default' => $smgQPShowTitle,
-		);
+		];
 
-		$params['hidenamespace'] = array(
+		$params['hidenamespace'] = [
 			'type' => 'boolean',
 			'aliases' => 'hide namespace',
 			'default' => $smgQPHideNamespace,
-		);
+		];
 
-		$params['template'] = array(
+		$params['template'] = [
 			'default' => $smgQPTemplate,
-		);
+		];
 
-		$params['userparam'] = array(
+		$params['userparam'] = [
 			'default' => '',
-		);
+		];
 
-		$params['activeicon'] = array (
+		$params['activeicon'] =  [
 			'type' => 'string',
 			'default' => '',
-		);
+		];
 
-		$params['pagelabel'] = array (
+		$params['pagelabel'] =  [
 			'type' => 'boolean',
 			'default' => false,
-		);
+		];
 
 		// Messages:
 		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
@@ -187,15 +187,15 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
 		return Html::rawElement(
 			'div',
-			array(
+			[
 				'id' => $mapName,
 				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
 				'class' => 'maps-map maps-' . $this->service->getName()
-			),
+			],
 			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
 				Html::element(
 					'div',
-					array( 'style' => 'display:none', 'class' => 'mapdata' ),
+					[ 'style' => 'display:none', 'class' => 'mapdata' ],
 					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
 				)
 		);
@@ -256,7 +256,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
 
-		$locationsJson = array();
+		$locationsJson = [];
 
 		foreach ( $staticLocations as $location ) {
 			$locationsJson[] = $this->getJsonForStaticLocation(
@@ -318,7 +318,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @return array
 	 */
 	protected function getJsonForLocations( array $locations, array $params, $iconUrl, $visitedIconUrl ) {
-		$locationsJson = array();
+		$locationsJson = [];
 
 		foreach ( $locations as $location ) {
 			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
@@ -338,7 +338,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @return array
 	 */
 	protected function getElementJsonArray( array $elements, array $params ) {
-		$elementsJson = array();
+		$elementsJson = [];
 
 		foreach ( $elements as $element ) {
 			$jsonObj = $element->getJSONObject( $params['title'], $params['label'] );
