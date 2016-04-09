@@ -32,7 +32,7 @@ final class Geocoders {
 	 * 
 	 * @var Geocoder[]
 	 */
-	protected static $geocoders = array();
+	protected static $geocoders = [];
 	
 	/**
 	 * Associative with geoservice identifiers as keys containing the class
@@ -43,7 +43,7 @@ final class Geocoders {
 	 * 
 	 * @var array of string => string
 	 */
-	public static $registeredGeocoders = array();
+	public static $registeredGeocoders = [];
 	
 	/**
 	 * The global geocoder cache, holding geocoded data when enabled.
@@ -52,7 +52,7 @@ final class Geocoders {
 	 *
 	 * @var array
 	 */
-	private static $globalGeocoderCache = array();
+	private static $globalGeocoderCache = [];
 	
 	/**
 	 * Can geocoding happen, ie are there any geocoders available.
@@ -178,11 +178,11 @@ final class Geocoders {
 			return false;
 		}
 
-		$options = new \ValueFormatters\FormatterOptions( array(
+		$options = new \ValueFormatters\FormatterOptions( [
 			GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
 			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional,
 			GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
-		) );
+		] );
 
 		$formatter = new GeoCoordinateFormatter( $options );
 		return $formatter->format( $geoCoordinate );

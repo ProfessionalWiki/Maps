@@ -96,11 +96,11 @@ class WmsOverlay extends BaseElement {
 	public function getJSONObject ( $defText = "", $defTitle = "" ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 
-		$array = array (
+		$array =  [
 			'wmsServerUrl' => $this->getWmsServerUrl() ,
 			'wmsLayerName' => $this->getWmsLayerName() ,
 			'wmsStyleName' => $this->getWmsStyleName()
-		);
+		];
 		return array_merge( $parentArray, $array );
 	}
 

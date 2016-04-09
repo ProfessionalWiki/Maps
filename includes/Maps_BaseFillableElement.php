@@ -34,10 +34,10 @@ class MapsBaseFillableElement extends MapsBaseStrokableElement implements iFilla
 
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
-		$array = array(
+		$array = [
 			'fillColor' => $this->hasFillColor() ? $this->getFillColor() : '#FF0000' ,
 			'fillOpacity' => $this->hasFillOpacity() ? $this->getFillOpacity() : '0.5' ,
-		);
+		];
 		return array_merge( $parentArray , $array );
 	}
 }

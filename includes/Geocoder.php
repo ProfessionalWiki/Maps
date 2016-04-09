@@ -130,7 +130,7 @@ abstract class Geocoder {
 	 * @return string or false
 	 */
 	protected static function getXmlElementValue( $xml, $tagName ) {
-		$match = array();
+		$match = [];
 		preg_match( "/<$tagName>(.*?)<\/$tagName>/", $xml, $match );
 		return count( $match ) > 1 ? $match[1] : false;
 	}
@@ -146,7 +146,7 @@ abstract class Geocoder {
 	 * @return array
 	 */
 	public static function getOverrides() {
-		return array();
+		return [];
 	}
 	
 	/**

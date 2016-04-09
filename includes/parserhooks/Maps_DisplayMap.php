@@ -30,7 +30,7 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getNames() {
-		return array( $this->getName(), 'display_point', 'display_points', 'display_line' );
+		return [ $this->getName(), 'display_point', 'display_points', 'display_line' ];
 	}
 	
 	/**
@@ -46,15 +46,15 @@ class MapsDisplayMap extends ParserHook {
 
 		$params['mappingservice']['feature'] = 'display_map';
 
-		$params['coordinates'] = array(
+		$params['coordinates'] = [
 			'type' => 'mapslocation',
-			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
-			'dependencies' => array( 'mappingservice', 'geoservice' ),
-			'default' => array(),
+			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
+			'dependencies' => [ 'mappingservice', 'geoservice' ],
+			'default' => [],
 			'islist' => true,
 			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
 			'message' => 'maps-displaymap-par-coordinates',
-		);
+		];
 
 		$params = array_merge( $params, self::getCommonMapParams() );
 		
@@ -70,81 +70,81 @@ class MapsDisplayMap extends ParserHook {
 	public static function getCommonMapParams() {
 		global $egMapsDefaultTitle, $egMapsDefaultLabel;
 
-		$params['title'] = array(
+		$params['title'] = [
 			'name' => 'title',
 			'default' => $egMapsDefaultTitle,
-		);
+		];
 
-		$params['label'] = array(
+		$params['label'] = [
 			'default' => $egMapsDefaultLabel,
 			'aliases' => 'text',
-		);
+		];
 
-		$params['icon'] = array(
+		$params['icon'] = [
 			'default' => '', // TODO: image param
-		);
+		];
 
-		$params['visitedicon'] = array(
+		$params['visitedicon'] = [
 			'default' => '', //TODO: image param
-		);
+		];
 
-		$params['lines'] = array(
+		$params['lines'] = [
 			'type' => 'mapsline',
-			'default' => array(),
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['polygons'] = array(
+		$params['polygons'] = [
 			'type' => 'mapspolygon',
-			'default' => array(),
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['circles'] = array(
+		$params['circles'] = [
 			'type' => 'mapscircle',
-			'default' => array(),
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['rectangles'] = array(
+		$params['rectangles'] = [
 			'type' => 'mapsrectangle',
-			'default' => array(),
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['wmsoverlay'] = array(
+		$params['wmsoverlay'] = [
 			'type' => 'wmsoverlay',
 			'default' => false,
 			'delimiter' => ' ',
-		);
+		];
 
-		$params['maxzoom'] = array(
+		$params['maxzoom'] = [
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
 			'dependencies' => 'minzoom',
-		);
+		];
 
-		$params['minzoom'] = array(
+		$params['minzoom'] = [
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
 			'lowerbound' => 0,
-		);
+		];
 
-		$params['copycoords'] = array(
+		$params['copycoords'] = [
 			'type' => 'boolean',
 			'default' => false,
-		);
+		];
 
-		$params['static'] = array(
+		$params['static'] = [
 			'type' => 'boolean',
 			'default' => false,
-		);
+		];
 
 		// Give grep a chance to find the usages:
 		// maps-displaymap-par-title, maps-displaymap-par-label, maps-displaymap-par-icon,
@@ -170,7 +170,7 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'coordinates' );
+		return [ 'coordinates' ];
 	}
 	
 	/**
@@ -211,10 +211,10 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getFunctionOptions() {
-		return array(
+		return [
 			'noparse' => true,
 			'isHTML' => true
-		);
+		];
 	}
 
 	/**

@@ -19,12 +19,12 @@ use Maps\Elements\Rectangle;
 class ElementTest extends \PHPUnit_Framework_TestCase {
 
 	public function elementProvider() {
-		$elements = array();
+		$elements = [];
 
-		$elements[] = array( new Rectangle( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) ) );
-		$elements[] = array( new ImageOverlay( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ), 'foo' ) );
-		$elements[] = array( new Circle( new LatLongValue( 4, 2 ), 42 ) );
-		$elements[] = array( new Line( array( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) ) ) );
+		$elements[] = [ new Rectangle( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) ) ];
+		$elements[] = [ new ImageOverlay( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ), 'foo' ) ];
+		$elements[] = [ new Circle( new LatLongValue( 4, 2 ), 42 ) ];
+		$elements[] = [ new Line( [ new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) ] ) ];
 
 		//$elements[] = new \Maps\Polygon( array( new LatLongValue( 4, 2 ), new LatLongValue( 5, 6 ) ) );
 		// TODO: location

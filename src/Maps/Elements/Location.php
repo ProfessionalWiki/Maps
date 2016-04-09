@@ -305,7 +305,7 @@ class Location extends BaseElement {
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 
-		$array = array(
+		$array = [
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
 			'alt' => 0,
@@ -314,7 +314,7 @@ class Location extends BaseElement {
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
 			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
-		);
+		];
 
 		return array_merge( $parentArray , $array );
 	}

@@ -93,16 +93,16 @@ class Rectangle extends \MapsBaseFillableElement {
 	 */
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
-		$array = array(
-			'ne' => array(
+		$array = [
+			'ne' => [
 				'lon' => $this->getRectangleNorthEast()->getLongitude(),
 				'lat' => $this->getRectangleNorthEast()->getLatitude()
-			),
-			'sw' => array(
+			],
+			'sw' => [
 				'lon' => $this->getRectangleSouthWest()->getLongitude(),
 				'lat' => $this->getRectangleSouthWest()->getLatitude()
-			),
-		);
+			],
+		];
 
 		return array_merge( $parentArray , $array );
 	}

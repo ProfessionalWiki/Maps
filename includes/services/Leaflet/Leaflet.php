@@ -26,25 +26,25 @@ call_user_func( function() {
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
-	$wgResourceModules['ext.maps.leaflet'] = array(
-		'dependencies' => array( 'ext.maps.common' ),
+	$wgResourceModules['ext.maps.leaflet'] = [
+		'dependencies' => [ 'ext.maps.common' ],
 		'localBasePath' => __DIR__,
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
-		'targets' => array(
+		'targets' => [
 			'mobile',
 			'desktop'
-		),
-		'scripts' => array(
+		],
+		'scripts' => [
 			'jquery.leaflet.js',
 			'ext.maps.leaflet.js',
-		),
-		'messages' => array(
+		],
+		'messages' => [
 			'maps-markers',
 			'maps-copycoords-prompt',
 			'maps-searchmarkers-text',
-		),
-	);
+		],
+	];
 } );
 
 /**

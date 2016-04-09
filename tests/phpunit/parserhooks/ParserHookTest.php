@@ -44,8 +44,8 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 		$parser->setTitle( \Title::newMainPage() );
 
 		$renderResult = call_user_func_array(
-			array( $parserHook, 'renderFunction' ),
-			array_merge( array( &$parser ), $parameters )
+			[ $parserHook, 'renderFunction' ],
+			array_merge( [ &$parser ], $parameters )
 		);
 
 		if ( is_string( $renderResult ) ) {
@@ -62,7 +62,7 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function processingProvider() {
-		return array();
+		return [];
 	}
 
 	/**
@@ -108,7 +108,7 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 	protected function getDefaultValues() {
 		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
 
-		$defaults = array();
+		$defaults = [];
 
 		foreach ( $definitions as $definition ) {
 			if ( !$definition->isRequired() ) {
@@ -122,7 +122,7 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 	protected function arrayWrap( array $elements ) {
 		return array_map(
 			function ( $element ) {
-				return array( $element );
+				return [ $element ];
 			},
 			$elements
 		);

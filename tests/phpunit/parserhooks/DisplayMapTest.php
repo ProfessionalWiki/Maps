@@ -31,23 +31,23 @@ class DisplayMapTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function parametersProvider() {
-		$paramLists = array();
+		$paramLists = [];
 
 		// TODO
-		$paramLists[] = array( 'coordinates' => '4,2' );
+		$paramLists[] = [ 'coordinates' => '4,2' ];
 
-		$paramLists[] = array( 'location' => '4,2' );
+		$paramLists[] = [ 'location' => '4,2' ];
 
-		$paramLists[] = array( 'location' => 'new york city' );
+		$paramLists[] = [ 'location' => 'new york city' ];
 
-		$paramLists[] = array(
+		$paramLists[] = [
 			'service' => 'googlemaps',
 			'location' => 'new york city',
 			'zoom' => '10',
 			'minzoom' => '5',
 			'maxzoom' => '7',
 			'autozoom' => 'off',
-		);
+		];
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -62,23 +62,23 @@ class DisplayMapTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$values = array(
+		$values = [
 			'locations' => '4,2',
 			'width' => '420',
 			'height' => '420',
 			'service' => 'openlayers',
-		);
+		];
 
-		$expected = array(
-			'coordinates' => array( new Location( new \DataValues\LatLongValue( 4, 2 ) ) ),
+		$expected = [
+			'coordinates' => [ new Location( new \DataValues\LatLongValue( 4, 2 ) ) ],
 			'width' => '420px',
 			'height' => '420px',
 			'mappingservice' => 'openlayers',
-		);
+		];
 
-		$argLists[] = array( $values, $expected );
+		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
 	}

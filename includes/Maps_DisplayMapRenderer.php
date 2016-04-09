@@ -42,15 +42,15 @@ class MapsDisplayMapRenderer {
 	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
 		return Html::rawElement(
 			'div',
-			array(
+			[
 				'id' => $mapName,
 				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
 				'class' => 'maps-map maps-' . $this->service->getName()
-			),
+			],
 			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
 				Html::element(
 					'div',
-					array( 'style' => 'display:none', 'class' => 'mapdata' ),
+					[ 'style' => 'display:none', 'class' => 'mapdata' ],
 					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
 				)
 		);
@@ -118,7 +118,7 @@ class MapsDisplayMapRenderer {
 
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
-		$params['locations'] = array();
+		$params['locations'] = [];
 
 		/**
 		 * @var Location $location
@@ -147,13 +147,13 @@ class MapsDisplayMapRenderer {
 	}
 
 	protected function handleShapeData( array &$params, Parser $parserClone ) {
-		$textContainers = array(
+		$textContainers = [
 			&$params['lines'] ,
 			&$params['polygons'] ,
 			&$params['circles'] ,
 			&$params['rectangles'],
 			&$params['imageoverlays'], // FIXME: this is Google Maps specific!!
-		);
+		];
 
 		foreach ( $textContainers as &$textContainer ) {
 			if ( is_array( $textContainer ) ) {
@@ -189,8 +189,8 @@ class MapsDisplayMapRenderer {
 	public static function evilOpenLayersHack( $layers ) {
 		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers;
 
-		$layerDefs = array();
-		$layerNames = array();
+		$layerDefs = [];
+		$layerNames = [];
 
 		foreach ( $layers as $layerOrGroup ) {
 			$lcLayerOrGroup = strtolower( $layerOrGroup );
@@ -295,7 +295,7 @@ class MapsDisplayMapRenderer {
 	private static function getLayerDependencies( array $layerNames ) {
 		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
 
-		$layerDependencies = array();
+		$layerDependencies = [];
 
 		foreach ( $layerNames as $layerName ) {
 			if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
