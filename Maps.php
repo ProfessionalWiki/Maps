@@ -39,18 +39,18 @@ if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
 }
 
 call_user_func( function() {
-	$GLOBALS['wgExtensionCredits']['parserhook'][] = array(
+	$GLOBALS['wgExtensionCredits']['parserhook'][] = [
 		'path' => __FILE__ ,
 		'name' => 'Maps' ,
 		'version' => Maps_VERSION ,
-		'author' => array(
+		'author' => [
 			'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 			'...'
-		) ,
+		] ,
 		'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps' ,
 		'descriptionmsg' => 'maps-desc',
 		'license-name' => 'GPL-2.0+'
-	);
+	];
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT' , 'float' );
@@ -190,43 +190,43 @@ call_user_func( function() {
 		}
 	}
 
-	$GLOBALS['wgParamDefinitions']['coordinate'] = array(
+	$GLOBALS['wgParamDefinitions']['coordinate'] = [
 		'string-parser' => 'DataValues\Geo\Parsers\GeoCoordinateParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mappingservice'] = array(
+	$GLOBALS['wgParamDefinitions']['mappingservice'] = [
 		'definition'=> 'Maps\ServiceParam',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapslocation'] = array(
+	$GLOBALS['wgParamDefinitions']['mapslocation'] = [
 		'string-parser' => 'Maps\LocationParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapsline'] = array(
+	$GLOBALS['wgParamDefinitions']['mapsline'] = [
 		'string-parser' => 'Maps\LineParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapscircle'] = array(
+	$GLOBALS['wgParamDefinitions']['mapscircle'] = [
 		'string-parser' => 'Maps\CircleParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapsrectangle'] = array(
+	$GLOBALS['wgParamDefinitions']['mapsrectangle'] = [
 		'string-parser' => 'Maps\RectangleParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapspolygon'] = array(
+	$GLOBALS['wgParamDefinitions']['mapspolygon'] = [
 		'string-parser' => 'Maps\PolygonParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['distance'] = array(
+	$GLOBALS['wgParamDefinitions']['distance'] = [
 		'string-parser' => 'Maps\DistanceParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['wmsoverlay'] = array(
+	$GLOBALS['wgParamDefinitions']['wmsoverlay'] = [
 		'string-parser' => 'Maps\WmsOverlayParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = array(
+	$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = [
 		'string-parser' => 'Maps\ImageOverlayParser',
-	);
+	];
 } );

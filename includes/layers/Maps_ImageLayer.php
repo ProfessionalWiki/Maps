@@ -35,32 +35,32 @@ class MapsImageLayer extends MapsLayer {
 		$params = parent::getParameterDefinitions();
 
 		// map extent for extents bound object:
-		$params['topextent'] = array(
+		$params['topextent'] = [
 			'type' => 'float',
-			'aliases' => array( 'upperbound', 'topbound' ),
+			'aliases' => [ 'upperbound', 'topbound' ],
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
-		$params['rightextent'] = array(
+		$params['rightextent'] = [
 			'type' => 'float',
-			'aliases' => array( 'rightbound' ),
+			'aliases' => [ 'rightbound' ],
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
-		$params['bottomextent'] = array(
+		$params['bottomextent'] = [
 			'type' => 'float',
-			'aliases' => array( 'lowerbound', 'bottombound' ),
+			'aliases' => [ 'lowerbound', 'bottombound' ],
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
-		$params['leftextent'] = array(
+		$params['leftextent'] = [
 			'type' => 'float',
-			'aliases' => array( 'leftbound' ),
+			'aliases' => [ 'leftbound' ],
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
 		// image-source information:
-		$params['source'] = array(
+		$params['source'] = [
 			// TODO-customMaps: addCriteria( new CriterionIsImage() )
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 			'post-format' => function( $source ) {
@@ -72,17 +72,17 @@ class MapsImageLayer extends MapsLayer {
 				}
 				return $imageUrl;
 			}
-		);
+		];
 
-		$params['width'] = array(
+		$params['width'] = [
 			'type' => 'float',
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
-		$params['height'] = array(
+		$params['height'] = [
 			'type' => 'float',
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
 		return $params;
 	}
@@ -161,10 +161,10 @@ class MapsImageLayer extends MapsLayer {
 
 		// do image layer options:
 
-		$options = array(
+		$options = [
 			'isImage' => true,
 			'units' => $this->properties['units'],
-		);
+		];
 
 		if( $this->properties['zoomlevels'] !== false ) {
 			$options['numZoomLevels'] = $this->properties['zoomlevels'];

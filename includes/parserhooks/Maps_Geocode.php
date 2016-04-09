@@ -37,42 +37,42 @@ class MapsGeocode extends ParserHook {
 		global $egMapsDefaultGeoService, $egMapsCoordinateNotation;
 		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
 		
-		$params = array();
+		$params = [];
 
-		$params['location'] = array(
+		$params['location'] = [
 			'type' => 'mapslocation',
-			'dependencies' => array( 'mappingservice', 'geoservice' ),
-		);
+			'dependencies' => [ 'mappingservice', 'geoservice' ],
+		];
 
-		$params['mappingservice'] = array(
+		$params['mappingservice'] = [
 			'default' => '',
 			'values' => MapsMappingServices::getAllServiceValues(),
 			'tolower' => true,
-		);
+		];
 
-		$params['geoservice'] = array(
+		$params['geoservice'] = [
 			'default' => $egMapsDefaultGeoService,
 			'aliases' => 'service',
 			'values' => $egMapsAvailableGeoServices,
 			'tolower' => true,
-		);
+		];
 
-		$params['allowcoordinates'] = array(
+		$params['allowcoordinates'] = [
 			'type' => 'boolean',
 			'default' => $egMapsAllowCoordsGeocoding,
-		);
+		];
 
-		$params['format'] = array(
+		$params['format'] = [
 			'default' => $egMapsCoordinateNotation,
 			'values' => $egMapsAvailableCoordNotations,
 			'aliases' => 'notation',
 			'tolower' => true,
-		);
+		];
 
-		$params['directional'] = array(
+		$params['directional'] = [
 			'type' => 'boolean',
 			'default' => $egMapsCoordinateDirectional,
-		);
+		];
 
 		// Give grep a chance to find the usages:
 		// maps-geocode-par-location, maps-geocode-par-mappingservice, maps-geocode-par-geoservice,
@@ -93,7 +93,7 @@ class MapsGeocode extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'location', 'geoservice', 'mappingservice' );
+		return [ 'location', 'geoservice', 'mappingservice' ];
 	}	
 	
 	/**
@@ -112,11 +112,11 @@ class MapsGeocode extends ParserHook {
 		 */
 		$coordinates = $parameters['location']->getCoordinates();
 
-		$options = new \ValueFormatters\FormatterOptions( array(
+		$options = new \ValueFormatters\FormatterOptions( [
 			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
 			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
 			GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
-		) );
+		] );
 
 		$formatter = new GeoCoordinateFormatter( $options );
 

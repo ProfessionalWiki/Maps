@@ -42,23 +42,23 @@ class LocationParser extends StringValueParser {
 
 		$location = new Location( $coordinates );
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$this->setTitleOrLink( $location, array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setText( array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setIcon( array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setGroup( array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setInlineLabel( array_shift( $metaData ) );
 		}
 

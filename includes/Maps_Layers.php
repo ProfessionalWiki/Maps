@@ -20,7 +20,7 @@ class MapsLayers {
 	 *
 	 * @var MapsLayerGroup
 	 */
-	protected static $layerGroups = array();
+	protected static $layerGroups = [];
 
 	/**
 	 * Returns a new instance of a layer class for the provided layer type to create
@@ -84,7 +84,7 @@ class MapsLayers {
 	 * @return array
 	 */
 	public static function parseLayerParameters( $parameters, $itemSep = "\n", $keyValueSep = '=' ) {
-		$keyValuePairs = array();
+		$keyValuePairs = [];
 
 		// get 'key=value' pairs and put them into an array where key is the index for each value
 		foreach ( explode( $itemSep, $parameters ) as $line ) {
@@ -171,7 +171,7 @@ class MapsLayers {
 		$db = wfGetDB( DB_MASTER );
 
 		// delete old, stored layers first:
-		$db->delete( 'maps_layers', array( 'layer_page_id' => $pageId ), __METHOD__ );
+		$db->delete( 'maps_layers', [ 'layer_page_id' => $pageId ], __METHOD__ );
 
 		if( empty( $dbLayers ) ) {
 			// empty group, nothing to insert
@@ -189,12 +189,12 @@ class MapsLayers {
 	 * @since 3.0
 	 */
 	public static function databaseFields() {
-		return array(
+		return [
 			'layer_page_id',
 			'layer_name',
 			'layer_type',
 			'layer_data'
-		);
+		];
 	}
 
 	/**
@@ -212,18 +212,18 @@ class MapsLayers {
 	public static function databaseRowFromLayer( MapsLayer $layer, $pageId  ) {
 
 		// format layer properties array:
-		$properties = array();
+		$properties = [];
 		foreach( $layer->getProperties() as $key => $prop ) {
 			$properties[] = "$key=$prop";
 		}
 		$properties = implode( "\n", $properties );
 
-		return array(
+		return [
 			'layer_page_id' => $pageId,
 			'layer_name'    => $layer->getName(), // might be null
 			'layer_type'    => $layer->getType(),
 			'layer_data'    => $properties
-		);
+		];
 	}
 }
 

@@ -25,7 +25,7 @@ class MapsLayerGroup {
 	 *
 	 * @var array
 	 */
-	protected $layers = array();
+	protected $layers = [];
 
 	/**
 	 * Constructor.
@@ -37,9 +37,9 @@ class MapsLayerGroup {
 	 *        the group since the name is the ID within the group, though, the name is
 	 *        just optional.
 	 */
-	public function __construct( $layers = array() ) {
+	public function __construct( $layers = [] ) {
 		if( ! is_array( $layers ) ) {
-			$layers = array( $layers );
+			$layers = [ $layers ];
 		}
 		foreach( $layers as $layer ) {
 			// using the function will prevent having layers with the same name:
@@ -64,7 +64,7 @@ class MapsLayerGroup {
 		 * by not doing this in the constructor we won't have conflicts with layer
 		 * name changes later on.
 		 */
-		$namedLayers = array();
+		$namedLayers = [];
 		
 		foreach( $this->layers as $layer ) {
 			
@@ -194,7 +194,7 @@ class MapsLayerGroup {
 	public static function newFromTitle( Title $title ) {
 		// load all members defined on the page $title:
 		$db = wfGetDB( DB_SLAVE );
-		$conditions = array( 'layer_page_id' => $title->getArticleID() );
+		$conditions = [ 'layer_page_id' => $title->getArticleID() ];
 
 		$layers = self::loadMembersFromConds( $db, $conditions );
 		if( $layers === false && wfGetLB()->getServerCount() > 1 ) {
@@ -215,7 +215,7 @@ class MapsLayerGroup {
 	 * @return array|false
 	 */
 	protected static function loadMembersFromConds( $db, $conditions ) {
-		$results = array();
+		$results = [];
 		$res = self::fetchMembersFromConds( $db, $conditions );
 		if( $res ) {
 			// load all matching layer objects into the layer group:
@@ -244,7 +244,7 @@ class MapsLayerGroup {
 	protected static function fetchMembersFromConds( $db, $conditions ) {
 		$fields = MapsLayers::databaseFields();
 		$res = $db->select(
-			array( 'maps_layers' ),
+			[ 'maps_layers' ],
 			$fields,
 			$conditions,
 			__METHOD__

@@ -58,29 +58,29 @@ class MapsLayerDefinition extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		$params = array();
+		$params = [];
 
-		$params['type'] = array(
+		$params['type'] = [
 			'default' => false,
 			'manipulatedefault' => false,
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
-		$params['name'] = array(
+		$params['name'] = [
 			'default' => false,
 			'manipulatedefault' => false,
 			// TODO-customMaps: addCriteria( new CriterionIsNonNumeric );
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
-		$params['definition'] = array(
+		$params['definition'] = [
 			'default' => false,
 			'manipulatedefault' => false,
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 			'post-format' => function( $value ) {
 				return MapsLayers::parseLayerParameters( $value, "\n", '=' );
 			}
-		);
+		];
 
 		return $params;
 	}
@@ -94,7 +94,7 @@ class MapsLayerDefinition extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'definition' );
+		return [ 'definition' ];
 	}
 	
 	/**
@@ -106,10 +106,10 @@ class MapsLayerDefinition extends ParserHook {
 	 * @return array
 	 */
 	protected function getFunctionOptions() {
-		return array(
+		return [
 			'noparse' => true,
 			'isHTML' => true
-		);
+		];
 	}
 
 	/**
@@ -308,7 +308,7 @@ class MapsLayerDefinition extends ParserHook {
 		return
 			Html::rawElement(
 				'div',
-				array( 'class' => 'mapslayer' . ( $layer->isOk() ? '' : ' mapslayererror' ) ),
+				[ 'class' => 'mapslayer' . ( $layer->isOk() ? '' : ' mapslayererror' ) ],
 				$outHeader . $outServices . $outTable
 			);
 	}
@@ -347,7 +347,7 @@ class MapsLayerDefinition extends ParserHook {
 			
 			$outWarning .= Html::rawElement(
 					'table',
-					array( 'width' => '100%', 'class' => ( $layer->isOk() ? 'mapslayerwarntable' : 'mapslayererrortable' ) ),
+					[ 'width' => '100%', 'class' => ( $layer->isOk() ? 'mapslayerwarntable' : 'mapslayererrortable' ) ],
 					$warnings
 			);
 
@@ -361,7 +361,7 @@ class MapsLayerDefinition extends ParserHook {
 		global $wgOut;
 		$wgOut->addModules( 'ext.maps.layers' );
 		
-		$rows = array();
+		$rows = [];
 		
 		// rows with layer definition:
 		$properties = $layer->getPropertiesHtmlRepresentation( $this->parser );
@@ -369,15 +369,15 @@ class MapsLayerDefinition extends ParserHook {
 		foreach ( $properties as $property => $value ) {
 			$rows[] = Html::rawElement(
 				'tr',
-				array(),
+				[],
 				Html::element(
 					'td',
-					array( 'class' => 'mapslayerpropname' ),
+					[ 'class' => 'mapslayerpropname' ],
 					$property
 				) .
 				Html::rawElement(
 					'td',
-					array( 'class' => 'mapslayerpropval' ),
+					[ 'class' => 'mapslayerpropval' ],
 					$value
 				)
 			);
@@ -385,7 +385,7 @@ class MapsLayerDefinition extends ParserHook {
 		
 		$out .= Html::rawElement(
 				'table',
-				array( 'width' => '100%', 'class' => 'mapslayertable' ),
+				[ 'width' => '100%', 'class' => 'mapslayertable' ],
 				implode( "\n", $rows )
 		);
 		

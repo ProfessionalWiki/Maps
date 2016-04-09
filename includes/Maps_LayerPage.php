@@ -35,7 +35,7 @@ class MapsLayerPage extends Article {
 			return parent::view();
 		}
 
-		if( !Hooks::run( 'MapsLayerPageView', array( &$this ) ) ) {
+		if( !Hooks::run( 'MapsLayerPageView', [ &$this ] ) ) {
 			return;
 		}
 
@@ -118,15 +118,15 @@ class MapsLayerPage extends Article {
 		$items = $db->select(
 			'templatelinks',
 			'*',
-			array(
+			[
 				'tl_title = "' . $this->mTitle->getDBkey() . '"',
 				'tl_namespace = ' . $this->mTitle->getNamespace(),
-			),
+			],
 			__METHOD__
 		);
 
 		// get pages and sort them first:
-		$titles = array();
+		$titles = [];
 		foreach( $items as $item ) {
 			$title = Title::newFromID( $item->tl_from );
 
@@ -159,7 +159,7 @@ class MapsLayerPage extends Article {
 			if( $layer === null ) {
 				return false;
 			}
-			$layers = array( $layer );
+			$layers = [ $layer ];
 		} else {
 			$layers = MapsLayers::loadLayerGroup( $this->getTitle() );
 			$layers = $layers->getLayers();

@@ -32,17 +32,17 @@ class GeodistanceTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function parametersProvider() {
-		$paramLists = array();
+		$paramLists = [];
 
-		$paramLists[] = array(
+		$paramLists[] = [
 			'location1' => '4,2',
 			'location2' => '42,0',
-		);
+		];
 
-		$paramLists[] = array(
+		$paramLists[] = [
 			'4,2',
 			'42,0',
-		);
+		];
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -53,34 +53,34 @@ class GeodistanceTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$values = array(
+		$values = [
 			'location1' => '4,2',
 			'location2' => '42,0',
-		);
+		];
 
-		$expected = array(
+		$expected = [
 			'location1' => new Location( new LatLongValue( 4, 2 ) ),
 			'location2' => new Location( new LatLongValue( 42, 0 ) ),
-		);
+		];
 
-		$argLists[] = array( $values, $expected );
+		$argLists[] = [ $values, $expected ];
 
-		$values = array(
+		$values = [
 			'location1' => '4,2',
 			'location2' => '42,0',
 			'unit' => '~=[,,_,,]:3',
 			'decimals' => '1',
-		);
+		];
 
-		$expected = array(
+		$expected = [
 			'location1' => new Location( new LatLongValue( 4, 2 ) ),
 			'location2' => new Location( new LatLongValue( 42, 0 ) ),
 			'decimals' => 1,
-		);
+		];
 
-		$argLists[] = array( $values, $expected );
+		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
 	}

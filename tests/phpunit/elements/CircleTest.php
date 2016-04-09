@@ -27,23 +27,23 @@ class CircleTest extends BaseElementTest {
 	}
 
 	public function validConstructorProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$argLists[] = array( new LatLongValue( 4, 2 ), 42 );
-		$argLists[] = array( new LatLongValue( 42, 2.2 ), 9000.1 );
-		$argLists[] = array( new LatLongValue( 4, 2 ), 1 );
-		$argLists[] = array( new LatLongValue( 4, 2 ), 0.1 );
+		$argLists[] = [ new LatLongValue( 4, 2 ), 42 ];
+		$argLists[] = [ new LatLongValue( 42, 2.2 ), 9000.1 ];
+		$argLists[] = [ new LatLongValue( 4, 2 ), 1 ];
+		$argLists[] = [ new LatLongValue( 4, 2 ), 0.1 ];
 
 		return $argLists;
 	}
 
 	public function invalidConstructorProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$argLists[] = array( new LatLongValue( 4, 2 ), 'foo' );
+		$argLists[] = [ new LatLongValue( 4, 2 ), 'foo' ];
 
-		$argLists[] = array( new LatLongValue( 4, 2 ), 0 );
-		$argLists[] = array( new LatLongValue( 4, 2 ), -42 );
+		$argLists[] = [ new LatLongValue( 4, 2 ), 0 ];
+		$argLists[] = [ new LatLongValue( 4, 2 ), -42 ];
 
 		return $argLists;
 	}

@@ -18,14 +18,14 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 * @return array
 	 */
 	public function validInputProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$valid = array(
+		$valid = [
 			"http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi? Foundation.GTOPO30" =>
-				array( "http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi?", "Foundation.GTOPO30" ),
+				[ "http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi?", "Foundation.GTOPO30" ],
 			"http://maps.imr.no:80/geoserver/wms? vulnerable_areas:Identified_coral_area coral_identified_areas" =>
-				array( "http://maps.imr.no:80/geoserver/wms?", "vulnerable_areas:Identified_coral_area", "coral_identified_areas" )
-		);
+				[ "http://maps.imr.no:80/geoserver/wms?", "vulnerable_areas:Identified_coral_area", "coral_identified_areas" ]
+		];
 
 		foreach ( $valid as $value => $expected ) {
 			$expectedOverlay = new WmsOverlay( $expected[0], $expected[1] );
@@ -34,7 +34,7 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 				$expectedOverlay->setWmsStyleName( $expected[2] );
 			}
 
-			$argLists[] = array( (string)$value, $expectedOverlay );
+			$argLists[] = [ (string)$value, $expectedOverlay ];
 		}
 
 		return $argLists;
