@@ -142,7 +142,7 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
 		
-        $conditions = array();
+        $conditions = [];
 
         $smallerThen = $isEq ? '<' : '>=';
         $biggerThen = $isEq ? '>' : '<=';
@@ -172,12 +172,12 @@ class SMAreaValueDescription extends SMWValueDescription {
 		$south = MapsGeoFunctions::findDestination( $center, 180, $this->radius );
 		$west = MapsGeoFunctions::findDestination( $center, 270, $this->radius );
 
-		return array(
+		return [
 			'north' => $north['lat'],
 			'east' => $east['lon'],
 			'south' => $south['lat'],
 			'west' => $west['lon'],
-		);
+		];
 	}
 	
 	/**

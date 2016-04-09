@@ -58,23 +58,23 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function coordinateProvider() {
-		return array(
-			array(
+		return [
+			[
 				23,
 				42,
 				'23° 0\' 0", 42° 0\' 0"',
-			),
-			array(
+			],
+			[
 				0,
 				0,
 				'0° 0\' 0", 0° 0\' 0"',
-			),
-			array(
+			],
+			[
 				-23.5,
 				-42.5,
 				'-23° 30\' 0", -42° 30\' 0"',
-			),
-		);
+			],
+		];
 	}
 
 	/**
@@ -89,20 +89,20 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function coordinateWithDistanceProvider() {
-		return array(
-			array(
+		return [
+			[
 				'23° 0\' 0", 42° 0\' 0"(1km)',
 				1000,
-			),
-			array(
+			],
+			[
 				'0° 0\' 0", 0° 0\' 0" ( 1 m )',
 				1,
-			),
-			array(
+			],
+			[
 				'-23° 30\' 0", -42° 30\' 0" (9001m)',
 				9001,
-			),
-		);
+			],
+		];
 	}
 
 }

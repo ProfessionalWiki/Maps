@@ -56,9 +56,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 	protected function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
 		global $smgQPCoodFormat;
 
-		$options = new \ValueFormatters\FormatterOptions( array(
+		$options = new \ValueFormatters\FormatterOptions( [
 			GeoCoordinateFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
-		) );
+		] );
 
 		// TODO: $smgQPCoodDirectional
 
@@ -141,7 +141,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 			$this->tryParseAndSetDataItem( $coordinates );
 		}
 
-		return array( $distance, $comparator );
+		return [ $distance, $comparator ];
 	}
 
 	protected function findValueParts( $value ) {
@@ -150,7 +150,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$coordinates = trim( array_shift( $parts ) );
 		$distance = count( $parts ) > 0 ? trim( array_shift( $parts ) ) : false;
 
-		return array( $coordinates, $distance );
+		return [ $coordinates, $distance ];
 	}
 
 	/**
@@ -169,7 +169,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 			// Make sure this is always set
 			// TODO: Why is this needed?!
-			$this->m_dataitem = new SMWDIGeoCoord( array( 'lat' => 0, 'lon' => 0 ) );
+			$this->m_dataitem = new SMWDIGeoCoord( [ 'lat' => 0, 'lon' => 0 ] );
 		}
 	}
 
@@ -215,10 +215,10 @@ class SMGeoCoordsValue extends SMWDataValue {
 			
 			$text = $this->getFormattedCoord( $this->m_dataitem );
 
-			$lines = array(
+			$lines = [
 				wfMessage( 'semanticmaps-latitude', $coordinateSet['lat'] )->inContentLanguage()->escaped(),
 				wfMessage( 'semanticmaps-longitude', $coordinateSet['lon'] )->inContentLanguage()->escaped(),
-			);
+			];
 			
 			if ( array_key_exists( 'alt', $coordinateSet ) ) {
 				$lines[] = wfMessage( 'semanticmaps-altitude', $coordinateSet['alt'] )->inContentLanguage()->escaped();
@@ -265,12 +265,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	protected function getServiceLinkParams() {
 		$coordinateSet = $this->m_dataitem->getCoordinateSet();
-		return array(
+		return [
 			$this->getFormattedCoord( $this->m_dataitem, 'float' ), // TODO
 			$this->getFormattedCoord( $this->m_dataitem, 'dms' ), // TODO
 			$coordinateSet['lat'],
 			$coordinateSet['lon']
-		);
+		];
 	}
 
 }

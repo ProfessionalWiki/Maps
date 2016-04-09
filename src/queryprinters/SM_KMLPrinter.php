@@ -61,26 +61,26 @@ class SMKMLPrinter extends FileExportPrinter {
 
 		$params = parent::getParamDefinitions( $definitions );
 
-		$params['text'] = array(
+		$params['text'] = [
 			'message' => 'semanticmaps-kml-text',
 			'default' => $egMapsDefaultLabel,
-		);
+		];
 
-		$params['title'] = array(
+		$params['title'] = [
 			'message' => 'semanticmaps-kml-title',
 			'default' => $egMapsDefaultTitle,
-		);
+		];
 
-		$params['linkabsolute'] = array(
+		$params['linkabsolute'] = [
 			'message' => 'semanticmaps-kml-linkabsolute',
 			'type' => 'boolean',
 			'default' => true,
-		);
+		];
 
-		$params['pagelinktext'] = array(
+		$params['pagelinktext'] = [
 			'message' => 'semanticmaps-kml-pagelinktext',
 			'default' => wfMessage( 'semanticmaps-default-kml-pagelink' )->text(),
-		);
+		];
 
 		return $params;
 	}
