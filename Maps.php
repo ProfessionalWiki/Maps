@@ -62,11 +62,11 @@ call_user_func( function() {
 
 	$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
 
-	$GLOBALS['wgMessagesDirs']['Maps']							= __DIR__ . '/i18n';
-	$GLOBALS['wgExtensionMessagesFiles']['Maps'] 				= __DIR__ . '/Maps.i18n.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] 			= __DIR__ . '/Maps.i18n.magic.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsNamespaces'] 		= __DIR__ . '/Maps.i18n.namespaces.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] 			= __DIR__ . '/Maps.i18n.alias.php';
+	// Internationalization
+	$GLOBALS['wgMessagesDirs']['Maps'] = __DIR__ . '/i18n';
+	$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] = __DIR__ . '/Maps.i18n.magic.php';
+	$GLOBALS['wgExtensionMessagesFiles']['MapsNamespaces'] = __DIR__ . '/Maps.i18n.namespaces.php';
+	$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] = __DIR__ . '/Maps.i18n.alias.php';
 
 	$GLOBALS['wgResourceModules'] = array_merge( $GLOBALS['wgResourceModules'], include 'Maps.resources.php' );
 
