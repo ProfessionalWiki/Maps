@@ -58,8 +58,6 @@ call_user_func( function() {
 	define( 'Maps_COORDS_DM' , 'dm' );
 	define( 'Maps_COORDS_DD' , 'dd' );
 
-	$mapsDir = __DIR__ . '/';
-
 	$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
 
 	// Internationalization
@@ -165,15 +163,15 @@ call_user_func( function() {
 
 	// Google Maps API v3
 	// TODO: improve loading mechanism
-	include_once $mapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
+	include_once __DIR__ . '/includes/services/GoogleMaps3/GoogleMaps3.php';
 
 	// OpenLayers API
 	// TODO: improve loading mechanism
-	include_once $mapsDir . 'includes/services/OpenLayers/OpenLayers.php';
+	include_once __DIR__ . '/includes/services/OpenLayers/OpenLayers.php';
 
 	// Leaflet API
 	// TODO: improve loading mechanism
-	include_once $mapsDir . 'includes/services/Leaflet/Leaflet.php';
+	include_once __DIR__ . '/includes/services/Leaflet/Leaflet.php';
 
 
 	require_once __DIR__ . '/Maps_Settings.php';
