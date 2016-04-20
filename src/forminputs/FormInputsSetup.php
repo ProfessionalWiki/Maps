@@ -65,7 +65,7 @@ class FormInputsSetup {
 	 */
 	private function initFormHook( $inputName, $mainName = '' ) {
 		// Add the form input hook for the service.
-		$field_args = array();
+		$field_args = [];
 		
 		if ( $mainName !== '' ) {
 			$field_args['service_name'] = $mainName;

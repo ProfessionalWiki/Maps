@@ -23,41 +23,41 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$moduleTemplate = array(
+$moduleTemplate = [
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'SemanticMaps/src/services/GoogleMaps3',
 	'group' => 'ext.semanticmaps',
-);
+];
 
-$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3ajax'] = $moduleTemplate + array(
-	'dependencies' => array(
+$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3ajax'] = $moduleTemplate + [
+	'dependencies' => [
 		'ext.maps.googlemaps3'
-	),
-	'scripts' => array(
+	],
+	'scripts' => [
 		'ext.sm.googlemaps3ajax.js'
-	)
-);
+	]
+];
 
-$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3'] = $moduleTemplate + array(
-	'dependencies' => array(
+$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3'] = $moduleTemplate + [
+	'dependencies' => [
 		'ext.sm.fi.googlemaps3.single',
-	),
-	'scripts' => array(
+	],
+	'scripts' => [
 		'ext.sm.googlemapsinput.js',
-	),
-);
+	],
+];
 
-$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + array(
-	'dependencies' => array(
+$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + [
+	'dependencies' => [
 		'ext.maps.googlemaps3',
 		'ext.sm.forminputs',
-	),
-	'scripts' => array(
+	],
+	'scripts' => [
 		'jquery.googlemapsinput.js',
-	),
-	'messages' => array(
-	)
-);
+	],
+	'messages' => [
+	]
+];
 
 unset( $moduleTemplate );
 

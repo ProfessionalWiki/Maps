@@ -61,30 +61,30 @@ class SMFormInput {
 	protected function getParameterDefinitions() {
 		global $smgFIFieldSize;
 
-		$params = array();
+		$params = [];
 
-		$params['fieldsize'] = array(
+		$params['fieldsize'] = [
 			'type' => 'integer',
 			'default' => $smgFIFieldSize,
-			'range' => array( 5, 100 ),
-		);
+			'range' => [ 5, 100 ],
+		];
 
-		$params['icon'] = array(
+		$params['icon'] = [
 			'default' => '',
-		);
+		];
 
-		$params['locations'] = array(
+		$params['locations'] = [
 			'type' => 'mapslocation',
-			'aliases' => array( 'points' ),
-			'default' => array(),
+			'aliases' => [ 'points' ],
+			'default' => [],
 			'islist' => true,
 			'delimiter' => self::SEPARATOR,
-		);
+		];
 
-		$params['geocodecontrol'] = array(
+		$params['geocodecontrol'] = [
 			'type' => 'boolean',
 			'default' => true,
-		);
+		];
 
 		// Messages:
 		// semanticmaps-par-staticlocations, semanticmaps-par-showtitle,
@@ -109,7 +109,7 @@ class SMFormInput {
 	 * @return string
 	 */
 	public function getInputOutput( $coordinates, $inputName, $isMandatory, $isDisabled, array $params ) {
-		$parameters = array();
+		$parameters = [];
 		foreach ( $params as $key => $value ) {
 			if ( !is_array( $value ) && !is_object( $value ) && !is_null( $value ) ) {
 				$parameters[$key] = $value;
@@ -209,19 +209,19 @@ class SMFormInput {
 
 		$wgOut->addHTML( MapsGoogleMaps3::getApiScript(
 			'en',
-			array( 'libraries' => 'drawing' )
+			[ 'libraries' => 'drawing' ]
 		) );
 
 		$wgOut->addModules( 'mapeditor' );
 
 		$html = Html::element(
 			'div',
-			array(
+			[
 				'id' => 'map-polygon',
 				'name' => $input_name,
 				'cols' => 4,
 				'rows' => 2,
-			),
+			],
 			$coordinates
 		);
 
@@ -245,15 +245,15 @@ class SMFormInput {
 	protected function getInputHTML( array $params, Parser $parser, $mapName ) {
 		return Html::rawElement(
 			'div',
-			array(
+			[
 				'id' => $mapName . '_forminput',
 				'style' => 'display: inline',
 				'class' => 'sminput sminput-' . $this->service->getName()
-			),
+			],
 			wfMessage( 'semanticmaps-loading-forminput' )->escaped() .
 				Html::element(
 					'div',
-					array( 'style' => 'display:none', 'class' => 'sminputdata' ),
+					[ 'style' => 'display:none', 'class' => 'sminputdata' ],
 					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
 				)
 		);
@@ -286,7 +286,7 @@ class SMFormInput {
 	 * @return array of string
 	 */
 	protected function getResourceModules() {
-		return array( 'ext.sm.forminputs' );
+		return [ 'ext.sm.forminputs' ];
 	}
 
 	/**
@@ -295,11 +295,11 @@ class SMFormInput {
 	 * @return string
 	 */
 	protected function getAttribs(){
-		return array(
+		return [
 			'id' => 'map-canvas',
 			'context' => 'forminput',
 			'style' => 'width:600px; height:400px'
-		);
+		];
 	}
 
 }

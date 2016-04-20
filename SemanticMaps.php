@@ -16,11 +16,13 @@ if ( defined( 'SM_VERSION' ) ) {
 	return 1;
 }
 
-define( 'SM_VERSION', '3.2' );
+define( 'SM_VERSION', '3.4.0-alpha' );
 
-if ( version_compare( $GLOBALS['wgVersion'], '1.19c', '<' ) ) {
-	throw new Exception( 'This version of Semantic Maps requires MediaWiki 1.18 or above;'
-		. 'use Semantic Maps 1.0.x for MediaWiki 1.17 and Semantic Maps 0.7.x for older versions.' );
+if ( version_compare( $GLOBALS['wgVersion'], '1.23c', '<' ) ) {
+	throw new Exception(
+		'This version of Semantic Maps requires MediaWiki 1.23 or above; use Semantic Maps 3.3.x for older versions.'
+		. ' See https://github.com/SemanticMediaWiki/SemanticMaps/blob/master/INSTALL.md for more info.'
+	);
 }
 
 if ( !defined( 'Maps_VERSION' ) && is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -31,17 +33,17 @@ if ( !defined( 'Maps_VERSION' ) ) {
 	throw new Exception( 'You need to have Maps installed in order to use Semantic Maps' );
 }
 
-$GLOBALS['wgExtensionCredits']['semantic'][] = array(
+$GLOBALS['wgExtensionCredits']['semantic'][] = [
 	'path' => __FILE__,
 	'name' => 'Semantic Maps',
 	'version' => SM_VERSION,
-	'author' => array(
+	'author' => [
 		'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
-	),
+	],
 	'url' => 'https://github.com/SemanticMediaWiki/SemanticMaps/blob/master/README.md#semantic-maps',
 	'descriptionmsg' => 'semanticmaps-desc',
 	'license-name'   => 'GPL-2.0+'
-);
+];
 
 include_once __DIR__ . '/src/parserhooks/SM_DisplayAjaxMap.php';
 
@@ -55,23 +57,24 @@ require_once 'SM_Settings.php';
 
 include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
-$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = array(
-	'dependencies' => array( 'ext.maps.coord' ),
+$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = [
+	'dependencies' => [ 'ext.maps.coord' ],
+	'position' => 'bottom',
 	'localBasePath' => __DIR__ . '/src/forminputs',
 	'remoteExtPath' => 'SemanticMaps/src/forminputs',
 	'group' => 'ext.semanticmaps',
-	'scripts' => array(
+	'scripts' => [
 		'jquery.mapforminput.js'
-	),
-	'messages' => array(
+	],
+	'messages' => [
 		'semanticmaps_enteraddresshere',
 		'semanticmaps-updatemap',
 		'semanticmaps_lookupcoordinates',
 		'semanticmaps-forminput-remove',
 		'semanticmaps-forminput-add',
 		'semanticmaps-forminput-locations'
-	)
-);
+	]
+];
 
 
 include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
@@ -83,8 +86,8 @@ $GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {
 	return true;
 };
 
+// Internationalization
 $GLOBALS['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
-$GLOBALS['wgExtensionMessagesFiles']['SemanticMaps'] = __DIR__ . '/SemanticMaps.i18n.php';
 $GLOBALS['wgExtensionMessagesFiles']['SemanticMapsMagic'] = __DIR__ . '/SemanticMaps.i18n.magic.php';
 
 // Hook for initializing the Geographical Data types.

@@ -62,7 +62,7 @@ final class SMQueryPrinters {
 	 * @param string $formatClass
 	 * @param array $aliases
 	 */
-	private static function initFormat( $format, $formatClass, array $aliases = array() ) {
+	private static function initFormat( $format, $formatClass, array $aliases = [] ) {
 		global $smwgResultAliases, $smwgResultFormats;
 
 		// Add the QP to SMW.
