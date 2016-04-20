@@ -6,6 +6,8 @@
  * @author Peter Grassberger <petertheone@gmail.com>
  */
 
+var ajaxRequest = null;
+
 function ajaxUpdateMarker(googlemaps) {
     var bounds = googlemaps.map.getBounds();
 
@@ -17,7 +19,11 @@ function ajaxUpdateMarker(googlemaps) {
     query += '[[' + coordinatesproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
     query += '|?' + coordinatesproperty;
 
-    $.ajax({
+    if (ajaxRequest !== null) {
+        ajaxRequest.abort();
+    }
+
+    ajaxRequest = $.ajax({
         method: 'GET',
         url: '/w/api.php?',
         data: {
@@ -27,6 +33,8 @@ function ajaxUpdateMarker(googlemaps) {
         },
         dataType: 'json'
     }).done(function(data) {
+        ajaxRequest = null;
+
         // todo: don't remove and recreate all markers..
         // only add new ones.
         googlemaps.removeMarkers();
