@@ -43,18 +43,19 @@ class SMDisplayAjaxMap extends MapsDisplayMap {
             'default' => '',
             'islist' => true,
             'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
-            'message' => 'maps-displaymap-par-coordinates',
-        );
-
-        $params['ajax'] = array(
-            'type' => 'boolean',
-            'default' => true,
-            'message' => 'maps-displaymap-par-ajax',
+            'message' => 'semanticmaps-displaymap-par-coordinates',
         );
 
         $params['coordinatesproperty'] = array(
             'default' => 'Has coordinates',
-            'message' => 'maps-displaymap-par-coordinatesproperty',
+            'message' => 'semanticmaps-displaymap-par-coordinatesproperty',
+        );
+
+        $params['ajaxquery'] = array(
+            'default' => '',
+            'islist' => true,
+            'delimiter' => ';',
+            'message' => 'semanticmaps-displaymap-par-ajaxquery',
         );
 
         $params = array_merge( $params, self::getCommonMapParams() );

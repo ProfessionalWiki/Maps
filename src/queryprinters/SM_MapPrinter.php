@@ -96,6 +96,15 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			'default' => false,
 		);
 
+		$params['coordinatesproperty'] = array(
+			'default' => 'Has coordinates',
+		);
+
+		$params['ajaxquery'] = array(
+			'default' => '',
+			'type' => 'string'
+		);
+
 		// Messages:
 		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
 		// semanticmaps-par-hidenamespace, semanticmaps-par-centre, semanticmaps-par-template,

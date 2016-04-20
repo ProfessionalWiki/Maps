@@ -13,7 +13,7 @@ function ajaxUpdateMarker(googlemaps) {
 
     var coordinatesproperty = googlemaps.options.coordinatesproperty;
 
-    var query = googlemaps.options.coordinates.join(' ') + ' ';
+    var query = googlemaps.options.ajaxquery.join(' ') + ' ';
     query += '[[' + coordinatesproperty + '::+]] ';
     query += '[[' + coordinatesproperty + '::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
     query += '[[' + coordinatesproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
@@ -54,7 +54,7 @@ function ajaxUpdateMarker(googlemaps) {
             $( '.maps-googlemaps3' ).each( function() {
                 var $this = $( this );
 
-                if ($this.googlemaps.options.ajax) {
+                if ($this.googlemaps.options.ajaxquery) {
                     // todo: remove timeout
                     setTimeout(function() {
                         ajaxUpdateMarker($this.googlemaps);
