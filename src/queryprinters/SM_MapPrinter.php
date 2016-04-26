@@ -102,7 +102,8 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$params['ajaxquery'] = array(
 			'default' => '',
-			'type' => 'string'
+			'type' => 'string',
+			'islist' => true,
 		);
 
 		// Messages:
@@ -132,6 +133,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		if ( $this->fatalErrorMsg !== false ) {
 			return $this->fatalErrorMsg;
 		}
+		$this->isHTML = true;
 
 		/**
 		 * @var Parser $wgParser
