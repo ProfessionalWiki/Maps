@@ -11,7 +11,7 @@
 (function ($) {
 	$.fn.openlayers = function (mapElementId, options) {
 
-		$.fn.openlayers.options = options;
+		this.options = options;
 
 		OpenLayers._getScriptLocation = function() {
 			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
@@ -52,7 +52,7 @@
 			return marker;
 		};
 
-		$.fn.openlayers.addMarkers = function (map, options) {
+		this.addMarkers = function (map, options) {
 			if (!options.locations) {
 				options.locations = [];
 			}
@@ -323,8 +323,8 @@
 			mapOptions.maxExtent = new OpenLayers.Bounds( -20037508, -20037508, 20037508, 20037508 );
 		}
 
-		$.fn.openlayers.map = new OpenLayers.Map(mapElementId, mapOptions);
-		var map = $.fn.openlayers.map;
+		this.map = new OpenLayers.Map(mapElementId, mapOptions);
+		var map = this.map;
 
 		if (!options['static']) {
 			this.addControls(map, options.controls, this.get(0));
@@ -332,7 +332,7 @@
 
 		map.addLayers( layers ); // Add the base layers
 
-		$.fn.openlayers.addMarkers( map, options );
+		this.addMarkers( map, options );
 		var centre = false;
 
 		if ( options.centre === false ) {
@@ -397,7 +397,7 @@
         }
 
 		//Add markers
-		$.fn.openlayers.addMarkers(map, options);
+		this.addMarkers(map, options);
 		var centre = false;
 
 		//Add line layer if applicable
@@ -452,7 +452,7 @@
 							}
 						},
 						'out':function (feature) {
-							if (feature.attributes.onlyVisibleOnHover === true && $.fn.openlayers.map.popups.length === 0) {
+							if (feature.attributes.onlyVisibleOnHover === true && _this.map.popups.length === 0) {
 								var style = {
 									'strokeColor':feature.attributes.strokeColor,
 									'strokeWidth':feature.attributes.strokeWeight,
@@ -683,7 +683,7 @@
 				map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
 				map.removePopup(this);
 			});
-			$.fn.openlayers.map.addPopup(popup);
+			_this.map.addPopup(popup);
 		}
 
 		return this;

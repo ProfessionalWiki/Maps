@@ -9,9 +9,9 @@
 	$.fn.googlemaps = function (options) {
 
 		var _this = this;
-		$.fn.googlemaps.map = null;
+		this.map = null;
 		this.markercluster = null;
-		$.fn.googlemaps.options = options;
+		this.options = options;
 
 		/**
 		 * All markers that are currently on the map.
@@ -53,7 +53,7 @@
 
 		var getBounds = function() {
 			if (( options.centre === false || options.zoom === false ) && options.locations.length > 1) {
-				bounds = new google.maps.LatLngBounds();
+				var bounds = new google.maps.LatLngBounds();
 
 				for (var i = _this.markers.length - 1; i >= 0; i--) {
 					bounds.extend(_this.markers[i].getPosition());
@@ -65,10 +65,10 @@
 
 		var setZoom = function(bounds) {
 			if (options.zoom === false) {
-				$.fn.googlemaps.map.fitBounds(bounds);
+				_this.map.fitBounds(bounds);
 			}
 			else {
-				$.fn.googlemaps.map.setZoom(options.zoom);
+				_this.map.setZoom(options.zoom);
 			}
 		};
 
@@ -79,7 +79,7 @@
 		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
 		 * @return {google.maps.Marker}
 		 */
-		$.fn.googlemaps.addMarker = function (markerData) {
+		this.addMarker = function (markerData) {
 			var markerOptions = {
 				position:new google.maps.LatLng(markerData.lat, markerData.lon),
 				title:markerData.title,
@@ -118,7 +118,7 @@
 					}
 				});
 
-				marker.setMap( $.fn.googlemaps.map );
+				marker.setMap( _this.map );
 				_this.markers.push( marker );
 
 				return marker;
@@ -144,7 +144,7 @@
 		 * Removes a single marker from the map.
 		 * @param {google.maps.Marker} marker The marker to remove.
 		 */
-		$.fn.googlemaps.removeMarker = function (marker) {
+		this.removeMarker = function (marker) {
 			marker.setMap(null);
 
 			for (var i = _this.markers.length - 1; i >= 0; i--) {
@@ -160,7 +160,7 @@
 		/**
 		 * Removes all markers from the map.
 		 */
-		$.fn.googlemaps.removeMarkers = function () {
+		this.removeMarkers = function () {
 			for (var i = _this.markers.length - 1; i >= 0; i--) {
 				_this.markers[i].setMap(null);
 			}
@@ -198,7 +198,7 @@
 				var kmlLayer = new google.maps.KmlLayer(
 					options.gkml[i],
 					{
-						map:$.fn.googlemaps.map,
+						map:this.map,
 						preserveViewport:!options.kmlrezoom
 					}
 				);
@@ -222,7 +222,7 @@
 
 
 					var geoXml = new geoXML3.parser({
-						map:$.fn.googlemaps.map,
+						map:_this.map,
 						zoom:options.kmlrezoom,
 						failedParse:function(){
 							alert(mediaWiki.msg('maps-kml-parsing-failed'));
@@ -259,7 +259,7 @@
 								console.log(toggleDiv);
 							})(docs[i]);
 						}
-						$.fn.googlemaps.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
+						_this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
 					};
 
 					geoXml.parse(options.kml);
@@ -274,7 +274,7 @@
 			}
 
 			var line = new google.maps.Polyline({
-				map:$.fn.googlemaps.map,
+				map:this.map,
 				path:paths,
 				strokeColor:properties.strokeColor,
 				strokeOpacity:properties.strokeOpacity,
@@ -314,7 +314,7 @@
 			}
 
 			var polygon = new google.maps.Polygon({
-				map:$.fn.googlemaps.map,
+				map:this.map,
 				path:paths,
 				strokeColor:properties.strokeColor,
 				strokeOpacity:properties.strokeOpacity,
@@ -357,7 +357,7 @@
 
 		this.addCircle = function (properties) {
 			var circle = new google.maps.Circle({
-				map:$.fn.googlemaps.map,
+				map:this.map,
 				center:new google.maps.LatLng(properties.centre.lat, properties.centre.lon),
 				radius:properties.radius,
 				fillColor:properties.fillColor,
@@ -377,7 +377,7 @@
 
 		this.addRectangle = function (properties) {
 			var rectangle = new google.maps.Rectangle({
-				map:$.fn.googlemaps.map,
+				map:this.map,
 				bounds:new google.maps.LatLngBounds(
 					new google.maps.LatLng(properties.sw.lat, properties.sw.lon), //sw
 					new google.maps.LatLng(properties.ne.lat, properties.ne.lon)  //ne
@@ -403,7 +403,7 @@
 			);
 
 			var image = new google.maps.GroundOverlay(properties.image,imageBounds);
-			image.setMap($.fn.googlemaps.map);
+			image.setMap(this.map);
 
 			this.imageoverlays.push(image);
 
@@ -443,7 +443,7 @@
 					bounds.extend(marker.getPosition());
 				}
 			}
-			$.fn.googlemaps.map.fitBounds(bounds);
+			this.map.fitBounds(bounds);
 		};
 
 		this.initializeMap = function () {
@@ -497,7 +497,7 @@
 			});
 
 
-			$.fn.googlemaps.map = map;
+			this.map = map;
 
 			if (options.poi === false) {
 				map.setOptions({ styles:[
@@ -516,7 +516,7 @@
 
 			// Add the markers.
 			for (var i = options.locations.length - 1; i >= 0; i--) {
-				$.fn.googlemaps.addMarker(options.locations[i]);
+				this.addMarker(options.locations[i]);
 			}
 
 			for (i = options.fusiontables.length - 1; i >= 0; i--) {
@@ -617,7 +617,7 @@
 				mw.loader.using(
 					'ext.maps.gm3.markercluster',
 					function() {
-						_this.markercluster = new MarkerClusterer( $.fn.googlemaps.map, _this.markers, {
+						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
 							averageCenter: true
 						} );
 					}
@@ -681,7 +681,7 @@
 					this.markers,
 					this.rectangles,
 					this.imageoverlays,
-					$.fn.googlemaps.map
+					this.map
 				]);
 			}
 
@@ -689,7 +689,7 @@
 				var wmsOptions = {
 					alt: "OpenLayers",
 					getTileUrl:function (tile, zoom) {
-						var projection = $.fn.googlemaps.map.getProjection();
+						var projection = _this.map.getProjection();
 						var zpow = Math.pow(2, zoom);
 						var ul = new google.maps.Point(tile.x * 256.0 / zpow, (tile.y + 1) * 256.0 / zpow);
 						var lr = new google.maps.Point((tile.x + 1) * 256.0 / zpow, (tile.y) * 256.0 / zpow);
@@ -733,7 +733,7 @@
 			//Add custom controls
 			// - Fullscreen
 			if(options.enablefullscreen){
-				$.fn.googlemaps.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl($.fn.googlemaps.map));
+				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl(this.map));
 			}
 		};
 
@@ -751,7 +751,7 @@
 							mw.loader.using('ext.maps.gm3.earth', function () {
 								_this.initializeMap();
 								if (google.earth.isSupported()) {
-									_this.ge = new GoogleEarth($.fn.googlemaps.map);
+									_this.ge = new GoogleEarth(this.map);
 								}
 							});
 						} });
@@ -846,10 +846,10 @@
 			};
 
 			if ( event.latLng === undefined ) {
-				this.openWindow.open( $.fn.googlemaps.map, this );
+				this.openWindow.open( _this.map, this );
 			}
 			else {
-				this.openWindow.open( $.fn.googlemaps.map );
+				this.openWindow.open( _this.map );
 			}
 		}
 

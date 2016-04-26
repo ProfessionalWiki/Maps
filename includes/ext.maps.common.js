@@ -15,4 +15,5 @@ window.maps = new ( function( $, mw ) {
 		}
 	};
 	
+	this.mapList = [];
 } )( jQuery, mediaWiki );
