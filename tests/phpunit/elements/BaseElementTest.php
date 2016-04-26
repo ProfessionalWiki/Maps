@@ -26,7 +26,7 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 	public abstract function validConstructorProvider();
 
 	public function invalidConstructorProvider() {
-		return array();
+		return [];
 	}
 
 	/**
@@ -49,11 +49,11 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 	 * @return array [instance, constructor args]
 	 */
 	public function instanceProvider() {
-		$phpFails = array( $this, 'newInstance' );
+		$phpFails = [ $this, 'newInstance' ];
 
 		return array_map(
 			function( array $args ) use ( $phpFails ) {
-				return array( call_user_func_array( $phpFails, $args ), $args );
+				return [ call_user_func_array( $phpFails, $args ), $args ];
 			},
 			$this->validConstructorProvider()
 		);
@@ -65,7 +65,7 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 	 * @since 3.0
 	 */
 	public function testGivenValidArguments_constructorDoesNotThrowException() {
-		$instance = call_user_func_array( array( $this, 'newInstance' ), func_get_args() );
+		$instance = call_user_func_array( [ $this, 'newInstance' ], func_get_args() );
 		$this->assertInstanceOf( $this->getClass(), $instance );
 	}
 
@@ -76,7 +76,7 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testGivenInvalidArguments_constructorThrowsException() {
 		$this->setExpectedException( 'InvalidArgumentException' );
-		call_user_func_array( array( $this, 'newInstance' ), func_get_args() );
+		call_user_func_array( [ $this, 'newInstance' ], func_get_args() );
 	}
 
 	/**

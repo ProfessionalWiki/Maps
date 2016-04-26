@@ -19,7 +19,7 @@ if ( defined( 'Maps_VERSION' ) ) {
 	return 1;
 }
 
-define( 'Maps_VERSION' , '3.5.0-alpha' );
+define( 'Maps_VERSION' , '3.6.0-alpha' );
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -31,23 +31,26 @@ if ( !defined( 'Validator_VERSION' ) ) {
 	throw new Exception( 'You need to have Validator installed in order to use Maps' );
 }
 
-if ( version_compare( $GLOBALS['wgVersion'], '1.18c' , '<' ) ) {
-	throw new Exception( 'This version of Maps requires MediaWiki 1.18 or above; use Maps 1.0.x for MediaWiki 1.17 and Maps 0.7.x for older versions.' );
+if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
+	throw new Exception(
+		'This version of Maps requires MediaWiki 1.23 or above; use Maps 3.5.x for older versions.'
+		. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
+	);
 }
 
 call_user_func( function() {
-	$GLOBALS['wgExtensionCredits']['parserhook'][] = array(
+	$GLOBALS['wgExtensionCredits']['parserhook'][] = [
 		'path' => __FILE__ ,
 		'name' => 'Maps' ,
 		'version' => Maps_VERSION ,
-		'author' => array(
+		'author' => [
 			'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 			'...'
-		) ,
+		] ,
 		'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps' ,
 		'descriptionmsg' => 'maps-desc',
 		'license-name' => 'GPL-2.0+'
-	);
+	];
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT' , 'float' );
@@ -55,15 +58,13 @@ call_user_func( function() {
 	define( 'Maps_COORDS_DM' , 'dm' );
 	define( 'Maps_COORDS_DD' , 'dd' );
 
-	$mapsDir = __DIR__ . '/';
-
 	$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
 
-	$GLOBALS['wgMessagesDirs']['Maps']							= __DIR__ . '/i18n';
-	$GLOBALS['wgExtensionMessagesFiles']['Maps'] 				= __DIR__ . '/Maps.i18n.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] 			= __DIR__ . '/Maps.i18n.magic.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsNamespaces'] 		= __DIR__ . '/Maps.i18n.namespaces.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] 			= __DIR__ . '/Maps.i18n.alias.php';
+	// Internationalization
+	$GLOBALS['wgMessagesDirs']['Maps'] = __DIR__ . '/i18n';
+	$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] = __DIR__ . '/Maps.i18n.magic.php';
+	$GLOBALS['wgExtensionMessagesFiles']['MapsNamespaces'] = __DIR__ . '/Maps.i18n.namespaces.php';
+	$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] = __DIR__ . '/Maps.i18n.alias.php';
 
 	$GLOBALS['wgResourceModules'] = array_merge( $GLOBALS['wgResourceModules'], include 'Maps.resources.php' );
 
@@ -162,15 +163,15 @@ call_user_func( function() {
 
 	// Google Maps API v3
 	// TODO: improve loading mechanism
-	include_once $mapsDir . 'includes/services/GoogleMaps3/GoogleMaps3.php';
+	include_once __DIR__ . '/includes/services/GoogleMaps3/GoogleMaps3.php';
 
 	// OpenLayers API
 	// TODO: improve loading mechanism
-	include_once $mapsDir . 'includes/services/OpenLayers/OpenLayers.php';
+	include_once __DIR__ . '/includes/services/OpenLayers/OpenLayers.php';
 
 	// Leaflet API
 	// TODO: improve loading mechanism
-	include_once $mapsDir . 'includes/services/Leaflet/Leaflet.php';
+	include_once __DIR__ . '/includes/services/Leaflet/Leaflet.php';
 
 
 	require_once __DIR__ . '/Maps_Settings.php';
@@ -187,43 +188,43 @@ call_user_func( function() {
 		}
 	}
 
-	$GLOBALS['wgParamDefinitions']['coordinate'] = array(
+	$GLOBALS['wgParamDefinitions']['coordinate'] = [
 		'string-parser' => 'DataValues\Geo\Parsers\GeoCoordinateParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mappingservice'] = array(
+	$GLOBALS['wgParamDefinitions']['mappingservice'] = [
 		'definition'=> 'Maps\ServiceParam',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapslocation'] = array(
+	$GLOBALS['wgParamDefinitions']['mapslocation'] = [
 		'string-parser' => 'Maps\LocationParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapsline'] = array(
+	$GLOBALS['wgParamDefinitions']['mapsline'] = [
 		'string-parser' => 'Maps\LineParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapscircle'] = array(
+	$GLOBALS['wgParamDefinitions']['mapscircle'] = [
 		'string-parser' => 'Maps\CircleParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapsrectangle'] = array(
+	$GLOBALS['wgParamDefinitions']['mapsrectangle'] = [
 		'string-parser' => 'Maps\RectangleParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapspolygon'] = array(
+	$GLOBALS['wgParamDefinitions']['mapspolygon'] = [
 		'string-parser' => 'Maps\PolygonParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['distance'] = array(
+	$GLOBALS['wgParamDefinitions']['distance'] = [
 		'string-parser' => 'Maps\DistanceParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['wmsoverlay'] = array(
+	$GLOBALS['wgParamDefinitions']['wmsoverlay'] = [
 		'string-parser' => 'Maps\WmsOverlayParser',
-	);
+	];
 
-	$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = array(
+	$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = [
 		'string-parser' => 'Maps\ImageOverlayParser',
-	);
+	];
 } );

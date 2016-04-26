@@ -16,12 +16,12 @@ use Maps\Elements\Location;
 class LocationTest extends \PHPUnit_Framework_TestCase {
 
 	public function latLongValueProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$argLists[] = array( new LatLongValue( 0, 0 ) );
-		$argLists[] = array( new LatLongValue( 4, 2 ) );
-		$argLists[] = array( new LatLongValue( 42, 42 ) );
-		$argLists[] = array( new LatLongValue( -4.2, -42 ) );
+		$argLists[] = [ new LatLongValue( 0, 0 ) ];
+		$argLists[] = [ new LatLongValue( 4, 2 ) ];
+		$argLists[] = [ new LatLongValue( 42, 42 ) ];
+		$argLists[] = [ new LatLongValue( -4.2, -42 ) ];
 
 		return $argLists;
 	}

@@ -1,6 +1,6 @@
 <?php
 
-$namespaceNames = array();
+$namespaceNames = [];
 
 // For wikis without Maps installed.
 if ( !defined( 'Maps_NS_LAYER' ) ) {
@@ -8,11 +8,11 @@ if ( !defined( 'Maps_NS_LAYER' ) ) {
 	define( 'Maps_NS_LAYER_TALK', 421 );
 }
 
-$namespaceNames['en'] = array(
+$namespaceNames['en'] = [
 	Maps_NS_LAYER       => 'Layer',
 	Maps_NS_LAYER_TALK  => 'Layer_talk',
-);
+];
 
-$namespaceNames['de'] = array(
+$namespaceNames['de'] = [
 	Maps_NS_LAYER_TALK  => 'Layer_Diskussion',
-);
+];

@@ -15,7 +15,7 @@ class MapsLeaflet extends MapsMappingService {
 	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
-			array( 'leafletmaps', 'leaflet' )
+			[ 'leafletmaps', 'leaflet' ]
 		);
 	}
 
@@ -25,25 +25,25 @@ class MapsLeaflet extends MapsMappingService {
 	 * @since 3.0
 	 */
 	public function addParameterInfo( array &$params ) {
-		$params['zoom'] = array(
+		$params['zoom'] = [
 			'type' => 'integer',
-			'range' => array( 0, 20 ),
+			'range' => [ 0, 20 ],
 			'default' => false,
-			'message' => 'maps-leaflet-par-zoom', //TODO
-		);
+			'message' => 'maps-leaflet-par-zoom'
+		];
 
-		$params['defzoom'] = array(
+		$params['defzoom'] = [
 			'type' => 'integer',
-			'range' => array( 0, 20 ),
+			'range' => [ 0, 20 ],
 			'default' => self::getDefaultZoom(),
-			'message' => 'maps-leaflet-par-defzoom', //TODO
-		);
+			'message' => 'maps-leaflet-par-defzoom'
+		];
 
-		$params['resizable'] = array(
+		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => $GLOBALS['egMapsResizableByDefault'],
-			'message' => 'maps-leaflet-par-resizable', //TODO
-		);
+			'message' => 'maps-leaflet-par-resizable'
+		];
 	}
 
 	/**
@@ -80,17 +80,17 @@ class MapsLeaflet extends MapsMappingService {
 	public function getResourceModules() {
 		return array_merge(
 			parent::getResourceModules(),
-			array( 'ext.maps.leaflet' )
+			[ 'ext.maps.leaflet' ]
 		);
 	}
 
 	protected function getDependencies() {
 		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
-		return array(
+		return [
 			Html::linkedStyle( "$leafletPath/leaflet.css" ),
 			'<!--[if lte IE 8]>' . Html::linkedStyle( "$leafletPath/leaflet.ie.css" ). '<![endif]-->',
 			Html::linkedScript( "$leafletPath/leaflet.js" ),
-		);
+		];
 	}
 
 }

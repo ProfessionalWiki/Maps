@@ -3,6 +3,7 @@
 namespace Maps\Test;
 
 use Maps\Elements\WmsOverlay;
+use Maps\WmsOverlayParser;
 
 /**
  * @covers Maps\WmsOverlayParser
@@ -14,19 +15,17 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 	/**
 	 * @see ValueParserTestBase::validInputProvider
 	 *
-	 * @since 3.0
-	 *
 	 * @return array
 	 */
 	public function validInputProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$valid = array(
+		$valid = [
 			"http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi? Foundation.GTOPO30" =>
-				array( "http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi?", "Foundation.GTOPO30" ),
+				[ "http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi?", "Foundation.GTOPO30" ],
 			"http://maps.imr.no:80/geoserver/wms? vulnerable_areas:Identified_coral_area coral_identified_areas" =>
-				array( "http://maps.imr.no:80/geoserver/wms?", "vulnerable_areas:Identified_coral_area", "coral_identified_areas" )
-		);
+				[ "http://maps.imr.no:80/geoserver/wms?", "vulnerable_areas:Identified_coral_area", "coral_identified_areas" ]
+		];
 
 		foreach ( $valid as $value => $expected ) {
 			$expectedOverlay = new WmsOverlay( $expected[0], $expected[1] );
@@ -35,33 +34,23 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 				$expectedOverlay->setWmsStyleName( $expected[2] );
 			}
 
-			$argLists[] = array( (string)$value, $expectedOverlay );
+			$argLists[] = [ (string)$value, $expectedOverlay ];
 		}
 
 		return $argLists;
 	}
 
-
-	/**
-	 * @see ValueParserTestBase::getParserClass
-	 *
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	protected function getParserClass() {
-		return 'Maps\WmsOverlayParser';
-	}
-
 	/**
 	 * @see ValueParserTestBase::requireDataValue
-	 *
-	 * @since 3.0
 	 *
 	 * @return boolean
 	 */
 	protected function requireDataValue() {
 		return false;
+	}
+
+	protected function getInstance() {
+		return new WmsOverlayParser();
 	}
 
 }

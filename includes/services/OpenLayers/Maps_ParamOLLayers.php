@@ -44,8 +44,8 @@ class MapsParamOLLayers extends ListParameterManipulation {
 	public function manipulate( Parameter &$parameter, array &$parameters ) {
 		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers;
 		
-		$layerDefs = array();
-		$usedLayers = array();
+		$layerDefs = [];
+		$usedLayers = [];
 		
 		foreach ( $parameter->getValue() as $layerOrGroup ) {
 			$lcLayerOrGroup = strtolower( $layerOrGroup );
@@ -153,7 +153,7 @@ class MapsParamOLLayers extends ListParameterManipulation {
 	protected function getDependencies( array $layerNames ) {
 		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
 		
-		$layerDependencies = array();
+		$layerDependencies = [];
 		
 		foreach ( $layerNames as $layerName ) {
 			if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php

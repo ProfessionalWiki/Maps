@@ -31,7 +31,7 @@ class Line extends \MapsBaseStrokableElement {
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( array $coordinates = array() ) {
+	public function __construct( array $coordinates = [] ) {
 		foreach ( $coordinates as $coordinate ) {
 			if ( !( $coordinate instanceof LatLongValue ) ) {
 				throw new InvalidArgumentException( 'Can only construct Line with LatLongValue objects' );
@@ -62,16 +62,16 @@ class Line extends \MapsBaseStrokableElement {
 	 */
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
-		$posArray = array();
+		$posArray = [];
 
 		foreach ( $this->coordinates as $mapLocation ) {
-			$posArray[] = array(
+			$posArray[] = [
 				'lat' => $mapLocation->getLatitude() ,
 				'lon' => $mapLocation->getLongitude()
-			);
+			];
 		}
 
-		$posArray = array( 'pos' => $posArray );
+		$posArray = [ 'pos' => $posArray ];
 
 		return array_merge( $parentArray , $posArray );
 	}

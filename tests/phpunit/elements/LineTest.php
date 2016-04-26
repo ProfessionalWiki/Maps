@@ -27,28 +27,28 @@ class LineTest extends BaseElementTest {
 	}
 
 	public function validConstructorProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$argLists[] = array( array() );
-		$argLists[] = array( array( new LatLongValue( 4, 2 ) ) );
+		$argLists[] = [ [] ];
+		$argLists[] = [ [ new LatLongValue( 4, 2 ) ] ];
 
-		$argLists[] = array(
-			array(
+		$argLists[] = [
+			[
 				new LatLongValue( 4, 2 ),
 				new LatLongValue( 2, 4 ),
 				new LatLongValue( 42, 42 ),
-			)
-		);
+			]
+		];
 
 		return $argLists;
 	}
 
 	public function invalidConstructorProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$argLists[] = array( array( '~=[,,_,,]:3' ) );
-		$argLists[] = array( array( new LatLongValue( 4, 2 ), '~=[,,_,,]:3' ) );
-		$argLists[] = array( array( '~=[,,_,,]:3', new LatLongValue( 4, 2 ) ) );
+		$argLists[] = [ [ '~=[,,_,,]:3' ] ];
+		$argLists[] = [ [ new LatLongValue( 4, 2 ), '~=[,,_,,]:3' ] ];
+		$argLists[] = [ [ '~=[,,_,,]:3', new LatLongValue( 4, 2 ) ] ];
 
 		return $argLists;
 	}
