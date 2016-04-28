@@ -51,22 +51,16 @@ function ajaxUpdateMarker(map) {
 (function( $, mw ) {
     $( document ).ready( function() {
         if ( typeof google !== 'undefined' ) {
-            //todo: timeout?
-            setTimeout(function() {
-                $(window.maps.googlemapList).each( function(index, map) {
-                    if (map.options.ajaxquery) {
+            $(window.maps.googlemapList).each( function(index, map) {
+                if (map.options.ajaxquery) {
+                    google.maps.event.addListener(map.map, 'dragend', function () {
                         ajaxUpdateMarker(map);
-
-                        google.maps.event.addListener(map.map, 'dragend', function () {
-                            ajaxUpdateMarker(map);
-                        });
-                        google.maps.event.addListener(map.map, 'zoom_changed', function () {
-                            ajaxUpdateMarker(map);
-                        });
-                    }
-
-                });
-            }, 500);
+                    });
+                    google.maps.event.addListener(map.map, 'zoom_changed', function () {
+                        ajaxUpdateMarker(map);
+                    });
+                }
+            });
         }
     } );
 })( window.jQuery, mediaWiki );
