@@ -53,7 +53,7 @@ function ajaxUpdateMarker(map) {
         if ( typeof google !== 'undefined' ) {
             //todo: timeout?
             setTimeout(function() {
-                $(window.maps.mapList).each( function(index, map) {
+                $(window.maps.googlemapList).each( function(index, map) {
                     if (map.options.ajaxquery) {
                         ajaxUpdateMarker(map);
 
