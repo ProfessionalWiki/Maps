@@ -14,6 +14,8 @@ window.maps = new ( function( $, mw ) {
 			mw.log( message );
 		}
 	};
-	
-	this.mapList = [];
+
+	this.googlemapList = [];
+	this.leafletList = [];
+	this.openlayersList = [];
 } )( jQuery, mediaWiki );

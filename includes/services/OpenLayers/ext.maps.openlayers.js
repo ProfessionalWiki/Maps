@@ -28,7 +28,7 @@
 				mapData = $.parseJSON( $this.find( 'div').text() );
 
 			var map = $this.openlayers( $this.attr( 'id' ), mapData );
-			window.maps.mapList.push(map);
+			window.maps.openlayersList.push(map);
 		} );
 
 	} );

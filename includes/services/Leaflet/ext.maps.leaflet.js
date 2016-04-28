@@ -12,7 +12,7 @@
 		$( '.maps-leaflet' ).each( function() {
 			var $this = $( this );
 			var map = $this.leafletmaps( $.parseJSON( $this.find( 'div').text() ) );
-			window.maps.mapList.push(map);
+			window.maps.leafletList.push(map);
 		} );
 	} );
 
