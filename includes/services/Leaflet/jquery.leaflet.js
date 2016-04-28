@@ -24,7 +24,7 @@
 		* @return {L.Marker}
 		*/
 		this.addMarker = function (properties) {
-			_this.points.push( new L.LatLng(properties.lat, properties.lon) );
+			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
 			if (properties.icon === '') {
 				var icon = new L.Icon.Default();

@@ -130,12 +130,12 @@
 				return addToMapAndHandlers( marker );
 			} else {
 				mw.loader.using(
-						'ext.maps.gm3.markerwithlabel',
-						function() {
-							marker = new MarkerWithLabel( markerOptions );
-							addToMapAndHandlers( marker );
-							setZoom(getBounds());
-						}
+					'ext.maps.gm3.markerwithlabel',
+					function() {
+						marker = new MarkerWithLabel( markerOptions );
+						addToMapAndHandlers( marker );
+						setZoom(getBounds());
+					}
 				);
 			}
 		};
@@ -147,9 +147,9 @@
 		this.removeMarker = function (marker) {
 			marker.setMap(null);
 
-			for (var i = _this.markers.length - 1; i >= 0; i--) {
-				if (_this.markers[i] === marker) {
-					delete _this.markers[i];
+			for (var i = this.markers.length - 1; i >= 0; i--) {
+				if (this.markers[i] === marker) {
+					delete this.markers[i];
 					break;
 				}
 			}
@@ -161,10 +161,10 @@
 		 * Removes all markers from the map.
 		 */
 		this.removeMarkers = function () {
-			for (var i = _this.markers.length - 1; i >= 0; i--) {
-				_this.markers[i].setMap(null);
+			for (var i = this.markers.length - 1; i >= 0; i--) {
+				this.markers[i].setMap(null);
 			}
-			_this.markers = [];
+			this.markers = [];
 		};
 
 		/**
@@ -751,7 +751,7 @@
 							mw.loader.using('ext.maps.gm3.earth', function () {
 								_this.initializeMap();
 								if (google.earth.isSupported()) {
-									_this.ge = new GoogleEarth(this.map);
+									_this.ge = new GoogleEarth(_this.map);
 								}
 							});
 						} });
