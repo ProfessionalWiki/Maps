@@ -94,8 +94,8 @@
 				}
 
 				if (bounds != null) bounds.extend(location.lonlat); // Extend the bounds when no center is set.
-				var marker = _this.getOLMarker(curLayer, location);
-				_this.markers.push({
+				var marker = this.getOLMarker(curLayer, location);
+				this.markers.push({
 					target:marker,
 					data:location
 				});
