@@ -39,7 +39,7 @@
 				icon:icon
 			};
 
-			var marker = L.marker( [properties.lat, properties.lon], markerOptions ).addTo( this.mapp );
+			var marker = L.marker( [properties.lat, properties.lon], markerOptions ).addTo( this.map );
 			if( properties.text.length > 0 ) marker.bindPopup( properties.text );
 		};
 
@@ -56,7 +56,7 @@
 				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
 			}
 
-			L.polyline(latlngs, options).addTo(this.mapp);
+			L.polyline(latlngs, options).addTo(this.map);
 		};
 
 		/**
@@ -78,7 +78,7 @@
 				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
 			}
 
-			L.Polygon(latlngs, options).addTo(this.mapp);
+			L.Polygon(latlngs, options).addTo(this.map);
 		};
 
 		/**
@@ -97,7 +97,7 @@
 				fillOpacity:properties.fillOpacity
 			};
 
-			L.Circle([properties.centre.lat, properties.centre.lon], properties.radius, options).addTo(this.mapp);
+			L.Circle([properties.centre.lat, properties.centre.lon], properties.radius, options).addTo(this.map);
 		};
 
 		/**
@@ -118,7 +118,7 @@
 
 			var bounds = [[properties.sw.lat, properties.sw.lon], [properties.ne.lat, properties.ne.lon]];
 
-			L.rectangle( bounds, options ).addTo(this.mapp);
+			L.rectangle( bounds, options ).addTo(this.map);
 		};
 
 		this.setup = function () {
@@ -128,7 +128,7 @@
 			if (options.maxzoom !== false ) mapOptions.maxZoom = options.maxzoom;
 
 			var map = L.map( this.get(0), mapOptions ).fitWorld();
-			this.mapp = map;
+			this.map = map;
 
 			// add an OpenStreetMap tile layer
 			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
