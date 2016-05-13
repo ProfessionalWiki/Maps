@@ -8,12 +8,12 @@
 
 var ajaxRequest = null;
 
-function ajaxUpdateMarker(googlemaps) {
-    var bounds = googlemaps.map.getBounds();
+function ajaxUpdateMarker(map) {
+    var bounds = map.map.getBounds();
 
-    var coordinatesproperty = googlemaps.options.coordinatesproperty;
+    var coordinatesproperty = map.options.coordinatesproperty;
 
-    var query = googlemaps.options.ajaxquery.join(' ') + ' ';
+    var query = map.options.ajaxquery.join(' ') + ' ';
     query += '[[' + coordinatesproperty + '::+]] ';
     query += '[[' + coordinatesproperty + '::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
     query += '[[' + coordinatesproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
@@ -37,12 +37,12 @@ function ajaxUpdateMarker(googlemaps) {
 
         // todo: don't remove and recreate all markers..
         // only add new ones.
-        googlemaps.removeMarkers();
+        map.removeMarkers();
         for (var property in data.query.results) {
             if (data.query.results.hasOwnProperty(property)) {
                 var location = data.query.results[property];
                 var coordinates = location.printouts[coordinatesproperty][0];
-                googlemaps.addMarker(coordinates);
+                map.addMarker(coordinates);
             }
         }
     });
@@ -51,23 +51,15 @@ function ajaxUpdateMarker(googlemaps) {
 (function( $, mw ) {
     $( document ).ready( function() {
         if ( typeof google !== 'undefined' ) {
-            $( '.maps-googlemaps3' ).each( function() {
-                var $this = $( this );
-
-                if ($this.googlemaps.options.ajaxquery) {
-                    // todo: remove timeout
-                    setTimeout(function() {
-                        ajaxUpdateMarker($this.googlemaps);
-                    }, 100);
-
-                    google.maps.event.addListener($this.googlemaps.map, 'dragend', function () {
-                        ajaxUpdateMarker($this.googlemaps);
+            $(window.maps.googlemapList).each( function(index, map) {
+                if (map.options.ajaxquery) {
+                    google.maps.event.addListener(map.map, 'dragend', function () {
+                        ajaxUpdateMarker(map);
                     });
-                    google.maps.event.addListener($this.googlemaps.map, 'zoom_changed', function () {
-                        ajaxUpdateMarker($this.googlemaps);
+                    google.maps.event.addListener(map.map, 'zoom_changed', function () {
+                        ajaxUpdateMarker(map);
                     });
                 }
-
             });
         }
     } );
