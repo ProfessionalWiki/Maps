@@ -45,13 +45,6 @@ $GLOBALS['wgExtensionCredits']['semantic'][] = [
 	'license-name'   => 'GPL-2.0+'
 ];
 
-include_once __DIR__ . '/src/parserhooks/SM_DisplayAjaxMap.php';
-
-$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-	$instance = new SMDisplayAjaxMap();
-	return $instance->init( $parser );
-};
-
 // Include the settings file.
 require_once 'SM_Settings.php';
 
@@ -88,7 +81,6 @@ $GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {
 
 // Internationalization
 $GLOBALS['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
-$GLOBALS['wgExtensionMessagesFiles']['SemanticMapsMagic'] = __DIR__ . '/SemanticMaps.i18n.magic.php';
 
 // Hook for initializing the Geographical Data types.
 $GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
