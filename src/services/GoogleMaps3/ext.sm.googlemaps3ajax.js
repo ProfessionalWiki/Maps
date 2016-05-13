@@ -49,18 +49,24 @@ function ajaxUpdateMarker(map) {
 }
 
 (function( $, mw ) {
+    var events = ['dragend', 'zoom_changed'];
+
     $( document ).ready( function() {
-        if ( typeof google !== 'undefined' ) {
+        // todo: find a way to remove setTimeout.
+        setTimeout(function() {
+            if ( typeof google === 'undefined' ) {
+                return;
+            }
             $(window.maps.googlemapList).each( function(index, map) {
-                if (map.options.ajaxquery) {
-                    google.maps.event.addListener(map.map, 'dragend', function () {
-                        ajaxUpdateMarker(map);
-                    });
-                    google.maps.event.addListener(map.map, 'zoom_changed', function () {
-                        ajaxUpdateMarker(map);
-                    });
+                if (!map.options.ajaxquery) {
+                    return;
                 }
+                $(events).each(function(index, event) {
+                    google.maps.event.addListener(map.map, event, function () {
+                        ajaxUpdateMarker(map);
+                    });
+                });
             });
-        }
+        }, 500);
     } );
 })( window.jQuery, mediaWiki );
