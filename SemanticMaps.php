@@ -72,6 +72,7 @@ $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = [
 
 include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
 include_once __DIR__ . '/src/services/Leaflet/SM_Leaflet.php';
+include_once __DIR__ . '/src/services/OpenLayers/SM_OpenLaysers.php';
 
 
 $GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {

@@ -1,5 +1,5 @@
 /**
- * JavaScript for Google Maps v3 maps in the Semantic Maps extension.
+ * JavaScript for OpenLayers maps in the Semantic Maps extension.
  * @see https://www.mediawiki.org/wiki/Extension:Semantic_Maps
  *
  * @licence GNU GPL v2+
@@ -55,22 +55,17 @@
         } );
     }
 
-    var mapEvents = ['dragend', 'zoom_changed'];
-
     $( document ).ready( function() {
         // todo: find a way to remove setTimeout.
         setTimeout(function() {
-            if ( typeof google === 'undefined' ) {
-                return;
-            }
-            $( window.maps.googlemapList ).each( function( index, map ) {
+            $( window.maps.openlayersList ).each( function( index, map ) {
                 if (!map.options.ajaxquery && !map.options.coordinatesproperty) {
                     return;
                 }
-                $( mapEvents ).each( function( index, event ) {
-                    google.maps.event.addListener( map.map, event, function () {
-                        ajaxUpdateMarker( map );
-                    } );
+                console.log();
+                map.map.events.register( 'moveend', map.map, function () {
+                    // todo: fix this
+                    //ajaxUpdateMarker( map );
                 } );
             } );
         }, 500 );

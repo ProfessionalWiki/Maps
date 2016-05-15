@@ -14,6 +14,7 @@ use ParamProcessor\ParamDefinition;
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Peter Grassberger < petertheone@gmail.com >
  */
 class SMMapPrinter extends SMW\ResultPrinter {
 	

@@ -1,5 +1,5 @@
 /**
- * JavaScript for Google Maps v3 maps in the Semantic Maps extension.
+ * JavaScript for Leaflet in the Semantic Maps extension.
  * @see https://www.mediawiki.org/wiki/Extension:Semantic_Maps
  *
  * @licence GNU GPL v2+
@@ -16,8 +16,8 @@
 
         var query = map.options.ajaxquery.join( ' ' ) + ' ';
         query += '[[' + coordinatesproperty + '::+]] ';
-        query += '[[' + coordinatesproperty + '::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
-        query += '[[' + coordinatesproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
+        query += '[[' + coordinatesproperty + '::>' + bounds.getSouthWest().lat + '°, ' + bounds.getSouthWest().lng + '°]] ';
+        query += '[[' + coordinatesproperty + '::<' + bounds.getNorthEast().lat + '°, ' + bounds.getNorthEast().lng + '°]]';
         query += '|?' + coordinatesproperty;
         return query;
     }
@@ -44,7 +44,8 @@
 
             // todo: don't remove and recreate all markers..
             // only add new ones.
-            map.removeMarkers();
+            // todo: implement removeMarkers() in Maps
+            //map.removeMarkers();
             for ( var property in data.query.results ) {
                 if ( data.query.results.hasOwnProperty( property ) ) {
                     var location = data.query.results[property];
@@ -55,22 +56,18 @@
         } );
     }
 
-    var mapEvents = ['dragend', 'zoom_changed'];
+    var mapEvents = ['dragend', 'zoomend'];
 
     $( document ).ready( function() {
         // todo: find a way to remove setTimeout.
         setTimeout(function() {
-            if ( typeof google === 'undefined' ) {
-                return;
-            }
-            $( window.maps.googlemapList ).each( function( index, map ) {
+            $( window.maps.leafletList ).each( function( index, map ) {
                 if (!map.options.ajaxquery && !map.options.coordinatesproperty) {
                     return;
                 }
-                $( mapEvents ).each( function( index, event ) {
-                    google.maps.event.addListener( map.map, event, function () {
-                        ajaxUpdateMarker( map );
-                    } );
+                map.map.on( mapEvents.join( ' ' ), function() {
+                    console.log('event!');
+                    ajaxUpdateMarker( map );
                 } );
             } );
         }, 500 );

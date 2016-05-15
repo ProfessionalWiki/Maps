@@ -17,6 +17,7 @@
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Peter Grassberger < petertheone@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
