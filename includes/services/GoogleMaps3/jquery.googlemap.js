@@ -618,6 +618,8 @@
 					'ext.maps.gm3.markercluster',
 					function() {
 						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
+							imagePath: mw.config.get( 'wgScriptPath' ) +
+								'/extensions/Maps/includes/services/GoogleMaps3/img/m',
 							averageCenter: true
 						} );
 					}
