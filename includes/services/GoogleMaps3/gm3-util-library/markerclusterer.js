@@ -1575,7 +1575,7 @@ MarkerClusterer.BATCH_SIZE_IE = 500;
  * @type {string}
  * @constant
  */
-MarkerClusterer.IMAGE_PATH = "//google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/images/m";
+MarkerClusterer.IMAGE_PATH = "//cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m";
 
 
 /**
