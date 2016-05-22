@@ -330,6 +330,7 @@
 
 		map.addLayers( layers ); // Add the base layers
 
+		//Add markers
 		this.addMarkers( map, options );
 		var centre = false;
 
@@ -393,10 +394,6 @@
                 return valid;
             }
         }
-
-		//Add markers
-		this.addMarkers(map, options);
-		var centre = false;
 
 		//Add line layer if applicable
 		if (options.lines && options.lines.length > 0) {
