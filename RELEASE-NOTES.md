@@ -8,6 +8,7 @@ Development version
 * Dropped support for MediaWiki older than 1.23
 * Dropped support for PHP older than 5.5
 * Fixed missing marker cluster images for Google Maps (by Peter Grassberger)
+* Fixed duplicate markers in OpenLayers maps (by Peter Grassberger)
 
 ## Maps 3.5
 
