@@ -8,8 +8,8 @@
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas nas páxinas do wiki",
-	"right-geocode": "Xeocódigo",
-	"action-geocode": "Xeocodificar nesta wiki",
+	"right-geocode": "Xeocodificar",
+	"action-geocode": "xeocodificar neste wiki",
 	"maps_map": "Mapa",
 	"maps-tracking-category": "Páxinas cun mapa renderizado coa extensión Maps",
 	"maps-loading-map": "Cargando o mapa...",

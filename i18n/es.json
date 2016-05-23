@@ -19,7 +19,9 @@
 			"Macofe",
 			"Themasterriot",
 			"Mor",
-			"Rafael.minuesa"
+			"Rafael.minuesa",
+			"Indiralena",
+			"Lemondoge"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
@@ -33,6 +35,7 @@
 	"maps-copycoords-prompt": "Ctrl+C, Intro",
 	"maps-searchmarkers-text": "Marcadores de filtro",
 	"maps-others": "otros",
+	"maps-kml-parsing-failed": "Fallado el análisis de uno o más archivos KML. Esto sucede generalmente porque de recuperación de fallo o XML con formato incorrecto.",
 	"maps-ns-layer": "Capa",
 	"maps-ns-layer-talk": "Discusión de capa",
 	"maps-layer-property": "Propiedad",
@@ -41,6 +44,7 @@
 	"maps-layerdef-invalid": "{{PLURAL:$1|Definición no válida|Definiciones no válidas}}",
 	"maps-layerdef-invalid-fatal": "Definición no válida fatal",
 	"maps-layerdef-wrong-namespace": "Las definiciones de capas solo son válidas en el espacio de nombres «$1».",
+	"maps-layerdef-equal-layer-name": "Los nombres de capa debe ser único dentro de la misma capa de la página. \"$1\" ya está siendo utilizado por otra capa.",
 	"maps-layerpage-usage": "Páginas con mapas que usan la capa «$1»",
 	"maps-layerpage-nousage": "No hay páginas que usen esta capa en este momento.",
 	"maps-error-invalid-layertype": "No hay capas de tipo \"$1\". Sólo  {{PLURAL:$3|este tipo es compatible|estos tipos son compatibles}} :$2",
