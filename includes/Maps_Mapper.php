@@ -140,7 +140,7 @@ final class MapsMapper {
 			$imagePage = new ImagePage( $title );
 			return $imagePage->getDisplayedFile()->getURL();
 		}
-		return '';
+		return $file;
 	}
 
 	/**
