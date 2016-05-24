@@ -16,7 +16,7 @@
 			$( '.maps-googlemaps3' ).each( function() {
 				var $this = $( this );
 				var map = $this.googlemaps( $.parseJSON( $this.find( 'div').text() ) );
-				window.maps.googlemapList.push(map);
+				window.maps.googlemapsList.push(map);
 			} );
 		}
 
