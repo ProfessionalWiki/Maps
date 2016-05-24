@@ -11,20 +11,20 @@
     var ajaxRequest = null;
 
     // todo: maybe move to Maps
-    function getQueryString( map, coordinatesproperty ) {
+    function getQueryString( map, ajaxcoordproperty ) {
         var bounds = map.map.getBounds();
 
         var query = map.options.ajaxquery.join( ' ' ) + ' ';
-        query += '[[' + coordinatesproperty + '::+]] ';
-        query += '[[' + coordinatesproperty + '::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
-        query += '[[' + coordinatesproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
-        query += '|?' + coordinatesproperty;
+        query += '[[' + ajaxcoordproperty + '::+]] ';
+        query += '[[' + ajaxcoordproperty + '::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
+        query += '[[' + ajaxcoordproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
+        query += '|?' + ajaxcoordproperty;
         return query;
     }
 
     function ajaxUpdateMarker( map ) {
-        var coordinatesproperty = map.options.coordinatesproperty;
-        var query = getQueryString( map, coordinatesproperty );
+        var ajaxcoordproperty = map.options.ajaxcoordproperty;
+        var query = getQueryString( map, ajaxcoordproperty );
 
         if ( ajaxRequest !== null ) {
             ajaxRequest.abort();
@@ -48,7 +48,7 @@
             for ( var property in data.query.results ) {
                 if ( data.query.results.hasOwnProperty( property ) ) {
                     var location = data.query.results[property];
-                    var coordinates = location.printouts[coordinatesproperty][0];
+                    var coordinates = location.printouts[ajaxcoordproperty][0];
                     map.addMarker( coordinates );
                 }
             }
@@ -64,7 +64,7 @@
                 return;
             }
             $( window.maps.googlemapList ).each( function( index, map ) {
-                if (!map.options.ajaxquery && !map.options.coordinatesproperty) {
+                if (!map.options.ajaxquery && !map.options.ajaxcoordproperty) {
                     return;
                 }
                 $( mapEvents ).each( function( index, event ) {
