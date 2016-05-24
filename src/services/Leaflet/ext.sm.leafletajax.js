@@ -10,7 +10,6 @@
 (function( $ ) {
     var ajaxRequest = null;
 
-    // todo: maybe move to Maps
     function getQueryString( map, ajaxcoordproperty ) {
         var bounds = map.map.getBounds();
 
