@@ -8,7 +8,7 @@
  * @todo This whole JS is very blown up and could use some quality refactoring.
  */
 
-(function ($) {
+(function ($, mw) {
 	$.fn.openlayers = function (mapElementId, options) {
 
 		this.options = options;
@@ -74,7 +74,7 @@
 				// Create a own marker-layer for the marker group:
 				if (!groupLayers[ location.group ]) {
 					// in case no group is specified, use default marker layer:
-					var layerName = location.group != '' ? location.group : mediaWiki.msg('maps-markers');
+					var layerName = location.group != '' ? location.group : mw.msg('maps-markers');
 					var curLayer = new OpenLayers.Layer.Markers(layerName);
 					groups++;
 					curLayer.id = 'markerLayer' + groups;
@@ -610,7 +610,7 @@
 						if (!hasImageLayer) {
 							lonlat = lonlat.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
 						}
-						prompt(mediaWiki.msg('maps-copycoords-prompt'), lonlat.lat + ',' + lonlat.lon);
+						prompt(mw.msg('maps-copycoords-prompt'), lonlat.lat + ',' + lonlat.lon);
 					}
 				}
 			});
@@ -622,7 +622,7 @@
 			OpenLayers.Control.SearchField = OpenLayers.Class(OpenLayers.Control, {
 				draw:function (px) {
 					OpenLayers.Control.prototype.draw.apply(this, arguments);
-					var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
+					var searchBoxValue = mw.msg('maps-searchmarkers-text');
 					var searchBoxContainer = document.createElement('div');
 					this.div.style.top = "5px";
 					this.div.style.right = "5px";
@@ -686,4 +686,4 @@
 		return this;
 
 	};
-})(jQuery);
+})(jQuery, window.mediaWiki);
