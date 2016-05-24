@@ -8,6 +8,7 @@
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Peter Grassberger < petertheone@gmail.com >
  */
 
 class MapsGoogleMaps3 extends MapsMappingService {
@@ -176,6 +177,36 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-googlemaps3-par-markercluster',
+		];
+
+		$params['clustergridsize'] = [
+				'type' => 'integer',
+				'default' => 60,
+				'message' => 'maps-googlemaps3-par-clustergridsize',
+		];
+
+		$params['clustermaxzoom'] = [
+				'type' => 'integer',
+				'default' => 20,
+				'message' => 'maps-googlemaps3-par-clustermaxzoom',
+		];
+
+		$params['clusterzoomonclick'] = [
+				'type' => 'boolean',
+				'default' => true,
+				'message' => 'maps-googlemaps3-par-clusterzoomonclick',
+		];
+
+		$params['clusteraveragecenter'] = [
+				'type' => 'boolean',
+				'default' => true,
+				'message' => 'maps-googlemaps3-par-clusteraveragecenter',
+		];
+
+		$params['clusterminsize'] = [
+				'type' => 'integer',
+				'default' => 2,
+				'message' => 'maps-googlemaps3-par-clusterminsize',
 		];
 
 		$params['tilt'] = [

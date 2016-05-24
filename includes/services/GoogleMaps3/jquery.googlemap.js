@@ -3,6 +3,7 @@
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  *
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+ * @author Peter Grassberger < petertheone@gmail.com >
  */
 
 (function ($, mw) {
@@ -620,7 +621,11 @@
 						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
 							imagePath: mw.config.get( 'wgScriptPath' ) +
 								'/extensions/Maps/includes/services/GoogleMaps3/img/m',
-							averageCenter: true
+							gridSize: options.clustergridsize,
+							maxZoom: options.clustermaxzoom,
+							zoomOnClick: options.clusterzoomonclick,
+							averageCenter: options.clusteraveragecenter,
+							minimumClusterSize: options.clusterminsize
 						} );
 					}
 				);
