@@ -3,7 +3,7 @@
 namespace Maps;
 
 /**
- * Base geocoder class to be inherited by classes with a specific geocding implementation. 
+ * Base geocoder class to be inherited by classes with a specific geocoding implementation. 
  * 
  * @since 0.7
  * 
