@@ -11,9 +11,11 @@
 (function ($) {
 	$.fn.openlayers = function (mapElementId, options) {
 
+		this.options = options;
+
 		OpenLayers._getScriptLocation = function() {
 			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
-		}
+		};
 
 		this.getOLMarker = function (markerLayer, markerData) {
 			var marker;
@@ -677,7 +679,7 @@
 			var popup = new OpenLayers.Popup(null, lonlat, null, properties.text, true, function () {
 				map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
 				map.removePopup(this);
-			})
+			});
 			_this.map.addPopup(popup);
 		}
 

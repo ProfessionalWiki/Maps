@@ -54,7 +54,7 @@
 
 		var getBounds = function() {
 			if (( options.centre === false || options.zoom === false ) && options.locations.length > 1) {
-				bounds = new google.maps.LatLngBounds();
+				var bounds = new google.maps.LatLngBounds();
 
 				for (var i = _this.markers.length - 1; i >= 0; i--) {
 					bounds.extend(_this.markers[i].getPosition());
@@ -65,7 +65,7 @@
 		};
 
 		var setZoom = function(bounds) {
-				if (options.zoom === false) {
+			if (options.zoom === false) {
 				_this.map.fitBounds(bounds);
 			}
 			else {
@@ -216,7 +216,7 @@
 									doc[i].gpolygons,
 									doc[i].gpolylines,
 									doc[i].ggroundoverlays
-									]);
+								]);
 							}
 						}
 					}
@@ -445,7 +445,7 @@
 				}
 			}
 			this.map.fitBounds(bounds);
-		}
+		};
 
 		this.initializeMap = function () {
 			var mapOptions = {
@@ -853,10 +853,10 @@
 			};
 
 			if ( event.latLng === undefined ) {
-				this.openWindow.open( this.map, this );
+				this.openWindow.open( _this.map, this );
 			}
 			else {
-				this.openWindow.open( this.map );
+				this.openWindow.open( _this.map );
 			}
 		}
 
