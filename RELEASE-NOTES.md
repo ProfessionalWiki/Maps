@@ -11,7 +11,7 @@ Development version
     * `clustergridsize`: The grid size of a cluster in pixels
     * `clustermaxzoom`: The maximum zoom level that a marker can be part of a cluster
     * `clusterzoomonclick`: Whether the default behaviour of clicking on a cluster is to zoom into it.
-    * `clusteraveragecenter`: Wether the center of each cluster should be the average of all markers in the cluster.
+    * `clusteraveragecenter`: Whether the center of each cluster should be the average of all markers in the cluster.
     * `clusterminsize`: The minimum number of markers required to form a cluster.
 * Fixed missing marker cluster images for Google Maps (by Peter Grassberger)
 * Fixed duplicate markers in OpenLayers maps (by Peter Grassberger)
