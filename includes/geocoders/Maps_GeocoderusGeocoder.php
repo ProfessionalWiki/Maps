@@ -38,7 +38,7 @@ final class MapsGeocoderusGeocoder extends \Maps\Geocoder {
 	 * 
 	 * @since 3.0
 	 * 
-	 * @param string $address
+	 * @param string $response
 	 * 
 	 * @return array
 	 */
