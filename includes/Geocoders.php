@@ -212,7 +212,7 @@ final class Geocoders {
 			return false;
 		}
 		
-		$geocoder = self::getValidGeocoderInstance( $geoService, $mappingService );
+		$geocoder = self::getValidGeocoderInstance( $geoService );
 
 		// This means there was no suitable geocoder found, so return false.
 		if ( $geocoder === false ) {
