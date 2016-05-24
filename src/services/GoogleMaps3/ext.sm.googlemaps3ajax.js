@@ -62,7 +62,7 @@
             if ( typeof google === 'undefined' ) {
                 return;
             }
-            $( window.maps.googlemapList ).each( function( index, map ) {
+            $( window.maps.googlemapsList ).each( function( index, map ) {
                 if (!map.options.ajaxquery && !map.options.ajaxcoordproperty) {
                     return;
                 }
