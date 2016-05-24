@@ -309,7 +309,7 @@ class Location extends BaseElement {
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
 			'alt' => 0,
-			'address' => $this->getAddress( false ),
+			'address' => $this->getAddress(),
 			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
