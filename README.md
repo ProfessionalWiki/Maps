@@ -42,7 +42,7 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 ## Contributing
 
 Feel free to fork the [code on GitHub](https://github.com/JeroenDeDauw/Maps) and to submit pull
-requests. We have a list of [enhancements that newcommers can work on] easily(https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer).
+requests. We have a list of [enhancements that newcommers can work on](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer) easily.
 
 You can run the PHPUnit tests by changing into the `tests/phpunit` directory of your MediaWiki
 install and running
