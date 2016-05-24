@@ -29,7 +29,7 @@ the same way as that of the Maps extension.
 ## Contributing and support
 
 * [File an issue](https://github.com/SemanticMediaWiki/SemanticMaps/issues)
-* [Submit a pull request](https://github.com/SemanticMediaWiki/SemanticMaps/pulls)
+* [Submit a pull request](https://github.com/SemanticMediaWiki/SemanticMaps/pulls) ([tasks for newcommers](https://github.com/SemanticMediaWiki/SemanticMaps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
 * Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
 * Ask a question on the #semantic-mediawiki IRC channel on Freenode.
 
