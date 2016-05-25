@@ -226,7 +226,7 @@
 						map:_this.map,
 						zoom:options.kmlrezoom,
 						failedParse:function(){
-							alert(mediaWiki.msg('maps-kml-parsing-failed'));
+							alert(mw.msg('maps-kml-parsing-failed'));
 						}
 					});
 					geoXml.options.afterParse = function(docs){
@@ -634,7 +634,7 @@
 
 
 			if (options.searchmarkers) {
-				var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
+				var searchBoxValue = mw.msg('maps-searchmarkers-text');
 				var searchBox = $('<input type="text" value="' + searchBoxValue + '" />');
 				var searchContainer = document.createElement('div');
 				searchContainer.style.padding = '5px';
@@ -787,7 +787,7 @@
 			controlUI.style.textAlign = 'center';
 			controlUI.style.boxShadow = 'rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px';
 			controlUI.style.backgroundClip = 'padding-box';
-			controlUI.title = mediaWiki.msg('maps-fullscreen-button-tooltip');
+			controlUI.title = mw.msg('maps-fullscreen-button-tooltip');
 			controlDiv.appendChild(controlUI);
 
 			var controlText = document.createElement('div');
@@ -796,7 +796,7 @@
 			controlText.style.fontWeight = '400';
 			controlText.style.color = 'rgb(86, 86, 86)';
 			controlText.style.padding = '1px 6px';
-			controlText.innerHTML = mediaWiki.msg('maps-fullscreen-button');
+			controlText.innerHTML = mw.msg('maps-fullscreen-button');
 			controlUI.appendChild(controlText);
 
 			google.maps.event.addDomListener(controlUI, 'click', function() {
@@ -867,7 +867,7 @@
 				}
 			}else{
 				google.maps.event.addListener(object, 'rightclick', function (event) {
-					prompt(mediaWiki.msg('maps-copycoords-prompt'), event.latLng.lat() + ',' + event.latLng.lng());
+					prompt(mw.msg('maps-copycoords-prompt'), event.latLng.lat() + ',' + event.latLng.lng());
 				});
 			}
 		}
