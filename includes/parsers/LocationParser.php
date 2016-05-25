@@ -105,14 +105,14 @@ class LocationParser extends StringValueParser {
 	 */
 	private function stringToLatLongValue( $location ) {
 		if ( $this->supportGeocoding && Geocoders::canGeocode() ) {
-			$location = Geocoders::attemptToGeocode( $location );
+			$latLongValue = Geocoders::attemptToGeocode( $location );
 
-			if ( $location === false ) {
+			if ( $latLongValue === false ) {
 				throw new ParseException( 'Failed to parse or geocode' );
 			}
 
-			assert( $location instanceof LatLongValue );
-			return $location;
+			assert( $latLongValue instanceof LatLongValue );
+			return $latLongValue;
 		}
 
 		$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
