@@ -228,7 +228,7 @@ class Location extends BaseElement {
 	}
 
 	/**
-	 * Returns whether Location is asigned to a group.
+	 * Returns whether Location is assigned to a group.
 	 *
 	 * @since 2.0
 	 *

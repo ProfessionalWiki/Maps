@@ -23,7 +23,7 @@ class WmsOverlay extends BaseElement {
 	private $wmsLayerName;
 
 	/**
-	 * @var String WMS Stype name (default value: 'default')
+	 * @var String WMS Style name (default value: 'default')
 	 */
 	private $wmsStyleName;
 
