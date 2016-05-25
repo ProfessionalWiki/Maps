@@ -43,7 +43,7 @@ final class MapsGoogleGeocoder extends \Maps\Geocoder {
 	 * 
 	 * @since 0.7
 	 * 
-	 * @param string $address
+	 * @param string $response
 	 * 
 	 * @return array
 	 */		
