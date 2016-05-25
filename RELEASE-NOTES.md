@@ -15,6 +15,7 @@ Development version
     * `clusterminsize`: The minimum number of markers required to form a cluster.
 * Fixed missing marker cluster images for Google Maps (by Peter Grassberger)
 * Fixed duplicate markers in OpenLayers maps (by Peter Grassberger)
+* Fixed URL support in the icon parameter (by Peter Grassberger)
 * Various minor MediaWiki compatibility enhancements (by Karsten Hoffmeyer, Siebrand Mazeland and FlorianSW)
 
 ## Maps 3.5
