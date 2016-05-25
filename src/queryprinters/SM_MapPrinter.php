@@ -129,6 +129,11 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		 */
 		global $wgParser;
 
+		global $egMapsEnableCategory;
+		if ($egMapsEnableCategory) {
+			$wgParser->addTrackingCategory( 'maps-tracking-category' );
+		}
+
 		$params = $this->params;
 
 		$queryHandler = new SMQueryHandler( $res, $outputmode );
