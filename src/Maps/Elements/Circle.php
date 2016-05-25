@@ -81,7 +81,7 @@ class Circle extends \MapsBaseFillableElement {
 			'centre' => [
 				'lon' => $this->getCircleCentre()->getLongitude(),
 				'lat' => $this->getCircleCentre()->getLatitude()
-			] ,
+			],
 			'radius' => intval( $this->getCircleRadius() ),
 		];
 
