@@ -151,6 +151,7 @@
 	"maps-googlemaps3-par-tilt": "使用Google地图时的地图标题。",
 	"maps-googlemaps3-par-kmlrezoom": "在KML图层加载后重新缩放地图。",
 	"maps-googlemaps3-par-poi": "显示感兴趣的点。",
+	"maps-googlemaps3-par-clustergridsize": "群集的网格大小（像素）。",
 	"maps-openlayers-par-controls": "要放置地图上的控件。",
 	"maps-openlayers-par-layers": "将在图层选择器中可用的图层。第一个图层将在地图加载时显示。",
 	"maps-openlayers-par-overlays": "将在图层选择器中可用的覆盖图层。这些图层将在一般图层上方显示，就像一个标记。",

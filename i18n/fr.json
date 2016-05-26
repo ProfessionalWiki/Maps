@@ -17,7 +17,8 @@
 			"Wyz",
 			"Weft",
 			"Jonathan1",
-			"Lbayle"
+			"Lbayle",
+			"Yasten"
 		]
 	},
 	"maps-desc": "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géo-codées et d'autres opérations géographiques.",
@@ -163,6 +164,7 @@
 	"maps-googlemaps3-par-tilt": "Inclinaison de la carte lors de l'utilisation de Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Zoomer de nouveau la carte une fois que les couches KML ont été chargées",
 	"maps-googlemaps3-par-poi": "Afficher les points d’intérêt",
+	"maps-googlemaps3-par-clusterzoomonclick": "Si le comportement par défaut de cliquer sur un cluster est de faire un zoom.",
 	"maps-openlayers-par-controls": "Les contrôles à placer sur la carte.",
 	"maps-openlayers-par-layers": "Les couches qui seront disponibles dans le sélecteur de couche. La première couche sera affichée lors du chargement de la carte.",
 	"maps-openlayers-par-overlays": "Superposer les couches qui seront disponibles dans le sélecteur de couches. Ces couches seront affichées par dessus la couche normale, comme une sorte de marqueur.",
