@@ -134,4 +134,22 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 		return new LocationParser();
 	}
 
+	public function testGivenAddressAndNoTitle_addressIsSetAsTitle() {
+		$location = ( new LocationParser() )->parse( 'Tempelhofer Ufer 42' );
+
+		$this->assertSame( 'Tempelhofer Ufer 42', $location->getTitle );
+	}
+
+	public function testGivenAddressAndTitle_addressIsNotUsedAsTitle() {
+		$location = ( new LocationParser() )->parse( 'Tempelhofer Ufer 42~Great title of doom' );
+
+		$this->assertSame( 'Great title of doom', $location->getTitle );
+	}
+
+	public function testGivenCoordinatesAndNoTitle_noTitleIsSet() {
+		$location = ( new LocationParser() )->parse( '4,2' );
+
+		$this->assertSame( '', $location->getTitle );
+	}
+
 }
