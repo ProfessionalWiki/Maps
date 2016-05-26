@@ -654,7 +654,7 @@
 						var marker = _this.markers[i];
 						if (options.searchmarkers == 'title') {
 							haystack = marker.title;
-						} else if (options.searchmarkers == 'all') {
+						} else {
 							haystack = marker.title + marker.text;
 						}
 
