@@ -95,6 +95,7 @@
 	"maps-googlemaps3-par-clusterzoomonclick": "{{maps-par|googlemaps3|clusterzoomonclick}}",
 	"maps-googlemaps3-par-clusteraveragecenter": "{{maps-par|googlemaps3|clusteraveragecenter}}",
 	"maps-googlemaps3-par-clusterminsize": "{{maps-par|googlemaps3|clusterminsize}}",
+	"maps-openlayers-par-overlays": "{{maps-par|openlayers|overlays}}",
 	"mapeditor": "title of the special page [[Special:MapEditor]].",
 	"specialpages-group-maps": "{{doc-special-group|like=[[Special:MapEditor]]}}\n{{Identical|Map}}",
 	"mapeditor-parser-error": "Error message when parsing error occurs",

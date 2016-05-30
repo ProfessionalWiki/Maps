@@ -21,7 +21,8 @@
 			"Mor",
 			"Rafael.minuesa",
 			"Indiralena",
-			"Lemondoge"
+			"Lemondoge",
+			"Rubentl134"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
@@ -166,6 +167,8 @@
 	"maps-googlemaps3-par-tilt": "Inclinación del mapa al utilizar Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Ajustar el nivel de zoom del mapa después de que se hayan cargado las capas KML.",
 	"maps-googlemaps3-par-poi": "Mostrar puntos de interés.",
+	"maps-googlemaps3-par-clustergridsize": "La medida de verja de un grupo en píxeles.",
+	"maps-googlemaps3-par-clusterminsize": "El número mínimo de marcadores que están en un grupo antes de que los marcadores se oculten y un recuento se muestre",
 	"maps-openlayers-par-controls": "Los controles a colocar en el mapa.",
 	"maps-openlayers-par-layers": "Las capas que estarán disponibles en el selector de capas. La primera capa se mostrará cuando se cargue el mapa.",
 	"maps-openlayers-par-overlays": "Capas superposicionadas que estarán disponibles en el selector de capas. Estas capas serán mostradas sobre la parte superior de una capa normal, como si fuera una especie de marcador.",
