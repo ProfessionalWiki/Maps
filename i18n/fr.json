@@ -169,7 +169,7 @@
 	"maps-googlemaps3-par-clustergridsize": "La taille de la grille (en pixels) d'un agrégat.",
 	"maps-googlemaps3-par-clustermaxzoom": "Niveau maximal de zoom pour qu'un marqueur puisse être agrégé.",
 	"maps-googlemaps3-par-clusterzoomonclick": "Si le comportement par défaut de cliquer sur un agrégat est de zoomer.",
-	"maps-googlemaps3-par-clusteraveragecenter": "Est-ce que le centre de chaque groupe est le barycentre des marqueurs de l'agrégat ?",
+	"maps-googlemaps3-par-clusteraveragecenter": "Si le centre de chaque groupe est le barycentre des marqueurs de l'agrégat.",
 	"maps-googlemaps3-par-clusterminsize": "Le nombre minimum de marqueurs dans un agrégat avant que les marqueurs ne soient cachés et qu'un compteur ne les remplace.",
 	"maps-openlayers-par-controls": "Les contrôles à placer sur la carte.",
 	"maps-openlayers-par-layers": "Les couches qui seront disponibles dans le sélecteur de couche. La première couche sera affichée lors du chargement de la carte.",
