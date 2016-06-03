@@ -12,10 +12,16 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th><a href="RELEASE-NOTES.md">Maps 3.6.x</a></th>
+		<th><a href="RELEASE-NOTES.md">Maps 3.7.x</a></th>
 		<td>Development version</td>
 		<td>Future</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
+	</tr>
+	<tr>
+		<th><a href="RELEASE-NOTES.md">Maps 3.6.x</a></th>
+		<td>Stable release</td>
+		<td>2016-05-26</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.5.0">3.6.0</a></td>
 	</tr>
 	<tr>
 		<th><a href="RELEASE-NOTES.md">Maps 3.5.x</a></th>
@@ -82,6 +88,13 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>MediaWiki</th>
 		<th>Composer</th>
 		<th>Validator</th>
+	</tr>
+	<tr>
+		<th>Maps 3.7.x</th>
+		<td>5.5 - 7.x</td>
+		<td>1.23 - 1.28</td>
+		<td>Required</td>
+		<td>2.x (handled by Composer)</td>
 	</tr>
 	<tr>
 		<th>Maps 3.6.x</th>

@@ -228,7 +228,7 @@ class Location extends BaseElement {
 	}
 
 	/**
-	 * Returns whether Location is asigned to a group.
+	 * Returns whether Location is assigned to a group.
 	 *
 	 * @since 2.0
 	 *
@@ -305,16 +305,16 @@ class Location extends BaseElement {
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 
-		$array = array(
+		$array = [
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
 			'alt' => 0,
-			'address' => $this->getAddress( false ),
+			'address' => $this->getAddress(),
 			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
 			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
 			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
-		);
+		];
 
 		return array_merge( $parentArray , $array );
 	}

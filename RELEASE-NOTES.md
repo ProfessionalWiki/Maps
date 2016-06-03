@@ -1,12 +1,22 @@
-These are the release notes for the [Maps extension](../README.md).
+These are the release notes for the [Maps extension](README.md).
 
 
 ## Maps 3.6
 
-Development version
+Released on May 26th, 2016.
 
 * Dropped support for MediaWiki older than 1.23
 * Dropped support for PHP older than 5.5
+* Added cluster properties for Google Maps (by Peter Grassberger)
+    * `clustergridsize`: The grid size of a cluster in pixels
+    * `clustermaxzoom`: The maximum zoom level that a marker can be part of a cluster
+    * `clusterzoomonclick`: Whether the default behaviour of clicking on a cluster is to zoom into it.
+    * `clusteraveragecenter`: Whether the center of each cluster should be the average of all markers in the cluster.
+    * `clusterminsize`: The minimum number of markers required to form a cluster.
+* Fixed missing marker cluster images for Google Maps (by Peter Grassberger)
+* Fixed duplicate markers in OpenLayers maps (by Peter Grassberger)
+* Fixed URL support in the icon parameter (by Peter Grassberger)
+* Various minor MediaWiki compatibility enhancements (by Karsten Hoffmeyer, Siebrand Mazeland and FlorianSW)
 
 ## Maps 3.5
 
@@ -67,7 +77,7 @@ Released on January 19th, 2015.
 Released on January 13th, 2015.
 
 * Fixed `geocode` right
-* Fixed coordinate precision issue after breaking changes in DataValues Geo 
+* Fixed coordinate precision issue after breaking changes in DataValues Geo
 
 ## Maps 3.2
 
@@ -355,7 +365,7 @@ with all the globals previously needed for this.
 * Moved marker JavaScript creation for display_points to the mapping service class for all features.
 * Moved default zoom level access method to the mapping service class for all features.
 * Improved the way marker data is turned into JavaScript variables.
-* Improved coordinate recognition regexes. 
+* Improved coordinate recognition regexes.
 
 #### Bug fixes ####
 
@@ -751,7 +761,7 @@ Changes in 0.3 discussed on the authors blog:
 * [Final changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/13/final-changes-for-maps-and-sm-0-3/)
 * [New features in Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/07/new-features-in-maps-and-sm-0-3/)
 * [Structural changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/05/structural-changes-for-maps-and-sm-0-3/)
- 
+
 ####New features####
 
 * Multi location parser functions. Two completely new parser functions have been added that

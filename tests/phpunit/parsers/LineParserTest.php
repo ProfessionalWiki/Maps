@@ -22,39 +22,39 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 * @return array
 	 */
 	public function validInputProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$valid = array();
+		$valid = [];
 
-		$valid[] = array(
-			array(
+		$valid[] = [
+			[
 				42,
 				4.2
-			),
-		);
+			],
+		];
 
-		$valid[] = array(
-			array(
+		$valid[] = [
+			[
 				49.83798245308486,
 				2.724609375
-			),
-			array(
+			],
+			[
 				52.05249047600102,
 				8.26171875
-			),
-			array(
+			],
+			[
 				46.37725420510031,
 				6.15234375
-			),
-			array(
+			],
+			[
 				49.83798245308486,
 				2.724609375
-			),
-		);
+			],
+		];
 
 		foreach ( $valid as $values ) {
-			$input = array();
-			$output = array();
+			$input = [];
+			$output = [];
 
 			foreach ( $values as $value ) {
 				$input[] = implode( ',', $value );
@@ -63,7 +63,7 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 			$input = implode( ':', $input );
 
-			$argLists[] = array( $input, new Line( $output ) );
+			$argLists[] = [ $input, new Line( $output ) ];
 		}
 
 		return $argLists;

@@ -28,9 +28,9 @@ class MapsDocTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function parametersProvider() {
-		$paramLists = array();
+		$paramLists = [];
 
-		$paramLists[] = array();
+		$paramLists[] = [];
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -41,20 +41,20 @@ class MapsDocTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$values = array( 'service' => 'googlemaps3' );
+		$values = [ 'service' => 'googlemaps3' ];
 
-		$expected = array( 'service' => 'googlemaps3' );
+		$expected = [ 'service' => 'googlemaps3' ];
 
-		$argLists[] = array( $values, $expected );
+		$argLists[] = [ $values, $expected ];
 
 
-		$values = array( 'service' => 'GOOGLEmaps3' );
+		$values = [ 'service' => 'GOOGLEmaps3' ];
 
-		$expected = array( 'service' => 'googlemaps3' );
+		$expected = [ 'service' => 'googlemaps3' ];
 
-		$argLists[] = array( $values, $expected );
+		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
 	}

@@ -16,7 +16,7 @@ use MapsDistanceParser;
  */
 class MapsDistanceParserTest extends \MediaWikiTestCase {
 	
-	public static $distances = array(
+	public static $distances = [
 		'1' => 1,
 		'1m' => 1,
 		'1 m' => 1,
@@ -30,33 +30,33 @@ class MapsDistanceParserTest extends \MediaWikiTestCase {
 		'1 mile' => 1609.344,
 		'10 nauticalmiles' => 18520,
 		'1.0nautical mile' => 1852,
-	);
+	];
 	
-	public static $formatTests = array(
-		'm' => array(
+	public static $formatTests = [
+		'm' => [
 			'1 m' => 1,
 			'1000 m' => 1000.00,
 			'42.42 m' => 42.42,
 			'42.4242 m' => 42.4242,
-		),		
-		'km' => array(
+		],		
+		'km' => [
 			//'0.001 km' => 1,
 			'1 km' => 1000,
 			'4.24 km' => 4242,
-		),
-		'kilometers' => array(
+		],
+		'kilometers' => [
 			'0.001 kilometers' => 1,
 			'1 kilometers' => 1000,
 			'4.24 kilometers' => 4242,
-		),
-	);
+		],
+	];
 	
 	/**
 	 * Invalid distances.
 	 * 
 	 * @var array
 	 */	
-	public static $fakeDistances = array(	
+	public static $fakeDistances = [	
 		'IN YOUR CODE, BEING TOTALLY RIDICULOUS',
 		'0x20 km',
 		'km 42',
@@ -64,7 +64,7 @@ class MapsDistanceParserTest extends \MediaWikiTestCase {
 		'42 km km',
 		'42 foo',
 		'3.4.2 km'
-	);
+	];
 	
 	/**
 	 * Tests MapsDistanceParser::parseDistance()
@@ -92,9 +92,9 @@ class MapsDistanceParserTest extends \MediaWikiTestCase {
 	 * Tests MapsDistanceParser::parseAndFormat()
 	 */
 	public function testParseAndFormat() {
-		$conversions = array(
+		$conversions = [
 			'42 km' => '42000 m'
-		);
+		];
 		
 		foreach( array_merge( $conversions, array_reverse( $conversions ) ) as $source => $target ) {
 			global $wgContLang;
@@ -138,7 +138,7 @@ class MapsDistanceParserTest extends \MediaWikiTestCase {
 		
 		global $egMapsDistanceUnit;
 		
-		foreach ( array( '0', 'swfwdffdhy', 'dxwgdrfh' ) as $unit ) {
+		foreach ( [ '0', 'swfwdffdhy', 'dxwgdrfh' ] as $unit ) {
 			$u = MapsDistanceParser::getValidUnit( $unit );
 			$this->assertEquals( $egMapsDistanceUnit, $u, "The valid unit for '$unit' should be '$egMapsDistanceUnit' but was '$u'" );
 		}

@@ -30,9 +30,9 @@ class GeocodeTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function parametersProvider() {
-		$paramLists = array();
+		$paramLists = [];
 
-		$paramLists[] = array( 'location' => 'new york city' );
+		$paramLists[] = [ 'location' => 'new york city' ];
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -43,19 +43,19 @@ class GeocodeTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function processingProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$values = array(
+		$values = [
 			'location' => '4,2',
 			'allowcoordinates' => 'yes',
-		);
+		];
 
-		$expected = array(
+		$expected = [
 			'location' => new Location( new \DataValues\LatLongValue( 4, 2 ) ),
 			'allowcoordinates' => true,
-		);
+		];
 
-		$argLists[] = array( $values, $expected );
+		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
 	}

@@ -22,30 +22,30 @@ call_user_func( function() {
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
-	$wgResourceModules['ext.maps.openlayers'] = array(
-		'dependencies' => array( 'ext.maps.common' ),
+	$wgResourceModules['ext.maps.openlayers'] = [
+		'dependencies' => [ 'ext.maps.common' ],
 		'localBasePath' => __DIR__,
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
-		'targets' => array(
+		'targets' => [
 			'mobile',
 			'desktop'
-		),
-		'scripts' =>   array(
+		],
+		'scripts' =>   [
 			'OpenLayers/OpenLayers.js',
 			'OSM/OpenStreetMap.js',
 			'jquery.openlayers.js',
 			'ext.maps.openlayers.js'
-		),
-		'styles' => array(
+		],
+		'styles' => [
 			'OpenLayers/theme/default/style.css'
-		),
-		'messages' => array(
+		],
+		'messages' => [
 			'maps-markers',
 			'maps-copycoords-prompt',
 			'maps-searchmarkers-text',
-		)
-	);
+		]
+	];
 
 	$wgAutoloadClasses['MapsOpenLayers'] = __DIR__ . '/Maps_OpenLayers.php';
 
@@ -56,7 +56,7 @@ function efMapsInitOpenLayers() {
 	MapsMappingServices::registerService( 
 		'openlayers',
 		'MapsOpenLayers',
-		array( 'display_map' => 'MapsDisplayMapRenderer' )
+		[ 'display_map' => 'MapsDisplayMapRenderer' ]
 	);
 	
 	return true;

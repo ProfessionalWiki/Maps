@@ -19,7 +19,7 @@ class MapsOpenLayers extends MapsMappingService {
 	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
-			array( 'layers', 'openlayer' )
+			[ 'layers', 'openlayer' ]
 		);
 	}	
 	
@@ -31,67 +31,67 @@ class MapsOpenLayers extends MapsMappingService {
 	public function addParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsResizableByDefault;
 
-		$params['zoom'] = array(
+		$params['zoom'] = [
 			'type' => 'integer',
-			'range' => array( 0, 19 ),
+			'range' => [ 0, 19 ],
 			'default' => self::getDefaultZoom(),
 			'message' => 'maps-openlayers-par-zoom',
-		);
+		];
 
-		$params['controls'] = array(
+		$params['controls'] = [
 			'default' => $egMapsOLControls,
 			'values' => self::getControlNames(),
 			'message' =>'maps-openlayers-par-controls',
 			'islist' => true,
 			'tolower' => true,
-		);
+		];
 
-		$params['layers'] = array(
+		$params['layers'] = [
 			'default' => $egMapsOLLayers,
 			'message' =>'maps-openlayers-par-layers',
 			'manipulatedefault' => true,
 			'islist' => true,
 			'tolower' => true,
 			// TODO-customMaps: addCriteria( new CriterionOLLayer() );
-		);
+		];
 		
-		$params['resizable'] = array(
+		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => false,
 			'manipulatedefault' => false,
 			'message' => 'maps-par-resizable',
-		);
+		];
 		
-		$params['overlays'] = array(
+		$params['overlays'] = [
 			// Default empty array will end up in JS just right without manipulation.
-			'default' => array(),
+			'default' => [],
 			'manipulatedefault' => false,
 			'message' => 'maps-openlayers-par-overlays',
 
 			// NOTE: code has moved into @see MapsDisplayMapRenderer
 			// TODO-customMaps: addCriteria( new CriterionOLLayer( ';' ) );
 			// TODO-customMaps: addManipulations( new MapsParamOLLayers() );
-		);
+		];
 
-		$params['resizable'] = array(
+		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => $egMapsResizableByDefault,
 			'message' => 'maps-par-resizable',
-		);
+		];
 
-		$params['searchmarkers'] = array(
+		$params['searchmarkers'] = [
 			'default' => '',
 			'message' => 'maps-openlayers-par-searchmarkers',
-			'values' => array( 'title', 'all', '' ),
+			'values' => [ 'title', 'all', '' ],
 			'tolower' => true,
-		);
+		];
 
-		$params['kml'] = array(
-			'default' => array(),
+		$params['kml'] = [
+			'default' => [],
 			'message' => 'maps-openlayers-par-kml',
 			'islist' => true,
 			// new MapsParamFile() FIXME
-		);
+		];
 	}
 	
 	/**
@@ -127,7 +127,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return array
 	 */
 	public static function getControlNames() {
-		return array(
+		return [
 			'argparser', 'attribution', 'button', 'dragfeature', 'dragpan',
 			'drawfeature', 'editingtoolbar', 'getfeature', 'keyboarddefaults', 'layerswitcher',
 			'measure', 'modifyfeature', 'mousedefaults', 'mouseposition', 'mousetoolbar',
@@ -136,7 +136,7 @@ class MapsOpenLayers extends MapsMappingService {
 			'scale', 'scaleline', 'selectfeature', 'snapping', 'split',
 			'wmsgetfeatureinfo', 'zoombox', 'zoomin', 'zoomout', 'zoompanel',
 			'zoomtomaxextent'
-		);
+		];
 	}
 
 	/**
@@ -181,7 +181,7 @@ class MapsOpenLayers extends MapsMappingService {
 	public function getResourceModules() {
 		return array_merge(
 			parent::getResourceModules(),
-			array( 'ext.maps.openlayers' )
+			[ 'ext.maps.openlayers' ]
 		);
 	}
 
@@ -195,7 +195,7 @@ class MapsOpenLayers extends MapsMappingService {
 	public function getConfigVariables() {
 		return array_merge(
 			parent::getConfigVariables(),
-			array( 'egMapsScriptPath' => $GLOBALS['wgScriptPath'] . '/extensions/Maps/' )
+			[ 'egMapsScriptPath' => $GLOBALS['wgScriptPath'] . '/extensions/Maps/' ]
 		);
 	}
 	

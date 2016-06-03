@@ -22,7 +22,7 @@ class MapsLayerTypes {
 	 *
 	 * @var array of string
 	 */
-	protected static $classes = array();
+	protected static $classes = [];
 
 	/**
 	 * List of maps layer types (keys) to the services that they support (values).
@@ -31,7 +31,7 @@ class MapsLayerTypes {
 	 *
 	 * @var array of array of string
 	 */
-	protected static $services = array();
+	protected static $services = [];
 
 	/**
 	 * Returns the type of a layer instance. This is necessary since we do the registering
@@ -65,7 +65,7 @@ class MapsLayerTypes {
 			return array_keys( self::$classes );
 		}
 		else {
-			$layers = array();
+			$layers = [];
 
 			foreach ( self::$services as $layerType => $supportedServices ) {
 				if ( in_array( $service, $supportedServices ) ) {
@@ -87,7 +87,7 @@ class MapsLayerTypes {
 	 * @return array
 	 */
 	public static function getServicesForType( $type ) {
-		return array_key_exists( $type, self::$services ) ? self::$services[$type] : array();
+		return array_key_exists( $type, self::$services ) ? self::$services[$type] : [];
 	}
 
 	/**
@@ -142,7 +142,7 @@ class MapsLayerTypes {
 		if( is_array( $serviceIdentifier ) ) {
 			self::$services[$type] = $serviceIdentifier;
 		} else {
-			self::$services[$type] = array( $serviceIdentifier );
+			self::$services[$type] = [ $serviceIdentifier ];
 		}
 	}
 

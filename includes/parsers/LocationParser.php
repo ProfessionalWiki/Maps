@@ -42,23 +42,23 @@ class LocationParser extends StringValueParser {
 
 		$location = new Location( $coordinates );
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$this->setTitleOrLink( $location, array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setText( array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setIcon( array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setGroup( array_shift( $metaData ) );
 		}
 
-		if ( $metaData !== array() ) {
+		if ( $metaData !== [] ) {
 			$location->setInlineLabel( array_shift( $metaData ) );
 		}
 
@@ -105,14 +105,14 @@ class LocationParser extends StringValueParser {
 	 */
 	private function stringToLatLongValue( $location ) {
 		if ( $this->supportGeocoding && Geocoders::canGeocode() ) {
-			$location = Geocoders::attemptToGeocode( $location );
+			$latLongValue = Geocoders::attemptToGeocode( $location );
 
-			if ( $location === false ) {
+			if ( $latLongValue === false ) {
 				throw new ParseException( 'Failed to parse or geocode' );
 			}
 
-			assert( $location instanceof LatLongValue );
-			return $location;
+			assert( $latLongValue instanceof LatLongValue );
+			return $latLongValue;
 		}
 
 		$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );

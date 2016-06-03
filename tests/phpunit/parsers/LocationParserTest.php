@@ -23,27 +23,27 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	 * @return array
 	 */
 	public function validInputProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$valid = array(
-			'55.7557860 N, 37.6176330 W' => array( 55.7557860, -37.6176330 ),
-			'55.7557860, -37.6176330' => array( 55.7557860, -37.6176330 ),
-			'55 S, 37.6176330 W' => array( -55, -37.6176330 ),
-			'-55, -37.6176330' => array( -55, -37.6176330 ),
-			'5.5S,37W ' => array( -5.5, -37 ),
-			'-5.5,-37 ' => array( -5.5, -37 ),
-			'4,2' => array( 4, 2 ),
-		);
+		$valid = [
+			'55.7557860 N, 37.6176330 W' => [ 55.7557860, -37.6176330 ],
+			'55.7557860, -37.6176330' => [ 55.7557860, -37.6176330 ],
+			'55 S, 37.6176330 W' => [ -55, -37.6176330 ],
+			'-55, -37.6176330' => [ -55, -37.6176330 ],
+			'5.5S,37W ' => [ -5.5, -37 ],
+			'-5.5,-37 ' => [ -5.5, -37 ],
+			'4,2' => [ 4, 2 ],
+		];
 
 		foreach ( $valid as $value => $expected ) {
 			$expected = new Location( new LatLongValue( $expected[0], $expected[1] ) );
-			$argLists[] = array( (string)$value, $expected );
+			$argLists[] = [ (string)$value, $expected ];
 		}
 
 		$location = new Location( new LatLongValue( 4, 2 ) );
 		$location->setTitle( 'Title' );
 		$location->setText( 'some description' );
-		$argLists[] = array( '4,2~Title~some description', $location );
+		$argLists[] = [ '4,2~Title~some description', $location ];
 
 		return $argLists;
 	}
@@ -70,13 +70,13 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	}
 
 	public function titleProvider() {
-		return array(
-			array( '' ),
-			array( 'Title' ),
-			array( 'Some title' ),
-			array( 'link' ),
-			array( 'links:foo' ),
-		);
+		return [
+			[ '' ],
+			[ 'Title' ],
+			[ 'Some title' ],
+			[ 'link' ],
+			[ 'links:foo' ],
+		];
 	}
 
 	protected function assertTitleAndLinkAre( Location $location, $title, $link ) {
@@ -105,11 +105,11 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	}
 
 	public function linkProvider() {
-		return array(
-			array( 'https://semantic-mediawiki.org' ),
-			array( 'http://www.semantic-mediawiki.org' ),
-			array( 'irc://freenode.net' ),
-		);
+		return [
+			[ 'https://semantic-mediawiki.org' ],
+			[ 'http://www.semantic-mediawiki.org' ],
+			[ 'irc://freenode.net' ],
+		];
 	}
 
 	/**

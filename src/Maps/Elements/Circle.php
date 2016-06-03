@@ -77,13 +77,13 @@ class Circle extends \MapsBaseFillableElement {
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
 
-		$array = array(
-			'centre' => array(
+		$array = [
+			'centre' => [
 				'lon' => $this->getCircleCentre()->getLongitude(),
 				'lat' => $this->getCircleCentre()->getLatitude()
-			) ,
+			],
 			'radius' => intval( $this->getCircleRadius() ),
-		);
+		];
 
 		return array_merge( $parentArray, $array );
 	}

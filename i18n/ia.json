@@ -60,7 +60,7 @@
 	"maps-geodistance-par-unit": "Le unitate in le qual presentar le distantia.",
 	"maps-geodistance-par-decimals": "Le numero maxime de digitos fractional a usar in le valor resultante.",
 	"maps-geodistance-par-mappingservice": "Le servicio de geocodification a usar pro geocodificar adresses.",
-	"maps-geodistance-par-geoservice": "Le servicio cartographic con le qual isto es usate.\nIsto pote influentiar le valor predefinite de servicio de geocodification.",
+	"maps-geodistance-par-geoservice": "Le servicio cartographic con le qual iste function del analysator es usate.\nIsto pote influentiar le valor predefinite del servicio de geocodification.",
 	"maps-displaymap-par-mappingservice": "Permitte definir le servicio cartographic a usar pro generar le carta.",
 	"maps-displaymap-par-coordinates": "Le loco in le qual le carta essera initialmente centrate.",
 	"maps-displaymap-par-zoom": "Permitte definir le nivello de zoom del carta.\nSi isto non es fornite, e multiple marcatores es presente in le cata, le zoom que los arrangia melio essera prendite, non le predefinition configurabile.",

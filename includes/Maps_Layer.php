@@ -42,7 +42,7 @@ abstract class MapsLayer {
 	 * 
 	 * @var array
 	 */
-	protected $errors = array();
+	protected $errors = [];
 
 	/**
 	 * Keeps track if the layer has been validated, to prevent doing redundant work.
@@ -88,7 +88,7 @@ abstract class MapsLayer {
 	 * @return array of string
 	 */
 	public function getErrorMessages( $tag = false ) {
-		$messages = array();
+		$messages = [];
 		
 		foreach ( $this->errors as $error ) {
 			if ( $tag === false || $error->hasTag( $tag ) ) {
@@ -223,42 +223,42 @@ abstract class MapsLayer {
 	 * @return array
 	 */
 	protected function getParameterDefinitions() {
-		$params = array();
+		$params = [];
 
-		$params['label'] = array(
+		$params['label'] = [
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
 		// units for extent data:
-		$params['units'] = array(
+		$params['units'] = [
 			'default' => 'degree',
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-			'values' => array( 'degree', 'm', 'ft', 'km', 'mi', 'inches' ),
-		);
+			'values' => [ 'degree', 'm', 'ft', 'km', 'mi', 'inches' ],
+		];
 
 		// zoom information:
-		$params['minscale'] = array(
+		$params['minscale'] = [
 			'type' => 'float',
 			'default' => false,
 			'manipulatedefault' => false,
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
-		);
+		];
 
-		$params['maxscale'] = array(
+		$params['maxscale'] = [
 			'type' => 'float',
 			'default' => false,
 			'manipulatedefault' => false,
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 			// TODO-customMaps: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
-		);
+		];
 
-		$params['zoomlevels'] = array(
+		$params['zoomlevels'] = [
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
 			'message' => 'maps-displaymap-par-coordinates', // TODO-customMaps: create a message
 			// TODO-customMaps: addManipulations( new MapsParamSwitchIfGreaterThan( $params['minscale'] ) );
-		);
+		];
 
 		return $params;
 	}
@@ -276,7 +276,7 @@ abstract class MapsLayer {
 	 */
 	public function getPropertiesHtmlRepresentation( &$parser ) {
 		$this->validate(); // make sure properties are available!
-		$transformed = array();
+		$transformed = [];
 		foreach( $this->properties as $property => $value ) {
 
 			if( ! $this->isValid() ) {

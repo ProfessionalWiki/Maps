@@ -3,6 +3,7 @@
  * @see http://www.mediawiki.org/wiki/Extension:Maps
  *
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
+ * @author Peter Grassberger < petertheone@gmail.com >
  */
 
 (function ($, mw) {
@@ -53,7 +54,7 @@
 
 		var getBounds = function() {
 			if (( options.centre === false || options.zoom === false ) && options.locations.length > 1) {
-				bounds = new google.maps.LatLngBounds();
+				var bounds = new google.maps.LatLngBounds();
 
 				for (var i = _this.markers.length - 1; i >= 0; i--) {
 					bounds.extend(_this.markers[i].getPosition());
@@ -64,7 +65,7 @@
 		};
 
 		var setZoom = function(bounds) {
-				if (options.zoom === false) {
+			if (options.zoom === false) {
 				_this.map.fitBounds(bounds);
 			}
 			else {
@@ -215,7 +216,7 @@
 									doc[i].gpolygons,
 									doc[i].gpolylines,
 									doc[i].ggroundoverlays
-									]);
+								]);
 							}
 						}
 					}
@@ -225,7 +226,7 @@
 						map:_this.map,
 						zoom:options.kmlrezoom,
 						failedParse:function(){
-							alert(mediaWiki.msg('maps-kml-parsing-failed'));
+							alert(mw.msg('maps-kml-parsing-failed'));
 						}
 					});
 					geoXml.options.afterParse = function(docs){
@@ -444,7 +445,7 @@
 				}
 			}
 			this.map.fitBounds(bounds);
-		}
+		};
 
 		this.initializeMap = function () {
 			var mapOptions = {
@@ -618,7 +619,13 @@
 					'ext.maps.gm3.markercluster',
 					function() {
 						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
-							averageCenter: true
+							imagePath: mw.config.get( 'wgScriptPath' ) +
+								'/extensions/Maps/includes/services/GoogleMaps3/img/m',
+							gridSize: options.clustergridsize,
+							maxZoom: options.clustermaxzoom,
+							zoomOnClick: options.clusterzoomonclick,
+							averageCenter: options.clusteraveragecenter,
+							minimumClusterSize: options.clusterminsize
 						} );
 					}
 				);
@@ -627,7 +634,7 @@
 
 
 			if (options.searchmarkers) {
-				var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
+				var searchBoxValue = mw.msg('maps-searchmarkers-text');
 				var searchBox = $('<input type="text" value="' + searchBoxValue + '" />');
 				var searchContainer = document.createElement('div');
 				searchContainer.style.padding = '5px';
@@ -647,7 +654,7 @@
 						var marker = _this.markers[i];
 						if (options.searchmarkers == 'title') {
 							haystack = marker.title;
-						} else if (options.searchmarkers == 'all') {
+						} else {
 							haystack = marker.title + marker.text;
 						}
 
@@ -780,7 +787,7 @@
 			controlUI.style.textAlign = 'center';
 			controlUI.style.boxShadow = 'rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px';
 			controlUI.style.backgroundClip = 'padding-box';
-			controlUI.title = mediaWiki.msg('maps-fullscreen-button-tooltip');
+			controlUI.title = mw.msg('maps-fullscreen-button-tooltip');
 			controlDiv.appendChild(controlUI);
 
 			var controlText = document.createElement('div');
@@ -789,7 +796,7 @@
 			controlText.style.fontWeight = '400';
 			controlText.style.color = 'rgb(86, 86, 86)';
 			controlText.style.padding = '1px 6px';
-			controlText.innerHTML = mediaWiki.msg('maps-fullscreen-button');
+			controlText.innerHTML = mw.msg('maps-fullscreen-button');
 			controlUI.appendChild(controlText);
 
 			google.maps.event.addDomListener(controlUI, 'click', function() {
@@ -846,10 +853,10 @@
 			};
 
 			if ( event.latLng === undefined ) {
-				this.openWindow.open( this.map, this );
+				this.openWindow.open( _this.map, this );
 			}
 			else {
-				this.openWindow.open( this.map );
+				this.openWindow.open( _this.map );
 			}
 		}
 
@@ -860,7 +867,7 @@
 				}
 			}else{
 				google.maps.event.addListener(object, 'rightclick', function (event) {
-					prompt(mediaWiki.msg('maps-copycoords-prompt'), event.latLng.lat() + ',' + event.latLng.lng());
+					prompt(mw.msg('maps-copycoords-prompt'), event.latLng.lat() + ',' + event.latLng.lng());
 				});
 			}
 		}

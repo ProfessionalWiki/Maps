@@ -74,43 +74,43 @@ final class MapsMapper {
 	public static function getCommonParameters() {
 		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
 
-		$params = array();
+		$params = [];
 
-		$params['mappingservice'] = array(
+		$params['mappingservice'] = [
 			'type' => 'mappingservice',
 			'aliases' => 'service',
 			'default' => $egMapsDefaultService,
-		);
+		];
 
-		$params['geoservice'] = array(
+		$params['geoservice'] = [
 			'default' => $egMapsDefaultGeoService,
 			'values' => $egMapsAvailableGeoServices,
 			'dependencies' => 'mappingservice',
 			// TODO 'manipulations' => new MapsParamGeoService( 'mappingservice' ),
-		);
+		];
 
-		$params['width'] = array(
+		$params['width'] = [
 			'type' => 'dimension',
 			'allowauto' => true,
-			'units' => array( 'px', 'ex', 'em', '%', '' ),
+			'units' => [ 'px', 'ex', 'em', '%', '' ],
 			'default' => $egMapsMapWidth,
-		);
+		];
 
-		$params['height'] = array(
+		$params['height'] = [
 			'type' => 'dimension',
-			'units' => array( 'px', 'ex', 'em', '' ),
+			'units' => [ 'px', 'ex', 'em', '' ],
 			'default' => $egMapsMapHeight,
-		);
+		];
 
 		// TODO$manipulation = new MapsParamLocation();
 		// TODO$manipulation->toJSONObj = true;
 
-		$params['centre'] = array(
+		$params['centre'] = [
 			'type' => 'mapslocation',
-			'aliases' => array( 'center' ),
+			'aliases' => [ 'center' ],
 			'default' => false,
 			'manipulatedefault' => false,
-		);
+		];
 
 		// Give grep a chance to find the usages:
 		// maps-par-mappingservice, maps-par-geoservice, maps-par-width,
@@ -140,7 +140,7 @@ final class MapsMapper {
 			$imagePage = new ImagePage( $title );
 			return $imagePage->getDisplayedFile()->getURL();
 		}
-		return '';
+		return $file;
 	}
 
 	/**
@@ -155,7 +155,7 @@ final class MapsMapper {
 	 */
 	public static function getBaseMapJSON( $serviceName ) {
 		static $baseInit = false;
-		static $serviceInit = array();
+		static $serviceInit = [];
 
 		$json = '';
 		

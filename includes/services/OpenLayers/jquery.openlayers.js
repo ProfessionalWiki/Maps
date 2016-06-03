@@ -8,12 +8,14 @@
  * @todo This whole JS is very blown up and could use some quality refactoring.
  */
 
-(function ($) {
+(function ($, mw) {
 	$.fn.openlayers = function (mapElementId, options) {
+
+		this.options = options;
 
 		OpenLayers._getScriptLocation = function() {
 			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
-		}
+		};
 
 		this.getOLMarker = function (markerLayer, markerData) {
 			var marker;
@@ -72,7 +74,7 @@
 				// Create a own marker-layer for the marker group:
 				if (!groupLayers[ location.group ]) {
 					// in case no group is specified, use default marker layer:
-					var layerName = location.group != '' ? location.group : mediaWiki.msg('maps-markers');
+					var layerName = location.group != '' ? location.group : mw.msg('maps-markers');
 					var curLayer = new OpenLayers.Layer.Markers(layerName);
 					groups++;
 					curLayer.id = 'markerLayer' + groups;
@@ -330,6 +332,7 @@
 
 		map.addLayers( layers ); // Add the base layers
 
+		//Add markers
 		this.addMarkers( map, options );
 		var centre = false;
 
@@ -393,10 +396,6 @@
                 return valid;
             }
         }
-
-		//Add markers
-		this.addMarkers(map, options);
-		var centre = false;
 
 		//Add line layer if applicable
 		if (options.lines && options.lines.length > 0) {
@@ -611,7 +610,7 @@
 						if (!hasImageLayer) {
 							lonlat = lonlat.transform(new OpenLayers.Projection("EPSG:900913"), new OpenLayers.Projection("EPSG:4326"));
 						}
-						prompt(mediaWiki.msg('maps-copycoords-prompt'), lonlat.lat + ',' + lonlat.lon);
+						prompt(mw.msg('maps-copycoords-prompt'), lonlat.lat + ',' + lonlat.lon);
 					}
 				}
 			});
@@ -623,7 +622,7 @@
 			OpenLayers.Control.SearchField = OpenLayers.Class(OpenLayers.Control, {
 				draw:function (px) {
 					OpenLayers.Control.prototype.draw.apply(this, arguments);
-					var searchBoxValue = mediaWiki.msg('maps-searchmarkers-text');
+					var searchBoxValue = mw.msg('maps-searchmarkers-text');
 					var searchBoxContainer = document.createElement('div');
 					this.div.style.top = "5px";
 					this.div.style.right = "5px";
@@ -680,11 +679,11 @@
 			var popup = new OpenLayers.Popup(null, lonlat, null, properties.text, true, function () {
 				map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
 				map.removePopup(this);
-			})
+			});
 			_this.map.addPopup(popup);
 		}
 
 		return this;
 
 	};
-})(jQuery);
+})(jQuery, window.mediaWiki);

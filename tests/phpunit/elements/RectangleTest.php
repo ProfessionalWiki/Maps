@@ -27,18 +27,18 @@ class RectangleTest extends BaseElementTest {
 	}
 
 	public function validConstructorProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$argLists[] = array( new LatLongValue( 4, 2 ), new LatLongValue( -4, -2 ) );
-		$argLists[] = array( new LatLongValue( -42, -42 ), new LatLongValue( -4, -2 ) );
+		$argLists[] = [ new LatLongValue( 4, 2 ), new LatLongValue( -4, -2 ) ];
+		$argLists[] = [ new LatLongValue( -42, -42 ), new LatLongValue( -4, -2 ) ];
 
 		return $argLists;
 	}
 
 	public function invalidConstructorProvider() {
-		$argLists = array();
+		$argLists = [];
 
-		$argLists[] = array( new LatLongValue( 4, 2 ), new LatLongValue( 4, 2 ) );
+		$argLists[] = [ new LatLongValue( 4, 2 ), new LatLongValue( 4, 2 ) ];
 
 		return $argLists;
 	}
@@ -59,10 +59,10 @@ class RectangleTest extends BaseElementTest {
 	 * @param array $arguments
 	 */
 	public function testSetCorners( Rectangle $rectangle, array $arguments ) {
-		$coordinates = array(
+		$coordinates = [
 			new LatLongValue( 42, 42 ),
 			new LatLongValue( 0, 0 )
-		);
+		];
 
 		foreach ( $coordinates as $coordinate ) {
 			$rectangle->setRectangleNorthEast( $coordinate );
