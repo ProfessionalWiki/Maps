@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Leaflet related files of the Maps extension.
+ * This group contains all Leaflet related files of the Maps extension.
  *
  * @defgroup Leaflet
  */

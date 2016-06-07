@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Google Maps v3 related files of the Maps extension.
+ * This group contains all Google Maps v3 related files of the Maps extension.
  * 
  * @defgroup MapsGoogleMaps3 Google Maps v3
  */
