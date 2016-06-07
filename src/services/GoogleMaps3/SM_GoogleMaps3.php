@@ -32,7 +32,8 @@ $moduleTemplate = [
 
 $GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3ajax'] = $moduleTemplate + [
 	'dependencies' => [
-		'ext.maps.googlemaps3'
+		'ext.maps.googlemaps3',
+		'ext.sm.ajax'
 	],
 	'scripts' => [
 		'ext.sm.googlemaps3ajax.js'

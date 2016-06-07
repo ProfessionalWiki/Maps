@@ -50,12 +50,17 @@ require_once 'SM_Settings.php';
 
 include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
-$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = [
+$moduleTemplate = [
+		'position' => 'bottom',
+		'localBasePath' => __DIR__ . '/src',
+		'remoteExtPath' => 'SemanticMaps/src',
+		'group' => 'ext.semanticmaps',
+];
+
+$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = $moduleTemplate + [
 	'dependencies' => [ 'ext.maps.coord' ],
-	'position' => 'bottom',
 	'localBasePath' => __DIR__ . '/src/forminputs',
 	'remoteExtPath' => 'SemanticMaps/src/forminputs',
-	'group' => 'ext.semanticmaps',
 	'scripts' => [
 		'jquery.mapforminput.js'
 	],
@@ -66,6 +71,12 @@ $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = [
 		'semanticmaps-forminput-remove',
 		'semanticmaps-forminput-add',
 		'semanticmaps-forminput-locations'
+	]
+];
+
+$GLOBALS['wgResourceModules']['ext.sm.ajax'] = $moduleTemplate + [
+	'scripts' => [
+		'ext.sm.ajax.js'
 	]
 ];
 
