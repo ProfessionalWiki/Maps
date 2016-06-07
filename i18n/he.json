@@ -29,6 +29,7 @@
 	"semanticmaps-par-geocodecontrol": "הצגת בקר קידוד גאוגרפי.",
 	"semanticmaps-par-activeicon": "סמל שיוצג במקום הסמן הרגיל כאשר הדף הפעיל זהה לתוצאת השאילתה",
 	"semanticmaps-par-pagelabel": "כשזה מכון ל־\"yes\", לכל הסמנים יהיה \"inlineLabel\" עם קישור לדף שמכיל את נקודות הציון עבור הסמן",
+	"semanticmaps-par-userparam": "ערך שמועבר לכל קריאה לתבנית, אם משמשת תבנית",
 	"semanticmaps-kml-text": "הטקסט משויך לכל עמוד ועמוד. נדרס במאפיינים אחרים שנעשית עליהם שאילתה, אם יש כאלה.",
 	"semanticmaps-kml-title": "כותרת לתוצאות לפי בררת המחדל.",
 	"semanticmaps-kml-linkabsolute": "האם הקישורים צריכים להיות מוחלטים (או יחסיים)",
