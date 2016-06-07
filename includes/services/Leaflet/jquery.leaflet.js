@@ -3,13 +3,15 @@
  * @see https://www.mediawiki.org/wiki/Extension:Maps
  *
  * @author Pavel Astakhov < pastakhov@yandex.ru >
+ * @author Peter Grassberger < petertheone@gmail.com >
  */
 
-(function ($, mw) {
+(function ($, mw, L) {
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
 		this.options = options;
+		this.markers = [];
 
 		/**
 		 * array point of all map elements (markers, lines, polygons, etc.)
@@ -26,7 +28,7 @@
 		this.addMarker = function (properties) {
 			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
-			if (properties.icon === '') {
+			if (!properties.hasOwnProperty('icon') || properties.icon === '') {
 				var icon = new L.Icon.Default();
 			} else {
 				var icon = new L.Icon({
@@ -40,7 +42,27 @@
 			};
 
 			var marker = L.marker( [properties.lat, properties.lon], markerOptions ).addTo( this.map );
-			if( properties.text.length > 0 ) marker.bindPopup( properties.text );
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
+
+			this.markers.push(marker);
+		};
+
+		this.removeMarker = function (marker) {
+			this.map.removeLayer(marker);
+			this.points = [];
+			this.markers = this.markers.filter(function(object) {
+				return object !== marker;
+			});
+		};
+
+		this.removeMarkers = function () {
+			var map = this.map;
+			$.each(this.markers, function(index, marker) {
+				map.removeLayer(marker);
+			});
+
+			this.points = [];
+			this.markers = [];
 		};
 
 		this.addLine = function (properties) {
@@ -197,6 +219,7 @@
 						}
 						break;
 				}
+				this.points = [];
 			} else {
 				centre = new L.LatLng(options.centre.lat, options.centre.lon);
 			}
@@ -210,4 +233,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki);
+})(jQuery, window.mediaWiki, L);
