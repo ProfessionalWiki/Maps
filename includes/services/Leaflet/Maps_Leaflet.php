@@ -88,7 +88,6 @@ class MapsLeaflet extends MapsMappingService {
 		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
 		return [
 			Html::linkedStyle( "$leafletPath/leaflet.css" ),
-			'<!--[if lte IE 8]>' . Html::linkedStyle( "$leafletPath/leaflet.ie.css" ). '<![endif]-->',
 			Html::linkedScript( "$leafletPath/leaflet.js" ),
 		];
 	}
