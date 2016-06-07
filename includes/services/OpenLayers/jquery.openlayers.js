@@ -127,6 +127,18 @@
 			}
 
 			map.addControl(new OpenLayers.Control.Attribution());
+			map.addControl(new OpenLayers.Control.MousePosition({
+				formatOutput: function(lonLat) {
+					var digits = parseInt(this.numDigits);
+					var newHtml =
+						this.prefix +
+						lonLat.lat.toFixed(digits) +
+						this.separator +
+						lonLat.lon.toFixed(digits) +
+						this.suffix;
+					return newHtml;
+				}
+			}));
 		};
 
 		this.addLine = function (properties) {
@@ -235,7 +247,7 @@
 			var OLControls = [
 				'ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan',
 				'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
-				'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
+				'Measure', 'ModifyFeature', 'MouseDefaults', 'MouseToolbar',
 				'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
 				'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'Permalink',
 				'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split',
@@ -602,7 +614,7 @@
 					);
 				}
 
-			})
+			});
 			var click = new OpenLayers.Control.Click({
 				eventMethods:{
 					'rightclick':function (e) {
@@ -674,7 +686,7 @@
 		}
 
 		function openBubble(properties) {
-			var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy
+			var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy;
 			var lonlat = map.getLonLatFromPixel(mousePos);
 			var popup = new OpenLayers.Popup(null, lonlat, null, properties.text, true, function () {
 				map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
