@@ -108,9 +108,9 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		);
 
 		// Messages:
-		// semanticmaps-par-staticlocations, semanticmaps-par-forceshow, semanticmaps-par-showtitle,
-		// semanticmaps-par-hidenamespace, semanticmaps-par-centre, semanticmaps-par-template,
-		// semanticmaps-par-geocodecontrol, semanticmaps-par-activeicon semanticmaps-par-markerlabel
+		// semanticmaps-par-staticlocations, semanticmaps-par-showtitle, semanticmaps-par-hidenamespace,
+		// semanticmaps-par-template, semanticmaps-par-userparam, semanticmaps-par-activeicon,
+		// semanticmaps-par-pagelabel, semanticmaps-par-ajaxcoordproperty semanticmaps-par-ajaxquery
 		foreach ( $params as $name => &$data ) {
 			if ( is_array( $data ) && !array_key_exists( 'message', $data ) ) {
 				$data['message'] = 'semanticmaps-par-' . $name;
