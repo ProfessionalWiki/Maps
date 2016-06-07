@@ -43,8 +43,7 @@
 
             // todo: don't remove and recreate all markers..
             // only add new ones.
-            // todo: implement removeMarkers() in Maps
-            //map.removeMarkers();
+            map.removeMarkers();
             for ( var property in data.query.results ) {
                 if ( data.query.results.hasOwnProperty( property ) ) {
                     var location = data.query.results[property];

@@ -7,16 +7,16 @@
  */
 
 
-(function( $ ) {
+(function( $, mw ) {
     var ajaxRequest = null;
 
     function getQueryString( map, ajaxcoordproperty ) {
-        var bounds = map.map.getBounds();
+        var bounds = map.map.getExtent().transform(map.map.projection, map.map.displayProjection);
 
         var query = map.options.ajaxquery.join( ' ' ) + ' ';
         query += '[[' + ajaxcoordproperty + '::+]] ';
-        query += '[[' + ajaxcoordproperty + '::>' + bounds.getSouthWest().lat() + '°, ' + bounds.getSouthWest().lng() + '°]] ';
-        query += '[[' + ajaxcoordproperty + '::<' + bounds.getNorthEast().lat() + '°, ' + bounds.getNorthEast().lng() + '°]]';
+        query += '[[' + ajaxcoordproperty + '::>' + bounds.bottom + '°, ' + bounds.left + '°]] ';
+        query += '[[' + ajaxcoordproperty + '::<' + bounds.top + '°, ' + bounds.right + '°]]';
         query += '|?' + ajaxcoordproperty;
         return query;
     }
@@ -64,9 +64,9 @@
                 console.log();
                 map.map.events.register( 'moveend', map.map, function () {
                     // todo: fix this
-                    //ajaxUpdateMarker( map );
+                    ajaxUpdateMarker( map );
                 } );
             } );
         }, 500 );
     } );
-})( window.jQuery );
+})( window.jQuery, window.mediaWiki );
