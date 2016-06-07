@@ -64,7 +64,6 @@
                     return;
                 }
                 map.map.on( mapEvents.join( ' ' ), function() {
-                    console.log('event!');
                     ajaxUpdateMarker( map );
                 } );
             } );

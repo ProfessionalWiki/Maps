@@ -61,9 +61,7 @@
                 if (!map.options.ajaxquery && !map.options.ajaxcoordproperty) {
                     return;
                 }
-                console.log();
                 map.map.events.register( 'moveend', map.map, function () {
-                    // todo: fix this
                     ajaxUpdateMarker( map );
                 } );
             } );
