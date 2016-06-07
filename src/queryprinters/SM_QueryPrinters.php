@@ -36,7 +36,7 @@ final class SMQueryPrinters {
 			// Check if the service has a query printer.
 			$QPClass = $service->getFeature( 'qp' );
 			
-			// If the service has no QP, skipt it and continue with the next one.
+			// If the service has no QP, skip it and continue with the next one.
 			if ( $QPClass === false ) {
 				continue;
 			}
