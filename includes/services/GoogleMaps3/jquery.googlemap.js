@@ -90,7 +90,7 @@
 				labelClass:'markerwithlabel'
 			};
 
-			if (markerData.icon !== '') {
+			if (!markerData.hasOwnProperty('icon') || markerData.icon !== '') {
 				markerOptions.icon = markerData.icon;
 			}
 
@@ -256,8 +256,6 @@
 								label.appendChild(text);
 
 								toggleDiv.appendChild(label);
-
-								console.log(toggleDiv);
 							})(docs[i]);
 						}
 						_this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
