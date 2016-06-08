@@ -60,7 +60,8 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'zoom',
 		'type',
 		'scale',
-		'streetview'
+		'streetview',
+		'rotate'
 	];
 
 	/**

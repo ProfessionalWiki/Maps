@@ -457,6 +457,7 @@
 			mapOptions.mapTypeControl = $.inArray('type', options.controls) != -1;
 			mapOptions.scaleControl = $.inArray('scale', options.controls) != -1;
 			mapOptions.streetViewControl = $.inArray('streetview', options.controls) != -1;
+			mapOptions.rotateControl = $.inArray('rotate', options.controls) != -1;
 
 			for (i in options.types) {
 				if (typeof( options.types[i] ) !== 'function') {
