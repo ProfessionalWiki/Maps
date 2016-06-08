@@ -1,2 +1,5 @@
 ==markerclusterer.js and markerwithlabel.js==
 Is fetched from trunk @ http://google-maps-utility-library-v3.googlecode.com
+
+==oms.min.js==
+Is fetched from https://github.com/jawj/OverlappingMarkerSpiderfier

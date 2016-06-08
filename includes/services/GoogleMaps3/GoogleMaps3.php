@@ -77,6 +77,15 @@ $wgResourceModules['ext.maps.gm3.earth'] = array(
 	),
 );
 
+$wgResourceModules['ext.maps.gm3.oms'] = array(
+	'localBasePath' => __DIR__ . '/gm3-util-library',
+	'remoteBasePath' => $egMapsScriptPath .  '/includes/services/GoogleMaps3/gm3-util-library',
+	'group' => 'ext.maps',
+	'scripts' => array(
+		'oms.min.js',
+	),
+);
+
 $wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
 
 /**

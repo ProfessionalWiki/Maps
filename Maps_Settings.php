@@ -223,6 +223,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		
 		# Integer. Default tilt when using Google Maps.
 		$egMapsGMaps3DefaultTilt = 0;
+
+		# Integer. Default Marker Cluster max zoom when using Google Maps.
+		$egMapsGMaps3DefaultMarkerClusterMaxZoom = 12;
 		
 		# Google JavaScript Loader API key.
 		# Can be obtained at: https://code.google.com/apis/loader/signup.html

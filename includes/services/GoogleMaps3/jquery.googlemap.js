@@ -12,6 +12,15 @@
 		this.map = null;
 		this.markercluster = null;
 		this.options = options;
+		
+		// this is used to change the color of spiderable markers
+		this.spiderfyMarkers = [];
+
+		// this global tracks the last infowindow opened so we can close it to spiderfy overlapping markers
+		var lastInfoWindow = null;
+
+		// icon for spiderable markers
+		_this.spiderMarkerIcon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/GoogleMaps3/img/yellow-dot.png';
 
 		/**
 		 * All markers that are currently on the map.
@@ -638,14 +647,72 @@
 			 * Allows grouping of markers.
 			 */
 			if ( options.markercluster ) {
+				_this.clusterOn = true;
 				mw.loader.using(
 					'ext.maps.gm3.markercluster',
 					function() {
 						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
-							averageCenter: true
+							averageCenter: true,
+							maxZoom: options.markerclustermaxzoom,
+							ignoreHidden: true
 						} );
 					}
 				);
+
+				// enable OverlappingMarkerSpiderfier beyond markerclustermaxzoom
+				mw.loader.using(
+					'ext.maps.gm3.oms',
+					function() {
+						_this.oms = new OverlappingMarkerSpiderfier(_this.map, {
+							keepSpiderfied: true,
+							circleFootSeparation: 40,
+							spiralLengthFactor: 6,
+							spiralFootSeparation: 30
+						} );
+
+						for (var i = 0; i < _this.markers.length; i++) {
+							_this.oms.addMarker(_this.markers[i]);
+						}
+
+						//Add oms spiderfy listener to close the last infowindow when we spiderfy
+						_this.oms.addListener('spiderfy', function (markers) {
+							lastInfoWindow.close();
+						});
+
+						google.maps.event.addListener(_this.map, 'zoom_changed', function() {
+
+							// check if we're at the right zoom level where spidermarkers are visible
+							if (_this.map.getZoom()+1 < options.markerclustermaxzoom && _this.clusterOn) return;
+
+							setTimeout(function() {
+
+							    this.spiderfyMarkers = _this.oms.markersNearAnyOtherMarker();
+
+								for	(var i = 0; i < this.spiderfyMarkers.length; i++) {
+								    this.spiderfyMarkers[i].setIcon(_this.spiderMarkerIcon);
+								    //this.spiderfyMarkers[i].setAnimation(google.maps.Animation.DROP);
+								}
+							}, 500);
+						});
+
+						google.maps.event.addListener(_this.map, 'dragend', function() {
+
+							// check if we're at the right zoom level where spidermarkers are visible
+							if (_this.map.getZoom()+1 < options.markerclustermaxzoom && _this.clusterOn ) return;
+
+							setTimeout(function() {
+
+							    this.spiderfyMarkers = _this.oms.markersNearAnyOtherMarker();
+
+								for	(var i = 0; i < this.spiderfyMarkers.length; i++) {
+								    this.spiderfyMarkers[i].setIcon(_this.spiderMarkerIcon);
+								    //this.spiderfyMarkers[i].setAnimation(google.maps.Animation.DROP);
+								}
+							}, 500);
+						});
+					}
+				);
+
 			}
 
 			if (options.searchmarkers) {
@@ -657,7 +724,51 @@
 				searchBox.appendTo(searchContainer);
 				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(searchContainer);
 
+				var clusterToggle = $('<label for="clusterToggle">Cluster</label><input id="clusterToggle" type="checkbox"/>');
+				var clusterContainer = document.createElement('div');
+				clusterContainer.style.padding = '5px';
+				clusterToggle.appendTo(clusterContainer);
+				clusterToggle.prop('checked', true);
+				map.controls[google.maps.ControlPosition.TOP_RIGHT].push(clusterContainer);
+
+				if (options.markercluster) {
+					clusterToggle.on('click', function() {
+					    var $this = $(this); 
+					    if ($this.is(':checked')) {
+					        // recluster 
+							for (var i = 0; i < _this.markers.length; i++) { 
+								_this.markers[i].setIcon("");
+					        }
+					        _this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
+								averageCenter: true,
+								maxZoom: options.markerclustermaxzoom,
+								ignoreHidden: true
+							} );
+							_this.clusterOn = true;
+					    } else {
+					    	// uncluster
+					        _this.markercluster.clearMarkers();
+							for (var i = 0; i < _this.markers.length; i++) { 
+								_this.markers[i].setOptions({map: _this.map, visible:true});
+					        }
+					        _this.clusterOn = false;
+					        google.maps.event.trigger(map, 'zoom_changed');
+					    }
+					});
+				}
+
 				searchBox.on('keyup',function (e) {
+
+					// automatically turn off markercluster when searching markers
+			        if (options.markercluster) {
+			        	_this.markercluster.clearMarkers();
+						for (var i = 0; i < _this.markers.length; i++) { 
+							_this.markers[i].setOptions({map: _this.map, visible:true});
+				        }
+				        clusterToggle.prop('checked', false);
+				        google.maps.event.trigger(map, 'zoom_changed');
+			        }
+
 					for (var i = 0; i < _this.markers.length; i++) {
 							var haystack = '';
 							var marker = _this.markers[i];
@@ -759,6 +870,7 @@
 			}
 			else {
 				this.openWindow.open( this.map );
+				lastInfoWindow = this.openWindow;
 			}
 		}
 

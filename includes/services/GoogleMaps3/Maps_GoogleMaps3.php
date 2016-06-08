@@ -84,7 +84,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public function addParameterInfo( array &$params ) {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
-		global $egMapsResizableByDefault, $egMapsGMaps3DefaultTilt;
+		global $egMapsResizableByDefault, $egMapsGMaps3DefaultTilt, $egMapsGMaps3DefaultMarkerClusterMaxZoom;
 
 		$params['zoom']->setRange( 0, 20 );
 		$params['zoom']->setDefault( self::getDefaultZoom() );
@@ -168,6 +168,10 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		);
 		$params['markercluster']->setDefault( false );
 		$params['markercluster']->setDoManipulationOfDefault( false );
+
+		$params['markerclustermaxzoom'] = new Parameter( 'markerclustermaxzoom', Parameter::TYPE_INTEGER );
+		$params['markerclustermaxzoom']->setDefault( $egMapsGMaps3DefaultMarkerClusterMaxZoom, false );
+		$params['markerclustermaxzoom']->setMessage( 'maps-googlemaps3-par-markerclustermaxzoom' );
 
 		$params['searchmarkers'] = new Parameter(
 			'searchmarkers' ,
