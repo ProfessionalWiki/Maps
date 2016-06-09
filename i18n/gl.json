@@ -150,6 +150,7 @@
 	"maps-googlemaps3-par-tilt": "Inclinación do mapa ao empregar o Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Axustar o nivel de zoom despois da carga das capas KML.",
 	"maps-googlemaps3-par-poi": "Mostrar os puntos de interese.",
+	"maps-googlemaps3-par-clustergridsize": "A medida da reixa dun grupo de píxeles.",
 	"maps-openlayers-par-controls": "Os controis que incluír no mapa.",
 	"maps-openlayers-par-layers": "As capas que estarán dispoñibles no selector de capas. A primeira capa aparecerá cando o mapa acabe de cargar.",
 	"maps-openlayers-par-overlays": "As capas de sobreposición que estarán dispoñibles no selector de capas. Estas capas han mostrarse por riba da capa normal, como un marcador.",
