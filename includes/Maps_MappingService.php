@@ -6,9 +6,6 @@
  *
  * @since 0.6.3
  *
- * @file Maps_MappingService.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -48,7 +45,7 @@ abstract class MapsMappingService implements iMappingService {
 	 *
 	 * @var array
 	 */
-	protected $resourceModules = array();
+	protected $resourceModules = [];
 
 	/**
 	 * A list of dependencies (header items) that have been added.
@@ -57,7 +54,7 @@ abstract class MapsMappingService implements iMappingService {
 	 *
 	 * @var array
 	 */
-	private $addedDependencies = array();
+	private $addedDependencies = [];
 
 	/**
 	 * A list of dependencies (header items) that need to be added.
@@ -66,7 +63,7 @@ abstract class MapsMappingService implements iMappingService {
 	 *
 	 * @var array
 	 */
-	private $dependencies = array();
+	private $dependencies = [];
 
 	/**
 	 * Constructor. Creates a new instance of MapsMappingService.
@@ -76,7 +73,7 @@ abstract class MapsMappingService implements iMappingService {
 	 * @param string $serviceName
 	 * @param array $aliases
 	 */
-	public function __construct( $serviceName, array $aliases = array() ) {
+	public function __construct( $serviceName, array $aliases = [] ) {
 		$this->serviceName = $serviceName;
 		$this->aliases = $aliases;
 	}
@@ -117,7 +114,7 @@ abstract class MapsMappingService implements iMappingService {
 			$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
 		}
 		elseif ( $parserOrOut instanceof OutputPage ) {
-			if ( $dependencies ) {
+			if ( $dependencies !== false ) {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
 			}
 
@@ -133,7 +130,7 @@ abstract class MapsMappingService implements iMappingService {
 	 * @return array
 	 */
 	public function getConfigVariables() {
-		return array();
+		return [];
 	}
 
 	/**
@@ -143,7 +140,7 @@ abstract class MapsMappingService implements iMappingService {
 	 */
 	public final function getDependencyHtml() {
 		$allDependencies = array_merge( $this->getDependencies(), $this->dependencies );
-		$dependencies = array();
+		$dependencies = [];
 
 		// Only add dependnecies that have not yet been added.
 		foreach ( $allDependencies as $dependency ) {
@@ -154,7 +151,7 @@ abstract class MapsMappingService implements iMappingService {
 		}
 
 		// If there are dependencies, put them all together in a string, otherwise return false.
-		return count( $dependencies ) > 0 ? implode( '', $dependencies ) : false;
+		return $dependencies !== [] ? implode( '', $dependencies ) : false;
 	}
 
 	/**
@@ -165,7 +162,7 @@ abstract class MapsMappingService implements iMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		return array();
+		return [];
 	}
 
 	/**

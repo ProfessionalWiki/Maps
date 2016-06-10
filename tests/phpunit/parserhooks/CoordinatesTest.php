@@ -2,32 +2,15 @@
 
 namespace Maps\Test;
 
+use DataValues\Geo\Values\LatLongValue;
+use ParamProcessor\ParamDefinition;
+
 /**
- * Tests for the Maps\Coordinates class.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
- *
- * @file
- * @since 2.0
- *
- * @ingroup Maps
- * @ingroup Test
+ * @covers MapsCoordinates
  *
  * @group Maps
  * @group ParserHook
+ * @group CoordinatesTest
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -49,11 +32,103 @@ class CoordinatesTest extends ParserHookTest {
 	 * @return array
 	 */
 	public function parametersProvider() {
-		$paramLists = array();
+		$paramLists = [];
 
-		$paramLists[] = array( 'location' => '4,2' );
+		$paramLists[] = [
+			[
+				'location' => '4,2',
+				'format' => 'dms',
+				'directional' => 'no',
+			],
+			'4° 0\' 0.00", 2° 0\' 0.00"'
+		];
 
-		return $this->arrayWrap( $paramLists );
+		$paramLists[] = [
+			[
+				'location' => '55 S, 37.6176330 W',
+				'format' => 'dms',
+				'directional' => 'no',
+			],
+			'-55° 0\' 0.00", -37° 37\' 3.48"'
+		];
+
+		$paramLists[] = [
+			[
+				'location' => '4,2',
+				'format' => 'float',
+				'directional' => 'no',
+			],
+			'4, 2'
+		];
+
+		$paramLists[] = [
+			[
+				'location' => '-4,-2',
+				'format' => 'float',
+				'directional' => 'yes',
+			],
+			'4 S, 2 W'
+		];
+
+		$paramLists[] = [
+			[
+				'location' => '55 S, 37.6176330 W',
+				'directional' => 'yes',
+			],
+			'55° 0\' 0.00" S, 37° 37\' 3.48" W'
+		];
+
+		return $paramLists;
+	}
+
+	/**
+	 * @see ParserHookTest::processingProvider
+	 * @since 3.0
+	 * @return array
+	 */
+	public function processingProvider() {
+		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$argLists = [];
+
+		$values = [
+			'location' => '4,2',
+		];
+
+		$expected = [
+			'location' => new LatLongValue( 4, 2 ),
+		];
+
+		$argLists[] = [ $values, $expected ];
+
+		$values = [
+			'location' => '4,2',
+			'directional' => $definitions['directional']->getDefault() ? 'no' : 'yes',
+			'format' => 'dd',
+		];
+
+		$expected = [
+			'location' => new LatLongValue( 4, 2 ),
+			'directional' => !$definitions['directional']->getDefault(),
+			'format' => Maps_COORDS_DD,
+		];
+
+		$argLists[] = [ $values, $expected ];
+
+		$values = [
+			'location' => '4,2',
+			'directional' => $definitions['directional']->getDefault() ? 'NO' : 'YES',
+			'format' => ' DD ',
+		];
+
+		$expected = [
+			'location' => new LatLongValue( 4, 2 ),
+			'directional' => !$definitions['directional']->getDefault(),
+			'format' => Maps_COORDS_DD,
+		];
+
+		$argLists[] = [ $values, $expected ];
+
+		return $argLists;
 	}
 
 }

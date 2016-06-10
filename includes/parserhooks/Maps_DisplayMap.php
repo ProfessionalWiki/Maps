@@ -5,26 +5,11 @@
  * 
  * @since 0.7
  * 
- * @file Maps_DisplayMap.php
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsDisplayMap extends ParserHook {
-	/**
-	 * No LSB in pre-5.3 PHP *sigh*.
-	 * This is to be refactored as soon as php >=5.3 becomes acceptable.
-	 */	
-	public static function staticInit( Parser &$parser ) {
-		$instance = new self;
-		return $instance->init( $parser );
-	}	
-	
-	public static function initialize() {
-		
-	}	
-	
+
 	/**
 	 * Gets the name of the parser hook.
 	 * @see ParserHook::getName
@@ -45,124 +30,134 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getNames() {
-		return array( $this->getName(), 'display_point', 'display_points', 'display_line' );
+		return [ $this->getName(), 'display_point', 'display_points', 'display_line' ];
 	}
 	
 	/**
 	 * Returns an array containing the parameter info.
 	 * @see ParserHook::getParameterInfo
 	 *
-	 * TODO: migrate stuff
-	 * 
 	 * @since 0.7
 	 * 
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsDefaultTitle, $egMapsDefaultLabel;
-
 		$params = MapsMapper::getCommonParameters();
 
 		$params['mappingservice']['feature'] = 'display_map';
 
-		$params['zoom']['dependencies'] = array( 'coordinates', 'mappingservice' );
-		$params['zoom']['manipulations'] = new MapsParamZoom();
-
-		$params['coordinates'] = array(
-			'aliases' => array( 'coords', 'location', 'address', 'addresses', 'locations', 'points' ),
-			'criteria' => new CriterionIsLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
-			'manipulations' => new MapsParamLocation( $type === ParserHook::TYPE_FUNCTION ? '~' : '|' ),
-			'dependencies' => array( 'mappingservice', 'geoservice' ),
-			'default' => array(),
+		$params['coordinates'] = [
+			'type' => 'mapslocation',
+			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
+			'dependencies' => [ 'mappingservice', 'geoservice' ],
+			'default' => [],
 			'islist' => true,
 			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
-		);
+			'message' => 'maps-displaymap-par-coordinates',
+		];
 
-		$params['title'] = array(
+		$params = array_merge( $params, self::getCommonMapParams() );
+		
+		return $params;
+	}
+
+	/**
+	 * Temporary hack. Do not rely upon.
+	 * @since 3.0
+	 * @deprecated
+	 * @return array
+	 */
+	public static function getCommonMapParams() {
+		global $egMapsDefaultTitle, $egMapsDefaultLabel;
+
+		$params['title'] = [
 			'name' => 'title',
 			'default' => $egMapsDefaultTitle,
-		);
+		];
 
-		$params['label'] = array(
+		$params['label'] = [
 			'default' => $egMapsDefaultLabel,
 			'aliases' => 'text',
-		);
+		];
 
-		$params['icon'] = array( // TODO: image param
-			'default' => '', // TODO
-		);
+		$params['icon'] = [
+			'default' => '', // TODO: image param
+		];
 
-		$params['visitedicon'] = array(
+		$params['visitedicon'] = [
 			'default' => '', //TODO: image param
-		);
+		];
 
-		$params['lines'] = array(
-			'default' => array(),
-			'criteria' => new CriterionLine( '~' ), // TODO
-			'manipulations' => new MapsParamLine( '~' ), // TODO
+		$params['lines'] = [
+			'type' => 'mapsline',
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['polygons'] = array(
-			'default' => array(),
-			'criteria' => new CriterionPolygon( '~' ), // TODO
-			'manipulations' => new MapsParamPolygon( '~' ), // TODO
+		$params['polygons'] = [
+			'type' => 'mapspolygon',
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['circles'] = array(
-			'default' => array(),
-			'manipulations' => new MapsParamCircle( '~' ), // TODO
+		$params['circles'] = [
+			'type' => 'mapscircle',
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['rectangles'] = array(
-			'default' => array(),
-			'manipulations' => new MapsParamRectangle( '~' ), // TODO
+		$params['rectangles'] = [
+			'type' => 'mapsrectangle',
+			'default' => [],
 			'delimiter' => ';',
 			'islist' => true,
-		);
+		];
 
-		$params['copycoords'] = array(
-			'type' => 'boolean',
+		$params['wmsoverlay'] = [
+			'type' => 'wmsoverlay',
 			'default' => false,
-		);
+			'delimiter' => ' ',
+		];
 
-		$params['static'] = array(
-			'type' => 'boolean',
-			'default' => false,
-		);
-
-		$params['wmsoverlay'] = array(
-			'type' => 'string',
-			'default' => false,
-			'manipulations' => new MapsParamWmsOverlay( ' ' ), // TODO
-			'delimiter' => ';',
-		);
-
-		$params['maxzoom'] = array(
+		$params['maxzoom'] = [
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
 			'dependencies' => 'minzoom',
-		);
+		];
 
-		$params['minzoom'] = array(
+		$params['minzoom'] = [
 			'type' => 'integer',
 			'default' => false,
 			'manipulatedefault' => false,
 			'lowerbound' => 0,
-		);
+		];
 
+		$params['copycoords'] = [
+			'type' => 'boolean',
+			'default' => false,
+		];
+
+		$params['static'] = [
+			'type' => 'boolean',
+			'default' => false,
+		];
+
+		// Give grep a chance to find the usages:
+		// maps-displaymap-par-title, maps-displaymap-par-label, maps-displaymap-par-icon,
+		// maps-displaymap-par-visitedicon, aps-displaymap-par-lines, maps-displaymap-par-polygons,
+		// maps-displaymap-par-circles, maps-displaymap-par-rectangles, maps-displaymap-par-wmsoverlay,
+		// maps-displaymap-par-maxzoom, maps-displaymap-par-minzoom, maps-displaymap-par-copycoords,
+		// maps-displaymap-par-static
 		foreach ( $params as $name => &$param ) {
 			if ( !array_key_exists( 'message', $param ) ) {
 				$param['message'] = 'maps-displaymap-par-' . $name;
 			}
 		}
-		
+
 		return $params;
 	}
 	
@@ -175,7 +170,7 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return array( 'coordinates' );
+		return [ 'coordinates' ];
 	}
 	
 	/**
@@ -190,16 +185,25 @@ class MapsDisplayMap extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		// Get the instance of the service class.
-		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'], $this->getName() );
+		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'] );
 		
-		// Get an instance of the class handling the current parser hook and service. 
-		$mapClass = $service->getFeatureInstance( $this->getName() );
+		$mapClass = new MapsDisplayMapRenderer( $service );
 
+		$fullParams = $this->validator->getParameters();
+
+		if ( array_key_exists( 'zoom', $fullParams ) && $fullParams['zoom']->wasSetToDefault() && count( $parameters['coordinates'] ) > 1 ) {
+			$parameters['zoom'] = false;
+		}
+
+		global $egMapsEnableCategory;
+		if ($egMapsEnableCategory) {
+			$this->parser->addTrackingCategory( 'maps-tracking-category' );
+		}
 		return $mapClass->renderMap( $parameters, $this->parser );
 	}
 	
 	/**
-	 * Returns the parser function otpions.
+	 * Returns the parser function options.
 	 * @see ParserHook::getFunctionOptions
 	 * 
 	 * @since 0.7
@@ -207,10 +211,10 @@ class MapsDisplayMap extends ParserHook {
 	 * @return array
 	 */
 	protected function getFunctionOptions() {
-		return array(
+		return [
 			'noparse' => true,
 			'isHTML' => true
-		);
+		];
 	}
 
 	/**

@@ -5,9 +5,6 @@
  *
  * @since 2.0
  *
- * @file
- * @ingroup Maps
- *
  * @licence GNU GPL v2+
  * @author Kim Eik
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -37,12 +34,12 @@ class SpecialMapEditor extends SpecialPage{
 
 		$outputPage->addHtml( MapsGoogleMaps3::getApiScript(
 			$this->getLanguage()->getCode(),
-			array( 'libraries' => 'drawing' )
+			[ 'libraries' => 'drawing' ]
 		) );
 
 		$outputPage->addModules( 'mapeditor' );
-        $editor = new MapEditor( $this->getAttribs() );
-		$html = $editor->getEditorHtml();
+        $editorHtml = new MapEditorHtml( $this->getAttribs() );
+		$html = $editorHtml->getEditorHtml();
 		$outputPage->addHTML( $html );
 	}
 
@@ -52,10 +49,13 @@ class SpecialMapEditor extends SpecialPage{
 	 * @return array
 	 */
 	protected function getAttribs(){
-		return array(
+		return [
             'id' => 'map-canvas',
             'context' => 'SpecialMapEditor'
-        );
+        ];
 	}
 
+	protected function getGroupName() {
+		return 'maps';
+	}
 }

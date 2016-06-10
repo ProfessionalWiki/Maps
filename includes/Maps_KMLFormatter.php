@@ -1,12 +1,11 @@
 <?php
 
+use Maps\Elements\Location;
+
 /**
  * Class to format geographical data to KML.
  * 
  * @since 0.7.3
- * 
- * @file Maps_KMLFormatter.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -23,7 +22,7 @@ class MapsKMLFormatter {
 	/**
 	 * @since 0.7.3
 	 * 
-	 * @var array of MapsLocation
+	 * @var Location[]
 	 */
 	protected $placemarks;
 	
@@ -34,7 +33,7 @@ class MapsKMLFormatter {
 	 * 
 	 * @param array $params
 	 */
-	public function __construct( array $params = array() ) {
+	public function __construct( array $params = [] ) {
 		$this->params = $params;
 		$this->clearElements();
 	}
@@ -65,9 +64,9 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param MapsLocation $placemark
+	 * @param Location $placemark
 	 */	
-	public function addPlacemark( MapsLocation $placemark ) {
+	public function addPlacemark( Location $placemark ) {
 		$this->placemarks[] = $placemark;
 	}
 	
@@ -76,7 +75,7 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param array of MapsLocation $placemark
+	 * @param Location[] $placemarks
 	 */		
 	public function addPlacemarks( array $placemarks ) {
 		foreach ( $placemarks as $placemark ) {
@@ -99,7 +98,7 @@ EOT;
 	 * @since 0.7.3
 	 */	
 	public function clearPlacemarks() {
-		$this->placemarks = array();
+		$this->placemarks = [];
 	}
 	
 	/**
@@ -110,7 +109,7 @@ EOT;
 	 * @return string
 	 */	
 	protected function getKMLElements() {
-		$elements = array();
+		$elements = [];
 		
 		$elements = array_merge( $elements, $this->getPlacemarks() );
 		
@@ -126,7 +125,7 @@ EOT;
 	 * @return array
 	 */		
 	protected function getPlacemarks() {
-		$placemarks = array();
+		$placemarks = [];
 		
 		foreach ( $this->placemarks as $location ) {
 			$placemarks[] = $this->getKMLForLocation( $location );
@@ -140,20 +139,22 @@ EOT;
 	 * 
 	 * @since 0.7.3
 	 * 
-	 * @param MapsLocation $location
-	 * 
+	 * @param Location $location
+	 *
 	 * @return string
 	 */		
-	protected function getKMLForLocation( MapsLocation $location ) {
+	protected function getKMLForLocation( Location $location ) {
 		$name = '<name><![CDATA[ ' . $location->getTitle() . ']]></name>';
 		
 		$description = '<description><![CDATA[ ' . $location->getText() . ']]></description>';
-		
+
+		$coordinates = $location->getCoordinates();
+
 		// lon,lat[,alt]
 		$coordinates = Xml::element(
 			'coordinates',
-			array(),
-			$location->getLongitude() . ',' . $location->getLatitude() . ',' . $location->getAltitude()
+			[],
+			$coordinates->getLongitude() . ',' . $coordinates->getLatitude() . ',0'
 		);
 
 		return <<<EOT

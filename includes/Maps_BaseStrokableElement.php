@@ -1,8 +1,14 @@
 <?php
+
+use Maps\Elements\BaseElement;
+
 /**
  * @since 2.0
+ *
+ * @licence GNU GPL v2+
+ * @author Kim Eik < kim@heldig.org >
  */
-class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapElement {
+class MapsBaseStrokableElement extends BaseElement implements iStrokableMapElement {
 
 	protected $strokeColor;
 	protected $strokeOpacity;
@@ -32,14 +38,6 @@ class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapE
 		$this->strokeWeight = trim($strokeWeight);
 	}
 
-	public function hasText() {
-		return !is_null( $this->text ) && $this->text !== '';
-	}
-
-	public function hasTitle() {
-		return !is_null( $this->title ) && $this->title !== '';
-	}
-
 	public function hasStrokeColor() {
 		return !is_null( $this->strokeColor ) && $this->strokeColor !== '';
 	}
@@ -54,11 +52,11 @@ class MapsBaseStrokableElement extends MapsBaseElement implements iStrokableMapE
 
 	public function getJSONObject( $defText = '' , $defTitle = '' ) {
 		$parentArray = parent::getJSONObject( $defText , $defTitle );
-		$array = array(
+		$array = [
 			'strokeColor' => $this->hasStrokeColor() ? $this->getStrokeColor() : '#FF0000' ,
 			'strokeOpacity' => $this->hasStrokeOpacity() ? $this->getStrokeOpacity() : '1' ,
 			'strokeWeight' => $this->hasStrokeWeight() ? $this->getStrokeWeight() : '2'
-		);
+		];
 		return array_merge( $parentArray , $array );
 	}
 

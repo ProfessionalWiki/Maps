@@ -4,9 +4,6 @@
  * Class for interaction with MappingService objects.
  * 
  * @since 0.6.6
- * 
- * @file Maps_MappingServices.php
- * @ingroup Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -19,9 +16,9 @@ final class MapsMappingServices {
 	 * 
 	 * @since 0.6.6
 	 * 
-	 * @var array of string
+	 * @var string[]
 	 */
-	protected static $registeredServices = array();
+	protected static $registeredServices = [];
 	
 	/**
 	 * Associative with service identifiers as keys containing instances of
@@ -33,9 +30,9 @@ final class MapsMappingServices {
 	 * 
 	 * @since 0.6.6
 	 * 
-	 * @var array of iMappingService
+	 * @var iMappingService[]
 	 */
-	protected static $services = array();
+	protected static $services = [];
 	
 	/**
 	 * Registers a service class linked to an identifier.
@@ -47,7 +44,7 @@ final class MapsMappingServices {
 	 * @param $serviceClassName String
 	 * @param $features Array
 	 */
-	public static function registerService( $serviceIdentifier, $serviceClassName, array $features = array() ) {
+	public static function registerService( $serviceIdentifier, $serviceClassName, array $features = [] ) {
 		self::$registeredServices[$serviceIdentifier] = $serviceClassName;
 		
 		foreach( $features as $featureName => $featureClassName ) {
@@ -210,7 +207,7 @@ final class MapsMappingServices {
 	public static function getAllServiceValues() {
 		global $egMapsAvailableServices;
 
-		$allServiceValues = array();
+		$allServiceValues = [];
 
 		foreach ( $egMapsAvailableServices as $availableService ) {
 			$allServiceValues[] = $availableService;
@@ -228,7 +225,7 @@ final class MapsMappingServices {
 	 * @return array of MappingService
 	 */
 	public static function getAllObjects() {
-		$objects = array();
+		$objects = [];
 		
 		foreach ( self::$registeredServices as $service => $class ) {
 			$objects[] = self::getServiceInstance( $service );
