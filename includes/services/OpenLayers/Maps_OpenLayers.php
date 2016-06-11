@@ -3,31 +3,31 @@
 /**
  * Class holding information and functionality specific to OpenLayers.
  * This information and features can be used by any mapping feature.
- * 
+ *
  * @since 0.1
- * 
+ *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsOpenLayers extends MapsMappingService {
-	
+
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @since 0.6.6
-	 */	
+	 */
 	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
 			[ 'layers', 'openlayer' ]
 		);
-	}	
-	
+	}
+
 	/**
 	 * @see MapsMappingService::addParameterInfo
-	 * 
+	 *
 	 * @since 0.7
-	 */	
+	 */
 	public function addParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsResizableByDefault;
 
@@ -35,7 +35,7 @@ class MapsOpenLayers extends MapsMappingService {
 			'type' => 'integer',
 			'range' => [ 0, 19 ],
 			'default' => self::getDefaultZoom(),
-			'message' => 'maps-openlayers-par-zoom',
+			'message' => 'maps-par-zoom',
 		];
 
 		$params['controls'] = [
@@ -54,14 +54,14 @@ class MapsOpenLayers extends MapsMappingService {
 			'tolower' => true,
 			// TODO-customMaps: addCriteria( new CriterionOLLayer() );
 		];
-		
+
 		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => false,
 			'manipulatedefault' => false,
 			'message' => 'maps-par-resizable',
 		];
-		
+
 		$params['overlays'] = [
 			// Default empty array will end up in JS just right without manipulation.
 			'default' => [],
@@ -81,7 +81,7 @@ class MapsOpenLayers extends MapsMappingService {
 
 		$params['searchmarkers'] = [
 			'default' => '',
-			'message' => 'maps-openlayers-par-searchmarkers',
+			'message' => 'maps-par-searchmarkers',
 			'values' => [ 'title', 'all', '' ],
 			'tolower' => true,
 		];
@@ -93,37 +93,37 @@ class MapsOpenLayers extends MapsMappingService {
 			// new MapsParamFile() FIXME
 		];
 	}
-	
+
 	/**
 	 * @see iMappingService::getDefaultZoom
-	 * 
+	 *
 	 * @since 0.6.5
-	 */	
+	 */
 	public function getDefaultZoom() {
 		global $egMapsOpenLayersZoom;
 		return $egMapsOpenLayersZoom;
-	}		
-	
+	}
+
 	/**
 	 * @see MapsMappingService::getMapId
-	 * 
+	 *
 	 * @since 0.6.5
 	 */
 	public function getMapId( $increment = true ) {
 		static $mapsOnThisPage = 0;
-		
+
 		if ( $increment ) {
 			$mapsOnThisPage++;
 		}
-		
+
 		return 'open_layer_' . $mapsOnThisPage;
-	}		
-	
+	}
+
 	/**
-	 * Returns the names of all supported controls. 
+	 * Returns the names of all supported controls.
 	 * This data is a copy of the one used to actually translate the names
-	 * into the controls, since this resides client side, in OpenLayerFunctions.js. 
-	 * 
+	 * into the controls, since this resides client side, in OpenLayerFunctions.js.
+	 *
 	 * @return array
 	 */
 	public static function getControlNames() {
@@ -148,21 +148,21 @@ class MapsOpenLayers extends MapsMappingService {
 	 */
 	public static function getLayerNames( $includeGroups = false ) {
 		global $egMapsOLAvailableLayers, $egMapsOLLayerGroups;
-		
+
 		$keys = array_keys( $egMapsOLAvailableLayers );
-		
+
 		if ( $includeGroups ) {
 			$keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
 		}
-		
+
 		return $keys;
 	}
-	
+
 	/**
-	 * Adds the layer dependencies. 
-	 * 
+	 * Adds the layer dependencies.
+	 *
 	 * @since 0.7.1
-	 * 
+	 *
 	 * @param array $dependencies
 	 */
 	public function addLayerDependencies( array $dependencies ) {
@@ -170,12 +170,12 @@ class MapsOpenLayers extends MapsMappingService {
 			$this->addDependency( $dependency );
 		}
 	}
-	
+
 	/**
 	 * @see MapsMappingService::getResourceModules
-	 * 
+	 *
 	 * @since 0.7.3
-	 * 
+	 *
 	 * @return array of string
 	 */
 	public function getResourceModules() {
@@ -198,5 +198,5 @@ class MapsOpenLayers extends MapsMappingService {
 			[ 'egMapsScriptPath' => $GLOBALS['wgScriptPath'] . '/extensions/Maps/' ]
 		);
 	}
-	
+
 }
