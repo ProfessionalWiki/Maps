@@ -1,6 +1,17 @@
 These are the release notes for the [Maps extension](README.md).
 
 
+## Maps 3.7
+
+Under development
+
+* Added rotate control support for Google Maps
+* Changed coordinate display on OpenLayers maps from long-lat to lat-long.
+* Upgraded google marker cluster library to its latest version (2.1.2)
+* Upgraded Leaflet library to its latest version (0.7.7)
+* Added missing system messages
+* Internal code enhancements
+
 ## Maps 3.6
 
 Released on May 26th, 2016.
