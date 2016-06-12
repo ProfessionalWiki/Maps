@@ -308,12 +308,10 @@ class Location extends BaseElement {
 		$array = [
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
-			// not used for now:
-			//'alt' => 0,
 			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 		];
 		$val = $this->getAddress();
-		if( !empty( $val ) ) {
+		if( $val !== '' ) {
 			$array['address'] = $val;
 		}
 		$val = $this->hasGroup() ? $this->getGroup() : $defGroup;
