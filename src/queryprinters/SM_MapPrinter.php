@@ -134,7 +134,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		if ( $this->fatalErrorMsg !== false ) {
 			return $this->fatalErrorMsg;
 		}
-		$this->isHTML = true;
 
 		/**
 		 * @var Parser $wgParser
