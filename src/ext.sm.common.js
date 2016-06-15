@@ -41,7 +41,13 @@ window.sm = new ( function( $ ) {
                 if ( data.query.results.hasOwnProperty( property ) ) {
                     var location = data.query.results[property];
                     var coordinates = location.printouts[map.options.ajaxcoordproperty][0];
-                    map.addMarker( coordinates );
+                    var markerOptions = {
+                        lat: coordinates.lat,
+                        lon: coordinates.lon,
+                        title: location.fulltext,
+                        text: '<b><a href="' + location.fullurl + '">' + location.fulltext + '</a></b>'
+                    };
+                    map.addMarker( markerOptions );
                 }
             }
         } );
