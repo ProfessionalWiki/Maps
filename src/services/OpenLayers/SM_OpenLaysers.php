@@ -20,7 +20,7 @@ $moduleTemplate = [
 $GLOBALS['wgResourceModules']['ext.sm.fi.openlayersajax'] = $moduleTemplate + [
         'dependencies' => [
             'ext.maps.openlayers',
-            'ext.sm.ajax'
+            'ext.sm.common'
         ],
         'scripts' => [
             'ext.sm.openlayersajax.js'

@@ -74,9 +74,9 @@ $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = $moduleTemplate + [
 	]
 ];
 
-$GLOBALS['wgResourceModules']['ext.sm.ajax'] = $moduleTemplate + [
+$GLOBALS['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
 	'scripts' => [
-		'ext.sm.ajax.js'
+		'ext.sm.common.js'
 	]
 ];
 

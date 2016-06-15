@@ -21,7 +21,7 @@ $moduleTemplate = [
 $GLOBALS['wgResourceModules']['ext.sm.fi.leafletajax'] = $moduleTemplate + [
 	'dependencies' => [
 		'ext.maps.leaflet',
-		'ext.sm.ajax'
+		'ext.sm.common'
 	],
 	'scripts' => [
 		'ext.sm.leafletajax.js'
