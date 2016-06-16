@@ -317,11 +317,11 @@ MediaWiki unit testing support.
 #### New features ####
 
 * Tag support for these parser hooks (which previously only had parser function support):
-** Coordinates
-** Distance
-** Finddestination
-** Geocode
-** Geodistance
+    * Coordinates
+    * Distance
+    * Finddestination
+    * Geocode
+    * Geodistance
 * Thumbs and photos parameters for the OSM service.
 
 #### Bug fixes ####
