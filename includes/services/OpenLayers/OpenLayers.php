@@ -2,12 +2,12 @@
 
 /**
  * This group contains all OpenLayers related files of the Maps extension.
- * 
+ *
  * @defgroup MapsOpenLayers OpenLayers
  */
 
 /**
- * This file holds the hook and initialization for the OpenLayers service. 
+ * This file holds the hook and initialization for the OpenLayers service.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -53,11 +53,11 @@ call_user_func( function() {
 } );
 
 function efMapsInitOpenLayers() {
-	MapsMappingServices::registerService( 
+	MapsMappingServices::registerService(
 		'openlayers',
-		'MapsOpenLayers',
-		[ 'display_map' => 'MapsDisplayMapRenderer' ]
+		MapsOpenLayers::class,
+		[ 'display_map' => MapsDisplayMapRenderer::class ]
 	);
-	
+
 	return true;
 }

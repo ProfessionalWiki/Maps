@@ -23,7 +23,7 @@ class RectangleTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Elements\Rectangle';
+		return Rectangle::class;
 	}
 
 	public function validConstructorProvider() {

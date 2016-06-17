@@ -22,7 +22,7 @@ class ImageOverlayTest extends RectangleTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Elements\ImageOverlay';
+		return ImageOverlay::class;
 	}
 
 	public function validConstructorProvider() {

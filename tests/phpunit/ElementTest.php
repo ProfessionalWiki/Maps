@@ -2,6 +2,7 @@
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Element;
+use Maps\ElementOptions;
 use Maps\Elements\Circle;
 use Maps\Elements\ImageOverlay;
 use Maps\Elements\Line;
@@ -67,7 +68,7 @@ class ElementTest extends \PHPUnit_Framework_TestCase {
 	 * @param Element $element
 	 */
 	public function testGetOptions( Element $element ) {
-		$this->assertInstanceOf( '\Maps\ElementOptions', $element->getOptions() );
+		$this->assertInstanceOf( ElementOptions::class , $element->getOptions() );
 	}
 
 }

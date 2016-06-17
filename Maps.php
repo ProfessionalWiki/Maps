@@ -10,6 +10,17 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
+use DataValues\Geo\Parsers\GeoCoordinateParser;
+use Maps\CircleParser;
+use Maps\DistanceParser;
+use Maps\ImageOverlayParser;
+use Maps\LineParser;
+use Maps\LocationParser;
+use Maps\PolygonParser;
+use Maps\RectangleParser;
+use Maps\ServiceParam;
+use Maps\WmsOverlayParser;
+
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
@@ -189,42 +200,42 @@ call_user_func( function() {
 	}
 
 	$GLOBALS['wgParamDefinitions']['coordinate'] = [
-		'string-parser' => 'DataValues\Geo\Parsers\GeoCoordinateParser',
+		'string-parser' => GeoCoordinateParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mappingservice'] = [
-		'definition'=> 'Maps\ServiceParam',
+		'definition'=> ServiceParam::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapslocation'] = [
-		'string-parser' => 'Maps\LocationParser',
+		'string-parser' => LocationParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapsline'] = [
-		'string-parser' => 'Maps\LineParser',
+		'string-parser' => LineParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapscircle'] = [
-		'string-parser' => 'Maps\CircleParser',
+		'string-parser' => CircleParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapsrectangle'] = [
-		'string-parser' => 'Maps\RectangleParser',
+		'string-parser' => RectangleParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapspolygon'] = [
-		'string-parser' => 'Maps\PolygonParser',
+		'string-parser' => PolygonParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['distance'] = [
-		'string-parser' => 'Maps\DistanceParser',
+		'string-parser' => DistanceParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['wmsoverlay'] = [
-		'string-parser' => 'Maps\WmsOverlayParser',
+		'string-parser' => WmsOverlayParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = [
-		'string-parser' => 'Maps\ImageOverlayParser',
+		'string-parser' => ImageOverlayParser::class,
 	];
 } );
