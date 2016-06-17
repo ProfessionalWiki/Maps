@@ -2,7 +2,9 @@
 
 namespace Maps\Tests\Elements;
 
+use InvalidArgumentException;
 use Maps\Element;
+use Maps\ElementOptions;
 
 /**
  * Base class for unit tests classes for the Maps\BaseElement deriving objects.
@@ -75,7 +77,7 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 	 * @since 3.0
 	 */
 	public function testGivenInvalidArguments_constructorThrowsException() {
-		$this->setExpectedException( 'InvalidArgumentException' );
+		$this->setExpectedException( InvalidArgumentException::class );
 		call_user_func_array( [ $this, 'newInstance' ], func_get_args() );
 	}
 
@@ -84,7 +86,7 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 	 * @param Element $element
 	 */
 	public function testGetOptions( Element $element ) {
-		$this->assertInstanceOf( '\Maps\ElementOptions', $element->getOptions() );
+		$this->assertInstanceOf( ElementOptions::class, $element->getOptions() );
 	}
 
 }
