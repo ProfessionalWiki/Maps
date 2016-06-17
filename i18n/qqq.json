@@ -33,6 +33,8 @@
 	"semanticmaps-par-geocodecontrol": "{{msg-mw|Semanticmaps-par-geocodecontrol}}",
 	"semanticmaps-par-activeicon": "{{msg-mw|Semanticmaps-par-activeicon}}",
 	"semanticmaps-par-pagelabel": "{{msg-mw|Semanticmaps-par-pagelabel}}\n\nText explaining query parameter \"pagelabel\". When set to \"yes\", all markers will have an \"inlineLabel\" with a link to the page containing the coordinates for the marker\n\n{{doc-important|Do not translate the parameter value \"yes\".}}",
+	"semanticmaps-par-ajaxcoordproperty": "{{msg-mw|Semanticmaps-par-ajaxcoordproperty}}",
+	"semanticmaps-par-ajaxquery": "{{msg-mw|Semanticmaps-par-ajaxquery}}",
 	"semanticmaps-par-userparam": "{{msg-mw|Semanticmaps-par-userparam}}",
 	"semanticmaps-kml-pagelinktext": "Used as description for \"pagelinktext\" input box.\nSee example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]\n\n<code>$1</code> is not a parameter, and appears as is.\n\nDefault value for the input box is {{msg-mw|Semanticmaps-default-kml-pagelink}}.",
 	"semanticmaps-shapes-improperformat": "Message displayed when the wikitext formatting of a shape is erroneous.\n\nParameters:\n* $1 - text",

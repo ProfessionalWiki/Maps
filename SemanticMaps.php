@@ -50,12 +50,17 @@ require_once 'SM_Settings.php';
 
 include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
-$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = [
+$moduleTemplate = [
+		'position' => 'bottom',
+		'localBasePath' => __DIR__ . '/src',
+		'remoteExtPath' => 'SemanticMaps/src',
+		'group' => 'ext.semanticmaps',
+];
+
+$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = $moduleTemplate + [
 	'dependencies' => [ 'ext.maps.coord' ],
-	'position' => 'bottom',
 	'localBasePath' => __DIR__ . '/src/forminputs',
 	'remoteExtPath' => 'SemanticMaps/src/forminputs',
-	'group' => 'ext.semanticmaps',
 	'scripts' => [
 		'jquery.mapforminput.js'
 	],
@@ -69,9 +74,16 @@ $GLOBALS['wgResourceModules']['ext.sm.forminputs'] = [
 	]
 ];
 
+$GLOBALS['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
+	'scripts' => [
+		'ext.sm.common.js'
+	]
+];
+
 
 include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
 include_once __DIR__ . '/src/services/Leaflet/SM_Leaflet.php';
+include_once __DIR__ . '/src/services/OpenLayers/SM_OpenLaysers.php';
 
 
 $GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {

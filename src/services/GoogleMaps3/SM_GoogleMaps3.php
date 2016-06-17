@@ -17,6 +17,7 @@
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
+ * @author Peter Grassberger < petertheone@gmail.com >
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -27,6 +28,16 @@ $moduleTemplate = [
 	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'SemanticMaps/src/services/GoogleMaps3',
 	'group' => 'ext.semanticmaps',
+];
+
+$GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3ajax'] = $moduleTemplate + [
+	'dependencies' => [
+		'ext.maps.googlemaps3',
+		'ext.sm.common'
+	],
+	'scripts' => [
+		'ext.sm.googlemaps3ajax.js'
+	]
 ];
 
 $GLOBALS['wgResourceModules']['ext.sm.fi.googlemaps3'] = $moduleTemplate + [
@@ -61,6 +72,10 @@ function smfInitGoogleMaps3() {
 
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'qp', 'SMMapPrinter' );
 	MapsMappingServices::registerServiceFeature( 'googlemaps3', 'fi', 'SMGoogleMaps3FormInput' );
+
+	/* @var MapsMappingService $googleMaps */
+	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+	$googleMaps->addResourceModules(array( 'ext.sm.fi.googlemaps3ajax' ));
 
 	return true;
 }

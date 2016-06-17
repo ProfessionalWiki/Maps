@@ -1,5 +1,11 @@
 These are the release notes for the Semantic Maps extension.
 
+## Semantic Maps 3.4
+
+Development version
+
+* Added autoload location data with Ajax feature (by Peter Grassberger)
+
 ## Semantic Maps 3.3
 
 Released on April 2nd, 2016.
