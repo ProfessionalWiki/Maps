@@ -2,6 +2,7 @@
 
 namespace SM\Test;
 
+use SMKMLPrinter;
 use SMW\Test\QueryPrinterRegistryTestCase;
 
 /**
@@ -30,7 +31,7 @@ class KMLPrinterTest extends QueryPrinterRegistryTestCase {
 	 * @return string
 	 */
 	public function getClass() {
-		return '\SMKMLPrinter';
+		return SMKMLPrinter::class;
 
 	}
 }
