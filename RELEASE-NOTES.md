@@ -4,6 +4,8 @@ These are the release notes for the Semantic Maps extension.
 
 Development version
 
+* Dropped support for MediaWiki older than 1.23
+* Dropped support for PHP older than 5.5
 * Added autoload location data with Ajax feature (by Peter Grassberger)
 
 ## Semantic Maps 3.3
