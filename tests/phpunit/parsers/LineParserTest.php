@@ -15,6 +15,13 @@ use ValueParsers\ValueParser;
 class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
+	 * @return string
+	 */
+	protected function getParserClass() {
+		return LineParser::class;
+	}
+
+	/**
 	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @since 3.0

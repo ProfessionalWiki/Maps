@@ -16,6 +16,13 @@ use ValueParsers\ValueParser;
 class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
+	 * @return string
+	 */
+	protected function getParserClass() {
+		return LocationParser::class;
+	}
+
+	/**
 	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @since 3.0
