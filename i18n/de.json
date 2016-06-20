@@ -33,6 +33,8 @@
 	"semanticmaps-par-geocodecontrol": "Die Steuerungsseite zum Geokodieren anzeigen.",
 	"semanticmaps-par-activeicon": "Das Symbol, das anstelle der Standardmarkierung angezeigt wird, sofern die aktive Seite dem Abfrageergebnis entspricht.",
 	"semanticmaps-par-pagelabel": "Sofern mit „yes“ (ja) festgelegt, verfügen alle Markierungen über eine eingebettete Anzeige mit einem Link zur entsprechenden Seite sowie den entsprechenden Koordinaten.",
+	"semanticmaps-par-ajaxcoordproperty": "Name des Koordinatenattributs, das zur Erstellung der Ajax-Abfrage verwendet wird.",
+	"semanticmaps-par-ajaxquery": "Eine zweite Abfrage, die über Ajax gesendet wird, um zusätzliche Koordinaten abzurufen.",
 	"semanticmaps-par-userparam": "Ein in jedem Vorlagenaufruf übergebener Wert, falls eine Vorlage verwendet wird.",
 	"semanticmaps-kml-text": "Der Text, der zu jeder Seite angezeigt wird. Wird im Fall zusätzlich abgefragter Attribute ersetzt.",
 	"semanticmaps-kml-title": "Der Standardtitel für die Ergebnisse",

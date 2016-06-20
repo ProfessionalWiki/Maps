@@ -27,6 +27,8 @@
 	"semanticmaps-par-geocodecontrol": "Mostrar o control de xeocodificación.",
 	"semanticmaps-par-activeicon": "Icona a mostrar no canto do marcador predeterminado, cando a páxina é igual ao resultado da pescuda",
 	"semanticmaps-par-pagelabel": "Ao definirse en \"si\", todos os macadores terán un \"inlineLabel\" cunha ligazón cara á páxina que conten as coordenadas do marcador",
+	"semanticmaps-par-ajaxcoordproperty": "Nome da propiedade de coordenadas usada para construír a consulta Ajax.",
+	"semanticmaps-par-ajaxquery": "Unha segunda consulta que é enviada vía Ajax para recuperar as coordenadas adicionais.",
 	"semanticmaps-par-userparam": "O valor pasado en cada chamada de modelo, se se empregase algún modelo",
 	"semanticmaps-kml-text": "O texto asociado a cada páxina. Substituído polas propiedades pescudadas adicionais, se existen.",
 	"semanticmaps-kml-title": "O título por defecto para os resultados",

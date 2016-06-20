@@ -37,6 +37,8 @@
 	"semanticmaps-par-geocodecontrol": "Afficher le contrôle de géocodage.",
 	"semanticmaps-par-activeicon": "Icône à afficher à la place du marqueur par défaut, quand la page active est égale au résultat de la recherche",
 	"semanticmaps-par-pagelabel": "Quand il vaut « oui », tous les marqueurs auront un « inlineLabel » avec un lien vers la page contenant les coordonnées du marqueur",
+	"semanticmaps-par-ajaxcoordproperty": "Nom de la propriété de coordonnées utilisée pour construire la requête Ajax.",
+	"semanticmaps-par-ajaxquery": "Une seconde requête qui est envoyée via Ajax pour récupérer les coordonnées supplémentaires.",
 	"semanticmaps-par-userparam": "Une valeur passée dans chaque appel de modèle, si un modèle est utilisé",
 	"semanticmaps-kml-text": "Le texte associé avec chaque page. Remplacé par des propriétés récupérées supplémentaires s'il y en a.",
 	"semanticmaps-kml-title": "Le titre par défaut pour les résultats",

@@ -31,6 +31,8 @@
 	"semanticmaps-par-geocodecontrol": "显示地理编码控件。",
 	"semanticmaps-par-activeicon": "当活跃页面等于查询结果时将显示选定标记而不是默认标记",
 	"semanticmaps-par-pagelabel": "当您设置为“yes”时，所有标记将拥有一个“inlineLabel”带有一个链接至包含坐标标记的页面",
+	"semanticmaps-par-ajaxcoordproperty": "用于构造ajax查询的坐标属性名称。",
+	"semanticmaps-par-ajaxquery": "通过ajax发送以取得额外坐标的第二查询。",
 	"semanticmaps-par-userparam": "当模板被使用时，传递到每个模板调用的值",
 	"semanticmaps-kml-text": "与每个页面相关联的文本。会被额外的查询属性（如果有的话）所覆盖。",
 	"semanticmaps-kml-title": "结果的默认标题",
