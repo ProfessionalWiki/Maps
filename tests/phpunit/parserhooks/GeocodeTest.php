@@ -50,11 +50,8 @@ class GeocodeTest extends ParserHookTest {
 			'allowcoordinates' => 'yes',
 		];
 
-		$location = new Location( new \DataValues\LatLongValue( 4, 2 ) );
-		$location->setTitle( '4,2' );
-
 		$expected = [
-			'location' => $location,
+			'location' => Location::newTitledFromLatLon( 4, 2 ),
 			'allowcoordinates' => true,
 		];
 

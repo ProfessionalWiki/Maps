@@ -56,19 +56,14 @@ class GeodistanceTest extends ParserHookTest {
 	public function processingProvider() {
 		$argLists = [];
 
-		$location1 = new Location( new LatLongValue( 4, 2 ) );
-		$location1->setTitle( '4,2' );
-		$location2 = new Location( new LatLongValue( 42, 0 ) );
-		$location2->setTitle( '42,0' );
-
 		$values = [
 			'location1' => '4,2',
 			'location2' => '42,0',
 		];
 
 		$expected = [
-			'location1' => $location1,
-			'location2' => $location2,
+			'location1' => Location::newTitledFromLatLon( 4, 2 ),
+			'location2' => Location::newTitledFromLatLon( 42, 0 ),
 		];
 
 		$argLists[] = [ $values, $expected ];
@@ -81,8 +76,8 @@ class GeodistanceTest extends ParserHookTest {
 		];
 
 		$expected = [
-			'location1' => $location1,
-			'location2' => $location2,
+			'location1' => Location::newTitledFromLatLon( 4, 2 ),
+			'location2' => Location::newTitledFromLatLon( 42, 0 ),
 			'decimals' => 1,
 		];
 

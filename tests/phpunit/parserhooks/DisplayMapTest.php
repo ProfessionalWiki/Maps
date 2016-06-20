@@ -71,11 +71,8 @@ class DisplayMapTest extends ParserHookTest {
 			'service' => 'openlayers',
 		];
 
-		$location = new Location( new \DataValues\LatLongValue( 4, 2 ) );
-		$location->setTitle( '4,2' );
-
 		$expected = [
-			'coordinates' => [ $location ],
+			'coordinates' => [ Location::newTitledFromLatLon( 4, 2 ) ],
 			'width' => '420px',
 			'height' => '420px',
 			'mappingservice' => 'openlayers',
