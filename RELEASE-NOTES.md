@@ -3,7 +3,7 @@ These are the release notes for the [Maps extension](README.md).
 
 ## Maps 3.7
 
-Under development
+Released on June 21st, 2016.
 
 * Added rotate control support for Google Maps (by Peter Grassberger)
 * Changed coordinate display on OpenLayers maps from long-lat to lat-long (by Peter Grassberger)
@@ -11,6 +11,7 @@ Under development
 * Upgraded Leaflet library to its latest version (0.7.7) (by Peter Grassberger)
 * Added missing system messages (by Karsten Hoffmeyer)
 * Internal code enhancements (by Peter Grassberger)
+* Removed broken custom map layer functionality. You no longer need to run update.php for full installation.
 
 ## Maps 3.6
 
