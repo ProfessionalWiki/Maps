@@ -36,12 +36,6 @@ return call_user_func( function() {
 			],
 		],
 
-		'ext.maps.layers' => $moduleTemplate + [
-			'styles' => [
-				'ext.maps.layers.css'
-			]
-		],
-
 		'ext.maps.coord' => $moduleTemplate + [
 			'messages' => [
 				'maps-abb-north',
@@ -96,7 +90,6 @@ return call_user_func( function() {
 			],
 			'dependencies' => [
 				'ext.maps.common',
-				'ext.maps.layers',
 				'ext.maps.coord'
 			]
 		]
