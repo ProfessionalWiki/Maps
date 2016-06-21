@@ -74,7 +74,6 @@ call_user_func( function() {
 	// Internationalization
 	$GLOBALS['wgMessagesDirs']['Maps'] = __DIR__ . '/i18n';
 	$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] = __DIR__ . '/Maps.i18n.magic.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsNamespaces'] = __DIR__ . '/Maps.i18n.namespaces.php';
 	$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] = __DIR__ . '/Maps.i18n.alias.php';
 
 	$GLOBALS['wgResourceModules'] = array_merge( $GLOBALS['wgResourceModules'], include 'Maps.resources.php' );
@@ -100,13 +99,7 @@ call_user_func( function() {
 	};
 
 	$GLOBALS['wgHooks']['AdminLinks'][]                = 'MapsHooks::addToAdminLinks';
-	$GLOBALS['wgHooks']['ArticleFromTitle'][]          = 'MapsHooks::onArticleFromTitle';
 	$GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
-	$GLOBALS['wgHooks']['CanonicalNamespaces'][]       = 'MapsHooks::onCanonicalNamespaces';	$GLOBALS['wgHooks']['LoadExtensionSchemaUpdates'][] = 'MapsHooks::onLoadExtensionSchemaUpdates';
-	$GLOBALS['wgHooks']['ArticlePurge'][]              = 'MapsHooks::onArticlePurge';
-	$GLOBALS['wgHooks']['LinksUpdateConstructed'][]    = 'MapsHooks::onLinksUpdateConstructed';
-	$GLOBALS['wgHooks']['ParserAfterTidy'][]           = 'MapsHooks::onParserAfterTidy';
-	$GLOBALS['wgHooks']['ParserClearState'][]          = 'MapsHooks::onParserClearState';
 
 	// Parser hooks
 
@@ -146,11 +139,6 @@ call_user_func( function() {
 		return $instance->init( $parser );
 	};
 
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsLayerDefinition();
-		return $instance->init( $parser );
-	};
-
 	// Geocoders
 
 	// Registration of the GeoNames service geocoder.
@@ -161,11 +149,6 @@ call_user_func( function() {
 
 	// Registration of the geocoder.us service geocoder.
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
-
-	// Layers
-
-	// Registration of the image layer type.
-	$GLOBALS['wgHooks']['MappingLayersInitialization'][] = 'MapsImageLayer::register';
 
 	// Mapping services
 
@@ -186,9 +169,6 @@ call_user_func( function() {
 
 
 	require_once __DIR__ . '/Maps_Settings.php';
-
-	define( 'Maps_NS_LAYER' , $GLOBALS['egMapsNamespaceIndex'] + 0 );
-	define( 'Maps_NS_LAYER_TALK' , $GLOBALS['egMapsNamespaceIndex'] + 1 );
 
 	$GLOBALS['wgAvailableRights'][] = 'geocode';
 

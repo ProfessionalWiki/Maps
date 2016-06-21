@@ -160,9 +160,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// Namespace index start of the mapping namespaces.
 	$GLOBALS['egMapsNamespaceIndex'] = 420;
 
-	// Boolean. Controls if you can specify images using a full path in layers.
-	$GLOBALS['egMapsAllowExternalImages'] = true;
-
 	// Boolean. Sets if pages with maps should be put in special category
 	$GLOBALS['egMapsEnableCategory'] = true;
 
