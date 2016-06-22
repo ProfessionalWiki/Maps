@@ -55,8 +55,6 @@
 	"maps-googlemaps3-par-type": "Elsőre megjelenítendő térkép típusa.",
 	"maps-googlemaps3-par-zoomstyle": "A nagyítás irányításának stílusa.",
 	"maps-googlemaps3-par-kml": "Betöltendő KML fájlok.",
-	"maps-osm-par-thumbs": "Bélyegképek megjelenítése",
-	"maps-osm-par-photos": "Fényképek megjelenítése",
 	"mapeditor": "Térkép szerkesztő",
 	"specialpages-group-maps": "Térképek",
 	"mapeditor-none-text": "Nincs",
