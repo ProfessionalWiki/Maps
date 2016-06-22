@@ -1,3 +1,6 @@
+# http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+sudo: false
+
 language: php
 
 matrix:
@@ -16,11 +19,11 @@ matrix:
 install:
   - travis_retry composer self-update
 
-before_script: bash ./build/travis/before_script.sh
+before_script: bash ./tests/travis/before_script.sh
 
-script: bash ./build/travis/script.sh
+script: bash ./tests/travis/script.sh
 
-after_success: bash ./build/travis/after_success.sh
+after_success: bash ./tests/travis/after_success.sh
 
 cache:
   directories:

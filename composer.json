@@ -42,6 +42,7 @@
 	},
 	"autoload": {
 		"files" : [
+			"DefaultSettings.php",
 			"SemanticMaps.php"
 		],
 		"classmap": [
