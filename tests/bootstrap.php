@@ -4,8 +4,7 @@ if ( php_sapi_name() !== 'cli' ) {
 	die( 'Not an entry point' );
 }
 
-error_reporting( E_ALL | E_STRICT );
-date_default_timezone_set( 'UTC' );
+error_reporting( -1 );
 ini_set( 'display_errors', 1 );
 
 if ( !is_readable( $path = __DIR__ . '/../../SemanticMediaWiki/tests/autoloader.php' ) ) {
