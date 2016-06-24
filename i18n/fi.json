@@ -116,8 +116,6 @@
 	"maps-googlemaps3-par-kmlrezoom": "Valitse paras loitonnustaso uudelleen sen jälkeen, kun KML-tasot on ladattu.",
 	"maps-openlayers-par-controls": "Kartalle sijoitettavat ohjaimet.",
 	"maps-openlayers-par-layers": "Tasot, jotka näytetään karttatasojen valinnassa. Kartan oletustaso on listan ensimmäinen taso.",
-	"maps-osm-par-thumbs": "Näytä pienoiskuvat",
-	"maps-osm-par-photos": "Näytä valokuvat",
 	"mapeditor": "Kartan muokkausohjelma",
 	"specialpages-group-maps": "Kartat",
 	"mapeditor-parser-error": "Metadatan jäsennys epäonnistui. Käyttäjän antamat tiedot ohitetaan.",
