@@ -175,4 +175,4 @@ your wiki and verifying the Semantic Maps extension is listed in the "Semantic e
 
 ## Configuration
 
-See the [Semantic Maps settings file](SM_Settings.php) for the available configuration options.
+See the [Semantic Maps settings file](DefaultSettings.php) for the available configuration options.
