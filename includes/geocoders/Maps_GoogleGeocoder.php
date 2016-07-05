@@ -40,7 +40,7 @@ final class MapsGoogleGeocoder extends \Maps\Geocoder {
 			'sensor' => false
 		];
 		if ( !empty( $GLOBALS['egMapsGMaps3ApiKey'] ) ) {
-			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey']
+			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
 		}
 
 		return 'http://maps.googleapis.com/maps/api/geocode/xml?' . wfArrayToCgi($urlArgs);

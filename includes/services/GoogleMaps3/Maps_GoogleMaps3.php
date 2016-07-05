@@ -318,12 +318,14 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public static function getApiScript( $langCode, array $urlArgs = [] ) {
 		$urlArgs = array_merge(
 			[
-				'key' => $GLOBALS['egMapsGMaps3ApiKey'],
 				'language' => self::getMappedLanguageCode( $langCode ),
 				'sensor' => 'false'
 			],
 			$urlArgs
 		);
+		if ( !empty( $GLOBALS['egMapsGMaps3ApiKey'] ) ) {
+			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
 
 		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
 	}
