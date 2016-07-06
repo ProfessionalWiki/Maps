@@ -1,5 +1,10 @@
 These are the release notes for the [Maps extension](README.md).
 
+## Maps 3.8
+
+Under development.
+
+* Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
 
 ## Maps 3.7
 
