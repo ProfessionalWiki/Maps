@@ -168,6 +168,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 	// Google Maps v3
 
+		// String. Google Maps v3 API Key
+		$GLOBALS['egMapsGMaps3ApiKey'] = '';
+
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
 		$GLOBALS['egMapsGMaps3Zoom'] = 14;
