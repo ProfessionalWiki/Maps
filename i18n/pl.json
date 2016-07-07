@@ -23,5 +23,6 @@
 	"semanticmaps-updatemap": "Aktualizacja mapy",
 	"semanticmaps-forminput-remove": "Usuń",
 	"semanticmaps-forminput-add": "Dodaj",
-	"semanticmaps-forminput-locations": "Miejsca"
+	"semanticmaps-forminput-locations": "Miejsca",
+	"semanticmaps-par-ajaxcoordproperty": "Nazwa właściwości współrzędnych, która jest używana do tworzenia zapytania AJAX."
 }
