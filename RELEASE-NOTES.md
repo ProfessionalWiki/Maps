@@ -7,6 +7,7 @@ Development version
 * Dropped support for MediaWiki older than 1.23
 * Dropped support for PHP older than 5.5
 * Added autoload location data with Ajax feature (by Peter Grassberger)
+* Renamed the file with default settings from `SM_Settings.php` to `DefaultSettings.php`
 
 ## Semantic Maps 3.3
 
