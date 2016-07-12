@@ -25,7 +25,7 @@
                     google.maps.event.addListener( map.map, event, function () {
                         var bounds = map.map.getBounds();
                         var query = sm.buildQueryString(
-                            map.options.ajaxquery.join( ' ' ) + ' ',
+                            decodeURIComponent(map.options.ajaxquery.replace(/\+/g, ' ')),
                             map.options.ajaxcoordproperty,
                             bounds.getNorthEast().lat(),
                             bounds.getNorthEast().lng(),
