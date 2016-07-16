@@ -140,8 +140,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		 */
 		global $wgParser;
 
-		global $egMapsEnableCategory;
-		if ($egMapsEnableCategory) {
+		if ( $GLOBALS['egMapsEnableCategory'] && $wgParser->getOutput() !== null ) {
 			$wgParser->addTrackingCategory( 'maps-tracking-category' );
 		}
 
