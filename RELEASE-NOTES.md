@@ -8,6 +8,7 @@ Development version
 * Dropped support for PHP older than 5.5
 * Added autoload location data with Ajax feature (by Peter Grassberger)
 * Renamed the file with default settings from `SM_Settings.php` to `DefaultSettings.php`
+* Fixed occasional fatal error occuring when using the maps tracking category
 
 ## Semantic Maps 3.3
 
