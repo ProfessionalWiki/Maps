@@ -26,7 +26,7 @@
 	"semanticmaps-par-template": "정보 창 내용을 형식에 사용하는 틀입니다.",
 	"semanticmaps-par-geocodecontrol": "좌표화 컨트롤을 보여줍니다.",
 	"semanticmaps-par-activeicon": "활성화된 문서는 쿼리 결과와 같을 때 아이콘이 기본값 표시기 대신에 표시해야 합니다",
-	"semanticmaps-par-pagelabel": "\"예\"로 설정하면, 모든 마커가 마커의 좌표를 포함하는 문서로 연결된 링크와 \"inlineLabel\"을 가집니다.",
+	"semanticmaps-par-pagelabel": "\"yes\"로 설정하면, 모든 마커가 마커의 좌표를 포함하는 문서로 연결된 링크와 \"inlineLabel\"을 가집니다.",
 	"semanticmaps-kml-text": "각 문서와 연관된 텍스트입니다. 추가적인 쿼리된 속성이 있으면 덮어씁니다.",
 	"semanticmaps-kml-title": "결과에 대한 기본 제목",
 	"semanticmaps-kml-linkabsolute": "링크는 (상대적와 반대인) 절대적이어야 합니다",
