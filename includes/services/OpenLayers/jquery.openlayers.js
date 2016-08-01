@@ -593,12 +593,6 @@
 			}
 		}
 
-		if (options.resizable) {
-			mw.loader.using('ext.maps.resizable', function () {
-				_this.resizable();
-			});
-		}
-
 
 
 		if (options.copycoords) {
