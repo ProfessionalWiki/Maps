@@ -84,8 +84,6 @@
 	"maps-googlemaps3-par-zoomstyle": "ズーム コントロールのスタイルです。",
 	"maps-googlemaps3-par-typestyle": "種類コントロールのスタイルです。",
 	"maps-googlemaps3-par-kml": "地図に読み込む KML ファイルです。",
-	"maps-osm-par-thumbs": "縮小版を表示",
-	"maps-osm-par-photos": "写真を表示",
 	"mapeditor": "地図の編集",
 	"specialpages-group-maps": "地図",
 	"mapeditor-parser-error": "メタデータの構文解析でエラーが発生しました。利用者の入力を無視しています。",

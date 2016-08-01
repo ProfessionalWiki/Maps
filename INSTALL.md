@@ -12,20 +12,26 @@ These are the installation and configuration instructions for the [Maps extensio
 		<th>Git branch</th>
 	</tr>
 	<tr>
-		<th><a href="RELEASE-NOTES.md">Maps 3.7.x</a></th>
+		<th><a href="RELEASE-NOTES.md">Maps 3.8.x</a></th>
 		<td>Development version</td>
 		<td>Future</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/master">master</a></td>
 	</tr>
 	<tr>
-		<th><a href="RELEASE-NOTES.md">Maps 3.6.x</a></th>
+		<th><a href="RELEASE-NOTES.md">Maps 3.7.x</a></th>
 		<td>Stable release</td>
+		<td>2016-06-21</td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.7.0">3.7.0</a></td>
+	</tr>
+	<tr>
+		<th><a href="RELEASE-NOTES.md">Maps 3.6.x</a></th>
+		<td>Obsolete release</td>
 		<td>2016-05-26</td>
-		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.5.0">3.6.0</a></td>
+		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.6.0">3.6.0</a></td>
 	</tr>
 	<tr>
 		<th><a href="RELEASE-NOTES.md">Maps 3.5.x</a></th>
-		<td>Stable release</td>
+		<td>Obsolete release</td>
 		<td>2016-04-01</td>
 		<td><a href="https://github.com/JeroenDeDauw/Maps/tree/3.5.0">3.5.0</a></td>
 	</tr>
@@ -182,12 +188,6 @@ Now using Composer, install Maps
 
 As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki and verifying the
 Maps extension is listed.
-
-#### Custom image layers support (experimental)
-
-For support of the experimental custom image layers feature you have to run the MediaWiki update script.
-
-    php maintenance/update.php
 
 ## Configuration
 

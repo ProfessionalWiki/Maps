@@ -148,7 +148,7 @@
 	"maps-googlemaps3-par-kmlrezoom": "Rezoom the map after the KML layers have been loaded.",
 	"maps-googlemaps3-par-poi": "Show points of interest.",
 	"maps-googlemaps3-par-clustergridsize": "The grid size of a cluster in pixels.",
-	"maps-googlemaps3-par-clustermaxzoom": "The maximum zoom level that a marker can be part of a cluster.",
+	"maps-googlemaps3-par-clustermaxzoom": "The maximum zoom level where clusters may exist.",
 	"maps-googlemaps3-par-clusterzoomonclick": "Whether the default behaviour of clicking on a cluster is to zoom into it.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Whether the center of each cluster should be the average of all markers in the cluster.",
 	"maps-googlemaps3-par-clusterminsize": "The minimum number of markers to be in a cluster before the markers are hidden and a count is shown.",

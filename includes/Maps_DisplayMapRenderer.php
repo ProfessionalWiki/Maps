@@ -224,69 +224,10 @@ class MapsDisplayMapRenderer {
 					$layerNames[] = $lcLayerOrGroup;
 				}
 			}
-			// Image layers. Check validity and add if not present yet:
-			else {
-				$layerParts = explode( ';', $layerOrGroup, 2 );
-				$layerGroup = $layerParts[0];
-				$layerName = count( $layerParts ) > 1 ? $layerParts[1] : null;
-
-				$title = Title::newFromText( $layerGroup, Maps_NS_LAYER );
-
-				if ( $title !== null && $title->getNamespace() == Maps_NS_LAYER ) {
-					// TODO: FIXME: This shouldn't be here and using $wgParser, instead it should
-					//  be somewhere around MapsBaseMap::renderMap. But since we do a lot more than
-					//  'parameter manipulation' in here, we already diminish the information needed
-					//  for this which will never arrive there.
-					global $wgParser;
-					// add dependency to the layer page so if the layer definition gets updated,
-					// the page where it is used will be updated as well:
-					$rev = Revision::newFromTitle( $title );
-					$revId = null;
-					if( $rev !== null ) {
-						$revId = $rev->getId();
-					}
-					$wgParser->getOutput()->addTemplate( $title, $title->getArticleID(), $revId );
-
-					// if the whole layer group is not yet loaded into the map and the group exists:
-					if( !in_array( $layerGroup, $layerNames )
-						&& $title->exists()
-					) {
-						if( $layerName !== null ) {
-							// load specific layer with name:
-							$layer = MapsLayers::loadLayer( $title, $layerName );
-							$layers = new MapsLayerGroup( $layer );
-							$usedLayer = $layerOrGroup;
-						}
-						else {
-							// load all layers from group:
-							$layers = MapsLayers::loadLayerGroup( $title );
-							$usedLayer = $layerGroup;
-						}
-
-						foreach( $layers->getLayers() as $layer ) {
-							if( ( // make sure named layer is only taken once (in case it was requested on its own before)
-									$layer->getName() === null
-									|| !in_array( $layerGroup . ';' . $layer->getName(), $layerNames )
-								)
-								&& $layer->isOk()
-							) {
-								$layerDefs[] = $layer->getJavaScriptDefinition();
-							}
-						}
-
-						$layerNames[] = $usedLayer; // have to add this after loop of course!
-					}
-				}
-				else {
-					wfWarn( "Invalid layer ($layerOrGroup) encountered after validation." );
-				}
-			}
 		}
 
 		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( self::getLayerDependencies( $layerNames ) );
 
-//		print_r( $layerDefs );
-//		die();
 		return $layerDefs;
 	}
 
@@ -310,5 +251,5 @@ class MapsDisplayMapRenderer {
 
 		return array_unique( $layerDependencies );
 	}
-	
+
 }
