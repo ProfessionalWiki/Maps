@@ -21,6 +21,15 @@ use ValueParsers\StringValueParser;
 class LocationParser extends StringValueParser {
 
 	/**
+	 * @param ParserOptions|null $options
+	 */
+	public function __construct( ParserOptions $options = null ) {
+		parent::__construct( $options );
+
+		$this->defaultOption( 'useaddressastitle', false );
+	}
+
+	/**
 	 * @see StringValueParser::stringParse
 	 *
 	 * @since 3.0
@@ -33,6 +42,8 @@ class LocationParser extends StringValueParser {
 	public function stringParse( $value ) {
 		$separator = '~';
 
+		$useaddressastitle = $this->options->getOption('useaddressastitle');
+
 		$metaData = explode( $separator, $value );
 
 		$coordinatesOrAddress = array_shift( $metaData );
@@ -43,7 +54,7 @@ class LocationParser extends StringValueParser {
 		if ( $metaData !== [] ) {
 			$this->setTitleOrLink( $location, array_shift( $metaData ) );
 		}
-		else if ( $this->isAddress( $coordinatesOrAddress ) ) {
+		else if ( $useaddressastitle && $this->isAddress( $coordinatesOrAddress ) ) {
 			$location->setTitle( $coordinatesOrAddress );
 		}
 
