@@ -18,7 +18,7 @@
                 return;
             }
             $( window.maps.googlemapsList ).each( function( index, map ) {
-                if (!map.options.ajaxquery && !map.options.ajaxcoordproperty) {
+                if (!map.options.ajaxquery || !map.options.ajaxcoordproperty) {
                     return;
                 }
                 $( mapEvents ).each( function( index, event ) {
