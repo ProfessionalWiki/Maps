@@ -297,5 +297,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		// user does not provide one.
 		$GLOBALS['egMapsLeafletZoom'] = 14;
 
+		// String. The default tilesurl for the leaflet map. This value will only be used when the
+		// user does not provide one.
+		$GLOBALS['egMapsLeafletTilesurlDefault'] = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
 
 $GLOBALS['egMapsGlobalJSVars'] = [];
