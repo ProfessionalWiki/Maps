@@ -120,6 +120,7 @@
 	"maps_googlemaps3": "Google Maps v3",
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Allows setting the default zoom level of the map.",
+	"maps-leaflet-par-tilesurl": "Tiles source url for the leaflet map.",
 	"maps_openlayers": "OpenLayers",
 	"maps_click_to_activate": "Click to activate map",
 	"maps_centred_on": "Map centered on $1, $2.",

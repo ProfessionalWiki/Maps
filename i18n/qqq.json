@@ -129,6 +129,7 @@
 	"maps_googlemaps3": "Lable for a result format on SMW's special page \"Ask\".\n\n{{optional}}",
 	"maps_leaflet": "This is a field label.\n\n{{optional}}",
 	"maps-leaflet-par-defzoom": "{{maps-par|leaflet|defzoom}}",
+	"maps-leaflet-par-tilesurl": "{{maps-par|leaflet|tilesurl}}",
 	"maps_openlayers": "Lable for a result format on SMW's special page \"Ask\".\n\n{{optional}}",
 	"maps_click_to_activate": "This is an informatory message.",
 	"maps_centred_on": "This is an informatory message.\n\nParameters:\n* $1 - latitude\n* $2 - longitude",

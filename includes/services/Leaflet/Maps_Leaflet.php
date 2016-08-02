@@ -44,6 +44,12 @@ class MapsLeaflet extends MapsMappingService {
 			'default' => $GLOBALS['egMapsResizableByDefault'],
 			'message' => 'maps-par-resizable'
 		];
+
+		$params['tilesurl'] = [
+			'type' => 'boolean',
+			'default' => $GLOBALS['egMapsLeafletTilesurlDefault'],
+			'message' => 'maps-leaflet-par-tilesurl'
+		];
 	}
 
 	/**

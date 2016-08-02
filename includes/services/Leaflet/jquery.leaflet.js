@@ -153,7 +153,7 @@
 			this.map = map;
 
 			// add an OpenStreetMap tile layer
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			L.tileLayer(options.tilesurl, {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			}).addTo(map);
 
