@@ -25,7 +25,9 @@
 		* @param {Object} markerData Contains the fields lat, lon, title, text and icon
 		* @return {L.Marker}
 		*/
-		this.addMarker = function (properties) {
+		this.addMarker = function (properties, dontAddToMap) {
+			dontAddToMap = dontAddToMap || false;
+
 			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
 			if (!properties.hasOwnProperty('icon') || properties.icon === '') {
@@ -41,10 +43,14 @@
 				icon:icon
 			};
 
-			var marker = L.marker( [properties.lat, properties.lon], markerOptions ).addTo( this.map );
+			var marker = L.marker( [properties.lat, properties.lon], markerOptions );
+			if (!dontAddToMap) {
+				marker.addTo( this.map );
+			}
 			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
 
 			this.markers.push(marker);
+			return marker;
 		};
 
 		this.removeMarker = function (marker) {
@@ -166,9 +172,20 @@
 			if (!options.locations) {
 				options.locations = [];
 			}
+
 			// Add the markers.
-			for (var i = options.locations.length - 1; i >= 0; i--) {
-				this.addMarker(options.locations[i]);
+			if (!options.markercluster) {
+				for (var i = options.locations.length - 1; i >= 0; i--) {
+					this.addMarker(options.locations[i]);
+				}
+			} else {
+				var clusters = L.markerClusterGroup();
+				for (var i = options.locations.length - 1; i >= 0; i--) {
+					var marker = this.addMarker(options.locations[i], true);
+					clusters.addLayer(marker);
+				}
+
+				this.map.addLayer(clusters);
 			}
 
 			// Add lines
@@ -228,7 +245,14 @@
 			}
 		};
 
-		this.setup();
+		if (!options.markercluster) {
+			this.setup();
+		} else {
+			mw.loader.using('ext.maps.leaflet.markercluster', function() {
+				_this.setup();
+			});
+		}
+
 
 		return this;
 

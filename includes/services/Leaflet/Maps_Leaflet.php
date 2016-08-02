@@ -44,6 +44,12 @@ class MapsLeaflet extends MapsMappingService {
 			'default' => $GLOBALS['egMapsResizableByDefault'],
 			'message' => 'maps-par-resizable'
 		];
+
+		$params['markercluster'] = [
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-markercluster',
+		];
 	}
 
 	/**
@@ -86,9 +92,12 @@ class MapsLeaflet extends MapsMappingService {
 
 	protected function getDependencies() {
 		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
+		$leafletClusterPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet.markercluster';
 		return [
 			Html::linkedStyle( "$leafletPath/leaflet.css" ),
 			Html::linkedScript( "$leafletPath/leaflet.js" ),
+			//Html::linkedStyle( "$leafletClusterPath/MarkerCluster.css" ),
+			//Html::linkedScript( "$leafletClusterPath/leaflet.markercluster.js" ),
 		];
 	}
 

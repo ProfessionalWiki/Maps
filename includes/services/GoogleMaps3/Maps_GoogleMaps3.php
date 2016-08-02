@@ -177,7 +177,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['markercluster'] = [
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-googlemaps3-par-markercluster',
+			'message' => 'maps-par-markercluster',
 		];
 
 		$params['clustergridsize'] = [

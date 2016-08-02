@@ -45,6 +45,22 @@ call_user_func( function() {
 			'maps-searchmarkers-text',
 		],
 	];
+
+	$wgResourceModules['ext.maps.leaflet.markercluster'] = [
+		'localBasePath' => __DIR__ . '/leaflet.markercluster',
+		'remoteExtPath' => end( $pathParts ),
+		'group' => 'ext.maps',
+		'targets' => [
+			'mobile',
+			'desktop'
+		],
+		'scripts' => [
+			'leaflet.markercluster.js',
+		],
+		'styles' => [
+			'MarkerCluster.css',
+		],
+	];
 } );
 
 /**
