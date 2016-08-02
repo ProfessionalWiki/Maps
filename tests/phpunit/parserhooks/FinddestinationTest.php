@@ -95,13 +95,10 @@ class FinddestinationTest extends ParserHookTest {
 						'location' => (string)$locationString,
 					];
 
-					$location = new Location( $coordinateParser->parse( $locationString )->getValue() );
-					$location->setTitle( (string)$locationString );
-
 					$expected = [
 						'distance' => $expectedDistance,
 						'bearing' => (float)$bearing,
-						'location' => $location,
+						'location' => new Location( $coordinateParser->parse( $locationString )->getValue() ),
 					];
 
 					$argLists[] = [ $values, $expected ];

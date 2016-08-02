@@ -6,6 +6,7 @@ use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 use Maps\LocationParser;
 use Title;
+use ValueParsers\ParserOptions;
 use ValueParsers\ValueParser;
 
 /**
@@ -143,23 +144,26 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	public function testGivenAddressAndNoTitle_addressIsSetAsTitle() {
 		$options = new ParserOptions( ['useaddressastitle' => true] );
-		$location = ( new LocationParser( $options ) )->parse( 'Tempelhofer Ufer 42' );
+		$parser = new LocationParser( $options );
+		$location = $parser->parse( 'Tempelhofer Ufer 42' );
 
 		$this->assertSame( 'Tempelhofer Ufer 42', $location->getTitle() );
 	}
 
 	public function testGivenAddressAndTitle_addressIsNotUsedAsTitle() {
 		$options = new ParserOptions( ['useaddressastitle' => true] );
-		$location = ( new LocationParser( $options ) )->parse( 'Tempelhofer Ufer 42~Great title of doom' );
+		$parser = new LocationParser( $options );
+		$location = $parser->parse( 'Tempelhofer Ufer 42~Great title of doom' );
 
 		$this->assertSame( 'Great title of doom', $location->getTitle() );
 	}
 
 	public function testGivenCoordinatesAndNoTitle_noTitleIsSet() {
 		$options = new ParserOptions( ['useaddressastitle' => true] );
-		$location = ( new LocationParser( $options ) )->parse( '4,2' );
+		$parser = new LocationParser( $options );
+		$location = $parser->parse( '4,2' );
 
-		$this->assertSame( '', $location->getTitle() );
+		$this->assertFalse( $location->getOptions()->hasOption( 'title' ) );
 	}
 
 }

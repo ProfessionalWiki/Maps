@@ -7,6 +7,7 @@ use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 use MWException;
 use Title;
+use ValueParsers\ParserOptions;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 
@@ -42,7 +43,7 @@ class LocationParser extends StringValueParser {
 	public function stringParse( $value ) {
 		$separator = '~';
 
-		$useaddressastitle = $this->options->getOption('useaddressastitle');
+		$useaddressastitle = $this->getOption('useaddressastitle');
 
 		$metaData = explode( $separator, $value );
 
@@ -143,10 +144,10 @@ class LocationParser extends StringValueParser {
 			$coordinateParser->parse( $coordsOrAddress );
 		}
 		catch ( ParseException $parseException ) {
-			return false;
+			return true;
 		}
 
-		return true;
+		return false;
 	}
 
 }
