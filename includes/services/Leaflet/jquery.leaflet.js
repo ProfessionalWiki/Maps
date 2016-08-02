@@ -149,6 +149,14 @@
 			if (options.minzoom !== false ) mapOptions.minZoom = options.minzoom;
 			if (options.maxzoom !== false ) mapOptions.maxZoom = options.maxzoom;
 
+			if (options.enablefullscreen) {
+				mw.loader.using('ext.maps.leaflet.fullscreen');
+				mapOptions.fullscreenControl = true;
+				mapOptions.fullscreenControlOptions= {
+					position: 'topleft'
+				};
+			}
+
 			var map = L.map( this.get(0), mapOptions ).fitWorld();
 			this.map = map;
 

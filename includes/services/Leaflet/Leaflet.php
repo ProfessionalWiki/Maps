@@ -45,6 +45,22 @@ call_user_func( function() {
 			'maps-searchmarkers-text',
 		],
 	];
+
+	$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
+		'localBasePath' => __DIR__ . '/leaflet.fullscreen',
+		'remoteExtPath' => end( $pathParts ),
+		'group' => 'ext.maps',
+		'targets' => [
+			'mobile',
+			'desktop'
+		],
+		'scripts' => [
+			'Control.FullScreen.js',
+		],
+		'styles' => [
+			'Control.FullScreen.css',
+		],
+	];
 } );
 
 /**

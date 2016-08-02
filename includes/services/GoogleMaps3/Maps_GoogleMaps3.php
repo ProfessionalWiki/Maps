@@ -252,7 +252,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['enablefullscreen'] = [
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-googlemaps3-par-enable-fullscreen',
+			'message' => 'maps-par-enable-fullscreen',
 		];
 	}
 
