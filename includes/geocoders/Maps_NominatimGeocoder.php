@@ -39,7 +39,7 @@ final class MapsNominatimGeocoder extends \Maps\Geocoder {
 			'limit' => 1,
 		];
 
-		return 'http://nominatim.openstreetmap.org/search?' . wfArrayToCgi($urlArgs);
+		return 'https://nominatim.openstreetmap.org/search?' . wfArrayToCgi($urlArgs);
 	}
 	
 	/**

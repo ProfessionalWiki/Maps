@@ -43,7 +43,7 @@ final class MapsGoogleGeocoder extends \Maps\Geocoder {
 			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
 		}
 
-		return 'http://maps.googleapis.com/maps/api/geocode/xml?' . wfArrayToCgi($urlArgs);
+		return 'https://maps.googleapis.com/maps/api/geocode/xml?' . wfArrayToCgi($urlArgs);
 	}
 	
 	/**
