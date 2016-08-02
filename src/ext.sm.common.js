@@ -50,6 +50,7 @@ window.sm = new ( function( $ ) {
                     map.addMarker( markerOptions );
                 }
             }
+            map.createMarkerCluster();
         } );
     };
 
