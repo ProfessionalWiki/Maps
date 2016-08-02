@@ -1,9 +1,26 @@
-These are the release notes for the [Maps extension](../README.md).
+These are the release notes for the [Maps extension](README.md).
 
+## Maps 3.8
+
+Under development.
+
+* Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
+
+## Maps 3.7
+
+Released on June 21st, 2016.
+
+* Added [rotate control support](https://www.semantic-mediawiki.org/wiki/Maps_examples/Google_Maps_with_rotate_control) for Google Maps (by Peter Grassberger)
+* Changed coordinate display on OpenLayers maps from long-lat to lat-long (by Peter Grassberger)
+* Upgraded google marker cluster library to its latest version (2.1.2) (by Peter Grassberger)
+* Upgraded Leaflet library to its latest version (0.7.7) (by Peter Grassberger)
+* Added missing system messages (by Karsten Hoffmeyer)
+* Internal code enhancements (by Peter Grassberger)
+* Removed broken custom map layer functionality. You no longer need to run update.php for full installation.
 
 ## Maps 3.6
 
-Development version
+Released on May 26th, 2016.
 
 * Dropped support for MediaWiki older than 1.23
 * Dropped support for PHP older than 5.5
@@ -77,7 +94,7 @@ Released on January 19th, 2015.
 Released on January 13th, 2015.
 
 * Fixed `geocode` right
-* Fixed coordinate precision issue after breaking changes in DataValues Geo 
+* Fixed coordinate precision issue after breaking changes in DataValues Geo
 
 ## Maps 3.2
 
@@ -306,11 +323,11 @@ MediaWiki unit testing support.
 #### New features ####
 
 * Tag support for these parser hooks (which previously only had parser function support):
-** Coordinates
-** Distance
-** Finddestination
-** Geocode
-** Geodistance
+    * Coordinates
+    * Distance
+    * Finddestination
+    * Geocode
+    * Geodistance
 * Thumbs and photos parameters for the OSM service.
 
 #### Bug fixes ####
@@ -365,7 +382,7 @@ with all the globals previously needed for this.
 * Moved marker JavaScript creation for display_points to the mapping service class for all features.
 * Moved default zoom level access method to the mapping service class for all features.
 * Improved the way marker data is turned into JavaScript variables.
-* Improved coordinate recognition regexes. 
+* Improved coordinate recognition regexes.
 
 #### Bug fixes ####
 
@@ -761,7 +778,7 @@ Changes in 0.3 discussed on the authors blog:
 * [Final changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/13/final-changes-for-maps-and-sm-0-3/)
 * [New features in Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/07/new-features-in-maps-and-sm-0-3/)
 * [Structural changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/05/structural-changes-for-maps-and-sm-0-3/)
- 
+
 ####New features####
 
 * Multi location parser functions. Two completely new parser functions have been added that

@@ -28,7 +28,6 @@
 	"maps-layer-type-supported-by": "Denne lagtypen kan bare brukes med {{PLURAL:$2|karttjenesten $1|disse karttjenestene: $1}}.",
 	"maps-coordinates-description": "Parser-hook for å formatere koordinater, fra og til vilkårlige av de støttede formatene.",
 	"maps-displaymap-description": "Vis geografiske kart uten wiki-spesifiserte markører.",
-	"maps-displaypoint-description": "Vis geografiske kart med en eller flere wiki-spesifiserte markører.",
 	"maps-distance-description": "Gjør om en distanse basert på en viss støttet enhet til tilsvarende verdi i en annen enhet.",
 	"maps-finddestination-description": "Finn et mål med gitt startpunkt (som kan være i ett av de støttede formatene), en initial retning og distanse.",
 	"maps-geocode-description": "Gjør tilgjengelig geokoding av adresser, dvs. gjør menneskelesbare lokasjoner til koordinatsett. Det finnes støtte for flere geokodingstjenester, som ikke må forveksles med mappingtjenester.",

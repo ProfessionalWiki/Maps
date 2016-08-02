@@ -90,7 +90,7 @@
 				labelClass:'markerwithlabel'
 			};
 
-			if (markerData.icon !== '') {
+			if (!markerData.hasOwnProperty('icon') || markerData.icon !== '') {
 				markerOptions.icon = markerData.icon;
 			}
 
@@ -256,8 +256,6 @@
 								label.appendChild(text);
 
 								toggleDiv.appendChild(label);
-
-								console.log(toggleDiv);
 							})(docs[i]);
 						}
 						_this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
@@ -459,6 +457,7 @@
 			mapOptions.mapTypeControl = $.inArray('type', options.controls) != -1;
 			mapOptions.scaleControl = $.inArray('scale', options.controls) != -1;
 			mapOptions.streetViewControl = $.inArray('streetview', options.controls) != -1;
+			mapOptions.rotateControl = $.inArray('rotate', options.controls) != -1;
 
 			for (i in options.types) {
 				if (typeof( options.types[i] ) !== 'function') {
@@ -654,7 +653,7 @@
 						var marker = _this.markers[i];
 						if (options.searchmarkers == 'title') {
 							haystack = marker.title;
-						} else if (options.searchmarkers == 'all') {
+						} else {
 							haystack = marker.title + marker.text;
 						}
 

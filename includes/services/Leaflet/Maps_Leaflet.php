@@ -29,7 +29,7 @@ class MapsLeaflet extends MapsMappingService {
 			'type' => 'integer',
 			'range' => [ 0, 20 ],
 			'default' => false,
-			'message' => 'maps-leaflet-par-zoom'
+			'message' => 'maps-par-zoom'
 		];
 
 		$params['defzoom'] = [
@@ -42,7 +42,7 @@ class MapsLeaflet extends MapsMappingService {
 		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => $GLOBALS['egMapsResizableByDefault'],
-			'message' => 'maps-leaflet-par-resizable'
+			'message' => 'maps-par-resizable'
 		];
 	}
 
@@ -88,7 +88,6 @@ class MapsLeaflet extends MapsMappingService {
 		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
 		return [
 			Html::linkedStyle( "$leafletPath/leaflet.css" ),
-			'<!--[if lte IE 8]>' . Html::linkedStyle( "$leafletPath/leaflet.ie.css" ). '<![endif]-->',
 			Html::linkedScript( "$leafletPath/leaflet.js" ),
 		];
 	}

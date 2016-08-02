@@ -4,13 +4,15 @@
  *
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
  * @author Daniel Werner
+ * @author Peter Grassberger < petertheone@gmail.com >
  *
  * @todo This whole JS is very blown up and could use some quality refactoring.
  */
 
-(function ($, mw) {
+(function ($, mw, OpenLayers) {
 	$.fn.openlayers = function (mapElementId, options) {
 
+		this.map = null;
 		this.options = options;
 
 		OpenLayers._getScriptLocation = function() {
@@ -20,7 +22,7 @@
 		this.getOLMarker = function (markerLayer, markerData) {
 			var marker;
 
-			if (markerData.icon !== "") {
+			if (markerData.hasOwnProperty('icon') && markerData.icon !== "") {
 				marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerData.icon));
 			} else {
 				marker = new OpenLayers.Marker(markerData.lonlat, new OpenLayers.Icon(markerLayer.defaultIcon));
@@ -64,45 +66,56 @@
 				bounds = new OpenLayers.Bounds();
 			}
 
-			var groupLayers = new Object();
-			var groups = 0;
+			this.groupLayers = new Object();
+			this.groups = 0;
 
 			for (var i = locations.length - 1; i >= 0; i--) {
-
-				var location = locations[i];
-
-				// Create a own marker-layer for the marker group:
-				if (!groupLayers[ location.group ]) {
-					// in case no group is specified, use default marker layer:
-					var layerName = location.group != '' ? location.group : mw.msg('maps-markers');
-					var curLayer = new OpenLayers.Layer.Markers(layerName);
-					groups++;
-					curLayer.id = 'markerLayer' + groups;
-					// define default icon, one of ten in different colors, if more than ten layers, colors will repeat:
-					curLayer.defaultIcon = mw.config.get( 'egMapsScriptPath' ) + '/includes/services/OpenLayers/OpenLayers/img/marker' + ( ( groups + 10 ) % 10 ) + '.png';
-					map.addLayer(curLayer);
-					groupLayers[ location.group ] = curLayer;
-				} else {
-					// if markers of this group exist already, they have an own layer already
-					var curLayer = groupLayers[ location.group ];
-				}
-
-				location.lonlat = new OpenLayers.LonLat(location.lon, location.lat);
-
-				if (!hasImageLayer) {
-					location.lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
-				}
-
-				if (bounds != null) bounds.extend(location.lonlat); // Extend the bounds when no center is set.
-				var marker = this.getOLMarker(curLayer, location);
-				this.markers.push({
-					target:marker,
-					data:location
-				});
-				curLayer.addMarker(marker); // Create and add the marker.
+				this.addMarker( locations[i] );
 			}
 
 			if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center.
+		};
+
+		this.addMarker = function (markerData) {
+			markerData.group = !markerData.hasOwnProperty('group') ? '' : markerData.group;
+			// Create a own marker-layer for the marker group:
+			if (!this.groupLayers[ markerData.group ]) {
+				// in case no group is specified, use default marker layer:
+				var layerName = markerData.group != '' ? markerData.group : mw.msg('maps-markers');
+				var curLayer = new OpenLayers.Layer.Markers(layerName);
+				this.groups++;
+				curLayer.id = 'markerLayer' + this.groups;
+				// define default icon, one of ten in different colors, if more than ten layers, colors will repeat:
+				curLayer.defaultIcon = mw.config.get( 'egMapsScriptPath' ) + '/includes/services/OpenLayers/OpenLayers/img/marker' + ( ( this.groups + 10 ) % 10 ) + '.png';
+				map.addLayer(curLayer);
+				this.groupLayers[ markerData.group ] = curLayer;
+			} else {
+				// if markers of this group exist already, they have an own layer already
+				var curLayer = this.groupLayers[ markerData.group ];
+			}
+
+			markerData.lonlat = new OpenLayers.LonLat(markerData.lon, markerData.lat);
+
+			if (!hasImageLayer) {
+				markerData.lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+			}
+
+			var marker = this.getOLMarker(curLayer, markerData);
+			this.markers.push({
+				target:marker,
+				data:markerData
+			});
+			curLayer.addMarker(marker); // Create and add the marker.
+		};
+
+		this.removeMarkers = function () {
+			var map = this.map;
+			$.each(this.groupLayers, function(index, layer) {
+				map.removeLayer(layer);
+			});
+			this.groupLayers = new Object();
+			this.groups = 0;
+			this.markers = [];
 		};
 
 		this.addControls = function (map, controls, mapElement) {
@@ -127,6 +140,18 @@
 			}
 
 			map.addControl(new OpenLayers.Control.Attribution());
+			map.addControl(new OpenLayers.Control.MousePosition({
+				formatOutput: function(lonLat) {
+					var digits = parseInt(this.numDigits);
+					var newHtml =
+						this.prefix +
+						lonLat.lat.toFixed(digits) +
+						this.separator +
+						lonLat.lon.toFixed(digits) +
+						this.suffix;
+					return newHtml;
+				}
+			}));
 		};
 
 		this.addLine = function (properties) {
@@ -235,7 +260,7 @@
 			var OLControls = [
 				'ArgParser', 'Attribution', 'Button', 'DragFeature', 'DragPan',
 				'DrawFeature', 'EditingToolbar', 'GetFeature', 'KeyboardDefaults', 'LayerSwitcher',
-				'Measure', 'ModifyFeature', 'MouseDefaults', 'MousePosition', 'MouseToolbar',
+				'Measure', 'ModifyFeature', 'MouseDefaults', 'MouseToolbar',
 				'Navigation', 'NavigationHistory', 'NavToolbar', 'OverviewMap', 'Pan',
 				'Panel', 'PanPanel', 'PanZoom', 'PanZoomBar', 'Permalink',
 				'Scale', 'ScaleLine', 'SelectFeature', 'Snapping', 'Split',
@@ -602,7 +627,7 @@
 					);
 				}
 
-			})
+			});
 			var click = new OpenLayers.Control.Click({
 				eventMethods:{
 					'rightclick':function (e) {
@@ -674,7 +699,7 @@
 		}
 
 		function openBubble(properties) {
-			var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy
+			var mousePos = map.getControlsByClass("OpenLayers.Control.MousePosition")[0].lastXy;
 			var lonlat = map.getLonLatFromPixel(mousePos);
 			var popup = new OpenLayers.Popup(null, lonlat, null, properties.text, true, function () {
 				map.getControlsByClass('OpenLayers.Control.SelectFeature')[0].unselectAll();
@@ -686,4 +711,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki);
+})(jQuery, window.mediaWiki, OpenLayers);

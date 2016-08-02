@@ -23,7 +23,7 @@ class CircleTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Elements\Circle';
+		return Circle::class;
 	}
 
 	public function validConstructorProvider() {

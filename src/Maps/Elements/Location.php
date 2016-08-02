@@ -325,13 +325,24 @@ class Location extends BaseElement {
 		$array = [
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
-			'alt' => 0,
-			'address' => $this->getAddress(),
 			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
-			'group' => $this->hasGroup() ?  $this->getGroup() : $defGroup,
-			'inlineLabel' => $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel,
-			'visitedicon' => $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon,
 		];
+		$val = $this->getAddress();
+		if( $val !== '' ) {
+			$array['address'] = $val;
+		}
+		$val = $this->hasGroup() ? $this->getGroup() : $defGroup;
+		if( !empty( $val ) ) {
+			$array['group'] = $val;
+		}
+		$val = $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel;
+		if( !empty( $val ) ) {
+			$array['inlineLabel'] = $val;
+		}
+		$val = $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon;
+		if( !empty( $val ) ) {
+			$array['visitedicon'] = $val;
+		}
 
 		return array_merge( $parentArray , $array );
 	}

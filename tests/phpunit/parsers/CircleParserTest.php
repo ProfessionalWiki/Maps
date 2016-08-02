@@ -4,6 +4,7 @@ namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\CircleParser;
+use Maps\Elements\Circle;
 
 /**
  * @covers Maps\CircleParser
@@ -22,7 +23,7 @@ class CircleParserTest extends \PHPUnit_Framework_TestCase {
 
 		$circle = $parser->parse( '57.421,23.90625:32684.605182' );
 
-		$this->assertInstanceOf( 'Maps\Elements\Circle', $circle );
+		$this->assertInstanceOf( Circle::class, $circle );
 
 		$expectedLatLong = new LatLongValue( 57.421, 23.90625 );
 		$this->assertTrue( $expectedLatLong->equals( $circle->getCircleCentre() ) );
@@ -35,7 +36,7 @@ class CircleParserTest extends \PHPUnit_Framework_TestCase {
 
 		$circle = $parser->parse( '57.421,23.90625:32684.605182~title~text' );
 
-		$this->assertInstanceOf( 'Maps\Elements\Circle', $circle );
+		$this->assertInstanceOf( Circle::class, $circle );
 
 		$this->assertEquals( 'title', $circle->getTitle() );
 		$this->assertEquals( 'text', $circle->getText() );

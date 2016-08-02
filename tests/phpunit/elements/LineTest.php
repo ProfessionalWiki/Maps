@@ -23,7 +23,7 @@ class LineTest extends BaseElementTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Elements\Line';
+		return Line::class;
 	}
 
 	public function validConstructorProvider() {
@@ -65,7 +65,7 @@ class LineTest extends BaseElementTest {
 		$this->assertEquals( count( $arguments[0] ), count( $coordinates ) );
 
 		foreach ( $coordinates as $geoCoordinate ) {
-			$this->assertInstanceOf( 'DataValues\LatLongValue', $geoCoordinate );
+			$this->assertInstanceOf( LatLongValue::class, $geoCoordinate );
 		}
 	}
 

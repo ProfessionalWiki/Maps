@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Leaflet related files of the Maps extension.
+ * This group contains all Leaflet related files of the Maps extension.
  *
  * @defgroup Leaflet
  */
@@ -59,9 +59,9 @@ function efMapsInitLeaflet() {
 
 	$wgAutoloadClasses['MapsLeaflet'] = __DIR__ . '/Maps_Leaflet.php';
 
-	MapsMappingServices::registerService( 'leaflet', 'MapsLeaflet' );
+	MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
 	$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
-	$leafletMaps->addFeature( 'display_map', 'MapsDisplayMapRenderer' );
+	$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
 
 	return true;
 }

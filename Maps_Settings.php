@@ -160,9 +160,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// Namespace index start of the mapping namespaces.
 	$GLOBALS['egMapsNamespaceIndex'] = 420;
 
-	// Boolean. Controls if you can specify images using a full path in layers.
-	$GLOBALS['egMapsAllowExternalImages'] = true;
-
 	// Boolean. Sets if pages with maps should be put in special category
 	$GLOBALS['egMapsEnableCategory'] = true;
 
@@ -170,6 +167,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 // Specific mapping service configuration
 
 	// Google Maps v3
+
+		// String. Google Maps v3 API Key
+		$GLOBALS['egMapsGMaps3ApiKey'] = '';
 
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.

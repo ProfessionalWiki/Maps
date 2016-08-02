@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This groupe contains all Google Maps v3 related files of the Maps extension.
- * 
+ * This group contains all Google Maps v3 related files of the Maps extension.
+ *
  * @defgroup MapsGoogleMaps3 Google Maps v3
  */
 
 /**
- * This file holds the hook and initialization for the Google Maps v3 service. 
+ * This file holds the hook and initialization for the Google Maps v3 service.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -105,11 +105,11 @@ call_user_func( function() {
 } );
 
 /**
- * Initialization function for the Google Maps v3 service. 
- * 
+ * Initialization function for the Google Maps v3 service.
+ *
  * @since 0.6.3
  * @ingroup MapsGoogleMaps3
- * 
+ *
  * @return boolean true
  */
 function efMapsInitGoogleMaps3() {
@@ -117,11 +117,11 @@ function efMapsInitGoogleMaps3() {
 
 	$wgAutoloadClasses['MapsGoogleMaps3'] = __DIR__ . '/Maps_GoogleMaps3.php';
 
-	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
+	MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
 
 	// TODO: kill below code
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-	$googleMaps->addFeature( 'display_map', 'MapsDisplayMapRenderer' );
+	$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
 
 	return true;
 }

@@ -60,7 +60,8 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'zoom',
 		'type',
 		'scale',
-		'streetview'
+		'streetview',
+		'rotate'
 	];
 
 	/**
@@ -89,7 +90,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'type' => 'integer',
 			'range' => [ 0, 20 ],
 			'default' => self::getDefaultZoom(),
-			'message' => 'maps-googlemaps3-par-zoom',
+			'message' => 'maps-par-zoom',
 		];
 
 		$params['type'] = [
@@ -158,7 +159,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => $egMapsResizableByDefault,
-			'message' => 'maps-googlemaps3-par-resizable',
+			'message' => 'maps-par-resizable',
 		];
 
 		$params['kmlrezoom'] = [
@@ -244,7 +245,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		$params['searchmarkers'] = [
 			'default' => '',
-			'message' => 'maps-googlemaps3-par-searchmarkers',
+			'message' => 'maps-par-searchmarkers',
 			// new CriterionSearchMarkers() FIXME
 		];
 
@@ -322,6 +323,9 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			],
 			$urlArgs
 		);
+		if ( !empty( $GLOBALS['egMapsGMaps3ApiKey'] ) ) {
+			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
 
 		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
 	}

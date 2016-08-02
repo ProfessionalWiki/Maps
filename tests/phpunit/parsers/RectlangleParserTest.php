@@ -3,6 +3,7 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
+use Maps\Elements\Rectangle;
 use Maps\RectangleParser;
 
 /**
@@ -22,7 +23,7 @@ class RectangleParserTest extends \PHPUnit_Framework_TestCase {
 
 		$rectangle = $parser->parse( '51.8357775,33.83789:46,23.37890625' );
 
-		$this->assertInstanceOf( 'Maps\Elements\Rectangle', $rectangle );
+		$this->assertInstanceOf( Rectangle::class, $rectangle );
 
 		$expectedNorthEast = new LatLongValue( 51.8357775, 33.83789 );
 		$this->assertTrue( $expectedNorthEast->equals( $rectangle->getRectangleNorthEast() ) );
@@ -36,7 +37,7 @@ class RectangleParserTest extends \PHPUnit_Framework_TestCase {
 
 		$rectangle = $parser->parse( "51.8357775,33.83789:46,23.37890625~I'm a square~of doom" );
 
-		$this->assertInstanceOf( 'Maps\Elements\Rectangle', $rectangle );
+		$this->assertInstanceOf( Rectangle::class, $rectangle );
 
 		$this->assertEquals( "I'm a square", $rectangle->getTitle() );
 		$this->assertEquals( 'of doom', $rectangle->getText() );

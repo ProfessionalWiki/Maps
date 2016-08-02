@@ -22,7 +22,7 @@ class PolygonTest extends LineTest {
 	 * @return string
 	 */
 	public function getClass() {
-		return 'Maps\Elements\Polygon';
+		return Polygon::class;
 	}
 
 	/**

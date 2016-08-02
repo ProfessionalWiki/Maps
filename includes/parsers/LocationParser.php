@@ -106,7 +106,7 @@ class LocationParser extends StringValueParser {
 			return '';
 		}
 
-		return $title->getFullUrl();
+		return $title->getFullURL();
 	}
 
 	/**
