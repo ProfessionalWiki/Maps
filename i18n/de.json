@@ -146,7 +146,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Der Stil der Zoomsteuerung.",
 	"maps-googlemaps3-par-typestyle": "Der Stil der Steuerung zu den Kartenarten.",
 	"maps-googlemaps3-par-autoinfowindows": "Die Informationsfenster nach dem Laden der Seite automatisch öffnen oder nicht",
-	"maps-googlemaps3-par-kml": "Die auf die Karte zu ladenden KML-Dateien.",
+	"maps-par-kml": "Die auf die Karte zu ladenden KML-Dateien.",
 	"maps-googlemaps3-par-gkml": "Die von Google gehosteten KML-Dateien, die auf die Karte geladen werden sollen",
 	"maps-googlemaps3-par-fusiontables": "Die Kennungen der Google Fusion Tables, die auf die Karte geladen werden sollen",
 	"maps-googlemaps3-par-tilt": "Die Neigung der Karte bei der Nutzung von Google Maps.",

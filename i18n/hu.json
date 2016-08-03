@@ -54,7 +54,7 @@
 	"maps-googlemaps3-incompatbrowser": "A böngésződ nem kompatibilis a Google Maps v3-mal.",
 	"maps-googlemaps3-par-type": "Elsőre megjelenítendő térkép típusa.",
 	"maps-googlemaps3-par-zoomstyle": "A nagyítás irányításának stílusa.",
-	"maps-googlemaps3-par-kml": "Betöltendő KML fájlok.",
+	"maps-par-kml": "Betöltendő KML fájlok.",
 	"mapeditor": "Térkép szerkesztő",
 	"specialpages-group-maps": "Térképek",
 	"mapeditor-none-text": "Nincs",

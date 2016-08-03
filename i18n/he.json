@@ -148,7 +148,7 @@
 	"maps-googlemaps3-par-zoomstyle": "סגנון בקר התקריב.",
 	"maps-googlemaps3-par-typestyle": "סגנון בקר הסוג.",
 	"maps-googlemaps3-par-autoinfowindows": "לפתוח את כל חלונות המידע אחרי שהדף נטען.",
-	"maps-googlemaps3-par-kml": "קבצי KML שייטענו אל המפה.",
+	"maps-par-kml": "קבצי KML שייטענו אל המפה.",
 	"maps-googlemaps3-par-gkml": "קבצי KML שמתארחים בגוגל וייטענו אל המפה.",
 	"maps-googlemaps3-par-fusiontables": "מזהים של Google Fusion Tables שייטענו אל המפה.",
 	"maps-googlemaps3-par-tilt": "רכינה עבור המפה כאשר נעשה שימוש במפות גוגל.",

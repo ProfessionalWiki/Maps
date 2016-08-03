@@ -46,6 +46,22 @@ call_user_func( function() {
 		],
 	];
 
+	$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
+		'localBasePath' => __DIR__ . '/leaflet.fullscreen',
+		'remoteExtPath' => end( $pathParts ),
+		'group' => 'ext.maps',
+		'targets' => [
+			'mobile',
+			'desktop'
+		],
+		'scripts' => [
+			'Control.FullScreen.js',
+		],
+		'styles' => [
+			'Control.FullScreen.css',
+		],
+	];
+
 	$wgResourceModules['ext.maps.leaflet.markercluster'] = [
 		'localBasePath' => __DIR__ . '/leaflet.markercluster',
 		'remoteExtPath' => end( $pathParts ),

@@ -88,7 +88,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Styl formantu powiększenia.",
 	"maps-googlemaps3-par-typestyle": "Styl formantu typu.",
 	"maps-googlemaps3-par-autoinfowindows": "Automatycznie otwórz wszystkie okna informacyjne po załadowaniu strony.",
-	"maps-googlemaps3-par-kml": "Pliki KML do załadowania na mapie.",
+	"maps-par-kml": "Pliki KML do załadowania na mapie.",
 	"maps-googlemaps3-par-gkml": "Pliki KML udostępniane przez serwery Google do załadowania na mapie.",
 	"maps-openlayers-par-controls": "Formanty do umieszczenia na mapie.",
 	"mapeditor": "Edytor map",

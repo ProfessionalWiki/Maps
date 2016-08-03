@@ -139,7 +139,7 @@
 	"maps-googlemaps3-par-zoomstyle": "El estilu del control de zoom.",
 	"maps-googlemaps3-par-typestyle": "El estilo del control de tipu.",
 	"maps-googlemaps3-par-autoinfowindows": "Abrir automáticamente toles ventanes d'información dempués de que se cargue la páxina.",
-	"maps-googlemaps3-par-kml": "Ficheros KML a cargar nel mapa.",
+	"maps-par-kml": "Ficheros KML a cargar nel mapa.",
 	"maps-googlemaps3-par-gkml": "Ficheros KML agospiaos por Google a cargar nel mapa.",
 	"maps-googlemaps3-par-fusiontables": "IDs de les tables de Google Fusion que tienen de cargase nel mapa.",
 	"maps-googlemaps3-par-tilt": "Inclinación del mapa al usar Google Maps.",

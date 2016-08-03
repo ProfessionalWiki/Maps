@@ -73,6 +73,23 @@ class Location extends BaseElement {
 		return new self( new LatLongValue( $lat, $lon ) );
 	}
 
+
+	/**
+	 * Creates and returns a new instance of a Location with title from a latitude and longitude.
+	 *
+	 * @since 3.7
+	 *
+	 * @param float $lat
+	 * @param float $lon
+	 *
+	 * @return Location
+	 */
+	public static function newTitledFromLatLon( $lat, $lon ) {
+		$location = new self( new LatLongValue( $lat, $lon ) );
+		$location->setTitle( $lat . ',' . $lon );
+		return $location;
+	}
+
 	/**
 	 * Creates and returns a new instance of a Location from an address.
 	 *

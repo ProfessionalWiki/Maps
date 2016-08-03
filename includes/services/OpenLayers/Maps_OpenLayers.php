@@ -88,7 +88,7 @@ class MapsOpenLayers extends MapsMappingService {
 
 		$params['kml'] = [
 			'default' => [],
-			'message' => 'maps-openlayers-par-kml',
+			'message' => 'maps-par-kml',
 			'islist' => true,
 			// new MapsParamFile() FIXME
 		];

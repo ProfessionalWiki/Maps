@@ -143,7 +143,7 @@
 	"maps-googlemaps3-par-zoomstyle": "缩放控制的样式。",
 	"maps-googlemaps3-par-typestyle": "类型控制的样式。",
 	"maps-googlemaps3-par-autoinfowindows": "在页面加载后，自动打开所有信息窗口。",
-	"maps-googlemaps3-par-kml": "加载地图上的KML文件。",
+	"maps-par-kml": "加载地图上的KML文件。",
 	"maps-googlemaps3-par-gkml": "由Google运营的加载地图上的KML文件。",
 	"maps-googlemaps3-par-fusiontables": "应加载至地图的Google融合表的ID。",
 	"maps-googlemaps3-par-tilt": "使用Google地图时的地图标题。",

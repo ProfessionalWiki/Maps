@@ -105,7 +105,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Στυλ του στοιχείου ελέγχου του ζουμ.",
 	"maps-googlemaps3-par-typestyle": "Στυλ του στοιχείου ελέγχου του τύπου.",
 	"maps-googlemaps3-par-autoinfowindows": "Αυτόματο άνοιγμα όλων των παραθύρων πληροφοριών μετά τη φόρτωση της σελίδας.",
-	"maps-googlemaps3-par-kml": "Αρχεία KML για φόρτωση στο χάρτη.",
+	"maps-par-kml": "Αρχεία KML για φόρτωση στο χάρτη.",
 	"maps-googlemaps3-par-gkml": "Αρχεία KML που φιλοξενούνται στη Google για φόρτωση στο χάρτη.",
 	"maps-googlemaps3-par-poi": "Εμφάνιση σημείων ενδιαφέροντος.",
 	"maps-openlayers-par-controls": "Στοιχεία ελέγχου προς τοποθέτηση στο χάρτη.",

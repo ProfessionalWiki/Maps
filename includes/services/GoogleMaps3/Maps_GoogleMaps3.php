@@ -226,7 +226,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		$params['kml'] = [
 			'default' => [],
-			'message' => 'maps-googlemaps3-par-kml',
+			'message' => 'maps-par-kml',
 			'islist' => true,
 			// new MapsParamFile() FIXME
 		];
@@ -252,7 +252,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['enablefullscreen'] = [
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-googlemaps3-par-enable-fullscreen',
+			'message' => 'maps-par-enable-fullscreen',
 		];
 	}
 
@@ -323,8 +323,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			],
 			$urlArgs
 		);
-		if ( !empty( $GLOBALS['egMapsGMaps3ApiKey'] ) ) {
+		if ( $GLOBALS['egMapsGMaps3ApiKey'] !== '' ) {
 			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
+		if ( $GLOBALS['egMapsGMaps3ApiVersion'] !== '' ) {
+			$urlArgs['v'] = $GLOBALS['egMapsGMaps3ApiVersion'];
 		}
 
 		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );

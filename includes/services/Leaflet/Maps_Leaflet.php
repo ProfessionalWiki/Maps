@@ -45,6 +45,12 @@ class MapsLeaflet extends MapsMappingService {
 			'message' => 'maps-par-resizable'
 		];
 
+		$params['enablefullscreen'] = [
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-enable-fullscreen',
+		];
+
 		$params['markercluster'] = [
 			'type' => 'boolean',
 			'default' => false,
@@ -92,12 +98,9 @@ class MapsLeaflet extends MapsMappingService {
 
 	protected function getDependencies() {
 		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
-		$leafletClusterPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet.markercluster';
 		return [
 			Html::linkedStyle( "$leafletPath/leaflet.css" ),
 			Html::linkedScript( "$leafletPath/leaflet.js" ),
-			//Html::linkedStyle( "$leafletClusterPath/MarkerCluster.css" ),
-			//Html::linkedScript( "$leafletClusterPath/leaflet.markercluster.js" ),
 		];
 	}
 

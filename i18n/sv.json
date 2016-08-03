@@ -141,7 +141,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Stilen för zoomreglaget.",
 	"maps-googlemaps3-par-typestyle": "Stilen för typreglaget.",
 	"maps-googlemaps3-par-autoinfowindows": "Öppna automatiskt alla informationsfönster när sidan har lästs in.",
-	"maps-googlemaps3-par-kml": "KML-filer att ladda upp på kartan.",
+	"maps-par-kml": "KML-filer att ladda upp på kartan.",
 	"maps-googlemaps3-par-gkml": "KML-filer, tillhandahållna av Google, att ladda på kartan.",
 	"maps-googlemaps3-par-fusiontables": "ID för Google Fusion-tabeller som ska laddas på kartan.",
 	"maps-googlemaps3-par-tilt": "Tilta för karta när du använder Google Maps.",

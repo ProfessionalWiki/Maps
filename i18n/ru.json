@@ -154,7 +154,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Стиль элемента управления масштабом.",
 	"maps-googlemaps3-par-typestyle": "Стиль элемента управления типа.",
 	"maps-googlemaps3-par-autoinfowindows": "Автоматически открывает все информационные окна после загрузки страницы.",
-	"maps-googlemaps3-par-kml": "KML файлы для загрузки на карту.",
+	"maps-par-kml": "KML файлы для загрузки на карту.",
 	"maps-googlemaps3-par-gkml": "KML файлы, хранящиеся в Google для загрузки на карту.",
 	"maps-googlemaps3-par-fusiontables": "Идентификаторы Сводных таблиц Google, которые должны быть загружены на карту.",
 	"maps-googlemaps3-par-tilt": "Наклон карты при использовании Google Maps.",

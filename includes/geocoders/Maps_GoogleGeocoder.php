@@ -39,8 +39,11 @@ final class MapsGoogleGeocoder extends \Maps\Geocoder {
 			'address' => urlencode( $address ),
 			'sensor' => false
 		];
-		if ( !empty( $GLOBALS['egMapsGMaps3ApiKey'] ) ) {
+		if ( $GLOBALS['egMapsGMaps3ApiKey'] !== '' ) {
 			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
+		if ( $GLOBALS['egMapsGMaps3ApiVersion'] !== '' ) {
+			$urlArgs['v'] = $GLOBALS['egMapsGMaps3ApiVersion'];
 		}
 
 		return 'http://maps.googleapis.com/maps/api/geocode/xml?' . wfArrayToCgi($urlArgs);

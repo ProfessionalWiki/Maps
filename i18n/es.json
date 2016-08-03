@@ -158,7 +158,7 @@
 	"maps-googlemaps3-par-zoomstyle": "El estilo del control de zoom.",
 	"maps-googlemaps3-par-typestyle": "El estilo del control de tipo.",
 	"maps-googlemaps3-par-autoinfowindows": "Abrir automáticamente todas las ventanas de información después de que la página se haya cargado.",
-	"maps-googlemaps3-par-kml": "Archivos KML para cargar en el mapa.",
+	"maps-par-kml": "Archivos KML para cargar en el mapa.",
 	"maps-googlemaps3-par-gkml": "Archivos KML alojados por Google para cargar en el mapa.",
 	"maps-googlemaps3-par-fusiontables": "Identificadores de las tablas de Google Fusion que se deben cargar en el mapa.",
 	"maps-googlemaps3-par-tilt": "Inclinación del mapa al utilizar Google Maps.",
