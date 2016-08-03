@@ -44,6 +44,12 @@ class MapsLeaflet extends MapsMappingService {
 			'default' => $GLOBALS['egMapsResizableByDefault'],
 			'message' => 'maps-par-resizable'
 		];
+
+		$params['enablefullscreen'] = [
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-enable-fullscreen',
+		];
 	}
 
 	/**
