@@ -137,7 +137,7 @@
 	"maps-googlemaps3-par-zoomstyle": "سبک کنترل زوم.",
 	"maps-googlemaps3-par-typestyle": "سبک کنترل نوع.",
 	"maps-googlemaps3-par-autoinfowindows": "به طور خودکار باز شدن همهٔ صفحات اطلاعات، پس از بارگذاری صفحات.",
-	"maps-googlemaps3-par-kml": "پوشه‌های کا‌ام‌ال برای بارگذاری بر روی نقشه.",
+	"maps-par-kml": "پوشه‌های کا‌ام‌ال برای بارگذاری بر روی نقشه.",
 	"maps-googlemaps3-par-gkml": "پوشه‌های کا‌ام‌ال توسط گوگل برای بارگذاری بر روی نقشه میزبانی شده‌.",
 	"maps-googlemaps3-par-fusiontables": "شناسه‌های جداول گوگل فوژن که باید بر روی نقشه بارگذاری شود.",
 	"maps-googlemaps3-par-tilt": "نوسان برای نقشه هنگامی که استفاده از نقشه‌های گوگل.",

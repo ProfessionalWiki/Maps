@@ -80,7 +80,7 @@
 	"maps-googlemaps3-par-layers": "Livelli speciali da caricare sulla mappa.",
 	"maps-googlemaps3-par-controls": "I controlli da posizionare sulla mappa.",
 	"maps-googlemaps3-par-zoomstyle": "Lo stile del controllo dello zoom.",
-	"maps-googlemaps3-par-kml": "File KML da caricare sulla mappa.",
+	"maps-par-kml": "File KML da caricare sulla mappa.",
 	"maps-googlemaps3-par-gkml": "File KML ospitati da Google da caricare sulla mappa.",
 	"maps-googlemaps3-par-poi": "Mostra punti di interesse.",
 	"maps-googlemaps3-par-clustergridsize": "La dimensione della griglia di un cluster in pixels.",
