@@ -95,7 +95,7 @@
 	"maps-displaymap-par-wmsoverlay": "استفاده از یک پوشش وی‌ام‌اس",
 	"maps-fullscreen-button": "ضامن تمام صفحه",
 	"maps-fullscreen-button-tooltip": "مشاهدهٔ‌ نقشه به عنوان تمام صفحه یا تعبیه شده.",
-	"maps-googlemaps3-par-enable-fullscreen": "فعا کردن دکمهٔ تمام صفحه",
+	"maps-par-enable-fullscreen": "فعا کردن دکمهٔ تمام صفحه",
 	"validation-error-invalid-location": "پارامتر $1 باید یک مکان معتبر باشد.",
 	"validation-error-invalid-locations": "پارامتر $1 باید یک مکان یا مکان‌های بیشتر معتبری باشد.",
 	"validation-error-invalid-width": "پارامتر $1 باید یک عرض معتبر باشد.",

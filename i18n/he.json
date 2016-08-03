@@ -101,7 +101,7 @@
 	"maps-displaymap-par-wmsoverlay": "להשתמש בשכבת כיסוי WMS",
 	"maps-fullscreen-button": "להפעיל מסך מלא",
 	"maps-fullscreen-button-tooltip": "להציג את המפה במסך מלא או מוטבעת",
-	"maps-googlemaps3-par-enable-fullscreen": "להפעיל כתפור מסך מלא",
+	"maps-par-enable-fullscreen": "להפעיל כתפור מסך מלא",
 	"validation-error-invalid-location": "הערך $1 צריך להיות מיקום תקין.",
 	"validation-error-invalid-locations": "הערך $1 צריך להיות מיקום תקין אחד או יותר.",
 	"validation-error-invalid-width": "הערך $1 צריך להיות רוחב תקין.",

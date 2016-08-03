@@ -71,7 +71,7 @@
 	"maps-displaymap-par-static": "Onko kartan on oltava staattinen",
 	"maps-fullscreen-button": "Koko näytön tila",
 	"maps-fullscreen-button-tooltip": "Näytä kartta koko näytön tilassa tai upotettuna.",
-	"maps-googlemaps3-par-enable-fullscreen": "Koko näytön tila -painike",
+	"maps-par-enable-fullscreen": "Koko näytön tila -painike",
 	"validation-error-invalid-location": "Parametrin $1 on oltava sallittu sijainti.",
 	"validation-error-invalid-locations": "Parametrin $1 on oltava yksi tai useampi sallittu sijainti.",
 	"validation-error-invalid-width": "Parametrin $1 on oltava sallittu leveys.",

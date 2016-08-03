@@ -93,7 +93,7 @@
 	"maps-displaymap-par-wmsoverlay": "Користи WMS-облога",
 	"maps-fullscreen-button": "Префрли на широк екран",
 	"maps-fullscreen-button-tooltip": "Поглед на картата на цел екран или вгнездено.",
-	"maps-googlemaps3-par-enable-fullscreen": "Овозможи копче за цел екран",
+	"maps-par-enable-fullscreen": "Овозможи копче за цел екран",
 	"validation-error-invalid-location": "Параметарот $1 мора да претставува важечка местоположба.",
 	"validation-error-invalid-locations": "Параметарот $1 мора да претставува една или повеќе важечки местоположби.",
 	"validation-error-invalid-width": "Параметарот $1 мора да претставува важечка ширина.",

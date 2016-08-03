@@ -97,7 +97,7 @@
 	"maps-displaymap-par-wmsoverlay": "Eine WMS-Überlagerung verwenden",
 	"maps-fullscreen-button": "Auf Vollbild umschalten",
 	"maps-fullscreen-button-tooltip": "Die Karte als Vollbild oder eingebettet darstellen.",
-	"maps-googlemaps3-par-enable-fullscreen": "Vollbildschaltfläche aktivieren",
+	"maps-par-enable-fullscreen": "Vollbildschaltfläche aktivieren",
 	"validation-error-invalid-location": "Parameter $1 muss einem gültigen Standort entsprechen.",
 	"validation-error-invalid-locations": "Parameter $1 muss einem oder mehreren gültigen Standorten entsprechen.",
 	"validation-error-invalid-width": "Parameter $1 muss einer gültigen Breite entsprechen.",

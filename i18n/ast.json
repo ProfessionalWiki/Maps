@@ -92,7 +92,7 @@
 	"maps-displaymap-par-wmsoverlay": "Usar una superposición WMS",
 	"maps-fullscreen-button": "Conmutar pantalla completa",
 	"maps-fullscreen-button-tooltip": "Ver el mapa como pantalla completa o incrustáu.",
-	"maps-googlemaps3-par-enable-fullscreen": "Activar el botón de pantalla completa",
+	"maps-par-enable-fullscreen": "Activar el botón de pantalla completa",
 	"validation-error-invalid-location": "El parámetru $1 tien de ser un llugar válidu.",
 	"validation-error-invalid-locations": "El parámetru $1 tien de ser un o más llugares válidos.",
 	"validation-error-invalid-width": "El parámetru $1 tien de ser un anchor válidu.",

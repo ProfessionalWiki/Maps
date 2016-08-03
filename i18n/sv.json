@@ -99,7 +99,7 @@
 	"maps-displaymap-par-wmsoverlay": "Använd ett WMS-överdrag",
 	"maps-fullscreen-button": "Växla fullskärmsläge",
 	"maps-fullscreen-button-tooltip": "Visa kartan i helskärm eller som inbäddad.",
-	"maps-googlemaps3-par-enable-fullscreen": "Aktivera helskärmsknappen",
+	"maps-par-enable-fullscreen": "Aktivera helskärmsknappen",
 	"validation-error-invalid-location": "Parameter $1 måste vara en giltig plats.",
 	"validation-error-invalid-locations": "Parameter $1 måste vara en eller flera giltiga platser.",
 	"validation-error-invalid-width": "Parameter $1 måste vara en giltig bredd.",

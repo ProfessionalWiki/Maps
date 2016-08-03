@@ -112,7 +112,7 @@
 	"maps-displaymap-par-wmsoverlay": "Utilizar una superposición WMS",
 	"maps-fullscreen-button": "Activar o desactivar pantalla completa",
 	"maps-fullscreen-button-tooltip": "Ver el mapa en toda la pantalla o incrustado.",
-	"maps-googlemaps3-par-enable-fullscreen": "Activar el botón «Pantalla completa»",
+	"maps-par-enable-fullscreen": "Activar el botón «Pantalla completa»",
 	"validation-error-invalid-location": "El parámetro \"$1\" deber ser una ubicación válida.",
 	"validation-error-invalid-locations": "El parámetro \"$1\" debe ser una o más ubicaciones válidas.",
 	"validation-error-invalid-width": "El parámetro \"$1\" debe ser un ancho válido.",

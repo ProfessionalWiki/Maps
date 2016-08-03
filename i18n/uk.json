@@ -98,7 +98,7 @@
 	"maps-displaymap-par-wmsoverlay": "Використовувати накладення WMS",
 	"maps-fullscreen-button": "Перемкнути повноекранний режим",
 	"maps-fullscreen-button-tooltip": "Переглянути мапу на весь екран або як вбудовану.",
-	"maps-googlemaps3-par-enable-fullscreen": "Увімкнути кнопку повноекранного режиму",
+	"maps-par-enable-fullscreen": "Увімкнути кнопку повноекранного режиму",
 	"validation-error-invalid-location": "Параметр $1 повинен бути коректним місцем розташування.",
 	"validation-error-invalid-locations": "Параметр $1 повинен бути одним або більше коректних місць розташування.",
 	"validation-error-invalid-width": "Параметр $1 повинен бути коректною шириною.",
