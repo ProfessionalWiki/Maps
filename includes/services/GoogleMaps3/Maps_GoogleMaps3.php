@@ -323,8 +323,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			],
 			$urlArgs
 		);
-		if ( !empty( $GLOBALS['egMapsGMaps3ApiKey'] ) ) {
+		if ( $GLOBALS['egMapsGMaps3ApiKey'] !== '' ) {
 			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
+		if ( $GLOBALS['egMapsGMaps3ApiVersion'] !== '' ) {
+			$urlArgs['v'] = $GLOBALS['egMapsGMaps3ApiVersion'];
 		}
 
 		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
