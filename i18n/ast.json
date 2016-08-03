@@ -131,7 +131,7 @@
 	"maps-par-centre": "El llugar nel que se tien de centrar el mapa",
 	"maps-googlemaps3-incompatbrowser": "El to navegador nun ye compatible con Google Maps v3.",
 	"maps-googlemaps3-par-imageoverlays": "Permite amestar una imaxe p'amosala nel llugar especificáu del mapa.",
-	"maps-googlemaps3-par-markercluster": "Permite fusionar múltiples marcadores cercanos nun solu marcador",
+	"maps-par-markercluster": "Permite fusionar múltiples marcadores cercanos nun solu marcador",
 	"maps-googlemaps3-par-type": "El tipu de mapa a amosar inicialmente.",
 	"maps-googlemaps3-par-types": "Los tipos de mapa que tarán disponibles al traviés del control de tipu.",
 	"maps-googlemaps3-par-layers": "Capes especiales a cargar nel mapa.",

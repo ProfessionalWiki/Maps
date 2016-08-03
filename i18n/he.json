@@ -140,7 +140,7 @@
 	"maps-par-centre": "המיקום שבו המפה צריכה להיות ממורכזת",
 	"maps-googlemaps3-incompatbrowser": "הדפדפן שלך לא תומך בגוגל מפות גרסה 3.",
 	"maps-googlemaps3-par-imageoverlays": "מאפשר הוספת תמונה שתוצג במיקום מסוים על המפה.",
-	"maps-googlemaps3-par-markercluster": "מאפשר מיזוג מספר סמנים קרובים לסמן אחד",
+	"maps-par-markercluster": "מאפשר מיזוג מספר סמנים קרובים לסמן אחד",
 	"maps-googlemaps3-par-type": "סוג המפה שיוצג תחילה.",
 	"maps-googlemaps3-par-types": "סוגי המפה שיהיו זמינים דרך בקר הסוג.",
 	"maps-googlemaps3-par-layers": "שכבות מיוחדות שייטענו אל המפה.",

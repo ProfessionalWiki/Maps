@@ -133,7 +133,7 @@
 	"maps-par-centre": "O lugar no que se debe centrar o mapa",
 	"maps-googlemaps3-incompatbrowser": "O seu navegador é compatible co Google Maps v3.",
 	"maps-googlemaps3-par-imageoverlays": "Permite engadir unha imaxe a mostrar na situación especificada no mapa.",
-	"maps-googlemaps3-par-markercluster": "Permite fusionar múltiples marcadores cercanos nun só marcador",
+	"maps-par-markercluster": "Permite fusionar múltiples marcadores cercanos nun só marcador",
 	"maps-googlemaps3-par-type": "O tipo de mapa que mostrar inicialmente.",
 	"maps-googlemaps3-par-types": "Os tipos de mapas que estarán dispoñibles a través do control de tipos.",
 	"maps-googlemaps3-par-layers": "As capas especiais que cargar no mapa.",

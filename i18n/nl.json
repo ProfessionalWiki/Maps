@@ -135,7 +135,7 @@
 	"maps-par-centre": "De locatie waar de kaart op gecentreerd moet worden",
 	"maps-googlemaps3-incompatbrowser": "Uw browser kan niet werken met Google Maps v3.",
 	"maps-googlemaps3-par-imageoverlays": "Laat het toevoegen van een afbeelding worden weergegeven op de opgegeven locatie op de kaart.",
-	"maps-googlemaps3-par-markercluster": "Laat het samenvoegen van meerdere markers in de buurt in één markering",
+	"maps-par-markercluster": "Laat het samenvoegen van meerdere markers in de buurt in één markering",
 	"maps-googlemaps3-par-type": "Het initieel weer te geven kaarttype.",
 	"maps-googlemaps3-par-types": "De kaarttypen die beschikbaar zijn in via het besturingselement type.",
 	"maps-googlemaps3-par-layers": "Op de kaart te laden speciale lagen.",
