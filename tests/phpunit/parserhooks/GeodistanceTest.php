@@ -3,6 +3,7 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
+use Maps\ElementOptions;
 use Maps\Elements\Location;
 
 /**

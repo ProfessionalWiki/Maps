@@ -6,6 +6,7 @@ use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 use Maps\LocationParser;
 use Title;
+use ValueParsers\ParserOptions;
 use ValueParsers\ValueParser;
 
 /**
@@ -14,6 +15,13 @@ use ValueParsers\ValueParser;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
+
+	/**
+	 * @return string
+	 */
+	protected function getParserClass() {
+		return LocationParser::class;
+	}
 
 	/**
 	 * @see ValueParserTestBase::validInputProvider
@@ -132,6 +140,30 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	protected function getInstance() {
 		return new LocationParser();
+	}
+
+	public function testGivenAddressAndNoTitle_addressIsSetAsTitle() {
+		$options = new ParserOptions( ['useaddressastitle' => true] );
+		$parser = new LocationParser( $options );
+		$location = $parser->parse( 'Tempelhofer Ufer 42' );
+
+		$this->assertSame( 'Tempelhofer Ufer 42', $location->getTitle() );
+	}
+
+	public function testGivenAddressAndTitle_addressIsNotUsedAsTitle() {
+		$options = new ParserOptions( ['useaddressastitle' => true] );
+		$parser = new LocationParser( $options );
+		$location = $parser->parse( 'Tempelhofer Ufer 42~Great title of doom' );
+
+		$this->assertSame( 'Great title of doom', $location->getTitle() );
+	}
+
+	public function testGivenCoordinatesAndNoTitle_noTitleIsSet() {
+		$options = new ParserOptions( ['useaddressastitle' => true] );
+		$parser = new LocationParser( $options );
+		$location = $parser->parse( '4,2' );
+
+		$this->assertFalse( $location->getOptions()->hasOption( 'title' ) );
 	}
 
 }

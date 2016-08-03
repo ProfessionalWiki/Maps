@@ -88,17 +88,17 @@ class FinddestinationTest extends ParserHookTest {
 
 		foreach ( $this->distances as $distance => $expectedDistance ) {
 			foreach ( $this->bearings as $bearing ) {
-				foreach ( $this->locations as $location ) {
+				foreach ( $this->locations as $locationString ) {
 					$values = [
 						'distance' => (string)$distance,
 						'bearing' => (string)$bearing,
-						'location' => (string)$location,
+						'location' => (string)$locationString,
 					];
 
 					$expected = [
 						'distance' => $expectedDistance,
 						'bearing' => (float)$bearing,
-						'location' => new Location( $coordinateParser->parse( $location )->getValue() ),
+						'location' => new Location( $coordinateParser->parse( $locationString )->getValue() ),
 					];
 
 					$argLists[] = [ $values, $expected ];

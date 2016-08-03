@@ -13,6 +13,13 @@ use Maps\WmsOverlayParser;
 class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 
 	/**
+	 * @return string
+	 */
+	protected function getParserClass() {
+		return WmsOverlayParser::class;
+	}
+
+	/**
 	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @return array
