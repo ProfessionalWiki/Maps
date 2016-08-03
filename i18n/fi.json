@@ -110,7 +110,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Loitonnusohjaimen tyyli.",
 	"maps-googlemaps3-par-typestyle": "Karttatasovalitsimen tyyli.",
 	"maps-googlemaps3-par-autoinfowindows": "Avaa automaattisesti kaikki tietoikkunat sen jälkeen, kun sivu on ladattu.",
-	"maps-googlemaps3-par-kml": "Kartalle ladattavat KML-tiedostot.",
+	"maps-par-kml": "Kartalle ladattavat KML-tiedostot.",
 	"maps-googlemaps3-par-fusiontables": "Google Fusion Tables -tunnukset, joka ladataan karttaan.",
 	"maps-googlemaps3-par-tilt": "Kartan kallistus, kun käytössä on Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Valitse paras loitonnustaso uudelleen sen jälkeen, kun KML-tasot on ladattu.",

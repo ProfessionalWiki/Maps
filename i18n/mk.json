@@ -141,7 +141,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Стил на контролата за приближување.",
 	"maps-googlemaps3-par-typestyle": "Стилот на контролата за тип.",
 	"maps-googlemaps3-par-autoinfowindows": "Автоматски отворај ги сите инфопрозорци откако ќе се вчита страницата.",
-	"maps-googlemaps3-par-kml": "KML-податотеки за вчитување во картата.",
+	"maps-par-kml": "KML-податотеки за вчитување во картата.",
 	"maps-googlemaps3-par-gkml": "KML-податотеки вдомени од Google за вчитување на карта.",
 	"maps-googlemaps3-par-fusiontables": "Назнаки (ID) на табели од Google Fusion Tables што треба да се вчитаат во картата.",
 	"maps-googlemaps3-par-tilt": "Наклон на картата кога користите Google Карти.",

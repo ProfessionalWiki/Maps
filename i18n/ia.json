@@ -106,7 +106,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Le stilo del controlo de zoom.",
 	"maps-googlemaps3-par-typestyle": "Le stilo del controlo de typo.",
 	"maps-googlemaps3-par-autoinfowindows": "Aperir automaticamente tote le fenestras informative post le cargamento del pagina.",
-	"maps-googlemaps3-par-kml": "Files KML pro cargar in le carta.",
+	"maps-par-kml": "Files KML pro cargar in le carta.",
 	"maps-googlemaps3-par-gkml": "KML files albergate per Google a cargar sur le carta.",
 	"maps-googlemaps3-par-fusiontables": "IDs de tabellas de Google Fusion que debe esser cargate in le carta.",
 	"maps-googlemaps3-par-tilt": "Inclination del carta durante le uso de Google Maps.",

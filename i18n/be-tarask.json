@@ -109,7 +109,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Стыль элемэнта кіраваньня маштабам.",
 	"maps-googlemaps3-par-typestyle": "Стыль элемэнта кіраваньня тыпамі.",
 	"maps-googlemaps3-par-autoinfowindows": "Аўтаматычна адкрываць ўсе інфармацыйныя вокны, пасьля таго, як старонка была загружаная.",
-	"maps-googlemaps3-par-kml": "KML-файлы для загрузкі ў мапу.",
+	"maps-par-kml": "KML-файлы для загрузкі ў мапу.",
 	"maps-googlemaps3-par-gkml": "Файлы KML разьмешчаныя на Google для загрузкі на мапу.",
 	"maps-googlemaps3-par-fusiontables": "Ідэнтыфікатары табліцаў Google Fusion, якія павінны быць загружаныя ў мапу.",
 	"maps-googlemaps3-par-tilt": "Вугал нахілу мапы, падчас выкарыстаньня Google Maps.",

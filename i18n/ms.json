@@ -122,7 +122,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Gaya kawalan zum.",
 	"maps-googlemaps3-par-typestyle": "Gaya kawalan jenis.",
 	"maps-googlemaps3-par-autoinfowindows": "Membuka semua tetingkap maklumat secara automatik selepas laman dimuatkan.",
-	"maps-googlemaps3-par-kml": "Fail-fail KML untuk dimuatkan kepada peta.",
+	"maps-par-kml": "Fail-fail KML untuk dimuatkan kepada peta.",
 	"maps-googlemaps3-par-gkml": "Fail-fail KML yang dihoskan oleh Google untuk dimuatkan pada peta.",
 	"maps-googlemaps3-par-fusiontables": "ID Google Fusion Tables yang patut dimuatkan pada peta.",
 	"maps-googlemaps3-par-tilt": "Ciri menyendengkan Peta ketika menggunakan Google Maps.",

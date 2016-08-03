@@ -116,7 +116,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Stil skalowanskeho wodźenja.",
 	"maps-googlemaps3-par-typestyle": "Stil wodźenja za kartowe typy.",
 	"maps-googlemaps3-par-autoinfowindows": "Wšě informaciske wokna awtomatisce wočinić, po tym zo strona je so začitała.",
-	"maps-googlemaps3-par-kml": "KML-dataje, kotrež maja so na kartu začitać.",
+	"maps-par-kml": "KML-dataje, kotrež maja so na kartu začitać.",
 	"maps-googlemaps3-par-tilt": "Schilenje za kartu, hdyž so Google Maps wužiwa.",
 	"maps-googlemaps3-par-poi": "Zajimawosće pokazać.",
 	"maps-openlayers-par-controls": "Wodźenske elementy, kotrež maja so na karće zwobraznić.",
