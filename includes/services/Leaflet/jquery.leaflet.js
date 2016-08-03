@@ -20,14 +20,11 @@
 		this.points = [];
 
 		/**
-		* Creates a new marker with the provided data,
-		* adds it to the map, and returns it.
+		* Creates a new marker with the provided data and returns it.
 		* @param {Object} markerData Contains the fields lat, lon, title, text and icon
 		* @return {L.Marker}
 		*/
-		this.addMarker = function (properties, dontAddToMap) {
-			dontAddToMap = dontAddToMap || false;
-
+		this.createMarker = function (properties) {
 			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
 			if (!properties.hasOwnProperty('icon') || properties.icon === '') {
@@ -44,12 +41,21 @@
 			};
 
 			var marker = L.marker( [properties.lat, properties.lon], markerOptions );
-			if (!dontAddToMap) {
-				marker.addTo( this.map );
-			}
 			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
 
 			this.markers.push(marker);
+			return marker;
+		};
+
+		/**
+		 * Creates a new marker with the provided data, adds it to the map
+		 * and returns it.
+		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
+		 * @return {L.Marker}
+         */
+		this.addMarker = function (properties) {
+			var marker = this.createMarker(properties);
+			marker.addTo( this.map );
 			return marker;
 		};
 
@@ -224,7 +230,7 @@
 					}
 				});
 				for (var i = options.locations.length - 1; i >= 0; i--) {
-					var marker = this.addMarker(options.locations[i], true);
+					var marker = this.createMarker(options.locations[i]);
 					clusters.addLayer(marker);
 				}
 
