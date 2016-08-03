@@ -179,7 +179,50 @@
 					this.addMarker(options.locations[i]);
 				}
 			} else {
-				var clusters = L.markerClusterGroup();
+				var clusters = L.markerClusterGroup({
+					iconCreateFunction: function(cluster) {
+						var childCount = cluster.getChildCount();
+
+						var imagePath = mw.config.get( 'wgScriptPath' ) +
+							'/extensions/Maps/includes/images/m';
+
+						var styles = [
+							{
+								iconUrl: imagePath + '1.png',
+								iconSize: [53, 52]
+							},
+							{
+								iconUrl: imagePath + '2.png',
+								iconSize: [56, 55]
+							},
+							{
+								iconUrl: imagePath + '3.png',
+								iconSize: [66, 65]
+							},
+							{
+								iconUrl: imagePath + '4.png',
+								iconSize: [78, 77]
+							},
+							{
+								iconUrl: imagePath + '5.png',
+								iconSize: [90, 89]
+							}
+						];
+
+						var index = 0;
+						var dv = childCount;
+						while (dv !== 0) {
+							dv = parseInt(dv / 10, 10);
+							index++;
+						}
+						var index = Math.min(index, styles.length);
+						index = Math.max(0, index - 1);
+						index = Math.min(styles.length - 1, index);
+						var style = styles[index];
+
+						return new L.Icon(style);
+					}
+				});
 				for (var i = options.locations.length - 1; i >= 0; i--) {
 					var marker = this.addMarker(options.locations[i], true);
 					clusters.addLayer(marker);
