@@ -162,6 +162,10 @@
 		 * Removes all markers from the map.
 		 */
 		this.removeMarkers = function () {
+			if (this.markercluster) {
+				this.markercluster.setMap(null);
+				this.markercluster = null;
+			}
 			for (var i = this.markers.length - 1; i >= 0; i--) {
 				this.markers[i].setMap(null);
 			}
@@ -445,6 +449,24 @@
 			this.map.fitBounds(bounds);
 		};
 
+		this.createMarkerCluster = function() {
+			if ( options.markercluster ) {
+				if (this.markercluster) {
+					this.markercluster.setMap(null);
+					this.markercluster = null;
+				}
+				this.markercluster = new MarkerClusterer( this.map, this.markers, {
+					imagePath: mw.config.get( 'wgScriptPath' ) +
+					'/extensions/Maps/includes/services/GoogleMaps3/img/m',
+					gridSize: this.options.clustergridsize,
+					maxZoom: this.options.clustermaxzoom,
+					zoomOnClick: this.options.clusterzoomonclick,
+					averageCenter: this.options.clusteraveragecenter,
+					minimumClusterSize: this.options.clusterminsize
+				} );
+			}
+		};
+
 		this.initializeMap = function () {
 			var mapOptions = {
 				disableDefaultUI:true,
@@ -613,23 +635,7 @@
 			/**
 			 * Allows grouping of markers.
 			 */
-			if ( options.markercluster ) {
-				mw.loader.using(
-					'ext.maps.gm3.markercluster',
-					function() {
-						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
-							imagePath: mw.config.get( 'wgScriptPath' ) +
-								'/extensions/Maps/includes/services/GoogleMaps3/img/m',
-							gridSize: options.clustergridsize,
-							maxZoom: options.clustermaxzoom,
-							zoomOnClick: options.clusterzoomonclick,
-							averageCenter: options.clusteraveragecenter,
-							minimumClusterSize: options.clusterminsize
-						} );
-					}
-				);
-			}
-
+			this.createMarkerCluster();
 
 
 			if (options.searchmarkers) {
@@ -873,7 +879,13 @@
 
 		//Complete path to OpenLayers WMS layer
 
-		this.setup();
+		if (!options.markercluster) {
+			this.setup();
+		} else {
+			mw.loader.using( 'ext.maps.gm3.markercluster', function() {
+				_this.setup();
+			} );
+		}
 
 		return this;
 
