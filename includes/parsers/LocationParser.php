@@ -43,7 +43,7 @@ class LocationParser extends StringValueParser {
 	public function stringParse( $value ) {
 		$separator = '~';
 
-		$useaddressastitle = $this->getOption('useaddressastitle');
+		$useaddressastitle = $this->getOption( 'useaddressastitle' );
 
 		$metaData = explode( $separator, $value );
 
