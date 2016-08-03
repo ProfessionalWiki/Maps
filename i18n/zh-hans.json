@@ -96,7 +96,7 @@
 	"maps-displaymap-par-wmsoverlay": "使用一个WMS覆盖",
 	"maps-fullscreen-button": "切换全屏显示",
 	"maps-fullscreen-button-tooltip": "全屏查看地图或嵌入。",
-	"maps-googlemaps3-par-enable-fullscreen": "启用全屏按钮",
+	"maps-par-enable-fullscreen": "启用全屏按钮",
 	"validation-error-invalid-location": "参数 $1 必须是一个有效的位置。",
 	"validation-error-invalid-locations": "参数 $1 必须有一个或多个有效的位置。",
 	"validation-error-invalid-width": "参数 $1 必须是一个有效的宽度。",

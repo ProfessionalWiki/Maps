@@ -96,7 +96,7 @@
 	"maps-displaymap-par-wmsoverlay": "WMS 오버레이 사용",
 	"maps-fullscreen-button": "전체화면으로 전환",
 	"maps-fullscreen-button-tooltip": "지도를 전체 화면 또는 삽입된 형태로 보기",
-	"maps-googlemaps3-par-enable-fullscreen": "전체 화면 버튼 활성화",
+	"maps-par-enable-fullscreen": "전체 화면 버튼 활성화",
 	"validation-error-invalid-location": "$1 변수는 올바른 위치여야 합니다.",
 	"validation-error-invalid-locations": "$1 변수는 하나 이상의 올바른 위치여야 합니다.",
 	"validation-error-invalid-width": "$1 변수는 올바른 너비여야 합니다.",

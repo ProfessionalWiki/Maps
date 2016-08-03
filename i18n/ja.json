@@ -46,7 +46,7 @@
 	"maps-displaymap-par-wmsoverlay": "WMS オーバーレイを使用",
 	"maps-fullscreen-button": "全画面表示を切り替え",
 	"maps-fullscreen-button-tooltip": "地図の表示を全画面または埋め込みに切り替えます。",
-	"maps-googlemaps3-par-enable-fullscreen": "全画面表示のボタンを有効にする",
+	"maps-par-enable-fullscreen": "全画面表示のボタンを有効にする",
 	"validation-error-invalid-location": "引数「$1」には有効な場所を指定してください。",
 	"validation-error-invalid-locations": "引数「$1」には有効な場所を 1 つ以上指定してください。",
 	"validation-error-invalid-width": "引数「$1」には有効な幅を指定してください。",

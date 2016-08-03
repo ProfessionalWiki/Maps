@@ -97,7 +97,7 @@
 	"maps-displaymap-par-wmsoverlay": "WMS-overlay gebruiken",
 	"maps-fullscreen-button": "Volledig scherm in- of uitschakelen",
 	"maps-fullscreen-button-tooltip": "De kaart als volledig scherm of ingesloten bekijken.",
-	"maps-googlemaps3-par-enable-fullscreen": "Knop voor volledig scherm inschakelen",
+	"maps-par-enable-fullscreen": "Knop voor volledig scherm inschakelen",
 	"validation-error-invalid-location": "Parameter $1 moet een geldige locatie zijn.",
 	"validation-error-invalid-locations": "Parameter $1 moet een of meer geldige locaties zijn.",
 	"validation-error-invalid-width": "Parameter $1 moet een geldige breedte zijn.",

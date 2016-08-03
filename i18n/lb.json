@@ -44,7 +44,7 @@
 	"maps-displaymap-par-polygons": "Polygonen fir ze weisen",
 	"maps-displaymap-par-rectangles": "Rechtecker fir ze weisen",
 	"maps-displaymap-par-static": "D'Kaart statesch maachen",
-	"maps-googlemaps3-par-enable-fullscreen": "'Fullscreen'-Knäppchen aschalten",
+	"maps-par-enable-fullscreen": "'Fullscreen'-Knäppchen aschalten",
 	"validation-error-invalid-location": "Parameter $1 muss eng valabel Plaz sinn.",
 	"validation-error-invalid-locations": "Parameter $1 muss eng oder méi valabel Plaze sinn.",
 	"validation-error-invalid-width": "Parameter $1 muss eng valabel Breet sinn.",

@@ -79,7 +79,7 @@
 	"maps-displaymap-par-wmsoverlay": "WMS-naworštowanje wužiwać",
 	"maps-fullscreen-button": "Połnu wobrazowku přepinać",
 	"maps-fullscreen-button-tooltip": "Kartu jako połnu wobrazowku abo zasadźenu pokazać",
-	"maps-googlemaps3-par-enable-fullscreen": "Tłóčatko połneje wobrazowki zmóžnić",
+	"maps-par-enable-fullscreen": "Tłóčatko połneje wobrazowki zmóžnić",
 	"validation-error-invalid-location": "Parameter $1 dyrbi płaćiwe městno być.",
 	"validation-error-invalid-locations": "Parameter $1 dyrbi jedne městno abo wjacore městna być.",
 	"validation-error-invalid-width": "Parameter $1 dyrbi płaćiwa šěrokosć być.",

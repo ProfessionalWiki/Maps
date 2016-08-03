@@ -64,7 +64,7 @@
 	"maps-displaymap-par-wmsoverlay": "Χρήση μιας υπέρθεσης WMS",
 	"maps-fullscreen-button": "Εναλλαγή πλήρους οθόνης",
 	"maps-fullscreen-button-tooltip": "Προβολή του χάρτη σε πλήρη οθόνη ή ενσωματωμένου.",
-	"maps-googlemaps3-par-enable-fullscreen": "Ενεργοποίηση κουμπιού πλήρους οθόνης",
+	"maps-par-enable-fullscreen": "Ενεργοποίηση κουμπιού πλήρους οθόνης",
 	"validation-error-invalid-location": "Η παράμετρος «$1» πρέπει να είναι μια έγκυρη τοποθεσία.",
 	"validation-error-invalid-locations": "Η παράμετρος «$1» πρέπει να είναι μία ή περισσότερες έγκυρες τοποθεσίες.",
 	"validation-error-invalid-width": "Η παράμετρος «$1» πρέπει να είναι ένα έγκυρο πλάτος.",

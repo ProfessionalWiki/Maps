@@ -110,7 +110,7 @@
 	"maps-displaymap-par-wmsoverlay": "Utiliser une superposition WMS",
 	"maps-fullscreen-button": "Basculer en plein écran",
 	"maps-fullscreen-button-tooltip": "Visualiser la carte en plein écran ou incorporé.",
-	"maps-googlemaps3-par-enable-fullscreen": "Activer le bouton plein écran",
+	"maps-par-enable-fullscreen": "Activer le bouton plein écran",
 	"validation-error-invalid-location": "Le paramètre $1 doit être un emplacement valide.",
 	"validation-error-invalid-locations": "Le paramètre $1 doit être un ou plusieurs emplacement(s) valide(s).",
 	"validation-error-invalid-width": "Le paramètre $1 doit être une largeur valide.",

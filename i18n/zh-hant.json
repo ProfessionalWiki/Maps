@@ -63,7 +63,7 @@
 	"maps-displaymap-par-wmsoverlay": "使用 WMS 圖層",
 	"maps-fullscreen-button": "切換全螢幕",
 	"maps-fullscreen-button-tooltip": "使用全螢幕或嵌入方式檢視地圖。",
-	"maps-googlemaps3-par-enable-fullscreen": "開啟全螢幕的按鈕",
+	"maps-par-enable-fullscreen": "開啟全螢幕的按鈕",
 	"validation-error-invalid-location": "參數 \"$1\" 必須是一個有效的位置。",
 	"validation-error-invalid-locations": "參數 \"$1\" 必須有一個或多個有效的位置。",
 	"validation-error-invalid-width": "參數 \"$1\" 必須是一個有效的寬度。",

@@ -107,7 +107,7 @@
 	"maps-displaymap-par-wmsoverlay": "Использовать слой WMS",
 	"maps-fullscreen-button": "Переключить полноэкранный режим",
 	"maps-fullscreen-button-tooltip": "Посмотреть карту в полноэкранном или встроенном  режиме.",
-	"maps-googlemaps3-par-enable-fullscreen": "Включить кнопку полноэкранного режима",
+	"maps-par-enable-fullscreen": "Включить кнопку полноэкранного режима",
 	"validation-error-invalid-location": "Параметр $1 должен быть корректным местоположением.",
 	"validation-error-invalid-locations": "Параметр $1 должен содержать одно или несколько корректных местоположений.",
 	"validation-error-invalid-width": "Параметр $1 должен быть корректной шириной.",
