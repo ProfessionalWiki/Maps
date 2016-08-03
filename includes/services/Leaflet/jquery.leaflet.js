@@ -194,6 +194,10 @@
 				}
 			} else {
 				var clusters = L.markerClusterGroup({
+					maxClusterRadius: options.clustermaxradius,
+					disableClusteringAtZoom: options.clustermaxzoom + 1,
+					zoomToBoundsOnClick: options.clusterzoomonclick,
+					spiderfyOnMaxZoom: options.clusterspiderfy,
 					iconCreateFunction: function(cluster) {
 						var childCount = cluster.getChildCount();
 

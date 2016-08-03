@@ -155,7 +155,7 @@
 	"maps-googlemaps3-par-kmlrezoom": "לקרב מחדש את המפה אחרי ששכבות KML נטענו.",
 	"maps-googlemaps3-par-poi": "הצגת נקודות עניין.",
 	"maps-googlemaps3-par-clustergridsize": "גודל הרשת של האשכול בפיקסלים.",
-	"maps-googlemaps3-par-clusterzoomonclick": "האם ההתנהגות הראשונית ללחיצה על אשכולית היא להתקרב לתוכו.",
+	"maps-par-clusterzoomonclick": "האם ההתנהגות הראשונית ללחיצה על אשכולית היא להתקרב לתוכו.",
 	"maps-googlemaps3-par-clusteraveragecenter": "האם המרכז של כל אשכול אמור להיות הממוצע של כל הסמנים באשכול.",
 	"maps-googlemaps3-par-clusterminsize": "המספר המזערי של הסמנים שאמורים להיות באשכול לפני שהסמנים מוסתרים ומוצג מונה.",
 	"maps-openlayers-par-controls": "אילו בקרים להציב על המפה.",

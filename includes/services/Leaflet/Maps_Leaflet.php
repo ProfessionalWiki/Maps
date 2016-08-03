@@ -56,6 +56,30 @@ class MapsLeaflet extends MapsMappingService {
 			'default' => false,
 			'message' => 'maps-par-markercluster',
 		];
+
+		$params['clustermaxzoom'] = [
+			'type' => 'integer',
+			'default' => 20,
+			'message' => 'maps-par-clustermaxzoom',
+		];
+
+		$params['clusterzoomonclick'] = [
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-par-clusterzoomonclick',
+		];
+
+		$params['clustermaxradius'] = [
+			'type' => 'integer',
+			'default' => 80,
+			'message' => 'maps-leaflet-par-clustermaxzoom',
+		];
+
+		$params['clusterspiderfy'] = [
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-leaflet-par-clusterspiderfy',
+		];
 	}
 
 	/**

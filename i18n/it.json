@@ -84,7 +84,7 @@
 	"maps-googlemaps3-par-gkml": "File KML ospitati da Google da caricare sulla mappa.",
 	"maps-googlemaps3-par-poi": "Mostra punti di interesse.",
 	"maps-googlemaps3-par-clustergridsize": "La dimensione della griglia di un cluster in pixels.",
-	"maps-googlemaps3-par-clusterzoomonclick": "Se il comportamento predefinito quando si clicca su un cluster è di fare lo zoom su di esso.",
+	"maps-par-clusterzoomonclick": "Se il comportamento predefinito quando si clicca su un cluster è di fare lo zoom su di esso.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Se il centro di ogni cluster dovrebbe essere la media di tutti i marcatori del cluster.",
 	"maps-googlemaps3-par-clusterminsize": "Il numero minimo di marcatori presenti in un cluster dopo il quale tutti i marcatori saranno nascosti e sarà mostrato il loro numero.",
 	"maps-openlayers-par-controls": "I controlli da posizionare sulla mappa.",
