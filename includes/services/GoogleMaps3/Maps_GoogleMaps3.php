@@ -177,37 +177,37 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['markercluster'] = [
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-googlemaps3-par-markercluster',
+			'message' => 'maps-par-markercluster',
 		];
 
 		$params['clustergridsize'] = [
-				'type' => 'integer',
-				'default' => 60,
-				'message' => 'maps-googlemaps3-par-clustergridsize',
+			'type' => 'integer',
+			'default' => 60,
+			'message' => 'maps-googlemaps3-par-clustergridsize',
 		];
 
 		$params['clustermaxzoom'] = [
-				'type' => 'integer',
-				'default' => 20,
-				'message' => 'maps-googlemaps3-par-clustermaxzoom',
+			'type' => 'integer',
+			'default' => 20,
+			'message' => 'maps-par-clustermaxzoom',
 		];
 
 		$params['clusterzoomonclick'] = [
-				'type' => 'boolean',
-				'default' => true,
-				'message' => 'maps-googlemaps3-par-clusterzoomonclick',
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-par-clusterzoomonclick',
 		];
 
 		$params['clusteraveragecenter'] = [
-				'type' => 'boolean',
-				'default' => true,
-				'message' => 'maps-googlemaps3-par-clusteraveragecenter',
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-googlemaps3-par-clusteraveragecenter',
 		];
 
 		$params['clusterminsize'] = [
-				'type' => 'integer',
-				'default' => 2,
-				'message' => 'maps-googlemaps3-par-clusterminsize',
+			'type' => 'integer',
+			'default' => 2,
+			'message' => 'maps-googlemaps3-par-clusterminsize',
 		];
 
 		$params['tilt'] = [
@@ -318,8 +318,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public static function getApiScript( $langCode, array $urlArgs = [] ) {
 		$urlArgs = array_merge(
 			[
-				'language' => self::getMappedLanguageCode( $langCode ),
-				'sensor' => 'false'
+				'language' => self::getMappedLanguageCode( $langCode )
 			],
 			$urlArgs
 		);

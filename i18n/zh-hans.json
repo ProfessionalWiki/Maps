@@ -8,8 +8,7 @@
 			"PhiLiP",
 			"Qiyue2001",
 			"Xiaomingyan",
-			"Yfdyh000",
-			"Myy730"
+			"Yfdyh000"
 		]
 	},
 	"maps-desc": "允许嵌入动态地图到wiki页面，将地址转换为地理编码，及进行其他地理学操作",
@@ -137,7 +136,7 @@
 	"maps-par-kml": "加载地图上的KML文件。",
 	"maps-googlemaps3-incompatbrowser": "您的浏览器不兼容Google Maps v3。",
 	"maps-googlemaps3-par-imageoverlays": "允许添加图片以在地图的特定地点显示。",
-	"maps-googlemaps3-par-markercluster": "允许将多个附近标记合并为一个标记",
+	"maps-par-markercluster": "允许将多个附近标记合并为一个标记",
 	"maps-googlemaps3-par-type": "首先显示的地图类型。",
 	"maps-googlemaps3-par-types": "将通过类型控制可用的地图类型。",
 	"maps-googlemaps3-par-layers": "要加载在地图上的特殊图层。",
@@ -151,7 +150,7 @@
 	"maps-googlemaps3-par-kmlrezoom": "在KML图层加载后重新缩放地图。",
 	"maps-googlemaps3-par-poi": "显示感兴趣的点。",
 	"maps-googlemaps3-par-clustergridsize": "群集的网格大小（像素）。",
-	"maps-googlemaps3-par-clustermaxzoom": "可能存在群集的最大缩放级别。",
+	"maps-par-clustermaxzoom": "可能存在群集的最大缩放级别。",
 	"maps-openlayers-par-controls": "要放置地图上的控件。",
 	"maps-openlayers-par-layers": "将在图层选择器中可用的图层。第一个图层将在地图加载时显示。",
 	"maps-openlayers-par-overlays": "将在图层选择器中可用的覆盖图层。这些图层将在一般图层上方显示，就像一个标记。",
