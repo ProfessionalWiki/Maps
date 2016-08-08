@@ -318,8 +318,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public static function getApiScript( $langCode, array $urlArgs = [] ) {
 		$urlArgs = array_merge(
 			[
-				'language' => self::getMappedLanguageCode( $langCode ),
-				'sensor' => 'false'
+				'language' => self::getMappedLanguageCode( $langCode )
 			],
 			$urlArgs
 		);
