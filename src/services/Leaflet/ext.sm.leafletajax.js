@@ -33,11 +33,12 @@
                     if ( ajaxRequest !== null ) {
                         ajaxRequest.abort();
                     }
-                    ajaxRequest = sm.ajaxUpdateMarker( map, query).done( function () {
+                    ajaxRequest = sm.ajaxUpdateMarker( map, query ).done( function () {
+                        map.createMarkerCluster();
                         ajaxRequest = null;
                     } );
                 } );
             } );
-        }, 500 );
+        }, 1000 );
     } );
 })( window.jQuery, window.sm );
