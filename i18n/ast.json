@@ -146,7 +146,7 @@
 	"maps-googlemaps3-par-kmlrezoom": "Axustar el nivel de zoom dempués de que carguen les capes KML.",
 	"maps-googlemaps3-par-poi": "Amosar puntos d'interés.",
 	"maps-googlemaps3-par-clustergridsize": "La midida de rexa d'un grupu en píxeles.",
-	"maps-googlemaps3-par-clustermaxzoom": "El nivel máximu d'ampliación nel qu'un marcador puede ser parte d'un grupu.",
+	"maps-googlemaps3-par-clustermaxzoom": "El nivel máximu d'ampliación nel que pueden esistir grupos.",
 	"maps-googlemaps3-par-clusterzoomonclick": "Si'l comportamientu predetermináu al facer click nun grupu ye amplialu.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Si'l centru de cada grupu tien de ser la media de tolos marcadores del grupu.",
 	"maps-googlemaps3-par-clusterminsize": "El númberu mínimu de marcadores que tán nun grupu primero que se despinten los marcadores y s'amuese un recuentu.",

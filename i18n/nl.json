@@ -7,7 +7,8 @@
 			"SPQRobin",
 			"Siebrand",
 			"Sjoerddebruin",
-			"Esketti"
+			"Esketti",
+			"MrLeopold"
 		]
 	},
 	"maps-desc": "Maakt het insluiten van dynamische kaarten in de wikipagina's, het geocoderen van adressen en andere geografische activiteiten mogelijk",
@@ -149,6 +150,7 @@
 	"maps-googlemaps3-par-tilt": "Hoek voor de kaart bij gebruik van Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Het zoomniveau van de kaart opnieuw instellen als de KML-lagen geladen zijn.",
 	"maps-googlemaps3-par-poi": "Interessante plaatsen weergeven.",
+	"maps-googlemaps3-par-clustermaxzoom": "Het maximale zoomniveau waar clusters kunnen bestaan.",
 	"maps-openlayers-par-controls": "De op de kaart te plaatsen besturingselementen.",
 	"maps-openlayers-par-layers": "De lagen die beschikbaar zijn in het selectievak. De eerste laag worden weergegeven als de kaart wordt geladen.",
 	"maps-openlayers-par-overlays": "Overlaylagen die beschikbaar zijn in de lagenselector. Deze lagen worden bovenop een normale laag weergegeven, ongeveer zoals een marker.",
