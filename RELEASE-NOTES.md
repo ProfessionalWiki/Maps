@@ -6,6 +6,7 @@ Development version
 
 * Dropped support for MediaWiki older than 1.23
 * Dropped support for PHP older than 5.5
+* Dropped support for Maps older than 3.8
 * Added autoload location data with Ajax feature (by Peter Grassberger)
 * Renamed the file with default settings from `SM_Settings.php` to `DefaultSettings.php`
 * Fixed occasional fatal error occuring when using the maps tracking category

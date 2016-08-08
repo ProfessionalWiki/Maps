@@ -14,7 +14,7 @@
         // todo: find a way to remove setTimeout.
         setTimeout(function() {
             $( window.maps.openlayersList ).each( function( index, map ) {
-                if (!map.options.ajaxquery && !map.options.ajaxcoordproperty) {
+                if (!map.options.ajaxquery || !map.options.ajaxcoordproperty) {
                     return;
                 }
                 map.map.events.register( 'moveend', map.map, function () {

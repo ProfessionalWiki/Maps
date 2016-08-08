@@ -37,6 +37,7 @@
                             ajaxRequest.abort();
                         }
                         ajaxRequest = sm.ajaxUpdateMarker( map, query ).done( function () {
+                            map.createMarkerCluster();
                             ajaxRequest = null;
                         } );
                     } );
