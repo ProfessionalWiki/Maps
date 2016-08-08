@@ -242,7 +242,6 @@
 			if (options.maxzoom !== false ) mapOptions.maxZoom = options.maxzoom;
 
 			if (options.enablefullscreen) {
-				mw.loader.using('ext.maps.leaflet.fullscreen');
 				mapOptions.fullscreenControl = true;
 				mapOptions.fullscreenControlOptions= {
 					position: 'topleft'
@@ -258,9 +257,8 @@
 			}).addTo(map);
 
 			if (options.resizable) {
-				mw.loader.using('ext.maps.resizable', function () { //TODO: Fix moving map when resized
-					_this.resizable();
-				});
+				//TODO: Fix moving map when resized
+				_this.resizable();
 			}
 
 			if (!options.locations) {
@@ -334,14 +332,20 @@
 			}
 		};
 
-		if (!options.markercluster) {
-			this.setup();
-		} else {
-			mw.loader.using('ext.maps.leaflet.markercluster', function() {
-				_this.setup();
-			});
+		var toLoad = [];
+		if (options.enablefullscreen) {
+			toLoad.push( 'ext.maps.leaflet.fullscreen' );
+		}
+		if (options.resizable) {
+			toLoad.push( 'ext.maps.resizable' );
+		}
+		if (options.markercluster) {
+			toLoad.push( 'ext.maps.leaflet.markercluster' );
 		}
 
+		mw.loader.using( toLoad ).then( function() {
+			_this.setup();
+		} );
 
 		return this;
 
