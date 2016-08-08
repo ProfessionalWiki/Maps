@@ -5,8 +5,6 @@ namespace Maps\Test;
 /**
  * @covers MapsNominatimGeocoder
  *
- * @since 4.0
- *
  * @group Maps
  *
  * @licence GNU GPL v2+
@@ -15,7 +13,7 @@ namespace Maps\Test;
 class NominatimGeocoderTest extends \PHPUnit_Framework_TestCase {
 
 	protected static function getMethod( $name ) {
-		$class = new \ReflectionClass( 'MapsNominatimGeocoder' );
+		$class = new \ReflectionClass( \MapsNominatimGeocoder::class );
 		$method = $class->getMethod( $name );
 		$method->setAccessible( true );
 		return $method;
@@ -33,9 +31,9 @@ class NominatimGeocoderTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider addressProvider
 	 */
 	public function testGetRequestUrl( $address, $expected ) {
-		$getRequestUrl = self::getMethod('getRequestUrl');
+		$getRequestUrl = self::getMethod( 'getRequestUrl' );
 		$geocoder = new \MapsNominatimGeocoder( 'nominatim' );
-		$actual = $getRequestUrl->invokeArgs($geocoder, array( $address ));
+		$actual = $getRequestUrl->invokeArgs( $geocoder, array( $address ) );
 		$this->assertSame( $expected, $actual );
 	}
 
@@ -54,9 +52,9 @@ class NominatimGeocoderTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider responseProvider
 	 */
 	public function testParseResponse( $response, $expected ) {
-		$parseResponse = self::getMethod('parseResponse');
+		$parseResponse = self::getMethod( 'parseResponse' );
 		$geocoder = new \MapsNominatimGeocoder( 'nominatim' );
-		$actual = $parseResponse->invokeArgs($geocoder, array( $response ));
+		$actual = $parseResponse->invokeArgs( $geocoder, array( $response ) );
 		$this->assertSame( $expected, $actual );
 	}
 }

@@ -5,7 +5,7 @@
  * 
  * Webservice documentation: http://wiki.openstreetmap.org/wiki/Nominatim
  *
- * @since 4.0
+ * @since 3.8
  *
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >
