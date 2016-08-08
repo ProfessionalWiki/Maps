@@ -66,7 +66,7 @@ class SemanticMaps {
 
 		include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
-	$moduleTemplate = [
+		$moduleTemplate = [
 			'position' => 'bottom',
 			'group' => 'ext.semanticmaps',
 		];
