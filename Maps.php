@@ -150,6 +150,9 @@ call_user_func( function() {
 	// Registration of the geocoder.us service geocoder.
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
 
+	// Registration of the OSM Nominatim service geocoder.
+	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsNominatimGeocoder::register';
+
 	// Mapping services
 
 	// Include the mapping services that should be loaded into Maps.

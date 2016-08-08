@@ -51,6 +51,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		'geonames',
 		'google',
 		'geocoderus',
+		'nominatim',
 	];
 
 	// String. The default geocoding service, which will be used when no service is
