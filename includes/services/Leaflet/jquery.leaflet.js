@@ -210,7 +210,18 @@
 					index = Math.min(styles.length - 1, index);
 					var style = styles[index];
 
-					return new L.Icon(style);
+					return new L.divIcon({
+						iconSize: style.iconSize,
+						className: '',
+						html: '<img style="' +
+						'" src="' + style.iconUrl + '" />' +
+						'<span style="' +
+						'position: absolute; font-size: 11px; font-weight: bold; text-align: center; ' +
+						'top: 0; left: 0; ' +
+						'line-height: ' + style.iconSize[1] + 'px;' +
+						'width: ' + style.iconSize[0] + 'px;' +
+						'">' + childCount + '</span>'
+					});
 				}
 			});
 			$.each(this.markers, function(index, marker) {
