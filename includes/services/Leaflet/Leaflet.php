@@ -48,7 +48,7 @@ call_user_func( function() {
 
 	$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
 		'localBasePath' => __DIR__ . '/leaflet.fullscreen',
-		'remoteExtPath' => end( $pathParts ),
+		'remoteExtPath' => end( $pathParts ) . '/leaflet.fullscreen',
 		'group' => 'ext.maps',
 		'targets' => [
 			'mobile',
