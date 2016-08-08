@@ -66,11 +66,9 @@ class SemanticMaps {
 
 		include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
-		$moduleTemplate = [
-				'position' => 'bottom',
-				'localBasePath' => __DIR__ . '/src',
-				'remoteExtPath' => 'SemanticMaps/src',
-				'group' => 'ext.semanticmaps',
+	$moduleTemplate = [
+			'position' => 'bottom',
+			'group' => 'ext.semanticmaps',
 		];
 
 		$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = $moduleTemplate + [
@@ -91,6 +89,8 @@ class SemanticMaps {
 		];
 
 		$GLOBALS['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
+			'localBasePath' => __DIR__ . '/src',
+			'remoteExtPath' => 'SemanticMaps/src',
 			'scripts' => [
 				'ext.sm.common.js'
 			]
