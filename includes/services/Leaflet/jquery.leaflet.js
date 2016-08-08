@@ -12,6 +12,7 @@
 		this.map = null;
 		this.options = options;
 		this.markers = [];
+		this.markercluster = null;
 
 		/**
 		 * array point of all map elements (markers, lines, polygons, etc.)
@@ -20,12 +21,11 @@
 		this.points = [];
 
 		/**
-		* Creates a new marker with the provided data,
-		* adds it to the map, and returns it.
+		* Creates a new marker with the provided data and returns it.
 		* @param {Object} markerData Contains the fields lat, lon, title, text and icon
 		* @return {L.Marker}
 		*/
-		this.addMarker = function (properties) {
+		this.createMarker = function (properties) {
 			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
 			if (!properties.hasOwnProperty('icon') || properties.icon === '') {
@@ -41,10 +41,25 @@
 				icon:icon
 			};
 
-			var marker = L.marker( [properties.lat, properties.lon], markerOptions ).addTo( this.map );
+			var marker = L.marker( [properties.lat, properties.lon], markerOptions );
 			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
 
-			this.markers.push(marker);
+			return marker;
+		};
+
+		/**
+		 * Creates a new marker with the provided data, adds it to the map
+		 * and returns it.
+		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
+		 * @return {L.Marker}
+         */
+		this.addMarker = function (properties) {
+			var marker = this.createMarker(properties);
+			if (!this.options.markercluster) {
+				marker.addTo( this.map );
+			}
+			this.markers.push( marker );
+			return marker;
 		};
 
 		this.removeMarker = function (marker) {
@@ -56,6 +71,10 @@
 		};
 
 		this.removeMarkers = function () {
+			if (this.markercluster) {
+				this.map.removeLayer(this.markercluster);
+				this.markercluster = null;
+			}
 			var map = this.map;
 			$.each(this.markers, function(index, marker) {
 				map.removeLayer(marker);
@@ -143,6 +162,79 @@
 			L.rectangle( bounds, options ).addTo(this.map);
 		};
 
+		this.createMarkerCluster = function () {
+			var markers = this.markers;
+
+			var markercluster = L.markerClusterGroup({
+				maxClusterRadius: options.clustermaxradius,
+				disableClusteringAtZoom: options.clustermaxzoom + 1,
+				zoomToBoundsOnClick: options.clusterzoomonclick,
+				spiderfyOnMaxZoom: options.clusterspiderfy,
+				iconCreateFunction: function(cluster) {
+					var childCount = cluster.getChildCount();
+
+					var imagePath = mw.config.get( 'wgScriptPath' ) +
+							'/extensions/Maps/includes/images/m';
+
+					var styles = [
+						{
+							iconUrl: imagePath + '1.png',
+							iconSize: [53, 52]
+						},
+						{
+							iconUrl: imagePath + '2.png',
+							iconSize: [56, 55]
+						},
+						{
+							iconUrl: imagePath + '3.png',
+							iconSize: [66, 65]
+						},
+						{
+							iconUrl: imagePath + '4.png',
+							iconSize: [78, 77]
+						},
+						{
+							iconUrl: imagePath + '5.png',
+							iconSize: [90, 89]
+						}
+					];
+
+					var index = 0;
+					var dv = childCount;
+					while (dv !== 0) {
+						dv = parseInt(dv / 10, 10);
+						index++;
+					}
+					var index = Math.min(index, styles.length);
+					index = Math.max(0, index - 1);
+					index = Math.min(styles.length - 1, index);
+					var style = styles[index];
+
+					return new L.divIcon({
+						iconSize: style.iconSize,
+						className: '',
+						html: '<img style="' +
+						'" src="' + style.iconUrl + '" />' +
+						'<span style="' +
+						'position: absolute; font-size: 11px; font-weight: bold; text-align: center; ' +
+						'top: 0; left: 0; ' +
+						'line-height: ' + style.iconSize[1] + 'px;' +
+						'width: ' + style.iconSize[0] + 'px;' +
+						'">' + childCount + '</span>'
+					});
+				}
+			});
+			$.each(this.markers, function(index, marker) {
+				markercluster.addLayer(marker);
+			});
+			if (this.markercluster) {
+				this.map.removeLayer(this.markercluster);
+				this.markercluster = null;
+			}
+			this.map.addLayer(markercluster);
+			this.markercluster = markercluster;
+		};
+
 		this.setup = function () {
 
 			var mapOptions = {};
@@ -174,9 +266,15 @@
 			if (!options.locations) {
 				options.locations = [];
 			}
+
 			// Add the markers.
 			for (var i = options.locations.length - 1; i >= 0; i--) {
 				this.addMarker(options.locations[i]);
+			}
+
+			// Add markercluster
+			if (options.markercluster) {
+				this.createMarkerCluster();
 			}
 
 			// Add lines
@@ -236,7 +334,14 @@
 			}
 		};
 
-		this.setup();
+		if (!options.markercluster) {
+			this.setup();
+		} else {
+			mw.loader.using('ext.maps.leaflet.markercluster', function() {
+				_this.setup();
+			});
+		}
+
 
 		return this;
 
