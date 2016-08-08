@@ -72,7 +72,7 @@ class MapsLeaflet extends MapsMappingService {
 		$params['clustermaxradius'] = [
 			'type' => 'integer',
 			'default' => 80,
-			'message' => 'maps-leaflet-par-clustermaxzoom',
+			'message' => 'maps-par-maxclusterradius',
 		];
 
 		$params['clusterspiderfy'] = [
