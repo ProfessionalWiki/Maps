@@ -5,6 +5,18 @@ These are the release notes for the [Maps extension](README.md).
 Under development.
 
 * Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
+* Added OSM Nominatim Geocoder (by Peter Grassberger)
+* Added Google Maps API version number `egMapsGMaps3ApiVersion` setting (by Peter Grassberger)
+* Upgraded Leaflet library to its latest version (1.0.0-r3) (by Peter Grassberger)
+* Added Leaflet clustering (by Peter Grassberger)
+    * `markercluster`: Enables clustering, multiple markers are merged into one marker.
+    * `clustermaxzoom`: The maximum zoom level where clusters may exist."
+    * `clusterzoomonclick`: Whether clicking on a cluster zooms into it.
+    * `clustermaxradius`: The maximum radius that a cluster will cover.
+    * `clusterspiderfy`: At the bottom zoom level markers are separated so you can see all of them.
+* Added Leaflet fullscreen control (by Peter Grassberger)
+* Added clean removal of Google Maps and Leaflet cluster when all markers are removed. (by Peter Grassberger)
+* Merge system messages for several services (by Karsten Hoffmeyer)
 
 ## Maps 3.7
 
