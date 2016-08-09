@@ -332,18 +332,21 @@
 			}
 		};
 
-		var toLoad = [];
-		if (options.enablefullscreen) {
-			toLoad.push( 'ext.maps.leaflet.fullscreen' );
-		}
-		if (options.resizable) {
-			toLoad.push( 'ext.maps.resizable' );
-		}
-		if (options.markercluster) {
-			toLoad.push( 'ext.maps.leaflet.markercluster' );
-		}
+		this.getDependencies = function ( options ) {
+			var dependencies = [];
+			if (options.enablefullscreen) {
+				dependencies.push( 'ext.maps.leaflet.fullscreen' );
+			}
+			if (options.resizable) {
+				dependencies.push( 'ext.maps.resizable' );
+			}
+			if (options.markercluster) {
+				dependencies.push( 'ext.maps.leaflet.markercluster' );
+			}
+			return dependencies;
+		};
 
-		mw.loader.using( toLoad ).then( function() {
+		mw.loader.using( this.getDependencies( options ) ).then( function() {
 			_this.setup();
 		} );
 
