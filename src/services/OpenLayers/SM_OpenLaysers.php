@@ -32,6 +32,8 @@ unset( $moduleTemplate );
 $GLOBALS['wgHooks']['MappingServiceLoad'][] = 'smfInitOpenLayers';
 
 function smfInitOpenLayers() {
+    MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', 'SMMapPrinter' );
+
     /* @var MapsMappingService $openlayers */
     $openlayers = MapsMappingServices::getServiceInstance( 'openlayers' );
     $openlayers->addResourceModules(array( 'ext.sm.fi.openlayersajax' ));
