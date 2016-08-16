@@ -77,6 +77,19 @@ call_user_func( function() {
 			'MarkerCluster.css',
 		],
 	];
+
+	$wgResourceModules['ext.maps.leaflet.providers'] = [
+		'localBasePath' => __DIR__ . '/leaflet-providers',
+		'remoteExtPath' => end( $pathParts ) . '/leaflet-providers',
+		'group' => 'ext.maps',
+		'targets' => [
+			'mobile',
+			'desktop'
+		],
+		'scripts' => [
+			'leaflet-providers.js',
+		],
+	];
 } );
 
 /**

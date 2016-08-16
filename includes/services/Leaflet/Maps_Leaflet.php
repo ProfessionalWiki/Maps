@@ -25,6 +25,8 @@ class MapsLeaflet extends MapsMappingService {
 	 * @since 3.0
 	 */
 	public function addParameterInfo( array &$params ) {
+		global $GLOBALS;
+
 		$params['zoom'] = [
 			'type' => 'integer',
 			'range' => [ 0, 20 ],
@@ -37,6 +39,21 @@ class MapsLeaflet extends MapsMappingService {
 			'range' => [ 0, 20 ],
 			'default' => self::getDefaultZoom(),
 			'message' => 'maps-leaflet-par-defzoom'
+		];
+
+		$params['layer'] = [
+			'type' => 'string',
+			'values' => $GLOBALS['egMapsLeafletAvailableLayers'],
+			'default' => $GLOBALS['egMapsLeafletLayer'],
+			'message' =>'maps-leaflet-par-layer',
+		];
+
+		$params['overlaylayers'] = [
+			'type' => 'string',
+			'values' => $GLOBALS['egMapsLeafletAvailableOverlayLayers'],
+			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
+			'message' =>'maps-leaflet-par-overlaylayers', // todo: add to i18n
+			'islist' => true,
 		];
 
 		$params['resizable'] = [

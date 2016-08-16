@@ -252,9 +252,19 @@
 			this.map = map;
 
 			// add an OpenStreetMap tile layer
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			var layerOptions = {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			}).addTo(map);
+			};
+			if (options.layer !== 'MapQuestOpen') {
+				L.tileLayer.provider(options.layer, layerOptions).addTo(map);
+			} else {
+				//MQ.TileLayer(layerOptions).addTo(map)
+			}
+
+			$.each(options.overlaylayers, function(index, overlaylayer) {
+				console.log(overlaylayer);
+				L.tileLayer.provider(overlaylayer).addTo(_this.map);
+			});
 
 			if (options.resizable) {
 				//TODO: Fix moving map when resized
@@ -334,6 +344,7 @@
 
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
+			dependencies.push( 'ext.maps.leaflet.providers' );
 			if (options.enablefullscreen) {
 				dependencies.push( 'ext.maps.leaflet.fullscreen' );
 			}
@@ -343,6 +354,9 @@
 			if (options.markercluster) {
 				dependencies.push( 'ext.maps.leaflet.markercluster' );
 			}
+			/*if (options.layer === 'MapQuestOpen') {
+				// todo: load dependency
+			}*/
 			return dependencies;
 		};
 

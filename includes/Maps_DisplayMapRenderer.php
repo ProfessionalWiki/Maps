@@ -145,6 +145,13 @@ class MapsDisplayMapRenderer {
 
 		if ( $params['mappingservice'] === 'openlayers' ) {
 			$params['layers'] = self::evilOpenLayersHack( $params['layers'] );
+		} else if ( $params['mappingservice'] === 'leaflet' ) {
+			global $egMapsLeafletLayerDependencies;
+			$layerDependencies = [];
+			$layerDependencies[] = $egMapsLeafletLayerDependencies['MapQuestOpen'];
+			MapsMappingServices::getServiceInstance( 'leaflet' )->addLayerDependencies(
+				array_unique( $layerDependencies )
+			);
 		}
 	}
 

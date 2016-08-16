@@ -250,7 +250,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'osm-cyclemap'
 		];
 
-		// The difinitions for the layers that should be available for the user.
+		// The definitions for the layers that should be available for the user.
 		$GLOBALS['egMapsOLAvailableLayers'] = [
 			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
 
@@ -300,6 +300,66 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
 		$GLOBALS['egMapsLeafletZoom'] = 14;
+
+		// String. The default layer for Leaflet. This value will only be
+		// used when the user does not provide one.
+		$GLOBALS['egMapsLeafletLayer'] = 'OpenStreetMap';
+
+		$GLOBALS['egMapsLeafletOverlayLayers'] = [
+
+		];
+
+		// The definitions for the layers that should be available for the user.
+		$GLOBALS['egMapsLeafletAvailableLayers'] = [
+			'OpenStreetMap',
+			'OpenStreetMap.DE',
+			'OpenStreetMap.BlackAndWhite',
+			'OpenStreetMap.HOT',
+			'Thunderforest.OpenCycleMap',
+			'Thunderforest.Transport',
+			'Thunderforest.Landscape',
+			'Hydda.Full',
+			'MapBox',
+			'Stamen.Toner',
+			'Stamen.Terrain',
+			'Stamen.Watercolor',
+			'Esri.WorldStreetMap',
+			'Esri.DeLorme',
+			'Esri.WorldTopoMap',
+			'Esri.WorldImagery',
+			'Esri.WorldTerrain',
+			'Esri.WorldShadedRelief',
+			'Esri.WorldPhysical',
+			'Esri.OceanBasemap',
+			'Esri.NatGeoWorldMap',
+			'Esri.WorldGrayCanvas',
+			'MapQuestOpen',
+		];
+
+		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = [
+			'OpenSeaMap',
+			'OpenWeatherMap.Clouds',
+			'OpenWeatherMap.CloudsClassic',
+			'OpenWeatherMap.Precipitation',
+			'OpenWeatherMap.PrecipitationClassic',
+			'OpenWeatherMap.Rain',
+			'OpenWeatherMap.RainClassic',
+			'OpenWeatherMap.Pressure',
+			'OpenWeatherMap.PressureContour',
+			'OpenWeatherMap.Wind',
+			'OpenWeatherMap.Temperature',
+			'OpenWeatherMap.Snow',
+		];
+
+		$GLOBALS['egMapsLeafletLayersApiKeys'] = [
+			'MapBox' => '',
+			'MapQuestOpen' => '',
+		];
+
+		// Layer dependencies
+		$GLOBALS['egMapsLeafletLayerDependencies'] = [
+			'MapQuestOpen' => "<script src='https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=" . $GLOBALS['egMapsLeafletLayersApiKeys']['MapQuestOpen'] . "'></script>",
+		];
 
 
 $GLOBALS['egMapsGlobalJSVars'] = [];
