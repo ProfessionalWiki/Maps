@@ -109,11 +109,6 @@ class SemanticMaps {
 	 */
 	public static function onExtensionFunction() {
 
-		$GLOBALS['wgHooks']['MappingServiceLoad'][] = function() {
-			MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', 'SMMapPrinter' );
-			return true;
-		};
-
 		// Hook for initializing the Geographical Data types.
 		$GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
 
