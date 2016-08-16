@@ -5,7 +5,7 @@
  * @licence GNU GPL v2++
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-window.sm = new ( function( $ ) {
+window.sm = new ( function( $, mw ) {
 
     this.buildQueryString = function( query, ajaxcoordproperty, top, right, bottom, left ) {
         query += ' [[' + ajaxcoordproperty + '::+]] ';
@@ -18,7 +18,7 @@ window.sm = new ( function( $ ) {
     this.sendQuery = function( query ) {
         return $.ajax( {
             method: 'GET',
-            url: '/w/api.php?',
+            url: mw.util.wikiScript( 'api' ),
             data: {
                 'action': 'ask',
                 'query': query,
@@ -53,4 +53,4 @@ window.sm = new ( function( $ ) {
         } );
     };
 
-} )( jQuery );
+} )( jQuery, mediaWiki );
