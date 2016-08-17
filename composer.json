@@ -40,7 +40,7 @@
 			"Maps.php"
 		],
 		"psr-4": {
-			"Maps\\": "src/Maps/"
+			"Maps\\": "src/"
 		},
 		"classmap": [
 			"includes/",
