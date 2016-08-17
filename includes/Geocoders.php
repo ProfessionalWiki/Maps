@@ -5,6 +5,7 @@ namespace Maps;
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
+use MapsDecoratedGeocoder;
 use MWException;
 use ValueParsers\ParseException;
 
@@ -310,10 +311,10 @@ final class Geocoders {
 	 * @since 0.7
 	 *
 	 * @param string $geocoderIdentifier
-	 * @param string $geocoderClassName
+	 * @param string|\Maps\Geocoders\Geocoder $geocoder
 	 */
-	public static function registerGeocoder( $geocoderIdentifier, $geocoderClassName ) {
-		self::$registeredGeocoders[$geocoderIdentifier] = $geocoderClassName;
+	public static function registerGeocoder( $geocoderIdentifier, $geocoder ) {
+		self::$registeredGeocoders[$geocoderIdentifier] = $geocoder;
 	}
 
 	/**
@@ -346,14 +347,21 @@ final class Geocoders {
 	protected static function getGeocoderInstance( $geocoderIdentifier ) {
 		if ( !array_key_exists( $geocoderIdentifier, self::$geocoders ) ) {
 			if ( array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
-				$geocoder = new self::$registeredGeocoders[$geocoderIdentifier]( $geocoderIdentifier );
+				if ( is_string( self::$registeredGeocoders[$geocoderIdentifier] ) ) {
+					$geocoder = new self::$registeredGeocoders[$geocoderIdentifier]( $geocoderIdentifier );
+				}
+				elseif ( self::$registeredGeocoders[$geocoderIdentifier] instanceof \Maps\Geocoders\Geocoder ) {
+					$geocoder = new MapsDecoratedGeocoder(
+						self::$registeredGeocoders[$geocoderIdentifier],
+						$geocoderIdentifier
+					);
+				}
+				else {
+					throw new MWException( 'Need either class name or Geocoder instance' );
+				}
 
-				//if ( $service instanceof iMappingService ) {
-					self::$geocoders[$geocoderIdentifier] = $geocoder;
-				//}
-				//else {
-				//	throw new MWException( 'The geocoder linked to identifier ' . $geocoderIdentifier . ' does not implement .' );
-				//}
+
+				self::$geocoders[$geocoderIdentifier] = $geocoder;
 			}
 			else {
 				throw new MWException( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
