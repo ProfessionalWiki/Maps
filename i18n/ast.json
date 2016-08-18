@@ -118,6 +118,8 @@
 	"maps-geocoder-not-available": "La carauterística de xeocodificación de mapes nun ta disponible. Nun se pue xeocodificar la to situación.",
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Permite configurar el nivel predetermináu d'ampliación del mapa.",
+	"maps-leaflet-par-maxclusterradius": "El radiu máximu que cubrirá un grupu dende'l marcador central (en pixels).",
+	"maps-leaflet-par-clusterspiderfy": "Cuando faes click nun grupu al mínimu d'ampliación, espardémoslu pa que puedan vese los marcadores.",
 	"maps_click_to_activate": "Calca p'activar el mapa",
 	"maps_centred_on": "Mapa centráu en $1, $2.",
 	"maps-par-mappingservice": "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
