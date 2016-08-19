@@ -6,7 +6,7 @@
  * @author Peter Grassberger < petertheone@gmail.com >
  */
 
-(function ($, mw, L) {
+(function ($, mw, L, MQ) {
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
@@ -255,14 +255,15 @@
 			var layerOptions = {
 				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 			};
-			if (options.layer !== 'MapQuestOpen') {
-				L.tileLayer.provider(options.layer, layerOptions).addTo(map);
+			if (options.layer === 'OpenStreetMap') {
+				new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', layerOptions).addTo(map);
+			} else if (options.layer === 'MapQuestOpen') {
+				new MQ.TileLayer(layerOptions).addTo(map);
 			} else {
-				//MQ.TileLayer(layerOptions).addTo(map)
+				new L.tileLayer.provider(options.layer, layerOptions).addTo(map);
 			}
 
 			$.each(options.overlaylayers, function(index, overlaylayer) {
-				console.log(overlaylayer);
 				L.tileLayer.provider(overlaylayer).addTo(_this.map);
 			});
 
@@ -344,7 +345,9 @@
 
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
-			dependencies.push( 'ext.maps.leaflet.providers' );
+			if (options.layer !== 'OpenStreetMap' || options.overlaylayers.length > 0) {
+				dependencies.push( 'ext.maps.leaflet.providers' );
+			}
 			if (options.enablefullscreen) {
 				dependencies.push( 'ext.maps.leaflet.fullscreen' );
 			}
@@ -354,9 +357,6 @@
 			if (options.markercluster) {
 				dependencies.push( 'ext.maps.leaflet.markercluster' );
 			}
-			/*if (options.layer === 'MapQuestOpen') {
-				// todo: load dependency
-			}*/
 			return dependencies;
 		};
 
@@ -367,4 +367,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki, L);
+})(jQuery, window.mediaWiki, L, MQ);

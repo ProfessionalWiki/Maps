@@ -145,4 +145,17 @@ class MapsLeaflet extends MapsMappingService {
 		];
 	}
 
+	/**
+	 * Adds the layer dependencies.
+	 *
+	 * @since 3.8
+	 *
+	 * @param array $dependencies
+	 */
+	public function addLayerDependencies( array $dependencies ) {
+		foreach ( $dependencies as $dependency ) {
+			$this->addDependency( $dependency );
+		}
+	}
+
 }
