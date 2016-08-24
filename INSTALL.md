@@ -186,9 +186,34 @@ Now using Composer, install Maps
 
 #### Verify installation success
 
-As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki and verifying the
-Maps extension is listed.
+As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki
+and verifying the Maps extension is listed.
 
 ## Configuration
 
-See the [Maps settings file](Maps_Settings.php) for the available configuration options.
+At present, minimal configuration is needed to get Maps running. Configuration is done like in most
+MediaWiki extensions,by placing some simple snippets of PHP code at the bottom of MediaWiki's
+LocalSettings.php.
+
+As of June 2016, Google requires you to provide an API key when you where not already using their
+maps API. This means that you will either need to configure this key, or use another of the
+supported mapping services.
+
+### Required configuration for Google Maps
+
+$GLOBALS['egMapsGMaps3ApiKey'] = 'your-api-key';
+
+### Not using Google Maps by default
+
+For OpenLayers:
+
+$GLOBALS['egMapsDefaultService'] = 'openlayers';
+
+For Leaflet:
+
+$GLOBALS['egMapsDefaultService'] = 'leaflet';
+
+You might also want to fully disable Google Maps by placing a copy of the `egMapsAvailableServices`
+setting in LocalSettings, and removing the `googlemaps3` line.
+
+See the [Maps settings file](Maps_Settings.php) for all available configuration options.
