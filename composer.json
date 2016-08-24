@@ -33,7 +33,7 @@
 		"php": ">=5.5.0",
 		"composer/installers": "^1.0.1",
 		"data-values/geo": "~1.1",
-		"mediawiki/maps": "~3.8@dev",
+		"mediawiki/maps": "~3.8",
 		"mediawiki/semantic-media-wiki": "~2.0",
 		"mediawiki/validator": "~2.0"
 	},
