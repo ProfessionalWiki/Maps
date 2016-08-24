@@ -338,11 +338,18 @@ class SMQueryHandler {
 					$dataItem = $dataValue->getDataItem();
 					$polyHandler = new PolygonHandler ( $dataItem->getString() );
 					$this->geoShapes[ $polyHandler->getGeoType() ][] = $polyHandler->shapeFromText();
+				} else if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
+					foreach ( $dataValue->getDataItems() as $dataItem ) {
+						if ( $dataItem instanceof \SMWDIGeoCoord ) {
+							$location = Location::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
+							$locations[] = $location;
+						}
+					}
 				}
 				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide()) {
 					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 				}
-				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' ) {
+				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' || $dataValue->getTypeID() == '_geo' ) {
 					$dataItem = $dataValue->getDataItem();
 
 					$location = Location::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
