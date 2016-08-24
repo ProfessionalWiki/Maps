@@ -2,7 +2,7 @@ These are the release notes for the [Maps extension](README.md).
 
 ## Maps 3.8
 
-Under development.
+Released on August 24rd, 2016.
 
 * Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
 * Added Google Maps API version number `egMapsGMaps3ApiVersion` setting (by Peter Grassberger)
