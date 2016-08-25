@@ -31,7 +31,7 @@
                     if ( ajaxRequest !== null ) {
                         ajaxRequest.abort();
                     }
-                    ajaxRequest = sm.ajaxUpdateMarker( map, query ).done( function () {
+                    ajaxRequest = sm.ajaxUpdateMarker( map, query, map.options.icon ).done( function () {
                         ajaxRequest = null;
                     } );
                 } );

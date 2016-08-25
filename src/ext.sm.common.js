@@ -28,7 +28,7 @@ window.sm = new ( function( $, mw ) {
         } );
     };
 
-    this.ajaxUpdateMarker = function( map, query ) {
+    this.ajaxUpdateMarker = function( map, query, icon ) {
         return this.sendQuery(query).done( function( data ) {
             if ( !data.hasOwnProperty( 'query' ) ||
                     !data.query.hasOwnProperty( 'results' )) {
@@ -45,7 +45,8 @@ window.sm = new ( function( $, mw ) {
                         lat: coordinates.lat,
                         lon: coordinates.lon,
                         title: location.fulltext,
-                        text: '<b><a href="' + location.fullurl + '">' + location.fulltext + '</a></b>'
+                        text: '<b><a href="' + location.fullurl + '">' + location.fulltext + '</a></b>',
+                        icon: icon
                     };
                     map.addMarker( markerOptions );
                 }
