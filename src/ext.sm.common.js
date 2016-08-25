@@ -8,19 +8,28 @@
 window.sm = new ( function( $, mw ) {
 
     this.buildQueryString = function( query, ajaxcoordproperty, top, right, bottom, left ) {
-        query += ' [[' + ajaxcoordproperty + '::+]] ';
-        query += '[[' + ajaxcoordproperty + '::>' + bottom + '°, ' + left + '°]] ';
-        query += '[[' + ajaxcoordproperty + '::<' + top + '°, ' + right + '°]]';
-        query += '|?' + ajaxcoordproperty;
-        return query;
+        var compoundQuery = query.indexOf('|') > -1;
+        var query = query.split('|');
+        $.each( query, function ( index ) {
+            query[index] += ' [[' + ajaxcoordproperty + '::+]] ';
+            query[index] += '[[' + ajaxcoordproperty + '::>' + bottom + '°, ' + left + '°]] ';
+            query[index] += '[[' + ajaxcoordproperty + '::<' + top + '°, ' + right + '°]]';
+            if (!compoundQuery) {
+                query[index] += '|?' + ajaxcoordproperty;
+            } else {
+                query[index] += ';?' + ajaxcoordproperty;
+            }
+        } );
+        return query.join(' | ');
     };
 
     this.sendQuery = function( query ) {
+        var action = query.indexOf(';') > -1 ? 'compoundquery' : 'ask';
         return $.ajax( {
             method: 'GET',
             url: mw.util.wikiScript( 'api' ),
             data: {
-                'action': 'ask',
+                'action': action,
                 'query': query,
                 'format': 'json'
             },
