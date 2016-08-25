@@ -319,7 +319,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'Thunderforest.Transport',
 			'Thunderforest.Landscape',
 			'Hydda.Full',
-			'MapBox',
+			//'MapBox',
 			'Stamen.Toner',
 			'Stamen.Terrain',
 			'Stamen.Watercolor',
