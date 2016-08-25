@@ -148,7 +148,7 @@ class MapsDisplayMapRenderer {
 		} else if ( $params['mappingservice'] === 'leaflet' ) {
 			global $egMapsLeafletLayerDependencies;
 			$layerDependencies = [];
-			$layerDependencies[] = $egMapsLeafletLayerDependencies['MapQuestOpen'];
+			$layerDependencies[] = "<script src='https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=" . $GLOBALS['egMapsLeafletLayersApiKeys']['MapQuestOpen'] . "'></script>";
 			MapsMappingServices::getServiceInstance( 'leaflet' )->addLayerDependencies(
 				array_unique( $layerDependencies )
 			);
