@@ -52,7 +52,7 @@ class MapsLeaflet extends MapsMappingService {
 			'type' => 'string',
 			'values' => $GLOBALS['egMapsLeafletAvailableOverlayLayers'],
 			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
-			'message' =>'maps-leaflet-par-overlaylayers', // todo: add to i18n
+			'message' =>'maps-leaflet-par-overlaylayers',
 			'islist' => true,
 		];
 

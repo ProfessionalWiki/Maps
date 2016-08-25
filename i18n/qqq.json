@@ -130,6 +130,7 @@
 	"maps_leaflet": "This is a field label.\n\n{{optional}}",
 	"maps-leaflet-par-defzoom": "{{maps-par|leaflet|defzoom}}",
 	"maps-leaflet-par-layer": "{{maps-par|leaflet|layer}}",
+	"maps-leaflet-par-overlaylayers": "{{maps-par|leaflet|overlaylayers}}",
 	"maps-leaflet-par-maxclusterradius": "{{maps-par|leaflet|maxclusterradius}}",
 	"maps-leaflet-par-clusterspiderfy": "{{maps-par|leaflet|clusterspiderfy}}",
 	"maps_openlayers": "Lable for a result format on SMW's special page \"Ask\".\n\n{{optional}}",
