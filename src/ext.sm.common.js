@@ -8,13 +8,13 @@
 window.sm = new ( function( $, mw ) {
 
     this.buildQueryString = function( query, ajaxcoordproperty, top, right, bottom, left ) {
-        var compoundQuery = query.indexOf('|') > -1;
+        var isCompoundQuery = query.indexOf('|') > -1;
         var query = query.split('|');
         $.each( query, function ( index ) {
             query[index] += ' [[' + ajaxcoordproperty + '::+]] ';
             query[index] += '[[' + ajaxcoordproperty + '::>' + bottom + '°, ' + left + '°]] ';
             query[index] += '[[' + ajaxcoordproperty + '::<' + top + '°, ' + right + '°]]';
-            if (!compoundQuery) {
+            if (!isCompoundQuery) {
                 query[index] += '|?' + ajaxcoordproperty;
             } else {
                 query[index] += ';?' + ajaxcoordproperty;
@@ -24,7 +24,8 @@ window.sm = new ( function( $, mw ) {
     };
 
     this.sendQuery = function( query ) {
-        var action = query.indexOf(';') > -1 ? 'compoundquery' : 'ask';
+        var isCompoundQuery = query.indexOf('|') > -1;
+        var action = isCompoundQuery ? 'compoundquery' : 'ask';
         return $.ajax( {
             method: 'GET',
             url: mw.util.wikiScript( 'api' ),
