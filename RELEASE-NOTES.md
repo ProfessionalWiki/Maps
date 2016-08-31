@@ -4,7 +4,7 @@ These are the release notes for the [Maps extension](README.md).
 
 Released on August 24rd, 2016.
 
-Please note that due to changes to Google Maps, an API key now needs to be set. See the
+Due to changes to Google Maps, an API key now needs to be set. See the
 [installation configuration instructions](https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md#configuration).
 
 * Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
