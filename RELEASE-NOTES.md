@@ -7,13 +7,13 @@ Released on August 24rd, 2016.
 * Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
 * Added Google Maps API version number `egMapsGMaps3ApiVersion` setting (by Peter Grassberger)
 * Added OSM Nominatim Geocoder (by Peter Grassberger)
-* Added Leaflet clustering (by Peter Grassberger)
+* Added [Leaflet marker clustering](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_marker_clustering) (by Peter Grassberger)
     * `markercluster`: Enables clustering, multiple markers are merged into one marker.
     * `clustermaxzoom`: The maximum zoom level where clusters may exist."
     * `clusterzoomonclick`: Whether clicking on a cluster zooms into it.
     * `clustermaxradius`: The maximum radius that a cluster will cover.
     * `clusterspiderfy`: At the bottom zoom level markers are separated so you can see all of them.
-* Added Leaflet fullscreen control (by Peter Grassberger)
+* Added [Leaflet fullscreen control](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_fullscreen_control) (by Peter Grassberger)
 * Upgraded Leaflet library to its latest version (1.0.0-r3) (by Peter Grassberger)
 * Made removal of marker clusters more robust. (by Peter Grassberger)
 * Unified system messages for several services (by Karsten Hoffmeyer)
