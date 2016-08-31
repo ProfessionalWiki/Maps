@@ -11,7 +11,7 @@ Due to changes to Google Maps, an API key now needs to be set. See the
 * Added Google Maps API version number `egMapsGMaps3ApiVersion` setting (by Peter Grassberger)
 * Added [Leaflet marker clustering](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_marker_clustering) (by Peter Grassberger)
     * `markercluster`: Enables clustering, multiple markers are merged into one marker.
-    * `clustermaxzoom`: The maximum zoom level where clusters may exist."
+    * `clustermaxzoom`: The maximum zoom level where clusters may exist.
     * `clusterzoomonclick`: Whether clicking on a cluster zooms into it.
     * `clustermaxradius`: The maximum radius that a cluster will cover.
     * `clusterspiderfy`: At the bottom zoom level markers are separated so you can see all of them.
