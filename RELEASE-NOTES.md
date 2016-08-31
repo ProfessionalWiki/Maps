@@ -14,7 +14,7 @@ Due to changes to Google Maps, an API key now needs to be set. See the
     * `clustermaxzoom`: The maximum zoom level where clusters may exist.
     * `clusterzoomonclick`: Whether clicking on a cluster zooms into it.
     * `clustermaxradius`: The maximum radius that a cluster will cover.
-    * `clusterspiderfy`: At the bottom zoom level markers are separated so you can see all of them.
+    * `clusterspiderfy`: At the lowest zoom level markers are separated so you can see them all.
 * Added [Leaflet fullscreen control](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_fullscreen_control) (by Peter Grassberger)
 * Added [OSM Nominatim Geocoder](https://www.semantic-mediawiki.org/wiki/Maps_examples/Geocode) (by Peter Grassberger)
 * Upgraded Leaflet library to its latest version (1.0.0-r3) (by Peter Grassberger)
