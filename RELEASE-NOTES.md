@@ -4,9 +4,12 @@ These are the release notes for the [Maps extension](README.md).
 
 Released on August 24rd, 2016.
 
+Please note that due to changes to Google Maps, an API key now needs to be set. See the
+[installation configuration instructions](https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md#configuration).
+
 * Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
 * Added Google Maps API version number `egMapsGMaps3ApiVersion` setting (by Peter Grassberger)
-* Added OSM Nominatim Geocoder (by Peter Grassberger)
+* Added [OSM Nominatim Geocoder](https://www.semantic-mediawiki.org/wiki/Maps_examples/Geocode) (by Peter Grassberger)
 * Added [Leaflet marker clustering](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_marker_clustering) (by Peter Grassberger)
     * `markercluster`: Enables clustering, multiple markers are merged into one marker.
     * `clustermaxzoom`: The maximum zoom level where clusters may exist."
