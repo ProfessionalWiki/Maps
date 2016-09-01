@@ -23,7 +23,8 @@ View the [release notes](RELEASE-NOTES.md) for recent changes to Maps.
 ### User manual
 
 * [Installation and configuration](INSTALL.md)
-* [Usage instructions and examples](https://www.semantic-mediawiki.org/wiki/Maps)
+* [Usage instructions](https://www.semantic-mediawiki.org/wiki/Maps)
+* [Usage examples](https://www.semantic-mediawiki.org/wiki/Category:Maps_examples)
 
 ## Project status
 
