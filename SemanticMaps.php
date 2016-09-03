@@ -31,10 +31,23 @@ if ( !defined( 'Maps_VERSION' ) ) {
 	throw new Exception( 'You need to have Maps installed in order to use Semantic Maps' );
 }
 
-SemanticMaps::initExtension();
+define( 'SM_VERSION', '3.4.0-alpha' );
+
+require_once __DIR__ . '/DefaultSettings.php';
+
+SemanticMaps::newFromMediaWikiGlobals( $GLOBALS )->initExtension();
 
 $GLOBALS['wgExtensionFunctions'][] = function() {
-	SemanticMaps::onExtensionFunction();
+	// Hook for initializing the Geographical Data types.
+	$GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
+
+	// Hook for defining the default query printer for queries that ask for geographical coordinates.
+	$GLOBALS['wgHooks']['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefaultFormat';
+
+	// Hook for adding a Semantic Maps links to the Admin Links extension.
+	$GLOBALS['wgHooks']['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
+
+	$GLOBALS['wgHooks']['sfFormPrinterSetup'][] = 'SemanticMaps\FormInputsSetup::run';
 };
 
 /**
@@ -42,17 +55,21 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
  */
 class SemanticMaps {
 
+	private $mwGlobals;
+
+	public static function newFromMediaWikiGlobals( array &$mwGlobals ) {
+		return new self( $mwGlobals );
+	}
+
+	private function __construct( array &$mwGlobals ) {
+		$this->mwGlobals =& $mwGlobals;
+	}
+
 	/**
 	 * @since 3.4
 	 */
-	public static function initExtension() {
-
-		// Load DefaultSettings
-		require_once __DIR__ . '/DefaultSettings.php';
-
-		define( 'SM_VERSION', '3.4.0-alpha' );
-
-		$GLOBALS['wgExtensionCredits']['semantic'][] = [
+	public function initExtension() {
+		$this->mwGlobals['wgExtensionCredits']['semantic'][] = [
 			'path' => __FILE__,
 			'name' => 'Semantic Maps',
 			'version' => SM_VERSION,
@@ -66,12 +83,23 @@ class SemanticMaps {
 
 		include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
 
+		$this->registerResourceModules();
+
+		$this->registerGoogleMaps();
+		$this->registerLeaflet();
+		$this->registerOpenLayers();
+
+		// Internationalization
+		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
+	}
+
+	private function registerResourceModules() {
 		$moduleTemplate = [
 			'position' => 'bottom',
 			'group' => 'ext.semanticmaps',
 		];
 
-		$GLOBALS['wgResourceModules']['ext.sm.forminputs'] = $moduleTemplate + [
+		$this->mwGlobals['wgResourceModules']['ext.sm.forminputs'] = $moduleTemplate + [
 			'dependencies' => [ 'ext.maps.coord' ],
 			'localBasePath' => __DIR__ . '/src/forminputs',
 			'remoteExtPath' => 'SemanticMaps/src/forminputs',
@@ -88,37 +116,117 @@ class SemanticMaps {
 			]
 		];
 
-		$GLOBALS['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
+		$this->mwGlobals['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
 			'localBasePath' => __DIR__ . '/src',
 			'remoteExtPath' => 'SemanticMaps/src',
 			'scripts' => [
 				'ext.sm.common.js'
 			]
 		];
-
-		include_once __DIR__ . '/src/services/GoogleMaps3/SM_GoogleMaps3.php';
-		include_once __DIR__ . '/src/services/Leaflet/SM_Leaflet.php';
-		include_once __DIR__ . '/src/services/OpenLayers/SM_OpenLaysers.php';
-
-		// Internationalization
-		$GLOBALS['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
 	}
 
-	/**
-	 * @since 3.4
-	 */
-	public static function onExtensionFunction() {
+	private function registerGoogleMaps() {
+		$moduleTemplate = [
+			'localBasePath' => __DIR__ . '/src/services/GoogleMaps3',
+			'remoteExtPath' => 'SemanticMaps/src/services/GoogleMaps3',
+			'group' => 'ext.semanticmaps',
+		];
 
-		// Hook for initializing the Geographical Data types.
-		$GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
+		$this->mwGlobals['wgResourceModules']['ext.sm.fi.googlemaps3ajax'] = $moduleTemplate + [
+				'dependencies' => [
+					'ext.maps.googlemaps3',
+					'ext.sm.common'
+				],
+				'scripts' => [
+					'ext.sm.googlemaps3ajax.js'
+				]
+			];
 
-		// Hook for defining the default query printer for queries that ask for geographical coordinates.
-		$GLOBALS['wgHooks']['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefaultFormat';
+		$this->mwGlobals['wgResourceModules']['ext.sm.fi.googlemaps3'] = $moduleTemplate + [
+				'dependencies' => [
+					'ext.sm.fi.googlemaps3.single',
+				],
+				'scripts' => [
+					'ext.sm.googlemapsinput.js',
+				],
+			];
 
-		// Hook for adding a Semantic Maps links to the Admin Links extension.
-		$GLOBALS['wgHooks']['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
+		$this->mwGlobals['wgResourceModules']['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + [
+				'dependencies' => [
+					'ext.maps.googlemaps3',
+					'ext.sm.forminputs',
+				],
+				'scripts' => [
+					'jquery.googlemapsinput.js',
+				],
+				'messages' => [
+				]
+			];
 
-		$GLOBALS['wgHooks']['sfFormPrinterSetup'][] = 'SemanticMaps\FormInputsSetup::run';
+		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
+			global $wgAutoloadClasses;
+
+			$wgAutoloadClasses['SMGoogleMaps3FormInput'] = __DIR__ . '/SM_GoogleMaps3FormInput.php';
+
+			MapsMappingServices::registerServiceFeature( 'googlemaps3', 'qp', 'SMMapPrinter' );
+			MapsMappingServices::registerServiceFeature( 'googlemaps3', 'fi', 'SMGoogleMaps3FormInput' );
+
+			/* @var MapsMappingService $googleMaps */
+			$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+			$googleMaps->addResourceModules( array( 'ext.sm.fi.googlemaps3ajax' ) );
+
+			return true;
+		};
+	}
+
+	private function registerLeaflet() {
+		$this->mwGlobals['wgResourceModules']['ext.sm.fi.leafletajax'] = [
+			'localBasePath' => __DIR__ . '/src/services/Leaflet',
+			'remoteExtPath' => 'SemanticMaps/src/services/Leaflet',
+			'group' => 'ext.semanticmaps',
+			'dependencies' => [
+				'ext.maps.leaflet',
+				'ext.sm.common'
+			],
+			'scripts' => [
+				'ext.sm.leafletajax.js'
+			]
+		];
+
+		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
+			MapsMappingServices::registerServiceFeature( 'leaflet', 'qp', 'SMMapPrinter' );
+
+			/* @var MapsMappingService $leaflet */
+			$leaflet = MapsMappingServices::getServiceInstance( 'leaflet' );
+			$leaflet->addResourceModules( array( 'ext.sm.fi.leafletajax' ) );
+
+			return true;
+		};
+	}
+
+	private function registerOpenLayers() {
+		$this->mwGlobals['wgResourceModules']['ext.sm.fi.openlayersajax'] = [
+			'localBasePath' => __DIR__ . '/src/services/OpenLayers',
+			'remoteExtPath' => 'SemanticMaps/src/services/OpenLayers',
+			'group' => 'ext.semanticmaps',
+			'dependencies' => [
+				'ext.maps.openlayers',
+				'ext.sm.common'
+			],
+			'scripts' => [
+				'ext.sm.openlayersajax.js'
+			]
+		];
+
+		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
+			MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', 'SMMapPrinter' );
+
+			/* @var MapsMappingService $openlayers */
+			$openlayers = MapsMappingServices::getServiceInstance( 'openlayers' );
+			$openlayers->addResourceModules( array( 'ext.sm.fi.openlayersajax' ) );
+
+			return true;
+		};
 	}
 
 	/**
