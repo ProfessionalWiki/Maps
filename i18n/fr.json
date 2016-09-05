@@ -20,7 +20,8 @@
 			"Lbayle",
 			"Yasten",
 			"Trial",
-			"Wladek92"
+			"Wladek92",
+			"Urhixidur"
 		]
 	},
 	"maps-desc": "Permet d’afficher des cartes dynamiques dans les pages du wiki, des adresses géo-codées et d'autres opérations géographiques.",
@@ -55,10 +56,10 @@
 	"maps-layer-of-type": "Couche de type $1",
 	"maps-layer-of-type-and-name": "Couche « $2 » de type « $1 »",
 	"maps-layer-type-supported-by": "Ce type de couche peut {{PLURAL:$2|être utilisé uniquement avec le service de cartographie $1|être utilisé avec ces services de cartographie : $1}}.",
-	"maps-coordinates-description": "Crochet de l'analyseur pour formater les coordonnées, depuis et vers n'importe quel format supporté.",
+	"maps-coordinates-description": "Crochet de l’analyseur syntaxique pour formater les coordonnées, depuis et vers n’importe quel format pris en charge.",
 	"maps-displaymap-description": "Affiche les cartes géographiques sans aucun marqueur wiki sur eux.",
 	"maps-distance-description": "Convertit une distance d'une certaine unité prise en charge à son équivalent en utilisant une autre unité.",
-	"maps-finddestination-description": "Trouver une destination avec un point de départ donné (qui peuvent être dans n'importe lequel des formats supportés), une orientation initiale et une distance.",
+	"maps-finddestination-description": "Trouver une destination avec un point de départ donné (qui peut être dans n’importe lequel des formats pris en charge), une orientation initiale et une distance.",
 	"maps-geocode-description": "Permet le géocodage d'adresses, en d'autres termes, la transformation des positions humainement lisible en ensembles de coordonnées. Plusieurs services de géocodage sont pris en charge, qui ne doivent pas être confondu avec les services de cartographie.",
 	"maps-geodistance-description": "Calculer la distance géographique entre deux points, depuis et vers n'importe quel format pris en charge.",
 	"maps-mapsdoc-description": "Affiche une table avec les paramètres pour un service de cartographie spécifié, avec leurs valeurs par défaut et leur description.",
