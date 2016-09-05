@@ -26,6 +26,8 @@
 	"semanticmaps-par-geocodecontrol": "Amosar el control de xeocodificación.",
 	"semanticmaps-par-activeicon": "Iconu a amosar en llugar del marcador predetermináu, cuando la páxina activa ye igual al resultáu de la consulta",
 	"semanticmaps-par-pagelabel": "Cuando se pon a \"si\", tolos marcadores tendrán una \"inlineLabel\" con un enllaz a la páxina que contien les coordenaes del marcador",
+	"semanticmaps-par-ajaxcoordproperty": "Nome de la propiedá de coordenaes que s'usa pa construir la consulta ajax.",
+	"semanticmaps-par-ajaxquery": "Una segunda consulta que s'unvia con ajax para recuperar otres coordenaes más.",
 	"semanticmaps-par-userparam": "Un valor pasáu en cada llamada de plantía,si s'usa una plantía",
 	"semanticmaps-kml-text": "El testu asociáu con cada páxina. Sustituyíu poles otres propiedaes consultaes, si esisten.",
 	"semanticmaps-kml-title": "El títulu predetermináu pa los resultaos",

@@ -30,6 +30,8 @@
 	"semanticmaps-par-geocodecontrol": "Mostra el control de geocodificació.",
 	"semanticmaps-par-activeicon": "Icona que es mostrarà en comptes del marcador per defecte quan la pàgina activa sigui igual al resultat de la consulta",
 	"semanticmaps-par-pagelabel": "Si es defineix com a «sí», tots els marcadors tindran una «inlineLabel» amb un enllaç a la pàgina que conté les coordenades del marcador",
+	"semanticmaps-par-ajaxcoordproperty": "Nom de les propietat de coordenades que s'utilitza per a crear la consulta ajax.",
+	"semanticmaps-par-ajaxquery": "Una segona consulta s'envia a través d'ajax per a aconseguir coordenades addicionals.",
 	"semanticmaps-par-userparam": "Una valor que es passa en cada crida de plantilla, sempre que s'utilitzi una plantilla",
 	"semanticmaps-kml-text": "El text associat amb cada pàgina. Sobreescrit si hi ha cap propietat consultada addicional.",
 	"semanticmaps-kml-title": "El títol per defecte dels resultats",
