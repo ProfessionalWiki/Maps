@@ -24,7 +24,7 @@ window.sm = new ( function( $, mw ) {
     };
 
     this.sendQuery = function( query ) {
-        var isCompoundQuery = query.indexOf('|') > -1;
+        var isCompoundQuery = query.indexOf(';') > -1;
         var action = isCompoundQuery ? 'compoundquery' : 'ask';
         return $.ajax( {
             method: 'GET',
