@@ -163,9 +163,12 @@
 		};
 
 		this.createMarkerCluster = function () {
+			if ( !options.markercluster ) {
+				return;
+			}
 			var markers = this.markers;
 
-			var markercluster = L.markerClusterGroup({
+			var markercluster = new L.MarkerClusterGroup({
 				maxClusterRadius: options.clustermaxradius,
 				disableClusteringAtZoom: options.clustermaxzoom + 1,
 				zoomToBoundsOnClick: options.clusterzoomonclick,

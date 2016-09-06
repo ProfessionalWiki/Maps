@@ -450,21 +450,22 @@
 		};
 
 		this.createMarkerCluster = function() {
-			if ( options.markercluster ) {
-				if (this.markercluster) {
-					this.markercluster.setMap(null);
-					this.markercluster = null;
-				}
-				this.markercluster = new MarkerClusterer( this.map, this.markers, {
-					imagePath: mw.config.get( 'wgScriptPath' ) +
-					'/extensions/Maps/includes/images/m',
-					gridSize: this.options.clustergridsize,
-					maxZoom: this.options.clustermaxzoom,
-					zoomOnClick: this.options.clusterzoomonclick,
-					averageCenter: this.options.clusteraveragecenter,
-					minimumClusterSize: this.options.clusterminsize
-				} );
+			if ( !options.markercluster ) {
+				return;
 			}
+			if (this.markercluster) {
+				this.markercluster.setMap(null);
+				this.markercluster = null;
+			}
+			this.markercluster = new MarkerClusterer( this.map, this.markers, {
+				imagePath: mw.config.get( 'wgScriptPath' ) +
+				'/extensions/Maps/includes/images/m',
+				gridSize: this.options.clustergridsize,
+				maxZoom: this.options.clustermaxzoom,
+				zoomOnClick: this.options.clusterzoomonclick,
+				averageCenter: this.options.clusteraveragecenter,
+				minimumClusterSize: this.options.clusterminsize
+			} );
 		};
 
 		this.initializeMap = function () {
