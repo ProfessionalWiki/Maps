@@ -1,5 +1,11 @@
 These are the release notes for the [Maps extension](README.md).
 
+## Maps 3.8.1
+
+Released on September 7th, 2016.
+
+* Fixed bug that caused clustering to always be enabled for Leaflet (by Peter Grassberger)
+
 ## Maps 3.8
 
 Released on August 24rd, 2016.
