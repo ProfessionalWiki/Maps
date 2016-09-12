@@ -88,6 +88,12 @@ class MapsDisplayMapRenderer {
 
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 
+		if ( isset( $params['layer'] ) ) {
+			$params['layers'] = [$params['layer']];
+		}
+		$layerDependencies = self::getLayerDependencies( $params['mappingservice'], $params['layers'] );
+		$this->service->addLayerDependencies( array_unique( $layerDependencies ) );
+
 		$this->service->addDependencies( $parser );
 		$parser->getOutput()->addHeadItem( $configVars );
 
@@ -145,13 +151,6 @@ class MapsDisplayMapRenderer {
 
 		if ( $params['mappingservice'] === 'openlayers' ) {
 			$params['layers'] = self::evilOpenLayersHack( $params['layers'] );
-		} else if ( $params['mappingservice'] === 'leaflet' ) {
-			global $egMapsLeafletLayerDependencies;
-			$layerDependencies = [];
-			$layerDependencies[] = "<script src='https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=" . $GLOBALS['egMapsLeafletLayersApiKeys']['MapQuestOpen'] . "'></script>";
-			MapsMappingServices::getServiceInstance( 'leaflet' )->addLayerDependencies(
-				array_unique( $layerDependencies )
-			);
 		}
 	}
 
@@ -232,28 +231,27 @@ class MapsDisplayMapRenderer {
 				}
 			}
 		}
-
-		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( self::getLayerDependencies( $layerNames ) );
-
 		return $layerDefs;
 	}
 
-	/**
-	 * FIXME
-	 * @see evilOpenLayersHack
-	 */
-	private static function getLayerDependencies( array $layerNames ) {
+	public static function getLayerDependencies( $service, array $layerNames ) {
 		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
 
 		$layerDependencies = [];
 
-		foreach ( $layerNames as $layerName ) {
-			if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
-				&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...
-				&& count( $egMapsOLAvailableLayers[$layerName] ) > 1 // ...with a second element...
-				&& array_key_exists( $egMapsOLAvailableLayers[$layerName][1], $egMapsOLLayerDependencies ) ) { //...that is a dependency.
-				$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
+		if ( $service === 'leaflet' && in_array( 'MapQuestOpen', $layerNames ) ) {
+			$layerDependencies[] = "<script src='https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=" .
+					$GLOBALS['egMapsLeafletLayersApiKeys']['MapQuestOpen'] . "'></script>";
+		} else if ( $service === 'openlayers' ) {
+			foreach ( $layerNames as $layerName ) {
+				if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
+						&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...
+						&& count( $egMapsOLAvailableLayers[$layerName] ) > 1 // ...with a second element...
+						&& array_key_exists( $egMapsOLAvailableLayers[$layerName][1], $egMapsOLLayerDependencies ) ) { //...that is a dependency.
+					$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
+				}
 			}
+
 		}
 
 		return array_unique( $layerDependencies );
