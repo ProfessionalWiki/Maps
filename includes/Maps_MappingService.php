@@ -248,6 +248,17 @@ abstract class MapsMappingService implements iMappingService {
 	}
 
 	/**
+	 * Adds the layer dependencies.
+	 *
+	 * @param array $dependencies
+	 */
+	public function addLayerDependencies( array $dependencies ) {
+		foreach ( $dependencies as $dependency ) {
+			$this->addDependency( $dependency );
+		}
+	}
+
+	/**
 	 * @see iMappingService::getEarthZoom
 	 *
 	 * @since 1.0
