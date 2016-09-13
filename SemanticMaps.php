@@ -33,7 +33,7 @@ if ( !defined( 'Maps_VERSION' ) ) {
 
 define( 'SM_VERSION', '3.4.0-alpha' );
 
-require_once __DIR__ . '/DefaultSettings.php';
+require_once __DIR__ . '/SM_Settings.php';
 
 SemanticMaps::newFromMediaWikiGlobals( $GLOBALS )->initExtension();
 
