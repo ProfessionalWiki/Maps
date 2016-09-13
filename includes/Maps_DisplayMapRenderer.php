@@ -88,11 +88,9 @@ class MapsDisplayMapRenderer {
 
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 
-		if ( isset( $params['layer'] ) ) {
-			$params['layers'] = [$params['layer']];
-		}
-		$layerDependencies = self::getLayerDependencies( $params['mappingservice'], $params['layers'] );
-		$this->service->addLayerDependencies( array_unique( $layerDependencies ) );
+		$this->service->addLayerDependencies(
+			self::getLayerDependencies( $params['mappingservice'], $params )
+		);
 
 		$this->service->addDependencies( $parser );
 		$parser->getOutput()->addHeadItem( $configVars );
@@ -234,15 +232,23 @@ class MapsDisplayMapRenderer {
 		return $layerDefs;
 	}
 
-	public static function getLayerDependencies( $service, array $layerNames ) {
-		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
+	public static function getLayerDependencies( $service, $params ) {
+		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers,
+			   $egMapsLeafletLayerDependencies, $egMapsLeafletAvailableLayers,
+			   $egMapsLeafletLayersApiKeys;
 
 		$layerDependencies = [];
 
-		if ( $service === 'leaflet' && in_array( 'MapQuestOpen', $layerNames ) ) {
-			$layerDependencies[] = "<script src='https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=" .
-					$GLOBALS['egMapsLeafletLayersApiKeys']['MapQuestOpen'] . "'></script>";
+		if ( $service === 'leaflet' ) {
+			$layerName = $params['layer'];
+			if ( in_array( $layerName, $egMapsLeafletAvailableLayers )
+					&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
+					&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
+				$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
+					$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
+			}
 		} else if ( $service === 'openlayers' ) {
+			$layerNames = $params['layers'];
 			foreach ( $layerNames as $layerName ) {
 				if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
 						&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...

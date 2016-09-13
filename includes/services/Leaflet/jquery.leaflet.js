@@ -367,4 +367,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki, L, MQ);
+})(jQuery, window.mediaWiki, L, window.MQ);
