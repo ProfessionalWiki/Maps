@@ -81,13 +81,13 @@ class SemanticMaps {
 			'license-name'   => 'GPL-2.0+'
 		];
 
-		include_once __DIR__ . '/src/queryprinters/SM_QueryPrinters.php';
-
 		$this->registerResourceModules();
 
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();
 		$this->registerOpenLayers();
+
+		$this->initializeQueryPrinters();
 
 		// Internationalization
 		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
@@ -215,7 +215,7 @@ class SemanticMaps {
 		];
 
 		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', 'SMMapPrinter' );
+			MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', SMMapPrinter::class );
 
 			/* @var MapsMappingService $openlayers */
 			$openlayers = MapsMappingServices::getServiceInstance( 'openlayers' );
@@ -223,6 +223,37 @@ class SemanticMaps {
 
 			return true;
 		};
+	}
+
+	private function initializeQueryPrinters() {
+		$GLOBALS['smwgResultFormats']['kml'] = SMKMLPrinter::class;
+
+		foreach ( MapsMappingServices::getServiceIdentifiers() as $serviceIdentifier ) {
+			$service = MapsMappingServices::getServiceInstance( $serviceIdentifier );
+
+			// Check if the service has a query printer.
+			$QPClass = $service->getFeature( 'qp' );
+
+			// If the service has no QP, skip it and continue with the next one.
+			if ( $QPClass === false ) {
+				continue;
+			}
+
+			// Initiate the format.
+			$aliases = $service->getAliases();
+
+			// Add the 'map' result format if there are mapping services that have QP's loaded.
+			if ( $GLOBALS['egMapsDefaultServices']['qp'] == $serviceIdentifier ) {
+				$aliases[] = 'map';
+			}
+
+			// Add the QP to SMW.
+			$GLOBALS['smwgResultFormats'][$service->getName()] = SMMapPrinter::class;
+
+			$GLOBALS['smwgResultAliases'][$service->getName()] = $aliases;
+		}
+
+		return true;
 	}
 
 	/**
