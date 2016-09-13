@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgHooks, $wgResourceModules, $wgAutoloadClasses;
+	global $wgHooks, $wgResourceModules;
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
@@ -46,8 +46,6 @@ call_user_func( function() {
 			'maps-searchmarkers-text',
 		]
 	];
-
-	$wgAutoloadClasses['MapsOpenLayers'] = __DIR__ . '/Maps_OpenLayers.php';
 
 	$wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 } );
