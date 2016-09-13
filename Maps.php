@@ -11,6 +11,7 @@
  */
 
 use DataValues\Geo\Parsers\GeoCoordinateParser;
+use FileFetcher\SimpleFileFetcher;
 use Maps\CircleParser;
 use Maps\DistanceParser;
 use Maps\ImageOverlayParser;
@@ -151,7 +152,13 @@ call_user_func( function() {
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
 
 	// Registration of the OSM Nominatim service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsNominatimGeocoder::register';
+	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
+		\Maps\Geocoders::registerGeocoder(
+			'nominatim',
+			new \Maps\Geocoders\NominatimGeocoder( new SimpleFileFetcher() )
+		);
+		return true;
+	};
 
 	// Mapping services
 
