@@ -113,10 +113,6 @@ call_user_func( function() {
  * @return boolean true
  */
 function efMapsInitGoogleMaps3() {
-	global $wgAutoloadClasses;
-
-	$wgAutoloadClasses['MapsGoogleMaps3'] = __DIR__ . '/Maps_GoogleMaps3.php';
-
 	MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
 
 	// TODO: kill below code

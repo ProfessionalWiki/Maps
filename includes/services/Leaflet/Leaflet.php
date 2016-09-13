@@ -87,10 +87,6 @@ call_user_func( function() {
  * @return boolean true
  */
 function efMapsInitLeaflet() {
-	global $wgAutoloadClasses;
-
-	$wgAutoloadClasses['MapsLeaflet'] = __DIR__ . '/Maps_Leaflet.php';
-
 	MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
 	$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
 	$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
