@@ -3,12 +3,15 @@
 use Maps\Geocoders\Geocoder;
 
 /**
+ * Adapts the new Maps\Geocoders\Geocoder interface to the legacy
+ * Maps\Geocoder class hierarchy.
+ *
  * @since 3.8
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class MapsDecoratedGeocoder extends \Maps\Geocoder {
+final class MapsOldGeocoderAdapter extends \Maps\Geocoder {
 
 	private $geocoder;
 

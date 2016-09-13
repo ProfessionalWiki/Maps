@@ -8,21 +8,21 @@ use Maps\Geocoders\InMemoryGeocoder;
 use Maps\Geocoders\NominatimGeocoder;
 
 /**
- * @covers MapsDecoratedGeocoder
+ * @covers MapsOldGeocoderAdapter
  *
  * @group Maps
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class DecoratedGeocoderTest extends \PHPUnit_Framework_TestCase {
+class MapsOldGeocoderAdapterTest extends \PHPUnit_Framework_TestCase {
 
 	public function testWhenInnerGeocoderHasResult_itGetsReturnedInArrayForm() {
 		$geocoder = new InMemoryGeocoder( [
 			'New York' => new LatLongValue( 40.7642499, -73.9545249 )
 		] );
 
-		$decoratedGeocoder = new \MapsDecoratedGeocoder( $geocoder, 'maw' );
+		$decoratedGeocoder = new \MapsOldGeocoderAdapter( $geocoder, 'maw' );
 
 		$this->assertSame(
 			[
@@ -38,7 +38,7 @@ class DecoratedGeocoderTest extends \PHPUnit_Framework_TestCase {
 			'New York' => new LatLongValue( 40.7642499, -73.9545249 )
 		] );
 
-		$decoratedGeocoder = new \MapsDecoratedGeocoder( $geocoder, 'maw' );
+		$decoratedGeocoder = new \MapsOldGeocoderAdapter( $geocoder, 'maw' );
 
 		$this->assertFalse( $decoratedGeocoder->geocode( 'durkadurkastan' ) );
 	}

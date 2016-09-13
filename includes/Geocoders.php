@@ -5,7 +5,7 @@ namespace Maps;
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
-use MapsDecoratedGeocoder;
+use MapsOldGeocoderAdapter;
 use MWException;
 use ValueParsers\ParseException;
 
@@ -351,7 +351,7 @@ final class Geocoders {
 					$geocoder = new self::$registeredGeocoders[$geocoderIdentifier]( $geocoderIdentifier );
 				}
 				elseif ( self::$registeredGeocoders[$geocoderIdentifier] instanceof \Maps\Geocoders\Geocoder ) {
-					$geocoder = new MapsDecoratedGeocoder(
+					$geocoder = new MapsOldGeocoderAdapter(
 						self::$registeredGeocoders[$geocoderIdentifier],
 						$geocoderIdentifier
 					);
