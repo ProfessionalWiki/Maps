@@ -226,9 +226,8 @@ class SMFormInput {
 		);
 
 		$editorHtml = new MapEditorHtml( $this->getAttribs() );
-		$html = $html . $editorHtml->getEditorHtml();
 
-		return $html;
+		return $html . $editorHtml->getEditorHTML();
 	}
 	
 	/**
