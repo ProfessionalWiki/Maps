@@ -164,10 +164,6 @@ class SemanticMaps {
 			];
 
 		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			global $wgAutoloadClasses;
-
-			$wgAutoloadClasses['SMGoogleMaps3FormInput'] = __DIR__ . '/SM_GoogleMaps3FormInput.php';
-
 			MapsMappingServices::registerServiceFeature( 'googlemaps3', 'qp', 'SMMapPrinter' );
 			MapsMappingServices::registerServiceFeature( 'googlemaps3', 'fi', 'SMGoogleMaps3FormInput' );
 

@@ -22,12 +22,8 @@ final class SMQueryPrinters {
 	 * Initialization function for Maps query printer functionality.
 	 */
 	public static function initialize() {
-		global $wgAutoloadClasses, $egMapsDefaultServices;
-		
-		$wgAutoloadClasses['SMQueryHandler']	= __DIR__ . '/SM_QueryHandler.php';
-		$wgAutoloadClasses['SMMapPrinter'] 		= __DIR__ . '/SM_MapPrinter.php';
-		$wgAutoloadClasses['SMKMLPrinter'] 		= __DIR__ . '/SM_KMLPrinter.php';
-		
+		global $egMapsDefaultServices;
+
 		self::initFormat( 'kml', 'SMKMLPrinter' );
 		
 		foreach ( MapsMappingServices::getServiceIdentifiers() as $serviceIdentifier ) {
