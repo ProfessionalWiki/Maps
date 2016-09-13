@@ -88,7 +88,7 @@ class MapsDisplayMapRenderer {
 
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 
-		$this->service->addLayerDependencies(
+		$this->service->addHtmlDependencies(
 			self::getLayerDependencies( $params['mappingservice'], $params )
 		);
 
