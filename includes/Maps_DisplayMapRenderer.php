@@ -241,7 +241,8 @@ class MapsDisplayMapRenderer {
 
 		if ( $service === 'leaflet' ) {
 			$layerName = $params['layer'];
-			if ( in_array( $layerName, $egMapsLeafletAvailableLayers )
+			if ( array_key_exists( $layerName, $egMapsLeafletAvailableLayers )
+					&& $egMapsLeafletAvailableLayers[$layerName]
 					&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
 					&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
 				$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .

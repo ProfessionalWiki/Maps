@@ -43,14 +43,14 @@ class MapsLeaflet extends MapsMappingService {
 
 		$params['layer'] = [
 			'type' => 'string',
-			'values' => $GLOBALS['egMapsLeafletAvailableLayers'],
+			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletLayer'],
 			'message' =>'maps-leaflet-par-layer',
 		];
 
 		$params['overlaylayers'] = [
 			'type' => 'string',
-			'values' => $GLOBALS['egMapsLeafletAvailableOverlayLayers'],
+			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
 			'message' =>'maps-leaflet-par-overlaylayers',
 			'islist' => true,
