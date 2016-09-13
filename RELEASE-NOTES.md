@@ -17,7 +17,6 @@ Development version
 ### Other changes
 
 * Added support for the Maps tracking category
-* Renamed the file with default settings from `SM_Settings.php` to `DefaultSettings.php` (by James Hong Kong)
 
 ## Semantic Maps 3.3
 
