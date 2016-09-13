@@ -50,6 +50,10 @@ install and running
 
     php phpunit.php -c ../../extensions/Maps/
 
+You can run the MediaWiki independent tests by running `composer unit` in the root directory of Maps.
+All tests in `tests/phpunit` are MediaWiki independent, with those depending on MediaWiki residing in
+`tests/Integration`.
+
 ## Credits to other projects
 
 ### jQuery

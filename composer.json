@@ -46,15 +46,17 @@
 		},
 		"classmap": [
 			"includes/",
-			"Maps.hooks.php",
-			"tests/phpunit/elements/",
-			"tests/phpunit/parserhooks/ParserHookTest.php"
+			"Maps.hooks.php"
 		]
 	},
 	"autoload-dev": {
 		"psr-4": {
 			"Maps\\Tests\\TestDoubles\\": "tests/TestDoubles/"
-		}
+		},
+		"classmap": [
+			"tests/phpunit/elements/",
+			"tests/Integration/parserhooks/ParserHookTest.php"
+		]
 	},
 	"extra": {
 		"branch-alias": {
@@ -65,6 +67,7 @@
 		"process-timeout": 0
 	},
 	"scripts":{
-		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
+		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist",
+		"unit-test": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist tests/phpunit"
 	}
 }
