@@ -16,6 +16,7 @@ Development version
 
 ### Other changes
 
+* Added support for coordinates in SMWs [record datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Record) (by James Hong Kong)
 * Added support for the Maps tracking category
 * Renamed the file with default settings from `SM_Settings.php` to `DefaultSettings.php` (by James Hong Kong)
 
