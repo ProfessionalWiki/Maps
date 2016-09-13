@@ -9,7 +9,6 @@ use ParamProcessor\ParamDefinition;
  * Query printer for maps. Is invoked via SMMapper.
  * Can be overridden per service to have custom output.
  *
- * @file SM_MapPrinter.php
  * @ingroup SemanticMaps
  *
  * @licence GNU GPL v2+
@@ -17,29 +16,40 @@ use ParamProcessor\ParamDefinition;
  * @author Peter Grassberger < petertheone@gmail.com >
  */
 class SMMapPrinter extends SMW\ResultPrinter {
-	
+
+	private static $services = [];
+
 	/**
-	 * @since 0.6
-	 * 
-	 * @var iMappingService
+	 * @since 3.4
+	 * FIXME: this is a temporary hack that should be replaced when SMW allows for dependency
+	 * injection in query printers.
+	 *
+	 * @param MapsMappingService $service
 	 */
-	protected $service;	
+	public static function registerService( MapsMappingService $service ) {
+		self::$services[$service->getName()] = $service;
+	}
+
+	public static function registerDefaultService( $serviceName ) {
+		self::$services['map'] = self::$services[$serviceName];
+	}
 	
 	/**
-	 * @since 1.0
-	 * 
-	 * @var string|boolean false
+	 * @var MapsMappingService
+	 */
+	private $service;
+	
+	/**
+	 * @var string|boolean
 	 */
 	protected $fatalErrorMsg = false;
 	
 	/**
-	 * Constructor.
-	 * 
-	 * @param $format String
-	 * @param $inline
+	 * @param string $format
+	 * @param bool $inline
 	 */
 	public function __construct( $format, $inline = true ) {
-		$this->service = MapsMappingServices::getValidServiceInstance( $format, 'qp' );
+		$this->service = self::$services[$format];
 		
 		parent::__construct( $format, $inline );
 	}
@@ -51,7 +61,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	private function getParameterInfo() {
 		global $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
 		
 		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
@@ -200,7 +210,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return string
 	 */
-	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
+	private function getMapHTML( array $params, Parser $parser, $mapName ) {
 		return Html::rawElement(
 			'div',
 			[
@@ -227,7 +237,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return mixed
 	 */
-	protected function getJSONObject( array $params, Parser $parser ) {
+	private function getJSONObject( array $params, Parser $parser ) {
 		return $params;
 	}
 	
@@ -240,7 +250,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @param array &$params
 	 * @param SMQueryHandler $queryHandler
 	 */
-	protected function handleMarkerData( array &$params, SMQueryHandler $queryHandler ) {
+	private function handleMarkerData( array &$params, SMQueryHandler $queryHandler ) {
 		if ( is_object( $params['centre'] ) ) {
 			$params['centre'] = $params['centre']->getJSONObject();
 		}
@@ -264,7 +274,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		}
 	}
 
-	protected function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
+	private function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
 		/**
 		 * @var Parser $wgParser
 		 */
@@ -287,7 +297,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		return $locationsJson;
 	}
 
-	protected function getJsonForStaticLocation( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parser ) {
+	private function getJsonForStaticLocation( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parser ) {
 		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 
 		$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
@@ -310,7 +320,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @param string $iconUrl
 	 * @param string $visitedIconUrl
 	 */
-	protected function addShapeData( array $queryShapes, array &$params, $iconUrl, $visitedIconUrl ) {
+	private function addShapeData( array $queryShapes, array &$params, $iconUrl, $visitedIconUrl ) {
 		$params['locations'] = array_merge(
 			$params['locations'],
 			$this->getJsonForLocations(
@@ -333,7 +343,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return array
 	 */
-	protected function getJsonForLocations( array $locations, array $params, $iconUrl, $visitedIconUrl ) {
+	private function getJsonForLocations( array $locations, array $params, $iconUrl, $visitedIconUrl ) {
 		$locationsJson = [];
 
 		foreach ( $locations as $location ) {
@@ -353,7 +363,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return array
 	 */
-	protected function getElementJsonArray( array $elements, array $params ) {
+	private function getElementJsonArray( array $elements, array $params ) {
 		$elementsJson = [];
 
 		foreach ( $elements as $element ) {
