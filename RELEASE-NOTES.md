@@ -4,9 +4,9 @@ These are the release notes for the Semantic Maps extension.
 
 Development version
 
-### Dynamic loading of markers
+### Highlight: Dynamic loading of markers
 
-* Added ajax loading of markers when moving or zooming a map (by Peter Grassberger)
+Added ajax loading of markers when moving or zooming a map (by Peter Grassberger)
 
 ### Compatibility changes
 
@@ -17,7 +17,7 @@ Development version
 ### Other changes
 
 * Added support for coordinates in SMWs [record datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Record) (by James Hong Kong)
-* Added support for the Maps tracking category
+* Added support for the Maps tracking category (by Peter Grassberger)
 
 ## Semantic Maps 3.3
 
