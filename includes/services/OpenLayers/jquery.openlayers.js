@@ -14,6 +14,7 @@
 
 		this.map = null;
 		this.options = options;
+		this.bounds = null;
 
 		OpenLayers._getScriptLocation = function() {
 			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
@@ -60,10 +61,9 @@
 			}
 
 			var locations = options.locations;
-			var bounds = null;
 
 			if (locations.length > 1 && ( options.centre === false || options.zoom === false )) {
-				bounds = new OpenLayers.Bounds();
+				this.bounds = new OpenLayers.Bounds();
 			}
 
 			this.groupLayers = new Object();
@@ -73,7 +73,7 @@
 				this.addMarker( locations[i] );
 			}
 
-			if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center.
+			if (this.bounds != null) map.zoomToExtent(this.bounds); // If a bounds object has been created, use it to set the zoom and center.
 		};
 
 		this.addMarker = function (markerData) {
@@ -100,6 +100,7 @@
 				markerData.lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
 			}
 
+			if (this.bounds != null) this.bounds.extend(markerData.lonlat); // Extend the bounds when no center is set.
 			var marker = this.getOLMarker(curLayer, markerData);
 			this.markers.push({
 				target:marker,
