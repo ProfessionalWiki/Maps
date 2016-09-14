@@ -14,6 +14,7 @@
 
 		this.map = null;
 		this.options = options;
+		this.bounds = null;
 
 		OpenLayers._getScriptLocation = function() {
 			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
@@ -60,10 +61,9 @@
 			}
 
 			var locations = options.locations;
-			var bounds = null;
 
 			if (locations.length > 1 && ( options.centre === false || options.zoom === false )) {
-				bounds = new OpenLayers.Bounds();
+				this.bounds = new OpenLayers.Bounds();
 			}
 
 			this.groupLayers = new Object();
@@ -73,7 +73,7 @@
 				this.addMarker( locations[i] );
 			}
 
-			if (bounds != null) map.zoomToExtent(bounds); // If a bounds object has been created, use it to set the zoom and center.
+			if (this.bounds != null) map.zoomToExtent(this.bounds); // If a bounds object has been created, use it to set the zoom and center.
 		};
 
 		this.addMarker = function (markerData) {
@@ -100,6 +100,7 @@
 				markerData.lonlat.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
 			}
 
+			if (this.bounds != null) this.bounds.extend(markerData.lonlat); // Extend the bounds when no center is set.
 			var marker = this.getOLMarker(curLayer, markerData);
 			this.markers.push({
 				target:marker,
@@ -292,7 +293,7 @@
 		this.text( '' );
 
 		/**
-		 * ToDo: That layers being created by 'eval' will deny us the possiblity to
+		 * ToDo: That layers being created by 'eval' will deny us the possibility to
 		 * set certain options. It's possible to set properties of course but they will
 		 * show no effect since they are not passed as options to the constructor.
 		 * With this working we could adjust max/minScale to display overlays independent
@@ -368,8 +369,7 @@
 			else if ( options.locations.length == 0 ) {
 				centre = new OpenLayers.LonLat( 0, 0 );
 			}
-		}
-		else { // When the center is provided, set it.
+		} else { // When the center is provided, set it.
 			centre = new OpenLayers.LonLat( options.centre.lon, options.centre.lat );
 		}
 
@@ -379,8 +379,10 @@
 					new OpenLayers.Projection( "EPSG:4326" ),
 					new OpenLayers.Projection( "EPSG:900913" )
 				);
+				map.setCenter( centre );
+			} else {
+				map.zoomToMaxExtent();
 			}
-			map.setCenter( centre );
 		}
 
 		if ( options.zoom !== false ) {
@@ -469,7 +471,7 @@
 									'strokeOpacity':feature.attributes.strokeOpacity,
 									'fillColor':feature.attributes.fillColor,
 									'fillOpacity':feature.attributes.fillOpacity
-								}
+								};
 								_this.polygonLayer.drawFeature(feature, style);
 							}
 						},
@@ -481,7 +483,7 @@
 									'strokeOpacity':0,
 									'fillColor':feature.attributes.fillColor,
 									'fillOpacity':0
-								}
+								};
 								_this.polygonLayer.drawFeature(feature, style);
 							}
 						},
@@ -571,29 +573,6 @@
 		if (options.zoom !== false) {
 			map.zoomTo(options.zoom);
 		}
-
-		if (options.centre === false) {
-			if (options.locations.length == 1) {
-				centre = new OpenLayers.LonLat(options.locations[0].lon, options.locations[0].lat);
-			}
-			else if (options.locations.length == 0) {
-				centre = new OpenLayers.LonLat(0, 0);
-			}
-		}
-		else { // When the center is provided, set it.
-			centre = new OpenLayers.LonLat(options.centre.lon, options.centre.lat);
-		}
-
-		if (centre !== false) {
-			if (!hasImageLayer) {
-				centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
-				map.setCenter(centre);
-			} else {
-				map.zoomToMaxExtent();
-			}
-		}
-
-
 
 		if (options.copycoords) {
 			map.div.oncontextmenu = function () {
