@@ -23,9 +23,18 @@ window.sm = new ( function( $, mw ) {
         return query.join(' | ');
     };
 
+    /**
+     * Detects semicolons `;` not in square brackets `[]`.
+     *
+     * @param string
+     * @returns {boolean}
+     */
+    this.hasCompoundQuerySemicolon = function( string ) {
+        return /;(?![^[]*])/g.test( string );
+    };
+
     this.sendQuery = function( query ) {
-        var isCompoundQuery = query.indexOf(';') > -1;
-        var action = isCompoundQuery ? 'compoundquery' : 'ask';
+        var action = this.hasCompoundQuerySemicolon( query ) ? 'compoundquery' : 'ask';
         return $.ajax( {
             method: 'GET',
             url: mw.util.wikiScript( 'api' ),
