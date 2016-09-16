@@ -2,11 +2,17 @@ These are the release notes for the Semantic Maps extension.
 
 ## Semantic Maps 3.4
 
-Development version
+Released on September 18th, 2016.
 
 ### Highlight: Dynamic loading of markers
 
-Added ajax loading of markers when moving or zooming a map (by Peter Grassberger)
+Added optional [dynamic loading of additional markers](http://sandbox.semantic-mediawiki.org/wiki/Ajaxquery)
+when moving a map or zooming out. (by Peter Grassberger)
+
+Two new parameters have been added: `ajaxquery` and `ajaxcoordproperty`. When provided, moving the map
+or zooming out out will result in the query specified in `ajaxquery` to be run, with the property
+specified in `ajaxcoordproperty` used as printout. This means you can do a query with a limited amount
+of results at first, and still have the user be able to view markers elsewhere.
 
 ### Compatibility changes
 
