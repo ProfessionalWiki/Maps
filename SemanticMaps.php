@@ -87,7 +87,12 @@ class SemanticMaps {
 		$this->registerLeaflet();
 		$this->registerOpenLayers();
 
-		$this->initializeQueryPrinters();
+		$this->mwGlobals['smwgResultFormats']['kml'] = SMKMLPrinter::class;
+
+		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
+			$this->mwGlobals['smwgResultAliases'][$this->mwGlobals['egMapsDefaultServices']['qp']][] = 'map';
+			SMMapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultServices']['qp'] );
+		};
 
 		// Internationalization
 		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
@@ -164,14 +169,16 @@ class SemanticMaps {
 			];
 
 		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			MapsMappingServices::registerServiceFeature( 'googlemaps3', 'qp', 'SMMapPrinter' );
-			MapsMappingServices::registerServiceFeature( 'googlemaps3', 'fi', 'SMGoogleMaps3FormInput' );
-
 			/* @var MapsMappingService $googleMaps */
 			$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
 			$googleMaps->addResourceModules( array( 'ext.sm.fi.googlemaps3ajax' ) );
 
-			return true;
+			$googleMaps->addFeature( 'fi', SMGoogleMaps3FormInput::class );
+
+			SMMapPrinter::registerService( $googleMaps );
+
+			$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = SMMapPrinter::class;
+			$this->mwGlobals['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
 		};
 	}
 
@@ -190,13 +197,14 @@ class SemanticMaps {
 		];
 
 		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			MapsMappingServices::registerServiceFeature( 'leaflet', 'qp', 'SMMapPrinter' );
-
 			/* @var MapsMappingService $leaflet */
 			$leaflet = MapsMappingServices::getServiceInstance( 'leaflet' );
 			$leaflet->addResourceModules( array( 'ext.sm.fi.leafletajax' ) );
 
-			return true;
+			SMMapPrinter::registerService( $leaflet );
+
+			$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = SMMapPrinter::class;
+			$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
 		};
 	}
 
@@ -215,45 +223,15 @@ class SemanticMaps {
 		];
 
 		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			MapsMappingServices::registerServiceFeature( 'openlayers', 'qp', SMMapPrinter::class );
+			/* @var MapsMappingService $openLayers */
+			$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
+			$openLayers->addResourceModules( array( 'ext.sm.fi.openlayersajax' ) );
 
-			/* @var MapsMappingService $openlayers */
-			$openlayers = MapsMappingServices::getServiceInstance( 'openlayers' );
-			$openlayers->addResourceModules( array( 'ext.sm.fi.openlayersajax' ) );
+			SMMapPrinter::registerService( $openLayers );
 
-			return true;
+			$this->mwGlobals['smwgResultFormats'][$openLayers->getName()] = SMMapPrinter::class;
+			$this->mwGlobals['smwgResultAliases'][$openLayers->getName()] = $openLayers->getAliases();
 		};
-	}
-
-	private function initializeQueryPrinters() {
-		$GLOBALS['smwgResultFormats']['kml'] = SMKMLPrinter::class;
-
-		foreach ( MapsMappingServices::getServiceIdentifiers() as $serviceIdentifier ) {
-			$service = MapsMappingServices::getServiceInstance( $serviceIdentifier );
-
-			// Check if the service has a query printer.
-			$QPClass = $service->getFeature( 'qp' );
-
-			// If the service has no QP, skip it and continue with the next one.
-			if ( $QPClass === false ) {
-				continue;
-			}
-
-			// Initiate the format.
-			$aliases = $service->getAliases();
-
-			// Add the 'map' result format if there are mapping services that have QP's loaded.
-			if ( $GLOBALS['egMapsDefaultServices']['qp'] == $serviceIdentifier ) {
-				$aliases[] = 'map';
-			}
-
-			// Add the QP to SMW.
-			$GLOBALS['smwgResultFormats'][$service->getName()] = SMMapPrinter::class;
-
-			$GLOBALS['smwgResultAliases'][$service->getName()] = $aliases;
-		}
-
-		return true;
 	}
 
 	/**
