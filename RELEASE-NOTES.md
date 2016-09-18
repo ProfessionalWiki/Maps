@@ -4,23 +4,13 @@ These are the release notes for the Semantic Maps extension.
 
 Released on September 18th, 2016.
 
-### Highlight: Dynamic loading of markers
-
-Added optional [dynamic loading of additional markers](http://sandbox.semantic-mediawiki.org/wiki/Ajaxquery)
-when moving a map or zooming out. (by Peter Grassberger)
-
-Two new parameters have been added: `ajaxquery` and `ajaxcoordproperty`. When provided, moving the map
-or zooming out out will result in the query specified in `ajaxquery` to be run, with the property
-specified in `ajaxcoordproperty` used as printout. This means you can do a query with a limited amount
-of results at first, and still have the user be able to view markers elsewhere.
-
 ### Compatibility changes
 
 * Dropped support for MediaWiki older than 1.23
 * Dropped support for PHP older than 5.5
 * Dropped support for Maps older than 3.8
 
-### Other changes
+### New features
 
 * Added support for coordinates in SMWs [record datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Record) (by James Hong Kong)
 * Added support for the Maps tracking category (by Peter Grassberger)
