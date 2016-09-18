@@ -98,7 +98,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		];
 
 		$params['ajaxcoordproperty'] = array(
-			'default' => 'Has coordinates',
+			'default' => '',
 		);
 
 		$params['ajaxquery'] = array(
