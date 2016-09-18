@@ -1,0 +1,25 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fohanno",
+			"Fulup",
+			"Y-M D"
+		]
+	},
+	"semanticmaps-desc": "Talvezout a ra da welet ha da gemmañ roadennoù daveennoù stoket dre an astenn Semantic MediaWiki ([https://mapping.referata.com/wiki/Examples demo]).",
+	"semanticmaps-unrecognizeddistance": "An talvoud $1 n'eo ket un hed reizh anezhañ.",
+	"semanticmaps-kml-link": "Gwelet ar restr KML",
+	"semanticmaps-default-kml-pagelink": "Gwelet ar pennad $1",
+	"semanticmaps-latitude": "Ledred : $1",
+	"semanticmaps-longitude": "Hedred : $1",
+	"semanticmaps-altitude": "Uhelder : $1",
+	"semanticmaps-loading-forminput": "O kargañ enmont furmskrid ar gartenn...",
+	"semanticmaps_lookupcoordinates": "Istimañ an daveennoù",
+	"semanticmaps_enteraddresshere": "Merkit ar chomlec'h amañ",
+	"semanticmaps-updatemap": "Hizivaat ar gartenn",
+	"semanticmaps-forminput-remove": "Dilemel",
+	"semanticmaps-forminput-add": "Ouzhpennañ",
+	"semanticmaps-forminput-locations": "Lec'hiadurioù",
+	"semanticmaps-par-template": "Ur patrom d'ober gantañ da furmadiñ boued ar prenestr titouriñ.",
+	"semanticmaps-kml-title": "Titl dre ziouer evit an disoc'hoù"
+}

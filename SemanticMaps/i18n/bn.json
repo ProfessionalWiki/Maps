@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wikitanvir"
+		]
+	},
+	"semanticmaps-kml-link": "কেএমএল ফাইল দেখাও",
+	"semanticmaps-default-kml-pagelink": "$1 পাতা প্রদর্শন করো",
+	"semanticmaps_enteraddresshere": "এখানে ঠিকানা প্রবেশ করাও",
+	"semanticmaps-updatemap": "মানচিত্র হালনাগাদ",
+	"semanticmaps-forminput-remove": "অপসারণ",
+	"semanticmaps-forminput-add": "যোগ",
+	"semanticmaps-forminput-locations": "অবস্থান"
+}

@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bennylin",
+			"Farras",
+			"IvanLanin",
+			"C5st4wr6ch"
+		]
+	},
+	"semanticmaps-desc": "Memberikan kemampuan untuk melihat dan menyunting data koordinat yang disimpan melalui pengaya MediaWiki Semantic\n([https://mapping.referata.com/wiki/Examples demo]).",
+	"semanticmaps-unrecognizeddistance": "Nilai $1 bukan jarak yang sah.",
+	"semanticmaps-kml-link": "Lihat berkas KML",
+	"semanticmaps-default-kml-pagelink": "Lihat halaman $1",
+	"semanticmaps-loading-forminput": "Memuat masukan bentuk peta...",
+	"semanticmaps_lookupcoordinates": "Cari koordinat",
+	"semanticmaps_enteraddresshere": "Masukkan alamat di sini",
+	"semanticmaps-updatemap": "Pembaruan peta",
+	"semanticmaps-forminput-remove": "Hapus",
+	"semanticmaps-forminput-add": "Tambah",
+	"semanticmaps-forminput-locations": "Lokasi",
+	"semanticmaps-par-staticlocations": "Daftar lokasi yang akan ditambahkan ke dalam peta, berikut data kueri. Seperti halnya display_points, Anda dapat menambahkan judul, deskripsi, dan ikon per lokasi dengan menggunakan tanda tilde \"~\" sebagai pemisah.",
+	"semanticmaps-par-showtitle": "Tampilkan judul di jendela info penanda. Penonaktifan judul sering berguna ketika menggunakan templat untuk memformat isi jendela info.",
+	"semanticmaps-par-centre": "Pusat peta. Jika tidak disediakan, peta secara otomatis akan memilih pusat optimal untuk menampilkan semua penanda di peta.",
+	"semanticmaps-par-template": "Ttemplat yang digunakan untuk memformat isi jendela info.",
+	"semanticmaps-kml-linkabsolute": "Pranala sebaiknya adalah mutlak (lawan dari relatif)",
+	"semanticmaps-shapes-improperformat": "Format yang kurang tepat untuk $1. Silakan lihat dokumentasi untuk format."
+}

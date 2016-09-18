@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Anakmalaysia"
+		]
+	},
+	"semanticmaps-desc": "Menyediakan kebolehan untuk melihat dan menyunting data koordinat yang disimpan dengan sambungan [https://www.semantic-mediawiki.org Semantic MediaWiki]",
+	"semanticmaps-forminput-remove": "Buang",
+	"semanticmaps-forminput-add": "Tambahkan",
+	"semanticmaps-forminput-locations": "Lokasi"
+}

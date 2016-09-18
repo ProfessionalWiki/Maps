@@ -1,0 +1,63 @@
+{
+	"name": "mediawiki/semantic-maps",
+	"type": "mediawiki-extension",
+	"description": "Adds geographic capabilities to Semantic MediaWiki",
+	"keywords": [
+		"Semantic Maps",
+		"Maps",
+		"SMW",
+		"Semantic MediaWiki",
+		"Wiki",
+		"MediaWiki",
+		"Google Maps",
+		"OpenLayers"
+	],
+	"homepage": "https://www.semantic-mediawiki.org/wiki/Semantic_Maps",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Jeroen De Dauw",
+			"email": "jeroendedauw@gmail.com",
+			"homepage": "http://jeroendedauw.com",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"email": "semediawiki-user@lists.sourceforge.net",
+		"irc": "irc://irc.freenode.net/semantic-mediawiki",
+		"forum": "https://semantic-mediawiki.org/wiki/semantic-mediawiki.org_talk:Community_portal",
+		"wiki": "https://semantic-mediawiki.org/wiki/",
+		"source": "https://github.com/SemanticMediaWiki/SemanticMaps"
+	},
+	"require": {
+		"php": ">=5.5.0",
+		"composer/installers": "^1.0.1",
+		"data-values/geo": "~1.1",
+		"mediawiki/maps": "~3.8",
+		"mediawiki/semantic-media-wiki": "~2.0",
+		"mediawiki/validator": "~2.0"
+	},
+	"suggest": {
+		"mediawiki/semantic-forms": "Allows entering coordinates via a form map input"
+	},
+	"autoload": {
+		"files" : [
+			"SemanticMaps.php"
+		],
+		"classmap": [
+			"src/",
+			"SemanticMaps.hooks.php"
+		]
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "3.4.x-dev"
+		}
+	},
+	"config": {
+		"process-timeout": 0
+	},
+	"scripts":{
+		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
+	}
+}

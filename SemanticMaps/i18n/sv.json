@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Boivie",
+			"Lokal Profil",
+			"Martinwiss",
+			"Najami",
+			"Per",
+			"Rotsee",
+			"WikiPhoenix"
+		]
+	},
+	"semanticmaps-desc": "Ger möjlighet att se och redigera koordinatdata som sparats med [https://www.semantic-mediawiki.org Semantic MediaWiki]-tillägget",
+	"semanticmaps-unrecognizeddistance": "Värdet $1 är inte ett giltigt avstånd.",
+	"semanticmaps-kml-link": "Visa KML-filen",
+	"semanticmaps-default-kml-pagelink": "Visa sida $1",
+	"semanticmaps-latitude": "Breddgrad: $1",
+	"semanticmaps-longitude": "Längdgrad: $1",
+	"semanticmaps-altitude": "Höjd över havet: $1",
+	"semanticmaps-loading-forminput": "Läser in karta från indata...",
+	"semanticmaps_lookupcoordinates": "Kolla upp koordinater",
+	"semanticmaps_enteraddresshere": "Skriv in adress här",
+	"semanticmaps-updatemap": "Uppdatera karta",
+	"semanticmaps-forminput-remove": "Ta bort",
+	"semanticmaps-forminput-add": "Lägg till",
+	"semanticmaps-forminput-locations": "Platser",
+	"semanticmaps-par-staticlocations": "En lista med platser som man kan placera på kartan tillsammans med efterfrågad data. Precis som för display_points, så kan du lägga till en titel, en beskrivning och en ikon för varje plats med hjälp av tilde \"~\" som avgränsare.",
+	"semanticmaps-par-showtitle": "Visa en titel i markörens informationsruta eller inte. Det är ofta lämpligt att inte använda denna funktion när en mall används för informationsrutans innehåll.",
+	"semanticmaps-par-hidenamespace": "Visa namnrymdens titel i markörens informationsruta.",
+	"semanticmaps-par-centre": "Kartans mitt. Om inte angiven så kommer kartan automatiskt att hitta markörernas mittpunkt.",
+	"semanticmaps-par-template": "En mall som ska användas för informationsrutorna.",
+	"semanticmaps-par-geocodecontrol": "Visa formulär för geokodning.",
+	"semanticmaps-par-activeicon": "Ikon som bör visas istället för standardmarkören när den aktiva sidan är samma som resultatet från förfrågan",
+	"semanticmaps-par-pagelabel": "När satt till \"yes\" (ja), kommer alla markörer att ha en \"inlineLabel\" med en länk till sidan som innehåller koordinaterna för den markören",
+	"semanticmaps-kml-text": "Texten som hör ihop med varje sida. Om det finns efterfrågade egenskaper så tar de överhand.",
+	"semanticmaps-kml-title": "Förvald titel för resultaten",
+	"semanticmaps-kml-linkabsolute": "Ska länkar vara absoluta (i motsats till relativa)",
+	"semanticmaps-kml-pagelinktext": "Texten som ska användas för länkar till sidan, där $1 kommer att bytas ut med sidtiteln",
+	"semanticmaps-shapes-improperformat": "Felaktig formatering av $1. Se dokumentationen för formatering",
+	"semanticmaps-shapes-missingshape": "Inga former hittade för $1. Se dokumentationen för tillgängliga former"
+}

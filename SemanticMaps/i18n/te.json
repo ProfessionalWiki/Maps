@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Veeven",
+			"Ravichandra"
+		]
+	},
+	"semanticmaps-unrecognizeddistance": "$1 విలువ సరైన దూరం కాదు.",
+	"semanticmaps-kml-link": "KML ఫైలు చూడండి",
+	"semanticmaps-default-kml-pagelink": "$1 పేజీని చూడు",
+	"semanticmaps-latitude": "అక్షాంశం: $1",
+	"semanticmaps-longitude": "రేఖాంశం: $1",
+	"semanticmaps-altitude": "సముద్రమట్టం: $1",
+	"semanticmaps_enteraddresshere": "చిరునామాని ఇక్కడ ఇవ్వండి",
+	"semanticmaps-forminput-remove": "తొలగించు",
+	"semanticmaps-forminput-add": "చేర్చు",
+	"semanticmaps-forminput-locations": "ప్రాంతాలు",
+	"semanticmaps-kml-title": "ఫలితాలకు అప్రమేయంగా వచ్చే పేరు"
+}

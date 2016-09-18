@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"CERminator",
+			"Palapa"
+		]
+	},
+	"semanticmaps-desc": "Daje mogućnost pregleda i uređivanja podataka koordinata koji su spremljeni putem Semantic MediaWiki proširenja ([https://mapping.referata.com/wiki/Examples primjeri]).",
+	"semanticmaps-unrecognizeddistance": "Vrijednost $1 nije ispravno odstojanje.",
+	"semanticmaps-kml-link": "Pogledajte KML datoteku",
+	"semanticmaps-default-kml-pagelink": "Pogledajte stranicu $1",
+	"semanticmaps-loading-forminput": "Učitavam obrazac unosa za mapu...",
+	"semanticmaps_lookupcoordinates": "Nađi koordinate",
+	"semanticmaps_enteraddresshere": "Unesite adresu ovdje",
+	"semanticmaps-updatemap": "Ažuriraj mapu",
+	"semanticmaps-forminput-remove": "Ukloni",
+	"semanticmaps-forminput-add": "Dodaj",
+	"semanticmaps-forminput-locations": "Lokacije"
+}

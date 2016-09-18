@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu",
+			"Indech",
+			"Luckas",
+			"Luckas Blade",
+			"Malafaya"
+		]
+	},
+	"semanticmaps-desc": "Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mais informação...])",
+	"semanticmaps-unrecognizeddistance": "O valor $1 não é uma distância válida.",
+	"semanticmaps-kml-link": "Ver o ficheiro KML",
+	"semanticmaps-default-kml-pagelink": "Ver a página $1",
+	"semanticmaps-latitude": "Latitude: $1",
+	"semanticmaps-longitude": "Longitude: $1",
+	"semanticmaps-altitude": "Altitude: $1",
+	"semanticmaps-loading-forminput": "A carregar o formulário de entrada do mapa...",
+	"semanticmaps_lookupcoordinates": "Pesquisar coordenadas",
+	"semanticmaps_enteraddresshere": "Introduza um endereço aqui",
+	"semanticmaps-updatemap": "Atualizar mapa",
+	"semanticmaps-forminput-remove": "Remover",
+	"semanticmaps-forminput-add": "Adicionar",
+	"semanticmaps-forminput-locations": "Locais",
+	"semanticmaps-par-staticlocations": "Uma lista de localizações para acrescentar ao mapa em conjunto com os dados consultados. Tal como nos pontos a apresentar (\"display_points\"), pode adicionar um título, descrição e ícone por localização, usando o til \"~\" como separador.",
+	"semanticmaps-par-showtitle": "Mostrar, ou não, um título na janela informativa do marcador. É frequentemente desejável desativar esta funcionalidade quando usar uma predefinição para formatar o conteúdo da janela informativa.",
+	"semanticmaps-par-centre": "O centro do mapa. Quando este não for fornecido, o mapa escolherá automaticamente o centro óptimo para apresentar todos os marcadores do mapa.",
+	"semanticmaps-par-template": "Uma predefinição que será usada para formatar o conteúdo da janela informativa."
+}

@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lloffiwr"
+		]
+	},
+	"semanticmaps-unrecognizeddistance": "Nid yw'r gwerth $1 yn bellter dilys.",
+	"semanticmaps-kml-link": "Edrych ar y ffeil KML",
+	"semanticmaps-default-kml-pagelink": "Edrych ar y dudalen $1",
+	"semanticmaps-latitude": "Lledred: $1",
+	"semanticmaps-longitude": "Hydred: $1",
+	"semanticmaps-altitude": "Uchder: $1",
+	"semanticmaps-loading-forminput": "Yn llwytho ffurflen mewnbynnu i'r map...",
+	"semanticmaps_lookupcoordinates": "Canfydder y cyfesurynnau",
+	"semanticmaps_enteraddresshere": "Ysgrifennwch y cyfeiriad yma",
+	"semanticmaps-updatemap": "Diweddarer y map",
+	"semanticmaps-forminput-remove": "Tynner oddi ar y map",
+	"semanticmaps-forminput-add": "Ychwaneger",
+	"semanticmaps-forminput-locations": "Lleoliadau",
+	"semanticmaps-kml-title": "Y teitl diofyn i'r canlyniadau"
+}

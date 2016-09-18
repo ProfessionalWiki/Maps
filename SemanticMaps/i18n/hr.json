@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tivek"
+		]
+	},
+	"semanticmaps-desc": "Pruža pregledavanje i uređivanje koordinata spremljenih koristeći Semantic MediaWiki ekstenziju ([https://mapping.referata.com/wiki/Examples demo's]).",
+	"semanticmaps-unrecognizeddistance": "Vrijednost $1 nije valjana udaljenost.",
+	"semanticmaps_lookupcoordinates": "Potraži koordinate",
+	"semanticmaps_enteraddresshere": "Unesite adresu ovdje"
+}

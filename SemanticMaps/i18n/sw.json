@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lloffiwr"
+		]
+	},
+	"semanticmaps-kml-link": "Tazama faili la KML",
+	"semanticmaps-default-kml-pagelink": "Tazama ukurasa $1",
+	"semanticmaps-loading-forminput": "Fomu ya kuingiza ramani inapakiwa...",
+	"semanticmaps_enteraddresshere": "Ingiza anwani hapa",
+	"semanticmaps-updatemap": "Sasisha ramani",
+	"semanticmaps-forminput-remove": "Ondoa",
+	"semanticmaps-forminput-add": "Ongeza",
+	"semanticmaps-forminput-locations": "Mahali"
+}

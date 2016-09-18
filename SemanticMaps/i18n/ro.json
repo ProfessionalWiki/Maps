@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Firilacroco",
+			"Minisarm",
+			"Stelistcristi"
+		]
+	},
+	"semanticmaps-desc": "Permite vizualizarea și modificarea datelor despre coordonate stocate cu extensia Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mai multe informații...]).",
+	"semanticmaps_enteraddresshere": "Introduceți adresa aici",
+	"semanticmaps-updatemap": "Actualizează harta",
+	"semanticmaps-forminput-remove": "Eliminare",
+	"semanticmaps-forminput-add": "Adăugare",
+	"semanticmaps-forminput-locations": "Locuri"
+}
