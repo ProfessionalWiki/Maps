@@ -1,5 +1,12 @@
 These are the release notes for the [Maps extension](README.md).
 
+## Maps 4.0
+
+Development version
+
+* Merged in the features of the Semantic Maps extension. They will be enabled automatically when SMW is installed.
+
+
 ## Maps 3.8.1
 
 Released on September 7th, 2016.
