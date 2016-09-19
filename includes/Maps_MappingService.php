@@ -239,12 +239,23 @@ abstract class MapsMappingService implements iMappingService {
 	}
 
 	/**
-	 * @see iMappingService::addDependency
-	 *
 	 * @since 0.6.3
+	 *
+	 * @param $dependencyHtml
 	 */
-	public final function addDependency( $dependencyHtml ) {
+	public final function addHtmlDependency( $dependencyHtml ) {
 		$this->dependencies[] = $dependencyHtml;
+	}
+
+	/**
+	 * Adds dependencies.
+	 *
+	 * @param array $dependencies
+	 */
+	public function addHtmlDependencies(array $dependencies ) {
+		foreach ( $dependencies as $dependency ) {
+			$this->addHtmlDependency( $dependency );
+		}
 	}
 
 	/**

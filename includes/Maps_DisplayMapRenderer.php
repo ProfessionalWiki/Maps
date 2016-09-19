@@ -88,6 +88,10 @@ class MapsDisplayMapRenderer {
 
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 
+		$this->service->addHtmlDependencies(
+			self::getLayerDependencies( $params['mappingservice'], $params )
+		);
+
 		$this->service->addDependencies( $parser );
 		$parser->getOutput()->addHeadItem( $configVars );
 
@@ -225,28 +229,36 @@ class MapsDisplayMapRenderer {
 				}
 			}
 		}
-
-		MapsMappingServices::getServiceInstance( 'openlayers' )->addLayerDependencies( self::getLayerDependencies( $layerNames ) );
-
 		return $layerDefs;
 	}
 
-	/**
-	 * FIXME
-	 * @see evilOpenLayersHack
-	 */
-	private static function getLayerDependencies( array $layerNames ) {
-		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers;
+	public static function getLayerDependencies( $service, $params ) {
+		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers,
+			   $egMapsLeafletLayerDependencies, $egMapsLeafletAvailableLayers,
+			   $egMapsLeafletLayersApiKeys;
 
 		$layerDependencies = [];
 
-		foreach ( $layerNames as $layerName ) {
-			if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
-				&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...
-				&& count( $egMapsOLAvailableLayers[$layerName] ) > 1 // ...with a second element...
-				&& array_key_exists( $egMapsOLAvailableLayers[$layerName][1], $egMapsOLLayerDependencies ) ) { //...that is a dependency.
-				$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
+		if ( $service === 'leaflet' ) {
+			$layerName = $params['layer'];
+			if ( array_key_exists( $layerName, $egMapsLeafletAvailableLayers )
+					&& $egMapsLeafletAvailableLayers[$layerName]
+					&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
+					&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
+				$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
+					$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
 			}
+		} else if ( $service === 'openlayers' ) {
+			$layerNames = $params['layers'];
+			foreach ( $layerNames as $layerName ) {
+				if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
+						&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...
+						&& count( $egMapsOLAvailableLayers[$layerName] ) > 1 // ...with a second element...
+						&& array_key_exists( $egMapsOLAvailableLayers[$layerName][1], $egMapsOLLayerDependencies ) ) { //...that is a dependency.
+					$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
+				}
+			}
+
 		}
 
 		return array_unique( $layerDependencies );

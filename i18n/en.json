@@ -119,6 +119,8 @@
 	"maps_googlemaps3": "Google Maps v3",
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Allows setting the default zoom level of the map.",
+	"maps-leaflet-par-layer": "The layer that will be shown when the map loads.",
+	"maps-leaflet-par-overlaylayers": "The overlay layers that will be shown when the map loads.",
 	"maps-leaflet-par-maxclusterradius": "The maximum radius that a cluster will cover from the central marker (in pixels).",
 	"maps-leaflet-par-clusterspiderfy": "When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers.",
 	"maps_openlayers": "OpenLayers",
