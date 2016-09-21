@@ -8,6 +8,11 @@ Features:
 * Powerful `#display_map` parser hook for embedding highly customizable dynamic maps into wiki pages.
 * Support for multiple mapping services: Google Maps, [OpenLayers](http://www.openlayers.org/),
 [OpenStreetMap](www.openstreetmap.org/) and [Leaflet](http://leafletjs.com/).
+* Integration with [Semantic MediaWiki](https://www.semantic-mediawiki.org) via a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
+    * Query your stored coordinates and visualize them on dynamic maps, as tables or as lists
+    * Export your coordinates as KML or RDF
+    * Combine coordinates with other structured data stored in your wiki
+* Integration with [Semantic Forms](https://www.mediawiki.org/wiki/Extension:Semantic_Forms): modify templates with coordinates via forms
 * Coordinate formatting and format conversion via the `#coordinates` parser function.
 * Geocoding via several supported services with the `#geocode` parser function.
 * Geospatial operations
@@ -15,16 +20,19 @@ Features:
     * Finding a destination given a starting point, bearing and distance with `#finddestination`
 * Distance formatting and format conversion via the `#distance` parser function.
 * Visual map editor (Special:MapEditor) to edit `#display_map` wikitext.
-* Structured data support provided by the [Semantic Maps extension]
-(https://www.mediawiki.org/wiki/Extension:Semantic_Maps).
 
-View the [release notes](RELEASE-NOTES.md) for recent changes to Maps.
-
-### User manual
+## User manual
 
 * [Installation and configuration](INSTALL.md)
+* [Release notes](RELEASE-NOTES.md)
 * [Usage instructions](https://www.semantic-mediawiki.org/wiki/Maps)
 * [Usage examples](https://www.semantic-mediawiki.org/wiki/Category:Maps_examples)
+* [Semantic usage examples](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples)
+
+### Getting support
+
+* Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
+* Ask a question on the #mediawiki IRC channel on Freenode.
 
 ## Project status
 
@@ -42,8 +50,10 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 
 ## Contributing
 
-Feel free to fork the [code on GitHub](https://github.com/JeroenDeDauw/Maps) and to submit pull
-requests. We have a list of [enhancements that newcommers can work on](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer) easily.
+* [File an issue](https://github.com/JeroenDeDauw/Maps/issues)
+* [Submit a pull request](https://github.com/JeroenDeDauw/Maps/pulls) ([tasks for newcomers](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
+
+### Running the tests
 
 To run the tests, execute this in the root directory of maps:
 
