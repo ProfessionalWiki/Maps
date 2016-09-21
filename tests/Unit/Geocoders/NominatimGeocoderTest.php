@@ -8,8 +8,6 @@ use Maps\Geocoders\NominatimGeocoder;
 /**
  * @covers Maps\Geocoders\NominatimGeocoder
  *
- * @group Maps
- *
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

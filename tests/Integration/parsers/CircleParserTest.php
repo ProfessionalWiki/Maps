@@ -13,6 +13,12 @@ use Maps\Elements\Circle;
  */
 class CircleParserTest extends \PHPUnit_Framework_TestCase {
 
+	public function setUp() {
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			$this->markTestSkipped( 'MediaWiki is not available' );
+		}
+	}
+
 	public function testCanConstruct() {
 		new CircleParser();
 		$this->assertTrue( true );

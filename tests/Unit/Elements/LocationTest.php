@@ -8,8 +8,6 @@ use Maps\Elements\Location;
 /**
  * @covers Maps\Elements\Location
  *
- * @since 3.0
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

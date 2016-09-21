@@ -45,13 +45,15 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 Feel free to fork the [code on GitHub](https://github.com/JeroenDeDauw/Maps) and to submit pull
 requests. We have a list of [enhancements that newcommers can work on](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer) easily.
 
-You can run the PHPUnit tests by changing into the `tests/phpunit` directory of your MediaWiki
-install and running
+To run the tests, execute this in the root directory of maps:
 
-    php phpunit.php -c ../../extensions/Maps/
+    composer ci
 
-You can run the MediaWiki independent tests by running `composer unit` in the root directory of Maps.
-All tests in `tests/phpunit` are MediaWiki independent, with those depending on MediaWiki residing in
+To run only the MediaWiki independent tests, execute this in the root directory of maps:
+
+    phpunit
+
+All tests in `tests/Unit` are MediaWiki independent, with those depending on MediaWiki reside in
 `tests/Integration`.
 
 ## Credits to other projects

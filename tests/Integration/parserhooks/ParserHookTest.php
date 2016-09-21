@@ -6,13 +6,16 @@ use ParamProcessor\ParamDefinition;
 use ParamProcessor\Processor;
 
 /**
- * @group Maps
- * @group ParserHook
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
+
+	public static function setUpBeforeClass() {
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			self::markTestSkipped( 'MediaWiki is not available' );
+		}
+	}
 
 	/**
 	 * @since 2.0

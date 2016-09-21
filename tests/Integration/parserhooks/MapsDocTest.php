@@ -5,9 +5,6 @@ namespace Maps\Test;
 /**
  * @covers MapsMapsDoc
  *
- * @group Maps
- * @group ParserHook
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

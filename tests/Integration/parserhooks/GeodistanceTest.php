@@ -9,10 +9,6 @@ use Maps\Elements\Location;
 /**
  * @covers MapsGeodistance
  *
- * @group Maps
- * @group ParserHook
- * @group GeodistanceTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

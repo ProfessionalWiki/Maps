@@ -11,12 +11,9 @@ use Maps\Elements\Rectangle;
 /**
  * @covers Maps\Elements\BaseElement
  *
- * @since 3.0
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-
 class ElementTest extends \PHPUnit_Framework_TestCase {
 
 	public function elementProvider() {

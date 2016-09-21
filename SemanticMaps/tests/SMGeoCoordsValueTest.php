@@ -12,13 +12,16 @@ use SMWDIGeoCoord;
 /**
  * @covers SMGeoCoordsValue
  *
- * @group SemanticMaps
- * @group SMWExtension
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
+
+	public function setUp() {
+		if ( !defined( 'SMW_VERSION' ) ) {
+			$this->markTestSkipped( 'SMW is not available' );
+		}
+	}
 
 	public function testConstruct() {
 		$geoDI = new SMWDIGeoCoord( 23, 42 );

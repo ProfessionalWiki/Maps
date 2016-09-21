@@ -12,6 +12,12 @@ use ValueParsers\ParseException;
  */
 class DistanceParserTest extends \PHPUnit_Framework_TestCase {
 
+	public function setUp() {
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			$this->markTestSkipped( 'MediaWiki is not available' );
+		}
+	}
+
 	/**
 	 * @dataProvider validInputProvider
 	 */

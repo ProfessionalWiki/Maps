@@ -8,8 +8,6 @@ use Maps\Elements\Circle;
 /**
  * @covers Maps\Elements\Circle
  *
- * @since 3.0
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

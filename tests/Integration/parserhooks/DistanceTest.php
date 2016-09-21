@@ -5,10 +5,6 @@ namespace Maps\Test;
 /**
  * @covers MapsDistance
  *
- * @group Maps
- * @group ParserHook
- * @group MapsDistanceTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

@@ -8,8 +8,6 @@ use Maps\Elements\Rectangle;
 /**
  * @covers Maps\Elements\Rectangle
  *
- * @since 3.0
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

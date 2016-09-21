@@ -29,7 +29,8 @@ cp -r $originalDirectory Maps
 
 cd Maps
 composer install --prefer-source
-composer require 'phpunit/phpunit=3.7.*' --prefer-source
+
+[[ ! -z $SMW ]] && composer require "mediawiki/semantic-media-wiki=$SMW" --prefer-source
 
 cd ../..
 

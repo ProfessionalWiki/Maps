@@ -7,8 +7,6 @@ use Maps\Elements\ImageOverlay;
 /**
  * @covers Maps\Elements\ImageOverlay
  *
- * @since 3.0
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

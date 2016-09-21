@@ -8,10 +8,6 @@ use ParamProcessor\ParamDefinition;
 /**
  * @covers MapsCoordinates
  *
- * @group Maps
- * @group ParserHook
- * @group CoordinatesTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
