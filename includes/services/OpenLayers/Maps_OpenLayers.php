@@ -159,19 +159,6 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
-	 * Adds the layer dependencies.
-	 *
-	 * @since 0.7.1
-	 *
-	 * @param array $dependencies
-	 */
-	public function addLayerDependencies( array $dependencies ) {
-		foreach ( $dependencies as $dependency ) {
-			$this->addDependency( $dependency );
-		}
-	}
-
-	/**
 	 * @see MapsMappingService::getResourceModules
 	 *
 	 * @since 0.7.3

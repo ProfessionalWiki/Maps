@@ -250,7 +250,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'osm-cyclemap'
 		];
 
-		// The difinitions for the layers that should be available for the user.
+		// The definitions for the layers that should be available for the user.
 		$GLOBALS['egMapsOLAvailableLayers'] = [
 			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
 
@@ -300,6 +300,66 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
 		$GLOBALS['egMapsLeafletZoom'] = 14;
+
+		// String. The default layer for Leaflet. This value will only be
+		// used when the user does not provide one.
+		$GLOBALS['egMapsLeafletLayer'] = 'OpenStreetMap';
+
+		$GLOBALS['egMapsLeafletOverlayLayers'] = [
+
+		];
+
+		// The definitions for the layers that should be available for the user.
+		$GLOBALS['egMapsLeafletAvailableLayers'] = [
+			'OpenStreetMap' => true,
+			'OpenStreetMap.DE' => true,
+			'OpenStreetMap.BlackAndWhite' => true,
+			'OpenStreetMap.HOT' => true,
+			'Thunderforest.OpenCycleMap' => true,
+			'Thunderforest.Transport' => true,
+			'Thunderforest.Landscape' => true,
+			'Hydda.Full' => true,
+			//'MapBox' => false, // todo: implement setting api key
+			'Stamen.Toner' => true,
+			'Stamen.Terrain' => true,
+			'Stamen.Watercolor' => true,
+			'Esri.WorldStreetMap' => true,
+			'Esri.DeLorme' => true,
+			'Esri.WorldTopoMap' => true,
+			'Esri.WorldImagery' => true,
+			'Esri.WorldTerrain' => true,
+			'Esri.WorldShadedRelief' => true,
+			'Esri.WorldPhysical' => true,
+			'Esri.OceanBasemap' => true,
+			'Esri.NatGeoWorldMap' => true,
+			'Esri.WorldGrayCanvas' => true,
+			'MapQuestOpen' => true,
+		];
+
+		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = [
+			'OpenSeaMap' => true,
+			'OpenWeatherMap.Clouds' => true,
+			'OpenWeatherMap.CloudsClassic' => true,
+			'OpenWeatherMap.Precipitation' => true,
+			'OpenWeatherMap.PrecipitationClassic' => true,
+			'OpenWeatherMap.Rain' => true,
+			'OpenWeatherMap.RainClassic' => true,
+			'OpenWeatherMap.Pressure' => true,
+			'OpenWeatherMap.PressureContour' => true,
+			'OpenWeatherMap.Wind' => true,
+			'OpenWeatherMap.Temperature' => true,
+			'OpenWeatherMap.Snow' => true,
+		];
+
+		$GLOBALS['egMapsLeafletLayersApiKeys'] = [
+			'MapBox' => '',
+			'MapQuestOpen' => '',
+		];
+
+		// Layer dependencies
+		$GLOBALS['egMapsLeafletLayerDependencies'] = [
+			'MapQuestOpen' => 'https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=',
+		];
 
 
 $GLOBALS['egMapsGlobalJSVars'] = [];
