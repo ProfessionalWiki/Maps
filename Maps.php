@@ -251,8 +251,6 @@ class SemanticMaps {
 	 * @since 3.4
 	 */
 	public function initExtension() {
-		require_once __DIR__ . '/SemanticMaps/SM_Settings.php';
-
 		// Hook for initializing the Geographical Data types.
 		$this->mwGlobals['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
 

@@ -34,9 +34,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// enabled, if not, the first one from the available services will be taken.
 	// Note: The default service needs to be available for the feature you set it
 	// for, since it's used as a fallback mechanism.
-	$GLOBALS['egMapsDefaultServices'] = [
-		'display_map' => $GLOBALS['egMapsDefaultService'],
-	];
+	$GLOBALS['egMapsDefaultServices'] = [];
+	$GLOBALS['egMapsDefaultServices']['display_map'] = $GLOBALS['egMapsDefaultService'];
+	$GLOBALS['egMapsDefaultServices']['qp'] = $GLOBALS['egMapsDefaultService'];
+	$GLOBALS['egMapsDefaultServices']['fi'] = $GLOBALS['egMapsDefaultService'];
+
 
 // Geocoding
 
@@ -89,9 +91,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
 	$GLOBALS['egMapsCoordinateNotation'] = Maps_COORDS_DMS;
 
+	# Enum. The default output format of coordinates when displayed by Semantic MediaWiki.
+	# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
+	$GLOBALS['smgQPCoodFormat'] = $GLOBALS['egMapsCoordinateNotation'];
+
 	// Boolean. Indicates if coordinates should be outputted in directional notation by default.
 	// Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
 	$GLOBALS['egMapsCoordinateDirectional'] = true;
+
+	# Boolean. Indicates if coordinates should be outputted in directional notation by default when
+	# displayed by Semantic MediaWiki.
+	$GLOBALS['smgQPCoodDirectional'] = $GLOBALS['egMapsCoordinateDirectional'];
 
 	// Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
 	$GLOBALS['egMapsInternatDirectionLabels'] = true;
@@ -153,6 +163,31 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$GLOBALS['egMapsRezoomForKML'] = false;
 
 
+# Semantic MediaWiki queries
+
+	# Boolean. The default value for the showtitle parameter. Will hide the title in the marker pop-ups when set to true.
+	# This value will only be used when the user does not provide one.
+	$GLOBALS['smgQPShowTitle'] = true;
+
+	# Boolean. The default value for the hidenamespace parameter. Will hide the namespace in the marker pop-ups when set to true.
+	# This value will only be used when the user does not provide one.
+	$GLOBALS['smgQPHideNamespace'] = false;
+
+	# String or false. Allows you to define the content and it's layout of marker pop-ups via a template.
+	# This value will only be used when the user does not provide one.
+	$GLOBALS['smgQPTemplate'] = false;
+
+
+# Semantic Forms
+
+	$GLOBALS['smgFIFieldSize'] = 40;
+
+	# Integer or string. The default width and height of maps in forms created by using Semantic Forms.
+	# These values only be used when the user does not provide them.
+	$GLOBALS['smgFIWidth'] = 665;
+	$GLOBALS['smgFIHeight'] = $GLOBALS['egMapsMapHeight'];
+
+
 // Other general configuration
 
 	// When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
@@ -165,7 +200,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$GLOBALS['egMapsEnableCategory'] = true;
 
 
-// Specific mapping service configuration
+// Mapping service specific configuration
 
 	// Google Maps v3
 
@@ -294,8 +329,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'google' => "<script src='http://maps.google.com/maps/api/js'></script>",
 		];
 
-	// Leaflet
 
+	// Leaflet
 
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
@@ -362,4 +397,5 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		];
 
 
-$GLOBALS['egMapsGlobalJSVars'] = [];
+	$GLOBALS['egMapsGlobalJSVars'] = [];
+
