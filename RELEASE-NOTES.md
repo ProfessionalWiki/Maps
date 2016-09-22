@@ -1,5 +1,11 @@
 These are the release notes for the [Maps extension](README.md).
 
+## Maps 3.8.2
+
+Released on September 22nd, 2016.
+
+* Fixed incorrect centering of OpenLayers maps (by Peter Grassberger)
+
 ## Maps 3.8.1
 
 Released on September 7th, 2016.
