@@ -124,6 +124,8 @@
 	"maps_googlemaps3": "Karte (Google Maps v3)",
 	"maps_leaflet": "Karte (Leaflet)",
 	"maps-leaflet-par-defzoom": "Erlaubt das Festlegen der Standardvergrößerungsstufe der Karte",
+	"maps-leaflet-par-layer": "Die Ebene, die angezeigt wird, wenn die Karte lädt.",
+	"maps-leaflet-par-overlaylayers": "Die Überlagerungsebenen, die angezeigt werden, wenn die Karte lädt.",
 	"maps-leaflet-par-maxclusterradius": "Der maximale Radius, den ein Cluster ab der Mittelmarkierung abdeckt (in Pixeln).",
 	"maps-leaflet-par-clusterspiderfy": "Bei Klicken auf einen Cluster in einer niedrigen Vergrößerungsstufe wird dieser netzförmig expandiert, so dass alle enthaltenen Markierungen eingesehen werden können.",
 	"maps_openlayers": "Karte (OpenLayers)",

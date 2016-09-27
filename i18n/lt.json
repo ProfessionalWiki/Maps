@@ -54,6 +54,7 @@
 	"maps_map_cannot_be_displayed": "Žemėlapis negal būti parodytas.",
 	"maps_leaflet": "Lankstinukas",
 	"maps-leaflet-par-defzoom": "Leidžia nustatyti numatytąjį žemėlapio priartinimo lygį.",
+	"maps-leaflet-par-layer": "Sluoksnis, kuris bus rodomas kai žemėlapis bus įkeltas.",
 	"maps_click_to_activate": "Spustelėkite, norėdami įjungti žemėlapį",
 	"maps_centred_on": "Žemėlapis centruotas link $1, $2.",
 	"maps-par-enable-fullscreen": "Įgalinti viso ekrano mygtuką",

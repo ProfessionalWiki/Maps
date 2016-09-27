@@ -122,6 +122,8 @@
 	"maps-geocoder-not-available": "地图的地理编码功能不可用。您所在地区不能被编码。",
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "允许设置地图的默认缩放级别。",
+	"maps-leaflet-par-layer": "在地图加载时将显示的图层。",
+	"maps-leaflet-par-overlaylayers": "在地图加载时将显示的覆盖图层。",
 	"maps-leaflet-par-maxclusterradius": "群集将从中心标记处遮住的最大半径（像素）。",
 	"maps-leaflet-par-clusterspiderfy": "当您在下方缩放级别点击群集时，我们使其蜘蛛化，这样您可以看见它所有的标记。",
 	"maps_click_to_activate": "点击激活地图",

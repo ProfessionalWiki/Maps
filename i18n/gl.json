@@ -120,6 +120,8 @@
 	"maps-geocoder-not-available": "A funcionalidade de xeocodificación de mapas non está dispoñible; non se pode xeocodificar a súa situación.",
 	"maps_leaflet": "Folleto",
 	"maps-leaflet-par-defzoom": "Permite definir o nivel de zoom por defecto do mapa.",
+	"maps-leaflet-par-layer": "A capa que se mostrará cando se cargue o mapa.",
+	"maps-leaflet-par-overlaylayers": "As capas de transparencia que se mostrarán cando se cargue o mapa.",
 	"maps_click_to_activate": "Prema para activar o mapa",
 	"maps_centred_on": "Mapa centrado en $1, $2.",
 	"maps-par-mappingservice": "Permite configurar o servizo de mapas que se empregará para xerar o mapa.",
