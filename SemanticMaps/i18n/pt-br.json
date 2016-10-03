@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cainamarques",
+			"Eduardo.mps",
+			"Giro720",
+			"Luckas Blade",
+			"555",
+			"Jaideraf"
+		]
+	},
+	"semanticmaps-desc": "Permite ver e editar dados de coordenadas armazenados através da extensão Semantic MediaWiki. ([https://mapping.referata.com/wiki/Examples saiba mais...]).",
+	"semanticmaps-unrecognizeddistance": "O valor $1 não é uma distância válida.",
+	"semanticmaps-kml-link": "Ver o arquivo KML",
+	"semanticmaps-default-kml-pagelink": "Ver a página $1",
+	"semanticmaps-latitude": "Latitude: $1",
+	"semanticmaps-longitude": "Longitude: $1",
+	"semanticmaps-altitude": "Altitude: $1",
+	"semanticmaps-loading-forminput": "Abrindo formulário de entrada de dados no mapa...",
+	"semanticmaps_lookupcoordinates": "Pesquisar coordenadas",
+	"semanticmaps_enteraddresshere": "Insira aqui um endereço",
+	"semanticmaps-updatemap": "Atualizar o mapa",
+	"semanticmaps-forminput-remove": "Remover",
+	"semanticmaps-forminput-add": "Adicionar",
+	"semanticmaps-forminput-locations": "Locais",
+	"semanticmaps-par-staticlocations": "Uma lista de localizações para adicionar ao mapa junto aos dados consultados. Assim como nos pontos a serem exibidos (\"display_points\"), você pode adicionar um título, descrição e ícone por localização, usando o til (\"~\") como separador.",
+	"semanticmaps-par-showtitle": "Mostrar, ou não, um título na janela informativa do marcador. É frequentemente desejável desativar este recurso quando estiver usando uma predefinição para formatar o conteúdo da janela informativa.",
+	"semanticmaps-par-hidenamespace": "Mostrar o título do domínio na janela de informações do marcador",
+	"semanticmaps-par-centre": "O centro do mapa. Quando este não for definido, o mapa escolherá automaticamente o centro ideal para apresentar todos os marcadores do mapa.",
+	"semanticmaps-par-template": "Uma predefinição que será usada para formatar o conteúdo da janela informativa.",
+	"semanticmaps-par-geocodecontrol": "Exibir o controle de geocodificação.",
+	"semanticmaps-par-activeicon": "Ícone a ser exibido ao invés do marcador padrão, quando a página ativa é igual ao resultado da consulta",
+	"semanticmaps-par-pagelabel": "Quando configurado para \"yes\", todos os marcadores terão um \"inlineLabel\" com um link para a página que contém as coordenadas para o marcador",
+	"semanticmaps-kml-text": "O texto associado a cada página. Será substituído quando propriedades adicionais consultadas existirem.",
+	"semanticmaps-kml-title": "O título padrão para os resultados",
+	"semanticmaps-kml-linkabsolute": "Os links deverão ser absolutos (ao contrário de relativos)",
+	"semanticmaps-kml-pagelinktext": "O texto a ser usado nos links para a página, onde  $1 será substituído pelo título da página",
+	"semanticmaps-shapes-improperformat": "Formatação imprópria em $1. Por favor, veja a documentação para formatação",
+	"semanticmaps-shapes-missingshape": "Nenhuma forma foi encontrada para $1. Por favor, veja a documentação para formas disponíveis"
+}

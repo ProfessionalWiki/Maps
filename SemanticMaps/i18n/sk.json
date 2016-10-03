@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Helix84"
+		]
+	},
+	"semanticmaps-desc": "Poskytuje schopnosť zobrazovať a upravovať údaje súradníc uložené prostredníctvom rozšírenia Semantic MediaWiki ([https://mapping.referata.com/wiki/Examples demo]).",
+	"semanticmaps_lookupcoordinates": "Vyhľadať súradnice",
+	"semanticmaps_enteraddresshere": "Sem zadajte emailovú adresu"
+}

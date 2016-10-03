@@ -13,6 +13,12 @@ use Maps\RectangleParser;
  */
 class RectangleParserTest extends \PHPUnit_Framework_TestCase {
 
+	public function setUp() {
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			$this->markTestSkipped( 'MediaWiki is not available' );
+		}
+	}
+
 	public function testCanConstruct() {
 		new RectangleParser();
 		$this->assertTrue( true );

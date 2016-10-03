@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrisportelli"
+		]
+	},
+	"semanticmaps-kml-link": "Ara l-fajl KML",
+	"semanticmaps-latitude": "Latitudni: $1",
+	"semanticmaps-longitude": "Lonġitudini: $1",
+	"semanticmaps-altitude": "Altitudni: $1",
+	"semanticmaps_lookupcoordinates": "Fittex il-koordinati",
+	"semanticmaps_enteraddresshere": "Daħħal l-indirizz hawnhekk",
+	"semanticmaps-updatemap": "Aġġorna l-mappa",
+	"semanticmaps-forminput-remove": "Neħħi",
+	"semanticmaps-forminput-add": "Żid",
+	"semanticmaps-forminput-locations": "Postijiet"
+}

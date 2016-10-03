@@ -12,6 +12,12 @@ use Maps\WmsOverlayParser;
  */
 class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 
+	public function setUp() {
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			$this->markTestSkipped( 'MediaWiki is not available' );
+		}
+	}
+
 	/**
 	 * @return string
 	 */

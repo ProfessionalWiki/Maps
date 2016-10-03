@@ -6,19 +6,23 @@ matrix:
   include:
     - env: DBTYPE=mysql; MW=1.27.1
       php: 7
-    - env: DBTYPE=mysql; MW=master
+    - env: DBTYPE=mysql; MW=master; SMW=2.4.1
       php: 7
-    - env: DBTYPE=sqlite; MW=1.23.0
+    - env: DBTYPE=sqlite; MW=1.23.0; SMW=2.4.1
       php: 5.5
     - env: DBTYPE=mysql; MW=1.24.0
       php: 5.5
     - env: DBTYPE=sqlite; MW=master; TYPE=coverage
       php: 5.6
 
-install: travis_retry composer self-update
+install:
+  - travis_retry composer self-update
+  - bash .travis.install.sh
 
-before_script: bash ./build/travis/before_script.sh
+script: ../phase3/tests/phpunit/phpunit.php -c ../phase3/extensions/Maps/phpunit.xml.dist
 
-script: bash ./build/travis/script.sh
-
-after_success: bash ./build/travis/after_success.sh
+after_success:
+  - if [[ "$TYPE" != "coverage" ]]; then exit 0; fi
+  - ../phase3/tests/phpunit/phpunit.php -c ../phase3/extensions/Maps/phpunit.xml.dist --coverage-clover coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Naudefj"
+		]
+	},
+	"semanticmaps-desc": "Bied die vermoë om koördinaatdata met behulp van die Semantiese MediaWiki-uitbreiding te sien en te wysig ([https://mapping.referata.com/wiki/Examples demo]).",
+	"semanticmaps-unrecognizeddistance": "Die waarde \"$1\" is nie 'n geldige afstand nie.",
+	"semanticmaps_lookupcoordinates": "Soek koördinate op",
+	"semanticmaps_enteraddresshere": "Voer adres hier in"
+}

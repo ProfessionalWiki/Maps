@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dbc334",
+			"Eleassar",
+			"Lesko987"
+		]
+	},
+	"semanticmaps-desc": "Omogoča ogled in urejanje podatkov o lokaciji, shranjenih z razširitvijo [https://www.semantic-mediawiki.org/wiki/Semantic_Maps Semantic MediaWiki].",
+	"semanticmaps-unrecognizeddistance": "Vrednost $1 ni pravilna razdalja.",
+	"semanticmaps-kml-link": "Ogled datoteke KML",
+	"semanticmaps-default-kml-pagelink": "Poglej stran $1",
+	"semanticmaps-latitude": "Zemljepisna širina: $1",
+	"semanticmaps-longitude": "Zemljepisna dolžina: $1",
+	"semanticmaps-altitude": "Nadmorska višina: $1",
+	"semanticmaps-loading-forminput": "Nalaganje zemljevida iz vira...",
+	"semanticmaps_lookupcoordinates": "Poišči koordinate",
+	"semanticmaps_enteraddresshere": "Tukaj vnesite naslov",
+	"semanticmaps-updatemap": "Osvežite zemljevid",
+	"semanticmaps-forminput-remove": "Odstrani",
+	"semanticmaps-forminput-add": "Dodaj",
+	"semanticmaps-forminput-locations": "Lokacije",
+	"semanticmaps-par-staticlocations": "Seznam lokacij za dodajanje na zemljevid skupaj z rezultati poizvedb. Tako kot z display_points, lahko dodate naslov, opis in ikono za vsako lokacijo z uporabo \"~\" kot ločilo.",
+	"semanticmaps-par-showtitle": "Prikaži naslov v oknu ali ne. Onemogočanje tega je pogosto uporabno, če uporabljate predloge za oblikovanje vsebine info okno.",
+	"semanticmaps-par-hidenamespace": "Prikaži naslov imenskega prostora v označevalnem informacijskem oknu",
+	"semanticmaps-par-centre": "Sredini zemljevida. Če ne podana, bo zemljevid samodejno izbral optimalno lokacijo za prikaz vseh oznak na zemljevidu.",
+	"semanticmaps-par-template": "Predloga za oblikovanje vsebine info okna.",
+	"semanticmaps-par-geocodecontrol": "Prikaži nadzor geokodiranja.",
+	"semanticmaps-par-activeicon": "Ikona za prikaz namesto privzete oznake, kadar je aktivna stran enaka rezultatu poizvedbe.",
+	"semanticmaps-par-pagelabel": "Ko nastavite na »da«, bodo imele vse oznake »inlineLabel« s povezavo na stran, ki vsebuje koordinate oznake",
+	"semanticmaps-kml-text": "Besedilo, povezano z vsako stranjo. Preglašeno z dodatnimi možnostmi poizvedbe, če obstajajo.",
+	"semanticmaps-kml-title": "Privzeti naslov za rezultate",
+	"semanticmaps-kml-linkabsolute": "Naj bodo povezave absolutne (v nasprotju z relativnimi)",
+	"semanticmaps-kml-pagelinktext": "Besedilo za povezave do strani, v katerih bo $1 zamenjan z naslovom strani",
+	"semanticmaps-shapes-improperformat": "Neustrezno oblikovanje $1. Prosimo, oglejte si dokumentacijo za oblikovanje",
+	"semanticmaps-shapes-missingshape": "Za $1 nisem našel nobenih oblik. Prosimo, oglejte si dokumentacijo za oblike, ki so na voljo"
+}

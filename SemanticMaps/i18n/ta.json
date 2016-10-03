@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shanmugamp7"
+		]
+	},
+	"semanticmaps-default-kml-pagelink": "பக்கம் $1 ஐ காண்க",
+	"semanticmaps-latitude": "அட்சரேகை: $1",
+	"semanticmaps-longitude": "தீர்க்கரேகை: $1",
+	"semanticmaps-altitude": "குத்துயரம்: $1",
+	"semanticmaps_enteraddresshere": "இங்கு முகவரியை உள்ளிடவும்",
+	"semanticmaps-updatemap": "வரைபடத்தை புதுப்பி",
+	"semanticmaps-forminput-remove": "நீக்குக",
+	"semanticmaps-forminput-add": "சேர்",
+	"semanticmaps-forminput-locations": "இடங்கள்"
+}

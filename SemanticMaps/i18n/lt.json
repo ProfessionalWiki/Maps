@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"semanticmaps-kml-link": "Žiūrėti KML failą",
+	"semanticmaps-default-kml-pagelink": "Žiūrėti puslapį $1",
+	"semanticmaps-latitude": "Platuma: $1",
+	"semanticmaps-longitude": "Ilguma: $1",
+	"semanticmaps-altitude": "Aukštis: $1",
+	"semanticmaps-loading-forminput": "Įkeliamas žemėlapis iš įvesties...",
+	"semanticmaps_lookupcoordinates": "Ieškoti koordinačių",
+	"semanticmaps_enteraddresshere": "Įveskite adresą čia",
+	"semanticmaps-updatemap": "Atnaujinti žemėlapį",
+	"semanticmaps-forminput-remove": "Pašalinti",
+	"semanticmaps-forminput-add": "Pridėti",
+	"semanticmaps-forminput-locations": "Vietovės"
+}

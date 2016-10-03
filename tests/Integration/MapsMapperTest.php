@@ -7,14 +7,16 @@ use MapsMapper;
 /**
  * @covers MapsMapper
  *
- * @since 3.6
- *
- * @group Maps
- *
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >
  */
 class MapsMapperTest extends \PHPUnit_Framework_TestCase {
+
+	public function setUp() {
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			$this->markTestSkipped( 'MediaWiki is not available' );
+		}
+	}
 
     public function imageUrlProvider() {
         return [

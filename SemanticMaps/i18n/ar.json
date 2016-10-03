@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25",
+			"OsamaK"
+		]
+	},
+	"semanticmaps-desc": "يقدم إمكانية عرض وتعديل بيانات التنسيق التي خزنها امتداد سيمانتيك ميدياويكي ([https://mapping.referata.com/wiki/Examples تجربة]).",
+	"semanticmaps-kml": "كيه إم إل",
+	"semanticmaps_lookupcoordinates": "ابحث عن الإحداثيات",
+	"semanticmaps_enteraddresshere": "أدخل العنوان هنا",
+	"semanticmaps-forminput-remove": "أزل",
+	"semanticmaps-forminput-add": "أضف"
+}

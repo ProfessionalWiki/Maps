@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"An13sa",
+			"Subi"
+		]
+	},
+	"semanticmaps-latitude": "Latitudea: $1",
+	"semanticmaps-longitude": "Longitudea: $1",
+	"semanticmaps-altitude": "Altitudea: $1",
+	"semanticmaps_lookupcoordinates": "Koordenatuak bilatu",
+	"semanticmaps-updatemap": "Eguneratu mapa"
+}

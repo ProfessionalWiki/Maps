@@ -1,0 +1,24 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"semanticmaps-desc": "Permet d'afichar e de modificar las donadas de coordenadas emmagazinadas per l'extension Semantic MediaWiki. ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mai d'info...]).",
+	"semanticmaps-unrecognizeddistance": "La valor $1 es pas una distància valida",
+	"semanticmaps-kml-link": "Veire lo fichièr KML",
+	"semanticmaps-default-kml-pagelink": "Veire l’article $1",
+	"semanticmaps-latitude": "Latitud : $1",
+	"semanticmaps-longitude": "Longitud : $1",
+	"semanticmaps-altitude": "Altitud : $1",
+	"semanticmaps-loading-forminput": "Cargament del formulari d'entrada de la mapa...",
+	"semanticmaps_lookupcoordinates": "Estimar las coordenadas",
+	"semanticmaps_enteraddresshere": "Picatz aicí l’adreça",
+	"semanticmaps-updatemap": "Mesa a jorn de la mapa",
+	"semanticmaps-forminput-remove": "Levar",
+	"semanticmaps-forminput-add": "Apondre",
+	"semanticmaps-forminput-locations": "Emplaçaments",
+	"semanticmaps-par-staticlocations": "Una lista dels endreches d'apondre a la mapa amb las donadas demandadas. Coma amb display_points, podètz apondre un títol, una descripcion e una icòna per emplaçament en utilizant la tilda « ~ » coma separador.",
+	"semanticmaps-par-geocodecontrol": "Afichar lo contraròtle de geoencodatge.",
+	"semanticmaps-kml-title": "Lo títol per defaut pels resultats"
+}

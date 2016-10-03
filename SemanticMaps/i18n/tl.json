@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnakngAraw"
+		]
+	},
+	"semanticmaps-desc": "Nagbibigay ng kakayahang matingnan at baguhin ang dato ng tugmaang pampook na nakaimbak sa pamamagitan ng dugtong ng Semantikong MediaWiki ([https://mapping.referata.com/wiki/Examples pagpapamalas]).",
+	"semanticmaps-unrecognizeddistance": "Hindi isang tanggap na layo ang halagang $1.",
+	"semanticmaps-kml-link": "Tingnan ang talaksang KML",
+	"semanticmaps-kml": "KML",
+	"semanticmaps-default-kml-pagelink": "Tingnan ang pahinang $1",
+	"semanticmaps-latitude": "Latitud: $1",
+	"semanticmaps-longitude": "Longhitud: $1",
+	"semanticmaps-altitude": "Altitud: $1",
+	"semanticmaps-loading-forminput": "Ikinakarga ang pagpapasok ng anyo ng mapa...",
+	"semanticmaps_lookupcoordinates": "Hanapin ang mga tugmaang-pampook (''coordinate'')",
+	"semanticmaps_enteraddresshere": "Ipasok ang adres dito",
+	"semanticmaps-updatemap": "Isapanahon ang mapa",
+	"semanticmaps-forminput-remove": "Tanggalin",
+	"semanticmaps-forminput-add": "Idagdag",
+	"semanticmaps-forminput-locations": "Mga kinalalagyan",
+	"semanticmaps-par-staticlocations": "Isang listahan ng mga lokasyon na idaragdag sa mapa na kasama ng inusisang dato. Katulad ng sa tuldok_ng_pagpapakita, makapagdaragdag ka ng isang pamagat, paglalarawan at kinatawang larawan sa bawat lokasyon na ginagamit ang tilde \"~\" bilang panghiwalay.",
+	"semanticmaps-par-showtitle": "Magpapakita o hindi magpapakita ng isang pamagat sa loob ng pangmarkang bintana ng impormasyon. Ang hindi pagpapagana nito ay kadasalang mas kapakipakinabang kapag gumagamit ng isang suleras upang maiayos ang nilalaman ng bintana ng kabatiran.",
+	"semanticmaps-par-hidenamespace": "Ipakita o huwag ipakita ang pamagat ng puwang na pampangalan sa loob ng pangmarkang bintana ng impormasyon.",
+	"semanticmaps-par-centre": "Ang gitna ng mapa. Kapag hindi ibinigay, kusang pipiliin ng mapa ang pinakamabuting gitna na pagpapakitaan ng lahat ng mga pangmarka",
+	"semanticmaps-par-template": "Isang suleras na gagamit upang iayos ang mga nilalaman ng bintana ng kabatiran.",
+	"semanticmaps-par-geocodecontrol": "Ipakita ang pantaban ng pagkokodigong pangheograpiya.",
+	"semanticmaps-kml-text": "Umuugnay ang teksto sa bawat isang pahina. Pinangingibabawan ng karagdagang sinisiyasat na mga katangiang angkin kung mayroon.",
+	"semanticmaps-kml-title": "Ang likas na nakatakdang pamagat para sa mga resulta",
+	"semanticmaps-kml-linkabsolute": "Kung ang mga kawing ay magiging lubos o hindi (iyong nauukol)",
+	"semanticmaps-kml-pagelinktext": "Ang tekstong gagamitin para sa mga kawing sa pahina, kung saan ang $1 ay mapapalitan ng pamagat ng pahina"
+}

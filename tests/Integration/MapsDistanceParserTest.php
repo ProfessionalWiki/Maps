@@ -7,15 +7,17 @@ use MapsDistanceParser;
 /**
  * @covers MapsCoordinates
  *
- * @since 0.6.5
- *
- * @group Maps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsDistanceParserTest extends \MediaWikiTestCase {
-	
+class MapsDistanceParserTest extends \PHPUnit_Framework_TestCase {
+
+	public function setUp() {
+		if ( !defined( 'MEDIAWIKI' ) ) {
+			$this->markTestSkipped( 'MediaWiki is not available' );
+		}
+	}
+
 	public static $distances = [
 		'1' => 1,
 		'1m' => 1,

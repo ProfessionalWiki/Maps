@@ -1,0 +1,37 @@
+{
+	"@metadata": {
+		"authors": [
+			"Armin1392",
+			"Ebraminio",
+			"Mjbmr"
+		]
+	},
+	"semanticmaps-desc": "فراهم کردن توانایی برای مشاهده و ویرایش اطلاعات مختصات ذخیره شده با فرمت [https://www.semantic-mediawiki.org Semantic MediaWiki]",
+	"semanticmaps-unrecognizeddistance": "مقدار  $1 یک فاصلهٔ معتبر نیست.",
+	"semanticmaps-kml-link": "مشاهدهٔ پوشهٔ کا‌ام‌ال",
+	"semanticmaps-default-kml-pagelink": "مشاهده صفحهٔ $1",
+	"semanticmaps-latitude": "عرض جغرافیایی: $1",
+	"semanticmaps-longitude": "طول جغرافیایی: $1",
+	"semanticmaps-altitude": "ارتفاع: $1",
+	"semanticmaps-loading-forminput": "در حال بارگذاری نقشه از ورودی...",
+	"semanticmaps_lookupcoordinates": "نگاه کردن مختصات",
+	"semanticmaps_enteraddresshere": "آدرس را اینجا وارد کنید",
+	"semanticmaps-updatemap": "به روز رسانی نقشه",
+	"semanticmaps-forminput-remove": "حذف",
+	"semanticmaps-forminput-add": "افزودن",
+	"semanticmaps-forminput-locations": "مکان‌ها",
+	"semanticmaps-par-staticlocations": "فهرست مکان‌های برای افزودن به نقشه با اطلاعات سوال شده. مانند با display_points، شما می توانید یک عنوان، توصیف و نماد در هر مکان با استفاده از عنوان جدا کننده \"~\".",
+	"semanticmaps-par-showtitle": "نمایش یک عنوان در پنجره اطلاعات نشانگر یا نمایش ندادن آن.غیرفعال کردن این اغلب مفید است هنگام استفاده از الگو برای فرمت کردن محتوای پنجره اطلاعات.",
+	"semanticmaps-par-hidenamespace": "نمایش عنوان فضای نام در پنجره اطلاعات نشانگر",
+	"semanticmaps-par-centre": "مرکز نقشه. هنگامی که ارائه نشد،نقشه به طور خودکار مرکز مطلوب را برای نمایش همه نشانگرها در نقشه انتخاب می‌کند.",
+	"semanticmaps-par-template": "الگو برای استفاده از فرمت محتویات پنجره اطلاعات.",
+	"semanticmaps-par-geocodecontrol": "نشان دادن کنترل جئوکدینگ.",
+	"semanticmaps-par-activeicon": "نماد به جای نشانگر پیش‌فرض نمایش داده می‌شود هنگامی که صفحه فعال برابر با نتیجه پرس‌و‌جوی است",
+	"semanticmaps-par-pagelabel": "هنگامی که به «بله» تنظیم می‌شود، همه نشانگرها، یک «inlineLabel» با یک پیوند به صفحه دارند که شامل مختصات برای نشانگر است",
+	"semanticmaps-kml-text": "متن با هر صفحه مرتبط است. اگر هر خواص پرس‌وجو اضافی وجود داشته باشد، به‌وسیله آن خذف لغو شده.",
+	"semanticmaps-kml-title": "عنوان پیش‌زمینه برای نتایج",
+	"semanticmaps-kml-linkabsolute": "پیوندها باید (به عنوان مخالف به نسبی) مطلق باشند",
+	"semanticmaps-kml-pagelinktext": "متن برای استفاده پیوندها به صفحه، که در آن توسط عنوان صفحه $1 جایگزین خواهد شد",
+	"semanticmaps-shapes-improperformat": "شکل‌بندی نادرست $1. لطفاً مستندات را برای شکل‌بندی مشاهده کنید",
+	"semanticmaps-shapes-missingshape": "هیچ شکلی برای$1 پیدا نشد. لطفاً مستندات  را برای شکل‌های دردسترس مشاهده کنید"
+}

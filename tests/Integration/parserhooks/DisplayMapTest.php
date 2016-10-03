@@ -7,10 +7,6 @@ use Maps\Elements\Location;
 /**
  * @covers MapsDisplayMap
  *
- * @group Maps
- * @group ParserHook
- * @group DisplayMapTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

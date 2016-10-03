@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beluga",
+			"Crt",
+			"Nedergard",
+			"Str4nd"
+		]
+	},
+	"semanticmaps-desc": "Mahdollistaa Semantic MediaWiki -laajennuksen avulla tallennettujen koordinaattitietojen näyttämisen ja muokkaamisen ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps lisätietoja]).",
+	"semanticmaps-unrecognizeddistance": "Arvoa  $1  ei ole sallittu etäisyys.",
+	"semanticmaps-kml-link": "Näytä KLM-tiedosto",
+	"semanticmaps-default-kml-pagelink": "Näytä sivu $1",
+	"semanticmaps-latitude": "Leveyspiiri: $1",
+	"semanticmaps-longitude": "Pituuspiiri: $1",
+	"semanticmaps-altitude": "Korkeus: $1",
+	"semanticmaps-loading-forminput": "Ladataan kartan lomaketietoja...",
+	"semanticmaps_lookupcoordinates": "Hae koordinaatit",
+	"semanticmaps_enteraddresshere": "Kirjoita osoite tähän",
+	"semanticmaps-updatemap": "Päivitä kartta",
+	"semanticmaps-forminput-remove": "Poista",
+	"semanticmaps-forminput-add": "Lisää",
+	"semanticmaps-forminput-locations": "Sijainnit",
+	"semanticmaps-par-staticlocations": "Sijaintien luettelo voidaan lisätä karttaan kyselydatan lisäksi. Kuten display_points-parametrissa voit lisätä sijaintikohtaisen otsikon, kuvauksen ja kuvakkeen; erottimena on \"~\".",
+	"semanticmaps-par-showtitle": "Näyttää kohdemerkin tietoikkunan otsikon tai ei. Käytöstä poisto on usein hyödyllistä, jos tietoikkunan sisältö muotoillaan mallineella.",
+	"semanticmaps-par-hidenamespace": "Näytä nimiavaruuden otsikko kohdemerkin tietoikkunassa",
+	"semanticmaps-par-centre": "Kartan keskus. Jos sitä ei määritetä, kartta laskee automaattisesti optimaalisen keskuksen kartalla olevien kohdemerkkien perusteella.",
+	"semanticmaps-par-template": "Tietoikkunan sisällön muotoilussa käytettävä malline.",
+	"semanticmaps-par-geocodecontrol": "Näytä geokoodausohjaimet.",
+	"semanticmaps-kml-text": "Kuhunkin sivuun liittyvä teksti. Jos kyselyllä on lisäominaisuuksia, ne syrjäyttävät tämän.",
+	"semanticmaps-kml-title": "Tulossivun oletusotsikko",
+	"semanticmaps-kml-linkabsolute": "Ovatko linkit absoluuttisia (eivätkä suhteellisia)",
+	"semanticmaps-kml-pagelinktext": "Sivulinkeissä käytettävä teksti, jossa $1 korvataan sivun otsikolla",
+	"semanticmaps-shapes-improperformat": "$1 on muotoiltu väärin. Katso muotoilun dokumentaatiota.",
+	"semanticmaps-shapes-missingshape": "$1: muotoja ei löytynyt. Dokumentaatiossa kerrotaan sallituista muodoista."
+}

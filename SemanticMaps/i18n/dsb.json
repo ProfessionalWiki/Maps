@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Michawiki"
+		]
+	},
+	"semanticmaps-desc": "Zmóžnja zwobraznjenje a wobźěłowanje koordinatowych datow, kótarež su se z [https://www.semantic-mediawiki.org rozšyrjenim Semantic MediaWiki] składowali",
+	"semanticmaps-unrecognizeddistance": "Gódnota $1 njejo płaśiwa distanca.",
+	"semanticmaps-kml-link": "KML-dataju se woglědaś",
+	"semanticmaps-default-kml-pagelink": "Bok $1 se woglědaś",
+	"semanticmaps-latitude": "Šyrina: $1",
+	"semanticmaps-longitude": "Dlinina: $1",
+	"semanticmaps-altitude": "Wusokosć: $1",
+	"semanticmaps-loading-forminput": "Formularne zapódawańske póo kórty se zacytujo...",
+	"semanticmaps_lookupcoordinates": "Za koordinatami póglědaś",
+	"semanticmaps_enteraddresshere": "Zapódaj how adresu",
+	"semanticmaps-updatemap": "Kórtu aktualizěrowaś",
+	"semanticmaps-forminput-remove": "Wótpóraś",
+	"semanticmaps-forminput-add": "Pśidaś",
+	"semanticmaps-forminput-locations": "Městna",
+	"semanticmaps-par-staticlocations": "Lisćina městnow, kótarež maju se zgromadnje z napšašowanymi datami kórśe pśidaś. Ako pla zwobraznjeńskich dypkow móžoš titel, wopisanje a symbol na městno z pomocu tildy \"~\" ako źěleńske znamuško pśidaś.",
+	"semanticmaps-par-showtitle": "Titel w informaciskem woknje marki pokazaś abo nic. Jo cesto wužytne, toś to nastajenje znjemóžniś, gaž pśedłoga se wužywa, aby se wopśimjeśe informaciskego wokna formatěrowało.",
+	"semanticmaps-par-hidenamespace": "Titel mjenjowego ruma w informaciskem woknje marki pokazaś",
+	"semanticmaps-par-centre": "Srjejźišćo kórty. Jolic njejo pódane, buźo kórta awtomatiski optimane srjejźišć wubraś, aby wšykne marki na kórśe zwobrazniła.",
+	"semanticmaps-par-template": "Pśedłoga, kótaraž ma se za formatěrowanje wopśimjeśa infowokna wužywaś,",
+	"semanticmaps-par-geocodecontrol": "Geokoděrowańske wóźenje pokazaś",
+	"semanticmaps-par-activeicon": "Symbol, kótaryž ma se město standardneje marki zwobrazniś, gaž aktiwny bok wótpowědujo napšašowańskemu wuslědkoju.",
+	"semanticmaps-par-pagelabel": "Jolic na \"jo\" stajone, změju wšykne marki \"inlineLabel\" z wótkazom k bokoju, kótaryž wopśimujo koordinaty marki.",
+	"semanticmaps-kml-text": "Tekst, kótaryž jo z kuždym bokom zwězany. Wuměnja se pśez pśidatne napšašowane kakosći, jolic su take.",
+	"semanticmaps-kml-title": "Standardny titel za wuslědki",
+	"semanticmaps-kml-linkabsolute": "Wótkaze by měli absolutne byś (nic relatiwne)",
+	"semanticmaps-kml-pagelinktext": "Tekst, kótaryž ma se za wótkaze k tomu bokoju wužywaś, w kótaremž $1 wuměnja se pśez titel boka",
+	"semanticmaps-shapes-improperformat": "$1 jo se wopak formatěrował. Pšosym glej dokumentaciju za formatěrowanje",
+	"semanticmaps-shapes-missingshape": "Formy za $1 njejsu se namakali. Pšosym glej dokumentaciju za k dispoziciji stojece formy."
+}

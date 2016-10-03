@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Utar",
+			"XenoPheX"
+		]
+	},
+	"semanticmaps-desc": "Poskytuje možnost zobrazit a upravovat data souřadnic uložená rozšířením Semantic MediaWiki ([https://mapping.referata.com/wiki/Examples demos]).",
+	"semanticmaps-unrecognizeddistance": "Hodnota  $1  není platná vzdálenost.",
+	"semanticmaps-kml-link": "Zobrazit soubor KML",
+	"semanticmaps-default-kml-pagelink": "Zobrazit stránku $1",
+	"semanticmaps-latitude": "Z. šířka: $1",
+	"semanticmaps-longitude": "Z. délka: $1",
+	"semanticmaps-altitude": "Nadm. výška: $1",
+	"semanticmaps-loading-forminput": "Načítání mapy ze vstupu…",
+	"semanticmaps_lookupcoordinates": "Vyhledat souřadnice",
+	"semanticmaps_enteraddresshere": "Sem zadejte adresu",
+	"semanticmaps-updatemap": "Aktualizovat mapu",
+	"semanticmaps-forminput-remove": "Odebrat",
+	"semanticmaps-forminput-add": "Přidat",
+	"semanticmaps-forminput-locations": "Místa",
+	"semanticmaps-par-staticlocations": "Seznam míst, která se přidají do mapy spolu s dotazovanými daty. Podobně jako u display_points můžete každé místo doplnit o titulek, popis a ikonu, za použití tildy „~“ jako oddělovače.",
+	"semanticmaps-par-showtitle": "Zobrazovat název v info okně značky či ne. Vypnutí je často užitečné, pokud je obsah informačního okna formátován pomocí šablony.",
+	"semanticmaps-par-centre": "Střed mapy. Není-li specifikován, mapa automaticky vybere optimální střed tak, aby byly zobrazeny všechny značky na ní.",
+	"semanticmaps-par-template": "Šablona formátování obsahu informačního okna",
+	"semanticmaps-par-geocodecontrol": "Zobrazit ovladač geocodingu.",
+	"semanticmaps-kml-text": "Text je přidružený ke každé stránce. Je přepsán dodatečnými dotazovanými vlastnostmi, jsou-li nějaké.",
+	"semanticmaps-kml-title": "Výchozí titulek pro výsledky",
+	"semanticmaps-kml-linkabsolute": "Mají být odkazy absolutní či ne (tj. relativní)",
+	"semanticmaps-kml-pagelinktext": "Text, který bude použit pro odkazy na stránku, ve kterém bude $1 nahrazeno názvem stránky"
+}

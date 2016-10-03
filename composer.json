@@ -6,9 +6,13 @@
 		"MediaWiki",
 		"Semantic MediaWiki",
 		"Maps",
+		"Semantic Maps",
 		"Google Maps",
 		"OpenLayers",
 		"OSM",
+		"Leaflet",
+		"Geocode",
+		"Geocoding",
 		"OpenStreetMap"
 	],
 	"homepage": "https://github.com/JeroenDeDauw/Maps",
@@ -35,7 +39,8 @@
 		"jeroen/simple-cache": "~2.0"
 	},
 	"require-dev": {
-		"data-values/common": "~0.3.1"
+		"data-values/common": "~0.3.1",
+		"phpunit/phpunit": "~3.7"
 	},
 	"autoload": {
 		"files" : [
@@ -46,7 +51,9 @@
 		},
 		"classmap": [
 			"includes/",
-			"Maps.hooks.php"
+			"Maps.hooks.php",
+			"SemanticMaps/src/",
+			"SemanticMaps/SemanticMaps.hooks.php"
 		]
 	},
 	"autoload-dev": {
@@ -54,20 +61,23 @@
 			"Maps\\Tests\\TestDoubles\\": "tests/TestDoubles/"
 		},
 		"classmap": [
-			"tests/phpunit/elements/",
+			"tests/Unit/Elements/",
 			"tests/Integration/parserhooks/ParserHookTest.php"
 		]
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "3.8.x-dev"
+			"dev-master": "4.0.x-dev"
 		}
+	},
+	"suggest": {
+		"mediawiki/semantic-media-wiki": "Add, edit, aggregate and visualize structured coordinate data stored with Semantic MediaWiki",
+		"mediawiki/semantic-forms": "Allows entering coordinates via a form map input"
 	},
 	"config": {
 		"process-timeout": 0
 	},
 	"scripts":{
-		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist",
-		"unit-test": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist tests/phpunit"
+		"ci": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
 	}
 }

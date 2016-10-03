@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"semanticmaps-par-centre": "The centre of the map. When not provided, the map will automatically pick the optimal centre to display all markers on the map."
+}

@@ -1,5 +1,20 @@
 These are the release notes for the [Maps extension](README.md).
 
+## Maps 4.0
+
+Development version
+
+* Merged in the features of the Semantic Maps extension. They will be enabled automatically when SMW is installed.
+    * Added a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
+    * Added a [result format](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) for each mapping service
+    * Added a Google Maps form input that is available when Semantic Forms is installed
+
+## Maps 3.8.2
+
+Released on September 22nd, 2016.
+
+* Fixed incorrect centering of OpenLayers maps (by Peter Grassberger)
+
 ## Maps 3.8.1
 
 Released on September 7th, 2016.

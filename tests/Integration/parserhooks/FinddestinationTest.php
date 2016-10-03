@@ -8,10 +8,6 @@ use Maps\Elements\Location;
 /**
  * @covers MapsFinddestination
  *
- * @group Maps
- * @group ParserHook
- * @group MapsFinddestinationTest
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

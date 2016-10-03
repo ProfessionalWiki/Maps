@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rancher",
+			"Михајло Анђелковић"
+		]
+	},
+	"semanticmaps-unrecognizeddistance": "Вредност $1 није исправно растојање.",
+	"semanticmaps-kml": "KML",
+	"semanticmaps_enteraddresshere": "Унеси адресу овде"
+}

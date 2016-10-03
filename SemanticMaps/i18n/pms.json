@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"Borichèt",
+			"Dragonòt"
+		]
+	},
+	"semanticmaps-desc": "A dà la possibilità ëd vardé e modifiché ij dat ëd le coordinà memorisà con l'estension Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps për savèjne ëd pì...])",
+	"semanticmaps-unrecognizeddistance": "Ël valor $1 a l'é pa na distansa bon-a.",
+	"semanticmaps-kml-link": "Vëdde l'archivi KML",
+	"semanticmaps-default-kml-pagelink": "Lese la pàgina $1",
+	"semanticmaps-latitude": "Latitùdin: $1",
+	"semanticmaps-longitude": "Longitùdin: $1",
+	"semanticmaps-altitude": "Autitùdin: $1",
+	"semanticmaps-loading-forminput": "Carié ël formolari për anserì la carta...",
+	"semanticmaps_lookupcoordinates": "Serca coordinà",
+	"semanticmaps_enteraddresshere": "Ansëriss adrëssa sì",
+	"semanticmaps-updatemap": "Agiornament ëd la carta",
+	"semanticmaps-forminput-remove": "Gava",
+	"semanticmaps-forminput-add": "Gionta",
+	"semanticmaps-forminput-locations": "Locassion",
+	"semanticmaps-par-staticlocations": "Na lista ëd locassion da gionté a la carta ansema ai dat ciamà. Com con dispay_points, a peul gionté un tìtol, na descrission e na plancia për locassion an dovrand la tilde \"~\" com separator.",
+	"semanticmaps-par-showtitle": "Smon-e un tìtol ant la fnesta d'anformassion dël marcator opura nò. La disabilitassion ëd sòn a l'é soens ùtil quand as deuvra në stamp për formaté ël contnù dla fnesta d'anformassion.",
+	"semanticmaps-par-hidenamespace": "Mostré ël tìtol dlë spassi nominal ant la fnestra d'anformassion dël marcador.",
+	"semanticmaps-par-centre": "Ël sènter ëd la carta. Quand a l'é pa dàit, la carta a trovrà automaticament ël sènter otimal për smon-e tùit ij marcador an sla carta.",
+	"semanticmaps-par-template": "Në stamp da dovré deje a forma ai contnù dla fnesta d'anformassion.",
+	"semanticmaps-par-geocodecontrol": "Smon-e ël contròl ëd geocodìfica.",
+	"semanticmaps-kml-text": "Ël test associà con minca pagina. Coatà da le propietà adissionaj ciamà s'a-i në j'é.",
+	"semanticmaps-kml-title": "Ël tìtol predefinì për j'arzultà",
+	"semanticmaps-kml-linkabsolute": "Si le liure a devo esse assolùe o nò (visadì relativ)",
+	"semanticmaps-kml-pagelinktext": "Ël test da dovré për le liure a la pàgina, dont $1 a sarà rimpiassà da 'l tìtol ëd la pàgina",
+	"semanticmaps-shapes-improperformat": "Formatà ëd $1 nen bon. Për piasì, ch'a fasa arferiment a la documentassion për ël formà vorsù",
+	"semanticmaps-shapes-missingshape": "Gnun-e forme trovà për $1. Për piasì, ch'a varda la documentassion për le forme disponìbij"
+}

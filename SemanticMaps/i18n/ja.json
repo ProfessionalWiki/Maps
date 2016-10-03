@@ -1,0 +1,39 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fryed-peach",
+			"Mizusumashi",
+			"Schu",
+			"Shirayuki",
+			"青子守歌"
+		]
+	},
+	"semanticmaps-desc": "[https://www.semantic-mediawiki.org Semantic MediaWiki] 拡張機能で格納された座標データを表示・編集する機能を提供する",
+	"semanticmaps-unrecognizeddistance": "値$1は有効な距離ではありません。",
+	"semanticmaps-kml-link": "KMLファイルを閲覧",
+	"semanticmaps-default-kml-pagelink": "ページ$1を表示",
+	"semanticmaps-latitude": "緯度: $1",
+	"semanticmaps-longitude": "経度: $1",
+	"semanticmaps-altitude": "高度: $1",
+	"semanticmaps-loading-forminput": "フォーム入力からマップを読み込んでいます...",
+	"semanticmaps_lookupcoordinates": "座標を検索",
+	"semanticmaps_enteraddresshere": "住所をここに入力",
+	"semanticmaps-updatemap": "地図を更新",
+	"semanticmaps-forminput-remove": "除去",
+	"semanticmaps-forminput-add": "追加",
+	"semanticmaps-forminput-locations": "場所",
+	"semanticmaps-par-staticlocations": "問い合わせたデータと共に地図に追加する場所の列挙です。display_points と同様に、区切り文字としてチルダ「~」を使用して、場所ごとにタイトル、説明、アイコンを追加できます。",
+	"semanticmaps-par-showtitle": "マーカーの情報ウィンドウのタイトルを表示するかどうか。情報ウィンドウのコンテンツをフォーマットするためにテンプレートを使用するとき、これを無効にすると便利です。",
+	"semanticmaps-par-hidenamespace": "マーカー情報ウィンドウに名前空間名を表示する",
+	"semanticmaps-par-centre": "地図の中心。提供されていないときは、自動的に地図上のすべてのマーカーを表示するための最適な中心が選択されます。",
+	"semanticmaps-par-template": "情報ウィンドウのコンテンツの整形に使用するテンプレートです。",
+	"semanticmaps-par-geocodecontrol": "ジオコーディングコントロールを表示します。",
+	"semanticmaps-par-activeicon": "アクティブなページがクエリ結果と等しい場合に、デフォルトのアイコンの代わりに表示されるアイコン",
+	"semanticmaps-par-pagelabel": "「はい」に設定すると、マーカーの緯度経度を含むページにリンクされた「インライン ラベル」がすべてのマーカーに付きます。",
+	"semanticmaps-kml-text": "各ページに関連付けられたテキストです。クエリに追加的なプロパティがある場合は上書きされます。",
+	"semanticmaps-kml-title": "結果の既定のタイトル",
+	"semanticmaps-kml-linkabsolute": "リンクは絶対表記 (= 相対表記の対義語) にしてください。",
+	"semanticmaps-kml-pagelinktext": "ページへのリンクに使用するテキスト ($1 はページ名に置換される)",
+	"semanticmaps-shapes-improperformat": "$1 を不適切な形式に整形しようとしました。整形の説明文書を参照してください。",
+	"semanticmaps-shapes-missingshape": "$1 の図形が見つかりません。利用できる図形について説明文書を参照してください。"
+}
