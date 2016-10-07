@@ -2,6 +2,7 @@
 
 use DataValues\Geo\Values\LatLongValue;
 use SMW\DataValueFactory;
+use SMW\Query\Language\ValueDescription;
 
 /**
  * Description of a geographical area defined by a coordinates set and a distance to the bounds.
@@ -15,7 +16,7 @@ use SMW\DataValueFactory;
  * 
  * TODO: would be awesome to use Spatial Extensions to select coordinates
  */
-class SMAreaValueDescription extends SMWValueDescription {
+class SMAreaValueDescription extends ValueDescription {
 	
 	/**
 	 * Associative array containing the bounds of the area, or false when not set.
