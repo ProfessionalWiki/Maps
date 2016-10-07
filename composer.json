@@ -39,7 +39,7 @@
 		"jeroen/simple-cache": "~2.0"
 	},
 	"conflict": {
-		"mediawiki/semantic-media-wiki": "<2.0 || >=3.0"
+		"mediawiki/semantic-media-wiki": "<2.1 || >=3.0"
 	},
 	"require-dev": {
 		"data-values/common": "~0.3.1",

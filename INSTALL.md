@@ -77,7 +77,7 @@ minimum requirements are indicated in bold.
 		<th>Maps 4.0.x</th>
 		<td>5.5 - 7.0</td>
 		<td>1.23 - 1.28</td>
-		<td>2.0 - 2.4</td>
+		<td>2.1 - 2.4</td>
 		<td>3.0 - 3.7</td>
 		<td>Development version</td>
 	</tr>
