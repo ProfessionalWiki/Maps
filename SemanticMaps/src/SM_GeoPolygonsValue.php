@@ -22,9 +22,9 @@ class SMGeoPolygonsValue extends SMWDataValue {
 		if ( $dataItem instanceof SMWDIBlob ) {
 			$this->m_dataitem = $dataItem;
 			return true;
-		} else {
-			return false;
 		}
+
+		return false;
 	}
 
 	/**

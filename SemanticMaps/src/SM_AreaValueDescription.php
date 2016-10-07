@@ -21,17 +21,17 @@ class SMAreaValueDescription extends ValueDescription {
 	 * 
 	 * @var mixed
 	 */
-	protected $bounds = false;
+	private $bounds = false;
 
 	/**
 	 * @var SMWDIGeoCoord
 	 */
-	protected $center;
+	private $center;
 
 	/**
 	 * @var string
 	 */
-	protected $radius;
+	private $radius;
 
 	/**
 	 * @param SMWDataItem $areaCenter
@@ -150,7 +150,7 @@ class SMAreaValueDescription extends ValueDescription {
 	/**
 	 * @return float[] An associative array containing the limits with keys north, east, south and west.
 	 */
-	protected function getBoundingBox() {
+	private function getBoundingBox() {
 		$center = new LatLongValue(
 			$this->center->getLatitude(),
 			$this->center->getLongitude()
@@ -174,7 +174,7 @@ class SMAreaValueDescription extends ValueDescription {
 	 * 
 	 * @return boolean
 	 */
-	protected function geoFunctionsAreAvailable() {
+	private function geoFunctionsAreAvailable() {
 		return class_exists( 'MapsGeoFunctions' );
 	}	
 	

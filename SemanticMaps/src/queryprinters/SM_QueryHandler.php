@@ -10,13 +10,13 @@ use Maps\Elements\Location;
  */
 class SMQueryHandler {
 
-	protected $queryResult;
-	protected $outputmode;
+	private $queryResult;
+	private $outputmode;
 
 	/**
 	 * @var array
 	 */
-	protected $geoShapes = [
+	private $geoShapes = [
 		'lines' => [],
 		'locations' => [],
 		'polygons' => []
@@ -27,7 +27,7 @@ class SMQueryHandler {
 	 *
 	 * @var string|boolean false
 	 */
-	protected $template = false;
+	private $template = false;
 
 	/**
 	 * The global icon.
@@ -62,71 +62,69 @@ class SMQueryHandler {
 	 *
 	 * @var boolean
 	 */
-	protected $linkAbsolute;
+	private $linkAbsolute;
 
 	/**
 	 * The text used for the link to the page (if it's created). $1 will be replaced by the page name.
 	 *
 	 * @var string
 	 */
-	protected $pageLinkText;
+	private $pageLinkText;
 
 	/**
 	 * A separator to use between the subject and properties in the text field.
 	 *
 	 * @var string
 	 */
-	protected $subjectSeparator = '<hr />';
+	private $subjectSeparator = '<hr />';
 
 	/**
 	 * Make the subject in the text bold or not?
 	 *
 	 * @var boolean
 	 */
-	protected $boldSubject = true;
+	private $boldSubject = true;
 
 	/**
 	 * Show the subject in the text or not?
 	 *
 	 * @var boolean
 	 */
-	protected $showSubject = true;
+	private $showSubject = true;
 
 	/**
 	 * Hide the namespace or not.
 	 *
 	 * @var boolean
 	 */
-	protected $hideNamespace = false;
+	private $hideNamespace = false;
 
 
 	/**
 	 * Defines which article names in the result are hyperlinked, all normally is the default
 	 * none, subject, all
 	 */
-	protected $linkStyle = 'all';
+	private $linkStyle = 'all';
 
 	/*
 	 * Show headers (with links), show headers (just text) or hide them. show is default
 	 * show, plain, hide
 	 */
-	protected $headerStyle = 'show';
+	private $headerStyle = 'show';
 
 	/**
 	 * Marker icon to show when marker equals active page
 	 *
 	 * @var string
 	 */
-	protected $activeIcon;
+	private $activeIcon;
 
 	/**
 	 * @var string
 	 */
-	protected $userParam = '';
+	private $userParam = '';
 
 	/**
-	 * Constructor.
-	 *
 	 * @param SMWQueryResult $queryResult
 	 * @param integer $outputmode
 	 * @param boolean $linkAbsolute
@@ -251,7 +249,7 @@ class SMQueryHandler {
 	/**
 	 * @since 2.0
 	 */
-	protected function findShapes() {
+	private function findShapes() {
 		while ( ( $row = $this->queryResult->getNext() ) !== false ) {
 			$this->handleResultRow( $row );
 		}
@@ -262,7 +260,7 @@ class SMQueryHandler {
 	 *
 	 * @param SMWResultArray[] $row
 	 */
-	protected function handleResultRow( array $row ) {
+	private function handleResultRow( array $row ) {
 		$locations = [];
 		$properties = [];
 
@@ -333,7 +331,7 @@ class SMQueryHandler {
 	 *
 	 * @return array with title and text
 	 */
-	protected function handleResultSubject( SMWWikiPageValue $object ) {
+	private function handleResultSubject( SMWWikiPageValue $object ) {
 		$title = $object->getLongText( $this->outputmode, null );
 		$text = '';
 
@@ -376,7 +374,7 @@ class SMQueryHandler {
 		return [ $title, $text ];
 	}
 
-	protected function showArticleLink(){
+	private function showArticleLink() {
 		return $this->linkStyle !== 'none';
 	}
 
@@ -388,7 +386,7 @@ class SMQueryHandler {
 	 *
 	 * @return string
 	 */
-	protected function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
+	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
 		if($this->isHeadersHide()){
 			return '';
 		}
@@ -451,15 +449,15 @@ class SMQueryHandler {
 	}
 
 
-	protected function isHeadersShow(){
+	private function isHeadersShow(){
 		return $this->headerStyle === 'show';
 	}
 
-	protected function isHeadersHide(){
+	private function isHeadersHide(){
 		return $this->headerStyle === 'hide';
 	}
 
-	protected function isHeadersPlain(){
+	private function isHeadersPlain(){
 		return $this->headerStyle === 'plain';
 	}
 
@@ -474,7 +472,7 @@ class SMQueryHandler {
 	 *
 	 * @return Location[]
 	 */
-	protected function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
+	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
 		if ( $this->template ) {
 			global $wgParser;
 			$parser = clone $wgParser;
@@ -521,7 +519,7 @@ class SMQueryHandler {
 	 *
 	 * @return string
 	 */
-	protected function getLocationIcon( array $row ) {
+	private function getLocationIcon( array $row ) {
 		$icon = '';
 		$legend_labels = [];
 

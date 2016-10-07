@@ -6,8 +6,6 @@
  * of Polygons to concrete structures.
  * Also acts as a factory class for polygons
  *
- * @file SM_PolygonHandler.php
- *
  * @author Nischay Nahata
  */
 class PolygonHandler {
@@ -17,28 +15,28 @@ class PolygonHandler {
 	 *
 	 * @var string
 	 */
-	protected $text;
+	private $text;
 
 	/**
 	 * The string used to store this value as an object.
 	 *
 	 * @var object or null
 	 */
-	protected $value = null;
+	private $value = null;
 
 	/**
 	 * The array of error messages occurred in parsing.
 	 *
 	 * @var array
 	 */
-	protected $errors = [];
+	private $errors = [];
 
 	/**
 	 * Array of classes used to validate different Geographic shapes.
 	 *
 	 * @var array
 	 */
-	protected $validatorClasses = [
+	private $validatorClasses = [
 		'locations' => 'LocationValidator',
 		'lines' => 'LineValidator',
 		'polygons' => 'PolygonValidator',
@@ -51,7 +49,7 @@ class PolygonHandler {
 	 *
 	 * @var array
 	 */
-	protected $geoClasses = [
+	private $geoClasses = [
 		'locations' => 'MapsLocation',
 		'lines' => 'MapsLine',
 		'polygons' => 'MapsPolygon',
@@ -60,12 +58,12 @@ class PolygonHandler {
 	];
 
 	/**
-	 * NOTE: These need to be changed as Manipulations are depreceated.
+	 * NOTE: These need to be changed as Manipulations are deprecated.
 	 * Array of classes for param handling of different Geographic shapes.
 	 *
 	 * @var array
 	 */
-	protected $paramClasses = [
+	private $paramClasses = [
 		'locations' => 'MapsParamLocation',
 		'lines' => 'MapsParamLine',
 		'polygons' => 'MapsParamPolygon',
@@ -74,8 +72,6 @@ class PolygonHandler {
 	];
 
 	/**
-	 * Constructor.
-	 *
 	 * @param string $text
 	 */
 	public function __construct( $text ) {
@@ -92,7 +88,7 @@ class PolygonHandler {
 		return $this->errors;
 	}
 
-	protected function validateText() {
+	private function validateText() {
 		$parts = explode( '=', $this->text );
 		if( array_key_exists( $parts[0], $this->validatorClasses ) ) {
 			$validatorClass = new $this->validatorClasses[ $parts[0] ]( '~' );

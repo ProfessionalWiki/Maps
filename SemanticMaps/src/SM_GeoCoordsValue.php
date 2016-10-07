@@ -20,7 +20,7 @@ use ValueParsers\ParseException;
  */
 class SMGeoCoordsValue extends SMWDataValue {
 
-	protected $wikiValue;
+	private $wikiValue;
 
 	/**
 	 * @see SMWDataValue::setDataItem
@@ -49,7 +49,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 *
 	 * @return string|null
 	 */
-	protected function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
+	private function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
 		global $smgQPCoodFormat;
 
 		$options = new \ValueFormatters\FormatterOptions( [
@@ -97,7 +97,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		}
 	}
 
-	protected function parserDistance( $distance ) {
+	private function parserDistance( $distance ) {
 		if ( $distance !== false ) {
 			$distance = substr( trim( $distance ), 0, -1 );
 
@@ -112,8 +112,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::parseUserValue
-	 *
-	 * @since 0.6
 	 */
 	protected function parseUserValue( $value ) {
 		if ( !is_string( $value ) ) {
@@ -138,7 +136,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 		return [ $distance, $comparator ];
 	}
 
-	protected function findValueParts( $value ) {
+	private function findValueParts( $value ) {
 		$parts = explode( '(', $value );
 
 		$coordinates = trim( array_shift( $parts ) );
@@ -150,7 +148,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	/**
 	 * @param string $coordinates
 	 */
-	protected function tryParseAndSetDataItem( $coordinates ) {
+	private function tryParseAndSetDataItem( $coordinates ) {
 		$options = new \ValueParsers\ParserOptions();
 		$parser = new GeoCoordinateParser( $options );
 
@@ -169,8 +167,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getShortWikiText
-	 * 
-	 * @since 0.6
 	 */
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() ) {
@@ -228,8 +224,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getLongHTMLText
-	 * 
-	 * @since 0.6
 	 */
 	public function getLongHTMLText( $linker = null ) {
 		return $this->getLongWikiText( $linker );
@@ -237,8 +231,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getWikiValue
-	 * 
-	 * @since 0.6
 	 */
 	public function getWikiValue() {
 		return $this->wikiValue;
