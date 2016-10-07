@@ -42,7 +42,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	/**
 	 * @var string|boolean
 	 */
-	protected $fatalErrorMsg = false;
+	private $fatalErrorMsg = false;
 	
 	/**
 	 * @param string $format

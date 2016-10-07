@@ -3,10 +3,6 @@
 /**
  * Google Maps v3 form input class.
  *
- * @since 1.0
- * @file SM_GoogleMaps3FormInput.php
- * @ingroup SemanticMaps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

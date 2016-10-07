@@ -85,7 +85,7 @@ class SMKMLPrinter extends FileExportPrinter {
 	 *
 	 * @return string
 	 */
-	protected function getKML( SMWQueryResult $res, $outputmode ) {
+	private function getKML( SMWQueryResult $res, $outputmode ) {
 		$queryHandler = new SMQueryHandler( $res, $outputmode, $this->params['linkabsolute'], $this->params['pagelinktext'], false );
 		$queryHandler->setText( $this->params['text'] );
 		$queryHandler->setTitle( $this->params['title'] );
@@ -107,7 +107,7 @@ class SMKMLPrinter extends FileExportPrinter {
 	 *
 	 * @return string
 	 */
-	protected function getKMLLink( SMWQueryResult $res, $outputmode ) {
+	private function getKMLLink( SMWQueryResult $res, $outputmode ) {
 		$searchLabel = $this->getSearchLabel( $outputmode );
 		$link = $res->getQueryLink( $searchLabel ? $searchLabel : wfMessage( 'semanticmaps-kml-link' )->inContentLanguage()->text() );
 		$link->setParameter( 'kml', 'format' );

@@ -16,7 +16,7 @@ class SMFormInput {
 	/**
 	 * @var iMappingService
 	 */
-	protected $service;		
+	private $service;
 	
 	/**
 	 * A character to separate multiple locations with.
@@ -39,7 +39,7 @@ class SMFormInput {
 	 * 
 	 * @return array
 	 */
-	protected function getParameterInfo() {
+	private function getParameterInfo() {
 		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
 
 		$this->service->addParameterInfo( $params );
@@ -50,7 +50,7 @@ class SMFormInput {
 		return array_merge( $params, $this->getParameterDefinitions() );
 	}
 
-	protected function getParameterDefinitions() {
+	private function getParameterDefinitions() {
 		global $smgFIFieldSize;
 
 		$params = [];
@@ -227,7 +227,7 @@ class SMFormInput {
 	 * 
 	 * @return string
 	 */
-	protected function getInputHTML( array $params, Parser $parser, $mapName ) {
+	private function getInputHTML( array $params, Parser $parser, $mapName ) {
 		return Html::rawElement(
 			'div',
 			[
@@ -251,8 +251,8 @@ class SMFormInput {
 	 * @param Parser $parser
 	 * 
 	 * @return mixed
-	 */	
-	protected function getJSONObject( array $params, Parser $parser ) {
+	 */
+	private function getJSONObject( array $params, Parser $parser ) {
 		/**
 		 * @var Location $location
 		 */
@@ -273,7 +273,7 @@ class SMFormInput {
 	/**
 	 * @return string
 	 */
-	protected function getAttribs(){
+	private function getAttribs() {
 		return [
 			'id' => 'map-canvas',
 			'context' => 'forminput',
