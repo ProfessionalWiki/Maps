@@ -3,8 +3,6 @@
 /**
  * Implementation of datavalues that are geographic shapes.
  *
- * @since 2.0
- *
  * @file SM_GeoPolgonValue.php
  * @ingroup SemanticMaps
  * @ingroup SMWDataValues

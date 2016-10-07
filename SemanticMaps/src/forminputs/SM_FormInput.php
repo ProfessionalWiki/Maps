@@ -14,8 +14,6 @@ use ParamProcessor\Processor;
 class SMFormInput {
 
 	/**
-	 * @since 1.0
-	 * 
 	 * @var iMappingService
 	 */
 	protected $service;		
@@ -23,16 +21,12 @@ class SMFormInput {
 	/**
 	 * A character to separate multiple locations with.
 	 * 
-	 * @since 1.0
-	 * 
 	 * @var string
 	 */
 	const SEPARATOR = ';';
 	
 	/**
 	 * Constructor.
-	 * 
-	 * @since 1.0
 	 * 
 	 * @param iMappingService $service
 	 */
@@ -42,8 +36,6 @@ class SMFormInput {
 	
 	/**
 	 * Returns an array containing the parameter info.
-	 * 
-	 * @since 1.0
 	 * 
 	 * @return array
 	 */
@@ -98,8 +90,6 @@ class SMFormInput {
 	}
 	
 	/**
-	 * @since 1.0
-	 * 
 	 * @param string $coordinates
 	 * @param string $inputName
 	 * @param boolean $isMandatory
@@ -194,8 +184,6 @@ class SMFormInput {
 	}
 
 	/**
-	 * @since 2.0
-	 *
 	 * @param string $coordinates
 	 * @param string $input_name
 	 * @param boolean $isMandatory
@@ -233,8 +221,6 @@ class SMFormInput {
 	/**
 	 * Returns the HTML to display the map input.
 	 * 
-	 * @since 1.0
-	 * 
 	 * @param array $params
 	 * @param Parser $parser
 	 * @param string $mapName
@@ -261,8 +247,6 @@ class SMFormInput {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 1.0
-	 *
 	 * @param array $params
 	 * @param Parser $parser
 	 * 
@@ -280,8 +264,6 @@ class SMFormInput {
 	}
 	
 	/**
-	 * @since 1.0
-	 * 
 	 * @return array of string
 	 */
 	protected function getResourceModules() {
@@ -289,8 +271,6 @@ class SMFormInput {
 	}
 
 	/**
-	 * @since 2.1
-	 *
 	 * @return string
 	 */
 	protected function getAttribs(){

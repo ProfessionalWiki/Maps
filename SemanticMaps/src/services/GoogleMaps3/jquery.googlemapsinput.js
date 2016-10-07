@@ -2,8 +2,8 @@
  * JavaScript for the Google Maps v3 form input of the Semantic Maps extension.
  * @see http://www.mediawiki.org/wiki/Extension:Semantic_Maps
  * 
- * @since 1.0
- * @ingroup SemanticMaps
+ * @since 4.0
+ * @ingroup Maps
  * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw <jeroendedauw at gmail dot com>

@@ -8,8 +8,6 @@ use SMW\DataValueFactory;
  * The bounds are a 'rectangle' (but bend due to the earths curvature), as the resulting query
  * would otherwise be to resource intensive.
  *
- * @since 0.6
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com
  * 
@@ -20,22 +18,16 @@ class SMAreaValueDescription extends SMWValueDescription {
 	/**
 	 * Associative array containing the bounds of the area, or false when not set.
 	 * 
-	 * @since 0.6
-	 * 
 	 * @var mixed
 	 */
 	protected $bounds = false;
 
 	/**
-	 * @since 3.0
-	 *
 	 * @var SMWDIGeoCoord
 	 */
 	protected $center;
 
 	/**
-	 * @since 3.0
-	 *
 	 * @var string
 	 */
 	protected $radius;
@@ -67,8 +59,6 @@ class SMAreaValueDescription extends SMWValueDescription {
 
 	/**
 	 * @see SMWDescription:getQueryString
-	 * 
-	 * @since 0.6
 	 * 
 	 * @param boolean $asValue
 	 * @return string
@@ -106,7 +96,7 @@ class SMAreaValueDescription extends SMWValueDescription {
      * Returns the bounds of the area.
      * 
      * @since 0.6
-     * 
+     *
      * @return array
      */
     public function getBounds() {
@@ -118,8 +108,6 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 *
 	 * FIXME: store specific code should be in the store component
 	 *
-	 * @since 0.6
-	 * 
 	 * @param string $tableName
 	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
@@ -182,8 +170,6 @@ class SMAreaValueDescription extends SMWValueDescription {
 	
 	/**
 	 * Returns a boolean indicating if MapsGeoFunctions is available. 
-	 * 
-	 * @since 0.6
 	 * 
 	 * @return boolean
 	 */

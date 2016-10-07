@@ -5,8 +5,6 @@ use Maps\Elements\Location;
 /**
  * Class for handling geographical SMW queries.
  *
- * @since 0.7.3
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -16,8 +14,6 @@ class SMQueryHandler {
 	protected $outputmode;
 
 	/**
-	 * @since 2.0
-	 *
 	 * @var array
 	 */
 	protected $geoShapes = [
@@ -29,16 +25,12 @@ class SMQueryHandler {
 	/**
 	 * The template to use for the text, or false if there is none.
 	 *
-	 * @since 0.7.3
-	 *
 	 * @var string|boolean false
 	 */
 	protected $template = false;
 
 	/**
 	 * The global icon.
-	 *
-	 * @since 0.7.3
 	 *
 	 * @var string
 	 */
@@ -47,16 +39,12 @@ class SMQueryHandler {
 	/**
 	 * The global text.
 	 *
-	 * @since 1.0
-	 *
 	 * @var string
 	 */
 	public $text = '';
 
 	/**
 	 * The global title.
-	 *
-	 * @since 1.0
 	 *
 	 * @var string
 	 */
@@ -65,16 +53,12 @@ class SMQueryHandler {
 	/**
 	 * Make a separate link to the title or not?
 	 *
-	 * @since 0.7.3
-	 *
 	 * @var boolean
 	 */
 	public $titleLinkSeparate;
 
 	/**
 	 * Should link targets be made absolute (instead of relative)?
-	 *
-	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -83,16 +67,12 @@ class SMQueryHandler {
 	/**
 	 * The text used for the link to the page (if it's created). $1 will be replaced by the page name.
 	 *
-	 * @since 1.0
-	 *
 	 * @var string
 	 */
 	protected $pageLinkText;
 
 	/**
 	 * A separator to use between the subject and properties in the text field.
-	 *
-	 * @since 1.0
 	 *
 	 * @var string
 	 */
@@ -101,16 +81,12 @@ class SMQueryHandler {
 	/**
 	 * Make the subject in the text bold or not?
 	 *
-	 * @since 1.0
-	 *
 	 * @var boolean
 	 */
 	protected $boldSubject = true;
 
 	/**
 	 * Show the subject in the text or not?
-	 *
-	 * @since 1.0
 	 *
 	 * @var boolean
 	 */
@@ -151,8 +127,6 @@ class SMQueryHandler {
 	/**
 	 * Constructor.
 	 *
-	 * @since 0.7.3
-	 *
 	 * @param SMWQueryResult $queryResult
 	 * @param integer $outputmode
 	 * @param boolean $linkAbsolute
@@ -174,8 +148,6 @@ class SMQueryHandler {
 	/**
 	 * Sets the template.
 	 *
-	 * @since 1.0
-	 *
 	 * @param string $template
 	 */
 	public function setTemplate( $template ) {
@@ -183,8 +155,6 @@ class SMQueryHandler {
 	}
 
 	/**
-	 * @since 3.2
-	 *
 	 * @param string $userParam
 	 */
 	public function setUserParam( $userParam ) {
@@ -193,8 +163,6 @@ class SMQueryHandler {
 
 	/**
 	 * Sets the global icon.
-	 *
-	 * @since 1.0
 	 *
 	 * @param string $icon
 	 */
@@ -205,8 +173,6 @@ class SMQueryHandler {
 	/**
 	 * Sets the global title.
 	 *
-	 * @since 1.0
-	 *
 	 * @param string $title
 	 */
 	public function setTitle( $title ) {
@@ -215,8 +181,6 @@ class SMQueryHandler {
 
 	/**
 	 * Sets the global text.
-	 *
-	 * @since 1.0
 	 *
 	 * @param string $text
 	 */
@@ -227,8 +191,6 @@ class SMQueryHandler {
 	/**
 	 * Sets the subject separator.
 	 *
-	 * @since 1.0
-	 *
 	 * @param string $subjectSeparator
 	 */
 	public function setSubjectSeparator( $subjectSeparator ) {
@@ -237,8 +199,6 @@ class SMQueryHandler {
 
 	/**
 	 * Sets if the subject should be made bold in the text.
-	 *
-	 * @since 1.0
 	 *
 	 * @param string $boldSubject
 	 */
@@ -249,8 +209,6 @@ class SMQueryHandler {
 	/**
 	 * Sets if the subject should shown in the text.
 	 *
-	 * @since 1.0
-	 *
 	 * @param string $showSubject
 	 */
 	public function setShowSubject( $showSubject ) {
@@ -260,8 +218,6 @@ class SMQueryHandler {
 	/**
 	 * Sets the text for the link to the page when separate from the title.
 	 *
-	 * @since 1.0
-	 *
 	 * @param string $text
 	 */
 	public function setPageLinkText( $text ) {
@@ -269,8 +225,6 @@ class SMQueryHandler {
 	}
 
 	/**
-	 *
-	 * @since 2.0.1
 	 *
 	 * @param boolean $link
 	 */
@@ -280,8 +234,6 @@ class SMQueryHandler {
 
 	/**
 	 *
-	 * @since 2.0.1
-	 *
 	 * @param boolean $headers
 	 */
 	public function setHeaderStyle ( $headers ) {
@@ -289,8 +241,6 @@ class SMQueryHandler {
 	}
 
 	/**
-	 * @since 2.0
-	 *
 	 * @return array
 	 */
 	public function getShapes() {
@@ -309,8 +259,6 @@ class SMQueryHandler {
 
 	/**
 	 * Returns the locations found in the provided result row.
-	 *
-	 * @since 0.7.3
 	 *
 	 * @param SMWResultArray[] $row
 	 */
@@ -381,8 +329,6 @@ class SMQueryHandler {
 	 * Handles a SMWWikiPageValue subject value.
 	 * Gets the plain text title and creates the HTML text with headers and the like.
 	 *
-	 * @since 1.0
-	 *
 	 * @param SMWWikiPageValue $object
 	 *
 	 * @return array with title and text
@@ -436,8 +382,6 @@ class SMQueryHandler {
 
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
-	 *
-	 * @since 1.0
 	 *
 	 * @param SMWDataValue $object
 	 * @param SMWPrintRequest $printRequest
@@ -522,8 +466,6 @@ class SMQueryHandler {
 	/**
 	 * Builds a set of locations with the provided title, text and icon.
 	 *
-	 * @since 1.0
-	 *
 	 * @param Location[] $locations
 	 * @param string $text
 	 * @param string $icon
@@ -574,8 +516,6 @@ class SMQueryHandler {
 
 	/**
 	 * Get the icon for a row.
-	 *
-	 * @since 0.7.3
 	 *
 	 * @param array $row
 	 *
