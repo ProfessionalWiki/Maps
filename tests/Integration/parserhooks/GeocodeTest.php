@@ -2,6 +2,7 @@
 
 namespace Maps\Test;
 
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 
 /**
@@ -48,7 +49,7 @@ class GeocodeTest extends ParserHookTest {
 		];
 
 		$expected = [
-			'location' => new Location( new \DataValues\LatLongValue( 4, 2 ) ),
+			'location' => new Location( new LatLongValue( 4, 2 ) ),
 			'allowcoordinates' => true,
 		];
 

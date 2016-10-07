@@ -2,6 +2,7 @@
 
 namespace Maps\Test;
 
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 
 /**
@@ -68,7 +69,7 @@ class DisplayMapTest extends ParserHookTest {
 		];
 
 		$expected = [
-			'coordinates' => [ new Location( new \DataValues\LatLongValue( 4, 2 ) ) ],
+			'coordinates' => [ new Location( new LatLongValue( 4, 2 ) ) ],
 			'width' => '420px',
 			'height' => '420px',
 			'mappingservice' => 'openlayers',
