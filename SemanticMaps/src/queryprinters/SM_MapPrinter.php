@@ -57,8 +57,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	/**
 	 * Returns an array containing the parameter info.
 	 * 
-	 * @since 1.0
-	 * 
 	 * @return array
 	 */
 	private function getParameterInfo() {
@@ -202,8 +200,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	/**
 	 * Returns the HTML to display the map.
 	 *
-	 * @since 1.1
-	 *
 	 * @param array $params
 	 * @param Parser $parser
 	 * @param string $mapName
@@ -230,8 +226,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	/**
 	 * Returns a PHP object to encode to JSON with the map data.
 	 *
-	 * @since 1.1
-	 *
 	 * @param array $params
 	 * @param Parser $parser
 	 *
@@ -244,8 +238,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	/**
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
-	 * 
-	 * @since 1.0
 	 * 
 	 * @param array &$params
 	 * @param SMQueryHandler $queryHandler

@@ -6,8 +6,6 @@
  * of Polygons to concrete structures.
  * Also acts as a factory class for polygons
  *
- * @since 2.1
- *
  * @file SM_PolygonHandler.php
  *
  * @author Nischay Nahata
@@ -17,16 +15,12 @@ class PolygonHandler {
 	/**
 	 * The string used to store this value as a string in SMW.
 	 *
-	 * @since 2.1
-	 *
 	 * @var string
 	 */
 	protected $text;
 
 	/**
 	 * The string used to store this value as an object.
-	 *
-	 * @since 2.1
 	 *
 	 * @var object or null
 	 */
@@ -35,16 +29,12 @@ class PolygonHandler {
 	/**
 	 * The array of error messages occurred in parsing.
 	 *
-	 * @since 2.1
-	 *
 	 * @var array
 	 */
 	protected $errors = [];
 
 	/**
 	 * Array of classes used to validate different Geographic shapes.
-	 *
-	 * @since 2.1
 	 *
 	 * @var array
 	 */
@@ -58,8 +48,6 @@ class PolygonHandler {
 
 	/**
 	 * Array of classes of different Geographic shapes.
-	 *
-	 * @since 2.1
 	 *
 	 * @var array
 	 */
@@ -75,8 +63,6 @@ class PolygonHandler {
 	 * NOTE: These need to be changed as Manipulations are depreceated.
 	 * Array of classes for param handling of different Geographic shapes.
 	 *
-	 * @since 2.1
-	 *
 	 * @var array
 	 */
 	protected $paramClasses = [
@@ -89,8 +75,6 @@ class PolygonHandler {
 
 	/**
 	 * Constructor.
-	 *
-	 * @since 2.1
 	 *
 	 * @param string $text
 	 */

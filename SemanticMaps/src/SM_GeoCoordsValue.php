@@ -9,7 +9,7 @@ use ValueParsers\ParseException;
  * Implementation of datavalues that are geographic coordinates.
  * 
  * @since 0.6
- * 
+ *
  * @file SM_GeoCoordsValue.php
  * @ingroup SemanticMaps
  * @ingroup SMWDataValues
@@ -24,8 +24,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::setDataItem
-	 * 
-	 * @since 1.0
 	 * 
 	 * @param SMWDataItem $dataItem
 	 * 
@@ -46,8 +44,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	}
 
 	/**
-	 * @since 3.0
-	 *
 	 * @param SMWDIGeoCoord $dataItem
 	 * @param string|null $format
 	 *
@@ -75,8 +71,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	/**
 	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
 	 * comparators between all values.
-	 * 
-	 * @since 0.6
 	 * 
 	 * @param string $value
 	 * 
@@ -258,8 +252,6 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * $2: The location in directional DMS notation.
 	 * $3: The latitude in non-directional float notation.
 	 * $4 The longitude in non-directional float notation.
-	 * 
-	 * @since 0.6.4
 	 * 
 	 * @return array
 	 */

@@ -3,12 +3,6 @@
 use SMW\DataTypeRegistry;
 
 /**
- * Static class for hooks handled by the Semantic Maps extension.
- *
- * @since 0.7
- *
- * @ingroup SemanticMaps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

@@ -6,8 +6,6 @@ use SMW\FileExportPrinter;
 /**
  * SMWResultPrinter class for printing a query result as KML.
  *
- * @since 0.7.3
- *
  * @file SM_KMLPrinter.php
  * @ingroup SemanticMaps
  *
@@ -18,8 +16,6 @@ class SMKMLPrinter extends FileExportPrinter {
 
 	/**
 	 * Handler of the print request.
-	 *
-	 * @since 0.7.3
 	 *
 	 * @param SMWQueryResult $res
 	 * @param $outputmode
@@ -38,8 +34,6 @@ class SMKMLPrinter extends FileExportPrinter {
 	/**
 	 * @see SMWResultPrinter::handleParameters
 	 *
-	 * @since 1.0
-	 *
 	 * @param array $params
 	 * @param $outputmode
 	 */
@@ -49,8 +43,6 @@ class SMKMLPrinter extends FileExportPrinter {
 
 	/**
 	 * @see SMWResultPrinter::getParamDefinitions
-	 *
-	 * @since 3.0
 	 *
 	 * @param ParamDefinition[] $definitions
 	 *
@@ -88,8 +80,6 @@ class SMKMLPrinter extends FileExportPrinter {
 	/**
 	 * Returns the KML for the query result.
 	 *
-	 * @since 0.7.3
-	 *
 	 * @param SMWQueryResult $res
 	 * @param integer $outputmode
 	 *
@@ -111,8 +101,6 @@ class SMKMLPrinter extends FileExportPrinter {
 
 	/**
 	 * Returns a link (HTML) pointing to a query that returns the actual KML file.
-	 *
-	 * @since 0.7.3
 	 *
 	 * @param SMWQueryResult $res
 	 * @param integer $outputmode
@@ -157,8 +145,6 @@ class SMKMLPrinter extends FileExportPrinter {
 	/**
 	 * @see SMWIExportPrinter::getMimeType
 	 *
-	 * @since 2.0
-	 *
 	 * @param SMWQueryResult $queryResult
 	 *
 	 * @return string
@@ -169,8 +155,6 @@ class SMKMLPrinter extends FileExportPrinter {
 
 	/**
 	 * @see SMWIExportPrinter::getFileName
-	 *
-	 * @since 2.0
 	 *
 	 * @param SMWQueryResult $queryResult
 	 *

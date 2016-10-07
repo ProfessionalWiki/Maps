@@ -107,8 +107,6 @@ class FormInputsSetup {
 	 * Calls the relevant form Editor input class depending on the provided service.
 	 * NOTE: Currently only GoogleMaps is supported
 	 *
-	 * @since 2.0
-	 *
 	 * @param string $coordinates
 	 * @param string $input_name
 	 * @param boolean $is_mandatory
