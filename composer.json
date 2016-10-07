@@ -38,6 +38,9 @@
 		"jeroen/file-fetcher": "~3.1",
 		"jeroen/simple-cache": "~2.0"
 	},
+	"conflict": {
+		"mediawiki/semantic-media-wiki": "<2.0 || >=3.0"
+	},
 	"require-dev": {
 		"data-values/common": "~0.3.1",
 		"phpunit/phpunit": "~3.7"
@@ -69,6 +72,9 @@
 		"branch-alias": {
 			"dev-master": "4.0.x-dev"
 		}
+	},
+	"replace": {
+		"mediawiki/semantic-maps": "*"
 	},
 	"suggest": {
 		"mediawiki/semantic-media-wiki": "Add, edit, aggregate and visualize structured coordinate data stored with Semantic MediaWiki",
