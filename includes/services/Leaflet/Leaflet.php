@@ -19,10 +19,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgHooks, $wgResourceModules;
-
-	// Specify the function that will initialize the parser function.
-	$wgHooks['MappingServiceLoad'][] = 'efMapsInitLeaflet';
+	global $wgResourceModules;
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
@@ -91,18 +88,3 @@ call_user_func( function() {
 		],
 	];
 } );
-
-/**
- * Initialization function for the Leaflet service.
- *
- * @ingroup Leaflet
- *
- * @return boolean true
- */
-function efMapsInitLeaflet() {
-	MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
-	$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
-	$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
-
-	return true;
-}
