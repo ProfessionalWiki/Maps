@@ -10,9 +10,14 @@
  * @author Jeroen De Dauw
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
+
+// This allows disabling the extension even when it is installed. Can be useful on wiki farms.
+// CAUTION: extensions that depend on Maps will likely either break of disable themselves.
+$GLOBALS['egMapsDisableExtension'] = false;
+
+// This allows disabling the Semantic MediaWiki integration.
+$GLOBALS['egMapsDisableSmwIntegration'] = false;
+
 
 // Mapping services configuration
 

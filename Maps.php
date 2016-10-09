@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Initialization file for the Maps extension.
  *
@@ -22,36 +23,58 @@ use Maps\RectangleParser;
 use Maps\ServiceParam;
 use Maps\WmsOverlayParser;
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
-if ( defined( 'Maps_VERSION' ) ) {
+if ( defined( 'Maps_COORDS_FLOAT' ) ) {
 	// Do not initialize more than once.
 	return 1;
 }
 
-define( 'Maps_VERSION' , '4.0-alpha' );
-define( 'SM_VERSION', Maps_VERSION );
+// The different coordinate notations.
+define( 'Maps_COORDS_FLOAT' , 'float' );
+define( 'Maps_COORDS_DMS' , 'dms' );
+define( 'Maps_COORDS_DM' , 'dm' );
+define( 'Maps_COORDS_DD' , 'dd' );
+
+require_once __DIR__ . '/Maps_Settings.php';
 
 // Include the composer autoloader if it is present.
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	include_once( __DIR__ . '/vendor/autoload.php' );
 }
 
-// Only initialize the extension when all dependencies are present.
-if ( !defined( 'Validator_VERSION' ) ) {
-	throw new Exception( 'You need to have Validator installed in order to use Maps' );
-}
+$GLOBALS['wgExtensionFunctions'][] = function () {
+	if ( $GLOBALS['egMapsDisableExtension'] ) {
+		return true;
+	}
 
-if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
-	throw new Exception(
-		'This version of Maps requires MediaWiki 1.23 or above; use Maps 3.5.x for older versions.'
-		. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
-	);
-}
+	if ( defined( 'Maps_VERSION' ) ) {
+		// Do not initialize more than once.
+		return true;
+	}
 
-call_user_func( function() {
+	// Only initialize the extension when all dependencies are present.
+	if ( !defined( 'Validator_VERSION' ) ) {
+		throw new Exception( 'You need to have Validator installed in order to use Maps' );
+	}
+
+	if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
+		throw new Exception(
+			'This version of Maps requires MediaWiki 1.23 or above; use Maps 3.5.x for older versions.'
+			. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
+		);
+	}
+
+	define( 'Maps_VERSION' , '4.0-alpha' );
+	define( 'SM_VERSION', Maps_VERSION );
+
+	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
+		$GLOBALS['egMapsGMaps3Language'] = $GLOBALS['wgLang'];
+	}
+
+	if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
+		$GLOBALS['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';
+		$GLOBALS['wgSpecialPageGroups']['MapEditor'] = 'maps';
+	}
+
 	$GLOBALS['wgExtensionCredits']['parserhook'][] = [
 		'path' => __FILE__ ,
 		'name' => 'Maps' ,
@@ -65,12 +88,6 @@ call_user_func( function() {
 		'license-name' => 'GPL-2.0+'
 	];
 
-	// The different coordinate notations.
-	define( 'Maps_COORDS_FLOAT' , 'float' );
-	define( 'Maps_COORDS_DMS' , 'dms' );
-	define( 'Maps_COORDS_DM' , 'dm' );
-	define( 'Maps_COORDS_DD' , 'dd' );
-
 	$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
 
 	// Internationalization
@@ -82,23 +99,7 @@ call_user_func( function() {
 
 	$GLOBALS['wgAPIModules']['geocode'] = 'Maps\Api\Geocode';
 
-	// Register the initialization function of Maps.
-	$GLOBALS['wgExtensionFunctions'][] = function () {
 
-		if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
-			$GLOBALS['egMapsGMaps3Language'] = $GLOBALS['wgLang'];
-		}
-
-		Hooks::run( 'MappingServiceLoad' );
-		Hooks::run( 'MappingFeatureLoad' );
-
-		if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
-			$GLOBALS['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';
-			$GLOBALS['wgSpecialPageGroups']['MapEditor'] = 'maps';
-		}
-
-		return true;
-	};
 
 	$GLOBALS['wgHooks']['AdminLinks'][]                = 'MapsHooks::addToAdminLinks';
 	$GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
@@ -161,25 +162,38 @@ call_user_func( function() {
 		return true;
 	};
 
-	// Mapping services
 
-	// Include the mapping services that should be loaded into Maps.
-	// Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
 
 	// Google Maps API v3
-	// TODO: improve loading mechanism
 	include_once __DIR__ . '/includes/services/GoogleMaps3/GoogleMaps3.php';
 
+	MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
+
+	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+	$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+
+
+
 	// OpenLayers API
-	// TODO: improve loading mechanism
 	include_once __DIR__ . '/includes/services/OpenLayers/OpenLayers.php';
 
+	MapsMappingServices::registerService(
+		'openlayers',
+		MapsOpenLayers::class,
+		[ 'display_map' => MapsDisplayMapRenderer::class ]
+	);
+
+
+
 	// Leaflet API
-	// TODO: improve loading mechanism
 	include_once __DIR__ . '/includes/services/Leaflet/Leaflet.php';
 
+	MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
+	$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
+	$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
 
-	require_once __DIR__ . '/Maps_Settings.php';
+
+
 
 	$GLOBALS['wgAvailableRights'][] = 'geocode';
 
@@ -230,10 +244,12 @@ call_user_func( function() {
 		'string-parser' => ImageOverlayParser::class,
 	];
 
-	if ( defined( 'SMW_VERSION' ) ) { // TODO: add setting to disable auto-enabling of SM features
+	if ( !$GLOBALS['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' ) ) {
 		SemanticMaps::newFromMediaWikiGlobals( $GLOBALS )->initExtension();
 	}
-} );
+
+	return true;
+};
 
 class SemanticMaps {
 
@@ -270,10 +286,8 @@ class SemanticMaps {
 
 		$this->mwGlobals['smwgResultFormats']['kml'] = SMKMLPrinter::class;
 
-		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			$this->mwGlobals['smwgResultAliases'][$this->mwGlobals['egMapsDefaultServices']['qp']][] = 'map';
-			SMMapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultServices']['qp'] );
-		};
+		$this->mwGlobals['smwgResultAliases'][$this->mwGlobals['egMapsDefaultServices']['qp']][] = 'map';
+		SMMapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultServices']['qp'] );
 
 		// Internationalization
 		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
@@ -349,18 +363,16 @@ class SemanticMaps {
 				]
 			];
 
-		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			/* @var MapsMappingService $googleMaps */
-			$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-			$googleMaps->addResourceModules( array( 'ext.sm.fi.googlemaps3ajax' ) );
+		/* @var MapsMappingService $googleMaps */
+		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+		$googleMaps->addResourceModules( array( 'ext.sm.fi.googlemaps3ajax' ) );
 
-			$googleMaps->addFeature( 'fi', SMGoogleMaps3FormInput::class );
+		$googleMaps->addFeature( 'fi', SMGoogleMaps3FormInput::class );
 
-			SMMapPrinter::registerService( $googleMaps );
+		SMMapPrinter::registerService( $googleMaps );
 
-			$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = SMMapPrinter::class;
-			$this->mwGlobals['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
-		};
+		$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = SMMapPrinter::class;
+		$this->mwGlobals['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
 	}
 
 	private function registerLeaflet() {
@@ -377,16 +389,14 @@ class SemanticMaps {
 			]
 		];
 
-		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			/* @var MapsMappingService $leaflet */
-			$leaflet = MapsMappingServices::getServiceInstance( 'leaflet' );
-			$leaflet->addResourceModules( array( 'ext.sm.fi.leafletajax' ) );
+		/* @var MapsMappingService $leaflet */
+		$leaflet = MapsMappingServices::getServiceInstance( 'leaflet' );
+		$leaflet->addResourceModules( array( 'ext.sm.fi.leafletajax' ) );
 
-			SMMapPrinter::registerService( $leaflet );
+		SMMapPrinter::registerService( $leaflet );
 
-			$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = SMMapPrinter::class;
-			$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
-		};
+		$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = SMMapPrinter::class;
+		$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
 	}
 
 	private function registerOpenLayers() {
@@ -403,16 +413,14 @@ class SemanticMaps {
 			]
 		];
 
-		$this->mwGlobals['wgHooks']['MappingServiceLoad'][] = function() {
-			/* @var MapsMappingService $openLayers */
-			$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
-			$openLayers->addResourceModules( array( 'ext.sm.fi.openlayersajax' ) );
+		/* @var MapsMappingService $openLayers */
+		$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
+		$openLayers->addResourceModules( array( 'ext.sm.fi.openlayersajax' ) );
 
-			SMMapPrinter::registerService( $openLayers );
+		SMMapPrinter::registerService( $openLayers );
 
-			$this->mwGlobals['smwgResultFormats'][$openLayers->getName()] = SMMapPrinter::class;
-			$this->mwGlobals['smwgResultAliases'][$openLayers->getName()] = $openLayers->getAliases();
-		};
+		$this->mwGlobals['smwgResultFormats'][$openLayers->getName()] = SMMapPrinter::class;
+		$this->mwGlobals['smwgResultAliases'][$openLayers->getName()] = $openLayers->getAliases();
 	}
 
 	/**

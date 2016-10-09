@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgResourceModules, $wgHooks;
+	global $wgResourceModules;
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
@@ -100,24 +100,4 @@ call_user_func( function() {
 			'googleearth-compiled.js',
 		],
 	];
-
-	$wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
 } );
-
-/**
- * Initialization function for the Google Maps v3 service.
- *
- * @since 0.6.3
- * @ingroup MapsGoogleMaps3
- *
- * @return boolean true
- */
-function efMapsInitGoogleMaps3() {
-	MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
-
-	// TODO: kill below code
-	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-	$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
-
-	return true;
-}
