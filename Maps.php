@@ -41,6 +41,12 @@ if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	include_once( __DIR__ . '/vendor/autoload.php' );
 }
 
+// Internationalization
+$GLOBALS['wgMessagesDirs']['Maps'] = __DIR__ . '/i18n';
+$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] = __DIR__ . '/Maps.i18n.magic.php';
+$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] = __DIR__ . '/Maps.i18n.alias.php';
+
+
 $GLOBALS['wgExtensionFunctions'][] = function () {
 	if ( $GLOBALS['egMapsDisableExtension'] ) {
 		return true;
@@ -89,11 +95,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	];
 
 	$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
-
-	// Internationalization
-	$GLOBALS['wgMessagesDirs']['Maps'] = __DIR__ . '/i18n';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] = __DIR__ . '/Maps.i18n.magic.php';
-	$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] = __DIR__ . '/Maps.i18n.alias.php';
 
 	$GLOBALS['wgResourceModules'] = array_merge( $GLOBALS['wgResourceModules'], include 'Maps.resources.php' );
 
