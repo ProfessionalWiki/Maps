@@ -8,6 +8,7 @@ Development version
     * Added a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
     * Added a [result format](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) for each mapping service
     * Added a Google Maps form input that is available when Semantic Forms is installed
+* Added `egMapsDisableExtension` setting that allows disabling the extension even when it is installed
 
 ## Maps 3.8.2
 
