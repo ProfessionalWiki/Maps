@@ -226,5 +226,15 @@
 	"semanticmaps-kml-linkabsolute": "Should links be absolute (as opposed to relative)",
 	"semanticmaps-kml-pagelinktext": "The text to use for the links to the page, in which $1 will be replaced by the page title",
 	"semanticmaps-shapes-improperformat": "Improper formatting of $1. Please see documentation for formatting",
-	"semanticmaps-shapes-missingshape": "No shapes found for $1. Please see documentation for available shapes"
+	"semanticmaps-shapes-missingshape": "No shapes found for $1. Please see documentation for available shapes",
+	"validator-type-mapscircle": "Geographical circle",
+	"validator-type-mapscircle-list": "List of circles",
+	"validator-type-mapsimageoverlay": "Image overlay",
+	"validator-type-mapsimageoverlay-list": "List of image overlays",
+	"validator-type-mapsline": "Geographical line",
+	"validator-type-mapsline-list": "List of lines",
+	"validator-type-mapslocation": "Geographical location",
+	"validator-type-mapslocation-list": "List of locations",
+	"validator-type-mapsrectangle": "Geographical rectangle",
+	"validator-type-mapsrectangle-list": "List of rectangles"
 }
