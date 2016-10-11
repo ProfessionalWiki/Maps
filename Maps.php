@@ -277,8 +277,6 @@ class SemanticMaps {
 		// Hook for adding a Semantic Maps links to the Admin Links extension.
 		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
 
-		$this->mwGlobals['wgHooks']['sfFormPrinterSetup'][] = 'SemanticMaps\FormInputsSetup::run';
-
 		$this->registerResourceModules();
 
 		$this->registerGoogleMaps();
@@ -299,23 +297,6 @@ class SemanticMaps {
 			'position' => 'bottom',
 			'group' => 'ext.semanticmaps',
 		];
-
-		$this->mwGlobals['wgResourceModules']['ext.sm.forminputs'] = $moduleTemplate + [
-				'dependencies' => [ 'ext.maps.coord' ],
-				'localBasePath' => __DIR__ . '/SemanticMaps/src/forminputs',
-				'remoteExtPath' => 'Maps/SemanticMaps/src/forminputs',
-				'scripts' => [
-					'jquery.mapforminput.js'
-				],
-				'messages' => [
-					'semanticmaps_enteraddresshere',
-					'semanticmaps-updatemap',
-					'semanticmaps_lookupcoordinates',
-					'semanticmaps-forminput-remove',
-					'semanticmaps-forminput-add',
-					'semanticmaps-forminput-locations'
-				]
-			];
 
 		$this->mwGlobals['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
 				'localBasePath' => __DIR__ . '/SemanticMaps/src',
@@ -355,7 +336,6 @@ class SemanticMaps {
 		$this->mwGlobals['wgResourceModules']['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + [
 				'dependencies' => [
 					'ext.maps.googlemaps3',
-					'ext.sm.forminputs',
 				],
 				'scripts' => [
 					'jquery.googlemapsinput.js',
@@ -367,8 +347,6 @@ class SemanticMaps {
 		/* @var MapsMappingService $googleMaps */
 		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
 		$googleMaps->addResourceModules( array( 'ext.sm.fi.googlemaps3ajax' ) );
-
-		$googleMaps->addFeature( 'fi', SMGoogleMaps3FormInput::class );
 
 		SMMapPrinter::registerService( $googleMaps );
 
