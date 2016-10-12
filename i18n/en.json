@@ -154,6 +154,7 @@
 	"maps-googlemaps3-par-clustergridsize": "The grid size of a cluster in pixels.",
 	"maps-par-clustermaxzoom": "The maximum zoom level where clusters may exist.",
 	"maps-par-clusterzoomonclick": "Whether the default behaviour of clicking on a cluster is to zoom into it.",
+	"maps-par-maxclusterradius": "The maximum radius that a cluster will cover.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Whether the center of each cluster should be the average of all markers in the cluster.",
 	"maps-googlemaps3-par-clusterminsize": "The minimum number of markers to be in a cluster before the markers are hidden and a count is shown.",
 	"maps-openlayers-par-controls": "The controls to place on the map.",
