@@ -32,7 +32,7 @@ $GLOBALS['egMapsDisableSmwIntegration'] = false;
 	// service is present in the $GLOBALS['egMapsDefaultServices'] array for a certain feature.
 	// A service that supports all features is recommended. This service needs to be
 	// enabled, if not, the first one from the available services will be taken.
-	$GLOBALS['egMapsDefaultService'] = 'googlemaps3';
+	$GLOBALS['egMapsDefaultService'] = 'leaflet';
 
 	// Array of String. The default mapping service for each feature, which will be
 	// used when no valid service is provided by the user. Each service needs to be
