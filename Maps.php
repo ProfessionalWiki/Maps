@@ -166,6 +166,10 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 
 
 	// Google Maps API v3
+	if ( $GLOBALS['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $GLOBALS ) ) {
+		$GLOBALS['egMapsGMaps3ApiKey'] = $GLOBALS['egGoogleJsApiKey'];
+	}
+
 	include_once __DIR__ . '/includes/services/GoogleMaps3/GoogleMaps3.php';
 
 	MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );

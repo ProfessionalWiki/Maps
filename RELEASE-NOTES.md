@@ -9,6 +9,7 @@ Development version
     * Added a [result format](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) for each mapping service
     * Added a Google Maps form input that is available when Semantic Forms is installed
 * Added `egMapsDisableExtension` setting that allows disabling the extension even when it is installed
+* The `egGoogleJsApiKey` setting from Maps 2.x will now be used as Google API key when `egMapsGMaps3ApiKey` is not set
 
 ## Maps 3.8.2
 
