@@ -13,8 +13,7 @@
 			"아라",
 			"Liuxinyu970226",
 			"Nike",
-			"Lloffiwr",
-			"Raymond"
+			"Lloffiwr"
 		]
 	},
 	"maps-desc": "{{desc|name=Maps|url=https://www.semantic-mediawiki.org/wiki/Extension:Maps}}",
@@ -212,15 +211,15 @@
 	"semanticmaps-kml-link": "This is the label of a link.",
 	"semanticmaps-kml": "{{optional}}",
 	"semanticmaps-default-kml-pagelink": "Used as default value for \"pagelinktext\" input box.\nSee example: [{{canonicalurl:Special:Ask|format=kml}} Special:Ask]\n\n<code>$1</code> is not a parameter (appears as is), but it will be replaced by the page title.\n\nSee also:\n* {{msg-mw|Semanticmaps-kml-pagelinktext}}\n{{Identical|View page}}",
-	"semanticmaps-latitude": "Parameters:\n* $1 - latitude\nSee also:\n* {{msg-mw|Semanticmaps-longitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Latitude}}",
-	"semanticmaps-longitude": "Parameters:\n* $1 - longitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Longitude}}",
-	"semanticmaps-altitude": "Parameters:\n* $1 - altitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-longitude}}",
 	"semanticmaps-loading-forminput": "Message displayed during a computer action",
 	"semanticmaps_lookupcoordinates": "Submit button next to input box.\n\nThe box contains the hint {{msg-mw|Semanticmaps enteraddresshere}}.",
 	"semanticmaps_enteraddresshere": "Hint provided in an input box.\n\nThe submit button next to the input box is {{msg-mw|Semanticmaps lookupcoordinates}}.",
 	"semanticmaps-updatemap": "This is a button label.",
 	"semanticmaps-forminput-remove": "This is a button label.\n\n{{Identical|Remove}}",
 	"semanticmaps-forminput-add": "This is a button label.\n\n{{Identical|Add}}",
+	"semanticmaps-latitude": "Parameters:\n* $1 - latitude\nSee also:\n* {{msg-mw|Semanticmaps-longitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Latitude}}",
+	"semanticmaps-longitude": "Parameters:\n* $1 - longitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-altitude}}\n{{Identical|Longitude}}",
+	"semanticmaps-altitude": "Parameters:\n* $1 - altitude\nSee also:\n* {{msg-mw|Semanticmaps-latitude}}\n* {{msg-mw|Semanticmaps-longitude}}",
 	"semanticmaps-forminput-locations": "This is a button label.\n\n{{Identical|Location}}",
 	"semanticmaps-par-staticlocations": "{{doc-paramdesc|staticlocations}}",
 	"semanticmaps-par-showtitle": "{{doc-paramdesc|showtitle}}",

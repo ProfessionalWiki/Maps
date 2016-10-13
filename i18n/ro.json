@@ -91,5 +91,11 @@
 	"mapeditor-imageoverlay-button": "Adaugă suprapunerea de imagine",
 	"mapeditor-form-field-image": "Imagine",
 	"mapeditor-imageoverlay-title": "Detalii suprapunere imagine",
-	"mapeditor-form-field-visitedicon": "Pictogramă vizitată"
+	"mapeditor-form-field-visitedicon": "Pictogramă vizitată",
+	"semanticmaps-desc": "Permite vizualizarea și modificarea datelor despre coordonate stocate cu extensia Semantic MediaWiki ([https://www.semantic-mediawiki.org/wiki/Semantic_Maps mai multe informații...]).",
+	"semanticmaps_enteraddresshere": "Introduceți adresa aici",
+	"semanticmaps-updatemap": "Actualizează harta",
+	"semanticmaps-forminput-remove": "Eliminare",
+	"semanticmaps-forminput-add": "Adăugare",
+	"semanticmaps-forminput-locations": "Locuri"
 }

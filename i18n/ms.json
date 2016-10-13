@@ -165,5 +165,9 @@
 	"mapeditor-imageoverlay-button": "Tambah tindihan imej",
 	"mapeditor-form-field-image": "Imej",
 	"mapeditor-imageoverlay-title": "Butiran tindihan imej",
-	"mapeditor-form-field-visitedicon": "Ikon dikunjungi"
+	"mapeditor-form-field-visitedicon": "Ikon dikunjungi",
+	"semanticmaps-desc": "Menyediakan kebolehan untuk melihat dan menyunting data koordinat yang disimpan dengan sambungan [https://www.semantic-mediawiki.org Semantic MediaWiki]",
+	"semanticmaps-forminput-remove": "Buang",
+	"semanticmaps-forminput-add": "Tambahkan",
+	"semanticmaps-forminput-locations": "Lokasi"
 }
