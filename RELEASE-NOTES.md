@@ -4,10 +4,10 @@ These are the release notes for the [Maps extension](README.md).
 
 Development version
 
-* Merged in the features of the Semantic Maps extension. They will be enabled automatically when SMW is installed.
+* Merged in most of the features of the Semantic Maps extension. These are enabled automatically when SMW is installed.
     * Added a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
     * Added a [result format](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) for each mapping service
-    * Added a Google Maps form input that is available when Semantic Forms is installed
+    * (The Google Maps form input for Semantic Forms was not added in, since Semantic Forms now defines its own Google Maps input)
 * Added `egMapsDisableExtension` setting that allows disabling the extension even when it is installed
 
 ## Maps 3.8.2
