@@ -196,7 +196,6 @@
 	"mapeditor-form-field-image": "Image",
 	"mapeditor-imageoverlay-title": "Image overlay details",
 	"mapeditor-form-field-visitedicon": "Visited icon",
-	"semanticmaps-desc": "Provides the ability to view and edit coordinate data stored with the [https://www.semantic-mediawiki.org Semantic MediaWiki] extension",
 	"semanticmaps-unrecognizeddistance": "The value $1 is not a valid distance.",
 	"semanticmaps-kml-link": "View the KML file",
 	"semanticmaps-kml": "KML",
@@ -231,5 +230,6 @@
 	"validator-type-mapslocation": "Geographical location",
 	"validator-type-mapslocation-list": "List of locations",
 	"validator-type-mapsrectangle": "Geographical rectangle",
-	"validator-type-mapsrectangle-list": "List of rectangles"
+	"validator-type-mapsrectangle-list": "List of rectangles",
+	"validator-type-wmsoverlay": "Web Map Service overlay"
 }
