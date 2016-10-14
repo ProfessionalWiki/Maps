@@ -165,6 +165,7 @@
 	"maps-googlemaps3-par-clustergridsize": "{{maps-par|googlemaps3|clustergridsize}}",
 	"maps-par-clustermaxzoom": "{{maps-par|googlemaps3|clustermaxzoom}}",
 	"maps-par-clusterzoomonclick": "{{maps-par|googlemaps3|clusterzoomonclick}}",
+	"maps-par-maxclusterradius": "{{maps-par|googlemaps3|clustermaxradius}}",
 	"maps-googlemaps3-par-clusteraveragecenter": "{{maps-par|googlemaps3|clusteraveragecenter}}",
 	"maps-googlemaps3-par-clusterminsize": "{{maps-par|googlemaps3|clusterminsize}}",
 	"maps-openlayers-par-controls": "{{maps-par-all|controls}}",
