@@ -12,7 +12,6 @@ Features:
     * Query your stored coordinates and visualize them on dynamic maps, as tables or as lists
     * Export your coordinates as KML or RDF
     * Combine coordinates with other structured data stored in your wiki
-* Integration with [Semantic Forms](https://www.mediawiki.org/wiki/Extension:Semantic_Forms): modify templates with coordinates via forms
 * Coordinate formatting and format conversion via the `#coordinates` parser function.
 * Geocoding via several supported services with the `#geocode` parser function.
 * Geospatial operations

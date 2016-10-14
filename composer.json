@@ -74,8 +74,7 @@
 		"mediawiki/semantic-maps": "*"
 	},
 	"suggest": {
-		"mediawiki/semantic-media-wiki": "Add, edit, aggregate and visualize structured coordinate data stored with Semantic MediaWiki",
-		"mediawiki/semantic-forms": "Allows entering coordinates via a form map input"
+		"mediawiki/semantic-media-wiki": "Add, edit, aggregate and visualize structured coordinate data stored with Semantic MediaWiki"
 	},
 	"config": {
 		"process-timeout": 0

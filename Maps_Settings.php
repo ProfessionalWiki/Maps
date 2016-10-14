@@ -42,7 +42,6 @@ $GLOBALS['egMapsDisableSmwIntegration'] = false;
 	$GLOBALS['egMapsDefaultServices'] = [];
 	$GLOBALS['egMapsDefaultServices']['display_map'] = $GLOBALS['egMapsDefaultService'];
 	$GLOBALS['egMapsDefaultServices']['qp'] = $GLOBALS['egMapsDefaultService'];
-	$GLOBALS['egMapsDefaultServices']['fi'] = $GLOBALS['egMapsDefaultService'];
 
 
 // Geocoding

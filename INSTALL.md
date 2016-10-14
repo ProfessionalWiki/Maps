@@ -27,7 +27,6 @@ As final step, you can verify Maps got installed by looking at the Special:Versi
 and verifying the Maps extension is listed.
 
 If you want to use the Semantic MediaWiki integration, you will also need to install Semantic MediaWiki.
-The same goes for the Semantic Forms integration.
 
 ## Configuration
 
@@ -70,7 +69,6 @@ minimum requirements are indicated in bold.
 		<th>PHP</th>
 		<th>MediaWiki</th>
 		<th>Semantic MediaWiki</th>
-		<th>Semantic Forms</th>
 		<th>Release status</th>
 	</tr>
 	<tr>
@@ -78,14 +76,12 @@ minimum requirements are indicated in bold.
 		<td>5.5 - 7.0</td>
 		<td>1.23 - 1.28</td>
 		<td>2.1 - 2.4</td>
-		<td>3.0 - 3.7</td>
 		<td>Development version</td>
 	</tr>
 	<tr>
 		<th>Maps 3.8.x</th>
 		<td>5.5 - 7.0</td>
 		<td>1.23 - 1.27</td>
-		<td>Not applicable</td>
 		<td>Not applicable</td>
 		<td>Stable release</td>
 	</tr>	
