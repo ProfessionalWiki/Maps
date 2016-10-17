@@ -172,6 +172,7 @@
 	"maps-googlemaps3-par-clustergridsize": "La taille de la grille (en pixels) d'un agrégat.",
 	"maps-par-clustermaxzoom": "Niveau maximal de zoom pour lequel des agrégats peuvent exister.",
 	"maps-par-clusterzoomonclick": "Si le comportement par défaut de cliquer sur un agrégat est de zoomer.",
+	"maps-par-maxclusterradius": "Le rayon maximal que ce groupe couvrira.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Si le centre de chaque groupe est le barycentre des marqueurs de l'agrégat.",
 	"maps-googlemaps3-par-clusterminsize": "Le nombre minimum de marqueurs dans un agrégat avant que les marqueurs ne soient cachés et qu'un compteur ne les remplace.",
 	"maps-openlayers-par-controls": "Les contrôles à placer sur la carte.",
@@ -213,16 +214,9 @@
 	"mapeditor-form-field-image": "Image",
 	"mapeditor-imageoverlay-title": "Détails de la couverture d'image",
 	"mapeditor-form-field-visitedicon": "Icône visité",
-	"semanticmaps-desc": "Permet d’afficher et de modifier les données de coordonnées stockées avec l’extension [https://www.semantic-mediawiki.org MédiaWiki Sémantique].",
 	"semanticmaps-unrecognizeddistance": "La valeur $1 n'est pas une distance valide",
 	"semanticmaps-kml-link": "Voir le fichier KML",
 	"semanticmaps-default-kml-pagelink": "Voir l’article $1",
-	"semanticmaps-loading-forminput": "Chargement du formulaire d'entrée de la carte...",
-	"semanticmaps_lookupcoordinates": "Estimer les coordonnées",
-	"semanticmaps_enteraddresshere": "Entrez ici l’adresse",
-	"semanticmaps-updatemap": "Mise à jour de la carte",
-	"semanticmaps-forminput-remove": "Enlever",
-	"semanticmaps-forminput-add": "Ajouter",
 	"semanticmaps-latitude": "Latitude : $1",
 	"semanticmaps-longitude": "Longitude : $1",
 	"semanticmaps-altitude": "Altitude : $1",
@@ -253,5 +247,6 @@
 	"validator-type-mapslocation": "Emplacement géographique",
 	"validator-type-mapslocation-list": "Liste des emplacements",
 	"validator-type-mapsrectangle": "Rectangle géographique",
-	"validator-type-mapsrectangle-list": "Liste des rectangles"
+	"validator-type-mapsrectangle-list": "Liste des rectangles",
+	"validator-type-wmsoverlay": "Surcouche de Service de Carte web"
 }

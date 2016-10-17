@@ -157,6 +157,7 @@
 	"maps-googlemaps3-par-poi": "显示感兴趣的点。",
 	"maps-googlemaps3-par-clustergridsize": "群集的网格大小（像素）。",
 	"maps-par-clustermaxzoom": "可能存在群集的最大缩放级别。",
+	"maps-par-maxclusterradius": "群集将覆盖的半径最大值。",
 	"maps-openlayers-par-controls": "要放置地图上的控件。",
 	"maps-openlayers-par-layers": "将在图层选择器中可用的图层。第一个图层将在地图加载时显示。",
 	"maps-openlayers-par-overlays": "将在图层选择器中可用的覆盖图层。这些图层将在一般图层上方显示，就像一个标记。",
@@ -196,16 +197,9 @@
 	"mapeditor-form-field-image": "图片",
 	"mapeditor-imageoverlay-title": "图像覆盖详细信息",
 	"mapeditor-form-field-visitedicon": "已浏览图标",
-	"semanticmaps-desc": "提供对采用[https://www.semantic-mediawiki.org Semantic MediaWiki]扩展所存储坐标数据的查看和编辑能力",
 	"semanticmaps-unrecognizeddistance": "取值$1不是有效的距离。",
 	"semanticmaps-kml-link": "查看KML文件",
 	"semanticmaps-default-kml-pagelink": "检视页面 $1",
-	"semanticmaps-loading-forminput": "加载地图表单输入……",
-	"semanticmaps_lookupcoordinates": "查找坐标",
-	"semanticmaps_enteraddresshere": "请在这里输入地址",
-	"semanticmaps-updatemap": "更新地图",
-	"semanticmaps-forminput-remove": "删除",
-	"semanticmaps-forminput-add": "添加",
 	"semanticmaps-latitude": "纬度：$1",
 	"semanticmaps-longitude": "经度：$1",
 	"semanticmaps-altitude": "绝对海拔高度：$1",
@@ -236,5 +230,6 @@
 	"validator-type-mapslocation": "地理位置",
 	"validator-type-mapslocation-list": "位置列表",
 	"validator-type-mapsrectangle": "地理矩形",
-	"validator-type-mapsrectangle-list": "矩形列表"
+	"validator-type-mapsrectangle-list": "矩形列表",
+	"validator-type-wmsoverlay": "网络地图服务覆盖"
 }

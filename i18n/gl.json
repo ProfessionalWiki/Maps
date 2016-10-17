@@ -189,16 +189,9 @@
 	"mapeditor-form-field-image": "Imaxe",
 	"mapeditor-imageoverlay-title": "Detalles da sobreposición da imaxe",
 	"mapeditor-form-field-visitedicon": "Icona visitada",
-	"semanticmaps-desc": "Proporciona a capacidade de ollar e modificar os datos de coordenadas gardados a través da extensión [https://www.semantic-mediawiki.org Semantic MediaWiki]",
 	"semanticmaps-unrecognizeddistance": "O valor $1 non é unha distancia válida.",
 	"semanticmaps-kml-link": "Ollar o ficheiro KML",
 	"semanticmaps-default-kml-pagelink": "Ver a páxina \"$1\"",
-	"semanticmaps-loading-forminput": "Cargando o formulario de entrada do mapa...",
-	"semanticmaps_lookupcoordinates": "Ver as coordenadas",
-	"semanticmaps_enteraddresshere": "Introduza o enderezo aquí",
-	"semanticmaps-updatemap": "Actualizar o mapa",
-	"semanticmaps-forminput-remove": "Eliminar",
-	"semanticmaps-forminput-add": "Engadir",
 	"semanticmaps-latitude": "Latitude: $1",
 	"semanticmaps-longitude": "Lonxitude: $1",
 	"semanticmaps-altitude": "Altitude: $1",
@@ -229,5 +222,6 @@
 	"validator-type-mapslocation": "Localización xeográfica",
 	"validator-type-mapslocation-list": "Lista de localizacións",
 	"validator-type-mapsrectangle": "Rectángulo xeográfico",
-	"validator-type-mapsrectangle-list": "Lista de rectángulos"
+	"validator-type-mapsrectangle-list": "Lista de rectángulos",
+	"validator-type-wmsoverlay": "Transparencia de Servizo de Mapa web"
 }

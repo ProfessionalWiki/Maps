@@ -154,6 +154,7 @@
 	"maps-googlemaps3-par-clustergridsize": "Решеткаста големина на грозд во пиксели.",
 	"maps-par-clustermaxzoom": "Најголемиот степен на приближеност при кој можат да постојат гроздови.",
 	"maps-par-clusterzoomonclick": "Дали, по основно, стискањето на грозд ќе го приближи истиот.",
+	"maps-par-maxclusterradius": "Најголемиот полупречник што може да го покрие еден грозд.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Дали средиштето на секој гроз треба да биде просек од сите обележувачи во гроздот.",
 	"maps-googlemaps3-par-clusterminsize": "Најмалиот број на обележувачи што ќе бидат во грозд пред истите да бидат скриени и да се прикаже нивната бројка.",
 	"maps-openlayers-par-controls": "Контролите што сакате да стојат на картата.",
@@ -195,16 +196,9 @@
 	"mapeditor-form-field-image": "Слика",
 	"mapeditor-imageoverlay-title": "Поединости за облога од слика",
 	"mapeditor-form-field-visitedicon": "Икона за посетено",
-	"semanticmaps-desc": "Овозможува прегледување и уредување на координатни податоци складирани со додатокот [https://www.semantic-mediawiki.org Семантички МедијаВики]",
 	"semanticmaps-unrecognizeddistance": "Вредноста $1 не претставува важечко растојание.",
 	"semanticmaps-kml-link": "Преглед на KML-податотеката",
 	"semanticmaps-default-kml-pagelink": "Преглед на статијата $1",
-	"semanticmaps-loading-forminput": "Вчитувам карти од внесеното...",
-	"semanticmaps_lookupcoordinates": "Дај координати",
-	"semanticmaps_enteraddresshere": "Внесете адреса",
-	"semanticmaps-updatemap": "Поднови карта",
-	"semanticmaps-forminput-remove": "Отстрани",
-	"semanticmaps-forminput-add": "Додај",
 	"semanticmaps-latitude": "Геог. ширина: $1",
 	"semanticmaps-longitude": "Геог. должина: $1",
 	"semanticmaps-altitude": "Надм. вис: $1",
@@ -235,5 +229,6 @@
 	"validator-type-mapslocation": "Географска месност",
 	"validator-type-mapslocation-list": "Список на месности",
 	"validator-type-mapsrectangle": "Географски правоаголник",
-	"validator-type-mapsrectangle-list": "Список на правоаголници"
+	"validator-type-mapsrectangle-list": "Список на правоаголници",
+	"validator-type-wmsoverlay": "Облога Web Map Service"
 }
