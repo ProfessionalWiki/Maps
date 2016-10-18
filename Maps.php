@@ -303,54 +303,31 @@ class SemanticMaps {
 		];
 
 		$this->mwGlobals['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
-				'localBasePath' => __DIR__ . '/SemanticMaps/src',
-				'remoteExtPath' => 'Maps/SemanticMaps/src',
-				'scripts' => [
-					'ext.sm.common.js'
-				]
-			];
+			'localBasePath' => __DIR__ . '/SemanticMaps/src',
+			'remoteExtPath' => 'Maps/SemanticMaps/src',
+			'scripts' => [
+				'ext.sm.common.js'
+			]
+		];
 	}
 
 	private function registerGoogleMaps() {
-		$moduleTemplate = [
+		$this->mwGlobals['wgResourceModules']['ext.sm.googlemaps3ajax'] = [
 			'localBasePath' => __DIR__ . '/SemanticMaps/src/services/GoogleMaps3',
 			'remoteExtPath' => 'Maps/SemanticMaps/src/services/GoogleMaps3',
 			'group' => 'ext.semanticmaps',
+			'dependencies' => [
+				'ext.maps.googlemaps3',
+				'ext.sm.common'
+			],
+			'scripts' => [
+				'ext.sm.googlemaps3ajax.js'
+			]
 		];
-
-		$this->mwGlobals['wgResourceModules']['ext.sm.fi.googlemaps3ajax'] = $moduleTemplate + [
-				'dependencies' => [
-					'ext.maps.googlemaps3',
-					'ext.sm.common'
-				],
-				'scripts' => [
-					'ext.sm.googlemaps3ajax.js'
-				]
-			];
-
-		$this->mwGlobals['wgResourceModules']['ext.sm.fi.googlemaps3'] = $moduleTemplate + [
-				'dependencies' => [
-					'ext.sm.fi.googlemaps3.single',
-				],
-				'scripts' => [
-					'ext.sm.googlemapsinput.js',
-				],
-			];
-
-		$this->mwGlobals['wgResourceModules']['ext.sm.fi.googlemaps3.single'] = $moduleTemplate + [
-				'dependencies' => [
-					'ext.maps.googlemaps3',
-				],
-				'scripts' => [
-					'jquery.googlemapsinput.js',
-				],
-				'messages' => [
-				]
-			];
 
 		/* @var MapsMappingService $googleMaps */
 		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-		$googleMaps->addResourceModules( array( 'ext.sm.fi.googlemaps3ajax' ) );
+		$googleMaps->addResourceModules( array( 'ext.sm.googlemaps3ajax' ) );
 
 		SMMapPrinter::registerService( $googleMaps );
 
