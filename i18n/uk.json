@@ -125,6 +125,7 @@
 	"maps-geocoder-not-available": "Функція геокодування мап недоступна. Ваше місце розташування не може бути геокодоване.",
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Дозволяє задавати масштаб карти за замовчуванням.",
+	"maps-leaflet-par-layer": "Шар, що буде показано, коли мапа завантажиться.",
 	"maps-leaflet-par-maxclusterradius": "Максимальний радіус, що буде покритий кластером від центрального маркера (в пікселях).",
 	"maps-leaflet-par-clusterspiderfy": "При клацанні на кластер при нижньому рівні масштабу ми розгортаємо його так, щоб Ви могли побачити всі його маркери.",
 	"maps_click_to_activate": "Натисність, щоб активувати мапу",
@@ -221,5 +222,13 @@
 	"semanticmaps-kml-linkabsolute": "Посилання мають бути абсолютними (на відміну від відносних)",
 	"semanticmaps-kml-pagelinktext": "Текст, який використовується для посилань на сторінку, в яких $1 буде замінено на назву сторінки",
 	"semanticmaps-shapes-improperformat": "Неправильне форматування з  $1. Будь ласка, дивіться документацію для форматування",
-	"semanticmaps-shapes-missingshape": "Немає форм для $1, див. документацію за доступними формами"
+	"semanticmaps-shapes-missingshape": "Немає форм для $1, див. документацію за доступними формами",
+	"validator-type-mapscircle": "Географічне коло",
+	"validator-type-mapscircle-list": "Список кіл",
+	"validator-type-mapsline": "Географічна лінія",
+	"validator-type-mapsline-list": "Список ліній",
+	"validator-type-mapslocation": "Географічна місцевість",
+	"validator-type-mapslocation-list": "Список місцевостей",
+	"validator-type-mapsrectangle": "Географічний прямокутник",
+	"validator-type-mapsrectangle-list": "Список прямокутників"
 }

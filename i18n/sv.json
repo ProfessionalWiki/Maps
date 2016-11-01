@@ -207,5 +207,8 @@
 	"semanticmaps-kml-linkabsolute": "Ska länkar vara absoluta (i motsats till relativa)",
 	"semanticmaps-kml-pagelinktext": "Texten som ska användas för länkar till sidan, där $1 kommer att bytas ut med sidtiteln",
 	"semanticmaps-shapes-improperformat": "Felaktig formatering av $1. Se dokumentationen för formatering",
-	"semanticmaps-shapes-missingshape": "Inga former hittade för $1. Se dokumentationen för tillgängliga former"
+	"semanticmaps-shapes-missingshape": "Inga former hittade för $1. Se dokumentationen för tillgängliga former",
+	"validator-type-mapscircle-list": "Lista över cirklar",
+	"validator-type-mapslocation": "Geografisk plats",
+	"validator-type-mapsrectangle-list": "Lista över rektanglar"
 }

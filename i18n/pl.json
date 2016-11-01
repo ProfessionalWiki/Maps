@@ -31,6 +31,7 @@
 	"validation-error-invalid-layer": "Parametr $1 musi określać prawidłową warstwę.",
 	"validation-error-invalid-layers": "Parametr $1 musi wskazywać jedną lub więcej prawidłowych warstw.",
 	"maps-layer-of-type": "Warstwa typu $1",
+	"maps-layer-of-type-and-name": "Warstwa „$2” typu „$1”",
 	"maps-layer-type-supported-by": "Tego typu warstwa może być używana wyłącznie z {{PLURAL:$2|serwisem map|serwisami map:}} $1.",
 	"maps-coordinates-description": "Przechwycenie analizatora  do formatowania współrzędnych z i na dowolny z obsługiwanych formatów.",
 	"maps-displaymap-description": "Wyświetlanie map geograficznych bez żadnych naniesionych na nich znaczników na wiki.",
@@ -100,6 +101,8 @@
 	"mapeditor-done-button": "Gotowe",
 	"mapeditor-remove-button": "Usuń",
 	"mapeditor-import-button2": "Importuj",
+	"mapeditor-export-button": "Eksport do kodu wiki",
+	"mapeditor-import-button": "Import z kodu wiki",
 	"mapeditor-mapparam-button": "Edytuj parametry mapy",
 	"mapeditor-clear-button": "Wyczyść mapę",
 	"mapeditor-code-title": "Kod wiki",
@@ -110,6 +113,7 @@
 	"mapeditor-form-field-icon": "Ikona",
 	"mapeditor-form-field-group": "Grupa",
 	"mapeditor-form-field-showonhover": "Pokaż tylko po najechaniu",
+	"mapeditor-mapparam-title": "Edytuj ustawienia mapy",
 	"mapeditor-mapparam-defoption": "-Wybierz parametr-",
 	"mapeditor-form-field-image": "Grafika",
 	"semanticmaps-unrecognizeddistance": "Wartość $1 nie jest poprawną odległością.",
@@ -120,5 +124,6 @@
 	"semanticmaps-altitude": "Wysokość: $1",
 	"semanticmaps-forminput-locations": "Miejsca",
 	"semanticmaps-par-ajaxcoordproperty": "Nazwa właściwości współrzędnych, która jest używana do tworzenia zapytania AJAX.",
+	"semanticmaps-kml-title": "Domyślny tytuł wyników",
 	"validator-type-mapslocation": "Położenie geograficzne"
 }

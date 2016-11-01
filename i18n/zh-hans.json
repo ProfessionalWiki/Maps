@@ -157,6 +157,7 @@
 	"maps-googlemaps3-par-poi": "显示感兴趣的点。",
 	"maps-googlemaps3-par-clustergridsize": "群集的网格大小（像素）。",
 	"maps-par-clustermaxzoom": "可能存在群集的最大缩放级别。",
+	"maps-par-clusterzoomonclick": "在群集上默认的点击行为是否为放大。",
 	"maps-par-maxclusterradius": "群集将覆盖的半径最大值。",
 	"maps-openlayers-par-controls": "要放置地图上的控件。",
 	"maps-openlayers-par-layers": "将在图层选择器中可用的图层。第一个图层将在地图加载时显示。",
