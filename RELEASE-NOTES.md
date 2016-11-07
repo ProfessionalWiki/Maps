@@ -4,12 +4,28 @@ These are the release notes for the [Maps extension](README.md).
 
 Development version
 
-* Merged in most of the features of the Semantic Maps extension. These are enabled automatically when SMW is installed.
-    * Added a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
-    * Added a [result format](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) for each mapping service
-    * (The Google Maps form input for Semantic Forms was not added in, since Semantic Forms now defines its own Google Maps input)
+### Highlight: Integrated Semantic MediaWiki support
+
+Merged in most of the features of the Semantic Maps extension. These are enabled automatically when SMW is installed.
+
+* Added a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
+* Added a [result format](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) for each mapping service
+* Added a KML result format
+* Added [distance query](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples/Distance_query) support
+
+Semantic Maps is discontinued as the features will now be maintained in Maps. The Semantic Maps form input
+has been moved into the [Page Forms](https://www.mediawiki.org/wiki/Extension:Page_Forms) extension.
+
+### Breaking changes
+
+* The default mapping service was changed from Google Maps to Leaflet (can be changed via the `egMapsDefaultService` setting)
+* The Maps tracking category is now disabled by default (can be enabled using the `egMapsEnableCategory` setting)
+
+### Other changes
+
 * Added `egMapsDisableExtension` setting that allows disabling the extension even when it is installed
 * The `egGoogleJsApiKey` setting from Maps 2.x will now be used as Google API key when `egMapsGMaps3ApiKey` is not set
+* Various missing messages where added
 
 ## Maps 3.8.2
 

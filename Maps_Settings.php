@@ -194,14 +194,14 @@ $GLOBALS['egMapsDisableSmwIntegration'] = false;
 
 // Other general configuration
 
+	// Boolean. Sets if pages with maps should be put in special category
+	$GLOBALS['egMapsEnableCategory'] = false;
+
 	// When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
 	$GLOBALS['egMapsDebugJS'] = false;
 
 	// Namespace index start of the mapping namespaces.
 	$GLOBALS['egMapsNamespaceIndex'] = 420;
-
-	// Boolean. Sets if pages with maps should be put in special category
-	$GLOBALS['egMapsEnableCategory'] = true;
 
 
 // Mapping service specific configuration
