@@ -187,16 +187,6 @@
 	$GLOBALS['smgQPTemplate'] = false;
 
 
-# Semantic Forms
-
-	$GLOBALS['smgFIFieldSize'] = 40;
-
-	# Integer or string. The default width and height of maps in forms created by using Semantic Forms.
-	# These values only be used when the user does not provide them.
-	$GLOBALS['smgFIWidth'] = 665;
-	$GLOBALS['smgFIHeight'] = $GLOBALS['egMapsMapHeight'];
-
-
 // Other general configuration
 
 	// Boolean. Sets if pages with maps should be put in special category
