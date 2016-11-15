@@ -10,15 +10,6 @@
  * @author Jeroen De Dauw
  */
 
-
-// This allows disabling the extension even when it is installed. Can be useful on wiki farms.
-// CAUTION: extensions that depend on Maps will likely either break of disable themselves.
-$GLOBALS['egMapsDisableExtension'] = false;
-
-// This allows disabling the Semantic MediaWiki integration.
-$GLOBALS['egMapsDisableSmwIntegration'] = false;
-
-
 // Mapping services configuration
 
 	// Array of String. Array containing all the mapping services that will be made available to the user.
@@ -42,6 +33,20 @@ $GLOBALS['egMapsDisableSmwIntegration'] = false;
 	$GLOBALS['egMapsDefaultServices'] = [];
 	$GLOBALS['egMapsDefaultServices']['display_map'] = $GLOBALS['egMapsDefaultService'];
 	$GLOBALS['egMapsDefaultServices']['qp'] = $GLOBALS['egMapsDefaultService'];
+
+
+// Enable/disable parts of the extension
+
+        // Allows disabling the extension even when it is installed.
+        //
+        // CAUTION: this setting is intended for wiki farms. On single wiki installations,
+        //          the recommended way to disable maps is to uninstall it via Composer. Disabling
+        //          Maps via this setting undermines package management safety: extensions that depend
+        //          on Maps will likely either break of disable themselves.
+        $GLOBALS['egMapsDisableExtension'] = false;
+
+        // Allows disabling the Semantic MediaWiki integration.
+        $GLOBALS['egMapsDisableSmwIntegration'] = false;
 
 
 // Geocoding
