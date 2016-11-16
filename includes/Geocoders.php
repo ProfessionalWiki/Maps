@@ -122,12 +122,11 @@ final class Geocoders {
 	 *
 	 * @param string $coordsOrAddress
 	 * @param string $geoservice
-	 * @param string|false $mappingService
 	 * @param boolean $checkForCoords
 	 *
 	 * @return LatLongValue|false
 	 */
-	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
+	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $checkForCoords = true ) {
 		if ( $checkForCoords ) {
 			$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
 
@@ -135,10 +134,10 @@ final class Geocoders {
 				return $coordinateParser->parse( $coordsOrAddress );
 			}
 			catch ( ParseException $parseException ) {
-				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
+				return self::geocode( $coordsOrAddress, $geoservice );
 			}
 		} else {
-			return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
+			return self::geocode( $coordsOrAddress, $geoservice );
 		}
 	}
 
@@ -150,12 +149,11 @@ final class Geocoders {
 	 *
 	 * @param string $address
 	 * @param string $geoService
-	 * @param string|false $mappingService
 	 *
 	 * @return LatLongValue|false
 	 * @throws MWException
 	 */
-	public static function geocode( $address, $geoService = '', $mappingService = false ) {
+	public static function geocode( $address, $geoService = '' ) {
 		if ( !is_string( $address ) ) {
 			throw new MWException( 'Parameter $address must be a string at ' . __METHOD__ );
 		}
