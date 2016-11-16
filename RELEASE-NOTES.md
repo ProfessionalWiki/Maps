@@ -1,5 +1,11 @@
 These are the release notes for the [Maps extension](README.md).
 
+## Maps 4.1
+
+Development version
+
+* The `geocode` parser hook now correctly uses its `geoservice` and `allowcoordinates` parameters 
+
 ## Maps 4.0
 
 Released on November 16th, 2016. Also see the [Maps 4.0 blog post](https://www.entropywins.wtf/blog/2016/11/09/maps-4-0-0-rc1-released/)

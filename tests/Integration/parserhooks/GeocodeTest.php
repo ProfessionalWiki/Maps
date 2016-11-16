@@ -43,17 +43,16 @@ class GeocodeTest extends ParserHookTest {
 	public function processingProvider() {
 		$argLists = [];
 
-		$values = [
-			'location' => '4,2',
-			'allowcoordinates' => 'yes',
+		$argLists[] = [
+			[
+				'location' => '4,2',
+				'allowcoordinates' => 'yes',
+			],
+			[
+				'location' => '4,2',
+				'allowcoordinates' => true,
+			]
 		];
-
-		$expected = [
-			'location' => new Location( new LatLongValue( 4, 2 ) ),
-			'allowcoordinates' => true,
-		];
-
-		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
 	}
