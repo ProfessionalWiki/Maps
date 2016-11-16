@@ -2,7 +2,9 @@ These are the release notes for the [Maps extension](README.md).
 
 ## Maps 4.0
 
-Development version
+Released on November 16th, 2016.
+
+Also see the [Maps 4.0 blog post](https://www.entropywins.wtf/blog/2016/11/09/maps-4-0-0-rc1-released/)
 
 ### Highlight: Integrated Semantic MediaWiki support
 
@@ -667,8 +669,8 @@ for the current version.
 
 Changes in 0.4.2 discussed on the authors blog:
 
-* [Maps and Semantic Maps 0.4.2 released](http://www.bn2vs.com/blog/2009/11/16/maps-and-semantic-maps-0-4-2/)
-* [New in Maps 0.4.2](http://www.bn2vs.com/blog/2009/11/12/new-in-maps-0-4-2/)
+* [Maps and Semantic Maps 0.4.2 released](https://www.entropywins.wtf/blog/2009/11/16/maps-and-semantic-maps-0-4-2/)
+* [New in Maps 0.4.2](https://www.entropywins.wtf/blog/2009/11/12/new-in-maps-0-4-2/)
 
 #### New features ####
 
@@ -710,7 +712,7 @@ where not separated by a comma.
 
 Changes in 0.4 discussed on the authors blog:
 
-* [Finally! Maps and Semantic Maps 0.4!](http://www.bn2vs.com/blog/2009/11/03/finally-maps-and-semantic-maps-0-4/)
+* [Finally! Maps and Semantic Maps 0.4!](https://www.entropywins.wtf/blog/2009/11/03/finally-maps-and-semantic-maps-0-4/)
 
 #### New features ####
 
@@ -749,7 +751,7 @@ for large contents.
 
 Changes in 0.3.4 discussed on the authors blog:
 
-* [Maps and Semantic Maps 0.3.4 released](http://www.bn2vs.com/blog/2009/09/12/maps-and-semantic-maps-0-3-4-released/)
+* [Maps and Semantic Maps 0.3.4 released](https://www.entropywins.wtf/blog/2009/09/12/maps-and-semantic-maps-0-3-4-released/)
 
 ####New features####
 
@@ -779,7 +781,7 @@ any value (ie |coordinates=|)
 
 Changes in 0.3.3 discussed on the authors blog:
 
-* [Maps and Semantic Maps 0.3.3](http://www.bn2vs.com/blog/2009/08/25/maps-and-semantic-maps-0-3-3/)
+* [Maps and Semantic Maps 0.3.3](https://www.entropywins.wtf/blog/2009/08/25/maps-and-semantic-maps-0-3-3/)
 
 ####New features####
 
@@ -829,9 +831,9 @@ since adding the path is impossible in the declaration.
 
 Changes in 0.3 discussed on the authors blog:
 
-* [Final changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/13/final-changes-for-maps-and-sm-0-3/)
-* [New features in Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/07/new-features-in-maps-and-sm-0-3/)
-* [Structural changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/05/structural-changes-for-maps-and-sm-0-3/)
+* [Final changes for Maps and SM 0.3](https://www.entropywins.wtf/blog/2009/08/13/final-changes-for-maps-and-sm-0-3/)
+* [New features in Maps and SM 0.3](https://www.entropywins.wtf/blog/2009/08/07/new-features-in-maps-and-sm-0-3/)
+* [Structural changes for Maps and SM 0.3](https://www.entropywins.wtf/blog/2009/08/05/structural-changes-for-maps-and-sm-0-3/)
 
 ####New features####
 
