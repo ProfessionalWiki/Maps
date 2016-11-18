@@ -2,7 +2,11 @@
 
 These are the installation and configuration instructions for the [Maps extension](README.md).
 
-For an overview of the different versions of the extension and their compatibility, scroll down.
+**Table of contents**
+
+* [Download and installation](INSTALL.md#download-and-installation)
+* [Configuration](INSTALL.md#configuration)
+* [Platform compatibility and release status](INSTALL.md#platform-compatibility-and-release-status)
 
 ## Download and installation
 
