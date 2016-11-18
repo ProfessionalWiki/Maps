@@ -65,47 +65,6 @@ To run the tests, execute this in the root directory of maps:
 
     composer ci
 
-To run only the MediaWiki independent tests, execute this in the root directory of maps:
-
-    phpunit
-
-All tests in `tests/Unit` are MediaWiki independent, with those depending on MediaWiki reside in
-`tests/Integration`.
-
-## Credits to other projects
-
-### jQuery
-
-This extension uses code from the jQuery library.
-jQuery is dual licensed under the
-[MIT](http://www.opensource.org/licenses/mit-license.php)
-and
-[GPL](http://www.opensource.org/licenses/gpl-license.php)
-licenses.
-
-### OpenLayers
-
-This extension includes code from the OpenLayers application.
-OpenLayers is an open-source product released under a
-[BSD-style license](http://svn.openlayers.org/trunk/openlayers/license.txt).
-
-### geoxml3
-
-This extension includes a copy of the geoxml3 KML processor.
-geoxml3 is released under the
-[Apache License 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
-
-### google-maps-utility-library-v3
-
-This extension includes code from the google-maps-utility-library-v3 (googleearth.js).
-It is released under the
-[Apache License 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
-
-### OpenStreetMap.js
-
-This extension includes the OpenStreetMap.js file which can be found
-[here](http://www.openstreetmap.org/openlayers/OpenStreetMap.js).
-
 ## Links
 
 * [Maps examples](https://www.semantic-mediawiki.org/wiki/Maps_examples)
