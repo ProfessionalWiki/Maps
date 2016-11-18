@@ -1,8 +1,8 @@
 These are the release notes for the [Maps extension](README.md).
 
-## Maps 4.1
+## Maps 4.0.1
 
-Development version
+Released on November 19th, 2016.
 
 * The `geocode` parser hook now correctly uses its `geoservice` and `allowcoordinates` parameters 
 
