@@ -169,9 +169,6 @@ Older versions (no longer supported):
 	</tr>
 </table>
 
-When installing Maps 2.x, see the installation instructions that come bundled with it. Also
-make use of Validator 0.5.x. More recent versions of Validator will not work.
-
 ### Database support
 
 All current versions of Maps have full support for all databases that can be used with MediaWiki.
