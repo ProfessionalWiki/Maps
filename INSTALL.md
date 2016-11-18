@@ -73,7 +73,7 @@ minimum requirements are indicated in bold.
 	</tr>
 	<tr>
 		<th>Maps 4.1.x</th>
-		<td>5.6 - TBD</td>
+		<td><strong>5.6</strong> - TBD</td>
 		<td>TBD - 1.29+</td>
 		<td>TBD - 2.5+</td>
 		<td>In development</td>
