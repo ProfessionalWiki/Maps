@@ -65,7 +65,7 @@ See the [Maps settings file](Maps_Settings.php) for all available configuration 
 
 The PHP and MediaWiki version ranges listed are those in which Maps is known to work. It might also
 work with more recent versions of PHP and MediaWiki, though this is not guaranteed. Increases of
-minimum requirements are indicated in bold.
+minimum requirements are indicated in bold. For a detailed list of changes, see the [release notes](RELEASE-NOTES.md).
 
 <table>
 	<tr>
