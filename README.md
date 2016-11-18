@@ -22,14 +22,21 @@ Features:
 
 ## User manual
 
+**For administrators**
+
 * [Installation and configuration](INSTALL.md)
-* [Release notes](RELEASE-NOTES.md)
+* [Release notes](RELEASE-NOTES.md) - detailed list of changes per release
+* [Platform compatibility](INSTALL.md#platform-compatibility-and-release-status) - overview of PHP and MediaWiki support per release
+
+**For wiki users**
+
 * [Usage instructions](https://www.semantic-mediawiki.org/wiki/Maps)
 * [Usage examples](https://www.semantic-mediawiki.org/wiki/Category:Maps_examples)
 * [Semantic usage examples](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples)
 
 ### Getting support
 
+* File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues)
 * Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
 * Ask a question on the #mediawiki IRC channel on Freenode.
 
