@@ -36,9 +36,9 @@ Features:
 
 ### Getting support
 
-* File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues)
 * Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
 * Ask a question on the #mediawiki IRC channel on Freenode.
+* File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues) (technical issues only)
 
 ## Project status
 
