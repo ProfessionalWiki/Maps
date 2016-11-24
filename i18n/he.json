@@ -11,7 +11,8 @@
 			"תומר ט",
 			"Inkbug",
 			"Macofe",
-			"Guycn2"
+			"Guycn2",
+			"המקיסט"
 		]
 	},
 	"maps-desc": "הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות",
@@ -220,5 +221,6 @@
 	"semanticmaps-kml-linkabsolute": "האם הקישורים צריכים להיות מוחלטים (או יחסיים)",
 	"semanticmaps-kml-pagelinktext": "הטקסט שישמש לקישורים לדף, כאשר $1 יוחלף בכותרת הדף",
 	"semanticmaps-shapes-improperformat": "עיצוב לא מתאים עבור $1. נא לראות את התיעוד על עיצוב",
-	"semanticmaps-shapes-missingshape": "לא נמצאו צורות עבור $1. נא לראות את התיעוד עבור צורות"
+	"semanticmaps-shapes-missingshape": "לא נמצאו צורות עבור $1. נא לראות את התיעוד עבור צורות",
+	"validator-type-mapscircle-list": "רשימת מעגלים"
 }
