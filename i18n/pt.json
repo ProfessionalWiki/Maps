@@ -37,7 +37,7 @@
 	"maps-finddestination-description": "Encontrar um destino a partir de um ponto de partida (expresso em qualquer um dos formatos suportados), uma orientação inicial e uma distância.",
 	"maps-geocode-description": "Permite a geocodificação de moradas; por outras palavras, transforma locais legíveis por seres humanos em conjuntos de coordenadas. Há apoio para vários serviços de geocodificação, que não devem ser confundidos com serviços de cartografia.",
 	"maps-geodistance-description": "Calcula a distância geográfica entre dois pontos, a partir e para qualquer um dos formatos suportados.",
-	"maps-mapsdoc-description": "Apresentar uma tabela com os parâmetros de um serviço de cartografia especificado, em conjunto com os respectivos valores por omissão e descrições.",
+	"maps-mapsdoc-description": "Apresentar uma tabela com os parâmetros de um serviço de cartografia especificado, em conjunto com os respetivos valores por omissão e descrições.",
 	"maps-mapsdoc-par-service": "O serviço de cartografia para o qual será apresentada a documentação dos parâmetros.",
 	"maps-mapsdoc-par-language": "A língua de apresentação da documentação. Se essa tradução não estiver disponível, será usado o inglês.",
 	"maps-coordinates-par-location": "As coordenadas que quer formatar.",
