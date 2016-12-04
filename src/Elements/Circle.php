@@ -18,12 +18,12 @@ class Circle extends \MapsBaseFillableElement {
 	/**
 	 * @var LatLongValue
 	 */
-	protected $circleCentre;
+	private $circleCentre;
 
 	/**
 	 * @var integer|float
 	 */
-	protected $circleRadius;
+	private $circleRadius;
 
 	/**
 	 * @param LatLongValue $circleCentre

@@ -21,10 +21,6 @@ class ImageOverlay extends Rectangle {
 	private $imageUrl;
 
 	/**
-	 * Constructor.
-	 *
-	 * @since 3.0
-	 *
 	 * @param LatLongValue $boundsNorthEast
 	 * @param LatLongValue $boundsSouthWest
 	 * @param string $image

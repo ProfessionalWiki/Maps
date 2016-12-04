@@ -13,9 +13,9 @@ use InvalidArgumentException;
  */
 class Polygon extends Line {
 
-	protected $onlyVisibleOnHover = false;
-	protected $fillOpacity = '0.5';
-	protected $fillColor = '#FF0000';
+	private $onlyVisibleOnHover = false;
+	private $fillOpacity = '0.5';
+	private $fillColor = '#FF0000';
 
 	/**
 	 * @since 3.0

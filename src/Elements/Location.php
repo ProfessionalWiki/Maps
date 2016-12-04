@@ -20,44 +20,34 @@ use MWException;
 class Location extends BaseElement {
 
 	/**
-	 * @since 3.0
-	 *
 	 * @var LatLongValue
 	 */
-	protected $coordinates;
-
-	/**
-	 * @since 0.7.1
-	 *
-	 * @var string
-	 */
-	protected $address;
-
-	/**
-	 * @since 0.7.2
-	 *
-	 * @var string
-	 */
-	protected $icon = '';
-
-	/**
-	 * @since 2.0
-	 *
-	 * @var string
-	 */
-	protected $group = '';
+	private $coordinates;
 
 	/**
 	 * @var string
-	 * @since 2.0
 	 */
-	protected $inlineLabel = '';
+	private $address;
 
 	/**
 	 * @var string
-	 * @since 2.0
 	 */
-	protected $visitedIcon = '';
+	private $icon = '';
+
+	/**
+	 * @var string
+	 */
+	private $group = '';
+
+	/**
+	 * @var string
+	 */
+	private $inlineLabel = '';
+
+	/**
+	 * @var string
+	 */
+	private $visitedIcon = '';
 
 	/**
 	 * Creates and returns a new instance of a Location from a latitude and longitude.
@@ -111,13 +101,6 @@ class Location extends BaseElement {
 		return new static( $address );
 	}
 
-	/**
-	 * Constructor.
-	 *
-	 * @param LatLongValue $coordinates
-	 *
-	 * @since 3.0
-	 */
 	public function __construct( LatLongValue $coordinates ) {
 		parent::__construct();
 		$this->coordinates = $coordinates;
