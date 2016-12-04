@@ -149,8 +149,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * @param string $coordinates
 	 */
 	private function tryParseAndSetDataItem( $coordinates ) {
-		$options = new \ValueParsers\ParserOptions();
-		$parser = new GeoCoordinateParser( $options );
+		$parser = new GeoCoordinateParser();
 
 		try {
 			$value = $parser->parse( $coordinates );

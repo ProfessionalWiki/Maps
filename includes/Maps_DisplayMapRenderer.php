@@ -1,7 +1,8 @@
 <?php
+
 use Maps\Element;
-use Maps\Elements\Line;
 use Maps\Elements\Location;
+use ValueParsers\ParserOptions as ValueParserOptions;
 
 /**
  * Class handling the #display_map rendering.
@@ -12,62 +13,10 @@ use Maps\Elements\Location;
  */
 class MapsDisplayMapRenderer {
 
-	/**
-	 * @since 2.0
-	 *
-	 * @var iMappingService
-	 */
-	protected $service;
+	private $service;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param iMappingService $service
-	 */
-	public function __construct( iMappingService $service ) {
+	public function __construct( MapsMappingService $service ) {
 		$this->service = $service;
-	}
-
-	/**
-	 * Returns the HTML to display the map.
-	 *
-	 * @since 2.0
-	 *
-	 * @param array $params
-	 * @param Parser $parser
-	 * @param string $mapName
-	 *
-	 * @return string
-	 */
-	protected function getMapHTML( array $params, Parser $parser, $mapName ) {
-		return Html::rawElement(
-			'div',
-			[
-				'id' => $mapName,
-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
-				'class' => 'maps-map maps-' . $this->service->getName()
-			],
-			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
-				Html::element(
-					'div',
-					[ 'style' => 'display:none', 'class' => 'mapdata' ],
-					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
-				)
-		);
-	}
-
-	/**
-	 * Returns a PHP object to encode to JSON with the map data.
-	 *
-	 * @since 2.0
-	 *
-	 * @param array $params
-	 * @param Parser $parser
-	 *
-	 * @return mixed
-	 */
-	protected function getJSONObject( array $params, Parser $parser ) {
-		return $params;
 	}
 
 	/**
@@ -84,7 +33,7 @@ class MapsDisplayMapRenderer {
 
 		$mapName = $this->service->getMapId();
 
-		$output = $this->getMapHTML( $params, $parser, $mapName );
+		$output = $this->getMapHTML( $params, $mapName );
 
 		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
 
@@ -99,17 +48,35 @@ class MapsDisplayMapRenderer {
 	}
 
 	/**
+	 * Returns the HTML to display the map.
+	 *
+	 * @param array $params
+	 * @param string $mapName
+	 *
+	 * @return string
+	 */
+	protected function getMapHTML( array $params, $mapName ) {
+		return Html::rawElement(
+			'div',
+			[
+				'id' => $mapName,
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+				'class' => 'maps-map maps-' . $this->service->getName()
+			],
+			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
+			Html::element(
+				'div',
+				[ 'style' => 'display:none', 'class' => 'mapdata' ],
+				FormatJson::encode( $params )
+			)
+		);
+	}
+
+	/**
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
-	 *
-	 * FIXME: complexity
-	 *
-	 * @since 1.0
-	 *
-	 * @param array &$params
-	 * @param Parser $parser
 	 */
-	protected function handleMarkerData( array &$params, Parser $parser ) {
+	private function handleMarkerData( array &$params, Parser $parser ) {
 		if ( is_object( $params['centre'] ) ) {
 			$params['centre'] = $params['centre']->getJSONObject();
 		}
@@ -120,28 +87,7 @@ class MapsDisplayMapRenderer {
 			$params['wmsoverlay'] = $params['wmsoverlay']->getJSONObject();
 		}
 
-		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
-		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
-		$params['locations'] = [];
-
-		/**
-		 * @var Location $location
-		 */
-		foreach ( $params['coordinates'] as $location ) {
-			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '',$visitedIconUrl);
-
-			$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
-			$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
-			if ( isset( $jsonObj['inlineLabel'] ) ) {
-				$jsonObj['inlineLabel'] = strip_tags($parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),'<a><img>');
-			}
-
-			$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
-			$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
-			$jsonObj['title'] = strip_tags( $jsonObj['title'] );
-
-			$params['locations'][] = $jsonObj;
-		}
+		$params['locations'] = $this->getLocationJson( $params, $parserClone );
 
 		unset( $params['coordinates'] );
 
@@ -152,7 +98,49 @@ class MapsDisplayMapRenderer {
 		}
 	}
 
-	protected function handleShapeData( array &$params, Parser $parserClone ) {
+	private function getLocationJson( array $params, $parserClone ) {
+		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
+		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
+
+		$parser = new \Maps\LocationParser( new ValueParserOptions( [
+			'geoService' => $params['geoservice']
+		] ) );
+
+		$locationJsonObjects = [];
+
+		foreach ( $params['coordinates'] as $coordinatesOrAddress ) {
+			try {
+				$location = $parser->stringParse( $coordinatesOrAddress );
+			}
+			catch ( \Exception $ex ) {
+				// TODO: somehow report this to the user
+				continue;
+			}
+
+			$locationJsonObjects[] = $this->getLocationJsonObject( $location, $params, $iconUrl, $visitedIconUrl, $parserClone );
+		}
+
+		return $locationJsonObjects;
+	}
+
+	private function getLocationJsonObject( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parserClone ) {
+		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
+
+		$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
+		$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
+
+		if ( isset( $jsonObj['inlineLabel'] ) ) {
+			$jsonObj['inlineLabel'] = strip_tags($parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),'<a><img>');
+		}
+
+		$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
+		$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
+		$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+
+		return $jsonObj;
+	}
+
+	private function handleShapeData( array &$params, Parser $parserClone ) {
 		$textContainers = [
 			&$params['lines'] ,
 			&$params['polygons'] ,
