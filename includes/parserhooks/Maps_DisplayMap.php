@@ -47,18 +47,15 @@ class MapsDisplayMap extends ParserHook {
 		$params['mappingservice']['feature'] = 'display_map';
 
 		$params['coordinates'] = [
-			'type' => 'mapslocation',
+			'type' => 'string',
 			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
-			'dependencies' => [ 'mappingservice', 'geoservice' ],
 			'default' => [],
 			'islist' => true,
 			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
 			'message' => 'maps-displaymap-par-coordinates',
 		];
 
-		$params = array_merge( $params, self::getCommonMapParams() );
-		
-		return $params;
+		return array_merge( $params, self::getCommonMapParams() );
 	}
 
 	/**
@@ -184,22 +181,26 @@ class MapsDisplayMap extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		// Get the instance of the service class.
-		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'] );
-		
-		$mapClass = new MapsDisplayMapRenderer( $service );
+		$this->defaultMapZoom( $parameters );
+		$this->trackMap();
 
+		$renderer = new MapsDisplayMapRenderer( MapsMappingServices::getServiceInstance( $parameters['mappingservice'] ) );
+
+		return $renderer->renderMap( $parameters, $this->parser );
+	}
+
+	private function defaultMapZoom( &$parameters ) {
 		$fullParams = $this->validator->getParameters();
 
 		if ( array_key_exists( 'zoom', $fullParams ) && $fullParams['zoom']->wasSetToDefault() && count( $parameters['coordinates'] ) > 1 ) {
 			$parameters['zoom'] = false;
 		}
+	}
 
-		global $egMapsEnableCategory;
-		if ($egMapsEnableCategory) {
+	private function trackMap() {
+		if ( $GLOBALS['egMapsEnableCategory'] ) {
 			$this->parser->addTrackingCategory( 'maps-tracking-category' );
 		}
-		return $mapClass->renderMap( $parameters, $this->parser );
 	}
 	
 	/**

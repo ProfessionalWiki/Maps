@@ -72,7 +72,7 @@ To run the tests with MediaWiki, change into `tests/phpunit` of your MediaWiki i
     php phpunit.php --wiki wiki --configuration suite.xml ../../extensions/Maps/tests/
     
 Where you either update `wiki` to match your wikis name, or drop the parameter. The above command
-works without modification if you are using the [MediaWiki Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant)
+works without modification if you are using the [MediaWiki Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant).
 
 ## Links
 

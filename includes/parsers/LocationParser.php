@@ -28,6 +28,7 @@ class LocationParser extends StringValueParser {
 		parent::__construct( $options );
 
 		$this->defaultOption( 'useaddressastitle', false );
+		$this->defaultOption( 'geoService', '' );
 	}
 
 	/**
@@ -38,7 +39,7 @@ class LocationParser extends StringValueParser {
 	 * @param string $value
 	 *
 	 * @return Location
-	 * @throws MWException
+	 * @throws ParseException
 	 */
 	public function stringParse( $value ) {
 		$separator = '~';
@@ -118,7 +119,7 @@ class LocationParser extends StringValueParser {
 	 */
 	private function stringToLatLongValue( $location ) {
 		if ( Geocoders::canGeocode() ) {
-			$latLongValue = Geocoders::attemptToGeocode( $location );
+			$latLongValue = Geocoders::attemptToGeocode( $location, $this->getOption( 'geoService' ) );
 
 			if ( $latLongValue === false ) {
 				throw new ParseException( 'Failed to parse or geocode' );

@@ -49,10 +49,6 @@ class DisplayMapTest extends ParserHookTest {
 		return $this->arrayWrap( $paramLists );
 	}
 
-	public function testForSomeReasonPhpSegfaultsIfThereIsOneMethodLess() {
-		$this->assertTrue( (bool)'This is fucking weird' );
-	}
-
 	/**
 	 * @see ParserHookTest::processingProvider
 	 * @since 3.0
@@ -62,14 +58,14 @@ class DisplayMapTest extends ParserHookTest {
 		$argLists = [];
 
 		$values = [
-			'locations' => '4,2',
+			'locations' => '4,2; New York City; 13,37',
 			'width' => '420',
 			'height' => '420',
 			'service' => 'openlayers',
 		];
 
 		$expected = [
-			'coordinates' => [ new Location( new LatLongValue( 4, 2 ) ) ],
+			'coordinates' => [ '4,2', 'New York City', '13,37' ],
 			'width' => '420px',
 			'height' => '420px',
 			'mappingservice' => 'openlayers',

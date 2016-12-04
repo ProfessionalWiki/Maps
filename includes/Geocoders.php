@@ -121,23 +121,23 @@ final class Geocoders {
 	 * @since 0.7
 	 *
 	 * @param string $coordsOrAddress
-	 * @param string $geoservice
+	 * @param string $geoService
 	 * @param boolean $checkForCoords
 	 *
 	 * @return LatLongValue|false
 	 */
-	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $checkForCoords = true ) {
+	public static function attemptToGeocode( $coordsOrAddress, $geoService = '', $checkForCoords = true ) {
 		if ( $checkForCoords ) {
-			$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+			$coordinateParser = new GeoCoordinateParser();
 
 			try {
 				return $coordinateParser->parse( $coordsOrAddress );
 			}
 			catch ( ParseException $parseException ) {
-				return self::geocode( $coordsOrAddress, $geoservice );
+				return self::geocode( $coordsOrAddress, $geoService );
 			}
 		} else {
-			return self::geocode( $coordsOrAddress, $geoservice );
+			return self::geocode( $coordsOrAddress, $geoService );
 		}
 	}
 
