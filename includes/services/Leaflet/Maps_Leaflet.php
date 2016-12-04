@@ -100,8 +100,6 @@ class MapsLeaflet extends MapsMappingService {
 	}
 
 	/**
-	 * @see iMappingService::getDefaultZoom
-	 *
 	 * @since 3.0
 	 */
 	public function getDefaultZoom() {

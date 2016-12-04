@@ -3,7 +3,7 @@
 /**
  * @since 2.0
  */
-class MapsBaseFillableElement extends MapsBaseStrokableElement implements iFillableMapElement {
+class MapsBaseFillableElement extends MapsBaseStrokableElement {
 
 	protected $fillColor;
 	protected $fillOpacity;

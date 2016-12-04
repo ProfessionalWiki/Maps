@@ -30,7 +30,7 @@ final class MapsMappingServices {
 	 * 
 	 * @since 0.6.6
 	 * 
-	 * @var iMappingService[]
+	 * @var MapsMappingService[]
 	 */
 	protected static $services = [];
 	
@@ -40,9 +40,9 @@ final class MapsMappingServices {
 	 * 
 	 * @since 0.6.6
 	 * 
-	 * @param $serviceIdentifier String: internal service identifier
-	 * @param $serviceClassName String
-	 * @param $features Array
+	 * @param string $serviceIdentifier
+	 * @param string $serviceClassName
+	 * @param string[] $features
 	 */
 	public static function registerService( $serviceIdentifier, $serviceClassName, array $features = [] ) {
 		self::$registeredServices[$serviceIdentifier] = $serviceClassName;
@@ -79,16 +79,17 @@ final class MapsMappingServices {
 	 * 
 	 * @since 0.6.6
 	 * 
-	 * @param $serviceIdentifier String: internal service identifier
+	 * @param string $serviceIdentifier
 	 * 
-	 * @return iMappingService
+	 * @return MapsMappingService
+	 * @throws MWException
 	 */
 	public static function getServiceInstance( $serviceIdentifier ) {
 		if ( !array_key_exists( $serviceIdentifier, self::$services ) ) {
 			if ( array_key_exists( $serviceIdentifier, self::$registeredServices ) ) {
 				$service = new self::$registeredServices[$serviceIdentifier]( $serviceIdentifier );
 				
-				if ( $service instanceof iMappingService ) {
+				if ( $service instanceof MapsMappingService ) {
 					self::$services[$serviceIdentifier] = $service;
 				}
 				else {
@@ -114,7 +115,7 @@ final class MapsMappingServices {
 	 * @param $service String: service name or alias, does not need to be secure
 	 * @param $feature String
 	 * 
-	 * @return iMappingService
+	 * @return MapsMappingService
 	 */
 	public static function getValidServiceInstance( $service, $feature ) {
 		return self::getServiceInstance( self::getValidServiceName( $service, $feature ) );

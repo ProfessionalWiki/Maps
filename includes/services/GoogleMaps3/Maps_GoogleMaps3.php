@@ -257,8 +257,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	/**
-	 * @see iMappingService::getDefaultZoom
-	 *
 	 * @since 0.6.5
 	 */
 	public function getDefaultZoom() {

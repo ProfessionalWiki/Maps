@@ -8,7 +8,7 @@ use Maps\Elements\BaseElement;
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */
-class MapsBaseStrokableElement extends BaseElement implements iStrokableMapElement {
+class MapsBaseStrokableElement extends BaseElement {
 
 	protected $strokeColor;
 	protected $strokeOpacity;
