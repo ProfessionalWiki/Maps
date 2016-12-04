@@ -15,7 +15,7 @@ use Maps\ElementOptions;
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class BaseElement implements Element, \iBubbleMapElement, \iLinkableMapElement {
+abstract class BaseElement implements Element {
 
 	/**
 	 * @since 3.0

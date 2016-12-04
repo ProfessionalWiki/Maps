@@ -11,7 +11,7 @@ use InvalidArgumentException;
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Polygon extends Line implements \iHoverableMapElement {
+class Polygon extends Line {
 
 	protected $onlyVisibleOnHover = false;
 	protected $fillOpacity = '0.5';
