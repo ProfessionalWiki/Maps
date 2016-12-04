@@ -229,4 +229,6 @@ abstract class MapsMappingService {
 		return 1;
 	}
 
+	public abstract function getMapId( $increment = true );
+
 }

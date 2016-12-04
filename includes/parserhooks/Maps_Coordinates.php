@@ -1,4 +1,5 @@
 <?php
+
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 
 /**

@@ -104,7 +104,7 @@ final class MapsMapper {
 		// TODO$manipulation->toJSONObj = true;
 
 		$params['centre'] = [
-			'type' => 'mapslocation',
+			'type' => 'string',
 			'aliases' => [ 'center' ],
 			'default' => false,
 			'manipulatedefault' => false,

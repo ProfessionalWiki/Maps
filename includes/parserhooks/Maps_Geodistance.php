@@ -9,7 +9,6 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-
 class MapsGeodistance extends ParserHook {
 
 	/**
@@ -61,13 +60,13 @@ class MapsGeodistance extends ParserHook {
 		];
 
 		$params['location1'] = [
-			'type' => 'mapslocation',
+			'type' => 'mapslocation', // FIXME: geoservice is not used
 			'aliases' => 'from',
 			'dependencies' => [ 'mappingservice', 'geoservice' ],
 		];
 
 		$params['location2'] = [
-			'type' => 'mapslocation',
+			'type' => 'mapslocation', // FIXME: geoservice is not used
 			'aliases' => 'to',
 			'dependencies' => [ 'mappingservice', 'geoservice' ],
 		];
