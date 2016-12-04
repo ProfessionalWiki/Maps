@@ -61,9 +61,18 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 
 ### Running the tests
 
-To run the tests, execute this in the root directory of maps:
+You can run the MediaWiki independent tests by changing into the Maps root directory and running
 
-    composer ci
+    phpunit
+    
+This is possible without having a MediaWiki installation or webserver. A clone of the Maps code suffices.
+
+To run the tests with MediaWiki, change into `tests/phpunit` of your MediaWiki installation and run
+
+    php phpunit.php --wiki wiki --configuration suite.xml ../../extensions/Maps/tests/
+    
+Where you either update `wiki` to match your wikis name, or drop the parameter. The above command
+works without modification if you are using the [MediaWiki Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant)
 
 ## Links
 
