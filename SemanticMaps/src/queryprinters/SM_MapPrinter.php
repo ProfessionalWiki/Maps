@@ -3,7 +3,9 @@
 use Maps\Elements\Location;
 use Maps\Element;
 use Maps\Elements\BaseElement;
+use Maps\LocationParser;
 use ParamProcessor\ParamDefinition;
+use ValueParsers\ParserOptions as ValueParserOptions;
 
 /**
  * Query printer for maps. Is invoked via SMMapper.
@@ -18,6 +20,11 @@ use ParamProcessor\ParamDefinition;
 class SMMapPrinter extends SMW\ResultPrinter {
 
 	private static $services = [];
+
+	/**
+	 * @var LocationParser
+	 */
+	private $locationParser;
 
 	/**
 	 * @since 3.4
@@ -67,7 +74,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		$this->service->addParameterInfo( $params );
 
 		$params['staticlocations'] = [
-			'type' => 'mapslocation',
+			'type' => 'mapslocation', // FIXME: geoservice is not used
 			'aliases' => [ 'locations', 'points' ],
 			'default' => [],
 			'islist' => true,
@@ -151,8 +158,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$params = $this->params;
 
+		$this->initializeLocationParser( $params );
+
 		$queryHandler = new SMQueryHandler( $res, $outputmode );
-		$queryHandler->setLinkStyle($params['link']);
+		$queryHandler->setLinkStyle( $params['link'] );
 		$queryHandler->setHeaderStyle($params['headers']);
 		$queryHandler->setShowSubject( $params['showtitle'] );
 		$queryHandler->setTemplate( $params['template'] );
@@ -161,9 +170,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		$queryHandler->setActiveIcon( $params['activeicon'] );
 
 		$this->handleMarkerData( $params, $queryHandler );
-		$locationAmount = count( $params['locations'] );
 
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
+
+		$locationAmount = count( $params['locations'] );
 
 		if ( $locationAmount > 0 ) {
 			// We can only take care of the zoom defaulting here,
@@ -193,6 +203,58 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		else {
 			return $params['default'];
 		}
+	}
+
+	private function initializeLocationParser( array $params ) {
+		$this->locationParser = new LocationParser( new ValueParserOptions( [
+			'geoService' => $params['geoservice']
+		] ) );
+	}
+
+	/**
+	 * Converts the data in the coordinates parameter to JSON-ready objects.
+	 * These get stored in the locations parameter, and the coordinates on gets deleted.
+	 *
+	 * @param array &$params
+	 * @param SMQueryHandler $queryHandler
+	 */
+	private function handleMarkerData( array &$params, SMQueryHandler $queryHandler ) {
+		$params['centre'] = $this->getCenter( $params['centre'] );
+
+		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
+		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
+
+		$params['locations'] = $this->getJsonForStaticLocations(
+			$params['staticlocations'],
+			$params,
+			$iconUrl,
+			$visitedIconUrl
+		);
+
+		unset( $params['staticlocations'] );
+
+		$this->addShapeData( $queryHandler->getShapes(), $params, $iconUrl, $visitedIconUrl );
+
+		if ( $params['format'] === 'openlayers' ) {
+			$params['layers'] = MapsDisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
+		}
+	}
+
+	private function getCenter( $coordinatesOrAddress ) {
+		if ( $coordinatesOrAddress === false ) {
+			return false;
+		}
+
+		try {
+			// FIXME: a Location makes no sense here, since the non-coordinate data is not used
+			$location = $this->locationParser->stringParse( $coordinatesOrAddress );
+		}
+		catch ( \Exception $ex ) {
+			// TODO: somehow report this to the user
+			return false;
+		}
+
+		return $location->getJSONObject();
 	}
 
 	/**
@@ -231,37 +293,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 */
 	private function getJSONObject( array $params, Parser $parser ) {
 		return $params;
-	}
-	
-	/**
-	 * Converts the data in the coordinates parameter to JSON-ready objects.
-	 * These get stored in the locations parameter, and the coordinates on gets deleted.
-	 * 
-	 * @param array &$params
-	 * @param SMQueryHandler $queryHandler
-	 */
-	private function handleMarkerData( array &$params, SMQueryHandler $queryHandler ) {
-		if ( is_object( $params['centre'] ) ) {
-			$params['centre'] = $params['centre']->getJSONObject();
-		}
-
-		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
-		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
-
-		$params['locations'] = $this->getJsonForStaticLocations(
-			$params['staticlocations'],
-			$params,
-			$iconUrl,
-			$visitedIconUrl
-		);
-
-		unset( $params['staticlocations'] );
-
-		$this->addShapeData( $queryHandler->getShapes(), $params, $iconUrl, $visitedIconUrl );
-
-		if ( $params['format'] === 'openlayers' ) {
-			$params['layers'] = MapsDisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
-		}
 	}
 
 	private function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {

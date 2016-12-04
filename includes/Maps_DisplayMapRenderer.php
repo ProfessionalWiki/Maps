@@ -2,6 +2,7 @@
 
 use Maps\Element;
 use Maps\Elements\Location;
+use Maps\LocationParser;
 use ValueParsers\ParserOptions as ValueParserOptions;
 
 /**
@@ -14,6 +15,11 @@ use ValueParsers\ParserOptions as ValueParserOptions;
 class MapsDisplayMapRenderer {
 
 	private $service;
+
+	/**
+	 * @var LocationParser
+	 */
+	private $locationParser;
 
 	public function __construct( MapsMappingService $service ) {
 		$this->service = $service;
@@ -29,6 +35,8 @@ class MapsDisplayMapRenderer {
 	 * @return string
 	 */
 	public final function renderMap( array $params, Parser $parser ) {
+		$this->initializeLocationParser( $params );
+
 		$this->handleMarkerData( $params, $parser );
 
 		$mapName = $this->service->getMapId();
@@ -45,6 +53,12 @@ class MapsDisplayMapRenderer {
 		$parser->getOutput()->addHeadItem( $configVars );
 
 		return $output;
+	}
+
+	private function initializeLocationParser( array $params ) {
+		$this->locationParser = new LocationParser( new ValueParserOptions( [
+			'geoService' => $params['geoservice']
+		] ) );
 	}
 
 	/**
@@ -77,9 +91,7 @@ class MapsDisplayMapRenderer {
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 */
 	private function handleMarkerData( array &$params, Parser $parser ) {
-		if ( is_object( $params['centre'] ) ) {
-			$params['centre'] = $params['centre']->getJSONObject();
-		}
+		$params['centre'] = $this->getCenter( $params['centre'] );
 
 		$parserClone = clone $parser;
 
@@ -98,19 +110,32 @@ class MapsDisplayMapRenderer {
 		}
 	}
 
+	private function getCenter( $coordinatesOrAddress ) {
+		if ( $coordinatesOrAddress === false ) {
+			return false;
+		}
+
+		try {
+			// FIXME: a Location makes no sense here, since the non-coordinate data is not used
+			$location = $this->locationParser->stringParse( $coordinatesOrAddress );
+		}
+		catch ( \Exception $ex ) {
+			// TODO: somehow report this to the user
+			return false;
+		}
+
+		return $location->getJSONObject();
+	}
+
 	private function getLocationJson( array $params, $parserClone ) {
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
 		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
-
-		$parser = new \Maps\LocationParser( new ValueParserOptions( [
-			'geoService' => $params['geoservice']
-		] ) );
 
 		$locationJsonObjects = [];
 
 		foreach ( $params['coordinates'] as $coordinatesOrAddress ) {
 			try {
-				$location = $parser->stringParse( $coordinatesOrAddress );
+				$location = $this->locationParser->stringParse( $coordinatesOrAddress );
 			}
 			catch ( \Exception $ex ) {
 				// TODO: somehow report this to the user
