@@ -124,8 +124,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			}
 		}
 
-		$params = array_merge( $params, MapsDisplayMap::getCommonMapParams() );
-		
 		return $params;
 	}
 	
