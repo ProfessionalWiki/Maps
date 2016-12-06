@@ -3,9 +3,11 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 4.0.3
 
-Under development
+Released on December 6th, 2016.
 
+* Fixed regression introduced in 4.0.2 that caused the JavaScript to not be loaded in some cases
 * The `display_map` parser hook now correctly uses its `geoservice` parameter
+* The `center` parameter for the map result format now takes into account the `geoservice` parameter
 
 ## Maps 4.0.2
 
