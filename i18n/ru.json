@@ -228,5 +228,6 @@
 	"semanticmaps-kml-pagelinktext": "Текст, используемый для ссылки на страницу, в которой  $1 будет заменён названием страницы.",
 	"semanticmaps-shapes-improperformat": "Неправильное форматирование $1. Обратитесь к документации по форматированию.",
 	"semanticmaps-shapes-missingshape": "Фигуры для $1 не найдены. Пожалуйста, обратитесь к документации по доступным фигурам",
+	"validator-type-mapsline-list": "Список линий",
 	"validator-type-mapsrectangle-list": "Список прямоугольников"
 }
