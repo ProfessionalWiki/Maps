@@ -9,7 +9,8 @@
 			"Sjoerddebruin",
 			"Esketti",
 			"MrLeopold",
-			"Hex"
+			"Hex",
+			"Mainframe98"
 		]
 	},
 	"maps-desc": "Maakt het insluiten van dynamische kaarten in de wikipagina's, het geocoderen van adressen en andere geografische activiteiten mogelijk",
@@ -82,7 +83,7 @@
 	"maps-geodistance-par-geoservice": "De mapping service deze parser functie wordt gebruikt in combinatie met.\nDit kan invloed hebben op de standaard geocoding service-waarde.",
 	"maps-displaymap-par-mappingservice": "Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.",
 	"maps-displaymap-par-coordinates": "De locatie die zich bij de eerste keer laden in het centrum van de kaart bevindt.",
-	"maps-displaymap-par-visitedicon": "De bestandsnaam van een afbeelding moet worden gebruikt voor de markering pictogrammen na de oorspronkelijke markeringen zijn geklikt",
+	"maps-displaymap-par-visitedicon": "De bestandsnaam van een afbeelding voen gebruik als markeringspictogrammen nadat op de oorspronkelijke markeringen is geklikt",
 	"maps-displaymap-par-zoom": "Maakt het mogelijk het schaalniveau van de kaart in te stellen.\nAls deze waarde niet wordt ingesteld en er staan meerdere markers op de kaart, dan wordt het best passende schaalniveau gekozen, niet het instelbare standaardniveau.",
 	"maps-displaymap-par-centre": "Maakt het mogelijk de coördinaten voor het midden van de kaart in te stellen voor display_point(s).\nKan ingesteld worden met adressen en coördinaten.\nAls deze waarde niet wordt ingesteld, wordt de kaart gecentreerd op of tussen de opgegeven marker(s).",
 	"maps-displaymap-par-title": "Maakt het mogelijk om tekst in te stellen die wordt weergegeven in de pop-ups van alle markeringen zonder gespecificeerde naam.\nAls dit samen met een label wordt gebruikt, wordt de titel vetgedrukt en onderstreept weergegeven.",
