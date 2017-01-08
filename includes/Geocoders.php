@@ -297,7 +297,8 @@ final class Geocoders {
 		if ( !array_key_exists( $geocoderIdentifier, self::$geocoders ) ) {
 			if ( array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
 				if ( is_string( self::$registeredGeocoders[$geocoderIdentifier] ) ) {
-					$geocoder = new self::$registeredGeocoders[$geocoderIdentifier]( $geocoderIdentifier );
+					$geocoderClass = self::$registeredGeocoders[$geocoderIdentifier];
+					$geocoder = new $geocoderClass( $geocoderIdentifier );
 				}
 				elseif ( self::$registeredGeocoders[$geocoderIdentifier] instanceof \Maps\Geocoders\Geocoder ) {
 					$geocoder = new MapsOldGeocoderAdapter(
