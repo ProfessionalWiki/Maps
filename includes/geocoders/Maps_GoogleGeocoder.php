@@ -36,7 +36,7 @@ final class MapsGoogleGeocoder extends \Maps\Geocoder {
 	 */	
 	protected function getRequestUrl( $address ) {
 		$urlArgs = [
-			'address' => urlencode( $address )
+			'address' => $address
 		];
 		if ( $GLOBALS['egMapsGMaps3ApiKey'] !== '' ) {
 			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
