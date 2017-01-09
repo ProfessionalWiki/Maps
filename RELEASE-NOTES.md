@@ -3,7 +3,7 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 4.0.4
 
-Released on January 9thm 2017.
+Released on January 9th, 2017.
 
 * Fixed encoding of special characters in the Google geocoder (by somescout)
 * Improved PHP 7 compatibility (by Andre Klapper)
