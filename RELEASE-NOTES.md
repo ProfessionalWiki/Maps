@@ -1,6 +1,13 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 4.0.4
+
+Released on January 9thm 2017.
+
+* Fixed encoding of special characters in the Google geocoder (by somescout)
+* Improved PHP 7 compatibility (by Andre Klapper)
+
 ## Maps 4.0.3
 
 Released on December 6th, 2016.
