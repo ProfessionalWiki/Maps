@@ -71,6 +71,7 @@
 	"maps_unrecognized_coords_for": "N'eo ket bet anavezet an {{PLURAL:$2|daveenn|daveennoù}} da-heul ha {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn :\n$1",
 	"maps_map_cannot_be_displayed": "N'hall ket ar gartenn bezañ diskwelet.",
 	"maps-geocoder-not-available": "N'haller ket ober gant arc'hwel geokodañ ar c'hartennoù. N'haller ket geokodañ ho lec'hiadur.",
+	"maps_leaflet": "Plegfollenn",
 	"maps_click_to_activate": "Klikañ evit gweredekaat  ar gartenn",
 	"maps_centred_on": "Kartenn kreizet war $1, $2.",
 	"maps-par-enable-fullscreen": "Gweredekaat ar bouton skramm leun",
@@ -116,5 +117,13 @@
 	"semanticmaps-altitude": "Uhelder : $1",
 	"semanticmaps-forminput-locations": "Lec'hiadurioù",
 	"semanticmaps-par-template": "Ur patrom d'ober gantañ da furmadiñ boued ar prenestr titouriñ.",
-	"semanticmaps-kml-title": "Titl dre ziouer evit an disoc'hoù"
+	"semanticmaps-kml-title": "Titl dre ziouer evit an disoc'hoù",
+	"validator-type-mapscircle": "Kelc'h douaroniel",
+	"validator-type-mapscircle-list": "Roll kelc'hioù",
+	"validator-type-mapsline": "Linenn zouaroniel",
+	"validator-type-mapsline-list": "Roll linennoù",
+	"validator-type-mapslocation": "Lec'hiadur douaroniel",
+	"validator-type-mapslocation-list": "Roll lec'hiadurioù",
+	"validator-type-mapsrectangle": "Higarrezenn zouaroniel",
+	"validator-type-mapsrectangle-list": "Roll hirgarrezennoù"
 }

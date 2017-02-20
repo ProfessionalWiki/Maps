@@ -26,6 +26,7 @@
 	"maps-layer-value": "Wartość",
 	"maps-layer-errors": "Błędy",
 	"maps-layerdef-invalid": "{{PLURAL:$1|Nieprawidłowa definicja|Nieprawidłowe definicje}}",
+	"maps-layerpage-nousage": "Nie ma stron, które używają w tej chwili tej warstwy.",
 	"maps-error-invalid-layertype": "Brak warstw typu „$1”. {{PLURAL:$3|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $2",
 	"maps-error-no-layertype": "Musisz określić typ warstwy. {{PLURAL:$2|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $1",
 	"validation-error-invalid-layer": "Parametr $1 musi określać prawidłową warstwę.",
@@ -132,5 +133,9 @@
 	"semanticmaps-forminput-locations": "Miejsca",
 	"semanticmaps-par-ajaxcoordproperty": "Nazwa właściwości współrzędnych, która jest używana do tworzenia zapytania AJAX.",
 	"semanticmaps-kml-title": "Domyślny tytuł wyników",
-	"validator-type-mapslocation": "Położenie geograficzne"
+	"validator-type-mapsline": "Linia geograficzna",
+	"validator-type-mapsline-list": "Lista linii",
+	"validator-type-mapslocation": "Położenie geograficzne",
+	"validator-type-mapsrectangle": "Prostokąt geograficzny",
+	"validator-type-mapsrectangle-list": "Lista prostokątów"
 }

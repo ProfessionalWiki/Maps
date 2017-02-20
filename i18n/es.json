@@ -23,7 +23,8 @@
 			"Indiralena",
 			"Lemondoge",
 			"Rubentl134",
-			"AlvaroMolina"
+			"AlvaroMolina",
+			"Dgstranz"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
@@ -220,6 +221,7 @@
 	"semanticmaps-par-centre": "El centro del mapa. Cuando no se proporciona, el mapa escogerá automáticamente el mejor centro para mostrar todos los marcadores en el mapa.",
 	"semanticmaps-par-template": "Una plantilla a usar para dar formato al contenido de la ventana de información.",
 	"semanticmaps-par-geocodecontrol": "Mostrar el control de geocodificación.",
+	"semanticmaps-par-ajaxquery": "Una segunda consulta que se envía mediante AJAX para obtener coordenadas adicionales.",
 	"semanticmaps-par-userparam": "Un valor pasado en cada llamada de plantilla,si una plantilla es usada",
 	"semanticmaps-kml-text": "El texto asociado a cada página. Es substituído por las propiedades recuperadas adicionales, si existen.",
 	"semanticmaps-kml-title": "El título predeterminado de los resultados",
