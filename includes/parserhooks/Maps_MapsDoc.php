@@ -159,7 +159,7 @@ class MapsMapsDoc extends ParserHook {
 	private function getDescriptionRow( ParamDefinition $parameter ) {
 		$description = $this->msg( $parameter->getMessage() );
 
-		$type = $parameter->getTypeMessage();
+		$type = $this->msg( $parameter->getTypeMessage() );
 
 		$default = $parameter->isRequired() ? "''" . $this->msg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
 		if ( is_array( $default ) ) {
