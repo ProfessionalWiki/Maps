@@ -140,21 +140,14 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @param SMWQueryResult $res
 	 * @param $outputmode
 	 * 
-	 * @return array or string
+	 * @return string
 	 */
 	public final function getResultText( SMWQueryResult $res, $outputmode ) {
 		if ( $this->fatalErrorMsg !== false ) {
 			return $this->fatalErrorMsg;
 		}
 
-		/**
-		 * @var Parser $wgParser
-		 */
-		global $wgParser;
-
-		if ( $GLOBALS['egMapsEnableCategory'] && $wgParser->getOutput() !== null ) {
-			$wgParser->addTrackingCategory( 'maps-tracking-category' );
-		}
+		$this->addTrackingCategoryIfNeeded();
 
 		$params = $this->params;
 
@@ -198,10 +191,21 @@ class SMMapPrinter extends SMW\ResultPrinter {
 				unset( $params['source'] );
 			}
 
-			return $this->getMapHTML( $params, $wgParser, $mapName );
+			return $this->getMapHTML( $params, $mapName );
 		}
 		else {
 			return $params['default'];
+		}
+	}
+
+	private function addTrackingCategoryIfNeeded() {
+		/**
+		 * @var Parser $wgParser
+		 */
+		global $wgParser;
+
+		if ( $GLOBALS['egMapsEnableCategory'] && $wgParser->getOutput() !== null ) {
+			$wgParser->addTrackingCategory( 'maps-tracking-category' );
 		}
 	}
 
@@ -261,12 +265,11 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * Returns the HTML to display the map.
 	 *
 	 * @param array $params
-	 * @param Parser $parser
 	 * @param string $mapName
 	 *
 	 * @return string
 	 */
-	private function getMapHTML( array $params, Parser $parser, $mapName ) {
+	private function getMapHTML( array $params, $mapName ) {
 		return Html::rawElement(
 			'div',
 			[
@@ -278,21 +281,9 @@ class SMMapPrinter extends SMW\ResultPrinter {
 				Html::element(
 					'div',
 					[ 'style' => 'display:none', 'class' => 'mapdata' ],
-					FormatJson::encode( $this->getJSONObject( $params, $parser ) )
+					FormatJson::encode( $params )
 				)
 		);
-	}
-
-	/**
-	 * Returns a PHP object to encode to JSON with the map data.
-	 *
-	 * @param array $params
-	 * @param Parser $parser
-	 *
-	 * @return mixed
-	 */
-	private function getJSONObject( array $params, Parser $parser ) {
-		return $params;
 	}
 
 	private function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
