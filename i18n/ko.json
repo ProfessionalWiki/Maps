@@ -91,7 +91,7 @@
 	"maps-displaymap-par-maxzoom": "최대 확대 수준",
 	"maps-displaymap-par-minzoom": "최소 확대 수준",
 	"maps-displaymap-par-polygons": "표시할 다각형",
-	"maps-displaymap-par-rectangles": "표시할 네모",
+	"maps-displaymap-par-rectangles": "표시할 직사각형",
 	"maps-displaymap-par-static": "지도를 정적으로 만듭니다.",
 	"maps-displaymap-par-wmsoverlay": "WMS 오버레이 사용",
 	"maps-fullscreen-button": "전체화면으로 전환",
