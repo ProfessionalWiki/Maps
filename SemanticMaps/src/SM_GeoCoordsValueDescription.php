@@ -1,16 +1,14 @@
 <?php
 
 use SMW\DataValueFactory;
+use SMW\Query\Language\ValueDescription;
 
 /**
  * Description of one data value of type Geographical Coordinates.
- * 
- * @since 0.6
- * @ingroup SemanticMaps
- * 
+ *
  * @author Jeroen De Dauw
  */
-class SMGeoCoordsValueDescription extends SMWValueDescription {
+class SMGeoCoordsValueDescription extends ValueDescription {
 
 	/**
 	 * @see SMWDescription::getQueryString

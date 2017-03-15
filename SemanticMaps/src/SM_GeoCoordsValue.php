@@ -3,6 +3,8 @@
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
+use SMW\Query\Language\Description;
+use SMW\Query\Language\ThingDescription;
 use ValueParsers\ParseException;
 
 /**
@@ -68,7 +70,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 * 
 	 * @param string $value
 	 * 
-	 * @return SMWDescription
+	 * @return Description
 	 * @throws InvalidArgumentException
 	 */
 	public function getQueryDescription( $value ) {
@@ -82,11 +84,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->setUserValue( $value );
 
 		switch ( true ) {
-			case !$this->isValid() :
-				return new SMWThingDescription();
-			case $distance !== false :
+			case !$this->isValid():
+				return new ThingDescription();
+			case $distance !== false:
 				return new SMAreaValueDescription( $this->getDataItem(), $comparator, $distance );
-			default :
+			default:
 				return new SMGeoCoordsValueDescription( $this->getDataItem(), null, $comparator );
 		}
 	}
@@ -166,13 +168,11 @@ class SMGeoCoordsValue extends SMWDataValue {
 			if ( $this->m_caption === false ) {
 				return $this->getFormattedCoord( $this->m_dataitem );
 			}
-			else {
-				return $this->m_caption; 
-			}
+
+			return $this->m_caption;
 		}
-		else {
-			return $this->getErrorText();
-		}
+
+		return $this->getErrorText();
 	}
 	
 	/**
