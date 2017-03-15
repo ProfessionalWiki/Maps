@@ -7,13 +7,7 @@ use ValueParsers\ParseException;
 
 /**
  * Implementation of datavalues that are geographic coordinates.
- * 
- * @since 0.6
  *
- * @file SM_GeoCoordsValue.php
- * @ingroup SemanticMaps
- * @ingroup SMWDataValues
- * 
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Markus Krötzsch
