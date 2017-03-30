@@ -212,5 +212,6 @@
 	"semanticmaps-kml-linkabsolute": "Moeten koppelingen absoluut zijn (in tegenstelling tot relatief)",
 	"semanticmaps-kml-pagelinktext": "De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginanaam",
 	"semanticmaps-shapes-improperformat": "Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak",
-	"semanticmaps-shapes-missingshape": "Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen"
+	"semanticmaps-shapes-missingshape": "Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen",
+	"validator-type-mapscircle-list": "Lijst van circels"
 }
