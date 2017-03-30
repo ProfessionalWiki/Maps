@@ -26,3 +26,7 @@ after_success:
   - ../phase3/tests/phpunit/phpunit.php -c ../phase3/extensions/Maps/phpunit.xml.dist --coverage-clover coverage.clover
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+cache:
+  directories:
+    - $HOME/.composer/cache
