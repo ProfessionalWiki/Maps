@@ -3,9 +3,10 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 4.0.6
 
-(dev)
+Released on April 14th, 2017.
 
 * Fixed type warning in `SMMapPrinter::getMapHTML`
+* Added missing geographical polygon type i18n messages
 
 ## Maps 4.0.5
 
