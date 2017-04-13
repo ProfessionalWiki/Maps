@@ -2,9 +2,9 @@
 
 namespace Maps\Tests\Semantic;
 
-use SMAreaValueDescription;
+use Maps\Semantic\ValueDescriptions\AreaDescription;
+use Maps\Semantic\ValueDescriptions\CoordinateDescription;
 use SMGeoCoordsValue;
-use SMGeoCoordsValueDescription;
 use SMW\DataValueFactory;
 use SMWDataItem;
 use SMWDIGeoCoord;
@@ -50,9 +50,9 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 
 	private function assertIsCorrectCoordValue( $description, $lat, $long ) {
 		/**
-		 * @var SMGeoCoordsValueDescription $description
+		 * @var CoordinateDescription $description
 		 */
-		$this->assertInstanceOf( SMGeoCoordsValueDescription::class, $description );
+		$this->assertInstanceOf( CoordinateDescription::class, $description );
 		$this->assertEquals( $lat, $description->getDataItem()->getLatitude() );
 		$this->assertEquals( $long, $description->getDataItem()->getLongitude() );
 	}
@@ -89,7 +89,7 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 
 		$description = $geoValue->getQueryDescription( $serialization );
 
-		$this->assertInstanceOf( SMAreaValueDescription::class, $description );
+		$this->assertInstanceOf( \Maps\Semantic\ValueDescriptions\AreaDescription::class, $description );
 	}
 
 	public function coordinateWithDistanceProvider() {

@@ -1,5 +1,9 @@
 <?php
 
+namespace Maps\Semantic\ValueDescriptions;
+
+use Maps\Semantic\DatabaseBase;
+use Maps\Semantic\SMWDIGeoCoord;
 use SMW\DataValueFactory;
 use SMW\Query\Language\ValueDescription;
 
@@ -8,7 +12,7 @@ use SMW\Query\Language\ValueDescription;
  *
  * @author Jeroen De Dauw
  */
-class SMGeoCoordsValueDescription extends ValueDescription {
+class CoordinateDescription extends ValueDescription {
 
 	/**
 	 * @see SMWDescription::getQueryString

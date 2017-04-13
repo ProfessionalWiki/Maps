@@ -1,9 +1,18 @@
 <?php
 
+namespace Maps\Semantic\ValueDescriptions;
+
+use DatabaseBase;
 use DataValues\Geo\Values\LatLongValue;
+use InvalidArgumentException;
+use MapsDistanceParser;
+use MapsGeoFunctions;
 use SMW\DataValueFactory;
 use SMW\DIProperty;
 use SMW\Query\Language\ValueDescription;
+use SMWDataItem;
+use SMWDIGeoCoord;
+use SMWThingDescription;
 
 /**
  * Description of a geographical area defined by a coordinates set and a distance to the bounds.
@@ -13,7 +22,7 @@ use SMW\Query\Language\ValueDescription;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SMAreaValueDescription extends ValueDescription {
+class AreaDescription extends ValueDescription {
 
 	/**
 	 * Associative array containing the bounds of the area, or false when not set.

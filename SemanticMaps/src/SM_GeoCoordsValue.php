@@ -87,9 +87,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 			case !$this->isValid():
 				return new ThingDescription();
 			case $distance !== false:
-				return new SMAreaValueDescription( $this->getDataItem(), $comparator, $distance );
+				return new \Maps\Semantic\ValueDescriptions\AreaDescription( $this->getDataItem(), $comparator, $distance );
 			default:
-				return new SMGeoCoordsValueDescription( $this->getDataItem(), null, $comparator );
+				return new \Maps\Semantic\ValueDescriptions\CoordinateDescription( $this->getDataItem(), null, $comparator );
 		}
 	}
 
