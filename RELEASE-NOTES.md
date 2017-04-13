@@ -1,9 +1,9 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 4.0.6
+## Maps 4.1.0
 
-Released on April 14th, 2017.
+Released on April 15th, 2017.
 
 * Fixed type warning in `SMMapPrinter::getMapHTML`
 * Added missing geographical polygon type i18n messages
