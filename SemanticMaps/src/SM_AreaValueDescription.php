@@ -166,14 +166,5 @@ class SMAreaValueDescription extends ValueDescription {
 			'west' => $west['lon'],
 		];
 	}
-	
-	/**
-	 * Returns a boolean indicating if MapsGeoFunctions is available. 
-	 * 
-	 * @return boolean
-	 */
-	private function geoFunctionsAreAvailable() {
-		return class_exists( 'MapsGeoFunctions' );
-	}	
-	
+
 }
