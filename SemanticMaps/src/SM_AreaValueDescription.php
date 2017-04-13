@@ -50,7 +50,29 @@ class SMAreaValueDescription extends ValueDescription {
 		$this->radius = MapsDistanceParser::parseDistance( $radius );
 		$this->center = $areaCenter;
 
-		$this->bounds = $this->getBoundingBox();
+		$this->bounds = $this->createBoundingBox();
+	}
+
+	/**
+	 * @return float[] An associative array containing the limits with keys north, east, south and west.
+	 */
+	private function createBoundingBox() {
+		$center = new LatLongValue(
+			$this->center->getLatitude(),
+			$this->center->getLongitude()
+		);
+
+		$north = MapsGeoFunctions::findDestination( $center, 0, $this->radius );
+		$east = MapsGeoFunctions::findDestination( $center, 90, $this->radius );
+		$south = MapsGeoFunctions::findDestination( $center, 180, $this->radius );
+		$west = MapsGeoFunctions::findDestination( $center, 270, $this->radius );
+
+		return [
+			'north' => $north['lat'],
+			'east' => $east['lon'],
+			'south' => $south['lat'],
+			'west' => $west['lon'],
+		];
 	}
 
 	private function getPropertyCompat() {
@@ -59,7 +81,7 @@ class SMAreaValueDescription extends ValueDescription {
 
 	/**
 	 * @see \SMW\Query\Language\Description::getQueryString
-	 * 
+	 *
 	 * @param boolean $asValue
 	 * @return string
 	 */
@@ -78,10 +100,10 @@ class SMAreaValueDescription extends ValueDescription {
     public function prune( &$maxsize, &$maxdepth, &$log ) {
     	if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
 			$log[] = $this->getQueryString();
-			
+
 			$result = new SMWThingDescription();
 			$result->setPrintRequests( $this->getPrintRequests() );
-			
+
 			return $result;
 		}
 
@@ -90,18 +112,18 @@ class SMAreaValueDescription extends ValueDescription {
 
 		return $this;
     }
-    
-    /**
+
+	/**
      * Returns the bounds of the area.
-     * 
+     *
      * @since 0.6
      *
      * @return array
      */
     public function getBounds() {
     	return $this->bounds;
-    }    
-	
+    }
+
 	/**
 	 * @see \SMW\Query\Language\Description::getSQLCondition
 	 *
@@ -110,7 +132,7 @@ class SMAreaValueDescription extends ValueDescription {
 	 * @param string $tableName
 	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
-	 * 
+	 *
 	 * @return string or false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
@@ -121,14 +143,14 @@ class SMAreaValueDescription extends ValueDescription {
 			) {
 			return false;
 		}
-		
+
 		$north = $dbs->addQuotes( $this->bounds['north'] );
 		$east = $dbs->addQuotes( $this->bounds['east'] );
 		$south = $dbs->addQuotes( $this->bounds['south'] );
 		$west = $dbs->addQuotes( $this->bounds['west'] );
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
-		
+
         $conditions = [];
 
         $smallerThen = $isEq ? '<' : '>=';
@@ -143,28 +165,6 @@ class SMAreaValueDescription extends ValueDescription {
         $sql = implode( " $joinCond ", $conditions );
 
 		return $sql;
-	}
-
-	/**
-	 * @return float[] An associative array containing the limits with keys north, east, south and west.
-	 */
-	private function getBoundingBox() {
-		$center = new LatLongValue(
-			$this->center->getLatitude(),
-			$this->center->getLongitude()
-		);
-
-		$north = MapsGeoFunctions::findDestination( $center, 0, $this->radius );
-		$east = MapsGeoFunctions::findDestination( $center, 90, $this->radius );
-		$south = MapsGeoFunctions::findDestination( $center, 180, $this->radius );
-		$west = MapsGeoFunctions::findDestination( $center, 270, $this->radius );
-
-		return [
-			'north' => $north['lat'],
-			'east' => $east['lon'],
-			'south' => $south['lat'],
-			'west' => $west['lon'],
-		];
 	}
 
 }

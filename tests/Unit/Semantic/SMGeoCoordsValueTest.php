@@ -1,6 +1,6 @@
 <?php
 
-namespace SM\Test;
+namespace Maps\Tests\Semantic;
 
 use SMAreaValueDescription;
 use SMGeoCoordsValue;
@@ -48,7 +48,7 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 		$this->assertIsCorrectCoordValue( $description, $lat, $long );
 	}
 
-	protected function assertIsCorrectCoordValue( $description, $lat, $long ) {
+	private function assertIsCorrectCoordValue( $description, $lat, $long ) {
 		/**
 		 * @var SMGeoCoordsValueDescription $description
 		 */
