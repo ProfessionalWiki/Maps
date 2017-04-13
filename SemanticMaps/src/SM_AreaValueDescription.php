@@ -58,24 +58,22 @@ class SMAreaValueDescription extends ValueDescription {
 	}
 
 	/**
-	 * @see SMWDescription:getQueryString
+	 * @see \SMW\Query\Language\Description::getQueryString
 	 * 
 	 * @param boolean $asValue
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
-		if ( $this->getDataItem() !== null ) {
-			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
-			return $asValue ? $queryString : "[[$queryString]]";
-		} else {
+		if ( $this->getDataItem() === null ) {
 			return $asValue ? '+' : '';
 		}
+
+		$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
+		return $asValue ? $queryString : "[[$queryString]]";
 	}
 
 	/**
-	 * @see SMWDescription:prune
-	 * 
-	 * @since 0.6
+	 * @see \SMW\Query\Language\Description::prune
 	 */
     public function prune( &$maxsize, &$maxdepth, &$log ) {
     	if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
@@ -85,11 +83,12 @@ class SMAreaValueDescription extends ValueDescription {
 			$result->setPrintRequests( $this->getPrintRequests() );
 			
 			return $result;
-		} else {
-			$maxsize = $maxsize - $this->getSize();
-			$maxdepth = $maxdepth - $this->getDepth();
-			return $this;
 		}
+
+		$maxsize = $maxsize - $this->getSize();
+		$maxdepth = $maxdepth - $this->getDepth();
+
+		return $this;
     }
     
     /**
@@ -104,7 +103,7 @@ class SMAreaValueDescription extends ValueDescription {
     }    
 	
 	/**
-	 * @see Description::getSQLCondition
+	 * @see \SMW\Query\Language\Description::getSQLCondition
 	 *
 	 * FIXME: store specific code should be in the store component
 	 *
