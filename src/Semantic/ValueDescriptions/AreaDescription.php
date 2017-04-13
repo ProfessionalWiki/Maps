@@ -64,10 +64,6 @@ class AreaDescription extends ValueDescription {
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
-		if ( $this->getDataItem() === null ) { // TODO: dead code? should never be null
-			return $asValue ? '+' : '';
-		}
-
 		$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
 		return $asValue ? $queryString : "[[$queryString]]";
 	}
