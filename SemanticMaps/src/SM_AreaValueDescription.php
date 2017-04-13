@@ -2,6 +2,7 @@
 
 use DataValues\Geo\Values\LatLongValue;
 use SMW\DataValueFactory;
+use SMW\DIProperty;
 use SMW\Query\Language\ValueDescription;
 
 /**
@@ -10,16 +11,14 @@ use SMW\Query\Language\ValueDescription;
  * would otherwise be to resource intensive.
  *
  * @licence GNU GPL v2+
- * @author Jeroen De Dauw < jeroendedauw@gmail.com
- * 
- * TODO: would be awesome to use Spatial Extensions to select coordinates
+ * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class SMAreaValueDescription extends ValueDescription {
-	
+
 	/**
 	 * Associative array containing the bounds of the area, or false when not set.
-	 * 
-	 * @var mixed
+	 *
+	 * @var float[]|false
 	 */
 	private $bounds = false;
 
@@ -37,11 +36,11 @@ class SMAreaValueDescription extends ValueDescription {
 	 * @param SMWDataItem $areaCenter
 	 * @param string $comparator
 	 * @param string $radius
-	 * @param SMWDIProperty $property
+	 * @param DIProperty|null $property
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( SMWDataItem $areaCenter, $comparator, $radius, SMWDIProperty $property = null ) {
+	public function __construct( SMWDataItem $areaCenter, $comparator, $radius, DIProperty $property = null ) {
 		if ( !( $areaCenter instanceof SMWDIGeoCoord ) ) {
 			throw new InvalidArgumentException( '$areaCenter needs to be a SMWDIGeoCoord' );
 		}
@@ -105,7 +104,7 @@ class SMAreaValueDescription extends ValueDescription {
     }    
 	
 	/**
-	 * @see SMWDescription::getSQLCondition
+	 * @see Description::getSQLCondition
 	 *
 	 * FIXME: store specific code should be in the store component
 	 *
