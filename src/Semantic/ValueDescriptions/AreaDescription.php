@@ -53,10 +53,6 @@ class AreaDescription extends ValueDescription {
 		$this->radius = $radius;
 	}
 
-	private function getPropertyCompat() {
-		return method_exists( $this, 'getProperty' ) ? $this->getProperty() : $this->m_property;
-	}
-
 	/**
 	 * @see \SMW\Query\Language\Description::getQueryString
 	 *
@@ -64,8 +60,15 @@ class AreaDescription extends ValueDescription {
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
-		$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
+		$centerString = DataValueFactory::newDataItemValue( $this->center, $this->getPropertyCompat() )->getWikiValue();
+
+		$queryString = "$centerString ({$this->radius})";
+
 		return $asValue ? $queryString : "[[$queryString]]";
+	}
+
+	private function getPropertyCompat() {
+		return method_exists( $this, 'getProperty' ) ? $this->getProperty() : $this->m_property;
 	}
 
 	/**
@@ -96,14 +99,14 @@ class AreaDescription extends ValueDescription {
 	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 *
-	 * @return string or false
+	 * @return string|false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
-		// Only execute the query when the description's type is geographical coordinates,
-		// the description is valid, and the near comparator is used.
-		if ( $this->getDataItem()->getDIType() != SMWDataItem::TYPE_GEO
-			|| ( $this->getComparator() != SMW_CMP_EQ && $this->getComparator() != SMW_CMP_NEQ )
-			) {
+		if ( $this->center->getDIType() != SMWDataItem::TYPE_GEO ) {
+			throw new \LogicException( 'Constructor should have prevented this' );
+		}
+
+		if ( !$this->comparatorIsSupported() ) {
 			return false;
 		}
 
@@ -128,6 +131,10 @@ class AreaDescription extends ValueDescription {
         $conditions[] = "{$tableName}.$fieldNames[2] $biggerThen $west";
 
 		return implode( " $joinCond ", $conditions );
+	}
+
+	private function comparatorIsSupported() {
+		return $this->getComparator() === SMW_CMP_EQ || $this->getComparator() === SMW_CMP_NEQ;
 	}
 
 	/**

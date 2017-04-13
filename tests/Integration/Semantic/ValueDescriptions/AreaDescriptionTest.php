@@ -25,7 +25,7 @@ class AreaDescriptionTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetBoundingBox() {
 		$area = new AreaDescription(
-			new SMWDIGeoCoord( 0, 0 ),
+			new SMWDIGeoCoord( 0, 5 ),
 			SMW_CMP_EQ,
 			'10 km'
 		);
@@ -33,9 +33,9 @@ class AreaDescriptionTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(
 			[
 				'north' => 0.089932160591873,
-				'east' => 0.089932160591873,
+				'east' => 5.089932160591873,
 				'south' => -0.089932160591873,
-				'west' => -0.089932160591873
+				'west' => 4.9100678394081
 			],
 			$area->getBoundingBox()
 		);
@@ -43,15 +43,40 @@ class AreaDescriptionTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGetSQLCondition() {
 		$area = new AreaDescription(
-			new SMWDIGeoCoord( 0, 0 ),
+			new SMWDIGeoCoord( 0, 5 ),
 			SMW_CMP_EQ,
 			'10 km'
 		);
 
 		$this->assertSame(
 			'geo_table.lat_field < \'0.089932160591873\' AND geo_table.lat_field > \'-0.089932160591873\' '
-				. 'AND geo_table.long_field < \'0.089932160591873\' AND geo_table.long_field > \'-0.089932160591873\'',
+				. 'AND geo_table.long_field < \'5.0899321605919\' AND geo_table.long_field > \'4.9100678394081\'',
 			$area->getSQLCondition( 'geo_table', ['id_field', 'lat_field', 'long_field'], wfGetDB( DB_MASTER ) )
+		);
+	}
+
+	public function testWhenComparatorIsNotSupported_getSQLConditionReturnsFalse() {
+		$area = new AreaDescription(
+			new SMWDIGeoCoord( 0, 5 ),
+			SMW_CMP_LIKE,
+			'10 km'
+		);
+
+		$this->assertFalse(
+			$area->getSQLCondition( 'geo_table', ['id_field', 'lat_field', 'long_field'], wfGetDB( DB_MASTER ) )
+		);
+	}
+
+	public function testGetQueryString() {
+		$area = new AreaDescription(
+			new SMWDIGeoCoord( 1, 5 ),
+			SMW_CMP_EQ,
+			'10 km'
+		);
+
+		$this->assertSame(
+			'[[1° 0\' 0", 5° 0\' 0" (10 km)]]',
+			$area->getQueryString()
 		);
 	}
 
