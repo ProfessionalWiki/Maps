@@ -231,5 +231,7 @@
 	"validator-type-mapslocation-list": "List of locations",
 	"validator-type-mapsrectangle": "Geographical rectangle",
 	"validator-type-mapsrectangle-list": "List of rectangles",
+	"validator-type-mapspolygon": "Geographical polygon",
+	"validator-type-mapspolygon-list": "List of geographical polygons",
 	"validator-type-wmsoverlay": "Web Map Service overlay"
 }
