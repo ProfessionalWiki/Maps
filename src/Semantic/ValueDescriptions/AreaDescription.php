@@ -25,13 +25,6 @@ use SMWThingDescription;
 class AreaDescription extends ValueDescription {
 
 	/**
-	 * Associative array containing the bounds of the area, or false when not set.
-	 *
-	 * @var float[]|false
-	 */
-	private $bounds = false;
-
-	/**
 	 * @var SMWDIGeoCoord
 	 */
 	private $center;
@@ -56,32 +49,8 @@ class AreaDescription extends ValueDescription {
 
 		parent::__construct( $areaCenter, $property, $comparator );
 
-		$this->radius = MapsDistanceParser::parseDistance( $radius );
 		$this->center = $areaCenter;
-
-		$this->bounds = $this->createBoundingBox();
-	}
-
-	/**
-	 * @return float[] An associative array containing the limits with keys north, east, south and west.
-	 */
-	private function createBoundingBox() {
-		$center = new LatLongValue(
-			$this->center->getLatitude(),
-			$this->center->getLongitude()
-		);
-
-		$north = MapsGeoFunctions::findDestination( $center, 0, $this->radius );
-		$east = MapsGeoFunctions::findDestination( $center, 90, $this->radius );
-		$south = MapsGeoFunctions::findDestination( $center, 180, $this->radius );
-		$west = MapsGeoFunctions::findDestination( $center, 270, $this->radius );
-
-		return [
-			'north' => $north['lat'],
-			'east' => $east['lon'],
-			'south' => $south['lat'],
-			'west' => $west['lon'],
-		];
+		$this->radius = $radius;
 	}
 
 	private function getPropertyCompat() {
@@ -95,7 +64,7 @@ class AreaDescription extends ValueDescription {
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
-		if ( $this->getDataItem() === null ) {
+		if ( $this->getDataItem() === null ) { // TODO: dead code? should never be null
 			return $asValue ? '+' : '';
 		}
 
@@ -123,17 +92,6 @@ class AreaDescription extends ValueDescription {
     }
 
 	/**
-     * Returns the bounds of the area.
-     *
-     * @since 0.6
-     *
-     * @return array
-     */
-    public function getBounds() {
-    	return $this->bounds;
-    }
-
-	/**
 	 * @see \SMW\Query\Language\Description::getSQLCondition
 	 *
 	 * FIXME: store specific code should be in the store component
@@ -153,27 +111,51 @@ class AreaDescription extends ValueDescription {
 			return false;
 		}
 
-		$north = $dbs->addQuotes( $this->bounds['north'] );
-		$east = $dbs->addQuotes( $this->bounds['east'] );
-		$south = $dbs->addQuotes( $this->bounds['south'] );
-		$west = $dbs->addQuotes( $this->bounds['west'] );
+		$bounds = $this->getBoundingBox();
+
+		$north = $dbs->addQuotes( $bounds['north'] );
+		$east = $dbs->addQuotes( $bounds['east'] );
+		$south = $dbs->addQuotes( $bounds['south'] );
+		$west = $dbs->addQuotes( $bounds['west'] );
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
 
-        $conditions = [];
+		$smallerThen = $isEq ? '<' : '>=';
+		$biggerThen = $isEq ? '>' : '<=';
+		$joinCond = $isEq ? 'AND' : 'OR';
 
-        $smallerThen = $isEq ? '<' : '>=';
-        $biggerThen = $isEq ? '>' : '<=';
-        $joinCond = $isEq ? 'AND' : 'OR';
+		$conditions = [];
 
-        $conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $north";
+		$conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $north";
         $conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $south";
         $conditions[] = "{$tableName}.$fieldNames[2] $smallerThen $east";
         $conditions[] = "{$tableName}.$fieldNames[2] $biggerThen $west";
 
-        $sql = implode( " $joinCond ", $conditions );
+		return implode( " $joinCond ", $conditions );
+	}
 
-		return $sql;
+	/**
+	 * @return float[] An associative array containing the limits with keys north, east, south and west.
+	 */
+	public function getBoundingBox() {
+		$center = new LatLongValue(
+			$this->center->getLatitude(),
+			$this->center->getLongitude()
+		);
+
+		$radiusInMeters = MapsDistanceParser::parseDistance( $this->radius ); // TODO: this can return false
+
+		$north = MapsGeoFunctions::findDestination( $center, 0, $radiusInMeters );
+		$east = MapsGeoFunctions::findDestination( $center, 90, $radiusInMeters );
+		$south = MapsGeoFunctions::findDestination( $center, 180, $radiusInMeters );
+		$west = MapsGeoFunctions::findDestination( $center, 270, $radiusInMeters );
+
+		return [
+			'north' => $north['lat'],
+			'east' => $east['lon'],
+			'south' => $south['lat'],
+			'west' => $west['lon'],
+		];
 	}
 
 }

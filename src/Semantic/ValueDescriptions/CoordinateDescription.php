@@ -2,10 +2,10 @@
 
 namespace Maps\Semantic\ValueDescriptions;
 
-use Maps\Semantic\DatabaseBase;
-use Maps\Semantic\SMWDIGeoCoord;
+use DatabaseBase;
 use SMW\DataValueFactory;
 use SMW\Query\Language\ValueDescription;
+use SMWDIGeoCoord;
 
 /**
  * Description of one data value of type Geographical Coordinates.
@@ -23,12 +23,12 @@ class CoordinateDescription extends ValueDescription {
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
-		if ( $this->getDataItem() !== null ) {
-			$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
-			return $asValue ? $queryString : "[[$queryString]]";
-		} else {
+		if ( $this->getDataItem() === null ) {
 			return $asValue ? '+' : '';
 		}
+
+		$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
+		return $asValue ? $queryString : "[[$queryString]]";
 	}
 
 	private function getPropertyCompat() {

@@ -1,20 +1,26 @@
 <?php
 
+namespace Maps\Semantic\DataValues;
+
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
+use InvalidArgumentException;
+use MapsDistanceParser;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
+use SMWDataItem;
+use SMWDataValue;
+use SMWDIGeoCoord;
+use SMWOutputs;
 use ValueParsers\ParseException;
 
 /**
- * Implementation of datavalues that are geographic coordinates.
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Markus Krötzsch
  */
-class SMGeoCoordsValue extends SMWDataValue {
+class CoordinateValue extends SMWDataValue {
 
 	private $wikiValue;
 

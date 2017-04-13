@@ -1,5 +1,7 @@
 <?php
 
+use Maps\Semantic\DataValues\CoordinateValue;
+use Maps\Semantic\DataValues\GeoPolygonValue;
 use SMW\DataTypeRegistry;
 
 /**
@@ -43,13 +45,13 @@ final class SemanticMapsHooks {
 	public static function initGeoDataTypes() {
 		DataTypeRegistry::getInstance()->registerDatatype(
 			'_geo',
-			SMGeoCoordsValue::class,
+			CoordinateValue::class,
 			SMWDataItem::TYPE_GEO
 		);
 
 		DataTypeRegistry::getInstance()->registerDatatype(
 			'_gpo',
-			SMGeoPolygonsValue::class,
+			GeoPolygonValue::class,
 			SMWDataItem::TYPE_BLOB
 		);
 
@@ -65,8 +67,8 @@ final class SemanticMapsHooks {
 	 * @since 1.0
 	 *
 	 * @param $format Mixed: The format (string), or false when not set yet
-	 * @param $printRequests Array: The print requests made
-	 * @param $params Array: The parameters for the query printer
+	 * @param array $printRequests The print requests made
+	 * @param array $params The parameters for the query printer
 	 *
 	 * @return boolean
 	 */

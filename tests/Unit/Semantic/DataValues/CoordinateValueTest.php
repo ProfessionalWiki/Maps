@@ -1,21 +1,21 @@
 <?php
 
-namespace Maps\Tests\Semantic;
+namespace Maps\Tests\Semantic\DataValues;
 
+use Maps\Semantic\DataValues\CoordinateValue;
 use Maps\Semantic\ValueDescriptions\AreaDescription;
 use Maps\Semantic\ValueDescriptions\CoordinateDescription;
-use SMGeoCoordsValue;
 use SMW\DataValueFactory;
 use SMWDataItem;
 use SMWDIGeoCoord;
 
 /**
- * @covers SMGeoCoordsValue
+ * @covers \Maps\Semantic\ValueDescriptions\CoordinateValue
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
+class CoordinateValueTest extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 		if ( !defined( 'SMW_VERSION' ) ) {
@@ -27,11 +27,11 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 		$geoDI = new SMWDIGeoCoord( 23, 42 );
 
 		/**
-		 * @var SMGeoCoordsValue $geoValue
+		 * @var CoordinateValue $geoValue
 		 */
 		$geoValue = DataValueFactory::newDataItemValue( $geoDI );
 
-		$this->assertInstanceOf( SMGeoCoordsValue::class, $geoValue );
+		$this->assertInstanceOf( CoordinateValue::class, $geoValue );
 
 		$this->assertEquals( $geoDI, $geoValue->getDataItem() );
 		$this->assertEquals( '23° 0\' 0", 42° 0\' 0"', $geoValue->getShortWikiText() );
@@ -58,7 +58,7 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	protected function newInstance() {
-		return new SMGeoCoordsValue( SMWDataItem::TYPE_GEO );
+		return new CoordinateValue( SMWDataItem::TYPE_GEO );
 	}
 
 	public function coordinateProvider() {
@@ -89,7 +89,7 @@ class SMGeoCoordsValueTest extends \PHPUnit_Framework_TestCase {
 
 		$description = $geoValue->getQueryDescription( $serialization );
 
-		$this->assertInstanceOf( \Maps\Semantic\ValueDescriptions\AreaDescription::class, $description );
+		$this->assertInstanceOf( AreaDescription::class, $description );
 	}
 
 	public function coordinateWithDistanceProvider() {

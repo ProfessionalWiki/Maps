@@ -1,15 +1,18 @@
 <?php
 
+namespace Maps\Semantic\DataValues;
+
+use PolygonHandler;
+use SMWDataItem;
+use SMWDataValue;
+use SMWDIBlob;
+
 /**
  * Implementation of datavalues that are geographic shapes.
  *
- * @file SM_GeoPolgonValue.php
- * @ingroup SemanticMaps
- * @ingroup SMWDataValues
- *
  * @author Nischay Nahata
  */
-class SMGeoPolygonsValue extends SMWDataValue {
+class GeoPolygonValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::setDataItem()
@@ -38,10 +41,11 @@ class SMGeoPolygonsValue extends SMWDataValue {
 		if ( $value === '' ) {
 			$this->addError( wfMessage( 'smw_emptystring' )->inContentLanguage()->text() );
 		}
-		$polyHandler = new PolygonHandler ( $value );
-		foreach( $polyHandler->getValidationErrors() as $errMsg ) {
+
+		foreach( ( new PolygonHandler( $value ) )->getValidationErrors() as $errMsg ) {
 			$this->addError( $errMsg );
 		}
+
 		$this->m_dataitem = new SMWDIBlob( $value, $this->m_typeid );
 	}
 
@@ -53,9 +57,9 @@ class SMGeoPolygonsValue extends SMWDataValue {
 	public function getShortWikiText( $linked = null ) {
 		if ( $this->isValid() ) {
 			return $this->m_dataitem->getString();
-		} else {
-			return $this->getErrorText();
 		}
+
+		return $this->getErrorText();
 	}
 
 	/**

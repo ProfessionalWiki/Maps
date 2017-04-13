@@ -5,7 +5,7 @@ namespace Maps\Test;
 use MapsDistanceParser;
 
 /**
- * @covers MapsCoordinates
+ * @covers MapsDistanceParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
