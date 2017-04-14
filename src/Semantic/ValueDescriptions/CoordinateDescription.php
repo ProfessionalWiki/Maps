@@ -23,14 +23,10 @@ class CoordinateDescription extends ValueDescription {
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
-		$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getPropertyCompat() )->getWikiValue();
+		$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getProperty() )->getWikiValue();
 		return $asValue ? $queryString : "[[$queryString]]";
 	}
 
-	private function getPropertyCompat() {
-		return method_exists( $this, 'getProperty' ) ? $this->getProperty() : $this->m_property;
-	}
-	
 	/**
 	 * @see SMWDescription::getSQLCondition
 	 *

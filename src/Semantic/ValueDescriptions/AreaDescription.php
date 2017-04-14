@@ -60,15 +60,11 @@ class AreaDescription extends ValueDescription {
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
-		$centerString = DataValueFactory::newDataItemValue( $this->center, $this->getPropertyCompat() )->getWikiValue();
+		$centerString = DataValueFactory::newDataItemValue( $this->center, $this->getProperty() )->getWikiValue();
 
 		$queryString = "$centerString ({$this->radius})";
 
 		return $asValue ? $queryString : "[[$queryString]]";
-	}
-
-	private function getPropertyCompat() {
-		return method_exists( $this, 'getProperty' ) ? $this->getProperty() : $this->m_property;
 	}
 
 	/**
