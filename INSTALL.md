@@ -151,7 +151,14 @@ Older versions (no longer supported):
 		<td>Handled by Composer</td>
 	</tr>
 	<tr>
-		<th>Maps 3.1.x & 3.2.x</th>
+		<th>Maps 3.2.x</th>
+		<td>5.3.2 - 5.6.x</td>
+		<td>1.18 - 1.24</td>
+		<td>Required</td>
+		<td>Handled by Composer</td>
+	</tr>
+	<tr>
+		<th>Maps 3.1.x</th>
 		<td>5.3.2 - 5.6.x</td>
 		<td>1.18 - 1.24</td>
 		<td>Required</td>
