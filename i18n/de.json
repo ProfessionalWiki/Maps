@@ -237,5 +237,7 @@
 	"validator-type-mapslocation-list": "Liste der Standorte",
 	"validator-type-mapsrectangle": "Geografisches Rechteck",
 	"validator-type-mapsrectangle-list": "Liste der Rechtecke",
+	"validator-type-mapspolygon": "Geografisches Vieleck",
+	"validator-type-mapspolygon-list": "Liste geografischer Vielecke",
 	"validator-type-wmsoverlay": "Web-Map-Service-Überlagerung"
 }

@@ -105,5 +105,7 @@
 	"validator-type-mapslocation": "ভৌগলিক অবস্থান",
 	"validator-type-mapslocation-list": "অবস্থানগুলির তালিকা",
 	"validator-type-mapsrectangle": "ভৌগলিক আয়তক্ষেত্র",
-	"validator-type-mapsrectangle-list": "আয়তক্ষেত্রের তালিকা"
+	"validator-type-mapsrectangle-list": "আয়তক্ষেত্রের তালিকা",
+	"validator-type-mapspolygon": "ভৌগলিক বহুভুজ",
+	"validator-type-mapspolygon-list": "ভৌগলিক বহুভুজের তালিকা"
 }

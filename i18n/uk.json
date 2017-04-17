@@ -235,5 +235,7 @@
 	"validator-type-mapslocation-list": "Список місцевостей",
 	"validator-type-mapsrectangle": "Географічний прямокутник",
 	"validator-type-mapsrectangle-list": "Список прямокутників",
+	"validator-type-mapspolygon": "Географічний багатокутник",
+	"validator-type-mapspolygon-list": "Список географічних багатокутників",
 	"validator-type-wmsoverlay": "Накладення Web Map Service"
 }

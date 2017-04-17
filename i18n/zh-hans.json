@@ -236,5 +236,7 @@
 	"validator-type-mapslocation-list": "位置列表",
 	"validator-type-mapsrectangle": "地理矩形",
 	"validator-type-mapsrectangle-list": "矩形列表",
+	"validator-type-mapspolygon": "地理多边形",
+	"validator-type-mapspolygon-list": "地理多边形列表",
 	"validator-type-wmsoverlay": "网络地图服务覆盖"
 }

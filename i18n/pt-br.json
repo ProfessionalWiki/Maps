@@ -8,7 +8,8 @@
 			"Luckas Blade",
 			"555",
 			"Macofe",
-			"Jaideraf"
+			"Jaideraf",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"maps-desc": "Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas",
@@ -27,6 +28,8 @@
 	"validation-error-invalid-layers": "O parâmetro $1 precisa ser uma ou mais camada(s) válida(s).",
 	"maps-layer-of-type": "Camada de tipo $1",
 	"maps-layer-type-supported-by": "Este tipo de camada só pode ser usado com {{PLURAL:$2|o serviço de cartografia $1|os serviços de cartografia: $1}}.",
+	"maps-finddestination-par-bearing": "A direção inicial.",
+	"maps-finddestination-par-distance": "A distância para percorrer.",
 	"validation-error-invalid-location": "O parâmetro $1 precisa ser uma localização válida.",
 	"validation-error-invalid-locations": "O parâmetro $1 precisa ser uma ou mais localização(ões) válida(s).",
 	"validation-error-invalid-width": "O parâmetro $1 precisa ser uma largura válida.",

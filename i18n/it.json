@@ -153,5 +153,7 @@
 	"validator-type-mapslocation": "Posizione geografica",
 	"validator-type-mapslocation-list": "Elenco delle località",
 	"validator-type-mapsrectangle": "Rettangolo geografico",
-	"validator-type-mapsrectangle-list": "Elenco di rettangoli"
+	"validator-type-mapsrectangle-list": "Elenco di rettangoli",
+	"validator-type-mapspolygon": "Poligono geografico",
+	"validator-type-mapspolygon-list": "Elenco dei poligoni geografici"
 }

@@ -230,5 +230,7 @@
 	"validator-type-mapslocation-list": "Список на месности",
 	"validator-type-mapsrectangle": "Географски правоаголник",
 	"validator-type-mapsrectangle-list": "Список на правоаголници",
+	"validator-type-mapspolygon": "Географски многуаголник",
+	"validator-type-mapspolygon-list": "Список на географски многуаголници",
 	"validator-type-wmsoverlay": "Облога Web Map Service"
 }

@@ -248,5 +248,7 @@
 	"validator-type-mapslocation-list": "Liste des emplacements",
 	"validator-type-mapsrectangle": "Rectangle géographique",
 	"validator-type-mapsrectangle-list": "Liste des rectangles",
+	"validator-type-mapspolygon": "Polygone géographique",
+	"validator-type-mapspolygon-list": "Liste des polygones géographiques",
 	"validator-type-wmsoverlay": "Surcouche de Service de Carte web"
 }
