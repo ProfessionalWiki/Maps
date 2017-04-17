@@ -98,7 +98,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-type',
 			'post-format' => function( $value ) {
-				return MapsGoogleMaps3::$mapTypes[strtolower( $value )];
+				return self::$mapTypes[strtolower( $value )];
 			},
 		];
 
@@ -110,7 +110,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'islist' => true,
 			'post-format' => function( array $value ) {
 				foreach ( $value as &$part ) {
-					$part = MapsGoogleMaps3::$mapTypes[strtolower( $part )];
+					$part = self::$mapTypes[strtolower( $part )];
 				}
 
 				return $value;
@@ -146,7 +146,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'values' => array_keys( self::$typeControlStyles ),
 			'message' => 'maps-googlemaps3-par-typestyle',
 			'post-format' => function( $value ) {
-				return MapsGoogleMaps3::$typeControlStyles[strtolower( $value )];
+				return self::$typeControlStyles[strtolower( $value )];
 			},
 		];
 
