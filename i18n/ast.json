@@ -228,5 +228,7 @@
 	"validator-type-mapslocation-list": "Llista d'allugamientos",
 	"validator-type-mapsrectangle": "Rectángulu xeográficu",
 	"validator-type-mapsrectangle-list": "Llista de rectángulos",
+	"validator-type-mapspolygon": "Polígonu xeográficu",
+	"validator-type-mapspolygon-list": "Llista de polígonos xeográficos",
 	"validator-type-wmsoverlay": "Superposición de Serviciu de Mapes web"
 }
