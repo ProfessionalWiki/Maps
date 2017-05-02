@@ -9,7 +9,8 @@
 			"555",
 			"Macofe",
 			"Jaideraf",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Felipe L. Ewald"
 		]
 	},
 	"maps-desc": "Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas",
@@ -28,6 +29,7 @@
 	"validation-error-invalid-layers": "O parâmetro $1 precisa ser uma ou mais camada(s) válida(s).",
 	"maps-layer-of-type": "Camada de tipo $1",
 	"maps-layer-type-supported-by": "Este tipo de camada só pode ser usado com {{PLURAL:$2|o serviço de cartografia $1|os serviços de cartografia: $1}}.",
+	"maps-finddestination-par-location": "A localização inicial.",
 	"maps-finddestination-par-bearing": "A direção inicial.",
 	"maps-finddestination-par-distance": "A distância para percorrer.",
 	"validation-error-invalid-location": "O parâmetro $1 precisa ser uma localização válida.",
@@ -62,6 +64,9 @@
 	"mapeditor-done-button": "Feito",
 	"mapeditor-remove-button": "Remover",
 	"mapeditor-import-button2": "Importar",
+	"mapeditor-export-button": "Exportar para código wiki",
+	"mapeditor-import-button": "Importar de código wiki",
+	"mapeditor-select-button": "Seleciona este polígono",
 	"mapeditor-mapparam-button": "Editar parâmetros do mapa",
 	"mapeditor-clear-button": "Limpar mapa",
 	"mapeditor-code-title": "Código wiki",
@@ -97,5 +102,10 @@
 	"semanticmaps-kml-linkabsolute": "Os links deverão ser absolutos (ao contrário de relativos)",
 	"semanticmaps-kml-pagelinktext": "O texto a ser usado nos links para a página, onde  $1 será substituído pelo título da página",
 	"semanticmaps-shapes-improperformat": "Formatação imprópria em $1. Por favor, veja a documentação para formatação",
-	"semanticmaps-shapes-missingshape": "Nenhuma forma foi encontrada para $1. Por favor, veja a documentação para formas disponíveis"
+	"semanticmaps-shapes-missingshape": "Nenhuma forma foi encontrada para $1. Por favor, veja a documentação para formas disponíveis",
+	"validator-type-mapscircle-list": "Lista de círculos",
+	"validator-type-mapslocation-list": "Lista de locais",
+	"validator-type-mapsrectangle-list": "Lista de retângulos",
+	"validator-type-mapspolygon": "Polígono geográfico",
+	"validator-type-mapspolygon-list": "Lista de polígonos geográficos"
 }
