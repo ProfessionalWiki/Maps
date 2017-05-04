@@ -208,7 +208,16 @@
 	"semanticmaps-kml-pagelinktext": "Texten som ska användas för länkar till sidan, där $1 kommer att bytas ut med sidtiteln",
 	"semanticmaps-shapes-improperformat": "Felaktig formatering av $1. Se dokumentationen för formatering",
 	"semanticmaps-shapes-missingshape": "Inga former hittade för $1. Se dokumentationen för tillgängliga former",
+	"validator-type-mapscircle": "Geografisk cirkel",
 	"validator-type-mapscircle-list": "Lista över cirklar",
+	"validator-type-mapsimageoverlay": "Bildöverlägg",
+	"validator-type-mapsimageoverlay-list": "Lista över bildöverlägg",
+	"validator-type-mapsline": "Geografisk linje",
+	"validator-type-mapsline-list": "Lista över linjer",
 	"validator-type-mapslocation": "Geografisk plats",
-	"validator-type-mapsrectangle-list": "Lista över rektanglar"
+	"validator-type-mapslocation-list": "Lista över platser",
+	"validator-type-mapsrectangle": "Geografisk rektangel",
+	"validator-type-mapsrectangle-list": "Lista över rektanglar",
+	"validator-type-mapspolygon": "Geografisk polygon",
+	"validator-type-mapspolygon-list": "Lista över geografiska polygoner"
 }
