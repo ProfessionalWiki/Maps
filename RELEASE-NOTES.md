@@ -1,6 +1,13 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 4.2.0
+
+Under development
+
+* Fixed bug in Nomatim geocoder that caused page loading to fail when Nomatim is down
+* Fixed bug in Nomatim geocoder that caused page loading to fail when Nomatim returned an invalid response
+
 ## Maps 4.1.0
 
 Released on April 14th, 2017.
