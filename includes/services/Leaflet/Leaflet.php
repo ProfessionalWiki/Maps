@@ -18,13 +18,37 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is an extension to MediaWiki and thus not a valid entry point.' );
 }
 
+function getLeafletPath() {
+	if ( file_exists( __DIR__ . '/../../../vendor/drmonty/leaflet/js/leaflet.js' ) ) {
+		return __DIR__ . '/../../../vendor/drmonty/leaflet';
+	}
+
+	return __DIR__ . '/../../../../../vendor/drmonty/leaflet';
+}
+
 call_user_func( function() {
 	global $wgResourceModules;
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
+	$wgResourceModules['ext.maps.leaflet.core'] = [
+		'localBasePath' => getLeafletPath(),
+		'remoteExtPath' => '../vendor/drmonty/leaflet',
+		'group' => 'ext.maps',
+		'targets' => [
+			'mobile',
+			'desktop'
+		],
+		'scripts' => [
+			"js/leaflet.js",
+		],
+		'styles' => [
+			"css/leaflet.css"
+		],
+	];
+
 	$wgResourceModules['ext.maps.leaflet'] = [
-		'dependencies' => [ 'ext.maps.common' ],
+		'dependencies' => [ 'ext.maps.common', 'ext.maps.leaflet.core' ],
 		'localBasePath' => __DIR__,
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',

@@ -36,7 +36,8 @@
 		"mediawiki/validator": "~2.2",
 		"data-values/geo": "~1.0",
 		"jeroen/file-fetcher": "~3.1",
-		"jeroen/simple-cache": "~2.0"
+		"jeroen/simple-cache": "~2.0",
+		"drmonty/leaflet": "1.0.3"
 	},
 	"require-dev": {
 		"data-values/common": "~0.3.1",
