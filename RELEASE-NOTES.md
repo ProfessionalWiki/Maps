@@ -3,11 +3,11 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 4.2.0
 
-Under development
+Released on May 15th, 2017.
 
-* Updated Leaflet from 1.0.0-rc to 1.0.3
 * Fixed bug in Nomatim geocoder that caused page loading to fail when Nomatim is down
 * Fixed bug in Nomatim geocoder that caused page loading to fail when Nomatim returned an invalid response
+* Updated Leaflet from 1.0.0-rc to 1.0.3
 
 ## Maps 4.1.0
 
