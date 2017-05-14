@@ -76,18 +76,25 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status</th>
 	</tr>
 	<tr>
-		<th>Maps 4.2.x</th>
+		<th>Maps 4.3.x</th>
 		<td><strong>5.6</strong> - TBD</td>
 		<td>TBD - 1.29+</td>
 		<td>TBD - 2.5+</td>
 		<td>In development</td>
 	</tr>
 	<tr>
-		<th>Maps 4.1.x</th>
+		<th>Maps 4.2.x</th>
 		<td>5.5 - 7.1</td>
 		<td>1.23 - 1.29</td>
 		<td>2.1 - 2.5</td>
 		<td>Stable release</td>
+	</tr>
+	<tr>
+		<th>Maps 4.1.x</th>
+		<td>5.5 - 7.1</td>
+		<td>1.23 - 1.28</td>
+		<td>2.1 - 2.5</td>
+		<td>Legacy release</td>
 	</tr>
 	<tr>
 		<th>Maps 4.0.x</th>
