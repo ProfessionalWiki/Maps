@@ -2,7 +2,6 @@
 
 namespace Maps;
 
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
 use MapsOldGeocoderAdapter;
