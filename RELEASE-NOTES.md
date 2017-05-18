@@ -1,6 +1,12 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 4.2.1
+
+In development
+
+* Fixed issue occurring when using the `template` parameter in the Google Maps result format more than once on a page
+
 ## Maps 4.2.0
 
 Released on May 15th, 2017.
