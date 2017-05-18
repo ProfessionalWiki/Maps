@@ -292,7 +292,7 @@ class SMQueryHandler {
 						}
 					}
 				}
-				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide()) {
+				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide() ) {
 					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 				}
 				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' || $dataValue->getTypeID() == '_geo' ) {
@@ -378,6 +378,10 @@ class SMQueryHandler {
 		return $this->linkStyle !== 'none';
 	}
 
+	private function hasTemplate() {
+		return is_string( $this->template );
+	}
+
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
 	 *
@@ -387,16 +391,12 @@ class SMQueryHandler {
 	 * @return string
 	 */
 	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
-		if($this->isHeadersHide()){
-			return '';
-		}
-
-		if ( $this->template ) {
+		if ( $this->hasTemplate() ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getTitle()->getPrefixedText();
-			} else {
-				return $object->getLongText( SMW_OUTPUT_WIKI, null );
 			}
+
+			return $object->getLongText( SMW_OUTPUT_WIKI, null );
 		}
 
 		if ( $this->linkAbsolute ) {
@@ -449,15 +449,15 @@ class SMQueryHandler {
 	}
 
 
-	private function isHeadersShow(){
+	private function isHeadersShow() {
 		return $this->headerStyle === 'show';
 	}
 
-	private function isHeadersHide(){
+	private function isHeadersHide() {
 		return $this->headerStyle === 'hide';
 	}
 
-	private function isHeadersPlain(){
+	private function isHeadersPlain() {
 		return $this->headerStyle === 'plain';
 	}
 
@@ -473,7 +473,7 @@ class SMQueryHandler {
 	 * @return Location[]
 	 */
 	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
-		if ( $this->template ) {
+		if ( $this->hasTemplate() ) {
 			global $wgParser;
 			$parser = clone $wgParser;
 		}
@@ -489,7 +489,7 @@ class SMQueryHandler {
 		}
 
 		foreach ( $locations as &$location ) {
-			if ( $this->template ) {
+			if ( $this->hasTemplate() ) {
 				$segments = array_merge(
 					[
 						$this->template,
