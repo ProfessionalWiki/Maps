@@ -11,7 +11,7 @@ use Maps\Elements\Location;
 class SMQueryHandler {
 
 	private $queryResult;
-	private $outputmode;
+	private $outputMode;
 
 	/**
 	 * @var array
@@ -55,7 +55,7 @@ class SMQueryHandler {
 	 *
 	 * @var boolean
 	 */
-	public $titleLinkSeparate;
+	public $titleLinkSeparate = false;
 
 	/**
 	 * Should link targets be made absolute (instead of relative)?
@@ -69,7 +69,7 @@ class SMQueryHandler {
 	 *
 	 * @var string
 	 */
-	private $pageLinkText;
+	private $pageLinkText = '$1';
 
 	/**
 	 * A separator to use between the subject and properties in the text field.
@@ -115,9 +115,9 @@ class SMQueryHandler {
 	/**
 	 * Marker icon to show when marker equals active page
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	private $activeIcon;
+	private $activeIcon = null;
 
 	/**
 	 * @var string
@@ -126,21 +126,13 @@ class SMQueryHandler {
 
 	/**
 	 * @param SMWQueryResult $queryResult
-	 * @param integer $outputmode
+	 * @param integer $outputMode
 	 * @param boolean $linkAbsolute
-	 * @param string $pageLinkText
-	 * @param boolean $titleLinkSeparate
-	 * @param string $activeIcon
 	 */
-	public function __construct( SMWQueryResult $queryResult, $outputmode, $linkAbsolute = false, $pageLinkText = '$1', $titleLinkSeparate = false, $hideNamespace = false, $activeIcon = null ) {
+	public function __construct( SMWQueryResult $queryResult, $outputMode, $linkAbsolute = false ) {
 		$this->queryResult = $queryResult;
-		$this->outputmode = $outputmode;
-
+		$this->outputMode = $outputMode;
 		$this->linkAbsolute = $linkAbsolute;
-		$this->pageLinkText = $pageLinkText;
-		$this->titleLinkSeparate = $titleLinkSeparate;
-		$this->hideNamespace = $hideNamespace;
-		$this->activeIcon = $activeIcon;
 	}
 
 	/**
@@ -269,16 +261,16 @@ class SMQueryHandler {
 
 		// Loop through all fields of the record.
 		foreach ( $row as $i => $resultArray ) {
-			/* SMWPrintRequest */ $printRequest = $resultArray->getPrintRequest();
+			$printRequest = $resultArray->getPrintRequest();
 
 			// Loop through all the parts of the field value.
-			while ( ( /* SMWDataValue */ $dataValue = $resultArray->getNextDataValue() ) !== false ) {
+			while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
 				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
 					list( $title, $text ) = $this->handleResultSubject( $dataValue );
 				}
 				else if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
-					$title = $dataValue->getLongText( $this->outputmode, null );
-					$text = $dataValue->getLongText( $this->outputmode, smwfGetLinker() );
+					$title = $dataValue->getLongText( $this->outputMode, null );
+					$text = $dataValue->getLongText( $this->outputMode, smwfGetLinker() );
 				}
 				else if ( $dataValue->getTypeID() == '_gpo' ) {
 					$dataItem = $dataValue->getDataItem();
@@ -305,7 +297,7 @@ class SMQueryHandler {
 			}
 		}
 
-		if ( count( $properties ) > 0 && $text !== '' ) {
+		if ( $properties !== [] && $text !== '' ) {
 			$text .= $this->subjectSeparator;
 		}
 
@@ -332,7 +324,7 @@ class SMQueryHandler {
 	 * @return array with title and text
 	 */
 	private function handleResultSubject( SMWWikiPageValue $object ) {
-		$title = $object->getLongText( $this->outputmode, null );
+		$title = $object->getLongText( $this->outputMode, null );
 		$text = '';
 
 		if ( $this->showSubject ) {
@@ -426,7 +418,7 @@ class SMQueryHandler {
 			$hasPage = $object->getTypeID() == '_wpg';
 
 			if ( $hasPage ) {
-				$t = Title::newFromText( $object->getLongText( $this->outputmode, null ), NS_MAIN );
+				$t = Title::newFromText( $object->getLongText( $this->outputMode, null ), NS_MAIN );
 				$hasPage = $t !== null && $t->exists();
 			}
 
@@ -434,15 +426,15 @@ class SMQueryHandler {
 				$propertyValue = Html::element(
 					'a',
 					[ 'href' => $t->getFullUrl() ],
-					$object->getLongText( $this->outputmode, null )
+					$object->getLongText( $this->outputMode, null )
 				);
 			}
 			else {
-				$propertyValue = $object->getLongText( $this->outputmode, null );
+				$propertyValue = $object->getLongText( $this->outputMode, null );
 			}
 		}
 		else {
-			$propertyValue = $object->getLongText( $this->outputmode, smwfGetLinker() );
+			$propertyValue = $object->getLongText( $this->outputMode, smwfGetLinker() );
 		}
 
 		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
@@ -529,7 +521,7 @@ class SMQueryHandler {
 	 */
 	private function getLocationIcon( array $row ) {
 		$icon = '';
-		$legend_labels = [];
+		$legendLabels = [];
 
 		//Check for activeicon parameter
 
@@ -551,8 +543,8 @@ class SMQueryHandler {
 
 					$legend_label = $display_options['legend label'];
 
-					if ( ! array_key_exists( $icon, $legend_labels ) ) {
-						$legend_labels[$icon] = $legend_label;
+					if ( ! array_key_exists( $icon, $legendLabels ) ) {
+						$legendLabels[$icon] = $legend_label;
 					}
 				}
 			}

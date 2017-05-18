@@ -86,10 +86,11 @@ class SMKMLPrinter extends FileExportPrinter {
 	 * @return string
 	 */
 	private function getKML( SMWQueryResult $res, $outputmode ) {
-		$queryHandler = new SMQueryHandler( $res, $outputmode, $this->params['linkabsolute'], $this->params['pagelinktext'], false );
+		$queryHandler = new SMQueryHandler( $res, $outputmode, $this->params['linkabsolute'] );
 		$queryHandler->setText( $this->params['text'] );
 		$queryHandler->setTitle( $this->params['title'] );
 		$queryHandler->setSubjectSeparator( '' );
+		$queryHandler->setPageLinkText( $this->params['pagelinktext'] );
 
 		$formatter = new MapsKMLFormatter( $this->params );
 
