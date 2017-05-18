@@ -473,20 +473,11 @@ class SMQueryHandler {
 	 * @return Location[]
 	 */
 	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
-		if ( $this->hasTemplate() ) {
-			global $wgParser;
-			$parser = clone $wgParser;
-		}
-		else {
+		if ( !$this->hasTemplate() ) {
 			$text .= implode( '<br />', $properties );
 		}
 
-		if ( $title === null ) {
-			$titleOutput = '';
-		}
-		else {
-			$titleOutput = $this->hideNamespace ? $title->getText() : $title->getFullText();
-		}
+		$titleOutput = $this->getTitleOutput( $title );
 
 		foreach ( $locations as &$location ) {
 			if ( $this->hasTemplate() ) {
@@ -501,7 +492,9 @@ class SMQueryHandler {
 					$properties
 				);
 
-				$text .= $parser->parse( '{{' . implode( '|', $segments ) . '}}', $parser->getTitle(), new ParserOptions() )->getText();
+				$text .= $this->getParser()->recursiveTagParse(
+					'{{' . implode( '|', $segments ) . '}}'
+				);
 			}
 
 			$location->setTitle( $titleOutput );
@@ -510,6 +503,21 @@ class SMQueryHandler {
 		}
 
 		return $locations;
+	}
+
+	/**
+	 * @return \Parser
+	 */
+	private function getParser() {
+		return $GLOBALS['wgParser'];
+	}
+
+	private function getTitleOutput( Title $title = null ) {
+		if ( $title === null ) {
+			return '';
+		}
+
+		return $this->hideNamespace ? $title->getText() : $title->getFullText();
 	}
 
 	/**
@@ -580,14 +588,14 @@ class SMQueryHandler {
 	/**
 	 * @param string $activeIcon
 	 */
-	public function setActiveIcon( $activeIcon ){
+	public function setActiveIcon( $activeIcon ) {
 		$this->activeIcon = $activeIcon;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getActiveIcon( ){
+	public function getActiveIcon() {
 		return $this->activeIcon;
 	}
 
