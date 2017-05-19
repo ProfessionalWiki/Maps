@@ -3,7 +3,7 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 4.2.1
 
-In development
+Released on May 20th, 2017.
 
 * Fixed issue occurring when using the `template` parameter in the Google Maps result format more than once on a page
 
