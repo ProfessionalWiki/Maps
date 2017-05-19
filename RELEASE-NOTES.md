@@ -113,7 +113,7 @@ Due to changes to Google Maps, an API key now needs to be set. See the
 * Added [Leaflet fullscreen control](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_fullscreen_control) (by Peter Grassberger)
 * Added [OSM Nominatim Geocoder](https://www.semantic-mediawiki.org/wiki/Maps_examples/Geocode) (by Peter Grassberger)
 * Upgraded Leaflet library to its latest version (1.0.0-r3) (by Peter Grassberger)
-* Made removal of marker clusters more robust. (by Peter Grassberger)
+* Made removal of marker clusters more robust (by Peter Grassberger)
 * Unified system messages for several services (by Karsten Hoffmeyer)
 
 ## Maps 3.7
