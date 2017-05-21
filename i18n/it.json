@@ -9,7 +9,8 @@
 			"HalphaZ",
 			"Rosh",
 			"Viscontino",
-			"Matteocng"
+			"Matteocng",
+			"Kaspo"
 		]
 	},
 	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki, la geocodifica degli indirizzi ed altre operazioni geografiche",
@@ -75,6 +76,7 @@
 	"maps-leaflet-par-defzoom": "Permette l'impostazione del livello di zoom predefinito della mappa.",
 	"maps_click_to_activate": "Clicca per attivare la mappa.",
 	"maps_centred_on": "Mappa centrata su $1, $2.",
+	"maps-par-enable-fullscreen": "Attiva bottone a tutto schermo",
 	"maps-par-kml": "File KML da caricare sulla mappa.",
 	"maps-googlemaps3-incompatbrowser": "Si sta utilizzando un browser non compatibile con Google Maps v3.",
 	"maps-googlemaps3-par-type": "Il tipo di mappa da mostrare inizialmente.",
