@@ -16,7 +16,7 @@
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
 	"maps-searchmarkers-text": "Markéierunge fir Filteren",
 	"maps-others": "anerer",
-	"maps-layer-property": "Eegeschaft",
+	"maps-layer-property": "Eegenschaft",
 	"maps-layer-value": "Wäert",
 	"maps-layer-errors": "Feeler",
 	"maps-layerdef-invalid": "Net valabel {{PLURAL:$1|Definitioun|Definitiounen}}",
