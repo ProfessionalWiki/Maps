@@ -63,14 +63,14 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		throw new Exception( 'You need to have Validator installed in order to use Maps' );
 	}
 
-	if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
+	if ( version_compare( $GLOBALS['wgVersion'], '1.27c' , '<' ) ) {
 		throw new Exception(
-			'This version of Maps requires MediaWiki 1.23 or above; use Maps 3.5.x for older versions.'
+			'This version of Maps requires MediaWiki 1.27 or above; use Maps 4.2.x for older versions.'
 			. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
 		);
 	}
 
-	define( 'Maps_VERSION' , '4.2.1' );
+	define( 'Maps_VERSION' , '4.3 alpha' );
 	define( 'SM_VERSION', Maps_VERSION );
 
 	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
