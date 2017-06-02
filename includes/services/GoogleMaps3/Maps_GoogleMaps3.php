@@ -14,13 +14,9 @@
 class MapsGoogleMaps3 extends MapsMappingService {
 
 	/**
-	 * List of map types (keys) and their internal values (values).
-	 *
-	 * @since 0.7
-	 *
-	 * @var array
+	 * Maps user input map types to the Google Maps names for the map types.
 	 */
-	public static $mapTypes = [
+	private static $mapTypes = [
 		'normal' => 'ROADMAP',
 		'roadmap' => 'ROADMAP',
 		'satellite' => 'SATELLITE',
@@ -30,32 +26,18 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'earth' => 'earth'
 	];
 
-	/**
-	 * List of supported map layers.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array
-	 */
-	protected static $mapLayers = [
+	private static $mapLayers = [
 		'traffic',
 		'bicycling'
 	];
 
-	public static $typeControlStyles = [
+	private static $typeControlStyles = [
 		'default' => 'DEFAULT',
 		'horizontal' => 'HORIZONTAL_BAR',
 		'dropdown' => 'DROPDOWN_MENU'
 	];
 
-	/**
-	 * List of supported control names.
-	 *
-	 * @since 1.0
-	 *
-	 * @var array
-	 */
-	protected static $controlNames = [
+	private static $controlNames = [
 		'pan',
 		'zoom',
 		'type',
@@ -64,11 +46,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'rotate'
 	];
 
-	/**
-	 * Constructor.
-	 *
-	 * @since 0.6.6
-	 */
 	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
@@ -110,7 +87,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'islist' => true,
 			'post-format' => function( array $value ) {
 				foreach ( $value as &$part ) {
-					$part = MapsGoogleMaps3::$mapTypes[strtolower( $part )];
+					$part = self::$mapTypes[strtolower( $part )];
 				}
 
 				return $value;
@@ -146,7 +123,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'values' => array_keys( self::$typeControlStyles ),
 			'message' => 'maps-googlemaps3-par-typestyle',
 			'post-format' => function( $value ) {
-				return MapsGoogleMaps3::$typeControlStyles[strtolower( $value )];
+				return self::$typeControlStyles[strtolower( $value )];
 			},
 		];
 

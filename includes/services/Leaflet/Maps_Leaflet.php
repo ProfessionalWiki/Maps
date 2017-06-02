@@ -9,9 +9,6 @@
  */
 class MapsLeaflet extends MapsMappingService {
 
-	/**
-	 * Constructor
-	 */
 	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
