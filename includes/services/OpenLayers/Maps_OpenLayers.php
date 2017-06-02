@@ -11,11 +11,6 @@
  */
 class MapsOpenLayers extends MapsMappingService {
 
-	/**
-	 * Constructor.
-	 *
-	 * @since 0.6.6
-	 */
 	public function __construct( $serviceName ) {
 		parent::__construct(
 			$serviceName,
@@ -25,8 +20,6 @@ class MapsOpenLayers extends MapsMappingService {
 
 	/**
 	 * @see MapsMappingService::addParameterInfo
-	 *
-	 * @since 0.7
 	 */
 	public function addParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsResizableByDefault;
