@@ -43,9 +43,6 @@
 		"phpunit/phpunit": "~3.7"
 	},
 	"autoload": {
-		"files" : [
-			"Maps.php"
-		],
 		"psr-4": {
 			"Maps\\": "src/"
 		},

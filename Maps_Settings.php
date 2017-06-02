@@ -318,14 +318,12 @@
 			'osm' => [ 'osm-mapnik', 'osm-cyclemap' ],
 		];
 
-		global $wgJsMimeType;
-
 		// Layer dependencies
 		$GLOBALS['egMapsOLLayerDependencies'] = [
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
-			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
-			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-			'google' => "<script src='http://maps.google.com/maps/api/js'></script>",
+			'bing' => "<script type='text/javascript' src='https://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
+			'ol-wms' => "<script type='text/javascript' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
+			'google' => "<script src='https://maps.google.com/maps/api/js'></script>",
 		];
 
 

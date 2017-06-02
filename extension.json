@@ -1,0 +1,311 @@
+{
+	"name": "Maps",
+	"version": "4.2.1",
+	"author": [
+		"[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]",
+		"..."
+	],
+	"url": "https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps",
+	"descriptionmsg": "maps-desc",
+	"license-name": "GPL-2.0+",
+	"type": "parserhook",
+	"requires": {
+		"MediaWiki": ">= 1.28.0"
+	},
+	"callback": "MapsHooks::onExtensionCallback",
+	"ExtensionFunctions": [
+		"MapsHooks::onExtensionFunction"
+	],
+	"AvailableRights": [
+		"geocode"
+	],
+	"APIModules": {
+		"geocode": "Maps\\Api\\Geocode"
+	},
+	"MessagesDirs": {
+		"Maps": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"MapsMagic": "Maps.i18n.magic.php",
+		"MapsNamespaces": "Maps.i18n.namespaces.php",
+		"MapsAlias": "Maps.i18n.alias.php"
+	},
+	"AutoloadClasses": {
+		"MapsGoogleMaps3": "includes/services/GoogleMaps3/Maps_GoogleMaps3.php",
+		"MapsOpenLayers": "includes/services/OpenLayers/Maps_OpenLayers.php",
+		"MapsLeaflet": "includes/services/Leaflet/Maps_Leaflet.php"
+	},
+	"ResourceModules": {
+		"ext.maps.common": {
+			"position": "top",
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"messages": [
+				"maps-load-failed"
+			],
+			"scripts": [
+				"includes/ext.maps.common.js"
+			]
+		},
+		"ext.maps.layers": {
+			"position": "top",
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"styles": [
+				"includes/ext.maps.layers.css"
+			]
+		},
+		"ext.maps.coord": {
+			"position": "top",
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"messages": [
+				"maps-abb-north",
+				"maps-abb-east",
+				"maps-abb-south",
+				"maps-abb-west"
+			],
+			"scripts": [
+				"includes/ext.maps.coord.js"
+			]
+		},
+		"ext.maps.resizable": {
+			"position": "top",
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"dependencies": "includes/jquery.ui.resizable"
+		},
+		"mapeditor": {
+			"position": "top",
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/editor/js/jquery.miniColors.js",
+				"includes/editor/js/mapeditor.iefixes.js",
+				"includes/editor/js/mapeditor.js"
+			],
+			"styles": [
+				"includes/editor/css/jquery.miniColors.css",
+				"includes/editor/css/mapeditor.css"
+			],
+			"messages": [
+				"mapeditor-parser-error",
+				"mapeditor-none-text",
+				"mapeditor-done-button",
+				"mapeditor-remove-button",
+				"mapeditor-import-button",
+				"mapeditor-export-button",
+				"mapeditor-import-button2",
+				"mapeditor-select-button",
+				"mapeditor-mapparam-button",
+				"mapeditor-clear-button",
+				"mapeditor-imageoverlay-button"
+			],
+			"dependencies": [
+				"ext.maps.common",
+				"jquery.ui.autocomplete",
+				"jquery.ui.slider",
+				"jquery.ui.dialog"
+			]
+		},
+		"ext.maps.services": {
+			"position": "top",
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/ext.maps.services.js"
+			],
+			"dependencies": [
+				"ext.maps.common",
+				"ext.maps.layers",
+				"ext.maps.coord"
+			]
+		},
+		"ext.maps.googlemaps3": {
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"group": "ext.maps",
+			"scripts": [
+				"includes/services/GoogleMaps3/jquery.googlemap.js",
+				"includes/services/GoogleMaps3/ext.maps.googlemaps3.js"
+			],
+			"messages": [
+				"maps-googlemaps3-incompatbrowser",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text",
+				"maps-fullscreen-button",
+				"maps-fullscreen-button-tooltip"
+			]
+		},
+		"ext.maps.gm3.markercluster": {
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/services/GoogleMaps3/gm3-util-library/markerclusterer.js"
+			]
+		},
+		"ext.maps.gm3.markerwithlabel": {
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.js"
+			],
+			"styles": [
+				"includes/services/GoogleMaps3/gm3-util-library/markerwithlabel.css"
+			]
+		},
+		"ext.maps.gm3.geoxml": {
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/services/GoogleMaps3/geoxml3/geoxml3.js",
+				"includes/services/GoogleMaps3/geoxml3/ZipFile.complete.js",
+				"includes/services/GoogleMaps3/geoxml3/ProjectedOverlay.js"
+			]
+		},
+		"ext.maps.gm3.earth": {
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/services/GoogleMaps3/googleearth-compiled.js"
+			]
+		},
+		"ext.maps.openlayers": {
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/services/OpenLayers/OpenLayers/OpenLayers.js",
+				"includes/services/OpenLayers/OSM/OpenStreetMap.js",
+				"includes/services/OpenLayers/jquery.openlayers.js",
+				"includes/services/OpenLayers/ext.maps.openlayers.js"
+			],
+			"styles": [
+				"includes/services/OpenLayers/OpenLayers/theme/default/style.css"
+			],
+			"messages": [
+				"maps-markers",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text"
+			]
+		},
+		"ext.maps.leaflet": {
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"group": "ext.maps",
+			"targets": [
+				"mobile",
+				"desktop"
+			],
+			"scripts": [
+				"includes/services/Leaflet/jquery.leaflet.js",
+				"includes/services/Leaflet/ext.maps.leaflet.js"
+			],
+			"messages": [
+				"maps-markers",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Maps"
+	},
+	"Hooks": {
+		"AdminLinks": [
+			"MapsHooks::addToAdminLinks"
+		],
+		"ArticleFromTitle": [
+			"MapsHooks::onArticleFromTitle"
+		],
+		"MakeGlobalVariablesScript": [
+			"MapsHooks::onMakeGlobalVariablesScript"
+		],
+		"CanonicalNamespaces": [
+			"MapsHooks::onCanonicalNamespaces"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"MapsHooks::onLoadExtensionSchemaUpdates"
+		],
+		"ArticlePurge": [
+			"MapsHooks::onArticlePurge"
+		],
+		"LinksUpdateConstructed": [
+			"MapsHooks::onLinksUpdateConstructed"
+		],
+		"ParserAfterTidy": [
+			"MapsHooks::onParserAfterTidy"
+		],
+		"ParserClearState": [
+			"MapsHooks::onParserClearState"
+		],
+		"ParserFirstCallInit": [
+			"MapsHooks::onParserFirstCallInit1",
+			"MapsHooks::onParserFirstCallInit2",
+			"MapsHooks::onParserFirstCallInit3",
+			"MapsHooks::onParserFirstCallInit4",
+			"MapsHooks::onParserFirstCallInit5",
+			"MapsHooks::onParserFirstCallInit6",
+			"MapsHooks::onParserFirstCallInit7"
+		],
+		"GeocoderFirstCallInit": [
+			"MapsGeonamesGeocoder::register",
+			"MapsGoogleGeocoder::register",
+			"MapsGeocoderusGeocoder::register",
+			"MapsHooks::onMapsGeocodersNominatimGeocoder"
+		],
+		"MappingLayersInitialization": [
+			"MapsImageLayer::register"
+		],
+		"MappingServiceLoad": [
+			"MapsHooks::efMapsInitGoogleMaps3",
+			"MapsHooks::efMapsInitOpenLayers",
+			"MapsHooks::efMapsInitLeaflet"
+		]
+	},
+	"config": {
+		"_prefix": ""
+	},
+	"load_composer_autoloader": true,
+	"manifest_version": 1
+}
