@@ -12,8 +12,6 @@ class MapsDocTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::getInstance
-	 * @since 2.0
-	 * @return \ParserHook
 	 */
 	protected function getInstance() {
 		return new \MapsMapsDoc();
@@ -21,8 +19,6 @@ class MapsDocTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::parametersProvider
-	 * @since 2.0
-	 * @return array
 	 */
 	public function parametersProvider() {
 		$paramLists = [];
@@ -34,8 +30,6 @@ class MapsDocTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::processingProvider
-	 * @since 3.0
-	 * @return array
 	 */
 	public function processingProvider() {
 		$argLists = [];

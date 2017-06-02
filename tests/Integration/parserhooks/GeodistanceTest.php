@@ -16,8 +16,6 @@ class GeodistanceTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::getInstance
-	 * @since 2.0
-	 * @return \ParserHook
 	 */
 	protected function getInstance() {
 		return new \MapsGeodistance();
@@ -25,8 +23,6 @@ class GeodistanceTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::parametersProvider
-	 * @since 2.0
-	 * @return array
 	 */
 	public function parametersProvider() {
 		$paramLists = [];

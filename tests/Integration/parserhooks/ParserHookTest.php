@@ -103,12 +103,8 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Returns an array with the default values of the parameters.
-	 *
-	 * @since 3.0
-	 *
-	 * @return array
 	 */
-	protected function getDefaultValues() {
+	private function getDefaultValues() {
 		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
 
 		$defaults = [];
