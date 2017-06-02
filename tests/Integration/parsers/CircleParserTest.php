@@ -34,7 +34,7 @@ class CircleParserTest extends \PHPUnit_Framework_TestCase {
 		$expectedLatLong = new LatLongValue( 57.421, 23.90625 );
 		$this->assertTrue( $expectedLatLong->equals( $circle->getCircleCentre() ) );
 
-		$this->assertEquals( 32684.605182, $circle->getCircleRadius() );
+		$this->assertSame( 32684.605182, $circle->getCircleRadius() );
 	}
 
 	public function testGivenTitleAndText_circleHasProvidedMetaData() {
@@ -44,8 +44,8 @@ class CircleParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertInstanceOf( Circle::class, $circle );
 
-		$this->assertEquals( 'title', $circle->getTitle() );
-		$this->assertEquals( 'text', $circle->getText() );
+		$this->assertSame( 'title', $circle->getTitle() );
+		$this->assertSame( 'text', $circle->getText() );
 	}
 
 }
