@@ -1,5 +1,16 @@
 <?php
 
+use DataValues\Geo\Parsers\GeoCoordinateParser;
+use Maps\ServiceParam;
+use Maps\LocationParser;
+use Maps\LineParser;
+use Maps\CircleParser;
+use Maps\RectangleParser;
+use Maps\PolygonParser;
+use Maps\DistanceParser;
+use Maps\WmsOverlayParser;
+use Maps\ImageOverlayParser;
+
 /**
  * Static class for hooks handled by the Maps extension.
  *
