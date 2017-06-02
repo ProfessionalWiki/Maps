@@ -90,7 +90,7 @@
 				labelClass:'markerwithlabel'
 			};
 
-			if (markerData.icon !== '') {
+			if (!markerData.hasOwnProperty('icon') || markerData.icon !== '') {
 				markerOptions.icon = markerData.icon;
 			}
 
@@ -162,6 +162,10 @@
 		 * Removes all markers from the map.
 		 */
 		this.removeMarkers = function () {
+			if (this.markercluster) {
+				this.markercluster.setMap(null);
+				this.markercluster = null;
+			}
 			for (var i = this.markers.length - 1; i >= 0; i--) {
 				this.markers[i].setMap(null);
 			}
@@ -256,8 +260,6 @@
 								label.appendChild(text);
 
 								toggleDiv.appendChild(label);
-
-								console.log(toggleDiv);
 							})(docs[i]);
 						}
 						_this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(toggleDiv);
@@ -447,6 +449,25 @@
 			this.map.fitBounds(bounds);
 		};
 
+		this.createMarkerCluster = function() {
+			if ( !options.markercluster ) {
+				return;
+			}
+			if (this.markercluster) {
+				this.markercluster.setMap(null);
+				this.markercluster = null;
+			}
+			this.markercluster = new MarkerClusterer( this.map, this.markers, {
+				imagePath: mw.config.get( 'wgScriptPath' ) +
+				'/extensions/Maps/includes/images/m',
+				gridSize: this.options.clustergridsize,
+				maxZoom: this.options.clustermaxzoom,
+				zoomOnClick: this.options.clusterzoomonclick,
+				averageCenter: this.options.clusteraveragecenter,
+				minimumClusterSize: this.options.clusterminsize
+			} );
+		};
+
 		this.initializeMap = function () {
 			var mapOptions = {
 				disableDefaultUI:true,
@@ -459,6 +480,7 @@
 			mapOptions.mapTypeControl = $.inArray('type', options.controls) != -1;
 			mapOptions.scaleControl = $.inArray('scale', options.controls) != -1;
 			mapOptions.streetViewControl = $.inArray('streetview', options.controls) != -1;
+			mapOptions.rotateControl = $.inArray('rotate', options.controls) != -1;
 
 			for (i in options.types) {
 				if (typeof( options.types[i] ) !== 'function') {
@@ -614,23 +636,7 @@
 			/**
 			 * Allows grouping of markers.
 			 */
-			if ( options.markercluster ) {
-				mw.loader.using(
-					'ext.maps.gm3.markercluster',
-					function() {
-						_this.markercluster = new MarkerClusterer( _this.map, _this.markers, {
-							imagePath: mw.config.get( 'wgScriptPath' ) +
-								'/extensions/Maps/includes/services/GoogleMaps3/img/m',
-							gridSize: options.clustergridsize,
-							maxZoom: options.clustermaxzoom,
-							zoomOnClick: options.clusterzoomonclick,
-							averageCenter: options.clusteraveragecenter,
-							minimumClusterSize: options.clusterminsize
-						} );
-					}
-				);
-			}
-
+			this.createMarkerCluster();
 
 
 			if (options.searchmarkers) {
@@ -874,7 +880,13 @@
 
 		//Complete path to OpenLayers WMS layer
 
-		this.setup();
+		if (!options.markercluster) {
+			this.setup();
+		} else {
+			mw.loader.using( 'ext.maps.gm3.markercluster', function() {
+				_this.setup();
+			} );
+		}
 
 		return this;
 

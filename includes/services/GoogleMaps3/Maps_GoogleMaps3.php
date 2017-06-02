@@ -60,7 +60,8 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'zoom',
 		'type',
 		'scale',
-		'streetview'
+		'streetview',
+		'rotate'
 	];
 
 	/**
@@ -89,7 +90,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'type' => 'integer',
 			'range' => [ 0, 20 ],
 			'default' => self::getDefaultZoom(),
-			'message' => 'maps-googlemaps3-par-zoom',
+			'message' => 'maps-par-zoom',
 		];
 
 		$params['type'] = [
@@ -158,7 +159,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => $egMapsResizableByDefault,
-			'message' => 'maps-googlemaps3-par-resizable',
+			'message' => 'maps-par-resizable',
 		];
 
 		$params['kmlrezoom'] = [
@@ -176,37 +177,37 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		$params['markercluster'] = [
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-googlemaps3-par-markercluster',
+			'message' => 'maps-par-markercluster',
 		];
 
 		$params['clustergridsize'] = [
-				'type' => 'integer',
-				'default' => 60,
-				'message' => 'maps-googlemaps3-par-clustergridsize',
+			'type' => 'integer',
+			'default' => 60,
+			'message' => 'maps-googlemaps3-par-clustergridsize',
 		];
 
 		$params['clustermaxzoom'] = [
-				'type' => 'integer',
-				'default' => 20,
-				'message' => 'maps-googlemaps3-par-clustermaxzoom',
+			'type' => 'integer',
+			'default' => 20,
+			'message' => 'maps-par-clustermaxzoom',
 		];
 
 		$params['clusterzoomonclick'] = [
-				'type' => 'boolean',
-				'default' => true,
-				'message' => 'maps-googlemaps3-par-clusterzoomonclick',
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-par-clusterzoomonclick',
 		];
 
 		$params['clusteraveragecenter'] = [
-				'type' => 'boolean',
-				'default' => true,
-				'message' => 'maps-googlemaps3-par-clusteraveragecenter',
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-googlemaps3-par-clusteraveragecenter',
 		];
 
 		$params['clusterminsize'] = [
-				'type' => 'integer',
-				'default' => 2,
-				'message' => 'maps-googlemaps3-par-clusterminsize',
+			'type' => 'integer',
+			'default' => 2,
+			'message' => 'maps-googlemaps3-par-clusterminsize',
 		];
 
 		$params['tilt'] = [
@@ -225,7 +226,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		$params['kml'] = [
 			'default' => [],
-			'message' => 'maps-googlemaps3-par-kml',
+			'message' => 'maps-par-kml',
 			'islist' => true,
 			// new MapsParamFile() FIXME
 		];
@@ -244,20 +245,18 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		$params['searchmarkers'] = [
 			'default' => '',
-			'message' => 'maps-googlemaps3-par-searchmarkers',
+			'message' => 'maps-par-searchmarkers',
 			// new CriterionSearchMarkers() FIXME
 		];
 
 		$params['enablefullscreen'] = [
 			'type' => 'boolean',
 			'default' => false,
-			'message' => 'maps-googlemaps3-par-enable-fullscreen',
+			'message' => 'maps-par-enable-fullscreen',
 		];
 	}
 
 	/**
-	 * @see iMappingService::getDefaultZoom
-	 *
 	 * @since 0.6.5
 	 */
 	public function getDefaultZoom() {
@@ -317,11 +316,16 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	public static function getApiScript( $langCode, array $urlArgs = [] ) {
 		$urlArgs = array_merge(
 			[
-				'language' => self::getMappedLanguageCode( $langCode ),
-				'sensor' => 'false'
+				'language' => self::getMappedLanguageCode( $langCode )
 			],
 			$urlArgs
 		);
+		if ( $GLOBALS['egMapsGMaps3ApiKey'] !== '' ) {
+			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
+		if ( $GLOBALS['egMapsGMaps3ApiVersion'] !== '' ) {
+			$urlArgs['v'] = $GLOBALS['egMapsGMaps3ApiVersion'];
+		}
 
 		return Html::linkedScript( '//maps.googleapis.com/maps/api/js?' . wfArrayToCgi( $urlArgs ) );
 	}

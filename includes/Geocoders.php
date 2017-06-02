@@ -2,9 +2,9 @@
 
 namespace Maps;
 
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
+use MapsOldGeocoderAdapter;
 use MWException;
 use ValueParsers\ParseException;
 
@@ -120,90 +120,39 @@ final class Geocoders {
 	 * @since 0.7
 	 *
 	 * @param string $coordsOrAddress
-	 * @param string $geoservice
-	 * @param string|false $mappingService
+	 * @param string $geoService
 	 * @param boolean $checkForCoords
 	 *
 	 * @return LatLongValue|false
 	 */
-	public static function attemptToGeocode( $coordsOrAddress, $geoservice = '', $mappingService = false, $checkForCoords = true ) {
+	public static function attemptToGeocode( $coordsOrAddress, $geoService = '', $checkForCoords = true ) {
 		if ( $checkForCoords ) {
-			$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+			$coordinateParser = new GeoCoordinateParser();
 
 			try {
 				return $coordinateParser->parse( $coordsOrAddress );
 			}
 			catch ( ParseException $parseException ) {
-				return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
+				return self::geocode( $coordsOrAddress, $geoService );
 			}
 		} else {
-			return self::geocode( $coordsOrAddress, $geoservice, $mappingService );
+			return self::geocode( $coordsOrAddress, $geoService );
 		}
-	}
-
-	/**
-	 *
-	 *
-	 * @since 0.7
-	 *
-	 * @param string $coordsOrAddress
-	 * @param string $geoService
-	 * @param string|false $mappingService
-	 *
-	 * @return boolean
-	 */
-	public static function isLocation( $coordsOrAddress, $geoService = '', $mappingService = false ) {
-		return self::attemptToGeocode( $coordsOrAddress, $geoService, $mappingService ) !== false;
-	}
-
-	/**
-	 * Geocodes an address with the provided geocoding service and returns the result
-	 * as a string with the optionally provided format, or false when the geocoding failed.
-	 *
-	 * @since 0.7
-	 *
-	 * @param string $coordsOrAddress
-	 * @param string $service
-	 * @param string $mappingService
-	 * @param boolean $checkForCoords
-	 * @param string $targetFormat The notation to which they should be formatted. Defaults to floats.
-	 * @param boolean $directional Indicates if the target notation should be directional. Defaults to false.
-	 *
-	 * @return string|false
-	 */
-	public static function attemptToGeocodeToString( $coordsOrAddress, $service = '', $mappingService = false, $checkForCoords = true, $targetFormat = Maps_COORDS_FLOAT, $directional = false ) {
-		$geoCoordinate = self::attemptToGeocode( $coordsOrAddress, $service, $mappingService, $checkForCoords );
-
-		if ( $geoCoordinate === false ) {
-			return false;
-		}
-
-		$options = new \ValueFormatters\FormatterOptions( [
-			GeoCoordinateFormatter::OPT_FORMAT => $targetFormat,
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $directional,
-			GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
-		] );
-
-		$formatter = new GeoCoordinateFormatter( $options );
-		return $formatter->format( $geoCoordinate );
 	}
 
 	/**
 	 * Geocodes an address with the provided geocoding service and returns the result
 	 * as an array, or false when the geocoding failed.
 	 *
-	 * FIXME: complexity
-	 *
 	 * @since 0.7
 	 *
 	 * @param string $address
 	 * @param string $geoService
-	 * @param string|false $mappingService
 	 *
 	 * @return LatLongValue|false
 	 * @throws MWException
 	 */
-	public static function geocode( $address, $geoService = '', $mappingService = false ) {
+	public static function geocode( $address, $geoService = '' ) {
 		if ( !is_string( $address ) ) {
 			throw new MWException( 'Parameter $address must be a string at ' . __METHOD__ );
 		}
@@ -276,7 +225,7 @@ final class Geocoders {
 	 *
 	 * @return LatLongValue|boolean false
 	 */
-	protected static function cacheRead( $address ) {
+	private static function cacheRead( $address ) {
 		global $egMapsEnableGeoCache;
 
 		if ( $egMapsEnableGeoCache && array_key_exists( $address, self::$globalGeocoderCache ) ) {
@@ -295,7 +244,7 @@ final class Geocoders {
 	 * @param string $address
 	 * @param LatLongValue $coordinates
 	 */
-	protected static function cacheWrite( $address, LatLongValue $coordinates ) {
+	private static function cacheWrite( $address, LatLongValue $coordinates ) {
 		global $egMapsEnableGeoCache;
 
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
@@ -310,10 +259,10 @@ final class Geocoders {
 	 * @since 0.7
 	 *
 	 * @param string $geocoderIdentifier
-	 * @param string $geocoderClassName
+	 * @param string|\Maps\Geocoders\Geocoder $geocoder
 	 */
-	public static function registerGeocoder( $geocoderIdentifier, $geocoderClassName ) {
-		self::$registeredGeocoders[$geocoderIdentifier] = $geocoderClassName;
+	public static function registerGeocoder( $geocoderIdentifier, $geocoder ) {
+		self::$registeredGeocoders[$geocoderIdentifier] = $geocoder;
 	}
 
 	/**
@@ -327,7 +276,7 @@ final class Geocoders {
 	 *
 	 * @return Geocoder|bool
 	 */
-	protected static function getValidGeocoderInstance( $geocoderIdentifier ) {
+	private static function getValidGeocoderInstance( $geocoderIdentifier ) {
 		return self::getGeocoderInstance( self::getValidGeocoderIdentifier( $geocoderIdentifier ) );
 	}
 
@@ -343,17 +292,25 @@ final class Geocoders {
 	 * @return Geocoder|bool
 	 * @throws MWException
 	 */
-	protected static function getGeocoderInstance( $geocoderIdentifier ) {
+	private static function getGeocoderInstance( $geocoderIdentifier ) {
 		if ( !array_key_exists( $geocoderIdentifier, self::$geocoders ) ) {
 			if ( array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
-				$geocoder = new self::$registeredGeocoders[$geocoderIdentifier]( $geocoderIdentifier );
+				if ( is_string( self::$registeredGeocoders[$geocoderIdentifier] ) ) {
+					$geocoderClass = self::$registeredGeocoders[$geocoderIdentifier];
+					$geocoder = new $geocoderClass( $geocoderIdentifier );
+				}
+				elseif ( self::$registeredGeocoders[$geocoderIdentifier] instanceof \Maps\Geocoders\Geocoder ) {
+					$geocoder = new MapsOldGeocoderAdapter(
+						self::$registeredGeocoders[$geocoderIdentifier],
+						$geocoderIdentifier
+					);
+				}
+				else {
+					throw new MWException( 'Need either class name or Geocoder instance' );
+				}
 
-				//if ( $service instanceof iMappingService ) {
-					self::$geocoders[$geocoderIdentifier] = $geocoder;
-				//}
-				//else {
-				//	throw new MWException( 'The geocoder linked to identifier ' . $geocoderIdentifier . ' does not implement .' );
-				//}
+
+				self::$geocoders[$geocoderIdentifier] = $geocoder;
 			}
 			else {
 				throw new MWException( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
@@ -376,7 +333,7 @@ final class Geocoders {
 	 * @return string|bool
 	 * @throws MWException
 	 */
-	protected static function getValidGeocoderIdentifier( $geocoderIdentifier ) {
+	private static function getValidGeocoderIdentifier( $geocoderIdentifier ) {
 		global $egMapsDefaultGeoService;
 		static $validatedDefault = false;
 

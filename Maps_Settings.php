@@ -10,10 +10,6 @@
  * @author Jeroen De Dauw
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'Not an entry point.' );
-}
-
 // Mapping services configuration
 
 	// Array of String. Array containing all the mapping services that will be made available to the user.
@@ -27,16 +23,31 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// service is present in the $GLOBALS['egMapsDefaultServices'] array for a certain feature.
 	// A service that supports all features is recommended. This service needs to be
 	// enabled, if not, the first one from the available services will be taken.
-	$GLOBALS['egMapsDefaultService'] = 'googlemaps3';
+	$GLOBALS['egMapsDefaultService'] = 'leaflet';
 
 	// Array of String. The default mapping service for each feature, which will be
 	// used when no valid service is provided by the user. Each service needs to be
 	// enabled, if not, the first one from the available services will be taken.
 	// Note: The default service needs to be available for the feature you set it
 	// for, since it's used as a fallback mechanism.
-	$GLOBALS['egMapsDefaultServices'] = [
-		'display_map' => $GLOBALS['egMapsDefaultService'],
-	];
+	$GLOBALS['egMapsDefaultServices'] = [];
+	$GLOBALS['egMapsDefaultServices']['display_map'] = $GLOBALS['egMapsDefaultService'];
+	$GLOBALS['egMapsDefaultServices']['qp'] = $GLOBALS['egMapsDefaultService'];
+
+
+// Enable/disable parts of the extension
+
+        // Allows disabling the extension even when it is installed.
+        //
+        // CAUTION: this setting is intended for wiki farms. On single wiki installations,
+        //          the recommended way to disable maps is to uninstall it via Composer. Disabling
+        //          Maps via this setting undermines package management safety: extensions that depend
+        //          on Maps will likely either break of disable themselves.
+        $GLOBALS['egMapsDisableExtension'] = false;
+
+        // Allows disabling the Semantic MediaWiki integration.
+        $GLOBALS['egMapsDisableSmwIntegration'] = false;
+
 
 // Geocoding
 
@@ -51,6 +62,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		'geonames',
 		'google',
 		'geocoderus',
+		'nominatim',
 	];
 
 	// String. The default geocoding service, which will be used when no service is
@@ -88,9 +100,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
 	$GLOBALS['egMapsCoordinateNotation'] = Maps_COORDS_DMS;
 
+	# Enum. The default output format of coordinates when displayed by Semantic MediaWiki.
+	# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
+	$GLOBALS['smgQPCoodFormat'] = $GLOBALS['egMapsCoordinateNotation'];
+
 	// Boolean. Indicates if coordinates should be outputted in directional notation by default.
 	// Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
 	$GLOBALS['egMapsCoordinateDirectional'] = true;
+
+	# Boolean. Indicates if coordinates should be outputted in directional notation by default when
+	# displayed by Semantic MediaWiki.
+	$GLOBALS['smgQPCoodDirectional'] = $GLOBALS['egMapsCoordinateDirectional'];
 
 	// Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
 	$GLOBALS['egMapsInternatDirectionLabels'] = true;
@@ -152,7 +172,25 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	$GLOBALS['egMapsRezoomForKML'] = false;
 
 
+# Semantic MediaWiki queries
+
+	# Boolean. The default value for the showtitle parameter. Will hide the title in the marker pop-ups when set to true.
+	# This value will only be used when the user does not provide one.
+	$GLOBALS['smgQPShowTitle'] = true;
+
+	# Boolean. The default value for the hidenamespace parameter. Will hide the namespace in the marker pop-ups when set to true.
+	# This value will only be used when the user does not provide one.
+	$GLOBALS['smgQPHideNamespace'] = false;
+
+	# String or false. Allows you to define the content and it's layout of marker pop-ups via a template.
+	# This value will only be used when the user does not provide one.
+	$GLOBALS['smgQPTemplate'] = false;
+
+
 // Other general configuration
+
+	// Boolean. Sets if pages with maps should be put in special category
+	$GLOBALS['egMapsEnableCategory'] = false;
 
 	// When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
 	$GLOBALS['egMapsDebugJS'] = false;
@@ -160,16 +198,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	// Namespace index start of the mapping namespaces.
 	$GLOBALS['egMapsNamespaceIndex'] = 420;
 
-	// Boolean. Controls if you can specify images using a full path in layers.
-	$GLOBALS['egMapsAllowExternalImages'] = true;
 
-	// Boolean. Sets if pages with maps should be put in special category
-	$GLOBALS['egMapsEnableCategory'] = true;
-
-
-// Specific mapping service configuration
+// Mapping service specific configuration
 
 	// Google Maps v3
+
+		// String. Google Maps v3 API Key
+		$GLOBALS['egMapsGMaps3ApiKey'] = '';
+
+		// String. Google Maps v3 API version number
+		$GLOBALS['egMapsGMaps3ApiVersion'] = '';
 
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
@@ -246,7 +284,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'osm-cyclemap'
 		];
 
-		// The difinitions for the layers that should be available for the user.
+		// The definitions for the layers that should be available for the user.
 		$GLOBALS['egMapsOLAvailableLayers'] = [
 			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
 
@@ -287,15 +325,76 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-			'google' => "<script src='http://maps.google.com/maps/api/js?sensor=false'></script>",
+			'google' => "<script src='http://maps.google.com/maps/api/js'></script>",
 		];
 
-	// Leaflet
 
+	// Leaflet
 
 		// Integer. The default zoom of a map. This value will only be used when the
 		// user does not provide one.
 		$GLOBALS['egMapsLeafletZoom'] = 14;
 
+		// String. The default layer for Leaflet. This value will only be
+		// used when the user does not provide one.
+		$GLOBALS['egMapsLeafletLayer'] = 'OpenStreetMap';
 
-$GLOBALS['egMapsGlobalJSVars'] = [];
+		$GLOBALS['egMapsLeafletOverlayLayers'] = [
+
+		];
+
+		// The definitions for the layers that should be available for the user.
+		$GLOBALS['egMapsLeafletAvailableLayers'] = [
+			'OpenStreetMap' => true,
+			'OpenStreetMap.DE' => true,
+			'OpenStreetMap.BlackAndWhite' => true,
+			'OpenStreetMap.HOT' => true,
+			'Thunderforest.OpenCycleMap' => true,
+			'Thunderforest.Transport' => true,
+			'Thunderforest.Landscape' => true,
+			'Hydda.Full' => true,
+			//'MapBox' => false, // todo: implement setting api key
+			'Stamen.Toner' => true,
+			'Stamen.Terrain' => true,
+			'Stamen.Watercolor' => true,
+			'Esri.WorldStreetMap' => true,
+			'Esri.DeLorme' => true,
+			'Esri.WorldTopoMap' => true,
+			'Esri.WorldImagery' => true,
+			'Esri.WorldTerrain' => true,
+			'Esri.WorldShadedRelief' => true,
+			'Esri.WorldPhysical' => true,
+			'Esri.OceanBasemap' => true,
+			'Esri.NatGeoWorldMap' => true,
+			'Esri.WorldGrayCanvas' => true,
+			'MapQuestOpen' => true,
+		];
+
+		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = [
+			'OpenSeaMap' => true,
+			'OpenWeatherMap.Clouds' => true,
+			'OpenWeatherMap.CloudsClassic' => true,
+			'OpenWeatherMap.Precipitation' => true,
+			'OpenWeatherMap.PrecipitationClassic' => true,
+			'OpenWeatherMap.Rain' => true,
+			'OpenWeatherMap.RainClassic' => true,
+			'OpenWeatherMap.Pressure' => true,
+			'OpenWeatherMap.PressureContour' => true,
+			'OpenWeatherMap.Wind' => true,
+			'OpenWeatherMap.Temperature' => true,
+			'OpenWeatherMap.Snow' => true,
+		];
+
+		$GLOBALS['egMapsLeafletLayersApiKeys'] = [
+			'MapBox' => '',
+			'MapQuestOpen' => '',
+		];
+
+		// Layer dependencies
+		$GLOBALS['egMapsLeafletLayerDependencies'] = [
+			'MapQuestOpen' => 'https://open.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=',
+		];
+
+
+	$GLOBALS['egMapsGlobalJSVars'] = [];
+

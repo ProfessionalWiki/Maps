@@ -1,5 +1,132 @@
-These are the release notes for the [Maps extension](README.md).
+These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
+
+## Maps 4.2.1
+
+Released on May 20th, 2017.
+
+* Fixed issue occurring when using the `template` parameter in the Google Maps result format more than once on a page
+
+## Maps 4.2.0
+
+Released on May 15th, 2017.
+
+* Fixed bug in Nomatim geocoder that caused page loading to fail when Nomatim is down
+* Fixed bug in Nomatim geocoder that caused page loading to fail when Nomatim returned an invalid response
+* Updated Leaflet from 1.0.0-rc to 1.0.3
+
+## Maps 4.1.0
+
+Released on April 14th, 2017.
+
+* Fixed rendering of area query values (they now work properly in SMW "further result" links)
+* Fixed type warning in `SMMapPrinter::getMapHTML`
+* Added missing geographical polygon type i18n messages
+
+## Maps 4.0.5
+
+Released on March 5th, 2017.
+
+* Fixed i18n issue in the `mapsdoc` parser hook
+
+## Maps 4.0.4
+
+Released on January 9th, 2017.
+
+* Fixed encoding of special characters in the Google geocoder (by somescout)
+* Improved PHP 7 compatibility (by Andre Klapper)
+
+## Maps 4.0.3
+
+Released on December 6th, 2016.
+
+* Fixed regression introduced in 4.0.2 that caused the JavaScript to not be loaded in some cases
+* The `display_map` parser hook now correctly uses its `geoservice` parameter
+* The `center` parameter for the map result format now takes into account the `geoservice` parameter
+
+## Maps 4.0.2
+
+Released on December 4th, 2016.
+
+* Fixed fatal error caused by double loading of initialization code on some platforms
+
+## Maps 4.0.1
+
+Released on November 19th, 2016.
+
+* The `geocode` parser hook now correctly uses its `geoservice` and `allowcoordinates` parameters 
+
+## Maps 4.0
+
+Released on November 16th, 2016. Also see the [Maps 4.0 blog post](https://www.entropywins.wtf/blog/2016/11/09/maps-4-0-0-rc1-released/)
+
+### Highlight: Integrated Semantic MediaWiki support
+
+Merged in most of the features of the Semantic Maps extension. These are enabled automatically when SMW is installed.
+
+* Added a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
+* Added a [result format](https://www.semantic-mediawiki.org/wiki/Help:Result_formats) for each mapping service
+* Added a KML result format
+* Added [distance query](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples/Distance_query) support
+
+Semantic Maps is discontinued as the features will now be maintained in Maps. The Semantic Maps form input
+has been moved into the [Page Forms](https://www.mediawiki.org/wiki/Extension:Page_Forms) extension.
+
+### Breaking changes
+
+* The default mapping service was changed from Google Maps to Leaflet (can be changed via the `egMapsDefaultService` setting)
+* The Maps tracking category is now disabled by default (can be enabled using the `egMapsEnableCategory` setting)
+
+### Other changes
+
+* Added `egMapsDisableExtension` setting that allows disabling the extension even when it is installed
+* The `egGoogleJsApiKey` setting from Maps 2.x will now be used as Google API key when `egMapsGMaps3ApiKey` is not set
+* Various missing messages where added
+
+## Maps 3.8.2
+
+Released on September 22nd, 2016.
+
+* Fixed incorrect centering of OpenLayers maps (by Peter Grassberger)
+
+## Maps 3.8.1
+
+Released on September 7th, 2016.
+
+* Fixed bug that caused clustering to always be enabled for Leaflet (by Peter Grassberger)
+
+## Maps 3.8
+
+Released on August 24rd, 2016.
+
+Due to changes to Google Maps, an API key now needs to be set. See the
+[installation configuration instructions](https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md#configuration).
+
+* Added Google Maps API key `egMapsGMaps3ApiKey` setting (by Peter Grassberger)
+* Added Google Maps API version number `egMapsGMaps3ApiVersion` setting (by Peter Grassberger)
+* Added [Leaflet marker clustering](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_marker_clustering) (by Peter Grassberger)
+    * `markercluster`: Enables clustering, multiple markers are merged into one marker.
+    * `clustermaxzoom`: The maximum zoom level where clusters may exist.
+    * `clusterzoomonclick`: Whether clicking on a cluster zooms into it.
+    * `clustermaxradius`: The maximum radius that a cluster will cover.
+    * `clusterspiderfy`: At the lowest zoom level markers are separated so you can see them all.
+* Added [Leaflet fullscreen control](https://www.semantic-mediawiki.org/wiki/Maps_examples/Leaflet_fullscreen_control) (by Peter Grassberger)
+* Added [OSM Nominatim Geocoder](https://www.semantic-mediawiki.org/wiki/Maps_examples/Geocode) (by Peter Grassberger)
+* Upgraded Leaflet library to its latest version (1.0.0-r3) (by Peter Grassberger)
+* Made removal of marker clusters more robust (by Peter Grassberger)
+* Unified system messages for several services (by Karsten Hoffmeyer)
+
+## Maps 3.7
+
+Released on June 21st, 2016.
+
+* Added [rotate control support](https://www.semantic-mediawiki.org/wiki/Maps_examples/Google_Maps_with_rotate_control) for Google Maps (by Peter Grassberger)
+* Changed coordinate display on OpenLayers maps from long-lat to lat-long (by Peter Grassberger)
+* Upgraded google marker cluster library to its latest version (2.1.2) (by Peter Grassberger)
+* Upgraded Leaflet library to its latest version (0.7.7) (by Peter Grassberger)
+* Added missing system messages (by Karsten Hoffmeyer)
+* Internal code enhancements (by Peter Grassberger)
+* Removed broken custom map layer functionality. You no longer need to run update.php for full installation.
 
 ## Maps 3.6
 
@@ -306,11 +433,11 @@ MediaWiki unit testing support.
 #### New features ####
 
 * Tag support for these parser hooks (which previously only had parser function support):
-** Coordinates
-** Distance
-** Finddestination
-** Geocode
-** Geodistance
+    * Coordinates
+    * Distance
+    * Finddestination
+    * Geocode
+    * Geodistance
 * Thumbs and photos parameters for the OSM service.
 
 #### Bug fixes ####
@@ -596,8 +723,8 @@ for the current version.
 
 Changes in 0.4.2 discussed on the authors blog:
 
-* [Maps and Semantic Maps 0.4.2 released](http://www.bn2vs.com/blog/2009/11/16/maps-and-semantic-maps-0-4-2/)
-* [New in Maps 0.4.2](http://www.bn2vs.com/blog/2009/11/12/new-in-maps-0-4-2/)
+* [Maps and Semantic Maps 0.4.2 released](https://www.entropywins.wtf/blog/2009/11/16/maps-and-semantic-maps-0-4-2/)
+* [New in Maps 0.4.2](https://www.entropywins.wtf/blog/2009/11/12/new-in-maps-0-4-2/)
 
 #### New features ####
 
@@ -639,7 +766,7 @@ where not separated by a comma.
 
 Changes in 0.4 discussed on the authors blog:
 
-* [Finally! Maps and Semantic Maps 0.4!](http://www.bn2vs.com/blog/2009/11/03/finally-maps-and-semantic-maps-0-4/)
+* [Finally! Maps and Semantic Maps 0.4!](https://www.entropywins.wtf/blog/2009/11/03/finally-maps-and-semantic-maps-0-4/)
 
 #### New features ####
 
@@ -678,7 +805,7 @@ for large contents.
 
 Changes in 0.3.4 discussed on the authors blog:
 
-* [Maps and Semantic Maps 0.3.4 released](http://www.bn2vs.com/blog/2009/09/12/maps-and-semantic-maps-0-3-4-released/)
+* [Maps and Semantic Maps 0.3.4 released](https://www.entropywins.wtf/blog/2009/09/12/maps-and-semantic-maps-0-3-4-released/)
 
 ####New features####
 
@@ -708,7 +835,7 @@ any value (ie |coordinates=|)
 
 Changes in 0.3.3 discussed on the authors blog:
 
-* [Maps and Semantic Maps 0.3.3](http://www.bn2vs.com/blog/2009/08/25/maps-and-semantic-maps-0-3-3/)
+* [Maps and Semantic Maps 0.3.3](https://www.entropywins.wtf/blog/2009/08/25/maps-and-semantic-maps-0-3-3/)
 
 ####New features####
 
@@ -758,9 +885,9 @@ since adding the path is impossible in the declaration.
 
 Changes in 0.3 discussed on the authors blog:
 
-* [Final changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/13/final-changes-for-maps-and-sm-0-3/)
-* [New features in Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/07/new-features-in-maps-and-sm-0-3/)
-* [Structural changes for Maps and SM 0.3](http://www.bn2vs.com/blog/2009/08/05/structural-changes-for-maps-and-sm-0-3/)
+* [Final changes for Maps and SM 0.3](https://www.entropywins.wtf/blog/2009/08/13/final-changes-for-maps-and-sm-0-3/)
+* [New features in Maps and SM 0.3](https://www.entropywins.wtf/blog/2009/08/07/new-features-in-maps-and-sm-0-3/)
+* [Structural changes for Maps and SM 0.3](https://www.entropywins.wtf/blog/2009/08/05/structural-changes-for-maps-and-sm-0-3/)
 
 ####New features####
 

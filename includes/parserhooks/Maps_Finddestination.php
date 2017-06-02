@@ -1,4 +1,5 @@
 <?php
+
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 
 /**
@@ -10,7 +11,6 @@ use DataValues\Geo\Formatters\GeoCoordinateFormatter;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-
 class MapsFinddestination extends ParserHook {
 
 	/**
@@ -41,7 +41,7 @@ class MapsFinddestination extends ParserHook {
 
 		$params['location'] = [
 			'dependencies' => [ 'mappingservice', 'geoservice' ],
-			'type' => 'mapslocation',
+			'type' => 'mapslocation', // FIXME: geoservice is not used
 		];
 
 		$params['format'] = [

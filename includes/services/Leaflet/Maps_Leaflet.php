@@ -25,11 +25,13 @@ class MapsLeaflet extends MapsMappingService {
 	 * @since 3.0
 	 */
 	public function addParameterInfo( array &$params ) {
+		global $GLOBALS;
+
 		$params['zoom'] = [
 			'type' => 'integer',
 			'range' => [ 0, 20 ],
 			'default' => false,
-			'message' => 'maps-leaflet-par-zoom'
+			'message' => 'maps-par-zoom'
 		];
 
 		$params['defzoom'] = [
@@ -39,16 +41,65 @@ class MapsLeaflet extends MapsMappingService {
 			'message' => 'maps-leaflet-par-defzoom'
 		];
 
+		$params['layer'] = [
+			'type' => 'string',
+			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableLayers'], true, true ),
+			'default' => $GLOBALS['egMapsLeafletLayer'],
+			'message' =>'maps-leaflet-par-layer',
+		];
+
+		$params['overlaylayers'] = [
+			'type' => 'string',
+			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),
+			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
+			'message' =>'maps-leaflet-par-overlaylayers',
+			'islist' => true,
+		];
+
 		$params['resizable'] = [
 			'type' => 'boolean',
 			'default' => $GLOBALS['egMapsResizableByDefault'],
-			'message' => 'maps-leaflet-par-resizable'
+			'message' => 'maps-par-resizable'
+		];
+
+		$params['enablefullscreen'] = [
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-enable-fullscreen',
+		];
+
+		$params['markercluster'] = [
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-markercluster',
+		];
+
+		$params['clustermaxzoom'] = [
+			'type' => 'integer',
+			'default' => 20,
+			'message' => 'maps-par-clustermaxzoom',
+		];
+
+		$params['clusterzoomonclick'] = [
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-par-clusterzoomonclick',
+		];
+
+		$params['clustermaxradius'] = [
+			'type' => 'integer',
+			'default' => 80,
+			'message' => 'maps-par-maxclusterradius',
+		];
+
+		$params['clusterspiderfy'] = [
+			'type' => 'boolean',
+			'default' => true,
+			'message' => 'maps-leaflet-par-clusterspiderfy',
 		];
 	}
 
 	/**
-	 * @see iMappingService::getDefaultZoom
-	 *
 	 * @since 3.0
 	 */
 	public function getDefaultZoom() {
@@ -88,7 +139,6 @@ class MapsLeaflet extends MapsMappingService {
 		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
 		return [
 			Html::linkedStyle( "$leafletPath/leaflet.css" ),
-			'<!--[if lte IE 8]>' . Html::linkedStyle( "$leafletPath/leaflet.ie.css" ). '<![endif]-->',
 			Html::linkedScript( "$leafletPath/leaflet.js" ),
 		];
 	}

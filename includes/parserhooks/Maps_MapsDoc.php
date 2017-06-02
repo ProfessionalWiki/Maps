@@ -103,7 +103,7 @@ class MapsMapsDoc extends ParserHook {
 	 *
 	 * @return string
 	 */
-	protected function msg() {
+	private function msg() {
 		$args = func_get_args();
 		$key = array_shift( $args );
 		return wfMessage( $key, $args )->inLanguage( $this->language )->text();
@@ -118,7 +118,7 @@ class MapsMapsDoc extends ParserHook {
 	 *
 	 * @return string
 	 */
-	protected function getParameterTable( array $parameters ) {
+	private function getParameterTable( array $parameters ) {
 		$tableRows = [];
 
 		$parameters = ParamDefinition::getCleanDefinitions( $parameters );
@@ -152,16 +152,14 @@ class MapsMapsDoc extends ParserHook {
 	/**
 	 * Returns the wikitext for a table row describing a single parameter.
 	 *
-	 * @since 1.0
-	 *
 	 * @param ParamDefinition $parameter
 	 *
 	 * @return string
 	 */
-	protected function getDescriptionRow( ParamDefinition $parameter ) {
+	private function getDescriptionRow( ParamDefinition $parameter ) {
 		$description = $this->msg( $parameter->getMessage() );
 
-		$type = $parameter->getTypeMessage();
+		$type = $this->msg( $parameter->getTypeMessage() );
 
 		$default = $parameter->isRequired() ? "''" . $this->msg( 'validator-describe-required' ) . "''" : $parameter->getDefault();
 		if ( is_array( $default ) ) {
@@ -181,7 +179,7 @@ class MapsMapsDoc extends ParserHook {
 EOT;
 	}
 
-	protected function getServiceParameters( $service ) {
+	private function getServiceParameters( $service ) {
 		$service = MapsMappingServices::getServiceInstance( $service );
 
 		$params = [];

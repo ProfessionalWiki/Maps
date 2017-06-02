@@ -47,120 +47,17 @@ class MapsDisplayMap extends ParserHook {
 		$params['mappingservice']['feature'] = 'display_map';
 
 		$params['coordinates'] = [
-			'type' => 'mapslocation',
+			'type' => 'string',
 			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
-			'dependencies' => [ 'mappingservice', 'geoservice' ],
 			'default' => [],
 			'islist' => true,
 			'delimiter' => $type === ParserHook::TYPE_FUNCTION ? ';' : "\n",
 			'message' => 'maps-displaymap-par-coordinates',
 		];
 
-		$params = array_merge( $params, self::getCommonMapParams() );
-		
 		return $params;
 	}
 
-	/**
-	 * Temporary hack. Do not rely upon.
-	 * @since 3.0
-	 * @deprecated
-	 * @return array
-	 */
-	public static function getCommonMapParams() {
-		global $egMapsDefaultTitle, $egMapsDefaultLabel;
-
-		$params['title'] = [
-			'name' => 'title',
-			'default' => $egMapsDefaultTitle,
-		];
-
-		$params['label'] = [
-			'default' => $egMapsDefaultLabel,
-			'aliases' => 'text',
-		];
-
-		$params['icon'] = [
-			'default' => '', // TODO: image param
-		];
-
-		$params['visitedicon'] = [
-			'default' => '', //TODO: image param
-		];
-
-		$params['lines'] = [
-			'type' => 'mapsline',
-			'default' => [],
-			'delimiter' => ';',
-			'islist' => true,
-		];
-
-		$params['polygons'] = [
-			'type' => 'mapspolygon',
-			'default' => [],
-			'delimiter' => ';',
-			'islist' => true,
-		];
-
-		$params['circles'] = [
-			'type' => 'mapscircle',
-			'default' => [],
-			'delimiter' => ';',
-			'islist' => true,
-		];
-
-		$params['rectangles'] = [
-			'type' => 'mapsrectangle',
-			'default' => [],
-			'delimiter' => ';',
-			'islist' => true,
-		];
-
-		$params['wmsoverlay'] = [
-			'type' => 'wmsoverlay',
-			'default' => false,
-			'delimiter' => ' ',
-		];
-
-		$params['maxzoom'] = [
-			'type' => 'integer',
-			'default' => false,
-			'manipulatedefault' => false,
-			'dependencies' => 'minzoom',
-		];
-
-		$params['minzoom'] = [
-			'type' => 'integer',
-			'default' => false,
-			'manipulatedefault' => false,
-			'lowerbound' => 0,
-		];
-
-		$params['copycoords'] = [
-			'type' => 'boolean',
-			'default' => false,
-		];
-
-		$params['static'] = [
-			'type' => 'boolean',
-			'default' => false,
-		];
-
-		// Give grep a chance to find the usages:
-		// maps-displaymap-par-title, maps-displaymap-par-label, maps-displaymap-par-icon,
-		// maps-displaymap-par-visitedicon, aps-displaymap-par-lines, maps-displaymap-par-polygons,
-		// maps-displaymap-par-circles, maps-displaymap-par-rectangles, maps-displaymap-par-wmsoverlay,
-		// maps-displaymap-par-maxzoom, maps-displaymap-par-minzoom, maps-displaymap-par-copycoords,
-		// maps-displaymap-par-static
-		foreach ( $params as $name => &$param ) {
-			if ( !array_key_exists( 'message', $param ) ) {
-				$param['message'] = 'maps-displaymap-par-' . $name;
-			}
-		}
-
-		return $params;
-	}
-	
 	/**
 	 * Returns the list of default parameters.
 	 * @see ParserHook::getDefaultParameters
@@ -184,22 +81,26 @@ class MapsDisplayMap extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		// Get the instance of the service class.
-		$service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'] );
-		
-		$mapClass = new MapsDisplayMapRenderer( $service );
+		$this->defaultMapZoom( $parameters );
+		$this->trackMap();
 
+		$renderer = new MapsDisplayMapRenderer( MapsMappingServices::getServiceInstance( $parameters['mappingservice'] ) );
+
+		return $renderer->renderMap( $parameters, $this->parser );
+	}
+
+	private function defaultMapZoom( &$parameters ) {
 		$fullParams = $this->validator->getParameters();
 
 		if ( array_key_exists( 'zoom', $fullParams ) && $fullParams['zoom']->wasSetToDefault() && count( $parameters['coordinates'] ) > 1 ) {
 			$parameters['zoom'] = false;
 		}
+	}
 
-		global $egMapsEnableCategory;
-		if ($egMapsEnableCategory) {
+	private function trackMap() {
+		if ( $GLOBALS['egMapsEnableCategory'] ) {
 			$this->parser->addTrackingCategory( 'maps-tracking-category' );
 		}
-		return $mapClass->renderMap( $parameters, $this->parser );
 	}
 	
 	/**

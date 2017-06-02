@@ -1,29 +1,43 @@
 # Maps
 
-Maps is a [MediaWiki](https://www.mediawiki.org) extension to work with and visualise geographical
+Maps is a [MediaWiki](https://www.mediawiki.org) extension to work with and visualize geographical
 information.
 
 Features:
 
 * Powerful `#display_map` parser hook for embedding highly customizable dynamic maps into wiki pages.
-* Support for multiple mapping services: Google Maps, [OpenLayers](http://www.openlayers.org/),
-[OpenStreetMap](www.openstreetmap.org/) and [Leaflet](http://leafletjs.com/).
+* Support for multiple mapping services: [Leaflet](http://leafletjs.com/), Google Maps, [OpenLayers](http://www.openlayers.org/) and [OpenStreetMap](www.openstreetmap.org/).
+* Integration with [Semantic MediaWiki](https://www.semantic-mediawiki.org) via a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
+    * Query your stored coordinates and visualize them on dynamic maps, as tables or as lists
+    * Export your coordinates as KML or RDF
+    * Combine coordinates with other structured data stored in your wiki
 * Coordinate formatting and format conversion via the `#coordinates` parser function.
 * Geocoding via several supported services with the `#geocode` parser function.
 * Geospatial operations
     * Calculating the distance between two points with `#geodistance`
     * Finding a destination given a starting point, bearing and distance with `#finddestination`
 * Distance formatting and format conversion via the `#distance` parser function.
-* Visual map editor (Special:MapEditor) to edit `#display_map` wikitext.
-* Structured data support provided by the [Semantic Maps extension]
-(https://www.mediawiki.org/wiki/Extension:Semantic_Maps).
+* Visual map editor (Special:MapEditor) to edit `#display_map` wikitext (requires Google Maps).
 
-View the [release notes](RELEASE-NOTES.md) for recent changes to Maps.
+## User manual
 
-### User manual
+### For administrators
 
 * [Installation and configuration](INSTALL.md)
-* [Usage instructions and examples](https://www.semantic-mediawiki.org/wiki/Maps)
+* [Release notes](RELEASE-NOTES.md) - detailed list of changes per release
+* [Platform compatibility](INSTALL.md#platform-compatibility-and-release-status) - overview of PHP and MediaWiki support per release
+
+### For wiki users
+
+* [Usage instructions](https://www.semantic-mediawiki.org/wiki/Maps)
+* [Usage examples](https://www.semantic-mediawiki.org/wiki/Category:Maps_examples)
+* [Semantic usage examples](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples)
+
+### Getting support
+
+* Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
+* Ask a question on the #mediawiki IRC channel on Freenode.
+* File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues) (technical issues only)
 
 ## Project status
 
@@ -41,47 +55,27 @@ On [Packagist](https://packagist.org/packages/mediawiki/maps):
 
 ## Contributing
 
-Feel free to fork the [code on GitHub](https://github.com/JeroenDeDauw/Maps) and to submit pull
-requests. We have a list of [enhancements that newcommers can work on](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer) easily.
+* [File an issue](https://github.com/JeroenDeDauw/Maps/issues)
+* [Submit a pull request](https://github.com/JeroenDeDauw/Maps/pulls) ([tasks for newcomers](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
 
-You can run the PHPUnit tests by changing into the `tests/phpunit` directory of your MediaWiki
-install and running
+### Running the tests
 
-    php phpunit.php -c ../../extensions/Maps/
+As setup, run `composer install` inside of the Maps root directory.
 
-## Credits to other projects
+You can run the MediaWiki independent tests by changing into the Maps root directory and running
 
-### jQuery
+    phpunit
+    
+This is possible without having a MediaWiki installation or webserver. A clone of the Maps code suffices.
 
-This extension uses code from the jQuery library.
-jQuery is dual licensed under the
-[MIT](http://www.opensource.org/licenses/mit-license.php)
-and
-[GPL](http://www.opensource.org/licenses/gpl-license.php)
-licenses.
+To run the tests with MediaWiki, change into `tests/phpunit` of your MediaWiki installation and run
 
-### OpenLayers
+    php phpunit.php --wiki wiki -c ../../extensions/Maps/phpunit.xml.dist
+    
+Where you either update `wiki` to match your wikis name, or drop the parameter. The above command
+works without modification if you are using the [MediaWiki Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant).
 
-This extension includes code from the OpenLayers application.
-OpenLayers is an open-source product released under a
-[BSD-style license](http://svn.openlayers.org/trunk/openlayers/license.txt).
-
-### geoxml3
-
-This extension includes a copy of the geoxml3 KML processor.
-geoxml3 is released under the
-[Apache License 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
-
-### google-maps-utility-library-v3
-
-This extension includes code from the google-maps-utility-library-v3 (googleearth.js).
-It is released under the
-[Apache License 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
-
-### OpenStreetMap.js
-
-This extension includes the OpenStreetMap.js file which can be found
-[here](http://www.openstreetmap.org/openlayers/OpenStreetMap.js).
+Beware that due to severe technical debt, some tests access the network.
 
 ## Links
 

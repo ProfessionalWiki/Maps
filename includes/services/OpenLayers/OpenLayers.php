@@ -2,12 +2,12 @@
 
 /**
  * This group contains all OpenLayers related files of the Maps extension.
- * 
+ *
  * @defgroup MapsOpenLayers OpenLayers
  */
 
 /**
- * This file holds the hook and initialization for the OpenLayers service. 
+ * This file holds the hook and initialization for the OpenLayers service.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgHooks, $wgResourceModules, $wgAutoloadClasses;
+	global $wgResourceModules;
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
@@ -46,18 +46,4 @@ call_user_func( function() {
 			'maps-searchmarkers-text',
 		]
 	];
-
-	$wgAutoloadClasses['MapsOpenLayers'] = __DIR__ . '/Maps_OpenLayers.php';
-
-	$wgHooks['MappingServiceLoad'][] = 'efMapsInitOpenLayers';
 } );
-
-function efMapsInitOpenLayers() {
-	MapsMappingServices::registerService( 
-		'openlayers',
-		'MapsOpenLayers',
-		[ 'display_map' => 'MapsDisplayMapRenderer' ]
-	);
-	
-	return true;
-}

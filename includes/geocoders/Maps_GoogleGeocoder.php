@@ -35,7 +35,17 @@ final class MapsGoogleGeocoder extends \Maps\Geocoder {
 	 * @return string
 	 */	
 	protected function getRequestUrl( $address ) {
-		return 'http://maps.googleapis.com/maps/api/geocode/xml?address=' . urlencode( $address ) . '&sensor=false';
+		$urlArgs = [
+			'address' => $address
+		];
+		if ( $GLOBALS['egMapsGMaps3ApiKey'] !== '' ) {
+			$urlArgs['key'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
+		if ( $GLOBALS['egMapsGMaps3ApiVersion'] !== '' ) {
+			$urlArgs['v'] = $GLOBALS['egMapsGMaps3ApiVersion'];
+		}
+
+		return 'https://maps.googleapis.com/maps/api/geocode/xml?' . wfArrayToCgi($urlArgs);
 	}
 	
 	/**

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This groupe contains all Google Maps v3 related files of the Maps extension.
- * 
+ * This group contains all Google Maps v3 related files of the Maps extension.
+ *
  * @defgroup MapsGoogleMaps3 Google Maps v3
  */
 
 /**
- * This file holds the hook and initialization for the Google Maps v3 service. 
+ * This file holds the hook and initialization for the Google Maps v3 service.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func( function() {
-	global $wgResourceModules, $wgHooks;
+	global $wgResourceModules;
 
 	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
@@ -100,28 +100,4 @@ call_user_func( function() {
 			'googleearth-compiled.js',
 		],
 	];
-
-	$wgHooks['MappingServiceLoad'][] = 'efMapsInitGoogleMaps3';
 } );
-
-/**
- * Initialization function for the Google Maps v3 service. 
- * 
- * @since 0.6.3
- * @ingroup MapsGoogleMaps3
- * 
- * @return boolean true
- */
-function efMapsInitGoogleMaps3() {
-	global $wgAutoloadClasses;
-
-	$wgAutoloadClasses['MapsGoogleMaps3'] = __DIR__ . '/Maps_GoogleMaps3.php';
-
-	MapsMappingServices::registerService( 'googlemaps3', 'MapsGoogleMaps3' );
-
-	// TODO: kill below code
-	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-	$googleMaps->addFeature( 'display_map', 'MapsDisplayMapRenderer' );
-
-	return true;
-}
