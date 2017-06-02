@@ -77,9 +77,9 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	</tr>
 	<tr>
 		<th>Maps 4.3.x</th>
-		<td><strong>5.6</strong> - TBD</td>
-		<td>TBD - 1.29+</td>
-		<td>TBD - 2.5+</td>
+		<td><strong>5.6</strong> - 7.1+</td>
+		<td><strong>1.27</strong> - 1.29+</td>
+		<td>2.1 - 2.5+</td>
 		<td>In development</td>
 	</tr>
 	<tr>
