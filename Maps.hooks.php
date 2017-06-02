@@ -85,6 +85,46 @@ final class MapsHooks {
 			}
 		}
 
+		$GLOBALS['wgParamDefinitions']['coordinate'] = [
+			'string-parser' => GeoCoordinateParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['mappingservice'] = [
+			'definition'=> ServiceParam::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['mapslocation'] = [
+			'string-parser' => LocationParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['mapsline'] = [
+			'string-parser' => LineParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['mapscircle'] = [
+			'string-parser' => CircleParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['mapsrectangle'] = [
+			'string-parser' => RectangleParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['mapspolygon'] = [
+			'string-parser' => PolygonParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['distance'] = [
+			'string-parser' => DistanceParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['wmsoverlay'] = [
+			'string-parser' => WmsOverlayParser::class,
+		];
+
+		$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = [
+			'string-parser' => ImageOverlayParser::class,
+		];
+
 		if ( !$GLOBALS['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' ) ) {
 			SemanticMaps::newFromMediaWikiGlobals( $GLOBALS )->initExtension();
 		}
