@@ -24,6 +24,31 @@ use Maps\RectangleParser;
 use Maps\ServiceParam;
 use Maps\WmsOverlayParser;
 
+
+if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
+	throw new Exception(
+		'This version of Maps requires MediaWiki 1.23 or above; use Maps 3.5.x for older versions.'
+		. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
+	);
+}
+
+if ( version_compare( $GLOBALS['wgVersion'], '1.28c', '>' ) ) {
+	if ( function_exists( 'wfLoadExtension' ) ) {
+		wfLoadExtension( 'Maps' );
+		// Keep i18n globals so mergeMessageFileList.php doesn't break
+		$GLOBALS['wgMessagesDirs']['Maps']							= __DIR__ . '/i18n';
+		$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] 			= __DIR__ . '/Maps.i18n.magic.php';
+		$GLOBALS['wgExtensionMessagesFiles']['MapsNamespaces'] 		= __DIR__ . '/Maps.i18n.namespaces.php';
+		$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] 			= __DIR__ . '/Maps.i18n.alias.php';
+		/* wfWarn(
+			'Deprecated PHP entry point used for Maps extension. ' .
+			'Please use wfLoadExtension instead, ' .
+			'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+		); */
+		return;
+	}
+}
+
 if ( defined( 'Maps_COORDS_FLOAT' ) ) {
 	// Do not initialize more than once.
 	return 1;
@@ -61,13 +86,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	// Only initialize the extension when all dependencies are present.
 	if ( !defined( 'Validator_VERSION' ) ) {
 		throw new Exception( 'You need to have Validator installed in order to use Maps' );
-	}
-
-	if ( version_compare( $GLOBALS['wgVersion'], '1.23c' , '<' ) ) {
-		throw new Exception(
-			'This version of Maps requires MediaWiki 1.23 or above; use Maps 3.5.x for older versions.'
-			. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
-		);
 	}
 
 	define( 'Maps_VERSION' , '4.2.1' );
@@ -109,40 +127,19 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	// Parser hooks
 
 	// Required for #coordinates.
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsCoordinates();
-		return $instance->init( $parser );
-	};
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MapsHooks::onParserFirstCallInit1';
 
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsDisplayMap();
-		return $instance->init( $parser );
-	};
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MapsHooks::onParserFirstCallInit2';
 
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsDistance();
-		return $instance->init( $parser );
-	};
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MapsHooks::onParserFirstCallInit3';
 
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsFinddestination();
-		return $instance->init( $parser );
-	};
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MapsHooks::onParserFirstCallInit4';
 
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsGeocode();
-		return $instance->init( $parser );
-	};
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MapsHooks::onParserFirstCallInit5';
 
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsGeodistance();
-		return $instance->init( $parser );
-	};
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MapsHooks::onParserFirstCallInit6';
 
-	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsMapsDoc();
-		return $instance->init( $parser );
-	};
+	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MapsHooks::onParserFirstCallInit7';
 
 	// Geocoders
 
@@ -156,13 +153,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
 
 	// Registration of the OSM Nominatim service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
-		\Maps\Geocoders::registerGeocoder(
-			'nominatim',
-			new \Maps\Geocoders\NominatimGeocoder( new SimpleFileFetcher() )
-		);
-		return true;
-	};
+	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsHooks::onMapsGeocodersNominatimGeocoder';
 
 
 

@@ -10,6 +10,123 @@
  */
 final class MapsHooks {
 
+ 	public static function onExtensionCallback() {
+		if ( defined( 'Maps_COORDS_FLOAT' ) ) {
+			// Do not initialize more than once.
+			return 1;
+		}
+
+		// The different coordinate notations.
+		define( 'Maps_COORDS_FLOAT' , 'float' );
+		define( 'Maps_COORDS_DMS' , 'dms' );
+		define( 'Maps_COORDS_DM' , 'dm' );
+		define( 'Maps_COORDS_DD' , 'dd' );
+
+		require_once __DIR__ . '/Maps_Settings.php';
+
+		define( 'Maps_VERSION' , '4.2.1' );
+		define( 'SM_VERSION', Maps_VERSION );
+
+		// Only initialize the extension when all dependencies are present.
+		if ( !defined( 'Validator_VERSION' ) ) {
+			throw new Exception( 'You need to have Validator installed in order to use Maps' );
+		}
+
+		$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
+	}
+
+	public static function onExtensionFunction() {
+		if ( $GLOBALS['egMapsDisableExtension'] ) {
+			return true;
+		}
+		if ( defined( 'Maps_VERSION' ) ) {
+			// Do not initialize more than once.
+			return true;
+		}
+
+		// Only initialize the extension when all dependencies are present.
+		if ( !defined( 'Validator_VERSION' ) ) {
+			throw new Exception( 'You need to have Validator installed in order to use Maps' );
+		}
+
+		define( 'Maps_VERSION' , '4.2.1' );
+		define( 'SM_VERSION', Maps_VERSION );
+
+		if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
+			$GLOBALS['egMapsGMaps3Language'] = $GLOBALS['wgLang'];
+		}
+
+		MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
+
+		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+		$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+
+		MapsMappingServices::registerService(
+			'openlayers',
+			MapsOpenLayers::class,
+			[ 'display_map' => MapsDisplayMapRenderer::class ]
+		);
+
+		MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
+		$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
+		$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+
+		if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
+			$GLOBALS['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';
+			$GLOBALS['wgSpecialPageGroups']['MapEditor'] = 'maps';
+		}
+
+		$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
+
+		// Users that can geocode. By default the same as those that can edit.
+		foreach ( $GLOBALS['wgGroupPermissions'] as $group => $rights ) {
+			if ( array_key_exists( 'edit' , $rights ) ) {
+				$GLOBALS['wgGroupPermissions'][$group]['geocode'] = $GLOBALS['wgGroupPermissions'][$group]['edit'];
+			}
+		}
+
+		if ( !$GLOBALS['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' ) ) {
+			SemanticMaps::newFromMediaWikiGlobals( $GLOBALS )->initExtension();
+		}
+
+		return true;
+	}
+
+	public static function onParserFirstCallInit1( Parser &$parser ) {
+		$instance = new MapsCoordinates();
+		return $instance->init( $parser );
+	}
+
+	public static function onParserFirstCallInit2( Parser &$parser ) {
+		$instance = new MapsDisplayMap();
+		return $instance->init( $parser );
+	}
+
+	public static function onParserFirstCallInit3( Parser &$parser ) {
+		$instance = new MapsDistance();
+		return $instance->init( $parser );
+	}
+
+	public static function onParserFirstCallInit4( Parser &$parser ) {
+		$instance = new MapsFinddestination();
+		return $instance->init( $parser );
+	}
+
+	public static function onParserFirstCallInit5( Parser &$parser ) {
+		$instance = new MapsGeocode();
+		return $instance->init( $parser );
+	}
+
+	public static function onParserFirstCallInit6( Parser &$parser ) {
+		$instance = new MapsGeodistance();
+		return $instance->init( $parser );
+	}
+
+	public static function onParserFirstCallInit7( Parser &$parser ) {
+		$instance = new MapsMapsDoc();
+		return $instance->init( $parser );
+	}
+
 	/**
 	 * Adds a link to Admin Links page.
 	 *
