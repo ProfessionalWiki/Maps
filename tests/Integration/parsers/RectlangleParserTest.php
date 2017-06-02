@@ -45,8 +45,8 @@ class RectangleParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertInstanceOf( Rectangle::class, $rectangle );
 
-		$this->assertEquals( "I'm a square", $rectangle->getTitle() );
-		$this->assertEquals( 'of doom', $rectangle->getText() );
+		$this->assertSame( "I'm a square", $rectangle->getTitle() );
+		$this->assertSame( 'of doom', $rectangle->getText() );
 	}
 
 }
