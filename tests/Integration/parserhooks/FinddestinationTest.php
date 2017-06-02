@@ -14,19 +14,14 @@ use Maps\Elements\Location;
 class FinddestinationTest extends ParserHookTest {
 
 	/**
-	 * @since 3.0
 	 * @var string[]
 	 */
-	protected $locations = [
+	private $locations = [
 		'4,2',
 		'4.2,-42',
 	];
 
-	/**
-	 * @since 3.0
-	 * @var array
-	 */
-	protected $bearings = [
+	private $bearings = [
 		1,
 		42,
 		-42,
@@ -34,11 +29,7 @@ class FinddestinationTest extends ParserHookTest {
 		4.2,
 	];
 
-	/**
-	 * @since 3.0
-	 * @var string[]
-	 */
-	protected $distances = [
+	private $distances = [
 		'42' => 42,
 		'0' => 0,
 		'42 m' => 42,
@@ -48,8 +39,6 @@ class FinddestinationTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::getInstance
-	 * @since 2.0
-	 * @return \ParserHook
 	 */
 	protected function getInstance() {
 		return new \MapsFinddestination();
@@ -57,8 +46,6 @@ class FinddestinationTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::parametersProvider
-	 * @since 2.0
-	 * @return array
 	 */
 	public function parametersProvider() {
 		$paramLists = [];
@@ -74,8 +61,6 @@ class FinddestinationTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::processingProvider
-	 * @since 3.0
-	 * @return array
 	 */
 	public function processingProvider() {
 		$argLists = [];

@@ -15,8 +15,6 @@ class CoordinatesTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::getInstance
-	 * @since 2.0
-	 * @return \ParserHook
 	 */
 	protected function getInstance() {
 		return new \MapsCoordinates();
@@ -24,8 +22,6 @@ class CoordinatesTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::parametersProvider
-	 * @since 2.0
-	 * @return array
 	 */
 	public function parametersProvider() {
 		$paramLists = [];
@@ -79,8 +75,6 @@ class CoordinatesTest extends ParserHookTest {
 
 	/**
 	 * @see ParserHookTest::processingProvider
-	 * @since 3.0
-	 * @return array
 	 */
 	public function processingProvider() {
 		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
