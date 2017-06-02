@@ -304,40 +304,7 @@
 		]
 	},
 	"config": {
-		"_prefix": "",
-		"wgParamDefinitions": {
-			"coordinate": {
-				"string-parser": "DataValues\\Geo\\Parsers\\GeoCoordinateParser::class"
-			},
-			"mappingservice": {
-				"definition": "Maps\\ServiceParam::class"
-			},
-			"mapslocation": {
-				"string-parser": "Maps\\LocationParser::class"
-			},
-			"mapsline": {
-				"string-parser": "Maps\\LineParser::class"
-			},
-			"mapscircle": {
-				"string-parser": "Maps\\CircleParser::class"
-			},
-			"mapsrectangle": {
-				"string-parser": "Maps\\RectangleParser::class"
-			},
-			"mapspolygon": {
-				"string-parser": "Maps\\PolygonParser::class"
-			},
-			"distance": {
-				"string-parser": "Maps\\DistanceParser::class"
-			},
-			"wmsoverlay": {
-				"string-parser": "Maps\\WmsOverlayParser::class"
-			},
-			"mapsimageoverlay": {
-				"string-parser": "Maps\\ImageOverlayParser::class"
-			},
-			"_merge_strategy": "array_plus_2d"
-		}
+		"_prefix": ""
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 1
