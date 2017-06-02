@@ -38,7 +38,7 @@ class CoordinateDescription extends ValueDescription {
 	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 * 
-	 * @return boolean
+	 * @return string|false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		$dataItem = $this->getDataItem();
