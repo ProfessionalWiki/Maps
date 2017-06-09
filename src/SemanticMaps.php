@@ -79,7 +79,7 @@ class SemanticMaps {
 
 		/* @var MapsMappingService $googleMaps */
 		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-		$googleMaps->addResourceModules( array( 'ext.sm.googlemaps3ajax' ) );
+		$googleMaps->addResourceModules( [ 'ext.sm.googlemaps3ajax' ] );
 
 		SMMapPrinter::registerService( $googleMaps );
 
@@ -103,7 +103,7 @@ class SemanticMaps {
 
 		/* @var MapsMappingService $leaflet */
 		$leaflet = MapsMappingServices::getServiceInstance( 'leaflet' );
-		$leaflet->addResourceModules( array( 'ext.sm.fi.leafletajax' ) );
+		$leaflet->addResourceModules( [ 'ext.sm.fi.leafletajax' ] );
 
 		SMMapPrinter::registerService( $leaflet );
 
@@ -127,7 +127,7 @@ class SemanticMaps {
 
 		/* @var MapsMappingService $openLayers */
 		$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
-		$openLayers->addResourceModules( array( 'ext.sm.fi.openlayersajax' ) );
+		$openLayers->addResourceModules( [ 'ext.sm.fi.openlayersajax' ] );
 
 		SMMapPrinter::registerService( $openLayers );
 

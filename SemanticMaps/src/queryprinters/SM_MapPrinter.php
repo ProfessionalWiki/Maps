@@ -112,14 +112,14 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			'default' => false,
 		];
 
-		$params['ajaxcoordproperty'] = array(
+		$params['ajaxcoordproperty'] = [
 			'default' => '',
-		);
+		];
 
-		$params['ajaxquery'] = array(
+		$params['ajaxquery'] = [
 			'default' => '',
 			'type' => 'string'
-		);
+		];
 
 		// Messages:
 		// semanticmaps-par-staticlocations, semanticmaps-par-showtitle, semanticmaps-par-hidenamespace,
