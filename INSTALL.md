@@ -10,20 +10,28 @@ These are the installation and configuration instructions for the [Maps extensio
 
 ## Download and installation
 
-Go to the root directory of your MediaWiki installation.
+Maps is installed and upgraded via Composer. For a detailed explanation see
+[installing MediaWiki extensions with Composer](https://www.mediawiki.org/wiki/Composer/For_extensions).
 
-If you have previously installed Composer skip to step 2.
+In short:
 
-To install Composer, just download http://getcomposer.org/composer.phar into your
-current directory.
+* Edit `composer.local.json` or `composer.json` by adding `mediawiki/maps` to the `require` section
+* Choose the version constraint. Typically you want to pick `~x.y.z`, where `x.y.z` is the latest version of Maps
+* Run `composer update`
 
-    wget http://getcomposer.org/composer.phar
+For upgrading, simply edit the `composer.local.json` or `composer.json` and updte the version constraint.
 
-#### Step 2
+Example of a `require` section with both Maps and Semantic MediaWiki:
 
-Now using Composer, install Maps
 
-    php composer.phar require mediawiki/maps "*"
+```json
+    "require": {
+        "mediawiki/maps": "~4.2.1",
+	"mediawiki/semantic-media-wiki": "~2.5.0"
+    }
+```
+
+You will need a comma behind each version constraint except the last one.
 
 #### Verify installation success
 
