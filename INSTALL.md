@@ -19,7 +19,7 @@ In short:
 * Choose the version constraint. Typically you want to pick `~x.y.z`, where `x.y.z` is the latest version of Maps
 * Run `composer update`
 
-For upgrading, simply edit the `composer.local.json` or `composer.json` and updte the version constraint.
+For upgrading, simply edit the `composer.local.json` or `composer.json` and update the version constraint. Then run `composer update`.
 
 Example of a `require` section with both Maps and Semantic MediaWiki:
 
