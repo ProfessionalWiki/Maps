@@ -15,8 +15,8 @@ Maps is installed and upgraded via Composer. For a detailed explanation see
 
 In short:
 
-* Edit `composer.local.json` or `composer.json` by adding `mediawiki/maps` to the `require` section
-* Choose the version constraint. Typically you want to pick `~x.y.z`, where `x.y.z` is the latest version of Maps
+* Edit `composer.local.json` (preferred) or `composer.json` by adding `mediawiki/maps` to the `require` section
+* Choose the version constraint. Typically you want to pick `~x.y`, where `x.y` is the latest minor version of Maps receiving only backwards-compatible code changes
 * Run `composer update`
 
 For upgrading, simply edit the `composer.local.json` or `composer.json` and update the version constraint. Then run `composer update`.
@@ -26,8 +26,8 @@ Example of a `require` section with both Maps and Semantic MediaWiki:
 
 ```json
     "require": {
-        "mediawiki/maps": "~4.2.1",
-	"mediawiki/semantic-media-wiki": "~2.5.0"
+        "mediawiki/maps": "~4.3",
+	"mediawiki/semantic-media-wiki": "~2.5"
     }
 ```
 
@@ -52,17 +52,17 @@ supported mapping services.
 
 ### Required configuration for Google Maps
 
-$GLOBALS['egMapsGMaps3ApiKey'] = 'your-api-key';
+`$GLOBALS['egMapsGMaps3ApiKey'] = 'your-api-key';`
 
 ### Not using Google Maps by default
 
 For OpenLayers:
 
-$GLOBALS['egMapsDefaultService'] = 'openlayers';
+`$GLOBALS['egMapsDefaultService'] = 'openlayers';`
 
 For Leaflet:
 
-$GLOBALS['egMapsDefaultService'] = 'leaflet';
+`$GLOBALS['egMapsDefaultService'] = 'leaflet';`
 
 You might also want to fully disable Google Maps by placing a copy of the `egMapsAvailableServices`
 setting in LocalSettings, and removing the `googlemaps3` line.
@@ -102,32 +102,25 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>5.5 - 7.1</td>
 		<td>1.23 - 1.29</td>
 		<td>2.1 - 2.5</td>
-		<td>Legacy release</td>
+		<td>Obsolete release</td>
 	</tr>
 	<tr>
 		<th>Maps 4.1.x</th>
 		<td>5.5 - 7.1</td>
 		<td>1.23 - 1.28</td>
 		<td>2.1 - 2.5</td>
-		<td>Legacy release</td>
+		<td>Obsolete release</td>
 	</tr>
 	<tr>
 		<th>Maps 4.0.x</th>
 		<td>5.5 - 7.0</td>
 		<td>1.23 - 1.28</td>
 		<td>2.1 - 2.4</td>
-		<td>Legacy release</td>
+		<td>Obsolete release</td>
 	</tr>
-	<tr>
-		<th>Maps 3.8.x</th>
-		<td>5.5 - 7.0</td>
-		<td>1.23 - 1.27</td>
-		<td>Not applicable</td>
-		<td>Legacy release</td>
-	</tr>	
 </table>
 
-Older versions (no longer supported):
+Older obsolete versions:
 
 <table>
 	<tr>
@@ -136,6 +129,13 @@ Older versions (no longer supported):
 		<th>MediaWiki</th>
 		<th>Composer</th>
 		<th>Validator</th>
+	</tr>
+		<tr>
+		<th>Maps 3.8.x</th>
+		<td>5.5 - 7.0</td>
+		<td>1.23 - 1.27</td>
+		<td>Required</td>
+		<td>Handled by Composer</td>
 	</tr>
 	<tr>
 		<th>Maps 3.7.x</th>
