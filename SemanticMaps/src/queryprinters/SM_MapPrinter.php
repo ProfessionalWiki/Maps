@@ -166,6 +166,10 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
+		$this->service->addHtmlDependencies(
+			MapsDisplayMapRenderer::getLayerDependencies( $params['format'], $params )
+		);
+
 		$locationAmount = count( $params['locations'] );
 
 		if ( $locationAmount > 0 ) {
