@@ -84,7 +84,7 @@
 	"maps-geocode-par-location": "L'adresse que vous souhaitez géocoder.",
 	"maps-geocode-par-mappingservice": "Le service de géocodage que vous souhaitez utiliser. Consultez les services de géocodage disponibles.",
 	"maps-geocode-par-geoservice": "Ce paramètre vous permet d'indiquer que vous utilisez cette demande de géocodage en combinaison avec un service de cartographie spécifique.\nChaque service de cartographie peut écraser la valeur par défaut pour le service de géocodage.\nCette démarche est liée à des raisons juridiques, puisque vous ne pouvez pas utiliser le service de géocodage de Google, sauf avec Google Maps.\nIndiquer ce paramètre et non le paramètre pour le service veillera à ce que vous n'utilisiez pas une combinaison non valide.",
-	"maps-geocode-par-allowcoordinates": "Permet de désactiver le support pour les coordonnées dans cette fonction. Doit être soit oui ou non.\nSi cette valeur est « non », chacune des valeurs sera géocodée, même s'il s'agit de coordonnées valides.",
+	"maps-geocode-par-allowcoordinates": "Permet de désactiver la prise en charge des coordonnées dans cette fonction. Doit être soit oui ou non.\nSi cette valeur est « non », chacune des valeurs sera géocodée, même s’il s’agit de coordonnées valides.",
 	"maps-geocode-par-format": "Le format des coordonnées qui en résultent.",
 	"maps-geocode-par-directional": "Indique si les coordonnées doivent être imprimées directionnellement ou non.",
 	"maps-geodistance-par-location1": "Le premier point dans le jeu pour à utiliser pour calculer la distance.",
