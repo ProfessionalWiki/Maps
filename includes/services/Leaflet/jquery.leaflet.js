@@ -31,9 +31,10 @@
 			if (!properties.hasOwnProperty('icon') || properties.icon === '') {
 				var icon = new L.Icon.Default();
 			} else {
-				var icon = new L.Icon({
-					iconUrl: properties.icon
-				});
+				var iconOptions = L.Icon.Default.prototype.options;
+				iconOptions.iconUrl = properties.icon;
+
+				var icon = new L.Icon(iconOptions);
 			}
 
 			var markerOptions = {
