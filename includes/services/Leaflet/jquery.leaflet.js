@@ -251,6 +251,10 @@
 					position: 'topleft'
 				};
 			}
+			
+			if (options.static) {
+				mapOptions.scrollWheelZoom = false;
+			}
 
 			var map = L.map( this.get(0), mapOptions ).fitWorld();
 			this.map = map;
