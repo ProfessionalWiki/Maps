@@ -254,6 +254,13 @@
 			
 			if (options.static) {
 				mapOptions.scrollWheelZoom = false;
+				mapOptions.doubleClickZoom = false;
+				mapOptions.touchZoom = false;
+				mapOptions.boxZoom = false;
+				mapOptions.tap = false;
+				mapOptions.keyboard = false;
+				mapOptions.zoomControl = false;
+				mapOptions.dragging = false;
 			}
 
 			var map = L.map( this.get(0), mapOptions ).fitWorld();
