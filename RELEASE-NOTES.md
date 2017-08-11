@@ -1,6 +1,13 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 4.4.0
+
+Under development
+
+* Added static map support for Leaflet (`static=true`)
+* Fixed custom marker icon bug when using Leaflet
+
 ## Maps 4.3.0
 
 Released on June 10th, 2017.
