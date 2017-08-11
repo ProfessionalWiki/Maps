@@ -70,7 +70,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		);
 	}
 
-	define( 'Maps_VERSION' , '4.3' );
+	define( 'Maps_VERSION' , '4.4 alpha' );
 	define( 'SM_VERSION', Maps_VERSION );
 
 	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
