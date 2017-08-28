@@ -116,7 +116,7 @@
 	"maps-fullscreen-button-tooltip": "Ver el mapa en toda la pantalla o incrustado.",
 	"validation-error-invalid-location": "El parámetro \"$1\" deber ser una ubicación válida.",
 	"validation-error-invalid-locations": "El parámetro \"$1\" debe ser una o más ubicaciones válidas.",
-	"validation-error-invalid-width": "El parámetro \"$1\" debe ser un ancho válido.",
+	"validation-error-invalid-width": "El parámetro «$1» debe ser una anchura válida.",
 	"validation-error-invalid-height": "El parámetro $1 deber ser una altura válida.",
 	"validation-error-invalid-distance": "El parámetro \"$1\" debe ser una distancia válida.",
 	"validation-error-invalid-distances": "El parámetro \"$1\" debe ser una o más distancias válidas.",
