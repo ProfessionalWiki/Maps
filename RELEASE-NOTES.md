@@ -5,9 +5,9 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 Under development
 
-* Added layer support for Leaflet
-* Added static map support for Leaflet (`static=true`)
-* Fixed custom marker icon bug when using Leaflet
+* Added layer support for Leaflet (by Peter Grassberger)
+* Added static map support for Leaflet (`static=true`) (by hidrarga)
+* Fixed custom marker icon bug when using Leaflet (by hidrarga)
 
 ## Maps 4.3.0
 
