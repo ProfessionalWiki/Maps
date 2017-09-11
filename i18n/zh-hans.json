@@ -211,7 +211,7 @@
 	"semanticmaps-forminput-locations": "位置",
 	"semanticmaps-par-staticlocations": "要添加至地图的位置及查询的数据的列表。如同display_points，你可以给每个位置添加标题、说明，用浪纹分隔“~”。",
 	"semanticmaps-par-showtitle": "是否在标记信息窗口之中显示标题。当采用模板对信息窗口内容进行格式编排的时候，关闭此项往往会有所帮助。",
-	"semanticmaps-par-hidenamespace": "在标记信息窗口中显示命名空间标题",
+	"semanticmaps-par-hidenamespace": "在标记信息窗口中显示名字空间标题",
 	"semanticmaps-par-centre": "地图的中心。当未加提供的时候，地图会自动挑选最佳的中心，从而在地图上显示所有的标记。",
 	"semanticmaps-par-template": "用来对信息窗口内容进行格式编排的模板。",
 	"semanticmaps-par-geocodecontrol": "显示地理编码控件。",
