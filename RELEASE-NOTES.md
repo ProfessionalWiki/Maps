@@ -3,7 +3,7 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 4.4.0
 
-Under development
+Released on September 14th, 2017.
 
 * Added layer support for Leaflet (by Peter Grassberger)
 * Added static map support for Leaflet (`static=true`) (by hidrarga)

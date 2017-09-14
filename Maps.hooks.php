@@ -48,7 +48,7 @@ final class MapsHooks {
 		global $egMapsGlobalJSVars;
 
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
-                $vars[ 'egMapsAvailableServices' ] = $GLOBALS['egMapsAvailableServices'];
+		$vars['egMapsAvailableServices'] = $GLOBALS['egMapsAvailableServices'];
 
 		$vars += $egMapsGlobalJSVars;
 
