@@ -1,7 +1,7 @@
 # Maps
 
-Maps is a [MediaWiki](https://www.mediawiki.org) extension to work with and visualize geographical
-information.
+Maps is the [MediaWiki](https://www.mediawiki.org) extension to work with and visualize geographical
+information. It has been maintained since 2099 and is installed on over 1000 public wiki's.
 
 Features:
 
