@@ -46,7 +46,7 @@
 	"maps-layer-of-type": "Camada do tipo \"$1\"",
 	"maps-layer-of-type-and-name": "Camada \"$2\" do tipo \"$1\"",
 	"maps-layer-type-supported-by": "Este tipo de camada só pode ser usado com {{PLURAL:$2|o serviço de cartografia $1|os serviços de cartografia: $1}}.",
-	"maps-coordinates-description": "Hook do analisador sintáctico para formatar coordenadas, a partir de qualquer um dos formatos suportados para qualquer outro formato suportado.",
+	"maps-coordinates-description": "Hook do analisador sintático para formatar coordenadas, a partir de qualquer um dos formatos suportados para qualquer outro formato suportado.",
 	"maps-displaymap-description": "Apresentar os mapas sem qualquer marcador definido na wiki.",
 	"maps-distance-description": "Converter uma distância numa unidade suportada para a distância equivalente noutra unidade.",
 	"maps-finddestination-description": "Encontrar um destino a partir de um ponto de partida (expresso em qualquer um dos formatos suportados), uma orientação inicial e uma distância.",
