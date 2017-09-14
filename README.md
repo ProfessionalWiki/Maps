@@ -79,9 +79,9 @@ Beware that due to severe technical debt, some tests access the network.
 
 ## Links
 
-* [Maps examples](https://www.semantic-mediawiki.org/wiki/Maps_examples)
-* [Maps on Ohloh](https://www.ohloh.net/p/maps)
-* [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
+* [Maps on OpenHub](https://www.openhub.net/p/maps/)
 * [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)
+* [Maps on WikiApiary](https://wikiapiary.com/wiki/Extension:Maps)
+* [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [TravisCI build status](https://travis-ci.org/JeroenDeDauw/Maps)
 * [Semantic Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Semantic_Maps)
