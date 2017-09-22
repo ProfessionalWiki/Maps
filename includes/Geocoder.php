@@ -113,7 +113,7 @@ abstract class Geocoder {
 		$cache = wfGetCache( CACHE_ANYTHING ); 
 		
 		return $cache->getWithSetCallBack(
-			$cache->makeKey( 'maps_geocoder', $cacheEntry ),
+			$cache->makeKey( 'maps_geocoder', $address ),
 			$cache::TTL_DAY,
 			function () use ( $address ) {
 				$response = \Http::get( $this->getRequestUrl( $address ) );
