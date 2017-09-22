@@ -110,14 +110,20 @@ abstract class Geocoder {
 	 * @return array or false
 	 */
 	public function geocode( $address ) {
-		$response = \Http::get( $this->getRequestUrl( $address ) );
+		$cache = wfGetCache( CACHE_ANYTHING ); 
 		
-		if ( $response === false ) {
-			return false;
-		}
-		else {
-			return $this->parseResponse( $response );
-		}
+		return $cache->getWithSetCallBack(
+			$cache->makeKey( 'maps_geocoder', $cacheEntry ),
+			$cache::TTL_DAY,
+			function () use ( $address ) {
+				$response = \Http::get( $this->getRequestUrl( $address ) );
+				
+				if ( $response === false )
+					return false;
+					
+				return $this->parseResponse( $response );
+			}
+		);
 	}
 	
 	/**

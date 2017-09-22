@@ -168,25 +168,7 @@ final class Geocoders {
 			return false;
 		}
 
-		if ( $geocoder->hasGlobalCacheSupport() ) {
-			$cacheResult = self::cacheRead( $address );
-
-			// This means the cache returned an already computed set of coordinates.
-			if ( $cacheResult !== false ) {
-				assert( $cacheResult instanceof LatLongValue );
-				return $cacheResult;
-			}
-		}
-
-		$coordinates = self::getGeocoded( $geocoder, $address );
-
-		if ( $coordinates === false ) {
-			return false;
-		}
-
-		self::cacheWrite( $address, $coordinates );
-
-		return $coordinates;
+		return self::getGeocoded( $geocoder, $address );
 	}
 
 	private static function getGeocoded( Geocoder $geocoder, $address ) {
