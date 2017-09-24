@@ -1,7 +1,6 @@
 ### Setup
 
 - MW version:
-- DB (MySQL etc.):
 - PHP version:
 - Maps version:
 - SMW version (if applicable):
