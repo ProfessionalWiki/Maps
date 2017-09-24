@@ -1,9 +1,9 @@
 ### Setup
 
-- MW version:
-- PHP version:
-- Maps version:
-- SMW version (if applicable):
+- Maps version: 
+- MW version: 
+- PHP version: 
+- SMW version (if applicable): 
 
 ### Issue
 
