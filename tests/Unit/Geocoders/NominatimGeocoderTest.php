@@ -6,7 +6,7 @@ use FileFetcher\InMemoryFileFetcher;
 use Maps\Geocoders\NominatimGeocoder;
 
 /**
- * @covers Maps\Geocoders\NominatimGeocoder
+ * @covers \Maps\Geocoders\NominatimGeocoder
  *
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >
@@ -46,13 +46,11 @@ class NominatimGeocoderTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function invalidResponseProvider() {
-		return [
-			'Not JSON' => [ '~=[,,_,,]:3' ],
-			'Not a JSON array' => [ '42' ],
-			'Empty JSON array' => [ '[]' ],
-			'Missing lon key' => [ '[{"lat":"40.7642499","FOO":"-73.9545249"}]' ],
-			'Missing lat key' => [ '[{"FOO":"40.7642499","lon":"-73.9545249"}]' ],
-		];
+		yield 'Not JSON' => [ '~=[,,_,,]:3' ];
+		yield 'Not a JSON array' => [ '42' ];
+		yield 'Empty JSON array' => [ '[]' ];
+		yield 'Missing lon key' => [ '[{"lat":"40.7642499","FOO":"-73.9545249"}]' ];
+		yield 'Missing lat key' => [ '[{"FOO":"40.7642499","lon":"-73.9545249"}]' ];
 	}
 
 	// TODO: test malicious address escaping

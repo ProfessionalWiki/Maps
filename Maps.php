@@ -70,7 +70,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		);
 	}
 
-	define( 'Maps_VERSION' , '4.4' );
+	define( 'Maps_VERSION' , '4.5 alpha' );
 	define( 'SM_VERSION', Maps_VERSION );
 
 	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
@@ -147,7 +147,16 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	// Geocoders
 
 	// Registration of the GeoNames service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
+	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
+		if ( $GLOBALS['egMapsGeoNamesUser'] !== '' ) {
+			\Maps\Geocoders::registerGeocoder(
+				'geonames',
+				new \Maps\Geocoders\GeoNamesGeocoder( new SimpleFileFetcher(), $GLOBALS['egMapsGeoNamesUser'] )
+			);
+		}
+
+		return true;
+	};
 
 	// Registration of the Google Geocoding (v2) service geocoder.
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
