@@ -158,8 +158,18 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		return true;
 	};
 
-	// Registration of the Google Geocoding (v2) service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
+	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
+		\Maps\Geocoders::registerGeocoder(
+			'google',
+			new \Maps\Geocoders\GoogleGeocoder(
+				new SimpleFileFetcher(),
+				$GLOBALS['egMapsGMaps3ApiKey'],
+				$GLOBALS['egMapsGMaps3ApiVersion']
+			)
+		);
+
+		return true;
+	};
 
 	// Registration of the geocoder.us service geocoder.
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
