@@ -171,9 +171,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		return true;
 	};
 
-	// Registration of the geocoder.us service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
-
 	// Registration of the OSM Nominatim service geocoder.
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
 		\Maps\Geocoders::registerGeocoder(
