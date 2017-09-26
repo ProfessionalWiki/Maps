@@ -70,10 +70,6 @@
 	// one from the available services will be taken.
 	$GLOBALS['egMapsDefaultGeoService'] = 'geonames';
 
-	// Boolean. Indicates if geocoders can override the default geoservice based on
-	// the used mapping service.
-	$GLOBALS['egMapsUserGeoOverrides'] = true;
-
 	// Boolean. Sets if coordinates should be allowed in geocoding calls.
 	$GLOBALS['egMapsAllowCoordsGeocoding'] = true;
 

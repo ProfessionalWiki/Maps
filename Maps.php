@@ -70,7 +70,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		);
 	}
 
-	define( 'Maps_VERSION' , '4.4' );
+	define( 'Maps_VERSION' , '5.0 alpha' );
 	define( 'SM_VERSION', Maps_VERSION );
 
 	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
@@ -147,13 +147,29 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	// Geocoders
 
 	// Registration of the GeoNames service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeonamesGeocoder::register';
+	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
+		if ( $GLOBALS['egMapsGeoNamesUser'] !== '' ) {
+			\Maps\Geocoders::registerGeocoder(
+				'geonames',
+				new \Maps\Geocoders\GeoNamesGeocoder( new SimpleFileFetcher(), $GLOBALS['egMapsGeoNamesUser'] )
+			);
+		}
 
-	// Registration of the Google Geocoding (v2) service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGoogleGeocoder::register';
+		return true;
+	};
 
-	// Registration of the geocoder.us service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
+	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
+		\Maps\Geocoders::registerGeocoder(
+			'google',
+			new \Maps\Geocoders\GoogleGeocoder(
+				new SimpleFileFetcher(),
+				$GLOBALS['egMapsGMaps3ApiKey'],
+				$GLOBALS['egMapsGMaps3ApiVersion']
+			)
+		);
+
+		return true;
+	};
 
 	// Registration of the OSM Nominatim service geocoder.
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {

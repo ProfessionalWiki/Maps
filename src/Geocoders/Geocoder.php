@@ -16,8 +16,6 @@ interface Geocoder {
 	 * @param string $address
 	 *
 	 * @return LatLongValue|null
-	 *
-	 * TODO: specify failure behaviour. Exception or null?
 	 */
 	public function geocode( $address );
 

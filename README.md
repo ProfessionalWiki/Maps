@@ -1,7 +1,7 @@
 # Maps
 
-Maps is the [MediaWiki](https://www.mediawiki.org) extension to work with and visualize geographical
-information. It has been maintained since 2009 and is installed on over 1000 public wikis.
+Maps is a [MediaWiki](https://www.mediawiki.org) extension to work with and visualize geographical
+information. 
 
 Features:
 
@@ -18,6 +18,8 @@ Features:
     * Finding a destination given a starting point, bearing and distance with `#finddestination`
 * Distance formatting and format conversion via the `#distance` parser function.
 * Visual map editor (Special:MapEditor) to edit `#display_map` wikitext (requires Google Maps).
+
+Maps has been maintained since 2009 and is installed on over 1000 public wikis.
 
 ## User manual
 
