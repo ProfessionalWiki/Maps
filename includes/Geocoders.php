@@ -32,15 +32,6 @@ final class Geocoders {
 	public static $registeredGeocoders = [];
 
 	/**
-	 * The global geocoder cache, holding geocoded data when enabled.
-	 *
-	 * @since 0.7
-	 *
-	 * @var array
-	 */
-	private static $globalGeocoderCache = [];
-
-	/**
 	 * Can geocoding happen, ie are there any geocoders available.
 	 *
 	 * @since 1.0.3
@@ -153,45 +144,18 @@ final class Geocoders {
 		if ( $geocoder === false ) {
 			return false;
 		}
-
-		return self::getGeocoded( $geocoder, $address );
-	}
-
-	/**
-	 * Returns already coordinates already known from previous geocoding operations,
-	 * or false if there is no match found in the cache.
-	 *
-	 * @since 0.7
-	 *
-	 * @param string $address
-	 *
-	 * @return LatLongValue|boolean false
-	 */
-	private static function cacheRead( $address ) {
-		global $egMapsEnableGeoCache;
-
-		if ( $egMapsEnableGeoCache && array_key_exists( $address, self::$globalGeocoderCache ) ) {
-			return self::$globalGeocoderCache[$address];
-		}
-
-		return false;
-	}
-
-	/**
-	 * Writes the geocoded result to the cache if the cache is on.
-	 *
-	 * @since 0.7
-	 *
-	 * @param string $address
-	 * @param LatLongValue $coordinates
-	 */
-	private static function cacheWrite( $address, LatLongValue $coordinates ) {
-		global $egMapsEnableGeoCache;
-
-		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
-		if ( $egMapsEnableGeoCache && $coordinates ) {
-			self::$globalGeocoderCache[$address] = $coordinates;
-		}
+		
+		$caching = new Geocoders\CachingGeocoder( 
+			$geocoder, 
+			wfGetCache( CACHE_ANYTHING )
+		);
+		
+		$coordinates = $caching->geocode( $address );
+		
+		if( $coordinates == null )
+			return false;
+		
+		return $coordinates;
 	}
 
 	/**
