@@ -70,7 +70,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		);
 	}
 
-	define( 'Maps_VERSION' , '4.5 alpha' );
+	define( 'Maps_VERSION' , '5.0 alpha' );
 	define( 'SM_VERSION', Maps_VERSION );
 
 	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
@@ -170,9 +170,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 
 		return true;
 	};
-
-	// Registration of the geocoder.us service geocoder.
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = 'MapsGeocoderusGeocoder::register';
 
 	// Registration of the OSM Nominatim service geocoder.
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
