@@ -4,7 +4,7 @@ namespace Maps;
 
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
-use MapsOldGeocoderAdapter;
+use Maps\Geocoders\Geocoder;
 use MWException;
 use ValueParsers\ParseException;
 
@@ -19,20 +19,6 @@ use ValueParsers\ParseException;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 final class Geocoders {
-
-	/**
-	 * Associative with geoservice identifiers as keys containing instances of
-	 * the geocoder classes.
-	 *
-	 * Note: This list only contains the instances, so is not to be used for
-	 * looping over all available services, as not all of them are guaranteed
-	 * to have an instance already, use $registeredServices for this purpouse.
-	 *
-	 * @since 0.7
-	 *
-	 * @var Geocoder[]
-	 */
-	protected static $geocoders = [];
 
 	/**
 	 * Associative with geoservice identifiers as keys containing the class
@@ -168,49 +154,21 @@ final class Geocoders {
 			return false;
 		}
 
-		if ( $geocoder->hasGlobalCacheSupport() ) {
-			$cacheResult = self::cacheRead( $address );
+		$cacheResult = self::cacheRead( $address );
 
-			// This means the cache returned an already computed set of coordinates.
-			if ( $cacheResult !== false ) {
-				assert( $cacheResult instanceof LatLongValue );
-				return $cacheResult;
-			}
+		// This means the cache returned an already computed set of coordinates.
+		if ( $cacheResult !== false ) {
+			assert( $cacheResult instanceof LatLongValue );
+			return $cacheResult;
 		}
 
-		$coordinates = self::getGeocoded( $geocoder, $address );
+		$coordinates = $geocoder->geocode( $address );
 
-		if ( $coordinates === false ) {
+		if ( $coordinates === null ) {
 			return false;
 		}
 
 		self::cacheWrite( $address, $coordinates );
-
-		return $coordinates;
-	}
-
-	private static function getGeocoded( Geocoder $geocoder, $address ) {
-		$coordinates = self::getGeocodedAsArray( $geocoder, $address );
-
-		if ( $coordinates !== false ) {
-			$coordinates = new LatLongValue(
-				$coordinates['lat'],
-				$coordinates['lon']
-			);
-		}
-
-		return $coordinates;
-	}
-
-	private static function getGeocodedAsArray( Geocoder $geocoder, $address ) {
-		// Do the actual geocoding via the geocoder.
-		$coordinates = $geocoder->geocode( $address );
-
-		// If there address could not be geocoded, and contains comma's, try again without the comma's.
-		// This is cause several geocoding services such as geonames do not handle comma's well.
-		if ( !$coordinates && strpos( $address, ',' ) !== false ) {
-			$coordinates = $geocoder->geocode( str_replace( ',', '', $address ) );
-		}
 
 		return $coordinates;
 	}
@@ -231,9 +189,8 @@ final class Geocoders {
 		if ( $egMapsEnableGeoCache && array_key_exists( $address, self::$globalGeocoderCache ) ) {
 			return self::$globalGeocoderCache[$address];
 		}
-		else {
-			return false;
-		}
+
+		return false;
 	}
 
 	/**
@@ -290,34 +247,13 @@ final class Geocoders {
 	 * @param string $geocoderIdentifier
 	 *
 	 * @return Geocoder|bool
-	 * @throws MWException
 	 */
 	private static function getGeocoderInstance( $geocoderIdentifier ) {
-		if ( !array_key_exists( $geocoderIdentifier, self::$geocoders ) ) {
-			if ( array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
-				if ( is_string( self::$registeredGeocoders[$geocoderIdentifier] ) ) {
-					$geocoderClass = self::$registeredGeocoders[$geocoderIdentifier];
-					$geocoder = new $geocoderClass( $geocoderIdentifier );
-				}
-				elseif ( self::$registeredGeocoders[$geocoderIdentifier] instanceof \Maps\Geocoders\Geocoder ) {
-					$geocoder = new MapsOldGeocoderAdapter(
-						self::$registeredGeocoders[$geocoderIdentifier],
-						$geocoderIdentifier
-					);
-				}
-				else {
-					throw new MWException( 'Need either class name or Geocoder instance' );
-				}
-
-
-				self::$geocoders[$geocoderIdentifier] = $geocoder;
-			}
-			else {
-				throw new MWException( 'There is geocoder linked to identifier ' . $geocoderIdentifier . '.' );
-			}
+		if ( !array_key_exists( $geocoderIdentifier, self::$registeredGeocoders ) ) {
+			return false;
 		}
 
-		return self::$geocoders[$geocoderIdentifier];
+		return self::$registeredGeocoders[$geocoderIdentifier];
 	}
 
 	/**
@@ -348,12 +284,11 @@ final class Geocoders {
 				}
 			}
 
-			if ( array_key_exists( $egMapsDefaultGeoService, self::$registeredGeocoders ) ) {
-				$geocoderIdentifier = $egMapsDefaultGeoService;
-			}
-			else {
+			if ( !array_key_exists( $egMapsDefaultGeoService, self::$registeredGeocoders ) ) {
 				return false;
 			}
+
+			$geocoderIdentifier = $egMapsDefaultGeoService;
 		}
 
 		return $geocoderIdentifier;

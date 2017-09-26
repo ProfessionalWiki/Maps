@@ -1,11 +1,12 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 4.5.0
+## Maps 5.0.0
 
 Under development
 
-* 
+* Removed `egMapsUserGeoOverrides` setting
+* Removed support for the GeocoderUS geocoding service as it appears to have shut down
 
 ## Maps 4.4.0
 
