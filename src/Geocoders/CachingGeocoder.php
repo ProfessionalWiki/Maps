@@ -4,6 +4,8 @@ namespace Maps\Geocoders;
 
 use DataValues\Geo\Values\LatLongValue;
 
+use BagOStuff;
+
 /**
  * @since 5.0
  *
@@ -11,11 +13,11 @@ use DataValues\Geo\Values\LatLongValue;
  * @author HgO < hgo@batato.be >
  */
 class CachingGeocoder implements Geocoder {
-	private $geocoder;
 	
+	private $geocoder;
 	private $cache;
-
-	public function __construct( $geocoder, $cache ) {
+	
+	public function __construct( Geocoder $geocoder, BagOStuff $cache ) {
 		$this->geocoder = $geocoder;
 		$this->cache = $cache;
 	}
@@ -34,7 +36,7 @@ class CachingGeocoder implements Geocoder {
 		if ( $coordinates === false ) {
 			$coordinates = $this->geocoder->geocode( $address );
 			
-			$this->cache->set( $key, $coordinates, $this->cache::TTL_DAY );
+			$this->cache->set( $key, $coordinates, get_class( $this->cache )::TTL_DAY );
 		}
 		
 		return $coordinates;
