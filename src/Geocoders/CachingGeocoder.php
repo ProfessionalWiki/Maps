@@ -36,7 +36,7 @@ class CachingGeocoder implements Geocoder {
 		if ( $coordinates === false ) {
 			$coordinates = $this->geocoder->geocode( $address );
 			
-			$this->cache->set( $key, $coordinates, get_class( $this->cache )::TTL_DAY );
+			$this->cache->set( $key, $coordinates, BagOStuff::TTL_DAY );
 		}
 		
 		return $coordinates;
