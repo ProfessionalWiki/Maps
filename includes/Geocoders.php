@@ -122,15 +122,13 @@ final class Geocoders {
 	 * Geocodes an address with the provided geocoding service and returns the result
 	 * as an array, or false when the geocoding failed.
 	 *
-	 * @since 0.7
-	 *
 	 * @param string $address
 	 * @param string $geoService
 	 *
 	 * @return LatLongValue|false
 	 * @throws MWException
 	 */
-	public static function geocode( $address, $geoService = '' ) {
+	private static function geocode( $address, $geoService = '' ) {
 		if ( !is_string( $address ) ) {
 			throw new MWException( 'Parameter $address must be a string at ' . __METHOD__ );
 		}

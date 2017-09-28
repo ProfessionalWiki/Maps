@@ -2,6 +2,8 @@
 
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
 use Maps\Geocoders;
+use Maps\Geocoders\Geocoder;
+use ValueFormatters\FormatterOptions;
 
 /**
  * Class for the 'geocode' parser hooks, which can turn
@@ -13,6 +15,13 @@ use Maps\Geocoders;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsGeocode extends ParserHook {
+
+	private $geocoder;
+
+	public function __construct( Geocoder $geocoder ) {
+		$this->geocoder = $geocoder;
+		parent::__construct();
+	}
 
 	/**
 	 * Gets the name of the parser hook.
@@ -35,29 +44,15 @@ class MapsGeocode extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsAvailableGeoServices, $egMapsAvailableCoordNotations;
-		global $egMapsDefaultGeoService, $egMapsCoordinateNotation;
-		global $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;
+		global $egMapsAvailableCoordNotations;
+		global $egMapsCoordinateNotation;
+		global $egMapsCoordinateDirectional;
 		
 		$params = [];
 
 		$params['location'] = [
 			'type' => 'string',
 			'message' => 'maps-geocode-par-location',
-		];
-
-		$params['geoservice'] = [
-			'default' => $egMapsDefaultGeoService,
-			'aliases' => 'service',
-			'values' => $egMapsAvailableGeoServices,
-			'tolower' => true,
-			'message' => 'maps-geocode-par-geoservice',
-		];
-
-		$params['allowcoordinates'] = [
-			'type' => 'boolean',
-			'default' => $egMapsAllowCoordsGeocoding,
-			'message' => 'maps-geocode-par-allowcoordinates',
 		];
 
 		$params['format'] = [
@@ -86,7 +81,7 @@ class MapsGeocode extends ParserHook {
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return [ 'location', 'geoservice' ];
+		return [ 'location' ];
 	}	
 	
 	/**
@@ -100,29 +95,23 @@ class MapsGeocode extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		if ( !Geocoders::canGeocode() ) {
-			return 'No geocoders available';
+		$coordinates = $this->geocoder->geocode( $parameters['location'] );
+
+		if ( $coordinates === null ) {
+			return 'Geocoding failed'; // TODO: i18n
 		}
 
-		$coordinates = Geocoders::attemptToGeocode(
-			$parameters['location'],
-			$parameters['geoservice'],
-			$parameters['allowcoordinates']
+		return $this->newCoordinateFormatter( $parameters )->format( $coordinates );
+	}
+
+	private function newCoordinateFormatter( array $parameters ) {
+		return new GeoCoordinateFormatter(
+			new FormatterOptions( [
+				GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
+				GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
+				GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
+			] )
 		);
-
-		if ( $coordinates === false ) {
-			return 'Geocoding failed';
-		}
-
-		$options = new \ValueFormatters\FormatterOptions( [
-			GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-			GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
-			GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
-		] );
-
-		$formatter = new GeoCoordinateFormatter( $options );
-
-		return $formatter->format( $coordinates );
 	}
 
 	/**
