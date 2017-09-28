@@ -62,7 +62,11 @@ class LocationParser implements ValueParser {
 		$metaData = explode( $separator, $value );
 
 		$coordinatesOrAddress = array_shift( $metaData );
-		$coordinates = $this->stringToLatLongValue( $coordinatesOrAddress );
+		$coordinates = $this->geocoder->geocode( $coordinatesOrAddress );
+
+		if ( $coordinates === null ) {
+			throw new ParseException( 'Location is not a parsable coordinate and not a geocodable address' );
+		}
 
 		$location = new Location( $coordinates );
 
@@ -122,29 +126,6 @@ class LocationParser implements ValueParser {
 		}
 
 		return $title->getFullURL();
-	}
-
-	/**
-	 * @param string $location
-	 *
-	 * @return LatLongValue
-	 * @throws ParseException
-	 */
-	private function stringToLatLongValue( $location ) {
-		$parser = new LatLongParser();
-
-		try {
-			return $parser->parse( $location );
-		}
-		catch ( ParseException $parseException ) {
-			$latLongValue = $this->geocoder->geocode( $location );
-
-			if ( $latLongValue === null ) {
-				throw new ParseException( 'Failed to parse or geocode' );
-			}
-
-			return $latLongValue;
-		}
 	}
 
 	/**

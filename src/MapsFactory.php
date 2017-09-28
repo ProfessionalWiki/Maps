@@ -4,6 +4,7 @@ namespace Maps;
 
 use FileFetcher\SimpleFileFetcher;
 use Maps\Geocoders\CachingGeocoder;
+use Maps\Geocoders\CoordinateFriendlyGeocoder;
 use Maps\Geocoders\Geocoder;
 use Maps\Geocoders\GoogleGeocoder;
 use Maps\Geocoders\NominatimGeocoder;
@@ -36,7 +37,7 @@ class MapsFactory {
 	 * @return Geocoder
 	 */
 	public function newGeocoder() {
-		$geocoder = $this->newCoreGeocoder();
+		$geocoder = new CoordinateFriendlyGeocoder( $this->newCoreGeocoder() );
 
 		if ( $this->settings['egMapsEnableGeoCache'] ) {
 			return new CachingGeocoder(

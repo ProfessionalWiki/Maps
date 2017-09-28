@@ -4,7 +4,6 @@ namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
-use Maps\Geocoders\NullGeocoder;
 use Maps\Geocoders\StubGeocoder;
 use Maps\LocationParser;
 
@@ -25,7 +24,7 @@ class LocationParserTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider titleProvider
 	 */
 	public function testGivenTitleThatIsNotLink_titleIsSetAndLinkIsNot( $title ) {
-		$parser = LocationParser::newInstance( new NullGeocoder() );
+		$parser = LocationParser::newInstance( new StubGeocoder( new LatLongValue( 1, 2 ) ) );
 		$location = $parser->parse( '4,2~' . $title );
 
 		$this->assertTitleAndLinkAre( $location, $title, '' );
@@ -57,7 +56,7 @@ class LocationParserTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider linkProvider
 	 */
 	public function testGivenTitleThatIsLink_linkIsSetAndTitleIsNot( $link ) {
-		$parser = LocationParser::newInstance( new NullGeocoder() );
+		$parser = LocationParser::newInstance( new StubGeocoder( new LatLongValue( 1, 2 ) ) );
 		$location = $parser->parse( '4,2~link:' . $link );
 
 		$this->assertTitleAndLinkAre( $location, '', $link );
@@ -108,7 +107,10 @@ class LocationParserTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGivenCoordinatesAndNoTitle_noTitleIsSet() {
-		$parser = LocationParser::newInstance( new NullGeocoder(), true );
+		$parser = LocationParser::newInstance(
+			new StubGeocoder( new LatLongValue( 1, 2 ) ),
+			true
+		);
 		$location = $parser->parse( '4,2' );
 
 		$this->assertFalse( $location->getOptions()->hasOption( 'title' ) );

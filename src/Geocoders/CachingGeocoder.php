@@ -3,7 +3,6 @@
 namespace Maps\Geocoders;
 
 use DataValues\Geo\Values\LatLongValue;
-
 use BagOStuff;
 
 /**
