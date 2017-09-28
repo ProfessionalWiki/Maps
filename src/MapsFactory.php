@@ -2,7 +2,7 @@
 
 namespace Maps;
 
-use FileFetcher\SimpleFileFetcher;
+use FileFetcher\FileFetcher;
 use Maps\Geocoders\CachingGeocoder;
 use Maps\Geocoders\CoordinateFriendlyGeocoder;
 use Maps\Geocoders\Geocoder;
@@ -74,8 +74,11 @@ class MapsFactory {
 		}
 	}
 
+	/**
+	 * @return FileFetcher
+	 */
 	private function newFileFetcher() {
-		return new SimpleFileFetcher();
+		return new MapsFileFetcher();
 	}
 
 	/**
