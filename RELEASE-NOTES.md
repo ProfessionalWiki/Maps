@@ -5,6 +5,7 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 Under development
 
+* Added persistent geocoding cache (by hidrarga)
 * Removed `egMapsUserGeoOverrides` setting
 * Removed support for the GeocoderUS geocoding service as it appears to have shut down
 
