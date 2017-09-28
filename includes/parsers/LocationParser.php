@@ -40,7 +40,7 @@ class LocationParser implements ValueParser {
 	 * @return self
 	 */
 	public static function newInstance( Geocoder $geocoder, $useAddressAsTitle = false ) {
-		$instance = new self();
+		$instance = new self( false );
 		$instance->geocoder = $geocoder;
 		$instance->useAddressAsTitle = $useAddressAsTitle;
 		return $instance;
