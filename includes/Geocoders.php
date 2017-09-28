@@ -4,6 +4,7 @@ namespace Maps;
 
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
+use Maps\Geocoders\CachingGeocoder;
 use Maps\Geocoders\Geocoder;
 use MWException;
 use ValueParsers\ParseException;
@@ -144,18 +145,25 @@ final class Geocoders {
 		if ( $geocoder === false ) {
 			return false;
 		}
+
+		$coordinates = self::getDecoratedGeocoder( $geocoder )->geocode( $address );
 		
-		$caching = new Geocoders\CachingGeocoder( 
-			$geocoder, 
-			wfGetCache( CACHE_ANYTHING )
-		);
-		
-		$coordinates = $caching->geocode( $address );
-		
-		if( $coordinates == null )
+		if( $coordinates == null ) {
 			return false;
-		
+		}
+
 		return $coordinates;
+	}
+
+	private static function getDecoratedGeocoder( Geocoder $geocoder ) {
+		if ( $GLOBALS['egMapsEnableGeoCache'] ) {
+			return new CachingGeocoder(
+				$geocoder,
+				wfGetCache( CACHE_ANYTHING )
+			);
+		}
+
+		return $geocoder;
 	}
 
 	/**
