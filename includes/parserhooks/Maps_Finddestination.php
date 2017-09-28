@@ -34,14 +34,13 @@ class MapsFinddestination extends ParserHook {
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
-		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation, $egMapsAllowCoordsGeocoding, $egMapsCoordinateDirectional;	 
+		global $egMapsAvailableCoordNotations;
+		global $egMapsCoordinateNotation, $egMapsCoordinateDirectional;
 		
 		$params = [];
 
 		$params['location'] = [
-			'dependencies' => [ 'mappingservice', 'geoservice' ],
-			'type' => 'mapslocation', // FIXME: geoservice is not used
+			'type' => 'mapslocation',
 		];
 
 		$params['format'] = [
@@ -62,24 +61,6 @@ class MapsFinddestination extends ParserHook {
 
 		$params['distance'] = [
 			'type' => 'distance',
-		];
-
-		$params['mappingservice'] = [
-			'default' => '',
-			'values' => MapsMappingServices::getAllServiceValues(),
-			'tolower' => true,
-		];
-
-		$params['geoservice'] = [
-			'default' => $egMapsDefaultGeoService,
-			'aliases' => 'service',
-			'values' => $egMapsAvailableGeoServices,
-			'tolower' => true,
-		];
-
-		$params['allowcoordinates'] = [
-			'type' => 'boolean',
-			'default' => $egMapsAllowCoordsGeocoding,
 		];
 
 		// Give grep a chance to find the usages:
