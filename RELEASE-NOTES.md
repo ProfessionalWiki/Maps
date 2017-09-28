@@ -13,7 +13,7 @@ Under development
 * Removed `geoservice` parameters from the `#display_map` parser function
 * Removed `geoservice` and `allowcoordinates` parameters from the `#geocode` parser function
 * Removed `mappingservice` and `geoservice` parameters from the `#geodistance` parser function
-* Removed `mappingservice`, `geoservice` and `allowcoordinates` parameters from the `#finddestination` parser function
+* Removed `mappingservice`, `geoservice` and `allowcoordinates` params from the `#finddestination` parser function
 * Removed `geoservice` parameter from the SMW result formats
 * Removed `service` parameter from the `geocode` API module
 * Removed `egMapsUserGeoOverrides` setting
