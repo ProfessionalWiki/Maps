@@ -55,16 +55,16 @@ class MapsFactory {
 	private function newCoreGeocoder() {
 		switch ( $this->settings['egMapsDefaultGeoService'] ) {
 			case 'geonames':
+				if ( $this->settings['egMapsGeoNamesUser'] === '' ) {
+					return $this->newGoogleGeocoder();
+				}
+
 				return new Geocoders\GeoNamesGeocoder(
 					$this->newFileFetcher(),
 					$this->settings['egMapsGeoNamesUser']
 				);
 			case 'google':
-				return new GoogleGeocoder(
-					$this->newFileFetcher(),
-					$this->settings['egMapsGMaps3ApiKey'],
-					$this->settings['egMapsGMaps3ApiVersion']
-				);
+				return $this->newGoogleGeocoder();
 			case 'nominatim':
 				return new NominatimGeocoder(
 					$this->newFileFetcher()
@@ -72,6 +72,14 @@ class MapsFactory {
 			default:
 				return new NullGeocoder();
 		}
+	}
+
+	private function newGoogleGeocoder() {
+		return new GoogleGeocoder(
+			$this->newFileFetcher(),
+			$this->settings['egMapsGMaps3ApiKey'],
+			$this->settings['egMapsGMaps3ApiVersion']
+		);
 	}
 
 	/**

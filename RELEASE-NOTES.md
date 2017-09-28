@@ -7,6 +7,7 @@ Under development
 
 * Added persistent geocoding cache (by hidrarga)
 * Removed `egMapsUserGeoOverrides` setting
+* Removed `service` parameter from the `geocode` API module
 * Removed support for the GeocoderUS geocoding service as it appears to have shut down
 
 ## Maps 4.4.0
