@@ -3,7 +3,6 @@
 use Maps\Element;
 use Maps\Elements\Location;
 use Maps\LocationParser;
-use ValueParsers\ParserOptions as ValueParserOptions;
 
 /**
  * Class handling the #display_map rendering.
@@ -35,7 +34,7 @@ class MapsDisplayMapRenderer {
 	 * @return string
 	 */
 	public final function renderMap( array $params, Parser $parser ) {
-		$this->initializeLocationParser( $params );
+		$this->initializeLocationParser();
 
 		$this->handleMarkerData( $params, $parser );
 
@@ -55,10 +54,8 @@ class MapsDisplayMapRenderer {
 		return $output;
 	}
 
-	private function initializeLocationParser( array $params ) {
-		$this->locationParser = new LocationParser( new ValueParserOptions( [
-			'geoService' => $params['geoservice']
-		] ) );
+	private function initializeLocationParser() {
+		$this->locationParser = \Maps\MapsFactory::newDefault()->newLocationParser();
 	}
 
 	/**
@@ -117,7 +114,7 @@ class MapsDisplayMapRenderer {
 
 		try {
 			// FIXME: a Location makes no sense here, since the non-coordinate data is not used
-			$location = $this->locationParser->stringParse( $coordinatesOrAddress );
+			$location = $this->locationParser->parse( $coordinatesOrAddress );
 		}
 		catch ( \Exception $ex ) {
 			// TODO: somehow report this to the user
@@ -135,7 +132,7 @@ class MapsDisplayMapRenderer {
 
 		foreach ( $params['coordinates'] as $coordinatesOrAddress ) {
 			try {
-				$location = $this->locationParser->stringParse( $coordinatesOrAddress );
+				$location = $this->locationParser->parse( $coordinatesOrAddress );
 			}
 			catch ( \Exception $ex ) {
 				// TODO: somehow report this to the user

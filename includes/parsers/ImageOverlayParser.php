@@ -3,6 +3,7 @@
 namespace Maps;
 
 use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Parsers\LatLongParser;
 use Maps\Elements\ImageOverlay;
 use Maps\Elements\WmsOverlay;
 use ValueParsers\ParseException;
@@ -40,8 +41,7 @@ class ImageOverlayParser extends StringValueParser {
 	}
 
 	private function stringToLatLongValue( $location ) {
-		$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
-		return $parser->parse( $location );
+		return ( new LatLongParser() )->parse( $location );
 	}
 
 }

@@ -147,6 +147,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	// Geocoders
 
 	// Registration of the GeoNames service geocoder.
+	// TODO 5.0: remove
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
 		if ( $GLOBALS['egMapsGeoNamesUser'] !== '' ) {
 			\Maps\Geocoders::registerGeocoder(
@@ -158,6 +159,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		return true;
 	};
 
+	// TODO 5.0: remove
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
 		\Maps\Geocoders::registerGeocoder(
 			'google',
@@ -172,6 +174,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	};
 
 	// Registration of the OSM Nominatim service geocoder.
+	// TODO 5.0: remove
 	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
 		\Maps\Geocoders::registerGeocoder(
 			'nominatim',

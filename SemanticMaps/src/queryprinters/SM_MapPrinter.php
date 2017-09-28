@@ -1,11 +1,10 @@
 <?php
 
-use Maps\Elements\Location;
 use Maps\Element;
 use Maps\Elements\BaseElement;
+use Maps\Elements\Location;
 use Maps\LocationParser;
 use ParamProcessor\ParamDefinition;
-use ValueParsers\ParserOptions as ValueParserOptions;
 
 /**
  * Query printer for maps. Is invoked via SMMapper.
@@ -151,7 +150,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$params = $this->params;
 
-		$this->initializeLocationParser( $params );
+		$this->initializeLocationParser();
 
 		$queryHandler = new SMQueryHandler( $res, $outputmode );
 		$queryHandler->setLinkStyle( $params['link'] );
@@ -213,10 +212,8 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		}
 	}
 
-	private function initializeLocationParser( array $params ) {
-		$this->locationParser = new LocationParser( new ValueParserOptions( [
-			'geoService' => $params['geoservice']
-		] ) );
+	private function initializeLocationParser() {
+		$this->locationParser = \Maps\MapsFactory::newDefault()->newLocationParser();
 	}
 
 	/**
@@ -255,7 +252,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		try {
 			// FIXME: a Location makes no sense here, since the non-coordinate data is not used
-			$location = $this->locationParser->stringParse( $coordinatesOrAddress );
+			$location = $this->locationParser->parse( $coordinatesOrAddress );
 		}
 		catch ( \Exception $ex ) {
 			// TODO: somehow report this to the user
