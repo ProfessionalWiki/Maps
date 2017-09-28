@@ -5,9 +5,7 @@ namespace Maps\Test;
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
 use Maps\LocationParser;
-use Title;
 use ValueParsers\ParserOptions;
-use ValueParsers\ValueParser;
 
 /**
  * @covers Maps\LocationParser
@@ -102,10 +100,7 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 		$json = $polygon->getJSONObject();
 
 		$this->assertArrayHasKey( $key, $json );
-		$this->assertEquals(
-			$value,
-			$json[$key]
-		);
+		$this->assertEquals( $value, $json[$key] );
 	}
 
 	/**
@@ -149,7 +144,7 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	}
 
 	public function testGivenAddressAndNoTitle_addressIsSetAsTitle() {
-		$options = new ParserOptions( ['useaddressastitle' => true] );
+		$options = new ParserOptions( [ 'useaddressastitle' => true ] );
 		$parser = new LocationParser( $options );
 		$location = $parser->parse( 'Tempelhofer Ufer 42' );
 
@@ -157,7 +152,7 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	}
 
 	public function testGivenAddressAndTitle_addressIsNotUsedAsTitle() {
-		$options = new ParserOptions( ['useaddressastitle' => true] );
+		$options = new ParserOptions( [ 'useaddressastitle' => true ] );
 		$parser = new LocationParser( $options );
 		$location = $parser->parse( 'Tempelhofer Ufer 42~Great title of doom' );
 
@@ -165,7 +160,7 @@ class LocationParserTest extends \ValueParsers\Test\StringValueParserTest {
 	}
 
 	public function testGivenCoordinatesAndNoTitle_noTitleIsSet() {
-		$options = new ParserOptions( ['useaddressastitle' => true] );
+		$options = new ParserOptions( [ 'useaddressastitle' => true ] );
 		$parser = new LocationParser( $options );
 		$location = $parser->parse( '4,2' );
 
