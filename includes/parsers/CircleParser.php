@@ -2,12 +2,10 @@
 
 namespace Maps;
 
-use DataValues\Geo\Parsers\GeoCoordinateParser;
-use DataValues\Geo\Parsers\LatLongParser;
-use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Circle;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
+use ValueParsers\ValueParser;
 
 /**
  * @since 3.0
@@ -16,12 +14,15 @@ use ValueParsers\StringValueParser;
  * @author Kim Eik
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class CircleParser extends StringValueParser {
+class CircleParser implements ValueParser {
 
-	private $supportGeocoding = true;
-
-	// TODO: use options
 	private $metaDataSeparator = '~';
+
+	private $geocoder;
+
+	public function __construct() {
+		$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+	}
 
 	/**
 	 * @see StringValueParser::stringParse
@@ -32,7 +33,7 @@ class CircleParser extends StringValueParser {
 	 *
 	 * @return Circle
 	 */
-	public function stringParse( $value ) {
+	public function parse( $value ) {
 		$metaData = explode( $this->metaDataSeparator , $value );
 		$circleData = explode( ':' , array_shift( $metaData ) );
 
@@ -70,18 +71,13 @@ class CircleParser extends StringValueParser {
 	}
 
 	private function stringToLatLongValue( $location ) {
-		if ( $this->supportGeocoding && Geocoders::canGeocode() ) {
-			$location = Geocoders::attemptToGeocode( $location );
+		$latLong = $this->geocoder->geocode( $location );
 
-			if ( $location === false ) {
-				throw new ParseException( 'Failed to parse or geocode' );
-			}
-
-			assert( $location instanceof LatLongValue );
-			return $location;
+		if ( $location === null ) {
+			throw new ParseException( 'Failed to parse or geocode' );
 		}
 
-		return ( new LatLongParser() )->parse( $location );
+		return $latLong;
 	}
 
 }

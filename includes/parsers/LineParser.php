@@ -2,11 +2,11 @@
 
 namespace Maps;
 
-use DataValues\Geo\Parsers\GeoCoordinateParser;
-use DataValues\Geo\Parsers\LatLongParser;
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Line;
+use Maps\Geocoders\Geocoder;
 use ValueParsers\StringValueParser;
+use ValueParsers\ValueParser;
 
 /**
  * ValueParser that parses the string representation of a line.
@@ -17,12 +17,19 @@ use ValueParsers\StringValueParser;
  * @author Kim Eik
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class LineParser extends StringValueParser {
+class LineParser implements ValueParser {
 
-	protected $supportGeocoding = true;
+	private $metaDataSeparator = '~';
 
-	// TODO: use options
-	protected $metaDataSeparator = '~';
+	private $geocoder;
+
+	public function __construct() {
+		$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+	}
+
+	public function setGeocoder( Geocoder $geocoder ) {
+		$this->geocoder = $geocoder;
+	}
 
 	/**
 	 * @see StringValueParser::stringParse
@@ -33,7 +40,7 @@ class LineParser extends StringValueParser {
 	 *
 	 * @return Line
 	 */
-	public function stringParse( $value ) {
+	public function parse( $value ) {
 		$parts = explode( $this->metaDataSeparator , $value );
 
 		$line = $this->constructShapeFromLatLongValues( $this->parseCoordinates(
@@ -54,23 +61,15 @@ class LineParser extends StringValueParser {
 	 */
 	protected function parseCoordinates( array $coordinateStrings ) {
 		$coordinates = [];
-		$coordinateParser = new LatLongParser();
-
-		$supportsGeocoding = $this->supportGeocoding && \Maps\Geocoders::canGeocode();
 
 		foreach ( $coordinateStrings as $coordinateString ) {
-			if ( $supportsGeocoding ) {
-				$coordinate = \Maps\Geocoders::attemptToGeocode( $coordinateString );
+			$coordinate = $this->geocoder->geocode( $coordinateString );
 
-				if ( $coordinate === false ) {
-					// TODO
-				}
-				else {
-					$coordinates[] = $coordinate;
-				}
+			if ( $coordinate === null ) {
+				// TODO: good if the user knows something has been omitted
 			}
 			else {
-				$coordinates[] = $coordinateParser->parse( $coordinateString );
+				$coordinates[] = $coordinate;
 			}
 		}
 

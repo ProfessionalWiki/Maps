@@ -6,6 +6,10 @@ These are the release notes for the [Maps extension](README.md). For an overview
 Under development
 
 * Added persistent geocoding cache (by hidrarga)
+* Image overlays used in `#display_map` now support geocoding for their locations
+
+### Breaking changes
+
 * Removed `egMapsUserGeoOverrides` setting
 * Removed `geoservice` parameter from the `#geocode` parser function
 * Removed `allowcoordinates` parameter from the `#geocode` parser function
