@@ -107,44 +107,6 @@ class Location extends BaseElement {
 	}
 
 	/**
-	 * Sets the location to a set of coordinates. You can provide a string
-	 * of raw coordinates, an array with lat and lon values and false.
-	 *
-	 * @since 3.0
-	 *
-	 * @param LatLongValue $coordinates
-	 */
-	public function setCoordinates( LatLongValue $coordinates ) {
-		$this->coordinates = $coordinates;
-	}
-
-	/**
-	 * Sets the location to an address.
-	 *
-	 * @since 0.7.1
-	 *
-	 * @param string $address
-	 * @param boolean $asActualLocation When set to false, the location is not changed, only the address string is.
-	 *
-	 * @return boolean Success indicator
-	 */
-	public function setAddress( $address, $asActualLocation = true ) {
-		if ( $asActualLocation ) {
-			$coordinates = \Maps\Geocoders::geocode( $address );
-
-			if ( $coordinates === false ) {
-				return false;
-			}
-
-			$this->setCoordinates( $coordinates );
-		}
-
-		$this->address = $address;
-
-		return true;
-	}
-
-	/**
 	 * Returns the locations coordinates.
 	 *
 	 * @since 3.0
