@@ -1,7 +1,6 @@
 <?php
 
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
-use Maps\Geocoders;
 use Maps\Geocoders\Geocoder;
 use ValueFormatters\FormatterOptions;
 

@@ -3,8 +3,6 @@
 namespace Maps\Elements;
 
 use DataValues\Geo\Values\LatLongValue;
-use Maps\Geocoders;
-use MWException;
 
 /**
  * Class describing a single location (geographical point).

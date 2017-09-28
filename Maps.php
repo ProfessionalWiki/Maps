@@ -144,46 +144,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		return $instance->init( $parser );
 	};
 
-	// Geocoders
-
-	// Registration of the GeoNames service geocoder.
-	// TODO 5.0: remove
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
-		if ( $GLOBALS['egMapsGeoNamesUser'] !== '' ) {
-			\Maps\Geocoders::registerGeocoder(
-				'geonames',
-				new \Maps\Geocoders\GeoNamesGeocoder( new SimpleFileFetcher(), $GLOBALS['egMapsGeoNamesUser'] )
-			);
-		}
-
-		return true;
-	};
-
-	// TODO 5.0: remove
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
-		\Maps\Geocoders::registerGeocoder(
-			'google',
-			new \Maps\Geocoders\GoogleGeocoder(
-				new SimpleFileFetcher(),
-				$GLOBALS['egMapsGMaps3ApiKey'],
-				$GLOBALS['egMapsGMaps3ApiVersion']
-			)
-		);
-
-		return true;
-	};
-
-	// Registration of the OSM Nominatim service geocoder.
-	// TODO 5.0: remove
-	$GLOBALS['wgHooks']['GeocoderFirstCallInit'][] = function() {
-		\Maps\Geocoders::registerGeocoder(
-			'nominatim',
-			new \Maps\Geocoders\NominatimGeocoder( new SimpleFileFetcher() )
-		);
-		return true;
-	};
-
-
 
 	// Google Maps API v3
 	if ( $GLOBALS['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $GLOBALS ) ) {

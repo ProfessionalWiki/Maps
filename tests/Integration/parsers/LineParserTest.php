@@ -4,15 +4,17 @@ namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Line;
+use Maps\Geocoders\InMemoryGeocoder;
+use Maps\Geocoders\NullGeocoder;
 use Maps\LineParser;
 use ValueParsers\ValueParser;
 
 /**
- * @covers Maps\LineParser
+ * @covers \Maps\LineParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
+class LineParserTest extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 		if ( !defined( 'MEDIAWIKI' ) ) {
@@ -20,86 +22,56 @@ class LineParserTest extends \ValueParsers\Test\StringValueParserTest {
 		}
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getParserClass() {
-		return LineParser::class;
+	public function testGivenOneCoordinate_lineWithOneCoordinateIsReturned() {
+		$parser = $this->newParser();
+
+		$this->assertEquals(
+			new Line( [ new LatLongValue( 4, 2 ) ] ),
+			$parser->parse( '4,2' )
+		);
 	}
 
 	/**
-	 * @see ValueParserTestBase::validInputProvider
-	 *
-	 * @since 3.0
-	 *
-	 * @return array
+	 * @return LineParser
 	 */
-	public function validInputProvider() {
-		$argLists = [];
+	private function newParser() {
+		$parser = new LineParser();
 
-		$valid = [];
+		$parser->setGeocoder( new InMemoryGeocoder( [
+			'4,2' => new LatLongValue( 4, 2 ),
+			'2,3' => new LatLongValue( 2, 3 ),
+		] ) );
 
-		$valid[] = [
-			[
-				42,
-				4.2
-			],
-		];
-
-		$valid[] = [
-			[
-				49.83798245308486,
-				2.724609375
-			],
-			[
-				52.05249047600102,
-				8.26171875
-			],
-			[
-				46.37725420510031,
-				6.15234375
-			],
-			[
-				49.83798245308486,
-				2.724609375
-			],
-		];
-
-		foreach ( $valid as $values ) {
-			$input = [];
-			$output = [];
-
-			foreach ( $values as $value ) {
-				$input[] = implode( ',', $value );
-				$output[] = new LatLongValue( $value[0], $value[1] );
-			}
-
-			$input = implode( ':', $input );
-
-			$argLists[] = [ $input, new Line( $output ) ];
-		}
-
-		return $argLists;
+		return $parser;
 	}
 
-	/**
-	 * @see ValueParserTestBase::requireDataValue
-	 *
-	 * @since 3.0
-	 *
-	 * @return boolean
-	 */
-	protected function requireDataValue() {
-		return false;
+	public function testGivenTwoCoordinates_lineWithBothCoordinateIsReturned() {
+		$parser = $this->newParser();
+
+		$this->assertEquals(
+			new Line( [
+				new LatLongValue( 4, 2 ),
+				new LatLongValue( 2, 3 )
+			] ),
+			$parser->parse( '4,2:2,3' )
+		);
 	}
 
-	/**
-	 * @since 0.1
-	 *
-	 * @return ValueParser
-	 */
-	protected function getInstance() {
-		return new LineParser();
+	public function testTitleAndTextGetSetWhenPresent() {
+		$parser = $this->newParser();
+
+		$expectedLine = new Line( [
+			new LatLongValue( 4, 2 ),
+			new LatLongValue( 2, 3 )
+		] );
+		$expectedLine->setTitle( 'title' );
+		$expectedLine->setText( 'text' );
+
+		$this->assertEquals(
+			$expectedLine,
+			$parser->parse( '4,2:2,3~title~text' )
+		);
 	}
+
 
 }
