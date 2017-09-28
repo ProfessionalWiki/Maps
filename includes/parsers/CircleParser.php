@@ -3,6 +3,7 @@
 namespace Maps;
 
 use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Parsers\LatLongParser;
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Circle;
 use ValueParsers\ParseException;
@@ -80,8 +81,7 @@ class CircleParser extends StringValueParser {
 			return $location;
 		}
 
-		$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
-		return $parser->parse( $location );
+		return ( new LatLongParser() )->parse( $location );
 	}
 
 }

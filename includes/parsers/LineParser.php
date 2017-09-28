@@ -3,6 +3,7 @@
 namespace Maps;
 
 use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Parsers\LatLongParser;
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Line;
 use ValueParsers\StringValueParser;
@@ -53,7 +54,7 @@ class LineParser extends StringValueParser {
 	 */
 	protected function parseCoordinates( array $coordinateStrings ) {
 		$coordinates = [];
-		$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+		$coordinateParser = new LatLongParser();
 
 		$supportsGeocoding = $this->supportGeocoding && \Maps\Geocoders::canGeocode();
 
