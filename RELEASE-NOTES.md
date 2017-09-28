@@ -10,10 +10,15 @@ Under development
 
 ### Breaking changes
 
-* Removed `egMapsUserGeoOverrides` setting
-* Removed `geoservice` parameter from the `#geocode` parser function
-* Removed `allowcoordinates` parameter from the `#geocode` parser function
+* Removed `geoservice` parameters from the `#display_map` parser function
+* Removed `geoservice` and `allowcoordinates` parameters from the `#geocode` parser function
+* Removed `mappingservice` and `geoservice` parameters from the `#geodistance` parser function
+* Removed `mappingservice`, `geoservice` and `allowcoordinates` parameters from the `#finddestination` parser function
+* Removed `geoservice` parameter from the SMW result formats
 * Removed `service` parameter from the `geocode` API module
+* Removed `egMapsUserGeoOverrides` setting
+* Removed `egMapsAvailableGeoServices` setting
+* Removed `egMapsAllowCoordsGeocoding` setting
 * Removed support for the GeocoderUS geocoding service as it appears to have shut down
 
 ## Maps 4.4.0

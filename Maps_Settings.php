@@ -51,20 +51,6 @@
 
 // Geocoding
 
-	// Array of String. Array containing all the geocoding services that will be
-	// made available to the user. Currently Maps provides the following services:
-	// geonames, google
-    // It is recommended that when using GeoNames you get a GeoNames webservice account
-    // at http://www.geonames.org/login and set the username to $GLOBALS['egMapsGeoNamesUser'] below.
-    // Not doing this will result into a legacy service being used, which might be
-    // disabled at some future point.
-	// TODO 5.0: remove
-	$GLOBALS['egMapsAvailableGeoServices'] = [
-		'geonames',
-		'google',
-		'nominatim',
-	];
-
 	// String. The name of the geocoding service to use.
 	// Available services: geonames, google, nominatim
 	// Some services might require you to provide credentials, see the settings below.
@@ -74,9 +60,6 @@
 	// Obtain an account here: http://www.geonames.org/login
 	// Do not forget to activate your account for API usage!
 	$GLOBALS['egMapsGeoNamesUser'] = '';
-
-	// Boolean. Sets if coordinates should be allowed in geocoding calls.
-	$GLOBALS['egMapsAllowCoordsGeocoding'] = true;
 
 	// Boolean. Sets if geocoded addresses should be stored in a cache.
 	$GLOBALS['egMapsEnableGeoCache'] = true;

@@ -70,7 +70,7 @@ final class MapsMapper {
 	 * @return array
 	 */
 	public static function getCommonParameters() {
-		global $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
+		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
 
 		$params = [];
 
@@ -78,13 +78,6 @@ final class MapsMapper {
 			'type' => 'mappingservice',
 			'aliases' => 'service',
 			'default' => $egMapsDefaultService,
-		];
-
-		$params['geoservice'] = [
-			'default' => $egMapsDefaultGeoService,
-			'values' => $egMapsAvailableGeoServices,
-			'dependencies' => 'mappingservice',
-			// TODO 'manipulations' => new MapsParamGeoService( 'mappingservice' ),
 		];
 
 		$params['width'] = [
@@ -99,9 +92,6 @@ final class MapsMapper {
 			'units' => [ 'px', 'ex', 'em', '' ],
 			'default' => $egMapsMapHeight,
 		];
-
-		// TODO$manipulation = new MapsParamLocation();
-		// TODO$manipulation->toJSONObj = true;
 
 		$params['centre'] = [
 			'type' => 'string',
