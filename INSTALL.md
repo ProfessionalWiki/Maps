@@ -91,10 +91,17 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status</th>
 	</tr>
 	<tr>
-		<th>Maps 4.5.x</th>
+		<th>Maps 5.x.y</th>
+		<td><strong>7.0</strong> - 7.2+</td>
+		<td>TBD - TBD</td>
+		<td>TBD - TBD</td>
+		<td>Planned Q1 2018</td>
+	</tr>
+	<tr>
+		<th>Maps 5.0.x</th>
 		<td>5.6 - 7.2+</td>
 		<td>1.27 - 1.30+</td>
-		<td>TBD - 3.0+</td>
+		<td>2.1 - 3.0+</td>
 		<td>In development</td>
 	</tr>
 	<tr>
