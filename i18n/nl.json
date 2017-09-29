@@ -213,5 +213,7 @@
 	"semanticmaps-kml-pagelinktext": "De tekst om te gebruiken voor de koppelingen naar de pagina, waarin $1 vervangen wordt door de paginanaam",
 	"semanticmaps-shapes-improperformat": "Onjuiste opmaak van  $1. Raadpleeg de documentatie voor de juiste opmaak",
 	"semanticmaps-shapes-missingshape": "Geen vormen gevonden voor $1. Raadpleeg de documentatie voor beschikbare vormen",
-	"validator-type-mapscircle-list": "Lijst van circels"
+	"validator-type-mapscircle-list": "Lijst van circels",
+	"validator-type-mapslocation-list": "Lijst met locaties",
+	"validator-type-mapsrectangle-list": "Lijst met rechthoeken"
 }
