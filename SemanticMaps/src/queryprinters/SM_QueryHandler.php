@@ -484,7 +484,7 @@ class SMQueryHandler {
 					$properties
 				);
 
-				$text .= $this->getParser()->recursiveTagParse(
+				$text .= $this->getParser()->recursiveTagParseFully(
 					'{{' . implode( '|', $segments ) . '}}'
 				);
 			}
