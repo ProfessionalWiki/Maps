@@ -43,14 +43,10 @@ Maps has been maintained since 2009 and is installed on over 1000 public wikis.
 
 ## Project status
 
-[![Build Status](https://secure.travis-ci.org/JeroenDeDauw/Maps.png?branch=master)](http://travis-ci.org/JeroenDeDauw/Maps)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/badges/quality-score.png?s=3881a27e63cb64e7511d766bfec2e2db5d39bec3)](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/)
-[![Dependency Status](https://www.versioneye.com/php/mediawiki:maps/dev-master/badge.png)](https://www.versioneye.com/php/mediawiki:maps/dev-master)
-
-On [Packagist](https://packagist.org/packages/mediawiki/maps):
-[![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
-[![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
-
+* Latest stable version [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
+* TravisCI [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/Maps.png?branch=master)](http://travis-ci.org/JeroenDeDauw/Maps)
+* Code quality [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/badges/quality-score.png?s=3881a27e63cb64e7511d766bfec2e2db5d39bec3)](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/)
+* Downloads on [Packagist](https://packagist.org/packages/mediawiki/maps) [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
 * [Open bugs and feature requests](https://github.com/JeroenDeDauw/Maps/issues)
 * [Maps on Ohloh](https://www.ohloh.net/p/maps/)
 * [Blog posts about Maps](https://www.entropywins.wtf/blog/tag/maps/)
