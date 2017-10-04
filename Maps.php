@@ -130,7 +130,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	};
 
 	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsGeocode( \Maps\MapsFactory::newDefault()->newGeocoder() );
+		$instance = new MapsGeocode( );
 		return $instance->init( $parser );
 	};
 
