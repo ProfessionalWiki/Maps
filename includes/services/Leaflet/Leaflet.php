@@ -44,6 +44,7 @@ call_user_func( function() {
 	];
 
 	$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
+		'dependencies' => [ 'ext.maps.leaflet' ],
 		'localBasePath' => __DIR__ . '/leaflet.fullscreen',
 		'remoteExtPath' => end( $pathParts ) . '/leaflet.fullscreen',
 		'group' => 'ext.maps',
@@ -60,6 +61,7 @@ call_user_func( function() {
 	];
 
 	$wgResourceModules['ext.maps.leaflet.markercluster'] = [
+		'dependencies' => [ 'ext.maps.leaflet' ],
 		'localBasePath' => __DIR__ . '/leaflet.markercluster',
 		'remoteExtPath' => end( $pathParts ),
 		'group' => 'ext.maps',
@@ -76,6 +78,7 @@ call_user_func( function() {
 	];
 
 	$wgResourceModules['ext.maps.leaflet.providers'] = [
+		'dependencies' => [ 'ext.maps.leaflet' ],
 		'localBasePath' => __DIR__ . '/leaflet-providers',
 		'remoteExtPath' => end( $pathParts ) . '/leaflet-providers',
 		'group' => 'ext.maps',
