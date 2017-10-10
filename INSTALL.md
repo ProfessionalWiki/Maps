@@ -116,7 +116,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>5.6 - 7.1</td>
 		<td>1.27 - 1.29</td>
 		<td>2.1 - 2.5</td>
-		<td>Stable release</td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
 		<th>Maps 4.3.x</th>
