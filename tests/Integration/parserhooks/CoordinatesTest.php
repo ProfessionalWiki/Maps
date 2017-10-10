@@ -14,13 +14,6 @@ use ParamProcessor\ParamDefinition;
 class CoordinatesTest extends ParserHookTest {
 
 	/**
-	 * @see ParserHookTest::getInstance
-	 */
-	protected function getInstance() {
-		return new \MapsCoordinates();
-	}
-
-	/**
 	 * @see ParserHookTest::parametersProvider
 	 */
 	public function parametersProvider() {
@@ -119,6 +112,13 @@ class CoordinatesTest extends ParserHookTest {
 		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 */
+	protected function getInstance() {
+		return new \MapsCoordinates();
 	}
 
 }

@@ -39,13 +39,6 @@ class FinddestinationTest extends ParserHookTest {
 	];
 
 	/**
-	 * @see ParserHookTest::getInstance
-	 */
-	protected function getInstance() {
-		return new \MapsFinddestination();
-	}
-
-	/**
 	 * @see ParserHookTest::parametersProvider
 	 */
 	public function parametersProvider() {
@@ -89,6 +82,13 @@ class FinddestinationTest extends ParserHookTest {
 		}
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 */
+	protected function getInstance() {
+		return new \MapsFinddestination();
 	}
 
 }

@@ -47,6 +47,11 @@ class Location extends BaseElement {
 	 */
 	private $visitedIcon = '';
 
+	public function __construct( LatLongValue $coordinates ) {
+		parent::__construct();
+		$this->coordinates = $coordinates;
+	}
+
 	/**
 	 * Creates and returns a new instance of a Location from a latitude and longitude.
 	 *
@@ -61,11 +66,6 @@ class Location extends BaseElement {
 		return new self( new LatLongValue( $lat, $lon ) );
 	}
 
-	public function __construct( LatLongValue $coordinates ) {
-		parent::__construct();
-		$this->coordinates = $coordinates;
-	}
-
 	/**
 	 * Returns the locations coordinates.
 	 *
@@ -75,137 +75,6 @@ class Location extends BaseElement {
 	 */
 	public function getCoordinates() {
 		return $this->coordinates;
-	}
-
-	/**
-	 * Returns the address corresponding to this location.
-	 * If there is none, and empty sting is returned.
-	 *
-	 * @since 0.7.1
-	 *
-	 * @return string
-	 */
-	public function getAddress() {
-		if ( is_null( $this->address ) ) {
-			$this->address = '';
-		}
-
-		return $this->address;
-	}
-
-
-	/**
-	 * Returns if there is any icon.
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function hasIcon() {
-		return $this->icon !== '';
-	}
-
-	/**
-	 * Sets the icon
-	 *
-	 * @since 0.7.2
-	 *
-	 * @param string $icon
-	 */
-	public function setIcon( $icon ) {
-		$this->icon = trim( $icon );
-	}
-
-	/**
-	 * Sets the group
-	 *
-	 * @since 2.0
-	 *
-	 * @param string $group
-	 */
-	public function setGroup( $group ) {
-		$this->group = trim( $group );
-	}
-
-	/**
-	 * Returns the icon.
-	 *
-	 * @since 0.7.2
-	 *
-	 * @return string
-	 */
-	public function getIcon() {
-		return $this->icon;
-	}
-
-	/**
-	 * Returns the group.
-	 *
-	 * @since 2.0
-	 *
-	 * @return string
-	 */
-	public function getGroup() {
-		return $this->group;
-	}
-
-	/**
-	 * Returns whether Location is assigned to a group.
-	 *
-	 * @since 2.0
-	 *
-	 * @return string
-	 */
-	public function hasGroup() {
-		return $this->group !== '';
-	}
-
-	/**
-	 * @return string
-	 * @since 2.0
-	 */
-	public function getInlineLabel(){
-		return $this->inlineLabel;
-	}
-
-	/**
-	 * @param $label
-	 * @since 2.0
-	 */
-	public function setInlineLabel($label){
-		$this->inlineLabel = $label;
-	}
-
-	/**
-	 * @return bool
-	 * @since 2.0
-	 */
-	public function hasInlineLabel(){
-		return $this->inlineLabel !== '';
-	}
-
-	/**
-	 * @return string
-	 * @since 2.0
-	 */
-	public function getVisitedIcon() {
-		return $this->visitedIcon;
-	}
-
-	/**
-	 * @param $visitedIcon
-	 * @since 2.0
-	 */
-	public function setVisitedIcon( $visitedIcon ) {
-		$this->visitedIcon = trim($visitedIcon);
-	}
-
-	/**
-	 * @return bool
-	 * @since 2.0
-	 */
-	public function hasVisitedIcon(){
-		return $this->visitedIcon !== '';
 	}
 
 	/**
@@ -225,7 +94,7 @@ class Location extends BaseElement {
 	 * @return array
 	 */
 	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
-		$parentArray = parent::getJSONObject( $defText , $defTitle );
+		$parentArray = parent::getJSONObject( $defText, $defTitle );
 
 		$array = [
 			'lat' => $this->coordinates->getLatitude(),
@@ -233,23 +102,155 @@ class Location extends BaseElement {
 			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
 		];
 		$val = $this->getAddress();
-		if( $val !== '' ) {
+		if ( $val !== '' ) {
 			$array['address'] = $val;
 		}
 		$val = $this->hasGroup() ? $this->getGroup() : $defGroup;
-		if( !empty( $val ) ) {
+		if ( !empty( $val ) ) {
 			$array['group'] = $val;
 		}
 		$val = $this->hasInlineLabel() ? $this->getInlineLabel() : $defInlineLabel;
-		if( !empty( $val ) ) {
+		if ( !empty( $val ) ) {
 			$array['inlineLabel'] = $val;
 		}
 		$val = $this->hasVisitedIcon() ? $this->getVisitedIcon() : $defVisitedIcon;
-		if( !empty( $val ) ) {
+		if ( !empty( $val ) ) {
 			$array['visitedicon'] = $val;
 		}
 
-		return array_merge( $parentArray , $array );
+		return array_merge( $parentArray, $array );
+	}
+
+	/**
+	 * Returns if there is any icon.
+	 *
+	 * @since 1.0
+	 *
+	 * @return boolean
+	 */
+	public function hasIcon() {
+		return $this->icon !== '';
+	}
+
+	/**
+	 * Returns the icon.
+	 *
+	 * @since 0.7.2
+	 *
+	 * @return string
+	 */
+	public function getIcon() {
+		return $this->icon;
+	}
+
+	/**
+	 * Sets the icon
+	 *
+	 * @since 0.7.2
+	 *
+	 * @param string $icon
+	 */
+	public function setIcon( $icon ) {
+		$this->icon = trim( $icon );
+	}
+
+	/**
+	 * Returns the address corresponding to this location.
+	 * If there is none, and empty sting is returned.
+	 *
+	 * @since 0.7.1
+	 *
+	 * @return string
+	 */
+	public function getAddress() {
+		if ( is_null( $this->address ) ) {
+			$this->address = '';
+		}
+
+		return $this->address;
+	}
+
+	/**
+	 * Returns whether Location is assigned to a group.
+	 *
+	 * @since 2.0
+	 *
+	 * @return string
+	 */
+	public function hasGroup() {
+		return $this->group !== '';
+	}
+
+	/**
+	 * Returns the group.
+	 *
+	 * @since 2.0
+	 *
+	 * @return string
+	 */
+	public function getGroup() {
+		return $this->group;
+	}
+
+	/**
+	 * Sets the group
+	 *
+	 * @since 2.0
+	 *
+	 * @param string $group
+	 */
+	public function setGroup( $group ) {
+		$this->group = trim( $group );
+	}
+
+	/**
+	 * @return bool
+	 * @since 2.0
+	 */
+	public function hasInlineLabel() {
+		return $this->inlineLabel !== '';
+	}
+
+	/**
+	 * @return string
+	 * @since 2.0
+	 */
+	public function getInlineLabel() {
+		return $this->inlineLabel;
+	}
+
+	/**
+	 * @param $label
+	 *
+	 * @since 2.0
+	 */
+	public function setInlineLabel( $label ) {
+		$this->inlineLabel = $label;
+	}
+
+	/**
+	 * @return bool
+	 * @since 2.0
+	 */
+	public function hasVisitedIcon() {
+		return $this->visitedIcon !== '';
+	}
+
+	/**
+	 * @return string
+	 * @since 2.0
+	 */
+	public function getVisitedIcon() {
+		return $this->visitedIcon;
+	}
+
+	/**
+	 * @param $visitedIcon
+	 *
+	 * @since 2.0
+	 */
+	public function setVisitedIcon( $visitedIcon ) {
+		$this->visitedIcon = trim( $visitedIcon );
 	}
 
 }

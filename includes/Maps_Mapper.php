@@ -2,16 +2,16 @@
 
 /**
  * A class that holds static helper functions for generic mapping-related functions.
- * 
+ *
  * @since 0.1
- * 
+ *
  * @deprecated
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 final class MapsMapper {
-	
+
 	/**
 	 * Encode a variable of unknown type to JavaScript.
 	 * Arrays are converted to JS arrays, objects are converted to JS associative
@@ -19,6 +19,7 @@ final class MapsMapper {
 	 * passing them to here.
 	 *
 	 * This is a copy of
+	 *
 	 * @see Xml::encodeJsVar
 	 * which fixes incorrect behaviour with floats.
 	 *
@@ -31,14 +32,17 @@ final class MapsMapper {
 	public static function encodeJsVar( $value ) {
 		if ( is_bool( $value ) ) {
 			$s = $value ? 'true' : 'false';
-		} elseif ( is_null( $value ) ) {
+		}
+		elseif ( is_null( $value ) ) {
 			$s = 'null';
-		} elseif ( is_int( $value ) || is_float( $value ) ) {
+		}
+		elseif ( is_int( $value ) || is_float( $value ) ) {
 			$s = $value;
-		} elseif ( is_array( $value ) && // Make sure it's not associative.
-					array_keys($value) === range( 0, count($value) - 1 ) ||
-					count($value) == 0
-				) {
+		}
+		elseif ( is_array( $value ) && // Make sure it's not associative.
+			array_keys( $value ) === range( 0, count( $value ) - 1 ) ||
+			count( $value ) == 0
+		) {
 			$s = '[';
 			foreach ( $value as $elt ) {
 				if ( $s != '[' ) {
@@ -47,7 +51,8 @@ final class MapsMapper {
 				$s .= self::encodeJsVar( $elt );
 			}
 			$s .= ']';
-		} elseif ( is_object( $value ) || is_array( $value ) ) {
+		}
+		elseif ( is_object( $value ) || is_array( $value ) ) {
 			// Objects and associative arrays
 			$s = '{';
 			foreach ( (array)$value as $name => $elt ) {
@@ -58,7 +63,8 @@ final class MapsMapper {
 					self::encodeJsVar( $elt );
 			}
 			$s .= '}';
-		} else {
+		}
+		else {
 			$s = '"' . Xml::encodeJsVar( $value ) . '"';
 		}
 		return $s;
@@ -206,21 +212,21 @@ final class MapsMapper {
 
 		return $params;
 	}
-	
+
 	/**
 	 * Resolves the url of images provided as wiki page; leaves others alone.
-	 * 
+	 *
 	 * @since 1.0
 	 * @deprecated
-	 * 
+	 *
 	 * @param string $file
-	 * 
+	 *
 	 * @return string
 	 */
 	public static function getFileUrl( $file ) {
 		$title = Title::makeTitle( NS_FILE, $file );
 
-		if( $title !==  null && $title->exists() ) {
+		if ( $title !== null && $title->exists() ) {
 			$imagePage = new ImagePage( $title );
 			return $imagePage->getDisplayedFile()->getURL();
 		}
@@ -229,10 +235,10 @@ final class MapsMapper {
 
 	/**
 	 * Returns JS to init the vars to hold the map data when they are not there already.
-	 * 
+	 *
 	 * @since 1.0
 	 * @deprecated
-	 * 
+	 *
 	 * @param string $serviceName
 	 *
 	 * @return string
@@ -242,18 +248,18 @@ final class MapsMapper {
 		static $serviceInit = [];
 
 		$json = '';
-		
+
 		if ( !$baseInit ) {
 			$baseInit = true;
 			$json .= 'var mwmaps={};';
 		}
-		
+
 		if ( !in_array( $serviceName, $serviceInit ) ) {
 			$serviceInit[] = $serviceName;
 			$json .= "mwmaps.$serviceName={};";
 		}
-		
+
 		return $json;
 	}
-	
+
 }

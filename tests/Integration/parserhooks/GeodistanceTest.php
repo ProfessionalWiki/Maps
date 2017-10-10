@@ -3,7 +3,6 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
-use Maps\ElementOptions;
 use Maps\Elements\Location;
 
 /**
@@ -13,13 +12,6 @@ use Maps\Elements\Location;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class GeodistanceTest extends ParserHookTest {
-
-	/**
-	 * @see ParserHookTest::getInstance
-	 */
-	protected function getInstance() {
-		return new \MapsGeodistance();
-	}
 
 	/**
 	 * @see ParserHookTest::parametersProvider
@@ -76,6 +68,13 @@ class GeodistanceTest extends ParserHookTest {
 		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 */
+	protected function getInstance() {
+		return new \MapsGeodistance();
 	}
 
 }

@@ -52,9 +52,9 @@ class GeoNamesGeocoder implements Geocoder {
 	 */
 	private function getRequestUrl( $address ) {
 		return 'http://api.geonames.org/search?q='
-			   . urlencode( $address )
-			   . '&maxRows=1&username='
-			   . urlencode( $this->geoNamesUser );
+			. urlencode( $address )
+			. '&maxRows=1&username='
+			. urlencode( $this->geoNamesUser );
 	}
 
 	private function getXmlElementValue( $xml, $tagName ) {

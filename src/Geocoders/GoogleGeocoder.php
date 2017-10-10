@@ -57,7 +57,7 @@ class GoogleGeocoder implements Geocoder {
 		$location = @$jsonResponse['results'][0]['geometry']['location'];
 
 		if ( !is_array( $location )
-			 || !array_key_exists( 'lat', $location ) || !array_key_exists( 'lng', $location ) ) {
+			|| !array_key_exists( 'lat', $location ) || !array_key_exists( 'lng', $location ) ) {
 			return null;
 		}
 

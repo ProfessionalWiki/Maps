@@ -60,20 +60,20 @@ class Line extends \MapsBaseStrokableElement {
 	 *
 	 * @return array
 	 */
-	public function getJSONObject( $defText = '' , $defTitle = '' ) {
-		$parentArray = parent::getJSONObject( $defText , $defTitle );
+	public function getJSONObject( $defText = '', $defTitle = '' ) {
+		$parentArray = parent::getJSONObject( $defText, $defTitle );
 		$posArray = [];
 
 		foreach ( $this->coordinates as $mapLocation ) {
 			$posArray[] = [
-				'lat' => $mapLocation->getLatitude() ,
+				'lat' => $mapLocation->getLatitude(),
 				'lon' => $mapLocation->getLongitude()
 			];
 		}
 
 		$posArray = [ 'pos' => $posArray ];
 
-		return array_merge( $parentArray , $posArray );
+		return array_merge( $parentArray, $posArray );
 	}
 
 }

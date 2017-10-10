@@ -3,7 +3,6 @@
 namespace Maps;
 
 use Maps\Elements\ImageOverlay;
-use Maps\Elements\WmsOverlay;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 

@@ -18,8 +18,9 @@ class GoogleGeocoderTest extends \PHPUnit_Framework_TestCase {
 	const NEW_YORK_FETCH_URL = 'https://maps.googleapis.com/maps/api/geocode/json?address=New+York&key=TestApiKey';
 
 	public function testHappyPath() {
-		$fileFetcher = new InMemoryFileFetcher( [
-			self::NEW_YORK_FETCH_URL
+		$fileFetcher = new InMemoryFileFetcher(
+			[
+				self::NEW_YORK_FETCH_URL
 				=> '{
    "results" : [
       {
@@ -74,7 +75,8 @@ class GoogleGeocoderTest extends \PHPUnit_Framework_TestCase {
    ],
    "status" : "OK"
 }'
-		] );
+			]
+		);
 
 		$geocoder = $this->newGeocoder( $fileFetcher );
 
@@ -96,9 +98,13 @@ class GoogleGeocoderTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider invalidResponseProvider
 	 */
 	public function testWhenFetcherReturnsInvalidResponse_nullIsReturned( $invalidResponse ) {
-		$geocoder = $this->newGeocoder( new InMemoryFileFetcher( [
-			self::NEW_YORK_FETCH_URL => $invalidResponse
-		] ) );
+		$geocoder = $this->newGeocoder(
+			new InMemoryFileFetcher(
+				[
+					self::NEW_YORK_FETCH_URL => $invalidResponse
+				]
+			)
+		);
 
 		$this->assertNull( $geocoder->geocode( 'New York' ) );
 	}

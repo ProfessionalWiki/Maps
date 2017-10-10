@@ -15,12 +15,12 @@ use DataValues\Geo\Parsers\GeoCoordinateParser;
 use FileFetcher\SimpleFileFetcher;
 use Maps\CircleParser;
 use Maps\DistanceParser;
-use Maps\SemanticMaps;
 use Maps\ImageOverlayParser;
 use Maps\LineParser;
 use Maps\LocationParser;
 use Maps\PolygonParser;
 use Maps\RectangleParser;
+use Maps\SemanticMaps;
 use Maps\ServiceParam;
 use Maps\WmsOverlayParser;
 
@@ -30,10 +30,10 @@ if ( defined( 'Maps_COORDS_FLOAT' ) ) {
 }
 
 // The different coordinate notations.
-define( 'Maps_COORDS_FLOAT' , 'float' );
-define( 'Maps_COORDS_DMS' , 'dms' );
-define( 'Maps_COORDS_DM' , 'dm' );
-define( 'Maps_COORDS_DD' , 'dd' );
+define( 'Maps_COORDS_FLOAT', 'float' );
+define( 'Maps_COORDS_DMS', 'dms' );
+define( 'Maps_COORDS_DM', 'dm' );
+define( 'Maps_COORDS_DD', 'dd' );
 
 require_once __DIR__ . '/Maps_Settings.php';
 
@@ -47,8 +47,7 @@ $GLOBALS['wgMessagesDirs']['Maps'] = __DIR__ . '/i18n';
 $GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] = __DIR__ . '/Maps.i18n.magic.php';
 $GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] = __DIR__ . '/Maps.i18n.alias.php';
 
-
-$GLOBALS['wgExtensionFunctions'][] = function () {
+$GLOBALS['wgExtensionFunctions'][] = function() {
 	if ( $GLOBALS['egMapsDisableExtension'] ) {
 		return true;
 	}
@@ -63,14 +62,14 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		throw new Exception( 'You need to have Validator installed in order to use Maps' );
 	}
 
-	if ( version_compare( $GLOBALS['wgVersion'], '1.27c' , '<' ) ) {
+	if ( version_compare( $GLOBALS['wgVersion'], '1.27c', '<' ) ) {
 		throw new Exception(
 			'This version of Maps requires MediaWiki 1.27 or above; use Maps 4.2.x for older versions.'
 			. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
 		);
 	}
 
-	define( 'Maps_VERSION' , '5.0 alpha' );
+	define( 'Maps_VERSION', '5.0 alpha' );
 	define( 'SM_VERSION', Maps_VERSION );
 
 	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
@@ -83,14 +82,14 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	}
 
 	$GLOBALS['wgExtensionCredits']['parserhook'][] = [
-		'path' => __FILE__ ,
-		'name' => 'Maps' ,
-		'version' => Maps_VERSION ,
+		'path' => __FILE__,
+		'name' => 'Maps',
+		'version' => Maps_VERSION,
 		'author' => [
 			'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 			'...'
-		] ,
-		'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps' ,
+		],
+		'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps',
 		'descriptionmsg' => 'maps-desc',
 		'license-name' => 'GPL-2.0+'
 	];
@@ -101,9 +100,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 
 	$GLOBALS['wgAPIModules']['geocode'] = 'Maps\Api\Geocode';
 
-
-
-	$GLOBALS['wgHooks']['AdminLinks'][]                = 'MapsHooks::addToAdminLinks';
+	$GLOBALS['wgHooks']['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
 	$GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
 
 	// Parser hooks
@@ -130,7 +127,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	};
 
 	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsGeocode( );
+		$instance = new MapsGeocode();
 		return $instance->init( $parser );
 	};
 
@@ -144,7 +141,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		return $instance->init( $parser );
 	};
 
-
 	// Google Maps API v3
 	if ( $GLOBALS['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $GLOBALS ) ) {
 		$GLOBALS['egMapsGMaps3ApiKey'] = $GLOBALS['egGoogleJsApiKey'];
@@ -157,8 +153,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
 	$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
 
-
-
 	// OpenLayers API
 	include_once __DIR__ . '/includes/services/OpenLayers/OpenLayers.php';
 
@@ -168,8 +162,6 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 		[ 'display_map' => MapsDisplayMapRenderer::class ]
 	);
 
-
-
 	// Leaflet API
 	include_once __DIR__ . '/includes/services/Leaflet/Leaflet.php';
 
@@ -177,14 +169,11 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
 	$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
 
-
-
-
 	$GLOBALS['wgAvailableRights'][] = 'geocode';
 
 	// Users that can geocode. By default the same as those that can edit.
 	foreach ( $GLOBALS['wgGroupPermissions'] as $group => $rights ) {
-		if ( array_key_exists( 'edit' , $rights ) ) {
+		if ( array_key_exists( 'edit', $rights ) ) {
 			$GLOBALS['wgGroupPermissions'][$group]['geocode'] = $GLOBALS['wgGroupPermissions'][$group]['edit'];
 		}
 	}
@@ -194,7 +183,7 @@ $GLOBALS['wgExtensionFunctions'][] = function () {
 	];
 
 	$GLOBALS['wgParamDefinitions']['mappingservice'] = [
-		'definition'=> ServiceParam::class,
+		'definition' => ServiceParam::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapslocation'] = [

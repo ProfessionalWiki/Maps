@@ -30,16 +30,6 @@ class LocationParserTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTitleAndLinkAre( $location, $title, '' );
 	}
 
-	public function titleProvider() {
-		return [
-			[ '' ],
-			[ 'Title' ],
-			[ 'Some title' ],
-			[ 'link' ],
-			[ 'links:foo' ],
-		];
-	}
-
 	protected function assertTitleAndLinkAre( Location $location, $title, $link ) {
 		$this->assertHasJsonKeyWithValue( $location, 'title', $title );
 		$this->assertHasJsonKeyWithValue( $location, 'link', $link );
@@ -50,6 +40,16 @@ class LocationParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertArrayHasKey( $key, $json );
 		$this->assertEquals( $value, $json[$key] );
+	}
+
+	public function titleProvider() {
+		return [
+			[ '' ],
+			[ 'Title' ],
+			[ 'Some title' ],
+			[ 'link' ],
+			[ 'links:foo' ],
+		];
 	}
 
 	/**

@@ -42,9 +42,9 @@ class NominatimGeocoder implements Geocoder {
 			return null;
 		}
 
-		$location  = $jsonResponse[0];
+		$location = $jsonResponse[0];
 
-		if ( !isset( $location->lat ) || ! isset( $location->lon ) ) {
+		if ( !isset( $location->lat ) || !isset( $location->lon ) ) {
 			return null;
 		}
 

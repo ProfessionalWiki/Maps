@@ -34,8 +34,8 @@ class RectangleParser implements ValueParser {
 	 * @return Rectangle
 	 */
 	public function parse( $value ) {
-		$metaData = explode( $this->metaDataSeparator , $value );
-		$rectangleData = explode( ':' , array_shift( $metaData ) );
+		$metaData = explode( $this->metaDataSeparator, $value );
+		$rectangleData = explode( ':', array_shift( $metaData ) );
 
 		$rectangle = new Rectangle(
 			$this->stringToLatLongValue( $rectangleData[0] ),

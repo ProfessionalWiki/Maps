@@ -34,8 +34,8 @@ class CircleParser implements ValueParser {
 	 * @return Circle
 	 */
 	public function parse( $value ) {
-		$metaData = explode( $this->metaDataSeparator , $value );
-		$circleData = explode( ':' , array_shift( $metaData ) );
+		$metaData = explode( $this->metaDataSeparator, $value );
+		$circleData = explode( ':', array_shift( $metaData ) );
 
 		$circle = new Circle( $this->stringToLatLongValue( $circleData[0] ), (float)$circleData[1] );
 

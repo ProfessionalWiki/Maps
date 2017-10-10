@@ -54,24 +54,10 @@ class AreaDescription extends ValueDescription {
 	}
 
 	/**
-	 * @see \SMW\Query\Language\Description::getQueryString
-	 *
-	 * @param boolean $asValue
-	 * @return string
-	 */
-	public function getQueryString( $asValue = false ) {
-		$centerString = DataValueFactory::newDataItemValue( $this->center, $this->getProperty() )->getWikiValue();
-
-		$queryString = "$centerString ({$this->radius})";
-
-		return $asValue ? $queryString : "[[$queryString]]";
-	}
-
-	/**
 	 * @see \SMW\Query\Language\Description::prune
 	 */
-    public function prune( &$maxsize, &$maxdepth, &$log ) {
-    	if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
+	public function prune( &$maxsize, &$maxdepth, &$log ) {
+		if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
 			$log[] = $this->getQueryString();
 
 			$result = new SMWThingDescription();
@@ -84,7 +70,22 @@ class AreaDescription extends ValueDescription {
 		$maxdepth = $maxdepth - $this->getDepth();
 
 		return $this;
-    }
+	}
+
+	/**
+	 * @see \SMW\Query\Language\Description::getQueryString
+	 *
+	 * @param boolean $asValue
+	 *
+	 * @return string
+	 */
+	public function getQueryString( $asValue = false ) {
+		$centerString = DataValueFactory::newDataItemValue( $this->center, $this->getProperty() )->getWikiValue();
+
+		$queryString = "$centerString ({$this->radius})";
+
+		return $asValue ? $queryString : "[[$queryString]]";
+	}
 
 	/**
 	 * @see \SMW\Query\Language\Description::getSQLCondition
@@ -122,9 +123,9 @@ class AreaDescription extends ValueDescription {
 		$conditions = [];
 
 		$conditions[] = "{$tableName}.$fieldNames[1] $smallerThen $north";
-        $conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $south";
-        $conditions[] = "{$tableName}.$fieldNames[2] $smallerThen $east";
-        $conditions[] = "{$tableName}.$fieldNames[2] $biggerThen $west";
+		$conditions[] = "{$tableName}.$fieldNames[1] $biggerThen $south";
+		$conditions[] = "{$tableName}.$fieldNames[2] $smallerThen $east";
+		$conditions[] = "{$tableName}.$fieldNames[2] $biggerThen $west";
 
 		return implode( " $joinCond ", $conditions );
 	}

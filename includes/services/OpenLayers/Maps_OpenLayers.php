@@ -19,6 +19,25 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
+	 * Returns the names of all supported dynamic layers.
+	 *
+	 * @param boolean $includeGroups
+	 *
+	 * @return array
+	 */
+	public static function getLayerNames( $includeGroups = false ) {
+		global $egMapsOLAvailableLayers, $egMapsOLLayerGroups;
+
+		$keys = array_keys( $egMapsOLAvailableLayers );
+
+		if ( $includeGroups ) {
+			$keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
+		}
+
+		return $keys;
+	}
+
+	/**
 	 * @see MapsMappingService::addParameterInfo
 	 */
 	public function addParameterInfo( array &$params ) {
@@ -34,14 +53,14 @@ class MapsOpenLayers extends MapsMappingService {
 		$params['controls'] = [
 			'default' => $egMapsOLControls,
 			'values' => self::getControlNames(),
-			'message' =>'maps-openlayers-par-controls',
+			'message' => 'maps-openlayers-par-controls',
 			'islist' => true,
 			'tolower' => true,
 		];
 
 		$params['layers'] = [
 			'default' => $egMapsOLLayers,
-			'message' =>'maps-openlayers-par-layers',
+			'message' => 'maps-openlayers-par-layers',
 			'manipulatedefault' => true,
 			'islist' => true,
 			'tolower' => true,
@@ -96,6 +115,55 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
+	 * Returns the names of all supported controls.
+	 * This data is a copy of the one used to actually translate the names
+	 * into the controls, since this resides client side, in OpenLayerFunctions.js.
+	 *
+	 * @return array
+	 */
+	public static function getControlNames() {
+		return [
+			'argparser',
+			'attribution',
+			'button',
+			'dragfeature',
+			'dragpan',
+			'drawfeature',
+			'editingtoolbar',
+			'getfeature',
+			'keyboarddefaults',
+			'layerswitcher',
+			'measure',
+			'modifyfeature',
+			'mousedefaults',
+			'mouseposition',
+			'mousetoolbar',
+			'navigation',
+			'navigationhistory',
+			'navtoolbar',
+			'overviewmap',
+			'pan',
+			'panel',
+			'panpanel',
+			'panzoom',
+			'panzoombar',
+			'autopanzoom',
+			'permalink',
+			'scale',
+			'scaleline',
+			'selectfeature',
+			'snapping',
+			'split',
+			'wmsgetfeatureinfo',
+			'zoombox',
+			'zoomin',
+			'zoomout',
+			'zoompanel',
+			'zoomtomaxextent'
+		];
+	}
+
+	/**
 	 * @see MapsMappingService::getMapId
 	 *
 	 * @since 0.6.5
@@ -108,45 +176,6 @@ class MapsOpenLayers extends MapsMappingService {
 		}
 
 		return 'open_layer_' . $mapsOnThisPage;
-	}
-
-	/**
-	 * Returns the names of all supported controls.
-	 * This data is a copy of the one used to actually translate the names
-	 * into the controls, since this resides client side, in OpenLayerFunctions.js.
-	 *
-	 * @return array
-	 */
-	public static function getControlNames() {
-		return [
-			'argparser', 'attribution', 'button', 'dragfeature', 'dragpan',
-			'drawfeature', 'editingtoolbar', 'getfeature', 'keyboarddefaults', 'layerswitcher',
-			'measure', 'modifyfeature', 'mousedefaults', 'mouseposition', 'mousetoolbar',
-			'navigation', 'navigationhistory', 'navtoolbar', 'overviewmap', 'pan',
-			'panel', 'panpanel', 'panzoom', 'panzoombar', 'autopanzoom', 'permalink',
-			'scale', 'scaleline', 'selectfeature', 'snapping', 'split',
-			'wmsgetfeatureinfo', 'zoombox', 'zoomin', 'zoomout', 'zoompanel',
-			'zoomtomaxextent'
-		];
-	}
-
-	/**
-	 * Returns the names of all supported dynamic layers.
-	 *
-	 * @param boolean $includeGroups
-	 *
-	 * @return array
-	 */
-	public static function getLayerNames( $includeGroups = false ) {
-		global $egMapsOLAvailableLayers, $egMapsOLLayerGroups;
-
-		$keys = array_keys( $egMapsOLAvailableLayers );
-
-		if ( $includeGroups ) {
-			$keys = array_merge( $keys, array_keys( $egMapsOLLayerGroups ) );
-		}
-
-		return $keys;
 	}
 
 	/**

@@ -90,11 +90,13 @@ class PolygonHandler {
 
 	private function validateText() {
 		$parts = explode( '=', $this->text );
-		if( array_key_exists( $parts[0], $this->validatorClasses ) ) {
-			$validatorClass = new $this->validatorClasses[ $parts[0] ]( '~' );
-			if ( !$validatorClass->doValidation( $parts[1] ) )
+		if ( array_key_exists( $parts[0], $this->validatorClasses ) ) {
+			$validatorClass = new $this->validatorClasses[$parts[0]]( '~' );
+			if ( !$validatorClass->doValidation( $parts[1] ) ) {
 				$this->errors[] = wfMessage( 'semanticmaps-shapes-improperformat', $this->text )->escaped();
-		} else {
+			}
+		}
+		else {
 			$this->errors[] = wfMessage( 'semanticmaps-shapes-missingshape', $parts[0] )->escaped();
 		}
 	}
@@ -105,13 +107,14 @@ class PolygonHandler {
 	 * @since 2.1
 	 */
 	public function shapeFromText() {
-		$parts = explode( '~' , $this->text );
+		$parts = explode( '~', $this->text );
 		$shape = explode( '=', array_shift( $parts ) );
-		if( array_key_exists( $shape[0] , $this->geoClasses ) ) {
-			$geoClass = new $this->geoClasses[ $shape[0] ]( explode( ':' , $shape[1] ) );
+		if ( array_key_exists( $shape[0], $this->geoClasses ) ) {
+			$geoClass = new $this->geoClasses[$shape[0]]( explode( ':', $shape[1] ) );
 
 			return $geoClass;
-		} else {
+		}
+		else {
 			return false;
 		}
 	}

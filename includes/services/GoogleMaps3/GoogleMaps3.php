@@ -17,87 +17,89 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-call_user_func( function() {
-	global $wgResourceModules;
+call_user_func(
+	function() {
+		global $wgResourceModules;
 
-	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+		$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
-	$wgResourceModules['ext.maps.googlemaps3'] = [
-		'dependencies' => [ 'ext.maps.common' ],
-		'localBasePath' => __DIR__,
-		'remoteExtPath' => end( $pathParts ),
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'jquery.googlemap.js',
-			'ext.maps.googlemaps3.js'
-		],
-		'messages' => [
-			'maps-googlemaps3-incompatbrowser',
-			'maps-copycoords-prompt',
-			'maps-searchmarkers-text',
-			'maps-fullscreen-button',
-			'maps-fullscreen-button-tooltip',
-		]
-	];
+		$wgResourceModules['ext.maps.googlemaps3'] = [
+			'dependencies' => [ 'ext.maps.common' ],
+			'localBasePath' => __DIR__,
+			'remoteExtPath' => end( $pathParts ),
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'jquery.googlemap.js',
+				'ext.maps.googlemaps3.js'
+			],
+			'messages' => [
+				'maps-googlemaps3-incompatbrowser',
+				'maps-copycoords-prompt',
+				'maps-searchmarkers-text',
+				'maps-fullscreen-button',
+				'maps-fullscreen-button-tooltip',
+			]
+		];
 
-	$wgResourceModules['ext.maps.gm3.markercluster'] = [
-		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => end( $pathParts ),
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'markerclusterer.js',
-		],
-	];
+		$wgResourceModules['ext.maps.gm3.markercluster'] = [
+			'localBasePath' => __DIR__ . '/gm3-util-library',
+			'remoteExtPath' => end( $pathParts ),
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'markerclusterer.js',
+			],
+		];
 
-	$wgResourceModules['ext.maps.gm3.markerwithlabel'] = [
-		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => end( $pathParts ),
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'markerwithlabel.js',
-		],
-		'styles' => [
-			'markerwithlabel.css',
-		],
-	];
+		$wgResourceModules['ext.maps.gm3.markerwithlabel'] = [
+			'localBasePath' => __DIR__ . '/gm3-util-library',
+			'remoteExtPath' => end( $pathParts ),
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'markerwithlabel.js',
+			],
+			'styles' => [
+				'markerwithlabel.css',
+			],
+		];
 
-	$wgResourceModules['ext.maps.gm3.geoxml'] = [
-		'localBasePath' => __DIR__ . '/geoxml3',
-		'remoteExtPath' => end( $pathParts ),
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'geoxml3.js',
-			'ZipFile.complete.js', //kmz handling
-			'ProjectedOverlay.js', //Overlay handling
-		],
-	];
+		$wgResourceModules['ext.maps.gm3.geoxml'] = [
+			'localBasePath' => __DIR__ . '/geoxml3',
+			'remoteExtPath' => end( $pathParts ),
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'geoxml3.js',
+				'ZipFile.complete.js', //kmz handling
+				'ProjectedOverlay.js', //Overlay handling
+			],
+		];
 
-	$wgResourceModules['ext.maps.gm3.earth'] = [
-		'localBasePath' => __DIR__ . '/gm3-util-library',
-		'remoteExtPath' => end( $pathParts ),
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'googleearth-compiled.js',
-		],
-	];
-} );
+		$wgResourceModules['ext.maps.gm3.earth'] = [
+			'localBasePath' => __DIR__ . '/gm3-util-library',
+			'remoteExtPath' => end( $pathParts ),
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'googleearth-compiled.js',
+			],
+		];
+	}
+);
