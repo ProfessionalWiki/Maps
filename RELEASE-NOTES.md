@@ -8,6 +8,7 @@ Under development
 * Added persistent geocoding cache (by hidrarga)
 * Image overlays used in `#display_map` now support geocoding for their locations
 * Fixed rendering of wikitext in popups of the map result format when using the `template` parameter (by hidrarga)
+* Fixed random loading failure of Leaflet maps (by Peter Grassberger)
 
 ### Breaking changes
 
