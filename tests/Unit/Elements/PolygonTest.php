@@ -25,6 +25,7 @@ class PolygonTest extends LineTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Polygon $polygon
 	 * @param array $arguments
 	 */
@@ -40,6 +41,7 @@ class PolygonTest extends LineTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Polygon $polygon
 	 * @param array $arguments
 	 */
@@ -60,6 +62,7 @@ class PolygonTest extends LineTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Polygon $polygon
 	 * @param array $arguments
 	 */

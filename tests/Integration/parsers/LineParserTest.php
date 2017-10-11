@@ -5,7 +5,6 @@ namespace Maps\Test;
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Line;
 use Maps\Geocoders\InMemoryGeocoder;
-use Maps\Geocoders\NullGeocoder;
 use Maps\LineParser;
 use ValueParsers\ValueParser;
 
@@ -37,10 +36,14 @@ class LineParserTest extends \PHPUnit_Framework_TestCase {
 	private function newParser() {
 		$parser = new LineParser();
 
-		$parser->setGeocoder( new InMemoryGeocoder( [
-			'4,2' => new LatLongValue( 4, 2 ),
-			'2,3' => new LatLongValue( 2, 3 ),
-		] ) );
+		$parser->setGeocoder(
+			new InMemoryGeocoder(
+				[
+					'4,2' => new LatLongValue( 4, 2 ),
+					'2,3' => new LatLongValue( 2, 3 ),
+				]
+			)
+		);
 
 		return $parser;
 	}
@@ -49,10 +52,12 @@ class LineParserTest extends \PHPUnit_Framework_TestCase {
 		$parser = $this->newParser();
 
 		$this->assertEquals(
-			new Line( [
-				new LatLongValue( 4, 2 ),
-				new LatLongValue( 2, 3 )
-			] ),
+			new Line(
+				[
+					new LatLongValue( 4, 2 ),
+					new LatLongValue( 2, 3 )
+				]
+			),
 			$parser->parse( '4,2:2,3' )
 		);
 	}
@@ -60,10 +65,12 @@ class LineParserTest extends \PHPUnit_Framework_TestCase {
 	public function testTitleAndTextGetSetWhenPresent() {
 		$parser = $this->newParser();
 
-		$expectedLine = new Line( [
-			new LatLongValue( 4, 2 ),
-			new LatLongValue( 2, 3 )
-		] );
+		$expectedLine = new Line(
+			[
+				new LatLongValue( 4, 2 ),
+				new LatLongValue( 2, 3 )
+			]
+		);
 		$expectedLine->setTitle( 'title' );
 		$expectedLine->setText( 'text' );
 
@@ -72,6 +79,5 @@ class LineParserTest extends \PHPUnit_Framework_TestCase {
 			$parser->parse( '4,2:2,3~title~text' )
 		);
 	}
-
 
 }

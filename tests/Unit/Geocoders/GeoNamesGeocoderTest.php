@@ -18,8 +18,9 @@ class GeoNamesGeocoderTest extends \PHPUnit_Framework_TestCase {
 	const NEW_YORK_FETCH_URL = 'http://api.geonames.org/search?q=New+York&maxRows=1&username=TestUserName';
 
 	public function testHappyPath() {
-		$fileFetcher = new InMemoryFileFetcher( [
-			self::NEW_YORK_FETCH_URL
+		$fileFetcher = new InMemoryFileFetcher(
+			[
+				self::NEW_YORK_FETCH_URL
 				=> '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <geonames style="MEDIUM">
 <totalResultsCount>82194</totalResultsCount>
@@ -35,7 +36,8 @@ class GeoNamesGeocoderTest extends \PHPUnit_Framework_TestCase {
 <fcode>PPL</fcode>
 </geoname>
 </geonames>'
-		] );
+			]
+		);
 
 		$geocoder = $this->newGeocoder( $fileFetcher );
 
@@ -57,9 +59,13 @@ class GeoNamesGeocoderTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider invalidResponseProvider
 	 */
 	public function testWhenFetcherReturnsInvalidResponse_nullIsReturned( $invalidResponse ) {
-		$geocoder = $this->newGeocoder( new InMemoryFileFetcher( [
-			self::NEW_YORK_FETCH_URL => $invalidResponse
-		] ) );
+		$geocoder = $this->newGeocoder(
+			new InMemoryFileFetcher(
+				[
+					self::NEW_YORK_FETCH_URL => $invalidResponse
+				]
+			)
+		);
 
 		$this->assertNull( $geocoder->geocode( 'New York' ) );
 	}
@@ -67,7 +73,8 @@ class GeoNamesGeocoderTest extends \PHPUnit_Framework_TestCase {
 	public function invalidResponseProvider() {
 		yield 'Not XML' => [ '~=[,,_,,]:3' ];
 
-		yield 'Missing latitude key' => [ '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+		yield 'Missing latitude key' => [
+			'<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <geonames style="MEDIUM">
 <totalResultsCount>82194</totalResultsCount>
 <geoname>
@@ -80,7 +87,8 @@ class GeoNamesGeocoderTest extends \PHPUnit_Framework_TestCase {
 <fcl>P</fcl>
 <fcode>PPL</fcode>
 </geoname>
-</geonames>' ];
+</geonames>'
+		];
 	}
 
 }

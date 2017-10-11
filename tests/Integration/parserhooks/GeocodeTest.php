@@ -14,16 +14,6 @@ use Maps\Geocoders\InMemoryGeocoder;
 class GeocodeTest extends ParserHookTest {
 
 	/**
-	 * @see ParserHookTest::getInstance
-	 */
-	protected function getInstance() {
-		return new \MapsGeocode( new InMemoryGeocoder( [
-			'New York' => new LatLongValue( 4, 2 ),
-			'Brussels' => new LatLongValue( 2, 3 ),
-		] ) );
-	}
-
-	/**
 	 * @see ParserHookTest::parametersProvider
 	 */
 	public function parametersProvider() {
@@ -54,6 +44,20 @@ class GeocodeTest extends ParserHookTest {
 		];
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 */
+	protected function getInstance() {
+		return new \MapsGeocode(
+			new InMemoryGeocoder(
+				[
+					'New York' => new LatLongValue( 4, 2 ),
+					'Brussels' => new LatLongValue( 2, 3 ),
+				]
+			)
+		);
 	}
 
 }

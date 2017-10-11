@@ -32,6 +32,7 @@ class ElementTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider elementProvider
+	 *
 	 * @param Element $element
 	 */
 	public function getArrayValue( Element $element ) {
@@ -40,6 +41,7 @@ class ElementTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider elementProvider
+	 *
 	 * @param Element $element
 	 */
 	public function testSetOptions( Element $element ) {
@@ -62,10 +64,11 @@ class ElementTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider elementProvider
+	 *
 	 * @param Element $element
 	 */
 	public function testGetOptions( Element $element ) {
-		$this->assertInstanceOf( ElementOptions::class , $element->getOptions() );
+		$this->assertInstanceOf( ElementOptions::class, $element->getOptions() );
 	}
 
 }

@@ -2,9 +2,8 @@
 
 namespace Maps\Tests\Semantic\ValueDescriptions;
 
-use Maps\Semantic\ValueDescriptions\AreaDescription;
-use Maps\Semantic\ValueDescriptions\CoordinateDescription;
 use CoordinateValue;
+use Maps\Semantic\ValueDescriptions\AreaDescription;
 use SMW\DataValueFactory;
 use SMWDataItem;
 use SMWDIGeoCoord;
@@ -50,8 +49,8 @@ class AreaDescriptionTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame(
 			'geo_table.lat_field < \'0.089932160591873\' AND geo_table.lat_field > \'-0.089932160591873\' '
-				. 'AND geo_table.long_field < \'5.0899321605919\' AND geo_table.long_field > \'4.9100678394081\'',
-			$area->getSQLCondition( 'geo_table', ['id_field', 'lat_field', 'long_field'], wfGetDB( DB_MASTER ) )
+			. 'AND geo_table.long_field < \'5.0899321605919\' AND geo_table.long_field > \'4.9100678394081\'',
+			$area->getSQLCondition( 'geo_table', [ 'id_field', 'lat_field', 'long_field' ], wfGetDB( DB_MASTER ) )
 		);
 	}
 
@@ -63,7 +62,7 @@ class AreaDescriptionTest extends \PHPUnit_Framework_TestCase {
 		);
 
 		$this->assertFalse(
-			$area->getSQLCondition( 'geo_table', ['id_field', 'lat_field', 'long_field'], wfGetDB( DB_MASTER ) )
+			$area->getSQLCondition( 'geo_table', [ 'id_field', 'lat_field', 'long_field' ], wfGetDB( DB_MASTER ) )
 		);
 	}
 

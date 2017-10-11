@@ -19,13 +19,6 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 	}
 
 	/**
-	 * @return string
-	 */
-	protected function getParserClass() {
-		return WmsOverlayParser::class;
-	}
-
-	/**
 	 * @see ValueParserTestBase::validInputProvider
 	 *
 	 * @return array
@@ -37,7 +30,11 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 			"http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi? Foundation.GTOPO30" =>
 				[ "http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi?", "Foundation.GTOPO30" ],
 			"http://maps.imr.no:80/geoserver/wms? vulnerable_areas:Identified_coral_area coral_identified_areas" =>
-				[ "http://maps.imr.no:80/geoserver/wms?", "vulnerable_areas:Identified_coral_area", "coral_identified_areas" ]
+				[
+					"http://maps.imr.no:80/geoserver/wms?",
+					"vulnerable_areas:Identified_coral_area",
+					"coral_identified_areas"
+				]
 		];
 
 		foreach ( $valid as $value => $expected ) {
@@ -51,6 +48,13 @@ class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
 		}
 
 		return $argLists;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function getParserClass() {
+		return WmsOverlayParser::class;
 	}
 
 	/**

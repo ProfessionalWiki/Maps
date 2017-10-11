@@ -41,15 +41,21 @@ class LineParser implements ValueParser {
 	 * @return Line
 	 */
 	public function parse( $value ) {
-		$parts = explode( $this->metaDataSeparator , $value );
+		$parts = explode( $this->metaDataSeparator, $value );
 
-		$line = $this->constructShapeFromLatLongValues( $this->parseCoordinates(
-			explode( ':' , array_shift( $parts ) )
-		) );
+		$line = $this->constructShapeFromLatLongValues(
+			$this->parseCoordinates(
+				explode( ':', array_shift( $parts ) )
+			)
+		);
 
 		$this->handleCommonParams( $parts, $line );
 
 		return $line;
+	}
+
+	protected function constructShapeFromLatLongValues( array $locations ) {
+		return new Line( $locations );
 	}
 
 	/**
@@ -76,10 +82,6 @@ class LineParser implements ValueParser {
 		return $coordinates;
 	}
 
-	protected function constructShapeFromLatLongValues( array $locations ) {
-		return new Line( $locations );
-	}
-
 	/**
 	 * This method requires that parameters are positionally correct,
 	 * 1. Link (one parameter) or bubble data (two parameters)
@@ -98,12 +100,12 @@ class LineParser implements ValueParser {
 		//create link data
 		$linkOrTitle = array_shift( $params );
 		if ( $link = $this->isLinkParameter( $linkOrTitle ) ) {
-			$this->setLinkFromParameter( $line , $link );
-		} else {
-			//create bubble data
-			$this->setBubbleDataFromParameter( $line , $params , $linkOrTitle );
+			$this->setLinkFromParameter( $line, $link );
 		}
-
+		else {
+			//create bubble data
+			$this->setBubbleDataFromParameter( $line, $params, $linkOrTitle );
+		}
 
 		//handle stroke parameters
 		if ( $color = array_shift( $params ) ) {
@@ -119,37 +121,41 @@ class LineParser implements ValueParser {
 		}
 	}
 
-	protected function setBubbleDataFromParameter( Line &$line , &$params , $title ) {
+	/**
+	 * Checks if a string is prefixed with link:
+	 *
+	 * @static
+	 *
+	 * @param $link
+	 *
+	 * @return bool|string
+	 * @since 2.0
+	 */
+	private function isLinkParameter( $link ) {
+		if ( strpos( $link, 'link:' ) === 0 ) {
+			return substr( $link, 5 );
+		}
+
+		return false;
+	}
+
+	protected function setLinkFromParameter( Line &$line, $link ) {
+		if ( filter_var( $link, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED ) ) {
+			$line->setLink( $link );
+		}
+		else {
+			$title = \Title::newFromText( $link );
+			$line->setLink( $title->getFullURL() );
+		}
+	}
+
+	protected function setBubbleDataFromParameter( Line &$line, &$params, $title ) {
 		if ( $title ) {
 			$line->setTitle( $title );
 		}
 		if ( $text = array_shift( $params ) ) {
 			$line->setText( $text );
 		}
-	}
-
-	protected function setLinkFromParameter( Line &$line , $link ) {
-		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
-			$line->setLink( $link );
-		} else {
-			$title = \Title::newFromText( $link );
-			$line->setLink( $title->getFullURL() );
-		}
-	}
-
-	/**
-	 * Checks if a string is prefixed with link:
-	 * @static
-	 * @param $link
-	 * @return bool|string
-	 * @since 2.0
-	 */
-	private function isLinkParameter( $link ) {
-		if ( strpos( $link , 'link:' ) === 0 ) {
-			return substr( $link , 5 );
-		}
-
-		return false;
 	}
 
 }

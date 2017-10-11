@@ -25,57 +25,11 @@ class CoordinateValue extends SMWDataValue {
 	private $wikiValue;
 
 	/**
-	 * @see SMWDataValue::setDataItem
-	 * 
-	 * @param SMWDataItem $dataItem
-	 * 
-	 * @return boolean
-	 */
-	protected function loadDataItem( SMWDataItem $dataItem ) {
-		if ( $dataItem instanceof SMWDIGeoCoord ) {
-			 $formattedValue = $this->getFormattedCoord( $dataItem );
-
-			if ( $formattedValue !== null ) {
-				$this->wikiValue = $formattedValue;
-				$this->m_dataitem = $dataItem;
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	/**
-	 * @param SMWDIGeoCoord $dataItem
-	 * @param string|null $format
-	 *
-	 * @return string|null
-	 */
-	private function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
-		global $smgQPCoodFormat;
-
-		$options = new \ValueFormatters\FormatterOptions( [
-			GeoCoordinateFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
-		] );
-
-		// TODO: $smgQPCoodDirectional
-
-		$coordinateFormatter = new GeoCoordinateFormatter( $options );
-
-		$value = new LatLongValue(
-			$dataItem->getLatitude(),
-			$dataItem->getLongitude()
-		);
-
-		return $coordinateFormatter->format( $value );
-	}
-	
-	/**
 	 * Overwrite SMWDataValue::getQueryDescription() to be able to process
 	 * comparators between all values.
-	 * 
+	 *
 	 * @param string $value
-	 * 
+	 *
 	 * @return Description
 	 * @throws InvalidArgumentException
 	 */
@@ -93,23 +47,18 @@ class CoordinateValue extends SMWDataValue {
 			case !$this->isValid():
 				return new ThingDescription();
 			case $distance !== false:
-				return new \Maps\Semantic\ValueDescriptions\AreaDescription( $this->getDataItem(), $comparator, $distance );
+				return new \Maps\Semantic\ValueDescriptions\AreaDescription(
+					$this->getDataItem(),
+					$comparator,
+					$distance
+				);
 			default:
-				return new \Maps\Semantic\ValueDescriptions\CoordinateDescription( $this->getDataItem(), null, $comparator );
+				return new \Maps\Semantic\ValueDescriptions\CoordinateDescription(
+					$this->getDataItem(),
+					null,
+					$comparator
+				);
 		}
-	}
-
-	private function parserDistance( $distance ) {
-		if ( $distance !== false ) {
-			$distance = substr( trim( $distance ), 0, -1 );
-
-			if ( !MapsDistanceParser::isDistance( $distance ) ) {
-				$this->addError( wfMessage( 'semanticmaps-unrecognizeddistance', $distance )->text() );
-				$distance = false;
-			}
-		}
-
-		return $distance;
 	}
 
 	/**
@@ -127,7 +76,8 @@ class CoordinateValue extends SMWDataValue {
 
 		if ( $value === '' ) {
 			$this->addError( wfMessage( 'smw_novalues' )->text() );
-		} else {
+		}
+		else {
 			SMWDataValue::prepareValue( $value, $comparator );
 
 			list( $coordinates, $distance ) = $this->findValueParts( $value );
@@ -166,6 +116,28 @@ class CoordinateValue extends SMWDataValue {
 		}
 	}
 
+	private function parserDistance( $distance ) {
+		if ( $distance !== false ) {
+			$distance = substr( trim( $distance ), 0, -1 );
+
+			if ( !MapsDistanceParser::isDistance( $distance ) ) {
+				$this->addError( wfMessage( 'semanticmaps-unrecognizeddistance', $distance )->text() );
+				$distance = false;
+			}
+		}
+
+		return $distance;
+	}
+
+	/**
+	 * @see SMWDataValue::getShortHTMLText
+	 *
+	 * @since 0.6
+	 */
+	public function getShortHTMLText( $linker = null ) {
+		return $this->getShortWikiText( $linker );
+	}
+
 	/**
 	 * @see SMWDataValue::getShortWikiText
 	 */
@@ -180,19 +152,17 @@ class CoordinateValue extends SMWDataValue {
 
 		return $this->getErrorText();
 	}
-	
+
 	/**
-	 * @see SMWDataValue::getShortHTMLText
-	 * 
-	 * @since 0.6
+	 * @see SMWDataValue::getLongHTMLText
 	 */
-	public function getShortHTMLText( $linker = null ) {
-		return $this->getShortWikiText( $linker );
+	public function getLongHTMLText( $linker = null ) {
+		return $this->getLongWikiText( $linker );
 	}
-	
+
 	/**
 	 * @see SMWDataValue::getLongWikiText
-	 * 
+	 *
 	 * @since 0.6
 	 */
 	public function getLongWikiText( $linked = null ) {
@@ -201,31 +171,25 @@ class CoordinateValue extends SMWDataValue {
 
 			// TODO: fix lang keys so they include the space and coordinates.
 			$coordinateSet = $this->m_dataitem->getCoordinateSet();
-			
+
 			$text = $this->getFormattedCoord( $this->m_dataitem );
 
 			$lines = [
 				wfMessage( 'semanticmaps-latitude', $coordinateSet['lat'] )->inContentLanguage()->escaped(),
 				wfMessage( 'semanticmaps-longitude', $coordinateSet['lon'] )->inContentLanguage()->escaped(),
 			];
-			
+
 			if ( array_key_exists( 'alt', $coordinateSet ) ) {
 				$lines[] = wfMessage( 'semanticmaps-altitude', $coordinateSet['alt'] )->inContentLanguage()->escaped();
 			}
-			
-			return 	'<span class="smwttinline">' . htmlspecialchars( $text ) . '<span class="smwttcontent">' .
-		        	 	implode( '<br />', $lines ) .
-		        	'</span></span>';
-		} else {
-			return $this->getErrorText();
-		}		
-	}
 
-	/**
-	 * @see SMWDataValue::getLongHTMLText
-	 */
-	public function getLongHTMLText( $linker = null ) {
-		return $this->getLongWikiText( $linker );
+			return '<span class="smwttinline">' . htmlspecialchars( $text ) . '<span class="smwttcontent">' .
+				implode( '<br />', $lines ) .
+				'</span></span>';
+		}
+		else {
+			return $this->getErrorText();
+		}
 	}
 
 	/**
@@ -236,14 +200,62 @@ class CoordinateValue extends SMWDataValue {
 	}
 
 	/**
+	 * @see SMWDataValue::setDataItem
+	 *
+	 * @param SMWDataItem $dataItem
+	 *
+	 * @return boolean
+	 */
+	protected function loadDataItem( SMWDataItem $dataItem ) {
+		if ( $dataItem instanceof SMWDIGeoCoord ) {
+			$formattedValue = $this->getFormattedCoord( $dataItem );
+
+			if ( $formattedValue !== null ) {
+				$this->wikiValue = $formattedValue;
+				$this->m_dataitem = $dataItem;
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * @param SMWDIGeoCoord $dataItem
+	 * @param string|null $format
+	 *
+	 * @return string|null
+	 */
+	private function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
+		global $smgQPCoodFormat;
+
+		$options = new \ValueFormatters\FormatterOptions(
+			[
+				GeoCoordinateFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
+			]
+		);
+
+		// TODO: $smgQPCoodDirectional
+
+		$coordinateFormatter = new GeoCoordinateFormatter( $options );
+
+		$value = new LatLongValue(
+			$dataItem->getLatitude(),
+			$dataItem->getLongitude()
+		);
+
+		return $coordinateFormatter->format( $value );
+	}
+
+	/**
 	 * Create links to mapping services based on a wiki-editable message. The parameters
 	 * available to the message are:
-	 * 
+	 *
 	 * $1: The location in non-directional float notation.
 	 * $2: The location in directional DMS notation.
 	 * $3: The latitude in non-directional float notation.
 	 * $4 The longitude in non-directional float notation.
-	 * 
+	 *
 	 * @return array
 	 */
 	protected function getServiceLinkParams() {

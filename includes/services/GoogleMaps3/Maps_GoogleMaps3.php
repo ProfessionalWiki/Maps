@@ -242,21 +242,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getMapId
-	 *
-	 * @since 0.6.5
-	 */
-	public function getMapId( $increment = true ) {
-		static $mapsOnThisPage = 0;
-
-		if ( $increment ) {
-			$mapsOnThisPage++;
-		}
-
-		return 'map_google3_' . $mapsOnThisPage;
-	}
-
-	/**
 	 * Returns the names of all supported map types.
 	 *
 	 * @return array
@@ -277,6 +262,35 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	/**
+	 * @see MapsMappingService::getMapId
+	 *
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		static $mapsOnThisPage = 0;
+
+		if ( $increment ) {
+			$mapsOnThisPage++;
+		}
+
+		return 'map_google3_' . $mapsOnThisPage;
+	}
+
+	/**
+	 * @see MapsMappingService::getResourceModules
+	 *
+	 * @since 1.0
+	 *
+	 * @return array of string
+	 */
+	public function getResourceModules() {
+		return array_merge(
+			parent::getResourceModules(),
+			[ 'ext.maps.googlemaps3' ]
+		);
+	}
+
+	/**
 	 * @see MapsMappingService::getDependencies
 	 *
 	 * @return array
@@ -285,8 +299,8 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		return [
 			self::getApiScript(
 				is_string( $GLOBALS['egMapsGMaps3Language'] ) ?
-				$GLOBALS['egMapsGMaps3Language'] : $GLOBALS['egMapsGMaps3Language']->getCode()
-			 )
+					$GLOBALS['egMapsGMaps3Language'] : $GLOBALS['egMapsGMaps3Language']->getCode()
+			)
 		];
 	}
 
@@ -316,9 +330,9 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 */
 	protected static function getMappedLanguageCode( $code ) {
 		$mappings = [
-	         'en_gb' => 'en-gb',// v3 supports en_gb - but wants us to call it en-gb
-	         'he' => 'iw',      // iw is googlish for hebrew
-	         'fj' => 'fil',     // google does not support Fijian - use Filipino as close(?) supported relative
+			'en_gb' => 'en-gb',// v3 supports en_gb - but wants us to call it en-gb
+			'he' => 'iw',      // iw is googlish for hebrew
+			'fj' => 'fil',     // google does not support Fijian - use Filipino as close(?) supported relative
 		];
 
 		if ( array_key_exists( $code, $mappings ) ) {
@@ -326,19 +340,5 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		}
 
 		return $code;
-	}
-
-	/**
-	 * @see MapsMappingService::getResourceModules
-	 *
-	 * @since 1.0
-	 *
-	 * @return array of string
-	 */
-	public function getResourceModules() {
-		return array_merge(
-			parent::getResourceModules(),
-			[ 'ext.maps.googlemaps3' ]
-		);
 	}
 }

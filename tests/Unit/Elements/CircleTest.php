@@ -48,6 +48,7 @@ class CircleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Circle $circle
 	 * @param array $arguments
 	 */
@@ -57,6 +58,7 @@ class CircleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Circle $circle
 	 * @param array $arguments
 	 */

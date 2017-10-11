@@ -16,10 +16,11 @@ class CoordinateDescription extends ValueDescription {
 
 	/**
 	 * @see SMWDescription::getQueryString
-	 * 
+	 *
 	 * @since 0.6
-	 * 
+	 *
 	 * @param boolean $asValue
+	 *
 	 * @return string
 	 */
 	public function getQueryString( $asValue = false ) {
@@ -33,25 +34,34 @@ class CoordinateDescription extends ValueDescription {
 	 * FIXME: store specific code should be in the store component
 	 *
 	 * @since 0.6
-	 * 
+	 *
 	 * @param string $tableName
 	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
-	 * 
+	 *
 	 * @return string|false
 	 */
 	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
 		$dataItem = $this->getDataItem();
-		
+
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
 		if ( $dataItem instanceof SMWDIGeoCoord ) {
 			switch ( $this->getComparator() ) {
-				case SMW_CMP_EQ: $comparator = '='; break;
-				case SMW_CMP_LEQ: $comparator = '<='; break;
-				case SMW_CMP_GEQ: $comparator = '>='; break;
-				case SMW_CMP_NEQ: $comparator = '!='; break;
-				default: return false;
+				case SMW_CMP_EQ:
+					$comparator = '=';
+					break;
+				case SMW_CMP_LEQ:
+					$comparator = '<=';
+					break;
+				case SMW_CMP_GEQ:
+					$comparator = '>=';
+					break;
+				case SMW_CMP_NEQ:
+					$comparator = '!=';
+					break;
+				default:
+					return false;
 			}
 
 			$lat = $dbs->addQuotes( $dataItem->getLatitude() );
@@ -67,5 +77,5 @@ class CoordinateDescription extends ValueDescription {
 
 		return false;
 	}
-	
+
 }

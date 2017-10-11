@@ -15,12 +15,12 @@ class SemanticMaps {
 
 	private $mwGlobals;
 
-	public static function newFromMediaWikiGlobals( array &$mwGlobals ) {
-		return new self( $mwGlobals );
-	}
-
 	private function __construct( array &$mwGlobals ) {
 		$this->mwGlobals =& $mwGlobals;
+	}
+
+	public static function newFromMediaWikiGlobals( array &$mwGlobals ) {
+		return new self( $mwGlobals );
 	}
 
 	public function initExtension() {

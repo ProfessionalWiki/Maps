@@ -19,12 +19,6 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @since 2.0
-	 * @return \ParserHook
-	 */
-	protected abstract function getInstance();
-
-	/**
-	 * @since 2.0
 	 * @return array
 	 */
 	public abstract function parametersProvider();
@@ -35,6 +29,7 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @dataProvider parametersProvider
 	 * @since 2.0
+	 *
 	 * @param array $parameters
 	 * @param string|null $expected
 	 */
@@ -64,6 +59,12 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 		}
 	}
 
+	/**
+	 * @since 2.0
+	 * @return \ParserHook
+	 */
+	protected abstract function getInstance();
+
 	public function processingProvider() {
 		return [];
 	}
@@ -81,7 +82,9 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 		$result = $processor->processParameters();
 
 		if ( $result->hasFatal() ) {
-			$this->fail( 'Fatal error occurred during the param processing: ' . $processor->hasFatalError()->getMessage() );
+			$this->fail(
+				'Fatal error occurred during the param processing: ' . $processor->hasFatalError()->getMessage()
+			);
 		}
 
 		$actual = $result->getParameters();
@@ -95,8 +98,8 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 				$expected,
 				$actual[$name]->getValue(),
 				'Expected ' . var_export( $expected, true )
-					. ' should match actual '
-					. var_export( $actual[$name]->getValue(), true )
+				. ' should match actual '
+				. var_export( $actual[$name]->getValue(), true )
 			);
 		}
 	}
@@ -120,7 +123,7 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 
 	protected function arrayWrap( array $elements ) {
 		return array_map(
-			function ( $element ) {
+			function( $element ) {
 				return [ $element ];
 			},
 			$elements

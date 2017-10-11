@@ -34,20 +34,22 @@ class WmsOverlay extends BaseElement {
 	 * @param string $wmsLayerName
 	 * @param string $wmsStyleName
 	 */
-	public function __construct( $wmsServerUrl, $wmsLayerName, $wmsStyleName="default" ) {
+	public function __construct( $wmsServerUrl, $wmsLayerName, $wmsStyleName = "default" ) {
 		parent::__construct();
 		$this->setWmsServerUrl( $wmsServerUrl );
 		$this->setWmsLayerName( $wmsLayerName );
 		$this->setWmsStyleName( $wmsStyleName );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param String $wmsLayerName
-	 */
-	public function setWmsLayerName( $wmsLayerName ) {
-		$this->wmsLayerName = $wmsLayerName;
+	public function getJSONObject( $defText = "", $defTitle = "" ) {
+		$parentArray = parent::getJSONObject( $defText, $defTitle );
+
+		$array = [
+			'wmsServerUrl' => $this->getWmsServerUrl(),
+			'wmsLayerName' => $this->getWmsLayerName(),
+			'wmsStyleName' => $this->getWmsStyleName()
+		];
+		return array_merge( $parentArray, $array );
 	}
 
 	/**
@@ -55,8 +57,8 @@ class WmsOverlay extends BaseElement {
 	 *
 	 * @return String
 	 */
-	public function getWmsLayerName() {
-		return $this->wmsLayerName;
+	public function getWmsServerUrl() {
+		return $this->wmsServerUrl;
 	}
 
 	/**
@@ -73,17 +75,17 @@ class WmsOverlay extends BaseElement {
 	 *
 	 * @return String
 	 */
-	public function getWmsServerUrl() {
-		return $this->wmsServerUrl;
+	public function getWmsLayerName() {
+		return $this->wmsLayerName;
 	}
 
 	/**
 	 * @since 3.0
 	 *
-	 * @param String $wmsStyleName
+	 * @param String $wmsLayerName
 	 */
-	public function setWmsStyleName( $wmsStyleName ) {
-		$this->wmsStyleName = $wmsStyleName;
+	public function setWmsLayerName( $wmsLayerName ) {
+		$this->wmsLayerName = $wmsLayerName;
 	}
 
 	/**
@@ -93,15 +95,13 @@ class WmsOverlay extends BaseElement {
 		return $this->wmsStyleName;
 	}
 
-	public function getJSONObject ( $defText = "", $defTitle = "" ) {
-		$parentArray = parent::getJSONObject( $defText , $defTitle );
-
-		$array =  [
-			'wmsServerUrl' => $this->getWmsServerUrl() ,
-			'wmsLayerName' => $this->getWmsLayerName() ,
-			'wmsStyleName' => $this->getWmsStyleName()
-		];
-		return array_merge( $parentArray, $array );
+	/**
+	 * @since 3.0
+	 *
+	 * @param String $wmsStyleName
+	 */
+	public function setWmsStyleName( $wmsStyleName ) {
+		$this->wmsStyleName = $wmsStyleName;
 	}
 
 }

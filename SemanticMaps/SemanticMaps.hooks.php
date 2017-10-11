@@ -20,19 +20,23 @@ final class SemanticMapsHooks {
 	 * @return boolean
 	 */
 	public static function addToAdminLinks( ALTree &$admin_links_tree ) {
-	    $displaying_data_section = $admin_links_tree->getSection( wfMessage( 'smw_adminlinks_displayingdata' )->text() );
+		$displaying_data_section = $admin_links_tree->getSection(
+			wfMessage( 'smw_adminlinks_displayingdata' )->text()
+		);
 
-	    // Escape if SMW hasn't added links.
-	    if ( is_null( $displaying_data_section ) ) {
+		// Escape if SMW hasn't added links.
+		if ( is_null( $displaying_data_section ) ) {
 			return true;
 		}
 
-	    $smw_docu_row = $displaying_data_section->getRow( 'smw' );
+		$smw_docu_row = $displaying_data_section->getRow( 'smw' );
 
-	    $sm_docu_label = wfMessage( 'adminlinks_documentation', 'Semantic Maps' )->text();
-	    $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Semantic_Maps', $sm_docu_label ) );
+		$sm_docu_label = wfMessage( 'adminlinks_documentation', 'Semantic Maps' )->text();
+		$smw_docu_row->addItem(
+			AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Semantic_Maps', $sm_docu_label )
+		);
 
-	    return true;
+		return true;
 	}
 
 	/**
@@ -82,7 +86,8 @@ final class SemanticMapsHooks {
 				$hasCoords = false;
 
 				// Loop through the print requests to determine their types.
-				foreach( $printRequests as /* SMWPrintRequest */ $printRequest ) {
+				foreach ( $printRequests as /* SMWPrintRequest */
+						  $printRequest ) {
 					// Skip the first request, as it's the object.
 					if ( $printRequest->getMode() == SMWPrintRequest::PRINT_THIS ) {
 						continue;

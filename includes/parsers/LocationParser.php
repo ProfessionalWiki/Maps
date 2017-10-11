@@ -37,6 +37,7 @@ class LocationParser implements ValueParser {
 	/**
 	 * @param Geocoder $geocoder
 	 * @param bool $useAddressAsTitle
+	 *
 	 * @return self
 	 */
 	public static function newInstance( Geocoder $geocoder, $useAddressAsTitle = false ) {
@@ -73,8 +74,10 @@ class LocationParser implements ValueParser {
 		if ( $metaData !== [] ) {
 			$this->setTitleOrLink( $location, array_shift( $metaData ) );
 		}
-		else if ( $this->useAddressAsTitle && $this->isAddress( $coordinatesOrAddress ) ) {
-			$location->setTitle( $coordinatesOrAddress );
+		else {
+			if ( $this->useAddressAsTitle && $this->isAddress( $coordinatesOrAddress ) ) {
+				$location->setTitle( $coordinatesOrAddress );
+			}
 		}
 
 		if ( $metaData !== [] ) {
@@ -106,7 +109,7 @@ class LocationParser implements ValueParser {
 	}
 
 	private function isLink( $value ) {
-		return strpos( $value , 'link:' ) === 0;
+		return strpos( $value, 'link:' ) === 0;
 	}
 
 	private function setLink( Location $location, $link ) {
@@ -115,7 +118,7 @@ class LocationParser implements ValueParser {
 	}
 
 	private function getExpandedLink( $link ) {
-		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
+		if ( filter_var( $link, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED ) ) {
 			return $link;
 		}
 

@@ -59,31 +59,6 @@ class MapsDisplayMapRenderer {
 	}
 
 	/**
-	 * Returns the HTML to display the map.
-	 *
-	 * @param array $params
-	 * @param string $mapName
-	 *
-	 * @return string
-	 */
-	protected function getMapHTML( array $params, $mapName ) {
-		return Html::rawElement(
-			'div',
-			[
-				'id' => $mapName,
-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
-				'class' => 'maps-map maps-' . $this->service->getName()
-			],
-			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
-			Html::element(
-				'div',
-				[ 'style' => 'display:none', 'class' => 'mapdata' ],
-				FormatJson::encode( $params )
-			)
-		);
-	}
-
-	/**
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 */
@@ -139,7 +114,13 @@ class MapsDisplayMapRenderer {
 				continue;
 			}
 
-			$locationJsonObjects[] = $this->getLocationJsonObject( $location, $params, $iconUrl, $visitedIconUrl, $parserClone );
+			$locationJsonObjects[] = $this->getLocationJsonObject(
+				$location,
+				$params,
+				$iconUrl,
+				$visitedIconUrl,
+				$parserClone
+			);
 		}
 
 		return $locationJsonObjects;
@@ -148,11 +129,23 @@ class MapsDisplayMapRenderer {
 	private function getLocationJsonObject( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parserClone ) {
 		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 
-		$jsonObj['title'] = $parserClone->parse( $jsonObj['title'], $parserClone->getTitle(), new ParserOptions() )->getText();
-		$jsonObj['text'] = $parserClone->parse( $jsonObj['text'], $parserClone->getTitle(), new ParserOptions() )->getText();
+		$jsonObj['title'] = $parserClone->parse(
+			$jsonObj['title'],
+			$parserClone->getTitle(),
+			new ParserOptions()
+		)->getText();
+		$jsonObj['text'] = $parserClone->parse(
+			$jsonObj['text'],
+			$parserClone->getTitle(),
+			new ParserOptions()
+		)->getText();
 
 		if ( isset( $jsonObj['inlineLabel'] ) ) {
-			$jsonObj['inlineLabel'] = strip_tags($parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),'<a><img>');
+			$jsonObj['inlineLabel'] = strip_tags(
+				$parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(
+				),
+				'<a><img>'
+			);
 		}
 
 		$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
@@ -164,9 +157,9 @@ class MapsDisplayMapRenderer {
 
 	private function handleShapeData( array &$params, Parser $parserClone ) {
 		$textContainers = [
-			&$params['lines'] ,
-			&$params['polygons'] ,
-			&$params['circles'] ,
+			&$params['lines'],
+			&$params['polygons'],
+			&$params['circles'],
 			&$params['rectangles'],
 			&$params['imageoverlays'], // FIXME: this is Google Maps specific!!
 		];
@@ -178,8 +171,16 @@ class MapsDisplayMapRenderer {
 						$obj = $obj->getArrayValue();
 					}
 
-					$obj['title'] = $parserClone->parse( $obj['title'] , $parserClone->getTitle() , new ParserOptions() )->getText();
-					$obj['text'] = $parserClone->parse( $obj['text'] , $parserClone->getTitle() , new ParserOptions() )->getText();
+					$obj['title'] = $parserClone->parse(
+						$obj['title'],
+						$parserClone->getTitle(),
+						new ParserOptions()
+					)->getText();
+					$obj['text'] = $parserClone->parse(
+						$obj['text'],
+						$parserClone->getTitle(),
+						new ParserOptions()
+					)->getText();
 
 					$hasTitleAndtext = $obj['title'] !== '' && $obj['text'] !== '';
 					$obj['text'] = ( $hasTitleAndtext ? '<b>' . $obj['title'] . '</b><hr />' : $obj['title'] ) . $obj['text'];
@@ -242,6 +243,31 @@ class MapsDisplayMapRenderer {
 		return $layerDefs;
 	}
 
+	/**
+	 * Returns the HTML to display the map.
+	 *
+	 * @param array $params
+	 * @param string $mapName
+	 *
+	 * @return string
+	 */
+	protected function getMapHTML( array $params, $mapName ) {
+		return Html::rawElement(
+			'div',
+			[
+				'id' => $mapName,
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+				'class' => 'maps-map maps-' . $this->service->getName()
+			],
+			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
+			Html::element(
+				'div',
+				[ 'style' => 'display:none', 'class' => 'mapdata' ],
+				FormatJson::encode( $params )
+			)
+		);
+	}
+
 	public static function getLayerDependencies( $service, $params ) {
 		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers,
 			   $egMapsLeafletLayerDependencies, $egMapsLeafletAvailableLayers,
@@ -252,23 +278,29 @@ class MapsDisplayMapRenderer {
 		if ( $service === 'leaflet' ) {
 			$layerName = $params['layer'];
 			if ( array_key_exists( $layerName, $egMapsLeafletAvailableLayers )
-					&& $egMapsLeafletAvailableLayers[$layerName]
-					&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
-					&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
+				&& $egMapsLeafletAvailableLayers[$layerName]
+				&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
+				&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
 				$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
 					$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
 			}
-		} else if ( $service === 'openlayers' ) {
-			$layerNames = $params['layers'];
-			foreach ( $layerNames as $layerName ) {
-				if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
+		}
+		else {
+			if ( $service === 'openlayers' ) {
+				$layerNames = $params['layers'];
+				foreach ( $layerNames as $layerName ) {
+					if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
 						&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...
 						&& count( $egMapsOLAvailableLayers[$layerName] ) > 1 // ...with a second element...
-						&& array_key_exists( $egMapsOLAvailableLayers[$layerName][1], $egMapsOLLayerDependencies ) ) { //...that is a dependency.
-					$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
+						&& array_key_exists(
+							$egMapsOLAvailableLayers[$layerName][1],
+							$egMapsOLLayerDependencies
+						) ) { //...that is a dependency.
+						$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
+					}
 				}
-			}
 
+			}
 		}
 
 		return array_unique( $layerDependencies );

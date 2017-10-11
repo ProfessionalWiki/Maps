@@ -10,9 +10,32 @@ use Maps\Elements\Location;
  */
 class SMQueryHandler {
 
+	/**
+	 * The global icon.
+	 *
+	 * @var string
+	 */
+	public $icon = '';
+	/**
+	 * The global text.
+	 *
+	 * @var string
+	 */
+	public $text = '';
+	/**
+	 * The global title.
+	 *
+	 * @var string
+	 */
+	public $title = '';
+	/**
+	 * Make a separate link to the title or not?
+	 *
+	 * @var boolean
+	 */
+	public $titleLinkSeparate = false;
 	private $queryResult;
 	private $outputMode;
-
 	/**
 	 * @var array
 	 */
@@ -21,42 +44,12 @@ class SMQueryHandler {
 		'locations' => [],
 		'polygons' => []
 	];
-
 	/**
 	 * The template to use for the text, or false if there is none.
 	 *
 	 * @var string|boolean false
 	 */
 	private $template = false;
-
-	/**
-	 * The global icon.
-	 *
-	 * @var string
-	 */
-	public $icon = '';
-
-	/**
-	 * The global text.
-	 *
-	 * @var string
-	 */
-	public $text = '';
-
-	/**
-	 * The global title.
-	 *
-	 * @var string
-	 */
-	public $title = '';
-
-	/**
-	 * Make a separate link to the title or not?
-	 *
-	 * @var boolean
-	 */
-	public $titleLinkSeparate = false;
-
 	/**
 	 * Should link targets be made absolute (instead of relative)?
 	 *
@@ -98,7 +91,6 @@ class SMQueryHandler {
 	 * @var boolean
 	 */
 	private $hideNamespace = false;
-
 
 	/**
 	 * Defines which article names in the result are hyperlinked, all normally is the default
@@ -218,7 +210,7 @@ class SMQueryHandler {
 	 *
 	 * @param boolean $link
 	 */
-	public function setLinkStyle ( $link ) {
+	public function setLinkStyle( $link ) {
 		$this->linkStyle = $link;
 	}
 
@@ -226,7 +218,7 @@ class SMQueryHandler {
 	 *
 	 * @param boolean $headers
 	 */
-	public function setHeaderStyle ( $headers ) {
+	public function setHeaderStyle( $headers ) {
 		$this->headerStyle = $headers;
 	}
 
@@ -268,31 +260,50 @@ class SMQueryHandler {
 				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
 					list( $title, $text ) = $this->handleResultSubject( $dataValue );
 				}
-				else if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
-					$title = $dataValue->getLongText( $this->outputMode, null );
-					$text = $dataValue->getLongText( $this->outputMode, smwfGetLinker() );
-				}
-				else if ( $dataValue->getTypeID() == '_gpo' ) {
-					$dataItem = $dataValue->getDataItem();
-					$polyHandler = new PolygonHandler ( $dataItem->getString() );
-					$this->geoShapes[ $polyHandler->getGeoType() ][] = $polyHandler->shapeFromText();
-				} else if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
-					foreach ( $dataValue->getDataItems() as $dataItem ) {
-						if ( $dataItem instanceof \SMWDIGeoCoord ) {
-							$location = Location::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
-							$locations[] = $location;
+				else {
+					if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
+						$title = $dataValue->getLongText( $this->outputMode, null );
+						$text = $dataValue->getLongText( $this->outputMode, smwfGetLinker() );
+					}
+					else {
+						if ( $dataValue->getTypeID() == '_gpo' ) {
+							$dataItem = $dataValue->getDataItem();
+							$polyHandler = new PolygonHandler ( $dataItem->getString() );
+							$this->geoShapes[$polyHandler->getGeoType()][] = $polyHandler->shapeFromText();
+						}
+						else {
+							if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
+								foreach ( $dataValue->getDataItems() as $dataItem ) {
+									if ( $dataItem instanceof \SMWDIGeoCoord ) {
+										$location = Location::newFromLatLon(
+											$dataItem->getLatitude(),
+											$dataItem->getLongitude()
+										);
+										$locations[] = $location;
+									}
+								}
+							}
+							else {
+								if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide() ) {
+									$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
+								}
+								else {
+									if ( $printRequest->getMode(
+										) == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID(
+										) == '_geo' || $dataValue->getTypeID() == '_geo' ) {
+										$dataItem = $dataValue->getDataItem();
+
+										$location = Location::newFromLatLon(
+											$dataItem->getLatitude(),
+											$dataItem->getLongitude()
+										);
+
+										$locations[] = $location;
+									}
+								}
+							}
 						}
 					}
-				}
-				else if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide() ) {
-					$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
-				}
-				else if ( $printRequest->getMode() == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID() == '_geo' || $dataValue->getTypeID() == '_geo' ) {
-					$dataItem = $dataValue->getDataItem();
-
-					$location = Location::newFromLatLon( $dataItem->getLatitude(), $dataItem->getLongitude() );
-
-					$locations[] = $location;
 				}
 			}
 		}
@@ -328,20 +339,24 @@ class SMQueryHandler {
 		$text = '';
 
 		if ( $this->showSubject ) {
-			if( !$this->showArticleLink()){
+			if ( !$this->showArticleLink() ) {
 				$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
-			}else if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
-				$text = Html::element(
-					'a',
-					[ 'href' => $object->getTitle()->getFullUrl() ],
-					$this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText()
-				);
 			}
 			else {
-				if($this->hideNamespace){
-					$text = $object->getShortHTMLText(smwfGetLinker());
-				}else{
-					$text = $object->getLongHTMLText( smwfGetLinker() );
+				if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
+					$text = Html::element(
+						'a',
+						[ 'href' => $object->getTitle()->getFullUrl() ],
+						$this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText()
+					);
+				}
+				else {
+					if ( $this->hideNamespace ) {
+						$text = $object->getShortHTMLText( smwfGetLinker() );
+					}
+					else {
+						$text = $object->getLongHTMLText( smwfGetLinker() );
+					}
 				}
 			}
 
@@ -370,8 +385,8 @@ class SMQueryHandler {
 		return $this->linkStyle !== 'none';
 	}
 
-	private function hasTemplate() {
-		return is_string( $this->template );
+	private function isHeadersHide() {
+		return $this->headerStyle === 'hide';
 	}
 
 	/**
@@ -393,9 +408,9 @@ class SMQueryHandler {
 
 		if ( $this->linkAbsolute ) {
 			$titleText = $printRequest->getText( null );
-			$t = Title::newFromText($titleText , SMW_NS_PROPERTY );
+			$t = Title::newFromText( $titleText, SMW_NS_PROPERTY );
 
-			if ($this->isHeadersShow() && $t instanceof Title && $t->exists() ) {
+			if ( $this->isHeadersShow() && $t instanceof Title && $t->exists() ) {
 				$propertyName = $propertyName = Html::element(
 					'a',
 					[ 'href' => $t->getFullUrl() ],
@@ -407,10 +422,13 @@ class SMQueryHandler {
 			}
 		}
 		else {
-			if($this->isHeadersShow()){
+			if ( $this->isHeadersShow() ) {
 				$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
-			}else if($this->isHeadersPlain()){
-				$propertyName = $printRequest->getText(null);
+			}
+			else {
+				if ( $this->isHeadersPlain() ) {
+					$propertyName = $printRequest->getText( null );
+				}
 			}
 		}
 
@@ -440,17 +458,69 @@ class SMQueryHandler {
 		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
 	}
 
+	private function hasTemplate() {
+		return is_string( $this->template );
+	}
 
 	private function isHeadersShow() {
 		return $this->headerStyle === 'show';
 	}
 
-	private function isHeadersHide() {
-		return $this->headerStyle === 'hide';
-	}
-
 	private function isHeadersPlain() {
 		return $this->headerStyle === 'plain';
+	}
+
+	/**
+	 * Get the icon for a row.
+	 *
+	 * @param array $row
+	 *
+	 * @return string
+	 */
+	private function getLocationIcon( array $row ) {
+		$icon = '';
+		$legendLabels = [];
+
+		//Check for activeicon parameter
+
+		if ( $this->shouldGetActiveIconUrlFor( $row[0]->getResultSubject()->getTitle() ) ) {
+			$icon = MapsMapper::getFileUrl( $this->activeIcon );
+		}
+
+		// Look for display_options field, which can be set by Semantic Compound Queries
+		// the location of this field changed in SMW 1.5
+		$display_location = method_exists( $row[0], 'getResultSubject' ) ? $row[0]->getResultSubject() : $row[0];
+
+		if ( property_exists( $display_location, 'display_options' ) && is_array(
+				$display_location->display_options
+			) ) {
+			$display_options = $display_location->display_options;
+			if ( array_key_exists( 'icon', $display_options ) ) {
+				$icon = $display_options['icon'];
+
+				// This is somewhat of a hack - if a legend label has been set, we're getting it for every point, instead of just once per icon
+				if ( array_key_exists( 'legend label', $display_options ) ) {
+
+					$legend_label = $display_options['legend label'];
+
+					if ( !array_key_exists( $icon, $legendLabels ) ) {
+						$legendLabels[$icon] = $legend_label;
+					}
+				}
+			}
+		} // Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here
+		elseif ( $this->icon !== '' ) {
+			$icon = MapsMapper::getFileUrl( $this->icon );
+		}
+
+		return $icon;
+	}
+
+	private function shouldGetActiveIconUrlFor( Title $title ) {
+		global $wgTitle;
+
+		return isset( $this->activeIcon ) && is_object( $wgTitle )
+			&& $wgTitle->equals( $title );
 	}
 
 	/**
@@ -497,13 +567,6 @@ class SMQueryHandler {
 		return $locations;
 	}
 
-	/**
-	 * @return \Parser
-	 */
-	private function getParser() {
-		return $GLOBALS['wgParser'];
-	}
-
 	private function getTitleOutput( Title $title = null ) {
 		if ( $title === null ) {
 			return '';
@@ -513,61 +576,10 @@ class SMQueryHandler {
 	}
 
 	/**
-	 * Get the icon for a row.
-	 *
-	 * @param array $row
-	 *
-	 * @return string
+	 * @return \Parser
 	 */
-	private function getLocationIcon( array $row ) {
-		$icon = '';
-		$legendLabels = [];
-
-		//Check for activeicon parameter
-
-		if ( $this->shouldGetActiveIconUrlFor( $row[0]->getResultSubject()->getTitle() ) ){
-			$icon = MapsMapper::getFileUrl( $this->activeIcon );
-		}
-
-		// Look for display_options field, which can be set by Semantic Compound Queries
-		// the location of this field changed in SMW 1.5
-		$display_location = method_exists( $row[0], 'getResultSubject' ) ? $row[0]->getResultSubject() : $row[0];
-
-		if ( property_exists( $display_location, 'display_options' ) && is_array( $display_location->display_options ) ) {
-			$display_options = $display_location->display_options;
-			if ( array_key_exists( 'icon', $display_options ) ) {
-				$icon = $display_options['icon'];
-
-				// This is somewhat of a hack - if a legend label has been set, we're getting it for every point, instead of just once per icon
-				if ( array_key_exists( 'legend label', $display_options ) ) {
-
-					$legend_label = $display_options['legend label'];
-
-					if ( ! array_key_exists( $icon, $legendLabels ) ) {
-						$legendLabels[$icon] = $legend_label;
-					}
-				}
-			}
-		} // Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here
-		elseif ( $this->icon !== '' ) {
-			$icon = MapsMapper::getFileUrl( $this->icon );
-		}
-
-		return $icon;
-	}
-
-	private function shouldGetActiveIconUrlFor( Title $title ) {
-		global $wgTitle;
-
-		return isset( $this->activeIcon ) && is_object( $wgTitle )
-			&& $wgTitle->equals( $title );
-	}
-
-	/**
-	 * @param boolean $hideNamespace
-	 */
-	public function setHideNamespace( $hideNamespace ) {
-		$this->hideNamespace = $hideNamespace;
+	private function getParser() {
+		return $GLOBALS['wgParser'];
 	}
 
 	/**
@@ -578,10 +590,10 @@ class SMQueryHandler {
 	}
 
 	/**
-	 * @param string $activeIcon
+	 * @param boolean $hideNamespace
 	 */
-	public function setActiveIcon( $activeIcon ) {
-		$this->activeIcon = $activeIcon;
+	public function setHideNamespace( $hideNamespace ) {
+		$this->hideNamespace = $hideNamespace;
 	}
 
 	/**
@@ -589,6 +601,13 @@ class SMQueryHandler {
 	 */
 	public function getActiveIcon() {
 		return $this->activeIcon;
+	}
+
+	/**
+	 * @param string $activeIcon
+	 */
+	public function setActiveIcon( $activeIcon ) {
+		$this->activeIcon = $activeIcon;
 	}
 
 }
