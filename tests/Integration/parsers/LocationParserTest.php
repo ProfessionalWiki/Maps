@@ -64,8 +64,7 @@ class LocationParserTest extends \PHPUnit_Framework_TestCase {
 
 	public function linkProvider() {
 		return [
-			[ 'https://semantic-mediawiki.org' ],
-			[ 'http://www.semantic-mediawiki.org' ],
+			[ 'https://www.semantic-mediawiki.org' ],
 			[ 'irc://freenode.net' ],
 		];
 	}
