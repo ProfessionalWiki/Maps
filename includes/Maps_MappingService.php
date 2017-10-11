@@ -90,8 +90,7 @@ abstract class MapsMappingService {
 			}
 
 			$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
-		}
-		elseif ( $parserOrOut instanceof OutputPage ) {
+		} elseif ( $parserOrOut instanceof OutputPage ) {
 			if ( $dependencies !== false ) {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
 			}

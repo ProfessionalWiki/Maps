@@ -259,19 +259,16 @@ class SMQueryHandler {
 			while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
 				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
 					list( $title, $text ) = $this->handleResultSubject( $dataValue );
-				}
-				else {
+				} else {
 					if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
 						$title = $dataValue->getLongText( $this->outputMode, null );
 						$text = $dataValue->getLongText( $this->outputMode, smwfGetLinker() );
-					}
-					else {
+					} else {
 						if ( $dataValue->getTypeID() == '_gpo' ) {
 							$dataItem = $dataValue->getDataItem();
 							$polyHandler = new PolygonHandler ( $dataItem->getString() );
 							$this->geoShapes[$polyHandler->getGeoType()][] = $polyHandler->shapeFromText();
-						}
-						else {
+						} else {
 							if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
 								foreach ( $dataValue->getDataItems() as $dataItem ) {
 									if ( $dataItem instanceof \SMWDIGeoCoord ) {
@@ -282,12 +279,10 @@ class SMQueryHandler {
 										$locations[] = $location;
 									}
 								}
-							}
-							else {
+							} else {
 								if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide() ) {
 									$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
-								}
-								else {
+								} else {
 									if ( $printRequest->getMode(
 										) == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID(
 										) == '_geo' || $dataValue->getTypeID() == '_geo' ) {
@@ -341,20 +336,17 @@ class SMQueryHandler {
 		if ( $this->showSubject ) {
 			if ( !$this->showArticleLink() ) {
 				$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
-			}
-			else {
+			} else {
 				if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
 					$text = Html::element(
 						'a',
 						[ 'href' => $object->getTitle()->getFullUrl() ],
 						$this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText()
 					);
-				}
-				else {
+				} else {
 					if ( $this->hideNamespace ) {
 						$text = $object->getShortHTMLText( smwfGetLinker() );
-					}
-					else {
+					} else {
 						$text = $object->getLongHTMLText( smwfGetLinker() );
 					}
 				}
@@ -416,16 +408,13 @@ class SMQueryHandler {
 					[ 'href' => $t->getFullUrl() ],
 					$printRequest->getHTMLText( null )
 				);
-			}
-			else {
+			} else {
 				$propertyName = $titleText;
 			}
-		}
-		else {
+		} else {
 			if ( $this->isHeadersShow() ) {
 				$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
-			}
-			else {
+			} else {
 				if ( $this->isHeadersPlain() ) {
 					$propertyName = $printRequest->getText( null );
 				}
@@ -446,12 +435,10 @@ class SMQueryHandler {
 					[ 'href' => $t->getFullUrl() ],
 					$object->getLongText( $this->outputMode, null )
 				);
-			}
-			else {
+			} else {
 				$propertyValue = $object->getLongText( $this->outputMode, null );
 			}
-		}
-		else {
+		} else {
 			$propertyValue = $object->getLongText( $this->outputMode, smwfGetLinker() );
 		}
 

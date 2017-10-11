@@ -96,8 +96,7 @@ final class SemanticMapsHooks {
 
 					if ( $typeId == '_geo' ) {
 						$hasCoords = true;
-					}
-					else {
+					} else {
 						$allValid = false;
 						break;
 					}

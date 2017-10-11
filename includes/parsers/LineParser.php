@@ -73,8 +73,7 @@ class LineParser implements ValueParser {
 
 			if ( $coordinate === null ) {
 				// TODO: good if the user knows something has been omitted
-			}
-			else {
+			} else {
 				$coordinates[] = $coordinate;
 			}
 		}
@@ -101,8 +100,7 @@ class LineParser implements ValueParser {
 		$linkOrTitle = array_shift( $params );
 		if ( $link = $this->isLinkParameter( $linkOrTitle ) ) {
 			$this->setLinkFromParameter( $line, $link );
-		}
-		else {
+		} else {
 			//create bubble data
 			$this->setBubbleDataFromParameter( $line, $params, $linkOrTitle );
 		}
@@ -142,8 +140,7 @@ class LineParser implements ValueParser {
 	protected function setLinkFromParameter( Line &$line, $link ) {
 		if ( filter_var( $link, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED ) ) {
 			$line->setLink( $link );
-		}
-		else {
+		} else {
 			$title = \Title::newFromText( $link );
 			$line->setLink( $title->getFullURL() );
 		}

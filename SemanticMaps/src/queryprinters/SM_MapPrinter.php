@@ -120,8 +120,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			}
 
 			return $this->getMapHTML( $params, $mapName );
-		}
-		else {
+		} else {
 			return $params['default'];
 		}
 	}

@@ -73,8 +73,7 @@ class LocationParser implements ValueParser {
 
 		if ( $metaData !== [] ) {
 			$this->setTitleOrLink( $location, array_shift( $metaData ) );
-		}
-		else {
+		} else {
 			if ( $this->useAddressAsTitle && $this->isAddress( $coordinatesOrAddress ) ) {
 				$location->setTitle( $coordinatesOrAddress );
 			}
@@ -102,8 +101,7 @@ class LocationParser implements ValueParser {
 	private function setTitleOrLink( Location $location, $titleOrLink ) {
 		if ( $this->isLink( $titleOrLink ) ) {
 			$this->setLink( $location, $titleOrLink );
-		}
-		else {
+		} else {
 			$location->setTitle( $titleOrLink );
 		}
 	}

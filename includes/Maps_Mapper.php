@@ -32,14 +32,11 @@ final class MapsMapper {
 	public static function encodeJsVar( $value ) {
 		if ( is_bool( $value ) ) {
 			$s = $value ? 'true' : 'false';
-		}
-		elseif ( is_null( $value ) ) {
+		} elseif ( is_null( $value ) ) {
 			$s = 'null';
-		}
-		elseif ( is_int( $value ) || is_float( $value ) ) {
+		} elseif ( is_int( $value ) || is_float( $value ) ) {
 			$s = $value;
-		}
-		elseif ( is_array( $value ) && // Make sure it's not associative.
+		} elseif ( is_array( $value ) && // Make sure it's not associative.
 			array_keys( $value ) === range( 0, count( $value ) - 1 ) ||
 			count( $value ) == 0
 		) {
@@ -51,8 +48,7 @@ final class MapsMapper {
 				$s .= self::encodeJsVar( $elt );
 			}
 			$s .= ']';
-		}
-		elseif ( is_object( $value ) || is_array( $value ) ) {
+		} elseif ( is_object( $value ) || is_array( $value ) ) {
 			// Objects and associative arrays
 			$s = '{';
 			foreach ( (array)$value as $name => $elt ) {
@@ -63,8 +59,7 @@ final class MapsMapper {
 					self::encodeJsVar( $elt );
 			}
 			$s .= '}';
-		}
-		else {
+		} else {
 			$s = '"' . Xml::encodeJsVar( $value ) . '"';
 		}
 		return $s;

@@ -218,21 +218,18 @@ class MapsDisplayMapRenderer {
 					if ( !in_array( $layerName, $layerNames ) ) {
 						if ( is_array( $egMapsOLAvailableLayers[$layerName] ) ) {
 							$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName][0];
-						}
-						else {
+						} else {
 							$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName];
 						}
 						$layerNames[] = $layerName;
 					}
 				}
-			}
-			// Single layers. Add them if not present yet:
+			} // Single layers. Add them if not present yet:
 			elseif ( array_key_exists( $lcLayerOrGroup, $egMapsOLAvailableLayers ) ) {
 				if ( !in_array( $lcLayerOrGroup, $layerNames ) ) {
 					if ( is_array( $egMapsOLAvailableLayers[$lcLayerOrGroup] ) ) {
 						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$lcLayerOrGroup][0];
-					}
-					else {
+					} else {
 						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$lcLayerOrGroup];
 					}
 
@@ -284,8 +281,7 @@ class MapsDisplayMapRenderer {
 				$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
 					$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
 			}
-		}
-		else {
+		} else {
 			if ( $service === 'openlayers' ) {
 				$layerNames = $params['layers'];
 				foreach ( $layerNames as $layerName ) {

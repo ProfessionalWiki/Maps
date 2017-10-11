@@ -25,8 +25,7 @@ class SMKMLPrinter extends FileExportPrinter {
 	public function getResultText( SMWQueryResult $res, $outputmode ) {
 		if ( $outputmode == SMW_OUTPUT_FILE ) {
 			return $this->getKML( $res, $outputmode );
-		}
-		else {
+		} else {
 			return $this->getKMLLink( $res, $outputmode );
 		}
 	}
@@ -84,15 +83,13 @@ class SMKMLPrinter extends FileExportPrinter {
 		// result set, fix by setting it to 0 if now explicitly set)
 		if ( array_key_exists( 'offset', $this->params ) ) {
 			$link->setParameter( $this->params['offset'], 'offset' );
-		}
-		else {
+		} else {
 			$link->setParameter( 0, 'offset' );
 		}
 
 		if ( array_key_exists( 'limit', $this->params ) ) {
 			$link->setParameter( $this->params['limit'], 'limit' );
-		}
-		else { // Use a reasonable default limit.
+		} else { // Use a reasonable default limit.
 			$link->setParameter( 20, 'limit' );
 		}
 

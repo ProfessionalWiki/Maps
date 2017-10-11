@@ -52,7 +52,7 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 		$phpFails = [ $this, 'newInstance' ];
 
 		return array_map(
-			function( array $args ) use ( $phpFails ) {
+			function ( array $args ) use ( $phpFails ) {
 				return [ call_user_func_array( $phpFails, $args ), $args ];
 			},
 			$this->validConstructorProvider()

@@ -66,8 +66,7 @@ final class MapsMappingServices {
 		if ( array_key_exists( $serviceIdentifier, self::$registeredServices ) ) {
 			$service = self::getServiceInstance( $serviceIdentifier );
 			$service->addFeature( $featureName, $featureClassName );
-		}
-		else {
+		} else {
 			// If the feature is not registered, register a warning. This is not an error though!
 			wfWarn(
 				"Tried to register feature '$featureName' with class '$featureClassName' to non-registered service '$serviceIdentifier'."
@@ -93,14 +92,12 @@ final class MapsMappingServices {
 
 				if ( $service instanceof MapsMappingService ) {
 					self::$services[$serviceIdentifier] = $service;
-				}
-				else {
+				} else {
 					throw new MWException(
 						'The service object linked to service identifier ' . $serviceIdentifier . ' does not implement iMappingService.'
 					);
 				}
-			}
-			else {
+			} else {
 				throw new MWException(
 					'There is no service object linked to service identifier ' . $serviceIdentifier . '.'
 				);
@@ -159,8 +156,7 @@ final class MapsMappingServices {
 		if ( $shouldChange ) {
 			if ( array_key_exists( $feature, $egMapsDefaultServices ) ) {
 				$service = $egMapsDefaultServices[$feature];
-			}
-			else {
+			} else {
 				$service = $egMapsDefaultService;
 			}
 		}

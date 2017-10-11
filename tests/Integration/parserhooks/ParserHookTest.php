@@ -48,8 +48,7 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 
 		if ( is_string( $renderResult ) ) {
 			$this->assertTrue( true );
-		}
-		else {
+		} else {
 			$this->assertInternalType( 'array', $renderResult );
 			$this->assertInternalType( 'string', $renderResult[0] );
 		}
@@ -123,7 +122,7 @@ abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
 
 	protected function arrayWrap( array $elements ) {
 		return array_map(
-			function( $element ) {
+			function ( $element ) {
 				return [ $element ];
 			},
 			$elements

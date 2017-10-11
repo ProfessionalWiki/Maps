@@ -76,8 +76,7 @@ class CoordinateValue extends SMWDataValue {
 
 		if ( $value === '' ) {
 			$this->addError( wfMessage( 'smw_novalues' )->text() );
-		}
-		else {
+		} else {
 			SMWDataValue::prepareValue( $value, $comparator );
 
 			list( $coordinates, $distance ) = $this->findValueParts( $value );
@@ -154,6 +153,33 @@ class CoordinateValue extends SMWDataValue {
 	}
 
 	/**
+	 * @param SMWDIGeoCoord $dataItem
+	 * @param string|null $format
+	 *
+	 * @return string|null
+	 */
+	private function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
+		global $smgQPCoodFormat;
+
+		$options = new \ValueFormatters\FormatterOptions(
+			[
+				GeoCoordinateFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
+			]
+		);
+
+		// TODO: $smgQPCoodDirectional
+
+		$coordinateFormatter = new GeoCoordinateFormatter( $options );
+
+		$value = new LatLongValue(
+			$dataItem->getLatitude(),
+			$dataItem->getLongitude()
+		);
+
+		return $coordinateFormatter->format( $value );
+	}
+
+	/**
 	 * @see SMWDataValue::getLongHTMLText
 	 */
 	public function getLongHTMLText( $linker = null ) {
@@ -186,8 +212,7 @@ class CoordinateValue extends SMWDataValue {
 			return '<span class="smwttinline">' . htmlspecialchars( $text ) . '<span class="smwttcontent">' .
 				implode( '<br />', $lines ) .
 				'</span></span>';
-		}
-		else {
+		} else {
 			return $this->getErrorText();
 		}
 	}
@@ -218,33 +243,6 @@ class CoordinateValue extends SMWDataValue {
 		}
 
 		return false;
-	}
-
-	/**
-	 * @param SMWDIGeoCoord $dataItem
-	 * @param string|null $format
-	 *
-	 * @return string|null
-	 */
-	private function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
-		global $smgQPCoodFormat;
-
-		$options = new \ValueFormatters\FormatterOptions(
-			[
-				GeoCoordinateFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
-			]
-		);
-
-		// TODO: $smgQPCoodDirectional
-
-		$coordinateFormatter = new GeoCoordinateFormatter( $options );
-
-		$value = new LatLongValue(
-			$dataItem->getLatitude(),
-			$dataItem->getLongitude()
-		);
-
-		return $coordinateFormatter->format( $value );
 	}
 
 	/**

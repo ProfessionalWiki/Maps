@@ -116,8 +116,7 @@ class MapsMapsDoc extends ParserHook {
 			) . "''" : $parameter->getDefault();
 		if ( is_array( $default ) ) {
 			$default = implode( ', ', $default );
-		}
-		elseif ( is_bool( $default ) ) {
+		} elseif ( is_bool( $default ) ) {
 			$default = $default ? 'yes' : 'no';
 		}
 

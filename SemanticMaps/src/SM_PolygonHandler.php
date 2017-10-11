@@ -95,8 +95,7 @@ class PolygonHandler {
 			if ( !$validatorClass->doValidation( $parts[1] ) ) {
 				$this->errors[] = wfMessage( 'semanticmaps-shapes-improperformat', $this->text )->escaped();
 			}
-		}
-		else {
+		} else {
 			$this->errors[] = wfMessage( 'semanticmaps-shapes-missingshape', $parts[0] )->escaped();
 		}
 	}
@@ -113,8 +112,7 @@ class PolygonHandler {
 			$geoClass = new $this->geoClasses[$shape[0]]( explode( ':', $shape[1] ) );
 
 			return $geoClass;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}

@@ -18,7 +18,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 call_user_func(
-	function() {
+	function () {
 		global $wgResourceModules;
 
 		$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
