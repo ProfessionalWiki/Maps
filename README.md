@@ -31,13 +31,13 @@ Maps has been maintained since 2009 and is installed on over 1000 public wikis.
 
 ### For wiki users
 
-* [Usage instructions](https://www.semantic-mediawiki.org/wiki/Maps)
+* [Usage instructions](https://www.semantic-mediawiki.org/wiki/Extension:Maps)
 * [Usage examples](https://www.semantic-mediawiki.org/wiki/Category:Maps_examples)
 * [Semantic usage examples](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples)
 
 ### Getting support
 
-* Ask a question on [the mailing list](https://semantic-mediawiki.org/wiki/Mailing_list)
+* Ask a question on [the mailing list](https://www.semantic-mediawiki.org/wiki/Mailing_list)
 * Ask a question on the #mediawiki IRC channel on Freenode.
 * File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues) (technical issues only)
 

@@ -25,7 +25,7 @@
 	"maps-load-failed": "This is an error message.",
 	"maps-markers": "{{Identical|Marker}}",
 	"maps-copycoords-prompt": "This is the text displayed in JavaScript prompt to indicate first press ctrl+c to copy text, and press enter to close prompt.",
-	"maps-searchmarkers-text": "{{doc-important|Translate \"Filter\" as being a word.}}\nThis message is located within an input box to assist users with the input. This fuctionality allows to filter the markers based on the input one provides. See the [https://semantic-mediawiki.org/wiki/Maps_examples/OpenLayers_searchmarkers live example].",
+	"maps-searchmarkers-text": "{{doc-important|Translate \"Filter\" as being a word.}}\nThis message is located within an input box to assist users with the input. This fuctionality allows to filter the markers based on the input one provides. See the [https://www.semantic-mediawiki.org/wiki/Maps_examples/OpenLayers_searchmarkers live example].",
 	"maps-others": "{{Identical|Other}}",
 	"maps-kml-parsing-failed": "This is an error message.",
 	"maps-ns-layer": "This is the name of the \"Layer\" namespace. The term \"Layer\" should be identical to the one used for the corresponding namespace. See {{msg-mw|Maps-ns-layer-talk}}\n\n{{Identical|Layer}}",
