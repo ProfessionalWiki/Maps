@@ -71,7 +71,7 @@ final class SemanticMapsHooks {
 	 * @since 1.0
 	 *
 	 * @param $format Mixed: The format (string), or false when not set yet
-	 * @param array $printRequests The print requests made
+	 * @param SMWPrintRequest[] $printRequests The print requests made
 	 * @param array $params The parameters for the query printer
 	 *
 	 * @return boolean
@@ -86,8 +86,7 @@ final class SemanticMapsHooks {
 				$hasCoords = false;
 
 				// Loop through the print requests to determine their types.
-				foreach ( $printRequests as /* SMWPrintRequest */
-						  $printRequest ) {
+				foreach ( $printRequests as $printRequest ) {
 					// Skip the first request, as it's the object.
 					if ( $printRequest->getMode() == SMWPrintRequest::PRINT_THIS ) {
 						continue;
