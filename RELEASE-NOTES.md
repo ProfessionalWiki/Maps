@@ -3,12 +3,12 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 5.0.0
 
-Under development
+Released on October 16th, 2017.
 
 * Added persistent geocoding cache (by hidrarga)
-* Image overlays used in `#display_map` now support geocoding for their locations
 * Fixed rendering of wikitext in popups of the map result format when using the `template` parameter (by hidrarga)
 * Fixed random loading failure of Leaflet maps (by Peter Grassberger)
+* Image overlays used in `#display_map` now support geocoding for their locations
 
 ### Breaking changes
 

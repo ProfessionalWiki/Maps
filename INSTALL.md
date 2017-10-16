@@ -106,17 +106,17 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	</tr>
 	<tr>
 		<th>Maps 5.0.x</th>
-		<td>5.6 - 7.2+</td>
-		<td>1.27 - 1.30+</td>
-		<td>2.1 - 3.0+</td>
-		<td>In development</td>
+		<td>5.6 - 7.1</td>
+		<td>1.27 - 1.30</td>
+		<td>2.1 - 2.5</td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
 		<th>Maps 4.4.x</th>
 		<td>5.6 - 7.1</td>
 		<td>1.27 - 1.29</td>
 		<td>2.1 - 2.5</td>
-		<td><strong>Stable release</strong></td>
+		<td>Obsolete release</td>
 	</tr>
 	<tr>
 		<th>Maps 4.3.x</th>
