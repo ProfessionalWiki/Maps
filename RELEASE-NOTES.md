@@ -1,6 +1,12 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.0.2
+
+Released on October 19th, 2017.
+
+* Custom marker icons on Leaflet maps are now scaled correctly (by hidrarga)
+
 ## Maps 5.0.1
 
 Released on October 18th, 2017.

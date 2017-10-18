@@ -21,7 +21,7 @@ class MapsFileFetcher implements FileFetcher {
 	 * @return string
 	 * @throws FileFetchingException
 	 */
-	public function fetchFile( string $fileUrl ): string {
+	public function fetchFile( $fileUrl ) {
 		$result = \Http::get( $fileUrl );
 
 		if ( !is_string( $result ) ) {
