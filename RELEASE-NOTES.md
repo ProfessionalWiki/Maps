@@ -8,6 +8,7 @@ Released on October 16th, 2017.
 * Added persistent geocoding cache (by hidrarga)
 * Fixed rendering of wikitext in popups of the map result format when using the `template` parameter (by hidrarga)
 * Fixed random loading failure of Leaflet maps (by Peter Grassberger)
+* Geocoders now respect MediaWiki's network settings such as `wgHTTPProxy`
 * Image overlays used in `#display_map` now support geocoding for their locations
 
 ### Breaking changes
