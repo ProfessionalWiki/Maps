@@ -28,23 +28,32 @@
 		this.createMarker = function (properties) {
 			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
-			if (!properties.hasOwnProperty('icon') || properties.icon === '') {
-				var icon = new L.Icon.Default();
-			} else {
-				var iconOptions = L.Icon.Default.prototype.options;
-				iconOptions.iconUrl = properties.icon;
-
-				var icon = new L.Icon(iconOptions);
-			}
-
 			var markerOptions = {
-				title:properties.title,
-				icon:icon
+				title:properties.title
 			};
 
 			var marker = L.marker( [properties.lat, properties.lon], markerOptions );
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
+			
+			if (properties.hasOwnProperty('icon') && properties.icon !== '') {
+				marker.setOpacity(0);
+				
+				var img = new Image();
+				img.onload = function() {
+					var icon = new L.Icon({ 
+						iconUrl: properties.icon,
+						iconSize: [ img.width, img.height ],
+						iconAnchor: [ img.width / 2, img.height ],
+						popupAnchor: [ -img.width % 2, -img.height*2/3 ]
+					});
+					
+					marker.setIcon(icon);
+					marker.setOpacity(1);
+				};
+				img.src = properties.icon;
+			}
 
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
+			
 			return marker;
 		};
 
