@@ -31,11 +31,11 @@
 		"source": "https://github.com/JeroenDeDauw/Maps"
 	},
 	"require": {
-		"php": ">=7.0",
+		"php": ">=5.6",
 		"composer/installers": "^1.0.1",
 		"mediawiki/validator": "~2.2",
 		"data-values/geo": "~2.0",
-		"jeroen/file-fetcher": "~4.0",
+		"jeroen/file-fetcher": "~3.1",
 		"jeroen/simple-cache": "~2.0"
 	},
 	"require-dev": {
