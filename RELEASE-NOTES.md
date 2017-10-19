@@ -11,7 +11,7 @@ Released on October 19th, 2017.
 
 Released on October 18th, 2017.
 
-Special PHP 7.x optimized release. Requires PHP 7.x. Maps 5.1 will support PHP 5.6.
+Special one-off PHP 7.x optimized release. (requires PHP 7.x)
 
 ## Maps 5.0.0
 
