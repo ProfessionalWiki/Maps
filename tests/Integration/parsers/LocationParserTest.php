@@ -3,8 +3,8 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
+use Jeroen\SimpleGeocoder\Geocoders\StubGeocoder;
 use Maps\Elements\Location;
-use Maps\Geocoders\StubGeocoder;
 use Maps\LocationParser;
 
 /**

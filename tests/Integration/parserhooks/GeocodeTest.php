@@ -3,7 +3,7 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
-use Maps\Geocoders\InMemoryGeocoder;
+use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;
 
 /**
  * @covers MapsGeocode

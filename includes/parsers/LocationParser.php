@@ -3,9 +3,8 @@
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
-use DataValues\Geo\Values\LatLongValue;
+use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Location;
-use Maps\Geocoders\Geocoder;
 use Title;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
@@ -34,13 +33,7 @@ class LocationParser implements ValueParser {
 		}
 	}
 
-	/**
-	 * @param Geocoder $geocoder
-	 * @param bool $useAddressAsTitle
-	 *
-	 * @return self
-	 */
-	public static function newInstance( Geocoder $geocoder, $useAddressAsTitle = false ) {
+	public static function newInstance( Geocoder $geocoder, bool $useAddressAsTitle = false ): self {
 		$instance = new self( false );
 		$instance->geocoder = $geocoder;
 		$instance->useAddressAsTitle = $useAddressAsTitle;

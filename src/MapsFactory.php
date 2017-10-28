@@ -3,12 +3,13 @@
 namespace Maps;
 
 use FileFetcher\FileFetcher;
+use Jeroen\SimpleGeocoder\Geocoder;
+use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
+use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GeoNamesGeocoder;
+use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
+use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
+use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\Geocoders\CachingGeocoder;
-use Maps\Geocoders\CoordinateFriendlyGeocoder;
-use Maps\Geocoders\Geocoder;
-use Maps\Geocoders\GoogleGeocoder;
-use Maps\Geocoders\NominatimGeocoder;
-use Maps\Geocoders\NullGeocoder;
 
 /**
  * @licence GNU GPL v2+
@@ -26,17 +27,11 @@ class MapsFactory {
 		return new self( $GLOBALS );
 	}
 
-	/**
-	 * @return LocationParser
-	 */
-	public function newLocationParser() {
+	public function newLocationParser(): LocationParser {
 		return LocationParser::newInstance( $this->newGeocoder() );
 	}
 
-	/**
-	 * @return Geocoder
-	 */
-	public function newGeocoder() {
+	public function newGeocoder(): Geocoder {
 		$geocoder = new CoordinateFriendlyGeocoder( $this->newCoreGeocoder() );
 
 		if ( $this->settings['egMapsEnableGeoCache'] ) {
@@ -49,17 +44,14 @@ class MapsFactory {
 		return $geocoder;
 	}
 
-	/**
-	 * @return Geocoder
-	 */
-	private function newCoreGeocoder() {
+	private function newCoreGeocoder(): Geocoder {
 		switch ( $this->settings['egMapsDefaultGeoService'] ) {
 			case 'geonames':
 				if ( $this->settings['egMapsGeoNamesUser'] === '' ) {
 					return $this->newGoogleGeocoder();
 				}
 
-				return new Geocoders\GeoNamesGeocoder(
+				return new GeoNamesGeocoder(
 					$this->newFileFetcher(),
 					$this->settings['egMapsGeoNamesUser']
 				);
@@ -74,7 +66,7 @@ class MapsFactory {
 		}
 	}
 
-	private function newGoogleGeocoder() {
+	private function newGoogleGeocoder(): Geocoder {
 		return new GoogleGeocoder(
 			$this->newFileFetcher(),
 			$this->settings['egMapsGMaps3ApiKey'],
@@ -82,17 +74,11 @@ class MapsFactory {
 		);
 	}
 
-	/**
-	 * @return FileFetcher
-	 */
-	private function newFileFetcher() {
+	private function newFileFetcher(): FileFetcher {
 		return new MapsFileFetcher();
 	}
 
-	/**
-	 * @return \BagOStuff
-	 */
-	private function getMediaWikiCache() {
+	private function getMediaWikiCache(): \BagOStuff {
 		return wfGetCache( CACHE_ANYTHING );
 	}
 

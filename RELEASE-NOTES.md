@@ -1,6 +1,12 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.1.0
+
+Under development
+
+* Dropped support for PHP older than 7.0
+
 ## Maps 5.0.2
 
 Released on October 19th, 2017.
