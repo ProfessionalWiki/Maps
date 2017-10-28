@@ -11,17 +11,7 @@ use FileFetcher\FileFetchingException;
  */
 class MapsFileFetcher implements FileFetcher {
 
-	/**
-	 * Returns the contents of the specified file.
-	 *
-	 * @since 3.0
-	 *
-	 * @param string $fileUrl
-	 *
-	 * @return string
-	 * @throws FileFetchingException
-	 */
-	public function fetchFile( $fileUrl ) {
+	public function fetchFile( string $fileUrl ): string {
 		$result = \Http::get( $fileUrl );
 
 		if ( !is_string( $result ) ) {

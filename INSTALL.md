@@ -91,18 +91,11 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status</th>
 	</tr>
 	<tr>
-		<th>Maps TBD</th>
+		<th>Maps 5.1.x</th>
 		<td><strong>7.0</strong> - 7.2+</td>
-		<td>TBD</td>
-		<td>TBD</td>
-		<td>Planned Q1 2018</td>
-	</tr>
-	<tr>
-		<th>...</th>
-		<td>...</td>
-		<td>...</td>
-		<td>...</td>
-		<td>...</td>
+		<td>1.27 - 1.30</td>
+		<td>2.1 - 2.5</td>
+		<td>Planned Q4 2017</td>
 	</tr>
 	<tr>
 		<th>Maps 5.0.x</th>

@@ -3,10 +3,9 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
+use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;
 use Maps\Elements\Line;
-use Maps\Geocoders\InMemoryGeocoder;
 use Maps\LineParser;
-use ValueParsers\ValueParser;
 
 /**
  * @covers \Maps\LineParser

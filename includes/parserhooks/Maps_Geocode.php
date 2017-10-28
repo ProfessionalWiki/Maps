@@ -1,6 +1,7 @@
 <?php
 
 use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use Jeroen\SimpleGeocoder\Geocoder;
 use ValueFormatters\FormatterOptions;
 
 /**
@@ -16,8 +17,8 @@ class MapsGeocode extends ParserHook {
 
 	private $geocoder;
 
-	public function __construct() {
-		$this->geocoder = \Maps\MapsFactory::newDefault()->newGeocoder();
+	public function __construct( Geocoder $geocoder = null ) {
+		$this->geocoder = $geocoder ?? \Maps\MapsFactory::newDefault()->newGeocoder();
 		parent::__construct();
 	}
 

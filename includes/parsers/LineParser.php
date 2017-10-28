@@ -3,8 +3,8 @@
 namespace Maps;
 
 use DataValues\Geo\Values\LatLongValue;
+use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Line;
-use Maps\Geocoders\Geocoder;
 use ValueParsers\StringValueParser;
 use ValueParsers\ValueParser;
 

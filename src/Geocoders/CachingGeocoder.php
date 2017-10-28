@@ -4,6 +4,7 @@ namespace Maps\Geocoders;
 
 use BagOStuff;
 use DataValues\Geo\Values\LatLongValue;
+use Jeroen\SimpleGeocoder\Geocoder;
 
 /**
  * @since 5.0
@@ -22,11 +23,9 @@ class CachingGeocoder implements Geocoder {
 	}
 
 	/**
-	 * @param string $address
-	 *
 	 * @return LatLongValue|null
 	 */
-	public function geocode( $address ) {
+	public function geocode( string $address ) {
 		$key = $this->cache->makeKey( __CLASS__, $address );
 
 		$coordinates = $this->cache->get( $key );
