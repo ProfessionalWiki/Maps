@@ -17,12 +17,19 @@ In short:
 
 * Edit `composer.local.json` (preferred) or `composer.json` by adding `mediawiki/maps` to the `require` section
 * Choose the version constraint. Typically you want to pick `~x.y`, where `x.y` is the latest minor version of Maps receiving only backwards-compatible code changes
-* Run `composer update`
+* Run `composer update` or `php composer.phar update` depending on how you installed Composer.
 
 For upgrading, simply edit the `composer.local.json` or `composer.json` and update the version constraint. Then run `composer update`.
 
-Example of a `require` section with both Maps and Semantic MediaWiki:
+Example for a `require` section just with Maps:
 
+```json
+    "require": {
+        "mediawiki/maps": "~4.3"
+    }
+```
+
+If you would also like to make use of the semantic functionality Maps provides you also need to install Semantic MediaWiki. In this case the example `require` section with both Maps and Semantic MediaWiki looks like this:
 
 ```json
     "require": {
@@ -84,18 +91,32 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status</th>
 	</tr>
 	<tr>
+		<th>Maps 5.1.x</th>
+		<td><strong>7.0</strong> - 7.2+</td>
+		<td>1.27 - 1.30</td>
+		<td>2.1 - 2.5</td>
+		<td>Planned Q4 2017</td>
+	</tr>
+	<tr>
+		<th>Maps 5.0.x</th>
+		<td>5.6 - 7.1</td>
+		<td>1.27 - 1.30</td>
+		<td>2.1 - 2.5</td>
+		<td><strong>Stable release</strong></td>
+	</tr>
+	<tr>
 		<th>Maps 4.4.x</th>
-		<td>5.6 - 7.1+</td>
-		<td>1.27 - 1.29+</td>
-		<td>TBD - 2.5+</td>
-		<td>In development</td>
+		<td>5.6 - 7.1</td>
+		<td>1.27 - 1.29</td>
+		<td>2.1 - 2.5</td>
+		<td>Obsolete release</td>
 	</tr>
 	<tr>
 		<th>Maps 4.3.x</th>
 		<td><strong>5.6</strong> - 7.1</td>
 		<td><strong>1.27</strong> - 1.29</td>
 		<td>2.1 - 2.5</td>
-		<td>Stable release</td>
+		<td>Obsolete release</td>
 	</tr>
 	<tr>
 		<th>Maps 4.2.x</th>

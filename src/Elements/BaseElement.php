@@ -34,29 +34,11 @@ abstract class BaseElement implements Element {
 
 	/**
 	 * @since 3.0
-	 * 
-	 * @return string
-	 */
-	public function getTitle() {
-		return $this->options->getOption( 'title' );
-	}
-
-	/**
-	 * @since 3.0
 	 *
 	 * @param string $title
 	 */
 	public function setTitle( $title ) {
 		$this->options->setOption( 'title', $title );
-	}
-
-	/**
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	public function getText() {
-		return $this->options->getOption( 'text' );
 	}
 
 	/**
@@ -71,35 +53,10 @@ abstract class BaseElement implements Element {
 	/**
 	 * @since 3.0
 	 *
-	 * @return string
-	 */
-	public function getLink() {
-		return $this->options->getOption( 'link' );
-	}
-
-	/**
-	 * @since 3.0
-	 *
 	 * @param string $link
 	 */
 	public function setLink( $link ) {
 		$this->options->setOption( 'link', $link );
-	}
-
-	/**
-	 * @deprecated
-	 * @param string $defText
-	 * @param string $defTitle
-	 * @return array
-	 */
-	public function getJSONObject( $defText = '' , $defTitle = '' ) {
-		$array = [];
-
-		$array['text'] = $this->options->hasOption( 'text' ) ? $this->getText() : $defText;
-		$array['title'] = $this->options->hasOption( 'title' ) ? $this->getTitle() : $defTitle;
-		$array['link'] = $this->options->hasOption( 'link' ) ? $this->getLink() : '';
-
-		return $array;
 	}
 
 	/**
@@ -111,6 +68,51 @@ abstract class BaseElement implements Element {
 	 */
 	public function getArrayValue() {
 		return $this->getJSONObject();
+	}
+
+	/**
+	 * @deprecated
+	 *
+	 * @param string $defText
+	 * @param string $defTitle
+	 *
+	 * @return array
+	 */
+	public function getJSONObject( $defText = '', $defTitle = '' ) {
+		$array = [];
+
+		$array['text'] = $this->options->hasOption( 'text' ) ? $this->getText() : $defText;
+		$array['title'] = $this->options->hasOption( 'title' ) ? $this->getTitle() : $defTitle;
+		$array['link'] = $this->options->hasOption( 'link' ) ? $this->getLink() : '';
+
+		return $array;
+	}
+
+	/**
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
+	public function getText() {
+		return $this->options->getOption( 'text' );
+	}
+
+	/**
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->options->getOption( 'title' );
+	}
+
+	/**
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
+	public function getLink() {
+		return $this->options->getOption( 'link' );
 	}
 
 	/**

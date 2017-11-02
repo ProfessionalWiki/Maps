@@ -1,11 +1,10 @@
 <?php
 
-use Maps\Elements\Location;
 use Maps\Element;
 use Maps\Elements\BaseElement;
+use Maps\Elements\Location;
 use Maps\LocationParser;
 use ParamProcessor\ParamDefinition;
-use ValueParsers\ParserOptions as ValueParserOptions;
 
 /**
  * Query printer for maps. Is invoked via SMMapper.
@@ -25,6 +24,24 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * @var LocationParser
 	 */
 	private $locationParser;
+	/**
+	 * @var MapsMappingService
+	 */
+	private $service;
+	/**
+	 * @var string|boolean
+	 */
+	private $fatalErrorMsg = false;
+
+	/**
+	 * @param string $format
+	 * @param bool $inline
+	 */
+	public function __construct( $format, $inline = true ) {
+		$this->service = self::$services[$format];
+
+		parent::__construct( $format, $inline );
+	}
 
 	/**
 	 * @since 3.4
@@ -40,106 +57,13 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	public static function registerDefaultService( $serviceName ) {
 		self::$services['map'] = self::$services[$serviceName];
 	}
-	
-	/**
-	 * @var MapsMappingService
-	 */
-	private $service;
-	
-	/**
-	 * @var string|boolean
-	 */
-	private $fatalErrorMsg = false;
-	
-	/**
-	 * @param string $format
-	 * @param bool $inline
-	 */
-	public function __construct( $format, $inline = true ) {
-		$this->service = self::$services[$format];
-		
-		parent::__construct( $format, $inline );
-	}
 
-	/**
-	 * Returns an array containing the parameter info.
-	 * 
-	 * @return array
-	 */
-	private function getParameterInfo() {
-		global $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
-		
-		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
-
-		$this->service->addParameterInfo( $params );
-
-		$params['staticlocations'] = [
-			'type' => 'mapslocation', // FIXME: geoservice is not used
-			'aliases' => [ 'locations', 'points' ],
-			'default' => [],
-			'islist' => true,
-			'delimiter' => ';',
-			'message' => 'semanticmaps-par-staticlocations',
-		];
-
-		$params['showtitle'] = [
-			'type' => 'boolean',
-			'aliases' => 'show title',
-			'default' => $smgQPShowTitle,
-		];
-
-		$params['hidenamespace'] = [
-			'type' => 'boolean',
-			'aliases' => 'hide namespace',
-			'default' => $smgQPHideNamespace,
-		];
-
-		$params['template'] = [
-			'default' => $smgQPTemplate,
-		];
-
-		$params['userparam'] = [
-			'default' => '',
-		];
-
-		$params['activeicon'] =  [
-			'type' => 'string',
-			'default' => '',
-		];
-
-		$params['pagelabel'] =  [
-			'type' => 'boolean',
-			'default' => false,
-		];
-
-		$params['ajaxcoordproperty'] = [
-			'default' => '',
-		];
-
-		$params['ajaxquery'] = [
-			'default' => '',
-			'type' => 'string'
-		];
-
-		// Messages:
-		// semanticmaps-par-staticlocations, semanticmaps-par-showtitle, semanticmaps-par-hidenamespace,
-		// semanticmaps-par-template, semanticmaps-par-userparam, semanticmaps-par-activeicon,
-		// semanticmaps-par-pagelabel, semanticmaps-par-ajaxcoordproperty semanticmaps-par-ajaxquery
-		foreach ( $params as $name => &$data ) {
-			if ( is_array( $data ) && !array_key_exists( 'message', $data ) ) {
-				$data['message'] = 'semanticmaps-par-' . $name;
-			}
-		}
-
-		return $params;
-	}
-	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
 	 * @param SMWQueryResult $res
 	 * @param $outputmode
-	 * 
+	 *
 	 * @return string
 	 */
 	public final function getResultText( SMWQueryResult $res, $outputmode ) {
@@ -151,11 +75,11 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$params = $this->params;
 
-		$this->initializeLocationParser( $params );
+		$this->initializeLocationParser();
 
 		$queryHandler = new SMQueryHandler( $res, $outputmode );
 		$queryHandler->setLinkStyle( $params['link'] );
-		$queryHandler->setHeaderStyle($params['headers']);
+		$queryHandler->setHeaderStyle( $params['headers'] );
 		$queryHandler->setShowSubject( $params['showtitle'] );
 		$queryHandler->setTemplate( $params['template'] );
 		$queryHandler->setUserParam( $params['userparam'] );
@@ -196,8 +120,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 			}
 
 			return $this->getMapHTML( $params, $mapName );
-		}
-		else {
+		} else {
 			return $params['default'];
 		}
 	}
@@ -213,10 +136,8 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		}
 	}
 
-	private function initializeLocationParser( array $params ) {
-		$this->locationParser = new LocationParser( new ValueParserOptions( [
-			'geoService' => $params['geoservice']
-		] ) );
+	private function initializeLocationParser() {
+		$this->locationParser = \Maps\MapsFactory::newDefault()->newLocationParser();
 	}
 
 	/**
@@ -255,7 +176,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		try {
 			// FIXME: a Location makes no sense here, since the non-coordinate data is not used
-			$location = $this->locationParser->stringParse( $coordinatesOrAddress );
+			$location = $this->locationParser->parse( $coordinatesOrAddress );
 		}
 		catch ( \Exception $ex ) {
 			// TODO: somehow report this to the user
@@ -263,31 +184,6 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		}
 
 		return $location->getJSONObject();
-	}
-
-	/**
-	 * Returns the HTML to display the map.
-	 *
-	 * @param array $params
-	 * @param string $mapName
-	 *
-	 * @return string
-	 */
-	private function getMapHTML( array $params, $mapName ) {
-		return Html::rawElement(
-			'div',
-			[
-				'id' => $mapName,
-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
-				'class' => 'maps-map maps-' . $this->service->getName()
-			],
-			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
-				Html::element(
-					'div',
-					[ 'style' => 'display:none', 'class' => 'mapdata' ],
-					FormatJson::encode( $params )
-				)
-		);
 	}
 
 	private function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
@@ -363,7 +259,14 @@ class SMMapPrinter extends SMW\ResultPrinter {
 		$locationsJson = [];
 
 		foreach ( $locations as $location ) {
-			$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
+			$jsonObj = $location->getJSONObject(
+				$params['title'],
+				$params['label'],
+				$iconUrl,
+				'',
+				'',
+				$visitedIconUrl
+			);
 
 			$jsonObj['title'] = strip_tags( $jsonObj['title'] );
 
@@ -391,29 +294,127 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	}
 
 	/**
+	 * Returns the HTML to display the map.
+	 *
+	 * @param array $params
+	 * @param string $mapName
+	 *
+	 * @return string
+	 */
+	private function getMapHTML( array $params, $mapName ) {
+		return Html::rawElement(
+			'div',
+			[
+				'id' => $mapName,
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+				'class' => 'maps-map maps-' . $this->service->getName()
+			],
+			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
+			Html::element(
+				'div',
+				[ 'style' => 'display:none', 'class' => 'mapdata' ],
+				FormatJson::encode( $params )
+			)
+		);
+	}
+
+	/**
 	 * Returns the internationalized name of the mapping service.
-	 * 
+	 *
 	 * @return string
 	 */
 	public final function getName() {
 		return wfMessage( 'maps_' . $this->service->getName() )->text();
 	}
-	
+
 	/**
 	 * Returns a list of parameter information, for usage by Special:Ask and others.
-	 * 
+	 *
 	 * @return array
 	 */
-    public function getParameters() {
-        $params = parent::getParameters();
-        $paramInfo = $this->getParameterInfo();
-        
-        // Do not display this as an option, as the format already determines it
-        // TODO: this can probably be done cleaner with some changes in Maps
-        unset( $paramInfo['mappingservice'] );
-        
-        $params = array_merge( $params, $paramInfo );
+	public function getParameters() {
+		$params = parent::getParameters();
+		$paramInfo = $this->getParameterInfo();
+
+		// Do not display this as an option, as the format already determines it
+		// TODO: this can probably be done cleaner with some changes in Maps
+		unset( $paramInfo['mappingservice'] );
+
+		$params = array_merge( $params, $paramInfo );
 
 		return $params;
-    }
+	}
+
+	/**
+	 * Returns an array containing the parameter info.
+	 *
+	 * @return array
+	 */
+	private function getParameterInfo() {
+		global $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
+
+		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
+
+		$this->service->addParameterInfo( $params );
+
+		$params['staticlocations'] = [
+			'type' => 'mapslocation', // FIXME: geoservice is not used
+			'aliases' => [ 'locations', 'points' ],
+			'default' => [],
+			'islist' => true,
+			'delimiter' => ';',
+			'message' => 'semanticmaps-par-staticlocations',
+		];
+
+		$params['showtitle'] = [
+			'type' => 'boolean',
+			'aliases' => 'show title',
+			'default' => $smgQPShowTitle,
+		];
+
+		$params['hidenamespace'] = [
+			'type' => 'boolean',
+			'aliases' => 'hide namespace',
+			'default' => $smgQPHideNamespace,
+		];
+
+		$params['template'] = [
+			'default' => $smgQPTemplate,
+		];
+
+		$params['userparam'] = [
+			'default' => '',
+		];
+
+		$params['activeicon'] = [
+			'type' => 'string',
+			'default' => '',
+		];
+
+		$params['pagelabel'] = [
+			'type' => 'boolean',
+			'default' => false,
+		];
+
+		$params['ajaxcoordproperty'] = [
+			'default' => '',
+		];
+
+		$params['ajaxquery'] = [
+			'default' => '',
+			'type' => 'string'
+		];
+
+		// Messages:
+		// semanticmaps-par-staticlocations, semanticmaps-par-showtitle, semanticmaps-par-hidenamespace,
+		// semanticmaps-par-template, semanticmaps-par-userparam, semanticmaps-par-activeicon,
+		// semanticmaps-par-pagelabel, semanticmaps-par-ajaxcoordproperty semanticmaps-par-ajaxquery
+		foreach ( $params as $name => &$data ) {
+			if ( is_array( $data ) && !array_key_exists( 'message', $data ) ) {
+				$data['message'] = 'semanticmaps-par-' . $name;
+			}
+		}
+
+		return $params;
+	}
 }

@@ -3,7 +3,6 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
-use Maps\Elements\Location;
 
 /**
  * @covers MapsDisplayMap
@@ -12,15 +11,6 @@ use Maps\Elements\Location;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class DisplayMapTest extends ParserHookTest {
-
-	/**
-	 * @see ParserHookTest::getInstance
-	 * @since 2.0
-	 * @return \ParserHook
-	 */
-	protected function getInstance() {
-		return new \MapsDisplayMap();
-	}
 
 	/**
 	 * @see ParserHookTest::parametersProvider
@@ -74,6 +64,15 @@ class DisplayMapTest extends ParserHookTest {
 		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 * @since 2.0
+	 * @return \ParserHook
+	 */
+	protected function getInstance() {
+		return new \MapsDisplayMap();
 	}
 
 }

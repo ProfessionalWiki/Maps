@@ -90,25 +90,13 @@ abstract class MapsMappingService {
 			}
 
 			$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
-		}
-		elseif ( $parserOrOut instanceof OutputPage ) {
+		} elseif ( $parserOrOut instanceof OutputPage ) {
 			if ( $dependencies !== false ) {
 				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
 			}
 
 			$parserOrOut->addModules( $this->getResourceModules() );
 		}
-	}
-	
-	/**
-	 * Returns a list of all config variables that should be passed to the JS.
-	 * 
-	 * @since 1.0.1
-	 * 
-	 * @return array
-	 */
-	public function getConfigVariables() {
-		return [];
 	}
 
 	/**
@@ -142,17 +130,32 @@ abstract class MapsMappingService {
 	}
 
 	/**
-	 * @since 0.6.3
+	 * Returns the resource modules that need to be loaded to use this mapping service.
+	 *
+	 * @since 0.7.3
+	 *
+	 * @return array of string
 	 */
-	public function getName() {
-		return $this->serviceName;
+	public function getResourceModules() {
+		return $this->resourceModules;
+	}
+
+	/**
+	 * Returns a list of all config variables that should be passed to the JS.
+	 *
+	 * @since 1.0.1
+	 *
+	 * @return array
+	 */
+	public function getConfigVariables() {
+		return [];
 	}
 
 	/**
 	 * @since 0.6.3
 	 */
-	public function getFeature( $featureName ) {
-		return array_key_exists( $featureName, $this->features ) ? $this->features[$featureName] : false;
+	public function getName() {
+		return $this->serviceName;
 	}
 
 	/**
@@ -171,6 +174,13 @@ abstract class MapsMappingService {
 	/**
 	 * @since 0.6.3
 	 */
+	public function getFeature( $featureName ) {
+		return array_key_exists( $featureName, $this->features ) ? $this->features[$featureName] : false;
+	}
+
+	/**
+	 * @since 0.6.3
+	 */
 	public function getAliases() {
 		return $this->aliases;
 	}
@@ -180,17 +190,6 @@ abstract class MapsMappingService {
 	 */
 	public function hasAlias( $alias ) {
 		return in_array( $alias, $this->aliases );
-	}
-
-	/**
-	 * Returns the resource modules that need to be loaded to use this mapping service.
-	 *
-	 * @since 0.7.3
-	 *
-	 * @return array of string
-	 */
-	public function getResourceModules() {
-		return $this->resourceModules;
 	}
 
 	/**
@@ -205,21 +204,21 @@ abstract class MapsMappingService {
 	}
 
 	/**
+	 * @param array $dependencies
+	 */
+	public function addHtmlDependencies( array $dependencies ) {
+		foreach ( $dependencies as $dependency ) {
+			$this->addHtmlDependency( $dependency );
+		}
+	}
+
+	/**
 	 * @since 0.6.3
 	 *
 	 * @param $dependencyHtml
 	 */
 	public final function addHtmlDependency( $dependencyHtml ) {
 		$this->dependencies[] = $dependencyHtml;
-	}
-
-	/**
-	 * @param array $dependencies
-	 */
-	public function addHtmlDependencies(array $dependencies ) {
-		foreach ( $dependencies as $dependency ) {
-			$this->addHtmlDependency( $dependency );
-		}
 	}
 
 	/**

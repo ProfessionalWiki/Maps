@@ -43,6 +43,7 @@ class RectangleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Rectangle $rectangle
 	 * @param array $arguments
 	 */
@@ -53,6 +54,7 @@ class RectangleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Rectangle $rectangle
 	 * @param array $arguments
 	 */

@@ -45,6 +45,7 @@ class ImageOverlayTest extends RectangleTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param ImageOverlay $imageOverlay
 	 * @param array $arguments
 	 */

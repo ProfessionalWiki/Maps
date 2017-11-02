@@ -48,6 +48,10 @@ class CoordinateValueTest extends \PHPUnit_Framework_TestCase {
 		$this->assertIsCorrectCoordValue( $description, $lat, $long );
 	}
 
+	protected function newInstance() {
+		return new CoordinateValue( SMWDataItem::TYPE_GEO );
+	}
+
 	private function assertIsCorrectCoordValue( $description, $lat, $long ) {
 		/**
 		 * @var CoordinateDescription $description
@@ -55,10 +59,6 @@ class CoordinateValueTest extends \PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf( CoordinateDescription::class, $description );
 		$this->assertEquals( $lat, $description->getDataItem()->getLatitude() );
 		$this->assertEquals( $long, $description->getDataItem()->getLongitude() );
-	}
-
-	protected function newInstance() {
-		return new CoordinateValue( SMWDataItem::TYPE_GEO );
 	}
 
 	public function coordinateProvider() {

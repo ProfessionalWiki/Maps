@@ -46,6 +46,20 @@ class Circle extends \MapsBaseFillableElement {
 		$this->setCircleRadius( $circleRadius );
 	}
 
+	public function getJSONObject( $defText = '', $defTitle = '' ) {
+		$parentArray = parent::getJSONObject( $defText, $defTitle );
+
+		$array = [
+			'centre' => [
+				'lon' => $this->getCircleCentre()->getLongitude(),
+				'lat' => $this->getCircleCentre()->getLatitude()
+			],
+			'radius' => intval( $this->getCircleRadius() ),
+		];
+
+		return array_merge( $parentArray, $array );
+	}
+
 	/**
 	 * @return LatLongValue
 	 */
@@ -72,20 +86,6 @@ class Circle extends \MapsBaseFillableElement {
 	 */
 	public function setCircleRadius( $circleRadius ) {
 		$this->circleRadius = $circleRadius;
-	}
-
-	public function getJSONObject( $defText = '' , $defTitle = '' ) {
-		$parentArray = parent::getJSONObject( $defText , $defTitle );
-
-		$array = [
-			'centre' => [
-				'lon' => $this->getCircleCentre()->getLongitude(),
-				'lat' => $this->getCircleCentre()->getLatitude()
-			],
-			'radius' => intval( $this->getCircleRadius() ),
-		];
-
-		return array_merge( $parentArray, $array );
 	}
 
 }

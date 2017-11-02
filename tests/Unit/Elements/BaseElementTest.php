@@ -16,17 +16,6 @@ use Maps\ElementOptions;
  */
 abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 
-	/**
-	 * Returns the name of the concrete class tested by this test.
-	 *
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	public abstract function getClass();
-
-	public abstract function validConstructorProvider();
-
 	public function invalidConstructorProvider() {
 		return [];
 	}
@@ -46,6 +35,15 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Returns the name of the concrete class tested by this test.
+	 *
+	 * @since 3.0
+	 *
+	 * @return string
+	 */
+	public abstract function getClass();
+
+	/**
 	 * @since 3.0
 	 *
 	 * @return array [instance, constructor args]
@@ -54,12 +52,14 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 		$phpFails = [ $this, 'newInstance' ];
 
 		return array_map(
-			function( array $args ) use ( $phpFails ) {
+			function ( array $args ) use ( $phpFails ) {
 				return [ call_user_func_array( $phpFails, $args ), $args ];
 			},
 			$this->validConstructorProvider()
 		);
 	}
+
+	public abstract function validConstructorProvider();
 
 	/**
 	 * @dataProvider validConstructorProvider
@@ -83,6 +83,7 @@ abstract class BaseElementTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Element $element
 	 */
 	public function testGetOptions( Element $element ) {

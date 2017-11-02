@@ -53,6 +53,7 @@ class LineTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
+	 *
 	 * @param Line $line
 	 * @param array $arguments
 	 */

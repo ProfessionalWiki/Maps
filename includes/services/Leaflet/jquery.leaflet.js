@@ -28,22 +28,32 @@
 		this.createMarker = function (properties) {
 			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
-			if (!properties.hasOwnProperty('icon') || properties.icon === '') {
-				var icon = new L.Icon.Default();
-			} else {
-				var icon = new L.Icon({
-					iconUrl: properties.icon
-				});
-			}
-
 			var markerOptions = {
-				title:properties.title,
-				icon:icon
+				title:properties.title
 			};
 
 			var marker = L.marker( [properties.lat, properties.lon], markerOptions );
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
+			
+			if (properties.hasOwnProperty('icon') && properties.icon !== '') {
+				marker.setOpacity(0);
+				
+				var img = new Image();
+				img.onload = function() {
+					var icon = new L.Icon({ 
+						iconUrl: properties.icon,
+						iconSize: [ img.width, img.height ],
+						iconAnchor: [ img.width / 2, img.height ],
+						popupAnchor: [ -img.width % 2, -img.height*2/3 ]
+					});
+					
+					marker.setIcon(icon);
+					marker.setOpacity(1);
+				};
+				img.src = properties.icon;
+			}
 
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
+			
 			return marker;
 		};
 
@@ -249,6 +259,17 @@
 				mapOptions.fullscreenControlOptions= {
 					position: 'topleft'
 				};
+			}
+			
+			if (options.static) {
+				mapOptions.scrollWheelZoom = false;
+				mapOptions.doubleClickZoom = false;
+				mapOptions.touchZoom = false;
+				mapOptions.boxZoom = false;
+				mapOptions.tap = false;
+				mapOptions.keyboard = false;
+				mapOptions.zoomControl = false;
+				mapOptions.dragging = false;
 			}
 
 			var map = L.map( this.get(0), mapOptions ).fitWorld();

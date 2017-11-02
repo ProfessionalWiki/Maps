@@ -20,6 +20,15 @@ class Polygon extends Line {
 	/**
 	 * @since 3.0
 	 *
+	 * @return boolean
+	 */
+	public function isOnlyVisibleOnHover() {
+		return $this->onlyVisibleOnHover;
+	}
+
+	/**
+	 * @since 3.0
+	 *
 	 * @param boolean $visible
 	 *
 	 * @throws InvalidArgumentException
@@ -30,15 +39,6 @@ class Polygon extends Line {
 		}
 
 		$this->onlyVisibleOnHover = $visible;
-	}
-
-	/**
-	 * @since 3.0
-	 *
-	 * @return boolean
-	 */
-	public function isOnlyVisibleOnHover() {
-		return $this->onlyVisibleOnHover;
 	}
 
 	public function setFillOpacity( $fillOpacity ) {
@@ -57,7 +57,7 @@ class Polygon extends Line {
 		$this->fillColor = $fillColor;
 	}
 
-	public function getJSONObject( $defText = '' , $defTitle = '' ) {
+	public function getJSONObject( $defText = '', $defTitle = '' ) {
 		$json = parent::getJSONObject( $defText, $defTitle );
 
 		$json['onlyVisibleOnHover'] = $this->onlyVisibleOnHover;

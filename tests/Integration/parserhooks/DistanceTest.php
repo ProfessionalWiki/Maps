@@ -20,13 +20,6 @@ class DistanceTest extends ParserHookTest {
 	];
 
 	/**
-	 * @see ParserHookTest::getInstance
-	 */
-	protected function getInstance() {
-		return new \MapsDistance();
-	}
-
-	/**
 	 * @see ParserHookTest::parametersProvider
 	 */
 	public function parametersProvider() {
@@ -84,6 +77,13 @@ class DistanceTest extends ParserHookTest {
 		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 */
+	protected function getInstance() {
+		return new \MapsDistance();
 	}
 
 }

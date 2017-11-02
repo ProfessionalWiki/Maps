@@ -18,73 +18,78 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is an extension to MediaWiki and thus not a valid entry point.' );
 }
 
-call_user_func( function() {
-	global $wgResourceModules;
+call_user_func(
+	function () {
+		global $wgResourceModules;
 
-	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+		$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
 
-	$wgResourceModules['ext.maps.leaflet'] = [
-		'dependencies' => [ 'ext.maps.common' ],
-		'localBasePath' => __DIR__,
-		'remoteExtPath' => end( $pathParts ),
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'jquery.leaflet.js',
-			'ext.maps.leaflet.js',
-		],
-		'messages' => [
-			'maps-markers',
-			'maps-copycoords-prompt',
-			'maps-searchmarkers-text',
-		],
-	];
+		$wgResourceModules['ext.maps.leaflet'] = [
+			'dependencies' => [ 'ext.maps.common' ],
+			'localBasePath' => __DIR__,
+			'remoteExtPath' => end( $pathParts ),
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'jquery.leaflet.js',
+				'ext.maps.leaflet.js',
+			],
+			'messages' => [
+				'maps-markers',
+				'maps-copycoords-prompt',
+				'maps-searchmarkers-text',
+			],
+		];
 
-	$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
-		'localBasePath' => __DIR__ . '/leaflet.fullscreen',
-		'remoteExtPath' => end( $pathParts ) . '/leaflet.fullscreen',
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'Control.FullScreen.js',
-		],
-		'styles' => [
-			'Control.FullScreen.css',
-		],
-	];
+		$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
+			'dependencies' => [ 'ext.maps.leaflet' ],
+			'localBasePath' => __DIR__ . '/leaflet.fullscreen',
+			'remoteExtPath' => end( $pathParts ) . '/leaflet.fullscreen',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'Control.FullScreen.js',
+			],
+			'styles' => [
+				'Control.FullScreen.css',
+			],
+		];
 
-	$wgResourceModules['ext.maps.leaflet.markercluster'] = [
-		'localBasePath' => __DIR__ . '/leaflet.markercluster',
-		'remoteExtPath' => end( $pathParts ),
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'leaflet.markercluster.js',
-		],
-		'styles' => [
-			'MarkerCluster.css',
-		],
-	];
+		$wgResourceModules['ext.maps.leaflet.markercluster'] = [
+			'dependencies' => [ 'ext.maps.leaflet' ],
+			'localBasePath' => __DIR__ . '/leaflet.markercluster',
+			'remoteExtPath' => end( $pathParts ),
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet.markercluster.js',
+			],
+			'styles' => [
+				'MarkerCluster.css',
+			],
+		];
 
-	$wgResourceModules['ext.maps.leaflet.providers'] = [
-		'localBasePath' => __DIR__ . '/leaflet-providers',
-		'remoteExtPath' => end( $pathParts ) . '/leaflet-providers',
-		'group' => 'ext.maps',
-		'targets' => [
-			'mobile',
-			'desktop'
-		],
-		'scripts' => [
-			'leaflet-providers.js',
-		],
-	];
-} );
+		$wgResourceModules['ext.maps.leaflet.providers'] = [
+			'dependencies' => [ 'ext.maps.leaflet' ],
+			'localBasePath' => __DIR__ . '/leaflet-providers',
+			'remoteExtPath' => end( $pathParts ) . '/leaflet-providers',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet-providers.js',
+			],
+		];
+	}
+);

@@ -2,14 +2,13 @@
 
 namespace Maps;
 
-use DataValues\Geo\Parsers\GeoCoordinateParser;
-use DataValues\Geo\Values\LatLongValue;
+use DataValues\Geo\Parsers\LatLongParser;
+use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Location;
-use MWException;
 use Title;
-use ValueParsers\ParserOptions;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
+use ValueParsers\ValueParser;
 
 /**
  * ValueParser that parses the string representation of a location.
@@ -19,16 +18,26 @@ use ValueParsers\StringValueParser;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class LocationParser extends StringValueParser {
+class LocationParser implements ValueParser {
+
+	private $geocoder;
+	private $useAddressAsTitle;
 
 	/**
-	 * @param ParserOptions|null $options
+	 * @deprecated Use newInstance instead
 	 */
-	public function __construct( ParserOptions $options = null ) {
-		parent::__construct( $options );
+	public function __construct( $enableLegacyCrud = true ) {
+		if ( $enableLegacyCrud ) {
+			$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+			$this->useAddressAsTitle = false;
+		}
+	}
 
-		$this->defaultOption( 'useaddressastitle', false );
-		$this->defaultOption( 'geoService', '' );
+	public static function newInstance( Geocoder $geocoder, bool $useAddressAsTitle = false ): self {
+		$instance = new self( false );
+		$instance->geocoder = $geocoder;
+		$instance->useAddressAsTitle = $useAddressAsTitle;
+		return $instance;
 	}
 
 	/**
@@ -41,23 +50,26 @@ class LocationParser extends StringValueParser {
 	 * @return Location
 	 * @throws ParseException
 	 */
-	public function stringParse( $value ) {
+	public function parse( $value ) {
 		$separator = '~';
-
-		$useaddressastitle = $this->getOption( 'useaddressastitle' );
 
 		$metaData = explode( $separator, $value );
 
 		$coordinatesOrAddress = array_shift( $metaData );
-		$coordinates = $this->stringToLatLongValue( $coordinatesOrAddress );
+		$coordinates = $this->geocoder->geocode( $coordinatesOrAddress );
+
+		if ( $coordinates === null ) {
+			throw new ParseException( 'Location is not a parsable coordinate and not a geocodable address' );
+		}
 
 		$location = new Location( $coordinates );
 
 		if ( $metaData !== [] ) {
 			$this->setTitleOrLink( $location, array_shift( $metaData ) );
-		}
-		else if ( $useaddressastitle && $this->isAddress( $coordinatesOrAddress ) ) {
-			$location->setTitle( $coordinatesOrAddress );
+		} else {
+			if ( $this->useAddressAsTitle && $this->isAddress( $coordinatesOrAddress ) ) {
+				$location->setTitle( $coordinatesOrAddress );
+			}
 		}
 
 		if ( $metaData !== [] ) {
@@ -82,14 +94,13 @@ class LocationParser extends StringValueParser {
 	private function setTitleOrLink( Location $location, $titleOrLink ) {
 		if ( $this->isLink( $titleOrLink ) ) {
 			$this->setLink( $location, $titleOrLink );
-		}
-		else {
+		} else {
 			$location->setTitle( $titleOrLink );
 		}
 	}
 
 	private function isLink( $value ) {
-		return strpos( $value , 'link:' ) === 0;
+		return strpos( $value, 'link:' ) === 0;
 	}
 
 	private function setLink( Location $location, $link ) {
@@ -98,7 +109,7 @@ class LocationParser extends StringValueParser {
 	}
 
 	private function getExpandedLink( $link ) {
-		if ( filter_var( $link , FILTER_VALIDATE_URL , FILTER_FLAG_SCHEME_REQUIRED ) ) {
+		if ( filter_var( $link, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED ) ) {
 			return $link;
 		}
 
@@ -112,34 +123,12 @@ class LocationParser extends StringValueParser {
 	}
 
 	/**
-	 * @param string $location
-	 *
-	 * @return LatLongValue
-	 * @throws ParseException
-	 */
-	private function stringToLatLongValue( $location ) {
-		if ( Geocoders::canGeocode() ) {
-			$latLongValue = Geocoders::attemptToGeocode( $location, $this->getOption( 'geoService' ) );
-
-			if ( $latLongValue === false ) {
-				throw new ParseException( 'Failed to parse or geocode' );
-			}
-
-			assert( $latLongValue instanceof LatLongValue );
-			return $latLongValue;
-		}
-
-		$parser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
-		return $parser->parse( $location );
-	}
-
-	/**
 	 * @param string $coordsOrAddress
 	 *
 	 * @return boolean
 	 */
 	private function isAddress( $coordsOrAddress ) {
-		$coordinateParser = new GeoCoordinateParser( new \ValueParsers\ParserOptions() );
+		$coordinateParser = new LatLongParser();
 
 		try {
 			$coordinateParser->parse( $coordsOrAddress );

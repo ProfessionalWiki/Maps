@@ -3,7 +3,7 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
-use Maps\Elements\Location;
+use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;
 
 /**
  * @covers MapsGeocode
@@ -14,19 +14,14 @@ use Maps\Elements\Location;
 class GeocodeTest extends ParserHookTest {
 
 	/**
-	 * @see ParserHookTest::getInstance
-	 */
-	protected function getInstance() {
-		return new \MapsGeocode();
-	}
-
-	/**
 	 * @see ParserHookTest::parametersProvider
 	 */
 	public function parametersProvider() {
 		$paramLists = [];
 
-		$paramLists[] = [ 'location' => 'new york city' ];
+		$paramLists[] = [ 'location' => 'New York', '4, 2' ];
+		$paramLists[] = [ 'location' => 'Brussels', '2, 3' ];
+		$paramLists[] = [ 'location' => 'I am a tomato', 'Geocoding failed' ];
 
 		return $this->arrayWrap( $paramLists );
 	}
@@ -40,15 +35,29 @@ class GeocodeTest extends ParserHookTest {
 		$argLists[] = [
 			[
 				'location' => '4,2',
-				'allowcoordinates' => 'yes',
+				'directional' => 'yes',
 			],
 			[
 				'location' => '4,2',
-				'allowcoordinates' => true,
+				'directional' => true,
 			]
 		];
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 */
+	protected function getInstance() {
+		return new \MapsGeocode(
+			new InMemoryGeocoder(
+				[
+					'New York' => new LatLongValue( 4, 2 ),
+					'Brussels' => new LatLongValue( 2, 3 ),
+				]
+			)
+		);
 	}
 
 }

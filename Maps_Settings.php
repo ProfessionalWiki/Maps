@@ -51,39 +51,18 @@
 
 // Geocoding
 
-	// Array of String. Array containing all the geocoding services that will be
-	// made available to the user. Currently Maps provides the following services:
-	// geonames, google
-    // It is recommended that when using GeoNames you get a GeoNames webservice account
-    // at http://www.geonames.org/login and set the username to $GLOBALS['egMapsGeoNamesUser'] below.
-    // Not doing this will result into a legacy service being used, which might be
-    // disabled at some future point.
-	$GLOBALS['egMapsAvailableGeoServices'] = [
-		'geonames',
-		'google',
-		'geocoderus',
-		'nominatim',
-	];
-
-	// String. The default geocoding service, which will be used when no service is
-	// is provided by the user. This service needs to be enabled, if not, the first
-	// one from the available services will be taken.
+	// String. The name of the geocoding service to use.
+	// Available services: geonames, google, nominatim
+	// Some services might require you to provide credentials, see the settings below.
 	$GLOBALS['egMapsDefaultGeoService'] = 'geonames';
-
-	// Boolean. Indicates if geocoders can override the default geoservice based on
-	// the used mapping service.
-	$GLOBALS['egMapsUserGeoOverrides'] = true;
-
-	// Boolean. Sets if coordinates should be allowed in geocoding calls.
-	$GLOBALS['egMapsAllowCoordsGeocoding'] = true;
-
-	// Boolean. Sets if geocoded addresses should be stored in a cache.
-	$GLOBALS['egMapsEnableGeoCache'] = true;
 
 	// String. GeoNames API user/application name.
 	// Obtain an account here: http://www.geonames.org/login
 	// Do not forget to activate your account for API usage!
 	$GLOBALS['egMapsGeoNamesUser'] = '';
+
+	// Boolean. Sets if geocoded addresses should be stored in a cache.
+	$GLOBALS['egMapsEnableGeoCache'] = true;
 
 
 // Coordinate configuration
@@ -174,7 +153,7 @@
 
 # Semantic MediaWiki queries
 
-	# Boolean. The default value for the showtitle parameter. Will hide the title in the marker pop-ups when set to true.
+	# Boolean. The default value for the showtitle parameter. Will hide the title in the marker pop-ups when set to false.
 	# This value will only be used when the user does not provide one.
 	$GLOBALS['smgQPShowTitle'] = true;
 

@@ -20,7 +20,9 @@ final class MapsHooks {
 	 * @return boolean
 	 */
 	public static function addToAdminLinks( ALTree &$admin_links_tree ) {
-		$displaying_data_section = $admin_links_tree->getSection( wfMessage( 'smw_adminlinks_displayingdata' )->text() );
+		$displaying_data_section = $admin_links_tree->getSection(
+			wfMessage( 'smw_adminlinks_displayingdata' )->text()
+		);
 
 		// Escape if SMW hasn't added links.
 		if ( is_null( $displaying_data_section ) ) {
@@ -30,7 +32,9 @@ final class MapsHooks {
 		$smw_docu_row = $displaying_data_section->getRow( 'smw' );
 
 		$maps_docu_label = wfMessage( 'adminlinks_documentation', 'Maps' )->text();
-		$smw_docu_row->addItem( AlItem::newFromExternalLink( 'https://semantic-mediawiki.org/wiki/Maps', $maps_docu_label ) );
+		$smw_docu_row->addItem(
+			AlItem::newFromExternalLink( 'https://www.semantic-mediawiki.org/wiki/Extension:Maps', $maps_docu_label )
+		);
 
 		return true;
 	}
@@ -40,15 +44,17 @@ final class MapsHooks {
 	 *
 	 * @since 1.0
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/MakeGlobalVariablesScript
+	 *
 	 * @param array &$vars Variables to be added into the output
 	 * @param OutputPage $outputPage OutputPage instance calling the hook
+	 *
 	 * @return boolean true in all cases
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $outputPage ) {
 		global $egMapsGlobalJSVars;
 
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
-                $vars[ 'egMapsAvailableServices' ] = $GLOBALS['egMapsAvailableServices'];
+		$vars['egMapsAvailableServices'] = $GLOBALS['egMapsAvailableServices'];
 
 		$vars += $egMapsGlobalJSVars;
 
@@ -56,4 +62,3 @@ final class MapsHooks {
 	}
 
 }
-

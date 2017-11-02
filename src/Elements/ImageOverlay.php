@@ -53,8 +53,8 @@ class ImageOverlay extends Rectangle {
 	 *
 	 * @return array
 	 */
-	public function getJSONObject( $defText = '' , $defTitle = '' ) {
-		$data = parent::getJSONObject( $defText , $defTitle );
+	public function getJSONObject( $defText = '', $defTitle = '' ) {
+		$data = parent::getJSONObject( $defText, $defTitle );
 
 		$data['image'] = $this->imageUrl;
 

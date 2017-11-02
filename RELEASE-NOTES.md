@@ -1,6 +1,55 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.1.0
+
+Under development
+
+* Dropped support for PHP older than 7.0
+
+## Maps 5.0.2
+
+Released on October 19th, 2017.
+
+* Custom marker icons on Leaflet maps are now scaled correctly (by hidrarga)
+
+## Maps 5.0.1
+
+Released on October 18th, 2017.
+
+Special one-off PHP 7.x optimized release. (requires PHP 7.x)
+
+## Maps 5.0.0
+
+Released on October 16th, 2017.
+
+* Added persistent geocoding cache (by hidrarga)
+* Fixed rendering of wikitext in popups of the map result format when using the `template` parameter (by hidrarga)
+* Fixed random loading failure of Leaflet maps (by Peter Grassberger)
+* Geocoders now respect MediaWiki's network settings such as `wgHTTPProxy`
+* Image overlays used in `#display_map` now support geocoding for their locations
+
+### Breaking changes
+
+* Removed `geoservice` parameters from the `#display_map` parser function
+* Removed `geoservice` and `allowcoordinates` parameters from the `#geocode` parser function
+* Removed `mappingservice` and `geoservice` parameters from the `#geodistance` parser function
+* Removed `mappingservice`, `geoservice` and `allowcoordinates` params from the `#finddestination` parser function
+* Removed `geoservice` parameter from the SMW result formats
+* Removed `service` parameter from the `geocode` API module
+* Removed `egMapsUserGeoOverrides` setting
+* Removed `egMapsAvailableGeoServices` setting
+* Removed `egMapsAllowCoordsGeocoding` setting
+* Removed support for the GeocoderUS geocoding service as it appears to have shut down
+
+## Maps 4.4.0
+
+Released on September 14th, 2017.
+
+* Added layer support for Leaflet (by Peter Grassberger)
+* Added static map support for Leaflet (`static=true`) (by hidrarga)
+* Fixed custom marker icon bug when using Leaflet (by hidrarga)
+
 ## Maps 4.3.0
 
 Released on June 10th, 2017.

@@ -11,13 +11,6 @@ namespace Maps\Test;
 class MapsDocTest extends ParserHookTest {
 
 	/**
-	 * @see ParserHookTest::getInstance
-	 */
-	protected function getInstance() {
-		return new \MapsMapsDoc();
-	}
-
-	/**
 	 * @see ParserHookTest::parametersProvider
 	 */
 	public function parametersProvider() {
@@ -40,7 +33,6 @@ class MapsDocTest extends ParserHookTest {
 
 		$argLists[] = [ $values, $expected ];
 
-
 		$values = [ 'service' => 'GOOGLEmaps3' ];
 
 		$expected = [ 'service' => 'googlemaps3' ];
@@ -48,6 +40,13 @@ class MapsDocTest extends ParserHookTest {
 		$argLists[] = [ $values, $expected ];
 
 		return $argLists;
+	}
+
+	/**
+	 * @see ParserHookTest::getInstance
+	 */
+	protected function getInstance() {
+		return new \MapsMapsDoc();
 	}
 
 }
