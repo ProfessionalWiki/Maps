@@ -3,6 +3,7 @@ language: php
 sudo: false
 
 matrix:
+  fast_finish: true
   include:
     - env: DBTYPE=mysql; MW=1.27.3
       php: 7
