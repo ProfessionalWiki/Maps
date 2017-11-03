@@ -8,7 +8,7 @@ class MapsBaseFillableElement extends MapsBaseStrokableElement {
 	protected $fillColor;
 	protected $fillOpacity;
 
-	public function getJSONObject( $defText = '', $defTitle = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$parentArray = parent::getJSONObject( $defText, $defTitle );
 		$array = [
 			'fillColor' => $this->hasFillColor() ? $this->getFillColor() : '#FF0000',

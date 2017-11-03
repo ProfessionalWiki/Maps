@@ -10,7 +10,6 @@ use Maps\ElementOptions;
  *
  * @since 3.0
  *
- *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -18,54 +17,26 @@ use Maps\ElementOptions;
 abstract class BaseElement implements Element {
 
 	/**
-	 * @since 3.0
 	 * @var ElementOptions
 	 */
 	protected $options;
 
-	/**
-	 * Constructor.
-	 *
-	 * @since 3.0
-	 */
 	public function __construct() {
 		$this->options = new ElementOptions();
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param string $title
-	 */
-	public function setTitle( $title ) {
+	public function setTitle( string $title ) {
 		$this->options->setOption( 'title', $title );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param string $text
-	 */
-	public function setText( $text ) {
+	public function setText( string $text ) {
 		$this->options->setOption( 'text', $text );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param string $link
-	 */
-	public function setLink( $link ) {
+	public function setLink( string $link ) {
 		$this->options->setOption( 'link', $link );
 	}
 
-	/**
-	 * @see Element::getArrayValue
-	 *
-	 * @since 3.0
-	 *
-	 * @return mixed
-	 */
 	public function getArrayValue() {
 		return $this->getJSONObject();
 	}
@@ -78,7 +49,7 @@ abstract class BaseElement implements Element {
 	 *
 	 * @return array
 	 */
-	public function getJSONObject( $defText = '', $defTitle = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$array = [];
 
 		$array['text'] = $this->options->hasOption( 'text' ) ? $this->getText() : $defText;
@@ -88,51 +59,22 @@ abstract class BaseElement implements Element {
 		return $array;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	public function getText() {
+	public function getText(): string {
 		return $this->options->getOption( 'text' );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	public function getTitle() {
+	public function getTitle(): string {
 		return $this->options->getOption( 'title' );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	public function getLink() {
+	public function getLink(): string {
 		return $this->options->getOption( 'link' );
 	}
 
-	/**
-	 * @see Element::getOptions
-	 *
-	 * @since 3.0
-	 *
-	 * @return ElementOptions
-	 */
-	public function getOptions() {
+	public function getOptions(): ElementOptions {
 		return $this->options;
 	}
 
-	/**
-	 * Sets the elements options.
-	 *
-	 * @since 3.0
-	 *
-	 * @param ElementOptions $options
-	 */
 	public function setOptions( ElementOptions $options ) {
 		$this->options = $options;
 	}

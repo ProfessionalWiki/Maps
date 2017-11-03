@@ -17,47 +17,23 @@ class Polygon extends Line {
 	private $fillOpacity = '0.5';
 	private $fillColor = '#FF0000';
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return boolean
-	 */
-	public function isOnlyVisibleOnHover() {
+	public function isOnlyVisibleOnHover(): bool {
 		return $this->onlyVisibleOnHover;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param boolean $visible
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	public function setOnlyVisibleOnHover( $visible ) {
-		if ( !is_bool( $visible ) ) {
-			throw new InvalidArgumentException( '$visible should be a boolean' );
-		}
-
+	public function setOnlyVisibleOnHover( bool $visible ) {
 		$this->onlyVisibleOnHover = $visible;
 	}
 
-	public function setFillOpacity( $fillOpacity ) {
-		if ( !is_string( $fillOpacity ) ) {
-			throw new InvalidArgumentException( '$fillOpacity should be a string' );
-		}
-
+	public function setFillOpacity( string $fillOpacity ) {
 		$this->fillOpacity = $fillOpacity;
 	}
 
-	public function setFillColor( $fillColor ) {
-		if ( !is_string( $fillColor ) ) {
-			throw new InvalidArgumentException( '$fillColor should be a string' );
-		}
-
+	public function setFillColor( string $fillColor ) {
 		$this->fillColor = $fillColor;
 	}
 
-	public function getJSONObject( $defText = '', $defTitle = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$json = parent::getJSONObject( $defText, $defTitle );
 
 		$json['onlyVisibleOnHover'] = $this->onlyVisibleOnHover;

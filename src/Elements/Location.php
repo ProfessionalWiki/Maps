@@ -52,48 +52,17 @@ class Location extends BaseElement {
 		$this->coordinates = $coordinates;
 	}
 
-	/**
-	 * Creates and returns a new instance of a Location from a latitude and longitude.
-	 *
-	 * @since 1.0
-	 *
-	 * @param float $lat
-	 * @param float $lon
-	 *
-	 * @return Location
-	 */
-	public static function newFromLatLon( $lat, $lon ) {
+	public static function newFromLatLon( float $lat, float $lon ): self {
 		return new self( new LatLongValue( $lat, $lon ) );
 	}
 
-	/**
-	 * Returns the locations coordinates.
-	 *
-	 * @since 3.0
-	 *
-	 * @return LatLongValue
-	 */
-	public function getCoordinates() {
+	public function getCoordinates(): LatLongValue {
 		return $this->coordinates;
 	}
 
-	/**
-	 * Returns an object that can directly be converted to JS using json_encode or similar.
-	 *
-	 * FIXME: complexity
-	 *
-	 * @since 1.0
-	 *
-	 * @param string $defText
-	 * @param string $defTitle
-	 * @param string $defIconUrl
-	 * @param string $defGroup
-	 * @param string $defInlineLabel
-	 * @param string $defVisitedIcon
-	 *
-	 * @return array
-	 */
-	public function getJSONObject( $defText = '', $defTitle = '', $defIconUrl = '', $defGroup = '', $defInlineLabel = '', $defVisitedIcon = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '', string $defIconUrl = '',
+		string $defGroup = '', string $defInlineLabel = '', string $defVisitedIcon = '' ): array {
+
 		$parentArray = parent::getJSONObject( $defText, $defTitle );
 
 		$array = [
@@ -121,48 +90,23 @@ class Location extends BaseElement {
 		return array_merge( $parentArray, $array );
 	}
 
-	/**
-	 * Returns if there is any icon.
-	 *
-	 * @since 1.0
-	 *
-	 * @return boolean
-	 */
-	public function hasIcon() {
+	public function hasIcon(): bool {
 		return $this->icon !== '';
 	}
 
-	/**
-	 * Returns the icon.
-	 *
-	 * @since 0.7.2
-	 *
-	 * @return string
-	 */
-	public function getIcon() {
+	public function getIcon(): string {
 		return $this->icon;
 	}
 
-	/**
-	 * Sets the icon
-	 *
-	 * @since 0.7.2
-	 *
-	 * @param string $icon
-	 */
-	public function setIcon( $icon ) {
+	public function setIcon( string $icon ) {
 		$this->icon = trim( $icon );
 	}
 
 	/**
 	 * Returns the address corresponding to this location.
 	 * If there is none, and empty sting is returned.
-	 *
-	 * @since 0.7.1
-	 *
-	 * @return string
 	 */
-	public function getAddress() {
+	public function getAddress(): string {
 		if ( is_null( $this->address ) ) {
 			$this->address = '';
 		}
@@ -172,84 +116,40 @@ class Location extends BaseElement {
 
 	/**
 	 * Returns whether Location is assigned to a group.
-	 *
-	 * @since 2.0
-	 *
-	 * @return string
 	 */
-	public function hasGroup() {
+	public function hasGroup(): bool {
 		return $this->group !== '';
 	}
 
-	/**
-	 * Returns the group.
-	 *
-	 * @since 2.0
-	 *
-	 * @return string
-	 */
-	public function getGroup() {
+	public function getGroup(): string {
 		return $this->group;
 	}
 
-	/**
-	 * Sets the group
-	 *
-	 * @since 2.0
-	 *
-	 * @param string $group
-	 */
-	public function setGroup( $group ) {
+	public function setGroup( string $group ) {
 		$this->group = trim( $group );
 	}
 
-	/**
-	 * @return bool
-	 * @since 2.0
-	 */
-	public function hasInlineLabel() {
+	public function hasInlineLabel(): bool {
 		return $this->inlineLabel !== '';
 	}
 
-	/**
-	 * @return string
-	 * @since 2.0
-	 */
-	public function getInlineLabel() {
+	public function getInlineLabel(): string {
 		return $this->inlineLabel;
 	}
 
-	/**
-	 * @param $label
-	 *
-	 * @since 2.0
-	 */
-	public function setInlineLabel( $label ) {
+	public function setInlineLabel( string $label ) {
 		$this->inlineLabel = $label;
 	}
 
-	/**
-	 * @return bool
-	 * @since 2.0
-	 */
-	public function hasVisitedIcon() {
+	public function hasVisitedIcon(): bool {
 		return $this->visitedIcon !== '';
 	}
 
-	/**
-	 * @return string
-	 * @since 2.0
-	 */
-	public function getVisitedIcon() {
+	public function getVisitedIcon(): string {
 		return $this->visitedIcon;
 	}
 
-	/**
-	 * @param $visitedIcon
-	 *
-	 * @since 2.0
-	 */
-	public function setVisitedIcon( $visitedIcon ) {
+	public function setVisitedIcon( string $visitedIcon ) {
 		$this->visitedIcon = trim( $visitedIcon );
 	}
 

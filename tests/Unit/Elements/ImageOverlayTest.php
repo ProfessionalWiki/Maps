@@ -2,55 +2,25 @@
 
 namespace Maps\Tests\Elements;
 
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\ImageOverlay;
 
 /**
- * @covers Maps\Elements\ImageOverlay
+ * @covers \Maps\Elements\ImageOverlay
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ImageOverlayTest extends RectangleTest {
+class ImageOverlayTest extends \PHPUnit_Framework_TestCase {
 
-	/**
-	 * @see BaseElementTest::getClass
-	 *
-	 * @since 3.0
-	 *
-	 * @return string
-	 */
-	public function getClass() {
-		return ImageOverlay::class;
-	}
+	public function testGetImage() {
+		$imageOverlay = new ImageOverlay(
+			new LatLongValue( 4, 2 ),
+			new LatLongValue( -4, -2 ),
+			'Foo.png'
+		);
 
-	public function validConstructorProvider() {
-		$argLists = parent::validConstructorProvider();
-
-		foreach ( $argLists as &$argList ) {
-			$argList[] = 'Foo.png';
-		}
-
-		return $argLists;
-	}
-
-	public function invalidConstructorProvider() {
-		$argLists = parent::validConstructorProvider();
-
-		foreach ( $argLists as &$argList ) {
-			$argList[] = null;
-		}
-
-		return $argLists;
-	}
-
-	/**
-	 * @dataProvider instanceProvider
-	 *
-	 * @param ImageOverlay $imageOverlay
-	 * @param array $arguments
-	 */
-	public function testGetImage( ImageOverlay $imageOverlay, array $arguments ) {
-		$this->assertEquals( $arguments[2], $imageOverlay->getImage() );
+		$this->assertSame( 'Foo.png', $imageOverlay->getImage() );
 	}
 
 }

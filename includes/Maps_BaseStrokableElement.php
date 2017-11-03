@@ -14,7 +14,7 @@ class MapsBaseStrokableElement extends BaseElement {
 	protected $strokeOpacity;
 	protected $strokeWeight;
 
-	public function getJSONObject( $defText = '', $defTitle = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$parentArray = parent::getJSONObject( $defText, $defTitle );
 		$array = [
 			'strokeColor' => $this->hasStrokeColor() ? $this->getStrokeColor() : '#FF0000',

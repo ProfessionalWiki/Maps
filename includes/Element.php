@@ -31,7 +31,7 @@ interface Element {
 	 *
 	 * @return ElementOptions
 	 */
-	public function getOptions();
+	public function getOptions(): ElementOptions;
 
 	/**
 	 * Sets the elements options.

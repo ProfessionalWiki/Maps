@@ -27,21 +27,14 @@ class WmsOverlay extends BaseElement {
 	 */
 	private $wmsStyleName;
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param string $wmsServerUrl
-	 * @param string $wmsLayerName
-	 * @param string $wmsStyleName
-	 */
-	public function __construct( $wmsServerUrl, $wmsLayerName, $wmsStyleName = "default" ) {
+	public function __construct( string $wmsServerUrl, string $wmsLayerName, string $wmsStyleName = "default" ) {
 		parent::__construct();
 		$this->setWmsServerUrl( $wmsServerUrl );
 		$this->setWmsLayerName( $wmsLayerName );
 		$this->setWmsStyleName( $wmsStyleName );
 	}
 
-	public function getJSONObject( $defText = "", $defTitle = "" ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$parentArray = parent::getJSONObject( $defText, $defTitle );
 
 		$array = [
@@ -52,55 +45,27 @@ class WmsOverlay extends BaseElement {
 		return array_merge( $parentArray, $array );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return String
-	 */
-	public function getWmsServerUrl() {
+	public function getWmsServerUrl(): string {
 		return $this->wmsServerUrl;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param String $wmsServerUrl
-	 */
-	public function setWmsServerUrl( $wmsServerUrl ) {
+	public function setWmsServerUrl( string $wmsServerUrl ) {
 		$this->wmsServerUrl = $wmsServerUrl;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return String
-	 */
-	public function getWmsLayerName() {
+	public function getWmsLayerName(): string {
 		return $this->wmsLayerName;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param String $wmsLayerName
-	 */
-	public function setWmsLayerName( $wmsLayerName ) {
+	public function setWmsLayerName( string $wmsLayerName ) {
 		$this->wmsLayerName = $wmsLayerName;
 	}
 
-	/**
-	 * @return String
-	 */
-	public function getWmsStyleName() {
+	public function getWmsStyleName(): string {
 		return $this->wmsStyleName;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param String $wmsStyleName
-	 */
-	public function setWmsStyleName( $wmsStyleName ) {
+	public function setWmsStyleName( string $wmsStyleName ) {
 		$this->wmsStyleName = $wmsStyleName;
 	}
 

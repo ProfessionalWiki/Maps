@@ -46,7 +46,7 @@ class Circle extends \MapsBaseFillableElement {
 		$this->setCircleRadius( $circleRadius );
 	}
 
-	public function getJSONObject( $defText = '', $defTitle = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$parentArray = parent::getJSONObject( $defText, $defTitle );
 
 		$array = [
@@ -60,31 +60,19 @@ class Circle extends \MapsBaseFillableElement {
 		return array_merge( $parentArray, $array );
 	}
 
-	/**
-	 * @return LatLongValue
-	 */
-	public function getCircleCentre() {
+	public function getCircleCentre(): LatLongValue {
 		return $this->circleCentre;
 	}
 
-	/**
-	 * @param LatLongValue $circleCentre
-	 */
 	public function setCircleCentre( LatLongValue $circleCentre ) {
 		$this->circleCentre = $circleCentre;
 	}
 
-	/**
-	 * @return integer|float
-	 */
-	public function getCircleRadius() {
+	public function getCircleRadius(): float {
 		return $this->circleRadius;
 	}
 
-	/**
-	 * @param integer|float $circleRadius
-	 */
-	public function setCircleRadius( $circleRadius ) {
+	public function setCircleRadius( float $circleRadius ) {
 		$this->circleRadius = $circleRadius;
 	}
 
