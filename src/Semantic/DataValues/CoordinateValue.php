@@ -87,7 +87,7 @@ class CoordinateValue extends SMWDataValue {
 		return [ $distance, $comparator ];
 	}
 
-	private function findValueParts( $value ) {
+	private function findValueParts( string $value ): array {
 		$parts = explode( '(', $value );
 
 		$coordinates = trim( array_shift( $parts ) );
@@ -96,10 +96,7 @@ class CoordinateValue extends SMWDataValue {
 		return [ $coordinates, $distance ];
 	}
 
-	/**
-	 * @param string $coordinates
-	 */
-	private function tryParseAndSetDataItem( $coordinates ) {
+	private function tryParseAndSetDataItem( string $coordinates ) {
 		$parser = new GeoCoordinateParser();
 
 		try {
@@ -158,7 +155,7 @@ class CoordinateValue extends SMWDataValue {
 	 *
 	 * @return string|null
 	 */
-	private function getFormattedCoord( SMWDIGeoCoord $dataItem, $format = null ) {
+	private function getFormattedCoord( SMWDIGeoCoord $dataItem, string $format = null ) {
 		global $smgQPCoodFormat;
 
 		$options = new \ValueFormatters\FormatterOptions(
