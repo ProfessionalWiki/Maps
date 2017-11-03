@@ -14,11 +14,9 @@ final class MapsMappingServices {
 	 * Associative array containing service identifiers as keys and the names
 	 * of service classes as values.
 	 *
-	 * @since 0.6.6
-	 *
 	 * @var string[]
 	 */
-	protected static $registeredServices = [];
+	private static $registeredServices = [];
 
 	/**
 	 * Associative with service identifiers as keys containing instances of
@@ -28,23 +26,15 @@ final class MapsMappingServices {
 	 * looping over all available services, as not all of them are guaranteed
 	 * to have an instance already, use $registeredServices for this purpose.
 	 *
-	 * @since 0.6.6
-	 *
 	 * @var MapsMappingService[]
 	 */
-	protected static $services = [];
+	private static $services = [];
 
 	/**
 	 * Registers a service class linked to an identifier.
 	 * Also allows automatic registration of a list of features for this service.
-	 *
-	 * @since 0.6.6
-	 *
-	 * @param string $serviceIdentifier
-	 * @param string $serviceClassName
-	 * @param string[] $features
 	 */
-	public static function registerService( $serviceIdentifier, $serviceClassName, array $features = [] ) {
+	public static function registerService( string $serviceIdentifier, string $serviceClassName, array $features = [] ) {
 		self::$registeredServices[$serviceIdentifier] = $serviceClassName;
 
 		foreach ( $features as $featureName => $featureClassName ) {
@@ -55,14 +45,8 @@ final class MapsMappingServices {
 	/**
 	 * Registeres a feature for a service object.
 	 * Registers a warning when the service is not registered, but does not give an error.
-	 *
-	 * @since 0.6.6
-	 *
-	 * @param $serviceIdentifier String: internal service identifier
-	 * @param $featureName String
-	 * @param $featureClassName String
 	 */
-	public static function registerServiceFeature( $serviceIdentifier, $featureName, $featureClassName ) {
+	public static function registerServiceFeature( string $serviceIdentifier, string $featureName, string $featureClassName ) {
 		if ( array_key_exists( $serviceIdentifier, self::$registeredServices ) ) {
 			$service = self::getServiceInstance( $serviceIdentifier );
 			$service->addFeature( $featureName, $featureClassName );
@@ -78,14 +62,9 @@ final class MapsMappingServices {
 	 * Returns the instance of a service class. This method takes
 	 * care of creating the instance if this is not done yet.
 	 *
-	 * @since 0.6.6
-	 *
-	 * @param string $serviceIdentifier
-	 *
-	 * @return MapsMappingService
 	 * @throws MWException
 	 */
-	public static function getServiceInstance( $serviceIdentifier ) {
+	public static function getServiceInstance( string $serviceIdentifier ): MapsMappingService {
 		if ( !array_key_exists( $serviceIdentifier, self::$services ) ) {
 			if ( array_key_exists( $serviceIdentifier, self::$registeredServices ) ) {
 				$service = new self::$registeredServices[$serviceIdentifier]( $serviceIdentifier );
@@ -120,7 +99,7 @@ final class MapsMappingServices {
 	 *
 	 * @return MapsMappingService
 	 */
-	public static function getValidServiceInstance( $service, $feature ) {
+	public static function getValidServiceInstance( string $service, string $feature ): MapsMappingService {
 		return self::getServiceInstance( self::getValidServiceName( $service, $feature ) );
 	}
 
@@ -128,14 +107,12 @@ final class MapsMappingServices {
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
 	 * Aliases are also changed into the main service names @see MapsMappingServices::getMainServiceName.
 	 *
-	 * @since 0.6.6
-	 *
 	 * @param $service String: service name or alias, does not need to be secure
 	 * @param $feature String
 	 *
 	 * @return string
 	 */
-	public static function getValidServiceName( $service, $feature ) {
+	public static function getValidServiceName( string $service, string $feature ): string {
 		global $egMapsDefaultService, $egMapsDefaultServices;
 
 		// Get rid of any aliases.
@@ -168,13 +145,11 @@ final class MapsMappingServices {
 	 * Checks if the service name is an alias for an actual service,
 	 * and changes it into the main service name if this is the case.
 	 *
-	 * @since 0.6.6
-	 *
 	 * @param $serviceName String: service name or alias, does not need to be secure
 	 *
 	 * @return string
 	 */
-	protected static function getMainServiceName( $serviceName ) {
+	private static function getMainServiceName( string $serviceName ): string {
 		if ( !array_key_exists( $serviceName, self::$services ) ) {
 			foreach ( self::getServiceIdentifiers() as $serviceIdentifier ) {
 				$service = self::getServiceInstance( $serviceIdentifier );
@@ -191,23 +166,17 @@ final class MapsMappingServices {
 
 	/**
 	 * Returns an array with the identifiers for all registered services.
-	 *
-	 * @since 0.6.6
-	 *
-	 * @return array
 	 */
-	public static function getServiceIdentifiers() {
+	public static function getServiceIdentifiers(): array {
 		return array_keys( self::$registeredServices );
 	}
 
 	/**
 	 * Returns an array containing all the possible values for the service parameter, including aliases.
 	 *
-	 * @since 0.6.6
-	 *
-	 * @return array of string
+	 * @return string[]
 	 */
-	public static function getAllServiceValues() {
+	public static function getAllServiceValues(): array {
 		global $egMapsAvailableServices;
 
 		$allServiceValues = [];
@@ -226,11 +195,9 @@ final class MapsMappingServices {
 	/**
 	 * Returns an array with an instance of a MappingService object for every available mapping service.
 	 *
-	 * @since 0.7.3
-	 *
-	 * @return array of MappingService
+	 * @return MapsMappingService[]
 	 */
-	public static function getAllObjects() {
+	public static function getAllObjects(): array {
 		$objects = [];
 
 		foreach ( self::$registeredServices as $service => $class ) {
