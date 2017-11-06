@@ -52,15 +52,7 @@ class Line extends \MapsBaseStrokableElement {
 		return $this->coordinates;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param string $defText
-	 * @param string $defTitle
-	 *
-	 * @return array
-	 */
-	public function getJSONObject( $defText = '', $defTitle = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$parentArray = parent::getJSONObject( $defText, $defTitle );
 		$posArray = [];
 

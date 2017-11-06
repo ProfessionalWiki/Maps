@@ -47,15 +47,7 @@ class Rectangle extends \MapsBaseFillableElement {
 		$this->setRectangleSouthWest( $rectangleSouthWest );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param string $defText
-	 * @param string $defTitle
-	 *
-	 * @return array
-	 */
-	public function getJSONObject( $defText = '', $defTitle = '' ) {
+	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
 		$parentArray = parent::getJSONObject( $defText, $defTitle );
 		$array = [
 			'ne' => [
@@ -71,38 +63,18 @@ class Rectangle extends \MapsBaseFillableElement {
 		return array_merge( $parentArray, $array );
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return LatLongValue
-	 */
-	public function getRectangleNorthEast() {
+	public function getRectangleNorthEast(): LatLongValue {
 		return $this->rectangleNorthEast;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param LatLongValue $rectangleNorthEast
-	 */
 	public function setRectangleNorthEast( LatLongValue $rectangleNorthEast ) {
 		$this->rectangleNorthEast = $rectangleNorthEast;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @return LatLongValue
-	 */
-	public function getRectangleSouthWest() {
+	public function getRectangleSouthWest(): LatLongValue {
 		return $this->rectangleSouthWest;
 	}
 
-	/**
-	 * @since 3.0
-	 *
-	 * @param LatLongValue $rectangleSouthWest
-	 */
 	public function setRectangleSouthWest( LatLongValue $rectangleSouthWest ) {
 		$this->rectangleSouthWest = $rectangleSouthWest;
 	}
