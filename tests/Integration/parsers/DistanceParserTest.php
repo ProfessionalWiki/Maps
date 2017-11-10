@@ -6,7 +6,7 @@ use Maps\DistanceParser;
 use ValueParsers\ParseException;
 
 /**
- * @covers Maps\DistanceParser
+ * @covers \Maps\DistanceParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
