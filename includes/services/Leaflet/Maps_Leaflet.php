@@ -38,11 +38,13 @@ class MapsLeaflet extends MapsMappingService {
 			'message' => 'maps-leaflet-par-defzoom'
 		];
 
-		$params['layer'] = [
+		$params['layers'] = [
+			'aliases' => 'layer',
 			'type' => 'string',
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableLayers'], true, true ),
-			'default' => $GLOBALS['egMapsLeafletLayer'],
+			'default' => $GLOBALS['egMapsLeafletLayers'],
 			'message' => 'maps-leaflet-par-layer',
+			'islist' => true,
 		];
 
 		$params['overlaylayers'] = [

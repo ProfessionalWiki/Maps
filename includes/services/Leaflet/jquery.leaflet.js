@@ -267,20 +267,30 @@
 			this.map = map;
 
 			// add an OpenStreetMap tile layer
-			var layerOptions = {
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			};
-			if (options.layer === 'OpenStreetMap') {
-				new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', layerOptions).addTo(map);
-			} else if (options.layer === 'MapQuestOpen') {
-				new MQ.TileLayer(layerOptions).addTo(map);
-			} else {
-				new L.tileLayer.provider(options.layer, layerOptions).addTo(map);
-			}
-
-			$.each(options.overlaylayers, function(index, overlaylayer) {
-				L.tileLayer.provider(overlaylayer).addTo(_this.map);
+			var layers = {};
+			$.each(options.layers.reverse(), function(index, layerName) {
+				var layer = null;
+				var layerOptions = {
+					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+				};
+				if (layerName === 'OpenStreetMap') {
+					layer = new L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', layerOptions).addTo(map);
+				} else if (layerName === 'MapQuestOpen') {
+					layer = new MQ.TileLayer(layerOptions).addTo(map);
+				} else {
+					layer = new L.tileLayer.provider(layerName, layerOptions).addTo(map);
+				}
+				layers[layerName] = layer;
 			});
+
+			var overlaylayers = {};
+			$.each(options.overlaylayers, function(index, overlaylayerName) {
+				overlaylayers[overlaylayerName] = new L.tileLayer.provider(overlaylayerName).addTo(_this.map);
+			});
+
+			if (options.layers.length > 1) {
+				L.control.layers(layers, overlaylayers).addTo(map);
+			}
 
 			if (options.resizable) {
 				//TODO: Fix moving map when resized
@@ -360,7 +370,7 @@
 
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
-			if (options.layer !== 'OpenStreetMap' || options.overlaylayers.length > 0) {
+			if (options.layers !== ['OpenStreetMap'] || options.overlaylayers.length > 0) {
 				dependencies.push( 'ext.maps.leaflet.providers' );
 			}
 			if (options.enablefullscreen) {
