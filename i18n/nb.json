@@ -115,7 +115,7 @@
 	"maps-geocoder-not-available": "Geokodingsfunksjonen i Maps er ikke tilgjengelig. Din plassering kan ikke geokodes.",
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Tillater å sette standard zoom-nivå for kartet.",
-	"maps-leaflet-par-layer": "Laget som vil vises mens kartet laster.",
+	"maps-leaflet-par-layers": "Laget som vil vises mens kartet laster.",
 	"maps-leaflet-par-overlaylayers": "Overleggslagene som vises mens kartet lastes.",
 	"maps-leaflet-par-maxclusterradius": "Minimum radius som et kluster dekker fra  den sentrale markøren (angitt i piksler)",
 	"maps-leaflet-par-clusterspiderfy": "Når du klikker et kluster ved laveste zoom-nivå, så spres den ut slik at du kan se alle dens markører.",

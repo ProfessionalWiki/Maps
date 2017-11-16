@@ -118,7 +118,7 @@
 	"maps_map_cannot_be_displayed": "Kartan kan inte visas.",
 	"maps-geocoder-not-available": "Geokodningsfunktionen av Maps är inte tillgänglig. Din plats kan inte geokodas.",
 	"maps-leaflet-par-defzoom": "Gör det möjligt att ändra standardzoomnivån för kartan.",
-	"maps-leaflet-par-layer": "Lagret som kommer att visas när kartan läser in.",
+	"maps-leaflet-par-layers": "Lagret som kommer att visas när kartan läser in.",
 	"maps-leaflet-par-overlaylayers": "Överläggslagret som kommer att visas när kartan läser in.",
 	"maps-leaflet-par-maxclusterradius": "Den maximala radien som ett kluster kommer att täcka från centrummarkören (i bildpunkter)",
 	"maps-leaflet-par-clusterspiderfy": "När du klickar på ett kluster på den lägsta zoomnivån sprider vi ut den så du kan se alla dess markörer.",

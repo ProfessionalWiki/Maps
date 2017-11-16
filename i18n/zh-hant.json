@@ -83,7 +83,7 @@
 	"maps-latitude": "緯度：",
 	"maps-longitude": "經度：",
 	"maps_map_cannot_be_displayed": "該地圖無法顯示。",
-	"maps-leaflet-par-layer": "此圖層將於地圖加載時顯示",
+	"maps-leaflet-par-layers": "此圖層將於地圖加載時顯示",
 	"maps-leaflet-par-overlaylayers": "此覆蓋圖層將於地圖加載時顯示。",
 	"maps_click_to_activate": "按一下以啟動地圖",
 	"maps_centred_on": "地圖以 $1, $2 為中心。",
