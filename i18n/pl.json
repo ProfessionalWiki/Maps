@@ -81,7 +81,7 @@
 	"maps_unrecognized_coords_for": "{{PLURAL:$2|Następującą współrzędną|Następujące współrzędne}} pominięto, ponieważ nie {{PLURAL:$2|została rozpoznana|zostały rozpoznane}}:\n$1",
 	"maps_map_cannot_be_displayed": "Mapa nie może zostać wyświetlona.",
 	"maps-geocoder-not-available": "Funkcja geokodowania map nie jest dostępna. Lokalizacja nie może zostać zakodowana.",
-	"maps-leaflet-par-layer": "Warstwa, która będzie wyświetlana podczas ładowania mapy.",
+	"maps-leaflet-par-layers": "Warstwa, która będzie wyświetlana podczas ładowania mapy.",
 	"maps-leaflet-par-overlaylayers": "Nakładane warstwy, które będą wyświetlane podczas ładowania mapy.",
 	"maps_click_to_activate": "Kliknij, aby aktywować mapę",
 	"maps_centred_on": "Środek mapy – $1, $2.",

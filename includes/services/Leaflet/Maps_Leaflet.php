@@ -43,7 +43,7 @@ class MapsLeaflet extends MapsMappingService {
 			'type' => 'string',
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletLayers'],
-			'message' => 'maps-leaflet-par-layer',
+			'message' => 'maps-leaflet-par-layers',
 			'islist' => true,
 		];
 

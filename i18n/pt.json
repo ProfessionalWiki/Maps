@@ -119,7 +119,7 @@
 	"maps-geocoder-not-available": "A funcionalidade de geocodificação do Mapas está indisponível; a sua localização não pode ser geocodificada.",
 	"maps_leaflet": "Folheto",
 	"maps-leaflet-par-defzoom": "Permite definir o nível de zoom predefinido do mapa.",
-	"maps-leaflet-par-layer": "A camada que será mostrada quando o mapa é carregado.",
+	"maps-leaflet-par-layers": "A camada que será mostrada quando o mapa é carregado.",
 	"maps-leaflet-par-overlaylayers": "As camadas de sobreposição que serão mostradas quando o mapa é carregado.",
 	"maps-leaflet-par-maxclusterradius": "O raio máximo que um agregado irá cobrir a partir do marcador central (em píxeis).",
 	"maps-leaflet-par-clusterspiderfy": "Quando clica um agregado no nível de zoom mais baixo os marcadores são enteados para que possa vê-los todos.",
