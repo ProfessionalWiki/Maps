@@ -318,7 +318,7 @@
 		// used when the user does not provide one.
 		$GLOBALS['egMapsLeafletLayer'] = 'OpenStreetMap';
 
-		$GLOBALS['egMapsLeafletLayers'] = ['OpenStreetMap'];
+		$GLOBALS['egMapsLeafletLayers'] = [ $GLOBALS['egMapsLeafletLayer'] ];
 
 		$GLOBALS['egMapsLeafletOverlayLayers'] = [
 
