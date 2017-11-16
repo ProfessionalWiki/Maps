@@ -273,13 +273,15 @@ class MapsDisplayMapRenderer {
 		$layerDependencies = [];
 
 		if ( $service === 'leaflet' ) {
-			$layerName = $params['layer'];
-			if ( array_key_exists( $layerName, $egMapsLeafletAvailableLayers )
-				&& $egMapsLeafletAvailableLayers[$layerName]
-				&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
-				&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
-				$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
-					$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
+			$layerNames = $params['layers'];
+			foreach ( $layerNames as $layerName ) {
+				if ( array_key_exists( $layerName, $egMapsLeafletAvailableLayers )
+					&& $egMapsLeafletAvailableLayers[$layerName]
+					&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
+					&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
+					$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
+						$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
+				}
 			}
 		} else {
 			if ( $service === 'openlayers' ) {

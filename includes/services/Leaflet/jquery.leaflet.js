@@ -275,15 +275,23 @@
 			var map = L.map( this.get(0), mapOptions ).fitWorld();
 			this.map = map;
 
-			if (options.layer === 'MapQuestOpen') {
-				new MQ.TileLayer().addTo(map);
-			} else {
-				new L.tileLayer.provider(options.layer).addTo(map);
-			}
-
-			$.each(options.overlaylayers, function(index, overlaylayer) {
-				L.tileLayer.provider(overlaylayer).addTo(_this.map);
+			var layers = {};
+			$.each(options.layers.reverse(), function(index, layerName) {
+				if (layerName === 'MapQuestOpen') {
+					layers[layerName] = new MQ.TileLayer().addTo(map);
+				} else {
+					layers[layerName] = new L.tileLayer.provider(layerName).addTo(map);
+				}
 			});
+
+			var overlaylayers = {};
+			$.each(options.overlaylayers, function(index, overlaylayerName) {
+				overlaylayers[overlaylayerName] = new L.tileLayer.provider(overlaylayerName).addTo(_this.map);
+			});
+
+			if (options.layers.length > 1) {
+				L.control.layers(layers, overlaylayers).addTo(map);
+			}
 
 			if (options.resizable) {
 				//TODO: Fix moving map when resized
@@ -363,7 +371,7 @@
 
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
-			if (options.layer !== 'MapQuestOpen' || options.overlaylayers.length > 0) {
+			if (options.layers !== ['MapQuestOpen'] || options.overlaylayers.length > 0) {
 				dependencies.push( 'ext.maps.leaflet.providers' );
 			}
 			if (options.enablefullscreen) {
