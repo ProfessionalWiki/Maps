@@ -12,7 +12,6 @@
  */
 
 use DataValues\Geo\Parsers\GeoCoordinateParser;
-use FileFetcher\SimpleFileFetcher;
 use Maps\CircleParser;
 use Maps\DistanceParser;
 use Maps\ImageOverlayParser;
@@ -69,7 +68,7 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 		);
 	}
 
-	define( 'Maps_VERSION', '5.1.0 alpha' );
+	define( 'Maps_VERSION', '5.1.0' );
 	define( 'SM_VERSION', Maps_VERSION );
 
 	if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {

@@ -25,7 +25,7 @@ Example for a `require` section just with Maps:
 
 ```json
     "require": {
-        "mediawiki/maps": "~4.3"
+        "mediawiki/maps": "~5.0"
     }
 ```
 
@@ -33,8 +33,8 @@ If you would also like to make use of the semantic functionality Maps provides y
 
 ```json
     "require": {
-        "mediawiki/maps": "~4.3",
-	"mediawiki/semantic-media-wiki": "~2.5"
+        "mediawiki/maps": "~5.0",
+        "mediawiki/semantic-media-wiki": "~2.5"
     }
 ```
 
