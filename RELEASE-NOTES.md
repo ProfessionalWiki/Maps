@@ -3,7 +3,7 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 5.1.0
 
-Under development
+Released on November 17th, 2017.
 
 * Dropped support for PHP older than 7.0
 * Fixed Leaflet attribution link (by Bernhard Krabina)
