@@ -6,14 +6,12 @@ These are the release notes for the [Maps extension](README.md). For an overview
 Released on November 17th, 2017.
 
 * Dropped support for PHP older than 7.0
+* Improved layer support for Leaflet (by Peter Grassberger)
+    * Leaflet maps now show a layer control when there are multiple layers 
+    * The `layer` parameter now accepts multiple values and has been aliased to `layers`
+    * Added `egMapsLeafletLayers` setting
+    * Deprecated `egMapsLeafletLayer` setting in favour of the new `egMapsLeafletLayers`
 * Fixed Leaflet attribution link (by Bernhard Krabina)
-
-### Improved layer support for Leaflet
-
-* Leaflet maps now show a layer control when there are multiple layers (by Peter Grassberger)
-* The `layer` parameter now accepts multiple values and has been aliased to `layers` (by Peter Grassberger)
-* Added `egMapsLeafletLayers` setting (by Peter Grassberger)
-* Deprecated `egMapsLeafletLayer` setting in favour of the new `egMapsLeafletLayers` (by Peter Grassberger)
 
 ## Maps 5.0.2
 
