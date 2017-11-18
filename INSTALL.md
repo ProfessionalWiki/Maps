@@ -95,7 +95,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td><strong>7.0</strong> - 7.2+</td>
 		<td>1.27 - 1.30+</td>
 		<td>2.1 - 2.5+</td>
-		<td>Planned Q4 2017</td>
+		<td>Planned Q4 2017 or Q1 2018</td>
 	</tr>
 	<tr>
 		<th>Maps 5.1.x</th>
@@ -109,42 +109,42 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>5.6 - 7.1</td>
 		<td>1.27 - 1.30</td>
 		<td>2.1 - 2.5</td>
-		<td>Minimal support release</td>
+		<td>Obsolete release, critical fixes for PHP 5.x</td>
 	</tr>
 	<tr>
 		<th>Maps 4.4.x</th>
 		<td>5.6 - 7.1</td>
 		<td>1.27 - 1.29</td>
 		<td>2.1 - 2.5</td>
-		<td>Obsolete release</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>Maps 4.3.x</th>
 		<td><strong>5.6</strong> - 7.1</td>
 		<td><strong>1.27</strong> - 1.29</td>
 		<td>2.1 - 2.5</td>
-		<td>Obsolete release</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>Maps 4.2.x</th>
 		<td>5.5 - 7.1</td>
 		<td>1.23 - 1.29</td>
 		<td>2.1 - 2.5</td>
-		<td>Obsolete release</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>Maps 4.1.x</th>
 		<td>5.5 - 7.1</td>
 		<td>1.23 - 1.28</td>
 		<td>2.1 - 2.5</td>
-		<td>Obsolete release</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>Maps 4.0.x</th>
 		<td>5.5 - 7.0</td>
 		<td>1.23 - 1.28</td>
 		<td>2.1 - 2.4</td>
-		<td>Obsolete release</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 </table>
 
