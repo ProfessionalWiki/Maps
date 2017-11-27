@@ -131,7 +131,7 @@
 	"maps_map_cannot_be_displayed": "No se puede mostrar el mapa.",
 	"maps-geocoder-not-available": "La funcionalidad de geocodificación de Maps no está disponible. Su ubicación no puede ser geocodificada.",
 	"maps-leaflet-par-defzoom": "Permite establecer el nivel de ampliación predeterminado del mapa.",
-	"maps-leaflet-par-layers": "La capa que aparecerá cuando se cargue el mapa.",
+	"maps-leaflet-par-layers": "Las capas que estarán disponibles en el selector de capas. La primera de ellas se mostrará al cargarse el mapa.",
 	"maps_click_to_activate": "Haz clic para activar el mapa",
 	"maps_centred_on": "Mapa centrado en $1, $2.",
 	"maps-par-mappingservice": "Permite configurar el servicio de cartografía que se utilizará para generar el mapa.",
