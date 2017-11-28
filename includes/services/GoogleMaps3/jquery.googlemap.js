@@ -471,7 +471,7 @@
 		this.initializeMap = function () {
 			var mapOptions = {
 				disableDefaultUI:true,
-				mapTypeId:options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : eval('google.maps.MapTypeId.' + options.type)
+				mapTypeId:options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : google.maps.MapTypeId[ options.type ]
 			};
 
 			// Map controls
@@ -484,14 +484,14 @@
 
 			for (i in options.types) {
 				if (typeof( options.types[i] ) !== 'function') {
-					options.types[i] = eval('google.maps.MapTypeId.' + options.types[i].toUpperCase() );
+					options.types[i] = google.maps.MapTypeId[ options.types[i].toUpperCase() ];
 				}
 			}
 
 			// Map control styles
-			mapOptions.zoomControlOptions = { style:eval('google.maps.ZoomControlStyle.' + options.zoomstyle) };
+			mapOptions.zoomControlOptions = { style:google.maps.ZoomControlStyle[ options.zoomstyle ] };
 			mapOptions.mapTypeControlOptions = {
-				style:eval('google.maps.MapTypeControlStyle.' + options.typestyle),
+				style:google.maps.MapTypeControlStyle[ options.typestyle ],
 				mapTypeIds:options.types
 			};
 
@@ -552,7 +552,7 @@
 			};
 
 			for (i = options.layers.length - 1; i >= 0; i--) {
-				var layer = eval(layerMapping[options.layers[i]]);
+				var layer = layerMapping[ options.layers[i] ];
 				layer.setMap(map);
 			}
 
