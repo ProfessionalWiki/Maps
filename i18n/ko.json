@@ -113,6 +113,7 @@
 	"maps_map_cannot_be_displayed": "지도를 보여줄 수 없습니다.",
 	"maps-geocoder-not-available": "지도의 좌표화 기능을 사용할 수 없습니다. 당신의 위치는 좌표화할 수 없습니다.",
 	"maps_googlemaps3": "Google 지도 v3",
+	"maps-leaflet-par-layers": "레이서 선택기에서 사용할 수 있는 레이어입니다. 첫 레이어는 지도를 불러올 때 보여줍니다.",
 	"maps_click_to_activate": "지도를 활성화하려면 클릭하세요",
 	"maps_centred_on": "$1, $2 지도 중심",
 	"maps-par-mappingservice": "지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.",
