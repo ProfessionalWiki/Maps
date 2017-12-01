@@ -92,7 +92,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	</tr>
 	<tr>
 		<th>Maps 5.2.x</th>
-		<td><strong>7.0</strong> - 7.2+</td>
+		<td>7.0 - 7.2+</td>
 		<td>1.27 - 1.30+</td>
 		<td>2.1 - 2.5+</td>
 		<td>Planned Q4 2017 or Q1 2018</td>
