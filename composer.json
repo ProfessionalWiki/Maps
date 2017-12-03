@@ -40,8 +40,7 @@
 		"jeroen/simple-geocoder": "@dev"
 	},
 	"require-dev": {
-		"data-values/common": "~0.3.1",
-		"phpunit/phpunit": "~3.7"
+		"data-values/common": "~0.3.1"
 	},
 	"autoload": {
 		"files" : [
