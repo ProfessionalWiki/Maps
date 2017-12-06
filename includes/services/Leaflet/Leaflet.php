@@ -22,12 +22,13 @@ call_user_func(
 	function () {
 		global $wgResourceModules;
 
-		$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+		$pathParts = explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) );
+		$remoteExtPath = implode( DIRECTORY_SEPARATOR, array_slice( $pathParts, -4 ) );
 
 		$wgResourceModules['ext.maps.leaflet'] = [
 			'dependencies' => [ 'ext.maps.common' ],
 			'localBasePath' => __DIR__,
-			'remoteExtPath' => end( $pathParts ),
+			'remoteExtPath' => $remoteExtPath,
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
@@ -47,7 +48,7 @@ call_user_func(
 		$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
 			'dependencies' => [ 'ext.maps.leaflet' ],
 			'localBasePath' => __DIR__ . '/leaflet.fullscreen',
-			'remoteExtPath' => end( $pathParts ) . '/leaflet.fullscreen',
+			'remoteExtPath' => $remoteExtPath . '/leaflet.fullscreen',
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
@@ -64,7 +65,7 @@ call_user_func(
 		$wgResourceModules['ext.maps.leaflet.markercluster'] = [
 			'dependencies' => [ 'ext.maps.leaflet' ],
 			'localBasePath' => __DIR__ . '/leaflet.markercluster',
-			'remoteExtPath' => end( $pathParts ),
+			'remoteExtPath' => $remoteExtPath . '/leaflet.markercluster',
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
@@ -81,7 +82,7 @@ call_user_func(
 		$wgResourceModules['ext.maps.leaflet.providers'] = [
 			'dependencies' => [ 'ext.maps.leaflet' ],
 			'localBasePath' => __DIR__ . '/leaflet-providers',
-			'remoteExtPath' => end( $pathParts ) . '/leaflet-providers',
+			'remoteExtPath' => $remoteExtPath . '/leaflet-providers',
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',

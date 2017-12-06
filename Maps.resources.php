@@ -13,7 +13,7 @@
  */
 return call_user_func( function() {
 
-	$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+	$pathParts = explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) );
 
 	$moduleTemplate = [
 		'position' => 'top',
