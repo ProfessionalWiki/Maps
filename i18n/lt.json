@@ -4,7 +4,8 @@
 			"Eitvys200",
 			"Hugo.arg",
 			"Aswanas",
-			"Zygimantus"
+			"Zygimantus",
+			"Agne1992"
 		]
 	},
 	"maps-desc": "Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://mapping.referata.com/wiki/Maps_examples demo]).\nKatrografavimo paslaugos pasiekiamos: $1",
@@ -64,7 +65,7 @@
 	"maps_map_cannot_be_displayed": "Žemėlapis negal būti parodytas.",
 	"maps_leaflet": "Lankstinukas",
 	"maps-leaflet-par-defzoom": "Leidžia nustatyti numatytąjį žemėlapio priartinimo lygį.",
-	"maps-leaflet-par-layers": "Sluoksnis, kuris bus rodomas kai žemėlapis bus įkeltas.",
+	"maps-leaflet-par-layers": "Sluoksniai, kuriuos bus galima rasti sluoksnių pasirinkimuose. Pirmasis sluoksnis bus rodomas įkėlus žemėlapį.",
 	"maps_click_to_activate": "Spustelėkite, norėdami įjungti žemėlapį",
 	"maps_centred_on": "Žemėlapis centruotas link $1, $2.",
 	"maps-par-enable-fullscreen": "Įgalinti viso ekrano mygtuką",
