@@ -21,12 +21,13 @@ call_user_func(
 	function () {
 		global $wgResourceModules;
 
-		$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+		$pathParts = explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) );
+		$remoteExtPath = implode( DIRECTORY_SEPARATOR, array_slice( $pathParts, -4 ) );
 
 		$wgResourceModules['ext.maps.openlayers'] = [
 			'dependencies' => [ 'ext.maps.common' ],
 			'localBasePath' => __DIR__,
-			'remoteExtPath' => end( $pathParts ),
+			'remoteExtPath' => $remoteExtPath,
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',

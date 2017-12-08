@@ -21,12 +21,13 @@ call_user_func(
 	function () {
 		global $wgResourceModules;
 
-		$pathParts = ( explode( DIRECTORY_SEPARATOR . 'extensions' . DIRECTORY_SEPARATOR, __DIR__, 2 ) );
+		$pathParts = explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) );
+		$remoteExtPath = implode( DIRECTORY_SEPARATOR, array_slice( $pathParts, -4 ) );
 
 		$wgResourceModules['ext.maps.googlemaps3'] = [
 			'dependencies' => [ 'ext.maps.common' ],
 			'localBasePath' => __DIR__,
-			'remoteExtPath' => end( $pathParts ),
+			'remoteExtPath' => $remoteExtPath,
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
@@ -47,7 +48,7 @@ call_user_func(
 
 		$wgResourceModules['ext.maps.gm3.markercluster'] = [
 			'localBasePath' => __DIR__ . '/gm3-util-library',
-			'remoteExtPath' => end( $pathParts ),
+			'remoteExtPath' => $remoteExtPath . '/gm3-util-library',
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
@@ -60,7 +61,7 @@ call_user_func(
 
 		$wgResourceModules['ext.maps.gm3.markerwithlabel'] = [
 			'localBasePath' => __DIR__ . '/gm3-util-library',
-			'remoteExtPath' => end( $pathParts ),
+			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
@@ -76,8 +77,8 @@ call_user_func(
 
 		$wgResourceModules['ext.maps.gm3.geoxml'] = [
 			'localBasePath' => __DIR__ . '/geoxml3',
-			'remoteExtPath' => end( $pathParts ),
-			'group' => 'ext.maps',
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.maps' . '/geoxml3',
 			'targets' => [
 				'mobile',
 				'desktop'
@@ -91,7 +92,7 @@ call_user_func(
 
 		$wgResourceModules['ext.maps.gm3.earth'] = [
 			'localBasePath' => __DIR__ . '/gm3-util-library',
-			'remoteExtPath' => end( $pathParts ),
+			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
 			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
