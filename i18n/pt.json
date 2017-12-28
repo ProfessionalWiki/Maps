@@ -208,7 +208,7 @@
 	"semanticmaps-par-template": "Uma predefinição que será usada para formatar o conteúdo da janela informativa.",
 	"semanticmaps-par-geocodecontrol": "Mostrar o controlo de geocodificação.",
 	"semanticmaps-par-activeicon": "Ícone para ser apresentado em vez do marcador padrão, quando a página ativa é igual ao resultado da consulta",
-	"semanticmaps-par-pagelabel": "Quando definido como \"yes\", todos os marcadores terão um rótulo em linha (\"inlineLabel\") com um link para a página que contém as coordenadas do marcador",
+	"semanticmaps-par-pagelabel": "Quando definido como \"yes\", todos os marcadores terão um rótulo em linha (\"inlineLabel\") com uma hiperligação para a página que contém as coordenadas do marcador",
 	"semanticmaps-par-ajaxcoordproperty": "Nome da propriedade das coordenadas que é usada para construir a consulta ajax.",
 	"semanticmaps-par-ajaxquery": "Uma segunda consulta que é enviada via ajax para obter coordenadas adicionais.",
 	"semanticmaps-par-userparam": "Um valor passado a cada chamada da predefinição, se for usada uma predefinição",
