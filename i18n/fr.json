@@ -130,7 +130,7 @@
 	"maps-geocoder-not-available": "La fonctionnalité géocodage des cartes n'est pas disponible. Votre emplacement ne peut être géocodé.",
 	"maps_leaflet": "Dépliant",
 	"maps-leaflet-par-defzoom": "Permet de définir le niveau de zoom par défaut de la carte.",
-	"maps-leaflet-par-layers": "La couche qui sera affichée pendant que la carte se charge.",
+	"maps-leaflet-par-layers": "Les couches qui seront disponibles dans le sélecteur de couche. La première est celle qui sera affichée pendant le chargement de la carte.",
 	"maps-leaflet-par-overlaylayers": "Les surcouches qui seront affichées pendant que la carte se charge.",
 	"maps-leaflet-par-maxclusterradius": "Rayon maximal qu'un agrégat peut couvrir en partant du marqueur central (en pixels).",
 	"maps-leaflet-par-clusterspiderfy": "Lorsque vous cliquez sur un cluster à bas niveau de zoom nous l'explicitons afin que vous puissiez voir l'ensemble de ses marqueurs.",

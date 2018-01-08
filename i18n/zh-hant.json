@@ -13,7 +13,8 @@
 			"Macofe",
 			"1233thehongkonger",
 			"Liuxinyu970226",
-			"Oapbtommy"
+			"Oapbtommy",
+			"Kly"
 		]
 	},
 	"maps-desc": "可讓 Wiki 頁面嵌入動態地圖，支援使用地理編碼標記位置，以及地理相關操作",
@@ -91,7 +92,7 @@
 	"maps-openlayers-par-overlays": "將會在圖層選擇器中可用的覆蓋層。這些圖層將顯示在一個正常的圖層，有點像一個標記。",
 	"mapeditor": "地圖編輯器",
 	"specialpages-group-maps": "地圖",
-	"mapeditor-parser-error": "分析描述資料錯誤，忽略使用者輸入。",
+	"mapeditor-parser-error": "分析詮釋資料錯誤，忽略使用者輸入。",
 	"mapeditor-none-text": "無",
 	"mapeditor-done-button": "完成",
 	"mapeditor-remove-button": "移除",
