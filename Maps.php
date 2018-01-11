@@ -90,7 +90,7 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 		],
 		'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps',
 		'descriptionmsg' => 'maps-desc',
-		'license-name' => 'GPL-2.0+'
+		'license-name' => 'GPL-2.0-or-later'
 	];
 
 	$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
