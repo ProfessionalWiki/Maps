@@ -78,25 +78,18 @@ abstract class MapsMappingService {
 	}
 
 	/**
-	 * @since 0.6.3
+	 * @since 5.2.0
+	 * @param ParserOutput $parserOutput
 	 */
-	public final function addDependencies( &$parserOrOut ) {
+	public final function addDependencies( ParserOutput $parserOutput ) {
 		$dependencies = $this->getDependencyHtml();
 
 		// Only add a head item when there are dependencies.
-		if ( $parserOrOut instanceof Parser ) {
-			if ( $dependencies ) {
-				$parserOrOut->getOutput()->addHeadItem( $dependencies );
-			}
-
-			$parserOrOut->getOutput()->addModules( $this->getResourceModules() );
-		} elseif ( $parserOrOut instanceof OutputPage ) {
-			if ( $dependencies !== false ) {
-				$parserOrOut->addHeadItem( md5( $dependencies ), $dependencies );
-			}
-
-			$parserOrOut->addModules( $this->getResourceModules() );
+		if ( $dependencies ) {
+			$parserOutput->addHeadItem( $dependencies );
 		}
+
+		$parserOutput->addModules( $this->getResourceModules() );
 	}
 
 	/**
@@ -106,7 +99,7 @@ abstract class MapsMappingService {
 		$allDependencies = array_merge( $this->getDependencies(), $this->dependencies );
 		$dependencies = [];
 
-		// Only add dependnecies that have not yet been added.
+		// Only add dependencies that have not yet been added.
 		foreach ( $allDependencies as $dependency ) {
 			if ( !in_array( $dependency, $this->addedDependencies ) ) {
 				$dependencies[] = $dependency;
