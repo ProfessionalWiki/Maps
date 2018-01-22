@@ -6,6 +6,7 @@ These are the release notes for the [Maps extension](README.md). For an overview
 Under development
 
 * Added support for installation of Maps in non standard directories (using `wgExtensionDirectory`) (by Tobias Oetterer)
+* Added `egMapsGeoCacheTtl` setting (by Máté Szabó)
 
 ## Maps 5.1.0
 
