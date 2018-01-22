@@ -16,10 +16,12 @@ class CachingGeocoder implements Geocoder {
 
 	private $geocoder;
 	private $cache;
+	private $cacheTtl;
 
-	public function __construct( Geocoder $geocoder, BagOStuff $cache ) {
+	public function __construct( Geocoder $geocoder, BagOStuff $cache, int $cacheTtl ) {
 		$this->geocoder = $geocoder;
 		$this->cache = $cache;
+		$this->cacheTtl = $cacheTtl;
 	}
 
 	/**
@@ -34,7 +36,7 @@ class CachingGeocoder implements Geocoder {
 		if ( $coordinates === false ) {
 			$coordinates = $this->geocoder->geocode( $address );
 
-			$this->cache->set( $key, $coordinates, BagOStuff::TTL_DAY );
+			$this->cache->set( $key, $coordinates, $this->cacheTtl );
 		}
 
 		return $coordinates;
