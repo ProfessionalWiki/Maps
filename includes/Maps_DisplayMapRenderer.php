@@ -48,8 +48,10 @@ class MapsDisplayMapRenderer {
 			self::getLayerDependencies( $params['mappingservice'], $params )
 		);
 
-		$this->service->addDependencies( $parser );
-		$parser->getOutput()->addHeadItem( $configVars );
+		$parserOutput = $parser->getOutput();
+
+		$this->service->addDependencies( $parserOutput );
+		$parserOutput->addHeadItem( $configVars );
 
 		return $output;
 	}
