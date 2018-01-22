@@ -37,7 +37,8 @@ class MapsFactory {
 		if ( $this->settings['egMapsEnableGeoCache'] ) {
 			return new CachingGeocoder(
 				$geocoder,
-				$this->getMediaWikiCache()
+				$this->getMediaWikiCache(),
+				$this->settings['egMapsGeoCacheTtl']
 			);
 		}
 
