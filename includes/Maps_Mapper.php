@@ -193,11 +193,6 @@ final class MapsMapper {
 			'default' => false,
 		];
 
-		$params['scrollwheelzoom'] = [
-			'type' => 'boolean',
-			'default' => true,
-		];
-
 		// Give grep a chance to find the usages:
 		// maps-displaymap-par-title, maps-displaymap-par-label, maps-displaymap-par-icon,
 		// maps-displaymap-par-visitedicon, aps-displaymap-par-lines, maps-displaymap-par-polygons,

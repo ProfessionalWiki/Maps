@@ -67,6 +67,11 @@ class MapsLeaflet extends MapsMappingService {
 			'message' => 'maps-par-enable-fullscreen',
 		];
 
+		$params['scrollwheelzoom'] = [
+			'type' => 'boolean',
+			'default' => true,
+		];
+
 		$params['markercluster'] = [
 			'type' => 'boolean',
 			'default' => false,
