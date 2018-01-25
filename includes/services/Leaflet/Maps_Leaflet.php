@@ -70,6 +70,7 @@ class MapsLeaflet extends MapsMappingService {
 		$params['scrollwheelzoom'] = [
 			'type' => 'boolean',
 			'default' => true,
+			'message' => 'maps-par-scrollwheelzoom',
 		];
 
 		$params['markercluster'] = [
