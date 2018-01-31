@@ -5,7 +5,9 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 Under development
 
-* Added `scrollwheelzoom` parameter for Leaflet that allows disabling scroll wheel zoom (by hidrarga)
+* Added `scrollwheelzoom` parameter for Leaflet and GoogleMap (by hidrarga)
+** In Leaflet, this allows disabling scroll wheel zoom
+** In GoogleMaps, this allows forcing scroll wheel zoom (instead of `CTRL + Scroll`)
 * Added support for installation of Maps in non standard directories (using `wgExtensionDirectory`) (by Tobias Oetterer)
 * Added `egMapsGeoCacheTtl` setting (by Máté Szabó)
 
