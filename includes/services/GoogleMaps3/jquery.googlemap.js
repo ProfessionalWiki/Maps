@@ -513,6 +513,9 @@
 				mapOptions.mapTypeControl = false;
 			}
 
+			if (options.scrollwheelzoom === true)
+				mapOptions.gestureHandling = 'greedy';
+
 			var map = new google.maps.Map(this.get(0), mapOptions);
 
 			google.maps.event.addListenerOnce(map, 'tilesloaded', function () {

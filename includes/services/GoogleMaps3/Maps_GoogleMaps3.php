@@ -231,6 +231,12 @@ class MapsGoogleMaps3 extends MapsMappingService {
 			'default' => false,
 			'message' => 'maps-par-enable-fullscreen',
 		];
+
+		$params['scrollwheelzoom'] = [
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-scrollwheelzoom',
+		];
 	}
 
 	/**
