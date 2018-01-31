@@ -1,15 +1,19 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 5.2.0
+## Maps 5.3.0
 
 Under development
 
-* Added `scrollwheelzoom` parameter for Leaflet and GoogleMap (by hidrarga)
-** In Leaflet, this allows disabling scroll wheel zoom
-** In GoogleMaps, this allows forcing scroll wheel zoom (instead of `CTRL + Scroll`)
+* Added `scrollwheelzoom` parameter for GoogleMaps (by hidrarga)
+
+## Maps 5.2.0
+
+Released on November 30th, 2018.
+
 * Added support for installation of Maps in non standard directories (using `wgExtensionDirectory`) (by Tobias Oetterer)
 * Added `egMapsGeoCacheTtl` setting (by Máté Szabó)
+* Added `scrollwheelzoom` parameter for Leaflet that allows disabling scroll wheel zoom (by hidrarga)
 
 ## Maps 5.1.0
 
