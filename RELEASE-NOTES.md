@@ -1,6 +1,12 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.3.0
+
+Under development
+
+* Added `scrollwheelzoom` parameter for GoogleMaps (by hidrarga)
+
 ## Maps 5.2.0
 
 Released on November 30th, 2018.
