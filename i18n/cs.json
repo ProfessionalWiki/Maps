@@ -4,7 +4,8 @@
 			"Mormegil",
 			"Vks",
 			"Utar",
-			"XenoPheX"
+			"XenoPheX",
+			"Ilimanaq29"
 		]
 	},
 	"right-geocode": "Geokódování",
@@ -18,6 +19,7 @@
 	"maps-layer-value": "Hodnota",
 	"maps-layer-errors": "Chyby",
 	"maps-layer-of-type": "Vrstvy typu $1",
+	"maps-par-scrollwheelzoom": "Ukazuje, jestli by mělo být posouvání stránky myší povoleno nebo ne.",
 	"maps-finddestination-par-location": "Původní umístění.",
 	"maps-displaymap-par-circles": "Kruhy pro zobrazení",
 	"maps-displaymap-par-lines": "Kruhy ke zobrazení",

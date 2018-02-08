@@ -54,6 +54,7 @@
 	"maps-coordinates-par-location": "형식을 지정할 좌표입니다.",
 	"maps-coordinates-par-format": "죄표에 대한 대상 형식입니다.",
 	"maps-coordinates-par-directional": "좌표가 방향이 출력되어야 할 것인지를 나타냅니다.",
+	"maps-par-scrollwheelzoom": "마우스 스크롤링을 활성화하는 것이 좋은지의 여부를 표시합니다.",
 	"maps-distance-par-distance": "지정된 단위로 해당하는 변환할 거리입니다.",
 	"maps-distance-par-decimals": "결과 값에 사용할 최대 소수 자릿수입니다.",
 	"maps-distance-par-unit": "거리를 출력할 단위입니다.",

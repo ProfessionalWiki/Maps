@@ -50,6 +50,7 @@
 	"maps-coordinates-par-location": "Les coordenaes a les que quies dar formatu.",
 	"maps-coordinates-par-format": "El formatu destín de les coordenaes.",
 	"maps-coordinates-par-directional": "Indica si les coordenaes tienen de sacase con formatu direicional o non.",
+	"maps-par-scrollwheelzoom": "Indica si tien d'activase o non la ampliación cola rueda'l mur.",
 	"maps-distance-par-distance": "La distancia a convertir a la so equivalente nuna unidá especificada.",
 	"maps-distance-par-decimals": "El númberu máximu de díxitos fraccionarios a usar nel valor resultante.",
 	"maps-distance-par-unit": "La unidá na que sacar la distancia.",

@@ -61,6 +61,7 @@
 	"maps-coordinates-par-location": "{{maps-par|coordinates|location}}",
 	"maps-coordinates-par-format": "{{maps-par|coordinates|format}}",
 	"maps-coordinates-par-directional": "{{maps-par|coordinates|directional}}",
+	"maps-par-scrollwheelzoom": "{{maps-par|coordinates|scrollwheelzoom}}",
 	"maps-distance-par-distance": "{{maps-par|distance|distance}}",
 	"maps-distance-par-decimals": "{{maps-par|distance|decimals}}",
 	"maps-distance-par-unit": "{{maps-par|distance|unit}}",
