@@ -20,7 +20,8 @@
 			"Cat1987",
 			"Туллук",
 			"Pastakhov",
-			"Putnik"
+			"Putnik",
+			"Smigles"
 		]
 	},
 	"maps-desc": "Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса и выполнять другие географические действия",
@@ -169,14 +170,14 @@
 	"mapeditor-done-button": "Готово",
 	"mapeditor-remove-button": "Удалить",
 	"mapeditor-import-button2": "Импортировать",
-	"mapeditor-export-button": "Экспортировать в викитекст",
+	"mapeditor-export-button": "Экспортировать в вики-текст",
 	"mapeditor-import-button": "Импортировать из викитекста",
 	"mapeditor-select-button": "Выберите этот полигон",
 	"mapeditor-mapparam-button": "Править параметры карты",
 	"mapeditor-clear-button": "Очистить карту",
-	"mapeditor-code-title": "Викитекст",
+	"mapeditor-code-title": "Вики-текст",
 	"mapeditor-import-title": "Импорт викитекста",
-	"mapeditor-import-note": "Обратите внимание, что обработчик ожидает очень строго отформатированный викитекст. Викитекст, введённый здесь, должен точно соответствовать тому викитексту, который был сгенерирован при экспорте.",
+	"mapeditor-import-note": "Обратите внимание, что обработчик ожидает очень строго отформатированный вики-текст. Вики-текст, введённый здесь, должен точно соответствовать тому вики-тексту, который был сгенерирован при экспорте.",
 	"mapeditor-form-title": "Правка деталей",
 	"mapeditor-link-title-switcher-popup-text": "Всплывающая подсказка",
 	"mapeditor-link-title-switcher-link-text": "Ссылка",
