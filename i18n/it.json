@@ -10,7 +10,8 @@
 			"Rosh",
 			"Viscontino",
 			"Matteocng",
-			"Kaspo"
+			"Kaspo",
+			"S4b1nuz E.656"
 		]
 	},
 	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki, la geocodifica degli indirizzi ed altre operazioni geografiche",
@@ -121,6 +122,7 @@
 	"mapeditor-form-field-showonhover": "Visualizza solo al passaggio del mouse",
 	"mapeditor-mapparam-title": "Modifica i parametri della mappa",
 	"mapeditor-mapparam-defoption": "-Selezionare parametro-",
+	"mapeditor-imageoverlay-button": "Aggiungi sovrapposizione dell'immagine",
 	"mapeditor-form-field-image": "Immagine",
 	"mapeditor-imageoverlay-title": "Dettagli di sovrapposizione di immagini",
 	"mapeditor-form-field-visitedicon": "Icona visitato",
