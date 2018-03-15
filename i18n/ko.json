@@ -7,7 +7,8 @@
 			"아라",
 			"Revi",
 			"Macofe",
-			"Ykhwong"
+			"Ykhwong",
+			"Garam"
 		]
 	},
 	"maps-desc": "위키 문서에 동적 지도를 넣고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다",
@@ -72,7 +73,7 @@
 	"maps-geodistance-par-decimals": "결과 값에 사용할 최대 소수 자릿수입니다.",
 	"maps-displaymap-par-mappingservice": "지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.",
 	"maps-displaymap-par-coordinates": "지도에 표시할 하나 이상의 위치입니다. 표시로 표시됩니다.",
-	"maps-displaymap-par-visitedicon": "원래의 마커가 클릭된 후 마커 아이콘에 사용된 이미지 파일 이름이 클릭되었습니다",
+	"maps-displaymap-par-visitedicon": "원래의 마커가 클릭된 후 마커 아이콘에 사용된 영상 파일 이름이 클릭되었습니다",
 	"maps-displaymap-par-zoom": "지도의 확대 수준을 설정할 수 있습니다.\n제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.",
 	"maps-displaymap-par-centre": "display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.\n주소와 좌표를 모두 사용할 수 있습니다.\n이 속성이 제공되어 있지 않은 경우 지도는 제공한 표시에 대한 자체 중심에 있거나 제공한 표시 사이에 있습니다.",
 	"maps-displaymap-par-title": "특정 제목이 없는 모든 표시의 팝업에 보여줄 텍스트를 설정할 수 있습니다.\n레이블과 함께 사용하면 제목은 굵고 밑줄이 그어집니다.",
@@ -86,7 +87,7 @@
 	"maps-displaymap-par-polygons": "표시할 다각형",
 	"maps-displaymap-par-rectangles": "표시할 직사각형",
 	"maps-displaymap-par-static": "지도를 정적으로 만듭니다.",
-	"maps-displaymap-par-wmsoverlay": "WMS 오버레이 사용",
+	"maps-displaymap-par-wmsoverlay": "WMS 중첩 사용",
 	"maps-fullscreen-button": "전체화면으로 전환",
 	"maps-fullscreen-button-tooltip": "지도를 전체 화면 또는 삽입된 형태로 보기",
 	"validation-error-invalid-location": "$1 변수는 올바른 위치여야 합니다.",
@@ -140,7 +141,7 @@
 	"maps-googlemaps3-par-poi": "관심 지점을 보여줍니다.",
 	"maps-openlayers-par-controls": "지도에 놓을 컨트롤입니다.",
 	"maps-openlayers-par-layers": "레이서 선택기에서 사용할 수 있는 레이어입니다. 첫 레이어는 지도를 불러올 때 보여줍니다.",
-	"maps-openlayers-par-overlays": "레이어 선택기에서 사용 가능하게 될 오버레이 레이어. 이 레이어는 정상 레이어의 맨 위에 일종의 마커처럼 표시될 것입니다.",
+	"maps-openlayers-par-overlays": "레이어 선택기에서 사용 가능하게 될 중첩 레이어. 이 레이어는 정상 레이어의 맨 위에 일종의 표식처럼 나타날 것입니다.",
 	"mapeditor": "지도 편집기",
 	"specialpages-group-maps": "지도",
 	"mapeditor-parser-error": "메타데이터를 구문 분석하는 동안 오류가 발생했습니다. 사용자 입력을 무시합니다.",
@@ -198,7 +199,7 @@
 	"semanticmaps-kml-pagelinktext": "$1 문서는 문서 제목으로 바뀔 문서의 링크에 사용하는 텍스트",
 	"semanticmaps-shapes-improperformat": "$1의 부적절한 형식입니다. 형식에 대해서는 설명서를 참조하세요.",
 	"semanticmaps-shapes-missingshape": "$1에 대한 모양을 찾을 수 없습니다. 사용할 수 있는 모양에 대해서는 설명서를 참조하세요",
-	"validator-type-mapsimageoverlay": "이미지 오버레이",
-	"validator-type-mapsimageoverlay-list": "이미지 오버레이의 목록",
+	"validator-type-mapsimageoverlay": "영상 중첩",
+	"validator-type-mapsimageoverlay-list": "영상 중첩 목록",
 	"validator-type-mapslocation": "지리적 위치"
 }
