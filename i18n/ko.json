@@ -73,7 +73,7 @@
 	"maps-geodistance-par-decimals": "결과 값에 사용할 최대 소수 자릿수입니다.",
 	"maps-displaymap-par-mappingservice": "지도를 생성하는데 사용될 매핑 서비스를 설정할 수 있습니다.",
 	"maps-displaymap-par-coordinates": "지도에 표시할 하나 이상의 위치입니다. 표시로 표시됩니다.",
-	"maps-displaymap-par-visitedicon": "원래의 마커가 클릭된 후 마커 아이콘에 사용된 영상 파일 이름이 클릭되었습니다",
+	"maps-displaymap-par-visitedicon": "원래의 마커가 클릭된 후 마커 아이콘에 사용될 영상 파일 이름입니다",
 	"maps-displaymap-par-zoom": "지도의 확대 수준을 설정할 수 있습니다.\n제공하지 않고 여러 표시가 지도에 존재하지 않으면 설정한 기본값이 아닌 최고의 맞춤 확대로 설정됩니다.",
 	"maps-displaymap-par-centre": "display_point에 대한 지도의 중심 좌표를 설정할 수 있습니다.\n주소와 좌표를 모두 사용할 수 있습니다.\n이 속성이 제공되어 있지 않은 경우 지도는 제공한 표시에 대한 자체 중심에 있거나 제공한 표시 사이에 있습니다.",
 	"maps-displaymap-par-title": "특정 제목이 없는 모든 표시의 팝업에 보여줄 텍스트를 설정할 수 있습니다.\n레이블과 함께 사용하면 제목은 굵고 밑줄이 그어집니다.",

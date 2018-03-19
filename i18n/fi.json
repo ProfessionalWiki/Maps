@@ -8,7 +8,8 @@
 			"Nike",
 			"Str4nd",
 			"ZeiP",
-			"Macofe"
+			"Macofe",
+			"Pahkiqaz"
 		]
 	},
 	"maps-desc": "Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja",
@@ -61,7 +62,7 @@
 	"maps-displaymap-par-minzoom": "Laajin loitonnustaso",
 	"maps-displaymap-par-polygons": "Näytettävät monikulmiot",
 	"maps-displaymap-par-rectangles": "Näytettävät suorakulmiot",
-	"maps-displaymap-par-static": "Onko kartan on oltava staattinen",
+	"maps-displaymap-par-static": "Tee kartasta staattinen",
 	"maps-fullscreen-button": "Koko näytön tila",
 	"maps-fullscreen-button-tooltip": "Näytä kartta koko näytön tilassa tai upotettuna.",
 	"validation-error-invalid-location": "Parametrin $1 on oltava sallittu sijainti.",
