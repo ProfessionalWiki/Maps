@@ -37,7 +37,7 @@
 		"data-values/geo": "~2.0",
 		"jeroen/file-fetcher": "~4.2",
 		"jeroen/simple-cache": "~2.0",
-		"jeroen/simple-geocoder": "@dev"
+		"jeroen/simple-geocoder": "~1.1"
 	},
 	"require-dev": {
 		"data-values/common": "~0.3.1"
