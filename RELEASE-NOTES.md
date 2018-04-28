@@ -3,13 +3,14 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 5.3.0
 
-Under development
+Released on April 28th, 2018.
 
 * Added `scrollwheelzoom` parameter for GoogleMaps (by hidrarga)
+* Fixed installation issue caused by using a development version of the geocoding library
 
 ## Maps 5.2.0
 
-Released on November 30th, 2018.
+Released on January 30th, 2018.
 
 * Added support for installation of Maps in non standard directories (using `wgExtensionDirectory`) (by Tobias Oetterer)
 * Added `egMapsGeoCacheTtl` setting (by Máté Szabó)
