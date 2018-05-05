@@ -11,7 +11,7 @@
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 
-use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Parsers\LatLongParser;
 use Maps\CircleParser;
 use Maps\DistanceParser;
 use Maps\ImageOverlayParser;
@@ -178,7 +178,7 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 	}
 
 	$GLOBALS['wgParamDefinitions']['coordinate'] = [
-		'string-parser' => GeoCoordinateParser::class,
+		'string-parser' => LatLongParser::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mappingservice'] = [

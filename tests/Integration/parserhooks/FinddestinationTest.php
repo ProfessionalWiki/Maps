@@ -2,7 +2,6 @@
 
 namespace Maps\Test;
 
-use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\Elements\Location;
 

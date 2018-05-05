@@ -3,7 +3,7 @@
 namespace Maps\Semantic\DataValues;
 
 use DataValues\Geo\Formatters\LatLongFormatter;
-use DataValues\Geo\Parsers\GeoCoordinateParser;
+use DataValues\Geo\Parsers\LatLongParser;
 use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
 use MapsDistanceParser;
@@ -97,7 +97,7 @@ class CoordinateValue extends SMWDataValue {
 	}
 
 	private function tryParseAndSetDataItem( string $coordinates ) {
-		$parser = new GeoCoordinateParser();
+		$parser = new LatLongParser();
 
 		try {
 			$value = $parser->parse( $coordinates );
