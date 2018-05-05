@@ -2,7 +2,7 @@
 
 namespace Maps\Semantic\DataValues;
 
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use DataValues\Geo\Formatters\LatLongFormatter;
 use DataValues\Geo\Parsers\GeoCoordinateParser;
 use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
@@ -160,13 +160,13 @@ class CoordinateValue extends SMWDataValue {
 
 		$options = new \ValueFormatters\FormatterOptions(
 			[
-				GeoCoordinateFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
+				LatLongFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
 			]
 		);
 
 		// TODO: $smgQPCoodDirectional
 
-		$coordinateFormatter = new GeoCoordinateFormatter( $options );
+		$coordinateFormatter = new LatLongFormatter( $options );
 
 		$value = new LatLongValue(
 			$dataItem->getLatitude(),

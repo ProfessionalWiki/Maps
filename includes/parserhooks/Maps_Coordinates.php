@@ -1,6 +1,6 @@
 <?php
 
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use DataValues\Geo\Formatters\LatLongFormatter;
 
 /**
  * Class for the 'coordinates' parser hooks,
@@ -27,13 +27,13 @@ class MapsCoordinates extends ParserHook {
 	public function render( array $parameters ) {
 		$options = new \ValueFormatters\FormatterOptions(
 			[
-				GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-				GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
-				GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
+				LatLongFormatter::OPT_FORMAT => $parameters['format'],
+				LatLongFormatter::OPT_DIRECTIONAL => $parameters['directional'],
+				LatLongFormatter::OPT_PRECISION => 1 / 360000
 			]
 		);
 
-		$coordinateFormatter = new GeoCoordinateFormatter( $options );
+		$coordinateFormatter = new LatLongFormatter( $options );
 
 		$output = $coordinateFormatter->format( $parameters['location'] );
 

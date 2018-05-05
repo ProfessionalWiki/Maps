@@ -1,6 +1,6 @@
 <?php
 
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use DataValues\Geo\Formatters\LatLongFormatter;
 
 /**
  * Class for the 'finddestination' parser hooks, which can find a
@@ -33,13 +33,13 @@ class MapsFinddestination extends ParserHook {
 
 		$options = new \ValueFormatters\FormatterOptions(
 			[
-				GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-				GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
-				GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
+				LatLongFormatter::OPT_FORMAT => $parameters['format'],
+				LatLongFormatter::OPT_DIRECTIONAL => $parameters['directional'],
+				LatLongFormatter::OPT_PRECISION => 1 / 360000
 			]
 		);
 
-		$formatter = new GeoCoordinateFormatter( $options );
+		$formatter = new LatLongFormatter( $options );
 
 		$geoCoords = new \DataValues\LatLongValue( $destination['lat'], $destination['lon'] );
 		$output = $formatter->format( $geoCoords );

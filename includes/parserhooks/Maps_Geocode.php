@@ -1,6 +1,6 @@
 <?php
 
-use DataValues\Geo\Formatters\GeoCoordinateFormatter;
+use DataValues\Geo\Formatters\LatLongFormatter;
 use Jeroen\SimpleGeocoder\Geocoder;
 use ValueFormatters\FormatterOptions;
 
@@ -44,12 +44,12 @@ class MapsGeocode extends ParserHook {
 	}
 
 	private function newCoordinateFormatter( array $parameters ) {
-		return new GeoCoordinateFormatter(
+		return new LatLongFormatter(
 			new FormatterOptions(
 				[
-					GeoCoordinateFormatter::OPT_FORMAT => $parameters['format'],
-					GeoCoordinateFormatter::OPT_DIRECTIONAL => $parameters['directional'],
-					GeoCoordinateFormatter::OPT_PRECISION => 1 / 360000
+					LatLongFormatter::OPT_FORMAT => $parameters['format'],
+					LatLongFormatter::OPT_DIRECTIONAL => $parameters['directional'],
+					LatLongFormatter::OPT_PRECISION => 1 / 360000
 				]
 			)
 		);
