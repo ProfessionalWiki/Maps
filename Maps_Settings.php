@@ -14,9 +14,9 @@
 
 	// Array of String. Array containing all the mapping services that will be made available to the user.
 	$GLOBALS['egMapsAvailableServices'] = [
-		'googlemaps3',
-		'openlayers',
 		'leaflet',
+		'openlayers',
+		'googlemaps3'
 	];
 
 	// String. The default mapping service, which will be used when no default
