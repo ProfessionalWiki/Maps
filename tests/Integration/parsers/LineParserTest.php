@@ -6,19 +6,14 @@ use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;
 use Maps\Elements\Line;
 use Maps\LineParser;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Maps\LineParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class LineParserTest extends \PHPUnit_Framework_TestCase {
-
-	public function setUp() {
-		if ( !defined( 'MEDIAWIKI' ) ) {
-			$this->markTestSkipped( 'MediaWiki is not available' );
-		}
-	}
+class LineParserTest extends TestCase {
 
 	public function testGivenOneCoordinate_lineWithOneCoordinateIsReturned() {
 		$parser = $this->newParser();

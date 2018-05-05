@@ -2,6 +2,7 @@
 
 namespace Maps;
 
+use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Rectangle;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
@@ -20,8 +21,8 @@ class RectangleParser implements ValueParser {
 
 	private $geocoder;
 
-	public function __construct() {
-		$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+	public function __construct( Geocoder $geocoder = null ) {
+		$this->geocoder = $geocoder ?? MapsFactory::newDefault()->newGeocoder();
 	}
 
 	/**

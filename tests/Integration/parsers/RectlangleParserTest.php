@@ -3,29 +3,21 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
+use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
+use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\Elements\Rectangle;
 use Maps\RectangleParser;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers Maps\RectangleParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class RectangleParserTest extends \PHPUnit_Framework_TestCase {
-
-	public function setUp() {
-		if ( !defined( 'MEDIAWIKI' ) ) {
-			$this->markTestSkipped( 'MediaWiki is not available' );
-		}
-	}
-
-	public function testCanConstruct() {
-		new RectangleParser();
-		$this->assertTrue( true );
-	}
+class RectangleParserTest extends TestCase {
 
 	public function testGivenBoundingBox_parserReturnsRectangle() {
-		$parser = new RectangleParser();
+		$parser = new RectangleParser( new CoordinateFriendlyGeocoder( new NullGeocoder() ) );
 
 		$rectangle = $parser->parse( '51.8357775,33.83789:46,23.37890625' );
 
@@ -39,7 +31,7 @@ class RectangleParserTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGivenTitleAndText_rectangleHasProvidedMetaData() {
-		$parser = new RectangleParser();
+		$parser = new RectangleParser( new CoordinateFriendlyGeocoder( new NullGeocoder() ) );
 
 		$rectangle = $parser->parse( "51.8357775,33.83789:46,23.37890625~I'm a square~of doom" );
 

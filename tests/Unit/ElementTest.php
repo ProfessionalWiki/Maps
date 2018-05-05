@@ -7,6 +7,7 @@ use Maps\Elements\Circle;
 use Maps\Elements\ImageOverlay;
 use Maps\Elements\Line;
 use Maps\Elements\Rectangle;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers Maps\Elements\BaseElement
@@ -14,7 +15,7 @@ use Maps\Elements\Rectangle;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class ElementTest extends \PHPUnit_Framework_TestCase {
+class ElementTest extends TestCase {
 
 	public function elementProvider() {
 		$elements = [];

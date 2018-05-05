@@ -3,6 +3,7 @@
 namespace Maps\Test;
 
 use MapsMapper;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers MapsMapper
@@ -10,7 +11,7 @@ use MapsMapper;
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-class MapsMapperTest extends \PHPUnit_Framework_TestCase {
+class MapsMapperTest extends TestCase {
 
 	public function setUp() {
 		if ( !defined( 'MEDIAWIKI' ) ) {

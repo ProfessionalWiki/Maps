@@ -65,7 +65,7 @@
 	$GLOBALS['egMapsEnableGeoCache'] = true;
 	// Integer. If egMapsEnableGeoCache is true, determines the TTL of cached geocoded addresses.
 	// Default value: 1 day.
-	$GLOBALS['egMapsGeoCacheTtl'] = BagOStuff::TTL_DAY;
+	$GLOBALS['egMapsGeoCacheTtl'] = 24 * 3600;
 
 
 // Coordinate configuration

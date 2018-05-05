@@ -4,6 +4,7 @@ namespace Maps\Tests\Semantic\ValueDescriptions;
 
 use CoordinateValue;
 use Maps\Semantic\ValueDescriptions\AreaDescription;
+use PHPUnit\Framework\TestCase;
 use SMW\DataValueFactory;
 use SMWDataItem;
 use SMWDIGeoCoord;
@@ -14,7 +15,7 @@ use SMWDIGeoCoord;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class AreaDescriptionTest extends \PHPUnit_Framework_TestCase {
+class AreaDescriptionTest extends TestCase {
 
 	public function setUp() {
 		if ( !defined( 'SMW_VERSION' ) ) {

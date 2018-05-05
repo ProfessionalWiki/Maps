@@ -62,7 +62,7 @@ As setup, run `composer install` inside of the Maps root directory.
 
 You can run the MediaWiki independent tests by changing into the Maps root directory and running
 
-    phpunit
+    php vendor/bin/phpunit
     
 This is possible without having a MediaWiki installation or webserver. A clone of the Maps code suffices.
 

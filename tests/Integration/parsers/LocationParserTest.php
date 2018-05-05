@@ -6,19 +6,14 @@ use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\StubGeocoder;
 use Maps\Elements\Location;
 use Maps\LocationParser;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \Maps\LocationParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class LocationParserTest extends \PHPUnit_Framework_TestCase {
-
-	public function setUp() {
-		if ( !defined( 'MEDIAWIKI' ) ) {
-			$this->markTestSkipped( 'MediaWiki is not available' );
-		}
-	}
+class LocationParserTest extends TestCase {
 
 	/**
 	 * @dataProvider titleProvider

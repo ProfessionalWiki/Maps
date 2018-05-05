@@ -21,14 +21,18 @@ class LineParser implements ValueParser {
 
 	private $metaDataSeparator = '~';
 
-	private $geocoder;
-
-	public function __construct() {
-		$this->geocoder = MapsFactory::newDefault()->newGeocoder();
-	}
+	private $geocoder = null;
 
 	public function setGeocoder( Geocoder $geocoder ) {
 		$this->geocoder = $geocoder;
+	}
+
+	private function getGeocoder(): Geocoder {
+		if ( $this->geocoder == null ) {
+			$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+		}
+
+		return $this->geocoder;
 	}
 
 	/**
@@ -69,7 +73,7 @@ class LineParser implements ValueParser {
 		$coordinates = [];
 
 		foreach ( $coordinateStrings as $coordinateString ) {
-			$coordinate = $this->geocoder->geocode( $coordinateString );
+			$coordinate = $this->getGeocoder()->geocode( $coordinateString );
 
 			if ( $coordinate === null ) {
 				// TODO: good if the user knows something has been omitted

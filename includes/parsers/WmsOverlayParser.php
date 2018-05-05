@@ -4,7 +4,7 @@ namespace Maps;
 
 use Maps\Elements\WmsOverlay;
 use ValueParsers\ParseException;
-use ValueParsers\StringValueParser;
+use ValueParsers\ValueParser;
 
 /**
  * ValueParser that parses the string representation of a WMS layer
@@ -14,7 +14,7 @@ use ValueParsers\StringValueParser;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class WmsOverlayParser extends StringValueParser {
+class WmsOverlayParser implements ValueParser {
 
 	/**
 	 * Parses the provided string and returns the result.
@@ -26,7 +26,11 @@ class WmsOverlayParser extends StringValueParser {
 	 * @return WmsOverlay
 	 * @throws ParseException
 	 */
-	protected function stringParse( $value ) {
+	public function parse( $value ) {
+		if ( !is_string( $value ) ) {
+			throw new ParseException( 'Not a string' );
+		}
+
 		$separator = " ";
 		$metaData = explode( $separator, $value );
 
@@ -41,4 +45,5 @@ class WmsOverlayParser extends StringValueParser {
 
 		throw new ParseException( 'Need at least two parameters, url to WMS server and map layer name' );
 	}
+
 }

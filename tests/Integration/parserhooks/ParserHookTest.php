@@ -4,12 +4,13 @@ namespace Maps\Test;
 
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\Processor;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class ParserHookTest extends \PHPUnit_Framework_TestCase {
+abstract class ParserHookTest extends TestCase {
 
 	public static function setUpBeforeClass() {
 		if ( !defined( 'MEDIAWIKI' ) ) {

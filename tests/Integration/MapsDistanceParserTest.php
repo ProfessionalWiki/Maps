@@ -3,6 +3,7 @@
 namespace Maps\Test;
 
 use MapsDistanceParser;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers MapsDistanceParser
@@ -10,7 +11,7 @@ use MapsDistanceParser;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsDistanceParserTest extends \PHPUnit_Framework_TestCase {
+class MapsDistanceParserTest extends TestCase {
 
 	public static $distances = [
 		'1' => 1,

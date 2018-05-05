@@ -3,6 +3,7 @@
 namespace Maps\Test;
 
 use Maps\DistanceParser;
+use PHPUnit\Framework\TestCase;
 use ValueParsers\ParseException;
 
 /**
@@ -10,13 +11,7 @@ use ValueParsers\ParseException;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class DistanceParserTest extends \PHPUnit_Framework_TestCase {
-
-	public function setUp() {
-		if ( !defined( 'MEDIAWIKI' ) ) {
-			$this->markTestSkipped( 'MediaWiki is not available' );
-		}
-	}
+class DistanceParserTest extends TestCase {
 
 	/**
 	 * @dataProvider validInputProvider
@@ -47,7 +42,7 @@ class DistanceParserTest extends \PHPUnit_Framework_TestCase {
 	public function testGivenInvalidInput_exceptionIsThrown( $input ) {
 		$parser = new DistanceParser();
 
-		$this->setExpectedException( ParseException::class );
+		$this->expectException( ParseException::class );
 		$parser->parse( $input );
 	}
 

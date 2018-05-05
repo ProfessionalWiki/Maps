@@ -4,70 +4,50 @@ namespace Maps\Test;
 
 use Maps\Elements\WmsOverlay;
 use Maps\WmsOverlayParser;
+use PHPUnit\Framework\TestCase;
+use ValueParsers\ParseException;
 
 /**
- * @covers Maps\WmsOverlayParser
+ * @covers \Maps\WmsOverlayParser
  * @licence GNU GPL v2+
  * @author Mathias Mølster Lidal <mathiaslidal@gmail.com>
  */
-class WmsOverlayParserTest extends \ValueParsers\Test\StringValueParserTest {
+class WmsOverlayParserTest extends TestCase {
 
-	public function setUp() {
-		if ( !defined( 'MEDIAWIKI' ) ) {
-			$this->markTestSkipped( 'MediaWiki is not available' );
-		}
+	public function testGivenValidInput_parserReturnsOverlayObject() {
+		$parser = new WmsOverlayParser();
+
+		$overlay = $parser->parse( 'http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi? Foundation.GTOPO30' );
+
+		$this->assertSame(
+			'http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi?',
+			$overlay->getWmsServerUrl()
+		);
+
+		$this->assertSame(
+			'Foundation.GTOPO30',
+			$overlay->getWmsLayerName()
+		);
 	}
 
-	/**
-	 * @see ValueParserTestBase::validInputProvider
-	 *
-	 * @return array
-	 */
-	public function validInputProvider() {
-		$argLists = [];
+	public function testWhenStyleNameIsSpecified_getStyleNameReturnsIt() {
+		$parser = new WmsOverlayParser();
 
-		$valid = [
-			"http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi? Foundation.GTOPO30" =>
-				[ "http://demo.cubewerx.com/demo/cubeserv/cubeserv.cgi?", "Foundation.GTOPO30" ],
-			"http://maps.imr.no:80/geoserver/wms? vulnerable_areas:Identified_coral_area coral_identified_areas" =>
-				[
-					"http://maps.imr.no:80/geoserver/wms?",
-					"vulnerable_areas:Identified_coral_area",
-					"coral_identified_areas"
-				]
-		];
+		$overlay = $parser->parse(
+			'http://maps.imr.no:80/geoserver/wms? vulnerable_areas:Identified_coral_area coral_identified_areas'
+		);
 
-		foreach ( $valid as $value => $expected ) {
-			$expectedOverlay = new WmsOverlay( $expected[0], $expected[1] );
-
-			if ( count( $expected ) == 3 ) {
-				$expectedOverlay->setWmsStyleName( $expected[2] );
-			}
-
-			$argLists[] = [ (string)$value, $expectedOverlay ];
-		}
-
-		return $argLists;
+		$this->assertSame(
+			'coral_identified_areas',
+			$overlay->getWmsStyleName()
+		);
 	}
 
-	/**
-	 * @return string
-	 */
-	protected function getParserClass() {
-		return WmsOverlayParser::class;
-	}
+	public function testWhenThereAreLessThanTwoSegments_parseExceptionIsThrown() {
+		$parser = new WmsOverlayParser();
 
-	/**
-	 * @see ValueParserTestBase::requireDataValue
-	 *
-	 * @return boolean
-	 */
-	protected function requireDataValue() {
-		return false;
-	}
-
-	protected function getInstance() {
-		return new WmsOverlayParser();
+		$this->expectException( ParseException::class );
+		$parser->parse( 'Such' );
 	}
 
 }
