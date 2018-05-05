@@ -1,6 +1,12 @@
 These are the release notes for the [Maps extension](README.md). For an overview of the different releases and which versions of PHP and MediaWiki they support, see the [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.4.0
+
+Under development 
+
+* Improved mapping service fallback order (by Karsten Hoffmeyer)
+
 ## Maps 5.3.0
 
 Released on April 28th, 2018.
