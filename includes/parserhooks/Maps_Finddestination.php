@@ -1,6 +1,7 @@
 <?php
 
 use DataValues\Geo\Formatters\LatLongFormatter;
+use DataValues\Geo\Values\LatLongValue;
 
 /**
  * Class for the 'finddestination' parser hooks, which can find a
@@ -41,10 +42,7 @@ class MapsFinddestination extends ParserHook {
 
 		$formatter = new LatLongFormatter( $options );
 
-		$geoCoords = new \DataValues\LatLongValue( $destination['lat'], $destination['lon'] );
-		$output = $formatter->format( $geoCoords );
-
-		return $output;
+		return $formatter->format( new LatLongValue( $destination['lat'], $destination['lon'] ) );
 	}
 
 	/**
