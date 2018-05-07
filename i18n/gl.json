@@ -52,6 +52,7 @@
 	"maps-coordinates-par-location": "As coordenadas ás que quere dar formato.",
 	"maps-coordinates-par-format": "O formato de destino para as coordenadas.",
 	"maps-coordinates-par-directional": "Indica se as coordenadas deben producirse con formato direccional ou non.",
+	"maps-par-scrollwheelzoom": "Indica se debe activarse ou non o escorregamento co rato.",
 	"maps-distance-par-distance": "A distancia a converter na súa equivalente nunha unidade especificada.",
 	"maps-distance-par-decimals": "O número máximo de díxitos fraccionarios a utilizar no valor resultante.",
 	"maps-distance-par-unit": "A unidade na que mostrar a distancia.",
