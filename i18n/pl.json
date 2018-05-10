@@ -8,7 +8,8 @@
 			"Yarl",
 			"Alan ffm",
 			"Macofe",
-			"Deejay1"
+			"Deejay1",
+			"Railfail536"
 		]
 	},
 	"maps-desc": "Umożliwia zamieszczanie na stronach wiki map dynamicznych, geokodowanych adresów i innych danych geograficznych",
@@ -54,9 +55,15 @@
 	"maps-finddestination-par-distance": "Odległość podróży.",
 	"maps-geocode-par-location": "Adres, który chcesz geokodować.",
 	"maps-geocode-par-format": "Format wynikowych współrzędnych.",
+	"maps-displaymap-par-circles": "Okręgi do wyświetlenia",
+	"maps-displaymap-par-lines": "Linie do wyświetlenia",
 	"maps-displaymap-par-maxzoom": "Maksymalny poziom powiększenia",
 	"maps-displaymap-par-minzoom": "Minimalny poziom powiększenia",
+	"maps-displaymap-par-polygons": "Wielokąty do wyświetlenia",
+	"maps-displaymap-par-rectangles": "Prostokąty do wyświetlenia",
+	"maps-displaymap-par-static": "Uczyń mapę statyczną",
 	"maps-fullscreen-button": "Przełącz na tryb pełnoekranowy",
+	"maps-fullscreen-button-tooltip": "Zobacz mapę jako pełnoekranową lub osadzoną.",
 	"validation-error-invalid-location": "Parametr $1 musi wskazywać prawidłową lokalizację.",
 	"validation-error-invalid-locations": "Parametr $1 musi wskazywać jedną lub więcej prawidłowych lokalizacji.",
 	"validation-error-invalid-width": "Parametr $1 musi określać prawidłową szerokość.",
@@ -108,6 +115,7 @@
 	"mapeditor-import-button2": "Importuj",
 	"mapeditor-export-button": "Eksport do kodu wiki",
 	"mapeditor-import-button": "Import z kodu wiki",
+	"mapeditor-select-button": "Wybierz ten wielokąt",
 	"mapeditor-mapparam-button": "Edytuj parametry mapy",
 	"mapeditor-clear-button": "Wyczyść mapę",
 	"mapeditor-code-title": "Kod wiki",
