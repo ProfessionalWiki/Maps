@@ -25,7 +25,7 @@ Example for a `require` section just with Maps:
 
 ```json
     "require": {
-        "mediawiki/maps": "~5.0"
+        "mediawiki/maps": "~5"
     }
 ```
 
@@ -33,7 +33,7 @@ If you would also like to make use of the semantic functionality Maps provides y
 
 ```json
     "require": {
-        "mediawiki/maps": "~5.0",
+        "mediawiki/maps": "~5",
         "mediawiki/semantic-media-wiki": "~2.5"
     }
 ```
@@ -53,11 +53,17 @@ At present, minimal configuration is needed to get Maps running. Configuration i
 MediaWiki extensions, by placing some simple snippets of PHP code at the bottom of MediaWiki's
 LocalSettings.php.
 
+### Required configuration for MediaWiki
+
+As of version 1.30.0 and later MediaWiki core developers recommend using the server's standard C locale for best experience. Moreover using this locale avoids issues with Maps itself due to [SMW #3153](https://github.com/SemanticMediaWiki/SemanticMediaWiki/issues/3153). Set the C locale as follows:
+
+ `$wgShellLocale = 'C.UTF-8';`
+
+### Required configuration for Google Maps
+
 As of June 2016, Google requires you to provide an API key when you where not already using their
 maps API. This means that you will either need to configure this key, or use another of the
 supported mapping services.
-
-### Required configuration for Google Maps
 
 `$GLOBALS['egMapsGMaps3ApiKey'] = 'your-api-key';`
 
