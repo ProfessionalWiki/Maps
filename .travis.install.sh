@@ -13,6 +13,7 @@ mv mediawiki-$MW phase3
 cd phase3
 
 composer install --prefer-source
+composer require --dev phpunit/phpunit=~6.2 --update-with-dependencies
 
 if [ "$DB" == "postgres" ]
 then
