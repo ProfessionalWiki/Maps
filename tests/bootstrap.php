@@ -1,18 +1,26 @@
 <?php
 
-// If testing against an older version of MediaWiki, define
-// an empty trait to avoid fatal errors.
-if ( !trait_exists( PHPUnit4And6Compat::class ) ) {
-	trait PHPUnit4And6Compat {
-	}
+if ( PHP_SAPI !== 'cli' ) {
+	die( 'Not an entry point' );
 }
 
 if ( defined( 'MEDIAWIKI' ) ) {
+	// If testing against an older version of MediaWiki, define
+	// an empty trait to avoid fatal errors.
+	if ( !trait_exists( PHPUnit4And6Compat::class ) ) {
+		trait PHPUnit4And6Compat {
+			public function expectException( string $exception ) {
+				$this->setExpectedException( $exception );
+			}
+		}
+	}
+
 	return;
 }
 
-if ( PHP_SAPI !== 'cli' ) {
-	die( 'Not an entry point' );
+if ( !trait_exists( PHPUnit4And6Compat::class ) ) {
+	trait PHPUnit4And6Compat {
+	}
 }
 
 error_reporting( -1 );
