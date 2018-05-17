@@ -4,6 +4,7 @@ namespace Maps\Test;
 
 use Maps\DistanceParser;
 use PHPUnit\Framework\TestCase;
+use PHPUnit4And6Compat;
 use ValueParsers\ParseException;
 
 /**
@@ -12,6 +13,7 @@ use ValueParsers\ParseException;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class DistanceParserTest extends TestCase {
+	use PHPUnit4And6Compat;
 
 	/**
 	 * @dataProvider validInputProvider
@@ -42,7 +44,7 @@ class DistanceParserTest extends TestCase {
 	public function testGivenInvalidInput_exceptionIsThrown( $input ) {
 		$parser = new DistanceParser();
 
-		$this->expectException( ParseException::class );
+		$this->setExpectedException( ParseException::class );
 		$parser->parse( $input );
 	}
 

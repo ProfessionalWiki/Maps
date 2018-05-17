@@ -5,6 +5,7 @@ namespace Maps\Test;
 use Maps\Elements\WmsOverlay;
 use Maps\WmsOverlayParser;
 use PHPUnit\Framework\TestCase;
+use PHPUnit4And6Compat;
 use ValueParsers\ParseException;
 
 /**
@@ -13,6 +14,7 @@ use ValueParsers\ParseException;
  * @author Mathias Mølster Lidal <mathiaslidal@gmail.com>
  */
 class WmsOverlayParserTest extends TestCase {
+	use PHPUnit4And6Compat;
 
 	public function testGivenValidInput_parserReturnsOverlayObject() {
 		$parser = new WmsOverlayParser();
@@ -46,7 +48,7 @@ class WmsOverlayParserTest extends TestCase {
 	public function testWhenThereAreLessThanTwoSegments_parseExceptionIsThrown() {
 		$parser = new WmsOverlayParser();
 
-		$this->expectException( ParseException::class );
+		$this->setExpectedException( ParseException::class );
 		$parser->parse( 'Such' );
 	}
 
