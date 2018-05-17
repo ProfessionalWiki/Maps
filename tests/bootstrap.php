@@ -1,12 +1,5 @@
 <?php
 
-// If testing against an older version of MediaWiki, define
-// an empty trait to avoid fatal errors.
-if ( !trait_exists( PHPUnit4And6Compat::class ) ) {
-	trait PHPUnit4And6Compat {
-	}
-}
-
 if ( defined( 'MEDIAWIKI' ) ) {
 	return;
 }

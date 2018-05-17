@@ -6,7 +6,6 @@ use InvalidArgumentException;
 use Maps\Element;
 use Maps\ElementOptions;
 use PHPUnit\Framework\TestCase;
-use PHPUnit4And6Compat;
 
 /**
  * Base class for unit tests classes for the Maps\BaseElement deriving objects.
@@ -17,7 +16,6 @@ use PHPUnit4And6Compat;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class BaseElementTest extends TestCase {
-	use PHPUnit4And6Compat;
 
 	public function invalidConstructorProvider() {
 		return [];
@@ -80,7 +78,7 @@ abstract class BaseElementTest extends TestCase {
 	 * @since 3.0
 	 */
 	public function testGivenInvalidArguments_constructorThrowsException() {
-		$this->setExpectedException( InvalidArgumentException::class );
+		$this->expectException( InvalidArgumentException::class );
 		call_user_func_array( [ $this, 'newInstance' ], func_get_args() );
 	}
 
