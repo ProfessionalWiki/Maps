@@ -60,11 +60,16 @@ Maps has been maintained since 2009 and is installed on over 1000 public wikis.
 
 As setup, run `composer install` inside of the Maps root directory.
 
-You can run the MediaWiki independent tests by changing into the Maps root directory and running
+You can run the MediaWiki independent tests by executing phpunit in the root directory of maps:
 
-    php vendor/bin/phpunit
-    
+    phpunit
+
 This is possible without having a MediaWiki installation or webserver. A clone of the Maps code suffices.
+
+If you do not have PHPUnit installed, you can download the .phar into the root directory and execute it there:
+
+	wget -O phpunit.phar https://phar.phpunit.de/phpunit-7.phar
+	php phpunit.phar
 
 To run the tests with MediaWiki, change into `tests/phpunit` of your MediaWiki installation and run
 

@@ -48,7 +48,7 @@ class WmsOverlayParserTest extends TestCase {
 	public function testWhenThereAreLessThanTwoSegments_parseExceptionIsThrown() {
 		$parser = new WmsOverlayParser();
 
-		$this->setExpectedException( ParseException::class );
+		$this->expectException( ParseException::class );
 		$parser->parse( 'Such' );
 	}
 

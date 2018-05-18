@@ -80,7 +80,7 @@ abstract class BaseElementTest extends TestCase {
 	 * @since 3.0
 	 */
 	public function testGivenInvalidArguments_constructorThrowsException() {
-		$this->setExpectedException( InvalidArgumentException::class );
+		$this->expectException( InvalidArgumentException::class );
 		call_user_func_array( [ $this, 'newInstance' ], func_get_args() );
 	}
 

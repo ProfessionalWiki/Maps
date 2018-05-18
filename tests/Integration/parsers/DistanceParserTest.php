@@ -44,7 +44,7 @@ class DistanceParserTest extends TestCase {
 	public function testGivenInvalidInput_exceptionIsThrown( $input ) {
 		$parser = new DistanceParser();
 
-		$this->setExpectedException( ParseException::class );
+		$this->expectException( ParseException::class );
 		$parser->parse( $input );
 	}
 

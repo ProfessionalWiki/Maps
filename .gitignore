@@ -9,3 +9,5 @@ extensions/
 
 composer.phar
 composer.lock
+
+phpunit.phar
