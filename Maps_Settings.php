@@ -56,7 +56,7 @@
 	// The geonames service requires you to specify a geonames user (see below),
 	// if you set this setting to geonames but do not specify the user, Maps will
 	// fall back to using the google service.
-	$GLOBALS['egMapsDefaultGeoService'] = 'geonames';
+	$GLOBALS['egMapsDefaultGeoService'] = 'nominatim';
 
 	// String. GeoNames API user/application name.
 	// Obtain an account here: http://www.geonames.org/login
