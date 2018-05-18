@@ -51,9 +51,11 @@
 
 // Geocoding
 
-	// String. The name of the geocoding service to use.
+	// Sets which service should be used to turn addresses into coordinates
 	// Available services: geonames, google, nominatim
-	// Some services might require you to provide credentials, see the settings below.
+	// The geonames service requires you to specify a geonames user (see below),
+	// if you set this setting to geonames but do not specify the user, Maps will
+	// fall back to using the google service.
 	$GLOBALS['egMapsDefaultGeoService'] = 'geonames';
 
 	// String. GeoNames API user/application name.
