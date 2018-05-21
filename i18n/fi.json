@@ -9,7 +9,8 @@
 			"Str4nd",
 			"ZeiP",
 			"Macofe",
-			"Pahkiqaz"
+			"Pahkiqaz",
+			"Pyscowicz"
 		]
 	},
 	"maps-desc": "Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja",
@@ -155,5 +156,6 @@
 	"semanticmaps-kml-linkabsolute": "Ovatko linkit absoluuttisia (eivätkä suhteellisia)",
 	"semanticmaps-kml-pagelinktext": "Sivulinkeissä käytettävä teksti, jossa $1 korvataan sivun otsikolla",
 	"semanticmaps-shapes-improperformat": "$1 on muotoiltu väärin. Katso muotoilun dokumentaatiota.",
-	"semanticmaps-shapes-missingshape": "$1: muotoja ei löytynyt. Dokumentaatiossa kerrotaan sallituista muodoista."
+	"semanticmaps-shapes-missingshape": "$1: muotoja ei löytynyt. Dokumentaatiossa kerrotaan sallituista muodoista.",
+	"validator-type-mapslocation-list": "Luettelo sijainneista"
 }
