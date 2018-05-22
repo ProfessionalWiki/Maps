@@ -93,7 +93,7 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 		'license-name' => 'GPL-2.0-or-later'
 	];
 
-	$GLOBALS['egMapsStyleVersion'] = $GLOBALS['wgStyleVersion'] . '-' . Maps_VERSION;
+	$GLOBALS['egMapsStyleVersion'] = '1-' . Maps_VERSION;
 
 	$GLOBALS['wgResourceModules'] = array_merge( $GLOBALS['wgResourceModules'], include 'Maps.resources.php' );
 
