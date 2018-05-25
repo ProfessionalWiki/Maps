@@ -32,6 +32,7 @@
 	"maps-error-no-layertype": "Musisz określić typ warstwy. {{PLURAL:$2|Wspierany jest wyłącznie typ|Wspierane są wyłącznie typy:}} $1",
 	"validation-error-invalid-layer": "Parametr $1 musi określać prawidłową warstwę.",
 	"validation-error-invalid-layers": "Parametr $1 musi wskazywać jedną lub więcej prawidłowych warstw.",
+	"validation-error-no-non-numeric": "Parametr „$1” musi być ciągiem nienumerycznym.",
 	"maps-layer-of-type": "Warstwa typu $1",
 	"maps-layer-of-type-and-name": "Warstwa „$2” typu „$1”",
 	"maps-layer-type-supported-by": "Tego typu warstwa może być używana wyłącznie z {{PLURAL:$2|serwisem map|serwisami map:}} $1.",
