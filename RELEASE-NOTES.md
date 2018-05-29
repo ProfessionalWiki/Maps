@@ -6,6 +6,7 @@ These are the release notes for the [Maps extension](README.md). For an overview
 Under development 
 
 * Improved mapping service fallback order (by Karsten Hoffmeyer)
+* Improved compatibility with the latest MediaWiki development version (by Timo Tijhof)
 
 ## Maps 5.3.0
 
