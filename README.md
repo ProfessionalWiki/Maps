@@ -11,12 +11,12 @@ Features:
     * Query your stored coordinates and visualize them on dynamic maps, as tables or as lists
     * Export your coordinates as KML or RDF
     * Combine coordinates with other structured data stored in your wiki
-* Coordinate formatting and format conversion via the `#coordinates` parser function.
-* Geocoding via several supported services with the `#geocode` parser function.
+* Geocoding via several supported services with the [`#geocode`](https://www.semantic-mediawiki.org/wiki/Maps/Geocoding) parser function.
+* Coordinate formatting and format conversion via the [`#coordinates`](https://www.semantic-mediawiki.org/wiki/Maps/Coordinates) parser function.
 * Geospatial operations
-    * Calculating the distance between two points with `#geodistance`
-    * Finding a destination given a starting point, bearing and distance with `#finddestination`
-* Distance formatting and format conversion via the `#distance` parser function.
+    * Calculating the distance between two points with [`#geodistance`](https://www.semantic-mediawiki.org/wiki/Maps/Geodistance)
+    * Finding a destination given a starting point, bearing and distance with [`#finddestination`](https://www.semantic-mediawiki.org/wiki/Maps/Finddestination)
+* Distance formatting and format conversion via the [`#distance`](https://www.semantic-mediawiki.org/wiki/Maps/Distance) parser function.
 * Visual map editor (Special:MapEditor) to edit `#display_map` wikitext (requires Google Maps).
 
 Maps has been maintained since 2009 and is installed on over 1000 public wikis.
