@@ -17,7 +17,7 @@ Features:
     * Calculating the distance between two points with [`#geodistance`](https://www.semantic-mediawiki.org/wiki/Maps/Geodistance)
     * Finding a destination given a starting point, bearing and distance with [`#finddestination`](https://www.semantic-mediawiki.org/wiki/Maps/Finddestination)
 * Distance formatting and format conversion via the [`#distance`](https://www.semantic-mediawiki.org/wiki/Maps/Distance) parser function.
-* Visual map editor (Special:MapEditor) to edit `#display_map` wikitext (requires Google Maps).
+* Visual map editor ([Special:MapEditor](https://www.semantic-mediawiki.org/wiki/Special:MapEditor)) to edit [`#display_map`](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps) wikitext (requires Google Maps).
 
 Maps has been maintained since 2009 and is installed on over 1000 public wikis.
 
