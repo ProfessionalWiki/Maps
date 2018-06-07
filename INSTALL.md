@@ -105,8 +105,8 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	</tr>
 	<tr>
 		<th>Maps 5.4.x</th>
-		<td>7.0 - 7.2</td>
-		<td>1.27 - 1.30+</td>
+		<td>7.0 - 7.3</td>
+		<td>1.27 - 1.31</td>
 		<td>2.1 - 2.5</td>
 		<td><strong>Stable release</strong></td>
 	</tr>
