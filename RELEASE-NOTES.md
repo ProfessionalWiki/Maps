@@ -3,9 +3,9 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 ## Maps 5.4.0
 
-Under development 
+Released on June 7th, 2018.
 
-* Improved mapping service fallback order (by Karsten Hoffmeyer)
+* Improved geocoding service fallback order (by Karsten Hoffmeyer)
 * Improved compatibility with the latest MediaWiki development version (by Timo Tijhof)
 
 ## Maps 5.3.0
