@@ -113,7 +113,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	<tr>
 		<th>Maps 5.3.x</th>
 		<td>7.0 - 7.2</td>
-		<td>1.27 - 1.30+</td>
+		<td>1.27 - 1.30</td>
 		<td>2.1 - 2.5</td>
 		<td>Obsolete release, no support</td>
 	</tr>
