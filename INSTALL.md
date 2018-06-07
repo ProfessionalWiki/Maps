@@ -97,18 +97,25 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status</th>
 	</tr>
 	<tr>
-		<th>Maps 5.4.x</th>
+		<th>Maps 5.5.x</th>
 		<td>7.0 - 7.2+</td>
 		<td>1.27 - 1.30+</td>
 		<td>2.1 - 2.5</td>
-		<td>Planned Q2 2018</td>
+		<td>Planned Q3 2018</td>
+	</tr>
+	<tr>
+		<th>Maps 5.4.x</th>
+		<td>7.0 - 7.2</td>
+		<td>1.27 - 1.30+</td>
+		<td>2.1 - 2.5</td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
 		<th>Maps 5.3.x</th>
 		<td>7.0 - 7.2</td>
 		<td>1.27 - 1.30+</td>
 		<td>2.1 - 2.5</td>
-		<td><strong>Stable release</strong></td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>Maps 5.2.x</th>
