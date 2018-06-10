@@ -14,9 +14,9 @@
 
 	// Array of String. Array containing all the mapping services that will be made available to the user.
 	$GLOBALS['egMapsAvailableServices'] = [
-		'leaflet',
+		'googlemaps3',
 		'openlayers',
-		'googlemaps3'
+		'leaflet',
 	];
 
 	// String. The default mapping service, which will be used when no default
@@ -51,12 +51,10 @@
 
 // Geocoding
 
-	// Sets which service should be used to turn addresses into coordinates
+	// String. The name of the geocoding service to use.
 	// Available services: geonames, google, nominatim
-	// The geonames service requires you to specify a geonames user (see below),
-	// if you set this setting to geonames but do not specify the user, Maps will
-	// fall back to using the google service.
-	$GLOBALS['egMapsDefaultGeoService'] = 'nominatim';
+	// Some services might require you to provide credentials, see the settings below.
+	$GLOBALS['egMapsDefaultGeoService'] = 'geonames';
 
 	// String. GeoNames API user/application name.
 	// Obtain an account here: http://www.geonames.org/login
@@ -65,9 +63,6 @@
 
 	// Boolean. Sets if geocoded addresses should be stored in a cache.
 	$GLOBALS['egMapsEnableGeoCache'] = true;
-	// Integer. If egMapsEnableGeoCache is true, determines the TTL of cached geocoded addresses.
-	// Default value: 1 day.
-	$GLOBALS['egMapsGeoCacheTtl'] = 24 * 3600;
 
 
 // Coordinate configuration
@@ -142,6 +137,9 @@
 		'width'  => [ 50, 1020, 1, 100 ],
 		'height' => [ 50, 1000, 1, 100 ],
 	];
+
+	// String. The default centre for maps. Can be either a set of coordinates or an address.
+	$GLOBALS['egMapsDefaultMapCentre'] = '0, 0';
 
 	// Strings. The default content for all pop-ups. This value will only be used
 	// when the user does not provide one.
@@ -320,8 +318,6 @@
 		// used when the user does not provide one.
 		$GLOBALS['egMapsLeafletLayer'] = 'OpenStreetMap';
 
-		$GLOBALS['egMapsLeafletLayers'] = [ $GLOBALS['egMapsLeafletLayer'] ];
-
 		$GLOBALS['egMapsLeafletOverlayLayers'] = [
 
 		];
@@ -386,7 +382,11 @@
 			'NASAGIBS.ModisTerraTrueColorCR' => true,
 			'NASAGIBS.ModisTerraBands367CR' => true,
 			'NASAGIBS.ViirsEarthAtNight2012' => true,
-			'NLS' => true
+			'NLS' => true,
+			'GeoportailFrance' => true,
+			'GeoportailFrance.parcels' => true,
+			'GeoportailFrance.ign_maps' => true,
+			'GeoportailFrance.orthos' => true
 		];
 
 		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = [
@@ -412,7 +412,7 @@
 
 		$GLOBALS['egMapsLeafletLayersApiKeys'] = [
 			'MapBox' => '',
-			'MapQuestOpen' => '',
+			'MapQuestOpen' => ''
 		];
 
 		// Layer dependencies
