@@ -143,9 +143,6 @@
 		'height' => [ 50, 1000, 1, 100 ],
 	];
 
-	// String. The default centre for maps. Can be either a set of coordinates or an address.
-	$GLOBALS['egMapsDefaultMapCentre'] = '0, 0';
-
 	// Strings. The default content for all pop-ups. This value will only be used
 	// when the user does not provide one.
 	$GLOBALS['egMapsDefaultTitle'] = '';
