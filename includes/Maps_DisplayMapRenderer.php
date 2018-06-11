@@ -13,14 +13,14 @@ use Maps\LocationParser;
  */
 class MapsDisplayMapRenderer {
 
-	private $service;
+	public $service;
 
 	/**
 	 * @var LocationParser
 	 */
 	private $locationParser;
 
-	public function __construct( MapsMappingService $service ) {
+	public function __construct( MapsMappingService $service = null ) {
 		$this->service = $service;
 	}
 
