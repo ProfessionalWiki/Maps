@@ -479,7 +479,7 @@
 			url: 'http://t{s}.freemap.sk/T/{z}/{x}/{y}.jpeg',
 			options: {
 				minZoom: 8,
-				maxZoom: 16,leaflet-providers.js
+				maxZoom: 16,
 				subdomains: '1234',
 				bounds: [[47.204642, 15.996093], [49.830896, 22.576904]],
 				attribution:
