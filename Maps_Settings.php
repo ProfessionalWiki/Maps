@@ -386,7 +386,11 @@
 			'NASAGIBS.ModisTerraTrueColorCR' => true,
 			'NASAGIBS.ModisTerraBands367CR' => true,
 			'NASAGIBS.ViirsEarthAtNight2012' => true,
-			'NLS' => true
+			'NLS' => true,
+			'GeoportailFrance' => true,
+			'GeoportailFrance.parcels' => true,
+			'GeoportailFrance.ign_maps' => true,
+			'GeoportailFrance.orthos' => true
 		];
 
 		$GLOBALS['egMapsLeafletAvailableOverlayLayers'] = [

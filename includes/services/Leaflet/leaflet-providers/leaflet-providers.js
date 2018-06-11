@@ -628,7 +628,38 @@
 				maxZoom: 18,
 				subdomains: '0123',
 			}
-		}
+		},
+        GeoportailFrance: {
+			url: '//wxs.ign.fr/{apikey}/geoportail/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0&STYLE=normal&TILEMATRIXSET=PM&FORMAT={format}&LAYER={variant}&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}',
+			options: {
+				attribution: '<a target="_blank" href="https://www.geoportail.gouv.fr/">Geoportail France</a>',
+				bounds: [[-75, -180], [81, 180]],
+				minZoom: 2,
+				maxZoom: 18,
+                // Get your own geoportail apikey here : http://professionnels.ign.fr/ign/contrats/ 
+                // NB : 'choisirgeoportail' is a demonstration key that comes with no guarantee
+                apikey: 'choisirgeoportail',
+                format: 'image/jpeg',
+                variant: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD'
+			},
+			variants: {
+				parcels: {
+                    options : {
+                        variant: 'CADASTRALPARCELS.PARCELS',
+				        maxZoom: 20,
+                        format: 'image/png'
+                    }
+                },
+				ign_maps: 'GEOGRAPHICALGRIDSYSTEMS.MAPS',
+				maps: 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD',
+				orthos: {
+					options: {
+						maxZoom: 19,
+						variant: 'ORTHOIMAGERY.ORTHOPHOTOS'
+					}
+				}
+			}
+        }
 	};
 
 	L.tileLayer.provider = function (provider, options) {
