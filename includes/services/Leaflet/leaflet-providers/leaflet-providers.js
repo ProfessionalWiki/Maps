@@ -83,7 +83,7 @@
 			provider.options.attribution = attributionReplacer(provider.options.attribution);
 
 			// Compute final options combining provider options with any user overrides
-			var layerOpts = L.Util.extend({}, provider.options, options);
+			var layerOpts = L.Util.extend({}, options, provider.options);
 			L.TileLayer.prototype.initialize.call(this, provider.url, layerOpts);
 		}
 	});
