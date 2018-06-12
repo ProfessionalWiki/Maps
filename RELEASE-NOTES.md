@@ -5,7 +5,8 @@ These are the release notes for the [Maps extension](README.md). For an overview
 
 Under development
 
-* Removed `$egMapsDefaultServices['display_map']` setting
+* Added Geoportail (France) layers for Leaflet (by Gilles Cébélieu) 
+* Removed redundant `$egMapsDefaultServices['display_map']` setting
 
 ## Maps 5.4.0
 
