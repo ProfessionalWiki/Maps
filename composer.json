@@ -48,20 +48,14 @@
 			"Maps.php"
 		],
 		"psr-4": {
-			"Maps\\": "src/"
+			"Maps\\": "src/",
+			"Maps\\Tests\\TestDoubles\\": "tests/TestDoubles/"
 		},
 		"classmap": [
 			"includes/",
 			"Maps.hooks.php",
 			"SemanticMaps/src/",
-			"SemanticMaps/SemanticMaps.hooks.php"
-		]
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Maps\\Tests\\TestDoubles\\": "tests/TestDoubles/"
-		},
-		"classmap": [
+			"SemanticMaps/SemanticMaps.hooks.php",
 			"tests/Unit/Elements/",
 			"tests/Integration/parserhooks/ParserHookTest.php"
 		]

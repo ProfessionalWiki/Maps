@@ -22,6 +22,9 @@ use Maps\RectangleParser;
 use Maps\SemanticMaps;
 use Maps\ServiceParam;
 use Maps\WmsOverlayParser;
+use ParserHooks\FunctionRunner;
+use ParserHooks\HookRegistrant;
+use ParserHooks\HookRunner;
 
 if ( defined( 'Maps_COORDS_FLOAT' ) ) {
 	// Do not initialize more than once.
@@ -109,8 +112,23 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 	};
 
 	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$instance = new MapsDisplayMap();
-		return $instance->init( $parser );
+		$hookRegistrant = new HookRegistrant( $parser );
+
+		$hookRegistrant->registerFunction( new FunctionRunner(
+			MapsDisplayMap::getHookDefinition( ';' ),
+			new MapsDisplayMap(),
+			[
+				FunctionRunner::OPT_DO_PARSE => false
+			]
+		) );
+
+		$hookRegistrant->registerHook( new HookRunner(
+			MapsDisplayMap::getHookDefinition( "\n" ),
+			new MapsDisplayMap(),
+			[
+				FunctionRunner::OPT_DO_PARSE => false
+			]
+		) );
 	};
 
 	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
