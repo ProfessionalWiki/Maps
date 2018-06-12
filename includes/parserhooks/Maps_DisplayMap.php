@@ -70,16 +70,18 @@ class MapsDisplayMap implements \ParserHooks\HookHandler {
 		if ( array_key_exists( 'zoom', $parameters ) && $parameters['zoom']->wasSetToDefault() && count(
 				$parameters['coordinates']->getValue()
 			) > 1 ) {
-			$zoomParam = $parameters['zoom'];
-
-			$parameters['zoom'] = new ProcessedParam(
-				$zoomParam->getName(),
-				false,
-				$zoomParam->wasSetToDefault(),
-				$zoomParam->getOriginalName(),
-				$zoomParam->getOriginalValue()
-			);
+			$parameters['zoom'] = $this->getParameterWithValue( $parameters['zoom'], false );
 		}
+	}
+
+	private function getParameterWithValue( ProcessedParam $param, $value ) {
+		return new ProcessedParam(
+			$param->getName(),
+			$value,
+			$param->wasSetToDefault(),
+			$param->getOriginalName(),
+			$param->getOriginalValue()
+		);
 	}
 
 	private function trackMap( Parser $parser ) {
