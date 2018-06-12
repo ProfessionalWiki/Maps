@@ -71,27 +71,26 @@ final class MapsMapper {
 	 * @return array
 	 */
 	public static function getCommonParameters() {
-		global $egMapsMapWidth, $egMapsMapHeight, $egMapsDefaultService;
-
 		$params = [];
 
 		$params['mappingservice'] = [
-			'type' => 'mappingservice',
+			'type' => 'string',
 			'aliases' => 'service',
-			'default' => $egMapsDefaultService,
+			'default' => $GLOBALS['egMapsDefaultService'],
+			'values' => self::getAllPossibleServiceValues(),
 		];
 
 		$params['width'] = [
 			'type' => 'dimension',
 			'allowauto' => true,
 			'units' => [ 'px', 'ex', 'em', '%', '' ],
-			'default' => $egMapsMapWidth,
+			'default' => $GLOBALS['egMapsMapWidth'],
 		];
 
 		$params['height'] = [
 			'type' => 'dimension',
 			'units' => [ 'px', 'ex', 'em', '' ],
-			'default' => $egMapsMapHeight,
+			'default' => $GLOBALS['egMapsMapHeight'],
 		];
 
 		$params['centre'] = [
@@ -110,6 +109,20 @@ final class MapsMapper {
 		}
 
 		return array_merge( $params, self::getEvenMawrCommonParameters() );
+	}
+
+	private static function getAllPossibleServiceValues(): array {
+		$allServiceValues = [];
+
+		foreach ( $GLOBALS['egMapsAvailableServices'] as $availableService ) {
+			$allServiceValues = array_merge(
+				$allServiceValues,
+				[ $availableService ],
+				MapsMappingServices::getServiceInstance( $availableService )->getAliases()
+			);
+		}
+
+		return $allServiceValues;
 	}
 
 	private static function getEvenMawrCommonParameters() {

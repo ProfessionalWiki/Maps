@@ -12,7 +12,7 @@ class DisplayMapTest extends TestCase {
 
 	public function testMapIdIsSet() {
 		$this->assertContains(
-			'id="map_leaflet_1"',
+			'id="map_leaflet_',
 			$this->parse( '{{#display_map:1,1|service=leaflet}}' )
 		);
 	}
@@ -25,7 +25,7 @@ class DisplayMapTest extends TestCase {
 
 	public function testServiceSelectionWorks() {
 		$this->assertContains(
-			'id="map_google3_1"',
+			'maps-googlemaps3',
 			$this->parse( '{{#display_map:1,1|service=google}}' )
 		);
 	}
@@ -69,6 +69,20 @@ class DisplayMapTest extends TestCase {
 		$this->assertContains(
 			'"zoom":' . $GLOBALS['egMapsGMaps3Zoom'],
 			$this->parse( '{{#display_map:1,1|service=google|zoom=tomato}}' )
+		);
+	}
+
+	public function testTagIsRendered() {
+		$this->assertContains(
+			'"lat":1,"lon":1',
+			$this->parse( '<display_map>1,1</display_map>' )
+		);
+	}
+
+	public function testTagServiceParameterIsUsed() {
+		$this->assertContains(
+			'maps-googlemaps3',
+			$this->parse( '<display_map service="google">1,1</display_map>' )
 		);
 	}
 

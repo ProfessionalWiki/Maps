@@ -25,14 +25,6 @@
 	// enabled, if not, the first one from the available services will be taken.
 	$GLOBALS['egMapsDefaultService'] = 'leaflet';
 
-	// Array of String. The default mapping service for each feature, which will be
-	// used when no valid service is provided by the user. Each service needs to be
-	// enabled, if not, the first one from the available services will be taken.
-	// Note: The default service needs to be available for the feature you set it
-	// for, since it's used as a fallback mechanism.
-	$GLOBALS['egMapsDefaultServices'] = [];
-	$GLOBALS['egMapsDefaultServices']['display_map'] = $GLOBALS['egMapsDefaultService'];
-	$GLOBALS['egMapsDefaultServices']['qp'] = $GLOBALS['egMapsDefaultService'];
 
 
 // Enable/disable parts of the extension
@@ -166,6 +158,9 @@
 	# String or false. Allows you to define the content and it's layout of marker pop-ups via a template.
 	# This value will only be used when the user does not provide one.
 	$GLOBALS['smgQPTemplate'] = false;
+
+	// Default mapping service to use for maps showing query results. Defaults to the default service.
+	$GLOBALS['egMapsDefaultServices'] = [ 'qp' => $GLOBALS['egMapsDefaultService'] ];
 
 
 // Other general configuration

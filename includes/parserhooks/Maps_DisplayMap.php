@@ -1,41 +1,128 @@
 <?php
 
+use Maps\ParameterExtractor;
 use ParamProcessor\ProcessedParam;
-use ParamProcessor\ProcessingResult;
 
 /**
  * Class for the 'display_map' parser hooks.
  *
- * @since 0.7
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsDisplayMap implements \ParserHooks\HookHandler {
+class MapsDisplayMap {
 
 	private $renderer;
+	private $defaultService;
+	private $availableServices;
 
 	public function __construct() {
 		$this->renderer = new MapsDisplayMapRenderer();
+
+		// TODO: inject
+		$this->defaultService = $GLOBALS['egMapsDefaultService'];
+		$this->availableServices = $GLOBALS['egMapsAvailableServices'];
 	}
 
-	public function handle( Parser $parser, ProcessingResult $result ) {
-		$params = $result->getParameters();
+	/**
+	 * @param Parser $parser
+	 * @param string[] $parameters Values of the array can be named parameters ("key=value") or unnamed.
+	 * They are not normalized, so can be "key =  value "
+	 *
+	 * @return string
+	 * @throws MWException
+	 */
+	public function getMapHtmlForKeyValueStrings( Parser $parser, array $parameters ): string {
+		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
+
+		// TODO: do not use global access
+		$service = MapsMappingServices::getServiceInstance( $this->extractServiceName(
+			Maps\ParameterExtractor::extractFromKeyValueStrings( $parameters )
+		) );
+
+		$parameterDefinitions = self::getHookDefinition( ';' )->getParameters();
+		$service->addParameterInfo( $parameterDefinitions );
+		$this->renderer->service = $service;
+
+		$processor->setFunctionParams(
+			$parameters,
+			$parameterDefinitions,
+			self::getHookDefinition( ';' )->getDefaultParameters()
+		);
+
+		return $this->getMapHtmlFromProcessor( $parser, $processor );
+	}
+
+	/**
+	 * @param Parser $parser
+	 * @param string[] $parameters Key value list of parameters. Unnamed parameters have numeric keys.
+	 * Both keys and values have not been normalized.
+	 *
+	 * @return string
+	 * @throws MWException
+	 */
+	public function getMapHtmlForParameterList( Parser $parser, array $parameters ) {
+		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
+
+		// TODO: do not use global access
+		$service = MapsMappingServices::getServiceInstance( $this->extractServiceName( $parameters ) );
+
+		$parameterDefinitions = self::getHookDefinition( "\n" )->getParameters();
+		$service->addParameterInfo( $parameterDefinitions );
+		$this->renderer->service = $service;
+
+		$processor->setParameters(
+			$parameters,
+			$parameterDefinitions
+		);
+
+		return $this->getMapHtmlFromProcessor( $parser, $processor );
+	}
+
+	private function getMapHtmlFromProcessor( Parser $parser, ParamProcessor\Processor $processor ) {
+		$params = $processor->processParameters()->getParameters();
 
 		$this->defaultMapZoom( $params );
 
+		$this->trackMap( $parser );
+
+		return $this->renderer->renderMap(
+			$this->processedParametersToKeyValueArray( $params ),
+			$parser
+		);
+	}
+
+	private function extractServiceName( array $parameters ): string {
+		$service = ( new ParameterExtractor() )->extract(
+			[ 'mappingservice', 'service' ],
+			$parameters
+		);
+
+		if ( $service === null ) {
+			return $this->defaultService;
+		}
+
+		// TODO: do not use global access
+		$service = MapsMappingServices::getMainServiceName( $service );
+
+		if ( $this->serviceIsInvalid( $service ) ) {
+			return $this->defaultService;
+		}
+
+		return $service;
+	}
+
+	private function serviceIsInvalid( string $service ) {
+		return !in_array( $service, $this->availableServices );
+	}
+
+	private function processedParametersToKeyValueArray( array $params ): array {
 		$parameters = [];
 
 		foreach ( $params as $parameter ) {
 			$parameters[$parameter->getName()] = $parameter->getValue();
 		}
 
-		$this->trackMap( $parser );
-
-		// TODO: do not use global access
-		$this->renderer->service = MapsMappingServices::getServiceInstance( $parameters['mappingservice'] );
-
-		return $this->renderer->renderMap( $parameters, $parser );
+		return $parameters;
 	}
 
 	public static function getHookDefinition( string $locationDelimiter ): \ParserHooks\HookDefinition {
@@ -48,8 +135,6 @@ class MapsDisplayMap implements \ParserHooks\HookHandler {
 
 	private static function getParameterDefinitions( $locationDelimiter ): array {
 		$params = MapsMapper::getCommonParameters();
-
-		$params['mappingservice']['feature'] = 'display_map';
 
 		$params['coordinates'] = [
 			'type' => 'string',
@@ -89,6 +174,5 @@ class MapsDisplayMap implements \ParserHooks\HookHandler {
 			$parser->addTrackingCategory( 'maps-tracking-category' );
 		}
 	}
-
 
 }

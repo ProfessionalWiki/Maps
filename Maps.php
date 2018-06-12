@@ -20,7 +20,6 @@ use Maps\LocationParser;
 use Maps\PolygonParser;
 use Maps\RectangleParser;
 use Maps\SemanticMaps;
-use Maps\ServiceParam;
 use Maps\WmsOverlayParser;
 use ParserHooks\FunctionRunner;
 use ParserHooks\HookRegistrant;
@@ -112,23 +111,48 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 	};
 
 	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-		$hookRegistrant = new HookRegistrant( $parser );
+		foreach ( [ 'display_map', 'display_point', 'display_points', 'display_line' ] as $hookName ) {
+			$parser->setFunctionHook(
+				$hookName,
+				function( Parser $parser, PPFrame $frame, array $arguments ) {
+					$hook = new MapsDisplayMap();
 
-		$hookRegistrant->registerFunction( new FunctionRunner(
-			MapsDisplayMap::getHookDefinition( ';' ),
-			new MapsDisplayMap(),
-			[
-				FunctionRunner::OPT_DO_PARSE => false
-			]
-		) );
+					$mapHtml = $hook->getMapHtmlForKeyValueStrings(
+						$parser,
+						array_map(
+							function( $argument ) use ( $frame ) {
+								return $frame->expand( $argument );
+							},
+							$arguments
+						)
+					);
 
-		$hookRegistrant->registerHook( new HookRunner(
-			MapsDisplayMap::getHookDefinition( "\n" ),
-			new MapsDisplayMap(),
-			[
-				FunctionRunner::OPT_DO_PARSE => false
-			]
-		) );
+					return [
+						$mapHtml,
+						'noparse' => true,
+						'isHTML' => true,
+					];
+				},
+				Parser::SFH_OBJECT_ARGS
+			);
+
+			$parser->setHook(
+				$hookName,
+				function( $text, array $arguments, Parser $parser, PPFrame $frame ) {
+					if ( $text !== null ) {
+						$defaultParameters = MapsDisplayMap::getHookDefinition( "\n" )->getDefaultParameters();
+						$defaultParam = array_shift( $defaultParameters );
+
+						// If there is a first default parameter, set the tag contents as its value.
+						if ( $defaultParam !== null ) {
+							$arguments[$defaultParam] = $text;
+						}
+					}
+
+					return ( new MapsDisplayMap() )->getMapHtmlForParameterList( $parser, $arguments );
+				}
+			);
+		}
 	};
 
 	$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
@@ -168,14 +192,18 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 	$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
 	$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
 
+
 	// OpenLayers API
 	include_once __DIR__ . '/includes/services/OpenLayers/OpenLayers.php';
 
 	MapsMappingServices::registerService(
 		'openlayers',
-		MapsOpenLayers::class,
-		[ 'display_map' => MapsDisplayMapRenderer::class ]
+		MapsOpenLayers::class
 	);
+
+	$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
+	$openLayers->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+
 
 	// Leaflet API
 	include_once __DIR__ . '/includes/services/Leaflet/Leaflet.php';
@@ -195,10 +223,6 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 
 	$GLOBALS['wgParamDefinitions']['coordinate'] = [
 		'string-parser' => LatLongParser::class,
-	];
-
-	$GLOBALS['wgParamDefinitions']['mappingservice'] = [
-		'definition' => ServiceParam::class,
 	];
 
 	$GLOBALS['wgParamDefinitions']['mapslocation'] = [
