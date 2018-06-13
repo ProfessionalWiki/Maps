@@ -86,4 +86,25 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testWhenThereAreNoLocations_locationsArrayIsEmpty() {
+		$this->assertContains(
+			'"locations":[]',
+			$this->parse( '{{#display_map:}}' )
+		);
+	}
+
+	public function testLocationTitleGetsIncluded() {
+		$this->assertContains(
+			'"title":"title',
+			$this->parse( '{{#display_map:1,1~title}}' )
+		);
+	}
+
+	public function testLocationDescriptionGetsIncluded() {
+		$this->assertContains(
+			'such description',
+			$this->parse( '{{#display_map:1,1~title~such description}}' )
+		);
+	}
+
 }
