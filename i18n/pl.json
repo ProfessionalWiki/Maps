@@ -104,6 +104,7 @@
 	"maps-googlemaps3-par-typestyle": "Styl formantu typu.",
 	"maps-googlemaps3-par-autoinfowindows": "Automatycznie otwórz wszystkie okna informacyjne po załadowaniu strony.",
 	"maps-googlemaps3-par-gkml": "Pliki KML udostępniane przez serwery Google do załadowania na mapie.",
+	"maps-googlemaps3-par-tilt": "Nachylenie mapy przy korzystaniu z Google Maps.",
 	"maps-googlemaps3-par-poi": "Pokaż atrakcje.",
 	"maps-googlemaps3-par-clustergridsize": "Rozmiar siatki klastra w pikselach.",
 	"maps-par-clustermaxzoom": "Maksymalny poziom powiększenia, w którym klaster może istnieć.",
@@ -140,11 +141,17 @@
 	"semanticmaps-longitude": "Długość geograficzna: $1",
 	"semanticmaps-altitude": "Wysokość: $1",
 	"semanticmaps-forminput-locations": "Miejsca",
+	"semanticmaps-par-geocodecontrol": "Pokaż kontrolę geokodowania.",
 	"semanticmaps-par-ajaxcoordproperty": "Nazwa właściwości współrzędnych, która jest używana do tworzenia zapytania AJAX.",
 	"semanticmaps-kml-title": "Domyślny tytuł wyników",
+	"validator-type-mapscircle": "Koło geograficzne",
+	"validator-type-mapscircle-list": "Lista kół",
 	"validator-type-mapsline": "Linia geograficzna",
 	"validator-type-mapsline-list": "Lista linii",
 	"validator-type-mapslocation": "Położenie geograficzne",
+	"validator-type-mapslocation-list": "Lista lokalizacji",
 	"validator-type-mapsrectangle": "Prostokąt geograficzny",
-	"validator-type-mapsrectangle-list": "Lista prostokątów"
+	"validator-type-mapsrectangle-list": "Lista prostokątów",
+	"validator-type-mapspolygon": "Wielokąt geograficzny",
+	"validator-type-mapspolygon-list": "Lista wielokątów geograficznych"
 }

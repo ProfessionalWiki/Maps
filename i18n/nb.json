@@ -55,6 +55,7 @@
 	"maps-coordinates-par-location": "Koordinatene du ønsker å formatere.",
 	"maps-coordinates-par-format": "Målformatet for koordinatene.",
 	"maps-coordinates-par-directional": "Angir om koordinatene burde vises med retning eller ikke.",
+	"maps-par-scrollwheelzoom": "Angir om musbasert skrolling skal aktiveres eller ikke.",
 	"maps-distance-par-distance": "Avstanden som skal omregnes til en bestemt enhet.",
 	"maps-distance-par-decimals": "Maksimalt antall desimalsifre som skal brukes for resulterende verdi.",
 	"maps-distance-par-unit": "Enhet for visning av avstand.",
