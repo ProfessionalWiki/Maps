@@ -14,7 +14,7 @@ matrix:
     - env: DBTYPE=mysql; MW=1.27.4; SMW=2.1.3
       php: 7.0
     - env: DBTYPE=sqlite; MW=master; TYPE=coverage
-      php: master
+      php: 7.2
 
 install:
   - travis_retry composer self-update
