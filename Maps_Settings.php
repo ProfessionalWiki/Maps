@@ -262,15 +262,9 @@
 
 		// The definitions for the layers that should be available for the user.
 		$GLOBALS['egMapsOLAvailableLayers'] = [
-			//'google' => array( 'OpenLayers.Layer.Google("Google Streets")' ),
-
 			'bing-normal'    => [ 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ],
 			'bing-satellite' => [ 'OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing' ],
 			'bing-hybrid'    => [ 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing' ],
-
-			'yahoo-normal'    => [ 'OpenLayers.Layer.Yahoo( "Yahoo! Streets", {"sphericalMercator":true} )', 'yahoo' ],
-			'yahoo-hybrid'    => [ 'OpenLayers.Layer.Yahoo( "Yahoo! Hybrid", {"type": YAHOO_MAP_HYB, "sphericalMercator":true} )', 'yahoo' ],
-			'yahoo-satellite' => [ 'OpenLayers.Layer.Yahoo( "Yahoo! Satellite", {"type": YAHOO_MAP_SAT, "sphericalMercator":true} )', 'yahoo' ],
 
 			'osm-mapnik'   => [ 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ],
 			'osm-cyclemap' => [ 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm' ],
@@ -288,7 +282,6 @@
 		// Layer group definitions. Group names must be different from layer names, and
 		// must only contain layers that are present in $GLOBALS['egMapsOLAvailableLayers'].
 		$GLOBALS['egMapsOLLayerGroups'] = [
-			'yahoo' => [ 'yahoo-normal', 'yahoo-satellite', 'yahoo-hybrid' ],
 			'bing' => [ 'bing-normal', 'bing-satellite', 'bing-hybrid' ],
 			'google' => [ 'google-normal', 'google-satellite', 'google-terrain', 'google-hybrid' ],
 			'osm' => [ 'osm-mapnik', 'osm-cyclemap' ],
@@ -298,7 +291,6 @@
 
 		// Layer dependencies
 		$GLOBALS['egMapsOLLayerDependencies'] = [
-			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
 			'google' => "<script src='http://maps.google.com/maps/api/js'></script>",
