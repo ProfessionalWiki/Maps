@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 5.5.0
 
-Under development
+Released on July 3rd, 2018.
 
 * Added Geoportail (France) layers for Leaflet (by Gilles Cébélieu)
 * Updated Leaflet library from 1.1.0 to 1.3.1
