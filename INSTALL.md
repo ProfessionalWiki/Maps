@@ -40,7 +40,7 @@ If you would also like to make use of the semantic functionality Maps provides y
 
 You will need a comma behind each version constraint except the last one.
 
-#### Verify installation success
+**Verify installation success**
 
 As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki
 and verifying the Maps extension is listed.
@@ -49,25 +49,20 @@ If you want to use the Semantic MediaWiki integration, you will also need to ins
 
 ## Configuration
 
-At present, minimal configuration is needed to get Maps running. Configuration is done like in most
-MediaWiki extensions, by placing some simple snippets of PHP code at the bottom of MediaWiki's
-LocalSettings.php.
+Maps works out of the box without any configuration work being required. Below are some key configuration
+options that you might want to change. See the [Maps settings file](Maps_Settings.php) for all available
+configuration options.
 
-### Required configuration for MediaWiki
+Like in most MediaWiki extensions, configuration is done by placing small snippets of PHP code at the
+bottom of your wikis LocalSettings.php file.
 
-As of version 1.30.0 and later MediaWiki core developers recommend using the server's standard C locale for best experience. Moreover using this locale avoids issues with Maps itself due to [SMW #3153](https://github.com/SemanticMediaWiki/SemanticMediaWiki/issues/3153). Set the C locale as follows:
+### Choosing the mapping service
 
- `$wgShellLocale = 'C.UTF-8';`
+The Maps extension supports displaying maps using multiple mapping services, including Google Maps,
+Leaflet and OpenLayers. At present the default is Leaflet, while in older versions of the extension
+it was Google Maps.
 
-### Required configuration for Google Maps
-
-As of June 2016, Google requires you to provide an API key when you where not already using their
-maps API. This means that you will either need to configure this key, or use another of the
-supported mapping services.
-
-`$GLOBALS['egMapsGMaps3ApiKey'] = 'your-api-key';`
-
-### Not using Google Maps by default
+If you do not wish to use the default, use the `$GLOBALS['egMapsDefaultService']` setting. Example:
 
 For OpenLayers:
 
@@ -77,12 +72,27 @@ For Leaflet:
 
 `$GLOBALS['egMapsDefaultService'] = 'leaflet';`
 
-You might also want to fully disable Google Maps by placing a copy of the `egMapsAvailableServices`
-setting in LocalSettings, and removing the `googlemaps3` line.
+For Google Maps:
 
-See the [Maps settings file](Maps_Settings.php) for all available configuration options.
+`$GLOBALS['egMapsDefaultService'] = 'googlemaps3';`
 
-### Platform compatibility and release status
+### Required configuration for Google Maps
+
+When using Google Maps, you will need to provide your
+[Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
+
+`$GLOBALS['egMapsGMaps3ApiKey'] = 'your-api-key';`
+
+### Choosing the geocoding service
+
+The Maps extension supports [geocoding](https://www.semantic-mediawiki.org/wiki/Maps/Geocoding),
+the conversion of human readable addresses to coordinates. This is done via a webservice used for each
+map displayed on your wiki. By default Maps uses [Nominatim](https://wiki.openstreetmap.org/wiki/Nominatim).
+To use a different geocoding service, use the `$GLOBALS['settingegMapsDefaultGeoService']`. Example:
+
+`$GLOBALS['egMapsDefaultGeoService'] = 'google';` 
+
+## Platform compatibility and release status
 
 The PHP and MediaWiki version ranges listed are those in which Maps is known to work. It might also
 work with more recent versions of PHP and MediaWiki, though this is not guaranteed. Increases of
