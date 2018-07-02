@@ -376,7 +376,7 @@
 			'NLS' => true,
 			'GeoportailFrance' => true,
 			'GeoportailFrance.parcels' => true,
-			'GeoportailFrance.ign_maps' => true,
+			'GeoportailFrance.ignMaps' => true,
 			'GeoportailFrance.orthos' => true
 		];
 
