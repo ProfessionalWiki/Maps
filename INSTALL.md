@@ -21,7 +21,7 @@ In short:
 
 For upgrading, simply edit the `composer.local.json` or `composer.json` and update the version constraint. Then run `composer update`.
 
-Example for a `require` section just with Maps:
+Example of a `require` section just with Maps:
 
 ```json
     "require": {
@@ -88,7 +88,7 @@ When using Google Maps, you will need to provide your
 The Maps extension supports [geocoding](https://www.semantic-mediawiki.org/wiki/Maps/Geocoding),
 the conversion of human readable addresses to coordinates. This is done via a webservice used for each
 map displayed on your wiki. By default Maps uses [Nominatim](https://wiki.openstreetmap.org/wiki/Nominatim).
-To use a different geocoding service, use the `$GLOBALS['settingegMapsDefaultGeoService']`. Example:
+To use a different geocoding service, use the `$GLOBALS['settingegMapsDefaultGeoService']`.
 
 `$GLOBALS['egMapsDefaultGeoService'] = 'google';` 
 
