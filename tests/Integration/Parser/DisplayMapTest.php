@@ -121,4 +121,18 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testRectangleFillOpacityIsUsed() {
+		$this->assertContains(
+			'"fillOpacity":"fill opacity"',
+			$this->parse( '{{#display_map:rectangles=1,1:2,2~title~text~color~opacity~thickness~fill color~fill opacity}}' )
+		);
+	}
+
+	public function testRectangleFillColorIsUsed() {
+		$this->assertContains(
+			'"fillColor":"fill color"',
+			$this->parse( '{{#display_map:rectangles=1,1:2,2~title~text~color~opacity~thickness~fill color~fill opacity}}' )
+		);
+	}
+
 }

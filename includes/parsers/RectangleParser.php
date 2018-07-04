@@ -63,6 +63,14 @@ class RectangleParser implements ValueParser {
 			$rectangle->setStrokeWeight( array_shift( $metaData ) );
 		}
 
+		if ( $metaData !== [] ) {
+			$rectangle->setFillColor( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== [] ) {
+			$rectangle->setFillOpacity( array_shift( $metaData ) );
+		}
+
 		return $rectangle;
 	}
 
