@@ -107,4 +107,32 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testRectangleDisplay() {
+		$this->assertContains(
+			'"title":"title',
+			$this->parse( '{{#display_map:rectangles=1,1:2,2~title}}' )
+		);
+	}
+
+	public function testCircleDisplay() {
+		$this->assertContains(
+			'"title":"title',
+			$this->parse( '{{#display_map:circles=1,1:2~title}}' )
+		);
+	}
+
+	public function testRectangleFillOpacityIsUsed() {
+		$this->assertContains(
+			'"fillOpacity":"fill opacity"',
+			$this->parse( '{{#display_map:rectangles=1,1:2,2~title~text~color~opacity~thickness~fill color~fill opacity}}' )
+		);
+	}
+
+	public function testRectangleFillColorIsUsed() {
+		$this->assertContains(
+			'"fillColor":"fill color"',
+			$this->parse( '{{#display_map:rectangles=1,1:2,2~title~text~color~opacity~thickness~fill color~fill opacity}}' )
+		);
+	}
+
 }

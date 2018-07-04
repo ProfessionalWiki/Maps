@@ -3,6 +3,15 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.5.1
+
+Released on July 4th, 2018.
+
+* Fixed fatal error when using `#display_map` parameter `circles`
+* Fixed fatal error when using `#display_map` parameter `rectangles`
+* Fixed `#display_map` parameter `rectangles` fill color modifier (it is no longer ignored)
+* Fixed `#display_map` parameter `rectangles` fill opacity modifier (it is no longer ignored)
+
 ## Maps 5.5.0
 
 Released on July 3rd, 2018.

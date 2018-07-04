@@ -21,8 +21,8 @@ class RectangleParser implements ValueParser {
 
 	private $geocoder;
 
-	public function __construct( Geocoder $geocoder = null ) {
-		$this->geocoder = $geocoder ?? MapsFactory::newDefault()->newGeocoder();
+	public function __construct( $geocoder = null ) {
+		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::newDefault()->newGeocoder();
 	}
 
 	/**
@@ -61,6 +61,14 @@ class RectangleParser implements ValueParser {
 
 		if ( $metaData !== [] ) {
 			$rectangle->setStrokeWeight( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== [] ) {
+			$rectangle->setFillColor( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== [] ) {
+			$rectangle->setFillOpacity( array_shift( $metaData ) );
 		}
 
 		return $rectangle;
