@@ -19,7 +19,7 @@ class ParameterExtractor {
 	public function extract( array $parameterNames, array $rawParameters ) {
 		foreach( $parameterNames as $parameterName ) {
 			foreach ( $rawParameters as $rawName => $rawValue ) {
-				if ( strtolower( $rawName ) === $parameterName ) {
+				if ( trim( strtolower( $rawName ) ) === $parameterName ) {
 					return trim( $rawValue );
 				}
 			}

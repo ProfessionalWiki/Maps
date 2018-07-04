@@ -135,4 +135,13 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testServiceSelectionWorksWhenItIsPrecededByMultipleParameters() {
+		$this->assertContains(
+			'maps-googlemaps3',
+			$this->parse(
+				"{{#display_map:rectangles=\n  1,1:2,2~title~text~color\n| scrollwheelzoom=off\n| service = google}}"
+			)
+		);
+	}
+
 }

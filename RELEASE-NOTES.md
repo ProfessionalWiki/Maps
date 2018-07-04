@@ -7,6 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on July 4th, 2018.
 
+* Fixed regression introduced in 5.5.0 causing the `#display_map` parameter `service` to often be ignored
 * Fixed fatal error when using `#display_map` parameter `circles`
 * Fixed fatal error when using `#display_map` parameter `rectangles`
 * Fixed `#display_map` parameter `rectangles` fill color modifier (it is no longer ignored)

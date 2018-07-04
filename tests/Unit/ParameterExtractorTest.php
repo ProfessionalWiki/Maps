@@ -65,4 +65,14 @@ class ParameterExtractorTest extends TestCase {
 		);
 	}
 
+	public function testNameHasSpacesAroundIt_itIsStillFound() {
+		$this->assertSame(
+			'value',
+			( new ParameterExtractor() )->extract(
+				[ 'name' ],
+				[ '  name   ' => 'value' ]
+			)
+		);
+	}
+
 }
