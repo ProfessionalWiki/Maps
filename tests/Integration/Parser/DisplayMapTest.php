@@ -107,4 +107,18 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testRectangleDisplay() {
+		$this->assertContains(
+			'"title":"title',
+			$this->parse( '{{#display_map:rectangles=1,1:2,2~title}}' )
+		);
+	}
+
+	public function testCircleDisplay() {
+		$this->assertContains(
+			'"title":"title',
+			$this->parse( '{{#display_map:circles=1,1:2~title}}' )
+		);
+	}
+
 }

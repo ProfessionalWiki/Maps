@@ -21,8 +21,8 @@ class RectangleParser implements ValueParser {
 
 	private $geocoder;
 
-	public function __construct( Geocoder $geocoder = null ) {
-		$this->geocoder = $geocoder ?? MapsFactory::newDefault()->newGeocoder();
+	public function __construct( $geocoder = null ) {
+		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::newDefault()->newGeocoder();
 	}
 
 	/**
