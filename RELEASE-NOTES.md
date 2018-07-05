@@ -24,7 +24,7 @@ Released on July 4th, 2018.
 Released on July 3rd, 2018.
 
 * Added Geoportail (France) layers for Leaflet (by Gilles Cébélieu)
-* Updated Leaflet library from 1.1.0 to 1.3.1
+* Updated Leaflet library from version 1.1.0 to version 1.3.1
 * Updated Leaflet plugins to their latest versions
 * Removed redundant `$egMapsDefaultServices['display_map']` setting
 
