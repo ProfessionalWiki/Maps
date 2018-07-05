@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.5.2
+
+Under development
+
+* Fixed `#display_map` parameter `locations` "visited icon" modifier (it is no longer ignored)
+
 ## Maps 5.5.1
 
 Released on July 4th, 2018.

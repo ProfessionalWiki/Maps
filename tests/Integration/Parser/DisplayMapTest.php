@@ -144,4 +144,11 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testWhenLocationHasVisitedIconModifier_itIsUsed() {
+		$this->assertContains(
+			'"visitedicon":"VisitedIcon.png"',
+			$this->parse( '{{#display_map:1,1~title~text~icon~group~inline label~VisitedIcon.png}}' )
+		);
+	}
+
 }

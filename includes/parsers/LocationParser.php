@@ -88,6 +88,10 @@ class LocationParser implements ValueParser {
 			$location->setInlineLabel( array_shift( $metaData ) );
 		}
 
+		if ( $metaData !== [] ) {
+			$location->setVisitedIcon( array_shift( $metaData ) );
+		}
+
 		return $location;
 	}
 
