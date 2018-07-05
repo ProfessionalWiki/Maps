@@ -150,7 +150,7 @@ class Location extends BaseElement {
 	}
 
 	public function setVisitedIcon( string $visitedIcon ) {
-		$this->visitedIcon = trim( $visitedIcon );
+		$this->visitedIcon = $visitedIcon;
 	}
 
 }

@@ -141,11 +141,11 @@ final class MapsMapper {
 		];
 
 		$params['icon'] = [
-			'default' => '', // TODO: image param
+			'default' => '',
 		];
 
 		$params['visitedicon'] = [
-			'default' => '', //TODO: image param
+			'default' => '',
 		];
 
 		$params['lines'] = [
@@ -238,7 +238,14 @@ final class MapsMapper {
 			$imagePage = new ImagePage( $title );
 			return $imagePage->getDisplayedFile()->getURL();
 		}
-		return $file;
+
+		$colonPosition = strpos( $file, ':' );
+
+		if ( $colonPosition === false ) {
+			return trim( $file );
+		}
+
+		return trim( substr( $file, $colonPosition + 1 ) );
 	}
 
 	/**

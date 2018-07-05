@@ -89,10 +89,20 @@ class LocationParser implements ValueParser {
 		}
 
 		if ( $metaData !== [] ) {
-			$location->setVisitedIcon( array_shift( $metaData ) );
+			$location->setVisitedIcon( $this->getCleanedFileName( array_shift( $metaData ) ) );
 		}
 
 		return $location;
+	}
+
+	private function getCleanedFileName( string $fileName ): string {
+		$colonPosition = strpos( $fileName, ':' );
+
+		if ( $colonPosition === false ) {
+			return trim( $fileName );
+		}
+
+		return trim( substr( $fileName, $colonPosition + 1 ) );
 	}
 
 	private function setTitleOrLink( Location $location, $titleOrLink ) {

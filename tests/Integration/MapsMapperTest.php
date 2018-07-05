@@ -39,13 +39,4 @@ class MapsMapperTest extends TestCase {
 	public function testGetFileUrl( $file, $expected ) {
 		$this->assertSame( $expected, MapsMapper::getFileUrl( $file ) );
 	}
-
-	/**
-	 * Tests MapsMapperTest::getFileUrl()
-	 */
-	public function testGivenNull_getFileUrlReturnsNull() {
-		$this->assertNull( MapsMapper::getFileUrl( null ) );
-	}
-
-	// TODO test with existing imagePage
 }
