@@ -231,21 +231,19 @@ final class MapsMapper {
 	 *
 	 * @return string
 	 */
-	public static function getFileUrl( $file ) {
-		$title = Title::makeTitle( NS_FILE, $file );
+	public static function getFileUrl( $file ): string {
+		$colonPosition = strpos( $file, ':' );
+
+		$titleWithoutPrefix = $colonPosition === false ? $file : substr( $file, $colonPosition + 1 );
+
+		$title = Title::makeTitle( NS_FILE, trim( $titleWithoutPrefix ) );
 
 		if ( $title !== null && $title->exists() ) {
 			$imagePage = new ImagePage( $title );
 			return $imagePage->getDisplayedFile()->getURL();
 		}
 
-		$colonPosition = strpos( $file, ':' );
-
-		if ( $colonPosition === false ) {
-			return trim( $file );
-		}
-
-		return trim( substr( $file, $colonPosition + 1 ) );
+		return $file;
 	}
 
 	/**

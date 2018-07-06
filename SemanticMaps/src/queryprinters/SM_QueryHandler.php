@@ -548,7 +548,7 @@ class SMQueryHandler {
 
 			$location->setTitle( $titleOutput );
 			$location->setText( $text );
-			$location->setIcon( $icon );
+			$location->setIcon( trim( $icon ) );
 		}
 
 		return $locations;

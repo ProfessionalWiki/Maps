@@ -5,6 +5,7 @@ namespace Maps;
 use DataValues\Geo\Parsers\LatLongParser;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Location;
+use MapsMapper;
 use Title;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
@@ -77,7 +78,8 @@ class LocationParser implements ValueParser {
 		}
 
 		if ( $metaData !== [] ) {
-			$location->setIcon( array_shift( $metaData ) );
+			// FIXME: global access
+			$location->setIcon( MapsMapper::getFileUrl( array_shift( $metaData ) ) );
 		}
 
 		if ( $metaData !== [] ) {
@@ -89,20 +91,11 @@ class LocationParser implements ValueParser {
 		}
 
 		if ( $metaData !== [] ) {
-			$location->setVisitedIcon( $this->getCleanedFileName( array_shift( $metaData ) ) );
+			// FIXME: global access
+			$location->setVisitedIcon( MapsMapper::getFileUrl( array_shift( $metaData ) ) ) ;
 		}
 
 		return $location;
-	}
-
-	private function getCleanedFileName( string $fileName ): string {
-		$colonPosition = strpos( $fileName, ':' );
-
-		if ( $colonPosition === false ) {
-			return trim( $fileName );
-		}
-
-		return trim( substr( $fileName, $colonPosition + 1 ) );
 	}
 
 	private function setTitleOrLink( Location $location, $titleOrLink ) {

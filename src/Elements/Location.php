@@ -99,7 +99,7 @@ class Location extends BaseElement {
 	}
 
 	public function setIcon( string $icon ) {
-		$this->icon = trim( $icon );
+		$this->icon = $icon;
 	}
 
 	/**

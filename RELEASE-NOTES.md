@@ -3,13 +3,18 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.5.3
+
+Under development
+
+* Fixed `#display_map` parameters `icon` and `visitedicon` when using a namespace prefix (ie. File:FileName.png)
+* Fixed `icon` and `visited icon` modifiers of `#display_map` parameter `locations` when using a namespace prefix
+
 ## Maps 5.5.2
 
 Released on July 5th, 2018.
 
-* Fixed `#display_map` parameters `icon` and `visitedicon` when using a namespace prefix (ie. File:FileName.png)
 * Fixed `#display_map` parameter `locations` `visited icon` modifier (it is no longer ignored)
-* Fixed `icon` and `visited icon` modifiers of `#display_map` parameter `locations` when using a namespace prefix
 
 ## Maps 5.5.1
 
