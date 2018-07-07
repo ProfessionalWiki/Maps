@@ -135,7 +135,7 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 
 			$parser->setHook(
 				$hookName,
-				function( $text, array $arguments, Parser $parser, PPFrame $frame ) {
+				function( $text, array $arguments, Parser $parser ) {
 					if ( $text !== null ) {
 						$defaultParameters = MapsDisplayMap::getHookDefinition( "\n" )->getDefaultParameters();
 						$defaultParam = array_shift( $defaultParameters );

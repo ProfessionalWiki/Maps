@@ -43,9 +43,6 @@ class RectangleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
-	 *
-	 * @param Rectangle $rectangle
-	 * @param array $arguments
 	 */
 	public function testGetCorners( Rectangle $rectangle, array $arguments ) {
 		$this->assertTrue( $rectangle->getRectangleNorthEast()->equals( $arguments[0] ) );
@@ -54,11 +51,8 @@ class RectangleTest extends BaseElementTest {
 
 	/**
 	 * @dataProvider instanceProvider
-	 *
-	 * @param Rectangle $rectangle
-	 * @param array $arguments
 	 */
-	public function testSetCorners( Rectangle $rectangle, array $arguments ) {
+	public function testSetCorners( Rectangle $rectangle ) {
 		$coordinates = [
 			new LatLongValue( 42, 42 ),
 			new LatLongValue( 0, 0 )

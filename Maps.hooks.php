@@ -46,11 +46,10 @@ final class MapsHooks {
 	 * @see http://www.mediawiki.org/wiki/Manual:Hooks/MakeGlobalVariablesScript
 	 *
 	 * @param array &$vars Variables to be added into the output
-	 * @param OutputPage $outputPage OutputPage instance calling the hook
 	 *
 	 * @return boolean true in all cases
 	 */
-	public static function onMakeGlobalVariablesScript( array &$vars, OutputPage $outputPage ) {
+	public static function onMakeGlobalVariablesScript( array &$vars ) {
 		global $egMapsGlobalJSVars;
 
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];

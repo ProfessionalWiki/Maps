@@ -72,11 +72,10 @@ final class SemanticMapsHooks {
 	 *
 	 * @param $format Mixed: The format (string), or false when not set yet
 	 * @param SMWPrintRequest[] $printRequests The print requests made
-	 * @param array $params The parameters for the query printer
 	 *
 	 * @return boolean
 	 */
-	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests, array $params ) {
+	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests ) {
 		// Only set the format when not set yet. This allows other extensions to override the Semantic Maps behavior.
 		if ( $format === false ) {
 			// Only apply when there is more then one print request.
