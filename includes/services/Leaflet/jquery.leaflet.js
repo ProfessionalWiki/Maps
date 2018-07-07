@@ -132,23 +132,20 @@
 			L.Polygon(latlngs, options).addTo(this.map);
 		};
 
-		/**
-		 * TODO: check this
-		 */
 		this.addCircle = function (properties) {
-			this.points.push( new L.LatLng(properties.centre.lat-properties.radius, properties.centre.lon-properties.radius) ); // TODO: check this
-			this.points.push( new L.LatLng(properties.centre.lat+properties.radius, properties.centre.lon+properties.radius) ); // TODO: check this
+			var circle = L.circle(
+				[properties.centre.lat, properties.centre.lon],
+				{
+					radius: properties.radius,
+					color: properties.strokeColor,
+					weight:properties.strokeWeight,
+					opacity:properties.strokeOpacity,
+					fillColor:properties.fillColor,
+					fillOpacity:properties.fillOpacity,
+				}
+			).addTo(this.map);
 
-			var options = {
-				color: properties.strokeColor,
-				weight:properties.strokeWeight,
-				opacity:properties.strokeOpacity,
-				fill:properties.fill !== false, // TODO: check this
-				fillColor:properties.fillColor,
-				fillOpacity:properties.fillOpacity
-			};
-
-			L.Circle([properties.centre.lat, properties.centre.lon], properties.radius, options).addTo(this.map);
+			this.points.push( new L.LatLng(properties.centre.lat, properties.centre.lon) );
 		};
 
 		/**
