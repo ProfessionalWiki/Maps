@@ -18,13 +18,6 @@ class PolygonHandler {
 	private $text;
 
 	/**
-	 * The string used to store this value as an object.
-	 *
-	 * @var object or null
-	 */
-	private $value = null;
-
-	/**
 	 * The array of error messages occurred in parsing.
 	 *
 	 * @var array
@@ -55,20 +48,6 @@ class PolygonHandler {
 		'polygons' => 'MapsPolygon',
 		'circles' => 'MapsCircle',
 		'rectangles' => 'MapsRectanlge'
-	];
-
-	/**
-	 * NOTE: These need to be changed as Manipulations are deprecated.
-	 * Array of classes for param handling of different Geographic shapes.
-	 *
-	 * @var array
-	 */
-	private $paramClasses = [
-		'locations' => 'MapsParamLocation',
-		'lines' => 'MapsParamLine',
-		'polygons' => 'MapsParamPolygon',
-		'circles' => 'MapsParamCircle',
-		'rectangles' => 'MapsParamRectangle'
 	];
 
 	/**

@@ -2,7 +2,6 @@
 
 namespace Maps\Test;
 
-use Maps\Elements\WmsOverlay;
 use Maps\WmsOverlayParser;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;

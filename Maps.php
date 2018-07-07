@@ -21,9 +21,6 @@ use Maps\PolygonParser;
 use Maps\RectangleParser;
 use Maps\SemanticMaps;
 use Maps\WmsOverlayParser;
-use ParserHooks\FunctionRunner;
-use ParserHooks\HookRegistrant;
-use ParserHooks\HookRunner;
 
 if ( defined( 'Maps_COORDS_FLOAT' ) ) {
 	// Do not initialize more than once.
@@ -138,7 +135,7 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 
 			$parser->setHook(
 				$hookName,
-				function( $text, array $arguments, Parser $parser, PPFrame $frame ) {
+				function( $text, array $arguments, Parser $parser ) {
 					if ( $text !== null ) {
 						$defaultParameters = MapsDisplayMap::getHookDefinition( "\n" )->getDefaultParameters();
 						$defaultParam = array_shift( $defaultParameters );

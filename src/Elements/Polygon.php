@@ -2,8 +2,6 @@
 
 namespace Maps\Elements;
 
-use InvalidArgumentException;
-
 /**
  * @since 3.0
  *
