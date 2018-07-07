@@ -21,9 +21,6 @@ use Maps\PolygonParser;
 use Maps\RectangleParser;
 use Maps\SemanticMaps;
 use Maps\WmsOverlayParser;
-use ParserHooks\FunctionRunner;
-use ParserHooks\HookRegistrant;
-use ParserHooks\HookRunner;
 
 if ( defined( 'Maps_COORDS_FLOAT' ) ) {
 	// Do not initialize more than once.

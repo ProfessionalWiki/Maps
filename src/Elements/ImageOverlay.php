@@ -3,7 +3,6 @@
 namespace Maps\Elements;
 
 use DataValues\Geo\Values\LatLongValue;
-use InvalidArgumentException;
 
 /**
  * @since 3.0

@@ -2,8 +2,6 @@
 
 namespace Maps;
 
-use MWException;
-
 /**
  * Interface for elements that can be placed upon a map.
  *
