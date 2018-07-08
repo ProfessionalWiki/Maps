@@ -5,7 +5,6 @@
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-
 (function ($, mw, L, MQ) {
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
@@ -110,15 +109,11 @@
 			L.polyline(latlngs, options).addTo(this.map);
 		};
 
-		/**
-		 * TODO: check this
-		 */
 		this.addPolygon = function (properties) {
 			var options = {
 				color: properties.strokeColor,
 				weight:properties.strokeWeight,
 				opacity:properties.strokeOpacity,
-				fill:properties.fill !== false, // TODO: check this
 				fillColor:properties.fillColor,
 				fillOpacity:properties.fillOpacity
 			};
@@ -148,9 +143,6 @@
 			this.points.push( new L.LatLng(properties.centre.lat, properties.centre.lon) );
 		};
 
-		/**
-		 * TODO: check this
-		 */
 		this.addRectangle = function (properties) {
 			this.points.push( new L.LatLng(properties.sw.lat, properties.sw.lon) );
 			this.points.push( new L.LatLng(properties.ne.lat, properties.ne.lon) );
@@ -159,7 +151,6 @@
 				color: properties.strokeColor,
 				weight:properties.strokeWeight,
 				opacity:properties.strokeOpacity,
-				fill:properties.fill !== false, // TODO: check this
 				fillColor:properties.fillColor,
 				fillOpacity:properties.fillOpacity
 			};
