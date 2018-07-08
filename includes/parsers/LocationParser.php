@@ -129,12 +129,7 @@ class LocationParser implements ValueParser {
 		return $title->getFullURL();
 	}
 
-	/**
-	 * @param string $coordsOrAddress
-	 *
-	 * @return boolean
-	 */
-	private function isAddress( $coordsOrAddress ) {
+	private function isAddress( string $coordsOrAddress ): bool {
 		$coordinateParser = new LatLongParser();
 
 		try {

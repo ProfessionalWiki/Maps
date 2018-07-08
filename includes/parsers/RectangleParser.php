@@ -2,6 +2,7 @@
 
 namespace Maps;
 
+use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Rectangle;
 use ValueParsers\ParseException;
@@ -74,10 +75,10 @@ class RectangleParser implements ValueParser {
 		return $rectangle;
 	}
 
-	private function stringToLatLongValue( $location ) {
+	private function stringToLatLongValue( string $location ): LatLongValue {
 		$latLong = $this->geocoder->geocode( $location );
 
-		if ( $location === null ) {
+		if ( $latLong === null ) {
 			throw new ParseException( 'Failed to parse or geocode' );
 		}
 

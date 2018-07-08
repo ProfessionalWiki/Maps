@@ -2,6 +2,7 @@
 
 namespace Maps;
 
+use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\ImageOverlay;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
@@ -43,10 +44,10 @@ class ImageOverlayParser implements ValueParser {
 		throw new ParseException( 'Need 3 parameters for an image overlay' );
 	}
 
-	private function stringToLatLongValue( $location ) {
+	private function stringToLatLongValue( string $location ): LatLongValue {
 		$latLong = $this->geocoder->geocode( $location );
 
-		if ( $location === null ) {
+		if ( $latLong === null ) {
 			throw new ParseException( 'Failed to parse or geocode' );
 		}
 

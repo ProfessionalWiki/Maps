@@ -69,7 +69,7 @@ class LineParser implements ValueParser {
 	 *
 	 * @return LatLongValue[]
 	 */
-	protected function parseCoordinates( array $coordinateStrings ) {
+	protected function parseCoordinates( array $coordinateStrings ): array {
 		$coordinates = [];
 
 		foreach ( $coordinateStrings as $coordinateString ) {

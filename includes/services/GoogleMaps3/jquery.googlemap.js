@@ -390,7 +390,7 @@
 				strokeColor:properties.strokeColor,
 				strokeOpacity:properties.strokeOpacity,
 				strokeWeight:properties.strokeWeight
-			})
+			});
 			this.rectangles.push(rectangle);
 
 			//add click event
