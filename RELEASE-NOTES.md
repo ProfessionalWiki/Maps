@@ -8,6 +8,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development
 
 * Fixed popups for lines, polygons, circles and rectangles when using Leaflet
+* Fixed display of popups with no content for Google Maps
+* Fixed fatal error when geocoding fails for addresses in circles and rectangles
 
 ## Maps 5.5.3
 
