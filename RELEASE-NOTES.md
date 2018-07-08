@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.5.4
+
+Under development
+
+* Fixed popups for lines, polygons, circles and rectangles when using Leaflet
+
 ## Maps 5.5.3
 
 Released on July 7th, 2018.

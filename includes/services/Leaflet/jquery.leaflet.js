@@ -51,7 +51,9 @@
 				img.src = properties.icon;
 			}
 
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) marker.bindPopup( properties.text );
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+				marker.bindPopup( properties.text );
+			}
 			
 			return marker;
 		};
@@ -106,7 +108,11 @@
 				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
 			}
 
-			L.polyline(latlngs, options).addTo(this.map);
+			var line = L.polyline(latlngs, options).addTo(this.map);
+
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+				line.bindPopup( properties.text );
+			}
 		};
 
 		this.addPolygon = function (properties) {
@@ -124,7 +130,11 @@
 				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
 			}
 
-			L.Polygon(latlngs, options).addTo(this.map);
+			var polygon = L.Polygon(latlngs, options).addTo(this.map);
+
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+				polygon.bindPopup( properties.text );
+			}
 		};
 
 		this.addCircle = function (properties) {
@@ -141,6 +151,10 @@
 			).addTo(this.map);
 
 			this.points.push( new L.LatLng(properties.centre.lat, properties.centre.lon) );
+
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+				circle.bindPopup( properties.text );
+			}
 		};
 
 		this.addRectangle = function (properties) {
@@ -157,7 +171,11 @@
 
 			var bounds = [[properties.sw.lat, properties.sw.lon], [properties.ne.lat, properties.ne.lon]];
 
-			L.rectangle( bounds, options ).addTo(this.map);
+			var rectangle = L.rectangle( bounds, options ).addTo(this.map);
+
+			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+				rectangle.bindPopup( properties.text );
+			}
 		};
 
 		this.createMarkerCluster = function () {
