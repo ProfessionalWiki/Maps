@@ -23,7 +23,7 @@ Released on July 7th, 2018.
 
 Released on July 5th, 2018.
 
-* Fixed `#display_map` parameter `locations` `visited icon` modifier (it is no longer ignored)
+* Fixed the `visited icon` modifier of the `#display_map` parameter `locations` (it is no longer ignored)
 
 ## Maps 5.5.1
 
