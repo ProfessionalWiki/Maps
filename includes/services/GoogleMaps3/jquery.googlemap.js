@@ -841,7 +841,7 @@
 		function openBubbleOrLink(properties, event, obj) {
 			if (properties.link) {
 				window.location.href = properties.link;
-			} else if (properties.text !== '') {
+			} else if (properties.text.trim() !== '') {
 				openBubble.call(this, properties, event, obj);
 			}
 		}
