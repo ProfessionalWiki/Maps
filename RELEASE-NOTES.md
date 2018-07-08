@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 5.5.4
 
-Under development
+Released on July 8th, 2018.
 
 * Fixed popups for lines, polygons, circles and rectangles when using Leaflet
 * Fixed display of popups with no content for Google Maps
