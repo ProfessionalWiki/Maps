@@ -110,29 +110,33 @@
 
 			var line = L.polyline(latlngs, options).addTo(this.map);
 
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
 				line.bindPopup( properties.text );
 			}
 		};
 
 		this.addPolygon = function (properties) {
-			var options = {
-				color: properties.strokeColor,
-				weight:properties.strokeWeight,
-				opacity:properties.strokeOpacity,
-				fillColor:properties.fillColor,
-				fillOpacity:properties.fillOpacity
-			};
+			properties.pos.forEach(function(position) {
+				_this.points.push( new L.LatLng(position.lat, position.lon) );
+			});
 
-			var latlngs = [];
-			for (var x = 0; x < properties.pos.length; x++) {
-				latlngs.push([properties.pos[x].lat, properties.pos[x].lon]);
-				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
-			}
+			var polygon = L.polygon(
+				properties.pos.map(function(position) {
+					return [position.lat, position.lon];
+				}),
+				{
+					color: properties.strokeColor,
+					weight:properties.strokeWeight,
+					opacity:properties.strokeOpacity,
+					fillColor:properties.fillColor,
+					fillOpacity:properties.fillOpacity
+				}
+			);
 
-			var polygon = L.Polygon(latlngs, options).addTo(this.map);
+			polygon.addTo(this.map);
 
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
+				console.log(properties.text);
 				polygon.bindPopup( properties.text );
 			}
 		};
@@ -152,7 +156,7 @@
 
 			this.points.push( new L.LatLng(properties.centre.lat, properties.centre.lon) );
 
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
 				circle.bindPopup( properties.text );
 			}
 		};
@@ -173,7 +177,7 @@
 
 			var rectangle = L.rectangle( bounds, options ).addTo(this.map);
 
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
 				rectangle.bindPopup( properties.text );
 			}
 		};

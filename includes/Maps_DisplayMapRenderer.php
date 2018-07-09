@@ -144,8 +144,7 @@ class MapsDisplayMapRenderer {
 
 		if ( isset( $jsonObj['inlineLabel'] ) ) {
 			$jsonObj['inlineLabel'] = strip_tags(
-				$parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(
-				),
+				$parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),
 				'<a><img>'
 			);
 		}

@@ -7,6 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
+* Fixed `#display_map` parameter `polygons` when using Leaflet
 * Fixed regression introduced in 5.5.3 that broke marker icons in some cases when using `visitedicon`
 
 ## Maps 5.5.4
@@ -23,7 +24,7 @@ Released on July 7th, 2018.
 
 * Fixed `#display_map` parameters `icon` and `visitedicon` when using a namespace prefix (ie. File:FileName.png)
 * Fixed `icon` and `visited icon` modifiers of `#display_map` parameter `locations` when using a namespace prefix
-* Fixed `#display_map` parameter `circle` when using Leaflet
+* Fixed `#display_map` parameter `circles` when using Leaflet
 
 ## Maps 5.5.2
 

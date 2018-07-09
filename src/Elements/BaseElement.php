@@ -26,11 +26,11 @@ abstract class BaseElement implements Element {
 	}
 
 	public function setTitle( string $title ) {
-		$this->options->setOption( 'title', $title );
+		$this->options->setOption( 'title', trim( $title ) );
 	}
 
 	public function setText( string $text ) {
-		$this->options->setOption( 'text', $text );
+		$this->options->setOption( 'text', trim( $text ) );
 	}
 
 	public function setLink( string $link ) {
