@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 5.5.5
 
-Under development
+Released on July 9th, 2018.
 
 * Fixed `#display_map` parameter `polygons` when using Leaflet
 * Fixed regression introduced in 5.5.3 that broke marker icons in some cases when using `visitedicon`
