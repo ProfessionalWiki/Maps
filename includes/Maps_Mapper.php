@@ -243,7 +243,7 @@ final class MapsMapper {
 			return $imagePage->getDisplayedFile()->getURL();
 		}
 
-		return $file;
+		return trim( $file );
 	}
 
 	/**

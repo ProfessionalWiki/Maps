@@ -173,4 +173,13 @@ class DisplayMapTest extends TestCase {
 //		);
 //	}
 
+	public function testWhenIconParameterIsProvidedButEmpty_itIsDefaulted() {
+		$this->assertContains(
+			'"icon":"","inlineLabel":"Ghent',
+			$this->parse(
+				"{{#display_map:Gent, Belgie~The city Ghent~Ghent is awesome~ ~ ~Ghent}}"
+			)
+		);
+	}
+
 }

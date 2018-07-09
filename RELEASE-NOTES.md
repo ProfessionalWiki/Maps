@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.5.5
+
+Under development
+
+* Fixed regression introduced in 5.5.3 that broke marker icons in some cases when using `visitedicon`
+
 ## Maps 5.5.4
 
 Released on July 8th, 2018.
