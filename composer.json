@@ -35,10 +35,10 @@
 		"composer/installers": "^1.0.1",
 		"mediawiki/validator": "~2.2",
 		"mediawiki/parser-hooks": "~1.5",
-		"data-values/geo": "~3.0",
+		"data-values/geo": "~4.0|~3.0",
 		"jeroen/file-fetcher": "~4.2",
 		"jeroen/simple-cache": "~2.0",
-		"jeroen/simple-geocoder": "~1.1"
+		"jeroen/simple-geocoder": "~1.2"
 	},
 	"require-dev": {
 		"data-values/common": "~0.4.1"
