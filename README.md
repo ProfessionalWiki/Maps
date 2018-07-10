@@ -78,7 +78,7 @@ To run the tests with MediaWiki, change into `tests/phpunit` of your MediaWiki i
 Where you either update `wiki` to match your wikis name, or drop the parameter. The above command
 works without modification if you are using the [MediaWiki Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant).
 
-Beware that due to severe technical debt, some tests access the network.
+Beware that due to technical debt, some tests access the network.
 
 ## Links
 
