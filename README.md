@@ -87,4 +87,3 @@ Beware that due to technical debt, some tests access the network.
 * [Maps on WikiApiary](https://wikiapiary.com/wiki/Extension:Maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [TravisCI build status](https://travis-ci.org/JeroenDeDauw/Maps)
-* [Semantic Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Semantic_Maps)
