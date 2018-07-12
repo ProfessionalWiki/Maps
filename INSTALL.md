@@ -16,7 +16,7 @@ Maps is installed and upgraded via Composer. For a detailed explanation see
 In short:
 
 * Edit `composer.local.json` (preferred) or `composer.json` by adding `mediawiki/maps` to the `require` section
-* Choose the version constraint. Typically you want to pick `~x.y`, where `x.y` is the latest minor version of Maps receiving only backwards-compatible code changes
+* Choose the version constraint. Typically you want to pick `^x.y`, where `x.y` is the latest minor version of Maps receiving only backwards-compatible code changes
 * Run `composer update` or `php composer.phar update` depending on how you installed Composer.
 
 For upgrading, simply edit the `composer.local.json` or `composer.json` and update the version constraint. Then run `composer update`.
@@ -25,7 +25,7 @@ Example of a `require` section just with Maps:
 
 ```json
     "require": {
-        "mediawiki/maps": "~5"
+        "mediawiki/maps": "^5"
     }
 ```
 
@@ -33,8 +33,8 @@ If you would also like to make use of the semantic functionality Maps provides y
 
 ```json
     "require": {
-        "mediawiki/maps": "~5",
-        "mediawiki/semantic-media-wiki": "~2.5"
+        "mediawiki/maps": "^5",
+        "mediawiki/semantic-media-wiki": "^2.5"
     }
 ```
 
