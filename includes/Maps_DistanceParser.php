@@ -1,11 +1,7 @@
 <?php
 
 /**
- * Static class for distance validation and parsing. Internal representatations are in meters.
- *
- * TODO: migrate to DataValue, ValueParser and ValueFormatter
- *
- * @since 0.6
+ * Static class for distance validation and parsing. Internal representations are in meters.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
