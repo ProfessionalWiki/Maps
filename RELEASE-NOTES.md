@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 5.6.0
 
-Under development
+Released on July 16th, 2018.
 
 * Added `geojson` parameter to `#display_map`, available only for Leaflet
 * Fixed `#display_map` parameter `imageoverlays`: title, text and link are no longer ignored
