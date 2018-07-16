@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.6.0
+
+Under development
+
+* Fixed `#display_map` parameter `imageoverlays`: title, text and link are no longer ignored
+
 ## Maps 5.5.5
 
 Released on July 9th, 2018.

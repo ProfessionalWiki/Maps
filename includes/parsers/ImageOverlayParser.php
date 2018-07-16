@@ -3,6 +3,7 @@
 namespace Maps;
 
 use DataValues\Geo\Values\LatLongValue;
+use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\ImageOverlay;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
@@ -17,8 +18,8 @@ class ImageOverlayParser implements ValueParser {
 
 	private $geocoder;
 
-	public function __construct() {
-		$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+	public function __construct( $geocoder = null ) {
+		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::newDefault()->newGeocoder();
 	}
 
 	/**
@@ -30,18 +31,42 @@ class ImageOverlayParser implements ValueParser {
 	 * @throws ParseException
 	 */
 	public function parse( $value ) {
-		$parameters = explode( '~', $value );
-		$imageParameters = explode( ':', $parameters[0], 3 );
+		$metaData = explode( '~', $value );
+		$imageParameters = explode( ':', array_shift( $metaData ), 3 );
 
-		if ( count( $imageParameters ) === 3 ) {
-			$boundsNorthEast = $this->stringToLatLongValue( $imageParameters[0] );
-			$boundsSouthWest = $this->stringToLatLongValue( $imageParameters[1] );
-			$imageUrl = \MapsMapper::getFileUrl( $imageParameters[2] );
-
-			return new ImageOverlay( $boundsNorthEast, $boundsSouthWest, $imageUrl );
+		if ( count( $imageParameters ) !== 3 ) {
+			throw new ParseException( 'Need 3 parameters for an image overlay' );
 		}
 
-		throw new ParseException( 'Need 3 parameters for an image overlay' );
+		$boundsNorthEast = $this->stringToLatLongValue( $imageParameters[0] );
+		$boundsSouthWest = $this->stringToLatLongValue( $imageParameters[1] );
+		$imageUrl = \MapsMapper::getFileUrl( $imageParameters[2] );
+
+		$overlay = new ImageOverlay( $boundsNorthEast, $boundsSouthWest, $imageUrl );
+
+		if ( $metaData !== [] ) {
+			$overlay->setTitle( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== [] ) {
+			$overlay->setText( array_shift( $metaData ) );
+		}
+
+		if ( $metaData !== [] ) {
+			$overlay->setLink( $this->getUrlFromLinkString( array_shift( $metaData ) ) );
+		}
+
+		return $overlay;
+	}
+
+	private function getUrlFromLinkString( string $linkString ): string {
+		$linkPrefix = 'link:';
+
+		if ( substr( $linkString, 0, strlen( $linkPrefix ) ) === $linkPrefix ) {
+			return substr( $linkString, strlen( $linkPrefix ) );
+		}
+
+		return $linkString;
 	}
 
 	private function stringToLatLongValue( string $location ): LatLongValue {
