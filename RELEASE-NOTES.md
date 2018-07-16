@@ -7,6 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
+* Added `geojson` parameter to `#display_map`, available only for Leaflet
 * Fixed `#display_map` parameter `imageoverlays`: title, text and link are no longer ignored
 
 ## Maps 5.5.5
