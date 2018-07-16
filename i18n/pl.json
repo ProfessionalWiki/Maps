@@ -63,6 +63,7 @@
 	"maps-displaymap-par-polygons": "Wielokąty do wyświetlenia",
 	"maps-displaymap-par-rectangles": "Prostokąty do wyświetlenia",
 	"maps-displaymap-par-static": "Uczyń mapę statyczną",
+	"maps-displaymap-par-wmsoverlay": "Użyj nakładki WMS",
 	"maps-fullscreen-button": "Przełącz na tryb pełnoekranowy",
 	"maps-fullscreen-button-tooltip": "Zobacz mapę jako pełnoekranową lub osadzoną.",
 	"validation-error-invalid-location": "Parametr $1 musi wskazywać prawidłową lokalizację.",

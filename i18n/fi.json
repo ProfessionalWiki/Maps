@@ -64,6 +64,7 @@
 	"maps-displaymap-par-polygons": "Näytettävät monikulmiot",
 	"maps-displaymap-par-rectangles": "Näytettävät suorakulmiot",
 	"maps-displaymap-par-static": "Tee kartasta staattinen",
+	"maps-displaymap-par-geojson": "GeoJSON-tiedoston URL-osoite",
 	"maps-fullscreen-button": "Koko näytön tila",
 	"maps-fullscreen-button-tooltip": "Näytä kartta koko näytön tilassa tai upotettuna.",
 	"validation-error-invalid-location": "Parametrin $1 on oltava sallittu sijainti.",

@@ -89,6 +89,7 @@
 	"maps-displaymap-par-rectangles": "Anzuzeigende Rechtecke",
 	"maps-displaymap-par-static": "Die Karte statisch machen",
 	"maps-displaymap-par-wmsoverlay": "Eine Web-Map-Service-Ebene verwenden",
+	"maps-displaymap-par-geojson": "URL einer GeoJSON-Datei",
 	"maps-fullscreen-button": "Auf Vollbild umschalten",
 	"maps-fullscreen-button-tooltip": "Die Karte als Vollbild oder eingebettet darstellen.",
 	"validation-error-invalid-location": "Parameter $1 muss einem gültigen Standort entsprechen.",
