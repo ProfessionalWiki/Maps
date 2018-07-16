@@ -83,6 +83,7 @@
 	"maps-displaymap-par-rectangles": "Rectangles to display",
 	"maps-displaymap-par-static": "Make the map static",
 	"maps-displaymap-par-wmsoverlay": "Use a WMS overlay",
+	"maps-displaymap-par-geojson": "URL of a GeoJSON file",
 	"maps-fullscreen-button": "Toggle fullscreen",
 	"maps-fullscreen-button-tooltip": "View the map as fullscreen or embedded.",
 	"validation-error-invalid-location": "Parameter \"$1\" must be a valid location.",

@@ -17,6 +17,7 @@ use Maps\DistanceParser;
 use Maps\ImageOverlayParser;
 use Maps\LineParser;
 use Maps\LocationParser;
+use Maps\Parsers\JsonFileParser;
 use Maps\PolygonParser;
 use Maps\RectangleParser;
 use Maps\SemanticMaps;
@@ -252,6 +253,10 @@ $GLOBALS['wgExtensionFunctions'][] = function() {
 
 	$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = [
 		'string-parser' => ImageOverlayParser::class,
+	];
+
+	$GLOBALS['wgParamDefinitions']['jsonfile'] = [
+		'string-parser' => JsonFileParser::class,
 	];
 
 	if ( !$GLOBALS['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' ) ) {

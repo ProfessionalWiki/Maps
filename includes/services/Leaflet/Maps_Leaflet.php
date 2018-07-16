@@ -102,6 +102,12 @@ class MapsLeaflet extends MapsMappingService {
 			'default' => true,
 			'message' => 'maps-leaflet-par-clusterspiderfy',
 		];
+
+		$params['geojson'] = [
+			'type' => 'jsonfile',
+			'default' => '',
+			'message' => 'maps-displaymap-par-geojson',
+		];
 	}
 
 	/**
@@ -131,7 +137,7 @@ class MapsLeaflet extends MapsMappingService {
 	 *
 	 * @since 3.0
 	 *
-	 * @return array of string
+	 * @return string[]
 	 */
 	public function getResourceModules() {
 		return array_merge(

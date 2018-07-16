@@ -258,6 +258,16 @@
 			this.markercluster = markercluster;
 		};
 
+		this.addGeoJson = function(options) {
+			if (options.geojson !== '') {
+				var geoJson = options.geojson;
+				var geoJsonLayer = L.geoJSON( geoJson ).addTo( this.map );
+
+				this.points.push( geoJsonLayer.getBounds().getNorthEast() );
+				this.points.push( geoJsonLayer.getBounds().getSouthWest() );
+			}
+		};
+
 		this.setup = function () {
 
 			var mapOptions = {};
@@ -351,6 +361,8 @@
 					this.addRectangle(options.rectangles[i]);
 				}
 			}
+
+			this.addGeoJson(options);
 
 			// Set map position (centre and zoom)
 			var centre;

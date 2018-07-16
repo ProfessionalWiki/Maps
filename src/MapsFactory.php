@@ -75,6 +75,10 @@ class MapsFactory {
 		);
 	}
 
+	public function getFileFetcher(): FileFetcher {
+		return $this->newFileFetcher();
+	}
+
 	private function newFileFetcher(): FileFetcher {
 		return new MapsFileFetcher();
 	}

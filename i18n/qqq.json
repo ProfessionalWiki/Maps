@@ -94,6 +94,7 @@
 	"maps-displaymap-par-rectangles": "{{Maps-par|displaymap|rectangles}}",
 	"maps-displaymap-par-static": "{{Maps-par|displaymap|static}}",
 	"maps-displaymap-par-wmsoverlay": "{{Maps-par|displaymap|wmsoverlay}}\n\nWMS stands for [[wikipedia:en:Web_Map_Service|Web Map Service]].",
+	"maps-displaymap-par-geojson": "{{Maps-par|displaymap|geojson}}",
 	"maps-fullscreen-button": "This is the text of a switch.\n\nSee also:\n* {{msg-mw|Maps-fullscreen-button-tooltip}}.",
 	"maps-fullscreen-button-tooltip": "This is the text of a tooltip popup.\n\nSee also:\n* {{msg-mw|Maps-fullscreen-button}}.",
 	"validation-error-invalid-location": "This is an error message.\n\nParameter:\n* $1 - parameter name\n\n{{Related|Maps-validation}}",
