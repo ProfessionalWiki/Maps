@@ -10,7 +10,8 @@
 			"Xiaomingyan",
 			"Yfdyh000",
 			"Byfserag",
-			"Linforest"
+			"Linforest",
+			"阿pp"
 		]
 	},
 	"maps-desc": "允许嵌入动态地图到wiki页面，将地址转换为地理编码，及进行其他地理学操作",
@@ -91,6 +92,7 @@
 	"maps-displaymap-par-rectangles": "要显示的矩形",
 	"maps-displaymap-par-static": "使地图静态",
 	"maps-displaymap-par-wmsoverlay": "使用一个WMS覆盖",
+	"maps-displaymap-par-geojson": "使用GeoJSON文件",
 	"maps-fullscreen-button": "切换全屏显示",
 	"maps-fullscreen-button-tooltip": "全屏查看地图或嵌入。",
 	"validation-error-invalid-location": "参数 $1 必须是一个有效的位置。",

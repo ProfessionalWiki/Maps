@@ -103,6 +103,7 @@
 	"maps-displaymap-par-rectangles": "Rectangles à afficher",
 	"maps-displaymap-par-static": "Rendre la carte statique",
 	"maps-displaymap-par-wmsoverlay": "Utiliser une superposition WMS",
+	"maps-displaymap-par-geojson": "URL d'un fichier GeoJSON",
 	"maps-fullscreen-button": "Basculer en plein écran",
 	"maps-fullscreen-button-tooltip": "Visualiser la carte en plein écran ou incorporé.",
 	"validation-error-invalid-location": "Le paramètre « $1 » doit être un emplacement valide.",

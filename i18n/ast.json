@@ -107,7 +107,7 @@
 	"maps_geocoding_failed_for": "{{PLURAL:$2|La siguiente direición nun se pudo|Les siguientes direiciones nun se pudieron}} xeocodificar y {{PLURAL:$2|s'omitió|s'omitieron}} nel mapa: $1",
 	"maps_unrecognized_coords": "Nun se {{PLURAL:$2|reconoció la siguiente coordenada|reconocieron les siguientes coordenaes}}: $1.",
 	"maps_unrecognized_coords_for": "Nun se {{PLURAL:$2|reconoció la siguiente coordenada|reconocieron les siguientes coordenaes}} y {{PLURAL:$2|s'omitió|s'omitieron}} nel mapa: $1",
-	"maps_map_cannot_be_displayed": "Nun se pue amosar el mapa.",
+	"maps_map_cannot_be_displayed": "Nun puede amosase'l mapa.",
 	"maps-geocoder-not-available": "La carauterística de xeocodificación de mapes nun ta disponible. Nun se pue xeocodificar la to situación.",
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Permite configurar el nivel predetermináu d'ampliación del mapa.",

@@ -26,7 +26,8 @@
 			"Happy13241",
 			"Movses",
 			"Ole Yves",
-			"Stjn"
+			"Stjn",
+			"Vlad5250"
 		]
 	},
 	"maps-desc": "Позволяет встраивать динамические карты в вики-страницы, геокодировать адреса и выполнять другие географические действия",
@@ -107,6 +108,7 @@
 	"maps-displaymap-par-rectangles": "Прямоугольники для отображения",
 	"maps-displaymap-par-static": "Сделать карту статичной",
 	"maps-displaymap-par-wmsoverlay": "Использовать слой WMS",
+	"maps-displaymap-par-geojson": "URL для GeoJSON файла",
 	"maps-fullscreen-button": "Переключить полноэкранный режим",
 	"maps-fullscreen-button-tooltip": "Посмотреть карту в полноэкранном или встроенном  режиме.",
 	"validation-error-invalid-location": "Параметр $1 должен быть корректным местоположением.",

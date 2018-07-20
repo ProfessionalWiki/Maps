@@ -84,6 +84,7 @@
 	"maps-displaymap-par-rectangles": "Правоаголници за приказ",
 	"maps-displaymap-par-static": "Напарви ја картата неподвижна",
 	"maps-displaymap-par-wmsoverlay": "Користи WMS-облога",
+	"maps-displaymap-par-geojson": "URL на GeoJSON-податотеката",
 	"maps-fullscreen-button": "Префрли на широк екран",
 	"maps-fullscreen-button-tooltip": "Поглед на картата на цел екран или вгнездено.",
 	"validation-error-invalid-location": "Параметарот $1 мора да претставува важечка местоположба.",

@@ -40,6 +40,7 @@
 	"maps-par-scrollwheelzoom": "নির্দেশ করে যদি মাউস স্ক্রোলিং সক্রিয় করা উচিত বা উচিত না।",
 	"maps-finddestination-par-location": "প্রারম্ভিক অবস্থান",
 	"maps-finddestination-par-distance": "ভ্রমণ করার ব্যবধান",
+	"maps-displaymap-par-geojson": "একটি GeoJSON ফাইলের URL",
 	"validation-error-invalid-location": "স্থিতিমাপ \"$1\" একটি বৈধ অবস্থান হতে হবে।",
 	"validation-error-invalid-locations": "\"$1\" পরামিতি অবশ্যই এক বা একাধিক বৈধ অবস্থান হতে হবে।",
 	"validation-error-invalid-width": "\"$1\" পরামিতি অবশ্যই বৈধ প্রস্থ বিশিষ্ঠ হতে হবে।",

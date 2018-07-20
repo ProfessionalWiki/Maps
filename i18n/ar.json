@@ -85,6 +85,7 @@
 	"maps-displaymap-par-rectangles": "مستطيلات للعرض",
 	"maps-displaymap-par-static": "جعل الخريطة ثابتة",
 	"maps-displaymap-par-wmsoverlay": "استخدم تراكب خدمة خرائط الويب",
+	"maps-displaymap-par-geojson": "مسار ملف GeoJSON",
 	"maps-fullscreen-button": "تبديل ملء الشاشة",
 	"maps-fullscreen-button-tooltip": "عرض الخريطة على أنها ملء الشاشة أو مضمنة.",
 	"validation-error-invalid-location": "يجب أن يكون الوسيط \"$1\" موقعا صالحا.",

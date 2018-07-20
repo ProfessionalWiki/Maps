@@ -105,6 +105,7 @@
 	"maps-displaymap-par-rectangles": "Rectángulos que mostrar",
 	"maps-displaymap-par-static": "Hacer el mapa estático",
 	"maps-displaymap-par-wmsoverlay": "Utilizar una capa WMS",
+	"maps-displaymap-par-geojson": "URL de un archivo GeoJSON",
 	"maps-fullscreen-button": "Activar o desactivar pantalla completa",
 	"maps-fullscreen-button-tooltip": "Ver el mapa en toda la pantalla o incrustado.",
 	"validation-error-invalid-location": "El parámetro \"$1\" deber ser una ubicación válida.",

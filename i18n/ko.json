@@ -88,6 +88,7 @@
 	"maps-displaymap-par-rectangles": "표시할 직사각형",
 	"maps-displaymap-par-static": "지도를 정적으로 만듭니다.",
 	"maps-displaymap-par-wmsoverlay": "WMS 중첩 사용",
+	"maps-displaymap-par-geojson": "GeoJSON 파일의 URL",
 	"maps-fullscreen-button": "전체화면으로 전환",
 	"maps-fullscreen-button-tooltip": "지도를 전체 화면 또는 삽입된 형태로 보기",
 	"validation-error-invalid-location": "$1 변수는 올바른 위치여야 합니다.",
