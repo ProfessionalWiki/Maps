@@ -404,6 +404,8 @@
 		$GLOBALS['egMapsLeafletLayersApiKeys'] = [
 			'MapBox' => '',
 			'MapQuestOpen' => '',
+			'Thunderforest' => '',
+			'GeoportailFrance' => ''
 		];
 
 		// Layer dependencies
