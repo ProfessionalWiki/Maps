@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 5.7.0
+
+Under development
+
+* Added API key support for Leaflet layers via the `egMapsLeafletLayersApiKeys` setting (by Gilles Cébélieu)
+
 ## Maps 5.6.0
 
 Released on July 16th, 2018.
