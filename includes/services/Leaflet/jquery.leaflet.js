@@ -12,6 +12,7 @@
 		this.options = options;
 		this.markers = [];
 		this.markercluster = null;
+		var apikeys = mw.config.get('egMapsLeafletLayersApiKeys') ;
 
 		/**
 		 * array point of all map elements (markers, lines, polygons, etc.)
@@ -63,7 +64,7 @@
 		 * and returns it.
 		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
 		 * @return {L.Marker}
-         */
+		 */
 		this.addMarker = function (properties) {
 			var marker = this.createMarker(properties);
 			if (!this.options.markercluster) {
@@ -299,10 +300,15 @@
 
 			var layers = {};
 			$.each(options.layers.reverse(), function(index, layerName) {
+				var options = {} ;
+				var providerName = layerName.split('.')[0] ;
+				if (apikeys.hasOwnProperty(providerName) && apikeys[providerName] !== '') {
+					options.apikey = apikeys[providerName] ;
+				} 
 				if (layerName === 'MapQuestOpen') {
 					layers[layerName] = new MQ.TileLayer().addTo(map);
 				} else {
-					layers[layerName] = new L.tileLayer.provider(layerName).addTo(map);
+					layers[layerName] = new L.tileLayer.provider(layerName,options).addTo(map);
 				}
 			});
 
