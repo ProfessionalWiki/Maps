@@ -33,7 +33,7 @@ final class SemanticMapsHooks {
 
 		$sm_docu_label = wfMessage( 'adminlinks_documentation', 'Semantic Maps' )->text();
 		$smw_docu_row->addItem(
-			AlItem::newFromExternalLink( 'http://mapping.referata.com/wiki/Semantic_Maps', $sm_docu_label )
+			AlItem::newFromExternalLink( 'https://www.semantic-mediawiki.org/wiki/Semantic_Maps', $sm_docu_label )
 		);
 
 		return true;
@@ -76,7 +76,7 @@ final class SemanticMapsHooks {
 	 * @return boolean
 	 */
 	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests ) {
-		// Only set the format when not set yet. This allows other extensions to override the Semantic Maps behavior.
+		// Only set the format when not set yet. This allows other extensions to override the Maps behavior.
 		if ( $format === false ) {
 			// Only apply when there is more then one print request.
 			// This way requests comming from #show are ignored.
