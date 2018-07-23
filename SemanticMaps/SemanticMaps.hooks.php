@@ -33,7 +33,7 @@ final class SemanticMapsHooks {
 
 		$sm_docu_label = wfMessage( 'adminlinks_documentation', 'Semantic Maps' )->text();
 		$smw_docu_row->addItem(
-			AlItem::newFromExternalLink( 'https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki', $sm_docu_label )
+			AlItem::newFromExternalLink( 'https://www.semantic-mediawiki.org/wiki/Semantic_Maps', $sm_docu_label )
 		);
 
 		return true;
