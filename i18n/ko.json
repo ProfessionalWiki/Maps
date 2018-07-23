@@ -204,5 +204,6 @@
 	"validator-type-mapsimageoverlay-list": "영상 중첩 목록",
 	"validator-type-mapslocation": "지리적 위치",
 	"validator-type-mapslocation-list": "위치 목록",
-	"validator-type-wmsoverlay": "웹 지도 서비스 오버레이"
+	"validator-type-wmsoverlay": "웹 지도 서비스 오버레이",
+	"validator-type-jsonfile": "URL"
 }

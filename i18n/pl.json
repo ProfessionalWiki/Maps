@@ -162,5 +162,6 @@
 	"validator-type-mapsrectangle": "Prostokąt geograficzny",
 	"validator-type-mapsrectangle-list": "Lista prostokątów",
 	"validator-type-mapspolygon": "Wielokąt geograficzny",
-	"validator-type-mapspolygon-list": "Lista wielokątów geograficznych"
+	"validator-type-mapspolygon-list": "Lista wielokątów geograficznych",
+	"validator-type-jsonfile": "Adres URL"
 }

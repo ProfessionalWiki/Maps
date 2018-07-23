@@ -92,6 +92,7 @@
 	"maps-displaymap-par-rectangles": "אילו מלבנים להציג",
 	"maps-displaymap-par-static": "להפוך את המפה לסטטית",
 	"maps-displaymap-par-wmsoverlay": "להשתמש בשכבת כיסוי WMS",
+	"maps-displaymap-par-geojson": "כתובת URL של קובץ GeoJSON",
 	"maps-fullscreen-button": "להפעיל מסך מלא",
 	"maps-fullscreen-button-tooltip": "להציג את המפה במסך מלא או מוטבעת",
 	"validation-error-invalid-location": "הערך $1 צריך להיות מיקום תקין.",

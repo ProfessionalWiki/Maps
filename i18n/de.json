@@ -232,5 +232,6 @@
 	"validator-type-mapsrectangle-list": "Liste der Rechtecke",
 	"validator-type-mapspolygon": "Geografisches Vieleck",
 	"validator-type-mapspolygon-list": "Liste geografischer Vielecke",
-	"validator-type-wmsoverlay": "Web-Map-Service-Überlagerung"
+	"validator-type-wmsoverlay": "Web-Map-Service-Überlagerung",
+	"validator-type-jsonfile": "URL"
 }

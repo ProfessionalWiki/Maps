@@ -231,5 +231,6 @@
 	"validator-type-mapsrectangle-list": "Lista de retângulos",
 	"validator-type-mapspolygon": "Polígono geográfico",
 	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
-	"validator-type-wmsoverlay": "Sobreposição Web Map Service"
+	"validator-type-wmsoverlay": "Sobreposição Web Map Service",
+	"validator-type-jsonfile": "URL"
 }

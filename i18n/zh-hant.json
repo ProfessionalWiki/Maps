@@ -235,5 +235,6 @@
 	"validator-type-mapsrectangle-list": "矩形清單",
 	"validator-type-mapspolygon": "地理多邊形",
 	"validator-type-mapspolygon-list": "地理多邊形清單",
-	"validator-type-wmsoverlay": "網路地圖服務疊加"
+	"validator-type-wmsoverlay": "網路地圖服務疊加",
+	"validator-type-jsonfile": "URL"
 }

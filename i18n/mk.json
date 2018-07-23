@@ -225,5 +225,6 @@
 	"validator-type-mapsrectangle-list": "Список на правоаголници",
 	"validator-type-mapspolygon": "Географски многуаголник",
 	"validator-type-mapspolygon-list": "Список на географски многуаголници",
-	"validator-type-wmsoverlay": "Облога Web Map Service"
+	"validator-type-wmsoverlay": "Облога Web Map Service",
+	"validator-type-jsonfile": "URL"
 }

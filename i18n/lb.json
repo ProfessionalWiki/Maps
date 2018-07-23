@@ -118,5 +118,6 @@
 	"validator-type-mapsrectangle": "Geographesche Rechteck",
 	"validator-type-mapsrectangle-list": "Lëscht vun de Rechtecken",
 	"validator-type-mapspolygon": "Geographesche Polygon",
-	"validator-type-mapspolygon-list": "Lëscht vun de geographesche Polygonen"
+	"validator-type-mapspolygon-list": "Lëscht vun de geographesche Polygonen",
+	"validator-type-jsonfile": "URL"
 }
