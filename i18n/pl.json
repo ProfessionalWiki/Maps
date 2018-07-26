@@ -59,6 +59,7 @@
 	"maps-geocode-par-format": "Format wynikowych współrzędnych.",
 	"maps-geodistance-par-unit": "Jednostka wynikowa odległości.",
 	"maps-geodistance-par-decimals": "Maksymalna liczba cyfr części ułamkowej w wartości wynikowej.",
+	"maps-displaymap-par-coordinates": "Jedna lub więcej lokalizacji do wyświetlenia na mapie. Zostaną oznaczone znacznikiem.",
 	"maps-displaymap-par-circles": "Okręgi do wyświetlenia",
 	"maps-displaymap-par-lines": "Linie do wyświetlenia",
 	"maps-displaymap-par-maxzoom": "Maksymalny poziom powiększenia",

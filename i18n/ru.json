@@ -248,5 +248,6 @@
 	"validator-type-mapsrectangle-list": "Список прямоугольников",
 	"validator-type-mapspolygon": "Географический полигон",
 	"validator-type-mapspolygon-list": "Перечень географических полигонов",
-	"validator-type-wmsoverlay": "Оверлей веб-карты"
+	"validator-type-wmsoverlay": "Оверлей веб-карты",
+	"validator-type-jsonfile": "URL"
 }

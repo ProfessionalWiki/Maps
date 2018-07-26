@@ -232,5 +232,6 @@
 	"validator-type-mapsrectangle": "Rectángulo geográfico",
 	"validator-type-mapsrectangle-list": "Lista de rectángulos",
 	"validator-type-mapspolygon": "Polígono geográfico",
-	"validator-type-mapspolygon-list": "Lista de polígonos geográficos"
+	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
+	"validator-type-jsonfile": "URL"
 }

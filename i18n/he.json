@@ -214,5 +214,6 @@
 	"semanticmaps-kml-pagelinktext": "הטקסט שישמש לקישורים לדף, כאשר $1 יוחלף בכותרת הדף",
 	"semanticmaps-shapes-improperformat": "עיצוב לא מתאים עבור $1. נא לראות את התיעוד על עיצוב",
 	"semanticmaps-shapes-missingshape": "לא נמצאו צורות עבור $1. נא לראות את התיעוד עבור צורות",
-	"validator-type-mapscircle-list": "רשימת מעגלים"
+	"validator-type-mapscircle-list": "רשימת מעגלים",
+	"validator-type-jsonfile": "כתובת URL"
 }
