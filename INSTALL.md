@@ -10,87 +10,11 @@ These are the installation and configuration instructions for the [Maps extensio
 
 ## Download and installation
 
-Maps is installed and upgraded via Composer. For a detailed explanation see
-[installing MediaWiki extensions with Composer](https://www.mediawiki.org/wiki/Composer/For_extensions).
-
-In short:
-
-* Edit `composer.local.json` (preferred) or `composer.json` by adding `mediawiki/maps` to the `require` section
-* Choose the version constraint. Typically you want to pick `^x.y`, where `x.y` is the latest minor version of Maps receiving only backwards-compatible code changes
-* Run `composer update` or `php composer.phar update` depending on how you installed Composer.
-
-For upgrading, simply edit the `composer.local.json` or `composer.json` and update the version constraint. Then run `composer update`.
-
-Example of a `require` section just with Maps:
-
-```json
-    "require": {
-        "mediawiki/maps": "^5"
-    }
-```
-
-If you would also like to make use of the semantic functionality Maps provides you also need to install Semantic MediaWiki. In this case the example `require` section with both Maps and Semantic MediaWiki looks like this:
-
-```json
-    "require": {
-        "mediawiki/maps": "^5",
-        "mediawiki/semantic-media-wiki": "^2.5"
-    }
-```
-
-You will need a comma behind each version constraint except the last one.
-
-**Verify installation success**
-
-As final step, you can verify Maps got installed by looking at the Special:Version page on your wiki
-and verifying the Maps extension is listed.
-
-If you want to use the Semantic MediaWiki integration, you will also need to install Semantic MediaWiki.
+See the [installation instructions](https://www.semantic-mediawiki.org/wiki/Maps/Installation)
 
 ## Configuration
 
-Maps works out of the box without any configuration work being required. Below are some key configuration
-options that you might want to change. See the [Maps settings file](Maps_Settings.php) for all available
-configuration options.
-
-Like in most MediaWiki extensions, configuration is done by placing small snippets of PHP code at the
-bottom of your wikis LocalSettings.php file.
-
-### Choosing the mapping service
-
-The Maps extension supports displaying maps using multiple mapping services, including Google Maps,
-Leaflet and OpenLayers. At present the default is Leaflet, while in older versions of the extension
-it was Google Maps.
-
-If you do not wish to use the default, use the `$GLOBALS['egMapsDefaultService']` setting. Example:
-
-For OpenLayers:
-
-`$GLOBALS['egMapsDefaultService'] = 'openlayers';`
-
-For Leaflet:
-
-`$GLOBALS['egMapsDefaultService'] = 'leaflet';`
-
-For Google Maps:
-
-`$GLOBALS['egMapsDefaultService'] = 'googlemaps3';`
-
-### Required configuration for Google Maps
-
-When using Google Maps, you will need to provide your
-[Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key).
-
-`$GLOBALS['egMapsGMaps3ApiKey'] = 'your-api-key';`
-
-### Choosing the geocoding service
-
-The Maps extension supports [geocoding](https://www.semantic-mediawiki.org/wiki/Maps/Geocoding),
-the conversion of human readable addresses to coordinates. This is done via a webservice used for each
-map displayed on your wiki. By default Maps uses [Nominatim](https://wiki.openstreetmap.org/wiki/Nominatim).
-To use a different geocoding service, use the `$GLOBALS['settingegMapsDefaultGeoService']`.
-
-`$GLOBALS['egMapsDefaultGeoService'] = 'google';` 
+See the [configuration documentation](https://www.semantic-mediawiki.org/wiki/Maps/Configuration)
 
 ## Platform compatibility and release status
 
