@@ -2,12 +2,6 @@
 
 These are the installation and configuration instructions for the [Maps extension](README.md).
 
-**Table of contents**
-
-* [Download and installation](INSTALL.md#download-and-installation)
-* [Configuration](INSTALL.md#configuration)
-* [Platform compatibility and release status](INSTALL.md#platform-compatibility-and-release-status)
-
 ## Download and installation
 
 See the [installation instructions](https://www.semantic-mediawiki.org/wiki/Maps/Installation)
