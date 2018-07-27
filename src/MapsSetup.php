@@ -28,10 +28,6 @@ class MapsSetup {
 
 	private $mwGlobals;
 
-	public static function foo(  ) {
-		return true;
-	}
-
 	public function __construct( array &$mwGlobals ) {
 		$this->mwGlobals = $mwGlobals;
 	}
