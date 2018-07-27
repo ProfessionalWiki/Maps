@@ -28,6 +28,10 @@ class MapsSetup {
 
 	private $mwGlobals;
 
+	public static function foo(  ) {
+		return true;
+	}
+
 	public function __construct( array &$mwGlobals ) {
 		$this->mwGlobals = $mwGlobals;
 	}
@@ -42,7 +46,6 @@ class MapsSetup {
 	}
 
 	private function registerAllTheThings() {
-		$this->registerCredits();
 		$this->registerWebResources();
 		$this->registerApiModules();
 		$this->registerParserHooks();
@@ -59,27 +62,12 @@ class MapsSetup {
 
 		if ( in_array( 'googlemaps3', $this->mwGlobals['egMapsAvailableServices'] ) ) {
 			$this->mwGlobals['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';
-			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'maps';
+			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'Maps.class';
 		}
 
 		if ( $this->mwGlobals['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $this->mwGlobals ) ) {
 			$this->mwGlobals['egMapsGMaps3ApiKey'] = $this->mwGlobals['egGoogleJsApiKey'];
 		}
-	}
-
-	private function registerCredits() {
-		$this->mwGlobals['wgExtensionCredits']['parserhook'][] = [
-			'path' => __FILE__,
-			'name' => 'Maps',
-			'version' => Maps_VERSION,
-			'author' => [
-				'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
-				'...'
-			],
-			'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps',
-			'descriptionmsg' => 'maps-desc',
-			'license-name' => 'GPL-2.0-or-later'
-		];
 	}
 
 	private function registerWebResources() {

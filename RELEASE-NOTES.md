@@ -3,6 +3,20 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.0.0
+
+Under development
+
+* Dropped support for MediaWiki older than 1.31
+* Added `extension.json`
+
+### Breaking changes
+
+* Maps is no longer automatically loaded when it is installed with Composer. You now need to call `wfLoadExtension( 'Maps' )`
+  (preferred) or include the entry point (`require_once __DIR__ . '/extensions/Maps/Maps.php';`) in `LocalSettings.php`
+* Removed `Maps_VERSION` and `SM_VERSION` constants
+* Removed `egMapsNamespaceIndex` setting
+
 ## Maps 5.7.0
 
 Under development

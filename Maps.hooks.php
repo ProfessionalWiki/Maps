@@ -31,7 +31,7 @@ final class MapsHooks {
 
 		$smw_docu_row = $displaying_data_section->getRow( 'smw' );
 
-		$maps_docu_label = wfMessage( 'adminlinks_documentation', 'Maps' )->text();
+		$maps_docu_label = wfMessage( 'adminlinks_documentation', 'Maps.class' )->text();
 		$smw_docu_row->addItem(
 			AlItem::newFromExternalLink( 'https://www.semantic-mediawiki.org/wiki/Extension:Maps', $maps_docu_label )
 		);

@@ -44,16 +44,14 @@
 		"data-values/common": "~0.4.1"
 	},
 	"autoload": {
-		"files" : [
-			"Maps.php"
-		],
 		"psr-4": {
 			"Maps\\": "src/",
 			"Maps\\Tests\\TestDoubles\\": "tests/TestDoubles/"
 		},
 		"classmap": [
-			"includes/",
+			"MapsRegistration.php",
 			"Maps.hooks.php",
+			"includes/",
 			"SemanticMaps/src/",
 			"SemanticMaps/SemanticMaps.hooks.php",
 			"tests/Unit/Elements/",
