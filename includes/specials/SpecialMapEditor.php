@@ -58,6 +58,6 @@ class SpecialMapEditor extends SpecialPage {
 	}
 
 	protected function getGroupName() {
-		return 'Maps.class';
+		return 'Maps';
 	}
 }
