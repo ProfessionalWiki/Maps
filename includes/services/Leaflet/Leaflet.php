@@ -92,5 +92,19 @@ call_user_func(
 				'leaflet-providers.js',
 			],
 		];
+
+		$wgResourceModules['ext.maps.leaflet.editable'] = [
+			'dependencies' => [ 'ext.maps.leaflet' ],
+			'localBasePath' => __DIR__ . '/lleaflet.editable',
+			'remoteExtPath' => $remoteExtPath . '/leaflet.editable',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'Leaflet.Editable.js',
+			],
+		];
 	}
 );

@@ -1,11 +1,5 @@
-/**
- * Convenient service accessor for various map services to be used
- * mainly by external extensions.
- */
-
 /*global jQuery, mediaWiki, maps */
 /*global confirm */
-
 ( function ( $, mw, maps ) {
 
 	'use strict';
