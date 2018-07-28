@@ -34,6 +34,7 @@ composer install --prefer-source
 
 cd ../..
 
+echo 'include_once( __DIR__ . "/extensions/Maps/vendor/autoload.php" );' >> LocalSettings.php
 echo 'wfLoadExtension( "Maps" );' >> LocalSettings.php
 
 echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
