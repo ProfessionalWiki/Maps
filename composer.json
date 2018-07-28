@@ -31,7 +31,7 @@
 		"source": "https://github.com/JeroenDeDauw/Maps"
 	},
 	"require": {
-		"php": ">=7.0",
+		"php": ">=7.1",
 		"composer/installers": "^1.0.1",
 		"mediawiki/validator": "~2.2",
 		"mediawiki/parser-hooks": "~1.5",
