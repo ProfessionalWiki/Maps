@@ -4,6 +4,8 @@ namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\Api\Geocode;
+use Maps\GeoJson\GeoJsonContent;
+use Maps\GeoJson\GeoJsonContentHandler;
 use Maps\Parsers\JsonFileParser;
 use MapsCoordinates;
 use MapsDisplayMap;
@@ -49,6 +51,8 @@ class MapsSetup {
 		$this->registerPermissions();
 		$this->registerParameterTypes();
 		$this->registerHooks();
+
+		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
 	}
 
 	private function defaultSettings() {
