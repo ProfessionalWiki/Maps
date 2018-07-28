@@ -23,8 +23,10 @@ class MapsRegistration {
 		define( 'Maps_COORDS_DM', 'dm' );
 		define( 'Maps_COORDS_DD', 'dd' );
 
-		define( 'NS_GEO_JSON', 420 );
-		define( 'NS_GEO_JSON_TALK', 421 );
+		if ( !(bool)'Defining PHP constants in JSON is a bad idea and breaks tools' ) {
+			define( 'NS_GEO_JSON', 420 );
+			define( 'NS_GEO_JSON_TALK', 421 );
+		}
 
 		require_once __DIR__ . '/Maps_Settings.php';
 

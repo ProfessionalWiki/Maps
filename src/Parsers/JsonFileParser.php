@@ -51,7 +51,7 @@ class JsonFileParser implements ValueParser {
 		return $json;
 	}
 
-	private function getJsonString( string $fileLocation ) /*: ?string */ {
+	private function getJsonString( string $fileLocation ): ?string {
 		$content = $this->pageContentFetcher->getPageContent( $fileLocation, $this->defaultNamespace );
 
 		if ( $content instanceof \JsonContent ) {

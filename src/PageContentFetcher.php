@@ -18,7 +18,7 @@ class PageContentFetcher {
 		$this->revisionLookup = $revisionLookup;
 	}
 
-	public function getPageContent( string $pageTitle, int $defaultNamespace )/*: ?\Content */{
+	public function getPageContent( string $pageTitle, int $defaultNamespace ): ?\Content {
 		try {
 			$title = $this->titleParser->parseTitle( $pageTitle, $defaultNamespace );
 		}
