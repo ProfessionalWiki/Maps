@@ -8,7 +8,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development
 
 * Dropped support for MediaWiki older than 1.31
-* Added `extension.json`
+* Dropped support for PHP older than 7.1
+
+### GeoJson support
+
+* Added GeoJson namesapce. Pages in this namespace can only contain GeoJson
+* The `#display_map` parameter `geojson` now accepts page names of pages in the GeoJson namespace
 
 ### Breaking changes
 
