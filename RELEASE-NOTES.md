@@ -9,6 +9,7 @@ Under development
 
 * Dropped support for MediaWiki older than 1.31
 * Dropped support for PHP older than 7.1
+* Added API key support for Leaflet layers via the `egMapsLeafletLayersApiKeys` setting (by Gilles Cébélieu)
 
 ### GeoJson support
 
@@ -20,12 +21,6 @@ Under development
 * Maps is no longer automatically loaded when it is installed with Composer. You now need to call `wfLoadExtension( 'Maps' )`
   (preferred) or include the entry point (`require_once __DIR__ . '/extensions/Maps/Maps.php';`) in `LocalSettings.php`
 * Removed `egMapsNamespaceIndex` setting
-
-## Maps 5.7.0
-
-Under development
-
-* Added API key support for Leaflet layers via the `egMapsLeafletLayersApiKeys` setting (by Gilles Cébélieu)
 
 ## Maps 5.6.0
 
