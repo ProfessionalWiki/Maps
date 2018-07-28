@@ -14,7 +14,6 @@ Under development
 
 * Maps is no longer automatically loaded when it is installed with Composer. You now need to call `wfLoadExtension( 'Maps' )`
   (preferred) or include the entry point (`require_once __DIR__ . '/extensions/Maps/Maps.php';`) in `LocalSettings.php`
-* Removed `Maps_VERSION` and `SM_VERSION` constants
 * Removed `egMapsNamespaceIndex` setting
 
 ## Maps 5.7.0

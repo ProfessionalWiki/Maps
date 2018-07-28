@@ -4,11 +4,14 @@ use Maps\MapsSetup;
 
 class MapsRegistration {
 
-	public static function onRegistration() {
+	public static function onRegistration( array $credits ) {
 		if ( defined( 'Maps_COORDS_FLOAT' ) ) {
 			// Do not initialize more than once.
 			return true;
 		}
+
+		define( 'Maps_VERSION', $credits['version'] );
+		define( 'SM_VERSION', Maps_VERSION );
 
 		// The different coordinate notations.
 		define( 'Maps_COORDS_FLOAT', 'float' );
@@ -25,11 +28,6 @@ class MapsRegistration {
 
 		$GLOBALS['wgExtensionFunctions'][] = function() {
 			if ( $GLOBALS['egMapsDisableExtension'] ) {
-				return true;
-			}
-
-			if ( defined( 'Maps_VERSION' ) ) {
-				// Do not initialize more than once.
 				return true;
 			}
 
