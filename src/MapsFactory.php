@@ -10,6 +10,7 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\Geocoders\CachingGeocoder;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @licence GNU GPL v2+
@@ -18,13 +19,15 @@ use Maps\Geocoders\CachingGeocoder;
 class MapsFactory {
 
 	private $settings;
+	private $mediaWikiServices;
 
-	private function __construct( array $settings ) {
+	private function __construct( array $settings, MediaWikiServices $mediaWikiServices ) {
 		$this->settings = $settings;
+		$this->mediaWikiServices = $mediaWikiServices;
 	}
 
 	public static function newDefault() {
-		return new self( $GLOBALS );
+		return new self( $GLOBALS, MediaWikiServices::getInstance() );
 	}
 
 	public function newLocationParser(): LocationParser {
@@ -85,6 +88,13 @@ class MapsFactory {
 
 	private function getMediaWikiCache(): \BagOStuff {
 		return wfGetCache( CACHE_ANYTHING );
+	}
+
+	public function getPageContentFetcher(): PageContentFetcher {
+		return new PageContentFetcher(
+			$this->mediaWikiServices->getTitleParser(),
+			$this->mediaWikiServices->getRevisionLookup()
+		);
 	}
 
 }

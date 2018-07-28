@@ -4,6 +4,8 @@ namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\Api\Geocode;
+use Maps\GeoJson\GeoJsonContent;
+use Maps\GeoJson\GeoJsonContentHandler;
 use Maps\Parsers\JsonFileParser;
 use MapsCoordinates;
 use MapsDisplayMap;
@@ -42,7 +44,6 @@ class MapsSetup {
 	}
 
 	private function registerAllTheThings() {
-		$this->registerCredits();
 		$this->registerWebResources();
 		$this->registerApiModules();
 		$this->registerParserHooks();
@@ -50,6 +51,8 @@ class MapsSetup {
 		$this->registerPermissions();
 		$this->registerParameterTypes();
 		$this->registerHooks();
+
+		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
 	}
 
 	private function defaultSettings() {
@@ -59,27 +62,12 @@ class MapsSetup {
 
 		if ( in_array( 'googlemaps3', $this->mwGlobals['egMapsAvailableServices'] ) ) {
 			$this->mwGlobals['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';
-			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'maps';
+			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'Maps';
 		}
 
 		if ( $this->mwGlobals['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $this->mwGlobals ) ) {
 			$this->mwGlobals['egMapsGMaps3ApiKey'] = $this->mwGlobals['egGoogleJsApiKey'];
 		}
-	}
-
-	private function registerCredits() {
-		$this->mwGlobals['wgExtensionCredits']['parserhook'][] = [
-			'path' => __FILE__,
-			'name' => 'Maps',
-			'version' => Maps_VERSION,
-			'author' => [
-				'[https://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
-				'...'
-			],
-			'url' => 'https://github.com/JeroenDeDauw/Maps/blob/master/README.md#maps',
-			'descriptionmsg' => 'maps-desc',
-			'license-name' => 'GPL-2.0-or-later'
-		];
 	}
 
 	private function registerWebResources() {

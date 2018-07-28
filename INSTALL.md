@@ -32,13 +32,6 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>Planned Q3 2018</td>
 	</tr>
 	<tr>
-		<th>Maps 5.7.x</th>
-		<td>7.0 - 7.3+</td>
-		<td>1.27 - 1.31+</td>
-		<td>2.1 - 2.5</td>
-		<td>Planned Q3 2018</td>
-	</tr>
-	<tr>
 		<th>Maps 5.6.x</th>
 		<td>7.0 - 7.3</td>
 		<td>1.27 - 1.31</td>

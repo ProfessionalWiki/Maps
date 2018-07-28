@@ -3,11 +3,24 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 5.7.0
+## Maps 6.0.0
 
 Under development
 
+* Dropped support for MediaWiki older than 1.31
+* Dropped support for PHP older than 7.1
 * Added API key support for Leaflet layers via the `egMapsLeafletLayersApiKeys` setting (by Gilles Cébélieu)
+
+### GeoJson support
+
+* Added GeoJson namesapce. Pages in this namespace can only contain GeoJson
+* The `#display_map` parameter `geojson` now accepts page names of pages in the GeoJson namespace
+
+### Breaking changes
+
+* Maps is no longer automatically loaded when it is installed with Composer. You now need to call `wfLoadExtension( 'Maps' )`
+  (preferred) or include the entry point (`require_once __DIR__ . '/extensions/Maps/Maps.php';`) in `LocalSettings.php`
+* Removed `egMapsNamespaceIndex` setting
 
 ## Maps 5.6.0
 

@@ -171,9 +171,6 @@
 	// When true, debugging messages will be logged using mw.log(). Do not use on production wikis.
 	$GLOBALS['egMapsDebugJS'] = false;
 
-	// Namespace index start of the mapping namespaces.
-	$GLOBALS['egMapsNamespaceIndex'] = 420;
-
 
 // Mapping service specific configuration
 
