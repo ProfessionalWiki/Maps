@@ -14,11 +14,4 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		return GeoJsonContent::class;
 	}
 
-	public function getActionOverrides() {
-		return [
-			//'edit' => EditAction::class,
-		];
-	}
-
-
 }

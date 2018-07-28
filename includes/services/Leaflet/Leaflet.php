@@ -25,8 +25,24 @@ call_user_func(
 		$pathParts = explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) );
 		$remoteExtPath = implode( DIRECTORY_SEPARATOR, array_slice( $pathParts, -4 ) );
 
+		$wgResourceModules['ext.maps.leaflet.base'] = [
+			'localBasePath' => __DIR__ . '/leaflet',
+			'remoteExtPath' => $remoteExtPath . '/leaflet',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet.js',
+			],
+			'styles' => [
+				'leaflet.css',
+			],
+		];
+
 		$wgResourceModules['ext.maps.leaflet'] = [
-			'dependencies' => [ 'ext.maps.common' ],
+			'dependencies' => [ 'ext.maps.common', 'ext.maps.leaflet.base' ],
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => $remoteExtPath,
 			'group' => 'ext.maps',
@@ -95,7 +111,7 @@ call_user_func(
 
 		$wgResourceModules['ext.maps.leaflet.editable'] = [
 			'dependencies' => [ 'ext.maps.leaflet' ],
-			'localBasePath' => __DIR__ . '/lleaflet.editable',
+			'localBasePath' => __DIR__ . '/leaflet.editable',
 			'remoteExtPath' => $remoteExtPath . '/leaflet.editable',
 			'group' => 'ext.maps',
 			'targets' => [
@@ -104,6 +120,20 @@ call_user_func(
 			],
 			'scripts' => [
 				'Leaflet.Editable.js',
+			],
+		];
+
+		$wgResourceModules['ext.maps.leaflet.editor'] = [
+			'dependencies' => [ 'ext.maps.leaflet.editable' ],
+			'localBasePath' => __DIR__,
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet.editor.js',
 			],
 		];
 	}
