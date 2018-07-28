@@ -22,7 +22,6 @@
 	"namespaces": [
 		{
 			"id": 420,
-			"constant": "NS_GEO_JSON",
 			"name": "GeoJson",
 			"subpages": false,
 			"content": true,
@@ -30,7 +29,6 @@
 		},
 		{
 			"id": 421,
-			"constant": "NS_GEO_JSON_TALK",
 			"name": "GeoJson_talk",
 			"subpages": true,
 			"content": false,

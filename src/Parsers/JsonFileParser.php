@@ -5,6 +5,7 @@ namespace Maps\Parsers;
 use FileFetcher\FileFetcher;
 use FileFetcher\FileFetchingException;
 use Maps\MapsFactory;
+use Maps\PageContentFetcher;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 
@@ -15,9 +16,17 @@ use ValueParsers\ValueParser;
 class JsonFileParser implements ValueParser {
 
 	private $fileFetcher;
+	private $pageContentFetcher;
+	private $defaultNamespace;
 
-	public function __construct( $fileFetcher = null ) {
-		$this->fileFetcher = $fileFetcher instanceof FileFetcher ? $fileFetcher : MapsFactory::newDefault()->getFileFetcher();
+	public function __construct( $fileFetcher = null, PageContentFetcher $pageContentFetcher = null ) {
+		$this->fileFetcher = $fileFetcher instanceof FileFetcher
+			? $fileFetcher : MapsFactory::newDefault()->getFileFetcher();
+
+		$this->pageContentFetcher = $pageContentFetcher instanceof PageContentFetcher
+			? $pageContentFetcher : MapsFactory::newDefault()->getPageContentFetcher();
+
+		$this->defaultNamespace = NS_GEO_JSON;
 	}
 
 	/**
@@ -27,15 +36,9 @@ class JsonFileParser implements ValueParser {
 	 * @throws ParseException
 	 */
 	public function parse( $fileLocation ) {
-		// Prevent reading JSON files on the server
-		if( !filter_var( $fileLocation, FILTER_VALIDATE_URL) ) {
-			return [];
-		}
+		$jsonString = $this->getJsonString( $fileLocation );
 
-		try {
-			$jsonString = $this->fileFetcher->fetchFile( $fileLocation );
-		}
-		catch ( FileFetchingException $ex ) {
+		if ( $jsonString === null ) {
 			return [];
 		}
 
@@ -46,6 +49,26 @@ class JsonFileParser implements ValueParser {
 		}
 
 		return $json;
+	}
+
+	private function getJsonString( string $fileLocation ) /*: ?string */ {
+		$content = $this->pageContentFetcher->getPageContent( $fileLocation, $this->defaultNamespace );
+
+		if ( $content instanceof \JsonContent ) {
+			return $content->getNativeData();
+		}
+
+		// Prevent reading JSON files on the server
+		if( !filter_var( $fileLocation, FILTER_VALIDATE_URL) ) {
+			return null;
+		}
+
+		try {
+			return $this->fileFetcher->fetchFile( $fileLocation );
+		}
+		catch ( FileFetchingException $ex ) {
+			return null;
+		}
 	}
 
 
