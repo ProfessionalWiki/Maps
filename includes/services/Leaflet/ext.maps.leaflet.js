@@ -5,7 +5,7 @@
  * @licence GNU GPL v2+
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  */
-(function( $, mw ) {
+(function( $, L ) {
 
 	$( document ).ready( function() {
 
@@ -16,4 +16,4 @@
 		} );
 	} );
 
-})( window.jQuery, mediaWiki );
+})( window.jQuery, window.L );
