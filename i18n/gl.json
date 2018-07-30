@@ -218,5 +218,6 @@
 	"validator-type-mapsrectangle-list": "Lista de rectángulos",
 	"validator-type-mapspolygon": "Polígono xeográfico",
 	"validator-type-mapspolygon-list": "Lista dos polígonos xeográficos",
-	"validator-type-wmsoverlay": "Transparencia de Servizo de Mapa web"
+	"validator-type-wmsoverlay": "Transparencia de Servizo de Mapa web",
+	"validator-type-jsonfile": "URL"
 }

@@ -231,5 +231,6 @@
 	"validator-type-mapsrectangle-list": "Lista över rektanglar",
 	"validator-type-mapspolygon": "Geografisk polygon",
 	"validator-type-mapspolygon-list": "Lista över geografiska polygoner",
-	"validator-type-wmsoverlay": "Webbmappstjänst-överlägg"
+	"validator-type-wmsoverlay": "Webbmappstjänst-överlägg",
+	"validator-type-jsonfile": "URL"
 }
