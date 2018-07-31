@@ -16,6 +16,10 @@
 	},
 
 	"callback": "MapsRegistration::onRegistration",
+	"AutoloadClasses": {
+		"MapsRegistration": "MapsRegistration.php"
+	},
+
 	"ContentHandlers": {
 		"GeoJson": "Maps\\GeoJson\\GeoJsonContentHandler"
 	},
