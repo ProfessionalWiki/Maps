@@ -83,6 +83,7 @@
 	"maps-displaymap-par-rectangles": "Rectángulos a amosar",
 	"maps-displaymap-par-static": "Facer el mapa estáticu",
 	"maps-displaymap-par-wmsoverlay": "Usar una superposición WMS",
+	"maps-displaymap-par-geojson": "URL d'un ficheru GeoJSON",
 	"maps-fullscreen-button": "Conmutar pantalla completa",
 	"maps-fullscreen-button-tooltip": "Ver el mapa como pantalla completa o incrustáu.",
 	"validation-error-invalid-location": "El parámetru $1 tien de ser un llugar válidu.",
@@ -222,5 +223,6 @@
 	"validator-type-mapsrectangle-list": "Llista de rectángulos",
 	"validator-type-mapspolygon": "Polígonu xeográficu",
 	"validator-type-mapspolygon-list": "Llista de polígonos xeográficos",
-	"validator-type-wmsoverlay": "Superposición de Serviciu de Mapes web"
+	"validator-type-wmsoverlay": "Superposición de Serviciu de Mapes web",
+	"validator-type-jsonfile": "URL"
 }

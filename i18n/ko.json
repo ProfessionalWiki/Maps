@@ -200,6 +200,7 @@
 	"semanticmaps-kml-pagelinktext": "$1 문서는 문서 제목으로 바뀔 문서의 링크에 사용하는 텍스트",
 	"semanticmaps-shapes-improperformat": "$1의 부적절한 형식입니다. 형식에 대해서는 설명서를 참조하세요.",
 	"semanticmaps-shapes-missingshape": "$1에 대한 모양을 찾을 수 없습니다. 사용할 수 있는 모양에 대해서는 설명서를 참조하세요",
+	"validator-type-mapscircle-list": "원 목록",
 	"validator-type-mapsimageoverlay": "영상 중첩",
 	"validator-type-mapsimageoverlay-list": "영상 중첩 목록",
 	"validator-type-mapslocation": "지리적 위치",
