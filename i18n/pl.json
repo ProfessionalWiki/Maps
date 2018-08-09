@@ -156,6 +156,7 @@
 	"semanticmaps-kml-title": "Domyślny tytuł wyników",
 	"validator-type-mapscircle": "Koło geograficzne",
 	"validator-type-mapscircle-list": "Lista kół",
+	"validator-type-mapsimageoverlay": "Nakładanie obrazu",
 	"validator-type-mapsline": "Linia geograficzna",
 	"validator-type-mapsline-list": "Lista linii",
 	"validator-type-mapslocation": "Położenie geograficzne",
