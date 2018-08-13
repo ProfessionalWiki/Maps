@@ -228,5 +228,6 @@
 	"validator-type-mapsrectangle-list": "قائمة المستطيلات",
 	"validator-type-mapspolygon": "المضلع الجغرافي",
 	"validator-type-mapspolygon-list": "قائمة المضلعات الجغرافية",
-	"validator-type-wmsoverlay": "تراكب خدمة خريطة الويب"
+	"validator-type-wmsoverlay": "تراكب خدمة خريطة الويب",
+	"validator-type-jsonfile": "مسار"
 }
