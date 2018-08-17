@@ -11,7 +11,8 @@
 			"Yfdyh000",
 			"Byfserag",
 			"Linforest",
-			"阿pp"
+			"阿pp",
+			"Hanyanbo98"
 		]
 	},
 	"maps-desc": "允许嵌入动态地图到wiki页面，将地址转换为地理编码，及进行其他地理学操作",
@@ -232,5 +233,6 @@
 	"validator-type-mapsrectangle-list": "矩形列表",
 	"validator-type-mapspolygon": "地理多边形",
 	"validator-type-mapspolygon-list": "地理多边形列表",
-	"validator-type-wmsoverlay": "网络地图服务覆盖"
+	"validator-type-wmsoverlay": "网络地图服务覆盖",
+	"validator-type-jsonfile": "URL"
 }

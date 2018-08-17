@@ -88,6 +88,7 @@
 	"maps-displaymap-par-rectangles": "Rektangler å vise",
 	"maps-displaymap-par-static": "Gjør kartet statisk",
 	"maps-displaymap-par-wmsoverlay": "Legger på et WMS-lag",
+	"maps-displaymap-par-geojson": "URL-en til ei GeoJSON-fil",
 	"maps-fullscreen-button": "Slå av/på fullskjerm",
 	"maps-fullscreen-button-tooltip": "Vis kartet som fullskjerm eller innbygd.",
 	"validation-error-invalid-location": "Parameter $1 må være en gyldig lokasjon.",
@@ -227,5 +228,6 @@
 	"validator-type-mapsrectangle-list": "Liste over rektangler",
 	"validator-type-mapspolygon": "Geografisk polygon",
 	"validator-type-mapspolygon-list": "Liste over geografiske polygoner",
-	"validator-type-wmsoverlay": "Webmappetjensteoverlegg"
+	"validator-type-wmsoverlay": "Webmappetjensteoverlegg",
+	"validator-type-jsonfile": "URL"
 }
