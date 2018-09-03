@@ -16,6 +16,8 @@ use SMWOutputs;
 use ValueParsers\ParseException;
 
 /**
+ * @property SMWDIGeoCoord m_dataitem
+ *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Markus Krötzsch
