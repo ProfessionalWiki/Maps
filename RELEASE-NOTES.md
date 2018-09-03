@@ -9,6 +9,7 @@ Under development
 
 * Dropped support for PHP older than 7.1
 * Dropped support for MediaWiki older than 1.31
+* Dropped support for Semantic MediaWiki older than 2.4
 * Added API key support for Leaflet layers via the `egMapsLeafletLayersApiKeys` setting (by Gilles Cébélieu)
 * Updated Leaflet library from version 1.3.1 to version 1.3.4
 
