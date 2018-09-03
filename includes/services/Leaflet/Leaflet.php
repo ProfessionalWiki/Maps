@@ -110,7 +110,7 @@ call_user_func(
 		];
 
 		$wgResourceModules['ext.maps.leaflet.editable'] = [
-			'dependencies' => [ 'ext.maps.leaflet' ],
+			'dependencies' => [ 'ext.maps.leaflet.base' ],
 			'localBasePath' => __DIR__ . '/leaflet.editable',
 			'remoteExtPath' => $remoteExtPath . '/leaflet.editable',
 			'group' => 'ext.maps',
@@ -124,7 +124,10 @@ call_user_func(
 		];
 
 		$wgResourceModules['ext.maps.leaflet.editor'] = [
-			'dependencies' => [ 'ext.maps.leaflet.editable' ],
+			'dependencies' => [
+				'ext.maps.leaflet.base',
+				//'ext.maps.leaflet.editable'
+			],
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => $remoteExtPath,
 			'group' => 'ext.maps',
