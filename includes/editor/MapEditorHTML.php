@@ -18,13 +18,7 @@ class MapEditorHtml extends ContextSource {
 	 */
 	protected $attribs;
 
-	/**
-	 * @param array $attribs
-	 * @param ContextSource|null $
-	 *
-	 * @since 2.1
-	 */
-	public function __construct( $attribs = [], ContextSource $contextSource = null ) {
+	public function __construct( $attribs = [] ) {
 		$this->attribs = $attribs;
 	}
 
