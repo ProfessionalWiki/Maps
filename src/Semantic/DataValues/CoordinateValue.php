@@ -9,6 +9,7 @@ use InvalidArgumentException;
 use MapsDistanceParser;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
+use SMW\Query\QueryComparator;
 use SMWDataItem;
 use SMWDataValue;
 use SMWDIGeoCoord;
@@ -79,7 +80,7 @@ class CoordinateValue extends SMWDataValue {
 		if ( $value === '' ) {
 			$this->addError( wfMessage( 'smw_novalues' )->text() );
 		} else {
-			SMWDataValue::prepareValue( $value, $comparator );
+			$comparator = QueryComparator::getInstance()->extractComparatorFromString( $value );
 
 			list( $coordinates, $distance ) = $this->findValueParts( $value );
 
