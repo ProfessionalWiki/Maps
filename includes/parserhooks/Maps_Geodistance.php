@@ -25,8 +25,8 @@ class MapsGeodistance extends ParserHook {
 	 */
 	public function render( array $parameters ) {
 		/**
-		 * @var \DataValues\LatLongValue $coordinates1
-		 * @var \DataValues\LatLongValue $coordinates2
+		 * @var \DataValues\Geo\Values\LatLongValue $coordinates1
+		 * @var \DataValues\Geo\Values\LatLongValue $coordinates2
 		 */
 		$coordinates1 = $parameters['location1']->getCoordinates();
 		$coordinates2 = $parameters['location2']->getCoordinates();
