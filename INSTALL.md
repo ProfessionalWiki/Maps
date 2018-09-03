@@ -28,7 +28,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Maps 6.0.x</th>
 		<td><strong>7.1</strong> - 7.3</td>
 		<td><strong>1.31</strong> - 1.32+</td>
-		<td>2.1 - 2.5+</td>
+		<td><strong>2.4</strong> - 3.0+</td>
 		<td>Planned Q3 2018</td>
 	</tr>
 	<tr>
