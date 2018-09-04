@@ -43,7 +43,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>7.0 - 7.3</td>
 		<td>1.27 - 1.31</td>
 		<td>2.1 - 3.0</td>
-		<td>Obsolete release, security fixes only</td>
+		<td><strong>Security fixes only</strong></td>
 	</tr>
 	<tr>
 		<th>Maps 5.5.x</th>
