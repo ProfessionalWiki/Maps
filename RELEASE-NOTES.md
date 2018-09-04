@@ -22,7 +22,7 @@ Released on September 4th, 2018.
 
 * Maps is no longer automatically loaded when it is installed with Composer. You now need to call `wfLoadExtension( 'Maps' )`
   (preferred) or include the entry point (`require_once __DIR__ . '/extensions/Maps/Maps.php';`) in `LocalSettings.php`
-* Removed `egMapsNamespaceIndex` setting
+* Removed unused `egMapsNamespaceIndex` setting
 
 ## Maps 5.6.0
 
