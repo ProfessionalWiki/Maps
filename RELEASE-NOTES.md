@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.0.1
+
+Released on September 5th, 2018.
+
+* Fixed loading of default settings
+
 ## Maps 6.0.0
 
 Released on September 4th, 2018.
@@ -21,7 +27,9 @@ Released on September 4th, 2018.
 ### Breaking changes
 
 * Maps is no longer automatically loaded when it is installed with Composer. You now need to call `wfLoadExtension( 'Maps' )`
-  (preferred) or include the entry point (`require_once __DIR__ . '/extensions/Maps/Maps.php';`) in `LocalSettings.php`
+  (preferred) or include the entry point (`require_once __DIR__ . '/extensions/Maps/Maps.php';`) in `LocalSettings.php`.
+  You will also need to include the default settings before your modify the Maps settings
+  `require_once __DIR__ . '/extensions/Maps/Maps_Settings.php';`
 * Removed unused `egMapsNamespaceIndex` setting
 
 ## Maps 5.6.0
