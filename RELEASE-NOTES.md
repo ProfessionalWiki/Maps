@@ -448,7 +448,9 @@ layers with OpenLayers has been reintroduced.
 * Maps code quality is now tracked by ScrutinizerCI at https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/
 * Maps is now available on Packagist at https://packagist.org/packages/mediawiki/maps
 
-## Maps 2.0 (2012-10-05)
+## Maps 2.0
+
+Released on October 5, 2012.
 
 #### Compatibility changes
 
@@ -488,29 +490,39 @@ layers with OpenLayers has been reintroduced.
 * Fixed JavaScript error on some special pages due to incorrect order of map initialization.
 * Fixed partially broken kml functionality.
 
-## Maps 1.0.5 (2011-11-30)
+## Maps 1.0.5
+
+Released on Novebmer 30, 2011.
 
 * Fixed display of attribution control for OpenLayers.
 * Fixed to big precision of geographic coordinates in decimal minutes format (bug 32407).
 
-## Maps 1.0.4 (2011-10-15)
+## Maps 1.0.4
+
+Released on October 15, 2011.
 
 * Updated OpenLayers from 2.10 to 2.11.
 * Fixed bug in adding additional markers for Google Maps v3 (mainly affecting the Semantic Maps form input).
 
-## Maps 1.0.3 (2011-09-14)
+## Maps 1.0.3
+
+Released on September 14, 2011.
 
 * Added API module for geocoding.
 * Added 'geocoding' right.
 * Added kmlrezoom parameter for Google Maps v3 and general $egMapsRezoomForKML setting.
 * Fixed Google Maps v3 JavaScript issue occurring on MediaWiki 1.17.
 
-## Maps 1.0.2 (2011-08-24)
+## Maps 1.0.2
+
+Released on August 24, 2011.
 
 * Fixed Google Maps v3 JavaScript issue occurring when using Google Earth on unsupported systems.
 * Fixed internationalization of distances (bug 30467).
 
-## Maps 1.0.1 (2011-08-17)
+## Maps 1.0.1
+
+Released on August 17, 2011.
 
 * Added language parameter to the mapsdoc hook.
 * Use of Validator 0.4.10s setMessage method instead of setDescription for better i18n.
@@ -519,25 +531,27 @@ layers with OpenLayers has been reintroduced.
 * Added support for Google Earth in Google Maps v3.
 * Added tilt parameter for Google Earth in Google Maps v3.
 
-## Maps 1.0 (2011-07-19)
+## Maps 1.0
+
+Released on July 19, 2011.
 
 This version branched from Maps 0.7.x at version 0.7.3.
 
-#### New features ####
+#### New features
 
 * Added full Google Maps v3 support and set it as the default mapping service.
 * Added new geocoder making use of the new GeoNames API.
 * Added support for the auto-documentation features for parser hooks introduced in Validator 0.4.3.
 * Added resizeable parameter to all mapping services except OSM.
 
-#### Removed features ####
+#### Removed features
 
 * Removed compatibility with pre MediaWiki 1.17.
 * Removed overlays parameter for Google Maps v2.
 * Removed the previously deprecated "display map", "display point" and "display points" parser hooks.
 Use their underscored equivalents, ie "display_map".
 
-#### Internal improvements ####
+#### Internal improvements
 
 * Usage of the Resource Loader for all scripts and stylesheets.
 * Rewrote all the map JavaScript to jQuery plugins.
@@ -547,14 +561,14 @@ Use their underscored equivalents, ie "display_map".
 * Completed coordinate and distance parser/formatter unit tests and made them compliant with the
 MediaWiki unit testing support.
 
-#### Bug fixes ####
+#### Bug fixes
 
 * Fixed geocoding service overriding based on mapping service (merged in from Maps 0.7.5).
 * Fixed fatal error occurring when running maintenance/refreshLinks.php.
 * Fixed DMS coordinate parsing issue (bug 29419).
 * Fixed coordinate normalization issue (bug 29421).
 
-#### Other tweaks ####
+#### Other tweaks
 
 * Improved default width of maps (merged in from Maps 0.7.5).
 
