@@ -5,9 +5,13 @@ use Maps\MapsSetup;
 class MapsRegistration {
 
 	public static function onRegistration( array $credits ) {
-		if ( defined( 'Maps_COORDS_FLOAT' ) ) {
+		if ( defined( 'Maps_VERSION' ) ) {
 			// Do not initialize more than once.
 			return true;
+		}
+
+		if ( !defined( 'Maps_SETTINGS_LOADED' ) ) {
+			require_once __DIR__ . '/Maps_Settings.php';
 		}
 
 		if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -17,18 +21,10 @@ class MapsRegistration {
 		define( 'Maps_VERSION', $credits['version'] );
 		define( 'SM_VERSION', Maps_VERSION );
 
-		// The different coordinate notations.
-		define( 'Maps_COORDS_FLOAT', 'float' );
-		define( 'Maps_COORDS_DMS', 'dms' );
-		define( 'Maps_COORDS_DM', 'dm' );
-		define( 'Maps_COORDS_DD', 'dd' );
-
 		if ( !(bool)'Defining PHP constants in JSON is a bad idea and breaks tools' ) {
 			define( 'NS_GEO_JSON', 420 );
 			define( 'NS_GEO_JSON_TALK', 421 );
 		}
-
-		require_once __DIR__ . '/Maps_Settings.php';
 
 		// Internationalization
 		$GLOBALS['wgMessagesDirs']['Maps.class'] = __DIR__ . '/i18n';

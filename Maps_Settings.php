@@ -57,6 +57,7 @@
 
 	// Boolean. Sets if geocoded addresses should be stored in a cache.
 	$GLOBALS['egMapsEnableGeoCache'] = true;
+
 	// Integer. If egMapsEnableGeoCache is true, determines the TTL of cached geocoded addresses.
 	// Default value: 1 day.
 	$GLOBALS['egMapsGeoCacheTtl'] = 24 * 3600;
@@ -66,22 +67,22 @@
 
 	// The coordinate notations that should be available.
 	$GLOBALS['egMapsAvailableCoordNotations'] = [
-		Maps_COORDS_FLOAT,
-		Maps_COORDS_DMS,
-		Maps_COORDS_DM,
-		Maps_COORDS_DD
+		'float',
+		'dms',
+		'dm',
+		'dd'
 	];
 
-	// Enum. The default output format of coordinates.
-	// Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
-	$GLOBALS['egMapsCoordinateNotation'] = Maps_COORDS_DMS;
+	// The default output format of coordinates.
+	// Possible values: float, dms, dm, dd
+	$GLOBALS['egMapsCoordinateNotation'] = 'dms';
 
-	# Enum. The default output format of coordinates when displayed by Semantic MediaWiki.
-	# Possible values: Maps_COORDS_FLOAT, Maps_COORDS_DMS, Maps_COORDS_DM, Maps_COORDS_DD
+	# The default output format of coordinates when displayed by Semantic MediaWiki.
+	# Possible values: float, dms, dm, dd
 	$GLOBALS['smgQPCoodFormat'] = $GLOBALS['egMapsCoordinateNotation'];
 
 	// Boolean. Indicates if coordinates should be outputted in directional notation by default.
-	// Recommended to be true for Maps_COORDS_DMS and false for Maps_COORDS_FLOAT.
+	// Recommended to be true for dms and false for float.
 	$GLOBALS['egMapsCoordinateDirectional'] = true;
 
 	# Boolean. Indicates if coordinates should be outputted in directional notation by default when
@@ -413,3 +414,6 @@
 
 	$GLOBALS['egMapsGlobalJSVars'] = [];
 
+if ( !defined( 'Maps_SETTINGS_LOADED' ) ) {
+	define( 'Maps_SETTINGS_LOADED', true );
+}
