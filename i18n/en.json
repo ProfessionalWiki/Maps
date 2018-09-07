@@ -227,5 +227,5 @@
 	"validator-type-mapspolygon": "Geographical polygon",
 	"validator-type-mapspolygon-list": "List of geographical polygons",
 	"validator-type-wmsoverlay": "Web Map Service overlay",
-	"validator-type-jsonfile": "URL or page name"
+	"validator-type-jsonfile": "text"
 }
