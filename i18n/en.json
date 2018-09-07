@@ -83,7 +83,7 @@
 	"maps-displaymap-par-rectangles": "Rectangles to display",
 	"maps-displaymap-par-static": "Make the map static",
 	"maps-displaymap-par-wmsoverlay": "Use a WMS overlay",
-	"maps-displaymap-par-geojson": "URL of a GeoJSON file",
+	"maps-displaymap-par-geojson": "URL of a file or name of the page containing GeoJSON data",
 	"maps-fullscreen-button": "Toggle fullscreen",
 	"maps-fullscreen-button-tooltip": "View the map as fullscreen or embedded.",
 	"validation-error-invalid-location": "Parameter \"$1\" must be a valid location.",
@@ -227,5 +227,5 @@
 	"validator-type-mapspolygon": "Geographical polygon",
 	"validator-type-mapspolygon-list": "List of geographical polygons",
 	"validator-type-wmsoverlay": "Web Map Service overlay",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "URL or page name"
 }
