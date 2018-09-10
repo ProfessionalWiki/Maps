@@ -109,7 +109,7 @@
 	"maps-displaymap-par-rectangles": "Прямоугольники для отображения",
 	"maps-displaymap-par-static": "Сделать карту статичной",
 	"maps-displaymap-par-wmsoverlay": "Использовать слой WMS",
-	"maps-displaymap-par-geojson": "URL для GeoJSON файла",
+	"maps-displaymap-par-geojson": "URL файла или название страницы, содержащей данные GeoJSON",
 	"maps-fullscreen-button": "Переключить полноэкранный режим",
 	"maps-fullscreen-button-tooltip": "Посмотреть карту в полноэкранном или встроенном  режиме.",
 	"validation-error-invalid-location": "Параметр $1 должен быть корректным местоположением.",
@@ -250,5 +250,5 @@
 	"validator-type-mapspolygon": "Географический полигон",
 	"validator-type-mapspolygon-list": "Перечень географических полигонов",
 	"validator-type-wmsoverlay": "Оверлей веб-карты",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "текст"
 }

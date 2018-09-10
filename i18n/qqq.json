@@ -13,7 +13,8 @@
 			"아라",
 			"Liuxinyu970226",
 			"Nike",
-			"Lloffiwr"
+			"Lloffiwr",
+			"Robby"
 		]
 	},
 	"maps-desc": "{{desc|name=Maps|url=https://www.semantic-mediawiki.org/wiki/Extension:Maps}}",
@@ -235,5 +236,6 @@
 	"validator-type-mapslocation-list": "This is the name of a type of values that may be assigned to a parameter.",
 	"validator-type-mapsrectangle": "This is the name of a type of values that may be assigned to a parameter.",
 	"validator-type-mapsrectangle-list": "This is the name of a type of values that may be assigned to a parameter.",
-	"validator-type-wmsoverlay": "This is the name of a type of values that may be assigned to a parameter. WMS stands for [[wikipedia:en:Web_Map_Service|Web Map Service]]."
+	"validator-type-wmsoverlay": "This is the name of a type of values that may be assigned to a parameter. WMS stands for [[wikipedia:en:Web_Map_Service|Web Map Service]].",
+	"validator-type-jsonfile": "{{Identical|Text}}"
 }

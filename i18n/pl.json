@@ -68,7 +68,7 @@
 	"maps-displaymap-par-rectangles": "Prostokąty do wyświetlenia",
 	"maps-displaymap-par-static": "Uczyń mapę statyczną",
 	"maps-displaymap-par-wmsoverlay": "Użyj nakładki WMS",
-	"maps-displaymap-par-geojson": "Adres URL pliku GeoJSON",
+	"maps-displaymap-par-geojson": "Adres URL pliku lub nazwa strony zawierającej dane GeoJSON",
 	"maps-fullscreen-button": "Przełącz na tryb pełnoekranowy",
 	"maps-fullscreen-button-tooltip": "Zobacz mapę jako pełnoekranową lub osadzoną.",
 	"validation-error-invalid-location": "Parametr $1 musi wskazywać prawidłową lokalizację.",
@@ -165,5 +165,5 @@
 	"validator-type-mapsrectangle-list": "Lista prostokątów",
 	"validator-type-mapspolygon": "Wielokąt geograficzny",
 	"validator-type-mapspolygon-list": "Lista wielokątów geograficznych",
-	"validator-type-jsonfile": "Adres URL"
+	"validator-type-jsonfile": "tekst"
 }

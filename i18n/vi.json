@@ -6,7 +6,8 @@
 			"Vinhtantran",
 			"Withoutaname",
 			"Dinhxuanduyet",
-			"Macofe"
+			"Macofe",
+			"Nhatminh01"
 		]
 	},
 	"maps-desc": "Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác",
@@ -103,5 +104,6 @@
 	"semanticmaps-par-showtitle": "Tên tùy chọn của cửa sổ thông tin đánh dấu. Có thể để trống để định dạng nội dung cửa sổ thông tin dùng bản mẫu.",
 	"semanticmaps-par-centre": "Trung tâm của bản đồ. Nếu không có, bản đồ sẽ tự động chọn trung tâm tối ưu bao gồm tất cả các dấu trên bản đồ.",
 	"semanticmaps-par-template": "Bản đồ dùng để định dạng nội dung của cửa sổ thông tin.",
-	"semanticmaps-par-geocodecontrol": "Hiện điều khiển mã hóa địa lý."
+	"semanticmaps-par-geocodecontrol": "Hiện điều khiển mã hóa địa lý.",
+	"validator-type-jsonfile": "chữ"
 }

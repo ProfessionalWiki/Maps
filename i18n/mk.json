@@ -3,7 +3,8 @@
 		"authors": [
 			"Bjankuloski06",
 			"McDutchie",
-			"Macofe"
+			"Macofe",
+			"Vlad5250"
 		]
 	},
 	"maps-desc": "Дава можност за вметнување на динамички карти во викистраници, геокодирање на адреси и други географски постапки",
@@ -84,7 +85,7 @@
 	"maps-displaymap-par-rectangles": "Правоаголници за приказ",
 	"maps-displaymap-par-static": "Напарви ја картата неподвижна",
 	"maps-displaymap-par-wmsoverlay": "Користи WMS-облога",
-	"maps-displaymap-par-geojson": "URL на GeoJSON-податотеката",
+	"maps-displaymap-par-geojson": "URL на податотеката или името на страницата со GeoJSON-податоци",
 	"maps-fullscreen-button": "Префрли на широк екран",
 	"maps-fullscreen-button-tooltip": "Поглед на картата на цел екран или вгнездено.",
 	"validation-error-invalid-location": "Параметарот $1 мора да претставува важечка местоположба.",
@@ -226,5 +227,5 @@
 	"validator-type-mapspolygon": "Географски многуаголник",
 	"validator-type-mapspolygon-list": "Список на географски многуаголници",
 	"validator-type-wmsoverlay": "Облога Web Map Service",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "текст"
 }
