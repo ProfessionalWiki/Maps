@@ -160,5 +160,5 @@
 	"validator-type-mapsrectangle-list": "Elenco di rettangoli",
 	"validator-type-mapspolygon": "Poligono geografico",
 	"validator-type-mapspolygon-list": "Elenco dei poligoni geografici",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "testo"
 }
