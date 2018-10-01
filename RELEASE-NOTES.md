@@ -5,8 +5,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 6.0.2
 
-Under development
+Released on October 1st, 2018.
 
+* Coordinates formatted as Decimal Degrees or Float are now rounded sensibly
 * The `smgQPCoodDirectional` setting is no longer ignored
 
 ## Maps 6.0.1
