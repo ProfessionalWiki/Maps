@@ -2,7 +2,6 @@
 
 namespace Maps\GeoJson;
 
-use FormatJson;
 use Html;
 use ParserOptions;
 use ParserOutput;

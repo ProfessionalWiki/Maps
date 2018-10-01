@@ -1,7 +1,7 @@
 <?php
 
-use DataValues\Geo\Formatters\LatLongFormatter;
 use DataValues\Geo\Values\LatLongValue;
+use Maps\MapsFactory;
 
 /**
  * Class for the 'finddestination' parser hooks, which can find a
@@ -32,17 +32,11 @@ class MapsFinddestination extends ParserHook {
 			$parameters['distance']
 		);
 
-		$options = new \ValueFormatters\FormatterOptions(
-			[
-				LatLongFormatter::OPT_FORMAT => $parameters['format'],
-				LatLongFormatter::OPT_DIRECTIONAL => $parameters['directional'],
-				LatLongFormatter::OPT_PRECISION => 1 / 360000
-			]
+		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
+			new LatLongValue( $destination['lat'], $destination['lon'] ),
+			$parameters['format'],
+			$parameters['directional']
 		);
-
-		$formatter = new LatLongFormatter( $options );
-
-		return $formatter->format( new LatLongValue( $destination['lat'], $destination['lon'] ) );
 	}
 
 	/**

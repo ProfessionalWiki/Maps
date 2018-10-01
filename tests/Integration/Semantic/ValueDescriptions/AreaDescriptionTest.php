@@ -5,8 +5,6 @@ namespace Maps\Tests\Semantic\ValueDescriptions;
 use CoordinateValue;
 use Maps\Semantic\ValueDescriptions\AreaDescription;
 use PHPUnit\Framework\TestCase;
-use SMW\DataValueFactory;
-use SMWDataItem;
 use SMWDIGeoCoord;
 
 /**
@@ -75,7 +73,7 @@ class AreaDescriptionTest extends TestCase {
 		);
 
 		$this->assertSame(
-			'[[1° 0\' 0", 5° 0\' 0" (10 km)]]',
+			'[[1° 0\' 0.00" N, 5° 0\' 0.00" E (10 km)]]',
 			$area->getQueryString()
 		);
 	}

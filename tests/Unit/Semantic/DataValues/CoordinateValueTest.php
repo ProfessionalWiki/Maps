@@ -35,7 +35,7 @@ class CoordinateValueTest extends TestCase {
 		$this->assertInstanceOf( CoordinateValue::class, $geoValue );
 
 		$this->assertEquals( $geoDI, $geoValue->getDataItem() );
-		$this->assertEquals( '23° 0\' 0", 42° 0\' 0"', $geoValue->getShortWikiText() );
+		$this->assertSame( '23° 0\' 0.00" N, 42° 0\' 0.00" E', $geoValue->getShortWikiText() );
 	}
 
 	/**

@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps;
 
 use FileFetcher\FileFetcher;
@@ -26,8 +28,21 @@ class MapsFactory {
 		$this->mediaWikiServices = $mediaWikiServices;
 	}
 
-	public static function newDefault() {
+	public static function newDefault(): self {
 		return new self( $GLOBALS, MediaWikiServices::getInstance() );
+	}
+
+	/**
+	 * Only for legacy code where dependency injection is not possible
+	 */
+	public static function globalInstance(): self {
+		static $instance = null;
+
+		if ( $instance === null ) {
+			$instance = self::newDefault();
+		}
+
+		return $instance;
 	}
 
 	public function newLocationParser(): LocationParser {
@@ -95,6 +110,10 @@ class MapsFactory {
 			$this->mediaWikiServices->getTitleParser(),
 			$this->mediaWikiServices->getRevisionLookup()
 		);
+	}
+
+	public function getCoordinateFormatter(): CoordinateFormatter {
+		return new CoordinateFormatter();
 	}
 
 }

@@ -1,8 +1,7 @@
 <?php
 
-use DataValues\Geo\Formatters\LatLongFormatter;
 use Jeroen\SimpleGeocoder\Geocoder;
-use ValueFormatters\FormatterOptions;
+use Maps\MapsFactory;
 
 /**
  * Class for the 'geocode' parser hooks, which can turn
@@ -40,18 +39,10 @@ class MapsGeocode extends ParserHook {
 			return 'Geocoding failed'; // TODO: i18n
 		}
 
-		return $this->newCoordinateFormatter( $parameters )->format( $coordinates );
-	}
-
-	private function newCoordinateFormatter( array $parameters ) {
-		return new LatLongFormatter(
-			new FormatterOptions(
-				[
-					LatLongFormatter::OPT_FORMAT => $parameters['format'],
-					LatLongFormatter::OPT_DIRECTIONAL => $parameters['directional'],
-					LatLongFormatter::OPT_PRECISION => 1 / 360000
-				]
-			)
+		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
+			$coordinates,
+			$parameters['format'],
+			$parameters['directional']
 		);
 	}
 

@@ -2,10 +2,10 @@
 
 namespace Maps\Semantic\DataValues;
 
-use DataValues\Geo\Formatters\LatLongFormatter;
 use DataValues\Geo\Parsers\LatLongParser;
 use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
+use Maps\MapsFactory;
 use MapsDistanceParser;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
@@ -159,21 +159,13 @@ class CoordinateValue extends SMWDataValue {
 	 * @return string|null
 	 */
 	private function getFormattedCoord( SMWDIGeoCoord $dataItem, string $format = null ) {
-		$options = new \ValueFormatters\FormatterOptions(
-			[
-				LatLongFormatter::OPT_FORMAT => $format ?? $GLOBALS['smgQPCoodFormat'],
-				LatLongFormatter::OPT_DIRECTIONAL => $GLOBALS['smgQPCoodDirectional'],
-				LatLongFormatter::OPT_PRECISION => 1 / 360000
-			]
-		);
-
-		$coordinateFormatter = new LatLongFormatter( $options );
-
-		return $coordinateFormatter->format(
+		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
 			new LatLongValue(
 				$dataItem->getLatitude(),
 				$dataItem->getLongitude()
-			)
+			),
+			$format ?? $GLOBALS['smgQPCoodFormat'],
+			$GLOBALS['smgQPCoodDirectional']
 		);
 	}
 
