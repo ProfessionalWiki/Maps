@@ -14,12 +14,19 @@ use ValueFormatters\FormatterOptions;
  */
 class CoordinateFormatter {
 
+	private const PRECISION_MAP = [
+		'dms' => 1 / 360000,
+		'dm' => 1 / 600000,
+		'dd' => 1 / 1000000,
+		'float' => 1 / 1000000,
+	];
+
 	public function format( LatLongValue $latLong, string $format, bool $directional ) {
 		$formatter = new LatLongFormatter( new FormatterOptions(
 			[
 				LatLongFormatter::OPT_FORMAT => $format,
 				LatLongFormatter::OPT_DIRECTIONAL => $directional,
-				LatLongFormatter::OPT_PRECISION => 1 / 360000
+				LatLongFormatter::OPT_PRECISION => self::PRECISION_MAP[$format]
 			]
 		) );
 
