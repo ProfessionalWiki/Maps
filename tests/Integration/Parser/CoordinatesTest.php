@@ -67,7 +67,7 @@ class CoordinatesTest extends TestCase {
 
 	public function testRoundingWhenFormattingAsFloat() {
 		$this->assertContains(
-			'52.136944444444 N, 0.46672222222222 W',
+			'52.136945 N, 0.466722 W',
 			$this->parse( '{{#coordinates:52.136945,-0.466722|format=float}}' )
 		);
 	}
@@ -81,7 +81,7 @@ class CoordinatesTest extends TestCase {
 
 	public function testRoundingWhenFormattingAsDD() {
 		$this->assertContains(
-			'52.136944° N, 0.466722° W',
+			'52.136945° N, 0.466722° W',
 			$this->parse( '{{#coordinates:52.136945,-0.466722|format=dd}}' )
 		);
 	}
