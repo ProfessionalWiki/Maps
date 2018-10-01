@@ -6,7 +6,7 @@ use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Rectangle;
 
 /**
- * @covers Maps\Elements\Rectangle
+ * @covers \Maps\Elements\Rectangle
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

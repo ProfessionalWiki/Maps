@@ -6,7 +6,7 @@ use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Circle;
 
 /**
- * @covers Maps\Elements\Circle
+ * @covers \Maps\Elements\Circle
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

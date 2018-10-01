@@ -7,7 +7,7 @@ use Maps\Elements\Location;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Maps\Elements\Location
+ * @covers \Maps\Elements\Location
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

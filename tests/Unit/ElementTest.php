@@ -10,7 +10,7 @@ use Maps\Elements\Rectangle;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Maps\Elements\BaseElement
+ * @covers \Maps\Elements\BaseElement
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

@@ -10,7 +10,7 @@ use Maps\RectangleParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers Maps\RectangleParser
+ * @covers \Maps\RectangleParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
