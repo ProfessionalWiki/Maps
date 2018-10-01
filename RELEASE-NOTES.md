@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.0.2
+
+Under development
+
+* The `smgQPCoodDirectional` setting is no longer ignored
+
 ## Maps 6.0.1
 
 Released on September 5th, 2018.
