@@ -65,4 +65,32 @@ class CoordinatesTest extends TestCase {
 		);
 	}
 
+	public function testRoundingWhenFormattingAsFloat() {
+		$this->assertContains(
+			'52.136944444444 N, 0.46672222222222 W',
+			$this->parse( '{{#coordinates:52.136945,-0.466722|format=float}}' )
+		);
+	}
+
+	public function testRoundingWhenFormattingAsDMS() {
+		$this->assertContains(
+			'52° 8\' 13.00" N, 0° 28\' 0.20" W',
+			$this->parse( '{{#coordinates:52.136945,-0.466722|format=dms}}' )
+		);
+	}
+
+	public function testRoundingWhenFormattingAsDD() {
+		$this->assertContains(
+			'52.136944° N, 0.466722° W',
+			$this->parse( '{{#coordinates:52.136945,-0.466722|format=dd}}' )
+		);
+	}
+
+	public function testRoundingWhenFormattingAsDM() {
+		$this->assertContains(
+			'52° 8.2167\' N, 0° 28.0033\' W',
+			$this->parse( '{{#coordinates:52.136945,-0.466722|format=dm}}' )
+		);
+	}
+
 }
