@@ -159,24 +159,22 @@ class CoordinateValue extends SMWDataValue {
 	 * @return string|null
 	 */
 	private function getFormattedCoord( SMWDIGeoCoord $dataItem, string $format = null ) {
-		global $smgQPCoodFormat;
-
 		$options = new \ValueFormatters\FormatterOptions(
 			[
-				LatLongFormatter::OPT_FORMAT => $format === null ? $smgQPCoodFormat : $format, // TODO
+				LatLongFormatter::OPT_FORMAT => $format ?? $GLOBALS['smgQPCoodFormat'],
+				LatLongFormatter::OPT_DIRECTIONAL => $GLOBALS['smgQPCoodDirectional'],
+				LatLongFormatter::OPT_PRECISION => 1 / 360000
 			]
 		);
 
-		// TODO: $smgQPCoodDirectional
-
 		$coordinateFormatter = new LatLongFormatter( $options );
 
-		$value = new LatLongValue(
-			$dataItem->getLatitude(),
-			$dataItem->getLongitude()
+		return $coordinateFormatter->format(
+			new LatLongValue(
+				$dataItem->getLatitude(),
+				$dataItem->getLongitude()
+			)
 		);
-
-		return $coordinateFormatter->format( $value );
 	}
 
 	/**
