@@ -4,7 +4,8 @@
 			"Gallaecio",
 			"Toliño",
 			"Banjo",
-			"Elisardojm"
+			"Elisardojm",
+			"Navhy"
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas nas páxinas do wiki",
@@ -119,7 +120,7 @@
 	"maps_centred_on": "Mapa centrado en $1, $2.",
 	"maps-par-mappingservice": "Permite configurar o servizo de mapas que se empregará para xerar o mapa.",
 	"maps-par-resizable": "Fai que se poidan alterar as dimensións do mapa, arrastrando o canto inferior dereito.",
-	"maps-par-searchmarkers": "Permite buscar marcadores específicos a través dun campo integrado no mapa.",
+	"maps-par-searchmarkers": "Permite procurar marcadores específicos a través dun campo integrado no mapa.",
 	"maps-par-zoom": "O nivel de zoom no mapa. Para os mapas con marcadores o valor por defecto usará o nivel máximo de zoom que abranga todos os marcadores.",
 	"maps-par-width": "Permite definir o largo do mapa. Por defecto, os píxeles asúmense como unidade, pero tamén pode especificar unha destas unidades: px, ex, em, %.",
 	"maps-par-height": "Permite definir a altura do mapa. Por defecto, os píxeles asúmense como unidade, pero tamén pode especificar unha destas unidades: px, ex, em, %.",

@@ -93,7 +93,7 @@
 	"maps-displaymap-par-rectangles": "Retângulos a serem apresentados",
 	"maps-displaymap-par-static": "Tornar o mapa estático",
 	"maps-displaymap-par-wmsoverlay": "Usar uma sobreposição WMS",
-	"maps-displaymap-par-geojson": "URL de um ficheiro GeoJSON",
+	"maps-displaymap-par-geojson": "URL de um ficheiro, ou nome da página, que contém dados GeoJSON",
 	"maps-fullscreen-button": "Ativar ou desativar ecrã completo",
 	"maps-fullscreen-button-tooltip": "Ver o mapa em todo o ecrã ou incorporado.",
 	"validation-error-invalid-location": "O parâmetro \"$1\" tem de ser uma localização válida.",
@@ -234,5 +234,5 @@
 	"validator-type-mapspolygon": "Polígono geográfico",
 	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
 	"validator-type-wmsoverlay": "Sobreposição Web Map Service",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "texto"
 }
