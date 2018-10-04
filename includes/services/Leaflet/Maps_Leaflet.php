@@ -146,4 +146,12 @@ class MapsLeaflet extends MapsMappingService {
 		);
 	}
 
+	protected function getDependencies() {
+		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
+		return [
+			Html::linkedStyle( "$leafletPath/leaflet.css" ),
+			Html::linkedScript( "$leafletPath/leaflet.js" ),
+		];
+	}
+
 }

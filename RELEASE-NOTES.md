@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.0.3
+
+Released on October 4th, 2018.
+
+* Fixed double display of markers when using Leaflet (6.0.0 regression)
+
 ## Maps 6.0.2
 
 Released on October 1st, 2018.
@@ -14,7 +20,7 @@ Released on October 1st, 2018.
 
 Released on September 5th, 2018.
 
-* Fixed loading of default settings
+* Fixed loading of default settings (6.0.0 regression)
 
 ## Maps 6.0.0
 
