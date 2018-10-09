@@ -132,6 +132,7 @@
 	"mapeditor-clear-button": "Wyczyść mapę",
 	"mapeditor-code-title": "Kod wiki",
 	"mapeditor-import-title": "Import kodu wiki",
+	"mapeditor-import-note": "Zwróć uwagę że parser oczekuje kodu wiki w bardzo określonym formacie. Umieszczone tutaj źródło powinno odpowiadać kodowy wygenerowanemu przez narzędzie do eksportu mapy.",
 	"mapeditor-form-title": "Edytuj szczegóły",
 	"mapeditor-link-title-switcher-link-text": "Link",
 	"mapeditor-form-field-title": "Tytuł",
