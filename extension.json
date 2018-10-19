@@ -16,7 +16,7 @@
 	},
 
 	"MessagesDirs": {
-		"Maps": [
+		"Maps.class": [
 			"i18n"
 		]
 	},
