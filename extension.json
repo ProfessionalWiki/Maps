@@ -15,6 +15,16 @@
 		"MediaWiki": ">= 1.31.0"
 	},
 
+	"MessagesDirs": {
+		"Maps.class": [
+			"i18n"
+		]
+	},
+	"ExtensionMessagesFiles": {
+		"MapsAlias": "Maps.i18n.alias.php",
+		"MapsMagic": "Maps.i18n.magic.php"
+	},
+
 	"callback": "MapsRegistration::onRegistration",
 	"ContentHandlers": {
 		"GeoJson": "Maps\\GeoJson\\GeoJsonContentHandler"

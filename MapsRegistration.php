@@ -26,11 +26,6 @@ class MapsRegistration {
 			define( 'NS_GEO_JSON_TALK', 421 );
 		}
 
-		// Internationalization
-		$GLOBALS['wgMessagesDirs']['Maps.class'] = __DIR__ . '/i18n';
-		$GLOBALS['wgExtensionMessagesFiles']['MapsMagic'] = __DIR__ . '/Maps.i18n.magic.php';
-		$GLOBALS['wgExtensionMessagesFiles']['MapsAlias'] = __DIR__ . '/Maps.i18n.alias.php';
-
 		$GLOBALS['wgExtensionFunctions'][] = function() {
 			if ( $GLOBALS['egMapsDisableExtension'] ) {
 				return true;
