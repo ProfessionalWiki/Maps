@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.0.4
+
+Released on October 20th, 2018.
+
+* Fixed localizaion loading issue (by paladox)
+
 ## Maps 6.0.3
 
 Released on October 4th, 2018.
