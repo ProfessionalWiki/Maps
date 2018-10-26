@@ -273,11 +273,10 @@ class SMQueryHandler {
 							if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
 								foreach ( $dataValue->getDataItems() as $dataItem ) {
 									if ( $dataItem instanceof \SMWDIGeoCoord ) {
-										$location = Location::newFromLatLon(
+										$locations[] = Location::newFromLatLon(
 											$dataItem->getLatitude(),
 											$dataItem->getLongitude()
 										);
-										$locations[] = $location;
 									}
 								}
 							} else {
@@ -289,12 +288,10 @@ class SMQueryHandler {
 										) == '_geo' || $dataValue->getTypeID() == '_geo' ) {
 										$dataItem = $dataValue->getDataItem();
 
-										$location = Location::newFromLatLon(
+										$locations[] = Location::newFromLatLon(
 											$dataItem->getLatitude(),
 											$dataItem->getLongitude()
 										);
-
-										$locations[] = $location;
 									}
 								}
 							}
