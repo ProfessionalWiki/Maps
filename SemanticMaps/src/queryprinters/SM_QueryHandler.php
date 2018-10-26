@@ -258,7 +258,8 @@ class SMQueryHandler {
 			// Loop through all the parts of the field value.
 			while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
 				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
-					list( $title, $text ) = $this->handleResultSubject( $dataValue );
+					$title = $dataValue->getLongText( $this->outputMode, null );
+					$text = $this->getResultSubjectText( $dataValue );
 				} else {
 					if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
 						$title = $dataValue->getLongText( $this->outputMode, null );
@@ -327,50 +328,50 @@ class SMQueryHandler {
 	 *
 	 * @param SMWWikiPageValue $object
 	 *
-	 * @return array with title and text
+	 * @return string
 	 */
-	private function handleResultSubject( SMWWikiPageValue $object ) {
-		$title = $object->getLongText( $this->outputMode, null );
-		$text = '';
-
-		if ( $this->showSubject ) {
-			if ( !$this->showArticleLink() ) {
-				$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
-			} else {
-				if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
-					$text = Html::element(
-						'a',
-						[ 'href' => $object->getTitle()->getFullUrl() ],
-						$this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText()
-					);
-				} else {
-					if ( $this->hideNamespace ) {
-						$text = $object->getShortHTMLText( smwfGetLinker() );
-					} else {
-						$text = $object->getLongHTMLText( smwfGetLinker() );
-					}
-				}
-			}
-
-			if ( $this->boldSubject ) {
-				$text = '<b>' . $text . '</b>';
-			}
-
-			if ( $this->titleLinkSeparate ) {
-				$txt = $object->getTitle()->getText();
-
-				if ( $this->pageLinkText !== '' ) {
-					$txt = str_replace( '$1', $txt, $this->pageLinkText );
-				}
-				$text .= Html::element(
-					'a',
-					[ 'href' => $object->getTitle()->getFullUrl() ],
-					$txt
-				);
-			}
+	private function getResultSubjectText( SMWWikiPageValue $object ): string {
+		if ( !$this->showSubject ) {
+			return '';
 		}
 
-		return [ $title, $text ];
+		if ( $this->showArticleLink() ) {
+			if ( !$this->titleLinkSeparate && $this->linkAbsolute ) {
+				$text = Html::element(
+					'a',
+					[ 'href' => $object->getTitle()->getFullUrl() ],
+					$this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText()
+				);
+			} else {
+				if ( $this->hideNamespace ) {
+					$text = $object->getShortHTMLText( smwfGetLinker() );
+				} else {
+					$text = $object->getLongHTMLText( smwfGetLinker() );
+				}
+			}
+		} else {
+			$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
+		}
+
+		if ( $this->boldSubject ) {
+			$text = '<b>' . $text . '</b>';
+		}
+
+		if ( !$this->titleLinkSeparate ) {
+			return $text;
+		}
+
+		$txt = $object->getTitle()->getText();
+
+		if ( $this->pageLinkText !== '' ) {
+			$txt = str_replace( '$1', $txt, $this->pageLinkText );
+		}
+
+		return $text . Html::element(
+			'a',
+			[ 'href' => $object->getTitle()->getFullUrl() ],
+			$txt
+		);
 	}
 
 	private function showArticleLink() {
