@@ -92,6 +92,7 @@
 	"maps-displaymap-par-rectangles": "Rektanglar att visa",
 	"maps-displaymap-par-static": "Gör kartan statisk",
 	"maps-displaymap-par-wmsoverlay": "Använd ett WMS-överdrag",
+	"maps-displaymap-par-geojson": "Webbadressen till en fil eller namnet på sidan som innehåller GeoJSON-data",
 	"maps-fullscreen-button": "Växla fullskärmsläge",
 	"maps-fullscreen-button-tooltip": "Visa kartan i helskärm eller som inbäddad.",
 	"validation-error-invalid-location": "Parameter $1 måste vara en giltig plats.",
@@ -232,5 +233,5 @@
 	"validator-type-mapspolygon": "Geografisk polygon",
 	"validator-type-mapspolygon-list": "Lista över geografiska polygoner",
 	"validator-type-wmsoverlay": "Webbmappstjänst-överlägg",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "text"
 }
