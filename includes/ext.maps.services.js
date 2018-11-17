@@ -1,16 +1,7 @@
 /*global jQuery, mediaWiki, maps */
 /*global confirm */
 ( function ( $, mw, maps ) {
-
 	'use strict';
-
-	/**
-	 * @since 3.5
-	 *
-	 * @class
-	 * @abstract
-	 */
-	maps.services = {};
 
 	/**
 	 * @since 3.5
