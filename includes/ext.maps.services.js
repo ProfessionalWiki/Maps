@@ -15,7 +15,7 @@
 	/**
 	 * @since 3.5
 	 *
-	 * @param {object}
+	 * @param {object} container
 	 * @return {this}
 	 */
 	var services = function ( container ) {
@@ -38,21 +38,20 @@
 		/**
 		 * @since 3.5
 		 *
-		 * @param {string}
+		 * @param {string} service
 		 */
 		render: function( service ) {
-
 			if ( service === 'googlemaps' || service === 'maps' || service === 'googlemaps3' ) {
 				this.google();
-			};
+			}
 
 			if ( service === 'openlayers' ) {
 				this.openlayers();
-			};
+			}
 
 			if ( service === 'leaflet' || service === 'leafletmaps' ) {
 				this.leaflet();
-			};
+			}
 		},
 
 		/**
