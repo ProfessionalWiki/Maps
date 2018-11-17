@@ -550,14 +550,13 @@
 				var ftLayer = new google.maps.FusionTablesLayer(options.fusiontables[i], { map:map });
 			}
 
-			var layerMapping = {
-				'traffic':'new google.maps.TrafficLayer()',
-				'bicycling':'new google.maps.BicyclingLayer()'
-			};
-
 			for (i = options.layers.length - 1; i >= 0; i--) {
-				var layer = layerMapping[ options.layers[i] ];
-				layer.setMap(map);
+				if ( options.layers[i] === 'traffic' ) {
+					( new google.maps.TrafficLayer() ).setMap(map);
+				}
+				else if ( options.layers[i] === 'bicycling' ) {
+					( new google.maps.BicyclingLayer() ).setMap(map);
+				}
 			}
 
 			var bounds = getBounds();
