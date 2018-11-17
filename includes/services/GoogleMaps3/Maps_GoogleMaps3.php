@@ -26,24 +26,10 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		'earth' => 'earth'
 	];
 
-	private static $mapLayers = [
-		'traffic',
-		'bicycling'
-	];
-
 	private static $typeControlStyles = [
 		'default' => 'DEFAULT',
 		'horizontal' => 'HORIZONTAL_BAR',
 		'dropdown' => 'DROPDOWN_MENU'
-	];
-
-	private static $controlNames = [
-		'pan',
-		'zoom',
-		'type',
-		'scale',
-		'streetview',
-		'rotate'
 	];
 
 	public function __construct( $serviceName ) {
@@ -96,14 +82,24 @@ class MapsGoogleMaps3 extends MapsMappingService {
 
 		$params['layers'] = [
 			'default' => $egMapsGMaps3Layers,
-			'values' => self::getLayerNames(),
+			'values' => [
+				'traffic',
+				'bicycling'
+			],
 			'message' => 'maps-googlemaps3-par-layers',
 			'islist' => true,
 		];
 
 		$params['controls'] = [
 			'default' => $egMapsGMaps3Controls,
-			'values' => self::$controlNames,
+			'values' => [
+				'pan',
+				'zoom',
+				'type',
+				'scale',
+				'streetview',
+				'rotate'
+			],
 			'message' => 'maps-googlemaps3-par-controls',
 			'islist' => true,
 			'post-format' => function ( $value ) {
@@ -254,17 +250,6 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 */
 	public static function getTypeNames() {
 		return array_keys( self::$mapTypes );
-	}
-
-	/**
-	 * Returns the names of all supported map layers.
-	 *
-	 * @since 1.0
-	 *
-	 * @return array
-	 */
-	public static function getLayerNames() {
-		return self::$mapLayers;
 	}
 
 	/**
