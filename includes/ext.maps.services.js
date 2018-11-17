@@ -109,15 +109,12 @@
 		 * @since 3.5
 		 */
 		leaflet: function() {
-
-			var self = this;
-
-			// https://www.mediawiki.org/wiki/ResourceLoader/Modules#mw.loader.using
 			mw.loader.using( 'ext.maps.leaflet' ).done( function () {
-
 				$( '.maps-leaflet' ).each( function() {
 					var $this = $( this );
-					$this.leafletmaps( $.parseJSON( $this.find( 'div').text() ) );
+					maps.leafletList.push(
+						$this.leafletmaps( $.parseJSON( $this.find( 'div').text() ) )
+					);
 				} );
 			} );
 		}
