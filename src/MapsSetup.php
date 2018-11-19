@@ -69,7 +69,10 @@ class MapsSetup {
 			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'Maps';
 		}
 
-		if ( $this->mwGlobals['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $this->mwGlobals ) ) {
+		if ( $this->mwGlobals['egMapsGMaps3ApiKey'] === '' && array_key_exists(
+				'egGoogleJsApiKey',
+				$this->mwGlobals
+			) ) {
 			$this->mwGlobals['egMapsGMaps3ApiKey'] = $this->mwGlobals['egGoogleJsApiKey'];
 		}
 	}
@@ -82,22 +85,22 @@ class MapsSetup {
 	}
 
 	private function registerParserHooks() {
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			$instance = new CoordinatesFunction();
 			return $instance->init( $parser );
 		};
 
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			foreach ( [ 'display_map', 'display_point', 'display_points', 'display_line' ] as $hookName ) {
 				$parser->setFunctionHook(
 					$hookName,
-					function( Parser $parser, PPFrame $frame, array $arguments ) {
+					function ( Parser $parser, PPFrame $frame, array $arguments ) {
 						$hook = new DisplayMapFunction();
 
 						$mapHtml = $hook->getMapHtmlForKeyValueStrings(
 							$parser,
 							array_map(
-								function( $argument ) use ( $frame ) {
+								function ( $argument ) use ( $frame ) {
 									return $frame->expand( $argument );
 								},
 								$arguments
@@ -115,7 +118,7 @@ class MapsSetup {
 
 				$parser->setHook(
 					$hookName,
-					function( $text, array $arguments, Parser $parser ) {
+					function ( $text, array $arguments, Parser $parser ) {
 						if ( $text !== null ) {
 							$defaultParameters = DisplayMapFunction::getHookDefinition( "\n" )->getDefaultParameters();
 							$defaultParam = array_shift( $defaultParameters );
@@ -132,38 +135,43 @@ class MapsSetup {
 			}
 		};
 
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			return ( new DistanceFunction() )->init( $parser );
 		};
 
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			return ( new FindDestinationFunction() )->init( $parser );
 		};
 
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			return ( new GeocodeFunction() )->init( $parser );
 		};
 
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			return ( new GeoDistanceFunction() )->init( $parser );
 		};
 
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			return ( new MapsDocFunction() )->init( $parser );
 		};
 	}
 
 	private function registerMappingServices() {
-		include_once __DIR__ . '/../includes/services/GoogleMaps3/GoogleMaps3.php';
+		$localBasePath = __DIR__ . '/../resources';
+		$remoteExtPath = array_slice(
+				explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) ),
+				-2,
+				1
+			)[0] . '/../resources';
+
+		$this->registerGoogleMapsModules( $localBasePath, $remoteExtPath );
 
 		MappingServices::registerService( 'googlemaps3', GoogleMapsService::class );
 
 		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
 		$googleMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 
-
-		// OpenLayers API
-		include_once __DIR__ . '/../includes/services/OpenLayers/OpenLayers.php';
+		$this->registerOpenLayersModules( $localBasePath, $remoteExtPath );
 
 		MappingServices::registerService(
 			'openlayers',
@@ -173,13 +181,251 @@ class MapsSetup {
 		$openLayers = MappingServices::getServiceInstance( 'openlayers' );
 		$openLayers->addFeature( 'display_map', DisplayMapRenderer::class );
 
-
 		// Leaflet API
-		include_once __DIR__ . '/../includes/services/Leaflet/Leaflet.php';
+		$this->registerLeafletModules( $localBasePath, $remoteExtPath );
 
 		MappingServices::registerService( 'leaflet', LeafletService::class );
 		$leafletMaps = MappingServices::getServiceInstance( 'leaflet' );
 		$leafletMaps->addFeature( 'display_map', DisplayMapRenderer::class );
+	}
+
+	private function registerGoogleMapsModules( string $localBasePath, string $remoteExtPath ) {
+		global $wgResourceModules;
+
+		$localBasePath = $localBasePath . '/GoogleMaps';
+		$remoteExtPath = $remoteExtPath . '/GoogleMaps';
+
+		$wgResourceModules['ext.maps.googlemaps3'] = [
+			'dependencies' => [ 'ext.maps.common' ],
+			'localBasePath' => $localBasePath,
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'jquery.googlemap.js',
+				'ext.maps.googlemaps3.js'
+			],
+			'messages' => [
+				'maps-googlemaps3-incompatbrowser',
+				'maps-copycoords-prompt',
+				'maps-searchmarkers-text',
+				'maps-fullscreen-button',
+				'maps-fullscreen-button-tooltip',
+			]
+		];
+
+		$wgResourceModules['ext.maps.gm3.markercluster'] = [
+			'localBasePath' => $localBasePath . '/gm3-util-library',
+			'remoteExtPath' => $remoteExtPath . '/gm3-util-library',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'markerclusterer.js',
+			],
+		];
+
+		$wgResourceModules['ext.maps.gm3.markerwithlabel'] = [
+			'localBasePath' => $localBasePath . '/gm3-util-library',
+			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'markerwithlabel.js',
+			],
+			'styles' => [
+				'markerwithlabel.css',
+			],
+		];
+
+		$wgResourceModules['ext.maps.gm3.geoxml'] = [
+			'localBasePath' => $localBasePath . '/geoxml3',
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.maps' . '/geoxml3',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'geoxml3.js',
+				'ZipFile.complete.js', //kmz handling
+				'ProjectedOverlay.js', //Overlay handling
+			],
+		];
+
+		$wgResourceModules['ext.maps.gm3.earth'] = [
+			'localBasePath' => $localBasePath . '/gm3-util-library',
+			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'googleearth-compiled.js',
+			],
+		];
+	}
+
+	private function registerLeafletModules( string $localBasePath, string $remoteExtPath ) {
+		global $wgResourceModules;
+
+		$localBasePath = $localBasePath . '/leaflet';
+		$remoteExtPath = $remoteExtPath . '/leaflet';
+
+		$wgResourceModules['ext.maps.leaflet.base'] = [
+			'localBasePath' => $localBasePath . '/leaflet',
+			'remoteExtPath' => $remoteExtPath . '/leaflet',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet.js',
+			],
+			'styles' => [
+				'leaflet.css',
+			],
+		];
+
+		$wgResourceModules['ext.maps.leaflet'] = [
+			'dependencies' => [
+				'ext.maps.common',
+				'ext.maps.services',
+				'ext.maps.leaflet.base'
+			],
+			'localBasePath' => $localBasePath,
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'jquery.leaflet.js',
+				'ext.maps.leaflet.js',
+			],
+			'messages' => [
+				'maps-markers',
+				'maps-copycoords-prompt',
+				'maps-searchmarkers-text',
+			],
+		];
+
+		$wgResourceModules['ext.maps.leaflet.fullscreen'] = [
+			'dependencies' => [ 'ext.maps.leaflet' ],
+			'localBasePath' => $localBasePath . '/leaflet.fullscreen',
+			'remoteExtPath' => $remoteExtPath . '/leaflet.fullscreen',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'Control.FullScreen.js',
+			],
+			'styles' => [
+				'Control.FullScreen.css',
+			],
+		];
+
+		$wgResourceModules['ext.maps.leaflet.markercluster'] = [
+			'dependencies' => [ 'ext.maps.leaflet' ],
+			'localBasePath' => $localBasePath . '/leaflet.markercluster',
+			'remoteExtPath' => $remoteExtPath . '/leaflet.markercluster',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet.markercluster.js',
+			],
+			'styles' => [
+				'MarkerCluster.css',
+			],
+		];
+
+		$wgResourceModules['ext.maps.leaflet.providers'] = [
+			'dependencies' => [ 'ext.maps.leaflet' ],
+			'localBasePath' => $localBasePath . '/leaflet-providers',
+			'remoteExtPath' => $remoteExtPath . '/leaflet-providers',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet-providers.js',
+			],
+		];
+
+		$wgResourceModules['ext.maps.leaflet.editable'] = [
+			'dependencies' => [ 'ext.maps.leaflet.base' ],
+			'localBasePath' => $localBasePath . '/leaflet.editable',
+			'remoteExtPath' => $remoteExtPath . '/leaflet.editable',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'Leaflet.Editable.js',
+			],
+		];
+
+		$wgResourceModules['ext.maps.leaflet.editor'] = [
+			'dependencies' => [
+				'ext.maps.leaflet.base',
+				//'ext.maps.leaflet.editable'
+			],
+			'localBasePath' => $localBasePath,
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'leaflet.editor.js',
+			],
+		];
+	}
+
+	private function registerOpenLayersModules( string $localBasePath, string $remoteExtPath ) {
+		$GLOBALS['wgResourceModules']['ext.maps.openlayers'] = [
+			'dependencies' => [ 'ext.maps.common' ],
+			'localBasePath' => $localBasePath . '/OpenLayers',
+			'remoteExtPath' => $remoteExtPath . '/OpenLayers',
+			'group' => 'ext.maps',
+			'targets' => [
+				'mobile',
+				'desktop'
+			],
+			'scripts' => [
+				'OpenLayers/OpenLayers.js',
+				'OSM/OpenStreetMap.js',
+				'jquery.openlayers.js',
+				'ext.maps.openlayers.js'
+			],
+			'styles' => [
+				'OpenLayers/theme/default/style.css'
+			],
+			'messages' => [
+				'maps-markers',
+				'maps-copycoords-prompt',
+				'maps-searchmarkers-text',
+			]
+		];
 	}
 
 	private function registerPermissions() {

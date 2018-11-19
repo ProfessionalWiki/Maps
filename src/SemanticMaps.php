@@ -63,8 +63,8 @@ class SemanticMaps {
 
 	private function registerGoogleMaps() {
 		$this->mwGlobals['wgResourceModules']['ext.sm.googlemaps3ajax'] = [
-			'localBasePath' => __DIR__ . '/../resources/GoogleMaps3',
-			'remoteExtPath' => 'Maps/resources/GoogleMaps3',
+			'localBasePath' => __DIR__ . '/../resources/GoogleMaps',
+			'remoteExtPath' => 'Maps/resources/GoogleMaps',
 			'group' => 'ext.semanticmaps',
 			'dependencies' => [
 				'ext.maps.googlemaps3',
