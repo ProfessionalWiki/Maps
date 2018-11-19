@@ -3,7 +3,6 @@
 namespace Maps\Tests\Elements;
 
 use InvalidArgumentException;
-use Maps\ElementOptions;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 
@@ -81,15 +80,6 @@ abstract class BaseElementTest extends TestCase {
 	public function testGivenInvalidArguments_constructorThrowsException() {
 		$this->expectException( InvalidArgumentException::class );
 		call_user_func_array( [ $this, 'newInstance' ], func_get_args() );
-	}
-
-	/**
-	 * @dataProvider instanceProvider
-	 *
-	 * @param $element
-	 */
-	public function testGetOptions( $element ) {
-		$this->assertInstanceOf( ElementOptions::class, $element->getOptions() );
 	}
 
 }

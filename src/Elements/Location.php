@@ -48,7 +48,6 @@ class Location extends BaseElement {
 	private $visitedIcon = '';
 
 	public function __construct( LatLongValue $coordinates ) {
-		parent::__construct();
 		$this->coordinates = $coordinates;
 	}
 

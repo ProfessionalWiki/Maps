@@ -107,7 +107,7 @@ class LocationParserTest extends TestCase {
 		);
 		$location = $parser->parse( '4,2' );
 
-		$this->assertFalse( $location->getOptions()->hasOption( 'title' ) );
+		$this->assertSame( '', $location->getTitle() );
 	}
 
 }

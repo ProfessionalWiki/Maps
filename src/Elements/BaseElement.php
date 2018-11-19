@@ -2,8 +2,6 @@
 
 namespace Maps\Elements;
 
-use Maps\ElementOptions;
-
 /**
  * @since 3.0
  *
@@ -13,25 +11,20 @@ use Maps\ElementOptions;
  */
 abstract class BaseElement {
 
-	/**
-	 * @var ElementOptions
-	 */
-	protected $options;
-
-	public function __construct() {
-		$this->options = new ElementOptions();
-	}
+	private $title;
+	private $text;
+	private $link;
 
 	public function setTitle( string $title ) {
-		$this->options->setOption( 'title', trim( $title ) );
+		$this->title = trim( $title );
 	}
 
 	public function setText( string $text ) {
-		$this->options->setOption( 'text', trim( $text ) );
+		$this->text = trim( $text );
 	}
 
 	public function setLink( string $link ) {
-		$this->options->setOption( 'link', $link );
+		$this->link = $link;
 	}
 
 	public function getArrayValue() {
@@ -40,40 +33,25 @@ abstract class BaseElement {
 
 	/**
 	 * @deprecated
-	 *
-	 * @param string $defText
-	 * @param string $defTitle
-	 *
-	 * @return array
 	 */
 	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
-		$array = [];
-
-		$array['text'] = $this->options->hasOption( 'text' ) ? $this->getText() : $defText;
-		$array['title'] = $this->options->hasOption( 'title' ) ? $this->getTitle() : $defTitle;
-		$array['link'] = $this->options->hasOption( 'link' ) ? $this->getLink() : '';
-
-		return $array;
+		return [
+			'text' => $this->text ?? $defText,
+			'title' => $this->title ?? $defTitle,
+			'link' => $this->link ?? '',
+		];
 	}
 
 	public function getText(): string {
-		return $this->options->getOption( 'text' );
+		return $this->text ?? '';
 	}
 
 	public function getTitle(): string {
-		return $this->options->getOption( 'title' );
+		return $this->title ?? '';
 	}
 
 	public function getLink(): string {
-		return $this->options->getOption( 'link' );
-	}
-
-	public function getOptions(): ElementOptions {
-		return $this->options;
-	}
-
-	public function setOptions( ElementOptions $options ) {
-		$this->options = $options;
+		return $this->link ?? '';
 	}
 
 }

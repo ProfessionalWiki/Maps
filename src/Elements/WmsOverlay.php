@@ -28,7 +28,6 @@ class WmsOverlay extends BaseElement {
 	private $wmsStyleName;
 
 	public function __construct( string $wmsServerUrl, string $wmsLayerName, string $wmsStyleName = "default" ) {
-		parent::__construct();
 		$this->setWmsServerUrl( $wmsServerUrl );
 		$this->setWmsLayerName( $wmsLayerName );
 		$this->setWmsStyleName( $wmsStyleName );

@@ -40,8 +40,6 @@ class Rectangle extends \MapsBaseFillableElement {
 			throw new InvalidArgumentException( '$rectangleNorthEast cannot be equal to $rectangleSouthWest' );
 		}
 
-		parent::__construct();
-
 		// TODO: validate bounds are correct, if not, flip
 		$this->setRectangleNorthEast( $rectangleNorthEast );
 		$this->setRectangleSouthWest( $rectangleSouthWest );

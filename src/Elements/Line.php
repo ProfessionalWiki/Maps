@@ -39,8 +39,6 @@ class Line extends \MapsBaseStrokableElement {
 		}
 
 		$this->coordinates = $coordinates;
-
-		parent::__construct();
 	}
 
 	/**
