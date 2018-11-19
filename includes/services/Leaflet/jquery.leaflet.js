@@ -197,27 +197,27 @@
 				iconCreateFunction: function(cluster) {
 					var childCount = cluster.getChildCount();
 
-					var imagePath = mw.config.get( 'egMapsScriptPath' ) + '/includes/images/m';
+					var imagePath = mw.config.get( 'egMapsScriptPath' ) + '/resources/leaflet/cluster/';
 
 					var styles = [
 						{
-							iconUrl: imagePath + '1.png',
+							iconUrl: imagePath + 'm1.png',
 							iconSize: [53, 52]
 						},
 						{
-							iconUrl: imagePath + '2.png',
+							iconUrl: imagePath + 'm2.png',
 							iconSize: [56, 55]
 						},
 						{
-							iconUrl: imagePath + '3.png',
+							iconUrl: imagePath + 'm3.png',
 							iconSize: [66, 65]
 						},
 						{
-							iconUrl: imagePath + '4.png',
+							iconUrl: imagePath + 'm4.png',
 							iconSize: [78, 77]
 						},
 						{
-							iconUrl: imagePath + '5.png',
+							iconUrl: imagePath + 'm5.png',
 							iconSize: [90, 89]
 						}
 					];
