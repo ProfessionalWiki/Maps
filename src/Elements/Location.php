@@ -67,7 +67,7 @@ class Location extends BaseElement {
 		$array = [
 			'lat' => $this->coordinates->getLatitude(),
 			'lon' => $this->coordinates->getLongitude(),
-			'icon' => $this->hasIcon() ? \MapsMapper::getFileUrl( $this->getIcon() ) : $defIconUrl,
+			'icon' => $this->hasIcon() ? \Maps\MapsFunctions::getFileUrl( $this->getIcon() ) : $defIconUrl,
 		];
 		$val = $this->getAddress();
 		if ( $val !== '' ) {

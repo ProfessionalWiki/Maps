@@ -6,7 +6,7 @@ use DataValues\Geo\Parsers\LatLongParser;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Location;
 use Maps\MapsFactory;
-use MapsMapper;
+use Maps\MapsFunctions;
 use Title;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
@@ -80,7 +80,7 @@ class LocationParser implements ValueParser {
 
 		if ( $metaData !== [] ) {
 			// FIXME: global access
-			$location->setIcon( MapsMapper::getFileUrl( array_shift( $metaData ) ) );
+			$location->setIcon( MapsFunctions::getFileUrl( array_shift( $metaData ) ) );
 		}
 
 		if ( $metaData !== [] ) {
@@ -93,7 +93,7 @@ class LocationParser implements ValueParser {
 
 		if ( $metaData !== [] ) {
 			// FIXME: global access
-			$location->setVisitedIcon( MapsMapper::getFileUrl( array_shift( $metaData ) ) ) ;
+			$location->setVisitedIcon( MapsFunctions::getFileUrl( array_shift( $metaData ) ) ) ;
 		}
 
 		return $location;

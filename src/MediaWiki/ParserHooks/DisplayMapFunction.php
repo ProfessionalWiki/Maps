@@ -3,8 +3,8 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
+use Maps\MapsFunctions;
 use Maps\Presentation\ParameterExtractor;
-use MapsMapper;
 use MapsMappingServices;
 use MWException;
 use ParamProcessor;
@@ -144,7 +144,7 @@ class DisplayMapFunction {
 	}
 
 	private static function getParameterDefinitions( $locationDelimiter ): array {
-		$params = MapsMapper::getCommonParameters();
+		$params = MapsFunctions::getCommonParameters();
 
 		$params['coordinates'] = [
 			'type' => 'string',

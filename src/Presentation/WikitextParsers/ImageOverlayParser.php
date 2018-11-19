@@ -41,7 +41,7 @@ class ImageOverlayParser implements ValueParser {
 
 		$boundsNorthEast = $this->stringToLatLongValue( $imageParameters[0] );
 		$boundsSouthWest = $this->stringToLatLongValue( $imageParameters[1] );
-		$imageUrl = \MapsMapper::getFileUrl( $imageParameters[2] );
+		$imageUrl = \Maps\MapsFunctions::getFileUrl( $imageParameters[2] );
 
 		$overlay = new ImageOverlay( $boundsNorthEast, $boundsSouthWest, $imageUrl );
 

@@ -7,9 +7,9 @@ use Html;
 use Linker;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
+use Maps\MapsFunctions;
 use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\Presentation\WikitextParsers\LocationParser;
-use MapsMapper;
 use MapsMappingService;
 use ParamProcessor\ParamDefinition;
 use Parser;
@@ -162,8 +162,8 @@ class MapPrinter extends SMW\ResultPrinter {
 	private function handleMarkerData( array &$params, QueryHandler $queryHandler ) {
 		$params['centre'] = $this->getCenter( $params['centre'] );
 
-		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
-		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
+		$iconUrl = MapsFunctions::getFileUrl( $params['icon'] );
+		$visitedIconUrl = MapsFunctions::getFileUrl( $params['visitedicon'] );
 
 		$params['locations'] = $this->getJsonForStaticLocations(
 			$params['staticlocations'],
@@ -365,7 +365,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	private function getParameterInfo() {
 		global $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
 
-		$params = ParamDefinition::getCleanDefinitions( MapsMapper::getCommonParameters() );
+		$params = ParamDefinition::getCleanDefinitions( MapsFunctions::getCommonParameters() );
 
 		$this->service->addParameterInfo( $params );
 

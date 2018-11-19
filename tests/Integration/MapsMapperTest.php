@@ -2,11 +2,11 @@
 
 namespace Maps\Test;
 
-use MapsMapper;
+use Maps\MapsFunctions;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers MapsMapper
+ * @covers MapsFunctions
  *
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >
@@ -37,6 +37,6 @@ class MapsMapperTest extends TestCase {
 	 * @dataProvider imageUrlProvider
 	 */
 	public function testGetFileUrl( $file, $expected ) {
-		$this->assertSame( $expected, MapsMapper::getFileUrl( $file ) );
+		$this->assertSame( $expected, MapsFunctions::getFileUrl( $file ) );
 	}
 }
