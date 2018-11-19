@@ -50,13 +50,12 @@ final class MapsHooks {
 	 * @return boolean true in all cases
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
-		global $egMapsGlobalJSVars;
-
+		$vars['egMapsScriptPath'] = $GLOBALS['wgScriptPath'] . '/extensions/Maps/'; // TODO: wgExtensionDirectory?
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
 		$vars['egMapsAvailableServices'] = $GLOBALS['egMapsAvailableServices'];
 		$vars['egMapsLeafletLayersApiKeys'] = $GLOBALS['egMapsLeafletLayersApiKeys'];
 
-		$vars += $egMapsGlobalJSVars;
+		$vars += $GLOBALS['egMapsGlobalJSVars'];
 
 		return true;
 	}
