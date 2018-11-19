@@ -56,6 +56,16 @@ Maps has been maintained since 2009 and is installed on over 1000 public wikis.
 * [File an issue](https://github.com/JeroenDeDauw/Maps/issues)
 * [Submit a pull request](https://github.com/JeroenDeDauw/Maps/pulls) ([tasks for newcomers](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
 
+### Project structure
+
+The `src/` contains the PHP code and follows PSR-4 autoloading.
+
+* `src/DataAccess` - implementations of services that use the network, read from disk or persistence services
+* `src/Elements` - Value Objects representing geographical elements (should be devoid of MediaWiki binding)
+* `src/MediaWiki` - MediaWiki hook points, including API modules, special pages and MediaWiki hooks
+* `src/Presentation` - presentation layer code (all code dealing with HTML etc should be here)
+* `src/SemanticMW` - Semantic MediaWiki hook points, including result printers and value descriptions
+
 ### Running the tests
 
 As setup, run `composer install` inside of the Maps root directory.
