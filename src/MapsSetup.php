@@ -3,6 +3,7 @@
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
+use Maps\DataAccess\JsonFileParser;
 use Maps\GeoJson\GeoJsonContent;
 use Maps\GeoJson\GeoJsonContentHandler;
 use Maps\MediaWiki\Api\Geocode;
@@ -12,9 +13,16 @@ use Maps\MediaWiki\ParserHooks\DistanceFunction;
 use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
 use Maps\MediaWiki\ParserHooks\GeocodeFunction;
 use Maps\MediaWiki\ParserHooks\GeoDistanceFunction;
+use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\MediaWiki\ParserHooks\MapsDocFunction;
-use Maps\Parsers\JsonFileParser;
-use MapsDisplayMapRenderer;
+use Maps\Presentation\WikitextParsers\CircleParser;
+use Maps\Presentation\WikitextParsers\DistanceParser;
+use Maps\Presentation\WikitextParsers\ImageOverlayParser;
+use Maps\Presentation\WikitextParsers\LineParser;
+use Maps\Presentation\WikitextParsers\LocationParser;
+use Maps\Presentation\WikitextParsers\PolygonParser;
+use Maps\Presentation\WikitextParsers\RectangleParser;
+use Maps\Presentation\WikitextParsers\WmsOverlayParser;
 use MapsGoogleMaps3;
 use MapsLeaflet;
 use MapsMappingServices;
@@ -155,7 +163,7 @@ class MapsSetup {
 		MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
 
 		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-		$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+		$googleMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 
 
 		// OpenLayers API
@@ -167,7 +175,7 @@ class MapsSetup {
 		);
 
 		$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
-		$openLayers->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+		$openLayers->addFeature( 'display_map', DisplayMapRenderer::class );
 
 
 		// Leaflet API
@@ -175,7 +183,7 @@ class MapsSetup {
 
 		MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
 		$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
-		$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+		$leafletMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 	}
 
 	private function registerPermissions() {
@@ -232,8 +240,8 @@ class MapsSetup {
 	}
 
 	private function registerHooks() {
-		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
-		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
+		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\MapsHooks::addToAdminLinks';
+		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MediaWiki\MapsHooks::onMakeGlobalVariablesScript';
 	}
 
 	private function registerApiModules() {

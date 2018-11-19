@@ -2,7 +2,7 @@
 
 namespace Maps\Test;
 
-use MapsDistanceParser;
+use Maps\Presentation\MapsDistanceParser;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -68,7 +68,7 @@ class MapsDistanceParserTest extends TestCase {
 	}
 
 	/**
-	 * Tests MapsDistanceParser::parseDistance()
+	 * Tests Maps\Presentation\MapsDistanceParser::parseDistance()
 	 */
 	public function testParseDistance() {
 		foreach ( self::$distances as $rawValue => $parsedValue ) {
@@ -88,7 +88,7 @@ class MapsDistanceParserTest extends TestCase {
 	}
 
 	/**
-	 * Tests MapsDistanceParser::formatDistance()
+	 * Tests Maps\Presentation\MapsDistanceParser::formatDistance()
 	 */
 	public function testFormatDistance() {
 		foreach ( self::$formatTests['km'] as $rawValue => $parsedValue ) {
@@ -101,7 +101,7 @@ class MapsDistanceParserTest extends TestCase {
 	}
 
 	/**
-	 * Tests MapsDistanceParser::parseAndFormat()
+	 * Tests Maps\Presentation\MapsDistanceParser::parseAndFormat()
 	 */
 	public function testParseAndFormat() {
 		$conversions = [
@@ -121,7 +121,7 @@ class MapsDistanceParserTest extends TestCase {
 	}
 
 	/**
-	 * Tests MapsDistanceParser::isDistance()
+	 * Tests Maps\Presentation\MapsDistanceParser::isDistance()
 	 */
 	public function testIsDistance() {
 		foreach ( self::$fakeDistances as $fakeDistance ) {
@@ -137,7 +137,7 @@ class MapsDistanceParserTest extends TestCase {
 	}
 
 	/**
-	 * Tests MapsDistanceParser::getUnitRatio()
+	 * Tests Maps\Presentation\MapsDistanceParser::getUnitRatio()
 	 */
 	public function testGetUnitRatio() {
 		foreach ( $GLOBALS['egMapsDistanceUnits'] as $unit => $ratio ) {
@@ -147,7 +147,7 @@ class MapsDistanceParserTest extends TestCase {
 	}
 
 	/**
-	 * Tests MapsDistanceParser::getValidUnit()
+	 * Tests Maps\Presentation\MapsDistanceParser::getValidUnit()
 	 */
 	public function testGetValidUnit() {
 		foreach ( $GLOBALS['egMapsDistanceUnits'] as $unit => $ratio ) {
@@ -168,7 +168,7 @@ class MapsDistanceParserTest extends TestCase {
 	}
 
 	/**
-	 * Tests MapsDistanceParser::getUnits()
+	 * Tests Maps\Presentation\MapsDistanceParser::getUnits()
 	 */
 	public function testGetUnits() {
 		$this->assertEquals( array_keys( $GLOBALS['egMapsDistanceUnits'] ), MapsDistanceParser::getUnits() );

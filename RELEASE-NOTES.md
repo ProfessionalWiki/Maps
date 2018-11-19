@@ -7,8 +7,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
-* The "rotate" control for Google Maps is now enabled by default (changeable via `$egMapsGMaps3Controls`) (by @acnetj)
+* The `rotate` control for Google Maps is now enabled by default (changeable via `$egMapsGMaps3Controls`) (by @acnetj)
 * The `layers` parameter for Google Maps now works again (5.2.0 regression)
+* Removed broken SMW `_gpo` data type
 
 ## Maps 6.0.4
 
@@ -217,7 +218,7 @@ Released on May 15th, 2017.
 Released on April 14th, 2017.
 
 * Fixed rendering of area query values (they now work properly in SMW "further result" links)
-* Fixed type warning in `SMMapPrinter::getMapHTML`
+* Fixed type warning in `Maps\SemanticMW\ResultPrinters\SMMapPrinter::getMapHTML`
 * Added missing geographical polygon type i18n messages
 
 ## Maps 4.0.5

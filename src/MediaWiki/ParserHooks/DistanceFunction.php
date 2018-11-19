@@ -2,7 +2,7 @@
 
 namespace Maps\MediaWiki\ParserHooks;
 
-use MapsDistanceParser;
+use Maps\Presentation\MapsDistanceParser;
 use ParserHook;
 
 /**

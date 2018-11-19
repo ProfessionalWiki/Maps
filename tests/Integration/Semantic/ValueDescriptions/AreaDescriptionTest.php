@@ -3,12 +3,12 @@
 namespace Maps\Tests\Semantic\ValueDescriptions;
 
 use CoordinateValue;
-use Maps\Semantic\ValueDescriptions\AreaDescription;
+use Maps\SemanticMW\ValueDescriptions\AreaDescription;
 use PHPUnit\Framework\TestCase;
 use SMWDIGeoCoord;
 
 /**
- * @covers \Maps\Semantic\ValueDescriptions\AreaDescription
+ * @covers \Maps\SemanticMW\ValueDescriptions\AreaDescription
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

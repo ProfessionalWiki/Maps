@@ -4,7 +4,7 @@ namespace Maps\MediaWiki\ParserHooks;
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\MapsFactory;
-use MapsGeoFunctions;
+use Maps\GeoFunctions;
 use ParserHook;
 
 /**
@@ -26,7 +26,7 @@ class FindDestinationFunction extends ParserHook {
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$destination = MapsGeoFunctions::findDestination(
+		$destination = GeoFunctions::findDestination(
 			$parameters['location']->getCoordinates(),
 			$parameters['bearing'],
 			$parameters['distance']

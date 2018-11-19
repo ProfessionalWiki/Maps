@@ -2,13 +2,13 @@
 
 namespace Maps\Test;
 
-use Maps\DistanceParser;
+use Maps\Presentation\WikitextParsers\DistanceParser;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 use ValueParsers\ParseException;
 
 /**
- * @covers \Maps\DistanceParser
+ * @covers \Maps\Presentation\WikitextParsers\DistanceParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

@@ -2,8 +2,8 @@
 
 namespace Maps\MediaWiki\ParserHooks;
 
-use MapsDistanceParser;
-use MapsGeoFunctions;
+use Maps\GeoFunctions;
+use Maps\Presentation\MapsDistanceParser;
 use MWException;
 use ParserHook;
 
@@ -34,7 +34,7 @@ class GeoDistanceFunction extends ParserHook {
 		$coordinates1 = $parameters['location1']->getCoordinates();
 		$coordinates2 = $parameters['location2']->getCoordinates();
 
-		$distance = MapsGeoFunctions::calculateDistance( $coordinates1, $coordinates2 );
+		$distance = GeoFunctions::calculateDistance( $coordinates1, $coordinates2 );
 		$output = MapsDistanceParser::formatDistance( $distance, $parameters['unit'], $parameters['decimals'] );
 
 		return $output;

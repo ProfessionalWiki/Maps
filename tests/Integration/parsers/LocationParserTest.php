@@ -5,11 +5,11 @@ namespace Maps\Test;
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\StubGeocoder;
 use Maps\Elements\Location;
-use Maps\LocationParser;
+use Maps\Presentation\WikitextParsers\LocationParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Maps\LocationParser
+ * @covers \Maps\Presentation\WikitextParsers\LocationParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

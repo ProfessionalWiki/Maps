@@ -2,13 +2,13 @@
 
 namespace Maps\Test;
 
-use Maps\WmsOverlayParser;
+use Maps\Presentation\WikitextParsers\WmsOverlayParser;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 use ValueParsers\ParseException;
 
 /**
- * @covers \Maps\WmsOverlayParser
+ * @covers \Maps\Presentation\WikitextParsers\WmsOverlayParser
  * @licence GNU GPL v2+
  * @author Mathias Mølster Lidal <mathiaslidal@gmail.com>
  */

@@ -5,12 +5,12 @@ namespace Maps\Test;
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
-use Maps\CircleParser;
 use Maps\Elements\Circle;
+use Maps\Presentation\WikitextParsers\CircleParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Maps\CircleParser
+ * @covers \Maps\Presentation\WikitextParsers\CircleParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
