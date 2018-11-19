@@ -3,7 +3,7 @@
 /**
  * This group contains all Google Maps v3 related files of the Maps extension.
  *
- * @defgroup MapsGoogleMaps3 Google Maps v3
+ * @defgroup Maps\MapsGoogleMaps3 Google Maps v3
  */
 
 /**

@@ -1,6 +1,8 @@
 <?php
 
-use Maps\MappingService;
+namespace Maps;
+
+use Html;
 
 /**
  * Class holding information and functionality specific to Google Maps v3.
@@ -12,8 +14,7 @@ use Maps\MappingService;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-
-class MapsGoogleMaps3 extends MappingService {
+class GoogleMapsService extends MappingService {
 
 	/**
 	 * Maps user input map types to the Google Maps names for the map types.
@@ -63,7 +64,7 @@ class MapsGoogleMaps3 extends MappingService {
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-type',
 			'post-format' => function ( $value ) {
-				return MapsGoogleMaps3::$mapTypes[strtolower( $value )];
+				return GoogleMapsService::$mapTypes[strtolower( $value )];
 			},
 		];
 

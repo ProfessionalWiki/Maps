@@ -23,9 +23,6 @@ use Maps\Presentation\WikitextParsers\LocationParser;
 use Maps\Presentation\WikitextParsers\PolygonParser;
 use Maps\Presentation\WikitextParsers\RectangleParser;
 use Maps\Presentation\WikitextParsers\WmsOverlayParser;
-use MapsGoogleMaps3;
-use MapsLeaflet;
-use MapsOpenLayers;
 use Parser;
 use PPFrame;
 
@@ -159,7 +156,7 @@ class MapsSetup {
 	private function registerMappingServices() {
 		include_once __DIR__ . '/../includes/services/GoogleMaps3/GoogleMaps3.php';
 
-		MappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
+		MappingServices::registerService( 'googlemaps3', GoogleMapsService::class );
 
 		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
 		$googleMaps->addFeature( 'display_map', DisplayMapRenderer::class );
@@ -170,7 +167,7 @@ class MapsSetup {
 
 		MappingServices::registerService(
 			'openlayers',
-			MapsOpenLayers::class
+			OpenLayersService::class
 		);
 
 		$openLayers = MappingServices::getServiceInstance( 'openlayers' );
@@ -180,7 +177,7 @@ class MapsSetup {
 		// Leaflet API
 		include_once __DIR__ . '/../includes/services/Leaflet/Leaflet.php';
 
-		MappingServices::registerService( 'leaflet', MapsLeaflet::class );
+		MappingServices::registerService( 'leaflet', LeafletService::class );
 		$leafletMaps = MappingServices::getServiceInstance( 'leaflet' );
 		$leafletMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 	}

@@ -1,6 +1,6 @@
 <?php
 
-use Maps\MappingService;
+namespace Maps;
 
 /**
  * Class holding information and functionality specific to OpenLayers.
@@ -11,7 +11,7 @@ use Maps\MappingService;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsOpenLayers extends MappingService {
+class OpenLayersService extends MappingService {
 
 	public function __construct( $serviceName ) {
 		parent::__construct(

@@ -1,6 +1,8 @@
 <?php
 
-use Maps\MappingService;
+namespace Maps;
+
+use Html;
 
 /**
  * Class holding information and functionality specific to Leaflet.
@@ -9,7 +11,7 @@ use Maps\MappingService;
  * @licence GNU GPL v2+
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  */
-class MapsLeaflet extends MappingService {
+class LeafletService extends MappingService {
 
 	public function __construct( $serviceName ) {
 		parent::__construct(
