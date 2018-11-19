@@ -1,5 +1,10 @@
 <?php
 
+namespace Maps\MediaWiki;
+
+use AlItem;
+use ALTree;
+
 /**
  * Static class for hooks handled by the Maps extension.
  *

@@ -232,8 +232,8 @@ class MapsSetup {
 	}
 
 	private function registerHooks() {
-		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'MapsHooks::addToAdminLinks';
-		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'MapsHooks::onMakeGlobalVariablesScript';
+		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\MapsHooks::addToAdminLinks';
+		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MediaWiki\MapsHooks::onMakeGlobalVariablesScript';
 	}
 
 	private function registerApiModules() {
