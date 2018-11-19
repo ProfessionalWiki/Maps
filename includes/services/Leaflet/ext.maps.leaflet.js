@@ -1,3 +1,3 @@
 window.jQuery( document ).ready( function() {
-	window.maps.services.leaflet();
+	( new maps.services( window.jQuery( document ) ) ).leaflet();
 } );
