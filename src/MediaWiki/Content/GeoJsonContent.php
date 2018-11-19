@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\GeoJson;
+namespace Maps\MediaWiki\Content;
 
 use Html;
 use ParserOptions;
