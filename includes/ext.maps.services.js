@@ -81,7 +81,6 @@
 			mw.loader.using( 'ext.maps.openlayers' ).done( function () {
 
 				if ( typeof OpenLayers !== 'undefined' ) {
-					// Same as in ext.maps.openlayers.js
 					OpenLayers.ImgPath = mw.config.get( 'egMapsScriptPath' ) + '/includes/services/OpenLayers/OpenLayers/img/';
 					OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
 					OpenLayers.Util.onImageLoadErrorColor = 'transparent';
