@@ -197,8 +197,7 @@
 				iconCreateFunction: function(cluster) {
 					var childCount = cluster.getChildCount();
 
-					var imagePath = mw.config.get( 'wgScriptPath' ) +
-							'/extensions/Maps/includes/images/m';
+					var imagePath = mw.config.get( 'egMapsScriptPath' ) + '/includes/images/m';
 
 					var styles = [
 						{
