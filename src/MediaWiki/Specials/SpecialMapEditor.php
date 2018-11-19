@@ -1,5 +1,11 @@
 <?php
 
+namespace Maps\MediaWiki\Specials;
+
+use MapEditorHtml;
+use MapsGoogleMaps3;
+use SpecialPage;
+
 /**
  * Special page with map editor interface using Google Maps.
  *
@@ -53,7 +59,7 @@ class SpecialMapEditor extends SpecialPage {
 	protected function getAttribs() {
 		return [
 			'id' => 'map-canvas',
-			'context' => 'SpecialMapEditor'
+			'context' => 'Maps\MediaWiki\Specials\SpecialMapEditor'
 		];
 	}
 

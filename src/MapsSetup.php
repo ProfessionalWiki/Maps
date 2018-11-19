@@ -3,9 +3,9 @@
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
-use Maps\Api\Geocode;
 use Maps\GeoJson\GeoJsonContent;
 use Maps\GeoJson\GeoJsonContentHandler;
+use Maps\MediaWiki\Api\Geocode;
 use Maps\Parsers\JsonFileParser;
 use MapsCoordinates;
 use MapsDisplayMap;
@@ -61,7 +61,7 @@ class MapsSetup {
 		}
 
 		if ( in_array( 'googlemaps3', $this->mwGlobals['egMapsAvailableServices'] ) ) {
-			$this->mwGlobals['wgSpecialPages']['MapEditor'] = 'SpecialMapEditor';
+			$this->mwGlobals['wgSpecialPages']['MapEditor'] = 'Maps\MediaWiki\Specials\SpecialMapEditor';
 			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'Maps';
 		}
 
