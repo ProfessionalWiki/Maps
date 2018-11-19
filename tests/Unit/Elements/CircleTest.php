@@ -38,8 +38,6 @@ class CircleTest extends BaseElementTest {
 	public function invalidConstructorProvider() {
 		$argLists = [];
 
-		$argLists[] = [ new LatLongValue( 4, 2 ), 'foo' ];
-
 		$argLists[] = [ new LatLongValue( 4, 2 ), 0 ];
 		$argLists[] = [ new LatLongValue( 4, 2 ), -42 ];
 
