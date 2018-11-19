@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.1.0
+
+Under development
+
+* The "rotate" control for Google Maps is now enabled by default (changeable via `$egMapsGMaps3Controls`)
+* The `layers` parameter for Google Maps now works again (5.2.0 regression)
+
 ## Maps 6.0.4
 
 Released on October 20th, 2018.
