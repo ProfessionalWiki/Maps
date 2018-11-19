@@ -1,10 +1,11 @@
 <?php
 
-namespace Maps;
+namespace Maps\Presentation\WikitextParsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoder;
-use Maps\Elements\Rectangle;
+use Maps\Elements\Circle;
+use Maps\MapsFactory;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 use ValueParsers\ValueParser;
@@ -16,7 +17,7 @@ use ValueParsers\ValueParser;
  * @author Kim Eik
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class RectangleParser implements ValueParser {
+class CircleParser implements ValueParser {
 
 	private $metaDataSeparator = '~';
 
@@ -33,46 +34,43 @@ class RectangleParser implements ValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return Rectangle
+	 * @return Circle
 	 */
 	public function parse( $value ) {
 		$metaData = explode( $this->metaDataSeparator, $value );
-		$rectangleData = explode( ':', array_shift( $metaData ) );
+		$circleData = explode( ':', array_shift( $metaData ) );
 
-		$rectangle = new Rectangle(
-			$this->stringToLatLongValue( $rectangleData[0] ),
-			$this->stringToLatLongValue( $rectangleData[1] )
-		);
+		$circle = new Circle( $this->stringToLatLongValue( $circleData[0] ), (float)$circleData[1] );
 
 		if ( $metaData !== [] ) {
-			$rectangle->setTitle( array_shift( $metaData ) );
+			$circle->setTitle( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== [] ) {
-			$rectangle->setText( array_shift( $metaData ) );
+			$circle->setText( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== [] ) {
-			$rectangle->setStrokeColor( array_shift( $metaData ) );
+			$circle->setStrokeColor( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== [] ) {
-			$rectangle->setStrokeOpacity( array_shift( $metaData ) );
+			$circle->setStrokeOpacity( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== [] ) {
-			$rectangle->setStrokeWeight( array_shift( $metaData ) );
+			$circle->setStrokeWeight( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== [] ) {
-			$rectangle->setFillColor( array_shift( $metaData ) );
+			$circle->setFillColor( array_shift( $metaData ) );
 		}
 
 		if ( $metaData !== [] ) {
-			$rectangle->setFillOpacity( array_shift( $metaData ) );
+			$circle->setFillOpacity( array_shift( $metaData ) );
 		}
 
-		return $rectangle;
+		return $circle;
 	}
 
 	private function stringToLatLongValue( string $location ): LatLongValue {

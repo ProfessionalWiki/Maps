@@ -12,6 +12,7 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\Geocoders\CachingGeocoder;
+use Maps\Presentation\WikitextParsers\LocationParser;
 use MediaWiki\MediaWikiServices;
 
 /**

@@ -2,7 +2,7 @@
 
 use Maps\Element;
 use Maps\Elements\Location;
-use Maps\LocationParser;
+use Maps\Presentation\WikitextParsers\LocationParser;
 
 /**
  * Class handling the #display_map rendering.

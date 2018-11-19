@@ -8,7 +8,7 @@ use Linker;
 use Maps\Element;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
-use Maps\LocationParser;
+use Maps\Presentation\WikitextParsers\LocationParser;
 use MapsDisplayMapRenderer;
 use MapsMapper;
 use MapsMappingService;

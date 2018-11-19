@@ -1,10 +1,11 @@
 <?php
 
-namespace Maps;
+namespace Maps\Presentation\WikitextParsers;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Location;
+use Maps\MapsFactory;
 use MapsMapper;
 use Title;
 use ValueParsers\ParseException;

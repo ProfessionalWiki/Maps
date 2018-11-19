@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps;
+namespace Maps\Presentation\WikitextParsers;
 
 use Maps\Elements\WmsOverlay;
 use ValueParsers\ParseException;

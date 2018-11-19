@@ -6,11 +6,11 @@ use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\Elements\Rectangle;
-use Maps\RectangleParser;
+use Maps\Presentation\WikitextParsers\RectangleParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Maps\RectangleParser
+ * @covers \Maps\Presentation\WikitextParsers\RectangleParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
