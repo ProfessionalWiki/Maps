@@ -5,8 +5,8 @@ namespace Maps\SemanticMW\ValueDescriptions;
 use DatabaseBase;
 use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
+use Maps\GeoFunctions;
 use Maps\Presentation\MapsDistanceParser;
-use MapsGeoFunctions;
 use SMW\DataValueFactory;
 use SMW\DIProperty;
 use SMW\Query\Language\ValueDescription;
@@ -145,10 +145,10 @@ class AreaDescription extends ValueDescription {
 
 		$radiusInMeters = MapsDistanceParser::parseDistance( $this->radius ); // TODO: this can return false
 
-		$north = MapsGeoFunctions::findDestination( $center, 0, $radiusInMeters );
-		$east = MapsGeoFunctions::findDestination( $center, 90, $radiusInMeters );
-		$south = MapsGeoFunctions::findDestination( $center, 180, $radiusInMeters );
-		$west = MapsGeoFunctions::findDestination( $center, 270, $radiusInMeters );
+		$north = GeoFunctions::findDestination( $center, 0, $radiusInMeters );
+		$east = GeoFunctions::findDestination( $center, 90, $radiusInMeters );
+		$south = GeoFunctions::findDestination( $center, 180, $radiusInMeters );
+		$west = GeoFunctions::findDestination( $center, 270, $radiusInMeters );
 
 		return [
 			'north' => $north['lat'],

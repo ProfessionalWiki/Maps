@@ -1,21 +1,21 @@
 <?php
 
-// The approximate radius of the earth in meters, according to http://en.wikipedia.org/wiki/Earth_radius.
-use DataValues\Geo\Values\LatLongValue;
+namespace Maps;
 
-define( 'Maps_EARTH_RADIUS', 6371000 );
+use DataValues\Geo\Values\LatLongValue;
 
 /**
  * Static class containing geographical functions.
- *
- * @since 0.6
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Pnelnik
  * @author Matěj Grabovský
  */
-final class MapsGeoFunctions {
+final class GeoFunctions {
+
+	// The approximate radius of the earth in meters, according to http://en.wikipedia.org/wiki/Earth_radius.
+	private const EARTH_RADIUS = 6371000;
 
 	/**
 	 * Returns the geographical distance between two coordinates.
@@ -53,7 +53,7 @@ final class MapsGeoFunctions {
 
 		$distThruSquared = $term1 * $term1 + $term2 * $term2 + $term3 * $term3;
 
-		$distance = 2 * Maps_EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
+		$distance = 2 * self::EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
 
 		assert( $distance >= 0 );
 
@@ -78,7 +78,7 @@ final class MapsGeoFunctions {
 		];
 
 		$radBearing = deg2rad( (float)$bearing );
-		$angularDistance = $distance / Maps_EARTH_RADIUS;
+		$angularDistance = $distance / self::EARTH_RADIUS;
 
 		$lat = asin(
 			sin( $startingCoordinates['lat'] ) * cos( $angularDistance ) + cos( $startingCoordinates['lat'] ) * sin(
