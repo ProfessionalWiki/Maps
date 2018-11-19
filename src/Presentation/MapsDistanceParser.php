@@ -1,5 +1,7 @@
 <?php
 
+namespace Maps\Presentation;
+
 /**
  * Static class for distance validation and parsing. Internal representations are in meters.
  *

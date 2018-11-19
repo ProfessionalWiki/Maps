@@ -26,7 +26,7 @@ class DistanceParser extends StringValueParser {
 	 * @throws ParseException
 	 */
 	public function stringParse( $value ) {
-		$distance = \MapsDistanceParser::parseDistance( $value );
+		$distance = \Maps\Presentation\MapsDistanceParser::parseDistance( $value );
 
 		if ( is_float( $distance ) ) {
 			return $distance;

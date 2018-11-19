@@ -5,7 +5,7 @@ namespace Maps\SemanticMW\ValueDescriptions;
 use DatabaseBase;
 use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
-use MapsDistanceParser;
+use Maps\Presentation\MapsDistanceParser;
 use MapsGeoFunctions;
 use SMW\DataValueFactory;
 use SMW\DIProperty;

@@ -6,7 +6,7 @@ use DataValues\Geo\Parsers\LatLongParser;
 use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
 use Maps\MapsFactory;
-use MapsDistanceParser;
+use Maps\Presentation\MapsDistanceParser;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
 use SMW\Query\QueryComparator;
