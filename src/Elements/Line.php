@@ -15,7 +15,7 @@ use InvalidArgumentException;
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Line extends \MapsBaseStrokableElement {
+class Line extends \Maps\Elements\BaseStrokableElement {
 
 	/**
 	 * @since 3.0

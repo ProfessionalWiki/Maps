@@ -13,7 +13,7 @@ use InvalidArgumentException;
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Rectangle extends \MapsBaseFillableElement {
+class Rectangle extends \Maps\Elements\BaseFillableElement {
 
 	/**
 	 * @since 3.0

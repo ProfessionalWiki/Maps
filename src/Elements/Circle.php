@@ -8,12 +8,11 @@ use InvalidArgumentException;
 /**
  * @since 3.0
  *
- *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Circle extends \MapsBaseFillableElement {
+class Circle extends \Maps\Elements\BaseFillableElement {
 
 	private $circleCentre;
 	private $circleRadius;

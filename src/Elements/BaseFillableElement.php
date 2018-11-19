@@ -1,9 +1,11 @@
 <?php
 
+namespace Maps\Elements;
+
 /**
  * @since 2.0
  */
-class MapsBaseFillableElement extends MapsBaseStrokableElement {
+class BaseFillableElement extends BaseStrokableElement {
 
 	protected $fillColor;
 	protected $fillOpacity;
