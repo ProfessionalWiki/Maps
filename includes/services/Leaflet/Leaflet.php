@@ -42,7 +42,11 @@ call_user_func(
 		];
 
 		$wgResourceModules['ext.maps.leaflet'] = [
-			'dependencies' => [ 'ext.maps.common', 'ext.maps.leaflet.base' ],
+			'dependencies' => [
+				'ext.maps.common',
+				'ext.maps.services',
+				'ext.maps.leaflet.base'
+			],
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => $remoteExtPath,
 			'group' => 'ext.maps',
