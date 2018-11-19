@@ -4,7 +4,6 @@ namespace Maps\MediaWiki\ParserHooks;
 
 use FormatJson;
 use Html;
-use Maps\Element;
 use Maps\Elements\Location;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use MapsMapper;
@@ -172,7 +171,7 @@ class DisplayMapRenderer {
 		foreach ( $textContainers as &$textContainer ) {
 			if ( is_array( $textContainer ) ) {
 				foreach ( $textContainer as &$obj ) {
-					if ( $obj instanceof Element ) {
+					if ( method_exists( $obj, 'getArrayValue' ) ) {
 						$obj = $obj->getArrayValue();
 					}
 

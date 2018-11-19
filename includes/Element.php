@@ -2,46 +2,6 @@
 
 namespace Maps;
 
-/**
- * Interface for elements that can be placed upon a map.
- *
- * @since 3.0
- *
- * @licence GNU GPL v2+
- * @author Jeroen De Dauw < jeroendedauw@gmail.com >
- */
-interface Element {
-
-	/**
-	 * Returns the value in array form.
-	 *
-	 * @since 3.0
-	 *
-	 * @return mixed
-	 */
-	public function getArrayValue();
-
-	/**
-	 * Returns the elements options.
-	 * Modification of the elements options by mutating the obtained object is allowed.
-	 *
-	 * @since 3.0
-	 *
-	 * @return ElementOptions
-	 */
-	public function getOptions(): ElementOptions;
-
-	/**
-	 * Sets the elements options.
-	 *
-	 * @since 3.0
-	 *
-	 * @param ElementOptions $options
-	 */
-	public function setOptions( ElementOptions $options );
-
-}
-
 class ElementOptions {
 
 	private $options = [];

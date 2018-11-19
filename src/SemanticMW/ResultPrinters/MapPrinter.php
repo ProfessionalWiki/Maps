@@ -5,7 +5,6 @@ namespace Maps\SemanticMW\ResultPrinters;
 use FormatJson;
 use Html;
 use Linker;
-use Maps\Element;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
 use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
@@ -240,7 +239,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	}
 
 	/**
-	 * @param Element[] $queryShapes
+	 * @param array[] $queryShapes
 	 * @param array $params
 	 * @param string $iconUrl
 	 * @param string $visitedIconUrl

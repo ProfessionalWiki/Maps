@@ -3,7 +3,6 @@
 namespace Maps\Tests\Elements;
 
 use InvalidArgumentException;
-use Maps\Element;
 use Maps\ElementOptions;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
@@ -87,9 +86,9 @@ abstract class BaseElementTest extends TestCase {
 	/**
 	 * @dataProvider instanceProvider
 	 *
-	 * @param Element $element
+	 * @param $element
 	 */
-	public function testGetOptions( Element $element ) {
+	public function testGetOptions( $element ) {
 		$this->assertInstanceOf( ElementOptions::class, $element->getOptions() );
 	}
 

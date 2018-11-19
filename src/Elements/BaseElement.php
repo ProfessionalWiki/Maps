@@ -2,19 +2,16 @@
 
 namespace Maps\Elements;
 
-use Maps\Element;
 use Maps\ElementOptions;
 
 /**
- * Base class for objects implementing the @see Element interface.
- *
  * @since 3.0
  *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class BaseElement implements Element {
+abstract class BaseElement {
 
 	/**
 	 * @var ElementOptions
