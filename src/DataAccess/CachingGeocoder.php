@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Geocoders;
+namespace Maps\DataAccess;
 
 use BagOStuff;
 use DataValues\Geo\Values\LatLongValue;

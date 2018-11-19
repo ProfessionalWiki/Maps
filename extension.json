@@ -27,7 +27,7 @@
 
 	"callback": "MapsRegistration::onRegistration",
 	"ContentHandlers": {
-		"GeoJson": "Maps\\GeoJson\\GeoJsonContentHandler"
+		"GeoJson": "Maps\\MediaWiki\\Content\\GeoJsonContentHandler"
 	},
 	"namespaces": [
 		{

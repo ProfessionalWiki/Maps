@@ -50,7 +50,6 @@
 		},
 		"classmap": [
 			"MapsRegistration.php",
-			"includes/",
 			"tests/Unit/Elements/",
 			"tests/Integration/parserhooks/ParserHookTest.php"
 		]

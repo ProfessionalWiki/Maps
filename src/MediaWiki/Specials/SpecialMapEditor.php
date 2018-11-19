@@ -2,7 +2,7 @@
 
 namespace Maps\MediaWiki\Specials;
 
-use MapsGoogleMaps3;
+use Maps\GoogleMapsService;
 use SpecialPage;
 
 /**
@@ -38,7 +38,7 @@ class SpecialMapEditor extends SpecialPage {
 		$outputPage = $this->getOutput();
 
 		$outputPage->addHtml(
-			MapsGoogleMaps3::getApiScript(
+			GoogleMapsService::getApiScript(
 				$this->getLanguage()->getCode(),
 				[ 'libraries' => 'drawing' ]
 			)

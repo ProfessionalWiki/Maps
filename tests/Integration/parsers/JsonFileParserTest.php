@@ -8,7 +8,7 @@ use FileFetcher\SimpleFileFetcher;
 use FileFetcher\StubFileFetcher;
 use FileFetcher\ThrowingFileFetcher;
 use Maps\DataAccess\JsonFileParser;
-use Maps\GeoJson\GeoJsonContent;
+use Maps\MediaWiki\Content\GeoJsonContent;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 use Title;

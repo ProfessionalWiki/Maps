@@ -66,6 +66,11 @@ The `src/` contains the PHP code and follows PSR-4 autoloading.
 * `src/Presentation` - presentation layer code (all code dealing with HTML etc should be here)
 * `src/SemanticMW` - Semantic MediaWiki hook points, including result printers and value descriptions
 
+JavaScript, CSS and other web resources go into `resources/`.
+
+Tests for PHP go into `tests/` where they are grouped by test type (ie unit, integration). Within those test type
+directories the tests should mirror the directory structure in `src/`.
+
 ### Running the tests
 
 As setup, run `composer install` inside of the Maps root directory.
