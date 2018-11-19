@@ -2,7 +2,6 @@
 
 namespace Maps\MediaWiki\Specials;
 
-use MapEditorHtml;
 use MapsGoogleMaps3;
 use SpecialPage;
 
