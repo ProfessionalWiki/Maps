@@ -25,13 +25,13 @@ class SemanticMaps {
 
 	public function initExtension() {
 		// Hook for initializing the Geographical Data types.
-		$this->mwGlobals['wgHooks']['SMW::DataType::initTypes'][] = 'SemanticMapsHooks::initGeoDataTypes';
+		$this->mwGlobals['wgHooks']['SMW::DataType::initTypes'][] = 'Maps\MediaWiki\SemanticMapsHooks::initGeoDataTypes';
 
 		// Hook for defining the default query printer for queries that ask for geographical coordinates.
-		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'SemanticMapsHooks::addGeoCoordsDefaultFormat';
+		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'Maps\MediaWiki\SemanticMapsHooks::addGeoCoordsDefaultFormat';
 
 		// Hook for adding a Semantic Maps links to the Admin Links extension.
-		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'SemanticMapsHooks::addToAdminLinks';
+		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\SemanticMapsHooks::addToAdminLinks';
 
 		$this->registerResourceModules();
 
