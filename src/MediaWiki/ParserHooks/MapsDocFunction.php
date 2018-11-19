@@ -2,7 +2,7 @@
 
 namespace Maps\MediaWiki\ParserHooks;
 
-use MapsMappingServices;
+use Maps\MappingServices;
 use ParamProcessor\ParamDefinition;
 use ParserHook;
 
@@ -40,7 +40,7 @@ class MapsDocFunction extends ParserHook {
 	}
 
 	private function getServiceParameters( $service ) {
-		$service = MapsMappingServices::getServiceInstance( $service );
+		$service = MappingServices::getServiceInstance( $service );
 
 		$params = [];
 

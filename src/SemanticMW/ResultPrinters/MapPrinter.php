@@ -8,9 +8,9 @@ use Linker;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
 use Maps\MapsFunctions;
+use Maps\MappingService;
 use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\Presentation\WikitextParsers\LocationParser;
-use MapsMappingService;
 use ParamProcessor\ParamDefinition;
 use Parser;
 use ParserOptions;
@@ -38,7 +38,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 */
 	private $locationParser;
 	/**
-	 * @var MapsMappingService
+	 * @var \Maps\MappingService
 	 */
 	private $service;
 	/**
@@ -61,9 +61,9 @@ class MapPrinter extends SMW\ResultPrinter {
 	 * FIXME: this is a temporary hack that should be replaced when SMW allows for dependency
 	 * injection in query printers.
 	 *
-	 * @param MapsMappingService $service
+	 * @param \Maps\MappingService $service
 	 */
-	public static function registerService( MapsMappingService $service ) {
+	public static function registerService( MappingService $service ) {
 		self::$services[$service->getName()] = $service;
 	}
 

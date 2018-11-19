@@ -4,8 +4,6 @@ namespace Maps;
 
 use Maps\SemanticMW\ResultPrinters\KmlPrinter;
 use Maps\SemanticMW\ResultPrinters\MapPrinter;
-use MapsMappingService;
-use MapsMappingServices;
 
 /**
  * @licence GNU GPL v2+
@@ -77,8 +75,8 @@ class SemanticMaps {
 			]
 		];
 
-		/* @var MapsMappingService $googleMaps */
-		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+		/* @var MappingService $googleMaps */
+		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
 		$googleMaps->addResourceModules( [ 'ext.sm.googlemaps3ajax' ] );
 
 		MapPrinter::registerService( $googleMaps );
@@ -101,8 +99,8 @@ class SemanticMaps {
 			]
 		];
 
-		/* @var MapsMappingService $leaflet */
-		$leaflet = MapsMappingServices::getServiceInstance( 'leaflet' );
+		/* @var MappingService $leaflet */
+		$leaflet = MappingServices::getServiceInstance( 'leaflet' );
 		$leaflet->addResourceModules( [ 'ext.sm.fi.leafletajax' ] );
 
 		MapPrinter::registerService( $leaflet );
@@ -125,8 +123,8 @@ class SemanticMaps {
 			]
 		];
 
-		/* @var MapsMappingService $openLayers */
-		$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
+		/* @var MappingService $openLayers */
+		$openLayers = MappingServices::getServiceInstance( 'openlayers' );
 		$openLayers->addResourceModules( [ 'ext.sm.fi.openlayersajax' ] );
 
 		MapPrinter::registerService( $openLayers );

@@ -1,5 +1,9 @@
 <?php
 
+namespace Maps;
+
+use MWException;
+
 /**
  * Class for interaction with MappingService objects.
  *
@@ -8,7 +12,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class MapsMappingServices {
+final class MappingServices {
 
 	/**
 	 * Associative array containing service identifiers as keys and the names
@@ -26,7 +30,7 @@ final class MapsMappingServices {
 	 * looping over all available services, as not all of them are guaranteed
 	 * to have an instance already, use $registeredServices for this purpose.
 	 *
-	 * @var MapsMappingService[]
+	 * @var MappingService[]
 	 */
 	private static $services = [];
 
@@ -43,12 +47,12 @@ final class MapsMappingServices {
 	 *
 	 * @throws MWException
 	 */
-	public static function getServiceInstance( string $serviceIdentifier ): MapsMappingService {
+	public static function getServiceInstance( string $serviceIdentifier ): MappingService {
 		if ( !array_key_exists( $serviceIdentifier, self::$services ) ) {
 			if ( array_key_exists( $serviceIdentifier, self::$registeredServices ) ) {
 				$service = new self::$registeredServices[$serviceIdentifier]( $serviceIdentifier );
 
-				if ( $service instanceof MapsMappingService ) {
+				if ( $service instanceof MappingService ) {
 					self::$services[$serviceIdentifier] = $service;
 				} else {
 					throw new MWException(

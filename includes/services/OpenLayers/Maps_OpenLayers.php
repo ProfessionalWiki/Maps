@@ -1,5 +1,7 @@
 <?php
 
+use Maps\MappingService;
+
 /**
  * Class holding information and functionality specific to OpenLayers.
  * This information and features can be used by any mapping feature.
@@ -9,7 +11,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsOpenLayers extends MapsMappingService {
+class MapsOpenLayers extends MappingService {
 
 	public function __construct( $serviceName ) {
 		parent::__construct(
@@ -38,7 +40,7 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::addParameterInfo
+	 * @see MappingService::addParameterInfo
 	 */
 	public function addParameterInfo( array &$params ) {
 		global $egMapsOLLayers, $egMapsOLControls, $egMapsResizableByDefault;
@@ -164,7 +166,7 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getMapId
+	 * @see MappingService::getMapId
 	 *
 	 * @since 0.6.5
 	 */
@@ -179,7 +181,7 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getResourceModules
+	 * @see MappingService::getResourceModules
 	 *
 	 * @since 0.7.3
 	 *

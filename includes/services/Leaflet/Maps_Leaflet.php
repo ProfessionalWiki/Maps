@@ -1,5 +1,7 @@
 <?php
 
+use Maps\MappingService;
+
 /**
  * Class holding information and functionality specific to Leaflet.
  * This information and features can be used by any mapping feature.
@@ -7,7 +9,7 @@
  * @licence GNU GPL v2+
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  */
-class MapsLeaflet extends MapsMappingService {
+class MapsLeaflet extends MappingService {
 
 	public function __construct( $serviceName ) {
 		parent::__construct(
@@ -17,7 +19,7 @@ class MapsLeaflet extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::addParameterInfo
+	 * @see MappingService::addParameterInfo
 	 *
 	 * @since 3.0
 	 */
@@ -118,7 +120,7 @@ class MapsLeaflet extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getMapId
+	 * @see MappingService::getMapId
 	 *
 	 * @since 3.0
 	 */
@@ -133,7 +135,7 @@ class MapsLeaflet extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getResourceModules
+	 * @see MappingService::getResourceModules
 	 *
 	 * @since 3.0
 	 *

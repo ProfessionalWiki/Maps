@@ -6,8 +6,8 @@ use FormatJson;
 use Html;
 use Maps\Elements\Location;
 use Maps\MapsFunctions;
+use Maps\MappingService;
 use Maps\Presentation\WikitextParsers\LocationParser;
-use MapsMappingService;
 use Parser;
 use ParserOptions;
 
@@ -27,7 +27,7 @@ class DisplayMapRenderer {
 	 */
 	private $locationParser;
 
-	public function __construct( MapsMappingService $service = null ) {
+	public function __construct( MappingService $service = null ) {
 		$this->service = $service;
 	}
 

@@ -3,7 +3,6 @@
 namespace Maps;
 
 use ImagePage;
-use MapsMappingServices;
 use Title;
 use Xml;
 
@@ -123,7 +122,7 @@ final class MapsFunctions {
 			$allServiceValues = array_merge(
 				$allServiceValues,
 				[ $availableService ],
-				MapsMappingServices::getServiceInstance( $availableService )->getAliases()
+				MappingServices::getServiceInstance( $availableService )->getAliases()
 			);
 		}
 
