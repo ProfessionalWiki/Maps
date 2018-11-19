@@ -1,10 +1,10 @@
 <?php
 
-use Maps\ParameterExtractor;
+use Maps\Presentation\ParameterExtractor;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Maps\ParameterExtractor
+ * @covers \Maps\Presentation\ParameterExtractor
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

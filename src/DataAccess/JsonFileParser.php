@@ -1,15 +1,17 @@
 <?php
 
-namespace Maps\Parsers;
+namespace Maps\DataAccess;
 
 use FileFetcher\FileFetcher;
 use FileFetcher\FileFetchingException;
 use Maps\MapsFactory;
-use Maps\PageContentFetcher;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 
 /**
+ * Returns the content of the JSON file at the specified location as array.
+ * Empty array is returned on failure.
+ *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

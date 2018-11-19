@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps;
+namespace Maps\Presentation;
 
 use DataValues\Geo\Formatters\LatLongFormatter;
 use DataValues\Geo\Values\LatLongValue;

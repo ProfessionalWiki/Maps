@@ -3,7 +3,7 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
-use Maps\ParameterExtractor;
+use Maps\Presentation\ParameterExtractor;
 use MapsDisplayMapRenderer;
 use MapsMapper;
 use MapsMappingServices;
@@ -46,7 +46,7 @@ class DisplayMapFunction {
 		// TODO: do not use global access
 		$service = MapsMappingServices::getServiceInstance(
 			$this->extractServiceName(
-				Maps\ParameterExtractor::extractFromKeyValueStrings( $parameters )
+				Maps\Presentation\ParameterExtractor::extractFromKeyValueStrings( $parameters )
 			)
 		);
 

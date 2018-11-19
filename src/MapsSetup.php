@@ -3,6 +3,7 @@
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
+use Maps\DataAccess\JsonFileParser;
 use Maps\GeoJson\GeoJsonContent;
 use Maps\GeoJson\GeoJsonContentHandler;
 use Maps\MediaWiki\Api\Geocode;
@@ -13,7 +14,6 @@ use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
 use Maps\MediaWiki\ParserHooks\GeocodeFunction;
 use Maps\MediaWiki\ParserHooks\GeoDistanceFunction;
 use Maps\MediaWiki\ParserHooks\MapsDocFunction;
-use Maps\Parsers\JsonFileParser;
 use Maps\Presentation\WikitextParsers\CircleParser;
 use Maps\Presentation\WikitextParsers\DistanceParser;
 use Maps\Presentation\WikitextParsers\ImageOverlayParser;

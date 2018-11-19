@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps;
+namespace Maps\Presentation;
 
 /**
  * @licence GNU GPL v2+

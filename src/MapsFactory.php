@@ -11,7 +11,10 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GeoNamesGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
+use Maps\DataAccess\MapsFileFetcher;
+use Maps\DataAccess\PageContentFetcher;
 use Maps\Geocoders\CachingGeocoder;
+use Maps\Presentation\CoordinateFormatter;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use MediaWiki\MediaWikiServices;
 

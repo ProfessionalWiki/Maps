@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps;
+namespace Maps\DataAccess;
 
 use FileFetcher\FileFetcher;
 use FileFetcher\FileFetchingException;

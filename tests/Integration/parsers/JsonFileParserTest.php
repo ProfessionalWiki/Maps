@@ -7,14 +7,14 @@ use FileFetcher\NullFileFetcher;
 use FileFetcher\SimpleFileFetcher;
 use FileFetcher\StubFileFetcher;
 use FileFetcher\ThrowingFileFetcher;
+use Maps\DataAccess\JsonFileParser;
 use Maps\GeoJson\GeoJsonContent;
-use Maps\Parsers\JsonFileParser;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 use Title;
 
 /**
- * @covers \Maps\Parsers\JsonFileParser
+ * @covers \Maps\DataAccess\JsonFileParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
