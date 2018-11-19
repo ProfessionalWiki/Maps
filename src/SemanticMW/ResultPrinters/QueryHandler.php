@@ -5,7 +5,6 @@ namespace Maps\SemanticMW\ResultPrinters;
 use Html;
 use Maps\Elements\Location;
 use MapsMapper;
-use PolygonHandler;
 use SMWDataValue;
 use SMWPrintRequest;
 use SMWQueryResult;
@@ -276,34 +275,28 @@ class QueryHandler {
 						$title = $dataValue->getLongText( $this->outputMode, null );
 						$text = $dataValue->getLongText( $this->outputMode, smwfGetLinker() );
 					} else {
-						if ( $dataValue->getTypeID() == '_gpo' ) {
-							$dataItem = $dataValue->getDataItem();
-							$polyHandler = new PolygonHandler ( $dataItem->getString() );
-							$this->geoShapes[$polyHandler->getGeoType()][] = $polyHandler->shapeFromText();
-						} else {
-							if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
-								foreach ( $dataValue->getDataItems() as $dataItem ) {
-									if ( $dataItem instanceof \SMWDIGeoCoord ) {
-										$locations[] = Location::newFromLatLon(
-											$dataItem->getLatitude(),
-											$dataItem->getLongitude()
-										);
-									}
+						if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
+							foreach ( $dataValue->getDataItems() as $dataItem ) {
+								if ( $dataItem instanceof \SMWDIGeoCoord ) {
+									$locations[] = Location::newFromLatLon(
+										$dataItem->getLatitude(),
+										$dataItem->getLongitude()
+									);
 								}
+							}
+						} else {
+							if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide() ) {
+								$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 							} else {
-								if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide() ) {
-									$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
-								} else {
-									if ( $printRequest->getMode(
-										) == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID(
-										) == '_geo' || $dataValue->getTypeID() == '_geo' ) {
-										$dataItem = $dataValue->getDataItem();
+								if ( $printRequest->getMode(
+									) == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID(
+									) == '_geo' || $dataValue->getTypeID() == '_geo' ) {
+									$dataItem = $dataValue->getDataItem();
 
-										$locations[] = Location::newFromLatLon(
-											$dataItem->getLatitude(),
-											$dataItem->getLongitude()
-										);
-									}
+									$locations[] = Location::newFromLatLon(
+										$dataItem->getLatitude(),
+										$dataItem->getLongitude()
+									);
 								}
 							}
 						}

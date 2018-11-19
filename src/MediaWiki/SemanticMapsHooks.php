@@ -59,12 +59,6 @@ final class SemanticMapsHooks {
 			SMWDataItem::TYPE_GEO
 		);
 
-		DataTypeRegistry::getInstance()->registerDatatype(
-			'_gpo',
-			GeoPolygonValue::class,
-			SMWDataItem::TYPE_BLOB
-		);
-
 		return true;
 	}
 

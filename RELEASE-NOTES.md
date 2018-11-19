@@ -7,8 +7,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
-* The "rotate" control for Google Maps is now enabled by default (changeable via `$egMapsGMaps3Controls`) (by @acnetj)
+* The `rotate` control for Google Maps is now enabled by default (changeable via `$egMapsGMaps3Controls`) (by @acnetj)
 * The `layers` parameter for Google Maps now works again (5.2.0 regression)
+* Removed broken SMW `_gpo` data type
 
 ## Maps 6.0.4
 
