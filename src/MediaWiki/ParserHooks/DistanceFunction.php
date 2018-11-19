@@ -1,22 +1,23 @@
 <?php
 
+namespace Maps\MediaWiki\ParserHooks;
+
+use MapsDistanceParser;
+use ParserHook;
+
 /**
  * Class for the 'distance' parser hooks,
  * which can transform the notation of a distance.
  *
- * @since 0.7
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsDistance extends ParserHook {
+class DistanceFunction extends ParserHook {
 
 	/**
 	 * Renders and returns the output.
 	 *
 	 * @see ParserHook::render
-	 *
-	 * @since 0.7
 	 *
 	 * @param array $parameters
 	 *
@@ -32,8 +33,6 @@ class MapsDistance extends ParserHook {
 
 	/**
 	 * @see ParserHook::getMessage()
-	 *
-	 * @since 1.0
 	 */
 	public function getMessage() {
 		return 'maps-distance-description';
@@ -43,8 +42,6 @@ class MapsDistance extends ParserHook {
 	 * Gets the name of the parser hook.
 	 *
 	 * @see ParserHook::getName
-	 *
-	 * @since 0.7
 	 *
 	 * @return string
 	 */
@@ -56,8 +53,6 @@ class MapsDistance extends ParserHook {
 	 * Returns an array containing the parameter info.
 	 *
 	 * @see ParserHook::getParameterInfo
-	 *
-	 * @since 0.7
 	 *
 	 * @return array
 	 */
@@ -93,8 +88,6 @@ class MapsDistance extends ParserHook {
 	 * Returns the list of default parameters.
 	 *
 	 * @see ParserHook::getDefaultParameters
-	 *
-	 * @since 0.7
 	 *
 	 * @param $type
 	 *

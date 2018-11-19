@@ -1,7 +1,16 @@
 <?php
 
+namespace Maps\MediaWiki\ParserHooks;
+
+use Maps;
 use Maps\ParameterExtractor;
+use MapsDisplayMapRenderer;
+use MapsMapper;
+use MapsMappingServices;
+use MWException;
+use ParamProcessor;
 use ParamProcessor\ProcessedParam;
+use Parser;
 
 /**
  * Class for the 'display_map' parser hooks.
@@ -9,7 +18,7 @@ use ParamProcessor\ProcessedParam;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsDisplayMap {
+class DisplayMapFunction {
 
 	private $renderer;
 	private $defaultService;
@@ -35,9 +44,11 @@ class MapsDisplayMap {
 		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
 
 		// TODO: do not use global access
-		$service = MapsMappingServices::getServiceInstance( $this->extractServiceName(
-			Maps\ParameterExtractor::extractFromKeyValueStrings( $parameters )
-		) );
+		$service = MapsMappingServices::getServiceInstance(
+			$this->extractServiceName(
+				Maps\ParameterExtractor::extractFromKeyValueStrings( $parameters )
+			)
+		);
 
 		$parameterDefinitions = self::getHookDefinition( ';' )->getParameters();
 		$service->addParameterInfo( $parameterDefinitions );

@@ -1,32 +1,39 @@
 <?php
 
+namespace Maps\MediaWiki\ParserHooks;
+
+use DataValues\Geo\Values\LatLongValue;
 use Maps\MapsFactory;
+use MapsGeoFunctions;
+use ParserHook;
 
 /**
- * Class for the 'coordinates' parser hooks,
- * which can transform the notation of a set of coordinates.
- *
- * @since 0.7
+ * Class for the 'finddestination' parser hooks, which can find a
+ * destination given a starting point, an initial bearing and a distance.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsCoordinates extends ParserHook {
+class FindDestinationFunction extends ParserHook {
 
 	/**
 	 * Renders and returns the output.
 	 *
 	 * @see ParserHook::render
 	 *
-	 * @since 0.7
-	 *
 	 * @param array $parameters
 	 *
 	 * @return string
 	 */
 	public function render( array $parameters ) {
+		$destination = MapsGeoFunctions::findDestination(
+			$parameters['location']->getCoordinates(),
+			$parameters['bearing'],
+			$parameters['distance']
+		);
+
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
-			$parameters['location'],
+			new LatLongValue( $destination['lat'], $destination['lon'] ),
 			$parameters['format'],
 			$parameters['directional']
 		);
@@ -34,11 +41,9 @@ class MapsCoordinates extends ParserHook {
 
 	/**
 	 * @see ParserHook::getMessage()
-	 *
-	 * @since 1.0
 	 */
 	public function getMessage() {
-		return 'maps-coordinates-description';
+		return 'maps-finddestination-description';
 	}
 
 	/**
@@ -46,12 +51,10 @@ class MapsCoordinates extends ParserHook {
 	 *
 	 * @see ParserHook::getName
 	 *
-	 * @since 0.7
-	 *
 	 * @return string
 	 */
 	protected function getName() {
-		return 'coordinates';
+		return 'finddestination';
 	}
 
 	/**
@@ -59,19 +62,16 @@ class MapsCoordinates extends ParserHook {
 	 *
 	 * @see ParserHook::getParameterInfo
 	 *
-	 * @since 0.7
-	 *
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
 		global $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation;
-		global $egMapsCoordinateDirectional;
+		global $egMapsCoordinateNotation, $egMapsCoordinateDirectional;
 
 		$params = [];
 
 		$params['location'] = [
-			'type' => 'coordinate',
+			'type' => 'mapslocation',
 		];
 
 		$params['format'] = [
@@ -86,10 +86,21 @@ class MapsCoordinates extends ParserHook {
 			'default' => $egMapsCoordinateDirectional,
 		];
 
+		$params['bearing'] = [
+			'type' => 'float',
+		];
+
+		$params['distance'] = [
+			'type' => 'distance',
+		];
+
 		// Give grep a chance to find the usages:
-		// maps-coordinates-par-location, maps-coordinates-par-format, maps-coordinates-par-directional
+		// maps-finddestination-par-location, maps-finddestination-par-format,
+		// maps-finddestination-par-directional, maps-finddestination-par-bearing,
+		// maps-finddestination-par-distance, maps-finddestination-par-mappingservice,
+		// maps-finddestination-par-geoservice, maps-finddestination-par-allowcoordinates
 		foreach ( $params as $name => &$param ) {
-			$param['message'] = 'maps-coordinates-par-' . $name;
+			$param['message'] = 'maps-finddestination-par-' . $name;
 		}
 
 		return $params;
@@ -100,12 +111,10 @@ class MapsCoordinates extends ParserHook {
 	 *
 	 * @see ParserHook::getDefaultParameters
 	 *
-	 * @since 0.7
-	 *
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return [ 'location', 'format', 'directional' ];
+		return [ 'location', 'bearing', 'distance' ];
 	}
 
 }

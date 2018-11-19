@@ -42,16 +42,11 @@ class MapsDisplayMapRenderer {
 
 		$output = $this->getMapHTML( $params, $mapName );
 
-		$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() );
-
 		$this->service->addHtmlDependencies(
 			self::getLayerDependencies( $params['mappingservice'], $params )
 		);
 
-		$parserOutput = $parser->getOutput();
-
-		$this->service->addDependencies( $parserOutput );
-		$parserOutput->addHeadItem( $configVars );
+		$this->service->addDependencies( $parser->getOutput() );
 
 		return $output;
 	}

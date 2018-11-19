@@ -1,5 +1,10 @@
 <?php
 
+namespace Maps\MediaWiki\Specials;
+
+use ContextSource;
+use Html;
+
 /**
  * Class to Handle HTML generation for Special:MapEditor
  *

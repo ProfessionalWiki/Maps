@@ -4,9 +4,10 @@ namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;
+use Maps\MediaWiki\ParserHooks\GeoDistanceFunction;
 
 /**
- * @covers MapsGeodistance
+ * @covers GeoDistanceFunction
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -74,7 +75,7 @@ class GeodistanceTest extends ParserHookTest {
 	 * @see ParserHookTest::getInstance
 	 */
 	protected function getInstance() {
-		return new \MapsGeodistance();
+		return new \Maps\MediaWiki\ParserHooks\GeoDistanceFunction();
 	}
 
 }

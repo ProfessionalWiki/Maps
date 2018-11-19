@@ -4,9 +4,10 @@ namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;
+use Maps\MediaWiki\ParserHooks\GeocodeFunction;
 
 /**
- * @covers MapsGeocode
+ * @covers GeocodeFunction
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -50,7 +51,7 @@ class GeocodeTest extends ParserHookTest {
 	 * @see ParserHookTest::getInstance
 	 */
 	protected function getInstance() {
-		return new \MapsGeocode(
+		return new \Maps\MediaWiki\ParserHooks\GeocodeFunction(
 			new InMemoryGeocoder(
 				[
 					'New York' => new LatLongValue( 4, 2 ),

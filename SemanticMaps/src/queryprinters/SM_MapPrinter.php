@@ -107,8 +107,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 			SMWOutputs::requireHeadItem(
 				$mapName,
-				$this->service->getDependencyHtml() .
-				$configVars = Skin::makeVariablesScript( $this->service->getConfigVariables() )
+				$this->service->getDependencyHtml()
 			);
 
 			foreach ( $this->service->getResourceModules() as $resourceModule ) {

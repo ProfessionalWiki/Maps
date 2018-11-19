@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Api;
+namespace Maps\MediaWiki\Api;
 
 use ApiBase;
 use Maps\MapsFactory;

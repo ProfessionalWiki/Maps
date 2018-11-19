@@ -2,8 +2,10 @@
 
 namespace Maps\Test;
 
+use Maps\MediaWiki\ParserHooks\DistanceFunction;
+
 /**
- * @covers MapsDistance
+ * @covers DistanceFunction
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -83,7 +85,7 @@ class DistanceTest extends ParserHookTest {
 	 * @see ParserHookTest::getInstance
 	 */
 	protected function getInstance() {
-		return new \MapsDistance();
+		return new \Maps\MediaWiki\ParserHooks\DistanceFunction();
 	}
 
 }

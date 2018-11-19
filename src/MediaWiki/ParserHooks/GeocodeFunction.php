@@ -1,39 +1,45 @@
 <?php
 
-use DataValues\Geo\Values\LatLongValue;
+namespace Maps\MediaWiki\ParserHooks;
+
+use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\MapsFactory;
+use ParserHook;
 
 /**
- * Class for the 'finddestination' parser hooks, which can find a
- * destination given a starting point, an initial bearing and a distance.
- *
- * @since 0.7
+ * Class for the 'geocode' parser hooks, which can turn
+ * human readable locations into sets of coordinates.
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsFinddestination extends ParserHook {
+class GeocodeFunction extends ParserHook {
+
+	private $geocoder;
+
+	public function __construct( Geocoder $geocoder = null ) {
+		$this->geocoder = $geocoder ?? \Maps\MapsFactory::newDefault()->newGeocoder();
+		parent::__construct();
+	}
 
 	/**
 	 * Renders and returns the output.
 	 *
 	 * @see ParserHook::render
 	 *
-	 * @since 0.7
-	 *
 	 * @param array $parameters
 	 *
 	 * @return string
 	 */
 	public function render( array $parameters ) {
-		$destination = MapsGeoFunctions::findDestination(
-			$parameters['location']->getCoordinates(),
-			$parameters['bearing'],
-			$parameters['distance']
-		);
+		$coordinates = $this->geocoder->geocode( $parameters['location'] );
+
+		if ( $coordinates === null ) {
+			return 'Geocoding failed'; // TODO: i18n
+		}
 
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
-			new LatLongValue( $destination['lat'], $destination['lon'] ),
+			$coordinates,
 			$parameters['format'],
 			$parameters['directional']
 		);
@@ -41,11 +47,9 @@ class MapsFinddestination extends ParserHook {
 
 	/**
 	 * @see ParserHook::getMessage()
-	 *
-	 * @since 1.0
 	 */
 	public function getMessage() {
-		return 'maps-finddestination-description';
+		return 'maps-geocode-description';
 	}
 
 	/**
@@ -53,12 +57,10 @@ class MapsFinddestination extends ParserHook {
 	 *
 	 * @see ParserHook::getName
 	 *
-	 * @since 0.7
-	 *
 	 * @return string
 	 */
 	protected function getName() {
-		return 'finddestination';
+		return 'geocode';
 	}
 
 	/**
@@ -66,18 +68,18 @@ class MapsFinddestination extends ParserHook {
 	 *
 	 * @see ParserHook::getParameterInfo
 	 *
-	 * @since 0.7
-	 *
 	 * @return array
 	 */
 	protected function getParameterInfo( $type ) {
 		global $egMapsAvailableCoordNotations;
-		global $egMapsCoordinateNotation, $egMapsCoordinateDirectional;
+		global $egMapsCoordinateNotation;
+		global $egMapsCoordinateDirectional;
 
 		$params = [];
 
 		$params['location'] = [
-			'type' => 'mapslocation',
+			'type' => 'string',
+			'message' => 'maps-geocode-par-location',
 		];
 
 		$params['format'] = [
@@ -85,29 +87,14 @@ class MapsFinddestination extends ParserHook {
 			'values' => $egMapsAvailableCoordNotations,
 			'aliases' => 'notation',
 			'tolower' => true,
+			'message' => 'maps-geocode-par-format',
 		];
 
 		$params['directional'] = [
 			'type' => 'boolean',
 			'default' => $egMapsCoordinateDirectional,
+			'message' => 'maps-geocode-par-directional',
 		];
-
-		$params['bearing'] = [
-			'type' => 'float',
-		];
-
-		$params['distance'] = [
-			'type' => 'distance',
-		];
-
-		// Give grep a chance to find the usages:
-		// maps-finddestination-par-location, maps-finddestination-par-format,
-		// maps-finddestination-par-directional, maps-finddestination-par-bearing,
-		// maps-finddestination-par-distance, maps-finddestination-par-mappingservice,
-		// maps-finddestination-par-geoservice, maps-finddestination-par-allowcoordinates
-		foreach ( $params as $name => &$param ) {
-			$param['message'] = 'maps-finddestination-par-' . $name;
-		}
 
 		return $params;
 	}
@@ -117,12 +104,10 @@ class MapsFinddestination extends ParserHook {
 	 *
 	 * @see ParserHook::getDefaultParameters
 	 *
-	 * @since 0.7
-	 *
 	 * @return array
 	 */
 	protected function getDefaultParameters( $type ) {
-		return [ 'location', 'bearing', 'distance' ];
+		return [ 'location' ];
 	}
 
 }

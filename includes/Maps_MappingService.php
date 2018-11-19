@@ -134,17 +134,6 @@ abstract class MapsMappingService {
 	}
 
 	/**
-	 * Returns a list of all config variables that should be passed to the JS.
-	 *
-	 * @since 1.0.1
-	 *
-	 * @return array
-	 */
-	public function getConfigVariables() {
-		return [];
-	}
-
-	/**
 	 * @since 0.6.3
 	 */
 	public function getName() {

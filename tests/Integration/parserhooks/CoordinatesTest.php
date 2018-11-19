@@ -3,10 +3,11 @@
 namespace Maps\Test;
 
 use DataValues\Geo\Values\LatLongValue;
+use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
 use ParamProcessor\ParamDefinition;
 
 /**
- * @covers MapsCoordinates
+ * @covers CoordinatesFunction
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -118,7 +119,7 @@ class CoordinatesTest extends ParserHookTest {
 	 * @see ParserHookTest::getInstance
 	 */
 	protected function getInstance() {
-		return new \MapsCoordinates();
+		return new \Maps\MediaWiki\ParserHooks\CoordinatesFunction();
 	}
 
 }

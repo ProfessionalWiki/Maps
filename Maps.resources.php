@@ -17,9 +17,9 @@ return call_user_func( function() {
 
 	$moduleTemplate = [
 		'position' => 'top',
-		'localBasePath' => __DIR__ . '/includes',
-		'remoteExtPath' =>  end( $pathParts ) . '/includes',
 		'group' => 'ext.maps',
+		'localBasePath' => __DIR__,
+		'remoteExtPath' =>  end( $pathParts ),
 		'targets' => [
 			'mobile',
 			'desktop'
@@ -32,7 +32,7 @@ return call_user_func( function() {
 				'maps-load-failed',
 			] ,
 			'scripts' => [
-				'ext.maps.common.js',
+				'includes/ext.maps.common.js',
 			],
 		],
 
@@ -42,13 +42,13 @@ return call_user_func( function() {
 
 		'mapeditor' => $moduleTemplate + [
 			'scripts' => [
-				'editor/js/jquery.miniColors.js',
-				'editor/js/mapeditor.iefixes.js',
-				'editor/js/mapeditor.js',
+				'resources/editor/js/jquery.miniColors.js',
+				'resources/editor/js/mapeditor.iefixes.js',
+				'resources/editor/js/mapeditor.js',
 			],
 			'styles' => [
-				'editor/css/jquery.miniColors.css',
-				'editor/css/mapeditor.css',
+				'resources/editor/css/jquery.miniColors.css',
+				'resources/editor/css/mapeditor.css',
 			],
 			'messages' => [
 				'mapeditor-parser-error',
@@ -72,9 +72,8 @@ return call_user_func( function() {
 		],
 
 		'ext.maps.services' => $moduleTemplate + [
-			'group' => 'ext.maps',
 			'scripts' => [
-				'ext.maps.services.js',
+				'includes/ext.maps.services.js',
 			],
 			'dependencies' => [
 				'ext.maps.common',
