@@ -2,16 +2,16 @@
 
 namespace Maps\Tests\Semantic\DataValues;
 
-use Maps\Semantic\DataValues\CoordinateValue;
-use Maps\Semantic\ValueDescriptions\AreaDescription;
-use Maps\Semantic\ValueDescriptions\CoordinateDescription;
+use Maps\SemanticMW\DataValues\CoordinateValue;
+use Maps\SemanticMW\ValueDescriptions\AreaDescription;
+use Maps\SemanticMW\ValueDescriptions\CoordinateDescription;
 use PHPUnit\Framework\TestCase;
 use SMW\DataValueFactory;
 use SMWDataItem;
 use SMWDIGeoCoord;
 
 /**
- * @covers \Maps\Semantic\ValueDescriptions\CoordinateValue
+ * @covers \Maps\SemanticMW\ValueDescriptions\CoordinateValue
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

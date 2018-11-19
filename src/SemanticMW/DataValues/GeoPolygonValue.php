@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Semantic\DataValues;
+namespace Maps\SemanticMW\DataValues;
 
 use PolygonHandler;
 use SMWDataItem;

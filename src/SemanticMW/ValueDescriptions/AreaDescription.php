@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Semantic\ValueDescriptions;
+namespace Maps\SemanticMW\ValueDescriptions;
 
 use DatabaseBase;
 use DataValues\Geo\Values\LatLongValue;

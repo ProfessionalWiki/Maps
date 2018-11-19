@@ -4,8 +4,8 @@ namespace Maps\MediaWiki;
 
 use AlItem;
 use ALTree;
-use Maps\Semantic\DataValues\CoordinateValue;
-use Maps\Semantic\DataValues\GeoPolygonValue;
+use Maps\SemanticMW\DataValues\CoordinateValue;
+use Maps\SemanticMW\DataValues\GeoPolygonValue;
 use SMW\DataTypeRegistry;
 use SMWDataItem;
 use SMWPrintRequest;

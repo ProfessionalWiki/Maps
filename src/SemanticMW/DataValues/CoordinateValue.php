@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Semantic\DataValues;
+namespace Maps\SemanticMW\DataValues;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use DataValues\Geo\Values\LatLongValue;
@@ -50,13 +50,13 @@ class CoordinateValue extends SMWDataValue {
 			case !$this->isValid():
 				return new ThingDescription();
 			case $distance !== false:
-				return new \Maps\Semantic\ValueDescriptions\AreaDescription(
+				return new \Maps\SemanticMW\ValueDescriptions\AreaDescription(
 					$this->getDataItem(),
 					$comparator,
 					$distance
 				);
 			default:
-				return new \Maps\Semantic\ValueDescriptions\CoordinateDescription(
+				return new \Maps\SemanticMW\ValueDescriptions\CoordinateDescription(
 					$this->getDataItem(),
 					null,
 					$comparator
