@@ -55,8 +55,8 @@ class SemanticMaps {
 		];
 
 		$this->mwGlobals['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
-				'localBasePath' => __DIR__ . '/../SemanticMaps/src',
-				'remoteExtPath' => 'Maps/SemanticMaps/src',
+				'localBasePath' => __DIR__ . '/../resources',
+				'remoteExtPath' => 'Maps/resources',
 				'scripts' => [
 					'ext.sm.common.js'
 				]
@@ -65,8 +65,8 @@ class SemanticMaps {
 
 	private function registerGoogleMaps() {
 		$this->mwGlobals['wgResourceModules']['ext.sm.googlemaps3ajax'] = [
-			'localBasePath' => __DIR__ . '/../SemanticMaps/src/services/GoogleMaps3',
-			'remoteExtPath' => 'Maps/SemanticMaps/src/services/GoogleMaps3',
+			'localBasePath' => __DIR__ . '/../resources/GoogleMaps3',
+			'remoteExtPath' => 'Maps/resources/GoogleMaps3',
 			'group' => 'ext.semanticmaps',
 			'dependencies' => [
 				'ext.maps.googlemaps3',
@@ -89,8 +89,8 @@ class SemanticMaps {
 
 	private function registerLeaflet() {
 		$this->mwGlobals['wgResourceModules']['ext.sm.fi.leafletajax'] = [
-			'localBasePath' => __DIR__ . '/../SemanticMaps/src/services/Leaflet',
-			'remoteExtPath' => 'Maps/SemanticMaps/src/services/Leaflet',
+			'localBasePath' => __DIR__ . '/../resources/leaflet',
+			'remoteExtPath' => 'Maps/resources/leaflet',
 			'group' => 'ext.semanticmaps',
 			'dependencies' => [
 				'ext.maps.leaflet',
@@ -113,8 +113,8 @@ class SemanticMaps {
 
 	private function registerOpenLayers() {
 		$this->mwGlobals['wgResourceModules']['ext.sm.fi.openlayersajax'] = [
-			'localBasePath' => __DIR__ . '/../SemanticMaps/src/services/OpenLayers',
-			'remoteExtPath' => 'Maps/SemanticMaps/src/services/OpenLayers',
+			'localBasePath' => __DIR__ . '/../resources/OpenLayers',
+			'remoteExtPath' => 'Maps/resources/OpenLayers',
 			'group' => 'ext.semanticmaps',
 			'dependencies' => [
 				'ext.maps.openlayers',
