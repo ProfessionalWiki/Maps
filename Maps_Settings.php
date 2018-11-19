@@ -206,7 +206,8 @@
 			'zoom',
 			'type',
 			'scale',
-			'streetview'
+		        'streetview',
+			'rotate'
 		];
 
 		// String. The default style for the type control.
