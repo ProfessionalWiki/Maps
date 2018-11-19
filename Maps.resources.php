@@ -36,18 +36,6 @@ return call_user_func( function() {
 			],
 		],
 
-		'ext.maps.coord' => $moduleTemplate + [
-			'messages' => [
-				'maps-abb-north',
-				'maps-abb-east',
-				'maps-abb-south',
-				'maps-abb-west',
-			],
-			'scripts' => [
-				'ext.maps.coord.js'
-			],
-		],
-
 		'ext.maps.resizable' => $moduleTemplate + [
 			'dependencies' => 'jquery.ui.resizable',
 		],
@@ -90,7 +78,6 @@ return call_user_func( function() {
 			],
 			'dependencies' => [
 				'ext.maps.common',
-				'ext.maps.coord'
 			]
 		]
 	];
