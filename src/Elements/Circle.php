@@ -15,23 +15,10 @@ use InvalidArgumentException;
  */
 class Circle extends \MapsBaseFillableElement {
 
-	/**
-	 * @var LatLongValue
-	 */
 	private $circleCentre;
-
-	/**
-	 * @var integer|float
-	 */
 	private $circleRadius;
 
-	/**
-	 * @param LatLongValue $circleCentre
-	 * @param integer|float $circleRadius
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	public function __construct( LatLongValue $circleCentre, $circleRadius ) {
+	public function __construct( LatLongValue $circleCentre, float $circleRadius ) {
 		if ( !is_float( $circleRadius ) && !is_int( $circleRadius ) ) {
 			throw new InvalidArgumentException( '$circleRadius must be a float or int' );
 		}
