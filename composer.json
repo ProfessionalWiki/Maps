@@ -50,10 +50,8 @@
 		},
 		"classmap": [
 			"MapsRegistration.php",
-			"Maps.hooks.php",
 			"includes/",
 			"SemanticMaps/src/",
-			"SemanticMaps/SemanticMaps.hooks.php",
 			"tests/Unit/Elements/",
 			"tests/Integration/parserhooks/ParserHookTest.php"
 		]

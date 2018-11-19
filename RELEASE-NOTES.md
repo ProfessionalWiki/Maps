@@ -217,7 +217,7 @@ Released on May 15th, 2017.
 Released on April 14th, 2017.
 
 * Fixed rendering of area query values (they now work properly in SMW "further result" links)
-* Fixed type warning in `SMMapPrinter::getMapHTML`
+* Fixed type warning in `Maps\SemanticMW\ResultPrinters\SMMapPrinter::getMapHTML`
 * Added missing geographical polygon type i18n messages
 
 ## Maps 4.0.5

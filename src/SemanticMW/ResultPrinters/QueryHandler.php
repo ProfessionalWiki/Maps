@@ -1,6 +1,17 @@
 <?php
 
+namespace Maps\SemanticMW\ResultPrinters;
+
+use Html;
 use Maps\Elements\Location;
+use MapsMapper;
+use PolygonHandler;
+use SMWDataValue;
+use SMWPrintRequest;
+use SMWQueryResult;
+use SMWResultArray;
+use SMWWikiPageValue;
+use Title;
 
 /**
  * Class for handling geographical SMW queries.
@@ -8,7 +19,7 @@ use Maps\Elements\Location;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SMQueryHandler {
+class QueryHandler {
 
 	/**
 	 * The global icon.
@@ -365,10 +376,10 @@ class SMQueryHandler {
 		}
 
 		return $text . Html::element(
-			'a',
-			[ 'href' => $object->getTitle()->getFullUrl() ],
-			$txt
-		);
+				'a',
+				[ 'href' => $object->getTitle()->getFullUrl() ],
+				$txt
+			);
 	}
 
 	private function showArticleLink() {

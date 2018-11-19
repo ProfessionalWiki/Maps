@@ -1,7 +1,11 @@
 <?php
 
+namespace Maps\SemanticMW\ResultPrinters;
+
+use MapsKMLFormatter;
 use ParamProcessor\ParamDefinition;
 use SMW\FileExportPrinter;
+use SMWQueryResult;
 
 /**
  * SMWResultPrinter class for printing a query result as KML.
@@ -12,7 +16,7 @@ use SMW\FileExportPrinter;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SMKMLPrinter extends FileExportPrinter {
+class KmlPrinter extends FileExportPrinter {
 
 	/**
 	 * Handler of the print request.
@@ -39,7 +43,7 @@ class SMKMLPrinter extends FileExportPrinter {
 	 * @return string
 	 */
 	private function getKML( SMWQueryResult $res, $outputmode ) {
-		$queryHandler = new SMQueryHandler( $res, $outputmode, $this->params['linkabsolute'] );
+		$queryHandler = new QueryHandler( $res, $outputmode, $this->params['linkabsolute'] );
 		$queryHandler->setText( $this->params['text'] );
 		$queryHandler->setTitle( $this->params['title'] );
 		$queryHandler->setSubjectSeparator( '' );

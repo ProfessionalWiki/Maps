@@ -2,10 +2,10 @@
 
 namespace Maps;
 
+use Maps\SemanticMW\ResultPrinters\KmlPrinter;
+use Maps\SemanticMW\ResultPrinters\MapPrinter;
 use MapsMappingService;
 use MapsMappingServices;
-use SMKMLPrinter;
-use SMMapPrinter;
 
 /**
  * @licence GNU GPL v2+
@@ -39,10 +39,10 @@ class SemanticMaps {
 		$this->registerLeaflet();
 		$this->registerOpenLayers();
 
-		$this->mwGlobals['smwgResultFormats']['kml'] = SMKMLPrinter::class;
+		$this->mwGlobals['smwgResultFormats']['kml'] = KmlPrinter::class;
 
 		$this->mwGlobals['smwgResultAliases'][$this->mwGlobals['egMapsDefaultServices']['qp']][] = 'map';
-		SMMapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultServices']['qp'] );
+		MapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultServices']['qp'] );
 
 		// Internationalization
 		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
@@ -81,9 +81,9 @@ class SemanticMaps {
 		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
 		$googleMaps->addResourceModules( [ 'ext.sm.googlemaps3ajax' ] );
 
-		SMMapPrinter::registerService( $googleMaps );
+		MapPrinter::registerService( $googleMaps );
 
-		$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = SMMapPrinter::class;
+		$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = MapPrinter::class;
 		$this->mwGlobals['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
 	}
 
@@ -105,9 +105,9 @@ class SemanticMaps {
 		$leaflet = MapsMappingServices::getServiceInstance( 'leaflet' );
 		$leaflet->addResourceModules( [ 'ext.sm.fi.leafletajax' ] );
 
-		SMMapPrinter::registerService( $leaflet );
+		MapPrinter::registerService( $leaflet );
 
-		$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = SMMapPrinter::class;
+		$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = MapPrinter::class;
 		$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
 	}
 
@@ -129,9 +129,9 @@ class SemanticMaps {
 		$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
 		$openLayers->addResourceModules( [ 'ext.sm.fi.openlayersajax' ] );
 
-		SMMapPrinter::registerService( $openLayers );
+		MapPrinter::registerService( $openLayers );
 
-		$this->mwGlobals['smwgResultFormats'][$openLayers->getName()] = SMMapPrinter::class;
+		$this->mwGlobals['smwgResultFormats'][$openLayers->getName()] = MapPrinter::class;
 		$this->mwGlobals['smwgResultAliases'][$openLayers->getName()] = $openLayers->getAliases();
 	}
 

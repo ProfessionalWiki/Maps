@@ -1,10 +1,24 @@
 <?php
 
+namespace Maps\SemanticMW\ResultPrinters;
+
+use FormatJson;
+use Html;
+use Linker;
 use Maps\Element;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
 use Maps\LocationParser;
+use MapsDisplayMapRenderer;
+use MapsMapper;
+use MapsMappingService;
 use ParamProcessor\ParamDefinition;
+use Parser;
+use ParserOptions;
+use SMW;
+use SMWOutputs;
+use SMWQueryResult;
+use Title;
 
 /**
  * Query printer for maps. Is invoked via SMMapper.
@@ -16,7 +30,7 @@ use ParamProcessor\ParamDefinition;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-class SMMapPrinter extends SMW\ResultPrinter {
+class MapPrinter extends SMW\ResultPrinter {
 
 	private static $services = [];
 
@@ -77,7 +91,7 @@ class SMMapPrinter extends SMW\ResultPrinter {
 
 		$this->initializeLocationParser();
 
-		$queryHandler = new SMQueryHandler( $res, $outputmode );
+		$queryHandler = new QueryHandler( $res, $outputmode );
 		$queryHandler->setLinkStyle( $params['link'] );
 		$queryHandler->setHeaderStyle( $params['headers'] );
 		$queryHandler->setShowSubject( $params['showtitle'] );
@@ -144,9 +158,9 @@ class SMMapPrinter extends SMW\ResultPrinter {
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 *
 	 * @param array &$params
-	 * @param SMQueryHandler $queryHandler
+	 * @param QueryHandler $queryHandler
 	 */
-	private function handleMarkerData( array &$params, SMQueryHandler $queryHandler ) {
+	private function handleMarkerData( array &$params, QueryHandler $queryHandler ) {
 		$params['centre'] = $this->getCenter( $params['centre'] );
 
 		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
