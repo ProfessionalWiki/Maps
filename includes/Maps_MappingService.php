@@ -141,7 +141,9 @@ abstract class MapsMappingService {
 	 * @return array
 	 */
 	public function getConfigVariables() {
-		return [];
+		return [
+			'egMapsScriptPath' => $GLOBALS['wgScriptPath'] . '/extensions/Maps/'
+		];
 	}
 
 	/**
