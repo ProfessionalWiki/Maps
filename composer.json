@@ -51,7 +51,6 @@
 		"classmap": [
 			"MapsRegistration.php",
 			"includes/",
-			"SemanticMaps/src/",
 			"tests/Unit/Elements/",
 			"tests/Integration/parserhooks/ParserHookTest.php"
 		]
