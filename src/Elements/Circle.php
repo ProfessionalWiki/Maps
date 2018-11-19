@@ -45,17 +45,16 @@ class Circle extends \MapsBaseFillableElement {
 	}
 
 	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
-		$parentArray = parent::getJSONObject( $defText, $defTitle );
-
-		$array = [
-			'centre' => [
-				'lon' => $this->getCircleCentre()->getLongitude(),
-				'lat' => $this->getCircleCentre()->getLatitude()
-			],
-			'radius' => intval( $this->getCircleRadius() ),
-		];
-
-		return array_merge( $parentArray, $array );
+		return array_merge(
+			parent::getJSONObject( $defText, $defTitle ),
+			[
+				'centre' => [
+					'lon' => $this->getCircleCentre()->getLongitude(),
+					'lat' => $this->getCircleCentre()->getLatitude()
+				],
+				'radius' => intval( $this->getCircleRadius() ),
+			]
+		);
 	}
 
 	public function getCircleCentre(): LatLongValue {
