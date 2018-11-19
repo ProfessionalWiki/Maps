@@ -80,7 +80,7 @@ class MapsOpenLayers extends MapsMappingService {
 			'manipulatedefault' => false,
 			'message' => 'maps-openlayers-par-overlays',
 
-			// NOTE: code has moved into @see MapsDisplayMapRenderer
+			// NOTE: code has moved into @see Maps\MediaWiki\ParserHooks\MapsDisplayMapRenderer
 			// TODO-customMaps: addCriteria( new CriterionOLLayer( ';' ) );
 			// TODO-customMaps: addManipulations( new MapsParamOLLayers() );
 		];

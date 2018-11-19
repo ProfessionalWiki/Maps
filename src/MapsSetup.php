@@ -13,6 +13,7 @@ use Maps\MediaWiki\ParserHooks\DistanceFunction;
 use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
 use Maps\MediaWiki\ParserHooks\GeocodeFunction;
 use Maps\MediaWiki\ParserHooks\GeoDistanceFunction;
+use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\MediaWiki\ParserHooks\MapsDocFunction;
 use Maps\Presentation\WikitextParsers\CircleParser;
 use Maps\Presentation\WikitextParsers\DistanceParser;
@@ -22,7 +23,6 @@ use Maps\Presentation\WikitextParsers\LocationParser;
 use Maps\Presentation\WikitextParsers\PolygonParser;
 use Maps\Presentation\WikitextParsers\RectangleParser;
 use Maps\Presentation\WikitextParsers\WmsOverlayParser;
-use MapsDisplayMapRenderer;
 use MapsGoogleMaps3;
 use MapsLeaflet;
 use MapsMappingServices;
@@ -163,7 +163,7 @@ class MapsSetup {
 		MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
 
 		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
-		$googleMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+		$googleMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 
 
 		// OpenLayers API
@@ -175,7 +175,7 @@ class MapsSetup {
 		);
 
 		$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
-		$openLayers->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+		$openLayers->addFeature( 'display_map', DisplayMapRenderer::class );
 
 
 		// Leaflet API
@@ -183,7 +183,7 @@ class MapsSetup {
 
 		MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
 		$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
-		$leafletMaps->addFeature( 'display_map', MapsDisplayMapRenderer::class );
+		$leafletMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 	}
 
 	private function registerPermissions() {

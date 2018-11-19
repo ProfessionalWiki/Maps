@@ -4,7 +4,6 @@ namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
 use Maps\Presentation\ParameterExtractor;
-use MapsDisplayMapRenderer;
 use MapsMapper;
 use MapsMappingServices;
 use MWException;
@@ -25,7 +24,7 @@ class DisplayMapFunction {
 	private $availableServices;
 
 	public function __construct() {
-		$this->renderer = new MapsDisplayMapRenderer();
+		$this->renderer = new DisplayMapRenderer();
 
 		// TODO: inject
 		$this->defaultService = $GLOBALS['egMapsDefaultService'];

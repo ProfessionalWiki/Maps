@@ -1,8 +1,16 @@
 <?php
 
+namespace Maps\MediaWiki\ParserHooks;
+
+use FormatJson;
+use Html;
 use Maps\Element;
 use Maps\Elements\Location;
 use Maps\Presentation\WikitextParsers\LocationParser;
+use MapsMapper;
+use MapsMappingService;
+use Parser;
+use ParserOptions;
 
 /**
  * Class handling the #display_map rendering.
@@ -11,7 +19,7 @@ use Maps\Presentation\WikitextParsers\LocationParser;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Kim Eik
  */
-class MapsDisplayMapRenderer {
+class DisplayMapRenderer {
 
 	public $service;
 
@@ -139,7 +147,8 @@ class MapsDisplayMapRenderer {
 
 		if ( isset( $jsonObj['inlineLabel'] ) ) {
 			$jsonObj['inlineLabel'] = strip_tags(
-				$parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(),
+				$parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(
+				),
 				'<a><img>'
 			);
 		}

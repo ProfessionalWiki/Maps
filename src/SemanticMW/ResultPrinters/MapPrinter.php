@@ -8,8 +8,8 @@ use Linker;
 use Maps\Element;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
+use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\Presentation\WikitextParsers\LocationParser;
-use MapsDisplayMapRenderer;
 use MapsMapper;
 use MapsMappingService;
 use ParamProcessor\ParamDefinition;
@@ -105,7 +105,7 @@ class MapPrinter extends SMW\ResultPrinter {
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
 		$this->service->addHtmlDependencies(
-			MapsDisplayMapRenderer::getLayerDependencies( $params['format'], $params )
+			DisplayMapRenderer::getLayerDependencies( $params['format'], $params )
 		);
 
 		$locationAmount = count( $params['locations'] );
@@ -178,7 +178,7 @@ class MapPrinter extends SMW\ResultPrinter {
 		$this->addShapeData( $queryHandler->getShapes(), $params, $iconUrl, $visitedIconUrl );
 
 		if ( $params['format'] === 'openlayers' ) {
-			$params['layers'] = MapsDisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
+			$params['layers'] = DisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
 		}
 	}
 
