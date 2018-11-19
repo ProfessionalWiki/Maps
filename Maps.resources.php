@@ -32,7 +32,7 @@ return call_user_func( function() {
 				'maps-load-failed',
 			] ,
 			'scripts' => [
-				'includes/ext.maps.common.js',
+				'resources/ext.maps.common.js',
 			],
 		],
 
@@ -73,7 +73,7 @@ return call_user_func( function() {
 
 		'ext.maps.services' => $moduleTemplate + [
 			'scripts' => [
-				'includes/ext.maps.services.js',
+				'resources/ext.maps.services.js',
 			],
 			'dependencies' => [
 				'ext.maps.common',

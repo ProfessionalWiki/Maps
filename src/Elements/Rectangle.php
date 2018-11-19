@@ -13,7 +13,7 @@ use InvalidArgumentException;
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Rectangle extends \MapsBaseFillableElement {
+class Rectangle extends \Maps\Elements\BaseFillableElement {
 
 	/**
 	 * @since 3.0
@@ -39,8 +39,6 @@ class Rectangle extends \MapsBaseFillableElement {
 		if ( $rectangleNorthEast->equals( $rectangleSouthWest ) ) {
 			throw new InvalidArgumentException( '$rectangleNorthEast cannot be equal to $rectangleSouthWest' );
 		}
-
-		parent::__construct();
 
 		// TODO: validate bounds are correct, if not, flip
 		$this->setRectangleNorthEast( $rectangleNorthEast );

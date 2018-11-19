@@ -8,30 +8,16 @@ use InvalidArgumentException;
 /**
  * @since 3.0
  *
- *
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Circle extends \MapsBaseFillableElement {
+class Circle extends \Maps\Elements\BaseFillableElement {
 
-	/**
-	 * @var LatLongValue
-	 */
 	private $circleCentre;
-
-	/**
-	 * @var integer|float
-	 */
 	private $circleRadius;
 
-	/**
-	 * @param LatLongValue $circleCentre
-	 * @param integer|float $circleRadius
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	public function __construct( LatLongValue $circleCentre, $circleRadius ) {
+	public function __construct( LatLongValue $circleCentre, float $circleRadius ) {
 		if ( !is_float( $circleRadius ) && !is_int( $circleRadius ) ) {
 			throw new InvalidArgumentException( '$circleRadius must be a float or int' );
 		}
@@ -40,24 +26,21 @@ class Circle extends \MapsBaseFillableElement {
 			throw new InvalidArgumentException( '$circleRadius must be greater than zero' );
 		}
 
-		parent::__construct();
-
 		$this->setCircleCentre( $circleCentre );
 		$this->setCircleRadius( $circleRadius );
 	}
 
 	public function getJSONObject( string $defText = '', string $defTitle = '' ): array {
-		$parentArray = parent::getJSONObject( $defText, $defTitle );
-
-		$array = [
-			'centre' => [
-				'lon' => $this->getCircleCentre()->getLongitude(),
-				'lat' => $this->getCircleCentre()->getLatitude()
-			],
-			'radius' => intval( $this->getCircleRadius() ),
-		];
-
-		return array_merge( $parentArray, $array );
+		return array_merge(
+			parent::getJSONObject( $defText, $defTitle ),
+			[
+				'centre' => [
+					'lon' => $this->getCircleCentre()->getLongitude(),
+					'lat' => $this->getCircleCentre()->getLatitude()
+				],
+				'radius' => intval( $this->getCircleRadius() ),
+			]
+		);
 	}
 
 	public function getCircleCentre(): LatLongValue {

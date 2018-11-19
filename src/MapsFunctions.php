@@ -1,16 +1,20 @@
 <?php
 
+namespace Maps;
+
+use ImagePage;
+use Title;
+use Xml;
+
 /**
  * A class that holds static helper functions for generic mapping-related functions.
- *
- * @since 0.1
  *
  * @deprecated
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-final class MapsMapper {
+final class MapsFunctions {
 
 	/**
 	 * Encode a variable of unknown type to JavaScript.
@@ -118,7 +122,7 @@ final class MapsMapper {
 			$allServiceValues = array_merge(
 				$allServiceValues,
 				[ $availableService ],
-				MapsMappingServices::getServiceInstance( $availableService )->getAliases()
+				MappingServices::getServiceInstance( $availableService )->getAliases()
 			);
 		}
 

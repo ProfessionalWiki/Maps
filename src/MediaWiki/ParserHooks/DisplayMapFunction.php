@@ -3,9 +3,9 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
+use Maps\MapsFunctions;
+use Maps\MappingServices;
 use Maps\Presentation\ParameterExtractor;
-use MapsMapper;
-use MapsMappingServices;
 use MWException;
 use ParamProcessor;
 use ParamProcessor\ProcessedParam;
@@ -43,7 +43,7 @@ class DisplayMapFunction {
 		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
 
 		// TODO: do not use global access
-		$service = MapsMappingServices::getServiceInstance(
+		$service = MappingServices::getServiceInstance(
 			$this->extractServiceName(
 				Maps\Presentation\ParameterExtractor::extractFromKeyValueStrings( $parameters )
 			)
@@ -74,7 +74,7 @@ class DisplayMapFunction {
 		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
 
 		// TODO: do not use global access
-		$service = MapsMappingServices::getServiceInstance( $this->extractServiceName( $parameters ) );
+		$service = MappingServices::getServiceInstance( $this->extractServiceName( $parameters ) );
 
 		$parameterDefinitions = self::getHookDefinition( "\n" )->getParameters();
 		$service->addParameterInfo( $parameterDefinitions );
@@ -112,7 +112,7 @@ class DisplayMapFunction {
 		}
 
 		// TODO: do not use global access
-		$service = MapsMappingServices::getMainServiceName( $service );
+		$service = MappingServices::getMainServiceName( $service );
 
 		if ( $this->serviceIsInvalid( $service ) ) {
 			return $this->defaultService;
@@ -144,7 +144,7 @@ class DisplayMapFunction {
 	}
 
 	private static function getParameterDefinitions( $locationDelimiter ): array {
-		$params = MapsMapper::getCommonParameters();
+		$params = MapsFunctions::getCommonParameters();
 
 		$params['coordinates'] = [
 			'type' => 'string',

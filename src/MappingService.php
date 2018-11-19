@@ -1,5 +1,10 @@
 <?php
 
+namespace Maps;
+
+use MWException;
+use ParserOutput;
+
 /**
  * Base class for mapping services. Deriving classes hold mapping service specific
  * information and functionality, which can be used by any mapping feature.
@@ -9,7 +14,7 @@
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-abstract class MapsMappingService {
+abstract class MappingService {
 
 	/**
 	 * The internal name of the service.
@@ -79,6 +84,7 @@ abstract class MapsMappingService {
 
 	/**
 	 * @since 5.2.0
+	 *
 	 * @param ParserOutput $parserOutput
 	 */
 	public final function addDependencies( ParserOutput $parserOutput ) {

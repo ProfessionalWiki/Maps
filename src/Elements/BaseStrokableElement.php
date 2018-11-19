@@ -1,6 +1,6 @@
 <?php
 
-use Maps\Elements\BaseElement;
+namespace Maps\Elements;
 
 /**
  * @since 2.0
@@ -8,7 +8,7 @@ use Maps\Elements\BaseElement;
  * @licence GNU GPL v2+
  * @author Kim Eik < kim@heldig.org >
  */
-class MapsBaseStrokableElement extends BaseElement {
+class BaseStrokableElement extends BaseElement {
 
 	protected $strokeColor;
 	protected $strokeOpacity;

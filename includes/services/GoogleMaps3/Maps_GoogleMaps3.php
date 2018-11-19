@@ -1,5 +1,7 @@
 <?php
 
+use Maps\MappingService;
+
 /**
  * Class holding information and functionality specific to Google Maps v3.
  * This information and features can be used by any mapping feature.
@@ -11,7 +13,7 @@
  * @author Peter Grassberger < petertheone@gmail.com >
  */
 
-class MapsGoogleMaps3 extends MapsMappingService {
+class MapsGoogleMaps3 extends MappingService {
 
 	/**
 	 * Maps user input map types to the Google Maps names for the map types.
@@ -40,7 +42,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::addParameterInfo
+	 * @see MappingService::addParameterInfo
 	 *
 	 * @since 0.7
 	 */
@@ -253,7 +255,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getMapId
+	 * @see MappingService::getMapId
 	 *
 	 * @since 0.6.5
 	 */
@@ -268,7 +270,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getResourceModules
+	 * @see MappingService::getResourceModules
 	 *
 	 * @since 1.0
 	 *
@@ -282,7 +284,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	}
 
 	/**
-	 * @see MapsMappingService::getDependencies
+	 * @see MappingService::getDependencies
 	 *
 	 * @return array
 	 */

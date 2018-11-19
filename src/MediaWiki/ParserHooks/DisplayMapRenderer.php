@@ -5,9 +5,9 @@ namespace Maps\MediaWiki\ParserHooks;
 use FormatJson;
 use Html;
 use Maps\Elements\Location;
+use Maps\MapsFunctions;
+use Maps\MappingService;
 use Maps\Presentation\WikitextParsers\LocationParser;
-use MapsMapper;
-use MapsMappingService;
 use Parser;
 use ParserOptions;
 
@@ -27,7 +27,7 @@ class DisplayMapRenderer {
 	 */
 	private $locationParser;
 
-	public function __construct( MapsMappingService $service = null ) {
+	public function __construct( MappingService $service = null ) {
 		$this->service = $service;
 	}
 
@@ -104,8 +104,8 @@ class DisplayMapRenderer {
 	}
 
 	private function getLocationJson( array $params, $parserClone ) {
-		$iconUrl = MapsMapper::getFileUrl( $params['icon'] );
-		$visitedIconUrl = MapsMapper::getFileUrl( $params['visitedicon'] );
+		$iconUrl = MapsFunctions::getFileUrl( $params['icon'] );
+		$visitedIconUrl = MapsFunctions::getFileUrl( $params['visitedicon'] );
 
 		$locationJsonObjects = [];
 

@@ -4,7 +4,7 @@ namespace Maps\SemanticMW\ResultPrinters;
 
 use Html;
 use Maps\Elements\Location;
-use MapsMapper;
+use Maps\MapsFunctions;
 use SMWDataValue;
 use SMWPrintRequest;
 use SMWQueryResult;
@@ -473,7 +473,7 @@ class QueryHandler {
 		//Check for activeicon parameter
 
 		if ( $this->shouldGetActiveIconUrlFor( $row[0]->getResultSubject()->getTitle() ) ) {
-			$icon = MapsMapper::getFileUrl( $this->activeIcon );
+			$icon = MapsFunctions::getFileUrl( $this->activeIcon );
 		}
 
 		// Look for display_options field, which can be set by Semantic Compound Queries
@@ -499,7 +499,7 @@ class QueryHandler {
 			}
 		} // Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here
 		elseif ( $this->icon !== '' ) {
-			$icon = MapsMapper::getFileUrl( $this->icon );
+			$icon = MapsFunctions::getFileUrl( $this->icon );
 		}
 
 		return $icon;

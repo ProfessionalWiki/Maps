@@ -9,11 +9,11 @@ use Maps\GeoJson\GeoJsonContentHandler;
 use Maps\MediaWiki\Api\Geocode;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
 use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
+use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\MediaWiki\ParserHooks\DistanceFunction;
 use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
 use Maps\MediaWiki\ParserHooks\GeocodeFunction;
 use Maps\MediaWiki\ParserHooks\GeoDistanceFunction;
-use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\MediaWiki\ParserHooks\MapsDocFunction;
 use Maps\Presentation\WikitextParsers\CircleParser;
 use Maps\Presentation\WikitextParsers\DistanceParser;
@@ -25,7 +25,6 @@ use Maps\Presentation\WikitextParsers\RectangleParser;
 use Maps\Presentation\WikitextParsers\WmsOverlayParser;
 use MapsGoogleMaps3;
 use MapsLeaflet;
-use MapsMappingServices;
 use MapsOpenLayers;
 use Parser;
 use PPFrame;
@@ -160,29 +159,29 @@ class MapsSetup {
 	private function registerMappingServices() {
 		include_once __DIR__ . '/../includes/services/GoogleMaps3/GoogleMaps3.php';
 
-		MapsMappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
+		MappingServices::registerService( 'googlemaps3', MapsGoogleMaps3::class );
 
-		$googleMaps = MapsMappingServices::getServiceInstance( 'googlemaps3' );
+		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
 		$googleMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 
 
 		// OpenLayers API
 		include_once __DIR__ . '/../includes/services/OpenLayers/OpenLayers.php';
 
-		MapsMappingServices::registerService(
+		MappingServices::registerService(
 			'openlayers',
 			MapsOpenLayers::class
 		);
 
-		$openLayers = MapsMappingServices::getServiceInstance( 'openlayers' );
+		$openLayers = MappingServices::getServiceInstance( 'openlayers' );
 		$openLayers->addFeature( 'display_map', DisplayMapRenderer::class );
 
 
 		// Leaflet API
 		include_once __DIR__ . '/../includes/services/Leaflet/Leaflet.php';
 
-		MapsMappingServices::registerService( 'leaflet', MapsLeaflet::class );
-		$leafletMaps = MapsMappingServices::getServiceInstance( 'leaflet' );
+		MappingServices::registerService( 'leaflet', MapsLeaflet::class );
+		$leafletMaps = MappingServices::getServiceInstance( 'leaflet' );
 		$leafletMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 	}
 
