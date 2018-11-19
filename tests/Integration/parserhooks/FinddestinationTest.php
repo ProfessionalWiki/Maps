@@ -4,9 +4,10 @@ namespace Maps\Test;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\Elements\Location;
+use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
 
 /**
- * @covers MapsFinddestination
+ * @covers FindDestinationFunction
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -87,7 +88,7 @@ class FinddestinationTest extends ParserHookTest {
 	 * @see ParserHookTest::getInstance
 	 */
 	protected function getInstance() {
-		return new \MapsFinddestination();
+		return new \Maps\MediaWiki\ParserHooks\FindDestinationFunction();
 	}
 
 }

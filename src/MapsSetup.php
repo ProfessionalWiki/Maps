@@ -6,18 +6,18 @@ use DataValues\Geo\Parsers\LatLongParser;
 use Maps\GeoJson\GeoJsonContent;
 use Maps\GeoJson\GeoJsonContentHandler;
 use Maps\MediaWiki\Api\Geocode;
+use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
+use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
+use Maps\MediaWiki\ParserHooks\DistanceFunction;
+use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
+use Maps\MediaWiki\ParserHooks\GeocodeFunction;
+use Maps\MediaWiki\ParserHooks\GeoDistanceFunction;
+use Maps\MediaWiki\ParserHooks\MapsDocFunction;
 use Maps\Parsers\JsonFileParser;
-use MapsCoordinates;
-use MapsDisplayMap;
 use MapsDisplayMapRenderer;
-use MapsDistance;
-use MapsFinddestination;
-use MapsGeocode;
-use MapsGeodistance;
 use MapsGoogleMaps3;
 use MapsLeaflet;
 use MapsMappingServices;
-use MapsMapsDoc;
 use MapsOpenLayers;
 use Parser;
 use PPFrame;
@@ -79,7 +79,7 @@ class MapsSetup {
 
 	private function registerParserHooks() {
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-			$instance = new MapsCoordinates();
+			$instance = new CoordinatesFunction();
 			return $instance->init( $parser );
 		};
 
@@ -88,7 +88,7 @@ class MapsSetup {
 				$parser->setFunctionHook(
 					$hookName,
 					function( Parser $parser, PPFrame $frame, array $arguments ) {
-						$hook = new MapsDisplayMap();
+						$hook = new DisplayMapFunction();
 
 						$mapHtml = $hook->getMapHtmlForKeyValueStrings(
 							$parser,
@@ -113,7 +113,7 @@ class MapsSetup {
 					$hookName,
 					function( $text, array $arguments, Parser $parser ) {
 						if ( $text !== null ) {
-							$defaultParameters = MapsDisplayMap::getHookDefinition( "\n" )->getDefaultParameters();
+							$defaultParameters = DisplayMapFunction::getHookDefinition( "\n" )->getDefaultParameters();
 							$defaultParam = array_shift( $defaultParameters );
 
 							// If there is a first default parameter, set the tag contents as its value.
@@ -122,30 +122,30 @@ class MapsSetup {
 							}
 						}
 
-						return ( new MapsDisplayMap() )->getMapHtmlForParameterList( $parser, $arguments );
+						return ( new DisplayMapFunction() )->getMapHtmlForParameterList( $parser, $arguments );
 					}
 				);
 			}
 		};
 
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-			return ( new MapsDistance() )->init( $parser );
+			return ( new DistanceFunction() )->init( $parser );
 		};
 
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-			return ( new MapsFinddestination() )->init( $parser );
+			return ( new FindDestinationFunction() )->init( $parser );
 		};
 
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-			return ( new MapsGeocode() )->init( $parser );
+			return ( new GeocodeFunction() )->init( $parser );
 		};
 
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-			return ( new MapsGeodistance() )->init( $parser );
+			return ( new GeoDistanceFunction() )->init( $parser );
 		};
 
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function( Parser &$parser ) {
-			return ( new MapsMapsDoc() )->init( $parser );
+			return ( new MapsDocFunction() )->init( $parser );
 		};
 	}
 

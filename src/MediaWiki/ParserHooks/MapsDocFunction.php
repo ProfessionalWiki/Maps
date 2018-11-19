@@ -1,22 +1,22 @@
 <?php
 
+namespace Maps\MediaWiki\ParserHooks;
+
+use MapsMappingServices;
 use ParamProcessor\ParamDefinition;
+use ParserHook;
 
 /**
  * Class for the 'mapsdoc' parser hooks,
  * which displays documentation for a specified mapping service.
  *
- * @since 1.0
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsMapsDoc extends ParserHook {
+class MapsDocFunction extends ParserHook {
 
 	/**
 	 * Field to store the value of the language parameter.
-	 *
-	 * @since 1.0.1
 	 *
 	 * @var string
 	 */
@@ -26,8 +26,6 @@ class MapsMapsDoc extends ParserHook {
 	 * Renders and returns the output.
 	 *
 	 * @see ParserHook::render
-	 *
-	 * @since 1.0
 	 *
 	 * @param array $parameters
 	 *
@@ -58,8 +56,6 @@ class MapsMapsDoc extends ParserHook {
 
 	/**
 	 * Returns the wikitext for a table listing the provided parameters.
-	 *
-	 * @since 1.0
 	 *
 	 * @param array $parameters
 	 *
@@ -135,8 +131,6 @@ EOT;
 	/**
 	 * Message function that takes into account the language parameter.
 	 *
-	 * @since 1.0.1
-	 *
 	 * @param string $key
 	 * @param ... $args
 	 *
@@ -150,8 +144,6 @@ EOT;
 
 	/**
 	 * @see ParserHook::getDescription()
-	 *
-	 * @since 1.0
 	 */
 	public function getMessage() {
 		return 'maps-mapsdoc-description';
@@ -161,8 +153,6 @@ EOT;
 	 * Gets the name of the parser hook.
 	 *
 	 * @see ParserHook::getName
-	 *
-	 * @since 1.0
 	 *
 	 * @return string
 	 */
@@ -174,8 +164,6 @@ EOT;
 	 * Returns an array containing the parameter info.
 	 *
 	 * @see ParserHook::getParameterInfo
-	 *
-	 * @since 1.0
 	 *
 	 * @return array
 	 */
@@ -204,8 +192,6 @@ EOT;
 	 * Returns the list of default parameters.
 	 *
 	 * @see ParserHook::getDefaultParameters
-	 *
-	 * @since 1.0
 	 *
 	 * @return array
 	 */

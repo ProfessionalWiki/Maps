@@ -2,8 +2,10 @@
 
 namespace Maps\Test;
 
+use Maps\MediaWiki\ParserHooks\MapsDocFunction;
+
 /**
- * @covers MapsMapsDoc
+ * @covers MapsDocFunction
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
@@ -46,7 +48,7 @@ class MapsDocTest extends ParserHookTest {
 	 * @see ParserHookTest::getInstance
 	 */
 	protected function getInstance() {
-		return new \MapsMapsDoc();
+		return new \Maps\MediaWiki\ParserHooks\MapsDocFunction();
 	}
 
 }
