@@ -33,15 +33,15 @@ class KmlFormatterTest extends TestCase {
 <kml xmlns="http://www.opengis.net/kml/2.2">
 	<Document>
 		<Placemark>
-			<name><![CDATA[ first title]]></name>
-			<description><![CDATA[ first text]]></description>
+			<name><![CDATA[first title]]></name>
+			<description><![CDATA[first text]]></description>
 			<Point>
 				<coordinates>23,42.42,0</coordinates>
 			</Point>
 		</Placemark>
 		<Placemark>
-			<name><![CDATA[ second title]]></name>
-			<description><![CDATA[ second text]]></description>
+			<name><![CDATA[second title]]></name>
+			<description><![CDATA[second text]]></description>
 			<Point>
 				<coordinates>0,-1,0</coordinates>
 			</Point>
@@ -58,6 +58,28 @@ class KmlFormatterTest extends TestCase {
 					new LatLongValue( -1,0 ),
 					'second title',
 					'second text'
+				)
+			)
+		);
+	}
+
+	public function testLocationWithoutTitleAndText() {
+		$this->assertSame(
+			'<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+	<Document>
+		<Placemark>
+			<name><![CDATA[]]></name>
+			<description><![CDATA[]]></description>
+			<Point>
+				<coordinates>23,42.42,0</coordinates>
+			</Point>
+		</Placemark>
+	</Document>
+</kml>',
+			( new KmlFormatter() )->formatLocationsAsKml(
+				new Location(
+					new LatLongValue( 42.42,23 )
 				)
 			)
 		);

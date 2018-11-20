@@ -42,10 +42,10 @@ EOT;
 
 	private function locationToKmlPlacemark( Location $location ): string {
 		// TODO: escaping?
-		$name = '<name><![CDATA[ ' . $location->getTitle() . ']]></name>';
+		$name = '<name><![CDATA[' . $location->getTitle() . ']]></name>';
 
 		// TODO: escaping?
-		$description = '<description><![CDATA[ ' . $location->getText() . ']]></description>';
+		$description = '<description><![CDATA[' . $location->getText() . ']]></description>';
 
 		$coordinates = '<coordinates>'
 			. $this->escapeValue( $this->getCoordinateString( $location ) )
