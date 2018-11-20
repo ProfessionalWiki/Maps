@@ -3,50 +3,18 @@
 namespace Maps\Presentation;
 
 use Maps\Elements\Location;
-use Xml;
 
 /**
- * Class to format geographical data to KML.
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class KmlFormatter {
 
 	/**
-	 * @var array
-	 */
-	private $params;
-
-	/**
-	 * @var Location[]
-	 */
-	private $placemarks;
-
-	public function __construct( array $params = [] ) {
-		$this->params = $params;
-		$this->clearElements();
-	}
-
-	/**
-	 * Clears all set geographical objects.
-	 */
-	public function clearElements() {
-		$this->clearPlacemarks();
-	}
-
-	/**
-	 * Clears all set placemarks.
-	 */
-	public function clearPlacemarks() {
-		$this->placemarks = [];
-	}
-
-	/**
 	 * Builds and returns KML representing the set geographical objects.
 	 */
-	public function getKML(): string {
-		$elements = $this->getKMLElements();
+	public function formatLocationsAsKml( Location ...$locations ): string {
+		$elements = $this->getKmlForLocations( $locations );
 
 		// http://earth.google.com/kml/2.2
 		return <<<EOT
@@ -59,44 +27,29 @@ class KmlFormatter {
 EOT;
 	}
 
-	/**
-	 * Returns the KML for all set geographical objects.
-	 */
-	private function getKMLElements(): string {
-		$elements = [];
-
-		$elements = array_merge( $elements, $this->getPlaceMarks() );
-
-		return implode( "\n", $elements );
+	private function getKmlForLocations( array $locations ): string {
+		return implode(
+			"\n",
+			array_map(
+				function( Location $location ) {
+					return $this->locationToKmlPlacemark( $location );
+				},
+				$locations
+			)
+		);
 	}
 
-	/**
-	 * Returns KML for all set placemarks in a list, where each element is
-	 * a KML node representing a placemark.
-	 */
-	private function getPlaceMarks(): array {
-		$placeMarks = [];
 
-		foreach ( $this->placemarks as $location ) {
-			$placeMarks[] = $this->getKMLForLocation( $location );
-		}
-
-		return $placeMarks;
-	}
-
-	private function getKMLForLocation( Location $location ): string {
+	private function locationToKmlPlacemark( Location $location ): string {
+		// TODO: escaping?
 		$name = '<name><![CDATA[ ' . $location->getTitle() . ']]></name>';
 
+		// TODO: escaping?
 		$description = '<description><![CDATA[ ' . $location->getText() . ']]></description>';
 
-		$coordinates = $location->getCoordinates();
-
-		// lon,lat[,alt]
-		$coordinates = Xml::element(
-			'coordinates',
-			[],
-			$coordinates->getLongitude() . ',' . $coordinates->getLatitude() . ',0'
-		);
+		$coordinates = '<coordinates>'
+			. $this->escapeValue( $this->getCoordinateString( $location ) )
+			. '</coordinates>';
 
 		return <<<EOT
 		<Placemark>
@@ -110,13 +63,15 @@ EOT;
 EOT;
 	}
 
-	/**
-	 * @param Location[] $placemarks
-	 */
-	public function addPlacemarks( array $placemarks ) {
-		foreach ( $placemarks as $placemark ) {
-			$this->placemarks[] = $placemark;
-		}
+	private function getCoordinateString( Location $location ): string {
+		// lon,lat[,alt]
+		return $location->getCoordinates()->getLongitude()
+			. ',' . $location->getCoordinates()->getLatitude()
+			. ',0';
+	}
+
+	private function escapeValue( string $value ): string {
+		return htmlspecialchars( $value, ENT_NOQUOTES );
 	}
 
 }
