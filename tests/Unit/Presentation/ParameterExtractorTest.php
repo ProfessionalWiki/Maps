@@ -1,5 +1,7 @@
 <?php
 
+namespace Maps\Tests\Presentation;
+
 use Maps\Presentation\ParameterExtractor;
 use PHPUnit\Framework\TestCase;
 

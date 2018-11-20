@@ -47,8 +47,10 @@ class Location extends BaseElement {
 	 */
 	private $visitedIcon = '';
 
-	public function __construct( LatLongValue $coordinates ) {
+	public function __construct( LatLongValue $coordinates, string $title = '', string $text = '' ) {
 		$this->coordinates = $coordinates;
+		$this->setTitle( $title );
+		$this->setText( $text );
 	}
 
 	public static function newFromLatLon( float $lat, float $lon ): self {
