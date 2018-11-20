@@ -8,42 +8,27 @@ use SMW\FileExportPrinter;
 use SMWQueryResult;
 
 /**
- * SMWResultPrinter class for printing a query result as KML.
- *
- * @file SM_KMLPrinter.php
- * @ingroup SemanticMaps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class KmlPrinter extends FileExportPrinter {
 
 	/**
-	 * Handler of the print request.
-	 *
 	 * @param SMWQueryResult $res
-	 * @param $outputmode
-	 *
-	 * @return array
-	 */
-	public function getResultText( SMWQueryResult $res, $outputmode ) {
-		if ( $outputmode == SMW_OUTPUT_FILE ) {
-			return $this->getKML( $res, $outputmode );
-		} else {
-			return $this->getKMLLink( $res, $outputmode );
-		}
-	}
-
-	/**
-	 * Returns the KML for the query result.
-	 *
-	 * @param SMWQueryResult $res
-	 * @param integer $outputmode
+	 * @param int $outputMode
 	 *
 	 * @return string
 	 */
-	private function getKML( SMWQueryResult $res, $outputmode ) {
-		$queryHandler = new QueryHandler( $res, $outputmode, $this->params['linkabsolute'] );
+	public function getResultText( SMWQueryResult $res, $outputMode ) {
+		if ( $outputMode == SMW_OUTPUT_FILE ) {
+			return $this->getKML( $res, $outputMode );
+		}
+
+		return $this->getKMLLink( $res, $outputMode );
+	}
+
+	private function getKML( SMWQueryResult $res, int $outputMode ): string {
+		$queryHandler = new QueryHandler( $res, $outputMode, $this->params['linkabsolute'] );
 		$queryHandler->setText( $this->params['text'] );
 		$queryHandler->setTitle( $this->params['title'] );
 		$queryHandler->setSubjectSeparator( '' );
@@ -55,14 +40,9 @@ class KmlPrinter extends FileExportPrinter {
 
 	/**
 	 * Returns a link (HTML) pointing to a query that returns the actual KML file.
-	 *
-	 * @param SMWQueryResult $res
-	 * @param integer $outputmode
-	 *
-	 * @return string
 	 */
-	private function getKMLLink( SMWQueryResult $res, $outputmode ) {
-		$searchLabel = $this->getSearchLabel( $outputmode );
+	private function getKMLLink( SMWQueryResult $res, int $outputMode ): string {
+		$searchLabel = $this->getSearchLabel( $outputMode );
 		$link = $res->getQueryLink(
 			$searchLabel ? $searchLabel : wfMessage( 'semanticmaps-kml-link' )->inContentLanguage()->text()
 		);
@@ -93,9 +73,9 @@ class KmlPrinter extends FileExportPrinter {
 			$link->setParameter( 20, 'limit' );
 		}
 
-		$this->isHTML = ( $outputmode == SMW_OUTPUT_HTML );
+		$this->isHTML = ( $outputMode == SMW_OUTPUT_HTML );
 
-		return $link->getText( $outputmode, $this->mLinker );
+		return $link->getText( $outputMode, $this->mLinker );
 	}
 
 	/**
@@ -103,35 +83,33 @@ class KmlPrinter extends FileExportPrinter {
 	 *
 	 * @param ParamDefinition[] $definitions
 	 *
-	 * @return array of ParamDefinition|array
+	 * @return array
 	 */
 	public function getParamDefinitions( array $definitions ) {
 		global $egMapsDefaultLabel, $egMapsDefaultTitle;
 
-		$params = parent::getParamDefinitions( $definitions );
-
-		$params['text'] = [
+		$definitions['text'] = [
 			'message' => 'semanticmaps-kml-text',
 			'default' => $egMapsDefaultLabel,
 		];
 
-		$params['title'] = [
+		$definitions['title'] = [
 			'message' => 'semanticmaps-kml-title',
 			'default' => $egMapsDefaultTitle,
 		];
 
-		$params['linkabsolute'] = [
+		$definitions['linkabsolute'] = [
 			'message' => 'semanticmaps-kml-linkabsolute',
 			'type' => 'boolean',
 			'default' => true,
 		];
 
-		$params['pagelinktext'] = [
+		$definitions['pagelinktext'] = [
 			'message' => 'semanticmaps-kml-pagelinktext',
 			'default' => wfMessage( 'semanticmaps-default-kml-pagelink' )->text(),
 		];
 
-		return $params;
+		return $definitions;
 	}
 
 	/**
@@ -167,9 +145,9 @@ class KmlPrinter extends FileExportPrinter {
 	 * @see SMWResultPrinter::handleParameters
 	 *
 	 * @param array $params
-	 * @param $outputmode
+	 * @param $outputMode
 	 */
-	protected function handleParameters( array $params, $outputmode ) {
+	protected function handleParameters( array $params, $outputMode ) {
 		$this->params = $params;
 	}
 }
