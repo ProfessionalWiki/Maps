@@ -92,7 +92,7 @@ class MapsDistanceParser {
 	}
 
 	/**
-	 * Normalizes a potential distance by removing spaces and truning comma's into dots.
+	 * Normalizes a potential distance by removing spaces and turning comma's into dots.
 	 */
 	protected static function normalizeDistance( string $distance ): string {
 		$distance = trim( (string)$distance );
@@ -123,7 +123,7 @@ class MapsDistanceParser {
 	}
 
 	/**
-	 * Returns a list of all suported units.
+	 * Returns a list of all supported units.
 	 */
 	public static function getUnits(): array {
 		global $egMapsDistanceUnits;
