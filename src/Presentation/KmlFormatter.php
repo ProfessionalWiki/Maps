@@ -47,7 +47,9 @@ EOT;
 		// TODO: escaping?
 		$description = '<description><![CDATA[ ' . $location->getText() . ']]></description>';
 
-		$coordinates = '<coordinates>' . htmlspecialchars( $this->getCoordinateString( $location ) ) . '</coordinates>';
+		$coordinates = '<coordinates>'
+			. $this->escapeValue( $this->getCoordinateString( $location ) )
+			. '</coordinates>';
 
 		return <<<EOT
 		<Placemark>
@@ -66,6 +68,10 @@ EOT;
 		return $location->getCoordinates()->getLongitude()
 			. ',' . $location->getCoordinates()->getLatitude()
 			. ',0';
+	}
+
+	private function escapeValue( string $value ): string {
+		return htmlspecialchars( $value, ENT_NOQUOTES );
 	}
 
 }
