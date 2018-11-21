@@ -13,6 +13,7 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\DataAccess\CachingGeocoder;
 use Maps\DataAccess\MapsFileFetcher;
+use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\PageContentFetcher;
 use Maps\Presentation\CoordinateFormatter;
 use Maps\Presentation\WikitextParsers\LocationParser;
@@ -118,6 +119,10 @@ class MapsFactory {
 
 	public function getCoordinateFormatter(): CoordinateFormatter {
 		return new CoordinateFormatter();
+	}
+
+	public function getFileUrlFinder(): FileUrlFinder {
+		return new MediaWikiFileUrlFinder();
 	}
 
 }

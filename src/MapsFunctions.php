@@ -3,6 +3,7 @@
 namespace Maps;
 
 use ImagePage;
+use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Title;
 use Xml;
 
@@ -236,18 +237,7 @@ final class MapsFunctions {
 	 * @return string
 	 */
 	public static function getFileUrl( $file ): string {
-		$colonPosition = strpos( $file, ':' );
-
-		$titleWithoutPrefix = $colonPosition === false ? $file : substr( $file, $colonPosition + 1 );
-
-		$title = Title::newFromText( trim( $titleWithoutPrefix ), NS_FILE );
-
-		if ( $title !== null && $title->exists() ) {
-			$imagePage = new ImagePage( $title );
-			return $imagePage->getDisplayedFile()->getURL();
-		}
-
-		return trim( $file );
+		return MapsFactory::globalInstance()->getFileUrlFinder()->getUrlForFileName( $file );
 	}
 
 	/**
