@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\Elements;
+namespace Maps\Tests\Unit\Elements;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
