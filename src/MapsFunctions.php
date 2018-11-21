@@ -240,33 +240,4 @@ final class MapsFunctions {
 		return MapsFactory::globalInstance()->getFileUrlFinder()->getUrlForFileName( $file );
 	}
 
-	/**
-	 * Returns JS to init the vars to hold the map data when they are not there already.
-	 *
-	 * @since 1.0
-	 * @deprecated
-	 *
-	 * @param string $serviceName
-	 *
-	 * @return string
-	 */
-	public static function getBaseMapJSON( $serviceName ) {
-		static $baseInit = false;
-		static $serviceInit = [];
-
-		$json = '';
-
-		if ( !$baseInit ) {
-			$baseInit = true;
-			$json .= 'var mwmaps={};';
-		}
-
-		if ( !in_array( $serviceName, $serviceInit ) ) {
-			$serviceInit[] = $serviceName;
-			$json .= "mwmaps.$serviceName={};";
-		}
-
-		return $json;
-	}
-
 }
