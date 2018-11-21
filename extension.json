@@ -21,8 +21,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"MapsAlias": "Maps.i18n.alias.php",
-		"MapsMagic": "Maps.i18n.magic.php"
+		"MapsAlias": "i18n/aliases/Aliases.php",
+		"MapsMagic": "i18n/magic/MagicWords.php"
 	},
 
 	"callback": "MapsRegistration::onRegistration",
