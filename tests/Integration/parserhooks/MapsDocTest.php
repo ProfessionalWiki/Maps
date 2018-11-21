@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Integration\parserhooks;
 
 use Maps\MediaWiki\ParserHooks\MapsDocFunction;
 

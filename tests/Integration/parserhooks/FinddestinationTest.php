@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Integration\parserhooks;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\Elements\Location;
