@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\Integration\parserhooks;
+namespace Maps\Tests\Integration\MediaWiki\ParserHooks;
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;

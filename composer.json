@@ -45,14 +45,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Maps\\": "src/"
+			"Maps\\": "src/",
+			"Maps\\Tests\\": "tests/"
 		},
 		"classmap": [
 			"MapsRegistration.php"
 		]
-	},
-	"autoload-dev": {
-		"Maps\\Tests\\": "tests/"
 	},
 	"extra": {
 		"branch-alias": {
