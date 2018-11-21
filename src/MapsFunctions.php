@@ -240,7 +240,7 @@ final class MapsFunctions {
 
 		$titleWithoutPrefix = $colonPosition === false ? $file : substr( $file, $colonPosition + 1 );
 
-		$title = Title::makeTitle( NS_FILE, trim( $titleWithoutPrefix ) );
+		$title = Title::newFromText( trim( $titleWithoutPrefix ), NS_FILE );
 
 		if ( $title !== null && $title->exists() ) {
 			$imagePage = new ImagePage( $title );
