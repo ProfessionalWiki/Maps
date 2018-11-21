@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 6.1.0
 
-Under development
+Released on November 21st, 2018.
 
 * The `rotate` control for Google Maps is now enabled by default (changeable via `$egMapsGMaps3Controls`) (by @acnetj)
 * The `layers` parameter for Google Maps now works again (5.2.0 regression)
