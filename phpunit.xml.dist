@@ -11,16 +11,19 @@
          stopOnIncomplete="false"
          stopOnSkipped="false">
     <testsuites>
-        <testsuite name="Maps">
-            <directory>tests</directory>
-            <directory>SemanticMaps/tests</directory>
+        <testsuite name="MapsUnit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="MapsIntegration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+        <testsuite name="MapsSystem">
+            <directory>tests/System</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">includes</directory>
             <directory suffix=".php">src</directory>
-            <directory suffix=".php">SemanticMaps/src</directory>
         </whitelist>
     </filter>
 </phpunit>

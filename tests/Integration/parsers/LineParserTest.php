@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Integration\parsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\Presentation;
+namespace Maps\Tests\Unit\Presentation;
 
 use DataValues\Geo\Values\LatLongValue;
 use Maps\Elements\Location;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\Semantic\DataValues;
+namespace Maps\Tests\Unit\Semantic\DataValues;
 
 use Maps\SemanticMW\DataValues\CoordinateValue;
 use Maps\SemanticMW\ValueDescriptions\AreaDescription;

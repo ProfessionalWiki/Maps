@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Integration\MediaWiki\ParserHooks;
 
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\Processor;

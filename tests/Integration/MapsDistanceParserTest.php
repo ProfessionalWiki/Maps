@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Test;
+namespace Maps\Tests\Integration;
 
 use Maps\Presentation\MapsDistanceParser;
 use PHPUnit\Framework\TestCase;
