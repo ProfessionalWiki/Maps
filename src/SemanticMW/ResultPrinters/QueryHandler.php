@@ -335,44 +335,56 @@ class QueryHandler {
 			return $object->getLongText( SMW_OUTPUT_WIKI, null );
 		}
 
+		$propertyName = $this->getPropertyName( $printRequest );
+		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $this->getPropertyValue( $object );
+	}
+
+	private function getPropertyName( SMWPrintRequest $printRequest ): string {
 		if ( $this->linkAbsolute ) {
 			$titleText = $printRequest->getText( null );
 			$t = Title::newFromText( $titleText, SMW_NS_PROPERTY );
 
 			if ( $this->isHeadersShow() && $t instanceof Title && $t->exists() ) {
-				$propertyName = $propertyName = Html::element(
+				return  Html::element(
 					'a',
 					[ 'href' => $t->getFullUrl() ],
 					$printRequest->getHTMLText( null )
 				);
-			} else {
-				$propertyName = $titleText;
 			}
-		} else {
-			if ( $this->isHeadersShow() ) {
-				$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
-			} else {
-				if ( $this->isHeadersPlain() ) {
-					$propertyName = $printRequest->getText( null );
-				}
-			}
+
+			return $titleText;
 		}
 
+		if ( $this->isHeadersShow() ) {
+			return $printRequest->getHTMLText( smwfGetLinker() );
+		}
+
+		if ( $this->isHeadersPlain() ) {
+			return $printRequest->getText( null );
+		}
+
+		return '';
+	}
+
+	private function getPropertyValue( SMWDataValue $object ): string {
 		if ( $this->linkAbsolute ) {
 			if ( $this->hasPage( $object ) ) {
-				$propertyValue = Html::element(
+				return Html::element(
 					'a',
-					[ 'href' => $t->getFullUrl() ],
+					[
+						'href' => Title::newFromText(
+							$object->getLongText( $this->outputMode, null ),
+							NS_MAIN
+						)->getFullUrl()
+					],
 					$object->getLongText( $this->outputMode, null )
 				);
-			} else {
-				$propertyValue = $object->getLongText( $this->outputMode, null );
 			}
-		} else {
-			$propertyValue = $object->getLongText( $this->outputMode, smwfGetLinker() );
+
+			return $object->getLongText( $this->outputMode, null );
 		}
 
-		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
+		return $object->getLongText( $this->outputMode, smwfGetLinker() );;
 	}
 
 	private function hasPage( SMWDataValue $object ): bool {
