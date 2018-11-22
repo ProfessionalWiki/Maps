@@ -82,13 +82,6 @@ class QueryHandler {
 	private $subjectSeparator = '<hr />';
 
 	/**
-	 * Make the subject in the text bold or not?
-	 *
-	 * @var boolean
-	 */
-	private $boldSubject = true;
-
-	/**
 	 * Show the subject in the text or not?
 	 *
 	 * @var boolean
@@ -126,109 +119,61 @@ class QueryHandler {
 	 */
 	private $userParam = '';
 
-	/**
-	 * @param SMWQueryResult $queryResult
-	 * @param integer $outputMode
-	 * @param boolean $linkAbsolute
-	 */
-	public function __construct( SMWQueryResult $queryResult, $outputMode, $linkAbsolute = false ) {
+	public function __construct( SMWQueryResult $queryResult, int $outputMode, bool $linkAbsolute = false ) {
 		$this->queryResult = $queryResult;
 		$this->outputMode = $outputMode;
 		$this->linkAbsolute = $linkAbsolute;
 	}
 
-	/**
-	 * Sets the template.
-	 *
-	 * @param string $template
-	 */
-	public function setTemplate( $template ) {
+	public function setTemplate( string $template ) {
 		$this->template = $template === '' ? false : $template;
 	}
 
-	/**
-	 * @param string $userParam
-	 */
-	public function setUserParam( $userParam ) {
+	public function setUserParam( string $userParam ) {
 		$this->userParam = $userParam;
 	}
 
 	/**
 	 * Sets the global icon.
-	 *
-	 * @param string $icon
 	 */
-	public function setIcon( $icon ) {
+	public function setIcon( string $icon ) {
 		$this->icon = $icon;
 	}
 
 	/**
 	 * Sets the global title.
-	 *
-	 * @param string $title
 	 */
-	public function setTitle( $title ) {
+	public function setTitle( string $title ) {
 		$this->title = $title;
 	}
 
 	/**
 	 * Sets the global text.
-	 *
-	 * @param string $text
 	 */
-	public function setText( $text ) {
+	public function setText( string $text ) {
 		$this->text = $text;
 	}
 
-	/**
-	 * Sets the subject separator.
-	 *
-	 * @param string $subjectSeparator
-	 */
-	public function setSubjectSeparator( $subjectSeparator ) {
+	public function setSubjectSeparator( string $subjectSeparator ) {
 		$this->subjectSeparator = $subjectSeparator;
 	}
 
-	/**
-	 * Sets if the subject should be made bold in the text.
-	 *
-	 * @param string $boldSubject
-	 */
-	public function setBoldSubject( $boldSubject ) {
-		$this->boldSubject = $boldSubject;
-	}
-
-	/**
-	 * Sets if the subject should shown in the text.
-	 *
-	 * @param string $showSubject
-	 */
-	public function setShowSubject( $showSubject ) {
+	public function setShowSubject( bool $showSubject ) {
 		$this->showSubject = $showSubject;
 	}
 
 	/**
 	 * Sets the text for the link to the page when separate from the title.
-	 *
-	 * @param string $text
 	 */
-	public function setPageLinkText( $text ) {
+	public function setPageLinkText( string $text ) {
 		$this->pageLinkText = $text;
 	}
 
-	/**
-	 *
-	 * @param boolean $link
-	 */
-	public function setLinkStyle( $link ) {
+	public function setLinkStyle( string $link ) {
 		$this->linkStyle = $link;
 	}
 
-	/**
-	 *
-	 * @param boolean $headers
-	 */
-	public function setHeaderStyle( $headers ) {
+	public function setHeaderStyle( string $headers ) {
 		$this->headerStyle = $headers;
 	}
 
@@ -354,9 +299,7 @@ class QueryHandler {
 			$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
 		}
 
-		if ( $this->boldSubject ) {
-			$text = '<b>' . $text . '</b>';
-		}
+		$text = '<b>' . $text . '</b>';
 
 		if ( !$this->titleLinkSeparate ) {
 			return $text;
