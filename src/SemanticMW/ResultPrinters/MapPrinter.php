@@ -233,13 +233,7 @@ class MapPrinter extends SMW\ResultPrinter {
 		return $jsonObj;
 	}
 
-	/**
-	 * @param array[] $queryShapes
-	 * @param array $params
-	 * @param string $iconUrl
-	 * @param string $visitedIconUrl
-	 */
-	private function addShapeData( array $queryShapes, array &$params, $iconUrl, $visitedIconUrl ) {
+	private function addShapeData( array $queryShapes, array &$params, string $iconUrl, string $visitedIconUrl ) {
 		$params['locations'] = array_merge(
 			$params['locations'],
 			$this->getJsonForLocations(
@@ -262,7 +256,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return array
 	 */
-	private function getJsonForLocations( array $locations, array $params, $iconUrl, $visitedIconUrl ) {
+	private function getJsonForLocations( array $locations, array $params, string $iconUrl, string $visitedIconUrl ): array {
 		$locationsJson = [];
 
 		foreach ( $locations as $location ) {
@@ -289,7 +283,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return array
 	 */
-	private function getElementJsonArray( array $elements, array $params ) {
+	private function getElementJsonArray( array $elements, array $params ): array {
 		$elementsJson = [];
 
 		foreach ( $elements as $element ) {
@@ -308,7 +302,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return string
 	 */
-	private function getMapHTML( array $params, $mapName ) {
+	private function getMapHTML( array $params, string $mapName ): string {
 		return Html::rawElement(
 			'div',
 			[
