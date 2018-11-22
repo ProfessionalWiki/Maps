@@ -20,11 +20,6 @@ use SMWQueryResult;
 use Title;
 
 /**
- * Query printer for maps. Is invoked via SMMapper.
- * Can be overridden per service to have custom output.
- *
- * @ingroup SemanticMaps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
@@ -37,10 +32,12 @@ class MapPrinter extends SMW\ResultPrinter {
 	 * @var LocationParser
 	 */
 	private $locationParser;
+
 	/**
-	 * @var \Maps\MappingService
+	 * @var MappingService
 	 */
 	private $service;
+
 	/**
 	 * @var string|boolean
 	 */
@@ -61,7 +58,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 * FIXME: this is a temporary hack that should be replaced when SMW allows for dependency
 	 * injection in query printers.
 	 *
-	 * @param \Maps\MappingService $service
+	 * @param MappingService $service
 	 */
 	public static function registerService( MappingService $service ) {
 		self::$services[$service->getName()] = $service;
@@ -75,11 +72,11 @@ class MapPrinter extends SMW\ResultPrinter {
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
 	 * @param SMWQueryResult $res
-	 * @param $outputmode
+	 * @param int $outputMode
 	 *
 	 * @return string
 	 */
-	public final function getResultText( SMWQueryResult $res, $outputmode ) {
+	public final function getResultText( SMWQueryResult $res, $outputMode ) {
 		if ( $this->fatalErrorMsg !== false ) {
 			return $this->fatalErrorMsg;
 		}
@@ -90,7 +87,7 @@ class MapPrinter extends SMW\ResultPrinter {
 
 		$this->initializeLocationParser();
 
-		$queryHandler = new QueryHandler( $res, $outputmode );
+		$queryHandler = new QueryHandler( $res, $outputMode );
 		$queryHandler->setLinkStyle( $params['link'] );
 		$queryHandler->setHeaderStyle( $params['headers'] );
 		$queryHandler->setShowSubject( $params['showtitle'] );
@@ -199,12 +196,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	}
 
 	private function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
-		/**
-		 * @var Parser $wgParser
-		 */
-		global $wgParser;
-
-		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
+		$parser = clone $GLOBALS['wgParser'];
 
 		$locationsJson = [];
 
@@ -238,13 +230,7 @@ class MapPrinter extends SMW\ResultPrinter {
 		return $jsonObj;
 	}
 
-	/**
-	 * @param array[] $queryShapes
-	 * @param array $params
-	 * @param string $iconUrl
-	 * @param string $visitedIconUrl
-	 */
-	private function addShapeData( array $queryShapes, array &$params, $iconUrl, $visitedIconUrl ) {
+	private function addShapeData( array $queryShapes, array &$params, string $iconUrl, string $visitedIconUrl ) {
 		$params['locations'] = array_merge(
 			$params['locations'],
 			$this->getJsonForLocations(
@@ -267,7 +253,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return array
 	 */
-	private function getJsonForLocations( array $locations, array $params, $iconUrl, $visitedIconUrl ) {
+	private function getJsonForLocations( array $locations, array $params, string $iconUrl, string $visitedIconUrl ): array {
 		$locationsJson = [];
 
 		foreach ( $locations as $location ) {
@@ -294,7 +280,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return array
 	 */
-	private function getElementJsonArray( array $elements, array $params ) {
+	private function getElementJsonArray( array $elements, array $params ): array {
 		$elementsJson = [];
 
 		foreach ( $elements as $element ) {
@@ -313,7 +299,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return string
 	 */
-	private function getMapHTML( array $params, $mapName ) {
+	private function getMapHTML( array $params, string $mapName ): string {
 		return Html::rawElement(
 			'div',
 			[

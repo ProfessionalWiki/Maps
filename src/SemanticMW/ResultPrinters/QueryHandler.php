@@ -22,30 +22,32 @@ class QueryHandler {
 
 	/**
 	 * The global icon.
-	 *
 	 * @var string
 	 */
 	public $icon = '';
+
 	/**
 	 * The global text.
-	 *
 	 * @var string
 	 */
 	public $text = '';
+
 	/**
 	 * The global title.
-	 *
 	 * @var string
 	 */
 	public $title = '';
+
 	/**
 	 * Make a separate link to the title or not?
-	 *
 	 * @var boolean
 	 */
 	public $titleLinkSeparate = false;
+
 	private $queryResult;
+
 	private $outputMode;
+
 	/**
 	 * @var array
 	 */
@@ -54,50 +56,39 @@ class QueryHandler {
 		'locations' => [],
 		'polygons' => []
 	];
+
 	/**
 	 * The template to use for the text, or false if there is none.
-	 *
 	 * @var string|boolean false
 	 */
 	private $template = false;
+
 	/**
 	 * Should link targets be made absolute (instead of relative)?
-	 *
 	 * @var boolean
 	 */
 	private $linkAbsolute;
 
 	/**
 	 * The text used for the link to the page (if it's created). $1 will be replaced by the page name.
-	 *
 	 * @var string
 	 */
 	private $pageLinkText = '$1';
 
 	/**
 	 * A separator to use between the subject and properties in the text field.
-	 *
 	 * @var string
 	 */
 	private $subjectSeparator = '<hr />';
 
 	/**
-	 * Make the subject in the text bold or not?
-	 *
-	 * @var boolean
-	 */
-	private $boldSubject = true;
-
-	/**
 	 * Show the subject in the text or not?
-	 *
 	 * @var boolean
 	 */
 	private $showSubject = true;
 
 	/**
 	 * Hide the namespace or not.
-	 *
 	 * @var boolean
 	 */
 	private $hideNamespace = false;
@@ -116,7 +107,6 @@ class QueryHandler {
 
 	/**
 	 * Marker icon to show when marker equals active page
-	 *
 	 * @var string|null
 	 */
 	private $activeIcon = null;
@@ -126,109 +116,61 @@ class QueryHandler {
 	 */
 	private $userParam = '';
 
-	/**
-	 * @param SMWQueryResult $queryResult
-	 * @param integer $outputMode
-	 * @param boolean $linkAbsolute
-	 */
-	public function __construct( SMWQueryResult $queryResult, $outputMode, $linkAbsolute = false ) {
+	public function __construct( SMWQueryResult $queryResult, int $outputMode, bool $linkAbsolute = false ) {
 		$this->queryResult = $queryResult;
 		$this->outputMode = $outputMode;
 		$this->linkAbsolute = $linkAbsolute;
 	}
 
-	/**
-	 * Sets the template.
-	 *
-	 * @param string $template
-	 */
-	public function setTemplate( $template ) {
+	public function setTemplate( string $template ) {
 		$this->template = $template === '' ? false : $template;
 	}
 
-	/**
-	 * @param string $userParam
-	 */
-	public function setUserParam( $userParam ) {
+	public function setUserParam( string $userParam ) {
 		$this->userParam = $userParam;
 	}
 
 	/**
 	 * Sets the global icon.
-	 *
-	 * @param string $icon
 	 */
-	public function setIcon( $icon ) {
+	public function setIcon( string $icon ) {
 		$this->icon = $icon;
 	}
 
 	/**
 	 * Sets the global title.
-	 *
-	 * @param string $title
 	 */
-	public function setTitle( $title ) {
+	public function setTitle( string $title ) {
 		$this->title = $title;
 	}
 
 	/**
 	 * Sets the global text.
-	 *
-	 * @param string $text
 	 */
-	public function setText( $text ) {
+	public function setText( string $text ) {
 		$this->text = $text;
 	}
 
-	/**
-	 * Sets the subject separator.
-	 *
-	 * @param string $subjectSeparator
-	 */
-	public function setSubjectSeparator( $subjectSeparator ) {
+	public function setSubjectSeparator( string $subjectSeparator ) {
 		$this->subjectSeparator = $subjectSeparator;
 	}
 
-	/**
-	 * Sets if the subject should be made bold in the text.
-	 *
-	 * @param string $boldSubject
-	 */
-	public function setBoldSubject( $boldSubject ) {
-		$this->boldSubject = $boldSubject;
-	}
-
-	/**
-	 * Sets if the subject should shown in the text.
-	 *
-	 * @param string $showSubject
-	 */
-	public function setShowSubject( $showSubject ) {
+	public function setShowSubject( bool $showSubject ) {
 		$this->showSubject = $showSubject;
 	}
 
 	/**
 	 * Sets the text for the link to the page when separate from the title.
-	 *
-	 * @param string $text
 	 */
-	public function setPageLinkText( $text ) {
+	public function setPageLinkText( string $text ) {
 		$this->pageLinkText = $text;
 	}
 
-	/**
-	 *
-	 * @param boolean $link
-	 */
-	public function setLinkStyle( $link ) {
+	public function setLinkStyle( string $link ) {
 		$this->linkStyle = $link;
 	}
 
-	/**
-	 *
-	 * @param boolean $headers
-	 */
-	public function setHeaderStyle( $headers ) {
+	public function setHeaderStyle( string $headers ) {
 		$this->headerStyle = $headers;
 	}
 
@@ -354,9 +296,7 @@ class QueryHandler {
 			$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
 		}
 
-		if ( $this->boldSubject ) {
-			$text = '<b>' . $text . '</b>';
-		}
+		$text = '<b>' . $text . '</b>';
 
 		if ( !$this->titleLinkSeparate ) {
 			return $text;
@@ -369,10 +309,10 @@ class QueryHandler {
 		}
 
 		return $text . Html::element(
-				'a',
-				[ 'href' => $object->getTitle()->getFullUrl() ],
-				$txt
-			);
+			'a',
+			[ 'href' => $object->getTitle()->getFullUrl() ],
+			$txt
+		);
 	}
 
 	private function showArticleLink() {
@@ -385,13 +325,8 @@ class QueryHandler {
 
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
-	 *
-	 * @param SMWDataValue $object
-	 * @param SMWPrintRequest $printRequest
-	 *
-	 * @return string
 	 */
-	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
+	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getTitle()->getPrefixedText();
@@ -400,51 +335,67 @@ class QueryHandler {
 			return $object->getLongText( SMW_OUTPUT_WIKI, null );
 		}
 
+		$propertyName = $this->getPropertyName( $printRequest );
+		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $this->getPropertyValue( $object );
+	}
+
+	private function getPropertyName( SMWPrintRequest $printRequest ): string {
 		if ( $this->linkAbsolute ) {
 			$titleText = $printRequest->getText( null );
 			$t = Title::newFromText( $titleText, SMW_NS_PROPERTY );
 
 			if ( $this->isHeadersShow() && $t instanceof Title && $t->exists() ) {
-				$propertyName = $propertyName = Html::element(
+				return  Html::element(
 					'a',
 					[ 'href' => $t->getFullUrl() ],
 					$printRequest->getHTMLText( null )
 				);
-			} else {
-				$propertyName = $titleText;
 			}
-		} else {
-			if ( $this->isHeadersShow() ) {
-				$propertyName = $printRequest->getHTMLText( smwfGetLinker() );
-			} else {
-				if ( $this->isHeadersPlain() ) {
-					$propertyName = $printRequest->getText( null );
-				}
-			}
+
+			return $titleText;
 		}
 
+		if ( $this->isHeadersShow() ) {
+			return $printRequest->getHTMLText( smwfGetLinker() );
+		}
+
+		if ( $this->isHeadersPlain() ) {
+			return $printRequest->getText( null );
+		}
+
+		return '';
+	}
+
+	private function getPropertyValue( SMWDataValue $object ): string {
 		if ( $this->linkAbsolute ) {
-			$hasPage = $object->getTypeID() == '_wpg';
-
-			if ( $hasPage ) {
-				$t = Title::newFromText( $object->getLongText( $this->outputMode, null ), NS_MAIN );
-				$hasPage = $t !== null && $t->exists();
-			}
-
-			if ( $hasPage ) {
-				$propertyValue = Html::element(
+			if ( $this->hasPage( $object ) ) {
+				return Html::element(
 					'a',
-					[ 'href' => $t->getFullUrl() ],
+					[
+						'href' => Title::newFromText(
+							$object->getLongText( $this->outputMode, null ),
+							NS_MAIN
+						)->getFullUrl()
+					],
 					$object->getLongText( $this->outputMode, null )
 				);
-			} else {
-				$propertyValue = $object->getLongText( $this->outputMode, null );
 			}
-		} else {
-			$propertyValue = $object->getLongText( $this->outputMode, smwfGetLinker() );
+
+			return $object->getLongText( $this->outputMode, null );
 		}
 
-		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
+		return $object->getLongText( $this->outputMode, smwfGetLinker() );;
+	}
+
+	private function hasPage( SMWDataValue $object ): bool {
+		$hasPage = $object->getTypeID() == '_wpg';
+
+		if ( $hasPage ) {
+			$t = Title::newFromText( $object->getLongText( $this->outputMode, null ), NS_MAIN );
+			$hasPage = $t !== null && $t->exists();
+		}
+
+		return $hasPage;
 	}
 
 	private function hasTemplate() {
