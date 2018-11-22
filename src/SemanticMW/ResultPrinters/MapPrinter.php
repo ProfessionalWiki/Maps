@@ -20,9 +20,6 @@ use SMWQueryResult;
 use Title;
 
 /**
- * Query printer for maps. Is invoked via SMMapper.
- * Can be overridden per service to have custom output.
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
@@ -75,11 +72,11 @@ class MapPrinter extends SMW\ResultPrinter {
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
 	 * @param SMWQueryResult $res
-	 * @param $outputmode
+	 * @param int $outputMode
 	 *
 	 * @return string
 	 */
-	public final function getResultText( SMWQueryResult $res, $outputmode ) {
+	public final function getResultText( SMWQueryResult $res, $outputMode ) {
 		if ( $this->fatalErrorMsg !== false ) {
 			return $this->fatalErrorMsg;
 		}
@@ -90,7 +87,7 @@ class MapPrinter extends SMW\ResultPrinter {
 
 		$this->initializeLocationParser();
 
-		$queryHandler = new QueryHandler( $res, $outputmode );
+		$queryHandler = new QueryHandler( $res, $outputMode );
 		$queryHandler->setLinkStyle( $params['link'] );
 		$queryHandler->setHeaderStyle( $params['headers'] );
 		$queryHandler->setShowSubject( $params['showtitle'] );
