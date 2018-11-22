@@ -199,12 +199,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	}
 
 	private function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
-		/**
-		 * @var Parser $wgParser
-		 */
-		global $wgParser;
-
-		$parser = version_compare( $GLOBALS['wgVersion'], '1.18', '<' ) ? $wgParser : clone $wgParser;
+		$parser = clone $GLOBALS['wgParser'];
 
 		$locationsJson = [];
 
