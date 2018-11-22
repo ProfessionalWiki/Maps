@@ -23,8 +23,6 @@ use Title;
  * Query printer for maps. Is invoked via SMMapper.
  * Can be overridden per service to have custom output.
  *
- * @ingroup SemanticMaps
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
@@ -37,10 +35,12 @@ class MapPrinter extends SMW\ResultPrinter {
 	 * @var LocationParser
 	 */
 	private $locationParser;
+
 	/**
-	 * @var \Maps\MappingService
+	 * @var MappingService
 	 */
 	private $service;
+
 	/**
 	 * @var string|boolean
 	 */
@@ -61,7 +61,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 * FIXME: this is a temporary hack that should be replaced when SMW allows for dependency
 	 * injection in query printers.
 	 *
-	 * @param \Maps\MappingService $service
+	 * @param MappingService $service
 	 */
 	public static function registerService( MappingService $service ) {
 		self::$services[$service->getName()] = $service;
