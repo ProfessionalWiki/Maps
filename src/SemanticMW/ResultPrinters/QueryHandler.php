@@ -22,30 +22,32 @@ class QueryHandler {
 
 	/**
 	 * The global icon.
-	 *
 	 * @var string
 	 */
 	public $icon = '';
+
 	/**
 	 * The global text.
-	 *
 	 * @var string
 	 */
 	public $text = '';
+
 	/**
 	 * The global title.
-	 *
 	 * @var string
 	 */
 	public $title = '';
+
 	/**
 	 * Make a separate link to the title or not?
-	 *
 	 * @var boolean
 	 */
 	public $titleLinkSeparate = false;
+
 	private $queryResult;
+
 	private $outputMode;
+
 	/**
 	 * @var array
 	 */
@@ -54,43 +56,39 @@ class QueryHandler {
 		'locations' => [],
 		'polygons' => []
 	];
+
 	/**
 	 * The template to use for the text, or false if there is none.
-	 *
 	 * @var string|boolean false
 	 */
 	private $template = false;
+
 	/**
 	 * Should link targets be made absolute (instead of relative)?
-	 *
 	 * @var boolean
 	 */
 	private $linkAbsolute;
 
 	/**
 	 * The text used for the link to the page (if it's created). $1 will be replaced by the page name.
-	 *
 	 * @var string
 	 */
 	private $pageLinkText = '$1';
 
 	/**
 	 * A separator to use between the subject and properties in the text field.
-	 *
 	 * @var string
 	 */
 	private $subjectSeparator = '<hr />';
 
 	/**
 	 * Show the subject in the text or not?
-	 *
 	 * @var boolean
 	 */
 	private $showSubject = true;
 
 	/**
 	 * Hide the namespace or not.
-	 *
 	 * @var boolean
 	 */
 	private $hideNamespace = false;
@@ -109,7 +107,6 @@ class QueryHandler {
 
 	/**
 	 * Marker icon to show when marker equals active page
-	 *
 	 * @var string|null
 	 */
 	private $activeIcon = null;
