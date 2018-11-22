@@ -309,10 +309,10 @@ class QueryHandler {
 		}
 
 		return $text . Html::element(
-				'a',
-				[ 'href' => $object->getTitle()->getFullUrl() ],
-				$txt
-			);
+			'a',
+			[ 'href' => $object->getTitle()->getFullUrl() ],
+			$txt
+		);
 	}
 
 	private function showArticleLink() {
@@ -325,13 +325,8 @@ class QueryHandler {
 
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
-	 *
-	 * @param SMWDataValue $object
-	 * @param SMWPrintRequest $printRequest
-	 *
-	 * @return string
 	 */
-	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ) {
+	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getTitle()->getPrefixedText();
@@ -364,14 +359,7 @@ class QueryHandler {
 		}
 
 		if ( $this->linkAbsolute ) {
-			$hasPage = $object->getTypeID() == '_wpg';
-
-			if ( $hasPage ) {
-				$t = Title::newFromText( $object->getLongText( $this->outputMode, null ), NS_MAIN );
-				$hasPage = $t !== null && $t->exists();
-			}
-
-			if ( $hasPage ) {
+			if ( $this->hasPage( $object ) ) {
 				$propertyValue = Html::element(
 					'a',
 					[ 'href' => $t->getFullUrl() ],
@@ -385,6 +373,17 @@ class QueryHandler {
 		}
 
 		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $propertyValue;
+	}
+
+	private function hasPage( SMWDataValue $object ): bool {
+		$hasPage = $object->getTypeID() == '_wpg';
+
+		if ( $hasPage ) {
+			$t = Title::newFromText( $object->getLongText( $this->outputMode, null ), NS_MAIN );
+			$hasPage = $t !== null && $t->exists();
+		}
+
+		return $hasPage;
 	}
 
 	private function hasTemplate() {
