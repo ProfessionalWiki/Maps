@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 6.2.0
 
-Under development
+Released on November 23rd, 2018.
 
 * Fixed markers with no text having empty popups (was likely only happening with recent MediaWiki versions)
 * Fixed `link=all` in Ask queries: values are now linked where appropriate
