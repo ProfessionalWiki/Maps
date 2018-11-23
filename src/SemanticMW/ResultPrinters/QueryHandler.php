@@ -6,6 +6,7 @@ use Html;
 use Linker;
 use Maps\Elements\Location;
 use Maps\MapsFunctions;
+use Maps\SemanticMW\DataValues\CoordinateValue;
 use SMWDataValue;
 use SMWDIGeoCoord;
 use SMWPrintRequest;
@@ -193,6 +194,26 @@ class QueryHandler {
 		}
 	}
 
+	private function getTitleAndText( SMWResultArray $resultArray ): array {
+		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
+			if ( $dataValue instanceof SMWWikiPageValue ) {
+				return [
+					$dataValue->getLongText( $this->outputMode, null ),
+					$this->getResultSubjectText( $dataValue )
+				];
+			}
+
+			if ( $dataValue->getTypeID() == '_str' ) {
+				return [
+					$dataValue->getLongText( $this->outputMode, null ),
+					$dataValue->getLongText( $this->outputMode, smwfGetLinker() )
+				];
+			}
+		}
+
+		return [ '', '' ];
+	}
+
 	/**
 	 * Returns the locations found in the provided result row.
 	 *
@@ -202,44 +223,30 @@ class QueryHandler {
 		$locations = [];
 		$properties = [];
 
-		$title = '';
-		$text = '';
+		[ $title, $text ] = $this->getTitleAndText( $row[0] );
 
 		// Loop through all fields of the record.
 		foreach ( $row as $i => $resultArray ) {
-			$printRequest = $resultArray->getPrintRequest();
+			if ( $i === 0 ) {
+				continue;
+			}
 
 			// Loop through all the parts of the field value.
 			while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
-				if ( $dataValue->getTypeID() == '_wpg' && $i == 0 ) {
-					$title = $dataValue->getLongText( $this->outputMode, null );
-					$text = $this->getResultSubjectText( $dataValue );
-				} else {
-					if ( $dataValue->getTypeID() == '_str' && $i == 0 ) {
-						$title = $dataValue->getLongText( $this->outputMode, null );
-						$text = $dataValue->getLongText( $this->outputMode, smwfGetLinker() );
-					} else {
-						if ( strpos( $dataValue->getTypeID(), '_rec' ) !== false ) {
-							foreach ( $dataValue->getDataItems() as $dataItem ) {
-								if ( $dataItem instanceof \SMWDIGeoCoord ) {
-									$locations[] = Location::newFromLatLon(
-										$dataItem->getLatitude(),
-										$dataItem->getLongitude()
-									);
-								}
-							}
-						} else {
-							if ( $dataValue->getTypeID() === '_geo' ) {
-								$dataItem = $dataValue->getDataItem();
-								if ( $dataItem instanceof \SMWDIGeoCoord ) {
-									$locations[] = $this->locationFromDataItem( $dataItem );
-								}
-							}
-							elseif ( $i !== 0 ) {
-								$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
-							}
+				if ( $dataValue instanceof \SMWRecordValue ) {
+					foreach ( $dataValue->getDataItems() as $dataItem ) {
+						if ( $dataItem instanceof \SMWDIGeoCoord ) {
+							$locations[] = $this->locationFromDataItem( $dataItem );
 						}
 					}
+				} elseif ( $dataValue instanceof CoordinateValue ) {
+					$locations[] = $this->locationFromDataItem( $dataValue->getDataItem() );
+				}
+				else {
+					$properties[] = $this->handleResultProperty(
+						$dataValue,
+						$resultArray->getPrintRequest()
+					);
 				}
 			}
 		}
