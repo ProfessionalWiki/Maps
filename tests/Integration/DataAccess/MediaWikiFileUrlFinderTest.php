@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\System\DataAccess;
+namespace Maps\Tests\Integration\DataAccess;
 
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\FileUrlFinder;
