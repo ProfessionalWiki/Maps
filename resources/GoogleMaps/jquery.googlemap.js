@@ -82,13 +82,17 @@
 		 */
 		this.addMarker = function (markerData) {
 			var markerOptions = {
-				position:new google.maps.LatLng(markerData.lat, markerData.lon),
-				title:markerData.title,
-				text:$('<div>' + markerData.text + '</div>').text(),
-				labelContent:markerData.inlineLabel,
-				labelAnchor:new google.maps.Point(-15, 34),
-				labelClass:'markerwithlabel'
+				position: new google.maps.LatLng(markerData.lat, markerData.lon),
+				title: markerData.title,
+				text: markerData.text,
+				labelContent: markerData.inlineLabel,
+				labelAnchor: new google.maps.Point(-15, 34),
+				labelClass: 'markerwithlabel'
 			};
+
+			if ( markerOptions.text !== '' ) {
+				markerOptions.text = $('<div>' + markerOptions.text + '</div>').text();
+			}
 
 			if (!markerData.hasOwnProperty('icon') || markerData.icon !== '') {
 				markerOptions.icon = markerData.icon;
@@ -837,21 +841,21 @@
 		}
 
 
-		function openBubbleOrLink(properties, event, obj) {
-			if (properties.link) {
-				window.location.href = properties.link;
-			} else if (properties.text.trim() !== '') {
-				openBubble.call(this, properties, event, obj);
+		function openBubbleOrLink(markerData, event, obj) {
+			if (markerData.link) {
+				window.location.href = markerData.link;
+			} else if (markerData.text.trim() !== '') {
+				openBubble.call(this, markerData, event, obj);
 			}
 		}
 
-		function openBubble( properties, event, obj ) {
+		function openBubble( markerData, event, obj ) {
 			if ( this.openWindow !== undefined ) {
 				this.openWindow.close();
 			}
 
 			this.openWindow = new google.maps.InfoWindow();
-			this.openWindow.setContent( properties.text );
+			this.openWindow.setContent( markerData.text );
 
 			if ( event.latLng !== undefined ) {
 				this.openWindow.setPosition( event.latLng );
