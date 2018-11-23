@@ -35,7 +35,7 @@ class KmlPrinter extends FileExportPrinter {
 		$queryHandler->setPageLinkText( $this->params['pagelinktext'] );
 
 		$formatter = new KmlFormatter();
-		return $formatter->formatLocationsAsKml( $queryHandler->getShapes()['locations'] );
+		return $formatter->formatLocationsAsKml( ...$queryHandler->getLocations() );
 	}
 
 	/**

@@ -10,6 +10,7 @@ Under development
 * Fixed `link=all` in Ask queries: values are now linked where appropriate
 * Fixed `link=none` and `link=subject` in Ask queries: properties are no longer linked
 * Fixed `headers=hide` in Ask queries: the values now show
+* Fixed KML result format (6.1.0 regression)
 
 ## Maps 6.1.0
 

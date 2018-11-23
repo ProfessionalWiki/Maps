@@ -52,15 +52,6 @@ class QueryHandler {
 	private $outputMode;
 
 	/**
-	 * @var array
-	 */
-	private $geoShapes = [
-		'lines' => [],
-		'locations' => [],
-		'polygons' => []
-	];
-
-	/**
 	 * The template to use for the text, or false if there is none.
 	 * @var string|boolean false
 	 */
@@ -178,52 +169,44 @@ class QueryHandler {
 	}
 
 	/**
+	 * @return Location[]
+	 */
+	public function getLocations(): iterable {
+		while ( ( $row = $this->queryResult->getNext() ) !== false ) {
+			yield from $this->handlePageResult( $row );
+		}
+	}
+
+	/**
+	 * @param SMWResultArray[] $row
+	 * @return Location[]
+	 */
+	private function handlePageResult( array $row ): array {
+		[ $title, $text ] = $this->getTitleAndText( $row[0] );
+		[ $locations, $properties ] = $this->getLocationsAndProperties( $row );
+
+		if ( $properties !== [] && $text !== '' ) {
+			$text .= $this->subjectSeparator;
+		}
+
+		$icon = $this->getLocationIcon( $row );
+
+		return $this->buildLocationsList(
+			$locations,
+			$text,
+			$icon,
+			$properties,
+			Title::newFromText( $title )
+		);
+	}
+
+	/**
+	 * @param SMWResultArray[] $row
 	 * @return array
 	 */
-	public function getShapes() {
-		$this->findShapes();
-		return $this->geoShapes;
-	}
-
-	/**
-	 * @since 2.0
-	 */
-	private function findShapes() {
-		while ( ( $row = $this->queryResult->getNext() ) !== false ) {
-			$this->handleResultRow( $row );
-		}
-	}
-
-	private function getTitleAndText( SMWResultArray $resultArray ): array {
-		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
-			if ( $dataValue instanceof SMWWikiPageValue ) {
-				return [
-					$dataValue->getLongText( $this->outputMode, null ),
-					$this->getResultSubjectText( $dataValue )
-				];
-			}
-
-			if ( $dataValue->getTypeID() == '_str' ) {
-				return [
-					$dataValue->getLongText( $this->outputMode, null ),
-					$dataValue->getLongText( $this->outputMode, smwfGetLinker() )
-				];
-			}
-		}
-
-		return [ '', '' ];
-	}
-
-	/**
-	 * Returns the locations found in the provided result row.
-	 *
-	 * @param SMWResultArray[] $row
-	 */
-	private function handleResultRow( array $row ) {
+	private function getLocationsAndProperties( array $row ): array {
 		$locations = [];
 		$properties = [];
-
-		[ $title, $text ] = $this->getTitleAndText( $row[0] );
 
 		// Loop through all fields of the record.
 		foreach ( $row as $i => $resultArray ) {
@@ -251,22 +234,27 @@ class QueryHandler {
 			}
 		}
 
-		if ( $properties !== [] && $text !== '' ) {
-			$text .= $this->subjectSeparator;
+		return [ $locations, $properties ];
+	}
+
+	private function getTitleAndText( SMWResultArray $resultArray ): array {
+		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
+			if ( $dataValue instanceof SMWWikiPageValue ) {
+				return [
+					$dataValue->getLongText( $this->outputMode, null ),
+					$this->getResultSubjectText( $dataValue )
+				];
+			}
+
+			if ( $dataValue->getTypeID() == '_str' ) {
+				return [
+					$dataValue->getLongText( $this->outputMode, null ),
+					$dataValue->getLongText( $this->outputMode, smwfGetLinker() )
+				];
+			}
 		}
 
-		$icon = $this->getLocationIcon( $row );
-
-		$this->geoShapes['locations'] = array_merge(
-			$this->geoShapes['locations'],
-			$this->buildLocationsList(
-				$locations,
-				$text,
-				$icon,
-				$properties,
-				Title::newFromText( $title )
-			)
-		);
+		return [ '', '' ];
 	}
 
 	private function locationFromDataItem( SMWDIGeoCoord $dataItem ): Location {
@@ -483,7 +471,7 @@ class QueryHandler {
 	 *
 	 * @return Location[]
 	 */
-	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ) {
+	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ): array {
 		if ( !$this->hasTemplate() ) {
 			$text .= implode( '<br />', $properties );
 		}

@@ -171,7 +171,15 @@ class MapPrinter extends SMW\ResultPrinter {
 
 		unset( $params['staticlocations'] );
 
-		$this->addShapeData( $queryHandler->getShapes(), $params, $iconUrl, $visitedIconUrl );
+		$params['locations'] = array_merge(
+			$params['locations'],
+			$this->getJsonForLocations(
+				$queryHandler->getLocations(),
+				$params,
+				$iconUrl,
+				$visitedIconUrl
+			)
+		);
 
 		if ( $params['format'] === 'openlayers' ) {
 			$params['layers'] = DisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
@@ -230,19 +238,8 @@ class MapPrinter extends SMW\ResultPrinter {
 		return $jsonObj;
 	}
 
-	private function addShapeData( array $queryShapes, array &$params, string $iconUrl, string $visitedIconUrl ) {
-		$params['locations'] = array_merge(
-			$params['locations'],
-			$this->getJsonForLocations(
-				$queryShapes['locations'],
-				$params,
-				$iconUrl,
-				$visitedIconUrl
-			)
-		);
+	private function addShapeData( array $locations, array &$params, string $iconUrl, string $visitedIconUrl ) {
 
-		$params['lines'] = $this->getElementJsonArray( $queryShapes['lines'], $params );
-		$params['polygons'] = $this->getElementJsonArray( $queryShapes['polygons'], $params );
 	}
 
 	/**
@@ -253,7 +250,7 @@ class MapPrinter extends SMW\ResultPrinter {
 	 *
 	 * @return array
 	 */
-	private function getJsonForLocations( array $locations, array $params, string $iconUrl, string $visitedIconUrl ): array {
+	private function getJsonForLocations( iterable $locations, array $params, string $iconUrl, string $visitedIconUrl ): array {
 		$locationsJson = [];
 
 		foreach ( $locations as $location ) {
