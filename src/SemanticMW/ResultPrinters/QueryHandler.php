@@ -16,8 +16,6 @@ use SMWWikiPageValue;
 use Title;
 
 /**
- * Class for handling geographical SMW queries.
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -200,6 +198,26 @@ class QueryHandler {
 		);
 	}
 
+	private function getTitleAndText( SMWResultArray $resultArray ): array {
+		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
+			if ( $dataValue instanceof SMWWikiPageValue ) {
+				return [
+					$dataValue->getLongText( $this->outputMode, null ),
+					$this->getResultSubjectText( $dataValue )
+				];
+			}
+
+			if ( $dataValue->getTypeID() == '_str' ) {
+				return [
+					$dataValue->getLongText( $this->outputMode, null ),
+					$dataValue->getLongText( $this->outputMode, smwfGetLinker() )
+				];
+			}
+		}
+
+		return [ '', '' ];
+	}
+
 	/**
 	 * @param SMWResultArray[] $row
 	 * @return array
@@ -235,26 +253,6 @@ class QueryHandler {
 		}
 
 		return [ $locations, $properties ];
-	}
-
-	private function getTitleAndText( SMWResultArray $resultArray ): array {
-		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
-			if ( $dataValue instanceof SMWWikiPageValue ) {
-				return [
-					$dataValue->getLongText( $this->outputMode, null ),
-					$this->getResultSubjectText( $dataValue )
-				];
-			}
-
-			if ( $dataValue->getTypeID() == '_str' ) {
-				return [
-					$dataValue->getLongText( $this->outputMode, null ),
-					$dataValue->getLongText( $this->outputMode, smwfGetLinker() )
-				];
-			}
-		}
-
-		return [ '', '' ];
 	}
 
 	private function locationFromDataItem( SMWDIGeoCoord $dataItem ): Location {
