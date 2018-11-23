@@ -133,16 +133,21 @@ class DisplayMapRenderer {
 	private function getLocationJsonObject( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parserClone ) {
 		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 
-		$jsonObj['title'] = $parserClone->parse(
-			$jsonObj['title'],
-			$parserClone->getTitle(),
-			new ParserOptions()
-		)->getText();
-		$jsonObj['text'] = $parserClone->parse(
-			$jsonObj['text'],
-			$parserClone->getTitle(),
-			new ParserOptions()
-		)->getText();
+		if ( trim( $jsonObj['title'] ) !== '' ) {
+			$jsonObj['title'] = $parserClone->parse(
+				$jsonObj['title'],
+				$parserClone->getTitle(),
+				new ParserOptions()
+			)->getText();
+		}
+
+		if ( trim( $jsonObj['text'] ) !== '' ) {
+			$jsonObj['text'] = $parserClone->parse(
+				$jsonObj['text'],
+				$parserClone->getTitle(),
+				new ParserOptions()
+			)->getText();
+		}
 
 		if ( isset( $jsonObj['inlineLabel'] ) ) {
 			$jsonObj['inlineLabel'] = strip_tags(

@@ -182,4 +182,11 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testWhenLocationHasNoTitleAndText_textFieldIsEmptyString() {
+		$this->assertContains(
+			'"text":""',
+			$this->parse( '{{#display_map:1,1}}' )
+		);
+	}
+
 }
