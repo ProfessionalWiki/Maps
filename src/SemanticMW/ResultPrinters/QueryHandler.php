@@ -3,6 +3,7 @@
 namespace Maps\SemanticMW\ResultPrinters;
 
 use Html;
+use Linker;
 use Maps\Elements\Location;
 use Maps\MapsFunctions;
 use SMWDataValue;
@@ -227,9 +228,7 @@ class QueryHandler {
 								}
 							}
 						} else {
-							if ( $dataValue->getTypeID() != '_geo' && $i != 0 && !$this->isHeadersHide() ) {
-								$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
-							} else {
+							if ( $i === 0 || $dataValue->getTypeID() === '_geo' ) {
 								if ( $printRequest->getMode(
 									) == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID(
 									) == '_geo' || $dataValue->getTypeID() == '_geo' ) {
@@ -240,6 +239,9 @@ class QueryHandler {
 										$dataItem->getLongitude()
 									);
 								}
+							}
+							else {
+								$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 							}
 						}
 					}
@@ -340,11 +342,15 @@ class QueryHandler {
 	}
 
 	private function getPropertyName( SMWPrintRequest $printRequest ): string {
+		if ( $this->headerStyle === 'hide' ) {
+			return '';
+		}
+
 		if ( $this->linkAbsolute ) {
 			$titleText = $printRequest->getText( null );
 			$t = Title::newFromText( $titleText, SMW_NS_PROPERTY );
 
-			if ( $this->isHeadersShow() && $t instanceof Title && $t->exists() ) {
+			if ( $t instanceof Title && $t->exists() ) {
 				return  Html::element(
 					'a',
 					[ 'href' => $t->getFullUrl() ],
@@ -355,21 +361,21 @@ class QueryHandler {
 			return $titleText;
 		}
 
-		if ( $this->isHeadersShow() ) {
-			return $printRequest->getHTMLText( smwfGetLinker() );
-		}
+		return $printRequest->getHTMLText( $this->getPropertyLinker() );
+	}
 
-		if ( $this->isHeadersPlain() ) {
-			return $printRequest->getText( null );
-		}
+	private function getPropertyLinker(): ?Linker {
+		return $this->headerStyle === 'show' && $this->linkStyle !== 'none' ? smwfGetLinker() : null;
+	}
 
-		return '';
+	private function getValueLinker(): ?Linker {
+		return $this->linkStyle === 'all' ? smwfGetLinker() : null;
 	}
 
 	private function getPropertyValue( SMWDataValue $object ): string {
 		if ( !$this->linkAbsolute ) {
 			return $object->getLongHTMLText(
-				$this->linkStyle === 'all' ? smwfGetLinker() : null
+				$this->getValueLinker()
 			);
 		}
 
@@ -402,14 +408,6 @@ class QueryHandler {
 
 	private function hasTemplate() {
 		return is_string( $this->template );
-	}
-
-	private function isHeadersShow() {
-		return $this->headerStyle === 'show';
-	}
-
-	private function isHeadersPlain() {
-		return $this->headerStyle === 'plain';
 	}
 
 	/**
