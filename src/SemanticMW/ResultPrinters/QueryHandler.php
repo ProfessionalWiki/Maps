@@ -367,24 +367,24 @@ class QueryHandler {
 	}
 
 	private function getPropertyValue( SMWDataValue $object ): string {
-		if ( $this->linkAbsolute ) {
-			if ( $this->hasPage( $object ) ) {
-				return Html::element(
-					'a',
-					[
-						'href' => Title::newFromText(
-							$object->getLongText( $this->outputMode, null ),
-							NS_MAIN
-						)->getFullUrl()
-					],
-					$object->getLongText( $this->outputMode, null )
-				);
-			}
-
-			return $object->getLongText( $this->outputMode, null );
+		if ( !$this->linkAbsolute ) {
+			return $object->getLongText( $this->outputMode, smwfGetLinker() );
 		}
 
-		return $object->getLongText( $this->outputMode, smwfGetLinker() );;
+		if ( $this->hasPage( $object ) ) {
+			return Html::element(
+				'a',
+				[
+					'href' => Title::newFromText(
+						$object->getLongText( $this->outputMode, null ),
+						NS_MAIN
+					)->getFullUrl()
+				],
+				$object->getLongText( $this->outputMode, null )
+			);
+		}
+
+		return $object->getLongText( $this->outputMode, null );
 	}
 
 	private function hasPage( SMWDataValue $object ): bool {
