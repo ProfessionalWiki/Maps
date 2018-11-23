@@ -28,6 +28,10 @@ class MapQueryTest extends TestCase {
 	private $contentFetcher;
 
 	public function setUp() {
+		if ( !defined( 'SMW_VERSION' ) ) {
+			$this->markTestSkipped( 'SMW is not available' );
+		}
+
 		$this->pageCreator = TestFactory::newInstance()->getPageCreator();
 		$this->contentFetcher = MapsFactory::globalInstance()->getPageContentFetcher();
 	}
