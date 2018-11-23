@@ -7,6 +7,7 @@ use Linker;
 use Maps\Elements\Location;
 use Maps\MapsFunctions;
 use SMWDataValue;
+use SMWDIGeoCoord;
 use SMWPrintRequest;
 use SMWQueryResult;
 use SMWResultArray;
@@ -228,19 +229,13 @@ class QueryHandler {
 								}
 							}
 						} else {
-							if ( $i === 0 || $dataValue->getTypeID() === '_geo' ) {
-								if ( $printRequest->getMode(
-									) == SMWPrintRequest::PRINT_PROP && $printRequest->getTypeID(
-									) == '_geo' || $dataValue->getTypeID() == '_geo' ) {
-									$dataItem = $dataValue->getDataItem();
-
-									$locations[] = Location::newFromLatLon(
-										$dataItem->getLatitude(),
-										$dataItem->getLongitude()
-									);
+							if ( $dataValue->getTypeID() === '_geo' ) {
+								$dataItem = $dataValue->getDataItem();
+								if ( $dataItem instanceof \SMWDIGeoCoord ) {
+									$locations[] = $this->locationFromDataItem( $dataItem );
 								}
 							}
-							else {
+							elseif ( $i !== 0 ) {
 								$properties[] = $this->handleResultProperty( $dataValue, $printRequest );
 							}
 						}
@@ -264,6 +259,13 @@ class QueryHandler {
 				$properties,
 				Title::newFromText( $title )
 			)
+		);
+	}
+
+	private function locationFromDataItem( SMWDIGeoCoord $dataItem ): Location {
+		return Location::newFromLatLon(
+			$dataItem->getLatitude(),
+			$dataItem->getLongitude()
 		);
 	}
 
