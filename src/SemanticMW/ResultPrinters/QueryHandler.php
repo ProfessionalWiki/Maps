@@ -368,7 +368,9 @@ class QueryHandler {
 
 	private function getPropertyValue( SMWDataValue $object ): string {
 		if ( !$this->linkAbsolute ) {
-			return $object->getLongText( $this->outputMode, smwfGetLinker() );
+			return $object->getLongHTMLText(
+				$this->linkStyle === 'all' ? smwfGetLinker() : null
+			);
 		}
 
 		if ( $this->hasPage( $object ) ) {
