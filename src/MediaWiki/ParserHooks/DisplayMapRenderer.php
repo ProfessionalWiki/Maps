@@ -45,9 +45,10 @@ class DisplayMapRenderer {
 
 		$this->handleMarkerData( $params, $parser );
 
-		$mapName = $this->service->getMapId();
-
-		$output = $this->getMapHTML( $params, $mapName );
+		$output = $this->getMapHTML(
+			$params,
+			$this->service->getMapId()
+		);
 
 		$this->service->addHtmlDependencies(
 			self::getLayerDependencies( $params['mappingservice'], $params )

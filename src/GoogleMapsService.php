@@ -204,7 +204,15 @@ class GoogleMapsService extends MappingService {
 			'default' => [],
 			'message' => 'maps-par-kml',
 			'islist' => true,
-			// new MapsParamFile() FIXME
+			'post-format' => function( array $kmlFileNames ) {
+				$paths = [];
+
+				foreach ( $kmlFileNames as $fileName ) {
+					$paths[] = wfExpandUrl( MapsFunctions::getFileUrl( $fileName ) );
+				}
+
+				return $paths;
+			}
 		];
 
 		$params['gkml'] = [

@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.2.1
+
+Under development
+
+* Fixed Google Maps 'kml' parameter. It now again works with just the file name rather than the full path
+
 ## Maps 6.2.0
 
 Released on November 23rd, 2018.
