@@ -205,13 +205,12 @@ class GoogleMapsService extends MappingService {
 			'message' => 'maps-par-kml',
 			'islist' => true,
 			'post-format' => function( array $kmlFileNames ) {
-				$paths = [];
-
-				foreach ( $kmlFileNames as $fileName ) {
-					$paths[] = wfExpandUrl( MapsFunctions::getFileUrl( $fileName ) );
-				}
-
-				return $paths;
+				return array_map(
+					function( string $fileName ) {
+						return wfExpandUrl( MapsFunctions::getFileUrl( $fileName ) );
+					},
+					$kmlFileNames
+				);
 			}
 		];
 
