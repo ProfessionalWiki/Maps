@@ -28,7 +28,7 @@ class ElementJsonSerializer {
 		$elementJson['text'] = $this->parser->wikitextToHtml( $elementJson['text'] );
 
 		$hasTitleAndText = $elementJson['title'] !== '' && $elementJson['text'] !== '';
-		$elementJson['text'] = ( $hasTitleAndText ? '<b>' . $elementJson['title'] . '</b><hr />' : $elementJson['title'] ) . $elementJson['text'];
+		$elementJson['text'] = ( $hasTitleAndText ? '<b>' . $elementJson['title'] . '</b>' : $elementJson['title'] ) . $elementJson['text'];
 		$elementJson['title'] = strip_tags( $elementJson['title'] );
 	}
 
