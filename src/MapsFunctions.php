@@ -113,35 +113,13 @@ final class MapsFunctions {
 			$data['message'] = 'maps-par-' . $name;
 		}
 
-		return array_merge( $params, self::getEvenMawrCommonParameters() );
-	}
-
-	private static function getAllPossibleServiceValues(): array {
-		$allServiceValues = [];
-
-		foreach ( $GLOBALS['egMapsAvailableServices'] as $availableService ) {
-			$allServiceValues = array_merge(
-				$allServiceValues,
-				[ $availableService ],
-				MappingServices::getServiceInstance( $availableService )->getAliases()
-			);
-		}
-
-		return $allServiceValues;
-	}
-
-	private static function getEvenMawrCommonParameters() {
-		global $egMapsDefaultTitle, $egMapsDefaultLabel;
-
-		$params = [];
-
 		$params['title'] = [
 			'name' => 'title',
-			'default' => $egMapsDefaultTitle,
+			'default' => $GLOBALS['egMapsDefaultTitle'],
 		];
 
 		$params['label'] = [
-			'default' => $egMapsDefaultLabel,
+			'default' => $GLOBALS['egMapsDefaultLabel'],
 			'aliases' => 'text',
 		];
 
@@ -224,6 +202,20 @@ final class MapsFunctions {
 		}
 
 		return $params;
+	}
+
+	private static function getAllPossibleServiceValues(): array {
+		$allServiceValues = [];
+
+		foreach ( $GLOBALS['egMapsAvailableServices'] as $availableService ) {
+			$allServiceValues = array_merge(
+				$allServiceValues,
+				[ $availableService ],
+				MappingServices::getServiceInstance( $availableService )->getAliases()
+			);
+		}
+
+		return $allServiceValues;
 	}
 
 	/**
