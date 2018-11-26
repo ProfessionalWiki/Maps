@@ -3,10 +3,14 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 6.2.1
+## Maps 6.3.0
 
 Under development
 
+* Fixed `lines` parameter for Ask queries (it is no longer ignored)
+* Fixed `polygons` parameter for Ask queries (it is no longer ignored)
+* Fixed `circles` parameter for Ask queries (it is no longer ignored)
+* Fixed `rectangles` parameter for Ask queries (it is no longer ignored)
 * Fixed Google Maps 'kml' parameter. It now again works with just the file name rather than the full path
 
 ## Maps 6.2.0

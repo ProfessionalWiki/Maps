@@ -123,6 +123,9 @@ class MapPrinter extends SMW\ResultPrinter {
 		$this->handleMarkerData( $params, $queryHandler );
 
 		$params['lines'] = $this->elementsToJson( $params['lines'] );
+		$params['polygons'] = $this->elementsToJson( $params['polygons'] );
+		$params['circles'] = $this->elementsToJson( $params['circles'] );
+		$params['rectangles'] = $this->elementsToJson( $params['rectangles'] );
 
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
@@ -240,23 +243,17 @@ class MapPrinter extends SMW\ResultPrinter {
 				$location,
 				$params,
 				$iconUrl,
-				$visitedIconUrl,
-				clone $GLOBALS['wgParser']
+				$visitedIconUrl
 			);
 		}
 
 		return $locationsJson;
 	}
 
-	private function getJsonForStaticLocation( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parser ) {
+	private function getJsonForStaticLocation( Location $location, array $params, $iconUrl, $visitedIconUrl ) {
 		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 
-		$jsonObj['title'] = $parser->parse( $jsonObj['title'], $parser->getTitle(), new ParserOptions() )->getText();
-		$jsonObj['text'] = $parser->parse( $jsonObj['text'], $parser->getTitle(), new ParserOptions() )->getText();
-
-		$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
-		$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
-		$jsonObj['title'] = strip_tags( $jsonObj['title'] );
+		$this->elementSerializer->titleAndText( $jsonObj );
 
 		if ( $params['pagelabel'] ) {
 			$jsonObj['inlineLabel'] = Linker::link( Title::newFromText( $jsonObj['title'] ) );
