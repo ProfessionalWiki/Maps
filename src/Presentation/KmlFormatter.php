@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\Presentation;
 
 use Maps\Elements\Location;

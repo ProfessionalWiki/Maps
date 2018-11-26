@@ -184,6 +184,8 @@ class MapPrinter extends SMW\ResultPrinter {
 		if ( $params['format'] === 'openlayers' ) {
 			$params['layers'] = DisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
 		}
+
+
 	}
 
 	private function getCenter( $coordinatesOrAddress ) {
@@ -204,8 +206,6 @@ class MapPrinter extends SMW\ResultPrinter {
 	}
 
 	private function getJsonForStaticLocations( array $staticLocations, array $params, $iconUrl, $visitedIconUrl ) {
-		$parser = clone $GLOBALS['wgParser'];
-
 		$locationsJson = [];
 
 		foreach ( $staticLocations as $location ) {
@@ -214,7 +214,7 @@ class MapPrinter extends SMW\ResultPrinter {
 				$params,
 				$iconUrl,
 				$visitedIconUrl,
-				$parser
+				clone $GLOBALS['wgParser']
 			);
 		}
 
@@ -236,10 +236,6 @@ class MapPrinter extends SMW\ResultPrinter {
 		}
 
 		return $jsonObj;
-	}
-
-	private function addShapeData( array $locations, array &$params, string $iconUrl, string $visitedIconUrl ) {
-
 	}
 
 	/**
@@ -353,7 +349,7 @@ class MapPrinter extends SMW\ResultPrinter {
 		$this->service->addParameterInfo( $params );
 
 		$params['staticlocations'] = [
-			'type' => 'mapslocation', // FIXME: geoservice is not used
+			'type' => 'mapslocation',
 			'aliases' => [ 'locations', 'points' ],
 			'default' => [],
 			'islist' => true,

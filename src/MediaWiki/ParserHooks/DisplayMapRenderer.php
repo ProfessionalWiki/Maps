@@ -7,6 +7,7 @@ use Html;
 use Maps\Elements\Location;
 use Maps\MapsFunctions;
 use Maps\MappingService;
+use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use Parser;
 use ParserOptions;
@@ -27,6 +28,11 @@ class DisplayMapRenderer {
 	 */
 	private $locationParser;
 
+	/**
+	 * @var WikitextParser
+	 */
+	private $wikitextParser;
+
 	public function __construct( MappingService $service = null ) {
 		$this->service = $service;
 	}
@@ -43,7 +49,9 @@ class DisplayMapRenderer {
 	public final function renderMap( array $params, Parser $parser ) {
 		$this->initializeLocationParser();
 
-		$this->handleMarkerData( $params, $parser );
+		$this->wikitextParser = new WikitextParser( clone $parser );
+
+		$this->handleMarkerData( $params );
 
 		$output = $this->getMapHTML(
 			$params,
@@ -67,20 +75,18 @@ class DisplayMapRenderer {
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 */
-	private function handleMarkerData( array &$params, Parser $parser ) {
+	private function handleMarkerData( array &$params ) {
 		$params['centre'] = $this->getCenter( $params['centre'] );
-
-		$parserClone = clone $parser;
 
 		if ( is_object( $params['wmsoverlay'] ) ) {
 			$params['wmsoverlay'] = $params['wmsoverlay']->getJSONObject();
 		}
 
-		$params['locations'] = $this->getLocationJson( $params, $parserClone );
+		$params['locations'] = $this->getLocationJson( $params );
 
 		unset( $params['coordinates'] );
 
-		$this->handleShapeData( $params, $parserClone );
+		$this->handleShapeData( $params );
 
 		if ( $params['mappingservice'] === 'openlayers' ) {
 			$params['layers'] = self::evilOpenLayersHack( $params['layers'] );
@@ -104,7 +110,7 @@ class DisplayMapRenderer {
 		return $location->getJSONObject();
 	}
 
-	private function getLocationJson( array $params, $parserClone ) {
+	private function getLocationJson( array $params ) {
 		$iconUrl = MapsFunctions::getFileUrl( $params['icon'] );
 		$visitedIconUrl = MapsFunctions::getFileUrl( $params['visitedicon'] );
 
@@ -123,37 +129,22 @@ class DisplayMapRenderer {
 				$location,
 				$params,
 				$iconUrl,
-				$visitedIconUrl,
-				$parserClone
+				$visitedIconUrl
 			);
 		}
 
 		return $locationJsonObjects;
 	}
 
-	private function getLocationJsonObject( Location $location, array $params, $iconUrl, $visitedIconUrl, Parser $parserClone ) {
+	private function getLocationJsonObject( Location $location, array $params, $iconUrl, $visitedIconUrl ) {
 		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 
-		if ( trim( $jsonObj['title'] ) !== '' ) {
-			$jsonObj['title'] = $parserClone->parse(
-				$jsonObj['title'],
-				$parserClone->getTitle(),
-				new ParserOptions()
-			)->getText();
-		}
-
-		if ( trim( $jsonObj['text'] ) !== '' ) {
-			$jsonObj['text'] = $parserClone->parse(
-				$jsonObj['text'],
-				$parserClone->getTitle(),
-				new ParserOptions()
-			)->getText();
-		}
+		$jsonObj['title'] = $this->wikitextParser->wikitextToHtml( $jsonObj['title'] );
+		$jsonObj['text'] = $this->wikitextParser->wikitextToHtml( $jsonObj['text'] );
 
 		if ( isset( $jsonObj['inlineLabel'] ) ) {
 			$jsonObj['inlineLabel'] = strip_tags(
-				$parserClone->parse( $jsonObj['inlineLabel'], $parserClone->getTitle(), new ParserOptions() )->getText(
-				),
+				$this->wikitextParser->wikitextToHtml( $jsonObj['inlineLabel'] ),
 				'<a><img>'
 			);
 		}
@@ -165,7 +156,9 @@ class DisplayMapRenderer {
 		return $jsonObj;
 	}
 
-	private function handleShapeData( array &$params, Parser $parserClone ) {
+
+
+	private function handleShapeData( array &$params ) {
 		$textContainers = [
 			&$params['lines'],
 			&$params['polygons'],
@@ -181,16 +174,8 @@ class DisplayMapRenderer {
 						$obj = $obj->getArrayValue();
 					}
 
-					$obj['title'] = $parserClone->parse(
-						$obj['title'],
-						$parserClone->getTitle(),
-						new ParserOptions()
-					)->getText();
-					$obj['text'] = $parserClone->parse(
-						$obj['text'],
-						$parserClone->getTitle(),
-						new ParserOptions()
-					)->getText();
+					$obj['title'] = $this->wikitextParser->wikitextToHtml( $obj['title'] );
+					$obj['text'] = $this->wikitextParser->wikitextToHtml( $obj['text'] );
 
 					$hasTitleAndtext = $obj['title'] !== '' && $obj['text'] !== '';
 					$obj['text'] = ( $hasTitleAndtext ? '<b>' . $obj['title'] . '</b><hr />' : $obj['title'] ) . $obj['text'];
