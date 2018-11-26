@@ -6,10 +6,14 @@ use FormatJson;
 use Html;
 use Linker;
 use Maps\Elements\BaseElement;
+use Maps\Elements\Line;
 use Maps\Elements\Location;
-use Maps\MapsFunctions;
+use Maps\FileUrlFinder;
 use Maps\MappingService;
+use Maps\MapsFunctions;
 use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
+use Maps\Presentation\ElementJsonSerializer;
+use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use ParamProcessor\ParamDefinition;
 use Parser;
@@ -34,9 +38,24 @@ class MapPrinter extends SMW\ResultPrinter {
 	private $locationParser;
 
 	/**
+	 * @var FileUrlFinder
+	 */
+	private $fileUrlFinder;
+
+	/**
 	 * @var MappingService
 	 */
 	private $service;
+
+	/**
+	 * @var WikitextParser
+	 */
+	private $wikitextParser;
+
+	/**
+	 * @var ElementJsonSerializer
+	 */
+	private $elementSerializer;
 
 	/**
 	 * @var string|boolean
@@ -81,12 +100,16 @@ class MapPrinter extends SMW\ResultPrinter {
 			return $this->fatalErrorMsg;
 		}
 
+		$factory = \Maps\MapsFactory::newDefault();
+		$this->locationParser = $factory->newLocationParser();
+		$this->fileUrlFinder = $factory->getFileUrlFinder();
+
+		$this->wikitextParser = new WikitextParser( clone $GLOBALS['wgParser'] );
+		$this->elementSerializer = new ElementJsonSerializer( $this->wikitextParser );
+
 		$this->addTrackingCategoryIfNeeded();
 
 		$params = $this->params;
-
-		$factory = \Maps\MapsFactory::newDefault();
-		$this->locationParser = $factory->newLocationParser();
 
 		$queryHandler = new QueryHandler( $res, $outputMode );
 		$queryHandler->setLinkStyle( $params['link'] );
@@ -99,21 +122,21 @@ class MapPrinter extends SMW\ResultPrinter {
 
 		$this->handleMarkerData( $params, $queryHandler );
 
+		$params['lines'] = $this->elementsToJson( $params['lines'] );
+
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
 		$this->service->addHtmlDependencies(
 			DisplayMapRenderer::getLayerDependencies( $params['format'], $params )
 		);
 
-		$locationAmount = count( $params['locations'] );
-
-		if ( $locationAmount <= 0 ) {
+		if ( $params['locations'] === [] ) {
 			return $params['default'];
 		}
 
 		// We can only take care of the zoom defaulting here,
 		// as not all locations are available in whats passed to Validator.
-		if ( $this->fullParams['zoom']->wasSetToDefault() && $locationAmount > 1 ) {
+		if ( $this->fullParams['zoom']->wasSetToDefault() && count( $params['locations'] ) > 1 ) {
 			$params['zoom'] = false;
 		}
 
@@ -133,6 +156,15 @@ class MapPrinter extends SMW\ResultPrinter {
 		}
 
 		return $this->getMapHTML( $params, $mapName );
+	}
+
+	private function elementsToJson( array $elements ) {
+		return array_map(
+			function( BaseElement $element ) {
+				return $this->elementSerializer->elementToJson( $element );
+			},
+			$elements
+		);
 	}
 
 	private function addTrackingCategoryIfNeeded() {
@@ -156,8 +188,8 @@ class MapPrinter extends SMW\ResultPrinter {
 	private function handleMarkerData( array &$params, QueryHandler $queryHandler ) {
 		$params['centre'] = $this->getCenter( $params['centre'] );
 
-		$iconUrl = MapsFunctions::getFileUrl( $params['icon'] );
-		$visitedIconUrl = MapsFunctions::getFileUrl( $params['visitedicon'] );
+		$iconUrl = $this->fileUrlFinder->getUrlForFileName( $params['icon'] );
+		$visitedIconUrl = $this->fileUrlFinder->getUrlForFileName( $params['visitedicon'] );
 
 		$params['locations'] = $this->getJsonForStaticLocations(
 			$params['staticlocations'],
@@ -181,8 +213,6 @@ class MapPrinter extends SMW\ResultPrinter {
 		if ( $params['format'] === 'openlayers' ) {
 			$params['layers'] = DisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
 		}
-
-
 	}
 
 	private function getCenter( $coordinatesOrAddress ) {
@@ -262,23 +292,6 @@ class MapPrinter extends SMW\ResultPrinter {
 		}
 
 		return $locationsJson;
-	}
-
-	/**
-	 * @param BaseElement[] $elements
-	 * @param array $params
-	 *
-	 * @return array
-	 */
-	private function getElementJsonArray( array $elements, array $params ): array {
-		$elementsJson = [];
-
-		foreach ( $elements as $element ) {
-			$jsonObj = $element->getJSONObject( $params['title'], $params['label'] );
-			$elementsJson[] = $jsonObj;
-		}
-
-		return $elementsJson;
 	}
 
 	/**

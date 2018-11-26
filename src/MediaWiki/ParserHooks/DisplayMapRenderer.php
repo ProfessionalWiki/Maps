@@ -172,7 +172,7 @@ class DisplayMapRenderer {
 		foreach ( $textContainers as &$textContainer ) {
 			if ( is_array( $textContainer ) ) {
 				foreach ( $textContainer as &$obj ) {
-					$obj = $this->elementSerializer->wikitextToHtml( $obj );
+					$obj = $this->elementSerializer->elementToJson( $obj );
 				}
 			}
 		}

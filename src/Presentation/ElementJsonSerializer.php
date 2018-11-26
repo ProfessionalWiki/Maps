@@ -15,7 +15,7 @@ class ElementJsonSerializer {
 		$this->parser = $parser;
 	}
 
-	public function wikitextToHtml( BaseElement $element ): array {
+	public function elementToJson( BaseElement $element ): array {
 		$json = $element->getArrayValue();
 
 		$this->titleAndText( $json );
