@@ -4,6 +4,7 @@ namespace Maps\Tests\Integration\parsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\StubGeocoder;
+use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\Elements\Location;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use PHPUnit\Framework\TestCase;
@@ -15,12 +16,25 @@ use PHPUnit\Framework\TestCase;
  */
 class LocationParserTest extends TestCase {
 
+	private $geocoder;
+	private $fileUrlFinder;
+	private $useAddressAsTitle;
+
+	public function setUp() {
+		$this->geocoder = new StubGeocoder( new LatLongValue( 1, 2 ) );
+		$this->fileUrlFinder = new MediaWikiFileUrlFinder();
+		$this->useAddressAsTitle = false;
+	}
+
+	private function newLocationParser() {
+		return LocationParser::newInstance( $this->geocoder, $this->fileUrlFinder, $this->useAddressAsTitle );
+	}
+
 	/**
 	 * @dataProvider titleProvider
 	 */
 	public function testGivenTitleThatIsNotLink_titleIsSetAndLinkIsNot( $title ) {
-		$parser = LocationParser::newInstance( new StubGeocoder( new LatLongValue( 1, 2 ) ) );
-		$location = $parser->parse( '4,2~' . $title );
+		$location = $this->newLocationParser()->parse( '4,2~' . $title );
 
 		$this->assertTitleAndLinkAre( $location, $title, '' );
 	}
@@ -51,8 +65,7 @@ class LocationParserTest extends TestCase {
 	 * @dataProvider linkProvider
 	 */
 	public function testGivenTitleThatIsLink_linkIsSetAndTitleIsNot( $link ) {
-		$parser = LocationParser::newInstance( new StubGeocoder( new LatLongValue( 1, 2 ) ) );
-		$location = $parser->parse( '4,2~link:' . $link );
+		$location = $this->newLocationParser()->parse( '4,2~link:' . $link );
 
 		$this->assertTitleAndLinkAre( $location, '', $link );
 	}
@@ -83,29 +96,22 @@ class LocationParserTest extends TestCase {
 //	}
 
 	public function testGivenAddressAndNoTitle_addressIsSetAsTitle() {
-		$geocoder = new StubGeocoder( new LatLongValue( 4, 2 ) );
-
-		$parser = LocationParser::newInstance( $geocoder, true );
-		$location = $parser->parse( 'Tempelhofer Ufer 42' );
+		$this->useAddressAsTitle = true;
+		$location = $this->newLocationParser()->parse( 'Tempelhofer Ufer 42' );
 
 		$this->assertSame( 'Tempelhofer Ufer 42', $location->getTitle() );
 	}
 
 	public function testGivenAddressAndTitle_addressIsNotUsedAsTitle() {
-		$geocoder = new StubGeocoder( new LatLongValue( 4, 2 ) );
-
-		$parser = LocationParser::newInstance( $geocoder, true );
-		$location = $parser->parse( 'Tempelhofer Ufer 42~Great title of doom' );
+		$this->useAddressAsTitle = true;
+		$location = $this->newLocationParser()->parse( 'Tempelhofer Ufer 42~Great title of doom' );
 
 		$this->assertSame( 'Great title of doom', $location->getTitle() );
 	}
 
 	public function testGivenCoordinatesAndNoTitle_noTitleIsSet() {
-		$parser = LocationParser::newInstance(
-			new StubGeocoder( new LatLongValue( 1, 2 ) ),
-			true
-		);
-		$location = $parser->parse( '4,2' );
+		$this->useAddressAsTitle = true;
+		$location = $this->newLocationParser()->parse( '4,2' );
 
 		$this->assertSame( '', $location->getTitle() );
 	}

@@ -81,12 +81,12 @@ class GeoDistanceFunction extends ParserHook {
 		];
 
 		$params['location1'] = [
-			'type' => 'mapslocation', // FIXME: geoservice is not used
+			'type' => 'mapslocation',
 			'aliases' => 'from',
 		];
 
 		$params['location2'] = [
-			'type' => 'mapslocation', // FIXME: geoservice is not used
+			'type' => 'mapslocation',
 			'aliases' => 'to',
 		];
 

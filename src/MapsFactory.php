@@ -51,10 +51,13 @@ class MapsFactory {
 	}
 
 	public function newLocationParser(): LocationParser {
-		return LocationParser::newInstance( $this->newGeocoder() );
+		return LocationParser::newInstance(
+			$this->getGeocoder(),
+			$this->getFileUrlFinder()
+		);
 	}
 
-	public function newGeocoder(): Geocoder {
+	public function getGeocoder(): Geocoder {
 		$geocoder = new CoordinateFriendlyGeocoder( $this->newCoreGeocoder() );
 
 		if ( $this->settings['egMapsEnableGeoCache'] ) {

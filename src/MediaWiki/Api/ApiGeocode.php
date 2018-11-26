@@ -18,7 +18,7 @@ class Geocode extends ApiBase {
 			$this->dieUsageMsg( [ 'badaccess-groups' ] );
 		}
 
-		$geocoder = MapsFactory::newDefault()->newGeocoder();
+		$geocoder = MapsFactory::newDefault()->getGeocoder();
 
 		$params = $this->extractRequestParams();
 

@@ -30,7 +30,7 @@ class LineParser implements ValueParser {
 
 	private function getGeocoder(): Geocoder {
 		if ( $this->geocoder == null ) {
-			$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+			$this->geocoder = MapsFactory::newDefault()->getGeocoder();
 		}
 
 		return $this->geocoder;

@@ -24,7 +24,7 @@ class CircleParser implements ValueParser {
 	private $geocoder;
 
 	public function __construct( $geocoder = null ) {
-		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::newDefault()->newGeocoder();
+		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::newDefault()->getGeocoder();
 	}
 
 	/**

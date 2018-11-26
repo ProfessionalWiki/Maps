@@ -5,6 +5,7 @@ namespace Maps\Presentation\WikitextParsers;
 use DataValues\Geo\Parsers\LatLongParser;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Location;
+use Maps\FileUrlFinder;
 use Maps\MapsFactory;
 use Maps\MapsFunctions;
 use Title;
@@ -23,6 +24,7 @@ use ValueParsers\ValueParser;
 class LocationParser implements ValueParser {
 
 	private $geocoder;
+	private $fileUrlFinder;
 	private $useAddressAsTitle;
 
 	/**
@@ -30,14 +32,16 @@ class LocationParser implements ValueParser {
 	 */
 	public function __construct( $enableLegacyCrud = true ) {
 		if ( $enableLegacyCrud ) {
-			$this->geocoder = MapsFactory::newDefault()->newGeocoder();
+			$this->geocoder = MapsFactory::globalInstance()->getGeocoder();
+			$this->fileUrlFinder = MapsFactory::globalInstance()->getFileUrlFinder();
 			$this->useAddressAsTitle = false;
 		}
 	}
 
-	public static function newInstance( Geocoder $geocoder, bool $useAddressAsTitle = false ): self {
+	public static function newInstance( Geocoder $geocoder, FileUrlFinder $fileUrlFinder, bool $useAddressAsTitle = false ): self {
 		$instance = new self( false );
 		$instance->geocoder = $geocoder;
+		$instance->fileUrlFinder = $fileUrlFinder;
 		$instance->useAddressAsTitle = $useAddressAsTitle;
 		return $instance;
 	}
@@ -79,8 +83,7 @@ class LocationParser implements ValueParser {
 		}
 
 		if ( $metaData !== [] ) {
-			// FIXME: global access
-			$location->setIcon( MapsFunctions::getFileUrl( array_shift( $metaData ) ) );
+			$location->setIcon( $this->fileUrlFinder->getUrlForFileName( array_shift( $metaData ) ) );
 		}
 
 		if ( $metaData !== [] ) {
@@ -92,8 +95,7 @@ class LocationParser implements ValueParser {
 		}
 
 		if ( $metaData !== [] ) {
-			// FIXME: global access
-			$location->setVisitedIcon( MapsFunctions::getFileUrl( array_shift( $metaData ) ) ) ;
+			$location->setVisitedIcon( $this->fileUrlFinder->getUrlForFileName( array_shift( $metaData ) ) ) ;
 		}
 
 		return $location;

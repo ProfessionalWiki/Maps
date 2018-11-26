@@ -85,7 +85,8 @@ class MapPrinter extends SMW\ResultPrinter {
 
 		$params = $this->params;
 
-		$this->initializeLocationParser();
+		$factory = \Maps\MapsFactory::newDefault();
+		$this->locationParser = $factory->newLocationParser();
 
 		$queryHandler = new QueryHandler( $res, $outputMode );
 		$queryHandler->setLinkStyle( $params['link'] );
@@ -106,32 +107,32 @@ class MapPrinter extends SMW\ResultPrinter {
 
 		$locationAmount = count( $params['locations'] );
 
-		if ( $locationAmount > 0 ) {
-			// We can only take care of the zoom defaulting here,
-			// as not all locations are available in whats passed to Validator.
-			if ( $this->fullParams['zoom']->wasSetToDefault() && $locationAmount > 1 ) {
-				$params['zoom'] = false;
-			}
-
-			$mapName = $this->service->getMapId();
-
-			SMWOutputs::requireHeadItem(
-				$mapName,
-				$this->service->getDependencyHtml()
-			);
-
-			foreach ( $this->service->getResourceModules() as $resourceModule ) {
-				SMWOutputs::requireResource( $resourceModule );
-			}
-
-			if ( array_key_exists( 'source', $params ) ) {
-				unset( $params['source'] );
-			}
-
-			return $this->getMapHTML( $params, $mapName );
-		} else {
+		if ( $locationAmount <= 0 ) {
 			return $params['default'];
 		}
+
+		// We can only take care of the zoom defaulting here,
+		// as not all locations are available in whats passed to Validator.
+		if ( $this->fullParams['zoom']->wasSetToDefault() && $locationAmount > 1 ) {
+			$params['zoom'] = false;
+		}
+
+		$mapName = $this->service->getMapId();
+
+		SMWOutputs::requireHeadItem(
+			$mapName,
+			$this->service->getDependencyHtml()
+		);
+
+		foreach ( $this->service->getResourceModules() as $resourceModule ) {
+			SMWOutputs::requireResource( $resourceModule );
+		}
+
+		if ( array_key_exists( 'source', $params ) ) {
+			unset( $params['source'] );
+		}
+
+		return $this->getMapHTML( $params, $mapName );
 	}
 
 	private function addTrackingCategoryIfNeeded() {
@@ -143,10 +144,6 @@ class MapPrinter extends SMW\ResultPrinter {
 		if ( $GLOBALS['egMapsEnableCategory'] && $wgParser->getOutput() !== null ) {
 			$wgParser->addTrackingCategory( 'maps-tracking-category' );
 		}
-	}
-
-	private function initializeLocationParser() {
-		$this->locationParser = \Maps\MapsFactory::newDefault()->newLocationParser();
 	}
 
 	/**
