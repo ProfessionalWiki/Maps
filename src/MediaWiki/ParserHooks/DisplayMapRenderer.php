@@ -139,8 +139,7 @@ class DisplayMapRenderer {
 	private function getLocationJsonObject( Location $location, array $params, $iconUrl, $visitedIconUrl ) {
 		$jsonObj = $location->getJSONObject( $params['title'], $params['label'], $iconUrl, '', '', $visitedIconUrl );
 
-		$jsonObj['title'] = $this->wikitextParser->wikitextToHtml( $jsonObj['title'] );
-		$jsonObj['text'] = $this->wikitextParser->wikitextToHtml( $jsonObj['text'] );
+		$this->titleAndText( $jsonObj );
 
 		if ( isset( $jsonObj['inlineLabel'] ) ) {
 			$jsonObj['inlineLabel'] = strip_tags(
@@ -149,14 +148,8 @@ class DisplayMapRenderer {
 			);
 		}
 
-		$hasTitleAndtext = $jsonObj['title'] !== '' && $jsonObj['text'] !== '';
-		$jsonObj['text'] = ( $hasTitleAndtext ? '<b>' . $jsonObj['title'] . '</b><hr />' : $jsonObj['title'] ) . $jsonObj['text'];
-		$jsonObj['title'] = strip_tags( $jsonObj['title'] );
-
 		return $jsonObj;
 	}
-
-
 
 	private function handleShapeData( array &$params ) {
 		$textContainers = [
@@ -174,15 +167,19 @@ class DisplayMapRenderer {
 						$obj = $obj->getArrayValue();
 					}
 
-					$obj['title'] = $this->wikitextParser->wikitextToHtml( $obj['title'] );
-					$obj['text'] = $this->wikitextParser->wikitextToHtml( $obj['text'] );
-
-					$hasTitleAndtext = $obj['title'] !== '' && $obj['text'] !== '';
-					$obj['text'] = ( $hasTitleAndtext ? '<b>' . $obj['title'] . '</b><hr />' : $obj['title'] ) . $obj['text'];
-					$obj['title'] = strip_tags( $obj['title'] );
+					$this->titleAndText( $obj );
 				}
 			}
 		}
+	}
+
+	private function titleAndText( array &$elementJson ) {
+		$elementJson['title'] = $this->wikitextParser->wikitextToHtml( $elementJson['title'] );
+		$elementJson['text'] = $this->wikitextParser->wikitextToHtml( $elementJson['text'] );
+
+		$hasTitleAndText = $elementJson['title'] !== '' && $elementJson['text'] !== '';
+		$elementJson['text'] = ( $hasTitleAndText ? '<b>' . $elementJson['title'] . '</b><hr />' : $elementJson['title'] ) . $elementJson['text'];
+		$elementJson['title'] = strip_tags( $elementJson['title'] );
 	}
 
 	/**
