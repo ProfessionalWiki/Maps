@@ -4,14 +4,13 @@ namespace Maps\MediaWiki\ParserHooks;
 
 use FormatJson;
 use Html;
+use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\Elements\Location;
-use Maps\MapsFunctions;
 use Maps\MappingService;
 use Maps\Presentation\ElementJsonSerializer;
 use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use Parser;
-use ParserOptions;
 
 /**
  * Class handling the #display_map rendering.
@@ -30,10 +29,14 @@ class DisplayMapRenderer {
 	private $locationParser;
 
 	/**
+	 * @var MediaWikiFileUrlFinder
+	 */
+	private $fileUrlFinder;
+
+	/**
 	 * @var WikitextParser
 	 */
 	private $wikitextParser;
-
 	/**
 	 * @var ElementJsonSerializer
 	 */
@@ -53,7 +56,10 @@ class DisplayMapRenderer {
 	 * @return string
 	 */
 	public final function renderMap( array $params, Parser $parser ) {
-		$this->initializeLocationParser();
+		$factory = \Maps\MapsFactory::newDefault();
+
+		$this->locationParser = $factory->newLocationParser();
+		$this->fileUrlFinder = $factory->getFileUrlFinder();
 
 		$this->wikitextParser = new WikitextParser( clone $parser );
 		$this->elementSerializer = new ElementJsonSerializer( $this->wikitextParser );
@@ -72,10 +78,6 @@ class DisplayMapRenderer {
 		$this->service->addDependencies( $parser->getOutput() );
 
 		return $output;
-	}
-
-	private function initializeLocationParser() {
-		$this->locationParser = \Maps\MapsFactory::newDefault()->newLocationParser();
 	}
 
 	/**
@@ -118,8 +120,8 @@ class DisplayMapRenderer {
 	}
 
 	private function getLocationJson( array $params ) {
-		$iconUrl = MapsFunctions::getFileUrl( $params['icon'] );
-		$visitedIconUrl = MapsFunctions::getFileUrl( $params['visitedicon'] );
+		$iconUrl = $this->fileUrlFinder->getUrlForFileName( $params['icon'] );
+		$visitedIconUrl = $this->fileUrlFinder->getUrlForFileName( $params['visitedicon'] );
 
 		$locationJsonObjects = [];
 
