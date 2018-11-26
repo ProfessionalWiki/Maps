@@ -25,7 +25,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status</th>
 	</tr>
 	<tr>
-		<th>Maps 6.3.x</th>
+		<th>Maps 7.0x</th>
 		<td>7.1 - 7.3+</td>
 		<td>1.31 - 1.32+</td>
 		<td><strong>3.0+</strong></td>
@@ -42,7 +42,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Maps 6.1.x</th>
 		<td>7.1 - 7.3</td>
 		<td>1.31 - 1.32</td>
-		<td>2.4 - 3.0+</td>
+		<td>2.4 - 3.0</td>
 		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>

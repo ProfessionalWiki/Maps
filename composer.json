@@ -35,6 +35,7 @@
 		"composer/installers": "^1.0.1",
 		"mediawiki/validator": "~2.2",
 		"mediawiki/parser-hooks": "~1.5",
+		"param-processor/param-processor": "~1.4.2",
 		"data-values/geo": "~4.0|~3.0",
 		"jeroen/file-fetcher": "~4.2",
 		"jeroen/simple-cache": "~2.0",
