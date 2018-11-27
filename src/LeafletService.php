@@ -151,7 +151,7 @@ class LeafletService extends MappingService {
 	}
 
 	protected function getDependencies() {
-		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/includes/services/Leaflet/leaflet';
+		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/leaflet/leaflet';
 		return [
 			Html::linkedStyle( "$leafletPath/leaflet.css" ),
 			Html::linkedScript( "$leafletPath/leaflet.js" ),
