@@ -17,7 +17,7 @@
 		this.bounds = null;
 
 		OpenLayers._getScriptLocation = function() {
-			return mw.config.get('wgScriptPath') + '/extensions/Maps/includes/services/OpenLayers/OpenLayers/';
+			return mw.config.get('wgScriptPath') + '/extensions/Maps/resources/OpenLayers/OpenLayers/';
 		};
 
 		this.getOLMarker = function (markerLayer, markerData) {
@@ -43,7 +43,7 @@
 				if (markerData.visitedicon && markerData.visitedicon !== '') {
 					if(markerData.visitedicon === 'on'){
 						//when keyword 'on' is set, set visitedicon to a default official marker
-						markerData.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/includes/services/OpenLayers/OpenLayers/img/marker3.png';
+						markerData.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/resources/OpenLayers/OpenLayers/img/marker3.png';
 					}
 					marker.setUrl(markerData.visitedicon);
 					markerData.visitedicon = undefined;
@@ -86,7 +86,7 @@
 				this.groups++;
 				curLayer.id = 'markerLayer' + this.groups;
 				// define default icon, one of ten in different colors, if more than ten layers, colors will repeat:
-				curLayer.defaultIcon = mw.config.get( 'egMapsScriptPath' ) + '/includes/services/OpenLayers/OpenLayers/img/marker' + ( ( this.groups + 10 ) % 10 ) + '.png';
+				curLayer.defaultIcon = mw.config.get( 'egMapsScriptPath' ) + '/resources/OpenLayers/OpenLayers/img/marker' + ( ( this.groups + 10 ) % 10 ) + '.png';
 				map.addLayer(curLayer);
 				this.groupLayers[ markerData.group ] = curLayer;
 			} else {

@@ -10,7 +10,7 @@
 
 	$( document ).ready( function() {
 
-		OpenLayers.ImgPath = mw.config.get( 'egMapsScriptPath' ) + '/includes/services/OpenLayers/OpenLayers/img/';
+		OpenLayers.ImgPath = mw.config.get( 'egMapsScriptPath' ) + '/resources/OpenLayers/OpenLayers/img/';
 		OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
 		OpenLayers.Util.onImageLoadErrorColor = 'transparent';
 		OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(
