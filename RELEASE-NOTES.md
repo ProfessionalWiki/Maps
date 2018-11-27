@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 6.2.2
+
+Released on November 27th, 2018.
+
+* Fixed image loading issues, most notably Leaflet markers (6.2.0 regression)
+
 ## Maps 6.2.1
 
 Released on November 26th, 2018.
