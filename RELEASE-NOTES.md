@@ -7,7 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on November 27th, 2018.
 
-* Fixed image loading issues, most notably Leaflet markers (6.2.0 regression)
+* Fixed image loading issues, most notably Leaflet markers (6.1.0 regression)
 
 ## Maps 6.2.1
 
