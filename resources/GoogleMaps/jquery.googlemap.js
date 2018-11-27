@@ -463,7 +463,7 @@
 			}
 			this.markercluster = new MarkerClusterer( this.map, this.markers, {
 				imagePath: mw.config.get( 'wgScriptPath' ) +
-				'/extensions/Maps/includes/images/m',
+				'/extensions/Maps/resources/leaflet/cluster/m',
 				gridSize: this.options.clustergridsize,
 				maxZoom: this.options.clustermaxzoom,
 				zoomOnClick: this.options.clusterzoomonclick,
