@@ -105,8 +105,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "Αυτόματο άνοιγμα όλων των παραθύρων πληροφοριών μετά τη φόρτωση της σελίδας.",
 	"maps-googlemaps3-par-gkml": "Αρχεία KML που φιλοξενούνται στη Google για φόρτωση στο χάρτη.",
 	"maps-googlemaps3-par-poi": "Εμφάνιση σημείων ενδιαφέροντος.",
-	"maps-openlayers-par-controls": "Στοιχεία ελέγχου προς τοποθέτηση στο χάρτη.",
-	"maps-openlayers-par-layers": "Οι στρώσεις που θα είναι διαθέσιμες στον επιλογέα στρώσεων. Η πρώτη στρώση θα εμφανίζεται κατά τη φόρτωση του χάρτη.",
 	"mapeditor": "Πρόγραμμα επεξεργασίας χαρτών",
 	"specialpages-group-maps": "Χάρτες",
 	"mapeditor-none-text": "Κανένα",

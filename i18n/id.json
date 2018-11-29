@@ -99,8 +99,6 @@
 	"maps-googlemaps3-par-typestyle": "Gaya jenis kontrol.",
 	"maps-googlemaps3-par-autoinfowindows": "Otomatis membuka semua jendela info setelah halaman dimuat.",
 	"maps-googlemaps3-par-fusiontables": "ID Google Fusion Tables yang harus dimuat ke dalam peta.",
-	"maps-openlayers-par-controls": "Kontrol yang akan ditempatkan pada peta.",
-	"maps-openlayers-par-layers": "Lapisan yang akan tersedia pada pemilih lapisan. Lapisan pertama akan ditampilkan ketika peta dimuat.",
 	"mapeditor": "Penyunting peta",
 	"specialpages-group-maps": "Peta",
 	"mapeditor-none-text": "Tidak ada",

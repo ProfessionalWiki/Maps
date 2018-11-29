@@ -118,7 +118,6 @@
 	"maps-googlemaps3-par-clustergridsize": "Rozmiar siatki klastra w pikselach.",
 	"maps-par-clustermaxzoom": "Maksymalny poziom powiększenia, w którym klaster może istnieć.",
 	"maps-par-maxclusterradius": "Maksymalny promień, który obejmuje klaster.",
-	"maps-openlayers-par-controls": "Formanty do umieszczenia na mapie.",
 	"mapeditor": "Edytor map",
 	"specialpages-group-maps": "Mapy",
 	"mapeditor-none-text": "Brak",

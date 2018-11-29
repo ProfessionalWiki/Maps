@@ -120,8 +120,6 @@
 	"maps-googlemaps3-par-tilt": "Ciri menyendengkan Peta ketika menggunakan Peta Google.",
 	"maps-googlemaps3-par-kmlrezoom": "Zumkan semula peta selepas lapisan-lapisan KML dimuatkan.",
 	"maps-googlemaps3-par-poi": "Tunjukkan tempat-tempat menarik.",
-	"maps-openlayers-par-controls": "Alat kawalan untuk diletakkan pada peta.",
-	"maps-openlayers-par-layers": "Lapisan-lapisan yang akan tersedia pada pemilih lapisan. Lapisan pertama akan dipaparkan apabila peta dimuatkan.",
 	"mapeditor": "Editor peta",
 	"specialpages-group-maps": "Peta",
 	"mapeditor-parser-error": "Timbulnya ralat ketika menghuraikan metadata. Input pengguna diabaikan.",

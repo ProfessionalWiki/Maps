@@ -92,7 +92,6 @@
 	"maps-par-maxclusterradius": "Il raggio massimo coperto da un cluster.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Se il centro di ogni cluster dovrebbe essere la media di tutti i marcatori del cluster.",
 	"maps-googlemaps3-par-clusterminsize": "Il numero minimo di marcatori presenti in un cluster dopo il quale tutti i marcatori saranno nascosti e sarà mostrato il loro numero.",
-	"maps-openlayers-par-controls": "I controlli da posizionare sulla mappa.",
 	"mapeditor": "Editor della mappa",
 	"specialpages-group-maps": "Mappe",
 	"mapeditor-parser-error": "Si verificato un errore durante l'analisi dei metadati. Ignorato l'input dell'utente.",

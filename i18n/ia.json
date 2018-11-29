@@ -108,8 +108,6 @@
 	"maps-googlemaps3-par-tilt": "Inclination del carta durante le uso de Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Rezoomar le carta post le cargamento del stratos KML.",
 	"maps-googlemaps3-par-poi": "Monstrar punctos de interesse.",
-	"maps-openlayers-par-controls": "Le controlos a placiar super le carta.",
-	"maps-openlayers-par-layers": "Le stratos que essera disponibile in le selector de stratos. Le prime strato essera monstrate durante le cargamento del carta.",
 	"mapeditor": "Editor cartographic",
 	"specialpages-group-maps": "Cartas",
 	"mapeditor-parser-error": "Un error occurreva durante le processamento del metadatos. Le entrata del usator es ignorate.",

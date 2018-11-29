@@ -107,8 +107,6 @@
 	"maps-googlemaps3-par-tilt": "Вугал нахілу мапы, падчас выкарыстаньня Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Зьмяняць маштаб мапы пасьля загрузкі KML-слаёў.",
 	"maps-googlemaps3-par-poi": "Паказаць выбітныя мясьціны.",
-	"maps-openlayers-par-controls": "Элемэнты кіраваньня, якія будуць разьмешчаныя на мапе.",
-	"maps-openlayers-par-layers": "Слаі, якія будуць даступныя падчас выбару слаёў. Першы слой будзе паказаны пасьля загрузкі мапы.",
 	"mapeditor": "Рэдактар мап",
 	"specialpages-group-maps": "Мапы",
 	"mapeditor-parser-error": "У час разбору мэтазьвестак адбылася памылка. Ігнаруем уведзеныя зьвесткі.",

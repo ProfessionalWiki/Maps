@@ -118,8 +118,6 @@
 	"maps-googlemaps3-par-tilt": "Anclinassion për la Carta quand as deuvra Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Angrandì torna la carta na vira che ij seuj KML a son stàit carià.",
 	"maps-googlemaps3-par-poi": "Smon-e ij pont d'anteresse.",
-	"maps-openlayers-par-controls": "Ël control da piassé an sla carta.",
-	"maps-openlayers-par-layers": "Ij seuj che a saran disponìbij ant ël seletor ëd seul. Ël prim seul a sarà mostrà quand la carta as caria.",
 	"mapeditor": "Editor ëd carta",
 	"specialpages-group-maps": "Carte",
 	"mapeditor-parser-error": "A l'é capitaje n'eror an analisand dij metadat. Ignorà l'anseriment ëd l'utent.",
