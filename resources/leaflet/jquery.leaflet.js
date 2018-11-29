@@ -22,7 +22,7 @@
 
 		/**
 		* Creates a new marker with the provided data and returns it.
-		* @param {Object} markerData Contains the fields lat, lon, title, text and icon
+		* @param {Object} properties Contains the fields lat, lon, title, text and icon
 		* @return {L.Marker}
 		*/
 		this.createMarker = function (properties) {
@@ -55,6 +55,16 @@
 			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
 				marker.bindPopup( properties.text );
 			}
+
+			if ( options.copycoords ) {
+				marker.on(
+					'contextmenu',
+					function( e ) {
+						console.log(e);
+						prompt(mw.msg('maps-copycoords-prompt'), e.latlng.lat + ',' + e.latlng.lng);
+					}
+				);
+			}
 			
 			return marker;
 		};
@@ -62,7 +72,7 @@
 		/**
 		 * Creates a new marker with the provided data, adds it to the map
 		 * and returns it.
-		 * @param {Object} markerData Contains the fields lat, lon, title, text and icon
+		 * @param {Object} properties Contains the fields lat, lon, title, text and icon
 		 * @return {L.Marker}
 		 */
 		this.addMarker = function (properties) {
