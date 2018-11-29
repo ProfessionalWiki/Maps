@@ -60,7 +60,6 @@
 				marker.on(
 					'contextmenu',
 					function( e ) {
-						console.log(e);
 						prompt(mw.msg('maps-copycoords-prompt'), e.latlng.lat + ',' + e.latlng.lng);
 					}
 				);
