@@ -15,7 +15,6 @@
 	// Array of String. Array containing all the mapping services that will be made available to the user.
 	$GLOBALS['egMapsAvailableServices'] = [
 		'leaflet',
-		'openlayers',
 		'googlemaps3'
 	];
 
@@ -233,67 +232,6 @@
 
 		// String. Set the language when rendering Google Maps.
 		$GLOBALS['egMapsGMaps3Language'] = '';
-
-	// OpenLayers
-
-		// Integer. The default zoom of a map. This value will only be used when the
-		// user does not provide one.
-		$GLOBALS['egMapsOpenLayersZoom'] = 13;
-
-		// Array of String. The default controls for Open Layers. This value will only
-		// be used when the user does not provide one.
-		// Available values: layerswitcher, mouseposition, autopanzoom, panzoom,
-		// panzoombar, scaleline, navigation, keyboarddefaults, overviewmap, permalink
-		$GLOBALS['egMapsOLControls'] = [
-			'layerswitcher',
-			'mouseposition',
-			'autopanzoom',
-			'scaleline',
-			'navigation'
-		];
-
-		// Array of String. The default layers for Open Layers. This value will only be
-		// used when the user does not provide one.
-		$GLOBALS['egMapsOLLayers'] = [
-			'osm-mapnik',
-			'osm-cyclemap'
-		];
-
-		// The definitions for the layers that should be available for the user.
-		$GLOBALS['egMapsOLAvailableLayers'] = [
-			'bing-normal'    => [ 'OpenLayers.Layer.VirtualEarth( "Bing Streets", {type: VEMapStyle.Shaded, "sphericalMercator":true} )', 'bing' ],
-			'bing-satellite' => [ 'OpenLayers.Layer.VirtualEarth( "Bing Satellite", {type: VEMapStyle.Aerial, "sphericalMercator":true} )', 'bing' ],
-			'bing-hybrid'    => [ 'OpenLayers.Layer.VirtualEarth( "Bing Hybrid", {type: VEMapStyle.Hybrid, "sphericalMercator":true} )', 'bing' ],
-
-			'osm-mapnik'   => [ 'OpenLayers.Layer.OSM.Mapnik("OSM Mapnik")', 'osm' ],
-			'osm-cyclemap' => [ 'OpenLayers.Layer.OSM.CycleMap("OSM Cycle Map")', 'osm' ],
-			'osm-mapquest' => [ 'OpenLayers.Layer.OSM.Mapquest("Mapquest OSM")', 'osm' ],
-
-			'google-normal'    => [ 'OpenLayers.Layer.Google("Google Streets", {type: google.maps.MapTypeId.STREETS, numZoomLevels: 20})', 'google' ],
-			'google-satellite' => [ 'OpenLayers.Layer.Google("Google Satellite", {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22})', 'google' ],
-			'google-hybrid'    => [ 'OpenLayers.Layer.Google("Google Hybrid", {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20})', 'google' ],
-			'google-terrain'  => [ 'OpenLayers.Layer.Google("Google Terrain", {type: google.maps.MapTypeId.TERRAIN, numZoomLevels: 22})', 'google' ],
-
-			'nasa' => 'OpenLayers.Layer.WMS("NASA Global Mosaic", "http://t1.hypercube.telascience.org/cgi-bin/landsat7",
-				{layers: "landsat7", "sphericalMercator":true} )',
-		];
-
-		// Layer group definitions. Group names must be different from layer names, and
-		// must only contain layers that are present in $GLOBALS['egMapsOLAvailableLayers'].
-		$GLOBALS['egMapsOLLayerGroups'] = [
-			'bing' => [ 'bing-normal', 'bing-satellite', 'bing-hybrid' ],
-			'google' => [ 'google-normal', 'google-satellite', 'google-terrain', 'google-hybrid' ],
-			'osm' => [ 'osm-mapnik', 'osm-cyclemap' ],
-		];
-
-		global $wgJsMimeType;
-
-		// Layer dependencies
-		$GLOBALS['egMapsOLLayerDependencies'] = [
-			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
-			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-			'google' => "<script src='http://maps.google.com/maps/api/js'></script>",
-		];
 
 
 	// Leaflet

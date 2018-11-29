@@ -7,6 +7,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
+* Breaking change: removed OpenLayers service
+
 ## Maps 6.3.0
 
 Released on November 29th, 2018.

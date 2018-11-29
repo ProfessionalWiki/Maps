@@ -96,10 +96,6 @@ class DisplayMapRenderer {
 		unset( $params['coordinates'] );
 
 		$this->handleShapeData( $params );
-
-		if ( $params['mappingservice'] === 'openlayers' ) {
-			$params['layers'] = self::evilOpenLayersHack( $params['layers'] );
-		}
 	}
 
 	private function getCenter( $coordinatesOrAddress ) {
@@ -179,56 +175,6 @@ class DisplayMapRenderer {
 	}
 
 	/**
-	 * FIXME
-	 *
-	 * Temporary hack until the mapping service handling gets a proper refactor
-	 * This kind of JS construction is also rather evil and should not be done at this point
-	 *
-	 * @since 3.0
-	 * @deprecated
-	 *
-	 * @param string[] $layers
-	 *
-	 * @return string[]
-	 */
-	public static function evilOpenLayersHack( $layers ) {
-		global $egMapsOLLayerGroups, $egMapsOLAvailableLayers;
-
-		$layerDefs = [];
-		$layerNames = [];
-
-		foreach ( $layers as $layerOrGroup ) {
-			$lcLayerOrGroup = strtolower( $layerOrGroup );
-
-			// Layer groups. Loop over all items and add them if not present yet:
-			if ( array_key_exists( $lcLayerOrGroup, $egMapsOLLayerGroups ) ) {
-				foreach ( $egMapsOLLayerGroups[$lcLayerOrGroup] as $layerName ) {
-					if ( !in_array( $layerName, $layerNames ) ) {
-						if ( is_array( $egMapsOLAvailableLayers[$layerName] ) ) {
-							$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName][0];
-						} else {
-							$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$layerName];
-						}
-						$layerNames[] = $layerName;
-					}
-				}
-			} // Single layers. Add them if not present yet:
-			elseif ( array_key_exists( $lcLayerOrGroup, $egMapsOLAvailableLayers ) ) {
-				if ( !in_array( $lcLayerOrGroup, $layerNames ) ) {
-					if ( is_array( $egMapsOLAvailableLayers[$lcLayerOrGroup] ) ) {
-						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$lcLayerOrGroup][0];
-					} else {
-						$layerDefs[] = 'new ' . $egMapsOLAvailableLayers[$lcLayerOrGroup];
-					}
-
-					$layerNames[] = $lcLayerOrGroup;
-				}
-			}
-		}
-		return $layerDefs;
-	}
-
-	/**
 	 * Returns the HTML to display the map.
 	 *
 	 * @param array $params
@@ -254,8 +200,7 @@ class DisplayMapRenderer {
 	}
 
 	public static function getLayerDependencies( $service, $params ) {
-		global $egMapsOLLayerDependencies, $egMapsOLAvailableLayers,
-			   $egMapsLeafletLayerDependencies, $egMapsLeafletAvailableLayers,
+		global $egMapsLeafletLayerDependencies, $egMapsLeafletAvailableLayers,
 			   $egMapsLeafletLayersApiKeys;
 
 		$layerDependencies = [];
@@ -270,22 +215,6 @@ class DisplayMapRenderer {
 					$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
 						$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
 				}
-			}
-		} else {
-			if ( $service === 'openlayers' ) {
-				$layerNames = $params['layers'];
-				foreach ( $layerNames as $layerName ) {
-					if ( array_key_exists( $layerName, $egMapsOLAvailableLayers ) // The layer must be defined in php
-						&& is_array( $egMapsOLAvailableLayers[$layerName] ) // The layer must be an array...
-						&& count( $egMapsOLAvailableLayers[$layerName] ) > 1 // ...with a second element...
-						&& array_key_exists(
-							$egMapsOLAvailableLayers[$layerName][1],
-							$egMapsOLLayerDependencies
-						) ) { //...that is a dependency.
-						$layerDependencies[] = $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layerName][1]];
-					}
-				}
-
 			}
 		}
 
