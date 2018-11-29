@@ -173,15 +173,6 @@ class MapsSetup {
 		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
 		$googleMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 
-		$this->registerOpenLayersModules( $localBasePath, $remoteExtPath );
-
-		MappingServices::registerService(
-			'openlayers',
-			OpenLayersService::class
-		);
-
-		$openLayers = MappingServices::getServiceInstance( 'openlayers' );
-		$openLayers->addFeature( 'display_map', DisplayMapRenderer::class );
 
 		// Leaflet API
 		$this->registerLeafletModules( $localBasePath, $remoteExtPath );
@@ -400,33 +391,6 @@ class MapsSetup {
 			'scripts' => [
 				'leaflet.editor.js',
 			],
-		];
-	}
-
-	private function registerOpenLayersModules( string $localBasePath, string $remoteExtPath ) {
-		$GLOBALS['wgResourceModules']['ext.maps.openlayers'] = [
-			'dependencies' => [ 'ext.maps.common' ],
-			'localBasePath' => $localBasePath . '/OpenLayers',
-			'remoteExtPath' => $remoteExtPath . '/OpenLayers',
-			'group' => 'ext.maps',
-			'targets' => [
-				'mobile',
-				'desktop'
-			],
-			'scripts' => [
-				'OpenLayers/OpenLayers.js',
-				'OSM/OpenStreetMap.js',
-				'jquery.openlayers.js',
-				'ext.maps.openlayers.js'
-			],
-			'styles' => [
-				'OpenLayers/theme/default/style.css'
-			],
-			'messages' => [
-				'maps-markers',
-				'maps-copycoords-prompt',
-				'maps-searchmarkers-text',
-			]
 		];
 	}
 

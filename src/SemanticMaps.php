@@ -35,7 +35,6 @@ class SemanticMaps {
 
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();
-		$this->registerOpenLayers();
 
 		$this->mwGlobals['smwgResultFormats']['kml'] = KmlPrinter::class;
 
@@ -107,30 +106,6 @@ class SemanticMaps {
 
 		$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = MapPrinter::class;
 		$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
-	}
-
-	private function registerOpenLayers() {
-		$this->mwGlobals['wgResourceModules']['ext.sm.fi.openlayersajax'] = [
-			'localBasePath' => __DIR__ . '/../resources/OpenLayers',
-			'remoteExtPath' => 'Maps/resources/OpenLayers',
-			'group' => 'ext.semanticmaps',
-			'dependencies' => [
-				'ext.maps.openlayers',
-				'ext.sm.common'
-			],
-			'scripts' => [
-				'ext.sm.openlayersajax.js'
-			]
-		];
-
-		/* @var MappingService $openLayers */
-		$openLayers = MappingServices::getServiceInstance( 'openlayers' );
-		$openLayers->addResourceModules( [ 'ext.sm.fi.openlayersajax' ] );
-
-		MapPrinter::registerService( $openLayers );
-
-		$this->mwGlobals['smwgResultFormats'][$openLayers->getName()] = MapPrinter::class;
-		$this->mwGlobals['smwgResultAliases'][$openLayers->getName()] = $openLayers->getAliases();
 	}
 
 }

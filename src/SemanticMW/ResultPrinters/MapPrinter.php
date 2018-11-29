@@ -212,10 +212,6 @@ class MapPrinter extends SMW\ResultPrinter {
 				$visitedIconUrl
 			)
 		);
-
-		if ( $params['format'] === 'openlayers' ) {
-			$params['layers'] = DisplayMapRenderer::evilOpenLayersHack( $params['layers'] );
-		}
 	}
 
 	private function getCenter( $coordinatesOrAddress ) {

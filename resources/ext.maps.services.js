@@ -36,10 +36,6 @@
 				this.google();
 			}
 
-			if ( service === 'openlayers' ) {
-				this.openlayers();
-			}
-
 			if ( service === 'leaflet' || service === 'leafletmaps' ) {
 				this.leaflet();
 			}
@@ -64,40 +60,6 @@
 				self.container.find( '.maps-googlemaps3' ).each( function() {
 					var $this = $( this );
 					$this.googlemaps( $.parseJSON( $this.find( 'div').text() ) );
-				} );
-			} );
-		},
-
-		/**
-		 * Openlayers service
-		 *
-		 * @since 3.5
-		 */
-		openlayers: function() {
-
-			var self = this;
-
-			// https://www.mediawiki.org/wiki/ResourceLoader/Modules#mw.loader.using
-			mw.loader.using( 'ext.maps.openlayers' ).done( function () {
-
-				if ( typeof OpenLayers !== 'undefined' ) {
-					OpenLayers.ImgPath = mw.config.get( 'egMapsScriptPath' ) + '/resources/OpenLayers/OpenLayers/img/';
-					OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
-					OpenLayers.Util.onImageLoadErrorColor = 'transparent';
-					OpenLayers.Feature.prototype.popupClass = OpenLayers.Class(
-						OpenLayers.Popup.FramedCloud,
-						{
-							'autoSize': true,
-							'minSize': new OpenLayers.Size( 200, 100 )
-						}
-					);
-				}
-
-				self.container.find( '.maps-openlayers' ).each( function() {
-					var $this = $( this),
-						mapData = $.parseJSON( $this.find( 'div').text() );
-
-					$this.openlayers( $this.attr( 'id' ), mapData );
 				} );
 			} );
 		},

@@ -1,6 +1,4 @@
-window.maps = new ( function( $, mw ) {
-
+window.maps = new ( function() {
 	this.googlemapsList = [];
 	this.leafletList = [];
-	this.openlayersList = [];
-} )( jQuery, mediaWiki );
+} )();
