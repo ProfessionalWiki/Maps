@@ -561,6 +561,9 @@
 				else if ( options.layers[i] === 'bicycling' ) {
 					( new google.maps.BicyclingLayer() ).setMap(map);
 				}
+				else if ( options.layers[i] === 'transit' ) {
+					( new google.maps.TransitLayer() ).setMap(map);
+				}
 			}
 
 			var bounds = getBounds();
