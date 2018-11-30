@@ -87,7 +87,8 @@ class GoogleMapsService extends MappingService {
 			'default' => $egMapsGMaps3Layers,
 			'values' => [
 				'traffic',
-				'bicycling'
+				'bicycling',
+				'transit'
 			],
 			'message' => 'maps-googlemaps3-par-layers',
 			'islist' => true,
