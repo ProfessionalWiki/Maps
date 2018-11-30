@@ -8,6 +8,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development
 
 * Breaking change: removed OpenLayers service
+* Added transit layer support for Google Maps (`layers=transit`) (by @acnetj)
 
 ## Maps 6.3.0
 
