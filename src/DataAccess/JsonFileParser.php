@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\DataAccess;
 
 use FileFetcher\FileFetcher;
@@ -23,7 +25,7 @@ class JsonFileParser implements ValueParser {
 
 	public function __construct( $fileFetcher = null, PageContentFetcher $pageContentFetcher = null ) {
 		$this->fileFetcher = $fileFetcher instanceof FileFetcher
-			? $fileFetcher : MapsFactory::newDefault()->getFileFetcher();
+			? $fileFetcher : MapsFactory::newDefault()->getGeoJsonFileFetcher();
 
 		$this->pageContentFetcher = $pageContentFetcher instanceof PageContentFetcher
 			? $pageContentFetcher : MapsFactory::newDefault()->getPageContentFetcher();

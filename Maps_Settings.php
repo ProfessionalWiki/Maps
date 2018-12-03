@@ -165,6 +165,10 @@
 
 // Other general configuration
 
+	// Integer. Determines the TTL of cached GeoJson.
+	// Default value: 0 (no caching).
+	$GLOBALS['egMapsGeoJsonCacheTtl'] = 0;
+
 	// Boolean. Sets if pages with maps should be put in special category
 	$GLOBALS['egMapsEnableCategory'] = false;
 

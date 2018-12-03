@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
+use FileFetcher\CachingFileFetcher;
 use FileFetcher\FileFetcher;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
@@ -18,6 +19,8 @@ use Maps\DataAccess\PageContentFetcher;
 use Maps\Presentation\CoordinateFormatter;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use MediaWiki\MediaWikiServices;
+use SimpleCache\Cache\Cache;
+use SimpleCache\Cache\MediaWikiCache;
 
 /**
  * @licence GNU GPL v2+
@@ -107,6 +110,20 @@ class MapsFactory {
 
 	private function newFileFetcher(): FileFetcher {
 		return new MapsFileFetcher();
+	}
+
+	public function getGeoJsonFileFetcher(): FileFetcher {
+		return new CachingFileFetcher(
+			$this->getFileFetcher(),
+			$this->getMediaWikiSimpleCache( $this->settings['egMapsGeoJsonCacheTtl'] )
+		);
+	}
+
+	private function getMediaWikiSimpleCache( int $ttlInSeconds ): Cache {
+		return new MediaWikiCache(
+			$this->getMediaWikiCache(),
+			$ttlInSeconds
+		);
 	}
 
 	private function getMediaWikiCache(): \BagOStuff {
