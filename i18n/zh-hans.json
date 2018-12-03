@@ -13,7 +13,8 @@
 			"Linforest",
 			"阿pp",
 			"Hanyanbo98",
-			"夢蝶葬花"
+			"夢蝶葬花",
+			"Angrydog001"
 		]
 	},
 	"maps-desc": "允许嵌入动态地图到wiki页面，将地址转换为地理编码，及进行其他地理学操作",
@@ -197,7 +198,7 @@
 	"mapeditor-form-field-visitedicon": "已浏览图标",
 	"semanticmaps-unrecognizeddistance": "取值$1不是有效的距离。",
 	"semanticmaps-kml-link": "查看KML文件",
-	"semanticmaps-default-kml-pagelink": "检视页面 $1",
+	"semanticmaps-default-kml-pagelink": "查看页面 $1",
 	"semanticmaps-latitude": "纬度：$1",
 	"semanticmaps-longitude": "经度：$1",
 	"semanticmaps-altitude": "绝对海拔高度：$1",
