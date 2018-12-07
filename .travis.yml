@@ -8,8 +8,8 @@ matrix:
     - env: DBTYPE=mysql; MW=1.31.0
       php: 7.1
     - env: DBTYPE=mysql; MW=master; SMW=master
-      php: 7.2
-    - env: DBTYPE=sqlite; MW=1.31.0; SMW=2.5.0
+      php: 7.3
+    - env: DBTYPE=sqlite; MW=1.31.0; SMW=3.0.0
       php: 7.1
     - env: DBTYPE=sqlite; MW=master; TYPE=coverage
       php: 7.2
