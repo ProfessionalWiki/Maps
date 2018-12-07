@@ -6,7 +6,7 @@ information.
 Features:
 
 * Powerful [`#display_map`](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps) parser hook for embedding highly customizable dynamic maps into wiki pages.
-* Support for multiple mapping services: [Leaflet](http://leafletjs.com/), Google Maps, [OpenLayers](http://www.openlayers.org/) and [OpenStreetMap](www.openstreetmap.org/).
+* Support for multiple mapping services: [Leaflet](http://leafletjs.com/), Google Maps and [OpenStreetMap](www.openstreetmap.org/).
 * Integration with [Semantic MediaWiki](https://www.semantic-mediawiki.org) via a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
     * Query your stored coordinates and visualize them on dynamic maps, as tables or as lists
     * Export your coordinates as KML or RDF
