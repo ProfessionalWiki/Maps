@@ -14,17 +14,12 @@ use SMWDIGeoCoord;
  */
 class CoordinateDescription extends ValueDescription {
 
-	/**
-	 * @see SMWDescription::getQueryString
-	 *
-	 * @since 0.6
-	 *
-	 * @param boolean $asValue
-	 *
-	 * @return string
-	 */
 	public function getQueryString( $asValue = false ) {
-		$queryString = DataValueFactory::newDataItemValue( $this->getDataItem(), $this->getProperty() )->getWikiValue();
+		$queryString = DataValueFactory::getInstance()->newDataValueByItem(
+			$this->getDataItem(),
+			$this->getProperty()
+		)->getWikiValue();
+
 		return $asValue ? $queryString : "[[$queryString]]";
 	}
 
@@ -32,8 +27,6 @@ class CoordinateDescription extends ValueDescription {
 	 * @see SMWDescription::getSQLCondition
 	 *
 	 * FIXME: store specific code should be in the store component
-	 *
-	 * @since 0.6
 	 *
 	 * @param string $tableName
 	 * @param array $fieldNames

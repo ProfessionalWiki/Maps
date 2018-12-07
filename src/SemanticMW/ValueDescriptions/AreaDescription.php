@@ -29,20 +29,9 @@ class AreaDescription extends ValueDescription {
 	 */
 	private $center;
 
-	/**
-	 * @var string
-	 */
 	private $radius;
 
-	/**
-	 * @param SMWDataItem $areaCenter
-	 * @param string $comparator
-	 * @param string $radius
-	 * @param DIProperty|null $property
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	public function __construct( SMWDataItem $areaCenter, $comparator, $radius, DIProperty $property = null ) {
+	public function __construct( SMWDataItem $areaCenter, string $comparator, string $radius, DIProperty $property = null ) {
 		if ( !( $areaCenter instanceof SMWDIGeoCoord ) ) {
 			throw new InvalidArgumentException( '$areaCenter needs to be a SMWDIGeoCoord' );
 		}
@@ -54,7 +43,7 @@ class AreaDescription extends ValueDescription {
 	}
 
 	/**
-	 * @see \SMW\Query\Language\Description::prune
+	 * @see Description::prune
 	 */
 	public function prune( &$maxsize, &$maxdepth, &$log ) {
 		if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
@@ -72,15 +61,11 @@ class AreaDescription extends ValueDescription {
 		return $this;
 	}
 
-	/**
-	 * @see \SMW\Query\Language\Description::getQueryString
-	 *
-	 * @param boolean $asValue
-	 *
-	 * @return string
-	 */
 	public function getQueryString( $asValue = false ) {
-		$centerString = DataValueFactory::newDataItemValue( $this->center, $this->getProperty() )->getWikiValue();
+		$centerString = DataValueFactory::getInstance()->newDataValueByItem(
+			$this->center,
+			$this->getProperty()
+		)->getWikiValue();
 
 		$queryString = "$centerString ({$this->radius})";
 
@@ -88,7 +73,7 @@ class AreaDescription extends ValueDescription {
 	}
 
 	/**
-	 * @see \SMW\Query\Language\Description::getSQLCondition
+	 * @see Description::getSQLCondition
 	 *
 	 * FIXME: store specific code should be in the store component
 	 *
@@ -130,14 +115,14 @@ class AreaDescription extends ValueDescription {
 		return implode( " $joinCond ", $conditions );
 	}
 
-	private function comparatorIsSupported() {
+	private function comparatorIsSupported(): bool {
 		return $this->getComparator() === SMW_CMP_EQ || $this->getComparator() === SMW_CMP_NEQ;
 	}
 
 	/**
 	 * @return float[] An associative array containing the limits with keys north, east, south and west.
 	 */
-	public function getBoundingBox() {
+	public function getBoundingBox(): array {
 		$center = new LatLongValue(
 			$this->center->getLatitude(),
 			$this->center->getLongitude()
