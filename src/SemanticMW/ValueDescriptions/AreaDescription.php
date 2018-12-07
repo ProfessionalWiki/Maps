@@ -31,7 +31,7 @@ class AreaDescription extends ValueDescription {
 
 	private $radius;
 
-	public function __construct( SMWDataItem $areaCenter, string $comparator, string $radius, DIProperty $property = null ) {
+	public function __construct( SMWDataItem $areaCenter, int $comparator, string $radius, DIProperty $property = null ) {
 		if ( !( $areaCenter instanceof SMWDIGeoCoord ) ) {
 			throw new InvalidArgumentException( '$areaCenter needs to be a SMWDIGeoCoord' );
 		}
