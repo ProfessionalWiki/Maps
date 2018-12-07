@@ -316,10 +316,6 @@ class QueryHandler {
 		return $this->linkStyle !== 'none';
 	}
 
-	private function isHeadersHide() {
-		return $this->headerStyle === 'hide';
-	}
-
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
 	 */
