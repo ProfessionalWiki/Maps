@@ -50,7 +50,7 @@ class GoogleMapsService extends MappingService {
 	public function addParameterInfo( array &$params ) {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
-		global $egMapsResizableByDefault, $egMapsGMaps3DefaultTilt;
+		global $egMapsResizableByDefault;
 
 		$params['zoom'] = [
 			'type' => 'integer',
@@ -185,12 +185,6 @@ class GoogleMapsService extends MappingService {
 			'type' => 'integer',
 			'default' => 2,
 			'message' => 'maps-googlemaps3-par-clusterminsize',
-		];
-
-		$params['tilt'] = [
-			'type' => 'integer',
-			'default' => $egMapsGMaps3DefaultTilt,
-			'message' => 'maps-googlemaps3-par-tilt',
 		];
 
 		$params['imageoverlays'] = [

@@ -314,9 +314,6 @@ return [
 	// traffic, bicycling and transit
 	'egMapsGMaps3Layers' => [],
 
-	// Integer. Default tilt when using Google Maps.
-	'egMapsGMaps3DefaultTilt' => 0,
-
 	// Show points of interest or not.
 	'egMapsShowPOI' => true,
 
