@@ -6,7 +6,6 @@ use FormatJson;
 use Html;
 use Linker;
 use Maps\Elements\BaseElement;
-use Maps\Elements\Line;
 use Maps\Elements\Location;
 use Maps\FileUrlFinder;
 use Maps\MappingService;
@@ -17,8 +16,7 @@ use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use ParamProcessor\ParamDefinition;
 use Parser;
-use ParserOptions;
-use SMW;
+use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;
 use SMWQueryResult;
 use Title;
@@ -28,7 +26,7 @@ use Title;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-class MapPrinter extends SMW\ResultPrinter {
+class MapPrinter extends ResultPrinter {
 
 	private static $services = [];
 

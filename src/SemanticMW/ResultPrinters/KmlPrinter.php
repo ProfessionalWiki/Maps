@@ -4,7 +4,7 @@ namespace Maps\SemanticMW\ResultPrinters;
 
 use Maps\Presentation\KmlFormatter;
 use ParamProcessor\ParamDefinition;
-use SMW\FileExportPrinter;
+use SMW\Query\ResultPrinters\FileExportPrinter;
 use SMWQueryResult;
 
 /**
