@@ -68,7 +68,7 @@ class MapsSetup {
 
 		if ( in_array( 'googlemaps3', $this->mwGlobals['egMapsAvailableServices'] ) ) {
 			$this->mwGlobals['wgSpecialPages']['MapEditor'] = 'Maps\MediaWiki\Specials\SpecialMapEditor';
-			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'Maps';
+			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'maps';
 		}
 
 		if ( $this->mwGlobals['egMapsGMaps3ApiKey'] === '' && array_key_exists(
