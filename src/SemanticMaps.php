@@ -38,8 +38,8 @@ class SemanticMaps {
 
 		$this->mwGlobals['smwgResultFormats']['kml'] = KmlPrinter::class;
 
-		$this->mwGlobals['smwgResultAliases'][$this->mwGlobals['egMapsDefaultServices']['qp']][] = 'map';
-		MapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultServices']['qp'] );
+		$this->mwGlobals['smwgResultAliases'][$this->mwGlobals['egMapsDefaultService']][] = 'map';
+		MapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultService'] );
 
 		// Internationalization
 		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';

@@ -8,6 +8,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development
 
 * Breaking change: removed OpenLayers service
+* Breaking change: removed `egMapsDefaultServices['qp']` setting (just use `egMapsDefaultService`)
 * Added transit layer support for Google Maps (`layers=transit`) (by @acnetj)
 * Added `egMapsGeoJsonCacheTtl` setting and optional caching for GeoJSON files
 * Fixed display of Maps category on Special:SpecialPages
