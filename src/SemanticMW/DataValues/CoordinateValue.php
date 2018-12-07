@@ -7,7 +7,6 @@ use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
 use Maps\MapsFactory;
 use Maps\Presentation\MapsDistanceParser;
-use phpDocumentor\Reflection\Types\Parent_;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
 use SMW\Query\QueryComparator;

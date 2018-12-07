@@ -2,9 +2,6 @@
 
 namespace Maps;
 
-use ImagePage;
-use Maps\DataAccess\MediaWikiFileUrlFinder;
-use Title;
 use Xml;
 
 /**

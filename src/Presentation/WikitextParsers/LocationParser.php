@@ -7,7 +7,6 @@ use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\Elements\Location;
 use Maps\FileUrlFinder;
 use Maps\MapsFactory;
-use Maps\MapsFunctions;
 use Title;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
