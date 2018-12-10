@@ -144,7 +144,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "לפתוח את כל חלונות המידע אחרי שהדף נטען.",
 	"maps-googlemaps3-par-gkml": "קבצי KML שמתארחים בגוגל וייטענו אל המפה.",
 	"maps-googlemaps3-par-fusiontables": "מזהים של Google Fusion Tables שייטענו אל המפה.",
-	"maps-googlemaps3-par-tilt": "רכינה עבור המפה כאשר נעשה שימוש במפות גוגל.",
 	"maps-googlemaps3-par-kmlrezoom": "לקרב מחדש את המפה אחרי ששכבות KML נטענו.",
 	"maps-googlemaps3-par-poi": "הצגת נקודות עניין.",
 	"maps-googlemaps3-par-clustergridsize": "גודל הרשת של האשכול בפיקסלים.",

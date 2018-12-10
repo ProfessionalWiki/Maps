@@ -151,7 +151,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "在页面加载后，自动打开所有信息窗口。",
 	"maps-googlemaps3-par-gkml": "由Google运营的加载地图上的KML文件。",
 	"maps-googlemaps3-par-fusiontables": "应加载至地图的Google融合表的ID。",
-	"maps-googlemaps3-par-tilt": "使用Google地图时的地图标题。",
 	"maps-googlemaps3-par-kmlrezoom": "在KML图层加载后重新缩放地图。",
 	"maps-googlemaps3-par-poi": "显示感兴趣的点。",
 	"maps-googlemaps3-par-clustergridsize": "群集的网格大小（像素）。",

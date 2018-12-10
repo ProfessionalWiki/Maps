@@ -139,7 +139,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "Abrir automáticamente toles ventanes d'información dempués de que se cargue la páxina.",
 	"maps-googlemaps3-par-gkml": "Ficheros KML agospiaos por Google a cargar nel mapa.",
 	"maps-googlemaps3-par-fusiontables": "IDs de les tables de Google Fusion que tienen de cargase nel mapa.",
-	"maps-googlemaps3-par-tilt": "Inclinación del mapa al usar Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Axustar el nivel de zoom dempués de que carguen les capes KML.",
 	"maps-googlemaps3-par-poi": "Amosar puntos d'interés.",
 	"maps-googlemaps3-par-clustergridsize": "La midida de rexa d'un grupu en píxeles.",

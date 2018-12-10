@@ -148,7 +148,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "Автоматично відкрити всі інформаційні вікна, після завантаження сторінки.",
 	"maps-googlemaps3-par-gkml": "Файли KML, розташовані на серверах Google для завантаження на карту.",
 	"maps-googlemaps3-par-fusiontables": "Ідентифікатори таблиць Google Fusion, які повинні бути завантажені на карту.",
-	"maps-googlemaps3-par-tilt": "Нахил карти при використанні Карт Google.",
 	"maps-googlemaps3-par-kmlrezoom": "Масштабування карти після завантаження KML шарів.",
 	"maps-googlemaps3-par-poi": "Показати визначні пам'ятки.",
 	"maps-googlemaps3-par-clustergridsize": "Розмір сітки кластера в пікселях.",

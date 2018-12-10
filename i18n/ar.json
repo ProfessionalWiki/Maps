@@ -142,7 +142,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "فتح جميع نوافذ المعلومات تلقائيا بعد تحميل الصفحة.",
 	"maps-googlemaps3-par-gkml": "ملفات KML تستضيفها جوجل لتحميلها على الخريطة.",
 	"maps-googlemaps3-par-fusiontables": "معرفات جداول اندماج جوجل التي يجب تحميلها على الخريطة.",
-	"maps-googlemaps3-par-tilt": "إمالة الخريطة عند استخدام خرائط جوجل.",
 	"maps-googlemaps3-par-kmlrezoom": "إعادة تكبير الخريطة بعد تحميل طبقات KML.",
 	"maps-googlemaps3-par-poi": "عرض نقاط الاهتمام.",
 	"maps-googlemaps3-par-clustergridsize": "حجم شبكة العنقود بالبكسل.",

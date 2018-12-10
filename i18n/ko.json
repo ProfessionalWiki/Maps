@@ -137,7 +137,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "문서를 불러오고 나서 모든 정보 창을 자동으로 엽니다.",
 	"maps-googlemaps3-par-gkml": "지도에 불러올 Google이 호스트하는 KML 파일입니다.",
 	"maps-googlemaps3-par-fusiontables": "지도에 불러와야 할 Google 퓨전 테이블의 ID입니다.",
-	"maps-googlemaps3-par-tilt": "Google 지도를 사용할 때의 기울기입니다.",
 	"maps-googlemaps3-par-kmlrezoom": "KML 레이어를 불러오고 나서 지도를 다시 확대합니다.",
 	"maps-googlemaps3-par-poi": "관심 지점을 보여줍니다.",
 	"mapeditor": "지도 편집기",

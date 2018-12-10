@@ -151,7 +151,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "在頁面載入後，自動開啟所有訊息視窗。",
 	"maps-googlemaps3-par-gkml": "由 Google 託管載入到地圖的 KML 檔案。",
 	"maps-googlemaps3-par-fusiontables": "應載入置地圖的 Google 資料融合表 ID。",
-	"maps-googlemaps3-par-tilt": "使用 Google 地圖時用於地圖的 Tilt 參數。",
 	"maps-googlemaps3-par-kmlrezoom": "在 KML 圖層被載入後會重新縮放地圖。",
 	"maps-googlemaps3-par-poi": "顯示興趣點",
 	"maps-googlemaps3-par-clustergridsize": "像素叢集的網格大小。",

@@ -148,7 +148,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "Öppna automatiskt alla informationsfönster när sidan har lästs in.",
 	"maps-googlemaps3-par-gkml": "KML-filer, tillhandahållna av Google, att ladda på kartan.",
 	"maps-googlemaps3-par-fusiontables": "ID för Google Fusion-tabeller som ska laddas på kartan.",
-	"maps-googlemaps3-par-tilt": "Tilta för karta när du använder Google Maps.",
 	"maps-googlemaps3-par-kmlrezoom": "Zooma tillbaka till kartan efter att KML-lager har lästs in.",
 	"maps-googlemaps3-par-poi": "Visa platser av intresse.",
 	"maps-googlemaps3-par-clustergridsize": "Rutnätsstorleken för ett kluster i bildpunkter.",

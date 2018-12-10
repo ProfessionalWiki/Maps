@@ -32,8 +32,6 @@
 	"maps-latitude": "அட்சரேகை:",
 	"maps-longitude": "தீர்க்க ரேகை:",
 	"maps_map_cannot_be_displayed": "வரைபடத்தைக் காட்ட இயலவில்லை.",
-	"maps-osm-par-thumbs": "சிறு உருவப்படங்களை காண்பி",
-	"maps-osm-par-photos": "படிமங்களிக் காண்பி",
 	"mapeditor": "வரைபட தொகுப்பாளர்",
 	"specialpages-group-maps": "வரைபடங்கள்",
 	"mapeditor-parser-error": "மேல்நிலைத் தரவைப் பாகுபடுத்தலில் பிழை ஏற்பட்டுள்ளது. பயனர் உள்ளீடு புறக்கணிக்கப்படுகிறது.",
@@ -56,5 +54,10 @@
 	"mapeditor-form-field-link": "இணைப்பு",
 	"mapeditor-form-field-icon": "படவுரு",
 	"mapeditor-form-field-group": "குழு",
-	"mapeditor-form-field-image": "படம்"
+	"mapeditor-form-field-image": "படம்",
+	"semanticmaps-default-kml-pagelink": "பக்கம் $1 ஐ காண்க",
+	"semanticmaps-latitude": "அட்சரேகை: $1",
+	"semanticmaps-longitude": "தீர்க்கரேகை: $1",
+	"semanticmaps-altitude": "குத்துயரம்: $1",
+	"semanticmaps-forminput-locations": "இடங்கள்"
 }
