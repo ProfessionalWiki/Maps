@@ -9,6 +9,7 @@ Under development
 
 * Breaking change: removed OpenLayers service
 * Breaking change: removed `egMapsDefaultServices['qp']` setting (just use `egMapsDefaultService`)
+* Breaking change: removed Google `fusiontables` parameter (Google is retiring this service) 
 * Added transit layer support for Google Maps (`layers=transit`) (by @acnetj)
 * Added `egMapsGeoJsonCacheTtl` setting and optional caching for GeoJSON files
 * Fixed display of Maps category on Special:SpecialPages
