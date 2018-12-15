@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.0.0
 
-Under development
+Released on December 16th, 2018.
 
 * Breaking change: removed OpenLayers service
 * Breaking change: removed `egMapsDefaultServices['qp']` setting (just use `egMapsDefaultService`)

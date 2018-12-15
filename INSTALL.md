@@ -25,18 +25,25 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status</th>
 	</tr>
 	<tr>
-		<th>Maps 7.0x</th>
+		<th>Maps 7.1.x</th>
 		<td>7.1 - 7.3+</td>
 		<td>1.31 - 1.32+</td>
-		<td><strong>3.0+</strong></td>
-		<td>Planned December 2018</td>
+		<td>3.0+</td>
+		<td>Planned Q1 2019</td>
+	</tr>
+	<tr>
+		<th>Maps 7.0.x</th>
+		<td>7.1 - 7.3</td>
+		<td>1.31 - 1.32</td>
+		<td><strong>3.0.x</strong></td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
 		<th>Maps 6.3.x</th>
 		<td>7.1 - 7.2</td>
-		<td>1.31 - 1.32+</td>
-		<td>2.4 - 3.0+</td>
-		<td><strong>Stable release</strong></td>
+		<td>1.31 - 1.32</td>
+		<td>2.4 - 3.0</td>
+		<td><strong>Security fixes only</strong></td>
 	</tr>
 	<tr>
 		<th>Maps 6.2.x</th>
