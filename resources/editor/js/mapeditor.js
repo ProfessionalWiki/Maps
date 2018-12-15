@@ -113,9 +113,6 @@ var mapEditor = {
 		gkml:{
 			values:[]
 		},
-		fusiontables:{
-			values:[]
-		},
 		resizable:{
 			values:[]
 		},

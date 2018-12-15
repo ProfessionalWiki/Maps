@@ -215,12 +215,6 @@ class GoogleMapsService extends MappingService {
 			'islist' => true,
 		];
 
-		$params['fusiontables'] = [
-			'default' => [],
-			'message' => 'maps-googlemaps3-par-fusiontables',
-			'islist' => true,
-		];
-
 		$params['searchmarkers'] = [
 			'default' => '',
 			'message' => 'maps-par-searchmarkers',

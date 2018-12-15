@@ -550,10 +550,6 @@
 				this.addMarker(options.locations[i]);
 			}
 
-			for (i = options.fusiontables.length - 1; i >= 0; i--) {
-				var ftLayer = new google.maps.FusionTablesLayer(options.fusiontables[i], { map:map });
-			}
-
 			for (i = options.layers.length - 1; i >= 0; i--) {
 				if ( options.layers[i] === 'traffic' ) {
 					( new google.maps.TrafficLayer() ).setMap(map);
