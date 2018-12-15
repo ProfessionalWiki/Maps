@@ -118,7 +118,7 @@ class LocationParser implements ValueParser {
 	}
 
 	private function getExpandedLink( $link ) {
-		if ( filter_var( $link, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED ) ) {
+		if ( filter_var( $link, FILTER_VALIDATE_URL ) ) {
 			return $link;
 		}
 
