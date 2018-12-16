@@ -43,7 +43,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>7.1 - 7.2</td>
 		<td>1.31 - 1.32</td>
 		<td>2.4 - 3.0</td>
-		<td><strong>Security fixes only</strong></td>
+		<td><i>Security fixes only</i></td>
 	</tr>
 	<tr>
 		<th>Maps 6.2.x</th>
@@ -71,7 +71,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>7.0 - 7.2</td>
 		<td>1.27 - 1.31</td>
 		<td>2.1 - 3.0</td>
-		<td><strong>Security fixes only</strong></td>
+		<td><i>Security fixes only</i></td>
 	</tr>
 	<tr>
 		<th>Maps 5.5.x</th>
