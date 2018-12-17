@@ -156,7 +156,6 @@
 	"maps-googlemaps3-par-typestyle": "El estilo del control de tipo.",
 	"maps-googlemaps3-par-autoinfowindows": "Abrir automáticamente todas las ventanas de información después de que la página se haya cargado.",
 	"maps-googlemaps3-par-gkml": "Archivos KML alojados por Google para cargar en el mapa.",
-	"maps-googlemaps3-par-fusiontables": "Identificadores de las tablas de Google Fusion que se deben cargar en el mapa.",
 	"maps-googlemaps3-par-kmlrezoom": "Ajustar el nivel de zoom del mapa después de que se hayan cargado las capas KML.",
 	"maps-googlemaps3-par-poi": "Mostrar puntos de interés.",
 	"maps-googlemaps3-par-clustergridsize": "La medida de la cuadrícula de una agrupación en píxeles.",

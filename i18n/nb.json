@@ -143,7 +143,6 @@
 	"maps-googlemaps3-par-typestyle": "Stilen for typevelgeren.",
 	"maps-googlemaps3-par-autoinfowindows": "Åpne automatisk alle informasjonsvinduer etter at siden er blitt lastet.",
 	"maps-googlemaps3-par-gkml": "KML-filer, forvaltet av Google, til å legge inn på kartet.",
-	"maps-googlemaps3-par-fusiontables": "Id-er for Google Fusjon-tabeller som burde lastes inn på kartet.",
 	"maps-googlemaps3-par-kmlrezoom": "Zoom tilbake til kartet etter at KML-lagene har blitt lastet.",
 	"maps-googlemaps3-par-poi": "Vis plasser av interesse.",
 	"maps-googlemaps3-par-clustergridsize": "Rutenettstørrelsen for et kluster angitt i piksler.",

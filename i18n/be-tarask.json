@@ -103,7 +103,6 @@
 	"maps-googlemaps3-par-typestyle": "Стыль элемэнта кіраваньня тыпамі.",
 	"maps-googlemaps3-par-autoinfowindows": "Аўтаматычна адкрываць ўсе інфармацыйныя вокны, пасьля таго, як старонка была загружаная.",
 	"maps-googlemaps3-par-gkml": "Файлы KML разьмешчаныя на Google для загрузкі на мапу.",
-	"maps-googlemaps3-par-fusiontables": "Ідэнтыфікатары табліцаў Google Fusion, якія павінны быць загружаныя ў мапу.",
 	"maps-googlemaps3-par-kmlrezoom": "Зьмяняць маштаб мапы пасьля загрузкі KML-слаёў.",
 	"maps-googlemaps3-par-poi": "Паказаць выбітныя мясьціны.",
 	"mapeditor": "Рэдактар мап",

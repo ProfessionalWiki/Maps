@@ -158,7 +158,6 @@
 	"maps-googlemaps3-par-typestyle": "Style du contrôle de type.",
 	"maps-googlemaps3-par-autoinfowindows": "Ouvrir automatiquement toutes les fenêtres d'information après le chargement de la page.",
 	"maps-googlemaps3-par-gkml": "Les fichiers KML hébergés par Google à charger sur la carte.",
-	"maps-googlemaps3-par-fusiontables": "ID des tables de Google Fusion qui devraient être chargées sur la carte.",
 	"maps-googlemaps3-par-kmlrezoom": "Zoomer de nouveau la carte une fois que les couches KML ont été chargées.",
 	"maps-googlemaps3-par-poi": "Afficher les points d’intérêt.",
 	"maps-googlemaps3-par-clustergridsize": "La taille de la grille (en pixels) d'un agrégat.",

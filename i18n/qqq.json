@@ -151,7 +151,6 @@
 	"maps-googlemaps3-par-typestyle": "{{maps-par|googlemaps3|typestyle}}",
 	"maps-googlemaps3-par-autoinfowindows": "{{maps-par|googlemaps3|autoinfowindows}}",
 	"maps-googlemaps3-par-gkml": "{{maps-par|googlemaps3|gkml}}",
-	"maps-googlemaps3-par-fusiontables": "{{maps-par|googlemaps3|fusiontables}}",
 	"maps-googlemaps3-par-kmlrezoom": "{{maps-par|googlemaps3|kmlrezoom}}\n\nKML stands for [[w:Keyhole Markup Language|Keyhole Markup Language]].",
 	"maps-googlemaps3-par-poi": "{{maps-par|googlemaps3|poi}}",
 	"maps-googlemaps3-par-clustergridsize": "{{maps-par|googlemaps3|clustergridsize}}",

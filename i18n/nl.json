@@ -138,7 +138,6 @@
 	"maps-googlemaps3-par-typestyle": "De stijl van het besturingselement type.",
 	"maps-googlemaps3-par-autoinfowindows": "Automatisch alle informatievensters openen na het laden van een pagina.",
 	"maps-googlemaps3-par-gkml": "KML-bestanden die gehost worden door Google om op de kaart te laden.",
-	"maps-googlemaps3-par-fusiontables": "Op de kaart te laden ID's van Google Fusion Tables.",
 	"maps-googlemaps3-par-kmlrezoom": "Het zoomniveau van de kaart opnieuw instellen als de KML-lagen geladen zijn.",
 	"maps-googlemaps3-par-poi": "Interessante plaatsen weergeven.",
 	"maps-par-clustermaxzoom": "Het maximale zoomniveau waar clusters kunnen bestaan.",
