@@ -113,6 +113,10 @@ class MapsFactory {
 	}
 
 	public function getGeoJsonFileFetcher(): FileFetcher {
+		if ( $this->settings['egMapsGeoJsonCacheTtl'] === 0 ) {
+			return $this->getFileFetcher();
+		}
+
 		return new CachingFileFetcher(
 			$this->getFileFetcher(),
 			$this->getMediaWikiSimpleCache( $this->settings['egMapsGeoJsonCacheTtl'] )
