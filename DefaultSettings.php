@@ -113,6 +113,10 @@ return [
 	// Boolean. Sets if direction labels should be translated to their equivalent in the wiki language or not.
 	'egMapsInternatDirectionLabels' => true,
 
+	// Boolean. When false, the #coordinates parser function will not be enabled.
+	// This is useful for people using the GeoData extension and want to use its #coordinates function instead.
+	'egMapsEnableCoordinateFunction' => true,
+
 
 
 

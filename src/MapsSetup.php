@@ -87,10 +87,11 @@ class MapsSetup {
 	}
 
 	private function registerParserHooks() {
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-			$instance = new CoordinatesFunction();
-			return $instance->init( $parser );
-		};
+		if ( $this->mwGlobals['egMapsEnableCoordinateFunction'] ) {
+			$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
+				return ( new CoordinatesFunction() )->init( $parser );
+			};
+		}
 
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			foreach ( [ 'display_map', 'display_point', 'display_points', 'display_line' ] as $hookName ) {
