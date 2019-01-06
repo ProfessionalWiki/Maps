@@ -8,6 +8,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development
 
 * Added `egMapsEnableCoordinateFunction` setting (for people using the GeoData extension)
+* Fixed fatal error on Special:MapEditor (6.1.0 regression) (by @paladox)
 
 ## Maps 7.0.0
 
