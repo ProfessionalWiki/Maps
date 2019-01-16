@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.1.0
 
-Under development
+Released on January 16th, 2019.
 
 * Added `egMapsEnableCoordinateFunction` setting (for people using the GeoData extension)
 * Fixed fatal error on Special:MapEditor (6.1.0 regression) (by @paladox)
