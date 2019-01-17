@@ -37,7 +37,8 @@
 		"mediawiki/parser-hooks": "~1.5",
 		"param-processor/param-processor": "~1.4.2",
 		"data-values/geo": "~4.0|~3.0",
-		"jeroen/file-fetcher": "~4.2",
+		"jeroen/file-fetcher": "~5.0|~4.2",
+		"jeroen/file-fetcher-cache": "~1.0",
 		"jeroen/simple-cache": "~2.0",
 		"jeroen/simple-geocoder": "~1.2"
 	},
