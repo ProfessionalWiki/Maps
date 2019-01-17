@@ -240,7 +240,7 @@
 	"validator-type-mapsline": "Географическая линия",
 	"validator-type-mapsline-list": "Список линий",
 	"validator-type-mapslocation": "Географическое положение",
-	"validator-type-mapslocation-list": "Список положений",
+	"validator-type-mapslocation-list": "Список местоположений",
 	"validator-type-mapsrectangle": "Географический прямоугольник",
 	"validator-type-mapsrectangle-list": "Список прямоугольников",
 	"validator-type-mapspolygon": "Географический полигон",
