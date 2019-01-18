@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
-use FileFetcher\CachingFileFetcher;
+use FileFetcher\Cache\Factory as CacheFactory;
 use FileFetcher\FileFetcher;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
@@ -117,7 +117,7 @@ class MapsFactory {
 			return $this->getFileFetcher();
 		}
 
-		return new CachingFileFetcher(
+		return ( new CacheFactory() )->newJeroenSimpleCacheFetcher(
 			$this->getFileFetcher(),
 			$this->getMediaWikiSimpleCache( $this->settings['egMapsGeoJsonCacheTtl'] )
 		);
