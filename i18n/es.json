@@ -24,7 +24,8 @@
 			"Lemondoge",
 			"Rubentl134",
 			"AlvaroMolina",
-			"Dgstranz"
+			"Dgstranz",
+			"Carlosmg.dg"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
@@ -228,5 +229,5 @@
 	"validator-type-mapsrectangle-list": "Lista de rectángulos",
 	"validator-type-mapspolygon": "Polígono geográfico",
 	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "texto"
 }
