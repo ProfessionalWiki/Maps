@@ -33,7 +33,7 @@ class MapQueryTest extends TestCase {
 		}
 
 		$this->pageCreator = TestFactory::newInstance()->getPageCreator();
-		$this->contentFetcher = MapsFactory::globalInstance()->getPageContentFetcher();
+		$this->contentFetcher = MapsFactory::newDefault()->getPageContentFetcher();
 	}
 
 	public function testMapQuery() {

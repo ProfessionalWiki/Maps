@@ -75,13 +75,6 @@ final class MappingServices {
 		return $this->nameToServiceMap[$this->defaultService];
 	}
 
-	/**
-	 * @deprecated
-	 */
-	public static function getServiceInstance( string $serviceIdentifier ): MappingService {
-		return MapsFactory::globalInstance()->getMappingServices()->nameToServiceMap[$serviceIdentifier];
-	}
-
 	public function getAllNames(): array {
 		return array_keys( $this->nameToServiceMap );
 	}

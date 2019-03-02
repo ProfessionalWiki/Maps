@@ -58,8 +58,6 @@ class SemanticMaps {
 	}
 
 	private function registerLeaflet() {
-
-
 		// TODO: inject
 		$services = MapsFactory::globalInstance()->getMappingServices();
 
