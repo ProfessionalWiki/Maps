@@ -10,7 +10,6 @@ use Maps\Elements\Location;
 use Maps\FileUrlFinder;
 use Maps\MappingService;
 use Maps\MapsFunctions;
-use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\Presentation\ElementJsonSerializer;
 use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;

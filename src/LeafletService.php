@@ -3,7 +3,6 @@
 namespace Maps;
 
 use Html;
-use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 
 /**
  * @licence GNU GPL v2+
