@@ -58,18 +58,7 @@ class SemanticMaps {
 	}
 
 	private function registerLeaflet() {
-		$this->mwGlobals['wgResourceModules']['ext.sm.fi.leafletajax'] = [
-			'localBasePath' => __DIR__ . '/../resources/leaflet',
-			'remoteExtPath' => 'Maps/resources/leaflet',
-			'group' => 'ext.semanticmaps',
-			'dependencies' => [
-				'ext.maps.leaflet',
-				'ext.sm.common'
-			],
-			'scripts' => [
-				'ext.sm.leafletajax.js'
-			]
-		];
+
 
 		// TODO: inject
 		$services = MapsFactory::globalInstance()->getMappingServices();

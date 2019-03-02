@@ -389,6 +389,19 @@ class MapsSetup {
 				'leaflet.editor.js',
 			],
 		];
+
+		$wgResourceModules['ext.sm.leafletajax'] = [
+			'localBasePath' => $localBasePath,
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.semanticmaps',
+			'dependencies' => [
+				'ext.maps.leaflet',
+				'ext.sm.common'
+			],
+			'scripts' => [
+				'ext.sm.leafletajax.js'
+			]
+		];
 	}
 
 	private function registerPermissions() {
