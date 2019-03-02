@@ -16,6 +16,7 @@ use Maps\DataAccess\CachingGeocoder;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\PageContentFetcher;
+use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
 use Maps\Presentation\CoordinateFormatter;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use MediaWiki\MediaWikiServices;
@@ -147,6 +148,21 @@ class MapsFactory {
 
 	public function getFileUrlFinder(): FileUrlFinder {
 		return new MediaWikiFileUrlFinder();
+	}
+
+	public function getMappingServices(): MappingServices {
+		return new MappingServices(
+			$this->settings['egMapsAvailableServices'],
+			$this->settings['egMapsDefaultService'],
+			new GoogleMapsService(),
+			new LeafletService()
+		);
+	}
+
+	public function getDisplayMapFunction(): DisplayMapFunction {
+		return new DisplayMapFunction(
+			$this->getMappingServices()
+		);
 	}
 
 }

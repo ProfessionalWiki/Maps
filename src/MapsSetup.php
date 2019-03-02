@@ -98,9 +98,7 @@ class MapsSetup {
 				$parser->setFunctionHook(
 					$hookName,
 					function ( Parser $parser, PPFrame $frame, array $arguments ) {
-						$hook = new DisplayMapFunction();
-
-						$mapHtml = $hook->getMapHtmlForKeyValueStrings(
+						$mapHtml = MapsFactory::newDefault()->getDisplayMapFunction()->getMapHtmlForKeyValueStrings(
 							$parser,
 							array_map(
 								function ( $argument ) use ( $frame ) {
@@ -132,7 +130,7 @@ class MapsSetup {
 							}
 						}
 
-						return ( new DisplayMapFunction() )->getMapHtmlForParameterList( $parser, $arguments );
+						return MapsFactory::newDefault()->getDisplayMapFunction()->getMapHtmlForParameterList( $parser, $arguments );
 					}
 				);
 			}
@@ -165,13 +163,7 @@ class MapsSetup {
 
 		$this->registerGoogleMapsModules( $localBasePath, $remoteExtPath );
 
-		MappingServices::registerService( 'googlemaps3', GoogleMapsService::class );
-
-
-		// Leaflet API
 		$this->registerLeafletModules( $localBasePath, $remoteExtPath );
-
-		MappingServices::registerService( 'leaflet', LeafletService::class );
 	}
 
 	private function registerGoogleMapsModules( string $localBasePath, string $remoteExtPath ) {
