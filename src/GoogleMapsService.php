@@ -251,17 +251,10 @@ class GoogleMapsService extends MappingService {
 		return array_keys( self::$mapTypes );
 	}
 
-	/**
-	 * @see MappingService::getMapId
-	 *
-	 * @since 0.6.5
-	 */
-	public function getMapId( $increment = true ) {
+	public function getMapId(): string {
 		static $mapsOnThisPage = 0;
 
-		if ( $increment ) {
-			$mapsOnThisPage++;
-		}
+		$mapsOnThisPage++;
 
 		return 'map_google3_' . $mapsOnThisPage;
 	}

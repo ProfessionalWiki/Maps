@@ -121,17 +121,10 @@ class LeafletService extends MappingService {
 		return $GLOBALS['egMapsLeafletZoom'];
 	}
 
-	/**
-	 * @see MappingService::getMapId
-	 *
-	 * @since 3.0
-	 */
-	public function getMapId( $increment = true ) {
+	public function getMapId(): string {
 		static $mapsOnThisPage = 0;
 
-		if ( $increment ) {
-			$mapsOnThisPage++;
-		}
+		$mapsOnThisPage++;
 
 		return 'map_leaflet_' . $mapsOnThisPage;
 	}
