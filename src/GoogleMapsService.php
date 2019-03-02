@@ -281,8 +281,6 @@ class GoogleMapsService extends MappingService {
 	}
 
 	/**
-	 * @see MappingService::getDependencies
-	 *
 	 * @return array
 	 */
 	protected function getDependencies() {

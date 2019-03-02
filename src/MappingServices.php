@@ -5,9 +5,7 @@ namespace Maps;
 use MWException;
 
 /**
- * Class for interaction with MappingService objects.
- *
- * @since 0.6.6
+ * @deprecated
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

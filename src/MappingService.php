@@ -5,10 +5,7 @@ namespace Maps;
 use ParserOutput;
 
 /**
- * Base class for mapping services. Deriving classes hold mapping service specific
- * information and functionality, which can be used by any mapping feature.
- *
- * @since 0.6.3
+ * @deprecated
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
