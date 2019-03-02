@@ -2,8 +2,6 @@
 
 namespace Maps;
 
-use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
-use MWException;
 use ParserOutput;
 
 /**

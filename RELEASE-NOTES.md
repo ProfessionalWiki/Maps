@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.1.1
+
+Under development
+
+* Fixed resource loading issue when using Maps is in a non-default directory
+
 ## Maps 7.1.0
 
 Released on January 16th, 2019.
