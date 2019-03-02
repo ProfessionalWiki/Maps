@@ -283,12 +283,8 @@ class GoogleMapsService extends MappingService {
 
 	/**
 	 * Maps language codes to Google Maps API v3 compatible values.
-	 *
-	 * @param string $code
-	 *
-	 * @return string The mapped code
 	 */
-	protected static function getMappedLanguageCode( $code ) {
+	private static function getMappedLanguageCode( string $code ): string {
 		$mappings = [
 			'en_gb' => 'en-gb',// v3 supports en_gb - but wants us to call it en-gb
 			'he' => 'iw',      // iw is googlish for hebrew
@@ -296,7 +292,7 @@ class GoogleMapsService extends MappingService {
 		];
 
 		if ( array_key_exists( $code, $mappings ) ) {
-			$code = $mappings[$code];
+			return $mappings[$code];
 		}
 
 		return $code;
