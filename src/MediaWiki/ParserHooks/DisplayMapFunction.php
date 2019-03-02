@@ -49,13 +49,14 @@ class DisplayMapFunction {
 			)
 		);
 
-		$parameterDefinitions = self::getHookDefinition( ';' )->getParameters();
-		$service->addParameterInfo( $parameterDefinitions );
 		$this->renderer->service = $service;
 
 		$processor->setFunctionParams(
 			$parameters,
-			$parameterDefinitions,
+			array_merge(
+				self::getHookDefinition( ';' )->getParameters(),
+				$service->getParameterInfo()
+			),
 			self::getHookDefinition( ';' )->getDefaultParameters()
 		);
 
@@ -76,13 +77,14 @@ class DisplayMapFunction {
 		// TODO: do not use global access
 		$service = MappingServices::getServiceInstance( $this->extractServiceName( $parameters ) );
 
-		$parameterDefinitions = self::getHookDefinition( "\n" )->getParameters();
-		$service->addParameterInfo( $parameterDefinitions );
 		$this->renderer->service = $service;
 
 		$processor->setParameters(
 			$parameters,
-			$parameterDefinitions
+			array_merge(
+				self::getHookDefinition( "\n" )->getParameters(),
+				$service->getParameterInfo()
+			)
 		);
 
 		return $this->getMapHtmlFromProcessor( $parser, $processor );

@@ -2,6 +2,7 @@
 
 namespace Maps;
 
+use ParamProcessor\ParamDefinition;
 use ParserOutput;
 
 /**
@@ -11,20 +12,6 @@ use ParserOutput;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class MappingService {
-
-	/**
-	 * The internal name of the service.
-	 *
-	 * @var string
-	 */
-	protected $serviceName;
-
-	/**
-	 * A list of aliases for the internal name.
-	 *
-	 * @var array
-	 */
-	protected $aliases;
 
 	/**
 	 * A list of dependencies (header items) that have been added.
@@ -41,21 +28,9 @@ abstract class MappingService {
 	private $dependencies = [];
 
 	/**
-	 * @param string $serviceName
-	 * @param array $aliases
+	 * @return array[]|ParamDefinition[]
 	 */
-	public function __construct( $serviceName, array $aliases = [] ) {
-		$this->serviceName = $serviceName;
-		$this->aliases = $aliases;
-	}
-
-	/**
-	 * @since 0.7
-	 *
-	 * @param $parameterInfo array of IParam
-	 */
-	public function addParameterInfo( array &$parameterInfo ) {
-	}
+	public abstract function getParameterInfo(): array;
 
 	/**
 	 * @since 5.2.0
@@ -108,26 +83,11 @@ abstract class MappingService {
 	 */
 	public abstract function getResourceModules(): array;
 
-	/**
-	 * @since 0.6.3
-	 */
-	public function getName() {
-		return $this->serviceName;
-	}
+	public abstract function getName(): string;
 
-	/**
-	 * @since 0.6.3
-	 */
-	public function getAliases() {
-		return $this->aliases;
-	}
+	public abstract function getAliases(): array;
 
-	/**
-	 * @since 0.6.3
-	 */
-	public function hasAlias( $alias ) {
-		return in_array( $alias, $this->aliases );
-	}
+	public abstract function hasAlias( string $alias ): bool;
 
 	/**
 	 * @param array $dependencies
@@ -145,13 +105,6 @@ abstract class MappingService {
 	 */
 	public final function addHtmlDependency( $dependencyHtml ) {
 		$this->dependencies[] = $dependencyHtml;
-	}
-
-	/**
-	 * @since 1.0
-	 */
-	public function getEarthZoom() {
-		return 1;
 	}
 
 	public abstract function getMapId();

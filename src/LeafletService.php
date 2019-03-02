@@ -5,28 +5,26 @@ namespace Maps;
 use Html;
 
 /**
- * Class holding information and functionality specific to Leaflet.
- * This information and features can be used by any mapping feature.
- *
  * @licence GNU GPL v2+
- * @author Pavel Astakhov < pastakhov@yandex.ru >
  */
 class LeafletService extends MappingService {
 
-	public function __construct( $serviceName ) {
-		parent::__construct(
-			$serviceName,
-			[ 'leafletmaps', 'leaflet' ]
-		);
+	public function getName(): string {
+		return 'leaflet';
 	}
 
-	/**
-	 * @see MappingService::addParameterInfo
-	 *
-	 * @since 3.0
-	 */
-	public function addParameterInfo( array &$params ) {
+	public function getAliases(): array {
+		return [ 'leafletmaps', 'leaflet' ]; // TODO: main name should not be in here?
+	}
+
+	public function hasAlias( string $alias ): bool {
+		return in_array( $alias, [ 'leafletmaps', 'leaflet' ] );
+	}
+
+	public function getParameterInfo(): array {
 		global $GLOBALS;
+
+		$params = [];
 
 		$params['zoom'] = [
 			'type' => 'integer',
@@ -112,6 +110,8 @@ class LeafletService extends MappingService {
 			'default' => '',
 			'message' => 'maps-displaymap-par-geojson',
 		];
+
+		return $params;
 	}
 
 	/**

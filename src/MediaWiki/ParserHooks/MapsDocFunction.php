@@ -40,18 +40,15 @@ class MapsDocFunction extends ParserHook {
 	}
 
 	private function getServiceParameters( $service ) {
-		$service = MappingServices::getServiceInstance( $service );
-
-		$params = [];
-
-		$params['zoom'] = [
-			'type' => 'integer',
-			'message' => 'maps-par-zoom',
-		];
-
-		$service->addParameterInfo( $params );
-
-		return $params;
+		return array_merge(
+			[
+				'zoom' => [
+					'type' => 'integer',
+					'message' => 'maps-par-zoom',
+				]
+			],
+			MappingServices::getServiceInstance( $service )->getParameterInfo()
+		);
 	}
 
 	/**

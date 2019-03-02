@@ -5,16 +5,23 @@ namespace Maps;
 use Html;
 
 /**
- * Class holding information and functionality specific to Google Maps v3.
- * This information and features can be used by any mapping feature.
- *
- * @since 0.7
- *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
 class GoogleMapsService extends MappingService {
+
+	public function getName(): string {
+		return 'googlemaps3';
+	}
+
+	public function getAliases(): array {
+		return [ 'googlemaps', 'google' ];
+	}
+
+	public function hasAlias( string $alias ): bool {
+		return in_array( $alias, [ 'googlemaps', 'google' ] );
+	}
 
 	/**
 	 * Maps user input map types to the Google Maps names for the map types.
@@ -35,22 +42,12 @@ class GoogleMapsService extends MappingService {
 		'dropdown' => 'DROPDOWN_MENU'
 	];
 
-	public function __construct( $serviceName ) {
-		parent::__construct(
-			$serviceName,
-			[ 'googlemaps', 'google' ]
-		);
-	}
-
-	/**
-	 * @see MappingService::addParameterInfo
-	 *
-	 * @since 0.7
-	 */
-	public function addParameterInfo( array &$params ) {
+	public function getParameterInfo(): array {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
 		global $egMapsResizableByDefault;
+
+		$params = [];
 
 		$params['zoom'] = [
 			'type' => 'integer',
@@ -232,6 +229,8 @@ class GoogleMapsService extends MappingService {
 			'default' => false,
 			'message' => 'maps-par-scrollwheelzoom',
 		];
+
+		return $params;
 	}
 
 	/**
