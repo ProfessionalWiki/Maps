@@ -3,11 +3,14 @@
 namespace Maps;
 
 use Html;
+use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 
 /**
  * @licence GNU GPL v2+
  */
 class LeafletService extends MappingService {
+
+	private $addedDependencies = [];
 
 	public function getName(): string {
 		return 'leaflet';
@@ -133,12 +136,50 @@ class LeafletService extends MappingService {
 		return [ 'ext.maps.leaflet', 'ext.sm.fi.leafletajax' ];
 	}
 
-	protected function getDependencies() {
+	public function getDependencyHtml( array $params ): string {
+		$dependencies = [];
+
+		// Only add dependencies that have not yet been added.
+		foreach ( $this->getDependencies( $params ) as $dependency ) {
+			if ( !in_array( $dependency, $this->addedDependencies ) ) {
+				$dependencies[] = $dependency;
+				$this->addedDependencies[] = $dependency;
+			}
+		}
+
+		// If there are dependencies, put them all together in a string, otherwise return false.
+		return $dependencies !== [] ? implode( '', $dependencies ) : false;
+	}
+
+	private function getDependencies( array $params ): array {
 		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/leaflet/leaflet';
-		return [
-			Html::linkedStyle( "$leafletPath/leaflet.css" ),
-			Html::linkedScript( "$leafletPath/leaflet.js" ),
-		];
+
+		return array_merge(
+			[
+				Html::linkedStyle( "$leafletPath/leaflet.css" ),
+				Html::linkedScript( "$leafletPath/leaflet.js" ),
+			],
+			$this->getLayerDependencies( $params )
+		);
+	}
+
+	private function getLayerDependencies( array $params ) {
+		global $egMapsLeafletLayerDependencies, $egMapsLeafletAvailableLayers,
+			   $egMapsLeafletLayersApiKeys;
+
+		$layerDependencies = [];
+
+		foreach ( $params['layers'] as $layerName ) {
+			if ( array_key_exists( $layerName, $egMapsLeafletAvailableLayers )
+				&& $egMapsLeafletAvailableLayers[$layerName]
+				&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
+				&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
+				$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
+					$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
+			}
+		}
+
+		return array_unique( $layerDependencies );
 	}
 
 }

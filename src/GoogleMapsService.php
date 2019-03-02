@@ -30,6 +30,8 @@ class GoogleMapsService extends MappingService {
 		'dropdown' => 'DROPDOWN_MENU'
 	];
 
+	private $addedDependencies = [];
+
 	public function getName(): string {
 		return 'googlemaps3';
 	}
@@ -252,18 +254,6 @@ class GoogleMapsService extends MappingService {
 		return [ 'ext.maps.googlemaps3', 'ext.sm.googlemaps3ajax' ];
 	}
 
-	/**
-	 * @return array
-	 */
-	protected function getDependencies() {
-		return [
-			self::getApiScript(
-				is_string( $GLOBALS['egMapsGMaps3Language'] ) ?
-					$GLOBALS['egMapsGMaps3Language'] : $GLOBALS['egMapsGMaps3Language']->getCode()
-			)
-		];
-	}
-
 	public static function getApiScript( $langCode, array $urlArgs = [] ) {
 		$urlArgs = array_merge(
 			[
@@ -296,5 +286,29 @@ class GoogleMapsService extends MappingService {
 		}
 
 		return $code;
+	}
+
+	public function getDependencyHtml( array $params ): string {
+		$dependencies = [];
+
+		// Only add dependencies that have not yet been added.
+		foreach ( $this->getDependencies() as $dependency ) {
+			if ( !in_array( $dependency, $this->addedDependencies ) ) {
+				$dependencies[] = $dependency;
+				$this->addedDependencies[] = $dependency;
+			}
+		}
+
+		// If there are dependencies, put them all together in a string, otherwise return false.
+		return $dependencies !== [] ? implode( '', $dependencies ) : false;
+	}
+
+	private function getDependencies(): array {
+		return [
+			self::getApiScript(
+				is_string( $GLOBALS['egMapsGMaps3Language'] ) ?
+					$GLOBALS['egMapsGMaps3Language'] : $GLOBALS['egMapsGMaps3Language']->getCode()
+			)
+		];
 	}
 }

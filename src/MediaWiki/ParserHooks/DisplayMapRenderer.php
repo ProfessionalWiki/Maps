@@ -71,11 +71,7 @@ class DisplayMapRenderer {
 			$this->service->getMapId()
 		);
 
-		$this->service->addHtmlDependencies(
-			self::getLayerDependencies( $params['mappingservice'], $params )
-		);
-
-		$dependencies = $this->service->getDependencyHtml();
+		$dependencies = $this->service->getDependencyHtml( $params );
 
 		// Only add a head item when there are dependencies.
 		if ( $dependencies ) {
@@ -204,28 +200,6 @@ class DisplayMapRenderer {
 				FormatJson::encode( $params )
 			)
 		);
-	}
-
-	public static function getLayerDependencies( $service, $params ) {
-		global $egMapsLeafletLayerDependencies, $egMapsLeafletAvailableLayers,
-			   $egMapsLeafletLayersApiKeys;
-
-		$layerDependencies = [];
-
-		if ( $service === 'leaflet' ) {
-			$layerNames = $params['layers'];
-			foreach ( $layerNames as $layerName ) {
-				if ( array_key_exists( $layerName, $egMapsLeafletAvailableLayers )
-					&& $egMapsLeafletAvailableLayers[$layerName]
-					&& array_key_exists( $layerName, $egMapsLeafletLayersApiKeys )
-					&& array_key_exists( $layerName, $egMapsLeafletLayerDependencies ) ) {
-					$layerDependencies[] = '<script src="' . $egMapsLeafletLayerDependencies[$layerName] .
-						$egMapsLeafletLayersApiKeys[$layerName] . '"></script>';
-				}
-			}
-		}
-
-		return array_unique( $layerDependencies );
 	}
 
 }

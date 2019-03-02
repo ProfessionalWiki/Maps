@@ -127,10 +127,6 @@ class MapPrinter extends ResultPrinter {
 
 		$params['ajaxquery'] = urlencode( $params['ajaxquery'] );
 
-		$this->service->addHtmlDependencies(
-			DisplayMapRenderer::getLayerDependencies( $params['format'], $params )
-		);
-
 		if ( $params['locations'] === [] ) {
 			return $params['default'];
 		}
@@ -145,7 +141,7 @@ class MapPrinter extends ResultPrinter {
 
 		SMWOutputs::requireHeadItem(
 			$mapName,
-			$this->service->getDependencyHtml()
+			$this->service->getDependencyHtml( $params )
 		);
 
 		foreach ( $this->service->getResourceModules() as $resourceModule ) {
