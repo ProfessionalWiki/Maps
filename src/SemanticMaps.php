@@ -44,13 +44,17 @@ class SemanticMaps {
 	}
 
 	private function registerGoogleMaps() {
-		/* @var MappingService $googleMaps */
-		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
+		// TODO: inject
+		$services = MapsFactory::globalInstance()->getMappingServices();
 
-		MapPrinter::registerService( $googleMaps );
+		if ( $services->nameIsKnown( 'googlemaps3' ) ) {
+			$googleMaps = $services->getService( 'googlemaps3' );
 
-		$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = MapPrinter::class;
-		$this->mwGlobals['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
+			MapPrinter::registerService( $googleMaps );
+
+			$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = MapPrinter::class;
+			$this->mwGlobals['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
+		}
 	}
 
 	private function registerLeaflet() {
@@ -67,13 +71,17 @@ class SemanticMaps {
 			]
 		];
 
-		/* @var MappingService $leaflet */
-		$leaflet = MappingServices::getServiceInstance( 'leaflet' );
+		// TODO: inject
+		$services = MapsFactory::globalInstance()->getMappingServices();
 
-		MapPrinter::registerService( $leaflet );
+		if ( $services->nameIsKnown( 'leaflet' ) ) {
+			$leaflet = $services->getService( 'leaflet' );
 
-		$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = MapPrinter::class;
-		$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
+			MapPrinter::registerService( $leaflet );
+
+			$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = MapPrinter::class;
+			$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
+		}
 	}
 
 }

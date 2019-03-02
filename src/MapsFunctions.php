@@ -79,7 +79,7 @@ final class MapsFunctions {
 			'type' => 'string',
 			'aliases' => 'service',
 			'default' => $GLOBALS['egMapsDefaultService'],
-			'values' => self::getAllPossibleServiceValues(),
+			'values' => MapsFactory::globalInstance()->getMappingServices()->getAllNames(),
 		];
 
 		$params['width'] = [
@@ -199,20 +199,6 @@ final class MapsFunctions {
 		}
 
 		return $params;
-	}
-
-	private static function getAllPossibleServiceValues(): array {
-		$allServiceValues = [];
-
-		foreach ( $GLOBALS['egMapsAvailableServices'] as $availableService ) {
-			$allServiceValues = array_merge(
-				$allServiceValues,
-				[ $availableService ],
-				MappingServices::getServiceInstance( $availableService )->getAliases()
-			);
-		}
-
-		return $allServiceValues;
 	}
 
 	/**

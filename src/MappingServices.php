@@ -82,4 +82,8 @@ final class MappingServices {
 		return MapsFactory::globalInstance()->getMappingServices()->nameToServiceMap[$serviceIdentifier];
 	}
 
+	public function getAllNames(): array {
+		return array_keys( $this->nameToServiceMap );
+	}
+
 }
