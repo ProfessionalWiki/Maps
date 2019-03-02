@@ -11,6 +11,25 @@ use Html;
  */
 class GoogleMapsService extends MappingService {
 
+	/**
+	 * Maps user input map types to the Google Maps names for the map types.
+	 */
+	private const MAP_TYPES = [
+		'normal' => 'ROADMAP',
+		'roadmap' => 'ROADMAP',
+		'satellite' => 'SATELLITE',
+		'hybrid' => 'HYBRID',
+		'terrain' => 'TERRAIN',
+		'physical' => 'TERRAIN',
+		'earth' => 'earth'
+	];
+
+	private const TYPE_CONTROL_STYLES = [
+		'default' => 'DEFAULT',
+		'horizontal' => 'HORIZONTAL_BAR',
+		'dropdown' => 'DROPDOWN_MENU'
+	];
+
 	public function getName(): string {
 		return 'googlemaps3';
 	}
@@ -22,25 +41,6 @@ class GoogleMapsService extends MappingService {
 	public function hasAlias( string $alias ): bool {
 		return in_array( $alias, [ 'googlemaps', 'google' ] );
 	}
-
-	/**
-	 * Maps user input map types to the Google Maps names for the map types.
-	 */
-	private static $mapTypes = [
-		'normal' => 'ROADMAP',
-		'roadmap' => 'ROADMAP',
-		'satellite' => 'SATELLITE',
-		'hybrid' => 'HYBRID',
-		'terrain' => 'TERRAIN',
-		'physical' => 'TERRAIN',
-		'earth' => 'earth'
-	];
-
-	private static $typeControlStyles = [
-		'default' => 'DEFAULT',
-		'horizontal' => 'HORIZONTAL_BAR',
-		'dropdown' => 'DROPDOWN_MENU'
-	];
 
 	public function getParameterInfo(): array {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
@@ -61,7 +61,7 @@ class GoogleMapsService extends MappingService {
 			'values' => self::getTypeNames(),
 			'message' => 'maps-googlemaps3-par-type',
 			'post-format' => function ( $value ) {
-				return GoogleMapsService::$mapTypes[strtolower( $value )];
+				return GoogleMapsService::MAP_TYPES[strtolower( $value )];
 			},
 		];
 
@@ -73,7 +73,7 @@ class GoogleMapsService extends MappingService {
 			'islist' => true,
 			'post-format' => function ( array $value ) {
 				foreach ( $value as &$part ) {
-					$part = self::$mapTypes[strtolower( $part )];
+					$part = self::MAP_TYPES[strtolower( $part )];
 				}
 
 				return $value;
@@ -117,10 +117,10 @@ class GoogleMapsService extends MappingService {
 
 		$params['typestyle'] = [
 			'default' => $egMapsGMaps3DefTypeStyle,
-			'values' => array_keys( self::$typeControlStyles ),
+			'values' => array_keys( self::TYPE_CONTROL_STYLES ),
 			'message' => 'maps-googlemaps3-par-typestyle',
 			'post-format' => function ( $value ) {
-				return self::$typeControlStyles[strtolower( $value )];
+				return self::TYPE_CONTROL_STYLES[strtolower( $value )];
 			},
 		];
 
@@ -243,11 +243,9 @@ class GoogleMapsService extends MappingService {
 
 	/**
 	 * Returns the names of all supported map types.
-	 *
-	 * @return array
 	 */
-	public static function getTypeNames() {
-		return array_keys( self::$mapTypes );
+	private function getTypeNames(): array {
+		return array_keys( self::MAP_TYPES );
 	}
 
 	public function getMapId(): string {
