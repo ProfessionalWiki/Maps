@@ -242,7 +242,7 @@ class GoogleMapsService implements MappingService {
 		return array_keys( self::MAP_TYPES );
 	}
 
-	public function getMapId(): string {
+	public function newMapId(): string {
 		static $mapsOnThisPage = 0;
 
 		$mapsOnThisPage++;

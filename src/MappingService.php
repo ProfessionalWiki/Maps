@@ -28,6 +28,6 @@ interface MappingService {
 	 */
 	public function getResourceModules(): array;
 
-	public function getMapId();
+	public function newMapId();
 
 }

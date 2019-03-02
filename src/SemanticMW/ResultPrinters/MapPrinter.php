@@ -136,7 +136,7 @@ class MapPrinter extends ResultPrinter {
 			$params['zoom'] = false;
 		}
 
-		$mapName = $this->service->getMapId();
+		$mapName = $this->service->newMapId();
 
 		SMWOutputs::requireHeadItem(
 			$mapName,

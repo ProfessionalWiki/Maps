@@ -68,7 +68,7 @@ class DisplayMapRenderer {
 
 		$output = $this->getMapHTML(
 			$params,
-			$this->service->getMapId()
+			$this->service->newMapId()
 		);
 
 		$dependencies = $this->service->getDependencyHtml( $params );

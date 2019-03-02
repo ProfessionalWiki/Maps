@@ -123,7 +123,7 @@ class LeafletService implements MappingService {
 		return $GLOBALS['egMapsLeafletZoom'];
 	}
 
-	public function getMapId(): string {
+	public function newMapId(): string {
 		static $mapsOnThisPage = 0;
 
 		$mapsOnThisPage++;
