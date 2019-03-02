@@ -52,7 +52,7 @@ class GoogleMapsService extends MappingService {
 		$params['zoom'] = [
 			'type' => 'integer',
 			'range' => [ 0, 20 ],
-			'default' => self::getDefaultZoom(),
+			'default' => $GLOBALS['egMapsGMaps3Zoom'],
 			'message' => 'maps-par-zoom',
 		];
 
@@ -231,14 +231,6 @@ class GoogleMapsService extends MappingService {
 		];
 
 		return $params;
-	}
-
-	/**
-	 * @since 0.6.5
-	 */
-	public function getDefaultZoom() {
-		global $egMapsGMaps3Zoom;
-		return $egMapsGMaps3Zoom;
 	}
 
 	/**
