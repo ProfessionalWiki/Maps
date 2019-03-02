@@ -27,13 +27,6 @@ abstract class MappingService {
 	protected $aliases;
 
 	/**
-	 * A list of names of resource modules to add.
-	 *
-	 * @var array
-	 */
-	protected $resourceModules = [];
-
-	/**
 	 * A list of dependencies (header items) that have been added.
 	 *
 	 * @var array
@@ -112,14 +105,8 @@ abstract class MappingService {
 
 	/**
 	 * Returns the resource modules that need to be loaded to use this mapping service.
-	 *
-	 * @since 0.7.3
-	 *
-	 * @return array of string
 	 */
-	public function getResourceModules() {
-		return $this->resourceModules;
-	}
+	public abstract function getResourceModules(): array;
 
 	/**
 	 * @since 0.6.3
@@ -140,17 +127,6 @@ abstract class MappingService {
 	 */
 	public function hasAlias( $alias ) {
 		return in_array( $alias, $this->aliases );
-	}
-
-	/**
-	 * Add one or more names of resource modules that should be loaded.
-	 *
-	 * @since 0.7.3
-	 *
-	 * @param mixed $modules Array of string or string
-	 */
-	public function addResourceModules( $modules ) {
-		$this->resourceModules = array_merge( $this->resourceModules, (array)$modules );
 	}
 
 	/**

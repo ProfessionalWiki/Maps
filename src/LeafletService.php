@@ -136,18 +136,8 @@ class LeafletService extends MappingService {
 		return 'map_leaflet_' . $mapsOnThisPage;
 	}
 
-	/**
-	 * @see MappingService::getResourceModules
-	 *
-	 * @since 3.0
-	 *
-	 * @return string[]
-	 */
-	public function getResourceModules() {
-		return array_merge(
-			parent::getResourceModules(),
-			[ 'ext.maps.leaflet' ]
-		);
+	public function getResourceModules(): array {
+		return [ 'ext.maps.leaflet', 'ext.sm.fi.leafletajax' ];
 	}
 
 	protected function getDependencies() {

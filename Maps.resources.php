@@ -75,7 +75,17 @@ return call_user_func( function() {
 			'dependencies' => [
 				'ext.maps.common',
 			]
-		]
+		],
+
+		'ext.sm.common' => $moduleTemplate + [
+			'scripts' => [
+				'ext.sm.common.js'
+			],
+			'dependencies' => [
+				'ext.maps.common',
+				'ext.maps.services'
+			]
+		],
 	];
 
 } );

@@ -31,8 +31,6 @@ class SemanticMaps {
 		// Hook for adding a Semantic Maps links to the Admin Links extension.
 		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\SemanticMapsHooks::addToAdminLinks';
 
-		$this->registerResourceModules();
-
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();
 
@@ -45,38 +43,9 @@ class SemanticMaps {
 		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
 	}
 
-	private function registerResourceModules() {
-		$moduleTemplate = [
-			'position' => 'bottom',
-			'group' => 'ext.semanticmaps',
-		];
-
-		$this->mwGlobals['wgResourceModules']['ext.sm.common'] = $moduleTemplate + [
-				'localBasePath' => __DIR__ . '/../resources',
-				'remoteExtPath' => 'Maps/resources',
-				'scripts' => [
-					'ext.sm.common.js'
-				]
-			];
-	}
-
 	private function registerGoogleMaps() {
-		$this->mwGlobals['wgResourceModules']['ext.sm.googlemaps3ajax'] = [
-			'localBasePath' => __DIR__ . '/../resources/GoogleMaps',
-			'remoteExtPath' => 'Maps/resources/GoogleMaps',
-			'group' => 'ext.semanticmaps',
-			'dependencies' => [
-				'ext.maps.googlemaps3',
-				'ext.sm.common'
-			],
-			'scripts' => [
-				'ext.sm.googlemaps3ajax.js'
-			]
-		];
-
 		/* @var MappingService $googleMaps */
 		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
-		$googleMaps->addResourceModules( [ 'ext.sm.googlemaps3ajax' ] );
 
 		MapPrinter::registerService( $googleMaps );
 
@@ -100,7 +69,6 @@ class SemanticMaps {
 
 		/* @var MappingService $leaflet */
 		$leaflet = MappingServices::getServiceInstance( 'leaflet' );
-		$leaflet->addResourceModules( [ 'ext.sm.fi.leafletajax' ] );
 
 		MapPrinter::registerService( $leaflet );
 

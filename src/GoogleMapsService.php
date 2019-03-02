@@ -266,18 +266,8 @@ class GoogleMapsService extends MappingService {
 		return 'map_google3_' . $mapsOnThisPage;
 	}
 
-	/**
-	 * @see MappingService::getResourceModules
-	 *
-	 * @since 1.0
-	 *
-	 * @return array of string
-	 */
-	public function getResourceModules() {
-		return array_merge(
-			parent::getResourceModules(),
-			[ 'ext.maps.googlemaps3' ]
-		);
+	public function getResourceModules(): array {
+		return [ 'ext.maps.googlemaps3', 'ext.sm.googlemaps3ajax' ];
 	}
 
 	/**

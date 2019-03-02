@@ -258,6 +258,19 @@ class MapsSetup {
 				'googleearth-compiled.js',
 			],
 		];
+
+		$wgResourceModules['ext.sm.googlemaps3ajax'] = [
+			'localBasePath' => $localBasePath,
+			'remoteExtPath' => $remoteExtPath,
+			'group' => 'ext.semanticmaps',
+			'dependencies' => [
+				'ext.maps.googlemaps3',
+				'ext.sm.common'
+			],
+			'scripts' => [
+				'ext.sm.googlemaps3ajax.js'
+			]
+		];
 	}
 
 	private function registerLeafletModules( string $localBasePath, string $remoteExtPath ) {
