@@ -8,6 +8,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development
 
 * Fixed resource loading issue when using Maps is in a non-default directory
+* Fixed Google Maps KML path issue
 
 ## Maps 7.1.0
 

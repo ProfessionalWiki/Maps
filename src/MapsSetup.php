@@ -225,8 +225,8 @@ class MapsSetup {
 
 		$wgResourceModules['ext.maps.gm3.geoxml'] = [
 			'localBasePath' => $localBasePath . '/geoxml3',
-			'remoteExtPath' => $remoteExtPath,
-			'group' => 'ext.maps' . '/geoxml3',
+			'remoteExtPath' => $remoteExtPath . '/geoxml3',
+			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
 				'desktop'
@@ -254,7 +254,7 @@ class MapsSetup {
 		$wgResourceModules['ext.sm.googlemaps3ajax'] = [
 			'localBasePath' => $localBasePath,
 			'remoteExtPath' => $remoteExtPath,
-			'group' => 'ext.semanticmaps',
+			'group' => 'ext.maps',
 			'dependencies' => [
 				'ext.maps.googlemaps3',
 				'ext.sm.common'
@@ -393,7 +393,7 @@ class MapsSetup {
 		$wgResourceModules['ext.sm.leafletajax'] = [
 			'localBasePath' => $localBasePath,
 			'remoteExtPath' => $remoteExtPath,
-			'group' => 'ext.semanticmaps',
+			'group' => 'ext.maps',
 			'dependencies' => [
 				'ext.maps.leaflet',
 				'ext.sm.common'
