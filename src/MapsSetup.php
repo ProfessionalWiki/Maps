@@ -161,11 +161,7 @@ class MapsSetup {
 
 	private function registerMappingServices() {
 		$localBasePath = __DIR__ . '/../resources';
-		$remoteExtPath = array_slice(
-				explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) ),
-				-2,
-				1
-			)[0] . '/../resources';
+		$remoteExtPath = 'Maps/resources';
 
 		$this->registerGoogleMapsModules( $localBasePath, $remoteExtPath );
 

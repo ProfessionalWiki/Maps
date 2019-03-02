@@ -12,14 +12,11 @@
  * @codeCoverageIgnoreStart
  */
 return call_user_func( function() {
-
-	$pathParts = explode( '/', str_replace( DIRECTORY_SEPARATOR, '/', __DIR__ ) );
-
 	$moduleTemplate = [
 		'position' => 'top',
 		'group' => 'ext.maps',
 		'localBasePath' => __DIR__,
-		'remoteExtPath' =>  end( $pathParts ),
+		'remoteExtPath' =>  'Maps',
 		'targets' => [
 			'mobile',
 			'desktop'
