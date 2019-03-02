@@ -167,16 +167,11 @@ class MapsSetup {
 
 		MappingServices::registerService( 'googlemaps3', GoogleMapsService::class );
 
-		$googleMaps = MappingServices::getServiceInstance( 'googlemaps3' );
-		$googleMaps->addFeature( 'display_map', DisplayMapRenderer::class );
-
 
 		// Leaflet API
 		$this->registerLeafletModules( $localBasePath, $remoteExtPath );
 
 		MappingServices::registerService( 'leaflet', LeafletService::class );
-		$leafletMaps = MappingServices::getServiceInstance( 'leaflet' );
-		$leafletMaps->addFeature( 'display_map', DisplayMapRenderer::class );
 	}
 
 	private function registerGoogleMapsModules( string $localBasePath, string $remoteExtPath ) {

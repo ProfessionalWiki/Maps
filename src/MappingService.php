@@ -2,6 +2,7 @@
 
 namespace Maps;
 
+use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use MWException;
 use ParserOutput;
 
@@ -29,13 +30,6 @@ abstract class MappingService {
 	 * @var array
 	 */
 	protected $aliases;
-
-	/**
-	 * A list of features that support the service, used for validation and defaulting.
-	 *
-	 * @var array
-	 */
-	protected $features;
 
 	/**
 	 * A list of names of resource modules to add.
@@ -73,13 +67,6 @@ abstract class MappingService {
 	 * @param $parameterInfo array of IParam
 	 */
 	public function addParameterInfo( array &$parameterInfo ) {
-	}
-
-	/**
-	 * @since 0.6.3
-	 */
-	public function addFeature( $featureName, $handlingClass ) {
-		$this->features[$featureName] = $handlingClass;
 	}
 
 	/**
@@ -144,26 +131,6 @@ abstract class MappingService {
 	 */
 	public function getName() {
 		return $this->serviceName;
-	}
-
-	/**
-	 * @since 0.6.6
-	 */
-	public function getFeatureInstance( $featureName ) {
-		$className = $this->getFeature( $featureName );
-
-		if ( $className === false || !class_exists( $className ) ) {
-			throw new MWException( 'Could not create a mapping feature class instance' );
-		}
-
-		return new $className( $this );
-	}
-
-	/**
-	 * @since 0.6.3
-	 */
-	public function getFeature( $featureName ) {
-		return array_key_exists( $featureName, $this->features ) ? $this->features[$featureName] : false;
 	}
 
 	/**
