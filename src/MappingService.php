@@ -33,22 +33,6 @@ abstract class MappingService {
 	public abstract function getParameterInfo(): array;
 
 	/**
-	 * @since 5.2.0
-	 *
-	 * @param ParserOutput $parserOutput
-	 */
-	public final function addDependencies( ParserOutput $parserOutput ) {
-		$dependencies = $this->getDependencyHtml();
-
-		// Only add a head item when there are dependencies.
-		if ( $dependencies ) {
-			$parserOutput->addHeadItem( $dependencies );
-		}
-
-		$parserOutput->addModules( $this->getResourceModules() );
-	}
-
-	/**
 	 * @since 0.6.3
 	 */
 	public final function getDependencyHtml() {

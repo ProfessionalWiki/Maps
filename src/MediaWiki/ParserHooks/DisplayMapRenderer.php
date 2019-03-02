@@ -75,7 +75,14 @@ class DisplayMapRenderer {
 			self::getLayerDependencies( $params['mappingservice'], $params )
 		);
 
-		$this->service->addDependencies( $parser->getOutput() );
+		$dependencies = $this->service->getDependencyHtml();
+
+		// Only add a head item when there are dependencies.
+		if ( $dependencies ) {
+			$parser->getOutput()->addHeadItem( $dependencies );
+		}
+
+		$parser->getOutput()->addModules( $this->service->getResourceModules() );
 
 		return $output;
 	}
