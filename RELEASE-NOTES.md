@@ -3,7 +3,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 7.1.1
+## Maps 7.2.0
 
 Under development
 
