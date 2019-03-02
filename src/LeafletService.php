@@ -7,7 +7,7 @@ use Html;
 /**
  * @licence GNU GPL v2+
  */
-class LeafletService extends MappingService {
+class LeafletService implements MappingService {
 
 	private $addedDependencies = [];
 

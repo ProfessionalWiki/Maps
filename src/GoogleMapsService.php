@@ -9,7 +9,7 @@ use Html;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-class GoogleMapsService extends MappingService {
+class GoogleMapsService implements MappingService {
 
 	/**
 	 * Maps user input map types to the Google Maps names for the map types.
