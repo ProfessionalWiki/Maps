@@ -29,14 +29,21 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>7.1 - 7.3+</td>
 		<td>1.31 - 1.32+</td>
 		<td>3.0+</td>
-		<td>Planned Q1 2019</td>
+		<td>Planned Q2 2019</td>
+	</tr>
+	<tr>
+		<th>Maps 7.2.x</th>
+		<td>7.1 - 7.3</td>
+		<td>1.31 - 1.32</td>
+		<td>3.0+</td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
 		<th>Maps 7.1.x</th>
 		<td>7.1 - 7.3</td>
 		<td>1.31 - 1.32</td>
 		<td>3.0.x</td>
-		<td><strong>Stable release</strong></td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>Maps 7.0.x</th>
