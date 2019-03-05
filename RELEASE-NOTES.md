@@ -5,9 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.2.0
 
-Under development
+Released on March 5th, 2019.
 
-* Fixed resource loading issue when using Maps is in a non-default directory
 * Fixed Google Maps KML path issue
 
 ## Maps 7.1.0
