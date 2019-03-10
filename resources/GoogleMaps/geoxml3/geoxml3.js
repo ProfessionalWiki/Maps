@@ -316,7 +316,7 @@ function processStyleUrl(node) {
       style.line.width     = nodeValue(getElementsByTagName(styleNodes[0], 'width')[0],     style.line.width);
       // style.line.outerColor      = (unsupported; not supported in API)
       // style.line.outerWidth      = (unsupported; not supported in API)
-      // style.line.physicalWidth   = (unsupported; unneccessary in Google Maps)
+      // style.line.physicalWidth   = (unsupported; unnecessary in Google Maps)
       // style.line.labelVisibility = (unsupported; possible to implement)
     }
 
