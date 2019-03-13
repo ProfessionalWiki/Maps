@@ -275,8 +275,8 @@ var mapEditor = {
 			mapEditor.__options.onRightClick(e);
 		});
 	},
-	__generateWikiCode:function( seperators ){
-		var code = seperators.codeStart;
+	__generateWikiCode:function( separators ){
+		var code = separators.codeStart;
 
 		var markers = '';
 		var circles = '';
@@ -326,11 +326,11 @@ var mapEditor = {
 
 
 		code += markers !== '' ? markers : '';
-		code += circles !== '' ? seperators.separator+'circles='+circles : '';
-		code += polygons !== '' ? seperators.separator+'polygons='+polygons : '';
-		code += lines !== '' ? seperators.separator+'lines='+lines : '';
-		code += rectangles !== '' ? seperators.separator+'rectangles='+rectangles : '';
-		code += imageoverlays !== '' ? seperators.separator+'imageoverlays='+imageoverlays : '';
+		code += circles !== '' ? separators.separator+'circles='+circles : '';
+		code += polygons !== '' ? separators.separator+'polygons='+polygons : '';
+		code += lines !== '' ? separators.separator+'lines='+lines : '';
+		code += rectangles !== '' ? separators.separator+'rectangles='+rectangles : '';
+		code += imageoverlays !== '' ? separators.separator+'imageoverlays='+imageoverlays : '';
 
 		//add map parameters
 		for(var param in this.__mapParameters){
@@ -341,7 +341,7 @@ var mapEditor = {
 			code += '\n|'+param+'='+value;
 		}
 
-		code += seperators.codeEnd;
+		code += separators.codeEnd;
 		return code;
 	},
 	__importWikiCode:function(rawData){
