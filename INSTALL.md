@@ -21,7 +21,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Maps</th>
 		<th>PHP</th>
 		<th>MediaWiki</th>
-		<th>Semantic MediaWiki</th>
+		<th>Semantic<br>MediaWiki</th>
 		<th>Release status</th>
 	</tr>
 	<tr>
