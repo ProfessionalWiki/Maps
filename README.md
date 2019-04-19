@@ -37,9 +37,9 @@ Maps has been maintained since 2009 and is installed on over 1000 public wikis.
 
 ### Getting support
 
+* Professional support and custom development: **[Professional.Wiki](https://professional.wiki/)**
 * Ask a question on [the mailing list](https://www.semantic-mediawiki.org/wiki/Mailing_list)
-* Ask a question on the [#mediawiki IRC channel](https://webchat.freenode.net/?channels=mediawiki) on Freenode.
-* File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues) (technical issues only)
+* File an issue on [our issue tracker](https://github.com/JeroenDeDauw/Maps/issues)
 
 ## Project status
 
