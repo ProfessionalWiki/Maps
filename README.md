@@ -25,7 +25,8 @@ Maps has been maintained since 2009 and is installed on 1000+ wikis. [Profession
 
 ### For administrators
 
-* [Installation and configuration](INSTALL.md)
+* [Installation](https://www.semantic-mediawiki.org/wiki/Maps/Installation)
+* [Configuration](https://www.semantic-mediawiki.org/wiki/Maps/Configuration)
 * [Release notes](RELEASE-NOTES.md) - detailed list of changes per release
 * [Platform compatibility](INSTALL.md#platform-compatibility-and-release-status) - overview of PHP and MediaWiki support per release
 
