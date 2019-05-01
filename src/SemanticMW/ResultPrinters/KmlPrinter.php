@@ -32,7 +32,6 @@ class KmlPrinter extends FileExportPrinter {
 		$queryHandler->setText( $this->params['text'] );
 		$queryHandler->setTitle( $this->params['title'] );
 		$queryHandler->setSubjectSeparator( '' );
-		$queryHandler->setPageLinkText( $this->params['pagelinktext'] );
 
 		$formatter = new KmlFormatter();
 		return $formatter->formatLocationsAsKml( ...$queryHandler->getLocations() );
@@ -48,7 +47,6 @@ class KmlPrinter extends FileExportPrinter {
 		);
 		$link->setParameter( 'kml', 'format' );
 		$link->setParameter( $this->params['linkabsolute'] ? 'yes' : 'no', 'linkabsolute' );
-		$link->setParameter( $this->params['pagelinktext'], 'pagelinktext' );
 
 		if ( $this->params['title'] !== '' ) {
 			$link->setParameter( $this->params['title'], 'title' );
@@ -102,11 +100,6 @@ class KmlPrinter extends FileExportPrinter {
 			'message' => 'semanticmaps-kml-linkabsolute',
 			'type' => 'boolean',
 			'default' => true,
-		];
-
-		$definitions['pagelinktext'] = [
-			'message' => 'semanticmaps-kml-pagelinktext',
-			'default' => wfMessage( 'semanticmaps-default-kml-pagelink' )->text(),
 		];
 
 		return $definitions;

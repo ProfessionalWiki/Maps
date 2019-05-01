@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.3.0
+
+* Removed long broken `pagelinktext` option from KML result format
+
 ## Maps 7.2.0
 
 Released on March 5th, 2019.
