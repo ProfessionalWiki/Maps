@@ -79,7 +79,7 @@ return call_user_func( function() {
 
 		'ext.sm.common' => $moduleTemplate + [
 			'scripts' => [
-				'ext.sm.common.js'
+				'resources/ext.sm.common.js'
 			],
 			'dependencies' => [
 				'ext.maps.common',
