@@ -5,6 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.3.0
 
+* Fixed `ajaxquery` result format parameter
 * Removed long broken `pagelinktext` option from KML result format
 
 ## Maps 7.2.0
