@@ -112,7 +112,7 @@ Released on September 4th, 2018.
 
 ### GeoJson support
 
-* Added GeoJson namesapce. Pages in this namespace can only contain GeoJson
+* Added GeoJson namespace. Pages in this namespace can only contain GeoJson
 * The `#display_map` parameter `geojson` now accepts page names of pages in the GeoJson namespace
 
 ### Breaking changes
