@@ -12,7 +12,8 @@
 			"Inkbug",
 			"Macofe",
 			"Guycn2",
-			"המקיסט"
+			"המקיסט",
+			"Erelon"
 		]
 	},
 	"maps-desc": "הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות",
@@ -210,5 +211,7 @@
 	"semanticmaps-shapes-improperformat": "עיצוב לא מתאים עבור $1. נא לראות את התיעוד על עיצוב",
 	"semanticmaps-shapes-missingshape": "לא נמצאו צורות עבור $1. נא לראות את התיעוד עבור צורות",
 	"validator-type-mapscircle-list": "רשימת מעגלים",
-	"validator-type-jsonfile": "כתובת URL"
+	"validator-type-mapsline-list": "רשימת קווים",
+	"validator-type-mapsrectangle-list": "רשימה של משולשים",
+	"validator-type-jsonfile": "טקסט"
 }
