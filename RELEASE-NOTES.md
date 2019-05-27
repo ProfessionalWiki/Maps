@@ -5,6 +5,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.3.0
 
+Released on May 27th, 2019.
+
+* Fixed loading of certain Leaflet maps due to JavaScript error
 * Fixed `ajaxquery` result format parameter
 * Removed long broken `pagelinktext` option from KML result format
 
