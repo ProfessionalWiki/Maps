@@ -255,13 +255,15 @@ class QueryHandler {
 		if ( !$this->showSubject ) {
 			return '';
 		}
-
+		
+		$dataItem = $object->getDataItem();
+		
 		if ( $this->showArticleLink() ) {
 			if ( $this->linkAbsolute ) {
 				$text = Html::element(
 					'a',
-					[ 'href' => $object->getTitle()->getFullUrl() ],
-					$this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText()
+					[ 'href' => $dataItem->getTitle()->getFullUrl() ],
+					$this->hideNamespace ? $object->getText() : $dataItem->getTitle()->getFullText()
 				);
 			} else {
 				if ( $this->hideNamespace ) {
@@ -271,7 +273,7 @@ class QueryHandler {
 				}
 			}
 		} else {
-			$text = $this->hideNamespace ? $object->getText() : $object->getTitle()->getFullText();
+			$text = $this->hideNamespace ? $object->getText() : $dataItem->getTitle()->getFullText();
 		}
 
 		return '<b>' . $text . '</b>';
@@ -287,7 +289,7 @@ class QueryHandler {
 	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {
 			if ( $object instanceof SMWWikiPageValue ) {
-				return $object->getTitle()->getPrefixedText();
+				return $object->getDataItem()->getTitle()->getPrefixedText();
 			}
 
 			return $object->getLongText( SMW_OUTPUT_WIKI, null );
