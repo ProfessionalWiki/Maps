@@ -9,7 +9,8 @@
          stopOnError="false"
          stopOnFailure="false"
          stopOnIncomplete="false"
-         stopOnSkipped="false">
+         stopOnSkipped="false"
+         verbose="true">
     <testsuites>
         <testsuite name="MapsUnit">
             <directory>tests/Unit</directory>
