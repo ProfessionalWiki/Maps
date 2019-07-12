@@ -24,18 +24,38 @@ else
 fi
 
 cd extensions
-
 cp -r $originalDirectory Maps
-
 cd Maps
 composer install --prefer-source
+cd ..
+cd ..
 
-[[ ! -z $SMW ]] && composer require "mediawiki/semantic-media-wiki=$SMW" --prefer-source
+if [ ! -z $SMW ]
+then
+	composer require "mediawiki/semantic-media-wiki=$SMW" --prefer-source
+fi
 
-cd ../..
+cat <<EOT >> composer.local.json
+{
+	"extra": {
+		"merge-plugin": {
+			"merge-dev": true,
+			"include": [
+				"extensions/*/composer.json"
+			]
+		}
+	}
+}
+EOT
 
-echo 'include_once( __DIR__ . "/extensions/Maps/vendor/autoload.php" );' >> LocalSettings.php
+composer install --prefer-source
+
 echo 'wfLoadExtension( "Maps" );' >> LocalSettings.php
+
+if [ ! -z $SMW ]
+then
+	echo 'wfLoadExtension( "SemanticMediaWiki" );' >> LocalSettings.php
+fi
 
 echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
 echo 'ini_set("display_errors", 1);' >> LocalSettings.php
