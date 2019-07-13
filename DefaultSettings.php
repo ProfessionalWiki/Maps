@@ -1,5 +1,9 @@
 <?php
 
+// This file lists all settings you can use to configure the Maps extension and their default values.
+// Do not modify this file to change settings. See https://www.semantic-mediawiki.org/wiki/Maps/Configuration
+// Do not include this file in LocalSettings. Instead include Maps_Settings.php.
+
 return [
 	// Mapping services that will be available in the wiki.
 	// These can be used in #display_map with service=leaflet or in #ask with format=leaflet
