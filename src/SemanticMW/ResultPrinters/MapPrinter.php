@@ -84,6 +84,21 @@ class MapPrinter extends ResultPrinter {
 		self::$services['map'] = self::$services[$serviceName];
 	}
 
+	private function getParser(): Parser {
+		$parser = $GLOBALS['wgParser'];
+
+		if ( $parser instanceof \StubObject ) {
+			return $parser->_newObject();
+		}
+
+		return $parser;
+	}
+
+	private function getParserClone(): Parser {
+		$parser = $this->getParser();
+		return clone $parser;
+	}
+
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
@@ -101,7 +116,7 @@ class MapPrinter extends ResultPrinter {
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
 
-		$this->wikitextParser = new WikitextParser( clone $GLOBALS['wgParser'] );
+		$this->wikitextParser = new WikitextParser( $this->getParserClone() );
 		$this->elementSerializer = new ElementJsonSerializer( $this->wikitextParser );
 
 		$this->addTrackingCategoryIfNeeded();
