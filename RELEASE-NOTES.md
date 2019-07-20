@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.3.1
 
-Released on July 5th, 2019.
+Released on July 20h, 2019.
 
 * Fixed compatibility issue with SMW 3.1+ (thanks @mwjames!)
 
