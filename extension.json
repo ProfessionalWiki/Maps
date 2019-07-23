@@ -29,6 +29,9 @@
 	"ContentHandlers": {
 		"GeoJson": "Maps\\MediaWiki\\Content\\GeoJsonContentHandler"
 	},
+	"AutoloadClasses": {
+		"Maps\\MediaWiki\\Api\\Geocode": "src/MediaWiki/Api/ApiGeocode.php"
+	},
 	"namespaces": [
 		{
 			"id": 420,
