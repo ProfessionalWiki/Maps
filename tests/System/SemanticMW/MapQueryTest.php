@@ -12,6 +12,8 @@ use PHPUnit\Framework\TestCase;
 use Title;
 
 /**
+ * @group database
+ *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
