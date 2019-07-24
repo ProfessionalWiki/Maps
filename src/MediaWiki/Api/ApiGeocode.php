@@ -12,10 +12,8 @@ use Maps\MapsFactory;
 class ApiGeocode extends ApiBase {
 
 	public function execute() {
-		global $wgUser;
-
-		if ( !$wgUser->isAllowed( 'geocode' ) || $wgUser->isBlocked() ) {
-			$this->dieUsageMsg( [ 'badaccess-groups' ] );
+		if ( !$this->getUser()->isAllowed( 'geocode' ) || $this->getUser()->isBlocked() ) {
+			$this->dieWithError( 'badaccess-groups' );
 		}
 
 		$geocoder = MapsFactory::newDefault()->getGeocoder();
