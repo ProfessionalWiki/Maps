@@ -9,7 +9,7 @@ use Maps\MapsFactory;
  * @licence GNU GPL v2++
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class Geocode extends ApiBase {
+class ApiGeocode extends ApiBase {
 
 	public function execute() {
 		global $wgUser;

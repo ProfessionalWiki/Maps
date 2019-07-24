@@ -6,7 +6,7 @@ namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\DataAccess\JsonFileParser;
-use Maps\MediaWiki\Api\Geocode;
+use Maps\MediaWiki\Api\ApiGeocode;
 use Maps\MediaWiki\Content\GeoJsonContent;
 use Maps\MediaWiki\Content\GeoJsonContentHandler;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
@@ -463,7 +463,7 @@ class MapsSetup {
 	}
 
 	private function registerApiModules() {
-		$this->mwGlobals['wgAPIModules']['geocode'] = Geocode::class;
+		$this->mwGlobals['wgAPIModules']['geocode'] = ApiGeocode::class;
 	}
 
 }
