@@ -6,12 +6,10 @@ namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\DataAccess\JsonFileParser;
-use Maps\MediaWiki\Api\Geocode;
 use Maps\MediaWiki\Content\GeoJsonContent;
 use Maps\MediaWiki\Content\GeoJsonContentHandler;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
 use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
-use Maps\MediaWiki\ParserHooks\DisplayMapRenderer;
 use Maps\MediaWiki\ParserHooks\DistanceFunction;
 use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
 use Maps\MediaWiki\ParserHooks\GeocodeFunction;
@@ -51,7 +49,6 @@ class MapsSetup {
 
 	private function registerAllTheThings() {
 		$this->registerWebResources();
-		$this->registerApiModules();
 		$this->registerParserHooks();
 		$this->registerMappingServices();
 		$this->registerPermissions();
@@ -460,10 +457,6 @@ class MapsSetup {
 	private function registerHooks() {
 		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\MapsHooks::addToAdminLinks';
 		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MediaWiki\MapsHooks::onMakeGlobalVariablesScript';
-	}
-
-	private function registerApiModules() {
-		$this->mwGlobals['wgAPIModules']['geocode'] = Geocode::class;
 	}
 
 }

@@ -3,9 +3,15 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.3.2
+
+Released on July 25th, 2019.
+
+* Removed broken geocode API module
+
 ## Maps 7.3.1
 
-Released on July 20h, 2019.
+Released on July 20th, 2019.
 
 * Fixed compatibility issue with SMW 3.1+ (thanks @mwjames!)
 
