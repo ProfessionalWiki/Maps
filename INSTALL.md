@@ -29,7 +29,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>7.1 - 7.4+</td>
 		<td>1.31 - 1.33+</td>
 		<td>3.0+</td>
-		<td>Planned Q2 2019</td>
+		<td>Planned Q3 2019</td>
 	</tr>
 	<tr>
 		<th>7.3.x</th>
