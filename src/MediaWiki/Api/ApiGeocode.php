@@ -31,8 +31,10 @@ class ApiGeocode extends ApiBase {
 			];
 
 			if ( $result !== null ) {
-				// FIXME: this makes the API use private var names in its output!
-				$results[$location]['locations'][] = $result;
+				$results[$location]['locations'][] = [
+					'latitude' => $result->getLatitude(),
+					'longitude' =>  $result->getLongitude()
+				];
 			}
 
 			$this->getResult()->setIndexedTagName( $results[$location]['locations'], 'location' );
