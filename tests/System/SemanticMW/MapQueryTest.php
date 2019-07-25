@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 use Title;
 
 /**
- * @group database
+ * @group Database
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

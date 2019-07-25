@@ -9,6 +9,9 @@ use MediaWiki\Permissions\PermissionManager;
 
 /**
  * @covers \Maps\MediaWiki\Api\ApiGeocode
+ *
+ * @group API
+ * @group Database
  * @group medium
  *
  * @licence GNU GPL v2+
