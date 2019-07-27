@@ -2,7 +2,6 @@
 
 namespace Maps\SemanticMW\ValueDescriptions;
 
-use DatabaseBase;
 use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
 use Maps\GeoFunctions;
@@ -13,6 +12,7 @@ use SMW\Query\Language\ValueDescription;
 use SMWDataItem;
 use SMWDIGeoCoord;
 use SMWThingDescription;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * Description of a geographical area defined by a coordinates set and a distance to the bounds.
@@ -73,17 +73,17 @@ class AreaDescription extends ValueDescription {
 	}
 
 	/**
-	 * @see Description::getSQLCondition
+	 * @see SomePropertyInterpreter::mapValueDescription
 	 *
 	 * FIXME: store specific code should be in the store component
 	 *
 	 * @param string $tableName
-	 * @param array $fieldNames
-	 * @param DatabaseBase $dbs
+	 * @param string[] $fieldNames
+	 * @param IDatabase $db
 	 *
 	 * @return string|false
 	 */
-	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, IDatabase $db ) {
 		if ( $this->center->getDIType() != SMWDataItem::TYPE_GEO ) {
 			throw new \LogicException( 'Constructor should have prevented this' );
 		}
@@ -94,10 +94,10 @@ class AreaDescription extends ValueDescription {
 
 		$bounds = $this->getBoundingBox();
 
-		$north = $dbs->addQuotes( $bounds['north'] );
-		$east = $dbs->addQuotes( $bounds['east'] );
-		$south = $dbs->addQuotes( $bounds['south'] );
-		$west = $dbs->addQuotes( $bounds['west'] );
+		$north = $db->addQuotes( $bounds['north'] );
+		$east = $db->addQuotes( $bounds['east'] );
+		$south = $db->addQuotes( $bounds['south'] );
+		$west = $db->addQuotes( $bounds['west'] );
 
 		$isEq = $this->getComparator() == SMW_CMP_EQ;
 

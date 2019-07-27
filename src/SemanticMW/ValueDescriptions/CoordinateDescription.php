@@ -2,10 +2,10 @@
 
 namespace Maps\SemanticMW\ValueDescriptions;
 
-use DatabaseBase;
 use SMW\DataValueFactory;
 use SMW\Query\Language\ValueDescription;
 use SMWDIGeoCoord;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * Description of one data value of type Geographical Coordinates.
@@ -24,17 +24,17 @@ class CoordinateDescription extends ValueDescription {
 	}
 
 	/**
-	 * @see SMWDescription::getSQLCondition
+	 * @see SomePropertyInterpreter::mapValueDescription
 	 *
 	 * FIXME: store specific code should be in the store component
 	 *
 	 * @param string $tableName
-	 * @param array $fieldNames
-	 * @param DatabaseBase $dbs
+	 * @param string[] $fieldNames
+	 * @param IDatabase $db
 	 *
 	 * @return string|false
 	 */
-	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, array $fieldNames, IDatabase $db ) {
 		$dataItem = $this->getDataItem();
 
 		// Only execute the query when the description's type is geographical coordinates,
@@ -57,8 +57,8 @@ class CoordinateDescription extends ValueDescription {
 					return false;
 			}
 
-			$lat = $dbs->addQuotes( $dataItem->getLatitude() );
-			$lon = $dbs->addQuotes( $dataItem->getLongitude() );
+			$lat = $db->addQuotes( $dataItem->getLatitude() );
+			$lon = $db->addQuotes( $dataItem->getLongitude() );
 
 			$conditions = [];
 
