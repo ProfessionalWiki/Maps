@@ -7,8 +7,8 @@ use Maps\MappingServices;
 use Maps\MapsFactory;
 use Maps\Presentation\ParameterExtractor;
 use MWException;
-use ParamProcessor;
 use ParamProcessor\ProcessedParam;
+use ParamProcessor\Processor;
 use Parser;
 use ParserHooks\HookDefinition;
 
@@ -39,7 +39,7 @@ class DisplayMapFunction {
 	 * @throws MWException
 	 */
 	public function getMapHtmlForKeyValueStrings( Parser $parser, array $parameters ): string {
-		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
+		$processor = new Processor( new \ParamProcessor\Options() );
 
 		$service = $this->services->getServiceOrDefault(
 			$this->extractServiceName(
@@ -70,7 +70,7 @@ class DisplayMapFunction {
 	 * @throws MWException
 	 */
 	public function getMapHtmlForParameterList( Parser $parser, array $parameters ) {
-		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
+		$processor = new Processor( new \ParamProcessor\Options() );
 
 		$service = $this->services->getServiceOrDefault( $this->extractServiceName( $parameters ) );
 
@@ -87,7 +87,7 @@ class DisplayMapFunction {
 		return $this->getMapHtmlFromProcessor( $parser, $processor );
 	}
 
-	private function getMapHtmlFromProcessor( Parser $parser, ParamProcessor\Processor $processor ) {
+	private function getMapHtmlFromProcessor( Parser $parser, Processor $processor ) {
 		$params = $processor->processParameters()->getParameters();
 
 		$this->defaultMapZoom( $params );
