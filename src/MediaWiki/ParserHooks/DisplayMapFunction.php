@@ -3,12 +3,11 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
-use Maps\MappingServices;
+use Maps\MappingService;
 use Maps\MapsFactory;
+use Maps\MappingServices;
 use Maps\Presentation\ParameterExtractor;
 use MWException;
-use ParamProcessor\ParamDefinition;
-use ParamProcessor\ParamDefinitionFactory;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\Processor;
 use Parser;
@@ -58,13 +57,7 @@ class DisplayMapFunction {
 		);
 
 		$processor->setParameterDefinitions(
-			// TODO use ParamDefinitionFactory
-			ParamDefinition::getCleanDefinitions(
-				array_merge(
-					self::getHookDefinition( ';' )->getParameters(),
-					$service->getParameterInfo()
-				)
-			)
+			$this->getAllParameterDefinitions( $service, ';' )
 		);
 
 		return $this->getMapHtmlFromProcessor( $parser, $processor );
@@ -87,16 +80,30 @@ class DisplayMapFunction {
 
 		$processor->setParameters( $parameters );
 		$processor->setParameterDefinitions(
-			// TODO use ParamDefinitionFactory
-			ParamDefinition::getCleanDefinitions(
-				array_merge(
-					self::getHookDefinition( "\n" )->getParameters(),
-					$service->getParameterInfo()
-				)
-			)
+			$this->getAllParameterDefinitions( $service, "\n" )
 		);
 
 		return $this->getMapHtmlFromProcessor( $parser, $processor );
+	}
+
+	private function getAllParameterDefinitions( MappingService $service, string $delimiter ) {
+		$definitionArrays = array_merge(
+			self::getHookDefinition( $delimiter )->getParameters(),
+			$service->getParameterInfo()
+		);
+
+		$factory = MapsFactory::globalInstance()->getParamDefinitionFactory();
+		$definitions = [];
+
+		foreach ( $definitionArrays as $name => $definitionArray ) {
+			if ( !array_key_exists( 'name', $definitionArray ) && is_string( $name ) ) {
+				$definitionArray['name'] = $name;
+			}
+
+			$definitions[$name] = $factory->newDefinitionFromArray( $definitionArray );
+		}
+
+		return $definitions;
 	}
 
 	private function getMapHtmlFromProcessor( Parser $parser, Processor $processor ) {
