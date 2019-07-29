@@ -7,6 +7,8 @@ use Maps\MappingServices;
 use Maps\MapsFactory;
 use Maps\Presentation\ParameterExtractor;
 use MWException;
+use ParamProcessor\ParamDefinition;
+use ParamProcessor\ParamDefinitionFactory;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\Processor;
 use Parser;
@@ -51,11 +53,18 @@ class DisplayMapFunction {
 
 		$processor->setFunctionParams(
 			$parameters,
-			array_merge(
-				self::getHookDefinition( ';' )->getParameters(),
-				$service->getParameterInfo()
-			),
+			[],
 			self::getHookDefinition( ';' )->getDefaultParameters()
+		);
+
+		$processor->setParameterDefinitions(
+			// TODO use ParamDefinitionFactory
+			ParamDefinition::getCleanDefinitions(
+				array_merge(
+					self::getHookDefinition( ';' )->getParameters(),
+					$service->getParameterInfo()
+				)
+			)
 		);
 
 		return $this->getMapHtmlFromProcessor( $parser, $processor );
@@ -76,11 +85,14 @@ class DisplayMapFunction {
 
 		$this->renderer->service = $service;
 
-		$processor->setParameters(
-			$parameters,
-			array_merge(
-				self::getHookDefinition( "\n" )->getParameters(),
-				$service->getParameterInfo()
+		$processor->setParameters( $parameters );
+		$processor->setParameterDefinitions(
+			// TODO use ParamDefinitionFactory
+			ParamDefinition::getCleanDefinitions(
+				array_merge(
+					self::getHookDefinition( "\n" )->getParameters(),
+					$service->getParameterInfo()
+				)
 			)
 		);
 
