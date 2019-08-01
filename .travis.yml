@@ -5,9 +5,9 @@ sudo: false
 matrix:
   fast_finish: true
   include:
-    - env: DBTYPE=mysql; MW=1.31.3
+    - env: DBTYPE=sqlite; MW=1.31.3
       php: 7.1
-    - env: DBTYPE=mysql; MW=master; SMW=dev-master
+    - env: DBTYPE=sqlite; MW=master; SMW=dev-master
       php: 7.3
     - env: DBTYPE=sqlite; MW=1.31.3; SMW=3.0.0
       php: 7.1
