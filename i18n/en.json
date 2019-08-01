@@ -124,7 +124,7 @@
 	"maps-par-searchmarkers": "Allows to search for specific markers via a field embedded into the map.",
 	"maps-par-zoom": "The zoom level for the map. For maps with markers this will default to the most zoomed in level that still shows all markers.",
 	"maps-par-width": "Allows setting the width of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.",
-	"maps-par-height": "Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em, %.",
+	"maps-par-height": "Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em.",
 	"maps-par-centre": "The location on which the map should be centered",
 	"maps-par-enable-fullscreen": "Enable fullscreen button",
 	"maps-par-kml": "KML files to load onto the map.",
