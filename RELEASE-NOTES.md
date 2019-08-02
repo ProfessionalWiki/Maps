@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.3.3
+
+Released on August 2nd, 2019.
+
+* Fixed error in height parameter description
+
 ## Maps 7.3.2
 
 Released on July 25th, 2019.
