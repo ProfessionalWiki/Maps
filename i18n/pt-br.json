@@ -131,7 +131,7 @@
 	"maps-par-searchmarkers": "Permite pesquisar marcadores específicos usando um campo incorporado no mapa.",
 	"maps-par-zoom": "O nível de zoom do mapa. Nos mapas com marcadores será usado o maior zoom que, mesmo assim, mostre todos os marcadores.",
 	"maps-par-width": "Permite definir a largura do mapa. A unidade por omissão é o píxel, mas pode defini-la explicitamente como: px, ex, em, %.",
-	"maps-par-height": "Permite definir a altura do mapa. A unidade por omissão é o píxel, mas pode defini-la explicitamente como: px, ex, em, %.",
+	"maps-par-height": "Permite definir a altura do mapa. A unidade por omissão é o píxel, mas pode defini-la explicitamente como: px, ex, em.",
 	"maps-par-centre": "A localização na qual o mapa deve estar centrado",
 	"maps-par-enable-fullscreen": "Ativar o botão de tela cheia",
 	"maps-par-kml": "Arquivos KML que serão carregados no mapa.",

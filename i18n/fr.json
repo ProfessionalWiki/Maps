@@ -143,7 +143,7 @@
 	"maps-par-searchmarkers": "Permet de rechercher des marqueurs spécifiques via un champ inclus dans la carte.",
 	"maps-par-zoom": "Le niveau de zoom de la carte. Pour les cartes avec des marqueurs, ceci positionne la valeur par défaut du plus grand zoom qui montre encore tous les marqueurs.",
 	"maps-par-width": "Permet de définir la largeur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.",
-	"maps-par-height": "Permet de définir la hauteur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em, %.",
+	"maps-par-height": "Permet de définir la hauteur de la carte. Par défaut les pixels seront considérés comme unité, mais vous pouvez spécifier explicitement une de ces unités : px, ex, em.",
 	"maps-par-centre": "Le lieu sur lequel la carte devra être centrée",
 	"maps-par-enable-fullscreen": "Activer le bouton plein écran",
 	"maps-par-kml": "Fichiers KML à charger sur la carte.",
