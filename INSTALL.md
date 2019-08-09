@@ -18,25 +18,32 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 
 <table>
 	<tr>
-		<th>Maps</th>
-		<th>PHP</th>
-		<th>MediaWiki</th>
-		<th>Semantic<br>MediaWiki</th>
-		<th>Release status</th>
+		<th>Maps<br></th>
+		<th>PHP<br></th>
+		<th>MediaWiki<br></th>
+		<th>Semantic MediaWiki<br>(optional)</th>
+		<th>Release status<br></th>
+	</tr>
+	<tr>
+		<th>7.5.x</th>
+		<td>7.1 - 7.4+</td>
+		<td>1.31 - 1.33+</td>
+		<td>3.0 - 3.1</td>
+		<td>Planned Q3 2019</td>
 	</tr>
 	<tr>
 		<th>7.4.x</th>
-		<td>7.1 - 7.4+</td>
-		<td>1.31 - 1.33+</td>
-		<td>3.0+</td>
-		<td>Planned Q3 2019</td>
+		<td>7.1 - 7.4</td>
+		<td>1.31 - 1.33</td>
+		<td>3.0 - 3.1</td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
 		<th>7.3.x</th>
 		<td>7.1 - 7.4</td>
 		<td>1.31 - 1.33</td>
 		<td>3.0 - 3.1</td>
-		<td><strong>Stable release</strong></td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>7.2.x</th>
