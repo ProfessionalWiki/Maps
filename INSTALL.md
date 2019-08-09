@@ -18,11 +18,11 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 
 <table>
 	<tr>
-		<th>Maps<br></th>
-		<th>PHP<br> </th>
-		<th>MediaWiki<br> </th>
+		<th>Maps<br>&nbsp;</th>
+		<th>PHP<br>&nbsp;</th>
+		<th>MediaWiki<br>&nbsp;</th>
 		<th>Semantic MediaWiki<br>(optional)</th>
-		<th>Release status<br> </th>
+		<th>Release status<br>&nbsp;</th>
 	</tr>
 	<tr>
 		<th>7.5.x</th>
