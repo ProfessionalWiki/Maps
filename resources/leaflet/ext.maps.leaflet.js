@@ -1,3 +1,4 @@
-window.jQuery( document ).ready( function() {
-	( new maps.services( window.jQuery( document ) ) ).leaflet();
+
+mediaWiki.loader.using( [ 'ext.maps.leaflet' ] ).done( function () {
+	( new maps.services( jQuery( document ) ) ).leaflet();
 } );
