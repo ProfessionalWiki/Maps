@@ -204,6 +204,74 @@
 			"scripts": [
 				"leaflet/ext.sm.leafletajax.js"
 			]
+		},
+
+		"ext.maps.googlemaps3": {
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"scripts": [
+				"GoogleMaps/jquery.googlemap.js",
+				"GoogleMaps/ext.maps.googlemaps3.js"
+			],
+			"messages": [
+				"maps-googlemaps3-incompatbrowser",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text",
+				"maps-fullscreen-button",
+				"maps-fullscreen-button-tooltip"
+			]
+		},
+
+		"ext.maps.gm3.markercluster": {
+			"dependencies": [
+				"ext.maps.googlemaps3"
+			],
+			"scripts": [
+				"GoogleMaps/gm3-util-library/markerclusterer.js"
+			]
+		},
+
+		"ext.maps.gm3.markerwithlabel": {
+			"dependencies": [
+				"ext.maps.googlemaps3"
+			],
+			"scripts": [
+				"GoogleMaps/gm3-util-library/markerwithlabel.js"
+			],
+			"styles": [
+				"GoogleMaps/gm3-util-library/markerwithlabel.css"
+			]
+		},
+
+		"ext.maps.gm3.geoxml": {
+			"dependencies": [
+				"ext.maps.googlemaps3"
+			],
+			"scripts": [
+				"GoogleMaps/geoxml3/geoxml3.js",
+				"GoogleMaps/geoxml3/ZipFile.complete.js",
+				"GoogleMaps/geoxml3/ProjectedOverlay.js"
+			]
+		},
+
+		"ext.maps.gm3.earth": {
+			"dependencies": [
+				"ext.maps.googlemaps3"
+			],
+			"scripts": [
+				"GoogleMaps/gm3-util-library/googleearth-compiled.js"
+			]
+		},
+
+		"ext.sm.googlemaps3ajax": {
+			"dependencies": [
+				"ext.maps.googlemaps3",
+				"ext.sm.common"
+			],
+			"scripts": [
+				"GoogleMaps/ext.sm.googlemaps3ajax.js"
+			]
 		}
 	},
 

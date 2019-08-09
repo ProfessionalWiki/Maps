@@ -49,7 +49,6 @@ class MapsSetup {
 
 	private function registerAllTheThings() {
 		$this->registerParserHooks();
-		$this->registerGoogleMapsModules();
 		$this->registerPermissions();
 		$this->registerParameterTypes();
 		$this->registerHooks();
@@ -144,99 +143,6 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
 			return ( new MapsDocFunction() )->init( $parser );
 		};
-	}
-
-	private function registerGoogleMapsModules() {
-		global $wgResourceModules;
-
-		$localBasePath = __DIR__ . '/../resources/GoogleMaps';
-		$remoteExtPath = 'Maps/resources/GoogleMaps';
-
-		$wgResourceModules['ext.maps.googlemaps3'] = [
-			'dependencies' => [ 'ext.maps.common' ],
-			'localBasePath' => $localBasePath,
-			'remoteExtPath' => $remoteExtPath,
-			'targets' => [
-				'mobile',
-				'desktop'
-			],
-			'scripts' => [
-				'jquery.googlemap.js',
-				'ext.maps.googlemaps3.js'
-			],
-			'messages' => [
-				'maps-googlemaps3-incompatbrowser',
-				'maps-copycoords-prompt',
-				'maps-searchmarkers-text',
-				'maps-fullscreen-button',
-				'maps-fullscreen-button-tooltip',
-			]
-		];
-
-		$wgResourceModules['ext.maps.gm3.markercluster'] = [
-			'localBasePath' => $localBasePath . '/gm3-util-library',
-			'remoteExtPath' => $remoteExtPath . '/gm3-util-library',
-			'targets' => [
-				'mobile',
-				'desktop'
-			],
-			'scripts' => [
-				'markerclusterer.js',
-			],
-		];
-
-		$wgResourceModules['ext.maps.gm3.markerwithlabel'] = [
-			'localBasePath' => $localBasePath . '/gm3-util-library',
-			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
-			'targets' => [
-				'mobile',
-				'desktop'
-			],
-			'scripts' => [
-				'markerwithlabel.js',
-			],
-			'styles' => [
-				'markerwithlabel.css',
-			],
-		];
-
-		$wgResourceModules['ext.maps.gm3.geoxml'] = [
-			'localBasePath' => $localBasePath . '/geoxml3',
-			'remoteExtPath' => $remoteExtPath . '/geoxml3',
-			'targets' => [
-				'mobile',
-				'desktop'
-			],
-			'scripts' => [
-				'geoxml3.js',
-				'ZipFile.complete.js', //kmz handling
-				'ProjectedOverlay.js', //Overlay handling
-			],
-		];
-
-		$wgResourceModules['ext.maps.gm3.earth'] = [
-			'localBasePath' => $localBasePath . '/gm3-util-library',
-			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
-			'targets' => [
-				'mobile',
-				'desktop'
-			],
-			'scripts' => [
-				'googleearth-compiled.js',
-			],
-		];
-
-		$wgResourceModules['ext.sm.googlemaps3ajax'] = [
-			'localBasePath' => $localBasePath,
-			'remoteExtPath' => $remoteExtPath,
-			'dependencies' => [
-				'ext.maps.googlemaps3',
-				'ext.sm.common'
-			],
-			'scripts' => [
-				'ext.sm.googlemaps3ajax.js'
-			]
-		];
 	}
 
 	private function registerPermissions() {
