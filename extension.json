@@ -49,15 +49,15 @@
 	],
 
 	"ResourceFileModulePaths": {
-		"localBasePath": "",
-		"remoteExtPath": "Maps"
+		"localBasePath": "resources",
+		"remoteExtPath": "Maps/resources"
 	},
 
 	"ResourceModules": {
 		"ext.maps.common": {
 			"position": "top",
 			"scripts": [
-				"resources/ext.maps.common.js"
+				"ext.maps.common.js"
 			],
 			"messages": [
 				"maps-load-failed"
@@ -70,7 +70,7 @@
 				"ext.maps.common"
 			],
 			"scripts": [
-				"resources/ext.maps.services.js"
+				"ext.maps.services.js"
 			]
 		},
 
@@ -81,7 +81,7 @@
 				"ext.maps.services"
 			],
 			"scripts": [
-				"resources/ext.sm.common.js"
+				"ext.sm.common.js"
 			]
 		},
 
@@ -94,13 +94,13 @@
 				"jquery.ui.dialog"
 			],
 			"scripts": [
-				"resources/editor/js/jquery.miniColors.js",
-				"resources/editor/js/mapeditor.iefixes.js",
-				"resources/editor/js/mapeditor.js"
+				"editor/js/jquery.miniColors.js",
+				"editor/js/mapeditor.iefixes.js",
+				"editor/js/mapeditor.js"
 			],
 			"styles": [
-				"resources/editor/css/jquery.miniColors.css",
-				"resources/editor/css/mapeditor.css"
+				"editor/css/jquery.miniColors.css",
+				"editor/css/mapeditor.css"
 			],
 			"messages": [
 				"mapeditor-parser-error",
@@ -121,6 +121,93 @@
 			"position": "top",
 			"dependencies": [
 				"jquery.ui.resizable"
+			]
+		},
+
+		"ext.maps.leaflet.base": {
+			"scripts": [
+				"leaflet/leaflet/leaflet.js"
+			],
+			"styles": [
+				"leaflet/leaflet/leaflet.css"
+			]
+		},
+
+		"ext.maps.leaflet": {
+			"dependencies": [
+				"ext.maps.common",
+				"ext.maps.services",
+				"ext.maps.leaflet.base"
+			],
+			"scripts": [
+				"leaflet/jquery.leaflet.js",
+				"leaflet/ext.maps.leaflet.js"
+			],
+			"messages": [
+				"maps-markers",
+				"maps-copycoords-prompt",
+				"maps-searchmarkers-text"
+			]
+		},
+
+		"ext.maps.leaflet.fullscreen": {
+			"dependencies": [
+				"ext.maps.leaflet.base"
+			],
+			"scripts": [
+				"leaflet/leaflet.fullscreen/Control.FullScreen.js"
+			],
+			"styles": [
+				"leaflet/leaflet.fullscreen/Control.FullScreen.css"
+			]
+		},
+
+		"ext.maps.leaflet.markercluster": {
+			"dependencies": [
+				"ext.maps.leaflet.base"
+			],
+			"scripts": [
+				"leaflet/leaflet.markercluster/leaflet.markercluster.js"
+			],
+			"styles": [
+				"leaflet/leaflet.markercluster/MarkerCluster.css"
+			]
+		},
+
+		"ext.maps.leaflet.providers": {
+			"dependencies": [
+				"ext.maps.leaflet.base"
+			],
+			"scripts": [
+				"leaflet/leaflet-providers/leaflet-providers.js"
+			]
+		},
+
+		"ext.maps.leaflet.editable": {
+			"dependencies": [
+				"ext.maps.leaflet.base"
+			],
+			"scripts": [
+				"leaflet/leaflet.editable/Leaflet.Editable.js"
+			]
+		},
+
+		"ext.maps.leaflet.editor": {
+			"dependencies": [
+				"ext.maps.leaflet"
+			],
+			"scripts": [
+				"leaflet/leaflet.editor.js"
+			]
+		},
+
+		"ext.maps.leaflet.leafletajax": {
+			"dependencies": [
+				"ext.maps.leaflet",
+				"ext.sm.common"
+			],
+			"scripts": [
+				"leaflet/ext.sm.leafletajax.js"
 			]
 		}
 	},
