@@ -47,6 +47,84 @@
 			"defaultcontentmodel": "wikitext"
 		}
 	],
+
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "Maps"
+	},
+
+	"ResourceModules": {
+		"ext.maps.common": {
+			"position": "top",
+			"scripts": [
+				"resources/ext.maps.common.js"
+			],
+			"messages": [
+				"maps-load-failed"
+			]
+		},
+
+		"ext.maps.services": {
+			"position": "top",
+			"dependencies": [
+				"ext.maps.common"
+			],
+			"scripts": [
+				"resources/ext.maps.services.js"
+			]
+		},
+
+		"ext.sm.common": {
+			"position": "top",
+			"dependencies": [
+				"ext.maps.common",
+				"ext.maps.services"
+			],
+			"scripts": [
+				"resources/ext.sm.common.js"
+			]
+		},
+
+		"mapeditor": {
+			"position": "top",
+			"dependencies": [
+				"ext.maps.common",
+				"jquery.ui.autocomplete",
+				"jquery.ui.slider",
+				"jquery.ui.dialog"
+			],
+			"scripts": [
+				"resources/editor/js/jquery.miniColors.js",
+				"resources/editor/js/mapeditor.iefixes.js",
+				"resources/editor/js/mapeditor.js"
+			],
+			"styles": [
+				"resources/editor/css/jquery.miniColors.css",
+				"resources/editor/css/mapeditor.css"
+			],
+			"messages": [
+				"mapeditor-parser-error",
+				"mapeditor-none-text",
+				"mapeditor-done-button",
+				"mapeditor-remove-button",
+				"mapeditor-import-button",
+				"mapeditor-export-button",
+				"mapeditor-import-button2",
+				"mapeditor-select-button",
+				"mapeditor-mapparam-button",
+				"mapeditor-clear-button",
+				"mapeditor-imageoverlay-button"
+			]
+		},
+
+		"ext.maps.resizable": {
+			"position": "top",
+			"dependencies": [
+				"jquery.ui.resizable"
+			]
+		}
+	},
+
 	"load_composer_autoloader": true,
 	"manifest_version": 2
 }

@@ -48,7 +48,6 @@ class MapsSetup {
 	}
 
 	private function registerAllTheThings() {
-		$this->registerWebResources();
 		$this->registerParserHooks();
 		$this->registerMappingServices();
 		$this->registerPermissions();
@@ -74,13 +73,6 @@ class MapsSetup {
 			) ) {
 			$this->mwGlobals['egMapsGMaps3ApiKey'] = $this->mwGlobals['egGoogleJsApiKey'];
 		}
-	}
-
-	private function registerWebResources() {
-		$this->mwGlobals['wgResourceModules'] = array_merge(
-			$this->mwGlobals['wgResourceModules'],
-			include __DIR__ . '/../Maps.resources.php'
-		);
 	}
 
 	private function registerParserHooks() {
