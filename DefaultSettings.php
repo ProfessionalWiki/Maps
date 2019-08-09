@@ -38,15 +38,6 @@ return [
 	'egMapsMapWidth' => 'auto',
 	'egMapsMapHeight' => 350,
 
-	// Array. The minimum and maximum width and height for all maps. First min and
-	// max for absolute values, then min and max for percentage values. When the
-	// height or width exceed their limits, they will be changed to the closest
-	// allowed value.
-	'egMapsSizeRestrictions' => [
-		'width'  => [ 50, 1020, 1, 100 ],
-		'height' => [ 50, 1000, 1, 100 ],
-	],
-
 	// Strings. The default content for all pop-ups. This value will only be used
 	// when the user does not provide one.
 	'egMapsDefaultTitle' => '',

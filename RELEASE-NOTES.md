@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.4.0
+
+* Removed `egMapsSizeRestrictions` setting, unused since Maps 3.0.0
+
 ## Maps 7.3.3
 
 Released on August 2nd, 2019.
