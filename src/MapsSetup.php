@@ -49,7 +49,7 @@ class MapsSetup {
 
 	private function registerAllTheThings() {
 		$this->registerParserHooks();
-		$this->registerMappingServices();
+		$this->registerGoogleMapsModules();
 		$this->registerPermissions();
 		$this->registerParameterTypes();
 		$this->registerHooks();
@@ -146,24 +146,16 @@ class MapsSetup {
 		};
 	}
 
-	private function registerMappingServices() {
-		$localBasePath = __DIR__ . '/../resources';
-		$remoteExtPath = 'Maps/resources';
-
-		$this->registerGoogleMapsModules( $localBasePath, $remoteExtPath );
-	}
-
-	private function registerGoogleMapsModules( string $localBasePath, string $remoteExtPath ) {
+	private function registerGoogleMapsModules() {
 		global $wgResourceModules;
 
-		$localBasePath = $localBasePath . '/GoogleMaps';
-		$remoteExtPath = $remoteExtPath . '/GoogleMaps';
+		$localBasePath = __DIR__ . '/../resources/GoogleMaps';
+		$remoteExtPath = 'Maps/resources/GoogleMaps';
 
 		$wgResourceModules['ext.maps.googlemaps3'] = [
 			'dependencies' => [ 'ext.maps.common' ],
 			'localBasePath' => $localBasePath,
 			'remoteExtPath' => $remoteExtPath,
-			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
 				'desktop'
@@ -184,7 +176,6 @@ class MapsSetup {
 		$wgResourceModules['ext.maps.gm3.markercluster'] = [
 			'localBasePath' => $localBasePath . '/gm3-util-library',
 			'remoteExtPath' => $remoteExtPath . '/gm3-util-library',
-			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
 				'desktop'
@@ -197,7 +188,6 @@ class MapsSetup {
 		$wgResourceModules['ext.maps.gm3.markerwithlabel'] = [
 			'localBasePath' => $localBasePath . '/gm3-util-library',
 			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
-			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
 				'desktop'
@@ -213,7 +203,6 @@ class MapsSetup {
 		$wgResourceModules['ext.maps.gm3.geoxml'] = [
 			'localBasePath' => $localBasePath . '/geoxml3',
 			'remoteExtPath' => $remoteExtPath . '/geoxml3',
-			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
 				'desktop'
@@ -228,7 +217,6 @@ class MapsSetup {
 		$wgResourceModules['ext.maps.gm3.earth'] = [
 			'localBasePath' => $localBasePath . '/gm3-util-library',
 			'remoteExtPath' => $remoteExtPath  . '/gm3-util-library',
-			'group' => 'ext.maps',
 			'targets' => [
 				'mobile',
 				'desktop'
@@ -241,7 +229,6 @@ class MapsSetup {
 		$wgResourceModules['ext.sm.googlemaps3ajax'] = [
 			'localBasePath' => $localBasePath,
 			'remoteExtPath' => $remoteExtPath,
-			'group' => 'ext.maps',
 			'dependencies' => [
 				'ext.maps.googlemaps3',
 				'ext.sm.common'
