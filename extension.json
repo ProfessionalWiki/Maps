@@ -56,7 +56,7 @@
 	"ResourceModules": {
 		"ext.maps.common": {
 			"scripts": [
-				"ext.maps.common.js"
+				"maps.common.js"
 			],
 			"messages": [
 				"maps-load-failed"
@@ -68,7 +68,7 @@
 				"ext.maps.common"
 			],
 			"scripts": [
-				"ext.maps.services.js"
+				"maps.services.js"
 			]
 		},
 
@@ -78,7 +78,7 @@
 				"ext.maps.services"
 			],
 			"scripts": [
-				"ext.sm.common.js"
+				"sm.common.js"
 			]
 		},
 
