@@ -10,6 +10,19 @@ use PHPUnit\Framework\TestCase;
  */
 class DisplayMapTest extends TestCase {
 
+	private $originalHeight;
+	private $originalWidth;
+
+	public function setUp() {
+		$this->originalHeight = $GLOBALS['egMapsMapHeight'];
+		$this->originalWidth = $GLOBALS['egMapsMapWidth'];
+	}
+
+	public function tearDown() {
+		$GLOBALS['egMapsMapHeight'] = $this->originalHeight;
+		$GLOBALS['egMapsMapWidth'] = $this->originalWidth;
+	}
+
 	public function testMapIdIsSet() {
 		$this->assertContains(
 			'id="map_leaflet_',
@@ -141,6 +154,21 @@ class DisplayMapTest extends TestCase {
 			$this->parse(
 				"{{#display_map:rectangles=\n  1,1:2,2~title~text~color\n| scrollwheelzoom=off\n| service = google}}"
 			)
+		);
+	}
+
+	public function testDimensionDefaultsAsInteger() {
+		$GLOBALS['egMapsMapHeight'] = 420;
+		$GLOBALS['egMapsMapWidth'] = 230;
+
+		$this->assertContains(
+			'height: 420px;',
+			$this->parse( '{{#display_map:1,1}}' )
+		);
+
+		$this->assertContains(
+			'width: 230px;',
+			$this->parse( '{{#display_map:1,1}}' )
 		);
 	}
 

@@ -8,6 +8,7 @@ use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\Elements\Location;
 use Maps\MappingService;
 use Maps\Presentation\ElementJsonSerializer;
+use Maps\Presentation\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use Parser;
@@ -66,9 +67,10 @@ class DisplayMapRenderer {
 
 		$this->handleMarkerData( $params );
 
-		$output = $this->getMapHTML(
+		$output = ( new MapHtmlBuilder() )->getMapHTML(
 			$params,
-			$this->service->newMapId()
+			$this->service->newMapId(),
+			$this->service->getName()
 		);
 
 		$dependencies = $this->service->getDependencyHtml( $params );
@@ -175,31 +177,6 @@ class DisplayMapRenderer {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Returns the HTML to display the map.
-	 *
-	 * @param array $params
-	 * @param string $mapName
-	 *
-	 * @return string
-	 */
-	protected function getMapHTML( array $params, $mapName ) {
-		return Html::rawElement(
-			'div',
-			[
-				'id' => $mapName,
-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
-				'class' => 'maps-map maps-' . $this->service->getName()
-			],
-			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
-			Html::element(
-				'div',
-				[ 'style' => 'display:none', 'class' => 'mapdata' ],
-				FormatJson::encode( $params )
-			)
-		);
 	}
 
 }

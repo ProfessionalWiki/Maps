@@ -11,6 +11,7 @@ use Maps\FileUrlFinder;
 use Maps\MappingService;
 use Maps\MapsFunctions;
 use Maps\Presentation\ElementJsonSerializer;
+use Maps\Presentation\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use ParamProcessor\ParamDefinition;
@@ -151,10 +152,10 @@ class MapPrinter extends ResultPrinter {
 			$params['zoom'] = false;
 		}
 
-		$mapName = $this->service->newMapId();
+		$mapId = $this->service->newMapId();
 
 		SMWOutputs::requireHeadItem(
-			$mapName,
+			$mapId,
 			$this->service->getDependencyHtml( $params )
 		);
 
@@ -166,7 +167,11 @@ class MapPrinter extends ResultPrinter {
 			unset( $params['source'] );
 		}
 
-		return $this->getMapHTML( $params, $mapName );
+		return ( new MapHtmlBuilder() )->getMapHTML(
+			$params,
+			$mapId,
+			$this->service->getName()
+		);
 	}
 
 	private function elementsToJson( array $elements ) {
@@ -293,31 +298,6 @@ class MapPrinter extends ResultPrinter {
 		}
 
 		return $locationsJson;
-	}
-
-	/**
-	 * Returns the HTML to display the map.
-	 *
-	 * @param array $params
-	 * @param string $mapName
-	 *
-	 * @return string
-	 */
-	private function getMapHTML( array $params, string $mapName ): string {
-		return Html::rawElement(
-			'div',
-			[
-				'id' => $mapName,
-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
-				'class' => 'maps-map maps-' . $this->service->getName()
-			],
-			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
-			Html::element(
-				'div',
-				[ 'style' => 'display:none', 'class' => 'mapdata' ],
-				FormatJson::encode( $params )
-			)
-		);
 	}
 
 	/**

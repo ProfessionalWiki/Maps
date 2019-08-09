@@ -5,6 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.4.0
 
+* Fixed default map height bug occurring with recent versions of an used library
 * Removed `egMapsSizeRestrictions` setting, unused since Maps 3.0.0
 
 ## Maps 7.3.3
