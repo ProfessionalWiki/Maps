@@ -55,7 +55,6 @@
 
 	"ResourceModules": {
 		"ext.maps.common": {
-			"position": "top",
 			"scripts": [
 				"ext.maps.common.js"
 			],
@@ -65,7 +64,6 @@
 		},
 
 		"ext.maps.services": {
-			"position": "top",
 			"dependencies": [
 				"ext.maps.common"
 			],
@@ -75,7 +73,6 @@
 		},
 
 		"ext.sm.common": {
-			"position": "top",
 			"dependencies": [
 				"ext.maps.common",
 				"ext.maps.services"
@@ -86,7 +83,6 @@
 		},
 
 		"mapeditor": {
-			"position": "top",
 			"dependencies": [
 				"ext.maps.common",
 				"jquery.ui.autocomplete",
@@ -118,7 +114,6 @@
 		},
 
 		"ext.maps.resizable": {
-			"position": "top",
 			"dependencies": [
 				"jquery.ui.resizable"
 			]
