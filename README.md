@@ -18,8 +18,9 @@ Features:
     * Finding a destination given a starting point, bearing and distance with [`#finddestination`](https://www.semantic-mediawiki.org/wiki/Maps/Finddestination)
 * Distance formatting and format conversion via the [`#distance`](https://www.semantic-mediawiki.org/wiki/Maps/Distance) parser function.
 * Visual map editor ([Special:MapEditor](https://www.semantic-mediawiki.org/wiki/Special:MapEditor)) to edit [`#display_map`](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps) wikitext (requires Google Maps).
+* Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom development at a discount if it is open sourced.
 
-Maps has been maintained since 2009 and is installed on 1000+ wikis. [Professional.Wiki](https://professional.wiki/) provides professional support.
+Maps has been maintained since 2009 and is installed on 1000+ wikis.
 
 ## User manual
 
