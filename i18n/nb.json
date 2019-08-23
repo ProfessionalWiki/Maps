@@ -88,7 +88,7 @@
 	"maps-displaymap-par-rectangles": "Rektangler å vise",
 	"maps-displaymap-par-static": "Gjør kartet statisk",
 	"maps-displaymap-par-wmsoverlay": "Legger på et WMS-lag",
-	"maps-displaymap-par-geojson": "URL-en til ei GeoJSON-fil",
+	"maps-displaymap-par-geojson": "URL-en til en side eller fil som inneholder GeoJSON-data",
 	"maps-fullscreen-button": "Slå av/på fullskjerm",
 	"maps-fullscreen-button-tooltip": "Vis kartet som fullskjerm eller innbygd.",
 	"validation-error-invalid-location": "Parameter $1 må være en gyldig lokasjon.",
@@ -128,7 +128,7 @@
 	"maps-par-searchmarkers": "Tillater å søke etter spesifikke markører via et felt som er innfestet i kartet.",
 	"maps-par-zoom": "Zoomnivået for kartet. For kart med markører vil standardverdien være den med mest høyest zoom som viser alle markørene.",
 	"maps-par-width": "Tillater at kartbredden angis. Standard enhet er pixler /(px), men du kan alternativt angi ex, em, %.",
-	"maps-par-height": "Tillater at karthøyden angis. Standard enhet er pixler /(px), men du kan alternativt angi ex, em, %.",
+	"maps-par-height": "Tillater at karthøyden angis. Standard enhet er piksler (px), men du kan alternativt angi enhetene ex eller em.",
 	"maps-par-centre": "Stedet som kartet sentreres rundt",
 	"maps-par-enable-fullscreen": "Aktiver fullskjermknappen",
 	"maps-par-kml": "KML-filer som lastes inn på kortet.",
@@ -224,5 +224,5 @@
 	"validator-type-mapspolygon": "Geografisk polygon",
 	"validator-type-mapspolygon-list": "Liste over geografiske polygoner",
 	"validator-type-wmsoverlay": "Webmappetjensteoverlegg",
-	"validator-type-jsonfile": "URL"
+	"validator-type-jsonfile": "tekst"
 }
