@@ -5,7 +5,7 @@
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-(function ($, mw, L, MQ) {
+(function ($, mw, L) {
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
@@ -33,19 +33,19 @@
 			};
 
 			var marker = L.marker( [properties.lat, properties.lon], markerOptions );
-			
+
 			if (properties.hasOwnProperty('icon') && properties.icon !== '') {
 				marker.setOpacity(0);
-				
+
 				var img = new Image();
 				img.onload = function() {
-					var icon = new L.Icon({ 
+					var icon = new L.Icon({
 						iconUrl: properties.icon,
 						iconSize: [ img.width, img.height ],
 						iconAnchor: [ img.width / 2, img.height ],
 						popupAnchor: [ -img.width % 2, -img.height*2/3 ]
 					});
-					
+
 					marker.setIcon(icon);
 					marker.setOpacity(1);
 				};
@@ -64,7 +64,7 @@
 					}
 				);
 			}
-			
+
 			return marker;
 		};
 
@@ -289,7 +289,7 @@
 					position: 'topleft'
 				};
 			}
-						
+
 			mapOptions.scrollWheelZoom = options.scrollwheelzoom;
 
 			if (options.static) {
@@ -312,9 +312,9 @@
 				var providerName = layerName.split('.')[0] ;
 				if (apikeys.hasOwnProperty(providerName) && apikeys[providerName] !== '') {
 					options.apikey = apikeys[providerName] ;
-				} 
+				}
 				if (layerName === 'MapQuestOpen') {
-					layers[layerName] = new MQ.TileLayer().addTo(map);
+					layers[layerName] = new window.MQ.TileLayer().addTo(map);
 				} else {
 					layers[layerName] = new L.tileLayer.provider(layerName,options).addTo(map);
 				}
@@ -431,4 +431,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki, L, window.MQ);
+})(jQuery, window.mediaWiki, L);

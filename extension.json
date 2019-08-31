@@ -54,29 +54,7 @@
 	},
 
 	"ResourceModules": {
-		"ext.maps.common": {
-			"scripts": [
-				"maps.common.js"
-			],
-			"messages": [
-				"maps-load-failed"
-			]
-		},
-
-		"ext.maps.services": {
-			"dependencies": [
-				"ext.maps.common"
-			],
-			"scripts": [
-				"maps.services.js"
-			]
-		},
-
 		"ext.sm.common": {
-			"dependencies": [
-				"ext.maps.common",
-				"ext.maps.services"
-			],
 			"scripts": [
 				"sm.common.js"
 			]
@@ -84,7 +62,6 @@
 
 		"mapeditor": {
 			"dependencies": [
-				"ext.maps.common",
 				"jquery.ui.autocomplete",
 				"jquery.ui.slider",
 				"jquery.ui.dialog"
@@ -130,8 +107,6 @@
 
 		"ext.maps.leaflet": {
 			"dependencies": [
-				"ext.maps.common",
-				"ext.maps.services",
 				"ext.maps.leaflet.base"
 			],
 			"scripts": [
@@ -207,9 +182,6 @@
 		},
 
 		"ext.maps.googlemaps3": {
-			"dependencies": [
-				"ext.maps.common"
-			],
 			"scripts": [
 				"GoogleMaps/jquery.googlemap.js",
 				"GoogleMaps/ext.maps.googlemaps3.js"

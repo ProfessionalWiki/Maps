@@ -1,4 +1,8 @@
+window.mapsLeafletList = [];
 
-mediaWiki.loader.using( [ 'ext.maps.leaflet' ] ).done( function () {
-	( new maps.services( jQuery( document ) ) ).leaflet();
+$( '.maps-leaflet' ).each( function() {
+	var $this = $( this );
+	window.mapsLeafletList.push(
+		$this.leafletmaps( $.parseJSON( $this.find( 'div' ).text() ) )
+	);
 } );

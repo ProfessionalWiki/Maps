@@ -64,21 +64,6 @@
 			} );
 		},
 
-		/**
-		 * Leaflet service
-		 *
-		 * @since 3.5
-		 */
-		leaflet: function() {
-			mw.loader.using( 'ext.maps.leaflet' ).done( function () {
-				$( '.maps-leaflet' ).each( function() {
-					var $this = $( this );
-					maps.leafletList.push(
-						$this.leafletmaps( $.parseJSON( $this.find( 'div').text() ) )
-					);
-				} );
-			} );
-		}
 	};
 
 	maps.services = services;
