@@ -54,37 +54,14 @@
 	},
 
 	"ResourceModules": {
-		"ext.maps.common": {
-			"scripts": [
-				"maps.common.js"
-			],
-			"messages": [
-				"maps-load-failed"
-			]
-		},
-
-		"ext.maps.services": {
-			"dependencies": [
-				"ext.maps.common"
-			],
-			"scripts": [
-				"maps.services.js"
-			]
-		},
-
 		"ext.sm.common": {
-			"dependencies": [
-				"ext.maps.common",
-				"ext.maps.services"
-			],
 			"scripts": [
-				"sm.common.js"
+				"semanticMaps.js"
 			]
 		},
 
 		"mapeditor": {
 			"dependencies": [
-				"ext.maps.common",
 				"jquery.ui.autocomplete",
 				"jquery.ui.slider",
 				"jquery.ui.dialog"
@@ -128,20 +105,24 @@
 			]
 		},
 
-		"ext.maps.leaflet": {
+		"ext.maps.leaflet.jquery": {
 			"dependencies": [
-				"ext.maps.common",
-				"ext.maps.services",
 				"ext.maps.leaflet.base"
 			],
 			"scripts": [
-				"leaflet/jquery.leaflet.js",
-				"leaflet/ext.maps.leaflet.js"
+				"leaflet/jquery.leaflet.js"
 			],
 			"messages": [
-				"maps-markers",
-				"maps-copycoords-prompt",
-				"maps-searchmarkers-text"
+				"maps-copycoords-prompt"
+			]
+		},
+
+		"ext.maps.leaflet": {
+			"dependencies": [
+				"ext.maps.leaflet.jquery"
+			],
+			"scripts": [
+				"leaflet/leafletLoader.js"
 			]
 		},
 
@@ -207,9 +188,6 @@
 		},
 
 		"ext.maps.googlemaps3": {
-			"dependencies": [
-				"ext.maps.common"
-			],
 			"scripts": [
 				"GoogleMaps/jquery.googlemap.js",
 				"GoogleMaps/ext.maps.googlemaps3.js"

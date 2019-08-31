@@ -15,7 +15,7 @@
 	$( document ).ready( function() {
 		// todo: find a way to remove setTimeout.
 		setTimeout( function() {
-			$( window.maps.leafletList ).each( function( index, map ) {
+			$( window.mapsLeafletList ).each( function( index, map ) {
 				if( !map.options.ajaxquery || !map.options.ajaxcoordproperty ) {
 					return;
 				}

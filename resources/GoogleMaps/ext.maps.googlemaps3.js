@@ -1,25 +1,16 @@
-/**
- * JavaScript for Google Maps v3 maps in the Maps extension.
- * @see https://www.mediawiki.org/wiki/Extension:Maps
- *
- * @licence GNU GPL v2+
- * @author Jeroen De Dauw <jeroendedauw at gmail dot com>
- */
+window.mapsGoogleList = [];
+
 (function( $, mw ) {
-
 	$( document ).ready( function() {
-
-		if ( typeof google === 'undefined' ) {
+		if( typeof google === 'undefined' ) {
 			$( '.maps-googlemaps3' ).text( mw.msg( 'maps-googlemaps3-incompatbrowser' ) );
-		}
-		else {
+		} else {
 			$( '.maps-googlemaps3' ).each( function() {
 				var $this = $( this );
-				var map = $this.googlemaps( $.parseJSON( $this.find( 'div').text() ) );
-				window.maps.googlemapsList.push(map);
+				window.mapsGoogleList.push(
+					$this.googlemaps( $.parseJSON( $this.find( 'div' ).text() ) )
+				);
 			} );
 		}
-
 	} );
-
 })( window.jQuery, mediaWiki );

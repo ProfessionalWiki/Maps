@@ -1,7 +1,4 @@
 /**
- * JavaScript the Semantic Maps extension.
- * @see https://www.mediawiki.org/wiki/Extension:Semantic_Maps
- *
  * @licence GNU GPL v2++
  * @author Peter Grassberger < petertheone@gmail.com >
  */
@@ -9,18 +6,20 @@ window.sm = new ( function( $, mw ) {
 
 	this.buildQueryString = function( query, ajaxcoordproperty, top, right, bottom, left ) {
 		var isCompoundQuery = query.indexOf( '|' ) > -1;
-		var query = query.split( '|' );
-		$.each( query, function( index ) {
-			query[index] += ' [[' + ajaxcoordproperty + '::+]] ';
-			query[index] += '[[' + ajaxcoordproperty + '::>' + bottom + '°, ' + left + '°]] ';
-			query[index] += '[[' + ajaxcoordproperty + '::<' + top + '°, ' + right + '°]]';
+		var queryParts = query.split( '|' );
+
+		$.each( queryParts, function( index ) {
+			queryParts[index] += ' [[' + ajaxcoordproperty + '::+]] ';
+			queryParts[index] += '[[' + ajaxcoordproperty + '::>' + bottom + '°, ' + left + '°]] ';
+			queryParts[index] += '[[' + ajaxcoordproperty + '::<' + top + '°, ' + right + '°]]';
 			if( !isCompoundQuery ) {
-				query[index] += '|?' + ajaxcoordproperty;
+				queryParts[index] += '|?' + ajaxcoordproperty;
 			} else {
-				query[index] += ';?' + ajaxcoordproperty;
+				queryParts[index] += ';?' + ajaxcoordproperty;
 			}
 		} );
-		return query.join( ' | ' );
+
+		return queryParts.join( ' | ' );
 	};
 
 	/**
