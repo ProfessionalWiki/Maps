@@ -1,7 +1,4 @@
 /**
- * JavaScript the Semantic Maps extension.
- * @see https://www.mediawiki.org/wiki/Extension:Semantic_Maps
- *
  * @licence GNU GPL v2++
  * @author Peter Grassberger < petertheone@gmail.com >
  */
@@ -21,7 +18,7 @@ window.sm = new ( function( $, mw ) {
 				queryParts[index] += ';?' + ajaxcoordproperty;
 			}
 		} );
-		
+
 		return queryParts.join( ' | ' );
 	};
 

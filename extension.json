@@ -56,7 +56,7 @@
 	"ResourceModules": {
 		"ext.sm.common": {
 			"scripts": [
-				"sm.common.js"
+				"semanticMaps.js"
 			]
 		},
 
