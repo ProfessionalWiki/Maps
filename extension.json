@@ -105,18 +105,24 @@
 			]
 		},
 
-		"ext.maps.leaflet": {
+		"ext.maps.leaflet.jquery": {
 			"dependencies": [
 				"ext.maps.leaflet.base"
 			],
 			"scripts": [
-				"leaflet/jquery.leaflet.js",
-				"leaflet/ext.maps.leaflet.js"
+				"leaflet/jquery.leaflet.js"
 			],
 			"messages": [
-				"maps-markers",
-				"maps-copycoords-prompt",
-				"maps-searchmarkers-text"
+				"maps-copycoords-prompt"
+			]
+		},
+
+		"ext.maps.leaflet": {
+			"dependencies": [
+				"ext.maps.leaflet.jquery"
+			],
+			"scripts": [
+				"leaflet/leafletLoader.js"
 			]
 		},
 
