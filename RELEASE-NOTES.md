@@ -7,7 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on August 31st, 2019.
 
-* Improved loading of maps
+* Fixed critical map loading bug that caused many maps to not load without a page refresh
 
 ## Maps 7.4.0
 
