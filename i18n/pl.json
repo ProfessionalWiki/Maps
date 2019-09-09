@@ -9,7 +9,8 @@
 			"Alan ffm",
 			"Macofe",
 			"Deejay1",
-			"Railfail536"
+			"Railfail536",
+			"Rail"
 		]
 	},
 	"maps-desc": "Umożliwia zamieszczanie na stronach wiki map dynamicznych, geokodowanych adresów i innych danych geograficznych",
@@ -21,6 +22,7 @@
 	"maps-load-failed": "Nie można załadować mapy!",
 	"maps-markers": "Zaznaczenia",
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
+	"maps-searchmarkers-text": "Filtr markerów",
 	"maps-others": "inne",
 	"maps-kml-parsing-failed": "Błąd podczas parsowania jednego lub więcej plików KML, najczęściej jest to wynik błędnego XML",
 	"maps-ns-layer": "Warstwa",
