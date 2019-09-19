@@ -12,7 +12,8 @@
 			"Macofe",
 			"Malafaya",
 			"Fúlvio",
-			"Athena in Wonderland"
+			"Athena in Wonderland",
+			"Mansil alfalb"
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas",
@@ -133,7 +134,7 @@
 	"maps-par-searchmarkers": "Permite pesquisar marcadores específicos usando um campo incorporado no mapa.",
 	"maps-par-zoom": "O nível de zoom do mapa. Nos mapas com marcadores será usado o maior zoom que, mesmo assim, mostre todos os marcadores.",
 	"maps-par-width": "Permite definir a largura do mapa. A unidade por omissão é o píxel, mas pode defini-la explicitamente como: px, ex, em, %.",
-	"maps-par-height": "Permite definir a altura do mapa. A unidade por omissão é o píxel, mas pode defini-la explicitamente como: px, ex, em, %.",
+	"maps-par-height": "Permite definir a altura do mapa. A unidade predefinida é o píxel, mas pode especificar explicitamente uma destas unidades: px, ex, em.",
 	"maps-par-centre": "A localização na qual o mapa deve estar centrado",
 	"maps-par-enable-fullscreen": "Ativar o botão de ecrã completo",
 	"maps-par-kml": "Ficheiros KML que serão carregados no mapa.",
