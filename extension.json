@@ -159,21 +159,16 @@
 			]
 		},
 
-		"ext.maps.leaflet.editable": {
-			"dependencies": [
-				"ext.maps.leaflet.base"
-			],
-			"scripts": [
-				"leaflet/leaflet.editable/Leaflet.Editable.js"
-			]
-		},
-
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
 				"ext.maps.leaflet"
 			],
 			"scripts": [
+				"leaflet/leaflet.draw/leaflet.draw-src.js",
 				"leaflet/leaflet.editor.js"
+			],
+			"styles": [
+				"leaflet/leaflet.draw/leaflet.draw.css"
 			]
 		},
 
