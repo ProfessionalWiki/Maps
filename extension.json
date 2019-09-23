@@ -98,31 +98,24 @@
 
 		"ext.maps.leaflet.base": {
 			"scripts": [
-				"leaflet/leaflet/leaflet.js"
+				"leaflet/leaflet/leaflet.js",
+				"leaflet/leaflet-providers/leaflet-providers.js"
 			],
 			"styles": [
 				"leaflet/leaflet/leaflet.css"
 			]
 		},
 
-		"ext.maps.leaflet.jquery": {
+		"ext.maps.leaflet.loader": {
 			"dependencies": [
 				"ext.maps.leaflet.base"
 			],
 			"scripts": [
-				"leaflet/jquery.leaflet.js"
+				"leaflet/jquery.leaflet.js",
+				"leaflet/leafletLoader.js"
 			],
 			"messages": [
 				"maps-copycoords-prompt"
-			]
-		},
-
-		"ext.maps.leaflet": {
-			"dependencies": [
-				"ext.maps.leaflet.jquery"
-			],
-			"scripts": [
-				"leaflet/leafletLoader.js"
 			]
 		},
 
@@ -150,30 +143,17 @@
 			]
 		},
 
-		"ext.maps.leaflet.providers": {
-			"dependencies": [
-				"ext.maps.leaflet.base"
-			],
-			"scripts": [
-				"leaflet/leaflet-providers/leaflet-providers.js"
-			]
-		},
-
-		"ext.maps.leaflet.editable": {
-			"dependencies": [
-				"ext.maps.leaflet.base"
-			],
-			"scripts": [
-				"leaflet/leaflet.editable/Leaflet.Editable.js"
-			]
-		},
-
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
-				"ext.maps.leaflet"
+				"ext.maps.leaflet.base",
+				"mediawiki.api.edit"
 			],
 			"scripts": [
+				"leaflet/leaflet.draw/leaflet.draw-src.js",
 				"leaflet/leaflet.editor.js"
+			],
+			"styles": [
+				"leaflet/leaflet.draw/leaflet.draw.css"
 			]
 		},
 
