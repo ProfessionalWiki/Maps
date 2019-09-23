@@ -17,7 +17,7 @@
 	}
 
 	function userCanEdit() {
-		return true;
+		return mw.config.get('wgUserId') !== null;
 	}
 
 	let MapEditor = function(mapId, json) {
