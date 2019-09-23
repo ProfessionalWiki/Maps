@@ -16,48 +16,69 @@
 		toolbar.handlers.circle.tooltip.start = 'Click map to place circle.';
 	}
 
-	function addTitleLayer(map) {
-		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-		}).addTo(map);
+	function userCanEdit() {
+		return true;
 	}
 
-	function addDrawControl(map, geoJsonLayer) {
-		map.addControl(new L.Control.Draw({
-			edit: {
-				featureGroup: geoJsonLayer,
-				poly: {
-					allowIntersection: false
-				}
-			},
-			draw: {
-				polygon: {
-					allowIntersection: false,
-					showArea: true
-				},
-				circlemarker: false
+	let MapEditor = function(mapId, json) {
+		let self = {};
+
+		self.initialize = function() {
+			self.map = L.map(mapId);
+
+			self.geoJsonLayer = L.geoJSON(json).addTo(self.map);
+
+			self.addTitleLayer();
+			self.fitBounds();
+
+			if (userCanEdit()) {
+				self.addDrawControl();
+				self.addNewLayersToJsonLayer();
 			}
-		}));
-	}
+		};
 
-	function addNewLayersToJsonLayer(map, geoJsonLayer) {
-		map.on(L.Draw.Event.CREATED, function (event) {
-			var layer = event.layer;
+		self.addTitleLayer = function() {
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(self.map);
+		};
 
-			geoJsonLayer.addLayer(layer);
-		});
-	}
+		self.fitBounds = function() {
+			self.map.fitBounds(self.geoJsonLayer.getBounds());
+		};
+
+		self.addDrawControl = function() {
+			self.map.addControl(new L.Control.Draw({
+				edit: {
+					featureGroup: self.geoJsonLayer,
+					poly: {
+						allowIntersection: false
+					}
+				},
+				draw: {
+					polygon: {
+						allowIntersection: false,
+						showArea: true
+					},
+					circlemarker: false
+				}
+			}));
+		};
+
+		self.addNewLayersToJsonLayer = function() {
+			self.map.on(L.Draw.Event.CREATED, function (event) {
+				var layer = event.layer;
+
+				self.geoJsonLayer.addLayer(layer);
+			});
+		};
+
+		return self;
+	};
 
 	$( document ).ready( function() {
-		let map = L.map('GeoJsonMap');
-
-		addTitleLayer(map);
-
-		const geoJsonLayer = L.geoJSON(window.GeoJson).addTo(map);
-		map.fitBounds(geoJsonLayer.getBounds());
-
-		addDrawControl(map, geoJsonLayer);
-		addNewLayersToJsonLayer(map, geoJsonLayer);
+		let editor = MapEditor('GeoJsonMap', window.GeoJson);
+		editor.initialize();
 
 		initializeMessages();
 	} );
