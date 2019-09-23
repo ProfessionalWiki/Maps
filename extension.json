@@ -105,24 +105,16 @@
 			]
 		},
 
-		"ext.maps.leaflet.jquery": {
+		"ext.maps.leaflet.loader": {
 			"dependencies": [
 				"ext.maps.leaflet.base"
 			],
 			"scripts": [
-				"leaflet/jquery.leaflet.js"
+				"leaflet/jquery.leaflet.js",
+				"leaflet/leafletLoader.js"
 			],
 			"messages": [
 				"maps-copycoords-prompt"
-			]
-		},
-
-		"ext.maps.leaflet": {
-			"dependencies": [
-				"ext.maps.leaflet.jquery"
-			],
-			"scripts": [
-				"leaflet/leafletLoader.js"
 			]
 		},
 
@@ -161,7 +153,7 @@
 
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
-				"ext.maps.leaflet",
+				"ext.maps.leaflet.base",
 				"mediawiki.api.edit"
 			],
 			"scripts": [
