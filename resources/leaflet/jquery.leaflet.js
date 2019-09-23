@@ -409,18 +409,19 @@
 
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
-			if (options.layers !== ['MapQuestOpen'] || options.overlaylayers.length > 0) {
-				dependencies.push( 'ext.maps.leaflet.providers' );
-			}
+
 			if (options.enablefullscreen) {
 				dependencies.push( 'ext.maps.leaflet.fullscreen' );
 			}
+
 			if (options.resizable) {
 				dependencies.push( 'ext.maps.resizable' );
 			}
+
 			if (options.markercluster) {
 				dependencies.push( 'ext.maps.leaflet.markercluster' );
 			}
+
 			return dependencies;
 		};
 
