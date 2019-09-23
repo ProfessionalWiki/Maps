@@ -22,7 +22,7 @@ class MapHtmlBuilder {
 			'div',
 			[
 				'id' => $mapName,
-				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #cccccc; overflow: hidden;",
+				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #eeeeee; overflow: hidden;",
 				'class' => 'maps-map maps-' . $serviceName
 			],
 			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .

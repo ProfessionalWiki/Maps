@@ -36,7 +36,7 @@ class GeoJsonContent extends \JsonContent {
 				]
 			)
 			. '<style>'
-			. '.GeoJsonMap {width: "100%"; height: 600px; display: "inline-block"}'
+			. '.GeoJsonMap {width: "100%"; height: 600px; display: "inline-block"; background-color: #eeeeee;}'
 			. '</style>'
 			.
 			Html::element(
