@@ -1,24 +1,64 @@
 (function( $, mw ) {
 
 	function initializeMessages() {
-		let toolbar = L.drawLocal.draw.toolbar;
+		let buttons = L.drawLocal.draw.toolbar.buttons;
 
-		toolbar.buttons.marker = 'Place a marker';
-		toolbar.buttons.polyline = 'Draw a line';
-		toolbar.buttons.polygon = 'Draw a polygon';
-		toolbar.buttons.rectangle = 'Place a rectangle';
-		toolbar.buttons.circle = 'Place a circle';
+		buttons.marker = 'Place a marker';
+		buttons.polyline = 'Draw a line';
+		buttons.polygon = 'Draw a polygon';
+		buttons.rectangle = 'Place a rectangle';
+		buttons.circle = 'Place a circle';
 
-		toolbar.handlers.marker.tooltip.start = 'Click map to place marker.';
-		toolbar.handlers.polyline.tooltip.start = 'Click map to draw line.';
-		toolbar.handlers.polygon.tooltip.start = 'Click map to draw polygon.';
-		toolbar.handlers.rectangle.tooltip.start = 'Click map to place rectangle.';
-		toolbar.handlers.circle.tooltip.start = 'Click map to place circle.';
+		let handlers = L.drawLocal.draw.handlers;
+
+		handlers.marker.tooltip.start = 'Click map to place marker.';
+		handlers.polyline.tooltip.start = 'Click map to draw line.';
+		handlers.polygon.tooltip.start = 'Click map to draw polygon.';
+		handlers.rectangle.tooltip.start = 'Click map to place rectangle.';
+		handlers.circle.tooltip.start = 'Click map to place circle.';
 	}
 
-	function userCanEdit() {
-		return mw.config.get('wgUserId') !== null;
+	function getUserCanEdit(callback) {
+		mw.user.getRights(
+			function(rights) {
+				callback(rights.includes("edit"))
+			}
+		);
 	}
+
+	function ifUserCanEdit(callback) {
+		getUserCanEdit(function(canEdit) {
+			if (canEdit) {
+				callback();
+			}
+		});
+	}
+
+	let MapSaver = function() {
+		let self = {};
+
+		self.save = function(newContent, summary) {
+			new mw.Api().edit(
+				mw.config.get('wgPageName'),
+				function(revision) {
+					return {
+						text: newContent,
+						summary: summary,
+						minor: false
+					};
+				}
+			).then(
+				function(response) {
+					if (response.result !== 'Success') {
+						console.log(response);
+						alert('Failed to save map');
+					}
+				}
+			);
+		};
+
+		return self;
+	};
 
 	let MapEditor = function(mapId, json) {
 		let self = {};
@@ -29,12 +69,53 @@
 			self.geoJsonLayer = L.geoJSON(json).addTo(self.map);
 
 			self.addTitleLayer();
+
 			self.fitBounds();
 
-			if (userCanEdit()) {
-				self.addDrawControl();
-				self.addNewLayersToJsonLayer();
+			ifUserCanEdit(self.addEditUi);
+
+			self.map.on(
+				L.Draw.Event.EDITED,
+				self.saveJson
+			);
+
+			self.map.on(
+				L.Draw.Event.DELETED,
+				self.saveJson
+			);
+		};
+
+		self.saveJson = function(event) {
+			new MapSaver().save(
+				JSON.stringify(self.geoJsonLayer.toGeoJSON()),
+				self.summaryFromEvent(event)
+			)
+		};
+
+		self.summaryFromEvent = function(event) {
+			if (event.type === L.Draw.Event.CREATED) {
+				return 'Added ' + self.getLayerTypeName(event.layerType);
 			}
+
+			if (event.type === L.Draw.Event.DELETED) {
+				return 'Removed ' + event.layers.getLayers().length + ' shapes';
+			}
+
+			if (event.type === L.Draw.Event.EDITED) {
+				return 'Modified existing shapes';
+			}
+
+			return 'Visual map edit'
+		};
+
+		self.getLayerTypeName = function(layerType) {
+			return {
+				'marker': 'marker',
+				'polyline': 'line',
+				'polygon': 'polygon',
+				'rectangle': 'rectangle',
+				'circle': 'circle',
+			}[layerType];
 		};
 
 		self.addTitleLayer = function() {
@@ -44,7 +125,17 @@
 		};
 
 		self.fitBounds = function() {
-			self.map.fitBounds(self.geoJsonLayer.getBounds());
+			if (json.features.length === 0) {
+				self.map.setView([0, 0], 1);
+			}
+			else {
+				self.map.fitBounds(self.geoJsonLayer.getBounds());
+			}
+		};
+
+		self.addEditUi = function() {
+			self.addDrawControl();
+			self.addNewLayersToJsonLayer();
 		};
 
 		self.addDrawControl = function() {
@@ -60,16 +151,16 @@
 						allowIntersection: false,
 						showArea: true
 					},
-					circlemarker: false
+					circlemarker: false, // Do not want this one
+					circle: false // Is not showing properly after save
 				}
 			}));
 		};
 
 		self.addNewLayersToJsonLayer = function() {
 			self.map.on(L.Draw.Event.CREATED, function (event) {
-				var layer = event.layer;
-
-				self.geoJsonLayer.addLayer(layer);
+				self.geoJsonLayer.addLayer(event.layer);
+				self.saveJson(event);
 			});
 		};
 

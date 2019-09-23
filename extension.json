@@ -161,7 +161,8 @@
 
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
-				"ext.maps.leaflet"
+				"ext.maps.leaflet",
+				"mediawiki.api.edit"
 			],
 			"scripts": [
 				"leaflet/leaflet.draw/leaflet.draw-src.js",
