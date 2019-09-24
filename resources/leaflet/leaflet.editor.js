@@ -72,7 +72,7 @@
 
 			self.fitBounds();
 
-			ifUserCanEdit(self.addEditUi);
+			self.addEditUi();
 
 			self.map.on(
 				L.Draw.Event.EDITED,
@@ -134,8 +134,14 @@
 		};
 
 		self.addEditUi = function() {
-			self.addDrawControl();
-			self.addNewLayersToJsonLayer();
+			if (mw.config.get('wgCurRevisionId') !== mw.config.get('wgRevisionId')) {
+				return;
+			}
+
+			ifUserCanEdit(function() {
+				self.addDrawControl();
+				self.addNewLayersToJsonLayer();
+			});
 		};
 
 		self.addDrawControl = function() {
