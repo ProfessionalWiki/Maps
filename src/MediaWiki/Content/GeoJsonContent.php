@@ -27,18 +27,15 @@ class GeoJsonContent extends \JsonContent {
 	}
 
 	private function getMapHtml( string $jsonString ): string {
-		return
-			Html::element(
+		return Html::rawElement(
 				'div',
 				[
 					'id' => 'GeoJsonMap',
-					'class' => 'GeoJsonMap',
-				]
-			)
-			. '<style>'
-			. '.GeoJsonMap {width: "100%"; height: 600px; display: "inline-block"; background-color: #eeeeee;}'
-			. '</style>'
-			.
+					'style' => "width: 100%; height: 600px; background-color: #eeeeee; overflow: hidden;",
+					'class' => 'maps-map maps-leaflet GeoJsonMap'
+				],
+				wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped()
+			) .
 			Html::element(
 				'script',
 				[],
