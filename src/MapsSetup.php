@@ -212,14 +212,14 @@ class MapsSetup {
 	 * Once Maps requires MW 1.33+, this can be removed after replacing usage of mediawiki.api.edit
 	 */
 	private function registerEditApiModuleFallback() {
-//		if ( !array_key_exists( 'mediawiki.api.edit', $this->mwGlobals['wgResourceModules'] ) ) {
-//			$this->mwGlobals['wgResourceModules']['mediawiki.api.edit'] = [
-//				'dependencies' => [
-//					'mediawiki.api'
-//				],
-//				'targets' => [ 'desktop', 'mobile' ]
-//			];
-//		}
+		if ( !array_key_exists( 'mediawiki.api.edit', $this->mwGlobals['wgResourceModules'] ) ) {
+			$this->mwGlobals['wgResourceModules']['mediawiki.api.edit'] = [
+				'dependencies' => [
+					'mediawiki.api'
+				],
+				'targets' => [ 'desktop', 'mobile' ]
+			];
+		}
 	}
 
 }
