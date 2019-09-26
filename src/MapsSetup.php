@@ -71,7 +71,7 @@ class MapsSetup {
 		$this->registerParameterTypes();
 		$this->registerHooks();
 		$this->registerGeoJsonContentModel();
-		$this->registerEditApiModuleFallback();
+		//$this->registerEditApiModuleFallback();
 	}
 
 	private function registerParserHooks() {
