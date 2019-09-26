@@ -8,14 +8,14 @@ sudo: false
 matrix:
   fast_finish: true
   include:
-    - env: DBTYPE=mysql; MW=1.31.3
+    - env: DBTYPE=mysql; MW=1.31.3; SMW=3.0.0
       php: 7.1
-    - env: DBTYPE=mysql; MW=master; SMW=dev-master
-      php: 7.3
-    - env: DBTYPE=sqlite; MW=1.31.3; SMW=3.0.0
-      php: 7.1
-    - env: DBTYPE=sqlite; MW=master; TYPE=coverage
+    - env: DBTYPE=sqlite; MW=1.32.3
       php: 7.2
+    - env: DBTYPE=mysql; MW=1.33.0; SMW=3.1.0
+      php: 7.3
+    - env: DBTYPE=mysql; MW=master; SMW=dev-master; TYPE=coverage
+      php: 7.3
 
 install:
   - travis_retry composer self-update
