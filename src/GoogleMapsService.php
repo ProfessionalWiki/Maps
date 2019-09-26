@@ -227,6 +227,7 @@ class GoogleMapsService implements MappingService {
 		];
 
 		$params['scrollwheelzoom'] = [
+			'aliases' => [ 'scrollzoom' ],
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-par-scrollwheelzoom',

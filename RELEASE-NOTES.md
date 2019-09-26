@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.6.0
+
+* Added `scrollzoom` alias for the `scrollwheelzoom` parameter
+
 ## Maps 7.5.0
 
 Released on September 24th, 2019.

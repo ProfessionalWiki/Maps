@@ -72,6 +72,7 @@ class LeafletService implements MappingService {
 		];
 
 		$params['scrollwheelzoom'] = [
+			'aliases' => [ 'scrollzoom' ],
 			'type' => 'boolean',
 			'default' => true,
 			'message' => 'maps-par-scrollwheelzoom',
