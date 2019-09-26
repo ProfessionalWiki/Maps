@@ -25,18 +25,25 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status<br>&nbsp;</th>
 	</tr>
 	<tr>
-		<th>7.6.x</th>
+		<th>7.7.x</th>
 		<td>7.1 - 7.4+</td>
 		<td>1.31 - 1.33+</td>
 		<td>3.0 - 3.1</td>
 		<td>Planned Q4 2019</td>
 	</tr>
 	<tr>
-		<th>7.5.x</th>
+		<th>7.6.x</th>
 		<td>7.1 - 7.4</td>
 		<td>1.31 - 1.33</td>
 		<td>3.0 - 3.1</td>
 		<td><strong>Stable release</strong></td>
+	</tr>
+	<tr>
+		<th>7.5.x</th>
+		<td>7.1 - 7.4</td>
+		<td>1.31 - 1.32</td>
+		<td>3.0 - 3.1</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>7.4.x</th>
