@@ -71,6 +71,7 @@ class MapsSetup {
 		$this->registerParameterTypes();
 		$this->registerHooks();
 		$this->registerGeoJsonContentModel();
+		$this->registerEditApiModuleFallback();
 	}
 
 	private function registerParserHooks() {
@@ -204,6 +205,21 @@ class MapsSetup {
 
 	private function registerGeoJsonContentModel() {
 		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
+	}
+
+	/**
+	 * mediawiki.api.edit is present in 1.31 but not 1.33
+	 * Once Maps requires MW 1.33+, this can be removed after replacing usage of mediawiki.api.edit
+	 */
+	private function registerEditApiModuleFallback() {
+		if ( !array_key_exists( 'mediawiki.api.edit', $this->mwGlobals['wgResourceModules'] ) ) {
+			$this->mwGlobals['wgResourceModules']['mediawiki.api.edit'] = [
+				'dependencies' => [
+					'mediawiki.api'
+				],
+				'targets' => [ 'desktop', 'mobile' ]
+			];
+		}
 	}
 
 }
