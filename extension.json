@@ -159,7 +159,7 @@
 
 		"ext.maps.leaflet.leafletajax": {
 			"dependencies": [
-				"ext.maps.leaflet",
+				"ext.maps.leaflet.loader",
 				"ext.sm.common"
 			],
 			"scripts": [

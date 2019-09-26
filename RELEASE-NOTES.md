@@ -5,6 +5,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.6.0
 
+Released on September 27th, 2019.
+
+* Fixed GeoJson map preview on MediaWiki 1.33+ (7.5.0 regression)
 * Added `scrollzoom` alias for the `scrollwheelzoom` parameter
 
 ## Maps 7.5.0
