@@ -70,8 +70,7 @@ class MapsSetup {
 		$this->registerPermissions();
 		$this->registerParameterTypes();
 		$this->registerHooks();
-
-		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
+		$this->registerGeoJsonContentModel();
 	}
 
 	private function registerParserHooks() {
@@ -201,6 +200,10 @@ class MapsSetup {
 	private function registerHooks() {
 		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\MapsHooks::addToAdminLinks';
 		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MediaWiki\MapsHooks::onMakeGlobalVariablesScript';
+	}
+
+	private function registerGeoJsonContentModel() {
+		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
 	}
 
 }
