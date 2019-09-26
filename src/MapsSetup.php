@@ -47,15 +47,6 @@ class MapsSetup {
 		}
 	}
 
-	private function registerAllTheThings() {
-		$this->registerParserHooks();
-		$this->registerPermissions();
-		$this->registerParameterTypes();
-		$this->registerHooks();
-
-		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
-	}
-
 	private function defaultSettings() {
 		if ( $this->mwGlobals['egMapsGMaps3Language'] === '' ) {
 			$this->mwGlobals['egMapsGMaps3Language'] = $this->mwGlobals['wgLang'];
@@ -72,6 +63,15 @@ class MapsSetup {
 			) ) {
 			$this->mwGlobals['egMapsGMaps3ApiKey'] = $this->mwGlobals['egGoogleJsApiKey'];
 		}
+	}
+
+	private function registerAllTheThings() {
+		$this->registerParserHooks();
+		$this->registerPermissions();
+		$this->registerParameterTypes();
+		$this->registerHooks();
+
+		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
 	}
 
 	private function registerParserHooks() {
