@@ -221,5 +221,17 @@
 	"validator-type-mapspolygon": "Geographical polygon",
 	"validator-type-mapspolygon-list": "List of geographical polygons",
 	"validator-type-wmsoverlay": "Web Map Service overlay",
-	"validator-type-jsonfile": "text"
+	"validator-type-jsonfile": "text",
+
+	"maps-json-editor-button-marker": "Place a marker",
+	"maps-json-editor-button-line": "Draw a line",
+	"maps-json-editor-button-polygon": "Draw a polygon",
+	"maps-json-editor-button-rectangle": "Place a rectangle",
+	"maps-json-editor-button-circle": "Place a circle",
+
+	"maps-json-editor-tooltip-marker": "Click map to place marker.",
+	"maps-json-editor-tooltip-line": "Click map to draw line.",
+	"maps-json-editor-tooltip-polygon": "Click map to draw polygon.",
+	"maps-json-editor-tooltip-rectangle": "Click map to place rectangle.",
+	"maps-json-editor-tooltip-circle": "Click map to place circle."
 }

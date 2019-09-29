@@ -154,6 +154,19 @@
 			],
 			"styles": [
 				"leaflet/leaflet.draw/leaflet.draw.css"
+			],
+			"messages": [
+				"maps-json-editor-button-marker",
+				"maps-json-editor-button-line",
+				"maps-json-editor-button-polygon",
+				"maps-json-editor-button-rectangle",
+				"maps-json-editor-button-circle",
+
+				"maps-json-editor-tooltip-marker",
+				"maps-json-editor-tooltip-line",
+				"maps-json-editor-tooltip-polygon",
+				"maps-json-editor-tooltip-rectangle",
+				"maps-json-editor-tooltip-circle"
 			]
 		},
 

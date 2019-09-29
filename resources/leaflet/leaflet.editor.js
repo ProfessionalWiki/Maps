@@ -3,19 +3,19 @@
 	function initializeMessages() {
 		let buttons = L.drawLocal.draw.toolbar.buttons;
 
-		buttons.marker = 'Place a marker';
-		buttons.polyline = 'Draw a line';
-		buttons.polygon = 'Draw a polygon';
-		buttons.rectangle = 'Place a rectangle';
-		buttons.circle = 'Place a circle';
+		buttons.marker = mw.msg('maps-json-editor-button-marker');
+		buttons.polyline = mw.msg('maps-json-editor-button-line');
+		buttons.polygon = mw.msg('maps-json-editor-button-polygon');
+		buttons.rectangle = mw.msg('maps-json-editor-button-rectangle');
+		buttons.circle = mw.msg('maps-json-editor-button-circle');
 
 		let handlers = L.drawLocal.draw.handlers;
 
-		handlers.marker.tooltip.start = 'Click map to place marker.';
-		handlers.polyline.tooltip.start = 'Click map to draw line.';
-		handlers.polygon.tooltip.start = 'Click map to draw polygon.';
-		handlers.rectangle.tooltip.start = 'Click map to place rectangle.';
-		handlers.circle.tooltip.start = 'Click map to place circle.';
+		handlers.marker.tooltip.start = mw.msg('maps-json-editor-tooltip-marker');
+		handlers.polyline.tooltip.start = mw.msg('maps-json-editor-tooltip-line');
+		handlers.polygon.tooltip.start = mw.msg('maps-json-editor-tooltip-polygon');
+		handlers.rectangle.tooltip.start = mw.msg('maps-json-editor-tooltip-rectangle');
+		handlers.circle.tooltip.start = mw.msg('maps-json-editor-tooltip-circle');
 	}
 
 	function getUserCanEdit(callback) {
