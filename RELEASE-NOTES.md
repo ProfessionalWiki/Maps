@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.7.0
 
-Released on September 30th, 2019.
+Released on September 29th, 2019.
 
 * Fixed GeoJson visual editor on MediaWiki 1.31.x (7.6.0 regression)
 * Internationalized most of the GeoJson visual editor
