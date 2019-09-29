@@ -146,7 +146,8 @@
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
 				"ext.maps.leaflet.base",
-				"mediawiki.api.edit"
+				"mediawiki.api.edit",
+				"ext.maps.leaflet.fullscreen"
 			],
 			"scripts": [
 				"leaflet/leaflet.draw/leaflet.draw-src.js",

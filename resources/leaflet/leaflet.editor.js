@@ -78,7 +78,16 @@
 		let self = {};
 
 		self.initialize = function() {
-			self.map = L.map(mapId);
+			self.map = L.map(
+				mapId,
+				{
+					fullscreenControl: true,
+					fullscreenControlOptions: {position: 'topright'},
+					zoomControl: false
+				}
+			);
+
+			self.map.addControl(new L.Control.Zoom());
 
 			self.geoJsonLayer = L.geoJSON(json).addTo(self.map);
 

@@ -7,8 +7,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on September 30th, 2019.
 
-* Fixed GeoJson visual editing UI on MediaWiki 1.31.x (7.6.0 regression)
-* Internationalized most of the GeoJson visual editing UI
+* Fixed GeoJson visual editor on MediaWiki 1.31.x (7.6.0 regression)
+* Internationalized most of the GeoJson visual editor
+* Added fullscreen control to the GeoJson visual editor
 * Added `fullscreen` alias for the `enablefullscreen` parameter
 
 ## Maps 7.6.0
