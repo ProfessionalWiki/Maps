@@ -3,12 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 7.6.1
+## Maps 7.7.0
 
 Released on September 30th, 2019.
 
 * Fixed GeoJson visual editing UI on MediaWiki 1.31.x (7.6.0 regression)
 * Internationalized most of the GeoJson visual editing UI
+* Added `fullscreen` alias for the `enablefullscreen` parameter
 
 ## Maps 7.6.0
 
