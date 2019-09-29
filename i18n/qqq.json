@@ -243,5 +243,16 @@
 	"maps-json-editor-tooltip-line": "Text show after clicking the 'add line' button in the visual map editor",
 	"maps-json-editor-tooltip-polygon": "Text show after clicking the 'add polygon' button in the visual map editor",
 	"maps-json-editor-tooltip-rectangle": "Text show after clicking the 'add rectangle' button in the visual map editor",
-	"maps-json-editor-tooltip-circle": "Text show after clicking the 'add circle' button in the visual map editor"
+	"maps-json-editor-tooltip-circle": "Text show after clicking the 'add circle' button in the visual map editor",
+
+	"maps-json-editor-added-marker": "Edit summary created by the visual map editor when adding a marker",
+	"maps-json-editor-added-line": "Edit summary created by the visual map editor when adding a line",
+	"maps-json-editor-added-polygon": "Edit summary created by the visual map editor when adding a polygon",
+	"maps-json-editor-added-rectangle": "Edit summary created by the visual map editor when adding a rectangle",
+	"maps-json-editor-added-circle": "Edit summary created by the visual map editor when adding a circle",
+
+	"maps-json-editor-edit-removed-shapes": "Edit summary created by the visual map editor when removing one or more shapes",
+	"maps-json-editor-edit-modified": "Edit summary created by the visual map editor when modifying existing shapes",
+	"maps-json-editor-edit-other": "Edit summary created by the visual map editor",
+	"maps-json-editor-edit-failed": "Error message shown when saving a change in the visual map editor fails"
 }

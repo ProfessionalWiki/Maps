@@ -51,7 +51,7 @@
 				function(response) {
 					if (response.result !== 'Success') {
 						console.log(response);
-						alert('Failed to save map');
+						alert(mw.msg('maps-json-editor-edit-failed'));
 					}
 				}
 			);
@@ -94,18 +94,21 @@
 
 		self.summaryFromEvent = function(event) {
 			if (event.type === L.Draw.Event.CREATED) {
-				return 'Added ' + self.getLayerTypeName(event.layerType);
+				return mw.msg('maps-json-editor-added-' + self.getLayerTypeName(event.layerType));
 			}
 
 			if (event.type === L.Draw.Event.DELETED) {
-				return 'Removed ' + event.layers.getLayers().length + ' shapes';
+				return mw.message(
+					'maps-json-editor-edit-removed-shapes',
+					event.layers.getLayers().length
+				).text();
 			}
 
 			if (event.type === L.Draw.Event.EDITED) {
-				return 'Modified existing shapes';
+				return mw.msg('maps-json-editor-edit-modified');
 			}
 
-			return 'Visual map edit'
+			return mw.msg('maps-json-editor-edit-other');
 		};
 
 		self.getLayerTypeName = function(layerType) {

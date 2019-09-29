@@ -166,7 +166,18 @@
 				"maps-json-editor-tooltip-line",
 				"maps-json-editor-tooltip-polygon",
 				"maps-json-editor-tooltip-rectangle",
-				"maps-json-editor-tooltip-circle"
+				"maps-json-editor-tooltip-circle",
+
+				"maps-json-editor-added-marker",
+				"maps-json-editor-added-line",
+				"maps-json-editor-added-polygon",
+				"maps-json-editor-added-rectangle",
+				"maps-json-editor-added-circle",
+
+				"maps-json-editor-edit-removed-shapes",
+				"maps-json-editor-edit-modified",
+				"maps-json-editor-edit-other",
+				"maps-json-editor-edit-failed"
 			]
 		},
 

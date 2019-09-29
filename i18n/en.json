@@ -233,5 +233,16 @@
 	"maps-json-editor-tooltip-line": "Click map to draw line.",
 	"maps-json-editor-tooltip-polygon": "Click map to draw polygon.",
 	"maps-json-editor-tooltip-rectangle": "Click map to place rectangle.",
-	"maps-json-editor-tooltip-circle": "Click map to place circle."
+	"maps-json-editor-tooltip-circle": "Click map to place circle.",
+
+	"maps-json-editor-added-marker": "Added marker",
+	"maps-json-editor-added-line": "Added line",
+	"maps-json-editor-added-polygon": "Added polygon",
+	"maps-json-editor-added-rectangle": "Added rectangle",
+	"maps-json-editor-added-circle": "Added circle",
+
+	"maps-json-editor-edit-removed-shapes": "Removed $1 shapes",
+	"maps-json-editor-edit-modified": "Modified existing map shapes",
+	"maps-json-editor-edit-other": "Visual map edit",
+	"maps-json-editor-edit-failed": "Failed to save the map"
 }
