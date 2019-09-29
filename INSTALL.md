@@ -36,14 +36,14 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>7.1 - 7.4</td>
 		<td>1.31 - 1.33</td>
 		<td>3.0 - 3.1</td>
-		<td>Soon</td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
 		<th>7.6.x</th>
 		<td>7.1 - 7.4</td>
 		<td>1.31 - 1.33</td>
 		<td>3.0 - 3.1</td>
-		<td><strong>Stable release</strong></td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>7.5.x</th>
