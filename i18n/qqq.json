@@ -254,5 +254,17 @@
 	"maps-json-editor-edit-removed-shapes": "Edit summary created by the visual map editor when removing one or more shapes",
 	"maps-json-editor-edit-modified": "Edit summary created by the visual map editor when modifying existing shapes",
 	"maps-json-editor-edit-other": "Edit summary created by the visual map editor",
-	"maps-json-editor-edit-failed": "Error message shown when saving a change in the visual map editor fails"
+	"maps-json-editor-edit-failed": "Error message shown when saving a change in the visual map editor fails",
+
+	"maps-json-editor-toolbar-save-title": "",
+	"maps-json-editor-toolbar-save-text": "",
+	"maps-json-editor-toolbar-cancel-title": "",
+	"maps-json-editor-toolbar-cancel-text": "",
+	"maps-json-editor-toolbar-clear-title": "",
+	"maps-json-editor-toolbar-clear-text": "",
+
+	"maps-json-editor-toolbar-button-edit": "",
+	"maps-json-editor-toolbar-button-edit-disabled": "",
+	"maps-json-editor-toolbar-button-remove": "",
+	"maps-json-editor-toolbar-button-remove-disabled": ""
 }

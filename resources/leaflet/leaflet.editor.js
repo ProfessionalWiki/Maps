@@ -16,6 +16,20 @@
 		handlers.polygon.tooltip.start = mw.msg('maps-json-editor-tooltip-polygon');
 		handlers.rectangle.tooltip.start = mw.msg('maps-json-editor-tooltip-rectangle');
 		handlers.circle.tooltip.start = mw.msg('maps-json-editor-tooltip-circle');
+
+		let toolbar = L.drawLocal.edit.toolbar;
+
+		toolbar.actions.save.title = mw.msg('maps-json-editor-toolbar-save-title');
+		toolbar.actions.save.text = mw.msg('maps-json-editor-toolbar-save-text');
+		toolbar.actions.cancel.title = mw.msg('maps-json-editor-toolbar-cancel-title');
+		toolbar.actions.cancel.text = mw.msg('maps-json-editor-toolbar-cancel-text');
+		toolbar.actions.clearAll.title = mw.msg('maps-json-editor-toolbar-clear-title');
+		toolbar.actions.clearAll.text = mw.msg('maps-json-editor-toolbar-clear-text');
+
+		toolbar.buttons.edit = mw.msg('maps-json-editor-toolbar-button-edit');
+		toolbar.buttons.editDisabled = mw.msg('maps-json-editor-toolbar-button-edit-disabled');
+		toolbar.buttons.remove = mw.msg('maps-json-editor-toolbar-button-remove');
+		toolbar.buttons.removeDisabled = mw.msg('maps-json-editor-toolbar-button-remove-disabled');
 	}
 
 	function getUserCanEdit(callback) {

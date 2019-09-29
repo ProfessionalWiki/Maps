@@ -177,7 +177,19 @@
 				"maps-json-editor-edit-removed-shapes",
 				"maps-json-editor-edit-modified",
 				"maps-json-editor-edit-other",
-				"maps-json-editor-edit-failed"
+				"maps-json-editor-edit-failed",
+
+				"maps-json-editor-toolbar-save-title",
+				"maps-json-editor-toolbar-save-text",
+				"maps-json-editor-toolbar-cancel-title",
+				"maps-json-editor-toolbar-cancel-text",
+				"maps-json-editor-toolbar-clear-title",
+				"maps-json-editor-toolbar-clear-text",
+
+				"maps-json-editor-toolbar-button-edit",
+				"maps-json-editor-toolbar-button-edit-disabled",
+				"maps-json-editor-toolbar-button-remove",
+				"maps-json-editor-toolbar-button-remove-disabled"
 			]
 		},
 
