@@ -19,15 +19,24 @@ class GeoJsonContent extends \JsonContent {
 		$generateHtml, ParserOutput &$output ) {
 
 		if ( $generateHtml && $this->isValid() ) {
-			$output->setText( $this->getMapHtml( $this->beautifyJSON() ) );
+			$output->setText(
+				$this->getMapHtml()
+				.
+				Html::element(
+					'script',
+					[],
+					'var GeoJson =' . $this->beautifyJSON() . ';'
+				)
+			);
 			$output->addModules( 'ext.maps.leaflet.editor' );
 		} else {
 			$output->setText( '' );
 		}
 	}
 
-	private function getMapHtml( string $jsonString ): string {
-		return Html::rawElement(
+	private function getMapHtml(): string {
+		return $this->wrapHtmlInThumbDivs(
+			Html::rawElement(
 				'div',
 				[
 					'id' => 'GeoJsonMap',
@@ -35,12 +44,24 @@ class GeoJsonContent extends \JsonContent {
 					'class' => 'maps-map maps-leaflet GeoJsonMap'
 				],
 				wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped()
-			) .
-			Html::element(
-				'script',
-				[],
-				'var GeoJson =' . $jsonString . ';'
-			);
+			)
+		);
+	}
+
+	private function wrapHtmlInThumbDivs( string $html ): string {
+		return Html::rawElement(
+			'div',
+			[
+				'class' => 'thumb'
+			],
+			Html::rawElement(
+				'div',
+				[
+					'class' => 'thumbinner'
+				],
+				$html
+			)
+		);
 	}
 
 }
