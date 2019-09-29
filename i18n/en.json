@@ -241,7 +241,7 @@
 	"maps-json-editor-added-rectangle": "Added rectangle",
 	"maps-json-editor-added-circle": "Added circle",
 
-	"maps-json-editor-edit-removed-shapes": "Removed $1 shapes",
+	"maps-json-editor-edit-removed-shapes": "Removed $1 {{PLURAL:$1|shape|shapes}}",
 	"maps-json-editor-edit-modified": "Modified existing map shapes",
 	"maps-json-editor-edit-other": "Visual map edit",
 	"maps-json-editor-edit-failed": "Failed to save the map",
