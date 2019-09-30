@@ -22,24 +22,18 @@ class JsonFileParserTest extends TestCase {
 	use PHPUnit4And6Compat;
 
 	private const VALID_FILE_JSON = [
-		'such' => 'string',
-		42 => 13.37,
-		'array' => [
-			'~[,,_,,]:3'
-		]
+		'type' => 'FeatureCollection',
+		'features' => []
 	];
 
 	private const VALID_PAGE_JSON = [
-		'foo' => 'bar',
-		1 => 2.3,
-		'array' => [
-			'~[,,_,,]:3'
-		]
+		'type' => 'FeatureCollection',
+		'features' => []
 	];
 
-	private const EXISTING_GEO_JSON_PAGE = 'Such';
-	private const EXISTING_GEO_JSON_PAGE_WITH_PREFIX = 'GeoJson:Such';
-	private const NON_EXISTING_GEO_JSON_PAGE = 'GeoJson:Nope';
+	private const EXISTING_GEO_JSON_PAGE = 'Test_Such';
+	private const EXISTING_GEO_JSON_PAGE_WITH_PREFIX = 'GeoJson:Test_Such';
+	private const NON_EXISTING_GEO_JSON_PAGE = 'GeoJson:Test_Nope';
 
 	/**
 	 * @var FileFetcher
