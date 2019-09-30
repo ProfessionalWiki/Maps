@@ -256,5 +256,8 @@
 	"maps-json-editor-toolbar-button-edit": "Edit layers",
 	"maps-json-editor-toolbar-button-edit-disabled": "No layers to edit",
 	"maps-json-editor-toolbar-button-remove": "Delete layers",
-	"maps-json-editor-toolbar-button-remove-disabled": "No layers to delete"
+	"maps-json-editor-toolbar-button-remove-disabled": "No layers to delete",
+
+	"maps-geo-json-edit-source": "Edit source",
+	"maps-geo-json-create-source": "Create from GeoJSON source"
 }

@@ -266,5 +266,8 @@
 	"maps-json-editor-toolbar-button-edit": "",
 	"maps-json-editor-toolbar-button-edit-disabled": "",
 	"maps-json-editor-toolbar-button-remove": "",
-	"maps-json-editor-toolbar-button-remove-disabled": ""
+	"maps-json-editor-toolbar-button-remove-disabled": "",
+
+	"maps-geo-json-edit-source": "Edit tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids",
+	"maps-geo-json-create-source": "Page creation tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids"
 }

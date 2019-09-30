@@ -4,6 +4,7 @@ namespace Maps\MediaWiki;
 
 use AlItem;
 use ALTree;
+use SkinTemplate;
 
 /**
  * Static class for hooks handled by the Maps extension.
@@ -61,6 +62,22 @@ final class MapsHooks {
 		$vars['egMapsLeafletLayersApiKeys'] = $GLOBALS['egMapsLeafletLayersApiKeys'];
 
 		$vars += $GLOBALS['egMapsGlobalJSVars'];
+
+		return true;
+	}
+
+	public static function onSkinTemplateNavigation( SkinTemplate $skinTemplate, array &$links ) {
+		if ( $skinTemplate->getTitle() === null ) {
+			return true;
+		}
+
+		if ( $skinTemplate->getTitle()->getNamespace() === NS_GEO_JSON ) {
+			if ( array_key_exists( 'edit', $links['views'] ) ) {
+				$links['views']['edit']['text'] = wfMessage(
+					$skinTemplate->getTitle()->exists() ? 'maps-geo-json-edit-source': 'maps-geo-json-create-source'
+				);
+			}
+		}
 
 		return true;
 	}
