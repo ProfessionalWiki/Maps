@@ -3,6 +3,7 @@
 namespace Maps\MediaWiki\Content;
 
 use Html;
+use Maps\Presentation\GeoJsonPage;
 use ParserOptions;
 use ParserOutput;
 use Status;
@@ -38,7 +39,7 @@ class GeoJsonContent extends \JsonContent {
 
 		if ( $generateHtml && $this->isValid() ) {
 			$output->setText(
-				$this->getMapHtml()
+				( new GeoJsonPage() )->getMapHtml()
 				.
 				Html::element(
 					'script',
@@ -52,34 +53,6 @@ class GeoJsonContent extends \JsonContent {
 		}
 	}
 
-	private function getMapHtml(): string {
-		return $this->wrapHtmlInThumbDivs(
-			Html::rawElement(
-				'div',
-				[
-					'id' => 'GeoJsonMap',
-					'style' => "width: 100%; height: 600px; background-color: #eeeeee; overflow: hidden;",
-					'class' => 'maps-map maps-leaflet GeoJsonMap'
-				],
-				wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped()
-			)
-		);
-	}
 
-	private function wrapHtmlInThumbDivs( string $html ): string {
-		return Html::rawElement(
-			'div',
-			[
-				'class' => 'thumb'
-			],
-			Html::rawElement(
-				'div',
-				[
-					'class' => 'thumbinner'
-				],
-				$html
-			)
-		);
-	}
 
 }
