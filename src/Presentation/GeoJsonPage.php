@@ -8,24 +8,46 @@ use Html;
 
 class GeoJsonPage {
 
-	public function getMapHtml(): string {
-		return $this->wrapHtmlInThumbDivs(
-			Html::rawElement(
-				'div',
-				[
-					'id' => 'GeoJsonMap',
-					'style' => "width: 100%; height: 600px; background-color: #eeeeee; overflow: hidden;",
-					'class' => 'maps-map maps-leaflet maps-geojson-editor'
-				],
-				Html::element(
+	private $json;
+
+	public function __construct( string $json ) {
+		$this->json = $json;
+	}
+
+	public function addToParserOutput( \ParserOutput $parserOutput ) {
+		$parserOutput->setText( $this->getMapHtml() );
+		$parserOutput->addModules( 'ext.maps.leaflet.editor' );
+	}
+
+	public function addToOutputPage( \OutputPage $output ) {
+		$output->addHTML( $this->getMapHtml() );
+		$output->addModules( 'ext.maps.leaflet.editor' );
+	}
+
+	private function getMapHtml(): string {
+		return
+			Html::element(
+				'script',
+				[],
+				'var GeoJson =' . $this->json . ';'
+			)
+			. $this->wrapHtmlInThumbDivs(
+				Html::rawElement(
 					'div',
 					[
-						'class' => 'maps-loading-message'
+						'id' => 'GeoJsonMap',
+						'style' => "width: 100%; height: 600px; background-color: #eeeeee; overflow: hidden;",
+						'class' => 'maps-map maps-leaflet maps-geojson-editor'
 					],
-					wfMessage( 'maps-loading-map' )->inContentLanguage()->text()
+					Html::element(
+						'div',
+						[
+							'class' => 'maps-loading-message'
+						],
+						wfMessage( 'maps-loading-map' )->inContentLanguage()->text()
+					)
 				)
-			)
-		);
+			);
 	}
 
 	private function wrapHtmlInThumbDivs( string $html ): string {

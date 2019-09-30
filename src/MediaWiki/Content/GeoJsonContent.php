@@ -2,7 +2,7 @@
 
 namespace Maps\MediaWiki\Content;
 
-use Html;
+use FormatJson;
 use Maps\Presentation\GeoJsonPage;
 use ParserOptions;
 use ParserOutput;
@@ -12,6 +12,11 @@ use Title;
 class GeoJsonContent extends \JsonContent {
 
 	public const CONTENT_MODEL_ID = 'GeoJSON';
+
+	public static function newEmptyContentString(): string {
+		$text = '{"type": "FeatureCollection", "features": []}';
+		return FormatJson::encode( FormatJson::parse( $text )->getValue(), true, FormatJson::UTF8_OK );
+	}
 
 	public function __construct( string $text, string $modelId = self::CONTENT_MODEL_ID ) {
 		parent::__construct(
@@ -41,21 +46,10 @@ class GeoJsonContent extends \JsonContent {
 		$generateHtml, ParserOutput &$output ) {
 
 		if ( $generateHtml && $this->isValid() ) {
-			$output->setText(
-				( new GeoJsonPage() )->getMapHtml()
-				.
-				Html::element(
-					'script',
-					[],
-					'var GeoJson =' . $this->beautifyJSON() . ';'
-				)
-			);
-			$output->addModules( 'ext.maps.leaflet.editor' );
+			( new GeoJsonPage( $this->beautifyJSON() ) )->addToParserOutput( $output );
 		} else {
 			$output->setText( '' );
 		}
 	}
-
-
 
 }

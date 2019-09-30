@@ -15,11 +15,7 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 	}
 
 	public function makeEmptyContent() {
-		$text = '{"type": "FeatureCollection", "features": []}';
-
-		return new GeoJsonContent(
-			FormatJson::encode( FormatJson::parse( $text )->getValue(), true, FormatJson::UTF8_OK )
-		);
+		return new GeoJsonContent( GeoJsonContent::newEmptyContentString() );
 	}
 
 }

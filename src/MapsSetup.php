@@ -202,6 +202,8 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\MapsHooks::addToAdminLinks';
 		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MediaWiki\MapsHooks::onMakeGlobalVariablesScript';
 		$this->mwGlobals['wgHooks']['SkinTemplateNavigation'][] = 'Maps\MediaWiki\MapsHooks::onSkinTemplateNavigation';
+		$this->mwGlobals['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MediaWiki\MapsHooks::onBeforeDisplayNoArticleText';
+		$this->mwGlobals['wgHooks']['ShowMissingArticle'][] = 'Maps\MediaWiki\MapsHooks::onShowMissingArticle';
 	}
 
 	private function registerGeoJsonContentModel() {
