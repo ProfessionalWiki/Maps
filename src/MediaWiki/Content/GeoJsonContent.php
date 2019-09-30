@@ -5,6 +5,7 @@ namespace Maps\MediaWiki\Content;
 use Html;
 use ParserOptions;
 use ParserOutput;
+use Status;
 use Title;
 
 class GeoJsonContent extends \JsonContent {
@@ -13,6 +14,23 @@ class GeoJsonContent extends \JsonContent {
 
 	public function __construct( string $text, string $modelId = self::CONTENT_MODEL_ID ) {
 		parent::__construct( $text, $modelId );
+	}
+
+	public function getData(): Status {
+		$status = parent::getData();
+
+		if ( $status->isGood() && !$this->isGeoJson( $status->getValue() ) ) {
+			return Status::newFatal( 'Invalid GeoJson' );
+		}
+
+		return $status;
+	}
+
+	private function isGeoJson( $json ): bool {
+		return property_exists( $json, 'type' )
+			&& $json->type === 'FeatureCollection'
+			&& property_exists( $json, 'features' )
+			&& is_array( $json->features );
 	}
 
 	protected function fillParserOutput( Title $title, $revId, ParserOptions $options,

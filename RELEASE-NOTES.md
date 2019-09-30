@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.8.0
+
+Under development
+
+* Enhanced validation of content in the GeoJson namespace
+
 ## Maps 7.7.0
 
 Released on September 29th, 2019.
