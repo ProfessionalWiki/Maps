@@ -87,6 +87,8 @@
 				}
 			);
 
+			self.hideLoadingMessage();
+
 			self.map.addControl(new L.Control.Zoom());
 
 			self.geoJsonLayer = L.geoJSON(json).addTo(self.map);
@@ -105,6 +107,15 @@
 			self.map.on(
 				L.Draw.Event.DELETED,
 				self.saveJson
+			);
+		};
+
+		self.hideLoadingMessage = function() {
+			self.map.on(
+				'load',
+				function() {
+					$('#' + mapId).find('div.maps-loading-message').hide();
+				}
 			);
 		};
 

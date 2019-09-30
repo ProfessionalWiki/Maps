@@ -15,9 +15,15 @@ class GeoJsonPage {
 				[
 					'id' => 'GeoJsonMap',
 					'style' => "width: 100%; height: 600px; background-color: #eeeeee; overflow: hidden;",
-					'class' => 'maps-map maps-leaflet GeoJsonMap'
+					'class' => 'maps-map maps-leaflet maps-geojson-editor'
 				],
-				wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped()
+				Html::element(
+					'div',
+					[
+						'class' => 'maps-loading-message'
+					],
+					wfMessage( 'maps-loading-map' )->inContentLanguage()->text()
+				)
 			)
 		);
 	}
