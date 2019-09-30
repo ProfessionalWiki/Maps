@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\Tests\Unit;
+namespace Maps\Tests\Integration;
 
 use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\TestCase;
