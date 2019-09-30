@@ -303,7 +303,17 @@
 				mapOptions.dragging = false;
 			}
 
-			var map = L.map( this.get(0), mapOptions ).fitWorld();
+			var map = L.map( this.get(0), mapOptions );
+
+			map.on(
+				'load',
+				function() {
+					$(_this).find('div.maps-loading-message').hide();
+				}
+			);
+
+			map.fitWorld();
+
 			this.map = map;
 
 			var layers = {};

@@ -25,8 +25,14 @@ class MapHtmlBuilder {
 				'style' => "width: {$params['width']}; height: {$params['height']}; background-color: #eeeeee; overflow: hidden;",
 				'class' => 'maps-map maps-' . $serviceName
 			],
-			wfMessage( 'maps-loading-map' )->inContentLanguage()->escaped() .
 			Html::element(
+				'div',
+				[
+					'class' => 'maps-loading-message'
+				],
+				wfMessage( 'maps-loading-map' )->inContentLanguage()->text()
+			)
+			. Html::element(
 				'div',
 				[ 'style' => 'display:none', 'class' => 'mapdata' ],
 				FormatJson::encode( $params )

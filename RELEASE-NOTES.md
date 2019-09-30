@@ -7,6 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
+* Loading messages for Leaflet maps are no longer visible when zooming out far or loading new tiles 
 * Enhanced validation of content in the GeoJson namespace
 
 ## Maps 7.7.0
