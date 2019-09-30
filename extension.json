@@ -147,6 +147,7 @@
 			"dependencies": [
 				"ext.maps.leaflet.base",
 				"mediawiki.api.edit",
+				"mediawiki.jqueryMsg",
 				"ext.maps.leaflet.fullscreen"
 			],
 			"scripts": [
