@@ -3,7 +3,7 @@
 namespace Maps\MediaWiki\Content;
 
 use FormatJson;
-use Maps\Presentation\GeoJsonPage;
+use Maps\Presentation\GeoJsonPageOutput;
 use ParserOptions;
 use ParserOutput;
 use Status;
@@ -46,7 +46,7 @@ class GeoJsonContent extends \JsonContent {
 		$generateHtml, ParserOutput &$output ) {
 
 		if ( $generateHtml && $this->isValid() ) {
-			( new GeoJsonPage( $this->beautifyJSON() ) )->addToParserOutput( $output );
+			( GeoJsonPageOutput::forExistingPage( $this->beautifyJSON() ) )->addToParserOutput( $output );
 		} else {
 			$output->setText( '' );
 		}

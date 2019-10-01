@@ -89,6 +89,10 @@
 	let MapEditor = function(mapId, json) {
 		let self = {};
 
+		if (json === null) {
+			json = {"type": "FeatureCollection", "features": []};
+		}
+
 		self.initialize = function() {
 			self.map = L.map(
 				mapId,
@@ -225,11 +229,25 @@
 		return self;
 	};
 
-	$( document ).ready( function() {
+	function initializeEditor(json) {
 		let editor = MapEditor('GeoJsonMap', window.GeoJson);
 		editor.initialize();
 
 		initializeMessages();
+	}
+
+	$( document ).ready( function() {
+		if (window.GeoJson !== null) {
+			initializeEditor();
+		}
+
+		$('#maps-geojson-new').click(
+			function() {
+				$(this).hide();
+				$('#maps-geojson-map-wrapper').show();
+				initializeEditor();
+			}
+		);
 	} );
 
 })( window.jQuery, mediaWiki );

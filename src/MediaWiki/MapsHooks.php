@@ -5,7 +5,7 @@ namespace Maps\MediaWiki;
 use AlItem;
 use ALTree;
 use Maps\MediaWiki\Content\GeoJsonContent;
-use Maps\Presentation\GeoJsonPage;
+use Maps\Presentation\GeoJsonPageOutput;
 use SkinTemplate;
 
 /**
@@ -90,13 +90,8 @@ final class MapsHooks {
 
 	public static function onShowMissingArticle( \Article $article ) {
 		// TODO: save does not work on new page yet: API response says "missing"
-		// TODO: show below UI only after clicking "create new page with visual map editor"
 
-//		$geoJsonPage = new GeoJsonPage(
-//			GeoJsonContent::newEmptyContentString()
-//		);
-//
-//		$geoJsonPage->addToOutputPage( $article->getContext()->getOutput() );
+		//GeoJsonPageOutput::forNewPage()->addToOutputPage( $article->getContext()->getOutput() );
 
 		return true;
 	}
