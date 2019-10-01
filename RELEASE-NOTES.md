@@ -10,6 +10,7 @@ Under development
 * Loading messages for Leaflet maps are no longer visible when zooming out far or loading new tiles 
 * Enhanced validation of content in the GeoJson namespace
 * Improved text on the creation and edit tabs in the GeoJson namespace 
+* Added "Visual map edit" tag to revisions created by the GeoJson visual editor
 
 ## Maps 7.7.0
 

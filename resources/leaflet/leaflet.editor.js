@@ -32,20 +32,23 @@
 		toolbar.buttons.removeDisabled = mw.msg('maps-json-editor-toolbar-button-remove-disabled');
 	}
 
-	function getUserCanEdit(callback) {
+	function getUserHasPermission(permission, callback) {
 		mw.user.getRights(
 			function(rights) {
-				callback(rights.includes("edit"))
+				callback(rights.includes(permission))
 			}
 		);
 	}
 
-	function ifUserCanEdit(callback) {
-		getUserCanEdit(function(canEdit) {
-			if (canEdit) {
-				callback();
+	function ifUserHasPermission(permission, callback) {
+		getUserHasPermission(
+			permission,
+			function(hasPermission) {
+				if (hasPermission) {
+					callback();
+				}
 			}
-		});
+		);
 	}
 
 	let MapSaver = function() {
@@ -55,11 +58,20 @@
 			new mw.Api().edit(
 				mw.config.get('wgPageName'),
 				function(revision) {
-					return {
+					let editApiParameters = {
 						text: newContent,
 						summary: summary,
 						minor: false
 					};
+
+					ifUserHasPermission(
+						"applychangetags",
+						function() {
+							editApiParameters.tags = ['maps-visual-edit'];
+						}
+					);
+
+					return editApiParameters;
 				}
 			).then(
 				function(response) {
@@ -175,10 +187,13 @@
 				return;
 			}
 
-			ifUserCanEdit(function() {
-				self.addDrawControl();
-				self.addNewLayersToJsonLayer();
-			});
+			ifUserHasPermission(
+				"edit",
+				function() {
+					self.addDrawControl();
+					self.addNewLayersToJsonLayer();
+				}
+			);
 		};
 
 		self.addDrawControl = function() {

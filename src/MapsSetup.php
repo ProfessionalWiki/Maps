@@ -204,6 +204,9 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['SkinTemplateNavigation'][] = 'Maps\MediaWiki\MapsHooks::onSkinTemplateNavigation';
 		$this->mwGlobals['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MediaWiki\MapsHooks::onBeforeDisplayNoArticleText';
 		$this->mwGlobals['wgHooks']['ShowMissingArticle'][] = 'Maps\MediaWiki\MapsHooks::onShowMissingArticle';
+		$this->mwGlobals['wgHooks']['ListDefinedTags'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
+		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
+		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MediaWiki\MapsHooks::onChangeTagsAllowedAdd';
 	}
 
 	private function registerGeoJsonContentModel() {

@@ -259,5 +259,8 @@
 	"maps-json-editor-toolbar-button-remove-disabled": "No layers to delete",
 
 	"maps-geo-json-edit-source": "Edit source",
-	"maps-geo-json-create-source": "Create from GeoJSON source"
+	"maps-geo-json-create-source": "Create from GeoJSON source",
+
+	"tag-maps-visual-edit": "Visual map edit",
+	"tag-maps-visual-edit-description": "Edit made with the visual editor provided by the [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"
 }
