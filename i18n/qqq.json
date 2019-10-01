@@ -232,42 +232,26 @@
 	"validator-type-mapsrectangle-list": "This is the name of a type of values that may be assigned to a parameter.",
 	"validator-type-wmsoverlay": "This is the name of a type of values that may be assigned to a parameter. WMS stands for [[wikipedia:en:Web_Map_Service|Web Map Service]].",
 	"validator-type-jsonfile": "{{Identical|Text}}",
-
 	"maps-json-editor-button-marker": "Text shown when hovering over the 'add marker' button in the visual map editor",
 	"maps-json-editor-button-line": "Text shown when hovering over the 'add line' button in the visual map editor",
 	"maps-json-editor-button-polygon": "Text shown when hovering over the 'add polygon' button in the visual map editor",
 	"maps-json-editor-button-rectangle": "Text shown when hovering over the 'add rectangle' button in the visual map editor",
 	"maps-json-editor-button-circle": "Text shown when hovering over the 'add circle' button in the visual map editor",
-
 	"maps-json-editor-tooltip-marker": "Text show after clicking the 'add marker' button in the visual map editor",
 	"maps-json-editor-tooltip-line": "Text show after clicking the 'add line' button in the visual map editor",
 	"maps-json-editor-tooltip-polygon": "Text show after clicking the 'add polygon' button in the visual map editor",
 	"maps-json-editor-tooltip-rectangle": "Text show after clicking the 'add rectangle' button in the visual map editor",
 	"maps-json-editor-tooltip-circle": "Text show after clicking the 'add circle' button in the visual map editor",
-
 	"maps-json-editor-added-marker": "Edit summary created by the visual map editor when adding a marker",
 	"maps-json-editor-added-line": "Edit summary created by the visual map editor when adding a line",
 	"maps-json-editor-added-polygon": "Edit summary created by the visual map editor when adding a polygon",
 	"maps-json-editor-added-rectangle": "Edit summary created by the visual map editor when adding a rectangle",
 	"maps-json-editor-added-circle": "Edit summary created by the visual map editor when adding a circle",
-
 	"maps-json-editor-edit-removed-shapes": "Edit summary created by the visual map editor when removing one or more shapes",
 	"maps-json-editor-edit-modified": "Edit summary created by the visual map editor when modifying existing shapes",
 	"maps-json-editor-edit-other": "Edit summary created by the visual map editor",
 	"maps-json-editor-edit-failed": "Error message shown when saving a change in the visual map editor fails",
-
-	"maps-json-editor-toolbar-save-title": "",
-	"maps-json-editor-toolbar-save-text": "",
-	"maps-json-editor-toolbar-cancel-title": "",
-	"maps-json-editor-toolbar-cancel-text": "",
-	"maps-json-editor-toolbar-clear-title": "",
-	"maps-json-editor-toolbar-clear-text": "",
-
-	"maps-json-editor-toolbar-button-edit": "",
-	"maps-json-editor-toolbar-button-edit-disabled": "",
-	"maps-json-editor-toolbar-button-remove": "",
-	"maps-json-editor-toolbar-button-remove-disabled": "",
-
+	"maps-json-editor-toolbar-cancel-text": "{{Identical|Cancel}}",
 	"maps-geo-json-edit-source": "Edit tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids",
 	"maps-geo-json-create-source": "Page creation tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids"
 }

@@ -204,5 +204,11 @@
 	"validator-type-mapslocation-list": "위치 목록",
 	"validator-type-mapsrectangle-list": "직사각형 목록",
 	"validator-type-wmsoverlay": "웹 지도 서비스 오버레이",
-	"validator-type-jsonfile": "텍스트"
+	"validator-type-jsonfile": "텍스트",
+	"maps-json-editor-toolbar-save-title": "변경사항 저장",
+	"maps-json-editor-toolbar-save-text": "저장",
+	"maps-json-editor-toolbar-cancel-title": "편집을 취소하고 모든 변경사항을 버립니다",
+	"maps-json-editor-toolbar-cancel-text": "취소",
+	"maps-json-editor-toolbar-clear-text": "모두 지우기",
+	"maps-geo-json-edit-source": "원본 편집"
 }
