@@ -5,6 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.8.1
 
+Released on October 2nd, 2019.
+
 * Fixed double display of marker icons in the GeoJson namespace
 
 ## Maps 7.8.0
