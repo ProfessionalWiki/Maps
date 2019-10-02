@@ -6,13 +6,9 @@ namespace Maps\Presentation;
 
 use Html;
 
-class GeoJsonPageOutput {
+class GeoJsonMapPageUi {
 
 	private $json;
-
-	public static function forNewPage(): self {
-		return new self( null );
-	}
 
 	public static function forExistingPage( string $mapJson ): self {
 		return new self( $mapJson );
@@ -44,23 +40,11 @@ class GeoJsonPageOutput {
 
 	private function getJsonJs(): string {
 		return 'var GeoJson ='
-			. ( $this->json ?? 'null' )
+			. $this->json
 			. ';';
 	}
 
 	private function getHtml(): string {
-		if ( $this->isExistingPage() ) {
-			return $this->getMapHtml();
-		}
-
-		return $this->getNewPageHtml();
-	}
-
-	private function isExistingPage(): bool {
-		return $this->json !== null;
-	}
-
-	private function getMapHtml(): string {
 		return $this->wrapHtmlInThumbDivs(
 			Html::rawElement(
 				'div',
@@ -94,25 +78,6 @@ class GeoJsonPageOutput {
 				$html
 			)
 		);
-	}
-
-	private function getNewPageHtml(): string {
-		return
-			Html::element(
-				'button',
-				[
-					'id' => 'maps-geojson-new'
-				],
-				wfMessage( 'maps-geo-json-create-page-button' )->inContentLanguage()->text()
-			)
-			. Html::rawElement(
-				'div',
-				[
-					'style' => 'display: none;',
-					'id' => 'maps-geojson-map-wrapper'
-				],
-				$this->getMapHtml()
-			);
 	}
 
 }

@@ -60,33 +60,16 @@
 			]
 		},
 
-		"mapeditor": {
+		"ext.maps.geojson.new.page": {
 			"dependencies": [
-				"jquery.ui.autocomplete",
-				"jquery.ui.slider",
-				"jquery.ui.dialog"
+				"mediawiki.api.edit"
 			],
 			"scripts": [
-				"editor/js/jquery.miniColors.js",
-				"editor/js/mapeditor.iefixes.js",
-				"editor/js/mapeditor.js"
-			],
-			"styles": [
-				"editor/css/jquery.miniColors.css",
-				"editor/css/mapeditor.css"
+				"GeoJson/geojson.new.page.js"
 			],
 			"messages": [
-				"mapeditor-parser-error",
-				"mapeditor-none-text",
-				"mapeditor-done-button",
-				"mapeditor-remove-button",
-				"mapeditor-import-button",
-				"mapeditor-export-button",
-				"mapeditor-import-button2",
-				"mapeditor-select-button",
-				"mapeditor-mapparam-button",
-				"mapeditor-clear-button",
-				"mapeditor-imageoverlay-button"
+				"maps-geo-json-create-page-creating",
+				"maps-geo-json-create-page-summary"
 			]
 		},
 
@@ -191,10 +174,7 @@
 				"maps-json-editor-toolbar-button-edit",
 				"maps-json-editor-toolbar-button-edit-disabled",
 				"maps-json-editor-toolbar-button-remove",
-				"maps-json-editor-toolbar-button-remove-disabled",
-
-				"maps-geo-json-create-page-creating",
-				"maps-geo-json-create-page-summary"
+				"maps-json-editor-toolbar-button-remove-disabled"
 			]
 		},
 
@@ -270,6 +250,36 @@
 			],
 			"scripts": [
 				"GoogleMaps/ext.sm.googlemaps3ajax.js"
+			]
+		},
+
+		"mapeditor": {
+			"dependencies": [
+				"jquery.ui.autocomplete",
+				"jquery.ui.slider",
+				"jquery.ui.dialog"
+			],
+			"scripts": [
+				"editor/js/jquery.miniColors.js",
+				"editor/js/mapeditor.iefixes.js",
+				"editor/js/mapeditor.js"
+			],
+			"styles": [
+				"editor/css/jquery.miniColors.css",
+				"editor/css/mapeditor.css"
+			],
+			"messages": [
+				"mapeditor-parser-error",
+				"mapeditor-none-text",
+				"mapeditor-done-button",
+				"mapeditor-remove-button",
+				"mapeditor-import-button",
+				"mapeditor-export-button",
+				"mapeditor-import-button2",
+				"mapeditor-select-button",
+				"mapeditor-mapparam-button",
+				"mapeditor-clear-button",
+				"mapeditor-imageoverlay-button"
 			]
 		}
 	},

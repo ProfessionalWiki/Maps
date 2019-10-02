@@ -225,51 +225,11 @@
 		return self;
 	};
 
-	function initializeEditor() {
+	$( document ).ready( function() {
 		let editor = MapEditor('GeoJsonMap', window.GeoJson);
 		editor.initialize();
 
 		initializeMessages();
-	}
-
-	$( document ).ready( function() {
-		if (window.GeoJson !== null) {
-			initializeEditor();
-		}
-
-		$('#maps-geojson-new').click(
-			function() {
-				$(this).prop('disabled', true);
-				$(this).text(mw.msg('maps-geo-json-create-page-creating'));
-
-				new mw.Api().create(
-					mw.config.get('wgPageName'),
-					{
-						summary: mw.msg('maps-geo-json-create-page-summary')
-					},
-					'{"type": "FeatureCollection", "features": []}'
-				).then(
-					function(editData) {
-						if (editData.result === 'Success') {
-							// $(this).hide();
-							// $('#maps-geojson-map-wrapper').show();
-							// initializeEditor();
-						}
-						else {
-							console.log(editData);
-							alert('Failed to create the page');
-						}
-
-						location.reload();
-					}
-				).fail(
-					function(reason) {
-						alert('Failed to create the page: ' + reason);
-						location.reload();
-					}
-				);
-			}
-		);
 	} );
 
 })( window.jQuery, mediaWiki );
