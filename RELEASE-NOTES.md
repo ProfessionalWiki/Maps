@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.8.0
 
-Under development
+Released on October 2nd, 2019.
 
 * Loading messages for Leaflet maps are no longer visible when zooming out far or loading new tiles
 * Added entirely visual creation flow for pages in the GeoJson namespace
