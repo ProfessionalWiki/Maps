@@ -6,7 +6,7 @@ window.mapsLeafletList = [];
 			let $this = $( this );
 
 			let jqueryMap = $this.leafletmaps(
-				$.parseJSON( $this.find( 'div.mapdata' ).text() )
+				JSON.parse( $this.find( 'div.mapdata' ).text() )
 			);
 
 			window.mapsLeafletList.push(jqueryMap);
