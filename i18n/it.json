@@ -159,5 +159,12 @@
 	"validator-type-mapsrectangle-list": "Elenco di rettangoli",
 	"validator-type-mapspolygon": "Poligono geografico",
 	"validator-type-mapspolygon-list": "Elenco dei poligoni geografici",
-	"validator-type-jsonfile": "testo"
+	"validator-type-jsonfile": "testo",
+	"maps-json-editor-toolbar-save-text": "Salva",
+	"maps-json-editor-toolbar-cancel-text": "Annulla",
+	"maps-json-editor-toolbar-clear-title": "Pulisci tutti i livelli",
+	"maps-json-editor-toolbar-button-edit-disabled": "Nessun livello da modificare",
+	"maps-json-editor-toolbar-button-remove": "Cancella livelli",
+	"maps-json-editor-toolbar-button-remove-disabled": "Nessun livello da cancellare",
+	"maps-geo-json-edit-source": "Modifica sorgente"
 }

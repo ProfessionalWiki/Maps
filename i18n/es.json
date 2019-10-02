@@ -25,7 +25,8 @@
 			"Rubentl134",
 			"AlvaroMolina",
 			"Dgstranz",
-			"Carlosmg.dg"
+			"Carlosmg.dg",
+			"Madamebiblio"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
@@ -229,5 +230,19 @@
 	"validator-type-mapsrectangle-list": "Lista de rectángulos",
 	"validator-type-mapspolygon": "Polígono geográfico",
 	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
-	"validator-type-jsonfile": "texto"
+	"validator-type-jsonfile": "texto",
+	"maps-json-editor-button-line": "Trazar una línea",
+	"maps-json-editor-button-polygon": "Trazar un polígono",
+	"maps-json-editor-added-polygon": "Polígono añadido",
+	"maps-json-editor-added-rectangle": "Rectángulo añadido",
+	"maps-json-editor-added-circle": "Círculo añadido",
+	"maps-json-editor-edit-other": "Edición cartográfica visual",
+	"maps-json-editor-toolbar-save-title": "Guardar cambios",
+	"maps-json-editor-toolbar-save-text": "Guardar",
+	"maps-json-editor-toolbar-cancel-text": "Cancelar",
+	"maps-json-editor-toolbar-clear-title": "Borrar todas las capas",
+	"maps-json-editor-toolbar-button-edit": "Editar capas",
+	"maps-json-editor-toolbar-button-remove": "Eliminar capas",
+	"maps-geo-json-edit-source": "Editar código",
+	"maps-geo-json-create-source": "Crear a partir de código GeoJSON"
 }
