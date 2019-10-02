@@ -89,10 +89,10 @@ final class MapsHooks {
 	}
 
 	public static function onShowMissingArticle( \Article $article ) {
-		// TODO: save does not work on new page yet: API response says "missing"
-
-		//GeoJsonPageOutput::forNewPage()->addToOutputPage( $article->getContext()->getOutput() );
-
+		if ( $article->getTitle()->getNamespace() === NS_GEO_JSON ) {
+			GeoJsonPageOutput::forNewPage()->addToOutputPage( $article->getContext()->getOutput() );
+		}
+		
 		return true;
 	}
 
