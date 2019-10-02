@@ -6,6 +6,7 @@ use AlItem;
 use ALTree;
 use Maps\MediaWiki\Content\GeoJsonContent;
 use Maps\Presentation\GeoJsonPageOutput;
+use Maps\Presentation\OutputFacade;
 use SkinTemplate;
 
 /**
@@ -90,7 +91,7 @@ final class MapsHooks {
 
 	public static function onShowMissingArticle( \Article $article ) {
 		if ( $article->getTitle()->getNamespace() === NS_GEO_JSON ) {
-			GeoJsonPageOutput::forNewPage()->addToOutputPage( $article->getContext()->getOutput() );
+			GeoJsonPageOutput::forNewPage()->addToOutput( OutputFacade::newFromOutputPage( $article->getContext()->getOutput() ) );
 		}
 
 		return true;

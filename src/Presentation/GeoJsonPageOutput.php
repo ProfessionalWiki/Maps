@@ -22,20 +22,16 @@ class GeoJsonPageOutput {
 		$this->json = $json;
 	}
 
-	public function addToParserOutput( \ParserOutput $parserOutput ) {
-		$parserOutput->setText( $this->getJavascript() . $this->getHtml() );
-		$parserOutput->addModules( $this->getResourceModules() );
-	}
+	public function addToOutput( OutputFacade $output ) {
+		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/leaflet/leaflet';
 
-	public function addToOutputPage( \OutputPage $output ) {
+		$output->addHeadItem(
+			'MapsGeoJsonHeadItem',
+			Html::linkedStyle( "$leafletPath/leaflet.css" ) . Html::linkedScript( "$leafletPath/leaflet.js" )
+		);
+
 		$output->addHTML( $this->getJavascript() . $this->getHtml() );
-		$output->addModules( $this->getResourceModules() );
-	}
-
-	private function getResourceModules(): array {
-		return [
-			'ext.maps.leaflet.editor'
-		];
+		$output->addModules( 'ext.maps.leaflet.editor' );
 	}
 
 	private function getJavascript(): string {
