@@ -7,10 +7,11 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
-* Loading messages for Leaflet maps are no longer visible when zooming out far or loading new tiles 
+* Loading messages for Leaflet maps are no longer visible when zooming out far or loading new tiles
+* Added entirely visual creation flow for pages in the GeoJson namespace
 * Enhanced validation of content in the GeoJson namespace
 * Improved text on the creation and edit tabs in the GeoJson namespace 
-* Added "Visual map edit" tag to revisions created by the GeoJson visual editor
+* Added "Visual map edit" tag to revisions created by the GeoJson visual editor 
 
 ## Maps 7.7.0
 

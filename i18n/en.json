@@ -260,6 +260,9 @@
 
 	"maps-geo-json-edit-source": "Edit source",
 	"maps-geo-json-create-source": "Create from GeoJSON source",
+	"maps-geo-json-create-page-button": "Create this page",
+	"maps-geo-json-create-page-creating": "Creating page...",
+	"maps-geo-json-create-page-summary": "Created GeoJSON page",
 
 	"tag-maps-visual-edit": "Visual map edit",
 	"tag-maps-visual-edit-description": "Edit made with the visual editor provided by the [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"

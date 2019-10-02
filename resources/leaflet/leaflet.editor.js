@@ -89,10 +89,6 @@
 	let MapEditor = function(mapId, json) {
 		let self = {};
 
-		if (json === null) {
-			json = {"type": "FeatureCollection", "features": []};
-		}
-
 		self.initialize = function() {
 			self.map = L.map(
 				mapId,
@@ -229,7 +225,7 @@
 		return self;
 	};
 
-	function initializeEditor(json) {
+	function initializeEditor() {
 		let editor = MapEditor('GeoJsonMap', window.GeoJson);
 		editor.initialize();
 
@@ -243,9 +239,35 @@
 
 		$('#maps-geojson-new').click(
 			function() {
-				$(this).hide();
-				$('#maps-geojson-map-wrapper').show();
-				initializeEditor();
+				$(this).prop('disabled', true);
+				$(this).text(mw.msg('maps-geo-json-create-page-creating'));
+
+				new mw.Api().create(
+					mw.config.get('wgPageName'),
+					{
+						summary: mw.msg('maps-geo-json-create-page-summary')
+					},
+					'{"type": "FeatureCollection", "features": []}'
+				).then(
+					function(editData) {
+						if (editData.result === 'Success') {
+							// $(this).hide();
+							// $('#maps-geojson-map-wrapper').show();
+							// initializeEditor();
+						}
+						else {
+							console.log(editData);
+							alert('Failed to create the page');
+						}
+
+						location.reload();
+					}
+				).fail(
+					function(reason) {
+						alert('Failed to create the page: ' + reason);
+						location.reload();
+					}
+				);
 			}
 		);
 	} );

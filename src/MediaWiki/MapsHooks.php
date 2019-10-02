@@ -92,7 +92,7 @@ final class MapsHooks {
 		if ( $article->getTitle()->getNamespace() === NS_GEO_JSON ) {
 			GeoJsonPageOutput::forNewPage()->addToOutputPage( $article->getContext()->getOutput() );
 		}
-		
+
 		return true;
 	}
 

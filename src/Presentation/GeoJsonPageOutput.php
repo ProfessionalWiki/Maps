@@ -107,7 +107,7 @@ class GeoJsonPageOutput {
 				[
 					'id' => 'maps-geojson-new'
 				],
-				'Create this page'
+				wfMessage( 'maps-geo-json-create-page-button' )->inContentLanguage()->text()
 			)
 			. Html::rawElement(
 				'div',
