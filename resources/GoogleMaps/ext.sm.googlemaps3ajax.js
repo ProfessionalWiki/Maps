@@ -17,7 +17,7 @@
 			if( typeof google === 'undefined' ) {
 				return;
 			}
-			$( window.maps.googlemapsList ).each( function( index, map ) {
+			$( window.mapsGoogleList ).each( function( index, map ) {
 				if( !map.options.ajaxquery || !map.options.ajaxcoordproperty ) {
 					return;
 				}

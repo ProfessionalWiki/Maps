@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.8.2
+
+Released on October 2nd, 2019.
+
+* Fixed recent Google Maps regression
+
 ## Maps 7.8.1
 
 Released on October 2nd, 2019.
