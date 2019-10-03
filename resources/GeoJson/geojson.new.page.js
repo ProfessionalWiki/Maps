@@ -1,4 +1,12 @@
 $( document ).ready( function() {
+	function getErrorMessageForFailure(failureReason) {
+		if (failureReason === 'assertuserfailed') {
+			return 'Could not create page because your session expired. The page will be reloaded';
+		}
+
+		return 'Failed to create the page: ' + failureReason;
+	}
+
 	$('#maps-geojson-new').click(
 		function() {
 			$(this).prop('disabled', true);
@@ -21,7 +29,7 @@ $( document ).ready( function() {
 				}
 			).fail(
 				function(reason) {
-					alert('Failed to create the page: ' + reason);
+					alert(getErrorMessageForFailure(reason));
 					location.reload();
 				}
 			);

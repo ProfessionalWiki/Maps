@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.8.3
+
+* The "create page" button on GeoJson pages is now only shown to users with `createpage` permission
+
 ## Maps 7.8.2
 
 Released on October 2nd, 2019.

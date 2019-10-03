@@ -87,16 +87,21 @@ final class MapsHooks {
 	}
 
 	public static function onBeforeDisplayNoArticleText( \Article $article ) {
-		return $article->getTitle()->getNamespace() !== NS_GEO_JSON;
+		return !self::shouldShowGeoJsonCreatePageUi( $article );
 	}
 
 	public static function onShowMissingArticle( \Article $article ) {
-		if ( $article->getTitle()->getNamespace() === NS_GEO_JSON ) {
+		if ( self::shouldShowGeoJsonCreatePageUi( $article ) ) {
 			$ui = new GeoJsonNewPageUi( OutputFacade::newFromOutputPage( $article->getContext()->getOutput() ) );
 			$ui->addToOutput();
 		}
 
 		return true;
+	}
+
+	private static function shouldShowGeoJsonCreatePageUi( \Article $article ): bool {
+		return $article->getTitle()->getNamespace() === NS_GEO_JSON
+			&& $article->getContext()->getUser()->isAllowed( 'createpage' );
 	}
 
 	public static function onRegisterTags( array &$tags ) {
