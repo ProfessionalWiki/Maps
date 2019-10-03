@@ -50,7 +50,7 @@ class GoogleMapsService implements MappingService {
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
 		global $egMapsResizableByDefault;
 
-		$params = ParamDefinition::getCleanDefinitions( MapsFunctions::getCommonParameters() );
+		$params = MapsFunctions::getCommonParameters();
 
 		$params['zoom'] = [
 			'type' => 'integer',

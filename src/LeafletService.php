@@ -27,7 +27,7 @@ class LeafletService implements MappingService {
 	public function getParameterInfo(): array {
 		global $GLOBALS;
 
-		$params = ParamDefinition::getCleanDefinitions( MapsFunctions::getCommonParameters() );
+		$params = MapsFunctions::getCommonParameters();
 
 		$params['zoom'] = [
 			'type' => 'integer',
