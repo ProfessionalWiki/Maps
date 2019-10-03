@@ -79,7 +79,9 @@ abstract class ParserHookTest extends TestCase {
 
 		$processor = Processor::newDefault();
 		$processor->setParameters( $parameters );
-		$processor->setParameterDefinitions( $this->getCleanedDefinitions( $definitions ) );
+		$processor->setParameterDefinitions(
+			MapsFactory::globalInstance()->getParamDefinitionFactory()->newDefinitionsFromArrays( $definitions )
+		);
 
 		$result = $processor->processParameters();
 
@@ -104,21 +106,6 @@ abstract class ParserHookTest extends TestCase {
 				. var_export( $actual[$name]->getValue(), true )
 			);
 		}
-	}
-
-	private function getCleanedDefinitions( array $definitionArrays ) {
-		$factory = MapsFactory::globalInstance()->getParamDefinitionFactory();
-		$definitions = [];
-
-		foreach ( $definitionArrays as $name => $definitionArray ) {
-			if ( !array_key_exists( 'name', $definitionArray ) && is_string( $name ) ) {
-				$definitionArray['name'] = $name;
-			}
-
-			$definitions[$name] = $factory->newDefinitionFromArray( $definitionArray );
-		}
-
-		return $definitions;
 	}
 
 	/**

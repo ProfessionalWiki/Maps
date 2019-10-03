@@ -87,23 +87,12 @@ class DisplayMapFunction {
 	}
 
 	private function getAllParameterDefinitions( MappingService $service, string $delimiter ) {
-		$definitionArrays = array_merge(
-			self::getHookDefinition( $delimiter )->getParameters(),
-			$service->getParameterInfo()
+		return MapsFactory::globalInstance()->getParamDefinitionFactory()->newDefinitionsFromArrays(
+			array_merge(
+				self::getHookDefinition( $delimiter )->getParameters(),
+				$service->getParameterInfo()
+			)
 		);
-
-		$factory = MapsFactory::globalInstance()->getParamDefinitionFactory();
-		$definitions = [];
-
-		foreach ( $definitionArrays as $name => $definitionArray ) {
-			if ( !array_key_exists( 'name', $definitionArray ) && is_string( $name ) ) {
-				$definitionArray['name'] = $name;
-			}
-
-			$definitions[$name] = $factory->newDefinitionFromArray( $definitionArray );
-		}
-
-		return $definitions;
 	}
 
 	private function getMapHtmlFromProcessor( Parser $parser, Processor $processor ) {
