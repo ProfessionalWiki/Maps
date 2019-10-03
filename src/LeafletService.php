@@ -3,7 +3,6 @@
 namespace Maps;
 
 use Html;
-use ParamProcessor\ParamDefinition;
 
 /**
  * @licence GNU GPL v2+

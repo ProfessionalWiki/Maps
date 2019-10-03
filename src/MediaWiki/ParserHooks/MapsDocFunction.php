@@ -2,7 +2,6 @@
 
 namespace Maps\MediaWiki\ParserHooks;
 
-use Maps\MappingServices;
 use Maps\MapsFactory;
 use ParamProcessor\ParamDefinition;
 use ParserHook;

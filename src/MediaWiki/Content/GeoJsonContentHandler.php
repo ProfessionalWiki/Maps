@@ -2,8 +2,6 @@
 
 namespace Maps\MediaWiki\Content;
 
-use FormatJson;
-
 class GeoJsonContentHandler extends \JsonContentHandler {
 
 	public function __construct( $modelId = GeoJsonContent::CONTENT_MODEL_ID ) {

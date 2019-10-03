@@ -3,9 +3,8 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
-use Maps\MapsFactory;
-use Maps\MapsFunctions;
 use Maps\MappingServices;
+use Maps\MapsFactory;
 use Maps\Presentation\ParameterExtractor;
 use MWException;
 use ParamProcessor;

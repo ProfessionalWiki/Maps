@@ -4,8 +4,6 @@ namespace Maps\MediaWiki;
 
 use AlItem;
 use ALTree;
-use Maps\MediaWiki\Content\GeoJsonContent;
-use Maps\Presentation\GeoJsonMapPageUi;
 use Maps\Presentation\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
 use SkinTemplate;

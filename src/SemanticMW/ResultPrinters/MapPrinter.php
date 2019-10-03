@@ -2,19 +2,15 @@
 
 namespace Maps\SemanticMW\ResultPrinters;
 
-use FormatJson;
-use Html;
 use Linker;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
 use Maps\FileUrlFinder;
 use Maps\MappingService;
-use Maps\MapsFunctions;
 use Maps\Presentation\ElementJsonSerializer;
 use Maps\Presentation\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
-use ParamProcessor\ParamDefinition;
 use Parser;
 use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;

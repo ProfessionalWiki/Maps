@@ -3,8 +3,8 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use DataValues\Geo\Values\LatLongValue;
-use Maps\MapsFactory;
 use Maps\GeoFunctions;
+use Maps\MapsFactory;
 use ParserHook;
 
 /**

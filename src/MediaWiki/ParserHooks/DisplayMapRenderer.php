@@ -2,8 +2,6 @@
 
 namespace Maps\MediaWiki\ParserHooks;
 
-use FormatJson;
-use Html;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\Elements\Location;
 use Maps\MappingService;
