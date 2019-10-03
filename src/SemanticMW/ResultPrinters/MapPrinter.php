@@ -318,10 +318,6 @@ class MapPrinter extends ResultPrinter {
 		$params = parent::getParameters();
 		$paramInfo = $this->getParameterInfo();
 
-		// Do not display this as an option, as the format already determines it
-		// TODO: this can probably be done cleaner with some changes in Maps
-		unset( $paramInfo['mappingservice'] );
-
 		$params = array_merge( $params, $paramInfo );
 
 		return $params;

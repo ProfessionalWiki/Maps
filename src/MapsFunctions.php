@@ -75,13 +75,6 @@ final class MapsFunctions {
 	public static function getCommonParameters() {
 		$params = [];
 
-		$params['mappingservice'] = [
-			'type' => 'string',
-			'aliases' => 'service',
-			'default' => $GLOBALS['egMapsDefaultService'],
-			'values' => MapsFactory::globalInstance()->getMappingServices()->getAllNames(),
-		];
-
 		$params['width'] = [
 			'type' => 'dimension',
 			'allowauto' => true,
@@ -103,7 +96,7 @@ final class MapsFunctions {
 		];
 
 		// Give grep a chance to find the usages:
-		// maps-par-mappingservice, maps-par-geoservice, maps-par-width,
+		// maps-par-width,
 		// maps-par-height, maps-par-centre
 		foreach ( $params as $name => &$data ) {
 			$data['name'] = $name;

@@ -3,6 +3,7 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
+use Maps\MapsFactory;
 use Maps\MapsFunctions;
 use Maps\MappingServices;
 use Maps\Presentation\ParameterExtractor;
@@ -128,6 +129,14 @@ class DisplayMapFunction {
 
 	private static function getParameterDefinitions( $locationDelimiter ): array {
 		$params = MapsFunctions::getCommonParameters();
+
+		$params['mappingservice'] = [
+			'type' => 'string',
+			'aliases' => 'service',
+			'default' => $GLOBALS['egMapsDefaultService'],
+			'values' => MapsFactory::globalInstance()->getMappingServices()->getAllNames(),
+			'message' => 'maps-par-mappingservice'
+		];
 
 		$params['coordinates'] = [
 			'type' => 'string',
