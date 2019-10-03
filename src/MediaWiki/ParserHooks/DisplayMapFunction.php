@@ -11,7 +11,6 @@ use MWException;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\Processor;
 use Parser;
-use ParserHooks\HookDefinition;
 
 /**
  * Class for the 'display_map' parser hooks.
@@ -53,7 +52,7 @@ class DisplayMapFunction {
 		$processor->setFunctionParams(
 			$parameters,
 			[],
-			self::getHookDefinition( ';' )->getDefaultParameters()
+			self::getDefaultParameters()
 		);
 
 		$processor->setParameterDefinitions(
@@ -86,10 +85,29 @@ class DisplayMapFunction {
 		return $this->getMapHtmlFromProcessor( $parser, $processor );
 	}
 
-	private function getAllParameterDefinitions( MappingService $service, string $delimiter ) {
+	private function getAllParameterDefinitions( MappingService $service, string $locationDelimiter ) {
+		$params = [];
+
+		$params['mappingservice'] = [
+			'type' => 'string',
+			'aliases' => 'service',
+			'default' => $GLOBALS['egMapsDefaultService'],
+			'values' => MapsFactory::globalInstance()->getMappingServices()->getAllNames(),
+			'message' => 'maps-par-mappingservice'
+		];
+
+		$params['coordinates'] = [
+			'type' => 'string',
+			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
+			'default' => [],
+			'islist' => true,
+			'delimiter' => $locationDelimiter,
+			'message' => 'maps-displaymap-par-coordinates',
+		];
+
 		return MapsFactory::globalInstance()->getParamDefinitionFactory()->newDefinitionsFromArrays(
 			array_merge(
-				self::getHookDefinition( $delimiter )->getParameters(),
+				$params,
 				$service->getParameterInfo()
 			)
 		);
@@ -127,31 +145,8 @@ class DisplayMapFunction {
 		return $parameters;
 	}
 
-	public static function getHookDefinition( string $locationDelimiter ): HookDefinition {
-		$params = [];
-
-		$params['mappingservice'] = [
-			'type' => 'string',
-			'aliases' => 'service',
-			'default' => $GLOBALS['egMapsDefaultService'],
-			'values' => MapsFactory::globalInstance()->getMappingServices()->getAllNames(),
-			'message' => 'maps-par-mappingservice'
-		];
-
-		$params['coordinates'] = [
-			'type' => 'string',
-			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
-			'default' => [],
-			'islist' => true,
-			'delimiter' => $locationDelimiter,
-			'message' => 'maps-displaymap-par-coordinates',
-		];
-
-		return new HookDefinition(
-			[ 'display_map', 'display_point', 'display_points', 'display_line' ],
-			$params,
-			[ 'coordinates' ]
-		);
+	public static function getDefaultParameters(): array {
+		return [ 'coordinates' ];
 	}
 
 	/**

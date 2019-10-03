@@ -109,13 +109,7 @@ class MapsSetup {
 					$hookName,
 					function ( $text, array $arguments, Parser $parser ) {
 						if ( $text !== null ) {
-							$defaultParameters = DisplayMapFunction::getHookDefinition( "\n" )->getDefaultParameters();
-							$defaultParam = array_shift( $defaultParameters );
-
-							// If there is a first default parameter, set the tag contents as its value.
-							if ( $defaultParam !== null ) {
-								$arguments[$defaultParam] = $text;
-							}
+							$arguments[DisplayMapFunction::getDefaultParameters()[0]] = $text;
 						}
 
 						return MapsFactory::newDefault()->getDisplayMapFunction()->getMapHtmlForParameterList( $parser, $arguments );
