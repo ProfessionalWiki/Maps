@@ -3,8 +3,8 @@
 namespace Maps\Tests\Integration\MediaWiki\ParserHooks;
 
 use DataValues\Geo\Values\LatLongValue;
+use Maps\MapsFactory;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
-use ParamProcessor\ParamDefinition;
 
 /**
  * @covers CoordinatesFunction
@@ -71,7 +71,9 @@ class CoordinatesTest extends ParserHookTest {
 	 * @see ParserHookTest::processingProvider
 	 */
 	public function processingProvider() {
-		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$definitions = MapsFactory::globalInstance()->getParamDefinitionFactory()->newDefinitionsFromArrays(
+			$this->getInstance()->getParamDefinitions()
+		);
 		$argLists = [];
 
 		$values = [

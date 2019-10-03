@@ -3,14 +3,14 @@
 namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
-use Maps\MappingServices;
+use Maps\MappingService;
 use Maps\MapsFactory;
+use Maps\MappingServices;
 use Maps\Presentation\ParameterExtractor;
 use MWException;
-use ParamProcessor;
 use ParamProcessor\ProcessedParam;
+use ParamProcessor\Processor;
 use Parser;
-use ParserHooks\HookDefinition;
 
 /**
  * Class for the 'display_map' parser hooks.
@@ -39,7 +39,7 @@ class DisplayMapFunction {
 	 * @throws MWException
 	 */
 	public function getMapHtmlForKeyValueStrings( Parser $parser, array $parameters ): string {
-		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
+		$processor = new Processor( new \ParamProcessor\Options() );
 
 		$service = $this->services->getServiceOrDefault(
 			$this->extractServiceName(
@@ -51,11 +51,12 @@ class DisplayMapFunction {
 
 		$processor->setFunctionParams(
 			$parameters,
-			array_merge(
-				self::getHookDefinition( ';' )->getParameters(),
-				$service->getParameterInfo()
-			),
-			self::getHookDefinition( ';' )->getDefaultParameters()
+			[],
+			self::getDefaultParameters()
+		);
+
+		$processor->setParameterDefinitions(
+			$this->getAllParameterDefinitions( $service, ';' )
 		);
 
 		return $this->getMapHtmlFromProcessor( $parser, $processor );
@@ -70,24 +71,49 @@ class DisplayMapFunction {
 	 * @throws MWException
 	 */
 	public function getMapHtmlForParameterList( Parser $parser, array $parameters ) {
-		$processor = new \ParamProcessor\Processor( new \ParamProcessor\Options() );
+		$processor = new Processor( new \ParamProcessor\Options() );
 
 		$service = $this->services->getServiceOrDefault( $this->extractServiceName( $parameters ) );
 
 		$this->renderer->service = $service;
 
-		$processor->setParameters(
-			$parameters,
-			array_merge(
-				self::getHookDefinition( "\n" )->getParameters(),
-				$service->getParameterInfo()
-			)
+		$processor->setParameters( $parameters );
+		$processor->setParameterDefinitions(
+			$this->getAllParameterDefinitions( $service, "\n" )
 		);
 
 		return $this->getMapHtmlFromProcessor( $parser, $processor );
 	}
 
-	private function getMapHtmlFromProcessor( Parser $parser, ParamProcessor\Processor $processor ) {
+	private function getAllParameterDefinitions( MappingService $service, string $locationDelimiter ) {
+		$params = [];
+
+		$params['mappingservice'] = [
+			'type' => 'string',
+			'aliases' => 'service',
+			'default' => $GLOBALS['egMapsDefaultService'],
+			'values' => MapsFactory::globalInstance()->getMappingServices()->getAllNames(),
+			'message' => 'maps-par-mappingservice'
+		];
+
+		$params['coordinates'] = [
+			'type' => 'string',
+			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
+			'default' => [],
+			'islist' => true,
+			'delimiter' => $locationDelimiter,
+			'message' => 'maps-displaymap-par-coordinates',
+		];
+
+		return MapsFactory::globalInstance()->getParamDefinitionFactory()->newDefinitionsFromArrays(
+			array_merge(
+				$params,
+				$service->getParameterInfo()
+			)
+		);
+	}
+
+	private function getMapHtmlFromProcessor( Parser $parser, Processor $processor ) {
 		$params = $processor->processParameters()->getParameters();
 
 		$this->defaultMapZoom( $params );
@@ -119,31 +145,8 @@ class DisplayMapFunction {
 		return $parameters;
 	}
 
-	public static function getHookDefinition( string $locationDelimiter ): HookDefinition {
-		$params = [];
-
-		$params['mappingservice'] = [
-			'type' => 'string',
-			'aliases' => 'service',
-			'default' => $GLOBALS['egMapsDefaultService'],
-			'values' => MapsFactory::globalInstance()->getMappingServices()->getAllNames(),
-			'message' => 'maps-par-mappingservice'
-		];
-
-		$params['coordinates'] = [
-			'type' => 'string',
-			'aliases' => [ 'coords', 'location', 'address', 'addresses', 'locations', 'points' ],
-			'default' => [],
-			'islist' => true,
-			'delimiter' => $locationDelimiter,
-			'message' => 'maps-displaymap-par-coordinates',
-		];
-
-		return new HookDefinition(
-			[ 'display_map', 'display_point', 'display_points', 'display_line' ],
-			$params,
-			[ 'coordinates' ]
-		);
+	public static function getDefaultParameters(): array {
+		return [ 'coordinates' ];
 	}
 
 	/**

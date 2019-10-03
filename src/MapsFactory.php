@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
+use DataValues\Geo\Parsers\LatLongParser;
 use FileFetcher\Cache\Factory as CacheFactory;
 use FileFetcher\FileFetcher;
 use Jeroen\SimpleGeocoder\Geocoder;
@@ -13,13 +14,22 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\DataAccess\CachingGeocoder;
+use Maps\DataAccess\JsonFileParser;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\PageContentFetcher;
 use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
 use Maps\Presentation\CoordinateFormatter;
+use Maps\Presentation\WikitextParsers\CircleParser;
+use Maps\Presentation\WikitextParsers\DistanceParser;
+use Maps\Presentation\WikitextParsers\ImageOverlayParser;
+use Maps\Presentation\WikitextParsers\LineParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
+use Maps\Presentation\WikitextParsers\PolygonParser;
+use Maps\Presentation\WikitextParsers\RectangleParser;
+use Maps\Presentation\WikitextParsers\WmsOverlayParser;
 use MediaWiki\MediaWikiServices;
+use ParamProcessor\ParamDefinitionFactory;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
 
@@ -163,6 +173,23 @@ class MapsFactory {
 		return new DisplayMapFunction(
 			$this->getMappingServices()
 		);
+	}
+
+	public function getParamDefinitionFactory(): ParamDefinitionFactory {
+		$factory = ParamDefinitionFactory::newDefault();
+
+		$factory->registerType( 'coordinate', [ 'string-parser' => LatLongParser::class ] );
+		$factory->registerType( 'mapslocation', [ 'string-parser' => LocationParser::class ] );
+		$factory->registerType( 'mapsline', [ 'string-parser' => LineParser::class ] );
+		$factory->registerType( 'mapscircle', [ 'string-parser' => CircleParser::class ] );
+		$factory->registerType( 'mapsrectangle', [ 'string-parser' => RectangleParser::class ] );
+		$factory->registerType( 'mapspolygon', [ 'string-parser' => PolygonParser::class ] );
+		$factory->registerType( 'distance', [ 'string-parser' => DistanceParser::class ] );
+		$factory->registerType( 'wmsoverlay', [ 'string-parser' => WmsOverlayParser::class ] );
+		$factory->registerType( 'mapsimageoverlay', [ 'string-parser' => ImageOverlayParser::class ] );
+		$factory->registerType( 'jsonfile', [ 'string-parser' => JsonFileParser::class ] );
+
+		return $factory;
 	}
 
 }

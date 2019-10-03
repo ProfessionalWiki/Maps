@@ -2,7 +2,7 @@
 
 namespace Maps\Tests\Integration\MediaWiki\ParserHooks;
 
-use ParamProcessor\ParamDefinition;
+use Maps\MapsFactory;
 use ParamProcessor\Processor;
 use PHPUnit\Framework\TestCase;
 
@@ -77,7 +77,10 @@ abstract class ParserHookTest extends TestCase {
 		$definitions = $this->getInstance()->getParamDefinitions();
 
 		$processor = Processor::newDefault();
-		$processor->setParameters( $parameters, $definitions );
+		$processor->setParameters( $parameters );
+		$processor->setParameterDefinitions(
+			MapsFactory::globalInstance()->getParamDefinitionFactory()->newDefinitionsFromArrays( $definitions )
+		);
 
 		$result = $processor->processParameters();
 
@@ -108,7 +111,9 @@ abstract class ParserHookTest extends TestCase {
 	 * Returns an array with the default values of the parameters.
 	 */
 	private function getDefaultValues() {
-		$definitions = ParamDefinition::getCleanDefinitions( $this->getInstance()->getParamDefinitions() );
+		$definitions = MapsFactory::globalInstance()->getParamDefinitionFactory()->newDefinitionsFromArrays(
+			$this->getInstance()->getParamDefinitions()
+		);
 
 		$defaults = [];
 
