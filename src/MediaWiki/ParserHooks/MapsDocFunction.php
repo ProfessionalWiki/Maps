@@ -4,7 +4,6 @@ namespace Maps\MediaWiki\ParserHooks;
 
 use Maps\MapsFactory;
 use ParamProcessor\ParamDefinition;
-use ParamProcessor\ParamDefinitionFactory;
 use ParserHook;
 
 /**
@@ -35,12 +34,14 @@ class MapsDocFunction extends ParserHook {
 	public function render( array $parameters ) {
 		$this->language = $parameters['language'];
 
-		$params = $this->getServiceParameters( $parameters['service'] );
+		$factory = MapsFactory::globalInstance();
 
-		return $this->getParameterTable( $params );
+		$params = $this->getServiceParameters( $factory, $parameters['service'] );
+
+		return $this->getParameterTable( $factory, $params );
 	}
 
-	private function getServiceParameters( $service ) {
+	private function getServiceParameters( MapsFactory $factory, string $service ) {
 		return array_merge(
 			[
 				'zoom' => [
@@ -48,21 +49,17 @@ class MapsDocFunction extends ParserHook {
 					'message' => 'maps-par-zoom',
 				]
 			],
-			MapsFactory::globalInstance()->getMappingServices()->getService( $service )->getParameterInfo()
+			$factory->getMappingServices()->getService( $service )->getParameterInfo()
 		);
 	}
 
 	/**
 	 * Returns the wikitext for a table listing the provided parameters.
-	 *
-	 * @param array $parameters
-	 *
-	 * @return string
 	 */
-	private function getParameterTable( array $parameters ) {
+	private function getParameterTable( MapsFactory $factory, array $parameters ): string {
 		$tableRows = [];
 
-		$parameters = ParamDefinitionFactory::singleton()->newDefinitionsFromArrays( $parameters );
+		$parameters = $factory->getParamDefinitionFactory()->newDefinitionsFromArrays( $parameters );
 
 		foreach ( $parameters as $parameter ) {
 			$tableRows[] = $this->getDescriptionRow( $parameter );
