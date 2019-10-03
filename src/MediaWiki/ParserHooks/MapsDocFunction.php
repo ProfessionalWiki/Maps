@@ -4,6 +4,7 @@ namespace Maps\MediaWiki\ParserHooks;
 
 use Maps\MapsFactory;
 use ParamProcessor\ParamDefinition;
+use ParamProcessor\ParamDefinitionFactory;
 use ParserHook;
 
 /**
@@ -61,7 +62,7 @@ class MapsDocFunction extends ParserHook {
 	private function getParameterTable( array $parameters ) {
 		$tableRows = [];
 
-		$parameters = ParamDefinition::getCleanDefinitions( $parameters );
+		$parameters = ParamDefinitionFactory::singleton()->newDefinitionsFromArrays( $parameters );
 
 		foreach ( $parameters as $parameter ) {
 			$tableRows[] = $this->getDescriptionRow( $parameter );
