@@ -239,7 +239,7 @@
 	"maps-json-editor-added-polygon": "إضافة مضلع",
 	"maps-json-editor-added-rectangle": "إضافة مستطيل",
 	"maps-json-editor-added-circle": "إضافة دائرة",
-	"maps-json-editor-edit-removed-shapes": "إزالة $1 أشكال",
+	"maps-json-editor-edit-removed-shapes": "إزالة $1 {{PLURAL:$1|شكل|أشكال}}",
 	"maps-json-editor-edit-modified": "تعديل أشكال الخريطة الحالية",
 	"maps-json-editor-edit-other": "تعديل خريطة مرئي",
 	"maps-json-editor-edit-failed": "فشل في حفظ الخريطة",
@@ -254,5 +254,10 @@
 	"maps-json-editor-toolbar-button-remove": "حذف الطبقات",
 	"maps-json-editor-toolbar-button-remove-disabled": "لا طبقات للحذف",
 	"maps-geo-json-edit-source": "عدل المصدر",
-	"maps-geo-json-create-source": "إنشاء من مصدر GeoJSON"
+	"maps-geo-json-create-source": "إنشاء من مصدر GeoJSON",
+	"maps-geo-json-create-page-button": "إنشاء هذه الصفحة",
+	"maps-geo-json-create-page-creating": "جارٍ إنشاء الصفحة...",
+	"maps-geo-json-create-page-summary": "إنشاء صفحة GeoJSON",
+	"tag-maps-visual-edit": "تعديل خريطة مرئي",
+	"tag-maps-visual-edit-description": "تم التعديل باستخدام المحرر المرئي الذي يوفره [https://www.mediawiki.org/wiki/Extension:Maps امتداد الخرائط]"
 }

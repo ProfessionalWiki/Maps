@@ -238,7 +238,7 @@
 	"maps-json-editor-added-polygon": "Додаден многуаголник",
 	"maps-json-editor-added-rectangle": "Додаден правоаголник",
 	"maps-json-editor-added-circle": "Додадена кружница",
-	"maps-json-editor-edit-removed-shapes": "Отстранети $1 облици",
+	"maps-json-editor-edit-removed-shapes": "{{PLURAL:$1|Отстранет $1 облик|Отстранети $1 облици}}",
 	"maps-json-editor-edit-modified": "Изменети постоечки облици",
 	"maps-json-editor-edit-other": "Нагледно уредување на карта",
 	"maps-json-editor-edit-failed": "Не успеав да ја зачувам картата.",
@@ -253,5 +253,10 @@
 	"maps-json-editor-toolbar-button-remove": "Избиши слоеви",
 	"maps-json-editor-toolbar-button-remove-disabled": "Нема слоеви за бришење",
 	"maps-geo-json-edit-source": "Измени извор",
-	"maps-geo-json-create-source": "Создај од извор на GeoJSON"
+	"maps-geo-json-create-source": "Создај од извор на GeoJSON",
+	"maps-geo-json-create-page-button": "Создај ја страницава",
+	"maps-geo-json-create-page-creating": "Ја создавам страницата...",
+	"maps-geo-json-create-page-summary": "Создадена GeoJSON-страница",
+	"tag-maps-visual-edit": "Нагледно уредување на картата",
+	"tag-maps-visual-edit-description": "Уредување направено со нагледниот уредник овозможен од додатокот „[https://www.mediawiki.org/wiki/Extension:Maps Карти]“"
 }

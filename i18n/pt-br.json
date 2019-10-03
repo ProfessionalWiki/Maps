@@ -227,5 +227,6 @@
 	"validator-type-mapspolygon": "Polígono geográfico",
 	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
 	"validator-type-wmsoverlay": "Sobreposição Web Map Service",
-	"validator-type-jsonfile": "texto"
+	"validator-type-jsonfile": "texto",
+	"tag-maps-visual-edit-description": "Edição feita com o editor visual fornecido pelo [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"
 }

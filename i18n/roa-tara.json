@@ -77,7 +77,7 @@
 	"maps-json-editor-added-polygon": "Aggiunde 'nu poligone",
 	"maps-json-editor-added-rectangle": "Aggiunde 'nu rettangole",
 	"maps-json-editor-added-circle": "Aggiudne circhie",
-	"maps-json-editor-edit-removed-shapes": "Luate $1 figure",
+	"maps-json-editor-edit-removed-shapes": "Luate $1 {{PLURAL:$1|figure}}",
 	"maps-json-editor-edit-modified": "Cangiate le figure d'a mappe esistende",
 	"maps-json-editor-edit-other": "Cangiamende d'a mappe visuale",
 	"maps-json-editor-edit-failed": "Reggistrazzione d'a mappe fallite",
@@ -92,5 +92,8 @@
 	"maps-json-editor-toolbar-button-remove": "Scangìlle le layer",
 	"maps-json-editor-toolbar-button-remove-disabled": "Nisciune layer da scangellà",
 	"maps-geo-json-edit-source": "Cange 'a sorgende",
-	"maps-geo-json-create-source": "Ccreje da 'a sorgende GeoJSON"
+	"maps-geo-json-create-source": "Ccreje da 'a sorgende GeoJSON",
+	"maps-geo-json-create-page-button": "Ccreje sta pàgene",
+	"maps-geo-json-create-page-creating": "Stoche a ccreje 'a pàgene...",
+	"maps-geo-json-create-page-summary": "Ccrejate 'na pàgene GeoJSON"
 }

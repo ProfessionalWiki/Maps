@@ -199,5 +199,8 @@
 	"maps-json-editor-toolbar-button-remove": "Usuń warstwy",
 	"maps-json-editor-toolbar-button-remove-disabled": "Brak warstw, które można usunąć",
 	"maps-geo-json-edit-source": "Edytuj źródło",
-	"maps-geo-json-create-source": "Utwórz ze źródła GeoJSON"
+	"maps-geo-json-create-source": "Utwórz ze źródła GeoJSON",
+	"maps-geo-json-create-page-button": "Utwórz tę stronę",
+	"maps-geo-json-create-page-creating": "Tworzenie strony…",
+	"maps-geo-json-create-page-summary": "Utworzono stronę GeoJSON"
 }

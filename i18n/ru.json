@@ -264,7 +264,7 @@
 	"maps-json-editor-added-polygon": "Добавлен многоугольник",
 	"maps-json-editor-added-rectangle": "Добавлен прямоугольник",
 	"maps-json-editor-added-circle": "Добавлен круг",
-	"maps-json-editor-edit-removed-shapes": "Удалено $1 фигур",
+	"maps-json-editor-edit-removed-shapes": "Удалены $1 {{PLURAL:$1|фигура|фигур}}",
 	"maps-json-editor-edit-modified": "Модифицированы существующие фигуры карты",
 	"maps-json-editor-edit-other": "Редактирование визуальной карты",
 	"maps-json-editor-edit-failed": "Не удалось сохранить карту.",
@@ -277,5 +277,12 @@
 	"maps-json-editor-toolbar-button-edit": "Редактировать слои",
 	"maps-json-editor-toolbar-button-edit-disabled": "Нет слоёв для редактирования",
 	"maps-json-editor-toolbar-button-remove": "Удалить слои",
-	"maps-json-editor-toolbar-button-remove-disabled": "Нет слоёв для удаления"
+	"maps-json-editor-toolbar-button-remove-disabled": "Нет слоёв для удаления",
+	"maps-geo-json-edit-source": "Править код",
+	"maps-geo-json-create-source": "Создать исходный код GeoJSON",
+	"maps-geo-json-create-page-button": "Создать эту страницу",
+	"maps-geo-json-create-page-creating": "Создаётся страница...",
+	"maps-geo-json-create-page-summary": "Создана страница GeoJSON",
+	"tag-maps-visual-edit": "Редактирование визуальной карты",
+	"tag-maps-visual-edit-description": "Редактирование производится с помощью визуального редактора, предоставленного [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"
 }

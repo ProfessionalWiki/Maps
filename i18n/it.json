@@ -166,5 +166,7 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Nessun livello da modificare",
 	"maps-json-editor-toolbar-button-remove": "Cancella livelli",
 	"maps-json-editor-toolbar-button-remove-disabled": "Nessun livello da cancellare",
-	"maps-geo-json-edit-source": "Modifica sorgente"
+	"maps-geo-json-edit-source": "Modifica sorgente",
+	"maps-geo-json-create-page-button": "Crea questa pagina",
+	"maps-geo-json-create-page-summary": "Pagina GeoJSON creata"
 }

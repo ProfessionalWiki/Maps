@@ -243,6 +243,10 @@
 	"maps-json-editor-toolbar-clear-title": "Borrar todas las capas",
 	"maps-json-editor-toolbar-button-edit": "Editar capas",
 	"maps-json-editor-toolbar-button-remove": "Eliminar capas",
+	"maps-json-editor-toolbar-button-remove-disabled": "No hay capas que eliminar",
 	"maps-geo-json-edit-source": "Editar código",
-	"maps-geo-json-create-source": "Crear a partir de código GeoJSON"
+	"maps-geo-json-create-source": "Crear a partir de código GeoJSON",
+	"maps-geo-json-create-page-button": "Crear esta página",
+	"maps-geo-json-create-page-summary": "Se creó una página en GeoJSON",
+	"tag-maps-visual-edit": "Edición cartográfica visual"
 }
