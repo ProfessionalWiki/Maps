@@ -331,10 +331,7 @@ class MapPrinter extends ResultPrinter {
 	private function getParameterInfo() {
 		global $smgQPShowTitle, $smgQPTemplate, $smgQPHideNamespace;
 
-		$params = array_merge(
-			ParamDefinition::getCleanDefinitions( MapsFunctions::getCommonParameters() ),
-			$this->service->getParameterInfo()
-		);
+		$params = $this->service->getParameterInfo();
 
 		$params['staticlocations'] = [
 			'type' => 'mapslocation',

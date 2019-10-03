@@ -3,6 +3,7 @@
 namespace Maps;
 
 use Html;
+use ParamProcessor\ParamDefinition;
 
 /**
  * @licence GNU GPL v2+
@@ -26,7 +27,7 @@ class LeafletService implements MappingService {
 	public function getParameterInfo(): array {
 		global $GLOBALS;
 
-		$params = [];
+		$params = ParamDefinition::getCleanDefinitions( MapsFunctions::getCommonParameters() );
 
 		$params['zoom'] = [
 			'type' => 'integer',

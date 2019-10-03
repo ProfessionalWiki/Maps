@@ -80,12 +80,14 @@ final class MapsFunctions {
 			'allowauto' => true,
 			'units' => [ 'px', 'ex', 'em', '%', '' ],
 			'default' => $GLOBALS['egMapsMapWidth'],
+			'message' => 'maps-par-width',
 		];
 
 		$params['height'] = [
 			'type' => 'dimension',
 			'units' => [ 'px', 'ex', 'em', '' ],
 			'default' => $GLOBALS['egMapsMapHeight'],
+			'message' => 'maps-par-height',
 		];
 
 		$params['centre'] = [
@@ -93,15 +95,8 @@ final class MapsFunctions {
 			'aliases' => [ 'center' ],
 			'default' => false,
 			'manipulatedefault' => false,
+			'message' => 'maps-par-centre',
 		];
-
-		// Give grep a chance to find the usages:
-		// maps-par-width,
-		// maps-par-height, maps-par-centre
-		foreach ( $params as $name => &$data ) {
-			$data['name'] = $name;
-			$data['message'] = 'maps-par-' . $name;
-		}
 
 		$params['title'] = [
 			'name' => 'title',

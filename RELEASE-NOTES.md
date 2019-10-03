@@ -7,7 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under dev
 
-* 
+* The `#mapsdoc` parser function now shows all parameters, not just those specific to a mapping service
 
 ## Maps 7.8.3
 

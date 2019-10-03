@@ -11,6 +11,7 @@ use MWException;
 use ParamProcessor;
 use ParamProcessor\ProcessedParam;
 use Parser;
+use ParserHooks\HookDefinition;
 
 /**
  * Class for the 'display_map' parser hooks.
@@ -119,16 +120,8 @@ class DisplayMapFunction {
 		return $parameters;
 	}
 
-	public static function getHookDefinition( string $locationDelimiter ): \ParserHooks\HookDefinition {
-		return new \ParserHooks\HookDefinition(
-			[ 'display_map', 'display_point', 'display_points', 'display_line' ],
-			self::getParameterDefinitions( $locationDelimiter ),
-			[ 'coordinates' ]
-		);
-	}
-
-	private static function getParameterDefinitions( $locationDelimiter ): array {
-		$params = MapsFunctions::getCommonParameters();
+	public static function getHookDefinition( string $locationDelimiter ): HookDefinition {
+		$params = [];
 
 		$params['mappingservice'] = [
 			'type' => 'string',
@@ -147,7 +140,11 @@ class DisplayMapFunction {
 			'message' => 'maps-displaymap-par-coordinates',
 		];
 
-		return $params;
+		return new HookDefinition(
+			[ 'display_map', 'display_point', 'display_points', 'display_line' ],
+			$params,
+			[ 'coordinates' ]
+		);
 	}
 
 	/**

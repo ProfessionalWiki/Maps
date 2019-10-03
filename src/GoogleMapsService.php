@@ -3,6 +3,7 @@
 namespace Maps;
 
 use Html;
+use ParamProcessor\ParamDefinition;
 
 /**
  * @licence GNU GPL v2+
@@ -49,7 +50,7 @@ class GoogleMapsService implements MappingService {
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
 		global $egMapsResizableByDefault;
 
-		$params = [];
+		$params = ParamDefinition::getCleanDefinitions( MapsFunctions::getCommonParameters() );
 
 		$params['zoom'] = [
 			'type' => 'integer',
