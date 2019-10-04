@@ -51,6 +51,18 @@ class GoogleMapsService implements MappingService {
 
 		$params = MapsFunctions::getCommonParameters();
 
+		$params['visitedicon'] = [
+			'default' => '',
+			'message' => 'maps-displaymap-par-visitedicon',
+		];
+
+		$params['wmsoverlay'] = [
+			'type' => 'wmsoverlay',
+			'default' => false,
+			'delimiter' => ' ',
+			'message' => 'maps-displaymap-par-wmsoverlay',
+		];
+
 		$params['zoom'] = [
 			'type' => 'integer',
 			'range' => [ 0, 20 ],

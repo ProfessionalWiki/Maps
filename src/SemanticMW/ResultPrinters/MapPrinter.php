@@ -201,7 +201,7 @@ class MapPrinter extends ResultPrinter {
 		$params['centre'] = $this->getCenter( $params['centre'] );
 
 		$iconUrl = $this->fileUrlFinder->getUrlForFileName( $params['icon'] );
-		$visitedIconUrl = $this->fileUrlFinder->getUrlForFileName( $params['visitedicon'] );
+		$visitedIconUrl = $this->fileUrlFinder->getUrlForFileName( $params['visitedicon'] ?? '' );
 
 		$params['locations'] = $this->getJsonForStaticLocations(
 			$params['staticlocations'],

@@ -8,6 +8,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under dev
 
 * The `#mapsdoc` parser function now shows all parameters, not just those specific to a mapping service
+* The `visitedicon` parameter is no longer incorrectly shown as supported for the leaflet service
+* The `wmsoverlay` parameter is no longer incorrectly shown as supported for the leaflet service
 
 ## Maps 7.8.3
 

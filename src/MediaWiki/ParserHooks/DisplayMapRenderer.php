@@ -90,7 +90,8 @@ class DisplayMapRenderer {
 	private function handleMarkerData( array &$params ) {
 		$params['centre'] = $this->getCenter( $params['centre'] );
 
-		if ( is_object( $params['wmsoverlay'] ) ) {
+		// FIXME: this parameter is google maps service specific
+		if ( array_key_exists( 'wmsoverlay', $params ) && is_object( $params['wmsoverlay'] ) ) {
 			$params['wmsoverlay'] = $params['wmsoverlay']->getJSONObject();
 		}
 
@@ -120,7 +121,7 @@ class DisplayMapRenderer {
 
 	private function getLocationJson( array $params ) {
 		$iconUrl = $this->fileUrlFinder->getUrlForFileName( $params['icon'] );
-		$visitedIconUrl = $this->fileUrlFinder->getUrlForFileName( $params['visitedicon'] );
+		$visitedIconUrl = $this->fileUrlFinder->getUrlForFileName( $params['visitedicon'] ?? '' );
 
 		$locationJsonObjects = [];
 

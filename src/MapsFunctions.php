@@ -112,10 +112,6 @@ final class MapsFunctions {
 			'default' => '',
 		];
 
-		$params['visitedicon'] = [
-			'default' => '',
-		];
-
 		$params['lines'] = [
 			'type' => 'mapsline',
 			'default' => [],
@@ -144,12 +140,6 @@ final class MapsFunctions {
 			'islist' => true,
 		];
 
-		$params['wmsoverlay'] = [
-			'type' => 'wmsoverlay',
-			'default' => false,
-			'delimiter' => ' ',
-		];
-
 		$params['maxzoom'] = [
 			'type' => 'integer',
 			'default' => false,
@@ -176,8 +166,8 @@ final class MapsFunctions {
 
 		// Give grep a chance to find the usages:
 		// maps-displaymap-par-title, maps-displaymap-par-label, maps-displaymap-par-icon,
-		// maps-displaymap-par-visitedicon, aps-displaymap-par-lines, maps-displaymap-par-polygons,
-		// maps-displaymap-par-circles, maps-displaymap-par-rectangles, maps-displaymap-par-wmsoverlay,
+		// aps-displaymap-par-lines, maps-displaymap-par-polygons,
+		// maps-displaymap-par-circles, maps-displaymap-par-rectangles,
 		// maps-displaymap-par-maxzoom, maps-displaymap-par-minzoom, maps-displaymap-par-copycoords,
 		// maps-displaymap-par-static
 		foreach ( $params as $name => &$param ) {
