@@ -277,6 +277,23 @@
 			}
 		};
 
+		this.bindClickTarget = function() {
+			function newClickTargetUrl(latlng) {
+				return options.clicktarget
+					.replace( /%lat%/g, latlng.lat )
+					.replace( /%long%/g, latlng.lng );
+			}
+
+			if (options.clicktarget !== '') {
+				this.map.on(
+					'click',
+					function(e) {
+						window.location.href = newClickTargetUrl(e.latlng);
+					}
+				);
+			}
+		};
+
 		this.setup = function () {
 
 			var mapOptions = {};
@@ -315,6 +332,8 @@
 			map.fitWorld();
 
 			this.map = map;
+
+			this.bindClickTarget();
 
 			var layers = {};
 			$.each(options.layers.reverse(), function(index, layerName) {

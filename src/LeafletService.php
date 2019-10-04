@@ -114,6 +114,12 @@ class LeafletService implements MappingService {
 			'message' => 'maps-displaymap-par-geojson',
 		];
 
+		$params['clicktarget'] = [
+			'type' => ParameterTypes::STRING,
+			'default' => '',
+			'message' => 'maps-leaflet-par-clicktarget',
+		];
+
 		return $params;
 	}
 

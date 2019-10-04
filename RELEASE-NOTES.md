@@ -5,11 +5,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.9.0
 
-Under dev
+Released on October 4th, 2019.
 
+* Added `clicktarget` parameter for Leaflet. `clicktarget=http://your.url?latitude=%lat%&longitude=%long%`
 * The `#mapsdoc` parser function now shows all parameters, not just those specific to a mapping service
-* The `visitedicon` parameter is no longer incorrectly shown as supported for the leaflet service
-* The `wmsoverlay` parameter is no longer incorrectly shown as supported for the leaflet service
+* The `visitedicon` parameter is no longer incorrectly shown as supported for Leaflet
+* The `wmsoverlay` parameter is no longer incorrectly shown as supported for Leaflet
 
 ## Maps 7.8.3
 
