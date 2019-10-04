@@ -3,6 +3,7 @@
 namespace Maps;
 
 use Html;
+use ParamProcessor\ParameterTypes;
 
 /**
  * @licence GNU GPL v2+
@@ -27,14 +28,14 @@ class LeafletService implements MappingService {
 		$params = MapsFunctions::getCommonParameters();
 
 		$params['zoom'] = [
-			'type' => 'integer',
+			'type' => ParameterTypes::INTEGER,
 			'range' => [ 0, 20 ],
 			'default' => false,
 			'message' => 'maps-par-zoom'
 		];
 
 		$params['defzoom'] = [
-			'type' => 'integer',
+			'type' => ParameterTypes::INTEGER,
 			'range' => [ 0, 20 ],
 			'default' => self::getDefaultZoom(),
 			'message' => 'maps-leaflet-par-defzoom'
@@ -50,7 +51,7 @@ class LeafletService implements MappingService {
 		];
 
 		$params['overlaylayers'] = [
-			'type' => 'string',
+			'type' => ParameterTypes::STRING,
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
 			'message' => 'maps-leaflet-par-overlaylayers',
@@ -58,51 +59,51 @@ class LeafletService implements MappingService {
 		];
 
 		$params['resizable'] = [
-			'type' => 'boolean',
+			'type' => ParameterTypes::BOOLEAN,
 			'default' => $GLOBALS['egMapsResizableByDefault'],
 			'message' => 'maps-par-resizable'
 		];
 
 		$params['enablefullscreen'] = [
 			'aliases' => [ 'fullscreen' ],
-			'type' => 'boolean',
+			'type' => ParameterTypes::BOOLEAN,
 			'default' => false,
 			'message' => 'maps-par-enable-fullscreen',
 		];
 
 		$params['scrollwheelzoom'] = [
 			'aliases' => [ 'scrollzoom' ],
-			'type' => 'boolean',
+			'type' => ParameterTypes::BOOLEAN,
 			'default' => true,
 			'message' => 'maps-par-scrollwheelzoom',
 		];
 
 		$params['markercluster'] = [
-			'type' => 'boolean',
+			'type' => ParameterTypes::BOOLEAN,
 			'default' => false,
 			'message' => 'maps-par-markercluster',
 		];
 
 		$params['clustermaxzoom'] = [
-			'type' => 'integer',
+			'type' => ParameterTypes::INTEGER,
 			'default' => 20,
 			'message' => 'maps-par-clustermaxzoom',
 		];
 
 		$params['clusterzoomonclick'] = [
-			'type' => 'boolean',
+			'type' => ParameterTypes::BOOLEAN,
 			'default' => true,
 			'message' => 'maps-par-clusterzoomonclick',
 		];
 
 		$params['clustermaxradius'] = [
-			'type' => 'integer',
+			'type' => ParameterTypes::INTEGER,
 			'default' => 80,
 			'message' => 'maps-par-maxclusterradius',
 		];
 
 		$params['clusterspiderfy'] = [
-			'type' => 'boolean',
+			'type' => ParameterTypes::BOOLEAN,
 			'default' => true,
 			'message' => 'maps-leaflet-par-clusterspiderfy',
 		];
