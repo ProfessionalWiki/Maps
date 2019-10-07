@@ -128,6 +128,7 @@
 	"maps-leaflet-par-overlaylayers": "此覆蓋圖層將於地圖加載時顯示。",
 	"maps-leaflet-par-maxclusterradius": "叢集自中央標記起會涵蓋的最大半徑（像素）。",
 	"maps-leaflet-par-clusterspiderfy": "當您在下方縮放層級點擊叢集時，我們會將其放射狀化來讓您可以查看所有的標記。",
+	"maps-leaflet-par-clicktarget": "當您在地圖上點擊時，您將會被發送到此 URL。緯度會替換成 %lat%，經度會替換成 %long%",
 	"maps_click_to_activate": "按一下以啟動地圖",
 	"maps_centred_on": "地圖以 $1, $2 為中心。",
 	"maps-par-mappingservice": "允許設定用於產生地圖的地圖服務。",

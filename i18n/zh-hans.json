@@ -236,5 +236,7 @@
 	"maps-json-editor-toolbar-save-title": "保存修改",
 	"maps-json-editor-toolbar-save-text": "保存",
 	"maps-json-editor-toolbar-cancel-text": "取消",
-	"maps-json-editor-toolbar-clear-text": "清空"
+	"maps-json-editor-toolbar-clear-text": "清空",
+	"maps-geo-json-create-page-button": "创建本页面",
+	"maps-geo-json-create-page-creating": "正在创建页面……"
 }

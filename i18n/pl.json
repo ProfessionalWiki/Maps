@@ -10,7 +10,8 @@
 			"Macofe",
 			"Deejay1",
 			"Railfail536",
-			"Rail"
+			"Rail",
+			"FunPL"
 		]
 	},
 	"maps-desc": "Umożliwia zamieszczanie na stronach wiki map dynamicznych, geokodowanych adresów i innych danych geograficznych",
@@ -177,7 +178,7 @@
 	"maps-json-editor-tooltip-marker": "Kliknij na mapie, aby umieścić znacznik.",
 	"maps-json-editor-tooltip-line": "Kliknij na mapę, aby narysować linię.",
 	"maps-json-editor-tooltip-polygon": "Kliknij na mapę, aby narysować wielokąt.",
-	"maps-json-editor-tooltip-rectangle": "Kliknij na mapie aby umieścić prostokąt.",
+	"maps-json-editor-tooltip-rectangle": "Kliknij na mapie, aby umieścić prostokąt.",
 	"maps-json-editor-tooltip-circle": "Kliknij na mapie, aby umieścić okrągły znacznik.",
 	"maps-json-editor-added-marker": "Dodano znacznik",
 	"maps-json-editor-added-line": "Dodano linię",
@@ -198,7 +199,7 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Brak warstw do edycji",
 	"maps-json-editor-toolbar-button-remove": "Usuń warstwy",
 	"maps-json-editor-toolbar-button-remove-disabled": "Brak warstw, które można usunąć",
-	"maps-geo-json-edit-source": "Edytuj źródło",
+	"maps-geo-json-edit-source": "Edytuj kod źródłowy",
 	"maps-geo-json-create-source": "Utwórz ze źródła GeoJSON",
 	"maps-geo-json-create-page-button": "Utwórz tę stronę",
 	"maps-geo-json-create-page-creating": "Tworzenie strony…",

@@ -11,7 +11,8 @@
 			"Viscontino",
 			"Matteocng",
 			"Kaspo",
-			"S4b1nuz E.656"
+			"S4b1nuz E.656",
+			"JackLantern"
 		]
 	},
 	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki, la geocodifica degli indirizzi ed altre operazioni geografiche",
@@ -160,7 +161,13 @@
 	"validator-type-mapspolygon": "Poligono geografico",
 	"validator-type-mapspolygon-list": "Elenco dei poligoni geografici",
 	"validator-type-jsonfile": "testo",
+	"maps-json-editor-tooltip-marker": "Clicca sulla mappa per posizionare un marcatore.",
+	"maps-json-editor-tooltip-line": "Clicca sulla mappa per disegnare una linea.",
+	"maps-json-editor-tooltip-polygon": "Clicca sulla mappa per disegnare un poligono.",
+	"maps-json-editor-added-marker": "Marcatore aggiunto",
+	"maps-json-editor-added-line": "Linea aggiunta",
 	"maps-json-editor-toolbar-save-text": "Salva",
+	"maps-json-editor-toolbar-cancel-title": "Annulla la modifica, scarta tutti i cambiamenti.",
 	"maps-json-editor-toolbar-cancel-text": "Annulla",
 	"maps-json-editor-toolbar-clear-title": "Pulisci tutti i livelli",
 	"maps-json-editor-toolbar-button-edit-disabled": "Nessun livello da modificare",
