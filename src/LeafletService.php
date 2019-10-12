@@ -50,6 +50,15 @@ class LeafletService implements MappingService {
 			'islist' => true,
 		];
 
+		$params['layers_dark'] = [
+			'aliases' => 'layer',
+			'type' => 'string',
+			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableLayers'], true, true ),
+			'default' => $GLOBALS['egMapsLeafletLayersDark'],
+			'message' => 'maps-leaflet-par-layers-dark',
+			'islist' => true,
+		];
+
 		$params['overlaylayers'] = [
 			'type' => ParameterTypes::STRING,
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),

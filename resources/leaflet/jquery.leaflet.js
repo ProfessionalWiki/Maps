@@ -5,7 +5,7 @@
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-(function ($, mw, L) {
+(function ($, mw, L, sm) {
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
@@ -336,7 +336,11 @@
 			this.bindClickTarget();
 
 			var layers = {};
-			$.each(options.layers.reverse(), function(index, layerName) {
+			var optionLayers = options.layers;
+			if ( sm.isUserUsesDarkMode() ) {
+				optionLayers = options.layers_dark;
+			}
+			$.each( optionLayers.reverse(), function(index, layerName) {
 				var options = {} ;
 				var providerName = layerName.split('.')[0] ;
 				if (apikeys.hasOwnProperty(providerName) && apikeys[providerName] !== '') {
@@ -461,4 +465,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki, L);
+})(jQuery, window.mediaWiki, L, window.sm);

@@ -156,6 +156,11 @@ return [
 	'egMapsLeafletLayer' => 'OpenStreetMap',
 	'egMapsLeafletLayers' => [ 'OpenStreetMap' ],
 
+	// String. The default layer for Leaflet to be used in dark theme mode.
+	// This value will only be used when the user does not provide one.
+	'egMapsLeafletLayerDark' => 'CartoDB.DarkMatter',
+	'egMapsLeafletLayersDark' => [ 'CartoDB.DarkMatter' ],
+
 	'egMapsLeafletOverlayLayers' => [],
 
 	// The definitions for the layers that should be available for the user.
