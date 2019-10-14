@@ -210,5 +210,6 @@
 	"maps-json-editor-toolbar-cancel-title": "편집을 취소하고 모든 변경사항을 버립니다",
 	"maps-json-editor-toolbar-cancel-text": "취소",
 	"maps-json-editor-toolbar-clear-text": "모두 지우기",
-	"maps-geo-json-edit-source": "원본 편집"
+	"maps-geo-json-edit-source": "원본 편집",
+	"maps-geo-json-create-page-button": "이 문서 만들기"
 }
