@@ -67,7 +67,8 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Үзгәртергә катламнар юк",
 	"maps-json-editor-toolbar-button-remove": "Катламнарны бетерү",
 	"maps-json-editor-toolbar-button-remove-disabled": "Бетерергә катламнар юк",
+	"maps-geo-json-edit-source": "Вики-текстны үзгәртү",
 	"maps-geo-json-create-page-button": "Бу битне төзү",
-	"maps-geo-json-create-page-creating": "Битне төзү бара…",
+	"maps-geo-json-create-page-creating": "Бит төзелә…",
 	"tag-maps-visual-edit": "Күрсәтмәле хаританы үзгәртү"
 }

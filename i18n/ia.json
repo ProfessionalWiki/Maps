@@ -93,7 +93,7 @@
 	"maps-par-resizable": "Rende le carta redimensionabile per traher lo per su angulo dextre inferior.",
 	"maps-par-zoom": "Le nivello de zoom pro le carta. Pro cartas con marcatores isto es predefinite como le nivello de zoom le plus alte que ancora monstra tote le marcatores.",
 	"maps-par-width": "Permitte fixar le latitude del carta. Le unitate assumite es pixels, ma tu pote specificar un de iste unitates: px, ex, em, %.",
-	"maps-par-height": "Permitte fixar le altitude del carta. Le unitate assumite es pixels, ma tu pote specificar un de iste unitates: px, ex, em, %.",
+	"maps-par-height": "Permitte fixar le altitude del carta. Le unitate assumite es pixels, ma tu pote specificar un de iste unitates: px, ex, em.",
 	"maps-par-kml": "Files KML pro cargar in le carta.",
 	"maps-googlemaps3-incompatbrowser": "Tu navigator de web non es compatibile con Google Maps version 3.",
 	"maps-googlemaps3-par-type": "Le typo de carta a monstrar initialmente.",
