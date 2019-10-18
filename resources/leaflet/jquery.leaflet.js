@@ -12,7 +12,8 @@
 		this.options = options;
 		this.markers = [];
 		this.markercluster = null;
-		var apikeys = mw.config.get('egMapsLeafletLayersApiKeys') ;
+		var apikeys = mw.config.get('egMapsLeafletLayersApiKeys');
+		var layersDark = mw.config.get('egMapsLeafletLayersDark');
 
 		/**
 		 * array point of all map elements (markers, lines, polygons, etc.)
@@ -294,6 +295,10 @@
 			}
 		};
 
+		this.isUserUsesDarkMode = function () {
+			return window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
+		};
+
 		this.setup = function () {
 
 			var mapOptions = {};
@@ -337,8 +342,8 @@
 
 			var layers = {};
 			var optionLayers = options.layers;
-			if ( sm.isUserUsesDarkMode() ) {
-				optionLayers = options.layers_dark;
+			if ( this.isUserUsesDarkMode() ) {
+				optionLayers = layersDark;
 			}
 			$.each( optionLayers.reverse(), function(index, layerName) {
 				var options = {} ;

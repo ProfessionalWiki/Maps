@@ -72,8 +72,4 @@ window.sm = new ( function( $, mw ) {
 		} );
 	};
 
-	this.isUserUsesDarkMode = function () {
-		return window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
-	};
-
 } )( jQuery, mediaWiki );

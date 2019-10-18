@@ -62,6 +62,7 @@ final class MapsHooks {
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
 		$vars['egMapsAvailableServices'] = $GLOBALS['egMapsAvailableServices'];
 		$vars['egMapsLeafletLayersApiKeys'] = $GLOBALS['egMapsLeafletLayersApiKeys'];
+		$vars['egMapsLeafletLayersDark'] = $GLOBALS['egMapsLeafletLayersDark'];
 
 		$vars += $GLOBALS['egMapsGlobalJSVars'];
 
