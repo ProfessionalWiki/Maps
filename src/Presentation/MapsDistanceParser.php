@@ -99,7 +99,7 @@ class MapsDistanceParser {
 		$strlen = strlen( $distance );
 
 		for ( $i = 0; $i < $strlen; $i++ ) {
-			if ( !ctype_digit( $distance{$i} ) && !in_array( $distance{$i}, [ ',', '.' ] ) ) {
+			if ( !ctype_digit( $distance[$i] ) && !in_array( $distance{$i}, [ ',', '.' ] ) ) {
 				$value = substr( $distance, 0, $i );
 				$unit = substr( $distance, $i );
 				break;
