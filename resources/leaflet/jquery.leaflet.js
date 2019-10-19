@@ -5,7 +5,7 @@
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-(function ($, mw, L, sm) {
+(function ($, mw, L) {
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
@@ -13,7 +13,6 @@
 		this.markers = [];
 		this.markercluster = null;
 		var apikeys = mw.config.get('egMapsLeafletLayersApiKeys');
-		var layersDark = mw.config.get('egMapsLeafletLayersDark');
 
 		/**
 		 * array point of all map elements (markers, lines, polygons, etc.)
@@ -299,6 +298,14 @@
 			return window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
 		};
 
+		this.getLayers = function () {
+			if ( this.isUserUsesDarkMode() ) {
+				return mw.config.get('egMapsLeafletLayersDark');
+			}
+
+			return options.layers;
+		};
+
 		this.setup = function () {
 
 			var mapOptions = {};
@@ -341,11 +348,7 @@
 			this.bindClickTarget();
 
 			var layers = {};
-			var optionLayers = options.layers;
-			if ( this.isUserUsesDarkMode() ) {
-				optionLayers = layersDark;
-			}
-			$.each( optionLayers.reverse(), function(index, layerName) {
+			$.each( this.getLayers().reverse(), function(index, layerName) {
 				var options = {} ;
 				var providerName = layerName.split('.')[0] ;
 				if (apikeys.hasOwnProperty(providerName) && apikeys[providerName] !== '') {
@@ -470,4 +473,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki, L, window.sm);
+})(jQuery, window.mediaWiki, L);
