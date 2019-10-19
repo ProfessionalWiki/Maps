@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.10.0
+
+* Added dark mode support for Leaflet. Configurable via the new `egMapsLeafletLayersDark` setting (by @vedmaka)
+
 ## Maps 7.9.0
 
 Released on October 4th, 2019.
