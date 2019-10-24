@@ -212,7 +212,7 @@ class MapsSetup {
 	 * Once Maps requires MW 1.33+, this can be removed after replacing usage of mediawiki.api.edit
 	 */
 	private function registerEditApiModuleFallback() {
-		if ( defined( 'MW_VERSION' ) && version_compare( MW_VERSION, '1.32', '<' ) ) {
+		if ( version_compare( $this->mwGlobals['wgVersion'], '1.32', '<' ) ) {
 			return;
 		}
 
