@@ -23,7 +23,8 @@
 			"Wladek92",
 			"Urhixidur",
 			"Grondin",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Pols12"
 		]
 	},
 	"maps-desc": "Permet d’inclure des cartes dynamiques dans les pages du wiki, des adresses géo-codées et d'autres opérations géographiques.",
@@ -134,6 +135,7 @@
 	"maps_leaflet": "Dépliant",
 	"maps-leaflet-par-defzoom": "Permet de définir le niveau de zoom par défaut de la carte.",
 	"maps-leaflet-par-layers": "Les couches qui seront disponibles dans le sélecteur de couche. La première est celle qui sera affichée pendant le chargement de la carte.",
+	"maps-leaflet-par-layers-dark": "Les couches qui seront disponibles dans le sélecteur de couche lorsqu’un mode sombre sera activé. La première couche sera affichée lors du chargement de la carte.",
 	"maps-leaflet-par-overlaylayers": "Les surcouches qui seront affichées pendant que la carte se charge.",
 	"maps-leaflet-par-maxclusterradius": "Rayon maximal qu'un agrégat peut couvrir en partant du marqueur central (en pixels).",
 	"maps-leaflet-par-clusterspiderfy": "Lorsque vous cliquez sur un cluster à bas niveau de zoom nous l'explicitons afin que vous puissiez voir l'ensemble de ses marqueurs.",

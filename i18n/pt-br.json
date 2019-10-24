@@ -121,6 +121,7 @@
 	"maps_leaflet": "Folheto",
 	"maps-leaflet-par-defzoom": "Permite definir o nível de zoom predefinido do mapa.",
 	"maps-leaflet-par-layers": "A camada que será mostrada quando o mapa é carregado.",
+	"maps-leaflet-par-layers-dark": "As camadas que estarão disponíveis no seletor de camadas quando um modo escuro estiver ativado. A primeira camada será mostrada quando o mapa carregar",
 	"maps-leaflet-par-overlaylayers": "As camadas de sobreposição que serão mostradas quando o mapa é carregado.",
 	"maps-leaflet-par-maxclusterradius": "O raio máximo que um agregado irá cobrir a partir do marcador central (em píxeis).",
 	"maps-leaflet-par-clusterspiderfy": "Quando clica um agregado no nível de zoom mais baixo os marcadores são enteados para que possa vê-los todos.",
