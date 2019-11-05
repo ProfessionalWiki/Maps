@@ -265,7 +265,7 @@ class GoogleMapsService implements MappingService {
 	}
 
 	public function getResourceModules(): array {
-		return [ 'ext.maps.googlemaps3', 'ext.sm.googlemaps3ajax' ];
+		return [ 'ext.maps.googlemaps3', 'ext.maps.googlemaps3ajax' ];
 	}
 
 	public static function getApiScript( $langCode, array $urlArgs = [] ) {

@@ -139,7 +139,7 @@ class LeafletService implements MappingService {
 	}
 
 	public function getResourceModules(): array {
-		return [ 'ext.maps.leaflet.loader', 'ext.sm.leafletajax' ];
+		return [ 'ext.maps.leaflet.loader', 'ext.maps.leaflet.leafletajax' ];
 	}
 
 	public function getDependencyHtml( array $params ): string {

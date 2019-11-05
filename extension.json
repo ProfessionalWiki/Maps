@@ -1,6 +1,6 @@
 {
 	"name": "Maps",
-	"version": "7.10.0",
+	"version": "7.11.0 alpha",
 
 	"author": [
 		"[https://www.entropywins.wtf/mediawiki Jeroen De Dauw]",
@@ -184,7 +184,7 @@
 				"ext.sm.common"
 			],
 			"scripts": [
-				"leaflet/ext.sm.leafletajax.js"
+				"leaflet/leafletajax.js"
 			]
 		},
 
@@ -243,13 +243,13 @@
 			]
 		},
 
-		"ext.sm.googlemaps3ajax": {
+		"ext.maps.googlemaps3ajax": {
 			"dependencies": [
 				"ext.maps.googlemaps3",
 				"ext.sm.common"
 			],
 			"scripts": [
-				"GoogleMaps/ext.sm.googlemaps3ajax.js"
+				"GoogleMaps/googlemaps3ajax.js"
 			]
 		},
 
