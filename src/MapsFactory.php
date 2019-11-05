@@ -8,6 +8,7 @@ use DataValues\Geo\Parsers\LatLongParser;
 use FileFetcher\Cache\Factory as CacheFactory;
 use FileFetcher\FileFetcher;
 use Jeroen\SimpleGeocoder\Geocoder;
+use Jeroen\SimpleGeocoder\Geocoders\Adapters\GeocoderPhpAdapter;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GeoNamesGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
@@ -86,6 +87,8 @@ class MapsFactory {
 	}
 
 	private function newCoreGeocoder(): Geocoder {
+//		return new GeocoderPhpAdapter();
+
 		switch ( $this->settings['egMapsDefaultGeoService'] ) {
 			case 'geonames':
 				if ( $this->settings['egMapsGeoNamesUser'] === '' ) {
