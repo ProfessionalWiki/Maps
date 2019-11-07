@@ -7,7 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on November 7th, 2019.
 
-* Fixed maps not loading without reloading the page after edit with wiki editor
+* Fixed maps not loading without reloading the page after edit with Visual Editor
 * Fixed Leaflet Ajax functionality
 
 ## Maps 7.10.0
