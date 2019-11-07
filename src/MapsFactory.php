@@ -7,6 +7,8 @@ namespace Maps;
 use DataValues\Geo\Parsers\LatLongParser;
 use FileFetcher\Cache\Factory as CacheFactory;
 use FileFetcher\FileFetcher;
+use Geocoder\Provider\Nominatim\Nominatim;
+use Http\Client\HttpClient;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Jeroen\SimpleGeocoder\Geocoders\Adapters\GeocoderPhpAdapter;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
@@ -31,6 +33,8 @@ use Maps\Presentation\WikitextParsers\RectangleParser;
 use Maps\Presentation\WikitextParsers\WmsOverlayParser;
 use MediaWiki\MediaWikiServices;
 use ParamProcessor\ParamDefinitionFactory;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
 
@@ -86,8 +90,21 @@ class MapsFactory {
 		return $geocoder;
 	}
 
+	private function newHttpClient(): HttpClient {
+		return new class() implements HttpClient {
+			 public function sendRequest(RequestInterface $request): ResponseInterface {
+				// TODO: does MW have the praent of ResponseInterface?
+			}
+		};
+	}
+
 	private function newCoreGeocoder(): Geocoder {
-//		return new GeocoderPhpAdapter();
+		$l = Nominatim::withOpenStreetMapServer(
+			$this->newHttpClient(),
+			'Maps extension for MediaWiki'
+		);
+
+		return new GeocoderPhpAdapter( $l );
 
 		switch ( $this->settings['egMapsDefaultGeoService'] ) {
 			case 'geonames':
