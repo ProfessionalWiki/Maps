@@ -1,11 +1,11 @@
 window.mapsGoogleList = [];
 
 (function( $, mw ) {
-	$( document ).ready( function() {
+	mw.hook( 'wikipage.content' ).add( function ( $content ) {
 		if( typeof google === 'undefined' ) {
-			$( '.maps-googlemaps3' ).text( mw.msg( 'maps-googlemaps3-incompatbrowser' ) );
+			$content.find( '.maps-googlemaps3' ).text( mw.msg( 'maps-googlemaps3-incompatbrowser' ) );
 		} else {
-			$( '.maps-googlemaps3' ).each( function() {
+			$content.find( '.maps-googlemaps3' ).each( function() {
 				var $this = $( this );
 				window.mapsGoogleList.push(
 					$this.googlemaps( JSON.parse( $this.find( 'div.mapdata' ).text() ) )
@@ -13,4 +13,4 @@ window.mapsGoogleList = [];
 			} );
 		}
 	} );
-})( window.jQuery, mediaWiki );
+})( window.jQuery, window.mediaWiki );

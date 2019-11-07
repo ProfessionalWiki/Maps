@@ -5,8 +5,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.11.0
 
-Released on November 5th, 2019.
+Released on November 7th, 2019.
 
+* Fixed maps not loading without reloading the page after edit with wiki editor
 * Fixed Leaflet Ajax functionality
 
 ## Maps 7.10.0

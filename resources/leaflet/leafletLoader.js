@@ -1,8 +1,8 @@
 window.mapsLeafletList = [];
 
-(function( $ ) {
-	$( document ).ready( function() {
-		$( '.maps-leaflet' ).each( function() {
+(function( $, mw ) {
+	mw.hook( 'wikipage.content' ).add( function ( $content ) {
+		$content.find( '.maps-leaflet' ).each( function() {
 			let $this = $( this );
 
 			let jqueryMap = $this.leafletmaps(
@@ -12,4 +12,4 @@ window.mapsLeafletList = [];
 			window.mapsLeafletList.push(jqueryMap);
 		} );
 	} );
-})( window.jQuery );
+})( window.jQuery, window.mediaWiki );
