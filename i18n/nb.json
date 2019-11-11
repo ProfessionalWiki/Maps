@@ -118,9 +118,11 @@
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Tillater å sette standard zoom-nivå for kartet.",
 	"maps-leaflet-par-layers": "Laget som vil vises mens kartet laster.",
+	"maps-leaflet-par-layers-dark": "Lagene som vil være tilgjengelige i lagvelgeren når mørk modus er aktivert. Det første laget vises når kartet lastes.",
 	"maps-leaflet-par-overlaylayers": "Overleggslagene som vises mens kartet lastes.",
 	"maps-leaflet-par-maxclusterradius": "Minimum radius som et kluster dekker fra  den sentrale markøren (angitt i piksler)",
 	"maps-leaflet-par-clusterspiderfy": "Når du klikker et kluster ved laveste zoom-nivå, så spres den ut slik at du kan se alle dens markører.",
+	"maps-leaflet-par-clicktarget": "Når du klikker på kartet blir du sendt til denne URL-en. %lat% erstattes av breddegraden og %long% av lengdegraden",
 	"maps_click_to_activate": "Klikk for å aktivere kartet",
 	"maps_centred_on": "Kart sentrert om $1, $2.",
 	"maps-par-mappingservice": "Tillater å sette karttjenesten som vil brukes for å skape kartet.",
@@ -255,5 +257,10 @@
 	"maps-json-editor-toolbar-button-remove": "Slett lag",
 	"maps-json-editor-toolbar-button-remove-disabled": "Ingen lag å slette",
 	"maps-geo-json-edit-source": "Rediger kilde",
-	"maps-geo-json-create-source": "Opprett fra GeoJSON-kilde"
+	"maps-geo-json-create-source": "Opprett fra GeoJSON-kilde",
+	"maps-geo-json-create-page-button": "Opprett denne siden",
+	"maps-geo-json-create-page-creating": "Oppretter side …",
+	"maps-geo-json-create-page-summary": "Opprettet GeoJSON-side",
+	"tag-maps-visual-edit": "Visuell kartredigering",
+	"tag-maps-visual-edit-description": "Redigering gjort med visuell redigering fra [https://www.mediawiki.org/wiki/Extension:Maps kartutvidelsen]"
 }
