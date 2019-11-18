@@ -203,5 +203,7 @@
 	"maps-geo-json-create-source": "Utwórz ze źródła GeoJSON",
 	"maps-geo-json-create-page-button": "Utwórz tę stronę",
 	"maps-geo-json-create-page-creating": "Tworzenie strony…",
-	"maps-geo-json-create-page-summary": "Utworzono stronę GeoJSON"
+	"maps-geo-json-create-page-summary": "Utworzono stronę GeoJSON",
+	"tag-maps-visual-edit": "Wizualna edycja mapy",
+	"tag-maps-visual-edit-description": "Edycja wykonana za pośrednictwem wizualnego edytora wprowadzonego przez [https://www.mediawiki.org/wiki/Extension:Maps rozszerzenie map]."
 }
