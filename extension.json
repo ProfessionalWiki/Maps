@@ -95,7 +95,7 @@
 			],
 			"scripts": [
 				"leaflet/jquery.leaflet.js",
-				"leaflet/leafletLoader.js"
+				"leaflet/LeafletLoader.js"
 			],
 			"messages": [
 				"maps-copycoords-prompt"
@@ -135,10 +135,12 @@
 			],
 			"scripts": [
 				"leaflet/leaflet.draw/leaflet.draw-src.js",
-				"leaflet/leaflet.editor.js"
+				"leaflet/leaflet.StyleEditor/javascript/Leaflet.StyleEditor.min.js",
+				"leaflet/LeafletEditor.js"
 			],
 			"styles": [
-				"leaflet/leaflet.draw/leaflet.draw.css"
+				"leaflet/leaflet.draw/leaflet.draw.css",
+				"leaflet/leaflet.StyleEditor/css/Leaflet.StyleEditor.min.css"
 			],
 			"messages": [
 				"maps-json-editor-button-marker",
@@ -184,7 +186,7 @@
 				"ext.sm.common"
 			],
 			"scripts": [
-				"leaflet/leafletajax.js"
+				"leaflet/LeafletAjax.js"
 			]
 		},
 

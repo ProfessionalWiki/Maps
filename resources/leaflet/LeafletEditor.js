@@ -190,13 +190,19 @@
 			ifUserHasPermission(
 				"edit",
 				function() {
-					self.addDrawControl();
+					self.addDrawControls();
 					self.addNewLayersToJsonLayer();
 				}
 			);
 		};
 
-		self.addDrawControl = function() {
+		self.addDrawControls = function() {
+			self.map.addControl(L.control.styleEditor({
+				position: "topleft",
+				useGrouping: false,
+				openOnLeafletDraw: true,
+			}));
+
 			self.map.addControl(new L.Control.Draw({
 				edit: {
 					featureGroup: self.geoJsonLayer,
