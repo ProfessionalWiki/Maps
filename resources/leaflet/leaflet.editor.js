@@ -201,12 +201,12 @@
 				edit: {
 					featureGroup: self.geoJsonLayer,
 					poly: {
-						allowIntersection: false
+						allowIntersection: true
 					}
 				},
 				draw: {
 					polygon: {
-						allowIntersection: false,
+						allowIntersection: true,
 						showArea: true
 					},
 					circlemarker: false, // Do not want this one
