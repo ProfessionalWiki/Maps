@@ -103,7 +103,29 @@
 
 			self.map.addControl(new L.Control.Zoom());
 
-			self.geoJsonLayer = L.geoJSON(json).addTo(self.map);
+			self.geoJsonLayer = L.geoJSON(
+				json,
+				{
+					style: function (feature) {
+						let pathOptions = {};
+
+						// https://github.com/Leaflet/Leaflet/blob/f8e09f993292579a1af88261c9b461730f22e4e6/src/layer/GeoJSON.js#L49-L57
+						// https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0
+						if (feature.properties.fill) {
+							pathOptions.fillColor = feature.properties.fill;
+						}
+
+						return pathOptions;
+					},
+					onEachFeature: function (feature, layer) {
+						if (feature.properties.title) {
+							layer.bindPopup(feature.properties.title);
+						}
+					}
+				}
+			);
+
+			self.geoJsonLayer.addTo(self.map);
 
 			self.addTitleLayer();
 
@@ -120,6 +142,9 @@
 				L.Draw.Event.DELETED,
 				self.saveJson
 			);
+
+			// window.geoJsonLayer = self.geoJsonLayer;
+			// window.map = self.map;
 		};
 
 		self.hideLoadingMessage = function() {
