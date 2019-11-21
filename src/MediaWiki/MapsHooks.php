@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Maps\MediaWiki;
 
 use AlItem;
@@ -110,6 +111,19 @@ final class MapsHooks {
 
 	public static function onChangeTagsAllowedAdd( array &$allowedTags, array $tags, \User $user = null ) {
 		$allowedTags[] = 'maps-visual-edit';
+	}
+
+	public static function onResourceLoaderTestModules( array &$modules, $resourceLoader ) {
+		$modules['qunit']['ext.maps.test'] = [
+			'scripts' => [
+				'tests/js/test.js',
+			],
+			'dependencies' => [
+				'ext.maps.leaflet.geojson',
+			],
+			'localBasePath' => __DIR__ . '/../../',
+			'remoteExtPath' => 'Maps'
+		];
 	}
 
 }

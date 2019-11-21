@@ -126,8 +126,15 @@
 			]
 		},
 
+		"ext.maps.leaflet.geojson": {
+			"scripts": [
+				"leaflet/GeoJSON.js"
+			]
+		},
+
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
+				"ext.maps.leaflet.geojson",
 				"ext.maps.leaflet.base",
 				"mediawiki.api.edit",
 				"mediawiki.jqueryMsg",
