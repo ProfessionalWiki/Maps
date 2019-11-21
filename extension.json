@@ -79,7 +79,7 @@
 			]
 		},
 
-		"ext.maps.leaflet.base": {
+		"ext.maps.leaflet.library": {
 			"scripts": [
 				"leaflet/leaflet/leaflet.js",
 				"leaflet/leaflet-providers/leaflet-providers.js"
@@ -89,9 +89,16 @@
 			]
 		},
 
+		"ext.maps.leaflet.geojson": {
+			"scripts": [
+				"leaflet/GeoJSON.js"
+			]
+		},
+
 		"ext.maps.leaflet.loader": {
 			"dependencies": [
-				"ext.maps.leaflet.base"
+				"ext.maps.leaflet.library",
+				"ext.maps.leaflet.geojson"
 			],
 			"scripts": [
 				"leaflet/jquery.leaflet.js",
@@ -104,7 +111,7 @@
 
 		"ext.maps.leaflet.fullscreen": {
 			"dependencies": [
-				"ext.maps.leaflet.base"
+				"ext.maps.leaflet.library"
 			],
 			"scripts": [
 				"leaflet/leaflet.fullscreen/Control.FullScreen.js"
@@ -116,7 +123,7 @@
 
 		"ext.maps.leaflet.markercluster": {
 			"dependencies": [
-				"ext.maps.leaflet.base"
+				"ext.maps.leaflet.library"
 			],
 			"scripts": [
 				"leaflet/leaflet.markercluster/leaflet.markercluster.js"
@@ -126,16 +133,10 @@
 			]
 		},
 
-		"ext.maps.leaflet.geojson": {
-			"scripts": [
-				"leaflet/GeoJSON.js"
-			]
-		},
-
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
 				"ext.maps.leaflet.geojson",
-				"ext.maps.leaflet.base",
+				"ext.maps.leaflet.library",
 				"mediawiki.api.edit",
 				"mediawiki.jqueryMsg",
 				"ext.maps.leaflet.fullscreen"

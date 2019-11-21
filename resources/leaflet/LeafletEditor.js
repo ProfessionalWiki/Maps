@@ -103,19 +103,13 @@
 
 			self.map.addControl(new L.Control.Zoom());
 
-			self.geoJsonLayer = L.geoJSON(
-				json,
-				{
-					style: function (feature) {
-						return  maps.GeoJSON.simpleStyleToLeafletPathOptions(feature.properties);
-					},
-					onEachFeature: function (feature, layer) {
-						if (feature.properties.title) {
-							layer.bindPopup(feature.properties.title);
-						}
-					}
-				}
-			);
+			self.styleEditor = L.control.styleEditor({
+				position: "topleft",
+				useGrouping: false,
+				openOnLeafletDraw: false,
+			});
+
+			self.geoJsonLayer = maps.GeoJSON.newGeoJsonLayer(L, json);
 
 			self.geoJsonLayer.addTo(self.map);
 
@@ -214,11 +208,7 @@
 		};
 
 		self.addDrawControls = function() {
-			self.map.addControl(L.control.styleEditor({
-				position: "topleft",
-				useGrouping: false,
-				openOnLeafletDraw: true,
-			}));
+			 self.map.addControl(self.styleEditor);
 
 			self.map.addControl(new L.Control.Draw({
 				edit: {

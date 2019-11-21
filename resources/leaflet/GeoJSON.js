@@ -26,6 +26,22 @@
 		return pathOptions;
 	};
 
+	GeoJSON.newGeoJsonLayer = function(L, json) {
+		return L.geoJSON(
+			json,
+			{
+				style: function (feature) {
+					return  GeoJSON.simpleStyleToLeafletPathOptions(feature.properties);
+				},
+				onEachFeature: function (feature, layer) {
+					if (feature.properties.title) {
+						layer.bindPopup(feature.properties.title);
+					}
+				}
+			}
+		);
+	};
+
 	if (!window.maps) {
 		window.maps = {};
 	}

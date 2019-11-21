@@ -269,8 +269,7 @@
 
 		this.addGeoJson = function(options) {
 			if (options.geojson !== '') {
-				var geoJson = options.geojson;
-				var geoJsonLayer = L.geoJSON( geoJson ).addTo( this.map );
+				var geoJsonLayer = window.maps.GeoJSON.newGeoJsonLayer( L, options.geojson ).addTo( this.map );
 
 				this.points.push( geoJsonLayer.getBounds().getNorthEast() );
 				this.points.push( geoJsonLayer.getBounds().getSouthWest() );
