@@ -5,7 +5,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.12.0
 
-* 
+* Titles stored in GeoJSON are now shown as popups
+* Style info for lines, rectangles, circles and polygons stored in GeoJSON is now used
+    * Fill color (key `fill`)
+    * Fill opacity (key `fill-opacity`)
+    * Border color (key `stroke`)
+    * Border width (key `stroke-width`)
+    * Border opacity (key `stroke-opacity`)
 
 ## Maps 7.11.0
 
