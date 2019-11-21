@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.12.0
+
+* 
+
 ## Maps 7.11.0
 
 Released on November 7th, 2019.

@@ -26,6 +26,12 @@
 		return pathOptions;
 	};
 
+	function escapeHTML(unsafeText) {
+		let div = document.createElement('div');
+		div.innerText = unsafeText;
+		return div.innerHTML;
+	}
+
 	GeoJSON.newGeoJsonLayer = function(L, json) {
 		return L.geoJSON(
 			json,
@@ -35,7 +41,7 @@
 				},
 				onEachFeature: function (feature, layer) {
 					if (feature.properties.title) {
-						layer.bindPopup(feature.properties.title);
+						layer.bindPopup(escapeHTML(feature.properties.title));
 					}
 				}
 			}
