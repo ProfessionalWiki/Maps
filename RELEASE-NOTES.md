@@ -5,13 +5,16 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.12.0
 
-* Titles stored in GeoJSON are now shown as popups
-* Style info for lines, rectangles, circles and polygons stored in GeoJSON is now used
-    * Fill color (key `fill`)
-    * Fill opacity (key `fill-opacity`)
-    * Border color (key `stroke`)
-    * Border width (key `stroke-width`)
-    * Border opacity (key `stroke-opacity`)
+* Added [simplestyle](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0) support for GeoJSON
+    * Popup text (property key `text`)
+    * Popup description (property key `description`)
+    * Fill color (property key `fill`)
+    * Fill opacity (property key `fill-opacity`)
+    * Border color (property key `stroke`)
+    * Border width (property key `stroke-width`)
+    * Border opacity (property key `stroke-opacity`)
+    * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
+* Polygon interactions are now allowed in the GeoJSON editor
 
 ## Maps 7.11.0
 
