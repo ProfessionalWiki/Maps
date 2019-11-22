@@ -32,6 +32,23 @@
 		return div.innerHTML;
 	}
 
+	GeoJSON.popupContentFromProperties = function(properties) {
+		if (!properties.title && !properties.description) {
+			return '';
+		}
+
+		if (!properties.description) {
+			return escapeHTML(properties.title);
+		}
+
+		if (!properties.title) {
+			return escapeHTML(properties.description);
+		}
+
+		return '<strong>' + escapeHTML(properties.title) + '</strong><br>'
+			+ escapeHTML(properties.description || '');
+	};
+
 	GeoJSON.newGeoJsonLayer = function(L, json) {
 		return L.geoJSON(
 			json,
@@ -40,8 +57,9 @@
 					return  GeoJSON.simpleStyleToLeafletPathOptions(feature.properties);
 				},
 				onEachFeature: function (feature, layer) {
-					if (feature.properties.title) {
-						layer.bindPopup(escapeHTML(feature.properties.title));
+					let popupContent = GeoJSON.popupContentFromProperties(feature.properties);
+					if (popupContent !== '') {
+						layer.bindPopup(popupContent);
 					}
 				}
 			}
