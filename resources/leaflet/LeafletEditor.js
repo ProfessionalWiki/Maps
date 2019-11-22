@@ -223,19 +223,11 @@
 				titleInput.focus().val('').val(v);
 			});
 
-			titleInput.bind('keyup change', function() {
-				feature.properties["title"] = titleInput.val();
-			});
-
-			descriptionInput.bind('keyup change', function() {
-				feature.properties["description"] = descriptionInput.val();
-			});
-
 			let popup = L.popup({
 				minWidth: 250,
 				maxWidth: 9000,
 				keepInView: true,
-				closeButton: false,
+				closeButton: true,
 				autoClose: false,
 				closeOnEscapeKey: false,
 				closeOnClick: false
@@ -252,9 +244,13 @@
 				popup.remove();
 
 				if (titleInput.val() !== titleInput.text() || descriptionInput.val() !== descriptionInput.text()) {
+					feature.properties["title"] = titleInput.val();
+					feature.properties["description"] = descriptionInput.val();
 					self.showSaveButton();
 				}
 			});
+
+			// TODO: clear modified text when closing popup with close button
 
 			popup.setContent($('<div />').append(titleInput, descriptionInput, button)[0]);
 			layer.bindPopup(popup);
