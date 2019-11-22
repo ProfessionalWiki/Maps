@@ -184,6 +184,7 @@
 				"maps-json-editor-toolbar-clear-text",
 
 				"maps-json-editor-toolbar-button-save",
+				"maps-json-editor-changes-saved",
 
 				"maps-json-editor-toolbar-button-edit",
 				"maps-json-editor-toolbar-button-edit-disabled",

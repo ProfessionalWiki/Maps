@@ -54,7 +54,7 @@
 	let MapSaver = function() {
 		let self = {};
 
-		self.save = function(newContent, summary) {
+		self.save = function(newContent, summary, done) {
 			new mw.Api().edit(
 				mw.config.get('wgPageName'),
 				function(revision) {
@@ -73,14 +73,7 @@
 
 					return editApiParameters;
 				}
-			).then(
-				function(response) {
-					if (response.result !== 'Success') {
-						console.log(response);
-						alert(mw.msg('maps-json-editor-edit-failed'));
-					}
-				}
-			);
+			).then(done);
 		};
 
 		return self;
@@ -167,11 +160,19 @@
 					function() {
 						new MapSaver().save(
 							JSON.stringify(self.geoJsonLayer.toGeoJSON()),
-							'Visual map edit' // TODO
+							'Visual map edit', // TODO,
+							function(response) {
+								if (response.result === 'Success') {
+									alert(mw.msg('maps-json-editor-changes-saved'));
+									self.saveButton.remove();
+									self.saveButton = null;
+								}
+								else {
+									console.log(response);
+									alert(mw.msg('maps-json-editor-edit-failed'));
+								}
+							}
 						);
-
-						self.saveButton.remove();
-						self.saveButton = null;
 					},
 					mw.msg('maps-json-editor-toolbar-button-save')
 				).addTo(self.map);
@@ -197,13 +198,6 @@
 					$('#' + mapId).find('div.maps-loading-message').hide();
 				}
 			);
-		};
-
-		self.saveJson = function(event) {
-			new MapSaver().save(
-				JSON.stringify(self.geoJsonLayer.toGeoJSON()),
-				self.summaryFromEvent(event)
-			)
 		};
 
 		self.onEditableFeature = function(feature, layer) {
@@ -243,35 +237,6 @@
 
 			popup.setContent($('<div />').append(titleInput, descriptionInput, button)[0]);
 			layer.bindPopup(popup);
-		};
-
-		self.summaryFromEvent = function(event) {
-			if (event.type === L.Draw.Event.CREATED) {
-				return mw.msg('maps-json-editor-added-' + self.getLayerTypeName(event.layerType));
-			}
-
-			if (event.type === L.Draw.Event.DELETED) {
-				return mw.message(
-					'maps-json-editor-edit-removed-shapes',
-					event.layers.getLayers().length
-				).text();
-			}
-
-			if (event.type === L.Draw.Event.EDITED) {
-				return mw.msg('maps-json-editor-edit-modified');
-			}
-
-			return mw.msg('maps-json-editor-edit-other');
-		};
-
-		self.getLayerTypeName = function(layerType) {
-			return {
-				'marker': 'marker',
-				'polyline': 'line',
-				'polygon': 'polygon',
-				'rectangle': 'rectangle',
-				'circle': 'circle',
-			}[layerType];
 		};
 
 		self.addTitleLayer = function() {

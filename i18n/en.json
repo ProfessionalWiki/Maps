@@ -261,6 +261,7 @@
 	"maps-json-editor-toolbar-button-remove-disabled": "No layers to delete",
 
 	"maps-json-editor-toolbar-button-save": "Save changes",
+	"maps-json-editor-changes-saved": "Your changes have been saved",
 
 	"maps-geo-json-edit-source": "Edit source",
 	"maps-geo-json-create-source": "Create from GeoJSON source",
