@@ -103,12 +103,6 @@
 
 			self.map.addControl(new L.Control.Zoom());
 
-			self.styleEditor = L.control.styleEditor({
-				position: "topleft",
-				useGrouping: false,
-				openOnLeafletDraw: false,
-			});
-
 			self.geoJsonLayer = maps.GeoJSON.newGeoJsonLayer(L, json);
 
 			self.geoJsonLayer.addTo(self.map);
@@ -208,7 +202,11 @@
 		};
 
 		self.addDrawControls = function() {
-			 self.map.addControl(self.styleEditor);
+			 // self.map.addControl(L.control.styleEditor({
+				//  position: "topleft",
+				//  useGrouping: false,
+				//  openOnLeafletDraw: false,
+			 // }));
 
 			self.map.addControl(new L.Control.Draw({
 				edit: {
