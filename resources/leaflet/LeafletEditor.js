@@ -217,6 +217,12 @@
 			self.geoJsonLayer.addTo(self.map);
 			self.addTitleLayer();
 			self.fitBounds();
+
+			$(window).bind('beforeunload', function() {
+				if (self.saveButton) {
+					return 'The map has unsaved changes. Are you sure you want to leave the page?';
+				}
+			});
 		};
 
 		self.hideLoadingMessage = function() {
