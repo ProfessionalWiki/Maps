@@ -200,6 +200,19 @@
 			);
 		};
 
+		function onSizeChange(element, callback) {
+			let currentWidth = element[0].clientWidth;
+			let currentHeight = element[0].clientHeight;
+
+			element.bind('mouseup', function() {
+				if (element[0].clientWidth !== currentWidth || element[0].clientHeight !== currentHeight) {
+					currentWidth = element[0].clientWidth;
+					currentHeight = element[0].clientHeight;
+					callback(element);
+				}
+			});
+		}
+
 		self.onEditableFeature = function(feature, layer) {
 			let titleInput = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
 			let descriptionInput = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
@@ -209,13 +222,6 @@
 				let v = titleInput.val();
 				titleInput.focus().val('').val(v);
 			});
-
-			// titleTextArea.mouseup(function() {
-			// 	popup.update(); titleTextArea.focus();
-			// });
-			// descriptionTextArea.mouseup(function() {
-			// 	popup.update(); descriptionTextArea.focus();
-			// });
 
 			titleInput.bind('keyup change', function() {
 				feature.properties["title"] = titleInput.val();
@@ -234,6 +240,13 @@
 				closeOnEscapeKey: false,
 				closeOnClick: false
 			});
+
+			let onSizeChangedHandler = function(element) {
+				popup.update(); element.focus();
+			};
+
+			onSizeChange(titleInput, onSizeChangedHandler);
+			onSizeChange(descriptionInput, onSizeChangedHandler);
 
 			button.click(function() {
 				popup.remove();
