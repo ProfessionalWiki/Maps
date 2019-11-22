@@ -103,7 +103,46 @@
 
 			self.map.addControl(new L.Control.Zoom());
 
-			self.geoJsonLayer = maps.GeoJSON.newGeoJsonLayer(L, json);
+			self.geoJsonLayer = L.geoJSON(
+				json,
+				{
+					style: function (feature) {
+						return  maps.GeoJSON.simpleStyleToLeafletPathOptions(feature.properties);
+					},
+					onEachFeature: function (feature, layer) {
+						let popup = L.popup({minWidth: 250, maxWidth: 9000, closeButton: false});
+
+						let titleTextArea = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
+						let descriptionTextArea = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
+
+						// titleTextArea.mouseup(function() {
+						// 	popup.update(); titleTextArea.focus();
+						// });
+						// descriptionTextArea.mouseup(function() {
+						// 	popup.update(); descriptionTextArea.focus();
+						// });
+
+						titleTextArea.bind('keyup change', function() {
+							feature.properties["title"] = titleTextArea.val();
+						});
+
+						descriptionTextArea.bind('keyup change', function() {
+							feature.properties["description"] = descriptionTextArea.val();
+						});
+
+						layer.on("popupopen", function () {
+							titleTextArea.focus();
+						});
+
+						let div = $('<div />');
+						div.append(titleTextArea);
+						div.append(descriptionTextArea);
+						popup.setContent(div[0]);
+
+						layer.bindPopup(popup);
+					}
+				}
+			);
 
 			self.geoJsonLayer.addTo(self.map);
 
