@@ -144,11 +144,13 @@
 			"scripts": [
 				"leaflet/leaflet.StyleEditor/javascript/Leaflet.StyleEditor.min.js",
 				"leaflet/leaflet.draw/leaflet.draw-src.js",
+				"leaflet/leaflet.EasyButton/easy-button.js",
 				"leaflet/LeafletEditor.js"
 			],
 			"styles": [
 				"leaflet/leaflet.StyleEditor/css/Leaflet.StyleEditor.min.css",
-				"leaflet/leaflet.draw/leaflet.draw.css"
+				"leaflet/leaflet.draw/leaflet.draw.css",
+				"leaflet/leaflet.EasyButton/easy-button.css"
 			],
 			"messages": [
 				"maps-json-editor-button-marker",
@@ -180,6 +182,8 @@
 				"maps-json-editor-toolbar-cancel-text",
 				"maps-json-editor-toolbar-clear-title",
 				"maps-json-editor-toolbar-clear-text",
+
+				"maps-json-editor-toolbar-button-save",
 
 				"maps-json-editor-toolbar-button-edit",
 				"maps-json-editor-toolbar-button-edit-disabled",

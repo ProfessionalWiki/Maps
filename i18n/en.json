@@ -248,9 +248,9 @@
 	"maps-json-editor-edit-other": "Visual map edit",
 	"maps-json-editor-edit-failed": "Failed to save the map",
 
-	"maps-json-editor-toolbar-save-title": "Save changes",
-	"maps-json-editor-toolbar-save-text": "Save",
-	"maps-json-editor-toolbar-cancel-title": "Cancel editing, discards all changes",
+	"maps-json-editor-toolbar-save-title": "Exit edit mode while keeping all changes",
+	"maps-json-editor-toolbar-save-text": "Done",
+	"maps-json-editor-toolbar-cancel-title": "Exit edit mode, discards all changes",
 	"maps-json-editor-toolbar-cancel-text": "Cancel",
 	"maps-json-editor-toolbar-clear-title": "Clear all layers",
 	"maps-json-editor-toolbar-clear-text": "Clear All",
@@ -259,6 +259,8 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "No layers to edit",
 	"maps-json-editor-toolbar-button-remove": "Delete layers",
 	"maps-json-editor-toolbar-button-remove-disabled": "No layers to delete",
+
+	"maps-json-editor-toolbar-button-save": "Save changes",
 
 	"maps-geo-json-edit-source": "Edit source",
 	"maps-geo-json-create-source": "Create from GeoJSON source",

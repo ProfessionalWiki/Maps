@@ -173,19 +173,44 @@
 			);
 
 			self.addDrawControls();
-			self.addNewLayersToJsonLayer();
+
+			self.map.on(
+				L.Draw.Event.CREATED,
+				function (event) {
+					self.geoJsonLayer.addLayer(event.layer);
+					self.showSaveButton();
+				}
+			);
 
 			self.map.on(
 				L.Draw.Event.EDITED,
-				self.saveJson
+				self.showSaveButton
 			);
 
 			self.map.on(
 				L.Draw.Event.DELETED,
-				self.saveJson
+				self.showSaveButton
 			);
 
 			self.finishSetup();
+		};
+
+		self.showSaveButton = function() {
+			if (!self.saveButton) {
+				self.saveButton = L.easyButton(
+					'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/save-solid.svg">',
+					function() {
+						new MapSaver().save(
+							JSON.stringify(self.geoJsonLayer.toGeoJSON()),
+							'TODO'
+						);
+
+						self.saveButton.remove();
+						self.saveButton = null;
+					},
+					mw.msg('maps-json-editor-toolbar-button-save')
+				).addTo(self.map);
+			}
 		};
 
 		self.finishSetup = function() {
@@ -277,13 +302,6 @@
 					circle: false // Is not showing properly after save
 				}
 			}));
-		};
-
-		self.addNewLayersToJsonLayer = function() {
-			self.map.on(L.Draw.Event.CREATED, function (event) {
-				self.geoJsonLayer.addLayer(event.layer);
-				self.saveJson(event);
-			});
 		};
 
 		return self;
