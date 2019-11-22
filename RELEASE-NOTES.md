@@ -6,8 +6,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 ## Maps 7.12.0
 
 * Added [simplestyle](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0) support for GeoJSON
-    * Popup text (property key `text`)
-    * Popup description (property key `description`)
+    * Popup text (property key `text`) (Only plaintext, HTML is not supported)
+    * Popup description (property key `description`) (Only plaintext, HTML is not supported)
     * Fill color (property key `fill`)
     * Fill opacity (property key `fill-opacity`)
     * Border color (property key `stroke`)
