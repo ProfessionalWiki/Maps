@@ -89,6 +89,39 @@
 	let MapEditor = function(mapId, json) {
 		let self = {};
 
+		function onEditableFeature(feature, layer) {
+			let popup = L.popup({minWidth: 250, maxWidth: 9000, closeButton: false});
+
+			let titleTextArea = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
+			let descriptionTextArea = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
+
+			// titleTextArea.mouseup(function() {
+			// 	popup.update(); titleTextArea.focus();
+			// });
+			// descriptionTextArea.mouseup(function() {
+			// 	popup.update(); descriptionTextArea.focus();
+			// });
+
+			titleTextArea.bind('keyup change', function() {
+				feature.properties["title"] = titleTextArea.val();
+			});
+
+			descriptionTextArea.bind('keyup change', function() {
+				feature.properties["description"] = descriptionTextArea.val();
+			});
+
+			layer.on("popupopen", function () {
+				titleTextArea.focus();
+			});
+
+			let div = $('<div />');
+			div.append(titleTextArea);
+			div.append(descriptionTextArea);
+			popup.setContent(div[0]);
+
+			layer.bindPopup(popup);
+		}
+
 		self.initialize = function() {
 			self.map = L.map(
 				mapId,
@@ -103,54 +136,42 @@
 
 			self.map.addControl(new L.Control.Zoom());
 
+			if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
+				getUserHasPermission(
+					"edit",
+					function(hasPermission) {
+						if (hasPermission) {
+							self.setupWithEditor();
+						}
+						else {
+							self.setupWithPlainMap();
+						}
+					}
+				);
+			}
+			else {
+				self.setupWithPlainMap();
+			}
+		};
+
+		self.setupWithPlainMap = function() {
+			self.geoJsonLayer = maps.GeoJSON.newGeoJsonLayer(L, json);
+			self.finishSetup();
+		};
+
+		self.setupWithEditor = function() {
 			self.geoJsonLayer = L.geoJSON(
 				json,
 				{
 					style: function (feature) {
 						return  maps.GeoJSON.simpleStyleToLeafletPathOptions(feature.properties);
 					},
-					onEachFeature: function (feature, layer) {
-						let popup = L.popup({minWidth: 250, maxWidth: 9000, closeButton: false});
-
-						let titleTextArea = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
-						let descriptionTextArea = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
-
-						// titleTextArea.mouseup(function() {
-						// 	popup.update(); titleTextArea.focus();
-						// });
-						// descriptionTextArea.mouseup(function() {
-						// 	popup.update(); descriptionTextArea.focus();
-						// });
-
-						titleTextArea.bind('keyup change', function() {
-							feature.properties["title"] = titleTextArea.val();
-						});
-
-						descriptionTextArea.bind('keyup change', function() {
-							feature.properties["description"] = descriptionTextArea.val();
-						});
-
-						layer.on("popupopen", function () {
-							titleTextArea.focus();
-						});
-
-						let div = $('<div />');
-						div.append(titleTextArea);
-						div.append(descriptionTextArea);
-						popup.setContent(div[0]);
-
-						layer.bindPopup(popup);
-					}
+					onEachFeature: onEditableFeature
 				}
 			);
 
-			self.geoJsonLayer.addTo(self.map);
-
-			self.addTitleLayer();
-
-			self.fitBounds();
-
-			self.addEditUi();
+			self.addDrawControls();
+			self.addNewLayersToJsonLayer();
 
 			self.map.on(
 				L.Draw.Event.EDITED,
@@ -162,8 +183,13 @@
 				self.saveJson
 			);
 
-			// window.geoJsonLayer = self.geoJsonLayer;
-			// window.map = self.map;
+			self.finishSetup();
+		};
+
+		self.finishSetup = function() {
+			self.geoJsonLayer.addTo(self.map);
+			self.addTitleLayer();
+			self.fitBounds();
 		};
 
 		self.hideLoadingMessage = function() {
@@ -224,20 +250,6 @@
 			else {
 				self.map.fitBounds(self.geoJsonLayer.getBounds());
 			}
-		};
-
-		self.addEditUi = function() {
-			if (mw.config.get('wgCurRevisionId') !== mw.config.get('wgRevisionId')) {
-				return;
-			}
-
-			ifUserHasPermission(
-				"edit",
-				function() {
-					self.addDrawControls();
-					self.addNewLayersToJsonLayer();
-				}
-			);
 		};
 
 		self.addDrawControls = function() {
