@@ -225,7 +225,15 @@
 				feature.properties["description"] = descriptionInput.val();
 			});
 
-			let popup = L.popup({minWidth: 250, maxWidth: 9000, closeButton: false});
+			let popup = L.popup({
+				minWidth: 250,
+				maxWidth: 9000,
+				keepInView: true,
+				closeButton: false,
+				autoClose: false,
+				closeOnEscapeKey: false,
+				closeOnClick: false
+			});
 
 			button.click(function() {
 				popup.remove();
