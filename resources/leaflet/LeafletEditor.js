@@ -86,41 +86,43 @@
 		return self;
 	};
 
+	function onEditableFeature(feature, layer) {
+		let titleInput = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
+		let descriptionInput = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
+		let button = $('<button style="width: 100%">').text('Done');
+
+		layer.on("popupopen", function () {
+			let v = titleInput.val();
+			titleInput.focus().val('').val(v);
+		});
+
+		// titleTextArea.mouseup(function() {
+		// 	popup.update(); titleTextArea.focus();
+		// });
+		// descriptionTextArea.mouseup(function() {
+		// 	popup.update(); descriptionTextArea.focus();
+		// });
+
+		titleInput.bind('keyup change', function() {
+			feature.properties["title"] = titleInput.val();
+		});
+
+		descriptionInput.bind('keyup change', function() {
+			feature.properties["description"] = descriptionInput.val();
+		});
+
+		let popup = L.popup({minWidth: 250, maxWidth: 9000, closeButton: false});
+
+		button.click(function() {
+			popup.remove();
+		});
+
+		popup.setContent($('<div />').append(titleInput, descriptionInput, button)[0]);
+		layer.bindPopup(popup);
+	}
+
 	let MapEditor = function(mapId, json) {
 		let self = {};
-
-		function onEditableFeature(feature, layer) {
-			let popup = L.popup({minWidth: 250, maxWidth: 9000, closeButton: false});
-
-			let titleTextArea = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
-			let descriptionTextArea = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
-
-			// titleTextArea.mouseup(function() {
-			// 	popup.update(); titleTextArea.focus();
-			// });
-			// descriptionTextArea.mouseup(function() {
-			// 	popup.update(); descriptionTextArea.focus();
-			// });
-
-			titleTextArea.bind('keyup change', function() {
-				feature.properties["title"] = titleTextArea.val();
-			});
-
-			descriptionTextArea.bind('keyup change', function() {
-				feature.properties["description"] = descriptionTextArea.val();
-			});
-
-			layer.on("popupopen", function () {
-				titleTextArea.focus();
-			});
-
-			let div = $('<div />');
-			div.append(titleTextArea);
-			div.append(descriptionTextArea);
-			popup.setContent(div[0]);
-
-			layer.bindPopup(popup);
-		}
 
 		self.initialize = function() {
 			self.map = L.map(
