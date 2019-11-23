@@ -216,7 +216,7 @@
 		self.onEditableFeature = function(feature, layer) {
 			let titleInput = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
 			let descriptionInput = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
-			let button = $('<button style="width: 100%">').text('Done');
+			let button = $('<button style="width: 100%">').text(mw.msg('maps-json-editor-toolbar-save-text'));
 
 			layer.on("popupopen", function () {
 				let v = titleInput.val();
