@@ -227,7 +227,7 @@
 				minWidth: 250,
 				maxWidth: 9000,
 				keepInView: true,
-				closeButton: true,
+				closeButton: false,
 				autoClose: false,
 				closeOnEscapeKey: false,
 				closeOnClick: false
@@ -249,8 +249,6 @@
 					self.showSaveButton();
 				}
 			});
-
-			// TODO: clear modified text when closing popup with close button
 
 			popup.setContent($('<div />').append(titleInput, descriptionInput, button)[0]);
 			layer.bindPopup(popup);
