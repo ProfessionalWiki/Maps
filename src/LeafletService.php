@@ -158,7 +158,7 @@ class LeafletService implements MappingService {
 	}
 
 	private function getDependencies( array $params ): array {
-		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/leaflet/leaflet';
+		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/lib/leaflet';
 
 		return array_merge(
 			[
