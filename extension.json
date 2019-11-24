@@ -65,7 +65,7 @@
 				"mediawiki.api.edit"
 			],
 			"scripts": [
-				"GeoJson/geojson.new.page.js"
+				"geojson.new.page.js"
 			],
 			"messages": [
 				"maps-geo-json-create-page-creating",
