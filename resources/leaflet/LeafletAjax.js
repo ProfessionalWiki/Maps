@@ -1,12 +1,10 @@
 /**
- * JavaScript for Leaflet in the Semantic Maps extension.
- * @see https://www.mediawiki.org/wiki/Extension:Semantic_Maps
+ * Ajax query support for Maps + SMW
+ * @see https://www.mediawiki.org/wiki/Extension:Maps
  *
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >
  */
-
-
 (function( $, sm ) {
 	var ajaxRequest = null;
 
