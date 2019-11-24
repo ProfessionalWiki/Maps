@@ -268,20 +268,20 @@
 			]
 		},
 
-		"mapeditor": {
+		"ext.maps.wikitext.editor": {
 			"dependencies": [
 				"jquery.ui.autocomplete",
 				"jquery.ui.slider",
 				"jquery.ui.dialog"
 			],
 			"scripts": [
-				"editor/js/jquery.miniColors.js",
-				"editor/js/mapeditor.iefixes.js",
-				"editor/js/mapeditor.js"
+				"WikitextEditor/js/jquery.miniColors.js",
+				"WikitextEditor/js/mapeditor.iefixes.js",
+				"WikitextEditor/js/mapeditor.js"
 			],
 			"styles": [
-				"editor/css/jquery.miniColors.css",
-				"editor/css/mapeditor.css"
+				"WikitextEditor/css/jquery.miniColors.css",
+				"WikitextEditor/css/mapeditor.css"
 			],
 			"messages": [
 				"mapeditor-parser-error",
