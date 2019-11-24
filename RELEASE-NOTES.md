@@ -18,6 +18,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
     * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
     * Display only, editing in the visual editor is not yet supported
 * Polygon intersections are now allowed in the GeoJSON editor
+* Upgraded Leaflet from 1.3.4 to 1.6.0
 
 ## Maps 7.11.0
 
