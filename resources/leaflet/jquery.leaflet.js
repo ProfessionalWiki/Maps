@@ -4,8 +4,56 @@
  *
  * @author Pavel Astakhov < pastakhov@yandex.ru >
  * @author Peter Grassberger < petertheone@gmail.com >
+ * @author Jeroen De Dauw
  */
 (function ($, mw, L) {
+	/**
+	 * Creates a new marker with the provided data and returns it.
+	 * @param {Object} properties Contains the fields lat, lon, title, text and icon
+	 * @param {Object} options Map options
+	 * @return {L.Marker}
+	 */
+	function createMarker(properties, options) {
+		let markerOptions = {
+			title:properties.title
+		};
+
+		let marker = L.marker( [properties.lat, properties.lon], markerOptions );
+
+		if (properties.hasOwnProperty('icon') && properties.icon !== '') {
+			marker.setOpacity(0);
+
+			let img = new Image();
+			img.onload = function() {
+				let icon = new L.Icon({
+					iconUrl: properties.icon,
+					iconSize: [ img.width, img.height ],
+					iconAnchor: [ img.width / 2, img.height ],
+					popupAnchor: [ -img.width % 2, -img.height*2/3 ]
+				});
+
+				marker.setIcon(icon);
+				marker.setOpacity(1);
+			};
+			img.src = properties.icon;
+		}
+
+		if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
+			marker.bindPopup( properties.text );
+		}
+
+		if ( options.copycoords ) {
+			marker.on(
+				'contextmenu',
+				function( e ) {
+					prompt(mw.msg('maps-copycoords-prompt'), e.latlng.lat + ',' + e.latlng.lng);
+				}
+			);
+		}
+
+		return marker;
+	}
+
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
@@ -21,65 +69,20 @@
 		this.points = [];
 
 		/**
-		* Creates a new marker with the provided data and returns it.
-		* @param {Object} properties Contains the fields lat, lon, title, text and icon
-		* @return {L.Marker}
-		*/
-		this.createMarker = function (properties) {
-			this.points.push( new L.LatLng(properties.lat, properties.lon) );
-
-			var markerOptions = {
-				title:properties.title
-			};
-
-			var marker = L.marker( [properties.lat, properties.lon], markerOptions );
-
-			if (properties.hasOwnProperty('icon') && properties.icon !== '') {
-				marker.setOpacity(0);
-
-				var img = new Image();
-				img.onload = function() {
-					var icon = new L.Icon({
-						iconUrl: properties.icon,
-						iconSize: [ img.width, img.height ],
-						iconAnchor: [ img.width / 2, img.height ],
-						popupAnchor: [ -img.width % 2, -img.height*2/3 ]
-					});
-
-					marker.setIcon(icon);
-					marker.setOpacity(1);
-				};
-				img.src = properties.icon;
-			}
-
-			if( properties.hasOwnProperty('text') && properties.text.length > 0 ) {
-				marker.bindPopup( properties.text );
-			}
-
-			if ( options.copycoords ) {
-				marker.on(
-					'contextmenu',
-					function( e ) {
-						prompt(mw.msg('maps-copycoords-prompt'), e.latlng.lat + ',' + e.latlng.lng);
-					}
-				);
-			}
-
-			return marker;
-		};
-
-		/**
 		 * Creates a new marker with the provided data, adds it to the map
 		 * and returns it.
 		 * @param {Object} properties Contains the fields lat, lon, title, text and icon
 		 * @return {L.Marker}
 		 */
 		this.addMarker = function (properties) {
-			var marker = this.createMarker(properties);
+			this.points.push( new L.LatLng(properties.lat, properties.lon) );
+
+			var marker = createMarker(properties, options);
 			if (!this.options.markercluster) {
 				marker.addTo( this.map );
 			}
 			this.markers.push( marker );
+
 			return marker;
 		};
 
