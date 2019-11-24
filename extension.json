@@ -73,6 +73,15 @@
 			]
 		},
 
+		"ext.maps.geojson.page": {
+			"dependencies": [
+				"ext.maps.leaflet.editor"
+			],
+			"scripts": [
+				"geoJsonPage.js"
+			]
+		},
+
 		"ext.maps.resizable": {
 			"dependencies": [
 				"jquery.ui.resizable"
@@ -145,6 +154,7 @@
 				"lib/leaflet.StyleEditor/javascript/Leaflet.StyleEditor.min.js",
 				"lib/leaflet.draw/leaflet.draw-src.js",
 				"lib/leaflet.EasyButton/easy-button.js",
+				"MapSaver.js",
 				"leaflet/LeafletEditor.js"
 			],
 			"styles": [

@@ -40,50 +40,7 @@
 		);
 	}
 
-	function ifUserHasPermission(permission, callback) {
-		getUserHasPermission(
-			permission,
-			function(hasPermission) {
-				if (hasPermission) {
-					callback();
-				}
-			}
-		);
-	}
-
-	let MapSaver = function() {
-		let self = {};
-
-		// parameters.pageName: required string
-		// parameters.newContent: required string
-		// parameters.summary: required string
-		// parameters.done: required callback function
-		self.save = function(paremeters) {
-			new mw.Api().edit(
-				paremeters.pageName,
-				function(revision) {
-					let editApiParameters = {
-						text: paremeters.newContent,
-						summary: paremeters.summary,
-						minor: false
-					};
-
-					ifUserHasPermission(
-						"applychangetags",
-						function() {
-							editApiParameters.tags = ['maps-visual-edit'];
-						}
-					);
-
-					return editApiParameters;
-				}
-			).then(paremeters.done);
-		};
-
-		return self;
-	};
-
-	let MapEditor = function(mapId, json) {
+	let MapEditor = function(mapId, json, mapSaver) {
 		let self = {};
 
 		self.initialize = function() {
@@ -116,6 +73,8 @@
 			else {
 				self.setupWithPlainMap();
 			}
+
+			initializeMessages();
 		};
 
 		self.setupWithPlainMap = function() {
@@ -171,7 +130,7 @@
 							self.saveButton.remove();
 							self.saveButton = null;
 
-							new MapSaver().save(
+							mapSaver.save(
 								{
 									pageName: mw.config.get('wgPageName'),
 									newContent: JSON.stringify(self.geoJsonLayer.toGeoJSON()),
@@ -313,11 +272,8 @@
 		return self;
 	};
 
-	$( document ).ready( function() {
-		let editor = MapEditor('GeoJsonMap', window.GeoJson);
-		editor.initialize();
+	if (!maps.leaflet) {maps.leaflet = {};}
 
-		initializeMessages();
-	} );
+	maps.leaflet.LeafletEditor = MapEditor;
 
 })( window.jQuery, window.mediaWiki, window.maps );

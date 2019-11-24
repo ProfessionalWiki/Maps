@@ -27,7 +27,7 @@ class GeoJsonMapPageUi {
 		);
 
 		$output->addHTML( $this->getJavascript() . $this->getHtml() );
-		$output->addModules( 'ext.maps.leaflet.editor' );
+		$output->addModules( 'ext.maps.geojson.page' );
 	}
 
 	private function getJavascript(): string {
