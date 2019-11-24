@@ -1,12 +1,12 @@
 (function() {
 	'use strict';
 
-	let GeoJSON = {};
+	let GeoJson = {};
 
 	// https://github.com/Leaflet/Leaflet/blob/f8e09f993292579a1af88261c9b461730f22e4e6/src/layer/GeoJSON.js#L49-L57
 	// https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0
 	// https://leafletjs.com/reference-1.6.0.html#path
-	GeoJSON.simpleStyleToLeafletPathOptions = function(featureProperties) {
+	GeoJson.simpleStyleToLeafletPathOptions = function(featureProperties) {
 		let simpleStyleToLeaflet = {
 			'stroke': 'color',
 			'stroke-width': 'weight',
@@ -32,7 +32,7 @@
 		return div.innerHTML;
 	}
 
-	GeoJSON.popupContentFromProperties = function(properties) {
+	GeoJson.popupContentFromProperties = function(properties) {
 		if (!properties.title && !properties.description) {
 			return '';
 		}
@@ -49,15 +49,15 @@
 			+ escapeHTML(properties.description || '');
 	};
 
-	GeoJSON.newGeoJsonLayer = function(L, json) {
+	GeoJson.newGeoJsonLayer = function(L, json) {
 		return L.geoJSON(
 			json,
 			{
 				style: function (feature) {
-					return  GeoJSON.simpleStyleToLeafletPathOptions(feature.properties);
+					return  GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
 				},
 				onEachFeature: function (feature, layer) {
-					let popupContent = GeoJSON.popupContentFromProperties(feature.properties);
+					let popupContent = GeoJson.popupContentFromProperties(feature.properties);
 					if (popupContent !== '') {
 						layer.bindPopup(popupContent);
 					}
@@ -66,9 +66,8 @@
 		);
 	};
 
-	if (!window.maps) {
-		window.maps = {};
-	}
+	if (!window.maps) {window.maps = {};}
+	if (!window.maps.leaflet) {window.maps.leaflet = {};}
 
-	window.maps.GeoJSON = GeoJSON;
+	window.maps.leaflet.GeoJson = GeoJson;
 })();

@@ -1,7 +1,7 @@
 ( function () {
 	QUnit.module( 'Maps' );
 
-	let GeoJSON = window.maps.GeoJSON;
+	let GeoJSON = window.maps.leaflet.GeoJson;
 
 	QUnit.test( 'GeoJSON.simpleStyleToLeafletPathOptions', function ( assert ) {
 		assert.deepEqual(

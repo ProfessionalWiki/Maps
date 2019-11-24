@@ -119,7 +119,7 @@
 		};
 
 		self.setupWithPlainMap = function() {
-			self.geoJsonLayer = maps.GeoJSON.newGeoJsonLayer(L, json);
+			self.geoJsonLayer = maps.leaflet.GeoJson.newGeoJsonLayer(L, json);
 			self.finishSetup();
 		};
 
@@ -128,7 +128,7 @@
 				json,
 				{
 					style: function (feature) {
-						return  maps.GeoJSON.simpleStyleToLeafletPathOptions(feature.properties);
+						return  maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
 					},
 					onEachFeature: self.onEditableFeature
 				}

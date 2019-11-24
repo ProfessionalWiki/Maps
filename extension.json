@@ -91,7 +91,7 @@
 
 		"ext.maps.leaflet.geojson": {
 			"scripts": [
-				"leaflet/GeoJSON.js"
+				"leaflet/GeoJson.js"
 			]
 		},
 

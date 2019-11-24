@@ -116,7 +116,7 @@ final class MapsHooks {
 	public static function onResourceLoaderTestModules( array &$modules, $resourceLoader ) {
 		$modules['qunit']['ext.maps.test'] = [
 			'scripts' => [
-				'tests/js/test.js',
+				'tests/js/leaflet/GeoJsonTest.js',
 			],
 			'dependencies' => [
 				'ext.maps.leaflet.geojson',
