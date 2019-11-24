@@ -158,21 +158,30 @@
 				self.saveButton = L.easyButton(
 					'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/save-solid.svg">',
 					function() {
-						new MapSaver().save(
-							JSON.stringify(self.geoJsonLayer.toGeoJSON()),
-							'Visual map edit', // TODO,
-							function(response) {
-								if (response.result === 'Success') {
-									alert(mw.msg('maps-json-editor-changes-saved'));
-									self.saveButton.remove();
-									self.saveButton = null;
+						let editSummary = prompt(
+							'Enter an edit summary for your changes to the map',
+							'Visual map edit'
+						); // TODO: i18n
+
+						if (editSummary!== null) {
+							self.saveButton.remove();
+							self.saveButton = null;
+
+							new MapSaver().save(
+								JSON.stringify(self.geoJsonLayer.toGeoJSON()),
+								editSummary,
+								function(response) {
+									if (response.result === 'Success') {
+										alert(mw.msg('maps-json-editor-changes-saved'));
+									}
+									else {
+										console.log(response);
+										self.showSaveButton();
+										alert(mw.msg('maps-json-editor-edit-failed'));
+									}
 								}
-								else {
-									console.log(response);
-									alert(mw.msg('maps-json-editor-edit-failed'));
-								}
-							}
-						);
+							);
+						}
 					},
 					mw.msg('maps-json-editor-toolbar-button-save')
 				).addTo(self.map);
