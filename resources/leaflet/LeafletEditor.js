@@ -54,13 +54,17 @@
 	let MapSaver = function() {
 		let self = {};
 
-		self.save = function(newContent, summary, done) {
+		// parameters.pageName: required string
+		// parameters.newContent: required string
+		// parameters.summary: required string
+		// parameters.done: required callback function
+		self.save = function(paremeters) {
 			new mw.Api().edit(
-				mw.config.get('wgPageName'),
+				paremeters.pageName,
 				function(revision) {
 					let editApiParameters = {
-						text: newContent,
-						summary: summary,
+						text: paremeters.newContent,
+						summary: paremeters.summary,
 						minor: false
 					};
 
@@ -73,7 +77,7 @@
 
 					return editApiParameters;
 				}
-			).then(done);
+			).then(paremeters.done);
 		};
 
 		return self;
@@ -168,16 +172,19 @@
 							self.saveButton = null;
 
 							new MapSaver().save(
-								JSON.stringify(self.geoJsonLayer.toGeoJSON()),
-								editSummary,
-								function(response) {
-									if (response.result === 'Success') {
-										alert(mw.msg('maps-json-editor-changes-saved'));
-									}
-									else {
-										console.log(response);
-										self.showSaveButton();
-										alert(mw.msg('maps-json-editor-edit-failed'));
+								{
+									pageName: mw.config.get('wgPageName'),
+									newContent: JSON.stringify(self.geoJsonLayer.toGeoJSON()),
+									summary: editSummary,
+									done: function(response) {
+										if (response.result === 'Success') {
+											alert(mw.msg('maps-json-editor-changes-saved'));
+										}
+										else {
+											console.log(response);
+											self.showSaveButton();
+											alert(mw.msg('maps-json-editor-edit-failed'));
+										}
 									}
 								}
 							);
