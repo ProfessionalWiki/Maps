@@ -135,7 +135,8 @@
 				"ext.maps.leaflet.library"
 			],
 			"scripts": [
-				"lib/leaflet.markercluster/leaflet.markercluster.js"
+				"lib/leaflet.markercluster/leaflet.markercluster.js",
+				"leaflet/LeafletCluster.js"
 			],
 			"styles": [
 				"lib/leaflet.markercluster/MarkerCluster.css"

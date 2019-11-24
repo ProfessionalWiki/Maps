@@ -6,7 +6,7 @@
  * @author Peter Grassberger < petertheone@gmail.com >
  * @author Jeroen De Dauw
  */
-(function ($, mw, L) {
+(function ($, mw, L, maps) {
 	/**
 	 * Creates a new marker with the provided data and returns it.
 	 * @param {Object} properties Contains the fields lat, lon, title, text and icon
@@ -59,7 +59,7 @@
 		this.map = null;
 		this.options = options;
 		this.markers = [];
-		this.markercluster = null;
+		this.markerClusterLayer = null;
 		var apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
 
 		/**
@@ -94,11 +94,15 @@
 			});
 		};
 
-		this.removeMarkers = function () {
-			if (this.markercluster) {
-				this.map.removeLayer(this.markercluster);
-				this.markercluster = null;
+		this.removeMarkerClusterLayer = function() {
+			if (this.markerClusterLayer) {
+				this.map.removeLayer(this.markerClusterLayer);
+				this.markerClusterLayer = null;
 			}
+		};
+
+		this.removeMarkers = function () {
+			this.removeMarkerClusterLayer();
 			var map = this.map;
 			$.each(this.markers, function(index, marker) {
 				map.removeLayer(marker);
@@ -195,79 +199,12 @@
 			}
 		};
 
-		this.createMarkerCluster = function () {
-			if ( !options.markercluster ) {
-				return;
-			}
-			var markers = this.markers;
+		this.addMarkerClusterLayer = function () {
+			this.removeMarkerClusterLayer();
 
-			var markercluster = new L.MarkerClusterGroup({
-				maxClusterRadius: options.clustermaxradius,
-				disableClusteringAtZoom: options.clustermaxzoom + 1,
-				zoomToBoundsOnClick: options.clusterzoomonclick,
-				spiderfyOnMaxZoom: options.clusterspiderfy,
-				iconCreateFunction: function(cluster) {
-					var childCount = cluster.getChildCount();
+			this.markerClusterLayer = maps.leaflet.LeafletCluster.newLayer(options, this.markers);
 
-					var imagePath = mw.config.get( 'egMapsScriptPath' ) + '/resources/leaflet/cluster/';
-
-					var styles = [
-						{
-							iconUrl: imagePath + 'm1.png',
-							iconSize: [53, 52]
-						},
-						{
-							iconUrl: imagePath + 'm2.png',
-							iconSize: [56, 55]
-						},
-						{
-							iconUrl: imagePath + 'm3.png',
-							iconSize: [66, 65]
-						},
-						{
-							iconUrl: imagePath + 'm4.png',
-							iconSize: [78, 77]
-						},
-						{
-							iconUrl: imagePath + 'm5.png',
-							iconSize: [90, 89]
-						}
-					];
-
-					var index = 0;
-					var dv = childCount;
-					while (dv !== 0) {
-						dv = parseInt(dv / 10, 10);
-						index++;
-					}
-					var index = Math.min(index, styles.length);
-					index = Math.max(0, index - 1);
-					index = Math.min(styles.length - 1, index);
-					var style = styles[index];
-
-					return new L.divIcon({
-						iconSize: style.iconSize,
-						className: '',
-						html: '<img style="' +
-						'" src="' + style.iconUrl + '" />' +
-						'<span style="' +
-						'position: absolute; font-size: 11px; font-weight: bold; text-align: center; ' +
-						'top: 0; left: 0; ' +
-						'line-height: ' + style.iconSize[1] + 'px;' +
-						'width: ' + style.iconSize[0] + 'px;' +
-						'">' + childCount + '</span>'
-					});
-				}
-			});
-			$.each(this.markers, function(index, marker) {
-				markercluster.addLayer(marker);
-			});
-			if (this.markercluster) {
-				this.map.removeLayer(this.markercluster);
-				this.markercluster = null;
-			}
-			this.map.addLayer(markercluster);
-			this.markercluster = markercluster;
+			this.map.addLayer(this.markerClusterLayer);
 		};
 
 		this.addGeoJson = function(options) {
@@ -388,7 +325,7 @@
 
 			// Add markercluster
 			if (options.markercluster) {
-				this.createMarkerCluster();
+				this.addMarkerClusterLayer();
 			}
 
 			// Add lines
@@ -475,4 +412,4 @@
 		return this;
 
 	};
-})(jQuery, window.mediaWiki, L);
+})(window.jQuery, window.mediaWiki, window.L, window.maps);
