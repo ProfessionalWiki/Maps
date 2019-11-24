@@ -16,6 +16,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
     * Border width (property key `stroke-width`)
     * Border opacity (property key `stroke-opacity`)
     * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
+    * Display only, editing in the visual editor is not yet supported
 * Polygon intersections are now allowed in the GeoJSON editor
 
 ## Maps 7.11.0

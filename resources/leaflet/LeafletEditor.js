@@ -40,83 +40,81 @@
 		);
 	}
 
-	let MapEditor = function(mapId, json, mapSaver) {
+	let MapEditor = function(map, json, mapSaver) {
 		let self = {};
 
 		self.initialize = function() {
-			self.map = L.map(
-				mapId,
-				{
-					fullscreenControl: true,
-					fullscreenControlOptions: {position: 'topright'},
-					zoomControl: false
-				}
-			);
-
-			self.hideLoadingMessage();
-
-			self.map.addControl(new L.Control.Zoom());
+			self.map = map;
 
 			if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
 				getUserHasPermission(
 					"edit",
 					function(hasPermission) {
 						if (hasPermission) {
-							self.setupWithEditor();
+							self._setupWithEditor();
 						}
 						else {
-							self.setupWithPlainMap();
+							self._setupWithPlainMap();
 						}
 					}
 				);
 			}
 			else {
-				self.setupWithPlainMap();
+				self._setupWithPlainMap();
 			}
 
 			initializeMessages();
 		};
 
-		self.setupWithPlainMap = function() {
-			self.geoJsonLayer = maps.leaflet.GeoJson.newGeoJsonLayer(L, json);
-			self.finishSetup();
+		self.fitBounds = function () {
+			if (json.features.length === 0) {
+				self.map.setView([0, 0], 1);
+			}
+			else {
+				self.map.fitBounds(self.geoJsonLayer.getBounds());
+			}
 		};
 
-		self.setupWithEditor = function() {
+		self._setupWithPlainMap = function() {
+			self.geoJsonLayer = maps.leaflet.GeoJson.newGeoJsonLayer(L, json);
+			self._finishSetup();
+		};
+
+		self._setupWithEditor = function() {
 			self.geoJsonLayer = L.geoJSON(
 				json,
 				{
 					style: function (feature) {
 						return  maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
 					},
-					onEachFeature: self.onEditableFeature
+					onEachFeature: self._onEditableFeature
 				}
 			);
 
-			self.addDrawControls();
+			self._addDrawControls();
 
 			self.map.on(
 				L.Draw.Event.CREATED,
 				function (event) {
 					self.geoJsonLayer.addLayer(event.layer);
-					self.showSaveButton();
+					self._showSaveButton();
 				}
 			);
 
 			self.map.on(
 				L.Draw.Event.EDITED,
-				self.showSaveButton
+				self._showSaveButton
 			);
 
 			self.map.on(
 				L.Draw.Event.DELETED,
-				self.showSaveButton
+				self._showSaveButton
 			);
 
-			self.finishSetup();
+			self._finishSetup();
 		};
 
-		self.showSaveButton = function() {
+		self._showSaveButton = function() {
 			if (!self.saveButton) {
 				self.saveButton = L.easyButton(
 					'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/save-solid.svg">',
@@ -141,7 +139,7 @@
 										}
 										else {
 											console.log(response);
-											self.showSaveButton();
+											self._showSaveButton();
 											alert(mw.msg('maps-json-editor-edit-failed'));
 										}
 									}
@@ -154,9 +152,8 @@
 			}
 		};
 
-		self.finishSetup = function() {
+		self._finishSetup = function() {
 			self.geoJsonLayer.addTo(self.map);
-			self.addTitleLayer();
 			self.fitBounds();
 
 			$(window).bind('beforeunload', function() {
@@ -164,15 +161,6 @@
 					return 'The map has unsaved changes. Are you sure you want to leave the page?';
 				}
 			});
-		};
-
-		self.hideLoadingMessage = function() {
-			self.map.on(
-				'load',
-				function() {
-					$('#' + mapId).find('div.maps-loading-message').hide();
-				}
-			);
 		};
 
 		function onSizeChange(element, callback) {
@@ -188,7 +176,7 @@
 			});
 		}
 
-		self.onEditableFeature = function(feature, layer) {
+		self._onEditableFeature = function( feature, layer) {
 			let titleInput = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
 			let descriptionInput = $('<textarea cols="50" rows="2" />').text(feature.properties.description);
 			let button = $('<button style="width: 100%">').text(mw.msg('maps-json-editor-toolbar-save-text'));
@@ -221,7 +209,7 @@
 				if (titleInput.val() !== titleInput.text() || descriptionInput.val() !== descriptionInput.text()) {
 					feature.properties["title"] = titleInput.val();
 					feature.properties["description"] = descriptionInput.val();
-					self.showSaveButton();
+					self._showSaveButton();
 				}
 			});
 
@@ -229,22 +217,7 @@
 			layer.bindPopup(popup);
 		};
 
-		self.addTitleLayer = function() {
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-				attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-			}).addTo(self.map);
-		};
-
-		self.fitBounds = function() {
-			if (json.features.length === 0) {
-				self.map.setView([0, 0], 1);
-			}
-			else {
-				self.map.fitBounds(self.geoJsonLayer.getBounds());
-			}
-		};
-
-		self.addDrawControls = function() {
+		self._addDrawControls = function() {
 			 // self.map.addControl(L.control.styleEditor({
 				//  position: "topleft",
 				//  useGrouping: false,
