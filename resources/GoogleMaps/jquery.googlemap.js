@@ -751,7 +751,7 @@
 
 			//Add custom controls
 			// - Fullscreen
-			if(options.enablefullscreen){
+			if(options.fullscreen){
 				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl(this.map));
 			}
 		};

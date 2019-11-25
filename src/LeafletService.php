@@ -65,8 +65,8 @@ class LeafletService implements MappingService {
 			'message' => 'maps-par-resizable'
 		];
 
-		$params['enablefullscreen'] = [
-			'aliases' => [ 'fullscreen' ],
+		$params['fullscreen'] = [
+			'aliases' => [ 'enablefullscreen' ],
 			'type' => ParameterTypes::BOOLEAN,
 			'default' => false,
 			'message' => 'maps-par-enable-fullscreen',

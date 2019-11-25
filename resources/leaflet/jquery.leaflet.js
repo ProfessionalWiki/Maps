@@ -59,7 +59,7 @@
 		if (options.minzoom !== false) mapOptions.minZoom = options.minzoom;
 		if (options.maxzoom !== false) mapOptions.maxZoom = options.maxzoom;
 
-		if (options.enablefullscreen) {
+		if (options.fullscreen) {
 			mapOptions.fullscreenControl = true;
 			mapOptions.fullscreenControlOptions= {
 				position: 'topleft'
@@ -429,7 +429,7 @@
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
 
-			if (options.enablefullscreen) {
+			if (options.fullscreen) {
 				dependencies.push( 'ext.maps.leaflet.fullscreen' );
 			}
 

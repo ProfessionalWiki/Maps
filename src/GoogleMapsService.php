@@ -232,8 +232,8 @@ class GoogleMapsService implements MappingService {
 			// new CriterionSearchMarkers() FIXME
 		];
 
-		$params['enablefullscreen'] = [
-			'aliases' => [ 'fullscreen' ],
+		$params['fullscreen'] = [
+			'aliases' => [ 'enablefullscreen' ],
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-par-enable-fullscreen',
