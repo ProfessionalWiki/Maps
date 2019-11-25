@@ -93,6 +93,7 @@
 			}
 		};
 
+		// Caution: used by ajaxUpdateMarker
 		this.removeMarkers = function () {
 			this.removeMarkerClusterLayer();
 			var map = this.map;
@@ -105,19 +106,20 @@
 		};
 
 		this.addLine = function (properties) {
-			var options = {
-				color: properties.strokeColor,
-				weight:properties.strokeWeight,
-				opacity:properties.strokeOpacity
-			};
-
 			var latlngs = [];
 			for (var x = 0; x < properties.pos.length; x++) {
 				latlngs.push([properties.pos[x].lat, properties.pos[x].lon]);
 				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
 			}
 
-			var line = L.polyline(latlngs, options).addTo(this.map);
+			var line = L.polyline(
+				latlngs,
+				{
+					color: properties.strokeColor,
+					weight:properties.strokeWeight,
+					opacity:properties.strokeOpacity
+				}
+			).addTo(this.map);
 
 			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
 				line.bindPopup( properties.text );
@@ -129,7 +131,7 @@
 				_this.points.push( new L.LatLng(position.lat, position.lon) );
 			});
 
-			var polygon = L.polygon(
+			let polygon = L.polygon(
 				properties.pos.map(function(position) {
 					return [position.lat, position.lon];
 				}),
@@ -145,13 +147,12 @@
 			polygon.addTo(this.map);
 
 			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
-				console.log(properties.text);
 				polygon.bindPopup( properties.text );
 			}
 		};
 
 		this.addCircle = function (properties) {
-			var circle = L.circle(
+			let circle = L.circle(
 				[properties.centre.lat, properties.centre.lon],
 				{
 					radius: properties.radius,
@@ -174,17 +175,19 @@
 			this.points.push( new L.LatLng(properties.sw.lat, properties.sw.lon) );
 			this.points.push( new L.LatLng(properties.ne.lat, properties.ne.lon) );
 
-			var options = {
-				color: properties.strokeColor,
-				weight:properties.strokeWeight,
-				opacity:properties.strokeOpacity,
-				fillColor:properties.fillColor,
-				fillOpacity:properties.fillOpacity
-			};
-
-			var bounds = [[properties.sw.lat, properties.sw.lon], [properties.ne.lat, properties.ne.lon]];
-
-			var rectangle = L.rectangle( bounds, options ).addTo(this.map);
+			let rectangle = L.rectangle(
+				[
+					[properties.sw.lat, properties.sw.lon],
+					[properties.ne.lat, properties.ne.lon]
+				],
+				{
+					color: properties.strokeColor,
+					weight: properties.strokeWeight,
+					opacity: properties.strokeOpacity,
+					fillColor: properties.fillColor,
+					fillOpacity: properties.fillOpacity
+				}
+			).addTo(this.map);
 
 			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
 				rectangle.bindPopup( properties.text );
@@ -201,7 +204,7 @@
 
 		this.addGeoJson = function(options) {
 			if (options.geojson !== '') {
-				var geoJsonLayer = window.maps.leaflet.GeoJson.newGeoJsonLayer( L, options.geojson ).addTo( this.map );
+				let geoJsonLayer = window.maps.leaflet.GeoJson.newGeoJsonLayer( L, options.geojson ).addTo( this.map );
 
 				this.points.push( geoJsonLayer.getBounds().getNorthEast() );
 				this.points.push( geoJsonLayer.getBounds().getSouthWest() );
@@ -240,8 +243,8 @@
 		this.setup = function () {
 
 			var mapOptions = {};
-			if (options.minzoom !== false ) mapOptions.minZoom = options.minzoom;
-			if (options.maxzoom !== false ) mapOptions.maxZoom = options.maxzoom;
+			if (options.minzoom !== false) mapOptions.minZoom = options.minzoom;
+			if (options.maxzoom !== false) mapOptions.maxZoom = options.maxzoom;
 
 			if (options.enablefullscreen) {
 				mapOptions.fullscreenControl = true;
@@ -263,7 +266,7 @@
 				mapOptions.dragging = false;
 			}
 
-			var map = L.map( this.get(0), mapOptions );
+			let map = L.map( this.get(0), mapOptions );
 
 			map.on(
 				'load',
