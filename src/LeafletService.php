@@ -50,7 +50,8 @@ class LeafletService implements MappingService {
 			'islist' => true,
 		];
 
-		$params['overlaylayers'] = [
+		$params['overlays'] = [
+			'aliases' => [ 'overlaylayers' ],
 			'type' => ParameterTypes::STRING,
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],

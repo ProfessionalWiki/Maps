@@ -324,7 +324,7 @@
 		this.addOverlays = function() {
 			let overlays = {};
 
-			$.each(options.overlaylayers, function(index, overlayName) {
+			$.each(options.overlays, function(index, overlayName) {
 				overlays[overlayName] = new L.tileLayer.provider(overlayName).addTo(_this.map);
 			});
 
@@ -335,7 +335,7 @@
 			let layers = this.addLayers();
 			let overlays = this.addOverlays();
 
-			if (options.layers.length > 1) {
+			if (options.layers.length > 1 || options.overlays.length > 0) {
 				L.control.layers(layers, overlays).addTo(this.map);
 			}
 		};

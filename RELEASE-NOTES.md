@@ -20,6 +20,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 * Polygon intersections are now allowed in the GeoJSON editor
 * Upgraded Leaflet from 1.3.4 to 1.6.0
 * Added `cluster` alias to the `markercluster` parameter for Leaflet
+* Added `overlays` alias to the `overlaylayers` parameter for Leaflet
+* The Leaflet layer control is now always shown when there are overlays
 
 ## Maps 7.11.0
 
