@@ -8,20 +8,18 @@
 (function( $, sm ) {
 	var ajaxRequest = null;
 
-	var mapEvents = ['dragend', 'zoomend'];
-
 	$( document ).ready( function() {
 		// todo: find a way to remove setTimeout.
 		setTimeout( function() {
-			$( window.mapsLeafletList ).each( function( index, map ) {
-				if( !map.options.ajaxquery || !map.options.ajaxcoordproperty ) {
+			$( window.mapsLeafletList ).each( function( index, jqueryMap ) {
+				if( !jqueryMap.options.ajaxquery || !jqueryMap.options.ajaxcoordproperty ) {
 					return;
 				}
-				map.map.on( mapEvents.join( ' ' ), function() {
-					var bounds = map.map.getBounds();
+				jqueryMap.map.on( 'dragend zoomend', function() {
+					var bounds = jqueryMap.map.getBounds();
 					var query = sm.buildQueryString(
-						decodeURIComponent( map.options.ajaxquery.replace( /\+/g, ' ' ) ),
-						map.options.ajaxcoordproperty,
+						decodeURIComponent( jqueryMap.options.ajaxquery.replace( /\+/g, ' ' ) ),
+						jqueryMap.options.ajaxcoordproperty,
 						bounds.getNorthEast().lat,
 						bounds.getNorthEast().lng,
 						bounds.getSouthWest().lat,
@@ -31,8 +29,8 @@
 					if( ajaxRequest !== null ) {
 						ajaxRequest.abort();
 					}
-					ajaxRequest = sm.ajaxUpdateMarker( map, query, map.options.icon ).done( function() {
-						map.createMarkerCluster();
+					ajaxRequest = sm.ajaxUpdateMarker( jqueryMap, query, jqueryMap.options.icon ).done( function() {
+						jqueryMap.createMarkerCluster();
 						ajaxRequest = null;
 					} );
 				} );
