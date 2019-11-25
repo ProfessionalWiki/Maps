@@ -424,6 +424,14 @@
 				//TODO: Fix moving map when resized
 				_this.resizable();
 			}
+
+			this.editButton = L.easyButton(
+				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
+				function() {
+					console.log('edit mode');
+				},
+				'Edit stuff' // TODO
+			).addTo(this.map);
 		};
 
 		this.getDependencies = function ( options ) {

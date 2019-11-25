@@ -117,7 +117,7 @@
 		self._showSaveButton = function() {
 			if (!self.saveButton) {
 				self.saveButton = L.easyButton(
-					'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/save-solid.svg">',
+					'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/save-solid.svg">',
 					function() {
 						let editSummary = prompt(
 							'Enter an edit summary for your changes to the map',
