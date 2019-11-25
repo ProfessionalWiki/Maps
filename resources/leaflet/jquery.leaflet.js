@@ -86,14 +86,6 @@
 			return marker;
 		};
 
-		this.removeMarker = function (marker) {
-			this.map.removeLayer(marker);
-			this.points = []; // FIXME: this is not correct
-			this.markers = this.markers.filter(function(object) {
-				return object !== marker;
-			});
-		};
-
 		this.removeMarkerClusterLayer = function() {
 			if (this.markerClusterLayer) {
 				this.map.removeLayer(this.markerClusterLayer);
