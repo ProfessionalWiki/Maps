@@ -5,11 +5,14 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.12.0
 
-* Added editing support for (popup) titles and descriptions to the GeoJSON editor
-* Changed GeoJSON editor save flow: it now has a save button and no longer auto-saves
+* Enhanced GeoJSON editor
+    * Added editing of titles and descriptions (by clicking markers/shapes)
+    * Added save button and removed auto-save
+    * Added ability to specify an edit summary
+    * Polygon intersections are now allowed
 * Added [simplestyle](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0) support for GeoJSON
-    * Popup text (property key `text`) (Only plaintext, HTML is not supported)
-    * Popup description (property key `description`) (Only plaintext, HTML is not supported)
+    * Popup text (property key `text`) (Only plaintext, HTML and wikitext are not supported)
+    * Popup description (property key `description`) (Only plaintext, HTML and wikitext are not supported)
     * Fill color (property key `fill`)
     * Fill opacity (property key `fill-opacity`)
     * Border color (property key `stroke`)
@@ -17,7 +20,6 @@ different releases and which versions of PHP and MediaWiki they support, see the
     * Border opacity (property key `stroke-opacity`)
     * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
     * Display only, editing in the visual editor is not yet supported
-* Polygon intersections are now allowed in the GeoJSON editor
 * Upgraded Leaflet from 1.3.4 to 1.6.0
 * Added `cluster` alias to the `markercluster` parameter for Leaflet
 * Added `overlays` alias to the `overlaylayers` parameter for Leaflet
