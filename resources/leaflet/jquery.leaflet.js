@@ -54,6 +54,34 @@
 		return marker;
 	}
 
+	function getMapOptions(options) {
+		let mapOptions = {};
+		if (options.minzoom !== false) mapOptions.minZoom = options.minzoom;
+		if (options.maxzoom !== false) mapOptions.maxZoom = options.maxzoom;
+
+		if (options.enablefullscreen) {
+			mapOptions.fullscreenControl = true;
+			mapOptions.fullscreenControlOptions= {
+				position: 'topleft'
+			};
+		}
+
+		mapOptions.scrollWheelZoom = options.scrollwheelzoom;
+
+		if (options.static) {
+			mapOptions.scrollWheelZoom = false;
+			mapOptions.doubleClickZoom = false;
+			mapOptions.touchZoom = false;
+			mapOptions.boxZoom = false;
+			mapOptions.tap = false;
+			mapOptions.keyboard = false;
+			mapOptions.zoomControl = false;
+			mapOptions.dragging = false;
+		}
+
+		return mapOptions;
+	}
+
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
@@ -232,7 +260,7 @@
 			return window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
 		};
 
-		this.getLayers = function () {
+		this.getLayerNames = function () {
 			if ( this.isUserUsesDarkMode() ) {
 				return mw.config.get('egMapsLeafletLayersDark');
 			}
@@ -240,33 +268,80 @@
 			return options.layers;
 		};
 
-		this.setup = function () {
-
-			var mapOptions = {};
-			if (options.minzoom !== false) mapOptions.minZoom = options.minzoom;
-			if (options.maxzoom !== false) mapOptions.maxZoom = options.maxzoom;
-
-			if (options.enablefullscreen) {
-				mapOptions.fullscreenControl = true;
-				mapOptions.fullscreenControlOptions= {
-					position: 'topleft'
-				};
+		this.addMarkersAndShapes = function() {
+			for (var i = options.locations.length - 1; i >= 0; i--) {
+				this.addMarker(options.locations[i]);
 			}
 
-			mapOptions.scrollWheelZoom = options.scrollwheelzoom;
-
-			if (options.static) {
-				mapOptions.scrollWheelZoom = false;
-				mapOptions.doubleClickZoom = false;
-				mapOptions.touchZoom = false;
-				mapOptions.boxZoom = false;
-				mapOptions.tap = false;
-				mapOptions.keyboard = false;
-				mapOptions.zoomControl = false;
-				mapOptions.dragging = false;
+			if (options.markercluster) {
+				this.addMarkerClusterLayer();
 			}
 
-			let map = L.map( this.get(0), mapOptions );
+			if (options.lines) {
+				for (var i = 0; i < options.lines.length; i++) {
+					this.addLine(options.lines[i]);
+				}
+			}
+
+			if (options.polygons) {
+				for (var i = 0; i < options.polygons.length; i++) {
+					this.addPolygon(options.polygons[i]);
+				}
+			}
+
+			if (options.circles) {
+				for (var i = 0; i < options.circles.length; i++) {
+					this.addCircle(options.circles[i]);
+				}
+			}
+
+			if (options.rectangles) {
+				for (var i = 0; i < options.rectangles.length; i++) {
+					this.addRectangle(options.rectangles[i]);
+				}
+			}
+		};
+
+		this.addLayers = function() {
+			let layers = {};
+
+			$.each( this.getLayerNames().reverse(), function(index, layerName) {
+				var options = {} ;
+				var providerName = layerName.split('.')[0] ;
+				if (apiKeys.hasOwnProperty(providerName) && apiKeys[providerName] !== '') {
+					options.apikey = apiKeys[providerName] ;
+				}
+				if (layerName === 'MapQuestOpen') {
+					layers[layerName] = new window.MQ.TileLayer().addTo(_this.map);
+				} else {
+					layers[layerName] = new L.tileLayer.provider(layerName,options).addTo(_this.map);
+				}
+			});
+
+			return layers;
+		};
+
+		this.addOverlays = function() {
+			let overlays = {};
+
+			$.each(options.overlaylayers, function(index, overlayName) {
+				overlays[overlayName] = new L.tileLayer.provider(overlayName).addTo(_this.map);
+			});
+
+			return overlays;
+		};
+
+		this.addLayersAndOverlays = function() {
+			let layers = this.addLayers();
+			let overlays = this.addOverlays();
+
+			if (options.layers.length > 1) {
+				L.control.layers(layers, overlays).addTo(this.map);
+			}
+		};
+
+		this.setup = function() {
+			let map = L.map( this.get(0), getMapOptions(options) );
 
 			map.on(
 				'load',
@@ -280,29 +355,7 @@
 			this.map = map;
 
 			this.bindClickTarget();
-
-			var layers = {};
-			$.each( this.getLayers().reverse(), function(index, layerName) {
-				var options = {} ;
-				var providerName = layerName.split('.')[0] ;
-				if (apiKeys.hasOwnProperty(providerName) && apiKeys[providerName] !== '') {
-					options.apikey = apiKeys[providerName] ;
-				}
-				if (layerName === 'MapQuestOpen') {
-					layers[layerName] = new window.MQ.TileLayer().addTo(map);
-				} else {
-					layers[layerName] = new L.tileLayer.provider(layerName,options).addTo(map);
-				}
-			});
-
-			var overlaylayers = {};
-			$.each(options.overlaylayers, function(index, overlaylayerName) {
-				overlaylayers[overlaylayerName] = new L.tileLayer.provider(overlaylayerName).addTo(_this.map);
-			});
-
-			if (options.layers.length > 1) {
-				L.control.layers(layers, overlaylayers).addTo(map);
-			}
+			this.addLayersAndOverlays(map);
 
 			if (options.resizable) {
 				//TODO: Fix moving map when resized
@@ -313,44 +366,7 @@
 				options.locations = [];
 			}
 
-			// Add the markers.
-			for (var i = options.locations.length - 1; i >= 0; i--) {
-				this.addMarker(options.locations[i]);
-			}
-
-			// Add markercluster
-			if (options.markercluster) {
-				this.addMarkerClusterLayer();
-			}
-
-			// Add lines
-			if (options.lines) {
-				for (var i = 0; i < options.lines.length; i++) {
-					this.addLine(options.lines[i]);
-				}
-			}
-
-			// Add polygons
-			if (options.polygons) {
-				for (var i = 0; i < options.polygons.length; i++) {
-					this.addPolygon(options.polygons[i]);
-				}
-			}
-
-			// Add circles
-			if (options.circles) {
-				for (var i = 0; i < options.circles.length; i++) {
-					this.addCircle(options.circles[i]);
-				}
-			}
-
-			// Add rectangles
-			if (options.rectangles) {
-				for (var i = 0; i < options.rectangles.length; i++) {
-					this.addRectangle(options.rectangles[i]);
-				}
-			}
-
+			this.addMarkersAndShapes();
 			this.addGeoJson(options);
 
 			// Set map position (centre and zoom)
