@@ -454,7 +454,7 @@
 		};
 
 		this.createMarkerCluster = function() {
-			if ( !options.markercluster ) {
+			if ( !options.cluster ) {
 				return;
 			}
 			if (this.markercluster) {
@@ -886,7 +886,7 @@
 
 		//Complete path to OpenLayers WMS layer
 
-		if (!options.markercluster) {
+		if (!options.cluster) {
 			this.setup();
 		} else {
 			mw.loader.using( 'ext.maps.gm3.markercluster', function() {

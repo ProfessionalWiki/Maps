@@ -79,8 +79,8 @@ class LeafletService implements MappingService {
 			'message' => 'maps-par-scrollwheelzoom',
 		];
 
-		$params['markercluster'] = [
-			'aliases' => [ 'cluster' ],
+		$params['cluster'] = [
+			'aliases' => [ 'markercluster' ],
 			'type' => ParameterTypes::BOOLEAN,
 			'default' => false,
 			'message' => 'maps-par-markercluster',

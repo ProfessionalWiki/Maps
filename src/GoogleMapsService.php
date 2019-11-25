@@ -162,7 +162,8 @@ class GoogleMapsService implements MappingService {
 			'message' => 'maps-googlemaps3-par-poi',
 		];
 
-		$params['markercluster'] = [
+		$params['cluster'] = [
+			'aliases' => [ 'markercluster' ],
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-par-markercluster',

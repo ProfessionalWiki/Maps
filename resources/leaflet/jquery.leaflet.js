@@ -106,7 +106,7 @@
 			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
 			var marker = createMarker(properties, options);
-			if (!this.options.markercluster) {
+			if (!this.options.cluster) {
 				marker.addTo( this.map );
 			}
 			this.markers.push( marker );
@@ -388,7 +388,7 @@
 			this.addMarkersAndShapes();
 			this.addGeoJson(options);
 
-			if (options.markercluster) {
+			if (options.cluster) {
 				this.addMarkerClusterLayer();
 			}
 
@@ -437,7 +437,7 @@
 				dependencies.push( 'ext.maps.resizable' );
 			}
 
-			if (options.markercluster) {
+			if (options.cluster) {
 				dependencies.push( 'ext.maps.leaflet.markercluster' );
 			}
 

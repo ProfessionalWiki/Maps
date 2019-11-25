@@ -21,7 +21,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
     * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
     * Display only, editing in the visual editor is not yet supported
 * Upgraded Leaflet from 1.3.4 to 1.6.0
-* Added `cluster` alias to the `markercluster` parameter for Leaflet
+* Added `cluster` alias to the `markercluster` parameter for both Leaflet and Google Maps
 * Added `overlays` alias to the `overlaylayers` parameter for Leaflet
 * The Leaflet layer control is now always shown when there are overlays
 * Maker clustering now also clusters markers from the GeoJSON layer
