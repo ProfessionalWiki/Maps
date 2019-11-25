@@ -231,12 +231,40 @@
 		};
 
 		this.addGeoJson = function(options) {
-			if (options.geojson !== '') {
-				let geoJsonLayer = window.maps.leaflet.GeoJson.newGeoJsonLayer( L, options.geojson ).addTo( this.map );
-
-				this.points.push( geoJsonLayer.getBounds().getNorthEast() );
-				this.points.push( geoJsonLayer.getBounds().getSouthWest() );
+			if (options.geojson === '') {
+				return;
 			}
+
+			let geoJsonLayer = L.geoJSON(
+				options.geojson,
+				{
+					style: function (feature) {
+						return maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
+					},
+					pointToLayer: function(feature, latlng) {
+						_this.addMarker({
+							lat: latlng.lat,
+							lon: latlng.lng,
+							title: feature.properties.title || '',
+							text: maps.leaflet.GeoJson.popupContentFromProperties(feature.properties),
+							icon: ''
+						});
+					},
+					onEachFeature: function (feature, layer) {
+						if (feature.geometry.type !== 'Point') {
+							let popupContent = maps.leaflet.GeoJson.popupContentFromProperties(feature.properties);
+							if (popupContent !== '') {
+								layer.bindPopup(popupContent);
+							}
+						}
+					}
+				}
+			);
+
+			geoJsonLayer.addTo( this.map );
+
+			this.points.push( geoJsonLayer.getBounds().getNorthEast() );
+			this.points.push( geoJsonLayer.getBounds().getSouthWest() );
 		};
 
 		this.bindClickTarget = function() {
@@ -271,10 +299,6 @@
 		this.addMarkersAndShapes = function() {
 			for (var i = options.locations.length - 1; i >= 0; i--) {
 				this.addMarker(options.locations[i]);
-			}
-
-			if (options.markercluster) {
-				this.addMarkerClusterLayer();
 			}
 
 			if (options.lines) {
@@ -357,17 +381,16 @@
 			this.bindClickTarget();
 			this.addLayersAndOverlays(map);
 
-			if (options.resizable) {
-				//TODO: Fix moving map when resized
-				_this.resizable();
-			}
-
 			if (!options.locations) {
 				options.locations = [];
 			}
 
 			this.addMarkersAndShapes();
 			this.addGeoJson(options);
+
+			if (options.markercluster) {
+				this.addMarkerClusterLayer();
+			}
 
 			// Set map position (centre and zoom)
 			var centre;
@@ -395,6 +418,11 @@
 			}
 			if(centre) {
 				map.setView( centre, options.zoom !== false ? options.zoom : options.defzoom );
+			}
+
+			if (options.resizable) {
+				//TODO: Fix moving map when resized
+				_this.resizable();
 			}
 		};
 

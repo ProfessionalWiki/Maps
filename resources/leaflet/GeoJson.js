@@ -54,7 +54,7 @@
 			json,
 			{
 				style: function (feature) {
-					return  GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
+					return GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
 				},
 				onEachFeature: function (feature, layer) {
 					let popupContent = GeoJson.popupContentFromProperties(feature.properties);

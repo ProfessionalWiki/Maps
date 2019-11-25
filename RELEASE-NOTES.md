@@ -24,6 +24,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 * Added `cluster` alias to the `markercluster` parameter for Leaflet
 * Added `overlays` alias to the `overlaylayers` parameter for Leaflet
 * The Leaflet layer control is now always shown when there are overlays
+* Maker clustering now also clusters markers from the GeoJSON layer
 
 ## Maps 7.11.0
 
