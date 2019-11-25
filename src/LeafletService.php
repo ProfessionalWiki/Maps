@@ -79,6 +79,7 @@ class LeafletService implements MappingService {
 		];
 
 		$params['markercluster'] = [
+			'aliases' => [ 'cluster' ],
 			'type' => ParameterTypes::BOOLEAN,
 			'default' => false,
 			'message' => 'maps-par-markercluster',
