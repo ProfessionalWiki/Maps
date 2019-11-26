@@ -262,6 +262,18 @@
 			//this.addEditButton();
 		};
 
+		this.getEditor = function() {
+			if (!this.editor) {
+				this.editor = maps.leaflet.LeafletEditor(
+					_this.map,
+					options.geojson,
+					new maps.MapSaver('GeoJson:Berlin') // TODO
+				);
+			}
+
+			return this.editor;
+		};
+
 		this.addEditButton = function() {
 			// TODO: edit and page creation right checks
 			// TODO: only show when on latest revision
@@ -271,23 +283,18 @@
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
 				function() {
 					console.log('edit mode');
+					_this.removeEditButton();
 					_this.mapContent.remove();
 
-					let editor = maps.leaflet.LeafletEditor(
-						_this.map,
-						options.geojson,
-						new maps.MapSaver('GeoJson:Berlin') // TODO
-					);
-
-					_this.removeEditButton();
+					let editor = _this.getEditor();
 					editor.initialize();
 
 					// TODO: edit conflict / old revision detection
 
 					editor.onSaved(function() {
 						alert(mw.msg('maps-json-editor-changes-saved'));
-						editor.getLayer().remove();
-						this.mapContent = getMarkersAndShapes(options).addTo(this.map);
+						editor.remove();
+						this.mapContent = getMarkersAndShapes(options).addTo(_this.map);
 						_this.addEditButton();
 
 						// TODO: remove edit UI

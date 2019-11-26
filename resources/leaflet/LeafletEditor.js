@@ -33,13 +33,26 @@
 	}
 
 	let MapEditor = function(map, json, mapSaver) {
-		let self = {};
+		let self = {
+			isFirstInitialization: true,
+			unsavedChanges: false
+		};
 
 		self.initialize = function() {
 			self.map = map;
 
 			self.geoJsonLayer = self.newGeoJsonLayer().addTo(self.map);
 			self.addDrawControls();
+
+			self.firstInitialize();
+		};
+
+		self.firstInitialize = function() {
+			if (!self.isFirstInitialization) {
+				return;
+			}
+
+			self.isFirstInitialization = false;
 
 			self.map.on(
 				L.Draw.Event.CREATED,
@@ -59,9 +72,8 @@
 				self._showSaveButton
 			);
 
-
 			$(window).bind('beforeunload', function() {
-				if (self.saveButton) {
+				if (self.unsavedChanges) {
 					return 'The map has unsaved changes. Are you sure you want to leave the page?';
 				}
 			});
@@ -81,41 +93,49 @@
 			);
 		};
 
-		self._showSaveButton = function() {
-			if (!self.saveButton) {
-				self.saveButton = L.easyButton(
-					'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/save-solid.svg">',
-					function() {
-						let editSummary = prompt(
-							'Enter an edit summary for your changes to the map',
-							'Visual map edit'
-						); // TODO: i18n
+		self.newSaveButton = function() {
+			return L.easyButton(
+				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/save-solid.svg">',
+				function() {
+					let editSummary = prompt(
+						'Enter an edit summary for your changes to the map',
+						'Visual map edit'
+					); // TODO: i18n
 
-						if (editSummary!== null) {
-							self.saveButton.remove();
-							self.saveButton = null;
+					if (editSummary!== null) {
+						self.saveButton.remove();
 
-							mapSaver.save(
-								{
-									newContent: JSON.stringify(self.geoJsonLayer.toGeoJSON()),
-									summary: editSummary,
-									done: function(response) {
-										if (response.result === 'Success') {
-											self.onSaved();
-										}
-										else {
-											console.log(response);
-											self._showSaveButton();
-											alert(mw.msg('maps-json-editor-edit-failed'));
-										}
+						mapSaver.save(
+							{
+								newContent: JSON.stringify(self.geoJsonLayer.toGeoJSON()),
+								summary: editSummary,
+								done: function(response) {
+									if (response.result === 'Success') {
+										self.unsavedChanges = false;
+										self.onSaved();
+									}
+									else {
+										console.log(response);
+										self._showSaveButton();
+										alert(mw.msg('maps-json-editor-edit-failed'));
 									}
 								}
-							);
-						}
-					},
-					mw.msg('maps-json-editor-toolbar-button-save')
-				).addTo(self.map);
+							}
+						);
+					}
+				},
+				mw.msg('maps-json-editor-toolbar-button-save')
+			);
+		};
+
+		self._showSaveButton = function() {
+			self.unsavedChanges = true;
+
+			if (!self.saveButton) {
+				self.saveButton = self.newSaveButton();
 			}
+
+			self.saveButton.addTo(self.map);
 		};
 
 		function onSizeChange(element, callback) {
@@ -179,7 +199,15 @@
 				//  openOnLeafletDraw: false,
 			 // }));
 
-			self.map.addControl(new L.Control.Draw({
+			if (!self.drawControl) {
+				self.drawControl = self.newDrawControl();
+			}
+
+			self.drawControl.addTo(self.map);
+		};
+
+		self.newDrawControl = function() {
+			return new L.Control.Draw({
 				edit: {
 					featureGroup: self.geoJsonLayer,
 					poly: {
@@ -194,7 +222,13 @@
 					circlemarker: false, // Do not want this one
 					circle: false // Is not showing properly after save
 				}
-			}));
+			})
+		};
+
+		self.remove = function() {
+			self.drawControl.remove();
+			self.saveButton.remove();
+			self.geoJsonLayer.remove();
 		};
 
 		self.onSaved = function() {};
@@ -202,6 +236,7 @@
 		let exports = {};
 
 		exports.initialize = self.initialize;
+		exports.remove = self.remove;
 
 		exports.getLayer = function() {
 			return self.geoJsonLayer;
