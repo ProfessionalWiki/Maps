@@ -417,7 +417,7 @@
 			if (bounds.isValid()) {
 				if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
 					this.map.setView(
-						this.mapContent.getBounds().getCenter(),
+						bounds.getCenter(),
 						options.defzoom
 					);
 				}

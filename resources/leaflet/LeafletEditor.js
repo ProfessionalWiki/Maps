@@ -32,66 +32,14 @@
 		toolbar.buttons.removeDisabled = mw.msg('maps-json-editor-toolbar-button-remove-disabled');
 	}
 
-	function getUserHasPermission(permission, callback) {
-		mw.user.getRights(
-			function(rights) {
-				callback(rights.includes(permission))
-			}
-		);
-	}
-
 	let MapEditor = function(map, json, mapSaver) {
 		let self = {};
 
 		self.initialize = function() {
 			self.map = map;
 
-			if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
-				getUserHasPermission(
-					"edit",
-					function(hasPermission) {
-						if (hasPermission) {
-							self._setupWithEditor();
-						}
-						else {
-							self._setupWithPlainMap();
-						}
-					}
-				);
-			}
-			else {
-				self._setupWithPlainMap();
-			}
-
-			initializeMessages();
-		};
-
-		self.fitBounds = function () {
-			if (json.features.length === 0) {
-				self.map.setView([0, 0], 1);
-			}
-			else {
-				self.map.fitBounds(self.geoJsonLayer.getBounds());
-			}
-		};
-
-		self._setupWithPlainMap = function() {
-			self.geoJsonLayer = maps.leaflet.GeoJson.newGeoJsonLayer(L, json);
-			self._finishSetup();
-		};
-
-		self._setupWithEditor = function() {
-			self.geoJsonLayer = L.geoJSON(
-				json,
-				{
-					style: function (feature) {
-						return  maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
-					},
-					onEachFeature: self._onEditableFeature
-				}
-			);
-
-			self._addDrawControls();
+			self.geoJsonLayer = self.newGeoJsonLayer().addTo(self.map);
+			self.addDrawControls();
 
 			self.map.on(
 				L.Draw.Event.CREATED,
@@ -111,7 +59,26 @@
 				self._showSaveButton
 			);
 
-			self._finishSetup();
+
+			$(window).bind('beforeunload', function() {
+				if (self.saveButton) {
+					return 'The map has unsaved changes. Are you sure you want to leave the page?';
+				}
+			});
+
+			initializeMessages();
+		};
+
+		self.newGeoJsonLayer = function() {
+			return L.geoJSON(
+				json,
+				{
+					style: function (feature) {
+						return  maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
+					},
+					onEachFeature: self._onEditableFeature
+				}
+			);
 		};
 
 		self._showSaveButton = function() {
@@ -149,17 +116,6 @@
 					mw.msg('maps-json-editor-toolbar-button-save')
 				).addTo(self.map);
 			}
-		};
-
-		self._finishSetup = function() {
-			self.geoJsonLayer.addTo(self.map);
-			self.fitBounds();
-
-			$(window).bind('beforeunload', function() {
-				if (self.saveButton) {
-					return 'The map has unsaved changes. Are you sure you want to leave the page?';
-				}
-			});
 		};
 
 		function onSizeChange(element, callback) {
@@ -216,7 +172,7 @@
 			layer.bindPopup(popup);
 		};
 
-		self._addDrawControls = function() {
+		self.addDrawControls = function() {
 			 // self.map.addControl(L.control.styleEditor({
 				//  position: "topleft",
 				//  useGrouping: false,
@@ -241,7 +197,14 @@
 			}));
 		};
 
-		return self;
+		let exports = {};
+
+		exports.initialize = self.initialize;
+		exports.getLayer = function() {
+			return self.geoJsonLayer;
+		};
+
+		return exports;
 	};
 
 	if (!maps.leaflet) {maps.leaflet = {};}
