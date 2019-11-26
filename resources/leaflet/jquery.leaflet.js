@@ -169,10 +169,44 @@
 		return rectangle;
 	}
 
+	function newGeoJsonLayer(options, markerLayer) {
+		return L.geoJSON(
+			options.geojson,
+			{
+				style: function (feature) {
+					return maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
+				},
+				pointToLayer: function(feature, latlng) {
+					markerLayer.addLayer(
+						createMarker(
+							{
+								lat: latlng.lat,
+								lon: latlng.lng,
+								title: feature.properties.title || '',
+								text: maps.leaflet.GeoJson.popupContentFromProperties(feature.properties),
+								icon: ''
+							},
+							options
+						)
+					);
+				},
+				onEachFeature: function (feature, layer) {
+					if (feature.geometry.type !== 'Point') {
+						let popupContent = maps.leaflet.GeoJson.popupContentFromProperties(feature.properties);
+						if (popupContent !== '') {
+							layer.bindPopup(popupContent);
+						}
+					}
+				}
+			}
+		);
+	}
+
 	function getMarkersAndShapes(options) {
 		let features = L.featureGroup();
 		let cluster = maps.leaflet.LeafletCluster.newLayer(options);
 		let markerLayer = options.cluster ? cluster : features;
+		features.addLayer(cluster);
 
 		$.each(options.locations, function(index, properties) {
 			markerLayer.addLayer(createMarker(properties, options));
@@ -194,7 +228,9 @@
 			features.addLayer(newRectangleFromProperties(properties));
 		});
 
-		features.addLayer(cluster);
+		if (options.geojson !== '') {
+			features.addLayer(newGeoJsonLayer(options, markerLayer));
+		}
 
 		return features
 	}
@@ -211,34 +247,25 @@
 		var apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
 
 		this.setup = function() {
-			let map = L.map( this.get(0), getMapOptions(options) );
+			this.map = L.map( this.get(0), getMapOptions(options) );
+			this.mapContent = getMarkersAndShapes(options).addTo(this.map);
 
-			map.on(
+			this.hideLoadingMessage();
+			this.addLayersAndOverlays(this.map);
+			this.centerAndZoomMap();
+			this.bindClickTarget();
+			this.applyResizable();
+
+			// this.addEditButton();
+		};
+
+		this.hideLoadingMessage = function() {
+			this.map.on(
 				'load',
 				function() {
 					$(_this).find('div.maps-loading-message').hide();
 				}
 			);
-
-			map.fitWorld();
-
-			this.map = map;
-
-			this.bindClickTarget();
-			this.addLayersAndOverlays(map);
-
-			this.featureGroup = getMarkersAndShapes(options);
-			map.addLayer(this.featureGroup);
-
-			this.addGeoJson(options);
-
-			this.centerAndZoomMap();
-
-			if (options.resizable) {
-				_this.resizable();
-			}
-
-			this.addEditButton();
 		};
 
 		this.addEditButton = function() {
@@ -259,6 +286,12 @@
 			}
 		};
 
+		this.applyResizable = function() {
+			if (options.resizable) {
+				_this.resizable();
+			}
+		};
+
 		/**
 		 * Creates a new marker with the provided data, adds it to the map
 		 * and returns it.
@@ -266,46 +299,12 @@
 		 * @return {L.Marker}
 		 */
 		this.addMarker = function (properties) {
-
+			// TODO
 		};
 
 		// Caution: used by ajaxUpdateMarker
 		this.removeMarkers = function () {
 			// TODO
-		};
-
-		this.addGeoJson = function(options) {
-			if (options.geojson === '') {
-				return;
-			}
-
-			let geoJsonLayer = L.geoJSON(
-				options.geojson,
-				{
-					style: function (feature) {
-						return maps.leaflet.GeoJson.simpleStyleToLeafletPathOptions(feature.properties);
-					},
-					pointToLayer: function(feature, latlng) {
-						_this.addMarker({
-							lat: latlng.lat,
-							lon: latlng.lng,
-							title: feature.properties.title || '',
-							text: maps.leaflet.GeoJson.popupContentFromProperties(feature.properties),
-							icon: ''
-						});
-					},
-					onEachFeature: function (feature, layer) {
-						if (feature.geometry.type !== 'Point') {
-							let popupContent = maps.leaflet.GeoJson.popupContentFromProperties(feature.properties);
-							if (popupContent !== '') {
-								layer.bindPopup(popupContent);
-							}
-						}
-					}
-				}
-			);
-
-			geoJsonLayer.addTo( this.map );
 		};
 
 		this.bindClickTarget = function() {
@@ -376,6 +375,7 @@
 		};
 
 		this.centerAndZoomMap = function() {
+			this.map.fitWorld();
 			this.fitContent();
 
 			if (options.zoom !== false) {
@@ -391,12 +391,12 @@
 		};
 
 		this.fitContent = function() {
-			let bounds = this.featureGroup.getBounds();
+			let bounds = this.mapContent.getBounds();
 
 			if (bounds.isValid()) {
 				if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
 					this.map.setView(
-						this.featureGroup.getBounds().getCenter(),
+						this.mapContent.getBounds().getCenter(),
 						options.defzoom
 					);
 				}
