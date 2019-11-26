@@ -392,33 +392,7 @@
 				this.addMarkerClusterLayer();
 			}
 
-			// Set map position (centre and zoom)
-			var centre;
-			if (options.centre === false) {
-				switch ( this.points.length ) {
-					case 0:
-						centre = new L.LatLng(0, 0);
-						break;
-					case 1:
-						centre = this.points[0];
-						break;
-					default:
-						var bounds = new L.LatLngBounds( this.points );
-						if (options.zoom === false) {
-							map.fitBounds( bounds );
-							centre = false;
-						} else {
-							centre = bounds.getCenter();
-						}
-						break;
-				}
-				this.points = [];
-			} else {
-				centre = new L.LatLng(options.centre.lat, options.centre.lon);
-			}
-			if(centre) {
-				map.setView( centre, options.zoom !== false ? options.zoom : options.defzoom );
-			}
+			this.centreMap();
 
 			if (options.resizable) {
 				//TODO: Fix moving map when resized
@@ -432,6 +406,33 @@
 				},
 				'Edit stuff' // TODO
 			).addTo(this.map);
+		};
+
+		this.centreMap = function() {
+			if (options.zoom === false && this.points.length > 1) {
+				this.map.fitBounds( new L.LatLngBounds( this.points ) );
+			}
+			else {
+				this.map.setView(
+					this.getBestCentre(),
+					options.zoom === false ? options.defzoom : options.zoom
+				);
+			}
+		};
+
+		this.getBestCentre = function() {
+			if (options.centre !== false) {
+				return new L.LatLng(options.centre.lat, options.centre.lon);
+			}
+
+			switch ( this.points.length ) {
+				case 0:
+					return new L.LatLng(0, 0);
+				case 1:
+					return this.points[0];
+				default:
+					return ( new L.LatLngBounds( this.points ) ).getCenter();
+			}
 		};
 
 		this.getDependencies = function ( options ) {
