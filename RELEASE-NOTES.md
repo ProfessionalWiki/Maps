@@ -24,6 +24,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 * The Leaflet layer control is now always shown when there are overlays
 * Added `cluster` alias to the `markercluster` parameter for both Leaflet and Google Maps
 * Added `overlays` alias to the `overlaylayers` parameter for Leaflet
+* Leaflet maps with no markers or shapes are now zoomed out by default
 * Upgraded Leaflet from 1.3.4 to 1.6.0
 * Upgraded Leaflet marker cluster plugin from 1.3.0 to 1.4.1
 
