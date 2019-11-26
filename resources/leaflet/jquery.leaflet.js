@@ -82,19 +82,133 @@
 		return mapOptions;
 	}
 
+	function newLineFromProperties(properties) {
+		var latlngs = [];
+
+		for (var x = 0; x < properties.pos.length; x++) {
+			latlngs.push([properties.pos[x].lat, properties.pos[x].lon]);
+		}
+
+		let line = L.polyline(
+			latlngs,
+			{
+				color: properties.strokeColor,
+				weight: properties.strokeWeight,
+				opacity: properties.strokeOpacity
+			}
+		);
+
+		// TODO: maybe bind via feature group
+		if ( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
+			line.bindPopup( properties.text );
+		}
+
+		return line;
+	}
+
+	function newPolygonFromProperties(properties) {
+		let polygon = L.polygon(
+			properties.pos.map(function(position) {
+				return [position.lat, position.lon];
+			}),
+			{
+				color: properties.strokeColor,
+				weight:properties.strokeWeight,
+				opacity:properties.strokeOpacity,
+				fillColor:properties.fillColor,
+				fillOpacity:properties.fillOpacity
+			}
+		);
+
+		if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
+			polygon.bindPopup( properties.text );
+		}
+
+		return polygon;
+	}
+
+	function newCircleFromProperties(properties) {
+		let circle = L.circle(
+			[properties.centre.lat, properties.centre.lon],
+			{
+				radius: properties.radius,
+				color: properties.strokeColor,
+				weight:properties.strokeWeight,
+				opacity:properties.strokeOpacity,
+				fillColor:properties.fillColor,
+				fillOpacity:properties.fillOpacity,
+			}
+		);
+
+		if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
+			circle.bindPopup( properties.text );
+		}
+
+		return circle;
+	}
+
+	function newRectangleFromProperties(properties) {
+		let rectangle = L.rectangle(
+			[
+				[properties.sw.lat, properties.sw.lon],
+				[properties.ne.lat, properties.ne.lon]
+			],
+			{
+				color: properties.strokeColor,
+				weight: properties.strokeWeight,
+				opacity: properties.strokeOpacity,
+				fillColor: properties.fillColor,
+				fillOpacity: properties.fillOpacity
+			}
+		);
+
+		if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
+			rectangle.bindPopup( properties.text );
+		}
+
+		return rectangle;
+	}
+
+	function getMarkersAndShapes(options) {
+		let features = L.featureGroup();
+		let cluster = maps.leaflet.LeafletCluster.newLayer(options);
+		let markerLayer = options.cluster ? cluster : features;
+
+		$.each(options.locations, function(index, properties) {
+			markerLayer.addLayer(createMarker(properties, options));
+		});
+
+		$.each(options.lines, function(index, properties) {
+			features.addLayer(newLineFromProperties(properties));
+		});
+
+		$.each(options.polygons, function(index, properties) {
+			features.addLayer(newPolygonFromProperties(properties));
+		});
+
+		$.each(options.circles, function(index, properties) {
+			features.addLayer(newCircleFromProperties(properties));
+		});
+
+		$.each(options.rectangles, function(index, properties) {
+			features.addLayer(newRectangleFromProperties(properties));
+		});
+
+		features.addLayer(cluster);
+
+		return features
+	}
+
+
+
+
+
+
 	$.fn.leafletmaps = function ( options ) {
 		var _this = this;
 		this.map = null;
 		this.options = options;
-		this.markers = [];
-		this.markerClusterLayer = null;
 		var apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
-
-		/**
-		 * array point of all map elements (markers, lines, polygons, etc.)
-		 * for map fit
-		 */
-		this.points = [];
 
 		this.setup = function() {
 			let map = L.map( this.get(0), getMapOptions(options) );
@@ -113,16 +227,10 @@
 			this.bindClickTarget();
 			this.addLayersAndOverlays(map);
 
-			if (!options.locations) {
-				options.locations = [];
-			}
+			this.featureGroup = getMarkersAndShapes(options);
+			map.addLayer(this.featureGroup);
 
-			this.addMarkersAndShapes();
 			this.addGeoJson(options);
-
-			if (options.cluster) {
-				this.addMarkerClusterLayer();
-			}
 
 			this.centreMap();
 
@@ -151,28 +259,6 @@
 			}
 		};
 
-		this.addMarkersAndShapes = function() {
-			$.each(options.locations, function(index, location) {
-				_this.addMarker(location);
-			});
-
-			$.each(options.lines, function(index, line) {
-				_this.addLine(line);
-			});
-
-			$.each(options.polygons, function(index, polygon) {
-				_this.addPolygon(polygon);
-			});
-
-			$.each(options.circles, function(index, circle) {
-				_this.addCircle(circle);
-			});
-
-			$.each(options.rectangles, function(index, rectangle) {
-				_this.addRectangle(rectangle);
-			});
-		};
-
 		/**
 		 * Creates a new marker with the provided data, adds it to the map
 		 * and returns it.
@@ -180,131 +266,12 @@
 		 * @return {L.Marker}
 		 */
 		this.addMarker = function (properties) {
-			this.points.push( new L.LatLng(properties.lat, properties.lon) );
 
-			var marker = createMarker(properties, options);
-			if (!this.options.cluster) {
-				marker.addTo( this.map );
-			}
-			this.markers.push( marker );
-
-			return marker;
-		};
-
-		this.removeMarkerClusterLayer = function() {
-			if (this.markerClusterLayer) {
-				this.map.removeLayer(this.markerClusterLayer);
-				this.markerClusterLayer = null;
-			}
 		};
 
 		// Caution: used by ajaxUpdateMarker
 		this.removeMarkers = function () {
-			this.removeMarkerClusterLayer();
-			var map = this.map;
-			$.each(this.markers, function(index, marker) {
-				map.removeLayer(marker);
-			});
-
-			this.points = [];
-			this.markers = [];
-		};
-
-		this.addLine = function (properties) {
-			var latlngs = [];
-			for (var x = 0; x < properties.pos.length; x++) {
-				latlngs.push([properties.pos[x].lat, properties.pos[x].lon]);
-				this.points.push( new L.LatLng(properties.pos[x].lat, properties.pos[x].lon) );
-			}
-
-			var line = L.polyline(
-				latlngs,
-				{
-					color: properties.strokeColor,
-					weight:properties.strokeWeight,
-					opacity:properties.strokeOpacity
-				}
-			).addTo(this.map);
-
-			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
-				line.bindPopup( properties.text );
-			}
-		};
-
-		this.addPolygon = function (properties) {
-			properties.pos.forEach(function(position) {
-				_this.points.push( new L.LatLng(position.lat, position.lon) );
-			});
-
-			let polygon = L.polygon(
-				properties.pos.map(function(position) {
-					return [position.lat, position.lon];
-				}),
-				{
-					color: properties.strokeColor,
-					weight:properties.strokeWeight,
-					opacity:properties.strokeOpacity,
-					fillColor:properties.fillColor,
-					fillOpacity:properties.fillOpacity
-				}
-			);
-
-			polygon.addTo(this.map);
-
-			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
-				polygon.bindPopup( properties.text );
-			}
-		};
-
-		this.addCircle = function (properties) {
-			let circle = L.circle(
-				[properties.centre.lat, properties.centre.lon],
-				{
-					radius: properties.radius,
-					color: properties.strokeColor,
-					weight:properties.strokeWeight,
-					opacity:properties.strokeOpacity,
-					fillColor:properties.fillColor,
-					fillOpacity:properties.fillOpacity,
-				}
-			).addTo(this.map);
-
-			this.points.push( new L.LatLng(properties.centre.lat, properties.centre.lon) );
-
-			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
-				circle.bindPopup( properties.text );
-			}
-		};
-
-		this.addRectangle = function (properties) {
-			this.points.push( new L.LatLng(properties.sw.lat, properties.sw.lon) );
-			this.points.push( new L.LatLng(properties.ne.lat, properties.ne.lon) );
-
-			let rectangle = L.rectangle(
-				[
-					[properties.sw.lat, properties.sw.lon],
-					[properties.ne.lat, properties.ne.lon]
-				],
-				{
-					color: properties.strokeColor,
-					weight: properties.strokeWeight,
-					opacity: properties.strokeOpacity,
-					fillColor: properties.fillColor,
-					fillOpacity: properties.fillOpacity
-				}
-			).addTo(this.map);
-
-			if( properties.hasOwnProperty('text') && properties.text.trim().length > 0 ) {
-				rectangle.bindPopup( properties.text );
-			}
-		};
-
-		this.addMarkerClusterLayer = function () {
-			this.removeMarkerClusterLayer();
-
-			this.markerClusterLayer = maps.leaflet.LeafletCluster.newLayer(options, this.markers);
-
-			this.map.addLayer(this.markerClusterLayer);
+			// TODO
 		};
 
 		this.addGeoJson = function(options) {
@@ -339,9 +306,6 @@
 			);
 
 			geoJsonLayer.addTo( this.map );
-
-			this.points.push( geoJsonLayer.getBounds().getNorthEast() );
-			this.points.push( geoJsonLayer.getBounds().getSouthWest() );
 		};
 
 		this.bindClickTarget = function() {
@@ -412,29 +376,26 @@
 		};
 
 		this.centreMap = function() {
-			if (options.zoom === false && this.points.length > 1) {
-				this.map.fitBounds( new L.LatLngBounds( this.points ) );
+			// FIXME: cluster layer === 1
+			if (this.featureGroup.getLayers().length > 1) {
+				this.map.fitBounds(this.featureGroup.getBounds());
 			}
-			else {
+			else if (this.featureGroup.getLayers().length === 1) {
 				this.map.setView(
-					this.getBestCentre(),
-					options.zoom === false ? options.defzoom : options.zoom
+					this.featureGroup.getBounds().getCenter(),
+					options.defzoom
 				);
 			}
-		};
 
-		this.getBestCentre = function() {
-			if (options.centre !== false) {
-				return new L.LatLng(options.centre.lat, options.centre.lon);
+			if (options.zoom !== false) {
+				this.map.setZoom(options.zoom);
 			}
 
-			switch ( this.points.length ) {
-				case 0:
-					return new L.LatLng(0, 0);
-				case 1:
-					return this.points[0];
-				default:
-					return ( new L.LatLngBounds( this.points ) ).getCenter();
+			if (options.centre !== false) {
+				this.map.setView(
+					this.featureGroup.getBounds().getCenter(),
+					this.map.getZoom()
+				);
 			}
 		};
 
@@ -449,7 +410,7 @@
 				dependencies.push( 'ext.maps.resizable' );
 			}
 
-			if (options.cluster) {
+			if (true) { // TODO: options.cluster
 				dependencies.push( 'ext.maps.leaflet.markercluster' );
 			}
 

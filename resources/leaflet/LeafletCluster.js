@@ -5,8 +5,8 @@
 	if (!window.maps.leaflet) {window.maps.leaflet = {};}
 
 	window.maps.leaflet.LeafletCluster = {
-		newLayer: function(options, markers) {
-			let clusterLayer = new L.MarkerClusterGroup({
+		newLayer: function(options) {
+			return new L.MarkerClusterGroup({
 				maxClusterRadius: options.clustermaxradius,
 				disableClusteringAtZoom: options.clustermaxzoom + 1,
 				zoomToBoundsOnClick: options.clusterzoomonclick,
@@ -64,12 +64,6 @@
 					});
 				}
 			});
-
-			$.each(markers, function(index, marker) {
-				clusterLayer.addLayer(marker);
-			});
-
-			return clusterLayer;
 		}
 	};
 })(window.jQuery, window.mediaWiki, window.L);
