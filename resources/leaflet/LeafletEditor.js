@@ -130,7 +130,6 @@
 
 							mapSaver.save(
 								{
-									pageName: mw.config.get('wgPageName'),
 									newContent: JSON.stringify(self.geoJsonLayer.toGeoJSON()),
 									summary: editSummary,
 									done: function(response) {

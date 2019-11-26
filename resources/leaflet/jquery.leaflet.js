@@ -169,6 +169,12 @@
 		return rectangle;
 	}
 
+	/**
+	 * Caution: mutates markerLayer
+	 * @param {Object} options
+	 * @param {L.LayerGroup} markerLayer
+	 * @return {L.GeoJSON}
+	 */
 	function newGeoJsonLayer(options, markerLayer) {
 		return L.geoJSON(
 			options.geojson,
@@ -256,7 +262,39 @@
 			this.bindClickTarget();
 			this.applyResizable();
 
-			// this.addEditButton();
+			//this.addEditButton();
+		};
+
+		this.addEditButton = function() {
+			// TODO: edit and page creation right checks
+
+			this.editButton = L.easyButton(
+				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
+				function() {
+					console.log('edit mode');
+					_this.mapContent.remove();
+
+					let editor = maps.leaflet.LeafletEditor(
+						_this.map,
+						options.geojson,
+						new maps.MapSaver('GeoJson:Berlin') // TODO
+					);
+
+					_this.removeEditButton();
+					editor.initialize();
+
+					// TODO: return to regular mode on save
+					// TODO: purge page cache so new content shows after reloading the page
+				},
+				'Edit GeoJSON layer' // TODO
+			).addTo(this.map);
+		};
+
+		this.removeEditButton = function() {
+			if (this.editButton) {
+				this.editButton.remove();
+				this.editButton = null;
+			}
 		};
 
 		this.hideLoadingMessage = function() {
@@ -266,24 +304,6 @@
 					$(_this).find('div.maps-loading-message').hide();
 				}
 			);
-		};
-
-		this.addEditButton = function() {
-			this.editButton = L.easyButton(
-				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
-				function() {
-					console.log('edit mode');
-					_this.removeEditButton();
-				},
-				'Edit stuff' // TODO
-			).addTo(this.map);
-		};
-
-		this.removeEditButton = function() {
-			if (this.editButton) {
-				this.editButton.remove();
-				this.editButton = null;
-			}
 		};
 
 		this.applyResizable = function() {
@@ -408,6 +428,10 @@
 
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
+
+			if (true) { // TODO
+				dependencies.push( 'ext.maps.leaflet.editor' );
+			}
 
 			if (options.fullscreen) {
 				dependencies.push( 'ext.maps.leaflet.fullscreen' );

@@ -36,7 +36,7 @@
 		let editor = maps.leaflet.LeafletEditor(
 			map,
 			window.GeoJson,
-			new maps.MapSaver()
+			new maps.MapSaver(mw.config.get('wgPageName'))
 		);
 
 		editor.initialize();

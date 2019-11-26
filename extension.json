@@ -91,12 +91,11 @@
 		"ext.maps.leaflet.library": {
 			"scripts": [
 				"lib/leaflet/leaflet.js",
-				"lib/leaflet-providers/leaflet-providers.js",
-				"lib/leaflet.EasyButton/easy-button.js"
+				"lib/leaflet-providers/leaflet-providers.js"
+
 			],
 			"styles": [
-				"lib/leaflet/leaflet.css",
-				"lib/leaflet.EasyButton/easy-button.css"
+				"lib/leaflet/leaflet.css"
 			]
 		},
 
@@ -156,12 +155,14 @@
 			"scripts": [
 				"lib/leaflet.StyleEditor/javascript/Leaflet.StyleEditor.min.js",
 				"lib/leaflet.draw/leaflet.draw-src.js",
+				"lib/leaflet.EasyButton/easy-button.js",
 				"MapSaver.js",
 				"leaflet/LeafletEditor.js"
 			],
 			"styles": [
 				"lib/leaflet.StyleEditor/css/Leaflet.StyleEditor.min.css",
-				"lib/leaflet.draw/leaflet.draw.css"
+				"lib/leaflet.draw/leaflet.draw.css",
+				"lib/leaflet.EasyButton/easy-button.css"
 			],
 			"messages": [
 				"maps-json-editor-button-marker",

@@ -20,16 +20,15 @@
 		);
 	}
 
-	let MapSaver = function() {
+	let MapSaver = function(pageName) {
 		let self = {};
 
-		// parameters.pageName: required string
 		// parameters.newContent: required string
 		// parameters.summary: required string
 		// parameters.done: required callback function
 		self.save = function(paremeters) {
 			new mw.Api().edit(
-				paremeters.pageName,
+				pageName,
 				function(revision) {
 					let editApiParameters = {
 						text: paremeters.newContent,
