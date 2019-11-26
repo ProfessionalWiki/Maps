@@ -52,9 +52,9 @@ window.sm = new ( function( $, mw ) {
 				!data.query.hasOwnProperty( 'results' ) ) {
 				return;
 			}
-			// todo: don't remove and recreate all markers..
-			// only add new ones.
+
 			jqueryMap.removeMarkers();
+
 			for( var property in data.query.results ) {
 				if( data.query.results.hasOwnProperty( property ) ) {
 					var location = data.query.results[property];
@@ -66,6 +66,7 @@ window.sm = new ( function( $, mw ) {
 						text: '<b><a href="' + location.fullurl + '">' + location.fulltext + '</a></b>',
 						icon: icon
 					};
+
 					jqueryMap.addMarker( markerOptions );
 				}
 			}

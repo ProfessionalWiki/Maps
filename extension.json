@@ -108,7 +108,8 @@
 		"ext.maps.leaflet.loader": {
 			"dependencies": [
 				"ext.maps.leaflet.library",
-				"ext.maps.leaflet.geojson"
+				"ext.maps.leaflet.geojson",
+				"ext.sm.common"
 			],
 			"scripts": [
 				"leaflet/jquery.leaflet.js",
@@ -202,16 +203,6 @@
 				"maps-json-editor-toolbar-button-edit-disabled",
 				"maps-json-editor-toolbar-button-remove",
 				"maps-json-editor-toolbar-button-remove-disabled"
-			]
-		},
-
-		"ext.maps.leaflet.leafletajax": {
-			"dependencies": [
-				"ext.maps.leaflet.loader",
-				"ext.sm.common"
-			],
-			"scripts": [
-				"leaflet/LeafletAjax.js"
 			]
 		},
 

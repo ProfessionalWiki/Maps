@@ -6,7 +6,7 @@
  * @author Peter Grassberger < petertheone@gmail.com >
  * @author Jeroen De Dauw
  */
-(function ($, mw, L, maps) {
+(function ($, mw, L, maps, sm) {
 	/**
 	 * Creates a new marker with the provided data and returns it.
 	 * @param {Object} properties Contains the fields lat, lon, title, text and icon
@@ -263,6 +263,31 @@
 			this.applyResizable();
 
 			//this.addEditButton();
+
+			let ajaxRequest = null;
+
+			if ( options.ajaxquery && options.ajaxcoordproperty ) {
+				this.map.on( 'dragend zoomend', function() {
+					let bounds = _this.map.getBounds();
+
+					let query = sm.buildQueryString(
+						decodeURIComponent( options.ajaxquery.replace( /\+/g, ' ' ) ),
+						options.ajaxcoordproperty,
+						bounds.getNorthEast().lat,
+						bounds.getNorthEast().lng,
+						bounds.getSouthWest().lat,
+						bounds.getSouthWest().lng
+					);
+
+					if( ajaxRequest !== null ) {
+						ajaxRequest.abort();
+					}
+
+					ajaxRequest = sm.ajaxUpdateMarker( _this, query, options.icon ).done( function() {
+						ajaxRequest = null;
+					} );
+				} );
+			}
 		};
 
 		this.getEditor = function() {
@@ -330,19 +355,14 @@
 			}
 		};
 
-		/**
-		 * Creates a new marker with the provided data, adds it to the map
-		 * and returns it.
-		 * @param {Object} properties Contains the fields lat, lon, title, text and icon
-		 * @return {L.Marker}
-		 */
+		// Caution: used by ajaxUpdateMarker
 		this.addMarker = function (properties) {
 			this.mapContent.markerLayer.addLayer(createMarker(properties, options));
 		};
 
 		// Caution: used by ajaxUpdateMarker
 		this.removeMarkers = function () {
-			// TODO
+			this.mapContent.markerLayer.clearLayers();
 		};
 
 		this.bindClickTarget = function() {
@@ -474,4 +494,4 @@
 		return this;
 
 	};
-})(window.jQuery, window.mediaWiki, window.L, window.maps);
+})(window.jQuery, window.mediaWiki, window.L, window.maps,  window.sm);
