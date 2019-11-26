@@ -101,7 +101,7 @@
 									summary: editSummary,
 									done: function(response) {
 										if (response.result === 'Success') {
-											alert(mw.msg('maps-json-editor-changes-saved'));
+											self.onSaved();
 										}
 										else {
 											console.log(response);
@@ -197,11 +197,18 @@
 			}));
 		};
 
+		self.onSaved = function() {};
+
 		let exports = {};
 
 		exports.initialize = self.initialize;
+
 		exports.getLayer = function() {
 			return self.geoJsonLayer;
+		};
+
+		exports.onSaved = function(f) {
+			self.onSaved = f;
 		};
 
 		return exports;

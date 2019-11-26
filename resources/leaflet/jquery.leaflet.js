@@ -282,9 +282,17 @@
 					_this.removeEditButton();
 					editor.initialize();
 
-					// TODO: return to regular mode on save
-					// TODO: purge page cache so new content shows after reloading the page
 					// TODO: edit conflict / old revision detection
+
+					editor.onSaved(function() {
+						alert(mw.msg('maps-json-editor-changes-saved'));
+						editor.getLayer().remove();
+						this.mapContent = getMarkersAndShapes(options).addTo(this.map);
+						_this.addEditButton();
+
+						// TODO: remove edit UI
+						// TODO: purge page cache so new content shows after reloading the page
+					});
 				},
 				'Edit GeoJSON layer' // TODO
 			).addTo(this.map);

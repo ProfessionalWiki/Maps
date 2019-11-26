@@ -51,8 +51,12 @@
 			new maps.MapSaver(mw.config.get('wgPageName'))
 		);
 
+		editor.onSaved(function() {
+			alert(mw.msg('maps-json-editor-changes-saved'));
+		});
+
 		editor.initialize();
-		console.log(editor);
+
 		fitContent(map, editor.getLayer());
 	}
 
