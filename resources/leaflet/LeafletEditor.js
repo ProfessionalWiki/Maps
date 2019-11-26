@@ -96,7 +96,7 @@
 			self.map.on(
 				L.Draw.Event.CREATED,
 				function (event) {
-					self.geoJsonLayer.addLayer(event.layer);
+					self.geoJsonLayer.addData(event.layer.toGeoJSON());
 					self._showSaveButton();
 				}
 			);
@@ -175,7 +175,6 @@
 			});
 		}
 
-		// TODO: also bind to freshly added layers
 		self._onEditableFeature = function(feature, layer) {
 			let titleInput = $('<textarea cols="50" rows="1" />').text(feature.properties.title);
 			let descriptionInput = $('<textarea cols="50" rows="2" />').text(feature.properties.description);

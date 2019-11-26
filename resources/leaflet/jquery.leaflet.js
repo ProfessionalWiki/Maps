@@ -265,6 +265,7 @@
 		this.addEditButton = function() {
 			// TODO: edit and page creation right checks
 			// TODO: only show when on latest revision
+			// TODO: only show when GeoJSON
 
 			this.editButton = L.easyButton(
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
