@@ -262,11 +262,12 @@
 			this.bindClickTarget();
 			this.applyResizable();
 
-			//this.addEditButton();
+			this.addEditButton();
 		};
 
 		this.addEditButton = function() {
 			// TODO: edit and page creation right checks
+			// TODO: only show when on latest revision
 
 			this.editButton = L.easyButton(
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
@@ -285,6 +286,7 @@
 
 					// TODO: return to regular mode on save
 					// TODO: purge page cache so new content shows after reloading the page
+					// TODO: edit conflict / old revision detection
 				},
 				'Edit GeoJSON layer' // TODO
 			).addTo(this.map);
