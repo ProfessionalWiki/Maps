@@ -127,7 +127,6 @@
 			this.centreMap();
 
 			if (options.resizable) {
-				//TODO: Fix moving map when resized
 				_this.resizable();
 			}
 
