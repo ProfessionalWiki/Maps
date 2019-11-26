@@ -250,7 +250,6 @@
 		var _this = this;
 		this.map = null;
 		this.options = options;
-		var apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
 
 		this.setup = function() {
 			this.map = L.map( this.get(0), getMapOptions(options) );
@@ -262,7 +261,7 @@
 			this.bindClickTarget();
 			this.applyResizable();
 
-			this.addEditButton();
+			//this.addEditButton();
 		};
 
 		this.addEditButton = function() {
@@ -359,6 +358,7 @@
 		};
 
 		this.addLayers = function() {
+			let apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
 			let layers = {};
 
 			$.each( this.getLayerNames().reverse(), function(index, layerName) {
