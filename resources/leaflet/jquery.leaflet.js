@@ -247,9 +247,7 @@
 
 
 	$.fn.leafletmaps = function ( options ) {
-		var _this = this;
-		this.map = null;
-		this.options = options;
+		let _this = this;
 
 		this.setup = function() {
 			this.map = L.map( this.get(0), getMapOptions(options) );
