@@ -210,13 +210,6 @@
 
 	function getMarkersAndShapes(options) {
 		let features = L.featureGroup();
-		let cluster = maps.leaflet.LeafletCluster.newLayer(options);
-		let markerLayer = options.cluster ? cluster : features;
-		features.addLayer(cluster);
-
-		$.each(options.locations, function(index, properties) {
-			markerLayer.addLayer(createMarker(properties, options));
-		});
 
 		$.each(options.lines, function(index, properties) {
 			features.addLayer(newLineFromProperties(properties));
@@ -234,8 +227,17 @@
 			features.addLayer(newRectangleFromProperties(properties));
 		});
 
+		let markers = options.cluster ? maps.leaflet.LeafletCluster.newLayer(options) : L.featureGroup();
+
+		features.addLayer(markers);
+		features.markerLayer = markers;
+
+		$.each(options.locations, function(index, properties) {
+			markers.addLayer(createMarker(properties, options));
+		});
+
 		if (options.geojson !== '') {
-			features.addLayer(newGeoJsonLayer(options, markerLayer));
+			features.addLayer(newGeoJsonLayer(options, markers));
 		}
 
 		return features
@@ -248,6 +250,7 @@
 
 	$.fn.leafletmaps = function ( options ) {
 		let _this = this;
+		_this.options = options; // needed for LeafletAjax.js
 
 		this.setup = function() {
 			this.map = L.map( this.get(0), getMapOptions(options) );
@@ -334,7 +337,7 @@
 		 * @return {L.Marker}
 		 */
 		this.addMarker = function (properties) {
-			// TODO
+			this.mapContent.markerLayer.addLayer(createMarker(properties, options));
 		};
 
 		// Caution: used by ajaxUpdateMarker
