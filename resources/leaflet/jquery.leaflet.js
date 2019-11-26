@@ -232,7 +232,7 @@
 
 			this.addGeoJson(options);
 
-			this.centreMap();
+			this.centerAndZoomMap();
 
 			if (options.resizable) {
 				_this.resizable();
@@ -375,17 +375,8 @@
 			}
 		};
 
-		this.centreMap = function() {
-			// FIXME: cluster layer === 1
-			if (this.featureGroup.getLayers().length > 1) {
-				this.map.fitBounds(this.featureGroup.getBounds());
-			}
-			else if (this.featureGroup.getLayers().length === 1) {
-				this.map.setView(
-					this.featureGroup.getBounds().getCenter(),
-					options.defzoom
-				);
-			}
+		this.centerAndZoomMap = function() {
+			this.fitContent();
 
 			if (options.zoom !== false) {
 				this.map.setZoom(options.zoom);
@@ -393,9 +384,25 @@
 
 			if (options.centre !== false) {
 				this.map.setView(
-					this.featureGroup.getBounds().getCenter(),
+					new L.LatLng(options.centre.lat, options.centre.lon),
 					this.map.getZoom()
 				);
+			}
+		};
+
+		this.fitContent = function() {
+			let bounds = this.featureGroup.getBounds();
+
+			if (bounds.isValid()) {
+				if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
+					this.map.setView(
+						this.featureGroup.getBounds().getCenter(),
+						options.defzoom
+					);
+				}
+				else {
+					this.map.fitBounds(bounds);
+				}
 			}
 		};
 
