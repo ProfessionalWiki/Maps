@@ -153,33 +153,25 @@
 		};
 
 		this.addMarkersAndShapes = function() {
-			for (var i = options.locations.length - 1; i >= 0; i--) {
-				this.addMarker(options.locations[i]);
-			}
+			$.each(options.locations, function(index, location) {
+				_this.addMarker(location);
+			});
 
-			if (options.lines) {
-				for (var i = 0; i < options.lines.length; i++) {
-					this.addLine(options.lines[i]);
-				}
-			}
+			$.each(options.lines, function(index, line) {
+				_this.addLine(line);
+			});
 
-			if (options.polygons) {
-				for (var i = 0; i < options.polygons.length; i++) {
-					this.addPolygon(options.polygons[i]);
-				}
-			}
+			$.each(options.polygons, function(index, polygon) {
+				_this.addPolygon(polygon);
+			});
 
-			if (options.circles) {
-				for (var i = 0; i < options.circles.length; i++) {
-					this.addCircle(options.circles[i]);
-				}
-			}
+			$.each(options.circles, function(index, circle) {
+				_this.addCircle(circle);
+			});
 
-			if (options.rectangles) {
-				for (var i = 0; i < options.rectangles.length; i++) {
-					this.addRectangle(options.rectangles[i]);
-				}
-			}
+			$.each(options.rectangles, function(index, rectangle) {
+				_this.addRectangle(rectangle);
+			});
 		};
 
 		/**
