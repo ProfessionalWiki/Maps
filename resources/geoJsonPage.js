@@ -44,6 +44,44 @@
 		}
 	}
 
+	function initializeWithEditor(map) {
+		let editor = maps.leaflet.LeafletEditor(
+			map,
+			window.GeoJson,
+			new maps.MapSaver(mw.config.get('wgPageName'))
+		);
+
+		editor.initialize();
+		console.log(editor);
+		fitContent(map, editor.getLayer());
+	}
+
+	function initializePlainMap(map) {
+		fitContent(
+			map,
+			maps.leaflet.GeoJson.newGeoJsonLayer(L, window.GeoJson).addTo(map)
+		);
+	}
+
+	function initializeGeoJsonAndEditorUi(map) {
+		if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
+			getUserHasPermission(
+				"edit",
+				function(hasPermission) {
+					if (hasPermission) {
+						initializeWithEditor(map);
+					}
+					else {
+						initializePlainMap(map);
+					}
+				}
+			);
+		}
+		else {
+			initializePlainMap(map);
+		}
+	}
+
 	mw.hook( 'wikipage.content' ).add( function ( $content ) {
 		let map = L.map(
 			'GeoJsonMap',
@@ -57,37 +95,7 @@
 		hideLoadingMessage(map, $content);
 		addZoomControl(map);
 		addTitleLayer(map);
-
-		if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
-			getUserHasPermission(
-				"edit",
-				function(hasPermission) {
-					if (hasPermission) {
-						let editor = maps.leaflet.LeafletEditor(
-							map,
-							window.GeoJson,
-							new maps.MapSaver(mw.config.get('wgPageName'))
-						);
-
-						editor.initialize();
-						console.log(editor);
-						fitContent(map, editor.getLayer());
-					}
-					else {
-						fitContent(
-							map,
-							maps.leaflet.GeoJson.newGeoJsonLayer(L, window.GeoJson).addTo(map)
-						);
-					}
-				}
-			);
-		}
-		else {
-			fitContent(
-				map,
-				maps.leaflet.GeoJson.newGeoJsonLayer(L, window.GeoJson).addTo(map)
-			);
-		}
+		initializeGeoJsonAndEditorUi(map);
 	} );
 
 })( window.jQuery, window.mediaWiki, window.maps );
