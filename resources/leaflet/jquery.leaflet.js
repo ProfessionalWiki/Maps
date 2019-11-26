@@ -96,6 +96,92 @@
 		 */
 		this.points = [];
 
+		this.setup = function() {
+			let map = L.map( this.get(0), getMapOptions(options) );
+
+			map.on(
+				'load',
+				function() {
+					$(_this).find('div.maps-loading-message').hide();
+				}
+			);
+
+			map.fitWorld();
+
+			this.map = map;
+
+			this.bindClickTarget();
+			this.addLayersAndOverlays(map);
+
+			if (!options.locations) {
+				options.locations = [];
+			}
+
+			this.addMarkersAndShapes();
+			this.addGeoJson(options);
+
+			if (options.cluster) {
+				this.addMarkerClusterLayer();
+			}
+
+			this.centreMap();
+
+			if (options.resizable) {
+				//TODO: Fix moving map when resized
+				_this.resizable();
+			}
+
+			this.addEditButton();
+		};
+
+		this.addEditButton = function() {
+			this.editButton = L.easyButton(
+				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
+				function() {
+					console.log('edit mode');
+					_this.removeEditButton();
+				},
+				'Edit stuff' // TODO
+			).addTo(this.map);
+		};
+
+		this.removeEditButton = function() {
+			if (this.editButton) {
+				this.editButton.remove();
+				this.editButton = null;
+			}
+		};
+
+		this.addMarkersAndShapes = function() {
+			for (var i = options.locations.length - 1; i >= 0; i--) {
+				this.addMarker(options.locations[i]);
+			}
+
+			if (options.lines) {
+				for (var i = 0; i < options.lines.length; i++) {
+					this.addLine(options.lines[i]);
+				}
+			}
+
+			if (options.polygons) {
+				for (var i = 0; i < options.polygons.length; i++) {
+					this.addPolygon(options.polygons[i]);
+				}
+			}
+
+			if (options.circles) {
+				for (var i = 0; i < options.circles.length; i++) {
+					this.addCircle(options.circles[i]);
+				}
+			}
+
+			if (options.rectangles) {
+				for (var i = 0; i < options.rectangles.length; i++) {
+					this.addRectangle(options.rectangles[i]);
+				}
+			}
+		};
+
 		/**
 		 * Creates a new marker with the provided data, adds it to the map
 		 * and returns it.
@@ -296,36 +382,6 @@
 			return options.layers;
 		};
 
-		this.addMarkersAndShapes = function() {
-			for (var i = options.locations.length - 1; i >= 0; i--) {
-				this.addMarker(options.locations[i]);
-			}
-
-			if (options.lines) {
-				for (var i = 0; i < options.lines.length; i++) {
-					this.addLine(options.lines[i]);
-				}
-			}
-
-			if (options.polygons) {
-				for (var i = 0; i < options.polygons.length; i++) {
-					this.addPolygon(options.polygons[i]);
-				}
-			}
-
-			if (options.circles) {
-				for (var i = 0; i < options.circles.length; i++) {
-					this.addCircle(options.circles[i]);
-				}
-			}
-
-			if (options.rectangles) {
-				for (var i = 0; i < options.rectangles.length; i++) {
-					this.addRectangle(options.rectangles[i]);
-				}
-			}
-		};
-
 		this.addLayers = function() {
 			let layers = {};
 
@@ -362,50 +418,6 @@
 			if (options.layers.length > 1 || options.overlays.length > 0) {
 				L.control.layers(layers, overlays).addTo(this.map);
 			}
-		};
-
-		this.setup = function() {
-			let map = L.map( this.get(0), getMapOptions(options) );
-
-			map.on(
-				'load',
-				function() {
-					$(_this).find('div.maps-loading-message').hide();
-				}
-			);
-
-			map.fitWorld();
-
-			this.map = map;
-
-			this.bindClickTarget();
-			this.addLayersAndOverlays(map);
-
-			if (!options.locations) {
-				options.locations = [];
-			}
-
-			this.addMarkersAndShapes();
-			this.addGeoJson(options);
-
-			if (options.cluster) {
-				this.addMarkerClusterLayer();
-			}
-
-			this.centreMap();
-
-			if (options.resizable) {
-				//TODO: Fix moving map when resized
-				_this.resizable();
-			}
-
-			this.editButton = L.easyButton(
-				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
-				function() {
-					console.log('edit mode');
-				},
-				'Edit stuff' // TODO
-			).addTo(this.map);
 		};
 
 		this.centreMap = function() {
