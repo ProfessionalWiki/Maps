@@ -262,7 +262,7 @@
 			this.bindClickTarget();
 			this.applyResizable();
 
-			//this.addEditButton();
+			this.addEditButton();
 
 			let ajaxRequest = null;
 
@@ -322,10 +322,12 @@
 					editor.onSaved(function() {
 						alert(mw.msg('maps-json-editor-changes-saved'));
 						editor.remove();
-						this.mapContent = getMarkersAndShapes(options).addTo(_this.map);
+
+						options.geojson = editor.getLayer().toGeoJSON();
+						_this.mapContent = getMarkersAndShapes(options).addTo(_this.map);
+
 						_this.addEditButton();
 
-						// TODO: remove edit UI
 						// TODO: purge page cache so new content shows after reloading the page
 					});
 				},
