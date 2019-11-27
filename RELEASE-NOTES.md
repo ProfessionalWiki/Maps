@@ -20,7 +20,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
     * Border opacity (property key `stroke-opacity`)
     * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
     * Display only, editing in the visual editor is not yet supported
-* Maker clustering now also clusters markers from the GeoJSON layer
+* Marker clustering now also cluster markers from the GeoJSON layer
+* Marker clustering now also cluster markers dynamically loaded via the `ajaxquery` feature
 * The Leaflet layer control is now always shown when there are overlays
 * Added `cluster` alias to the `markercluster` parameter for both Leaflet and Google Maps
 * Added `overlays` alias to the `overlaylayers` parameter for Leaflet

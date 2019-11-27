@@ -112,6 +112,7 @@
 				"ext.sm.common"
 			],
 			"scripts": [
+				"leaflet/FeatureBuilder.js",
 				"leaflet/jquery.leaflet.js",
 				"leaflet/LeafletLoader.js"
 			],
