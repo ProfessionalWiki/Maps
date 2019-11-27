@@ -327,7 +327,12 @@
 
 						_this.addEditButton();
 
-						// TODO: purge page cache so new content shows after reloading the page
+						new mw.Api().post({
+							action: 'purge',
+							titles: mw.config.get( 'wgPageName' )
+						}).then(function(stuff) {
+							console.log(stuff);
+						});
 					});
 				},
 				'Edit GeoJSON layer' // TODO
