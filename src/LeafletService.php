@@ -4,6 +4,7 @@ namespace Maps;
 
 use Html;
 use ParamProcessor\ParameterTypes;
+use ParamProcessor\ProcessingResult;
 
 /**
  * @licence GNU GPL v2+
@@ -111,7 +112,7 @@ class LeafletService implements MappingService {
 		];
 
 		$params['geojson'] = [
-			'type' => 'jsonfile',
+			'type' => ParameterTypes::STRING,
 			'default' => '',
 			'message' => 'maps-displaymap-par-geojson',
 		];
@@ -188,6 +189,21 @@ class LeafletService implements MappingService {
 		}
 
 		return array_unique( $layerDependencies );
+	}
+
+	public function processingResultToMapParams( ProcessingResult $processingResult ): array {
+		$mapParams = $processingResult->getParameterArray();
+
+		if ( $mapParams['geojson'] !== '' ) {
+			$fetcher = MapsFactory::globalInstance()->newGeoJsonFetcher();
+
+			$result = $fetcher->fetch( $mapParams['geojson'] );
+
+			$mapParams['geojson'] = $result->getContent();
+			$mapParams['GeoJsonSource'] = $result->getTitleValue()->getText();
+		}
+
+		return $mapParams;
 	}
 
 }

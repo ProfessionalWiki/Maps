@@ -3,6 +3,8 @@
 namespace Maps;
 
 use ParamProcessor\ParamDefinition;
+use ParamProcessor\ProcessedParam;
+use ParamProcessor\ProcessingResult;
 
 /**
  * @licence GNU GPL v2+
@@ -28,6 +30,8 @@ interface MappingService {
 	 */
 	public function getResourceModules(): array;
 
-	public function newMapId();
+	public function newMapId(): string;
+
+	public function processingResultToMapParams( ProcessingResult $processingResult ): array;
 
 }

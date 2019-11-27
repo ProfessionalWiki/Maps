@@ -4,11 +4,10 @@ namespace Maps\MediaWiki\ParserHooks;
 
 use Maps;
 use Maps\MappingService;
-use Maps\MapsFactory;
 use Maps\MappingServices;
+use Maps\MapsFactory;
 use Maps\Presentation\ParameterExtractor;
 use MWException;
-use ParamProcessor\ProcessedParam;
 use ParamProcessor\Processor;
 use Parser;
 
@@ -59,7 +58,12 @@ class DisplayMapFunction {
 			$this->getAllParameterDefinitions( $service, ';' )
 		);
 
-		return $this->getMapHtmlFromProcessor( $parser, $processor );
+		$this->trackMap( $parser );
+
+		return $this->renderer->renderMap(
+			$service->processingResultToMapParams( $processor->processParameters() ),
+			$parser
+		);
 	}
 
 	/**
@@ -82,7 +86,12 @@ class DisplayMapFunction {
 			$this->getAllParameterDefinitions( $service, "\n" )
 		);
 
-		return $this->getMapHtmlFromProcessor( $parser, $processor );
+		$this->trackMap( $parser );
+
+		return $this->renderer->renderMap(
+			$service->processingResultToMapParams( $processor->processParameters() ),
+			$parser
+		);
 	}
 
 	private function getAllParameterDefinitions( MappingService $service, string $locationDelimiter ) {
@@ -113,19 +122,6 @@ class DisplayMapFunction {
 		);
 	}
 
-	private function getMapHtmlFromProcessor( Parser $parser, Processor $processor ) {
-		$params = $processor->processParameters()->getParameters();
-
-		$this->defaultMapZoom( $params );
-
-		$this->trackMap( $parser );
-
-		return $this->renderer->renderMap(
-			$this->processedParametersToKeyValueArray( $params ),
-			$parser
-		);
-	}
-
 	private function extractServiceName( array $parameters ): string {
 		$service = ( new ParameterExtractor() )->extract(
 			[ 'mappingservice', 'service' ],
@@ -135,39 +131,8 @@ class DisplayMapFunction {
 		return $service ?? '';
 	}
 
-	private function processedParametersToKeyValueArray( array $params ): array {
-		$parameters = [];
-
-		foreach ( $params as $parameter ) {
-			$parameters[$parameter->getName()] = $parameter->getValue();
-		}
-
-		return $parameters;
-	}
-
 	public static function getDefaultParameters(): array {
 		return [ 'coordinates' ];
-	}
-
-	/**
-	 * @param ProcessedParam[] $parameters
-	 */
-	private function defaultMapZoom( array &$parameters ) {
-		if ( array_key_exists( 'zoom', $parameters ) && $parameters['zoom']->wasSetToDefault() && count(
-				$parameters['coordinates']->getValue()
-			) > 1 ) {
-			$parameters['zoom'] = $this->getParameterWithValue( $parameters['zoom'], false );
-		}
-	}
-
-	private function getParameterWithValue( ProcessedParam $param, $value ) {
-		return new ProcessedParam(
-			$param->getName(),
-			$value,
-			$param->wasSetToDefault(),
-			$param->getOriginalName(),
-			$param->getOriginalValue()
-		);
 	}
 
 	private function trackMap( Parser $parser ) {

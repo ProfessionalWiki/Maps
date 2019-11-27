@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
-use Maps\DataAccess\JsonFileParser;
+use Maps\DataAccess\GeoJsonFetcher;
 use Maps\MediaWiki\Content\GeoJsonContent;
 use Maps\MediaWiki\Content\GeoJsonContentHandler;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
@@ -185,10 +185,6 @@ class MapsSetup {
 
 		$this->mwGlobals['wgParamDefinitions']['mapsimageoverlay'] = [
 			'string-parser' => ImageOverlayParser::class,
-		];
-
-		$this->mwGlobals['wgParamDefinitions']['jsonfile'] = [
-			'string-parser' => JsonFileParser::class,
 		];
 	}
 

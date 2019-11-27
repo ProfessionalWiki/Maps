@@ -223,7 +223,6 @@
 	"validator-type-mapspolygon": "Geographical polygon",
 	"validator-type-mapspolygon-list": "List of geographical polygons",
 	"validator-type-wmsoverlay": "Web Map Service overlay",
-	"validator-type-jsonfile": "text",
 
 	"maps-json-editor-button-marker": "Place a marker",
 	"maps-json-editor-button-line": "Draw a line",
