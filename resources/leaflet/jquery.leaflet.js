@@ -309,7 +309,6 @@
 			this.editButton = L.easyButton(
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
 				function() {
-					console.log('edit mode');
 					_this.removeEditButton();
 					_this.mapContent.remove();
 
@@ -319,24 +318,27 @@
 					// TODO: edit conflict / old revision detection
 
 					editor.onSaved(function() {
-						alert(mw.msg('maps-json-editor-changes-saved'));
-						editor.remove();
+						_this.purgePage();
 
+						editor.remove();
 						options.geojson = editor.getLayer().toGeoJSON();
 						_this.mapContent = getMarkersAndShapes(options).addTo(_this.map);
 
+						alert(mw.msg('maps-json-editor-changes-saved'));
 						_this.addEditButton();
-
-						new mw.Api().post({
-							action: 'purge',
-							titles: mw.config.get( 'wgPageName' )
-						}).then(function(stuff) {
-							console.log(stuff);
-						});
 					});
 				},
-				'Edit GeoJSON layer' // TODO
+				mw.msg('maps-editor-edit-geojson')
 			).addTo(this.map);
+		};
+
+		this.purgePage = function() {
+			new mw.Api().post({
+				action: 'purge',
+				titles: mw.config.get( 'wgPageName' )
+			}).then(function(response) {
+
+			});
 		};
 
 		this.removeEditButton = function() {
