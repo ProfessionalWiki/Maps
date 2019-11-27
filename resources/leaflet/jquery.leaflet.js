@@ -261,33 +261,9 @@
 			this.centerAndZoomMap();
 			this.bindClickTarget();
 			this.applyResizable();
+			this.bindAjaxEvents();
 
-			this.maybeAddEditButton();
-
-			let ajaxRequest = null;
-
-			if ( options.ajaxquery && options.ajaxcoordproperty ) {
-				this.map.on( 'dragend zoomend', function() {
-					let bounds = _this.map.getBounds();
-
-					let query = sm.buildQueryString(
-						decodeURIComponent( options.ajaxquery.replace( /\+/g, ' ' ) ),
-						options.ajaxcoordproperty,
-						bounds.getNorthEast().lat,
-						bounds.getNorthEast().lng,
-						bounds.getSouthWest().lat,
-						bounds.getSouthWest().lng
-					);
-
-					if( ajaxRequest !== null ) {
-						ajaxRequest.abort();
-					}
-
-					ajaxRequest = sm.ajaxUpdateMarker( _this, query, options.icon ).done( function() {
-						ajaxRequest = null;
-					} );
-				} );
-			}
+			//this.maybeAddEditButton();
 		};
 
 		this.maybeAddEditButton = function() {
@@ -453,6 +429,35 @@
 			if (options.layers.length > 1 || options.overlays.length > 0) {
 				L.control.layers(layers, overlays).addTo(this.map);
 			}
+		};
+
+		this.bindAjaxEvents = function() {
+			if ( !options.ajaxquery || !options.ajaxcoordproperty ) {
+				return;
+			}
+
+			let ajaxRequest = null;
+
+			this.map.on( 'dragend zoomend', function() {
+				let bounds = _this.map.getBounds();
+
+				let query = sm.buildQueryString(
+					decodeURIComponent( options.ajaxquery.replace( /\+/g, ' ' ) ),
+					options.ajaxcoordproperty,
+					bounds.getNorthEast().lat,
+					bounds.getNorthEast().lng,
+					bounds.getSouthWest().lat,
+					bounds.getSouthWest().lng
+				);
+
+				if( ajaxRequest !== null ) {
+					ajaxRequest.abort();
+				}
+
+				ajaxRequest = sm.ajaxUpdateMarker( _this, query, options.icon ).done( function() {
+					ajaxRequest = null;
+				} );
+			} );
 		};
 
 		this.centerAndZoomMap = function() {
