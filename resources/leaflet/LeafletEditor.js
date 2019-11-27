@@ -32,16 +32,16 @@
 		toolbar.buttons.removeDisabled = mw.msg('maps-json-editor-toolbar-button-remove-disabled');
 	}
 
-	let MapEditor = function(map, json, mapSaver) {
+	let MapEditor = function(map, mapSaver) {
 		let self = {
 			isFirstInitialization: true,
 			unsavedChanges: false
 		};
 
-		self.initialize = function() {
+		self.initialize = function(json) {
 			self.map = map;
 
-			self.geoJsonLayer = self.newGeoJsonLayer().addTo(self.map);
+			self.geoJsonLayer = self.newGeoJsonLayer(json).addTo(self.map);
 			self.addDrawControls();
 
 			self.firstInitialize();
@@ -81,7 +81,7 @@
 			initializeMessages();
 		};
 
-		self.newGeoJsonLayer = function() {
+		self.newGeoJsonLayer = function(json) {
 			return L.geoJSON(
 				json,
 				{

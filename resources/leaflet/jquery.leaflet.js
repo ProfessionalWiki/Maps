@@ -294,7 +294,6 @@
 			if (!this.editor) {
 				this.editor = maps.leaflet.LeafletEditor(
 					_this.map,
-					options.geojson,
 					new maps.MapSaver('GeoJson:Berlin') // TODO
 				);
 			}
@@ -315,7 +314,7 @@
 					_this.mapContent.remove();
 
 					let editor = _this.getEditor();
-					editor.initialize();
+					editor.initialize(options.geojson);
 
 					// TODO: edit conflict / old revision detection
 

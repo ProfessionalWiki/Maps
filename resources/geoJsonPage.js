@@ -47,7 +47,6 @@
 	function initializeWithEditor(map) {
 		let editor = maps.leaflet.LeafletEditor(
 			map,
-			window.GeoJson,
 			new maps.MapSaver(mw.config.get('wgPageName'))
 		);
 
@@ -55,7 +54,7 @@
 			alert(mw.msg('maps-json-editor-changes-saved'));
 		});
 
-		editor.initialize();
+		editor.initialize(window.GeoJson);
 
 		fitContent(map, editor.getLayer());
 	}
