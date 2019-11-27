@@ -2,6 +2,7 @@
 
 namespace Maps\Tests\Integration\Parser;
 
+use Maps\MediaWiki\Content\GeoJsonContent;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -214,6 +215,33 @@ class DisplayMapTest extends TestCase {
 		$this->assertContains(
 			'"text":""',
 			$this->parse( '{{#display_map:1,1}}' )
+		);
+	}
+
+	public function testGeoJsonSourceForFile() {
+		$this->assertContains(
+			'"GeoJsonSource":null,',
+			$this->parse(
+				"{{#display_map:geojson=404}}"
+			)
+		);
+	}
+
+	public function testGeoJsonSourceForPage() {
+		$page = new \WikiPage( \Title::newFromText( 'GeoJson:TestPageSource' ) );
+		$page->doEditContent(
+			new GeoJsonContent( json_encode( [
+				'type' => 'FeatureCollection',
+				'features' => []
+			] ) ),
+			''
+		);
+
+		$this->assertContains(
+			'"GeoJsonSource":"TestPageSource",',
+			$this->parse(
+				"{{#display_map:geojson=TestPageSource}}"
+			)
 		);
 	}
 

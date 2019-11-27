@@ -195,12 +195,12 @@ class LeafletService implements MappingService {
 		$mapParams = $processingResult->getParameterArray();
 
 		if ( $mapParams['geojson'] !== '' ) {
-			$fetcher = MapsFactory::globalInstance()->newGeoJsonFetcher();
+			$fetcher = MapsFactory::newDefault()->newGeoJsonFetcher();
 
 			$result = $fetcher->fetch( $mapParams['geojson'] );
 
 			$mapParams['geojson'] = $result->getContent();
-			$mapParams['GeoJsonSource'] = $result->getTitleValue()->getText();
+			$mapParams['GeoJsonSource'] = $result->getTitleValue() === null ? null : $result->getTitleValue()->getText();
 		}
 
 		return $mapParams;

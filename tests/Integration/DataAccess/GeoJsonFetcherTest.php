@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\Integration\parsers;
+namespace Maps\Tests\Integration\DataAccess;
 
 use FileFetcher\FileFetcher;
 use FileFetcher\NullFileFetcher;
