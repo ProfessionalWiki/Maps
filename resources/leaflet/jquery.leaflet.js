@@ -339,7 +339,7 @@
 			if (!this.editor) {
 				this.editor = maps.leaflet.LeafletEditor(
 					_this.map,
-					new maps.MapSaver('GeoJson:Berlin') // TODO
+					new maps.MapSaver('GeoJson:' + options.GeoJsonSource)
 				);
 			}
 
