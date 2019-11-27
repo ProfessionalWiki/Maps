@@ -157,6 +157,7 @@
 				"lib/leaflet.StyleEditor/javascript/Leaflet.StyleEditor.min.js",
 				"lib/leaflet.draw/leaflet.draw-src.js",
 				"lib/leaflet.EasyButton/easy-button.js",
+				"api.js",
 				"MapSaver.js",
 				"leaflet/LeafletEditor.js"
 			],

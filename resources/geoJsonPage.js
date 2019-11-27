@@ -19,14 +19,6 @@
 		}).addTo(map);
 	}
 
-	function getUserHasPermission(permission, callback) {
-		mw.user.getRights(
-			function(rights) {
-				callback(rights.includes(permission))
-			}
-		);
-	}
-
 	function fitContent(map, geoJsonLayer) {
 		map.fitWorld();
 		let bounds = geoJsonLayer.getBounds();
@@ -68,10 +60,10 @@
 
 	function initializeGeoJsonAndEditorUi(map) {
 		if (mw.config.get('wgCurRevisionId') === mw.config.get('wgRevisionId')) {
-			getUserHasPermission(
-				"edit",
-				function(hasPermission) {
-					if (hasPermission) {
+
+			maps.api.canEditPage(mw.config.get('wgPageName')).done(
+				function(canEdit) {
+					if (canEdit) {
 						initializeWithEditor(map);
 					}
 					else {

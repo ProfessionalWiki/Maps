@@ -299,9 +299,9 @@
 				return;
 			}
 
-			mw.user.getRights(
-				function(rights) {
-					if (rights.includes('edit')) {
+			maps.api.canEditPage('GeoJson:' + options.GeoJsonSource).done(
+				function(canEdit) {
+					if (canEdit) {
 						_this.addEditButton();
 					}
 				}
@@ -309,9 +309,6 @@
 		};
 
 		this.addEditButton = function() {
-			// TODO: page creation right checks
-			// TODO: specific page edit right check
-
 			this.editButton = L.easyButton(
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
 				function() {
@@ -517,6 +514,5 @@
 		} );
 
 		return this;
-
 	};
-})(window.jQuery, window.mediaWiki, window.L, window.maps,  window.sm);
+})(window.jQuery, window.mediaWiki, window.L, window.maps, window.sm);
