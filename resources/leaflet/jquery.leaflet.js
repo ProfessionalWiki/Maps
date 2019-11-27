@@ -262,7 +262,7 @@
 			this.bindClickTarget();
 			this.applyResizable();
 
-			this.addEditButton();
+			this.maybeAddEditButton();
 
 			let ajaxRequest = null;
 
@@ -290,20 +290,23 @@
 			}
 		};
 
-		this.getEditor = function() {
-			if (!this.editor) {
-				this.editor = maps.leaflet.LeafletEditor(
-					_this.map,
-					new maps.MapSaver('GeoJson:Berlin') // TODO
-				);
+		this.maybeAddEditButton = function() {
+			if (mw.config.get('wgCurRevisionId') !== mw.config.get('wgRevisionId')) {
+				return;
 			}
 
-			return this.editor;
+			mw.user.getRights(
+				function(rights) {
+					if (rights.includes('edit')) {
+						_this.addEditButton();
+					}
+				}
+			);
 		};
 
 		this.addEditButton = function() {
-			// TODO: edit and page creation right checks
-			// TODO: only show when on latest revision
+			// TODO: page creation right checks
+			// TODO: specific page edit right check
 			// TODO: only show when GeoJSON
 
 			this.editButton = L.easyButton(
@@ -330,6 +333,17 @@
 				},
 				mw.msg('maps-editor-edit-geojson')
 			).addTo(this.map);
+		};
+
+		this.getEditor = function() {
+			if (!this.editor) {
+				this.editor = maps.leaflet.LeafletEditor(
+					_this.map,
+					new maps.MapSaver('GeoJson:Berlin') // TODO
+				);
+			}
+
+			return this.editor;
 		};
 
 		this.purgePage = function() {

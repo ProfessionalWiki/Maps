@@ -202,7 +202,9 @@
 				"maps-json-editor-toolbar-button-edit",
 				"maps-json-editor-toolbar-button-edit-disabled",
 				"maps-json-editor-toolbar-button-remove",
-				"maps-json-editor-toolbar-button-remove-disabled"
+				"maps-json-editor-toolbar-button-remove-disabled",
+
+				"maps-editor-edit-geojson"
 			]
 		},
 
