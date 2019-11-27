@@ -291,6 +291,10 @@
 		};
 
 		this.maybeAddEditButton = function() {
+			if ( options.geojson === '' || options.GeoJsonSource === null ) {
+				return;
+			}
+
 			if (mw.config.get('wgCurRevisionId') !== mw.config.get('wgRevisionId')) {
 				return;
 			}
@@ -307,7 +311,6 @@
 		this.addEditButton = function() {
 			// TODO: page creation right checks
 			// TODO: specific page edit right check
-			// TODO: only show when GeoJSON
 
 			this.editButton = L.easyButton(
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
