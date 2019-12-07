@@ -65,11 +65,20 @@
 				"mediawiki.api.edit"
 			],
 			"scripts": [
-				"GeoJson/geojson.new.page.js"
+				"geojson.new.page.js"
 			],
 			"messages": [
 				"maps-geo-json-create-page-creating",
 				"maps-geo-json-create-page-summary"
+			]
+		},
+
+		"ext.maps.geojson.page": {
+			"dependencies": [
+				"ext.maps.leaflet.editor"
+			],
+			"scripts": [
+				"geoJsonPage.js"
 			]
 		},
 
@@ -79,23 +88,33 @@
 			]
 		},
 
-		"ext.maps.leaflet.base": {
+		"ext.maps.leaflet.library": {
 			"scripts": [
-				"leaflet/leaflet/leaflet.js",
-				"leaflet/leaflet-providers/leaflet-providers.js"
+				"lib/leaflet/leaflet.js",
+				"lib/leaflet-providers/leaflet-providers.js"
+
 			],
 			"styles": [
-				"leaflet/leaflet/leaflet.css"
+				"lib/leaflet/leaflet.css"
+			]
+		},
+
+		"ext.maps.leaflet.geojson": {
+			"scripts": [
+				"leaflet/GeoJson.js"
 			]
 		},
 
 		"ext.maps.leaflet.loader": {
 			"dependencies": [
-				"ext.maps.leaflet.base"
+				"ext.maps.leaflet.library",
+				"ext.maps.leaflet.geojson",
+				"ext.sm.common"
 			],
 			"scripts": [
+				"leaflet/FeatureBuilder.js",
 				"leaflet/jquery.leaflet.js",
-				"leaflet/leafletLoader.js"
+				"leaflet/LeafletLoader.js"
 			],
 			"messages": [
 				"maps-copycoords-prompt"
@@ -104,41 +123,49 @@
 
 		"ext.maps.leaflet.fullscreen": {
 			"dependencies": [
-				"ext.maps.leaflet.base"
+				"ext.maps.leaflet.library"
 			],
 			"scripts": [
-				"leaflet/leaflet.fullscreen/Control.FullScreen.js"
+				"lib/leaflet.fullscreen/Control.FullScreen.js"
 			],
 			"styles": [
-				"leaflet/leaflet.fullscreen/Control.FullScreen.css"
+				"lib/leaflet.fullscreen/Control.FullScreen.css"
 			]
 		},
 
 		"ext.maps.leaflet.markercluster": {
 			"dependencies": [
-				"ext.maps.leaflet.base"
+				"ext.maps.leaflet.library"
 			],
 			"scripts": [
-				"leaflet/leaflet.markercluster/leaflet.markercluster.js"
+				"lib/leaflet.markercluster/leaflet.markercluster.js",
+				"leaflet/LeafletCluster.js"
 			],
 			"styles": [
-				"leaflet/leaflet.markercluster/MarkerCluster.css"
+				"lib/leaflet.markercluster/MarkerCluster.css"
 			]
 		},
 
 		"ext.maps.leaflet.editor": {
 			"dependencies": [
-				"ext.maps.leaflet.base",
+				"ext.maps.leaflet.geojson",
+				"ext.maps.leaflet.library",
 				"mediawiki.api.edit",
 				"mediawiki.jqueryMsg",
 				"ext.maps.leaflet.fullscreen"
 			],
 			"scripts": [
-				"leaflet/leaflet.draw/leaflet.draw-src.js",
-				"leaflet/leaflet.editor.js"
+				"lib/leaflet.StyleEditor/javascript/Leaflet.StyleEditor.min.js",
+				"lib/leaflet.draw/leaflet.draw-src.js",
+				"lib/leaflet.EasyButton/easy-button.js",
+				"api.js",
+				"MapSaver.js",
+				"leaflet/LeafletEditor.js"
 			],
 			"styles": [
-				"leaflet/leaflet.draw/leaflet.draw.css"
+				"lib/leaflet.StyleEditor/css/Leaflet.StyleEditor.min.css",
+				"lib/leaflet.draw/leaflet.draw.css",
+				"lib/leaflet.EasyButton/easy-button.css"
 			],
 			"messages": [
 				"maps-json-editor-button-marker",
@@ -171,20 +198,15 @@
 				"maps-json-editor-toolbar-clear-title",
 				"maps-json-editor-toolbar-clear-text",
 
+				"maps-json-editor-toolbar-button-save",
+				"maps-json-editor-changes-saved",
+
 				"maps-json-editor-toolbar-button-edit",
 				"maps-json-editor-toolbar-button-edit-disabled",
 				"maps-json-editor-toolbar-button-remove",
-				"maps-json-editor-toolbar-button-remove-disabled"
-			]
-		},
+				"maps-json-editor-toolbar-button-remove-disabled",
 
-		"ext.maps.leaflet.leafletajax": {
-			"dependencies": [
-				"ext.maps.leaflet.loader",
-				"ext.sm.common"
-			],
-			"scripts": [
-				"leaflet/leafletajax.js"
+				"maps-editor-edit-geojson"
 			]
 		},
 
@@ -198,7 +220,8 @@
 				"maps-copycoords-prompt",
 				"maps-searchmarkers-text",
 				"maps-fullscreen-button",
-				"maps-fullscreen-button-tooltip"
+				"maps-fullscreen-button-tooltip",
+				"maps-kml-parsing-failed"
 			]
 		},
 
@@ -253,20 +276,20 @@
 			]
 		},
 
-		"mapeditor": {
+		"ext.maps.wikitext.editor": {
 			"dependencies": [
 				"jquery.ui.autocomplete",
 				"jquery.ui.slider",
 				"jquery.ui.dialog"
 			],
 			"scripts": [
-				"editor/js/jquery.miniColors.js",
-				"editor/js/mapeditor.iefixes.js",
-				"editor/js/mapeditor.js"
+				"WikitextEditor/js/jquery.miniColors.js",
+				"WikitextEditor/js/mapeditor.iefixes.js",
+				"WikitextEditor/js/mapeditor.js"
 			],
 			"styles": [
-				"editor/css/jquery.miniColors.css",
-				"editor/css/mapeditor.css"
+				"WikitextEditor/css/jquery.miniColors.css",
+				"WikitextEditor/css/mapeditor.css"
 			],
 			"messages": [
 				"mapeditor-parser-error",

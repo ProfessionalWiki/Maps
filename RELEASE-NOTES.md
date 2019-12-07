@@ -3,6 +3,33 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.12.0
+
+* Enhanced GeoJSON editor
+    * Added editing of titles and descriptions (by clicking markers/shapes)
+    * Added save button and removed auto-save
+    * Added ability to specify an edit summary
+    * Polygon intersections are now allowed
+* Added [simplestyle](https://github.com/mapbox/simplestyle-spec/tree/master/1.1.0) support for GeoJSON
+    * Popup text (property key `text`) (Only plaintext, HTML and wikitext are not supported)
+    * Popup description (property key `description`) (Only plaintext, HTML and wikitext are not supported)
+    * Fill color (property key `fill`)
+    * Fill opacity (property key `fill-opacity`)
+    * Border color (property key `stroke`)
+    * Border width (property key `stroke-width`)
+    * Border opacity (property key `stroke-opacity`)
+    * `marker-size`, `marker-symbol` and `marker-color` are not yet supported and will be ignored
+    * Display only, editing in the visual editor is not yet supported
+* Marker clustering now also cluster markers from the GeoJSON layer
+* Marker clustering now also cluster markers dynamically loaded via the `ajaxquery` feature
+* The Leaflet layer control is now always shown when there are overlays
+* Added `cluster` alias to the `markercluster` parameter for both Leaflet and Google Maps
+* Added `overlays` alias to the `overlaylayers` parameter for Leaflet
+* Leaflet maps with no markers or shapes are now zoomed out by default
+* Upgraded Leaflet from 1.3.4 to 1.6.0
+* Upgraded Leaflet marker cluster plugin from 1.3.0 to 1.4.1
+* Added missing "KML parsing failed" message to Google Maps
+
 ## Maps 7.11.0
 
 Released on November 7th, 2019.

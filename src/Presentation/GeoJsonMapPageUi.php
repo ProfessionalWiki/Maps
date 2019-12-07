@@ -19,7 +19,7 @@ class GeoJsonMapPageUi {
 	}
 
 	public function addToOutput( OutputFacade $output ) {
-		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/leaflet/leaflet';
+		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/lib/leaflet';
 
 		$output->addHeadItem(
 			'MapsGeoJsonHeadItem',
@@ -27,7 +27,7 @@ class GeoJsonMapPageUi {
 		);
 
 		$output->addHTML( $this->getJavascript() . $this->getHtml() );
-		$output->addModules( 'ext.maps.leaflet.editor' );
+		$output->addModules( 'ext.maps.geojson.page' );
 	}
 
 	private function getJavascript(): string {

@@ -46,19 +46,19 @@ window.sm = new ( function( $, mw ) {
 		} );
 	};
 
-	this.ajaxUpdateMarker = function( map, query, icon ) {
+	this.ajaxUpdateMarker = function( jqueryMap, query, icon ) {
 		return this.sendQuery( query ).done( function( data ) {
 			if( !data.hasOwnProperty( 'query' ) ||
 				!data.query.hasOwnProperty( 'results' ) ) {
 				return;
 			}
-			// todo: don't remove and recreate all markers..
-			// only add new ones.
-			map.removeMarkers();
+
+			jqueryMap.removeMarkers();
+
 			for( var property in data.query.results ) {
 				if( data.query.results.hasOwnProperty( property ) ) {
 					var location = data.query.results[property];
-					var coordinates = location.printouts[map.options.ajaxcoordproperty][0];
+					var coordinates = location.printouts[jqueryMap.options.ajaxcoordproperty][0];
 					var markerOptions = {
 						lat: coordinates.lat,
 						lon: coordinates.lon,
@@ -66,7 +66,8 @@ window.sm = new ( function( $, mw ) {
 						text: '<b><a href="' + location.fullurl + '">' + location.fulltext + '</a></b>',
 						icon: icon
 					};
-					map.addMarker( markerOptions );
+
+					jqueryMap.addMarker( markerOptions );
 				}
 			}
 		} );

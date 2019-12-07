@@ -4,6 +4,7 @@ namespace Maps;
 
 use Html;
 use ParamProcessor\ParameterTypes;
+use ParamProcessor\ProcessingResult;
 
 /**
  * @licence GNU GPL v2+
@@ -50,7 +51,8 @@ class LeafletService implements MappingService {
 			'islist' => true,
 		];
 
-		$params['overlaylayers'] = [
+		$params['overlays'] = [
+			'aliases' => [ 'overlaylayers' ],
 			'type' => ParameterTypes::STRING,
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
@@ -64,8 +66,8 @@ class LeafletService implements MappingService {
 			'message' => 'maps-par-resizable'
 		];
 
-		$params['enablefullscreen'] = [
-			'aliases' => [ 'fullscreen' ],
+		$params['fullscreen'] = [
+			'aliases' => [ 'enablefullscreen' ],
 			'type' => ParameterTypes::BOOLEAN,
 			'default' => false,
 			'message' => 'maps-par-enable-fullscreen',
@@ -78,7 +80,8 @@ class LeafletService implements MappingService {
 			'message' => 'maps-par-scrollwheelzoom',
 		];
 
-		$params['markercluster'] = [
+		$params['cluster'] = [
+			'aliases' => [ 'markercluster' ],
 			'type' => ParameterTypes::BOOLEAN,
 			'default' => false,
 			'message' => 'maps-par-markercluster',
@@ -109,7 +112,7 @@ class LeafletService implements MappingService {
 		];
 
 		$params['geojson'] = [
-			'type' => 'jsonfile',
+			'type' => ParameterTypes::STRING,
 			'default' => '',
 			'message' => 'maps-displaymap-par-geojson',
 		];
@@ -158,7 +161,7 @@ class LeafletService implements MappingService {
 	}
 
 	private function getDependencies( array $params ): array {
-		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/leaflet/leaflet';
+		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/lib/leaflet';
 
 		return array_merge(
 			[
@@ -186,6 +189,21 @@ class LeafletService implements MappingService {
 		}
 
 		return array_unique( $layerDependencies );
+	}
+
+	public function processingResultToMapParams( ProcessingResult $processingResult ): array {
+		$mapParams = $processingResult->getParameterArray();
+
+		if ( $mapParams['geojson'] !== '' ) {
+			$fetcher = MapsFactory::newDefault()->newGeoJsonFetcher();
+
+			$result = $fetcher->fetch( $mapParams['geojson'] );
+
+			$mapParams['geojson'] = $result->getContent();
+			$mapParams['GeoJsonSource'] = $result->getTitleValue() === null ? null : $result->getTitleValue()->getText();
+		}
+
+		return $mapParams;
 	}
 
 }

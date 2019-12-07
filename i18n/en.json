@@ -223,7 +223,6 @@
 	"validator-type-mapspolygon": "Geographical polygon",
 	"validator-type-mapspolygon-list": "List of geographical polygons",
 	"validator-type-wmsoverlay": "Web Map Service overlay",
-	"validator-type-jsonfile": "text",
 
 	"maps-json-editor-button-marker": "Place a marker",
 	"maps-json-editor-button-line": "Draw a line",
@@ -248,9 +247,9 @@
 	"maps-json-editor-edit-other": "Visual map edit",
 	"maps-json-editor-edit-failed": "Failed to save the map",
 
-	"maps-json-editor-toolbar-save-title": "Save changes",
-	"maps-json-editor-toolbar-save-text": "Save",
-	"maps-json-editor-toolbar-cancel-title": "Cancel editing, discards all changes",
+	"maps-json-editor-toolbar-save-title": "Exit edit mode while keeping all changes",
+	"maps-json-editor-toolbar-save-text": "Done",
+	"maps-json-editor-toolbar-cancel-title": "Exit edit mode, discards all changes",
 	"maps-json-editor-toolbar-cancel-text": "Cancel",
 	"maps-json-editor-toolbar-clear-title": "Clear all layers",
 	"maps-json-editor-toolbar-clear-text": "Clear All",
@@ -260,11 +259,16 @@
 	"maps-json-editor-toolbar-button-remove": "Delete layers",
 	"maps-json-editor-toolbar-button-remove-disabled": "No layers to delete",
 
+	"maps-json-editor-toolbar-button-save": "Save changes",
+	"maps-json-editor-changes-saved": "Your changes have been saved",
+
 	"maps-geo-json-edit-source": "Edit source",
 	"maps-geo-json-create-source": "Create from GeoJSON source",
 	"maps-geo-json-create-page-button": "Create this page",
 	"maps-geo-json-create-page-creating": "Creating page...",
 	"maps-geo-json-create-page-summary": "Created GeoJSON page",
+
+	"maps-editor-edit-geojson": "Edit GeoJSON layer",
 
 	"tag-maps-visual-edit": "Visual map edit",
 	"tag-maps-visual-edit-description": "Edit made with the visual editor provided by the [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"

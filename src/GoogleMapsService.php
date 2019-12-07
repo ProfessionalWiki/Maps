@@ -3,6 +3,8 @@
 namespace Maps;
 
 use Html;
+use ParamProcessor\ProcessedParam;
+use ParamProcessor\ProcessingResult;
 
 /**
  * @licence GNU GPL v2+
@@ -162,7 +164,8 @@ class GoogleMapsService implements MappingService {
 			'message' => 'maps-googlemaps3-par-poi',
 		];
 
-		$params['markercluster'] = [
+		$params['cluster'] = [
+			'aliases' => [ 'markercluster' ],
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-par-markercluster',
@@ -232,8 +235,8 @@ class GoogleMapsService implements MappingService {
 			// new CriterionSearchMarkers() FIXME
 		];
 
-		$params['enablefullscreen'] = [
-			'aliases' => [ 'fullscreen' ],
+		$params['fullscreen'] = [
+			'aliases' => [ 'enablefullscreen' ],
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-par-enable-fullscreen',
@@ -325,4 +328,33 @@ class GoogleMapsService implements MappingService {
 			)
 		];
 	}
+
+	public function processingResultToMapParams( ProcessingResult $processingResult ): array {
+		$parameters = $processingResult->getParameters();
+
+		if ( array_key_exists( 'zoom', $parameters ) && $parameters['zoom']->wasSetToDefault() && count(
+				$parameters['coordinates']->getValue()
+			) > 1 ) {
+			$parameters['zoom'] = $this->getParameterWithValue( $parameters['zoom'], false );
+		}
+
+		$mapParams = [];
+
+		foreach ( $parameters as $parameter ) {
+			$mapParams[$parameter->getName()] = $parameter->getValue();
+		}
+
+		return $mapParams;
+	}
+
+	private function getParameterWithValue( ProcessedParam $param, $value ) {
+		return new ProcessedParam(
+			$param->getName(),
+			$value,
+			$param->wasSetToDefault(),
+			$param->getOriginalName(),
+			$param->getOriginalValue()
+		);
+	}
+
 }

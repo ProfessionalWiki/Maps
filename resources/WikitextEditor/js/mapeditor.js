@@ -56,7 +56,7 @@ var mapEditor = {
 		copycoords: {
 			values:['on','off']
 		},
-		markercluster: {
+		cluster: {
 			values:['on','off']
 		},
 		searchmarkers:{

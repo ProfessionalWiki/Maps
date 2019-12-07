@@ -14,7 +14,7 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\DataAccess\CachingGeocoder;
-use Maps\DataAccess\JsonFileParser;
+use Maps\DataAccess\GeoJsonFetcher;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\PageContentFetcher;
@@ -187,9 +187,16 @@ class MapsFactory {
 		$factory->registerType( 'distance', [ 'string-parser' => DistanceParser::class ] );
 		$factory->registerType( 'wmsoverlay', [ 'string-parser' => WmsOverlayParser::class ] );
 		$factory->registerType( 'mapsimageoverlay', [ 'string-parser' => ImageOverlayParser::class ] );
-		$factory->registerType( 'jsonfile', [ 'string-parser' => JsonFileParser::class ] );
 
 		return $factory;
+	}
+
+	public function newGeoJsonFetcher( FileFetcher $fileFetcher = null ): GeoJsonFetcher {
+		return new GeoJsonFetcher(
+			$fileFetcher ?? $this->getGeoJsonFileFetcher(),
+			$this->mediaWikiServices->getTitleParser(),
+			$this->mediaWikiServices->getRevisionLookup()
+		);
 	}
 
 }

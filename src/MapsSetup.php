@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
-use Maps\DataAccess\JsonFileParser;
+use Maps\DataAccess\GeoJsonFetcher;
 use Maps\MediaWiki\Content\GeoJsonContent;
 use Maps\MediaWiki\Content\GeoJsonContentHandler;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
@@ -186,10 +186,6 @@ class MapsSetup {
 		$this->mwGlobals['wgParamDefinitions']['mapsimageoverlay'] = [
 			'string-parser' => ImageOverlayParser::class,
 		];
-
-		$this->mwGlobals['wgParamDefinitions']['jsonfile'] = [
-			'string-parser' => JsonFileParser::class,
-		];
 	}
 
 	private function registerHooks() {
@@ -201,6 +197,7 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['ListDefinedTags'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
 		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
 		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MediaWiki\MapsHooks::onChangeTagsAllowedAdd';
+		$this->mwGlobals['wgHooks']['ResourceLoaderTestModules'][] = 'Maps\MediaWiki\MapsHooks::onResourceLoaderTestModules';
 	}
 
 	private function registerGeoJsonContentModel() {

@@ -454,7 +454,7 @@
 		};
 
 		this.createMarkerCluster = function() {
-			if ( !options.markercluster ) {
+			if ( !options.cluster ) {
 				return;
 			}
 			if (this.markercluster) {
@@ -751,7 +751,7 @@
 
 			//Add custom controls
 			// - Fullscreen
-			if(options.enablefullscreen){
+			if(options.fullscreen){
 				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl(this.map));
 			}
 		};
@@ -886,7 +886,7 @@
 
 		//Complete path to OpenLayers WMS layer
 
-		if (!options.markercluster) {
+		if (!options.cluster) {
 			this.setup();
 		} else {
 			mw.loader.using( 'ext.maps.gm3.markercluster', function() {
