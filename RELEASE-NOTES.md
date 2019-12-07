@@ -28,6 +28,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 * Leaflet maps with no markers or shapes are now zoomed out by default
 * Upgraded Leaflet from 1.3.4 to 1.6.0
 * Upgraded Leaflet marker cluster plugin from 1.3.0 to 1.4.1
+* Added missing "KML parsing failed" message to Google Maps
 
 ## Maps 7.11.0
 

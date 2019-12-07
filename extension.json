@@ -220,7 +220,8 @@
 				"maps-copycoords-prompt",
 				"maps-searchmarkers-text",
 				"maps-fullscreen-button",
-				"maps-fullscreen-button-tooltip"
+				"maps-fullscreen-button-tooltip",
+				"maps-kml-parsing-failed"
 			]
 		},
 
