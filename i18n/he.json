@@ -212,6 +212,5 @@
 	"semanticmaps-shapes-missingshape": "לא נמצאו צורות עבור $1. נא לראות את התיעוד עבור צורות",
 	"validator-type-mapscircle-list": "רשימת מעגלים",
 	"validator-type-mapsline-list": "רשימת קווים",
-	"validator-type-mapsrectangle-list": "רשימה של משולשים",
-	"validator-type-jsonfile": "טקסט"
+	"validator-type-mapsrectangle-list": "רשימה של משולשים"
 }

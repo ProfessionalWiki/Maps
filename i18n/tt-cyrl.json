@@ -42,7 +42,6 @@
 	"validator-type-mapscircle-list": "Түгәрәкләр исемлеге",
 	"validator-type-mapsline-list": "Сызыклар исемлеге",
 	"validator-type-mapsrectangle-list": "Турыпочмаклыклар исемлеге",
-	"validator-type-jsonfile": "текст",
 	"maps-json-editor-button-line": "Сызык сызу",
 	"maps-json-editor-button-polygon": "Күппочмаклык ясау",
 	"maps-json-editor-button-rectangle": "Турыпочмаклыкны урнаштыру",

@@ -171,6 +171,5 @@
 	"validator-type-mapsimageoverlay-list": "画像オーバーレイの一覧",
 	"validator-type-mapslocation-list": "位置の一覧",
 	"validator-type-mapspolygon": "地図ポリゴン",
-	"validator-type-mapspolygon-list": "地図ポリゴンの一覧",
-	"validator-type-jsonfile": "テキスト"
+	"validator-type-mapspolygon-list": "地図ポリゴンの一覧"
 }

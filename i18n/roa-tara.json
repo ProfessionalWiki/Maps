@@ -82,9 +82,9 @@
 	"maps-json-editor-edit-modified": "Cangiate le figure d'a mappe esistende",
 	"maps-json-editor-edit-other": "Cangiamende d'a mappe visuale",
 	"maps-json-editor-edit-failed": "Reggistrazzione d'a mappe fallite",
-	"maps-json-editor-toolbar-save-title": "Reggistre le cangiaminde",
-	"maps-json-editor-toolbar-save-text": "Reggìstre",
-	"maps-json-editor-toolbar-cancel-title": "Annullamende d'u cangiamende, scitte tutte le cangiaminde",
+	"maps-json-editor-toolbar-save-title": "Isse da 'u cangiamende e mandine tutte le cangiaminde",
+	"maps-json-editor-toolbar-save-text": "Fatte",
+	"maps-json-editor-toolbar-cancel-title": "Isse da 'u mode d'e cangiamende, scitte tutte le cangiaminde",
 	"maps-json-editor-toolbar-cancel-text": "Annulle",
 	"maps-json-editor-toolbar-clear-title": "Pulizze tutte le strate",
 	"maps-json-editor-toolbar-clear-text": "Pulizze tutte",
@@ -92,9 +92,12 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Nisciune layer da cangià",
 	"maps-json-editor-toolbar-button-remove": "Scangìlle le layer",
 	"maps-json-editor-toolbar-button-remove-disabled": "Nisciune layer da scangellà",
+	"maps-json-editor-toolbar-button-save": "Reggistre le cangiaminde",
+	"maps-json-editor-changes-saved": "Le cangiaminde tune onne state salvate",
 	"maps-geo-json-edit-source": "Cange 'a sorgende",
 	"maps-geo-json-create-source": "Ccreje da 'a sorgende GeoJSON",
 	"maps-geo-json-create-page-button": "Ccreje sta pàgene",
 	"maps-geo-json-create-page-creating": "Stoche a ccreje 'a pàgene...",
-	"maps-geo-json-create-page-summary": "Ccrejate 'na pàgene GeoJSON"
+	"maps-geo-json-create-page-summary": "Ccrejate 'na pàgene GeoJSON",
+	"maps-editor-edit-geojson": "Cange 'u strate GeoJSON"
 }

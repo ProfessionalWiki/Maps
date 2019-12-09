@@ -5,7 +5,8 @@
 			"Hugo.arg",
 			"Aswanas",
 			"Zygimantus",
-			"Agne1992"
+			"Agne1992",
+			"Tomasdd"
 		]
 	},
 	"maps-desc": "Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://mapping.referata.com/wiki/Maps_examples demo]).\nKatrografavimo paslaugos pasiekiamos: $1",
@@ -135,7 +136,7 @@
 	"maps-json-editor-edit-other": "Vizualus žemėlapio redaktorius",
 	"maps-json-editor-edit-failed": "Nepavyko išsaugoti žemėlapio",
 	"maps-json-editor-toolbar-save-title": "Išsaugoti pakeitimus",
-	"maps-json-editor-toolbar-save-text": "Išsaugoti",
+	"maps-json-editor-toolbar-save-text": "Atlikta",
 	"maps-json-editor-toolbar-cancel-title": "Atšaukti redagavimą, atmesti visus pakeitimus",
 	"maps-json-editor-toolbar-cancel-text": "Atšaukti",
 	"maps-json-editor-toolbar-clear-title": "Valyti visus sluoksnius",

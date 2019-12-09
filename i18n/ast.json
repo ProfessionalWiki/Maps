@@ -221,7 +221,6 @@
 	"validator-type-mapspolygon": "Polígonu xeográficu",
 	"validator-type-mapspolygon-list": "Llista de polígonos xeográficos",
 	"validator-type-wmsoverlay": "Superposición de Serviciu de Mapes web",
-	"validator-type-jsonfile": "testu",
 	"maps-json-editor-button-marker": "Asitiar un marcador",
 	"maps-json-editor-button-line": "Trazar una llinia",
 	"maps-json-editor-button-polygon": "Dibuxar un polígonu",

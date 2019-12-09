@@ -71,6 +71,5 @@
 	"semanticmaps-longitude": "გრძედი: $1",
 	"semanticmaps-altitude": "სიმაღლე: $1",
 	"semanticmaps-forminput-locations": "მდებარეობები",
-	"semanticmaps-kml-title": "საწყისი სათაური შედეგებისათვის",
-	"validator-type-jsonfile": "ტექსტი"
+	"semanticmaps-kml-title": "საწყისი სათაური შედეგებისათვის"
 }

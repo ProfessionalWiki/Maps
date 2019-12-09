@@ -5,7 +5,8 @@
 			"Wikitanvir",
 			"Aftabuzzaman",
 			"আজিজ",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Kupulak"
 		]
 	},
 	"right-geocode": "জিওকোড",
@@ -110,5 +111,7 @@
 	"validator-type-mapsrectangle": "ভৌগলিক আয়তক্ষেত্র",
 	"validator-type-mapsrectangle-list": "আয়তক্ষেত্রের তালিকা",
 	"validator-type-mapspolygon": "ভৌগলিক বহুভুজ",
-	"validator-type-mapspolygon-list": "ভৌগলিক বহুভুজের তালিকা"
+	"validator-type-mapspolygon-list": "ভৌগলিক বহুভুজের তালিকা",
+	"maps-json-editor-toolbar-save-text": "সম্পন্ন",
+	"maps-json-editor-toolbar-button-save": "পরিবর্তন সংরক্ষণ করুন..."
 }

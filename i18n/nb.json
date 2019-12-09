@@ -226,7 +226,6 @@
 	"validator-type-mapspolygon": "Geografisk polygon",
 	"validator-type-mapspolygon-list": "Liste over geografiske polygoner",
 	"validator-type-wmsoverlay": "Webmappetjensteoverlegg",
-	"validator-type-jsonfile": "tekst",
 	"maps-json-editor-button-marker": "Plasser en markør",
 	"maps-json-editor-button-line": "Tegn ei linje",
 	"maps-json-editor-button-polygon": "Tegn et polygon",

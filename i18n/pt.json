@@ -230,6 +230,5 @@
 	"validator-type-mapspolygon": "Polígono geográfico",
 	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
 	"validator-type-wmsoverlay": "Sobreposição Web Map Service",
-	"validator-type-jsonfile": "texto",
 	"maps-json-editor-toolbar-save-text": "Gravar"
 }

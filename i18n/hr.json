@@ -87,6 +87,5 @@
 	"validator-type-mapsrectangle": "Zemljopisni pravokutnik",
 	"validator-type-mapsrectangle-list": "Popis pravokutnika",
 	"validator-type-mapspolygon": "Zemljopisni mnogokut",
-	"validator-type-mapspolygon-list": "Popis zemljopisnih mnogokuta",
-	"validator-type-jsonfile": "tekst"
+	"validator-type-mapspolygon-list": "Popis zemljopisnih mnogokuta"
 }

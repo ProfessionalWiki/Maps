@@ -233,7 +233,6 @@
 	"validator-type-mapspolygon": "地理多邊形",
 	"validator-type-mapspolygon-list": "地理多邊形清單",
 	"validator-type-wmsoverlay": "網路地圖服務疊加",
-	"validator-type-jsonfile": "文字",
 	"maps-json-editor-button-marker": "放置一個標記",
 	"maps-json-editor-button-line": "畫一條直線",
 	"maps-json-editor-button-polygon": "畫一個多邊形",

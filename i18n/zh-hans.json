@@ -232,7 +232,6 @@
 	"validator-type-mapspolygon": "地理多边形",
 	"validator-type-mapspolygon-list": "地理多边形列表",
 	"validator-type-wmsoverlay": "网络地图服务覆盖",
-	"validator-type-jsonfile": "文本",
 	"maps-json-editor-toolbar-save-title": "保存修改",
 	"maps-json-editor-toolbar-save-text": "保存",
 	"maps-json-editor-toolbar-cancel-text": "取消",
