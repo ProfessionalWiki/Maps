@@ -5,6 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.12.0
 
+Released on December 9th, 2019.
+
 * Enhanced GeoJSON editor
     * Added editing of titles and descriptions (by clicking markers/shapes)
     * Added save button and removed auto-save
