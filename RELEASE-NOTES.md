@@ -3,6 +3,11 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.12.1
+
+* Added logging of debug information when KML parsing fails
+* Upgraded Google Maps GeoXML parsing library for KML
+
 ## Maps 7.12.0
 
 Released on December 9th, 2019.
