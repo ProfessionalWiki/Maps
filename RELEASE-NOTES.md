@@ -5,6 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.12.1
 
+Released on December 9th, 2019.
+
 * Map query output is no longer incorrectly handled by the MediaWiki parser
 * Added logging of debug information when KML parsing fails
 * Upgraded Google Maps GeoXML parsing library for KML
