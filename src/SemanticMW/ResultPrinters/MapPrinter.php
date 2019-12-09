@@ -109,6 +109,8 @@ class MapPrinter extends ResultPrinter {
 			return $this->fatalErrorMsg;
 		}
 
+		$this->isHTML = true;
+
 		$factory = \Maps\MapsFactory::newDefault();
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
