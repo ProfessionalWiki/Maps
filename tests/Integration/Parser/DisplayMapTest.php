@@ -245,4 +245,13 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testGoogleMapsKmlFiltersInvalidFileNames() {
+		$this->assertContains(
+			'"kml":["ValidFile.kml"],',
+			$this->parse(
+				"{{#display_map:service=google|kml=, ,ValidFile.kml ,}}"
+			)
+		);
+	}
+
 }

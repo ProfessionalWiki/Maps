@@ -214,11 +214,18 @@ class GoogleMapsService implements MappingService {
 			'message' => 'maps-par-kml',
 			'islist' => true,
 			'post-format' => function( array $kmlFileNames ) {
-				return array_map(
-					function( string $fileName ) {
-						return wfExpandUrl( MapsFunctions::getFileUrl( $fileName ) );
-					},
-					$kmlFileNames
+				return array_values(
+					array_filter(
+						array_map(
+							function( string $fileName ) {
+								return wfExpandUrl( MapsFunctions::getFileUrl( $fileName ) );
+							},
+							$kmlFileNames
+						),
+						function( string $fileName ) {
+							return $fileName !== '';
+						}
+					)
 				);
 			}
 		];
