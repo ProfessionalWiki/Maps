@@ -233,7 +233,9 @@
 					var geoXml = new geoXML3.parser({
 						map:_this.map,
 						zoom:options.kmlrezoom,
-						failedParse:function(){
+						failedParse:function(document){
+							console.log(options.kml);
+							console.log(document);
 							alert(mw.msg('maps-kml-parsing-failed'));
 						}
 					});
