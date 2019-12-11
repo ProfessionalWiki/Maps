@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Mps 7.13.0
+
+* Removed the need to manually include `Maps_Settings.php` in `LocalSettings.php` when modifying maps settings.
+
 ## Maps 7.12.2
 
 Released on December 9th, 2019.
