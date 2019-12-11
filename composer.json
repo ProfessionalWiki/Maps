@@ -52,6 +52,9 @@
 		},
 		"classmap": [
 			"MapsRegistration.php"
+		],
+		"files": [
+			"Maps_Settings.php"
 		]
 	},
 	"extra": {
