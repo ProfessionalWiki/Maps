@@ -10,7 +10,7 @@
 			"Jon Harald Søby"
 		]
 	},
-	"maps-desc": "Gir mulighet for å bygge inn dynamiske kart i wikisider, geokoding av adresser og andre geografiske operasjoner",
+	"maps-desc": "Gjør det mulig å bygge inn dynamiske kart i wikisider med Google Maps eller Leaflet. Har visuell redigering, kan integreres med Semantic MediaWiki, støtter GeoJSON og legger til geokodingsmuligheter.",
 	"right-geocode": "Geokode",
 	"action-geocode": "utføre geokoding på denne wikien",
 	"maps_map": "Kart",
@@ -245,9 +245,9 @@
 	"maps-json-editor-edit-modified": "Modifiserte eksisterende kartformer",
 	"maps-json-editor-edit-other": "Visuell kartredigering",
 	"maps-json-editor-edit-failed": "Kunne ikke lagre kartet",
-	"maps-json-editor-toolbar-save-title": "Lagre endringer",
-	"maps-json-editor-toolbar-save-text": "Lagre",
-	"maps-json-editor-toolbar-cancel-title": "Avbryt redigering, forkaster alle endringer",
+	"maps-json-editor-toolbar-save-title": "Gå ut av redigeringsmodus uten å forkaste endringer",
+	"maps-json-editor-toolbar-save-text": "Ferdig",
+	"maps-json-editor-toolbar-cancel-title": "Avbryt redigering og forkast alle endringer",
 	"maps-json-editor-toolbar-cancel-text": "Avbryt",
 	"maps-json-editor-toolbar-clear-title": "Tøm alle lag",
 	"maps-json-editor-toolbar-clear-text": "Tøm alt",
@@ -255,11 +255,14 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Ingen lag å redigere",
 	"maps-json-editor-toolbar-button-remove": "Slett lag",
 	"maps-json-editor-toolbar-button-remove-disabled": "Ingen lag å slette",
+	"maps-json-editor-toolbar-button-save": "Lagre endringer",
+	"maps-json-editor-changes-saved": "Endringene dine har blitt lagret",
 	"maps-geo-json-edit-source": "Rediger kilde",
 	"maps-geo-json-create-source": "Opprett fra GeoJSON-kilde",
 	"maps-geo-json-create-page-button": "Opprett denne siden",
 	"maps-geo-json-create-page-creating": "Oppretter side …",
 	"maps-geo-json-create-page-summary": "Opprettet GeoJSON-side",
+	"maps-editor-edit-geojson": "Rediger GeoJSON-lag",
 	"tag-maps-visual-edit": "Visuell kartredigering",
 	"tag-maps-visual-edit-description": "Redigering gjort med visuell redigering fra [https://www.mediawiki.org/wiki/Extension:Maps kartutvidelsen]"
 }

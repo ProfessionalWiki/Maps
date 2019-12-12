@@ -135,9 +135,9 @@
 	"maps-json-editor-edit-removed-shapes": "Pašalinti $1 {{PLURAL:$1|formą|formas}}",
 	"maps-json-editor-edit-other": "Vizualus žemėlapio redaktorius",
 	"maps-json-editor-edit-failed": "Nepavyko išsaugoti žemėlapio",
-	"maps-json-editor-toolbar-save-title": "Išsaugoti pakeitimus",
+	"maps-json-editor-toolbar-save-title": "Išeiti iš redagavimo ir išsaugoti pakeitimus",
 	"maps-json-editor-toolbar-save-text": "Atlikta",
-	"maps-json-editor-toolbar-cancel-title": "Atšaukti redagavimą, atmesti visus pakeitimus",
+	"maps-json-editor-toolbar-cancel-title": "Išeiti iš redagavimo, atmesti visus pakeitimus",
 	"maps-json-editor-toolbar-cancel-text": "Atšaukti",
 	"maps-json-editor-toolbar-clear-title": "Valyti visus sluoksnius",
 	"maps-json-editor-toolbar-clear-text": "Valyti Viską",
@@ -145,9 +145,12 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Nėra sluoksnių redagavimui",
 	"maps-json-editor-toolbar-button-remove": "Trinti sluoksnius",
 	"maps-json-editor-toolbar-button-remove-disabled": "Nėra sluoksnių pašalinimui",
+	"maps-json-editor-toolbar-button-save": "Išsaugoti pakeitimus",
+	"maps-json-editor-changes-saved": "Jūsų pakeitimai buvo išsaugoti",
 	"maps-geo-json-edit-source": "Redaguoti šaltinį",
 	"maps-geo-json-create-source": "Sukurti iš GeoJSON šaltinio",
 	"maps-geo-json-create-page-button": "Sukurti šį puslapį",
 	"maps-geo-json-create-page-creating": "Puslapis kuriamas...",
-	"maps-geo-json-create-page-summary": "Sukūrė GeoJSON puslapį"
+	"maps-geo-json-create-page-summary": "Sukūrė GeoJSON puslapį",
+	"maps-editor-edit-geojson": "Redaguoti GeoJSON sluoksnį"
 }

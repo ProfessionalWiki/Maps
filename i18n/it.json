@@ -15,7 +15,7 @@
 			"JackLantern"
 		]
 	},
-	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki, la geocodifica degli indirizzi ed altre operazioni geografiche",
+	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki utilizzando Google Maps o Leaflet. Ha un editor visuale, eventualmente integrato con Semantic MediaWiki, supporta GeoJSON e aggiunge funzionalità di geocodifica.",
 	"right-geocode": "Effettua la geocodifica",
 	"maps_map": "Mappa",
 	"maps-loading-map": "Caricamento mappa ...",
@@ -172,6 +172,7 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Nessun livello da modificare",
 	"maps-json-editor-toolbar-button-remove": "Cancella livelli",
 	"maps-json-editor-toolbar-button-remove-disabled": "Nessun livello da cancellare",
+	"maps-json-editor-toolbar-button-save": "Salva modifiche",
 	"maps-json-editor-changes-saved": "Le tue modifiche sono state salvate",
 	"maps-geo-json-edit-source": "Modifica sorgente",
 	"maps-geo-json-create-page-button": "Crea questa pagina",

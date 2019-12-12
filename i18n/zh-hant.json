@@ -17,7 +17,7 @@
 			"Kly"
 		]
 	},
-	"maps-desc": "可讓 Wiki 頁面嵌入動態地圖，支援使用地理編碼標記位置，以及地理相關操作",
+	"maps-desc": "允許使用 Google 地圖或 Leaflet 讓 Wiki 頁面嵌入動態地圖。具備視覺化編輯器，且可選擇與 Semantic MediaWiki 整合，並支援 GeoJSON 地理編碼功能。",
 	"right-geocode": "地理編碼",
 	"action-geocode": "在此 wiki 上進行地理編碼",
 	"maps_map": "地圖",
@@ -252,9 +252,9 @@
 	"maps-json-editor-edit-modified": "已修改現有地圖形狀",
 	"maps-json-editor-edit-other": "視覺化地圖編輯",
 	"maps-json-editor-edit-failed": "儲存地圖失敗。",
-	"maps-json-editor-toolbar-save-title": "儲存變更",
-	"maps-json-editor-toolbar-save-text": "儲存",
-	"maps-json-editor-toolbar-cancel-title": "取消編輯，放棄所有變更",
+	"maps-json-editor-toolbar-save-title": "離開編輯模式時保持所有變更",
+	"maps-json-editor-toolbar-save-text": "完成",
+	"maps-json-editor-toolbar-cancel-title": "離開編輯模式，放棄所有變更",
 	"maps-json-editor-toolbar-cancel-text": "取消",
 	"maps-json-editor-toolbar-clear-title": "清除全部圖層",
 	"maps-json-editor-toolbar-clear-text": "清除全部",
@@ -262,11 +262,14 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "沒有可編輯的圖層",
 	"maps-json-editor-toolbar-button-remove": "刪除圖層",
 	"maps-json-editor-toolbar-button-remove-disabled": "沒有可刪除的圖層",
+	"maps-json-editor-toolbar-button-save": "儲存變更",
+	"maps-json-editor-changes-saved": "已儲存您的變更。",
 	"maps-geo-json-edit-source": "編輯來源",
 	"maps-geo-json-create-source": "從 GeoJSON 來源建立",
 	"maps-geo-json-create-page-button": "建立此頁面",
 	"maps-geo-json-create-page-creating": "正在建立頁面…",
 	"maps-geo-json-create-page-summary": "已建立 GeoJSON 頁面",
+	"maps-editor-edit-geojson": "編輯 GeoJSON 圖層",
 	"tag-maps-visual-edit": "視覺化地圖編輯",
 	"tag-maps-visual-edit-description": "以[https://www.mediawiki.org/wiki/Extension:Maps 地圖擴充套件]所提供的視覺化編輯器做出編輯"
 }
