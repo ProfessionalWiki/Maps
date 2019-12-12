@@ -34,7 +34,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	<tr>
 		<th>7.12.x</th>
 		<td>7.1 - 7.4</td>
-		<td>1.31 - 1.33</td>
+		<td>1.31 - 1.34</td>
 		<td>3.0 - 3.1</td>
 		<td><strong>Stable release</strong></td>
 	</tr>
