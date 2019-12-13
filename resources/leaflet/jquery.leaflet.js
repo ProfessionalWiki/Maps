@@ -38,7 +38,7 @@
 
 	$.fn.leafletmaps = function ( options ) {
 		let _this = this;
-		_this.options = options; // needed for LeafletAjax.js
+		_this.options = options; // needed by LeafletAjax.js
 
 		this.setup = function() {
 			this.map = L.map( this.get(0), getMapOptions(options) );
@@ -51,7 +51,7 @@
 			this.applyResizable();
 			this.bindAjaxEvents();
 
-			//this.maybeAddEditButton();
+			this.maybeAddEditButton();
 		};
 
 		this.maybeAddEditButton = function() {
@@ -75,28 +75,42 @@
 		this.addEditButton = function() {
 			this.editButton = L.easyButton(
 				'<img src="' + mw.config.get('egMapsScriptPath') + 'resources/leaflet/images/edit-solid.svg">',
-				function() {
-					_this.removeEditButton();
-					_this.mapContent.remove();
-
-					let editor = _this.getEditor();
-					editor.initialize(options.geojson);
-
-					// TODO: edit conflict / old revision detection
-
-					editor.onSaved(function() {
-						_this.purgePage();
-
-						editor.remove();
-						options.geojson = editor.getLayer().toGeoJSON();
-						_this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(_this.map);
-
-						alert(mw.msg('maps-json-editor-changes-saved'));
-						_this.addEditButton();
-					});
-				},
+				this.startEditMode,
 				mw.msg('maps-editor-edit-geojson')
 			).addTo(this.map);
+		};
+
+		this.startEditMode = function() {
+			_this.removeEditButton();
+			_this.mapContent.remove();
+
+			maps.api.getLatestRevision('GeoJson:' + options.GeoJsonSource).done(
+				function(revision) {
+					if (revision.revid === options.GeoJsonRevisionId) {
+						_this.initializeEditor(options.geojson);
+					}
+					else {
+						_this.purgePage();
+						_this.initializeEditor(JSON.parse(revision['*']));
+					}
+				}
+			);
+		};
+
+		this.initializeEditor = function(geoJson) {
+			let editor = _this.getEditor();
+			editor.initialize(geoJson);
+
+			editor.onSaved(function() {
+				_this.purgePage();
+
+				editor.remove();
+				options.geojson = editor.getLayer().toGeoJSON();
+				_this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(_this.map);
+
+				alert(mw.msg('maps-json-editor-changes-saved'));
+				_this.addEditButton();
+			});
 		};
 
 		this.getEditor = function() {

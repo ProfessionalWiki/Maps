@@ -19,9 +19,26 @@
 		return deferred.promise();
 	}
 
+	function getLatestRevision(pageName) {
+		let deferred = $.Deferred();
+
+		new mw.Api().post({
+			action: 'query',
+			prop: 'revisions',
+			rvlimit: 1,
+			rvprop: [ 'ids', 'content' ],
+			titles: pageName
+		}).done(function(response) {
+			deferred.resolve(response.query.pages[Object.keys(response.query.pages)[0]].revisions[0]);
+		});
+
+		return deferred.promise();
+	}
+
 	if (!window.maps) {window.maps = {};}
 
 	window.maps.api = {
-		canEditPage: canEditPage
+		canEditPage: canEditPage,
+		getLatestRevision: getLatestRevision
 	};
 })(window.jQuery, window.mediaWiki);

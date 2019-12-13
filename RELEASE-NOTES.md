@@ -5,7 +5,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Mps 7.13.0
 
+* The GeoJSON editor now shows in #display_maps and #ask for Leaflet maps using the geojson parameter.
 * Removed the need to manually include `Maps_Settings.php` in `LocalSettings.php` when modifying maps settings.
+* Improved compatibility with MediaWiki 1.35
 
 ## Maps 7.12.2
 

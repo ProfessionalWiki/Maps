@@ -201,6 +201,7 @@ class LeafletService implements MappingService {
 
 			$mapParams['geojson'] = $result->getContent();
 			$mapParams['GeoJsonSource'] = $result->getTitleValue() === null ? null : $result->getTitleValue()->getText();
+			$mapParams['GeoJsonRevisionId'] = $result->getRevisionId();
 		}
 
 		return $mapParams;

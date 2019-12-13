@@ -42,6 +42,7 @@ class GeoJsonFetcher {
 				if ( $content instanceof \JsonContent ) {
 					return new GeoJsonFetcherResult(
 						$this->normalizeJson( $content->getNativeData() ),
+						$revision->getId(),
 						$title
 					);
 				}
@@ -58,6 +59,7 @@ class GeoJsonFetcher {
 		try {
 			return new GeoJsonFetcherResult(
 				$this->normalizeJson( $this->fileFetcher->fetchFile( $fileLocation ) ),
+				null,
 				null
 			);
 		}
@@ -69,6 +71,7 @@ class GeoJsonFetcher {
 	private function newEmptyResult(): GeoJsonFetcherResult {
 		return new GeoJsonFetcherResult(
 			[],
+			null,
 			null
 		);
 	}
