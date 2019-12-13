@@ -54,22 +54,28 @@
 			this.maybeAddEditButton();
 		};
 
-		this.maybeAddEditButton = function() {
+		this.shouldLoadEditorJs = function() {
 			if ( options.geojson === '' || options.GeoJsonSource === null ) {
-				return;
+				return false;
 			}
 
 			if (mw.config.get('wgCurRevisionId') !== mw.config.get('wgRevisionId')) {
-				return;
+				return false;
 			}
 
-			maps.api.canEditPage('GeoJson:' + options.GeoJsonSource).done(
-				function(canEdit) {
-					if (canEdit) {
-						_this.addEditButton();
+			return true;
+		};
+
+		this.maybeAddEditButton = function() {
+			if ( this.shouldLoadEditorJs() ) {
+				maps.api.canEditPage('GeoJson:' + options.GeoJsonSource).done(
+					function(canEdit) {
+						if (canEdit) {
+							_this.addEditButton();
+						}
 					}
-				}
-			);
+				);
+			}
 		};
 
 		this.addEditButton = function() {
@@ -297,7 +303,7 @@
 		this.getDependencies = function ( options ) {
 			var dependencies = [];
 
-			if (true) { // TODO
+			if (this.shouldLoadEditorJs()) {
 				dependencies.push( 'ext.maps.leaflet.editor' );
 			}
 
@@ -309,7 +315,7 @@
 				dependencies.push( 'ext.maps.resizable' );
 			}
 
-			if (true) { // TODO: options.cluster
+			if (options.cluster) {
 				dependencies.push( 'ext.maps.leaflet.markercluster' );
 			}
 
