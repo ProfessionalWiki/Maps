@@ -13,7 +13,7 @@
 			"Felipe L. Ewald"
 		]
 	},
-	"maps-desc": "Permite a incorporação de mapas dinâmicos em páginas wiki, geocodificação de endereços e outras operações geográficas",
+	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki usando o Google Maps ou o Leaflet.  Possui um editor visual, que se integra opcionalmente ao Semantic MediaWiki, suporta GeoJSON e adiciona recursos de geocodificação.",
 	"right-geocode": "Geocodificar",
 	"action-geocode": "fazer geocodificação nesta wiki",
 	"maps_map": "Mapa",
@@ -248,9 +248,9 @@
 	"maps-json-editor-edit-modified": "Formas de mapa existentes modificadas",
 	"maps-json-editor-edit-other": "Edição visual do mapa",
 	"maps-json-editor-edit-failed": "Falha ao salvar o mapa",
-	"maps-json-editor-toolbar-save-title": "Salvar alterações",
-	"maps-json-editor-toolbar-save-text": "Salvar",
-	"maps-json-editor-toolbar-cancel-title": "Cancelar edição, descartar todas as alterações",
+	"maps-json-editor-toolbar-save-title": "Saia do modo de edição enquanto mantém todas as alterações",
+	"maps-json-editor-toolbar-save-text": "Feito",
+	"maps-json-editor-toolbar-cancel-title": "Sair do modo de edição, descarta todas as alterações",
 	"maps-json-editor-toolbar-cancel-text": "Cancelar",
 	"maps-json-editor-toolbar-clear-title": "Limpar todas as camadas",
 	"maps-json-editor-toolbar-clear-text": "Limpar tudo",
@@ -258,11 +258,14 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Não há camadas para editar",
 	"maps-json-editor-toolbar-button-remove": "Excluir camadas",
 	"maps-json-editor-toolbar-button-remove-disabled": "Não há camadas para excluir",
+	"maps-json-editor-toolbar-button-save": "Salvar alterações",
+	"maps-json-editor-changes-saved": "suas alterações foram salvas",
 	"maps-geo-json-edit-source": "Editar código-fonte",
 	"maps-geo-json-create-source": "Criar a partir da fonte GeoJSON",
 	"maps-geo-json-create-page-button": "Criar esta página",
 	"maps-geo-json-create-page-creating": "Criando página...",
 	"maps-geo-json-create-page-summary": "Página GeoJSON criada",
+	"maps-editor-edit-geojson": "Editar capa do GeoJSON",
 	"tag-maps-visual-edit": "Edição visual do mapa",
 	"tag-maps-visual-edit-description": "Edição feita com o editor visual fornecido pelo [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"
 }
