@@ -27,7 +27,7 @@
 			"Pols12"
 		]
 	},
-	"maps-desc": "Permet d’inclure des cartes dynamiques dans les pages du wiki, des adresses géocodées et d'autres opérations géographiques.",
+	"maps-desc": "Permet l'incorporation de cartes dynamiques dans les pages du wiki en utilisant Google Maps ou Leaflet. Comprend un éditeur visuel, s’intègre facultativement à MediaWiki Sémantique, prend en charge GeoJSON et ajoute des possibilités de géocodage.",
 	"right-geocode": "Géocoder",
 	"action-geocode": "géocoder sur ce wiki",
 	"maps_map": "Carte",
