@@ -35,10 +35,18 @@
 		return deferred.promise();
 	}
 
+	function purgePage(pageName) {
+		new mw.Api().post({
+			action: 'purge',
+			titles: pageName
+		})
+	}
+
 	if (!window.maps) {window.maps = {};}
 
 	window.maps.api = {
 		canEditPage: canEditPage,
-		getLatestRevision: getLatestRevision
+		getLatestRevision: getLatestRevision,
+		purgePage: purgePage
 	};
 })(window.jQuery, window.mediaWiki);

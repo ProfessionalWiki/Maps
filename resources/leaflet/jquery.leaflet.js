@@ -131,12 +131,7 @@
 		};
 
 		this.purgePage = function() {
-			new mw.Api().post({
-				action: 'purge',
-				titles: mw.config.get( 'wgPageName' )
-			}).then(function(response) {
-
-			});
+			maps.api.purgePage(mw.config.get( 'wgPageName' ));
 		};
 
 		this.removeEditButton = function() {
