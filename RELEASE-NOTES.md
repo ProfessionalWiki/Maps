@@ -5,6 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.15.0
 
+Released on December 22nd, 2019.
+
 * The leaflet fullscreen control is now shown on the top right instead of the top left 
 * Improved internationalization of the visual GeoJSON editor
 

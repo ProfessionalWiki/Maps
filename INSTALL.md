@@ -32,14 +32,14 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>Planned Q4 2019</td>
 	</tr>
 	<tr>
-		<th>7.14.x</th>
+		<th>7.15.x</th>
 		<td>7.1 - 7.4</td>
 		<td>1.31 - 1.34</td>
 		<td>3.0 - 3.1</td>
 		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
-		<th>7.13.x<br>-<br>7.10.x</th>
+		<th>7.14.x<br>-<br>7.10.x</th>
 		<td>7.1 - 7.4</td>
 		<td>1.31 - 1.34</td>
 		<td>3.0 - 3.1</td>
