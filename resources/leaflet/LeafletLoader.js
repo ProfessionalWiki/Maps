@@ -9,6 +9,8 @@ window.mapsLeafletList = [];
 				JSON.parse( $this.find( 'div.mapdata' ).text() )
 			);
 
+			jqueryMap.setup();
+
 			window.mapsLeafletList.push(jqueryMap);
 		} );
 	} );

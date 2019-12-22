@@ -274,7 +274,7 @@ class GoogleMapsService implements MappingService {
 		return 'map_google3_' . $mapsOnThisPage;
 	}
 
-	public function getResourceModules(): array {
+	public function getResourceModules( array $params ): array {
 		return [ 'ext.maps.googlemaps3', 'ext.maps.googlemaps3ajax' ];
 	}
 

@@ -157,7 +157,7 @@ class MapPrinter extends ResultPrinter {
 			$this->service->getDependencyHtml( $params )
 		);
 
-		foreach ( $this->service->getResourceModules() as $resourceModule ) {
+		foreach ( $this->service->getResourceModules( $params ) as $resourceModule ) {
 			SMWOutputs::requireResource( $resourceModule );
 		}
 

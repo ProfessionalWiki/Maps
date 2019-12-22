@@ -28,7 +28,7 @@ interface MappingService {
 	/**
 	 * Returns the resource modules that need to be loaded to use this mapping service.
 	 */
-	public function getResourceModules(): array;
+	public function getResourceModules( array $params ): array;
 
 	public function newMapId(): string;
 

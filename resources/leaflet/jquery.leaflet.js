@@ -54,7 +54,7 @@
 			this.maybeAddEditButton();
 		};
 
-		this.shouldLoadEditorJs = function() {
+		this.shouldShowEditButton = function() {
 			if ( options.geojson === '' || options.GeoJsonSource === null ) {
 				return false;
 			}
@@ -67,14 +67,16 @@
 		};
 
 		this.maybeAddEditButton = function() {
-			if ( this.shouldLoadEditorJs() ) {
-				maps.api.canEditPage('GeoJson:' + options.GeoJsonSource).done(
-					function(canEdit) {
-						if (canEdit) {
-							_this.addEditButton();
+			if ( this.shouldShowEditButton() ) {
+				mw.loader.using( [ 'ext.maps.leaflet.editor' ] ).then( function() {
+					maps.api.canEditPage('GeoJson:' + options.GeoJsonSource).done(
+						function(canEdit) {
+							if (canEdit) {
+								_this.addEditButton();
+							}
 						}
-					}
-				);
+					);
+				} );
 			}
 		};
 
@@ -152,7 +154,9 @@
 
 		this.applyResizable = function() {
 			if (options.resizable) {
-				_this.resizable();
+				mw.loader.using( [ 'ext.maps.resizable' ] ).then( function() {
+					_this.resizable();
+				} );
 			}
 		};
 
@@ -294,32 +298,6 @@
 				}
 			}
 		};
-
-		this.getDependencies = function ( options ) {
-			var dependencies = [];
-
-			if (this.shouldLoadEditorJs()) {
-				dependencies.push( 'ext.maps.leaflet.editor' );
-			}
-
-			if (options.fullscreen) {
-				dependencies.push( 'ext.maps.leaflet.fullscreen' );
-			}
-
-			if (options.resizable) {
-				dependencies.push( 'ext.maps.resizable' );
-			}
-
-			if (options.cluster) {
-				dependencies.push( 'ext.maps.leaflet.markercluster' );
-			}
-
-			return dependencies;
-		};
-
-		mw.loader.using( this.getDependencies( options ) ).then( function() {
-			_this.setup();
-		} );
 
 		return this;
 	};

@@ -3,7 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Mps 7.13.0
+## Maps 7.14.0
+
+Released on December 22nd, 2019.
+
+* Improved Leaflet resource loading (some maps will now load slightly faster) 
+
+## Maps 7.13.0
 
 Released on December 14th, 2019.
 

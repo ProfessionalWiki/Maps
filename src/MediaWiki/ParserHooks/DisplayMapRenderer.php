@@ -78,7 +78,7 @@ class DisplayMapRenderer {
 			$parser->getOutput()->addHeadItem( $dependencies );
 		}
 
-		$parser->getOutput()->addModules( $this->service->getResourceModules() );
+		$parser->getOutput()->addModules( $this->service->getResourceModules( $params ) );
 
 		return $output;
 	}

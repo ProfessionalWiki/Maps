@@ -141,8 +141,28 @@ class LeafletService implements MappingService {
 		return 'map_leaflet_' . $mapsOnThisPage;
 	}
 
-	public function getResourceModules(): array {
-		return [ 'ext.maps.leaflet.loader', 'ext.maps.leaflet.leafletajax' ];
+	public function getResourceModules( array $params ): array {
+		$modules = [];
+
+		if ( $params['resizable'] ) {
+			$modules[] = 'ext.maps.resizable';
+		}
+
+		if ( $params['cluster'] ) {
+			$modules[] = 'ext.maps.leaflet.markercluster';
+		}
+
+		if ( array_key_exists( 'geojson', $params ) ) {
+			$modules[] = 'ext.maps.leaflet.editor';
+		}
+
+		$modules[] = 'ext.maps.leaflet.loader';
+
+		if ( array_key_exists( 'ajaxquery', $params ) && $params['ajaxquery'] !== '' ) {
+			$modules[] = 'ext.maps.leaflet.leafletajax';
+		}
+
+		return $modules;
 	}
 
 	public function getDependencyHtml( array $params ): string {
