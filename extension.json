@@ -151,6 +151,7 @@
 				"ext.maps.leaflet.geojson",
 				"ext.maps.leaflet.library",
 				"mediawiki.api.edit",
+				"mediawiki.user",
 				"mediawiki.jqueryMsg",
 				"ext.maps.leaflet.fullscreen"
 			],
