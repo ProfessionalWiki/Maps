@@ -249,10 +249,10 @@
 
 	"maps-json-editor-toolbar-save-title": "Exit edit mode while keeping all changes",
 	"maps-json-editor-toolbar-save-text": "Done",
-	"maps-json-editor-toolbar-cancel-title": "Exit edit mode, discards all changes",
+	"maps-json-editor-toolbar-cancel-title": "Exit edit mode, discarding all changes",
 	"maps-json-editor-toolbar-cancel-text": "Cancel",
-	"maps-json-editor-toolbar-clear-title": "Clear all layers",
-	"maps-json-editor-toolbar-clear-text": "Clear All",
+	"maps-json-editor-toolbar-clear-title": "Delete all markers and shapes",
+	"maps-json-editor-toolbar-clear-text": "Delete All",
 
 	"maps-json-editor-toolbar-button-edit": "Modify existing markers and shapes",
 	"maps-json-editor-toolbar-button-edit-disabled": "No markers or shapes to modify",
