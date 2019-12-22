@@ -254,10 +254,10 @@
 	"maps-json-editor-toolbar-clear-title": "Clear all layers",
 	"maps-json-editor-toolbar-clear-text": "Clear All",
 
-	"maps-json-editor-toolbar-button-edit": "Edit layers",
-	"maps-json-editor-toolbar-button-edit-disabled": "No layers to edit",
-	"maps-json-editor-toolbar-button-remove": "Delete layers",
-	"maps-json-editor-toolbar-button-remove-disabled": "No layers to delete",
+	"maps-json-editor-toolbar-button-edit": "Modify existing markers and shapes",
+	"maps-json-editor-toolbar-button-edit-disabled": "No markers or shapes to modify",
+	"maps-json-editor-toolbar-button-remove": "Enter deletion mode",
+	"maps-json-editor-toolbar-button-remove-disabled": "No markers or shapes to delete",
 
 	"maps-json-editor-toolbar-button-save": "Save changes",
 	"maps-json-editor-changes-saved": "Your changes have been saved",

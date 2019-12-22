@@ -6,6 +6,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 ## Maps 7.15.0
 
 * The leaflet fullscreen control is now shown on the top right instead of the top left 
+* Improved internationalization of the visual GeoJSON editor
 
 ## Maps 7.14.0
 

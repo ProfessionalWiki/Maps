@@ -32,6 +32,8 @@
 		toolbar.buttons.removeDisabled = mw.msg('maps-json-editor-toolbar-button-remove-disabled');
 	}
 
+	initializeMessages();
+
 	let MapEditor = function(map, mapSaver) {
 		let self = {
 			isFirstInitialization: true,
@@ -77,8 +79,6 @@
 					return 'The map has unsaved changes. Are you sure you want to leave the page?';
 				}
 			});
-
-			initializeMessages();
 		};
 
 		self.newGeoJsonLayer = function(json) {
