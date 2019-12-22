@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.15.0
+
+* The leaflet fullscreen control is now shown on the top right instead of the top left 
+
 ## Maps 7.14.0
 
 Released on December 22nd, 2019.

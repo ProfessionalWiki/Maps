@@ -16,9 +16,12 @@
 		if (options.fullscreen) {
 			mapOptions.fullscreenControl = true;
 			mapOptions.fullscreenControlOptions= {
-				position: 'topleft'
+				position: 'topright'
 			};
 		}
+
+		// The control is removed and later re-added because else it ends up with the fullscreen one on the right
+		mapOptions.zoomControl = false;
 
 		mapOptions.scrollWheelZoom = options.scrollwheelzoom;
 
@@ -45,13 +48,18 @@
 			this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(this.map);
 
 			this.hideLoadingMessage();
-			this.addLayersAndOverlays(this.map);
+			this.addZoomControl();
+			this.addLayersAndOverlays();
 			this.centerAndZoomMap();
 			this.bindClickTarget();
 			this.applyResizable();
 			this.bindAjaxEvents();
 
 			this.maybeAddEditButton();
+		};
+
+		this.addZoomControl = function() {
+			this.map.addControl(new L.Control.Zoom());
 		};
 
 		this.shouldShowEditButton = function() {
