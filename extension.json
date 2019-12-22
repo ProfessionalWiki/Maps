@@ -100,12 +100,21 @@
 		"ext.maps.leaflet.library": {
 			"scripts": [
 				"lib/leaflet/leaflet.js",
-				"lib/leaflet-providers/leaflet-providers.js",
-				"lib/leaflet.fullscreen/Control.FullScreen.js"
-
+				"lib/leaflet-providers/leaflet-providers.js"
 			],
 			"styles": [
-				"lib/leaflet/leaflet.css",
+				"lib/leaflet/leaflet.css"
+			]
+		},
+
+		"ext.maps.leaflet.fullscreen": {
+			"dependencies": [
+				"ext.maps.leaflet.library"
+			],
+			"scripts": [
+				"lib/leaflet.fullscreen/Control.FullScreen.js"
+			],
+			"styles": [
 				"lib/leaflet.fullscreen/Control.FullScreen.css"
 			]
 		},
@@ -153,7 +162,8 @@
 				"mediawiki.api.edit",
 				"mediawiki.user",
 				"mediawiki.jqueryMsg",
-				"ext.maps.api"
+				"ext.maps.api",
+				"ext.maps.leaflet.fullscreen"
 			],
 			"scripts": [
 				"lib/leaflet.StyleEditor/javascript/Leaflet.StyleEditor.min.js",

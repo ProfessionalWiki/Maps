@@ -152,6 +152,10 @@ class LeafletService implements MappingService {
 			$modules[] = 'ext.maps.leaflet.markercluster';
 		}
 
+		if ( $params['fullscreen'] ) {
+			$modules[] = 'ext.maps.leaflet.fullscreen';
+		}
+
 		if ( array_key_exists( 'geojson', $params ) ) {
 			$modules[] = 'ext.maps.leaflet.editor';
 		}
