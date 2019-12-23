@@ -1,0 +1,52 @@
+{
+	"description": "Maps - Leaflet - geojson",
+	"setup": [
+		{
+			"page": "Coordinates",
+			"namespace": "SMW_NS_PROPERTY",
+			"contents": "[[Has type::Geographic coordinate]]"
+		},
+		{
+			"page": "Test GeoJSON",
+			"namespace": "NS_GEO_JSON",
+			"contents": "{\"type\": \"FeatureCollection\", \"features\": []}"
+		},
+		{
+			"page": "Berlin",
+			"contents": "[[Coordinates::52° 31' 0\", 13° 24' 0\"]]"
+		},
+		{
+			"page": "Brussels",
+			"contents": "[[Coordinates::50° 51' 1\", 4° 21' 6\"]]"
+		},
+		{
+			"page": "Query page",
+			"contents": "{{#ask:[[Coordinates::+]]|?Coordinates|format=leaflet}}"
+		}
+	],
+	"tests": [
+		{
+			"about": "Contains GeoJsonSource",
+			"type": "parser",
+			"subject": "Query page",
+			"assert-output": {
+				"to-contain": [
+					"GeoJsonSource"
+				]
+			}
+		}
+	],
+	"settings": {
+		"wgContLang": "en",
+		"wgLang": "en",
+		"smwgNamespacesWithSemanticLinks": {
+			"NS_MAIN": true,
+			"SMW_NS_PROPERTY": true
+		}
+	},
+	"meta": {
+		"version": "2",
+		"is-incomplete": false,
+		"debug": false
+	}
+}

@@ -26,8 +26,14 @@ if ( !trait_exists( PHPUnit4And6Compat::class ) ) {
 error_reporting( -1 );
 ini_set( 'display_errors', 1 );
 
-if ( !is_readable( __DIR__ . '/../vendor/autoload.php' ) ) {
-	die( 'You need to install this package with Composer before you can run the tests' );
+if ( is_readable( $autoloaderClassPath = __DIR__ . '/../../SemanticMediaWiki/tests/autoloader.php' ) ) {
+	require $autoloaderClassPath;
+	$autoloader->addPsr4( 'SMW\\Tests\\', __DIR__ . '/../../SemanticMediaWiki/tests/phpunit' );
 }
+else {
+	if ( !is_readable( __DIR__ . '/../vendor/autoload.php' ) ) {
+		die( 'You need to install this package with Composer before you can run the tests' );
+	}
 
-require __DIR__ . '/../vendor/autoload.php';
+	require __DIR__ . '/../vendor/autoload.php';
+}
