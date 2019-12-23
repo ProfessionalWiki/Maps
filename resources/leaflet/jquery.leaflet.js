@@ -310,17 +310,17 @@
 		};
 
 		this.centerAndZoomMap = function() {
-			this.map.fitWorld();
 			this.fitContent();
 
 			if (options.zoom !== false) {
-				this.map.setZoom(options.zoom);
+				this.map.setZoom(options.zoom, {animate: false});
 			}
 
 			if (options.centre !== false) {
 				this.map.setView(
 					new L.LatLng(options.centre.lat, options.centre.lon),
-					this.map.getZoom()
+					this.map.getZoom(),
+					{animate: false}
 				);
 			}
 		};
@@ -332,11 +332,12 @@
 				if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
 					this.map.setView(
 						bounds.getCenter(),
-						options.defzoom
+						options.defzoom,
+						{animate: false}
 					);
 				}
 				else {
-					this.map.fitBounds(bounds);
+					this.map.fitBounds(bounds, {animate: false});
 				}
 			}
 		};

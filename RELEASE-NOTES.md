@@ -6,6 +6,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 ## Maps 7.15.1
 
 * Fixed `geojson` parameter in the Leaflet result format (7.12.0 regression)
+* Fixed `center` parameter for Leaflet (7.12.0 regression)
 
 ## Maps 7.15.0
 
