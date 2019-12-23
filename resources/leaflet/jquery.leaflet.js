@@ -44,6 +44,17 @@
 		_this.options = options; // needed by LeafletAjax.js
 
 		this.setup = function() {
+			if (options.fullscreen || options.cluster) {
+				mw.loader.using(this.getDependencies()).then( function() {
+					_this.doSetup();
+				} );
+			}
+			else {
+				this.doSetup();
+			}
+		};
+
+		this.doSetup = function() {
 			this.map = L.map( this.get(0), getMapOptions(options) );
 			this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(this.map);
 
@@ -56,6 +67,29 @@
 			this.bindAjaxEvents();
 
 			this.maybeAddEditButton();
+		};
+
+
+		this.getDependencies = function () {
+			let dependencies = [];
+
+			if (this.shouldShowEditButton()) {
+				dependencies.push( 'ext.maps.leaflet.editor' );
+			}
+
+			if (options.fullscreen) {
+				dependencies.push( 'ext.maps.leaflet.fullscreen' );
+			}
+
+			if (options.resizable) {
+				dependencies.push( 'ext.maps.resizable' );
+			}
+
+			if (options.cluster) {
+				dependencies.push( 'ext.maps.leaflet.markercluster' );
+			}
+
+			return dependencies;
 		};
 
 		this.addZoomControl = function() {
