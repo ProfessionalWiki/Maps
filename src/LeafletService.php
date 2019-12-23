@@ -216,19 +216,21 @@ class LeafletService implements MappingService {
 	}
 
 	public function processingResultToMapParams( ProcessingResult $processingResult ): array {
-		$mapParams = $processingResult->getParameterArray();
+		return $this->processedParamsToMapParams( $processingResult->getParameterArray() );
+	}
 
-		if ( $mapParams['geojson'] !== '' ) {
+	public function processedParamsToMapParams( array $params ): array {
+		if ( $params['geojson'] !== '' ) {
 			$fetcher = MapsFactory::newDefault()->newGeoJsonFetcher();
 
-			$result = $fetcher->fetch( $mapParams['geojson'] );
+			$result = $fetcher->fetch( $params['geojson'] );
 
-			$mapParams['geojson'] = $result->getContent();
-			$mapParams['GeoJsonSource'] = $result->getTitleValue() === null ? null : $result->getTitleValue()->getText();
-			$mapParams['GeoJsonRevisionId'] = $result->getRevisionId();
+			$params['geojson'] = $result->getContent();
+			$params['GeoJsonSource'] = $result->getTitleValue() === null ? null : $result->getTitleValue()->getText();
+			$params['GeoJsonRevisionId'] = $result->getRevisionId();
 		}
 
-		return $mapParams;
+		return $params;
 	}
 
 }

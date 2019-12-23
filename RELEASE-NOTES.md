@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.15.1
+
+* Fixed `geojson` parameter in the Leaflet result format (7.12.0 regression)
+
 ## Maps 7.15.0
 
 Released on December 22nd, 2019.

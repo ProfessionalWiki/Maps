@@ -166,7 +166,7 @@ class MapPrinter extends ResultPrinter {
 		}
 
 		return ( new MapHtmlBuilder() )->getMapHTML(
-			$params,
+			$this->service->processedParamsToMapParams( $params ),
 			$mapId,
 			$this->service->getName()
 		);

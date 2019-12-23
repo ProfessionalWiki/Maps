@@ -34,4 +34,6 @@ interface MappingService {
 
 	public function processingResultToMapParams( ProcessingResult $processingResult ): array;
 
+	public function processedParamsToMapParams( array $params ): array;
+
 }

@@ -34,6 +34,7 @@ class GeoJsonFetcher {
 	public function fetch( string $fileLocation ) {
 		try {
 			$title = $this->titleParser->parseTitle( $fileLocation, NS_GEO_JSON );
+
 			$revision = $this->revisionLookup->getRevisionByTitle( $title );
 
 			if ( $revision !== null ) {

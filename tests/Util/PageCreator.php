@@ -13,10 +13,11 @@ use Title;
 class PageCreator {
 
 	public function createPage( string $title, string $content = null ) {
-		$page = new \WikiPage( Title::newFromText( $title ) );
+		$titleObject = Title::newFromText( $title );
+		$page = new \WikiPage( $titleObject );
 
 		$page->doEditContent(
-			new \WikitextContent( $content ?? 'Content of ' . $title ),
+			\ContentHandler::makeContent( $content ?? 'Content of ' . $title, $titleObject ),
 			__CLASS__ . ' creating page ' . $title
 		);
 	}

@@ -36,7 +36,7 @@ class MapQueryTest extends TestCase {
 		$this->contentFetcher = MapsFactory::newDefault()->getPageContentFetcher();
 	}
 
-	public function testMapQuery() {
+	public function testMapQueryContainsMarkersWithInfo() {
 		$this->createDataPages();
 
 		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|?Description|?URL|format=map}}' );
@@ -44,6 +44,17 @@ class MapQueryTest extends TestCase {
 		$this->assertContains( '<div id="map_', $content );
 		$this->assertContains( 'Capital of Belgium', $content );
 		$this->assertContains( 'example.com', $content );
+	}
+
+	public function testLeafletQueryWithGeoJson() {
+		$this->createDataPages();
+
+		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=leaflet|geojson=TestGeoJson}}' );
+
+		$this->assertContains( '<div id="map_leaflet_', $content );
+		$this->assertContains( '"GeoJsonSource":"TestGeoJson"', $content );
+		$this->assertContains( '"GeoJsonRevisionId":', $content );
+		$this->assertContains( '"geojson":{"type":"FeatureCollection"', $content );
 	}
 
 	private function getResultForQuery( string $query ): string {
@@ -58,6 +69,11 @@ class MapQueryTest extends TestCase {
 
 	private function createDataPages() {
 		$this->pageCreator->createPage(
+			'GeoJson:TestGeoJson',
+			'{"type": "FeatureCollection", "features": []}'
+		);
+
+		$this->pageCreator->createPage(
 			'Property:Coordinates',
 			'[[Has type::Geographic coordinate|geographic coordinate]]'
 		);
@@ -70,11 +86,6 @@ class MapQueryTest extends TestCase {
 		$this->pageCreator->createPage(
 			'Property:URL',
 			'[[Has type::URL]]'
-		);
-
-		$this->pageCreator->createPage(
-			'GeoJson:TestJson',
-			'{"type": "FeatureCollection", "features": []}'
 		);
 
 		$this->pageCreator->createPage(
