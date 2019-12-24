@@ -144,6 +144,8 @@ class LeafletService implements MappingService {
 	public function getResourceModules( array $params ): array {
 		$modules = [];
 
+		$modules[] = 'ext.maps.leaflet.loader';
+
 		if ( $params['resizable'] ) {
 			$modules[] = 'ext.maps.resizable';
 		}
@@ -159,8 +161,6 @@ class LeafletService implements MappingService {
 		if ( array_key_exists( 'geojson', $params ) ) {
 			$modules[] = 'ext.maps.leaflet.editor';
 		}
-
-		$modules[] = 'ext.maps.leaflet.loader';
 
 		if ( array_key_exists( 'ajaxquery', $params ) && $params['ajaxquery'] !== '' ) {
 			$modules[] = 'ext.maps.leaflet.leafletajax';
@@ -190,7 +190,6 @@ class LeafletService implements MappingService {
 		return array_merge(
 			[
 				Html::linkedStyle( "$leafletPath/leaflet.css" ),
-				Html::linkedScript( "$leafletPath/leaflet.js" ),
 			],
 			$this->getLayerDependencies( $params )
 		);
