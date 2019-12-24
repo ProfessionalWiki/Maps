@@ -273,7 +273,7 @@
 	"maps-json-editor-toolbar-cancel-title": "Отменить редактирование, сбросить все изменения",
 	"maps-json-editor-toolbar-cancel-text": "Отменить",
 	"maps-json-editor-toolbar-clear-title": "Очистить все слои",
-	"maps-json-editor-toolbar-clear-text": "Очистить всё",
+	"maps-json-editor-toolbar-clear-text": "Удалить всё",
 	"maps-json-editor-toolbar-button-edit": "Редактировать слои",
 	"maps-json-editor-toolbar-button-edit-disabled": "Нет слоёв для редактирования",
 	"maps-json-editor-toolbar-button-remove": "Удалить слои",

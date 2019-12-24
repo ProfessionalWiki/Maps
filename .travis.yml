@@ -15,7 +15,7 @@ matrix:
     - env: DBTYPE=mysql; MW=master; SMW=dev-master; TYPE=coverage
       php: 7.3
     - env: DBTYPE=mysql; MW=master
-      php: 7.4snapshot
+      php: 7.4
 
 install:
   - travis_retry composer self-update
