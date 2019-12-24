@@ -329,16 +329,11 @@
 			let bounds = this.mapContent.getBounds();
 
 			if (bounds.isValid()) {
-				if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
-					this.map.setView(
-						bounds.getCenter(),
-						options.defzoom,
-						{animate: false}
-					);
-				}
-				else {
-					this.map.fitBounds(bounds, {animate: false});
-				}
+				this.map.setView(
+					bounds.getCenter(),
+					bounds.getNorthEast().equals(bounds.getSouthWest()) ? options.defzoom : this.map.getBoundsZoom(bounds),
+					{animate: false}
+				);
 			}
 		};
 
