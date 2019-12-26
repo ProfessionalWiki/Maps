@@ -334,6 +334,9 @@
 					{animate: false}
 				);
 			}
+			else {
+				this.map.fitWorld();
+			}
 		};
 
 		return this;
