@@ -10,7 +10,8 @@
 			"Esketti",
 			"MrLeopold",
 			"Hex",
-			"Mainframe98"
+			"Mainframe98",
+			"Elroy"
 		]
 	},
 	"maps-desc": "Maakt het insluiten van dynamische kaarten in de wikipagina's, het geocoderen van adressen en andere geografische activiteiten mogelijk",
@@ -201,5 +202,12 @@
 	"validator-type-mapscircle-list": "Lijst van circels",
 	"validator-type-mapsline-list": "Lijst met lijnen",
 	"validator-type-mapslocation-list": "Lijst met locaties",
-	"validator-type-mapsrectangle-list": "Lijst met rechthoeken"
+	"validator-type-mapsrectangle-list": "Lijst met rechthoeken",
+	"maps-json-editor-toolbar-cancel-title": "De bewerkmodus afsluiten en alle wijzigingen weggooien",
+	"maps-json-editor-toolbar-clear-title": "Alle markeringen en vormen verwijderen",
+	"maps-json-editor-toolbar-clear-text": "Alles verwijderen",
+	"maps-json-editor-toolbar-button-edit": "Bestaande markeringen en vormen wijzigen",
+	"maps-json-editor-toolbar-button-edit-disabled": "Geen markeringen of vormen om te wijzigen",
+	"maps-json-editor-toolbar-button-remove": "Naar de verwijdermodus",
+	"maps-json-editor-toolbar-button-remove-disabled": "Geen markeringen of vormen om te verwijderen"
 }
