@@ -56,12 +56,18 @@
 
 		this.doSetup = function() {
 			this.map = L.map( this.get(0), getMapOptions(options) );
-			this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options).addTo(this.map);
+			this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options);
+
+			this.mapContent.on('add', function(e) {
+				_this.centerAndZoomMap();
+			});
+
+			this.mapContent.addTo(this.map);
+			this.map.fitWorld();
 
 			this.hideLoadingMessage();
 			this.addZoomControl();
 			this.addLayersAndOverlays();
-			this.centerAndZoomMap();
 			this.bindClickTarget();
 			this.applyResizable();
 			this.bindAjaxEvents();

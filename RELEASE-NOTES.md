@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.15.3
+
+Released on December 26th, 2019.
+
+* Fixed Leaflet maps not loading when using the `circle` parameter
+* Fixed default zoom on Leaflet maps when no  markers or shapes are present
+
 ## Maps 7.15.2
 
 Released on December 24th, 2019.
