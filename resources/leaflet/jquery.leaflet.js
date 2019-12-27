@@ -209,19 +209,11 @@
 			return window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
 		};
 
-		this.getLayerNames = function () {
-			if ( this.isUserUsesDarkMode() ) {
-				return mw.config.get('egMapsLeafletLayersDark');
-			}
-
-			return options.layers;
-		};
-
 		this.addLayers = function() {
 			let apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
 			let layers = {};
 
-			$.each( this.getLayerNames().reverse(), function(index, layerName) {
+			$.each( options.layers.reverse(), function(index, layerName) {
 				var options = {} ;
 				var providerName = layerName.split('.')[0] ;
 				if (apiKeys.hasOwnProperty(providerName) && apiKeys[providerName] !== '') {

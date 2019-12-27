@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.15.4
+
+* Dark Leaflet layers are no longer shown (7.10.0 revert)
+
 ## Maps 7.15.3
 
 Released on December 26th, 2019.
