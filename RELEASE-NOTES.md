@@ -5,6 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.15.4
 
+Released on December 28th, 2019.
+
 * Dark Leaflet layers are no longer shown (7.10.0 revert)
 * Fixed recent Leaflet cluster regression
 
