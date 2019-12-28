@@ -44,28 +44,38 @@
 		_this.options = options; // needed by LeafletAjax.js
 
 		this.setup = function() {
-			this.doSetup();
-		};
-
-		this.doSetup = function() {
 			this.map = L.map( this.get(0), getMapOptions(options) );
 			this.mapContent = maps.leaflet.FeatureBuilder.contentLayerFromOptions(options);
 
+			this.ranSetup = false;
+
 			this.mapContent.on('add', function(e) {
-				_this.centerAndZoomMap();
+				_this.doSetup();
 			});
 
 			this.mapContent.addTo(this.map);
-			this.map.fitWorld();
 
-			this.hideLoadingMessage();
-			this.addZoomControl();
-			this.addLayersAndOverlays();
-			this.bindClickTarget();
-			this.applyResizable();
-			this.bindAjaxEvents();
+			// For whatever reason the add event does not fire when using marker cluster, hence this fallback.
+			setTimeout(function() {
+				_this.doSetup();
+			},250);
+		};
 
-			this.maybeAddEditButton();
+		this.doSetup = function() {
+			if (!this.ranSetup) {
+				this.ranSetup = true;
+
+				this.hideLoadingMessage();
+				this.addZoomControl();
+				this.addLayersAndOverlays();
+				this.map.fitWorld();
+				this.centerAndZoomMap();
+				this.bindClickTarget();
+				this.applyResizable();
+				this.bindAjaxEvents();
+
+				this.maybeAddEditButton();
+			}
 		};
 
 		this.addZoomControl = function() {
