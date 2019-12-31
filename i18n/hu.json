@@ -7,7 +7,8 @@
 			"Misibacsi",
 			"Máté",
 			"Macofe",
-			"TK-999"
+			"TK-999",
+			"Csega"
 		]
 	},
 	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket",
@@ -85,5 +86,6 @@
 	"semanticmaps-altitude": "Tengerszint feletti magasság: $1",
 	"semanticmaps-forminput-locations": "Helyszínek",
 	"semanticmaps-par-staticlocations": "A térképre a lekérdezett adatok mellett felveendő helyek listája. Akárcsak a megjelenítési pontokkal, minden helyhez megadhatsz címet, leírást és ikont hullámvonal (\"~\") elválasztóval.",
-	"semanticmaps-par-showtitle": "Megjelenítse a címet a jelző információs ablakában, vagy ne? Ennek kikapcsolás hasznos lehet, ha sablonnal formázod az információs ablak tartalmát."
+	"semanticmaps-par-showtitle": "Megjelenítse a címet a jelző információs ablakában, vagy ne? Ennek kikapcsolás hasznos lehet, ha sablonnal formázod az információs ablak tartalmát.",
+	"maps-json-editor-toolbar-clear-text": "Összes törlése"
 }

@@ -10,7 +10,8 @@
 			"McAang",
 			"Hbseren",
 			"Sadrettin",
-			"Incelemeelemani"
+			"Incelemeelemani",
+			"BaRaN6161 TURK"
 		]
 	},
 	"right-geocode": "Coğrafi kod",
@@ -80,5 +81,8 @@
 	"mapeditor-imageoverlay-button": "Resim katmanı ekle",
 	"mapeditor-form-field-image": "Resim",
 	"mapeditor-imageoverlay-title": "Resim katmanı ayrıntıları",
-	"semanticmaps-forminput-locations": "Konumlar"
+	"semanticmaps-forminput-locations": "Konumlar",
+	"maps-json-editor-toolbar-clear-text": "Tümünü Sil",
+	"maps-json-editor-toolbar-button-edit-disabled": "Değiştirilecek işaretçi veya şekil yok",
+	"maps-json-editor-toolbar-button-remove": "Silme moduna girin"
 }

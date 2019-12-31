@@ -4,10 +4,11 @@
 			"Anakmalaysia",
 			"Pizza1016",
 			"Macofe",
-			"Jeluang Terluang"
+			"Jeluang Terluang",
+			"CyberTroopers"
 		]
 	},
-	"maps-desc": "Membolehkan pembenaman petak dinamik pada laman wiki, pembuatan geokod alamat dan bermacam-macam lagi operasi geografi",
+	"maps-desc": "Membolehkan pembenaman peta dinamik ke halaman wiki menggunakan Google Maps atau Leaflet. Mempunyai editor visual, secara serentak digabungkan dengan Semantic MediaWiki, menyokong GeoJSON dan menambah keupayaan geokod.",
 	"right-geocode": "Geokod",
 	"maps_map": "Peta",
 	"maps-loading-map": "Peta sedang dimuatkan...",
@@ -154,5 +155,12 @@
 	"mapeditor-form-field-image": "Imej",
 	"mapeditor-imageoverlay-title": "Butiran tindihan imej",
 	"mapeditor-form-field-visitedicon": "Ikon dikunjungi",
-	"semanticmaps-forminput-locations": "Lokasi"
+	"semanticmaps-forminput-locations": "Lokasi",
+	"maps-json-editor-toolbar-cancel-title": "Keluar mod penyuntingan, buang segala perubahan",
+	"maps-json-editor-toolbar-clear-title": "Hapuskan semua penanda dan bentuk",
+	"maps-json-editor-toolbar-clear-text": "Hapus Semua",
+	"maps-json-editor-toolbar-button-edit": "Ubah penanda dan bentuk sedia ada",
+	"maps-json-editor-toolbar-button-edit-disabled": "Tiada penanda atau bentuk untuk diubahsuai",
+	"maps-json-editor-toolbar-button-remove": "Masuk mod penghapusan",
+	"maps-json-editor-toolbar-button-remove-disabled": "Tiada penanda atau bentuk untuk dihapuskan"
 }
