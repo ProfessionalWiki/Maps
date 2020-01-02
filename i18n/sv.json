@@ -253,7 +253,7 @@
 	"maps-json-editor-toolbar-cancel-title": "Avslutar redigeringen, kasserar alla ändringar",
 	"maps-json-editor-toolbar-cancel-text": "Avbryt",
 	"maps-json-editor-toolbar-clear-title": "Rensa alla lager",
-	"maps-json-editor-toolbar-clear-text": "Rensa alla",
+	"maps-json-editor-toolbar-clear-text": "Radera allt",
 	"maps-json-editor-toolbar-button-edit": "Redigera lager",
 	"maps-json-editor-toolbar-button-edit-disabled": "Ingen lager att redigera",
 	"maps-json-editor-toolbar-button-remove": "Radera lager",
