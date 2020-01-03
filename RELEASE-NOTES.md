@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.15.5
+
+Released on January 3rd, 2020.
+
+* Fixed maps not loading properly on mobile
+* Improved reliability of Leaflet resource loading
+
 ## Maps 7.15.4
 
 Released on December 28th, 2019.
