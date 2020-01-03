@@ -129,6 +129,8 @@
 			"dependencies": [
 				"ext.maps.api",
 				"ext.maps.leaflet.library",
+				"ext.maps.leaflet.markercluster",
+				"ext.maps.leaflet.fullscreen",
 				"ext.maps.leaflet.geojson",
 				"ext.sm.common"
 			],
