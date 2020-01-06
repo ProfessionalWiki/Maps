@@ -12,7 +12,8 @@
 			"Matteocng",
 			"Kaspo",
 			"S4b1nuz E.656",
-			"JackLantern"
+			"JackLantern",
+			"Dansita"
 		]
 	},
 	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki utilizzando Google Maps o Leaflet. Ha un editor visuale, eventualmente integrato con Semantic MediaWiki, supporta GeoJSON e aggiunge funzionalità di geocodifica.",
@@ -166,13 +167,13 @@
 	"maps-json-editor-added-marker": "Marcatore aggiunto",
 	"maps-json-editor-added-line": "Linea aggiunta",
 	"maps-json-editor-toolbar-save-text": "Fatto",
-	"maps-json-editor-toolbar-cancel-title": "Uscendo dalla modalità modifica, scarti tutti i cambiamenti",
+	"maps-json-editor-toolbar-cancel-title": "Uscendo dalla modalità modifica verranno persi tutti i cambiamenti",
 	"maps-json-editor-toolbar-cancel-text": "Annulla",
-	"maps-json-editor-toolbar-clear-title": "Cancella tutti i marcatori o forme",
+	"maps-json-editor-toolbar-clear-title": "Cancella tutti i marcatori e forme",
 	"maps-json-editor-toolbar-clear-text": "Cancella tutto",
 	"maps-json-editor-toolbar-button-edit": "Modifica marcatori e forme esistenti",
 	"maps-json-editor-toolbar-button-edit-disabled": "Nessun marcatore o forma da modificare",
-	"maps-json-editor-toolbar-button-remove": "Inserisci modalità cancellazione",
+	"maps-json-editor-toolbar-button-remove": "Entra nella modalità di cancellazione",
 	"maps-json-editor-toolbar-button-remove-disabled": "Nessun marcatore o forma da cancellare",
 	"maps-json-editor-toolbar-button-save": "Salva modifiche",
 	"maps-json-editor-changes-saved": "Le tue modifiche sono state salvate",

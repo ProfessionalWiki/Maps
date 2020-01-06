@@ -13,10 +13,11 @@
 			"Malafaya",
 			"Fúlvio",
 			"Athena in Wonderland",
-			"Mansil alfalb"
+			"Mansil alfalb",
+			"Mansil"
 		]
 	},
-	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki, converter endereços em geocódigos e outras operações geográficas",
+	"maps-desc": "Permite a incorporação de mapas dinâmicos nas páginas da wiki usando Google Maps ou Leaflet. Tem um editor visual, integra opcionalmente com o MediaWiki Semântico, suporta GeoJSON e acrescenta capacidades de geocodificação.",
 	"right-geocode": "Geocodificar",
 	"action-geocode": "fazer geocodificação nesta wiki",
 	"maps_map": "Mapa",
@@ -230,5 +231,7 @@
 	"validator-type-mapspolygon": "Polígono geográfico",
 	"validator-type-mapspolygon-list": "Lista de polígonos geográficos",
 	"validator-type-wmsoverlay": "Sobreposição Web Map Service",
-	"maps-json-editor-toolbar-save-text": "Gravar"
+	"maps-json-editor-toolbar-save-text": "Concluído",
+	"maps-json-editor-toolbar-clear-text": "Eliminar tudo",
+	"maps-json-editor-toolbar-button-edit": "Modificar os marcadores e formas existentes"
 }
