@@ -3,7 +3,8 @@
 		"authors": [
 			"Ex13",
 			"Bugoslav",
-			"Tivek"
+			"Tivek",
+			"Neptune, the Mystic"
 		]
 	},
 	"maps-desc": "Omogućava uključivanje dinamičkih zemljovida u wikistranice, geokodiranje adresa i druge zemljopisne operacije",
@@ -87,5 +88,6 @@
 	"validator-type-mapsrectangle": "Zemljopisni pravokutnik",
 	"validator-type-mapsrectangle-list": "Popis pravokutnika",
 	"validator-type-mapspolygon": "Zemljopisni mnogokut",
-	"validator-type-mapspolygon-list": "Popis zemljopisnih mnogokuta"
+	"validator-type-mapspolygon-list": "Popis zemljopisnih mnogokuta",
+	"maps-json-editor-toolbar-clear-text": "Izbriši sve"
 }

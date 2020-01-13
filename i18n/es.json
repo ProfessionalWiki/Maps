@@ -28,7 +28,8 @@
 			"Carlosmg.dg",
 			"Madamebiblio",
 			"Hasley",
-			"Ihojose"
+			"Ihojose",
+			"DannyS712"
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
@@ -145,7 +146,7 @@
 	"maps-par-searchmarkers": "Permite buscar marcadores específicos a través de un campo incrustado en el mapa.",
 	"maps-par-zoom": "El nivel de ampliación del mapa. Para mapas con marcadores el valor predeterminado será el máximo que aun muestre todos los marcadores.",
 	"maps-par-width": "Permite establecer la anchura del mapa. De forma predeterminada se emplearán los pixeles como unidad, pero puede especificar explícitamente una de estas unidades: px, ex, em, %.",
-	"maps-par-height": "Permite establecer la altura del mapa. De forma predeterminada se usarán los pixeles como unidad, pero puede especificar explícitamente una de estas unidades: px, ex, em, %.",
+	"maps-par-height": "Permite establecer la altura del mapa. De forma predeterminada se usarán los pixeles como unidad, pero puede especificar explícitamente una de estas unidades: px, ex, em.",
 	"maps-par-centre": "La ubicación en la que el mapa debe quedar centrado",
 	"maps-par-enable-fullscreen": "Activar el botón «Pantalla completa»",
 	"maps-par-kml": "Archivos KML para cargar en el mapa.",
