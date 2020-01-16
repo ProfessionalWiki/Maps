@@ -27,7 +27,7 @@
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
 	"maps-searchmarkers-text": "סמני מסנן",
 	"maps-others": "אחרים",
-	"maps-kml-parsing-failed": "פענוח קובץ KML אחד או יותר נכשל. בדרך כלל בגלל בעיה באחזור או בגלל XML בלתי־תקין.",
+	"maps-kml-parsing-failed": "פענוח קובץ KML אחד או יותר נכשל. בדרך כלל בגלל בעיה באחזור או בגלל XML פגום.",
 	"maps-ns-layer": "שכבה",
 	"maps-ns-layer-talk": "שיחת שכבה",
 	"maps-layer-property": "מאפיין",
