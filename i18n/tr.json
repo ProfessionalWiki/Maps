@@ -81,6 +81,7 @@
 	"mapeditor-imageoverlay-button": "Resim katmanı ekle",
 	"mapeditor-form-field-image": "Resim",
 	"mapeditor-imageoverlay-title": "Resim katmanı ayrıntıları",
+	"semanticmaps-default-kml-pagelink": "$1 sayfasını görüntüle",
 	"semanticmaps-forminput-locations": "Konumlar",
 	"maps-json-editor-toolbar-clear-text": "Tümünü Sil",
 	"maps-json-editor-toolbar-button-edit-disabled": "Değiştirilecek işaretçi veya şekil yok",
