@@ -5,6 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.15.6
 
+Released on February 9th, 2020.
+
 * Translation updates
 
 ## Maps 7.15.5
