@@ -14,12 +14,12 @@ class DisplayMapTest extends TestCase {
 	private $originalHeight;
 	private $originalWidth;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->originalHeight = $GLOBALS['egMapsMapHeight'];
 		$this->originalWidth = $GLOBALS['egMapsMapWidth'];
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		$GLOBALS['egMapsMapHeight'] = $this->originalHeight;
 		$GLOBALS['egMapsMapWidth'] = $this->originalWidth;
 	}

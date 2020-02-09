@@ -27,7 +27,7 @@ class MapQueryTest extends TestCase {
 	 */
 	private $contentFetcher;
 
-	public function setUp() {
+	public function setUp(): void {
 		if ( !defined( 'SMW_VERSION' ) ) {
 			$this->markTestSkipped( 'SMW is not available' );
 		}

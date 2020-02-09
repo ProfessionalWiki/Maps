@@ -61,7 +61,7 @@ class MapsDistanceParserTest extends TestCase {
 		'3.4.2 km'
 	];
 
-	public function setUp() {
+	public function setUp(): void {
 		if ( !defined( 'MEDIAWIKI' ) ) {
 			$this->markTestSkipped( 'MediaWiki is not available' );
 		}

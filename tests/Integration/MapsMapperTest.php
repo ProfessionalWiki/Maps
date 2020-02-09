@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class MapsMapperTest extends TestCase {
 
-	public function setUp() {
+	public function setUp(): void {
 		if ( !defined( 'MEDIAWIKI' ) ) {
 			$this->markTestSkipped( 'MediaWiki is not available' );
 		}

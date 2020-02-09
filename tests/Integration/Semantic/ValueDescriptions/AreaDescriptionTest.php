@@ -15,7 +15,7 @@ use SMWDIGeoCoord;
  */
 class AreaDescriptionTest extends TestCase {
 
-	public function setUp() {
+	public function setUp(): void {
 		if ( !defined( 'SMW_VERSION' ) ) {
 			$this->markTestSkipped( 'SMW is not available' );
 		}
