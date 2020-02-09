@@ -20,7 +20,7 @@ class LocationParserTest extends TestCase {
 	private $fileUrlFinder;
 	private $useAddressAsTitle;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->geocoder = new StubGeocoder( new LatLongValue( 1, 2 ) );
 		$this->fileUrlFinder = new MediaWikiFileUrlFinder();
 		$this->useAddressAsTitle = false;

@@ -19,7 +19,7 @@ class MediaWikiFileUrlFinderTest extends TestCase {
 	 */
 	private $urlFinder;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->urlFinder = new MediaWikiFileUrlFinder();
 	}
 

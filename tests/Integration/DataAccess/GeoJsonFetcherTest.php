@@ -41,7 +41,7 @@ class GeoJsonFetcherTest extends TestCase {
 	 */
 	private $fileFetcher;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->fileFetcher = new StubFileFetcher( json_encode( self::VALID_FILE_JSON ) );
 
 		$page = new \WikiPage( Title::newFromText( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX ) );

@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class ParserHookTest extends TestCase {
 
-	public static function setUpBeforeClass() {
+	public static function setUpBeforeClass(): void {
 		if ( !defined( 'MEDIAWIKI' ) ) {
 			self::markTestSkipped( 'MediaWiki is not available' );
 		}
