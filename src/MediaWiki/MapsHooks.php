@@ -7,7 +7,13 @@ use AlItem;
 use ALTree;
 use Maps\Presentation\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
+use ParserOptions;
+use Revision;
 use SkinTemplate;
+use SMW\ApplicationFactory;
+use SMW\DIProperty;
+use User;
+use WikiPage;
 
 /**
  * Static class for hooks handled by the Maps extension.
