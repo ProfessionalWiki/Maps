@@ -7,7 +7,13 @@ use AlItem;
 use ALTree;
 use Maps\Presentation\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
+use ParserOptions;
+use Revision;
 use SkinTemplate;
+use SMW\ApplicationFactory;
+use SMW\DIProperty;
+use User;
+use WikiPage;
 
 /**
  * Static class for hooks handled by the Maps extension.
@@ -123,6 +129,23 @@ final class MapsHooks {
 			'localBasePath' => __DIR__ . '/../../',
 			'remoteExtPath' => 'Maps'
 		];
+	}
+
+	public static function onNewRevisionFromEditComplete( WikiPage $wikiPage, Revision $rev, $baseID, User $user ) {
+//		$smwFactory = ApplicationFactory::getInstance();
+//
+//		$parserData = $smwFactory->newParserData( $wikiPage->getTitle(), $wikiPage->getParserOutput( ParserOptions::newCanonical( $user ) ) );
+//
+//		$parserData->getSemanticData()->addPropertyObjectValue(
+//			new DIProperty( DIProperty::TYPE_NUMBER ),
+//			new \SMWDINumber( 42 )
+//		);
+//
+////		q($parserData->getSemanticData());
+//
+//		$parserData->copyToParserOutput();
+//
+//		return true;
 	}
 
 }

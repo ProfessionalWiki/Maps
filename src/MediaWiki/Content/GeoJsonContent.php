@@ -7,6 +7,8 @@ use Maps\Presentation\GeoJsonMapPageUi;
 use Maps\Presentation\OutputFacade;
 use ParserOptions;
 use ParserOutput;
+use SMW\ApplicationFactory;
+use SMW\DIProperty;
 use Status;
 use Title;
 
@@ -46,11 +48,30 @@ class GeoJsonContent extends \JsonContent {
 	protected function fillParserOutput( Title $title, $revId, ParserOptions $options,
 		$generateHtml, ParserOutput &$output ) {
 
-		if ( $generateHtml && $this->isValid() ) {
-			( GeoJsonMapPageUi::forExistingPage( $this->beautifyJSON() ) )->addToOutput( OutputFacade::newFromParserOutput( $output ) );
-		} else {
+		if ( !$generateHtml || !$this->isValid() ) {
 			$output->setText( '' );
+			return;
 		}
+
+		$this->addMapHtmlToOutput( $output );
+
+		$this->todoStoreSomeSmwStuff( $title, $output );
+	}
+
+	private function addMapHtmlToOutput( ParserOutput $output ) {
+		( GeoJsonMapPageUi::forExistingPage( $this->beautifyJSON() ) )->addToOutput( OutputFacade::newFromParserOutput( $output ) );
+	}
+
+	// TODO
+	private function todoStoreSomeSmwStuff( Title $title, ParserOutput $output ) {
+		$parserData = ApplicationFactory::getInstance()->newParserData( $title, $output );
+
+		$parserData->getSemanticData()->addPropertyObjectValue(
+			new DIProperty( 'HasNumber' ),
+			new \SMWDINumber( 42 )
+		);
+
+		$parserData->copyToParserOutput();
 	}
 
 }

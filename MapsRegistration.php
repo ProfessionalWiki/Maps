@@ -43,6 +43,11 @@ class MapsRegistration {
 				);
 			}
 
+			// FIXME: does not work. Registration apparently too late.
+			if ( !$GLOBALS['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' ) ) {
+				$GLOBALS['smwgNamespacesWithSemanticLinks'][NS_GEO_JSON] = true;
+			}
+
 			( new MapsSetup( $GLOBALS ) )->setup();
 
 			return true;

@@ -198,6 +198,7 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
 		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MediaWiki\MapsHooks::onChangeTagsAllowedAdd';
 		$this->mwGlobals['wgHooks']['ResourceLoaderTestModules'][] = 'Maps\MediaWiki\MapsHooks::onResourceLoaderTestModules';
+		$this->mwGlobals['wgHooks']['NewRevisionFromEditComplete'][] = 'Maps\MediaWiki\MapsHooks::onNewRevisionFromEditComplete';
 	}
 
 	private function registerGeoJsonContentModel() {
