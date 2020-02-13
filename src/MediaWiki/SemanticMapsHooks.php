@@ -3,7 +3,6 @@
 namespace Maps\MediaWiki;
 
 use Maps\SemanticMW\DataValues\CoordinateValue;
-use Maps\SemanticMW\DataValues\GeoPolygonValue;
 use SMW\DataTypeRegistry;
 use SMWDataItem;
 use SMWPrintRequest;
