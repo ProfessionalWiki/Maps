@@ -3,6 +3,7 @@
 namespace Maps\MediaWiki\Content;
 
 use FormatJson;
+use Maps\MapsFactory;
 use Maps\Presentation\GeoJsonMapPageUi;
 use Maps\Presentation\OutputFacade;
 use ParserOptions;
@@ -55,29 +56,15 @@ class GeoJsonContent extends \JsonContent {
 
 		$this->addMapHtmlToOutput( $output );
 
-		$this->todoStoreSomeSmwStuff( $title, $output );
+		$this->storeSemanticValues( $title, $output );
 	}
 
 	private function addMapHtmlToOutput( ParserOutput $output ) {
 		( GeoJsonMapPageUi::forExistingPage( $this->beautifyJSON() ) )->addToOutput( OutputFacade::newFromParserOutput( $output ) );
 	}
 
-	// TODO
-	private function todoStoreSomeSmwStuff( Title $title, ParserOutput $output ) {
-		return;
-		$parserData = ApplicationFactory::getInstance()->newParserData( $title, $output );
-
-		$parserData->getSemanticData()->addPropertyObjectValue(
-			new DIProperty( 'HasNumber' ),
-			new \SMWDINumber( 42 )
-		);
-
-		$parserData->copyToParserOutput();
-
-		ApplicationFactory::getInstance()->getEventDispatcher()->dispatch(
-			'InvalidateEntityCache',
-			[ 'title' => $title, 'context' => 'GeoJsonContent' ]
-		);
+	private function storeSemanticValues( Title $title, ParserOutput $output ) {
+		MapsFactory::globalInstance()->newSemanticGeoJsonStore( $output, $title )->storeGeoJson( $this->mText );
 	}
 
 }
