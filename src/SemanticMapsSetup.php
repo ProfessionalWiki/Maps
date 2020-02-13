@@ -2,8 +2,11 @@
 
 namespace Maps;
 
+use Maps\SemanticMW\DataValues\CoordinateValue;
 use Maps\SemanticMW\ResultPrinters\KmlPrinter;
 use Maps\SemanticMW\ResultPrinters\MapPrinter;
+use SMW\DataTypeRegistry;
+use SMWDataItem;
 
 /**
  * @licence GNU GPL v2+
@@ -25,10 +28,18 @@ class SemanticMapsSetup {
 
 	public function initExtension() {
 		// Hook for initializing the Geographical Data types.
-		$this->mwGlobals['wgHooks']['SMW::DataType::initTypes'][] = 'Maps\MediaWiki\SemanticMapsHooks::initGeoDataTypes';
+		$this->mwGlobals['wgHooks']['SMW::DataType::initTypes'][] = function() {
+			DataTypeRegistry::getInstance()->registerDatatype(
+				'_geo',
+				CoordinateValue::class,
+				SMWDataItem::TYPE_GEO
+			);
+
+			return true;
+		};
 
 		// Hook for defining the default query printer for queries that ask for geographical coordinates.
-		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'Maps\MediaWiki\SemanticMapsHooks::addGeoCoordsDefaultFormat';
+		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'Maps\MediaWiki\MapsHooks::addGeoCoordsDefaultFormat';
 
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();
@@ -63,5 +74,7 @@ class SemanticMapsSetup {
 			$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
 		}
 	}
+
+
 
 }

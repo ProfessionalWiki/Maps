@@ -7,13 +7,8 @@ use AlItem;
 use ALTree;
 use Maps\Presentation\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
-use ParserOptions;
-use Revision;
 use SkinTemplate;
-use SMW\ApplicationFactory;
-use SMW\DIProperty;
-use User;
-use WikiPage;
+use SMWPrintRequest;
 
 /**
  * Static class for hooks handled by the Maps extension.
@@ -129,6 +124,56 @@ final class MapsHooks {
 			'localBasePath' => __DIR__ . '/../../',
 			'remoteExtPath' => 'Maps'
 		];
+	}
+
+	/**
+	 * Set the default format to 'map' when the requested properties are
+	 * of type geographic coordinates.
+	 *
+	 * TODO: have a setting to turn this off and have it off by default for #show
+	 *
+	 * @since 1.0
+	 *
+	 * @param $format Mixed: The format (string), or false when not set yet
+	 * @param SMWPrintRequest[] $printRequests The print requests made
+	 *
+	 * @return boolean
+	 */
+	public static function addGeoCoordsDefaultFormat( &$format, array $printRequests ) {
+		// Only set the format when not set yet. This allows other extensions to override the Maps behavior.
+		if ( $format === false ) {
+			// Only apply when there is more then one print request.
+			// This way requests comming from #show are ignored.
+			if ( count( $printRequests ) > 1 ) {
+				$allValid = true;
+				$hasCoords = false;
+
+				// Loop through the print requests to determine their types.
+				foreach ( $printRequests as $printRequest ) {
+					// Skip the first request, as it's the object.
+					if ( $printRequest->getMode() == SMWPrintRequest::PRINT_THIS ) {
+						continue;
+					}
+
+					$typeId = $printRequest->getTypeID();
+
+					if ( $typeId == '_geo' ) {
+						$hasCoords = true;
+					} else {
+						$allValid = false;
+						break;
+					}
+				}
+
+				// If they are all coordinates, set the result format to 'map'.
+				if ( $allValid && $hasCoords ) {
+					$format = 'map';
+				}
+			}
+
+		}
+
+		return true;
 	}
 
 }
