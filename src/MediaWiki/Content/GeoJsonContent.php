@@ -65,7 +65,6 @@ class GeoJsonContent extends \JsonContent {
 	// TODO
 	private function todoStoreSomeSmwStuff( Title $title, ParserOutput $output ) {
 		return;
-
 		$parserData = ApplicationFactory::getInstance()->newParserData( $title, $output );
 
 		$parserData->getSemanticData()->addPropertyObjectValue(

@@ -5,7 +5,6 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
-use Maps\DataAccess\GeoJsonFetcher;
 use Maps\MediaWiki\Content\GeoJsonContent;
 use Maps\MediaWiki\Content\GeoJsonContentHandler;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
@@ -42,8 +41,8 @@ class MapsSetup {
 		$this->defaultSettings();
 		$this->registerAllTheThings();
 
-		if ( !$this->mwGlobals['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' ) ) {
-			SemanticMaps::newFromMediaWikiGlobals( $this->mwGlobals )->initExtension();
+		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() ) {
+			MapsFactory::globalInstance()->newSemanticMapsSetup( $this->mwGlobals )->initExtension();
 		}
 	}
 

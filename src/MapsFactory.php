@@ -199,4 +199,12 @@ class MapsFactory {
 		);
 	}
 
+	public function smwIntegrationIsEnabled(): bool {
+		return !$this->settings['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' );
+	}
+
+	public function newSemanticMapsSetup( &$mwGlobals ): SemanticMapsSetup {
+		return SemanticMapsSetup::newFromMediaWikiGlobals( $mwGlobals, $this->getMappingServices() );
+	}
+
 }

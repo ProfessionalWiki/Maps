@@ -9,16 +9,18 @@ use Maps\SemanticMW\ResultPrinters\MapPrinter;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class SemanticMaps {
+class SemanticMapsSetup {
 
 	private $mwGlobals;
+	private $mappingServices;
 
-	private function __construct( array &$mwGlobals ) {
+	private function __construct( array &$mwGlobals, MappingServices $mappingServices ) {
 		$this->mwGlobals =& $mwGlobals;
+		$this->mappingServices = $mappingServices;
 	}
 
-	public static function newFromMediaWikiGlobals( array &$mwGlobals ) {
-		return new self( $mwGlobals );
+	public static function newFromMediaWikiGlobals( array &$mwGlobals, MappingServices $mappingServices ) {
+		return new self( $mwGlobals, $mappingServices );
 	}
 
 	public function initExtension() {
@@ -44,11 +46,8 @@ class SemanticMaps {
 	}
 
 	private function registerGoogleMaps() {
-		// TODO: inject
-		$services = MapsFactory::globalInstance()->getMappingServices();
-
-		if ( $services->nameIsKnown( 'googlemaps3' ) ) {
-			$googleMaps = $services->getService( 'googlemaps3' );
+		if ( $this->mappingServices->nameIsKnown( 'googlemaps3' ) ) {
+			$googleMaps = $this->mappingServices->getService( 'googlemaps3' );
 
 			MapPrinter::registerService( $googleMaps );
 
@@ -58,11 +57,8 @@ class SemanticMaps {
 	}
 
 	private function registerLeaflet() {
-		// TODO: inject
-		$services = MapsFactory::globalInstance()->getMappingServices();
-
-		if ( $services->nameIsKnown( 'leaflet' ) ) {
-			$leaflet = $services->getService( 'leaflet' );
+		if ( $this->mappingServices->nameIsKnown( 'leaflet' ) ) {
+			$leaflet = $this->mappingServices->getService( 'leaflet' );
 
 			MapPrinter::registerService( $leaflet );
 
