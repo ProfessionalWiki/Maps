@@ -30,9 +30,6 @@ class SemanticMapsSetup {
 		// Hook for defining the default query printer for queries that ask for geographical coordinates.
 		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'Maps\MediaWiki\SemanticMapsHooks::addGeoCoordsDefaultFormat';
 
-		// Hook for adding a Semantic Maps links to the Admin Links extension.
-		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\SemanticMapsHooks::addToAdminLinks';
-
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();
 
