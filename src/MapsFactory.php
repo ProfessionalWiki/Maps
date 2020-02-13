@@ -15,11 +15,12 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\DataAccess\CachingGeocoder;
 use Maps\DataAccess\GeoJsonFetcher;
-use Maps\DataAccess\GeoJsonStore;
+use Maps\DataAccess\GeoJsonStore\GeoJsonStore;
+use Maps\DataAccess\GeoJsonStore\SemanticGeoJsonStore;
+use Maps\DataAccess\GeoJsonStore\SubObjectBuilder;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\PageContentFetcher;
-use Maps\DataAccess\SemanticGeoJsonStore;
 use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
 use Maps\Presentation\CoordinateFormatter;
 use Maps\Presentation\WikitextParsers\CircleParser;
@@ -215,7 +216,8 @@ class MapsFactory {
 		return new SemanticGeoJsonStore(
 			$this->getSmwFactory()->newParserData( $subjectPage, $parserOutput ),
 			$subjectPage,
-			$this->getSmwFactory()->getEventDispatcher()
+			$this->getSmwFactory()->getEventDispatcher(),
+			new SubObjectBuilder( $subjectPage )
 		);
 	}
 

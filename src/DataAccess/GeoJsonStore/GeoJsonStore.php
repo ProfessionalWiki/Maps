@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\DataAccess;
+namespace Maps\DataAccess\GeoJsonStore;
 
 interface GeoJsonStore {
 
