@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps;
 
 use Maps\SemanticMW\DataValues\CoordinateValue;
@@ -74,7 +76,5 @@ class SemanticMapsSetup {
 			$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
 		}
 	}
-
-
 
 }
