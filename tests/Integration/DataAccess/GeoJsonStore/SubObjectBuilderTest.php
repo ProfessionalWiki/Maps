@@ -30,6 +30,38 @@ class SubObjectBuilderTest extends TestCase {
     "features": [
         {
             "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    13.388729,
+                    52.516524
+                ]
+            }
+        }
+    ]
+}
+EOD
+		);
+
+		$this->assertCount( 1, $objects );
+		$this->assertSame( 'Point_1', $objects[0]->getName() );
+
+		$this->assertEquals(
+			[
+				'HasCoordinates' => [ new \SMWDIGeoCoord( 13.388729, 52.516524 ) ],
+			],
+			$objects[0]->getValues()
+		);
+	}
+
+	public function testPointWithTitleAndDescription() {
+		$objects = $this->newBuilder()->getSubObjectsFromGeoJson(
+			<<<'EOD'
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
             "properties": {
                 "title": "Berlin",
                 "description": "The capital of Germany"
@@ -45,11 +77,9 @@ class SubObjectBuilderTest extends TestCase {
     ]
 }
 EOD
-
 		);
 
 		$this->assertCount( 1, $objects );
-		$this->assertSame( 'GeoJsonPoint', $objects[0]->getName() );
 
 		$this->assertEquals(
 			[

@@ -5,7 +5,9 @@ declare( strict_types = 1 );
 namespace Maps\DataAccess\GeoJsonStore;
 
 use Onoi\EventDispatcher\EventDispatcher;
+use SMW\DataModel\ContainerSemanticData;
 use SMW\DIProperty;
+use SMW\DIWikiPage;
 use SMW\ParserData;
 use SMWDIContainer;
 use Title;
@@ -25,9 +27,28 @@ class SemanticGeoJsonStore implements GeoJsonStore {
 	}
 
 	public function storeGeoJson( string $geoJson ) {
+		$this->parserData->getSemanticData()->addPropertyObjectValue(
+			new DIProperty( 'HasNumber' ),
+			new \SMWDINumber( 2 )
+		);
+
+//		$c =  new ContainerSemanticData(
+//			new DIWikiPage(
+//				$this->subjectPage->getDBkey(),
+//				$this->subjectPage->getNamespace(),
+//				$this->subjectPage->getInterwiki(),
+//				'Point_42'
+//			)
+//		 );
+//
+//		$c->addPropertyObjectValue(
+//			new DIProperty( 'HasDescription' ),
+//			new \SMWDIBlob( 'blah' )
+//		);
+//
 //		$this->parserData->getSemanticData()->addPropertyObjectValue(
-//			new DIProperty( 'HasNumber' ),
-//			new \SMWDINumber( 44 )
+//			new DIProperty( DIProperty::TYPE_SUBOBJECT ),
+//			new SMWDIContainer( $c )
 //		);
 
 		foreach ( $this->subObjectBuilder->getSubObjectsFromGeoJson( $geoJson ) as $subObject ) {

@@ -5,12 +5,14 @@ declare( strict_types = 1 );
 namespace Maps\DataAccess\GeoJsonStore;
 
 use GeoJson\Feature\FeatureCollection;
+use GeoJson\GeoJson;
 use GeoJson\Geometry\Point;
 use Title;
 
 class SubObjectBuilder {
 
 	private $subjectPage;
+	private $pointCount = 0;
 
 	public function __construct( Title $subjectPage ) {
 		$this->subjectPage = $subjectPage;
@@ -21,7 +23,7 @@ class SubObjectBuilder {
 	 */
 	public function getSubObjectsFromGeoJson( string $jsonString ) {
 		$json = json_decode( $jsonString );
-		$geoJson = \GeoJson\GeoJson::jsonUnserialize( $json );
+		$geoJson = GeoJson::jsonUnserialize( $json );
 
 		return iterator_to_array( $this->featureCollectionToSubObjects( $geoJson ) );
 	}
@@ -31,13 +33,13 @@ class SubObjectBuilder {
 			$geometry = $feature->getGeometry();
 
 			if ( $geometry instanceof Point ) {
-				yield $this->pointToSubobject( $geometry, $feature->getProperties() );
+				yield $this->pointToSubobject( $geometry, $feature->getProperties() ?? [] );
 			}
 		}
 	}
 
 	private function pointToSubobject( Point $point, array $properties ): SubObject {
-		$subObject = new SubObject( 'GeoJsonPoint' );
+		$subObject = new SubObject( 'Point_' . ++$this->pointCount );
 
 		$subObject->addPropertyValuePair(
 			'HasCoordinates',
