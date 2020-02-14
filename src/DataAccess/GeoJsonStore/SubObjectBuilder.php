@@ -43,7 +43,7 @@ class SubObjectBuilder {
 
 		$subObject->addPropertyValuePair(
 			'HasCoordinates',
-			new \SMWDIGeoCoord( $point->getCoordinates()[0], $point->getCoordinates()[1] )
+			new \SMWDIGeoCoord( $point->getCoordinates()[1], $point->getCoordinates()[0] )
 		);
 
 		if ( array_key_exists( 'description', $properties ) ) {

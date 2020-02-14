@@ -48,7 +48,7 @@ EOD
 
 		$this->assertEquals(
 			[
-				'HasCoordinates' => [ new \SMWDIGeoCoord( 13.388729, 52.516524 ) ],
+				'HasCoordinates' => [ new \SMWDIGeoCoord( 52.516524, 13.388729 ) ],
 			],
 			$objects[0]->getValues()
 		);
@@ -83,7 +83,7 @@ EOD
 
 		$this->assertEquals(
 			[
-				'HasCoordinates' => [ new \SMWDIGeoCoord( 13.388729, 52.516524 ) ],
+				'HasCoordinates' => [ new \SMWDIGeoCoord( 52.516524, 13.388729 ) ],
 				'HasTitle' => [ new \SMWDIBlob( 'Berlin' ) ],
 				'HasDescription' => [ new \SMWDIBlob( 'The capital of Germany' ) ],
 			],
