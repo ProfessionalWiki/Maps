@@ -48,4 +48,12 @@ class SubObject {
 		);
 	}
 
+	public function getName(): string {
+		return $this->name;
+	}
+
+	public function getValues(): array {
+		return $this->values;
+	}
+
 }

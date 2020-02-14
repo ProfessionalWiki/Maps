@@ -5,9 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\DataAccess\GeoJsonStore;
 
 use Onoi\EventDispatcher\EventDispatcher;
-use SMW\DataModel\ContainerSemanticData;
 use SMW\DIProperty;
-use SMW\DIWikiPage;
 use SMW\ParserData;
 use SMWDIContainer;
 use Title;

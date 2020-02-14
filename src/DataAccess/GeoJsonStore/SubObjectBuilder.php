@@ -4,6 +4,8 @@ declare( strict_types = 1 );
 
 namespace Maps\DataAccess\GeoJsonStore;
 
+use GeoJson\Feature\FeatureCollection;
+use GeoJson\Geometry\Point;
 use Title;
 
 class SubObjectBuilder {
@@ -17,22 +19,44 @@ class SubObjectBuilder {
 	/**
 	 * @return SubObject[]
 	 */
-	public function getSubObjectsFromGeoJson( string $geoJson ) {
-		return [  ];
+	public function getSubObjectsFromGeoJson( string $jsonString ) {
+		$json = json_decode( $jsonString );
+		$geoJson = \GeoJson\GeoJson::jsonUnserialize( $json );
+
+		return iterator_to_array( $this->featureCollectionToSubObjects( $geoJson ) );
 	}
 
-	private function pointToSubobject(): SubObject {
-		$subObject = new SubObject( 'MySubobjectName' );
+	private function featureCollectionToSubObjects( FeatureCollection $featureCollection ) {
+		foreach ( $featureCollection->getFeatures() as $feature ) {
+			$geometry = $feature->getGeometry();
+
+			if ( $geometry instanceof Point ) {
+				yield $this->pointToSubobject( $geometry, $feature->getProperties() );
+			}
+		}
+	}
+
+	private function pointToSubobject( Point $point, array $properties ): SubObject {
+		$subObject = new SubObject( 'GeoJsonPoint' );
 
 		$subObject->addPropertyValuePair(
-			'HasNumber',
-			new \SMWDINumber( 455 )
+			'HasCoordinates',
+			new \SMWDIGeoCoord( $point->getCoordinates()[0], $point->getCoordinates()[1] )
 		);
 
-		$subObject->addPropertyValuePair(
-			'HasNumber',
-			new \SMWDINumber( 4555 )
-		);
+		if ( array_key_exists( 'description', $properties ) ) {
+			$subObject->addPropertyValuePair(
+				'HasDescription',
+				new \SMWDIBlob( $properties['description'] )
+			);
+		}
+
+		if ( array_key_exists( 'title', $properties ) ) {
+			$subObject->addPropertyValuePair(
+				'HasTitle',
+				new \SMWDIBlob( $properties['title'] )
+			);
+		}
 
 		return $subObject;
 	}

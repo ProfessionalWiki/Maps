@@ -12,11 +12,11 @@ use PHPUnit\Framework\TestCase;
  */
 class SubObjectBuilderTest extends TestCase {
 
-	public function testEmptyGeoJson() {
-		$objects = $this->newBuilder()->getSubObjectsFromGeoJson( '{"type": "FeatureCollection", "features": []}' );
-
-		$this->assertSame( [], $objects );
-	}
+//	public function testEmptyGeoJson() {
+//		$objects = $this->newBuilder()->getSubObjectsFromGeoJson( '{"type": "FeatureCollection", "features": []}' );
+//
+//		$this->assertSame( [], $objects );
+//	}
 
 	private function newBuilder(): SubObjectBuilder {
 		return new SubObjectBuilder( \Title::newFromText( 'GeoJson:TestGeoJson' ) );
@@ -48,7 +48,17 @@ EOD
 
 		);
 
-		$this->assertSame( [], $objects );
+		$this->assertCount( 1, $objects );
+		$this->assertSame( 'GeoJsonPoint', $objects[0]->getName() );
+
+		$this->assertEquals(
+			[
+				'HasCoordinates' => [ new \SMWDIGeoCoord( 13.388729, 52.516524 ) ],
+				'HasTitle' => [ new \SMWDIBlob( 'Berlin' ) ],
+				'HasDescription' => [ new \SMWDIBlob( 'The capital of Germany' ) ],
+			],
+			$objects[0]->getValues()
+		);
 	}
 
 }
