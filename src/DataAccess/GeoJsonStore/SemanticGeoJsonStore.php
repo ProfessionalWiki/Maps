@@ -27,10 +27,10 @@ class SemanticGeoJsonStore implements GeoJsonStore {
 	}
 
 	public function storeGeoJson( string $geoJson ) {
-		$this->parserData->getSemanticData()->addPropertyObjectValue(
-			new DIProperty( 'HasNumber' ),
-			new \SMWDINumber( 2 )
-		);
+//		$this->parserData->getSemanticData()->addPropertyObjectValue(
+//			new DIProperty( 'HasNumber' ),
+//			new \SMWDINumber( 3 )
+//		);
 
 //		$c =  new ContainerSemanticData(
 //			new DIWikiPage(
@@ -42,8 +42,8 @@ class SemanticGeoJsonStore implements GeoJsonStore {
 //		 );
 //
 //		$c->addPropertyObjectValue(
-//			new DIProperty( 'HasDescription' ),
-//			new \SMWDIBlob( 'blah' )
+//			new DIProperty( 'HasNumber' ),
+//			new \SMWDINumber( 43 )
 //		);
 //
 //		$this->parserData->getSemanticData()->addPropertyObjectValue(
