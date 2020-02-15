@@ -17,6 +17,12 @@ class SubObjectTest extends TestCase {
 	private const PAGE_NS = NS_GEO_JSON;
 	private const PAGE_TITLE = 'TestGeoJson';
 
+	public function setUp(): void {
+		if ( !defined( 'SMW_VERSION' ) ) {
+			$this->markTestSkipped( 'SMW is not available' );
+		}
+	}
+
 	public function testEmpty() {
 		$subObject = new SubObject( 'MyName' );
 

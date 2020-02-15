@@ -12,11 +12,17 @@ use PHPUnit\Framework\TestCase;
  */
 class SubObjectBuilderTest extends TestCase {
 
-//	public function testEmptyGeoJson() {
-//		$objects = $this->newBuilder()->getSubObjectsFromGeoJson( '{"type": "FeatureCollection", "features": []}' );
-//
-//		$this->assertSame( [], $objects );
-//	}
+	public function setUp(): void {
+		if ( !defined( 'SMW_VERSION' ) ) {
+			$this->markTestSkipped( 'SMW is not available' );
+		}
+	}
+
+	public function testEmptyGeoJson() {
+		$objects = $this->newBuilder()->getSubObjectsFromGeoJson( '{"type": "FeatureCollection", "features": []}' );
+
+		$this->assertSame( [], $objects );
+	}
 
 	private function newBuilder(): SubObjectBuilder {
 		return new SubObjectBuilder( \Title::newFromText( 'GeoJson:TestGeoJson' ) );

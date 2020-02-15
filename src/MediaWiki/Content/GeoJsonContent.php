@@ -62,7 +62,9 @@ class GeoJsonContent extends \JsonContent {
 	}
 
 	private function storeSemanticValues( Title $title, ParserOutput $output ) {
-		MapsFactory::globalInstance()->newSemanticGeoJsonStore( $output, $title )->storeGeoJson( $this->mText );
+		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() ) {
+			MapsFactory::globalInstance()->newSemanticGeoJsonStore( $output, $title )->storeGeoJson( $this->mText );
+		}
 	}
 
 }
