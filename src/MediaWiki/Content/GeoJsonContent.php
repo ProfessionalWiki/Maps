@@ -8,8 +8,6 @@ use Maps\Presentation\GeoJsonMapPageUi;
 use Maps\Presentation\OutputFacade;
 use ParserOptions;
 use ParserOutput;
-use SMW\ApplicationFactory;
-use SMW\DIProperty;
 use Status;
 use Title;
 
