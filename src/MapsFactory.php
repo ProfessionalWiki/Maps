@@ -15,6 +15,9 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\DataAccess\CachingGeocoder;
 use Maps\DataAccess\GeoJsonFetcher;
+use Maps\DataAccess\GeoJsonStore\GeoJsonStore;
+use Maps\DataAccess\GeoJsonStore\SemanticGeoJsonStore;
+use Maps\DataAccess\GeoJsonStore\SubObjectBuilder;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\PageContentFetcher;
@@ -32,6 +35,8 @@ use MediaWiki\MediaWikiServices;
 use ParamProcessor\ParamDefinitionFactory;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
+use SMW\ApplicationFactory;
+use Title;
 
 /**
  * @licence GNU GPL v2+
@@ -205,6 +210,19 @@ class MapsFactory {
 
 	public function newSemanticMapsSetup( &$mwGlobals ): SemanticMapsSetup {
 		return SemanticMapsSetup::newFromMediaWikiGlobals( $mwGlobals, $this->getMappingServices() );
+	}
+
+	public function newSemanticGeoJsonStore( \ParserOutput $parserOutput, Title $subjectPage ): GeoJsonStore {
+		return new SemanticGeoJsonStore(
+			$this->getSmwFactory()->newParserData( $subjectPage, $parserOutput ),
+			$subjectPage,
+			$this->getSmwFactory()->getEventDispatcher(),
+			new SubObjectBuilder( $subjectPage )
+		);
+	}
+
+	private function getSmwFactory(): ApplicationFactory {
+		return ApplicationFactory::getInstance();
 	}
 
 }
