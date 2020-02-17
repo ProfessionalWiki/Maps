@@ -3,7 +3,6 @@
 namespace Maps;
 
 use ParamProcessor\ParamDefinition;
-use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingResult;
 
 /**
@@ -15,8 +14,6 @@ interface MappingService {
 	public function getName(): string;
 
 	public function getAliases(): array;
-
-	public function hasAlias( string $alias ): bool;
 
 	/**
 	 * @return array[]|ParamDefinition[]

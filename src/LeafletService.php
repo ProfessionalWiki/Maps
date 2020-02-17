@@ -21,10 +21,6 @@ class LeafletService implements MappingService {
 		return [ 'leafletmaps', 'leaflet' ]; // TODO: main name should not be in here?
 	}
 
-	public function hasAlias( string $alias ): bool {
-		return in_array( $alias, [ 'leafletmaps', 'leaflet' ] );
-	}
-
 	public function getParameterInfo(): array {
 		$params = MapsFunctions::getCommonParameters();
 

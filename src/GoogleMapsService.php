@@ -42,10 +42,6 @@ class GoogleMapsService implements MappingService {
 		return [ 'googlemaps', 'google' ];
 	}
 
-	public function hasAlias( string $alias ): bool {
-		return in_array( $alias, [ 'googlemaps', 'google' ] );
-	}
-
 	public function getParameterInfo(): array {
 		global $egMapsGMaps3Type, $egMapsGMaps3Types, $egMapsGMaps3Controls, $egMapsGMaps3Layers;
 		global $egMapsGMaps3DefTypeStyle, $egMapsGMaps3DefZoomStyle, $egMapsGMaps3AutoInfoWindows;
