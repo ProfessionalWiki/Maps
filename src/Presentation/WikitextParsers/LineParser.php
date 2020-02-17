@@ -76,9 +76,8 @@ class LineParser implements ValueParser {
 		foreach ( $coordinateStrings as $coordinateString ) {
 			$coordinate = $this->getGeocoder()->geocode( $coordinateString );
 
-			if ( $coordinate === null ) {
+			if ( $coordinate !== null ) {
 				// TODO: good if the user knows something has been omitted
-			} else {
 				$coordinates[] = $coordinate;
 			}
 		}
