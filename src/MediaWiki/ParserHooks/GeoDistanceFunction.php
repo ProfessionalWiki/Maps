@@ -27,17 +27,13 @@ class GeoDistanceFunction extends ParserHook {
 	 * @throws MWException
 	 */
 	public function render( array $parameters ) {
-		/**
-		 * @var \DataValues\Geo\Values\LatLongValue $coordinates1
-		 * @var \DataValues\Geo\Values\LatLongValue $coordinates2
-		 */
-		$coordinates1 = $parameters['location1']->getCoordinates();
-		$coordinates2 = $parameters['location2']->getCoordinates();
-
-		$distance = GeoFunctions::calculateDistance( $coordinates1, $coordinates2 );
-		$output = MapsDistanceParser::formatDistance( $distance, $parameters['unit'], $parameters['decimals'] );
-
-		return $output;
+		return MapsDistanceParser::formatDistance(
+			GeoFunctions::calculateDistance(
+				$parameters['location1']->getCoordinates(),
+				$parameters['location2']->getCoordinates()
+			),
+			$parameters['unit'], $parameters['decimals']
+		);
 	}
 
 	/**
