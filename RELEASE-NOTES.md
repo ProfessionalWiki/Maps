@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.16.0
+
+* Added support for images from remote repositories/wikis (by @edwardspec)
+
 ## Maps 7.15.6
 
 Released on February 9th, 2020.
