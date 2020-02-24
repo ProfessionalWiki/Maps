@@ -50,7 +50,7 @@
 	"maps_centred_on": "Zemljovid je centriran na $1, $2.",
 	"maps-par-centre": "Lokacija na kojoj zemljovid treba centrirati",
 	"maps-par-kml": "KML datoteke za učitavanje na zemljovid.",
-	"maps-googlemaps3-par-type": "Tip zemljovida koji će prvobitno biti pokazan.",
+	"maps-googlemaps3-par-type": "Tip zemljovida koji će prvotno biti pokazan.",
 	"maps-googlemaps3-par-layers": "Posebni slojevi za učitavanje na zemljovid.",
 	"maps-googlemaps3-par-poi": "Pokazuje točke koje Vas zanimaju.",
 	"mapeditor": "Uređivač zemljovida",
