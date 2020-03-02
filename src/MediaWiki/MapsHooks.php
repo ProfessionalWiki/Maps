@@ -177,4 +177,9 @@ final class MapsHooks {
 		return true;
 	}
 
+	public static function addSmwSettings( array &$settings ) {
+		$settings['smwgNamespacesWithSemanticLinks'][NS_GEO_JSON] = true;
+		return true;
+	}
+
 }
