@@ -8,7 +8,8 @@
 			"Metalhead64",
 			"Purodha",
 			"The Evil IP address",
-			"Umherirrender"
+			"Umherirrender",
+			"Ferdinand0101"
 		]
 	},
 	"maps-desc": "Ermöglicht das Einbinden dynamischer Karten, die Georeferenzierung von Adressen und andere geographische Operationen",
@@ -130,7 +131,7 @@
 	"maps-par-searchmarkers": "Erlaubt die Suche nach speziellen Markierungen über ein in die Karte eingebettetes Feld",
 	"maps-par-zoom": "Die Zoomstufe für die Karte. Karten mit Kennzeichnungen werden standardmäßig auf die Stufe gezoomt in der diese noch alle gemeinsam angezeigt werden können.",
 	"maps-par-width": "Die Kartenbreite, die genutzt werden soll. Standardmäßig wird Pixel (px) als Einheit angenommen. Jedoch kann auch eine der folgenden Einheiten angegeben werden: ex, em und %",
-	"maps-par-height": "Die Kartenhöhe, die genutzt werden soll. Standardmäßig wird Pixel (px) als Einheit angenommen. Jedoch kann auch eine der folgenden Einheiten angegeben werden: ex, em und %",
+	"maps-par-height": "Die Kartenhöhe, die genutzt werden soll. Standardmäßig wird Pixel (px) als Einheit angenommen. Jedoch kann auch eine der folgenden Einheiten angegeben werden: px, ex, und em.",
 	"maps-par-centre": "Die Koordinaten des Standorts (bpsw. <code>50.0093,8.2564</code>), an dem die Karte zentriert werden soll",
 	"maps-par-enable-fullscreen": "Vollbildschaltfläche aktivieren",
 	"maps-par-kml": "Die auf die Karte zu ladenden KML-Dateien.",
@@ -226,5 +227,16 @@
 	"validator-type-mapsrectangle-list": "Liste der Rechtecke",
 	"validator-type-mapspolygon": "Geografisches Vieleck",
 	"validator-type-mapspolygon-list": "Liste geografischer Vielecke",
-	"validator-type-wmsoverlay": "Web-Map-Service-Überlagerung"
+	"validator-type-wmsoverlay": "Web-Map-Service-Überlagerung",
+	"maps-json-editor-tooltip-marker": "Karte anklicken, um eine Markierung zu platzieren.",
+	"maps-json-editor-tooltip-line": "Karte anklicken, um eine Linie zu zeichnen.",
+	"maps-json-editor-tooltip-polygon": "Karte anclicke um ein Polygon zu malen",
+	"maps-json-editor-tooltip-rectangle": "Karte anclicke um ein Rechteck zu platzieren",
+	"maps-json-editor-tooltip-circle": "Karte anclicke um ein Kreis zu platzieren",
+	"maps-json-editor-added-line": "Linie hinzugefügt",
+	"maps-json-editor-added-polygon": "Polygon hinzugefügt",
+	"maps-json-editor-added-rectangle": "Recheck hinzugefügt",
+	"maps-json-editor-edit-removed-shapes": "{{PLURAL:$1|Form|Formen}} entfernt",
+	"maps-json-editor-toolbar-save-text": "Fertig",
+	"maps-json-editor-toolbar-cancel-text": "Abbrechen"
 }
