@@ -47,7 +47,7 @@
 	"maps-layer-of-type-and-name": "\"$1\" türünde \"$2\" katmanı",
 	"maps-layer-type-supported-by": "Bu katman türü {{PLURAL:$2|yalnızca şu $1 eşleme hizmetiyle kullanılabilir|şu eşleme hizmetleriyle kullanılabilir: $1}}.",
 	"maps-coordinates-description": "Desteklenen biçimlerden ve desteklenen biçimlerden birine koordinatları biçimlendirmek için ayrıştırıcı kancası.",
-	"maps-displaymap-description": "Coğrafi haritaları, üzerinde wiki tanımlı işaretçiler olmadan görüntüleyin.",
+	"maps-displaymap-description": "Coğrafi haritaları, üzerinde viki tanımlı işaretçiler olmadan görüntüleyin.",
 	"maps-distance-description": "Belirli bir desteklenen birimi kullanarak bir mesafeyi başka bir birim kullanarak eşdeğerine dönüştürün.",
 	"maps-finddestination-description": "Bir başlangıç noktası (desteklenen biçimlerden herhangi birinde olabilir), bir başlangıç yönü ve bir mesafe verilen bir hedef bulun.",
 	"maps-geocode-description": "Adreslerin coğrafi kodlamasını etkinleştirir, başka bir deyişle, insan tarafından okunabilir konumları koordinat kümelerine dönüştürür. Haritalama hizmetleriyle karıştırılmaması gereken çeşitli coğrafi kodlama hizmetleri için destek vardır.",
