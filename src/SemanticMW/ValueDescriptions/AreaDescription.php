@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\SemanticMW\ValueDescriptions;
 
 use DataValues\Geo\Values\LatLongValue;

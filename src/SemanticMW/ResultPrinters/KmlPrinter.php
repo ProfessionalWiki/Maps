@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\SemanticMW\ResultPrinters;
 
 use Maps\Presentation\KmlFormatter;
@@ -57,7 +59,7 @@ class KmlPrinter extends FileExportPrinter {
 		}
 
 		// Fix for offset-error in getQueryLink()
-		// (getQueryLink by default sets offset to point to the next 
+		// (getQueryLink by default sets offset to point to the next
 		// result set, fix by setting it to 0 if now explicitly set)
 		if ( array_key_exists( 'offset', $this->params ) ) {
 			$link->setParameter( $this->params['offset'], 'offset' );
