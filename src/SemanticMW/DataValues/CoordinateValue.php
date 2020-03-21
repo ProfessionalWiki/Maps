@@ -7,6 +7,8 @@ use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
 use Maps\MapsFactory;
 use Maps\Presentation\MapsDistanceParser;
+use Maps\SemanticMW\ValueDescriptions\AreaDescription;
+use Maps\SemanticMW\ValueDescriptions\CoordinateDescription;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
 use SMW\Query\QueryComparator;
@@ -41,7 +43,7 @@ class CoordinateValue extends SMWDataValue {
 			throw new InvalidArgumentException( '$value needs to be a string' );
 		}
 
-		list( $distance, $comparator ) = $this->parseUserValue( $value );
+		[ $distance, $comparator ] = $this->parseUserValue( $value );
 		$distance = $this->parserDistance( $distance );
 
 		$this->setUserValue( $value );
@@ -50,13 +52,13 @@ class CoordinateValue extends SMWDataValue {
 			case !$this->isValid():
 				return new ThingDescription();
 			case $distance !== false:
-				return new \Maps\SemanticMW\ValueDescriptions\AreaDescription(
+				return new AreaDescription(
 					$this->getDataItem(),
 					$comparator,
 					$distance
 				);
 			default:
-				return new \Maps\SemanticMW\ValueDescriptions\CoordinateDescription(
+				return new CoordinateDescription(
 					$this->getDataItem(),
 					null,
 					$comparator
@@ -82,7 +84,7 @@ class CoordinateValue extends SMWDataValue {
 		} else {
 			$comparator = QueryComparator::getInstance()->extractComparatorFromString( $value );
 
-			list( $coordinates, $distance ) = $this->findValueParts( $value );
+			[ $coordinates, $distance ] = $this->findValueParts( $value );
 
 			$this->tryParseAndSetDataItem( $coordinates );
 		}
