@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\Integration\parsers;
+namespace Maps\Tests\Integration\Parsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;

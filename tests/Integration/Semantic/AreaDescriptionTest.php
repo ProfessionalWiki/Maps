@@ -1,6 +1,6 @@
 <?php
 
-namespace Maps\Tests\Semantic\ValueDescriptions;
+namespace Maps\Tests\Integration\Semantic;
 
 use Maps\SemanticMW\ValueDescriptions\AreaDescription;
 use PHPUnit\Framework\TestCase;
