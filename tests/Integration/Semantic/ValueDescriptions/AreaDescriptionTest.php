@@ -2,7 +2,6 @@
 
 namespace Maps\Tests\Semantic\ValueDescriptions;
 
-use CoordinateValue;
 use Maps\SemanticMW\ValueDescriptions\AreaDescription;
 use PHPUnit\Framework\TestCase;
 use SMWDIGeoCoord;
