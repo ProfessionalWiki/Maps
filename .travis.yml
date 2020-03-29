@@ -3,9 +3,7 @@ language: php
 services:
   - mysql
 
-sudo: false
-
-matrix:
+jobs:
   fast_finish: true
   include:
     - env: DBTYPE=mysql; MW=1.31.3; SMW=3.1.0
