@@ -158,7 +158,7 @@
 	"semanticmaps-par-centre": "地図の中心。提供されていないときは、自動的に地図上のすべてのマーカーを表示するための最適な中心が選択されます。",
 	"semanticmaps-par-template": "情報ウィンドウのコンテンツの整形に使用するテンプレートです。",
 	"semanticmaps-par-geocodecontrol": "ジオコーディングコントロールを表示します。",
-	"semanticmaps-par-activeicon": "アクティブなページがクエリ結果と等しい場合に、デフォルトのアイコンの代わりに表示されるアイコン",
+	"semanticmaps-par-activeicon": "アクティブなページがクエリ結果と等しい場合に、既定のマーカーの代わりに表示されるアイコン",
 	"semanticmaps-par-pagelabel": "「はい」に設定すると、マーカーの緯度経度を含むページにリンクされた「インライン ラベル」がすべてのマーカーに付きます。",
 	"semanticmaps-par-userparam": "テンプレートを使用している場合に、各テンプレート呼出しに渡す値",
 	"semanticmaps-kml-text": "各ページに関連付けられたテキストです。クエリに追加的なプロパティがある場合は上書きされます。",
