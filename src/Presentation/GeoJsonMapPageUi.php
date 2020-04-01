@@ -23,7 +23,7 @@ class GeoJsonMapPageUi {
 
 		$output->addHeadItem(
 			'MapsGeoJsonHeadItem',
-			Html::linkedStyle( "$leafletPath/leaflet.css" ) . Html::linkedScript( "$leafletPath/leaflet.js" )
+			Html::linkedStyle( "$leafletPath/leaflet.css" )
 		);
 
 		$output->addHTML( $this->getJavascript() . $this->getHtml() );
