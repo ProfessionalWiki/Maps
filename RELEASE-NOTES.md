@@ -9,6 +9,7 @@ Released on April 1st, 2020.
 
 * Fixed display of Leaflet marker icons when using MediaWiki 1.34 or later
 * Added support for images from remote repositories/wikis (by @edwardspec)
+* Added experimental/unstable GeoJSON+SMW integration
 
 ## Maps 7.15.6
 
