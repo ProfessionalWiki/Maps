@@ -22,7 +22,7 @@ Features:
 
 Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom development at a discount if it is open sourced.
 
-## User manual
+## Documentation
 
 ### For administrators
 
