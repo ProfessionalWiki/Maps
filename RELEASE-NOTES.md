@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.17.0
+
+Under development
+
+* Leaflet maps now show properly in Visual Editor (no enhanced editing was added) 
+
 ## Maps 7.16.0
 
 Released on April 1st, 2020.
