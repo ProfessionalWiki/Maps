@@ -5,6 +5,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.16.0
 
+Released on April 1st, 2020.
+
+* Fixed display of Leaflet marker icons when using MediaWiki 1.34 or later
 * Added support for images from remote repositories/wikis (by @edwardspec)
 
 ## Maps 7.15.6
