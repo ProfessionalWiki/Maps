@@ -180,6 +180,9 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	</tr>
 </table>
 
+It is possible to install incompatible versions of Maps and Semantic MediaWiki on the same wiki by disabling their integration.
+This can be done by setting `$egMapsDisableSmwIntegration = true;` in your `LocalSettings.php` file.
+
 Older obsolete versions:
 
 <table>
