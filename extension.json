@@ -107,9 +107,6 @@
 				"lib/leaflet/leaflet.js",
 				"lib/leaflet-providers/leaflet-providers.js"
 			],
-			"styles": [
-				"lib/leaflet/leaflet.css"
-			],
 			"targets": [ "desktop", "mobile" ]
 		},
 
