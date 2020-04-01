@@ -36,8 +36,8 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 * [Feature overview](https://www.semantic-mediawiki.org/wiki/Extension:Maps)
 * [Displaying maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps)
 * [Customizing maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Customizing_maps)
-** [Leaflet maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Leaflet)
-** [Google Maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Google_Maps)
+    * [Leaflet maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Leaflet)
+    * [Google Maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Google_Maps)
 * [Semantic MediaWiki integration](https://www.semantic-mediawiki.org/wiki/Help:Map_format)
 
 ### Getting support
