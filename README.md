@@ -22,7 +22,7 @@ Features:
 
 Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom development at a discount if it is open sourced.
 
-## User manual
+## Documentation
 
 ### For administrators
 
@@ -33,9 +33,12 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 
 ### For wiki users
 
-* [Usage instructions](https://www.semantic-mediawiki.org/wiki/Extension:Maps)
-* [Usage examples](https://www.semantic-mediawiki.org/wiki/Category:Maps_examples)
-* [Semantic usage examples](https://www.semantic-mediawiki.org/wiki/Semantic_Maps_examples)
+* [Feature overview](https://www.semantic-mediawiki.org/wiki/Extension:Maps)
+* [Displaying maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps)
+* [Customizing maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Customizing_maps)
+    * [Leaflet maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Leaflet)
+    * [Google Maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Google_Maps)
+* [Semantic MediaWiki integration](https://www.semantic-mediawiki.org/wiki/Help:Map_format)
 
 ### Getting support
 
@@ -46,7 +49,7 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 ## Project status
 
 * Latest version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
-* Downloads on [Packagist](https://packagist.org/packages/mediawiki/maps) [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
+* Downloads on [Packagist](https://packagist.org/packages/mediawiki/maps)&nbsp;&nbsp; [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
 * TravisCI &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Build Status](https://secure.travis-ci.org/JeroenDeDauw/Maps.png?branch=master)](http://travis-ci.org/JeroenDeDauw/Maps)
 * Code quality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/badges/quality-score.png?s=3881a27e63cb64e7511d766bfec2e2db5d39bec3)](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/)
 * [Open bugs and feature requests](https://github.com/JeroenDeDauw/Maps/issues)
