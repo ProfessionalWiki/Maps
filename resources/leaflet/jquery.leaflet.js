@@ -36,6 +36,10 @@
 			mapOptions.dragging = false;
 		}
 
+		if (options.imageLayers.length !== 0) {
+			mapOptions.crs = L.CRS.Simple;
+		}
+
 		return mapOptions;
 	}
 
@@ -219,24 +223,60 @@
 			return window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
 		};
 
-		this.addLayers = function() {
-			let apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
-			let layers = {};
+		this.getBaseLayers = function() {
+			if ( options.imageLayers.length === 0 ) {
+				return this.getNormalBaseLayers();
+			}
+
+			return this.getImageBaseLayers();
+		};
+
+		this.getNormalBaseLayers = function() {
+			let layers = new Map();
 
 			$.each( options.layers.reverse(), function(index, layerName) {
-				var options = {} ;
-				var providerName = layerName.split('.')[0] ;
-				if (apiKeys.hasOwnProperty(providerName) && apiKeys[providerName] !== '') {
-					options.apikey = apiKeys[providerName] ;
-				}
-				if (layerName === 'MapQuestOpen') {
-					layers[layerName] = new window.MQ.TileLayer().addTo(_this.map);
-				} else {
-					layers[layerName] = new L.tileLayer.provider(layerName,options).addTo(_this.map);
-				}
+				layers.set(layerName, _this.newBaseLayerFromName(layerName));
 			});
 
 			return layers;
+		};
+
+		this.newBaseLayerFromName = function(layerName) {
+			if (layerName === 'MapQuestOpen') {
+				return new window.MQ.TileLayer();
+			}
+
+			let layerOptions = {} ;
+			let apiKeys = mw.config.get('egMapsLeafletLayersApiKeys');
+			let providerName = layerName.split('.')[0];
+
+			if (apiKeys.hasOwnProperty(providerName) && apiKeys[providerName] !== '') {
+				layerOptions.apikey = apiKeys[providerName];
+			}
+
+			return new L.tileLayer.provider(layerName, layerOptions);
+		};
+
+		this.getImageBaseLayers = function() {
+			let layers = new Map();
+
+			$.each( options.imageLayers.reverse(), function(index, layer) {
+				layers.set(
+					layer.name,
+					L.imageOverlay(
+						layer.url,
+						[[0,0], [100,100]]
+					)
+				);
+			});
+
+			return layers;
+		};
+
+		this.addBaseLayersToMap = function(layers) {
+			layers.forEach(function(layerObject, layerName) {
+				layerObject.addTo(_this.map);
+			});
 		};
 
 		this.addOverlays = function() {
@@ -250,11 +290,16 @@
 		};
 
 		this.addLayersAndOverlays = function() {
-			let layers = this.addLayers();
+			let layers = this.getBaseLayers();
+			this.addBaseLayersToMap(layers);
+
 			let overlays = this.addOverlays();
 
-			if (options.layers.length > 1 || options.overlays.length > 0) {
-				L.control.layers(layers, overlays).addTo(this.map);
+			if (layers.size > 1 || options.overlays.length > 0) {
+				let control = L.control.layers([], overlays).addTo(this.map);
+				layers.forEach(function(layerObject, layerName) {
+					control.addBaseLayer(layerObject, layerName);
+				});
 			}
 		};
 

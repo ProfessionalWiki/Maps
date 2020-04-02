@@ -3,10 +3,11 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 7.16.1
+## Maps 7.17.0
 
 Released on April 2nd, 2020.
 
+* Added experimental `image layers` parameter to Leaflet. Might see breaking changes in upcoming minor releases.
 * Leaflet maps now show properly in the Visual Editor extension (no enhanced editing was added)
 * Fixed issue causing some settings to be ignored in some situations
 

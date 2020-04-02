@@ -114,6 +114,7 @@
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "Allows setting the default zoom level of the map.",
 	"maps-leaflet-par-layers": "The layers that will be available in the layer selector. The first layer will be shown when the map loads.",
+	"maps-leaflet-par-image-layers": "Image base layers. The first layer will be shown by default. If any images are specified, they will be used instead of the regular map layers.",
 	"maps-leaflet-par-layers-dark": "The layers that will be available in the layer selector when a dark mode is activated. The first layer will be shown when the map loads.",
 	"maps-leaflet-par-overlaylayers": "The overlay layers that will be shown when the map loads.",
 	"maps-leaflet-par-maxclusterradius": "The maximum radius that a cluster will cover from the central marker (in pixels).",

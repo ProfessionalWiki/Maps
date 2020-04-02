@@ -41,19 +41,27 @@ class LeafletService implements MappingService {
 		$params['layers'] = [
 			'aliases' => 'layer',
 			'type' => 'string',
+			'islist' => true,
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletLayers'],
 			'message' => 'maps-leaflet-par-layers',
+		];
+
+		$params['image layers'] = [
+			'aliases' => [ 'image layer', 'imagelayers', 'imagelayer' ],
+			'type' => 'string',
 			'islist' => true,
+			'default' => [],
+			'message' => 'maps-leaflet-par-image-layers',
 		];
 
 		$params['overlays'] = [
 			'aliases' => [ 'overlaylayers' ],
 			'type' => ParameterTypes::STRING,
+			'islist' => true,
 			'values' => array_keys( $GLOBALS['egMapsLeafletAvailableOverlayLayers'], true, true ),
 			'default' => $GLOBALS['egMapsLeafletOverlayLayers'],
 			'message' => 'maps-leaflet-par-overlaylayers',
-			'islist' => true,
 		];
 
 		$params['resizable'] = [
@@ -225,7 +233,26 @@ class LeafletService implements MappingService {
 			$params['GeoJsonRevisionId'] = $result->getRevisionId();
 		}
 
+		$params['imageLayers'] = $this->getJsImageLayers( $params['image layers'] );
+
 		return $params;
+	}
+
+	private function getJsImageLayers( array $imageLayers ) {
+		$jsImageLayers = [];
+
+		foreach ( $imageLayers as $imageLayer ) {
+			$url = MapsFactory::globalInstance()->getFileUrlFinder()->getUrlForFileName( $imageLayer );
+
+			if ( $url !== $imageLayer && trim( $url ) !== '' ) {
+				$jsImageLayers[] = [
+					'name' => $imageLayer,
+					'url' => $url
+				];
+			}
+		}
+
+		return $jsImageLayers;
 	}
 
 }
