@@ -38,9 +38,9 @@ class MapsRegistration {
 				throw new Exception( 'You need to have Validator installed in order to use Maps' );
 			}
 
-			if ( version_compare( $GLOBALS['wgVersion'], '1.27c', '<' ) ) {
+			if ( version_compare( $GLOBALS['wgVersion'], '1.31c', '<' ) ) {
 				throw new Exception(
-					'This version of Maps requires MediaWiki 1.27 or above; use Maps 4.2.x for older versions.'
+					'This version of Maps requires MediaWiki 1.31 or above; use Maps 5.6.x for older versions.'
 					. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
 				);
 			}
