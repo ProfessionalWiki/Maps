@@ -4,10 +4,8 @@ declare( strict_types = 1 );
 
 namespace Maps\DataAccess;
 
-use ImagePage;
 use Maps\FileUrlFinder;
 use RepoGroup;
-use Title;
 
 /**
  * @licence GNU GPL v2+
