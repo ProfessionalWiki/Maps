@@ -103,7 +103,7 @@ class LineParser implements ValueParser {
 		//Handle bubble and link parameters
 
 		//create link data
-		$linkOrTitle = array_shift( $params );
+		$linkOrTitle = array_shift( $params ) ?? '';
 		if ( $link = $this->isLinkParameter( $linkOrTitle ) ) {
 			$this->setLinkFromParameter( $line, $link );
 		} else {

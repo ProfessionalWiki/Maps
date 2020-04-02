@@ -76,7 +76,7 @@ class MapsDistanceParserTest extends TestCase {
 		foreach ( self::$distances as $rawValue => $parsedValue ) {
 			$this->assertEquals(
 				$parsedValue,
-				MapsDistanceParser::parseDistance( $rawValue ),
+				MapsDistanceParser::parseDistance( (string)$rawValue ),
 				"'$rawValue' was not parsed to '$parsedValue':"
 			);
 		}
@@ -134,7 +134,7 @@ class MapsDistanceParserTest extends TestCase {
 		}
 
 		foreach ( self::$distances as $distance ) {
-			$this->assertTrue( MapsDistanceParser::isDistance( $distance ), "'$distance' was not be recognized:" );
+			$this->assertTrue( MapsDistanceParser::isDistance( (string)$distance ), "'$distance' was not be recognized:" );
 		}
 	}
 
