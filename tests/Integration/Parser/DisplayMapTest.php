@@ -219,6 +219,8 @@ class DisplayMapTest extends TestCase {
 	}
 
 	public function testGeoJsonSourceForFile() {
+		$this->skipOn131();
+
 		$this->assertContains(
 			'"GeoJsonSource":null,',
 			$this->parse(
@@ -227,7 +229,15 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	private function skipOn131() {
+		if ( version_compare( $GLOBALS['wgVersion'], '1.32c', '<' ) ) {
+			$this->markTestSkipped();
+		}
+	}
+
 	public function testGeoJsonSourceForPage() {
+		$this->skipOn131();
+
 		$page = new \WikiPage( \Title::newFromText( 'GeoJson:TestPageSource' ) );
 		$page->doEditContent(
 			new GeoJsonContent( json_encode( [

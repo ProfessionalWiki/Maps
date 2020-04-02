@@ -47,6 +47,8 @@ class MapQueryTest extends TestCase {
 	}
 
 	public function testLeafletQueryWithGeoJson() {
+		$this->skipOn131();
+
 		$this->createDataPages();
 
 		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=leaflet|geojson=TestGeoJson}}' );
@@ -55,6 +57,12 @@ class MapQueryTest extends TestCase {
 		$this->assertContains( '"GeoJsonSource":"TestGeoJson"', $content );
 		$this->assertContains( '"GeoJsonRevisionId":', $content );
 		$this->assertContains( '"geojson":{"type":"FeatureCollection"', $content );
+	}
+
+	private function skipOn131() {
+		if ( version_compare( $GLOBALS['wgVersion'], '1.32c', '<' ) ) {
+			$this->markTestSkipped();
+		}
 	}
 
 	private function getResultForQuery( string $query ): string {
