@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\Tests\Unit\Semantic\DataValues;
 
 use Maps\SemanticMW\DataValues\CoordinateValue;

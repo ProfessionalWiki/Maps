@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\SemanticMW\ResultPrinters;
 
 use Html;
@@ -255,9 +257,9 @@ class QueryHandler {
 		if ( !$this->showSubject ) {
 			return '';
 		}
-		
+
 		$dataItem = $object->getDataItem();
-		
+
 		if ( $this->showArticleLink() ) {
 			if ( $this->linkAbsolute ) {
 				$text = Html::element(

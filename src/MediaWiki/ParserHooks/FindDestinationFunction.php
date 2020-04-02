@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\MediaWiki\ParserHooks;
 
 use DataValues\Geo\Values\LatLongValue;

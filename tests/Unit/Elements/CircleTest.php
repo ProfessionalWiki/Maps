@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\Tests\Unit\Elements;
 
 use DataValues\Geo\Values\LatLongValue;

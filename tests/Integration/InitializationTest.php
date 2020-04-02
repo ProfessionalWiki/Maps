@@ -1,5 +1,7 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace Maps\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
