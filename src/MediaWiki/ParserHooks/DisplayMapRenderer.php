@@ -55,7 +55,7 @@ class DisplayMapRenderer {
 	 * @return string
 	 */
 	public final function renderMap( array $params, Parser $parser ) {
-		$factory = \Maps\MapsFactory::newDefault();
+		$factory = \Maps\MapsFactory::globalInstance();
 
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();

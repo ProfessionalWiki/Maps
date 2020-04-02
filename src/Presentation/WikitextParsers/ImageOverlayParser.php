@@ -20,7 +20,7 @@ class ImageOverlayParser implements ValueParser {
 	private $geocoder;
 
 	public function __construct( $geocoder = null ) {
-		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::newDefault()->getGeocoder();
+		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::globalInstance()->getGeocoder();
 	}
 
 	/**

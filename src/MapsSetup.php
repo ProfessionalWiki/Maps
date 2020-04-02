@@ -85,7 +85,7 @@ class MapsSetup {
 				$parser->setFunctionHook(
 					$hookName,
 					function ( Parser $parser, PPFrame $frame, array $arguments ) {
-						$mapHtml = MapsFactory::newDefault()->getDisplayMapFunction()->getMapHtmlForKeyValueStrings(
+						$mapHtml = MapsFactory::globalInstance()->getDisplayMapFunction()->getMapHtmlForKeyValueStrings(
 							$parser,
 							array_map(
 								function ( $argument ) use ( $frame ) {
@@ -111,7 +111,7 @@ class MapsSetup {
 							$arguments[DisplayMapFunction::getDefaultParameters()[0]] = $text;
 						}
 
-						return MapsFactory::newDefault()->getDisplayMapFunction()->getMapHtmlForParameterList( $parser, $arguments );
+						return MapsFactory::globalInstance()->getDisplayMapFunction()->getMapHtmlForParameterList( $parser, $arguments );
 					}
 				);
 			}

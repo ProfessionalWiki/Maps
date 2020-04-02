@@ -34,6 +34,10 @@ window.mapsLeafletList = [];
 			1000
 		);
 
+		// mw.hook( 've.deactivationComplete' ).add( function() {
+		// 	clearInterval( thread );
+		// } );
+
 		// surface.getModel().on( 'history', function() {
 		// 	console.log('history');
 		// 	initializeMaps( $( surface.$element[0] ) );

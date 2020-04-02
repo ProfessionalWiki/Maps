@@ -47,13 +47,12 @@ class MapsFactory {
 	private $settings;
 	private $mediaWikiServices;
 
+	private $leafletService;
+	private $googleService;
+
 	private function __construct( array $settings, MediaWikiServices $mediaWikiServices ) {
 		$this->settings = $settings;
 		$this->mediaWikiServices = $mediaWikiServices;
-	}
-
-	public static function newDefault(): self {
-		return new self( $GLOBALS, MediaWikiServices::getInstance() );
 	}
 
 	/**
@@ -67,6 +66,10 @@ class MapsFactory {
 		}
 
 		return $instance;
+	}
+
+	public static function newDefault(): self {
+		return new self( $GLOBALS, MediaWikiServices::getInstance() );
 	}
 
 	public function newLocationParser(): LocationParser {
@@ -169,9 +172,25 @@ class MapsFactory {
 		return new MappingServices(
 			$this->settings['egMapsAvailableServices'],
 			$this->settings['egMapsDefaultService'],
-			new GoogleMapsService(),
-			new LeafletService()
+			$this->getGoogleMapsService(),
+			$this->getLeafletService()
 		);
+	}
+
+	private function getGoogleMapsService(): GoogleMapsService {
+		if ( $this->googleService === null ) {
+			$this->googleService = new GoogleMapsService();
+		}
+
+		return $this->googleService;
+	}
+
+	private function getLeafletService(): LeafletService {
+		if ( $this->leafletService === null ) {
+			$this->leafletService = new LeafletService();
+		}
+
+		return $this->leafletService;
 	}
 
 	public function getDisplayMapFunction(): DisplayMapFunction {

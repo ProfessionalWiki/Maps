@@ -18,7 +18,7 @@ class GeocodeFunction extends ParserHook {
 	private $geocoder;
 
 	public function __construct( Geocoder $geocoder = null ) {
-		$this->geocoder = $geocoder ?? \Maps\MapsFactory::newDefault()->getGeocoder();
+		$this->geocoder = $geocoder ?? \Maps\MapsFactory::globalInstance()->getGeocoder();
 		parent::__construct();
 	}
 

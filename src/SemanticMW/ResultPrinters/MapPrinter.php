@@ -111,7 +111,7 @@ class MapPrinter extends ResultPrinter {
 
 		$this->isHTML = true;
 
-		$factory = \Maps\MapsFactory::newDefault();
+		$factory = \Maps\MapsFactory::globalInstance();
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
 
