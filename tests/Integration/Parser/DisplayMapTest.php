@@ -266,4 +266,22 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	public function testLeafletImageLayersIgnoresNotFoundImages() {
+		$this->assertContains(
+			'"imageLayers":[]',
+			$this->parse(
+				"{{#display_map:image layers=404.png}}"
+			)
+		);
+	}
+
+	public function testLeafletImageLayersIgnoresImageUrls() {
+		$this->assertContains(
+			'"imageLayers":[]',
+			$this->parse(
+				"{{#display_map:image layers=https://user-images.githubusercontent.com/62098559/76514021-3fa9be80-647d-11ea-82ae-715420a5c432.png}}"
+			)
+		);
+	}
+
 }
