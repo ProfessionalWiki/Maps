@@ -321,8 +321,7 @@ class GoogleMapsService implements MappingService {
 			}
 		}
 
-		// If there are dependencies, put them all together in a string, otherwise return false.
-		return $dependencies !== [] ? implode( '', $dependencies ) : false;
+		return implode( '', $dependencies );
 	}
 
 	private function getDependencies(): array {

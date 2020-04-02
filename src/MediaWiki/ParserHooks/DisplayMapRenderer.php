@@ -76,7 +76,7 @@ class DisplayMapRenderer {
 		$dependencies = $this->service->getDependencyHtml( $params );
 
 		// Only add a head item when there are dependencies.
-		if ( $dependencies ) {
+		if ( $dependencies !== '' ) {
 			$parser->getOutput()->addHeadItem( $dependencies );
 		}
 
