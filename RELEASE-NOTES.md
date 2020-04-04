@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.17.1
 
-Under development
+Released on April 4th, 2020.
 
 * Non-square images are now correctly scaled in the new `image layers` feature
 
