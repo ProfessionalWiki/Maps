@@ -18,8 +18,10 @@ use Maps\DataAccess\GeoJsonFetcher;
 use Maps\DataAccess\GeoJsonStore\GeoJsonStore;
 use Maps\DataAccess\GeoJsonStore\SemanticGeoJsonStore;
 use Maps\DataAccess\GeoJsonStore\SubObjectBuilder;
+use Maps\DataAccess\ImageRepository;
 use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
+use Maps\DataAccess\MwImageRepository;
 use Maps\DataAccess\PageContentFetcher;
 use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
 use Maps\Presentation\CoordinateFormatter;
@@ -33,6 +35,7 @@ use Maps\Presentation\WikitextParsers\RectangleParser;
 use Maps\Presentation\WikitextParsers\WmsOverlayParser;
 use MediaWiki\MediaWikiServices;
 use ParamProcessor\ParamDefinitionFactory;
+use RepoGroup;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
 use SMW\ApplicationFactory;
@@ -43,6 +46,8 @@ use Title;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class MapsFactory {
+
+	protected static $globalInstance = null;
 
 	private $settings;
 	private $mediaWikiServices;
@@ -59,17 +64,15 @@ class MapsFactory {
 	 * Only for legacy code where dependency injection is not possible
 	 */
 	public static function globalInstance(): self {
-		static $instance = null;
-
-		if ( $instance === null ) {
-			$instance = self::newDefault();
+		if ( self::$globalInstance === null ) {
+			self::$globalInstance = self::newDefault();
 		}
 
-		return $instance;
+		return self::$globalInstance;
 	}
 
-	public static function newDefault(): self {
-		return new self( $GLOBALS, MediaWikiServices::getInstance() );
+	protected static function newDefault(): self {
+		return new static( $GLOBALS, MediaWikiServices::getInstance() );
 	}
 
 	public function newLocationParser(): LocationParser {
@@ -187,7 +190,9 @@ class MapsFactory {
 
 	private function getLeafletService(): LeafletService {
 		if ( $this->leafletService === null ) {
-			$this->leafletService = new LeafletService();
+			$this->leafletService = new LeafletService(
+				$this->getImageRepository()
+			);
 		}
 
 		return $this->leafletService;
@@ -242,6 +247,16 @@ class MapsFactory {
 
 	private function getSmwFactory(): ApplicationFactory {
 		return ApplicationFactory::getInstance();
+	}
+
+	public function getImageRepository(): ImageRepository {
+		return new MwImageRepository(
+			$this->getRepoGroup()
+		);
+	}
+
+	private function getRepoGroup(): RepoGroup {
+		return RepoGroup::singleton();
 	}
 
 }

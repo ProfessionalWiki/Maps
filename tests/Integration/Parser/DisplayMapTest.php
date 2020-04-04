@@ -5,6 +5,8 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Integration\Parser;
 
 use Maps\MediaWiki\Content\GeoJsonContent;
+use Maps\Tests\MapsTestFactory;
+use Maps\Tests\TestDoubles\ImageValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -282,6 +284,22 @@ class DisplayMapTest extends TestCase {
 				"{{#display_map:image layers=https://user-images.githubusercontent.com/62098559/76514021-3fa9be80-647d-11ea-82ae-715420a5c432.png}}"
 			)
 		);
+	}
+
+	public function testLeafletImageLayer() {
+		$factory = MapsTestFactory::newTestInstance();
+
+		$factory->imageRepo->addImage(
+			'MyImage.png',
+			new ImageValueObject( '/tmp/example/image.png', 40, 20 )
+		);
+
+		$html = $this->parse( "{{#display_map:image layers=MyImage.png}}" );
+
+		$this->assertContains( '"name":"MyImage.png"', $html );
+		$this->assertContains( '"url":"/tmp/example/image.png"', $html );
+		$this->assertContains( '"width":100', $html );
+		$this->assertContains( '"height":50', $html );
 	}
 
 }

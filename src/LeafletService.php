@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use Html;
+use Maps\DataAccess\ImageRepository;
 use ParamProcessor\ParameterTypes;
 use ParamProcessor\ProcessingResult;
 
@@ -13,7 +14,13 @@ use ParamProcessor\ProcessingResult;
  */
 class LeafletService implements MappingService {
 
+	private $imageFinder;
+
 	private $addedDependencies = [];
+
+	public function __construct( ImageRepository $imageFinder ) {
+		$this->imageFinder = $imageFinder;
+	}
 
 	public function getName(): string {
 		return 'leaflet';
@@ -243,12 +250,14 @@ class LeafletService implements MappingService {
 		$jsImageLayers = [];
 
 		foreach ( $imageLayers as $imageLayer ) {
-			$url = MapsFactory::globalInstance()->getFileUrlFinder()->getUrlForFileName( $imageLayer );
+			$image = $this->imageFinder->getByName( $imageLayer );
 
-			if ( $url !== $imageLayer && trim( $url ) !== '' ) {
+			if ( $image !== null ) {
 				$jsImageLayers[] = [
 					'name' => $imageLayer,
-					'url' => $url
+					'url' => $image->getUrl(),
+					'width' => 100,
+					'height' => $image->getHeightInPx() / $image->getWidthInPx() * 100
 				];
 			}
 		}

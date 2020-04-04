@@ -10,8 +10,8 @@ use FileFetcher\SimpleFileFetcher;
 use FileFetcher\StubFileFetcher;
 use FileFetcher\ThrowingFileFetcher;
 use Maps\DataAccess\GeoJsonFetcher;
-use Maps\MapsFactory;
 use Maps\MediaWiki\Content\GeoJsonContent;
+use Maps\Tests\MapsTestFactory;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 use Title;
@@ -51,7 +51,7 @@ class GeoJsonFetcherTest extends TestCase {
 	}
 
 	private function newJsonFileParser(): GeoJsonFetcher {
-		return MapsFactory::newDefault()->newGeoJsonFetcher( $this->fileFetcher );
+		return MapsTestFactory::newTestInstance()->newGeoJsonFetcher( $this->fileFetcher );
 	}
 
 	public function testWhenFileRetrievalFails_emptyJsonIsReturned() {

@@ -261,7 +261,7 @@
 					layer.name,
 					L.imageOverlay(
 						layer.url,
-						[[0,0], [100,100]]
+						[[0, 0], [layer.height, layer.width]]
 					)
 				);
 			});
@@ -346,6 +346,12 @@
 
 		this.fitContent = function() {
 			let bounds = this.mapContent.getBounds();
+
+			$.each( options.imageLayers.reverse(), function(index, layer) {
+				console.log(new L.LatLng(layer.height, layer.width));
+				bounds.extend(new L.LatLng(0, 0));
+				bounds.extend(new L.LatLng(layer.height, layer.width));
+			});
 
 			if (bounds.isValid()) {
 				this.map.setView(

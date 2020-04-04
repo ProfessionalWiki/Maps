@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\System\SemanticMW;
 
 use Maps\DataAccess\PageContentFetcher;
-use Maps\MapsFactory;
+use Maps\Tests\MapsTestFactory;
 use Maps\Tests\Util\PageCreator;
 use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
@@ -33,7 +33,7 @@ class MapQueryTest extends TestCase {
 		}
 
 		$this->pageCreator = TestFactory::newInstance()->getPageCreator();
-		$this->contentFetcher = MapsFactory::newDefault()->getPageContentFetcher();
+		$this->contentFetcher = MapsTestFactory::newTestInstance()->getPageContentFetcher();
 	}
 
 	public function testMapQueryContainsMarkersWithInfo() {
