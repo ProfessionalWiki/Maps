@@ -348,7 +348,6 @@
 			let bounds = this.mapContent.getBounds();
 
 			$.each( options.imageLayers.reverse(), function(index, layer) {
-				console.log(new L.LatLng(layer.height, layer.width));
 				bounds.extend(new L.LatLng(0, 0));
 				bounds.extend(new L.LatLng(layer.height, layer.width));
 			});
