@@ -219,10 +219,6 @@
 			}
 		};
 
-		this.isUserUsesDarkMode = function () {
-			return window.matchMedia( '(prefers-color-scheme: dark)' ).matches;
-		};
-
 		this.getBaseLayers = function() {
 			if ( options.imageLayers.length === 0 ) {
 				return this.getNormalBaseLayers();
