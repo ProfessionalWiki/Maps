@@ -12,13 +12,15 @@ Features:
     * Export your coordinates as KML or RDF
     * Combine coordinates with other structured data stored in your wiki
 * Geocoding via several supported services with the [`#geocode`](https://www.semantic-mediawiki.org/wiki/Maps/Geocoding) parser function.
-* [GeoJson support](https://www.semantic-mediawiki.org/wiki/Extension:Maps/GeoJSON) including a basic visual editor
+* [GeoJson support](https://www.semantic-mediawiki.org/wiki/Extension:Maps/GeoJSON) including a visual editor
 * Coordinate formatting and format conversion via the [`#coordinates`](https://www.semantic-mediawiki.org/wiki/Maps/Coordinates) parser function.
 * Geospatial operations
     * Calculating the distance between two points with [`#geodistance`](https://www.semantic-mediawiki.org/wiki/Maps/Geodistance)
     * Finding a destination given a starting point, bearing and distance with [`#finddestination`](https://www.semantic-mediawiki.org/wiki/Maps/Finddestination)
 * Distance formatting and format conversion via the [`#distance`](https://www.semantic-mediawiki.org/wiki/Maps/Distance) parser function.
 * Visual map editor (Special:MapEditor) to edit [`#display_map`](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps) wikitext (requires Google Maps).
+* Image base layer support for custom maps (ie floor plans, game worlds, etc)
+* Translations in over 100 languages
 
 Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom development at a discount if it is open sourced.
 
