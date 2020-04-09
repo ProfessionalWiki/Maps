@@ -2,12 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Baonguyen21022003",
-			"Minh Nguyen",
-			"Vinhtantran",
-			"Withoutaname",
 			"Dinhxuanduyet",
 			"Macofe",
-			"Nhatminh01"
+			"Minh Nguyen",
+			"Nhatminh01",
+			"Vinhtantran",
+			"Withoutaname"
 		]
 	},
 	"maps-desc": "Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác",

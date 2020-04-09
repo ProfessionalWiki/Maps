@@ -1,17 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"BaRaN6161 TURK",
 			"Emperyan",
+			"Hbseren",
+			"Incelemeelemani",
 			"Joseph",
 			"Manco Capac",
-			"Meelo",
-			"Trncmvsr",
-			"Vito Genovese",
 			"McAang",
-			"Hbseren",
+			"Meelo",
 			"Sadrettin",
-			"Incelemeelemani",
-			"BaRaN6161 TURK"
+			"Trncmvsr",
+			"Vito Genovese"
 		]
 	},
 	"maps-desc": "Google Haritalar veya Broşür kullanarak dinamik haritaların wiki sayfalarına yerleştirilmesine izin verir. İsteğe bağlı Semantic MediaWiki ile entegre olan görsel bir editöre sahiptir, GeoJSON'u destekler ve coğrafi kodlama yetenekleri ekler.",
@@ -122,6 +122,7 @@
 	"maps_leaflet": "Broşür",
 	"maps-leaflet-par-defzoom": "Haritanın varsayılan yakınlaştırma düzeyini ayarlamaya olanak sağlar.",
 	"maps-leaflet-par-layers": "Katman seçicide kullanılabilecek katmanlar. Harita yüklendiğinde ilk katman gösterilir.",
+	"maps-leaflet-par-image-layers": "Görüntü tabanı katmanları. İlk katman varsayılan olarak gösterilecektir. Herhangi bir görüntü belirtilirse, bunlar normal harita katmanları yerine kullanılır.",
 	"maps-leaflet-par-layers-dark": "Karanlık mod etkinleştirildiğinde katman seçicide kullanılabilecek katmanlar. Harita yüklendiğinde ilk katman gösterilir.",
 	"maps-leaflet-par-overlaylayers": "Harita yüklendiğinde gösterilecek katman katmanları.",
 	"maps-leaflet-par-maxclusterradius": "Bir kümenin merkezi işaretleyiciden kapsadığı maksimum yarıçap (piksel cinsinden).",

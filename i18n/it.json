@@ -3,17 +3,17 @@
 		"authors": [
 			"Beta16",
 			"Civvì",
+			"Dansita",
 			"Darth Kule",
 			"F. Cosoleto",
 			"Gianfranco",
 			"HalphaZ",
-			"Rosh",
-			"Viscontino",
-			"Matteocng",
-			"Kaspo",
-			"S4b1nuz E.656",
 			"JackLantern",
-			"Dansita"
+			"Kaspo",
+			"Matteocng",
+			"Rosh",
+			"S4b1nuz E.656",
+			"Viscontino"
 		]
 	},
 	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki utilizzando Google Maps o Leaflet. Ha un editor visuale, eventualmente integrato con Semantic MediaWiki, supporta GeoJSON e aggiunge funzionalità di geocodifica.",

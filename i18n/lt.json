@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agne1992",
+			"Aswanas",
 			"Eitvys200",
 			"Hugo.arg",
-			"Aswanas",
-			"Zygimantus",
-			"Agne1992",
-			"Tomasdd"
+			"Tomasdd",
+			"Zygimantus"
 		]
 	},
 	"maps-desc": "Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://mapping.referata.com/wiki/Maps_examples demo]).\nKatrografavimo paslaugos pasiekiamos: $1",

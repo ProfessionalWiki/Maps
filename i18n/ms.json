@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Anakmalaysia",
-			"Pizza1016",
-			"Macofe",
+			"CyberTroopers",
 			"Jeluang Terluang",
-			"CyberTroopers"
+			"Macofe",
+			"Pizza1016"
 		]
 	},
 	"maps-desc": "Membolehkan pembenaman peta dinamik ke halaman wiki menggunakan Google Maps atau Leaflet. Mempunyai editor visual, secara serentak digabungkan dengan Semantic MediaWiki, menyokong GeoJSON dan menambah keupayaan geokod.",

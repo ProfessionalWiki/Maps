@@ -1,12 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gallaecio",
-			"Toliño",
 			"Banjo",
 			"Elisardojm",
-			"Navhy",
-			"Iváns"
+			"Gallaecio",
+			"Iváns",
+			"Toliño"
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas nas páxinas do wiki",

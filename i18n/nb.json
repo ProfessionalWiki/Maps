@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Event",
-			"Kim Eik",
-			"Nghtwlkr",
 			"Danmichaelo",
-			"Macofe",
 			"EvenT",
-			"Jon Harald Søby"
+			"Event",
+			"Jon Harald Søby",
+			"Kim Eik",
+			"Macofe",
+			"Nghtwlkr"
 		]
 	},
 	"maps-desc": "Gjør det mulig å bygge inn dynamiske kart i wikisider med Google Maps eller Leaflet. Har visuell redigering, kan integreres med Semantic MediaWiki, støtter GeoJSON og legger til geokodingsmuligheter.",

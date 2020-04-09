@@ -2,16 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"AvatarTeam",
+			"Elroy",
+			"Esketti",
+			"Hex",
 			"Kjell",
 			"Konovalov",
+			"Mainframe98",
+			"MrLeopold",
 			"SPQRobin",
 			"Siebrand",
-			"Sjoerddebruin",
-			"Esketti",
-			"MrLeopold",
-			"Hex",
-			"Mainframe98",
-			"Elroy"
+			"Sjoerddebruin"
 		]
 	},
 	"maps-desc": "Maakt het insluiten van dynamische kaarten in de wikipagina's, het geocoderen van adressen en andere geografische activiteiten mogelijk",

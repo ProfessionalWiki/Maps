@@ -3,8 +3,8 @@
 		"authors": [
 			"Fohanno",
 			"Fulup",
-			"Y-M D",
-			"Macofe"
+			"Macofe",
+			"Y-M D"
 		]
 	},
 	"maps-desc": "Aotren a ra ensoc'hañ kartennoù dinamek er pajennoù wiki, geokodañ chomlec'hioù hag oberiadennoù douaroniel all",
@@ -71,6 +71,7 @@
 	"maps_map_cannot_be_displayed": "N'hall ket ar gartenn bezañ diskwelet.",
 	"maps-geocoder-not-available": "N'haller ket ober gant arc'hwel geokodañ ar c'hartennoù. N'haller ket geokodañ ho lec'hiadur.",
 	"maps_leaflet": "Plegfollenn",
+	"maps-leaflet-par-image-layers": "Gwiskadoù diazez ar skeudenn. Dre ziouer e vo diskwelet ar gwiskad kentañ. Ma'z eus bet spisaet skeudennoù e vint implijet e plas gwiskadoù ar gartenn voas.",
 	"maps_click_to_activate": "Klikañ evit gweredekaat  ar gartenn",
 	"maps_centred_on": "Kartenn kreizet war $1, $2.",
 	"maps-par-enable-fullscreen": "Gweredekaat ar bouton skramm leun",

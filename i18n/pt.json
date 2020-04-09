@@ -2,19 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Alchimista",
+			"Athena in Wonderland",
+			"Fúlvio",
 			"Giro720",
 			"GoEThe",
 			"Hamilton Abreu",
 			"Lijealso",
 			"Luckas",
-			"Waldir",
-			"Vitorvicentevalente",
 			"Macofe",
 			"Malafaya",
-			"Fúlvio",
-			"Athena in Wonderland",
+			"Mansil",
 			"Mansil alfalb",
-			"Mansil"
+			"Vitorvicentevalente",
+			"Waldir"
 		]
 	},
 	"maps-desc": "Permite a incorporação de mapas dinâmicos nas páginas da wiki usando Google Maps ou Leaflet. Tem um editor visual, integra opcionalmente com o MediaWiki Semântico, suporta GeoJSON e acrescenta capacidades de geocodificação.",

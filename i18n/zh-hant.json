@@ -1,20 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
+			"1233thehongkonger",
 			"Cwlin0416",
 			"EagerLin",
 			"Horacewai2",
 			"Justincheng12345",
+			"Kly",
+			"LNDDYL",
+			"Liuxinyu970226",
+			"Macofe",
 			"Mark85296341",
+			"Oapbtommy",
 			"Shirayuki",
 			"Simon Shek",
-			"Waihorace",
-			"LNDDYL",
-			"Macofe",
-			"1233thehongkonger",
-			"Liuxinyu970226",
-			"Oapbtommy",
-			"Kly"
+			"Waihorace"
 		]
 	},
 	"maps-desc": "允許使用 Google 地圖或 Leaflet 讓 Wiki 頁面嵌入動態地圖。具備視覺化編輯器，且可選擇與 Semantic MediaWiki 整合，並支援 GeoJSON 地理編碼功能。",
@@ -125,6 +125,7 @@
 	"maps_leaflet": "Leaflet",
 	"maps-leaflet-par-defzoom": "允許設定地圖的預設縮放層級。",
 	"maps-leaflet-par-layers": "此圖層將於地圖加載時顯示",
+	"maps-leaflet-par-image-layers": "圖片底層。依預設值會顯示第一個底層。如果有指定任何圖片，將會使用來取代正規的地圖圖層。",
 	"maps-leaflet-par-layers-dark": "當暗黑模式啟動時，圖層會在圖層選擇器裡可用。當地圖載入會先秀出第一個圖層。",
 	"maps-leaflet-par-overlaylayers": "此覆蓋圖層將於地圖加載時顯示。",
 	"maps-leaflet-par-maxclusterradius": "叢集自中央標記起會涵蓋的最大半徑（像素）。",

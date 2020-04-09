@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Csega",
 			"Dani",
 			"Dj",
 			"Glanthor Reviol",
+			"Macofe",
 			"Misibacsi",
 			"Máté",
-			"Macofe",
-			"TK-999",
-			"Csega"
+			"TK-999"
 		]
 	},
 	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket",

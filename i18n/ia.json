@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie",
-			"Macofe"
+			"Macofe",
+			"McDutchie"
 		]
 	},
 	"maps-desc": "Permitte le incorporation de cartas dynamic in paginas wiki usante Google Maps o Leaflet. Ha un editor visual, pote esser integrate con Semantic MediaWiki, supporta GeoJSON e adde capacitates de geocodification.",

@@ -3,10 +3,10 @@
 		"authors": [
 			"EugeneZelenko",
 			"Jim-by",
-			"Wizardist",
-			"Red Winged Duck",
 			"Macofe",
-			"Renessaince"
+			"Red Winged Duck",
+			"Renessaince",
+			"Wizardist"
 		]
 	},
 	"maps-desc": "Дае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі з дапамогай Google Maps або Leaflet. Мае візуальны рэдактар, пры патрэбе інтэгруецца з Сэмантычнай MediaWiki, падтрымлівае GeoJSON і дадае геакадавальныя можнасьці.",

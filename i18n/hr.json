@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ex13",
 			"Bugoslav",
-			"Tivek",
-			"Neptune, the Mystic"
+			"Ex13",
+			"Neptune, the Mystic",
+			"Tivek"
 		]
 	},
 	"maps-desc": "Omogućava uključivanje dinamičkih zemljovida u wikistranice, geokodiranje adresa i druge zemljopisne operacije",
@@ -89,5 +89,7 @@
 	"validator-type-mapsrectangle-list": "Popis pravokutnika",
 	"validator-type-mapspolygon": "Zemljopisni mnogokut",
 	"validator-type-mapspolygon-list": "Popis zemljopisnih mnogokuta",
-	"maps-json-editor-toolbar-clear-text": "Izbriši sve"
+	"maps-json-editor-toolbar-clear-text": "Izbriši sve",
+	"tag-maps-visual-edit": "Vizualno uređivanje zemljovida",
+	"tag-maps-visual-edit-description": "Uređivanje načinjeno vizualnim uređivačem priskrbljenim [https://www.mediawiki.org/wiki/Extension:Maps proširenjem Zemljovidi]"
 }
