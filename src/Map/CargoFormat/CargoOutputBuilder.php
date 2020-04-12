@@ -11,6 +11,7 @@ use Maps\Map\MapData;
 use Maps\Map\MapOutput;
 use Maps\Map\MapOutputBuilder;
 use Maps\Map\Marker;
+use Maps\Map\StructuredPopup;
 use Maps\MappingService;
 use Maps\MappingServices;
 use ParamProcessor\ParamDefinitionFactory;
@@ -117,7 +118,7 @@ class CargoOutputBuilder {
 		) );
 
 		$marker->setText(
-			( new PopupContent(
+			( new StructuredPopup(
 				array_shift( $valuesRow ) ?? '',
 				$this->getPropertyValuesToDisplay( $valuesRow, $coordinateFields )
 			) )->getHtml()

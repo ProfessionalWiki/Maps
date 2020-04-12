@@ -2,9 +2,9 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\Map\CargoFormat;
+namespace Maps\Map;
 
-class PopupContent {
+class StructuredPopup {
 
 	private $titleHtml;
 	private $propertyValues;
