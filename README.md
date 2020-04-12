@@ -20,6 +20,7 @@ Features:
 * Distance formatting and format conversion via the [`#distance`](https://www.semantic-mediawiki.org/wiki/Maps/Distance) parser function.
 * Visual map editor (Special:MapEditor) to edit [`#display_map`](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps) wikitext (requires Google Maps).
 * Image base layer support for custom maps (ie floor plans, game worlds, etc)
+* Integration with [Cargo]
 * Translations in over 100 languages
 
 Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom development at a discount if it is open sourced.
@@ -109,3 +110,5 @@ Beware that due to technical debt, some tests access the network.
 * [Maps on WikiApiary](https://wikiapiary.com/wiki/Extension:Maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [TravisCI build status](https://travis-ci.org/JeroenDeDauw/Maps)
+
+[Cargo]: https://www.mediawiki.org/wiki/Extension:Cargo

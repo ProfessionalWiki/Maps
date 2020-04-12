@@ -2,17 +2,20 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\SemanticMW\ResultPrinters;
+namespace Maps\Map\SemanticFormat;
 
 use Linker;
 use Maps\Elements\BaseElement;
 use Maps\Elements\Location;
 use Maps\FileUrlFinder;
+use Maps\Map\MapOutput;
+use Maps\Map\MapOutputBuilder;
 use Maps\MappingService;
 use Maps\Presentation\ElementJsonSerializer;
-use Maps\Presentation\MapHtmlBuilder;
+use Maps\Map\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
+use Maps\SemanticMW\ResultPrinters\QueryHandler;
 use Parser;
 use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;
@@ -152,26 +155,31 @@ class MapPrinter extends ResultPrinter {
 			$params['zoom'] = false;
 		}
 
-		$mapId = $this->service->newMapId();
-
-		SMWOutputs::requireHeadItem(
-			$mapId,
-			$this->service->getDependencyHtml( $params )
-		);
-
-		foreach ( $this->service->getResourceModules( $params ) as $resourceModule ) {
-			SMWOutputs::requireResource( $resourceModule );
-		}
-
 		if ( array_key_exists( 'source', $params ) ) {
 			unset( $params['source'] );
 		}
 
-		return ( new MapHtmlBuilder() )->getMapHTML(
-			$this->service->processedParamsToMapParams( $params ),
-			$mapId,
-			$this->service->getName()
+		$outputBuilder = new MapOutputBuilder();
+		$mapOutput = $outputBuilder->buildOutput( $this->service, $this->service->newMapDataFromParameters( $params ) );
+
+		$this->outputResources( $mapOutput );
+
+		return $mapOutput->getHtml();
+	}
+
+	private function outputResources( MapOutput $mapOutput ) {
+		SMWOutputs::requireHeadItem(
+			$this->randomString(),
+			$mapOutput->getHeadItems()
 		);
+
+		foreach ( $mapOutput->getResourceModules() as $resourceModule ) {
+			SMWOutputs::requireResource( $resourceModule );
+		}
+	}
+
+	private function randomString(): string {
+		return substr( str_shuffle( '0123456789abcdefghijklmnopqrstuvwxyz' ), 0, 10 );
 	}
 
 	private function elementsToJson( array $elements ) {

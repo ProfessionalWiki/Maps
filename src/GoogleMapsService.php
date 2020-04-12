@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use Html;
+use Maps\Map\MapData;
 use ParamProcessor\ProcessedParam;
 use ParamProcessor\ProcessingResult;
 
@@ -333,7 +334,7 @@ class GoogleMapsService implements MappingService {
 		];
 	}
 
-	public function processingResultToMapParams( ProcessingResult $processingResult ): array {
+	public function newMapDataFromProcessingResult( ProcessingResult $processingResult ): MapData {
 		$parameters = $processingResult->getParameters();
 
 		if ( array_key_exists( 'zoom', $parameters ) && $parameters['zoom']->wasSetToDefault() && count(
@@ -348,7 +349,7 @@ class GoogleMapsService implements MappingService {
 			$mapParams[$parameter->getName()] = $parameter->getValue();
 		}
 
-		return $this->processedParamsToMapParams( $mapParams );
+		return $this->newMapDataFromParameters( $mapParams );
 	}
 
 
@@ -362,8 +363,8 @@ class GoogleMapsService implements MappingService {
 		);
 	}
 
-	public function processedParamsToMapParams( array $params ): array {
-		return $params;
+	public function newMapDataFromParameters( array $params ): MapData {
+		return new MapData( $params );
 	}
 
 }

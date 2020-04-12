@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
+use Maps\Map\MapData;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\ProcessingResult;
 
@@ -31,8 +32,8 @@ interface MappingService {
 
 	public function newMapId(): string;
 
-	public function processingResultToMapParams( ProcessingResult $processingResult ): array;
+	public function newMapDataFromProcessingResult( ProcessingResult $processingResult ): MapData;
 
-	public function processedParamsToMapParams( array $params ): array;
+	public function newMapDataFromParameters( array $params ): MapData;
 
 }

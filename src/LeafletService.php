@@ -6,6 +6,7 @@ namespace Maps;
 
 use Html;
 use Maps\DataAccess\ImageRepository;
+use Maps\Map\MapData;
 use ParamProcessor\ParameterTypes;
 use ParamProcessor\ProcessingResult;
 
@@ -226,11 +227,11 @@ class LeafletService implements MappingService {
 		return array_unique( $layerDependencies );
 	}
 
-	public function processingResultToMapParams( ProcessingResult $processingResult ): array {
-		return $this->processedParamsToMapParams( $processingResult->getParameterArray() );
+	public function newMapDataFromProcessingResult( ProcessingResult $processingResult ): MapData {
+		return $this->newMapDataFromParameters( $processingResult->getParameterArray() );
 	}
 
-	public function processedParamsToMapParams( array $params ): array {
+	public function newMapDataFromParameters( array $params ): MapData {
 		if ( $params['geojson'] !== '' ) {
 			$fetcher = MapsFactory::globalInstance()->newGeoJsonFetcher();
 
@@ -243,7 +244,7 @@ class LeafletService implements MappingService {
 
 		$params['imageLayers'] = $this->getJsImageLayers( $params['image layers'] );
 
-		return $params;
+		return new MapData( $params );
 	}
 
 	private function getJsImageLayers( array $imageLayers ) {
