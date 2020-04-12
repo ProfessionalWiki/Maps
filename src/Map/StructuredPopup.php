@@ -22,7 +22,7 @@ class StructuredPopup {
 		$valueList = $this->getPropertyValueList();
 		$separator = $this->titleHtml === '' || $valueList === '' ? '' : '<br>';
 
-		return '<h3>' . $this->titleHtml . '</h3>' . $separator . $valueList;
+		return '<h3 style="padding-top: 0">' . $this->titleHtml . '</h3>' . $separator . $valueList;
 	}
 
 	private function getPropertyValueList(): string {
