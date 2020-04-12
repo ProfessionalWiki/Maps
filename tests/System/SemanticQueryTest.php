@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\Tests\System\SemanticMW;
+namespace Maps\Tests\System;
 
 use Maps\DataAccess\PageContentFetcher;
 use Maps\Tests\MapsTestFactory;
@@ -15,7 +15,7 @@ use Title;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapQueryTest extends TestCase {
+class SemanticQueryTest extends TestCase {
 
 	/**
 	 * @var PageCreator
