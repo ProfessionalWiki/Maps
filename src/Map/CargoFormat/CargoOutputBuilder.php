@@ -93,29 +93,26 @@ class CargoOutputBuilder {
 			(float)$valuesRow[$coordinateField . '  lon']
 		) );
 
-		$title = array_shift( $valuesRow ) ?? '';
-		$valueList = $this->getPropertyValueList( $valuesRow, $coordinateFields );
-		$separator = $title === '' || $valueList === '' ? '' : '<br>';
-
-		$marker->setText( '<h3>' . $title . '</h3>' . $separator . $valueList );
+		$marker->setText(
+			( new PopupContent(
+				array_shift( $valuesRow ) ?? '',
+				$this->getPropertyValuesToDisplay( $valuesRow, $coordinateFields )
+			) )->getHtml()
+		);
 
 		return $marker;
 	}
 
-	private function getPropertyValueList( array $valuesRow, array $coordinateFields ): string {
-		$lines = [];
+	private function getPropertyValuesToDisplay( array $valuesRow, array $coordinateFields ): array {
+		$propertyValues = [];
 
 		foreach ( $valuesRow as $name => $value ) {
 			if ( $this->shouldDisplayValue( $name, $coordinateFields ) ) {
-				$lines[] = $this->bold( $name ) . ': ' . $value;
+				$propertyValues[$name] = $value;
 			}
 		}
 
-		return implode( '<br>', $lines );
-	}
-
-	private function bold( string $html ): string {
-		return '<strong>' . $html . '</strong>';
+		return $propertyValues;
 	}
 
 	private function shouldDisplayValue( string $name, array $coordinateFields ): bool {
