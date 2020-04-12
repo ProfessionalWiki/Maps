@@ -18,7 +18,12 @@ class CargoFormat extends CargoDisplayFormat {
 	}
 
 	public static function allowedParameters() {
-		return [];
+		return [
+			'height' => [ 'type' => 'int', 'label' => wfMessage( 'cargo-viewdata-heightparam' )->parse() ],
+			'width' => [ 'type' => 'int', 'label' => wfMessage( 'cargo-viewdata-widthparam' )->parse() ],
+			'icon' => [ 'type' => 'string' ],
+			'zoom' => [ 'type' => 'int' ]
+		];
 	}
 
 	public function display( array $valuesTable, array $formattedValuesTable, array $fieldDescriptions, array $displayParams ) {
