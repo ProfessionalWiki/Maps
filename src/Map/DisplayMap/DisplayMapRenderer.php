@@ -70,6 +70,7 @@ class DisplayMapRenderer {
 
 		$mapData->setParameters( $this->handleMarkerData( $mapData->getParameters() ) );
 
+		// TODO: inject
 		$outputBuilder = new MapOutputBuilder();
 
 		return $outputBuilder->buildOutput( $this->service, $mapData );
