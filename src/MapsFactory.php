@@ -272,7 +272,8 @@ class MapsFactory {
 		return new CargoOutputBuilder(
 			$this->getMapOutputBuilder(),
 			$this->getMappingServices(),
-			$this->getParamDefinitionFactory()
+			$this->getParamDefinitionFactory(),
+			$this->getImageRepository()
 		);
 	}
 
