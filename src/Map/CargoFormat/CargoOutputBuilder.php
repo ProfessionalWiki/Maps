@@ -95,9 +95,9 @@ class CargoOutputBuilder {
 
 		$title = array_shift( $valuesRow ) ?? '';
 		$valueList = $this->getPropertyValueList( $valuesRow, $coordinateFields );
-		$separator = $title === '' || $valueList === '' ? '' : '<br><br>';
+		$separator = $title === '' || $valueList === '' ? '' : '<br>';
 
-		$marker->setText( '<strong>' . $title . '</strong>' . $separator . $valueList );
+		$marker->setText( '<h3>' . $title . '</h3>' . $separator . $valueList );
 
 		return $marker;
 	}
@@ -107,11 +107,15 @@ class CargoOutputBuilder {
 
 		foreach ( $valuesRow as $name => $value ) {
 			if ( $this->shouldDisplayValue( $name, $coordinateFields ) ) {
-				$lines[] = $name . ': ' . $value;
+				$lines[] = $this->bold( $name ) . ': ' . $value;
 			}
 		}
 
 		return implode( '<br>', $lines );
+	}
+
+	private function bold( string $html ): string {
+		return '<strong>' . $html . '</strong>';
 	}
 
 	private function shouldDisplayValue( string $name, array $coordinateFields ): bool {
