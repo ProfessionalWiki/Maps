@@ -6,7 +6,7 @@ namespace Maps;
 
 use Maps\SemanticMW\DataValues\CoordinateValue;
 use Maps\SemanticMW\ResultPrinters\KmlPrinter;
-use Maps\SemanticMW\ResultPrinters\MapPrinter;
+use Maps\Map\SemanticFormat\MapPrinter;
 use SMW\DataTypeRegistry;
 use SMWDataItem;
 

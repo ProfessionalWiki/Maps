@@ -2,13 +2,16 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\MediaWiki\ParserHooks;
+namespace Maps\Map\DisplayMap;
 
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\Elements\Location;
+use Maps\Map\MapData;
+use Maps\Map\MapOutput;
+use Maps\Map\MapOutputBuilder;
 use Maps\MappingService;
 use Maps\Presentation\ElementJsonSerializer;
-use Maps\Presentation\MapHtmlBuilder;
+use Maps\Map\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
 use Maps\Presentation\WikitextParsers\LocationParser;
 use Parser;
@@ -51,12 +54,12 @@ class DisplayMapRenderer {
 	 * Handles the request from the parser hook by doing the work that's common for all
 	 * mapping services, calling the specific methods and finally returning the resulting output.
 	 *
-	 * @param array $params
+	 * @param MapData $mapData
 	 * @param Parser $parser
 	 *
-	 * @return string
+	 * @return MapOutput
 	 */
-	public final function renderMap( array $params, Parser $parser ) {
+	public final function renderMap( MapData $mapData, Parser $parser ): MapOutput {
 		$factory = \Maps\MapsFactory::globalInstance();
 
 		$this->locationParser = $factory->newLocationParser();
@@ -65,31 +68,18 @@ class DisplayMapRenderer {
 		$this->wikitextParser = new WikitextParser( clone $parser );
 		$this->elementSerializer = new ElementJsonSerializer( $this->wikitextParser );
 
-		$this->handleMarkerData( $params );
+		$mapData->setParameters( $this->handleMarkerData( $mapData->getParameters() ) );
 
-		$output = ( new MapHtmlBuilder() )->getMapHTML(
-			$params,
-			$this->service->newMapId(),
-			$this->service->getName()
-		);
+		$outputBuilder = new MapOutputBuilder();
 
-		$dependencies = $this->service->getDependencyHtml( $params );
-
-		// Only add a head item when there are dependencies.
-		if ( $dependencies !== '' ) {
-			$parser->getOutput()->addHeadItem( $dependencies );
-		}
-
-		$parser->getOutput()->addModules( $this->service->getResourceModules( $params ) );
-
-		return $output;
+		return $outputBuilder->buildOutput( $this->service, $mapData );
 	}
 
 	/**
 	 * Converts the data in the coordinates parameter to JSON-ready objects.
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 */
-	private function handleMarkerData( array &$params ) {
+	private function handleMarkerData( array $params ) {
 		$params['centre'] = $this->getCenter( $params['centre'] );
 
 		// FIXME: this parameter is google maps service specific
@@ -102,6 +92,8 @@ class DisplayMapRenderer {
 		unset( $params['coordinates'] );
 
 		$this->handleShapeData( $params );
+
+		return $params;
 	}
 
 	private function getCenter( $coordinatesOrAddress ) {

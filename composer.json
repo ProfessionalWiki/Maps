@@ -43,9 +43,6 @@
 		"jeroen/simple-geocoder": "~1.2",
 		"jmikola/geojson": "^1.0.2"
 	},
-	"conflict": {
-		"mediawiki/mediawiki": "< 1.31"
-	},
 	"require-dev": {
 		"data-values/common": "~0.4.1"
 	},

@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\MediaWiki\ParserHooks;
+namespace Maps\Map\DisplayMap;
 
 use Maps;
 use Maps\MappingService;
@@ -62,10 +62,14 @@ class DisplayMapFunction {
 
 		$this->trackMap( $parser );
 
-		return $this->renderer->renderMap(
-			$service->processingResultToMapParams( $processor->processParameters() ),
+		$mapOutput = $this->renderer->renderMap(
+			$service->newMapDataFromProcessingResult( $processor->processParameters() ),
 			$parser
 		);
+
+		$mapOutput->addResourcesToParserOutput( $parser->getOutput() );
+
+		return $mapOutput->getHtml();
 	}
 
 	/**
@@ -76,7 +80,7 @@ class DisplayMapFunction {
 	 * @return string
 	 * @throws MWException
 	 */
-	public function getMapHtmlForParameterList( Parser $parser, array $parameters ) {
+	public function getMapHtmlForParameterList( Parser $parser, array $parameters ): string {
 		$processor = new Processor( new \ParamProcessor\Options() );
 
 		$service = $this->services->getServiceOrDefault( $this->extractServiceName( $parameters ) );
@@ -90,10 +94,14 @@ class DisplayMapFunction {
 
 		$this->trackMap( $parser );
 
-		return $this->renderer->renderMap(
-			$service->processingResultToMapParams( $processor->processParameters() ),
+		$mapOutput = $this->renderer->renderMap(
+			$service->newMapDataFromProcessingResult( $processor->processParameters() ),
 			$parser
 		);
+
+		$mapOutput->addResourcesToParserOutput( $parser->getOutput() );
+
+		return $mapOutput->getHtml();
 	}
 
 	private function getAllParameterDefinitions( MappingService $service, string $locationDelimiter ) {

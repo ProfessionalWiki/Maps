@@ -74,11 +74,15 @@ final class MappingServices {
 			return $this->nameToServiceMap[$name];
 		}
 
-		return $this->nameToServiceMap[$this->defaultService];
+		return $this->getDefaultService();
 	}
 
 	public function getAllNames(): array {
 		return array_keys( $this->nameToServiceMap );
+	}
+
+	public function getDefaultService(): MappingService {
+		return $this->nameToServiceMap[$this->defaultService];
 	}
 
 }

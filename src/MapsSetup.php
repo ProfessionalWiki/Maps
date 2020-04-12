@@ -5,10 +5,11 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
+use Maps\Map\CargoFormat\CargoFormat;
 use Maps\MediaWiki\Content\GeoJsonContent;
 use Maps\MediaWiki\Content\GeoJsonContentHandler;
 use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
-use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
+use Maps\Map\DisplayMap\DisplayMapFunction;
 use Maps\MediaWiki\ParserHooks\DistanceFunction;
 use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
 use Maps\MediaWiki\ParserHooks\GeocodeFunction;
@@ -197,6 +198,10 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
 		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MediaWiki\MapsHooks::onChangeTagsAllowedAdd';
 		$this->mwGlobals['wgHooks']['ResourceLoaderTestModules'][] = 'Maps\MediaWiki\MapsHooks::onResourceLoaderTestModules';
+
+		$this->mwGlobals['wgHooks']['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
+			$formatClasses['map'] = CargoFormat::class;
+		};
 	}
 
 	private function registerGeoJsonContentModel() {

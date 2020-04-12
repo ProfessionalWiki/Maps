@@ -13,6 +13,8 @@ use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GeoNamesGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\GoogleGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\FileFetchers\NominatimGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
+use Maps\Map\CargoFormat\CargoOutputBuilder;
+use Maps\Map\MapOutputBuilder;
 use Maps\DataAccess\CachingGeocoder;
 use Maps\DataAccess\GeoJsonFetcher;
 use Maps\DataAccess\GeoJsonStore\GeoJsonStore;
@@ -23,7 +25,7 @@ use Maps\DataAccess\MapsFileFetcher;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\DataAccess\MwImageRepository;
 use Maps\DataAccess\PageContentFetcher;
-use Maps\MediaWiki\ParserHooks\DisplayMapFunction;
+use Maps\Map\DisplayMap\DisplayMapFunction;
 use Maps\Presentation\CoordinateFormatter;
 use Maps\Presentation\WikitextParsers\CircleParser;
 use Maps\Presentation\WikitextParsers\DistanceParser;
@@ -257,6 +259,21 @@ class MapsFactory {
 
 	private function getRepoGroup(): RepoGroup {
 		return RepoGroup::singleton();
+	}
+
+	public function getMapOutputBuilder(): MapOutputBuilder {
+		return new MapOutputBuilder(
+//			$this->getMappingServices(),
+//			$this->getParamDefinitionFactory()
+		);
+	}
+
+	public function newCargoOutputBuilder(): CargoOutputBuilder {
+		return new CargoOutputBuilder(
+			$this->getMapOutputBuilder(),
+			$this->getMappingServices(),
+			$this->getParamDefinitionFactory()
+		);
 	}
 
 }
