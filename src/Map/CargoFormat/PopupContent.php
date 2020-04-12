@@ -29,10 +29,14 @@ class PopupContent {
 		$lines = [];
 
 		foreach ( $this->propertyValues as $name => $value ) {
-			$lines[] = $this->bold( $name ) . ': ' . $value;
+			$lines[] = $this->bold( $this->stripTags( $name ) ) . ': ' . $this->stripTags( $value );
 		}
 
 		return implode( '<br>', $lines );
+	}
+
+	private function stripTags( string $html ): string {
+		return strip_tags( $html, '<a><img>' );
 	}
 
 	private function bold( string $html ): string {
