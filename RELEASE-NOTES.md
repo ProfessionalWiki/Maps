@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.18.0
+
+* Added Cagro integration: the `map` display format will now use the Maps extension
+
 ## Maps 7.17.2
 
 Released on April 10th, 2020.
