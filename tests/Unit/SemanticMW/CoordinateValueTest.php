@@ -4,9 +4,9 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Unit\SemanticMW;
 
-use Maps\SemanticMW\CoordinateValue;
 use Maps\SemanticMW\AreaDescription;
 use Maps\SemanticMW\CoordinateDescription;
+use Maps\SemanticMW\CoordinateValue;
 use PHPUnit\Framework\TestCase;
 use SMW\DataValueFactory;
 use SMWDataItem;

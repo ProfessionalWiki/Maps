@@ -5,7 +5,6 @@ declare( strict_types = 1 );
 namespace Maps\SemanticMW;
 
 use Maps\Presentation\KmlFormatter;
-use Maps\SemanticMW\QueryHandler;
 use ParamProcessor\ParamDefinition;
 use SMW\Query\ResultPrinters\FileExportPrinter;
 use SMWQueryResult;

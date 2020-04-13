@@ -11,7 +11,6 @@ use Maps\Map\MapOutput;
 use Maps\Map\MapOutputBuilder;
 use Maps\MappingService;
 use Maps\Presentation\ElementJsonSerializer;
-use Maps\Map\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
 use Maps\WikitextParsers\LocationParser;
 use Parser;

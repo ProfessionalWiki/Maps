@@ -4,8 +4,6 @@ declare( strict_types = 1 );
 
 namespace Maps\GeoJsonPages;
 
-use Maps\GeoJsonPages\GeoJsonContent;
-
 class GeoJsonContentHandler extends \JsonContentHandler {
 
 	public function __construct( $modelId = GeoJsonContent::CONTENT_MODEL_ID ) {

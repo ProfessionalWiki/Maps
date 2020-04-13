@@ -4,9 +4,9 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
+use Maps\Map\SemanticFormat\MapPrinter;
 use Maps\SemanticMW\CoordinateValue;
 use Maps\SemanticMW\KmlPrinter;
-use Maps\Map\SemanticFormat\MapPrinter;
 use SMW\DataTypeRegistry;
 use SMWDataItem;
 

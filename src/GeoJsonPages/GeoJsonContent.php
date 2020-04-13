@@ -6,7 +6,6 @@ namespace Maps\GeoJsonPages;
 
 use FormatJson;
 use Maps\MapsFactory;
-use Maps\GeoJsonPages\GeoJsonMapPageUi;
 use Maps\Presentation\OutputFacade;
 use ParserOptions;
 use ParserOutput;

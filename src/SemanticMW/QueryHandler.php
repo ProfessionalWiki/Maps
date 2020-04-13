@@ -8,7 +8,6 @@ use Html;
 use Linker;
 use Maps\LegacyModel\Location;
 use Maps\MapsFunctions;
-use Maps\SemanticMW\CoordinateValue;
 use SMWDataValue;
 use SMWDIGeoCoord;
 use SMWPrintRequest;

@@ -5,11 +5,11 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
-use Maps\Map\CargoFormat\CargoFormat;
 use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\GeoJsonPages\GeoJsonContentHandler;
-use Maps\ParserHooks\CoordinatesFunction;
+use Maps\Map\CargoFormat\CargoFormat;
 use Maps\Map\DisplayMap\DisplayMapFunction;
+use Maps\ParserHooks\CoordinatesFunction;
 use Maps\ParserHooks\DistanceFunction;
 use Maps\ParserHooks\FindDestinationFunction;
 use Maps\ParserHooks\GeocodeFunction;

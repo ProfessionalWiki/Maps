@@ -5,7 +5,6 @@ declare( strict_types = 1 );
 namespace Maps\Map\CargoFormat;
 
 use CargoDisplayFormat;
-use Maps\Map\CargoFormat\CargoOutputBuilder;
 use Maps\MapsFactory;
 
 class CargoFormat extends CargoDisplayFormat {

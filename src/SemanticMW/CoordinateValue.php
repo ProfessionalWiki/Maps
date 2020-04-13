@@ -9,8 +9,6 @@ use DataValues\Geo\Values\LatLongValue;
 use InvalidArgumentException;
 use Maps\MapsFactory;
 use Maps\Presentation\MapsDistanceParser;
-use Maps\SemanticMW\AreaDescription;
-use Maps\SemanticMW\CoordinateDescription;
 use SMW\Query\Language\Description;
 use SMW\Query\Language\ThingDescription;
 use SMW\Query\QueryComparator;
