@@ -68,11 +68,15 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 
 The `src/` contains the PHP code and follows PSR-4 autoloading.
 
-* `src/DataAccess` - implementations of services that use the network, read from disk or persistence services
-* `src/Elements` - Value Objects representing geographical elements (should be devoid of MediaWiki binding)
-* `src/MediaWiki` - MediaWiki hook points, including API modules, special pages and MediaWiki hooks
-* `src/Presentation` - presentation layer code (all code dealing with HTML etc should be here)
-* `src/SemanticMW` - Semantic MediaWiki hook points, including result printers and value descriptions
+* `src/Map` - Map display entry points (such as handling of `#display_map`) and their supporting code
+* `src/ParserHooks` - Entry points for all parser hooks except `#display_map`
+* `src/Presentation` - Presentation layer code that does not belong to a more specific directory
+* `src/DataAccess` - Persistence layer code that does not belong to a more specific directory
+* `src/GeoJsonPages` - Code that deals with pages in the GeoJson namespace
+* `src/LegacyModel` - Badly designed and deprecated representations of map elements (markers, polygons, etc)
+* `src/LegacyMapEditor` - Deprecated and Google Maps only Special:MapEditor page
+* `src/SemanticMW` - Semantic MediaWiki code except for the map entry point (which is in `Map\SemanticFormat`)
+* `src/WikitextParsers` - Parsers for the wikitext definitions of map elements (like the `LegacyModel`)
 
 JavaScript, CSS and other web resources go into `resources/`.
 
