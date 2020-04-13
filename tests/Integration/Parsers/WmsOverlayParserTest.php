@@ -4,13 +4,13 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parsers;
 
-use Maps\Presentation\WikitextParsers\WmsOverlayParser;
+use Maps\WikitextParsers\WmsOverlayParser;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 use ValueParsers\ParseException;
 
 /**
- * @covers \Maps\Presentation\WikitextParsers\WmsOverlayParser
+ * @covers \Maps\WikitextParsers\WmsOverlayParser
  * @licence GNU GPL v2+
  * @author Mathias Mølster Lidal <mathiaslidal@gmail.com>
  */

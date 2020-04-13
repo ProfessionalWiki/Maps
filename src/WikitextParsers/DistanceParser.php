@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\Presentation\WikitextParsers;
+namespace Maps\WikitextParsers;
 
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;

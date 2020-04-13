@@ -8,7 +8,7 @@ use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\Elements\ImageOverlay;
-use Maps\Presentation\WikitextParsers\ImageOverlayParser;
+use Maps\WikitextParsers\ImageOverlayParser;
 use PHPUnit\Framework\TestCase;
 
 /**

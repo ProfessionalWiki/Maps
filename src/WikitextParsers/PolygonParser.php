@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\Presentation\WikitextParsers;
+namespace Maps\WikitextParsers;
 
 use Maps\Elements\Line;
 use Maps\Elements\Polygon;

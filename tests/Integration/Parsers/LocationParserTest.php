@@ -8,11 +8,11 @@ use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\StubGeocoder;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
 use Maps\Elements\Location;
-use Maps\Presentation\WikitextParsers\LocationParser;
+use Maps\WikitextParsers\LocationParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Maps\Presentation\WikitextParsers\LocationParser
+ * @covers \Maps\WikitextParsers\LocationParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

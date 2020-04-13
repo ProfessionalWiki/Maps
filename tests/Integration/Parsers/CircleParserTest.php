@@ -8,11 +8,11 @@ use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
 use Maps\Elements\Circle;
-use Maps\Presentation\WikitextParsers\CircleParser;
+use Maps\WikitextParsers\CircleParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Maps\Presentation\WikitextParsers\CircleParser
+ * @covers \Maps\WikitextParsers\CircleParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

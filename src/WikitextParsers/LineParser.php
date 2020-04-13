@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace Maps\Presentation\WikitextParsers;
+namespace Maps\WikitextParsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoder;

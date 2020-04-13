@@ -7,11 +7,11 @@ namespace Maps\Tests\Integration\Parsers;
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;
 use Maps\Elements\Line;
-use Maps\Presentation\WikitextParsers\LineParser;
+use Maps\WikitextParsers\LineParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \Maps\Presentation\WikitextParsers\LineParser
+ * @covers \Maps\WikitextParsers\LineParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
@@ -27,7 +27,7 @@ class LineParserTest extends TestCase {
 	}
 
 	/**
-	 * @return \Maps\Presentation\WikitextParsers\LineParser
+	 * @return \Maps\WikitextParsers\LineParser
 	 */
 	private function newParser() {
 		$parser = new LineParser();

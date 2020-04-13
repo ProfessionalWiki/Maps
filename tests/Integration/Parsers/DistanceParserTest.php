@@ -4,13 +4,13 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parsers;
 
-use Maps\Presentation\WikitextParsers\DistanceParser;
+use Maps\WikitextParsers\DistanceParser;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;
 use ValueParsers\ParseException;
 
 /**
- * @covers \Maps\Presentation\WikitextParsers\DistanceParser
+ * @covers \Maps\WikitextParsers\DistanceParser
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */

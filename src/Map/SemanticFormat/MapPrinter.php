@@ -14,7 +14,7 @@ use Maps\MappingService;
 use Maps\Presentation\ElementJsonSerializer;
 use Maps\Map\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
-use Maps\Presentation\WikitextParsers\LocationParser;
+use Maps\WikitextParsers\LocationParser;
 use Maps\SemanticMW\ResultPrinters\QueryHandler;
 use Parser;
 use SMW\Query\ResultPrinters\ResultPrinter;
