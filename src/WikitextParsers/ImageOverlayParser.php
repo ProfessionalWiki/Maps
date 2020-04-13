@@ -6,7 +6,7 @@ namespace Maps\WikitextParsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoder;
-use Maps\Elements\ImageOverlay;
+use Maps\LegacyModel\ImageOverlay;
 use Maps\MapsFactory;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;

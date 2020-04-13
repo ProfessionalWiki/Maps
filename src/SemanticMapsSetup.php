@@ -4,8 +4,8 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
-use Maps\SemanticMW\DataValues\CoordinateValue;
-use Maps\SemanticMW\ResultPrinters\KmlPrinter;
+use Maps\SemanticMW\CoordinateValue;
+use Maps\SemanticMW\KmlPrinter;
 use Maps\Map\SemanticFormat\MapPrinter;
 use SMW\DataTypeRegistry;
 use SMWDataItem;
@@ -41,7 +41,7 @@ class SemanticMapsSetup {
 		};
 
 		// Hook for defining the default query printer for queries that ask for geographical coordinates.
-		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'Maps\MediaWiki\MapsHooks::addGeoCoordsDefaultFormat';
+		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'Maps\MapsHooks::addGeoCoordsDefaultFormat';
 
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();

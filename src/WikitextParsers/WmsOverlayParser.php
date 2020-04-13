@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\WikitextParsers;
 
-use Maps\Elements\WmsOverlay;
+use Maps\LegacyModel\WmsOverlay;
 use ValueParsers\ParseException;
 use ValueParsers\ValueParser;
 

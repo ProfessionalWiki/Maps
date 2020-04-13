@@ -10,7 +10,7 @@ use FileFetcher\SimpleFileFetcher;
 use FileFetcher\StubFileFetcher;
 use FileFetcher\ThrowingFileFetcher;
 use Maps\DataAccess\GeoJsonFetcher;
-use Maps\MediaWiki\Content\GeoJsonContent;
+use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\Tests\MapsTestFactory;
 use PHPUnit\Framework\TestCase;
 use PHPUnit4And6Compat;

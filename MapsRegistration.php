@@ -26,7 +26,7 @@ class MapsRegistration {
 			define( 'NS_GEO_JSON_TALK', 421 );
 		}
 
-		$GLOBALS['wgHooks']['SMW::Settings::BeforeInitializationComplete'][] = 'Maps\MediaWiki\MapsHooks::addSmwSettings';
+		$GLOBALS['wgHooks']['SMW::Settings::BeforeInitializationComplete'][] = 'Maps\MapsHooks::addSmwSettings';
 
 		$GLOBALS['wgExtensionFunctions'][] = function() {
 			if ( $GLOBALS['egMapsDisableExtension'] ) {

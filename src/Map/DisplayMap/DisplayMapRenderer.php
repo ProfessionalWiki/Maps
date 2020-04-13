@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Map\DisplayMap;
 
 use Maps\DataAccess\MediaWikiFileUrlFinder;
-use Maps\Elements\Location;
+use Maps\LegacyModel\Location;
 use Maps\Map\MapData;
 use Maps\Map\MapOutput;
 use Maps\Map\MapOutputBuilder;

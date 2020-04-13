@@ -6,7 +6,7 @@ namespace Maps\WikitextParsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoder;
-use Maps\Elements\Rectangle;
+use Maps\LegacyModel\Rectangle;
 use Maps\MapsFactory;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;

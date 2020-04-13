@@ -4,13 +4,13 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Unit\DataAccess;
 
-use Maps\DataAccess\GeoJsonStore\SubObject;
+use Maps\GeoJsonPages\Semantic\SubObject;
 use PHPUnit\Framework\TestCase;
 use SMW\DIProperty;
 use SMW\DIWikiPage;
 
 /**
- * @covers \Maps\DataAccess\GeoJsonStore\SubObject
+ * @covers \Maps\GeoJsonPages\Semantic\SubObject
  */
 class SubObjectTest extends TestCase {
 

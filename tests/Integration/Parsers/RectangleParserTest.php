@@ -7,7 +7,7 @@ namespace Maps\Tests\Integration\Parsers;
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
-use Maps\Elements\Rectangle;
+use Maps\LegacyModel\Rectangle;
 use Maps\WikitextParsers\RectangleParser;
 use PHPUnit\Framework\TestCase;
 

@@ -4,12 +4,12 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Semantic;
 
-use Maps\SemanticMW\ValueDescriptions\AreaDescription;
+use Maps\SemanticMW\AreaDescription;
 use PHPUnit\Framework\TestCase;
 use SMWDIGeoCoord;
 
 /**
- * @covers \Maps\SemanticMW\ValueDescriptions\AreaDescription
+ * @covers \Maps\SemanticMW\AreaDescription
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >

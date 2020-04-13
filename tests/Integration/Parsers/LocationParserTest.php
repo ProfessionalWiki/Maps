@@ -7,7 +7,7 @@ namespace Maps\Tests\Integration\Parsers;
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\StubGeocoder;
 use Maps\DataAccess\MediaWikiFileUrlFinder;
-use Maps\Elements\Location;
+use Maps\LegacyModel\Location;
 use Maps\WikitextParsers\LocationParser;
 use PHPUnit\Framework\TestCase;
 

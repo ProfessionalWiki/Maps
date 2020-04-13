@@ -5,8 +5,8 @@ declare( strict_types = 1 );
 namespace Maps\Map\SemanticFormat;
 
 use Linker;
-use Maps\Elements\BaseElement;
-use Maps\Elements\Location;
+use Maps\LegacyModel\BaseElement;
+use Maps\LegacyModel\Location;
 use Maps\FileUrlFinder;
 use Maps\Map\MapOutput;
 use Maps\Map\MapOutputBuilder;
@@ -15,7 +15,7 @@ use Maps\Presentation\ElementJsonSerializer;
 use Maps\Map\MapHtmlBuilder;
 use Maps\Presentation\WikitextParser;
 use Maps\WikitextParsers\LocationParser;
-use Maps\SemanticMW\ResultPrinters\QueryHandler;
+use Maps\SemanticMW\QueryHandler;
 use Parser;
 use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;
@@ -207,7 +207,7 @@ class MapPrinter extends ResultPrinter {
 	 * These get stored in the locations parameter, and the coordinates on gets deleted.
 	 *
 	 * @param array &$params
-	 * @param QueryHandler $queryHandler
+	 * @param \Maps\SemanticMW\QueryHandler $queryHandler
 	 */
 	private function handleMarkerData( array &$params, QueryHandler $queryHandler ) {
 		$params['centre'] = $this->getCenter( $params['centre'] );

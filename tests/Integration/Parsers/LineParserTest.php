@@ -6,7 +6,7 @@ namespace Maps\Tests\Integration\Parsers;
 
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\InMemoryGeocoder;
-use Maps\Elements\Line;
+use Maps\LegacyModel\Line;
 use Maps\WikitextParsers\LineParser;
 use PHPUnit\Framework\TestCase;
 

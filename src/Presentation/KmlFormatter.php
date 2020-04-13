@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Presentation;
 
-use Maps\Elements\Location;
+use Maps\LegacyModel\Location;
 
 /**
  * @licence GNU GPL v2+

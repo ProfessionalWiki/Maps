@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Unit\Presentation;
 
 use DataValues\Geo\Values\LatLongValue;
-use Maps\Elements\Location;
+use Maps\LegacyModel\Location;
 use Maps\Presentation\KmlFormatter;
 use PHPUnit\Framework\TestCase;
 

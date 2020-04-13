@@ -6,7 +6,7 @@ namespace Maps\WikitextParsers;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Jeroen\SimpleGeocoder\Geocoder;
-use Maps\Elements\Location;
+use Maps\LegacyModel\Location;
 use Maps\FileUrlFinder;
 use Maps\MapsFactory;
 use Title;

@@ -6,15 +6,15 @@ namespace Maps;
 
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\Map\CargoFormat\CargoFormat;
-use Maps\MediaWiki\Content\GeoJsonContent;
-use Maps\MediaWiki\Content\GeoJsonContentHandler;
-use Maps\MediaWiki\ParserHooks\CoordinatesFunction;
+use Maps\GeoJsonPages\GeoJsonContent;
+use Maps\GeoJsonPages\GeoJsonContentHandler;
+use Maps\ParserHooks\CoordinatesFunction;
 use Maps\Map\DisplayMap\DisplayMapFunction;
-use Maps\MediaWiki\ParserHooks\DistanceFunction;
-use Maps\MediaWiki\ParserHooks\FindDestinationFunction;
-use Maps\MediaWiki\ParserHooks\GeocodeFunction;
-use Maps\MediaWiki\ParserHooks\GeoDistanceFunction;
-use Maps\MediaWiki\ParserHooks\MapsDocFunction;
+use Maps\ParserHooks\DistanceFunction;
+use Maps\ParserHooks\FindDestinationFunction;
+use Maps\ParserHooks\GeocodeFunction;
+use Maps\ParserHooks\GeoDistanceFunction;
+use Maps\ParserHooks\MapsDocFunction;
 use Maps\WikitextParsers\CircleParser;
 use Maps\WikitextParsers\DistanceParser;
 use Maps\WikitextParsers\ImageOverlayParser;
@@ -189,15 +189,15 @@ class MapsSetup {
 	}
 
 	private function registerHooks() {
-		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MediaWiki\MapsHooks::addToAdminLinks';
-		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MediaWiki\MapsHooks::onMakeGlobalVariablesScript';
-		$this->mwGlobals['wgHooks']['SkinTemplateNavigation'][] = 'Maps\MediaWiki\MapsHooks::onSkinTemplateNavigation';
-		$this->mwGlobals['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MediaWiki\MapsHooks::onBeforeDisplayNoArticleText';
-		$this->mwGlobals['wgHooks']['ShowMissingArticle'][] = 'Maps\MediaWiki\MapsHooks::onShowMissingArticle';
-		$this->mwGlobals['wgHooks']['ListDefinedTags'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
-		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MediaWiki\MapsHooks::onRegisterTags';
-		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MediaWiki\MapsHooks::onChangeTagsAllowedAdd';
-		$this->mwGlobals['wgHooks']['ResourceLoaderTestModules'][] = 'Maps\MediaWiki\MapsHooks::onResourceLoaderTestModules';
+		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MapsHooks::addToAdminLinks';
+		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MapsHooks::onMakeGlobalVariablesScript';
+		$this->mwGlobals['wgHooks']['SkinTemplateNavigation'][] = 'Maps\MapsHooks::onSkinTemplateNavigation';
+		$this->mwGlobals['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MapsHooks::onBeforeDisplayNoArticleText';
+		$this->mwGlobals['wgHooks']['ShowMissingArticle'][] = 'Maps\MapsHooks::onShowMissingArticle';
+		$this->mwGlobals['wgHooks']['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
+		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
+		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
+		$this->mwGlobals['wgHooks']['ResourceLoaderTestModules'][] = 'Maps\MapsHooks::onResourceLoaderTestModules';
 
 		$this->mwGlobals['wgHooks']['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
 			$formatClasses['map'] = CargoFormat::class;

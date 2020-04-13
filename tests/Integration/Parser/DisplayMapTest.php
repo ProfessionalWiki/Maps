@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parser;
 
-use Maps\MediaWiki\Content\GeoJsonContent;
+use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\TestDoubles\ImageValueObject;
 use PHPUnit\Framework\TestCase;

@@ -7,7 +7,7 @@ namespace Maps\Tests\Integration\Parsers;
 use DataValues\Geo\Values\LatLongValue;
 use Jeroen\SimpleGeocoder\Geocoders\Decorators\CoordinateFriendlyGeocoder;
 use Jeroen\SimpleGeocoder\Geocoders\NullGeocoder;
-use Maps\Elements\Circle;
+use Maps\LegacyModel\Circle;
 use Maps\WikitextParsers\CircleParser;
 use PHPUnit\Framework\TestCase;
 

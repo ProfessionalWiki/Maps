@@ -1,0 +1,23 @@
+<?php
+
+declare( strict_types = 1 );
+
+namespace Maps\GeoJsonPages;
+
+use Maps\GeoJsonPages\GeoJsonContent;
+
+class GeoJsonContentHandler extends \JsonContentHandler {
+
+	public function __construct( $modelId = GeoJsonContent::CONTENT_MODEL_ID ) {
+		parent::__construct( $modelId );
+	}
+
+	protected function getContentClass() {
+		return GeoJsonContent::class;
+	}
+
+	public function makeEmptyContent() {
+		return new GeoJsonContent( GeoJsonContent::newEmptyContentString() );
+	}
+
+}

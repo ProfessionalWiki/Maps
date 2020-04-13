@@ -4,8 +4,8 @@ declare( strict_types = 1 );
 
 namespace Maps\WikitextParsers;
 
-use Maps\Elements\Line;
-use Maps\Elements\Polygon;
+use Maps\LegacyModel\Line;
+use Maps\LegacyModel\Polygon;
 
 /**
  * ValueParser that parses the string representation of a polygon.
