@@ -9,6 +9,7 @@
 			"Konovalov",
 			"Mainframe98",
 			"MrLeopold",
+			"PonkoSasuke",
 			"SPQRobin",
 			"Siebrand",
 			"Sjoerddebruin"
@@ -117,6 +118,7 @@
 	"maps_unrecognized_coords_for": "De volgende {{PLURAL:$2|coördinaat is niet herkend en is|coördinaten zijn niet herkend en zijn}} weggelaten uit de kaart:\n$1.",
 	"maps_map_cannot_be_displayed": "De kaart kan niet weergegeven worden.",
 	"maps-geocoder-not-available": "Geocoderen via Maps is niet beschikbaar. Het geocoderen van uw locatie is niet mogelijk.",
+	"maps-leaflet-par-image-layers": "Basislagen van beelden. De eerste laag wordt standaard getoond. Als er beelden opgegeven zijn, zullen deze gebruikt worden in plaats van de gewoonlijke maplagen.",
 	"maps_click_to_activate": "Klik om de kaart te activeren",
 	"maps_centred_on": "Kaart gecentreerd op $1, $2.",
 	"maps-par-mappingservice": "Maakt het mogelijk om de kaartdienst in te stellen die wordt gebruikt om de kaart te maken.",
