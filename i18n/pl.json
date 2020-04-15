@@ -207,5 +207,5 @@
 	"maps-geo-json-create-page-summary": "Utworzono stronę GeoJSON",
 	"maps-editor-edit-geojson": "Edytuj warstwę GeoJSON",
 	"tag-maps-visual-edit": "Wizualna edycja mapy",
-	"tag-maps-visual-edit-description": "Edycja wykonana za pośrednictwem wizualnego edytora wprowadzonego przez [https://www.mediawiki.org/wiki/Extension:Maps rozszerzenie map]."
+	"tag-maps-visual-edit-description": "Edycja wykonana za pośrednictwem wizualnego edytora wprowadzonego przez [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps rozszerzenie map]."
 }

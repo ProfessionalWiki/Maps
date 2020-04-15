@@ -268,5 +268,5 @@
 	"maps-geo-json-create-page-summary": "Página GeoJSON criada",
 	"maps-editor-edit-geojson": "Editar capa do GeoJSON",
 	"tag-maps-visual-edit": "Edição visual do mapa",
-	"tag-maps-visual-edit-description": "Edição feita com o editor visual fornecido pelo [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"
+	"tag-maps-visual-edit-description": "Edição feita com o editor visual fornecido pelo [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension]"
 }

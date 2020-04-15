@@ -4,7 +4,7 @@
 			"Als-Holder"
 		]
 	},
-	"maps-desc": "Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://mapping.referata.com/wiki/Maps_examples Demo]",
+	"maps-desc": "Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Dokumäntation]. [http://mapping.referata.com/wiki/Maps_examples Demo]",
 	"maps_map": "Charte",
 	"maps-loading-map": "Am Lade vu dr Charte ...",
 	"maps-markers": "Markierige",

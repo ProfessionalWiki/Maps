@@ -272,5 +272,5 @@
 	"maps-geo-json-create-page-summary": "已建立 GeoJSON 頁面",
 	"maps-editor-edit-geojson": "編輯 GeoJSON 圖層",
 	"tag-maps-visual-edit": "視覺化地圖編輯",
-	"tag-maps-visual-edit-description": "以[https://www.mediawiki.org/wiki/Extension:Maps 地圖擴充套件]所提供的視覺化編輯器做出編輯"
+	"tag-maps-visual-edit-description": "以[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps 地圖擴充套件]所提供的視覺化編輯器做出編輯"
 }
