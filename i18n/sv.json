@@ -267,5 +267,5 @@
 	"maps-geo-json-create-page-summary": "Skapade GeoJSON-sida",
 	"maps-editor-edit-geojson": "Redigera GeoJSON-lager",
 	"tag-maps-visual-edit": "Visuell kartredigering",
-	"tag-maps-visual-edit-description": "Redigeringen gjordes med den visuella redigeraren som tillhandahålls av tillägget [https://www.mediawiki.org/wiki/Extension:Maps Maps]"
+	"tag-maps-visual-edit-description": "Redigeringen gjordes med den visuella redigeraren som tillhandahålls av tillägget [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps]"
 }

@@ -284,5 +284,5 @@
 	"maps-geo-json-create-page-creating": "Создаётся страница...",
 	"maps-geo-json-create-page-summary": "Создана страница GeoJSON",
 	"tag-maps-visual-edit": "Редактирование визуальной карты",
-	"tag-maps-visual-edit-description": "Редактирование производится с помощью визуального редактора, предоставленного [https://www.mediawiki.org/wiki/Extension:Maps Maps extension]"
+	"tag-maps-visual-edit-description": "Редактирование производится с помощью визуального редактора, предоставленного [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension]"
 }

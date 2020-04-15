@@ -264,5 +264,5 @@
 	"maps-geo-json-create-page-summary": "Opprettet GeoJSON-side",
 	"maps-editor-edit-geojson": "Rediger GeoJSON-lag",
 	"tag-maps-visual-edit": "Visuell kartredigering",
-	"tag-maps-visual-edit-description": "Redigering gjort med visuell redigering fra [https://www.mediawiki.org/wiki/Extension:Maps kartutvidelsen]"
+	"tag-maps-visual-edit-description": "Redigering gjort med visuell redigering fra [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps kartutvidelsen]"
 }

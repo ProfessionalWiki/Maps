@@ -269,5 +269,5 @@
 	"maps-geo-json-create-page-summary": "Створено сторінку GeoJSON",
 	"maps-editor-edit-geojson": "Редагувати шар GeoJSON",
 	"tag-maps-visual-edit": "Візуальне редагування карти",
-	"tag-maps-visual-edit-description": "Редагування, здійснене за допомогою візуального редактора, наданого [https://www.mediawiki.org/wiki/Extension:Maps розширенням Maps]"
+	"tag-maps-visual-edit-description": "Редагування, здійснене за допомогою візуального редактора, наданого [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps розширенням Maps]"
 }

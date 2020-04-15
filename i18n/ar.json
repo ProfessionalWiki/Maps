@@ -263,5 +263,5 @@
 	"maps-geo-json-create-page-summary": "إنشاء صفحة GeoJSON",
 	"maps-editor-edit-geojson": "تحرير طبقة GeoJSON",
 	"tag-maps-visual-edit": "تعديل خريطة مرئي",
-	"tag-maps-visual-edit-description": "تم التعديل باستخدام المحرر المرئي الذي يوفره [https://www.mediawiki.org/wiki/Extension:Maps امتداد الخرائط]"
+	"tag-maps-visual-edit-description": "تم التعديل باستخدام المحرر المرئي الذي يوفره [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps امتداد الخرائط]"
 }

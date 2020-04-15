@@ -269,5 +269,5 @@
 	"maps-geo-json-create-page-summary": "GeoJSON sayfası oluşturuldu",
 	"maps-editor-edit-geojson": "GeoJSON katmanını düzenle",
 	"tag-maps-visual-edit": "Görsel harita düzenleme",
-	"tag-maps-visual-edit-description": "[Https://www.mediawiki.org/wiki/Extension:Maps Maps uzantısı] tarafından sağlanan görsel düzenleyici ile yapılan düzenleme"
+	"tag-maps-visual-edit-description": "[Https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps uzantısı] tarafından sağlanan görsel düzenleyici ile yapılan düzenleme"
 }

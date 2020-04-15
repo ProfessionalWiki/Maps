@@ -263,5 +263,5 @@
 	"maps-geo-json-create-page-summary": "Создадена GeoJSON-страница",
 	"maps-editor-edit-geojson": "Уреди GeoJSON-слој",
 	"tag-maps-visual-edit": "Нагледно уредување на картата",
-	"tag-maps-visual-edit-description": "Уредување направено со нагледниот уредник овозможен од додатокот „[https://www.mediawiki.org/wiki/Extension:Maps Карти]“"
+	"tag-maps-visual-edit-description": "Уредување направено со нагледниот уредник овозможен од додатокот „[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Карти]“"
 }
