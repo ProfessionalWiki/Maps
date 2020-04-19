@@ -7,6 +7,7 @@ namespace Maps;
 use DataValues\Geo\Parsers\LatLongParser;
 use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\GeoJsonPages\GeoJsonContentHandler;
+use Maps\LegacyMapEditor\SpecialMapEditor;
 use Maps\Map\CargoFormat\CargoFormat;
 use Maps\Map\DisplayMap\DisplayMapFunction;
 use Maps\ParserHooks\CoordinatesFunction;
@@ -53,7 +54,7 @@ class MapsSetup {
 		}
 
 		if ( in_array( 'googlemaps3', $this->mwGlobals['egMapsAvailableServices'] ) ) {
-			$this->mwGlobals['wgSpecialPages']['MapEditor'] = 'Maps\MediaWiki\Specials\SpecialMapEditor';
+			$this->mwGlobals['wgSpecialPages']['MapEditor'] = SpecialMapEditor::class;
 			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'maps';
 		}
 
