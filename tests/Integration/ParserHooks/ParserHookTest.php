@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Integration\ParserHooks;
 
 use Maps\MapsFactory;
+use MediaWiki\MediaWikiServices;
 use ParamProcessor\Processor;
 use PHPUnit\Framework\TestCase;
 
@@ -39,10 +40,7 @@ abstract class ParserHookTest extends TestCase {
 	public function testRender( array $parameters, $expected = null ) {
 		$parserHook = $this->getInstance();
 
-		$parser = new \Parser();
-		$parser->mOptions = new \ParserOptions();
-		$parser->clearState();
-		$parser->setTitle( \Title::newMainPage() );
+		$parser = MediaWikiServices::getInstance()->getParser();
 
 		$renderResult = call_user_func_array(
 			[ $parserHook, 'renderFunction' ],

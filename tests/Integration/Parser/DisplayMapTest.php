@@ -7,6 +7,7 @@ namespace Maps\Tests\Integration\Parser;
 use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\TestDoubles\ImageValueObject;
+use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,7 +37,7 @@ class DisplayMapTest extends TestCase {
 	}
 
 	private function parse( string $textToParse ): string {
-		$parser = new \Parser();
+		$parser = MediaWikiServices::getInstance()->getParser();
 
 		return $parser->parse( $textToParse, \Title::newMainPage(), new \ParserOptions() )->getText();
 	}
