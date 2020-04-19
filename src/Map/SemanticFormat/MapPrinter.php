@@ -15,6 +15,7 @@ use Maps\Presentation\ElementJsonSerializer;
 use Maps\Presentation\WikitextParser;
 use Maps\SemanticMW\QueryHandler;
 use Maps\WikitextParsers\LocationParser;
+use MediaWiki\MediaWikiServices;
 use Parser;
 use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;
@@ -86,13 +87,7 @@ class MapPrinter extends ResultPrinter {
 	}
 
 	private function getParser(): Parser {
-		$parser = $GLOBALS['wgParser'];
-
-		if ( $parser instanceof \StubObject ) {
-			return $parser->_newObject();
-		}
-
-		return $parser;
+		return MediaWikiServices::getInstance()->getParser();
 	}
 
 	private function getParserClone(): Parser {
@@ -191,13 +186,10 @@ class MapPrinter extends ResultPrinter {
 	}
 
 	private function addTrackingCategoryIfNeeded() {
-		/**
-		 * @var Parser $wgParser
-		 */
-		global $wgParser;
+		$parser = MediaWikiServices::getInstance()->getParser();
 
-		if ( $GLOBALS['egMapsEnableCategory'] && $wgParser->getOutput() !== null ) {
-			$wgParser->addTrackingCategory( 'maps-tracking-category' );
+		if ( $GLOBALS['egMapsEnableCategory'] && $parser->getOutput() !== null ) {
+			$parser->addTrackingCategory( 'maps-tracking-category' );
 		}
 	}
 

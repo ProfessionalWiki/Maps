@@ -8,6 +8,7 @@ use Html;
 use Linker;
 use Maps\LegacyModel\Location;
 use Maps\MapsFunctions;
+use MediaWiki\MediaWikiServices;
 use SMWDataValue;
 use SMWDIGeoCoord;
 use SMWPrintRequest;
@@ -474,11 +475,8 @@ class QueryHandler {
 		return $this->hideNamespace ? $title->getText() : $title->getFullText();
 	}
 
-	/**
-	 * @return \Parser
-	 */
-	private function getParser() {
-		return $GLOBALS['wgParser'];
+	private function getParser(): \Parser {
+		return MediaWikiServices::getInstance()->getParser();
 	}
 
 	/**
