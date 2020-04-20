@@ -157,5 +157,6 @@
 	"semanticmaps-kml-text": "Le texto associate con cata pagina. Es supplantate per le additional proprietates consultate, si existe.",
 	"semanticmaps-kml-title": "Le titulo predefinite pro resultatos",
 	"semanticmaps-kml-linkabsolute": "Debe ligamines esser absolute (in vice de relative)",
-	"semanticmaps-kml-pagelinktext": "Le texto a usar pro le ligamines al pagina, in le quales $1 essera reimplaciate per le titulo de pagina"
+	"semanticmaps-kml-pagelinktext": "Le texto a usar pro le ligamines al pagina, in le quales $1 essera reimplaciate per le titulo de pagina",
+	"tag-maps-visual-edit-description": "Modification facite con le editor visual fornite per le [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps extension Maps]"
 }

@@ -124,5 +124,6 @@
 	"validator-type-mapslocation": "Lec'hiadur douaroniel",
 	"validator-type-mapslocation-list": "Roll lec'hiadurioù",
 	"validator-type-mapsrectangle": "Higarrezenn zouaroniel",
-	"validator-type-mapsrectangle-list": "Roll hirgarrezennoù"
+	"validator-type-mapsrectangle-list": "Roll hirgarrezennoù",
+	"tag-maps-visual-edit-description": "Kemm graet gant an aozer gweled pourvezet gant [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension]"
 }
