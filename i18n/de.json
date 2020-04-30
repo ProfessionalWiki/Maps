@@ -233,10 +233,13 @@
 	"maps-json-editor-tooltip-polygon": "Karte anclicke um ein Polygon zu malen",
 	"maps-json-editor-tooltip-rectangle": "Karte anclicke um ein Rechteck zu platzieren",
 	"maps-json-editor-tooltip-circle": "Karte anclicke um ein Kreis zu platzieren",
+	"maps-json-editor-added-marker": "Marker hinzugefügt",
 	"maps-json-editor-added-line": "Linie hinzugefügt",
 	"maps-json-editor-added-polygon": "Polygon hinzugefügt",
 	"maps-json-editor-added-rectangle": "Recheck hinzugefügt",
+	"maps-json-editor-added-circle": "Kreis hinzugefügt",
 	"maps-json-editor-edit-removed-shapes": "{{PLURAL:$1|Form|Formen}} entfernt",
 	"maps-json-editor-toolbar-save-text": "Fertig",
-	"maps-json-editor-toolbar-cancel-text": "Abbrechen"
+	"maps-json-editor-toolbar-cancel-text": "Abbrechen",
+	"maps-json-editor-toolbar-clear-text": "Alle löschen"
 }
