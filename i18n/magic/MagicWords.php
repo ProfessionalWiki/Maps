@@ -9,6 +9,8 @@ $magicWords = [];
 /** English (English) */
 $magicWords['en'] = [
 	'display_map' => [ 0, 'display_map' ],
+	'leaflet' => [ 0, 'leaflet' ],
+	'google_maps' => [ 0, 'google_maps' ],
 	'display_point' => [ 0, 'display_point' ],
 	'display_points' => [ 0, 'display_points' ],
 	'display_line' => [ 0, 'display_line' ],

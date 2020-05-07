@@ -76,7 +76,9 @@ class MapsSetup {
 	}
 
 	private function registerParserHooks() {
-		MapsFactory::globalInstance()->newParserHookSetup()->registerParserHooks( $this->mwGlobals );
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser $parser ) {
+			MapsFactory::globalInstance()->newParserHookSetup( $parser )->registerParserHooks();
+		};
 	}
 
 	private function registerPermissions() {

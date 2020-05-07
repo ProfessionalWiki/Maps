@@ -26,6 +26,12 @@ use Maps\GeoJsonPages\Semantic\SubObjectBuilder;
 use Maps\Map\CargoFormat\CargoOutputBuilder;
 use Maps\Map\DisplayMap\DisplayMapFunction;
 use Maps\Map\MapOutputBuilder;
+use Maps\ParserHooks\CoordinatesFunction;
+use Maps\ParserHooks\DistanceFunction;
+use Maps\ParserHooks\FindDestinationFunction;
+use Maps\ParserHooks\GeocodeFunction;
+use Maps\ParserHooks\GeoDistanceFunction;
+use Maps\ParserHooks\MapsDocFunction;
 use Maps\Presentation\CoordinateFormatter;
 use Maps\WikitextParsers\CircleParser;
 use Maps\WikitextParsers\DistanceParser;
@@ -37,6 +43,8 @@ use Maps\WikitextParsers\RectangleParser;
 use Maps\WikitextParsers\WmsOverlayParser;
 use MediaWiki\MediaWikiServices;
 use ParamProcessor\ParamDefinitionFactory;
+use Parser;
+use ParserHook;
 use RepoGroup;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
@@ -277,8 +285,27 @@ class MapsFactory {
 		);
 	}
 
-	public function newParserHookSetup(): ParserHookSetup {
-		return new ParserHookSetup();
+	public function newParserHookSetup( Parser $parser ): ParserHookSetup {
+		return new ParserHookSetup( $parser );
+	}
+
+	/**
+	 * @return ParserHook[]
+	 */
+	public function newNonMapParserHooks(): array {
+		$hooks = [
+			new DistanceFunction(),
+			new FindDestinationFunction(),
+			new GeocodeFunction(),
+			new GeoDistanceFunction(),
+			new MapsDocFunction(),
+		];
+
+		if ( $this->settings['egMapsEnableCoordinateFunction'] ) {
+			$hooks[] = new CoordinatesFunction();
+		}
+
+		return $hooks;
 	}
 
 }
