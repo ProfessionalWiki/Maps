@@ -277,4 +277,8 @@ class MapsFactory {
 		);
 	}
 
+	public function newParserHookSetup(): ParserHookSetup {
+		return new ParserHookSetup();
+	}
+
 }
