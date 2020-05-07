@@ -76,67 +76,8 @@ class MapsSetup {
 	}
 
 	private function registerParserHooks() {
-		if ( $this->mwGlobals['egMapsEnableCoordinateFunction'] ) {
-			$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-				return ( new CoordinatesFunction() )->init( $parser );
-			};
-		}
-
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-			foreach ( [ 'display_map', 'display_point', 'display_points', 'display_line' ] as $hookName ) {
-				$parser->setFunctionHook(
-					$hookName,
-					function ( Parser $parser, PPFrame $frame, array $arguments ) {
-						$mapHtml = MapsFactory::globalInstance()->getDisplayMapFunction()->getMapHtmlForKeyValueStrings(
-							$parser,
-							array_map(
-								function ( $argument ) use ( $frame ) {
-									return $frame->expand( $argument );
-								},
-								$arguments
-							)
-						);
-
-						return [
-							$mapHtml,
-							'noparse' => true,
-							'isHTML' => true,
-						];
-					},
-					Parser::SFH_OBJECT_ARGS
-				);
-
-				$parser->setHook(
-					$hookName,
-					function ( $text, array $arguments, Parser $parser ) {
-						if ( $text !== null ) {
-							$arguments[DisplayMapFunction::getDefaultParameters()[0]] = $text;
-						}
-
-						return MapsFactory::globalInstance()->getDisplayMapFunction()->getMapHtmlForParameterList( $parser, $arguments );
-					}
-				);
-			}
-		};
-
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-			return ( new DistanceFunction() )->init( $parser );
-		};
-
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-			return ( new FindDestinationFunction() )->init( $parser );
-		};
-
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-			return ( new GeocodeFunction() )->init( $parser );
-		};
-
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-			return ( new GeoDistanceFunction() )->init( $parser );
-		};
-
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser &$parser ) {
-			return ( new MapsDocFunction() )->init( $parser );
+		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser $parser ) {
+			MapsFactory::globalInstance()->newParserHookSetup( $parser )->registerParserHooks();
 		};
 	}
 

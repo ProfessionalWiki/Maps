@@ -63,34 +63,6 @@ class DisplayMapTest extends TestCase {
 		$this->assertContains( '"lat":4,"lon":2', $result );
 	}
 
-	public function testWhenValidZoomIsSpecified_itGetsUsed() {
-		$this->assertContains(
-			'"zoom":5',
-			$this->parse( '{{#display_map:1,1|service=google|zoom=5}}' )
-		);
-	}
-
-	public function testWhenZoomIsNotSpecifiedAndThereIsOnlyOneLocation_itIsDefaulted() {
-		$this->assertContains(
-			'"zoom":' . $GLOBALS['egMapsGMaps3Zoom'],
-			$this->parse( '{{#display_map:1,1|service=google}}' )
-		);
-	}
-
-	public function testWhenZoomIsNotSpecifiedAndThereAreMultipleLocations_itIsDefaulted() {
-		$this->assertContains(
-			'"zoom":false',
-			$this->parse( '{{#display_map:1,1;2,2|service=google}}' )
-		);
-	}
-
-	public function testWhenZoomIsInvalid_itIsDefaulted() {
-		$this->assertContains(
-			'"zoom":' . $GLOBALS['egMapsGMaps3Zoom'],
-			$this->parse( '{{#display_map:1,1|service=google|zoom=tomato}}' )
-		);
-	}
-
 	public function testTagIsRendered() {
 		$this->assertContains(
 			'"lat":1,"lon":1',
@@ -258,49 +230,6 @@ class DisplayMapTest extends TestCase {
 				"{{#display_map:geojson=TestPageSource}}"
 			)
 		);
-	}
-
-	public function testGoogleMapsKmlFiltersInvalidFileNames() {
-		$this->assertContains(
-			'"kml":["ValidFile.kml"],',
-			$this->parse(
-				"{{#display_map:service=google|kml=, ,ValidFile.kml ,}}"
-			)
-		);
-	}
-
-	public function testLeafletImageLayersIgnoresNotFoundImages() {
-		$this->assertContains(
-			'"imageLayers":[]',
-			$this->parse(
-				"{{#display_map:image layers=404.png}}"
-			)
-		);
-	}
-
-	public function testLeafletImageLayersIgnoresImageUrls() {
-		$this->assertContains(
-			'"imageLayers":[]',
-			$this->parse(
-				"{{#display_map:image layers=https://user-images.githubusercontent.com/62098559/76514021-3fa9be80-647d-11ea-82ae-715420a5c432.png}}"
-			)
-		);
-	}
-
-	public function testLeafletImageLayer() {
-		$factory = MapsTestFactory::newTestInstance();
-
-		$factory->imageRepo->addImage(
-			'MyImage.png',
-			new ImageValueObject( '/tmp/example/image.png', 40, 20 )
-		);
-
-		$html = $this->parse( "{{#display_map:image layers=MyImage.png}}" );
-
-		$this->assertContains( '"name":"MyImage.png"', $html );
-		$this->assertContains( '"url":"/tmp/example/image.png"', $html );
-		$this->assertContains( '"width":100', $html );
-		$this->assertContains( '"height":50', $html );
 	}
 
 }
