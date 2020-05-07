@@ -3,11 +3,18 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.19.0
+
+Under development
+
+* Added dedicated `#leaflet` parser function
+* Added dedicated `#google_maps` parser function
+
 ## Maps 7.18.0
 
 Released on April 19th, 2020.
 
-* Added Cagro integration: the `map` display format will now use the Maps extension
+* Added Cargo integration: the `map` display format will now use the Maps extension
 
 ## Maps 7.17.2
 
