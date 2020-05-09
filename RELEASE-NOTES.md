@@ -9,6 +9,7 @@ Under development
 
 * Added dedicated `#leaflet` parser function
 * Added dedicated `#google_maps` parser function
+* Added named version of the parameters passed to templates in SMW queries
 
 ## Maps 7.18.0
 

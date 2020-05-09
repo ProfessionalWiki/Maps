@@ -5,35 +5,32 @@ declare( strict_types = 1 );
 namespace Maps\SemanticMW;
 
 use DataValues\Geo\Values\LatLongValue;
-use Parser;
 
 class TemplatedPopup {
 
-	private $parser;
 	private $templateName;
 	private $extraParameter;
 
-	public function __construct( Parser $parser, string $templateName, string $extraParameter ) {
-		$this->parser = $parser;
+	public function __construct( string $templateName, string $extraParameter ) {
 		$this->templateName = $templateName;
 		$this->extraParameter = $extraParameter;
 	}
 
-	public function getHtml( string $title, LatLongValue $latLong, array $properties ): string {
-		$segments = array_merge(
-			[
-				$this->templateName,
-				'title=' . $title,
-				'latitude=' . $latLong->getLatitude(),
-				'longitude=' . $latLong->getLongitude(),
-				'userparam=' . $this->extraParameter
-			],
-			$properties
-		);
+	public function getWikiText( string $title, LatLongValue $latLong, array $properties ): string {
+		$segments = [
+			$this->templateName,
+			'title=' . $title,
+			'latitude=' . $latLong->getLatitude(),
+			'longitude=' . $latLong->getLongitude(),
+			'userparam=' . $this->extraParameter
+		];
 
-		return $this->parser->recursiveTagParseFully(
-			'{{' . implode( '|', $segments ) . '}}'
-		);
+		foreach ( $properties as $name => $value ) {
+			$segments[] = $name . '=' . $value;
+			$segments[] = $value;
+		}
+
+		return '{{' . implode( '|', $segments ) . '}}';
 	}
 
 }

@@ -225,7 +225,7 @@ class QueryHandler {
 					$locations[] = $this->locationFromDataItem( $dataValue->getDataItem() );
 				}
 				else {
-					$properties[] = $this->handleResultProperty(
+					$properties[$resultArray->getPrintRequest()->getCanonicalLabel()] = $this->handleResultProperty(
 						$dataValue,
 						$resultArray->getPrintRequest()
 					);
@@ -433,32 +433,31 @@ class QueryHandler {
 	private function buildLocationsForPage( array $locations, $text, $icon, array $properties, Title $title = null ): array {
 		$titleOutput = $this->getTitleOutput( $title );
 
+		if ( $properties !== [] && $text !== '' ) {
+			$text .= $this->subjectSeparator;
+		}
+
 		foreach ( $locations as &$location ) {
 			$location->setTitle( $titleOutput );
-			$location->setText( $this->buildPopupText( $text, $properties, $titleOutput, $location ) );
+			$location->setText( $text . $this->buildPopupText( $properties, $titleOutput, $location ) );
 			$location->setIcon( trim( $icon ) );
 		}
 
 		return $locations;
 	}
 
-	private function buildPopupText( string $text, array $properties, string $titleOutput, Location $location ): string {
-		if ( $properties !== [] && $text !== '' ) {
-			$text .= $this->subjectSeparator;
-		}
-
+	private function buildPopupText( array $properties, string $titleOutput, Location $location ): string {
 		if ( $this->hasTemplate() ) {
-			$popup = $this->newTemplatedPopup();
-
-			return $text . $popup->getHtml( $titleOutput, $location->getCoordinates(), $properties );
+			return $this->getParser()->recursiveTagParseFully(
+				$this->newTemplatedPopup()->getWikiText( $titleOutput, $location->getCoordinates(), $properties )
+			);
 		}
 
-		return $text . implode( '<br />', $properties );
+		return implode( '<br />', $properties );
 	}
 
 	private function newTemplatedPopup(): TemplatedPopup {
 		return new TemplatedPopup(
-			$this->getParser(),
 			$this->template,
 			$this->userParam
 		);
