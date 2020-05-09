@@ -435,36 +435,33 @@ class QueryHandler {
 	 * @return Location[]
 	 */
 	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ): array {
-		if ( !$this->hasTemplate() ) {
-			$text .= implode( '<br />', $properties );
-		}
-
 		$titleOutput = $this->getTitleOutput( $title );
 
 		foreach ( $locations as &$location ) {
-			if ( $this->hasTemplate() ) {
-				$segments = array_merge(
-					[
-						$this->template,
-						'title=' . $titleOutput,
-						'latitude=' . $location->getCoordinates()->getLatitude(),
-						'longitude=' . $location->getCoordinates()->getLongitude(),
-						'userparam=' . $this->userParam
-					],
-					$properties
-				);
-
-				$text .= $this->getParser()->recursiveTagParseFully(
-					'{{' . implode( '|', $segments ) . '}}'
-				);
-			}
-
 			$location->setTitle( $titleOutput );
-			$location->setText( $text );
+			$location->setText( $this->buildPopupText( $text, $properties, $titleOutput, $location ) );
 			$location->setIcon( trim( $icon ) );
 		}
 
 		return $locations;
+	}
+
+	private function buildPopupText( string $text, array $properties, string $titleOutput, Location $location ): string {
+		if ( !$this->hasTemplate() ) {
+			return $text . implode( '<br />', $properties );
+		}
+
+		$popup = $this->newTemplatedPopup();
+
+		return $text . $popup->getHtml( $titleOutput, $location->getCoordinates(), $properties );
+	}
+
+	private function newTemplatedPopup(): TemplatedPopup {
+		return new TemplatedPopup(
+			$this->getParser(),
+			$this->template,
+			$this->userParam
+		);
 	}
 
 	private function getTitleOutput( Title $title = null ) {
