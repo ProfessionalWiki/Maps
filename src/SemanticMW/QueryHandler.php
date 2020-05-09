@@ -166,21 +166,19 @@ class QueryHandler {
 		[ $title, $text ] = $this->getTitleAndText( $row[0] );
 		[ $locations, $properties ] = $this->getLocationsAndProperties( $row );
 
-		if ( $properties !== [] && $text !== '' ) {
-			$text .= $this->subjectSeparator;
-		}
-
-		$icon = $this->getLocationIcon( $row );
-
-		return $this->buildLocationsList(
+		return $this->buildLocationsForPage(
 			$locations,
 			$text,
-			$icon,
+			$this->getLocationIcon( $row ),
 			$properties,
 			Title::newFromText( $title )
 		);
 	}
 
+	/**
+	 * @param SMWResultArray $resultArray
+	 * @return array|string[] [string $title, string $text]
+	 */
 	private function getTitleAndText( SMWResultArray $resultArray ): array {
 		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
 			if ( $dataValue instanceof SMWWikiPageValue ) {
@@ -227,7 +225,7 @@ class QueryHandler {
 					$locations[] = $this->locationFromDataItem( $dataValue->getDataItem() );
 				}
 				else {
-					$properties[] = $this->handleResultProperty(
+					$properties[$resultArray->getPrintRequest()->getCanonicalLabel()] = $this->handleResultProperty(
 						$dataValue,
 						$resultArray->getPrintRequest()
 					);
@@ -424,8 +422,6 @@ class QueryHandler {
 	}
 
 	/**
-	 * Builds a set of locations with the provided title, text and icon.
-	 *
 	 * @param Location[] $locations
 	 * @param string $text
 	 * @param string $icon
@@ -434,37 +430,37 @@ class QueryHandler {
 	 *
 	 * @return Location[]
 	 */
-	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ): array {
-		if ( !$this->hasTemplate() ) {
-			$text .= implode( '<br />', $properties );
-		}
-
+	private function buildLocationsForPage( array $locations, $text, $icon, array $properties, Title $title = null ): array {
 		$titleOutput = $this->getTitleOutput( $title );
 
+		if ( $properties !== [] && $text !== '' ) {
+			$text .= $this->subjectSeparator;
+		}
+
 		foreach ( $locations as &$location ) {
-			if ( $this->hasTemplate() ) {
-				$segments = array_merge(
-					[
-						$this->template,
-						'title=' . $titleOutput,
-						'latitude=' . $location->getCoordinates()->getLatitude(),
-						'longitude=' . $location->getCoordinates()->getLongitude(),
-						'userparam=' . $this->userParam
-					],
-					$properties
-				);
-
-				$text .= $this->getParser()->recursiveTagParseFully(
-					'{{' . implode( '|', $segments ) . '}}'
-				);
-			}
-
 			$location->setTitle( $titleOutput );
-			$location->setText( $text );
+			$location->setText( $text . $this->buildPopupText( $properties, $titleOutput, $location ) );
 			$location->setIcon( trim( $icon ) );
 		}
 
 		return $locations;
+	}
+
+	private function buildPopupText( array $properties, string $titleOutput, Location $location ): string {
+		if ( $this->hasTemplate() ) {
+			return $this->getParser()->recursiveTagParseFully(
+				$this->newTemplatedPopup()->getWikiText( $titleOutput, $location->getCoordinates(), $properties )
+			);
+		}
+
+		return implode( '<br />', $properties );
+	}
+
+	private function newTemplatedPopup(): TemplatedPopup {
+		return new TemplatedPopup(
+			$this->template,
+			$this->userParam
+		);
 	}
 
 	private function getTitleOutput( Title $title = null ) {

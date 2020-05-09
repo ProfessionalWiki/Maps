@@ -112,4 +112,12 @@ class SemanticQueryTest extends TestCase {
 		);
 	}
 
+	public function testMapQueryWithTemplate() {
+		$this->createDataPages();
+
+		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=map|template=Whatever}}' );
+
+		$this->assertContains( '<div id="map_', $content );
+	}
+
 }
