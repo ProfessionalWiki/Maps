@@ -166,21 +166,19 @@ class QueryHandler {
 		[ $title, $text ] = $this->getTitleAndText( $row[0] );
 		[ $locations, $properties ] = $this->getLocationsAndProperties( $row );
 
-		if ( $properties !== [] && $text !== '' ) {
-			$text .= $this->subjectSeparator;
-		}
-
-		$icon = $this->getLocationIcon( $row );
-
-		return $this->buildLocationsList(
+		return $this->buildLocationsForPage(
 			$locations,
 			$text,
-			$icon,
+			$this->getLocationIcon( $row ),
 			$properties,
 			Title::newFromText( $title )
 		);
 	}
 
+	/**
+	 * @param SMWResultArray $resultArray
+	 * @return array|string[] [string $title, string $text]
+	 */
 	private function getTitleAndText( SMWResultArray $resultArray ): array {
 		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
 			if ( $dataValue instanceof SMWWikiPageValue ) {
@@ -424,8 +422,6 @@ class QueryHandler {
 	}
 
 	/**
-	 * Builds a set of locations with the provided title, text and icon.
-	 *
 	 * @param Location[] $locations
 	 * @param string $text
 	 * @param string $icon
@@ -434,7 +430,7 @@ class QueryHandler {
 	 *
 	 * @return Location[]
 	 */
-	private function buildLocationsList( array $locations, $text, $icon, array $properties, Title $title = null ): array {
+	private function buildLocationsForPage( array $locations, $text, $icon, array $properties, Title $title = null ): array {
 		$titleOutput = $this->getTitleOutput( $title );
 
 		foreach ( $locations as &$location ) {
@@ -447,13 +443,17 @@ class QueryHandler {
 	}
 
 	private function buildPopupText( string $text, array $properties, string $titleOutput, Location $location ): string {
-		if ( !$this->hasTemplate() ) {
-			return $text . implode( '<br />', $properties );
+		if ( $properties !== [] && $text !== '' ) {
+			$text .= $this->subjectSeparator;
 		}
 
-		$popup = $this->newTemplatedPopup();
+		if ( $this->hasTemplate() ) {
+			$popup = $this->newTemplatedPopup();
 
-		return $text . $popup->getHtml( $titleOutput, $location->getCoordinates(), $properties );
+			return $text . $popup->getHtml( $titleOutput, $location->getCoordinates(), $properties );
+		}
+
+		return $text . implode( '<br />', $properties );
 	}
 
 	private function newTemplatedPopup(): TemplatedPopup {
