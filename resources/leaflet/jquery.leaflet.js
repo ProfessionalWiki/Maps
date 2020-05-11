@@ -355,13 +355,21 @@
 			if (bounds.isValid()) {
 				this.map.setView(
 					bounds.getCenter(),
-					bounds.getNorthEast().equals(bounds.getSouthWest()) ? options.defzoom : this.map.getBoundsZoom(bounds),
+					this.getZoomForValidBounds(bounds),
 					{animate: false}
 				);
 			}
 			else {
 				this.map.fitWorld();
 			}
+		};
+
+		this.getZoomForValidBounds = function(bounds) {
+			if (bounds.getNorthEast().equals(bounds.getSouthWest())) {
+				return options.defzoom;
+			}
+
+			return this.map.getBoundsZoom(bounds, false, [50, 75]);
 		};
 
 		return this;
