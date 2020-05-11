@@ -5,23 +5,13 @@ information. It has been maintained since 2009 and is installed on 1000+ wikis.
 
 Features:
 
-* Powerful [`#display_map`](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps) parser hook for embedding highly customizable dynamic maps into wiki pages.
-* Support for multiple mapping services: [Leaflet](http://leafletjs.com/), Google Maps and [OpenStreetMap](www.openstreetmap.org/).
-* Integration with [Semantic MediaWiki](https://www.semantic-mediawiki.org) via a [coordinate datatype](https://www.semantic-mediawiki.org/wiki/Help:Type_Geographic_coordinate)
-    * Query your stored coordinates and visualize them on dynamic maps, as tables or as lists
-    * Export your coordinates as KML or RDF
-    * Combine coordinates with other structured data stored in your wiki
-* Geocoding via several supported services with the [`#geocode`](https://www.semantic-mediawiki.org/wiki/Maps/Geocoding) parser function.
-* [GeoJson support](https://www.semantic-mediawiki.org/wiki/Extension:Maps/GeoJSON) including a visual editor
-* Coordinate formatting and format conversion via the [`#coordinates`](https://www.semantic-mediawiki.org/wiki/Maps/Coordinates) parser function.
-* Geospatial operations
-    * Calculating the distance between two points with [`#geodistance`](https://www.semantic-mediawiki.org/wiki/Maps/Geodistance)
-    * Finding a destination given a starting point, bearing and distance with [`#finddestination`](https://www.semantic-mediawiki.org/wiki/Maps/Finddestination)
-* Distance formatting and format conversion via the [`#distance`](https://www.semantic-mediawiki.org/wiki/Maps/Distance) parser function.
-* Visual map editor (Special:MapEditor) to edit [`#display_map`](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps) wikitext (requires Google Maps).
-* Image base layer support for custom maps (ie floor plans, game worlds, etc)
-* Integration with [Cargo]
-* Translations in over 100 languages
+* Customizable and dynamic [Leaflet maps]
+* Customizable and dynamic [Google Maps]
+* Structured data and query [integration with Semantic MediaWiki]
+* [Visual map editor]
+* [GeoJSON] and [KML] support
+* Parser functions for [geocoding], [coordinate formatting] and geospatial operations
+* Translations in over 100 languages, image layers, static maps and [more]
 
 Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom development at a discount if it is open sourced.
 
@@ -115,4 +105,12 @@ Beware that due to technical debt, some tests access the network.
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
 * [TravisCI build status](https://travis-ci.org/JeroenDeDauw/Maps)
 
-[Cargo]: https://www.mediawiki.org/wiki/Extension:Cargo
+[Leaflet maps]: https://maps.extension.wiki/wiki/Displaying_Leaflet_maps
+[Google Maps]: https://maps.extension.wiki/wiki/Displaying_Google_Maps
+[integration with Semantic MediaWiki]: https://maps.extension.wiki/wiki/Semantic_MediaWiki
+[Visual map editor]: https://maps.extension.wiki/wiki/Visual_editing
+[GeoJSON]: https://maps.extension.wiki/wiki/GeoJSON
+[KML]: https://maps.extension.wiki/wiki/KML
+[geocoding]: https://maps.extension.wiki/wiki/Geocoding
+[coordinate formatting]: https://maps.extension.wiki/wiki/Coordinates_function
+[more]: https://maps.extension.wiki/wiki/Maps_for_MediaWiki
