@@ -4,11 +4,11 @@ These are the installation and configuration instructions for the [Maps extensio
 
 ## Download and installation
 
-See the [installation instructions](https://www.semantic-mediawiki.org/wiki/Maps/Installation)
+See the [installation instructions](https://maps.extension.wiki/wiki/Installation)
 
 ## Configuration
 
-See the [configuration documentation](https://www.semantic-mediawiki.org/wiki/Maps/Configuration)
+See the [configuration documentation](https://maps.extension.wiki/wiki/Configuration)
 
 ## Platform compatibility and release status
 
@@ -25,14 +25,14 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status<br>&nbsp;</th>
 	</tr>
 	<tr>
-		<th>7.19.x</th>
+		<th>7.20.x</th>
 		<td>7.1 - 7.4+</td>
 		<td>1.31 - 1.34+</td>
 		<td>3.1.x</td>
 		<td>Planned Q2 2020</td>
 	</tr>
 	<tr>
-        <th>7.18.x</th>
+        <th>7.19.x</th>
         <td>7.1 - 7.4</td>
         <td>1.31 - 1.34</td>
         <td>3.0 - 3.1</td>

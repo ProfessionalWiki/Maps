@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.19.0
 
-Under development
+Released on May 11th, 2020.
 
 * Added dedicated `#leaflet` parser function
 * Added dedicated `#google_maps` parser function
