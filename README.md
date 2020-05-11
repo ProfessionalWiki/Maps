@@ -19,19 +19,19 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 
 ### For administrators
 
-* [Installation](https://www.semantic-mediawiki.org/wiki/Maps/Installation)
-* [Configuration](https://www.semantic-mediawiki.org/wiki/Maps/Configuration)
+* [Installation](https://maps.extension.wiki/wiki/Installation)
+* [Configuration](https://maps.extension.wiki/wiki/Configuration)
 * [Release notes](RELEASE-NOTES.md) - detailed list of changes per release
 * [Platform compatibility](INSTALL.md#platform-compatibility-and-release-status) - overview of PHP and MediaWiki support per release
 
 ### For wiki users
 
-* [Feature overview](https://www.semantic-mediawiki.org/wiki/Extension:Maps)
-* [Displaying maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Displaying_maps)
-* [Customizing maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Customizing_maps)
-    * [Leaflet maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Leaflet)
-    * [Google Maps](https://www.semantic-mediawiki.org/wiki/Extension:Maps/Google_Maps)
-* [Semantic MediaWiki integration](https://www.semantic-mediawiki.org/wiki/Help:Map_format)
+* [Feature overview](https://maps.extension.wiki)
+* [Displaying Leaflet maps](https://maps.extension.wiki/wiki/Displaying_Leaflet_maps)
+* [Customizing Leaflet maps](https://maps.extension.wiki/wiki/Customizing_Leaflet_maps)
+* [Displaying Google maps](https://maps.extension.wiki/wiki/Displaying_Google_maps)
+* [Customizing Google Maps](https://maps.extension.wiki/wiki/Customizing_Google_Maps)
+* [Semantic MediaWiki integration](https://maps.extension.wiki/wiki/Semantic_MediaWiki)
 
 ### Getting support
 
