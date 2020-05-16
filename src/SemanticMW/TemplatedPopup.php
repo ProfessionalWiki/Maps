@@ -16,10 +16,11 @@ class TemplatedPopup {
 		$this->extraParameter = $extraParameter;
 	}
 
-	public function getWikiText( string $title, LatLongValue $latLong, array $properties ): string {
+	public function getWikiText( string $fullTitle, $displayTitle, LatLongValue $latLong, array $properties ): string {
 		$segments = [
 			$this->templateName,
-			'title=' . $title,
+			'fulltitle=' . $fullTitle,
+			'title=' . $displayTitle,
 			'latitude=' . $latLong->getLatitude(),
 			'longitude=' . $latLong->getLongitude(),
 			'userparam=' . $this->extraParameter

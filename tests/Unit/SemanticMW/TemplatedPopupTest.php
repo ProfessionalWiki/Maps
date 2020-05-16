@@ -14,8 +14,9 @@ class TemplatedPopupTest extends TestCase {
 		$popup = new TemplatedPopup( 'MyTemplate', '' );
 
 		$this->assertSame(
-			'{{MyTemplate|title=MyTitle|latitude=4|longitude=2|userparam=|Has text=foo|foo|Has more=bar|bar}}',
+			'{{MyTemplate|fulltitle=NS:MyTitle|title=MyTitle|latitude=4|longitude=2|userparam=|Has text=foo|foo|Has more=bar|bar}}',
 			$popup->getWikiText(
+				'NS:MyTitle',
 				'MyTitle',
 				new LatLongValue( 4, 2 ),
 				[

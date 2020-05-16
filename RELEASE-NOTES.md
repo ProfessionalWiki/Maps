@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.20.0
+
+* Added `fulltitle` parameter to templates in SMW queries
+
 ## Maps 7.19.0
 
 Released on May 11th, 2020.

@@ -447,7 +447,12 @@ class QueryHandler {
 	private function buildPopupText( array $properties, string $title, Location $location ): string {
 		if ( $this->hasTemplate() ) {
 			return $this->getParser()->recursiveTagParseFully(
-				$this->newTemplatedPopup()->getWikiText( $title, $location->getCoordinates(), $properties )
+				$this->newTemplatedPopup()->getWikiText(
+					$title,
+					$this->getTitleOutput( $title ),
+					$location->getCoordinates(),
+					$properties
+				)
 			);
 		}
 
