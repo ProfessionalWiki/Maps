@@ -171,7 +171,7 @@ class QueryHandler {
 			$text,
 			$this->getLocationIcon( $row ),
 			$properties,
-			Title::newFromText( $title )
+			$title
 		);
 	}
 
@@ -426,30 +426,28 @@ class QueryHandler {
 	 * @param string $text
 	 * @param string $icon
 	 * @param array $properties
-	 * @param Title|null $title
+	 * @param string $title
 	 *
 	 * @return Location[]
 	 */
-	private function buildLocationsForPage( array $locations, $text, $icon, array $properties, Title $title = null ): array {
-		$titleOutput = $this->getTitleOutput( $title );
-
+	private function buildLocationsForPage( array $locations, $text, $icon, array $properties, string $title ): array {
 		if ( $properties !== [] && $text !== '' ) {
 			$text .= $this->subjectSeparator;
 		}
 
 		foreach ( $locations as &$location ) {
-			$location->setTitle( $titleOutput );
-			$location->setText( $text . $this->buildPopupText( $properties, $titleOutput, $location ) );
+			$location->setTitle( $this->getTitleOutput( $title ) );
+			$location->setText( $text . $this->buildPopupText( $properties, $title, $location ) );
 			$location->setIcon( trim( $icon ) );
 		}
 
 		return $locations;
 	}
 
-	private function buildPopupText( array $properties, string $titleOutput, Location $location ): string {
+	private function buildPopupText( array $properties, string $title, Location $location ): string {
 		if ( $this->hasTemplate() ) {
 			return $this->getParser()->recursiveTagParseFully(
-				$this->newTemplatedPopup()->getWikiText( $titleOutput, $location->getCoordinates(), $properties )
+				$this->newTemplatedPopup()->getWikiText( $title, $location->getCoordinates(), $properties )
 			);
 		}
 
@@ -463,7 +461,9 @@ class QueryHandler {
 		);
 	}
 
-	private function getTitleOutput( Title $title = null ) {
+	private function getTitleOutput( string $titleText ) {
+		$title = Title::newFromText( $titleText );
+
 		if ( $title === null ) {
 			return '';
 		}
