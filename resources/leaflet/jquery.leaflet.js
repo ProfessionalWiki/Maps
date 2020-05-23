@@ -360,7 +360,7 @@
 				);
 			}
 			else {
-				this.map.fitWorld();
+				this.map.setZoom(options.defzoom, {animate: false});
 			}
 		};
 
