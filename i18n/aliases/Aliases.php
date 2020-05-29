@@ -103,6 +103,11 @@ $specialPageAliases['nl'] = [
 	'MapEditor' => [ 'Kaarteditor' ],
 ];
 
+/** Polish (polski) */
+$specialPageAliases['pl'] = [
+	'MapEditor' => [ 'Edytor map' ],
+];
+
 /** Sicilian (sicilianu) */
 $specialPageAliases['scn'] = [
 	'MapEditor' => [ 'EditorMappa' ],
