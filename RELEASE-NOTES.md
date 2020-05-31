@@ -5,6 +5,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 7.20.0
 
+Released on May 31st, 2020.
+
 * Added `fulltitle` parameter to templates in SMW queries
 * Leaflet maps now use the default zoom when there are no markers, rather than showing the whole world
 
