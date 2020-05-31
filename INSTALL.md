@@ -25,21 +25,21 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status<br>&nbsp;</th>
 	</tr>
 	<tr>
-		<th>7.20.x</th>
+		<th>7.21.x</th>
 		<td>7.1 - 7.4+</td>
 		<td>1.31 - 1.34+</td>
 		<td>3.1.x</td>
-		<td>Planned Q2 2020</td>
+		<td>Planned Q3 2020</td>
 	</tr>
 	<tr>
-        <th>7.19.x</th>
+        <th>7.20.x</th>
         <td>7.1 - 7.4</td>
         <td>1.31 - 1.34</td>
         <td>3.0 - 3.1</td>
         <td><strong>Stable release</strong></td>
     </tr>
 	<tr>
-		<th>7.17.x<br>-<br>7.16.x</th>
+		<th>7.19.x<br>-<br>7.16.x</th>
 		<td>7.1 - 7.4</td>
 		<td>1.31 - 1.34</td>
 		<td>3.0 - 3.1</td>
