@@ -114,3 +114,5 @@ Beware that due to technical debt, some tests access the network.
 [geocoding]: https://maps.extension.wiki/wiki/Geocoding
 [coordinate formatting]: https://maps.extension.wiki/wiki/Coordinates_function
 [more]: https://maps.extension.wiki/wiki/Maps_for_MediaWiki
+
+test
