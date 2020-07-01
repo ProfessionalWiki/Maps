@@ -47,11 +47,6 @@ class MapPrinter extends ResultPrinter {
 	private $service;
 
 	/**
-	 * @var WikitextParser
-	 */
-	private $wikitextParser;
-
-	/**
 	 * @var ElementJsonSerializer
 	 */
 	private $elementSerializer;
@@ -114,8 +109,7 @@ class MapPrinter extends ResultPrinter {
 		$this->locationParser = $factory->newLocationParser();
 		$this->fileUrlFinder = $factory->getFileUrlFinder();
 
-		$this->wikitextParser = new WikitextParser( $this->getParserClone() );
-		$this->elementSerializer = new ElementJsonSerializer( $this->wikitextParser );
+		$this->elementSerializer = new ElementJsonSerializer( new WikitextParser( $this->getParserClone() ) );
 
 		$this->addTrackingCategoryIfNeeded();
 
