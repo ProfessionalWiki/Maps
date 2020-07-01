@@ -34,6 +34,7 @@ class PageContentFetcher {
 			return null;
 		}
 
+		// $revision->getRevisionRecord()->getContent( 'main' );
 		return $revision->getContent( 'main' );
 	}
 
