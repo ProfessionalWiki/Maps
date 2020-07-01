@@ -179,7 +179,7 @@ class MapEditorHtml extends ContextSource {
 </div>
 EOT;
 
-		$html = sprintf(
+		return sprintf(
 			$output,
 			$this->msg( 'mapeditor-code-title' ),
 			$this->msg( 'mapeditor-import-title' ),
@@ -205,8 +205,6 @@ EOT;
 			$this->msg( 'mapeditor-imageoverlay-title' ),
 			$this->msg( 'mapeditor-form-field-visitedicon' )
 		);
-
-		return $html;
 	}
 
 	/**
