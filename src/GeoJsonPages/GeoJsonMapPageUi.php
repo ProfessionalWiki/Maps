@@ -20,13 +20,6 @@ class GeoJsonMapPageUi {
 	}
 
 	public function addToOutput( OutputFacade $output ) {
-		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/lib/leaflet';
-
-		$output->addHeadItem(
-			'MapsGeoJsonHeadItem',
-			Html::linkedStyle( "$leafletPath/leaflet.css" )
-		);
-
 		$output->addHTML( $this->getJavascript() . $this->getHtml() );
 		$output->addModules( 'ext.maps.geojson.page' );
 	}

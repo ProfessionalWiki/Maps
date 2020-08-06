@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 7.20.1
+
+Released on August 6th, 2020.
+
+* Fixed intermittent map loading issue, happening especially when using live previews
+
 ## Maps 7.20.0
 
 Released on May 31st, 2020.

@@ -186,7 +186,6 @@ class LeafletService implements MappingService {
 	public function getDependencyHtml( array $params ): string {
 		$dependencies = [];
 
-		// Only add dependencies that have not yet been added.
 		foreach ( $this->getDependencies( $params ) as $dependency ) {
 			if ( !in_array( $dependency, $this->addedDependencies ) ) {
 				$dependencies[] = $dependency;
@@ -198,14 +197,7 @@ class LeafletService implements MappingService {
 	}
 
 	private function getDependencies( array $params ): array {
-		$leafletPath = $GLOBALS['wgScriptPath'] . '/extensions/Maps/resources/lib/leaflet';
-
-		return array_merge(
-			[
-				Html::linkedStyle( "$leafletPath/leaflet.css" ),
-			],
-			$this->getLayerDependencies( $params )
-		);
+		return $this->getLayerDependencies( $params );
 	}
 
 	private function getLayerDependencies( array $params ) {
