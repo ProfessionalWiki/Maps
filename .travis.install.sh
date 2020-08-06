@@ -20,7 +20,7 @@ then
 	php maintenance/install.php --dbtype $DBTYPE --dbuser postgres --dbname its_a_mw --pass nyan TravisWiki admin --scriptpath /TravisWiki
 else
 	mysql -e 'create database its_a_mw;'
-	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin --scriptpath /TravisWiki
+	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass AdminPassword10 TravisWiki admin --scriptpath /TravisWiki
 fi
 
 cd extensions
