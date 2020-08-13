@@ -158,6 +158,6 @@
 	"validator-type-mapslocation-list": "Luettelo sijainneista",
 	"maps-json-editor-button-line": "Piirrä viiva",
 	"maps-json-editor-toolbar-save-title": "Tallenna muutokset",
-	"maps-json-editor-toolbar-save-text": "Tallenna",
-	"maps-json-editor-toolbar-clear-text": "Tyhjennä kaikki"
+	"maps-json-editor-toolbar-save-text": "Valmis",
+	"maps-json-editor-toolbar-clear-text": "Poista kaikki"
 }
