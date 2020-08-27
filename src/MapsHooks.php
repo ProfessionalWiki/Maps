@@ -122,7 +122,7 @@ final class MapsHooks {
 			'dependencies' => [
 				'ext.maps.leaflet.geojson',
 			],
-			'localBasePath' => __DIR__ . '/../../',
+			'localBasePath' => __DIR__ . '/..',
 			'remoteExtPath' => 'Maps'
 		];
 	}
