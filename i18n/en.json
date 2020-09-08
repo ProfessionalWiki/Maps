@@ -36,7 +36,6 @@
 	"validation-error-no-non-numerics": "Parameter \"$1\" must be one or more non-numeric strings.",
 	"maps-layer-of-type": "Layer of type \"$1\"",
 	"maps-layer-of-type-and-name": "Layer \"$2\" of type \"$1\"",
-	"maps-layer-type-supported-by": "This layer type can {{PLURAL:$2|only be used with the $1 mapping service|be used with these mapping services: $1}}.",
 	"maps-coordinates-description": "Parser hook to format coordinates, from and to any of the supported formats.",
 	"maps-displaymap-description": "Display geographical maps without any wiki-defined markers on them.",
 	"maps-distance-description": "Convert a distance using a certain supported unit to its equivalent using another unit.",
