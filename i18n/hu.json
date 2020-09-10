@@ -24,8 +24,6 @@
 	"maps-layer-property": "Tulajdonság",
 	"maps-layer-value": "Érték",
 	"maps-layer-errors": "Hibák",
-	"maps-error-invalid-layertype": "Nincs „$1” típusú réteg. Csak {{PLURAL:$3|ez a réteg támogatott|ezek a rétegek támogatottak}}: $2",
-	"maps-error-no-layertype": "Meg kell adnod egy réteg típust. {{PLURAL:$2|Csak ez a réteg támogatott|Ezek a rétegek támogatottak}}: $1",
 	"validation-error-invalid-layer": "$1 paraméternek egy érvényes réteg típusnak kell lennie.",
 	"validation-error-invalid-layers": "$1 paraméternek egy vagy több érvényes réted típusnak kell lennie.",
 	"maps-layer-of-type": "$1 típusú réteg",

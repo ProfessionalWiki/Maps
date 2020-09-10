@@ -28,7 +28,6 @@
 	"maps-layerdef-wrong-namespace": "Definicije sloja valjane su samo na stranicama u imenskom prostoru »$1«",
 	"maps-layerpage-usage": "Stranice sa zemljovidima koji koriste sloj »$1«",
 	"maps-layerpage-nousage": "Trenutačno nema stranica koje rabe ovaj sloj.",
-	"maps-layer-type-supported-by": "Ovaj tip sloja može se rabiti {{PLURAL:$2|samo s kartografskom uslugom $1|s ovim kartografskim uslugama: $1}}.",
 	"maps-geodistance-description": "Izračunava zemljopisnu udaljenost između dvije točke, iz i na neki od podržanih formata.",
 	"maps-layerdefinition-description": "Opisuje prilagođeni sloj koji je moguće prikazati s drugim mogućnostima zemljovoda.",
 	"maps-displaymap-par-polygons": "Mnogokuti za prikaz",

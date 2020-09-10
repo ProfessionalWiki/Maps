@@ -21,8 +21,6 @@
 	"maps-layer-property": "Proprietate",
 	"maps-layer-value": "Valoare",
 	"maps-layer-errors": "Erori",
-	"maps-error-invalid-layertype": "Nu există straturi de tip „$1”. Se acceptă doar {{PLURAL:$3|acest tip|aceste tipuri}}: $2",
-	"maps-error-no-layertype": "Trebuie să specificați tipul stratului. Se acceptă doar {{PLURAL:$2|acest tip|aceste tipuri}}: $1",
 	"validation-error-invalid-layer": "Parametrul $1 trebuie să fie un strat valabil.",
 	"validation-error-invalid-layers": "Parametrul $1 trebuie să fie una sau mai multe straturi valide.",
 	"maps-layer-of-type": "Strat de tip $1",
