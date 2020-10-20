@@ -19,13 +19,14 @@ echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
 echo '$wgShowDBErrorBacktrace = true;' >> LocalSettings.php
 echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
 
-echo 'wfLoadExtension( "SemanticMediaWiki" );' >> LocalSettings.php
+# "mediawiki/semantic-media-wiki": "3.2.0"
+#echo 'wfLoadExtension( "SemanticMediaWiki" );' >> LocalSettings.php
 echo 'wfLoadExtension( "'$EXTENSION_NAME'" );' >> LocalSettings.php
 
 cat <<EOT >> composer.local.json
 {
   "require": {
-    "mediawiki/semantic-media-wiki": "3.2.0"
+
   },
 	"extra": {
 		"merge-plugin": {
