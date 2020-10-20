@@ -6,7 +6,6 @@ namespace Maps\Tests\Integration\Parsers;
 
 use Maps\WikitextParsers\DistanceParser;
 use PHPUnit\Framework\TestCase;
-use PHPUnit4And6Compat;
 use ValueParsers\ParseException;
 
 /**
@@ -15,7 +14,6 @@ use ValueParsers\ParseException;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class DistanceParserTest extends TestCase {
-	use PHPUnit4And6Compat;
 
 	/**
 	 * @dataProvider validInputProvider

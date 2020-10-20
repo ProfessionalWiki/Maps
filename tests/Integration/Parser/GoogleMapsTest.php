@@ -16,7 +16,7 @@ class GoogleMapsTest extends TestCase {
 	}
 
 	public function testGoogleMapsKmlFiltersInvalidFileNames() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'"kml":["ValidFile.kml"],',
 			$this->parse(
 				"{{#google_maps:kml=, ,ValidFile.kml ,}}"
@@ -25,28 +25,28 @@ class GoogleMapsTest extends TestCase {
 	}
 
 	public function testWhenValidZoomIsSpecified_itGetsUsed() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'"zoom":5',
 			$this->parse( '{{#google_maps:1,1|zoom=5}}' )
 		);
 	}
 
 	public function testWhenZoomIsNotSpecifiedAndThereIsOnlyOneLocation_itIsDefaulted() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'"zoom":' . $GLOBALS['egMapsGMaps3Zoom'],
 			$this->parse( '{{#google_maps:1,1}}' )
 		);
 	}
 
 	public function testWhenZoomIsNotSpecifiedAndThereAreMultipleLocations_itIsDefaulted() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'"zoom":false',
 			$this->parse( '{{#google_maps:1,1;2,2}}' )
 		);
 	}
 
 	public function testWhenZoomIsInvalid_itIsDefaulted() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'"zoom":' . $GLOBALS['egMapsGMaps3Zoom'],
 			$this->parse( '{{#google_maps:1,1|zoom=tomato}}' )
 		);

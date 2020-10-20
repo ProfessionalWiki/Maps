@@ -50,8 +50,8 @@ abstract class ParserHookTest extends TestCase {
 		if ( is_string( $renderResult ) ) {
 			$this->assertTrue( true );
 		} else {
-			$this->assertInternalType( 'array', $renderResult );
-			$this->assertInternalType( 'string', $renderResult[0] );
+			$this->assertIsArray( $renderResult );
+			$this->assertIsString( $renderResult[0] );
 		}
 
 		if ( $expected !== null ) {

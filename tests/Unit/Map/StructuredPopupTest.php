@@ -24,35 +24,35 @@ class StructuredPopupTest extends TestCase {
 	}
 
 	public function testTitleAndListAreSeparated() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'</h3><br><strong>',
 			$this->getHtml( 'MyTitle', [ 'P1' => 'V1' ] )
 		);
 	}
 
 	public function testListItems() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'<strong>P1</strong>: V1<br><strong>P2</strong>: V2',
 			$this->getHtml( 'MyTitle', [ 'P1' => 'V1', 'P2' => 'V2' ] )
 		);
 	}
 
 	public function testLinksAreAllowed() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'<strong><a href="#">P1</a></strong>: <a href="#">P1</a>',
 			$this->getHtml( 'MyTitle', [ '<a href="#">P1</a>' => '<a href="#">P1</a>' ] )
 		);
 	}
 
 	public function testImagesAreAllowed() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'<img src="#">',
 			$this->getHtml( 'MyTitle', [ 'P1' => '<img src="#">' ] )
 		);
 	}
 
 	public function testRandomTagsAreFiltered() {
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'<strong>P1</strong>: abcde',
 			$this->getHtml( 'MyTitle', [ 'P1<script>' => '<ul><li>abc</li></ul>de' ] )
 		);

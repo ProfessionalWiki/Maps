@@ -62,7 +62,7 @@ class LineTest extends BaseElementTest {
 	public function testGetLineCoordinates( Line $line, array $arguments ) {
 		$coordinates = $line->getLineCoordinates();
 
-		$this->assertInternalType( 'array', $coordinates );
+		$this->assertIsArray( $coordinates );
 		$this->assertEquals( count( $arguments[0] ), count( $coordinates ) );
 
 		foreach ( $coordinates as $geoCoordinate ) {
