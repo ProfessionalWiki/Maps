@@ -68,7 +68,6 @@ class MapsSetup {
 
 	private function registerAllTheThings() {
 		$this->registerParserHooks();
-		$this->registerPermissions();
 		$this->registerParameterTypes();
 		$this->registerHooks();
 		$this->registerGeoJsonContentModel();
@@ -79,17 +78,6 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser $parser ) {
 			MapsFactory::globalInstance()->newParserHookSetup( $parser )->registerParserHooks();
 		};
-	}
-
-	private function registerPermissions() {
-		$this->mwGlobals['wgAvailableRights'][] = 'geocode';
-
-		// Users that can geocode. By default the same as those that can edit.
-		foreach ( $this->mwGlobals['wgGroupPermissions'] as $group => $rights ) {
-			if ( array_key_exists( 'edit', $rights ) ) {
-				$this->mwGlobals['wgGroupPermissions'][$group]['geocode'] = $this->mwGlobals['wgGroupPermissions'][$group]['edit'];
-			}
-		}
 	}
 
 	private function registerParameterTypes() {

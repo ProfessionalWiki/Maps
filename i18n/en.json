@@ -6,8 +6,6 @@
 		]
 	},
 	"maps-desc": "Allows embedding of dynamic maps into wiki pages using Google Maps or Leaflet. Has a visual editor, optionally integrates with Semantic MediaWiki, supports GeoJSON and adds geocoding capabilities.",
-	"right-geocode": "Geocode",
-	"action-geocode": "do geocoding on this wiki",
 	"maps_map": "Map",
 	"maps-tracking-category": "Pages with a map rendered by the Maps extension",
 	"maps-loading-map": "Loading map...",

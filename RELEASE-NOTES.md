@@ -9,6 +9,7 @@ Under development
 
 * Dropped support for MediaWiki 1.31, 1.32, 1.33 and 1.34
 * Dropped support for PHP 7.1 and 7.2
+* Removed the `geocode` permission, which has been unused for quite some time already
 * Special:MapEditor is no longer listed in a dedicated section on Special:SpecialPages
 
 ## Maps 7.20.1
