@@ -148,7 +148,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Whether the center of each cluster should be the average of all markers in the cluster.",
 	"maps-googlemaps3-par-clusterminsize": "The minimum number of markers to be in a cluster before the markers are hidden and a count is shown.",
 	"mapeditor": "Map editor",
-	"specialpages-group-maps": "Maps",
 	"mapeditor-parser-error": "An error occurred when parsing metadata. Ignoring user input.",
 	"mapeditor-none-text": "None",
 	"mapeditor-done-button": "Done",
