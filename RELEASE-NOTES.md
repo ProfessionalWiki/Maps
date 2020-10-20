@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 8.0.0
+
+Under development
+
+* Dropped support for MediaWiki 1.31, 1.32, 1.33 and 1.34
+* Dropped support for PHP 7.1 and 7.2
+
 ## Maps 7.20.1
 
 Released on August 6th, 2020.

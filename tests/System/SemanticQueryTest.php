@@ -47,8 +47,6 @@ class SemanticQueryTest extends TestCase {
 	}
 
 	public function testLeafletQueryWithGeoJson() {
-		$this->skipOn131();
-
 		$this->createDataPages();
 
 		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=leaflet|geojson=TestGeoJson}}' );
@@ -57,12 +55,6 @@ class SemanticQueryTest extends TestCase {
 		$this->assertStringContainsString( '"GeoJsonSource":"TestGeoJson"', $content );
 		$this->assertStringContainsString( '"GeoJsonRevisionId":', $content );
 		$this->assertStringContainsString( '"geojson":{"type":"FeatureCollection"', $content );
-	}
-
-	private function skipOn131() {
-		if ( version_compare( $GLOBALS['wgVersion'], '1.32c', '<' ) ) {
-			$this->markTestSkipped();
-		}
 	}
 
 	private function getResultForQuery( string $query ): string {
