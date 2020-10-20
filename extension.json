@@ -63,7 +63,7 @@
 
 		"ext.maps.geojson.new.page": {
 			"dependencies": [
-				"mediawiki.api.edit"
+				"mediawiki.api"
 			],
 			"scripts": [
 				"geojson.new.page.js"
@@ -87,7 +87,7 @@
 
 		"ext.maps.resizable": {
 			"dependencies": [
-				"jquery.ui.resizable"
+				"jquery.ui"
 			],
 			"targets": [ "desktop", "mobile" ]
 		},
@@ -172,7 +172,7 @@
 			"dependencies": [
 				"ext.maps.leaflet.geojson",
 				"ext.maps.leaflet.library",
-				"mediawiki.api.edit",
+				"mediawiki.api",
 				"mediawiki.user",
 				"mediawiki.jqueryMsg",
 				"ext.maps.api",
@@ -308,9 +308,9 @@
 
 		"ext.maps.wikitext.editor": {
 			"dependencies": [
-				"jquery.ui.autocomplete",
-				"jquery.ui.slider",
-				"jquery.ui.dialog"
+				"jquery.ui",
+				"jquery.ui",
+				"jquery.ui"
 			],
 			"scripts": [
 				"WikitextEditor/js/jquery.miniColors.js",
