@@ -4,7 +4,9 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Util;
 
+use CommentStoreComment;
 use Title;
+use User;
 
 /**
  * @licence GNU GPL v2+
@@ -14,12 +16,20 @@ class PageCreator {
 
 	public function createPage( string $title, string $content = null ) {
 		$titleObject = Title::newFromText( $title );
+
+		$this->createPageWithContent(
+			$title,
+			\ContentHandler::makeContent( $content ?? 'Content of ' . $title, $titleObject )
+		);
+	}
+
+	public function createPageWithContent( string $title, \Content $content ) {
+		$titleObject = Title::newFromText( $title );
 		$page = new \WikiPage( $titleObject );
 
-		$page->doEditContent(
-			\ContentHandler::makeContent( $content ?? 'Content of ' . $title, $titleObject ),
-			__CLASS__ . ' creating page ' . $title
-		);
+		$updater = $page->newPageUpdater( User::newSystemUser( 'TestUser' ) );
+		$updater->setContent( 'main', $content );
+		$updater->saveRevision( CommentStoreComment::newUnsavedComment( __CLASS__ . ' creating page ' . $title ) );
 	}
 
 }

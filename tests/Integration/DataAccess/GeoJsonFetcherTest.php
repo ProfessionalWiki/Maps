@@ -12,8 +12,9 @@ use FileFetcher\ThrowingFileFetcher;
 use Maps\DataAccess\GeoJsonFetcher;
 use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\Tests\MapsTestFactory;
+use Maps\Tests\Util\PageCreator;
+use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\TestCase;
-use PHPUnit4And6Compat;
 use Title;
 
 /**
@@ -22,7 +23,6 @@ use Title;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 class GeoJsonFetcherTest extends TestCase {
-	use PHPUnit4And6Compat;
 
 	private const VALID_FILE_JSON = [
 		'type' => 'FeatureCollection',
@@ -46,8 +46,11 @@ class GeoJsonFetcherTest extends TestCase {
 	public function setUp(): void {
 		$this->fileFetcher = new StubFileFetcher( json_encode( self::VALID_FILE_JSON ) );
 
-		$page = new \WikiPage( Title::newFromText( self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX ) );
-		$page->doEditContent( new GeoJsonContent( json_encode( self::VALID_PAGE_JSON ) ), '' );
+		$pageCreator = new PageCreator();
+		$pageCreator->createPageWithContent(
+			self::EXISTING_GEO_JSON_PAGE_WITH_PREFIX,
+			new GeoJsonContent( json_encode( self::VALID_PAGE_JSON ) )
+		);
 	}
 
 	private function newJsonFileParser(): GeoJsonFetcher {

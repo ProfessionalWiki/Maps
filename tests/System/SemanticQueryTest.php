@@ -41,28 +41,20 @@ class SemanticQueryTest extends TestCase {
 
 		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|?Description|?URL|format=map}}' );
 
-		$this->assertContains( '<div id="map_', $content );
-		$this->assertContains( 'Capital of Belgium', $content );
-		$this->assertContains( 'example.com', $content );
+		$this->assertStringContainsString( '<div id="map_', $content );
+		$this->assertStringContainsString( 'Capital of Belgium', $content );
+		$this->assertStringContainsString( 'example.com', $content );
 	}
 
 	public function testLeafletQueryWithGeoJson() {
-		$this->skipOn131();
-
 		$this->createDataPages();
 
 		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=leaflet|geojson=TestGeoJson}}' );
 
-		$this->assertContains( '<div id="map_leaflet_', $content );
-		$this->assertContains( '"GeoJsonSource":"TestGeoJson"', $content );
-		$this->assertContains( '"GeoJsonRevisionId":', $content );
-		$this->assertContains( '"geojson":{"type":"FeatureCollection"', $content );
-	}
-
-	private function skipOn131() {
-		if ( version_compare( $GLOBALS['wgVersion'], '1.32c', '<' ) ) {
-			$this->markTestSkipped();
-		}
+		$this->assertStringContainsString( '<div id="map_leaflet_', $content );
+		$this->assertStringContainsString( '"GeoJsonSource":"TestGeoJson"', $content );
+		$this->assertStringContainsString( '"GeoJsonRevisionId":', $content );
+		$this->assertStringContainsString( '"geojson":{"type":"FeatureCollection"', $content );
 	}
 
 	private function getResultForQuery( string $query ): string {
@@ -117,7 +109,7 @@ class SemanticQueryTest extends TestCase {
 
 		$content = $this->getResultForQuery( '{{#ask:[[Coordinates::+]]|?Coordinates|format=map|template=Whatever}}' );
 
-		$this->assertContains( '<div id="map_', $content );
+		$this->assertStringContainsString( '<div id="map_', $content );
 	}
 
 }

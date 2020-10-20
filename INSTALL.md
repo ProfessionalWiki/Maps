@@ -25,18 +25,18 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status<br>&nbsp;</th>
 	</tr>
 	<tr>
-		<th>7.21.x</th>
-		<td>7.1 - 7.4+</td>
-		<td>1.31 - 1.34+</td>
-		<td>3.1.x</td>
-		<td>Planned Q3 2020</td>
+		<th>8.0.x</th>
+		<td><strong>7.3</strong> - 8.0</td>
+		<td><strong>1.35</strong>+</td>
+		<td><strong>3.2.x</strong></td>
+		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
         <th>7.20.x</th>
         <td>7.1 - 7.4</td>
         <td>1.31 - 1.35</td>
-        <td>3.0 - 3.1</td>
-        <td><strong>Stable release</strong></td>
+        <td>3.0 - 3.2</td>
+        <td>Legacy release, critical fixes only</td>
     </tr>
 	<tr>
 		<th>7.19.x<br>-<br>7.16.x</th>
@@ -78,7 +78,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>7.1 - 7.2</td>
 		<td>1.31 - 1.32</td>
 		<td>2.4 - 3.0</td>
-		<td>Security fixes only</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>6.2.x</th>

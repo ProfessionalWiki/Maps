@@ -6,7 +6,6 @@ namespace Maps\Tests\Unit\LegacyModel;
 
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use PHPUnit4And6Compat;
 
 /**
  * Base class for unit tests classes for the Maps\BaseElement deriving objects.
@@ -17,7 +16,6 @@ use PHPUnit4And6Compat;
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
 abstract class BaseElementTest extends TestCase {
-	use PHPUnit4And6Compat;
 
 	public function invalidConstructorProvider() {
 		return [];

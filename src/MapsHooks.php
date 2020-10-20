@@ -8,6 +8,7 @@ use AlItem;
 use ALTree;
 use Maps\GeoJsonPages\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
+use MediaWiki\MediaWikiServices;
 use SkinTemplate;
 use SMWPrintRequest;
 
@@ -102,7 +103,7 @@ final class MapsHooks {
 
 	private static function shouldShowGeoJsonCreatePageUi( \Article $article ): bool {
 		return $article->getTitle()->getNamespace() === NS_GEO_JSON
-			&& $article->getContext()->getUser()->isAllowed( 'createpage' );
+			&& MediaWikiServices::getInstance()->getPermissionManager()->userHasRight( $article->getContext()->getUser(), 'createpage' );
 	}
 
 	public static function onRegisterTags( array &$tags ) {

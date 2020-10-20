@@ -13,8 +13,8 @@ use PHPUnit\Framework\TestCase;
 class InitializationTest extends TestCase {
 
 	public function testVersionConstantIsDefined() {
-		$this->assertInternalType( 'string', Maps_VERSION );
-		$this->assertInternalType( 'string', SM_VERSION );
+		$this->assertIsString( Maps_VERSION );
+		$this->assertIsString( SM_VERSION );
 		$this->assertSame( Maps_VERSION, SM_VERSION );
 		$this->assertNotEmpty( Maps_VERSION );
 	}
