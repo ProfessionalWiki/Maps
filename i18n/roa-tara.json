@@ -6,7 +6,6 @@
 		]
 	},
 	"maps-desc": "Permette 'u 'ngapsulamende de le mappe dinameche jndr'à le pàggene de Uicchi, ausanne Google Maps o Leaflet. Tìne 'nu editore visuale, indegrate facoltativamende cu MediaUicchi Semandeche, supporte GeoJSON e aggiunge le capacità de geocodece.",
-	"right-geocode": "Geocodece",
 	"maps_map": "Mappe",
 	"maps-loading-map": "Stoche a careche 'a mappe...",
 	"maps-load-failed": "Non ge pozze carecà 'a mappe!",
@@ -37,7 +36,6 @@
 	"maps-latitude": "Latitudine:",
 	"maps-longitude": "Longitudine:",
 	"maps-leaflet-par-layers-dark": "Le strate ca sò disponibbele jndr'à 'u scacchiatore de strate quanne 'a modalità gnure jè abbiltiate. 'U prime strate avène 'ndrucate quanne ste careche 'a mappe.",
-	"specialpages-group-maps": "Mappe",
 	"mapeditor-none-text": "Ninde",
 	"mapeditor-done-button": "Fatte",
 	"mapeditor-remove-button": "Live",

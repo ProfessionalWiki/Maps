@@ -15,7 +15,6 @@
 		]
 	},
 	"maps-desc": "Mahdollistaa dynaamisten karttojen upottamisen wikisivuille, osoitteiden geokoodauksen ja muita karttoihin liittyviä toimintoja",
-	"right-geocode": "Geokoodata",
 	"maps_map": "Kartta",
 	"maps-loading-map": "Ladataan karttaa...",
 	"maps-load-failed": "Karttaa ei voitu ladata.",
@@ -106,7 +105,6 @@
 	"maps-googlemaps3-par-autoinfowindows": "Avaa automaattisesti kaikki tietoikkunat sen jälkeen, kun sivu on ladattu.",
 	"maps-googlemaps3-par-kmlrezoom": "Valitse paras loitonnustaso uudelleen sen jälkeen, kun KML-tasot on ladattu.",
 	"mapeditor": "Kartan muokkausohjelma",
-	"specialpages-group-maps": "Kartat",
 	"mapeditor-parser-error": "Metadatan jäsennys epäonnistui. Käyttäjän antamat tiedot ohitetaan.",
 	"mapeditor-none-text": "Ei mitään",
 	"mapeditor-done-button": "Valmis",

@@ -5,7 +5,6 @@
 			"පසිඳු කාවින්ද"
 		]
 	},
-	"right-geocode": "භූකේතය",
 	"maps_map": "සිතියම",
 	"maps-loading-map": "සිතියම පුරණය වෙමින් පවතී...",
 	"maps-load-failed": "සිතියම පූරණය කල නොහැක!",
@@ -64,7 +63,6 @@
 	"maps-googlemaps3-par-typestyle": "වර්ග පාලකයේ ශෛලිය.",
 	"maps-googlemaps3-par-poi": "අභිරුචි ලක්ෂ්‍ය පෙන්වන්න.",
 	"mapeditor": "සිතියම් සංස්කාරක",
-	"specialpages-group-maps": "සිතියම්",
 	"mapeditor-none-text": "කිසිවක් නොමැත",
 	"mapeditor-done-button": "හරි",
 	"mapeditor-remove-button": "ඉවත් කරන්න",

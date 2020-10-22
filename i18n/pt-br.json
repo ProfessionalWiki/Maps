@@ -14,8 +14,6 @@
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki usando o Google Maps ou o Leaflet.  Possui um editor visual, que se integra opcionalmente ao Semantic MediaWiki, suporta GeoJSON e adiciona recursos de geocodificação.",
-	"right-geocode": "Geocodificar",
-	"action-geocode": "fazer geocodificação nesta wiki",
 	"maps_map": "Mapa",
 	"maps-tracking-category": "Páginas com um mapa composto pela extensão Maps",
 	"maps-loading-map": "Carregando mapa...",
@@ -155,7 +153,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Indica se o centro de cada agregado deve ser o baricentro de todos os marcadores desse agregado.",
 	"maps-googlemaps3-par-clusterminsize": "O número mínimo de marcadores num agregado antes que os marcadores sejam ocultados e seja mostrada uma contagem.",
 	"mapeditor": "Editor de mapas",
-	"specialpages-group-maps": "Mapas",
 	"mapeditor-parser-error": "Ocorreu um erro durante a análise de metadados. A entrada de utilizador será ignorada.",
 	"mapeditor-none-text": "Nenhum",
 	"mapeditor-done-button": "Feito",

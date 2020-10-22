@@ -20,8 +20,6 @@
 		]
 	},
 	"maps-desc": "允许嵌入动态地图到wiki页面，将地址转换为地理编码，及进行其他地理学操作",
-	"right-geocode": "地理编码",
-	"action-geocode": "在此wiki进行地理编码",
 	"maps_map": "地图",
 	"maps-tracking-category": "有由地图扩展描绘地图的页面",
 	"maps-loading-map": "正在载入地图...",
@@ -158,7 +156,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "每个集群的中心是否应为集群中所有标记的平均值。",
 	"maps-googlemaps3-par-clusterminsize": "在标记被隐藏并且显示计数时，集群中标记的最小值。",
 	"mapeditor": "地图编辑器",
-	"specialpages-group-maps": "地图",
 	"mapeditor-parser-error": "解析元数据时出错。忽略用户输入。",
 	"mapeditor-none-text": "无",
 	"mapeditor-done-button": "完成",

@@ -4,7 +4,6 @@
 			"ChrisPtDe"
 		]
 	},
-	"right-geocode": "G·eocode",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Chargement de la mapa...",
 	"maps-load-failed": "Empossiblo de chargiér la mapa !",
@@ -41,7 +40,6 @@
 	"maps_centred_on": "Mapa centrâ dessus $1, $2.",
 	"maps-googlemaps3-par-poi": "Montrar los pouents d’entèrèt.",
 	"mapeditor": "Changior de mapa",
-	"specialpages-group-maps": "Mapes",
 	"mapeditor-none-text": "Nion",
 	"mapeditor-done-button": "Fêt",
 	"mapeditor-remove-button": "Enlevar",

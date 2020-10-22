@@ -9,8 +9,6 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"right-geocode": "জিওকোড",
-	"action-geocode": "এই উইকিতে জিওকোডিং করুন",
 	"maps_map": "মানচিত্র",
 	"maps-loading-map": "মানচিত্র লোড করা হচ্ছে...",
 	"maps-load-failed": "মানচিত্র লোড করা সম্ভব হয়নি!",
@@ -64,7 +62,6 @@
 	"maps_centred_on": "মানচিত্র $1, $2-এ কেন্দ্রীভূত।",
 	"maps-googlemaps3-par-poi": "আগ্রহের বিষয়সমূহ দেখাও।",
 	"mapeditor": "মানচিত্র সম্পাদক",
-	"specialpages-group-maps": "মানচিত্র",
 	"mapeditor-parser-error": "মেটাডেটা বিশ্লেষণ করার সময় একটি ত্রুটি ঘটেছে। ব্যবহারকারীর ইনপুট উপেক্ষা করা হয়েছে।",
 	"mapeditor-none-text": "কিছু নয়",
 	"mapeditor-done-button": "সম্পন্ন",

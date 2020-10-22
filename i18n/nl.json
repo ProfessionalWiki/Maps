@@ -16,8 +16,6 @@
 		]
 	},
 	"maps-desc": "Maakt het insluiten van dynamische kaarten in de wikipagina's, het geocoderen van adressen en andere geografische activiteiten mogelijk",
-	"right-geocode": "Geocoderen",
-	"action-geocode": "doe geocoding op deze wiki",
 	"maps_map": "Kaart",
 	"maps-tracking-category": "Pagina's met een kaart die gerenderd is door de uitbreiding Maps",
 	"maps-loading-map": "Bezig met het laden van de kaart...",
@@ -142,7 +140,6 @@
 	"maps-googlemaps3-par-poi": "Interessante plaatsen weergeven.",
 	"maps-par-clustermaxzoom": "Het maximale zoomniveau waar clusters kunnen bestaan.",
 	"mapeditor": "Kaarteditor",
-	"specialpages-group-maps": "Kaarten",
 	"mapeditor-parser-error": "Er is een fout opgetreden tijdens het verwerken van metagegevens. De gebruikersinvoer wordt genegeerd.",
 	"mapeditor-none-text": "Geen",
 	"mapeditor-done-button": "Afgerond",

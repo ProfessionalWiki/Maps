@@ -12,7 +12,6 @@
 		]
 	},
 	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket",
-	"right-geocode": "geokód",
 	"maps_map": "Térkép",
 	"maps-loading-map": "Térkép betöltése…",
 	"maps-load-failed": "Nem sikerült betölteni a térképet!",
@@ -56,7 +55,6 @@
 	"maps-googlemaps3-par-type": "Elsőre megjelenítendő térkép típusa.",
 	"maps-googlemaps3-par-zoomstyle": "A nagyítás irányításának stílusa.",
 	"mapeditor": "Térkép szerkesztő",
-	"specialpages-group-maps": "Térképek",
 	"mapeditor-none-text": "Nincs",
 	"mapeditor-done-button": "Kész",
 	"mapeditor-remove-button": "Eltávolítás",

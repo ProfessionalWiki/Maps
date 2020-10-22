@@ -9,8 +9,6 @@
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinámicos, enderezos xeocodificados e outras operacións xeográficas nas páxinas do wiki",
-	"right-geocode": "Xeocodificar",
-	"action-geocode": "xeocodificar neste wiki",
 	"maps_map": "Mapa",
 	"maps-tracking-category": "Páxinas cun mapa renderizado coa extensión Maps",
 	"maps-loading-map": "Cargando o mapa...",
@@ -141,7 +139,6 @@
 	"maps-googlemaps3-par-clustergridsize": "A medida da reixa dun grupo de píxeles.",
 	"maps-googlemaps3-par-clusterminsize": "O número mínimo de marcadores que están nun grupo antes de que se oculten os marcadores e se amose un contador.",
 	"mapeditor": "Editor de mapa",
-	"specialpages-group-maps": "Mapas",
 	"mapeditor-parser-error": "Houbo un erro ao analizar os metadatos. Ignórase a entrada do usuario.",
 	"mapeditor-none-text": "Ningún",
 	"mapeditor-done-button": "Feito",

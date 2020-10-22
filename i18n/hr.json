@@ -8,8 +8,6 @@
 		]
 	},
 	"maps-desc": "Omogućava uključivanje dinamičkih zemljovida u wikistranice, geokodiranje adresa i druge zemljopisne operacije",
-	"right-geocode": "Geokodiranje",
-	"action-geocode": "izvršavanje geokodiranja na ovom wikiju",
 	"maps_map": "Zemljovid",
 	"maps-tracking-category": "Stranica sa zemljovidom iscrtanim pomoću proširenja Zemljovidi (''Maps'')",
 	"maps-loading-map": "Učitavam zemljovid...",
@@ -53,7 +51,6 @@
 	"maps-googlemaps3-par-layers": "Posebni slojevi za učitavanje na zemljovid.",
 	"maps-googlemaps3-par-poi": "Pokazuje točke koje Vas zanimaju.",
 	"mapeditor": "Uređivač zemljovida",
-	"specialpages-group-maps": "Zemljovidi",
 	"mapeditor-none-text": "Nema",
 	"mapeditor-done-button": "Gotovo",
 	"mapeditor-remove-button": "Ukloni",

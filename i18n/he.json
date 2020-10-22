@@ -17,8 +17,6 @@
 		]
 	},
 	"maps-desc": "הוספת האפשרות להטמעת מפות דינמיות אל תוך דפי ויקי, קידוד גאוגרפי של כתובות ופעולות גאוגרפיות אחרות",
-	"right-geocode": "ביצוע קידודים גאוגרפיים",
-	"action-geocode": "לבצע קידודים גאוגרפיים באתר הוויקי הזה",
 	"maps_map": "מפה",
 	"maps-tracking-category": "דפים עם מפה שהוכנה באמצעות הרחבת המפות",
 	"maps-loading-map": "המפה נטענת...",
@@ -148,7 +146,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "האם המרכז של כל אשכול אמור להיות הממוצע של כל הסמנים באשכול.",
 	"maps-googlemaps3-par-clusterminsize": "המספר המזערי של הסמנים שאמורים להיות באשכול לפני שהסמנים מוסתרים ומוצג מונה.",
 	"mapeditor": "עורך מפות",
-	"specialpages-group-maps": "מפות",
 	"mapeditor-parser-error": "אירעה שגיאה בעת עיבוד מטא־נתונים. קלט ממשתמשים לא יעובד.",
 	"mapeditor-none-text": "אין",
 	"mapeditor-done-button": "בוצע",

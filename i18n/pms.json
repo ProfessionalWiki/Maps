@@ -9,7 +9,6 @@
 		]
 	},
 	"maps-desc": "A abìlita l'anseriment dle carte dinàmiche ant le pàgine ëd la wiki, dj'adrësse geocodificà e d'àutre operassion geogràfiche",
-	"right-geocode": "Geocodìfica",
 	"maps_map": "Pian",
 	"maps-loading-map": "Cariament ëd la carta...",
 	"maps-load-failed": "As peul pa cariesse la carta!",
@@ -114,7 +113,6 @@
 	"maps-googlemaps3-par-kmlrezoom": "Angrandì torna la carta na vira che ij seuj KML a son stàit carià.",
 	"maps-googlemaps3-par-poi": "Smon-e ij pont d'anteresse.",
 	"mapeditor": "Editor ëd carta",
-	"specialpages-group-maps": "Carte",
 	"mapeditor-parser-error": "A l'é capitaje n'eror an analisand dij metadat. Ignorà l'anseriment ëd l'utent.",
 	"mapeditor-none-text": "Gnun",
 	"mapeditor-done-button": "Fàit",

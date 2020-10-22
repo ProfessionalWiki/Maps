@@ -10,7 +10,6 @@
 		]
 	},
 	"maps-desc": "Дае магчымасьць убудаваньня дынамічных мапаў у вікі-старонкі з дапамогай Google Maps або Leaflet. Мае візуальны рэдактар, пры патрэбе інтэгруецца з Сэмантычнай MediaWiki, падтрымлівае GeoJSON і дадае геакадавальныя можнасьці.",
-	"right-geocode": "геаграфічнае кадаваньне",
 	"maps_map": "Мапа",
 	"maps-loading-map": "Загрузка мапы…",
 	"maps-load-failed": "Немагчыма загрузіць мапу!",
@@ -103,7 +102,6 @@
 	"maps-googlemaps3-par-kmlrezoom": "Зьмяняць маштаб мапы пасьля загрузкі KML-слаёў.",
 	"maps-googlemaps3-par-poi": "Паказаць выбітныя мясьціны.",
 	"mapeditor": "Рэдактар мап",
-	"specialpages-group-maps": "Мапы",
 	"mapeditor-parser-error": "У час разбору мэтазьвестак адбылася памылка. Ігнаруем уведзеныя зьвесткі.",
 	"mapeditor-none-text": "Нічога",
 	"mapeditor-done-button": "Зроблена",

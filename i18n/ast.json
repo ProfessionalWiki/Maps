@@ -6,8 +6,6 @@
 		]
 	},
 	"maps-desc": "Permite inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques",
-	"right-geocode": "Xeocódigu",
-	"action-geocode": "xeocodificar nesta wiki",
 	"maps_map": "Mapa",
 	"maps-tracking-category": "Páxines con un mapa renderizáu pola estensión Maps",
 	"maps-loading-map": "Cargando'l mapa...",
@@ -146,7 +144,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Si'l centru de cada grupu tien de ser la media de tolos marcadores del grupu.",
 	"maps-googlemaps3-par-clusterminsize": "El númberu mínimu de marcadores que tán nun grupu primero que se despinten los marcadores y s'amuese un recuentu.",
 	"mapeditor": "Editor de mapes",
-	"specialpages-group-maps": "Mapes",
 	"mapeditor-parser-error": "Hebo un error al analizar los metadatos. Inorando la entrada d'usuariu.",
 	"mapeditor-none-text": "Dengún",
 	"mapeditor-done-button": "Fecho",

@@ -18,8 +18,6 @@
 		]
 	},
 	"maps-desc": "{{desc|name=Maps|url=https://www.semantic-mediawiki.org/wiki/Extension:Maps}}",
-	"right-geocode": "{{doc-right|geocode}}",
-	"action-geocode": "{{doc-action|geocode}}",
 	"maps_map": "{{Identical|Map}}",
 	"maps-tracking-category": "The name of a category for all pages which use the <code><nowiki>#display_map</nowiki></code> parser function or <code><nowiki>display_map</nowiki></code> tag.",
 	"maps-loading-map": "This is an informatory message.",
@@ -157,7 +155,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "{{maps-par|googlemaps3|clusteraveragecenter}}",
 	"maps-googlemaps3-par-clusterminsize": "{{maps-par|googlemaps3|clusterminsize}}",
 	"mapeditor": "{{doc-special-group|like=[[Special:MapEditor]]}}",
-	"specialpages-group-maps": "{{doc-special-group|like=[[Special:MapEditor]]}}\n\n{{Identical|Map}}",
 	"mapeditor-parser-error": "This is an error message.",
 	"mapeditor-none-text": "This is an informatory message.\n\n{{Identical|None}}",
 	"mapeditor-done-button": "This is the text on a button.",

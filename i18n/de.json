@@ -13,8 +13,6 @@
 		]
 	},
 	"maps-desc": "Ermöglicht das Einbinden dynamischer Karten, die Georeferenzierung von Adressen und andere geographische Operationen",
-	"right-geocode": "Georeferenzieren",
-	"action-geocode": "Georeferenzierungen auf diesem Wiki auszuführen",
 	"maps_map": "Karte",
 	"maps-tracking-category": "Seiten mit einer von der Maps-Erweiterung gerenderten Karte",
 	"maps-loading-map": "Die Karte wird geladen …",
@@ -152,7 +150,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Ob die Mitte jedes Clusters der Durchschnitt aller Markierungen des Clusters sein soll",
 	"maps-googlemaps3-par-clusterminsize": "Die Mindestzahl der Markierungen, die ein Cluster enthalten soll, bevor die Markierungen versteckt werden und ein Zähler angezeigt wird",
 	"mapeditor": "Karteneditor",
-	"specialpages-group-maps": "Karten",
 	"mapeditor-parser-error": "Ein Fehler ist beim Parsen der Metadaten aufgetreten. Ignoriere Benutzereingaben.",
 	"mapeditor-none-text": "Keine",
 	"mapeditor-done-button": "Fertig",

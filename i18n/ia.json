@@ -6,8 +6,6 @@
 		]
 	},
 	"maps-desc": "Permitte le incorporation de cartas dynamic in paginas wiki usante Google Maps o Leaflet. Ha un editor visual, pote esser integrate con Semantic MediaWiki, supporta GeoJSON e adde capacitates de geocodification.",
-	"right-geocode": "Geocodificar",
-	"action-geocode": "facer geocodification sur iste wiki",
 	"maps_map": "Carta",
 	"maps-tracking-category": "Paginas con un carta generate per le extension Maps",
 	"maps-loading-map": "Cargamento del carta…",
@@ -104,7 +102,6 @@
 	"maps-googlemaps3-par-kmlrezoom": "Rezoomar le carta post le cargamento del stratos KML.",
 	"maps-googlemaps3-par-poi": "Monstrar punctos de interesse.",
 	"mapeditor": "Editor cartographic",
-	"specialpages-group-maps": "Cartas",
 	"mapeditor-parser-error": "Un error occurreva durante le processamento del metadatos. Le entrata del usator es ignorate.",
 	"mapeditor-none-text": "Nulle",
 	"mapeditor-done-button": "Facite",

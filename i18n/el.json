@@ -12,8 +12,6 @@
 		]
 	},
 	"maps-desc": "Επιτρέπει την ενσωμάτωση δυναμικών χαρτών σε σελίδες wiki χρησιμοποιώντας Χάρτες Google ή Leaflet. Έχει οπτικό επεξεργαστή, προαιρετικά αλληλοσυνδέεται με το Σημασιολογικό MediaWiki, υποστηρίζει GeoJSON και προσθέτει λειτουργίες γεωκωδικοποίησης.",
-	"right-geocode": "Γεωκωδικοποίηση",
-	"action-geocode": "κάνετε γεωκωδικοποίηση σε αυτό το wiki",
 	"maps_map": "Χάρτης",
 	"maps-loading-map": "Φόρτωση χάρτη...",
 	"maps-load-failed": "Δεν ήταν δυνατή η φόρτωση του χάρτη!",
@@ -106,7 +104,6 @@
 	"maps-googlemaps3-par-gkml": "Αρχεία KML που φιλοξενούνται στη Google για φόρτωση στο χάρτη.",
 	"maps-googlemaps3-par-poi": "Εμφάνιση σημείων ενδιαφέροντος.",
 	"mapeditor": "Πρόγραμμα επεξεργασίας χαρτών",
-	"specialpages-group-maps": "Χάρτες",
 	"mapeditor-none-text": "Κανένα",
 	"mapeditor-done-button": "Ολοκληρώθηκε",
 	"mapeditor-remove-button": "Αφαίρεση",

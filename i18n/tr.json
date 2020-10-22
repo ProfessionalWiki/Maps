@@ -16,8 +16,6 @@
 		]
 	},
 	"maps-desc": "Google Haritalar veya Broşür kullanarak dinamik haritaların wiki sayfalarına yerleştirilmesine izin verir. İsteğe bağlı Semantic MediaWiki ile entegre olan görsel bir editöre sahiptir, GeoJSON'u destekler ve coğrafi kodlama yetenekleri ekler.",
-	"right-geocode": "Coğrafi kod",
-	"action-geocode": "bu vikide coğrafi kodlama yap",
 	"maps_map": "Harita",
 	"maps-tracking-category": "Haritaları uzantısıyla oluşturulan sayfalar",
 	"maps-loading-map": "Harita yükleniyor...",
@@ -157,7 +155,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Her kümenin merkezinin kümedeki tüm işaretçilerin ortalaması olup olmadığı.",
 	"maps-googlemaps3-par-clusterminsize": "İşaretçiler gizlenmeden ve bir sayı gösterilmeden önce kümede yer alacak minimum işaretçi sayısı.",
 	"mapeditor": "Harita düzenleyici",
-	"specialpages-group-maps": "Haritalar",
 	"mapeditor-parser-error": "Metaveri ayrıştırılırken bir hata oluştu. Kullanıcı girişi yok sayılıyor.",
 	"mapeditor-none-text": "Hiçbiri",
 	"mapeditor-done-button": "Yapıldı",

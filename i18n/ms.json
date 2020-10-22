@@ -9,7 +9,6 @@
 		]
 	},
 	"maps-desc": "Membolehkan pembenaman peta dinamik ke halaman wiki menggunakan Google Maps atau Leaflet. Mempunyai editor visual, secara serentak digabungkan dengan Semantic MediaWiki, menyokong GeoJSON dan menambah keupayaan geokod.",
-	"right-geocode": "Geokod",
 	"maps_map": "Peta",
 	"maps-loading-map": "Peta sedang dimuatkan...",
 	"maps-load-failed": "Peta tidak dapat dimuatkan!",
@@ -117,7 +116,6 @@
 	"maps-googlemaps3-par-kmlrezoom": "Zumkan semula peta selepas lapisan-lapisan KML dimuatkan.",
 	"maps-googlemaps3-par-poi": "Tunjukkan tempat-tempat menarik.",
 	"mapeditor": "Editor peta",
-	"specialpages-group-maps": "Peta",
 	"mapeditor-parser-error": "Timbulnya ralat ketika menghuraikan metadata. Input pengguna diabaikan.",
 	"mapeditor-none-text": "Tiada",
 	"mapeditor-done-button": "Siap",

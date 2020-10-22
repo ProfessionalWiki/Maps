@@ -33,8 +33,6 @@
 		]
 	},
 	"maps-desc": "Habilita la inserción de mapas dinámicos en páginas wikis, la geocodificación de direcciones y otras operaciones geográficas",
-	"right-geocode": "Geocodificar",
-	"action-geocode": "hacer geocodificación en este wiki",
 	"maps_map": "Mapa",
 	"maps-tracking-category": "Páginas con un mapa de la extensión Maps",
 	"maps-loading-map": "Cargando el mapa…",
@@ -163,7 +161,6 @@
 	"maps-googlemaps3-par-clustergridsize": "La medida de la cuadrícula de una agrupación en píxeles.",
 	"maps-googlemaps3-par-clusterminsize": "El número mínimo de marcadores que están en una agrupación antes de que los marcadores se oculten y aparezca un recuento.",
 	"mapeditor": "Editor de mapas",
-	"specialpages-group-maps": "Mapas",
 	"mapeditor-parser-error": "Se ha producido un error al analizar los metadatos. Ignorando la entrada del usuario.",
 	"mapeditor-none-text": "Ninguno",
 	"mapeditor-done-button": "Hecho",

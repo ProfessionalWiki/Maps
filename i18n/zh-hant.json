@@ -18,8 +18,6 @@
 		]
 	},
 	"maps-desc": "允許使用 Google 地圖或 Leaflet 讓 Wiki 頁面嵌入動態地圖。具備視覺化編輯器，且可選擇與 Semantic MediaWiki 整合，並支援 GeoJSON 地理編碼功能。",
-	"right-geocode": "地理編碼",
-	"action-geocode": "在此 wiki 上進行地理編碼",
 	"maps_map": "地圖",
 	"maps-tracking-category": "使用地圖擴充套件顯示地圖的頁面",
 	"maps-loading-map": "讀取地圖中...",
@@ -159,7 +157,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "任一叢集中心是否應為該叢集裡所有標記的平均值。",
 	"maps-googlemaps3-par-clusterminsize": "在標記被隱藏以及計數顯示之前，於叢集裡的標記最小值。",
 	"mapeditor": "地圖編輯器",
-	"specialpages-group-maps": "地圖",
 	"mapeditor-parser-error": "分析詮釋資料錯誤，忽略使用者輸入。",
 	"mapeditor-none-text": "無",
 	"mapeditor-done-button": "完成",

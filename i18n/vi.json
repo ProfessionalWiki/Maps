@@ -11,7 +11,6 @@
 		]
 	},
 	"maps-desc": "Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác",
-	"right-geocode": "Mã hóa địa lý",
 	"maps_map": "Bản đồ",
 	"maps-loading-map": "Đang tải bản đồ…",
 	"maps-load-failed": "Không thể tải bản đồ!",
@@ -64,7 +63,6 @@
 	"maps_click_to_activate": "Nhấn chuột vào bản đồ để kích hoạt",
 	"maps_centred_on": "Bản đồ với trung tậm tại $1, $2.",
 	"mapeditor": "Sửa đổi bản đồ",
-	"specialpages-group-maps": "Bản đồ",
 	"mapeditor-none-text": "Không có",
 	"mapeditor-done-button": "Lưu",
 	"mapeditor-remove-button": "Dời",

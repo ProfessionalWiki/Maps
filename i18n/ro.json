@@ -9,7 +9,6 @@
 		]
 	},
 	"maps-desc": "Permite încorporarea hărților dinamice în paginile wiki, precum și geocodificarea adreselor ori efectuarea altor operațiuni de ordin geografic",
-	"right-geocode": "Geocod",
 	"maps_map": "Hartă",
 	"maps-loading-map": "Se încarcă harta...",
 	"maps-load-failed": "Imposibil de încărcat harta!",
@@ -57,7 +56,6 @@
 	"maps_click_to_activate": "Apăsați pentru a activa harta",
 	"maps_centred_on": "Hartă centrată la $1, $2.",
 	"mapeditor": "Editor de hărți",
-	"specialpages-group-maps": "Hărți",
 	"mapeditor-none-text": "Nimic",
 	"mapeditor-done-button": "Realizat",
 	"mapeditor-remove-button": "Elimină",

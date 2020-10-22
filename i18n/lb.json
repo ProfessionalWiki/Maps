@@ -7,8 +7,6 @@
 		]
 	},
 	"maps-desc": "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen",
-	"right-geocode": "Geocode",
-	"action-geocode": "Geocoding op dëser Wiki maachen",
 	"maps_map": "Kaart",
 	"maps-loading-map": "D'Kaart gëtt gelueden…",
 	"maps-load-failed": "D'Kaart konnt net geluede ginn!",
@@ -76,7 +74,6 @@
 	"maps-googlemaps3-par-type": "Den Typ vu Kaart den am Ufank gewise gëtt.",
 	"maps-googlemaps3-par-autoinfowindows": "Automatesch all Fënstere mat Informatiounen opmaachen nodeem d'Säit geluede gouf.",
 	"maps-googlemaps3-par-poi": "Kuckeswäertes weisen",
-	"specialpages-group-maps": "Kaarten",
 	"mapeditor-none-text": "Keen",
 	"mapeditor-done-button": "Fäerdeg",
 	"mapeditor-remove-button": "Ewechhuelen",

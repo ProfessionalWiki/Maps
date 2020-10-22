@@ -17,7 +17,6 @@
 		]
 	},
 	"maps-desc": "Consente di includere mappe dinamiche nelle pagine wiki utilizzando Google Maps o Leaflet. Ha un editor visuale, eventualmente integrato con Semantic MediaWiki, supporta GeoJSON e aggiunge funzionalità di geocodifica.",
-	"right-geocode": "Effettua la geocodifica",
 	"maps_map": "Mappa",
 	"maps-loading-map": "Caricamento mappa ...",
 	"maps-load-failed": "Impossibile caricare la mappa!",
@@ -92,7 +91,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Se il centro di ogni cluster dovrebbe essere la media di tutti i marcatori del cluster.",
 	"maps-googlemaps3-par-clusterminsize": "Il numero minimo di marcatori presenti in un cluster dopo il quale tutti i marcatori saranno nascosti e sarà mostrato il loro numero.",
 	"mapeditor": "Editor della mappa",
-	"specialpages-group-maps": "Mappe",
 	"mapeditor-parser-error": "Si verificato un errore durante l'analisi dei metadati. Ignorato l'input dell'utente.",
 	"mapeditor-none-text": "Nessuno",
 	"mapeditor-done-button": "Fatto",

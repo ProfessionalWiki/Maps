@@ -6,7 +6,6 @@
 		]
 	},
 	"maps-desc": "Nagpapagana ng pagbabaon ng gumagalaw na mga mapa papaloob sa mga pahina ng wiki, pagkokodigong pangheograpiya ng mga tirahan at ibang mga gawaing pangheograpiya. ([http://mapping.referata.com/wiki/Examples mga pagpapatunghay])\n\nkakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga triahan ([http://mapping.referata.com/wiki/Maps_examples mga pagpapatunghay])",
-	"right-geocode": "Kodigong pangheograpiya",
 	"maps_map": "Mapa",
 	"maps-loading-map": "Ikinakarga ang mapa...",
 	"maps-load-failed": "Hindi maikarga ang mapa!",
@@ -100,7 +99,6 @@
 	"maps-googlemaps3-par-kmlrezoom": "Muling ilapit ang mapa pagkaraang maikarga na ang mga patong ng Wika ng Pangmarka ng Butas ng Susian (Keyhole Markup Language, KML).",
 	"maps-googlemaps3-par-poi": "Ipakita ang mga tuldok na mapagtutuunan ng pansin.",
 	"mapeditor": "Patnugot ng mapa",
-	"specialpages-group-maps": "Mga mapa",
 	"mapeditor-parser-error": "Naganap ang isang kamalian noong binabanghay ang metadato. Hindi papansinin ang ipinasok ng tagagamit.",
 	"mapeditor-none-text": "Wala",
 	"mapeditor-done-button": "Nagawa na",

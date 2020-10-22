@@ -15,8 +15,6 @@
 		]
 	},
 	"maps-desc": "Ger möjlighet att bädda in dynamiska kartor i wiki-sidor, geokoding av adresser och andra geografiska åtgärder",
-	"right-geocode": "Geokod",
-	"action-geocode": "utför geokoding på denna wiki",
 	"maps_map": "Karta",
 	"maps-tracking-category": "Sidor med en karta som renderats med Karttillägget",
 	"maps-loading-map": "Laddar karta ...",
@@ -154,7 +152,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Om centrum för varje kluster bör vara medelvärdet för alla markörer i klustret.",
 	"maps-googlemaps3-par-clusterminsize": "Det minimala antalet markörer i ett kluster innan markörerna döljs och ett sifferantal visas.",
 	"mapeditor": "Kartredigerare",
-	"specialpages-group-maps": "Kartor",
 	"mapeditor-parser-error": "Ett fel uppstod när metadata tolkades. Ignorerar data från användaren.",
 	"mapeditor-none-text": "Ingen",
 	"mapeditor-done-button": "Klar",

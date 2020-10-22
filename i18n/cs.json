@@ -8,7 +8,6 @@
 			"XenoPheX"
 		]
 	},
-	"right-geocode": "Geokódování",
 	"maps_map": "Mapa",
 	"maps-markers": "Značky",
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
@@ -45,7 +44,6 @@
 	"maps_click_to_activate": "Mapu aktivujete kliknutím",
 	"maps-googlemaps3-par-poi": "Zobrazit body zájmu.",
 	"mapeditor": "Editor map",
-	"specialpages-group-maps": "Mapy",
 	"mapeditor-none-text": "Nic",
 	"mapeditor-done-button": "Hotovo",
 	"mapeditor-remove-button": "Odstranit",

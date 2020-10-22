@@ -28,8 +28,6 @@
 		]
 	},
 	"maps-desc": "Permet l'incorporation de cartes dynamiques dans les pages du wiki en utilisant Google Maps ou Leaflet. Comprend un éditeur visuel, s’intègre facultativement à MediaWiki Sémantique, prend en charge GeoJSON et ajoute des possibilités de géocodage.",
-	"right-geocode": "Géocoder",
-	"action-geocode": "géocoder sur ce wiki",
 	"maps_map": "Carte",
 	"maps-tracking-category": "Pages avec une carte rendue par l’extension Maps",
 	"maps-loading-map": "Chargement de la carte...",
@@ -169,7 +167,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Si le centre de chaque agrégat est le barycentre des marqueurs dans l’agrégat.",
 	"maps-googlemaps3-par-clusterminsize": "Le nombre minimum de marqueurs dans un agrégat avant que les marqueurs ne soient cachés et qu’un compteur ne les remplace.",
 	"mapeditor": "Éditeur de carte",
-	"specialpages-group-maps": "Cartes",
 	"mapeditor-parser-error": "Une erreur s’est produite lors de l’analyse des métadonnées. Entrées de l’utilisateur ignorées.",
 	"mapeditor-none-text": "Aucun",
 	"mapeditor-done-button": "Terminé",

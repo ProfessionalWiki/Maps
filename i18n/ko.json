@@ -12,7 +12,6 @@
 		]
 	},
 	"maps-desc": "위키 문서에 동적 지도를 넣고, 주소의 좌표화와 다른 지리적 작업을 할 수 있습니다",
-	"right-geocode": "좌표화",
 	"maps_map": "지도",
 	"maps-tracking-category": "지도를 지도 확장 기능으로 표시하는 문서",
 	"maps-loading-map": "지도를 불러오는 중...",
@@ -136,7 +135,6 @@
 	"maps-googlemaps3-par-kmlrezoom": "KML 레이어를 불러오고 나서 지도를 다시 확대합니다.",
 	"maps-googlemaps3-par-poi": "관심 지점을 보여줍니다.",
 	"mapeditor": "지도 편집기",
-	"specialpages-group-maps": "지도",
 	"mapeditor-parser-error": "메타데이터를 구문 분석하는 동안 오류가 발생했습니다. 사용자 입력을 무시합니다.",
 	"mapeditor-none-text": "없음",
 	"mapeditor-done-button": "완료",

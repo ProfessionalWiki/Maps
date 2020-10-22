@@ -11,8 +11,6 @@
 		]
 	},
 	"maps-desc": "Gjør det mulig å bygge inn dynamiske kart i wikisider med Google Maps eller Leaflet. Har visuell redigering, kan integreres med Semantic MediaWiki, støtter GeoJSON og legger til geokodingsmuligheter.",
-	"right-geocode": "Geokode",
-	"action-geocode": "utføre geokoding på denne wikien",
 	"maps_map": "Kart",
 	"maps-tracking-category": "Sider med kart som vises med kartutvidelsen",
 	"maps-loading-map": "Laster kart...",
@@ -152,7 +150,6 @@
 	"maps-googlemaps3-par-clusteraveragecenter": "Angir at sentrum for alle kluster bør være middelposisjonen av alle markører i klustret.",
 	"maps-googlemaps3-par-clusterminsize": "Minimalt antall markører i et kluster før markørene skjules og kun antallet vises.",
 	"mapeditor": "Kart tegner",
-	"specialpages-group-maps": "Kart",
 	"mapeditor-parser-error": "En feil oppstod under parsing av data.",
 	"mapeditor-none-text": "Ingen",
 	"mapeditor-done-button": "Ferdig",
