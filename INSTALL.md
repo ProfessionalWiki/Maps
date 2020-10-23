@@ -28,14 +28,14 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>8.0.x</th>
 		<td><strong>7.3</strong> - 8.0</td>
 		<td><strong>1.35</strong>+</td>
-		<td><strong>3.2.x</strong></td>
+		<td><strong>3.2</strong> - 4.0</td>
 		<td><strong>Stable release</strong></td>
 	</tr>
 	<tr>
         <th>7.20.x</th>
         <td>7.1 - 7.4</td>
         <td>1.31 - 1.35</td>
-        <td>3.0 - 3.2</td>
+        <td>3.0 - 4.0</td>
         <td>Legacy release, critical fixes only</td>
     </tr>
 	<tr>
