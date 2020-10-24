@@ -101,11 +101,11 @@ Beware that due to technical debt, some tests access the network.
 
 ## Links
 
+* [Maps documentation wiki](https://maps.extension.wiki)
 * [Maps on OpenHub](https://www.openhub.net/p/maps/)
 * [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)
 * [Maps on WikiApiary](https://wikiapiary.com/wiki/Extension:Maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
-* [TravisCI build status](https://travis-ci.org/JeroenDeDauw/Maps)
 
 [Leaflet maps]: https://maps.extension.wiki/wiki/Displaying_Leaflet_maps
 [Google Maps]: https://maps.extension.wiki/wiki/Displaying_Google_Maps
