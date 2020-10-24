@@ -106,6 +106,7 @@ Beware that due to technical debt, some tests access the network.
 * [Maps on Packagist](https://packagist.org/packages/mediawiki/maps)
 * [Maps on WikiApiary](https://wikiapiary.com/wiki/Extension:Maps)
 * [Maps on MediaWiki.org](https://www.mediawiki.org/wiki/Extension:Maps)
+* [Sponsor Maps development](https://github.com/sponsors/JeroenDeDauw)
 
 [Leaflet maps]: https://maps.extension.wiki/wiki/Displaying_Leaflet_maps
 [Google Maps]: https://maps.extension.wiki/wiki/Displaying_Google_Maps
