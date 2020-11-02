@@ -25,8 +25,7 @@ class GoogleMapsService implements MappingService {
 		'satellite' => 'SATELLITE',
 		'hybrid' => 'HYBRID',
 		'terrain' => 'TERRAIN',
-		'physical' => 'TERRAIN',
-		'earth' => 'earth'
+		'physical' => 'TERRAIN'
 	];
 
 	private const TYPE_CONTROL_STYLES = [

@@ -9,8 +9,9 @@ Under development
 
 * Dropped support for MediaWiki 1.31, 1.32, 1.33 and 1.34
 * Dropped support for PHP 7.1 and 7.2
-* Removed the `geocode` permission, which has been unused for quite some time already
 * Namespace are no longer shown by default in SMW query result titles (changeable via `$smgQPHideNamespace`)
+* Removed the `geocode` permission, which has been unused for quite some time already
+* Removed Google Earth support
 * Special:MapEditor is no longer listed in a dedicated section on Special:SpecialPages
 
 ## Maps 7.20.1

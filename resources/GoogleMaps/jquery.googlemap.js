@@ -176,31 +176,6 @@
 			this.markers = [];
 		};
 
-		/**
-		 * Remove the "earth" type from options.types if it's present.
-		 *
-		 * @since 1.0.1
-		 */
-		this.removeEarthType = function () {
-			if (Array.prototype.filter) {
-				options.types = options.types.filter(function (element, index, array) {
-					return element !== 'earth';
-				});
-			}
-			else {
-				// Seems someone is using the o-so-awesome browser that is IE.
-				var types = [];
-
-				for (i in options.types) {
-					if (typeof( options.types[i] ) !== 'function' && options.types[i] !== 'earth') {
-						types.push(options.types[i]);
-					}
-				}
-
-				options.types = types;
-			}
-		};
-
 		this.addOverlays = function () {
 			// Add the Google KML/KMZ layers.
 			for (i = options.gkml.length - 1; i >= 0; i--) {
@@ -476,8 +451,8 @@
 
 		this.initializeMap = function () {
 			var mapOptions = {
-				disableDefaultUI:true,
-				mapTypeId:options.type == 'earth' ? google.maps.MapTypeId.SATELLITE : google.maps.MapTypeId[ options.type ]
+				disableDefaultUI: true,
+				mapTypeId: google.maps.MapTypeId[ options.type ]
 			};
 
 			// Map controls
@@ -759,30 +734,7 @@
 		};
 
 		this.setup = function () {
-
-			var showEarth = $.inArray('earth', options.types) !== -1 || options.type == 'earth';
-
-			// If there are any non-Google KML/KMZ layers, load the geoxml library and use it to add these layers.
-			if (showEarth) {
-				this.removeEarthType();
-				$.getScript(
-					'https://www.google.com/jsapi',
-					function (data, textStatus) {
-						google.load('earth', '1', { callback:function () {
-							mw.loader.using('ext.maps.gm3.earth', function () {
-								_this.initializeMap();
-								if (google.earth.isSupported()) {
-									_this.ge = new GoogleEarth(_this.map);
-								}
-							});
-						} });
-					}
-				);
-			}else{
-				this.initializeMap();
-			}
-
-
+			this.initializeMap();
 		};
 
 		function FullscreenControl(map) {

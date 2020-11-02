@@ -285,16 +285,6 @@
 			"targets": [ "desktop", "mobile" ]
 		},
 
-		"ext.maps.gm3.earth": {
-			"dependencies": [
-				"ext.maps.googlemaps3"
-			],
-			"scripts": [
-				"GoogleMaps/gm3-util-library/googleearth-compiled.js"
-			],
-			"targets": [ "desktop", "mobile" ]
-		},
-
 		"ext.maps.googlemaps3ajax": {
 			"dependencies": [
 				"ext.maps.googlemaps3",
