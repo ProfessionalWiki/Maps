@@ -68,7 +68,7 @@ return [
 
 	// Boolean. The default value for the hidenamespace parameter. Will hide the namespace in the marker pop-ups when set to true.
 	// This value will only be used when the user does not provide one.
-	'smgQPHideNamespace' => false,
+	'smgQPHideNamespace' => true,
 
 	// String or false. Allows you to define the content and it's layout of marker pop-ups via a template.
 	// This value will only be used when the user does not provide one.
