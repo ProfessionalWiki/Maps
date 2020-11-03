@@ -106,20 +106,15 @@ class MapsDistanceParserTest extends TestCase {
 	 * Tests Maps\Presentation\MapsDistanceParser::parseAndFormat()
 	 */
 	public function testParseAndFormat() {
-		$conversions = [
-			'42 km' => '42000 m'
-		];
+		$this->assertSame(
+			'42,000 m',
+			MapsDistanceParser::parseAndFormat( '42 km', 'm' )
+		);
 
-		foreach ( array_merge( $conversions, array_reverse( $conversions ) ) as $source => $target ) {
-			global $wgContLang;
-			$unit = explode( ' ', $target, 2 );
-			$unit = $unit[1];
-			$this->assertEquals(
-				$wgContLang->formatNum( $target ),
-				MapsDistanceParser::parseAndFormat( $source, $unit ),
-				"'$source' was not parsed and formatted to '$target':"
-			);
-		}
+		$this->assertSame(
+			'42 km',
+			MapsDistanceParser::parseAndFormat( '42000 m', 'km' )
+		);
 	}
 
 	/**
