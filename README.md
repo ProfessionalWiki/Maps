@@ -45,7 +45,7 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 
 * Latest version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
 * Downloads on [Packagist](https://packagist.org/packages/mediawiki/maps)&nbsp;&nbsp; [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
-* Continuous integration &nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ProfessionalWiki/Network/CI)](https://github.com/ProfessionalWiki/Network/actions?query=workflow%3ACI)
+* Continuous integration &nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/JeroenDeDauw/Maps/CI)](https://github.com/JeroenDeDauw/Maps/actions?query=workflow%3ACI)
 * Code quality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/badges/quality-score.png?s=3881a27e63cb64e7511d766bfec2e2db5d39bec3)](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/)
 * [Open bugs and feature requests](https://github.com/JeroenDeDauw/Maps/issues)
 * [Maps on OpenHub](https://www.openhub.net/p/maps/)
