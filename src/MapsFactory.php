@@ -163,7 +163,7 @@ class MapsFactory {
 	}
 
 	private function getMediaWikiCache(): \BagOStuff {
-		return wfGetCache( CACHE_ANYTHING );
+		return wfGetCache( $this->settings['egMapsGeoCacheType'] );
 	}
 
 	public function getPageContentFetcher(): PageContentFetcher {
