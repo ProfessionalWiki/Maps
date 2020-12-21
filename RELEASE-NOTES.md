@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 8.1.0
+
+Under development
+
+* Added `$egMapsGeoCacheType` setting (thanks [Pierre Rudloff](https://github.com/prudloff-insite))
+
 ## Maps 8.0.0
 
 Released on December 9th, 2020.
