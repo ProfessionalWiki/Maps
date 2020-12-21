@@ -140,6 +140,10 @@ return [
 	// Default value: 1 day.
 	'egMapsGeoCacheTtl' => 24 * 3600,
 
+	// Integer. If egMapsEnableGeoCache is true, determines the cache backend.
+	// Default value: any cache available.
+	'egMapsGeoCacheType' => CACHE_ANYTHING,
+
 
 
 
