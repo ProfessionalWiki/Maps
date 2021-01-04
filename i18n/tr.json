@@ -9,13 +9,14 @@
 			"Manco Capac",
 			"McAang",
 			"Meelo",
+			"MuratTheTurkish",
 			"Sadrettin",
 			"Sezgin İbiş",
 			"Trncmvsr",
 			"Vito Genovese"
 		]
 	},
-	"maps-desc": "Google Haritalar veya Broşür kullanarak dinamik haritaların wiki sayfalarına yerleştirilmesine izin verir. İsteğe bağlı Semantic MediaWiki ile entegre olan görsel bir editöre sahiptir, GeoJSON'u destekler ve coğrafi kodlama yetenekleri ekler.",
+	"maps-desc": "Dinamik haritaların Google Haritalar veya Leaflet kullanarak viki sayfalarına gömülmesine izin verir. Görsel bir editörü vardır, isteğe bağlı olarak Semantic MediaWiki ile entegre olur, GeoJSON'u destekler ve coğrafi kodlama yetenekleri ekler.",
 	"maps_map": "Harita",
 	"maps-tracking-category": "Haritaları uzantısıyla oluşturulan sayfalar",
 	"maps-loading-map": "Harita yükleniyor...",
