@@ -9,13 +9,6 @@ use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\GeoJsonPages\GeoJsonContentHandler;
 use Maps\LegacyMapEditor\SpecialMapEditor;
 use Maps\Map\CargoFormat\CargoFormat;
-use Maps\Map\DisplayMap\DisplayMapFunction;
-use Maps\ParserHooks\CoordinatesFunction;
-use Maps\ParserHooks\DistanceFunction;
-use Maps\ParserHooks\FindDestinationFunction;
-use Maps\ParserHooks\GeocodeFunction;
-use Maps\ParserHooks\GeoDistanceFunction;
-use Maps\ParserHooks\MapsDocFunction;
 use Maps\WikitextParsers\CircleParser;
 use Maps\WikitextParsers\DistanceParser;
 use Maps\WikitextParsers\ImageOverlayParser;
@@ -25,7 +18,6 @@ use Maps\WikitextParsers\PolygonParser;
 use Maps\WikitextParsers\RectangleParser;
 use Maps\WikitextParsers\WmsOverlayParser;
 use Parser;
-use PPFrame;
 
 /**
  * @licence GNU GPL v2+
@@ -71,7 +63,6 @@ class MapsSetup {
 		$this->registerParameterTypes();
 		$this->registerHooks();
 		$this->registerGeoJsonContentModel();
-		$this->registerEditApiModuleFallbacks();
 	}
 
 	private function registerParserHooks() {
@@ -136,9 +127,6 @@ class MapsSetup {
 
 	private function registerGeoJsonContentModel() {
 		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
-	}
-
-	private function registerEditApiModuleFallbacks() {
 	}
 
 }
