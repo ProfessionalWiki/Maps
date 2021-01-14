@@ -141,8 +141,9 @@ return [
 	'egMapsGeoCacheTtl' => 24 * 3600,
 
 	// Integer. If egMapsEnableGeoCache is true, determines the cache backend.
-	// Default value: any cache available.
-	'egMapsGeoCacheType' => CACHE_ANYTHING,
+	// Default value: any cache available (CACHE_ANYTHING).
+	// Possible values: https://www.mediawiki.org/wiki/Manual:$wgMainCacheType
+	'egMapsGeoCacheType' => -1,
 
 
 
