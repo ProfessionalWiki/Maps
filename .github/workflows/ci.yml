@@ -14,10 +14,8 @@ jobs:
       matrix:
         include:
           - mw: 'REL1_35'
-            php: 7.3
-          - mw: 'REL1_35'
             php: 7.4
-          - mw: 'master'
+          - mw: 'REL1_35'
             php: 7.4
 
     runs-on: ubuntu-latest
