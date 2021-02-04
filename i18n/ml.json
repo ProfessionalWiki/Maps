@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"maps-abb-north": "വടക്ക്",
 	"maps-abb-east": "കിഴക്ക്",
 	"maps-abb-south": "തെക്ക്",

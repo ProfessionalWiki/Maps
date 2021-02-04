@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AZISS",
 			"Cekli829"
 		]
 	},
@@ -9,5 +10,11 @@
 	"maps-layer-errors": "Xətalar",
 	"maps-abb-north": "Şm",
 	"maps-abb-east": "C",
-	"maps-abb-west": "Q"
+	"maps-abb-west": "Q",
+	"semanticmaps-unrecognizeddistance": "$1 rəqəmi mümkün olmayan məsafədir.",
+	"semanticmaps-kml-link": "KML faylına bax",
+	"semanticmaps-default-kml-pagelink": "$1 səhifəyə bax",
+	"semanticmaps-latitude": "En dairəsi: $1",
+	"semanticmaps-longitude": "Uzunluq dairəsi: $1",
+	"semanticmaps-altitude": "Hündürlük: $1"
 }

@@ -19,10 +19,7 @@
 	"maps-latitude": "Laius:",
 	"maps-longitude": "Pikkus:",
 	"maps_map_cannot_be_displayed": "Kaarti ei saa kuvada.",
-	"maps-osm-par-thumbs": "Näita pisipilte",
-	"maps-osm-par-photos": "Näita fotosid",
 	"mapeditor": "Kaardi toimetaja",
-	"specialpages-group-maps": "Kaardid",
 	"mapeditor-none-text": "Puudub",
 	"mapeditor-done-button": "Valmis",
 	"mapeditor-remove-button": "Eemalda",
@@ -36,5 +33,8 @@
 	"mapeditor-form-field-link": "Link",
 	"mapeditor-form-field-icon": "Ikoon",
 	"mapeditor-form-field-group": "Rühm",
-	"mapeditor-form-field-image": "Pilt"
+	"mapeditor-form-field-image": "Pilt",
+	"semanticmaps-latitude": "Laius: $1",
+	"semanticmaps-longitude": "Pikkus: $1",
+	"semanticmaps-altitude": "Kõrgus: $1"
 }

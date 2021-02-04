@@ -3,11 +3,13 @@
 		"authors": [
 			"Erdemaslancan",
 			"Gorizon",
+			"Kumkumuk",
 			"Mirzali"
 		]
 	},
 	"maps_map": "Xerita",
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
+	"maps-others": "ê bini",
 	"maps-layer-value": "Erc",
 	"maps-abb-north": "Z",
 	"maps-abb-east": "A",
@@ -17,9 +19,7 @@
 	"maps-longitude": "Derganiye:",
 	"maps_coordinates_missing": "Qan dê xerita koordinat nêdebya.",
 	"maps_googlemaps3": "Google Maps v3",
-	"maps_openlayers": "OpenLayers",
 	"mapeditor": "Vurnerê Xerita",
-	"specialpages-group-maps": "Xeritey",
 	"mapeditor-none-text": "Çıniyo",
 	"mapeditor-done-button": "Qeyd ke",
 	"mapeditor-remove-button": "Hewad",
@@ -32,5 +32,18 @@
 	"mapeditor-form-field-link": "Gıre",
 	"mapeditor-form-field-icon": "Ikon",
 	"mapeditor-form-field-group": "Grube",
-	"mapeditor-form-field-image": "Resım"
+	"mapeditor-form-field-image": "Resım",
+	"semanticmaps-forminput-locations": "Lokasyoni",
+	"maps-json-editor-button-line": "Yew xete bance",
+	"maps-json-editor-added-line": "Xeta cıbiyayiye",
+	"maps-json-editor-toolbar-save-title": "Vurnayışan qeyd ke",
+	"maps-json-editor-toolbar-save-text": "Qeyd ke",
+	"maps-json-editor-toolbar-cancel-text": "Bıtexelne",
+	"maps-json-editor-toolbar-clear-title": "Pelan pêro pak kerê",
+	"maps-json-editor-toolbar-clear-text": "Pêriyûne bestere",
+	"maps-json-editor-toolbar-button-edit": "Qatan bıvurne",
+	"maps-json-editor-toolbar-button-remove": "Pelan bestere",
+	"maps-geo-json-edit-source": "Çımeyi bıvurnê",
+	"maps-geo-json-create-page-button": "Na pele vıraze",
+	"maps-geo-json-create-page-creating": "Pele vıraziyena..."
 }

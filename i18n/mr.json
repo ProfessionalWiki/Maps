@@ -1,9 +1,20 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"V.narsikar"
+		]
+	},
 	"maps-abb-north": "N",
 	"maps-abb-east": "E",
 	"maps-abb-south": "S",
 	"maps-abb-west": "W",
 	"maps-latitude": "अक्षांश:",
-	"maps-longitude": "रेखांश:"
+	"maps-longitude": "रेखांश:",
+	"semanticmaps-default-kml-pagelink": "पान $1 बघा",
+	"semanticmaps-latitude": "अक्षांश:$1",
+	"semanticmaps-longitude": "रेखांश:$1",
+	"semanticmaps-altitude": "उन्नतन:$1",
+	"semanticmaps-forminput-locations": "ठिकाण",
+	"semanticmaps-par-ajaxcoordproperty": "कोऑर्डिनेट्स च्या गुणधर्माचे नाव जे अजॅक्स पृच्छा निर्माणास वापरल्या जाते.",
+	"semanticmaps-par-ajaxquery": "एक दुसरी पृच्छा जी अतिरिक्त कोऑर्डिनेट्स पुरवावयाला अजॅक्स मार्फत पाठविली जाते."
 }

@@ -11,8 +11,13 @@
 	"maps-abb-east": "O",
 	"maps-abb-south": "S",
 	"maps-abb-west": "W",
+	"maps-latitude": "Bredengraad:",
+	"maps-longitude": "Längengraad:",
+	"mapeditor": "Koorteneditor",
 	"mapeditor-none-text": "Keen",
 	"mapeditor-done-button": "Färtig",
+	"mapeditor-remove-button": "Wegmaken",
+	"mapeditor-import-button2": "Importeren",
 	"mapeditor-code-title": "Wikicode",
 	"mapeditor-link-title-switcher-link-text": "Lenk",
 	"mapeditor-form-field-title": "Titel",
@@ -20,5 +25,7 @@
 	"mapeditor-form-field-link": "Lenk",
 	"mapeditor-form-field-icon": "Symbool",
 	"mapeditor-form-field-group": "Köppel",
-	"mapeditor-form-field-image": "Bild"
+	"mapeditor-form-field-image": "Bild",
+	"semanticmaps-latitude": "Bredengraad: $1",
+	"semanticmaps-longitude": "Längengraad: $1"
 }

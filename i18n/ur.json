@@ -26,10 +26,7 @@
 	"maps-googlemaps3-par-zoomstyle": "زوم کے کنٹرول کے انداز.",
 	"maps-googlemaps3-par-typestyle": "قسم کے کنٹرول کے انداز.",
 	"maps-googlemaps3-par-poi": "دلچسپی کے پوائنٹس دکھائیں ۔",
-	"maps-openlayers-par-layers": "کی تہوں ہے کہ پرت کے رکھیں میں دستیاب ہو جائے گا. کے پرت کے سب سے پہلے دکھایا جائے گا جب نقشہ بوجھ.",
-	"maps-osm-par-photos": "شو کی تصاویر",
 	"mapeditor": "ایڈیٹر کا نقشہ",
-	"specialpages-group-maps": "نقشہ جات",
 	"mapeditor-none-text": "کوئی بھی نہیں",
 	"mapeditor-done-button": "کیا کیا",
 	"mapeditor-remove-button": "حذف کریں",
@@ -40,5 +37,6 @@
 	"mapeditor-form-field-text": "ٹیکسٹ",
 	"mapeditor-form-field-link": "لنک",
 	"mapeditor-form-field-group": "گروپ",
-	"mapeditor-form-field-image": "تصویر"
+	"mapeditor-form-field-image": "تصویر",
+	"semanticmaps-forminput-locations": "مقامات"
 }

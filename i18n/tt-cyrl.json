@@ -5,7 +5,6 @@
 			"Ильнар"
 		]
 	},
-	"right-geocode": "Геокодлау",
 	"maps_map": "Харита",
 	"maps-copycoords-prompt": "CTRL+C, ENTER",
 	"maps-others": "башка",
@@ -23,7 +22,6 @@
 	"maps-latitude": "Киңлек:",
 	"maps-longitude": "Озынлык:",
 	"mapeditor": "Харита төзәткече",
-	"specialpages-group-maps": "Хариталар",
 	"mapeditor-none-text": "Һични",
 	"mapeditor-done-button": "Тәмам",
 	"mapeditor-remove-button": "Бетерү",

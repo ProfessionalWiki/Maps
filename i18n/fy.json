@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robin0van0der0vliet",
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Robin0van0der0vliet"
 		]
 	},
 	"maps-layer-property": "Eigenskip",
 	"maps-layer-value": "Wearde",
-	"mapeditor-form-field-image": "Ôfbylding"
+	"mapeditor-form-field-image": "Ôfbylding",
+	"semanticmaps-latitude": "Breedtegraad: $1",
+	"semanticmaps-longitude": "Lingtegraad: $1",
+	"semanticmaps-forminput-locations": "Lokaasjes"
 }

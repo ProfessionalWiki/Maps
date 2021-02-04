@@ -16,5 +16,8 @@
 	"maps_unrecognized_coords": "Dei fylgjande koordinatane vart ikkje kjende att: $1.",
 	"maps_map_cannot_be_displayed": "Kartet kan ikkje verta vist.",
 	"maps_click_to_activate": "Trykk for å aktivera kartet",
-	"maps_centred_on": "Kart sentrert på $1, $2."
+	"maps_centred_on": "Kart sentrert på $1, $2.",
+	"semanticmaps-kml-link": "Sjå KML-fila",
+	"semanticmaps-default-kml-pagelink": "Sjå sida $1",
+	"semanticmaps-forminput-locations": "Stader"
 }

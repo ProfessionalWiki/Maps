@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kipala"
+			"Kipala",
+			"Lloffiwr",
+			"Yasen igra"
 		]
 	},
-	"maps-googlemaps3-par-imageoverlays": "Inaruhusu kuongeza picha mahali panapoonyeshwa"
+	"maps_map": "Ramani",
+	"maps-googlemaps3-par-imageoverlays": "Inaruhusu kuongeza picha mahali panapoonyeshwa",
+	"semanticmaps-kml-link": "Tazama faili la KML",
+	"semanticmaps-default-kml-pagelink": "Tazama ukurasa $1",
+	"semanticmaps-forminput-locations": "Mahali"
 }

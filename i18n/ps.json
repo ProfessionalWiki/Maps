@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"Amjad Khan"
 		]
 	},
-	"maps_map": "کښېده",
+	"maps_map": "نخشه",
 	"maps-others": "نور",
 	"maps-layer-property": "ځانتيا",
 	"maps-layer-value": "ارزښت",
@@ -13,7 +14,6 @@
 	"maps-abb-east": "خ",
 	"maps-abb-south": "سو",
 	"maps-abb-west": "ل",
-	"maps-osm-par-photos": "انځورونه ښکاره کول",
 	"mapeditor-none-text": "هېڅ",
 	"mapeditor-done-button": "ترسره شو",
 	"mapeditor-remove-button": "غورځول",
@@ -22,5 +22,6 @@
 	"mapeditor-form-field-text": "متن",
 	"mapeditor-form-field-link": "تړنه",
 	"mapeditor-form-field-group": "ډله",
-	"mapeditor-form-field-image": "انځور"
+	"mapeditor-form-field-image": "انځور",
+	"semanticmaps-forminput-locations": "استوګنځي"
 }

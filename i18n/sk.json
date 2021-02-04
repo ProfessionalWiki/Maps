@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Helix84",
+			"Luky001",
 			"Macofe"
 		]
 	},
-	"maps-desc": "Umožňuje vkladať dynamické mapy do wiki stránok, geokódovať adresy a ďalšie geografické operácie",
+	"maps-desc": "Umožňuje vkladať dynamické mapy do wiki stránok použitím Máp Google alebo Leaflet. Má vizuálny editor, voliteľne je integrovateľný so Sémantickou MediaWiki, podporuje GeoJSON a pridáva geokódovacie schopnosti.",
 	"maps_map": "Mapa",
 	"maps-abb-north": "S",
 	"maps-abb-east": "V",

@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"John Reid"
+			"AmaryllisGardener",
+			"John Reid",
+			"MJL"
 		]
 	},
-	"maps-geodistance-par-geoservice": "The mapping service this parser function is uised thegather wi.\nThis can affect the default geocoding service value.",
-	"maps-displaymap-par-visitedicon": "The filename o aen eemage tae be uised fer maurker icons efter the oreeginal maurkers hae been clap't"
+	"maps-tracking-category": "Pages wi a cairt rendered bi the Maps extension",
+	"maps-layerpage-usage": "Pages wi cairts uisin layer \"$1\"",
+	"maps-displaymap-par-visitedicon": "The filename o aen eemage tae be uised fer maurker icons efter the oreeginal maurkers hae been clap't",
+	"maps-json-editor-toolbar-save-text": "Duin",
+	"maps-json-editor-toolbar-clear-text": "Delyte Aw",
+	"maps-json-editor-toolbar-button-save": "Save cheenges",
+	"maps-json-editor-changes-saved": "Yer chynges hae buin hain'd"
 }

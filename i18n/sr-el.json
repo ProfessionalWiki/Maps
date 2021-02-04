@@ -21,6 +21,6 @@
 	"maps-latitude": "Geografska širina:",
 	"maps-longitude": "Geografska dužina:",
 	"maps_googlemaps3": "Gugl mape, treće izdanje",
-	"maps_openlayers": "Openlejers",
-	"maps_osm": "OpenStreetMap"
+	"semanticmaps-unrecognizeddistance": "Vrednost $1 nije ispravno rastojanje.",
+	"semanticmaps-kml": "KML"
 }

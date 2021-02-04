@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"maps-abb-north": "Pohj.",
 	"maps-abb-east": "Päivl.",
 	"maps-abb-south": "Suvi",

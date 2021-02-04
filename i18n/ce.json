@@ -5,7 +5,7 @@
 		]
 	},
 	"maps-others": "кхин",
-	"maps-ns-layer-talk": "ГӀатан дийцаре",
+	"maps-ns-layer-talk": "ГӀатан дийцар",
 	"maps-layer-property": "Билгало",
 	"maps-layer-value": "МаьӀна",
 	"maps-layerdef-invalid": "{{PLURAL:$1|Ца магийна билгалдакхар|Ца магийна билгалдакхарш}}",
@@ -17,8 +17,7 @@
 	"maps-abb-east": "Цу",
 	"maps-latitude": "Шоралла:",
 	"maps-longitude": "Дохалла:",
-	"mapeditor": "Картанаш тадерг",
-	"specialpages-group-maps": "Карташ",
+	"mapeditor": "Картанийн редактор",
 	"mapeditor-done-button": "Кийчча ю",
 	"mapeditor-export-button": "Экспорт ян викийоза сана",
 	"mapeditor-import-button": "Импорт ян викийозанах",
@@ -30,5 +29,8 @@
 	"mapeditor-mapparam-title": "Картан параметраш нисъе",
 	"mapeditor-imageoverlay-button": "ТӀетоха сурт тӀе диллар",
 	"mapeditor-form-field-image": "Сурт",
-	"mapeditor-imageoverlay-title": "Сурт"
+	"mapeditor-imageoverlay-title": "Сурт",
+	"semanticmaps-kml-link": "Хьажа KML файлан агӀоне",
+	"semanticmaps-default-kml-pagelink": "Хьажа агӀоне $1",
+	"semanticmaps-altitude": "Локхалла: $1"
 }

@@ -1,9 +1,14 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Rueter"
+		]
+	},
 	"maps-abb-north": "Веньэльйонкс",
 	"maps-abb-east": "Чилисемайонкс",
 	"maps-abb-south": "Чиньэльйонкс",
 	"maps-abb-west": "Чивалгомайонкс",
 	"maps-latitude": "Келезэ:",
-	"maps-longitude": "Кувалмозо:"
+	"maps-longitude": "Кувалмозо:",
+	"validator-type-mapslocation": "Мода лангсо косо"
 }

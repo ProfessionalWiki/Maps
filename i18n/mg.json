@@ -20,5 +20,6 @@
 	"validation-error-invalid-distances": "Tsy maintsy halavirana azo ekena ny parametatra \"$1\".",
 	"validation-error-invalid-image": "Tsy maintsy sary azo ekena ny parametatra \"$1\".",
 	"validation-error-invalid-goverlay": "Tsy maintsy azo ampiasaina ny mpanosona \"$1\".",
-	"validation-error-invalid-goverlays": "Tsy maintsy mpanosona azo ekena iray na mihoatra ny parametatra \"$1\"."
+	"validation-error-invalid-goverlays": "Tsy maintsy mpanosona azo ekena iray na mihoatra ny parametatra \"$1\".",
+	"mapeditor-parser-error": "Nisy hadisoana nitranga teo am-panadihadiana ny solon'angona. Tsy norahararahiana ny iditry ny mpampiasa."
 }

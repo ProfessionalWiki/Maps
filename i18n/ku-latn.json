@@ -1,13 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"George Animal"
+			"Cûndûllah el-Kurdî",
+			"George Animal",
+			"Ghybu",
+			"Gomada"
 		]
 	},
 	"maps_map": "Nexşe",
+	"maps-loading-map": "Nexşe tê barkirin...",
+	"maps-copycoords-prompt": "CTRL+C,ENTER",
+	"maps-others": "ên din",
+	"maps-abb-north": "Bakur",
+	"maps-abb-east": "Rojhilat",
+	"maps-abb-south": "Başûr",
+	"maps-abb-west": "Rojava",
 	"mapeditor-link-title-switcher-link-text": "Girêdan",
 	"mapeditor-form-field-title": "Sernav",
 	"mapeditor-form-field-link": "Girêdan",
 	"mapeditor-form-field-group": "Kom",
-	"mapeditor-form-field-image": "Wêne"
+	"mapeditor-form-field-image": "Wêne",
+	"semanticmaps-latitude": "Hêlîpan: $1",
+	"semanticmaps-longitude": "Hêlîlar: $1",
+	"semanticmaps-forminput-locations": "Cih",
+	"semanticmaps-kml-title": "Sernavê standart ê ji bo encaman"
 }

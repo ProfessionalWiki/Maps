@@ -1,9 +1,47 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aefgh39622",
+			"Ans",
+			"Geonuch",
+			"Nitisart Jungtrakungrat",
 			"Woraponboonkerd"
 		]
 	},
 	"maps-desc": "ให้ความสามารถในการแสดงพิกัดในแผนที่ และที่อยู่ที่เป็นรหัสทางภูมิศาสตร์([http://mapping.referata.com/wiki/Maps_examples demo]).\n<br />บริการแผนที่ที่มีอยู่: $1",
-	"maps_coordinates_missing": "ไม่ได้กำหนดพิกัดของแผนที่มาให้"
+	"maps_map": "แผนที่",
+	"maps-markers": "ตัวทำเครื่องหมาย",
+	"maps-others": "อื่น ๆ",
+	"maps-ns-layer": "เลเยอร์",
+	"maps-layer-property": "คุณลักษณะ",
+	"maps-layer-value": "ค่า",
+	"maps-layer-errors": "ข้อผิดพลาด",
+	"maps-layer-of-type": "เลเยอร์ของประเภท \"$1\"",
+	"maps-abb-north": "น",
+	"maps-abb-east": "ตอ",
+	"maps-abb-south": "ต",
+	"maps-abb-west": "ตต",
+	"maps-latitude": "ละติจูด:",
+	"maps-longitude": "ลองจิจูด:",
+	"maps_coordinates_missing": "ไม่ได้กำหนดพิกัดของแผนที่มาให้",
+	"maps_map_cannot_be_displayed": "ไม่สามารถแสดงแผนที่ได้",
+	"maps_click_to_activate": "คลิกเพื่อเปิดใช้งานแผนที่",
+	"mapeditor-none-text": "ไม่มี",
+	"mapeditor-done-button": "เสร็จสิ้น",
+	"mapeditor-remove-button": "เอาออก",
+	"mapeditor-import-button2": "นำเข้า",
+	"mapeditor-export-button": "ส่งออกเป็นโค้ดวิกิ",
+	"mapeditor-import-button": "นำเข้าจากโค้ดวิกิ",
+	"mapeditor-clear-button": "ล้างแผนที่",
+	"mapeditor-code-title": "โค้ดวิกิ",
+	"mapeditor-form-title": "แก้ไขรายละเอียด",
+	"mapeditor-link-title-switcher-link-text": "ลิงก์",
+	"mapeditor-form-field-title": "ชื่อเรื่อง",
+	"mapeditor-form-field-text": "ข้อความ",
+	"mapeditor-form-field-link": "ลิงก์",
+	"mapeditor-form-field-icon": "ไอคอน",
+	"mapeditor-form-field-group": "กลุ่ม",
+	"mapeditor-form-field-image": "ภาพ",
+	"semanticmaps-forminput-locations": "ที่ตั้ง",
+	"maps-json-editor-toolbar-clear-text": "ลบทั้งหมด"
 }

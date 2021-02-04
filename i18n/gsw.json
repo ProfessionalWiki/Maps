@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Als-Chlämens",
 			"Als-Holder"
 		]
 	},
@@ -14,12 +15,9 @@
 	"maps-layer-property": "Eigeschaft",
 	"maps-layer-value": "Wärt",
 	"maps-layer-errors": "Fähler",
-	"maps-error-invalid-layertype": "S git kei Ebene vum Typ „$1“. Nume {{PLURAL:$3|dää Typ wird|die Type wäre}} unterstitzt: $2",
-	"maps-error-no-layertype": "Dr Ebenetyp mueß aagee wäre. Nume {{PLURAL:$2|dää Typ wird|die Typen wäre}} unterstitzt: $1",
 	"validation-error-invalid-layer": "Parameter $1 mueß e giltigi Ebeni syy.",
 	"validation-error-invalid-layers": "Parameter $1 mueß ei oder meh giltigi Ebene syy.",
 	"maps-layer-of-type": "Ebeni vum Typ $1",
-	"maps-layer-type-supported-by": "Dää Ebenetyp cha {{PLURAL:$2|nume bim Kartografidienscht $1 brucht wäre|bi däne Kartografidienscht brucht wäre: $1}}.",
 	"validation-error-invalid-location": "Parameter $1 mueß e giltige Standort syy.",
 	"validation-error-invalid-locations": "Parameter $1 mueß ei oder meh giltigi Standort syy.",
 	"validation-error-invalid-width": "Parameter $1 mueß e giltigi Breiti syy.",
@@ -45,5 +43,14 @@
 	"maps_map_cannot_be_displayed": "D Charte cha nit aazeigt wäre.",
 	"maps-geocoder-not-available": "S Geokodierigs-Feature vu däre Charte isch nit verfiegbar, Dyy Ort cha nit geokodiert wäre.",
 	"maps_click_to_activate": "Klick go d Charte aktiviere",
-	"maps_centred_on": "Charte zäntriert uf $1, $2."
+	"maps_centred_on": "Charte zäntriert uf $1, $2.",
+	"semanticmaps-unrecognizeddistance": "Dr Wert $1 isch kei giltigi Dischtanz.",
+	"semanticmaps-kml-link": "KML-Datei aaluege",
+	"semanticmaps-default-kml-pagelink": "Syte $1 aaluege",
+	"semanticmaps-forminput-locations": "Standort",
+	"semanticmaps-par-staticlocations": "E Lischt vo Standört, wo zämme mit de Date, wo aabgfrogt werde, uff de Charte dezuegno werde sölle. Analog zue de Aazeigpünkt, chönne zue jedem Standort mit de Tilde „~“ als Trennzeiche, e Titel, Beschrybig un Symbol dezuegno werde.",
+	"semanticmaps-par-showtitle": "E Titel im Informationsfenschter vo de Kennzeichnig aazeige oder nit. Des z deaktiviere isch vilmool nützlig, wänn e Vorlag zur Formatierig vum Inhalt vum Informationsfenschter bruucht wird.",
+	"semanticmaps-par-centre": "S Zentrum vo de Chart. Wänn's nit andersch aagee isch, wird automatisch s optimali Zentrum zur Darstellig vo allene Kennzeichnige uff de Chart ussgwäält.",
+	"semanticmaps-par-template": "E Vorlag, wo zur Formatierig vum Inhalt vum Informationsfenschter bruucht wird.",
+	"semanticmaps-par-geocodecontrol": "D Stüürigssyte zum Geokodiere aazeige."
 }

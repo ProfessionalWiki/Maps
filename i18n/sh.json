@@ -4,8 +4,6 @@
 			"Vlad5250"
 		]
 	},
-	"right-geocode": "Geokodiranje",
-	"action-geocode": "izvršavanje geokodiranja na ovom wikiju",
 	"maps-tracking-category": "Stranica sa zemljovidom iscrtanim proširenjem \"Zemljovidi\"",
 	"maps-markers": "Označivači",
 	"maps-searchmarkers-text": "Filtriranje označivača",
@@ -19,8 +17,6 @@
 	"maps-layerdef-invalid-fatal": "Kobna nevrijedeća odredba",
 	"maps-layerdef-wrong-namespace": "Odredbe slojeva su vrijedeće samo na stranicama imenskog prostora »$1«",
 	"maps-layerpage-nousage": "Zasad nema stranica što koriste ovaj sloj.",
-	"maps-error-invalid-layertype": "Nema slojeva tipa \"$1\". {{PLURAL:$3|Podržan je samo ovaj tip|Podržani su samo sljedeći tipovi}}: $2",
-	"maps-error-no-layertype": "Će treba da navedete tip sloja. {{PLURAL:$2|Podržan je samo ovaj tip|Podržani su samo sljedeći tipovi}}: $1",
 	"validation-error-invalid-layer": "Parametar $1 mora da bude valjani sloj.",
 	"validation-error-invalid-layers": "Parametar $1 mora da bude jedan ili više valjanih slojeva.",
 	"maps-displaymap-par-polygons": "Mnogokuti za prikaz",
@@ -30,7 +26,6 @@
 	"maps_click_to_activate": "Škljocnite za aktiviranje zemljovida",
 	"maps_centred_on": "Zemljovid je centriran na $1, $2.",
 	"mapeditor": "Uređivač zemljovida",
-	"specialpages-group-maps": "Zemljovidi",
 	"mapeditor-none-text": "Nema",
 	"mapeditor-done-button": "Gotovo",
 	"mapeditor-remove-button": "Ukloni",

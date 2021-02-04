@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ravichandra",
 			"Veeven"
 		]
 	},
@@ -15,11 +16,22 @@
 	"maps-abb-west": "ప",
 	"maps-latitude": "అక్షాంశం:",
 	"maps-longitude": "రేఖాంశం:",
-	"specialpages-group-maps": "పటములు",
 	"mapeditor-none-text": "ఏమీలేదు",
+	"mapeditor-done-button": "పూర్తయ్యింది",
+	"mapeditor-remove-button": "తీసివేయి",
+	"mapeditor-import-button2": "దిగుమతించు",
 	"mapeditor-link-title-switcher-link-text": "లంకె",
 	"mapeditor-form-field-title": "శీర్షిక",
 	"mapeditor-form-field-text": "పాఠ్యం",
 	"mapeditor-form-field-link": "లంకె",
-	"mapeditor-form-field-icon": "ప్రతీకం"
+	"mapeditor-form-field-icon": "ప్రతీకం",
+	"mapeditor-form-field-image": "బొమ్మ",
+	"semanticmaps-unrecognizeddistance": "$1 విలువ సరైన దూరం కాదు.",
+	"semanticmaps-kml-link": "KML ఫైలు చూడండి",
+	"semanticmaps-default-kml-pagelink": "$1 పేజీని చూడు",
+	"semanticmaps-latitude": "అక్షాంశం: $1",
+	"semanticmaps-longitude": "రేఖాంశం: $1",
+	"semanticmaps-altitude": "సముద్రమట్టం: $1",
+	"semanticmaps-forminput-locations": "ప్రాంతాలు",
+	"semanticmaps-kml-title": "ఫలితాలకు అప్రమేయంగా వచ్చే పేరు"
 }

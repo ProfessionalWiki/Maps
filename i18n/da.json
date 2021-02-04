@@ -29,7 +29,6 @@
 	"maps_map_cannot_be_displayed": "Kortet kan ikke vises.",
 	"maps_click_to_activate": "Tryk for at aktivere kort",
 	"maps-par-enable-fullscreen": "Aktiver fuldskærmknappen",
-	"specialpages-group-maps": "Kort",
 	"mapeditor-none-text": "Ingen",
 	"mapeditor-done-button": "Udført",
 	"mapeditor-remove-button": "Fjern",
@@ -60,5 +59,10 @@
 	"validator-type-mapsline": "Geografisk linje",
 	"validator-type-mapsline-list": "Liste over linjer",
 	"validator-type-mapslocation-list": "Liste over placeringer",
-	"validator-type-jsonfile": "tekst"
+	"maps-json-editor-toolbar-save-text": "Udført",
+	"maps-json-editor-toolbar-clear-text": "Slet alle",
+	"maps-json-editor-toolbar-button-save": "Gem ændringer",
+	"maps-json-editor-changes-saved": "Dine ændringer er blevet gemt",
+	"maps-geo-json-edit-source": "Rediger kilde",
+	"maps-geo-json-create-page-creating": "Opretter side..."
 }

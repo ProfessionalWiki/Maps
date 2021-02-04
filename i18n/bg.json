@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"DCLXVI",
-			"පසිඳු කාවින්ද",
+			"Plamen",
 			"StanProg",
-			"Plamen"
+			"Ted Masters",
+			"පසිඳු කාවින්ද"
 		]
 	},
 	"maps_map": "Карта",
@@ -12,6 +13,7 @@
 	"maps-ns-layer": "Слой",
 	"maps-layer-value": "Стойност",
 	"maps-layer-errors": "Грешки",
+	"maps-fullscreen-button": "Превключване на режима на цял екран",
 	"maps-abb-north": "С",
 	"maps-abb-east": "И",
 	"maps-abb-south": "Ю",
@@ -20,7 +22,6 @@
 	"maps-longitude": "Географска дължина:",
 	"maps-googlemaps3-incompatbrowser": "Вашият браузър не е съвместим с Google Maps v3.",
 	"mapeditor": "Редактор на карти",
-	"specialpages-group-maps": "Карти",
 	"mapeditor-done-button": "Готово",
 	"mapeditor-remove-button": "Премахване",
 	"mapeditor-import-button2": "Внасяне",
@@ -29,5 +30,8 @@
 	"mapeditor-form-field-title": "Заглавие",
 	"mapeditor-form-field-text": "Текст",
 	"mapeditor-form-field-link": "Препратка",
-	"mapeditor-form-field-group": "Група"
+	"mapeditor-form-field-group": "Група",
+	"mapeditor-form-field-image": "Изображение",
+	"maps-json-editor-toolbar-save-text": "Готово",
+	"maps-json-editor-toolbar-cancel-text": "Отказ"
 }
