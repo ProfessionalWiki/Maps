@@ -5,6 +5,7 @@
 			"Kobazulo",
 			"Mikel Ibaiba",
 			"Subi",
+			"Xabier Armendaritz",
 			"පසිඳු කාවින්ද"
 		]
 	},
@@ -49,10 +50,10 @@
 	"mapeditor-code-title": "Wiki kodea",
 	"mapeditor-import-title": "Inportatu wiki kodea",
 	"mapeditor-form-title": "Editatu xehetasunak",
-	"mapeditor-link-title-switcher-link-text": "Lotura",
+	"mapeditor-link-title-switcher-link-text": "Esteka",
 	"mapeditor-form-field-title": "Izenburua",
 	"mapeditor-form-field-text": "Testua",
-	"mapeditor-form-field-link": "Lotura",
+	"mapeditor-form-field-link": "Esteka",
 	"mapeditor-form-field-icon": "Ikonoa",
 	"mapeditor-form-field-group": "Taldea",
 	"mapeditor-mapparam-title": "Editatu mapako parametroak",
