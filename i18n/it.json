@@ -124,7 +124,7 @@
 	"mapeditor-form-field-visitedicon": "Icona visitato",
 	"semanticmaps-unrecognizeddistance": "Il valore $1 non è una distanza valida.",
 	"semanticmaps-kml-link": "Visualizza il file KML",
-	"semanticmaps-default-kml-pagelink": "Visualizza la pagina $1",
+	"semanticmaps-default-kml-pagelink": "Vedi la pagina $1",
 	"semanticmaps-latitude": "Latitudine: $1",
 	"semanticmaps-longitude": "Longitudine: $1",
 	"semanticmaps-altitude": "Altitudine: $1",
