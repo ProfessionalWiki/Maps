@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chaduvari",
 			"Ravichandra",
 			"Veeven"
 		]
@@ -20,10 +21,10 @@
 	"mapeditor-done-button": "పూర్తయ్యింది",
 	"mapeditor-remove-button": "తీసివేయి",
 	"mapeditor-import-button2": "దిగుమతించు",
-	"mapeditor-link-title-switcher-link-text": "లంకె",
+	"mapeditor-link-title-switcher-link-text": "లింకు",
 	"mapeditor-form-field-title": "శీర్షిక",
 	"mapeditor-form-field-text": "పాఠ్యం",
-	"mapeditor-form-field-link": "లంకె",
+	"mapeditor-form-field-link": "లింకు",
 	"mapeditor-form-field-icon": "ప్రతీకం",
 	"mapeditor-form-field-image": "బొమ్మ",
 	"semanticmaps-unrecognizeddistance": "$1 విలువ సరైన దూరం కాదు.",
