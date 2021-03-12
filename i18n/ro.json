@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Andreyyshore",
 			"Firilacroco",
 			"KlaudiuMihaila",
 			"Macofe",
@@ -30,8 +31,8 @@
 	"maps-displaymap-par-minzoom": "Nivelul minim de apropiere",
 	"maps-displaymap-par-polygons": "Poligoane de afișat",
 	"maps-displaymap-par-rectangles": "Dreptunghiuri de afișat",
-	"validation-error-invalid-location": "Parametrul $1 trebuie să fie o locaţie validă.",
-	"validation-error-invalid-locations": "Parametrul $1 trebuie să fie una sau mai multe locaţii valide.",
+	"validation-error-invalid-location": "Parametrul $1 trebuie să fie o locație validă.",
+	"validation-error-invalid-locations": "Parametrul $1 trebuie să fie una sau mai multe locații valide.",
 	"validation-error-invalid-width": "Parametrul $1 trebuie să fie o lățime validă.",
 	"validation-error-invalid-height": "Parametrul $1 trebuie să fie o înălțime validă.",
 	"validation-error-invalid-distance": "Parametrul $1 trebuie să reprezinte o distanță validă.",
