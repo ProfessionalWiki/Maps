@@ -3,6 +3,7 @@
 		"authors": [
 			"Bugoslav",
 			"Ex13",
+			"MaGa",
 			"Neptune, the Mystic",
 			"Tivek"
 		]
@@ -43,7 +44,7 @@
 	"maps_geocoding_failed_for": "{{PLURAL:$2|Sljedeća adresa ne može biti geokodirana|Sljedeće adrese ne mogu biti geokodirane}} i {{PLURAL:$2|izostavljena je|izostavljene su}} iz karte:\n$1",
 	"maps_map_cannot_be_displayed": "Zemljovid nije moguće prikazati.",
 	"maps-leaflet-par-defzoom": "Dopuštanje postavljanja predodređenoga stupnja povećanja prikaza zemljovida.",
-	"maps_click_to_activate": "Škljocnite za aktivaciju zemljovida.",
+	"maps_click_to_activate": "Kliknite za aktivaciju zemljovida.",
 	"maps_centred_on": "Zemljovid je centriran na $1, $2.",
 	"maps-par-centre": "Lokacija na kojoj zemljovid treba centrirati",
 	"maps-par-kml": "KML datoteke za učitavanje na zemljovid.",

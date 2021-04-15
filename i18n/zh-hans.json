@@ -3,6 +3,7 @@
 		"authors": [
 			"Angrydog001",
 			"Byfserag",
+			"Func",
 			"Hanyanbo98",
 			"Hydra",
 			"Hzy980512",
@@ -228,7 +229,7 @@
 	"validator-type-mapspolygon-list": "地理多边形列表",
 	"validator-type-wmsoverlay": "网络地图服务覆盖",
 	"maps-json-editor-toolbar-save-title": "保存修改",
-	"maps-json-editor-toolbar-save-text": "保存",
+	"maps-json-editor-toolbar-save-text": "完成",
 	"maps-json-editor-toolbar-cancel-text": "取消",
 	"maps-json-editor-toolbar-clear-text": "删除全部",
 	"maps-json-editor-toolbar-button-remove": "输入删除模式",
