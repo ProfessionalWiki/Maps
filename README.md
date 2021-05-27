@@ -33,6 +33,8 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 * [Customizing Google Maps](https://maps.extension.wiki/wiki/Customizing_Google_Maps)
 * [Semantic MediaWiki integration](https://maps.extension.wiki/wiki/Semantic_MediaWiki)
 
+<a href="https://www.youtube.com/watch?v=TictndP793M"><img src=".github/youtube.jpg" width="430px" title="Play video" /></a>
+
 ### Getting support
 
 * Professional support and custom development: **[Professional.Wiki](https://professional.wiki/)**
