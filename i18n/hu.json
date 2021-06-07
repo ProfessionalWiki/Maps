@@ -8,10 +8,11 @@
 			"Macofe",
 			"Misibacsi",
 			"Máté",
-			"TK-999"
+			"TK-999",
+			"Tacsipacsi"
 		]
 	},
-	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wiki lapokba, címek geográfiai kódolását és más geográfiai műveleteket",
+	"maps-desc": "Lehetővé teszi a dinamikus térképek beágyazását a wikilapokba a Google Térkép vagy a Leaflet segítségével. Tartalmaz egy vizuális szerkesztőt, opcionálisan integrálható a Semantic MediaWikivel, támogatja a GeoJSON-t, és geokódolási lehetőségeket is kínál.",
 	"maps_map": "Térkép",
 	"maps-loading-map": "Térkép betöltése…",
 	"maps-load-failed": "Nem sikerült betölteni a térképet!",
