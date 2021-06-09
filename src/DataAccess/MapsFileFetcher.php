@@ -6,6 +6,7 @@ namespace Maps\DataAccess;
 
 use FileFetcher\FileFetcher;
 use FileFetcher\FileFetchingException;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @licence GNU GPL v2+
@@ -14,7 +15,7 @@ use FileFetcher\FileFetchingException;
 class MapsFileFetcher implements FileFetcher {
 
 	public function fetchFile( string $fileUrl ): string {
-		$result = \Http::get( $fileUrl );
+		$result = MediaWikiServices::getInstance()->getHttpRequestFactory()->get( $fileUrl );
 
 		if ( !is_string( $result ) ) {
 			throw new FileFetchingException( $fileUrl );
