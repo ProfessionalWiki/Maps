@@ -4,6 +4,7 @@
 			"Beluga",
 			"Cimon Avaro",
 			"Crt",
+			"MITO",
 			"Macofe",
 			"Nedergard",
 			"Nike",
@@ -150,9 +151,11 @@
 	"semanticmaps-kml-pagelinktext": "Sivulinkeissä käytettävä teksti, jossa $1 korvataan sivun otsikolla",
 	"semanticmaps-shapes-improperformat": "$1 on muotoiltu väärin. Katso muotoilun dokumentaatiota.",
 	"semanticmaps-shapes-missingshape": "$1: muotoja ei löytynyt. Dokumentaatiossa kerrotaan sallituista muodoista.",
+	"validator-type-mapslocation": "Maantieteellinen sijainti",
 	"validator-type-mapslocation-list": "Luettelo sijainneista",
 	"maps-json-editor-button-line": "Piirrä viiva",
 	"maps-json-editor-toolbar-save-title": "Tallenna muutokset",
 	"maps-json-editor-toolbar-save-text": "Valmis",
+	"maps-json-editor-toolbar-cancel-text": "Peruuta",
 	"maps-json-editor-toolbar-clear-text": "Poista kaikki"
 }
