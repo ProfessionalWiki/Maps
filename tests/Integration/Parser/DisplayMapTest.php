@@ -5,7 +5,8 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Integration\Parser;
 
 use Maps\GeoJsonPages\GeoJsonContent;
-use MediaWiki\MediaWikiServices;
+use Maps\Tests\Util\PageCreator;
+use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,9 +36,7 @@ class DisplayMapTest extends TestCase {
 	}
 
 	private function parse( string $textToParse ): string {
-		$parser = MediaWikiServices::getInstance()->getParser();
-
-		return $parser->parse( $textToParse, \Title::newMainPage(), new \ParserOptions() )->getText();
+		return TestFactory::newInstance()->parse( $textToParse );
 	}
 
 	public function testServiceSelectionWorks() {
@@ -203,13 +202,12 @@ class DisplayMapTest extends TestCase {
 	}
 
 	public function testGeoJsonSourceForPage() {
-		$page = new \WikiPage( \Title::newFromText( 'GeoJson:TestPageSource' ) );
-		$page->doEditContent(
+		PageCreator::instance()->createPageWithContent(
+			'GeoJson:TestPageSource',
 			new GeoJsonContent( json_encode( [
 				'type' => 'FeatureCollection',
 				'features' => []
-			] ) ),
-			''
+			] ) )
 		);
 
 		$this->assertStringContainsString(

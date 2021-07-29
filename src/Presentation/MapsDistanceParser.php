@@ -4,6 +4,8 @@ declare( strict_types = 1 );
 
 namespace Maps\Presentation;
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Static class for distance validation and parsing. Internal representations are in meters.
  *
@@ -24,8 +26,7 @@ class MapsDistanceParser {
 	 * Formats a given distance in meters to a distance in an optionally specified notation.
 	 */
 	public static function formatDistance( float $meters, string $unit = null, int $decimals = 2 ): string {
-		global $wgContLang;
-		$meters = $wgContLang->formatNum( round( $meters / self::getUnitRatio( $unit ), $decimals ) );
+		$meters = MediaWikiServices::getInstance()->getContentLanguage()->formatNum( round( $meters / self::getUnitRatio( $unit ), $decimals ) );
 		return "$meters $unit";
 	}
 

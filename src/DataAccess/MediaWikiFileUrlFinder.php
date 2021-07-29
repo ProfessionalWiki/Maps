@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\DataAccess;
 
 use Maps\FileUrlFinder;
-use RepoGroup;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @licence GNU GPL v2+
@@ -18,7 +18,7 @@ class MediaWikiFileUrlFinder implements FileUrlFinder {
 
 		$titleWithoutPrefix = $colonPosition === false ? $fileName : substr( $fileName, $colonPosition + 1 );
 
-		$file = RepoGroup::singleton()->findFile( trim( $titleWithoutPrefix ) );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( trim( $titleWithoutPrefix ) );
 
 		if ( $file && $file->exists() ) {
 			return $file->getURL();

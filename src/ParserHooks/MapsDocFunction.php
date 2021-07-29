@@ -6,7 +6,11 @@ namespace Maps\ParserHooks;
 
 use Maps\MapsFactory;
 use ParamProcessor\ParamDefinition;
+use ParamProcessor\ProcessingResult;
+use Parser;
 use ParserHook;
+use ParserHooks\HookDefinition;
+use ParserHooks\HookHandler;
 
 /**
  * Class for the 'mapsdoc' parser hooks,
@@ -15,32 +19,29 @@ use ParserHook;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class MapsDocFunction extends ParserHook {
+class MapsDocFunction implements HookHandler {
 
-	/**
-	 * Field to store the value of the language parameter.
-	 *
-	 * @var string
-	 */
-	protected $language;
+	private string $language;
 
-	/**
-	 * Renders and returns the output.
-	 *
-	 * @see ParserHook::render
-	 *
-	 * @param array $parameters
-	 *
-	 * @return string
-	 */
-	public function render( array $parameters ) {
-		$this->language = $parameters['language'];
+	public function handle( Parser $parser, ProcessingResult $result ) {
+		foreach ( $result->getErrors() as $error ) {
+			if ( $error->isFatal() ) {
+				return '<div><span class="errorbox">' .
+					wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+					'</span></div><br /><br />';
+			}
+		}
+
+		$parameters = $result->getParameters();
+
+		$this->language = $parameters['language']->getValue();
 
 		$factory = MapsFactory::globalInstance();
 
-		$params = $this->getServiceParameters( $factory, $parameters['service'] );
-
-		return $this->getParameterTable( $factory, $params );
+		return $this->getParameterTable(
+			$factory,
+			$this->getServiceParameters( $factory, $parameters['service']->getValue() )
+		);
 	}
 
 	private function getServiceParameters( MapsFactory $factory, string $service ) {
@@ -146,25 +147,15 @@ EOT;
 		return 'maps-mapsdoc-description';
 	}
 
-	/**
-	 * Gets the name of the parser hook.
-	 *
-	 * @see ParserHook::getName
-	 *
-	 * @return string
-	 */
-	protected function getName() {
-		return 'mapsdoc';
+	public static function getHookDefinition(): HookDefinition {
+		return new HookDefinition(
+			'mapsdoc',
+			self::getParameterInfo(),
+			[ 'service', 'language' ]
+		);
 	}
 
-	/**
-	 * Returns an array containing the parameter info.
-	 *
-	 * @see ParserHook::getParameterInfo
-	 *
-	 * @return array
-	 */
-	protected function getParameterInfo( $type ) {
+	private static function getParameterInfo(): array {
 		$params = [];
 
 		$params['service'] = [
@@ -183,17 +174,6 @@ EOT;
 		}
 
 		return $params;
-	}
-
-	/**
-	 * Returns the list of default parameters.
-	 *
-	 * @see ParserHook::getDefaultParameters
-	 *
-	 * @return array
-	 */
-	protected function getDefaultParameters( $type ) {
-		return [ 'service', 'language' ];
 	}
 
 }

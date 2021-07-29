@@ -5,7 +5,10 @@ declare( strict_types = 1 );
 namespace Maps\ParserHooks;
 
 use Maps\MapsFactory;
-use ParserHook;
+use ParamProcessor\ProcessingResult;
+use Parser;
+use ParserHooks\HookDefinition;
+use ParserHooks\HookHandler;
 
 /**
  * Class for the 'coordinates' parser hooks,
@@ -14,51 +17,35 @@ use ParserHook;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class CoordinatesFunction extends ParserHook {
+class CoordinatesFunction implements HookHandler {
 
-	/**
-	 * Renders and returns the output.
-	 *
-	 * @see ParserHook::render
-	 *
-	 * @param array $parameters
-	 *
-	 * @return string
-	 */
-	public function render( array $parameters ) {
+	public function handle( Parser $parser, ProcessingResult $result ) {
+		foreach ( $result->getErrors() as $error ) {
+			if ( $error->isFatal() ) {
+				return '<div><span class="errorbox">' .
+					wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+				'</span></div><br /><br />';
+			}
+		}
+
+		$parameters = $result->getParameters();
+
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
-			$parameters['location'],
-			$parameters['format'],
-			$parameters['directional']
+			$parameters['location']->getValue(),
+			$parameters['format']->getValue(),
+			$parameters['directional']->getValue()
 		);
 	}
 
-	/**
-	 * @see ParserHook::getMessage()
-	 */
-	public function getMessage() {
-		return 'maps-coordinates-description';
+	public static function getHookDefinition(): HookDefinition {
+		return new HookDefinition(
+			'coordinates',
+			self::getParameterInfo(),
+			[ 'location', 'format', 'directional' ]
+		);
 	}
 
-	/**
-	 * Gets the name of the parser hook.
-	 *
-	 * @see ParserHook::getName
-	 *
-	 * @return string
-	 */
-	protected function getName() {
-		return 'coordinates';
-	}
-
-	/**
-	 * Returns an array containing the parameter info.
-	 *
-	 * @see ParserHook::getParameterInfo
-	 *
-	 * @return array
-	 */
-	protected function getParameterInfo( $type ) {
+	private static function getParameterInfo(): array {
 		global $egMapsAvailableCoordNotations;
 		global $egMapsCoordinateNotation;
 		global $egMapsCoordinateDirectional;
@@ -88,17 +75,6 @@ class CoordinatesFunction extends ParserHook {
 		}
 
 		return $params;
-	}
-
-	/**
-	 * Returns the list of default parameters.
-	 *
-	 * @see ParserHook::getDefaultParameters
-	 *
-	 * @return array
-	 */
-	protected function getDefaultParameters( $type ) {
-		return [ 'location', 'format', 'directional' ];
 	}
 
 }

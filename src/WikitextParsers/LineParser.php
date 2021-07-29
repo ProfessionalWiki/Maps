@@ -144,7 +144,7 @@ class LineParser implements ValueParser {
 	}
 
 	protected function setLinkFromParameter( Line &$line, $link ) {
-		if ( filter_var( $link, FILTER_VALIDATE_URL, FILTER_FLAG_SCHEME_REQUIRED ) ) {
+		if ( filter_var( $link, FILTER_VALIDATE_URL ) ) {
 			$line->setLink( $link );
 		} else {
 			$title = \Title::newFromText( $link );

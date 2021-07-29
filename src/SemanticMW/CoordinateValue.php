@@ -142,7 +142,7 @@ class CoordinateValue extends SMWDataValue {
 	/**
 	 * @see SMWDataValue::getShortWikiText
 	 */
-	public function getShortWikiText( $linked = null ) {
+	public function getShortWikiText( $linker = null ) {
 		if ( $this->isValid() ) {
 			if ( $this->m_caption === false ) {
 				return $this->getFormattedCoord( $this->m_dataitem );

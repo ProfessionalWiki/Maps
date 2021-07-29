@@ -5,23 +5,39 @@ declare( strict_types = 1 );
 namespace Maps;
 
 use Maps\Map\DisplayMap\DisplayMapFunction;
+use Maps\ParserHooks\CoordinatesFunction;
+use Maps\ParserHooks\DistanceFunction;
+use Maps\ParserHooks\FindDestinationFunction;
+use Maps\ParserHooks\GeocodeFunction;
+use Maps\ParserHooks\GeoDistanceFunction;
+use Maps\ParserHooks\MapsDocFunction;
 use Parser;
+use ParserHooks\HookRegistrant;
 use PPFrame;
 
 class ParserHookSetup {
 
-	private $parser;
+	private Parser $parser;
+	private bool $enableCoordinatesFunction;
 
-	public function __construct( Parser $parser ) {
+	public function __construct( Parser $parser, bool $enableCoordinatesFunction ) {
 		$this->parser = $parser;
+		$this->enableCoordinatesFunction = $enableCoordinatesFunction;
 	}
 
 	public function registerParserHooks() {
 		 $this->registerServiceSpecificFunction( 'leaflet', 'leaflet' );
 		 $this->registerServiceSpecificFunction( 'google_maps', 'googlemaps3' );
 
+		$hookRegistrant = new HookRegistrant( $this->parser );
+
 		$this->registerDisplayMap();
-		$this->registerNonMapHooks();
+		$this->registerCoordinates( $hookRegistrant );
+		$this->registerDistance( $hookRegistrant );
+		$this->registerFindDestination( $hookRegistrant );
+		$this->registerGeocode( $hookRegistrant );
+		$this->registerGeoDistance( $hookRegistrant );
+		$this->registerMapsDoc( $hookRegistrant );
 	}
 
 	private function registerServiceSpecificFunction( string $functionName, string $serviceName ) {
@@ -83,10 +99,48 @@ class ParserHookSetup {
 		return MapsFactory::globalInstance();
 	}
 
-	private function registerNonMapHooks() {
-		foreach ( $this->getFactory()->newNonMapParserHooks() as $hook ) {
-			$hook->init( $this->parser );
+	private function registerCoordinates( HookRegistrant $hookRegistrant ): void {
+		if ( $this->enableCoordinatesFunction ) {
+			$functionDefinition = CoordinatesFunction::getHookDefinition();
+			$functionHandler = new CoordinatesFunction();
+			$hookRegistrant->registerFunctionHandler( $functionDefinition, $functionHandler );
+			$hookRegistrant->registerHookHandler( $functionDefinition, $functionHandler );
 		}
+	}
+
+	private function registerDistance( HookRegistrant $hookRegistrant ): void {
+		$functionDefinition = DistanceFunction::getHookDefinition();
+		$functionHandler = new DistanceFunction();
+		$hookRegistrant->registerFunctionHandler( $functionDefinition, $functionHandler );
+		$hookRegistrant->registerHookHandler( $functionDefinition, $functionHandler );
+	}
+
+	private function registerFindDestination( HookRegistrant $hookRegistrant ): void {
+		$functionDefinition = FindDestinationFunction::getHookDefinition();
+		$functionHandler = new FindDestinationFunction();
+		$hookRegistrant->registerFunctionHandler( $functionDefinition, $functionHandler );
+		$hookRegistrant->registerHookHandler( $functionDefinition, $functionHandler );
+	}
+
+	private function registerGeocode( HookRegistrant $hookRegistrant ): void {
+		$functionDefinition = GeocodeFunction::getHookDefinition();
+		$functionHandler = new GeocodeFunction( MapsFactory::globalInstance()->getGeocoder() );
+		$hookRegistrant->registerFunctionHandler( $functionDefinition, $functionHandler );
+		$hookRegistrant->registerHookHandler( $functionDefinition, $functionHandler );
+	}
+
+	private function registerGeoDistance( HookRegistrant $hookRegistrant ): void {
+		$functionDefinition = GeoDistanceFunction::getHookDefinition();
+		$functionHandler = new GeoDistanceFunction();
+		$hookRegistrant->registerFunctionHandler( $functionDefinition, $functionHandler );
+		$hookRegistrant->registerHookHandler( $functionDefinition, $functionHandler );
+	}
+
+	private function registerMapsDoc( HookRegistrant $hookRegistrant ): void {
+		$functionDefinition = MapsDocFunction::getHookDefinition();
+		$functionHandler = new MapsDocFunction();
+		$hookRegistrant->registerFunctionHandler( $functionDefinition, $functionHandler );
+		$hookRegistrant->registerHookHandler( $functionDefinition, $functionHandler );
 	}
 
 }

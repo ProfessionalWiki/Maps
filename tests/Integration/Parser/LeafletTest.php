@@ -6,15 +6,13 @@ namespace Maps\Tests\Integration\Parser;
 
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\TestDoubles\ImageValueObject;
-use MediaWiki\MediaWikiServices;
+use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
 
 class LeafletTest extends TestCase {
 
 	private function parse( string $textToParse ): string {
-		$parser = MediaWikiServices::getInstance()->getParser();
-
-		return $parser->parse( $textToParse, \Title::newMainPage(), new \ParserOptions() )->getText();
+		return TestFactory::newInstance()->parse( $textToParse );
 	}
 
 	public function testLeafletImageLayersIgnoresNotFoundImages() {
