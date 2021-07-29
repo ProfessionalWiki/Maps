@@ -6,7 +6,10 @@ namespace Maps\ParserHooks;
 
 use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\MapsFactory;
-use ParserHook;
+use ParamProcessor\ProcessingResult;
+use Parser;
+use ParserHooks\HookDefinition;
+use ParserHooks\HookHandler;
 
 /**
  * Class for the 'geocode' parser hooks, which can turn
@@ -15,26 +18,26 @@ use ParserHook;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class GeocodeFunction extends ParserHook {
+class GeocodeFunction implements HookHandler {
 
 	private $geocoder;
 
-	public function __construct( Geocoder $geocoder = null ) {
-		$this->geocoder = $geocoder ?? \Maps\MapsFactory::globalInstance()->getGeocoder();
-		parent::__construct();
+	public function __construct( Geocoder $geocoder ) {
+		$this->geocoder = $geocoder;
 	}
 
-	/**
-	 * Renders and returns the output.
-	 *
-	 * @see ParserHook::render
-	 *
-	 * @param array $parameters
-	 *
-	 * @return string
-	 */
-	public function render( array $parameters ) {
-		$coordinates = $this->geocoder->geocode( $parameters['location'] );
+	public function handle( Parser $parser, ProcessingResult $result ) {
+		foreach ( $result->getErrors() as $error ) {
+			if ( $error->isFatal() ) {
+				return '<div><span class="errorbox">' .
+					wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+					'</span></div><br /><br />';
+			}
+		}
+
+		$parameters = $result->getParameters();
+
+		$coordinates = $this->geocoder->geocode( $parameters['location']->getValue() );
 
 		if ( $coordinates === null ) {
 			return 'Geocoding failed'; // TODO: i18n
@@ -42,37 +45,20 @@ class GeocodeFunction extends ParserHook {
 
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
 			$coordinates,
-			$parameters['format'],
-			$parameters['directional']
+			$parameters['format']->getValue(),
+			$parameters['directional']->getValue()
 		);
 	}
 
-	/**
-	 * @see ParserHook::getMessage()
-	 */
-	public function getMessage() {
-		return 'maps-geocode-description';
+	public static function getHookDefinition(): HookDefinition {
+		return new HookDefinition(
+			'geocode',
+			self::getParameterInfo(),
+			[ 'location' ]
+		);
 	}
 
-	/**
-	 * Gets the name of the parser hook.
-	 *
-	 * @see ParserHook::getName
-	 *
-	 * @return string
-	 */
-	protected function getName() {
-		return 'geocode';
-	}
-
-	/**
-	 * Returns an array containing the parameter info.
-	 *
-	 * @see ParserHook::getParameterInfo
-	 *
-	 * @return array
-	 */
-	protected function getParameterInfo( $type ) {
+	private static function getParameterInfo() {
 		global $egMapsAvailableCoordNotations;
 		global $egMapsCoordinateNotation;
 		global $egMapsCoordinateDirectional;
@@ -99,17 +85,6 @@ class GeocodeFunction extends ParserHook {
 		];
 
 		return $params;
-	}
-
-	/**
-	 * Returns the list of default parameters.
-	 *
-	 * @see ParserHook::getDefaultParameters
-	 *
-	 * @return array
-	 */
-	protected function getDefaultParameters( $type ) {
-		return [ 'location' ];
 	}
 
 }

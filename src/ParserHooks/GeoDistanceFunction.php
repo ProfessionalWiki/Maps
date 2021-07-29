@@ -6,8 +6,10 @@ namespace Maps\ParserHooks;
 
 use Maps\GeoFunctions;
 use Maps\Presentation\MapsDistanceParser;
-use MWException;
-use ParserHook;
+use ParamProcessor\ProcessingResult;
+use Parser;
+use ParserHooks\HookDefinition;
+use ParserHooks\HookHandler;
 
 /**
  * Class for the 'geodistance' parser hooks, which can
@@ -16,54 +18,38 @@ use ParserHook;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class GeoDistanceFunction extends ParserHook {
+class GeoDistanceFunction implements HookHandler {
 
-	/**
-	 * Renders and returns the output.
-	 *
-	 * @see ParserHook::render
-	 *
-	 * @param array $parameters
-	 *
-	 * @return string
-	 * @throws MWException
-	 */
-	public function render( array $parameters ) {
+	public function handle( Parser $parser, ProcessingResult $result ) {
+		foreach ( $result->getErrors() as $error ) {
+			if ( $error->isFatal() ) {
+				return '<div><span class="errorbox">' .
+					wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+					'</span></div><br /><br />';
+			}
+		}
+
+		$parameters = $result->getParameters();
+
 		return MapsDistanceParser::formatDistance(
 			GeoFunctions::calculateDistance(
-				$parameters['location1']->getCoordinates(),
-				$parameters['location2']->getCoordinates()
+				$parameters['location1']->getValue()->getCoordinates(),
+				$parameters['location2']->getValue()->getCoordinates()
 			),
-			$parameters['unit'], $parameters['decimals']
+			$parameters['unit']->getValue(),
+			$parameters['decimals']->getValue()
 		);
 	}
 
-	/**
-	 * @see ParserHook::getMessage
-	 */
-	public function getMessage() {
-		return 'maps-geodistance-description';
+	public static function getHookDefinition(): HookDefinition {
+		return new HookDefinition(
+			'geodistance',
+			self::getParameterInfo(),
+			[ 'location1', 'location2', 'unit', 'decimals' ]
+		);
 	}
 
-	/**
-	 * Gets the name of the parser hook.
-	 *
-	 * @see ParserHook::getName
-	 *
-	 * @return string
-	 */
-	protected function getName() {
-		return 'geodistance';
-	}
-
-	/**
-	 * Returns an array containing the parameter info.
-	 *
-	 * @see ParserHook::getParameterInfo
-	 *
-	 * @return array
-	 */
-	protected function getParameterInfo( $type ) {
+	private static function getParameterInfo(): array {
 		global $egMapsDistanceUnit, $egMapsDistanceDecimals;
 
 		$params = [];
@@ -97,19 +83,6 @@ class GeoDistanceFunction extends ParserHook {
 		}
 
 		return $params;
-	}
-
-	/**
-	 * Returns the list of default parameters.
-	 *
-	 * @see ParserHook::getDefaultParameters
-	 *
-	 * @param $type
-	 *
-	 * @return array
-	 */
-	protected function getDefaultParameters( $type ) {
-		return [ 'location1', 'location2', 'unit', 'decimals' ];
 	}
 
 }

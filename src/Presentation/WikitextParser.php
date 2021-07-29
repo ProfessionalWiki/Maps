@@ -23,7 +23,7 @@ class WikitextParser {
 		return $this->parser->parse(
 			$text,
 			$this->parser->getTitle(),
-			new ParserOptions()
+			new ParserOptions( method_exists( $this->parser, 'getUserIdentity' ) ? $this->parser->getUserIdentity() : $this->parser->getUser() )
 		)->getText();
 	}
 

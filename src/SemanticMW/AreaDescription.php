@@ -47,8 +47,8 @@ class AreaDescription extends ValueDescription {
 	/**
 	 * @see Description::prune
 	 */
-	public function prune( &$maxsize, &$maxdepth, &$log ) {
-		if ( ( $maxsize < $this->getSize() ) || ( $maxdepth < $this->getDepth() ) ) {
+	public function prune( &$maxsize, &$maxDepth, &$log ) {
+		if ( ( $maxsize < $this->getSize() ) || ( $maxDepth < $this->getDepth() ) ) {
 			$log[] = $this->getQueryString();
 
 			$result = new SMWThingDescription();
@@ -58,7 +58,7 @@ class AreaDescription extends ValueDescription {
 		}
 
 		$maxsize = $maxsize - $this->getSize();
-		$maxdepth = $maxdepth - $this->getDepth();
+		$maxDepth = $maxDepth - $this->getDepth();
 
 		return $this;
 	}

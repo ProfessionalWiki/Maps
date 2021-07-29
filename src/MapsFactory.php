@@ -163,7 +163,7 @@ class MapsFactory {
 	}
 
 	private function getMediaWikiCache(): \BagOStuff {
-		return wfGetCache( $this->settings['egMapsGeoCacheType'] );
+		return \ObjectCache::getInstance( $this->settings['egMapsGeoCacheType'] );
 	}
 
 	public function getPageContentFetcher(): PageContentFetcher {
@@ -286,26 +286,10 @@ class MapsFactory {
 	}
 
 	public function newParserHookSetup( Parser $parser ): ParserHookSetup {
-		return new ParserHookSetup( $parser );
-	}
-
-	/**
-	 * @return ParserHook[]
-	 */
-	public function newNonMapParserHooks(): array {
-		$hooks = [
-			new DistanceFunction(),
-			new FindDestinationFunction(),
-			new GeocodeFunction(),
-			new GeoDistanceFunction(),
-			new MapsDocFunction(),
-		];
-
-		if ( $this->settings['egMapsEnableCoordinateFunction'] ) {
-			$hooks[] = new CoordinatesFunction();
-		}
-
-		return $hooks;
+		return new ParserHookSetup(
+			$parser,
+			$this->settings['egMapsEnableCoordinateFunction']
+		);
 	}
 
 }

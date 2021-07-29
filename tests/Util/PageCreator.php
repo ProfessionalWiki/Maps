@@ -14,6 +14,10 @@ use User;
  */
 class PageCreator {
 
+	public static function instance(): self {
+		return new self();
+	}
+
 	public function createPage( string $title, string $content = null ) {
 		$titleObject = Title::newFromText( $title );
 

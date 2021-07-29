@@ -7,7 +7,10 @@ namespace Maps\ParserHooks;
 use DataValues\Geo\Values\LatLongValue;
 use Maps\GeoFunctions;
 use Maps\MapsFactory;
-use ParserHook;
+use ParamProcessor\ProcessingResult;
+use Parser;
+use ParserHooks\HookDefinition;
+use ParserHooks\HookHandler;
 
 /**
  * Class for the 'finddestination' parser hooks, which can find a
@@ -16,57 +19,41 @@ use ParserHook;
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
  */
-class FindDestinationFunction extends ParserHook {
+class FindDestinationFunction implements HookHandler {
 
-	/**
-	 * Renders and returns the output.
-	 *
-	 * @see ParserHook::render
-	 *
-	 * @param array $parameters
-	 *
-	 * @return string
-	 */
-	public function render( array $parameters ) {
+	public function handle( Parser $parser, ProcessingResult $result ) {
+		foreach ( $result->getErrors() as $error ) {
+			if ( $error->isFatal() ) {
+				return '<div><span class="errorbox">' .
+					wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+					'</span></div><br /><br />';
+			}
+		}
+
+		$parameters = $result->getParameters();
+
 		$destination = GeoFunctions::findDestination(
-			$parameters['location']->getCoordinates(),
-			$parameters['bearing'],
-			$parameters['distance']
+			$parameters['location']->getValue()->getCoordinates(),
+			$parameters['bearing']->getValue(),
+			$parameters['distance']->getValue()
 		);
 
 		return MapsFactory::globalInstance()->getCoordinateFormatter()->format(
 			new LatLongValue( $destination['lat'], $destination['lon'] ),
-			$parameters['format'],
-			$parameters['directional']
+			$parameters['format']->getValue(),
+			$parameters['directional']->getValue()
 		);
 	}
 
-	/**
-	 * @see ParserHook::getMessage()
-	 */
-	public function getMessage() {
-		return 'maps-finddestination-description';
+	public static function getHookDefinition(): HookDefinition {
+		return new HookDefinition(
+			'finddestination',
+			self::getParameterInfo(),
+			[ 'location', 'bearing', 'distance' ]
+		);
 	}
 
-	/**
-	 * Gets the name of the parser hook.
-	 *
-	 * @see ParserHook::getName
-	 *
-	 * @return string
-	 */
-	protected function getName() {
-		return 'finddestination';
-	}
-
-	/**
-	 * Returns an array containing the parameter info.
-	 *
-	 * @see ParserHook::getParameterInfo
-	 *
-	 * @return array
-	 */
-	protected function getParameterInfo( $type ) {
+	private static function getParameterInfo(): array {
 		global $egMapsAvailableCoordNotations;
 		global $egMapsCoordinateNotation, $egMapsCoordinateDirectional;
 
@@ -106,17 +93,6 @@ class FindDestinationFunction extends ParserHook {
 		}
 
 		return $params;
-	}
-
-	/**
-	 * Returns the list of default parameters.
-	 *
-	 * @see ParserHook::getDefaultParameters
-	 *
-	 * @return array
-	 */
-	protected function getDefaultParameters( $type ) {
-		return [ 'location', 'bearing', 'distance' ];
 	}
 
 }

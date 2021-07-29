@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Integration\Parser;
 
-use MediaWiki\MediaWikiServices;
+use Maps\Tests\Util\TestFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,8 +14,7 @@ use PHPUnit\Framework\TestCase;
 class CoordinatesTest extends TestCase {
 
 	private function parse( string $textToParse ): string {
-		return MediaWikiServices::getInstance()->getParser()
-			->parse( $textToParse, \Title::newMainPage(), new \ParserOptions() )->getText();
+		return TestFactory::newInstance()->parse( $textToParse );
 	}
 
 	public function testGivenInvalidCoordinates_errorIsShown() {
