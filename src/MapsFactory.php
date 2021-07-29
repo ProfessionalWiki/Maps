@@ -266,7 +266,7 @@ class MapsFactory {
 	}
 
 	private function getRepoGroup(): RepoGroup {
-		return RepoGroup::singleton();
+		return MediaWikiServices::getInstance()->getRepoGroup();
 	}
 
 	public function getMapOutputBuilder(): MapOutputBuilder {
