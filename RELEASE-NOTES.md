@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 9.0.0
 
-Under development
+Released on July 30th, 2021.
 
 * Dropped support for PHP 7.3
 * Added support for MediaWiki 1.36
