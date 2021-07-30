@@ -44,7 +44,6 @@
 		"jmikola/geojson": "^1.0.2"
 	},
 	"require-dev": {
-		"data-values/common": "~0.4.1",
 		"maglnet/composer-require-checker": "^2.0"
 	},
 	"autoload": {
