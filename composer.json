@@ -45,7 +45,7 @@
 	},
 	"require-dev": {
 		"data-values/common": "~0.4.1",
-		"maglnet/composer-require-checker": "^2.0"
+		"maglnet/composer-require-checker": "^3.3"
 	},
 	"autoload": {
 		"psr-4": {
