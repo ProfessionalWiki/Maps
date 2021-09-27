@@ -10,7 +10,8 @@
 			"Metalhead64",
 			"Purodha",
 			"The Evil IP address",
-			"Umherirrender"
+			"Umherirrender",
+			"Umlaut"
 		]
 	},
 	"maps-desc": "Erlaubt das Einbinden dynamischer Karten in Wikiseiten mittels Google Maps oder Leaflet. Hat einen Visual Editor, optional mit Semantic MediaWiki integriert, unterstützt GeoJSON und fügt Möglichkeiten zum Geocoding hinzu.",
@@ -236,5 +237,11 @@
 	"maps-json-editor-edit-removed-shapes": "{{PLURAL:$1|Form|Formen}} entfernt",
 	"maps-json-editor-toolbar-save-text": "Fertig",
 	"maps-json-editor-toolbar-cancel-text": "Abbrechen",
-	"maps-json-editor-toolbar-clear-text": "Alle löschen"
+	"maps-json-editor-toolbar-clear-text": "Alle löschen",
+	"maps-json-editor-toolbar-button-save": "Änderungen speichern",
+	"maps-json-editor-changes-saved": "Deine Änderungen wurden gespeichert",
+	"maps-geo-json-edit-source": "Quelltext bearbeiten",
+	"maps-geo-json-create-page-button": "Diese Seite erstellen",
+	"maps-geo-json-create-page-creating": "Seite wird erstellt...",
+	"maps-geo-json-create-page-summary": "GeoJSON Seite wurde erstellt"
 }
