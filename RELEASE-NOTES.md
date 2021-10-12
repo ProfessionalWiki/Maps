@@ -7,8 +7,8 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on July 30th, 2021.
 
-* Dropped support for PHP 7.3
-* Added support for MediaWiki 1.36
+* Raised minimum PHP version from PHP 7.3 to PHP 7.4
+* Added support for MediaWiki 1.36 and MediaWiki 1.37
 * Added `$egMapsGeoCacheType` setting (thanks [Pierre Rudloff](https://github.com/prudloff-insite))
 
 ## Maps 8.0.0
