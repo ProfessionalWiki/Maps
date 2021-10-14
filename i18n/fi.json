@@ -88,6 +88,7 @@
 	"maps_unrecognized_coords_for": "{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu ja {{PLURAL:$2|se|ne}} on jätetty pois kartasta:\n$1",
 	"maps_map_cannot_be_displayed": "Karttaa ei voida näyttää.",
 	"maps-geocoder-not-available": "Maps-laajennoksen geokoodausominaisuus ei ole käytössä. Sijaintia ei voitu geokoodata.",
+	"maps_leaflet": "Esite",
 	"maps_click_to_activate": "Napsauta aktivoidaksesi kartan",
 	"maps_centred_on": "Kartta keskitetty kohtaan $1, $2.",
 	"maps-par-mappingservice": "Mahdollistaa kartan tuottavan karttapalvelun määrityksen.",
@@ -158,5 +159,11 @@
 	"maps-json-editor-toolbar-save-title": "Tallenna muutokset",
 	"maps-json-editor-toolbar-save-text": "Valmis",
 	"maps-json-editor-toolbar-cancel-text": "Peruuta",
-	"maps-json-editor-toolbar-clear-text": "Poista kaikki"
+	"maps-json-editor-toolbar-clear-text": "Poista kaikki",
+	"maps-json-editor-toolbar-button-save": "Tallenna muutokset",
+	"maps-json-editor-changes-saved": "Muutoksesi on tallennettu",
+	"maps-geo-json-edit-source": "Muokkaa wikitekstiä",
+	"maps-geo-json-create-page-button": "Luo tämä sivu",
+	"maps-geo-json-create-page-creating": "Luodaan sivua...",
+	"tag-maps-visual-edit": "Visuaalinen kartan muokkaus"
 }
