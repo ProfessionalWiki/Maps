@@ -18,7 +18,7 @@ echo 'ini_set("display_errors", 1);' >> LocalSettings.php
 echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
 echo '$wgShowDBErrorBacktrace = true;' >> LocalSettings.php
 echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
-echo '$wgDeprecationReleaseLimit = "1.38";' >> LocalSettings.php
+echo '$wgDeprecationReleaseLimit = "1.37";' >> LocalSettings.php
 
 # "mediawiki/semantic-media-wiki": "3.2.0"
 #echo 'wfLoadExtension( "SemanticMediaWiki" );' >> LocalSettings.php
