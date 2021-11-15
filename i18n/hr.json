@@ -6,6 +6,7 @@
 			"Ivi104",
 			"MaGa",
 			"Neptune, the Mystic",
+			"Ponor",
 			"Tivek"
 		]
 	},
@@ -22,7 +23,7 @@
 	"maps-ns-layer-talk": "Razgovor o sloju",
 	"maps-layer-property": "Svojstvo",
 	"maps-layer-value": "Vrijednost",
-	"maps-layer-errors": "Pogrješke",
+	"maps-layer-errors": "Pogreške",
 	"maps-layerdef-invalid": "{{PLURAL:$1|Nevrijedeća definicija|Nevrijedeće definicije}}",
 	"maps-layerdef-invalid-fatal": "Kobna nevrijedeća definicija",
 	"maps-layerdef-wrong-namespace": "Definicije sloja valjane su samo na stranicama u imenskom prostoru »$1«",
