@@ -48,7 +48,6 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 * Latest version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
 * Downloads on [Packagist](https://packagist.org/packages/mediawiki/maps)&nbsp;&nbsp; [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
 * Continuous integration &nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/JeroenDeDauw/Maps/CI)](https://github.com/JeroenDeDauw/Maps/actions?query=workflow%3ACI)
-* Code quality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/badges/quality-score.png?s=3881a27e63cb64e7511d766bfec2e2db5d39bec3)](https://scrutinizer-ci.com/g/JeroenDeDauw/Maps/)
 * [Open bugs and feature requests](https://github.com/JeroenDeDauw/Maps/issues)
 * [Maps on OpenHub](https://www.openhub.net/p/maps/)
 * [Blog posts about Maps](https://www.entropywins.wtf/blog/tag/maps/)
@@ -95,7 +94,7 @@ If you do not have PHPUnit installed, you can download the .phar into the root d
 To run the tests with MediaWiki, change into `tests/phpunit` of your MediaWiki installation and run
 
     php phpunit.php --wiki wiki -c ../../extensions/Maps/phpunit.xml.dist
-    
+
 Where you either update `wiki` to match your wikis name, or drop the parameter. The above command
 works without modification if you are using the [MediaWiki Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant).
 
