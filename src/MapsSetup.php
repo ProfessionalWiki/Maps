@@ -62,7 +62,6 @@ class MapsSetup {
 		$this->registerParserHooks();
 		$this->registerParameterTypes();
 		$this->registerHooks();
-		$this->registerGeoJsonContentModel();
 	}
 
 	private function registerParserHooks() {
@@ -123,10 +122,6 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
 			$formatClasses['map'] = CargoFormat::class;
 		};
-	}
-
-	private function registerGeoJsonContentModel() {
-		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
 	}
 
 }
