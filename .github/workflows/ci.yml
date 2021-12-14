@@ -25,7 +25,7 @@ jobs:
             php: 8.1
 
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.php }} == 8.1
+    continue-on-error: ${{ matrix.php == 8.1 }}
 
     defaults:
       run:
