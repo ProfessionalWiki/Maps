@@ -1,0 +1,1570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="v4.15.0@a1b5e489e6fcebe40cb804793d964e99fc347820">
+  <file src="../../includes/content/JsonContentHandler.php">
+    <MissingParamType occurrences="1">
+      <code>$modelId</code>
+    </MissingParamType>
+  </file>
+  <file src="src/DataAccess/CachingGeocoder.php">
+    <MixedAssignment occurrences="1">
+      <code>$coordinates</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>LatLongValue|null</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$coordinates</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/DataAccess/GeoJsonFetcher.php">
+    <DeprecatedMethod occurrences="1">
+      <code>getNativeData</code>
+    </DeprecatedMethod>
+    <MissingReturnType occurrences="1">
+      <code>fetch</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>NS_GEO_JSON</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$json</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>array</code>
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>getContent</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="2">
+      <code>$json</code>
+      <code>$this-&gt;fetch( $fileLocation )-&gt;getContent()</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/DataAccess/MwImage.php">
+    <InvalidReturnStatement occurrences="2">
+      <code>$height === false ? 0 : $height</code>
+      <code>$width === false ? 0 : $width</code>
+    </InvalidReturnStatement>
+    <InvalidReturnType occurrences="2">
+      <code>int</code>
+      <code>int</code>
+    </InvalidReturnType>
+  </file>
+  <file src="src/GeoFunctions.php">
+    <RedundantCastGivenDocblockType occurrences="1">
+      <code>(float)$bearing</code>
+    </RedundantCastGivenDocblockType>
+    <TypeDoesNotContainType occurrences="1">
+      <code>assert( $distance &gt;= 0 )</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/GeoJsonPages/GeoJsonContent.php">
+    <FalsableReturnStatement occurrences="1">
+      <code>FormatJson::encode( FormatJson::parse( $text )-&gt;getValue(), true, FormatJson::UTF8_OK )</code>
+    </FalsableReturnStatement>
+    <InvalidFalsableReturnType occurrences="1">
+      <code>string</code>
+    </InvalidFalsableReturnType>
+    <MissingParamType occurrences="1">
+      <code>$json</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="3">
+      <code>addMapHtmlToOutput</code>
+      <code>fillParserOutput</code>
+      <code>storeSemanticValues</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="3">
+      <code>$json</code>
+      <code>$json</code>
+      <code>OutputFacade::newFromParserOutput( $output )</code>
+    </MixedArgument>
+    <MixedPropertyFetch occurrences="2">
+      <code>$json-&gt;features</code>
+      <code>$json-&gt;type</code>
+    </MixedPropertyFetch>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>GeoJsonContent</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/GeoJsonPages/GeoJsonContentHandler.php">
+    <MissingParamType occurrences="1">
+      <code>$modelId</code>
+    </MissingParamType>
+  </file>
+  <file src="src/GeoJsonPages/GeoJsonMapPageUi.php">
+    <MissingReturnType occurrences="1">
+      <code>addToOutput</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>wfMessage( 'maps-loading-map' )-&gt;inContentLanguage()-&gt;text()</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="2">
+      <code>inContentLanguage</code>
+      <code>text</code>
+    </MixedMethodCall>
+    <PossiblyNullOperand occurrences="1">
+      <code>$this-&gt;json</code>
+    </PossiblyNullOperand>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'maps-loading-map' )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/GeoJsonPages/GeoJsonNewPageUi.php">
+    <MissingReturnType occurrences="1">
+      <code>addToOutput</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>wfMessage( 'maps-geo-json-create-page-button' )-&gt;inContentLanguage()-&gt;text()</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="2">
+      <code>inContentLanguage</code>
+      <code>text</code>
+    </MixedMethodCall>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'maps-geo-json-create-page-button' )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/GeoJsonPages/GeoJsonStore.php">
+    <MissingReturnType occurrences="1">
+      <code>storeGeoJson</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/GeoJsonPages/Semantic/SemanticGeoJsonStore.php">
+    <MissingReturnType occurrences="1">
+      <code>storeGeoJson</code>
+    </MissingReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>addPropertyObjectValue</code>
+    </MixedMethodCall>
+    <PossiblyNullArgument occurrences="1">
+      <code>$this-&gt;subjectPage-&gt;getTitleValue()</code>
+    </PossiblyNullArgument>
+    <PropertyNotSetInConstructor occurrences="4">
+      <code>$parserData</code>
+      <code>$smwEventDispatcher</code>
+      <code>$subObjectBuilder</code>
+      <code>$subjectPage</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="8">
+      <code>$this-&gt;parserData</code>
+      <code>$this-&gt;parserData</code>
+      <code>$this-&gt;smwEventDispatcher</code>
+      <code>DIProperty</code>
+      <code>DIProperty</code>
+      <code>EventDispatcher</code>
+      <code>ParserData</code>
+      <code>SMWDIContainer</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/GeoJsonPages/Semantic/SubObject.php">
+    <MissingReturnType occurrences="1">
+      <code>addPropertyValuePair</code>
+    </MissingReturnType>
+    <MixedAssignment occurrences="3">
+      <code>$dataItem</code>
+      <code>$dataItems</code>
+      <code>$propertyName</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>ContainerSemanticData</code>
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="2">
+      <code>$this-&gt;values</code>
+    </MixedReturnStatement>
+    <UndefinedClass occurrences="7">
+      <code>$container</code>
+      <code>ContainerSemanticData</code>
+      <code>ContainerSemanticData</code>
+      <code>ContainerSemanticData</code>
+      <code>DIProperty</code>
+      <code>DIWikiPage</code>
+      <code>\SMWDataItem</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/GeoJsonPages/Semantic/SubObjectBuilder.php">
+    <DocblockTypeContradiction occurrences="2">
+      <code>$geometry instanceof Point</code>
+      <code>[]</code>
+    </DocblockTypeContradiction>
+    <MissingReturnType occurrences="1">
+      <code>featureCollectionToSubObjects</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="5">
+      <code>$geoJson</code>
+      <code>$this-&gt;featureCollectionToSubObjects( $geoJson )</code>
+      <code>new \SMWDIBlob( $properties['description'] )</code>
+      <code>new \SMWDIBlob( $properties['title'] )</code>
+      <code>new \SMWDIGeoCoord( $point-&gt;getCoordinates()[1], $point-&gt;getCoordinates()[0] )</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$geoJson</code>
+      <code>$json</code>
+    </MixedAssignment>
+    <MixedOperand occurrences="2">
+      <code>$this-&gt;pointCount</code>
+      <code>++$this-&gt;pointCount</code>
+    </MixedOperand>
+    <MixedReturnTypeCoercion occurrences="2">
+      <code>SubObject[]</code>
+      <code>iterator_to_array( $this-&gt;featureCollectionToSubObjects( $geoJson ) )</code>
+    </MixedReturnTypeCoercion>
+    <RedundantConditionGivenDocblockType occurrences="1">
+      <code>$feature-&gt;getProperties()</code>
+    </RedundantConditionGivenDocblockType>
+    <UndefinedClass occurrences="3">
+      <code>\SMWDIBlob</code>
+      <code>\SMWDIBlob</code>
+      <code>\SMWDIGeoCoord</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/GoogleMapsService.php">
+    <DeprecatedClass occurrences="2">
+      <code>MapsFunctions::getCommonParameters()</code>
+      <code>MapsFunctions::getFileUrl( $fileName )</code>
+    </DeprecatedClass>
+    <DeprecatedMethod occurrences="1">
+      <code>MapsFunctions::getFileUrl( $fileName )</code>
+    </DeprecatedMethod>
+    <MissingClosureParamType occurrences="3">
+      <code>$value</code>
+      <code>$value</code>
+      <code>$value</code>
+    </MissingClosureParamType>
+    <MissingParamType occurrences="2">
+      <code>$langCode</code>
+      <code>$value</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="2">
+      <code>getApiScript</code>
+      <code>getParameterWithValue</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="7">
+      <code>$langCode</code>
+      <code>$parameters['coordinates']-&gt;getValue()</code>
+      <code>$part</code>
+      <code>$this-&gt;addedDependencies</code>
+      <code>$value</code>
+      <code>$value</code>
+      <code>$value</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$dependencies</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAccess occurrences="1">
+      <code>$value</code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;addedDependencies[]</code>
+    </MixedArrayAssignment>
+    <MixedArrayOffset occurrences="1">
+      <code>$mapParams[$parameter-&gt;getName()]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="9">
+      <code>$dependencies[]</code>
+      <code>$dependency</code>
+      <code>$mapParams[$parameter-&gt;getName()]</code>
+      <code>$mapsOnThisPage</code>
+      <code>$parameter</code>
+      <code>$parameters['zoom']</code>
+      <code>$part</code>
+      <code>$urlArgs['key']</code>
+      <code>$urlArgs['v']</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="3">
+      <code>getCode</code>
+      <code>getName</code>
+      <code>getValue</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="2">
+      <code>$mapsOnThisPage</code>
+      <code>$mapsOnThisPage</code>
+    </MixedOperand>
+    <MixedReturnTypeCoercion occurrences="2">
+      <code>$params</code>
+      <code>array</code>
+    </MixedReturnTypeCoercion>
+    <UndefinedFunction occurrences="2">
+      <code>wfArrayToCgi( $urlArgs )</code>
+      <code>wfExpandUrl( MapsFunctions::getFileUrl( $fileName ) )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/LeafletService.php">
+    <DeprecatedClass occurrences="1">
+      <code>MapsFunctions::getCommonParameters()</code>
+    </DeprecatedClass>
+    <MissingReturnType occurrences="3">
+      <code>getDefaultZoom</code>
+      <code>getJsImageLayers</code>
+      <code>getLayerDependencies</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="12">
+      <code>$GLOBALS['egMapsLeafletAvailableLayers']</code>
+      <code>$GLOBALS['egMapsLeafletAvailableOverlayLayers']</code>
+      <code>$egMapsLeafletAvailableLayers</code>
+      <code>$egMapsLeafletLayerDependencies</code>
+      <code>$egMapsLeafletLayersApiKeys</code>
+      <code>$imageLayer</code>
+      <code>$layerName</code>
+      <code>$layerName</code>
+      <code>$layerName</code>
+      <code>$params['geojson']</code>
+      <code>$params['image layers']</code>
+      <code>$this-&gt;addedDependencies</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$dependencies</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayAssignment occurrences="1">
+      <code>$this-&gt;addedDependencies[]</code>
+    </MixedArrayAssignment>
+    <MixedAssignment occurrences="10">
+      <code>$dependencies[]</code>
+      <code>$dependency</code>
+      <code>$imageLayer</code>
+      <code>$layerName</code>
+      <code>$mapsOnThisPage</code>
+      <code>$params['GeoJsonRevisionId']</code>
+      <code>$params['GeoJsonSource']</code>
+      <code>$params['geojson']</code>
+      <code>$params['imageLayers']</code>
+      <code>$result</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>array</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="5">
+      <code>getContent</code>
+      <code>getRevisionId</code>
+      <code>getText</code>
+      <code>getTitleValue</code>
+      <code>getTitleValue</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="4">
+      <code>$egMapsLeafletLayerDependencies[$layerName]</code>
+      <code>$egMapsLeafletLayersApiKeys[$layerName]</code>
+      <code>$mapsOnThisPage</code>
+      <code>$mapsOnThisPage</code>
+    </MixedOperand>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;getLayerDependencies( $params )</code>
+    </MixedReturnStatement>
+    <MixedReturnTypeCoercion occurrences="2">
+      <code>$params</code>
+      <code>array</code>
+    </MixedReturnTypeCoercion>
+  </file>
+  <file src="src/LegacyMapEditor/MapEditorHtml.php">
+    <ImplicitToStringCast occurrences="23">
+      <code>$this-&gt;msg( 'mapeditor-code-title' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-fillcolor' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-fillopcaity' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-group' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-icon' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-image' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-inlinelabel' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-link' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-showonhover' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-strokecolor' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-strokeopacity' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-strokeweight' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-text' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-title' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-field-visitedicon' )</code>
+      <code>$this-&gt;msg( 'mapeditor-form-title' )</code>
+      <code>$this-&gt;msg( 'mapeditor-imageoverlay-title' )</code>
+      <code>$this-&gt;msg( 'mapeditor-import-note' )</code>
+      <code>$this-&gt;msg( 'mapeditor-import-title' )</code>
+      <code>$this-&gt;msg( 'mapeditor-link-title-switcher-link-text' )</code>
+      <code>$this-&gt;msg( 'mapeditor-link-title-switcher-popup-text' )</code>
+      <code>$this-&gt;msg( 'mapeditor-mapparam-defoption' )</code>
+      <code>$this-&gt;msg( 'mapeditor-mapparam-title' )</code>
+    </ImplicitToStringCast>
+    <InvalidDocblock occurrences="1">
+      <code>protected $attribs;</code>
+    </InvalidDocblock>
+    <MissingParamType occurrences="1">
+      <code>$attribs</code>
+    </MissingParamType>
+    <MixedArgument occurrences="1">
+      <code>$this-&gt;attribs</code>
+    </MixedArgument>
+  </file>
+  <file src="src/LegacyMapEditor/SpecialMapEditor.php">
+    <MissingReturnType occurrences="1">
+      <code>execute</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1"/>
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>SpecialMapEditor</code>
+      <code>SpecialMapEditor</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/LegacyModel/BaseElement.php">
+    <DeprecatedMethod occurrences="1">
+      <code>getJSONObject</code>
+    </DeprecatedMethod>
+    <MissingReturnType occurrences="4">
+      <code>getArrayValue</code>
+      <code>setLink</code>
+      <code>setText</code>
+      <code>setTitle</code>
+    </MissingReturnType>
+    <MixedInferredReturnType occurrences="3">
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="3">
+      <code>$this-&gt;link ?? ''</code>
+      <code>$this-&gt;text ?? ''</code>
+      <code>$this-&gt;title ?? ''</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/LegacyModel/BaseFillableElement.php">
+    <MissingParamType occurrences="2">
+      <code>$fillColor</code>
+      <code>$fillOpacity</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="6">
+      <code>getFillColor</code>
+      <code>getFillOpacity</code>
+      <code>hasFillColor</code>
+      <code>hasFillOpacity</code>
+      <code>setFillColor</code>
+      <code>setFillOpacity</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="2">
+      <code>$fillColor</code>
+      <code>$fillOpacity</code>
+    </MixedArgument>
+  </file>
+  <file src="src/LegacyModel/BaseStrokableElement.php">
+    <DeprecatedMethod occurrences="1">
+      <code>parent::getJSONObject( $defText, $defTitle )</code>
+    </DeprecatedMethod>
+    <MissingParamType occurrences="3">
+      <code>$strokeColor</code>
+      <code>$strokeOpacity</code>
+      <code>$strokeWeight</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="9">
+      <code>getStrokeColor</code>
+      <code>getStrokeOpacity</code>
+      <code>getStrokeWeight</code>
+      <code>hasStrokeColor</code>
+      <code>hasStrokeOpacity</code>
+      <code>hasStrokeWeight</code>
+      <code>setStrokeColor</code>
+      <code>setStrokeOpacity</code>
+      <code>setStrokeWeight</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="3">
+      <code>$strokeColor</code>
+      <code>$strokeOpacity</code>
+      <code>$strokeWeight</code>
+    </MixedArgument>
+  </file>
+  <file src="src/LegacyModel/Circle.php">
+    <MissingReturnType occurrences="2">
+      <code>setCircleCentre</code>
+      <code>setCircleRadius</code>
+    </MissingReturnType>
+    <MixedInferredReturnType occurrences="2">
+      <code>LatLongValue</code>
+      <code>float</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="2">
+      <code>$this-&gt;circleCentre</code>
+      <code>$this-&gt;circleRadius</code>
+    </MixedReturnStatement>
+    <TypeDoesNotContainType occurrences="1">
+      <code>!is_float( $circleRadius )</code>
+    </TypeDoesNotContainType>
+  </file>
+  <file src="src/LegacyModel/ImageOverlay.php">
+    <MixedAssignment occurrences="1">
+      <code>$data['image']</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;imageUrl</code>
+    </MixedReturnStatement>
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>ImageOverlay</code>
+      <code>ImageOverlay</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/LegacyModel/Location.php">
+    <DeprecatedClass occurrences="1">
+      <code>\Maps\MapsFunctions::getFileUrl( $this-&gt;getIcon() )</code>
+    </DeprecatedClass>
+    <DeprecatedMethod occurrences="2">
+      <code>\Maps\MapsFunctions::getFileUrl( $this-&gt;getIcon() )</code>
+      <code>parent::getJSONObject( $defText, $defTitle )</code>
+    </DeprecatedMethod>
+    <DocblockTypeContradiction occurrences="1">
+      <code>is_null( $this-&gt;address )</code>
+    </DocblockTypeContradiction>
+    <MissingReturnType occurrences="4">
+      <code>setGroup</code>
+      <code>setIcon</code>
+      <code>setInlineLabel</code>
+      <code>setVisitedIcon</code>
+    </MissingReturnType>
+    <PropertyNotSetInConstructor occurrences="1">
+      <code>$address</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/LegacyModel/Polygon.php">
+    <MissingReturnType occurrences="3">
+      <code>setFillColor</code>
+      <code>setFillOpacity</code>
+      <code>setOnlyVisibleOnHover</code>
+    </MissingReturnType>
+    <MixedAssignment occurrences="3">
+      <code>$json['fillColor']</code>
+      <code>$json['fillOpacity']</code>
+      <code>$json['onlyVisibleOnHover']</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>bool</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;onlyVisibleOnHover</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/LegacyModel/Rectangle.php">
+    <MissingReturnType occurrences="2">
+      <code>setRectangleNorthEast</code>
+      <code>setRectangleSouthWest</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/LegacyModel/WmsOverlay.php">
+    <DeprecatedMethod occurrences="1">
+      <code>parent::getJSONObject( $defText, $defTitle )</code>
+    </DeprecatedMethod>
+    <MissingReturnType occurrences="3">
+      <code>setWmsLayerName</code>
+      <code>setWmsServerUrl</code>
+      <code>setWmsStyleName</code>
+    </MissingReturnType>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>$wmsLayerName</code>
+      <code>$wmsServerUrl</code>
+      <code>$wmsStyleName</code>
+    </PropertyNotSetInConstructor>
+  </file>
+  <file src="src/Map/CargoFormat/CargoFormat.php">
+    <UndefinedClass occurrences="1">
+      <code>CargoDisplayFormat</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Map/CargoFormat/CargoOutputBuilder.php">
+    <MissingReturnType occurrences="1">
+      <code>processParameters</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="4">
+      <code>$mapData-&gt;getParameters()['icon']</code>
+      <code>$this-&gt;processParameters( $service, $displayParams )</code>
+      <code>$valuesRow</code>
+      <code>array_shift( $valuesRow ) ?? ''</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="5">
+      <code>$fieldDescriptions</code>
+      <code>$name</code>
+      <code>$this-&gt;createMarkers( $formattedValues, $fieldDescriptions, $mapData )</code>
+      <code>$this-&gt;getParameterDefinitions( $service )</code>
+      <code>$this-&gt;getPropertyValuesToDisplay( $valuesRow, $coordinateFields )</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="6">
+      <code>$field</code>
+      <code>$hiddenFields[]</code>
+      <code>$marker</code>
+      <code>$propertyValues[$name]</code>
+      <code>$value</code>
+      <code>$valuesRow</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>string[]</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>setIconUrl</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="2">
+      <code>$field</code>
+      <code>$field</code>
+    </MixedOperand>
+    <PossiblyNullReference occurrences="1">
+      <code>getUrl</code>
+    </PossiblyNullReference>
+    <UndefinedDocblockClass occurrences="1">
+      <code>CargoFieldDescription[]</code>
+    </UndefinedDocblockClass>
+  </file>
+  <file src="src/Map/DisplayMap/DisplayMapFunction.php">
+    <MissingReturnType occurrences="2">
+      <code>getAllParameterDefinitions</code>
+      <code>trackMap</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="5">
+      <code>$service</code>
+      <code>$service</code>
+      <code>$this-&gt;getAllParameterDefinitions( $service, "\n" )</code>
+      <code>$this-&gt;getAllParameterDefinitions( $service, ';' )</code>
+      <code>Maps\Presentation\ParameterExtractor::extractFromKeyValueStrings( $parameters )</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$parameters</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="4">
+      <code>$mapOutput</code>
+      <code>$mapOutput</code>
+      <code>$service</code>
+      <code>$service</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>string</code>
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="8">
+      <code>addResourcesToParserOutput</code>
+      <code>addResourcesToParserOutput</code>
+      <code>getHtml</code>
+      <code>getHtml</code>
+      <code>getServiceOrDefault</code>
+      <code>getServiceOrDefault</code>
+      <code>renderMap</code>
+      <code>renderMap</code>
+    </MixedMethodCall>
+    <MixedPropertyAssignment occurrences="2">
+      <code>$this-&gt;renderer</code>
+      <code>$this-&gt;renderer</code>
+    </MixedPropertyAssignment>
+    <MixedReturnStatement occurrences="2">
+      <code>$mapOutput-&gt;getHtml()</code>
+      <code>$mapOutput-&gt;getHtml()</code>
+    </MixedReturnStatement>
+  </file>
+  <file src="src/Map/DisplayMap/DisplayMapRenderer.php">
+    <MissingParamType occurrences="3">
+      <code>$coordinatesOrAddress</code>
+      <code>$iconUrl</code>
+      <code>$visitedIconUrl</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="5">
+      <code>getCenter</code>
+      <code>getLocationJson</code>
+      <code>getLocationJsonObject</code>
+      <code>handleMarkerData</code>
+      <code>handleShapeData</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="11">
+      <code>$coordinatesOrAddress</code>
+      <code>$coordinatesOrAddress</code>
+      <code>$iconUrl</code>
+      <code>$jsonObj['inlineLabel']</code>
+      <code>$obj</code>
+      <code>$params['icon']</code>
+      <code>$params['label']</code>
+      <code>$params['title']</code>
+      <code>$params['visitedicon'] ?? ''</code>
+      <code>$this-&gt;handleMarkerData( $mapData-&gt;getParameters() )</code>
+      <code>$visitedIconUrl</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="7">
+      <code>$coordinatesOrAddress</code>
+      <code>$locationJsonObjects[]</code>
+      <code>$obj</code>
+      <code>$params['centre']</code>
+      <code>$params['locations']</code>
+      <code>$params['wmsoverlay']</code>
+      <code>$textContainer</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="1">
+      <code>getJSONObject</code>
+    </MixedMethodCall>
+    <PossiblyNullArgument occurrences="1">
+      <code>$this-&gt;service</code>
+    </PossiblyNullArgument>
+    <PropertyNotSetInConstructor occurrences="4">
+      <code>$elementSerializer</code>
+      <code>$fileUrlFinder</code>
+      <code>$locationParser</code>
+      <code>$wikitextParser</code>
+    </PropertyNotSetInConstructor>
+    <PropertyTypeCoercion occurrences="1">
+      <code>$factory-&gt;getFileUrlFinder()</code>
+    </PropertyTypeCoercion>
+  </file>
+  <file src="src/Map/MapDataSerializer.php">
+    <MixedArgument occurrences="1">
+      <code>array_key_exists( 'locations', $json ) ? $json['locations'] : []</code>
+    </MixedArgument>
+  </file>
+  <file src="src/Map/MapHtmlBuilder.php">
+    <MixedArgument occurrences="1">
+      <code>wfMessage( 'maps-loading-map' )-&gt;inContentLanguage()-&gt;text()</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="2">
+      <code>inContentLanguage</code>
+      <code>text</code>
+    </MixedMethodCall>
+    <PossiblyFalseArgument occurrences="1">
+      <code>FormatJson::encode( $json )</code>
+    </PossiblyFalseArgument>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'maps-loading-map' )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/Map/MapOutput.php">
+    <MissingReturnType occurrences="1">
+      <code>addResourcesToParserOutput</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Map/SemanticFormat/MapPrinter.php">
+    <UndefinedClass occurrences="1">
+      <code>ResultPrinter</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Map/StructuredPopup.php">
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$name</code>
+    </MixedArgumentTypeCoercion>
+  </file>
+  <file src="src/MappingServices.php">
+    <MixedArrayOffset occurrences="1">
+      <code>$this-&gt;nameToServiceMap[$alias]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="1">
+      <code>$alias</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/MapsFactory.php">
+    <MissingParamType occurrences="1">
+      <code>$mwGlobals</code>
+    </MissingParamType>
+    <MixedArgument occurrences="12">
+      <code>$mwGlobals</code>
+      <code>$this-&gt;getSmwFactory()-&gt;getEventDispatcher()</code>
+      <code>$this-&gt;getSmwFactory()-&gt;newParserData( $subjectPage, $parserOutput )</code>
+      <code>$this-&gt;settings['egMapsAvailableServices']</code>
+      <code>$this-&gt;settings['egMapsDefaultService']</code>
+      <code>$this-&gt;settings['egMapsEnableCoordinateFunction']</code>
+      <code>$this-&gt;settings['egMapsGMaps3ApiKey']</code>
+      <code>$this-&gt;settings['egMapsGMaps3ApiVersion']</code>
+      <code>$this-&gt;settings['egMapsGeoCacheTtl']</code>
+      <code>$this-&gt;settings['egMapsGeoCacheType']</code>
+      <code>$this-&gt;settings['egMapsGeoJsonCacheTtl']</code>
+      <code>$this-&gt;settings['egMapsGeoNamesUser']</code>
+    </MixedArgument>
+    <MixedInferredReturnType occurrences="5">
+      <code>ApplicationFactory</code>
+      <code>GoogleMapsService</code>
+      <code>LeafletService</code>
+      <code>SemanticMapsSetup</code>
+      <code>self</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="4">
+      <code>$this-&gt;googleService</code>
+      <code>$this-&gt;leafletService</code>
+      <code>SemanticMapsSetup::newFromMediaWikiGlobals( $mwGlobals, $this-&gt;getMappingServices() )</code>
+      <code>self::$globalInstance</code>
+    </MixedReturnStatement>
+    <UndefinedClass occurrences="4">
+      <code>$this-&gt;getSmwFactory()</code>
+      <code>$this-&gt;getSmwFactory()</code>
+      <code>ApplicationFactory</code>
+      <code>ApplicationFactory</code>
+    </UndefinedClass>
+    <UnsafeInstantiation occurrences="1">
+      <code>new static( $GLOBALS, MediaWikiServices::getInstance() )</code>
+    </UnsafeInstantiation>
+  </file>
+  <file src="src/MapsHooks.php">
+    <MissingParamType occurrences="1">
+      <code>$resourceLoader</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="7">
+      <code>addSmwSettings</code>
+      <code>onBeforeDisplayNoArticleText</code>
+      <code>onChangeTagsAllowedAdd</code>
+      <code>onRegisterTags</code>
+      <code>onResourceLoaderTestModules</code>
+      <code>onShowMissingArticle</code>
+      <code>onSkinTemplateNavigation</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="2">
+      <code>$links['views']</code>
+      <code>OutputFacade::newFromOutputPage( $article-&gt;getContext()-&gt;getOutput() )</code>
+    </MixedArgument>
+    <MixedArrayAssignment occurrences="2">
+      <code>$links['views']['edit']</code>
+      <code>$modules['qunit']['ext.maps.test']</code>
+    </MixedArrayAssignment>
+    <MixedAssignment occurrences="5">
+      <code>$links['views']['edit']['text']</code>
+      <code>$vars</code>
+      <code>$vars['egMapsAvailableServices']</code>
+      <code>$vars['egMapsDebugJS']</code>
+      <code>$vars['egMapsLeafletLayersApiKeys']</code>
+    </MixedAssignment>
+    <MixedOperand occurrences="2">
+      <code>$GLOBALS['egMapsGlobalJSVars']</code>
+      <code>$GLOBALS['wgScriptPath']</code>
+    </MixedOperand>
+    <PossiblyNullReference occurrences="2">
+      <code>exists</code>
+      <code>getNamespace</code>
+    </PossiblyNullReference>
+    <UndefinedClass occurrences="1">
+      <code>ALTree</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="1">
+      <code>SMWPrintRequest[]</code>
+    </UndefinedDocblockClass>
+    <UndefinedFunction occurrences="1"/>
+  </file>
+  <file src="src/MapsSetup.php">
+    <MissingDependency occurrences="1">
+      <code>CargoFormat</code>
+    </MissingDependency>
+    <MissingReturnType occurrences="7">
+      <code>defaultSettings</code>
+      <code>registerAllTheThings</code>
+      <code>registerGeoJsonContentModel</code>
+      <code>registerHooks</code>
+      <code>registerParameterTypes</code>
+      <code>registerParserHooks</code>
+      <code>setup</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>$this-&gt;mwGlobals['egMapsAvailableServices']</code>
+    </MixedArgument>
+    <MixedArrayAssignment occurrences="23">
+      <code>$this-&gt;mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID]</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['AdminLinks']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['BeforeDisplayNoArticleText']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['CargoSetFormatClasses']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['ChangeTagsAllowedAdd']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['ChangeTagsListActive']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['ListDefinedTags']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['MakeGlobalVariablesScript']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['ParserFirstCallInit']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['ResourceLoaderTestModules']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['ShowMissingArticle']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['SkinTemplateNavigation']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['coordinate']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['distance']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapscircle']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapsimageoverlay']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapsline']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapslocation']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapspolygon']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapsrectangle']</code>
+      <code>$this-&gt;mwGlobals['wgParamDefinitions']['wmsoverlay']</code>
+      <code>$this-&gt;mwGlobals['wgSpecialPageGroups']['MapEditor']</code>
+      <code>$this-&gt;mwGlobals['wgSpecialPages']['MapEditor']</code>
+    </MixedArrayAssignment>
+    <MixedAssignment occurrences="2">
+      <code>$formatClasses['map']</code>
+      <code>$this-&gt;mwGlobals</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/ParserHookSetup.php">
+    <MissingClosureParamType occurrences="1">
+      <code>$text</code>
+    </MissingClosureParamType>
+    <MissingParamType occurrences="1">
+      <code>$fixedArguments</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="3">
+      <code>registerDisplayMap</code>
+      <code>registerParserHooks</code>
+      <code>registerServiceSpecificFunction</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="2">
+      <code>$argument</code>
+      <code>$fixedArguments</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="2">
+      <code>$arguments</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayOffset occurrences="1">
+      <code>$arguments[DisplayMapFunction::getDefaultParameters()[0]]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="1">
+      <code>$arguments[DisplayMapFunction::getDefaultParameters()[0]]</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/ParserHooks/CoordinatesFunction.php">
+    <MixedArgument occurrences="3">
+      <code>$parameters['directional']-&gt;getValue()</code>
+      <code>$parameters['format']-&gt;getValue()</code>
+      <code>$parameters['location']-&gt;getValue()</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>self::getParameterInfo()</code>
+    </MixedArgumentTypeCoercion>
+    <MixedMethodCall occurrences="1">
+      <code>parse</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+    </MixedOperand>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/ParserHooks/DistanceFunction.php">
+    <MixedArgument occurrences="3">
+      <code>$parameters['decimals']-&gt;getValue()</code>
+      <code>$parameters['distance']-&gt;getValue()</code>
+      <code>$parameters['unit']-&gt;getValue()</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>self::getParameterInfo()</code>
+    </MixedArgumentTypeCoercion>
+    <MixedMethodCall occurrences="1">
+      <code>parse</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+    </MixedOperand>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/ParserHooks/FindDestinationFunction.php">
+    <MixedArgument occurrences="7">
+      <code>$destination['lat']</code>
+      <code>$destination['lon']</code>
+      <code>$parameters['bearing']-&gt;getValue()</code>
+      <code>$parameters['directional']-&gt;getValue()</code>
+      <code>$parameters['distance']-&gt;getValue()</code>
+      <code>$parameters['format']-&gt;getValue()</code>
+      <code>$parameters['location']-&gt;getValue()-&gt;getCoordinates()</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>self::getParameterInfo()</code>
+    </MixedArgumentTypeCoercion>
+    <MixedMethodCall occurrences="2">
+      <code>getCoordinates</code>
+      <code>parse</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+    </MixedOperand>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/ParserHooks/GeoDistanceFunction.php">
+    <MixedArgument occurrences="4">
+      <code>$parameters['decimals']-&gt;getValue()</code>
+      <code>$parameters['location1']-&gt;getValue()-&gt;getCoordinates()</code>
+      <code>$parameters['location2']-&gt;getValue()-&gt;getCoordinates()</code>
+      <code>$parameters['unit']-&gt;getValue()</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>self::getParameterInfo()</code>
+    </MixedArgumentTypeCoercion>
+    <MixedMethodCall occurrences="3">
+      <code>getCoordinates</code>
+      <code>getCoordinates</code>
+      <code>parse</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+    </MixedOperand>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/ParserHooks/GeocodeFunction.php">
+    <MissingReturnType occurrences="1">
+      <code>getParameterInfo</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="4">
+      <code>$parameters['directional']-&gt;getValue()</code>
+      <code>$parameters['format']-&gt;getValue()</code>
+      <code>$parameters['location']-&gt;getValue()</code>
+      <code>self::getParameterInfo()</code>
+    </MixedArgument>
+    <MixedMethodCall occurrences="1">
+      <code>parse</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+    </MixedOperand>
+    <UndefinedFunction occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/ParserHooks/MapsDocFunction.php">
+    <MissingConstructor occurrences="1">
+      <code>$language</code>
+    </MissingConstructor>
+    <MissingReturnType occurrences="2">
+      <code>getMessage</code>
+      <code>getServiceParameters</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="2">
+      <code>$parameters['service']-&gt;getValue()</code>
+      <code>$this-&gt;getServiceParameters( $factory, $parameters['service']-&gt;getValue() )</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="2">
+      <code>$default</code>
+      <code>self::getParameterInfo()</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="3">
+      <code>$default</code>
+      <code>$key</code>
+      <code>$this-&gt;language</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="3">
+      <code>inLanguage</code>
+      <code>parse</code>
+      <code>text</code>
+    </MixedMethodCall>
+    <MixedOperand occurrences="1">
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+    </MixedOperand>
+    <MixedReturnStatement occurrences="1">
+      <code>wfMessage( $key, $args )-&gt;inLanguage( $this-&gt;language )-&gt;text()</code>
+    </MixedReturnStatement>
+    <UndefinedFunction occurrences="2">
+      <code>wfMessage( $key, $args )</code>
+      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+    </UndefinedFunction>
+  </file>
+  <file src="src/Presentation/CoordinateFormatter.php">
+    <MissingReturnType occurrences="1">
+      <code>format</code>
+    </MissingReturnType>
+  </file>
+  <file src="src/Presentation/ElementJsonSerializer.php">
+    <MissingReturnType occurrences="1">
+      <code>titleAndText</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="3">
+      <code>$elementJson['text']</code>
+      <code>$elementJson['title']</code>
+      <code>$json</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$json</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Presentation/MapsDistanceParser.php">
+    <InvalidGlobal occurrences="1">
+      <code>global $egMapsDistanceUnits;</code>
+    </InvalidGlobal>
+    <MissingReturnType occurrences="1">
+      <code>initUnitRegex</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="7">
+      <code>$egMapsDistanceUnit</code>
+      <code>$egMapsDistanceUnits</code>
+      <code>$egMapsDistanceUnits</code>
+      <code>$egMapsDistanceUnits</code>
+      <code>$egMapsDistanceUnits</code>
+      <code>$unit</code>
+      <code>isset( $value ) ? $value : $distance</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="1">
+      <code>$egMapsDistanceUnits[self::getValidUnit( $unit )]</code>
+    </MixedArrayAccess>
+    <MixedAssignment occurrences="1">
+      <code>$unit</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>float</code>
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedOperand occurrences="2">
+      <code>self::$unitRegex</code>
+      <code>self::$unitRegex</code>
+    </MixedOperand>
+    <MixedReturnStatement occurrences="2">
+      <code>$egMapsDistanceUnits[self::getValidUnit( $unit )]</code>
+      <code>$unit</code>
+    </MixedReturnStatement>
+    <PossiblyFalseArgument occurrences="1">
+      <code>self::parseDistance( $distance )</code>
+    </PossiblyFalseArgument>
+    <RedundantCast occurrences="1">
+      <code>(string)$distance</code>
+    </RedundantCast>
+  </file>
+  <file src="src/Presentation/OutputFacade.php">
+    <MissingConstructor occurrences="2">
+      <code>$outputPage</code>
+      <code>$parserOutput</code>
+    </MissingConstructor>
+    <MissingReturnType occurrences="5">
+      <code>addHeadItem</code>
+      <code>addHtml</code>
+      <code>addModules</code>
+      <code>newFromOutputPage</code>
+      <code>newFromParserOutput</code>
+    </MissingReturnType>
+    <RedundantConditionGivenDocblockType occurrences="6">
+      <code>$this-&gt;outputPage !== null</code>
+      <code>$this-&gt;outputPage !== null</code>
+      <code>$this-&gt;outputPage !== null</code>
+      <code>$this-&gt;parserOutput !== null</code>
+      <code>$this-&gt;parserOutput !== null</code>
+      <code>$this-&gt;parserOutput !== null</code>
+    </RedundantConditionGivenDocblockType>
+  </file>
+  <file src="src/Presentation/ParameterExtractor.php">
+    <MissingReturnType occurrences="1">
+      <code>extractFromKeyValueStrings</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="1">
+      <code>$keyValueString</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$rawName</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="1">
+      <code>$keyValueString</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/Presentation/WikitextParser.php">
+    <DeprecatedMethod occurrences="2">
+      <code>getTitle</code>
+      <code>getUser</code>
+    </DeprecatedMethod>
+  </file>
+  <file src="src/SemanticMW/AreaDescription.php">
+    <UndefinedClass occurrences="1">
+      <code>ValueDescription</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/SemanticMW/CoordinateDescription.php">
+    <UndefinedClass occurrences="1">
+      <code>ValueDescription</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/SemanticMW/CoordinateValue.php">
+    <UndefinedClass occurrences="1">
+      <code>SMWDataValue</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/SemanticMW/KmlPrinter.php">
+    <UndefinedClass occurrences="1">
+      <code>FileExportPrinter</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/SemanticMW/QueryHandler.php">
+    <DeprecatedClass occurrences="2">
+      <code>MapsFunctions::getFileUrl( $this-&gt;activeIcon )</code>
+      <code>MapsFunctions::getFileUrl( $this-&gt;icon )</code>
+    </DeprecatedClass>
+    <DeprecatedMethod occurrences="2">
+      <code>MapsFunctions::getFileUrl( $this-&gt;activeIcon )</code>
+      <code>MapsFunctions::getFileUrl( $this-&gt;icon )</code>
+    </DeprecatedMethod>
+    <InvalidNullableReturnType occurrences="1">
+      <code>string</code>
+    </InvalidNullableReturnType>
+    <InvalidReturnType occurrences="1">
+      <code>Location[]</code>
+    </InvalidReturnType>
+    <MissingReturnType occurrences="15">
+      <code>getTitleOutput</code>
+      <code>hasTemplate</code>
+      <code>setActiveIcon</code>
+      <code>setHeaderStyle</code>
+      <code>setHideNamespace</code>
+      <code>setIcon</code>
+      <code>setLinkStyle</code>
+      <code>setShowSubject</code>
+      <code>setSubjectSeparator</code>
+      <code>setTemplate</code>
+      <code>setText</code>
+      <code>setTitle</code>
+      <code>setUserParam</code>
+      <code>shouldGetActiveIconUrlFor</code>
+      <code>showArticleLink</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="7">
+      <code>$display_location</code>
+      <code>$display_options</code>
+      <code>$icon</code>
+      <code>$row</code>
+      <code>$row[0]</code>
+      <code>$row[0]-&gt;getResultSubject()-&gt;getTitle()</code>
+      <code>$this-&gt;getTitleOutput( $title )</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$properties</code>
+    </MixedArgumentTypeCoercion>
+    <MixedArrayOffset occurrences="1">
+      <code>$legendLabels[$icon]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="6">
+      <code>$display_location</code>
+      <code>$display_options</code>
+      <code>$icon</code>
+      <code>$legendLabels[$icon]</code>
+      <code>$legend_label</code>
+      <code>$row</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="12">
+      <code>?Linker</code>
+      <code>?Linker</code>
+      <code>Location</code>
+      <code>Location[]</code>
+      <code>array</code>
+      <code>array|string[]</code>
+      <code>bool</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+      <code>string</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="3">
+      <code>equals</code>
+      <code>getResultSubject</code>
+      <code>getTitle</code>
+    </MixedMethodCall>
+    <MixedPropertyFetch occurrences="1">
+      <code>$display_location-&gt;display_options</code>
+    </MixedPropertyFetch>
+    <MixedReturnStatement occurrences="3">
+      <code>$icon</code>
+      <code>$this-&gt;headerStyle === 'show' &amp;&amp; $this-&gt;linkStyle !== 'none' ? smwfGetLinker() : null</code>
+      <code>$this-&gt;linkStyle === 'all' ? smwfGetLinker() : null</code>
+    </MixedReturnStatement>
+    <NullableReturnStatement occurrences="1">
+      <code>$this-&gt;activeIcon</code>
+    </NullableReturnStatement>
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$this-&gt;template</code>
+    </PossiblyInvalidArgument>
+    <PossiblyNullArgument occurrences="1">
+      <code>$this-&gt;activeIcon</code>
+    </PossiblyNullArgument>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>$linkAbsolute</code>
+      <code>$outputMode</code>
+      <code>$queryResult</code>
+    </PropertyNotSetInConstructor>
+    <UndefinedClass occurrences="10">
+      <code>$this-&gt;queryResult</code>
+      <code>SMWDIGeoCoord</code>
+      <code>SMWDataValue</code>
+      <code>SMWDataValue</code>
+      <code>SMWDataValue</code>
+      <code>SMWPrintRequest</code>
+      <code>SMWPrintRequest</code>
+      <code>SMWQueryResult</code>
+      <code>SMWResultArray</code>
+      <code>SMWWikiPageValue</code>
+    </UndefinedClass>
+    <UndefinedDocblockClass occurrences="2">
+      <code>SMWResultArray[]</code>
+      <code>SMWResultArray[]</code>
+    </UndefinedDocblockClass>
+    <UndefinedFunction occurrences="2">
+      <code>smwfGetLinker()</code>
+      <code>smwfGetLinker()</code>
+    </UndefinedFunction>
+    <UnusedVariable occurrences="1">
+      <code>$legend_label</code>
+    </UnusedVariable>
+  </file>
+  <file src="src/SemanticMW/TemplatedPopup.php">
+    <MissingParamType occurrences="1">
+      <code>$displayTitle</code>
+    </MissingParamType>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$segments</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="2">
+      <code>$segments[]</code>
+      <code>$value</code>
+    </MixedAssignment>
+    <MixedOperand occurrences="2">
+      <code>$displayTitle</code>
+      <code>$value</code>
+    </MixedOperand>
+  </file>
+  <file src="src/SemanticMapsSetup.php">
+    <MissingDependency occurrences="4">
+      <code>KmlPrinter</code>
+      <code>MapPrinter</code>
+      <code>MapPrinter</code>
+      <code>MapPrinter</code>
+    </MissingDependency>
+    <MissingReturnType occurrences="4">
+      <code>initExtension</code>
+      <code>newFromMediaWikiGlobals</code>
+      <code>registerGoogleMaps</code>
+      <code>registerLeaflet</code>
+    </MissingReturnType>
+    <MixedArrayAccess occurrences="5">
+      <code>$this-&gt;mwGlobals['egMapsDefaultService']</code>
+      <code>$this-&gt;mwGlobals['smwgResultAliases']</code>
+      <code>$this-&gt;mwGlobals['smwgResultFormats']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['SMWResultFormat']</code>
+    </MixedArrayAccess>
+    <MixedArrayAssignment occurrences="4">
+      <code>$this-&gt;mwGlobals['smwgResultAliases']</code>
+      <code>$this-&gt;mwGlobals['smwgResultFormats']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']</code>
+    </MixedArrayAssignment>
+    <MixedArrayOffset occurrences="1">
+      <code>$this-&gt;mwGlobals['smwgResultAliases'][$this-&gt;mwGlobals['egMapsDefaultService']]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="2">
+      <code>$googleMaps</code>
+      <code>$leaflet</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="4">
+      <code>getService</code>
+      <code>getService</code>
+      <code>nameIsKnown</code>
+      <code>nameIsKnown</code>
+    </MixedMethodCall>
+    <UndefinedClass occurrences="1">
+      <code>DataTypeRegistry</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/WikitextParsers/CircleParser.php">
+    <MissingParamType occurrences="1">
+      <code>$geocoder</code>
+    </MissingParamType>
+    <MixedArgument occurrences="12">
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$this-&gt;metaDataSeparator</code>
+      <code>array_shift( $metaData )</code>
+      <code>array_shift( $metaData )</code>
+      <code>array_shift( $metaData )</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$latLong</code>
+      <code>$metaData</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>LatLongValue</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>geocode</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$latLong</code>
+    </MixedReturnStatement>
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$value</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="src/WikitextParsers/ImageOverlayParser.php">
+    <DeprecatedClass occurrences="1">
+      <code>\Maps\MapsFunctions::getFileUrl( $imageParameters[2] )</code>
+    </DeprecatedClass>
+    <DeprecatedMethod occurrences="1">
+      <code>\Maps\MapsFunctions::getFileUrl( $imageParameters[2] )</code>
+    </DeprecatedMethod>
+    <MissingParamType occurrences="1">
+      <code>$geocoder</code>
+    </MissingParamType>
+    <MixedAssignment occurrences="1">
+      <code>$latLong</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>LatLongValue</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>geocode</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$latLong</code>
+    </MixedReturnStatement>
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$value</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="src/WikitextParsers/LineParser.php">
+    <MissingParamType occurrences="4">
+      <code>$link</code>
+      <code>$link</code>
+      <code>$params</code>
+      <code>$title</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="5">
+      <code>constructShapeFromLatLongValues</code>
+      <code>handleCommonParams</code>
+      <code>setBubbleDataFromParameter</code>
+      <code>setGeocoder</code>
+      <code>setLinkFromParameter</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="15">
+      <code>$line</code>
+      <code>$link</code>
+      <code>$link</code>
+      <code>$link</code>
+      <code>$link</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$params</code>
+      <code>$parts</code>
+      <code>$parts</code>
+      <code>$text</code>
+      <code>$this-&gt;metaDataSeparator</code>
+      <code>$title</code>
+      <code>array_shift( $parts )</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$locations</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="7">
+      <code>$color</code>
+      <code>$line</code>
+      <code>$linkOrTitle</code>
+      <code>$opacity</code>
+      <code>$parts</code>
+      <code>$text</code>
+      <code>$weight</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>Geocoder</code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement occurrences="1">
+      <code>$this-&gt;geocoder</code>
+    </MixedReturnStatement>
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$value</code>
+    </MoreSpecificImplementedParamType>
+    <PossiblyNullReference occurrences="1">
+      <code>getFullURL</code>
+    </PossiblyNullReference>
+  </file>
+  <file src="src/WikitextParsers/LocationParser.php">
+    <MissingParamType occurrences="5">
+      <code>$enableLegacyCrud</code>
+      <code>$link</code>
+      <code>$link</code>
+      <code>$titleOrLink</code>
+      <code>$value</code>
+    </MissingParamType>
+    <MissingReturnType occurrences="4">
+      <code>getExpandedLink</code>
+      <code>isLink</code>
+      <code>setLink</code>
+      <code>setTitleOrLink</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="8">
+      <code>$coordinates</code>
+      <code>$link</code>
+      <code>$link</code>
+      <code>$this-&gt;fileUrlFinder-&gt;getUrlForFileName( array_shift( $metaData ) )</code>
+      <code>$this-&gt;fileUrlFinder-&gt;getUrlForFileName( array_shift( $metaData ) )</code>
+      <code>$this-&gt;getExpandedLink( $link )</code>
+      <code>$titleOrLink</code>
+      <code>$value</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="1">
+      <code>$coordinates</code>
+    </MixedAssignment>
+    <MixedMethodCall occurrences="3">
+      <code>geocode</code>
+      <code>getUrlForFileName</code>
+      <code>getUrlForFileName</code>
+    </MixedMethodCall>
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$value</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="src/WikitextParsers/PolygonParser.php">
+    <ArgumentTypeCoercion occurrences="1">
+      <code>$line</code>
+    </ArgumentTypeCoercion>
+    <MissingReturnType occurrences="3">
+      <code>constructShapeFromLatLongValues</code>
+      <code>handleCommonParams</code>
+      <code>handlePolygonParams</code>
+    </MissingReturnType>
+    <MixedArgument occurrences="3">
+      <code>$fillColor</code>
+      <code>$fillOpacity</code>
+      <code>$showOnlyOnHover</code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion occurrences="1">
+      <code>$locations</code>
+    </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="3">
+      <code>$fillColor</code>
+      <code>$fillOpacity</code>
+      <code>$showOnlyOnHover</code>
+    </MixedAssignment>
+  </file>
+  <file src="src/WikitextParsers/RectangleParser.php">
+    <MissingParamType occurrences="1">
+      <code>$geocoder</code>
+    </MissingParamType>
+    <MixedArgument occurrences="12">
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$metaData</code>
+      <code>$this-&gt;metaDataSeparator</code>
+      <code>array_shift( $metaData )</code>
+      <code>array_shift( $metaData )</code>
+      <code>array_shift( $metaData )</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="2">
+      <code>$latLong</code>
+      <code>$metaData</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="1">
+      <code>LatLongValue</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="1">
+      <code>geocode</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="1">
+      <code>$latLong</code>
+    </MixedReturnStatement>
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$value</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="src/WikitextParsers/WmsOverlayParser.php">
+    <DocblockTypeContradiction occurrences="1">
+      <code>is_string( $value )</code>
+    </DocblockTypeContradiction>
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$value</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="vendor/data-values/common/src/ValueParsers/StringValueParser.php">
+    <MoreSpecificImplementedParamType occurrences="1">
+      <code>$value</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+</files>
