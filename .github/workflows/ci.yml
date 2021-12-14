@@ -72,5 +72,124 @@ jobs:
         run: composer update
 
       - name: Run PHPUnit
-        run: php tests/phpunit/phpunit.php extensions/Maps/tests/
+        run: php tests/phpunit/phpunit.php -c extensions/Maps
+        if: matrix.mw != 'REL1_37'
 
+      - name: Run PHPUnit with code coverage
+        run: |
+          php tests/phpunit/phpunit.php -c extensions/Maps --coverage-clover coverage.xml
+          bash <(curl -s https://codecov.io/bash)
+        if: matrix.mw == 'REL1_37'
+
+
+  static-analysis:
+    name: "Static Analysis"
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: mediawiki/extensions/Maps
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          extensions: mbstring
+          tools: composer, cs2pr
+
+      - name: Cache MediaWiki
+        id: cache-mediawiki
+        uses: actions/cache@v2
+        with:
+          path: |
+            mediawiki
+            !mediawiki/extensions/
+            !mediawiki/vendor/
+          key: mw_static_analysis
+
+      - name: Cache Composer cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache
+          key: composer_static_analysis
+
+      - uses: actions/checkout@v2
+        with:
+          path: EarlyCopy
+
+      - name: Install MediaWiki
+        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
+        working-directory: ~
+        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_37 Maps
+
+      - uses: actions/checkout@v2
+        with:
+          path: mediawiki/extensions/Maps
+
+      - name: Composer install
+        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: PHPStan
+        run: php vendor/bin/phpstan analyse --error-format=checkstyle --no-progress | cs2pr
+
+      - run: php vendor/bin/psalm --shepherd --stats
+        if: true
+
+
+    code-style:
+      name: "Code style"
+
+      runs-on: ubuntu-latest
+
+      defaults:
+        run:
+          working-directory: mediawiki
+
+      steps:
+        - name: Setup PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: 8.0
+            extensions: mbstring, intl, php-ast
+            tools: composer
+
+        - name: Cache MediaWiki
+          id: cache-mediawiki
+          uses: actions/cache@v2
+          with:
+            path: |
+              mediawiki
+              !mediawiki/extensions/
+              !mediawiki/vendor/
+            key: mw_static_analysis
+
+        - name: Cache Composer cache
+          uses: actions/cache@v2
+          with:
+            path: ~/.composer/cache
+            key: composer_static_analysis
+
+        - uses: actions/checkout@v2
+          with:
+            path: EarlyCopy
+
+        - name: Install MediaWiki
+          if: steps.cache-mediawiki.outputs.cache-hit != 'true'
+          working-directory: ~
+          run: bash EarlyCopy/.github/workflows/installMediaWiki.sh Maps Maps
+
+        - uses: actions/checkout@v2
+          with:
+            path: mediawiki/extensions/Maps
+
+        - name: Composer update (core)
+          run: composer update
+
+        - name: Composer update (extension)
+          run: composer update
+          working-directory: mediawiki/extensions/Maps
+
+        - run: make phpcs
+          working-directory: mediawiki/extensions/Maps

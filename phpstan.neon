@@ -1,0 +1,22 @@
+includes:
+	- phpstan-baseline.neon
+
+parameters:
+	level: 1
+	paths:
+		- src
+	excludePaths:
+		- src/SemanticMW/
+		- src/SemanticMapsSetup.php
+		- src/MapsSetup.php
+		- src/Map/CargoFormat/
+		- src/Map/SemanticFormat/
+
+		- src/GeoJsonPages/
+		- src/LegacyMapEditor/
+	scanDirectories:
+		- ../../includes
+		- ../../tests/phpunit
+		- ../../vendor
+	ignoreErrors:
+		- '#Constant [a-zA-Z0-9\\_]+ not found#'

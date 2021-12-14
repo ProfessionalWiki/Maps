@@ -1,0 +1,107 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\$revisionLookup of method Maps\\\\DataAccess\\\\GeoJsonFetcher\\:\\:__construct\\(\\) has invalid type MediaWiki\\\\Storage\\\\RevisionLookup\\.$#"
+			count: 1
+			path: src/DataAccess/GeoJsonFetcher.php
+
+		-
+			message: "#^Parameter \\$revisionLookup of method Maps\\\\DataAccess\\\\PageContentFetcher\\:\\:__construct\\(\\) has invalid type MediaWiki\\\\Storage\\\\RevisionLookup\\.$#"
+			count: 1
+			path: src/DataAccess/PageContentFetcher.php
+
+		-
+			message: "#^Access to constant TYPE_SUBOBJECT on an unknown class SMW\\\\DIProperty\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SemanticGeoJsonStore.php
+
+		-
+			message: "#^Instantiated class SMWDIContainer not found\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SemanticGeoJsonStore.php
+
+		-
+			message: "#^Instantiated class SMW\\\\DIProperty not found\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SemanticGeoJsonStore.php
+
+		-
+			message: "#^Parameter \\$parserData of method Maps\\\\GeoJsonPages\\\\Semantic\\\\SemanticGeoJsonStore\\:\\:__construct\\(\\) has invalid type SMW\\\\ParserData\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SemanticGeoJsonStore.php
+
+		-
+			message: "#^Parameter \\$smwEventDispatcher of method Maps\\\\GeoJsonPages\\\\Semantic\\\\SemanticGeoJsonStore\\:\\:__construct\\(\\) has invalid type Onoi\\\\EventDispatcher\\\\EventDispatcher\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SemanticGeoJsonStore.php
+
+		-
+			message: "#^Instantiated class SMW\\\\DIProperty not found\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SubObject.php
+
+		-
+			message: "#^Instantiated class SMW\\\\DIWikiPage not found\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SubObject.php
+
+		-
+			message: "#^Instantiated class SMW\\\\DataModel\\\\ContainerSemanticData not found\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SubObject.php
+
+		-
+			message: "#^Method Maps\\\\GeoJsonPages\\\\Semantic\\\\SubObject\\:\\:newContainerSemanticData\\(\\) has invalid return type SMW\\\\DataModel\\\\ContainerSemanticData\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SubObject.php
+
+		-
+			message: "#^Method Maps\\\\GeoJsonPages\\\\Semantic\\\\SubObject\\:\\:toContainerSemanticData\\(\\) has invalid return type SMW\\\\DataModel\\\\ContainerSemanticData\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SubObject.php
+
+		-
+			message: "#^Parameter \\$dataItem of method Maps\\\\GeoJsonPages\\\\Semantic\\\\SubObject\\:\\:addPropertyValuePair\\(\\) has invalid type SMWDataItem\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SubObject.php
+
+		-
+			message: "#^Instantiated class SMWDIBlob not found\\.$#"
+			count: 2
+			path: src/GeoJsonPages/Semantic/SubObjectBuilder.php
+
+		-
+			message: "#^Instantiated class SMWDIGeoCoord not found\\.$#"
+			count: 1
+			path: src/GeoJsonPages/Semantic/SubObjectBuilder.php
+
+		-
+			message: "#^Call to static method getInstance\\(\\) on an unknown class SMW\\\\ApplicationFactory\\.$#"
+			count: 1
+			path: src/MapsFactory.php
+
+		-
+			message: "#^Method Maps\\\\MapsFactory\\:\\:getSmwFactory\\(\\) has invalid return type SMW\\\\ApplicationFactory\\.$#"
+			count: 1
+			path: src/MapsFactory.php
+
+		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: src/MapsFactory.php
+
+		-
+			message: "#^Access to constant PRINT_THIS on an unknown class SMWPrintRequest\\.$#"
+			count: 1
+			path: src/MapsHooks.php
+
+		-
+			message: "#^Call to static method newFromExternalLink\\(\\) on an unknown class AlItem\\.$#"
+			count: 1
+			path: src/MapsHooks.php
+
+		-
+			message: "#^Parameter \\$admin_links_tree of method Maps\\\\MapsHooks\\:\\:addToAdminLinks\\(\\) has invalid type ALTree\\.$#"
+			count: 1
+			path: src/MapsHooks.php
+

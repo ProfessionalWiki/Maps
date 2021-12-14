@@ -44,7 +44,9 @@
 		"jmikola/geojson": "^1.0.2"
 	},
 	"require-dev": {
-		"maglnet/composer-require-checker": "^3.4"
+		"vimeo/psalm": "^4.12.0",
+		"phpstan/phpstan": "^1.1.2",
+		"mediawiki/mediawiki-codesniffer": "37.0.0"
 	},
 	"autoload": {
 		"psr-4": {
