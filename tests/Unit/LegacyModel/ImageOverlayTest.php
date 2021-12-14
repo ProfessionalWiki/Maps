@@ -49,6 +49,3 @@ class ImageOverlayTest extends TestCase {
 	}
 
 }
-
-
-

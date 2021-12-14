@@ -80,7 +80,7 @@ final class MapsHooks {
 		if ( $skinTemplate->getTitle()->getNamespace() === NS_GEO_JSON ) {
 			if ( array_key_exists( 'edit', $links['views'] ) ) {
 				$links['views']['edit']['text'] = wfMessage(
-					$skinTemplate->getTitle()->exists() ? 'maps-geo-json-edit-source': 'maps-geo-json-create-source'
+					$skinTemplate->getTitle()->exists() ? 'maps-geo-json-edit-source' : 'maps-geo-json-create-source'
 				);
 			}
 		}

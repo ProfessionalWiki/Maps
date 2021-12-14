@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ruleset>
+	<file>src/</file>
+	<file>tests/</file>
+
+	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki">
+		<exclude name="Generic.Files.LineLength.TooLong" />
+		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
+
+		<exclude name="MediaWiki.Commenting" />
+
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.SingleSpaceBeforeSingleLineComment" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
+		<exclude name="MediaWiki.WhiteSpace.SpaceAfterClosure.NoWhitespaceAfterClosure" />
+
+		<exclude name="MediaWiki.Classes.UnusedUseStatement.UnusedUse" />
+		<exclude name="MediaWiki.Classes.UnsortedUseStatements.UnsortedUse" />
+
+		<exclude name="MediaWiki.ControlStructures.IfElseStructure.SpaceBeforeElse" />
+		<exclude name="MediaWiki.Usage.StaticClosure.StaticClosure" />
+		<exclude name="MediaWiki.Usage.ExtendClassUsage.FunctionConfigUsage" />
+		<exclude name="MediaWiki.Commenting.PropertyDocumentation.MissingDocumentationPrivate" />
+		<exclude name="MediaWiki.NamingConventions.PrefixedGlobalFunctions.allowedPrefix" />
+
+		<!-- These should probably be fixed -->
+		<exclude name="MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures" />
+		<exclude name="MediaWiki.Usage.IsNull.IsNull" />
+		<exclude name="MediaWiki.WhiteSpace.DisallowEmptyLineFunctions.NoEmptyLine" />
+		<exclude name="MediaWiki.NamingConventions.ValidGlobalName.allowedPrefix" />
+		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.NoSpaceAfterComma" />
+		<exclude name="MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgTitle" />
+	</rule>
+
+	<rule ref="Generic.Formatting.NoSpaceAfterCast" />
+	<rule ref="Generic.Metrics.CyclomaticComplexity" />
+	<rule ref="Generic.Metrics.NestingLevel" />
+	<rule ref="Squiz.Operators.ValidLogicalOperators" />
+</ruleset>

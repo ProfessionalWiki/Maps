@@ -351,7 +351,6 @@ class GoogleMapsService implements MappingService {
 		return $this->newMapDataFromParameters( $mapParams );
 	}
 
-
 	private function getParameterWithValue( ProcessedParam $param, $value ) {
 		return new ProcessedParam(
 			$param->getName(),

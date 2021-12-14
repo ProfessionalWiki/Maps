@@ -63,5 +63,4 @@ class SubObjectBuilder {
 		return $subObject;
 	}
 
-
 }

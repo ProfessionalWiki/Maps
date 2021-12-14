@@ -65,6 +65,3 @@ class PolygonTest extends LineTest {
 	}
 
 }
-
-
-

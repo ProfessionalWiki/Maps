@@ -42,7 +42,7 @@ abstract class BaseElementTest extends TestCase {
 	 *
 	 * @return string
 	 */
-	public abstract function getClass();
+	abstract public function getClass();
 
 	/**
 	 * @since 3.0
@@ -60,7 +60,7 @@ abstract class BaseElementTest extends TestCase {
 		);
 	}
 
-	public abstract function validConstructorProvider();
+	abstract public function validConstructorProvider();
 
 	/**
 	 * @dataProvider validConstructorProvider

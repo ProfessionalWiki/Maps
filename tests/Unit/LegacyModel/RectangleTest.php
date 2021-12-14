@@ -70,6 +70,3 @@ class RectangleTest extends BaseElementTest {
 	}
 
 }
-
-
-

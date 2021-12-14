@@ -76,7 +76,7 @@ class CargoOutputBuilder {
 	}
 
 	private function getParameterDefinitions( MappingService $service ): array {
-		return $this->paramDefinitionFactory->newDefinitionsFromArrays( $service->getParameterInfo() ) ;
+		return $this->paramDefinitionFactory->newDefinitionsFromArrays( $service->getParameterInfo() );
 	}
 
 	/**

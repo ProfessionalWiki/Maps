@@ -98,7 +98,7 @@ class MapPrinter extends ResultPrinter {
 	 *
 	 * @return string
 	 */
-	public final function getResultText( SMWQueryResult $res, $outputMode ) {
+	final public function getResultText( SMWQueryResult $res, $outputMode ) {
 		if ( $this->fatalErrorMsg !== false ) {
 			return $this->fatalErrorMsg;
 		}
@@ -298,7 +298,7 @@ class MapPrinter extends ResultPrinter {
 	 *
 	 * @return string
 	 */
-	public final function getName() {
+	final public function getName() {
 		return wfMessage( 'maps_' . $this->service->getName() )->text();
 	}
 

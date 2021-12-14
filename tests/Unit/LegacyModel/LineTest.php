@@ -71,6 +71,3 @@ class LineTest extends BaseElementTest {
 	}
 
 }
-
-
-

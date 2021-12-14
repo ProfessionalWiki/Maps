@@ -96,7 +96,7 @@ class LocationParser implements ValueParser {
 		}
 
 		if ( $metaData !== [] ) {
-			$location->setVisitedIcon( $this->fileUrlFinder->getUrlForFileName( array_shift( $metaData ) ) ) ;
+			$location->setVisitedIcon( $this->fileUrlFinder->getUrlForFileName( array_shift( $metaData ) ) );
 		}
 
 		return $location;

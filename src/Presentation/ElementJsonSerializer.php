@@ -4,7 +4,6 @@ declare( strict_types = 1 );
 
 namespace Maps\Presentation;
 
-
 use Maps\LegacyModel\BaseElement;
 
 class ElementJsonSerializer {

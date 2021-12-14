@@ -58,7 +58,7 @@ class DisplayMapRenderer {
 	 *
 	 * @return MapOutput
 	 */
-	public final function renderMap( MapData $mapData, Parser $parser ): MapOutput {
+	final public function renderMap( MapData $mapData, Parser $parser ): MapOutput {
 		$factory = \Maps\MapsFactory::globalInstance();
 
 		$this->locationParser = $factory->newLocationParser();

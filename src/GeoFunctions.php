@@ -57,7 +57,9 @@ final class GeoFunctions {
 
 		$distance = 2 * self::EARTH_RADIUS * asin( sqrt( $distThruSquared ) / 2 );
 
-		assert( $distance >= 0 );
+		if ( $distance < 0 ) {
+			throw new \LogicException();
+		}
 
 		return $distance;
 	}

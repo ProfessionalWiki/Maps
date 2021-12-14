@@ -41,7 +41,6 @@ EOT;
 		);
 	}
 
-
 	private function locationToKmlPlacemark( Location $location ): string {
 		// TODO: escaping?
 		$name = '<name><![CDATA[' . $location->getTitle() . ']]></name>';

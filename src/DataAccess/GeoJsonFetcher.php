@@ -53,7 +53,7 @@ class GeoJsonFetcher {
 		}
 
 		// Prevent reading JSON files on the server
-		if( !filter_var( $fileLocation, FILTER_VALIDATE_URL) ) {
+		if ( !filter_var( $fileLocation, FILTER_VALIDATE_URL ) ) {
 			return $this->newEmptyResult();
 		}
 

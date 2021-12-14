@@ -309,7 +309,7 @@ class QueryHandler {
 			$t = Title::newFromText( $titleText, SMW_NS_PROPERTY );
 
 			if ( $t instanceof Title && $t->exists() ) {
-				return  Html::element(
+				return Html::element(
 					'a',
 					[ 'href' => $t->getFullUrl() ],
 					$printRequest->getHTMLText( null )

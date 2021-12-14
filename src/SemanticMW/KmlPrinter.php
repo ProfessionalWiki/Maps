@@ -132,7 +132,7 @@ class KmlPrinter extends FileExportPrinter {
 	/**
 	 * @see SMWResultPrinter::getName()
 	 */
-	public final function getName() {
+	final public function getName() {
 		return wfMessage( 'semanticmaps-kml' )->text();
 	}
 
