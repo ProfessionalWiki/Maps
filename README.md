@@ -43,11 +43,11 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 
 ## Project status
 
-
-
-* Latest version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
-* Downloads on [Packagist](https://packagist.org/packages/mediawiki/maps)&nbsp;&nbsp; [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
-* Continuous integration &nbsp;&nbsp;&nbsp;&nbsp; [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/JeroenDeDauw/Maps/CI)](https://github.com/JeroenDeDauw/Maps/actions?query=workflow%3ACI)
+* Latest version [![Latest Stable Version](https://poser.pugx.org/mediawiki/maps/version.png)](https://packagist.org/packages/mediawiki/maps)
+* Downloads on [Packagist](https://packagist.org/packages/mediawiki/maps) [![Download count](https://poser.pugx.org/mediawiki/maps/d/total.png)](https://packagist.org/packages/mediawiki/maps)
+* Continuous integration [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/JeroenDeDauw/Maps/CI)](https://github.com/JeroenDeDauw/Maps/actions?query=workflow%3ACI)
+* [![codecov](https://codecov.io/gh/ProfessionalWiki/Maps/branch/master/graph/badge.svg?token=GnOG3FF16Z)](https://codecov.io/gh/ProfessionalWiki/Maps)
+* [![Type Coverage](https://shepherd.dev/github/ProfessionalWiki/Maps/coverage.svg)](https://shepherd.dev/github/ProfessionalWiki/Maps)
 * [Open bugs and feature requests](https://github.com/JeroenDeDauw/Maps/issues)
 * [Maps on OpenHub](https://www.openhub.net/p/maps/)
 * [Blog posts about Maps](https://www.entropywins.wtf/blog/tag/maps/)
