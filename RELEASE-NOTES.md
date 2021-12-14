@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 9.0.1
+
+Released on December 14th, 2021.
+
+* Fixed MediaWiki 1.33 deprecation notice when JS tests are turned on
+
 ## Maps 9.0.0
 
 Released on July 30th, 2021.
@@ -53,9 +59,9 @@ Released on April 19th, 2020.
 ## Maps 7.17.2
 
 Released on April 10th, 2020.
- 
-* Added install-time compatibility check with MediaWiki 
- 
+
+* Added install-time compatibility check with MediaWiki
+
 ## Maps 7.17.1
 
 Released on April 4th, 2020.
@@ -122,14 +128,14 @@ Released on December 23rd, 2019.
 
 Released on December 22nd, 2019.
 
-* The leaflet fullscreen control is now shown on the top right instead of the top left 
+* The leaflet fullscreen control is now shown on the top right instead of the top left
 * Improved internationalization of the visual GeoJSON editor
 
 ## Maps 7.14.0
 
 Released on December 22nd, 2019.
 
-* Improved Leaflet resource loading (some maps will now load slightly faster) 
+* Improved Leaflet resource loading (some maps will now load slightly faster)
 
 ## Maps 7.13.0
 
@@ -230,8 +236,8 @@ Released on October 2nd, 2019.
 * Loading messages for Leaflet maps are no longer visible when zooming out far or loading new tiles
 * Added entirely visual creation flow for pages in the GeoJson namespace
 * Enhanced validation of content in the GeoJson namespace
-* Improved text on the creation and edit tabs in the GeoJson namespace 
-* Added "Visual map edit" tag to revisions created by the GeoJson visual editor 
+* Improved text on the creation and edit tabs in the GeoJson namespace
+* Added "Visual map edit" tag to revisions created by the GeoJson visual editor
 
 ## Maps 7.7.0
 
@@ -313,7 +319,7 @@ Released on December 16th, 2018.
 
 * Breaking change: removed OpenLayers service
 * Breaking change: removed `egMapsDefaultServices['qp']` setting (just use `egMapsDefaultService`)
-* Breaking change: removed Google `fusiontables` parameter (Google is retiring this service) 
+* Breaking change: removed Google `fusiontables` parameter (Google is retiring this service)
 * Added transit layer support for Google Maps (`layers=transit`) (by @acnetj)
 * Added `egMapsGeoJsonCacheTtl` setting and optional caching for GeoJSON files
 * Fixed display of Maps category on Special:SpecialPages
@@ -349,7 +355,7 @@ Released on November 23rd, 2018.
 * Fixed markers with no text having empty popups (was likely only happening with recent MediaWiki versions)
 * Fixed `link=all` in Ask queries: values are now linked where appropriate
 * Fixed `link=none` and `link=subject` in Ask queries: properties are no longer linked
-* Fixed `headers=hide` in Ask queries: the values now show 
+* Fixed `headers=hide` in Ask queries: the values now show
 * Fixed KML result format (6.1.0 regression)
 
 ## Maps 6.1.0
@@ -358,7 +364,7 @@ Released on November 21st, 2018.
 
 * The `rotate` control for Google Maps is now enabled by default (changeable via `$egMapsGMaps3Controls`) (by @acnetj)
 * The `layers` parameter for Google Maps now works again (5.2.0 regression)
-* Files can again be referenced without capitalizing the first letter (3.0.0 regression) 
+* Files can again be referenced without capitalizing the first letter (3.0.0 regression)
 * Removed broken SMW `_gpo` data type
 
 ## Maps 6.0.4
@@ -492,7 +498,7 @@ Released on November 17th, 2017.
 
 * Dropped support for PHP older than 7.0
 * Improved layer support for Leaflet (by Peter Grassberger)
-    * Leaflet maps now show a layer control when there are multiple layers 
+    * Leaflet maps now show a layer control when there are multiple layers
     * The `layer` parameter now accepts multiple values and has been aliased to `layers`
     * Added `egMapsLeafletLayers` setting
     * Deprecated `egMapsLeafletLayer` setting in favour of the new `egMapsLeafletLayers`
@@ -602,7 +608,7 @@ Released on December 4th, 2016.
 
 Released on November 19th, 2016.
 
-* The `geocode` parser hook now correctly uses its `geoservice` and `allowcoordinates` parameters 
+* The `geocode` parser hook now correctly uses its `geoservice` and `allowcoordinates` parameters
 
 ## Maps 4.0
 
