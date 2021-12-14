@@ -793,7 +793,6 @@
       <code>onBeforeDisplayNoArticleText</code>
       <code>onChangeTagsAllowedAdd</code>
       <code>onRegisterTags</code>
-      <code>onResourceLoaderTestModules</code>
       <code>onShowMissingArticle</code>
       <code>onSkinTemplateNavigation</code>
     </MissingReturnType>

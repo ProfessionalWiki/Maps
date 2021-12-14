@@ -118,7 +118,6 @@ class MapsSetup {
 		$this->mwGlobals['wgHooks']['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
 		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
 		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
-		$this->mwGlobals['wgHooks']['ResourceLoaderTestModules'][] = 'Maps\MapsHooks::onResourceLoaderTestModules';
 
 		$this->mwGlobals['wgHooks']['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
 			$formatClasses['map'] = CargoFormat::class;

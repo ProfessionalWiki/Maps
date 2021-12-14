@@ -115,19 +115,6 @@ final class MapsHooks {
 		$allowedTags[] = 'maps-visual-edit';
 	}
 
-	public static function onResourceLoaderTestModules( array &$modules, $resourceLoader ) {
-		$modules['qunit']['ext.maps.test'] = [
-			'scripts' => [
-				'tests/js/leaflet/GeoJsonTest.js',
-			],
-			'dependencies' => [
-				'ext.maps.leaflet.geojson',
-			],
-			'localBasePath' => __DIR__ . '/..',
-			'remoteExtPath' => 'Maps'
-		];
-	}
-
 	/**
 	 * Set the default format to 'map' when the requested properties are
 	 * of type geographic coordinates.

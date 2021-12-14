@@ -331,6 +331,17 @@
 		}
 	},
 
+	"QUnitTestModule": {
+		"localBasePath": "tests/js/",
+		"remoteExtPath": "Maps/tests/js/",
+		"scripts": [
+			"leaflet/GeoJsonTest.js"
+		],
+		"dependencies": [
+			"ext.maps.leaflet.geojson"
+		]
+	},
+
 	"load_composer_autoloader": true,
 	"manifest_version": 2
 }
