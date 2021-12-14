@@ -126,7 +126,7 @@ class MapsSetup {
 	}
 
 	private function registerGeoJsonContentModel() {
-//		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
+		$this->mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID] = GeoJsonContentHandler::class;
 	}
 
 }
