@@ -21,8 +21,11 @@ jobs:
             php: 8.0
           - mw: 'master'
             php: 8.0
+          - mw: 'master'
+            php: 8.1
 
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.php }} == 8.1
 
     defaults:
       run:
