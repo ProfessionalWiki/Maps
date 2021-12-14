@@ -23,10 +23,9 @@ jobs:
             php: 8.0
           - mw: 'master'
             php: 8.1
-            experimental: true
 
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.experimental }}
+    continue-on-error: ${{ matrix.php == 8.1 }}
 
     defaults:
       run:
