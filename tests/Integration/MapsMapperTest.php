@@ -8,7 +8,7 @@ use Maps\MapsFunctions;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers MapsFunctions
+ * @covers \Maps\MapsFunctions
  *
  * @licence GNU GPL v2+
  * @author Peter Grassberger < petertheone@gmail.com >

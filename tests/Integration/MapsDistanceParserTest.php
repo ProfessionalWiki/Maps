@@ -8,7 +8,7 @@ use Maps\Presentation\MapsDistanceParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers MapsDistanceParser
+ * @covers \Maps\Presentation\MapsDistanceParser
  *
  * @licence GNU GPL v2+
  * @author Jeroen De Dauw < jeroendedauw@gmail.com >
