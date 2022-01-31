@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 9.0.2
+
+Released on January 31st, 2022.
+
+* Fixed redirect issue when using marker links with Google Maps
+
 ## Maps 9.0.1
 
 Released on December 14th, 2021.
