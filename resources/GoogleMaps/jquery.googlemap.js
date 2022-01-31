@@ -793,13 +793,24 @@
 			return controlDiv;
 		}
 
-
 		function openBubbleOrLink(markerData, event, obj) {
-			if (markerData.link) {
+			if (markerData.link && isValidHttpUrl(markerData.link)) {
 				window.location.href = markerData.link;
 			} else if (markerData.text.trim() !== '') {
 				openBubble.call(this, markerData, event, obj);
 			}
+		}
+
+		function isValidHttpUrl(string) {
+			let url;
+
+			try {
+				url = new URL(string);
+			} catch (_) {
+				return false;
+			}
+
+			return url.protocol === "http:" || url.protocol === "https:";
 		}
 
 		function openBubble( markerData, event, obj ) {
