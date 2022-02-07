@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 9.0.3
+
+Released on February 7th, 2022.
+
+* Fixed issue in SMW queries when using an icon for a deleted page
+
 ## Maps 9.0.2
 
 Released on January 31st, 2022.
