@@ -358,13 +358,9 @@ class QueryHandler {
 	}
 
 	/**
-	 * Get the icon for a row.
-	 *
-	 * @param array $row
-	 *
-	 * @return string
+	 * @param ResultArray[] $row
 	 */
-	private function getLocationIcon( array $row ) {
+	private function getLocationIcon( array $row ): string {
 		$icon = '';
 		$legendLabels = [];
 
@@ -403,10 +399,12 @@ class QueryHandler {
 		return $icon;
 	}
 
-	private function shouldGetActiveIconUrlFor( Title $title ) {
+	private function shouldGetActiveIconUrlFor( ?Title $title ) {
 		global $wgTitle;
 
-		return isset( $this->activeIcon ) && is_object( $wgTitle )
+		return $title !== null
+			&& isset( $this->activeIcon )
+			&& is_object( $wgTitle )
 			&& $wgTitle->equals( $title );
 	}
 
