@@ -8,8 +8,8 @@ use DataValues\Geo\Values\LatLongValue;
 
 class TemplatedPopup {
 
-	private $templateName;
-	private $extraParameter;
+	private string $templateName;
+	private string $extraParameter;
 
 	public function __construct( string $templateName, string $extraParameter ) {
 		$this->templateName = $templateName;

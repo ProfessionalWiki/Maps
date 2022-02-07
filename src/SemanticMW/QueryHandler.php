@@ -25,21 +25,18 @@ class QueryHandler {
 
 	/**
 	 * The global icon.
-	 * @var string
 	 */
-	public $icon = '';
+	public string $icon = '';
 
 	/**
 	 * The global text.
-	 * @var string
 	 */
-	public $text = '';
+	public string $text = '';
 
 	/**
 	 * The global title.
-	 * @var string
 	 */
-	public $title = '';
+	public string $title = '';
 
 	private $queryResult;
 
@@ -53,50 +50,42 @@ class QueryHandler {
 
 	/**
 	 * Should link targets be made absolute (instead of relative)?
-	 * @var boolean
 	 */
-	private $linkAbsolute;
+	private bool $linkAbsolute;
 
 	/**
 	 * A separator to use between the subject and properties in the text field.
-	 * @var string
 	 */
-	private $subjectSeparator = '<hr />';
+	private string $subjectSeparator = '<hr />';
 
 	/**
 	 * Show the subject in the text or not?
-	 * @var boolean
 	 */
-	private $showSubject = true;
+	private bool $showSubject = true;
 
 	/**
 	 * Hide the namespace or not.
-	 * @var boolean
 	 */
-	private $hideNamespace = false;
+	private bool $hideNamespace = false;
 
 	/**
 	 * Defines which article names in the result are hyperlinked, all normally is the default
 	 * none, subject, all
 	 */
-	private $linkStyle = 'all';
+	private string $linkStyle = 'all';
 
 	/*
 	 * Show headers (with links), show headers (just text) or hide them. show is default
 	 * show, plain, hide
 	 */
-	private $headerStyle = 'show';
+	private string $headerStyle = 'show';
 
 	/**
 	 * Marker icon to show when marker equals active page
-	 * @var string|null
 	 */
-	private $activeIcon = null;
+	private ?string $activeIcon = null;
 
-	/**
-	 * @var string
-	 */
-	private $userParam = '';
+	private string $userParam = '';
 
 	public function __construct( QueryResult $queryResult, int $outputMode, bool $linkAbsolute = false ) {
 		$this->queryResult = $queryResult;

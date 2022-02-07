@@ -26,12 +26,8 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class AreaDescription extends ValueDescription {
 
-	/**
-	 * @var SMWDIGeoCoord
-	 */
-	private $center;
-
-	private $radius;
+	private SMWDIGeoCoord $center;
+	private string $radius;
 
 	public function __construct( SMWDataItem $areaCenter, int $comparator, string $radius, DIProperty $property = null ) {
 		if ( !( $areaCenter instanceof SMWDIGeoCoord ) ) {
