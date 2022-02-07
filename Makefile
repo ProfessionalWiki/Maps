@@ -2,7 +2,7 @@
 
 ci: test cs
 test: phpunit
-cs: phpcs stan
+cs: phpcs stan psalm
 
 phpunit:
 	php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist

@@ -55,9 +55,6 @@
     <RedundantCastGivenDocblockType occurrences="1">
       <code>(float)$bearing</code>
     </RedundantCastGivenDocblockType>
-    <TypeDoesNotContainType occurrences="1">
-      <code>assert( $distance &gt;= 0 )</code>
-    </TypeDoesNotContainType>
   </file>
   <file src="src/GeoJsonPages/GeoJsonContent.php">
     <FalsableReturnStatement occurrences="1">
@@ -785,10 +782,7 @@
     </UnsafeInstantiation>
   </file>
   <file src="src/MapsHooks.php">
-    <MissingParamType occurrences="1">
-      <code>$resourceLoader</code>
-    </MissingParamType>
-    <MissingReturnType occurrences="7">
+    <MissingReturnType occurrences="6">
       <code>addSmwSettings</code>
       <code>onBeforeDisplayNoArticleText</code>
       <code>onChangeTagsAllowedAdd</code>
@@ -800,9 +794,8 @@
       <code>$links['views']</code>
       <code>OutputFacade::newFromOutputPage( $article-&gt;getContext()-&gt;getOutput() )</code>
     </MixedArgument>
-    <MixedArrayAssignment occurrences="2">
+    <MixedArrayAssignment occurrences="1">
       <code>$links['views']['edit']</code>
-      <code>$modules['qunit']['ext.maps.test']</code>
     </MixedArrayAssignment>
     <MixedAssignment occurrences="5">
       <code>$links['views']['edit']['text']</code>
@@ -843,7 +836,7 @@
     <MixedArgument occurrences="1">
       <code>$this-&gt;mwGlobals['egMapsAvailableServices']</code>
     </MixedArgument>
-    <MixedArrayAssignment occurrences="23">
+    <MixedArrayAssignment occurrences="22">
       <code>$this-&gt;mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID]</code>
       <code>$this-&gt;mwGlobals['wgHooks']['AdminLinks']</code>
       <code>$this-&gt;mwGlobals['wgHooks']['BeforeDisplayNoArticleText']</code>
@@ -853,7 +846,6 @@
       <code>$this-&gt;mwGlobals['wgHooks']['ListDefinedTags']</code>
       <code>$this-&gt;mwGlobals['wgHooks']['MakeGlobalVariablesScript']</code>
       <code>$this-&gt;mwGlobals['wgHooks']['ParserFirstCallInit']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['ResourceLoaderTestModules']</code>
       <code>$this-&gt;mwGlobals['wgHooks']['ShowMissingArticle']</code>
       <code>$this-&gt;mwGlobals['wgHooks']['SkinTemplateNavigation']</code>
       <code>$this-&gt;mwGlobals['wgParamDefinitions']['coordinate']</code>
@@ -1164,14 +1156,6 @@
     </UndefinedClass>
   </file>
   <file src="src/SemanticMW/QueryHandler.php">
-    <DeprecatedClass occurrences="2">
-      <code>MapsFunctions::getFileUrl( $this-&gt;activeIcon )</code>
-      <code>MapsFunctions::getFileUrl( $this-&gt;icon )</code>
-    </DeprecatedClass>
-    <DeprecatedMethod occurrences="2">
-      <code>MapsFunctions::getFileUrl( $this-&gt;activeIcon )</code>
-      <code>MapsFunctions::getFileUrl( $this-&gt;icon )</code>
-    </DeprecatedMethod>
     <InvalidNullableReturnType occurrences="1">
       <code>string</code>
     </InvalidNullableReturnType>
@@ -1195,27 +1179,14 @@
       <code>shouldGetActiveIconUrlFor</code>
       <code>showArticleLink</code>
     </MissingReturnType>
-    <MixedArgument occurrences="7">
-      <code>$display_location</code>
-      <code>$display_options</code>
-      <code>$icon</code>
+    <MixedArgument occurrences="2">
       <code>$row</code>
-      <code>$row[0]</code>
-      <code>$row[0]-&gt;getResultSubject()-&gt;getTitle()</code>
       <code>$this-&gt;getTitleOutput( $title )</code>
     </MixedArgument>
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$properties</code>
     </MixedArgumentTypeCoercion>
-    <MixedArrayOffset occurrences="1">
-      <code>$legendLabels[$icon]</code>
-    </MixedArrayOffset>
-    <MixedAssignment occurrences="6">
-      <code>$display_location</code>
-      <code>$display_options</code>
-      <code>$icon</code>
-      <code>$legendLabels[$icon]</code>
-      <code>$legend_label</code>
+    <MixedAssignment occurrences="1">
       <code>$row</code>
     </MixedAssignment>
     <MixedInferredReturnType occurrences="12">
@@ -1223,25 +1194,19 @@
       <code>?Linker</code>
       <code>Location</code>
       <code>Location[]</code>
-      <code>array</code>
-      <code>array|string[]</code>
+      <code>array{0: array&lt;int, Location&gt;, 1: string}</code>
       <code>bool</code>
       <code>string</code>
       <code>string</code>
       <code>string</code>
       <code>string</code>
       <code>string</code>
+      <code>string[]</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="3">
+    <MixedMethodCall occurrences="1">
       <code>equals</code>
-      <code>getResultSubject</code>
-      <code>getTitle</code>
     </MixedMethodCall>
-    <MixedPropertyFetch occurrences="1">
-      <code>$display_location-&gt;display_options</code>
-    </MixedPropertyFetch>
-    <MixedReturnStatement occurrences="3">
-      <code>$icon</code>
+    <MixedReturnStatement occurrences="2">
       <code>$this-&gt;headerStyle === 'show' &amp;&amp; $this-&gt;linkStyle !== 'none' ? smwfGetLinker() : null</code>
       <code>$this-&gt;linkStyle === 'all' ? smwfGetLinker() : null</code>
     </MixedReturnStatement>
@@ -1251,9 +1216,6 @@
     <PossiblyInvalidArgument occurrences="1">
       <code>$this-&gt;template</code>
     </PossiblyInvalidArgument>
-    <PossiblyNullArgument occurrences="1">
-      <code>$this-&gt;activeIcon</code>
-    </PossiblyNullArgument>
     <PropertyNotSetInConstructor occurrences="3">
       <code>$linkAbsolute</code>
       <code>$outputMode</code>
@@ -1261,27 +1223,25 @@
     </PropertyNotSetInConstructor>
     <UndefinedClass occurrences="10">
       <code>$this-&gt;queryResult</code>
+      <code>PrintRequest</code>
+      <code>PrintRequest</code>
+      <code>QueryResult</code>
+      <code>ResultArray</code>
       <code>SMWDIGeoCoord</code>
       <code>SMWDataValue</code>
       <code>SMWDataValue</code>
       <code>SMWDataValue</code>
-      <code>SMWPrintRequest</code>
-      <code>SMWPrintRequest</code>
-      <code>SMWQueryResult</code>
-      <code>SMWResultArray</code>
       <code>SMWWikiPageValue</code>
     </UndefinedClass>
-    <UndefinedDocblockClass occurrences="2">
-      <code>SMWResultArray[]</code>
-      <code>SMWResultArray[]</code>
+    <UndefinedDocblockClass occurrences="3">
+      <code>ResultArray[]</code>
+      <code>ResultArray[]</code>
+      <code>ResultArray[]</code>
     </UndefinedDocblockClass>
     <UndefinedFunction occurrences="2">
       <code>smwfGetLinker()</code>
       <code>smwfGetLinker()</code>
     </UndefinedFunction>
-    <UnusedVariable occurrences="1">
-      <code>$legend_label</code>
-    </UnusedVariable>
   </file>
   <file src="src/SemanticMW/TemplatedPopup.php">
     <MissingParamType occurrences="1">
