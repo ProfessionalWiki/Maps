@@ -7,6 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Released on February 7th, 2022.
 
+* Fixed `GeoJSON` content model registration, which broke in some situations
 * Fixed 9.0.3 regression in `LineParser`
 
 ## Maps 9.0.3
