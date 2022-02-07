@@ -9,11 +9,11 @@ use Linker;
 use Maps\LegacyModel\Location;
 use Maps\MapsFunctions;
 use MediaWiki\MediaWikiServices;
+use SMW\Query\PrintRequest;
+use SMW\Query\QueryResult;
+use SMW\Query\Result\ResultArray;
 use SMWDataValue;
 use SMWDIGeoCoord;
-use SMWPrintRequest;
-use SMWQueryResult;
-use SMWResultArray;
 use SMWWikiPageValue;
 use Title;
 
@@ -98,7 +98,7 @@ class QueryHandler {
 	 */
 	private $userParam = '';
 
-	public function __construct( SMWQueryResult $queryResult, int $outputMode, bool $linkAbsolute = false ) {
+	public function __construct( QueryResult $queryResult, int $outputMode, bool $linkAbsolute = false ) {
 		$this->queryResult = $queryResult;
 		$this->outputMode = $outputMode;
 		$this->linkAbsolute = $linkAbsolute;
@@ -159,7 +159,7 @@ class QueryHandler {
 	}
 
 	/**
-	 * @param SMWResultArray[] $row
+	 * @param ResultArray[] $row
 	 * @return Location[]
 	 */
 	private function handlePageResult( array $row ): array {
@@ -176,10 +176,10 @@ class QueryHandler {
 	}
 
 	/**
-	 * @param SMWResultArray $resultArray
-	 * @return array|string[] [string $title, string $text]
+	 * @param ResultArray $resultArray
+	 * @return string[] [string $title, string $text]
 	 */
-	private function getTitleAndText( SMWResultArray $resultArray ): array {
+	private function getTitleAndText( ResultArray $resultArray ): array {
 		while ( ( $dataValue = $resultArray->getNextDataValue() ) !== false ) {
 			if ( $dataValue instanceof SMWWikiPageValue ) {
 				return [
@@ -200,8 +200,8 @@ class QueryHandler {
 	}
 
 	/**
-	 * @param SMWResultArray[] $row
-	 * @return array
+	 * @param ResultArray[] $row
+	 * @return array{0: array<int, Location>, 1: string}
 	 */
 	private function getLocationsAndProperties( array $row ): array {
 		$locations = [];
@@ -286,7 +286,7 @@ class QueryHandler {
 	/**
 	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
 	 */
-	private function handleResultProperty( SMWDataValue $object, SMWPrintRequest $printRequest ): string {
+	private function handleResultProperty( SMWDataValue $object, PrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {
 			if ( $object instanceof SMWWikiPageValue ) {
 				return $object->getDataItem()->getTitle()->getPrefixedText();
@@ -299,7 +299,7 @@ class QueryHandler {
 		return $propertyName . ( $propertyName === '' ? '' : ': ' ) . $this->getPropertyValue( $object );
 	}
 
-	private function getPropertyName( SMWPrintRequest $printRequest ): string {
+	private function getPropertyName( PrintRequest $printRequest ): string {
 		if ( $this->headerStyle === 'hide' ) {
 			return '';
 		}

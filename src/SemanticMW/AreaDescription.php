@@ -10,10 +10,10 @@ use Maps\GeoFunctions;
 use Maps\Presentation\MapsDistanceParser;
 use SMW\DataValueFactory;
 use SMW\DIProperty;
+use SMW\Query\Language\ThingDescription;
 use SMW\Query\Language\ValueDescription;
 use SMWDataItem;
 use SMWDIGeoCoord;
-use SMWThingDescription;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -51,7 +51,7 @@ class AreaDescription extends ValueDescription {
 		if ( ( $maxsize < $this->getSize() ) || ( $maxDepth < $this->getDepth() ) ) {
 			$log[] = $this->getQueryString();
 
-			$result = new SMWThingDescription();
+			$result = new ThingDescription();
 			$result->setPrintRequests( $this->getPrintRequests() );
 
 			return $result;

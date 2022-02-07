@@ -6,8 +6,8 @@ namespace Maps\SemanticMW;
 
 use Maps\Presentation\KmlFormatter;
 use ParamProcessor\ParamDefinition;
+use SMW\Query\QueryResult;
 use SMW\Query\ResultPrinters\FileExportPrinter;
-use SMWQueryResult;
 
 /**
  * @licence GNU GPL v2+
@@ -16,12 +16,12 @@ use SMWQueryResult;
 class KmlPrinter extends FileExportPrinter {
 
 	/**
-	 * @param SMWQueryResult $res
+	 * @param QueryResult $res
 	 * @param int $outputMode
 	 *
 	 * @return string
 	 */
-	public function getResultText( SMWQueryResult $res, $outputMode ) {
+	public function getResultText( QueryResult $res, $outputMode ) {
 		if ( $outputMode == SMW_OUTPUT_FILE ) {
 			return $this->getKML( $res, $outputMode );
 		}
@@ -29,7 +29,7 @@ class KmlPrinter extends FileExportPrinter {
 		return $this->getKMLLink( $res, $outputMode );
 	}
 
-	private function getKML( SMWQueryResult $res, int $outputMode ): string {
+	private function getKML( QueryResult $res, int $outputMode ): string {
 		$queryHandler = new QueryHandler( $res, $outputMode, $this->params['linkabsolute'] );
 		$queryHandler->setText( $this->params['text'] );
 		$queryHandler->setTitle( $this->params['title'] );
@@ -42,7 +42,7 @@ class KmlPrinter extends FileExportPrinter {
 	/**
 	 * Returns a link (HTML) pointing to a query that returns the actual KML file.
 	 */
-	private function getKMLLink( SMWQueryResult $res, int $outputMode ): string {
+	private function getKMLLink( QueryResult $res, int $outputMode ): string {
 		$searchLabel = $this->getSearchLabel( $outputMode );
 		$link = $res->getQueryLink(
 			$searchLabel ? $searchLabel : wfMessage( 'semanticmaps-kml-link' )->inContentLanguage()->text()
@@ -110,22 +110,22 @@ class KmlPrinter extends FileExportPrinter {
 	/**
 	 * @see SMWIExportPrinter::getMimeType
 	 *
-	 * @param SMWQueryResult $queryResult
+	 * @param QueryResult $queryResult
 	 *
 	 * @return string
 	 */
-	public function getMimeType( SMWQueryResult $queryResult ) {
+	public function getMimeType( QueryResult $queryResult ) {
 		return 'application/vnd.google-earth.kml+xml';
 	}
 
 	/**
 	 * @see SMWIExportPrinter::getFileName
 	 *
-	 * @param SMWQueryResult $queryResult
+	 * @param QueryResult $queryResult
 	 *
 	 * @return string|boolean
 	 */
-	public function getFileName( SMWQueryResult $queryResult ) {
+	public function getFileName( QueryResult $queryResult ) {
 		return 'kml.kml';
 	}
 
