@@ -16,9 +16,9 @@ use Jeroen\SimpleGeocoder\Geocoder;
  */
 class CachingGeocoder implements Geocoder {
 
-	private $geocoder;
-	private $cache;
-	private $cacheTtl;
+	private Geocoder $geocoder;
+	private BagOStuff $cache;
+	private int $cacheTtl;
 
 	public function __construct( Geocoder $geocoder, BagOStuff $cache, int $cacheTtl ) {
 		$this->geocoder = $geocoder;
@@ -26,10 +26,7 @@ class CachingGeocoder implements Geocoder {
 		$this->cacheTtl = $cacheTtl;
 	}
 
-	/**
-	 * @return LatLongValue|null
-	 */
-	public function geocode( string $address ) {
+	public function geocode( string $address ): ?LatLongValue {
 		$key = $this->cache->makeKey( __CLASS__, $address );
 
 		$coordinates = $this->cache->get( $key );

@@ -8,7 +8,7 @@ use File;
 
 class MwImage implements Image {
 
-	private $file;
+	private File $file;
 
 	public function __construct( File $file ) {
 		$this->file = $file;

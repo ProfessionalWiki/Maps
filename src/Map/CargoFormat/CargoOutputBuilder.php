@@ -19,10 +19,10 @@ use ParamProcessor\Processor;
 
 class CargoOutputBuilder {
 
-	private $outputBuilder;
-	private $services;
-	private $paramDefinitionFactory;
-	private $imageRepository;
+	private MapOutputBuilder $outputBuilder;
+	private MappingServices $services;
+	private ParamDefinitionFactory $paramDefinitionFactory;
+	private ImageRepository $imageRepository;
 
 	public function __construct( MapOutputBuilder $outputBuilder, MappingServices $services,
 		ParamDefinitionFactory $paramDefinitionFactory, ImageRepository $imageRepository ) {

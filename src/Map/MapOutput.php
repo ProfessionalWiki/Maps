@@ -6,9 +6,9 @@ namespace Maps\Map;
 
 class MapOutput {
 
-	private $html;
-	private $headItems;
-	private $resourceModules;
+	private string $html;
+	private string $headItems;
+	private array $resourceModules;
 
 	public function __construct( string $html, array $resourceModules, string $headItems ) {
 		$this->html = $html;
@@ -28,7 +28,7 @@ class MapOutput {
 		return $this->resourceModules;
 	}
 
-	public function addResourcesToParserOutput( \ParserOutput $po ) {
+	public function addResourcesToParserOutput( \ParserOutput $po ): void {
 		if ( $this->headItems !== '' ) {
 			$po->addHeadItem( $this->headItems );
 		}

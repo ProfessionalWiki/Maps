@@ -21,7 +21,7 @@ class CoordinateFormatter {
 		'float' => 1 / 1000000,
 	];
 
-	public function format( LatLongValue $latLong, string $format, bool $directional ) {
+	public function format( LatLongValue $latLong, string $format, bool $directional ): string {
 		$formatter = new LatLongFormatter( new FormatterOptions(
 			[
 				LatLongFormatter::OPT_FORMAT => $format,

@@ -21,9 +21,8 @@ use ValueParsers\ValueParser;
  */
 class CircleParser implements ValueParser {
 
-	private $metaDataSeparator = '~';
-
-	private $geocoder;
+	private string $metaDataSeparator = '~';
+	private Geocoder $geocoder;
 
 	public function __construct( $geocoder = null ) {
 		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::globalInstance()->getGeocoder();
@@ -35,10 +34,8 @@ class CircleParser implements ValueParser {
 	 * @since 3.0
 	 *
 	 * @param string $value
-	 *
-	 * @return Circle
 	 */
-	public function parse( $value ) {
+	public function parse( $value ): Circle {
 		$metaData = explode( $this->metaDataSeparator, $value );
 		$circleData = explode( ':', array_shift( $metaData ) );
 

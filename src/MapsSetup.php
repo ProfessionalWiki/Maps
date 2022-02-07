@@ -25,7 +25,7 @@ use Parser;
  */
 class MapsSetup {
 
-	private $mwGlobals;
+	private array $mwGlobals;
 
 	public function __construct( array &$mwGlobals ) {
 		$this->mwGlobals = $mwGlobals;

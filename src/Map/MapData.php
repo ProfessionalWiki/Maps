@@ -6,12 +6,12 @@ namespace Maps\Map;
 
 class MapData {
 
-	private $parameters;
+	private array $parameters;
 
 	/**
 	 * @var Marker[]
 	 */
-	private $markers = [];
+	private array $markers = [];
 
 	public function __construct( array $parameters ) {
 		$this->parameters = $parameters;

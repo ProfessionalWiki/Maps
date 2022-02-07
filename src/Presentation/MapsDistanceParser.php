@@ -14,8 +14,7 @@ use MediaWiki\MediaWikiServices;
  */
 class MapsDistanceParser {
 
-	private static $validatedDistanceUnit = false;
-
+	private static bool $validatedDistanceUnit = false;
 	private static $unitRegex = false;
 
 	public static function parseAndFormat( string $distance, string $unit = null, int $decimals = 2 ): string {

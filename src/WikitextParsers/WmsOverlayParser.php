@@ -25,10 +25,9 @@ class WmsOverlayParser implements ValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return WmsOverlay
 	 * @throws ParseException
 	 */
-	public function parse( $value ) {
+	public function parse( $value ): WmsOverlay {
 		if ( !is_string( $value ) ) {
 			throw new ParseException( 'Not a string' );
 		}

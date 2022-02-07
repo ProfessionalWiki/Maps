@@ -15,10 +15,8 @@ class ParameterExtractor {
 	 *
 	 * @param string[] $parameterNames Name and aliases of the parameter. First match gets used
 	 * @param string[] $rawParameters Parameters that did not get processed further than being put in a key-value map
-	 *
-	 * @return string|null
 	 */
-	public function extract( array $parameterNames, array $rawParameters ) {
+	public function extract( array $parameterNames, array $rawParameters ): ?string {
 		foreach ( $parameterNames as $parameterName ) {
 			foreach ( $rawParameters as $rawName => $rawValue ) {
 				if ( trim( strtolower( $rawName ) ) === $parameterName ) {
@@ -30,7 +28,7 @@ class ParameterExtractor {
 		return null;
 	}
 
-	public static function extractFromKeyValueStrings( array $keyValueStrings ) {
+	public static function extractFromKeyValueStrings( array $keyValueStrings ): array {
 		$rawParameters = [];
 
 		foreach ( $keyValueStrings as $keyValueString ) {

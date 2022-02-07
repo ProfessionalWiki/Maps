@@ -22,9 +22,8 @@ use ValueParsers\ValueParser;
  */
 class LineParser implements ValueParser {
 
-	private $metaDataSeparator = '~';
-
-	private $geocoder = null;
+	private string $metaDataSeparator = '~';
+	private Geocoder $geocoder;
 
 	public function setGeocoder( Geocoder $geocoder ) {
 		$this->geocoder = $geocoder;
@@ -44,10 +43,8 @@ class LineParser implements ValueParser {
 	 * @since 3.0
 	 *
 	 * @param string $value
-	 *
-	 * @return Line
 	 */
-	public function parse( $value ) {
+	public function parse( $value ): Line {
 		$parts = explode( $this->metaDataSeparator, $value );
 
 		$line = $this->constructShapeFromLatLongValues(
@@ -61,7 +58,7 @@ class LineParser implements ValueParser {
 		return $line;
 	}
 
-	protected function constructShapeFromLatLongValues( array $locations ) {
+	protected function constructShapeFromLatLongValues( array $locations ): Line {
 		return new Line( $locations );
 	}
 

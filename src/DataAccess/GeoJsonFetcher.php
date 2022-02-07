@@ -6,7 +6,7 @@ namespace Maps\DataAccess;
 
 use FileFetcher\FileFetcher;
 use FileFetcher\FileFetchingException;
-use MediaWiki\Storage\RevisionLookup;
+use MediaWiki\Revision\RevisionLookup;
 
 /**
  * Returns the content of the JSON file at the specified location as array.
@@ -17,9 +17,9 @@ use MediaWiki\Storage\RevisionLookup;
  */
 class GeoJsonFetcher {
 
-	private $fileFetcher;
-	private $titleParser;
-	private $revisionLookup;
+	private FileFetcher $fileFetcher;
+	private \TitleParser $titleParser;
+	private RevisionLookup $revisionLookup;
 
 	public function __construct( FileFetcher $fileFetcher, \TitleParser $titleParser, RevisionLookup $revisionLookup ) {
 		$this->fileFetcher = $fileFetcher;
@@ -31,7 +31,7 @@ class GeoJsonFetcher {
 		return $this->fetch( $fileLocation )->getContent();
 	}
 
-	public function fetch( string $fileLocation ) {
+	public function fetch( string $fileLocation ): GeoJsonFetcherResult {
 		try {
 			$title = $this->titleParser->parseTitle( $fileLocation, NS_GEO_JSON );
 

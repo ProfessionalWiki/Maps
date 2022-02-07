@@ -10,11 +10,11 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		parent::__construct( $modelId );
 	}
 
-	protected function getContentClass() {
+	protected function getContentClass(): string {
 		return GeoJsonContent::class;
 	}
 
-	public function makeEmptyContent() {
+	public function makeEmptyContent(): GeoJsonContent {
 		return new GeoJsonContent( GeoJsonContent::newEmptyContentString() );
 	}
 

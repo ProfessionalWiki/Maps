@@ -8,13 +8,13 @@ use Maps\Presentation\OutputFacade;
 
 class GeoJsonNewPageUi {
 
-	private $output;
+	private OutputFacade $output;
 
 	public function __construct( OutputFacade $output ) {
 		$this->output = $output;
 	}
 
-	public function addToOutput() {
+	public function addToOutput(): void {
 		$this->output->addModules( 'ext.maps.geojson.new.page' );
 
 		$this->output->addHtml(

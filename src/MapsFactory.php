@@ -251,7 +251,7 @@ class MapsFactory {
 			$this->getSmwFactory()->newParserData( $subjectPage, $parserOutput ),
 			$subjectPage,
 			$this->getSmwFactory()->getEventDispatcher(),
-			new SubObjectBuilder( $subjectPage )
+			new SubObjectBuilder()
 		);
 	}
 

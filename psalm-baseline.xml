@@ -10,7 +10,7 @@
       <code>$coordinates</code>
     </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
-      <code>LatLongValue|null</code>
+      <code>?LatLongValue</code>
     </MixedInferredReturnType>
     <MixedReturnStatement occurrences="1">
       <code>$coordinates</code>
@@ -20,25 +20,17 @@
     <DeprecatedMethod occurrences="1">
       <code>getNativeData</code>
     </DeprecatedMethod>
-    <MissingReturnType occurrences="1">
-      <code>fetch</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>NS_GEO_JSON</code>
     </MixedArgument>
     <MixedAssignment occurrences="1">
       <code>$json</code>
     </MixedAssignment>
-    <MixedInferredReturnType occurrences="2">
-      <code>array</code>
+    <MixedInferredReturnType occurrences="1">
       <code>array</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="1">
-      <code>getContent</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="2">
+    <MixedReturnStatement occurrences="1">
       <code>$json</code>
-      <code>$this-&gt;fetch( $fileLocation )-&gt;getContent()</code>
     </MixedReturnStatement>
   </file>
   <file src="src/DataAccess/MwImage.php">
@@ -108,9 +100,6 @@
     </UndefinedFunction>
   </file>
   <file src="src/GeoJsonPages/GeoJsonNewPageUi.php">
-    <MissingReturnType occurrences="1">
-      <code>addToOutput</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>wfMessage( 'maps-geo-json-create-page-button' )-&gt;inContentLanguage()-&gt;text()</code>
     </MixedArgument>
@@ -143,13 +132,15 @@
       <code>$subObjectBuilder</code>
       <code>$subjectPage</code>
     </PropertyNotSetInConstructor>
-    <UndefinedClass occurrences="8">
+    <UndefinedClass occurrences="10">
       <code>$this-&gt;parserData</code>
       <code>$this-&gt;parserData</code>
       <code>$this-&gt;smwEventDispatcher</code>
       <code>DIProperty</code>
       <code>DIProperty</code>
       <code>EventDispatcher</code>
+      <code>EventDispatcher</code>
+      <code>ParserData</code>
       <code>ParserData</code>
       <code>SMWDIContainer</code>
     </UndefinedClass>
@@ -158,18 +149,10 @@
     <MissingReturnType occurrences="1">
       <code>addPropertyValuePair</code>
     </MissingReturnType>
-    <MixedAssignment occurrences="3">
-      <code>$dataItem</code>
-      <code>$dataItems</code>
-      <code>$propertyName</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="2">
+    <MixedInferredReturnType occurrences="1">
       <code>ContainerSemanticData</code>
-      <code>array</code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="2">
-      <code>$this-&gt;values</code>
-    </MixedReturnStatement>
+    <MixedReturnStatement occurrences="1"/>
     <UndefinedClass occurrences="7">
       <code>$container</code>
       <code>ContainerSemanticData</code>
@@ -179,6 +162,10 @@
       <code>DIWikiPage</code>
       <code>\SMWDataItem</code>
     </UndefinedClass>
+    <UndefinedDocblockClass occurrences="2">
+      <code>array</code>
+      <code>private array $values = [];</code>
+    </UndefinedDocblockClass>
   </file>
   <file src="src/GeoJsonPages/Semantic/SubObjectBuilder.php">
     <DocblockTypeContradiction occurrences="2">
@@ -199,10 +186,6 @@
       <code>$geoJson</code>
       <code>$json</code>
     </MixedAssignment>
-    <MixedOperand occurrences="2">
-      <code>$this-&gt;pointCount</code>
-      <code>++$this-&gt;pointCount</code>
-    </MixedOperand>
     <MixedReturnTypeCoercion occurrences="2">
       <code>SubObject[]</code>
       <code>iterator_to_array( $this-&gt;featureCollectionToSubObjects( $geoJson ) )</code>
@@ -296,7 +279,7 @@
       <code>getJsImageLayers</code>
       <code>getLayerDependencies</code>
     </MissingReturnType>
-    <MixedArgument occurrences="12">
+    <MixedArgument occurrences="11">
       <code>$GLOBALS['egMapsLeafletAvailableLayers']</code>
       <code>$GLOBALS['egMapsLeafletAvailableOverlayLayers']</code>
       <code>$egMapsLeafletAvailableLayers</code>
@@ -308,36 +291,21 @@
       <code>$layerName</code>
       <code>$params['geojson']</code>
       <code>$params['image layers']</code>
-      <code>$this-&gt;addedDependencies</code>
     </MixedArgument>
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$dependencies</code>
     </MixedArgumentTypeCoercion>
-    <MixedArrayAssignment occurrences="1">
-      <code>$this-&gt;addedDependencies[]</code>
-    </MixedArrayAssignment>
-    <MixedAssignment occurrences="10">
+    <MixedAssignment occurrences="6">
       <code>$dependencies[]</code>
       <code>$dependency</code>
       <code>$imageLayer</code>
       <code>$layerName</code>
       <code>$mapsOnThisPage</code>
-      <code>$params['GeoJsonRevisionId']</code>
-      <code>$params['GeoJsonSource']</code>
-      <code>$params['geojson']</code>
       <code>$params['imageLayers']</code>
-      <code>$result</code>
     </MixedAssignment>
     <MixedInferredReturnType occurrences="1">
       <code>array</code>
     </MixedInferredReturnType>
-    <MixedMethodCall occurrences="5">
-      <code>getContent</code>
-      <code>getRevisionId</code>
-      <code>getText</code>
-      <code>getTitleValue</code>
-      <code>getTitleValue</code>
-    </MixedMethodCall>
     <MixedOperand occurrences="4">
       <code>$egMapsLeafletLayerDependencies[$layerName]</code>
       <code>$egMapsLeafletLayersApiKeys[$layerName]</code>
@@ -351,6 +319,9 @@
       <code>$params</code>
       <code>array</code>
     </MixedReturnTypeCoercion>
+    <PossiblyNullReference occurrences="1">
+      <code>getText</code>
+    </PossiblyNullReference>
   </file>
   <file src="src/LegacyMapEditor/MapEditorHtml.php">
     <ImplicitToStringCast occurrences="23">
@@ -603,48 +574,12 @@
     </UndefinedDocblockClass>
   </file>
   <file src="src/Map/DisplayMap/DisplayMapFunction.php">
-    <MissingReturnType occurrences="2">
-      <code>getAllParameterDefinitions</code>
+    <MissingReturnType occurrences="1">
       <code>trackMap</code>
     </MissingReturnType>
-    <MixedArgument occurrences="5">
-      <code>$service</code>
-      <code>$service</code>
-      <code>$this-&gt;getAllParameterDefinitions( $service, "\n" )</code>
-      <code>$this-&gt;getAllParameterDefinitions( $service, ';' )</code>
-      <code>Maps\Presentation\ParameterExtractor::extractFromKeyValueStrings( $parameters )</code>
-    </MixedArgument>
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$parameters</code>
     </MixedArgumentTypeCoercion>
-    <MixedAssignment occurrences="4">
-      <code>$mapOutput</code>
-      <code>$mapOutput</code>
-      <code>$service</code>
-      <code>$service</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="2">
-      <code>string</code>
-      <code>string</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="8">
-      <code>addResourcesToParserOutput</code>
-      <code>addResourcesToParserOutput</code>
-      <code>getHtml</code>
-      <code>getHtml</code>
-      <code>getServiceOrDefault</code>
-      <code>getServiceOrDefault</code>
-      <code>renderMap</code>
-      <code>renderMap</code>
-    </MixedMethodCall>
-    <MixedPropertyAssignment occurrences="2">
-      <code>$this-&gt;renderer</code>
-      <code>$this-&gt;renderer</code>
-    </MixedPropertyAssignment>
-    <MixedReturnStatement occurrences="2">
-      <code>$mapOutput-&gt;getHtml()</code>
-      <code>$mapOutput-&gt;getHtml()</code>
-    </MixedReturnStatement>
   </file>
   <file src="src/Map/DisplayMap/DisplayMapRenderer.php">
     <MissingParamType occurrences="3">
@@ -693,9 +628,6 @@
       <code>$locationParser</code>
       <code>$wikitextParser</code>
     </PropertyNotSetInConstructor>
-    <PropertyTypeCoercion occurrences="1">
-      <code>$factory-&gt;getFileUrlFinder()</code>
-    </PropertyTypeCoercion>
   </file>
   <file src="src/Map/MapDataSerializer.php">
     <MixedArgument occurrences="1">
@@ -717,20 +649,21 @@
       <code>wfMessage( 'maps-loading-map' )</code>
     </UndefinedFunction>
   </file>
-  <file src="src/Map/MapOutput.php">
-    <MissingReturnType occurrences="1">
-      <code>addResourcesToParserOutput</code>
-    </MissingReturnType>
-  </file>
   <file src="src/Map/SemanticFormat/MapPrinter.php">
     <UndefinedClass occurrences="1">
       <code>ResultPrinter</code>
     </UndefinedClass>
   </file>
   <file src="src/Map/StructuredPopup.php">
+    <MixedArgument occurrences="1">
+      <code>$value</code>
+    </MixedArgument>
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$name</code>
     </MixedArgumentTypeCoercion>
+    <MixedAssignment occurrences="1">
+      <code>$value</code>
+    </MixedAssignment>
   </file>
   <file src="src/MappingServices.php">
     <MixedArrayOffset occurrences="1">
@@ -1035,15 +968,7 @@
       <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
     </UndefinedFunction>
   </file>
-  <file src="src/Presentation/CoordinateFormatter.php">
-    <MissingReturnType occurrences="1">
-      <code>format</code>
-    </MissingReturnType>
-  </file>
   <file src="src/Presentation/ElementJsonSerializer.php">
-    <MissingReturnType occurrences="1">
-      <code>titleAndText</code>
-    </MissingReturnType>
     <MixedArgument occurrences="3">
       <code>$elementJson['text']</code>
       <code>$elementJson['title']</code>
@@ -1095,10 +1020,6 @@
     </RedundantCast>
   </file>
   <file src="src/Presentation/OutputFacade.php">
-    <MissingConstructor occurrences="2">
-      <code>$outputPage</code>
-      <code>$parserOutput</code>
-    </MissingConstructor>
     <MissingReturnType occurrences="5">
       <code>addHeadItem</code>
       <code>addHtml</code>
@@ -1106,19 +1027,8 @@
       <code>newFromOutputPage</code>
       <code>newFromParserOutput</code>
     </MissingReturnType>
-    <RedundantConditionGivenDocblockType occurrences="6">
-      <code>$this-&gt;outputPage !== null</code>
-      <code>$this-&gt;outputPage !== null</code>
-      <code>$this-&gt;outputPage !== null</code>
-      <code>$this-&gt;parserOutput !== null</code>
-      <code>$this-&gt;parserOutput !== null</code>
-      <code>$this-&gt;parserOutput !== null</code>
-    </RedundantConditionGivenDocblockType>
   </file>
   <file src="src/Presentation/ParameterExtractor.php">
-    <MissingReturnType occurrences="1">
-      <code>extractFromKeyValueStrings</code>
-    </MissingReturnType>
     <MixedArgument occurrences="1">
       <code>$keyValueString</code>
     </MixedArgument>
@@ -1272,32 +1182,15 @@
       <code>registerGoogleMaps</code>
       <code>registerLeaflet</code>
     </MissingReturnType>
-    <MixedArrayAccess occurrences="5">
-      <code>$this-&gt;mwGlobals['egMapsDefaultService']</code>
-      <code>$this-&gt;mwGlobals['smwgResultAliases']</code>
-      <code>$this-&gt;mwGlobals['smwgResultFormats']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['SMWResultFormat']</code>
-    </MixedArrayAccess>
     <MixedArrayAssignment occurrences="4">
-      <code>$this-&gt;mwGlobals['smwgResultAliases']</code>
-      <code>$this-&gt;mwGlobals['smwgResultFormats']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']</code>
+      <code>$this-&gt;mwGlobals['smwgResultAliases'][$this-&gt;mwGlobals['egMapsDefaultService']]</code>
+      <code>$this-&gt;mwGlobals['smwgResultFormats']['kml']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['SMW::DataType::initTypes']</code>
+      <code>$this-&gt;mwGlobals['wgHooks']['SMWResultFormat']</code>
     </MixedArrayAssignment>
     <MixedArrayOffset occurrences="1">
       <code>$this-&gt;mwGlobals['smwgResultAliases'][$this-&gt;mwGlobals['egMapsDefaultService']]</code>
     </MixedArrayOffset>
-    <MixedAssignment occurrences="2">
-      <code>$googleMaps</code>
-      <code>$leaflet</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="4">
-      <code>getService</code>
-      <code>getService</code>
-      <code>nameIsKnown</code>
-      <code>nameIsKnown</code>
-    </MixedMethodCall>
     <UndefinedClass occurrences="1">
       <code>DataTypeRegistry</code>
     </UndefinedClass>
@@ -1306,33 +1199,6 @@
     <MissingParamType occurrences="1">
       <code>$geocoder</code>
     </MissingParamType>
-    <MixedArgument occurrences="12">
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$this-&gt;metaDataSeparator</code>
-      <code>array_shift( $metaData )</code>
-      <code>array_shift( $metaData )</code>
-      <code>array_shift( $metaData )</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$latLong</code>
-      <code>$metaData</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>LatLongValue</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="1">
-      <code>geocode</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
-      <code>$latLong</code>
-    </MixedReturnStatement>
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$value</code>
     </MoreSpecificImplementedParamType>
@@ -1347,38 +1213,27 @@
     <MissingParamType occurrences="1">
       <code>$geocoder</code>
     </MissingParamType>
-    <MixedAssignment occurrences="1">
-      <code>$latLong</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>LatLongValue</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="1">
-      <code>geocode</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
-      <code>$latLong</code>
-    </MixedReturnStatement>
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$value</code>
     </MoreSpecificImplementedParamType>
   </file>
   <file src="src/WikitextParsers/LineParser.php">
+    <MissingConstructor occurrences="1">
+      <code>$geocoder</code>
+    </MissingConstructor>
     <MissingParamType occurrences="4">
       <code>$link</code>
       <code>$link</code>
       <code>$params</code>
       <code>$title</code>
     </MissingParamType>
-    <MissingReturnType occurrences="5">
-      <code>constructShapeFromLatLongValues</code>
+    <MissingReturnType occurrences="4">
       <code>handleCommonParams</code>
       <code>setBubbleDataFromParameter</code>
       <code>setGeocoder</code>
       <code>setLinkFromParameter</code>
     </MissingReturnType>
-    <MixedArgument occurrences="15">
-      <code>$line</code>
+    <MixedArgument occurrences="10">
       <code>$link</code>
       <code>$link</code>
       <code>$link</code>
@@ -1387,80 +1242,58 @@
       <code>$params</code>
       <code>$params</code>
       <code>$params</code>
-      <code>$parts</code>
-      <code>$parts</code>
       <code>$text</code>
-      <code>$this-&gt;metaDataSeparator</code>
       <code>$title</code>
-      <code>array_shift( $parts )</code>
     </MixedArgument>
     <MixedArgumentTypeCoercion occurrences="1">
       <code>$locations</code>
     </MixedArgumentTypeCoercion>
-    <MixedAssignment occurrences="7">
+    <MixedAssignment occurrences="5">
       <code>$color</code>
-      <code>$line</code>
       <code>$linkOrTitle</code>
       <code>$opacity</code>
-      <code>$parts</code>
       <code>$text</code>
       <code>$weight</code>
     </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>Geocoder</code>
-    </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>$this-&gt;geocoder</code>
-    </MixedReturnStatement>
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$value</code>
     </MoreSpecificImplementedParamType>
     <PossiblyNullReference occurrences="1">
       <code>getFullURL</code>
     </PossiblyNullReference>
+    <TypeDoesNotContainType occurrences="1">
+      <code>$this-&gt;geocoder == null</code>
+    </TypeDoesNotContainType>
   </file>
   <file src="src/WikitextParsers/LocationParser.php">
-    <MissingParamType occurrences="5">
+    <MissingParamType occurrences="3">
       <code>$enableLegacyCrud</code>
-      <code>$link</code>
-      <code>$link</code>
       <code>$titleOrLink</code>
       <code>$value</code>
     </MissingParamType>
-    <MissingReturnType occurrences="4">
-      <code>getExpandedLink</code>
-      <code>isLink</code>
+    <MissingReturnType occurrences="2">
       <code>setLink</code>
       <code>setTitleOrLink</code>
     </MissingReturnType>
-    <MixedArgument occurrences="8">
-      <code>$coordinates</code>
-      <code>$link</code>
-      <code>$link</code>
-      <code>$this-&gt;fileUrlFinder-&gt;getUrlForFileName( array_shift( $metaData ) )</code>
-      <code>$this-&gt;fileUrlFinder-&gt;getUrlForFileName( array_shift( $metaData ) )</code>
-      <code>$this-&gt;getExpandedLink( $link )</code>
+    <MixedArgument occurrences="3">
+      <code>$titleOrLink</code>
       <code>$titleOrLink</code>
       <code>$value</code>
     </MixedArgument>
-    <MixedAssignment occurrences="1">
-      <code>$coordinates</code>
-    </MixedAssignment>
-    <MixedMethodCall occurrences="3">
-      <code>geocode</code>
-      <code>getUrlForFileName</code>
-      <code>getUrlForFileName</code>
-    </MixedMethodCall>
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$value</code>
     </MoreSpecificImplementedParamType>
+    <PropertyNotSetInConstructor occurrences="3">
+      <code>$fileUrlFinder</code>
+      <code>$geocoder</code>
+      <code>$useAddressAsTitle</code>
+    </PropertyNotSetInConstructor>
   </file>
   <file src="src/WikitextParsers/PolygonParser.php">
     <ArgumentTypeCoercion occurrences="1">
       <code>$line</code>
     </ArgumentTypeCoercion>
-    <MissingReturnType occurrences="3">
-      <code>constructShapeFromLatLongValues</code>
+    <MissingReturnType occurrences="2">
       <code>handleCommonParams</code>
       <code>handlePolygonParams</code>
     </MissingReturnType>
@@ -1482,33 +1315,6 @@
     <MissingParamType occurrences="1">
       <code>$geocoder</code>
     </MissingParamType>
-    <MixedArgument occurrences="12">
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$metaData</code>
-      <code>$this-&gt;metaDataSeparator</code>
-      <code>array_shift( $metaData )</code>
-      <code>array_shift( $metaData )</code>
-      <code>array_shift( $metaData )</code>
-    </MixedArgument>
-    <MixedAssignment occurrences="2">
-      <code>$latLong</code>
-      <code>$metaData</code>
-    </MixedAssignment>
-    <MixedInferredReturnType occurrences="1">
-      <code>LatLongValue</code>
-    </MixedInferredReturnType>
-    <MixedMethodCall occurrences="1">
-      <code>geocode</code>
-    </MixedMethodCall>
-    <MixedReturnStatement occurrences="1">
-      <code>$latLong</code>
-    </MixedReturnStatement>
     <MoreSpecificImplementedParamType occurrences="1">
       <code>$value</code>
     </MoreSpecificImplementedParamType>

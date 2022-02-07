@@ -19,7 +19,7 @@ use ValueParsers\ValueParser;
  */
 class ImageOverlayParser implements ValueParser {
 
-	private $geocoder;
+	private Geocoder $geocoder;
 
 	public function __construct( $geocoder = null ) {
 		$this->geocoder = $geocoder instanceof Geocoder ? $geocoder : MapsFactory::globalInstance()->getGeocoder();
@@ -30,10 +30,9 @@ class ImageOverlayParser implements ValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return ImageOverlay
 	 * @throws ParseException
 	 */
-	public function parse( $value ) {
+	public function parse( $value ): ImageOverlay {
 		$metaData = explode( '~', $value );
 		$imageParameters = explode( ':', array_shift( $metaData ), 3 );
 

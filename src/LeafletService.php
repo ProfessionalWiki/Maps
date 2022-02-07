@@ -15,9 +15,8 @@ use ParamProcessor\ProcessingResult;
  */
 class LeafletService implements MappingService {
 
-	private $imageFinder;
-
-	private $addedDependencies = [];
+	private ImageRepository $imageFinder;
+	private array $addedDependencies = [];
 
 	public function __construct( ImageRepository $imageFinder ) {
 		$this->imageFinder = $imageFinder;

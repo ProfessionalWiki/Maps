@@ -8,17 +8,9 @@ use DataValues\Geo\Values\LatLongValue;
 
 class Marker {
 
-	private $coordinates;
-
-	/**
-	 * @var string
-	 */
-	private $iconUrl = '';
-
-	/**
-	 * @var string
-	 */
-	private $text = '';
+	private LatLongValue $coordinates;
+	private string $iconUrl = '';
+	private string $text = '';
 
 	public function __construct( LatLongValue $coordinates ) {
 		$this->coordinates = $coordinates;

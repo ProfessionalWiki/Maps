@@ -25,7 +25,7 @@ class SubObjectBuilderTest extends TestCase {
 	}
 
 	private function newBuilder(): SubObjectBuilder {
-		return new SubObjectBuilder( \Title::newFromText( 'GeoJson:TestGeoJson' ) );
+		return new SubObjectBuilder();
 	}
 
 	public function testPoint() {

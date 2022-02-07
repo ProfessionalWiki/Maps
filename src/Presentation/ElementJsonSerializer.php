@@ -8,7 +8,7 @@ use Maps\LegacyModel\BaseElement;
 
 class ElementJsonSerializer {
 
-	private $parser;
+	private WikitextParser $parser;
 
 	public function __construct( WikitextParser $parser ) {
 		$this->parser = $parser;
@@ -22,7 +22,7 @@ class ElementJsonSerializer {
 		return $json;
 	}
 
-	public function titleAndText( array &$elementJson ) {
+	public function titleAndText( array &$elementJson ): void {
 		$elementJson['title'] = $this->parser->wikitextToHtml( $elementJson['title'] );
 		$elementJson['text'] = $this->parser->wikitextToHtml( $elementJson['text'] );
 

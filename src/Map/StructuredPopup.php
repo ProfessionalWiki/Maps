@@ -6,8 +6,8 @@ namespace Maps\Map;
 
 class StructuredPopup {
 
-	private $titleHtml;
-	private $propertyValues;
+	private string $titleHtml;
+	private array $propertyValues;
 
 	/**
 	 * @param string $titleHtml

@@ -11,8 +11,12 @@ use TitleValue;
 
 class SubObject {
 
-	private $name;
-	private $values = [];
+	private string $name;
+
+	/**
+	 * @var array<string, array<int, \SMWDataItem>>
+	 */
+	private array $values = [];
 
 	public function __construct( string $name ) {
 		$this->name = $name;

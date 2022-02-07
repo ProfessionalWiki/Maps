@@ -10,6 +10,7 @@ use Maps\MappingServices;
 use Maps\MapsFactory;
 use Maps\Presentation\ParameterExtractor;
 use MWException;
+use ParamProcessor\ParamDefinition;
 use ParamProcessor\Processor;
 use Parser;
 
@@ -21,13 +22,11 @@ use Parser;
  */
 class DisplayMapFunction {
 
-	private $services;
-
-	private $renderer;
+	private MappingServices $services;
+	private DisplayMapRenderer $renderer;
 
 	public function __construct( MappingServices $services ) {
 		$this->services = $services;
-
 		$this->renderer = new DisplayMapRenderer();
 	}
 
@@ -104,7 +103,10 @@ class DisplayMapFunction {
 		return $mapOutput->getHtml();
 	}
 
-	private function getAllParameterDefinitions( MappingService $service, string $locationDelimiter ) {
+	/**
+	 * @return ParamDefinition[]
+	 */
+	private function getAllParameterDefinitions( MappingService $service, string $locationDelimiter ): array {
 		$params = [];
 
 		$params['mappingservice'] = [

@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\DataAccess;
 
-use MediaWiki\Storage\RevisionLookup;
+use MediaWiki\Revision\RevisionLookup;
 
 /**
  * @licence GNU GPL v2+
@@ -12,8 +12,8 @@ use MediaWiki\Storage\RevisionLookup;
  */
 class PageContentFetcher {
 
-	private $titleParser;
-	private $revisionLookup;
+	private \TitleParser $titleParser;
+	private RevisionLookup $revisionLookup;
 
 	public function __construct( \TitleParser $titleParser, RevisionLookup $revisionLookup ) {
 		$this->titleParser = $titleParser;

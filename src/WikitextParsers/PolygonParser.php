@@ -17,7 +17,7 @@ use Maps\LegacyModel\Polygon;
  */
 class PolygonParser extends LineParser {
 
-	protected function constructShapeFromLatLongValues( array $locations ) {
+	protected function constructShapeFromLatLongValues( array $locations ): Line {
 		return new Polygon( $locations );
 	}
 

@@ -8,7 +8,7 @@ use RepoGroup;
 
 class MwImageRepository implements ImageRepository {
 
-	private $repoGroup;
+	private RepoGroup $repoGroup;
 
 	public function __construct( RepoGroup $repoGroup ) {
 		$this->repoGroup = $repoGroup;

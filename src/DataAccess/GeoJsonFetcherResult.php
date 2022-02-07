@@ -6,9 +6,9 @@ namespace Maps\DataAccess;
 
 class GeoJsonFetcherResult {
 
-	private $content;
-	private $revisionId;
-	private $source;
+	private array $content;
+	private ?int $revisionId;
+	private ?\TitleValue $source;
 
 	public function __construct( array $content, ?int $revisionId, ?\TitleValue $source ) {
 		$this->content = $content;

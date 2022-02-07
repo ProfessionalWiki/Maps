@@ -13,10 +13,10 @@ use Title;
 
 class SemanticGeoJsonStore implements GeoJsonStore {
 
-	private $parserData;
-	private $subjectPage;
-	private $smwEventDispatcher;
-	private $subObjectBuilder;
+	private ParserData $parserData;
+	private Title $subjectPage;
+	private EventDispatcher $smwEventDispatcher;
+	private SubObjectBuilder $subObjectBuilder;
 
 	public function __construct( ParserData $parserData, Title $subjectPage, EventDispatcher $smwEventDispatcher, SubObjectBuilder $subObjectBuilder ) {
 		$this->parserData = $parserData;

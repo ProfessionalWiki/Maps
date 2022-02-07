@@ -11,12 +11,7 @@ use Title;
 
 class SubObjectBuilder {
 
-	private $subjectPage;
-	private $pointCount = 0;
-
-	public function __construct( Title $subjectPage ) {
-		$this->subjectPage = $subjectPage;
-	}
+	private int $pointCount = 0;
 
 	/**
 	 * @return SubObject[]

@@ -9,7 +9,7 @@ use ParserOptions;
 
 class WikitextParser {
 
-	private $parser;
+	private Parser $parser;
 
 	public function __construct( Parser $parser ) {
 		$this->parser = $parser;

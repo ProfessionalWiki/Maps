@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Map\DisplayMap;
 
 use Maps\DataAccess\MediaWikiFileUrlFinder;
+use Maps\FileUrlFinder;
 use Maps\LegacyModel\Location;
 use Maps\Map\MapData;
 use Maps\Map\MapOutput;
@@ -24,26 +25,11 @@ use Parser;
  */
 class DisplayMapRenderer {
 
-	public $service;
-
-	/**
-	 * @var LocationParser
-	 */
-	private $locationParser;
-
-	/**
-	 * @var MediaWikiFileUrlFinder
-	 */
-	private $fileUrlFinder;
-
-	/**
-	 * @var WikitextParser
-	 */
-	private $wikitextParser;
-	/**
-	 * @var ElementJsonSerializer
-	 */
-	private $elementSerializer;
+	public ?MappingService $service;
+	private LocationParser $locationParser;
+	private FileUrlFinder $fileUrlFinder;
+	private WikitextParser $wikitextParser;
+	private ElementJsonSerializer $elementSerializer;
 
 	public function __construct( MappingService $service = null ) {
 		$this->service = $service;

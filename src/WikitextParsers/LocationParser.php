@@ -24,9 +24,9 @@ use ValueParsers\ValueParser;
  */
 class LocationParser implements ValueParser {
 
-	private $geocoder;
-	private $fileUrlFinder;
-	private $useAddressAsTitle;
+	private Geocoder $geocoder;
+	private FileUrlFinder $fileUrlFinder;
+	private bool $useAddressAsTitle;
 
 	/**
 	 * @deprecated Use newInstance instead
@@ -54,10 +54,9 @@ class LocationParser implements ValueParser {
 	 *
 	 * @param string $value
 	 *
-	 * @return Location
 	 * @throws ParseException
 	 */
-	public function parse( $value ) {
+	public function parse( $value ): Location {
 		$separator = '~';
 
 		$metaData = explode( $separator, $value );
@@ -110,16 +109,16 @@ class LocationParser implements ValueParser {
 		}
 	}
 
-	private function isLink( $value ) {
+	private function isLink( $value ): bool {
 		return strpos( $value, 'link:' ) === 0;
 	}
 
-	private function setLink( Location $location, $link ) {
+	private function setLink( Location $location, string $link ) {
 		$link = substr( $link, 5 );
 		$location->setLink( $this->getExpandedLink( $link ) );
 	}
 
-	private function getExpandedLink( $link ) {
+	private function getExpandedLink( string $link ): string {
 		if ( filter_var( $link, FILTER_VALIDATE_URL ) ) {
 			return $link;
 		}

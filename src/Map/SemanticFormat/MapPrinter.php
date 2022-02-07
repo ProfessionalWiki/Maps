@@ -17,9 +17,9 @@ use Maps\SemanticMW\QueryHandler;
 use Maps\WikitextParsers\LocationParser;
 use MediaWiki\MediaWikiServices;
 use Parser;
+use SMW\Query\QueryResult;
 use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;
-use SMWQueryResult;
 use Title;
 
 /**
@@ -29,38 +29,22 @@ use Title;
  */
 class MapPrinter extends ResultPrinter {
 
-	private static $services = [];
-
 	/**
-	 * @var LocationParser
+	 * @var array<int, MappingService>
 	 */
-	private $locationParser;
+	private static array $services = [];
 
-	/**
-	 * @var FileUrlFinder
-	 */
-	private $fileUrlFinder;
-
-	/**
-	 * @var MappingService
-	 */
-	private $service;
-
-	/**
-	 * @var ElementJsonSerializer
-	 */
-	private $elementSerializer;
+	private LocationParser $locationParser;
+	private FileUrlFinder $fileUrlFinder;
+	private MappingService $service;
+	private ElementJsonSerializer $elementSerializer;
 
 	/**
 	 * @var string|boolean
 	 */
 	private $fatalErrorMsg = false;
 
-	/**
-	 * @param string $format
-	 * @param bool $inline
-	 */
-	public function __construct( $format, $inline = true ) {
+	public function __construct( string $format, bool $inline = true ) {
 		$this->service = self::$services[$format];
 
 		parent::__construct( $format, $inline );
@@ -93,12 +77,12 @@ class MapPrinter extends ResultPrinter {
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
 	 *
-	 * @param SMWQueryResult $res
+	 * @param QueryResult $res
 	 * @param int $outputMode
 	 *
 	 * @return string
 	 */
-	final public function getResultText( SMWQueryResult $res, $outputMode ) {
+	final public function getResultText( QueryResult $res, $outputMode ): string {
 		if ( $this->fatalErrorMsg !== false ) {
 			return $this->fatalErrorMsg;
 		}

@@ -9,15 +9,8 @@ use ParserOutput;
 
 class OutputFacade {
 
-	/**
-	 * @var OutputPage
-	 */
-	private $outputPage;
-
-	/**
-	 * @var ParserOutput
-	 */
-	private $parserOutput;
+	private ?OutputPage $outputPage = null;
+	private ?ParserOutput $parserOutput = null;
 
 	public static function newFromOutputPage( OutputPage $outputPage ) {
 		$instance = new self();

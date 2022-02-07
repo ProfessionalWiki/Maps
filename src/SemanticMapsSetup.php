@@ -16,8 +16,8 @@ use SMWDataItem;
  */
 class SemanticMapsSetup {
 
-	private $mwGlobals;
-	private $mappingServices;
+	private array $mwGlobals;
+	private MappingServices $mappingServices;
 
 	private function __construct( array &$mwGlobals, MappingServices $mappingServices ) {
 		$this->mwGlobals =& $mwGlobals;

@@ -13,12 +13,12 @@ final class MappingServices {
 	/**
 	 * @var MappingService[]
 	 */
-	private $nameToServiceMap = [];
+	private array $nameToServiceMap = [];
 
 	/**
 	 * @var string Name of the default service, which is used as fallback
 	 */
-	private $defaultService;
+	private string $defaultService;
 
 	/**
 	 * @param string[] $availableServices
