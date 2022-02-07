@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 9.0.4
+
+Released on February 7th, 2022.
+
+* Fixed 9.0.3 regression in `LineParser`
+
 ## Maps 9.0.3
 
 Released on February 7th, 2022.

@@ -23,7 +23,7 @@ use ValueParsers\ValueParser;
 class LineParser implements ValueParser {
 
 	private string $metaDataSeparator = '~';
-	private Geocoder $geocoder;
+	private ?Geocoder $geocoder = null;
 
 	public function setGeocoder( Geocoder $geocoder ) {
 		$this->geocoder = $geocoder;
