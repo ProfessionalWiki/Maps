@@ -5,7 +5,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 9.0.5
 
-*
+Released on February 9th, 2022.
+
+* Fixed PHP 8.1+ compatibility issue
 
 ## Maps 9.0.4
 

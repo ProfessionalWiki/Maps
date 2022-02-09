@@ -26,7 +26,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	</tr>
 	<tr>
 		<th>9.0.x</th>
-		<td><strong>7.4</strong> - 8.0+</td>
+		<td><strong>7.4</strong> - 8.1+</td>
 		<td>1.35 - 1.38+</td>
 		<td>3.2 - 4.0</td>
 		<td><strong>Stable release</strong></td>
