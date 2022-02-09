@@ -11,11 +11,6 @@ parameters:
 			path: src/MapsFactory.php
 
 		-
-			message: "#^Unsafe usage of new static\\(\\)\\.$#"
-			count: 1
-			path: src/MapsFactory.php
-
-		-
 			message: "#^Access to constant PRINT_THIS on an unknown class SMWPrintRequest\\.$#"
 			count: 1
 			path: src/MapsHooks.php

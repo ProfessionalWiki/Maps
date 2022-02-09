@@ -691,28 +691,28 @@
       <code>$this-&gt;settings['egMapsGeoJsonCacheTtl']</code>
       <code>$this-&gt;settings['egMapsGeoNamesUser']</code>
     </MixedArgument>
-    <MixedInferredReturnType occurrences="5">
+    <MixedInferredReturnType occurrences="2">
       <code>ApplicationFactory</code>
-      <code>GoogleMapsService</code>
-      <code>LeafletService</code>
       <code>SemanticMapsSetup</code>
-      <code>self</code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="4">
+    <MixedReturnStatement occurrences="1">
+      <code>SemanticMapsSetup::newFromMediaWikiGlobals( $mwGlobals, $this-&gt;getMappingServices() )</code>
+    </MixedReturnStatement>
+    <PropertyNotSetInConstructor occurrences="2">
+      <code>$googleService</code>
+      <code>$leafletService</code>
+    </PropertyNotSetInConstructor>
+    <RedundantPropertyInitializationCheck occurrences="4">
       <code>$this-&gt;googleService</code>
       <code>$this-&gt;leafletService</code>
-      <code>SemanticMapsSetup::newFromMediaWikiGlobals( $mwGlobals, $this-&gt;getMappingServices() )</code>
-      <code>self::$globalInstance</code>
-    </MixedReturnStatement>
+      <code>new GoogleMapsService()</code>
+    </RedundantPropertyInitializationCheck>
     <UndefinedClass occurrences="4">
       <code>$this-&gt;getSmwFactory()</code>
       <code>$this-&gt;getSmwFactory()</code>
       <code>ApplicationFactory</code>
       <code>ApplicationFactory</code>
     </UndefinedClass>
-    <UnsafeInstantiation occurrences="1">
-      <code>new static( $GLOBALS, MediaWikiServices::getInstance() )</code>
-    </UnsafeInstantiation>
   </file>
   <file src="src/MapsHooks.php">
     <MissingReturnType occurrences="6">
@@ -757,10 +757,9 @@
     <MissingDependency occurrences="1">
       <code>CargoFormat</code>
     </MissingDependency>
-    <MissingReturnType occurrences="7">
+    <MissingReturnType occurrences="6">
       <code>defaultSettings</code>
       <code>registerAllTheThings</code>
-      <code>registerGeoJsonContentModel</code>
       <code>registerHooks</code>
       <code>registerParameterTypes</code>
       <code>registerParserHooks</code>
@@ -769,8 +768,7 @@
     <MixedArgument occurrences="1">
       <code>$this-&gt;mwGlobals['egMapsAvailableServices']</code>
     </MixedArgument>
-    <MixedArrayAssignment occurrences="22">
-      <code>$this-&gt;mwGlobals['wgContentHandlers'][GeoJsonContent::CONTENT_MODEL_ID]</code>
+    <MixedArrayAssignment occurrences="21">
       <code>$this-&gt;mwGlobals['wgHooks']['AdminLinks']</code>
       <code>$this-&gt;mwGlobals['wgHooks']['BeforeDisplayNoArticleText']</code>
       <code>$this-&gt;mwGlobals['wgHooks']['CargoSetFormatClasses']</code>
@@ -1218,9 +1216,6 @@
     </MoreSpecificImplementedParamType>
   </file>
   <file src="src/WikitextParsers/LineParser.php">
-    <MissingConstructor occurrences="1">
-      <code>$geocoder</code>
-    </MissingConstructor>
     <MissingParamType occurrences="4">
       <code>$link</code>
       <code>$link</code>
@@ -1261,9 +1256,6 @@
     <PossiblyNullReference occurrences="1">
       <code>getFullURL</code>
     </PossiblyNullReference>
-    <TypeDoesNotContainType occurrences="1">
-      <code>$this-&gt;geocoder == null</code>
-    </TypeDoesNotContainType>
   </file>
   <file src="src/WikitextParsers/LocationParser.php">
     <MissingParamType occurrences="3">

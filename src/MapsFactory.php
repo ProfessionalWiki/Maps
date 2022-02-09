@@ -26,12 +26,6 @@ use Maps\GeoJsonPages\Semantic\SubObjectBuilder;
 use Maps\Map\CargoFormat\CargoOutputBuilder;
 use Maps\Map\DisplayMap\DisplayMapFunction;
 use Maps\Map\MapOutputBuilder;
-use Maps\ParserHooks\CoordinatesFunction;
-use Maps\ParserHooks\DistanceFunction;
-use Maps\ParserHooks\FindDestinationFunction;
-use Maps\ParserHooks\GeocodeFunction;
-use Maps\ParserHooks\GeoDistanceFunction;
-use Maps\ParserHooks\MapsDocFunction;
 use Maps\Presentation\CoordinateFormatter;
 use Maps\WikitextParsers\CircleParser;
 use Maps\WikitextParsers\DistanceParser;
@@ -44,7 +38,6 @@ use Maps\WikitextParsers\WmsOverlayParser;
 use MediaWiki\MediaWikiServices;
 use ParamProcessor\ParamDefinitionFactory;
 use Parser;
-use ParserHook;
 use RepoGroup;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
@@ -57,15 +50,15 @@ use Title;
  */
 class MapsFactory {
 
-	protected static $globalInstance = null;
+	protected static ?self $globalInstance = null;
 
-	private $settings;
-	private $mediaWikiServices;
+	private array $settings;
+	private MediaWikiServices $mediaWikiServices;
 
-	private $leafletService;
-	private $googleService;
+	private LeafletService $leafletService;
+	private GoogleMapsService $googleService;
 
-	private function __construct( array $settings, MediaWikiServices $mediaWikiServices ) {
+	final protected function __construct( array $settings, MediaWikiServices $mediaWikiServices ) {
 		$this->settings = $settings;
 		$this->mediaWikiServices = $mediaWikiServices;
 	}
@@ -191,19 +184,15 @@ class MapsFactory {
 	}
 
 	private function getGoogleMapsService(): GoogleMapsService {
-		if ( $this->googleService === null ) {
-			$this->googleService = new GoogleMapsService();
-		}
+		$this->googleService ??= new GoogleMapsService();
 
 		return $this->googleService;
 	}
 
 	private function getLeafletService(): LeafletService {
-		if ( $this->leafletService === null ) {
-			$this->leafletService = new LeafletService(
-				$this->getImageRepository()
-			);
-		}
+		$this->leafletService ??= new LeafletService(
+			$this->getImageRepository()
+		);
 
 		return $this->leafletService;
 	}
