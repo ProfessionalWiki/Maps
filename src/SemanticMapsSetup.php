@@ -16,21 +16,15 @@ use SMWDataItem;
  */
 class SemanticMapsSetup {
 
-	private array $mwGlobals;
 	private MappingServices $mappingServices;
 
-	private function __construct( array &$mwGlobals, MappingServices $mappingServices ) {
-		$this->mwGlobals =& $mwGlobals;
+	public function __construct( MappingServices $mappingServices ) {
 		$this->mappingServices = $mappingServices;
-	}
-
-	public static function newFromMediaWikiGlobals( array &$mwGlobals, MappingServices $mappingServices ) {
-		return new self( $mwGlobals, $mappingServices );
 	}
 
 	public function initExtension() {
 		// Hook for initializing the Geographical Data types.
-		$this->mwGlobals['wgHooks']['SMW::DataType::initTypes'][] = function() {
+		$GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = function() {
 			DataTypeRegistry::getInstance()->registerDatatype(
 				'_geo',
 				CoordinateValue::class,
@@ -41,18 +35,18 @@ class SemanticMapsSetup {
 		};
 
 		// Hook for defining the default query printer for queries that ask for geographical coordinates.
-		$this->mwGlobals['wgHooks']['SMWResultFormat'][] = 'Maps\MapsHooks::addGeoCoordsDefaultFormat';
+		$GLOBALS['wgHooks']['SMWResultFormat'][] = 'Maps\MapsHooks::addGeoCoordsDefaultFormat';
 
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();
 
-		$this->mwGlobals['smwgResultFormats']['kml'] = KmlPrinter::class;
+		$GLOBALS['smwgResultFormats']['kml'] = KmlPrinter::class;
 
-		$this->mwGlobals['smwgResultAliases'][$this->mwGlobals['egMapsDefaultService']][] = 'map';
-		MapPrinter::registerDefaultService( $this->mwGlobals['egMapsDefaultService'] );
+		$GLOBALS['smwgResultAliases'][$GLOBALS['egMapsDefaultService']][] = 'map';
+		MapPrinter::registerDefaultService( $GLOBALS['egMapsDefaultService'] );
 
 		// Internationalization
-		$this->mwGlobals['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
+		$GLOBALS['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
 	}
 
 	private function registerGoogleMaps() {
@@ -61,8 +55,8 @@ class SemanticMapsSetup {
 
 			MapPrinter::registerService( $googleMaps );
 
-			$this->mwGlobals['smwgResultFormats'][$googleMaps->getName()] = MapPrinter::class;
-			$this->mwGlobals['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
+			$GLOBALS['smwgResultFormats'][$googleMaps->getName()] = MapPrinter::class;
+			$GLOBALS['smwgResultAliases'][$googleMaps->getName()] = $googleMaps->getAliases();
 		}
 	}
 
@@ -72,8 +66,8 @@ class SemanticMapsSetup {
 
 			MapPrinter::registerService( $leaflet );
 
-			$this->mwGlobals['smwgResultFormats'][$leaflet->getName()] = MapPrinter::class;
-			$this->mwGlobals['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
+			$GLOBALS['smwgResultFormats'][$leaflet->getName()] = MapPrinter::class;
+			$GLOBALS['smwgResultAliases'][$leaflet->getName()] = $leaflet->getAliases();
 		}
 	}
 

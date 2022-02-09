@@ -231,8 +231,8 @@ class MapsFactory {
 		return !$this->settings['egMapsDisableSmwIntegration'] && defined( 'SMW_VERSION' );
 	}
 
-	public function newSemanticMapsSetup( &$mwGlobals ): SemanticMapsSetup {
-		return SemanticMapsSetup::newFromMediaWikiGlobals( $mwGlobals, $this->getMappingServices() );
+	public function newSemanticMapsSetup(): SemanticMapsSetup {
+		return new SemanticMapsSetup( $this->getMappingServices() );
 	}
 
 	public function newSemanticGeoJsonStore( \ParserOutput $parserOutput, Title $subjectPage ): GeoJsonStore {

@@ -674,11 +674,7 @@
     </MixedAssignment>
   </file>
   <file src="src/MapsFactory.php">
-    <MissingParamType occurrences="1">
-      <code>$mwGlobals</code>
-    </MissingParamType>
-    <MixedArgument occurrences="12">
-      <code>$mwGlobals</code>
+    <MixedArgument occurrences="11">
       <code>$this-&gt;getSmwFactory()-&gt;getEventDispatcher()</code>
       <code>$this-&gt;getSmwFactory()-&gt;newParserData( $subjectPage, $parserOutput )</code>
       <code>$this-&gt;settings['egMapsAvailableServices']</code>
@@ -691,13 +687,9 @@
       <code>$this-&gt;settings['egMapsGeoJsonCacheTtl']</code>
       <code>$this-&gt;settings['egMapsGeoNamesUser']</code>
     </MixedArgument>
-    <MixedInferredReturnType occurrences="2">
+    <MixedInferredReturnType occurrences="1">
       <code>ApplicationFactory</code>
-      <code>SemanticMapsSetup</code>
     </MixedInferredReturnType>
-    <MixedReturnStatement occurrences="1">
-      <code>SemanticMapsSetup::newFromMediaWikiGlobals( $mwGlobals, $this-&gt;getMappingServices() )</code>
-    </MixedReturnStatement>
     <PropertyNotSetInConstructor occurrences="2">
       <code>$googleService</code>
       <code>$leafletService</code>
@@ -766,34 +758,35 @@
       <code>setup</code>
     </MissingReturnType>
     <MixedArgument occurrences="1">
-      <code>$this-&gt;mwGlobals['egMapsAvailableServices']</code>
+      <code>$GLOBALS['egMapsAvailableServices']</code>
     </MixedArgument>
     <MixedArrayAssignment occurrences="21">
-      <code>$this-&gt;mwGlobals['wgHooks']['AdminLinks']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['BeforeDisplayNoArticleText']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['CargoSetFormatClasses']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['ChangeTagsAllowedAdd']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['ChangeTagsListActive']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['ListDefinedTags']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['MakeGlobalVariablesScript']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['ParserFirstCallInit']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['ShowMissingArticle']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['SkinTemplateNavigation']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['coordinate']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['distance']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapscircle']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapsimageoverlay']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapsline']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapslocation']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapspolygon']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['mapsrectangle']</code>
-      <code>$this-&gt;mwGlobals['wgParamDefinitions']['wmsoverlay']</code>
-      <code>$this-&gt;mwGlobals['wgSpecialPageGroups']['MapEditor']</code>
-      <code>$this-&gt;mwGlobals['wgSpecialPages']['MapEditor']</code>
+      <code>$GLOBALS['wgHooks']['AdminLinks']</code>
+      <code>$GLOBALS['wgHooks']['BeforeDisplayNoArticleText']</code>
+      <code>$GLOBALS['wgHooks']['CargoSetFormatClasses']</code>
+      <code>$GLOBALS['wgHooks']['ChangeTagsAllowedAdd']</code>
+      <code>$GLOBALS['wgHooks']['ChangeTagsListActive']</code>
+      <code>$GLOBALS['wgHooks']['ListDefinedTags']</code>
+      <code>$GLOBALS['wgHooks']['MakeGlobalVariablesScript']</code>
+      <code>$GLOBALS['wgHooks']['ParserFirstCallInit']</code>
+      <code>$GLOBALS['wgHooks']['ShowMissingArticle']</code>
+      <code>$GLOBALS['wgHooks']['SkinTemplateNavigation']</code>
+      <code>$GLOBALS['wgParamDefinitions']['coordinate']</code>
+      <code>$GLOBALS['wgParamDefinitions']['distance']</code>
+      <code>$GLOBALS['wgParamDefinitions']['mapscircle']</code>
+      <code>$GLOBALS['wgParamDefinitions']['mapsimageoverlay']</code>
+      <code>$GLOBALS['wgParamDefinitions']['mapsline']</code>
+      <code>$GLOBALS['wgParamDefinitions']['mapslocation']</code>
+      <code>$GLOBALS['wgParamDefinitions']['mapspolygon']</code>
+      <code>$GLOBALS['wgParamDefinitions']['mapsrectangle']</code>
+      <code>$GLOBALS['wgParamDefinitions']['wmsoverlay']</code>
+      <code>$GLOBALS['wgSpecialPageGroups']['MapEditor']</code>
+      <code>$GLOBALS['wgSpecialPages']['MapEditor']</code>
     </MixedArrayAssignment>
-    <MixedAssignment occurrences="2">
+    <MixedAssignment occurrences="3">
+      <code>$GLOBALS['egMapsGMaps3ApiKey']</code>
+      <code>$GLOBALS['egMapsGMaps3Language']</code>
       <code>$formatClasses['map']</code>
-      <code>$this-&gt;mwGlobals</code>
     </MixedAssignment>
   </file>
   <file src="src/ParserHookSetup.php">
@@ -1174,21 +1167,23 @@
       <code>MapPrinter</code>
       <code>MapPrinter</code>
     </MissingDependency>
-    <MissingReturnType occurrences="4">
+    <MissingReturnType occurrences="3">
       <code>initExtension</code>
-      <code>newFromMediaWikiGlobals</code>
       <code>registerGoogleMaps</code>
       <code>registerLeaflet</code>
     </MissingReturnType>
     <MixedArrayAssignment occurrences="4">
-      <code>$this-&gt;mwGlobals['smwgResultAliases'][$this-&gt;mwGlobals['egMapsDefaultService']]</code>
-      <code>$this-&gt;mwGlobals['smwgResultFormats']['kml']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['SMW::DataType::initTypes']</code>
-      <code>$this-&gt;mwGlobals['wgHooks']['SMWResultFormat']</code>
+      <code>$GLOBALS['smwgResultAliases'][$GLOBALS['egMapsDefaultService']]</code>
+      <code>$GLOBALS['smwgResultFormats']['kml']</code>
+      <code>$GLOBALS['wgHooks']['SMW::DataType::initTypes']</code>
+      <code>$GLOBALS['wgHooks']['SMWResultFormat']</code>
     </MixedArrayAssignment>
     <MixedArrayOffset occurrences="1">
-      <code>$this-&gt;mwGlobals['smwgResultAliases'][$this-&gt;mwGlobals['egMapsDefaultService']]</code>
+      <code>$GLOBALS['smwgResultAliases'][$GLOBALS['egMapsDefaultService']]</code>
     </MixedArrayOffset>
+    <MixedAssignment occurrences="1">
+      <code>$GLOBALS['smwgResultFormats']['kml']</code>
+    </MixedAssignment>
     <UndefinedClass occurrences="1">
       <code>DataTypeRegistry</code>
     </UndefinedClass>

@@ -25,36 +25,27 @@ use Parser;
  */
 class MapsSetup {
 
-	private array $mwGlobals;
-
-	public function __construct( array &$mwGlobals ) {
-		$this->mwGlobals = $mwGlobals;
-	}
-
 	public function setup() {
 		$this->defaultSettings();
 		$this->registerAllTheThings();
 
 		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() ) {
-			MapsFactory::globalInstance()->newSemanticMapsSetup( $this->mwGlobals )->initExtension();
+			MapsFactory::globalInstance()->newSemanticMapsSetup()->initExtension();
 		}
 	}
 
 	private function defaultSettings() {
-		if ( $this->mwGlobals['egMapsGMaps3Language'] === '' ) {
-			$this->mwGlobals['egMapsGMaps3Language'] = $this->mwGlobals['wgLang'];
+		if ( $GLOBALS['egMapsGMaps3Language'] === '' ) {
+			$GLOBALS['egMapsGMaps3Language'] = $GLOBALS['wgLang'];
 		}
 
-		if ( in_array( 'googlemaps3', $this->mwGlobals['egMapsAvailableServices'] ) ) {
-			$this->mwGlobals['wgSpecialPages']['MapEditor'] = SpecialMapEditor::class;
-			$this->mwGlobals['wgSpecialPageGroups']['MapEditor'] = 'maps';
+		if ( in_array( 'googlemaps3', $GLOBALS['egMapsAvailableServices'] ) ) {
+			$GLOBALS['wgSpecialPages']['MapEditor'] = SpecialMapEditor::class;
+			$GLOBALS['wgSpecialPageGroups']['MapEditor'] = 'maps';
 		}
 
-		if ( $this->mwGlobals['egMapsGMaps3ApiKey'] === '' && array_key_exists(
-				'egGoogleJsApiKey',
-				$this->mwGlobals
-			) ) {
-			$this->mwGlobals['egMapsGMaps3ApiKey'] = $this->mwGlobals['egGoogleJsApiKey'];
+		if ( $GLOBALS['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $GLOBALS ) ) {
+			$GLOBALS['egMapsGMaps3ApiKey'] = $GLOBALS['egGoogleJsApiKey'];
 		}
 	}
 
@@ -65,60 +56,60 @@ class MapsSetup {
 	}
 
 	private function registerParserHooks() {
-		$this->mwGlobals['wgHooks']['ParserFirstCallInit'][] = function ( Parser $parser ) {
+		$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function ( Parser $parser ) {
 			MapsFactory::globalInstance()->newParserHookSetup( $parser )->registerParserHooks();
 		};
 	}
 
 	private function registerParameterTypes() {
-		$this->mwGlobals['wgParamDefinitions']['coordinate'] = [
+		$GLOBALS['wgParamDefinitions']['coordinate'] = [
 			'string-parser' => LatLongParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['mapslocation'] = [
+		$GLOBALS['wgParamDefinitions']['mapslocation'] = [
 			'string-parser' => LocationParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['mapsline'] = [
+		$GLOBALS['wgParamDefinitions']['mapsline'] = [
 			'string-parser' => LineParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['mapscircle'] = [
+		$GLOBALS['wgParamDefinitions']['mapscircle'] = [
 			'string-parser' => CircleParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['mapsrectangle'] = [
+		$GLOBALS['wgParamDefinitions']['mapsrectangle'] = [
 			'string-parser' => RectangleParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['mapspolygon'] = [
+		$GLOBALS['wgParamDefinitions']['mapspolygon'] = [
 			'string-parser' => PolygonParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['distance'] = [
+		$GLOBALS['wgParamDefinitions']['distance'] = [
 			'string-parser' => DistanceParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['wmsoverlay'] = [
+		$GLOBALS['wgParamDefinitions']['wmsoverlay'] = [
 			'string-parser' => WmsOverlayParser::class,
 		];
 
-		$this->mwGlobals['wgParamDefinitions']['mapsimageoverlay'] = [
+		$GLOBALS['wgParamDefinitions']['mapsimageoverlay'] = [
 			'string-parser' => ImageOverlayParser::class,
 		];
 	}
 
 	private function registerHooks() {
-		$this->mwGlobals['wgHooks']['AdminLinks'][] = 'Maps\MapsHooks::addToAdminLinks';
-		$this->mwGlobals['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MapsHooks::onMakeGlobalVariablesScript';
-		$this->mwGlobals['wgHooks']['SkinTemplateNavigation'][] = 'Maps\MapsHooks::onSkinTemplateNavigation';
-		$this->mwGlobals['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MapsHooks::onBeforeDisplayNoArticleText';
-		$this->mwGlobals['wgHooks']['ShowMissingArticle'][] = 'Maps\MapsHooks::onShowMissingArticle';
-		$this->mwGlobals['wgHooks']['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
-		$this->mwGlobals['wgHooks']['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
-		$this->mwGlobals['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
+		$GLOBALS['wgHooks']['AdminLinks'][] = 'Maps\MapsHooks::addToAdminLinks';
+		$GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MapsHooks::onMakeGlobalVariablesScript';
+		$GLOBALS['wgHooks']['SkinTemplateNavigation'][] = 'Maps\MapsHooks::onSkinTemplateNavigation';
+		$GLOBALS['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MapsHooks::onBeforeDisplayNoArticleText';
+		$GLOBALS['wgHooks']['ShowMissingArticle'][] = 'Maps\MapsHooks::onShowMissingArticle';
+		$GLOBALS['wgHooks']['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
+		$GLOBALS['wgHooks']['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
+		$GLOBALS['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
 
-		$this->mwGlobals['wgHooks']['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
+		$GLOBALS['wgHooks']['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
 			$formatClasses['map'] = CargoFormat::class;
 		};
 	}

@@ -45,7 +45,7 @@ class MapsRegistration {
 				);
 			}
 
-			( new MapsSetup( $GLOBALS ) )->setup();
+			( new MapsSetup() )->setup();
 
 			return true;
 		};
