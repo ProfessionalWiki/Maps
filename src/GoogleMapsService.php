@@ -87,10 +87,10 @@ class GoogleMapsService implements MappingService {
 			'islist' => true,
 			'post-format' => function ( array $value ) {
 				foreach ( $value as &$part ) {
-					$part = self::MAP_TYPES[strtolower( $part )];
+					$part = self::MAP_TYPES[strtolower( $part )] ?? '';
 				}
 
-				return $value;
+				return array_filter( $value, fn( string $part ) => $part !== '' );
 			},
 		];
 

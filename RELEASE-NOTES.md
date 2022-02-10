@@ -3,6 +3,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 9.0.6
+
+* Fixed warning occurring when using an invalid map type in Google Maps `types` parameter
+
 ## Maps 9.0.5
 
 Released on February 9th, 2022.

@@ -50,4 +50,11 @@ class GoogleMapsTest extends TestCase {
 		);
 	}
 
+	public function testInvalidMapTypesGetLeftOut() {
+		$this->assertStringContainsString(
+			'"types":["ROADMAP"]',
+			$this->parse( '{{#google_maps:1,1|types=normal, foobar}}' )
+		);
+	}
+
 }
