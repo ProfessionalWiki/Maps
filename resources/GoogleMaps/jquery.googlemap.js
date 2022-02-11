@@ -112,7 +112,7 @@
 				google.maps.event.addListener(marker, 'click', function (e) {
 					if (e.target !== undefined && (e.target instanceof HTMLAnchorElement || e.target.tagName == 'A')) {
 						//click link defined in inlinelabel
-						window.location.href = e.target.href;
+						redirectToUrl( e.target.href );
 					} else {
 						openBubbleOrLink.call(this, markerData, e, marker);
 					}
@@ -794,23 +794,22 @@
 		}
 
 		function openBubbleOrLink(markerData, event, obj) {
-			if (markerData.link && isValidHttpUrl(markerData.link)) {
-				window.location.href = markerData.link;
+			if ( markerData.link ) {
+				redirectToUrl( markerData.link );
 			} else if (markerData.text.trim() !== '') {
 				openBubble.call(this, markerData, event, obj);
 			}
 		}
 
-		function isValidHttpUrl(string) {
-			let url;
-
+		function redirectToUrl( url ) {
 			try {
-				url = new URL(string);
-			} catch (_) {
-				return false;
-			}
+				let urlObject = new URL( url );
 
-			return url.protocol === "http:" || url.protocol === "https:";
+				if ( urlObject.protocol === "http:" || urlObject.protocol === "https:" ) {
+					window.location.href = url;
+				}
+			} catch (_) {
+			}
 		}
 
 		function openBubble( markerData, event, obj ) {

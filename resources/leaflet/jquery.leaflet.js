@@ -213,11 +213,22 @@
 				this.map.on(
 					'click',
 					function(e) {
-						window.location.href = newClickTargetUrl(e.latlng);
+						_this.redirectToUrl( newClickTargetUrl( e.latlng ) );
 					}
 				);
 			}
 		};
+
+		this.redirectToUrl = function( url ) {
+			try {
+				let urlObject = new URL( url );
+
+				if ( urlObject.protocol === "http:" || urlObject.protocol === "https:" ) {
+					window.location.href = url;
+				}
+			} catch (_) {
+			}
+		}
 
 		this.getBaseLayers = function() {
 			if ( options.imageLayers.length === 0 ) {

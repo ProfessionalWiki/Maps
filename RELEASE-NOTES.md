@@ -5,7 +5,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 9.0.6
 
+Released on February 11th, 2022.
+
 * Fixed warning occurring when using an invalid map type in Google Maps `types` parameter
+* Improved redirect handling for both Google Maps and Leaflet
 
 ## Maps 9.0.5
 
