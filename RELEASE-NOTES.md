@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 9.0.7
+
+Not released yet
+
+* Fixed error occurring in rare cases in SMW map queries (`Call to a member function getFullUrl() on null`)
+
 ## Maps 9.0.6
 
 Released on February 11th, 2022.
