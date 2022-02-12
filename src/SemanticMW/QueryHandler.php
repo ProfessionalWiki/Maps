@@ -245,14 +245,18 @@ class QueryHandler {
 			return '';
 		}
 
-		$dataItem = $object->getDataItem();
+		$title = $object->getDataItem()->getTitle();
+
+		if ( !( $title instanceof Title ) ) {
+			return '';
+		}
 
 		if ( $this->showArticleLink() ) {
 			if ( $this->linkAbsolute ) {
 				$text = Html::element(
 					'a',
-					[ 'href' => $dataItem->getTitle()->getFullUrl() ],
-					$this->hideNamespace ? $object->getText() : $dataItem->getTitle()->getFullText()
+					[ 'href' => $title->getFullUrl() ],
+					$this->hideNamespace ? $object->getText() : $title->getFullText()
 				);
 			} else {
 				if ( $this->hideNamespace ) {
@@ -262,7 +266,7 @@ class QueryHandler {
 				}
 			}
 		} else {
-			$text = $this->hideNamespace ? $object->getText() : $dataItem->getTitle()->getFullText();
+			$text = $this->hideNamespace ? $object->getText() : $title->getFullText();
 		}
 
 		return '<b>' . $text . '</b>';
