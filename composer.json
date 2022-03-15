@@ -32,7 +32,7 @@
 	],
 	"support": {
 		"email": "semediawiki-user@lists.sourceforge.net",
-		"irc": "irc://irc.freenode.net/mediawiki",
+		"irc": "irc://irc.libera.chat/mediawiki",
 		"source": "https://github.com/ProfessionalWiki/Maps"
 	},
 	"require": {
