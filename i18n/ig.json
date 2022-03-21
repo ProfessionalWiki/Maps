@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Edith Nwobu",
 			"Ukabia"
 		]
 	},
 	"maps_map": "Akààlà",
+	"maps-displaymap-par-copycoords": "Gosi mkparịta ụka oge ị na-apị ngosi ebe e nwere ike isi bite nhazi ya",
 	"mapeditor-link-title-switcher-link-text": "Òjikọ",
 	"mapeditor-form-field-link": "Òjikọ"
 }
