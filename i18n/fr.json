@@ -92,7 +92,7 @@
 	"maps-displaymap-par-label": "Permet de définir le texte qui sera affiché dans les bulles contextuelles de tous les marqueurs qui n’ont pas de libellé spécifique.",
 	"maps-displaymap-par-icon": "Permet de définir l’icône utilisée pour tous les marqueurs.",
 	"maps-displaymap-par-circles": "Cercles à afficher",
-	"maps-displaymap-par-copycoords": "Afficher une boîte de dialogue lors du clic sur un emplacement, depuis laquelle ses coordonnées peuvent être copiées.",
+	"maps-displaymap-par-copycoords": "Afficher une boîte de dialogue lors du clic sur un marqueur, depuis lequel ses coordonnées peuvent être copiées.",
 	"maps-displaymap-par-lines": "Lignes à afficher",
 	"maps-displaymap-par-maxzoom": "Le niveau maximal d’agrandissement",
 	"maps-displaymap-par-minzoom": "Le niveau minimal d’agrandissement",
