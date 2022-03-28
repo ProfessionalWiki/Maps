@@ -76,7 +76,7 @@
 	"maps-displaymap-par-label": "특정 레이블이 없는 마든 표시의 팝업에 보여줄 텍스트를 설정할 수 있습니다.",
 	"maps-displaymap-par-icon": "모든 표시에 사용하는 아이콘을 설정할 수 있게 합니다.",
 	"maps-displaymap-par-circles": "표시할 동그라미",
-	"maps-displaymap-par-copycoords": "좌표를 복사한 위치를 클릭할 때 대화상자를 표시합니다.",
+	"maps-displaymap-par-copycoords": "좌표를 복사한 마커를 클릭할 때 대화 상자를 표시합니다.",
 	"maps-displaymap-par-lines": "표시할 선",
 	"maps-displaymap-par-maxzoom": "최대 확대 수준",
 	"maps-displaymap-par-minzoom": "최소 확대 수준",

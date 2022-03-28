@@ -3,6 +3,7 @@
 		"authors": [
 			"Alirezaaa",
 			"Armin1392",
+			"Beginneruser",
 			"Ebraminio",
 			"Jeeputer",
 			"Macofe",
@@ -23,7 +24,7 @@
 	"maps-kml-parsing-failed": "عدم موفقیت تجزیهٔ یک یا چند پوشهٔ کا‌ام‌ال، اغلب به علت عدم بازیابی یا ایکس‌ام‌ال ناقص.",
 	"maps-ns-layer": "لایه",
 	"maps-ns-layer-talk": "بحث لایه",
-	"maps-layer-property": "خاصیت",
+	"maps-layer-property": "ویژگی",
 	"maps-layer-value": "مقدار",
 	"maps-layer-errors": "خطاها",
 	"maps-layerdef-invalid": "تعریف نامعتبر{{PLURAL:$1||s}}",
