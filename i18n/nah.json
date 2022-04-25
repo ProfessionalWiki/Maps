@@ -1,8 +1,11 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Languaeditor"
+		]
 	},
 	"maps-abb-north": "M",
 	"maps-abb-east": "T",
-	"maps-abb-south": "H"
+	"maps-abb-south": "H",
+	"mapeditor-form-field-group": "Nechikolli"
 }
