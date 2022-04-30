@@ -1,6 +1,6 @@
 {
 	"name": "Maps",
-	"version": "9.0.7",
+	"version": "9.0.8",
 
 	"author": [
 		"[https://EntropyWins.wtf/mediawiki Jeroen De Dauw]",
@@ -16,6 +16,11 @@
 		"platform": {
 			"php": ">= 7.4"
 		}
+	},
+
+	"AutoloadNamespaces": {
+		"Maps\\": "src",
+		"Maps\\Tests\\": "tests"
 	},
 
 	"MessagesDirs": {
