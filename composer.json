@@ -60,11 +60,6 @@
 			"Maps_Settings.php"
 		]
 	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "8.x-dev"
-		}
-	},
 	"replace": {
 		"mediawiki/semantic-maps": "*"
 	},
