@@ -58,9 +58,6 @@
 			"Maps\\": "src/",
 			"Maps\\Tests\\": "tests/"
 		},
-		"classmap": [
-			"MapsRegistration.php"
-		],
 		"files": [
 			"Maps_Settings.php"
 		]

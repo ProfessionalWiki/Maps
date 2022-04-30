@@ -33,11 +33,13 @@
 		"MapsMagic": "i18n/magic/MagicWords.php"
 	},
 
-	"callback": "MapsRegistration::onRegistration",
+	"callback": "Maps\\MapsRegistration::onRegistration",
+
 	"ContentHandlers": {
 		"GeoJSON": "Maps\\GeoJsonPages\\GeoJsonContentHandler",
 		"GeoJson": "Maps\\GeoJsonPages\\GeoJsonContentHandler"
 	},
+
 	"namespaces": [
 		{
 			"id": 420,
