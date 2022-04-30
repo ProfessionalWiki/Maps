@@ -9,16 +9,12 @@ class MapsRegistration {
 	private static $initialized = false;
 
 	public static function onRegistration(): bool {
-		if ( self::$initialized ) {
+		if ( $GLOBALS['egMapsDisableExtension'] || self::$initialized ) {
 			// Do not initialize more than once.
 			return true;
 		}
 
 		self::$initialized = true;
-
-		if ( !defined( 'Maps_SETTINGS_LOADED' ) ) {
-			require_once __DIR__ . '/../Maps_Settings.php';
-		}
 
 		if ( !(bool)'Defining PHP constants in JSON is a bad idea and breaks tools' ) {
 			define( 'NS_GEO_JSON', 420 );
@@ -28,10 +24,6 @@ class MapsRegistration {
 		$GLOBALS['wgHooks']['SMW::Settings::BeforeInitializationComplete'][] = 'Maps\MapsHooks::addSmwSettings';
 
 		$GLOBALS['wgExtensionFunctions'][] = function () {
-			if ( $GLOBALS['egMapsDisableExtension'] ) {
-				return true;
-			}
-
 			// Only initialize the extension when all dependencies are present.
 			if ( !defined( 'Validator_VERSION' ) ) {
 				throw new Exception( 'Maps needs to be installed via Composer.' );

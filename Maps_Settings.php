@@ -8,10 +8,8 @@
  * see DefaultSettings.php in this directory.
  */
 
-foreach ( include __DIR__ . '/DefaultSettings.php' as $key => $value ) {
-	$GLOBALS[$key] = $value;
-}
-
-if ( !defined( 'Maps_SETTINGS_LOADED' ) ) {
-	define( 'Maps_SETTINGS_LOADED', true );
+if ( !array_key_exists( 'egMapsAvailableServices', $GLOBALS ) ) {
+	foreach ( include __DIR__ . '/DefaultSettings.php' as $key => $value ) {
+		$GLOBALS[$key] = $value;
+	}
 }
