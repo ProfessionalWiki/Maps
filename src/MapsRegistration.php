@@ -6,18 +6,19 @@ use Exception;
 
 class MapsRegistration {
 
-	public static function onRegistration( array $credits ) {
-		if ( defined( 'Maps_VERSION' ) ) {
+	private static $initialized = false;
+
+	public static function onRegistration(): bool {
+		if ( self::$initialized ) {
 			// Do not initialize more than once.
 			return true;
 		}
 
+		self::$initialized = true;
+
 		if ( !defined( 'Maps_SETTINGS_LOADED' ) ) {
 			require_once __DIR__ . '/../Maps_Settings.php';
 		}
-
-		define( 'Maps_VERSION', $credits['version'] );
-		define( 'SM_VERSION', Maps_VERSION );
 
 		if ( !(bool)'Defining PHP constants in JSON is a bad idea and breaks tools' ) {
 			define( 'NS_GEO_JSON', 420 );

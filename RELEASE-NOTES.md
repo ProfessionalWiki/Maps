@@ -8,6 +8,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 Under development
 
 * Packages installed directly into `Maps/vendor/` by executing Composer in `Maps/` are no longer loaded
+* Removed `Maps_VERSION` and `SM_VERSION` PHP constants
 
 ## Maps 9.0.7
 
