@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## maps 10.0.0
+
+Under development
+
+* Packages installed directly into `Maps/vendor/` by executing Composer in `Maps/` are no longer loaded
+
 ## Maps 9.0.7
 
 Released on February 18th, 2022.

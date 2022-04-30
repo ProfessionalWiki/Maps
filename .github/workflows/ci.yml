@@ -134,9 +134,6 @@ jobs:
       - name: PHPStan
         run: php vendor/bin/phpstan analyse --error-format=checkstyle --no-progress | cs2pr
 
-      - run: php vendor/bin/psalm --shepherd --stats
-        if: true
-
 
   code-style:
     name: "Code style"

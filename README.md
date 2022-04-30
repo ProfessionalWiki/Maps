@@ -57,6 +57,26 @@ Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom d
 * [File an issue](https://github.com/JeroenDeDauw/Maps/issues)
 * [Submit a pull request](https://github.com/JeroenDeDauw/Maps/pulls) ([tasks for newcomers](https://github.com/JeroenDeDauw/Maps/issues?q=is%3Aissue+is%3Aopen+label%3Anewcomer))
 
+## Development
+
+To ensure the dev dependencies get installed, have this in your `composer.local.json`:
+
+```json
+{
+	"require": {
+		"vimeo/psalm": "^4",
+		"phpstan/phpstan": "^1.4.9"
+	},
+	"extra": {
+		"merge-plugin": {
+			"include": [
+				"extensions/AutomatedValues/composer.json"
+			]
+		}
+	}
+}
+```
+
 ### Project structure
 
 The `src/` contains the PHP code and follows PSR-4 autoloading.
@@ -78,25 +98,18 @@ directories the tests should mirror the directory structure in `src/`.
 
 ### Running the tests
 
-As setup, run `composer install` inside of the Maps root directory.
+You can use the `Makefile` by running make commands in the `Maps` directory.
 
-You can run the MediaWiki independent tests by executing phpunit in the root directory of maps:
+* `make ci`: Run everything
+* `make test`: Run all tests and static analysis
+* `make cs`: Run all style checks
 
-    phpunit
+Alternatively, you can execute commands from the MediaWiki root directory:
 
-This is possible without having a MediaWiki installation or webserver. A clone of the Maps code suffices.
-
-If you do not have PHPUnit installed, you can download the .phar into the root directory and execute it there:
-
-	wget -O phpunit.phar https://phar.phpunit.de/phpunit-7.phar
-	php phpunit.phar
-
-To run the tests with MediaWiki, change into `tests/phpunit` of your MediaWiki installation and run
-
-    php phpunit.php --wiki wiki -c ../../extensions/Maps/phpunit.xml.dist
-
-Where you either update `wiki` to match your wikis name, or drop the parameter. The above command
-works without modification if you are using the [MediaWiki Vagrant](https://www.mediawiki.org/wiki/MediaWiki-Vagrant).
+* PHPUnit: `php tests/phpunit/phpunit.php -c extensions/Maps/`
+* Style checks: `vendor/bin/phpcs -p -s --standard=extensions/Maps/phpcs.xml`
+* PHPStan: `vendor/bin/phpstan analyse --configuration=extensions/Maps/phpstan.neon --memory-limit=2G`
+* Psalm: `php vendor/bin/psalm --config=extensions/Maps/psalm.xml`
 
 Beware that due to technical debt, some tests access the network.
 
