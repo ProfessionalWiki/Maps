@@ -1,25 +1,20 @@
 <?php
 
-use Maps\MapsSetup;
+namespace Maps;
+
+use Exception;
 
 class MapsRegistration {
 
-	public static function onRegistration( array $credits ) {
-		if ( defined( 'Maps_VERSION' ) ) {
+	private static $initialized = false;
+
+	public static function onRegistration(): bool {
+		if ( $GLOBALS['egMapsDisableExtension'] || self::$initialized ) {
 			// Do not initialize more than once.
 			return true;
 		}
 
-		if ( !defined( 'Maps_SETTINGS_LOADED' ) ) {
-			require_once __DIR__ . '/Maps_Settings.php';
-		}
-
-		if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
-			include_once( __DIR__ . '/vendor/autoload.php' );
-		}
-
-		define( 'Maps_VERSION', $credits['version'] );
-		define( 'SM_VERSION', Maps_VERSION );
+		self::$initialized = true;
 
 		if ( !(bool)'Defining PHP constants in JSON is a bad idea and breaks tools' ) {
 			define( 'NS_GEO_JSON', 420 );
@@ -28,14 +23,10 @@ class MapsRegistration {
 
 		$GLOBALS['wgHooks']['SMW::Settings::BeforeInitializationComplete'][] = 'Maps\MapsHooks::addSmwSettings';
 
-		$GLOBALS['wgExtensionFunctions'][] = function() {
-			if ( $GLOBALS['egMapsDisableExtension'] ) {
-				return true;
-			}
-
+		$GLOBALS['wgExtensionFunctions'][] = function () {
 			// Only initialize the extension when all dependencies are present.
 			if ( !defined( 'Validator_VERSION' ) ) {
-				throw new Exception( 'You need to have Validator installed in order to use Maps' );
+				throw new Exception( 'Maps needs to be installed via Composer.' );
 			}
 
 			if ( version_compare( $GLOBALS['wgVersion'], '1.35c', '<' ) ) {
@@ -54,6 +45,3 @@ class MapsRegistration {
 	}
 
 }
-
-
-

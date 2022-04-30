@@ -19,13 +19,13 @@ class DistanceParserTest extends TestCase {
 	 * @dataProvider validInputProvider
 	 */
 	public function testValidInputs( $input, $expected ) {
-		$this->assertSame(
+		$this->assertEquals(
 			$expected,
 			( new DistanceParser() )->parse( $input )
 		);
 	}
 
-	public function validInputProvider() {
+	public function validInputProvider(): array {
 		return [
 			[ '1', 1.0 ],
 			[ '1m', 1.0 ],

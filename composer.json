@@ -49,8 +49,8 @@
 		"jmikola/geojson": "^1.0.2"
 	},
 	"require-dev": {
-		"vimeo/psalm": "^4.12.0",
-		"phpstan/phpstan": "^1.1.2",
+		"vimeo/psalm": "^4.22.0",
+		"phpstan/phpstan": "^1.4.8",
 		"mediawiki/mediawiki-codesniffer": "38.0.0"
 	},
 	"autoload": {
@@ -58,17 +58,9 @@
 			"Maps\\": "src/",
 			"Maps\\Tests\\": "tests/"
 		},
-		"classmap": [
-			"MapsRegistration.php"
-		],
 		"files": [
 			"Maps_Settings.php"
 		]
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "8.x-dev"
-		}
 	},
 	"replace": {
 		"mediawiki/semantic-maps": "*"

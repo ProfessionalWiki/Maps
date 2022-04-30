@@ -1,6 +1,6 @@
 {
 	"name": "Maps",
-	"version": "9.0.7",
+	"version": "10.0.0",
 
 	"author": [
 		"[https://EntropyWins.wtf/mediawiki Jeroen De Dauw]",
@@ -18,6 +18,11 @@
 		}
 	},
 
+	"AutoloadNamespaces": {
+		"Maps\\": "src",
+		"Maps\\Tests\\": "tests"
+	},
+
 	"MessagesDirs": {
 		"Maps.class": [
 			"i18n"
@@ -28,11 +33,13 @@
 		"MapsMagic": "i18n/magic/MagicWords.php"
 	},
 
-	"callback": "MapsRegistration::onRegistration",
+	"callback": "Maps\\MapsRegistration::onRegistration",
+
 	"ContentHandlers": {
 		"GeoJSON": "Maps\\GeoJsonPages\\GeoJsonContentHandler",
 		"GeoJson": "Maps\\GeoJsonPages\\GeoJsonContentHandler"
 	},
+
 	"namespaces": [
 		{
 			"id": 420,

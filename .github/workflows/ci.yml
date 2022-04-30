@@ -19,8 +19,10 @@ jobs:
             php: 7.4
           - mw: 'REL1_37'
             php: 7.4
-          - mw: 'master'
+          - mw: 'REL1_38'
             php: 8.0
+          - mw: 'master'
+            php: 8.1
 
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.php == 8.1 }}
@@ -80,20 +82,74 @@ jobs:
         if: matrix.mw == 'REL1_37'
 
 
-  static-analysis:
-    name: "Static Analysis"
+#  Psalm:
+#    name: "Psalm"
+#
+#    runs-on: ubuntu-latest
+#
+#    defaults:
+#      run:
+#        working-directory: mediawiki
+#
+#    steps:
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: 8.0
+#          extensions: mbstring
+#          tools: composer, cs2pr
+#
+#      - name: Cache MediaWiki
+#        id: cache-mediawiki
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            mediawiki
+#            mediawiki/extensions/
+#            mediawiki/vendor/
+#          key: mw_psalm
+#
+#      - name: Cache Composer cache
+#        uses: actions/cache@v2
+#        with:
+#          path: ~/.composer/cache
+#          key: composer_static_analysis
+#
+#      - uses: actions/checkout@v2
+#        with:
+#          path: EarlyCopy
+#
+#      - name: Install MediaWiki
+#        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
+#        working-directory: ~
+#        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_37 Maps
+#
+#      - uses: actions/checkout@v2
+#        with:
+#          path: mediawiki/extensions/Maps
+#
+#      - run: composer update
+#
+#      - name: Composer install
+#        run: cd extensions/Maps && composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+#
+#      - name: Psalm
+#        run: cd extensions/Maps && php vendor/bin/psalm --config=psalm.xml --shepherd --stats
+
+  PHPStan:
+    name: "PHPStan"
 
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: mediawiki/extensions/Maps
+        working-directory: mediawiki
 
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           extensions: mbstring
           tools: composer, cs2pr
 
@@ -103,9 +159,9 @@ jobs:
         with:
           path: |
             mediawiki
-            !mediawiki/extensions/
-            !mediawiki/vendor/
-          key: mw_static_analysis
+            mediawiki/extensions/
+            mediawiki/vendor/
+          key: mw_phpstan
 
       - name: Cache Composer cache
         uses: actions/cache@v2
@@ -126,15 +182,13 @@ jobs:
         with:
           path: mediawiki/extensions/Maps
 
+      - run: composer update
+
       - name: Composer install
-        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+        run: cd extensions/Maps && composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
       - name: PHPStan
-        run: php vendor/bin/phpstan analyse --error-format=checkstyle --no-progress | cs2pr
-
-      - run: php vendor/bin/psalm --shepherd --stats
-        if: true
-
+        run: cd extensions/Maps && php vendor/bin/phpstan analyse --error-format=checkstyle --no-progress | cs2pr
 
   code-style:
     name: "Code style"
@@ -149,7 +203,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           extensions: mbstring, intl, php-ast
           tools: composer
 
@@ -176,7 +230,7 @@ jobs:
       - name: Install MediaWiki
         if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh Maps Maps
+        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_37 Maps
 
       - uses: actions/checkout@v2
         with:
