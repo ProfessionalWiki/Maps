@@ -7,6 +7,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
+* Added support for MediaWiki 1.38.x
 * Packages installed directly into `Maps/vendor/` by executing Composer in `Maps/` are no longer loaded
 * Removed `Maps_VERSION` and `SM_VERSION` PHP constants
 

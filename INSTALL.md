@@ -12,7 +12,7 @@ See the [configuration documentation](https://maps.extension.wiki/wiki/Configura
 
 ## Platform compatibility and release status
 
-The PHP and MediaWiki version ranges listed are those in which Maps is known to work. It might also
+The PHP and MediaWiki version ranges listed are those in which Maps is known to work. Maps might also
 work with more recent versions of PHP and MediaWiki, though this is not guaranteed. Increases of
 minimum requirements are indicated in bold. For a detailed list of changes, see the [release notes](RELEASE-NOTES.md).
 
@@ -25,11 +25,18 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status<br>&nbsp;</th>
 	</tr>
 	<tr>
-		<th>9.0.x</th>
-		<td><strong>7.4</strong> - 8.1+</td>
-		<td>1.35 - 1.38+</td>
+		<th>10.0.x</th>
+		<td>7.4 - 8.1</td>
+		<td>1.35 - 1.38</td>
 		<td>3.2 - 4.0</td>
 		<td><strong>Stable release</strong></td>
+	</tr>
+	<tr>
+		<th>9.0.x</th>
+		<td><strong>7.4</strong> - 8.1</td>
+		<td>1.35 - 1.37</td>
+		<td>3.2 - 4.0</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>8.0.x</th>
