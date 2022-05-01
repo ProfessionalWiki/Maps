@@ -35,6 +35,63 @@
 
 	"callback": "Maps\\MapsRegistration::onRegistration",
 
+	"config": {
+		"_prefix": "egMaps",
+
+		"DefaultService": {
+			"description": "The mapping service that will be used when no service is specified by the user",
+			"value": "leaflet"
+		},
+		"AvailableServices": {
+			"description": "Mapping services that will be available in the wiki. Supported values: leaflet, googlemaps3",
+			"value": [ "leaflet", "googlemaps3" ]
+		},
+		"DisableExtension": {
+			"description": "Allows disabling the extension even when it is loaded",
+			"value": false
+		},
+		"DisableSmwIntegration": {
+			"description": "Allows disabling the Semantic MediaWiki integration",
+			"value": false
+		},
+		"MapWidth": {
+			"description": "Integer or string. The default width of a map. This value will only be used when the user does not provide one",
+			"value": "auto"
+		},
+		"MapHeight": {
+			"description": "Integer or string. The default height of a map. This value will only be used when the user does not provide one",
+			"value": 350
+		},
+		"DefaultTitle": {
+			"description": "The default content for all pop-ups. This value will only be used when the user does not provide one",
+			"value": ""
+		},
+		"DefaultLabel": {
+			"description": "The default content for all pop-ups. This value will only be used when the user does not provide one",
+			"value": ""
+		},
+		"ResizableByDefault": {
+			"description": "",
+			"value": false
+		},
+		"RezoomForKML": {
+			"description": "",
+			"value": false
+		},
+		"EnableCategory": {
+			"description": "If pages with maps should be put in tracking category",
+			"value": false
+		},
+		"GeoJsonCacheTtl": {
+			"description": "Determines the TTL of cached GeoJson, in seconds. 0 for no caching",
+			"value": 0
+		},
+		"": {
+			"description": "",
+			"value": ""
+		}
+	},
+
 	"ContentHandlers": {
 		"GeoJSON": "Maps\\GeoJsonPages\\GeoJsonContentHandler",
 		"GeoJson": "Maps\\GeoJsonPages\\GeoJsonContentHandler"
