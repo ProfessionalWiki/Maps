@@ -9,12 +9,14 @@ class MapsRegistration {
 	private static $initialized = false;
 
 	public static function onRegistration(): bool {
-		if ( $GLOBALS['egMapsDisableExtension'] || self::$initialized ) {
+		if ( self::$initialized ) {
 			// Do not initialize more than once.
 			return true;
 		}
 
 		self::$initialized = true;
+
+		require_once __DIR__ . '/../Maps_Settings.php';
 
 		if ( !(bool)'Defining PHP constants in JSON is a bad idea and breaks tools' ) {
 			define( 'NS_GEO_JSON', 420 );

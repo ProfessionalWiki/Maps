@@ -10,6 +10,8 @@
 
 if ( !array_key_exists( 'egMapsAvailableServices', $GLOBALS ) ) {
 	foreach ( include __DIR__ . '/DefaultSettings.php' as $key => $value ) {
-		$GLOBALS[$key] = $value;
+		if ( !array_key_exists( $key, $GLOBALS ) ) {
+			$GLOBALS[$key] = $value;
+		}
 	}
 }

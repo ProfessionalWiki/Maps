@@ -57,10 +57,7 @@
 		"psr-4": {
 			"Maps\\": "src/",
 			"Maps\\Tests\\": "tests/"
-		},
-		"files": [
-			"Maps_Settings.php"
-		]
+		}
 	},
 	"replace": {
 		"mediawiki/semantic-maps": "*"
