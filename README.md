@@ -70,7 +70,7 @@ To ensure the dev dependencies get installed, have this in your `composer.local.
 	"extra": {
 		"merge-plugin": {
 			"include": [
-				"extensions/AutomatedValues/composer.json"
+				"extensions/Maps/composer.json"
 			]
 		}
 	}
