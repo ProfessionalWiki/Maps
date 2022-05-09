@@ -51,7 +51,7 @@
 	"require-dev": {
 		"vimeo/psalm": "^4.22.0",
 		"phpstan/phpstan": "^1.4.8",
-		"mediawiki/mediawiki-codesniffer": "38.0.0"
+		"mediawiki/mediawiki-codesniffer": "39.0.0"
 	},
 	"autoload": {
 		"psr-4": {
