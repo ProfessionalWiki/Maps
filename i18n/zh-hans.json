@@ -15,6 +15,7 @@
 			"Liuxinyu970226",
 			"PhiLiP",
 			"Qiyue2001",
+			"Winston Sung",
 			"Xiaomingyan",
 			"Xiplus",
 			"Yfdyh000",
@@ -236,6 +237,7 @@
 	"maps-json-editor-toolbar-cancel-text": "取消",
 	"maps-json-editor-toolbar-clear-text": "删除全部",
 	"maps-json-editor-toolbar-button-remove": "输入删除模式",
+	"maps-geo-json-edit-source": "编辑源代码",
 	"maps-geo-json-create-page-button": "创建本页面",
 	"maps-geo-json-create-page-creating": "正在创建页面……"
 }

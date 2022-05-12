@@ -14,7 +14,8 @@
 			"Oapbtommy",
 			"Shirayuki",
 			"Simon Shek",
-			"Waihorace"
+			"Waihorace",
+			"Winston Sung"
 		]
 	},
 	"maps-desc": "允許使用 Google 地圖或 Leaflet 讓 Wiki 頁面嵌入動態地圖。具備視覺化編輯器，且可選擇與 Semantic MediaWiki 整合，並支援 GeoJSON 地理編碼功能。",
@@ -82,7 +83,7 @@
 	"maps-displaymap-par-label": "允許設定顯示於所有標記的彈跳視窗顯示文字，若該標記不包含特定標籤的話。",
 	"maps-displaymap-par-icon": "允許設定用於所有標記的圖標。",
 	"maps-displaymap-par-circles": "要顯示的圓形",
-	"maps-displaymap-par-copycoords": "當點擊來自可讓座標複製的位置時顯示對話框",
+	"maps-displaymap-par-copycoords": "當點擊來自可讓座標複製的標記時顯示對話框",
 	"maps-displaymap-par-lines": "要顯示的直線",
 	"maps-displaymap-par-maxzoom": "縮放層級上限",
 	"maps-displaymap-par-minzoom": "縮放層級下限",
@@ -259,8 +260,8 @@
 	"maps-json-editor-toolbar-button-remove-disabled": "沒有可刪除的記號或外形",
 	"maps-json-editor-toolbar-button-save": "儲存變更",
 	"maps-json-editor-changes-saved": "已儲存您的變更。",
-	"maps-geo-json-edit-source": "編輯來源",
-	"maps-geo-json-create-source": "從 GeoJSON 來源建立",
+	"maps-geo-json-edit-source": "編輯原始碼",
+	"maps-geo-json-create-source": "以 GeoJSON 原始碼建立",
 	"maps-geo-json-create-page-button": "建立此頁面",
 	"maps-geo-json-create-page-creating": "正在建立頁面…",
 	"maps-geo-json-create-page-summary": "已建立 GeoJSON 頁面",
