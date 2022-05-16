@@ -27,7 +27,7 @@
 	"maps-desc": "允许通过Google Maps或Leaflet将动态地图嵌入到wiki页面中。具有可视化编辑器，选择性地与Semantic MediaWiki集成，支持GeoJSON并添加地理编码功能。",
 	"maps_map": "地图",
 	"maps-tracking-category": "有由地图扩展描绘地图的页面",
-	"maps-loading-map": "正在载入地图...",
+	"maps-loading-map": "正在加载地图…",
 	"maps-load-failed": "无法加载地图！",
 	"maps-markers": "标记",
 	"maps-copycoords-prompt": "CTRL+C, ENTER",

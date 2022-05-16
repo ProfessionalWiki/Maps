@@ -21,7 +21,7 @@
 	"maps-desc": "允許使用 Google 地圖或 Leaflet 讓 Wiki 頁面嵌入動態地圖。具備視覺化編輯器，且可選擇與 Semantic MediaWiki 整合，並支援 GeoJSON 地理編碼功能。",
 	"maps_map": "地圖",
 	"maps-tracking-category": "使用地圖擴充套件顯示地圖的頁面",
-	"maps-loading-map": "讀取地圖中...",
+	"maps-loading-map": "正在載入地圖…",
 	"maps-load-failed": "無法讀取地圖！",
 	"maps-markers": "標記",
 	"maps-copycoords-prompt": "CTRL+C，ENTER",
