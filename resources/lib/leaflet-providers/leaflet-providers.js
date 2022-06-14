@@ -153,6 +153,13 @@
 				attribution: 'Map data: &copy; <a href="http://www.openptmap.org">OpenPtMap</a> contributors'
 			}
 		},
+		oepnvkarte: {
+			url: 'http://tileserver.memomaps.de/tilegen/{z}/{x}/{y}.png',
+			options: {
+				maxZoom: 17,
+				attribution: 'Map: <a href="https://memomaps.de">memomaps.de</a> <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Map data: <a href="http://openstreetmap.org/">Openstreetmap</a> <a href="http://opendatacommons.org/licenses/odbl/1.0/">ODbL</a>'
+			}
+		},
 		OpenTopoMap: {
 			url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
 			options: {
