@@ -29,7 +29,7 @@ class StructuredPopup {
 		$lines = [];
 
 		foreach ( $this->propertyValues as $name => $value ) {
-			$lines[] = $this->bold( $this->stripTags( $name ) ) . ': ' . $this->stripTags( $value );
+			$lines[] = $this->bold( $this->stripTags( $name ) ) . ': ' . $this->stripTags( strval( $value ) );
 		}
 
 		return implode( '<br>', $lines );
