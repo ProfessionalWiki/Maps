@@ -13,6 +13,7 @@
 			"Shirayuki",
 			"Siebrand",
 			"Umherirrender",
+			"Verdy p",
 			"Тест",
 			"아라"
 		]
@@ -245,6 +246,6 @@
 	"maps-json-editor-edit-other": "Edit summary created by the visual map editor",
 	"maps-json-editor-edit-failed": "Error message shown when saving a change in the visual map editor fails",
 	"maps-json-editor-toolbar-cancel-text": "{{Identical|Cancel}}",
-	"maps-geo-json-edit-source": "Edit tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids",
+	"maps-geo-json-edit-source": "Edit tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids.\n{{Identical/Edit source}}",
 	"maps-geo-json-create-source": "Page creation tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids"
 }
