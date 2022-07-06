@@ -102,7 +102,7 @@ class MapsSetup {
 	private function registerHooks() {
 		$GLOBALS['wgHooks']['AdminLinks'][] = 'Maps\MapsHooks::addToAdminLinks';
 		$GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MapsHooks::onMakeGlobalVariablesScript';
-		$GLOBALS['wgHooks']['SkinTemplateNavigation'][] = 'Maps\MapsHooks::onSkinTemplateNavigation';
+		$GLOBALS['wgHooks']['SkinTemplateNavigation::Universal'][] = 'Maps\MapsHooks::onSkinTemplateNavigation';
 		$GLOBALS['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MapsHooks::onBeforeDisplayNoArticleText';
 		$GLOBALS['wgHooks']['ShowMissingArticle'][] = 'Maps\MapsHooks::onShowMissingArticle';
 		$GLOBALS['wgHooks']['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
