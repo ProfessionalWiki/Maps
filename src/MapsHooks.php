@@ -72,7 +72,7 @@ final class MapsHooks {
 		return true;
 	}
 
-	public static function onSkinTemplateNavigation( SkinTemplate $skinTemplate, array &$links ) {
+	public static function onSkinTemplateNavigationUniversal( SkinTemplate $skinTemplate, array &$links ) {
 		if ( $skinTemplate->getTitle() === null ) {
 			return true;
 		}
