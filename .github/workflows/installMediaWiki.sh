@@ -32,8 +32,10 @@ echo 'wfLoadExtension( "'$EXTENSION_NAME'" );' >> LocalSettings.php
 
 cat <<EOT >> composer.local.json
 {
-  "require": {
-  },
+  	"require": {},
+  	"config": {
+        	"allow-plugins": { "composer/installers": true },
+	}
 	"extra": {
 		"merge-plugin": {
 			"merge-dev": true,
