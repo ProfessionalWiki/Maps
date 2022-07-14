@@ -169,7 +169,7 @@
 	"maps-googlemaps3-par-clusterminsize": "Le nombre minimum de marqueurs dans un agrégat avant que les marqueurs ne soient cachés et qu’un compteur ne les remplace.",
 	"mapeditor": "Éditeur de carte",
 	"mapeditor-parser-error": "Une erreur s’est produite lors de l’analyse des métadonnées. Entrées de l’utilisateur ignorées.",
-	"mapeditor-none-text": "Aucun",
+	"mapeditor-none-text": "Néant",
 	"mapeditor-done-button": "Terminé",
 	"mapeditor-remove-button": "Enlever",
 	"mapeditor-import-button2": "Importer",
