@@ -46,7 +46,7 @@
 			"constant": "NS_GEO_JSON",
 			"name": "GeoJson",
 			"subpages": false,
-			"content": true,
+			"content": false,
 			"defaultcontentmodel": "GeoJSON"
 		},
 		{
