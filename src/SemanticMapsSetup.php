@@ -44,9 +44,6 @@ class SemanticMapsSetup {
 
 		$GLOBALS['smwgResultAliases'][$GLOBALS['egMapsDefaultService']][] = 'map';
 		MapPrinter::registerDefaultService( $GLOBALS['egMapsDefaultService'] );
-
-		// Internationalization
-		$GLOBALS['wgMessagesDirs']['SemanticMaps'] = __DIR__ . '/i18n';
 	}
 
 	private function registerGoogleMaps() {
