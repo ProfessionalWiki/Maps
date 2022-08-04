@@ -7,7 +7,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Under development
 
-* Added support for MediaWiki 1.38.x
+* Added support for MediaWiki 1.38.x and 1.39.x
+* Fixed issue that broke the wikis localization cache when Semantic MediaWiki and Maps where installed together
+* Added `oepnvkarte` layer for Leaflet maps
+* Marked the GeoJSON namespace as not content. So it will no longer appear in results via Special:Random
 * Packages installed directly into `Maps/vendor/` by executing Composer in `Maps/` are no longer loaded
 * Removed `Maps_VERSION` and `SM_VERSION` PHP constants
 
