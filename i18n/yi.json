@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Pacha Tchernof",
 			"פוילישער",
 			"පසිඳු කාවින්ද"
 		]
@@ -10,5 +11,6 @@
 	"mapeditor-import-button2": "אימפארט",
 	"mapeditor-form-field-link": "לינק",
 	"mapeditor-form-field-group": "גרופע",
-	"mapeditor-form-field-image": "בילד"
+	"mapeditor-form-field-image": "בילד",
+	"maps-json-editor-toolbar-cancel-text": "אַנולירן"
 }
