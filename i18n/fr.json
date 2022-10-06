@@ -33,7 +33,7 @@
 	"maps-loading-map": "Chargement de la carte...",
 	"maps-load-failed": "Impossible de charger la carte !",
 	"maps-markers": "Marqueurs",
-	"maps-copycoords-prompt": "CTRL+C, ENTRÉE",
+	"maps-copycoords-prompt": "Ctrl + C, Entrée",
 	"maps-searchmarkers-text": "Marqueurs de filtre",
 	"maps-others": "autres",
 	"maps-kml-parsing-failed": "Échec de l’analyse d’un ou plusieurs fichiers KML. Survient habituellement à cause d’un échec de récupération ou d’un codage XML mal formé.",
