@@ -23,6 +23,7 @@
 	"maps_googlemaps3": "Google Maps v3",
 	"maps_leaflet": "Prospekt",
 	"maps-par-enable-fullscreen": "Omogoči gumb za celozaslonski prikaz",
+	"mapeditor-none-text": "Brez",
 	"semanticmaps-unrecognizeddistance": "Vrednost $1 ni pravilna razdalja.",
 	"semanticmaps-kml-link": "Ogled datoteke KML",
 	"semanticmaps-default-kml-pagelink": "Prikaži stran $1",
