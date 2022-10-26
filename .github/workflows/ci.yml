@@ -21,8 +21,10 @@ jobs:
             php: 7.4
           - mw: 'REL1_38'
             php: 8.0
-          - mw: 'master'
-            php: 8.1
+#          - mw: 'REL1_39'
+#            php: 8.1
+#          - mw: 'master'
+#            php: 8.1
 
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.php == 8.1 }}
@@ -37,7 +39,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl
-          tools: composer:v1
+          tools: composer
 
       - name: Cache MediaWiki
         id: cache-mediawiki
@@ -68,8 +70,10 @@ jobs:
         with:
           path: mediawiki/extensions/Maps
 
-      - name: Composer update
-        run: composer update
+      - name: Composer allow-plugins
+        run: composer config --no-plugins allow-plugins.composer/installers true
+
+      - run: composer update
 
       - name: Run PHPUnit
         run: php tests/phpunit/phpunit.php -c extensions/Maps
@@ -182,10 +186,16 @@ jobs:
         with:
           path: mediawiki/extensions/Maps
 
+      - name: Composer allow-plugins
+        run: composer config --no-plugins allow-plugins.composer/installers true
+
       - run: composer update
 
       - name: Composer install
-        run: cd extensions/Maps && composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+        run: |
+          cd extensions/Maps
+          composer config --no-plugins allow-plugins.composer/installers true
+          composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
       - name: PHPStan
         run: cd extensions/Maps && php vendor/bin/phpstan analyse --error-format=checkstyle --no-progress | cs2pr
@@ -236,8 +246,15 @@ jobs:
         with:
           path: mediawiki/extensions/Maps
 
+      - name: Composer allow-plugins
+        run: composer config --no-plugins allow-plugins.composer/installers true
+
       - name: Composer update (core)
         run: composer update
+
+      - name: Composer allow-plugins (extension)
+        run: composer config --no-plugins allow-plugins.composer/installers true
+        working-directory: mediawiki/extensions/Maps
 
       - name: Composer update (extension)
         run: composer update

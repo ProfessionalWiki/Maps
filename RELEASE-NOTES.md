@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## maps 10.0.0
 
-Under development
+Released on October 26th, 2022.
 
 * Added support for MediaWiki 1.38.x and 1.39.x
 * Fixed issue that broke the wikis localization cache when Semantic MediaWiki and Maps where installed together
