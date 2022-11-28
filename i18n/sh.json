@@ -5,9 +5,12 @@
 		]
 	},
 	"maps-tracking-category": "Stranica sa zemljovidom iscrtanim proširenjem \"Zemljovidi\"",
+	"maps-loading-map": "Učitavam zemljovid...",
+	"maps-load-failed": "Zemljovid nije bilo moguće učitati!",
 	"maps-markers": "Označivači",
 	"maps-searchmarkers-text": "Filtriranje označivača",
 	"maps-others": "ostali",
+	"maps-kml-parsing-failed": "Neuspješno analiziranje jedne ili više KML datoteka. Obično se to događa zbog neuspjelog dohvaćanja ili krivo oblikovanog XML-a.",
 	"maps-ns-layer": "Sloj",
 	"maps-ns-layer-talk": "Razgovor o sloju",
 	"maps-layer-property": "Svojstvo",
