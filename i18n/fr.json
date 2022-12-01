@@ -171,7 +171,7 @@
 	"mapeditor-parser-error": "Une erreur s’est produite lors de l’analyse des métadonnées. Entrées de l’utilisateur ignorées.",
 	"mapeditor-none-text": "Néant",
 	"mapeditor-done-button": "Terminé",
-	"mapeditor-remove-button": "Enlever",
+	"mapeditor-remove-button": "Retirer",
 	"mapeditor-import-button2": "Importer",
 	"mapeditor-export-button": "Exporter en code wiki",
 	"mapeditor-import-button": "Importer à partir de code wiki",
