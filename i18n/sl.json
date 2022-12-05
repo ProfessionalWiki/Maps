@@ -45,6 +45,7 @@
 	"semanticmaps-kml-pagelinktext": "Besedilo za povezave do strani, v katerih bo $1 zamenjan z naslovom strani",
 	"semanticmaps-shapes-improperformat": "Neustrezno oblikovanje $1. Prosimo, oglejte si dokumentacijo za oblikovanje",
 	"semanticmaps-shapes-missingshape": "Za $1 nisem našel nobenih oblik. Prosimo, oglejte si dokumentacijo za oblike, ki so na voljo",
+	"maps-json-editor-toolbar-cancel-text": "Prekliči",
 	"tag-maps-visual-edit": "vizualno urejanje zemljevida",
 	"tag-maps-visual-edit-description": "Urejanje z vizualnim urejevalnikom, opravljeno z razširitvijo [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps]"
 }
