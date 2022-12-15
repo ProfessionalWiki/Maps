@@ -15,7 +15,8 @@
 			"Shirayuki",
 			"Simon Shek",
 			"Waihorace",
-			"Winston Sung"
+			"Winston Sung",
+			"捍粵者"
 		]
 	},
 	"maps-desc": "允許使用 Google 地圖或 Leaflet 讓 Wiki 頁面嵌入動態地圖。具備視覺化編輯器，且可選擇與 Semantic MediaWiki 整合，並支援 GeoJSON 地理編碼功能。",
@@ -42,7 +43,7 @@
 	"validation-error-invalid-layer": "參數 \"$1\" 必須是一個有效的圖層。",
 	"validation-error-invalid-layers": "參數 \"$1\" 必須是一個或多個有效的圖層。",
 	"validation-error-no-non-numeric": "參數 \"$1\" 必須是一個非數字的字串。",
-	"validation-error-no-non-numerics": "參數 \"$1\" 必須是一個或多個非數字的字串。",
+	"validation-error-no-non-numerics": "參數「$1」必需最少是一串非數字字串。",
 	"maps-layer-of-type": "圖層類型 \"$1\"",
 	"maps-layer-of-type-and-name": "類型為 \"$1\" 的圖層 \"$2\"",
 	"maps-coordinates-description": "用來格式化座標的分析器連結(Hook)，可在支援的格式之間轉換。",
@@ -203,7 +204,7 @@
 	"semanticmaps-par-showtitle": "是否在標記資訊視窗之中顯示標題。當使用模板對資訊視窗內容進行格式編排的時，關閉此選項通常會有所幫助。",
 	"semanticmaps-par-hidenamespace": "在標記資訊視窗中顯示命名空間的標題",
 	"semanticmaps-par-centre": "地圖的中心位置。若不指定，地圖會自動挑選可顯示所有標記於地圖上的最佳中心位置。",
-	"semanticmaps-par-template": "用來對資訊視窗內容進行格式編排的模板。",
+	"semanticmaps-par-template": "用來編排資訊視窗內容格式的模板。",
 	"semanticmaps-par-geocodecontrol": "顯示地理編碼控制元件。",
 	"semanticmaps-par-activeicon": "當使用的頁面為查詢結果時，用來替代預設標記要顯示的圖示",
 	"semanticmaps-par-pagelabel": "當設為 \"是\" 時，所有的標記會有 \"inlineLabel\" 並連結至含有標記座標的頁面。",
