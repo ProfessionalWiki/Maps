@@ -5,14 +5,15 @@
 		]
 	},
 	"maps_map": "Mapa",
-	"maps-loading-map": "Učitavanje mape...",
-	"validation-error-invalid-location": "Parametar $1 mora biti validna lokacija",
+	"maps-loading-map": "Učitavam mapu...",
+	"maps-displaymap-par-geojson": "URL datoteke ili imena stranice koja sadrži podatke GeoJSON",
+	"validation-error-invalid-location": "Parametar „$1” mora da bude važeća lokacija",
 	"validation-error-invalid-locations": "Parametar $1 mora biti jedna ili više važećih lokacija.",
-	"validation-error-invalid-width": "Parametar $1 mora biti validna širina.",
-	"validation-error-invalid-height": "Parametar $1 mora biti validna visina.",
+	"validation-error-invalid-width": "Parametar „$1” mora da bude važeća širina.",
+	"validation-error-invalid-height": "Parametar „$1” mora da bude važeća visina.",
 	"validation-error-invalid-distance": "Parametar $1 mora biti validno rastojanje.",
 	"validation-error-invalid-distances": "Parametar $1 mora biti jedno ili više validnih rastojanja.",
-	"validation-error-invalid-image": "Parametar $1 mora biti validna slika.",
+	"validation-error-invalid-image": "Parametar „$1” mora da bude važeća slika.",
 	"validation-error-invalid-images": "Parametar $1 mora biti jedna ili više validnih slika.",
 	"maps-abb-north": "S",
 	"maps-abb-east": "I",
@@ -21,6 +22,10 @@
 	"maps-latitude": "Geografska širina:",
 	"maps-longitude": "Geografska dužina:",
 	"maps_googlemaps3": "Gugl mape, treće izdanje",
+	"mapeditor": "Uređivač karte",
+	"mapeditor-form-field-image": "Slika",
 	"semanticmaps-unrecognizeddistance": "Vrednost $1 nije ispravno rastojanje.",
-	"semanticmaps-kml": "KML"
+	"semanticmaps-kml": "KML",
+	"validator-type-mapspolygon": "Geografski poligon",
+	"validator-type-mapspolygon-list": "Spisak geografskih poligona"
 }
