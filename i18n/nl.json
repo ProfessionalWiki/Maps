@@ -35,7 +35,7 @@
 	"maps-layerdef-invalid": "Ongeldige definitie{{PLURAL:$1||s}}",
 	"maps-layerdef-invalid-fatal": "Fatale ongeldige definitie",
 	"maps-layerdef-wrong-namespace": "Lagendefinities zijn alleen geldig op pagina's van de naamruimte \"$1\"",
-	"maps-layerdef-equal-layer-name": "Lagennamen moeten uniek zijn binnen dezelfde lagenpagina. \"$1'wordt al gebruikt door een andere laag.",
+	"maps-layerdef-equal-layer-name": "Laagnamen moeten uniek zijn binnen dezelfde lagenpagina. \"$1\" wordt al gebruikt door een andere laag.",
 	"maps-layerpage-usage": "Pagina's met kaarten die laag \"$1\" gebruiken",
 	"maps-layerpage-nousage": "Er zijn op het moment geen pagina's die deze laag gebruiken.",
 	"validation-error-invalid-layer": "Parameter $1 moet een geldige laag zijn.",

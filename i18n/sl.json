@@ -54,6 +54,7 @@
 	"semanticmaps-par-geocodecontrol": "Prikaži nadzor geokodiranja.",
 	"semanticmaps-par-activeicon": "Ikona za prikaz namesto privzete oznake, kadar je aktivna stran enaka zadetku poizvedbe.",
 	"semanticmaps-par-pagelabel": "Ko nastavite na »da«, bodo imele vse oznake »inlineLabel« s povezavo na stran, ki vsebuje koordinate oznake",
+	"semanticmaps-par-ajaxcoordproperty": "Ime koordinatne lastnosti, ki se uporablja za ustvaritev poizvedbe ajax.",
 	"semanticmaps-kml-text": "Besedilo, povezano z vsako stranjo. Preglašeno z dodatnimi možnostmi poizvedbe, če obstajajo.",
 	"semanticmaps-kml-title": "Privzeti naslov za zadetke",
 	"semanticmaps-kml-linkabsolute": "Naj bodo povezave absolutne (v nasprotju z relativnimi)",
