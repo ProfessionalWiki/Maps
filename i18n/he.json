@@ -208,7 +208,7 @@
 	"semanticmaps-par-ajaxcoordproperty": "שם המאפיין של נקודות הציון שמשמש לבניית שאילתת ה־ajax.",
 	"semanticmaps-par-ajaxquery": "שאילתה שנייה שנשלחת ב־ajax כדי לאחזר נקודות ציון נוספות.",
 	"semanticmaps-par-userparam": "ערך שמועבר לכל קריאה לתבנית, אם משמשת תבנית",
-	"semanticmaps-kml-text": "הטקסט משויך לכל עמוד ועמוד. נדרס במאפיינים אחרים שנעשית עליהם שאילתה, אם יש כאלה.",
+	"semanticmaps-kml-text": "הטקסט המשויך לכל דף. נדרס במאפיינים אחרים שנעשית עליהם שאילתה, אם יש כאלה.",
 	"semanticmaps-kml-title": "כותרת לתוצאות לפי ברירת המחדל.",
 	"semanticmaps-kml-linkabsolute": "האם הקישורים צריכים להיות מוחלטים (או יחסיים)",
 	"semanticmaps-kml-pagelinktext": "הטקסט שישמש לקישורים לדף, כאשר $1 יוחלף בכותרת הדף",
