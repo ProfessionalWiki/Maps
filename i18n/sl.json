@@ -33,6 +33,7 @@
 	"maps-leaflet-par-overlaylayers": "Prekrivni sloji, ki bodo prikazani, ko se bo zemljevid naložil.",
 	"maps-leaflet-par-maxclusterradius": "Največji polmer, ki ga bo gruča pokrivala od osrednje oznake (v pikslih).",
 	"maps_click_to_activate": "Kliknite za aktivacijo zemljevida",
+	"maps-par-centre": "Lokacija, na kateri naj bo zemljevid osredotočen",
 	"maps-par-enable-fullscreen": "Omogoči gumb za celozaslonski prikaz",
 	"maps-par-kml": "Datoteke KML za naložitev na zemljevid.",
 	"maps-googlemaps3-par-layers": "Posebni sloji za naložitev na zemljevid.",
@@ -41,6 +42,7 @@
 	"maps-par-maxclusterradius": "Največji polmer, ki ga bo pokrivala gruča.",
 	"mapeditor-parser-error": "Pri razčlenjevanju metapodatkov je prišlo do napake. Uporabniški vhod bo prezrt.",
 	"mapeditor-none-text": "Brez",
+	"mapeditor-done-button": "Opravljeno",
 	"mapeditor-import-button2": "Uvozi",
 	"mapeditor-link-title-switcher-popup-text": "Izskokec z besedilom",
 	"mapeditor-link-title-switcher-link-text": "Povezava",
@@ -85,7 +87,9 @@
 	"maps-json-editor-added-rectangle": "Dodan pravokotnik",
 	"maps-json-editor-added-circle": "Dodan krog",
 	"maps-json-editor-edit-failed": "Zemljevida ni bilo mogoče shraniti",
+	"maps-json-editor-toolbar-save-text": "Opravljeno",
 	"maps-json-editor-toolbar-cancel-text": "Prekliči",
+	"maps-geo-json-create-page-summary": "ustvaritev strani GeoJSON",
 	"tag-maps-visual-edit": "vizualno urejanje zemljevida",
 	"tag-maps-visual-edit-description": "Urejanje z vizualnim urejevalnikom, opravljeno z razširitvijo [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps]"
 }
