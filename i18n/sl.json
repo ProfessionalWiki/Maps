@@ -89,6 +89,7 @@
 	"maps-json-editor-edit-failed": "Zemljevida ni bilo mogoče shraniti",
 	"maps-json-editor-toolbar-save-text": "Opravljeno",
 	"maps-json-editor-toolbar-cancel-text": "Prekliči",
+	"maps-json-editor-toolbar-button-save": "Shrani spremembe",
 	"maps-geo-json-create-page-summary": "ustvaritev strani GeoJSON",
 	"tag-maps-visual-edit": "vizualno urejanje zemljevida",
 	"tag-maps-visual-edit-description": "Urejanje z vizualnim urejevalnikom, opravljeno z razširitvijo [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps]"
