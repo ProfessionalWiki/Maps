@@ -13,6 +13,7 @@
 	"maps-load-failed": "Zemljevid ni bilo mogoče naložiti.",
 	"maps-others": "drugi",
 	"maps-kml-parsing-failed": "Razčlenjevanje ene ali več datotek KML ni uspelo. Navadno je vzrok neuspešen priklic ali slabo oblikovan XML.",
+	"maps-layer-value": "Vrednost",
 	"maps-layer-errors": "Napake",
 	"maps-coordinates-par-location": "Koordinate, ki jih želite oblikovati.",
 	"maps-distance-par-unit": "Enota za izpis razdalje.",
