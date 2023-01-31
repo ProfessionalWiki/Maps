@@ -20,7 +20,7 @@ class GeoJsonMapPageUi {
 	}
 
 	public function addToOutput( OutputFacade $output ) {
-		$output->addHTML( $this->getJavascript() . $this->getHtml() );
+		$output->addHtml( $this->getJavascript() . $this->getHtml() );
 		$output->addModules( 'ext.maps.geojson.page' );
 	}
 
