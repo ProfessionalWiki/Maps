@@ -29,13 +29,6 @@ class MapsRegistration {
 				throw new Exception( 'Maps needs to be installed via Composer.' );
 			}
 
-			if ( version_compare( $GLOBALS['wgVersion'], '1.35c', '<' ) ) {
-				throw new Exception(
-					'This version of Maps requires MediaWiki 1.35 or above; upgrade MediaWiki or use an older version of Maps.'
-					. ' More information at https://github.com/JeroenDeDauw/Maps/blob/master/INSTALL.md'
-				);
-			}
-
 			( new MapsSetup() )->setup();
 
 			return true;
