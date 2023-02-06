@@ -11,7 +11,7 @@ class CargoFormat extends CargoDisplayFormat {
 
 	private \ParserOutput $parserOutput;
 
-	public function __construct( $output, $parserOutput ) {
+	public function __construct( \OutputPage $output, $parserOutput ) {
 		parent::__construct( $output, $parserOutput );
 		$this->parserOutput = $parserOutput;
 	}
