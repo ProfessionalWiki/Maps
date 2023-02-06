@@ -9,7 +9,8 @@ use Maps\MapsFactory;
 
 class CargoFormat extends CargoDisplayFormat {
 
-	private \ParserOutput $parserOutput;
+	/** @var Parser|null */
+	private $parserOutput;
 
 	public function __construct( $output, $parserOutput = null ) {
 		parent::__construct( $output, $parserOutput );
