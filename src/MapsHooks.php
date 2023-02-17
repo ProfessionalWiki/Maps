@@ -62,7 +62,10 @@ final class MapsHooks {
 	 * @return boolean true in all cases
 	 */
 	public static function onMakeGlobalVariablesScript( array &$vars ) {
-		$vars['egMapsScriptPath'] = $GLOBALS['wgScriptPath'] . '/extensions/Maps/'; // TODO: wgExtensionDirectory?
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$extensionAssetsPath = $config->get( 'ExtensionAssetsPath' );
+
+		$vars['egMapsScriptPath'] = $extensionAssetsPath . '/Maps/';
 		$vars['egMapsDebugJS'] = $GLOBALS['egMapsDebugJS'];
 		$vars['egMapsAvailableServices'] = $GLOBALS['egMapsAvailableServices'];
 		$vars['egMapsLeafletLayersApiKeys'] = $GLOBALS['egMapsLeafletLayersApiKeys'];

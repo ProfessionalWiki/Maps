@@ -101,7 +101,7 @@
 			if (markerData.visitedicon !== '') {
 				if(markerData.visitedicon === 'on'){
 					//when keyword 'on' is set, set visitedicon to a default official marker
-					markerOptions.visitedicon = mw.config.get('wgScriptPath')+'/extensions/Maps/resources/GoogleMaps/img/blue-dot.png';
+					markerOptions.visitedicon = mw.config.get( 'egMapsScriptPath' )+'/resources/GoogleMaps/img/blue-dot.png';
 				}else{
 					markerOptions.visitedicon = markerData.visitedicon;
 				}
@@ -439,8 +439,8 @@
 				this.markercluster = null;
 			}
 			this.markercluster = new MarkerClusterer( this.map, this.markers, {
-				imagePath: mw.config.get( 'wgScriptPath' ) +
-				'/extensions/Maps/resources/leaflet/cluster/m',
+				imagePath: mw.config.get( 'egMapsScriptPath' ) +
+				'/resources/leaflet/cluster/m',
 				gridSize: this.options.clustergridsize,
 				maxZoom: this.options.clustermaxzoom,
 				zoomOnClick: this.options.clusterzoomonclick,
