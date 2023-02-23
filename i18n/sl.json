@@ -94,6 +94,7 @@
 	"maps-json-editor-edit-failed": "Zemljevida ni bilo mogoče shraniti",
 	"maps-json-editor-toolbar-save-text": "Opravljeno",
 	"maps-json-editor-toolbar-cancel-text": "Prekliči",
+	"maps-json-editor-toolbar-button-remove-disabled": "Ni oznak ali oblik za izbris",
 	"maps-json-editor-toolbar-button-save": "Shrani spremembe",
 	"maps-geo-json-create-page-summary": "ustvaritev strani GeoJSON",
 	"tag-maps-visual-edit": "vizualno urejanje zemljevida",
