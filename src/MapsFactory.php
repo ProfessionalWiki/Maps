@@ -124,7 +124,7 @@ class MapsFactory {
 	private function newGoogleGeocoder(): Geocoder {
 		return new GoogleGeocoder(
 			$this->newFileFetcher(),
-			$this->settings['egMapsGMaps3ApiKey'],
+			$this->settings['egMapsGoogleGeocodingApiKey'],
 			$this->settings['egMapsGMaps3ApiVersion']
 		);
 	}
