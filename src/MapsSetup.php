@@ -47,6 +47,10 @@ class MapsSetup {
 		if ( $GLOBALS['egMapsGMaps3ApiKey'] === '' && array_key_exists( 'egGoogleJsApiKey', $GLOBALS ) ) {
 			$GLOBALS['egMapsGMaps3ApiKey'] = $GLOBALS['egGoogleJsApiKey'];
 		}
+
+		if ( $GLOBALS['egMapsGoogleGeocodingApiKey'] === '' && array_key_exists( 'egMapsGMaps3ApiKey', $GLOBALS ) ) {
+			$GLOBALS['egMapsGoogleGeocodingApiKey'] = $GLOBALS['egMapsGMaps3ApiKey'];
+		}
 	}
 
 	private function registerAllTheThings() {
