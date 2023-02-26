@@ -48,7 +48,7 @@ class MapsSetup {
 			$GLOBALS['egMapsGMaps3ApiKey'] = $GLOBALS['egGoogleJsApiKey'];
 		}
 
-		if ( empty($GLOBALS['egMapsGoogleGeocodingApiKey'])  && array_key_exists( 'egMapsGMaps3ApiKey', $GLOBALS ) ) {
+		if ( empty( $GLOBALS['egMapsGoogleGeocodingApiKey'] )  && array_key_exists( 'egMapsGMaps3ApiKey', $GLOBALS ) ) {
 			$GLOBALS['egMapsGoogleGeocodingApiKey'] = $GLOBALS['egMapsGMaps3ApiKey'];
 		}
 	}
