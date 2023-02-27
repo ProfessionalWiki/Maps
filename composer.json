@@ -69,7 +69,10 @@
 		"mediawiki/semantic-media-wiki": "Add, edit, aggregate and visualize structured coordinate data stored with Semantic MediaWiki"
 	},
 	"config": {
-		"process-timeout": 0
+		"process-timeout": 0,
+		"allow-plugins": {
+			"composer/installers": true
+		}
 	},
 	"scripts":{
 		"ci": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
