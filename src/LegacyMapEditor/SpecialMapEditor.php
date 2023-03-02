@@ -46,7 +46,7 @@ class SpecialMapEditor extends SpecialPage {
 			)
 		);
 
-		$outputPage->addModules( 'ext.maps.wikitext.editor' );
+		$outputPage->addModules( [ 'ext.maps.wikitext.editor' ] );
 		$editorHtml = new MapEditorHtml( $this->getAttribs() );
 		$html = $editorHtml->getEditorHtml();
 		$outputPage->addHTML( $html );
