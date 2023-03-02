@@ -72,9 +72,6 @@ jobs:
         with:
           path: mediawiki/extensions/Maps
 
-      - name: Composer allow-plugins
-        run: composer config --no-plugins allow-plugins.composer/installers true
-
       - run: composer update
 
       - name: Run PHPUnit
