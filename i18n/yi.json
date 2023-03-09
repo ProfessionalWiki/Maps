@@ -6,11 +6,15 @@
 			"පසිඳු කාවින්ද"
 		]
 	},
+	"maps-others": "אַנדערע",
 	"maps-layer-value": "ווערט",
+	"maps-layer-errors": "פֿעלערן",
 	"mapeditor-remove-button": "אַראָפּנעמען",
 	"mapeditor-import-button2": "אימפארט",
+	"mapeditor-link-title-switcher-link-text": "לינק",
+	"mapeditor-form-field-text": "טעקסט",
 	"mapeditor-form-field-link": "לינק",
-	"mapeditor-form-field-group": "גרופע",
+	"mapeditor-form-field-group": "גרופּע",
 	"mapeditor-form-field-image": "בילד",
 	"maps-json-editor-toolbar-cancel-text": "אַנולירן"
 }
