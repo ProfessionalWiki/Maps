@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Danmichaelo",
+			"EdoAug",
 			"EvenT",
 			"Event",
 			"Jon Harald Søby",
@@ -13,7 +14,7 @@
 	"maps-desc": "Gjør det mulig å bygge inn dynamiske kart i wikisider med Google Maps eller Leaflet. Har visuell redigering, kan integreres med Semantic MediaWiki, støtter GeoJSON og legger til geokodingsmuligheter.",
 	"maps_map": "Kart",
 	"maps-tracking-category": "Sider med kart som vises med kartutvidelsen",
-	"maps-loading-map": "Laster kart...",
+	"maps-loading-map": "Laster kart ...",
 	"maps-load-failed": "Klarte ikke laste kartet.",
 	"maps-markers": "Markører",
 	"maps-copycoords-prompt": "Chrl+C, Enter",
