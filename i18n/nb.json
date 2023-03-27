@@ -76,7 +76,7 @@
 	"maps-displaymap-par-label": "Tillater å angi tekst som skal vises i popup-vinduet for de markørene som mangler en særskilt etikett.",
 	"maps-displaymap-par-icon": "Tillater å sette ikonet som brukes for alle markørene.",
 	"maps-displaymap-par-circles": "Sirkler å vise",
-	"maps-displaymap-par-copycoords": "Viser en dialog når du klikker på et sted hvorfra du kan kopiere koordinatene.",
+	"maps-displaymap-par-copycoords": "Viser en dialog når du klikker på en markør som du kan kopiere koordinatene fra",
 	"maps-displaymap-par-lines": "Linjer å vise",
 	"maps-displaymap-par-maxzoom": "Maksimalt zoomnivå",
 	"maps-displaymap-par-minzoom": "Minste zoomnivå",
