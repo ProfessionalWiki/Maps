@@ -582,7 +582,7 @@
 			}
 		},
 		BasemapAT: {
-			url: 'https://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.{format}',
+			url: 'https://mapsneu.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.{format}',
 			options: {
 				maxZoom: 19,
 				attribution: 'Datenquelle: <a href="https://www.basemap.at">basemap.at</a>',
@@ -612,7 +612,20 @@
 						variant: 'bmaporthofoto30cm',
 						format: 'jpeg'
 					}
+				},
+				bmapgelaende: {
+					options: {
+						variant: 'bmapgelaende',
+						format: 'jpeg'
+					}
+				},
+				bmapoberflaeche: {
+					options: {
+						variant: 'bmapoberflaeche',
+						format: 'jpeg'
+					}
 				}
+
 			}
 		},
 		nlmaps: {
