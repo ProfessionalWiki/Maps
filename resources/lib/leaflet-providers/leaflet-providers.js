@@ -582,19 +582,18 @@
 			}
 		},
 		BasemapAT: {
-			url: 'https://maps{s}.wien.gv.at/basemap/{variant}/normal/google3857/{z}/{y}/{x}.{format}',
+			url: 'https://mapsneu.wien.gv.at/basemap/{variant}/{style}/google3857/{z}/{y}/{x}.{format}',
 			options: {
 				maxZoom: 19,
 				attribution: 'Datenquelle: <a href="https://www.basemap.at">basemap.at</a>',
-				subdomains: ['', '1', '2', '3', '4'],
 				format: 'png',
 				bounds: [[46.358770, 8.782379], [49.037872, 17.189532]],
-				variant: 'geolandbasemap'
+				variant: 'geolandbasemap',
+				style: 'normal'
 			},
 			variants: {
 				basemap: {
 					options: {
-						maxZoom: 20, // currently only in Vienna
 						variant: 'geolandbasemap'
 					}
 				},
@@ -608,7 +607,6 @@
 				},
 				orthofoto: {
 					options: {
-						maxZoom: 20, // currently only in Vienna
 						variant: 'bmaporthofoto30cm',
 						format: 'jpeg'
 					}
