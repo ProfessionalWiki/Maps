@@ -594,7 +594,6 @@
 			variants: {
 				basemap: {
 					options: {
-						maxZoom: 20, // currently only in Vienna
 						variant: 'geolandbasemap'
 					}
 				},
@@ -608,24 +607,10 @@
 				},
 				orthofoto: {
 					options: {
-						maxZoom: 20, // currently only in Vienna
 						variant: 'bmaporthofoto30cm',
 						format: 'jpeg'
 					}
-				},
-				bmapgelaende: {
-					options: {
-						variant: 'bmapgelaende',
-						format: 'jpeg'
-					}
-				},
-				bmapoberflaeche: {
-					options: {
-						variant: 'bmapoberflaeche',
-						format: 'jpeg'
-					}
 				}
-
 			}
 		},
 		nlmaps: {
