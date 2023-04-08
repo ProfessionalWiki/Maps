@@ -280,10 +280,11 @@
 			return layers;
 		};
 
-		this.addBaseLayersToMap = function(layers) {
-			layers.forEach(function(layerObject, layerName) {
-				layerObject.addTo(_this.map);
-			});
+		this.addBaseLayerToMap = function(layers) {
+			if (layers.size > 0) {
+				let layerObjects = Array.from(layers.values());
+				layerObjects.pop().addTo(_this.map);
+			}
 		};
 
 		this.addOverlays = function() {
@@ -298,7 +299,7 @@
 
 		this.addLayersAndOverlays = function() {
 			let layers = this.getBaseLayers();
-			this.addBaseLayersToMap(layers);
+			this.addBaseLayerToMap(layers);
 
 			let overlays = this.addOverlays();
 
