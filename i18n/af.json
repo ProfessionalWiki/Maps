@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Naudefj"
+			"Naudefj",
+			"Rooiratel"
 		]
 	},
 	"maps_map": "Kaart",
+	"maps-fullscreen-button": "Wissel volskerm",
 	"maps-abb-north": "N",
 	"maps-abb-east": "O",
 	"maps-abb-south": "S",
