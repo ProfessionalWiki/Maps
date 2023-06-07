@@ -9,6 +9,7 @@ use ALTree;
 use Maps\GeoJsonPages\GeoJsonNewPageUi;
 use Maps\Presentation\OutputFacade;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Settings\SettingsBuilder;
 use SkinTemplate;
 use SMWPrintRequest;
 
@@ -172,6 +173,32 @@ final class MapsHooks {
 		// TODO: uncomment when it is safe for the semantic integration to be enabled by default
 		// $settings['smwgNamespacesWithSemanticLinks'][NS_GEO_JSON] = true;
 		return true;
+	}
+
+	public static function registerHookHandlers( array $hooks ): void {
+		if ( defined( 'MW_PHPUNIT_TEST' ) && MediaWikiServices::hasInstance() ) {
+			// When called from a test case's setUp() method,
+			// we can use HookContainer, but we cannot use SettingsBuilder.
+			$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+			foreach ( $hooks as $name => $handlers ) {
+				foreach ( $handlers as $h ) {
+					$hookContainer->register( $name, $h );
+				}
+			}
+		} elseif ( method_exists( SettingsBuilder::class, 'registerHookHandlers' ) ) {
+			// Since 1.40: Use SettingsBuilder to register hooks during initialization.
+			// HookContainer is not available at this time.
+			$settingsBuilder = SettingsBuilder::getInstance();
+			$settingsBuilder->registerHookHandlers( $hooks );
+		} else {
+			// For MW < 1.40: Directly manipulate $wgHooks during initialization.
+			foreach ( $hooks as $name => $handlers ) {
+				$GLOBALS['wgHooks'][$name] = array_merge(
+					$GLOBALS['wgHooks'][$name] ?? [],
+					$handlers
+				);
+			}
+		}
 	}
 
 }

@@ -60,9 +60,12 @@ class MapsSetup {
 	}
 
 	private function registerParserHooks() {
-		$GLOBALS['wgHooks']['ParserFirstCallInit'][] = function ( Parser $parser ) {
+		$hooks = [];
+		$hooks['ParserFirstCallInit'][] = function ( Parser $parser ) {
 			MapsFactory::globalInstance()->newParserHookSetup( $parser )->registerParserHooks();
 		};
+
+		MapsHooks::registerHookHandlers( $hooks );
 	}
 
 	private function registerParameterTypes() {
@@ -104,18 +107,20 @@ class MapsSetup {
 	}
 
 	private function registerHooks() {
-		$GLOBALS['wgHooks']['AdminLinks'][] = 'Maps\MapsHooks::addToAdminLinks';
-		$GLOBALS['wgHooks']['MakeGlobalVariablesScript'][] = 'Maps\MapsHooks::onMakeGlobalVariablesScript';
-		$GLOBALS['wgHooks']['SkinTemplateNavigation::Universal'][] = 'Maps\MapsHooks::onSkinTemplateNavigationUniversal';
-		$GLOBALS['wgHooks']['BeforeDisplayNoArticleText'][] = 'Maps\MapsHooks::onBeforeDisplayNoArticleText';
-		$GLOBALS['wgHooks']['ShowMissingArticle'][] = 'Maps\MapsHooks::onShowMissingArticle';
-		$GLOBALS['wgHooks']['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
-		$GLOBALS['wgHooks']['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
-		$GLOBALS['wgHooks']['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
+		$hooks = [];
+		$hooks['AdminLinks'][] = 'Maps\MapsHooks::addToAdminLinks';
+		$hooks['MakeGlobalVariablesScript'][] = 'Maps\MapsHooks::onMakeGlobalVariablesScript';
+		$hooks['SkinTemplateNavigation::Universal'][] = 'Maps\MapsHooks::onSkinTemplateNavigationUniversal';
+		$hooks['BeforeDisplayNoArticleText'][] = 'Maps\MapsHooks::onBeforeDisplayNoArticleText';
+		$hooks['ShowMissingArticle'][] = 'Maps\MapsHooks::onShowMissingArticle';
+		$hooks['ListDefinedTags'][] = 'Maps\MapsHooks::onRegisterTags';
+		$hooks['ChangeTagsListActive'][] = 'Maps\MapsHooks::onRegisterTags';
+		$hooks['ChangeTagsAllowedAdd'][] = 'Maps\MapsHooks::onChangeTagsAllowedAdd';
 
-		$GLOBALS['wgHooks']['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
+		$hooks['CargoSetFormatClasses'][] = function( array &$formatClasses ) {
 			$formatClasses['map'] = CargoFormat::class;
 		};
-	}
 
+		MapsHooks::registerHookHandlers( $hooks );
+	}
 }
