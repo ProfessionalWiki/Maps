@@ -85,7 +85,7 @@ jobs:
         run: |
           php tests/phpunit/phpunit.php -c extensions/Maps --coverage-clover coverage.xml
           bash <(curl -s https://codecov.io/bash)
-        if: matrix.mw == 'REL1_37'
+        if: matrix.mw == 'REL1_38'
 
 
 #  Psalm:
