@@ -182,7 +182,7 @@ jobs:
       - name: Install MediaWiki
         if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_37 Maps
+        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_39 Maps
 
       - uses: actions/checkout@v2
         with:
@@ -242,7 +242,7 @@ jobs:
       - name: Install MediaWiki
         if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_37 Maps
+        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_39 Maps
 
       - uses: actions/checkout@v2
         with:
