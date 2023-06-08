@@ -176,7 +176,7 @@ final class MapsHooks {
 	}
 
 	public static function registerHookHandlers( array $hooks ): void {
-		if ( defined( 'MW_PHPUNIT_TEST' ) && MediaWikiServices::hasInstance() ) {
+		if ( MediaWikiServices::hasInstance() ) {
 			// When called from a test case's setUp() method,
 			// we can use HookContainer, but we cannot use SettingsBuilder.
 			$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
