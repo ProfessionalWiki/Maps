@@ -242,7 +242,7 @@
 
 				"maps-editor-edit-geojson"
 			],
-			"targets": [ "desktop" ]
+			"targets": [ "desktop", "mobile" ]
 		},
 
 		"ext.maps.googlemaps3": {
