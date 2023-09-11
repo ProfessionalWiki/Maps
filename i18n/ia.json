@@ -79,7 +79,7 @@
 	"maps-displaymap-par-static": "Render le carta static",
 	"maps-displaymap-par-wmsoverlay": "Usar un superposition WMS",
 	"maps-displaymap-par-geojson": "URL de un file o nomine del pagina que contine datos GeoJSON",
-	"maps-fullscreen-button": "Alternar plen schermo",
+	"maps-fullscreen-button": "Commutar plen schermo",
 	"maps-fullscreen-button-tooltip": "Monstrar le carta como plen schermo o incastrate.",
 	"validation-error-invalid-location": "Le parametro $1 debe esser un loco valide.",
 	"validation-error-invalid-locations": "Le parametro $1 debe esser un o plus locos valide.",
