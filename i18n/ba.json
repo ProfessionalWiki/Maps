@@ -3,13 +3,14 @@
 		"authors": [
 			"Haqmar",
 			"Вильданова Гюзель",
+			"З. ӘЙЛЕ",
 			"Ләйсән"
 		]
 	},
-	"maps-leaflet-par-defzoom": "Карталағы күҙәтеүҙе арттырыуҙың кимәлен көйләргә мөмкинлек бирә.",
-	"mapeditor-form-title": "Үҙгәртеү мәғлүмәттәре",
+	"maps-leaflet-par-defzoom": "Программа көйләүе буйынса карта масштабын билдәләү мөмкинлеген бирә.",
+	"mapeditor-form-title": "Мәғлүмәттәрҙе үҙгәртеү",
 	"mapeditor-link-title-switcher-link-text": "Һылтанма",
-	"mapeditor-form-field-title": "Исем",
+	"mapeditor-form-field-title": "Атама",
 	"mapeditor-form-field-text": "Текст",
 	"mapeditor-form-field-link": "Һылтанма",
 	"mapeditor-form-field-group": "Төркөм"
