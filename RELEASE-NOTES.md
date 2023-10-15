@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 10.0.1
+
+Not yet released
+
+* 
+
 ## Maps 10.0.0
 
 Released on October 26th, 2022.
