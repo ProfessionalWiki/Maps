@@ -7,7 +7,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 Not yet released
 
-* 
+* Improved support for MW 1.39
+* Fixes to GeoJSON. Replaced hard deprecated method `Content::fillParserOutput()` and fixed error which occurred in MW 1.39
+* Added config option for GoogleGeocoder API key: `egMapsGoogleGeocodingApiKey`, which defaults to `egMapsGMaps3ApiKey`
+* Updated Basemap.at URLs for Leaflet and Google
+* Fixes for Cargo
+* Updated Composer support
+* Removed usage of `wgHooks` global
 
 ## Maps 10.0.0
 
