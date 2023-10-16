@@ -3,15 +3,15 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 10.0.1
+## Maps 10.1.0
 
-Not yet released
+Released on October 16th, 2023.
 
 * Improved support for MW 1.39
-* Fixes to GeoJSON. Replaced hard deprecated method `Content::fillParserOutput()` and fixed error which occurred in MW 1.39
+* Fixed GeoJSON issue on MW 1.39+ by replacing usage of the deprecated method `Content::fillParserOutput()`
 * Added config option for GoogleGeocoder API key: `egMapsGoogleGeocodingApiKey`, which defaults to `egMapsGMaps3ApiKey`
 * Updated Basemap.at URLs for Leaflet and Google
-* Fixes for Cargo
+* Fixed some Cargo integration issues
 * Updated Composer support
 * Removed usage of `wgHooks` global
 
