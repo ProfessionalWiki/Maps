@@ -32,11 +32,18 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<td>Future version</td>
 	</tr>
 	<tr>
+		<th>10.1.x</th>
+		<td>7.4 - 8.2</td>
+		<td>1.35 - 1.40</td>
+		<td>3.2 - 4.1</td>
+		<td><strong>Stable release</strong></td>
+	</tr>
+	<tr>
 		<th>10.0.x</th>
 		<td>7.4 - 8.2</td>
 		<td>1.35 - 1.39</td>
 		<td>3.2 - 4.0</td>
-		<td><strong>Stable release</strong></td>
+		<td>Obsolete release, no support/td>
 	</tr>
 	<tr>
 		<th>9.0.x</th>
