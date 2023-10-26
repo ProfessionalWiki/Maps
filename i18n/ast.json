@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Macofe",
-			"Xuacu"
+			"Xuacu",
+			"YoaR"
 		]
 	},
 	"maps-desc": "Permite inxertar mapes dinámicos nes páxines wiki, xeocodificación de direiciones y otres operaciones xeográfiques",
@@ -236,8 +237,8 @@
 	"maps-json-editor-edit-failed": "Nun pudo guardase'l mapa",
 	"maps-json-editor-toolbar-save-title": "Guardar los cambios",
 	"maps-json-editor-toolbar-save-text": "Guardar",
-	"maps-json-editor-toolbar-cancel-title": "Encaboxar la edición, descartar tolos cambeos",
-	"maps-json-editor-toolbar-cancel-text": "Encaboxar",
+	"maps-json-editor-toolbar-cancel-title": "Zarrar la edición, descartar tolos cambeos",
+	"maps-json-editor-toolbar-cancel-text": "Zarrar",
 	"maps-json-editor-toolbar-clear-title": "Llimpiar toles capes",
 	"maps-json-editor-toolbar-clear-text": "Llimpiar too",
 	"maps-json-editor-toolbar-button-edit": "Editar capes",
