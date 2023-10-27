@@ -55,11 +55,12 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 			$parserOutput->setText( null );
 		}
 
-		// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
-		// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
-		$text = json_encode( $content->getData()->getValue() );
-
 		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() && $parserOutput->hasText() ) {
+
+			// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
+			// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
+			$text = json_encode( $content->getData()->getValue() );
+
 			MapsFactory::globalInstance()
 				->newSemanticGeoJsonStore( $parserOutput, $cpoParams->getPage() )
 				->storeGeoJson( $text );
