@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @reviewer thomas-topway-it for KM-A
+ */
+
 declare( strict_types = 1 );
 
 namespace Maps\GeoJsonPages;
@@ -34,19 +38,31 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		ParserOutput &$parserOutput
 	) {
 		'@phan-var GeoJsonContent $content';
+		
+		// @see JsonContentHandler -> fillParserOutput
+		if ( $cpoParams->getGenerateHtml() ) {
+			if ( $content->isValid() ) {
+				$text = $content->getData()->getValue();
+				$parserOutput->setText( $content->rootValueTable( $content->getData()->getValue() ) );
+				
+			} else {
+				$error = wfMessage( 'invalid-json-data' )->parse();
+				$parserOutput->setText( $error );
+			}
 
-		if ( !$cpoParams->getGenerateHtml() || !$content->isValid() ) {
-			$parserOutput->setText( '' );
-			return;
+			$parserOutput->addModuleStyles( [ 'mediawiki.content.json' ] );
+		} else {
+			$parserOutput->setText( null );
 		}
 
-		GeoJsonMapPageUi::forExistingPage( $content->beautifyJSON() )
-			->addToOutput( OutputFacade::newFromParserOutput( $parserOutput ) );
+		// @FIXME alternatively decode $this->mText in GeoJsonContentHandler
+		// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
+		$text = json_encode( $content->getData()->getValue() );
 
 		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() && $parserOutput->hasText() ) {
 			MapsFactory::globalInstance()
 				->newSemanticGeoJsonStore( $parserOutput, $cpoParams->getPage() )
-				->storeGeoJson( $parserOutput->getRawText() );
+				->storeGeoJson( $text );
 		}
 	}
 }
