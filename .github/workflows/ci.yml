@@ -72,6 +72,9 @@ jobs:
         with:
           path: mediawiki/extensions/Maps
 
+      - name: Composer allow-plugins
+        run: composer config --no-plugins allow-plugins.composer/installers true
+
       - run: composer update
 
       - name: Run PHPUnit
@@ -82,7 +85,7 @@ jobs:
         run: |
           php tests/phpunit/phpunit.php -c extensions/Maps --coverage-clover coverage.xml
           bash <(curl -s https://codecov.io/bash)
-        if: matrix.mw == 'REL1_37'
+        if: matrix.mw == 'REL1_38'
 
 
 #  Psalm:
@@ -179,7 +182,7 @@ jobs:
       - name: Install MediaWiki
         if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_37 Maps
+        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_39 Maps
 
       - uses: actions/checkout@v2
         with:
@@ -239,7 +242,7 @@ jobs:
       - name: Install MediaWiki
         if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_37 Maps
+        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_39 Maps
 
       - uses: actions/checkout@v2
         with:

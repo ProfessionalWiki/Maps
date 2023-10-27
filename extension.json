@@ -1,6 +1,6 @@
 {
 	"name": "Maps",
-	"version": "10.0.0",
+	"version": "10.1.0",
 
 	"author": [
 		"[https://EntropyWins.wtf/mediawiki Jeroen De Dauw]",
@@ -242,7 +242,7 @@
 
 				"maps-editor-edit-geojson"
 			],
-			"targets": [ "desktop" ]
+			"targets": [ "desktop", "mobile" ]
 		},
 
 		"ext.maps.googlemaps3": {

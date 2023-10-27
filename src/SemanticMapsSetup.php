@@ -24,7 +24,8 @@ class SemanticMapsSetup {
 
 	public function initExtension() {
 		// Hook for initializing the Geographical Data types.
-		$GLOBALS['wgHooks']['SMW::DataType::initTypes'][] = function() {
+		$hooks = [];
+		$hooks['SMW::DataType::initTypes'][] = function() {
 			DataTypeRegistry::getInstance()->registerDatatype(
 				'_geo',
 				CoordinateValue::class,
@@ -35,7 +36,8 @@ class SemanticMapsSetup {
 		};
 
 		// Hook for defining the default query printer for queries that ask for geographical coordinates.
-		$GLOBALS['wgHooks']['SMWResultFormat'][] = 'Maps\MapsHooks::addGeoCoordsDefaultFormat';
+		$hooks['SMWResultFormat'][] = 'Maps\MapsHooks::addGeoCoordsDefaultFormat';
+		MapsHooks::registerHookHandlers( $hooks );
 
 		$this->registerGoogleMaps();
 		$this->registerLeaflet();

@@ -21,7 +21,9 @@ class MapsRegistration {
 			define( 'NS_GEO_JSON_TALK', 421 );
 		}
 
-		$GLOBALS['wgHooks']['SMW::Settings::BeforeInitializationComplete'][] = 'Maps\MapsHooks::addSmwSettings';
+		$hooks = [];
+		$hooks['SMW::Settings::BeforeInitializationComplete'][] = 'Maps\MapsHooks::addSmwSettings';
+		MapsHooks::registerHookHandlers( $hooks );
 
 		$GLOBALS['wgExtensionFunctions'][] = function () {
 			// Only initialize the extension when all dependencies are present.
