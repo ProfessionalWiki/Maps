@@ -38,22 +38,8 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		ParserOutput &$parserOutput
 	) {
 		'@phan-var GeoJsonContent $content';
-		
-		// @see JsonContentHandler -> fillParserOutput
-		if ( $cpoParams->getGenerateHtml() ) {
-			if ( $content->isValid() ) {
-				$text = $content->getData()->getValue();
-				$parserOutput->setText( $content->rootValueTable( $content->getData()->getValue() ) );
-				
-			} else {
-				$error = wfMessage( 'invalid-json-data' )->parse();
-				$parserOutput->setText( $error );
-			}
 
-			$parserOutput->addModuleStyles( [ 'mediawiki.content.json' ] );
-		} else {
-			$parserOutput->setText( null );
-		}
+		parent::fillParserOutput( $content, $cpoParams, $parserOutput );
 
 		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() && $parserOutput->hasText() ) {
 
