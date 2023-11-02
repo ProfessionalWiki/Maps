@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AmaryllisGardener",
+			"CiphriusKane",
 			"John Reid",
 			"MJL"
 		]
@@ -10,7 +11,7 @@
 	"maps-layerpage-usage": "Pages wi cairts uisin layer \"$1\"",
 	"maps-displaymap-par-visitedicon": "The filename o aen eemage tae be uised fer maurker icons efter the oreeginal maurkers hae been clap't",
 	"maps-json-editor-toolbar-save-text": "Duin",
-	"maps-json-editor-toolbar-clear-text": "Delyte Aw",
+	"maps-json-editor-toolbar-clear-text": "Delete Aw",
 	"maps-json-editor-toolbar-button-save": "Save cheenges",
 	"maps-json-editor-changes-saved": "Yer chynges hae buin hain'd"
 }
