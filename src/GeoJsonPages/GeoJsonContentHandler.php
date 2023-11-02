@@ -40,8 +40,11 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		'@phan-var GeoJsonContent $content';
 
 		parent::fillParserOutput( $content, $cpoParams, $parserOutput );
-
-		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() && $parserOutput->hasText() ) {
+		
+		if ( $cpoParams->getGenerateHtml()
+			&& $content->isValid()
+			&& MapsFactory::globalInstance()->smwIntegrationIsEnabled()
+			&& $parserOutput->hasText() ) {
 
 			// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
 			// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
