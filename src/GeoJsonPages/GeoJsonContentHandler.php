@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @reviewer thomas-topway-it for KM-A
- */
-
 declare( strict_types = 1 );
 
 namespace Maps\GeoJsonPages;
