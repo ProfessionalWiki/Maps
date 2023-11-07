@@ -35,18 +35,20 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 	) {
 		'@phan-var GeoJsonContent $content';
 
-		if ( !$cpoParams->getGenerateHtml() || !$content->isValid() ) {
-			$parserOutput->setText( '' );
-			return;
-		}
+		parent::fillParserOutput( $content, $cpoParams, $parserOutput );
+		
+		if ( $cpoParams->getGenerateHtml()
+			&& $content->isValid()
+			&& MapsFactory::globalInstance()->smwIntegrationIsEnabled()
+			&& $parserOutput->hasText() ) {
 
-		GeoJsonMapPageUi::forExistingPage( $content->beautifyJSON() )
-			->addToOutput( OutputFacade::newFromParserOutput( $parserOutput ) );
+			// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
+			// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
+			$text = json_encode( $content->getData()->getValue() );
 
-		if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() && $parserOutput->hasText() ) {
 			MapsFactory::globalInstance()
 				->newSemanticGeoJsonStore( $parserOutput, $cpoParams->getPage() )
-				->storeGeoJson( $parserOutput->getRawText() );
+				->storeGeoJson( $text );
 		}
 	}
 }
