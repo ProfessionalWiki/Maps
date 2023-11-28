@@ -27,7 +27,7 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 	<tr>
 		<th>11.0.x</th>
 		<td><strong>8.0</strong> - 8.2</td>
-		<td><strong>1.38</strong> - 1.40</td>
+		<td><strong>1.39</strong> - 1.40</td>
 		<td>4.x</td>
 		<td>Future version</td>
 	</tr>
