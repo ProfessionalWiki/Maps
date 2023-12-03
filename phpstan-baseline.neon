@@ -16,6 +16,11 @@ parameters:
 			path: src/MapsHooks.php
 
 		-
+			message: "#^Call to an undefined static method MediaWiki\\\\Settings\\\\SettingsBuilder\\:\\:getInstance\\(\\)\\.$#"
+			count: 1
+			path: src/MapsHooks.php
+
+		-
 			message: "#^Call to static method newFromExternalLink\\(\\) on an unknown class AlItem\\.$#"
 			count: 1
 			path: src/MapsHooks.php
