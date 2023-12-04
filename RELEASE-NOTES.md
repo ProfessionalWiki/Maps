@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 10.1.1
 
-Not released yet
+Released on December 4th, 2023.
 
 * Fixed errors occurring on GeoJSON pages on MediaWiki 1.39 and above
 
