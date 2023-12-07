@@ -9,6 +9,7 @@
 			"IvanLanin",
 			"Macofe",
 			"RXerself",
+			"Veracious",
 			"පසිඳු කාවින්ද"
 		]
 	},
@@ -25,7 +26,7 @@
 	"maps-ns-layer-talk": "Pembicaraan lapisan",
 	"maps-layer-property": "Atribut",
 	"maps-layer-value": "Nilai",
-	"maps-layer-errors": "Kesalahan",
+	"maps-layer-errors": "Galat-galat",
 	"maps-layerdef-invalid": "{{PLURAL:$1|Definisi}} tidak sah",
 	"maps-layerdef-invalid-fatal": "Definisi tidak sah yang fatal",
 	"maps-layerdef-wrong-namespace": "Definisi lapis hanya sah di halaman dengan ruang nama \"$1\"",
@@ -110,6 +111,7 @@
 	"maps-googlemaps3-par-zoomstyle": "Gaya kontrol pembesaran.",
 	"maps-googlemaps3-par-typestyle": "Gaya jenis kontrol.",
 	"maps-googlemaps3-par-autoinfowindows": "Otomatis membuka semua jendela info setelah halaman dimuat.",
+	"maps-googlemaps3-par-poi": "Tunjukkan tempat-tempat menarik.",
 	"mapeditor": "Penyunting peta",
 	"mapeditor-none-text": "Tidak ada",
 	"mapeditor-done-button": "Selesai",
