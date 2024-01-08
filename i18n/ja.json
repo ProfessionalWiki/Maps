@@ -166,5 +166,6 @@
 	"validator-type-mapslocation-list": "位置の一覧",
 	"validator-type-mapspolygon": "地図ポリゴン",
 	"validator-type-mapspolygon-list": "地図ポリゴンの一覧",
+	"maps-json-editor-toolbar-cancel-text": "キャンセル",
 	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps 地図拡張機能]提供によるビジュアルなエディタを使用した編集"
 }
