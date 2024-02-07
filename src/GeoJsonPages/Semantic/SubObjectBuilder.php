@@ -22,7 +22,7 @@ class SubObjectBuilder {
 		try {
 			$geoJson = GeoJson::jsonUnserialize( $json );
 		}
-		catch ( UnserializationException ) {
+		catch ( UnserializationException $e ) {
 			// TODO: log warning
 			return [];
 		}
