@@ -170,7 +170,7 @@
 	"mapeditor-mapparam-button": "編輯地圖參數",
 	"mapeditor-clear-button": "清空地圖",
 	"mapeditor-code-title": "wiki 代碼",
-	"mapeditor-import-title": "匯入 Wiki 代碼",
+	"mapeditor-import-title": "匯入 wiki 代碼",
 	"mapeditor-import-note": "請注意，解析器在 wiki 代碼裡會要求相當嚴格的格式。在此輸入的代碼應要符合透過解析器功能輸出的代碼內容。",
 	"mapeditor-form-title": "編輯詳細資料",
 	"mapeditor-link-title-switcher-popup-text": "顯示文字訊息",

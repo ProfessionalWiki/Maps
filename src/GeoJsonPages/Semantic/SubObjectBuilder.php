@@ -4,10 +4,10 @@ declare( strict_types = 1 );
 
 namespace Maps\GeoJsonPages\Semantic;
 
+use GeoJson\Exception\UnserializationException;
 use GeoJson\Feature\FeatureCollection;
 use GeoJson\GeoJson;
 use GeoJson\Geometry\Point;
-use Title;
 
 class SubObjectBuilder {
 
@@ -18,7 +18,14 @@ class SubObjectBuilder {
 	 */
 	public function getSubObjectsFromGeoJson( string $jsonString ) {
 		$json = json_decode( $jsonString );
-		$geoJson = GeoJson::jsonUnserialize( $json );
+
+		try {
+			$geoJson = GeoJson::jsonUnserialize( $json );
+		}
+		catch ( UnserializationException $e ) {
+			// TODO: log warning
+			return [];
+		}
 
 		return iterator_to_array( $this->featureCollectionToSubObjects( $geoJson ) );
 	}

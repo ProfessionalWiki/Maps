@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Cedric31",
+			"Lhanars",
 			"Macofe"
 		]
 	},
@@ -29,7 +30,7 @@
 	"maps-abb-south": "S",
 	"maps-abb-west": "O",
 	"maps-latitude": "Latitud :",
-	"maps-longitude": "Longitud :",
+	"maps-longitude": "Longitud:",
 	"maps_coordinates_missing": "Cap de coordenada es pas estada provesida pel plan.",
 	"maps_geocoding_failed": "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} : $1.\nLo plan pòt pas èsser afichat.",
 	"maps_geocoding_failed_for": "{{PLURAL:$2|L'adreça seguenta a pas pogut èsser geoencodada|Las adreças seguentas an pas pogut èsser geoencodadas}} e {{PLURAL:$2|es pas afichada|son pas afichadas}} sul plan : $1",
@@ -56,6 +57,8 @@
 	"mapeditor-form-field-strokecolor": "Color de trait",
 	"mapeditor-form-field-strokeopacity": "Opacitat del trait",
 	"mapeditor-form-field-strokeweight": "Grossor de trait",
+	"mapeditor-form-field-fillcolor": "Color d'empliment",
+	"mapeditor-form-field-fillopcaity": "Opacitat d'empliment",
 	"mapeditor-form-field-image": "Imatge",
 	"semanticmaps-unrecognizeddistance": "La valor $1 es pas una distància valida",
 	"semanticmaps-kml-link": "Veire lo fichièr KML",
