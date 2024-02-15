@@ -5,7 +5,6 @@ declare( strict_types = 1 );
 namespace Maps\GeoJsonPages;
 
 use Content;
-use FormatJson;
 use Maps\MapsFactory;
 use Maps\Presentation\OutputFacade;
 use MediaWiki\Content\Renderer\ContentParseParams;
@@ -24,11 +23,6 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 	public function makeEmptyContent(): GeoJsonContent {
 		$class = $this->getContentClass();
 		return new $class( $class::newEmptyContentString() );
-	}
-	
-	public static function newEmptyContentString(): string {
-		$text = '{"type": "FeatureCollection", "features": []}';
-		return FormatJson::encode( FormatJson::parse( $text )->getValue(), true, FormatJson::UTF8_OK );
 	}
 
 	/**
