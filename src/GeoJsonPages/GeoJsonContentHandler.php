@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\GeoJsonPages;
 
 use Content;
+use FormatJson;
 use Maps\MapsFactory;
 use Maps\Presentation\OutputFacade;
 use MediaWiki\Content\Renderer\ContentParseParams;
@@ -24,6 +25,11 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		$class = $this->getContentClass();
 		return new $class( $class::newEmptyContentString() );
 	}
+	
+	public static function newEmptyContentString(): string {
+		$text = '{"type": "FeatureCollection", "features": []}';
+		return FormatJson::encode( FormatJson::parse( $text )->getValue(), true, FormatJson::UTF8_OK );
+	}
 
 	/**
 	 * @inheritdoc
@@ -34,13 +40,14 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		ParserOutput &$parserOutput
 	) {
 		'@phan-var GeoJsonContent $content';
+		// this method won't be called below MW_VERSION 1.38
 
-		parent::fillParserOutput( $content, $cpoParams, $parserOutput );
-		
 		if ( $cpoParams->getGenerateHtml()
 			&& $content->isValid()
-			&& MapsFactory::globalInstance()->smwIntegrationIsEnabled()
-			&& $parserOutput->hasText() ) {
+			&& MapsFactory::globalInstance()->smwIntegrationIsEnabled() ) {
+
+			( GeoJsonMapPageUi::forExistingPage( GeoJsonContent::formatJson( $content->getData()->getValue() ) ) )
+				->addToOutput( OutputFacade::newFromParserOutput( $parserOutput ) );
 
 			// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
 			// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
@@ -49,6 +56,9 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 			MapsFactory::globalInstance()
 				->newSemanticGeoJsonStore( $parserOutput, $cpoParams->getPage() )
 				->storeGeoJson( $text );
+
+		} else {
+			parent::fillParserOutput( $content, $cpoParams, $parserOutput );
 		}
 	}
 }
