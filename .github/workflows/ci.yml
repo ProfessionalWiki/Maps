@@ -45,7 +45,7 @@ jobs:
 
       - name: Cache MediaWiki
         id: cache-mediawiki
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             mediawiki
@@ -54,12 +54,12 @@ jobs:
           key: mw_${{ matrix.mw }}-php${{ matrix.php }}-v21
 
       - name: Cache Composer cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache
           key: composer-php${{ matrix.php }}
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: EarlyCopy
 
@@ -68,7 +68,7 @@ jobs:
         working-directory: ~
         run: bash EarlyCopy/.github/workflows/installMediaWiki.sh ${{ matrix.mw }} Maps
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: mediawiki/extensions/Maps
 
@@ -161,7 +161,7 @@ jobs:
 
       - name: Cache MediaWiki
         id: cache-mediawiki
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             mediawiki
@@ -170,12 +170,12 @@ jobs:
           key: mw_phpstan
 
       - name: Cache Composer cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache
           key: composer_static_analysis
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: EarlyCopy
 
@@ -184,7 +184,7 @@ jobs:
         working-directory: ~
         run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_39 Maps
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: mediawiki/extensions/Maps
 
@@ -221,7 +221,7 @@ jobs:
 
       - name: Cache MediaWiki
         id: cache-mediawiki
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             mediawiki
@@ -230,12 +230,12 @@ jobs:
           key: mw_static_analysis
 
       - name: Cache Composer cache
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache
           key: composer_static_analysis
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: EarlyCopy
 
@@ -244,7 +244,7 @@ jobs:
         working-directory: ~
         run: bash EarlyCopy/.github/workflows/installMediaWiki.sh REL1_39 Maps
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           path: mediawiki/extensions/Maps
 
