@@ -3,6 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 10.1.2
+
+Released on February 21st, 2024.
+
+* Fixed PHP 7.4 compatibility issue in the GeoJSON content model's integration with Semantic MediaWiki
+
 ## Maps 10.1.1
 
 Released on December 4th, 2023.
