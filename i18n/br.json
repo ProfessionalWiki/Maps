@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adriendelucca",
 			"Fohanno",
 			"Fulup",
 			"Macofe",
@@ -120,5 +121,16 @@
 	"validator-type-mapslocation-list": "Roll lec'hiadurioù",
 	"validator-type-mapsrectangle": "Higarrezenn zouaroniel",
 	"validator-type-mapsrectangle-list": "Roll hirgarrezennoù",
+	"maps-json-editor-button-line": "Tresañ ul linenn",
+	"maps-json-editor-button-polygon": "Tresañ ul lieskorn",
+	"maps-json-editor-button-rectangle": "Tresañ ur skouergorneg",
+	"maps-json-editor-toolbar-save-text": "Graet",
+	"maps-json-editor-toolbar-cancel-text": "Nullañ",
+	"maps-json-editor-toolbar-clear-text": "Diverkañ pep tra",
+	"maps-json-editor-toolbar-button-save": "Enrollañ ar c'hemmoù",
+	"maps-json-editor-changes-saved": "Enrollet eo bet ho kemmoù",
+	"maps-geo-json-edit-source": "Kemmañ ar vammenn",
+	"maps-geo-json-create-page-button": "Krouiñ ar bajenn-mañ",
+	"maps-geo-json-create-page-creating": "O krouiñ ar bajenn...",
 	"tag-maps-visual-edit-description": "Kemm graet gant an aozer gweled pourvezet gant [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension]"
 }
