@@ -468,7 +468,13 @@ class QueryHandler {
 	}
 
 	private function getParser(): \Parser {
-		return MediaWikiServices::getInstance()->getParser();
+		$user = \RequestContext::getMain()->getUser();
+		$parser = MediaWikiServices::getInstance()->getParser();
+		if ( !$parser->getOptions() ) {
+			$parser->setOptions( new \ParserOptions( $user ) );
+		}
+		$parser->clearState();
+		return $parser;
 	}
 
 	/**
