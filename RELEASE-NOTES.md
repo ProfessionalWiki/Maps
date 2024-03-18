@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 10.2.0
+
+Release TBD
+
+* Added additional Leaflet layer options by updating the Leaflet Providers library
+* Fixed compatibility with VisualEditor on MediaWiki 1.39 and above 
+
 ## Maps 10.1.2
 
 Released on February 21st, 2024.
