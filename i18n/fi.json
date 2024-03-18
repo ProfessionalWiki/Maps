@@ -156,7 +156,7 @@
 	"validator-type-mapslocation": "Maantieteellinen sijainti",
 	"validator-type-mapslocation-list": "Luettelo sijainneista",
 	"maps-json-editor-button-line": "Piirrä viiva",
-	"maps-json-editor-toolbar-save-title": "Tallenna muutokset",
+	"maps-json-editor-toolbar-save-title": "Poistu muokkaustilasta ja säilytä kaikki muutokset",
 	"maps-json-editor-toolbar-save-text": "Valmis",
 	"maps-json-editor-toolbar-cancel-text": "Peruuta",
 	"maps-json-editor-toolbar-clear-text": "Poista kaikki",
