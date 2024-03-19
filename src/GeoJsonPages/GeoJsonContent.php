@@ -13,7 +13,7 @@ class GeoJsonContent extends \JsonContent {
 
 	public static function newEmptyContentString(): string {
 		$text = '{"type": "FeatureCollection", "features": []}';
-		return self::formatJson( FormatJson::parse( $value )->getValue() );
+		return self::formatJson( FormatJson::parse( $text )->getValue() );
 	}
 
 	public static function formatJson( $value ): string {
