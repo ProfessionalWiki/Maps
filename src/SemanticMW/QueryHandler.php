@@ -468,12 +468,12 @@ class QueryHandler {
 	}
 
 	private function getParser(): \Parser {
-		$user = \RequestContext::getMain()->getUser();
 		$parser = MediaWikiServices::getInstance()->getParser();
 		if ( !$parser->getOptions() ) {
+			$user = \RequestContext::getMain()->getUser();
 			$parser->setOptions( new \ParserOptions( $user ) );
+			$parser->clearState();
 		}
-		$parser->clearState();
 		return $parser;
 	}
 
