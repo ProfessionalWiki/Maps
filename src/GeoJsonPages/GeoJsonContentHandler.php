@@ -34,21 +34,26 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 		ParserOutput &$parserOutput
 	) {
 		'@phan-var GeoJsonContent $content';
+		// this method won't be called below MW_VERSION 1.38
 
-		parent::fillParserOutput( $content, $cpoParams, $parserOutput );
-		
-		if ( $cpoParams->getGenerateHtml()
-			&& $content->isValid()
-			&& MapsFactory::globalInstance()->smwIntegrationIsEnabled()
-			&& $parserOutput->hasText() ) {
+		if ( $cpoParams->getGenerateHtml() && $content->isValid() ) {
 
-			// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
-			// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
-			$text = json_encode( $content->getData()->getValue() );
+			// display map
+			( GeoJsonMapPageUi::forExistingPage( GeoJsonContent::formatJson( $content->getData()->getValue() ) ) )
+				->addToOutput( OutputFacade::newFromParserOutput( $parserOutput ) );
 
-			MapsFactory::globalInstance()
-				->newSemanticGeoJsonStore( $parserOutput, $cpoParams->getPage() )
-				->storeGeoJson( $text );
+			if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() ) {
+				// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
+				// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
+				$text = json_encode( $content->getData()->getValue() );
+
+				MapsFactory::globalInstance()
+					->newSemanticGeoJsonStore( $parserOutput, $cpoParams->getPage() )
+					->storeGeoJson( $text );
+			}
+
+		} else {
+			parent::fillParserOutput( $content, $cpoParams, $parserOutput );
 		}
 	}
 }
