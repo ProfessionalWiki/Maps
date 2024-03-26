@@ -42,7 +42,7 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 			( GeoJsonMapPageUi::forExistingPage( GeoJsonContent::formatJson( $content->getData()->getValue() ) ) )
 				->addToOutput( OutputFacade::newFromParserOutput( $parserOutput ) );
 
-			if (  MapsFactory::globalInstance()->smwIntegrationIsEnabled() ) {
+			if ( MapsFactory::globalInstance()->smwIntegrationIsEnabled() ) {
 				// @FIXME alternatively decode $this->mText in GeoJsonLegacyContent
 				// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
 				$text = json_encode( $content->getData()->getValue() );
