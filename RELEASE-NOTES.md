@@ -5,10 +5,11 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 10.2.0
 
-Release TBD
+Released on May 13th, 2024.
 
 * Added additional Leaflet layer options by updating the Leaflet Providers library
-* Fixed compatibility with VisualEditor on MediaWiki 1.39 and above 
+* Fixed compatibility with VisualEditor on MediaWiki 1.39 and above
+* Fixed display of GeoJSON pages on MediaWiki 1.39 and above
 
 ## Maps 10.1.2
 
