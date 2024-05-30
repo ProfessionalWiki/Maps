@@ -270,7 +270,7 @@
 	"maps-json-editor-changes-saved": "您的更改已经保存",
 	"maps-geo-json-edit-source": "编辑源代码",
 	"maps-geo-json-create-source": "从GeoJSON源代码创建",
-	"maps-geo-json-create-page-button": "创建此页面",
+	"maps-geo-json-create-page-button": "创建该页面",
 	"maps-geo-json-create-page-creating": "正在创建页面...",
 	"maps-geo-json-create-page-summary": "创建GeoJSON页面",
 	"maps-editor-edit-geojson": "编辑GeoJSON图层",
