@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Исмаил Садуев",
 			"Умар"
 		]
 	},
 	"maps-others": "кхийерг",
-	"maps-ns-layer-talk": "ГӀатан дийцар",
+	"maps-ns-layer-talk": "Чкъор дийцар",
 	"maps-layer-property": "Билгало",
 	"maps-layer-value": "МаьӀна",
 	"maps-layerdef-invalid": "{{PLURAL:$1|Ца магийна билгалдакхар|Ца магийна билгалдакхарш}}",
@@ -21,12 +22,12 @@
 	"mapeditor-done-button": "Кийчча йу",
 	"mapeditor-export-button": "Экспорт йан викийоза санна",
 	"mapeditor-import-button": "Импорт йан викийозанах",
-	"mapeditor-mapparam-button": "Картан параметраш нисйе",
+	"mapeditor-mapparam-button": "Картин параметраш нисйан",
 	"mapeditor-clear-button": "ЦӀанде карта",
 	"mapeditor-link-title-switcher-link-text": "Хьажорг",
 	"mapeditor-form-field-title": "ЦӀе",
 	"mapeditor-form-field-link": "Хьажорг",
-	"mapeditor-mapparam-title": "Картан параметраш нисйе",
+	"mapeditor-mapparam-title": "Картин параметраш нисйан",
 	"mapeditor-imageoverlay-button": "ТӀетоха сурт тӀе диллар",
 	"mapeditor-form-field-image": "Сурт",
 	"mapeditor-imageoverlay-title": "Сурт",
