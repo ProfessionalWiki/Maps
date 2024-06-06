@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			555,
 			"Cainamarques",
 			"Eduardo Addad de Oliveira",
 			"Eduardo.mps",
@@ -10,8 +11,7 @@
 			"Jaideraf",
 			"Luckas",
 			"Luckas Blade",
-			"Macofe",
-			555
+			"Macofe"
 		]
 	},
 	"maps-desc": "Permite incorporar mapas dinâmicos nas páginas da wiki usando o Google Maps ou o Leaflet.  Possui um editor visual, que se integra opcionalmente ao Semantic MediaWiki, suporta GeoJSON e adiciona recursos de geocodificação.",
