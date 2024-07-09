@@ -6,15 +6,19 @@ namespace Maps\Map\CargoFormat;
 
 use CargoDisplayFormat;
 use Maps\MapsFactory;
+use Parser;
+use ParserOutput;
 
 class CargoFormat extends CargoDisplayFormat {
 
-	/** @var Parser|null */
-	private $parserOutput;
+	/**
+	 * @var $parser Parser|ParserOutput|null
+	 */
+	private $parser;
 
-	public function __construct( $output, $parserOutput = null ) {
-		parent::__construct( $output, $parserOutput );
-		$this->parserOutput = $parserOutput;
+	public function __construct( $output, $parser = null ) {
+		parent::__construct( $output, $parser );
+		$this->parser = $parser;
 	}
 
 	public static function allowedParameters() {
@@ -34,12 +38,20 @@ class CargoFormat extends CargoDisplayFormat {
 			$displayParams
 		);
 
-		if ( $this->parserOutput ) {
-			$this->parserOutput->addHeadItem( $mapOutput->getHeadItems() );
-			$this->parserOutput->addModules( $mapOutput->getResourceModules() );
+		if ( $this->parser !== null ) {
+			$this->getParserOutput()->addHeadItem( $mapOutput->getHeadItems() );
+			$this->getParserOutput()->addModules( $mapOutput->getResourceModules() );
 		}
 
 		return $mapOutput->getHtml();
+	}
+
+	private function getParserOutput(): ParserOutput {
+		if ( $this->parser instanceof Parser ) {
+			return $this->parser->getOutput();
+		}
+
+		return $this->parser;
 	}
 
 	private function getResultBuilder(): CargoOutputBuilder {
