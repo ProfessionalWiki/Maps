@@ -121,7 +121,7 @@
 	"maps-leaflet-par-defzoom": "Haritanın varsayılan yakınlaştırma düzeyini ayarlamaya olanak sağlar.",
 	"maps-leaflet-par-layers": "Katman seçicide kullanılabilecek katmanlar. Harita yüklendiğinde ilk katman gösterilir.",
 	"maps-leaflet-par-image-layers": "Görüntü tabanı katmanları. İlk katman varsayılan olarak gösterilecektir. Herhangi bir görüntü belirtilirse, bunlar normal harita katmanları yerine kullanılır.",
-	"maps-leaflet-par-layers-dark": "Karanlık mod etkinleştirildiğinde katman seçicide kullanılabilecek katmanlar. Harita yüklendiğinde ilk katman gösterilir.",
+	"maps-leaflet-par-layers-dark": "Koyu kip etkinleştirildiğinde katman seçicide kullanılabilecek katmanlar. Harita yüklendiğinde ilk katman gösterilir.",
 	"maps-leaflet-par-overlaylayers": "Harita yüklendiğinde gösterilecek katman katmanları.",
 	"maps-leaflet-par-maxclusterradius": "Bir kümenin merkezi işaretleyiciden kapsadığı maksimum yarıçap (piksel cinsinden).",
 	"maps-leaflet-par-clusterspiderfy": "Alttaki yakınlaştırma düzeyinde bir kümeyi tıklattığınızda, tüm işaretleyicilerini görebilmeniz için örümcek ağı oluruz.",
