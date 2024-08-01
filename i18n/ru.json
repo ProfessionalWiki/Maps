@@ -33,6 +33,7 @@
 			"Smigles",
 			"Stjn",
 			"Vlad5250",
+			"Yurina Tatiana",
 			"Yuriy Apostol",
 			"Александр Сигачёв",
 			"Туллук"
@@ -276,6 +277,8 @@
 	"maps-json-editor-toolbar-button-edit-disabled": "Нет маркеров или фигур для изменения",
 	"maps-json-editor-toolbar-button-remove": "Войти в режим удаления",
 	"maps-json-editor-toolbar-button-remove-disabled": "Нет маркеров или фигур для удаления",
+	"maps-json-editor-toolbar-button-save": "Сохранить изменения",
+	"maps-json-editor-changes-saved": "Ваши изменения были сохранены",
 	"maps-geo-json-edit-source": "Править код",
 	"maps-geo-json-create-source": "Создать исходный код GeoJSON",
 	"maps-geo-json-create-page-button": "Создать эту страницу",
