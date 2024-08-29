@@ -5,12 +5,13 @@
 			"Dinhxuanduyet",
 			"Macofe",
 			"Minh Nguyen",
+			"NguyenHung",
 			"Nhatminh01",
 			"Vinhtantran",
 			"Withoutaname"
 		]
 	},
-	"maps-desc": "Cung cấp khả năng nhúng bản đồ động vào trang wiki, mã hóa địa lý các địa chỉ, và thực hiện các tác vụ địa lý khác",
+	"maps-desc": "Cho phép khả năng nhúng bản đồ động vào trang wiki, sử dụng Google Maps hoặc Leaflet. Có một trình vẽ trực quan, tùy chọn tích hợp với MediaWiki Ngữ nghĩa, hỗ trợ GeoJSON và thêm khả năng mã hóa địa lý.",
 	"maps_map": "Bản đồ",
 	"maps-loading-map": "Đang tải bản đồ…",
 	"maps-load-failed": "Không thể tải bản đồ!",
