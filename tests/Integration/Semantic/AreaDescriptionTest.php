@@ -50,7 +50,7 @@ class AreaDescriptionTest extends TestCase {
 		$this->assertSame(
 			'geo_table.lat_field < \'0.089932160591873\' AND geo_table.lat_field > \'-0.089932160591873\' '
 			. 'AND geo_table.long_field < \'5.0899321605919\' AND geo_table.long_field > \'4.9100678394081\'',
-			$area->getSQLCondition( 'geo_table', [ 'id_field', 'lat_field', 'long_field' ], wfGetDB( DB_MASTER ) )
+			$area->getSQLCondition( 'geo_table', [ 'id_field', 'lat_field', 'long_field' ], wfGetDB( DB_PRIMARY ) )
 		);
 	}
 
@@ -62,7 +62,7 @@ class AreaDescriptionTest extends TestCase {
 		);
 
 		$this->assertFalse(
-			$area->getSQLCondition( 'geo_table', [ 'id_field', 'lat_field', 'long_field' ], wfGetDB( DB_MASTER ) )
+			$area->getSQLCondition( 'geo_table', [ 'id_field', 'lat_field', 'long_field' ], wfGetDB( DB_PRIMARY ) )
 		);
 	}
 
