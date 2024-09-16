@@ -307,6 +307,20 @@
 			"targets": [ "desktop", "mobile" ]
 		},
 
+		"ext.maps.mylocation": {
+			"dependencies": [
+				"ext.maps.googlemaps3",
+				"ext.sm.common"
+			],
+			"scripts": [
+				"GoogleMaps/mylocation.js"
+			],
+			"styles": [
+				"GoogleMaps/mylocation.css"
+			],
+			"targets": [ "desktop", "mobile" ]
+		},
+
 		"ext.maps.wikitext.editor": {
 			"dependencies": [
 				"jquery.ui",

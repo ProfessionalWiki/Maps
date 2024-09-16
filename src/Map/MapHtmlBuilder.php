@@ -18,7 +18,21 @@ class MapHtmlBuilder {
 			$json['width'] = (string)$json['width'] . 'px';
 		}
 
-		return Html::rawElement(
+		return
+			Html::rawElement(
+				'label',
+				[],
+				Html::element(
+					'input',
+					[
+						'id' => 'mylocation',
+						'type' => 'checkbox',
+						'autocomplete' => 'off'
+					],
+					''
+				) . ' My Location'
+			)
+			. Html::rawElement(
 			'div',
 			[
 				'id' => $mapId,
