@@ -27,7 +27,7 @@ function MyLocationControl( map ) {
 	controlUI.appendChild(controlText);
 
 	google.maps.event.addDomListener( controlUI, 'click', function() {
-		var mapDiv = $( map.getDiv() );
+		let mapDiv = $( map.getDiv() );
 
 		if ( mapDiv.data( 'followMyLocation' ) != null ) {
 			mapDiv.removeData( 'followMyLocation' );
@@ -49,19 +49,18 @@ function handleLocationError( browserHasGeolocation, pos ) {
 }
 
 function drawMyLocation( position, map ) {
-	var pos = {
+	let pos = {
 		lat: position.coords.latitude,
 		lng: position.coords.longitude
 	};
+	let radius = position.coords.accuracy * 0.5;
 
 	// Center the map on the user's location
 	map.setCenter( pos );
 
-	var mapDiv = $( map.getDiv() );
+	let mapDiv = $( map.getDiv() );
 
 	if ( typeof mapDiv.data( 'myLocationMarker' ) === 'undefined' ) {
-		let radius = position.coords.accuracy * 0.5;
-
 		// Add a circle at the user's location
 		let myLocationMarker = new google.maps.Circle( {
 			strokeColor: "#0000FF",
@@ -76,7 +75,9 @@ function drawMyLocation( position, map ) {
 
 		mapDiv.data( 'myLocationMarker', myLocationMarker );
 	} else {
+		// Update circle position and radius
 		mapDiv.data( 'myLocationMarker' ).position = pos;
+		mapDiv.data( 'myLocationMarker' ).setRadius( radius );
 	}
 }
 
@@ -87,7 +88,7 @@ function activateMyLocation( map ) {
 	if ( navigator.geolocation ) {
 		let myLocationWatchId = navigator.geolocation.watchPosition(
 			function( position ) {
-				drawMyLocation( position, map )
+				drawMyLocation( position, map );
 			},
 			// Error handling
 			function() {
