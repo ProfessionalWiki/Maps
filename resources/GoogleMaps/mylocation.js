@@ -76,7 +76,7 @@ function drawMyLocation( position, map ) {
 		mapDiv.data( 'myLocationMarker', myLocationMarker );
 	} else {
 		// Update circle position and radius
-		mapDiv.data( 'myLocationMarker' ).position = pos;
+		mapDiv.data( 'myLocationMarker' ).setCenter( pos );
 		mapDiv.data( 'myLocationMarker' ).setRadius( radius );
 	}
 }
