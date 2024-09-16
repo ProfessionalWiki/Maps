@@ -55,9 +55,6 @@ function drawMyLocation( position, map ) {
 	};
 	let radius = position.coords.accuracy * 0.5;
 
-	// Center the map on the user's location
-	map.setCenter( pos );
-
 	let mapDiv = $( map.getDiv() );
 
 	if ( typeof mapDiv.data( 'myLocationMarker' ) === 'undefined' ) {
@@ -72,6 +69,9 @@ function drawMyLocation( position, map ) {
 			center: pos,
 			radius: radius,
 		} );
+
+		// Center the map on the user's location
+		map.setCenter( pos );
 
 		mapDiv.data( 'myLocationMarker', myLocationMarker );
 	} else {
