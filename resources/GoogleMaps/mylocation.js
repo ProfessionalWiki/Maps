@@ -1,13 +1,3 @@
-let markerElement;
-
-(function( $ ) {
-	$( document ).ready( async function() {
-		// Request needed libraries.
-		const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-		markerElement = AdvancedMarkerElement;
-	} );
-})( window.jQuery );
-
 // Control for toggling the user location function
 function MyLocationControl( map ) {
 	var controlDiv = document.createElement('div');
@@ -24,7 +14,7 @@ function MyLocationControl( map ) {
 	controlUI.style.textAlign = 'center';
 	controlUI.style.boxShadow = 'rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px';
 	controlUI.style.backgroundClip = 'padding-box';
-	controlUI.title = mw.msg('maps-fullscreen-button-tooltip');
+	controlUI.title = mw.msg('maps-fullscreen-button-tooltip'); // TODO
 	controlDiv.appendChild(controlUI);
 
 	var controlText = document.createElement('div');
@@ -50,7 +40,6 @@ function MyLocationControl( map ) {
 
 	return controlDiv;
 }
-
 window.MyLocationControl = MyLocationControl;
 
 function handleLocationError( browserHasGeolocation, pos ) {
@@ -71,16 +60,20 @@ function drawMyLocation( position, map ) {
 	var mapDiv = $( map.getDiv() );
 
 	if ( typeof mapDiv.data( 'myLocationMarker' ) === 'undefined' ) {
-		// Add a marker at the user's location
-		const locationMarkerEl = document.createElement( 'div' );
-		locationMarkerEl.className = 'my-location-marker';
+		let radius = position.coords.accuracy * 0.5;
 
-		// TODO: Radius based on accuracy
-		let myLocationMarker = new markerElement( {
+		// Add a circle at the user's location
+		let myLocationMarker = new google.maps.Circle( {
+			strokeColor: "#0000FF",
+			strokeOpacity: 0.5,
+			strokeWeight: 2,
+			fillColor: "#0000FF",
+			fillOpacity: 0.35,
 			map,
-			position: pos,
-			content: locationMarkerEl,
+			center: pos,
+			radius: radius,
 		} );
+
 		mapDiv.data( 'myLocationMarker', myLocationMarker );
 	} else {
 		mapDiv.data( 'myLocationMarker' ).position = pos;

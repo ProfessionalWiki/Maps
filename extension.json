@@ -315,9 +315,6 @@
 			"scripts": [
 				"GoogleMaps/mylocation.js"
 			],
-			"styles": [
-				"GoogleMaps/mylocation.css"
-			],
 			"targets": [ "desktop", "mobile" ]
 		},
 
