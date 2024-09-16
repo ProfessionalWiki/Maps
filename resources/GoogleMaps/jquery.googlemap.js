@@ -733,9 +733,9 @@
 			}
 
 			// - My Location
-			//if(options.fullscreen){
+			if(options.mylocation){
 				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new window.MyLocationControl(this.map));
-			//}
+			}
 		};
 
 		this.setup = function () {

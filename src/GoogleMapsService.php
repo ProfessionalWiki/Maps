@@ -247,6 +247,13 @@ class GoogleMapsService implements MappingService {
 			'message' => 'maps-par-enable-fullscreen',
 		];
 
+		$params['mylocation'] = [
+			'aliases' => [ 'enablemylocation' ],
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-enable-mylocation',
+		];
+
 		$params['scrollwheelzoom'] = [
 			'aliases' => [ 'scrollzoom' ],
 			'type' => 'boolean',
