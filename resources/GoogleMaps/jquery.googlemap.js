@@ -731,6 +731,11 @@
 			if(options.fullscreen){
 				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new FullscreenControl(this.map));
 			}
+
+			// - My Location
+			//if(options.fullscreen){
+				this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(new window.MyLocationControl(this.map));
+			//}
 		};
 
 		this.setup = function () {
