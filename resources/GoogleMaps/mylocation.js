@@ -64,26 +64,47 @@ function drawMyLocation( position, map ) {
 	let mapDiv = $( map.getDiv() );
 
 	if ( typeof mapDiv.data( 'myLocationMarker' ) === 'undefined' ) {
-		// Add a circle at the user's location
-		let myLocationMarker = new google.maps.Circle( {
-			strokeColor: "#0000FF",
-			strokeOpacity: 0.5,
-			strokeWeight: 2,
-			fillColor: "#0000FF",
-			fillOpacity: 0.35,
+		// Add a circle to visualize geolocation accuracy
+		let myLocationCircle = new google.maps.Circle( {
+			strokeWeight: 0,
+			fillColor: "#5383EC",
+			fillOpacity: 0.2,
 			map,
 			center: pos,
 			radius: radius,
 		} );
 
+		// Add a marker at the user's location
+		const svgMarker = {
+			path: "M 11, 11 m 10, 0 a 10,10 0 1,0 -20,0 a 10,10 0 1,0 20,0",
+			fillColor: "#5383EC",
+			fillOpacity: 1,
+			strokeWeight: 2,
+			strokeColor: "white",
+			anchor: new google.maps.Point( 11, 11 ),
+			scale: 0.75,
+		};
+
+		let myLocationMarker = new google.maps.Marker( {
+			position: pos,
+			icon: svgMarker,
+			map: map,
+		} );
+
 		// Center the map on the user's location
 		map.setCenter( pos );
 
+		// Zoom in
+		map.setZoom( 16 );
+
+		// Store for later access
 		mapDiv.data( 'myLocationMarker', myLocationMarker );
+		mapDiv.data( 'myLocationCircle', myLocationCircle );
 	} else {
-		// Update circle position and radius
-		mapDiv.data( 'myLocationMarker' ).setCenter( pos );
-		mapDiv.data( 'myLocationMarker' ).setRadius( radius );
+		// Update position and radius
+		mapDiv.data( 'myLocationMarker' ).position = pos;
+		mapDiv.data( 'myLocationCircle' ).setCenter( pos );
+		mapDiv.data( 'myLocationCircle' ).setRadius( radius );
 	}
 }
 
@@ -128,5 +149,11 @@ function deactivateMyLocation( map ) {
 	if ( typeof mapDiv.data( 'myLocationMarker' ) !== 'undefined' ) {
 		mapDiv.data( 'myLocationMarker' ).setMap( null );
 		mapDiv.removeData( 'myLocationMarker' );
+	}
+
+	// Remove circle from the map
+	if ( typeof mapDiv.data( 'myLocationCircle' ) !== 'undefined' ) {
+		mapDiv.data( 'myLocationCircle' ).setMap( null );
+		mapDiv.removeData( 'myLocationCircle' );
 	}
 }
