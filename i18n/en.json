@@ -126,6 +126,7 @@
 	"maps-par-height": "Allows setting the height of the map. By default pixels will be assumed as unit, but you can explicitly specify one of these units: px, ex, em.",
 	"maps-par-centre": "The location on which the map should be centered",
 	"maps-par-enable-fullscreen": "Enable fullscreen button",
+	"maps-par-enable-mylocation": "Enable the geolocation button",
 	"maps-par-kml": "KML files to load onto the map.",
 	"maps-par-markercluster": "Allows merging of multiple nearby markers into one marker",
 	"maps-googlemaps3-incompatbrowser": "Your browser is not compatible with Google Maps v3.",
