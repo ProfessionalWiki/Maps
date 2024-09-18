@@ -15,7 +15,7 @@ function MyLocationControl( map ) {
 	controlUI.style.textAlign = 'center';
 	controlUI.style.boxShadow = 'rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px';
 	controlUI.style.backgroundClip = 'padding-box';
-	controlUI.title = 'Toggle my location'; // TODO: Translation
+	controlUI.title = mw.msg('maps-mylocation-button-tooltip');
 	controlDiv.appendChild(controlUI);
 
 	var controlText = document.createElement('div');

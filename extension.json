@@ -256,6 +256,7 @@
 				"maps-searchmarkers-text",
 				"maps-fullscreen-button",
 				"maps-fullscreen-button-tooltip",
+				"maps-mylocation-button-tooltip",
 				"maps-kml-parsing-failed"
 			],
 			"targets": [ "desktop", "mobile" ]
