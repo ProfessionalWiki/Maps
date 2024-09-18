@@ -30,6 +30,7 @@ function MyLocationControl( map ) {
 	controlText.style.width = '18px';
 	controlUI.appendChild(controlText);
 
+	// Handle toggle button click
 	google.maps.event.addDomListener( controlUI, 'click', function() {
 		let mapDiv = $( map.getDiv() );
 
@@ -38,9 +39,19 @@ function MyLocationControl( map ) {
 			controlText.style.backgroundPosition = '0 0';
 			deactivateMyLocation( map );
 		} else {
-			mapDiv.data( 'followMyLocation', 'on' );
+			mapDiv.data( 'followMyLocation', 'locked' );
 			controlText.style.backgroundPosition = '-144px 0';
 			activateMyLocation( map );
+		}
+	} );
+
+	// Handle dragged map
+	google.maps.event.addDomListener( map, 'dragend', function() {
+		let mapDiv = $( map.getDiv() );
+
+		// Continue tracking location, without centering on user
+		if ( mapDiv.data( 'followMyLocation' ) != null ) {
+			mapDiv.data( 'followMyLocation', 'passive' );
 		}
 	} );
 
@@ -91,10 +102,7 @@ function drawMyLocation( position, map ) {
 			map: map,
 		} );
 
-		// Center the map on the user's location
-		map.setCenter( pos );
-
-		// Zoom in
+		// Zoom into user's location
 		map.setZoom( 16 );
 
 		// Store for later access
@@ -102,9 +110,14 @@ function drawMyLocation( position, map ) {
 		mapDiv.data( 'myLocationCircle', myLocationCircle );
 	} else {
 		// Update position and radius
-		mapDiv.data( 'myLocationMarker' ).position = pos;
+		mapDiv.data( 'myLocationMarker' ).setPosition( pos );
 		mapDiv.data( 'myLocationCircle' ).setCenter( pos );
 		mapDiv.data( 'myLocationCircle' ).setRadius( radius );
+	}
+
+	if ( mapDiv.data( 'followMyLocation' ) === 'locked' ) {
+		// Center the map on the user's location
+		map.setCenter( pos );
 	}
 }
 
@@ -123,7 +136,7 @@ function activateMyLocation( map ) {
 			},
 			// Geolocation options
 			{
-				enableHighAccuracy: false,
+				enableHighAccuracy: true,
 				timeout: 5000,
 				maximumAge: 0,
 			}
