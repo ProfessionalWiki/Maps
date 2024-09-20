@@ -16,7 +16,7 @@ function clearFollowMyLocation() {
 	localStorage.removeItem( "mapsFollowMyLocation" );
 }
 
-function updateMapsFollowMyLocation() {
+function updateMapsFollowMyLocation( centerOnMyLocation = false ) {
 	$( window.mapsGoogleList ).each( function( index, map ) {
 		if ( ! map.options.mylocation ) {
 			return;
@@ -26,7 +26,7 @@ function updateMapsFollowMyLocation() {
 
 		if( isFollowMyLocationSet() ) {
 			mapDiv.data( 'myLocationIconUI' ).style.backgroundPosition = '-144px 0';
-			activateMyLocation( map.map );
+			activateMyLocation( map.map, centerOnMyLocation );
 		} else {
 			mapDiv.data( 'myLocationIconUI' ).style.backgroundPosition = '0 0';
 			deactivateMyLocation( map.map );
@@ -90,7 +90,7 @@ function MyLocationControl( map ) {
 			setFollowMyLocation( 'passive' /*'locked'*/ );
 		}
 
-		updateMapsFollowMyLocation();
+		updateMapsFollowMyLocation( true );
 	} );
 
 	// Handle dragged map
@@ -167,11 +167,35 @@ function drawMyLocation( position, map ) {
 	}
 }
 
-function activateMyLocation( map ) {
+function activateMyLocation( map, centerOnMyLocation ) {
 	mapDiv = $( map.getDiv() );
+
+	let geolocationOptions = {
+		enableHighAccuracy: true,
+		timeout: 5000,
+		maximumAge: 0,
+	};
 
 	// Check if geolocation is supported
 	if ( navigator.geolocation ) {
+		if ( centerOnMyLocation ) {
+			// Center map only once
+			navigator.geolocation.getCurrentPosition(
+				function( position ) {
+					let pos = {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					};
+					map.setCenter( pos );
+				}, 
+				// Error handling
+				function() {
+					handleLocationError( true, map.getCenter() );
+				},
+				geolocationOptions
+			);
+		}
+
 		let myLocationWatchId = navigator.geolocation.watchPosition(
 			function( position ) {
 				drawMyLocation( position, map );
@@ -180,12 +204,7 @@ function activateMyLocation( map ) {
 			function() {
 				handleLocationError( true, map.getCenter() );
 			},
-			// Geolocation options
-			{
-				enableHighAccuracy: true,
-				timeout: 5000,
-				maximumAge: 0,
-			}
+			geolocationOptions
 		);
 		mapDiv.data( 'myLocationWatchId', myLocationWatchId );
 	} else {
