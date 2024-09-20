@@ -87,7 +87,7 @@ function MyLocationControl( map ) {
 		if ( isFollowMyLocationSet() ) {
 			clearFollowMyLocation();
 		} else {
-			setFollowMyLocation( 'locked' );
+			setFollowMyLocation( 'passive' /*'locked'*/ );
 		}
 
 		updateMapsFollowMyLocation();
@@ -149,7 +149,7 @@ function drawMyLocation( position, map ) {
 		} );
 
 		// Zoom into user's location
-		map.setZoom( 16 );
+		//map.setZoom( 16 );
 
 		// Store for later access
 		mapDiv.data( 'myLocationMarker', myLocationMarker );
