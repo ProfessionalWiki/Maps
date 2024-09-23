@@ -248,14 +248,12 @@ class GoogleMapsService implements MappingService {
 		];
 
 		$params['mylocation'] = [
-			'aliases' => [ 'enablemylocation' ],
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-par-enable-mylocation',
 		];
 
 		$params['mylocationfollow'] = [
-			'aliases' => [ 'enablemylocationfollow' ],
 			'type' => 'boolean',
 			'default' => false,
 			'message' => 'maps-par-enable-mylocation-follow',

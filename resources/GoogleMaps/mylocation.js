@@ -1,6 +1,6 @@
 (function( $ ) {
 
-/* Track user location with marker on map */
+/* Track user's location with marker on map */
 
 function activateTrackMyLocation() {
 	localStorage.setItem( 'mapsTrackMyLocation', 'yes' );
@@ -18,7 +18,7 @@ function clearTrackMyLocation() {
 	localStorage.removeItem( 'mapsTrackMyLocation' );
 }
 
-/* Follow: Center map on user location */
+/* Follow: Center map on user's location */
 
 function activateFollowMyLocation( mapDiv ) {
 	mapDiv.data( 'followMyLocation', 'locked' );
@@ -220,7 +220,7 @@ function activateMyLocation( map, centerOnMyLocation ) {
 			);
 		}
 
-		// Continously track user location
+		// Continously track user's location
 		let myLocationWatchId = navigator.geolocation.watchPosition(
 			function( position ) {
 				drawMyLocation( position, map );
