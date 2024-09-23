@@ -248,7 +248,8 @@
 		"ext.maps.googlemaps3": {
 			"scripts": [
 				"GoogleMaps/jquery.googlemap.js",
-				"GoogleMaps/ext.maps.googlemaps3.js"
+				"GoogleMaps/ext.maps.googlemaps3.js",
+				"GoogleMaps/mylocation.js"
 			],
 			"messages": [
 				"maps-googlemaps3-incompatbrowser",
@@ -304,17 +305,6 @@
 			],
 			"scripts": [
 				"GoogleMaps/googlemaps3ajax.js"
-			],
-			"targets": [ "desktop", "mobile" ]
-		},
-
-		"ext.maps.mylocation": {
-			"dependencies": [
-				"ext.maps.googlemaps3",
-				"ext.sm.common"
-			],
-			"scripts": [
-				"GoogleMaps/mylocation.js"
 			],
 			"targets": [ "desktop", "mobile" ]
 		},
