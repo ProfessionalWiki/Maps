@@ -66,7 +66,7 @@ $( document ).ready( function() {
 } );
 
 // Control for toggling the user location function
-function MyLocationControl( map, followMyLocation ) {
+function MyLocationControl( map, followMyLocation, zoom ) {
 	var controlDiv = document.createElement('div');
 	controlDiv.style.padding = '10px 10px 0px 10px';
 	controlDiv.index = 1;
@@ -99,8 +99,9 @@ function MyLocationControl( map, followMyLocation ) {
 
 	let mapDiv = $( map.getDiv() );
 
-	// Store UI for updating it later
+	// Store for later access
 	mapDiv.data( 'myLocationIconUI', controlText );
+	mapDiv.data( 'myLocationZoom', zoom === -1 ? false : zoom );
 
 	// Handle toggle button click
 	google.maps.event.addDomListener( controlUI, 'click', function() {
@@ -119,7 +120,7 @@ function MyLocationControl( map, followMyLocation ) {
 
 	// Handle dragged map
 	google.maps.event.addDomListener( map, 'dragend', function() {
-		// Stop centering on user location
+		// Stop centering on user's location
 		if ( isFollowMyLocationSet( mapDiv ) ) {
 			clearFollowMyLocation( mapDiv );
 		}
@@ -172,9 +173,6 @@ function drawMyLocation( position, map ) {
 			map: map,
 		} );
 
-		// Zoom into user's location
-		//map.setZoom( 16 );
-
 		// Store for later access
 		mapDiv.data( 'myLocationMarker', myLocationMarker );
 		mapDiv.data( 'myLocationCircle', myLocationCircle );
@@ -192,7 +190,7 @@ function drawMyLocation( position, map ) {
 }
 
 function activateMyLocation( map, centerOnMyLocation ) {
-	mapDiv = $( map.getDiv() );
+	let mapDiv = $( map.getDiv() );
 
 	let geolocationOptions = {
 		enableHighAccuracy: true,
@@ -211,6 +209,11 @@ function activateMyLocation( map, centerOnMyLocation ) {
 						lng: position.coords.longitude
 					};
 					map.setCenter( pos );
+
+					// Zoom into user's location
+					if ( mapDiv.data( 'myLocationZoom' ) !== false ) {
+						map.setZoom( mapDiv.data( 'myLocationZoom' ) );
+					}
 				}, 
 				// Error handling
 				function() {
@@ -239,7 +242,7 @@ function activateMyLocation( map, centerOnMyLocation ) {
 }
 
 function deactivateMyLocation( map ) {
-	mapDiv = $( map.getDiv() );
+	let mapDiv = $( map.getDiv() );
 
 	// Check if geolocation is supported
 	if ( navigator.geolocation ) {
