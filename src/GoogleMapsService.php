@@ -254,6 +254,13 @@ class GoogleMapsService implements MappingService {
 			'message' => 'maps-par-enable-mylocation',
 		];
 
+		$params['mylocationfollow'] = [
+			'aliases' => [ 'enablemylocationfollow' ],
+			'type' => 'boolean',
+			'default' => false,
+			'message' => 'maps-par-enable-mylocation-follow',
+		];
+
 		$params['scrollwheelzoom'] = [
 			'aliases' => [ 'scrollzoom' ],
 			'type' => 'boolean',

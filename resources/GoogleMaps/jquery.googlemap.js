@@ -734,7 +734,7 @@
 
 			// - My Location
 			if(options.mylocation){
-				this.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(new window.MyLocationControl(this.map));
+				this.map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(new window.MyLocationControl(this.map, options.mylocationfollow));
 			}
 		};
 

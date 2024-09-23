@@ -1,22 +1,42 @@
 (function( $ ) {
 
-function setFollowMyLocation( value ) {
-	localStorage.setItem( "mapsFollowMyLocation", value );
+/* Track user location with marker on map */
+
+function activateTrackMyLocation() {
+	localStorage.setItem( 'mapsTrackMyLocation', 'yes' );
 }
 
-function getFollowMyLocation() {
-	return localStorage.getItem( "mapsFollowMyLocation" );
+function getTrackMyLocation() {
+	return localStorage.getItem( 'mapsTrackMyLocation' );
 }
 
-function isFollowMyLocationSet() {
-	return getFollowMyLocation() && getFollowMyLocation() != null;
+function isTrackMyLocationSet() {
+	return getTrackMyLocation() && getTrackMyLocation() === 'yes';
 }
 
-function clearFollowMyLocation() {
-	localStorage.removeItem( "mapsFollowMyLocation" );
+function clearTrackMyLocation() {
+	localStorage.removeItem( 'mapsTrackMyLocation' );
 }
 
-function updateMapsFollowMyLocation( centerOnMyLocation = false ) {
+/* Follow: Center map on user location */
+
+function activateFollowMyLocation( mapDiv ) {
+	mapDiv.data( 'followMyLocation', 'locked' );
+}
+
+function getFollowMyLocation( mapDiv ) {
+	return mapDiv.data( 'followMyLocation' );
+}
+
+function isFollowMyLocationSet( mapDiv ) {
+	return getFollowMyLocation( mapDiv ) && getFollowMyLocation( mapDiv ) === 'locked';
+}
+
+function clearFollowMyLocation( mapDiv ) {
+	mapDiv.removeData( 'followMyLocation' );
+}
+
+function updateMapsTrackMyLocation( centerOnMyLocation = false ) {
 	$( window.mapsGoogleList ).each( function( index, map ) {
 		if ( ! map.options.mylocation ) {
 			return;
@@ -24,7 +44,7 @@ function updateMapsFollowMyLocation( centerOnMyLocation = false ) {
 
 		let mapDiv = $( map.map.getDiv() );
 
-		if( isFollowMyLocationSet() ) {
+		if( isTrackMyLocationSet() ) {
 			mapDiv.data( 'myLocationIconUI' ).style.backgroundPosition = '-144px 0';
 			activateMyLocation( map.map, centerOnMyLocation );
 		} else {
@@ -41,12 +61,12 @@ $( document ).ready( function() {
 			return;
 		}
 
-		updateMapsFollowMyLocation();
+		updateMapsTrackMyLocation( false );
 	}, 500 );
 } );
 
 // Control for toggling the user location function
-function MyLocationControl( map ) {
+function MyLocationControl( map, followMyLocation ) {
 	var controlDiv = document.createElement('div');
 	controlDiv.style.padding = '10px 10px 0px 10px';
 	controlDiv.index = 1;
@@ -84,20 +104,24 @@ function MyLocationControl( map ) {
 
 	// Handle toggle button click
 	google.maps.event.addDomListener( controlUI, 'click', function() {
-		if ( isFollowMyLocationSet() ) {
-			clearFollowMyLocation();
+		if ( isTrackMyLocationSet() ) {
+			clearTrackMyLocation();
 		} else {
-			setFollowMyLocation( 'passive' /*'locked'*/ );
+			if ( followMyLocation ) {
+				activateFollowMyLocation( mapDiv );
+			}
+
+			activateTrackMyLocation();
 		}
 
-		updateMapsFollowMyLocation( true );
+		updateMapsTrackMyLocation( true );
 	} );
 
 	// Handle dragged map
 	google.maps.event.addDomListener( map, 'dragend', function() {
-		// Continue tracking location, without centering on user
-		if ( isFollowMyLocationSet() ) {
-			setFollowMyLocation( 'passive' );
+		// Stop centering on user location
+		if ( isFollowMyLocationSet( mapDiv ) ) {
+			clearFollowMyLocation( mapDiv );
 		}
 	} );
 
@@ -161,7 +185,7 @@ function drawMyLocation( position, map ) {
 		mapDiv.data( 'myLocationCircle' ).setRadius( radius );
 	}
 
-	if ( getFollowMyLocation() === 'locked' ) {
+	if ( isFollowMyLocationSet( mapDiv ) ) {
 		// Center the map on the user's location
 		map.setCenter( pos );
 	}
@@ -196,6 +220,7 @@ function activateMyLocation( map, centerOnMyLocation ) {
 			);
 		}
 
+		// Continously track user location
 		let myLocationWatchId = navigator.geolocation.watchPosition(
 			function( position ) {
 				drawMyLocation( position, map );
