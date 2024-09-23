@@ -127,6 +127,7 @@
 	"maps-par-centre": "The location on which the map should be centered",
 	"maps-par-enable-fullscreen": "Enable fullscreen button",
 	"maps-par-enable-mylocation": "Enable the geolocation button",
+	"maps-par-mylocationzoom": "The zoom level to go to when user location is turned on",
 	"maps-par-enable-mylocationfollow": "Continously center map on user location",
 	"maps-par-kml": "KML files to load onto the map.",
 	"maps-par-markercluster": "Allows merging of multiple nearby markers into one marker",
