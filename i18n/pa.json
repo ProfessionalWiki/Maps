@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Babanwalia"
+			"Babanwalia",
+			"Cabal"
 		]
 	},
 	"maps_map": "ਨਕਸ਼ਾ",
@@ -66,5 +67,8 @@
 	"mapeditor-form-field-showonhover": "ਸਿਰਫ਼ ਉੱਤੇ ਮੰਡਰਾਉਣ 'ਤੇ ਵਿਖਾਓ",
 	"mapeditor-mapparam-title": "ਨਕਸ਼ੇ ਦੇ ਮਾਪਦੰਡ ਸੋਧੋ",
 	"mapeditor-mapparam-defoption": "-ਮਾਪਦੰਡ ਚੁਣੋ-",
-	"mapeditor-form-field-image": "ਤਸਵੀਰ"
+	"mapeditor-form-field-image": "ਤਸਵੀਰ",
+	"maps-json-editor-button-circle": "ਇੱਕ ਗੋਲ-ਘਤੇਰਾ ਲਾਵੋ",
+	"maps-json-editor-tooltip-circle": "ਗੋਲ-ਘਤੇਰਾ ਲਾਉਣ ਲਈ ਨਕਸ਼ੇ ਉੱਤੇ ਕਲਿੱਕ ਕਰੋ।",
+	"maps-json-editor-added-circle": "ਗੋਲ-ਘਤੇਰਾ ਜੋੜਿਆ"
 }
