@@ -9,7 +9,7 @@
 
 (function( $, sm ) {
 	var ajaxRequest = null;
-	var mapEvents = ['dragend', 'zoom_changed'];
+	var mapEvents = ['dragend', 'bounds_changed'];
 
 	$( document ).ready( function() {
 		// todo: find a way to remove setTimeout.
