@@ -13,7 +13,8 @@ Features:
 * Parser functions for [geocoding], [coordinate formatting] and geospatial operations
 * Translations in over 100 languages, image layers, static maps and [more]
 
-Missing a feature? [Professional.Wiki](https://professional.wiki/) does custom development at a discount if it is open sourced.
+Missing a feature? Get [software development](https://professional.wiki/en/mediawiki-development) 
+via [Professional.Wiki](https://professional.wiki/). Discounts for work that is open-sourced.
 
 ## Documentation
 
