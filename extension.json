@@ -248,7 +248,8 @@
 		"ext.maps.googlemaps3": {
 			"scripts": [
 				"GoogleMaps/jquery.googlemap.js",
-				"GoogleMaps/ext.maps.googlemaps3.js"
+				"GoogleMaps/ext.maps.googlemaps3.js",
+				"GoogleMaps/mylocation.js"
 			],
 			"messages": [
 				"maps-googlemaps3-incompatbrowser",
@@ -256,6 +257,7 @@
 				"maps-searchmarkers-text",
 				"maps-fullscreen-button",
 				"maps-fullscreen-button-tooltip",
+				"maps-mylocation-button-tooltip",
 				"maps-kml-parsing-failed"
 			],
 			"targets": [ "desktop", "mobile" ]
