@@ -196,7 +196,7 @@
 	"semanticmaps-par-centre": "Sredina zemljevida. Če ni podana, bo zemljevid samodejno izbral optimalno lokacijo za prikaz vseh označevalcev na zemljevidu.",
 	"semanticmaps-par-template": "Predloga za oblikovanje vsebine info okna.",
 	"semanticmaps-par-geocodecontrol": "Prikaz nadzora geokodiranja.",
-	"semanticmaps-par-activeicon": "Ikona za prikaz namesto privzetega označevalca, kadar je aktivna stran enaka zadetku poizvedbe.",
+	"semanticmaps-par-activeicon": "Ikona za prikaz namesto privzetega označevalca, kadar je aktivna stran enaka rezultatu poizvedbe.",
 	"semanticmaps-par-pagelabel": "Ko je nastavljeno na »da«, imajo vsi označevalci »inlineLabel« s povezavo na stran, ki vsebuje koordinate označevalca",
 	"semanticmaps-par-ajaxcoordproperty": "Ime koordinatne lastnosti, ki se uporablja za ustvaritev poizvedbe ajax.",
 	"semanticmaps-par-ajaxquery": "Druga poizvedba, ki se pošlje prek Ajaxa za pridobitev dodatnih koordinat.",
