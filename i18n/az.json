@@ -2,15 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"AZISS",
-			"Cekli829"
+			"Cekli829",
+			"Nemoralis",
+			"Əkrəm Cəfər"
 		]
 	},
 	"maps_map": "Xəritə",
 	"maps-loading-map": "Xəritə yüklənir...",
 	"maps-layer-errors": "Xətalar",
+	"maps-mylocation-button-tooltip": "Xəritədə mənim yerimi göstər.",
 	"maps-abb-north": "Şm",
 	"maps-abb-east": "C",
 	"maps-abb-west": "Q",
+	"maps-par-enable-mylocation": "Geolokasiya düyməsini aktivləşdir",
+	"maps-par-enable-mylocationfollow": "Davamlı olaraq xəritəni istifadəçinin lokasiyasında mərkəzlə",
 	"semanticmaps-unrecognizeddistance": "$1 rəqəmi mümkün olmayan məsafədir.",
 	"semanticmaps-kml-link": "KML faylına bax",
 	"semanticmaps-default-kml-pagelink": "$1 səhifəyə bax",
