@@ -145,6 +145,7 @@
 	"maps-par-height": "允许设置地图的高度。默认单位为像素，但也可以明确指定任一以下单位：px、ex、em。",
 	"maps-par-centre": "设置为地图中心的位置",
 	"maps-par-enable-fullscreen": "启用全屏按钮",
+	"maps-par-enable-mylocation": "启用地理位置按钮",
 	"maps-par-kml": "要加载到地图上的KML文件。",
 	"maps-par-markercluster": "允许把多个邻近标记整合为一个标记",
 	"maps-googlemaps3-incompatbrowser": "您的浏览器不兼容Google地图v3。",
