@@ -3,7 +3,8 @@
 		"authors": [
 			"Macofe",
 			"Robby",
-			"Soued031"
+			"Soued031",
+			"Volvox"
 		]
 	},
 	"maps-desc": "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten a Geocode Adressen an aner geographesch Operatiounen ze weisen",
@@ -22,14 +23,14 @@
 	"maps-layer-of-type": "Layer vum Typ \"$1\"",
 	"maps-geodistance-description": "Déi geographesch Distanz tëscht zwéi Punkte berechnen, vun an an iergendeent vun den ënnerstëtzte Formater.",
 	"maps-mapsdoc-par-language": "D'Sprooch an där d'Dokumentatioun gewise gi soll. Wann déi Iwwersetzung net disponibel ass, da gëtt Englesch an där Plaz benotzt.",
-	"maps-coordinates-par-location": "D'Koordinaten déi Dir formatéiere wëllt.",
+	"maps-coordinates-par-location": "D'Koordinaten, déi Dir formatéiere wëllt.",
 	"maps-coordinates-par-format": "D'Zilformat vun de Koordinaten.",
 	"maps-distance-par-decimals": "Déi maximal Zuel vu Kommastellen déi am Resultat benotzt gi soll.",
 	"maps-distance-par-unit": "D'Eenheet fir d'Distanz.",
 	"maps-finddestination-par-location": "Déi initial Plaz.",
 	"maps-finddestination-par-distance": "D'Distanz vun der Rees.",
 	"maps-finddestination-par-format": "D'Format an deem d'Zil gewise soll ginn.",
-	"maps-geocode-par-location": "D'Adress déi Dir geocodéiere wëllt.",
+	"maps-geocode-par-location": "D'Adress, déi Dir geocodéiere wëllt.",
 	"maps-geocode-par-format": "De Format fir d'Koordinaten.",
 	"maps-geodistance-par-location1": "Den éischte Punkt vun deem aus eng Distanz berechent gi soll.",
 	"maps-geodistance-par-unit": "D'Eenheet fir d'Distanz.",
