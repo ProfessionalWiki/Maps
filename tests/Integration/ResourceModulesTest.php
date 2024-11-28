@@ -6,7 +6,7 @@ namespace Maps\Tests\Integration;
 
 use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\TestCase;
-use ResourceLoader;
+use MediaWiki\ResourceLoader\ResourceLoader;
 
 class ResourceModulesTest extends TestCase {
 
