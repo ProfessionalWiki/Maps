@@ -3,10 +3,12 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## Maps 10.2.1
+## Maps 10.3.0
 
-Release date TDB
+Released on November 28th, 2024.
 
+* Added compatibility with MediaWiki 1.43
+* Added geolocation support for Google Maps with a new `mylocation` parameter
 * Fixed compatibility with recent versions of Cargo
 
 ## Maps 10.2.0
