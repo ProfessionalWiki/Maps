@@ -101,6 +101,7 @@
 	"maps-displaymap-par-geojson": "含有GeoJSON数据的文件的URL或页面的名称",
 	"maps-fullscreen-button": "开关全屏显示",
 	"maps-fullscreen-button-tooltip": "以全屏或嵌入式方式查看地图。",
+	"maps-mylocation-button-tooltip": "在地图上显示我的位置。",
 	"validation-error-invalid-location": "参数“$1”必须是有效的位置。",
 	"validation-error-invalid-locations": "参数“$1”必须是一个或多个有效位置。",
 	"validation-error-invalid-width": "参数“$1”必须是有效的宽度。",
