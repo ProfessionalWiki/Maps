@@ -23,6 +23,7 @@
 			"Urhixidur",
 			"Verdy p",
 			"Weft",
+			"WillyM",
 			"Wladek92",
 			"Wyz",
 			"Yasten"
@@ -30,7 +31,7 @@
 	},
 	"maps-desc": "Permet l’incorporation de cartes dynamiques dans des pages de wiki en utilisant Google Maps ou Leaflet. Comprend un éditeur visuel, s’intègre facultativement à MediaWiki Sémantique, prend en charge GeoJSON et ajoute des possibilités de géocodage.",
 	"maps_map": "Carte",
-	"maps-tracking-category": "Pages avec une carte rendue par l’extension Maps",
+	"maps-tracking-category": "Cartes Maps",
 	"maps-loading-map": "Chargement de la carte...",
 	"maps-load-failed": "Impossible de charger la carte !",
 	"maps-markers": "Marqueurs",
