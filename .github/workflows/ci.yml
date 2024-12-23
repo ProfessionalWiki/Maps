@@ -13,14 +13,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_35'
-            php: 7.4
-          - mw: 'REL1_36'
-            php: 7.4
-          - mw: 'REL1_37'
-            php: 7.4
-          - mw: 'REL1_38'
-            php: 8.0
           - mw: 'REL1_39'
             php: 8.1
           - mw: 'REL1_40'
@@ -89,7 +81,7 @@ jobs:
         run: |
           php tests/phpunit/phpunit.php -c extensions/Maps --coverage-clover coverage.xml
           bash <(curl -s https://codecov.io/bash)
-        if: matrix.mw == 'REL1_38'
+        if: matrix.mw == 'REL1_39'
 
 
 #  Psalm:
