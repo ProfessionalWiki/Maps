@@ -3,6 +3,7 @@
 		"authors": [
 			"Angrydog001",
 			"Byfserag",
+			"Chimes",
 			"Func",
 			"GuoPC",
 			"Hanyanbo98",
@@ -147,6 +148,8 @@
 	"maps-par-centre": "设置为地图中心的位置",
 	"maps-par-enable-fullscreen": "启用全屏按钮",
 	"maps-par-enable-mylocation": "启用地理位置按钮",
+	"maps-par-mylocationzoom": "打开用户定位时的缩放级别",
+	"maps-par-enable-mylocationfollow": "地图始终以用户位置为中心",
 	"maps-par-kml": "要加载到地图上的KML文件。",
 	"maps-par-markercluster": "允许把多个邻近标记整合为一个标记",
 	"maps-googlemaps3-incompatbrowser": "您的浏览器不兼容Google地图v3。",
