@@ -259,7 +259,7 @@
 	"maps-json-editor-toolbar-button-remove-disabled": "Silinecek işaretçi veya şekil yok",
 	"maps-json-editor-toolbar-button-save": "Değişiklikleri kaydet",
 	"maps-json-editor-changes-saved": "Değişiklikleriniz kaydedildi",
-	"maps-geo-json-edit-source": "Kaynağı değiştir",
+	"maps-geo-json-edit-source": "Kaynağı düzenle",
 	"maps-geo-json-create-source": "GeoJSON kaynağından oluştur",
 	"maps-geo-json-create-page-button": "Bu sayfayı oluştur",
 	"maps-geo-json-create-page-creating": "Sayfa oluşturuluyor...",
