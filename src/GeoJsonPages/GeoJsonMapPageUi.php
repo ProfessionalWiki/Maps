@@ -52,7 +52,7 @@ class GeoJsonMapPageUi {
 					[
 						'class' => 'maps-loading-message'
 					],
-					wfMessage( 'maps-loading-map' )->inContentLanguage()->text()
+					wfMessage( 'maps-loading-map' )->text()
 				)
 			)
 		);
