@@ -73,6 +73,9 @@
 			}
 		};
 
+		this.sanitizeText = function(text) {
+			return $('<div>').text(text).text();
+		};
 
 		/**
 		 * Creates a new marker with the provided data,
@@ -91,7 +94,7 @@
 			};
 
 			if ( markerOptions.text !== '' ) {
-				markerOptions.text = $('<div>').text(markerOptions.text).text();
+				markerOptions.text = this.sanitizeText(markerOptions.text);
 			}
 
 			if (!markerData.hasOwnProperty('icon') || markerData.icon !== '') {
@@ -823,7 +826,7 @@
 			}
 
 			this.openWindow = new google.maps.InfoWindow();
-			this.openWindow.setContent( markerData.text );
+			this.openWindow.setContent( _this.sanitizeText( markerData.text ) );
 
 			if ( event.latLng !== undefined ) {
 				this.openWindow.setPosition( event.latLng );
