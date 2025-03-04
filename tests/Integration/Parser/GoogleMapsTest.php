@@ -12,6 +12,7 @@ class GoogleMapsTest extends TestCase {
 	private function assertStringContainsData( string $expected, string $html ): void {
 		$this->assertStringContainsString( htmlspecialchars( $expected ), $html );
 	}
+
 	private function parse( string $textToParse ): string {
 		return TestFactory::newInstance()->parse( $textToParse );
 	}

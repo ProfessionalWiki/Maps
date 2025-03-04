@@ -47,10 +47,10 @@ class LeafletTest extends TestCase {
 
 		$html = $this->parse( "{{#leaflet:image layers=MyImage.png}}" );
 
-		$this->assertStringContainsString( '"name":"MyImage.png"', $html );
-		$this->assertStringContainsString( '"url":"/tmp/example/image.png"', $html );
-		$this->assertStringContainsString( '"width":100', $html );
-		$this->assertStringContainsString( '"height":50', $html );
+		$this->assertStringContainsData( '"name":"MyImage.png"', $html );
+		$this->assertStringContainsData( '"url":"/tmp/example/image.png"', $html );
+		$this->assertStringContainsData( '"width":100', $html );
+		$this->assertStringContainsData( '"height":50', $html );
 	}
 
 }
