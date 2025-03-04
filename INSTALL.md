@@ -25,18 +25,25 @@ minimum requirements are indicated in bold. For a detailed list of changes, see 
 		<th>Release status<br>&nbsp;</th>
 	</tr>
 	<tr>
-		<th>11.0.x</th>
+		<th>12.0.x</th>
 		<td><strong>8.1</strong> - 8.4</td>
 		<td><strong>1.39</strong> - 1.43</td>
 		<td>5.x</td>
 		<td>Future version</td>
 	</tr>
 	<tr>
-		<th>10.3.x</th>
+		<th>11.0.x</th>
 		<td>7.4 - 8.3</td>
 		<td>1.35 - 1.43</td>
 		<td>3.2 - 5.0</td>
 		<td><strong>Stable release</strong></td>
+	</tr>
+	<tr>
+		<th>10.3.x</th>
+		<td>7.4 - 8.3</td>
+		<td>1.35 - 1.43</td>
+		<td>3.2 - 4.2</td>
+		<td>Obsolete release, no support</td>
 	</tr>
 	<tr>
 		<th>10.2.x</th>
