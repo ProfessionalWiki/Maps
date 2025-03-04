@@ -247,5 +247,13 @@
 	"maps-json-editor-edit-failed": "Error message shown when saving a change in the visual map editor fails",
 	"maps-json-editor-toolbar-cancel-text": "{{Identical|Cancel}}",
 	"maps-geo-json-edit-source": "Edit tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids.\n{{Identical/Edit source}}",
-	"maps-geo-json-create-source": "Page creation tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids"
+	"maps-geo-json-create-source": "Page creation tab text in the GeoJson namespace. This tab leads to editing of raw GeoJson without visual aids",
+	"validator-fatal-error": "This message indicates a fatal error detected. $1 holds the fatal error report.",
+	"validator-describe-header-parameter": "{{Identical|Parameter}}\n{{related|Validator-describe}}",
+	"validator-describe-header-type": "{{Identical|Type}}\n{{Related|Validator-describe}}",
+	"validator-describe-header-default": "{{Identical|Default}}\n{{related|Validator-describe}}",
+	"validator-describe-header-description": "{{Identical|Description}}\n{{Related|Validator-describe}}",
+	"validator-describe-required": "{{related|Validator-describe}}\n{{Identical|Required}}",
+	"validator-describe-empty": "{{Identical|Empty}}\n{{related|Validator-describe}}",
+	"validator-message-nodesc": "Indicates that no parameter description is available"
 }

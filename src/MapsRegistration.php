@@ -26,11 +26,6 @@ class MapsRegistration {
 		MapsHooks::registerHookHandlers( $hooks );
 
 		$GLOBALS['wgExtensionFunctions'][] = function () {
-			// Only initialize the extension when all dependencies are present.
-			if ( !defined( 'Validator_VERSION' ) ) {
-				throw new Exception( 'Maps needs to be installed via Composer.' );
-			}
-
 			( new MapsSetup() )->setup();
 
 			return true;
