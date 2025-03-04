@@ -209,6 +209,7 @@
 	"semanticmaps-kml-pagelinktext": "The text to use for the links to the page, in which $1 will be replaced by the page title",
 	"semanticmaps-shapes-improperformat": "Improper formatting of $1. Please see documentation for formatting",
 	"semanticmaps-shapes-missingshape": "No shapes found for $1. Please see documentation for available shapes",
+
 	"validator-type-mapscircle": "Geographical circle",
 	"validator-type-mapscircle-list": "List of circles",
 	"validator-type-mapsimageoverlay": "Image overlay",
@@ -270,5 +271,14 @@
 	"maps-editor-edit-geojson": "Edit GeoJSON layer",
 
 	"tag-maps-visual-edit": "Visual map edit",
-	"tag-maps-visual-edit-description": "Edit made with the visual editor provided by the [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension]"
+	"tag-maps-visual-edit-description": "Edit made with the visual editor provided by the [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension]",
+
+	"validator-fatal-error": "Fatal error: $1",
+	"validator-describe-header-parameter": "Parameter",
+	"validator-describe-header-type": "Aliases",
+	"validator-describe-header-default": "Default",
+	"validator-describe-header-description": "Description",
+	"validator-describe-required": "required",
+	"validator-describe-empty": "empty",
+	"validator-message-nodesc": "No description provided"
 }
