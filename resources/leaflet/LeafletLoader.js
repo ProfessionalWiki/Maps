@@ -12,7 +12,7 @@ window.mapsLeafletList = [];
 			$this.data( 'initialized', true );
 
 			let jqueryMap = $this.leafletmaps(
-				JSON.parse( $this.find( 'div.mapdata' ).text() )
+				$this.data( 'mw-maps-mapdata' )
 			);
 
 			jqueryMap.setup();
