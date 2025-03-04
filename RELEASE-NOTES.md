@@ -3,6 +3,13 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 11.0.0
+
+Released on March 5th, 2025.
+
+* Improved encoding of the map data in the HTML. Parser cache rebuild recommended after upgrading
+* Dropped dependence on the Validator library
+
 ## Maps 10.3.0
 
 Released on November 28th, 2024.
