@@ -15,8 +15,12 @@ class LeafletTest extends TestCase {
 		return TestFactory::newInstance()->parse( $textToParse );
 	}
 
+	private function assertStringContainsData( string $expected, string $html ): void {
+		$this->assertStringContainsString( htmlspecialchars( $expected ), $html );
+	}
+
 	public function testLeafletImageLayersIgnoresNotFoundImages() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"imageLayers":[]',
 			$this->parse(
 				"{{#leaflet:image layers=404.png}}"
@@ -25,7 +29,7 @@ class LeafletTest extends TestCase {
 	}
 
 	public function testLeafletImageLayersIgnoresImageUrls() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"imageLayers":[]',
 			$this->parse(
 				"{{#leaflet:image layers=https://user-images.githubusercontent.com/62098559/76514021-3fa9be80-647d-11ea-82ae-715420a5c432.png}}"
@@ -43,10 +47,10 @@ class LeafletTest extends TestCase {
 
 		$html = $this->parse( "{{#leaflet:image layers=MyImage.png}}" );
 
-		$this->assertStringContainsString( '"name":"MyImage.png"', $html );
-		$this->assertStringContainsString( '"url":"/tmp/example/image.png"', $html );
-		$this->assertStringContainsString( '"width":100', $html );
-		$this->assertStringContainsString( '"height":50', $html );
+		$this->assertStringContainsData( '"name":"MyImage.png"', $html );
+		$this->assertStringContainsData( '"url":"/tmp/example/image.png"', $html );
+		$this->assertStringContainsData( '"width":100', $html );
+		$this->assertStringContainsData( '"height":50', $html );
 	}
 
 }
