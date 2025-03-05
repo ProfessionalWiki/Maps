@@ -24,7 +24,7 @@ class GeoDistanceFunction implements HookHandler {
 		foreach ( $result->getErrors() as $error ) {
 			if ( $error->isFatal() ) {
 				return '<div><span class="errorbox">' .
-					wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+					wfMessage( 'maps-validator-fatal-error', $error->getMessage() )->parse() .
 					'</span></div><br /><br />';
 			}
 		}

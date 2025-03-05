@@ -27,7 +27,7 @@ class MapsDocFunction implements HookHandler {
 		foreach ( $result->getErrors() as $error ) {
 			if ( $error->isFatal() ) {
 				return '<div><span class="errorbox">' .
-					wfMessage( 'validator-fatal-error', $error->getMessage() )->parse() .
+					wfMessage( 'maps-validator-fatal-error', $error->getMessage() )->parse() .
 					'</span></div><br /><br />';
 			}
 		}
@@ -73,11 +73,11 @@ class MapsDocFunction implements HookHandler {
 		if ( count( $tableRows ) > 0 ) {
 			$tableRows = array_merge(
 				[
-					'!' . $this->msg( 'validator-describe-header-parameter' ) . "\n" .
+					'!' . $this->msg( 'maps-validator-describe-header-parameter' ) . "\n" .
 					//'!' . $this->msg( 'validator-describe-header-aliases' ) ."\n" .
-					'!' . $this->msg( 'validator-describe-header-type' ) . "\n" .
-					'!' . $this->msg( 'validator-describe-header-default' ) . "\n" .
-					'!' . $this->msg( 'validator-describe-header-description' )
+					'!' . $this->msg( 'maps-validator-describe-header-type' ) . "\n" .
+					'!' . $this->msg( 'maps-validator-describe-header-default' ) . "\n" .
+					'!' . $this->msg( 'maps-validator-describe-header-description' )
 				],
 				$tableRows
 			);
@@ -106,7 +106,7 @@ class MapsDocFunction implements HookHandler {
 		$type = $this->msg( $parameter->getTypeMessage() );
 
 		$default = $parameter->isRequired() ? "''" . $this->msg(
-				'validator-describe-required'
+				'maps-validator-describe-required'
 			) . "''" : $parameter->getDefault();
 		if ( is_array( $default ) ) {
 			$default = implode( ', ', $default );
@@ -115,7 +115,7 @@ class MapsDocFunction implements HookHandler {
 		}
 
 		if ( $default === '' ) {
-			$default = "''" . $this->msg( 'validator-describe-empty' ) . "''";
+			$default = "''" . $this->msg( 'maps-validator-describe-empty' ) . "''";
 		}
 
 		return <<<EOT
