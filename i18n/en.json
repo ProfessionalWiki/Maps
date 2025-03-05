@@ -279,6 +279,7 @@
 	"maps-validator-type-boolean": "yes/no",
 	"maps-validator-type-char": "character",
 	"maps-validator-type-dimension": "number and dimensional unit",
+	"maps-validator-type-title": "title",
 	"maps-validator-type-string-list": "list of texts",
 	"maps-validator-type-integer-list": "list of integers",
 	"maps-validator-type-float-list": "list of numbers",
