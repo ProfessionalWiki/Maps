@@ -103,7 +103,7 @@ class MapsDocFunction implements HookHandler {
 	private function getDescriptionRow( ParamDefinition $parameter ) {
 		$description = $this->msg( $parameter->getMessage() );
 
-		$type = $this->msg( $parameter->getTypeMessage() );
+		$type = $this->msg( 'maps-' . $parameter->getTypeMessage() );
 
 		$default = $parameter->isRequired() ? "''" . $this->msg(
 				'maps-validator-describe-required'
