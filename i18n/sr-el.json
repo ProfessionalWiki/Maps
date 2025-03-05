@@ -26,6 +26,6 @@
 	"mapeditor-form-field-image": "Slika",
 	"semanticmaps-unrecognizeddistance": "Vrednost $1 nije ispravno rastojanje.",
 	"semanticmaps-kml": "KML",
-	"validator-type-mapspolygon": "Geografski poligon",
-	"validator-type-mapspolygon-list": "Spisak geografskih poligona"
+	"maps-validator-type-mapspolygon": "Geografski poligon",
+	"maps-validator-type-mapspolygon-list": "Spisak geografskih poligona"
 }

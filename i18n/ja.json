@@ -161,11 +161,11 @@
 	"semanticmaps-kml-pagelinktext": "ページへのリンクに使用するテキスト ($1 はページ名に置換される)",
 	"semanticmaps-shapes-improperformat": "$1 を不適切な形式に整形しようとしました。整形の説明文書を参照してください。",
 	"semanticmaps-shapes-missingshape": "$1 の図形が見つかりません。利用できる図形について説明文書を参照してください。",
-	"validator-type-mapsimageoverlay": "画像オーバーレイ",
-	"validator-type-mapsimageoverlay-list": "画像オーバーレイの一覧",
-	"validator-type-mapslocation-list": "位置の一覧",
-	"validator-type-mapspolygon": "地図ポリゴン",
-	"validator-type-mapspolygon-list": "地図ポリゴンの一覧",
+	"maps-validator-type-mapsimageoverlay": "画像オーバーレイ",
+	"maps-validator-type-mapsimageoverlay-list": "画像オーバーレイの一覧",
+	"maps-validator-type-mapslocation-list": "位置の一覧",
+	"maps-validator-type-mapspolygon": "地図ポリゴン",
+	"maps-validator-type-mapspolygon-list": "地図ポリゴンの一覧",
 	"maps-json-editor-toolbar-cancel-text": "キャンセル",
 	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps 地図拡張機能]提供によるビジュアルなエディタを使用した編集"
 }
