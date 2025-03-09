@@ -1,17 +1,17 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to static method getInstance\\(\\) on an unknown class SMW\\\\ApplicationFactory\\.$#"
+			message: "#^Call to static method getInstance\\(\\) on an unknown class SMW\\\\Services\\\\ServicesFactory\\.$#"
 			count: 1
 			path: src/MapsFactory.php
 
 		-
-			message: "#^Method Maps\\\\MapsFactory\\:\\:getSmwFactory\\(\\) has invalid return type SMW\\\\ApplicationFactory\\.$#"
+			message: "#^Method Maps\\\\MapsFactory\\:\\:getSmwFactory\\(\\) has invalid return type SMW\\\\Services\\\\ServicesFactory\\.$#"
 			count: 1
 			path: src/MapsFactory.php
 
 		-
-			message: "#^Access to constant PRINT_THIS on an unknown class SMWPrintRequest\\.$#"
+			message: "#^Access to constant PRINT_THIS on an unknown class SMW\\\\Query\\\\PrintRequest\\.$#"
 			count: 1
 			path: src/MapsHooks.php
 
