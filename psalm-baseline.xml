@@ -828,10 +828,10 @@
       <code>parse</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
     </MixedOperand>
     <UndefinedFunction occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )</code>
     </UndefinedFunction>
   </file>
   <file src="src/ParserHooks/DistanceFunction.php">
@@ -847,10 +847,10 @@
       <code>parse</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
     </MixedOperand>
     <UndefinedFunction occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )</code>
     </UndefinedFunction>
   </file>
   <file src="src/ParserHooks/FindDestinationFunction.php">
@@ -871,10 +871,10 @@
       <code>parse</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
     </MixedOperand>
     <UndefinedFunction occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )</code>
     </UndefinedFunction>
   </file>
   <file src="src/ParserHooks/GeoDistanceFunction.php">
@@ -893,10 +893,10 @@
       <code>parse</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
     </MixedOperand>
     <UndefinedFunction occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )</code>
     </UndefinedFunction>
   </file>
   <file src="src/ParserHooks/GeocodeFunction.php">
@@ -913,10 +913,10 @@
       <code>parse</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
     </MixedOperand>
     <UndefinedFunction occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )</code>
     </UndefinedFunction>
   </file>
   <file src="src/ParserHooks/MapsDocFunction.php">
@@ -949,14 +949,14 @@
       <code>text</code>
     </MixedMethodCall>
     <MixedOperand occurrences="1">
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )-&gt;parse()</code>
     </MixedOperand>
     <MixedReturnStatement occurrences="1">
       <code>wfMessage( $key, $args )-&gt;inLanguage( $this-&gt;language )-&gt;text()</code>
     </MixedReturnStatement>
     <UndefinedFunction occurrences="2">
       <code>wfMessage( $key, $args )</code>
-      <code>wfMessage( 'validator-fatal-error', $error-&gt;getMessage() )</code>
+      <code>wfMessage( 'maps-validator-fatal-error', $error-&gt;getMessage() )</code>
     </UndefinedFunction>
   </file>
   <file src="src/Presentation/ElementJsonSerializer.php">

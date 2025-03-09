@@ -8,7 +8,7 @@ window.mapsGoogleList = [];
 			$content.find( '.maps-googlemaps3' ).each( function() {
 				var $this = $( this );
 				window.mapsGoogleList.push(
-					$this.googlemaps( JSON.parse( $this.find( 'div.mapdata' ).text() ) )
+					$this.googlemaps( $this.data( 'mw-maps-mapdata' ) || {} )
 				);
 			} );
 		}

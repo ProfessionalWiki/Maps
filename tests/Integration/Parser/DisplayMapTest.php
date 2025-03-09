@@ -35,6 +35,10 @@ class DisplayMapTest extends TestCase {
 		);
 	}
 
+	private function assertStringContainsData( string $expected, string $html ): void {
+		$this->assertStringContainsString( htmlspecialchars( $expected ), $html );
+	}
+
 	private function parse( string $textToParse ): string {
 		return TestFactory::newInstance()->parse( $textToParse );
 	}
@@ -47,7 +51,7 @@ class DisplayMapTest extends TestCase {
 	}
 
 	public function testSingleCoordinatesAreIncluded() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"lat":1,"lon":1',
 			$this->parse( '{{#display_map:1,1}}' )
 		);
@@ -56,12 +60,12 @@ class DisplayMapTest extends TestCase {
 	public function testMultipleCoordinatesAreIncluded() {
 		$result = $this->parse( '{{#display_map:1,1; 4,2}}' );
 
-		$this->assertStringContainsString( '"lat":1,"lon":1', $result );
-		$this->assertStringContainsString( '"lat":4,"lon":2', $result );
+		$this->assertStringContainsData( '"lat":1,"lon":1', $result );
+		$this->assertStringContainsData( '"lat":4,"lon":2', $result );
 	}
 
 	public function testTagIsRendered() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"lat":1,"lon":1',
 			$this->parse( '<display_map>1,1</display_map>' )
 		);
@@ -75,14 +79,14 @@ class DisplayMapTest extends TestCase {
 	}
 
 	public function testWhenThereAreNoLocations_locationsArrayIsEmpty() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"locations":[]',
 			$this->parse( '{{#display_map:}}' )
 		);
 	}
 
 	public function testLocationTitleGetsIncluded() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"title":"title',
 			$this->parse( '{{#display_map:1,1~title}}' )
 		);
@@ -96,28 +100,28 @@ class DisplayMapTest extends TestCase {
 	}
 
 	public function testRectangleDisplay() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"title":"title',
 			$this->parse( '{{#display_map:rectangles=1,1:2,2~title}}' )
 		);
 	}
 
 	public function testCircleDisplay() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"title":"title',
 			$this->parse( '{{#display_map:circles=1,1:2~title}}' )
 		);
 	}
 
 	public function testRectangleFillOpacityIsUsed() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"fillOpacity":"fill opacity"',
 			$this->parse( '{{#display_map:rectangles=1,1:2,2~title~text~color~opacity~thickness~fill color~fill opacity}}' )
 		);
 	}
 
 	public function testRectangleFillColorIsUsed() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"fillColor":"fill color"',
 			$this->parse( '{{#display_map:rectangles=1,1:2,2~title~text~color~opacity~thickness~fill color~fill opacity}}' )
 		);
@@ -177,7 +181,7 @@ class DisplayMapTest extends TestCase {
 //	}
 
 	public function testWhenIconParameterIsProvidedButEmpty_itIsDefaulted() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"icon":"","inlineLabel":"Ghent',
 			$this->parse(
 				"{{#display_map:Gent, Belgie~The city Ghent~Ghent is awesome~ ~ ~Ghent}}"
@@ -186,14 +190,14 @@ class DisplayMapTest extends TestCase {
 	}
 
 	public function testWhenLocationHasNoTitleAndText_textFieldIsEmptyString() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"text":""',
 			$this->parse( '{{#display_map:1,1}}' )
 		);
 	}
 
 	public function testGeoJsonSourceForFile() {
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"GeoJsonSource":null,',
 			$this->parse(
 				"{{#display_map:geojson=404}}"
@@ -210,7 +214,7 @@ class DisplayMapTest extends TestCase {
 			] ) )
 		);
 
-		$this->assertStringContainsString(
+		$this->assertStringContainsData(
 			'"GeoJsonSource":"TestPageSource",',
 			$this->parse(
 				"{{#display_map:geojson=TestPageSource}}"

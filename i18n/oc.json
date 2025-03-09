@@ -70,6 +70,6 @@
 	"semanticmaps-par-staticlocations": "Una lista dels endreches d'apondre a la mapa amb las donadas demandadas. Coma amb display_points, podètz apondre un títol, una descripcion e una icòna per emplaçament en utilizant la tilda « ~ » coma separador.",
 	"semanticmaps-par-geocodecontrol": "Afichar lo contraròtle de geoencodatge.",
 	"semanticmaps-kml-title": "Lo títol per defaut pels resultats",
-	"validator-type-mapslocation-list": "Lista dels emplaçaments",
-	"validator-type-mapsrectangle-list": "Lista dels rectangles"
+	"maps-validator-type-mapslocation-list": "Lista dels emplaçaments",
+	"maps-validator-type-mapsrectangle-list": "Lista dels rectangles"
 }

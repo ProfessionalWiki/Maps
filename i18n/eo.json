@@ -48,10 +48,10 @@
 	"semanticmaps-longitude": "Longitudo: $1",
 	"semanticmaps-altitude": "Altitudo: $1",
 	"semanticmaps-forminput-locations": "Lokoj",
-	"validator-type-mapscircle-list": "Listo de cirkloj",
-	"validator-type-mapsline-list": "Listo de linioj",
-	"validator-type-mapslocation-list": "Listo de lokoj",
-	"validator-type-mapsrectangle-list": "Listo de ortanguloj",
-	"validator-type-mapspolygon": "Geografia plurlatero",
-	"validator-type-mapspolygon-list": "Listo de geografiaj plurlateroj"
+	"maps-validator-type-mapscircle-list": "Listo de cirkloj",
+	"maps-validator-type-mapsline-list": "Listo de linioj",
+	"maps-validator-type-mapslocation-list": "Listo de lokoj",
+	"maps-validator-type-mapsrectangle-list": "Listo de ortanguloj",
+	"maps-validator-type-mapspolygon": "Geografia plurlatero",
+	"maps-validator-type-mapspolygon-list": "Listo de geografiaj plurlateroj"
 }

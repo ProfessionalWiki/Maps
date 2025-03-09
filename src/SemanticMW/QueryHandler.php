@@ -277,7 +277,7 @@ class QueryHandler {
 	}
 
 	/**
-	 * Handles a single property (SMWPrintRequest) to be displayed for a record (SMWDataValue).
+	 * Handles a single property (\SMW\Query\PrintRequest) to be displayed for a record (SMWDataValue).
 	 */
 	private function handleResultProperty( SMWDataValue $object, PrintRequest $printRequest ): string {
 		if ( $this->hasTemplate() ) {

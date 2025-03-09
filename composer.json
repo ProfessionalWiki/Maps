@@ -25,7 +25,7 @@
 			"role": "Creator and lead developer"
 		},
 		{
-			"name": "Professional.Wiki",
+			"name": "Professional Wiki",
 			"email": "info@professional.wiki",
 			"homepage": "https://professional.wiki"
 		}
@@ -38,7 +38,6 @@
 	"require": {
 		"php": ">=7.4",
 		"composer/installers": "^2.0.0|^1.0.1",
-		"mediawiki/validator": "~2.2",
 		"mediawiki/parser-hooks": "~1.5",
 		"param-processor/param-processor": "^1.10",
 		"data-values/geo": "~4.0|~3.0",

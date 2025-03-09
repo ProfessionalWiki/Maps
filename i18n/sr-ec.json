@@ -31,6 +31,6 @@
 	"mapeditor-form-field-image": "Слика",
 	"semanticmaps-unrecognizeddistance": "Вредност $1 није исправно растојање.",
 	"semanticmaps-kml": "KML",
-	"validator-type-mapspolygon": "Географски полигон",
-	"validator-type-mapspolygon-list": "Списак географских полигона"
+	"maps-validator-type-mapspolygon": "Географски полигон",
+	"maps-validator-type-mapspolygon-list": "Списак географских полигона"
 }

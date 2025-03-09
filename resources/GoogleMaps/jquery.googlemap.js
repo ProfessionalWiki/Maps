@@ -91,7 +91,7 @@
 			};
 
 			if ( markerOptions.text !== '' ) {
-				markerOptions.text = $('<div>' + markerOptions.text + '</div>').text();
+				markerOptions.text = $('<div>').text(markerOptions.text).text();
 			}
 
 			if (!markerData.hasOwnProperty('icon') || markerData.icon !== '') {
