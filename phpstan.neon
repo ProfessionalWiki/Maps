@@ -16,7 +16,6 @@ parameters:
 		- src/LegacyMapEditor/
 	scanDirectories:
 		- ../../includes
-		- ../../src
 		- ../../tests/phpunit
 		- ../../vendor
 	ignoreErrors:
