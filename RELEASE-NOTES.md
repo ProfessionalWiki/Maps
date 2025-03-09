@@ -3,11 +3,17 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
+## Maps 11.0.1
+
+Release TDB
+
+* Improved compatibility with future Semantic MediaWiki versions
+
 ## Maps 11.0.0
 
 Released on March 5th, 2025.
 
-* Improved encoding of the map data in the HTML. Parser cache rebuild recommended after upgrading
+* Improved encoding of the map data in the HTML. Parser cache rebuild is recommended after upgrading
 * Dropped dependence on the Validator library
 
 ## Maps 10.3.0
