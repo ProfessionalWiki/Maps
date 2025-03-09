@@ -11,7 +11,7 @@ parameters:
 			path: src/MapsFactory.php
 
 		-
-			message: "#^Access to constant PRINT_THIS on an unknown class SMWPrintRequest\\.$#"
+			message: "#^Access to constant PRINT_THIS on an unknown class SMW\\\Query\\\PrintRequest\\.$#"
 			count: 1
 			path: src/MapsHooks.php
 
