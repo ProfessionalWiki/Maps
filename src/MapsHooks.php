@@ -11,7 +11,7 @@ use Maps\Presentation\OutputFacade;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Settings\SettingsBuilder;
 use SkinTemplate;
-use SMWPrintRequest;
+use SMW\Query\PrintRequest;
 
 /**
  * Static class for hooks handled by the Maps extension.
@@ -128,7 +128,7 @@ final class MapsHooks {
 	 * @since 1.0
 	 *
 	 * @param $format Mixed: The format (string), or false when not set yet
-	 * @param SMWPrintRequest[] $printRequests The print requests made
+	 * @param PrintRequest[] $printRequests The print requests made
 	 *
 	 * @return boolean
 	 */
@@ -144,7 +144,7 @@ final class MapsHooks {
 				// Loop through the print requests to determine their types.
 				foreach ( $printRequests as $printRequest ) {
 					// Skip the first request, as it's the object.
-					if ( $printRequest->getMode() == SMWPrintRequest::PRINT_THIS ) {
+					if ( $printRequest->getMode() == PrintRequest::PRINT_THIS ) {
 						continue;
 					}
 
