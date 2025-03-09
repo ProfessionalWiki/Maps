@@ -41,7 +41,7 @@ use Parser;
 use RepoGroup;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
-use SMW\ApplicationFactory;
+use SMW\Services\ServicesFactory as ApplicationFactory;
 use Title;
 
 /**
