@@ -6,7 +6,7 @@ parameters:
 			path: src/MapsFactory.php
 
 		-
-			message: "#^Method Maps\\\\MapsFactory\\:\\:getSmwFactory\\(\\) has invalid return type SMW\\\\ApplicationFactory\\.$#"
+			message: "#^Method Maps\\\\MapsFactory\\:\\:getSmwFactory\\(\\) has invalid return type SMW\\\\Services\\\\ServicesFactory\\.$#"
 			count: 1
 			path: src/MapsFactory.php
 
