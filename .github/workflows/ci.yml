@@ -83,13 +83,12 @@ jobs:
 
       - name: Run PHPUnit
         run: php tests/phpunit/phpunit.php -c extensions/Maps
-        if: matrix.mw != 'REL1_37'
 
       - name: Run PHPUnit with code coverage
         run: |
           php tests/phpunit/phpunit.php -c extensions/Maps --coverage-clover coverage.xml
           bash <(curl -s https://codecov.io/bash)
-        if: matrix.mw == 'REL1_39'
+        if: matrix.mw == 'REL1_40'
 
 
 #  Psalm:
