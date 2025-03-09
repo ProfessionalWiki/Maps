@@ -12,9 +12,9 @@
 	"type": "parserhook",
 
 	"requires": {
-		"MediaWiki": ">= 1.35.0",
+		"MediaWiki": ">= 1.39.0",
 		"platform": {
-			"php": ">= 7.4"
+			"php": ">= 8.1"
 		}
 	},
 
