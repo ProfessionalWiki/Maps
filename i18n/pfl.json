@@ -45,5 +45,8 @@
 	"maps_map_cannot_be_displayed": "Die Kaad komma ned zaische.",
 	"maps_click_to_activate": "Um die Kaad oazuschalde, mugschd druffdrigge",
 	"maps_centred_on": "Die Kaad isch uff $1, $2 inde Midd.",
-	"maps-googlemaps3-par-kmlrezoom": "Nomol die Kaad vagreeßere, wonn die KML-Ewene druff glaade worre sin."
+	"maps-googlemaps3-par-kmlrezoom": "Nomol die Kaad vagreeßere, wonn die KML-Ewene druff glaade worre sin.",
+	"maps-validator-type-string": "Tegschd",
+	"maps-validator-type-boolean": "Ja/Nä",
+	"maps-validator-type-char": "Zaische"
 }

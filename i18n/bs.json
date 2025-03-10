@@ -52,5 +52,6 @@
 	"semanticmaps-unrecognizeddistance": "Vrijednost $1 nije ispravno odstojanje.",
 	"semanticmaps-kml-link": "Pogledajte KML datoteku",
 	"semanticmaps-default-kml-pagelink": "Pogledajte stranicu $1",
-	"semanticmaps-forminput-locations": "Lokacije"
+	"semanticmaps-forminput-locations": "Lokacije",
+	"maps-validator-fatal-error": "Fatalna greška: $1"
 }

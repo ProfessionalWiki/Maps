@@ -38,5 +38,11 @@
 	"mapeditor-form-field-link": "لنک",
 	"mapeditor-form-field-group": "گروپ",
 	"mapeditor-form-field-image": "تصویر",
-	"semanticmaps-forminput-locations": "مقامات"
+	"semanticmaps-forminput-locations": "مقامات",
+	"maps-validator-type-string": "ٹیکسٹ",
+	"maps-validator-type-char": "کردار",
+	"maps-validator-describe-header-type": "قسم",
+	"maps-validator-describe-header-default": "پہلے سے طے شدہ",
+	"maps-validator-describe-header-description": "تفصیل",
+	"maps-validator-describe-empty": "خالی"
 }

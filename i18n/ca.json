@@ -59,5 +59,17 @@
 	"semanticmaps-kml-pagelinktext": "El text que s'utilitzarà als enllaços de la pàgina, on $1 serà reemplaçat pel títol de la pàgina",
 	"semanticmaps-shapes-improperformat": "Format no adequat de $1. Consulteu la documentació sobre com aplicar format",
 	"semanticmaps-shapes-missingshape": "No s'han trobat formes de $1. Consulteu la documentació de les formes disponibles",
-	"maps-json-editor-toolbar-clear-text": "Elimineu-ho tot"
+	"maps-json-editor-toolbar-clear-text": "Elimineu-ho tot",
+	"maps-validator-type-string": "text",
+	"maps-validator-type-integer": "nombre enter",
+	"maps-validator-type-float": "nombre",
+	"maps-validator-type-boolean": "sí/no",
+	"maps-validator-type-char": "caràcter",
+	"maps-validator-type-string-list": "llista de textos",
+	"maps-validator-type-integer-list": "llista d'enters",
+	"maps-validator-type-float-list": "llista de nombres",
+	"maps-validator-type-boolean-list": "llista de sí/no",
+	"maps-validator-type-char-list": "llista de caràcters",
+	"maps-validator-type-title-list": "llista de títols",
+	"maps-validator-describe-header-description": "Descripció"
 }

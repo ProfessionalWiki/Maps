@@ -84,5 +84,21 @@
 	"semanticmaps-forminput-locations": "Helyszínek",
 	"semanticmaps-par-staticlocations": "A térképre a lekérdezett adatok mellett felveendő helyek listája. Akárcsak a megjelenítési pontokkal, minden helyhez megadhatsz címet, leírást és ikont hullámvonal (\"~\") elválasztóval.",
 	"semanticmaps-par-showtitle": "Megjelenítse a címet a jelző információs ablakában, vagy ne? Ennek kikapcsolás hasznos lehet, ha sablonnal formázod az információs ablak tartalmát.",
-	"maps-json-editor-toolbar-clear-text": "Összes törlése"
+	"maps-json-editor-toolbar-clear-text": "Összes törlése",
+	"maps-validator-type-string": "szöveg",
+	"maps-validator-type-integer": "egész szám",
+	"maps-validator-type-float": "szám",
+	"maps-validator-type-boolean": "igen/nem",
+	"maps-validator-type-char": "karakter",
+	"maps-validator-type-string-list": "szövegek listája",
+	"maps-validator-type-integer-list": "egész számok listája",
+	"maps-validator-type-float-list": "számok listája",
+	"maps-validator-type-boolean-list": "igen/nem lista",
+	"maps-validator-fatal-error": "Végzetes hiba: $1",
+	"maps-validator-describe-header-parameter": "Paraméter",
+	"maps-validator-describe-header-type": "Típus",
+	"maps-validator-describe-header-default": "Alapértelmezett",
+	"maps-validator-describe-header-description": "Leírás",
+	"maps-validator-describe-required": "kötelező",
+	"maps-validator-describe-empty": "üres"
 }

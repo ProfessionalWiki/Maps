@@ -70,5 +70,17 @@
 	"semanticmaps-kml-linkabsolute": "Wótkaze by měli absolutne byś (nic relatiwne)",
 	"semanticmaps-kml-pagelinktext": "Tekst, kótaryž ma se za wótkaze k tomu bokoju wužywaś, w kótaremž $1 wuměnja se pśez titel boka",
 	"semanticmaps-shapes-improperformat": "$1 jo se wopak formatěrował. Pšosym glej dokumentaciju za formatěrowanje",
-	"semanticmaps-shapes-missingshape": "Formy za $1 njejsu se namakali. Pšosym glej dokumentaciju za k dispoziciji stojece formy."
+	"semanticmaps-shapes-missingshape": "Formy za $1 njejsu se namakali. Pšosym glej dokumentaciju za k dispoziciji stojece formy.",
+	"maps-validator-type-string": "tekst",
+	"maps-validator-type-integer": "ceła licba",
+	"maps-validator-type-float": "licba",
+	"maps-validator-type-boolean": "jo/ně",
+	"maps-validator-type-char": "znamuško",
+	"maps-validator-fatal-error": "Rozwažna zmólka: $1",
+	"maps-validator-describe-header-parameter": "Parameter",
+	"maps-validator-describe-header-type": "Typ",
+	"maps-validator-describe-header-default": "Standard",
+	"maps-validator-describe-header-description": "Wopisanje",
+	"maps-validator-describe-required": "trěbny",
+	"maps-validator-describe-empty": "prozny"
 }

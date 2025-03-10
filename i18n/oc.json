@@ -71,5 +71,21 @@
 	"semanticmaps-par-geocodecontrol": "Afichar lo contraròtle de geoencodatge.",
 	"semanticmaps-kml-title": "Lo títol per defaut pels resultats",
 	"maps-validator-type-mapslocation-list": "Lista dels emplaçaments",
-	"maps-validator-type-mapsrectangle-list": "Lista dels rectangles"
+	"maps-validator-type-mapsrectangle-list": "Lista dels rectangles",
+	"maps-validator-type-string": "tèxte",
+	"maps-validator-type-integer": "nombre entièr",
+	"maps-validator-type-float": "nombre",
+	"maps-validator-type-boolean": "òc/non",
+	"maps-validator-type-char": "caractèr",
+	"maps-validator-type-string-list": "lista de tèxtes",
+	"maps-validator-type-integer-list": "lista de nombres entièrs",
+	"maps-validator-type-float-list": "lista de nombres",
+	"maps-validator-type-title-list": "lista de títols",
+	"maps-validator-fatal-error": "Error fatal : $1",
+	"maps-validator-describe-header-parameter": "Paramètre",
+	"maps-validator-describe-header-type": "Tipe",
+	"maps-validator-describe-header-default": "Per defaut",
+	"maps-validator-describe-header-description": "Descripcion",
+	"maps-validator-describe-required": "requesit",
+	"maps-validator-describe-empty": "void"
 }

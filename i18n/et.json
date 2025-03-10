@@ -3,7 +3,8 @@
 		"authors": [
 			"Avjoska",
 			"Hendrik",
-			"Pikne"
+			"Pikne",
+			"Rivoz"
 		]
 	},
 	"maps_map": "Kaart",
@@ -36,5 +37,18 @@
 	"mapeditor-form-field-image": "Pilt",
 	"semanticmaps-latitude": "Laius: $1",
 	"semanticmaps-longitude": "Pikkus: $1",
-	"semanticmaps-altitude": "Kõrgus: $1"
+	"semanticmaps-altitude": "Kõrgus: $1",
+	"maps-validator-type-string": "tekst",
+	"maps-validator-type-integer": "täisarv",
+	"maps-validator-type-float": "number",
+	"maps-validator-type-boolean": "jah/ei",
+	"maps-validator-type-char": "märk",
+	"maps-validator-type-title": "pealkiri",
+	"maps-validator-type-string-list": "tekstide loetelu",
+	"maps-validator-type-float-list": "numbrite loetelu",
+	"maps-validator-describe-header-parameter": "Parameeter",
+	"maps-validator-describe-header-type": "Tüüp",
+	"maps-validator-describe-header-description": "Kirjeldus",
+	"maps-validator-describe-required": "nõutav",
+	"maps-validator-describe-empty": "tühi"
 }

@@ -34,5 +34,14 @@
 	"semanticmaps-longitude": "రేఖాంశం: $1",
 	"semanticmaps-altitude": "సముద్రమట్టం: $1",
 	"semanticmaps-forminput-locations": "ప్రాంతాలు",
-	"semanticmaps-kml-title": "ఫలితాలకు అప్రమేయంగా వచ్చే పేరు"
+	"semanticmaps-kml-title": "ఫలితాలకు అప్రమేయంగా వచ్చే పేరు",
+	"maps-validator-type-string": "పాఠ్యం",
+	"maps-validator-type-integer": "పూర్ణ సంఖ్య",
+	"maps-validator-type-float": "సంఖ్య",
+	"maps-validator-type-boolean": "అవును/కాదు",
+	"maps-validator-describe-header-parameter": "పరామితి",
+	"maps-validator-describe-header-type": "రకం",
+	"maps-validator-describe-header-default": "అప్రమేయం",
+	"maps-validator-describe-header-description": "వివరణ",
+	"maps-validator-describe-required": "తప్పనిసరి"
 }

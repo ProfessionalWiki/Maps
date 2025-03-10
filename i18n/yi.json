@@ -16,5 +16,8 @@
 	"mapeditor-form-field-link": "לינק",
 	"mapeditor-form-field-group": "גרופּע",
 	"mapeditor-form-field-image": "בילד",
-	"maps-json-editor-toolbar-cancel-text": "אַנולירן"
+	"maps-json-editor-toolbar-cancel-text": "אַנולירן",
+	"maps-validator-type-string": "טעקסט",
+	"maps-validator-describe-header-description": "באַשרײַבונג",
+	"maps-validator-describe-empty": "ליידיק"
 }

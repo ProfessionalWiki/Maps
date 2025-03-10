@@ -74,5 +74,21 @@
 	"maps-validator-type-mapsrectangle": "Laukizuzen geografikoa",
 	"maps-validator-type-mapsrectangle-list": "Laukizuzenen zerrenda",
 	"maps-validator-type-mapspolygon": "Poligono geografikoa",
-	"maps-validator-type-mapspolygon-list": "Poligono geografikoen zerrenda"
+	"maps-validator-type-mapspolygon-list": "Poligono geografikoen zerrenda",
+	"maps-validator-type-string": "testua",
+	"maps-validator-type-integer": "zenbaki osoa",
+	"maps-validator-type-float": "zenbakia",
+	"maps-validator-type-boolean": "bai/ez",
+	"maps-validator-type-char": "karakterea",
+	"maps-validator-type-string-list": "testuen zerrenda",
+	"maps-validator-type-integer-list": "zenbaki osoen zerrenda",
+	"maps-validator-type-float-list": "zenbakien zerrenda",
+	"maps-validator-type-boolean-list": "bai/ez zerrenda",
+	"maps-validator-type-char-list": "karaktereen zerrenda",
+	"maps-validator-type-title-list": "izenburuen zerrenda",
+	"maps-validator-describe-header-parameter": "Parametroa",
+	"maps-validator-describe-header-type": "Mota",
+	"maps-validator-describe-header-default": "Lehenetsia",
+	"maps-validator-describe-header-description": "Deskribapena",
+	"maps-validator-describe-empty": "hutsik"
 }

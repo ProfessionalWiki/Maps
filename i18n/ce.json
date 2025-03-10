@@ -46,5 +46,21 @@
 	"mapeditor-imageoverlay-title": "Сурт",
 	"semanticmaps-kml-link": "Хьажа KML файлан агӀоне",
 	"semanticmaps-default-kml-pagelink": "Хьажа агӀоне $1",
-	"semanticmaps-altitude": "Локхалла: $1"
+	"semanticmaps-altitude": "Локхалла: $1",
+	"maps-validator-type-string": "текст",
+	"maps-validator-type-integer": "дуьззина терахь",
+	"maps-validator-type-float": "терахь",
+	"maps-validator-type-boolean": "хӀаъ/хӀан-хӀа",
+	"maps-validator-type-char": "хьаьрк",
+	"maps-validator-type-string-list": "текстийн могӀам",
+	"maps-validator-type-integer-list": "дуьззина терхьийн могӀам",
+	"maps-validator-type-float-list": "терхьийн могӀам",
+	"maps-validator-type-boolean-list": "могӀам хӀаъ/хӀан-хӀа",
+	"maps-validator-type-char-list": "символийн могӀам",
+	"maps-validator-type-title-list": "цӀерийн могӀам",
+	"maps-validator-fatal-error": "Кхераме гӀалат: $1",
+	"maps-validator-describe-header-type": "Тайпа",
+	"maps-validator-describe-header-default": "Ӏадйитаран кеп",
+	"maps-validator-describe-header-description": "Цуьнах лаьцна",
+	"maps-validator-describe-required": "оьшу"
 }

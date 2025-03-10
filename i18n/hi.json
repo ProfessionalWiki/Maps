@@ -53,5 +53,15 @@
 	"maps-validator-type-mapslocation-list": "स्थानों की सूची",
 	"maps-validator-type-mapsrectangle": "भौगोलिक आयत",
 	"maps-validator-type-mapsrectangle-list": "आयतों की सूची",
-	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension] द्वारा प्रदान किए गए दृश्य संपादक के साथ संपादित करें"
+	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps Maps extension] द्वारा प्रदान किए गए दृश्य संपादक के साथ संपादित करें",
+	"maps-validator-type-string": "पाठ",
+	"maps-validator-type-integer": "पूरी संख्या",
+	"maps-validator-type-float": "संख्या",
+	"maps-validator-type-boolean": "हाँ / नहीं",
+	"maps-validator-describe-header-parameter": "प्राचल",
+	"maps-validator-describe-header-type": "प्रकार",
+	"maps-validator-describe-header-default": "प्राथमिक",
+	"maps-validator-describe-header-description": "विवरण",
+	"maps-validator-describe-required": "अनिवार्य",
+	"maps-validator-describe-empty": "खाली"
 }

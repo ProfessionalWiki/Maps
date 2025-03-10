@@ -9,5 +9,6 @@
 	"maps-abb-north": "С",
 	"maps-abb-east": "В",
 	"maps-abb-south": "Ю",
-	"maps-abb-west": "З"
+	"maps-abb-west": "З",
+	"maps-validator-type-string": "текст"
 }

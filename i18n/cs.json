@@ -85,5 +85,19 @@
 	"semanticmaps-kml-text": "Text je přidružený ke každé stránce. Je přepsán dodatečnými dotazovanými vlastnostmi, jsou-li nějaké.",
 	"semanticmaps-kml-title": "Výchozí titulek pro výsledky",
 	"semanticmaps-kml-linkabsolute": "Mají být odkazy absolutní či ne (tj. relativní)",
-	"semanticmaps-kml-pagelinktext": "Text, který bude použit pro odkazy na stránku, ve kterém bude $1 nahrazeno názvem stránky"
+	"semanticmaps-kml-pagelinktext": "Text, který bude použit pro odkazy na stránku, ve kterém bude $1 nahrazeno názvem stránky",
+	"maps-validator-type-string": "text",
+	"maps-validator-type-integer": "celé číslo",
+	"maps-validator-type-float": "číslo",
+	"maps-validator-type-boolean": "ano/ne",
+	"maps-validator-type-char": "znak",
+	"maps-validator-type-dimension": "číslo a jednotka délky",
+	"maps-validator-fatal-error": "Kritická chyba: $1",
+	"maps-validator-describe-header-parameter": "Parametr",
+	"maps-validator-describe-header-type": "Typ",
+	"maps-validator-describe-header-default": "Výchozí",
+	"maps-validator-describe-header-description": "Popis",
+	"maps-validator-describe-required": "vyžadované",
+	"maps-validator-describe-empty": "prázdné",
+	"maps-validator-message-nodesc": "Popis není k dispozici"
 }

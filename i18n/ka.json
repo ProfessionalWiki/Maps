@@ -69,5 +69,22 @@
 	"semanticmaps-longitude": "გრძედი: $1",
 	"semanticmaps-altitude": "სიმაღლე: $1",
 	"semanticmaps-forminput-locations": "მდებარეობები",
-	"semanticmaps-kml-title": "საწყისი სათაური შედეგებისათვის"
+	"semanticmaps-kml-title": "საწყისი სათაური შედეგებისათვის",
+	"maps-validator-type-string": "ტექსტი",
+	"maps-validator-type-integer": "მთლიანი რიცხვი",
+	"maps-validator-type-float": "ნომერი",
+	"maps-validator-type-boolean": "დიახ/არა",
+	"maps-validator-type-char": "სიმბოლო",
+	"maps-validator-type-string-list": "ტექსტების სია",
+	"maps-validator-type-float-list": "რიცხვების სია",
+	"maps-validator-type-boolean-list": "დიახ/არა სია",
+	"maps-validator-type-char-list": "სიმბოლოების სია",
+	"maps-validator-type-title-list": "სათაურების სია",
+	"maps-validator-fatal-error": "ფატალური შეცდომა: $1",
+	"maps-validator-describe-header-parameter": "პარამეტრი",
+	"maps-validator-describe-header-type": "ტიპი",
+	"maps-validator-describe-header-default": "სტანდარტული",
+	"maps-validator-describe-header-description": "აღწერა",
+	"maps-validator-describe-required": "სავალდებულოა",
+	"maps-validator-describe-empty": "ცარიელი"
 }

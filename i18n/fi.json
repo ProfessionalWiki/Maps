@@ -165,5 +165,18 @@
 	"maps-geo-json-edit-source": "Muokkaa wikitekstiä",
 	"maps-geo-json-create-page-button": "Luo tämä sivu",
 	"maps-geo-json-create-page-creating": "Luodaan sivua...",
-	"tag-maps-visual-edit": "Visuaalinen kartan muokkaus"
+	"tag-maps-visual-edit": "Visuaalinen kartan muokkaus",
+	"maps-validator-type-string": "teksti",
+	"maps-validator-type-integer": "kokonaisluku",
+	"maps-validator-type-float": "luku",
+	"maps-validator-type-boolean": "kyllä/ei",
+	"maps-validator-type-char": "merkki",
+	"maps-validator-fatal-error": "Vakava virhe: $1",
+	"maps-validator-describe-header-parameter": "Parametri",
+	"maps-validator-describe-header-type": "Aliakset",
+	"maps-validator-describe-header-default": "Oletus",
+	"maps-validator-describe-header-description": "Kuvaus",
+	"maps-validator-describe-required": "pakollinen",
+	"maps-validator-describe-empty": "tyhjä",
+	"maps-validator-message-nodesc": "Kuvausta ei annettu"
 }

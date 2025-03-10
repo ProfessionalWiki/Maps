@@ -97,5 +97,22 @@
 	"maps-geo-json-create-page-button": "Ccreje sta pàgene",
 	"maps-geo-json-create-page-creating": "Stoche a ccreje 'a pàgene...",
 	"maps-geo-json-create-page-summary": "Ccrejate 'na pàgene GeoJSON",
-	"maps-editor-edit-geojson": "Cange 'u strate GeoJSON"
+	"maps-editor-edit-geojson": "Cange 'u strate GeoJSON",
+	"maps-validator-type-string": "teste",
+	"maps-validator-type-float": "numere",
+	"maps-validator-type-boolean": "sìne/none",
+	"maps-validator-type-char": "carattere",
+	"maps-validator-type-string-list": "elenghe de teste",
+	"maps-validator-type-integer-list": "elenghe de intere",
+	"maps-validator-type-float-list": "elenghe de numere",
+	"maps-validator-type-boolean-list": "elenghe de sìne/none",
+	"maps-validator-type-char-list": "elenghe de carattere",
+	"maps-validator-type-title-list": "elenghe de titole",
+	"maps-validator-fatal-error": "Errore fatale: $1",
+	"maps-validator-describe-header-parameter": "Parametre",
+	"maps-validator-describe-header-type": "Tipe",
+	"maps-validator-describe-header-default": "De base",
+	"maps-validator-describe-header-description": "Descrizione",
+	"maps-validator-describe-required": "richieste",
+	"maps-validator-describe-empty": "vacande"
 }

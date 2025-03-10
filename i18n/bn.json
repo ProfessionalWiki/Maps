@@ -116,5 +116,7 @@
 	"maps-geo-json-create-source": "GeoJSON উৎস থেকে তৈরি করুন",
 	"maps-geo-json-create-page-button": "এই পাতাটি তৈরি করুন",
 	"maps-geo-json-create-page-creating": "পাতা তৈরি করা হচ্ছে...",
-	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps মানচিত্র এক্সটেনশন] দ্বারা সরবরাহিত দৃশ্যমান সম্পাদক দিয়ে করা সম্পাদনা"
+	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps মানচিত্র এক্সটেনশন] দ্বারা সরবরাহিত দৃশ্যমান সম্পাদক দিয়ে করা সম্পাদনা",
+	"maps-validator-type-title": "শিরোনাম",
+	"maps-validator-describe-header-description": "বিবরণ"
 }

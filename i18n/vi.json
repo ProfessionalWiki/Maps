@@ -98,5 +98,21 @@
 	"semanticmaps-par-showtitle": "Tên tùy chọn của cửa sổ thông tin đánh dấu. Có thể để trống để định dạng nội dung cửa sổ thông tin dùng bản mẫu.",
 	"semanticmaps-par-centre": "Trung tâm của bản đồ. Nếu không có, bản đồ sẽ tự động chọn trung tâm tối ưu bao gồm tất cả các dấu trên bản đồ.",
 	"semanticmaps-par-template": "Bản đồ dùng để định dạng nội dung của cửa sổ thông tin.",
-	"semanticmaps-par-geocodecontrol": "Hiện điều khiển mã hóa địa lý."
+	"semanticmaps-par-geocodecontrol": "Hiện điều khiển mã hóa địa lý.",
+	"maps-validator-type-string": "văn bản",
+	"maps-validator-type-integer": "số nguyên",
+	"maps-validator-type-float": "Số",
+	"maps-validator-type-boolean": "có/không",
+	"maps-validator-type-char": "ký tự",
+	"maps-validator-type-string-list": "danh sách văn bản",
+	"maps-validator-type-integer-list": "danh sách số nguyên",
+	"maps-validator-type-float-list": "danh sách con số",
+	"maps-validator-type-boolean-list": "danh sách có/không",
+	"maps-validator-type-char-list": "danh sách ký tự",
+	"maps-validator-type-title-list": "danh sách tiêu đề",
+	"maps-validator-describe-header-parameter": "Tham số",
+	"maps-validator-describe-header-type": "Loại",
+	"maps-validator-describe-header-default": "Mặc định",
+	"maps-validator-describe-header-description": "Miêu tả",
+	"maps-validator-describe-empty": "có sản phẩm nào"
 }

@@ -45,5 +45,11 @@
 	"maps-json-editor-toolbar-button-remove": "Pelan bestere",
 	"maps-geo-json-edit-source": "Çımeyi bıvurnê",
 	"maps-geo-json-create-page-button": "Na pele vıraze",
-	"maps-geo-json-create-page-creating": "Pele vıraziyena..."
+	"maps-geo-json-create-page-creating": "Pele vıraziyena...",
+	"maps-validator-type-float": "numre",
+	"maps-validator-describe-header-parameter": "Parametre",
+	"maps-validator-describe-header-type": "Babet",
+	"maps-validator-describe-header-default": "Hesabiyaye",
+	"maps-validator-describe-header-description": "Şınasnayış",
+	"maps-validator-describe-required": "lazım"
 }

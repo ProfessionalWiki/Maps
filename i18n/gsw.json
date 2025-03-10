@@ -52,5 +52,17 @@
 	"semanticmaps-par-showtitle": "E Titel im Informationsfenschter vo de Kennzeichnig aazeige oder nit. Des z deaktiviere isch vilmool nützlig, wänn e Vorlag zur Formatierig vum Inhalt vum Informationsfenschter bruucht wird.",
 	"semanticmaps-par-centre": "S Zentrum vo de Chart. Wänn's nit andersch aagee isch, wird automatisch s optimali Zentrum zur Darstellig vo allene Kennzeichnige uff de Chart ussgwäält.",
 	"semanticmaps-par-template": "E Vorlag, wo zur Formatierig vum Inhalt vum Informationsfenschter bruucht wird.",
-	"semanticmaps-par-geocodecontrol": "D Stüürigssyte zum Geokodiere aazeige."
+	"semanticmaps-par-geocodecontrol": "D Stüürigssyte zum Geokodiere aazeige.",
+	"maps-validator-type-string": "Täxt",
+	"maps-validator-type-integer": "Ganzzahl",
+	"maps-validator-type-float": "Zahl",
+	"maps-validator-type-boolean": "Jo/Nei",
+	"maps-validator-type-char": "Zeiche",
+	"maps-validator-fatal-error": "Fähler, wu nit cha behobe wäre: $1",
+	"maps-validator-describe-header-parameter": "Parameter",
+	"maps-validator-describe-header-type": "Typ",
+	"maps-validator-describe-header-default": "Standard",
+	"maps-validator-describe-header-description": "Bschrybig",
+	"maps-validator-describe-required": "erforderlig",
+	"maps-validator-describe-empty": "läär"
 }

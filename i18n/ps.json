@@ -24,5 +24,15 @@
 	"mapeditor-form-field-link": "تړنه",
 	"mapeditor-form-field-group": "ډله",
 	"mapeditor-form-field-image": "انځور",
-	"semanticmaps-forminput-locations": "استوګنځي"
+	"semanticmaps-forminput-locations": "استوګنځي",
+	"maps-validator-type-string": "متن",
+	"maps-validator-type-float": "شمېره",
+	"maps-validator-type-boolean": "هو/نه",
+	"maps-validator-type-char": "لوښه",
+	"maps-validator-type-float-list": "د شمېرو لړليک",
+	"maps-validator-type-boolean-list": "د هو/نه لړليک",
+	"maps-validator-type-char-list": "د لوښو لړليک",
+	"maps-validator-describe-header-default": "تلواليز",
+	"maps-validator-describe-header-description": "څرگندونه",
+	"maps-validator-describe-empty": "تش"
 }

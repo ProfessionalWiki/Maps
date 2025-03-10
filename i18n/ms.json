@@ -158,5 +158,9 @@
 	"maps-json-editor-toolbar-button-edit": "Ubah penanda dan bentuk sedia ada",
 	"maps-json-editor-toolbar-button-edit-disabled": "Tiada penanda atau bentuk untuk diubahsuai",
 	"maps-json-editor-toolbar-button-remove": "Masuk mod penghapusan",
-	"maps-json-editor-toolbar-button-remove-disabled": "Tiada penanda atau bentuk untuk dihapuskan"
+	"maps-json-editor-toolbar-button-remove-disabled": "Tiada penanda atau bentuk untuk dihapuskan",
+	"maps-validator-type-string": "teks",
+	"maps-validator-describe-header-default": "Asali",
+	"maps-validator-describe-required": "wajib",
+	"maps-validator-describe-empty": "kosong"
 }

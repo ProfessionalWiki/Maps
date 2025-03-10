@@ -67,5 +67,6 @@
 	"maps-json-editor-toolbar-button-save": "Sačuvaj izmjene",
 	"maps-json-editor-changes-saved": "Vaše izmjene su sačuvane",
 	"maps-geo-json-edit-source": "Uredi kôd",
-	"maps-geo-json-create-page-button": "Stvori ovu stranicu"
+	"maps-geo-json-create-page-button": "Stvori ovu stranicu",
+	"maps-validator-fatal-error": "Fatalna greška: $1"
 }

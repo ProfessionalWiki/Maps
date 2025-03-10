@@ -167,5 +167,19 @@
 	"maps-validator-type-mapspolygon": "地図ポリゴン",
 	"maps-validator-type-mapspolygon-list": "地図ポリゴンの一覧",
 	"maps-json-editor-toolbar-cancel-text": "キャンセル",
-	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps 地図拡張機能]提供によるビジュアルなエディタを使用した編集"
+	"tag-maps-visual-edit-description": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps 地図拡張機能]提供によるビジュアルなエディタを使用した編集",
+	"maps-validator-type-string": "テキスト",
+	"maps-validator-type-float": "数値",
+	"maps-validator-type-boolean": "はい/いいえ",
+	"maps-validator-type-char": "文字",
+	"maps-validator-type-integer-list": "整数のリスト",
+	"maps-validator-type-boolean-list": "はい/いいえのリスト",
+	"maps-validator-fatal-error": "致命的なエラー: $1",
+	"maps-validator-describe-header-parameter": "引数",
+	"maps-validator-describe-header-type": "種類",
+	"maps-validator-describe-header-default": "既定",
+	"maps-validator-describe-header-description": "説明",
+	"maps-validator-describe-required": "必須",
+	"maps-validator-describe-empty": "空",
+	"maps-validator-message-nodesc": "説明はありません"
 }
