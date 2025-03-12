@@ -5,11 +5,11 @@ declare( strict_types = 1 );
 namespace Maps\GeoJsonPages\Semantic;
 
 use Maps\GeoJsonPages\GeoJsonStore;
+use MediaWiki\Title\Title;
 use Onoi\EventDispatcher\EventDispatcher;
 use SMW\DIProperty;
 use SMW\ParserData;
 use SMWDIContainer;
-use Title;
 
 class SemanticGeoJsonStore implements GeoJsonStore {
 

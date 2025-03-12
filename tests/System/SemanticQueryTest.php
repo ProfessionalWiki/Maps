@@ -8,8 +8,8 @@ use Maps\DataAccess\PageContentFetcher;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\Util\PageCreator;
 use Maps\Tests\Util\TestFactory;
+use MediaWiki\Title\Title;
 use PHPUnit\Framework\TestCase;
-use Title;
 
 /**
  * @licence GNU GPL v2+

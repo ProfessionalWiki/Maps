@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\GeoJsonPages;
 
-use Html;
+use MediaWiki\Html\Html;
 use Maps\Presentation\OutputFacade;
 
 class GeoJsonMapPageUi {

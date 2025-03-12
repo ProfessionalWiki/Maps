@@ -4,8 +4,9 @@ declare( strict_types = 1 );
 
 namespace Maps\SemanticMW;
 
-use Html;
-use Linker;
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
+use MediaWiki\Title\Title;
 use Maps\LegacyModel\Location;
 use Maps\MapsFunctions;
 use MediaWiki\MediaWikiServices;
@@ -15,7 +16,6 @@ use SMW\Query\Result\ResultArray;
 use SMWDataValue;
 use SMWDIGeoCoord;
 use SMWWikiPageValue;
-use Title;
 
 /**
  * @licence GNU GPL v2+

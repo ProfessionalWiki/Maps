@@ -4,8 +4,8 @@ declare( strict_types = 1 );
 
 namespace Maps\Tests\Util;
 
-use CommentStoreComment;
-use Title;
+use MediaWiki\CommentStore\CommentStoreComment;
+use MediaWiki\Title\Title;
 use User;
 
 /**

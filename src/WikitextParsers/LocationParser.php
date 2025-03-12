@@ -9,7 +9,7 @@ use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\FileUrlFinder;
 use Maps\LegacyModel\Location;
 use Maps\MapsFactory;
-use Title;
+use MediaWiki\Title\Title;
 use ValueParsers\ParseException;
 use ValueParsers\StringValueParser;
 use ValueParsers\ValueParser;
