@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Map\SemanticFormat;
 
-use Linker;
+use MediaWiki\Linker\Linker;
 use Maps\FileUrlFinder;
 use Maps\LegacyModel\BaseElement;
 use Maps\LegacyModel\Location;
@@ -16,11 +16,11 @@ use Maps\Presentation\WikitextParser;
 use Maps\SemanticMW\QueryHandler;
 use Maps\WikitextParsers\LocationParser;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Parser;
 use SMW\Query\QueryResult;
 use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;
-use Title;
 
 /**
  * @licence GNU GPL v2+

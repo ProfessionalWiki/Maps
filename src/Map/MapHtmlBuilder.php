@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Map;
 
 use FormatJson;
-use Html;
+use MediaWiki\Html\Html;
 
 class MapHtmlBuilder {
 

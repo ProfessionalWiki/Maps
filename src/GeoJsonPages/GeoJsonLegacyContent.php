@@ -7,9 +7,9 @@ namespace Maps\GeoJsonPages;
 use Maps\GeoJsonPages\GeoJsonContent as GeoJsonPagesGeoJsonContent;
 use Maps\MapsFactory;
 use Maps\Presentation\OutputFacade;
+use MediaWiki\Title\Title;
 use ParserOptions;
 use ParserOutput;
-use Title;
 
 /**
  * @deprecated This class should be removed when Maps drops support for MediaWiki 1.37.
