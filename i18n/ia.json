@@ -265,6 +265,7 @@
 	"maps-validator-type-boolean": "si/no",
 	"maps-validator-type-char": "character",
 	"maps-validator-type-dimension": "numero e unitate dimensional",
+	"maps-validator-type-title": "titulo",
 	"maps-validator-type-string-list": "lista de textos",
 	"maps-validator-type-integer-list": "lista de numeros integre",
 	"maps-validator-type-float-list": "lista de numeros",
