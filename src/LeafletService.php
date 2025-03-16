@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps;
 
-use Html;
+use MediaWiki\Html\Html;
 use Maps\DataAccess\ImageRepository;
 use Maps\Map\MapData;
 use ParamProcessor\ParameterTypes;

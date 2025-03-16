@@ -13,9 +13,7 @@ use Maps\DataAccess\GeoJsonFetcher;
 use Maps\GeoJsonPages\GeoJsonContent;
 use Maps\Tests\MapsTestFactory;
 use Maps\Tests\Util\PageCreator;
-use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\TestCase;
-use Title;
 
 /**
  * @covers \Maps\DataAccess\GeoJsonFetcher

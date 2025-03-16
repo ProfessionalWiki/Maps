@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\LegacyMapEditor;
 
 use ContextSource;
-use Html;
+use MediaWiki\Html\Html;
 
 /**
  * Class to Handle HTML generation for Special:MapEditor
