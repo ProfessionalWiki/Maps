@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 11.0.1
 
-Release TDB
+Released on March 16th, 2025.
 
 * Improved compatibility with future Semantic MediaWiki versions
 
