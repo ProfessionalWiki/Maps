@@ -215,6 +215,7 @@
 	"maps-validator-type-boolean": "예/아니오",
 	"maps-validator-type-char": "글자",
 	"maps-validator-type-dimension": "수치 단위",
+	"maps-validator-type-title": "제목",
 	"maps-validator-type-string-list": "텍스트 목록",
 	"maps-validator-type-integer-list": "정수 목록",
 	"maps-validator-type-float-list": "숫자 목록",
