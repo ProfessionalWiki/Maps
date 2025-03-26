@@ -5,7 +5,7 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 12.0.0
 
-Not release yet.
+Not released yet.
 
 * Raised the minimum MediaWiki version from 1.35 to 1.40
 * Added compatibility with MediaWiki 1.44
