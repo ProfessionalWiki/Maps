@@ -3,9 +3,9 @@ different releases and which versions of PHP and MediaWiki they support, see the
 [platform compatibility tables](INSTALL.md#platform-compatibility-and-release-status).
 
 
-## MAps 12.0.0
+## Maps 12.0.0
 
-Released on March 16th, 2025.
+Not released yet.
 
 * Raised the minimum MediaWiki version from 1.35 to 1.40
 * Added compatibility with MediaWiki 1.44
