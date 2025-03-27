@@ -269,6 +269,7 @@
 	"maps-validator-type-boolean": "نعم/لا",
 	"maps-validator-type-char": "الحرف",
 	"maps-validator-type-dimension": "عدد ووحدة الأبعاد",
+	"maps-validator-type-title": "عنوان",
 	"maps-validator-type-string-list": "قائمة النصوص",
 	"maps-validator-type-integer-list": "قائمة الأعداد الصحيحة",
 	"maps-validator-type-float-list": "قائمة الأرقام",
