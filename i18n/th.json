@@ -5,6 +5,7 @@
 			"Ans",
 			"Geonuch",
 			"Nitisart Jungtrakungrat",
+			"Prem4826",
 			"Woraponboonkerd"
 		]
 	},
@@ -13,7 +14,7 @@
 	"maps-markers": "ตัวทำเครื่องหมาย",
 	"maps-others": "อื่น ๆ",
 	"maps-ns-layer": "เลเยอร์",
-	"maps-layer-property": "คุณลักษณะ",
+	"maps-layer-property": "คุณสมบัติ",
 	"maps-layer-value": "ค่า",
 	"maps-layer-errors": "ข้อผิดพลาด",
 	"maps-layer-of-type": "เลเยอร์ของประเภท \"$1\"",
