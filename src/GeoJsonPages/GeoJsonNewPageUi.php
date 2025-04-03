@@ -23,7 +23,7 @@ class GeoJsonNewPageUi {
 				[
 					'id' => 'maps-geojson-new'
 				],
-				wfMessage( 'maps-geo-json-create-page-button' )->inContentLanguage()->text()
+				wfMessage( 'maps-geo-json-create-page-button' )->text()
 			)
 		);
 	}

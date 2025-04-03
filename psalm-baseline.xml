@@ -86,10 +86,9 @@
       <code>addToOutput</code>
     </MissingReturnType>
     <MixedArgument occurrences="1">
-      <code>wfMessage( 'maps-loading-map' )-&gt;inContentLanguage()-&gt;text()</code>
+      <code>wfMessage( 'maps-loading-map' )-&gt;text()</code>
     </MixedArgument>
-    <MixedMethodCall occurrences="2">
-      <code>inContentLanguage</code>
+    <MixedMethodCall occurrences="1">
       <code>text</code>
     </MixedMethodCall>
     <PossiblyNullOperand occurrences="1">
@@ -101,10 +100,9 @@
   </file>
   <file src="src/GeoJsonPages/GeoJsonNewPageUi.php">
     <MixedArgument occurrences="1">
-      <code>wfMessage( 'maps-geo-json-create-page-button' )-&gt;inContentLanguage()-&gt;text()</code>
+      <code>wfMessage( 'maps-geo-json-create-page-button' )-&gt;text()</code>
     </MixedArgument>
-    <MixedMethodCall occurrences="2">
-      <code>inContentLanguage</code>
+    <MixedMethodCall occurrences="1">
       <code>text</code>
     </MixedMethodCall>
     <UndefinedFunction occurrences="1">
@@ -636,10 +634,9 @@
   </file>
   <file src="src/Map/MapHtmlBuilder.php">
     <MixedArgument occurrences="1">
-      <code>wfMessage( 'maps-loading-map' )-&gt;inContentLanguage()-&gt;text()</code>
+      <code>wfMessage( 'maps-loading-map' )-&gt;text()</code>
     </MixedArgument>
-    <MixedMethodCall occurrences="2">
-      <code>inContentLanguage</code>
+    <MixedMethodCall occurrences="1">
       <code>text</code>
     </MixedMethodCall>
     <PossiblyFalseArgument occurrences="1">
