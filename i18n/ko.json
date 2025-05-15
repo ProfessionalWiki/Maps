@@ -7,6 +7,7 @@
 			"Macofe",
 			"Priviet",
 			"Revi",
+			"YeBoy371",
 			"Ykhwong",
 			"아라"
 		]
@@ -111,7 +112,7 @@
 	"maps_unrecognized_coords_for": "다음 {{PLURAL:$2|좌표}}는 인식할 수 없고 지도에서 생략{{PLURAL:$2|되었습니다}}:\n$1",
 	"maps_map_cannot_be_displayed": "지도를 보여줄 수 없습니다.",
 	"maps-geocoder-not-available": "지도의 좌표화 기능을 사용할 수 없습니다. 당신의 위치는 좌표화할 수 없습니다.",
-	"maps_googlemaps3": "Google 지도 v3",
+	"maps_googlemaps3": "구글 지도 v3",
 	"maps-leaflet-par-layers": "레이서 선택기에서 사용할 수 있는 레이어입니다. 첫 레이어는 지도를 불러올 때 보여줍니다.",
 	"maps_click_to_activate": "지도를 활성화하려면 클릭하세요",
 	"maps_centred_on": "$1, $2 지도 중심",
@@ -123,7 +124,7 @@
 	"maps-par-centre": "지도의 중심으로 할 위치",
 	"maps-par-enable-fullscreen": "전체 화면 버튼 활성화",
 	"maps-par-kml": "지도에 불러올 KML 파일입니다.",
-	"maps-googlemaps3-incompatbrowser": "브라우저는 Google 지도 v3와 호환되지 않습니다.",
+	"maps-googlemaps3-incompatbrowser": "브라우저는 구글 지도 v3와 호환되지 않습니다.",
 	"maps-googlemaps3-par-type": "처음 보여줄 지도 종류입니다.",
 	"maps-googlemaps3-par-types": "종류 컨트롤을 통해 사용할 수 있는 지도 종류입니다.",
 	"maps-googlemaps3-par-layers": "지도에 불러오는 특수 레이어입니다.",

@@ -35,11 +35,11 @@
 	"maps-json-editor-toolbar-save-text": "Готово",
 	"maps-json-editor-toolbar-cancel-text": "Отказ",
 	"maps-validator-type-string": "текст",
-	"maps-validator-type-float": "номер",
+	"maps-validator-type-float": "число",
 	"maps-validator-type-boolean": "да/не",
-	"maps-validator-describe-header-type": "Тип",
+	"maps-validator-describe-header-type": "Псевдоними",
 	"maps-validator-describe-header-default": "По подразбиране",
 	"maps-validator-describe-header-description": "Описание",
 	"maps-validator-describe-empty": "празно",
-	"maps-validator-message-nodesc": "Не е предоставено описание"
+	"maps-validator-message-nodesc": "Не е въведено описание"
 }
