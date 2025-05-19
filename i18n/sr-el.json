@@ -34,6 +34,7 @@
 	"maps-validator-type-boolean": "da/ne",
 	"maps-validator-type-char": "znak",
 	"maps-validator-type-dimension": "broj i jedinica dimenzije",
+	"maps-validator-type-title": "naslov",
 	"maps-validator-type-string-list": "spisak tekstova",
 	"maps-validator-type-integer-list": "spisak celih brojeva",
 	"maps-validator-type-float-list": "spisak brojeva",
