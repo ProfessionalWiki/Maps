@@ -119,7 +119,7 @@
 	"maps-par-mappingservice": "Permite configurar el serviciu de mapes que s'usará pa xenerar el mapa.",
 	"maps-par-resizable": "Permite redimensionar el mapa arrastrando de la esquina inferior drecha.",
 	"maps-par-searchmarkers": "Permite buscar marcadores específicos con un campu incrustáu nel mapa.",
-	"maps-par-zoom": "Nivel de zoom del mapa. Para los mapes con marcadores el valor predetermináu sedrá el nivel máximu d'ampliación qu'amuese tolos marcadores.",
+	"maps-par-zoom": "Nivel de zoom del mapa. Para los mapes con marcadores el valor predetermináu va ser el nivel máximu d'ampliación qu'amuese tolos marcadores.",
 	"maps-par-width": "Permite configurar l'anchor del mapa. De mou predetermináu s'asume el pixel como unidá, pero se pue conseñar esplícitamente una d'estes unidaes: px, ex, em, %.",
 	"maps-par-height": "Permite configurar l'altor del mapa. De mou predetermináu s'asumen los pixeles como unidá, pero se pue conseñar esplícitamente una d'estes unidaes: px, ex, em.",
 	"maps-par-centre": "El llugar nel que se tien de centrar el mapa",

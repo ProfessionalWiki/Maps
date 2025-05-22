@@ -113,7 +113,7 @@
 	"maps-leaflet-par-layers-dark": "Le stratos que essera disponibile in le selector de stratos quando un modo obscur es activate. Le prime strato essera monstrate quando le carta se carga.",
 	"maps-leaflet-par-overlaylayers": "Le stratos de superposition que essera monstrate quando le carta se carga.",
 	"maps-leaflet-par-maxclusterradius": "Le radio maxime que un aggruppamento coperira a partir del marcator central (in pixels).",
-	"maps-leaflet-par-clusterspiderfy": "Quando tu clicca sur un aggruppamento al nivello de zoom le plus basse, nos lo extende como tela de aranea, de maniera que tu pote vider tote su marcatores.",
+	"maps-leaflet-par-clusterspiderfy": "Quando tu clicca sur un aggruppamento al nivello de zoom le plus basse, illo se expande in forma de tela de aranea, de maniera que tu pote vider tote su marcatores.",
 	"maps-leaflet-par-clicktarget": "Cliccante sur le carta, tu essera redirigite verso iste URL. %lat% es reimplaciate per le latitude e %long% per le longitude.",
 	"maps_click_to_activate": "Clicca pro activar le carta",
 	"maps_centred_on": "Carta centrate sur $1, $2.",
