@@ -274,10 +274,10 @@
 	"maps-validator-type-title-list": "lista de titulos",
 	"maps-validator-fatal-error": "Error fatal: $1",
 	"maps-validator-describe-header-parameter": "Parametro",
-	"maps-validator-describe-header-type": "Typo",
+	"maps-validator-describe-header-type": "Aliases",
 	"maps-validator-describe-header-default": "Predefinition",
 	"maps-validator-describe-header-description": "Description",
 	"maps-validator-describe-required": "requirite",
 	"maps-validator-describe-empty": "vacue",
-	"maps-validator-message-nodesc": "Sin description"
+	"maps-validator-message-nodesc": "Necun description fornite"
 }
