@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ерней",
+			"Ильгиз",
 			"Ильнар"
 		]
 	},
@@ -25,7 +26,7 @@
 	"mapeditor-none-text": "Һични",
 	"mapeditor-done-button": "Тәмам",
 	"mapeditor-remove-button": "Бетерү",
-	"mapeditor-import-button2": "Кертү",
+	"mapeditor-import-button2": "Импортла",
 	"mapeditor-link-title-switcher-link-text": "Сылтама",
 	"mapeditor-form-field-text": "Текст",
 	"mapeditor-form-field-link": "Сылтама",
