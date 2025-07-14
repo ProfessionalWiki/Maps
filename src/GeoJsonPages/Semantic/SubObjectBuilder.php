@@ -48,14 +48,14 @@ class SubObjectBuilder {
 			new \SMWDIGeoCoord( $point->getCoordinates()[1], $point->getCoordinates()[0] )
 		);
 
-		if ( array_key_exists( 'description', $properties ) ) {
+		if ( array_key_exists( 'description', $properties ) && is_string( $properties['description'] ) ) {
 			$subObject->addPropertyValuePair(
 				'HasDescription',
 				new \SMWDIBlob( $properties['description'] )
 			);
 		}
 
-		if ( array_key_exists( 'title', $properties ) ) {
+		if ( array_key_exists( 'title', $properties ) && is_string( $properties['title'] ) ) {
 			$subObject->addPropertyValuePair(
 				'HasTitle',
 				new \SMWDIBlob( $properties['title'] )
