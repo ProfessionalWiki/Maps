@@ -115,7 +115,7 @@ final class MapsHooks {
 		return true;
 	}
 
-	public static function onChangeTagsAllowedAdd( array &$allowedTags, array $tags, \User $user = null ) {
+	public static function onChangeTagsAllowedAdd( array &$allowedTags ) {
 		$allowedTags[] = 'maps-visual-edit';
 	}
 
