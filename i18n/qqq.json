@@ -19,7 +19,7 @@
 			"아라"
 		]
 	},
-	"maps-desc": "{{desc|name=Maps|url=https://www.semantic-mediawiki.org/wiki/Extension:Maps}}",
+	"maps-desc": "{{desc|name=Maps|url=https://maps.extension.wiki}}",
 	"maps_map": "{{Identical|Map}}",
 	"maps-tracking-category": "The name of a category for all pages which use the <code><nowiki>#display_map</nowiki></code> parser function or <code><nowiki>display_map</nowiki></code> tag.",
 	"maps-loading-map": "This is an informatory message.",
