@@ -2,7 +2,7 @@
 
 /**
  * For instructions on how to configure Maps, see
- * https://www.semantic-mediawiki.org/wiki/Maps/Configuration
+ * https://professional.wiki/en/extension/maps
  *
  * For a list of all available settings and their default values,
  * see DefaultSettings.php in this directory.
