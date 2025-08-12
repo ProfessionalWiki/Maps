@@ -10,6 +10,7 @@ Not released yet.
 * Raised the minimum MediaWiki version from 1.35 to 1.40
 * Added compatibility with MediaWiki 1.44
 * Fixed GeoJSON error by ignoring GeoJSON descriptions that are objects
+* Fixed fatal error when providing an invalid radius for circles
 
 ## Maps 11.0.1
 

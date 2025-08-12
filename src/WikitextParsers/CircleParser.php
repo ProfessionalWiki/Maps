@@ -37,9 +37,8 @@ class CircleParser implements ValueParser {
 	 */
 	public function parse( $value ): Circle {
 		$metaData = explode( $this->metaDataSeparator, $value );
-		$circleData = explode( ':', array_shift( $metaData ) );
 
-		$circle = new Circle( $this->stringToLatLongValue( $circleData[0] ), (float)$circleData[1] );
+		$circle = $this->buildCircle( array_shift( $metaData ) );
 
 		if ( $metaData !== [] ) {
 			$circle->setTitle( array_shift( $metaData ) );
@@ -70,6 +69,27 @@ class CircleParser implements ValueParser {
 		}
 
 		return $circle;
+	}
+
+	private function buildCircle( string $circleWikitext ): Circle {
+		$circleData = explode( ':', $circleWikitext );
+
+		return new Circle(
+			$this->stringToLatLongValue( $circleData[0] ),
+			$this->extractRadius( $circleData )
+		);
+	}
+
+	private function extractRadius( array $circleData ): float {
+		if ( array_key_exists( 1, $circleData ) ) {
+			$radius = (float)$circleData[1];
+
+			if ( $radius > 0 ) {
+				return $radius;
+			}
+		}
+
+		return 1;
 	}
 
 	private function stringToLatLongValue( string $location ): LatLongValue {

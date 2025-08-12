@@ -19,11 +19,7 @@ use PHPUnit\Framework\TestCase;
 class CircleParserTest extends TestCase {
 
 	public function testGivenCoordinateAndRadius_parserReturnsCircle() {
-		$parser = new CircleParser( new CoordinateFriendlyGeocoder( new NullGeocoder() ) );
-
-		$circle = $parser->parse( '57.421,23.90625:32684.605182' );
-
-		$this->assertInstanceOf( Circle::class, $circle );
+		$circle = $this->newCircleParser()->parse( '57.421,23.90625:32684.605182' );
 
 		$expectedLatLong = new LatLongValue( 57.421, 23.90625 );
 		$this->assertTrue( $expectedLatLong->equals( $circle->getCircleCentre() ) );
@@ -31,15 +27,33 @@ class CircleParserTest extends TestCase {
 		$this->assertSame( 32684.605182, $circle->getCircleRadius() );
 	}
 
+	private function newCircleParser(): CircleParser {
+		return new CircleParser( new CoordinateFriendlyGeocoder( new NullGeocoder() ) );
+	}
+
 	public function testGivenTitleAndText_circleHasProvidedMetaData() {
-		$parser = new CircleParser( new CoordinateFriendlyGeocoder( new NullGeocoder() ) );
-
-		$circle = $parser->parse( '57.421,23.90625:32684.605182~title~text' );
-
-		$this->assertInstanceOf( Circle::class, $circle );
+		$circle = $this->newCircleParser()->parse( '57.421,23.90625:32684.605182~title~text' );
 
 		$this->assertSame( 'title', $circle->getTitle() );
 		$this->assertSame( 'text', $circle->getText() );
+	}
+
+	public function testGivenNoRadius_radiusIsOne() {
+		$circle = $this->newCircleParser()->parse( '42,42' );
+
+		$this->assertSame( 1.0, $circle->getCircleRadius() );
+	}
+
+	public function testGivenNegative_radiusIsOne() {
+		$circle = $this->newCircleParser()->parse( '42,42:-5' );
+
+		$this->assertSame( 1.0, $circle->getCircleRadius() );
+	}
+
+	public function testGivenInvalid_radiusIsOne() {
+		$circle = $this->newCircleParser()->parse( '42,42:foo' );
+
+		$this->assertSame( 1.0, $circle->getCircleRadius() );
 	}
 
 }
