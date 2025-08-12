@@ -16,18 +16,10 @@ use InvalidArgumentException;
  */
 class Circle extends \Maps\LegacyModel\BaseFillableElement {
 
-	private $circleCentre;
-	private $circleRadius;
+	private LatLongValue $circleCentre;
+	private float $circleRadius;
 
 	public function __construct( LatLongValue $circleCentre, float $circleRadius ) {
-		if ( !is_float( $circleRadius ) && !is_int( $circleRadius ) ) {
-			throw new InvalidArgumentException( '$circleRadius must be a float or int' );
-		}
-
-		if ( $circleRadius <= 0 ) {
-			throw new InvalidArgumentException( '$circleRadius must be greater than zero' );
-		}
-
 		$this->setCircleCentre( $circleCentre );
 		$this->setCircleRadius( $circleRadius );
 	}
@@ -49,7 +41,7 @@ class Circle extends \Maps\LegacyModel\BaseFillableElement {
 		return $this->circleCentre;
 	}
 
-	public function setCircleCentre( LatLongValue $circleCentre ) {
+	public function setCircleCentre( LatLongValue $circleCentre ): void {
 		$this->circleCentre = $circleCentre;
 	}
 
@@ -57,7 +49,11 @@ class Circle extends \Maps\LegacyModel\BaseFillableElement {
 		return $this->circleRadius;
 	}
 
-	public function setCircleRadius( float $circleRadius ) {
+	public function setCircleRadius( float $circleRadius ): void {
+		if ( $circleRadius <= 0 ) {
+			throw new InvalidArgumentException( '$circleRadius must be greater than zero, got "' . $circleRadius . '"' );
+		}
+
 		$this->circleRadius = $circleRadius;
 	}
 
