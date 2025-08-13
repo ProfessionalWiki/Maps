@@ -5,10 +5,10 @@ different releases and which versions of PHP and MediaWiki they support, see the
 
 ## Maps 12.0.0
 
-Not released yet.
+Released on August 13th, 2025.
 
 * Raised the minimum MediaWiki version from 1.35 to 1.40
-* Added compatibility with MediaWiki 1.44
+* Added _partial_ compatibility with MediaWiki 1.44
 * Fixed GeoJSON error by ignoring GeoJSON descriptions that are objects
 * Fixed fatal error when providing an invalid radius for circles
 
