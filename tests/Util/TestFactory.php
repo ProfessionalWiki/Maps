@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\Tests\Util;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use User;
 
 /**
@@ -25,7 +26,7 @@ class TestFactory {
 		return MediaWikiServices::getInstance()->getParser()
 			->parse(
 				$textToParse,
-				\Title::newMainPage(),
+				Title::newMainPage(),
 				new \ParserOptions( User::newSystemUser( 'TestUser' ) )
 			)->getText();
 	}
