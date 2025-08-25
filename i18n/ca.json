@@ -7,7 +7,8 @@
 			"Mguix",
 			"Paucabot",
 			"PerroVerd",
-			"Toniher"
+			"Toniher",
+			"Yupik"
 		]
 	},
 	"maps_map": "Mapa",
@@ -35,6 +36,7 @@
 	"maps_coordinates_missing": "No s'han proporcionat coordenades pel mapa.",
 	"maps_map_cannot_be_displayed": "No es pot mostrar el mapa.",
 	"maps_centred_on": "Mapa centrat en $1, $2.",
+	"mapeditor-form-field-text": "Text",
 	"semanticmaps-unrecognizeddistance": "El valor $1 no és un valor de distància.",
 	"semanticmaps-kml-link": "Visualitza el fitxer KML",
 	"semanticmaps-default-kml-pagelink": "Visualitza la pàgina $1",
