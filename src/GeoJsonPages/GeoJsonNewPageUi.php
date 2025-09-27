@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace Maps\GeoJsonPages;
 
 use Maps\Presentation\OutputFacade;
+use MediaWiki\Html\Html;
 
 class GeoJsonNewPageUi {
 
@@ -18,7 +19,7 @@ class GeoJsonNewPageUi {
 		$this->output->addModules( 'ext.maps.geojson.new.page' );
 
 		$this->output->addHtml(
-			\Html::element(
+			Html::element(
 				'button',
 				[
 					'id' => 'maps-geojson-new'
