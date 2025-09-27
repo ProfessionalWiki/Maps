@@ -8,6 +8,7 @@ use Content;
 use Maps\MapsFactory;
 use Maps\Presentation\OutputFacade;
 use MediaWiki\Content\Renderer\ContentParseParams;
+use MediaWiki\Title\Title;
 use ParserOutput;
 
 class GeoJsonContentHandler extends \JsonContentHandler {
@@ -47,8 +48,13 @@ class GeoJsonContentHandler extends \JsonContentHandler {
 				// to avoid decoding it again in SubObjectBuilder -> getSubObjectsFromGeoJson
 				$text = json_encode( $content->getData()->getValue() );
 
+				$subjectPage = $cpoParams->getPage();
+				if ( !$subjectPage instanceof Title ) {
+					// all underlying methods expect a Title, so cast it to one
+					$subjectPage = Title::newFromPageReference( $subjectPage );
+				}
 				MapsFactory::globalInstance()
-					->newSemanticGeoJsonStore( $parserOutput, $cpoParams->getPage() )
+					->newSemanticGeoJsonStore( $parserOutput, $subjectPage )
 					->storeGeoJson( $text );
 			}
 
