@@ -4,6 +4,7 @@
 			"Imksa",
 			"Macofe",
 			"Meno25",
+			"Mohammed Qays",
 			"ديفيد"
 		]
 	},
@@ -154,7 +155,7 @@
 	"mapeditor": "محرر الخرائط",
 	"mapeditor-parser-error": "حدث خطأ أثناء تحليل البيانات الوصفية; يتم تجاهل إدخال المستخدم.",
 	"mapeditor-none-text": "لا شيء",
-	"mapeditor-done-button": "تم",
+	"mapeditor-done-button": "نفذ",
 	"mapeditor-remove-button": "إزالة",
 	"mapeditor-import-button2": "استيراد",
 	"mapeditor-export-button": "تصدير إلى رمز ويكي",
