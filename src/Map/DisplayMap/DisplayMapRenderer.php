@@ -14,7 +14,7 @@ use Maps\MappingService;
 use Maps\Presentation\ElementJsonSerializer;
 use Maps\Presentation\WikitextParser;
 use Maps\WikitextParsers\LocationParser;
-use Parser;
+use MediaWiki\Parser\Parser;
 
 /**
  * Class handling the #display_map rendering.

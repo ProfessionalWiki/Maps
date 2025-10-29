@@ -7,7 +7,7 @@ namespace Maps\ParserHooks;
 use Maps\MapsFactory;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\ProcessingResult;
-use Parser;
+use MediaWiki\Parser\Parser;
 use ParserHook;
 use ParserHooks\HookDefinition;
 use ParserHooks\HookHandler;

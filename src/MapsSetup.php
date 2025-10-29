@@ -17,7 +17,7 @@ use Maps\WikitextParsers\LocationParser;
 use Maps\WikitextParsers\PolygonParser;
 use Maps\WikitextParsers\RectangleParser;
 use Maps\WikitextParsers\WmsOverlayParser;
-use Parser;
+use MediaWiki\Parser\Parser;
 
 /**
  * @licence GNU GPL v2+

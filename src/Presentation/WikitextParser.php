@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace Maps\Presentation;
 
-use Parser;
+use MediaWiki\Parser\Parser;
 use ParserOptions;
 
 class WikitextParser {

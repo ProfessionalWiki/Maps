@@ -38,7 +38,7 @@ use Maps\WikitextParsers\WmsOverlayParser;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use ParamProcessor\ParamDefinitionFactory;
-use Parser;
+use MediaWiki\Parser\Parser;
 use RepoGroup;
 use SimpleCache\Cache\Cache;
 use SimpleCache\Cache\MediaWikiCache;
