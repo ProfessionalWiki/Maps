@@ -10,6 +10,9 @@ use MediaWiki\Title\Title;
 use Maps\LegacyModel\Location;
 use Maps\MapsFunctions;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\ParserOptions;
+use MediaWiki\Context\RequestContext;
 use SMW\Query\PrintRequest;
 use SMW\Query\QueryResult;
 use SMW\Query\Result\ResultArray;
@@ -467,13 +470,17 @@ class QueryHandler {
 		return $this->hideNamespace ? $title->getText() : $title->getFullText();
 	}
 
-	private function getParser(): \Parser {
+	private function getParser(): Parser {
 		$parser = MediaWikiServices::getInstance()->getParser();
 		if ( !$parser->getOptions() ) {
-			$user = \RequestContext::getMain()->getUser();
-			$parser->setOptions( new \ParserOptions( $user ) );
-			$parser->clearState();
+			$user = RequestContext::getMain()->getUser();
+			$parser->setOptions( new ParserOptions( $user ) );
 		}
+		$parser->startExternalParse(
+			null,
+			new ParserOptions( RequestContext::getMain()->getUser() ),
+			Parser::OT_HTML
+		);
 		return $parser;
 	}
 
