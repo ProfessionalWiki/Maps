@@ -6,7 +6,7 @@ namespace Maps\Map\CargoFormat;
 
 use CargoDisplayFormat;
 use Maps\MapsFactory;
-use Parser;
+use MediaWiki\Parser\Parser;
 use ParserOutput;
 
 class CargoFormat extends CargoDisplayFormat {

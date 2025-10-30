@@ -11,7 +11,7 @@ use Maps\ParserHooks\FindDestinationFunction;
 use Maps\ParserHooks\GeocodeFunction;
 use Maps\ParserHooks\GeoDistanceFunction;
 use Maps\ParserHooks\MapsDocFunction;
-use Parser;
+use MediaWiki\Parser\Parser;
 use ParserHooks\HookRegistrant;
 use PPFrame;
 

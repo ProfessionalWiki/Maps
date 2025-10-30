@@ -7,7 +7,7 @@ namespace Maps\ParserHooks;
 use Jeroen\SimpleGeocoder\Geocoder;
 use Maps\MapsFactory;
 use ParamProcessor\ProcessingResult;
-use Parser;
+use MediaWiki\Parser\Parser;
 use ParserHooks\HookDefinition;
 use ParserHooks\HookHandler;
 

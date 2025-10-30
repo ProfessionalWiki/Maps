@@ -7,6 +7,9 @@ namespace Maps\SemanticMW;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Title\Title;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Parser\Parser;
+use MediaWiki\Parser\ParserOptions;
 use Maps\LegacyModel\Location;
 use Maps\MapsFunctions;
 use MediaWiki\MediaWikiServices;
@@ -41,6 +44,8 @@ class QueryHandler {
 	private $queryResult;
 
 	private $outputMode;
+
+	private $parser = null;
 
 	/**
 	 * The template to use for the text, or false if there is none.
@@ -467,14 +472,35 @@ class QueryHandler {
 		return $this->hideNamespace ? $title->getText() : $title->getFullText();
 	}
 
-	private function getParser(): \Parser {
-		$parser = MediaWikiServices::getInstance()->getParser();
-		if ( !$parser->getOptions() ) {
-			$user = \RequestContext::getMain()->getUser();
-			$parser->setOptions( new \ParserOptions( $user ) );
-			$parser->clearState();
+	/**
+	 * Since we’re outside the normal parse flow (like QueryHandler), we must initialize the Parser:
+     * * Build a fresh Parser from ParserFactory->create() rather than the global shared instance.
+     * * Reuse that initialized Parser for all related parsing that belongs to the same context Title and Options.
+	 */
+	private function getParser(): Parser {
+		if ( $this->parser !== null ) {
+			return $this->parser;
 		}
-		return $parser;
+
+		$this->parser = MediaWikiServices::getInstance()->getParserFactory()->create();
+
+		// Ensure parser options are present
+		$options = $this->parser->getOptions();
+		if ( !$options ) {
+			$user = RequestContext::getMain()->getUser();
+			$options = new ParserOptions( $user );
+			$this->parser->setOptions( $options );
+			$this->parser->clearState();
+		}
+
+		$this->parser->startExternalParse(
+			null,
+			$options,
+			Parser::OT_HTML,
+			true
+		);
+
+		return $this->parser;
 	}
 
 	/**
