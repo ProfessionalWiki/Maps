@@ -12,6 +12,7 @@
 			"MuratTheTurkish",
 			"Rapsar",
 			"Sadrettin",
+			"SaldırganSincap",
 			"Sezgin İbiş",
 			"Trncmvsr",
 			"Vito Genovese"
@@ -82,7 +83,7 @@
 	"maps-displaymap-par-label": "Belirli bir etiketi olmayan tüm işaretçilerin açılır pencerelerinde görüntülenecek metnin ayarlanmasına izin verir.",
 	"maps-displaymap-par-icon": "Tüm işaretçiler için kullanılan simgenin ayarlanmasına izin verir.",
 	"maps-displaymap-par-circles": "Görüntülenecek daireler",
-	"maps-displaymap-par-copycoords": "Koordinatlarının kopyalanabileceği bir yeri tıklarken bir iletişim kutusu göster",
+	"maps-displaymap-par-copycoords": "Koordinatlarının kopyalanabileceği bir işaretçiye tıklandığında bir diyalogu göster",
 	"maps-displaymap-par-lines": "Görüntülenecek çizgiler",
 	"maps-displaymap-par-maxzoom": "Maksimum yakın seviyesi",
 	"maps-displaymap-par-minzoom": "Minimum yakın seviyesi",
