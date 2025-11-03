@@ -17,7 +17,7 @@ use Maps\SemanticMW\QueryHandler;
 use Maps\WikitextParsers\LocationParser;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
-use Parser;
+use MediaWiki\Parser\Parser;
 use SMW\Query\QueryResult;
 use SMW\Query\ResultPrinters\ResultPrinter;
 use SMWOutputs;

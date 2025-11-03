@@ -7,7 +7,7 @@ namespace Maps\ParserHooks;
 use Maps\GeoFunctions;
 use Maps\Presentation\MapsDistanceParser;
 use ParamProcessor\ProcessingResult;
-use Parser;
+use MediaWiki\Parser\Parser;
 use ParserHooks\HookDefinition;
 use ParserHooks\HookHandler;
 

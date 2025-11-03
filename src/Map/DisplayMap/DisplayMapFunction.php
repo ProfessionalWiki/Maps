@@ -12,7 +12,7 @@ use Maps\Presentation\ParameterExtractor;
 use MWException;
 use ParamProcessor\ParamDefinition;
 use ParamProcessor\Processor;
-use Parser;
+use MediaWiki\Parser\Parser;
 
 /**
  * Class for the 'display_map' parser hooks.
