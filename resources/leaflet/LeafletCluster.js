@@ -10,6 +10,7 @@
 				maxClusterRadius: options.clustermaxradius,
 				disableClusteringAtZoom: options.clustermaxzoom + 1,
 				zoomToBoundsOnClick: options.clusterzoomonclick,
+				animate: options.clusteranimate,
 				spiderfyOnMaxZoom: options.clusterspiderfy,
 				iconCreateFunction: function(cluster) {
 					var childCount = cluster.getChildCount();

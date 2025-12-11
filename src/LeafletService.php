@@ -112,6 +112,12 @@ class LeafletService implements MappingService {
 			'message' => 'maps-par-clusterzoomonclick',
 		];
 
+		$params['clusteranimate'] = [
+			'type' => ParameterTypes::BOOLEAN,
+			'default' => true,
+			'message' => 'maps-par-clusteranimate',
+		];
+
 		$params['clustermaxradius'] = [
 			'type' => ParameterTypes::INTEGER,
 			'default' => 80,
