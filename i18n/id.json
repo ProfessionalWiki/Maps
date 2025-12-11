@@ -8,6 +8,7 @@
 			"Irwangatot",
 			"IvanLanin",
 			"Macofe",
+			"Penyuwangi",
 			"RXerself",
 			"Veracious",
 			"පසිඳු කාවින්ද"
@@ -94,7 +95,7 @@
 	"maps_unrecognized_coords_for": "Koordinat berikut tidak dikenali dan {{PLURAL:$2|telah|telah}} diabaikan dari peta:\n$1",
 	"maps_map_cannot_be_displayed": "Peta tak dapat ditampilkan.",
 	"maps-geocoder-not-available": "Fitur kodegeo Peta tidak tersedia. Lokasi Anda tidak dapat dikodegeokan",
-	"maps_click_to_activate": "Klik untuk mengaktifkan peta",
+	"maps_click_to_activate": "Klik untuk menyalakan peta",
 	"maps_centred_on": "Peta dipusatkan di $1, $2.",
 	"maps-par-resizable": "Membuat peta berubah ukuran dengan menyeret pojok kanan bawahnya.",
 	"maps-par-zoom": "Tingkat pembesaran peta. Secara bawaan, peta bertanda akan mengambil tingkat pembesaran yang masih menunjukkan semua tanda.",
