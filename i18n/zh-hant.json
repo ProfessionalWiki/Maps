@@ -159,6 +159,7 @@
 	"maps-googlemaps3-par-clustergridsize": "像素叢集的網格大小。",
 	"maps-par-clustermaxzoom": "叢集裡可能存有的最大縮放層級。",
 	"maps-par-clusterzoomonclick": "在點擊叢集時的是否預設將其縮放。",
+	"maps-par-clusteranimate": "是否當縮放和蛛網化時啟用平滑過渡效果。",
 	"maps-par-maxclusterradius": "叢集會涵蓋的最大半徑。",
 	"maps-googlemaps3-par-clusteraveragecenter": "任一叢集中心是否應為該叢集裡所有標記的平均值。",
 	"maps-googlemaps3-par-clusterminsize": "在標記被隱藏以及計數顯示之前，於叢集裡的標記最小值。",

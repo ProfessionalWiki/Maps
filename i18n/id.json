@@ -14,7 +14,7 @@
 			"පසිඳු කාවින්ද"
 		]
 	},
-	"maps-desc": "Membolehkan penyertaan peta dinamis ke dalam halaman wiki menggunakan Google Maps atau Leaflet. Punya editor visual, bisa diintegrasikan dengan Semantic MediaWiki, mendukung GeoJSON dan menambahkan kemampuan ''geocoding''.",
+	"maps-desc": "Membolehkan penyertaan peta dinamis ke dalam halaman wiki menggunakan Google Maps atau Leaflet. Punya penyunting visual, bisa dipadukan dengan Semantic MediaWiki, mendukung GeoJSON dan menambahkan kemampuan pengodean geografis.",
 	"maps_map": "Peta",
 	"maps-tracking-category": "Halaman dengan peta yang ditampilkan oleh ekstensi Maps",
 	"maps-loading-map": "Memuat peta...",
@@ -131,7 +131,7 @@
 	"mapeditor-form-field-text": "Teks",
 	"mapeditor-form-field-link": "Tautan",
 	"mapeditor-form-field-icon": "Ikon",
-	"mapeditor-form-field-group": "Grup",
+	"mapeditor-form-field-group": "Kelompok",
 	"mapeditor-form-field-strokecolor": "Warna pinggiran",
 	"mapeditor-form-field-strokeopacity": "Transparansi pinggiran",
 	"mapeditor-form-field-strokeweight": "Tebal pinggiran",
@@ -203,7 +203,7 @@
 	"maps-geo-json-create-page-summary": "Membuat halaman GeoJSON",
 	"maps-editor-edit-geojson": "Menyunting lapisan GeoJSON",
 	"tag-maps-visual-edit": "Menyunting peta secara visual",
-	"tag-maps-visual-edit-description": "Suntingan dibuat dengan editor visual yang disediakan oleh [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps ekstensi Maps]",
+	"tag-maps-visual-edit-description": "Suntingan dibuat dengan penyunting visual yang disediakan oleh [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Maps pengaya Maps]",
 	"maps-validator-type-string": "teks",
 	"maps-validator-type-integer": "bilangan bulat",
 	"maps-validator-type-float": "nomor",
