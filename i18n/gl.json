@@ -215,6 +215,7 @@
 	"maps-validator-type-mapspolygon-list": "Lista dos polígonos xeográficos",
 	"maps-validator-type-wmsoverlay": "Transparencia de Servizo de Mapa web",
 	"maps-json-editor-toolbar-cancel-text": "Cancelar",
+	"maps-geo-json-edit-source": "Editar a fonte",
 	"maps-validator-type-string": "texto",
 	"maps-validator-type-integer": "número enteiro",
 	"maps-validator-type-float": "número",

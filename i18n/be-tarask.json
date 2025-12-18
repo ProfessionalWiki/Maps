@@ -6,6 +6,7 @@
 			"Macofe",
 			"Red Winged Duck",
 			"Renessaince",
+			"Ucukor",
 			"Wizardist"
 		]
 	},
@@ -147,6 +148,7 @@
 	"semanticmaps-par-centre": "Цэнтар мапы. Калі ён не пададзены, мапа будзе аўтаматычна выбіраць аптымальны цэнтар для паказу ўсіх маркераў.",
 	"semanticmaps-par-template": "Шаблён для фарматаваньня зьместу акна інфармацыі.",
 	"semanticmaps-par-geocodecontrol": "Паказаць элемэнты кіраваньня геаграфічным кадаваньнем.",
+	"maps-geo-json-edit-source": "Рэдагаваць код",
 	"maps-validator-type-string": "тэкст",
 	"maps-validator-type-integer": "цэлы лік",
 	"maps-validator-type-float": "лік",
