@@ -171,6 +171,7 @@
 	"maps-googlemaps3-par-clustergridsize": "La taille de la grille (en pixels) d’un agrégat.",
 	"maps-par-clustermaxzoom": "Niveau maximal de zoom pour lequel des agrégats peuvent exister.",
 	"maps-par-clusterzoomonclick": "Si le comportement lorsqu’on clique sur un agrégat est par défaut de zoomer dessus.",
+	"maps-par-clusteranimate": "Faut-il activer les transitions fluides lors du zoom et de l'exploration en réseau ?",
 	"maps-par-maxclusterradius": "Le rayon maximal qu’un agrégat couvrira.",
 	"maps-googlemaps3-par-clusteraveragecenter": "Si le centre de chaque agrégat est le barycentre des marqueurs dans l’agrégat.",
 	"maps-googlemaps3-par-clusterminsize": "Le nombre minimum de marqueurs dans un agrégat avant que les marqueurs ne soient cachés et qu’un compteur ne les remplace.",

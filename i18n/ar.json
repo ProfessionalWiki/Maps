@@ -149,6 +149,7 @@
 	"maps-googlemaps3-par-clustergridsize": "حجم شبكة العنقود بالبكسل.",
 	"maps-par-clustermaxzoom": "الحد الأقصى لمستوى التكبير حيث قد يوجد عنقود.",
 	"maps-par-clusterzoomonclick": "ما إذا كان السلوك الافتراضي للنقر على عنقود هو تكبيره.",
+	"maps-par-clusteranimate": "ما إذا كان ينبغي تمكين الانتقالات السلسة عند التكبير والتصغير والتنقل بين الصور.",
 	"maps-par-maxclusterradius": "الحد الأقصى لنصف القطر الذي سيغطيه العنقود.",
 	"maps-googlemaps3-par-clusteraveragecenter": "ما إذا كان مركز كل عنقود يجب أن يكون متوسط ​​جميع العلامات في العنقود.",
 	"maps-googlemaps3-par-clusterminsize": "الحد الأدنى لعدد العلامات لتكون في عنقود قبل إخفاء العلامات وإظهار العد.",
